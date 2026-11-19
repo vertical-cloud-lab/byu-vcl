@@ -1,12 +1,26 @@
 {
  "clip": "atom_latch",
  "frames_checked": 833,
- "frames_with_collisions": 113,
+ "frames_with_collisions": 123,
  "runs": [
   {
    "label": "5/9",
-   "first_frame": 327,
-   "last_frame": 330,
+   "first_frame": 312,
+   "last_frame": 317,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:static"
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 329,
+   "last_frame": 332,
    "frames": 4,
    "pairs": [
     {
@@ -19,173 +33,15 @@
   },
   {
    "label": "5/9",
-   "first_frame": 335,
-   "last_frame": 335,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 336,
-   "last_frame": 336,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:latch_lever",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 3.0
-    }
-   ]
-  },
-  {
-   "label": "5/9",
    "first_frame": 337,
    "last_frame": 337,
    "frames": 1,
    "pairs": [
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
      "depth_mm": 3.0
     },
     {
@@ -193,14 +49,14 @@
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:latch_lever",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:latch_lever",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     }
    ]
   },
@@ -214,6 +70,65 @@
      "arm": "ur",
      "kind": "arm",
      "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 339,
+   "last_frame": 339,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
      "other": "rp:chamber"
     },
     {
@@ -231,8 +146,20 @@
     {
      "arm": "ur",
      "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
      "part": "wrist2",
      "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:furnace"
     },
     {
      "arm": "ur",
@@ -258,14 +185,113 @@
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 6.0
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 340,
+   "last_frame": 340,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
      "other": "rp:chamber",
      "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -279,22 +305,22 @@
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:latch_lever",
-     "depth_mm": 6.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:latch_lever",
-     "depth_mm": 6.0
+     "depth_mm": 25.0
     }
    ]
   },
   {
    "label": "5/9",
-   "first_frame": 339,
-   "last_frame": 340,
-   "frames": 2,
+   "first_frame": 341,
+   "last_frame": 343,
+   "frames": 3,
    "pairs": [
     {
      "arm": "ur",
@@ -337,7 +363,107 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
-     "depth_mm": 6.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 344,
+   "last_frame": 344,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -350,7 +476,21 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
      "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -366,13 +506,27 @@
      "part": "camera",
      "other": "rp:furnace",
      "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     }
    ]
   },
   {
    "label": "5/9",
-   "first_frame": 341,
-   "last_frame": 342,
+   "first_frame": 345,
+   "last_frame": 346,
    "frames": 2,
    "pairs": [
     {
@@ -386,6 +540,12 @@
      "kind": "arm",
      "part": "forearm",
      "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
@@ -404,7 +564,7 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -417,8 +577,22 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -433,13 +607,27 @@
      "part": "camera",
      "other": "rp:furnace",
      "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     }
    ]
   },
   {
    "label": "5/9",
-   "first_frame": 343,
-   "last_frame": 343,
+   "first_frame": 347,
+   "last_frame": 347,
    "frames": 1,
    "pairs": [
     {
@@ -468,323 +656,66 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 344,
-   "last_frame": 345,
-   "frames": 2,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
      "other": "rp:furnace",
      "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
-     "other": "rp:furnace",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
-     "other": "rp:furnace",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 346,
-   "last_frame": 347,
-   "frames": 2,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:latch_bolt",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     }
    ]
   },
@@ -820,23 +751,24 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
@@ -848,6 +780,13 @@
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
      "depth_mm": 50.0
@@ -862,66 +801,38 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_finger",
+     "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:latch_bolt",
-     "depth_mm": 12.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
-     "other": "rp:furnace",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     }
    ]
   },
   {
    "label": "5/9",
    "first_frame": 349,
-   "last_frame": 352,
-   "frames": 4,
+   "last_frame": 350,
+   "frames": 2,
    "pairs": [
     {
      "arm": "ur",
@@ -949,12 +860,6 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
@@ -965,14 +870,28 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -985,20 +904,6 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
      "other": "rp:furnace",
      "depth_mm": 25.0
     },
@@ -1007,148 +912,20 @@
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:latch_bolt",
-     "depth_mm": 12.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 353,
-   "last_frame": 360,
-   "frames": 6,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:bottom_ins"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:bottom_ins",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:latch_bolt",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
-     "other": "rp:furnace",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -1156,35 +933,35 @@
      "kind": "gripper",
      "part": "left_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 3.0
     }
    ]
   },
   {
    "label": "5/9",
-   "first_frame": 362,
-   "last_frame": 362,
+   "first_frame": 351,
+   "last_frame": 351,
    "frames": 1,
    "pairs": [
     {
@@ -1213,9 +990,147 @@
     },
     {
      "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:furnace",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:latch_bolt",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 352,
+   "last_frame": 352,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
      "kind": "arm",
      "part": "wrist3",
-     "other": "rp:furnace"
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
@@ -1229,7 +1144,14 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
@@ -1241,23 +1163,23 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "camera",
-     "other": "rp:bottom_ins",
-     "depth_mm": 3.0
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -1265,13 +1187,6 @@
      "part": "left_finger",
      "other": "rp:furnace",
      "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -1285,6 +1200,13 @@
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -1292,7 +1214,7 @@
      "kind": "gripper",
      "part": "left_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
@@ -1306,7 +1228,7 @@
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 0.3
     },
     {
      "arm": "ur",
@@ -1314,6 +1236,178 @@
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 353,
+   "last_frame": 362,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:latch_bolt",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
     }
    ]
   },
@@ -1349,30 +1443,10 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -1384,247 +1458,30 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "camera",
-     "other": "rp:bottom_ins",
-     "depth_mm": 3.0
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
+     "part": "camera",
      "other": "rp:furnace",
      "depth_mm": 6.0
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 364,
-   "last_frame": 364,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 999.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 365,
-   "last_frame": 365,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 999.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 6.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
@@ -1638,14 +1495,21 @@
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
@@ -1666,14 +1530,123 @@
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 364,
+   "last_frame": 365,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 999.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
     }
    ]
   },
@@ -1719,14 +1692,35 @@
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 999.0
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
@@ -1739,29 +1733,57 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
+     "other": "rp:chamber",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
+     "part": "left_knuckle",
+     "other": "rp:furnace",
      "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
-     "other": "rp:furnace",
+     "other": "rp:chamber",
      "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
@@ -1775,138 +1797,8 @@
   {
    "label": "5/9",
    "first_frame": 367,
-   "last_frame": 367,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 368,
    "last_frame": 368,
-   "frames": 1,
+   "frames": 2,
    "pairs": [
     {
      "arm": "ur",
@@ -1937,14 +1829,14 @@
      "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -1958,21 +1850,21 @@
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 0.3
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -1985,27 +1877,6 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "left_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
      "other": "rp:chamber",
      "depth_mm": 25.0
     },
@@ -2013,15 +1884,29 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
      "other": "rp:furnace",
      "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -2029,20 +1914,6 @@
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     }
    ]
   },
@@ -2081,14 +1952,14 @@
      "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
@@ -2096,34 +1967,27 @@
      "part": "left_finger",
      "other": "rp:chamber",
      "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 1.5
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 25.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -2135,20 +1999,6 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "right_finger",
      "other": "rp:chamber",
      "depth_mm": 25.0
@@ -2158,21 +2008,21 @@
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 25.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -2180,20 +2030,6 @@
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     }
    ]
   },
@@ -2218,67 +2054,27 @@
     {
      "arm": "ur",
      "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:connector"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:plate"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:upper"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
      "part": "wrist2",
-     "other": "rp:door"
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:bottom_ins",
-     "depth_mm": 12.0
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:nut",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:seal",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:chamber",
      "depth_mm": 12.0
     },
     {
@@ -2286,21 +2082,125 @@
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 6.0
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    }
+   ]
+  },
+  {
+   "label": "5/9",
+   "first_frame": 372,
+   "last_frame": 372,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -2314,13 +2214,6 @@
      "kind": "gripper",
      "part": "left_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
      "depth_mm": 25.0
     },
     {
@@ -2328,14 +2221,14 @@
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:bottom_ins",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -2356,14 +2249,14 @@
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:nut",
-     "depth_mm": 1.5
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:seal",
-     "depth_mm": 6.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
@@ -2376,71 +2269,78 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
-     "other": "rp:coil",
-     "depth_mm": 25.0
+     "other": "rp:crucible",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:holder",
+     "depth_mm": 1.5
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:side_ins",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:bottom_ins",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:chamber",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
-     "other": "rp:bottom_ins",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:side_ins",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "right_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 6.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:nut",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_knuckle",
      "other": "rp:seal",
-     "depth_mm": 1.5
+     "depth_mm": 12.0
     }
    ]
   },
   {
    "label": "5/9",
-   "first_frame": 372,
-   "last_frame": 372,
+   "first_frame": 373,
+   "last_frame": 373,
    "frames": 1,
    "pairs": [
     {
@@ -2464,26 +2364,8 @@
     {
      "arm": "ur",
      "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
      "part": "wrist1",
      "other": "rp:door"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:plate"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:sonotrode"
     },
     {
      "arm": "ur",
@@ -2501,74 +2383,13 @@
      "arm": "ur",
      "kind": "arm",
      "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
      "other": "rp:door"
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:bottom_ins",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:coil",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:crucible",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:side_ins",
      "depth_mm": 25.0
     },
     {
@@ -2576,6 +2397,13 @@
      "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:door",
      "depth_mm": 50.0
     },
     {
@@ -2583,160 +2411,13 @@
      "kind": "gripper",
      "part": "camera",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:coil",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:bottom_ins",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:coil",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:side_ins",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:coil",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:side_ins",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:coil",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:crucible",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:side_ins",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:bottom_ins",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:crucible",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:side_ins",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:bottom_ins",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
-    }
-   ]
-  },
-  {
-   "label": "5/9",
-   "first_frame": 373,
-   "last_frame": 373,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:clamp0"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
      "depth_mm": 25.0
     },
     {
@@ -2744,28 +2425,42 @@
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
     }
    ]
   },
   {
    "label": "5/9",
-   "first_frame": 375,
-   "last_frame": 375,
+   "first_frame": 376,
+   "last_frame": 376,
    "frames": 1,
    "pairs": [
     {
@@ -2775,10 +2470,230 @@
      "other": "urB_forearm"
     },
     {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "urB_forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "urB_forearm",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "urB_forearm",
+     "depth_mm": 999.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "urB_wrist1",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "urB_forearm",
+     "depth_mm": 999.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "urB_wrist1",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "urB_wrist2",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "urB_wrist1",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "urB_wrist2",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "urB_forearm",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "urB_wrist1",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "urB_forearm",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "urB_wrist1",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "urB_forearm",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "urB_forearm",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "urB_wrist1",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "urB_forearm",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_adapter"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_base"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_camera"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_left_inner_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_left_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_right_finger"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_right_inner_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_right_knuckle"
+    },
+    {
      "arm": "urB",
      "kind": "arm",
      "part": "forearm",
      "other": "ur_wrist2"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_wrist3"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_base"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_left_finger"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_left_finger_tip"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_left_inner_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_left_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_right_inner_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "ur_gr_left_finger"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "ur_gr_left_finger_tip"
     }
    ]
   },
@@ -2880,8 +2795,8 @@
   },
   {
    "label": "8/9",
-   "first_frame": 641,
-   "last_frame": 641,
+   "first_frame": 639,
+   "last_frame": 639,
    "frames": 1,
    "pairs": [
     {
@@ -2891,10 +2806,262 @@
      "other": "urB_forearm"
     },
     {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "urB_forearm"
+    },
+    {
      "arm": "urB",
      "kind": "arm",
      "part": "forearm",
      "other": "ur_wrist2"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_wrist3"
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 640,
+   "last_frame": 640,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "urB_forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "urB_forearm",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "urB_forearm",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "urB_wrist1",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "urB_wrist2",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "urB_forearm",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "urB_wrist2",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "urB_wrist1",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "urB_wrist2",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "urB_forearm",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "urB_wrist1",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "urB_wrist1",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "urB_forearm",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "urB_wrist1",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "urB_forearm",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_adapter"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_base"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_camera"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_right_finger"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_right_inner_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_gr_right_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "ur_wrist3"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_base"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_left_inner_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_right_finger"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_right_finger_tip"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "ur_gr_right_inner_knuckle"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "ur_gr_base"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "ur_gr_left_finger"
+    },
+    {
+     "arm": "urB",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "ur_gr_left_inner_knuckle"
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 643,
+   "last_frame": 643,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:clamp0"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:door"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:clamp0"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:door"
     }
    ]
   },
@@ -2907,8 +3074,20 @@
     {
      "arm": "ur",
      "kind": "arm",
-     "part": "wrist1",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
      "other": "rp:clamp0"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:door"
     },
     {
      "arm": "ur",
@@ -2918,9 +3097,48 @@
     },
     {
      "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:upper"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:door"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:door"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:door",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:door",
      "depth_mm": 25.0
     },
     {
@@ -2928,14 +3146,14 @@
      "kind": "gripper",
      "part": "camera",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -2954,9 +3172,23 @@
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
      "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
     }
    ]
   },
@@ -2976,37 +3208,7 @@
      "arm": "ur",
      "kind": "arm",
      "part": "forearm",
-     "other": "rp:clamp0"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:door"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:connector"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:door"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:plate"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:sonotrode"
+     "other": "rp:furnace"
     },
     {
      "arm": "ur",
@@ -3018,123 +3220,97 @@
      "arm": "ur",
      "kind": "arm",
      "part": "wrist2",
-     "other": "rp:door"
+     "other": "rp:plate"
     },
     {
      "arm": "ur",
      "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:door"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
+     "part": "wrist2",
+     "other": "rp:upper"
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
+     "part": "base",
      "other": "rp:chamber",
      "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:door",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:chamber",
      "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
+     "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:bottom_ins",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:coil",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 999.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:side_ins",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:coil",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
-     "other": "rp:side_ins",
+     "other": "rp:furnace",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
-     "other": "rp:coil",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:bottom_ins",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:chamber",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
-     "other": "rp:coil",
-     "depth_mm": 12.0
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:bottom_ins",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -3147,36 +3323,43 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
-     "other": "rp:crucible",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
      "other": "rp:side_ins",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:bottom_ins",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:chamber",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
-     "other": "rp:coil",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:chamber",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:side_ins",
-     "depth_mm": 25.0
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
     }
    ]
   },
@@ -3201,67 +3384,40 @@
     {
      "arm": "ur",
      "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:plate"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:sonotrode"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
      "part": "wrist2",
-     "other": "rp:door"
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:bottom_ins",
-     "depth_mm": 25.0
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:holder",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "base",
-     "other": "rp:nut",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:seal",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "left_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
      "other": "rp:furnace",
      "depth_mm": 25.0
     },
@@ -3269,8 +3425,8 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
-     "other": "rp:bottom_ins",
-     "depth_mm": 6.0
+     "other": "rp:chamber",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -3283,7 +3439,7 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "left_knuckle",
-     "other": "rp:furnace",
+     "other": "rp:chamber",
      "depth_mm": 25.0
     },
     {
@@ -3291,28 +3447,21 @@
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:bottom_ins",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:chamber",
      "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
-     "other": "rp:crucible",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
      "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:holder",
-     "depth_mm": 12.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -3325,71 +3474,43 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
-     "other": "rp:crucible",
+     "other": "rp:coil",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
-     "other": "rp:holder",
-     "depth_mm": 1.5
+     "other": "rp:furnace",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:side_ins",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:bottom_ins",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
      "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:crucible",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:holder",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:nozzle",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:holder",
-     "depth_mm": 12.0
     }
    ]
   },
@@ -3414,54 +3535,35 @@
     {
      "arm": "ur",
      "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:plate"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:upper"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
      "part": "wrist2",
-     "other": "rp:door"
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
      "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:upper"
+     "part": "wrist3",
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
      "other": "rp:chamber",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 1.5
     },
     {
      "arm": "ur",
@@ -3475,34 +3577,20 @@
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
      "depth_mm": 25.0
     },
     {
@@ -3510,54 +3598,19 @@
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:seal",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "right_finger_tip",
-     "other": "rp:bottom_ins",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:coil",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:bottom_ins",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 50.0
     },
@@ -3565,36 +3618,138 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
-     "other": "rp:side_ins",
-     "depth_mm": 0.3
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_knuckle",
+     "part": "right_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:seal",
-     "depth_mm": 1.5
+     "depth_mm": 50.0
     }
    ]
   },
   {
    "label": "8/9",
    "first_frame": 648,
-   "last_frame": 650,
+   "last_frame": 648,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 650,
+   "last_frame": 651,
    "frames": 2,
    "pairs": [
     {
@@ -3626,14 +3781,14 @@
      "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -3647,21 +3802,21 @@
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 1.5
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 25.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -3680,23 +3835,9 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "right_finger",
      "other": "rp:chamber",
-     "depth_mm": 25.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -3710,151 +3851,14 @@
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:chamber",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    }
-   ]
-  },
-  {
-   "label": "8/9",
-   "first_frame": 651,
-   "last_frame": 651,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:chamber",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:chamber",
-     "depth_mm": 6.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -3862,20 +3866,6 @@
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:chamber",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
     }
    ]
   },
@@ -3914,7 +3904,7 @@
      "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 999.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -3927,8 +3917,29 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
@@ -3941,15 +3952,15 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "left_knuckle",
-     "other": "rp:furnace",
+     "other": "rp:chamber",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 6.0
+     "other": "rp:chamber",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -3961,16 +3972,37 @@
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 3.0
     }
    ]
   },
@@ -4007,20 +4039,6 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
      "depth_mm": 50.0
@@ -4030,21 +4048,7 @@
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 999.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
@@ -4056,23 +4060,37 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_inner_knuckle",
+     "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_knuckle",
+     "part": "left_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "right_finger",
-     "other": "rp:bottom_ins",
-     "depth_mm": 3.0
+     "other": "rp:chamber",
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
@@ -4086,21 +4104,28 @@
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:chamber",
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
     }
    ]
   },
@@ -4137,20 +4162,6 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "base",
      "other": "rp:chamber",
      "depth_mm": 50.0
@@ -4165,49 +4176,56 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
+     "part": "left_finger",
      "other": "rp:furnace",
      "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_inner_knuckle",
+     "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_knuckle",
+     "part": "left_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "right_finger",
      "other": "rp:furnace",
-     "depth_mm": 1.5
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
      "other": "rp:furnace",
      "depth_mm": 12.0
     }
@@ -4245,70 +4263,57 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
+     "part": "base",
      "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
      "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 999.0
+     "depth_mm": 50.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 0.3
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "camera",
+     "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
      "other": "rp:furnace",
      "depth_mm": 12.0
     },
@@ -4317,7 +4322,21 @@
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
      "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
     }
    ]
   },
@@ -4353,9 +4372,154 @@
     },
     {
      "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:chamber",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:latch_bolt",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 657,
+   "last_frame": 665,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
      "kind": "arm",
      "part": "wrist3",
-     "other": "rp:furnace"
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
@@ -4369,7 +4533,7 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
@@ -4388,43 +4552,57 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "camera",
-     "other": "rp:bottom_ins",
-     "depth_mm": 3.0
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 1.5
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:latch_bolt",
-     "depth_mm": 3.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -4437,14 +4615,35 @@
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
      "other": "rp:furnace",
      "depth_mm": 6.0
     }
@@ -4452,8 +4651,8 @@
   },
   {
    "label": "8/9",
-   "first_frame": 657,
-   "last_frame": 657,
+   "first_frame": 666,
+   "last_frame": 666,
    "frames": 1,
    "pairs": [
     {
@@ -4482,12 +4681,6 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
@@ -4498,7 +4691,14 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
@@ -4510,23 +4710,23 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "camera",
-     "other": "rp:bottom_ins",
-     "depth_mm": 3.0
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -4534,13 +4734,6 @@
      "part": "left_finger",
      "other": "rp:furnace",
      "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -4554,6 +4747,13 @@
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -4561,7 +4761,7 @@
      "kind": "gripper",
      "part": "left_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 3.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
@@ -4575,7 +4775,7 @@
      "kind": "gripper",
      "part": "right_finger_tip",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 0.3
     },
     {
      "arm": "ur",
@@ -4583,14 +4783,28 @@
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
      "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
     }
    ]
   },
   {
    "label": "8/9",
-   "first_frame": 658,
-   "last_frame": 665,
-   "frames": 6,
+   "first_frame": 667,
+   "last_frame": 667,
+   "frames": 1,
    "pairs": [
     {
      "arm": "ur",
@@ -4614,19 +4828,7 @@
      "arm": "ur",
      "kind": "arm",
      "part": "wrist3",
-     "other": "rp:bottom_ins"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
      "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
     },
     {
      "arm": "ur",
@@ -4640,7 +4842,14 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
@@ -4652,50 +4861,50 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "camera",
-     "other": "rp:bottom_ins",
-     "depth_mm": 1.5
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger",
      "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 1.5
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:latch_bolt",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -4703,36 +4912,43 @@
      "kind": "gripper",
      "part": "left_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 1.5
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_finger",
      "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 6.0
     }
    ]
   },
   {
    "label": "8/9",
-   "first_frame": 666,
+   "first_frame": 668,
    "last_frame": 669,
-   "frames": 4,
+   "frames": 2,
    "pairs": [
     {
      "arm": "ur",
@@ -4760,12 +4976,6 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
@@ -4776,14 +4986,28 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -4796,20 +5020,6 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
      "other": "rp:furnace",
      "depth_mm": 25.0
     },
@@ -4818,35 +5028,49 @@
      "kind": "gripper",
      "part": "left_finger_tip",
      "other": "rp:latch_bolt",
-     "depth_mm": 12.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger",
+     "part": "left_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:furnace",
+     "depth_mm": 3.0
     }
    ]
   },
@@ -4882,23 +5106,24 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
@@ -4910,6 +5135,13 @@
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "camera",
      "other": "rp:chamber",
      "depth_mm": 50.0
@@ -4920,334 +5152,41 @@
      "part": "camera",
      "other": "rp:furnace",
      "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:latch_bolt",
-     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
-    }
-   ]
-  },
-  {
-   "label": "8/9",
-   "first_frame": 671,
-   "last_frame": 672,
-   "frames": 2,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:latch_bolt",
      "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "left_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    }
-   ]
-  },
-  {
-   "label": "8/9",
-   "first_frame": 673,
-   "last_frame": 674,
-   "frames": 2,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:chamber",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
+     "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
-     "other": "rp:furnace",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 12.0
     }
    ]
   },
   {
    "label": "8/9",
-   "first_frame": 675,
-   "last_frame": 675,
+   "first_frame": 671,
+   "last_frame": 671,
    "frames": 1,
    "pairs": [
     {
@@ -5276,21 +5215,29 @@
     },
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
-     "depth_mm": 25.0
+     "depth_mm": 12.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
      "other": "rp:furnace",
      "depth_mm": 25.0
     },
@@ -5298,8 +5245,8 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 50.0
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -5313,28 +5260,28 @@
      "kind": "gripper",
      "part": "camera",
      "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:furnace",
-     "depth_mm": 1.5
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     }
    ]
   },
   {
    "label": "8/9",
-   "first_frame": 676,
-   "last_frame": 677,
+   "first_frame": 672,
+   "last_frame": 673,
    "frames": 2,
    "pairs": [
     {
@@ -5348,6 +5295,12 @@
      "kind": "arm",
      "part": "forearm",
      "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
     },
     {
      "arm": "ur",
@@ -5366,7 +5319,7 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
-     "depth_mm": 12.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -5379,8 +5332,22 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
      "other": "rp:furnace",
-     "depth_mm": 50.0
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -5395,14 +5362,28 @@
      "part": "camera",
      "other": "rp:furnace",
      "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     }
    ]
   },
   {
    "label": "8/9",
-   "first_frame": 678,
-   "last_frame": 679,
-   "frames": 2,
+   "first_frame": 674,
+   "last_frame": 674,
+   "frames": 1,
    "pairs": [
     {
      "arm": "ur",
@@ -5445,7 +5426,7 @@
      "kind": "gripper",
      "part": "adapter",
      "other": "rp:chamber",
-     "depth_mm": 6.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
@@ -5458,7 +5439,21 @@
      "arm": "ur",
      "kind": "gripper",
      "part": "base",
+     "other": "rp:chamber",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
      "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -5474,6 +5469,317 @@
      "part": "camera",
      "other": "rp:furnace",
      "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 675,
+   "last_frame": 677,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:chamber",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 678,
+   "last_frame": 678,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:chamber",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 679,
+   "last_frame": 679,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:chamber"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:furnace",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:furnace",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:furnace",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:latch_lever",
+     "depth_mm": 25.0
     }
    ]
   },
@@ -5487,19 +5793,7 @@
      "arm": "ur",
      "kind": "arm",
      "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
      "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:chamber"
     },
     {
      "arm": "ur",
@@ -5510,6 +5804,12 @@
     {
      "arm": "ur",
      "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:furnace"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
      "part": "wrist3",
      "other": "rp:chamber"
     },
@@ -5522,29 +5822,8 @@
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "base",
-     "other": "rp:furnace",
-     "depth_mm": 6.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:chamber",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
+     "other": "rp:latch_lever",
      "depth_mm": 25.0
     },
     {
@@ -5552,14 +5831,14 @@
      "kind": "gripper",
      "part": "left_inner_knuckle",
      "other": "rp:latch_lever",
-     "depth_mm": 6.0
+     "depth_mm": 25.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:latch_lever",
-     "depth_mm": 6.0
+     "depth_mm": 25.0
     }
    ]
   },
@@ -5571,190 +5850,46 @@
    "pairs": [
     {
      "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "forearm",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist1",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:latch_lever",
+     "depth_mm": 3.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "adapter",
-     "other": "rp:furnace",
+     "part": "left_inner_knuckle",
+     "other": "rp:latch_lever",
      "depth_mm": 6.0
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "base",
-     "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "camera",
-     "other": "rp:furnace",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
      "part": "right_inner_knuckle",
      "other": "rp:latch_lever",
-     "depth_mm": 25.0
+     "depth_mm": 6.0
     }
    ]
   },
   {
    "label": "8/9",
-   "first_frame": 682,
-   "last_frame": 682,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist2",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:chamber"
-    },
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "wrist3",
-     "other": "rp:furnace"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:latch_lever",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 3.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 25.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 3.0
-    }
-   ]
-  },
-  {
-   "label": "8/9",
-   "first_frame": 683,
-   "last_frame": 683,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "base",
-     "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "rp:latch_lever",
-     "depth_mm": 12.0
-    }
-   ]
-  },
-  {
-   "label": "8/9",
-   "first_frame": 688,
-   "last_frame": 691,
+   "first_frame": 686,
+   "last_frame": 689,
    "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:static"
+    }
+   ]
+  },
+  {
+   "label": "8/9",
+   "first_frame": 701,
+   "last_frame": 706,
+   "frames": 6,
    "pairs": [
     {
      "arm": "ur",
@@ -5768,49 +5903,18 @@
  "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
  "rules_version": "round 11 (strict)",
  "depth_limit_mm": 1.5,
- "hits_allowed_before_but_too_deep": 26,
+ "hits_allowed_before_but_too_deep": 144,
  "fps": 10,
- "arm_seconds": 36.2,
+ "arm_seconds": 49.4,
  "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
  "movers": {
   "frames_checked": 833,
-  "frames_moving": 303,
-  "frames_with_collisions": 1,
-  "runs": [
-   {
-    "label": "3/9",
-    "first_frame": 116,
-    "last_frame": 116,
-    "frames": 1,
-    "depth_mm": 999.0,
-    "pairs": [
-     {
-      "mover": "amr",
-      "body": "amr/amr body",
-      "other": "base_frame",
-      "other_group": "rp:static",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "amr",
-      "body": "amr/amr body",
-      "other": "feet",
-      "other_group": "rp:static",
-      "depth_mm": 25.0
-     },
-     {
-      "mover": "amr",
-      "body": "amr/amr light band",
-      "other": "feet",
-      "other_group": "rp:static",
-      "depth_mm": 25.0
-     }
-    ]
-   }
-  ],
-  "fcl_pairs_checked": 4118,
-  "seconds": 1.4,
+  "frames_moving": 302,
+  "frames_with_collisions": 0,
+  "runs": [],
+  "fcl_pairs_checked": 4063,
+  "seconds": 1.9,
   "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
  },
- "frames_with_collisions_all": 114
+ "frames_with_collisions_all": 123
 }

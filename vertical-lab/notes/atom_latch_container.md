@@ -98,13 +98,13 @@ O-ring's 5 mm section is assumed (the model's `oring` part is not measured).
 
 | Load | Where | Tips at (131 kg plate / none) | Slides at (plate / none) |
 | --- | --- | --- | --- |
-| 100 N on the lever (200 if stiff), pulling it open | MiR250 1 right of the furnace, arm 1 on the lever | 575 / 300 N | 952 / 539 N |
-| the same, pushing it shut | MiR250 1 | 601 / 363 N | 952 / 539 N |
+| 100 N on the lever (200 if stiff), pulling it open | MiR250 1 at (650, -560), arm 1 on the lever | 783 / 435 N | 952 / 539 N |
+| the same, pushing it shut | MiR250 1 | 690 / 398 N | 952 / 539 N |
 | ~100 N press down on the lid | MiR250 2, front left | 614 / 370 N | 2087 / 1173 N |
 | 58 N, the lid's weight on the knob | MiR250 2 | 1507 / 719 N | does not slide |
 
-With the ballast plates every load has at least 2.8 times the stiff latch's 200 N; without them the lever's pull (300 N to
-tip) would leave 1.5 times. Numbers from `out/atom/atom_latch_stability.json`.
+With the ballast plates every load has at least 3 times the stiff latch's 200 N; without them the press (370 N to tip) would
+leave 1.85 times. Numbers from `out/atom/atom_latch_stability.json`.
 
 ## The container (clip `atom_container`)
 
@@ -153,21 +153,19 @@ with a wing nut, a chain clamp, a V-band).
 
 ## Audit results and what is still wrong (2026-11-19, the rendered scripts)
 
-- **atom_latch** (the turned lid, one-armed latch; the final pass, render and audit together at 10 fps, 103.1 s, 1031
-  frames): **113 of 833 checked frames have an arm in collision**, all in three places: 5/9 and 8/9 (40 and 57 frames: arm 1's
-  forearm and wrist in the furnace, the chamber and the door while it swings the loop over the lever) and 7/9 (16 frames: arm
-  2's wrist on the blue cabinet near the top of the lid's swing). Movers: 1 frame, and it is a real fault: at 3/9 MiR250 1 is
-  moved without a drive from its first spot to the one the clip's search picked, (700, -420) turned 50 deg, and there its
-  corner stands in the rePowder's base frame (x 550-634, y -150..-48, z 110-175) for the rest of the clip. The search should
-  have checked the MiR's footprint, and the clip should start at the spot it picks; (650, -560, 0) is clear and scored 198 vs
-  194. Before the lid was turned, the same clip with the
-  latch on the front face audited at **0 of 1254 frames** in collision and 0 mover contacts (01:29). After the port the lever's
-  moves are clear (its grasp now comes from above and outside: under the turned latch is the chamber's top plate), but **the
-  loop's moves are not**: swinging the loop over the lever's top while holding its legs turns the gripper ~170 deg with it, and
-  the forearm sweeps into the furnace body, the chamber and the door (the clip's branch search scored 194-210 hits on that
-  path at every MiR250 1 spot tried). The fix, not made for lack of time: lift the bar off the hook and let the loop fall
-  onto the lever's web (what T4 5:29.5-5:35 shows: "lets it fall"), then fold the lever by its free end; for hooking, raise the
-  lever with the loop on it and turn the loop over onto the plate with a regrasp, or by letting it tip past vertical.
+- **atom_latch** (the turned lid, one-armed latch; final pass 02:31, render and audit together at 10 fps, 103.1 s, 1031
+  frames): **123 of 833 checked frames have an arm in collision; movers 0.** MiR250 1 now stays where it starts, (650, -560,
+  0), its footprint clear of the rePowder's base frame (x 250..1050, y -850..-270). The 02:13 pass had searched six spots and
+  moved it, without a drive, onto (700, -420, 50), where its corner stood in the base frame: that render had 113 arm frames
+  and that mover fault. The collisions left: 5/9 and 8/9 (44 and 63 frames), arm 1's forearm and wrist in the furnace, the
+  chamber, the door and the latch while it swings the loop over the lever, and there it also meets arm 2's parked forearm and
+  wrist; 7/9 (16 frames), arm 2's wrist on the blue cabinet near the top of the lid's swing. The loop's grasp is the best of
+  eight tried in the clip (approach in and down 40, 10, 65 or -15 deg, the tool as is or turned 180 deg about its axis): in and
+  down 65 deg, 140 hits on the swing against 198 for the 40 deg one; none clears it. Holding the loop by its legs through the
+  swing over the lever's top turns the gripper ~170 deg with it, and the forearm sweeps into the machine. The fix, not made
+  for lack of time: lift the bar off the hook and let the loop fall onto the lever's web (what T4 5:29.5-5:35 shows: "lets
+  it fall"), then fold the lever by its free end; for hooking, raise the lever with the loop on it and turn the loop over
+  onto the plate with a regrasp, or by letting it tip past vertical.
 - **atom_container** (the final pass at 10 fps, 50.9 s, 509 frames; it stops after the valve is shut, see above): **18 of
   384 checked frames have an arm in collision**: 12 in 3/5 (the bristles on the catch bowl's rim and the chamber, up to 12 mm,
   and arm 1's left finger up to 25 mm into the chamber at the door's edge as the brush comes out of the bowl) and 6 in 5/5 (arm

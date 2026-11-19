@@ -3,87 +3,87 @@
   "arm1_lever_open": {
    "mass_kg": 302.8,
    "cog_mm": [
-    -2,
-    21,
-    383
+    -8,
+    24,
+    384
    ],
    "force_point_mm": [
-    27,
-    734,
+    -495,
+    632,
     1222
    ],
    "force_dir": [
-    -0.601,
-    0.717,
+    -0.936,
+    0.0,
     -0.353
    ],
    "edges": {
     "+x": {
-     "restoring_Nm": 972.3,
-     "lever_mm": -840.3,
+     "restoring_Nm": 988.7,
+     "lever_mm": -1432.7,
      "tips_at_N": null
     },
     "-x": {
-     "restoring_Nm": 958.2,
-     "lever_mm": 611.0,
-     "tips_at_N": 1568.0
+     "restoring_Nm": 941.8,
+     "lever_mm": 1203.4,
+     "tips_at_N": 783.0
     },
     "+y": {
-     "restoring_Nm": 606.5,
-     "lever_mm": 1055.4,
-     "tips_at_N": 575.0
+     "restoring_Nm": 597.4,
+     "lever_mm": 143.5,
+     "tips_at_N": 4162.0
     },
     "-y": {
-     "restoring_Nm": 730.0,
-     "lever_mm": -1214.1,
+     "restoring_Nm": 739.1,
+     "lever_mm": -302.2,
      "tips_at_N": null
     }
    },
-   "tips_at_N": 575.0,
-   "tips_about": "+y",
+   "tips_at_N": 783.0,
+   "tips_about": "-x",
    "slides_at_N": 952.0
   },
   "arm1_lever_shut": {
    "mass_kg": 302.8,
    "cog_mm": [
-    -2,
-    21,
-    383
+    -8,
+    24,
+    384
    ],
    "force_point_mm": [
-    27,
-    734,
+    -495,
+    632,
     1222
    ],
    "force_dir": [
-    0.601,
-    -0.717,
+    0.936,
+    0.0,
     0.353
    ],
    "edges": {
     "+x": {
-     "restoring_Nm": 972.3,
-     "lever_mm": 840.3,
-     "tips_at_N": 1157.0
+     "restoring_Nm": 988.7,
+     "lever_mm": 1432.7,
+     "tips_at_N": 690.0
     },
     "-x": {
-     "restoring_Nm": 958.2,
-     "lever_mm": -611.0,
+     "restoring_Nm": 941.8,
+     "lever_mm": -1203.4,
      "tips_at_N": null
     },
     "+y": {
-     "restoring_Nm": 606.5,
-     "lever_mm": -1055.4,
+     "restoring_Nm": 597.4,
+     "lever_mm": -143.5,
      "tips_at_N": null
     },
     "-y": {
-     "restoring_Nm": 730.0,
-     "lever_mm": 1214.1,
-     "tips_at_N": 601.0
+     "restoring_Nm": 739.1,
+     "lever_mm": 302.2,
+     "tips_at_N": 2445.0
     }
    },
-   "tips_at_N": 601.0,
-   "tips_about": "-y",
+   "tips_at_N": 690.0,
+   "tips_about": "+x",
    "slides_at_N": 952.0
   },
   "arm2_press": {
@@ -177,87 +177,87 @@
   "arm1_lever_open": {
    "mass_kg": 171.5,
    "cog_mm": [
-    -4,
-    37,
-    431
+    -14,
+    42,
+    432
    ],
    "force_point_mm": [
-    27,
-    734,
+    -495,
+    632,
     1222
    ],
    "force_dir": [
-    -0.601,
-    0.717,
+    -0.936,
+    0.0,
     -0.353
    ],
    "edges": {
     "+x": {
-     "restoring_Nm": 553.8,
-     "lever_mm": -840.3,
+     "restoring_Nm": 570.3,
+     "lever_mm": -1432.7,
      "tips_at_N": null
     },
     "-x": {
-     "restoring_Nm": 539.7,
-     "lever_mm": 611.0,
-     "tips_at_N": 883.0
+     "restoring_Nm": 523.3,
+     "lever_mm": 1203.4,
+     "tips_at_N": 435.0
     },
     "+y": {
-     "restoring_Nm": 316.8,
-     "lever_mm": 1055.4,
-     "tips_at_N": 300.0
+     "restoring_Nm": 307.7,
+     "lever_mm": 143.5,
+     "tips_at_N": 2144.0
     },
     "-y": {
-     "restoring_Nm": 440.3,
-     "lever_mm": -1214.1,
+     "restoring_Nm": 449.4,
+     "lever_mm": -302.2,
      "tips_at_N": null
     }
    },
-   "tips_at_N": 300.0,
-   "tips_about": "+y",
+   "tips_at_N": 435.0,
+   "tips_about": "-x",
    "slides_at_N": 539.0
   },
   "arm1_lever_shut": {
    "mass_kg": 171.5,
    "cog_mm": [
-    -4,
-    37,
-    431
+    -14,
+    42,
+    432
    ],
    "force_point_mm": [
-    27,
-    734,
+    -495,
+    632,
     1222
    ],
    "force_dir": [
-    0.601,
-    -0.717,
+    0.936,
+    0.0,
     0.353
    ],
    "edges": {
     "+x": {
-     "restoring_Nm": 553.8,
-     "lever_mm": 840.3,
-     "tips_at_N": 659.0
+     "restoring_Nm": 570.3,
+     "lever_mm": 1432.7,
+     "tips_at_N": 398.0
     },
     "-x": {
-     "restoring_Nm": 539.7,
-     "lever_mm": -611.0,
+     "restoring_Nm": 523.3,
+     "lever_mm": -1203.4,
      "tips_at_N": null
     },
     "+y": {
-     "restoring_Nm": 316.8,
-     "lever_mm": -1055.4,
+     "restoring_Nm": 307.7,
+     "lever_mm": -143.5,
      "tips_at_N": null
     },
     "-y": {
-     "restoring_Nm": 440.3,
-     "lever_mm": 1214.1,
-     "tips_at_N": 363.0
+     "restoring_Nm": 449.4,
+     "lever_mm": 302.2,
+     "tips_at_N": 1487.0
     }
    },
-   "tips_at_N": 363.0,
-   "tips_about": "-y",
+   "tips_at_N": 398.0,
+   "tips_about": "+x",
    "slides_at_N": 539.0
   },
   "arm2_press": {

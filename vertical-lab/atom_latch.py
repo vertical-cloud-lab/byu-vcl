@@ -42,8 +42,8 @@ TITLE = "Vertical cloud lab: the furnace latch, unclamped and clamped"
 A_AT = (650.0, -560.0, 0.0)            # MiR250 1 (arm 1), model frame: right of the furnace, facing the latch on the
                                        # housing's right face (the lid assembly turned, commit e3b1428)
 B_AT = (-500.0, -600.0, 0.0)           # MiR250 2 (arm 2), front left: the press and the lid (IK search)
-A_SPOTS = [(650.0, -560.0, 0.0), (560.0, -640.0, 0.0), (520.0, -700.0, 25.0), (620.0, -480.0, 30.0),
-           (700.0, -420.0, 50.0), (460.0, -680.0, 40.0)]       # MiR250 1's candidates, right of the furnace
+# (02:13's render searched six spots and moved MiR250 1 onto (700, -420, 50) without a drive: its corner stood in the
+# rePowder's base frame. It now stays at A_AT, whose footprint is clear: x 250..1050, y -850..-270.)
 TURN = LT.TURN                         # the lid assembly's own frame -> the machine
 LEVER_ALPHA = -35.0                    # arm 1's approach to the lever: in, and down 35 deg: the hand stands out and
                                        # above the latch (under it, on the turned lid, is the chamber's top plate)
@@ -325,26 +325,32 @@ def main():
     def legs_move(u):
         d, t = legs_state(u)
         set_latch(sc, d, t)
-    legs_path = [loop_pose(*legs_state(s_), G_legs) for s_ in np.linspace(0, 1, 26)]
     arc_open = [lever_pose(d, G_lever) for d in np.linspace(0.0, 60.0, 13)]
-    # MiR 1's spot right of the furnace: the one whose arm follows the lever and the loop with the fewest hits
+    # MiR 1 stays where it starts (A_AT: its corner clear of the rePowder's base frame; the 02:13 render's search moved
+    # it, without a drive, onto a spot whose corner stood in the frame). The loop's grasp: of a few approach angles,
+    # with the tool as is or turned 180 deg about its axis, the one whose arm follows the loop's swing with the fewest
+    # hits (the default, in and down 40 deg, is kept unless another does better and follows the whole swing)
+    q_lev, s1 = pick_branch(rb, sc, arc_open, lever_move, c_lever, ("atl latch_lever", "atl latch_loop"), back=100.0,
+                            score=True)
     best = None
-    for spot in A_SPOTS:
-        AB.mir_at(ma, spot)
-        rb.set(np.radians(AA.A.PARK_DEG))
-        q1, s1 = pick_branch(rb, sc, arc_open, lever_move, c_lever, ("atl latch_lever", "atl latch_loop"),
-                             back=100.0, score=True)
-        q2, s2 = pick_branch(rb, sc, legs_path, legs_move, c_legs, ("atl latch_loop", "atl latch_lever"), back=90.0,
-                             score=True)
-        print("MiR 1 spot", spot, "hits", s1, s2, flush=True)
-        if best is None or s1 + s2 < best[0]:
-            best = (s1 + s2, spot, q1, q2)
-        if s1 + s2 == 0:
-            break
+    for alpha in (-40.0, -10.0, -65.0, 15.0):
+        for spin in (0.0, 180.0):
+            Gc = TURN @ LT.legs_grasp(alpha_deg=alpha) @ R((0, 0, 1), spin)
+            path_c = [loop_pose(*legs_state(s_), Gc) for s_ in np.linspace(0, 1, 26)]
+            rb.set(np.radians(AA.A.PARK_DEG))
+            q2, s2 = pick_branch(rb, sc, path_c, legs_move, c_legs, ("atl latch_loop", "atl latch_lever"), back=90.0,
+                                 score=True)
+            print("loop grasp", alpha, spin, "hits", s2, flush=True)
+            if s2 < 999 and (best is None or s2 < best[0]):
+                best = (s2, Gc, q2)
     lever_move(0.0)
-    _, a_spot, q_lev, q_legs = best
-    AB.mir_at(ma, a_spot)
     rb.set(np.radians(AA.A.PARK_DEG))
+    if best is not None:
+        _, G_legs, q_legs = best
+    else:
+        q_legs = pick_branch(rb, sc, [loop_pose(*legs_state(s_), G_legs) for s_ in np.linspace(0, 1, 26)],
+                             legs_move, c_legs, ("atl latch_loop", "atl latch_lever"), back=90.0)
+    lever_move(0.0)
     g0 = lever_pose(0.0, G_lever)
     pre_lev = g0 @ T((0, 0, -100))
     rows(Arm_1="to the lever's free end")
