@@ -253,7 +253,7 @@ class Hose:
     passing through what is round it. End A is the vacuum's inlet, end B the wand's cuff; each end leaves along its
     fitting's axis. Obstacles: boxes (x0, x1, y0, y1, z0, z1) and capsules (p, q, r), in the world."""
 
-    def __init__(self, a, ta, b, tb, n: int = 70, guide=None):
+    def __init__(self, a, ta, b, tb, n: int = 36, guide=None):
         self.n = n
         self.seg = HOSE_L / (n - 1)
         self.boxes: list = []
@@ -265,7 +265,7 @@ class Hose:
         d = np.r_[0, np.cumsum(np.linalg.norm(np.diff(g, axis=0), axis=1))]
         s = np.linspace(0, d[-1], n)
         self.p = np.c_[[np.interp(s, d, g[:, k]) for k in range(3)]].T
-        self.relax(400)
+        self.relax(300)
 
     def set_ends(self, a, ta, b, tb):
         self.a, self.b = np.asarray(a, float), np.asarray(b, float)
@@ -277,23 +277,24 @@ class Hose:
         p[0], p[1] = self.a, self.a + self.ta * self.seg
         p[-1], p[-2] = self.b, self.b + self.tb * self.seg
 
-    def relax(self, iters: int = 40, grav: float = 4.0):
+    def relax(self, iters: int = 40, grav: float = 3.0, passes: int = 12):
+        """Gravity steps, each followed by `passes` rounds of the link lengths, the bend limit (neighbours two apart
+        at least 1.8 links apart: no kink tighter than about a link's length in radius) and the pins, then the
+        floor and the obstacles. Nodes resting on the floor don't slide (friction)."""
         p = self.p
-        n, seg = self.n, self.seg
+        seg = self.seg
         for _ in range(iters):
             on_floor = p[:, 2] <= HOSE_R + 0.5
             p[~on_floor, 2] -= grav
-            self._pin()
-            for _k in range(2):
+            for _k in range(passes):
                 d = p[1:] - p[:-1]
                 L = np.linalg.norm(d, axis=1) + 1e-9
                 corr = (d.T * ((L - seg) / L) * 0.5).T
                 p[:-1] += corr
                 p[1:] -= corr
-                d2 = p[2:] - p[:-2]                  # bend limit: neighbours two apart at least 1.75 links apart
+                d2 = p[2:] - p[:-2]
                 L2 = np.linalg.norm(d2, axis=1) + 1e-9
-                short = L2 < 1.75 * seg
-                c2 = (d2.T * (np.where(short, (L2 - 1.75 * seg) / L2, 0.0)) * 0.25).T
+                c2 = (d2.T * (np.minimum(L2 - 1.8 * seg, 0.0) / L2) * 0.5).T
                 p[:-2] += c2
                 p[2:] -= c2
                 self._pin()
@@ -332,7 +333,7 @@ class Hose:
                 p[hit] = c[hit] + (d[hit].T * ((rr + r) / dist[hit])).T
 
     def mesh(self) -> pv.PolyData:
-        return pv.Spline(self.p, self.n * 3).tube(radius=HOSE_R, n_sides=14, capping=False).triangulate()
+        return pv.Spline(self.p, self.n * 6).tube(radius=HOSE_R, n_sides=14, capping=False).triangulate()
 
     def length(self) -> float:
         return float(np.linalg.norm(np.diff(self.p, axis=0), axis=1).sum())
@@ -403,7 +404,7 @@ RACK_X = (150.0, 245.0)            # pocket A (the crevice tool), pocket B (the 
 RACK_Y = -70.0
 FIXTURE_Z = 200.0                  # the continuity fixture's spring pad (the tool tip lands on it)
 FIXTURE_X = -175.0
-BUTTON_Z = 420.0                   # the ground button (the equalization touch)
+BUTTON_X = -85.0                   # the ground button (the equalization touch), on the fixture arm
 PLATE_T = 8.0
 
 
@@ -424,20 +425,23 @@ def station_meshes() -> dict:
     hz, hy = HOLSTER_Z, HOLSTER_Y
     arm = _box(-20, 20, hy + 20, -30, hz - 40, hz - 14)
     tines = _slotted(0.0, hy, hz - 14, hz, 20.0, w=110.0, d=80.0)
+    tines[1] = _box(PIN_AT + 3.5, 55, hy - 40, hy + 40, hz - 14, hz)            # the right tine, round the pin's
+    tines += [_box(20, PIN_AT - 3.5, hy - 40, hy + 40, hz - 14, hz),             # 7 mm square hole
+              _box(PIN_AT - 3.5, PIN_AT + 3.5, hy - 40, hy - 3.5, hz - 14, hz),
+              _box(PIN_AT - 3.5, PIN_AT + 3.5, hy + 3.5, hy + 40, hz - 14, hz)]
     out["stn holster (ours)"] = (arm.merge(tines), OURS)
     # the pin's hole in the right tine (the collar's pin, PIN_AT along +x of the wand): drawn as a dark ring
     out["stn holster hole"] = (lathe([(PIN_R + 0.5, hz - 0.2), (PIN_R + 2.5, hz - 0.2), (PIN_R + 2.5, hz + 0.3),
                                      (PIN_R + 0.5, hz + 0.3)], 24).translate((PIN_AT, hy, 0), inplace=False), BLACK)
     # tool rack: each pocket is two slotted plates, the collar slides between them from -y: the lower one carries the
-    # parked tool by its collar (slot 2 x 19.8 passes the neck, 38), the upper one holds it down while the wand pulls
-    # off (slot 2 x 18.0 passes the spigot, 34.8); both under the collar's 44
-    parts = [_box(30, 290, RACK_Y - 15, RACK_Y + 15 + 35, RACK_Z - 40, RACK_Z - 28)]
+    # parked tool by its collar (its slot passes the 38 mm neck), the upper one holds it down while the wand pulls off
+    # (its slot passes the 38 mm wand); both are narrower than the collar's 44
     col_h = TOOL_COLLAR[1] - TOOL_COLLAR[0]
+    z2 = RACK_Z + 0.5 + col_h + 0.5
+    parts = [_box(30, 290, RACK_Y + 35, RACK_Y + 55, RACK_Z - PLATE_T, z2 + PLATE_T)]     # the rack's back bar
     for x in RACK_X:
-        parts += _slotted(x, RACK_Y, RACK_Z - PLATE_T, RACK_Z, 19.8)
-        z2 = RACK_Z + 0.5 + col_h + 0.5
-        parts += _slotted(x, RACK_Y, z2, z2 + PLATE_T, 18.0)
-        parts.append(_box(x - 35, x - 25, RACK_Y + 25, RACK_Y + 35, RACK_Z - 40, z2 + PLATE_T))
+        parts += _slotted(x, RACK_Y, RACK_Z - PLATE_T, RACK_Z, 19.8)    # passes the neck (38), carries the collar (44)
+        parts += _slotted(x, RACK_Y, z2, z2 + PLATE_T, 19.7)            # passes the wand (38), holds the collar down
     out["stn tool rack (ours)"] = (parts[0].merge(parts[1:]), OURS)
     fz, fx = FIXTURE_Z, FIXTURE_X
     out["stn fixture (ours)"] = (_box(fx - 35, -30, -85, -35, fz - 40, fz - 12), OURS)
@@ -448,17 +452,20 @@ def station_meshes() -> dict:
     out["stn meter shelf"] = (_box(-290, -150, -190, -40, 300, 310), SS_DK)
     out["stn meter"] = (_box(-280, -160, -175, -95, 310, 380), (0.25, 0.27, 0.30))
     out["stn meter display"] = (_box(-265, -175, -177, -174, 335, 372), LCD)
-    out["stn ground button (spring)"] = (_cyl((0, -41, BUTTON_Z), (0, 1, 0), 14, 22), BRASS)
+    out["stn ground button (spring)"] = (_cyl((BUTTON_X, -60, fz - 6), (0, 0, 1), 12, 12), BRASS)
     out["stn ground lug"] = (_box(-20, 20, 30, 50, 20, 60), (0.55, 0.45, 0.25))
     return out
 
 
-def probe_column(z_joints) -> pv.PolyData:
-    """The fixture's probe column (ours): a bar beside the standing wand with a spring probe at each height in
-    z_joints, each probe's tip 1 mm off the wand's surface (they touch when the wand leans on them)."""
+def probe_column(joints) -> pv.PolyData:
+    """The fixture's probe column (ours): a bar beside the standing wand with a spring probe at each (height, radius
+    of what it touches), each probe's tip 2.5 mm off that surface (they are drawn short of contact)."""
     fx = FIXTURE_X
-    bar = _box(fx - 75, fx - 60, -70, -50, FIXTURE_Z - 12, max(z_joints) + 30)
-    probes = [_cyl((fx - 50.5, -60, z), (1, 0, 0), 4, 19, 16) for z in z_joints]
+    bar = _box(fx - 75, fx - 60, -70, -50, FIXTURE_Z - 40, max(z for z, _ in joints) + 30)
+    probes = []
+    for z, r in joints:
+        x0, x1 = fx - 60, fx - r - 2.5
+        probes.append(_cyl(((x0 + x1) / 2, -60, z), (1, 0, 0), 4, x1 - x0, 16))
     return bar.merge(probes)
 
 
@@ -468,7 +475,7 @@ def station_points() -> dict:
             # a parked tool's spigot top: its collar's underside 0.5 mm over the lower plate
             "pocket_a": np.array([RACK_X[0], RACK_Y, RACK_Z + 0.5 + TOOL_COLLAR[1]]),
             "pocket_b": np.array([RACK_X[1], RACK_Y, RACK_Z + 0.5 + TOOL_COLLAR[1]]),
-            "pad": np.array([FIXTURE_X, -60.0, FIXTURE_Z]), "button": np.array([0.0, -52.0, BUTTON_Z]),
+            "pad": np.array([FIXTURE_X, -60.0, FIXTURE_Z]), "button": np.array([BUTTON_X, -60.0, FIXTURE_Z]),
             "meter": np.array([-220.0, -177.0, 355.0])}
 
 
