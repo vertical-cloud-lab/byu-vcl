@@ -732,7 +732,9 @@ def hood_parts(p: dict | None = None) -> list[Part]:
     eb = ext - 6.0
     shell = box(0, eb, -BODY_R, BODY_R, Z_PLATFORM[1], BODY_TOP).cut(
         box(-1, eb - 3, -BODY_R + 3, BODY_R - 3, Z_PLATFORM[1] + 5, BODY_TOP - 5)).cut(
-        cyl(100, 40, (0, 0, BODY_TOP - 8)))
+        cyl(100, 40, (0, 0, BODY_TOP - 8))).cut(
+        cyl(BODY_R - 3, 12, (0, 0, Z_PLATFORM[1] - 1)))      # no floor plate inside the round body: the crucible's
+    #                                                          shank and the bottom insulation pass there (#353's crucible clip)
     P.append(Part("furnace_ext", shell, STEEL, "furnace", tol=0.4))
     outer = _prism(r, ext, BODY_TOP, h1).fuse(_prism(r, ext, BODY_TOP + h1, h2, taper=taper))
     inner = _prism(r - w, ext - w, BODY_TOP - 1, h1 + 1).fuse(_prism(r - w, ext - w, BODY_TOP + h1, h2 - w, taper=taper))
