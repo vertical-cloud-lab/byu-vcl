@@ -51,7 +51,8 @@ FLOOR = {    # floor tape and paint (OSHA 1910.144 and the usual visual-workplac
     "aisle edge": dict(name="yellow", rgb="#F2C200", why="traffic: the MiR250s' lane and walkways"),
     "equipment place": dict(name="white", rgb="#FFFFFF", why="where a cart, bin or tool stand goes"),
     "operating hazard zone": dict(name="black/yellow", rgb="#F2C200", rgb2="#1F1F1F",
-                                  why="a robot works within 0.5 m of something fixed (each dock)"),
+                                  why="a robot docks within 0.5 m of something fixed, its personnel detection muted: "
+                                      "taped 1 m outside it (ISO 3691-4; MiR250 user guide, section 10.7)"),
     "keep clear": dict(name="red/white", rgb="#C8102E", rgb2="#FFFFFF",
                        why="in front of fire extinguishers, electrical panels, eyewash"),
     "safety equipment": dict(name="green", rgb="#00843D", why="eyewash, first aid, spill kit"),
@@ -173,6 +174,9 @@ def palette_figure(res: dict, path: Path) -> None:
     plt.close(fig)
 
 
+ZONE_MM = 1000.0     # the hazard-zone tape, 1 m outside a docked MiR250 (MiR250 User Guide v1.2, section 10.7)
+
+
 def floor_figure(path: Path) -> None:
     """The floor marking on the set-up floor (out/tray_plan.json): lanes, docks, hazard zones, keep-clear, hold."""
     import matplotlib
@@ -182,25 +186,33 @@ def floor_figure(path: Path) -> None:
     plan = json.loads((HERE / "out" / "tray_plan.json").read_text())
     fig, ax = plt.subplots(figsize=(16, 9.5), dpi=110)
     ax.add_patch(Rectangle((-12000, -13000), 24400, 15500, fc="#e9eaec", ec="none", zorder=0))     # bare floor
-    for key, (a, b, c, d) in plan["floor"]["machines"].items():
-        ax.add_patch(Rectangle((a, c), b - a, d - c, fc="#c9ccd1", ec="#8a8f98", lw=0.8, zorder=2))
+    for key, (a, b, c, d) in plan["floor"]["machines"].items():    # over the tape: a zone ends at a machine's face
+        ax.add_patch(Rectangle((a, c), b - a, d - c, fc="#c9ccd1", ec="#8a8f98", lw=0.8, zorder=3.5))
     x0, x1, y0, y1 = plan["floor"]["aisle_mm"]
     Y = FLOOR["aisle edge"]["rgb"]
     for yy in (y0, y1):                                                   # 75 mm yellow lane edges
         ax.add_patch(Rectangle((x0, yy - 37), x1 - x0, 75, fc=Y, ec="none", zorder=3))
     mir = (580.0, 890.0)                                                  # MiR250 footprint, props.MIR
-    zones = []
+    from shapely.geometry import box as sbox
+    from shapely.ops import unary_union
+    zones, polys = [], []
     for k, dk in plan["floor"]["docks"].items():
         dx, dy = dk["dock"][:2]
         a = dk["dock"][2] if len(dk["dock"]) > 2 else 0
         w, h = (mir[1], mir[0]) if abs(np.sin(np.radians(a))) > 0.7 else (mir[0], mir[1])
-        # the dock's operating hazard zone, 0.5 m round the docked MiR: its edge in black/yellow tape (not a filled
-        # area), the dock itself outlined in white
-        z = (dx - w / 2 - 500, dy - h / 2 - 500, w + 1000, h + 1000)
+        # the dock's operating hazard zone. Docking, the MiR250 drives within 0.5 m of the station with its personnel
+        # detection muted; MiR's user guide (v1.2, section 10.7) has such a zone marked with signal tape "at least one
+        # meter away from the potentially hazardous area in all directions", and no work station inside it. So the tape
+        # runs 1 m outside the docked robot. Overlapping zones are one zone: their union is taped
+        z = (dx - w / 2 - ZONE_MM, dy - h / 2 - ZONE_MM, w + 2 * ZONE_MM, h + 2 * ZONE_MM)
         zones.append(z)
-        ax.add_patch(Rectangle(z[:2], z[2], z[3], fill=False, ec=Y, lw=4.5, zorder=3))
-        ax.add_patch(Rectangle(z[:2], z[2], z[3], fill=False, ec="#1f1f1f", lw=4.5, ls=(0, (2, 2)), zorder=3.1))
+        polys.append(sbox(z[0], z[1], z[0] + z[2], z[1] + z[3]))
         ax.add_patch(Rectangle((dx - w / 2, dy - h / 2), w, h, fill=False, ec="white", lw=2.2, zorder=3))
+    un = unary_union(polys)
+    for g in getattr(un, "geoms", [un]):
+        xs, ys = g.exterior.xy
+        ax.plot(xs, ys, color=Y, lw=4.5, zorder=3, solid_capstyle="butt")
+        ax.plot(xs, ys, color="#1f1f1f", lw=4.5, ls=(0, (2, 2)), zorder=3.1)
     # keep-clear and safety-equipment spots: illustrative, put where nothing else is (free floor next to the rows)
     taken = [(a, c, b - a, d - c) for a, b, c, d in plan["floor"]["machines"].values()] + zones
 
@@ -219,8 +231,8 @@ def floor_figure(path: Path) -> None:
                                "white", ec="none" if green else FLOOR["keep clear"]["rgb"], lw=2.5,
                                hatch=None if green else "\\\\", zorder=3))
     handles = [Patch(fc=Y, ec="none", label="yellow: lane edge (the MiR250s' aisle)"),
-               Patch(fc="white", ec=Y, lw=3, ls="--", label="black/yellow tape: the edge of an operating hazard "
-                     "zone, 0.5 m round each docked MiR250 (ISO 3691-4)"),
+               Patch(fc="white", ec=Y, lw=3, ls="--", label="black/yellow tape: an operating hazard zone, 1 m round "
+                     "each docked MiR250 (ISO 3691-4, MiR's guide)"),
                Patch(fc="white", ec="#8a8f98", label="white: where a robot docks, or a cart, bin or stand goes"),
                Patch(fc="white", ec=FLOOR["keep clear"]["rgb"], hatch="\\\\", label="red/white: keep clear "
                      "(extinguisher, electrical panel, eyewash); spots illustrative"),

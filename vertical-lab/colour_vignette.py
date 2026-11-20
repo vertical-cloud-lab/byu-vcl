@@ -225,8 +225,9 @@ def floor_bay() -> None:
                              (-hx - 60, -hx - 10, dock_y - hy - 60, dock_y + hy + 60),
                              (hx + 10, hx + 60, dock_y - hy - 60, dock_y + hy + 60)):
         sc.add(f"dock tape {x0:.0f} {y0:.0f}", _box(x0, x1, y0, y1, 0, t), W_, specular=0.05)
-    # the operating hazard zone: 0.5 m round the docked MiR, its edge in 100 mm black/yellow tape
-    zx0, zx1, zy0, zy1 = -hx - 500, hx + 500, dock_y - hy - 500, -45.0
+    # the operating hazard zone: 1 m round the docked MiR (MiR250 User Guide v1.2, section 10.7), its edge in 100 mm
+    # black/yellow tape, closed against the Shuttle's front
+    zx0, zx1, zy0, zy1 = -hx - 1000, hx + 1000, dock_y - hy - 1000, -45.0
     k = 0
     for (a, b, horiz, fixed) in ((zx0, zx1, True, zy0), (zy0, zy1, False, zx0), (zy0, zy1, False, zx1)):
         n = int(abs(b - a) // 150)
@@ -259,7 +260,7 @@ def floor_bay() -> None:
            fill=(31, 35, 40))
     d.text((40, 70), "The extinguisher and spill-kit spots are illustrative until the safety-assets PR places them.",
            font=f, fill=(75, 85, 99))
-    for text, xyz in (("black/yellow: operating hazard zone, 0.5 m round the docked MiR250", (zx1, dock_y - 800, 0)),
+    for text, xyz in (("black/yellow: operating hazard zone, 1 m round the docked MiR250", (zx1, dock_y - 800, 0)),
                       ("white: where the robot docks", (hx + 60, dock_y + 300, 0)),
                       ("yellow: the lane's edge", (2600, -2400, 0)),
                       ("red/white: keep clear (extinguisher)", (ex, ey - 450, 0)),
