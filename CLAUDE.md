@@ -206,12 +206,25 @@ comment is dead text (the script drops `<!-- if-trigger -->` blocks in that case
 pings work, the workflow mints an installation token for the lab's own GitHub App when the
 secrets below exist; App-token events do trigger `claude.yml`, whose `allowed_bots` names that
 App. Bots on `allowed_bots` skip the write-permission check, so keep the list to that one App.
-These two secrets are read by `post-queued-comments.yml` directly, not the `claude.yml` env block.
+These two secrets are **environment secrets of `claude-super`** (sgbaird approves every run,
+deploys from `main` only), read by `post-queued-comments.yml` and `claude-super.yml`, never by
+`claude.yml`.
 
 | Secret | Purpose |
 | --- | --- |
-| `VCL_BOT_APP_ID` | App ID of the lab-owned GitHub App (slug `vcl-bot`), installed on this repo with Issues and Pull requests read/write only. |
+| `VCL_BOT_APP_ID` | App ID of the lab-owned GitHub App (slug `vcl-bot`), installed on vertical-cloud-lab repos with Issues and Pull requests read/write only. |
 | `VCL_BOT_PRIVATE_KEY` | Its private key (PEM). Regenerate from the App's settings page to rotate. |
+
+**Handing tasks to other threads (`@claude-super`).** A comment with `@claude-super` from
+sgbaird starts [`claude-super.yml`](.github/workflows/claude-super.yml) once he approves it in
+Actions. It is an ordinary session plus a one-hour `vcl-bot` token, and it posts `@claude ...`
+comments on other PRs and issues only through `.github/scripts/dispatch_claude.py`, which caps a
+run at 6, refuses other workflows' tags, checks the target's `claude.yml` lets `vcl-bot` in, and
+links back to the parent. Each one starts a plain `@claude` run there, on its own runner. Those
+children never see the token, and `vcl-bot` can't start `@claude-super`, so it is one level deep.
+In a plain `@claude` run you have no way to dispatch; say so and suggest `@claude-super` instead.
+A repo outside byu-vcl needs `vcl-bot` installed on it and the same `allowed_bots: vcl-bot` and
+sender-filter lines in its `claude.yml`.
 
 **Other services**
 

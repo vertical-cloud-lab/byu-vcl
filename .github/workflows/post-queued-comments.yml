@@ -37,6 +37,10 @@ permissions:
 jobs:
   post:
     runs-on: ubuntu-latest
+    # VCL_BOT_APP_ID / VCL_BOT_PRIVATE_KEY are environment secrets of
+    # claude-super (sgbaird approves each run, main only), shared with
+    # claude-super.yml, so every run here waits for that approval too.
+    environment: claude-super
     env:
       # `secrets` can't be read in a step-level `if`, so decide here.
       HAVE_APP: ${{ secrets.VCL_BOT_APP_ID != '' && secrets.VCL_BOT_PRIVATE_KEY != '' }}
