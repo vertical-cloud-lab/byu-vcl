@@ -1,0 +1,37 @@
+Triangle interface: nub and pockets measured from the meshes (mm)
+A = corner to the opposite flat, B = across two corners parallel to a flat; R, r = the sharp
+triangle's circumradius and the corner radius it is grown by.
+
+Nubs (section at z = 1.0):
+  deck_clip_key_v2_1_tri.stl                           A  6.950  B  7.669  R 3.097  r 1.152  corner toward -y [-90, 30, 150]  height 2.000
+    same, z = 1.95 (in the 0.3 mm lead-in)             A  6.466  B  7.169
+  stir module deck_key.stl (the 0.05 mm key Ben chose) A  6.950  B  7.666  R 3.086  r 1.160  corner toward -y [-90, 30, 150]  height 2.000
+
+Pockets (section at z = 1.0; depth = highest z with the hole):
+  vial_rack_9x20mL_v2_tri.stl at y = 0                 A  6.850  B  7.569  R 3.097  r 1.102  corner toward -y [-90, 30, 150]  depth 2.100
+    same, at its mouth (z = 0.02)                      A  6.850  B  7.569
+  vial_rack_9x20mL_v2_tri.stl at y = -225              A  6.850  B  7.569  R 3.097  r 1.102  corner toward -y [-90, 30, 150]  depth 2.100
+    same, at its mouth (z = 0.02)                      A  6.850  B  7.569
+  9VialHolder20mL_TightFit.step at y = 0               A  6.850  B  7.569  R 3.100  r 1.100  corner toward -y [-90, 30, 150]  depth 2.100
+  9VialHolder20mL_TightFit.step at y = -225            A  6.850  B  7.569  R 3.100  r 1.100  corner toward -y [-90, 30, 150]  depth 2.100
+  stir module base.stl at x = -12.5                    A  6.850  B  7.566  R 3.087  r 1.110  corner toward -y [-90, 30, 150]  depth 2.100
+  stir module base.stl at x = 12.5                     A  6.850  B  7.566  R 3.087  r 1.110  corner toward -y [-90, 30, 150]  depth 2.100
+
+Fit, each side: A +0.050, B +0.050 (+ = interference); r +0.050
+The stir module's key against the same pocket: A +0.050, B +0.049
+
+Key pressed fully home in each of the rack's pockets (key top face on the rack's underside):
+  y = 0: overlap 2.00 mm^3, x -3.83..+3.83, y -4.25..+2.70 (from the key's centre), z 0.00..1.75; spread round the 23.0 mm pocket wall, 0.050 mm thick
+  y = -225: overlap 2.00 mm^3, x -3.83..+3.83, y -4.25..+2.70 (from the key's centre), z 0.00..1.75; spread round the 23.0 mm pocket wall, 0.050 mm thick
+  gap over the nub: 0.100 mm (pocket depth less nub height)
+  The overlap is only the press band round the nub, below its lead-in. The key's top face and the rack's
+  underside meet at z = 0 without overlapping, so the rack still sits on the deck.
+
+Load on the nub joint from the latch (arm stiffness 7.4 N/mm at the barb, from the FEA;
+ramps 30 deg from vertical; friction at the deck edge mu = 0.3 gives the range):
+  deck  9.0 mm: arm flexed 0.00 mm, 0.0 N per arm -> key pulled down 0.0 N (0.0-0.0)
+  deck  9.5 mm: arm flexed 0.28 mm, 2.0 N per arm -> key pulled down 2.4 N (1.0-4.3)
+  deck 10.0 mm: arm flexed 0.56 mm, 4.2 N per arm -> key pulled down 4.8 N (2.0-8.9)
+  deck 10.3 mm: arm flexed 0.74 mm, 5.5 N per arm -> key pulled down 6.3 N (2.6-11.6)
+  On a 10 mm deck that is about 5 N per key, all the time. The stir module's and tip rack's keys only
+  locate, so their 0.05 mm press has never had to carry a steady load.
