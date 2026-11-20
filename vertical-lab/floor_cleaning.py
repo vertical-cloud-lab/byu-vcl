@@ -61,11 +61,11 @@ POST_FOOT = 150.0                              # half-size of a target post's fo
 # with a pail each side, the Class D extinguisher and the sign at the front corner, clear of the rePowder dock's pivot
 # circle. 1.19 x 1.64 m in all (x, y ranges in mm)
 VAC_STATION = (-5900.0, -4710.0, -1980.0, -340.0)
-# ours: the cleaner's bay, for the options with a cleaner of its own: a MiR Charge 48V against the glovebox's east
-# side, a bonded ground plate, the emptying station (two labelled pails, liners, the Class D extinguisher). Between the
-# glovebox (x -6898) and the vacuum station, behind the glovebox's dock and its target post (-6650, -1712)
-BAY = dict(charger=(-6850.0, -6230.0, -900.0, -660.0), park=(-6540.0, -900.0, 90.0),
-           pails=(-6200.0, -5850.0, -700.0, -380.0))
+# ours: the cleaner's bay, for the options with a cleaner of its own: a third MiR Charge 48V in the south row, 1.6 m
+# west of units 1-2's (warehouse.CHARGERS x -1500 and -300), outside every powder zone (charging belongs outside any
+# classified area: OSHA 1910.178(g)(1), Karcher's Zone 22 practice) and clear of the small Instron's target post. Full
+# liners go to the grounded pails at the vacuum stations, so the bay has none.
+BAY = dict(charger=(-3411.0, -2789.0, -6725.0, -6238.0), park=(-3100.0, -5818.0, -90.0))
 
 # The powder zones (ours): DAL tapes a containment area round the atomizer (atom_base.py draws it 600 mm round the
 # machine), so each source here is its footprint grown by 600 mm; the Shuttles' openings are their 996 mm opening
@@ -117,9 +117,8 @@ class Floor:
         self.rects["vacuum station"] = VAC_STATION
         occ |= self.rect(*VAC_STATION)
         if bay:
-            for k in ("charger", "pails"):
-                self.rects[f"bay {k}"] = BAY[k]
-                occ |= self.rect(*BAY[k])
+            self.rects["bay charger"] = BAY["charger"]
+            occ |= self.rect(*BAY["charger"])
         occ[0, :] = occ[-1, :] = occ[:, 0] = occ[:, -1] = True      # the room's edge
         self.occ = occ
         self.free = ~occ
@@ -165,11 +164,11 @@ ROBOTS = {
         source="iRobot Roomba 900-class: about 350 mm across and 92 mm tall (assumed from its class; no model is "
                "picked). Bumps along edges; side brush to the edge. None is rated for combustible dust"),
     "pad": dict(
-        label="commercial vacuum robot (KIRA CV 60 class)", shape="rect", L=800.0, W=600.0, clear=30.0,
-        cleans=("front", 600.0, 1.0), w_eff=0.55, v=0.35, k=1.3, fixed_min=1.0,
-        source="the class of Karcher's KIRA CV 60/1 RS Bp (a 60 cm commercial vacuum robot); its size is set to "
-               "800 x 600 mm here pending the maker's sheet (notes/floor_cleaning.md has what was found). None is "
-               "rated for combustible dust"),
+        label="commercial vacuum robot (Gausium Vacuum 40 class)", shape="rect", L=800.0, W=690.0, clear=30.0,
+        cleans=("front", 690.0, 1.0), w_eff=0.65, v=0.35, k=1.3, fixed_min=1.0,
+        source="Gausium Vacuum 40: 800 x 690 x 890 mm, 91 kg, a 720 mm path with its side brushes, 3 h (gausium.com "
+               "specs; $42,000 at RobotLAB, 2026-11-20). The KIRA CV 60/1 is bigger: 50 x 30 x 52 in, 850 lb, a 24 in "
+               "path (kaercher.com). 0.35 m/s is ours, slow for fine powder. None is rated for combustible dust"),
     "mir": dict(
         label="MiR250 + floor nozzle", shape="rect", L=880.0, W=580.0, clear=50.0, cleans=("rear", 560.0, 80.0),
         w_eff=0.50, v=0.20, k=1.3, fixed_min=3.0,
@@ -542,14 +541,17 @@ def year(jobs_by: dict) -> dict:
                         passes=sum(1 for r in oc["log"] if r["zone"] != "night"),
                         waited_for_dock=oc["waited_for_dock"], waited_for_person=oc["waited_for_person"],
                         tested=out["baseline"]["tested"])
-    # energy for the MiR-based cleaners: the vacuum's 1000 W (118EXP: 120 V, 10 A) through an inverter at 90 %, and
-    # the base's driving (upkeep.UNIT_W: 400 W off the charger, assumed for the whole unit), against the 1.63 kWh pack
+    # energy for the MiR-based cleaners if the vacuum rode on the robot: the 118EXP's 1200 W (its CSA certificate,
+    # Nilfisk's "ATEX and safety" brochure) through an inverter at 90 %, and the base's driving (upkeep.UNIT_W: 400 W off
+    # the charger, assumed for the whole unit), against the 1.63 kWh pack. The MiR250's top-module supply is 48 V, 10 A
+    # (480 W, its spec sheet), so a 1.2 kW vacuum would need its own pack and inverter, which nothing lists for Group E
     for key in ("mir", "mir_arm"):
         busy = out[key]["busy_h_day"]
-        kwh = busy * (1.0 / 0.9 + 0.4)
+        kwh = busy * (1.2 / 0.9 + 0.4)
         out[key]["energy_kwh_day"] = round(kwh, 2)
         out[key]["battery_kwh"] = round(U.MIR_KWH["value"], 2)
         out[key]["charge_min_day"] = round(kwh / (0.8 * U.MIR_KWH["value"]) * 52.0, 0)
+        out[key]["top_module_w"] = 480.0
     return out
 
 
@@ -598,10 +600,6 @@ def plot_reach(F: Floor, R: dict, cov: dict, path=None):
             x0, x1, y0, y1 = F.rects[key]
             ax.text((x0 + x1) / 2000, max(y0, yl[0] * 1000) / 2000 + min(y1, yl[1] * 1000) / 2000, lbl,
                     ha="center", va="center", fontsize=7.5, color="white")
-        if "bay charger" in F.rects and k in ("disc", "pad", "mir", "mir_arm"):
-            x0, x1, y0, y1 = F.rects["bay charger"]
-            ax.annotate("its charger", ((x0 + x1) / 2000, y1 / 1000), (-7.6, 0.45), fontsize=7.5, color=U.INK2,
-                        arrowprops=dict(arrowstyle="-", color=U.INK2, lw=0.7))
     axs[-1].set_xlabel("x, m (along the aisle; the aisle is the dashed box, its north half shown)", color=U.INK2)
     for ax in axs:
         ax.set_ylabel("y, m", color=U.INK2)
@@ -614,7 +612,10 @@ def plot_reach(F: Floor, R: dict, cov: dict, path=None):
     return path
 
 
-def plot_year(y: dict, path=None):
+def plot_year(y: dict, cov: dict, path=None):
+    """Three panels, one row per option in the same order and colour: cleaning hours a week and whose; the wait from
+    a trigger to its pass; the share of the zones' edge band it reaches. (Alloys fully tested are the same, 309, for
+    every option in this model, so they are a sentence in the notes rather than a panel.)"""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -623,10 +624,10 @@ def plot_year(y: dict, path=None):
     keys = ["person", "units_pou", "disc", "pad", "mir", "mir_arm"]
     labels = [ROBOTS[k]["label"] for k in keys]
     cols = [U.SLOTS[["disc", "pad", "mir", "mir_arm", "units_pou", "person"].index(k)] for k in keys]
-    fig, axs = plt.subplots(1, 3, figsize=(15.5, 4.6), dpi=110, sharey=True)
+    fig, axs = plt.subplots(1, 3, figsize=(16.5, 4.8), dpi=110, sharey=True,
+                            gridspec_kw=dict(width_ratios=[1.0, 1.15, 0.9]))
     fig.patch.set_facecolor(U.SURF)
     ypos = np.arange(len(keys))[::-1]
-    # 1. hours a week of cleaning, and whose
     hw = []
     for k in keys:
         r = y[k]
@@ -640,33 +641,29 @@ def plot_year(y: dict, path=None):
     ax.barh(ypos, hw, color=cols, height=0.62)
     for yy, v, k in zip(ypos, hw, keys):
         who = {"person": "the person's", "units_pou": "units 1-2's"}.get(k, "its own")
-        ax.text(v + 0.6, yy, f"{v:.1f} h ({who})", va="center", fontsize=9, color=U.INK2)
+        ax.text(v + 0.25, yy, f"{v:.1f} h, {who}", va="center", fontsize=9, color=U.INK2)
     ax.set_yticks(ypos, labels)
-    ax.set_title("Cleaning time a week", loc="left", fontsize=11, color=U.INK)
-    ax.set_xlim(0, max(hw) * 1.45)
-    # 2. how long powder waits on the floor
+    ax.set_title("Cleaning time a week, and whose", loc="left", fontsize=11, color=U.INK)
+    ax.set_xlim(0, max(hw) * 1.6)
+    ax.set_xlabel("hours a week", color=U.INK2)
     ax = axs[1]
     med = [y[k]["latency"]["median_h"] for k in keys]
     p95 = [y[k]["latency"]["p95_h"] for k in keys]
     ax.barh(ypos, p95, color=cols, height=0.62, alpha=0.35)
     ax.barh(ypos, med, color=cols, height=0.62)
-    for yy, m, p in zip(ypos, med, p95):
-        ax.text(p + 0.4, yy, f"median {m:.1f} h, 95th pct {p:.1f} h", va="center", fontsize=9, color=U.INK2)
-    ax.set_title("Wait from the spill to the pass (solid: median; pale: 95th percentile)", loc="left", fontsize=11,
-                 color=U.INK)
-    ax.set_xlim(0, max(p95) * 1.9 + 1)
-    ax.set_xlabel("hours", color=U.INK2)
-    # 3. alloys fully tested in the year
+    for yy, m, p_ in zip(ypos, med, p95):
+        ax.text(p_ + 1.5, yy, f"median {m:.1f} h, 95th pct {p_:.1f} h", va="center", fontsize=9, color=U.INK2)
+    ax.set_title("Wait from a spill to its pass", loc="left", fontsize=11, color=U.INK)
+    ax.set_xlim(0, max(p95) * 1.75 + 1)
+    ax.set_xlabel("hours (solid: median; pale: 95th percentile)", color=U.INK2)
     ax = axs[2]
-    tst = [y[k]["tested"] for k in keys]
-    base = y["baseline"]["tested"]
-    ax.barh(ypos, tst, color=cols, height=0.62)
-    for yy, v in zip(ypos, tst):
-        ax.text(v + 2, yy, f"{v} ({v - base:+d})", va="center", fontsize=9, color=U.INK2)
-    ax.axvline(base, color=U.INK2, lw=1.0, ls=(0, (3, 2)))
-    ax.set_xlim(0, base * 1.25)
-    ax.set_title(f"Alloys fully tested in the year (dashed: {base}, no floor cleaning)", loc="left", fontsize=11,
-                 color=U.INK)
+    e = [cov["total"]["reached_edge_band"][k] * 100 for k in keys]
+    ax.barh(ypos, e, color=cols, height=0.62)
+    for yy, v in zip(ypos, e):
+        ax.text(v + 1.5, yy, f"{v:.0f} %", va="center", fontsize=9, color=U.INK2)
+    ax.set_xlim(0, 118)
+    ax.set_title("Edge floor reached", loc="left", fontsize=11, color=U.INK)
+    ax.set_xlabel("% of the zones' floor within 300 mm of a machine", color=U.INK2)
     for ax in axs:
         U._style(ax)
     fig.tight_layout()
@@ -692,7 +689,7 @@ def model(write=True, do_year=True) -> dict:
         jobs_by = {k: ({z: v / 60.0 for z, v in jt[k]["zone_min"].items()}, jt[k]["night_min"] / 60.0) for k in jt}
         y = year(jobs_by)
         out["year"] = y
-        plot_year(y)
+        plot_year(y, cov)
     if write:
         (OUT / f"{NAME}.json").write_text(json.dumps(out, indent=1, default=float))
     return out

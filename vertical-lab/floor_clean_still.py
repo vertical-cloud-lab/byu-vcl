@@ -34,6 +34,7 @@ import ur_arm
 from scene import OUT, R, Scene, T
 
 NAME = "floor_cleaning_still"
+CLIP = "floor_cleaning_clip"
 TITLE = "Vertical cloud lab: unit 3 vacuums the floor round the atomizer"
 FLOOR_C = (0.93, 0.93, 0.92)
 TAPE_Y = (0.95, 0.78, 0.10)
@@ -52,9 +53,15 @@ PAIL_AL, PAIL_CU = np.array([-5640.0, -560.0]), np.array([-4850.0, -560.0])
 EXT_AT = np.array([-5700.0, -1800.0])            # the Class D extinguisher at the station's front corner
 STUD = np.array([-3020.0, -2380.0])              # ours: the floor ground stud the unit's bonding lead clips to
 
-UNIT3 = (-3950.0, -2790.0, 0.0)                  # x, y, heading: in the aisle's north lane, its left (arm) side north
-SQ_AT = np.array([-3270.0, -2045.0])             # the squeegee head's centre, 146 mm off the rePowder's front
-WAND_DIR = np.array([0.42, 0.40, -0.81])         # the wand's axis, hose end to tool end: down, forward, towards the machine
+UNIT3 = (-3950.0, -2860.0, 0.0)                  # x, y, heading: in the aisle's north lane, its left (arm) side north
+SQ_AT = np.array([-3270.0, -2090.0])             # the squeegee head's centre: its end 13 mm off the rePowder's
+#                                                  front (out/tray_plan.json's y -1899)
+WAND_DIR = np.array([-0.40, 0.40, -0.82])        # the wand's axis, hose end to tool end: down towards the machine and
+#                                                  west, so its hose end stays east of unit 3's cabinet in both lanes
+# the clip's strokes, as world translations of the grasp from the still's pose: lane 1 west along the machine's base,
+# up, out to lane 2, down, back east, lift clear. Lane 2 is 110 mm out (the 356 mm head overlaps lane 1 by 246 mm)
+STROKES = [(-480.0, 0.0, 0.0), (-480.0, 0.0, 30.0), (-480.0, -110.0, 30.0), (-480.0, -110.0, 0.0),
+           (0.0, -110.0, 0.0), (0.0, -110.0, 150.0)]
 
 
 def unit(v):
@@ -94,8 +101,8 @@ def squeegee(tool_end: np.ndarray, d: np.ndarray) -> dict:
             "squeegee neck": (neck.merge(spigot), N.ALU)}
 
 
-def build():
-    sc = Scene(NAME, TITLE, gif=False, mp4=False)
+def build(clip: bool = False):
+    sc = Scene(CLIP if clip else NAME, TITLE, gif=clip, mp4=clip)
     sc.soft = set()
     # ---- the floor, the aisle's tape (warehouse.Floor._tape: 3 in lines on the aisle's edges, a dashed centre line)
     sc.add("lab floor", pv.Plane(center=(-3000, -3200, -1.5), direction=(0, 0, 1), i_size=14000, j_size=9000),
@@ -199,15 +206,16 @@ def build():
     Mw[:3, 0], Mw[:3, 1], Mw[:3, 2] = x_, y_, z
     Mw[:3, 3] = tool_end + N.WAND_L * z                   # the wand frame's origin is its hose end
     place(sc, N.wand_meshes(), "vac:wand", Mw)
-    sq = squeegee(tool_end, d)
-    for nm, (mesh, col) in sq.items():
-        sc.add(f"vac:squeegee/{nm}", mesh, col, "vac:squeegee", specular=0.5)
-    sc.soft.add("vac:squeegee/squeegee blades")
+    # the squeegee goes in the wand's own group (in the wand's frame), so the audit sees it as part of what the arm
+    # holds; it moves with the wand, and the strokes only translate it, so the head stays flat on the floor
+    Mi = np.linalg.inv(Mw)
+    for nm, (mesh, col) in squeegee(tool_end, d).items():
+        sc.add(f"vac:wand/{nm}", mesh.transform(Mi, inplace=False), col, "vac:wand", specular=0.5)
+    sc.soft.add("vac:wand/squeegee blades")
+    head_local = (Mi @ np.r_[SQ_AT, BLADE_H + SQ_H / 2, 1.0])[:3]
     grasp = Mw @ N.grasp_local((0, -1, 0))
     rb = u3.rb
     rb.grasp("vac:wand")
-    sc.parent["vac:squeegee"] = "vac:wand"
-    sc.gmat["vac:squeegee"] = np.linalg.inv(sc.world("vac:wand"))      # its meshes are in the world already
     # every closed-form solution for the grasp (ur_arm._ik_analytic), polished, each checked with collide.Checker on
     # this pose; the first with nothing touching is kept (the nearest to the parked pose first). The wand is held
     # (its offset from the TCP fixed by the first solution's grasp), so each solution carries it to the same place.
@@ -230,6 +238,33 @@ def build():
     sols.sort(key=lambda qq: float(np.sum((qq - seed) ** 2)))
     held_off = None
     best = None
+
+    def path_cost(q0) -> tuple[int, float]:
+        """(hits, worst joint step) along the clip's strokes from q0: each segment in 24 steps, IK seeded from the
+        last, collide.Checker every third step and at each end (the hose and the floor's blades are soft)."""
+        rb.set(q0, close=close)
+        G0 = rb.tcp_world()
+        qq_, hits, worst = q0.copy(), 0, 0.0
+        prev = np.zeros(3)
+        for dx, dy, dz in STROKES:
+            for k in range(1, 25):
+                p_ = prev + (np.array([dx, dy, dz]) - prev) * k / 24
+                M = T(tuple(p_)) @ G0
+                try:
+                    qn = rb.solve(M, qq_)
+                except ValueError:
+                    return 99, 999.0
+                worst = max(worst, float(np.abs(qn - qq_).max()))
+                qq_ = qn
+                if k % 4 == 0:
+                    rb.set(qq_)
+                    rb._checker = None
+                    hits += len(collide.Checker(rb).collisions(depths=False, first=True))
+                    if hits:
+                        return hits, worst                  # one hit is enough to reject this branch
+            prev = np.array([dx, dy, dz])
+        return hits, worst
+
     for qq in sols:
         rb.set(qq, close=close)
         if held_off is None:
@@ -238,13 +273,21 @@ def build():
         rb.set()
         rb._checker = None
         n_hit = len(collide.Checker(rb).collisions(depths=False))
-        if best is None or n_hit < best[1]:
-            best = (qq, n_hit)
-        if n_hit == 0:
+        if n_hit:
+            continue
+        ph, worst = path_cost(qq)
+        score = (ph, worst > math.radians(20), worst)
+        if best is None or score < best[1]:
+            best = (qq, score)
+        if ph == 0 and worst <= math.radians(20):
             break
+    if best is None:
+        raise RuntimeError("no IK solution for the wand's grasp is clear of everything")
     q = best[0]
     rb.set(q, close=close)
-    print(f"unit 3: {len(sols)} IK solutions, kept one with {best[1]} hits", flush=True)
+    rb._checker = None
+    print(f"unit 3: {len(sols)} IK solutions; kept one clear in the still's pose, with {best[1][0]} hits along the "
+          f"strokes and a worst joint step of {math.degrees(best[1][2]):.1f} deg", flush=True)
 
     # ---- the hose: 25 ft from the Al vacuum's inlet to the wand's cuff, relaxed on the floor (atom_nilfisk.Hose)
     inlet = vac_pt(VAC_AL, "inlet")
@@ -277,7 +320,7 @@ def build():
     dd = np.r_[0, np.cumsum(np.linalg.norm(np.diff(g, axis=0), axis=1))]
     s = np.linspace(0, dd[-1], hose.n)
     hose.p = np.c_[[np.interp(s, dd, g[:, k]) for k in range(3)]].T
-    caps = []
+    link_caps = []                                 # each arm link as a capsule in its own frame (atom_vacuum's way)
     for l in ("shoulder", "upper_arm", "forearm", "wrist1", "wrist2", "wrist3", "gr_base", "gr_camera"):
         grp = f"{rb.prefix}_{l}"
         pts = [np.asarray(sc.actors[n].GetMapper().GetInput().GetPoints().GetData()) for n in sc.members(grp)
@@ -285,28 +328,49 @@ def build():
                and sc.actors[n].GetMapper().GetInput().GetNumberOfPoints()]
         if not pts:
             continue
-        Wl = sc.world(grp)
-        pts = (np.vstack(pts) @ Wl[:3, :3].T) + Wl[:3, 3]
+        pts = np.vstack(pts)
         c0 = pts.mean(0)
         ax = np.linalg.svd(pts - c0, full_matrices=False)[2][0]
         tt = (pts - c0) @ ax
         rad = np.linalg.norm((pts - c0) - np.outer(tt, ax), axis=1)
-        caps.append((c0 + ax * tt.min(), c0 + ax * tt.max(), float(np.percentile(rad, 95))))
-    top = Wd[:3, 3]
-    caps.append((top - Wd[:3, 2] * 30, top - Wd[:3, 2] * (N.WAND_L + 200), 26.0))
+        link_caps.append((grp, c0 + ax * tt.min(), c0 + ax * tt.max(), float(np.percentile(rad, 95))))
     rpx0, rpx1, rpy0, rpy1 = FC.Floor().rects["repowder"]
-    hose.boxes = [(x3 - 400, x3 + 400, y3 - 290, y3 + 290, 0, 800),                    # unit 3 and its cabinet
-                  (VAC_AL[0] - 310, VAC_AL[0] + 310, VAC_AL[1] - 260, VAC_AL[1] + 260, 0, 1150),
-                  (VAC_CU[0] - 310, VAC_CU[0] + 310, VAC_CU[1] - 260, VAC_CU[1] + 260, 0, 1150),
-                  (rpx0, rpx1, rpy0, rpy1, 0, 2000),
-                  (SQ_AT[0] - SQ_D / 2, SQ_AT[0] + SQ_D / 2, SQ_AT[1] - SQ_W / 2, SQ_AT[1] + SQ_W / 2, 0,
-                   BLADE_H + SQ_H),
-                  (EXT_AT[0] - 110, EXT_AT[0] + 110, EXT_AT[1] - 170, EXT_AT[1] + 170, 0, 900),
-                  (STUD[0] - 45, STUD[0] + 45, STUD[1] - 45, STUD[1] + 45, 0, 40)]
-    hose.caps = caps
+    fixed_boxes = [(x3 - 400, x3 + 400, y3 - 290, y3 + 290, 0, 800),                   # unit 3 and its cabinet
+                   (VAC_AL[0] - 310, VAC_AL[0] + 310, VAC_AL[1] - 260, VAC_AL[1] + 260, 0, 1150),
+                   (VAC_CU[0] - 310, VAC_CU[0] + 310, VAC_CU[1] - 260, VAC_CU[1] + 260, 0, 1150),
+                   (rpx0, rpx1, rpy0, rpy1, 0, 2000),
+                   (EXT_AT[0] - 110, EXT_AT[0] + 110, EXT_AT[1] - 170, EXT_AT[1] + 170, 0, 900),
+                   (STUD[0] - 45, STUD[0] + 45, STUD[1] - 45, STUD[1] + 45, 0, 40)]
+
+    def obstacles():
+        Wd_ = sc.world("vac:wand")
+        hc = (Wd_ @ np.r_[head_local, 1.0])[:3]
+        boxes = fixed_boxes + [(hc[0] - SQ_D / 2, hc[0] + SQ_D / 2, hc[1] - SQ_W / 2, hc[1] + SQ_W / 2, 0,
+                                BLADE_H + SQ_H)]
+        caps = []
+        for grp, a_, b_, r_ in link_caps:
+            Wl = sc.world(grp)
+            caps.append(((Wl @ np.r_[a_, 1.0])[:3], (Wl @ np.r_[b_, 1.0])[:3], r_))
+        top = Wd_[:3, 3]
+        caps.append((top - Wd_[:3, 2] * 30, top - Wd_[:3, 2] * (N.WAND_L + 200), 26.0))
+        return boxes, caps
+
+    def cuff_end():
+        Wd_ = sc.world("vac:wand")
+        return (Wd_ @ np.r_[0, 0, N.CUFF_L - 20.0, 1.0])[:3], Wd_[:3, 2]
+
+    def hose_hook(_sc):
+        b, tb = cuff_end()
+        hose.set_ends(inlet, t_in, b, tb)
+        hose.boxes, hose.caps = obstacles()
+        hose.relax(18)
+        sc.set_mesh("vac hose", hose.mesh())
+
+    hose.boxes, hose.caps = obstacles()
     hose.relax(500)
     sc.add("vac hose", hose.mesh(), N.BLACK, "static", specular=0.2)
     sc.soft.add("vac hose")
+    sc.hose_hook, sc.hose = hose_hook, hose
     info = dict(hose_drawn_mm=round(hose.length(), 0), hose_mm=HOSE_LEN, q_deg=[round(math.degrees(v), 2) for v in q],
                 grasp_world=[round(v, 1) for v in grasp[:3, 3]], unit3=UNIT3, squeegee=list(SQ_AT))
     return sc, u1, u3, rb, info
@@ -372,5 +436,56 @@ def main():
     sc.pl.close()
 
 
+def clip():
+    """The clip (about 20 s): unit 3 works two lanes of the squeegee along the rePowder's front, the hose following
+    (relaxed every frame), and lifts clear. Audited as it renders (collide.Auditor, the round-11 rules, as
+    atom_vacuum.py does) -> out/collisions/floor_cleaning_clip.json; ARM_AUDIT=1 audits without rendering.
+
+        python3 runner_guard.py slot --label fcclip --mem 4500 -- env VIZ3D_FPS=10 xvfb-run -a python3 \
+            floor_clean_still.py clip
+    """
+    from scene import AUDIT, PREVIEW
+    import collide
+    sc, u1, u3, rb, info = build(clip=True)
+    sc.frame_hooks.insert(0, sc.hose_hook)
+    combined = not AUDIT and not PREVIEW
+    if combined:
+        sc.auditor = collide.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)
+    AA.status(sc, Unit_3="the atomizer's zone, after a run", Hose="15 ft, Al-family 118EXP",
+              Bond="clipped to the floor stud")
+    sc.label = "Option C"
+    wide = [(-600.0, -6900.0, 3900.0), (-3650.0, -1750.0, 300.0), (0, 0, 1)]
+    close = [(-2350.0, -3650.0, 1300.0), (-3550.0, -2150.0, 200.0), (0, 0, 1)]
+    sc.cam, sc.view_angle = list(wide), 40.0
+    t0 = rb.tcp_world()
+    lane1_w, up1, over2, down2, lane2_e, lift = (T(tuple(p_)) @ t0 for p_ in STROKES)
+    lab_w = [(t, tuple(float(v) for v in p_), at) for t, p_, at in labels_area(sc, u3, rb)]
+    sc.step("1/4 After a run", "After a run: unit 3 has the Al-family wand, continuity checked on the station's "
+            "fixture (as in atom_vacuum), its bonding lead on the floor stud.", 2.5, cam_to=wide, labels=lab_w,
+            hold=1.5)
+    sc.step("2/4 Lane 1", "Along the machine's base, the blade on the floor: 480 mm at 0.15 m/s (assumed), slow "
+            "for fine powder.", 3.2, rb.line_to(lane1_w), cam_to=close,
+            labels=[("Floor squeegee, 14 in (ours: assumed)", (SQ_AT[0], SQ_AT[1], 50.0), (0.70, 0.83))], hold=0.4)
+    cap2 = "Up 30 mm, 110 mm out, down: the 356 mm head overlaps the first lane by 246 mm."
+    sc.step("3/4 Lane 2", cap2, 1.0, rb.line_to(up1), hold=0.0)
+    sc.step("3/4 Lane 2", cap2, 1.0, rb.line_to(over2), hold=0.0)
+    sc.step("3/4 Lane 2", cap2, 0.8, rb.line_to(down2), hold=0.2)
+    sc.step("3/4 Lane 2", "Back east along the second lane, then the next 480 mm of the zone.", 3.2,
+            rb.line_to(lane2_e), hold=0.4)
+    sc.step("4/4 Lift clear", "Lift clear: 20 s of run-on in clean air (vacuum SOP 4.1), then the next zone. A "
+            "visible spill is not the robot's: it stops and calls the person (SOP 8).", 1.5, rb.line_to(lift),
+            hold=2.5)
+    sc.save()
+    if combined:
+        sc.auditor.save()
+    if AUDIT:
+        pass                                                # Scene.save() wrote the audit (ARM_AUDIT=1)
+    (OUT / "collisions").mkdir(parents=True, exist_ok=True)
+    meta = dict(info, hose_length_end_mm=round(sc.hose.length(), 1))
+    (OUT / f"{CLIP}_meta.json").write_text(json.dumps(meta, indent=1) + "\n")
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    clip() if (len(sys.argv) > 1 and sys.argv[1] == "clip") else main()
