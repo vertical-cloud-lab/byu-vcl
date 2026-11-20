@@ -1,0 +1,242 @@
+"""Colour coding for the vertical lab: the scheme as data, a colour-vision check of each palette, and its figures.
+
+Sterling, PR #318, 2026-11-20: "open another PR focused on how we can best leverage color coding (send edison search
+related to this in addition to your own searches) for organization and cleanliness of the lab". The write-up is
+notes/colour_coding.md; the sources are notes/colour_sources.md and out/edison/colour_*/.
+
+The rule this is built on, from Sterling's own notes on the renders ("technicolor jars", "candy-coloured" powder, the
+"rapid flowing of vibrant colors"): colour goes only where a person makes a decision, and each colour means one thing
+in one place. Everything else stays neutral: white, greys, black, steel and clear glass.
+
+    python3 colour_coding.py            # the check (out/colour/cvd_check.json) and the figures
+    python3 colour_coding.py check      # the check only; exits 1 if a palette fails
+"""
+from __future__ import annotations
+
+import itertools
+import json
+import sys
+from pathlib import Path
+
+import numpy as np
+
+HERE = Path(__file__).resolve().parent
+OUT = HERE / "out" / "colour"
+
+# ===================================================================================================== the channels
+# A channel is where a colour sits (on a tool, on the floor, on a pipe, in a lamp). The same colour can mean different
+# things in different channels, which is unavoidable with only a dozen nameable colours, but never two things in one
+# channel, and a channel's colours always come with a word, a letter or a shape (no meaning is carried by colour alone).
+# sRGB values are targets for buying (match products to them by eye under the lab's own lights); the safety and
+# pipe-marking colours are approximations of the standards' own swatches, used here only for the colour-vision check.
+
+FAMILY = {   # the alloy family a tool or container is dedicated to: its handle, tape band, cap-label stripe, rack edge
+    "Al": dict(name="blue", rgb="#0072B2", why="the lab's main family; the most distinct colour from the Cu orange "
+               "for every kind of colour vision"),
+    "Cu": dict(name="orange", rgb="#E69F00", why="copper-coloured, so it is remembered"),
+    # reserved for the next family the lab takes on (Ni-base, Fe-base or Ti, whichever comes first). With blue and
+    # orange in use, the search in notes/colour_coding.md finds only brown, black and white still clear of both for
+    # every kind of colour vision; black and white are what tools come in anyway, so brown. Green and purple, the
+    # obvious picks, fail for tritan vision (11.7 against the blue, 11.0 against the orange). A fourth family can't
+    # have a hue of its own: it gets brown with a white band, or its own named, separate tool set.
+    "next": dict(name="brown", rgb="#7B4A2A", why="reserved: the only hue left that stays clear of blue and orange",
+                 reserved=True),
+}
+NEUTRAL = {"general": dict(name="grey/black", rgb="#5F6368",
+                           why="touches no powder, or is cleaned to a validated limit between every use")}
+
+FLOOR = {    # floor tape and paint (OSHA 1910.144 and the usual visual-workplace convention; ISO 3691-4 for the AMRs)
+    "aisle edge": dict(name="yellow", rgb="#F2C200", why="traffic: the MiR250s' lane and walkways"),
+    "equipment place": dict(name="white", rgb="#FFFFFF", why="where a cart, bin or tool stand goes"),
+    "operating hazard zone": dict(name="black/yellow", rgb="#F2C200", rgb2="#1F1F1F",
+                                  why="a robot works within 0.5 m of something fixed (each dock)"),
+    "keep clear": dict(name="red/white", rgb="#C8102E", rgb2="#FFFFFF",
+                       why="in front of fire extinguishers, electrical panels, eyewash"),
+    "safety equipment": dict(name="green", rgb="#00843D", why="eyewash, first aid, spill kit"),
+}
+# No red "hold" area on the floor: red and the safety green are 6.9 apart for deutan vision (cvd_check.json, first
+# version). Anything waiting for a decision goes to the HOLD bin on a passive store tray, with a red tag that says HOLD:
+# a place and a word, not a floor colour.
+
+LIGHTS = {   # stack lights and the finale's beacons (IEC 60204-1 indicator colours), in a fixed order, red at the top:
+    #          red and green are 12.6 apart for deutan vision, so a lamp's position is its second cue
+    "running": dict(name="green", rgb="#00A651", why="normal"),
+    "abnormal / upkeep": dict(name="yellow", rgb="#FFD100", why="abnormal condition: warming up, in upkeep"),
+    "waiting for a person": dict(name="blue", rgb="#0072CE", why="mandatory action: an operator is needed"),
+    "fault": dict(name="red", rgb="#E10600", why="emergency or fault"),
+    "idle": dict(name="white", rgb="#F5F5F5", why="neutral: powered, nothing running"),
+}
+
+SAFETY = {   # reserved by ANSI Z535.1 / ISO 3864 / OSHA 1910.144: never used for anything else on signs and floors
+    "danger, fire equipment, stop": "#C8102E", "warning, dangerous machine parts": "#FF7900",
+    "caution, physical hazard": "#F2C200", "safety equipment, first aid": "#00843D",
+    "mandatory, information": "#005EB8", "radiation (trefoil, XRD and XRF)": "#B5148A",
+}
+
+PALETTES = {"alloy family": {k: v["rgb"] for k, v in FAMILY.items()},
+            "alloy family in use": {k: v["rgb"] for k, v in FAMILY.items() if not v.get("reserved")},
+            "floor": {k: v["rgb"] for k, v in FLOOR.items() if "rgb2" not in v},
+            "lights": {k: v["rgb"] for k, v in LIGHTS.items()},
+            "safety (reference)": SAFETY}
+
+
+# ===================================================================================================== the check
+def _rgb1(h: str) -> np.ndarray:
+    h = h.lstrip("#")
+    return np.array([int(h[i:i + 2], 16) for i in (0, 2, 4)]) / 255.0
+
+
+def simulate(rgb1: np.ndarray, kind: str | None) -> np.ndarray:
+    """sRGB (0-1) as a person with full dichromacy of `kind` sees it (Machado et al. 2009, via colorspacious)."""
+    from colorspacious import cspace_convert
+    if kind is None:
+        return rgb1
+    cvd = {"name": "sRGB1+CVD", "cvd_type": kind, "severity": 100}
+    return np.clip(cspace_convert(rgb1, cvd, "sRGB1"), 0, 1)
+
+
+def delta(a: np.ndarray, b: np.ndarray) -> float:
+    """Colour difference in CAM02-UCS (about 1 = just noticeable side by side)."""
+    from colorspacious import deltaE
+    return float(deltaE(a, b, input_space="sRGB1", uniform_space="CAM02-UCS"))
+
+
+VISION = {"normal": None, "protan": "protanomaly", "deutan": "deuteranomaly", "tritan": "tritanomaly"}
+# Pass marks: two colours whose job is to be told apart, named, from across a bench, should differ by far more than a
+# just-noticeable step. 20 in CAM02-UCS is about the gap between the Okabe-Ito palette's closest pair under deutan
+# simulation; under 12 is a fail; 12-20 passes only with a second cue (a word, a letter, a pattern), which this scheme
+# always has anyway.
+PASS, FLOOR_MARK = 20.0, 12.0
+
+
+def check() -> dict:
+    res = {}
+    for pal, cols in PALETTES.items():
+        rows = []
+        for (ka, ha), (kb, hb) in itertools.combinations(cols.items(), 2):
+            d = {v: round(delta(simulate(_rgb1(ha), k), simulate(_rgb1(hb), k)), 1) for v, k in VISION.items()}
+            worst = min(d, key=d.get)
+            rows.append(dict(a=ka, b=kb, **d, worst=worst, grade="pass" if d[worst] >= PASS else
+                             ("needs a second cue" if d[worst] >= FLOOR_MARK else "FAIL")))
+        res[pal] = rows
+    res["ok"] = all(r["grade"] != "FAIL" for pal in ("alloy family", "alloy family in use", "lights")
+                    for r in res[pal])
+    return res
+
+
+# ===================================================================================================== figures
+SHORT = {"abnormal / upkeep": "upkeep", "waiting for a person": "needs a\nperson", "equipment place": "equipment",
+         "safety equipment": "safety\nequipment", "aisle edge": "aisle edge"}
+
+
+def palette_figure(res: dict, path: Path) -> None:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Rectangle
+    groups = [("Alloy family (tools, containers)", {k: v["rgb"] for k, v in FAMILY.items()},
+               {k: v["name"] + (" (reserved)" if v.get("reserved") else "") for k, v in FAMILY.items()}),
+              ("Indicator lights (IEC 60204-1)", {k: v["rgb"] for k, v in LIGHTS.items()},
+               {k: v["name"] for k, v in LIGHTS.items()}),
+              ("Floor (single colours)", {k: v["rgb"] for k, v in FLOOR.items() if "rgb2" not in v},
+               {k: v["name"] for k, v in FLOOR.items() if "rgb2" not in v})]
+    fig, axs = plt.subplots(len(groups), 1, figsize=(13, 2.05 * len(groups) + 0.7), dpi=110)
+    for ax, (title, cols, names) in zip(axs, groups):
+        ax.set_xlim(0, 4 * (len(cols) + 0.6))
+        ax.set_ylim(-1.35, 1.25)
+        ax.axis("off")
+        ax.text(0, 1.12, title, fontsize=11.5, weight="bold", color="#1f2328", va="bottom")
+        for j, (v, kind) in enumerate(VISION.items()):
+            x0 = j * (len(cols) + 0.6)
+            ax.text(x0, 0.86, v + (" vision" if v == "normal" else ""), fontsize=9, color="#4b5563")
+            for i, (k, h) in enumerate(cols.items()):
+                c = simulate(_rgb1(h), kind)
+                ax.add_patch(Rectangle((x0 + i, 0), 0.92, 0.75, fc=c, ec="#9aa1ab", lw=0.6))
+                if j == 0:
+                    ax.text(x0 + i + 0.46, -0.08, SHORT.get(k, k), ha="center", va="top", fontsize=7.4,
+                            color="#1f2328", linespacing=0.9)
+                    ax.text(x0 + i + 0.46, -0.62, names[k], ha="center", va="top", fontsize=6.8, color="#4b5563")
+        rows = [r for pal, rr in res.items() if pal != "ok" for r in rr
+                if {r["a"], r["b"]} <= set(cols) and pal != "alloy family in use"]
+        if rows:
+            w = min(rows, key=lambda r: r[r["worst"]])
+            ax.text(len(cols) + 0.6, -0.95, f"closest pair: {w['a']} / {w['b']}, {w[w['worst']]:.0f} in CAM02-UCS "
+                    f"({w['worst']} vision) - {w['grade']}", fontsize=8.5, color="#1f2328")
+    fig.suptitle("Each palette as seen with normal vision and the three full colour-vision deficiencies "
+                 "(Machado 2009 simulation)", fontsize=11, x=0.01, ha="left")
+    fig.tight_layout()
+    fig.savefig(path, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+def floor_figure(path: Path) -> None:
+    """The floor marking on the set-up floor (out/tray_plan.json): lanes, docks, hazard zones, keep-clear, hold."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Patch, Rectangle
+    plan = json.loads((HERE / "out" / "tray_plan.json").read_text())
+    fig, ax = plt.subplots(figsize=(16, 9.5), dpi=110)
+    ax.add_patch(Rectangle((-12000, -13000), 24400, 15500, fc="#e9eaec", ec="none", zorder=0))     # bare floor
+    for key, (a, b, c, d) in plan["floor"]["machines"].items():
+        ax.add_patch(Rectangle((a, c), b - a, d - c, fc="#c9ccd1", ec="#8a8f98", lw=0.8, zorder=2))
+    x0, x1, y0, y1 = plan["floor"]["aisle_mm"]
+    Y = FLOOR["aisle edge"]["rgb"]
+    for yy in (y0, y1):                                                   # 75 mm yellow lane edges
+        ax.add_patch(Rectangle((x0, yy - 37), x1 - x0, 75, fc=Y, ec="none", zorder=3))
+    mir = (580.0, 890.0)                                                  # MiR250 footprint, props.MIR
+    for k, dk in plan["floor"]["docks"].items():
+        dx, dy = dk["dock"][:2]
+        a = dk["dock"][2] if len(dk["dock"]) > 2 else 0
+        w, h = (mir[1], mir[0]) if abs(np.sin(np.radians(a))) > 0.7 else (mir[0], mir[1])
+        # the dock's operating hazard zone: the docked MiR plus 0.5 m round it, hatched black/yellow
+        ax.add_patch(Rectangle((dx - w / 2 - 500, dy - h / 2 - 500), w + 1000, h + 1000, fc=Y, ec="#1f1f1f",
+                               hatch="///", lw=0.8, zorder=2.5, alpha=0.9))
+        ax.add_patch(Rectangle((dx - w / 2, dy - h / 2), w, h, fc="none", ec="white", lw=2.2, zorder=3))
+    # keep-clear and safety equipment: illustrative spots until the safety-assets PR places the extinguishers
+    keep = [(-3300, -2300), (2350, -2300), (8600, -6100), (-8000, -6100)]
+    for kx, ky in keep:
+        ax.add_patch(Rectangle((kx - 450, ky - 450), 900, 900, fc="white", ec=FLOOR["keep clear"]["rgb"], lw=2.5,
+                               hatch="\\\\", zorder=3))
+    ax.add_patch(Rectangle((-5200 - 450, -6150), 900, 600, fc=FLOOR["safety equipment"]["rgb"], ec="none", zorder=3))
+    handles = [Patch(fc=Y, ec="none", label="yellow: lane edge (the MiR250s' aisle)"),
+               Patch(fc=Y, ec="#1f1f1f", hatch="///", label="black/yellow: operating hazard zone, 0.5 m round "
+                     "each docked MiR250 (ISO 3691-4)"),
+               Patch(fc="white", ec="#8a8f98", label="white: where a robot docks, or a cart, bin or stand goes"),
+               Patch(fc="white", ec=FLOOR["keep clear"]["rgb"], hatch="\\\\", label="red/white: keep clear "
+                     "(extinguisher, electrical panel, eyewash); spots illustrative"),
+               Patch(fc=FLOOR["safety equipment"]["rgb"], ec="none", label="green: safety equipment (eyewash, "
+                     "first aid, spill kit); spot illustrative")]
+    ax.legend(handles=handles, loc="lower left", fontsize=9, frameon=True, framealpha=1.0, ncol=2,
+              bbox_to_anchor=(0.0, -0.02))
+    ax.set_title("Floor marking: five meanings, each with its own colour or pattern; everything else is bare floor",
+                 fontsize=12.5, loc="left", weight="bold")
+    ax.set_xlim(-12000, 12400)
+    ax.set_ylim(-13000, 2500)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    fig.savefig(path, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+def main(argv) -> int:
+    OUT.mkdir(parents=True, exist_ok=True)
+    res = check()
+    (OUT / "cvd_check.json").write_text(json.dumps(dict(
+        method="sRGB targets simulated for full protan, deutan and tritan dichromacy (Machado et al. 2009 via "
+               "colorspacious, severity 100), colour difference in CAM02-UCS; pass >= 20, needs a second cue 12-20, "
+               "fail < 12", palettes=res), indent=1) + "\n")
+    for pal, rows in res.items():
+        if pal == "ok":
+            continue
+        worst = min(rows, key=lambda r: r[r["worst"]]) if rows else None
+        print(f"{pal:22s} closest: {worst['a']} / {worst['b']} {worst[worst['worst']]} ({worst['worst']}) "
+              f"{worst['grade']}" if worst else pal)
+    if len(argv) < 2 or argv[1] != "check":
+        palette_figure(res, OUT / "palette_cvd.png")
+        floor_figure(OUT / "floor_marking.png")
+    return 0 if res["ok"] else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

@@ -1,0 +1,5 @@
+{
+ "task_id": "cb75a111-772c-47c1-b04f-0fe50293d6d5",
+ "job": "LITERATURE",
+ "query": "How do metal additive manufacturing facilities (laser powder bed fusion, directed energy deposition) and powder metallurgy or gas/ultrasonic atomization labs prevent cross-contamination between different alloy powders (for example aluminium vs copper vs nickel vs titanium alloys) when sieves, powder containers, scoops, funnels, brushes, vacuum cleaners, dies and build chambers are shared or changed over? Include dedicated equipment per alloy family, colour coding or labelling of that equipment, cleaning procedures and their validation, how foreign particles are detected (for example SEM/EDS particle analysis), reported contamination incidents and their effect on properties, and relevant standards (ISO/ASTM 52907, ASTM F3049, ISO/ASTM 52931, NASA MSFC-SPEC-3717, NFPA 484). Cite specific papers and standards."
+}
