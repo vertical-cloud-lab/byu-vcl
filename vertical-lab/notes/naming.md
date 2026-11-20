@@ -157,13 +157,15 @@ station are named for their job: `charger-1`, `exvac-1` (the explosion-proof vac
 - **Too alike.** Every pair of names is compared by spelling (Damerau-Levenshtein) and by sound (espeak-ng's phonemes,
   the narration voice's front end). Four first choices were changed on this: `caxton` (2 letters from `aston`) to
   `aldus`, `rammler` (the same first sounds as `ramsay`) to `agricola`, `tresca` (sounds 67 % like `ruska`) to
-  `galileo`, and the spares that clashed were dropped. Six pairs in use are flagged and kept, since each starts with a
-  different consonant:
+  `galileo`, and the spares that clashed were dropped. Seven pairs in use are flagged and kept: each pair starts
+  with a different sound, except `prandtl` and `preston` (both "pr-", on trays E and F), the one to watch:
 
 | Pair | Letters apart | Sound overlap | espeak |
 |---|---|---|---|
 | tafel / maiman | 5 | 0.5 | teɪfəl / meɪmən |
 | bridgman / maiman | 4 | 0.5 | bɹɪdʒmən / meɪmən |
+| prandtl / preston | 5 | 0.5 | pɹændtəl / pɹɛstən |
+| prandtl / brunel | 4 | 0.5 | pɹændtəl / bɹʌnəl |
 | sneddon / sandland | 5 | 0.5 | snɛdən / sændlənd |
 | beilby / davy | 5 | 0.5 | beɪlbi / deɪvi |
 | baekeland / sandland | 4 | 0.5 | bikɛlənd / sændlənd |
