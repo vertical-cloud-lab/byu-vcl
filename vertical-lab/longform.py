@@ -505,7 +505,7 @@ DAL_STEPS = [   # (step, station in this design, status, still by hand or open)
     ("Recover and sieve", "explosion-proof vacuum (turnaround); sieving cell with wash (ch. 3)", "auto", ""),
     ("Store", "753-jar store on trays N and O", "auto", "dry storage at about 25 % RH (DAL #131) not designed"),
     ("Characterize the powder", "laser diffraction, XRD with its prep, XRF, SEM (ch. 4)", "auto",
-     "composition by ICP-MS: a fume-hood station (in progress)"),
+     "composition by ICP-MS: the new hood station (in the corrosion chapter), not yet in the route"),
     ("Ship powder out", "packaging station: labels, seal, box", "auto", "the dangerous-goods call for each powder"),
     ("Print", "Aconity MIDI fed by the arm; depowdering box (ch. 3, 5)", "auto", ""),
     ("Cut parts off the plate", "wire EDM, bars caught in a comb (ch. 5)", "auto", ""),

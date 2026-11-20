@@ -41,7 +41,7 @@ whether this design automates it and shows it, or has no station yet, and what i
 | 4 | Atomize | the rePowder, loaded, opened, cleaned and rebuilt by two arms (ch. 2, the turnaround clips) | automated | the arm presses the HMI's keys until AMAZEMET opens an interface (DAL #151); booster swaps and argon cylinders stay a person's (`notes/atomizer_automation.md`) |
 | 5 | Recover and sieve | the explosion-proof Nilfisk (`atom_vacuum`); the sieving cell with its wash module (ch. 3) | automated | |
 | 6 | Store | the 753-jar store on trays N and O | automated | dry storage at about 25 % RH (DAL #131) isn't designed |
-| 7 | Characterize the powder | laser diffraction, XRD with its prep, XRF, SEM with stub prep (ch. 4) | automated | composition by ICP-MS: the new station (`notes/icpms.md`), not in a chapter yet |
+| 7 | Characterize the powder | laser diffraction, XRD with its prep, XRF, SEM with stub prep (ch. 4) | automated | composition by ICP-MS: the new station (`notes/icpms.md`), shown in the corrosion chapter, not yet in the route |
 | 8 | Ship powder out | the packaging station | automated | the dangerous-goods call for each powder |
 | 9 | Print | the Aconity MIDI, fed by the arm; the depowdering box (ch. 3, 5) | automated | |
 | 10 | Cut parts off the plate | the wire EDM, bars caught in a comb (ch. 5; #328's orientations) | automated | |

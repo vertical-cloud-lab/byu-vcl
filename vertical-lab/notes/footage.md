@@ -12,6 +12,13 @@ and the long-form's opening use the rest.
 | 20:05, chapter 2's pour | `mst2026_stream.mp4`: a melt stream breaking up on the plate, cut from Sterling's MS&T 2026 talk ([YmvaeqOQAU4](https://youtu.be/YmvaeqOQAU4?t=298)) and badged as from his talk | **Out.** The pour beat is the lab's own Oct 27 bronze jet on the W-coated carbon-fibre plate, `nab_pour1.mp4` ([2brsz-90seg](https://youtu.be/2brsz-90seg), DAL #219), which already followed it | Sterling: "that's not my video. That's from AMAZEMET." The clip in the talk is AMAZEMET's footage, so the badge credited the wrong source, and the lab has its own equivalent |
 | 20:26, chapter 2's powder | `al4047_oct22_c3k0n5_bag_and_jar.jpg`: a phone photo of a screen, a bag with a lump of splats beside a jar of lumps (c3k0n5, DAL #159) | `al_4yghtr_oct06_jar.jpg`: a jar of the lab's own atomized aluminium, lot 4yghtr, cropped from Ronnie Guymon's photo in [DAL #159](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159#issuecomment-6353392867) | Sterling: "that's aluminum slag/scrap. You should be able to find a better jar photo for the Al atomizer runs." |
 
+**No Al pour of the lab's own is known.** Round 5 found no clear Al pour in the Oct 21 and 22 videos, round 8 dropped
+the Oct 8 Al 6063 clip (it dripped), and the newest run on the channel, Nov 5 ([EG-Gd858JFg](https://youtu.be/EG-Gd858JFg)),
+was copper, with the nozzle frozen by a generator trip (`notes/atom_vacuum.md`, `notes/alloy_atomize.md`). So the
+pour beat is the bronze jet alone, 7.5 s where it was 14.5. A good Al run filmed through the view port would replace
+it; the runner can't fetch YouTube's player, so an excerpt is cut on a Pi (CLAUDE.md, "Reading the livestream archive
+back").
+
 ## Choosing the jar photo
 
 Every photo of an aluminium run in DAL #157 and #159 was looked at:
