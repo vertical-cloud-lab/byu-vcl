@@ -11,13 +11,16 @@
   "sentence1": "Next, the arm takes the bar to {Name}.",
   "sentence2": "{Name} has finished, so the robot comes back."
  },
- "rule": "Both sentences and both recognizers must hear the name in its slot (the heard words the alignment puts there): exactly, or with the same letters split differently, or as a spelling variant of the same name (variants), or with difflib ratio >= 0.85; a two-word name ('tray Alfa') word by word. Text normalised with longform._norm. 'different_word': accepted by the ratio, but heard as another everyday word (wordfreq zipf >= 3).",
+ "rule": "Both sentences and both recognizers must hear the name in its slot (the heard words the alignment puts there): exactly, or with the same letters split differently, or as a spelling variant of the same name (variants), or with difflib ratio >= 0.85. For a tray the slot is the NATO word; how the word 'tray' itself was heard is kept as tray_heard_as. Text normalised with longform._norm. 'different_word': accepted by the ratio, but heard as another everyday word (wordfreq zipf >= 3).",
  "variants": {
   "alfa": [
    "alpha"
   ],
   "juliett": [
    "juliet"
+  ],
+  "charlie": [
+   "charley"
   ],
   "whiskey": [
    "whisky"
@@ -83,27 +86,27 @@
  "ogg": {
   "file": "out/naming/names.ogg",
   "order": [
-   "Timp",
+   "Timpanogos",
    "Nebo",
    "Elsie",
    "Freddy",
    "Ruska",
    "Lonsdale",
-   "Pasteur",
+   "Ostwald",
    "Tafel",
    "Lavoisier",
    "Bridgman",
-   "Tabor",
+   "Prandtl",
    "Sneddon",
    "Tyndall",
    "Gutenberg",
    "Aldus",
    "Beilby",
-   "Wilm",
+   "Preston",
    "Baekeland",
-   "Schlenk",
+   "Rutherford",
    "Sorby",
-   "Petch",
+   "Griffith",
    "Sandland",
    "Noddack",
    "Maudslay",
@@ -130,10 +133,9 @@
    "Lonepeak",
    "Moseley",
    "Bragg",
-   "Pourbaix",
    "Kibble",
+   "Whitworth",
    "Bodoni",
-   "Schawlow",
    "tray Alfa",
    "tray Bravo",
    "tray Charlie",
@@ -158,22 +160,16 @@
   "form": "each name in its first carrier sentence, with its fix where there is one"
  },
  "summary": {
-  "tested": 77,
-  "in_use": 70,
-  "passed_first_try": 41,
+  "tested": 76,
+  "in_use": 69,
+  "passed_first_try": 49,
   "failed_first_try": [
-   "timp",
    "ruska",
-   "pasteur",
    "tafel",
-   "tabor",
    "sneddon",
    "aldus",
    "beilby",
-   "wilm",
    "baekeland",
-   "schlenk",
-   "petch",
    "noddack",
    "maudslay",
    "senefelder",
@@ -184,45 +180,33 @@
    "genghis",
    "cascade",
    "moseley",
-   "pourbaix",
    "bodoni",
-   "schawlow",
-   "tray Juliett",
    "tray Mike",
    "tray Quebec",
    "tray Sierra"
   ],
   "fixed": [
-   "maudslay",
-   "moseley"
-  ],
-  "still_failing": [
-   "timp",
-   "ruska",
-   "pasteur",
-   "tafel",
-   "tabor",
-   "sneddon",
    "aldus",
-   "beilby",
-   "wilm",
-   "baekeland",
-   "schlenk",
-   "petch",
-   "noddack",
+   "maudslay",
    "senefelder",
-   "maiman",
    "lazarenko",
-   "javan",
-   "aston",
    "genghis",
    "cascade",
-   "pourbaix",
+   "moseley",
+   "tray Quebec"
+  ],
+  "still_failing": [
+   "ruska",
+   "tafel",
+   "sneddon",
+   "beilby",
+   "baekeland",
+   "noddack",
+   "maiman",
+   "javan",
+   "aston",
    "bodoni",
-   "schawlow",
-   "tray Juliett",
    "tray Mike",
-   "tray Quebec",
    "tray Sierra"
   ],
   "pronunciation_fixed": [
@@ -238,64 +222,73 @@
   ],
   "accepted_as_a_different_word": [
    "bragg",
-   "pasteur",
    "unimate"
-  ]
+  ],
+  "tray_heard_as": {
+   "trace": 1,
+   "tracey": 1,
+   "tracy": 1,
+   "trade": 3,
+   "train": 3,
+   "tray": 25,
+   "trey": 42
+  }
  },
  "rows": [
   {
-   "name": "timp",
+   "name": "timpanogos",
    "kind": "call",
    "in_use": true,
    "namesake": "Mount Timpanogos",
-   "text": "Timp",
-   "ipa_espeak": "tˈɪmp",
+   "text": "Timpanogos",
+   "ipa_espeak": "tˌɪmpɐnˈoʊɡoʊz",
    "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈɪmp.",
-    "sentence2": "tˈɪmp hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˌɪmpɐnˈoʊɡoʊz.",
+    "sentence2": "tˌɪmpɐnˈoʊɡoʊz hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
    },
    "heard": {
     "base.en": {
-     "sentence1": "Next, the arm takes the bar to temp.",
-     "sentence2": "Timp is finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to tympanogos.",
+     "sentence2": "Tim Panogos has finished, so the robot comes back."
     },
     "small.en": {
-     "sentence1": "Next, the arm takes the bar to temp.",
-     "sentence2": "Timp has finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to tympanogos.",
+     "sentence2": "Tim Pinogos has finished, so the robot comes back."
     }
    },
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "temp",
-      "ok": false,
-      "how": "ratio 0.75"
+      "heard_as": "tympanogos",
+      "ok": true,
+      "how": "ratio 0.90"
      },
      "sentence2": {
-      "heard_as": "timp",
+      "heard_as": "tim panogos",
       "ok": true,
-      "how": "exact"
+      "how": "exact, split differently"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "temp",
-      "ok": false,
-      "how": "ratio 0.75"
+      "heard_as": "tympanogos",
+      "ok": true,
+      "how": "ratio 0.90"
      },
      "sentence2": {
-      "heard_as": "timp",
+      "heard_as": "tim pinogos",
       "ok": true,
-      "how": "exact"
+      "how": "ratio 0.90"
      }
     }
    },
-   "pass_first_try": false,
+   "pass_first_try": true,
    "fix": null,
-   "fix_for": "recognizer",
+   "fix_for": null,
    "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "nebo",
@@ -349,7 +342,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "elsie",
@@ -403,7 +397,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "freddy",
@@ -457,7 +452,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "ruska",
@@ -485,7 +481,8 @@
      "sentence1": {
       "heard_as": "rusca",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "rusca"
      },
      "sentence2": {
       "heard_as": "ruska",
@@ -509,9 +506,152 @@
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "ROOS-kuh /ˈrʊskə/ (German [ˈʁʊska]); espeak says RUSS-kuh",
    "pass_after_fix": false,
-   "attempts": []
+   "attempts": [
+    {
+     "ipa": "ɹˈʊskə",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ɹˈʊskə .",
+      "sentence2": "ɹˈʊskə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to riska.",
+       "sentence2": "Riska has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to riska.",
+       "sentence2": "Riska has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "riska",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "riska"
+       },
+       "sentence2": {
+        "heard_as": "riska",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "riska"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "riska",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "riska"
+       },
+       "sentence2": {
+        "heard_as": "riska",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "riska"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "ɹˈʊskɑː",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ɹˈʊskɑː .",
+      "sentence2": "ɹˈʊskɑː hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to riska.",
+       "sentence2": "Risky has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Riska.",
+       "sentence2": "Riscai has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "riska",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "riska"
+       },
+       "sentence2": {
+        "heard_as": "risky",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "risky"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "riska",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "riska"
+       },
+       "sentence2": {
+        "heard_as": "riscai",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "riscai"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "ɹˈuːskə",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ɹˈuːskə .",
+      "sentence2": "ɹˈuːskə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to rusca.",
+       "sentence2": "Ruska has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Ruska.",
+       "sentence2": "Ruska has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "rusca",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "rusca"
+       },
+       "sentence2": {
+        "heard_as": "ruska",
+        "ok": true,
+        "how": "exact"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "ruska",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "ruska",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
+    }
+   ],
+   "note": null
   },
   {
    "name": "lonsdale",
@@ -565,62 +705,63 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
-   "name": "pasteur",
+   "name": "ostwald",
    "kind": "call",
    "in_use": true,
-   "namesake": "Louis Pasteur",
-   "text": "Pasteur",
-   "ipa_espeak": "pæstˈʊɹ",
+   "namesake": "Wilhelm Ostwald",
+   "text": "Ostwald",
+   "ipa_espeak": "ˈɑːstwəld",
    "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pæstˈʊɹ.",
-    "sentence2": "pæstˈʊɹ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ ˈɑːstwəld.",
+    "sentence2": "ˈɑːstwəld hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
    },
    "heard": {
     "base.en": {
-     "sentence1": "Next, the arm takes the bar to pastore.",
-     "sentence2": "Past door is finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Ostwald.",
+     "sentence2": "Ostwald has finished, so the robot comes back."
     },
     "small.en": {
-     "sentence1": "Next, the arm takes the bar to pastor.",
-     "sentence2": "Pasture has finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Ostwald.",
+     "sentence2": "Ostwald has finished, so the robot comes back."
     }
    },
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "pastore",
-      "ok": false,
-      "how": "ratio 0.71"
+      "heard_as": "ostwald",
+      "ok": true,
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "past door is",
-      "ok": false,
-      "how": "ratio 0.73"
+      "heard_as": "ostwald",
+      "ok": true,
+      "how": "exact"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "pastor",
-      "ok": false,
-      "how": "ratio 0.77"
+      "heard_as": "ostwald",
+      "ok": true,
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "pasture",
+      "heard_as": "ostwald",
       "ok": true,
-      "how": "ratio 0.86",
-      "different_word": true
+      "how": "exact"
      }
     }
    },
-   "pass_first_try": false,
+   "pass_first_try": true,
    "fix": null,
-   "fix_for": "recognizer",
+   "fix_for": null,
    "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tafel",
@@ -648,7 +789,8 @@
      "sentence1": {
       "heard_as": "tafle",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "tafle"
      },
      "sentence2": {
       "heard_as": "tafel",
@@ -672,9 +814,149 @@
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "TAH-fel /ˈtɑːfəl/ (German, as electrochemists say it); espeak says TAY-ful",
    "pass_after_fix": false,
-   "attempts": []
+   "attempts": [
+    {
+     "ipa": "tˈɑːfəl",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː tˈɑːfəl .",
+      "sentence2": "tˈɑːfəl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to toffle.",
+       "sentence2": "Toffle has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to toffle.",
+       "sentence2": "Toffl has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "toffle",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "toffle"
+       },
+       "sentence2": {
+        "heard_as": "toffle",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "toffle"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "toffle",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "toffle"
+       },
+       "sentence2": {
+        "heard_as": "toffl",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "toffl"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "tˈɑːfɛl",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː tˈɑːfɛl .",
+      "sentence2": "tˈɑːfɛl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Tafel.",
+       "sentence2": "Tophil has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Tafel.",
+       "sentence2": "Tafel has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "tafel",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "tophil",
+        "ok": false,
+        "how": "ratio 0.36",
+        "closest": "tophil"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "tafel",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "tafel",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "tˈeɪfɛl",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː tˈeɪfɛl .",
+      "sentence2": "tˈeɪfɛl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to tafel.",
+       "sentence2": "Tae fell his finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Tafel.",
+       "sentence2": "Tafel has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "tafel",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "tae fell his",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "tae fell"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "tafel",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "tafel",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
+    }
+   ],
+   "note": null
   },
   {
    "name": "lavoisier",
@@ -775,7 +1057,8 @@
      },
      "passed": true
     }
-   ]
+   ],
+   "note": null
   },
   {
    "name": "bridgman",
@@ -829,150 +1112,63 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
-   "name": "tabor",
+   "name": "prandtl",
    "kind": "call",
    "in_use": true,
-   "namesake": "David Tabor",
-   "text": "Tabor",
-   "ipa_espeak": "tˈæbɚ",
+   "namesake": "Ludwig Prandtl",
+   "text": "Prandtl",
+   "ipa_espeak": "pɹˈændtəl",
    "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈæbɚ.",
-    "sentence2": "tˈæbɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pɹˈændtəl.",
+    "sentence2": "pɹˈændtəl hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
    },
    "heard": {
     "base.en": {
-     "sentence1": "Next, the arm takes the bar to tabber.",
-     "sentence2": "Tabber has finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to prantle.",
+     "sentence2": "Prantle has finished, so the robot comes back."
     },
     "small.en": {
-     "sentence1": "Next, the arm takes the bar to tabber.",
-     "sentence2": "Tabber has finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to prantle.",
+     "sentence2": "Prandtl has finished, so the robot comes back."
     }
    },
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tabber",
-      "ok": false,
-      "how": "ratio 0.73"
+      "heard_as": "prantle",
+      "ok": true,
+      "how": "ratio 0.86"
      },
      "sentence2": {
-      "heard_as": "tabber",
-      "ok": false,
-      "how": "ratio 0.73"
+      "heard_as": "prantle",
+      "ok": true,
+      "how": "ratio 0.86"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tabber",
-      "ok": false,
-      "how": "ratio 0.73"
+      "heard_as": "prantle",
+      "ok": true,
+      "how": "ratio 0.86"
      },
      "sentence2": {
-      "heard_as": "tabber",
-      "ok": false,
-      "how": "ratio 0.73"
+      "heard_as": "prandtl",
+      "ok": true,
+      "how": "exact"
      }
     }
    },
-   "pass_first_try": false,
+   "pass_first_try": true,
    "fix": null,
-   "fix_for": "recognizer",
-   "aiming_at": "TAY-ber /ˈteɪbər/; espeak says TAB-er",
-   "pass_after_fix": false,
-   "attempts": [
-    {
-     "ipa": "tˈeɪbɚ",
-     "phonemes": {
-      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː tˈeɪbɚ .",
-      "sentence2": "tˈeɪbɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
-     },
-     "heard": {
-      "base.en": {
-       "sentence1": "Next, the arm takes the bar to table.",
-       "sentence2": "Tabor has finished, so the robot comes back."
-      },
-      "small.en": {
-       "sentence1": "Next, the arm takes the bar to taper.",
-       "sentence2": "Tabor has finished, so the robot comes back."
-      }
-     },
-     "slot": {
-      "base.en": {
-       "sentence1": {
-        "heard_as": "table",
-        "ok": false,
-        "how": "ratio 0.60"
-       },
-       "sentence2": {
-        "heard_as": "tabor",
-        "ok": true,
-        "how": "exact"
-       }
-      },
-      "small.en": {
-       "sentence1": {
-        "heard_as": "taper",
-        "ok": false,
-        "how": "ratio 0.60"
-       },
-       "sentence2": {
-        "heard_as": "tabor",
-        "ok": true,
-        "how": "exact"
-       }
-      }
-     },
-     "passed": false
-    },
-    {
-     "say": "Taber",
-     "phonemes": {
-      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tˈeɪbɚ.",
-      "sentence2": "tˈeɪbɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
-     },
-     "heard": {
-      "base.en": {
-       "sentence1": "Next, the arm takes the bar to table.",
-       "sentence2": "Tabor has finished, so the robot comes back."
-      },
-      "small.en": {
-       "sentence1": "Next, the arm takes the bar to taper.",
-       "sentence2": "Tabor has finished, so the robot comes back."
-      }
-     },
-     "slot": {
-      "base.en": {
-       "sentence1": {
-        "heard_as": "table",
-        "ok": false,
-        "how": "ratio 0.60"
-       },
-       "sentence2": {
-        "heard_as": "tabor",
-        "ok": true,
-        "how": "exact"
-       }
-      },
-      "small.en": {
-       "sentence1": {
-        "heard_as": "taper",
-        "ok": false,
-        "how": "ratio 0.60"
-       },
-       "sentence2": {
-        "heard_as": "tabor",
-        "ok": true,
-        "how": "exact"
-       }
-      }
-     },
-     "passed": false
-    }
-   ]
+   "fix_for": null,
+   "aiming_at": null,
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "sneddon",
@@ -1000,12 +1196,14 @@
      "sentence1": {
       "heard_as": "sneton",
       "ok": false,
-      "how": "ratio 0.77"
+      "how": "ratio 0.77",
+      "closest": "sneton"
      },
      "sentence2": {
       "heard_as": "snettin'",
       "ok": false,
-      "how": "ratio 0.53"
+      "how": "ratio 0.53",
+      "closest": "snettin'"
      }
     },
     "small.en": {
@@ -1024,9 +1222,150 @@
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "SNED-un /ˈsnɛdən/ (espeak's is right; base.en hears 'Sneton')",
    "pass_after_fix": false,
-   "attempts": []
+   "attempts": [
+    {
+     "ipa": "snˈɛdʌn",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː snˈɛdʌn .",
+      "sentence2": "snˈɛdʌn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Sneton.",
+       "sentence2": "Sneton has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Sneddon.",
+       "sentence2": "Sneton has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "sneton",
+        "ok": false,
+        "how": "ratio 0.77",
+        "closest": "sneton"
+       },
+       "sentence2": {
+        "heard_as": "sneton",
+        "ok": false,
+        "how": "ratio 0.77",
+        "closest": "sneton"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "sneddon",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "sneton",
+        "ok": false,
+        "how": "ratio 0.77",
+        "closest": "sneton"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "snˈɛdɑːn",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː snˈɛdɑːn .",
+      "sentence2": "snˈɛdɑːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to sned on.",
+       "sentence2": "Snett on has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to sned on.",
+       "sentence2": "Sneton has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "sned on",
+        "ok": true,
+        "how": "ratio 0.92"
+       },
+       "sentence2": {
+        "heard_as": "snett on",
+        "ok": false,
+        "how": "ratio 0.71",
+        "closest": "snett on"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "sned on",
+        "ok": true,
+        "how": "ratio 0.92"
+       },
+       "sentence2": {
+        "heard_as": "sneton",
+        "ok": false,
+        "how": "ratio 0.77",
+        "closest": "sneton"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "snˈɛdᵊn",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː snˈɛdᵊn .",
+      "sentence2": "snˈɛdᵊn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Sneton.",
+       "sentence2": "Snettin' has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Sneddon.",
+       "sentence2": "Snedden has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "sneton",
+        "ok": false,
+        "how": "ratio 0.77",
+        "closest": "sneton"
+       },
+       "sentence2": {
+        "heard_as": "snettin'",
+        "ok": false,
+        "how": "ratio 0.53",
+        "closest": "snettin'"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "sneddon",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "snedden",
+        "ok": true,
+        "how": "ratio 0.86"
+       }
+      }
+     },
+     "passed": false
+    }
+   ],
+   "note": null
   },
   {
    "name": "tyndall",
@@ -1080,7 +1419,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "gutenberg",
@@ -1181,7 +1521,8 @@
      },
      "passed": true
     }
-   ]
+   ],
+   "note": null
   },
   {
    "name": "aldus",
@@ -1209,7 +1550,8 @@
      "sentence1": {
       "heard_as": "aldis",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "aldis"
      },
      "sentence2": {
       "heard_as": "aldous",
@@ -1221,21 +1563,116 @@
      "sentence1": {
       "heard_as": "aldis",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "aldis"
      },
      "sentence2": {
       "heard_as": "aldis",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "aldis"
      }
     }
    },
    "pass_first_try": false,
-   "fix": null,
+   "fix": {
+    "ipa": "ˈældʌs"
+   },
    "fix_for": "recognizer",
-   "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "aiming_at": "AWL-dus /ˈɔːldəs/ (Merriam-Webster; also AL-dus); heard as 'Aldis'",
+   "pass_after_fix": true,
+   "attempts": [
+    {
+     "ipa": "ˈɔːldʌs",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ˈɔːldʌs .",
+      "sentence2": "ˈɔːldʌs hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to all this.",
+       "sentence2": "Aldous is finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Aldous.",
+       "sentence2": "Aldus has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "all this",
+        "ok": false,
+        "how": "ratio 0.50",
+        "closest": "all"
+       },
+       "sentence2": {
+        "heard_as": "aldous",
+        "ok": true,
+        "how": "ratio 0.91"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "aldous",
+        "ok": true,
+        "how": "ratio 0.91"
+       },
+       "sentence2": {
+        "heard_as": "aldus",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "ˈældʌs",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ˈældʌs .",
+      "sentence2": "ˈældʌs hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Aldous.",
+       "sentence2": "Aldous is finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Aldous.",
+       "sentence2": "Aldus has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "aldous",
+        "ok": true,
+        "how": "ratio 0.91"
+       },
+       "sentence2": {
+        "heard_as": "aldous",
+        "ok": true,
+        "how": "ratio 0.91"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "aldous",
+        "ok": true,
+        "how": "ratio 0.91"
+       },
+       "sentence2": {
+        "heard_as": "aldus",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": true
+    }
+   ],
+   "note": null
   },
   {
    "name": "beilby",
@@ -1263,87 +1700,233 @@
      "sentence1": {
       "heard_as": "bail be",
       "ok": false,
-      "how": "ratio 0.67"
+      "how": "ratio 0.67",
+      "closest": "bail be"
      },
      "sentence2": {
       "heard_as": "bailby",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "bailby"
      }
     },
     "small.en": {
      "sentence1": {
       "heard_as": "bail b",
       "ok": false,
-      "how": "ratio 0.73"
+      "how": "ratio 0.73",
+      "closest": "bail b"
      },
      "sentence2": {
       "heard_as": "bailby",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "bailby"
      }
     }
    },
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "not verified: BEEL-bee /ˈbiːlbi/ (pronouncenames.com) or BILL-bee; espeak says BAIL-bee, heard as 'Bailby'",
    "pass_after_fix": false,
-   "attempts": []
+   "attempts": [
+    {
+     "ipa": "bˈiːlbi",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː bˈiːlbi .",
+      "sentence2": "bˈiːlbi hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Bilby.",
+       "sentence2": "Beelby has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Bealby.",
+       "sentence2": "Bielby has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "bilby",
+        "ok": true,
+        "how": "ratio 0.91"
+       },
+       "sentence2": {
+        "heard_as": "beelby",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "beelby"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "bealby",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "bealby"
+       },
+       "sentence2": {
+        "heard_as": "bielby",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "bielby"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "bˈiːlbˌiː",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː bˈiːlbˌiː .",
+      "sentence2": "bˈiːlbˌiː hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Bilby.",
+       "sentence2": "Beelby has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Bealby.",
+       "sentence2": "Bealby has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "bilby",
+        "ok": true,
+        "how": "ratio 0.91"
+       },
+       "sentence2": {
+        "heard_as": "beelby",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "beelby"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "bealby",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "bealby"
+       },
+       "sentence2": {
+        "heard_as": "bealby",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "bealby"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "bˈɪlbi",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː bˈɪlbi .",
+      "sentence2": "bˈɪlbi hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Bilby.",
+       "sentence2": "Billby has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Bilby.",
+       "sentence2": "Bilby has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "bilby",
+        "ok": true,
+        "how": "ratio 0.91"
+       },
+       "sentence2": {
+        "heard_as": "billby",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "billby"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "bilby",
+        "ok": true,
+        "how": "ratio 0.91"
+       },
+       "sentence2": {
+        "heard_as": "bilby",
+        "ok": true,
+        "how": "ratio 0.91"
+       }
+      }
+     },
+     "passed": false
+    }
+   ],
+   "note": "Pronunciation not verified (BAIL-bee, BEEL-bee and BILL-bee are all given for the surname)."
   },
   {
-   "name": "wilm",
+   "name": "preston",
    "kind": "call",
    "in_use": true,
-   "namesake": "Alfred Wilm",
-   "text": "Wilm",
-   "ipa_espeak": "wˈɪlm",
+   "namesake": "George Dawson Preston",
+   "text": "Preston",
+   "ipa_espeak": "pɹˈɛstən",
    "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə wˈɪlm.",
-    "sentence2": "wˈɪlm hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pɹˈɛstən.",
+    "sentence2": "pɹˈɛstən hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
    },
    "heard": {
     "base.en": {
-     "sentence1": "Next, the arm takes the bar to will.",
-     "sentence2": "Wilm has finished so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Preston.",
+     "sentence2": "Preston has finished, so the robot comes back."
     },
     "small.en": {
-     "sentence1": "Next, the arm takes the bar to film.",
-     "sentence2": "Wilm has finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Preston.",
+     "sentence2": "Preston has finished, so the robot comes back."
     }
    },
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "will",
-      "ok": false,
-      "how": "ratio 0.75"
+      "heard_as": "preston",
+      "ok": true,
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "wilm",
+      "heard_as": "preston",
       "ok": true,
       "how": "exact"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "film",
-      "ok": false,
-      "how": "ratio 0.75"
+      "heard_as": "preston",
+      "ok": true,
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "wilm",
+      "heard_as": "preston",
       "ok": true,
       "how": "exact"
      }
     }
    },
-   "pass_first_try": false,
+   "pass_first_try": true,
    "fix": null,
-   "fix_for": "recognizer",
+   "fix_for": null,
    "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "baekeland",
@@ -1371,7 +1954,8 @@
      "sentence1": {
       "heard_as": "be killin'",
       "ok": false,
-      "how": "ratio 0.56"
+      "how": "ratio 0.56",
+      "closest": "be killin'"
      },
      "sentence2": {
       "heard_as": "bekeland",
@@ -1383,12 +1967,14 @@
      "sentence1": {
       "heard_as": "bekylland",
       "ok": false,
-      "how": "ratio 0.78"
+      "how": "ratio 0.78",
+      "closest": "bekylland"
      },
      "sentence2": {
       "heard_as": "beekilland",
       "ok": false,
-      "how": "ratio 0.74"
+      "how": "ratio 0.74",
+      "closest": "beekilland"
      }
     }
    },
@@ -1419,12 +2005,14 @@
        "sentence1": {
         "heard_as": "baycland",
         "ok": false,
-        "how": "ratio 0.71"
+        "how": "ratio 0.71",
+        "closest": "baycland"
        },
        "sentence2": {
         "heard_as": "baycland",
         "ok": false,
-        "how": "ratio 0.71"
+        "how": "ratio 0.71",
+        "closest": "baycland"
        }
       },
       "small.en": {
@@ -1436,7 +2024,8 @@
        "sentence2": {
         "heard_as": "baykland",
         "ok": false,
-        "how": "ratio 0.82"
+        "how": "ratio 0.82",
+        "closest": "baykland"
        }
       }
      },
@@ -1463,12 +2052,14 @@
        "sentence1": {
         "heard_as": "baycland",
         "ok": false,
-        "how": "ratio 0.71"
+        "how": "ratio 0.71",
+        "closest": "baycland"
        },
        "sentence2": {
         "heard_as": "bayclan",
         "ok": false,
-        "how": "ratio 0.62"
+        "how": "ratio 0.62",
+        "closest": "bayclan"
        }
       },
       "small.en": {
@@ -1507,7 +2098,8 @@
        "sentence1": {
         "heard_as": "bayclund",
         "ok": false,
-        "how": "ratio 0.59"
+        "how": "ratio 0.59",
+        "closest": "bayclund"
        },
        "sentence2": {
         "heard_as": "bakeland",
@@ -1530,61 +2122,63 @@
      },
      "passed": false
     }
-   ]
+   ],
+   "note": null
   },
   {
-   "name": "schlenk",
+   "name": "rutherford",
    "kind": "call",
    "in_use": true,
-   "namesake": "Wilhelm Schlenk",
-   "text": "Schlenk",
-   "ipa_espeak": "ʃlˈɛŋk",
+   "namesake": "Daniel Rutherford",
+   "text": "Rutherford",
+   "ipa_espeak": "ɹˈʌðɚfɚd",
    "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ʃlˈɛŋk.",
-    "sentence2": "ʃlˈɛŋk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ɹˈʌðɚfɚd.",
+    "sentence2": "ɹˈʌðɚfɚd hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
    },
    "heard": {
     "base.en": {
-     "sentence1": "Next, the arm takes the bar to shlink.",
-     "sentence2": "Schlink has finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Rutherford.",
+     "sentence2": "Rutherford has finished, so the robot comes back."
     },
     "small.en": {
-     "sentence1": "Next, the arm takes the bar to schlink.",
-     "sentence2": "Schlank has finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Rutherford.",
+     "sentence2": "Rutherford has finished, so the robot comes back."
     }
    },
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "shlink",
-      "ok": false,
-      "how": "ratio 0.77"
+      "heard_as": "rutherford",
+      "ok": true,
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "schlink",
+      "heard_as": "rutherford",
       "ok": true,
-      "how": "ratio 0.86"
+      "how": "exact"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "schlink",
+      "heard_as": "rutherford",
       "ok": true,
-      "how": "ratio 0.86"
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "schlank",
+      "heard_as": "rutherford",
       "ok": true,
-      "how": "ratio 0.86"
+      "how": "exact"
      }
     }
    },
-   "pass_first_try": false,
+   "pass_first_try": true,
    "fix": null,
-   "fix_for": "recognizer",
+   "fix_for": null,
    "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "sorby",
@@ -1638,61 +2232,63 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
-   "name": "petch",
+   "name": "griffith",
    "kind": "call",
    "in_use": true,
-   "namesake": "Norman Petch",
-   "text": "Petch",
-   "ipa_espeak": "pˈɛtʃ",
+   "namesake": "A. A. Griffith",
+   "text": "Griffith",
+   "ipa_espeak": "ɡɹˈɪfɪθ",
    "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pˈɛtʃ.",
-    "sentence2": "pˈɛtʃ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ɡɹˈɪfɪθ.",
+    "sentence2": "ɡɹˈɪfɪθ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
    },
    "heard": {
     "base.en": {
-     "sentence1": "Next, the arm takes the bar to patch.",
-     "sentence2": "Petch is finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Griffith.",
+     "sentence2": "Griffith has finished, so the robot comes back."
     },
     "small.en": {
-     "sentence1": "Next, the arm takes the bar to patch.",
-     "sentence2": "Petch is finished, so the robot comes back."
+     "sentence1": "Next, the arm takes the bar to Griffith.",
+     "sentence2": "Griffith has finished, so the robot comes back."
     }
    },
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "patch",
-      "ok": false,
-      "how": "ratio 0.80"
+      "heard_as": "griffith",
+      "ok": true,
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "petch",
+      "heard_as": "griffith",
       "ok": true,
       "how": "exact"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "patch",
-      "ok": false,
-      "how": "ratio 0.80"
+      "heard_as": "griffith",
+      "ok": true,
+      "how": "exact"
      },
      "sentence2": {
-      "heard_as": "petch",
+      "heard_as": "griffith",
       "ok": true,
       "how": "exact"
      }
     }
    },
-   "pass_first_try": false,
+   "pass_first_try": true,
    "fix": null,
-   "fix_for": "recognizer",
+   "fix_for": null,
    "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "sandland",
@@ -1746,7 +2342,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "noddack",
@@ -1774,33 +2371,183 @@
      "sentence1": {
       "heard_as": "nadek",
       "ok": false,
-      "how": "ratio 0.50"
+      "how": "ratio 0.50",
+      "closest": "nadek"
      },
      "sentence2": {
       "heard_as": "nadek is",
       "ok": false,
-      "how": "ratio 0.50"
+      "how": "ratio 0.50",
+      "closest": "nadek"
      }
     },
     "small.en": {
      "sentence1": {
       "heard_as": "nodak",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "nodak"
      },
      "sentence2": {
       "heard_as": "nadek",
       "ok": false,
-      "how": "ratio 0.50"
+      "how": "ratio 0.50",
+      "closest": "nadek"
      }
     }
    },
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "NOD-ack /ˈnɒdæk/ (German [ˈnɔdak]); espeak says NAH-dack, heard as 'Nadek', 'Nodak'",
    "pass_after_fix": false,
-   "attempts": []
+   "attempts": [
+    {
+     "ipa": "nˈɔdæk",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː nˈɔdæk .",
+      "sentence2": "nˈɔdæk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Nodac.",
+       "sentence2": "Nadek is finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Nodak.",
+       "sentence2": "Nodek has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "nodac",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodac"
+       },
+       "sentence2": {
+        "heard_as": "nadek is",
+        "ok": false,
+        "how": "ratio 0.50",
+        "closest": "nadek"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "nodak",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodak"
+       },
+       "sentence2": {
+        "heard_as": "nodek",
+        "ok": false,
+        "how": "ratio 0.67",
+        "closest": "nodek"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "nˈɑːdˌæk",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː nˈɑːdˌæk .",
+      "sentence2": "nˈɑːdˌæk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Nodac.",
+       "sentence2": "Nodac is finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Nodak.",
+       "sentence2": "Nodak has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "nodac",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodac"
+       },
+       "sentence2": {
+        "heard_as": "nodac is",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodac"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "nodak",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodak"
+       },
+       "sentence2": {
+        "heard_as": "nodak",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodak"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "nˈɔːdˌæk",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː nˈɔːdˌæk .",
+      "sentence2": "nˈɔːdˌæk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Nodac.",
+       "sentence2": "Nodac is finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Nodak.",
+       "sentence2": "Nodak has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "nodac",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodac"
+       },
+       "sentence2": {
+        "heard_as": "nodac is",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodac"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "nodak",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodak"
+       },
+       "sentence2": {
+        "heard_as": "nodak",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "nodak"
+       }
+      }
+     },
+     "passed": false
+    }
+   ],
+   "note": null
   },
   {
    "name": "maudslay",
@@ -1828,24 +2575,28 @@
      "sentence1": {
       "heard_as": "motsley",
       "ok": false,
-      "how": "ratio 0.53"
+      "how": "ratio 0.53",
+      "closest": "motsley"
      },
      "sentence2": {
       "heard_as": "motsley",
       "ok": false,
-      "how": "ratio 0.53"
+      "how": "ratio 0.53",
+      "closest": "motsley"
      }
     },
     "small.en": {
      "sentence1": {
       "heard_as": "mod slay",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "mod slay"
      },
      "sentence2": {
       "heard_as": "motsley",
       "ok": false,
-      "how": "ratio 0.53"
+      "how": "ratio 0.53",
+      "closest": "motsley"
      }
     }
    },
@@ -1878,12 +2629,14 @@
        "sentence1": {
         "heard_as": "motsley",
         "ok": false,
-        "how": "ratio 0.53"
+        "how": "ratio 0.53",
+        "closest": "motsley"
        },
        "sentence2": {
         "heard_as": "motsley",
         "ok": false,
-        "how": "ratio 0.53"
+        "how": "ratio 0.53",
+        "closest": "motsley"
        }
       },
       "small.en": {
@@ -1895,7 +2648,8 @@
        "sentence2": {
         "heard_as": "motsley",
         "ok": false,
-        "how": "ratio 0.53"
+        "how": "ratio 0.53",
+        "closest": "motsley"
        }
       }
      },
@@ -1945,7 +2699,8 @@
      },
      "passed": true
     }
-   ]
+   ],
+   "note": null
   },
   {
    "name": "eisler",
@@ -1999,7 +2754,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "senefelder",
@@ -2032,7 +2788,8 @@
      "sentence2": {
       "heard_as": "santa felder",
       "ok": false,
-      "how": "ratio 0.76"
+      "how": "ratio 0.76",
+      "closest": "santa felder"
      }
     },
     "small.en": {
@@ -2049,11 +2806,151 @@
     }
    },
    "pass_first_try": false,
-   "fix": null,
+   "fix": {
+    "ipa": "sˈɛnɛfˌɛldɚ"
+   },
    "fix_for": "recognizer",
-   "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "aiming_at": "SEN-uh-fel-der /ˈsɛnəfɛldər/ (English; German and Merriam-Webster ZAY-nuh-fel-der)",
+   "pass_after_fix": true,
+   "attempts": [
+    {
+     "ipa": "sˈɛnəfˌɛldɚ",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː sˈɛnəfˌɛldɚ .",
+      "sentence2": "sˈɛnəfˌɛldɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Senna Felder.",
+       "sentence2": "Santa Felder has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Senefelder.",
+       "sentence2": "Senefelder has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "senna felder",
+        "ok": true,
+        "how": "ratio 0.86"
+       },
+       "sentence2": {
+        "heard_as": "santa felder",
+        "ok": false,
+        "how": "ratio 0.76",
+        "closest": "santa felder"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "senefelder",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "senefelder",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "zˈeɪnəfˌɛldɚ",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː zˈeɪnəfˌɛldɚ .",
+      "sentence2": "zˈeɪnəfˌɛldɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Zaina Felder. Zaina Felder.",
+       "sentence2": "Zaina Felder has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Zeinefelder.",
+       "sentence2": "Zaina Felder has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "zaina felder zaina felder",
+        "ok": false,
+        "how": "ratio 0.75",
+        "closest": "felder"
+       },
+       "sentence2": {
+        "heard_as": "zaina felder",
+        "ok": false,
+        "how": "ratio 0.75",
+        "closest": "felder"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "zeinefelder",
+        "ok": true,
+        "how": "ratio 0.86"
+       },
+       "sentence2": {
+        "heard_as": "zaina felder",
+        "ok": false,
+        "how": "ratio 0.75",
+        "closest": "felder"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "sˈɛnɛfˌɛldɚ",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː sˈɛnɛfˌɛldɚ .",
+      "sentence2": "sˈɛnɛfˌɛldɚ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Senna Felder.",
+       "sentence2": "Sena Felder has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Senefelder.",
+       "sentence2": "Senefelder has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "senna felder",
+        "ok": true,
+        "how": "ratio 0.86"
+       },
+       "sentence2": {
+        "heard_as": "sena felder",
+        "ok": true,
+        "how": "ratio 0.90"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "senefelder",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "senefelder",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": true
+    }
+   ],
+   "note": null
   },
   {
    "name": "maiman",
@@ -2081,31 +2978,35 @@
      "sentence1": {
       "heard_as": "maimin",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "maimin"
      },
      "sentence2": {
       "heard_as": "mamen",
       "ok": false,
-      "how": "ratio 0.73"
+      "how": "ratio 0.73",
+      "closest": "mamen"
      }
     },
     "small.en": {
      "sentence1": {
       "heard_as": "maimon",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "maimon"
      },
      "sentence2": {
       "heard_as": "maimon",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "maimon"
      }
     }
    },
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": "MY-mun /ˈmaɪmən/ (as he said it); espeak says MAY-mun",
+   "aiming_at": "MY-mun /ˈmaɪmən/; espeak says MAY-mun",
    "pass_after_fix": false,
    "attempts": [
     {
@@ -2129,24 +3030,28 @@
        "sentence1": {
         "heard_as": "my men",
         "ok": false,
-        "how": "ratio 0.55"
+        "how": "ratio 0.55",
+        "closest": "my men"
        },
        "sentence2": {
         "heard_as": "maimon",
         "ok": false,
-        "how": "ratio 0.83"
+        "how": "ratio 0.83",
+        "closest": "maimon"
        }
       },
       "small.en": {
        "sentence1": {
         "heard_as": "my men",
         "ok": false,
-        "how": "ratio 0.55"
+        "how": "ratio 0.55",
+        "closest": "my men"
        },
        "sentence2": {
         "heard_as": "maimon",
         "ok": false,
-        "how": "ratio 0.83"
+        "how": "ratio 0.83",
+        "closest": "maimon"
        }
       }
      },
@@ -2173,30 +3078,83 @@
        "sentence1": {
         "heard_as": "my man",
         "ok": false,
-        "how": "ratio 0.73"
+        "how": "ratio 0.73",
+        "closest": "my man"
        },
        "sentence2": {
         "heard_as": "my man",
         "ok": false,
-        "how": "ratio 0.73"
+        "how": "ratio 0.73",
+        "closest": "my man"
        }
       },
       "small.en": {
        "sentence1": {
         "heard_as": "my man",
         "ok": false,
-        "how": "ratio 0.73"
+        "how": "ratio 0.73",
+        "closest": "my man"
        },
        "sentence2": {
         "heard_as": "my man",
         "ok": false,
-        "how": "ratio 0.73"
+        "how": "ratio 0.73",
+        "closest": "my man"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "mˈaɪmæn",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː mˈaɪmæn .",
+      "sentence2": "mˈaɪmæn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to my men.",
+       "sentence2": "My men has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to my men.",
+       "sentence2": "My men has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "my men",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "my men"
+       },
+       "sentence2": {
+        "heard_as": "my men",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "my men"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "my men",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "my men"
+       },
+       "sentence2": {
+        "heard_as": "my men",
+        "ok": false,
+        "how": "ratio 0.55",
+        "closest": "my men"
        }
       }
      },
      "passed": false
     }
-   ]
+   ],
+   "note": null
   },
   {
    "name": "faraday",
@@ -2250,7 +3208,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "agricola",
@@ -2331,7 +3290,8 @@
        "sentence2": {
         "heard_as": "a curricula",
         "ok": false,
-        "how": "ratio 0.67"
+        "how": "ratio 0.67",
+        "closest": "a curricula"
        }
       },
       "small.en": {
@@ -2375,7 +3335,8 @@
        "sentence2": {
         "heard_as": "a curricula",
         "ok": false,
-        "how": "ratio 0.67"
+        "how": "ratio 0.67",
+        "closest": "a curricula"
        }
       },
       "small.en": {
@@ -2392,8 +3353,54 @@
       }
      },
      "passed": false
+    },
+    {
+     "ipa": "æɡɹˈɪkələ",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː æɡɹˈɪkələ .",
+      "sentence2": "æɡɹˈɪkələ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to a curricula.",
+       "sentence2": "Agricola has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Agricola.",
+       "sentence2": "Agricola has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "a curricula",
+        "ok": false,
+        "how": "ratio 0.67",
+        "closest": "a curricula"
+       },
+       "sentence2": {
+        "heard_as": "agricola",
+        "ok": true,
+        "how": "exact"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "agricola",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "agricola",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
     }
-   ]
+   ],
+   "note": "espeak's ag-ri-KOH-luh passes; the standard uh-GRIK-uh-luh is heard by base.en as 'a curricula'."
   },
   {
    "name": "deckard",
@@ -2447,7 +3454,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "ramsay",
@@ -2548,7 +3556,8 @@
      },
      "passed": true
     }
-   ]
+   ],
+   "note": "The kept fix, SAY 'Ramsey', is read ɹˈæmsi (RAM-see); IPA ɹˈæmzi would give RAM-zee."
   },
   {
    "name": "mclean",
@@ -2602,7 +3611,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": "espeak says muh-KLEEN; Malcom McLean is often said muh-KLANE (not verified, not tested)."
   },
   {
    "name": "kirkaldy",
@@ -2654,7 +3664,7 @@
    "pass_first_try": true,
    "fix": null,
    "fix_for": "pronunciation",
-   "aiming_at": "kur-KAW-dee /kərˈkɔːdi/ (said like the Fife town Kirkcaldy); espeak says KUR-kal-dee",
+   "aiming_at": "kur-KAW-dee /kərˈkɔːdi/, as the Fife town Kirkcaldy (not verified for David Kirkaldy); espeak says KUR-kal-dee",
    "pass_after_fix": false,
    "attempts": [
     {
@@ -2678,24 +3688,28 @@
        "sentence1": {
         "heard_as": "curcati",
         "ok": false,
-        "how": "ratio 0.27"
+        "how": "ratio 0.27",
+        "closest": "curcati"
        },
        "sentence2": {
         "heard_as": "kirkati",
         "ok": false,
-        "how": "ratio 0.67"
+        "how": "ratio 0.67",
+        "closest": "kirkati"
        }
       },
       "small.en": {
        "sentence1": {
         "heard_as": "kerkati",
         "ok": false,
-        "how": "ratio 0.53"
+        "how": "ratio 0.53",
+        "closest": "kerkati"
        },
        "sentence2": {
         "heard_as": "kerkati",
         "ok": false,
-        "how": "ratio 0.53"
+        "how": "ratio 0.53",
+        "closest": "kerkati"
        }
       }
      },
@@ -2722,30 +3736,35 @@
        "sentence1": {
         "heard_as": "kirkotty",
         "ok": false,
-        "how": "ratio 0.62"
+        "how": "ratio 0.62",
+        "closest": "kirkotty"
        },
        "sentence2": {
         "heard_as": "kirk auti",
         "ok": false,
-        "how": "ratio 0.67"
+        "how": "ratio 0.67",
+        "closest": "kirk"
        }
       },
       "small.en": {
        "sentence1": {
         "heard_as": "kirkhottie",
         "ok": false,
-        "how": "ratio 0.44"
+        "how": "ratio 0.44",
+        "closest": "kirkhottie"
        },
        "sentence2": {
         "heard_as": "kirk hoddy",
         "ok": false,
-        "how": "ratio 0.71"
+        "how": "ratio 0.71",
+        "closest": "kirk hoddy"
        }
       }
      },
      "passed": false
     }
-   ]
+   ],
+   "note": "espeak's spelling pronunciation passes; the Scottish kur-KAW-dee is heard as 'Kirkotty', 'Curcati'."
   },
   {
    "name": "galileo",
@@ -2799,7 +3818,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "davy",
@@ -2853,7 +3873,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "gibbs",
@@ -2907,7 +3928,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "lazarenko",
@@ -2940,7 +3962,8 @@
      "sentence2": {
       "heard_as": "lazarranco",
       "ok": false,
-      "how": "ratio 0.74"
+      "how": "ratio 0.74",
+      "closest": "lazarranco"
      }
     },
     "small.en": {
@@ -2957,11 +3980,59 @@
     }
    },
    "pass_first_try": false,
-   "fix": null,
+   "fix": {
+    "ipa": "lˌæzɐɹˈɛnkoʊ"
+   },
    "fix_for": "recognizer",
-   "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "aiming_at": "laz-uh-REN-ko /ˌlæzəˈrɛŋkoʊ/ (espeak's is right; base.en hears 'Lazarranco')",
+   "pass_after_fix": true,
+   "attempts": [
+    {
+     "ipa": "lˌæzɐɹˈɛnkoʊ",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː lˌæzɐɹˈɛnkoʊ .",
+      "sentence2": "lˌæzɐɹˈɛnkoʊ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Lazarenco.",
+       "sentence2": "Lazarenco has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Lazarenko.",
+       "sentence2": "Lazarenko has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "lazarenco",
+        "ok": true,
+        "how": "ratio 0.89"
+       },
+       "sentence2": {
+        "heard_as": "lazarenco",
+        "ok": true,
+        "how": "ratio 0.89"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "lazarenko",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "lazarenko",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": true
+    }
+   ],
+   "note": null
   },
   {
    "name": "javan",
@@ -3006,14 +4077,15 @@
      "sentence2": {
       "heard_as": "javin",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "javin"
      }
     }
    },
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": "juh-VAHN /dʒəˈvɑːn/ (Persian Javan, stress last); espeak says JAH-van",
+   "aiming_at": "juh-VAHN /dʒəˈvɑːn/ (Persian Javān, long stressed final vowel); espeak says JAH-van",
    "pass_after_fix": false,
    "attempts": [
     {
@@ -3037,30 +4109,130 @@
        "sentence1": {
         "heard_as": "javon",
         "ok": false,
-        "how": "ratio 0.80"
+        "how": "ratio 0.80",
+        "closest": "javon"
        },
        "sentence2": {
         "heard_as": "javon",
         "ok": false,
-        "how": "ratio 0.80"
+        "how": "ratio 0.80",
+        "closest": "javon"
        }
       },
       "small.en": {
        "sentence1": {
         "heard_as": "jevon",
         "ok": false,
-        "how": "ratio 0.60"
+        "how": "ratio 0.60",
+        "closest": "jevon"
        },
        "sentence2": {
         "heard_as": "jevon",
         "ok": false,
-        "how": "ratio 0.60"
+        "how": "ratio 0.60",
+        "closest": "jevon"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "dʒævˈɑːn",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː dʒævˈɑːn .",
+      "sentence2": "dʒævˈɑːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Jevon.",
+       "sentence2": "Jevon has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Jevon.",
+       "sentence2": "Jevon has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "jevon",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "jevon"
+       },
+       "sentence2": {
+        "heard_as": "jevon",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "jevon"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "jevon",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "jevon"
+       },
+       "sentence2": {
+        "heard_as": "jevon",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "jevon"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "dʒɑːvˈɑːn",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː dʒɑːvˈɑːn .",
+      "sentence2": "dʒɑːvˈɑːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Jovon.",
+       "sentence2": "Jovon has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Javan.",
+       "sentence2": "Jovan has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "jovon",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "jovon"
+       },
+       "sentence2": {
+        "heard_as": "jovon",
+        "ok": false,
+        "how": "ratio 0.60",
+        "closest": "jovon"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "javan",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "jovan",
+        "ok": false,
+        "how": "ratio 0.80",
+        "closest": "jovan"
        }
       }
      },
      "passed": false
     }
-   ]
+   ],
+   "note": null
   },
   {
    "name": "brunel",
@@ -3161,7 +4333,8 @@
      },
      "passed": true
     }
-   ]
+   ],
+   "note": null
   },
   {
    "name": "aston",
@@ -3189,24 +4362,28 @@
      "sentence1": {
       "heard_as": "a stun",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "a stun"
      },
      "sentence2": {
       "heard_as": "estan",
       "ok": false,
-      "how": "ratio 0.60"
+      "how": "ratio 0.60",
+      "closest": "estan"
      }
     },
     "small.en": {
      "sentence1": {
       "heard_as": "a stun",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.80",
+      "closest": "a stun"
      },
      "sentence2": {
       "heard_as": "estan",
       "ok": false,
-      "how": "ratio 0.60"
+      "how": "ratio 0.60",
+      "closest": "estan"
      }
     }
    },
@@ -3254,57 +4431,105 @@
        "sentence2": {
         "heard_as": "astin",
         "ok": false,
-        "how": "ratio 0.80"
+        "how": "ratio 0.80",
+        "closest": "astin"
        }
       }
      },
      "passed": false
     },
     {
-     "say": "Asston",
+     "ipa": "ˈæstɒn",
      "phonemes": {
-      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tʊ ɐstˈɑːn.",
-      "sentence2": "ɐstˈɑːn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ˈæstɒn .",
+      "sentence2": "ˈæstɒn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
      },
      "heard": {
       "base.en": {
-       "sentence1": "Next, the arm takes the bar to a stun.",
-       "sentence2": "Estan has finished, so the robot comes back."
+       "sentence1": "Next, the arm takes the bar to Aston.",
+       "sentence2": "asked on his finished, so the robot comes back."
       },
       "small.en": {
-       "sentence1": "Next, the arm takes the bar to a stun.",
-       "sentence2": "Estan has finished, so the robot comes back."
+       "sentence1": "Next, the arm takes the bar to Aston.",
+       "sentence2": "Aston has finished, so the robot comes back."
       }
      },
      "slot": {
       "base.en": {
        "sentence1": {
-        "heard_as": "a stun",
-        "ok": false,
-        "how": "ratio 0.80"
+        "heard_as": "aston",
+        "ok": true,
+        "how": "exact"
        },
        "sentence2": {
-        "heard_as": "estan",
+        "heard_as": "asked on his",
         "ok": false,
-        "how": "ratio 0.60"
+        "how": "ratio 0.67",
+        "closest": "asked on"
        }
       },
       "small.en": {
        "sentence1": {
-        "heard_as": "a stun",
-        "ok": false,
-        "how": "ratio 0.80"
+        "heard_as": "aston",
+        "ok": true,
+        "how": "exact"
        },
        "sentence2": {
-        "heard_as": "estan",
+        "heard_as": "aston",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "ˈæstʌn",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ˈæstʌn .",
+      "sentence2": "ˈæstʌn hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Aston.",
+       "sentence2": "Astun has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Aston.",
+       "sentence2": "Aston has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "aston",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "astun",
         "ok": false,
-        "how": "ratio 0.60"
+        "how": "ratio 0.80",
+        "closest": "astun"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "aston",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "aston",
+        "ok": true,
+        "how": "exact"
        }
       }
      },
      "passed": false
     }
-   ]
+   ],
+   "note": "SAY 'Asston' was tried as attempt 2, but espeak reads it as its own ɐstˈɑːn (the first try's audio); replaced by IPA ˈæstɒn."
   },
   {
    "name": "blodgett",
@@ -3358,7 +4583,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "unimate",
@@ -3415,7 +4641,7 @@
     "ipa": "jˈuːnɪmˌeɪt"
    },
    "fix_for": "pronunciation",
-   "aiming_at": "YOO-nih-mate /ˈjuːnɪmeɪt/ (from 'universal automation'); espeak says UN-ih-MATE",
+   "aiming_at": "YOO-nih-mate /ˈjuːnɪmeɪt/ (from 'universal automation'); espeak says UN-ih-MATE, heard as 'animate'",
    "pass_after_fix": true,
    "attempts": [
     {
@@ -3462,7 +4688,8 @@
      },
      "passed": true
     }
-   ]
+   ],
+   "note": "First try accepted only by the ratio: heard as 'animate'."
   },
   {
    "name": "genghis",
@@ -3495,7 +4722,8 @@
      "sentence2": {
       "heard_as": "jengus",
       "ok": false,
-      "how": "ratio 0.62"
+      "how": "ratio 0.62",
+      "closest": "jengus"
      }
     },
     "small.en": {
@@ -3512,11 +4740,59 @@
     }
    },
    "pass_first_try": false,
-   "fix": null,
+   "fix": {
+    "ipa": "ɡˈɛŋɡɪs"
+   },
    "fix_for": "recognizer",
-   "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "aiming_at": "JENG-gis /ˈdʒɛŋɡɪs/, or GENG-gis (Merriam-Webster); base.en hears 'Jengus'",
+   "pass_after_fix": true,
+   "attempts": [
+    {
+     "ipa": "ɡˈɛŋɡɪs",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː ɡˈɛŋɡɪs .",
+      "sentence2": "ɡˈɛŋɡɪs hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Genghis.",
+       "sentence2": "Genghis has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Genghis.",
+       "sentence2": "Genghis has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "genghis",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "genghis",
+        "ok": true,
+        "how": "exact"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "genghis",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "genghis",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": true
+    }
+   ],
+   "note": null
   },
   {
    "name": "cascade",
@@ -3549,7 +4825,8 @@
      "sentence2": {
       "heard_as": "kissgate",
       "ok": false,
-      "how": "ratio 0.40"
+      "how": "ratio 0.40",
+      "closest": "kissgate"
      }
     },
     "small.en": {
@@ -3561,22 +4838,71 @@
      "sentence2": {
       "heard_as": "kiscade",
       "ok": false,
-      "how": "ratio 0.71"
+      "how": "ratio 0.71",
+      "closest": "kiscade"
      }
     }
    },
    "pass_first_try": false,
-   "fix": null,
+   "fix": {
+    "ipa": "kæskˈeɪd"
+   },
    "fix_for": "recognizer",
-   "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "aiming_at": "kas-KADE /kæˈskeɪd/; espeak reduces the first vowel (kuh-SKADE), heard as 'Kissgate'",
+   "pass_after_fix": true,
+   "attempts": [
+    {
+     "ipa": "kæskˈeɪd",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː kæskˈeɪd .",
+      "sentence2": "kæskˈeɪd hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to cascade.",
+       "sentence2": "Cascade has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to cascade.",
+       "sentence2": "Cascade has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "cascade",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "cascade",
+        "ok": true,
+        "how": "exact"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "cascade",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "cascade",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": true
+    }
+   ],
+   "note": null
   },
   {
    "name": "lonepeak",
    "kind": "spare",
    "in_use": true,
-   "namesake": "",
+   "namesake": "Lone Peak (Wasatch, over Alpine and Draper)",
    "text": "Lonepeak",
    "ipa_espeak": "lˈoʊnpiːk",
    "phonemes": {
@@ -3624,7 +4950,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "moseley",
@@ -3652,12 +4979,14 @@
      "sentence1": {
       "heard_as": "mostly",
       "ok": false,
-      "how": "ratio 0.77"
+      "how": "ratio 0.77",
+      "closest": "mostly"
      },
      "sentence2": {
       "heard_as": "mostly",
       "ok": false,
-      "how": "ratio 0.77"
+      "how": "ratio 0.77",
+      "closest": "mostly"
      }
     },
     "small.en": {
@@ -3669,7 +4998,8 @@
      "sentence2": {
       "heard_as": "mostly",
       "ok": false,
-      "how": "ratio 0.77"
+      "how": "ratio 0.77",
+      "closest": "mostly"
      }
     }
    },
@@ -3678,7 +5008,7 @@
     "ipa": "mˈoʊzli"
    },
    "fix_for": "recognizer",
-   "aiming_at": "MOHZ-lee /ˈmoʊzli/ (Merriam-Webster); espeak says MOHSS-lee",
+   "aiming_at": "MOHZ-lee /ˈmoʊzli/ (Merriam-Webster); espeak says MOHSS-lee, heard as 'mostly'",
    "pass_after_fix": true,
    "attempts": [
     {
@@ -3725,7 +5055,8 @@
      },
      "passed": true
     }
-   ]
+   ],
+   "note": null
   },
   {
    "name": "bragg",
@@ -3782,150 +5113,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
-  },
-  {
-   "name": "pourbaix",
-   "kind": "spare",
-   "in_use": true,
-   "namesake": "Marcel Pourbaix",
-   "text": "Pourbaix",
-   "ipa_espeak": "pˈɔːɹbeɪks",
-   "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pˈɔːɹbeɪks.",
-    "sentence2": "pˈɔːɹbeɪks hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
-   },
-   "heard": {
-    "base.en": {
-     "sentence1": "Next, the arm takes the bar to poor bakes.",
-     "sentence2": "Poor Bakes is finished, so the robot comes back."
-    },
-    "small.en": {
-     "sentence1": "Next, the arm takes the bar to pour bakes.",
-     "sentence2": "Poor Bakes is finished, so the robot comes back."
-    }
-   },
-   "slot": {
-    "base.en": {
-     "sentence1": {
-      "heard_as": "poor bakes",
-      "ok": false,
-      "how": "ratio 0.59"
-     },
-     "sentence2": {
-      "heard_as": "poor bakes is",
-      "ok": false,
-      "how": "ratio 0.63"
-     }
-    },
-    "small.en": {
-     "sentence1": {
-      "heard_as": "pour bakes",
-      "ok": false,
-      "how": "ratio 0.71"
-     },
-     "sentence2": {
-      "heard_as": "poor bakes is",
-      "ok": false,
-      "how": "ratio 0.63"
-     }
-    }
-   },
-   "pass_first_try": false,
-   "fix": null,
-   "fix_for": "recognizer",
-   "aiming_at": "poor-BAY /pʊərˈbeɪ/ (French, final x silent); espeak says POR-bayks",
-   "pass_after_fix": false,
-   "attempts": [
-    {
-     "ipa": "pʊɹbˈeɪ",
-     "phonemes": {
-      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː pʊɹbˈeɪ .",
-      "sentence2": "pʊɹbˈeɪ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
-     },
-     "heard": {
-      "base.en": {
-       "sentence1": "Next, the arm takes the bar to purvey.",
-       "sentence2": "Poor Bay has finished, so the robot comes back."
-      },
-      "small.en": {
-       "sentence1": "Next, the arm takes the bar to purvey.",
-       "sentence2": "Porbet has finished, so the robot comes back."
-      }
-     },
-     "slot": {
-      "base.en": {
-       "sentence1": {
-        "heard_as": "purvey",
-        "ok": false,
-        "how": "ratio 0.43"
-       },
-       "sentence2": {
-        "heard_as": "poor bay",
-        "ok": false,
-        "how": "ratio 0.67"
-       }
-      },
-      "small.en": {
-       "sentence1": {
-        "heard_as": "purvey",
-        "ok": false,
-        "how": "ratio 0.43"
-       },
-       "sentence2": {
-        "heard_as": "porbet",
-        "ok": false,
-        "how": "ratio 0.57"
-       }
-      }
-     },
-     "passed": false
-    },
-    {
-     "say": "Poor-bay",
-     "phonemes": {
-      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə pˈʊɹbˈeɪ.",
-      "sentence2": "pˈʊɹbˈeɪ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
-     },
-     "heard": {
-      "base.en": {
-       "sentence1": "Next, the arm takes the bar to poor bay.",
-       "sentence2": "Poor Bay has finished, so the robot comes back."
-      },
-      "small.en": {
-       "sentence1": "Next, the arm takes the bar to poor bay.",
-       "sentence2": "Poor Bey has finished, so the robot comes back."
-      }
-     },
-     "slot": {
-      "base.en": {
-       "sentence1": {
-        "heard_as": "poor bay",
-        "ok": false,
-        "how": "ratio 0.67"
-       },
-       "sentence2": {
-        "heard_as": "poor bay",
-        "ok": false,
-        "how": "ratio 0.67"
-       }
-      },
-      "small.en": {
-       "sentence1": {
-        "heard_as": "poor bay",
-        "ok": false,
-        "how": "ratio 0.67"
-       },
-       "sentence2": {
-        "heard_as": "poor bey",
-        "ok": false,
-        "how": "ratio 0.53"
-       }
-      }
-     },
-     "passed": false
-    }
-   ]
+   "attempts": [],
+   "note": "'brag' is the same sound (accepted by the ratio)."
   },
   {
    "name": "kibble",
@@ -3979,7 +5168,63 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
+  },
+  {
+   "name": "whitworth",
+   "kind": "spare",
+   "in_use": true,
+   "namesake": "Joseph Whitworth",
+   "text": "Whitworth",
+   "ipa_espeak": "wˈɪtwɜːθ",
+   "phonemes": {
+    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə wˈɪtwɜːθ.",
+    "sentence2": "wˈɪtwɜːθ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+   },
+   "heard": {
+    "base.en": {
+     "sentence1": "Next, the arm takes the bar to Whitworth.",
+     "sentence2": "Whitworth is finished, so the robot comes back."
+    },
+    "small.en": {
+     "sentence1": "Next, the arm takes the bar to Whitworth.",
+     "sentence2": "Whitworth has finished, so the robot comes back."
+    }
+   },
+   "slot": {
+    "base.en": {
+     "sentence1": {
+      "heard_as": "whitworth",
+      "ok": true,
+      "how": "exact"
+     },
+     "sentence2": {
+      "heard_as": "whitworth",
+      "ok": true,
+      "how": "exact"
+     }
+    },
+    "small.en": {
+     "sentence1": {
+      "heard_as": "whitworth",
+      "ok": true,
+      "how": "exact"
+     },
+     "sentence2": {
+      "heard_as": "whitworth",
+      "ok": true,
+      "how": "exact"
+     }
+    }
+   },
+   "pass_first_try": true,
+   "fix": null,
+   "fix_for": null,
+   "aiming_at": null,
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "bodoni",
@@ -4007,87 +5252,179 @@
      "sentence1": {
       "heard_as": "badoni",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "badoni"
      },
      "sentence2": {
       "heard_as": "badoni",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "badoni"
      }
     },
     "small.en": {
      "sentence1": {
       "heard_as": "badoni",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "badoni"
      },
      "sentence2": {
       "heard_as": "bedoni",
       "ok": false,
-      "how": "ratio 0.83"
+      "how": "ratio 0.83",
+      "closest": "bedoni"
      }
     }
    },
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "buh-DOH-nee /bəˈdoʊni/ (Merriam-Webster), or Italian boh-DOH-nee; heard as 'Badoni'",
    "pass_after_fix": false,
-   "attempts": []
-  },
-  {
-   "name": "schawlow",
-   "kind": "spare",
-   "in_use": true,
-   "namesake": "Arthur Schawlow",
-   "text": "Schawlow",
-   "ipa_espeak": "ʃˈɔːloʊ",
-   "phonemes": {
-    "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə ʃˈɔːloʊ.",
-    "sentence2": "ʃˈɔːloʊ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
-   },
-   "heard": {
-    "base.en": {
-     "sentence1": "Next, the arm takes the bar to shallow.",
-     "sentence2": "Shallow has finished, so the robot comes back."
-    },
-    "small.en": {
-     "sentence1": "Next, the arm takes the bar to shallow.",
-     "sentence2": "Shallow has finished, so the robot comes back."
-    }
-   },
-   "slot": {
-    "base.en": {
-     "sentence1": {
-      "heard_as": "shallow",
-      "ok": false,
-      "how": "ratio 0.80"
+   "attempts": [
+    {
+     "ipa": "boʊdˈoʊni",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː boʊdˈoʊni .",
+      "sentence2": "boʊdˈoʊni hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
      },
-     "sentence2": {
-      "heard_as": "shallow",
-      "ok": false,
-      "how": "ratio 0.80"
-     }
-    },
-    "small.en": {
-     "sentence1": {
-      "heard_as": "shallow",
-      "ok": false,
-      "how": "ratio 0.80"
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Bowdoni.",
+       "sentence2": "Bo Doney has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Bodoni.",
+       "sentence2": "Bodoni has finished, so the robot comes back."
+      }
      },
-     "sentence2": {
-      "heard_as": "shallow",
-      "ok": false,
-      "how": "ratio 0.80"
-     }
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "bowdoni",
+        "ok": true,
+        "how": "ratio 0.92"
+       },
+       "sentence2": {
+        "heard_as": "bo doney",
+        "ok": false,
+        "how": "ratio 0.77",
+        "closest": "bo doney"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "bodoni",
+        "ok": true,
+        "how": "exact"
+       },
+       "sentence2": {
+        "heard_as": "bodoni",
+        "ok": true,
+        "how": "exact"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "bɔdˈoʊni",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː bɔdˈoʊni .",
+      "sentence2": "bɔdˈoʊni hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Badoni.",
+       "sentence2": "Bodoni has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Badoni.",
+       "sentence2": "Badoni has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "badoni",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "badoni"
+       },
+       "sentence2": {
+        "heard_as": "bodoni",
+        "ok": true,
+        "how": "exact"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "badoni",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "badoni"
+       },
+       "sentence2": {
+        "heard_as": "badoni",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "badoni"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "bɑːdˈoʊni",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tuː bɑːdˈoʊni .",
+      "sentence2": "bɑːdˈoʊni hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to Badoni.",
+       "sentence2": "Badoni has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Badoni.",
+       "sentence2": "Badoni has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "badoni",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "badoni"
+       },
+       "sentence2": {
+        "heard_as": "badoni",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "badoni"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "badoni",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "badoni"
+       },
+       "sentence2": {
+        "heard_as": "badoni",
+        "ok": false,
+        "how": "ratio 0.83",
+        "closest": "badoni"
+       }
+      }
+     },
+     "passed": false
     }
-   },
-   "pass_first_try": false,
-   "fix": null,
-   "fix_for": "recognizer",
-   "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   ],
+   "note": null
   },
   {
    "name": "tray Alfa",
@@ -4114,26 +5451,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray alpha",
+      "heard_as": "alpha",
       "ok": true,
-      "how": "variant alpha"
+      "how": "variant alpha",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey alpha",
+      "heard_as": "alpha",
       "ok": true,
-      "how": "variant trey; variant alpha"
+      "how": "variant alpha",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray alpha",
+      "heard_as": "alpha",
       "ok": true,
-      "how": "variant alpha"
+      "how": "variant alpha",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey alpha",
+      "heard_as": "alpha",
       "ok": true,
-      "how": "variant trey; variant alpha"
+      "how": "variant alpha",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4142,7 +5483,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Bravo",
@@ -4169,26 +5511,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray bravo",
+      "heard_as": "bravo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey bravo",
+      "heard_as": "bravo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray bravo",
+      "heard_as": "bravo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey bravo",
+      "heard_as": "bravo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4197,7 +5543,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Charlie",
@@ -4224,26 +5571,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "trade charlie",
+      "heard_as": "charlie",
       "ok": true,
-      "how": "ratio 0.87"
+      "how": "exact",
+      "tray_heard_as": "trade"
      },
      "sentence2": {
-      "heard_as": "trey charlie",
+      "heard_as": "charlie",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey charley",
+      "heard_as": "charley",
       "ok": true,
-      "how": "variant trey; ratio 0.86 (charley)"
+      "how": "variant charley",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey charley",
+      "heard_as": "charley",
       "ok": true,
-      "how": "variant trey; ratio 0.86 (charley)"
+      "how": "variant charley",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4252,7 +5603,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Delta",
@@ -4279,26 +5631,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray delta",
+      "heard_as": "delta",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey delta",
+      "heard_as": "delta",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray delta",
+      "heard_as": "delta",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey delta",
+      "heard_as": "delta",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4307,7 +5663,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Echo",
@@ -4334,26 +5691,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray echo",
+      "heard_as": "echo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey echo",
+      "heard_as": "echo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray echo",
+      "heard_as": "echo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey echo",
+      "heard_as": "echo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4362,7 +5723,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Foxtrot",
@@ -4389,26 +5751,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray foxtrot",
+      "heard_as": "foxtrot",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey foxtrot",
+      "heard_as": "foxtrot",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey foxtrot",
+      "heard_as": "foxtrot",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey foxtrot",
+      "heard_as": "foxtrot",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4417,7 +5783,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Golf",
@@ -4444,26 +5811,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray golf",
+      "heard_as": "golf",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey golf",
+      "heard_as": "golf",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray golf",
+      "heard_as": "golf",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey golf",
+      "heard_as": "golf",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4472,7 +5843,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Hotel",
@@ -4499,26 +5871,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray hotel",
+      "heard_as": "hotel",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey hotel",
+      "heard_as": "hotel",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey hotel",
+      "heard_as": "hotel",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey hotel",
+      "heard_as": "hotel",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4527,7 +5903,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray India",
@@ -4554,26 +5931,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray india",
+      "heard_as": "india",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey india",
+      "heard_as": "india",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray india",
+      "heard_as": "india",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey india",
+      "heard_as": "india",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4582,7 +5963,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Juliett",
@@ -4609,35 +5991,40 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "trade juliet",
-      "ok": false,
-      "how": "ratio 0.82"
+      "heard_as": "juliet",
+      "ok": true,
+      "how": "variant juliet",
+      "tray_heard_as": "trade"
      },
      "sentence2": {
-      "heard_as": "trey juliet",
+      "heard_as": "juliet",
       "ok": true,
-      "how": "variant trey; variant juliet"
+      "how": "variant juliet",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trade juliet",
-      "ok": false,
-      "how": "ratio 0.82"
+      "heard_as": "juliet",
+      "ok": true,
+      "how": "variant juliet",
+      "tray_heard_as": "trade"
      },
      "sentence2": {
-      "heard_as": "trey juliet",
+      "heard_as": "juliet",
       "ok": true,
-      "how": "variant trey; variant juliet"
+      "how": "variant juliet",
+      "tray_heard_as": "trey"
      }
     }
    },
-   "pass_first_try": false,
+   "pass_first_try": true,
    "fix": null,
-   "fix_for": "recognizer",
+   "fix_for": null,
    "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "pass_after_fix": null,
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Kilo",
@@ -4664,26 +6051,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray kilo",
+      "heard_as": "kilo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey kilo",
+      "heard_as": "kilo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray kilo",
+      "heard_as": "kilo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey kilo",
+      "heard_as": "kilo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4692,7 +6083,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Lima",
@@ -4719,26 +6111,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray lima",
+      "heard_as": "lima",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey lima",
+      "heard_as": "lima",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey lima",
+      "heard_as": "lima",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey lima",
+      "heard_as": "lima",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4747,7 +6143,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Mike",
@@ -4774,35 +6171,142 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray mic",
+      "heard_as": "mic",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.57",
+      "closest": "mic",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey mike",
+      "heard_as": "mike",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray mic",
+      "heard_as": "mic",
       "ok": false,
-      "how": "ratio 0.80"
+      "how": "ratio 0.57",
+      "closest": "mic",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey mike",
+      "heard_as": "mike",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "MIKE (espeak's is right; heard as 'mic')",
    "pass_after_fix": false,
-   "attempts": []
+   "attempts": [
+    {
+     "ipa": "mˈaɪːk",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tɹˈeɪ mˈaɪːk .",
+      "sentence2": "tɹˈeɪ mˈaɪːk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to tray Mike.",
+       "sentence2": "Trey Mike has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to tray mic.",
+       "sentence2": "Trey Mike has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "mike",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "tray"
+       },
+       "sentence2": {
+        "heard_as": "mike",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "mic",
+        "ok": false,
+        "how": "ratio 0.57",
+        "closest": "mic",
+        "tray_heard_as": "tray"
+       },
+       "sentence2": {
+        "heard_as": "mike",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "mˈaɪkʰ",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tɹˈeɪ mˈaɪkʰ .",
+      "sentence2": "tɹˈeɪ mˈaɪkʰ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to tray mic.",
+       "sentence2": "Trey Mike has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to tray mic.",
+       "sentence2": "Trey Mike has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "mic",
+        "ok": false,
+        "how": "ratio 0.57",
+        "closest": "mic",
+        "tray_heard_as": "tray"
+       },
+       "sentence2": {
+        "heard_as": "mike",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "mic",
+        "ok": false,
+        "how": "ratio 0.57",
+        "closest": "mic",
+        "tray_heard_as": "tray"
+       },
+       "sentence2": {
+        "heard_as": "mike",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      }
+     },
+     "passed": false
+    }
+   ],
+   "note": "'mic' is the same sound: nothing in the voice to fix."
   },
   {
    "name": "tray November",
@@ -4829,26 +6333,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "train november",
+      "heard_as": "november",
       "ok": true,
-      "how": "ratio 0.88"
+      "how": "exact",
+      "tray_heard_as": "train"
      },
      "sentence2": {
-      "heard_as": "train november",
+      "heard_as": "november",
       "ok": true,
-      "how": "ratio 0.88"
+      "how": "exact",
+      "tray_heard_as": "train"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "train november",
+      "heard_as": "november",
       "ok": true,
-      "how": "ratio 0.88"
+      "how": "exact",
+      "tray_heard_as": "train"
      },
      "sentence2": {
-      "heard_as": "trey november",
+      "heard_as": "november",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4857,7 +6365,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Oscar",
@@ -4884,26 +6393,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray oscar",
+      "heard_as": "oscar",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey oscar",
+      "heard_as": "oscar",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey oscar",
+      "heard_as": "oscar",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey oscar",
+      "heard_as": "oscar",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4912,7 +6425,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Papa",
@@ -4939,26 +6453,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray papa",
+      "heard_as": "papa",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey papa",
+      "heard_as": "papa",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray papa",
+      "heard_as": "papa",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey papa",
+      "heard_as": "papa",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -4967,7 +6485,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Quebec",
@@ -4994,35 +6513,142 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray qua back",
+      "heard_as": "qua back",
       "ok": false,
-      "how": "ratio 0.76"
+      "how": "ratio 0.62",
+      "closest": "qua back",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey quebec",
+      "heard_as": "quebec",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey quebec",
+      "heard_as": "quebec",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey quebec",
+      "heard_as": "quebec",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
    "pass_first_try": false,
-   "fix": null,
+   "fix": {
+    "ipa": "kwɪbˈɛk"
+   },
    "fix_for": "recognizer",
-   "aiming_at": null,
-   "pass_after_fix": false,
-   "attempts": []
+   "aiming_at": "keh-BECK (ICAO spelling alphabet); espeak says kwih-BECK",
+   "pass_after_fix": true,
+   "attempts": [
+    {
+     "ipa": "kɛbˈɛk",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tɹˈeɪ kɛbˈɛk .",
+      "sentence2": "tɹˈeɪ kɛbˈɛk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to tray Quebec.",
+       "sentence2": "Trey Quebec has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Trey Kebec.",
+       "sentence2": "Trey Kebec has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "quebec",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "tray"
+       },
+       "sentence2": {
+        "heard_as": "quebec",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "trey kebec",
+        "ok": false,
+        "how": "ratio 0.73",
+        "closest": "kebec",
+        "tray_heard_as": "trey"
+       },
+       "sentence2": {
+        "heard_as": "trey kebec",
+        "ok": false,
+        "how": "ratio 0.73",
+        "closest": "kebec",
+        "tray_heard_as": "trey"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "kwɪbˈɛk",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tɹˈeɪ kwɪbˈɛk .",
+      "sentence2": "tɹˈeɪ kwɪbˈɛk hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to tray Quebec.",
+       "sentence2": "Trey Quebec has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Trey Quebec.",
+       "sentence2": "Trey Quebec has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "quebec",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "tray"
+       },
+       "sentence2": {
+        "heard_as": "quebec",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "quebec",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       },
+       "sentence2": {
+        "heard_as": "quebec",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      }
+     },
+     "passed": true
+    }
+   ],
+   "note": null
   },
   {
    "name": "tray Romeo",
@@ -5049,26 +6675,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray romeo",
+      "heard_as": "romeo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey romeo",
+      "heard_as": "romeo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray romeo",
+      "heard_as": "romeo",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey romeo",
+      "heard_as": "romeo",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5077,7 +6707,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Sierra",
@@ -5106,33 +6737,192 @@
      "sentence1": {
       "heard_as": "trace the era",
       "ok": false,
-      "how": "ratio 0.57"
+      "how": "ratio 0.67",
+      "closest": "era",
+      "tray_heard_as": "trace"
      },
      "sentence2": {
       "heard_as": "tracy era",
       "ok": false,
-      "how": "ratio 0.78"
+      "how": "ratio 0.67",
+      "closest": "era",
+      "tray_heard_as": "tracy"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey sierra",
+      "heard_as": "sierra",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
       "heard_as": "tracey era",
       "ok": false,
-      "how": "ratio 0.74"
+      "how": "ratio 0.67",
+      "closest": "era",
+      "tray_heard_as": "tracey"
      }
     }
    },
    "pass_first_try": false,
    "fix": null,
    "fix_for": "recognizer",
-   "aiming_at": null,
+   "aiming_at": "see-AIR-uh (ICAO); 'tray Sierra' is heard as 'Tracy era'",
    "pass_after_fix": false,
-   "attempts": []
+   "attempts": [
+    {
+     "ipa": "sˌiːˈɛɹə",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tɹˈeɪ sˌiːˈɛɹə .",
+      "sentence2": "tɹˈeɪ sˌiːˈɛɹə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to trace the era.",
+       "sentence2": "Tracy era has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to trace Sierra.",
+       "sentence2": "Tracy era has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "trace the era",
+        "ok": false,
+        "how": "ratio 0.67",
+        "closest": "era",
+        "tray_heard_as": "trace"
+       },
+       "sentence2": {
+        "heard_as": "tracy era",
+        "ok": false,
+        "how": "ratio 0.67",
+        "closest": "era",
+        "tray_heard_as": "tracy"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "sierra",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trace"
+       },
+       "sentence2": {
+        "heard_as": "tracy era",
+        "ok": false,
+        "how": "ratio 0.67",
+        "closest": "era",
+        "tray_heard_as": "tracy"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "sˈiːɛɹə",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tɹˈeɪ sˈiːɛɹə .",
+      "sentence2": "tɹˈeɪ sˈiːɛɹə hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to trace era.",
+       "sentence2": "Traceeira has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to trace Sierra.",
+       "sentence2": "Trey Sierra has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "trace era",
+        "ok": false,
+        "how": "ratio 0.67",
+        "closest": "era",
+        "tray_heard_as": "trace"
+       },
+       "sentence2": {
+        "heard_as": "traceeira",
+        "ok": false,
+        "how": "ratio 0.27",
+        "closest": "traceeira",
+        "tray_heard_as": "traceeira"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "sierra",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trace"
+       },
+       "sentence2": {
+        "heard_as": "sierra",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      }
+     },
+     "passed": false
+    },
+    {
+     "ipa": "siˈɛɹɐ",
+     "phonemes": {
+      "sentence1": "nˈɛkst, ðɪ ˈɑːɹm tˈeɪks ðə bˈɑːɹ tə tɹˈeɪ siˈɛɹɐ .",
+      "sentence2": "tɹˈeɪ siˈɛɹɐ hɐz fˈɪnɪʃt, sˌoʊ ðə ɹˈoʊbɑːt kˈʌmz bˈæk."
+     },
+     "heard": {
+      "base.en": {
+       "sentence1": "Next, the arm takes the bar to tray Sierra.",
+       "sentence2": "Tracyera has finished, so the robot comes back."
+      },
+      "small.en": {
+       "sentence1": "Next, the arm takes the bar to Trey Sierra.",
+       "sentence2": "Trey Sierra has finished, so the robot comes back."
+      }
+     },
+     "slot": {
+      "base.en": {
+       "sentence1": {
+        "heard_as": "sierra",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "tray"
+       },
+       "sentence2": {
+        "heard_as": "tracyera",
+        "ok": false,
+        "how": "ratio 0.29",
+        "closest": "tracyera",
+        "tray_heard_as": "tracyera"
+       }
+      },
+      "small.en": {
+       "sentence1": {
+        "heard_as": "sierra",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       },
+       "sentence2": {
+        "heard_as": "sierra",
+        "ok": true,
+        "how": "exact",
+        "tray_heard_as": "trey"
+       }
+      }
+     },
+     "passed": false
+    }
+   ],
+   "note": null
   },
   {
    "name": "tray Tango",
@@ -5159,26 +6949,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray tango",
+      "heard_as": "tango",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey tango",
+      "heard_as": "tango",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray tango",
+      "heard_as": "tango",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey tango",
+      "heard_as": "tango",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5187,7 +6981,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Uniform",
@@ -5214,26 +7009,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray uniform",
+      "heard_as": "uniform",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trae uniform",
+      "heard_as": "uniform",
       "ok": true,
-      "how": "ratio 0.91"
+      "how": "exact",
+      "tray_heard_as": "trae"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray uniform",
+      "heard_as": "uniform",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey uniform",
+      "heard_as": "uniform",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5242,7 +7041,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Victor",
@@ -5269,26 +7069,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray victor",
+      "heard_as": "victor",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey victor",
+      "heard_as": "victor",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey victor",
+      "heard_as": "victor",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey victor",
+      "heard_as": "victor",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5297,7 +7101,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Whiskey",
@@ -5324,26 +7129,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray whiskey",
+      "heard_as": "whiskey",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey whiskey",
+      "heard_as": "whiskey",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray whiskey",
+      "heard_as": "whiskey",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey whiskey",
+      "heard_as": "whiskey",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5352,7 +7161,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray X-ray",
@@ -5379,26 +7189,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray x ray",
+      "heard_as": "x ray",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey xray",
+      "heard_as": "xray",
       "ok": true,
-      "how": "ratio 0.88"
+      "how": "exact, split differently",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray x ray",
+      "heard_as": "x ray",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey x ray",
+      "heard_as": "x ray",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5407,7 +7221,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Yankee",
@@ -5434,26 +7249,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray yankee",
+      "heard_as": "yankee",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey yankee",
+      "heard_as": "yankee",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "tray yankee",
+      "heard_as": "yankee",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey yankee",
+      "heard_as": "yankee",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5462,7 +7281,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   },
   {
    "name": "tray Zulu",
@@ -5489,26 +7309,30 @@
    "slot": {
     "base.en": {
      "sentence1": {
-      "heard_as": "tray zulu",
+      "heard_as": "zulu",
       "ok": true,
-      "how": "exact"
+      "how": "exact",
+      "tray_heard_as": "tray"
      },
      "sentence2": {
-      "heard_as": "trey zulu",
+      "heard_as": "zulu",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     },
     "small.en": {
      "sentence1": {
-      "heard_as": "trey zulu",
+      "heard_as": "zulu",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      },
      "sentence2": {
-      "heard_as": "trey zulu",
+      "heard_as": "zulu",
       "ok": true,
-      "how": "variant trey"
+      "how": "exact",
+      "tray_heard_as": "trey"
      }
     }
    },
@@ -5517,7 +7341,8 @@
    "fix_for": null,
    "aiming_at": null,
    "pass_after_fix": null,
-   "attempts": []
+   "attempts": [],
+   "note": null
   }
  ]
 }

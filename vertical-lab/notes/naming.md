@@ -13,7 +13,7 @@ Every **station** (an instrument with its computer and accessories, a robot, a S
 people say. The name comes from a family that tells you what class of thing it is, and inside the family from someone
 whose own work is the station's job: the XRD is **lonsdale**, the SEM **ruska**, the tensile frame **kirkaldy**, the
 doser **lavoisier**, the atomizer **faraday**. Everything **bolted to** a station, a tray, a Shuttle or a robot takes
-its parent's name plus a suffix from a fixed list: `lonsdale-pc`, `tray-d-cam0`, `timp-bay-front`, `elsie-arm`. Every
+its parent's name plus a suffix from a fixed list: `lonsdale-pc`, `tray-d-cam0`, `timpanogos-bay-front`, `elsie-arm`. Every
 **physical unit** also gets a permanent asset number (`VCL-0023`) for its label and the records. Trays keep their
 letters, said aloud as NATO words ("tray Delta").
 
@@ -32,7 +32,7 @@ The model has 238 named units: 41 stations, 31 camera units, 31 computers, 27 ot
 `RPI_STREAM_CAM_HOSTNAME` moved to another lab on 2026-11-10, leaving three variables that point at nothing. A name that
 says where a thing is, or what it is looking at, is wrong the day it moves. IEC 81346 makes the same split for plants:
 what a thing does, what it is, and where it is are three separate designations. Here the call name is the job, the
-asset number is the thing, and the location is a field in the registry (`timp, slot R1`), not part of either.
+asset number is the thing, and the location is a field in the registry (`timpanogos, slot R1`), not part of either.
 
 RFC 1178, "Choosing a Name for Your Computer" (1990), says the same of naming a machine after a project or a place:
 "If this isn't wrong now, it inevitably will be." It recommends a theme instead.
@@ -49,7 +49,7 @@ robot scientists are Adam and Eve; Springer Nature ran a piece on instrument nic
 
 | Class | Family | Why |
 |---|---|---|
-| Shuttles | the Wasatch peaks over Provo | the two tallest things in the lab now they are 9.15 m |
+| Shuttles | the Wasatch peaks over Provo | the two tallest things in the lab now they are 9.15 m: timpanogos and nebo |
 | Mobile manipulators | robots of history | Grey Walter's Elsie was built to steer home to her lit hutch to recharge (1949); Edinburgh's Freddy assembled models from a heap of parts by vision (1973). A MiR250 with a UR12e and a wrist camera does both |
 | Polymer printers | pioneers of printing | Gutenberg's press, Aldus's pocket books, Senefelder's lithography |
 | Metal printers | laser and powder-bed pioneers | the process is the laser and the powder bed |
@@ -63,25 +63,25 @@ names plus the 2 couples: the balance of the fields' histories, not a target met
 
 | Name | What | Where | Named for | Why it fits |
 |---|---|---|---|---|
-| **timp** | Kardex Shuttle XP 500, 9.15 m, Shuttle 1 | floor, Shuttle 1 | [Mount Timpanogos](https://en.wikipedia.org/wiki/Mount_Timpanogos), 3,582 m | the peak over Provo; locals call it Timp |
+| **timpanogos** | Kardex Shuttle XP 500, 9.15 m, Shuttle 1 | floor, Shuttle 1 | [Mount Timpanogos](https://en.wikipedia.org/wiki/Mount_Timpanogos), 3,582 m | the peak over Provo. Locals say Timp, but the narration voice's Timp was heard as 'temp' |
 | **nebo** | Kardex Shuttle XP 500, 9.15 m, Shuttle 2 | floor, Shuttle 2 | [Mount Nebo](https://en.wikipedia.org/wiki/Mount_Nebo_(Utah)), 3,637 m | the highest peak of the Wasatch, south of Provo |
 | **elsie** | MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 1 | floor, mobile | [W. Grey Walter's Elsie](https://cyberneticzoo.com/?p=491), 1949 | a robot tortoise built to steer home to its lit hutch to recharge |
 | **freddy** | MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 2 | floor, mobile | [Edinburgh's Freddy](https://en.wikipedia.org/wiki/Freddy_II), 1969-1976 | a hand-eye robot that assembled models from a heap of parts by vision |
-| **ruska** | Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS | timp, slot R1 | [Ernst Ruska](https://en.wikipedia.org/wiki/Ernst_Ruska), 1906-1988 | built the first electron microscope with Max Knoll (1931-33), Nobel 1986 |
-| **lonsdale** | Rigaku MiniFlex XRD | timp, slot R1 | [Kathleen Lonsdale](https://en.wikipedia.org/wiki/Kathleen_Lonsdale), 1903-1971 | X-ray crystallographer; showed by X-ray diffraction that the benzene ring is flat (1929); one of the first two women elected FRS (1945) |
-| **pasteur** | Opentrons OT-2 liquid handler | timp, slot R2 | [Louis Pasteur](https://en.wikipedia.org/wiki/Pasteur_pipette), 1822-1895 | the Pasteur pipette is named for him; the OT-2 is the lab's pipette |
-| **tafel** | CubXL corrosion cell with its EZstat Pro potentiostat | timp, slot R2 | [Julius Tafel](https://en.wikipedia.org/wiki/Tafel_equation), 1862-1918 | the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes |
-| **lavoisier** | multi-doser (chain carousel v5) on an A&D HR-202i | timp, slot R3 | [Antoine and Marie-Anne Paulze Lavoisier](https://en.wikipedia.org/wiki/Marie-Anne_Paulze_Lavoisier), 1743-1794, 1758-1836 | chemistry by the balance: mass in, mass out; she drew the Traite's 13 plates (1789) |
-| **bridgman** | Specac Atlas Autotouch 15T vacuum press | timp, slot R3 | [Percy W. Bridgman](https://en.wikipedia.org/wiki/Percy_Williams_Bridgman), 1882-1961 | high-pressure physics, Nobel 1946 |
-| **tabor** | Plastometrex PLX-Benchtop (indentation plastometry) | timp, slot R4 | [David Tabor](https://en.wikipedia.org/wiki/David_Tabor_(physicist)), 1913-2005 | The Hardness of Metals (1951): indentation hardness as about three times the flow stress, at a representative strain; plastometry turns an indent into a stress-strain curve |
-| **sneddon** | KLA iMicro nanoindenter | timp, slot R4 | [Ian Sneddon](https://doi.org/10.1016/0020-7225(65)90019-4), 1919-2000 | the elastic solution for an axisymmetric punch of arbitrary profile (1965) that nanoindentation's unloading analysis rests on |
-| **tyndall** | Malvern Mastersizer 3000 with Aero S (laser diffraction) | timp, slot R4 | [John Tyndall](https://en.wikipedia.org/wiki/Tyndall_effect), 1820-1893 | the Tyndall effect: light scattered by particles |
-| **beilby** | LECO PX500 grinder-polisher with its disc magazine | timp, slot F2 | [George Beilby](https://www.nature.com/articles/137516a0), 1850-1924 | the Beilby layer, the flowed skin polishing leaves on a metal |
-| **wilm** | Nabertherm NAT 15/65 furnace with the quench tank | timp, slot F2 | [Alfred Wilm](https://nvlpubs.nist.gov/nistpubs/sp958-lide/html/014-015.html), 1869-1937 | found age hardening in aluminium alloys (c. 1906, published 1911); the furnace does the bars' T6 |
-| **baekeland** | LECO MX400 hot mounting press | timp, slot F2 | [Leo Baekeland](https://en.wikipedia.org/wiki/Leo_Baekeland), 1863-1944 | Bakelite, the phenolic of a hot-mounted puck |
-| **schlenk** | the tray's N2 glovebox (ours) | nebo, slot 2R1 | [Wilhelm Schlenk](https://en.wikipedia.org/wiki/Wilhelm_Schlenk), 1879-1943 | the Schlenk line: handling air-sensitive material |
+| **ruska** | Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS | timpanogos, slot R1 | [Ernst Ruska](https://en.wikipedia.org/wiki/Ernst_Ruska), 1906-1988 | built the first electron microscope with Max Knoll (1931-33), Nobel 1986 |
+| **lonsdale** | Rigaku MiniFlex XRD | timpanogos, slot R1 | [Kathleen Lonsdale](https://en.wikipedia.org/wiki/Kathleen_Lonsdale), 1903-1971 | X-ray crystallographer; showed by X-ray diffraction that the benzene ring is flat (1929); one of the first two women elected FRS (1945) |
+| **ostwald** | Opentrons OT-2 liquid handler | timpanogos, slot R2 | [Wilhelm Ostwald](https://en.wikipedia.org/wiki/Pipette), 1853-1932 | developed the Ostwald-Folin pipette, a volumetric pipette for viscous liquids; Nobel 1909 |
+| **tafel** | CubXL corrosion cell with its EZstat Pro potentiostat | timpanogos, slot R2 | [Julius Tafel](https://en.wikipedia.org/wiki/Tafel_equation), 1862-1918 | the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes |
+| **lavoisier** | multi-doser (chain carousel v5) on an A&D HR-202i | timpanogos, slot R3 | [Antoine and Marie-Anne Paulze Lavoisier](https://en.wikipedia.org/wiki/Marie-Anne_Paulze_Lavoisier), 1743-1794, 1758-1836 | chemistry by the balance: mass in, mass out; she drew the Traite's 13 plates (1789) |
+| **bridgman** | Specac Atlas Autotouch 15T vacuum press | timpanogos, slot R3 | [Percy W. Bridgman](https://en.wikipedia.org/wiki/Percy_Williams_Bridgman), 1882-1961 | high-pressure physics, Nobel 1946 |
+| **prandtl** | Plastometrex PLX-Benchtop (indentation plastometry) | timpanogos, slot R4 | [Ludwig Prandtl](https://en.wikipedia.org/wiki/Ludwig_Prandtl), 1875-1953 | On the hardness of plastic bodies (1920): the plastic flow under a punch, the problem indentation plastometry turns back into a stress-strain curve |
+| **sneddon** | KLA iMicro nanoindenter | timpanogos, slot R4 | [Ian Sneddon](https://doi.org/10.1016/0020-7225(65)90019-4), 1919-2000 | the elastic solution for an axisymmetric punch of arbitrary profile (1965) that nanoindentation's unloading analysis rests on |
+| **tyndall** | Malvern Mastersizer 3000 with Aero S (laser diffraction) | timpanogos, slot R4 | [John Tyndall](https://en.wikipedia.org/wiki/Tyndall_effect), 1820-1893 | the Tyndall effect: light scattered by particles |
+| **beilby** | LECO PX500 grinder-polisher with its disc magazine | timpanogos, slot F2 | [George Beilby](https://www.nature.com/articles/137516a0), 1850-1924 | the Beilby layer, the flowed skin polishing leaves on a metal |
+| **preston** | Nabertherm NAT 15/65 furnace with the quench tank | timpanogos, slot F2 | [George Dawson Preston](https://en.wikipedia.org/wiki/George_Dawson_Preston), 1896-1972 | with Guinier, found the zones (1938) that harden an aged Al-Cu alloy, the hardening the furnace's T6 does |
+| **baekeland** | LECO MX400 hot mounting press | timpanogos, slot F2 | [Leo Baekeland](https://en.wikipedia.org/wiki/Leo_Baekeland), 1863-1944 | Bakelite, the phenolic of a hot-mounted puck |
+| **rutherford** | the tray's N2 glovebox (ours) | nebo, slot 2R1 | [Daniel Rutherford](https://en.wikipedia.org/wiki/Daniel_Rutherford), 1749-1819 | isolated nitrogen (1772), the gas this glovebox is purged with |
 | **sorby** | Keyence VHX-7000 digital microscope with EA-300 LIBS | nebo, slot 2R1 | [Henry Clifton Sorby](https://en.wikipedia.org/wiki/Henry_Clifton_Sorby), 1826-1908 | founded metallography (1863): polished, etched steel under the microscope |
-| **petch** | ZwickRoell zwickiLine Z5.0 TN (horizontal tensile) | nebo, slot 2R2 | [Norman Petch](https://en.wikipedia.org/wiki/Grain_boundary_strengthening), 1917-1992 | the Hall-Petch relation: yield strength from grain size, read off tensile tests |
+| **griffith** | ZwickRoell zwickiLine Z5.0 TN (horizontal tensile) | nebo, slot 2R2 | [A. A. Griffith](https://en.wikipedia.org/wiki/Alan_Arnold_Griffith), 1893-1963 | the theory of fracture (1921): a bar's strength is set by its flaws, which every pull to failure tests |
 | **sandland** | Mitutoyo HM-220 micro-Vickers tester | nebo, slot 2R2 | [George E. Sandland](https://www.gracesguide.co.uk/G._E._Sandland), d. 1961 | devised the Vickers test with Robert L. Smith at Vickers Ltd (1921, published 1922) |
 | **noddack** | Bruker S2 PUMA XRF with XY autochanger | nebo, slot 2R3 | [Ida Noddack](https://sites.chemistry.unt.edu/~jimm/REDISCOVERY%207-09-2018/Hexagon%20Articles/rhenium%20and%20technetium.pdf), 1896-1978 | with Walter Noddack and Otto Berg, found rhenium (1925) by its X-ray spectrum, which is what an XRF reads |
 | **maudslay** | Makera Carvera CNC mill | nebo, slot 2R3 | [Henry Maudslay](https://en.wikipedia.org/wiki/Henry_Maudslay), 1771-1831 | the screw-cutting lathe and the machine-tool trade |
@@ -97,8 +97,8 @@ names plus the 2 couples: the balance of the fields' histories, not a target met
 | **brunel** | Meltio robot cell (propeller repair) | floor, (+9.6, -10.7) m | [Isambard Kingdom Brunel](https://en.wikipedia.org/wiki/SS_Great_Britain), 1806-1859 | the SS Great Britain (1843), the first iron, screw-propelled ocean liner |
 | **aston** | Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood | floor, south row's east end (planned, notes/icpms.md) | [Francis Aston](https://en.wikipedia.org/wiki/Francis_William_Aston), 1877-1945 | the mass spectrograph and isotopes, Nobel 1922 |
 | **blodgett** | the atomizer's BN coating station (ours) | floor, beside the atomizer (atom_bn_station.py) | [Katharine Burr Blodgett](https://en.wikipedia.org/wiki/Katharine_Burr_Blodgett), 1898-1979 | thin coatings (Langmuir-Blodgett films, non-reflective glass) |
-| **gutenberg** | Bambu Lab H2D | timp, slot F1 | [Johannes Gutenberg](https://en.wikipedia.org/wiki/Johannes_Gutenberg), c. 1400-1468 | the movable-type press |
-| **aldus** | Bambu Lab A1 mini | timp, slot F1 | [Aldus Manutius](https://en.wikipedia.org/wiki/Aldus_Manutius), c. 1450-1515 | the Aldine Press: italic type and the small, portable octavo book; the H2D's small partner |
+| **gutenberg** | Bambu Lab H2D | timpanogos, slot F1 | [Johannes Gutenberg](https://en.wikipedia.org/wiki/Johannes_Gutenberg), c. 1400-1468 | the movable-type press |
+| **aldus** | Bambu Lab A1 mini | timpanogos, slot F1 | [Aldus Manutius](https://en.wikipedia.org/wiki/Aldus_Manutius), c. 1450-1515 | the Aldine Press: italic type and the small, portable octavo book; the H2D's small partner |
 | **senefelder** | Formlabs Form 4 resin printers with Form Wash and Form Cure | nebo, slot 2F1 | [Alois Senefelder](https://en.wikipedia.org/wiki/Alois_Senefelder), 1771-1834 | invented lithography (1796), which stereolithography is named from |
 | **maiman** | SnowX SnowPod desktop LPBF printers with the NitroPod | nebo, slot 2F2 | [Theodore Maiman](https://en.wikipedia.org/wiki/Theodore_Maiman), 1927-2007 | the first working laser (1960): a small laser for small printers |
 | **deckard** | Aconity MIDI+ LPBF printer and the depowdering box | floor, (+7.0, -0.9) m | [Carl Deckard](https://en.wikipedia.org/wiki/Carl_Deckard), 1961-2019 | invented selective laser sintering: the powder bed and the laser |
@@ -106,9 +106,9 @@ names plus the 2 couples: the balance of the fields' histories, not a target met
 | **javan** | EOS M 400-4 (scale-up) | floor, (-9.4, -10.6) m | [Ali Javan](https://en.wikipedia.org/wiki/Ali_Javan), 1926-2016 | the first gas laser (helium-neon, 1960, with Bennett and Herriott) |
 
 **Siblings** take a number: the two Form 4s are `senefelder-1` and `-2`, the two SnowPods `maiman-1` and `-2`, and the
-three-each plan (notes/three_each.md) would give `pasteur-1` to `-3` and `tafel-1` to `-3`. **Spares** for the next of
+three-each plan (notes/three_each.md) would give `ostwald-1` to `-3` and `tafel-1` to `-3`. **Spares** for the next of
 each class, checked like the rest, are in `naming.SPARES` (`unimate`, `genghis`; `cascade`, `lonepeak`; `moseley`,
-`bragg`, `pourbaix`, `kibble`, `whitworth`; `bodoni`, `schawlow`).
+`bragg`, `kibble`, `whitworth`; `bodoni`).
 
 ## Everything else: parent plus suffix
 
@@ -118,10 +118,10 @@ the call names themselves have none. So a hostname says where to look, and code 
 | Child | Name |
 |---|---|
 | a station's main computer | `ruska-pc` (the bare `ruska` is the station: a DNS alias for its main computer or service) |
-| a station's other units | `ruska-eds`, `tafel-pi`, `sorby-kvm`, `wilm-quench`, `faraday-chiller`, `kirkaldy-oven` |
+| a station's other units | `ruska-eds`, `tafel-pi`, `sorby-kvm`, `preston-quench`, `faraday-chiller`, `kirkaldy-oven` |
 | a tray's camera units, in the model's order | `tray-d-cam0`, `tray-d-cam1`, `tray-d-cam2` (the model's D0-D2) |
 | a tray's services | `tray-d-ups` (its RDU120 card), `tray-d-air` (its AirGradient), `tray-d-sw`, `tray-d-plate` |
-| a Shuttle's | `timp-bay-back`, `timp-bay-front` (the bay's ceiling cameras), `timp-bay-dock`, `timp-r2-dock`, `timp-vac` |
+| a Shuttle's | `timpanogos-bay-back`, `timpanogos-bay-front` (the bay's ceiling cameras), `timpanogos-bay-dock`, `timpanogos-r2-dock`, `timpanogos-vac` |
 | a robot's | `elsie-base` (the MiR250's fleet name), `elsie-arm` (the UR12e control box), `elsie-wrist` (the D405) |
 | a floor station's AirGradient | `faraday-air`, `deckard-air` |
 | the atomizer's camera units (DAL PR 189) | `faraday-front`, `faraday-left`, `faraday-top` |
@@ -168,10 +168,42 @@ station are named for their job: `charger-1`, `exvac-1` (the explosion-proof vac
 | beilby / davy | 5 | 0.5 | beɪlbi / deɪvi |
 | baekeland / sandland | 4 | 0.5 | bikɛlənd / sændlənd |
 
-- **Everyday words.** `gibbs` and `aston` are moderately common words (Zipf 3.65 and 3.66: Gibbs free energy, Aston
-  Villa). Nothing is common enough to be misheard as an ordinary word (`hooke` would be "hook", `young`, `poisson`
-  "poison", `timp` alone is close to "temp").
-- **Said as written by the narration voice.** (in progress in this run: Kokoro speaks each name in two sentences and faster-whisper transcribes them back.)
+- **Everyday words.** `preston`, `gibbs`, `aston` and `griffith` are moderately common words, at Zipf 3.5-3.8
+  (Preston the town, Gibbs free energy, Aston Villa). Names that sound like everyday words are what the voice check
+  below catches (`hooke` would be "hook", `poisson` "poison").
+- **Said right by the narration voice.**
+  - **How it was tested:** every call name, spare and tray word was spoken by the narration's own voice (Kokoro
+    `af_heart`, through `longform.py`'s phoneme path) in two sentences. Each was then transcribed back by faster-whisper
+    base.en and small.en and judged in its slot ([`tts_check.json`](../out/naming/tts_check.json); listen to all of
+    them in [`names.ogg`](../out/naming/names.ogg)).
+  - **Result:** 49 of 69 were heard right the first time, and 8 more with a phoneme fix (Aldus, Maudslay, Senefelder,
+    Lazarenko, Moseley, Cascade, Genghis, Quebec).
+  - **Renamed: six first choices heard as other words.**
+
+    | First choice | Heard as | Now |
+    |---|---|---|
+    | timp (Shuttle 1) | "temp" | **timpanogos** |
+    | pasteur (the OT-2) | "pastor", "posture" | **ostwald** (the Ostwald-Folin pipette) |
+    | schlenk (tray K's glovebox) | "schlink" | **rutherford** (Daniel Rutherford isolated nitrogen in 1772) |
+    | petch (the zwickiLine) | "patch" | **griffith** (A. A. Griffith's theory of fracture) |
+    | tabor (the PIP) | "table", even said right | **prandtl** (his 1920 paper on the hardness of plastic bodies) |
+    | wilm (the furnace) | "will", "film" | **preston** (the Guinier-Preston zones that age-harden Al-Cu) |
+
+    The spares `pourbaix` ("poor bay") and `schawlow` ("shallow") were dropped. Each replacement was checked the same
+    way first; `cauchy` ("Kochi"), `meyer` ("mare") and `guinier` ("get near") failed it.
+  - **Kept: ten said right but spelled differently by the recognizer,** which doesn't know the surname: ruska
+    ("Rusca"), tafel ("Tafle"), sneddon ("Sneton"), beilby ("bail B"), noddack ("Nodak"), maiman ("Maimon"), javan,
+    aston ("a stun"), bodoni ("Badoni"), baekeland. A person hears them as names.
+  - **Pronunciations fixed for people, not for the recognizer:** Lavoisier, Gutenberg, Brunel, Unimate and Ramsay,
+    which the voice said wrong but were still heard right; and Baekeland ("BAKE-land") and Aston ("AS-tun"), which espeak
+    said as "be killin'" and "a-STAHN".
+  - **Not fixed: Agricola and Kirkaldy.** espeak says "ag-ri-KOH-luh" and "KUR-kal-dee". The right forms, "uh-GRIK-uh-luh"
+    and the Scots "kur-KAW-dee", are heard as "a curricula" and "Kirkotty".
+  - **Trays:** "tray Sierra" once ran together as "trace the era", and "tray Mike" is heard as "tray mic", the same
+    sound. The word "tray" itself came back as "trey", "trade" or "train" in 9 of 76 slots, so the narration can say
+    "the Sierra tray".
+  - **Where the fixes live:** `naming.PRONOUNCE`, ready to go into `longform.IPA` when a name is narrated
+    (`longform.py` isn't changed here).
 
 ## Labels
 
@@ -219,7 +251,7 @@ Nothing here renames a real device. When the lab adopts the scheme:
 
 - **#374, cameras on the mobile bases:** `elsie-left`, `elsie-right` and `elsie-mast` (and the same for `freddy`).
 - **#370, security cameras:** a camera takes its parent's name and a place suffix, as the Pi units do
-  (`tray-d-cam0`, `timp-bay-front`). The scheme doesn't care what kind of camera it is.
+  (`tray-d-cam0`, `timpanogos-bay-front`). The scheme doesn't care what kind of camera it is.
 - **#366/#369, a third MiR250 for floor cleaning:** the next robot name in `naming.SPARES` (`unimate`, `genghis`).
 - **#367, the cup and plug machining station:** a call name from the station family. `whitworth` would fit (Joseph
   Whitworth, the standard screw thread and precision machining). It is in the spares and passes every check.

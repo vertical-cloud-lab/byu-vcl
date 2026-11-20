@@ -166,8 +166,8 @@ def trays(rows: list[dict], path: Path) -> None:
             ax.set_xlim(-1260, 1260)
             ax.set_ylim(-470, 640)
             ax.set_aspect("equal")
-    axs[0, 0].set_title("Shuttle 1: timp", fontsize=13, weight="bold", color=ACCENT, loc="left", pad=16)
-    axs[0, 1].set_title("Shuttle 2: nebo", fontsize=13, weight="bold", color=ACCENT, loc="left", pad=16)
+    axs[0, 0].set_title(f"Shuttle 1: {N.STATIONS['vlm'][0]}", fontsize=13, weight="bold", color=ACCENT, loc="left", pad=16)
+    axs[0, 1].set_title(f"Shuttle 2: {N.STATIONS['vlm2'][0]}", fontsize=13, weight="bold", color=ACCENT, loc="left", pad=16)
     fig.suptitle("The trays and what is on them, named (plan view, front of the tray down). Each tray's own services "
                  "take its name: on tray D, cam0 is tray-d-cam0, ups is tray-d-ups, air (the AirGradient on the UPS) "
                  "is tray-d-air.", fontsize=10.5, x=0.02, ha="left", y=0.997)
@@ -221,20 +221,21 @@ def labels(rows: list[dict], path: Path) -> None:
         for row in json.loads(tts.read_text()).get("rows", []):
             if row.get("fix") and row["fix"].get("say"):
                 say[row["name"]] = row["fix"]["say"]
+    S1 = N.STATIONS["vlm"][0]
     st = r["lonsdale"]
     plate = _label(100, 38, [("Lonsdale", 11, True, False, ink),
                              ("XRD · Rigaku MiniFlex", 3.6, False, False, ink2),
-                             (f"{st['asset']} · timp · tray D (Delta)", 3.4, False, True, ink2),
+                             (f"{st['asset']} · {S1} · tray D (Delta)", 3.4, False, True, ink2),
                              ("Kathleen Lonsdale, X-ray crystallographer", 3.0, False, False, ink2)],
                    qr=f"{st['asset']} lonsdale")
     bk = r["baekeland"]
     plate2 = _label(100, 38, [("Baekeland", 11, True, False, ink),
                               ("mounting press · LECO MX400", 3.6, False, False, ink2),
-                              (f"{bk['asset']} · timp · tray F (Foxtrot)", 3.4, False, True, ink2),
+                              (f"{bk['asset']} · {S1} · tray F (Foxtrot)", 3.4, False, True, ink2),
                               (f"say “{say.get('baekeland', 'BAKE-land')}” · Leo Baekeland, Bakelite",
                                3.0, False, False, ink2)], qr=f"{bk['asset']} baekeland")
     tr = r["tray-d"]
-    tray = _label(70, 30, [("D", 13, True, False, ink), ("DELTA · timp R1", 4.0, True, False, ink2),
+    tray = _label(70, 30, [("D", 13, True, False, ink), (f"DELTA · {S1} R1", 4.0, True, False, ink2),
                            (tr["asset"], 3.2, False, True, ink2)], qr=f"{tr['asset']} tray-d")
     rb = r["elsie"]
     robot = _label(100, 38, [("Elsie", 11, True, False, ink), ("MiR250 + UR12e, unit 1", 3.6, False, False, ink2),
@@ -242,7 +243,7 @@ def labels(rows: list[dict], path: Path) -> None:
                              ("after Grey Walter's Elsie (1949)", 3.0, False, False, ink2)],
                    qr=f"{rb['asset']} elsie")
     tags = [_label(62, 12, [(n, 4.6, True, True, ink), (r[n]["asset"], 2.6, False, True, ink2)], qr=None, pad_mm=1.5)
-            for n in ("tray-d-cam0", "tray-d-ups", "lonsdale-pc", "timp-bay-front")]
+            for n in ("tray-d-cam0", "tray-d-ups", "lonsdale-pc", f"{S1}-bay-front")]
     gap = 50
     W = max(plate.width + robot.width, tray.width + plate2.width) + 3 * gap
     H = 150 + plate.height + plate2.height + sum(t.height for t in tags[:2]) + 6 * gap + 90

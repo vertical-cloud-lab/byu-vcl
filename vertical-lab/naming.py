@@ -59,8 +59,9 @@ FAMILIES = {
 W = "https://en.wikipedia.org/wiki/"
 STATIONS = {
     # ---------------------------------------------------------------- tray A
-    "ot2": ("pasteur", "station", "Opentrons OT-2 liquid handler", "Louis Pasteur", "1822-1895",
-            "the Pasteur pipette is named for him; the OT-2 is the lab's pipette", W + "Pasteur_pipette"),
+    "ot2": ("ostwald", "station", "Opentrons OT-2 liquid handler", "Wilhelm Ostwald", "1853-1932",
+            "developed the Ostwald-Folin pipette, a volumetric pipette for viscous liquids; Nobel 1909",
+            W + "Pipette"),
     "cubxl": ("tafel", "station", "CubXL corrosion cell with its EZstat Pro potentiostat", "Julius Tafel", "1862-1918",
               "the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes", W + "Tafel_equation"),
     # ---------------------------------------------------------------- tray B
@@ -82,10 +83,9 @@ STATIONS = {
             "X-ray crystallographer; showed by X-ray diffraction that the benzene ring is flat (1929); one of the "
             "first two women elected FRS (1945)", W + "Kathleen_Lonsdale"),
     # ---------------------------------------------------------------- tray E
-    "pip": ("tabor", "station", "Plastometrex PLX-Benchtop (indentation plastometry)", "David Tabor", "1913-2005",
-            "The Hardness of Metals (1951): indentation hardness as about three times the flow stress, at a "
-            "representative strain; plastometry turns an indent into a stress-strain curve",
-            W + "David_Tabor_(physicist)"),
+    "pip": ("prandtl", "station", "Plastometrex PLX-Benchtop (indentation plastometry)", "Ludwig Prandtl",
+            "1875-1953", "On the hardness of plastic bodies (1920): the plastic flow under a punch, the problem "
+            "indentation plastometry turns back into a stress-strain curve", W + "Ludwig_Prandtl"),
     "nanoindenter": ("sneddon", "station", "KLA iMicro nanoindenter", "Ian Sneddon", "1919-2000",
                      "the elastic solution for an axisymmetric punch of arbitrary profile (1965) that "
                      "nanoindentation's unloading analysis rests on", "https://doi.org/10.1016/0020-7225(65)90019-4"),
@@ -95,21 +95,21 @@ STATIONS = {
     "polisher": ("beilby", "station", "LECO PX500 grinder-polisher with its disc magazine", "George Beilby",
                  "1850-1924", "the Beilby layer, the flowed skin polishing leaves on a metal",
                  "https://www.nature.com/articles/137516a0"),
-    "furnace": ("wilm", "station", "Nabertherm NAT 15/65 furnace with the quench tank", "Alfred Wilm", "1869-1937",
-                "found age hardening in aluminium alloys (c. 1906, published 1911); the furnace does the bars' T6",
-                "https://nvlpubs.nist.gov/nistpubs/sp958-lide/html/014-015.html"),
+    "furnace": ("preston", "station", "Nabertherm NAT 15/65 furnace with the quench tank", "George Dawson Preston",
+                "1896-1972", "with Guinier, found the zones (1938) that harden an aged Al-Cu alloy, the hardening "
+                "the furnace's T6 does", W + "George_Dawson_Preston"),
     "mounting_press": ("baekeland", "station", "LECO MX400 hot mounting press", "Leo Baekeland", "1863-1944",
                        "Bakelite, the phenolic of a hot-mounted puck", W + "Leo_Baekeland"),
     # ---------------------------------------------------------------- tray K
-    "glovebox_tray": ("schlenk", "station", "the tray's N2 glovebox (ours)", "Wilhelm Schlenk", "1879-1943",
-                      "the Schlenk line: handling air-sensitive material", W + "Wilhelm_Schlenk"),
+    "glovebox_tray": ("rutherford", "station", "the tray's N2 glovebox (ours)", "Daniel Rutherford", "1749-1819",
+                      "isolated nitrogen (1772), the gas this glovebox is purged with", W + "Daniel_Rutherford"),
     "vhx": ("sorby", "station", "Keyence VHX-7000 digital microscope with EA-300 LIBS", "Henry Clifton Sorby",
             "1826-1908", "founded metallography (1863): polished, etched steel under the microscope",
             W + "Henry_Clifton_Sorby"),
     # ---------------------------------------------------------------- tray L
-    "tensile_h": ("petch", "station", "ZwickRoell zwickiLine Z5.0 TN (horizontal tensile)", "Norman Petch",
-                  "1917-1992", "the Hall-Petch relation: yield strength from grain size, read off tensile tests",
-                  W + "Grain_boundary_strengthening"),
+    "tensile_h": ("griffith", "station", "ZwickRoell zwickiLine Z5.0 TN (horizontal tensile)", "A. A. Griffith",
+                  "1893-1963", "the theory of fracture (1921): a bar's strength is set by its flaws, which every pull "
+                  "to failure tests", W + "Alan_Arnold_Griffith"),
     "hardness": ("sandland", "station", "Mitutoyo HM-220 micro-Vickers tester", "George E. Sandland", "d. 1961",
                  "devised the Vickers test with Robert L. Smith at Vickers Ltd (1921, published 1922)",
                  "https://www.gracesguide.co.uk/G._E._Sandland"),
@@ -175,20 +175,33 @@ STATIONS = {
               "https://cyberneticzoo.com/?p=491"),
     "unit2": ("freddy", "robot", "MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 2", "Edinburgh's Freddy",
               "1969-1976", "a hand-eye robot that assembled models from a heap of parts by vision", W + "Freddy_II"),
-    "vlm": ("timp", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 1", "Mount Timpanogos", "3,582 m",
-            "the peak over Provo; locals call it Timp", W + "Mount_Timpanogos"),
+    "vlm": ("timpanogos", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 1", "Mount Timpanogos", "3,582 m",
+            "the peak over Provo. Locals say Timp, but the narration voice's Timp was heard as 'temp'",
+            W + "Mount_Timpanogos"),
     "vlm2": ("nebo", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 2", "Mount Nebo", "3,637 m",
              "the highest peak of the Wasatch, south of Provo", W + "Mount_Nebo_(Utah)"),
 }
 # spare names, checked like the rest, for the next unit of a family (the three-each plan, a third robot, Shuttle 3)
 # (dropped by the checks: caxton, too like aston; rammler, like ramsay; tresca, like ruska; ayrton, like aston;
-# shakey, like davy and beilby; ericsson, like Gage Erickson)
+# shakey, like davy and beilby; ericsson, like Gage Erickson. Dropped by the narration voice's check, heard as other
+# words: timp "temp", pasteur "pastor", schlenk "schlink", petch "patch", tabor "table", wilm "will", pourbaix
+# "poor bay", schawlow "shallow")
 SPARES = {
     "robot": ["unimate", "genghis"],
     "shuttle": ["cascade", "lonepeak"],
-    "station": ["moseley", "bragg", "pourbaix", "kibble", "whitworth"],
-    "printer": ["bodoni", "schawlow"],
+    "station": ["moseley", "bragg", "kibble", "whitworth"],
+    "printer": ["bodoni"],
 }
+
+# How the narration voice is to say a name, for longform.SAY / longform.IPA once a name is narrated (longform.py is not
+# changed here). Each passed the voice-and-recognizer check (out/naming/tts_check.json), except Baekeland and Aston,
+# which are the right pronunciations ("BAKE-land", "AS-tun"; espeak said "be killin'" and "a-STAHN") and are heard
+# right by one of the two recognizers.
+PRONOUNCE = {"Lavoisier": {"ipa": "lɐvwˈɑːzieɪ"}, "Gutenberg": {"ipa": "ɡˈuːtənbɜːɹɡ"}, "Aldus": {"ipa": "ˈældʌs"},
+             "Maudslay": {"ipa": "mˈɔːdzli"}, "Senefelder": {"ipa": "sˈɛnɛfˌɛldɚ"}, "Ramsay": {"say": "Ramsey"},
+             "Lazarenko": {"ipa": "lˌæzɐɹˈɛnkoʊ"}, "Brunel": {"ipa": "bɹuːnˈɛl"}, "Unimate": {"ipa": "jˈuːnɪmˌeɪt"},
+             "Genghis": {"ipa": "ɡˈɛŋɡɪs"}, "Cascade": {"ipa": "kæskˈeɪd"}, "Moseley": {"ipa": "mˈoʊzli"},
+             "Quebec": {"ipa": "kwɪbˈɛk"}, "Baekeland": {"ipa": "bˈeɪklænd"}, "Aston": {"ipa": "ˈæstʌn"}}
 
 # Tray letters said aloud. ICAO spells two of them Alfa and Juliett so that they are said the same in every language.
 NATO = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "Alfa Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliett Kilo "

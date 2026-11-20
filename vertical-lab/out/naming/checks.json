@@ -46,6 +46,28 @@
     "both_in_use": true
    },
    {
+    "a": "prandtl",
+    "b": "preston",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "pɹændtəl",
+     "pɹɛstən"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "prandtl",
+    "b": "brunel",
+    "spelled": 4,
+    "sounds": 0.5,
+    "ipa": [
+     "pɹændtəl",
+     "bɹʌnəl"
+    ],
+    "both_in_use": true
+   },
+   {
     "a": "sneddon",
     "b": "sandland",
     "spelled": 5,
@@ -80,6 +102,8 @@
    }
   ],
   "everyday_words": {
+   "preston": 3.79,
+   "griffith": 3.53,
    "gibbs": 3.65,
    "aston": 3.66
   },
@@ -87,27 +111,27 @@
   "lab_word_itself": {}
  },
  "ipa": {
-  "timp": "tɪmp",
+  "timpanogos": "tɪmpɐnoʊɡoʊz",
   "nebo": "niboʊ",
   "elsie": "ɛlsi",
   "freddy": "fɹɛdi",
   "ruska": "ɹʌskə",
   "lonsdale": "lɑnsdeɪl",
-  "pasteur": "pæstʊɹ",
+  "ostwald": "ɑstwəld",
   "tafel": "teɪfəl",
   "lavoisier": "lɐvɔɪziɚ",
   "bridgman": "bɹɪdʒmən",
-  "tabor": "tæbɚ",
+  "prandtl": "pɹændtəl",
   "sneddon": "snɛdən",
   "tyndall": "tɪndɔl",
   "gutenberg": "ɡjutənbɜɡ",
   "aldus": "ɔldəs",
   "beilby": "beɪlbi",
-  "wilm": "wɪlm",
+  "preston": "pɹɛstən",
   "baekeland": "bikɛlənd",
-  "schlenk": "ʃlɛŋk",
+  "rutherford": "ɹʌðɚfɚd",
   "sorby": "sɔɹbi",
-  "petch": "pɛtʃ",
+  "griffith": "ɡɹɪfɪθ",
   "sandland": "sændlənd",
   "noddack": "nɑdæk",
   "maudslay": "mɔdsleɪ",
@@ -134,11 +158,9 @@
   "lonepeak": "loʊnpik",
   "moseley": "moʊsli",
   "bragg": "bɹæɡ",
-  "pourbaix": "pɔɹbeɪks",
   "kibble": "kɪbəl",
   "whitworth": "wɪtwɜθ",
-  "bodoni": "bədoʊni",
-  "schawlow": "ʃɔloʊ"
+  "bodoni": "bədoʊni"
  },
  "ok": true
 }
