@@ -251,3 +251,27 @@ coordinator kept chapter 4 to an audit this round, so the committed MP4 is round
   MiniFlex), D0 35.5 mm, E0 41.7 mm, M0 506 mm; E1's new place is out of reach.
 
 
+
+## Round 13 (2026-11-20): 30 frames to 0
+
+Round 12's 1080p render had 30 frames in collision under the strict rules (14 arm, 16 movers;
+`out/collisions/alloy_powder_r13base.json` is the same code audited at 6 fps). The fixes are in `alloy_powder.py` only,
+since chapter 7 shows the same trays and was being rendered with the current layout. The final audit is at 15 fps
+(`out/collisions/alloy_powder_r13fix15.json`): **0 of 2,625 frames**, arm and movers.
+
+- **The MiniFlex door opens 40 deg, not 80.** Checked on the models alone, the door touches camera D1's head from about
+  42 deg and is 4 mm clear at 40. The poses planned with the door open use 40 too, and the caption says so. To open it
+  wider, D1 (`services.TRAY_CAMS["D"][1]`) would have to move out of the door's swing.
+- **The holder sits 4 mm forward of the goniometer axis.** Centred, its back corner was 3 mm into the stage's theta
+  shaft. The 20 mm well still covers the beam.
+- **The holder doesn't spin during the scan.** The spinning fin went 12 mm into the 2theta arm, and 10 mm through the
+  theta shaft (which the audit can't flag, the stage being the holder's parent), at every theta. The captions say a
+  spinner is not used here. A spinning holder would need `r8_powder.ZBH` without its 30 mm fin, or with one that folds.
+- **The SEM stub carrier goes into the cup's real position,** 30 mm further in and 6 mm higher than before, where it
+  had sat 6 mm low; the move may touch only the cup, so the wrist camera no longer rests on the SEM's front.
+- **The Mastersizer's cover swings up and to the right,** away from the iMicro on the same tray (it went 50 mm into the
+  iMicro's panel). This chapter swaps the lid's path at run time; the instrument tour clip still has it the old way
+  (`instruments.mastersizer`, end point `(-280, -60, 170)` would become `(280, -60, 170)`).
+- **The XRF cup** goes through the arm's park pose between being taken and going over the hatch; the direct move
+  couldn't be planned.
+- **The vial is turned over from 125 mm up, not 95,** clearing two fingertip touches that only showed at 15 fps.
