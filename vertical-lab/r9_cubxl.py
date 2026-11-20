@@ -83,7 +83,7 @@ _CORR_SEGS = (("start", "Copper corrosion on the CubXL, as DAL's copper screen l
               ("acid", "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 µL of "
                        "1 M HNO3 from above the rim with the P20: 320 µL at 62 mM HNO3. The acid tip goes back to "
                        "rack 2."),
-              ("imaged", "10  The head camera images the spot. Next: S2. With the P300 the head works 7.5 min a spot, "
+              ("imaged", "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a spot, "
                          "against 22.5 with the P20 alone (CubXL step times, notes/cubxl_pipettes.md)."),
               ("end", "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the scan, "
                       "then its own tube. On every spot it would swamp the tube's copper (3.4 mC against the "
@@ -680,7 +680,7 @@ def _draw_corr_overlay_r14(sc, img, s):
                  ("leak check  >  cap on  >  OCP 20 min  >  EIS at OCP 10 min  >  LPR ±10 mV", False),
                  ("rest 5 min  >  +50 mV hold 10 min  >  OCP 5 min  >  cap off, rinsed", False),
                  ("well + DI rinse to its tube (3 P300 transfers, the P20 alone took 24)  >  20 µL HNO3", False),
-                 ("6 transfers a spot instead of 33; the head works 7.5 min a spot instead of 22.5", False),
+                 ("6 transfers a spot instead of 33; the head works about 9 min a spot instead of 22.5", False),
                  ("Each piece's second well: the same, OCP only (the companion)", False),
                  ("Selected spots only, last: fill to EIS, then cyclic polarization", True),
                  ("from 50 mV below OCP at 1 mV/s, reversing at 1 mA/cm2, back to E_corr; its own tube", False),

@@ -225,7 +225,7 @@ def t_move(a, b) -> float:
 # DAL's deck at 633995b (protocol.md section 2): CubOS deck x, y of each target
 DECK = dict(S1=(185.0, 240.0), ASW=(318.0, 101.0), S10=(318.0, 134.0), S01=(318.0, 167.0), DI=(318.0, 200.0),
             ACID=(318.0, 68.0), TUBE=(176.0, 36.0), RACK1=(291.3, 89.0), RACK2=(108.0, 89.0), WASTE=(385.0, 150.0),
-            P300RACK=(108.0, 89.0))
+            P300RACK=(68.0, 14.0))            # r9_cubxl's 2 x 4 rack at the front left
 
 
 def transfer_s(src, dst, ul: float, plunger_s_per_ul: float, back: bool = True) -> float:
@@ -257,19 +257,24 @@ def spot_plan(option: str, p300_s_per_ul: float) -> dict:
     elif option in ("P20 + P300", "Flex 1-Channel 1000 uL"):
         flex = option.startswith("Flex")
         big = p300
-        # ASW 135 uL in one transfer with the big pipette; flex: the same 200 uL tip then draws the 15 uL of sulfide
+        # ASW 135 uL in one transfer with the big pipette, the cap back. P300 (as r9_cubxl draws it): that tip only
+        # touches ASW, so it goes back to its rack for the night; the P20 adds the 15 uL of sulfide with a new tip; a
+        # fresh P300 tip mixes S1 (3 strokes). Flex: the same 200 uL tip draws the sulfide after the ASW, then mixes.
         fill += STEP_S["pick_up_tip"] + STEP_S["decap"] + transfer_s(d["ASW"], d["S1"], 135.0, big, back=False)
         fill += t_move(d["S1"], d["ASW"]) + STEP_S["cap"]
         if flex:
             fill += t_move(d["ASW"], d["S10"]) + STEP_S["decap"]
             fill += transfer_s(d["S10"], d["S1"], 15.0, big, back=False) + 3 * STEP_S["mix_cycle"]
-            fill += t_move(d["S1"], d["S10"]) + STEP_S["cap"] + STEP_S["drop_tip"]
+            fill += t_move(d["S1"], d["S10"]) + STEP_S["cap"] + t_move(d["S10"], d["WASTE"]) + STEP_S["drop_tip"]
             tips += 1
         else:
-            fill += STEP_S["drop_tip"] + STEP_S["pick_up_tip"] + STEP_S["decap"]
-            fill += transfer_s(d["S10"], d["S1"], 15.0, p20, back=False) + 3 * STEP_S["mix_cycle"]
-            fill += t_move(d["S1"], d["S10"]) + STEP_S["cap"] + STEP_S["drop_tip"]
-            tips += 2
+            fill += t_move(d["ASW"], d["P300RACK"]) + STEP_S["drop_tip"]               # the ASW tip back to its rack
+            fill += t_move(d["P300RACK"], d["RACK1"]) + STEP_S["pick_up_tip"] + t_move(d["RACK1"], d["S10"])
+            fill += STEP_S["decap"] + transfer_s(d["S10"], d["S1"], 15.0, p20, back=False)
+            fill += t_move(d["S1"], d["S10"]) + STEP_S["cap"] + t_move(d["S10"], d["WASTE"]) + STEP_S["drop_tip"]
+            fill += t_move(d["WASTE"], d["P300RACK"]) + STEP_S["pick_up_tip"] + t_move(d["P300RACK"], d["S1"])
+            fill += 3 * STEP_S["mix_cycle"] + t_move(d["S1"], d["WASTE"]) + STEP_S["drop_tip"]
+            tips += 2                     # the sulfide tip and the mixing tip (the ASW tip serves the night)
         n_tr += 2
         # collect: 150 uL out; a new tip draws 150 uL DI into S1, mixes, carries it to the tube
         col += STEP_S["pick_up_tip"] + transfer_s(d["S1"], d["TUBE"], 150.0, big) + STEP_S["drop_tip"]

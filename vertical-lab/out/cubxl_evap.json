@@ -116,8 +116,8 @@
     150.0
    ],
    "P300RACK": [
-    108.0,
-    89.0
+    68.0,
+    14.0
    ]
   }
  },
@@ -131,18 +131,18 @@
    "tips_per_spot": 3
   },
   "P20 + P300": {
-   "fill_min": 3.093370858210854,
+   "fill_min": 4.433111463451339,
    "collect_min": 3.1624165649641713,
    "acid_min": 1.2896077399120438,
-   "head_min": 7.545395163087069,
+   "head_min": 8.885135768327554,
    "transfers": 6,
    "tips_per_spot": 4
   },
   "Flex 1-Channel 1000 uL": {
-   "fill_min": 2.7660451501498518,
+   "fill_min": 2.8613398036155777,
    "collect_min": 3.1624165649641713,
    "acid_min": 1.2896077399120438,
-   "head_min": 7.218069455026067,
+   "head_min": 7.313364108491793,
    "transfers": 6,
    "tips_per_spot": 3
   }
@@ -159,22 +159,22 @@
     "chloride_rise_pct": 1.401510816341478
    },
    "P20 + P300": {
-    "fill_uL": 0.14509440638609006,
+    "fill_uL": 0.20793487289941978,
     "leak check, open": 0.19400559684637936,
     "cap going on, open": 0.09700279842318968,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.3446430690177942,
-    "total_uL": 1.7807458706734534,
-    "pct_of_150uL": 1.1871639137823022,
-    "chloride_rise_pct": 1.2014268194331157
+    "total_uL": 1.843586337186783,
+    "pct_of_150uL": 1.229057558124522,
+    "chloride_rise_pct": 1.2443513524717176
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.12974121031522293,
+    "fill_uL": 0.1342110013005737,
     "leak check, open": 0.19400559684637936,
     "cap going on, open": 0.09700279842318968,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.3446430690177942,
-    "total_uL": 1.765392674602586,
-    "pct_of_150uL": 1.1769284497350574,
-    "chloride_rise_pct": 1.1909450205020544
+    "total_uL": 1.769862465587937,
+    "pct_of_150uL": 1.1799083103919579,
+    "chloride_rise_pct": 1.1939963728206493
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.43755849835297433,
@@ -210,22 +210,22 @@
     "chloride_rise_pct": 1.8930917810284997
    },
    "P20 + P300": {
-    "fill_uL": 0.19504084576168046,
+    "fill_uL": 0.27951314240008057,
     "leak check, open": 0.2607889348313637,
     "cap going on, open": 0.13039446741568184,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.8075150376986182,
-    "total_uL": 2.393739285707344,
-    "pct_of_150uL": 1.5958261904715627,
-    "chloride_rise_pct": 1.6217057963013426
+    "total_uL": 2.478211582345744,
+    "pct_of_150uL": 1.6521410548971627,
+    "chloride_rise_pct": 1.679895294740863
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.17440255637898297,
+    "fill_uL": 0.18041100174827548,
     "leak check, open": 0.2607889348313637,
     "cap going on, open": 0.13039446741568184,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.8075150376986182,
-    "total_uL": 2.3731009963246468,
-    "pct_of_150uL": 1.5820673308830977,
-    "chloride_rise_pct": 1.6074990481684148
+    "total_uL": 2.3791094416939393,
+    "pct_of_150uL": 1.586072961129293,
+    "chloride_rise_pct": 1.6116346627473188
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.5881810451181979,
@@ -261,22 +261,22 @@
     "chloride_rise_pct": 0.9146503208098622
    },
    "P20 + P300": {
-    "fill_uL": 0.09514796701049968,
+    "fill_uL": 0.13635660339875894,
     "leak check, open": 0.1272222588613951,
     "cap going on, open": 0.06361112943069755,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 0.8817711003369698,
-    "total_uL": 1.1677524556395622,
-    "pct_of_150uL": 0.7785016370930414,
-    "chloride_rise_pct": 0.7846098375229538
+    "total_uL": 1.2089610920278213,
+    "pct_of_150uL": 0.8059740613518809,
+    "chloride_rise_pct": 0.8125227842354033
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.0850798642514629,
+    "fill_uL": 0.08801100085287192,
     "leak check, open": 0.1272222588613951,
     "cap going on, open": 0.06361112943069755,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 0.8817711003369698,
-    "total_uL": 1.1576843528805254,
-    "pct_of_150uL": 0.771789568587017,
-    "chloride_rise_pct": 0.7777924898892286
+    "total_uL": 1.1606154894819345,
+    "pct_of_150uL": 0.773743659654623,
+    "chloride_rise_pct": 0.7797771358023287
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.2869359515877508,
@@ -312,22 +312,22 @@
     "chloride_rise_pct": 2.3582397817844436
    },
    "P20 + P300": {
-    "fill_uL": 0.26161427167900997,
+    "fill_uL": 0.37491955537897514,
     "leak check, open": 0.35133051096317397,
     "cap going on, open": 0.17566525548158698,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.1500417329370745,
-    "total_uL": 2.9386517710608455,
-    "pct_of_150uL": 1.9591011807072305,
-    "chloride_rise_pct": 1.9982488984706448
+    "total_uL": 3.051957054760811,
+    "pct_of_150uL": 2.034638036507207,
+    "chloride_rise_pct": 2.0768953390540412
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.23393150079853306,
+    "fill_uL": 0.2419908129547738,
     "leak check, open": 0.35133051096317397,
     "cap going on, open": 0.17566525548158698,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.1500417329370745,
-    "total_uL": 2.9109690001803683,
-    "pct_of_150uL": 1.9406460001202455,
-    "chloride_rise_pct": 1.9790524013880706
+    "total_uL": 2.919028312336609,
+    "pct_of_150uL": 1.9460188748910725,
+    "chloride_rise_pct": 1.9846403507146837
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.7788246571166396,
@@ -363,22 +363,22 @@
     "chloride_rise_pct": 3.0457410460755563
    },
    "P20 + P300": {
-    "fill_uL": 0.3644541362516091,
+    "fill_uL": 0.5222994213677097,
     "leak check, open": 0.49209474250118307,
     "cap going on, open": 0.24604737125059153,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.627203726899866,
-    "total_uL": 3.7297999769032497,
-    "pct_of_150uL": 2.4865333179355,
-    "chloride_rise_pct": 2.549938385477213
+    "total_uL": 3.8876452620193502,
+    "pct_of_150uL": 2.5917635080129005,
+    "chloride_rise_pct": 2.6607231599209857
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.3258893428038177,
+    "fill_uL": 0.337116748831149,
     "leak check, open": 0.49209474250118307,
     "cap going on, open": 0.24604737125059153,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.627203726899866,
-    "total_uL": 3.691235183455458,
-    "pct_of_150uL": 2.460823455636972,
-    "chloride_rise_pct": 2.5229077615984696
+    "total_uL": 3.7024625894827894,
+    "pct_of_150uL": 2.468308392988526,
+    "chloride_rise_pct": 2.5307757430622413
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 1.068230474812525,

@@ -19,13 +19,13 @@ The CubXL on tray A runs DAL's copper corrosion screen
 ## In short
 
 - **Pipettes: add a P300 beside the P20; don't switch to a Flex.** One OT-2 GEN2 P300 single ($2,950) moves the 135 µL
-  of seawater, the 150 µL collection and the rinse in single transfers: **6 transfers a spot instead of 33, and 7.5
+  of seawater, the 150 µL collection and the rinse in single transfers: **6 transfers a spot instead of 33, and about 9
   min of head time instead of 22.5** (the CubXL's own measured step times). It is the pipette the PANDA firmware was
   written for, so CubOS drives it the way it drives the P20. Accuracy is a wash (±1-2 % at these volumes either way).
   What it really buys is mixing the well after the sulfide. A Flex 1-Channel 1000 µL ($3,600) would need a CAN FD and
   36 V integration that nobody has published, and it is less accurate at 15 µL than the P20 it would replace.
 - **Evaporation is small. Sulfide loss is not.** A spot loses **1-3 %** of the well's water, so chloride rises 1-3 %;
-  two thirds of that happens under the cap during the measurement, and the many small P20 transfers add only 0.3-0.5
+  two thirds of that happens under the cap during the measurement, and the many small P20 transfers add only 0.2-0.4
   µL. The open ICP-MS tubes lose **2-12 %** waiting for the morning: use the morning weight, not 320 µL. But H₂S leaves
   the well far faster than water: under DAL's clearance cap the metal sees **between a tenth and two thirds** of the
   nominal sulfide over the measurement, depending on mixing that nobody controls. Seal the well for sulfide spots
@@ -73,12 +73,12 @@ computed").
 | 150 µL to the tube | 8 × 18.75: ±1.6 %, CV 0.3 % | P300: ±1.0 %, CV 0.4 % | not specified (200 µL tip) |
 | 20 µL of acid | ±1.5 %, CV 0.8 % | the P20: the same (the P300 at its 20 µL floor: ±4 %, 2.5 %) | 50 µL tip: ±2.3 %, CV 1.2 % |
 | Transfers a spot | 33 | 6 | 6 |
-| Head time a spot | **22.5 min**: fill 6.0, collect and rinse 15.2, acid 1.3 | **7.5 min**: 3.1, 3.2, 1.3 | 7.2 min |
-| The well open before the cap goes on | 9 min | 6 min | 6 min |
+| Head time a spot | **22.5 min**: fill 6.0, collect and rinse 15.2, acid 1.3 | **8.9 min**: fill and mix 4.4, 3.2, 1.3 | 7.3 min: 2.9, 3.2, 1.3 |
+| The well open before the cap goes on | 9 min | 7.4 min | 5.9 min |
 | Mixes the 150 µL well after the sulfide? | barely: 20 µL strokes stir the top | yes, with the P300 | yes |
-| New tips a spot | 3 | 4 (2 if the ASW and DI tips, which only ever touch their own stock, are kept for the night as DAL keeps the acid tip) | 3 |
+| New tips a spot | 3 | 4, the ASW tip serving the night as DAL's acid tip does (2 if the mixing tip waits in its slot to collect the same well, and a night tip adds the DI) | 3 |
 | Size | 44.5 × 32.3 mm, 330.5 mm long | a second body the same size, 311.5 mm long | 64 × 50 mm, 374.5 mm long, 2.5 kg (Opentrons' sheet; may include packing) |
-| On the head | as now, on Ben's PAW-V2 mount at (+55, +11) from the capper | a second bracket beside the P20 (34 mm apart, as an OT-2's two mounts are) and **20 mm higher**: its tip then hangs 51.1 mm below the nozzle against the P20's 30.95 (tips 59.3 and 39.2 mm long, 8.2 and 8.25 mm on the nozzle), so both tip ends sit at the same height on the CubXL's one Z axis | an adapter plate for its two captive 2.5 mm screws and the contact pins on its back (the connector isn't published); 200 µL tips hang 48.6 mm |
+| On the head | as now, on Ben's PAW-V2 mount at (+55, +11) from the capper | a second bracket **34 mm in front of the P20** (an OT-2's two mounts are 34 mm apart) and **about 20 mm higher**: a 300 µL tip hangs 51.1 mm below its nozzle against 31 mm for a 20 µL tip (59.3 and 39.2 mm long, 8.2 and 8.25 mm on the nozzle), so both tip ends sit at one height on the CubXL's one Z axis (the model, which hangs the P20's tip 35 mm as DAL does, raises it 16) | an adapter plate for its two captive 2.5 mm screws and the contact pins on its back (the connector isn't published); 200 µL tips hang 48.6 mm |
 | Driven by CubOS? | yes: the PANDA Arduino and a TMC2209 drive the pipette's bare stepper and limit switch over its 10-pin ribbon ([`opentrons-pipette-wiring.md`](../../cubos/docs/opentrons-pipette-wiring.md)) | **yes, the same way.** The PANDA firmware's stock constants *are* a P300 GEN2's (300 µL, `UL_TO_MM` 0.1098, the one constant upstream calibrated: [`cubos/firmware/README.md`](../../cubos/firmware/README.md)), and CubOS already has a `p300_single_gen2` model. Simplest: a second Uno + TMC2209 on its own `/dev/serial/by-id` port with Opentrons' P300 planes (bottom −14.5, blowout −19, drop-tip −37 mm; 9.18 µL/mm; 1.25 A to drop a tip) | **no, not without a project.** It is a smart device: STM32 with its own driver, pressure, capacitive and tip-presence sensors, on CAN FD at 500 kbit/s and 36 V. Opentrons' firmware and host code are open (Apache-2.0, `ot3-firmware`, `opentrons-hardware`), but no one has published running a Flex pipette off a Flex |
 | Cost | owned | **$2,950** (999-00003) + about $40 (Uno, driver board) | $3,600 (999-00187) + a CAN FD adapter and a 36 V supply + the development |
 | Tips | $8.50 a rack of 96 (20 µL) | 300 µL tips $8.50 a rack, in a rack of their own on the deck | $16 a rack (Flex tips) |
@@ -88,14 +88,14 @@ is the 2023 price; the 2024 list had $2,250.
 
 ### What the P300 buys, and what it doesn't
 
-- **Head time, 22.5 → 7.5 min a spot.** DAL's night is set by the measurement (52 min a spot), and the head already
+- **Head time, 22.5 → 8.9 min a spot.** DAL's night is set by the measurement (52 min a spot), and the head already
   collects spot k−1 while spot k is measured, so most of the saving is slack. What comes off the night is the fill
-  (6.0 → 3.1 min a spot, about 25 min over 8 spots). It also takes 27 transfers a spot, about 200 a night, off the
+  (6.0 → 4.4 min a spot with the P300's mixing, about 13 min over 8 spots). It also takes 27 transfers a spot, about 200 a night, off the
   P20's plunger and the gantry.
 - **Accuracy: a wash.** Every option is within ±1-3 % at these volumes. The P20 is the right tool for the 15 µL of
   sulfide and the 20 µL of acid; the P300's single 135 µL is a little better than seven P20 draws in systematic
   error and a little worse in scatter.
-- **Evaporation: not a reason** (§2: 0.3-0.5 µL a spot, against 2-3.5 µL lost under the cap).
+- **Evaporation: not a reason** (§2: 0.2-0.4 µL a spot, against 1.3-2.2 µL lost under the cap during the measurement).
 - **Mixing: the reason that matters.** §2 shows the sulfide added last needs mixing, and a P20 can't mix 150 µL.
 - **One caution for every option: dispensing from above the meniscus.** Opentrons' figures are for dispensing into a
   vessel. A drop leaves a tip only when it outweighs the surface tension holding it (Tate's law): about 12 µL on a 20
@@ -127,7 +127,7 @@ which gives the 1.6 µL/h under the cap and 6.1 µL/h with no cap that the proto
   mouth (an end correction of 0.8 r into still air), through the clearance cap's 0.12 mm skirt gap over its 3.2 mm
   land, or through the O-ring cap's 0.3 mm vent (DAL's fallback `electrode_cap_oring`; the vent's length, 6 mm, is
   assumed). Geometry from DAL's `cad_parts.json`: an 8 mm bore to 10 mm above the metal, 150 µL standing 4.4 mm.
-- **Seawater** evaporates 1.9 % slower than pure water (water activity 0.981). Saturated vapour 19.4 g/m³ at 22 °C,
+- **Seawater's** vapour pressure is 1.9 % below pure water's (water activity 0.981). Saturated vapour 19.4 g/m³ at 22 °C,
   D = 0.25 cm²/s (Massman 1998), as DAL uses.
 - **The VLM's airflow.** [`services.md`](services.md) sizes the VLM's ventilation at 1100-2200 m³/h for a 5-10 K rise;
   over the enclosure's 2.83 × 3.12 m plan that is **0.035-0.069 m/s** on average. Moving air thins the boundary layer
@@ -145,16 +145,16 @@ which gives the 1.6 µL/h under the cap and 6.1 µL/h with no cap that the proto
 | Water lost from the 150 µL well in one spot | 22 °C, 40 % RH, still | 22 °C, 20 % RH | VLM: 27 °C, 30 % RH, 0.07 m/s |
 |---|---|---|---|
 | Fill, P20 (8 transfers, 6.0 min) | 0.44 µL | 0.59 µL | 0.78 µL |
-| Fill, P300 or Flex (2 transfers, 2.7-3.1 min) | 0.14 µL | 0.19 µL | 0.26 µL |
+| Fill, P20 + P300 (2 transfers and a P300 mix, 4.4 min) | 0.21 µL | 0.28 µL | 0.37 µL |
 | Leak check and cap going on (3 min open) | 0.29 µL | 0.39 µL | 0.53 µL |
 | 52 min of electrochemistry under the clearance cap | 1.34 µL | 1.81 µL | 2.15 µL |
 | **Whole spot, P20 only** | **2.07 µL (1.4 %)** | **2.79 µL (1.9 %)** | **3.46 µL (2.3 %)** |
-| Whole spot, P20 + P300 | 1.78 µL (1.2 %) | 2.39 µL (1.6 %) | 2.94 µL (2.0 %) |
+| Whole spot, P20 + P300 | 1.84 µL (1.2 %) | 2.48 µL (1.7 %) | 3.05 µL (2.0 %) |
 | Whole spot, P20 only, O-ring cap with its 0.3 mm vent | 0.74 µL (0.5 %) | 0.99 µL (0.7 %) | 1.32 µL (0.9 %) |
 
 - **Chloride rises by the same fraction:** 0.55 M becomes 0.557-0.563 M by the end of a spot. That is within the
   batch-to-batch spread of a made-up ASW and small against what the protocol varies.
-- **The many small transfers cost 0.3-0.5 µL** (0.2-0.35 % of the well) against one big transfer: the well is open
+- **The many small transfers cost 0.2-0.4 µL** (0.15-0.3 % of the well) against the P300's fill: the well is open
   for a few minutes either way, and 65 % of the loss happens under the cap during the measurement. **Evaporation is
   not a reason to change the pipette.**
 - **Under the cap the airflow hardly matters** (1.55 → 2.48 µL/h in the VLM case, mostly from the 5 K warmer air):
