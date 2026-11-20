@@ -237,3 +237,226 @@ def tray_headroom() -> dict:
                       cameras_set_the_slot=max(heads) > tall["box_mm"][5], highest_top_same_slot_mm=top_ok,
                       span_if_cameras_below_mm=need(tall["box_mm"][5]))
     return out
+
+
+# ===================================================================================================== the figures
+INK, INK2, MUTED, GRID, AXIS, SURF = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7", "#fcfcfb"
+BLUE, ORANGE, AQUA, CRIT = "#2a78d6", "#eb6834", "#1baf7a", "#d03b3b"     # dataviz reference palette; CRIT is status
+ARM_FRONT = [(0, -1802, 981), (0, -1631, 1569), (-175, -1092, 1378), (-175, -1212, 1378), (-175, -1212, 1262),
+             (-175, -1212, 1107)]   # reach.solve at tray B (-175, -182, 253): the pose that comes nearest the strip
+
+
+def _lens(spot: str, cam: dict) -> tuple:
+    """Where the lens is for a bay spot: under the mount by the camera's lens drop."""
+    x, y, z = BAY_SPOTS[spot][1]
+    return (x, y, z - cam["lens_drop_mm"])
+
+
+def bay_analysis(choice: dict, cands: dict, arm: dict | None = None) -> dict:
+    """Each bay spot with its chosen camera: aim, coverage of the tray's floor and of the plane 300 mm up, the share of
+    the picture that is the room, the lowest point against the band (or the strip), mm per pixel; the PTZ at both ends
+    of its zoom and at each workflow seat."""
+    out = {}
+    for spot, key in choice.items():
+        cam = cands[key]
+        c = _lens(spot, cam)
+        hf, vf = cam["hfov"][0], cam["vfov"][0]
+        if spot == "top":
+            yaw, tilt = 0.0, 90.0
+            cov, cov2, room = coverage(c, 0, 90, hf, vf), coverage(c, 0, 90, hf, vf, WORK_DZ), room_share(c, 0, 90, hf, vf)
+        elif spot == "back":
+            yaw, tilt, cov, cov2, room = best_aim(c, hf, vf, [180.0], np.arange(30.0, 76.0, 2.5))
+        else:
+            yaw, tilt, cov, cov2, room = best_aim(c, hf, vf, np.arange(-60.0, 1.0, 5.0) if c[0] > 0 else
+                                                  np.arange(0.0, 61.0, 5.0), np.arange(40.0, 86.0, 2.5))
+        low = BAY_SPOTS[spot][1][2] - cam["hang_mm"]
+        in_strip = BAY_SPOTS[spot][1][1] + cam["dia_mm"] / 2 <= TRAY_Y[0]
+        r = dict(camera=key, label=BAY_SPOTS[spot][0], mount=BAY_SPOTS[spot][1], lens=tuple(round(v, 1) for v in c),
+                 yaw_deg=round(yaw, 1), tilt_deg=round(tilt, 1), floor_coverage=round(cov, 3),
+                 coverage_300mm_up=round(cov2, 3), room_share=round(room, 3), lowest_point_mm=round(low, 1),
+                 over_goods=not in_strip, band_margin_mm=round(low - ENV_Z, 1),
+                 mm_per_px_at_tray_centre=round(mm_per_px(c, (0.0, V.Y_OPEN, FLOOR_Z), hf, cam["px"][0]), 2))
+        if len(cam["hfov"]) > 1:
+            r["tele"] = {}
+            for name, t in SEATS.items():
+                d = float(np.linalg.norm(np.subtract(t, c)))
+                r["tele"][name] = dict(distance_mm=round(d), mm_per_px=round(mm_per_px(c, t, cam["hfov"][1],
+                                                                                        cam["px"][0]), 3),
+                                       picture_width_mm=round(2 * d * math.tan(math.radians(cam["hfov"][1]) / 2)),
+                                       focus_ok=None if cam.get("min_focus_tele_mm") is None
+                                       else d >= cam["min_focus_tele_mm"])
+        if arm is not None and spot in arm:
+            r["arm"] = arm[spot]
+        out[spot] = r
+    return out
+
+
+def fig_bay(choice: dict, cands: dict, res: dict, path: Path) -> Path:
+    """out/security_cameras_bay.png: the bay in section (x = 0) with the band, the strip and the cameras; then what
+    each bay camera sees of the presented tray's floor, one small plan each."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Circle, Polygon, Rectangle
+    plt.rcParams.update({"font.size": 9, "axes.edgecolor": AXIS, "axes.labelcolor": INK2, "xtick.color": MUTED,
+                         "ytick.color": MUTED, "font.family": "DejaVu Sans"})
+    fig = plt.figure(figsize=(16, 8.6), dpi=150, facecolor=SURF)
+    gs = fig.add_gridspec(2, 3, width_ratios=[1.35, 1, 1], hspace=0.42, wspace=0.16, left=0.05, right=0.985,
+                          top=0.87, bottom=0.07)
+    ax = fig.add_subplot(gs[:, 0])
+    ax.set_facecolor(SURF)
+    y0, y1 = TRAY_Y
+    # the tray, the goods envelope and Kardex's clearance, the band, the roof, header, LED light, shutter, tray F1
+    ax.add_patch(Rectangle((Y_PANEL, V.Z_SILL - 20), SHUTTER_Y - Y_PANEL, 20, color=AXIS, lw=0))
+    ax.add_patch(Rectangle((y0, FLOOR_Z - 3), y1 - y0, 3 + V.T_RIM, fill=False, ec=INK2, lw=1.0))
+    ax.add_patch(Rectangle((y0, FLOOR_Z), y1 - y0, V.MAX_GOODS_H, color=GRID, lw=0, alpha=0.7))
+    ax.add_patch(Rectangle((y0, FLOOR_Z + V.MAX_GOODS_H), y1 - y0, V.GOODS_CLEAR, fill=False, hatch="////",
+                           ec=MUTED, lw=0))
+    ax.add_patch(Rectangle((y0, ENV_Z), SHUTTER_Y - y0, BAND, color=BLUE, alpha=0.12, lw=0))
+    ax.add_patch(Rectangle((FRONT_STRIP[0], V.Z_SILL), FRONT_STRIP[1] - FRONT_STRIP[0], ROOF_Z - V.Z_SILL,
+                           color=AQUA, alpha=0.12, lw=0))
+    ax.plot([HEADER_Y[0], SHUTTER_Y], [ROOF_Z, ROOF_Z], color=INK, lw=1.6)
+    ax.add_patch(Rectangle((HEADER_Y[0], ROOF_Z), HEADER_Y[1] - HEADER_Y[0], V.HEADER_H, color=AXIS, lw=0))
+    ax.add_patch(Rectangle((LED_Y[0], ROOF_Z - 12), LED_Y[1] - LED_Y[0], 12, color=MUTED, lw=0))
+    ax.add_patch(Rectangle((SHUTTER_Y, V.Z_OPEN - 10), 12, ROOF_Z + 40 - V.Z_OPEN + 10, color=MUTED, lw=0))
+    ax.add_patch(Rectangle((y0, F1_Z), y1 - y0, 80, fill=False, ec=MUTED, lw=1.0, ls="--"))
+    ax.plot([Y_PANEL, Y_PANEL], [V.Z_SILL - 120, ROOF_Z], color=AXIS, lw=1.0, ls=":")
+    # the arm at the pose that comes nearest the front strip, its links projected onto the section
+    ys = [p[1] for p in ARM_FRONT]
+    zs = [p[2] for p in ARM_FRONT]
+    ax.plot(ys, zs, color=INK2, lw=5, alpha=0.35, solid_capstyle="round")
+    ax.plot(ys, zs, "o", color=INK2, ms=4)
+    # the cameras, to scale, numbered as in the plans, and the edges of each picture in its own vertical plane,
+    # projected onto the section and stopped at the tray's floor
+    for n, (spot, r) in enumerate(res.items(), 1):
+        cam = cands[r["camera"]]
+        x, y, z = r["mount"]
+        col = ORANGE if len(cam["hfov"]) > 1 else BLUE
+        ax.add_patch(Rectangle((y - cam["dia_mm"] / 2, z - cam["hang_mm"]), cam["dia_mm"], cam["hang_mm"],
+                               color=col, lw=0, alpha=0.9))
+        ly, lz = r["lens"][1], r["lens"][2]
+        cy = math.cos(math.radians(r["yaw_deg"]))
+        for dv in (-cam["vfov"][0] / 2, cam["vfov"][0] / 2):
+            t = math.radians(r["tilt_deg"] + dv)
+            dy, dz = cy * math.cos(t), -math.sin(t)
+            s_ = (FLOOR_Z - lz) / dz if dz < -1e-6 else 3000.0
+            ax.plot([ly, ly + s_ * dy], [lz, lz + s_ * dz], color=col, lw=0.7, alpha=0.6)
+        ax.add_patch(Circle((y + cam["dia_mm"] / 2 + 38, z - cam["hang_mm"] / 2 - 10), 26, color=INK, lw=0))
+        ax.text(y + cam["dia_mm"] / 2 + 38, z - cam["hang_mm"] / 2 - 10, str(n), color=SURF, ha="center",
+                va="center", fontsize=8, fontweight="bold")
+    ax.set_xlim(-1900, -480)
+    ax.set_ylim(780, 2080)
+    ax.set_aspect("equal")
+    ax.grid(color=GRID, lw=0.5)
+    ax.set_xlabel("y, mm (the opening on the left, the shutter on the right)")
+    ax.set_ylabel("z over the floor, mm")
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    txt = dict(fontsize=8, color=INK2)
+    ax.text(-1040, 1300, f"goods envelope: up to {V.MAX_GOODS_H:.1f} mm\n(the 996 mm opening's estimate, vlm.py)",
+            ha="center", **txt)
+    ax.text(-1040, ENV_Z + BAND / 2, f"{BAND:.1f} mm: all a roof camera may hang over the tray", ha="center",
+            va="center", fontsize=8, color=INK)
+    ax.text(-1040, ROOF_Z + 22, "assumed roof: the opening's clear height, 1829 mm", ha="center", fontsize=8, color=INK)
+    ax.text(-1040, F1_Z + 95, "tray F1, stored over the opening (1950 mm)", ha="center", **txt)
+    ax.text(FRONT_STRIP[0] - 10, 1000, "front strip: no goods\never pass under it", ha="right", **txt)
+    ax.text(-1631, 1600, "UR10e elbow at its\nhighest near the strip", ha="right", va="bottom", **txt)
+    ax.text(SHUTTER_Y + 18, 1350, "shutter", rotation=90, va="center", **txt)
+    ax.text(-1650, 1840, "header", ha="right", **txt)
+    ax.set_title("The bay in section at x = 0 (the front pair is at x = 450 and 650 mm)", loc="left", fontsize=10,
+                 color=INK)
+    # one plan per camera: the presented tray's floor, the picture on it (filled) and 300 mm up (dashed)
+    order = ["front_wide", "front_ptz", "back", "top"]
+    num = {k: n for n, k in enumerate(res, 1)}
+    for i, spot in enumerate(order):
+        if spot not in res:
+            continue
+        r = res[spot]
+        cam = cands[r["camera"]]
+        a = fig.add_subplot(gs[i // 2, 1 + i % 2])
+        a.set_facecolor(SURF)
+        a.add_patch(Rectangle((-TRAY_X, y0), 2 * TRAY_X, y1 - y0, fill=False, ec=INK2, lw=1.0))
+        clip = Rectangle((-TRAY_X, y0), 2 * TRAY_X, y1 - y0, transform=a.transData)
+        c = r["lens"]
+        fp = footprint(c, r["yaw_deg"], r["tilt_deg"], cam["hfov"][0], cam["vfov"][0], FLOOR_Z)
+        p = a.add_patch(Polygon(fp, closed=True, color=BLUE, alpha=0.22, lw=0))
+        p.set_clip_path(clip)
+        fp2 = footprint(c, r["yaw_deg"], r["tilt_deg"], cam["hfov"][0], cam["vfov"][0], FLOOR_Z + WORK_DZ)
+        a.add_patch(Polygon(fp2, closed=True, fill=False, ec=BLUE, lw=1.0, ls="--")).set_clip_path(clip)
+        a.plot([c[0]], [c[1]], marker="o", ms=7, color=ORANGE if len(cam["hfov"]) > 1 else BLUE, mec=SURF, mew=1.5,
+               clip_on=False)
+        if "tele" in r:
+            for name, t in SEATS.items():
+                yw, tl = aim(c, t)
+                ft = footprint(c, yw, tl, cam["hfov"][1], cam["vfov"][1], t[2])
+                a.add_patch(Polygon(ft, closed=True, color=ORANGE, alpha=0.55, lw=0))
+                a.plot([t[0]], [t[1]], "+", color=INK, ms=5, mew=1)
+                tr = r["tele"][name]
+                off = {"vial rack (tray B)": (-60, -120), "doser shuttle fork (tray B)": (60, 40),
+                       "CubXL holder seat (tray A)": (-60, 60)}.get(name, (40, 40))
+                a.text(t[0] + off[0], t[1] + off[1], f"{tr['mm_per_px']:.2f} mm/px", fontsize=7, color=INK,
+                       ha="right" if off[0] < 0 else "left")
+        title = (f"{num[spot]}  {r['label']}: {cam['short']}\nfloor {100 * r['floor_coverage']:.0f} %, 300 mm up "
+                 f"{100 * r['coverage_300mm_up']:.0f} %, room {100 * r['room_share']:.0f} % of the picture")
+        a.set_title(title, loc="left", fontsize=8.5, color=INK)
+        a.set_xlim(-TRAY_X - 60, TRAY_X + 60)
+        a.set_ylim(y0 - 160, y1 + 60)
+        a.set_aspect("equal")
+        a.tick_params(labelsize=7)
+        a.grid(color=GRID, lw=0.4)
+        for s in ("top", "right"):
+            a.spines[s].set_visible(False)
+        a.text(-TRAY_X, y0 - 140, "the opening", fontsize=7, color=MUTED)
+    fig.suptitle("Security cameras in the bay: where they hang and what they see of the presented tray",
+                 x=0.05, ha="left", fontsize=13, color=INK, y=0.975)
+    fig.text(0.05, 0.925, "Section: the 95.5 mm band (blue) over the tray, under a roof at 1829 mm; the front strip "
+             "(aqua), which no goods pass under; each camera to scale and the edges of its picture in the middle "
+             "plane. Plans: the picture on the tray's floor (filled) and 300 mm over it (dashed); orange: the PTZ at "
+             "full zoom on each workflow seat (reach.seats), mm per pixel there. Rectilinear lenses; no occlusion.",
+             fontsize=8.5, color=INK2, wrap=True)
+    fig.savefig(path, facecolor=SURF)
+    plt.close(fig)
+    return path
+
+
+# ===================================================================================================== power
+POE_EFF = 0.88       # PSE conversion and a short patch lead: ours (802.3 budgets 12.95 of 15.4 W for 100 m of cable)
+PI_RELAY_W = (27.0, 5.0)     # a Pi 5 relaying a tray's streams: its 27 W supply (rated), ~4 W bare + the relays (ours)
+SWITCH_POE_BUDGET_W, SWITCH_POE_PORTS = 52.0, 4     # the tray switch ups.py assumes: Ubiquiti USW-Lite-8-PoE
+
+
+def cam_w(cam: dict) -> tuple:
+    """(max, typical) W at the camera; typical is the maker's if published, else 70 % of the max (IR off): ours."""
+    mx = float(cam["w_max"])
+    return mx, float(cam["w_typ"]) if cam.get("w_typ") else round(0.7 * mx, 1)
+
+
+def tray_power(cam: dict, pi_on_poe: bool = False) -> dict:
+    """Each powered tray's UPS-backed branch with its HQ/Wide units (ups.TRAY_LOADS) and with security cameras in
+    their place: the cameras on the tray's PoE switch (whose 60 W rating already covers its 52 W PoE budget), one Pi
+    5 per tray on its 27 W supply (or on a PoE+ HAT from the same switch), the switch as before. The UPS stays the one
+    ups.py picked; its runtime at the new typical draw is from its maker's table (ups.runtime_min)."""
+    import ups
+    mx, ty = cam_w(cam)
+    out = {}
+    for k, rows in ups.TRAY_LOADS.items():
+        pis = [r for r in rows if r["key"] == "pi_unit"]
+        if not pis:
+            continue
+        n = sum(r["qty"] for r in pis)
+        ld = ups.tray_load(k)
+        m = ups.unit_of(k)
+        poe = n * mx + (13.0 if pi_on_poe else 0.0)          # a Pi 5 on a PoE+ HAT: about 13 W at most (ours)
+        ports = n + (1 if pi_on_poe else 0)
+        rated = ld["backed_rated_w"] - sum(r["rated_w"] for r in pis) + (0.0 if pi_on_poe else PI_RELAY_W[0])
+        typ = ld["backed_typical_w"] - sum(r["typical_w"] for r in pis) + (n * ty + (PI_RELAY_W[1] if pi_on_poe
+                                                                                   else 0.0)) / POE_EFF
+        typ += 0.0 if pi_on_poe else PI_RELAY_W[1]
+        out[k] = dict(cameras=n, ups=m["model"], backed_rated_now_w=ld["backed_rated_w"],
+                      backed_rated_w=round(rated), backed_typical_now_w=ld["backed_typical_w"],
+                      backed_typical_w=round(typ, 1), typical_change_w=round(typ - ld["backed_typical_w"], 1),
+                      runtime_now_min=round(ups.runtime_min(m, ld["backed_typical_w"])),
+                      runtime_min=round(ups.runtime_min(m, typ)), poe_w=round(poe, 1), poe_ports=ports,
+                      poe_ok=poe <= SWITCH_POE_BUDGET_W and ports <= SWITCH_POE_PORTS,
+                      ups_still_ok=m["w"] >= rated and ups.runtime_min(m, typ) >= ups.RUNTIME_MIN)
+    return out
