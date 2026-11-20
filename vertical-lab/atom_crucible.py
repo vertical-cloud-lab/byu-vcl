@@ -873,6 +873,10 @@ def clip_in():
     c.step(cap, 0.6, lambda u: rig.cg_jaws(u))
     c.give(r1, "cr:cg", "rp")
     c.gauges(**{"F/T 1": "", "F/T 2": "", "Nut": f"snug, {TQ_NUT:.2f} N m"})
+    # the open gripper turned back the 90 deg it turned the crucible (a wrist-3 turn on the crucible's axis), so its
+    # fingers lift off across the lever as they came down; lifted as they are, the left one met the lever's eye
+    c.step(cap, 0.8, both(r2.line_to(rig.key_tcp(world=rig.key_model(1086.0))),
+                          turn_path(r1, AB.W((0.0, 0.0, M.RIM)), ALIGN_DEG)))
     c.step(cap, 1.4, both(r2.line_to(rig.key_tcp(world=rig.key_model(1080.0))), r1.line_to(up(r1.tcp_world(), 90.0))))
     c.step(cap, 1.4, both(r2.line_to(rig.key_tcp(world=k_door)), lambda u: AA.set_cut(sc, 1.0 - u, rig.fur_cut)),
            cam_to=C_WIDE)

@@ -151,6 +151,26 @@ before unclamping is an open question below.
 model's two halves that slid straight apart (ours, assumed). The lab should say what the real clamp is (a hinged KF/ISO clamp
 with a wing nut, a chain clamp, a V-band).
 
+## Round 13 (2026-11-20): the latch clip at 0 frames in collision
+
+The fix proposed below is made (`atom_latch.py`). The final strict audit at 15 fps: **0 of 1260 checked frames** with an
+arm in collision, 0 mover frames (out/collisions/atom_latch_r13fix.json; the round-12 render had 123 of 833 at 10 fps).
+
+- **Unclamping (5/9):** arm 1 takes the loop by its legs (in and down 65 deg) and lifts it, so the lever rises to 85
+  deg and the bar rides up the keeper's plate over the hook's lip; it tips the loop about 15 deg past upright, lets the
+  lever down on the loop's pin onto its base, then opens its fingers and the loop falls over the lever. The gripper
+  turns about 36 deg in all, not 170. One-handed, the order differs from the footage (there a second hand holds the
+  lever up while the loop comes off); the caption says so.
+- **Hooking on (8/9):** arm 1 closes lightly on the hanging loop's legs and keeps one hand attitude while it carries
+  them round the loop's pin, so the loop turns between the pads (ours, labelled so); it raises the lever to 85 deg,
+  tips the bar onto the keeper's plate and lowers it onto the hook (the lever rests at 42 deg).
+- **7/9 and the lid coming down:** the knob grasp is tilted 20 deg about the model's x through the ball's centre. The
+  hits were arm 2's wrist on the cabinet with the lid shut, not at the top of the swing as written below.
+- **A camera at the latch's height** (front right) for 5/9 and the hook-on; from above, arm 1's wrist hid the latch.
+- **The model's latch was missing.** Round 12's `alloy_atomize.load_rp` left out every `latch_*` part for every caller
+  (meant for chapter 2, which draws its own), so the atomizer clips had no latch base, hold-down foot or bolt, and a
+  lever and loop on no parent. load_rp now leaves them out for chapter 2 only (`own_latch=True`).
+
 ## Audit results and what is still wrong (2026-11-19, the rendered scripts)
 
 - **atom_latch** (the turned lid, one-armed latch; final pass 02:31, render and audit together at 10 fps, 103.1 s, 1031

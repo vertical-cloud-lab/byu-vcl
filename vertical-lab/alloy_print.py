@@ -69,6 +69,11 @@ GRIP_TAB = 0.88                                         # a sieve's 12 mm handli
 GRIP_PAN = 0.69                                         # the pan's tab, held by its sides, 28 mm across (see GR)
 OPEN_TAB = 0.5                                          # open only so far for a tab: wide open, the lower finger and
                                                         # its knuckle reach down into the bench or the shaker
+OPEN_ON_PAN = 0.60                                      # round 13: the No. 325 nests on the pan, whose tab is only 46
+# mm under its own (51 mm, DEPTH, between two sieves' tabs): opened to OPEN_TAB on its tab there, the lower fingertip
+# went 3 mm into the pan's tab as the No. 325 was let go on the stack and as the arm came to take it off (1 frame each;
+# the same 3 mm with the gripper and sieve meshes alone). At 0.60 the pads stand 37 mm apart, 12 mm clear of the tab
+# either side, and the lower fingertip is 2.2 mm clear of the pan (0.55: 0.2 mm; 0.65: 1.7 mm)
 CELL_DY = -300.0                                        # the MiR parks 300 mm further off the bench than off the line:
                                                         # nearer, the arm folds into itself to reach the tabs level
 HOLDER2_LOCAL = (-225.0, -160.0)                        # the jar's pocket on the MiR's cabinet (MiR frame). Round
@@ -667,7 +672,8 @@ def movie():
         tipper's cradle, under its roof); 0: lifted up and over (the stand; the shaker, between its rods)."""
         g0 = tab_now(key)
         g1 = tab_at(parent, M_, key)
-        sc.step(lab_, cap, 1.0 * k, RB.both(rb.joint_to(Tw=GR(g0 - (0, 90, 0), key)), rb.grip_to(OPEN_TAB)),
+        opened = OPEN_ON_PAN if key == "s325" else OPEN_TAB
+        sc.step(lab_, cap, 1.0 * k, RB.both(rb.joint_to(Tw=GR(g0 - (0, 90, 0), key)), rb.grip_to(opened)),
                 hold=0.02, cam_to=cam, labels=labels)
         sc.step(lab_, cap, 0.5 * k, rb.line_to(GR(g0, key)), hold=0.02)
         sc.step(lab_, cap, 0.3 * k, rb.grip_to(GRIP_PAN if key == "pan" else GRIP_TAB), hold=0.02)
@@ -684,7 +690,7 @@ def movie():
         sc.step(lab_, cap, 1.0 * k, rb.joint_to(Tw=GR(b, key)), hold=0.02)
         sc.step(lab_, cap, 0.6 * k, rb.line_to(GR(g1 + (0, 0, lift1), key)), hold=0.02)
         sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1, key)), hold=0.02)
-        sc.step(lab_, cap, 0.3 * k, rb.grip_to(OPEN_TAB), hold=0.02)
+        sc.step(lab_, cap, 0.3 * k, rb.grip_to(opened), hold=0.02)
         rb.release(parent)
         sc.gmat[f"sv_{key}"] = M_
         sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1 - (0, 90, 0), key)), hold=0.02)
@@ -1112,7 +1118,9 @@ def movie():
     cap = "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs " \
           "and labels each jar now; here the label is printed before the run."
     status(sc, Arm="taking the LPBF jar")
-    sc.step(f"3/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=level_y(b_grasp - (0, 160, 0), 0.0)), rb.grip_to(0.0)),
+    # round 13: opened to 0.08 (78 mm, 4 mm clear of the 70 mm jar either side), not wide open (85 mm): wide open, the
+    # right fingertip brushed the enclosure's frame by the funnel (1.5 mm, 1 frame at 15 fps; ARM_AUDIT_SNAP=3073)
+    sc.step(f"3/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=level_y(b_grasp - (0, 160, 0), 0.0)), rb.grip_to(0.08)),
             hold=0.05, cam_to=CAM_TIP, labels=jar_lbl)
     sc.step(f"3/{n}", cap, 0.9, rb.line_to(level_y(b_grasp, 0.0)), hold=0.05)
     sc.step(f"3/{n}", cap, 0.4, rb.grip_to(GRIP_BOTTLE), hold=0.05)

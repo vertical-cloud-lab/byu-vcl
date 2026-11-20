@@ -1009,7 +1009,10 @@ def main():
             kc1 = PT.knob_centre(k, 0.0, 1.0) + np.array([0.0, 0.0, 1.25])
             G1 = AB.WT(local_tcp(kc1, (0, 1, 0), (0, 0, 1)))
             G1o = R((0, 1, 0), deg, pin) @ G1
-            c.step(L(12), "Both bolts back into their lugs ...", 1.6, rb.joint_to(Tw=G1o @ T((0, 0, -60))), hold=0.0,
+            # the fingers 2 mm a side over the 34 mm knob on the way in: at OPEN (46 mm) the left fingertip met the
+            # chamber's face as it reached the top bolt's knob, swung up 60 deg (round 12's audit)
+            c.step(L(12), "Both bolts back into their lugs ...", 1.6,
+                   both(rb.grip_to(ur_arm.close_for(38.0)), rb.joint_to(Tw=G1o @ T((0, 0, -60)))), hold=0.0,
                    cam_to=cam_bolts)
             c.step(L(12), "Both bolts back into their lugs ...", 0.5, rb.line_to(G1o), hold=0.0)
             c.step(L(12), "Both bolts back into their lugs ...", 0.3, rb.grip_to(close_knob), hold=0.0)

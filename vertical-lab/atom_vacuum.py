@@ -464,15 +464,19 @@ def main():
     sc.step("10/10 Liner", "Liner check: 25 % at most (SOP 4.3). Sealing the liner (gooseneck, 2-3 turns, ESD tape) "
             "and lifting it into the pail stay a person's job.", 0.5, hold=3.6)
     Wh = wand.hanging(sp["holster"])
+    # over the holster from 200 mm up, not 90: at 90 the nearest IK branches fold the upper arm onto the wrist, and the
+    # one the planner took then swung the upper arm and forearm into the vacuum on the way into the fork
     sc.step("10/10 Holster", "The wand goes back in its holster, its tool hanging down, the pin in the hole.", 3.0,
-            rb.joint_to(Tw=T((0, -140, 90)) @ tcp_of(Wh)), cam_to=AB.cam((350, -1350, 1450), (-560, -420, 950)),
+            rb.joint_to(Tw=T((0, -140, 200)) @ tcp_of(Wh)), cam_to=AB.cam((350, -1350, 1450), (-560, -420, 950)),
             hold=0.1)
     sc.step("10/10 Holster", "Into the fork.", 1.4, rb.line_to(T((0, 0, 70)) @ tcp_of(Wh)), hold=0.1)
     sc.step("10/10 Holster", "Down onto it.", 1.2, rb.line_to(tcp_of(Wh)), hold=0.1)
     rb.release(None)
     sc.step("10/10 Holster", "Let go and back off. Wiping (dry, then a barely damp 70 % IPA wipe) and the log follow.",
             1.4, AB.both(rb.grip_to(OPEN), lambda u: None), hold=0.2)
-    sc.step("10/10 Holster", "", 1.6, rb.line_to(tcp_of(Wh) @ T((0, 0, -120))), hold=1.5)
+    # 60 mm off the fin, then up: straight back 120 mm folded the upper arm onto the arm's own wrist 2
+    sc.step("10/10 Holster", "", 0.8, rb.line_to(tcp_of(Wh) @ T((0, 0, -60))), hold=0.0)
+    sc.step("10/10 Holster", "", 1.0, rb.line_to(T((0, 0, 120)) @ tcp_of(Wh) @ T((0, 0, -60))), hold=1.5)
     meta = dict(readings_illustrative=readings, hose_length_mm=round(hose.length(), 1), grip_close=GRIP_FIN)
     if AUDIT or COMBINED:
         hits = {k: dict(frames=len(v), first=v[0][0], last=v[-1][0], deeper_than_3mm=sum(1 for _, d in v if d > 3.0),

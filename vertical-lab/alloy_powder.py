@@ -254,10 +254,20 @@ def build():
     return sc, L, u, R_, ov, ms_grains
 
 
-MS_LID = 1.0                          # how far the Aero S cover opens. Round 11: its full swing reaches the iMicro beside
-#                                       it (50 mm, 6 frames), but opened 55 % it was in the arm's way (25 frames): open
-XRD_DOOR = 0.8                        # the MiniFlex's door, 80 deg. Round 11: it meets camera D1's head (7 frames), and
-#                                       still does at 70 deg: open
+MS_LID = 1.0                          # how far the Aero S cover opens, along MS_LID_PATH
+# Round 13: the cover lifts 130 mm and is set aside to the right, in front of the bench's right half, instead of the
+# model's way (instruments.mastersizer: to the left, over the iMicro beside it, 50 mm into its cabinet, panel and lid,
+# 6 frames). Opened only part of the way left (55 %, round 11) it hung over the hopper, in the arm's way (25 frames).
+# This chapter's own path (the instrument's joint is replaced in movie(), only here); checked against the Mastersizer's
+# own pieces, the iMicro and tray E's three cameras: nothing closer than 0.9 mm (the venturi's outlet, on the lift)
+MS_LID_PATH = ((0.0, 0.0, 0.0), (0.0, 0.0, 130.0), (280.0, -60.0, 170.0))
+XRD_DOOR = 0.4                        # the MiniFlex's door, 40 deg. Round 13: past about 42 deg it meets camera D1's head
+#                                       (services.TRAY_CAMS["D"][1], 140 mm in front of the hinge, its head panned back
+#                                       towards the door): 4 mm clear at 40 deg, 6-50 mm into its head, pan and block
+#                                       from 44 to 80 deg (7 frames in round 11's audit and round 13's baseline)
+ZBH_DY = 4.0                          # the holder set on the stage 4 mm in front of the goniometer's axis (round 13):
+#                                       turned 25 deg, centred on the axis, its back left corner stood 3 mm into the
+#                                       stage's theta shaft (gy + 30); the 20 mm well still takes the beam (7 mm radius)
 CADDY_AT = (60.0, -185.0)             # the XRF cup's block on the cabinet top (MiR frame), behind the arm
 
 
@@ -339,20 +349,24 @@ def vial_level(sc, mm: float, inverted=False):
     sc.gmat["p_vial_powder"] = T((0, 0, z0)) @ S((1, 1, max(0.1, mm)))
 
 
-def branch_q(rb, Tw, Tw_ref):
+def branch_q(rb, Tw, Tw_ref, allow=None):
     """The IK solution for Tw in the branch of a clear solution for Tw_ref (alloy_workflow's way), so the straight line
-    that follows stays in a branch that is clear where it ends; of those, the first whose Tw solution is clear too."""
+    that follows stays in a branch that is clear where it ends; of those, the first whose Tw solution is clear too.
+    allow: the world groups the gripper and the held part may touch (default: whatever they touch at that pose)."""
     import collide
     chk = rb.checker()
     Wd = chk.snapshot()
     Tb = np.linalg.inv(rb.sc.world(rb.root)) @ Tw_ref
+
+    def ok(q):
+        return not chk.collisions(q, rb.close, Wd, allow if allow is not None else chk.touching(q, rb.close, Wd))
     first = None
     for q in collide.ik_all(rb.model, Tb, rb.q):
-        if not chk.collisions(q, rb.close, Wd, chk.touching(q, rb.close, Wd)):
+        if ok(q):
             qq = rb.solve(Tw, seed=q)
             if first is None:
                 first = qq
-            if not chk.collisions(qq, rb.close, Wd, chk.touching(qq, rb.close, Wd)):
+            if ok(qq):
                 return qq
     return first if first is not None else rb.solve(Tw)
 
@@ -363,6 +377,9 @@ def movie():
     rb = u.robot
     fast_collisions(sc, L, u)
     xrd, sem, ms, xrf, prep = RG["xrd"], RG["sem"], RG["ms"], RG["xrf"], RG["prep"]
+    # round 13: the Aero S's cover is set aside to the right in this chapter, not over the iMicro (MS_LID_PATH)
+    ms.inst.joints["lid"] = I.Joint("path", path=MS_LID_PATH)
+    ms.apply()
     # round 11: what isn't solid, for the stricter audit's movers check (collide.py skips sc.fluids): the MiniFlex's and
     # the S2 PUMA's X-ray beams, the Mastersizer's laser, its scattered light and the grains it scatters off, the glow
     light = {f"{xrd.prefix}{k}" for k in ("ibeam", "dbeam", "glow")} | {f"{xrf.prefix}beam"} | {
@@ -401,12 +418,14 @@ def movie():
     def along(Tw, dist):
         return sh(Tw, Tw[:3, 2] * dist)
 
-    def go_to(Tw, ref, secs=1.6, cam=None, labels=(), grip=None, extra=None, hold=0.05):
-        go(q=branch_q(rb, Tw, ref), secs=secs, cam=cam, labels=labels, grip=grip, extra=extra, hold=hold)
+    def go_to(Tw, ref, secs=1.6, cam=None, labels=(), grip=None, extra=None, hold=0.05, allow=None):
+        go(q=branch_q(rb, Tw, ref, allow), secs=secs, cam=cam, labels=labels, grip=grip, extra=extra, hold=hold)
 
-    def clear_of(cands):
+    def clear_of(cands, allow=None):
         """The first candidate [pose, ...] (each a list of tool poses the move needs) whose every pose has an IK
-        solution clear of everything, the checker run on the scene as it is now; the first one if none is."""
+        solution clear of everything, the checker run on the scene as it is now; the first one if none is. allow:
+        the world groups the gripper and the held part may touch (default: whatever they touch at that pose, which
+        lets the gripper's wrist camera rest against a housing)."""
         import collide
         chk = rb.checker()
         Wd = chk.snapshot()
@@ -415,7 +434,8 @@ def movie():
             ok = True
             for Tw in poses:
                 qs = collide.ik_all(rb.model, Bi @ Tw, rb.q)
-                if not any(not chk.collisions(q, rb.close, Wd, chk.touching(q, rb.close, Wd)) for q in qs):
+                if not any(not chk.collisions(q, rb.close, Wd, allow if allow is not None else
+                                              chk.touching(q, rb.close, Wd)) for q in qs):
                     ok = False
                     break
             if ok:
@@ -523,8 +543,9 @@ def movie():
     lin(sh(T_v, (0, 0, 70)), 0.6)
 
     # sift: over the target, upright and high; then turned over, the mesh 14 mm over it; shaken; turned back
-    def sift(target_top, spread, secs_pour, f_more=None, gap=14.0, rate=6.0, roll=-165.0, toward=(0.0, 1.0, 0.0)):
-        T_up = A.level(target_top + (0, 0, 95.0), toward=toward, spin=0.0)
+    def sift(target_top, spread, secs_pour, f_more=None, gap=14.0, rate=6.0, roll=-165.0, toward=(0.0, 1.0, 0.0),
+             up=95.0):
+        T_up = A.level(target_top + (0, 0, up), toward=toward, spin=0.0)
         T_dn = A.level(target_top + (0, 0, gap + (P.VIAL_H + CAP_OUT - VIAL_TCP)), toward=toward, spin=0.0) \
             @ R((0, 0, 1), roll)
         go(T_up, secs=1.8, cam=CAM_SIFT)
@@ -558,7 +579,9 @@ def movie():
     st["cap"] = ("Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even "
                  "layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.")
     status(Arm="sifting onto the XRD holder")
-    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=60.0)
+    # round 13: turned over from 125 mm up (was 95): at 15 fps the right finger, pointing down at the half-turn, still
+    # touched the holder going down and coming back up (0.3-1.5 mm, 1 frame each; the 6 fps audit's frames missed it)
+    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=60.0, up=125.0)
     st["cap"] = "A dusting on the SEM stub's carbon tab, from the same vial."
     status(Arm="dusting the SEM stub")
     sift(wpt("p_puck", (0, 0, RP.PREP["puck_h"] + 2.8)), 3.0, 1.2, RB.both(
@@ -611,14 +634,14 @@ def movie():
     status(XRD="door shut", Prep="", Arm="taking the holder")
     fin = (0.0, RP.ZBH["fin_y"], RP.ZBH["fin_h"] - 4.0)
     stage_g = f"{xrd.prefix}stage"
-    H_on = sc.world(stage_g) @ T((0.0, g["gy"], g["gz"] - 3.0)) @ R((0, 0, 1), -25.0)
+    H_on = sc.world(stage_g) @ T((0.0, g["gy"] - ZBH_DY, g["gz"] - 3.0)) @ R((0, 0, 1), -25.0)
     rolls = (0.0, 180.0)
     cands = []
     for rl in rolls:
         Tf = sc.world("p_zbh") @ T(fin) @ _level_y() @ R((0, 0, 1), rl)
         To = H_on @ T(fin) @ _level_y() @ R((0, 0, 1), rl)
         cands.append([sh(along(Tf, -110), (0, 0, 30)), Tf, sh(along(To, -230), (0, 0, 30)), sh(To, (0, 0, 30)), To])
-    xrd.v["door"] = 0.8                      # judge the placing poses with the door open, as they will be
+    xrd.v["door"] = XRD_DOOR                 # judge the placing poses with the door open, as they will be
     xrd.apply()
     roll = rolls[clear_of(cands)]
     xrd.v["door"] = 0.0
@@ -640,19 +663,21 @@ def movie():
     # line in from there swept the upper arm and forearm through the SEM, the MiniFlex's housing and tray D's camera
     # post (16 frames in round 9's audit, which the notes had put on the way back out)
     T_wait = sh(along(T_on, -480), (0, 0, 60))
-    xrd.v["door"] = 0.8
+    xrd.v["door"] = XRD_DOOR
     xrd.apply()
     q_wait = branch_q(rb, T_wait, T_on)
     xrd.v["door"] = 0.0
     xrd.apply()
     go(q=q_wait, secs=2.2, cam=CAM_XRDL)
     st["cap"] = ("An actuator on the hinge opens the door (our addition; Yotsumoto et al. 2024 drove theirs the same "
-                 "way), to 80 deg, which clears the tray's camera post; the arm waits outside its swing.")
+                 "way), 40 deg: room for the arm, short of the tray's camera beside the hinge. The arm waits outside "
+                 "its swing.")
     status(XRD="door opening", Arm="holding the holder")
     step(1.6, xrd.move({"door": (0.0, XRD_DOOR)}), hold=0.2,
          labels=[("goniometer, at rest", tuple(axis + (0, 0, 60)), (0.62, 0.20))])
-    st["cap"] = ("In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing "
-                 "has touched the powder's face since it was struck off.")
+    st["cap"] = ("In past the door and onto the stage, turned a little so the arm comes in from the left (the well is "
+                 "round: it reads the same any way round). Nothing has touched the powder's face since it was struck "
+                 "off.")
     status(Arm="loading the XRD")
     lin(sh(along(T_on, -230), (0, 0, 30)), 1.0)
     lin(sh(T_on, (0, 0, 30)), 1.2)
@@ -673,16 +698,15 @@ def movie():
          hold=0.1, labels=[("X-ray tube (fixed)", tuple(xw((-I.XRD["gonio_r"] - 50, g["gy"], g["gz"] + 50))),
                             (0.12, 0.26)),
                            ("detector, 2theta", tuple(xw((150, g["gy"], g["gz"] + 40))), (0.86, 0.26))])
-    # the scan, with the holder spinning (a spinner: our assumption), which samples more crystallites
-    H0 = sc.gmat["p_zbh"].copy()
-
+    # the scan. Round 13: the holder no longer spins. Turning about its own axis, the fin it is carried by (40.6 mm out
+    # from its centre) swept through the 2theta arm behind the beam's plane (12 mm, 3 frames of the movers check) and
+    # through the stage's theta shaft (10 mm; the audit doesn't flag it, the stage being the holder's parent): a
+    # spinner would need a holder without the fin
     def scan(uu):
         xrd.move({"stage": (RP.V_START, 1.0), "detector": (0.0, 1.0), "dbeam": (0.0, 1.0)})(uu)
-        sc.gmat["p_zbh"] = H0 @ R((0, 0, 1), 360.0 * 6 * uu)
         clock("MiniFlex, 2theta 10-90 deg", 0.0, 14.0)(uu)
     st["cap"] = ("The scan, the housing drawn see-through: the tube stays put, the sample tilts by theta and the detector "
-                 "sweeps 2theta from 10 to 90 deg. The holder spins as it goes (a spinner is assumed), so more "
-                 "crystallites diffract: the literature's fix for coarse grains, not grinding.")
+                 "sweeps 2theta from 10 to 90 deg, counting the diffracted beam.")
     status(XRD="scanning, 10-90 deg 2theta")
     step(5.0, scan, hold=0.1)
     st["cap"] = ("The pattern: aluminium's fcc peaks and silicon's diamond-cubic ones, as Al-10Si should show. COMPUTED, "
@@ -703,7 +727,10 @@ def movie():
     gs = I._tm4000(I.SEM)
     sw = lambda q: at(sem, q)                                 # noqa: E731
     import r8_char as RC
-    cup_floor = I.SEM["front_z0"] + 62.0 + RC.SEM_CUP["floor"]
+    # the mount cup (r8_char.sem): on its adapter bar, 30 mm ahead of the stage's socket and 6 mm up on it. Round 13:
+    # the carrier was set at the socket and 6 mm low, 12 mm into the cup's wall and floor (4 frames)
+    cup_floor = I.SEM["front_z0"] + 62.0 + RC.SEM_CUP["lift"] + RC.SEM_CUP["floor"]
+    cup_y = gs["ys"] + RC.SEM_CUP["dy"]
     CAM_SEM = [tuple(sw((0, -300, 200)) + (-850, -1650, 760)), tuple(sw((0, -330, 170))), (0, 0, 1)]
     st["cap"] = ("The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub "
                  "rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts "
@@ -720,22 +747,28 @@ def movie():
     rb.grasp("p_puck")
     lin(sh(T_pk, (0, 0, 90)), 0.7)
     drawer_g = f"{sem.prefix}drawer"
-    P_in = (sc.world(drawer_g) @ np.r_[0.0, gs["ys"], cup_floor, 1.0])[:3]
+    P_in = (sc.world(drawer_g) @ np.r_[0.0, cup_y, cup_floor, 1.0])[:3]
     in_at = P_in + (0, 0, RP.PREP["puck_h"] + 8.0)
-    k = clear_of([[A.down(in_at + (0, 0, 90), spin=sp), A.down(in_at, spin=sp)] for sp in spins] +
+    # round 13: spin 180 first, as chapter 7 sets its hot mount in this cup: the fingers close along the SEM's front and
+    # the wrist camera is on the side away from it. With the cup where it really is, spin 0 rested the camera on the
+    # SEM's front (12 frames) and spin 90 put the far finger's outer links into the drawer behind the cup (6 mm, 5
+    # frames). Only the cup (the drawer) may be touched, by the carrier: the default allowance let the camera through
+    sem_ok = {drawer_g}
+    spins_in = (180.0, 135.0, 225.0, 0.0, 90.0, 270.0, 45.0, 315.0)
+    k = clear_of([[A.down(in_at + (0, 0, 90), spin=sp), A.down(in_at, spin=sp)] for sp in spins_in] +
                  [[P.tcp_frame(in_at + (0, -25, 90), (0, 0.26, -0.966), sp), P.tcp_frame(in_at, (0, 0.26, -0.966), sp)]
-                  for sp in spins])
-    T_in = (A.down(in_at, spin=spins[k]) if k < len(spins) else
-            P.tcp_frame(in_at, (0, 0.26, -0.966), spins[k - len(spins)]))
-    go_to(sh(T_in, (0, 0, 90)), T_in, secs=2.0, cam=CAM_SEM,
+                  for sp in spins_in], allow=sem_ok)
+    T_in = (A.down(in_at, spin=spins_in[k]) if k < len(spins_in) else
+            P.tcp_frame(in_at, (0, 0.26, -0.966), spins_in[k - len(spins_in)]))
+    go_to(sh(T_in, (0, 0, 90)), T_in, secs=2.0, cam=CAM_SEM, allow=sem_ok,
           labels=[("Hitachi TM4000PlusII", tuple(sw((0, 0, 600))), (0.22, 0.22)),
                   (RC.AZTEC.split(",")[0], tuple(sw((gs["W"] / 2 + 190, -90, 330))), (0.80, 0.16))])
     lin(T_in, 0.8)
     grip(0.5)
     rb.release(drawer_g)
     lin(sh(T_in, (0, 0, 90)), 0.7)
-    if k >= len(spins):                       # set in tilted: square it up in the cup (it drops the last mm)
-        sc.gmat["p_puck"] = T((0.0, gs["ys"], cup_floor))
+    if k >= len(spins_in):                    # set in tilted: square it up in the cup (it drops the last mm)
+        sc.gmat["p_puck"] = T((0.0, cup_y, cup_floor))
     park(1.4)
     status(Arm="parked", SEM="pumping down")
     st["cap"] = "Door in, EVAC: about three minutes to vacuum. Then the powder, imaged."
@@ -916,6 +949,10 @@ def movie():
     grip(GRIP_CUP)
     rb.grasp("p_cup")
     lin(sh(T_c, (0, 0, 90)), 0.7)
+    # round 13: by the park pose, folded over the base and facing the opening. Straight from the block behind the arm
+    # to over the hatch, the planner found no path (2500 iterations) and the unplanned joint line folded the forearm
+    # into the gripper and the cup and took the wrist through Shuttle 2's bay (6 frames)
+    park(1.6)
     ring_g = f"{xrf.prefix}ring"
     on_ring = (sc.world(ring_g) @ np.r_[mx, my, dk + 2.0, 1.0])[:3]        # the ring up: 60 mm over the deck
     hsp = (0.0, 90.0, 180.0, 270.0)

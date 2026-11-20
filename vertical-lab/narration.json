@@ -147,8 +147,8 @@
   "substep": 13,
   "label": "5/9",
   "offset": 0.5,
-  "text": "As the arm swings the loop over the lever, it still passes into the machine. The audit flags those frames; the fix, letting the loop drop as the training video shows, is still to be made.",
-  "source": "notes/atom_latch_container.md (Audit results)"
+  "text": "The arm no longer swings the loop over the lever, which took its forearm into the machine. It lifts the loop off the hook, lets the lever down, and lets the loop fall over it, as the training video shows.",
+  "source": "atom_latch.py (round 13); notes/atom_latch_container.md"
  },
  {
   "chapter": "atomizer",

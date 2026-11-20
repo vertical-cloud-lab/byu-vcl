@@ -334,14 +334,19 @@ def main():
         return Mx
 
     # strokes: down the cone (the 45 deg underside) to the outlet, round the bowl, round the view port's glass
-    hy = np.array([0.56, 0.12, -0.82])                 # the handle in through the door, steep enough to clear its sill
+    hy = np.array([0.624, 0.078, -0.778])              # the handle in through the door, steep enough to clear its sill
+    #                                                    (round 12's (0.56, 0.12, -0.82) put the gripper's left finger
+    #                                                    on the furnace's underside at the end of the last stroke)
     nz = np.array([-0.83, 0.0, -0.56])                 # the bristles onto the 45 deg cone
     cone = []
     for yy in (-30.0, 15.0, 60.0):
         for xx in (-40.0, 150.0):
             cone.append(tcp_for_tip((xx, yy, M.chamber_floor(xx) + 9.0), hy, nz))
     hb = np.array([0.747, 0.10, -0.665])               # the handle to the bowl: the flattest that clears the sill
-    bowl = [tcp_for_tip((CX - 6 + 18 * math.cos(a), 18 * math.sin(a), 441.0), hb, (-0.665, 0.0, -0.747))
+    # round the bowl on a 12 mm circle centred 20 mm short of the outlet's axis, the bristles' tips at 448: round 12's
+    # circle (18 mm about CX - 6, the tips at 441) put the gripper's left finger 25 mm into the door's edge on its far
+    # side, and the bristles on the bowl's rim
+    bowl = [tcp_for_tip((CX - 20 + 12 * math.cos(a), 12 * math.sin(a), 448.0), hb, (-0.665, 0.0, -0.747))
             for a in np.linspace(math.pi, 3 * math.pi, 13)]
     entry = tcp_for_tip((-60.0, 0.0, 860.0), hy, nz)
     rows(Arm_1="brushing")
@@ -389,7 +394,10 @@ def main():
     cap6 = ("Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 "
             "53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).")
     rows(Arm_1="closing the valve")
-    sc.step("5/5", cap6, 2.2, AB.both(rb.joint_to(Tw=lever_pose(0.0) @ T((0, 0, -90))), rb.grip_to(0.3)), hold=0.05)
+    # the fingers open only 12 mm over the 12 mm bar: opened to 62 mm, the upper one met the chamber's outlet above it
+    lev_open = LT.close_for_gap(24.8)
+    sc.step("5/5", cap6, 2.2, AB.both(rb.joint_to(Tw=lever_pose(0.0) @ T((0, 0, -90))), rb.grip_to(lev_open)),
+            hold=0.05)
     sc.step("5/5", cap6, 0.8, rb.line_to(lever_pose(0.0)), hold=0.05)
     sc.step("5/5", cap6, 0.4, rb.grip_to(LT.close_for_gap(12.8)), hold=0.05)
     rb.events.append((sc.n, "grasp", "atc lever", None))
@@ -401,7 +409,7 @@ def main():
         rows(Valve="shut" if u > 0.98 else "closing")
     sc.step("5/5", cap6, 1.8, shut, hold=0.1)
     rb.events.append((sc.n, "grasp", "atc lever", None))
-    sc.step("5/5", cap6, 0.4, rb.grip_to(0.3), hold=0.05)
+    sc.step("5/5", cap6, 0.4, rb.grip_to(lev_open), hold=0.05)
     rb.events.append((sc.n, "release", "atc lever", None))
     sc.step("5/5", cap6, 0.7, rb.line_to(lever_pose(1.0) @ T((0, 0, -90))), hold=0.05)
     if not FULL:
