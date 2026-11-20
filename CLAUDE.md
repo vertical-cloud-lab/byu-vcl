@@ -221,8 +221,8 @@ Actions. It is an ordinary session plus a one-hour `vcl-bot` token, and it posts
 comments on other PRs and issues only through `.github/scripts/dispatch_claude.py`, which caps a
 run at 10 (so at most 10 children at once, 6 h each), refuses other workflows' tags, checks the target's `claude.yml` lets `vcl-bot` in, and
 links back to the parent; `--new-issue <title>` opens a fresh issue as the child's thread (for
-"open a new PR" tasks). The parent has none of `claude.yml`'s secrets and the token dies at minute 60,
-so it dispatches early and leaves rendering and uploads (even on its own thread) to children. Each one starts a plain `@claude` run there, on its own runner. Those
+"open a new PR" tasks). The parent has the same secrets and tailnet as `claude.yml`, but its token dies at minute 60,
+so it dispatches early and hands long or parallel work to children. Each one starts a plain `@claude` run there, on its own runner. Those
 children never see the token, and `vcl-bot` can't start `@claude-super`, so it is one level deep.
 In a plain `@claude` run you have no way to dispatch; say so and suggest `@claude-super` instead.
 A repo outside byu-vcl needs `vcl-bot` installed on it and the same `allowed_bots: vcl-bot` and
