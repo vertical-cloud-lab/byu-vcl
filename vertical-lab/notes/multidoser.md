@@ -269,3 +269,123 @@ Not one of these is written yet, so neither clip was re-rendered (their code is 
   CubXL model, 28 mm in `props`): a grip by design, the lips flexing as the vial goes in. Rigid meshes overlap
   0.6-1.0 mm a side, which reads as the vial's insertion depth. It is reported rather than hidden, since the holder
   is merged with other parts of the CubXL's body.
+
+## Round 14: a dose post, a nest that holds the vessel, our draft shield (PR #318, 2026-11-20)
+
+Sterling, on round 12's video: "The dose is still going from way too high up. We probably need more of a custom breeze
+break that extends higher up. Either way, that's way too long of a fall distance before it lands in the cup ... Also
+seems like maybe you could reverse the orientation of the balance to free up space (again, with a custom breeze
+break)"; and at 9:54, "when it's actually on the pedestal, it still looks relatively unsecure". Powder-doser's v5 is
+unchanged; everything below is ours (`carousel.py`, `STATION = "r14"`), measured and checked in
+[`doser_shield.py`](../doser_shield.py) ([`out/doser_shield.json`](../out/doser_shield.json)).
+
+![The fall into a charge cup, rounds 9-13 and round 14](../out/doser_shield_section.png)
+
+### What sets the fall: the electronics carriage, not the balance
+
+Sampled on v5's meshes in every state (parked; each 7 mm of the 28 mm rise; each 10° of the tilt to 30°; the chain
+shifting with the carriage parked), the lowest v5 part within a radius r of the stream's axis, mm over the bench:
+
+| State | r 10 | r 14 | r 20 | r 25 | r 30 | r 40 |
+|---|---|---|---|---|---|---|
+| parked, and every chain shift | 344.8 | 344.8 | 344.8 | 344.8 | 344.8 | 344.8 |
+| docked, tilt 0° | 372.8 | 372.8 | 372.8 | 372.8 | 372.8 | 372.8 |
+| docked, tilt 10° | 390.6 | 374.1 | 374.1 | 374.1 | 374.1 | 374.1 |
+| docked, tilt 20° | 410.8 | 403.6 | 386.5 | 377.3 | 377.3 | 377.3 |
+| docked, tilt 30° (the dose) | 414.4 | 412.1 | 405.0 | 396.8 | 388.1 | 382.3 |
+
+- **The EC parks right over the stream's axis.** Its -x face is 4 mm past the axis (x 29 against 33.4), its underside
+  344.8 mm up there. So nothing standing on the pan can reach higher than about 335 mm while it is parked, whatever
+  the balance or its draft shield does. Docked and tilted to 30°, it lifts clear: the column over the pan is free to
+  404-412 mm.
+- **Turning the balance round doesn't help, and doesn't fit.** Turned 180° about the pan's axis, the HR-202i's rear
+  housing would stand under v5's front frame and runs into v5's front hatch (`hatch_front`), parked and at the dose
+  (FCL). And it would free nothing over the pan: the carriage, not the balance, is what's in the way.
+
+### The station (ours)
+
+- **Roof plate.** The HR-202i's glass top door comes off and a 4 mm clear antistatic plate lies in its rails
+  (307.5-311.5 mm), with a 21 mm hole at the pan's axis. The balance's chamber stays closed round the post, and its side
+  doors stay shut: the vessel never goes through them now, so **both door pushers are gone**.
+- **Dose post.** On the pan: v5's riser foot (80 mm) with a 44 mm hub, a 16 mm carbon-fibre tube up through the roof
+  plate's hole (2.5 mm a side, never touching it), and a **nest** on top. The nest is a 10.5 mm disc with a 4 mm ring
+  round the vessel's foot, 0.25 mm a side, with a 1 mm 45° lead-in, cut by two 5 mm grooves 9 mm deep for the fork's
+  tines. The vessel is held all round: the ring's +y and ±x segments, and its -y segment between the tines.
+  - The nest's seat: **327.0 mm for a charge cup** (a 19.55 mm ring), **325.0 mm for the 20 mL vial** (28.5 mm). One
+    ring can't hold both, so there is a nest for each, changed with the vessel type (chapter 1 uses the cup's, the
+    9:22 clip the vial's).
+  - Empty and parked under, the post's top is 13.8 mm (cup nest) and 15.8 mm (vial nest) under the carriage, more
+    than v5's own 10 mm over the balance.
+  - On the pan: the post, about 40 g (estimated: tube 19 g, foot and hub 12 g, nest 10 g), plus a pressed Cu cup,
+    146.2 g, is about 186 g of the HR-202i's 220 g. A cantilevered 16 × 1 mm carbon-fibre tube 280 mm long with
+    136 g on top rings at about 49 Hz (E 70 GPa, our estimate), well clear of the balance's filtering.
+- **Draft shield.** A clear box on the roof plate round the dose zone (x -40 to 78, y -45 to 50 mm, rig frame), 3 mm
+  panels in a teal frame, up to **405 mm**: 8.6 mm under the outlet doors of the modules that pass in a chain shift.
+  - A notch in its +x wall (from 318 mm up) and its roof (x 20-78, y -27 to 37) lets the carriage park, dock and tilt
+    in it; docked and tilted, the carriage itself fills most of the notch.
+  - A door in its -y wall (45 × 87 mm, 314-401 mm) slides 52 mm to -x for the shuttle; shut while the balance reads.
+  - The stream leaves the exit at 435.9 mm between the module's own outlet door and the carriage's -x face, and enters
+    the shield 31 mm lower.
+- **Shuttle.** Its fork is now two 4 mm tines 6 mm apart (14 mm across, ending 8 mm past the vessel's axis), which
+  drop into the nest's grooves; it carries the vessel 6 mm over its seat (2 mm over the ring) and drops 10 mm, as
+  before. The column is taller and the port in v5's -y panel is cut higher (x 0-67, z 100-410 mm).
+
+### The cycle: a vessel is on the post only while a module is docked and tilted
+
+1. With the post empty, the carousel indexes the module to the station, the P16s dock the carriage and it tilts 30°.
+2. The shield's door opens, the shuttle carries the vessel in over the nest, drops it into the ring (6 mm), goes 4 mm
+   on down the grooves and backs out; the door shuts.
+3. v5's `dose-to`: quarter auger turns, a reading after each.
+4. **One turn back at the dose tilt**, with the vessel still under the exit (v5 does it after the tilt back; here a
+   grain that comes loose falls into the vessel, and nothing can fall on the empty nest later).
+5. The reading settles, the door shut and the station still: it is the dose's own reading.
+6. The door opens, the shuttle takes the vessel out, the door shuts; the module tilts back and the carriage parks
+   over the empty post.
+
+### Numbers, rounds 9-13 against round 14
+
+| | Charge cup | 20 mL vial |
+|---|---|---|
+| Rim over the bench | 282.5 → **390.5 mm** | 280.0 → **386.0 mm** |
+| Fall from the exit (435.9 mm) | 153.4 → **45.4 mm** | 155.9 → **49.9 mm** |
+| Of which in the open (rounds 9-13: above the balance's top, its top door open) | 124 → **0 mm** | 124 → **0 mm** |
+| Draft-weighted exposure (model below) | 138.6 → **16.9 mm** | 139.9 → **17.3 mm** |
+| Stream margin in the mouth, each side (v5's 8 mm column, centred) | 2.35 mm | 8.8 mm |
+
+**Drift, an estimate.** A grain falling at its Stokes terminal speed v_t through a cross draft u drifts about u h / v_t
+over an exposed height h. With u = 0.1 m/s (a draft at a bench; a balance in still air sees under 0.05) and h weighted
+by how open each part of the fall is (1 open; 0.5 under an open top door or between the outlet door and the carriage;
+0.1 inside our shield):
+
+| Grain (the 20-63 µm cut, d50 40 µm) | v_t | Drift, rounds 9-13 | Round 14 |
+|---|---|---|---|
+| AlSi10Mg | 0.13 m/s | 108 mm | **13 mm** |
+| Si | 0.11 m/s | 124 mm | **15 mm** |
+| Ni, Cu | 0.43 m/s | 32 mm | **3.9 mm** |
+| AlSi10Mg d10 (25 µm) | 0.05 m/s | 276 mm | **34 mm** |
+
+A dense stream falls faster than single grains, so both columns overstate it by the same factor: what holds is the
+ratio, about 8× less. What the stream does inside still air over 45 mm is still powder-doser's T8b to measure.
+
+### Checked (FCL, mesh to mesh, `doser_shield.py`)
+
+- **Our fixed parts against every v5 part in every state above:** the roof plate ≥ 8.2 mm (v5's front hatch), the post
+  with the cup's nest ≥ 13.8 mm and the vial's ≥ 15.8 mm (the parked carriage), the shield ≥ 8.3 mm (the parked
+  carriage), its door ≥ 9.5 mm shut and ≥ 17.3 mm open.
+- **The vessel at the dose (carriage docked, tilted 30°), carried along the shuttle's whole travel and set on the
+  nest:** ≥ 11.7 mm (vial) and ≥ 13.5 mm (cup) from any v5 part; ≥ 4.5 mm from the shield's door frame; 2.0 mm over
+  the nest's ring (by design). Seated: ≥ 12.3 mm from anything. The tines run 0.5 mm clear in the grooves, and drop
+  4.0 mm clear of the vessel's foot.
+
+### What changes for the arm
+
+The hand-over is 106 mm higher (the fork at the seat + 6 mm), and the vessel has to wait on the fork until a module
+is docked and tilted. Chapter 1 and the 9:22 clip are re-scripted for it (`alloy_charge.py`, `animate.py workflow`).
+
+### Assumed, not measured
+
+The post, nest, roof plate, shield and fork are our designs, not built. That the HR-202i's glass top door lifts out of
+its rails, and that a plate of our own seats in them, is assumed: to check on a real HR-202i (or the GH-202 that
+replaces it). The post's mass and stiffness are estimates. The maintenance clip still
+shows rounds 9-13's pedestal (`upkeep_clip.py` pins `carousel.STATION = "r9"`): its balance check would now need a
+module docked and tilted too.

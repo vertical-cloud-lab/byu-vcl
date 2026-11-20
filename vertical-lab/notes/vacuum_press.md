@@ -303,3 +303,59 @@ bore.
    final height. The cup's OD after pressing is #222's check anyway.
 8. **Cu cups.** No numbers here for the Cu plug's fit or Ni's compaction. Cu's higher yield likely means a higher
    breakaway; the 15T has room.
+
+## Round 14: cleaning the die and the punch between presses (PR #318, 2026-11-20)
+
+Sterling: "the die punch and that whole setup probably needs a way for it to be cleaned in-between presses. I worry
+about cross-contamination from one run to the next in terms of powder." Ours, in `alloy_press.Cleaner`, and in every
+cup's cycle in chapter 1 (`alloy_charge.py`).
+
+### Where powder reaches the tools
+
+- **Up the vent.** On pump-down the air in the cup leaves through the plug's vent and the channel across its top
+  (DAL #156), and fines go with it: onto the plug's top, into the bore above it (the catch ring, F1's mouth) and on
+  to the die's port. The punch's face, nose and O-ring then touch them, and the next cup's plug.
+- **On the cup's outside.** A grain that missed the bore at the doser, or rode on the rack or the fork, is wiped onto
+  the catch ring and F1's bore as the cup goes in, and onto the next cup's wall.
+- The cup is melted whole, so whatever it carries in goes into the next run's melt.
+
+### What the cell does
+
+| When | What | Ours |
+|---|---|---|
+| Every press, the punch going back | Its rest is a **brush cup**: a ring of nylon bristles in the pocket's mouth, a vacuum line under it. The arm takes the punch in and out of it twice before letting go. | brush cup, vacuum elbow |
+| Every press, once the cup is out | The pin goes down; the arm takes the **bore wand** from its rest beside the punch's (a 19.6 mm nylon brush on a hollow stem, a 50 mm handle held level like the punch's flange, its own vacuum line), puts it down F1 to 5 mm over the pin, strokes it twice up through the catch ring, and puts it back. The pin comes back up for the next cup. | wand, its rest, hose |
+| The die's port | A 40 µm sintered disc in the port stops what the pump draws off the cup before it reaches the valves and the pump (and is a part to change, `upkeep.py`). | filter disc |
+| A change of run (Al to Cu here) | Both of the above, then the bore, the catch ring, the punch's face and its O-ring swabbed with IPA, a wet swab and a dry one (not animated). | swab station (to design) |
+
+The vacuum lines go to the lab's explosion-proof vacuum (the Nilfisk of DAL #80, `atom_nilfisk.py`), since the
+fines are Al and the dust is combustible; never to the press's own rotary-vane pump.
+
+### The residue limit it is to meet
+
+**Carry-over of the previous run's elements: no more than 10 ppm of the next cup's charge.**
+
+| Cup (pressed, `out/alloy_recipe_pressed.json`) | Charge | 10 ppm |
+|---|---|---|
+| 5N Al, Al-10Si | 43.08 g | **0.43 mg** |
+| OFE Cu, Cu-10Ni | 146.18 g | **1.46 mg** |
+
+- **Why 10 ppm.** It is the whole impurity budget of the 5N Al the cups are turned from (99.999 %), a hundredth of
+  the ±1 % dosing tolerance on the alloying powder (39 mg of Si in an Al cup, 146 mg of Ni in a Cu cup), and well
+  under what the top-up powders bring with them (AlSi10Mg and gas-atomized Cu are 99.x % pure), so a cup that
+  meets it is limited by its own powders, not by the press.
+- **What visually clean would give.** The tool surfaces a cup and its plug touch are about 70 cm²: F1's bore 38 cm²,
+  the catch ring 13 cm², the punch's nose and face 16 cm². At the pharmaceutical industry's threshold for a residue
+  seen by eye, about 4 µg/cm², that is 0.28 mg at most, under the Al cup's 0.43 mg even if all of it went into the next
+  cup. Most residue left after a brush and vacuum is fines stuck to the steel, and only part of that transfers.
+- **How it is shown, since nothing here is measured.** Validation: after the routine clean, swab the bore, the ring
+  and the punch; digest; ICP-MS for the previous run's marker elements (Cu and Ni after a Cu run, Si and Mg after an
+  Al run), at the BYU facility that DAL's FLAIME plan sends ICP-MS to. Do it at every run change for the first twenty,
+  then monthly; between swabs the wrist camera (D405) looks down the bore after every clean. If brushing alone misses
+  the limit, the IPA swab goes into every press; if that misses it too, the fallback is a punch and catch ring per
+  alloy family (F1, #222's sleeve, as well if needed), changed at the run change.
+
+### Assumed, not measured
+
+The brush cup, the wand, the filter and the swab step are our designs; the 70 cm², the 4 µg/cm² transfer and the 10
+ppm target are estimates and a choice, to be replaced by the validation swabs.

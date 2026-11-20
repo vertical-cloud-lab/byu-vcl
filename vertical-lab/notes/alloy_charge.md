@@ -372,3 +372,38 @@ D405 wrist camera on the gripper, checked as part of it (`ur_arm.camera_meshes`)
 - **The vacuum-press rewrite** (rendered as `out/alloy_charge_vacuum.*`, 219 s, two Al and two Cu cups) brought the
   two-layer fill, the Autotouch and its die, and the collision-checked moves (0 of 2752 frames). It still dosed onto
   the load cell, through the shared funnel.
+
+## Round 14: a 45 mm fall, a nest, a cleaned die, and every cup weighed again after pressing (PR #318, 2026-11-20)
+
+Sterling's notes on round 12's chapter 1 (11:45-17:04 in the public long-form), all answered in `alloy_charge.py`:
+
+1. **"The dose is still going from way too high up ... a custom breeze break."** The cup now stands on our dose post's
+   nest inside our draft shield, its rim **45.4 mm** under the auger's exit (153.4 mm before). Why it can't be closer
+   with v5 as it is (the electronics carriage parks over the post), the station and its checks:
+   [`multidoser.md`](multidoser.md#round-14-a-dose-post-a-nest-that-holds-the-vessel-our-draft-shield-pr-318-2026-11-20).
+2. **"On the pedestal, it still looks relatively unsecure."** The nest's 4 mm ring holds the cup's foot all round,
+   0.25 mm a side; the fork's tines drop into grooves under it.
+3. **"The die punch and that whole setup probably needs a way for it to be cleaned in-between presses."** After every
+   press the punch goes back through a brush cup and the die's bore gets the bore wand; at a run change, an IPA swab
+   too. The residue limit and how it is shown: [`vacuum_press.md`](vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20).
+4. **"We should probably be weighing the cups again after doing the press fit."** Every cup goes back to the HR-202i
+   once it is pressed and is weighed on the same nest, against its weight before pressing plus its plug's (each plug
+   weighed once when it is turned, as the cups are). The check is ±1.0 mg: ten times the balance's 0.1 mg, so it
+   catches a few milligrams of powder lost at the press. The readings go into the clip's JSON
+   (`reweighed_after_press`); in the clip they are made up, inside the check.
+
+### Each cup's cycle now
+
+| | Arm | Doser | Press |
+|---|---|---|---|
+| Alloying powder | rack → the shuttle's fork, park | index, dock, tilt; door, shuttle in; dose by weight; one turn back; reading; shuttle out; tilt back, park | |
+| | fork → rack | | |
+| Top-up | rack → fork, park | the same, with the top-up's module | |
+| | fork → rack; plug into the mouth; cup → the die's pin; punch → the die | | pump down, press to flush, vent with Ar |
+| | punch → its brush cup (in and out twice) → let go | | pin up: the cup in the catch ring |
+| Weighed again | cup → fork, park | the module at the station docks and tilts with no turn; shuttle in; reading; out; tilt back, park | |
+| | fork → the MiR's carrier (Al) or the rack (Cu) | | |
+| The die | the bore wand: its rest → down the bore, two strokes → its rest | | pin down, then up again |
+
+The doser docks and tilts a module whenever a cup is to be on the post, even to weigh it again, because the carriage
+parks right over the post: that costs about 4 s a cup.

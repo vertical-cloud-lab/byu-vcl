@@ -26,6 +26,7 @@ Press frame (``vacuum_press``): origin on the tray floor at the centre of the pr
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 import numpy as np
@@ -241,6 +242,119 @@ class VacPress:
         st = self.st
         vac = f"{st['mbar']:.0f} mbar" if st["mbar"] >= 10 else f"{st['mbar']:.1f} mbar"
         return f"{st['load']:.1f} t of {SET_T:.1f} t, {vac}, guard {'up' if st['guard'] > 0.5 else 'down'}"
+
+
+# ------------------------------------------------------------------- round 14: cleaning the die and punch between presses
+# Sterling (PR #318, 2026-11-20): "the die punch and that whole setup probably needs a way for it to be cleaned
+# in-between presses. I worry about cross-contamination from one run to the next in terms of powder." What carries
+# powder from one press to the next: fines the escaping air brings up the plug's vent and channel onto the plug's top
+# and into the bore above it (the catch ring, F1's mouth), whence the punch's face and O-ring pick them up; and grains
+# on a cup's outside (a stray from the dose) wiped onto the catch ring and F1's bore as the cup goes in. So, ours:
+# * the punch's rest becomes a BRUSH CUP: a ring of nylon bristles in its pocket's mouth and a vacuum port under it, so
+#   the punch's nose, collar and O-ring are brushed and the fines drawn off each time it goes back (in and out, twice);
+# * a BORE WAND on a rest of its own beside it: a 19.6 mm nylon brush on a hollow stem, a 50 mm handle (the gripper holds
+#   it level, as the punch's flange) and its own vacuum line, put down F1 to 5 mm over the lowered pin, stroked twice
+#   up through the catch ring, and back: after every press, once the cup is out;
+# * at a change of run (Al to Cu here), the same plus an IPA swab of the bore and the punch (notes/vacuum_press.md);
+# * the vacuum port of the die gets a 40 µm sintered filter disc, so fines pumped off the cup stop there.
+WAND_REST_LOCAL = (40.0, -300.0)        # press frame: the wand's rest, 70 mm left of the punch's (alloy_charge's)
+WAND_POCKET = 32.0                      # the brush stands in a pocket this deep in its rest
+WAND = dict(brush_r=9.8, brush_l=30.0, stem_r=4.0, stem_l=80.0, handle_r=25.0, handle_t=12.0, barb_r=4.0, barb_l=14.0)
+WAND_LOW = 5.0                          # the brush's foot over the lowered pin, in the bore
+WAND_STROKE = 52.0                      # each stroke draws the brush up to just under the ring's top
+BRISTLE_C = (0.92, 0.86, 0.55)
+VAC_C = (0.18, 0.19, 0.21)
+
+
+def wand_mesh() -> pv.PolyData:
+    """The bore wand, its brush's foot at z 0: the brush, the stem, the handle (as the punch's flange), the hose barb."""
+    w = WAND
+    z1 = w["brush_l"]
+    z2 = z1 + w["stem_l"]
+    z3 = z2 + w["handle_t"]
+    core = 3.0                                     # the brush's twisted-wire core (the bristles are drawn apart, soft)
+    prof = [(0, 0), (core, 0), (core, z1), (w["stem_r"], z1),
+            (w["stem_r"], z2), (w["handle_r"], z2), (w["handle_r"], z3), (w["barb_r"], z3), (w["barb_r"], z3 + w["barb_l"]),
+            (0, z3 + w["barb_l"])]
+    return C.lathe(prof, res=40)
+
+
+def wand_handle_z() -> float:
+    """The handle's middle over the brush's foot (where the gripper holds it)."""
+    return WAND["brush_l"] + WAND["stem_l"] + WAND["handle_t"] / 2
+
+
+class Cleaner:
+    """Ours: the brush cup in the punch's rest, the bore wand and its rest (alloy_charge's chapter 1). The wand's state:
+    "rest" (in its rest's pocket), "held", or "die" (in the die's bore, at `depth` over the lowered pin)."""
+
+    def __init__(self, sc, vp: VacPress):
+        self.sc, self.vp = sc, vp
+        rx, ry = REST_LOCAL
+        # the brush cup: a bristle ring in the punch rest's pocket mouth (soft: left out of the collision checks), a
+        # vacuum elbow on the post's side
+        ri = VPm.NOSE_R + 0.5
+        sc.add("vpress/brush", C._ring(ri, ri - 2.2, REST_TOP - 8.0, REST_TOP - 0.2, rx, ry), BRISTLE_C, "vpress",
+               specular=0.1)
+        sc.add("vpress/brush_vac", C._cylz(4.0, REST_TOP - 30.0, REST_TOP - 18.0, rx - 24.0, ry).merge(
+            C._box(rx - 24.0, rx - 19.0, ry - 4.0, ry + 4.0, REST_TOP - 28.0, REST_TOP - 20.0)), VAC_C, "vpress")
+        # the wand's rest: a post with a pocket for the brush, its base shared with the punch's rest
+        wx, wy = WAND_REST_LOCAL
+        post = C.lathe([(0, 0), (20.0, 0), (20.0, REST_TOP), (WAND["brush_r"] + 0.6, REST_TOP),
+                        (WAND["brush_r"] + 0.6, REST_TOP - WAND_POCKET), (0, REST_TOP - WAND_POCKET)], res=48)
+        sc.add("vpress/wrest", post.translate((wx, wy, 0), inplace=False).merge(
+            C._box(wx - 45, rx - 45, wy - 45, wy + 45, 0, 10)), C.PRINT, "vpress", specular=0.2)
+        sc.add("vp_wand/wand", wand_mesh(), (0.30, 0.32, 0.36), "vp_wand", specular=0.4)
+        sc.add("vp_wand/bristles", C._ring(WAND["brush_r"], 3.2, 1.0, WAND["brush_l"] - 0.5), BRISTLE_C, "vp_wand",
+               specular=0.1)
+        sc.add("vpress/wand_hose", pv.PolyData(), VAC_C, "vpress", specular=0.3)
+        sc.soft = set(getattr(sc, "soft", ())) | {"vpress/brush", "vp_wand/bristles", "vpress/wand_hose"}
+        self.at = "rest"
+        self.depth = WAND_LOW
+        self.wand_rest()
+
+    # ------------------------------------------------------------------ the wand's places
+    def wand_rest(self):
+        self.sc.parent["vp_wand"] = "vpress"
+        self.sc.gmat["vp_wand"] = T((*WAND_REST_LOCAL, REST_TOP - WAND_POCKET))
+        self.at = "rest"
+        self.hose()
+
+    def wand_into_die(self, depth=WAND_LOW):
+        self.sc.parent["vp_wand"] = "vp_shuttle"
+        self.depth = depth
+        self.sc.gmat["vp_wand"] = T((0, 0, VPm.CUP_BASE + depth))
+        self.at = "die"
+        self.hose()
+
+    def stroke(self, n=2):
+        """An update(u) that strokes the wand in the bore n times, up to the ring's top and back down."""
+        def up(u):
+            k = 0.5 - 0.5 * math.cos(2 * math.pi * n * u)
+            self.sc.gmat["vp_wand"] = T((0, 0, VPm.CUP_BASE + WAND_LOW + WAND_STROKE * k))
+            self.hose()
+        return up
+
+    def grasp_rest(self) -> np.ndarray:
+        return self.vp.world("vpress", (*WAND_REST_LOCAL, REST_TOP - WAND_POCKET + wand_handle_z()))
+
+    def grasp_die(self, depth=WAND_LOW) -> np.ndarray:
+        """The handle's middle with the wand in the die's bore (shuttle out, pin down), world."""
+        return self.vp.world("vpress", (VPm.AXX, VPm.Y_OUT, VPm.Z_PISTON + VPm.CUP_BASE + depth + wand_handle_z()))
+
+    def hose(self):
+        """The wand's vacuum hose: from its barb, over and down to a port on the rests' shared base."""
+        sc = self.sc
+        W = sc.world("vpress")
+        top = (sc.world("vp_wand") @ np.r_[0, 0, wand_handle_z() + WAND["handle_t"] / 2 + WAND["barb_l"], 1.0])[:3]
+        p0 = (np.linalg.inv(W) @ np.r_[top, 1.0])[:3]
+        wx, wy = WAND_REST_LOCAL
+        p3 = np.array([wx - 30.0, wy + 40.0, 12.0])
+        p1 = p0 + (0, 0, 60.0)
+        p2 = p3 + (0, 0, 160.0)
+        s = np.linspace(0, 1, 28)[:, None]
+        pts = (1 - s) ** 3 * p0 + 3 * (1 - s) ** 2 * s * p1 + 3 * (1 - s) * s ** 2 * p2 + s ** 3 * p3
+        sc.set_mesh("vpress/wand_hose", pv.Spline(pts, 40).tube(radius=3.5, n_sides=10).triangulate())
 
 
 def write_recipe():
