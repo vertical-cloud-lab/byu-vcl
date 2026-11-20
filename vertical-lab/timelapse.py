@@ -1418,8 +1418,11 @@ def movie():
             base = (base.astype(np.float32) * np.array([0.62, 0.66, 0.80], np.float32)).astype(np.uint8)
         img = orig(Image.fromarray(base), 1.0, [])
         img = draw_panels(img, mv, t, ph, 1.0)
-        if sc.mp4 is not None:
-            sc.mp4.stdin.write(np.asarray(img.convert("RGB")).tobytes())
+        # round 13: under VIZ3D_HD the frame as shown goes to out/hd/ (the scene's text encoder); round 12's 1080p render
+        # wrote it to the text-free encoder, which VIZ3D_HD_CLEAN=0 had turned off, and so wrote no frames
+        enc = sc.mp4_text if getattr(sc, "mp4_text", None) is not None else sc.mp4
+        if enc is not None:
+            enc.stdin.write(np.asarray(img.convert("RGB")).tobytes())
         if f == still_at:
             sc.still = (f, np.asarray(img.convert("RGB")).copy())
         if picks is not None:
