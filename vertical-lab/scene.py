@@ -38,6 +38,8 @@ GIF_FPS = 10
 SIZE = tuple(int(v) for v in os.environ.get("VIZ3D_SIZE", "1280x720").split("x"))
 CLEAN = bool(os.environ.get("VIZ3D_CLEAN"))     # no text at all; writes out/clean/ only (see the docstring)
 HD = bool(os.environ.get("VIZ3D_HD"))           # out/hd/ with the text and out/clean/ without (see the docstring)
+HD_CLEAN = os.environ.get("VIZ3D_HD_CLEAN", "1") != "0"   # VIZ3D_HD_CLEAN=0: out/hd/ only, no out/clean/ copy
+INLINE_AUDIT = bool(os.environ.get("VIZ3D_AUDIT"))   # a render that also checks its own frames (collide.Auditor)
 GIF_SIZE = (800, 450)
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 PREVIEW = bool(os.environ.get("PREVIEW"))   # render only the last frame of each sub-step, to /tmp
@@ -167,7 +169,11 @@ class Scene:
         self.pl = pv.Plotter(off_screen=True, window_size=size, lighting="none")
         light_kit(self.pl.renderer)
         self.pl.set_background("white")
-        self.pl.enable_anti_aliasing("ssaa")
+        # VIZ3D_AA: "ssaa" (default; renders oversampled, the costliest on the software renderer), "fxaa" (a cheap
+        # screen-space filter, enough at 1920 x 1080), "msaa" or "none"
+        aa = os.environ.get("VIZ3D_AA", "ssaa")
+        if aa != "none":
+            self.pl.enable_anti_aliasing(aa)
         self.pl.enable_depth_peeling(number_of_peels=6, occlusion_ratio=0.0)
         self.actors: dict[str, vtk.vtkActor] = {}
         self.group_of: dict[str, str] = {}
@@ -204,7 +210,7 @@ class Scene:
         if mp4:
             self.mp4_path = self.mp4_dir / f"{name}.mp4"
             if HD:      # the clean one is also the input of ../ppt/'s captioned clips; both are kept as delivered
-                self.mp4 = encoder(self.mp4_path, size, crf=18, preset="slow")
+                self.mp4 = encoder(self.mp4_path, size, crf=18, preset="slow") if HD_CLEAN else None
                 self.mp4_text_path = OUT / "hd" / f"{name}.mp4"
                 self.mp4_text = encoder(self.mp4_text_path, size, crf=18, preset="slow")
             else:
@@ -234,6 +240,7 @@ class Scene:
         style.update(kw)
         actor = self.pl.add_mesh(poly, color=color, opacity=opacity, **style)
         self.actors[name] = actor
+        self._hold(name, actor)
         self.group_of[name] = group
         self.base_alpha[name] = opacity
         self.alpha[name] = 1.0 if shown else 0.0
@@ -242,6 +249,18 @@ class Scene:
 
     def set_mesh(self, name, poly):
         self.actors[name].GetMapper().SetInputData(poly)
+        self._hold(name, self.actors[name])
+
+    def _hold(self, name, actor):
+        """Keep the Python wrappers of an actor's property, mapper and mesh alive for the scene's life. pyvista's are
+        Python subclasses of the VTK classes, so whenever a temporary one (actor.GetProperty(), GetMapper(), GetInput())
+        is dropped, VTK's wrapping keeps a "ghost" of it and walks every ghost it holds to purge dead ones: 0.5 ms a
+        call with 2,600 actors, 1.4 s a frame in apply() alone and as much again in the collision checker's
+        per-frame scan. A wrapper still referenced is found and returned as it is, and nothing is ghosted."""
+        keep = self.__dict__.setdefault("_keep", {})
+        m = actor.GetMapper()
+        keep[name] = (actor.GetProperty(), m, m.GetInput() if m is not None else None)
+        return keep[name]
 
     def world(self, group: str) -> np.ndarray:
         m = self.gmat.get(group, np.eye(4))
@@ -252,12 +271,28 @@ class Scene:
         return m
 
     def apply(self):
+        """Each group's world matrix and each part's visibility, opacity, colour and ambient onto its actor. Only what
+        changed since the last call goes to VTK: a whole-lab scene (2,600 actors) spent 1.4 s a frame here re-sending
+        all of it, twice its render time. A group's matrix is one vtkMatrix4x4 shared by its actors, new whenever the
+        matrix changes; an actor touched from outside since (its or its property's MTime moved) is re-sent in full."""
         cache = {}
+        mats = self.__dict__.setdefault("_gmats", {})
+        sent = self.__dict__.setdefault("_sent", {})
+        keep = self.__dict__.setdefault("_keep", {})
         for name, actor in self.actors.items():
             g = self.group_of[name]
-            if g not in cache:
-                cache[g] = self.world(g)
-            actor.SetUserMatrix(_vtk_matrix(cache[g]))
+            vm = cache.get(g)
+            if vm is None:
+                w = self.world(g)
+                key = w.tobytes()
+                prev = mats.get(g)
+                if prev is None or prev[0] != key:
+                    vm = vtk.vtkMatrix4x4()
+                    vm.DeepCopy(np.asarray(w, float).ravel().tolist())
+                    mats[g] = (key, vm)
+                else:
+                    vm = prev[1]
+                cache[g] = vm
             a = self.alpha[name]
             op = self.base_alpha[name]
             role, gh = self.cutrole.get(name), self.ghost_of.get(name)
@@ -267,12 +302,38 @@ class Scene:
                     a *= f if role == "half" else 1.0 - f
                 if gh is not None:
                     op = 1.0 + (gh - 1.0) * f
-            actor.SetVisibility(a > 0.02)
-            actor.GetProperty().SetOpacity(min(1.0, op * a))
-            if name in self.color:
-                actor.GetProperty().SetColor(*self.color[name])
-            if name in self.ambient:
-                actor.GetProperty().SetAmbient(self.ambient[name])
+            vis = a > 0.02
+            opac = min(1.0, op * a)
+            col = self.color.get(name)
+            col = tuple(float(c) for c in col) if col is not None else None
+            amb = self.ambient.get(name)
+            held = keep.get(name)
+            if held is None:
+                held = self._hold(name, actor)
+            prop = held[0]
+            rec = sent.get(name)
+            if rec is not None and rec[0] == actor.GetMTime() and rec[1] == prop.GetMTime():
+                if rec[2] is vm and rec[3] == vis and rec[4] == opac and rec[5] == col and rec[6] == amb:
+                    continue
+                if rec[2] is not vm:
+                    actor.SetUserMatrix(vm)
+                if rec[3] != vis:
+                    actor.SetVisibility(vis)
+                if rec[4] != opac:
+                    prop.SetOpacity(opac)
+                if col is not None and rec[5] != col:
+                    prop.SetColor(*col)
+                if amb is not None and rec[6] != amb:
+                    prop.SetAmbient(amb)
+            else:
+                actor.SetUserMatrix(vm)
+                actor.SetVisibility(vis)
+                prop.SetOpacity(opac)
+                if col is not None:
+                    prop.SetColor(*col)
+                if amb is not None:
+                    prop.SetAmbient(amb)
+            sent[name] = (actor.GetMTime(), prop.GetMTime(), vm, vis, opac, col, amb)
 
     def show(self, names, a=1.0):
         for n in names:
@@ -385,6 +446,14 @@ class Scene:
         return self.pl.screenshot(return_img=True)
 
     def snap(self, n=1):
+        if INLINE_AUDIT and not (AUDIT or PREVIEW) and not self.__dict__.get("_inline_checked"):
+            # VIZ3D_AUDIT=1: check this render's own frames, as ARM_AUDIT=1 would without rendering, unless the clip
+            # attaches an auditor of its own (most chapters do); its report is written at save()
+            self._inline_checked = True
+            import collide
+            if not any(isinstance(h, collide.Auditor) for h in self.frame_hooks):
+                self.inline_auditor = collide.Auditor(self)
+                self.frame_hooks.append(self.inline_auditor)
         if AUDIT:
             if self.auditor is not None and any(k in self.auditor.snap_frames for k in range(self.n, self.n + n)):
                 self.auditor.picture(self)
@@ -483,6 +552,8 @@ class Scene:
             print("preview", self.name, len(self.preview))
             return
         OUT.mkdir(parents=True, exist_ok=True)
+        if self.__dict__.get("inline_auditor") is not None:
+            self.inline_auditor.save()
         for proc in (self.mp4, self.mp4_text):
             if proc is not None:
                 proc.stdin.close()
@@ -493,7 +564,7 @@ class Scene:
         if self.still is not None and not (CLEAN or HD):
             Image.fromarray(self.still[1]).convert("RGB").save(OUT / f"{self.name}_still.png", optimize=True)
         info = f"{self.name}: {self.n} frames, {self.n / FPS:.1f} s"
-        if self.mp4 is not None:
+        if self.mp4 is not None and self.mp4_path.exists():
             info += f", mp4 {self.mp4_path.stat().st_size / 1e6:.1f} MB"
         if self.mp4_text is not None:
             info += f", with text {self.mp4_text_path.stat().st_size / 1e6:.1f} MB"
