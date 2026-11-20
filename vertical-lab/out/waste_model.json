@@ -1,0 +1,880 @@
+{
+ "units": {
+  "one_a_day": {
+   "runs": 667,
+   "tested": 309,
+   "promoted": 30,
+   "atomized": 360,
+   "screening_builds": 360.5,
+   "full_builds": 30,
+   "tensile": 1356,
+   "spots": 618,
+   "mounts": 618,
+   "polishes": 309,
+   "screen_runs": 400.3333333333333,
+   "promo_runs": 266.6666666666667,
+   "promo_charge_g": 300.0,
+   "rePowders": 1,
+   "midis": 1,
+   "furnaces": 1,
+   "cubxls": 1,
+   "sieve_wash": 1,
+   "fte": 1.0,
+   "good_runs": 600.3000000000001,
+   "failed_runs": 66.7,
+   "charge_kg": 200.1,
+   "edm_h": 385.35,
+   "build_h": 1261.5,
+   "nights": 77.25,
+   "crucibles": 44.46666666666667,
+   "weeks": 52.0,
+   "person_days": 250.0,
+   "vacuums": 3,
+   "one": 1.0,
+   "source": "out/timelapse_model.json totals['1 year'] (the finale's year, with upkeep and failures); screening builds = tested x 7/6, mounts and spots = 2 x tested"
+  },
+  "ten_a_day": {
+   "runs": 6121.05,
+   "tested": 3755.85,
+   "promoted": 375.95,
+   "screening_builds": 4380.0,
+   "full_builds": 375.95,
+   "mounts": 7519.000000000001,
+   "atomized": 4380.0,
+   "tensile": 16527.2,
+   "spots": 7511.7,
+   "polishes": 3755.85,
+   "promo_runs": 1253.1666666666665,
+   "screen_runs": 4867.883333333333,
+   "promo_charge_g": 684.0,
+   "rePowders": 3,
+   "midis": 4,
+   "furnaces": 2,
+   "cubxls": 2,
+   "sieve_wash": 2,
+   "fte": 5.2,
+   "good_runs": 5508.945000000001,
+   "failed_runs": 612.105,
+   "charge_kg": 2317.531,
+   "edm_h": 4695.1775,
+   "build_h": 15395.7,
+   "nights": 938.9625,
+   "crucibles": 408.07,
+   "weeks": 52.0,
+   "person_days": 1300.0,
+   "vacuums": 8,
+   "one": 1.0,
+   "source": "PR #332, bottleneck.py at cc31ddc: out/bottleneck.json ladder R11 (simulated) and consumables R11, per day; x 365"
+  }
+ },
+ "streams": [
+  {
+   "key": "fines_vac",
+   "name": "Atomizer and sieve-cell fines, vacuumed",
+   "route": "metal",
+   "per": "runs",
+   "amount": 7.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "assumed: 5 g a run from the chamber, plate, cone and bowl after the brush (DAL SOP 'Powder collection'; PR 80's SOP: 'tens of grams a week' at the lab's pace now) plus 2 g a run of spills in the sieve cell's downdraft enclosure",
+   "workflow": "chapter 2 (atomize), chapter 3 (sieve); atom_vacuum",
+   "undecided": false,
+   "one_a_day": {
+    "year": 4669.0,
+    "day": 12.7918,
+    "unit": "g",
+    "kg_year": 4.67
+   },
+   "ten_a_day": {
+    "year": 42847.35,
+    "day": 117.39,
+    "unit": "g",
+    "kg_year": 42.85
+   }
+  },
+  {
+   "key": "liners",
+   "name": "Vacuum liners (the plastic round the fines)",
+   "route": "metal",
+   "per": "vacuums",
+   "amount": 52.0,
+   "unit": "liners",
+   "kg_per_unit": 0.1,
+   "basis": "PR 80's SOP: a liner after each use or weekly, transferred to EHS at least every 2 weeks; 24 x 36 in, 4 mil conductive PE, about 0.1 kg (computed)",
+   "workflow": "atom_vacuum",
+   "undecided": false,
+   "one_a_day": {
+    "year": 156.0,
+    "day": 0.4274,
+    "unit": "liners",
+    "kg_year": 15.6
+   },
+   "ten_a_day": {
+    "year": 416.0,
+    "day": 1.1397,
+    "unit": "liners",
+    "kg_year": 41.6
+   }
+  },
+  {
+   "key": "char_powder",
+   "name": "Characterization powder (Mastersizer, XRF, XRD, SEM)",
+   "route": "metal",
+   "per": "atomized",
+   "amount": 10.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "alloy_powder.md: about 5 g into the Aero S, whose extractor keeps it; an XRF cup about 4 g and the XRD holder about 1 g (assumed); stubs are mg",
+   "workflow": "chapter 4 (powder checked)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 3600.0,
+    "day": 9.863,
+    "unit": "g",
+    "kg_year": 3.6
+   },
+   "ten_a_day": {
+    "year": 43800.0,
+    "day": 120.0,
+    "unit": "g",
+    "kg_year": 43.8
+   }
+  },
+  {
+   "key": "lpbf_screen",
+   "name": "LPBF powder left from screening builds",
+   "route": "metal",
+   "per": "screening_builds",
+   "amount": 26.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "the 55 mm kit's 30 g (DAL #138) less about 4 g in the miniature specimens (assumed); each alloy's leftover is small, spattered and unique, so it is waste",
+   "workflow": "chapter 5 (print, depowder)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 9373.0,
+    "day": 25.6795,
+    "unit": "g",
+    "kg_year": 9.37
+   },
+   "ten_a_day": {
+    "year": 113880.0,
+    "day": 312.0,
+    "unit": "g",
+    "kg_year": 113.88
+   }
+  },
+  {
+   "key": "lpbf_full",
+   "name": "LPBF powder left from full plates",
+   "route": "metal",
+   "per": "full_builds",
+   "amount": 380.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "the 170 mm cylinder's 440 g (powder-doser#31) less about 60 g of E8 bars (assumed); sieved and kept while the alloy may be rebuilt, then waste",
+   "workflow": "chapter 5",
+   "undecided": true,
+   "one_a_day": {
+    "year": 11400.0,
+    "day": 31.2329,
+    "unit": "g",
+    "kg_year": 11.4
+   },
+   "ten_a_day": {
+    "year": 142861.0,
+    "day": 391.4,
+    "unit": "g",
+    "kg_year": 142.86
+   }
+  },
+  {
+   "key": "filters",
+   "name": "Filters loaded with metal fines",
+   "route": "metal",
+   "per": "one",
+   "amount": 1.0,
+   "unit": "set",
+   "kg_per_unit": 1.0,
+   "basis": "a year, one a day: the rePowder's safety and pump filters, inspected every 20 h of running and replaced when worn (AMAZEMET manual via DAL PR 178; one in four assumed: 21 x 0.05 kg), its main (HEPA) filter about every two months, backfilled with sand in a grounded container (6 x 6 kg with the sand), Nilfisk main and two HEPAs a year per vacuum (3 x 1.5 kg), the MIDI's circulation filter every 1,000 build hours (upkeep ac_filter: 1.3 x 5 kg, wetted), the depowdering box's monthly filter (13 x 0.3 kg), the Mastersizer extractor's (1 kg): about 53 kg; half fixed and half scaled by runs for ten a day",
+   "workflow": "upkeep.py",
+   "undecided": false,
+   "one_a_day": {
+    "year": 52.95,
+    "day": 0.1451,
+    "unit": "set",
+    "kg_year": 52.95
+   },
+   "ten_a_day": {
+    "year": 269.436,
+    "day": 0.7382,
+    "unit": "set",
+    "kg_year": 269.44
+   }
+  },
+  {
+   "key": "surplus",
+   "name": "Surplus powder: the 63-250 um cuts",
+   "route": "metal",
+   "per": "one",
+   "amount": 1.0,
+   "unit": "kg",
+   "kg_per_unit": 1.0,
+   "basis": "74 % of every good run's charge (USABLE 91 % less FINES 17 %, DAL #219): 222 g of a 300 g run; kept in tray O's jars until the lab decides (archive, DED, re-melt, recycle or EHS)",
+   "workflow": "chapter 3 (sieved cuts)",
+   "undecided": true,
+   "one_a_day": {
+    "year": 135.428,
+    "day": 0.371,
+    "unit": "kg",
+    "kg_year": 135.43
+   },
+   "ten_a_day": {
+    "year": 1569.762,
+    "day": 4.3007,
+    "unit": "kg",
+    "kg_year": 1569.76
+   }
+  },
+  {
+   "key": "splats",
+   "name": "Splats, flakes over 250 um, bowl metal, skulls",
+   "route": "recycle",
+   "per": "good_runs",
+   "amount": 31.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "7 % of the charge over 250 um or on the bowl (the rest of the 9 % is in the vacuumed fines), plus a 10 g skull (DAL SOP 178: 'slag always remains at the bottom'; un-atomized metal is feedstock, not waste)",
+   "workflow": "chapter 2, atom_bn",
+   "undecided": false,
+   "one_a_day": {
+    "year": 18609.3,
+    "day": 50.9844,
+    "unit": "g",
+    "kg_year": 18.61
+   },
+   "ten_a_day": {
+    "year": 170777.295,
+    "day": 467.883,
+    "unit": "g",
+    "kg_year": 170.78
+   }
+  },
+  {
+   "key": "drips",
+   "name": "Failed runs: the metal that dripped",
+   "route": "recycle",
+   "per": "failed_runs",
+   "amount": 270.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "one run in ten drips instead of atomizing (timelapse run_fail_every); about 90 % of the charge comes back solid (assumed)",
+   "workflow": "chapter 2",
+   "undecided": false,
+   "one_a_day": {
+    "year": 18009.0,
+    "day": 49.3397,
+    "unit": "g",
+    "kg_year": 18.01
+   },
+   "ten_a_day": {
+    "year": 165268.35,
+    "day": 452.79,
+    "unit": "g",
+    "kg_year": 165.27
+   }
+  },
+  {
+   "key": "edm_wire",
+   "name": "Spent EDM wire (brass)",
+   "route": "recycle",
+   "per": "edm_h",
+   "amount": 0.1325,
+   "unit": "kg",
+   "kg_per_unit": 1.0,
+   "basis": "upkeep edm_wire: a 15.9 kg spool of 0.25 mm brass every 120 h of EDM work",
+   "workflow": "chapters 5-6 (cut, section)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 51.059,
+    "day": 0.1399,
+    "unit": "kg",
+    "kg_year": 51.06
+   },
+   "ten_a_day": {
+    "year": 622.111,
+    "day": 1.7044,
+    "unit": "kg",
+    "kg_year": 622.11
+   }
+  },
+  {
+   "key": "specimens",
+   "name": "Tested specimens, sections, plates retired",
+   "route": "recycle",
+   "per": "tested",
+   "amount": 40.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "4 miniature specimens (about 5 g each), two sections and a share of a 55 mm build plate re-used ten times (assumed); kept as records first",
+   "workflow": "chapters 5-7",
+   "undecided": false,
+   "one_a_day": {
+    "year": 12360.0,
+    "day": 33.863,
+    "unit": "g",
+    "kg_year": 12.36
+   },
+   "ten_a_day": {
+    "year": 150234.0,
+    "day": 411.6,
+    "unit": "g",
+    "kg_year": 150.23
+   }
+  },
+  {
+   "key": "ipa_sieve",
+   "name": "Sieve-wash IPA with Al fines",
+   "route": "chem",
+   "per": "runs",
+   "amount": 38.0,
+   "unit": "mL",
+   "kg_per_unit": 0.000786,
+   "basis": "alloy_print.md: the wash vessel holds a few hundred mL; changed weekly (upkeep sv_ipa), 0.5 L for about 13 runs a week (assumed); 'the rinse slurry is hazardous waste, kept wet'",
+   "workflow": "chapter 3 (wash module)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 25346.0,
+    "day": 69.4411,
+    "unit": "mL",
+    "kg_year": 19.92
+   },
+   "ten_a_day": {
+    "year": 232599.9,
+    "day": 637.26,
+    "unit": "mL",
+    "kg_year": 182.82
+   }
+  },
+  {
+   "key": "ipa_misc",
+   "name": "IPA from the bar rinse and wipes",
+   "route": "chem",
+   "per": "edm_h",
+   "amount": 0.03,
+   "unit": "L",
+   "kg_per_unit": 0.786,
+   "basis": "the bar-rinse jar beside the EDM (alloy_workflow.md), about 0.1 L a week, and IPA-wet wipes for seals and tools (assumed), as L per EDM hour",
+   "workflow": "chapter 5 (rinse), atomizer seals",
+   "undecided": false,
+   "one_a_day": {
+    "year": 11.561,
+    "day": 0.0317,
+    "unit": "L",
+    "kg_year": 9.09
+   },
+   "ten_a_day": {
+    "year": 140.855,
+    "day": 0.3859,
+    "unit": "L",
+    "kg_year": 110.71
+   }
+  },
+  {
+   "key": "formwash",
+   "name": "Form Wash IPA with resin",
+   "route": "chem",
+   "per": "weeks",
+   "amount": 0.3,
+   "unit": "L",
+   "kg_per_unit": 0.786,
+   "basis": "tray G, off the route: a bucket of about 8.6 L changed at 10 % resin (Formlabs), about twice a year at ten prints a week (assumed); the same at ten a day",
+   "workflow": "tray G (fabrication)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 15.6,
+    "day": 0.0427,
+    "unit": "L",
+    "kg_year": 12.26
+   },
+   "ten_a_day": {
+    "year": 15.6,
+    "day": 0.0427,
+    "unit": "L",
+    "kg_year": 12.26
+   }
+  },
+  {
+   "key": "resin",
+   "name": "Uncured resin: tank dregs, failed prints",
+   "route": "chem",
+   "per": "weeks",
+   "amount": 0.02,
+   "unit": "L",
+   "kg_per_unit": 1.1,
+   "basis": "tray G, off the route: a tank's dregs twice a year per Form 4 and uncured failures (assumed); cured supports go in the trash",
+   "workflow": "tray G",
+   "undecided": false,
+   "one_a_day": {
+    "year": 1.04,
+    "day": 0.0028,
+    "unit": "L",
+    "kg_year": 1.14
+   },
+   "ten_a_day": {
+    "year": 1.04,
+    "day": 0.0028,
+    "unit": "L",
+    "kg_year": 1.14
+   }
+  },
+  {
+   "key": "weck",
+   "name": "Weck's etchant, spent",
+   "route": "chem",
+   "per": "tested",
+   "amount": 5.0,
+   "unit": "mL",
+   "kg_per_unit": 0.00104,
+   "basis": "lab_r8.md: 4 g KMnO4 + 1 g NaOH in 100 mL water, mixed fresh; 25 mL a session, one session for every 5 alloys (assumed: most mounts are imaged as polished)",
+   "workflow": "fume hood (tray / ducted)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 1545.0,
+    "day": 4.2329,
+    "unit": "mL",
+    "kg_year": 1.61
+   },
+   "ten_a_day": {
+    "year": 18779.25,
+    "day": 51.45,
+    "unit": "mL",
+    "kg_year": 19.53
+   }
+  },
+  {
+   "key": "icp_acid",
+   "name": "Acidified ICP leftovers and tube-leach acid",
+   "route": "chem",
+   "per": "nights",
+   "amount": 0.14,
+   "unit": "L",
+   "kg_per_unit": 1.0,
+   "basis": "DAL protocol.md: 9 tubes of 320 uL a night at 62 mM HNO3, 220 uL of each left after the 10x dilution; the tubes leached overnight in 2 % HNO3, about 1 L a week (assumed)",
+   "workflow": "tray A (OT-2, CubXL)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 10.815,
+    "day": 0.0296,
+    "unit": "L",
+    "kg_year": 10.82
+   },
+   "ten_a_day": {
+    "year": 131.455,
+    "day": 0.3602,
+    "unit": "L",
+    "kg_year": 131.45
+   }
+  },
+  {
+   "key": "solder",
+   "name": "Solder paste, stencil wipes",
+   "route": "chem",
+   "per": "one",
+   "amount": 0.3,
+   "unit": "kg",
+   "kg_per_unit": 1.0,
+   "basis": "tray H, off the route: an expired jar and the stencil's wipes a year (assumed)",
+   "workflow": "tray H (PCB)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 0.3,
+    "day": 0.0008,
+    "unit": "kg",
+    "kg_year": 0.3
+   },
+   "ten_a_day": {
+    "year": 0.3,
+    "day": 0.0008,
+    "unit": "kg",
+    "kg_year": 0.3
+   }
+  },
+  {
+   "key": "pump_oil",
+   "name": "Vacuum pump oil",
+   "route": "recycle",
+   "per": "rePowders",
+   "amount": 6.0,
+   "unit": "L",
+   "kg_per_unit": 0.87,
+   "basis": "upkeep rp_pump_oil every 91 days (about 1 L, assumed) and the glovebox pump twice a year, per rePowder; used oil is recycled",
+   "workflow": "upkeep.py",
+   "undecided": false,
+   "one_a_day": {
+    "year": 6.0,
+    "day": 0.0164,
+    "unit": "L",
+    "kg_year": 5.22
+   },
+   "ten_a_day": {
+    "year": 18.0,
+    "day": 0.0493,
+    "unit": "L",
+    "kg_year": 15.66
+   }
+  },
+  {
+   "key": "aerosol",
+   "name": "BN spray cans",
+   "route": "universal",
+   "per": "runs",
+   "amount": 0.035326086956521736,
+   "unit": "cans",
+   "kg_per_unit": 0.12,
+   "basis": "atom_bn.md: a touch-up of two light passes of 0.35 s bursts and 4 s inverted, about 12 g a run, and about 30 g a new crucible every 15 runs (assumed), from 368 g cans",
+   "workflow": "atom_bn",
+   "undecided": false,
+   "one_a_day": {
+    "year": 23.562,
+    "day": 0.0646,
+    "unit": "cans",
+    "kg_year": 2.83
+   },
+   "ten_a_day": {
+    "year": 216.233,
+    "day": 0.5924,
+    "unit": "cans",
+    "kg_year": 25.95
+   }
+  },
+  {
+   "key": "batteries",
+   "name": "Batteries: UPS, MiR, small cells",
+   "route": "universal",
+   "per": "one",
+   "amount": 1.0,
+   "unit": "set",
+   "kg_per_unit": 1.0,
+   "basis": "averaged over their lives: 12 LiFePO4 UPS batteries at up to 10 years (Vertiv, ups.md: 1.2 a year, about 5 kg each), the MiR250s' Li-NMC packs at 3,000 cycles (upkeep: 2.5 and 4.9 years, about 11 kg each), 1 kg of small cells; none in the first year. Ten a day x 1.86, PR #332's equipment scale",
+   "workflow": "ups.md, upkeep.py",
+   "undecided": false,
+   "one_a_day": {
+    "year": 13.645,
+    "day": 0.0374,
+    "unit": "set",
+    "kg_year": 13.64
+   },
+   "ten_a_day": {
+    "year": 25.38,
+    "day": 0.0695,
+    "unit": "set",
+    "kg_year": 25.38
+   }
+  },
+  {
+   "key": "polish_water",
+   "name": "Polishing water and slurry",
+   "route": "drain",
+   "per": "polishes",
+   "amount": 2.5,
+   "unit": "L",
+   "kg_per_unit": 1.0,
+   "basis": "the PX500's waste tank, emptied weekly (upkeep px_waste): five SiC grits with water and a rinse after each (the lab's SOP), alumina and OP-U; about 2.5 L a polish (assumed)",
+   "workflow": "chapter 6 (polish)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 772.5,
+    "day": 2.1164,
+    "unit": "L",
+    "kg_year": 772.5
+   },
+   "ten_a_day": {
+    "year": 9389.625,
+    "day": 25.725,
+    "unit": "L",
+    "kg_year": 9389.62
+   }
+  },
+  {
+   "key": "seawater",
+   "name": "Seawater with sulfide (stocks, rinse cups)",
+   "route": "chem",
+   "per": "nights",
+   "amount": 0.03,
+   "unit": "L",
+   "kg_per_unit": 1.0,
+   "basis": "DAL protocol.md: the 10 and 0.1 mg/L S stocks fresh each night in ASTM D1141 water at pH 8.2, two 4 mL rinse cups; about 30 mL a night (assumed). Collected (it is litres a year), and never mixed with the acid",
+   "workflow": "tray A",
+   "undecided": false,
+   "one_a_day": {
+    "year": 2.317,
+    "day": 0.0063,
+    "unit": "L",
+    "kg_year": 2.32
+   },
+   "ten_a_day": {
+    "year": 28.169,
+    "day": 0.0772,
+    "unit": "L",
+    "kg_year": 28.17
+   }
+  },
+  {
+   "key": "quench",
+   "name": "Quench water",
+   "route": "drain",
+   "per": "furnaces",
+   "amount": 98.0,
+   "unit": "L",
+   "kg_per_unit": 1.0,
+   "basis": "r8_test QUENCH: 240 x 200 x 170 mm of water (8.2 L), changed monthly (assumed)",
+   "workflow": "chapter 5 (heat treat)",
+   "undecided": false,
+   "one_a_day": {
+    "year": 98.0,
+    "day": 0.2685,
+    "unit": "L",
+    "kg_year": 98.0
+   },
+   "ten_a_day": {
+    "year": 196.0,
+    "day": 0.537,
+    "unit": "L",
+    "kg_year": 196.0
+   }
+  },
+  {
+   "key": "edm_water",
+   "name": "EDM dielectric water (tank change)",
+   "route": "drain",
+   "per": "edm_h",
+   "amount": 0.55,
+   "unit": "L",
+   "kg_per_unit": 1.0,
+   "basis": "a 550 L tank (alpha-C400iC, a third-party listing) cleaned every 1,000 h (upkeep's Langenhorst source); filtered and deionized, so mostly clean water",
+   "workflow": "wire EDM",
+   "undecided": false,
+   "one_a_day": {
+    "year": 211.943,
+    "day": 0.5807,
+    "unit": "L",
+    "kg_year": 211.94
+   },
+   "ten_a_day": {
+    "year": 2582.348,
+    "day": 7.0749,
+    "unit": "L",
+    "kg_year": 2582.35
+   }
+  },
+  {
+   "key": "sic",
+   "name": "SiC papers, cloths",
+   "route": "trash",
+   "per": "polishes",
+   "amount": 45.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "the lab's SOP: 320, 400, 600, 800 and 1200 grit, single use, about 8 g each, and a cloth every 40 polishes (upkeep px_restock)",
+   "workflow": "chapter 6",
+   "undecided": false,
+   "one_a_day": {
+    "year": 13905.0,
+    "day": 38.0959,
+    "unit": "g",
+    "kg_year": 13.91
+   },
+   "ten_a_day": {
+    "year": 169013.25,
+    "day": 463.05,
+    "unit": "g",
+    "kg_year": 169.01
+   }
+  },
+  {
+   "key": "mounts",
+   "name": "Phenolic mounts, once archived",
+   "route": "trash",
+   "per": "tested",
+   "amount": 20.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "upkeep mx_restock: about 20 g of phenolic a hot mount (LECO, UMich SOP); the steel mounts are re-used",
+   "workflow": "chapter 6",
+   "undecided": false,
+   "one_a_day": {
+    "year": 6180.0,
+    "day": 16.9315,
+    "unit": "g",
+    "kg_year": 6.18
+   },
+   "ten_a_day": {
+    "year": 75117.0,
+    "day": 205.8,
+    "unit": "g",
+    "kg_year": 75.12
+   }
+  },
+  {
+   "key": "crucibles",
+   "name": "Graphite crucibles, BN flakes, insulation",
+   "route": "trash",
+   "per": "runs",
+   "amount": 50.0,
+   "unit": "g",
+   "kg_per_unit": 0.001,
+   "basis": "upkeep: a crucible and nozzle holder every 15 runs (about 0.6 kg), the insulation set every 60 (0.3 kg), the thermocouple sheath every 40 (0.05 kg), and the BN flakes scraped off at each touch-up (atom_bn.md; about 2 g)",
+   "workflow": "atom_crucible, atom_bn, upkeep.py",
+   "undecided": false,
+   "one_a_day": {
+    "year": 33350.0,
+    "day": 91.3699,
+    "unit": "g",
+    "kg_year": 33.35
+   },
+   "ten_a_day": {
+    "year": 306052.5,
+    "day": 838.5,
+    "unit": "g",
+    "kg_year": 306.05
+   }
+  },
+  {
+   "key": "ppe",
+   "name": "Gloves, wipes, N95s, tips, tubes",
+   "route": "trash",
+   "per": "person_days",
+   "amount": 0.12,
+   "unit": "kg",
+   "kg_per_unit": 1.0,
+   "basis": "assumed: six pairs of nitrile gloves, twenty wipes and an N95 a person-day; with the CubXL's 17 tips, the OT-2's and 9 tubes a night. Anything with visible powder goes in the metal pail",
+   "workflow": "every station",
+   "undecided": false,
+   "one_a_day": {
+    "year": 30.0,
+    "day": 0.0822,
+    "unit": "kg",
+    "kg_year": 30.0
+   },
+   "ten_a_day": {
+    "year": 156.0,
+    "day": 0.4274,
+    "unit": "kg",
+    "kg_year": 156.0
+   }
+  },
+  {
+   "key": "edm_resin",
+   "name": "EDM resin and filter cartridges",
+   "route": "vendor",
+   "per": "edm_h",
+   "amount": 0.07333333333333333,
+   "unit": "kg",
+   "kg_per_unit": 1.0,
+   "basis": "upkeep: the deionizing resin every 200 h (about 10 L, 12 kg wet; a 20 L ion exchanger is FANUC's option on the older alpha-0iC) and two paper filters every 600 h (about 4 kg each with sludge); the resin goes back for regeneration, the filters dried and to EHS",
+   "workflow": "wire EDM",
+   "undecided": false,
+   "one_a_day": {
+    "year": 28.259,
+    "day": 0.0774,
+    "unit": "kg",
+    "kg_year": 28.26
+   },
+   "ten_a_day": {
+    "year": 344.313,
+    "day": 0.9433,
+    "unit": "kg",
+    "kg_year": 344.31
+   }
+  },
+  {
+   "key": "icp_out",
+   "name": "ICP-MS samples, to the Spectroscopic Facility",
+   "route": "vendor",
+   "per": "nights",
+   "amount": 0.009,
+   "unit": "L",
+   "kg_per_unit": 1.0,
+   "basis": "the OT-2's 10x dilutions, 1.0 mL a tube, 9 a night (ot2_corrosion.md); the facility disposes of them",
+   "workflow": "tray A",
+   "undecided": false,
+   "one_a_day": {
+    "year": 0.695,
+    "day": 0.0019,
+    "unit": "L",
+    "kg_year": 0.7
+   },
+   "ten_a_day": {
+    "year": 8.451,
+    "day": 0.0232,
+    "unit": "L",
+    "kg_year": 8.45
+   }
+  }
+ ],
+ "route_kg_year": {
+  "one_a_day": {
+   "metal": 233.0,
+   "recycle": 105.3,
+   "chem": 57.5,
+   "universal": 16.5,
+   "drain": 1082.4,
+   "trash": 83.4,
+   "vendor": 29.0
+  },
+  "ten_a_day": {
+   "metal": 2224.2,
+   "recycle": 1124.1,
+   "chem": 486.4,
+   "universal": 51.3,
+   "drain": 12168.0,
+   "trash": 706.2,
+   "vendor": 352.8
+  }
+ },
+ "charge": [
+  {
+   "part": "the print (55 mm kit)",
+   "g": 30.0,
+   "route": null
+  },
+  {
+   "part": "the powder checks",
+   "g": 15.0,
+   "route": "metal"
+  },
+  {
+   "part": "fines kept",
+   "g": 6.0,
+   "route": "metal",
+   "undecided": true
+  },
+  {
+   "part": "63-250 um, surplus",
+   "g": 222.0,
+   "route": "metal",
+   "undecided": true
+  },
+  {
+   "part": "over 250 um, splats",
+   "g": 22.0,
+   "route": "recycle"
+  },
+  {
+   "part": "vacuumed fines",
+   "g": 5.0,
+   "route": "metal"
+  }
+ ],
+ "what": "The vertical lab's waste streams (waste.py): an amount per unit of work, times the units in a year at one fully tested alloy a day (the finale's year) and at ten (PR #332's R11). Modelled, not weighed; each stream's basis says what is sourced and what is assumed.",
+ "routes": {
+  "metal": "EHS: combustible metal",
+  "chem": "EHS: chemical",
+  "universal": "Universal waste",
+  "recycle": "Recycle or reuse",
+  "drain": "Drain, if EHS approves",
+  "trash": "Ordinary trash",
+  "vendor": "Back to the vendor, or sent out"
+ }
+}
