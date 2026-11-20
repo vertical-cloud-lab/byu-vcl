@@ -247,11 +247,13 @@ claude-super hand-off). Timestamps are in round 12's long-form ([G6_1FtXHmKI](ht
 | `atom_plate` | 152 s | 15 fps | 0 of 2,146 frames, movers 0 |
 | `atom_crucible_in` | 148 s | 15 fps | 0 of 2,004 frames, movers 0 |
 | `atom_crucible_out` | 113 s | 15 fps | 0 of 1,520 frames, movers 0 |
+| `atom_bn` | 155 s | 15 fps | 0 of 2,250 frames, movers 0 |
+| `atom_cameras` | 105 s | 15 fps | 0 of 1,181 frames, movers 0 |
 
-The last three were re-rendered unchanged: their committed MP4s were #353's 720p renders of 2026-11-19, from
-before round 13 put the rePowder's latch back in these clips and took the rebuild's 16 frames out of collision;
-round 13's 1080p renders of them stayed on its runner (`out/hd/` is git-ignored). `atom_bn` and `atom_cameras`
-are queued the same way.
+The last five were re-rendered without changes of their own: their committed MP4s were #353's 720p renders of
+2026-11-19, from before round 13 put the rePowder's latch back in these clips and took the rebuild's 16 frames and
+the plate's last ones out of collision; round 13's 1080p renders of them stayed on its runner (`out/hd/` is
+git-ignored). So all eight turnaround clips and chapter 2 are now at 1080p in git.
 
 **For the long-form** (not rebuilt here): the clips above changed, and with them their sub-steps' numbering, so
 `narration.json`'s lines anchored on `alloy_atomize`, `atom_latch` and `atom_container` sub-steps need re-anchoring
