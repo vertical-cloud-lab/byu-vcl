@@ -1,0 +1,5 @@
+{
+ "task_id": "f204b53a-09d8-44d9-899e-455b06c7a48c",
+ "job": "LITERATURE",
+ "query": "What commercial and research systems automate tensile testing of metal specimens, including robotic specimen loading and unloading (e.g. Instron AT2/AT3/AT6 automated testing systems, ZwickRoell roboTest, Shimadzu), specimen magazines, automatic extensometers, and automated elevated-temperature tensile testing with furnaces or environmental chambers? How are specimens fed, gripped, centered and removed, and what throughputs are reported? Include high-throughput tensile testing of additively manufactured small specimens."
+}

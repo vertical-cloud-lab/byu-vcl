@@ -1,0 +1,263 @@
+{
+ "name": "warehouse",
+ "fps": 15,
+ "n_frames": 1332,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "The warehouse version: the VLM and the alloy line's floor machines on an open floor, pallet racking round the edge, served by MiR250 mobile bases each carrying a UR10e. The machines face one aisle from both sides instead of standing along a rail: a MiR250 can dock at any front that faces an aisle.",
+   "start_frame": 0,
+   "end_frame": 89
+  },
+  {
+   "label": "2/7",
+   "caption": "The main aisle is 3.0 m wide, MiR's figure for two MiR250s passing with the default safety setup; one needs 1.45 m and pivots in 1.8 m. The docks sit between the aisle and the machines, each taped with a camera target on a post, so a docked unit blocks nothing. The two chargers stand 0.58 m apart (MiR: at least 0.55 m to the side of each).",
+   "start_frame": 90,
+   "end_frame": 170
+  },
+  {
+   "label": "3/7",
+   "caption": "Two units leave their chargers on the routes they are given: unit 1 to the VLM's opening, unit 2 to the 100 kN Instron. Drawn at 1.5 m/s; the MiR250 does up to 2.0 m/s.",
+   "start_frame": 171,
+   "end_frame": 188
+  },
+  {
+   "label": "3/7",
+   "caption": "Two units leave their chargers on the routes they are given: unit 1 to the VLM's opening, unit 2 to the 100 kN Instron. Drawn at 1.5 m/s; the MiR250 does up to 2.0 m/s.",
+   "start_frame": 189,
+   "end_frame": 353
+  },
+  {
+   "label": "4/7",
+   "caption": "Docked. MiR's figures for docking to an L-marker: ±6 mm along, ±3 mm across, ±1° of yaw. One degree is 23 mm at the arm's 1.3 m reach, so the wrist camera reads the target and shifts the taught frame before the arm works.",
+   "start_frame": 354,
+   "end_frame": 410
+  },
+  {
+   "label": "4/7",
+   "caption": "The VLM brings tray B (powder dosing) to the opening.",
+   "start_frame": 411,
+   "end_frame": 421
+  },
+  {
+   "label": "4/7",
+   "caption": "The VLM brings tray B (powder dosing) to the opening.",
+   "start_frame": 422,
+   "end_frame": 438
+  },
+  {
+   "label": "4/7",
+   "caption": "The VLM brings tray B (powder dosing) to the opening.",
+   "start_frame": 439,
+   "end_frame": 449
+  },
+  {
+   "label": "4/7",
+   "caption": "The VLM brings tray B (powder dosing) to the opening.",
+   "start_frame": 450,
+   "end_frame": 454
+  },
+  {
+   "label": "4/7",
+   "caption": "The VLM brings tray B (powder dosing) to the opening.",
+   "start_frame": 455,
+   "end_frame": 469
+  },
+  {
+   "label": "4/7",
+   "caption": "The VLM brings tray B (powder dosing) to the opening.",
+   "start_frame": 470,
+   "end_frame": 474
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 477,
+   "end_frame": 497
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 498,
+   "end_frame": 508
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 509,
+   "end_frame": 515
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 516,
+   "end_frame": 525
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 526,
+   "end_frame": 546
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 547,
+   "end_frame": 557
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 558,
+   "end_frame": 564
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 565,
+   "end_frame": 574
+  },
+  {
+   "label": "4/7",
+   "caption": "The arm takes a vial from tray B's rack and stands it in the holder on its own cabinet.",
+   "start_frame": 575,
+   "end_frame": 591
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray B goes back to its slot.",
+   "start_frame": 592,
+   "end_frame": 595
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray B goes back to its slot.",
+   "start_frame": 596,
+   "end_frame": 608
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray B goes back to its slot.",
+   "start_frame": 609,
+   "end_frame": 614
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray B goes back to its slot.",
+   "start_frame": 615,
+   "end_frame": 625
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray B goes back to its slot.",
+   "start_frame": 626,
+   "end_frame": 638
+  },
+  {
+   "label": "5/7",
+   "caption": "Unit 1 carries the vial to the glovebox's antechamber, along the aisle. At the Instron, unit 2's camera finds that dock's target.",
+   "start_frame": 641,
+   "end_frame": 850
+  },
+  {
+   "label": "6/7",
+   "caption": "At the glovebox: camera check, then the automatic antechamber's outer door opens to the aisle.",
+   "start_frame": 851,
+   "end_frame": 881
+  },
+  {
+   "label": "6/7",
+   "caption": "At the glovebox: camera check, then the automatic antechamber's outer door opens to the aisle.",
+   "start_frame": 882,
+   "end_frame": 908
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the vial from its holder, gripper level, ...",
+   "start_frame": 909,
+   "end_frame": 930
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the vial from its holder, gripper level, ...",
+   "start_frame": 931,
+   "end_frame": 938
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the vial from its holder, gripper level, ...",
+   "start_frame": 939,
+   "end_frame": 949
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the vial from its holder, gripper level, ...",
+   "start_frame": 950,
+   "end_frame": 956
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the vial from its holder, gripper level, ...",
+   "start_frame": 957,
+   "end_frame": 964
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the vial from its holder, gripper level, ...",
+   "start_frame": 965,
+   "end_frame": 974
+  },
+  {
+   "label": "6/7",
+   "caption": "... and puts it into the antechamber through the open door.",
+   "start_frame": 975,
+   "end_frame": 997
+  },
+  {
+   "label": "6/7",
+   "caption": "... and puts it into the antechamber through the open door.",
+   "start_frame": 998,
+   "end_frame": 1013
+  },
+  {
+   "label": "6/7",
+   "caption": "... and puts it into the antechamber through the open door.",
+   "start_frame": 1014,
+   "end_frame": 1020
+  },
+  {
+   "label": "6/7",
+   "caption": "... and puts it into the antechamber through the open door.",
+   "start_frame": 1021,
+   "end_frame": 1035
+  },
+  {
+   "label": "6/7",
+   "caption": "... and puts it into the antechamber through the open door.",
+   "start_frame": 1036,
+   "end_frame": 1055
+  },
+  {
+   "label": "6/7",
+   "caption": "Door shut: the PLC evacuates and refills the antechamber before the vial goes inside.",
+   "start_frame": 1056,
+   "end_frame": 1082
+  },
+  {
+   "label": "7/7",
+   "caption": "Both units go back to charge: 10 to 90 % takes 52 min on a MiR Charge 48V (MiR).",
+   "start_frame": 1083,
+   "end_frame": 1262
+  },
+  {
+   "label": "7/7",
+   "caption": "The trade against the rail: every front on the floor is reachable and the floor stays free, but a dock comes back to within millimetres, not the rail's ±0.3 mm, so every station needs a target the arm checks before it works.",
+   "start_frame": 1263,
+   "end_frame": 1331
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+{"source": "https://youtu.be/C4IBBj20OpE?t=19 (Keyence, VHX-7000N Series, 0:19: the monitor-controller and console, front)",
+ "video": "C4IBBj20OpE", "t": 19.0, "camera": "C4IBBj20OpE@19",
+ "pose": {"head": 0.0},
+ "points": {"bezel top left": [89, 241], "bezel top right": [647, 235],
+            "screen tl": [99, 251], "screen tr": [639, 245], "screen bl": [100, 564], "screen br": [642, 557]}}

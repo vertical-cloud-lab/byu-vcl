@@ -1,0 +1,87 @@
+{
+ "clip": "alloy_atomize",
+ "frames_checked": 920,
+ "frames_with_collisions": 5,
+ "runs": [
+  {
+   "label": "2/5",
+   "first_frame": 253,
+   "last_frame": 253,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:tong",
+     "other": "amr",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 485,
+   "last_frame": 489,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:tong",
+     "other": "amr",
+     "depth_mm": 25.0
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 5,
+ "fps": 6,
+ "arm_seconds": 142.9,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 920,
+  "frames_moving": 315,
+  "frames_with_collisions": 6,
+  "runs": [
+   {
+    "label": "2/5",
+    "first_frame": 632,
+    "last_frame": 632,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "rp:latch_loop",
+      "body": "rp latch loop",
+      "other": "rp latch keeper",
+      "other_group": "rp:keeper",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/5",
+    "first_frame": 954,
+    "last_frame": 958,
+    "frames": 5,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "rp:lockbolt",
+      "body": "rp lock bolt",
+      "other": "rp lock cylinder",
+      "other_group": "rp:latch_base",
+      "depth_mm": 25.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 6621,
+  "seconds": 5.7,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 11
+}

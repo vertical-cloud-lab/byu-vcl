@@ -1,0 +1,9 @@
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/objective.stl -D 'PART="objective"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/tube_lens.stl -D 'PART="tube_lens"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/camera.stl -D 'PART="camera"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/led_star_local.stl -D 'PART="led_star_local"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/motor_local.stl -D 'PART="motor_local"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/lead_local.stl -D 'PART="lead_local"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/pi_local.stl -D 'PART="pi_local"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/v7/rendering/delta_helpers.scad /tmp/openflexure/work/delta_helpers/sanga_local.stl -D 'PART="sanga_local"' -D DELTA_COLUMN_DZ=4.482
+/tmp/openflexure/scripts/run_native.sh /tmp/openflexure/work/delta/openscad/feet_assembled.scad /tmp/openflexure/work/delta_native/feet_assembled.stl

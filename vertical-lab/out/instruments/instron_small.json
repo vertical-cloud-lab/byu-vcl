@@ -1,0 +1,23 @@
+{
+ "name": "instruments/instron_small",
+ "fps": 15,
+ "n_frames": 100,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/2",
+   "caption": "A sub-size printed bar in its grips. The arm rides up the single column and pulls it.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/2",
+   "caption": "Back to the start. A tabletop frame, but 1410 mm tall: even the shortest single column (1020 mm) is taller than a tray takes, so it stands beside the VLM.",
+   "start_frame": 56,
+   "end_frame": 99
+  }
+ ]
+}

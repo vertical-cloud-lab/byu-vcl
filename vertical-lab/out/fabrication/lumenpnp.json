@@ -1,0 +1,203 @@
+{
+ "name": "fabrication/lumenpnp",
+ "fps": 15,
+ "n_frames": 636,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/8",
+   "caption": "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate, between the board mounts.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/8",
+   "caption": "The top camera finds the board's two fiducials.",
+   "start_frame": 50,
+   "end_frame": 75
+  },
+  {
+   "label": "3/8",
+   "caption": "",
+   "start_frame": 76,
+   "end_frame": 95
+  },
+  {
+   "label": "4/8",
+   "caption": "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+   "start_frame": 96,
+   "end_frame": 123
+  },
+  {
+   "label": "5/8",
+   "caption": "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacuum picks the part.",
+   "start_frame": 124,
+   "end_frame": 146
+  },
+  {
+   "label": "6/8",
+   "caption": "",
+   "start_frame": 147,
+   "end_frame": 160
+  },
+  {
+   "label": "7/8",
+   "caption": "Over the up-looking camera, its ring light on: it measures the part's offset and angle, and the nozzle turns it square.",
+   "start_frame": 161,
+   "end_frame": 188
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 189,
+   "end_frame": 210
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 211,
+   "end_frame": 222
+  },
+  {
+   "label": "8/8",
+   "caption": "To its place, found from the fiducials; down, and the vacuum lets go.",
+   "start_frame": 223,
+   "end_frame": 250
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 251,
+   "end_frame": 267
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 268,
+   "end_frame": 281
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 282,
+   "end_frame": 303
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 304,
+   "end_frame": 319
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 320,
+   "end_frame": 333
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 334,
+   "end_frame": 353
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 354,
+   "end_frame": 370
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 371,
+   "end_frame": 382
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 383,
+   "end_frame": 402
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 403,
+   "end_frame": 418
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 419,
+   "end_frame": 432
+  },
+  {
+   "label": "8/8",
+   "caption": "The third part from a feeder on the back rail.",
+   "start_frame": 433,
+   "end_frame": 454
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 455,
+   "end_frame": 470
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 471,
+   "end_frame": 484
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 485,
+   "end_frame": 504
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 505,
+   "end_frame": 521
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 522,
+   "end_frame": 533
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 534,
+   "end_frame": 553
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 554,
+   "end_frame": 569
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 570,
+   "end_frame": 583
+  },
+  {
+   "label": "8/8",
+   "caption": "Three parts placed; the head goes home and the board goes on to reflow.",
+   "start_frame": 584,
+   "end_frame": 603
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 604,
+   "end_frame": 635
+  }
+ ]
+}

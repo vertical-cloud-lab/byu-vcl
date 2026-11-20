@@ -1,0 +1,3229 @@
+{
+ "what": "The electrical input of every machine on the powered trays and on the floor, against the tray dock: 208Y/120 V, L1 + L2 + N + PE, a 30 A two-pole breaker, CombiTac 3 mm contacts rated 39 A (#303, PR #318)",
+ "question": "Sterling, PR #318, 2026-11-20: 'Are all modules within the VLM currently 120 V? Do some have higher power requirements?'",
+ "dock": {
+  "volts": "208Y/120 V",
+  "conductors": [
+   "L1",
+   "L2",
+   "N",
+   "PE"
+  ],
+  "breaker_A": 30.0,
+  "continuous_A": 24.0,
+  "contact_A": 39.0,
+  "line_to_neutral_V": 120.0,
+  "line_to_line_V": 208.0,
+  "three_phase": false
+ },
+ "method": "Each machine's current at the voltage it runs at: the maker's published current if there is one, else its published VA, else its W (power factor 1, so a lower bound), else ups.TRAY_LOADS's rated W. The backed branch is one load on one leg, the tray's UPS, drawing the backed machines' summed ratings (published VA where there is one, else W) over the UPS's efficiency at that load (ENERGY STAR, ups.py); the UPS's own input rating is given beside it. Legs: the UPS and each unbacked 120 V machine go on the lighter leg, biggest first; a 208 V machine loads both. Everything at nameplate at once, summed arithmetically: an upper bound no schedule reaches. The neutral current is sqrt(I1^2 + I2^2 - I1*I2) of the 120 V loads, for in-phase (resistive) currents.",
+ "source_kinds": {
+  "published": "read on the maker's or a distributor's page or PDF",
+  "snippet": "seen only in a search-result snippet or a third-party article",
+  "not_found": "searched for and not found (the note says where)",
+  "ours": "our own design: no maker; the figure is ours",
+  "estimate": "model not chosen (a PC): ups.py's typical figure"
+ },
+ "trays": {
+  "A": {
+   "slot": "R2",
+   "shuttle": 1,
+   "machines": [
+    {
+     "key": "ot2",
+     "machine": "Opentrons OT-2",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V AC, 50/60 Hz (external Mean Well GST220A, 36 V DC to the robot)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "about 100-180 W operating (Opentrons); a 220 W supply",
+     "watts": 220,
+     "va_or_w_used": 220,
+     "amps": 1.83,
+     "amps_how": "220 W / 120 V, power factor 1 assumed",
+     "plug": "external supply (IEC C14 inlet, snippet)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 220,
+     "source": "https://docs.opentrons.com/ot-2/installation/requirements/",
+     "source_kind": "published",
+     "quote": "Mains power: 100-240 VAC, 50/60 Hz | Input power supply: 36 VDC, 10 A | Operating: ~100-180 W",
+     "flags": [],
+     "note": "No AC current published; 220 W is the supply's size (docs.opentrons.com/ot-2/system-description/specs)."
+    },
+    {
+     "key": "cubxl",
+     "machine": "CubXL gantry (Genmitsu PROVerXL 4030 frame, our controller)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "switchable 115/230 V AC (Genmitsu's control box): set to 115",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 100,
+     "va_or_w_used": 100,
+     "amps": 0.83,
+     "amps_how": "100 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 100,
+     "source": "https://m.media-amazon.com/images/I/A1Sj30cosNL.pdf",
+     "source_kind": "snippet",
+     "quote": "switchable power supply, 230VAC or 115VAC",
+     "flags": [
+      "set the supply's switch to 115 before plugging in"
+     ],
+     "note": "No wattage published; 100 W is ups.py's estimate. Genmitsu's manual: the wrong switch setting can burn out the supply."
+    },
+    {
+     "key": "ezstat",
+     "machine": "NuVant EZstat Pro potentiostat",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "not found (external supply)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 30,
+     "va_or_w_used": 30,
+     "amps": 0.25,
+     "amps_how": "30 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 30,
+     "source": "https://www.nuvant.com/products/ezstat-pro",
+     "source_kind": "not_found",
+     "quote": null,
+     "flags": [],
+     "note": "Searched nuvant.com (product page and the EZstat Pro specification sheet V2, which covers only the cell side) and environmental-expert.com: no supply rating. The page gives only the external supply's size (4.13 x 9 x 2.36 in). 30 W is ups.py's estimate; read the supply's label."
+    },
+    {
+     "key": "ezware_pc",
+     "machine": "Windows PC for EZware",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "an ordinary desktop PC (100-240 V)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 150,
+     "va_or_w_used": 150,
+     "amps": 1.25,
+     "amps_how": "150 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 5-15P",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 150,
+     "source": null,
+     "source_kind": "estimate",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "cubxl_pi",
+     "machine": "the CubXL's Raspberry Pi 5",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V AC (27 W USB-C supply)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "27 W supply",
+     "watts": 27,
+     "va_or_w_used": 27,
+     "amps": 0.23,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 27,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "va": 1500,
+    "w": 1350,
+    "machine": "UPS: Vertiv Liebert GXT5LI-1500LVRT2UXL (1500 VA / 1350 W)",
+    "volts": "120 V typical, 60-150 V (online)",
+    "phase": 1,
+    "hz": "40-70 Hz",
+    "plug": "NEMA 5-15P",
+    "amps_rating": 12.0,
+    "amps_rating_how": "Vertiv guide specification: input current rating 12 A at 120 V",
+    "backed_sum_va_or_w": 641,
+    "backed_rated_w_ups_py": 641,
+    "amps_at_backed_ratings": 5.85,
+    "amps_how": "backed branch 641 VA/W at its ratings / efficiency 0.913 / 120 V",
+    "source": "https://prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf",
+    "source_kind": "published",
+    "quote": "E. Input Current Ratings ... 1500LVRT2UXL 12A",
+    "flags": [
+     "12 A: its own 15 or 20 A branch"
+    ]
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "UPS",
+       5.85
+      ]
+     ],
+     "L2": [],
+     "L1_L2_208V": [],
+     "L1_A": 5.8,
+     "L2_A": 0.0,
+     "max_leg_A": 5.8,
+     "neutral_A": 5.8,
+     "total_kVA": 0.7
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "UPS",
+       12.0
+      ]
+     ],
+     "L2": [],
+     "L1_L2_208V": [],
+     "L1_A": 12.0,
+     "L2_A": 0.0,
+     "max_leg_A": 12.0,
+     "neutral_A": 12.0,
+     "total_kVA": 1.44
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [
+     "NuVant EZstat Pro potentiostat"
+    ],
+    "notes": [
+     "Everything is 120 V or universal. Set the CubXL's Genmitsu supply to 115 before it is plugged in. The EZstat Pro's supply rating wasn't found (read its label)."
+    ]
+   }
+  },
+  "B": {
+   "slot": "R3",
+   "shuttle": 1,
+   "machines": [
+    {
+     "key": "carousel",
+     "machine": "multi-doser chain carousel v5 (Mean Well LRS-350-24 + Pi)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "90-132 V or 180-264 V AC, chosen by a switch (LRS-350-24): set to 115",
+     "phase": 1,
+     "hz": "47-63",
+     "amps_published": "6.8 A typ. at 115 V AC (3.4 A at 230 V)",
+     "power_published": "350 W out; about 400 W in",
+     "watts": 395,
+     "va_or_w_used": 395,
+     "amps": 6.8,
+     "amps_how": "Mean Well: 6.8 A typical at 115 V",
+     "plug": "none: screw terminals (we fit the cord or inlet)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 395,
+     "source": "https://www.meanwell.com/Upload/PDF/LRS-350/LRS-350-SPEC.PDF",
+     "source_kind": "published",
+     "quote": "90 ~ 132VAC / 180 ~ 264VAC by switch ... AC CURRENT (Typ.) 6.8A/115VAC 3.4A/230VAC",
+     "flags": [
+      "switch-selected input: 208 V on the 115 V setting destroys it"
+     ],
+     "note": null
+    },
+    {
+     "key": "balance",
+     "machine": "A&D HR-202i analytical balance",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "AC adapter for the local voltage (US adapter)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "approx. 11 VA",
+     "watts": 11,
+     "va_or_w_used": 11,
+     "amps": 0.09,
+     "amps_how": "11 VA / 120 V",
+     "plug": "AC adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 11,
+     "source": "https://www.aandd.jp/products/manual/balances/hr-i.pdf",
+     "source_kind": "published",
+     "quote": "Power consumption: Approx. 11VA (supplied to the AC adapter) ... Confirm that the adapter type is correct for the local voltage",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "vacuum_press",
+     "machine": "Specac Atlas Autotouch 15T press",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "one model per region: 110 V 60 Hz for the USA (GS25811); 230 V 50 Hz UK/EU (GS25810)",
+     "phase": 1,
+     "hz": "60",
+     "amps_published": null,
+     "power_published": null,
+     "watts": 400,
+     "va_or_w_used": 400,
+     "amps": 3.33,
+     "amps_how": "400 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 400,
+     "source": "https://specac.com/product/autotouch-press-high-throughput-xrf-press/",
+     "source_kind": "published",
+     "quote": "110V, 60Hz (USA)",
+     "flags": [],
+     "note": "Power and current not published (Specac pages, the QD Europe sheet, VWR); 400 W is ups.py's estimate. The manual (2I-25800-3) or the rating plate would give it. Not universal input: order the 110 V model."
+    },
+    {
+     "key": "vacuum_pump",
+     "machine": "Edwards RV3 rotary-vane pump (A652-01-906, set to 115 V)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "dual-voltage motor, switched: 110-120 V or 220-240 V, 50/60 Hz",
+     "phase": 1,
+     "hz": "60",
+     "amps_published": "6.9 A full load at 115-120 V 60 Hz (3.0 A at 230-240 V)",
+     "power_published": "550 W at 60 Hz",
+     "watts": 550,
+     "va_or_w_used": 550,
+     "amps": 6.9,
+     "amps_how": "Edwards: 6.9 A full load at 115-120 V, 60 Hz",
+     "plug": "IEC inlet on the motor; cord bought separately (Edwards lists a NEMA 6-15P set for 200-230 V)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 550,
+     "source": "https://www.vacuumpumpsupply.com/content/1-Manual-Edwards-RotaryVane-RV3-RV5-RV8-RV12.pdf",
+     "source_kind": "published",
+     "quote": "115-120 | 60 | 550 | 6.9",
+     "flags": [],
+     "note": "Higher for several seconds at a cold start. 208 V is at the edge of the 230-240 V setting (Edwards warns of slow running or a thermal trip more than 10 % under); keep it on 115 V."
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 27,
+     "va_or_w_used": 27,
+     "amps": 0.23,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 27,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "va": 800,
+    "w": 720,
+    "machine": "UPS: Vertiv Liebert PSI5-800SRT2ULIN (800 VA / 720 W)",
+    "volts": "120 V nominal, 75-146 V (line-interactive)",
+    "phase": 1,
+    "hz": null,
+    "plug": "NEMA 5-15P",
+    "amps_rating": 6.67,
+    "amps_rating_how": "no input current published; 800 VA / 120 V = 6.7 A",
+    "backed_sum_va_or_w": 493,
+    "backed_rated_w_ups_py": 493,
+    "amps_at_backed_ratings": 4.16,
+    "amps_how": "backed branch 493 VA/W at its ratings / efficiency 0.988 / 120 V",
+    "source": "https://www.vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/psi5-800srt2ulin/",
+    "source_kind": "snippet",
+    "quote": "Input: 5-15P; Output: 6 x 5-15R (Vertiv catalogue, search snippet); 120VAC, range 75-146VAC",
+    "flags": []
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "RV3",
+       6.9
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       4.16
+      ],
+      [
+       "Autotouch",
+       3.33
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 6.9,
+     "L2_A": 7.5,
+     "max_leg_A": 7.5,
+     "neutral_A": 7.2,
+     "total_kVA": 1.73
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "RV3",
+       6.9
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       6.67
+      ],
+      [
+       "Autotouch",
+       3.33
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 6.9,
+     "L2_A": 10.0,
+     "max_leg_A": 10.0,
+     "neutral_A": 8.9,
+     "total_kVA": 2.03
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [],
+    "notes": [
+     "All 120 V. Two inputs are switch-selected rather than universal: the doser's LRS-350 (keep it on 115) and the RV3 (A652-01-906 ships on 115 V). The Autotouch is sold as a 110 V 60 Hz model for the USA (GS25811); its power isn't published."
+    ]
+   }
+  },
+  "C": {
+   "slot": "F1",
+   "shuttle": 1,
+   "machines": [
+    {
+     "key": "h2d",
+     "machine": "Bambu Lab H2D (100-120 V version)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "100-120 V AC (US) / 200-240 V AC (a separate model), 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "max 1320 W at 110 V (2200 W at 220 V); average 1050 W",
+     "watts": 1320,
+     "va_or_w_used": 1320,
+     "amps": 12.0,
+     "amps_how": "1320 W / 110 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 1320,
+     "source": "https://bambulab.com/en-us/h2d/tech-specs",
+     "source_kind": "published",
+     "quote": "Voltage 100-120 VAC / 200-240 VAC, 50/60 Hz | Max Power* 2200 W@220 V / 1320 W@110 V",
+     "flags": [
+      ">= 12 A at 120 V: its own 20 A branch"
+     ],
+     "note": "Bambu: the peak lasts at most about 3 min while the bed heats. A resistive heater rated at 110 V draws more at 120 V (owners report about 1600 W peaks; unverified). Current and plug not published."
+    },
+    {
+     "key": "a1mini",
+     "machine": "Bambu Lab A1 mini",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "100-240 V AC, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "150 W max",
+     "watts": 150,
+     "va_or_w_used": 150,
+     "amps": 1.25,
+     "amps_how": "150 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 150,
+     "source": "https://bambulab.com/en-us/a1-mini/tech-specs",
+     "source_kind": "published",
+     "quote": "Input Voltage: 100-240 VAC, 50/60 Hz Max Power: 150 W",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "va": 800,
+    "w": 720,
+    "machine": "UPS: Vertiv Liebert PSI5-800SRT2ULIN (800 VA / 720 W)",
+    "volts": "120 V nominal, 75-146 V (line-interactive)",
+    "phase": 1,
+    "hz": null,
+    "plug": "NEMA 5-15P",
+    "amps_rating": 6.67,
+    "amps_rating_how": "no input current published; 800 VA / 120 V = 6.7 A",
+    "backed_sum_va_or_w": 114,
+    "backed_rated_w_ups_py": 114,
+    "amps_at_backed_ratings": 0.98,
+    "amps_how": "backed branch 114 VA/W at its ratings / efficiency 0.973 / 120 V",
+    "source": "https://www.vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/psi5-800srt2ulin/",
+    "source_kind": "snippet",
+    "quote": "Input: 5-15P; Output: 6 x 5-15R (Vertiv catalogue, search snippet); 120VAC, range 75-146VAC",
+    "flags": []
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "H2D",
+       12.0
+      ]
+     ],
+     "L2": [
+      [
+       "A1 mini",
+       1.25
+      ],
+      [
+       "UPS",
+       0.98
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 12.0,
+     "L2_A": 2.2,
+     "max_leg_A": 12.0,
+     "neutral_A": 11.1,
+     "total_kVA": 1.71
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "H2D",
+       12.0
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       6.67
+      ],
+      [
+       "A1 mini",
+       1.25
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 12.0,
+     "L2_A": 7.9,
+     "max_leg_A": 12.0,
+     "neutral_A": 10.6,
+     "total_kVA": 2.39
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [
+     "Bambu Lab H2D (100-120 V version)"
+    ],
+    "not_found": [],
+    "notes": [
+     "All 120 V. The H2D's US model is rated 1320 W at 110 V, 12 A: that is 80 % of a 15 A circuit, so it wants a 20 A branch of its own. Don't buy its 200-240 V model by mistake (a separate SKU)."
+    ]
+   }
+  },
+  "D": {
+   "slot": "R1",
+   "shuttle": 1,
+   "machines": [
+    {
+     "key": "sem",
+     "machine": "Hitachi TM4000PlusII SEM, main unit",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "single phase 100-240 V AC (90-250 V), 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "500 VA",
+     "watts": 500,
+     "va_or_w_used": 500,
+     "amps": 4.17,
+     "amps_how": "500 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 500,
+     "source": "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en",
+     "source_kind": "published",
+     "quote": "Single phase AC100-240 V (Min 90 V, Max250 V) 50/60 Hz,500 VA",
+     "flags": [],
+     "note": "From Hitachi's TM4000 Series III brochure; the PlusII brochure (UMD copy) gives no supply line for the main unit. Hitachi: 'Power cables ... should be prepared by users'."
+    },
+    {
+     "key": "sem_pc",
+     "machine": "the SEM's PC and monitor (Hitachi-supplied)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "not published (a desktop PC: 100-240 V)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 200,
+     "va_or_w_used": 200,
+     "amps": 1.67,
+     "amps_how": "200 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 5-15P",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 200,
+     "source": "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en",
+     "source_kind": "not_found",
+     "quote": "Another power souce for PC is required.",
+     "flags": [],
+     "note": "The brochure's layout shows separate outlets 'For PC' and 'For Monitor' with no rating; 200 W is ups.py's estimate."
+    },
+    {
+     "key": "eds",
+     "machine": "Oxford Instruments AZtecOne EDS (analyser unit)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "single phase 100-240 V AC, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "400 VA",
+     "watts": 400,
+     "va_or_w_used": 400,
+     "amps": 3.33,
+     "amps_how": "400 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 400,
+     "source": "https://matcl.umd.edu/files/2022/06/TM400PlusII-2.pdf",
+     "source_kind": "published",
+     "quote": "Single Phase AC, 100-240 V, 50/60 Hz, 400 VA",
+     "flags": [],
+     "note": "The same table gives 1,500 VA for AZtecLiveOne / AZtecEnergy: 12.5 A at 120 V if the lab ever upgrades."
+    },
+    {
+     "key": "xrd",
+     "machine": "Rigaku MiniFlex 600-C (600 W tube, internal chiller)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "single phase 100-240 V AC +-10 %, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "1.1 kVA (MiniFlex 600 with external chiller: 1.0 kVA)",
+     "watts": 1100,
+     "va_or_w_used": 1100,
+     "amps": 9.17,
+     "amps_how": "1100 VA / 120 V",
+     "plug": "IEC C14-type inlet (a C13 cord); no cord supplied outside Japan",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 1100,
+     "source": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en",
+     "source_kind": "published",
+     "quote": "MiniFlex600-C 1φ AC100 to 240 V ±10% 50/60 Hz ±1% 1.1 kVA",
+     "flags": [],
+     "note": "The plain MiniFlex 600 needs tap water or Rigaku's air-cooled chiller, which Rigaku specifies at 100 V, 1.3 kVA (10.8 A): the 600-C, with its chiller inside, avoids it. Inlet: Rigaku's specification as copied in a public tender (storage.mtender.gov.md)."
+    },
+    {
+     "key": "xrd_pc",
+     "machine": "the MiniFlex's PC",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "single phase 100-240 V AC (Rigaku's site requirement)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "0.7 kVA (Rigaku's budget for the PC)",
+     "watts": 700,
+     "va_or_w_used": 700,
+     "amps": 5.83,
+     "amps_how": "700 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 200,
+     "source": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en",
+     "source_kind": "published",
+     "quote": "PC 1φ AC100 to 240 V ±10% 50/60 Hz ±1% 0.7 kVA",
+     "flags": [],
+     "note": "An outlet budget for PC and monitor, not a measured draw; ups.py counts 200 W."
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x3",
+     "qty": 3,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 81,
+     "va_or_w_used": 81,
+     "amps": 0.68,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 81,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert GXT5LI-3000LVRT2UXL",
+    "va": 3000,
+    "w": 2700,
+    "machine": "UPS: Vertiv Liebert GXT5LI-3000LVRT2UXL (3000 VA / 2700 W)",
+    "volts": "120 V typical, 60-150 V (online)",
+    "phase": 1,
+    "hz": "40-70 Hz",
+    "plug": "NEMA L5-30P (120 V, 30 A, locking)",
+    "amps_rating": 24.0,
+    "amps_rating_how": "Vertiv guide specification: input current rating 24 A at 120 V; the input converter limits it to 110 % of that (26.4 A) outside brief overloads",
+    "backed_sum_va_or_w": 3041,
+    "backed_rated_w_ups_py": 2541,
+    "amps_at_backed_ratings": 27.67,
+    "amps_how": "backed branch 3041 VA/W at its ratings / efficiency 0.916 / 120 V",
+    "source": "https://prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf",
+    "source_kind": "published",
+    "quote": "E. Input Current Ratings ... 3000LVRT2UXL 24A",
+    "flags": [
+     "L5-30P: a 30 A, 120 V circuit of its own: one whole leg",
+     "24 A is exactly the 30 A leg's continuous limit",
+     "backed branch 3041 VA/W at its ratings: over the unit's 2700 W"
+    ]
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "UPS",
+       27.67
+      ]
+     ],
+     "L2": [],
+     "L1_L2_208V": [],
+     "L1_A": 27.7,
+     "L2_A": 0.0,
+     "max_leg_A": 27.7,
+     "neutral_A": 27.7,
+     "total_kVA": 3.32
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "UPS",
+       24.0
+      ]
+     ],
+     "L2": [],
+     "L1_L2_208V": [],
+     "L1_A": 24.0,
+     "L2_A": 0.0,
+     "max_leg_A": 24.0,
+     "neutral_A": 24.0,
+     "total_kVA": 2.88
+    },
+    "verdict": "over 24 A continuous on a leg, inside the 30 A breaker",
+    "verdict_ups_at_rating": "at 24 A on a leg, the continuous limit",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [
+     "the SEM's PC and monitor (Hitachi-supplied)"
+    ],
+    "notes": [
+     "Every machine is universal 100-240 V, so all of it could run at 120 V or at 208 V.",
+     "The problem is the UPS: the GXT5LI-3000LVRT2UXL is a 120 V unit with a 30 A L5-30P plug, rated 24 A in. The whole tray hangs on one leg at the continuous limit while the other leg carries nothing. At Rigaku's 0.7 kVA budget for the MiniFlex's PC the backed rows add to 3.0 kVA, more than the unit's 2700 W; with ups.py's 200 W for that PC they add to 2.5 kVA (23 A in)."
+    ],
+    "options": {
+     "as_specified": {
+      "ups": "one GXT5LI-3000LVRT2UXL, 120 V, L5-30P",
+      "L1_A": 27.7,
+      "L2_A": 0.0,
+      "note": "24 A at the UPS's own input rating; 27.7 A at the backed rows' ratings (Rigaku's 0.7 kVA PC budget), over the unit's 2700 W"
+     },
+     "two_ups_120V": {
+      "ups": "GXT5LI-2000LVRT2UXL (2000 VA / 1800 W, 16 A in) for the MiniFlex and its PC on L1; GXT5LI-1500LVRT2UXL (12 A in) for the SEM, its PC, the EDS, cameras and switch on L2",
+      "L1_A": 16.3,
+      "L1_A_pc_200W": 11.8,
+      "L2_A": 11.3,
+      "note": "MiniFlex side 1800 VA with Rigaku's PC budget (1300 with a 200 W PC) against 1800 W; SEM side 1241 VA against 1350 W. Efficiency 0.92 (Vertiv's guide, full load). Two 476 mm deep units: check the fit on the tray."
+     },
+     "one_ups_208V": {
+      "ups": "a 208 V-input 3 kVA online unit across L1-L2, e.g. Eaton 9PX3000GRT-L (LiFePO4, L6-20P in, 8 x C13 + 2 x C19 out; 605 mm deep)",
+      "L1_A": 15.9,
+      "L2_A": 15.9,
+      "L_A_pc_200W": 13.3,
+      "note": "Every machine on tray D takes 100-240 V, so all can run from 208 V outlets. 0.92 efficiency assumed (not published here)."
+     }
+    }
+   }
+  },
+  "E": {
+   "slot": "R4",
+   "shuttle": 1,
+   "machines": [
+    {
+     "key": "pip",
+     "machine": "Plastometrex PLX-Benchtop with its PC",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "not found",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 200,
+     "va_or_w_used": 200,
+     "amps": 1.67,
+     "amps_how": "200 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 200,
+     "source": "https://www.plastometrex.com/products/plx-benchtop",
+     "source_kind": "not_found",
+     "quote": null,
+     "flags": [],
+     "note": "Searched plastometrex.com (product page: no electrical, size or weight data, no spec sheet) and two web searches. 200 W is ups.py's estimate."
+    },
+    {
+     "key": "nanoindenter",
+     "machine": "KLA iMicro nanoindenter (InQuest controller) with its PC",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "not found",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 300,
+     "va_or_w_used": 300,
+     "amps": 2.5,
+     "amps_how": "300 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 300,
+     "source": "https://www.kla.com/wp-content/uploads/iMicro.pdf",
+     "source_kind": "not_found",
+     "quote": null,
+     "flags": [],
+     "note": "KLA's iMicro PDF would not load as text and the product page is script-rendered; AZoNano, UNH and Royce pages give no electrical data. 300 W is ups.py's estimate."
+    },
+    {
+     "key": "mastersizer",
+     "machine": "Malvern Mastersizer 3000 optical bench with the Aero S",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100/240 V, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 200,
+     "va_or_w_used": 200,
+     "amps": 1.67,
+     "amps_how": "200 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 200,
+     "source": "https://www.malvernpanalytical.com/br/assets/MRK1872-07-EN_MS3000_Broch_BrandUpdate_LR_web_tcm55-17232.pdf",
+     "source_kind": "published",
+     "quote": "System | Supply voltage 100/240V, 50/60Hz",
+     "flags": [],
+     "note": "No W, VA or A in the brochure, the 2023 range brochure or the user manual MAN0474-2-1; 200 W is ups.py's figure. The Aero S is said to draw its power through the optical unit (search snippet of Malvern's Aero S page)."
+    },
+    {
+     "key": "mastersizer_pc",
+     "machine": "the Mastersizer's PC",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "an ordinary desktop PC (100-240 V)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 150,
+     "va_or_w_used": 150,
+     "amps": 1.25,
+     "amps_how": "150 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 5-15P",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 150,
+     "source": null,
+     "source_kind": "estimate",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "ms_extractor",
+     "machine": "the Aero S vacuum extractor (Malvern's 'vacuum unit')",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "not found",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 1200,
+     "va_or_w_used": 1200,
+     "amps": 10.0,
+     "amps_how": "1200 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 1200,
+     "source": "https://ougfc.montana.edu/eal-lres/documents/Mastersizer-3000-user-manual-English-MAN0474-2-1.pdf",
+     "source_kind": "not_found",
+     "quote": "An external control accessory that is used to switch on the vacuum unit required for the sample extraction during each measurement.",
+     "flags": [],
+     "note": "Malvern names no model or rating (user manual; the Aero manual MAN0481 is behind a login). 1200 W is ups.py's estimate, a shop-vacuum class unit: 10 A at 120 V."
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x3",
+     "qty": 3,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 81,
+     "va_or_w_used": 81,
+     "amps": 0.68,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 81,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "va": 1500,
+    "w": 1350,
+    "machine": "UPS: Vertiv Liebert GXT5LI-1500LVRT2UXL (1500 VA / 1350 W)",
+    "volts": "120 V typical, 60-150 V (online)",
+    "phase": 1,
+    "hz": "40-70 Hz",
+    "plug": "NEMA 5-15P",
+    "amps_rating": 12.0,
+    "amps_rating_how": "Vertiv guide specification: input current rating 12 A at 120 V",
+    "backed_sum_va_or_w": 991,
+    "backed_rated_w_ups_py": 991,
+    "amps_at_backed_ratings": 8.97,
+    "amps_how": "backed branch 991 VA/W at its ratings / efficiency 0.921 / 120 V",
+    "source": "https://prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf",
+    "source_kind": "published",
+    "quote": "E. Input Current Ratings ... 1500LVRT2UXL 12A",
+    "flags": [
+     "12 A: its own 15 or 20 A branch"
+    ]
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "extractor",
+       10.0
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       8.97
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 10.0,
+     "L2_A": 9.0,
+     "max_leg_A": 10.0,
+     "neutral_A": 9.5,
+     "total_kVA": 2.28
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "UPS",
+       12.0
+      ]
+     ],
+     "L2": [
+      [
+       "extractor",
+       10.0
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 12.0,
+     "L2_A": 10.0,
+     "max_leg_A": 12.0,
+     "neutral_A": 11.1,
+     "total_kVA": 2.64
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [
+     "Plastometrex PLX-Benchtop with its PC",
+     "KLA iMicro nanoindenter (InQuest controller) with its PC",
+     "the Aero S vacuum extractor (Malvern's 'vacuum unit')"
+    ],
+    "notes": [
+     "All 120 V or universal where published. Three figures weren't found: the PLX-Benchtop, the iMicro and Malvern's vacuum extractor. The extractor is the big one: 1200 W (ups.py's estimate) is 10 A at 120 V."
+    ]
+   }
+  },
+  "F": {
+   "slot": "F2",
+   "shuttle": 1,
+   "machines": [
+    {
+     "key": "polisher",
+     "machine": "LECO PX500 grinder/polisher (PX500A2)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "230 V only: there is no 115 V PX500 (the 115 V models are the PX400A1/S1, 8-10 in wheels)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "not published by LECO; 740 W in a search snippet (ups.py)",
+     "watts": 740,
+     "va_or_w_used": 740,
+     "amps": 3.56,
+     "amps_how": "740 W / 208 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 208,
+     "ups_py_rated_w": 740,
+     "source": "https://www.leco.com/wp-content/uploads/documents/brochures/209-254-PX-series.pdf",
+     "source_kind": "published",
+     "quote": "PX400A1 (115 V) PX400A2 (230 V) ... PX500A2 (230 V)",
+     "flags": [
+      "needs 208/230 V: across L1-L2",
+      "ask LECO whether 208 V is inside the 230 V unit's tolerance"
+     ],
+     "note": "Power and current not published (leco.com, the DirectIndustry and MedicalExpo copies refused); 740 W is a search snippet (ups.py): 3.6 A at 208 V."
+    },
+    {
+     "key": "furnace",
+     "machine": "Nabertherm NAT 15/65 forced-convection furnace",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "230 V 1/N/PE as standard; Nabertherm: every 1-phase furnace can be built for 110-240 V, 50/60 Hz; the US listing found is 240 V single phase",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "2.8 kW (current page; 3.3 kW in an older catalogue and the US listing)",
+     "watts": 2800,
+     "va_or_w_used": 2800,
+     "amps": 13.46,
+     "amps_how": "2800 W / 208 V (ordered wound for 208 V)",
+     "plug": null,
+     "runs_at_v": 208,
+     "ups_py_rated_w": 2800,
+     "source": "https://nabertherm.com/en/products/industrie/thermprozesstechnik/prozesse-unter-luft/forced-convection-furnaces/forced",
+     "source_kind": "published",
+     "quote": "1-phase: all furnaces are available for mains voltages from 110 V - 240 V at 50 or 60 Hz.",
+     "flags": [
+      "needs 208/240 V: across L1-L2 (23 A at 120 V would take a whole leg)",
+      "order it wound for 208 V: a 240 V furnace on 208 V gives 75 % of its power"
+     ],
+     "note": "The 110-240 V line and the 3.3 kW row are from a distributor's copy of Nabertherm's catalogue (https://pimcore.imlab.eu/Bestanden/Nabertherm/nabertherm-na-serie-hogetemperatuurovens-brochure-en.pdf); the 240 V listing (SKU NAT-0161L1-240, 'ready to pass UL ... at extra cost') is MSE Supplies' (https://www.msesupplies.com/products/nabertherm-650-c-high-performance-forced-convection-chamber-furnace-nat-15-65-2). Rated current and plug not published. At 3.3 kW: 15.9 A at 208 V."
+    },
+    {
+     "key": "mounting_press",
+     "machine": "LECO MX400 mounting press, 1.5 in mold (MX400381, 115 V)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "AC 115 V or 230 V (separate part numbers), 50/60 Hz, single phase",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "115 V / 10 A (1.25 in, 1.5 in, 30 mm); 115 V / 12 A (40, 50 mm); 230 V / 5-6 A",
+     "power_published": "heater 900 W (1200 W for 40/50 mm)",
+     "watts": 1150,
+     "va_or_w_used": 1150,
+     "amps": 10.0,
+     "amps_how": "LECO: 115 V / 10 A for the 1.5 in model",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 1400,
+     "source": "https://www.leco.com/wp-content/uploads/documents/brochures/209-277-001-MX400.pdf",
+     "source_kind": "published",
+     "quote": "1.25 in, 1.50 in, 30 mm model AC 115 V/10 A or 230 V/5 A; 50/60 Hz; Single Phase",
+     "flags": [
+      "10 A at 120 V: its own 15 or 20 A branch"
+     ],
+     "note": "Also needs cooling water (20 C or below, 20-30 psi, 2.0 L/min) and a drain. The 230 V model (MX400382) would draw 5 A across L1-L2 at 208 V, if LECO accepts 208 V."
+    },
+    {
+     "key": "quench_tank",
+     "machine": "quench tank lift (ours: a stepper on a 24 V supply)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "120 V to a 24 V supply (ours)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": null,
+     "source_kind": "ours",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "va": 800,
+    "w": 720,
+    "machine": "UPS: Vertiv Liebert PSI5-800SRT2ULIN (800 VA / 720 W)",
+    "volts": "120 V nominal, 75-146 V (line-interactive)",
+    "phase": 1,
+    "hz": null,
+    "plug": "NEMA 5-15P",
+    "amps_rating": 6.67,
+    "amps_rating_how": "no input current published; 800 VA / 120 V = 6.7 A",
+    "backed_sum_va_or_w": 114,
+    "backed_rated_w_ups_py": 114,
+    "amps_at_backed_ratings": 0.98,
+    "amps_how": "backed branch 114 VA/W at its ratings / efficiency 0.973 / 120 V",
+    "source": "https://www.vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/psi5-800srt2ulin/",
+    "source_kind": "snippet",
+    "quote": "Input: 5-15P; Output: 6 x 5-15R (Vertiv catalogue, search snippet); 120VAC, range 75-146VAC",
+    "flags": []
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "MX400",
+       10.0
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       0.98
+      ],
+      [
+       "quench lift",
+       0.5
+      ]
+     ],
+     "L1_L2_208V": [
+      [
+       "PX500",
+       3.56
+      ],
+      [
+       "NAT 15/65",
+       13.46
+      ]
+     ],
+     "L1_A": 27.0,
+     "L2_A": 18.5,
+     "max_leg_A": 27.0,
+     "neutral_A": 9.3,
+     "total_kVA": 4.92
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "MX400",
+       10.0
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       6.67
+      ],
+      [
+       "quench lift",
+       0.5
+      ]
+     ],
+     "L1_L2_208V": [
+      [
+       "PX500",
+       3.56
+      ],
+      [
+       "NAT 15/65",
+       13.46
+      ]
+     ],
+     "L1_A": 27.0,
+     "L2_A": 24.2,
+     "max_leg_A": 27.0,
+     "neutral_A": 8.9,
+     "total_kVA": 5.6
+    },
+    "verdict": "over 24 A continuous on a leg, inside the 30 A breaker",
+    "verdict_ups_at_rating": "over 24 A continuous on a leg, inside the 30 A breaker",
+    "needs_208V": [
+     "LECO PX500 grinder/polisher (PX500A2)",
+     "Nabertherm NAT 15/65 forced-convection furnace"
+    ],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [],
+    "notes": [
+     "Two machines need 208/230 V. LECO sells the PX500 only as the 230 V PX500A2. The NAT 15/65's 2.8 kW would be 23 A at 120 V, so it has to be built for 208 V (Nabertherm builds its 1-phase furnaces for 110-240 V) and go across L1-L2: 13.5 A on each leg (15.9 A at the older 3.3 kW rating).",
+     "With the furnace, the PX500 and the 120 V MX400 all on, one leg reaches 27 A: inside the breaker, over 24 A continuous. Either the furnace and the MX400 take turns (ups.md's rule already), or the MX400 is its 230 V model (MX400382, 5 A) across L1-L2 too: then both legs are about 23 A with everything on (at 2.8 kW; 25 A at 3.3 kW). Ask LECO whether its 230 V machines accept 208 V."
+    ],
+    "options": {
+     "as_specified": {
+      "L1_A": 27.0,
+      "L2_A": 18.5,
+      "note": "furnace (208 V) + PX500 (208 V) on both legs, the MX400 (115 V, 10 A) on one"
+     },
+     "furnace_and_mx400_take_turns": {
+      "L1_A": 18.0,
+      "L2_A": 17.5,
+      "note": "ups.md's rule: the furnace and the MX400 don't heat together"
+     },
+     "mx400_230V_model": {
+      "L1_A": 23.0,
+      "L2_A": 22.5,
+      "L1_A_furnace_3300W": 25.4,
+      "note": "MX400382 (230 V, 5 A) across L1-L2 too, everything on at once"
+     }
+    }
+   }
+  },
+  "K": {
+   "slot": "2R1",
+   "shuttle": 2,
+   "machines": [
+    {
+     "key": "glovebox_tray",
+     "machine": "glovebox controller: 24 V DC PLC, HMI and supply (ours)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "120 V to a 24 V DC supply (ours)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 30,
+     "va_or_w_used": 30,
+     "amps": 0.25,
+     "amps_how": "30 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 30,
+     "source": null,
+     "source_kind": "ours",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "o2_analyzer",
+     "machine": "Teledyne 3000TA-XL trace O2 analyser",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "universal AC input 85-230 V, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "20 VA max",
+     "watts": 20,
+     "va_or_w_used": 20,
+     "amps": 0.17,
+     "amps_how": "20 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 20,
+     "source": "https://www.chromservis.eu/media/0/05_pdf/Catalogues/Teledyne_3000TAXL_UK.pdf",
+     "source_kind": "published",
+     "quote": "Power requirements: Universal AC input ranges, 85 to 230VAC, 50 / 60 Hz. Max. power consumption: 20 VA",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "h2o_sensor",
+     "machine": "Michell Easidew TX dew-point transmitter",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "2-wire 4-20 mA loop, powered from the controller's 24 V DC",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 0.5,
+     "va_or_w_used": 0.5,
+     "amps": 0.0,
+     "amps_how": "0.5 W / 120 V, power factor 1 assumed",
+     "plug": "none (loop powered)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 0.5,
+     "source": "https://www.processsensing.com/docs/datasheet/Michell_Instruments_Easidew_TX_I.S._Datasheet.pdf",
+     "source_kind": "snippet",
+     "quote": null,
+     "flags": [
+      "no outlet: loop powered"
+     ],
+     "note": null
+    },
+    {
+     "key": "gb_valves",
+     "machine": "glovebox solenoid valves, 4-6 x 24 V DC (ours)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "24 V DC from the controller's supply",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 40,
+     "va_or_w_used": 40,
+     "amps": 0.33,
+     "amps_how": "40 W / 120 V, power factor 1 assumed",
+     "plug": "none",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 40,
+     "source": null,
+     "source_kind": "ours",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "gb_antechamber_pump",
+     "machine": "antechamber vacuum pump (an Edwards RV3 at 115 V, if the same as the press's)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "dual-voltage, switched: 110-120 V or 220-240 V",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "6.9 A full load at 115-120 V 60 Hz",
+     "power_published": "550 W",
+     "watts": 550,
+     "va_or_w_used": 550,
+     "amps": 6.9,
+     "amps_how": "Edwards: 6.9 A at 115-120 V, 60 Hz",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 550,
+     "source": "https://www.vacuumpumpsupply.com/content/1-Manual-Edwards-RotaryVane-RV3-RV5-RV8-RV12.pdf",
+     "source_kind": "published",
+     "quote": "115-120 | 60 | 550 | 6.9",
+     "flags": [],
+     "note": "The pump isn't chosen; a diaphragm pump would draw much less."
+    },
+    {
+     "key": "gb_balance",
+     "machine": "analytical balance in the glovebox (HR-202i class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "AC adapter for the local voltage",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "approx. 11 VA (HR-202i)",
+     "watts": 11,
+     "va_or_w_used": 11,
+     "amps": 0.09,
+     "amps_how": "11 VA / 120 V",
+     "plug": "AC adapter",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 11,
+     "source": "https://www.aandd.jp/products/manual/balances/hr-i.pdf",
+     "source_kind": "published",
+     "quote": "Power consumption: Approx. 11VA",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "gb_capper",
+     "machine": "capper gantry and tipping cradle (ours)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "120 V to a 24 V supply (ours)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": null,
+     "source_kind": "ours",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "vhx",
+     "machine": "Keyence VHX-7000 controller (27 in 4K monitor with it)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V AC +-10 %, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "430 VA",
+     "watts": 430,
+     "va_or_w_used": 430,
+     "amps": 3.58,
+     "amps_how": "430 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 430,
+     "source": "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/",
+     "source_kind": "published",
+     "quote": "Power voltage: 100 to 240 VAC ±10%, 50/60 Hz; Power consumption: 430 VA",
+     "flags": [],
+     "note": "Whether the 430 VA includes the monitor isn't stated. The VHX-7000 is discontinued; Keyence names the VHX-X1."
+    },
+    {
+     "key": "vhx_stand",
+     "machine": "Keyence VHX-S750E motorised stand",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V AC +-10 %, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "130 VA",
+     "watts": 130,
+     "va_or_w_used": 130,
+     "amps": 1.08,
+     "amps_how": "130 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 130,
+     "source": "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-s750e/",
+     "source_kind": "published",
+     "quote": "100 to 240 VAC ±10%, 50/60 Hz ... 130 VA",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "ea300",
+     "machine": "Keyence EA-300 LIBS head",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "no mains input: powered from the VHX controller's camera port",
+     "phase": null,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 0,
+     "va_or_w_used": 0,
+     "amps": 0.0,
+     "amps_how": "0 W / 120 V, power factor 1 assumed",
+     "plug": "none",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 0,
+     "source": "https://www.keyence.com/products/microscope/elemental-analyzer/ea-300/models/ea-300",
+     "source_kind": "published",
+     "quote": "Power supplied via dedicated cable from VHX Series controller camera port",
+     "flags": [
+      "no outlet: powered by the VHX controller"
+     ],
+     "note": null
+    },
+    {
+     "key": "pikvm",
+     "machine": "PiKVM V4 Mini",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "5 V USB-C (its adapter: 100-240 V)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "12 W (ups.py)",
+     "watts": 12,
+     "va_or_w_used": 12,
+     "amps": 0.1,
+     "amps_how": "12 W / 120 V, power factor 1 assumed",
+     "plug": "USB-C adapter",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 12,
+     "source": "https://docs.pikvm.org/v4/v4mini_datasheet.pdf",
+     "source_kind": "published",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 27,
+     "va_or_w_used": 27,
+     "amps": 0.23,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 27,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "va": 1500,
+    "w": 1350,
+    "machine": "UPS: Vertiv Liebert GXT5LI-1500LVRT2UXL (1500 VA / 1350 W)",
+    "volts": "120 V typical, 60-150 V (online)",
+    "phase": 1,
+    "hz": "40-70 Hz",
+    "plug": "NEMA 5-15P",
+    "amps_rating": 12.0,
+    "amps_rating_how": "Vertiv guide specification: input current rating 12 A at 120 V",
+    "backed_sum_va_or_w": 820.5,
+    "backed_rated_w_ups_py": 820,
+    "amps_at_backed_ratings": 7.45,
+    "amps_how": "backed branch 820 VA/W at its ratings / efficiency 0.918 / 120 V",
+    "source": "https://prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf",
+    "source_kind": "published",
+    "quote": "E. Input Current Ratings ... 1500LVRT2UXL 12A",
+    "flags": [
+     "12 A: its own 15 or 20 A branch"
+    ]
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "UPS",
+       7.45
+      ]
+     ],
+     "L2": [
+      [
+       "antechamber pump",
+       6.9
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 7.5,
+     "L2_A": 6.9,
+     "max_leg_A": 7.5,
+     "neutral_A": 7.2,
+     "total_kVA": 1.72
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "UPS",
+       12.0
+      ]
+     ],
+     "L2": [
+      [
+       "antechamber pump",
+       6.9
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 12.0,
+     "L2_A": 6.9,
+     "max_leg_A": 12.0,
+     "neutral_A": 10.4,
+     "total_kVA": 2.27
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [],
+    "notes": [
+     "All 120 V or universal. The antechamber pump isn't chosen; counted as an RV3 at 115 V (6.9 A)."
+    ]
+   }
+  },
+  "L": {
+   "slot": "2R2",
+   "shuttle": 2,
+   "machines": [
+    {
+     "key": "tensile_h",
+     "machine": "ZwickRoell zwickiLine Z5.0 TN (testControl II)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V, 1Ph/N/PE, +-10 %, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "approx. 500 VA at full load",
+     "watts": 500,
+     "va_or_w_used": 500,
+     "amps": 4.17,
+     "amps_how": "500 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 500,
+     "source": "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf",
+     "source_kind": "published",
+     "quote": "Power supply 100 ... 240 V, 1Ph/N/PE; Tolerance range ±10 %; Power consumption (full load), approx. 500 VA",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "zwick_pc",
+     "machine": "the testXpert PC",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "an ordinary desktop PC (100-240 V)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 150,
+     "va_or_w_used": 150,
+     "amps": 1.25,
+     "amps_how": "150 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 5-15P",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 150,
+     "source": null,
+     "source_kind": "estimate",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "hardness",
+     "machine": "Mitutoyo HM-220 Type D micro-Vickers",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-125 / 220-240 V AC, 50/60 Hz (US: 100-125 V)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "39 VA (main unit); 90 W counted (ups.py, unsourced)",
+     "watts": 90,
+     "va_or_w_used": 90,
+     "amps": 0.75,
+     "amps_how": "90 W / 120 V, power factor 1 assumed",
+     "plug": "AC cord set, UL/CSA (02ZAA010)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 90,
+     "source": "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf",
+     "source_kind": "published",
+     "quote": "Power supply: 39VA 100-125/220-240V AC, 50/60Hz",
+     "flags": [],
+     "note": "39 VA is the main unit; Type D adds a motorised XY stage, autofocus and a joystick controller, with no published rating. 90 W (ups.py) is kept for the sum, unsourced. Cord: Mitutoyo bulletin 2055."
+    },
+    {
+     "key": "avpak_pc",
+     "machine": "the AVPAK PC (Mitutoyo-specified)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "an ordinary desktop PC (100-240 V)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 150,
+     "va_or_w_used": 150,
+     "amps": 1.25,
+     "amps_how": "150 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 5-15P",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 150,
+     "source": null,
+     "source_kind": "estimate",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "va": 1500,
+    "w": 1350,
+    "machine": "UPS: Vertiv Liebert GXT5LI-1500LVRT2UXL (1500 VA / 1350 W)",
+    "volts": "120 V typical, 60-150 V (online)",
+    "phase": 1,
+    "hz": "40-70 Hz",
+    "plug": "NEMA 5-15P",
+    "amps_rating": 12.0,
+    "amps_rating_how": "Vertiv guide specification: input current rating 12 A at 120 V",
+    "backed_sum_va_or_w": 1004,
+    "backed_rated_w_ups_py": 1004,
+    "amps_at_backed_ratings": 9.09,
+    "amps_how": "backed branch 1004 VA/W at its ratings / efficiency 0.921 / 120 V",
+    "source": "https://prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf",
+    "source_kind": "published",
+    "quote": "E. Input Current Ratings ... 1500LVRT2UXL 12A",
+    "flags": [
+     "12 A: its own 15 or 20 A branch"
+    ]
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "UPS",
+       9.09
+      ]
+     ],
+     "L2": [],
+     "L1_L2_208V": [],
+     "L1_A": 9.1,
+     "L2_A": 0.0,
+     "max_leg_A": 9.1,
+     "neutral_A": 9.1,
+     "total_kVA": 1.09
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "UPS",
+       12.0
+      ]
+     ],
+     "L2": [],
+     "L1_L2_208V": [],
+     "L1_A": 12.0,
+     "L2_A": 0.0,
+     "max_leg_A": 12.0,
+     "neutral_A": 12.0,
+     "total_kVA": 1.44
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [],
+    "notes": [
+     "All universal. ZwickRoell gives 500 VA (ups.py counts 500 W). Mitutoyo gives 39 VA for the HM-220's main unit; the Type D's motorised stage and autofocus have no published rating, so ups.py's 90 W stays."
+    ]
+   }
+  },
+  "M": {
+   "slot": "2R3",
+   "shuttle": 2,
+   "machines": [
+    {
+     "key": "xrf",
+     "machine": "Bruker S2 PUMA Series 2, XY Autochanger",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "max. 600 VA",
+     "watts": 600,
+     "va_or_w_used": 600,
+     "amps": 5.0,
+     "amps_how": "600 VA / 120 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 600,
+     "source": "https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2.html",
+     "source_kind": "published",
+     "quote": "Power Requirements 100-240 V, 50/60 Hz, max. power consumption 600 VA",
+     "flags": [],
+     "note": "Bruker brochure DOC-B80-EXS015 V5; DKSH's page agrees."
+    },
+    {
+     "key": "xrf_vacuum_pump",
+     "machine": "the S2 PUMA's optional vacuum pump",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "not found",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 300,
+     "va_or_w_used": 300,
+     "amps": 2.5,
+     "amps_how": "300 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 300,
+     "source": "https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2.html",
+     "source_kind": "not_found",
+     "quote": null,
+     "flags": [],
+     "note": "No make, model or rating published (Bruker's brochure and page, DKSH, searches with Pfeiffer, Edwards and Vacuubrand). 300 W is ups.py's estimate; ask Bruker."
+    },
+    {
+     "key": "fumehood_tray",
+     "machine": "Sentry Air SS-224-DCH ductless hood, 24 in",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "115 V, 1 phase, 60 Hz (a 220 V / 50 Hz version too)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "0.3 A at 115 V",
+     "power_published": null,
+     "watts": 35,
+     "va_or_w_used": 35,
+     "amps": 0.3,
+     "amps_how": "Sentry Air: 0.3 A at 115 V",
+     "plug": "NEMA 5-15P, 8 ft cord",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 35,
+     "source": "https://completelabsystems.com/wp-content/uploads/2022/02/ss-224-dch.pdf",
+     "source_kind": "published",
+     "quote": "Electrical 115/1/160, 0.3 amps ... 8' grounded power cord with NEMA 5-15P plug",
+     "flags": [],
+     "note": "Sentry's brochure, hosted by a dealer ('160' is a typo for 60)."
+    },
+    {
+     "key": "cnc",
+     "machine": "Makera Carvera (200 W spindle)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "100-120 V / 200-240 V AC, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "3.6 A at 115 V, 2 A at 230 V (community wiki)",
+     "power_published": "400 W max (Makera)",
+     "watts": 400,
+     "va_or_w_used": 400,
+     "amps": 3.6,
+     "amps_how": "community wiki: 3.6 A at 115 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 430,
+     "source": "https://www.makera.com/pages/product-compare",
+     "source_kind": "published",
+     "quote": "Motion System: Max Power 400W",
+     "flags": [
+      "check any 115/230 V selector before first power-up"
+     ],
+     "note": "Voltage from a search snippet of Makera's site and the community wiki (carvera-community.gitbook.io); the Carvera Air ships with its selector at 220 V."
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "va": 1500,
+    "w": 1350,
+    "machine": "UPS: Vertiv Liebert GXT5LI-1500LVRT2UXL (1500 VA / 1350 W)",
+    "volts": "120 V typical, 60-150 V (online)",
+    "phase": 1,
+    "hz": "40-70 Hz",
+    "plug": "NEMA 5-15P",
+    "amps_rating": 12.0,
+    "amps_rating_how": "Vertiv guide specification: input current rating 12 A at 120 V",
+    "backed_sum_va_or_w": 749,
+    "backed_rated_w_ups_py": 749,
+    "amps_at_backed_ratings": 6.81,
+    "amps_how": "backed branch 749 VA/W at its ratings / efficiency 0.917 / 120 V",
+    "source": "https://prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf",
+    "source_kind": "published",
+    "quote": "E. Input Current Ratings ... 1500LVRT2UXL 12A",
+    "flags": [
+     "12 A: its own 15 or 20 A branch"
+    ]
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "UPS",
+       6.81
+      ]
+     ],
+     "L2": [
+      [
+       "Carvera",
+       3.6
+      ],
+      [
+       "S2 PUMA pump",
+       2.5
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 6.8,
+     "L2_A": 6.1,
+     "max_leg_A": 6.8,
+     "neutral_A": 6.5,
+     "total_kVA": 1.55
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "UPS",
+       12.0
+      ]
+     ],
+     "L2": [
+      [
+       "Carvera",
+       3.6
+      ],
+      [
+       "S2 PUMA pump",
+       2.5
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 12.0,
+     "L2_A": 6.1,
+     "max_leg_A": 12.0,
+     "neutral_A": 10.4,
+     "total_kVA": 2.17
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [
+     "the S2 PUMA's optional vacuum pump"
+    ],
+    "notes": [
+     "All 120 V or universal. The S2 PUMA's vacuum pump has no published make or rating (300 W, ups.py's estimate). The Carvera takes 100-120 or 200-240 V: check for a selector before first power-up."
+    ]
+   }
+  },
+  "H": {
+   "slot": "2R4",
+   "shuttle": 2,
+   "machines": [
+    {
+     "key": "stencil",
+     "machine": "DDM Novastar SPR-45VA stencil printer",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "120 V AC, 50/60 Hz (220-240 V available)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "2 A",
+     "power_published": null,
+     "watts": 240,
+     "va_or_w_used": 240,
+     "amps": 2.0,
+     "amps_how": "published: 2 A",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 240,
+     "source": "https://pentalogix.com/pdf/SPR_45VA_Stencil_Printers.pdf",
+     "source_kind": "published",
+     "quote": "Power 120 VAC, 50/60Hz, 2Amp (220-240 VAC available)",
+     "flags": [],
+     "note": "Distributor's data sheet. Its vision package's computer may not be inside the 2 A."
+    },
+    {
+     "key": "lumenpnp",
+     "machine": "Opulo LumenPnP v4 (24 V 6 A supply)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "100-240 V AC, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "2.5 A max",
+     "power_published": "144 W out",
+     "watts": 300,
+     "va_or_w_used": 300,
+     "amps": 2.5,
+     "amps_how": "300 W / 120 V, power factor 1 assumed",
+     "plug": "IEC C14 inlet on the supply",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 300,
+     "source": "https://cdn.shopify.com/s/files/1/0570/4256/7355/files/Opulo_Power_Supply_Datasheet-24V_6A.pdf?v=1723229996",
+     "source_kind": "published",
+     "quote": "INPUT:100-240V~50/60Hz 2.5A ... OUTPUT:24.0V 6.0A 144.0W",
+     "flags": [],
+     "note": "ups.py counts 300 W (supply plus pumps); the supply's own input is at most about 165 W."
+    },
+    {
+     "key": "lumenpnp_pc",
+     "machine": "the OpenPnP host (a mini PC)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "its adapter, 100-240 V",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 100,
+     "va_or_w_used": 100,
+     "amps": 0.83,
+     "amps_how": "100 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 100,
+     "source": null,
+     "source_kind": "estimate",
+     "quote": null,
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "reflow",
+     "machine": "Puhui T-962A reflow oven (110 V build)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "separate 110 V and 220 V builds, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "1500 W",
+     "watts": 1500,
+     "va_or_w_used": 1500,
+     "amps": 13.64,
+     "amps_how": "1500 W / 110 V",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 1500,
+     "source": "https://taianpuhui.en.made-in-china.com/product/GXLmWKoTvtUI/China-Desktop-Reflow-Oven-Puhui-T962A.html",
+     "source_kind": "published",
+     "quote": "Rated power: 1500W ... Power Supply: AC220V/50~60HZ (manual); AC 220V/110V (maker's listing)",
+     "flags": [
+      ">= 12 A at 120 V: its own 20 A branch",
+      "or the 220 V build across L1-L2 (about 6.4 A, 1.3 kW)"
+     ],
+     "note": "Manual: wiki.bitraf.no T962A user manual (220 V unit). No current or plug published. A heater rated 1500 W at 110 V draws about 15 A at 120 V."
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "va": 800,
+    "w": 720,
+    "machine": "UPS: Vertiv Liebert PSI5-800SRT2ULIN (800 VA / 720 W)",
+    "volts": "120 V nominal, 75-146 V (line-interactive)",
+    "phase": 1,
+    "hz": null,
+    "plug": "NEMA 5-15P",
+    "amps_rating": 6.67,
+    "amps_rating_how": "no input current published; 800 VA / 120 V = 6.7 A",
+    "backed_sum_va_or_w": 514,
+    "backed_rated_w_ups_py": 514,
+    "amps_at_backed_ratings": 4.33,
+    "amps_how": "backed branch 514 VA/W at its ratings / efficiency 0.989 / 120 V",
+    "source": "https://www.vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/psi5-800srt2ulin/",
+    "source_kind": "snippet",
+    "quote": "Input: 5-15P; Output: 6 x 5-15R (Vertiv catalogue, search snippet); 120VAC, range 75-146VAC",
+    "flags": []
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "T-962A",
+       13.64
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       4.33
+      ],
+      [
+       "SPR-45VA",
+       2.0
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 13.6,
+     "L2_A": 6.3,
+     "max_leg_A": 13.6,
+     "neutral_A": 11.8,
+     "total_kVA": 2.4
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "T-962A",
+       13.64
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       6.67
+      ],
+      [
+       "SPR-45VA",
+       2.0
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 13.6,
+     "L2_A": 8.7,
+     "max_leg_A": 13.6,
+     "neutral_A": 12.0,
+     "total_kVA": 2.68
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [
+     "Puhui T-962A reflow oven (110 V build)"
+    ],
+    "not_found": [],
+    "notes": [
+     "All 120 V, but the T-962A's 110 V build at 1500 W is 13.6 A: over 80 % of a 15 A circuit, so it needs a 20 A branch (or its 220 V build across L1-L2, about 6.4 A and 1.3 kW at 208 V)."
+    ]
+   }
+  },
+  "G": {
+   "slot": "2F1",
+   "shuttle": 2,
+   "machines": [
+    {
+     "key": "form4",
+     "machine": "Formlabs Form 4, x2",
+     "qty": 2,
+     "branch": "unbacked",
+     "volts": "100-240 V AC, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "4.8 A max",
+     "power_published": "480 W",
+     "watts": 960,
+     "va_or_w_used": 960,
+     "amps": 9.6,
+     "amps_how": "Formlabs: 4.8 A maximum",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 960,
+     "source": "https://media.formlabs.com/m/3e4df0e3abd6c913/original/-ENUS-Form-4-Manual.pdf",
+     "source_kind": "published",
+     "quote": "Power requirements 100-240 VAC Maximum 4.8 A 50/60 Hz 480 W",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "form_wash",
+     "machine": "Formlabs Form Wash (2nd Gen)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "90-240 V, 50/60 Hz",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "2.0 A",
+     "power_published": "50 W",
+     "watts": 50,
+     "va_or_w_used": 50,
+     "amps": 2.0,
+     "amps_how": "Formlabs: 2.0 A",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 50,
+     "source": "https://formlabs.com/global/products/form-wash/",
+     "source_kind": "published",
+     "quote": "90-240 V 2.0 A 50/60 Hz 50 W",
+     "flags": [],
+     "note": null
+    },
+    {
+     "key": "form_cure",
+     "machine": "Formlabs Form Cure (2nd Gen), North American unit",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "100-120 V AC, 50-60 Hz (NA); 220-240 V, 8 A (EU unit)",
+     "phase": 1,
+     "hz": null,
+     "amps_published": "15 A (NA)",
+     "power_published": "no total; two 450 W heaters + 150 W of UV LEDs (about 1.05 kW)",
+     "watts": 1800,
+     "va_or_w_used": 1800,
+     "amps": 15.0,
+     "amps_how": "Formlabs: 15 A (NA)",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 1800,
+     "source": "https://media.formlabs.com/m/c401ff26124914/original/-ENUS-Form-Cure-2nd-Generation-Manual.pdf",
+     "source_kind": "published",
+     "quote": "Power requirements Input (NA): 100 - 120 VAC, 50-60Hz, 15A",
+     "flags": [
+      "15 A at 120 V: its own 20 A branch (over 80 % of a 15 A one)"
+     ],
+     "note": "Its manual also asks for a dedicated outlet that can deliver 12 A on 100-120 V. The repo's 7 A belongs to the Form Studio Wash+Cure, another product. 1800 W (15 A x 120 V) is ups.py's figure; the parts add to about 1.05 kW."
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "va": 800,
+    "w": 720,
+    "machine": "UPS: Vertiv Liebert PSI5-800SRT2ULIN (800 VA / 720 W)",
+    "volts": "120 V nominal, 75-146 V (line-interactive)",
+    "phase": 1,
+    "hz": null,
+    "plug": "NEMA 5-15P",
+    "amps_rating": 6.67,
+    "amps_rating_how": "no input current published; 800 VA / 120 V = 6.7 A",
+    "backed_sum_va_or_w": 114,
+    "backed_rated_w_ups_py": 114,
+    "amps_at_backed_ratings": 0.98,
+    "amps_how": "backed branch 114 VA/W at its ratings / efficiency 0.973 / 120 V",
+    "source": "https://www.vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/psi5-800srt2ulin/",
+    "source_kind": "snippet",
+    "quote": "Input: 5-15P; Output: 6 x 5-15R (Vertiv catalogue, search snippet); 120VAC, range 75-146VAC",
+    "flags": []
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "Form Cure",
+       15.0
+      ]
+     ],
+     "L2": [
+      [
+       "Form 4",
+       4.8
+      ],
+      [
+       "Form 4",
+       4.8
+      ],
+      [
+       "Form Wash",
+       2.0
+      ],
+      [
+       "UPS",
+       0.98
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 15.0,
+     "L2_A": 12.6,
+     "max_leg_A": 15.0,
+     "neutral_A": 13.9,
+     "total_kVA": 3.31
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "Form Cure",
+       15.0
+      ],
+      [
+       "Form Wash",
+       2.0
+      ]
+     ],
+     "L2": [
+      [
+       "UPS",
+       6.67
+      ],
+      [
+       "Form 4",
+       4.8
+      ],
+      [
+       "Form 4",
+       4.8
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 17.0,
+     "L2_A": 16.3,
+     "max_leg_A": 17.0,
+     "neutral_A": 16.6,
+     "total_kVA": 3.99
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [
+     "Formlabs Form Cure (2nd Gen), North American unit"
+    ],
+    "not_found": [],
+    "notes": [
+     "All 120 V or universal, but the Form Cure (2nd Gen) North American unit is rated 15 A: a 20 A branch of its own (Formlabs asks for a dedicated outlet that can deliver 12 A)."
+    ]
+   }
+  },
+  "I": {
+   "slot": "2F2",
+   "shuttle": 2,
+   "machines": [
+    {
+     "key": "snowpod",
+     "machine": "SnowX SnowPod desktop LPBF (pre-release), x2",
+     "qty": 2,
+     "branch": "unbacked",
+     "volts": "100-240 V AC",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "700 W",
+     "watts": 1400,
+     "va_or_w_used": 1400,
+     "amps": 11.67,
+     "amps_how": "700 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 2000,
+     "source": "https://makers101.com/snowpod-desktop-metal-3d-printer/",
+     "source_kind": "snippet",
+     "quote": "with a 700W, 100-240V AC power rating",
+     "flags": [],
+     "note": "A third-party article quoting 'published specifications'; nothing from SnowX found. ups.py counts 1000 W each (2000 W for two)."
+    },
+    {
+     "key": "nitropod",
+     "machine": "SnowX NitroPod N2 generator (pre-release)",
+     "qty": 1,
+     "branch": "unbacked",
+     "volts": "not found",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": null,
+     "watts": 500,
+     "va_or_w_used": 500,
+     "amps": 4.17,
+     "amps_how": "500 W / 120 V, power factor 1 assumed",
+     "plug": null,
+     "runs_at_v": 120,
+     "ups_py_rated_w": 500,
+     "source": "https://makers101.com/snowpod-desktop-metal-3d-printer/",
+     "source_kind": "not_found",
+     "quote": null,
+     "flags": [],
+     "note": "Searched makers101, 3dnatives and the web (NitroPod power, voltage): only its 3 L/min at 99.9 % is published. 500 W is ups.py's estimate."
+    },
+    {
+     "key": "pi_unit",
+     "machine": "Raspberry Pi 5 camera unit, x2",
+     "qty": 2,
+     "branch": "backed",
+     "volts": "100-240 V AC (its 27 W USB-C supply)",
+     "phase": 1,
+     "hz": "50/60",
+     "amps_published": null,
+     "power_published": "27 W supply (5.1 V, 5 A)",
+     "watts": 54,
+     "va_or_w_used": 54,
+     "amps": 0.45,
+     "amps_how": "27 W / 120 V, power factor 1 assumed",
+     "plug": "NEMA 1-15P (US supply)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 54,
+     "source": "https://datasheets.raspberrypi.com/power-supply/27w-usb-c-power-supply-product-brief.pdf",
+     "source_kind": "published",
+     "quote": "Input: 100 - 240Vac",
+     "flags": [],
+     "note": "As ups.py counts it: on its own 27 W supply. Fed by PoE+ from the switch instead, it adds nothing beyond the switch's 60 W."
+    },
+    {
+     "key": "poe_switch",
+     "machine": "PoE+ switch (Ubiquiti USW-Lite-8-PoE class)",
+     "qty": 1,
+     "branch": "backed",
+     "volts": "external 54 V / 60 W adapter; adapter's AC input 100-240 V in snippets only",
+     "phase": 1,
+     "hz": null,
+     "amps_published": null,
+     "power_published": "60 W max with PoE (8 W without)",
+     "watts": 60,
+     "va_or_w_used": 60,
+     "amps": 0.5,
+     "amps_how": "60 W / 120 V, power factor 1 assumed",
+     "plug": "adapter (US blades)",
+     "runs_at_v": 120,
+     "ups_py_rated_w": 60,
+     "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+     "source_kind": "published",
+     "quote": "Power Supply AC/DC, external, 60W | Max. Power Consumption ... 60W (Including PoE Output)",
+     "flags": [],
+     "note": null
+    }
+   ],
+   "ups": {
+    "key": "ups",
+    "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "va": 800,
+    "w": 720,
+    "machine": "UPS: Vertiv Liebert PSI5-800SRT2ULIN (800 VA / 720 W)",
+    "volts": "120 V nominal, 75-146 V (line-interactive)",
+    "phase": 1,
+    "hz": null,
+    "plug": "NEMA 5-15P",
+    "amps_rating": 6.67,
+    "amps_rating_how": "no input current published; 800 VA / 120 V = 6.7 A",
+    "backed_sum_va_or_w": 114,
+    "backed_rated_w_ups_py": 114,
+    "amps_at_backed_ratings": 0.98,
+    "amps_how": "backed branch 114 VA/W at its ratings / efficiency 0.973 / 120 V",
+    "source": "https://www.vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/psi5-800srt2ulin/",
+    "source_kind": "snippet",
+    "quote": "Input: 5-15P; Output: 6 x 5-15R (Vertiv catalogue, search snippet); 120VAC, range 75-146VAC",
+    "flags": []
+   },
+   "summary": {
+    "legs_at_ratings": {
+     "L1": [
+      [
+       "SnowPod",
+       5.83
+      ],
+      [
+       "NitroPod",
+       4.17
+      ]
+     ],
+     "L2": [
+      [
+       "SnowPod",
+       5.83
+      ],
+      [
+       "UPS",
+       0.98
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 10.0,
+     "L2_A": 6.8,
+     "max_leg_A": 10.0,
+     "neutral_A": 8.9,
+     "total_kVA": 2.02
+    },
+    "legs_with_ups_at_its_input_rating": {
+     "L1": [
+      [
+       "UPS",
+       6.67
+      ],
+      [
+       "NitroPod",
+       4.17
+      ]
+     ],
+     "L2": [
+      [
+       "SnowPod",
+       5.83
+      ],
+      [
+       "SnowPod",
+       5.83
+      ]
+     ],
+     "L1_L2_208V": [],
+     "L1_A": 10.8,
+     "L2_A": 11.7,
+     "max_leg_A": 11.7,
+     "neutral_A": 11.3,
+     "total_kVA": 2.7
+    },
+    "verdict": "within 24 A a leg",
+    "verdict_ups_at_rating": "within 24 A a leg",
+    "needs_208V": [],
+    "needs_3_phase": [],
+    "over_12A_at_120V": [],
+    "not_found": [
+     "SnowX NitroPod N2 generator (pre-release)"
+    ],
+    "notes": [
+     "The SnowPod is quoted at 700 W and 100-240 V by a third-party article (pre-release; ups.py counts 1000 W each); the NitroPod's rating wasn't found. Either way the tray is well inside the dock."
+    ]
+   }
+  }
+ },
+ "floor": [
+  {
+   "station": "vlm, vlm2",
+   "machine": "Kardex Shuttle XP 500 vertical lift module",
+   "qty": 2,
+   "volts": "208 V 3-phase 60 Hz (also 240, 480 or 600 V)",
+   "phase": 3,
+   "amps": "FLA 32.7 A at 208 V (35 A fuse); 28.3 A at 240 V; 14.2 A at 480 V",
+   "power": "8.6 kVA installed",
+   "plug": "hard-wired",
+   "source": "https://info.kardex-remstar.com/knowledge/vlm-and-vcm-power-requirements",
+   "source_kind": "published",
+   "quote": "Kardex Shuttle 500 Electrial Requirements (North America Only) ... 208 / 3 / 60 ... 8.6 kVA ... 35 A ... 32.7 A",
+   "flags": [
+    "208 V 3-phase: a 35 A circuit for each unit"
+   ],
+   "note": "Kardex's table is headed 'Shuttle 500'; it matches the used XP 500 listings (400 V, 17 A, 8.6 kVA). The tray docks are fed separately (services.py)."
+  },
+  {
+   "station": "repowder",
+   "machine": "AMAZEMET rePowder atomizer, its optimizer and chiller",
+   "qty": 1,
+   "volts": "400 V 3-phase and 230 V; each unit comes with a 32 A plug",
+   "phase": 3,
+   "amps": "the optimizer up to about 60 A (AMAZEMET, install call)",
+   "power": null,
+   "plug": "32 A plugs (or hard-wired)",
+   "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/7b333e9/rePowder-BYU-Installation-Details.txt",
+   "source_kind": "published",
+   "quote": "as long as it gives us the 400 volts and 230 volts, we are fine",
+   "flags": [
+    "400 V 3-phase and 230 V: the install call has BYU providing both"
+   ],
+   "note": "AMAZEMET publishes no electrical data online (amazemet.com FAQ: 'Contact AMAZEMET for detailed facility guidelines'); the figures are from the install call in the repo."
+  },
+  {
+   "station": "glovebox",
+   "machine": "Inert PureLab HE glovebox, 2 gloves, with purifier",
+   "qty": 1,
+   "volts": "110-120 V or 200-240 V, 50/60 Hz (built for the region ordered)",
+   "phase": 1,
+   "amps": "main breaker 15 A at 110 V (vacuum pump 10 A, blower 5 A, light 5 A)",
+   "power": null,
+   "plug": "cord and plug: needs two outlets",
+   "source": "https://www.nist.gov/document/innovative-technology-inert-purelab-glove-boxmanual",
+   "source_kind": "published",
+   "quote": "Input Operating Voltage and Frequency 110-120, 200-240 V, 50/60Hz ... standard 2-glove system requires 2 electrical outlets",
+   "flags": [
+    "120 V: two outlets"
+   ],
+   "note": "Inert's 2012 user manual, hosted by NIST; the nameplate decides."
+  },
+  {
+   "station": "sieve_cell",
+   "machine": "Retsch AS 200 control sieve shaker",
+   "qty": 1,
+   "volts": "100-240 V, 50/60 Hz, 1-phase",
+   "phase": 1,
+   "amps": null,
+   "power": "not published on Retsch's page",
+   "plug": null,
+   "source": "https://www.retsch.com/products/sieving/sieve-shakers/as-200-control/",
+   "source_kind": "published",
+   "quote": "Electrical supply data 100-240 V, 50/60 Hz ... Power connection 1-phase",
+   "flags": [
+    "120 V"
+   ],
+   "note": "The cell's downdraft fan, the knocker's valve and the jar turntable are ours and not chosen yet."
+  },
+  {
+   "station": "aconity",
+   "machine": "Aconity3D AconityMIDI+ LPBF printer",
+   "qty": 1,
+   "volts": "400 V 3-phase + N + PE, 50 Hz",
+   "phase": 3,
+   "amps": "32 A",
+   "power": "about 22 kVA at 32 A (computed)",
+   "plug": null,
+   "source": "https://www.3dnatives.com/3d-materials/en/3d-printers/aconity-midi-plus/",
+   "source_kind": "snippet",
+   "quote": "Power: 3Ph + N + Pe 400 V, 32 Amp, 50 Hz",
+   "flags": [
+    "400 V 3-phase: a transformer from 208 V (or 480 to 400 V)"
+   ],
+   "note": "A third-party listing (3Dnatives); no Aconity3D data sheet found, and no North American configuration."
+  },
+  {
+   "station": "instron_floor",
+   "machine": "Instron 68FM-100 (100 kN floor frame)",
+   "qty": 1,
+   "volts": "1-phase 208-240 V (-5/+10 %, reduced load and speed ratings) or 3-phase 208, 240 or 400 V +-10 %, 47-63 Hz; 3-phase preferred",
+   "phase": 3,
+   "amps": null,
+   "power": "3000 VA (1-phase, from Instron's Italian page)",
+   "plug": null,
+   "source": "https://www.instron.com/wp-content/uploads/2024/06/6800-Series-Floor-Model-Universal-Testing-Machines.pdf",
+   "source_kind": "snippet",
+   "quote": "Three Phase Voltage: 208, 240, or 400 VAC +-10%, 47 to 63 Hz ... Preferred Configuration for 68FM-100",
+   "flags": [
+    "208 V 3-phase (Instron's preferred) or 208 V 1-phase at reduced ratings"
+   ],
+   "note": "The PDF opened but its numbers didn't extract; they are from snippets. Preinstallation manual M10-17543-EN has them."
+  },
+  {
+   "station": "instron_floor",
+   "machine": "Instron 3119-608 environmental chamber (to 600 C)",
+   "qty": 1,
+   "volts": "not found (single phase, per Instron's series page)",
+   "phase": 1,
+   "amps": null,
+   "power": null,
+   "plug": null,
+   "source": "https://www.instron.com/en/products/testing-accessories/environmental-chambers-furnaces/environmental-chambers/",
+   "source_kind": "not_found",
+   "quote": "single-phase power means no expensive mains supply requirements",
+   "flags": [],
+   "note": "The supply is in reference manual M55-16546-EN, which returned 403/404; ask Instron."
+  },
+  {
+   "station": "instron_small",
+   "machine": "Instron 68SC-2 (table frame)",
+   "qty": 1,
+   "volts": "100, 120, 220 or 240 V +-10 %, 1-phase, 47-63 Hz",
+   "phase": 1,
+   "amps": null,
+   "power": "not confirmed (1400 VA appears for the family)",
+   "plug": null,
+   "source": "https://www.instron.com/ko/resources/literature/6800-series-table-model-universal-testing-machines/",
+   "source_kind": "snippet",
+   "quote": null,
+   "flags": [
+    "120 V"
+   ],
+   "note": null
+  },
+  {
+   "station": "fumehood",
+   "machine": "Labconco Protector XStream 4 ft ducted hood",
+   "qty": 1,
+   "volts": "100-115 V, 50/60 Hz (model without services); 208-230 V, 5 A (a model with services)",
+   "phase": 1,
+   "amps": "10 A (a 115 V listing, not tied to this model)",
+   "power": null,
+   "plug": "cord",
+   "source": "https://new.marshallscientific.com/Labconco-110410000-4-Protector-XStream-Laboratory-p/110410000.htm",
+   "source_kind": "snippet",
+   "quote": null,
+   "flags": [
+    "120 V"
+   ],
+   "note": "The hood's own light and switches; the exhaust blower and the airflow monitor are separate."
+  },
+  {
+   "station": "ded",
+   "machine": "InssTek MX-Lab DED",
+   "qty": 1,
+   "volts": "1-phase 220 V, 50-60 Hz",
+   "phase": 1,
+   "amps": "15 (20) A",
+   "power": "about 3.3-4.4 kVA (computed)",
+   "plug": null,
+   "source": "https://dipaul.ru/upload/iblock/c19/74xw2oocyxtfsb060f664hnz00l0ya8i.pdf",
+   "source_kind": "snippet",
+   "quote": "single-phase 220 V ... 50-60 Hz ... full-load current of 15(20) A",
+   "flags": [
+    "208/240 V 1-phase on a 20 A two-pole circuit; 208 V is 5.5 % under 220 V: ask InssTek"
+   ],
+   "note": "The same figure as InssTek's Technical Data Rev.3 cited in instruments_lab.py."
+  },
+  {
+   "station": "wire_edm",
+   "machine": "FANUC ROBOCUT alpha-C400iC wire EDM",
+   "qty": 1,
+   "volts": "200 V +-10 % 3-phase, 50/60 Hz; 220 V +-10 % 60 Hz option",
+   "phase": 3,
+   "amps": "about 36 A at 208 V (computed)",
+   "power": "13 kVA",
+   "plug": "hard-wired",
+   "source": "https://www.fanucamerica.com/uploads/files/data-sheets/ROBOCUT-C400iC-Wire-EDM.pdf",
+   "source_kind": "published",
+   "quote": "Power supply AC200V±10% 3-phase 50/60Hz ±1Hz ... Power consumption: 13kVA",
+   "flags": [
+    "208 V 3-phase, directly (inside 200 V +-10 %)"
+   ],
+   "note": "Also needs compressed air (0.5-0.7 MPa, 160 L/min)."
+  },
+  {
+   "station": "eos_m400",
+   "machine": "EOS M 400-4",
+   "qty": 1,
+   "volts": "not stated (3-phase; 400 V likely)",
+   "phase": 3,
+   "amps": "3 x 50 A",
+   "power": "45 kW max, 22 kW typical",
+   "plug": "hard-wired",
+   "source": "https://www.eos.info/en-us/metal-solutions/metal-printers/data-sheets/sds-eos-m-400-4",
+   "source_kind": "published",
+   "quote": "Power supply 3 x 50 A; Power consumption max. 45.0 kW / typical 22.0 kW",
+   "flags": [
+    "3-phase; voltage to confirm with EOS (a transformer if 400 V)"
+   ],
+   "note": "3 x 50 A at 400 V is only 34.6 kVA, under the 45 kW maximum, so EOS's installation requirements decide."
+  },
+  {
+   "station": "meltio_cell",
+   "machine": "Meltio Robot Cell (US build)",
+   "qty": 1,
+   "volts": "USA: two inputs, 230 V and 208 V 3-phase; Europe 380-415 V 3W+N+PE, 50/60 Hz",
+   "phase": 3,
+   "amps": null,
+   "power": "20 kW peak, 7 kW average",
+   "plug": "one 3-phase connector",
+   "source": "https://meltio3d.com/wp-content/uploads/2026/08/Technical-datasheet_-Meltio_Robot_Cell_USA_Europe_26_08.pdf",
+   "source_kind": "published",
+   "quote": "Power Input: 380-415V 50/60Hz (3W+N+PE) 20kw peak 7kw avg. ... USA: 2 power inputs (230V & 208V three phase)",
+   "flags": [
+    "208/230 V 3-phase (US build)"
+   ],
+   "note": null
+  },
+  {
+   "station": "utilities",
+   "machine": "Parker Balston UHPN2-1100 N2 generator",
+   "qty": 1,
+   "volts": "120 V, 60 Hz",
+   "phase": 1,
+   "amps": "about 5.8 A (computed)",
+   "power": "700 W",
+   "plug": "120 V outlet",
+   "source": "https://supplies.gmi-inc.com/product/parker-nitrogen-generator-uhpn2-1100-model-ultra-high-purity-zero-grade/",
+   "source_kind": "published",
+   "quote": "120 VAC/60 Hz ... Model UHPN2-1100 = 700 Watts",
+   "flags": [
+    "120 V"
+   ],
+   "note": "A distributor's page (GMI)."
+  },
+  {
+   "station": "utilities",
+   "machine": "Thermo Scientific ThermoFlex 900 chiller",
+   "qty": 1,
+   "volts": "115 V 60 Hz 1-phase (a 208-230 V model too)",
+   "phase": 1,
+   "amps": "15 A branch circuit",
+   "power": null,
+   "plug": "NEMA 5-15P (6-15P for the 208-230 V model)",
+   "source": "https://www.nanofab.utah.edu/wp-content/uploads/2022/10/ThermoFlex-Manual.pdf",
+   "source_kind": "published",
+   "quote": "Electrical Service Requirements (Standard chillers): ThermoFlex900 ... 115 VAC 60 Hz 1Ø 15A 5-15P",
+   "flags": [
+    "120 V on its own 15 A circuit"
+   ],
+   "note": "Thermo's ThermoFlex manual, hosted by Utah Nanofab."
+  },
+  {
+   "station": "chargers",
+   "machine": "MiR Charge 48V, x2",
+   "qty": 2,
+   "volts": "100-240 V, 50-60 Hz",
+   "phase": 1,
+   "amps": "14 A max input",
+   "power": "48 V out: 40 A max at 240 V, 20 A max at 120 V",
+   "plug": "standard outlet",
+   "source": "https://www.konicaminolta.com.au/products/robotics/mir-charge-48v",
+   "source_kind": "snippet",
+   "quote": "100-240 V AC, 50-60 Hz ... max 14 A ... Output at 240 V: 48 V, maximum 40 A / Output at 120 V: 48 V, maximum 20 A",
+   "flags": [
+    "120 V halves the charge rate; 208/240 V for the full 40 A"
+   ],
+   "note": null
+  },
+  {
+   "station": "robot",
+   "machine": "Universal Robots e-Series control box (UR10e)",
+   "qty": 1,
+   "volts": "AC 100-240 V (90-264 V), 47-440 Hz; DC variant 24-48 V (19-72 V)",
+   "phase": 1,
+   "amps": "external fuse 15-16 A at 90-200 V",
+   "power": "615 W max (UR10e system; snippet)",
+   "plug": null,
+   "source": "https://www.universal-robots.com/manuals/EN/HTML/SW10_14/Content/prod_oem_polyx/oempsx_cb_all_specs_root.htm",
+   "source_kind": "published",
+   "quote": "Input Voltage 90 / 100-240 / 264 VAC ... DC Variant Input Voltage 19 / 24-48 / 72 VDC",
+   "flags": [
+    "120 V, or 48 V DC from the MiR's battery (the DC box)"
+   ],
+   "note": null
+  },
+  {
+   "station": "repowder (area)",
+   "machine": "Nilfisk CFM 118EXP explosion-proof vacuum",
+   "qty": 1,
+   "volts": "120 V, 60 Hz, 1-phase (US)",
+   "phase": 1,
+   "amps": "10 A max",
+   "power": "1000 W (1200 W in another Nilfisk document)",
+   "plug": null,
+   "source": "https://manualmachine.com/nilfisk/118/10136940-brochure/",
+   "source_kind": "snippet",
+   "quote": "118 EXP ... Voltage @ 60 Hz volts 120 ... single ... Power watts 1000 ... Amps, max. amps 10",
+   "flags": [
+    "120 V on its own 15 A circuit"
+   ],
+   "note": "Check its hazardous-location class against the room's."
+  },
+  {
+   "station": "packaging",
+   "machine": "Packaging station: Uline H-190 impulse sealer, Primera LX500c and AP380, Zebra ZD621t",
+   "qty": 1,
+   "volts": "H-190: 120 V; LX500c and ZD621t: 100-240 V, 50/60 Hz; AP380: not found (its siblings AP360/AP362: 100-240 V)",
+   "phase": 1,
+   "amps": null,
+   "power": "H-190: 580 W impulse (an older Uline table says 380 W); LX500c: 60 W",
+   "plug": null,
+   "source": "https://www.uline.com/product/detail/H-190",
+   "source_kind": "snippet",
+   "quote": "H-190 120 V 580 W 12\" 8 Mil (Uline's operating manual, snippet); Electrical: Auto-detectable (PFC Compliant) 100-240VAC, 50-60Hz (Zebra ZD621 spec sheet, snippet)",
+   "flags": [
+    "120 V"
+   ],
+   "note": "All from search snippets: Uline's H-190 manual, Adorama and WebstaurantStore for the LX500c, Zebra's ZD621 spec sheet. Primera publishes no supply figure for the AP380 that was found."
+  }
+ ]
+}

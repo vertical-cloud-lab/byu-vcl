@@ -1,0 +1,99 @@
+{
+ "source": "https://youtu.be/8tI9uFKevr0?t=62 (Rigaku, 'New 6th generation MiniFlex', 1:02: the product shot)",
+ "video": "8tI9uFKevr0",
+ "t": 62,
+ "camera": "Rigaku 6G product photo",
+ "pose": {
+  "door": 0.0
+ },
+ "points": {
+  "front top left": [
+   71.5,
+   104.5
+  ],
+  "front top right": [
+   247.5,
+   104.5
+  ],
+  "front bottom left": [
+   72.5,
+   317.5
+  ],
+  "front bottom right": [
+   246,
+   317.5
+  ],
+  "seam left": [
+   71.5,
+   232.5
+  ],
+  "seam right": [
+   247.5,
+   232.5
+  ],
+  "panel tl": [
+   96.3,
+   108.7
+  ],
+  "panel tr": [
+   222.8,
+   108.7
+  ],
+  "strip tl": [
+   96.5,
+   232.5
+  ],
+  "strip tr": [
+   222.5,
+   232.5
+  ],
+  "strip bl": [
+   96.5,
+   262.5
+  ],
+  "strip br": [
+   222.5,
+   262.5
+  ],
+  "estop": [
+   207.5,
+   250
+  ],
+  "lamp": [
+   159.5,
+   106.5
+  ],
+  "handle top": [
+   102,
+   184
+  ],
+  "handle bottom": [
+   102,
+   216
+  ],
+  "foot left": [
+   90,
+   323.5
+  ],
+  "foot right": [
+   229.5,
+   323.5
+  ],
+  "bulge left top": [
+   68.5,
+   156.5
+  ],
+  "bulge left bottom": [
+   68.5,
+   216
+  ],
+  "bulge right top": [
+   250,
+   156.5
+  ],
+  "bulge right bottom": [
+   250,
+   216
+  ]
+ }
+}

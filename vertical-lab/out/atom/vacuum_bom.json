@@ -1,0 +1,292 @@
+[
+ {
+  "item": "CFM 118EXP explosion-proof vacuum, dry, 120 V (vacuum 1: atomizer, Al family)",
+  "maker": "Nilfisk",
+  "part_no": "118EXP",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "DAL 178_equipment.md (in hand); brochure: 6.6 gal, 20 x 24 x 45 in, 57 lb; no published price (Fisher 19-200-108 web price not readable)",
+  "for": "Al-family powder at the atomizer (AlSi10Mg, Si, 4047, 6063)",
+  "status": "lab has"
+ },
+ {
+  "item": "CFM 118EXP explosion-proof vacuum, dry, 120 V (vacuum 2: atomizer, Cu family)",
+  "maker": "Nilfisk",
+  "part_no": "118EXP",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "same model, so the SOP, the spares and the continuity checks are shared; quote needed (Nilfisk, Fisher 19-200-108)",
+  "for": "Cu-family powder at the atomizer (NAB, 630 bronze): DAL atomizer SOP keeps Cu and Al residues apart (thermite pair)",
+  "status": "to buy"
+ },
+ {
+  "item": "CFM 118EXP explosion-proof vacuum, dry, 120 V (vacuum 3: printer line, Al family)",
+  "maker": "Nilfisk",
+  "part_no": "118EXP",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "quote needed; the MIDI's suction lance and floor pipe are notes/alloy_workflow.md round 5's design",
+  "for": "the Aconity MIDI's depowdering lance and spills at the sieve station (AlSi10Mg prints)",
+  "status": "to buy"
+ },
+ {
+  "item": "Conductive hose 1.5 in x 10 ft, complete (vacuum 1)",
+  "maker": "Nilfisk",
+  "part_no": "01769218 (hose 107413543)",
+  "qty": 1,
+  "unit_usd": 646.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 1: $646 (ChicagoShopUSA) to $1,017",
+  "for": "the bonded path wand to machine (~4 ohm end to end, spec <= 1e4 ohm)",
+  "status": "lab has"
+ },
+ {
+  "item": "Aluminium EXP wand (vacuum 1)",
+  "maker": "Nilfisk",
+  "part_no": "01768601",
+  "qty": 1,
+  "unit_usd": 175.14,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 11.1 (Caliber Equipment)",
+  "for": "the tool's reach into the chamber; the robot holds it by our collar",
+  "status": "lab has"
+ },
+ {
+  "item": "Conductive hose 1.5 in x 10 ft, complete (vacuums 2 and 3)",
+  "maker": "Nilfisk",
+  "part_no": "01769218 (hose 107413543)",
+  "qty": 2,
+  "unit_usd": 646.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 1: $646 (ChicagoShopUSA) to $1,017",
+  "for": "the bonded path wand to machine (~4 ohm end to end, spec <= 1e4 ohm)",
+  "status": "to buy"
+ },
+ {
+  "item": "Aluminium EXP wand (vacuums 2 and 3)",
+  "maker": "Nilfisk",
+  "part_no": "01768601",
+  "qty": 2,
+  "unit_usd": 175.14,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 11.1 (Caliber Equipment)",
+  "for": "the tool's reach into the chamber; the robot holds it by our collar",
+  "status": "to buy"
+ },
+ {
+  "item": "Anti-static hose cuff, 38 mm thread x 40 mm slip (spare, one per vacuum)",
+  "maker": "Nilfisk",
+  "part_no": "4072000343",
+  "qty": 3,
+  "unit_usd": null,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 11.1 (Monster Janitorial, Grainger 116P12, ScrubberCity)",
+  "for": "the hose-to-wand joint; the commonest wear item",
+  "status": "to buy"
+ },
+ {
+  "item": "Accessory coupling (vacuum 1)",
+  "maker": "Nilfisk",
+  "part_no": "01768507",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 3c (in hand); OEM manual BOM 01760495",
+  "for": "wand to hose",
+  "status": "lab has"
+ },
+ {
+  "item": "11 in crevice tool, aluminium EXP",
+  "maker": "Nilfisk",
+  "part_no": "01768900",
+  "qty": 3,
+  "unit_usd": 53.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 3b: $53 (Monster Restoration) to $56",
+  "for": "door seal faces, view port, floor, catch bowl, corners. Vacuum 1's read open on 2026-08-19 (SOP gate 0.1)",
+  "status": "lab has (1), to buy (2)"
+ },
+ {
+  "item": "Dust brush, conductive bristles",
+  "maker": "Nilfisk",
+  "part_no": "01719401",
+  "qty": 3,
+  "unit_usd": null,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 3b: est. $20-40, no quote",
+  "for": "brush-and-capture on the plate and the door's sealing face (vacuum 1's read 0.03 ohm)",
+  "status": "lab has (1), to buy (2)"
+ },
+ {
+  "item": "Antistatic main filter 360 mm (one spare per vacuum; vacuums 2 and 3 ship with one)",
+  "maker": "Nilfisk",
+  "part_no": "40000460",
+  "qty": 3,
+  "unit_usd": 353.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 2a: $353 (Nilfisk Direct) to $611",
+  "for": "the main filter; replaced at an incompatible alloy switch (SOP 6)",
+  "status": "to buy"
+ },
+ {
+  "item": "Upstream HEPA filter (one per vacuum)",
+  "maker": "Nilfisk",
+  "part_no": "1408678500",
+  "qty": 3,
+  "unit_usd": 243.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 2b: $243 to $477",
+  "for": "fines before the motor",
+  "status": "to buy"
+ },
+ {
+  "item": "HEPA kit complete, downstream (vacuums 2 and 3, if not fitted)",
+  "maker": "Nilfisk",
+  "part_no": "5-60103",
+  "qty": 2,
+  "unit_usd": 603.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 2b: $603 sale, $771 list (Michco)",
+  "for": "exhaust HEPA",
+  "status": "to buy"
+ },
+ {
+  "item": "Conductive liners 24 x 24 in, 3 mil, black, 100 per case",
+  "maker": "Transforming Technologies (StaticTek)",
+  "part_no": "WBAS-LB",
+  "qty": 2,
+  "unit_usd": 205.24,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 10.8: $205.24 per 100 (StaticTek)",
+  "for": "the bin's liner, carbon-loaded PE, < 1 kohm to the bin (SOP 2.2)",
+  "status": "to buy"
+ },
+ {
+  "item": "5 gal open-top steel pail with lid, UN 1A2/Y2.2/100 (one per vacuum, labelled per family)",
+  "maker": "Uline",
+  "part_no": "S-7344",
+  "qty": 3,
+  "unit_usd": 24.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 10.3; Uline listing $24 each (web search 2026-11-19)",
+  "for": "the grounded interim pail, lid set on, not crimped (SOP 4.4)",
+  "status": "lab has (1), to buy (2)"
+ },
+ {
+  "item": "Ring terminals 14 AWG and stranded bonding wire",
+  "maker": "McMaster-Carr",
+  "part_no": null,
+  "qty": 1,
+  "unit_usd": 15.0,
+  "source": "byu-vcl PR 80, vacuum-accessories-options.md section 10.3: about $10-15",
+  "for": "bonding the pails, the station and the trolley to the ground bar",
+  "status": "to buy"
+ },
+ {
+  "item": "Class D extinguisher, 30 lb sodium chloride (one at each vacuum station)",
+  "maker": "Amerex",
+  "part_no": "B570",
+  "qty": 2,
+  "unit_usd": null,
+  "source": "Airgas listing: 13 W x 8 D x 35 H in, 24 s discharge; SOP gate 0.2 (Met-L-X / NaCl type). Not B571: that is Amerex's copper-powder unit, for lithium",
+  "for": "metal powder fires: never water, CO2 or ABC (SOP 8)",
+  "status": "to buy"
+ },
+ {
+  "item": "Extinguisher floor stand",
+  "maker": null,
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "assumed: any steel floor stand for a 30 lb unit",
+  "for": "keeps it at the station, in reach",
+  "status": "to buy"
+ },
+ {
+  "item": "A-frame floor sign, yellow: COMBUSTIBLE METAL POWDER IN USE / Authorized personnel only / NO water, NO compressed air",
+  "maker": null,
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "byu-vcl PR 80, vacuum-operating-sop.md section 2.3 wording",
+  "for": "area control",
+  "status": "to buy"
+ },
+ {
+  "item": "Milliohm meter, 4-wire (the SOP's baseline meter)",
+  "maker": "EXTECH",
+  "part_no": "380560",
+  "qty": 1,
+  "unit_usd": null,
+  "source": "byu-vcl PR 80, vacuum-operating-sop.md section 1.2 (resolves 0.01 ohm)",
+  "for": "the continuity check; for the automated fixture a second unit (or another 4-wire meter with a PC link) is needed",
+  "status": "lab has"
+ },
+ {
+  "item": "Wand clamp collar with the gripper fin and a 6 mm locating pin (ours)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 3,
+  "unit_usd": null,
+  "source": "atom_nilfisk.py: 54 OD x 60 collar, 30 mm fin",
+  "for": "the 2F-85 grips the fin's flats; clamped, so the wand is not altered (OEM manual: alteration voids the certification)",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Station post with base plate, bonded steel (ours)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "atom_nilfisk.py: 60 x 60 post, 1090 tall",
+  "for": "carries the holster, the tool rack, the fixture and the meter",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Holster fork with the pin's hole (ours)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "atom_nilfisk.py",
+  "for": "the wand waits nose down, located by the pin",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Tool rack, two keyhole pockets (ours)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "atom_nilfisk.py: two slotted plates per pocket round the tool's collar",
+  "for": "the robot changes tools: the upper plate holds the tool while the wand pulls off",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Continuity fixture: bonded spring pad, three spring probes on a column, relay box (ours)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "atom_nilfisk.py; spring probes and relays bought",
+  "for": "each joint <= 0.1 ohm before every use (OEM manual, UL 1213 par. 22)",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Ground button for the equalization touch (ours)",
+  "maker": "ours",
+  "part_no": null,
+  "qty": 2,
+  "unit_usd": null,
+  "source": "atom_nilfisk.py",
+  "for": "SOP 3.1",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Load cell under the vacuum's trolley, for the liner fill (ours, assumed)",
+  "maker": null,
+  "part_no": null,
+  "qty": 3,
+  "unit_usd": null,
+  "source": "assumed; the SOP checks the fill by eye",
+  "for": "liner <= 25 % (SOP 4.3)",
+  "status": "ours: to make"
+ },
+ {
+  "item": "Switched outlet for the vacuum, robot-controlled (ours)",
+  "maker": null,
+  "part_no": null,
+  "qty": 3,
+  "unit_usd": null,
+  "source": "assumed; the vacuum itself is not modified; to clear with Nilfisk and EHS",
+  "for": "vacuum on/off from the cell",
+  "status": "ours: to make"
+ }
+]

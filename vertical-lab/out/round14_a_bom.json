@@ -1,0 +1,96 @@
+{
+ "note": "Round 14 (A, PR #318): what this run adds to the lab, with counts from the model. Prices where found; the rest are for #331's quote list. Not a full BoM of the lab.",
+ "items": [
+  {
+   "item": "AirGradient ONE (I-9PSL), no-display build on trays if sold, else standard with display and LED bar off",
+   "where": "each powered tray, on its UPS (A, B, C, D, E, F, K, L, M, H, G, I)",
+   "qty": 12,
+   "unit_usd": 230.0,
+   "source": "airgradient.com (notes/airgradient.md)"
+  },
+  {
+   "item": "AirGradient ONE (I-9PSL), with display",
+   "where": "each floor station's junction box: glovebox, repowder, sieve_cell, aconity, packaging, instron_floor, instron_small, chargers, fumehood, ded, wire_edm",
+   "qty": 11,
+   "unit_usd": 230.0,
+   "source": "airgradient.com (notes/airgradient.md)"
+  },
+  {
+   "item": "5 V, 2.4 A USB supply for each AirGradient (AirGradient asks for at least 2 A)",
+   "where": "the tray's UPS-backed outlet / the station's junction box",
+   "qty": 23,
+   "unit_usd": null,
+   "source": "ours: any UL-listed USB-A supply"
+  },
+  {
+   "item": "Printed riser for the AirGradient on a UPS (ours, PETG)",
+   "where": "each powered tray",
+   "qty": 12,
+   "unit_usd": null,
+   "source": "airgradient.py riser_parts"
+  },
+  {
+   "item": "Bay stream-camera unit: Raspberry Pi 5, HQ Camera with 16 mm lens, Camera Module 3 Wide, pan-tilt head",
+   "where": "two per bay, hung from its roof (services.BAY_UNITS), two Shuttles",
+   "qty": 4,
+   "unit_usd": null,
+   "source": "the lab's own unit (DAL PR #189, robot-arms' CAD); round 13 had one per bay on a 2020 bar"
+  },
+  {
+   "item": "2020 drop, printed roof foot and shelf for a bay unit (ours)",
+   "where": "each bay unit",
+   "qty": 4,
+   "unit_usd": null,
+   "source": "services.bay_parts"
+  },
+  {
+   "item": "Bay roof (3 mm sheet, two ribs) between the bay's side walls",
+   "where": "each Shuttle's bay",
+   "qty": 2,
+   "unit_usd": null,
+   "source": "vlm.opening(): a question for Kardex (its renders show a closed bay; no figure)"
+  },
+  {
+   "item": "Staubli CombiTac UCT08/10 vacuum socket CT-B-UCT08/10 (33.0194) in a CT-E-UCT08-1 carrier (33.4032)",
+   "where": "trays B, K, M",
+   "qty": 3,
+   "unit_usd": null,
+   "source": "CombiTac uniq catalogue CT-Main-11014009-en pp. 66-69, 83 (notes/coupling.md)"
+  },
+  {
+   "item": "Staubli CombiTac UCT08/10 vacuum plug CT-S-UCT08/10 (33.0594) in a CT-E-UCT08-1 carrier",
+   "where": "the docks of slots B, K, M and both bays",
+   "qty": 5,
+   "unit_usd": null,
+   "source": "as above"
+  },
+  {
+   "item": "Blind CT-E-UCT08-1 carrier (no coupling)",
+   "where": "every other powered tray",
+   "qty": 9,
+   "unit_usd": null,
+   "source": "as above"
+  },
+  {
+   "item": "Pfeiffer HiScroll 12 dry scroll pump (12.1 m3/h, 6e-3 mbar, 47 dB(A))",
+   "where": "one per Shuttle, at its riser's foot",
+   "qty": 2,
+   "unit_usd": 8650.0,
+   "unit_note": "USD 8.3-9k (notes/coupling.md)",
+   "source": "Pfeiffer datasheet PD-S20-000-B"
+  },
+  {
+   "item": "LED high-bay light, UFO type, about 24,000 lm, 150 W (ours: a common size)",
+   "where": "the high bay, a 4.0 x 3.6 m grid at 10.2 m",
+   "qty": 20,
+   "unit_usd": null,
+   "source": "setup_lab.LIGHT"
+  }
+ ],
+ "known_total_usd": 22590,
+ "known_items": [
+  "AirGradient ONE",
+  "AirGradient ONE",
+  "Pfeiffer HiScroll 12 dry scroll pump"
+ ]
+}

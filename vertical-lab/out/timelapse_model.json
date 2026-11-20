@@ -1,0 +1,717 @@
+{
+ "what": "The lab at speed (timelapse.py): a greedy schedule of every alloy through the route of chapters 1-7, each step on its station, carried by two MiR250 + UR10e units; the atomizer's crucible changed by a person on weekday shifts, everything else round the clock; since round 10 with upkeep.py's maintenance and seeded failures booked into it. A model, not a measurement.",
+ "fully_tested": "atomized powder measured (laser diffraction, XRD, XRF, SEM); printed in the 55 mm kit; heat treated; tensile tested at room temperature and at temperature; sectioned, faced, mounted and polished; SEM/EDS, VHX, micro-Vickers, nanoindentation and PIP; a corrosion screen on the CubXL",
+ "params": {
+  "shift": {
+   "value": [
+    8.0,
+    16.0
+   ],
+   "unit": "h of day, Mon-Fri",
+   "source": "assumed: one person on a day shift, for the atomizer's crucible (notes/crucible_automation.md)"
+  },
+  "run_starts": {
+   "value": [
+    8.0,
+    10.5,
+    13.0
+   ],
+   "unit": "h of day",
+   "source": "assumed: a run needs its person for the first 1.0 h (crucible out, cleaned, BN-coated or swapped, loaded), so three runs fit an 8 h shift"
+  },
+  "runs_per_day_ramp": {
+   "value": [
+    [
+     0,
+     1
+    ],
+    [
+     14,
+     2
+    ],
+    [
+     28,
+     3
+    ]
+   ],
+   "unit": "(day, runs a weekday)",
+   "source": "assumed: two weeks of one run a day while the lab is commissioned, two of two"
+  },
+  "friday_pm": {
+   "value": "no run starts after 12:00 on Fridays",
+   "source": "assumed: weekly maintenance"
+  },
+  "atomize_h": {
+   "value": {
+    "person": 1.0,
+    "run": 1.0,
+    "cool": 0.5
+   },
+   "unit": "h",
+   "source": "a run about 1 h with prep (AMAZEMET training T5, 21:50) and a full cool-down about 30 min (T3, 49:52), both in notes/crucible_automation.md; the person's hour is assumed"
+  },
+  "charge_per_run": {
+   "value": 300.0,
+   "unit": "g",
+   "source": "four cups as long as the Oct 27 rod pieces, about 300 g (notes/alloy_atomize.md, 'Four cups a run'); chapter 1's 2.5 in cups hold 157 g"
+  },
+  "usable_frac": {
+   "value": 0.91,
+   "source": "the Oct 27 bronze run: 91 % under 250 um (DAL #219, notes/alloy_atomize.md)"
+  },
+  "fines_frac": {
+   "value": 0.17,
+   "source": "the same run: 17 % of the charge under 63 um, the MIDI's cut (DAL #219); an upper estimate for Al, which atomizes coarser"
+  },
+  "run_fail_every": {
+   "value": 10,
+   "source": "assumed: one run in ten drips instead of atomizing, as the Oct 8 Al 6063 run did (notes/alloy_atomize.md)"
+  },
+  "screen_build_g": {
+   "value": 30.0,
+   "unit": "g",
+   "source": "the MIDI's 55 mm reduction kit takes about 30 g (DAL #138, notes/alloy_print.md)"
+  },
+  "full_build_g": {
+   "value": 440.0,
+   "unit": "g",
+   "source": "the full 170 mm cylinder, the lab's planning figure (powder-doser design/brainstorming.md section 3, notes/alloy_atomize.md)"
+  },
+  "build_fail_every": {
+   "value": 7,
+   "source": "assumed: one screening build in seven cracks or delaminates, and that alloy stops at its powder data"
+  },
+  "promote_every": {
+   "value": 10,
+   "source": "assumed: one fully tested alloy in ten is promoted to a full-plate build of chapter 5's E8 subsize bars"
+  },
+  "transfer_h": {
+   "value": 0.1,
+   "unit": "h",
+   "source": "assumed: a unit's drive plus pick and place, about 6 min (the MiR250 at 0.3 m/s^2, props.ramp_secs; the arm's moves in chapters 1-7)"
+  },
+  "units": {
+   "value": 2,
+   "source": "two MiR250 + UR10e units (setup_lab.py)"
+  },
+  "stream_mbps": {
+   "value": 1.0,
+   "unit": "Mbit/s per camera",
+   "source": "assumed: each stream camera archived at 1 Mbit/s, 24 h a day"
+  }
+ },
+ "steps": [
+  {
+   "step": "charge",
+   "station": "carousel",
+   "hours": 1.0,
+   "needs": [],
+   "tray": "B",
+   "makes": "4 cups dosed, weighed and pressed",
+   "source": "chapter 1: the HR-202i weighing, two layers a cup, the vacuum press's 2 min hold and 1 min program (notes/vacuum_press.md); about 15 min a cup, assumed"
+  },
+  {
+   "step": "atomize",
+   "station": "repowder",
+   "hours": 2.5,
+   "needs": [
+    "charge"
+   ],
+   "tray": null,
+   "makes": "one atomizer run",
+   "source": "PARAMS atomize_h"
+  },
+  {
+   "step": "sieve",
+   "station": "sieve_cell",
+   "hours": 0.75,
+   "needs": [
+    "atomize"
+   ],
+   "tray": null,
+   "makes": "5 sieved cuts in labelled jars",
+   "source": "assumed: four passes of minutes each (notes/alloy_print.md) plus stacking and tipping"
+  },
+  {
+   "step": "ld",
+   "station": "mastersizer",
+   "hours": 0.25,
+   "needs": [
+    "sieve"
+   ],
+   "tray": "E",
+   "makes": "1 size distribution",
+   "source": "assumed: 3 repeats on the Aero S, and cleaning"
+  },
+  {
+   "step": "xrd",
+   "station": "xrd",
+   "hours": 0.6,
+   "needs": [
+    "sieve"
+   ],
+   "tray": "D",
+   "makes": "1 XRD pattern",
+   "source": "assumed: back-loading prep (notes/edison_r8.md) and a 20-90 deg scan"
+  },
+  {
+   "step": "xrf",
+   "station": "xrf",
+   "hours": 0.35,
+   "needs": [
+    "sieve"
+   ],
+   "tray": "M",
+   "makes": "1 XRF analysis",
+   "source": "assumed: a He-mode run on loose powder"
+  },
+  {
+   "step": "psem",
+   "station": "sem",
+   "hours": 0.35,
+   "needs": [
+    "sieve"
+   ],
+   "tray": "D",
+   "makes": "6 SEM images of the powder",
+   "source": "assumed"
+  },
+  {
+   "step": "print",
+   "station": "aconity",
+   "hours": 5.0,
+   "needs": [
+    "sieve"
+   ],
+   "tray": null,
+   "makes": "1 screening build",
+   "source": "assumed: inerting 0.5 h, a 3 h build of 5 mm-tall miniature specimens in the 55 mm kit, cooling 0.5 h, unloading and powder change 1 h"
+  },
+  {
+   "step": "depowder",
+   "station": "aconity",
+   "hours": 0.5,
+   "needs": [
+    "print"
+   ],
+   "tray": null,
+   "makes": "",
+   "source": "chapter 5's lance and box; assumed 30 min"
+  },
+  {
+   "step": "edm",
+   "station": "wire_edm",
+   "hours": 0.75,
+   "needs": [
+    "depowder"
+   ],
+   "tray": null,
+   "makes": "specimens off the plate",
+   "source": "at least 11 min of cutting (notes/alloy_workflow.md) plus the tank's fill and drain"
+  },
+  {
+   "step": "heat",
+   "station": "furnace",
+   "hours": 3.0,
+   "needs": [
+    "edm"
+   ],
+   "tray": "F",
+   "makes": "1 heat treatment",
+   "source": "assumed: about 2 h at temperature plus heating and cooling"
+  },
+  {
+   "step": "tensile_rt",
+   "station": "tensile_h",
+   "hours": 0.6,
+   "needs": [
+    "heat"
+   ],
+   "tray": "L",
+   "makes": "3 tensile tests at room temperature",
+   "source": "assumed: 3 miniature specimens on the zwickiLine Z5.0 TN, 10 min each with loading"
+  },
+  {
+   "step": "tensile_hot",
+   "station": "instron_floor",
+   "hours": 1.5,
+   "needs": [
+    "heat"
+   ],
+   "tray": null,
+   "makes": "1 tensile test at temperature",
+   "source": "assumed: a soak in the 3119-608 chamber (r8_test.py) and the pull"
+  },
+  {
+   "step": "section",
+   "station": "wire_edm",
+   "hours": 0.4,
+   "needs": [
+    "edm"
+   ],
+   "tray": null,
+   "makes": "2 sections",
+   "source": "chapter 6; assumed"
+  },
+  {
+   "step": "face",
+   "station": "cnc",
+   "hours": 0.3,
+   "needs": [
+    "section"
+   ],
+   "tray": "M",
+   "makes": "2 faced slices",
+   "source": "chapter 6's Carvera; assumed"
+  },
+  {
+   "step": "mount",
+   "station": "mount_press",
+   "hours": 0.6,
+   "needs": [
+    "face"
+   ],
+   "tray": "F",
+   "makes": "2 mounts",
+   "source": "the MX400's cycle (notes/alloy_prep.md: curing 0-30 min); assumed 18 min a mount"
+  },
+  {
+   "step": "polish",
+   "station": "polisher",
+   "hours": 0.8,
+   "needs": [
+    "mount"
+   ],
+   "tray": "F",
+   "makes": "2 polished mounts",
+   "source": "the SOP's 9 min a mount on the clock (notes/alloy_characterize.md) plus disc changes"
+  },
+  {
+   "step": "sem",
+   "station": "sem",
+   "hours": 0.5,
+   "needs": [
+    "polish"
+   ],
+   "tray": "D",
+   "makes": "12 SEM images, 2 EDS maps",
+   "source": "chapter 7's clock: about 20 min (notes/alloy_characterize.md), plus pump-down"
+  },
+  {
+   "step": "vhx",
+   "station": "vhx",
+   "hours": 0.4,
+   "needs": [
+    "polish"
+   ],
+   "tray": "K",
+   "makes": "1 VHX 3-D reconstruction",
+   "source": "assumed"
+  },
+  {
+   "step": "hv",
+   "station": "hardness",
+   "hours": 0.3,
+   "needs": [
+    "polish"
+   ],
+   "tray": "L",
+   "makes": "1 micro-Vickers map",
+   "source": "assumed: 10 indents"
+  },
+  {
+   "step": "nano",
+   "station": "nanoindenter",
+   "hours": 0.75,
+   "needs": [
+    "polish"
+   ],
+   "tray": "E",
+   "makes": "1 nanoindentation grid",
+   "source": "chapter 7's clock: 45 min (notes/alloy_characterize.md)"
+  },
+  {
+   "step": "pip",
+   "station": "pip",
+   "hours": 0.25,
+   "needs": [
+    "polish"
+   ],
+   "tray": "E",
+   "makes": "3 PIP tests",
+   "source": "assumed"
+  },
+  {
+   "step": "corrosion",
+   "station": "cubxl_corrosion",
+   "hours": 2.2,
+   "needs": [
+    "polish"
+   ],
+   "tray": "A",
+   "makes": "2 corrosion spots",
+   "source": "67 min a spot with EIS (DAL copper_numbers.json, notes/cubxl_corrosion.md)"
+  }
+ ],
+ "promoted_steps": [
+  {
+   "step": "print_full",
+   "station": "aconity",
+   "hours": 8.0,
+   "makes": "1 full-plate build",
+   "source": "assumed: a 5 mm build on the 170 mm plate (chapter 5), inerting, cooling, unloading"
+  },
+  {
+   "step": "depowder_full",
+   "station": "aconity",
+   "hours": 0.75,
+   "makes": "",
+   "source": "assumed"
+  },
+  {
+   "step": "edm_full",
+   "station": "wire_edm",
+   "hours": 1.0,
+   "makes": "4 E8 subsize bars",
+   "source": "notes/alloy_workflow.md; assumed"
+  },
+  {
+   "step": "heat_full",
+   "station": "furnace",
+   "hours": 3.0,
+   "makes": "",
+   "source": "assumed"
+  },
+  {
+   "step": "e8_rt",
+   "station": "instron_floor",
+   "hours": 0.6,
+   "makes": "2 E8 tensile tests at room temperature",
+   "source": "assumed"
+  },
+  {
+   "step": "e8_hot",
+   "station": "instron_floor",
+   "hours": 2.5,
+   "makes": "2 E8 tensile tests at temperature",
+   "source": "assumed"
+  }
+ ],
+ "data_gb_per_step": {
+  "atomize": 1.5,
+  "print": 0.35,
+  "print_full": 0.6,
+  "psem": 0.04,
+  "sem": 0.7,
+  "xrd": 0.001,
+  "xrf": 0.001,
+  "ld": 0.002,
+  "vhx": 1.5,
+  "hv": 0.01,
+  "nano": 0.05,
+  "pip": 0.02,
+  "corrosion": 0.01,
+  "tensile_rt": 0.3,
+  "tensile_hot": 0.1,
+  "e8_rt": 0.2,
+  "e8_hot": 0.2,
+  "heat": 0.001,
+  "heat_full": 0.001
+ },
+ "stream_cameras": 26,
+ "totals": {
+  "1 day": {
+   "atomized": 1,
+   "printed": 1,
+   "tested": 1,
+   "promoted": 0,
+   "runs": 1,
+   "powder_kg": 0.27,
+   "data_gb": 4.58,
+   "video_tb": 0.28,
+   "tensile": 4,
+   "sem_images": 20,
+   "xrd": 1,
+   "xrf": 1,
+   "psd": 1,
+   "indents": 3,
+   "corrosion": 2
+  },
+  "1 week": {
+   "atomized": 5,
+   "printed": 5,
+   "tested": 5,
+   "promoted": 0,
+   "runs": 5,
+   "powder_kg": 1.37,
+   "data_gb": 22.93,
+   "video_tb": 1.97,
+   "tensile": 20,
+   "sem_images": 100,
+   "xrd": 5,
+   "xrf": 5,
+   "psd": 5,
+   "indents": 15,
+   "corrosion": 10
+  },
+  "4 weeks": {
+   "atomized": 19,
+   "printed": 16,
+   "tested": 16,
+   "promoted": 0,
+   "runs": 30,
+   "powder_kg": 7.37,
+   "data_gb": 95.19,
+   "video_tb": 7.86,
+   "tensile": 64,
+   "sem_images": 338,
+   "xrd": 19,
+   "xrf": 19,
+   "psd": 19,
+   "indents": 48,
+   "corrosion": 32
+  },
+  "13 weeks": {
+   "atomized": 77,
+   "printed": 66,
+   "tested": 66,
+   "promoted": 6,
+   "runs": 139,
+   "powder_kg": 34.12,
+   "data_gb": 422.45,
+   "video_tb": 25.55,
+   "tensile": 288,
+   "sem_images": 1386,
+   "xrd": 77,
+   "xrf": 77,
+   "psd": 77,
+   "indents": 198,
+   "corrosion": 132
+  },
+  "26 weeks": {
+   "atomized": 173,
+   "printed": 149,
+   "tested": 149,
+   "promoted": 14,
+   "runs": 318,
+   "powder_kg": 77.81,
+   "data_gb": 960.13,
+   "video_tb": 51.11,
+   "tensile": 652,
+   "sem_images": 3124,
+   "xrd": 173,
+   "xrf": 173,
+   "psd": 173,
+   "indents": 447,
+   "corrosion": 298
+  },
+  "1 year": {
+   "atomized": 360,
+   "printed": 309,
+   "tested": 309,
+   "promoted": 30,
+   "runs": 667,
+   "powder_kg": 163.8,
+   "data_gb": 2003.89,
+   "video_tb": 102.14,
+   "tensile": 1356,
+   "sem_images": 6486,
+   "xrd": 360,
+   "xrf": 360,
+   "psd": 360,
+   "indents": 927,
+   "corrosion": 618
+  }
+ },
+ "totals_without_upkeep": {
+  "1 day": {
+   "atomized": 1,
+   "printed": 1,
+   "tested": 1,
+   "promoted": 0,
+   "runs": 1,
+   "powder_kg": 0.27,
+   "data_gb": 4.58,
+   "video_tb": 0.28,
+   "tensile": 4,
+   "sem_images": 20,
+   "xrd": 1,
+   "xrf": 1,
+   "psd": 1,
+   "indents": 3,
+   "corrosion": 2
+  },
+  "1 week": {
+   "atomized": 5,
+   "printed": 5,
+   "tested": 5,
+   "promoted": 0,
+   "runs": 5,
+   "powder_kg": 1.37,
+   "data_gb": 22.93,
+   "video_tb": 1.97,
+   "tensile": 20,
+   "sem_images": 100,
+   "xrd": 5,
+   "xrf": 5,
+   "psd": 5,
+   "indents": 15,
+   "corrosion": 10
+  },
+  "4 weeks": {
+   "atomized": 19,
+   "printed": 17,
+   "tested": 17,
+   "promoted": 1,
+   "runs": 30,
+   "powder_kg": 7.37,
+   "data_gb": 99.23,
+   "video_tb": 7.86,
+   "tensile": 72,
+   "sem_images": 352,
+   "xrd": 19,
+   "xrf": 19,
+   "psd": 19,
+   "indents": 51,
+   "corrosion": 34
+  },
+  "13 weeks": {
+   "atomized": 86,
+   "printed": 74,
+   "tested": 74,
+   "promoted": 6,
+   "runs": 156,
+   "powder_kg": 38.22,
+   "data_gb": 473.02,
+   "video_tb": 25.55,
+   "tensile": 320,
+   "sem_images": 1552,
+   "xrd": 86,
+   "xrf": 86,
+   "psd": 86,
+   "indents": 222,
+   "corrosion": 148
+  },
+  "26 weeks": {
+   "atomized": 184,
+   "printed": 158,
+   "tested": 158,
+   "promoted": 15,
+   "runs": 338,
+   "powder_kg": 82.99,
+   "data_gb": 1019.69,
+   "video_tb": 51.11,
+   "tensile": 692,
+   "sem_images": 3316,
+   "xrd": 184,
+   "xrf": 184,
+   "psd": 184,
+   "indents": 474,
+   "corrosion": 316
+  },
+  "1 year": {
+   "atomized": 378,
+   "printed": 324,
+   "tested": 324,
+   "promoted": 31,
+   "runs": 702,
+   "powder_kg": 172.54,
+   "data_gb": 2104.85,
+   "video_tb": 102.14,
+   "tensile": 1420,
+   "sem_images": 6804,
+   "xrd": 378,
+   "xrf": 378,
+   "psd": 378,
+   "indents": 972,
+   "corrosion": 648
+  }
+ },
+ "upkeep": {
+  "what": "upkeep.py's tasks and seeded failures booked into this schedule: calendar PM, consumables by use, the arms' reference checks (control charts), repairs by a person on the next shift or a vendor after a wait for parts. A model; out/upkeep_model.json has every task with its source.",
+  "people_hours_per_week": {
+   "mean_after_ramp": 31.0,
+   "max": 38.6,
+   "crucible": 13.3,
+   "upkeep": 17.7,
+   "of_a_shift_week": 40.0
+  },
+  "tasks": {
+   "arm_checks": 1628,
+   "people": 1426,
+   "vendor_visits": 19,
+   "machine_itself": 627,
+   "repairs": 83
+  },
+  "hours": {
+   "people": 901,
+   "arms": 366
+  },
+  "availability": {
+   "carousel": 0.9859,
+   "repowder": 0.964,
+   "sieve_cell": 0.9926,
+   "mastersizer": 0.9964,
+   "xrd": 0.9961,
+   "xrf": 0.9927,
+   "sem": 0.9964,
+   "aconity": 0.9495,
+   "wire_edm": 0.9844,
+   "furnace": 0.9948,
+   "tensile_h": 0.9969,
+   "instron_floor": 0.9947,
+   "cnc": 0.9985,
+   "mount_press": 0.994,
+   "polisher": 0.9946,
+   "vhx": 0.9989,
+   "hardness": 0.9901,
+   "nanoindenter": 0.9727,
+   "pip": 0.998,
+   "cubxl_corrosion": 0.9948,
+   "open1": 0.9564,
+   "open2": 0.9768,
+   "unit0": 0.9537,
+   "unit1": 0.953
+  },
+  "availability_route_mean": 0.9893,
+  "alloys_a_year": {
+   "atomized_with_upkeep": 360,
+   "atomized_without": 378,
+   "tested_with_upkeep": 309,
+   "tested_without": 324
+  }
+ },
+ "first_alloy_fully_tested_h": 16.2,
+ "latency_atomized_to_tested_h": {
+  "median": 14.6,
+  "max": 190.5
+ },
+ "utilization_after_ramp": {
+  "aconity": 0.265,
+  "repowder": 0.199,
+  "furnace": 0.12,
+  "carousel": 0.088,
+  "cubxl_corrosion": 0.081,
+  "instron_floor": 0.069,
+  "sieve_cell": 0.055,
+  "wire_edm": 0.047,
+  "sem": 0.034,
+  "nanoindenter": 0.03,
+  "polisher": 0.029,
+  "xrd": 0.027,
+  "tensile_h": 0.024,
+  "mount_press": 0.022,
+  "xrf": 0.021,
+  "hardness": 0.019,
+  "vhx": 0.015,
+  "mastersizer": 0.012,
+  "cnc": 0.011,
+  "pip": 0.009
+ },
+ "atomizer_slots": {
+  "used": 667,
+  "available": 702,
+  "note": "a run starts only in a staffed slot (PARAMS run_starts, runs_per_day_ramp)"
+ },
+ "bottleneck": "repowder"
+}

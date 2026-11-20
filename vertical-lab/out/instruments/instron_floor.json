@@ -1,0 +1,47 @@
+{
+ "name": "instruments/instron_floor",
+ "fps": 8,
+ "n_frames": 133,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "A floor frame set up for unattended tests, as in Instron's AT6 and AT3 cells: a printed tensile specimen in hydraulic wedge grips, inside a 3119-608 chamber (to 600 C) on pull rods.",
+   "start_frame": 0,
+   "end_frame": 29
+  },
+  {
+   "label": "2/4",
+   "caption": "Its left-hinged door has a heated triple-pane window: the AVE 2 video extensometer reads the strain through it, so no clip-on extensometer goes on by hand.",
+   "start_frame": 30,
+   "end_frame": 49
+  },
+  {
+   "label": "3/4",
+   "caption": "",
+   "start_frame": 50,
+   "end_frame": 64
+  },
+  {
+   "label": "4/4",
+   "caption": "It heats the grips and the specimen to the test temperature; then the pull.",
+   "start_frame": 65,
+   "end_frame": 86
+  },
+  {
+   "label": "4/4",
+   "caption": "",
+   "start_frame": 87,
+   "end_frame": 109
+  },
+  {
+   "label": "4/4",
+   "caption": "Broken. The halves go down the scrap chute, right of the grips (the AT6 drops them into angled steel chutes).",
+   "start_frame": 110,
+   "end_frame": 132
+  }
+ ]
+}

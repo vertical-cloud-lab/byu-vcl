@@ -1,0 +1,6 @@
+{"source": "https://youtu.be/C4IBBj20OpE?t=85 (Keyence, VHX-7000N Series, 1:25: the EA-300 configuration, studio; the monitor; a composited product shot, so the monitor and the stand get a camera each)",
+ "video": "C4IBBj20OpE", "t": 85.0, "camera": "C4IBBj20OpE@85-monitor",
+ "pose": {"head": 0.0},
+ "points": {"bezel top left": [380, 202], "bezel top right": [816, 185],
+            "screen tl": [391, 217], "screen tr": [810, 197], "screen bl": [390, 466], "screen br": [809, 426],
+            "bezel bottom left": [380, 488], "bezel bottom right": [812, 444]}}

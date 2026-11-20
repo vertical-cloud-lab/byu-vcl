@@ -1,0 +1,3118 @@
+{
+ "clip": "alloy_workflow_s67",
+ "frames_checked": 1003,
+ "frames_with_collisions": 70,
+ "runs": [
+  {
+   "label": "6/7",
+   "first_frame": 153,
+   "last_frame": 159,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "forearm"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 179,
+   "last_frame": 179,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 298,
+   "last_frame": 298,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 363,
+   "last_frame": 363,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 493,
+   "last_frame": 493,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 547,
+   "last_frame": 547,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "forearm"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 548,
+   "last_frame": 551,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "unit0_cab",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "forearm"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 649,
+   "last_frame": 649,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 658,
+   "last_frame": 658,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar1",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 660,
+   "last_frame": 660,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "zbar1",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar2_b",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 688,
+   "last_frame": 693,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar3",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 50.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 711,
+   "last_frame": 711,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 712,
+   "last_frame": 712,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 804,
+   "last_frame": 804,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 805,
+   "last_frame": 805,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 1.5
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 820,
+   "last_frame": 820,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 822,
+   "last_frame": 822,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 823,
+   "last_frame": 823,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar3_b",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar3_b",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 825,
+   "last_frame": 826,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 50.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 828,
+   "last_frame": 828,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 848,
+   "last_frame": 849,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "unit0_cab",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "unit0_cab",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 851,
+   "last_frame": 852,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "unit0_cab",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 870,
+   "last_frame": 870,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 872,
+   "last_frame": 872,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 873,
+   "last_frame": 873,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar3",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar3",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 875,
+   "last_frame": 875,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar3",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 50.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 876,
+   "last_frame": 876,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar3",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 878,
+   "last_frame": 878,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar3",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 898,
+   "last_frame": 899,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "unit0_cab",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "unit0_cab",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 901,
+   "last_frame": 901,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar3_b",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "unit0_cab",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 902,
+   "last_frame": 902,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "unit0_cab",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 910,
+   "last_frame": 910,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 919,
+   "last_frame": 919,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 924,
+   "last_frame": 924,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "zbar1",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar0",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 926,
+   "last_frame": 926,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar1",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 943,
+   "last_frame": 943,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 945,
+   "last_frame": 945,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 946,
+   "last_frame": 946,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 948,
+   "last_frame": 948,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 949,
+   "last_frame": 949,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 962,
+   "last_frame": 962,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1059,
+   "last_frame": 1059,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1060,
+   "last_frame": 1060,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "wh_instron_floor:chamber_door",
+     "depth_mm": 1.5
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1075,
+   "last_frame": 1075,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1077,
+   "last_frame": 1077,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1078,
+   "last_frame": 1078,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar2_b",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar2_b",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1080,
+   "last_frame": 1081,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 50.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1083,
+   "last_frame": 1083,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2_b",
+     "other": "wh_instron_floor:crosshead",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1118,
+   "last_frame": 1118,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1120,
+   "last_frame": 1120,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1121,
+   "last_frame": 1121,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar2",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bar2",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1123,
+   "last_frame": 1123,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 50.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1124,
+   "last_frame": 1124,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1126,
+   "last_frame": 1126,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:bar2",
+     "other": "wh_instron_floor:body",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1151,
+   "last_frame": 1151,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 181,
+ "fps": 6,
+ "arm_seconds": 854.6,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 1003,
+  "frames_moving": 414,
+  "frames_with_collisions": 155,
+  "runs": [
+   {
+    "label": "6/7",
+    "first_frame": 34,
+    "last_frame": 40,
+    "frames": 7,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "footprints",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 42,
+    "last_frame": 51,
+    "frames": 10,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle dashes",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 53,
+    "last_frame": 63,
+    "frames": 11,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle dashes",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 69,
+    "last_frame": 91,
+    "frames": 22,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 92,
+    "last_frame": 106,
+    "frames": 15,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "dock tape",
+      "other_group": "docks",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 137,
+    "last_frame": 138,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "shutter",
+      "body": "safety shutter",
+      "other": "bay side walls",
+      "other_group": "bay",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 574,
+    "last_frame": 575,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "shutter",
+      "body": "safety shutter",
+      "other": "bay side walls",
+      "other_group": "bay",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 584,
+    "last_frame": 589,
+    "frames": 6,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "tray_F",
+      "body": "tray F",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "plate_F/svc_plate",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_power",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_n2",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_cws",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_cwr",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_air",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_data",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 610,
+    "last_frame": 616,
+    "frames": 7,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle dashes",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 618,
+    "last_frame": 620,
+    "frames": 3,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle dashes",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 622,
+    "last_frame": 633,
+    "frames": 12,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle dashes",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 635,
+    "last_frame": 635,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 636,
+    "last_frame": 641,
+    "frames": 6,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "dock tape",
+      "other_group": "docks",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "footprints",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 642,
+    "last_frame": 642,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "dock tape",
+      "other_group": "docks",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 648,
+    "last_frame": 649,
+    "frames": 2,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/chrome2",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/jaws",
+      "other_group": "tongs",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 650,
+    "last_frame": 651,
+    "frames": 2,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/handle",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 652,
+    "last_frame": 653,
+    "frames": 2,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 711,
+    "last_frame": 711,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 712,
+    "last_frame": 712,
+    "frames": 1,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 713,
+    "last_frame": 713,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/chrome2",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/jaws",
+      "other_group": "tongs",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 714,
+    "last_frame": 716,
+    "frames": 3,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 734,
+    "last_frame": 736,
+    "frames": 3,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:crosshead",
+      "body": "wh_instron_floor:crosshead/steel3",
+      "other": "bar3/b",
+      "other_group": "bar3_b",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 803,
+    "last_frame": 803,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/chrome2",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/jaws",
+      "other_group": "tongs",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 804,
+    "last_frame": 804,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 805,
+    "last_frame": 805,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 806,
+    "last_frame": 806,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 909,
+    "last_frame": 909,
+    "frames": 1,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 910,
+    "last_frame": 910,
+    "frames": 1,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 911,
+    "last_frame": 917,
+    "frames": 6,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 918,
+    "last_frame": 918,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/chrome2",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/jaws",
+      "other_group": "tongs",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 919,
+    "last_frame": 919,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 920,
+    "last_frame": 920,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 921,
+    "last_frame": 921,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 962,
+    "last_frame": 962,
+    "frames": 1,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/handle",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 963,
+    "last_frame": 963,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/chrome2",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/jaws",
+      "other_group": "tongs",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 964,
+    "last_frame": 965,
+    "frames": 2,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 972,
+    "last_frame": 973,
+    "frames": 2,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:crosshead",
+      "body": "wh_instron_floor:crosshead/inst_black0",
+      "other": "util/junction boxes",
+      "other_group": "util",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:crosshead",
+      "body": "wh_instron_floor:crosshead/inst_black0",
+      "other": "util/box sockets",
+      "other_group": "util",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:crosshead",
+      "body": "wh_instron_floor:crosshead/inst_black0",
+      "other": "util/socket holes",
+      "other_group": "util",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 977,
+    "last_frame": 978,
+    "frames": 2,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:crosshead",
+      "body": "wh_instron_floor:crosshead/steel3",
+      "other": "bar2/b",
+      "other_group": "bar2_b",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1058,
+    "last_frame": 1058,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/chrome2",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/jaws",
+      "other_group": "tongs",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1059,
+    "last_frame": 1059,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1060,
+    "last_frame": 1060,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1061,
+    "last_frame": 1061,
+    "frames": 1,
+    "depth_mm": 999.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/amr cabinet",
+      "other_group": "unit0_cab",
+      "depth_mm": 50.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1147,
+    "last_frame": 1147,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "bar2",
+      "body": "bar2/a",
+      "other": "wh_instron_floor:body/steel4",
+      "other_group": "wh_instron_floor:body",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1150,
+    "last_frame": 1150,
+    "frames": 1,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/window1",
+      "other": "unit0/tongs rest",
+      "other_group": "unit0_cab",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "unit0/control box",
+      "other_group": "unit0_cb",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1151,
+    "last_frame": 1151,
+    "frames": 1,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "tongs/shaft",
+      "other_group": "tongs",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "7/7",
+    "first_frame": 1152,
+    "last_frame": 1155,
+    "frames": 4,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "wh_instron_floor:chamber_door",
+      "body": "wh_instron_floor:chamber_door/inst_offwhite0",
+      "other": "wh_instron_floor:chamber/inst_offwhite0",
+      "other_group": "wh_instron_floor:chamber",
+      "depth_mm": 50.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 63840,
+  "seconds": 46.8,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), and liquids: world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 214
+}

@@ -1,0 +1,7 @@
+{
+ "clip": "warehouse",
+ "frames_checked": 1120,
+ "frames_with_collisions": 0,
+ "runs": [],
+ "method": "ARM_AUDIT=1: the MiR250s themselves against everything visible, every frame, with FCL on the drawn meshes as collide.py checks the arms (which it does without the bases they ride on). That means the body, the cabinet, the holder and whatever stands in it, against the posts, the machines, the VLM and the other unit. Writes out/collisions/warehouse_mir.json. Floor decals are left out: the tape, the route ribbons and the chargers' plates and contacts, whose tops are under 35 mm. The posts' 12 mm feet are part of the posts' mesh, so they are checked."
+}

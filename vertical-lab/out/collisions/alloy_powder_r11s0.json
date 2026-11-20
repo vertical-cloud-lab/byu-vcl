@@ -1,0 +1,1193 @@
+{
+ "clip": "alloy_powder",
+ "frames_checked": 1028,
+ "frames_with_collisions": 14,
+ "runs": [
+  {
+   "label": "3/7",
+   "first_frame": 375,
+   "last_frame": 379,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:p_zbh",
+     "other": "D1_xrd:stage",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "4/7",
+   "first_frame": 549,
+   "last_frame": 553,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:p_puck",
+     "other": "D0_sem:drawer",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 1104,
+   "last_frame": 1106,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 1107,
+   "last_frame": 1107,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "u2_bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "u2_bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "u2_bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "held:p_cup",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 1108,
+   "last_frame": 1108,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "u2_bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "u2_bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 1109,
+   "last_frame": 1109,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "u2_bay"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 8,
+ "fps": 6,
+ "arm_seconds": 303.0,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 1028,
+  "frames_moving": 466,
+  "frames_with_collisions": 78,
+  "runs": [
+   {
+    "label": "3/7",
+    "first_frame": 352,
+    "last_frame": 352,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_petg",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_ribbon",
+      "other_group": "cam_D1head",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_lens",
+      "other_group": "cam_D1head",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_glass",
+      "other_group": "cam_D1head",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 353,
+    "last_frame": 354,
+    "frames": 2,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_ribbon",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/r8_door_glass1",
+      "other": "cam_D1pan/svc_petg",
+      "other_group": "cam_D1pan",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_lens",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_petg",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1pan/svc_petg",
+      "other_group": "cam_D1pan",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_glass",
+      "other_group": "cam_D1head",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_pcb",
+      "other_group": "cam_D1head",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_steel",
+      "other_group": "cam_D1head",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 355,
+    "last_frame": 356,
+    "frames": 2,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/r8_door_glass1",
+      "other": "cam_D1pan/svc_petg",
+      "other_group": "cam_D1pan",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/r8_door_glass1",
+      "other": "cam_D1sl/svc_petg",
+      "other_group": "cam_D1sl",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_pcb",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_ribbon",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_lens",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_petg",
+      "other_group": "cam_D1head",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_port",
+      "other_group": "cam_D1head",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/r8_door_glass1",
+      "other": "cam_D1pan/svc_steel",
+      "other_group": "cam_D1pan",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_print",
+      "other_group": "cam_D1head",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 415,
+    "last_frame": 415,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1pan/svc_petg",
+      "other_group": "cam_D1pan",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 416,
+    "last_frame": 416,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:door",
+      "body": "D1_xrd:door/rigaku_navy0",
+      "other": "cam_D1head/svc_glass",
+      "other_group": "cam_D1head",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 431,
+    "last_frame": 442,
+    "frames": 11,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "p_flat",
+      "body": "p_flat/face",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/Si plate",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/carrier",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 443,
+    "last_frame": 443,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_flat/face",
+      "other_group": "p_flat",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "p_flat",
+      "body": "p_flat/face",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:dbeam/r8_xray_d0",
+      "other_group": "D1_xrd:dbeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/Si plate",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/Si plate",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/carrier",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:detector",
+      "body": "D1_xrd:detector/rigaku_navy0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 444,
+    "last_frame": 457,
+    "frames": 14,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/carrier",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_flat/face",
+      "other_group": "p_flat",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "p_flat",
+      "body": "p_flat/face",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:dbeam/r8_xray_d0",
+      "other_group": "D1_xrd:dbeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/Si plate",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/Si plate",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 458,
+    "last_frame": 458,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_flat/face",
+      "other_group": "p_flat",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/Si plate",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/Si plate",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/carrier",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_flat",
+      "body": "p_flat/face",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:dbeam/r8_xray_d0",
+      "other_group": "D1_xrd:dbeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:detector",
+      "body": "D1_xrd:detector/rigaku_navy0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 459,
+    "last_frame": 462,
+    "frames": 4,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_flat/face",
+      "other_group": "p_flat",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/Si plate",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/Si plate",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_flat",
+      "body": "p_flat/face",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:dbeam/r8_xray_d0",
+      "other_group": "D1_xrd:dbeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/carrier",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 463,
+    "last_frame": 463,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:detector",
+      "body": "D1_xrd:detector/rigaku_navy0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_flat/face",
+      "other_group": "p_flat",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/Si plate",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/Si plate",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_flat",
+      "body": "p_flat/face",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:dbeam/r8_xray_d0",
+      "other_group": "D1_xrd:dbeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/carrier",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/7",
+    "first_frame": 464,
+    "last_frame": 468,
+    "frames": 5,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_flat/face",
+      "other_group": "p_flat",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/Si plate",
+      "other_group": "p_zbh",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/Si plate",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_zbh",
+      "body": "p_zbh/carrier",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "p_flat",
+      "body": "p_flat/face",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:dbeam/r8_xray_d0",
+      "other_group": "D1_xrd:dbeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:stage",
+      "body": "D1_xrd:stage/aluminium0",
+      "other": "D1_xrd:ibeam/r8_xray0",
+      "other_group": "D1_xrd:ibeam",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "D1_xrd:dbeam",
+      "body": "D1_xrd:dbeam/r8_xray_d0",
+      "other": "p_zbh/carrier",
+      "other_group": "p_zbh",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 774,
+    "last_frame": 779,
+    "frames": 6,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:lid",
+      "body": "E2_mastersizer:lid/polycarb0",
+      "other": "E1_nanoindenter:lid/inst_white0",
+      "other_group": "E1_nanoindenter:lid",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "E2_mastersizer:lid",
+      "body": "E2_mastersizer:lid/polycarb0",
+      "other": "E1_nanoindenter:cabinet/inst_white0",
+      "other_group": "E1_nanoindenter:cabinet",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "E2_mastersizer:lid",
+      "body": "E2_mastersizer:lid/polycarb0",
+      "other": "E1_nanoindenter:panel/inst_white0",
+      "other_group": "E1_nanoindenter:panel",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "E2_mastersizer:lid",
+      "body": "E2_mastersizer:lid/polycarb0",
+      "other": "E1_nanoindenter:panel/window1",
+      "other_group": "E1_nanoindenter:panel",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 883,
+    "last_frame": 884,
+    "frames": 2,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 886,
+    "last_frame": 886,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 888,
+    "last_frame": 889,
+    "frames": 2,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 891,
+    "last_frame": 892,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 894,
+    "last_frame": 898,
+    "frames": 4,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 25.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 900,
+    "last_frame": 901,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 902,
+    "last_frame": 903,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 904,
+    "last_frame": 904,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 906,
+    "last_frame": 906,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 908,
+    "last_frame": 908,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 910,
+    "last_frame": 910,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 912,
+    "last_frame": 912,
+    "frames": 1,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 913,
+    "last_frame": 914,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 915,
+    "last_frame": 916,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 917,
+    "last_frame": 917,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/7",
+    "first_frame": 918,
+    "last_frame": 920,
+    "frames": 3,
+    "depth_mm": 25.0,
+    "pairs": [
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:beam/laser0",
+      "other_group": "E2_mastersizer:beam",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "E2_mastersizer:grains",
+      "body": "E2_mastersizer:grains/powder0",
+      "other": "E2_mastersizer:scat_large/r8_scat_large0",
+      "other_group": "E2_mastersizer:scat_large",
+      "depth_mm": 6.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 134110,
+  "seconds": 141.9,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 92,
+ "note": "round 11 strict audit before audit-b's chapter-4 fixes (the XRF cup block already on the arm's plate; r8_char's plungers set back; E1 moved)"
+}

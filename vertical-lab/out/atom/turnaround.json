@@ -1,0 +1,165 @@
+{
+ "note": "    python3 atom_timeline.py        # out/atom/turnaround.png and out/atom/turnaround.json",
+ "steps": [
+  {
+   "lane": "The machine",
+   "procedure": "The run, watched",
+   "start_min": -6,
+   "minutes": 6,
+   "step": "pour (the cameras watch)",
+   "source": "PR 178: the pour lasts 2-5 min; DAL PR 189"
+  },
+  {
+   "lane": "The machine",
+   "procedure": null,
+   "start_min": 0,
+   "minutes": 14,
+   "step": "cools to 400 °C",
+   "source": "SOP: open at or below 400 °C (time estimated)"
+  },
+  {
+   "lane": "The machine",
+   "procedure": null,
+   "start_min": 14,
+   "minutes": 46,
+   "step": "vented; the furnace cools until it can be touched",
+   "source": "SOP Cooldown 3; PR 178: 150 °C is too hot (time estimated)"
+  },
+  {
+   "lane": "The machine",
+   "procedure": null,
+   "start_min": 88,
+   "minutes": 8,
+   "step": "pump-down: the joints hold",
+   "source": "no 'Pressure crucible' warning (PR 178 / crucible_automation.md 13)"
+  },
+  {
+   "lane": "Arm 1 (front, right)",
+   "procedure": "Latch and lid",
+   "start_min": 16,
+   "minutes": 3,
+   "step": "unlatch, lid up",
+   "source": "clip atom_latch"
+  },
+  {
+   "lane": "Arm 1 (front, right)",
+   "procedure": "Container",
+   "start_min": 23,
+   "minutes": 4,
+   "step": "cup off",
+   "source": "SOP Powder Collection 3: one holds, one unclamps"
+  },
+  {
+   "lane": "Arm 1 (front, right)",
+   "procedure": "Container",
+   "start_min": 49,
+   "minutes": 4,
+   "step": "clean cup on",
+   "source": "SOP Powder Collection 10"
+  },
+  {
+   "lane": "Arm 1 (front, right)",
+   "procedure": "Crucible out",
+   "start_min": 60,
+   "minutes": 10,
+   "step": "crucible out",
+   "source": "clip atom_crucible_out"
+  },
+  {
+   "lane": "Arm 1 (front, right)",
+   "procedure": "Crucible in",
+   "start_min": 70,
+   "minutes": 14,
+   "step": "spare crucible in, nut snug",
+   "source": "clip atom_crucible_in"
+  },
+  {
+   "lane": "Arm 1 (front, right)",
+   "procedure": "Latch and lid",
+   "start_min": 84,
+   "minutes": 3,
+   "step": "lid, latch",
+   "source": "clip atom_latch"
+  },
+  {
+   "lane": "Arm 1 (front, right)",
+   "procedure": "Clean and BN",
+   "start_min": 90,
+   "minutes": 26,
+   "step": "used crucible: cleaned, 3 BN passes",
+   "source": "clip atom_bn; DAL PR 220"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Container",
+   "start_min": 16,
+   "minutes": 6,
+   "step": "door; powder brushed into cup",
+   "source": "SOP Powder Collection 2"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Container",
+   "start_min": 23,
+   "minutes": 4,
+   "step": "(holds the cup)",
+   "source": "PR 178 Chamber and container 1"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Vacuum",
+   "start_min": 27,
+   "minutes": 10,
+   "step": "chamber vacuumed",
+   "source": "clip atom_vacuum; byu-vcl PR 80"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Plate",
+   "start_min": 37,
+   "minutes": 12,
+   "step": "plate swap",
+   "source": "clip atom_plate (on an alloy change or a cracked plate)"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Container",
+   "start_min": 49,
+   "minutes": 4,
+   "step": "(holds the cup)",
+   "source": "SOP / PR 178"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Crucible out",
+   "start_min": 63,
+   "minutes": 7,
+   "step": "holds the nut",
+   "source": "PR 178 Furnace and charge 1"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Crucible in",
+   "start_min": 72,
+   "minutes": 8,
+   "step": "threads the nut on",
+   "source": "PR 178 Furnace and charge 3"
+  },
+  {
+   "lane": "Arm 2 (door side)",
+   "procedure": "Plate",
+   "start_min": 81,
+   "minutes": 3,
+   "step": "door shut",
+   "source": "SOP Configuring the tower 18"
+  },
+  {
+   "lane": "A person",
+   "procedure": "Vacuum",
+   "start_min": 38,
+   "minutes": 3,
+   "step": "seals the vacuum's liner, if over 25 % full",
+   "source": "vacuum SOP §4 (not every run)"
+  }
+ ]
+}

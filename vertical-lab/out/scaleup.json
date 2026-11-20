@@ -1,0 +1,107 @@
+{
+ "name": "scaleup",
+ "fps": 6,
+ "n_frames": 691,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "Scaling up. The route proved an alloy gram by gram; parts that fly and sail need machines this size. An EOS M 400-4 prints by laser powder-bed fusion: 4.2 m long, 4.8 t, a 400 mm cube of build volume, four 400 W lasers. A Meltio Robot Cell repairs by wire-laser DED: 4.05 x 2.35 x 3.0 m. The lab's InssTek MX-Lab stands on the left for scale.",
+   "start_frame": 0,
+   "end_frame": 54
+  },
+  {
+   "label": "2/9",
+   "caption": "Powder first. The rePowder made 188 g under 63 um in one run; the Aconity MIDI builds on about 440 g. A 100 mm build in the EOS's 400 x 400 mm bed takes about 22 kg. So at this scale the recipe is what the route hands on, and the powder is bought by the 100 kg: EOS sells AlSi10Mg.",
+   "start_frame": 55,
+   "end_frame": 101
+  },
+  {
+   "label": "3/9",
+   "caption": "The chamber door opens. A 400 mm build plate comes up on a lift table cart and is slid across onto the platform, the table lowering with it.",
+   "start_frame": 102,
+   "end_frame": 130
+  },
+  {
+   "label": "3/9",
+   "caption": "Door shut; argon in. Drawn see-through from here. The cart rolls aside.",
+   "start_frame": 131,
+   "end_frame": 144
+  },
+  {
+   "label": "4/9",
+   "caption": "The build of EOS's RUAG Space case study: two Sentinel-1 antenna brackets (40 cm, AlSi10Mg, flight-qualified; this shape is ours, RUAG's isn't public) and 30 tensile bars. On the one-laser M 400 it took about 80 h at 60 um layers; here each recoat stands for about 185 layers.",
+   "start_frame": 145,
+   "end_frame": 210
+  },
+  {
+   "label": "4/9",
+   "caption": "All four lasers reach the whole 400 x 400 mm field, so they can work on the same part at once: the M 400-4's case for speed. The powder around the parts (drawn see-through) holds them up.",
+   "start_frame": 211,
+   "end_frame": 276
+  },
+  {
+   "label": "5/9",
+   "caption": "Done. The platform lifts the plate out of the powder, which is unpacked and sieved for reuse under argon in the setup station; the door opens.",
+   "start_frame": 277,
+   "end_frame": 308
+  },
+  {
+   "label": "5/9",
+   "caption": "The plate is slid back out onto the lift table, which rolls it to the saw and lowers it. (AlSi10Mg builds are usually stress-relieved on the plate first.)",
+   "start_frame": 309,
+   "end_frame": 340
+  },
+  {
+   "label": "6/9",
+   "caption": "On the cart, a band saw (drawn as its blade) parts the brackets from the plate, and they are lifted off by hand and laid beside it: antenna brackets after RUAG Space's, 380 x 110 x 100 mm as drawn. The tensile bars stay for testing.",
+   "start_frame": 341,
+   "end_frame": 383
+  },
+  {
+   "label": "7/9",
+   "caption": "Ship parts. On the cell's positioner, a nickel aluminium bronze propeller after the WAAMpeller of Damen and RAMLAB: three blades, 1350 mm, about 400 kg, inside the positioner's 500 kg. One blade's leading edge is eroded, 30 mm deep (illustrative).",
+   "start_frame": 384,
+   "end_frame": 417
+  },
+  {
+   "label": "7/9",
+   "caption": "Doors shut. The positioner tilts the propeller until the damaged edge faces up. Drawn see-through.",
+   "start_frame": 418,
+   "end_frame": 442
+  },
+  {
+   "label": "7/9",
+   "caption": "Before: the notch, cut back to clean metal, about 120 mm along the edge.",
+   "start_frame": 443,
+   "end_frame": 466
+  },
+  {
+   "label": "8/9",
+   "caption": "The robot brings the head down. 1 kW of blue light from nine 450 nm diodes melts the wire into the edge, pass on pass, each layer on the last (beads drawn about 2x). Copper alloys take blue light far better than infrared; Meltio lists copper alloys, and NAB filler wire is our assumption.",
+   "start_frame": 467,
+   "end_frame": 588
+  },
+  {
+   "label": "8/9",
+   "caption": "Head up, robot home. As deposited, the edge stands proud of the blade's profile.",
+   "start_frame": 589,
+   "end_frame": 610
+  },
+  {
+   "label": "9/9",
+   "caption": "After: machined back to the profile (on a mill or by hand, not in the cell), the edge whole again. US Navy suppliers already print NAB and copper-nickel parts by wire-arc DED (AML3D).",
+   "start_frame": 611,
+   "end_frame": 638
+  },
+  {
+   "label": "9/9",
+   "caption": "From coupons to flight brackets and propellers: the lab's MX-Lab and Aconity MIDI qualify the alloy; the EOS builds parts up to a 400 mm cube; the cell repairs or builds metre-scale parts up to 500 kg.",
+   "start_frame": 639,
+   "end_frame": 690
+  }
+ ]
+}

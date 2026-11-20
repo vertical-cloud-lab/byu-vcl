@@ -1,0 +1,7 @@
+{"source": "https://youtu.be/C4IBBj20OpE?t=19 (Keyence, VHX-7000N Series, 0:19: the stand, front; the plain head, not the EA-300, so only the stage and base are picked)",
+ "video": "C4IBBj20OpE", "t": 19.0, "camera": "C4IBBj20OpE@19",
+ "pose": {"head": 0.0},
+ "points": {"plate front left": [867, 458], "plate front right": [1030, 458],
+            "stage bottom front left": [842, 517], "stage bottom front right": [1045, 517],
+            "knob end": [1092, 596], "base front bottom": [954, 683]},
+ "note": "the VHX badge on the base (954, 612) sits 10 px right of the stage's centre here, which the XY stage's +-20 mm travel explains; picked, it pulls the camera into a 30 deg yaw, so it is left out"}

@@ -1,0 +1,560 @@
+## Tray services: docking couplings, stream cameras, cabling and heat (round 4)
+
+Kardex powers a tray in its slot and again at the opening, but not while the extractor carries it (#53). The dealer
+offered a quick-connect cord to the device on the tray. A search of Kardex's Shuttle options found no powered tray and
+no air or data to a tray. [`services.py`](../services.py) takes every service a tray needs through one automatic
+coupling instead: mains, Ethernet, compressed air, N2 and chilled water. A UPS on the tray covers the transit.
+
+| | GIF | MP4 |
+|---|---|---|
+| **Docking**: tray A leaves its slot, rides the extractor on its UPS and docks again at the opening; then the cameras | [`out/vlm_services.gif`](../out/vlm_services.gif) | [`out/mp4/vlm_services.mp4`](../out/mp4/vlm_services.mp4) |
+| **Hookups and the UPS**: one tray from its slot to the bay, close up: the six media flowing, the valves shutting and venting, the UPS taking over, the bay's dock taking back | [`out/vlm_hookups.gif`](../out/vlm_hookups.gif) | [`out/mp4/vlm_hookups.mp4`](../out/mp4/vlm_hookups.mp4) |
+| **The bay camera**: from an operator's eyes in front of the opening, then through its own two lenses while the arm works | [`out/bay_camera.gif`](../out/bay_camera.gif) | [`out/mp4/bay_camera.mp4`](../out/mp4/bay_camera.mp4) |
+| **Cabling**: the line with only its cabling drawn solid | [`out/vlm_cabling.gif`](../out/vlm_cabling.gif) | [`out/mp4/vlm_cabling.mp4`](../out/mp4/vlm_cabling.mp4) |
+| **All four, joined** (`services.py join`) | | [`out/mp4/vlm_services_all.mp4`](../out/mp4/vlm_services_all.mp4) |
+| **The coupling on its own** (`tour.py tray_dock`) | [`out/instruments/tray_dock.gif`](../out/instruments/tray_dock.gif) | [`out/mp4/instruments/tray_dock.mp4`](../out/mp4/instruments/tray_dock.mp4) |
+| **The camera unit on its own** (`tour.py stream_cam`) | [`out/instruments/stream_cam.gif`](../out/instruments/stream_cam.gif) | [`out/mp4/instruments/stream_cam.mp4`](../out/mp4/instruments/stream_cam.mp4) |
+
+![Tray E at the opening with its three cameras and the bay camera](../out/vlm_cameras_still.png)
+
+[`out/services.json`](../out/services.json) has the coupling, the docks against the lift, the camera clearances and
+views, and the heat budget. [`out/cabling.json`](../out/cabling.json) has the circuits.
+[`out/dock_lift_clearance.json`](../out/dock_lift_clearance.json) has every case of the dock check.
+
+**The retractable line was dropped** (PR #318: "Let's remove the retractable line option for now. It overcomplicates
+things for now."). Round 4 had a clip of tray A on an igus e-spool from the rear wall. It was a poor fit anyway:
+- while its tray was out, the line spanned the shaft, so the extractor could fetch no other tray;
+- it had to run in the 30 mm between the tray's side and the extractor's guide rails;
+- the shutter needed a notch for it.
+
+It suited one tray, kept at the opening's own height. The clip, its outputs and `tether_payout()` are gone; they are in
+the git history.
+
+### The coupling
+
+**Since 2026-11-18 the coupling is drawn part by part: see [`coupling.md`](coupling.md).** PR #318 asked for
+"something more real and high-fidelity for the liquid, gas, and power transfer modules". [`coupling.py`](../coupling.py)
+draws Stäubli's CombiTac parts from the catalogue: two frames, electrical above fluid (Stäubli's rule), with align 4
+guide pins and cones, SCT03 and LCT06 couplings that shut off on both sides, PE on the long pin, an LMFB monitoring pair
+and a 10 Gbit module. The dock is ours: a floating plate on a carriage on two MGN12 guides, a self-locking slider-crank,
+an energy chain and a valve bank. `services.py` takes every plate and dock from it.
+
+What stays from round 4:
+- **One coupling per tray, at its back right corner, facing out through the tray's right-hand side.** Each slot a tray
+  uses, and the bay, has a matching dock in its right-hand side wall. The faces are 6 mm inside the tray's side, so
+  nothing on a tray stands proud of it.
+- **Why not on the back edge itself.** A tray keeps its orientation. In a rear-column slot its back edge faces the
+  rear wall; in a front-column slot and at the opening it faces the shaft, where a dock would sit in the 106-146 mm
+  between the tray and the extractor's platform, in the path of every tray the extractor pulls. At the opening the
+  shutter is only 35 mm behind the tray. A side coupling meets the same dock everywhere.
+- **The stroke is across the tray's travel**, now 75 mm (it was 60): pulled back, the align pins' insulating caps are
+  18.6 mm clear of the tray's side.
+
+### Do the docks get in the lift's way? No
+
+PR #318 asked: "Are any of the docks going to interfere with the lift itself?" `dock_clearance()` checks it, with every
+part as its bounding box, so each gap is a lower bound:
+- the extractor (platform, carriages, tray-pull unit) runs the whole shaft, from 300 mm under the lowest slot to
+  300 mm over the highest, in 10 mm steps;
+- it runs empty, and carrying each of trays A-F with its instruments, UPS, coupling and cameras;
+- it passes every dock (the six slots in use and the bay's), both engaged and pulled back, with the crank, rod and
+  chain where they are at each end;
+- each tray slides out of its slot onto the extractor, and from the extractor into the bay, past that place's dock.
+
+Re-run on 2026-11-18 with the new dock (the numbers before are round 7's):
+
+![The docks against the lift](../out/dock_lift_clearance.png)
+
+| Case | Smallest gap | Before |
+|---|---|---|
+| The extractor past the front-column docks and the bay's, at any height, empty or loaded, docked or pulled back | 96 mm | 158 mm |
+| The extractor past the rear-column docks | 683 mm | 643 mm |
+| A tray past its own dock, pulled back (out of its slot, or into the bay) | 18.6 mm | 22 mm |
+| The bay's dock to the shutter | 20.6 mm | 81 mm |
+| The tray's coupling to the extractor's carriages, with the tray on the extractor | 11.0 mm | 9.5 mm |
+
+- **The docks are in the columns and the lift is in the shaft.** The nearest is the drive end of a front-column dock,
+  96 mm from the extractor's carriages, in y.
+- **The bay's dock is the tight one:** its drive end is 20.6 mm in front of the shutter's plane.
+- **Each dock needs a window in its side wall**, about 290 x 165 mm: a column's perforated wall, or the bay's slatted
+  one. Only the tray stored in that slot uses the supports there; the one it rests on stays.
+
+### The dock's valves, and what happens at each hand-over
+
+Under each dock is its valve bank (coupling.py, ours):
+- a solenoid valve on air, N2, chilled water in and out (3/2 venting the coupling's side for the gases, 2/2 for
+  water), each with a pressure sensor on the coupling's side;
+- the mains contactor, and the relay on the LMFB loop that allows it to close;
+- an RJ45 coupler with a link light.
+
+In the model each has an indicator, green when open and red when shut. The tray's own lines run from the coupling over
+its bracket: mains into the back of the UPS, which feeds the tray's power strip; the rest along the back rim, over the
+power strip, to a manifold left of the UPS.
+
+`services.py hookups` ([`out/vlm_hookups.gif`](../out/vlm_hookups.gif)) follows tray A from R2 to the bay:
+1. **Stored, docked.** All six media are live (dots running from the riser to the tray's end of each line). The UPS
+   charges.
+2. **Letting go.** The four valves shut one by one and their lines vent; the pressure sensors must read 0 bar. Then
+   the contactor opens and the UPS takes the load: its LED and the tray's lamp go amber. Then the crank turns and the
+   dock pulls back 75 mm, the LMFB pair breaking first. (The close-up opens the contactor first; either order works,
+   as long as both are done before the head moves.)
+3. **In transit.** About 6 s on the UPS, with a label riding along.
+4. **At the bay.** The bay's dock pushes in, align pins first; PE makes first and the LMFB pair last. Only then does
+   the contactor close (the UPS recharges) and the valves open.
+
+The close-ups draw tray A's instruments faint, as its OT-2 stands in front of the UPS.
+
+**Stäubli's rules the dock follows** (catalogue page numbers):
+- electrical contacts above liquid couplings (p. 137);
+- no mating or parting under load (p. 137, p. 139): the LMFB loop and the contactor;
+- no coupling mated or parted under pressure (p. 73, p. 75);
+- the plugging force is 1.5 x the sliding force (p. 135): 286 N with the couplings' springs;
+- a stable guide system besides the align 4 pins (p. 81): the carriage's MGN12 guides;
+- a hard stop so the end force doesn't go through the contacts (p. 82): CT-SHR-HS screws.
+
+Alternatives with similar figures, if Stäubli can't supply: ODU-MAC's P4+ docking frame (±4 mm radial, 1 mm axial,
+100,000 cycles) and Harting's Han docking frame (±2 mm float, ±4 mm lock-in, at least 10,000 cycles).
+
+- **The transit is short.** From R2 to the opening the tray moves 2 x 1030 mm in and out at Kardex's 0.7 m/s, about
+  3 s, and 246 mm down at 2 m/s, 0.1 s. With the shutter and the accelerations, which Kardex doesn't publish, that is
+  about 6 s. R4, the farthest slot, adds about 0.8 s of vertical travel. Each dock's own cycle adds about 3 s at each
+  end (the crank's half turn, and the venting).
+
+### The UPS on each tray
+
+**Round 12 (PR #318, 2026-11-18): each powered tray now has a real UPS of its own size; [`ups.md`](ups.md) has the
+whole of it.** In short:
+- **Two branches per tray.** Each tray's machines are split, plug by plug, between a backed branch (through the UPS)
+  and an unbacked one (straight from the dock: heaters, presses, vacuum pumps, printers).
+- **The rule.** Each tray gets the smallest real unit that carries its backed branch at rating and runs 10 min at its
+  typical draw.
+- **Three Vertiv Liebert lithium units:**
+
+| Unit | Trays | Backed branch, rated / typical |
+|---|---|---|
+| PSI5-800SRT2ULIN, 800 VA, line-interactive | B, C, F, G, H, I | 114-514 W / 16-56 W |
+| GXT5LI-1500LVRT2UXL, 1500 VA, online | A, E, K, L, M | 641-1004 W / 171-325 W |
+| GXT5LI-3000LVRT2UXL, 3000 VA, online | D | 2541 W / 540 W |
+
+Each stands on its side at the tray's back right, its back where round 4's box had its back (x = 1060 mm, so the
+tray's mains line still ends there), in a bolted cradle. Its front's two status LEDs go green on mains and amber on
+battery (`set_ups`), and its side carries an asset label.
+
+Until round 11 every tray carried the same box: Eaton's 5PX1500RTNG2 (1500 VA, 86 x 437 x 447 mm) as a grey slab with
+"UPS" in white, and everything on the tray drew through it. Its load table counted trays A-F only and put tray F at
+3654 W through a 1440 W unit.
+
+At 120 V the furnace alone would draw 23 A, so each dock carries L1, L2, N and PE on a 30 A breaker. That gives 208 V
+and 120 V, 5 kVA continuous at 80 %, inside the contacts' 39 A. Tray F's unbacked branch comes to 5.0 kW at its
+nameplates, so its furnace and MX400 take turns.
+
+### Utilities, and the heat
+
+- **N2 generator: it doesn't fit a tray.** Parker Balston's UHPN2-1100 is 889 mm tall against the 727.5 mm limit. It
+  is 305 x 406 mm, 50 kg and 120 V. It gives 500-1100 cc/min at 99.9999 %, and needs compressed air at 60-125 psig;
+  it has no compressor of its own. It stands beside the VLM and feeds N2 through the docks.
+- **Chiller: beside the VLM as well.** Thermo's ThermoFlex 900 removes 900 W at 20 °C. Its size and electrical input
+  were not found, so the cabling scene draws it as a box, not to size. Beside the machine its heat goes into the room.
+  On a tray it would go into the enclosure, and it would add its own input on top of the 900 W it moves.
+- **Heat into the VLM.** Every watt a stored, powered tray uses ends up inside the cladding. The enclosure is
+  2.83 x 3.12 x 3.95 m, with 56 m² of walls and roof.
+
+  Round 12 (the real UPSs, [`ups.md`](ups.md)): every powered tray's loads from `ups.TRAY_LOADS`, each UPS's own loss
+  from ENERGY STAR's efficiency at its tray's typical draw, and Shuttle 2 against its own enclosure.
+
+  | Case | Heat, W | Rise with no ventilation (estimate) | Air for a 5 K rise | Air for a 10 K rise |
+  |---|---|---|---|---|
+  | Shuttle 1 (A-F), everything on at its nameplate | 13665 | 44 K | 8158 m³/h | 4079 m³/h |
+  | Shuttle 1, tray C printing in storage, the furnace holding at a third of 2.8 kW | 3720 | 12 K | 2221 m³/h | 1110 m³/h |
+  | Shuttle 1, idle: every backed branch at its typical draw, heaters off, plus the UPSs | 1317 | 4.3 K | 786 m³/h | 393 m³/h |
+  | Shuttle 2 (K, L, M, H, G, I), everything on at its nameplate | 11767 | 38 K | 7025 m³/h | 3513 m³/h |
+  | Shuttle 2, two Form 4s and the Carvera working in storage | 2161 | 7.0 K | 1290 m³/h | 645 m³/h |
+  | Shuttle 2, idle, as above | 771 | 2.5 K | 460 m³/h | 230 m³/h |
+
+  "Everything on" sums the nameplates (the MiniFlex's 1.1 kVA, every supply's rating), so it is an upper bound no
+  schedule reaches. Round 4's table had 7077, 2277 and 360 W (60 W a tray, ours) for Shuttle 1's six trays.
+
+  The rise uses 5.5 W/m²K for painted sheet steel in still air, the usual figure for sizing electrical enclosures.
+  It is an estimate for a machine this size. The airflow is W / (ρ c_p ΔT) for air.
+- **So a VLM holding a printer at work and a furnace needs forced ventilation,** about 1100-2200 m³/h. Even idle, the
+  backed branches and the UPSs put about 1.3 kW into Shuttle 1. A furnace at 650 °C inside a sheet-metal store also
+  needs Kardex's say-so.
+- **What to ask Kardex:**
+  - the heat a tray may give off in a slot, and in total;
+  - the interior temperature the drives and controls are rated for;
+  - whether a column can take a filtered fan and a roof outlet;
+  - the extractor's repeatability at a slot, against the coupling's 4 mm;
+  - whether a side wall can take a window and a dock;
+  - whether power to a slot stays on while a tray is stored, and what they would fit.
+
+### The stream cameras
+
+**The unit as it would be built** (round 5). Asked for on PR #318: "more realistic by using actual Pi 5, camera,
+etc. See robot-arms ... able to be adjusted in terms of angle and height."
+
+![The camera unit: height, pan and tilt](../out/instruments/stream_cam.gif)
+
+- **The boards and the lens are robot-arms' CAD**, from Raspberry Pi's drawings (robot-arms PR #10,
+  `piper-camera-mount/cad/piper_mount.py` and `lenses.py`):
+  - a Raspberry Pi 5, 85 × 56 mm, with its ports and camera connectors, and its Active Cooler;
+  - an HQ Camera with the CS mount's back-focus ring and tripod foot, and Raspberry Pi's 16 mm C-mount lens: Ø39 ×
+    50 mm, 22.2 × 16.7°;
+  - a Camera Module 3 Wide, 102 × 67°.
+
+  The Active Cooler's fins and blower are ours, drawn from photos over robot-arms' 52 × 38 mm block.
+- **The Wide sits on a nose 56 mm forward, level with the front of the lens.** Side by side on one plate, as DAL PR
+  #189 mounts its M12 lens and the Wide, the 39 mm lens would sit in the left of the Wide's 102° picture. DAL #189's
+  M12 lens, about Ø16 × 18 mm, is short enough not to.
+- **The mount is ours**, after robot-arms PR #40's printed 2020 fixtures (a foot with a post socket, blocks on M5
+  T-nuts, a Pi 5 plate on standoffs). Each adjustment is a joint:
+  - **height:** a block slides up the post's T-slot and locks on two M5 drop-in T-nuts;
+  - **pan:** a yoke turns on an M6 bolt through the block's arm, up to 75° each way;
+  - **tilt:** the head turns between the yoke's arms on two thumb knobs, from 15° up to 65° down. At 65° the lens's
+    front is 16 mm above the yoke's base.
+
+  The Pi rides on the head behind the cameras, so neither ribbon flexes. One PoE lead leaves its Ethernet jack. The
+  printed parts are drawn dark grey; DAL #189's are black PETG.
+- **In a scene**, `rig_pose()` stands each post square to its tray, with its yaw a multiple of 90°. The pan and tilt
+  then aim the head at the instrument.
+- **Placement: in front of or beside the instrument, looking back** (PR #318: "The stream camera on tray A should be
+  positioned closer to the front or middle to avoid capturing irrelevant things outside the bay (e.g., people/faces)").
+  Every unit used to stand at the back of its tray and look forward, over its instrument and out through the
+  opening: 20-60 % of each Wide picture was the room. `unit_view()` now measures that. With the tray presented, it
+  casts the Wide's 102 × 67° picture and the HQ's 22.2 × 16.8° through the opening. A ray counts as seeing the room if
+  it leaves through the opening before it meets the tray's floor. Nothing else counts as cover, since the instruments
+  have windows.
+- **The units were then placed by a search** over post positions (35 mm grid), the four post yaws and up to ten aim
+  points on each instrument. It took the least room in either picture, then the closest view. Each post had to be:
+  - 15 mm or more from every instrument's box, the UPS and the service plate (the UPS and the plate were not in the
+    check before);
+  - inside the rim;
+  - off the middle half of each instrument's front, where the arm works, and on tray B off the front between the rack
+    and the doser's cup.
+- **11 of 13 units now see none of the room.** Two still see some, both in the Wide's picture; no HQ does:
+
+  | Unit | Watches | Room in the Wide's picture, now | Before |
+  |---|---|---|---|
+  | A0 | the CubXL and its potentiostat, from their left | 0 % | 36 % |
+  | A1 | the OT-2, from behind the CubXL (no room in front of the OT-2) | 26 % | 35 % |
+  | B0 | the doser, from its right | 0 % | 60 % |
+  | C0, C1, D0, D1, E0-E2, F0, F1 | | 0 % | 20-45 % |
+  | D2 | the OpenFlexure array, which is at the front edge | 15 % | 25 % |
+
+  Those two streams want a privacy crop: the Pi's camera stack can crop the sensor (libcamera's ScalerCrop), or the
+  stream can mask the top of the picture.
+- **Tray B is down to one unit.** Its rack camera ended up in the middle of the tray, in the arm's way and in the middle
+  of the bay camera's picture. The bay camera sees the rack.
+- **Clear of the instruments.** D0, E0 and F1 touched their instruments' boxes; A0 and B0 stood inside the tray plan's new
+  CubXL + EZstat frame and multi-doser. All are clear now: `setup_lab.py fit` reads ok for trays A-F; every unit is
+  inside the rim and its top is 688 mm or less over the tray floor.
+  `tray_instrument_boxes()` also has tray B's vial rack now, which it missed.
+
+  Each unit's yaw, pan, tilt, gap and view are in `services.json` (`cameras.clearances`, `cameras.views`); the old
+  positions are `TRAY_CAMS_ROUND5`.
+
+**On the trays, not the machine.** The cameras go on 2020 posts clamped to each tray, 2 or 3 to a tray:
+- They watch the instrument wherever the tray is. The printers and the CubXL keep working in storage, where nothing
+  fixed to the machine can see them.
+- The tray's dock already brings power and Ethernet, so a Pi needs no wiring of its own.
+- A camera fixed to a slot would have to be re-aimed whenever a tray changes slot or load.
+
+Every tray unit's top is at most 688 mm over the tray floor, 40 mm under the 727.5 mm limit. The tilt axis stands
+640 mm up and, tilted down, the head rises at most 48 mm above it. The tall instruments (the MiniFlex at 722 mm, the
+OT-2 at 662 mm) can't be looked into from above within the limit, so their cameras stand beside them and look in
+through the side or the door.
+
+[`out/vlm_cameras_still.png`](../out/vlm_cameras_still.png) (`services.py cameras`) shows tray E at the opening with
+its three units and the bay's. It was tray D. D's two OpenFlexures need their OpenSCAD meshes in `.cache/`, which this
+render didn't have.
+
+**One overhead unit at the bay, on the machine.** The same head and yoke, tilted 64° down, on a 2020 bar across the
+back of the bay.
+- **It had to lose its post for the 996 mm opening.** The taller opening (vlm.py) raises the top of Kardex's product
+  envelope to 854 + 3 + 856.5 + 20 = 1733.5 mm. Tray F1, stored over the opening, was at 1900 mm. That left
+  166.5 mm, and the unit on its 90 mm post and sliding block was 221 mm tall. So its yoke is now bolted straight onto
+  a printed saddle clamp on the bar (`bay_at()`): 144 mm from the clamp's underside to the head's top.
+- **Height.** The clamp is the lowest point, at 1744.5 mm: 11 mm over the envelope. The head's top is at 1888 mm,
+  62 mm under tray F1, which the tray plan has since moved up to 1950 mm; with F1 there the post could come back.
+- **Depth.** The bar is 72 mm in front of the shutter's plane; the head's back is 24 mm clear of the shutter.
+- **What it sees.** The Wide sees 95 % of the presented tray's floor. Its axis meets the floor 65 mm in front of the
+  tray's centre, 1028 mm away. It misses two triangles at the back corners nearest it. The HQ sees 7 %: the detail.
+- **Against the arm: 295 mm clear** (`bay_arm_clearance()`, `cameras.bay_camera.arm` in `services.json`) over 320 of `reach.py`'s
+  poses, the workflow's seats and every reachable point of the presented tray on a 100 mm grid, gripper down, 100 and
+  250 mm over its floor. It draws the UR10e as 75 mm capsules round its links from the shoulder to the TCP. The
+  nearest approach is 250 mm over the tray, near the middle of its back, with the highest joint at 1378 mm.
+- Round 4's unit hung from the bar at 1735 mm, tilted 58°; round 5's stood on a 90 mm post on a bar at 1650 mm.
+
+**Its own clip** (`services.py baycam`, [`out/bay_camera.gif`](../out/bay_camera.gif); PR #318: "It probably deserves
+its own sequence and showing an upward looking angle from the front of the bay as if an operator and then also a
+rendered view of what the camera would see"):
+1. An operator's view: eyes at 1.6 m, 0.9 m in front of the opening, looking up at the unit under the header.
+2. Its two pictures drawn as see-through pyramids down to the tray: the Wide's (blue) and the HQ's (orange).
+3. The Wide's own picture, rendered from its lens's position and aim, 102° across, while the arm takes a vial from
+   tray B's rack to the doser's cup.
+4. The HQ's, 22.2 × 16.8°, pillarboxed to its 4:3 sensor, with the head turned on its joints onto the doser's cup
+   (pan 20°, tilt 44° down): a close-up of the gripper.
+
+**Round 11's strict audit of this clip** (audit-a, `out/collisions/bay_camera_r11.json`): 21 of 134 frames, none
+of them real. 20 were the arm passing through the two picture pyramids, which are overlays, not solids; the checks now
+skip them (`sc.fluids`). One was the vial lifted out of tray B's rack, a solid block with the vials drawn inside it;
+`build_vlm` now cuts its bores, as the 8:00 clip does. Both are in the code (2dc8ced); the clip wasn't re-rendered for
+them, as neither changes what it shows but the rack's bores.
+
+**The fields of view, with sources:**
+
+| Camera | Across | Up and down | Diagonal | From |
+|---|---|---|---|---|
+| Camera Module 3 Wide | 102° | 67° | 120° | Raspberry Pi's figures |
+| HQ Camera, 16 mm lens | 22.2° | 16.8° | 27.6° | IMX477: 4056 × 3040 pixels of 1.55 µm = 6.29 × 4.71 mm (Raspberry Pi's product brief); 2 atan(6.29 / 32) = 22.2° |
+
+Raspberry Pi gives 102° for the Wide across, not diagonally; its diagonal is 120°. The render is a pinhole camera: a
+16:9 picture 102° across is 69.6° up and down, so the clip blacks out 17 px at the top and bottom to show 67°. The HQ's
+figures agree with Raspberry Pi's lens table for the 16 mm lens on the HQ Camera (22.2 × 16.7°).
+
+Power: Raspberry Pi's PoE+ HAT lists only the Pi 4 and 3B+. For a Pi 5 that means Waveshare's PoE HAT (H) or (J), or
+the 27 W USB-C supply from the tray's power strip. A Pi 5 takes about 4 W typical (800 mA at 5 V).
+
+The docking and cabling chapters were re-rendered with the new placements and the bay unit's new mount; `setup_lab`
+picks them up the next time it is rendered, through `add_cameras`.
+
+**Round 11: no cameras on the storage trays.** Sterling (PR #318, 2026-11-13, at 2:14 of the round-10 long-form): "Do
+we actual need cameras on the jars at all times? In terms of inventory, we're going to get that with the overhead
+camera in the bay anyway." No. A storage tray (J's samples, N's feedstock jars, O's atomized lots) changes only at the
+opening, and there this overhead unit sees about 94 % of its floor, missing only the two back corners nearest it,
+while the arm's D405 sees each seat it picks from. In its slot the tray is in the dark and nothing on it can change.
+Each of the three trays had two short camera posts (`setup_lab.CAMS`), a UPS to keep them alive in transit and a dock
+plate to charge it: six units, three UPSs and three plates for nothing that moves. All of it is gone
+(`setup_lab.PASSIVE`), which made the three slots 750 mm shorter (notes/tray_plan.md). The lab now has 24 tray units
+and two bay units, 26 in all, against 32 (`timelapse.cameras()` counts them from the same tables).
+
+**Round 11: camera E1 moves behind the Mastersizer.** With r8_char's iMicro now lifting only its top lid (75° about
+its back edge, 180c0f4), audit-b's chapter-7 audit had the lid going 25-50 mm through E1's pan and head at every open
+and close: E1 stood in front of the iMicro at (-50, -340) and its head reached over the iMicro's front top edge. Where
+it can go instead, checked with the rig's own meshes against every box on tray E (out/tray_plan.json):
+
+- **Beside the iMicro:** no room. 29 mm to the Mastersizer on its right, 95 mm to the PIP on its left, and a post's
+  foot is 90 mm.
+- **In front:** a head clear of the lid's reach (in front of the iMicro's front face, y < -262, which is where the
+  lid's 522 mm stops) either needs more than the head's 75° of pan, or stands where the person bends in to the
+  indenter in the maintenance clip (upkeep: masts in front between x -380 and -120), or meets E0's head.
+- **Behind** the Mastersizer's back left corner, right of the lid: post at (170, 360), head at x 95-209, y 225-358,
+  75 mm outside the lid's region (tray x -520..20, within 522 mm of the hinge line, above it), 65 mm off the
+  Mastersizer, 470 mm behind the Aero S's hopper where chapter 4 pours from the front. It looks left and down at the
+  iMicro's back right quarter (pan -71°, tilt 47°). The Wide takes in the whole iMicro and its lid, and into the cabinet
+  over its right wall when the lid is up.
+
+The price is the room: from behind, 20 % of the Wide's picture looks out through the opening (`unit_view`; the HQ's
+0 %), where the old place saw none. That is round 5's problem back for one unit, though less than round 5's 34 % for
+E1, and A1 (26 %) and F1 (22 %, chapter 5's move this round) already live with it. Aiming at the indenter itself
+from there would make it 35 %. The set-up movie's render of round 11 (d919092) was made before the move and still shows E1 in front of the iMicro; the vlm_cameras still and every chapter rendered after 01:49 show it behind.
+
+**Round 11: the overhead unit, seen.** Sterling, on the set-up movie's bay-camera step (`setup_lab.mp4` 106-112 s):
+"Can't see the overhead camera from the angle. Should change the view angle and temporarily make things opaque again".
+Round 10 showed both units from far off (`CAM_VLM`) through the see-through cladding, where the unit is a few pixels.
+The step now flies to an operator's eyes at each opening in turn (1.6 m up, 0.9 m in front of the face, 420 mm right
+of the middle: this clip's first view, `setup_lab.BAY_EYE`), narrows the view to 40°, turns the cladding and the other
+ghosted parts (bay walls, shutter, seams) solid while the unit fades in, and labels it: Shuttle 2's first, where the
+loading ends, then Shuttle 1's. Then it pulls back to the wide view with the cladding see-through again, about 5.4 s
+against 3.2 s before. `vlm_services` (`services.py services`) had the same problem in its last step: it labelled the
+unit at the top edge of a see-through view of tray A's cameras. It now shows tray A's two units first, then cuts to
+the same operator's view, cladding solid, with the unit labelled, then back to see-through (re-rendered 01:00 UTC on
+2026-11-14: 223 frames, 37.2 s at 6 fps, against 206 frames, 34.3 s; the shot of the unit runs 32.5-35.8 s, and the still is that
+shot). `vlm_hookups` never labels the bay unit, so it is unchanged.
+
+### Round 14: a roof on the bay, and two cameras hung from it
+
+![The bay's two cameras](../out/bay_camera_still.png)
+
+Sterling, PR #318, 2026-11-20, on round 12's video:
+
+- "It's still showing the picking bay as being 'open top'. In real kardex systems, I'm pretty sure there's a 'roof' to
+  the bay. For this reason, I don't think that 2020 bar is needed (6:27) and the camera could be mounted";
+- "We can also have multiple overhead cameras in the bay to get different angles (e.g., ceiling middle back, ceiling
+  middle front)";
+- of 6:42: "it's not worth showing both the wide and the HQ."
+
+**The roof** (`vlm.opening()`, `vlm.BAY_ROOF_Z`):
+
+- a 3 mm sheet with two folded ribs, between the bay's side walls (which now run up to it), from the front panel to
+  1 mm short of the shutter;
+- its underside at 1910 mm, 14 mm under the header's top, its ribs 9 mm under the supports of the slot over the bay;
+- drawn in the bay walls' material, so it ghosts with them when the cladding is see-through;
+- **its height is ours:** Kardex's renders show a closed bay, but give no figure.
+
+**The cameras** (`services.BAY_UNITS`, `bay_parts()`, `add_bay_camera()`). Each is the same Pi 5 unit as before: an
+HQ Camera with the 16 mm lens and a Camera Module 3 Wide, on the pan-tilt yoke. Each hangs from the roof on a 137.5 mm
+2020 drop with a printed foot on the roof and a printed shelf at its lower end; the yoke is bolted to the shelf, the
+drop behind it. The shelf tops are at 1772.5 mm, where round 13's clamp was, so a unit's lowest point is 33 mm over the
+product envelope (1733.5 mm) and its highest is the roof. Pan stays at 0: each mount is turned to face its subject and
+the tilt does the rest (`bay_mount_check()`).
+
+| Unit | Where | Aim | Wide sees of the tray | Of the room | Arm, least gap |
+|---|---|---|---|---|---|
+| back | middle back, pan axis at y -645, 10 mm off the shutter | forward, 64 deg down | 94 % | 28 % | 315 mm |
+| front | middle front, y -1350, just behind the header's LED light | back, 61 deg down | 82 % | 0 % | 180 mm |
+
+- **"Of the room"** is the share of the Wide's picture whose rays leave through the opening before they meet the
+  tray's floor (`out_of_bay`).
+  - The back unit's top 28 % looks out into the room, so its stream wants a privacy mask there.
+  - The front unit sees none.
+- **"Arm, least gap"** is against every `reach.py` pose, with the arm as capsules of 75 mm round its links
+  (`bay_arm_clearance()`).
+- **The front unit's place.** A unit in a front corner looking across kept 313 mm from the arm. But it saw 11-32 % of
+  the room through the opening, so the middle won.
+
+**The clip** (`movie_bay_camera`, out/bay_camera.*). One picture per camera, each one's Wide, not the Wide and then the
+HQ:
+
+1. both units from an operator's eyes (1.6 m up, 0.9 m out), the cladding solid;
+2. both Wides' pyramids;
+3. the back unit's view while the arm takes a vial from the rack;
+4. the front unit's view while it stands the vial on the doser's shuttle fork.
+
+The services clip's own bay shot and the set-up movie's (step 8) show both units hung from the roof too. The
+security-camera study (a separate PR) may replace the Pi units; these stay until it does.
+
+### Round 14: the tray's lines, its mains and the UPS's cord, re-routed
+
+The vacuum helper's checks found the UPS's input cord crossing the tray's rim lines. Measured with FCL on every
+powered tray (this run), three faults went back to rounds 4-12:
+
+- **The data, air and N2 lines ran through the tray's distribution box,** 58-66 mm deep. That is `vlm.tray`'s socket,
+  x 975-1075, y 382-420, top at 73 mm.
+- **The air, N2 and chilled-water lines crossed the UPS's input cord,** 3-34 mm deep. The cord ran 40 mm over the box
+  and came down onto its top.
+- **The mains line still ended in the UPS's back,** as in round 4. Since round 12 the dock's mains go to the
+  distribution box, which feeds the UPS and the unbacked strip (notes/ups.md).
+
+The fixes:
+
+- **The rim lines** run 22 mm higher, from 80 mm (`services.line_paths`), so they pass over the box. The manifold
+  they end at goes up to 122 mm.
+- **The cord** drops straight behind the UPS, 25 mm off its back, runs forward at 45 mm over the floor and plugs into
+  the box's front face (`ups.cord_parts`).
+- **The mains line** comes down 30 mm behind the UPS's back and into the box's right-hand end.
+
+Now nothing on any of the twelve trays touches. The nearest pairs are the data line 3.5 mm over the box, and the
+cord, the UPS and the dock plate more than 10 mm from the lines. The lines lie side by side in a loom, so they touch
+each other, as tubes in a bundle do.
+
+**Two cut-outs the dock always needed** (vlm.py), both found by the services and hookups clips' audits of moving
+parts:
+
+| Where | Cut | The audit before |
+|---|---|---|
+| Each tray's right-hand rim, where the coupling's plate sits | a notch, y 180-380 mm on the tray | a dock's guide pins and noses 25 mm "into tray A" |
+| The bay's right-hand wall | a window for the bay's dock | its head 50 mm "into bay side walls" as it pulled back and came in |
+
+Round 13's services audit had the first, 10 frames. With both cut, the services, hookups and bay-camera clips are at
+0 frames, arm and moving parts alike. The column walls' windows at the slots aren't drawn; the clips that show a slot
+dock fade those walls out.
+
+### Round 14: cabling on the two-Shuttle floor, without the rail
+
+Sterling, PR #318, 2026-11-20, at 5:56: "shows a rail still. We moved fully over to the mobile manipulator setup,
+no?". That was this clip: rounds 4-13 drew it on round 3's one-Shuttle line, with the arm's floor rail, its cable
+chain in a trough and its MachineMotion controls.
+
+`movie_cabling` is now built on the set-up movie's lab (`setup_lab.build`): two 9150 mm Shuttles with every tray
+loaded, both rows, and the two MiR250 + UR10e units on their chargers. It shows `setup_lab.utilities()`'s services,
+everything else faint, in six steps:
+
+1. the whole;
+2. the north row;
+3. the Shuttles' feeds and the docks' supply;
+4. the south row;
+5. the arms, which ride their MiR250's 48 V battery and charge at a MiR Charge 48V, so nothing crosses the floor;
+6. the whole again.
+
+For the taller Shuttles, `utilities()` changes:
+
+- the north cable tray and the argon line jog round the backs of both Shuttles, not over them;
+- each VLM's 208 V feed drops to a disconnect on its back;
+- the docks' supply (N2, air, chilled water from the units between the Shuttles) goes into each Shuttle's right-hand
+  side cavity at 2.6 m, where the risers are;
+- the hangers and the fume hood's duct go up to a 36 ft roof (PR #344's buildings), with LED high-bay lights at 10.2 m
+  (`setup_lab.Z_CEIL`, `LIGHT`).
+
+**Each floor station's junction box carries an AirGradient ONE** (notes/airgradient.md).
+
+The voltages quoted are notes/voltage.md's, per machine with sources.
+
+The section below is round 4's, kept for the record. Its ladder, panel and rail are gone from the model.
+
+### Cabling
+
+![Cabling](../out/vlm_cabling_still.png)
+
+**One overhead ladder tray at 2.8 m.** It runs 300 mm wide behind the line's machines and round the back of the VLM.
+The ladder is at y = -560 mm, behind the machines' backs (y = -700 to -927 mm); it passes over the Aconity and the
+wire EDM, which are deeper.
+There is a drop to each machine's back or top.
+
+**Into the VLM:**
+- its own 208 V three-phase supply goes into the back;
+- the dock circuits go over the roof into two service risers, one per column, in the right-hand side cavity;
+- a PoE+ switch on the VLM's side feeds the risers and the bay camera;
+- N2 and chilled water come from the units beside it, and house air from the ladder.
+
+**The rail:** its energy chain lies in a trough on the beam's side towards the machines. The chain's fixed end is
+halfway along the carriage's travel, and its bend follows the carriage at half its speed (the rail's tour clip).
+`vlm_line` drives its 17 m beam in mm and keeps the old fixed chain. MachineMotion 2 and the UR control box stand at
+the rail's end. The MiR's charger is in the gap left of the VLM; it matters only for the MiR layout.
+
+**Published ratings** (with each source in `cabling.json`):
+
+| Machine | Supply | Load |
+|---|---|---|
+| Kardex Shuttle XP 500 | 208 V 3-phase (#53) | not published; a used 2450 x 864 unit lists 400 V 17 A (snippet) |
+| rePowder atomizer and its chiller | 400 V 3-phase and 230 V, 32 A plugs | the optimizer up to about 60 A (the install call) |
+| FANUC ROBOCUT α-C400iC | 200 V 3-phase | 13 kVA (snippet), 36 A per phase at 208 V |
+| Instron 68FM-100 | 208-240 V 1-phase, or 208/240/400 V 3-phase (preferred) | not found |
+| Instron 68SC-2 | 100-240 V 1-phase | 1400 VA (table models) |
+| Vention MachineMotion 2 | 85-264 V | 1200 W typical |
+| UR10e control box | 100-240 V | 350 W typical, 615 W maximum |
+| MiR Charge 48V | 100-240 V, a 15 A outlet | 48 V, 40 A out |
+| Aconity MIDI, Inert glovebox | not found | not found |
+
+The wire EDM is the biggest single load. With the VLM, the rePowder and the trays, the line needs a three-phase panel
+of its own. Its size waits on the two figures not found.
+
+### Caveats
+
+- **Kardex hasn't seen any of this.** The side-wall window, the cavity width, the risers and the docks' places are
+  layout choices.
+- **Many ratings are search snippets.** Many figures come from search-result snippets of pages that weren't opened.
+  Each is marked so in the JSON. Those for Bambu, Hitachi, Buehler, Instron, FANUC, Eaton, Parker and Thermo should
+  be checked against the makers' sheets.
+- **Some loads are ours.** Five tray loads are estimates: the CubXL, the doser, the PIP, the nanoindenter and the
+  OpenFlexures.
+- **The bay camera is checked against `reach.py`'s poses only.** The chapters' own arm paths, between those poses,
+  aren't checked; nor are the `baycam` clip's straight joint moves.
+- **The bay unit fits with 11-12 mm to spare** above the 996 mm opening's estimated envelope and under tray F1. That
+  envelope (856.5 mm of product) is itself an estimate (vlm.py).
+- **The tray cameras' room check ignores the instruments** as cover, and the arm's own paths past the posts at the
+  front of the trays aren't checked.
+- **Some boxes are not to size:** the MiR charger is a marker, and the chiller is a placeholder.
+
+### Calling these from other scenes
+
+```python
+import services as S
+S.add_tray_cameras(sc, "D")                  # units on tray D (rides tray_D); layout=[(x, y, aim_x, aim_y, aim_z)]
+S.add_bay_camera(sc)                         # the overhead unit at the bay; returns its head's group
+S.rig_pose(x, y, (ax, ay, az))               # a unit at (x, y) aimed at a point: (post yaw, pan, tilt), degrees
+S.head_point(x, y, ax, ay, az)               # where that unit's head is, tray frame; S.bay_cam_point() for the bay's
+S.add_docks(sc, ["R2", "open"])              # docks (and the two risers) at slots / the bay; returns {pos: head group}
+S.set_dock(sc, "open", u)                    # 0 engaged, 1 pulled back 60 mm
+S.set_switches(sc, "open", on)               # the dock's valves, contactor and link light: True / False or {medium: bool}
+names = S.add_tray_services(sc, "A")         # plate, lines, UPS with its label and strip on tray A; the line actors
+S.set_live(sc, names, f)                     # lines grey (0, shut) to coloured (1, live)
+S.set_ups(sc, "A", battery)                  # the UPS's status strip: green on mains, amber on battery
+flow = S.Flow(sc, ["R2", "open"])            # dots along each live medium; flow.set(pos, f[, keys]) fills 0 to 1
+S.unit_view(x, y, ax, ay, az, post)          # how much of the room a tray unit sees with its tray presented
+S.dock_clearance()                           # the docks against the lift (out/dock_lift_clearance.json)
+S.make_lab(sc, data)                         # animate.Lab whose gauges come from lab.svc_lines, lamps amber on a UPS
+S.build_vlm(name, data, idata, title)        # the VLM with trays A-F, their instruments, docks and cameras
+```
+
+Run: `xvfb-run -a python3 services.py services hookups baycam cabling cameras clearance json join`, and
+`xvfb-run -a python3 tour.py tray_dock stream_cam`.

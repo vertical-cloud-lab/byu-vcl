@@ -1,0 +1,95 @@
+{
+ "name": "fabrication/mprint",
+ "fps": 15,
+ "n_frames": 475,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/10",
+   "caption": "The hatch opens on the powder revolver: five sealed cartridges, 250 % of the build volume when full.",
+   "start_frame": 0,
+   "end_frame": 40
+  },
+  {
+   "label": "2/10",
+   "caption": "A spent cartridge comes out to be refilled outside; a full one goes in. No open powder.",
+   "start_frame": 41,
+   "end_frame": 84
+  },
+  {
+   "label": "3/10",
+   "caption": "",
+   "start_frame": 85,
+   "end_frame": 116
+  },
+  {
+   "label": "4/10",
+   "caption": "Hatch shut. The chamber door opens and a 150 mm build plate goes onto the platform.",
+   "start_frame": 117,
+   "end_frame": 142
+  },
+  {
+   "label": "5/10",
+   "caption": "",
+   "start_frame": 143,
+   "end_frame": 177
+  },
+  {
+   "label": "6/10",
+   "caption": "Door shut; argon purge. See-through: the revolver turns a full cartridge over the feed to the hopper.",
+   "start_frame": 178,
+   "end_frame": 215
+  },
+  {
+   "label": "7/10",
+   "caption": "The recoater spreads a layer of powder over the plate.",
+   "start_frame": 216,
+   "end_frame": 243
+  },
+  {
+   "label": "8/10",
+   "caption": "The 200 W fibre laser melts each layer's cross-section.",
+   "start_frame": 244,
+   "end_frame": 278
+  },
+  {
+   "label": "9/10",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 279,
+   "end_frame": 306
+  },
+  {
+   "label": "10/10",
+   "caption": "",
+   "start_frame": 307,
+   "end_frame": 341
+  },
+  {
+   "label": "10/10",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 342,
+   "end_frame": 369
+  },
+  {
+   "label": "10/10",
+   "caption": "",
+   "start_frame": 370,
+   "end_frame": 404
+  },
+  {
+   "label": "10/10",
+   "caption": "Done: the plate comes out through the door to the MUNPACK station, which depowders it.",
+   "start_frame": 405,
+   "end_frame": 448
+  },
+  {
+   "label": "10/10",
+   "caption": "1900 mm tall: it stands beside the VLM.",
+   "start_frame": 449,
+   "end_frame": 474
+  }
+ ]
+}

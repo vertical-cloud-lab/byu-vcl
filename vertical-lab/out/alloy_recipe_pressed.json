@@ -1,0 +1,46 @@
+{
+ "set_point_t": 3.2,
+ "set_point_kN": 31.4,
+ "plug_travel_mm": 8.03,
+ "cavity_set_cm3": 6.005,
+ "cavity_flush_cm3": 4.987,
+ "runs": {
+  "Al-10Si": {
+   "cups": 4,
+   "cup_metal": "Al",
+   "alloying": "Si",
+   "alloying_g": 3.92,
+   "top_up": "AlSi10Mg",
+   "top_up_g": 3.91,
+   "column_mm_alloying": 26.8,
+   "column_mm_set": 46.1,
+   "column_mm_flush": 38.1,
+   "rel_density_set": 0.524,
+   "rel_density_flush": 0.631,
+   "cup_plus_plug_g": 35.25,
+   "charged_cup_g": 43.08,
+   "run_g": 172.3,
+   "wt_pct": 10.0,
+   "was_g": 3.92
+  },
+  "Cu-10Ni": {
+   "cups": 4,
+   "cup_metal": "Cu",
+   "alloying": "Ni",
+   "alloying_g": 14.62,
+   "top_up": "Cu",
+   "top_up_g": 14.81,
+   "column_mm_alloying": 22.3,
+   "column_mm_set": 46.1,
+   "column_mm_flush": 38.1,
+   "rel_density_set": 0.548,
+   "rel_density_flush": 0.66,
+   "cup_plus_plug_g": 116.76,
+   "charged_cup_g": 146.18,
+   "run_g": 584.7,
+   "wt_pct": 10.0,
+   "was_g": 12.97
+  }
+ },
+ "note": "Bore tapped full to the set plug: the alloying powder, then the cup's own metal on top (AlSi10Mg is 10 % Si, so the Al-10Si cups keep the Si dose; the Cu-10Ni cups take more Ni to make room for the Cu). The press drives the plug to flush on a 3.2 t program under vacuum; F1 stops it there, so the dose sets the green density. The set point comes from vacuum_press.compaction(), a Heckel line through #222's E4 estimate for AlSi10Mg; Si and Ni are not calibrated, and a Si layer is harder to compact, so check the plug reaches flush on the first cups."
+}

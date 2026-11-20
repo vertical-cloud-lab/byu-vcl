@@ -1,0 +1,582 @@
+{
+ "clip": "alloy_charge_doser",
+ "frames_checked": 1875,
+ "frames_with_collisions": 59,
+ "runs": [
+  {
+   "label": "4/8",
+   "first_frame": 957,
+   "last_frame": 973,
+   "frames": 15,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "press"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1005,
+   "last_frame": 1005,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "press"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1006,
+   "last_frame": 1016,
+   "frames": 9,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "press"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "press"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1018,
+   "last_frame": 1018,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "press"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1161,
+   "last_frame": 1161,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1162,
+   "last_frame": 1162,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1163,
+   "last_frame": 1163,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1164,
+   "last_frame": 1164,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1165,
+   "last_frame": 1174,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1175,
+   "last_frame": 1175,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1176,
+   "last_frame": 1176,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1177,
+   "last_frame": 1177,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    }
+   ]
+  },
+  {
+   "label": "4/8",
+   "first_frame": 1178,
+   "last_frame": 1178,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    }
+   ]
+  },
+  {
+   "label": "5/8",
+   "first_frame": 1361,
+   "last_frame": 1362,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/8",
+   "first_frame": 1440,
+   "last_frame": 1441,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/8",
+   "first_frame": 1519,
+   "last_frame": 1520,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/8",
+   "first_frame": 1528,
+   "last_frame": 1528,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "7/8",
+   "first_frame": 1749,
+   "last_frame": 1750,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "7/8",
+   "first_frame": 1828,
+   "last_frame": 1829,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "7/8",
+   "first_frame": 1907,
+   "last_frame": 1908,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup7"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "7/8",
+   "first_frame": 1969,
+   "last_frame": 1970,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bal"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "press"
+    }
+   ]
+  },
+  {
+   "label": "7/8",
+   "first_frame": 1986,
+   "last_frame": 1987,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "crack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cup6"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update",
+ "script": "alloy_charge_doser.py"
+}

@@ -1,0 +1,343 @@
+{
+ "source": "powder-doser chain-carousel-v5 at 353dae7 (copied in multidoser/); our r14 parts in carousel.py",
+ "exit": [
+  33.35,
+  4.76,
+  435.85
+ ],
+ "pan_xy": [
+  33.4,
+  4.76
+ ],
+ "room_over_pan": {
+  "parked": {
+   "r10": 344.8,
+   "r14": 344.8,
+   "r20": 344.8,
+   "r25": 344.8,
+   "r30": 344.8,
+   "r40": 344.8
+  },
+  "rising 7 mm": {
+   "r10": 351.8,
+   "r14": 351.8,
+   "r20": 351.8,
+   "r25": 351.8,
+   "r30": 351.8,
+   "r40": 351.8
+  },
+  "rising 14 mm": {
+   "r10": 358.8,
+   "r14": 358.8,
+   "r20": 358.8,
+   "r25": 358.8,
+   "r30": 358.8,
+   "r40": 358.8
+  },
+  "rising 21 mm": {
+   "r10": 365.8,
+   "r14": 365.8,
+   "r20": 365.8,
+   "r25": 365.8,
+   "r30": 365.8,
+   "r40": 365.8
+  },
+  "docked, tilt 0°": {
+   "r10": 372.8,
+   "r14": 372.8,
+   "r20": 372.8,
+   "r25": 372.8,
+   "r30": 372.8,
+   "r40": 372.8
+  },
+  "docked, tilt 10°": {
+   "r10": 390.6,
+   "r14": 374.1,
+   "r20": 374.1,
+   "r25": 374.1,
+   "r30": 374.1,
+   "r40": 374.1
+  },
+  "docked, tilt 20°": {
+   "r10": 410.8,
+   "r14": 403.6,
+   "r20": 386.5,
+   "r25": 377.3,
+   "r30": 377.3,
+   "r40": 377.3
+  },
+  "docked, tilt 30°": {
+   "r10": 414.4,
+   "r14": 412.1,
+   "r20": 405.0,
+   "r25": 396.8,
+   "r30": 388.1,
+   "r40": 382.3
+  },
+  "chain shift 2 links": {
+   "r10": 344.8,
+   "r14": 344.8,
+   "r20": 344.8,
+   "r25": 344.8,
+   "r30": 344.8,
+   "r40": 344.8
+  },
+  "chain shift 4 links": {
+   "r10": 344.8,
+   "r14": 344.8,
+   "r20": 344.8,
+   "r25": 344.8,
+   "r30": 344.8,
+   "r40": 344.8
+  },
+  "chain shift 6 links": {
+   "r10": 344.8,
+   "r14": 344.8,
+   "r20": 344.8,
+   "r25": 344.8,
+   "r30": 344.8,
+   "r40": 344.8
+  }
+ },
+ "fixed_parts_vs_v5": {
+  "roof plate": {
+   "min_mm": 8.2,
+   "part": "hatch_front",
+   "state": "parked"
+  },
+  "post with the vial nest": {
+   "min_mm": 15.8,
+   "part": "sam_electronics_carriage",
+   "state": "parked"
+  },
+  "post with the cup nest": {
+   "min_mm": 13.8,
+   "part": "sam_electronics_carriage",
+   "state": "parked"
+  },
+  "draft shield": {
+   "min_mm": 8.3,
+   "part": "sam_electronics_carriage",
+   "state": "parked"
+  },
+  "draft shield door, shut": {
+   "min_mm": 9.5,
+   "part": "door_shutter",
+   "state": "chain shift 4 links"
+  },
+  "draft shield door, open": {
+   "min_mm": 17.3,
+   "part": "panel_front_hatch",
+   "state": "parked"
+  }
+ },
+ "post_to_roof_plate_mm": {
+  "vial": 2.48,
+  "cup": 2.48
+ },
+ "vessel_at_the_dose": {
+  "vial": {
+   "seat_z": 325.0,
+   "rim_z": 386.0,
+   "fall_mm": 49.9,
+   "fall_round9_mm": 155.9,
+   "carried_min_mm": 2.0,
+   "carried_nearest": "nest",
+   "at_shuttle": 0.025,
+   "carried_min_to_v5_mm": 11.7,
+   "carried_nearest_v5": "sam_electronics_carriage",
+   "at_shuttle_v5": 0.025,
+   "fork_min_mm": 0.5,
+   "fork_nearest": "nest",
+   "seated_min_mm": 14.7,
+   "seated_nearest": "sam_electronics_carriage",
+   "fork_dropped_to_nest_mm": 0.5,
+   "fork_dropped_to_vessel_mm": 4.0,
+   "ring_inner_d": 28.5,
+   "ring_h": 4.0,
+   "mouth_margin_each_side_mm": 8.8,
+   "post_top_under_parked_ec_mm": 15.8
+  },
+  "cup": {
+   "seat_z": 327.0,
+   "rim_z": 390.5,
+   "fall_mm": 45.4,
+   "fall_round9_mm": 153.4,
+   "carried_min_mm": 2.0,
+   "carried_nearest": "nest",
+   "at_shuttle": 0.025,
+   "carried_min_to_v5_mm": 13.5,
+   "carried_nearest_v5": "panel_side",
+   "at_shuttle_v5": 0.7000000000000001,
+   "fork_min_mm": 0.5,
+   "fork_nearest": "nest",
+   "seated_min_mm": 12.3,
+   "seated_nearest": "draft shield",
+   "fork_dropped_to_nest_mm": 0.5,
+   "fork_dropped_to_vessel_mm": 4.0,
+   "ring_inner_d": 19.55,
+   "ring_h": 4.0,
+   "mouth_margin_each_side_mm": 2.35,
+   "post_top_under_parked_ec_mm": 13.8
+  }
+ },
+ "stream": {
+  "exposed_before_mm": 123.9,
+  "note": "round 9-13: the top door open, the stream fell from the exit (435.9) to the balance's top (312) in the rig's open interior, then 31 mm inside the chamber; round 14: the shield's roof is at SHIELD_TOP, the stream above it runs between the module's outlet door and the EC's -x face"
+ },
+ "drift": {
+  "cup": {
+   "effective_exposed_mm": {
+    "before": 138.6,
+    "after": 16.9
+   },
+   "fall_mm": {
+    "before": 153.4,
+    "after": 45.4
+   },
+   "Si d10": {
+    "v_t_m_s": 0.044,
+    "drift_before_mm": 316.1,
+    "drift_after_mm": 38.5
+   },
+   "Si d50": {
+    "v_t_m_s": 0.112,
+    "drift_before_mm": 123.5,
+    "drift_after_mm": 15.0
+   },
+   "Si d90": {
+    "v_t_m_s": 0.253,
+    "drift_before_mm": 54.9,
+    "drift_after_mm": 6.7
+   },
+   "AlSi10Mg d10": {
+    "v_t_m_s": 0.05,
+    "drift_before_mm": 275.9,
+    "drift_after_mm": 33.6
+   },
+   "AlSi10Mg d50": {
+    "v_t_m_s": 0.129,
+    "drift_before_mm": 107.8,
+    "drift_after_mm": 13.1
+   },
+   "AlSi10Mg d90": {
+    "v_t_m_s": 0.289,
+    "drift_before_mm": 47.9,
+    "drift_after_mm": 5.8
+   },
+   "Ni d10": {
+    "v_t_m_s": 0.167,
+    "drift_before_mm": 82.8,
+    "drift_after_mm": 10.1
+   },
+   "Ni d50": {
+    "v_t_m_s": 0.429,
+    "drift_before_mm": 32.3,
+    "drift_after_mm": 3.9
+   },
+   "Ni d90": {
+    "v_t_m_s": 0.965,
+    "drift_before_mm": 14.4,
+    "drift_after_mm": 1.7
+   },
+   "Cu d10": {
+    "v_t_m_s": 0.169,
+    "drift_before_mm": 82.2,
+    "drift_after_mm": 10.0
+   },
+   "Cu d50": {
+    "v_t_m_s": 0.432,
+    "drift_before_mm": 32.1,
+    "drift_after_mm": 3.9
+   },
+   "Cu d90": {
+    "v_t_m_s": 0.971,
+    "drift_before_mm": 14.3,
+    "drift_after_mm": 1.7
+   }
+  },
+  "vial": {
+   "effective_exposed_mm": {
+    "before": 139.9,
+    "after": 17.3
+   },
+   "fall_mm": {
+    "before": 155.9,
+    "after": 49.9
+   },
+   "Si d10": {
+    "v_t_m_s": 0.044,
+    "drift_before_mm": 319.0,
+    "drift_after_mm": 39.5
+   },
+   "Si d50": {
+    "v_t_m_s": 0.112,
+    "drift_before_mm": 124.6,
+    "drift_after_mm": 15.4
+   },
+   "Si d90": {
+    "v_t_m_s": 0.253,
+    "drift_before_mm": 55.4,
+    "drift_after_mm": 6.9
+   },
+   "AlSi10Mg d10": {
+    "v_t_m_s": 0.05,
+    "drift_before_mm": 278.4,
+    "drift_after_mm": 34.5
+   },
+   "AlSi10Mg d50": {
+    "v_t_m_s": 0.129,
+    "drift_before_mm": 108.7,
+    "drift_after_mm": 13.5
+   },
+   "AlSi10Mg d90": {
+    "v_t_m_s": 0.289,
+    "drift_before_mm": 48.3,
+    "drift_after_mm": 6.0
+   },
+   "Ni d10": {
+    "v_t_m_s": 0.167,
+    "drift_before_mm": 83.5,
+    "drift_after_mm": 10.3
+   },
+   "Ni d50": {
+    "v_t_m_s": 0.429,
+    "drift_before_mm": 32.6,
+    "drift_after_mm": 4.0
+   },
+   "Ni d90": {
+    "v_t_m_s": 0.965,
+    "drift_before_mm": 14.5,
+    "drift_after_mm": 1.8
+   },
+   "Cu d10": {
+    "v_t_m_s": 0.169,
+    "drift_before_mm": 83.0,
+    "drift_after_mm": 10.3
+   },
+   "Cu d50": {
+    "v_t_m_s": 0.432,
+    "drift_before_mm": 32.4,
+    "drift_after_mm": 4.0
+   },
+   "Cu d90": {
+    "v_t_m_s": 0.971,
+    "drift_before_mm": 14.4,
+    "drift_after_mm": 1.8
+   }
+  },
+  "model": "drift = u h_eff / v_t, Stokes terminal speed v_t = rho g d^2 / (18 mu); u = 0.1 m/s; h_eff weighs each part of the fall by how open it is to the room (1 open, 0.5 under an open top door or between the outlet door and the EC, 0.1 inside our shield); an estimate to compare the two stations, not a prediction of strays (powder-doser's T8b would measure them)"
+ },
+ "balance_turned_round": {
+  "bounds_x": [
+   -231.6,
+   196.4
+  ],
+  "parked": [
+   "hatch_front"
+  ],
+  "docked, tilt 30°": [
+   "hatch_front"
+  ]
+ }
+}

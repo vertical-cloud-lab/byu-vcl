@@ -1,0 +1,65 @@
+{
+ "name": "instruments/glovebox_tray",
+ "fps": 15,
+ "n_frames": 471,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "The arm slides the mini antechamber's outer door open. It slides rather than swings, so it never leaves the tray's footprint.",
+   "start_frame": 0,
+   "end_frame": 43
+  },
+  {
+   "label": "2/9",
+   "caption": "In goes the atomizer's catch jar, sealed, on a sled.",
+   "start_frame": 44,
+   "end_frame": 84
+  },
+  {
+   "label": "3/9",
+   "caption": "Door shut. The PLC pumps the antechamber down and refills it with N2 from the tray's dock line, three times.",
+   "start_frame": 85,
+   "end_frame": 146
+  },
+  {
+   "label": "4/9",
+   "caption": "The inner door slides up.",
+   "start_frame": 147,
+   "end_frame": 175
+  },
+  {
+   "label": "5/9",
+   "caption": "The sled runs onto the shelf inside.",
+   "start_frame": 176,
+   "end_frame": 213
+  },
+  {
+   "label": "6/9",
+   "caption": "The capper unscrews the jar's lid and lifts it clear.",
+   "start_frame": 214,
+   "end_frame": 275
+  },
+  {
+   "label": "7/9",
+   "caption": "Two arms lift the jar's cradle and tip it: the powder pours into the storage jar on the balance.",
+   "start_frame": 276,
+   "end_frame": 337
+  },
+  {
+   "label": "8/9",
+   "caption": "Upright and down again. The capper puts the catch jar's lid back, then screws the storage jar's lid on.",
+   "start_frame": 338,
+   "end_frame": 423
+  },
+  {
+   "label": "9/9",
+   "caption": "Sealed under N2, the jar leaves the same way. Purge-only: no purifier to regenerate inside the VLM. The box is 1100 x 520 x 640 mm; 810 mm tall with its fittings.",
+   "start_frame": 424,
+   "end_frame": 470
+  }
+ ]
+}

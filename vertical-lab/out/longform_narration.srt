@@ -1,0 +1,220 @@
+1
+00:00:00,600 --> 00:00:09,900
+A real vertical lift module, a V L M, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.
+
+2
+00:00:24,300 --> 00:00:35,650
+From here on, everything is animation: makers' published sizes and photos, and our own designs where nothing exists yet. Real footage, photos and data carry a badge.
+
+3
+00:01:21,400 --> 00:01:30,810
+Most tray loads weigh twenty to a hundred and ten kilograms, too much for the arm or one person, so people slide each machine across from a lift table.
+
+4
+00:02:40,800 --> 00:02:50,720
+Each powered tray has its own U P S. Docks in the side wall, in its slot and at the opening, bring mains, network, air, nitrogen and chilled water.
+
+5
+00:03:58,600 --> 00:04:09,540
+Earth makes first and a monitoring pair last, and power is switched only once that pair closes. The couplings are catalogue parts; the dock that drives them is our own design.
+
+6
+00:05:09,170 --> 00:05:22,160
+Three real Vertiv lithium units, sized per tray; the online ones go wherever a computer or measurement can't be interrupted. Each runs ten minutes or more, so a stranded tray can shut down cleanly.
+
+7
+00:06:53,470 --> 00:07:04,500
+The first tray is a corrosion station: the O T two makes up solutions and dilutions, and the Cub X L runs the alloy lab's copper corrosion screen, spot by spot.
+
+8
+00:07:37,140 --> 00:07:48,380
+One part sample to nine of dilute nitric acid: the tenfold dilution needed before I C P mass spectrometry, which goes out to B Y U's spectroscopy facility.
+
+9
+00:08:32,270 --> 00:08:43,260
+The protocol includes impedance spectroscopy, which needs the potentiostat the lab has requested. Until it arrives, the open-circuit step runs thirty minutes instead.
+
+10
+00:09:56,130 --> 00:10:07,270
+This dose is for the alloy lab's powder reactivity test. The doser works to weight, a quarter auger turn at a time, to twenty-five milligrams; the readings are illustrative.
+
+11
+00:11:09,830 --> 00:11:20,350
+The alloy route follows one alloy from its charge to the finished measurements. First the charge: aluminium cups dosed with powder by weight, then pressed shut under vacuum.
+
+12
+00:11:29,330 --> 00:11:37,760
+This is the alloy lab's workflow today, seventeen steps, mostly by hand, with the station each would use here and what is still missing.
+
+13
+00:11:55,500 --> 00:12:02,520
+The balance stands under the doser's outlet without touching it, so each dose falls straight into the cup and is weighed as it lands.
+
+14
+00:15:23,000 --> 00:15:33,860
+The cup can't come closer to the outlet: a raised balance would hit the doser's carriage, about thirteen millimetres above it. A funnel per powder is designed, not yet in the clip.
+
+15
+00:16:27,400 --> 00:16:37,830
+Both mobile robots, each a Universal Robots arm on a ballasted M I R base, go to the atomizer: one holds the lid down while the other works the latch.
+
+16
+00:18:41,630 --> 00:18:51,490
+Building the crucible stack stays a person's job here: a thin graphite nut threaded on from below while the crucible is held still. The next chapter takes it on.
+
+17
+00:19:36,470 --> 00:19:49,610
+Four cups make about a hundred and forty grams of powder, some twenty-six grams of it in the printer's size range. A fuller crucible, or the larger four-hundred cubic centimetre one, makes several times more a run.
+
+18
+00:20:23,800 --> 00:20:34,590
+Between runs the atomizer is cooled, opened, cleaned and rebuilt, all by hand today. These clips give the lab's own procedure, step by step, to two mobile arms.
+
+19
+00:22:41,670 --> 00:22:53,570
+The arm no longer swings the loop over the lever, which took its forearm into the machine. It lifts the loop off the hook, lets the lever down, and lets the loop fall over it, as the training video shows.
+
+20
+00:24:40,770 --> 00:24:52,820
+Taking the container off isn't animated yet. At an estimated four kilograms empty, it is near or past the gripper's five-kilogram limit with powder, so a second arm would hold it from below.
+
+21
+00:25:24,850 --> 00:25:36,500
+Each joint of the vacuum's ground path must read a tenth of an ohm or less, or the run stops. These readings are illustrative; the lab's own crevice tool failed this check in August.
+
+22
+00:27:41,200 --> 00:27:51,420
+This joint takes fifty newton metres, close to the rating of the arm's wrist, so the wrench holds both flats and takes its own reaction. The arm only places it.
+
+23
+00:30:53,900 --> 00:31:04,760
+The arm's own sensor can't tell a snug joint from a cracked one, so each arm carries a finer wrist sensor and logs every breakaway. None of these torques has been measured yet.
+
+24
+00:32:54,600 --> 00:33:04,780
+In the alloy lab's table, the boron nitride recoat stayed manual, an aerosol job. Here the arm does it in a fume hood, touching up only the scraped spots.
+
+25
+00:36:19,830 --> 00:36:28,880
+Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need the maker's agreement, and is the first question for them.
+
+26
+00:36:57,600 --> 00:37:05,070
+The arm runs the sieving cell on its own, then pours the fine cut into the Aconity printer, which prints the tensile bars.
+
+27
+00:37:58,000 --> 00:38:04,570
+No sieve shaker found is sold for robot loading, so the arm turns the lid's clamp knobs as a person would.
+
+28
+00:40:26,300 --> 00:40:38,930
+That photo is real: the lab's bronze powder from October, sieved by hand. Of nearly two kilograms melted in two runs, a hundred and eighty-eight grams came out under sixty-three microns.
+
+29
+00:41:45,100 --> 00:41:55,470
+While the build prints, a retained sample of the sieved powder goes round the trays: size distribution, X-ray diffraction, X-ray fluorescence and the S E M.
+
+30
+00:43:31,580 --> 00:43:44,680
+These S E M images are real: the lab's own atomized aluminium alloy powder. The diffraction pattern, size curve and composition panel in this chapter are computed or illustrative.
+
+31
+00:45:31,670 --> 00:45:40,860
+The build is depowdered, its bars cut off in the wire E D M, rinsed and heat treated, then pulled at room temperature and at two hundred degrees.
+
+32
+00:49:26,320 --> 00:49:35,830
+The alloy lab's heat-treatment schedule is still to be set, so the hour at five hundred and thirty degrees shown here, before the quench and ageing, is an assumption.
+
+33
+00:50:47,820 --> 00:50:54,070
+The stress-strain curve is illustrative, taken from a printer maker's data sheet for this alloy, not measured.
+
+34
+00:52:14,000 --> 00:52:23,470
+Printed bars behave differently along and across the layers, so the lab wants flat, vertical and forty-five degree bars, each cut off with the plate on edge.
+
+35
+00:52:28,000 --> 00:52:35,470
+Sections are cut from the build, mounted and polished. Polishing is the hardest step to automate, and the chapter shows where.
+
+36
+00:55:22,400 --> 00:55:32,830
+Re-papering a disc means prying off a ring, peeling, laying new paper flat and refitting the ring. No robot has been shown doing that, so each grit gets its own disc.
+
+37
+00:57:26,900 --> 00:57:36,670
+The trays come to the opening in turn: the S E M, the nanoindenter, the indentation plastometer, micro-Vickers hardness and the digital microscope.
+
+38
+00:58:05,930 --> 00:58:16,660
+No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed; only the S E M inset, of the lab's powder, is real.
+
+39
+01:01:46,470 --> 01:01:56,620
+Then the stations the alloy route doesn't use: a tensile tester on its side, two gloveboxes, fume hoods, the sample and powder stores, and packaging for shipping.
+
+40
+01:02:15,940 --> 01:02:26,590
+It takes thin bars only: the route's six by six millimetre bar needs nearly fifteen kilonewtons, and no motorized horizontal machine with a published size pulls that.
+
+41
+01:05:16,400 --> 01:05:27,000
+Fabrication next. Of three compact metal printers only the smallest fits on a tray, and it isn't shipping yet; the resin printers and a circuit-board line do fit.
+
+42
+01:08:27,570 --> 01:08:34,270
+The M X Lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.
+
+43
+01:08:51,670 --> 01:09:00,370
+An alloy that passes the route goes on to a large-format printer for real parts, and to a robot cell that repairs worn ship parts.
+
+44
+01:09:06,770 --> 01:09:17,740
+At this scale the powder is bought, not atomized: a hundred-millimetre build in this bed takes about twenty-two kilograms, against four hundred and forty grams for the lab's printer.
+
+45
+01:10:52,670 --> 01:11:01,820
+Some things don't fit: a hot isostatic press is too tall, too deep and too heavy for a tray, and its cooling can't stop for a ride in the lift.
+
+46
+01:11:16,530 --> 01:11:28,650
+The opening used throughout, just under a metre tall, comes from one used unit's listing. Kardex publishes about seventy-three centimetres of goods height; a taller bay is a question for Kardex.
+
+47
+01:11:40,530 --> 01:11:51,620
+Ten models were fitted to frames of the real machines; one still fails its held-out check, the digital microscope's stand. Every instrument's motion also ran through MuJoCo.
+
+48
+01:12:22,330 --> 01:12:33,470
+A stricter audit caught contacts the old rules missed. After its fixes, six clips were down to two frames or fewer; the powder checks, sample prep and scale-up still had some.
+
+49
+01:12:34,530 --> 01:12:44,410
+This video's own check: the clips drawn for it were checked frame by frame as they rendered. The table lists, clip by clip, the frames where something still touches.
+
+50
+01:12:49,030 --> 01:12:58,610
+Maintenance is booked into the same schedule as the experiments: calendar service, consumables by use, checks the arm runs between jobs, and repairs.
+
+51
+01:15:00,130 --> 01:15:11,480
+In this modelled year, upkeep and failures cost fifteen of three hundred and twenty-four alloys; other random draws, as few as three. Most intervals and every failure rate are assumed.
+
+52
+01:15:14,130 --> 01:15:23,430
+The modelled lab fully tests about one alloy a day, a pace set by staffing: an atomizer run starts only when someone can change the crucible.
+
+53
+01:15:27,130 --> 01:15:36,430
+Ten a day would take crucible changes round the clock, by people or robots, three atomizers, four printers, and floor cells with their own arms.
+
+54
+01:16:44,630 --> 01:16:54,590
+By the end of the first year: about three hundred alloys fully tested, a hundred and sixty kilograms of powder, and a hundred terabytes of video if every stream is kept.
+
+55
+01:17:00,630 --> 01:17:08,310
+All of it is a model, not a measurement. The code, the notes and every source are public, in the lab's GitHub repository.
+

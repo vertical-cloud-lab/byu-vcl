@@ -1,0 +1,5 @@
+{
+ "task_id": "6a7aa7b5-5c44-4456-b133-ab39fca2bad6",
+ "job": "LITERATURE",
+ "query": "How have metallographic sample preparation steps (sectioning, hot compression mounting, grinding, polishing) been automated with robots or fully automatic systems for metal alloys, e.g. RoboMet.3D, Struers/Buehler/LECO automatic systems, self-driving labs? Specifically: how are grinding papers and polishing cloths exchanged automatically (magnetic or adhesive-backed discs, retaining rings, disc changers), how is polish quality checked in-line, how are samples held (single-specimen vs central-force holders), and what failure modes and throughputs are reported? Cite specific systems and papers."
+}

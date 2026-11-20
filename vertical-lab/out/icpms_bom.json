@@ -1,0 +1,100 @@
+{
+ "note": "Round 14, run D: the ICP-MS station (icpms.py, notes/icpms.md). Prices are public figures, not quotes.",
+ "items": [
+  {
+   "item": "ICP-MS",
+   "product": "Agilent 7850 (UHMI standard)",
+   "size_mm": [
+    730,
+    600,
+    595
+   ],
+   "mass_kg": 100,
+   "power": "200-240 V single phase, 30 A circuit",
+   "argon": "20 L/min",
+   "exhaust": "150 mm, 5-7 m3/min",
+   "price": "$160-220k (LabX 2026 guide); a 7800 system was $122,526 net in 2017 (Agilent quote)",
+   "source": "Agilent 7800/7900 site preparation checklist G8400-90020 (2016; the 2024 edition lists the 7850 at the same 730 x 600 x 595 mm, 100 kg): 200-240 V single phase on a 30 A circuit, argon 20 L/min at 500-700 kPa, one 150 mm exhaust at 5-7 m3/min, chiller G3292A (368 x 702 x 576 mm, 85 kg, 2900 W); SPS 4 600 x 363 x 510 mm, 15 kg, its cover extracting 50-100 L/min through a 50 mm port when corrosive liquids are loaded"
+  },
+  {
+   "item": "Autosampler",
+   "product": "Agilent SPS 4 with its vented cover",
+   "size_mm": [
+    600,
+    363,
+    510
+   ],
+   "mass_kg": 15,
+   "price": "$12,305 list (2017)",
+   "source": "Agilent 7800/7900 site preparation checklist G8400-90020 (2016; the 2024 edition lists the 7850 at the same 730 x 600 x 595 mm, 100 kg): 200-240 V single phase on a 30 A circuit, argon 20 L/min at 500-700 kPa, one 150 mm exhaust at 5-7 m3/min, chiller G3292A (368 x 702 x 576 mm, 85 kg, 2900 W); SPS 4 600 x 363 x 510 mm, 15 kg, its cover extracting 50-100 L/min through a 50 mm port when corrosive liquids are loaded"
+  },
+  {
+   "item": "Chiller",
+   "product": "Agilent G3292A",
+   "size_mm": [
+    368,
+    702,
+    576
+   ],
+   "mass_kg": 85,
+   "power": "2900 W"
+  },
+  {
+   "item": "Forepump",
+   "product": "the 7850's own (DS402 on the 7800: 164 x 541 x 242 mm, 35 kg)"
+  },
+  {
+   "item": "Fume hood",
+   "product": "HEMCO UniFlow Trace Metals, 6 ft, polypropylene, on an acid cabinet",
+   "size_mm": [
+    1829,
+    813,
+    1499
+   ],
+   "price": "quote",
+   "source": "HEMCO UniFlow Trace Metals hood (LabWrench listing; HEMCO's literature): one-piece welded polypropylene chamber and baffle, 6 ft = 72 x 32 x 59 in, four horizontal sliding sashes on two tracks (at most half open), 100 fpm face velocity. Base cabinet and work surface heights estimated"
+  },
+  {
+   "item": "Dilutor",
+   "product": "acid-rated, all-fluoropolymer fluid path (Questron/HORIBA QPrep class), with a decapping head (ours)",
+   "size_mm": [
+    840,
+    550,
+    700
+   ],
+   "price": "quote",
+   "source": "Questron (HORIBA) QPrep: 'all-plastic construction', 'Teflon-coated rigid graphite probe', dilutes, spikes internal standard, fills racks, 6 autosampler racks; size not published (ours, estimated). Hamilton Microlab STAR line operator's manual: the CO-RE head is rated 3, not for continuous contact, with 5-10 % and 70 % nitric acid; STARlet 1124 x 795 x 903 mm, 135 kg. Gilson GX-271 manual: avoid nitric acid over 10 % on PEEK. Opentrons OT-2 and Flex manuals: 'Keep corrosive materials ... away from the robot'"
+  },
+  {
+   "item": "Hot block",
+   "product": "graphite digestion block (SCP Science DigiPREP class), 24 x 50 mL",
+   "size_mm": [
+    500,
+    400,
+    280
+   ],
+   "price": "quote",
+   "source": "SCP Science DigiPREP: graphite hot block, up to 450 C, 50 mL tubes; size estimated"
+  },
+  {
+   "item": "Argon",
+   "product": "180 L liquid argon dewar, 22 psi, regulator within 3 m",
+   "size_mm": [
+    508,
+    508,
+    1635
+   ],
+   "source": "Airgas 180 L liquid argon, 22 psi: about 143 m3 of gas, 508 mm diameter, 1635 mm tall; at 20 L/min about 119 h of plasma, three weeks of 8 h days less boil-off (PerkinElmer: expect a new dewar every 2-3 weeks)"
+  },
+  {
+   "item": "Arm cover",
+   "product": "PTFE-laminate robot suit for the UR12e (Roboworld Robosuit class)",
+   "price": "quote",
+   "source": "Roboworld Robosuit for UR3-UR12e (UR+ listing): over 18 fabrics, a 10-mil laminated Teflon option for 'caustic chemical environments', zips or hook-and-loop, quote only; no maker publishes an IP rating. UR: the UR12e (the renamed UR10e) is IP54, and where liquids are present 'additional measures should be taken, such as utilizing a protective robot cover'"
+  },
+  {
+   "item": "Racks and caps",
+   "product": "15 mL PP tube racks with a central handle (ours); PP screw caps"
+  }
+ ]
+}

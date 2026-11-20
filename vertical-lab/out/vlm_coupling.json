@@ -1,0 +1,125 @@
+{
+ "name": "vlm_coupling",
+ "fps": 15,
+ "n_frames": 1147,
+ "size": [
+  1920,
+  1080
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "Each tray that needs services carries a coupling at its back right corner; a dock in the column's side wall meets it in the slot, and another in the bay. The parts are Staubli's CombiTac: two frames, the electrical one above the fluid one, as Staubli requires. The fluid frame ends in a vacuum line, for the trays that use one and always in the bay.",
+   "start_frame": 0,
+   "end_frame": 113
+  },
+  {
+   "label": "2/7",
+   "caption": "The tray's face (the dock and the wall hidden for the view).",
+   "start_frame": 114,
+   "end_frame": 146
+  },
+  {
+   "label": "2/7",
+   "caption": "On the tray, the socket halves: power, its earth and a monitoring pair; Ethernet; air, nitrogen, chilled water in and out, and vacuum. The sockets are touch-safe and every face is flat, so nothing stands proud of the tray's side.",
+   "start_frame": 147,
+   "end_frame": 227
+  },
+  {
+   "label": "2/7",
+   "caption": "",
+   "start_frame": 228,
+   "end_frame": 260
+  },
+  {
+   "label": "2/7",
+   "caption": "On the dock, the pin halves, on a plate that floats on four springs. The pins' lengths set the order things connect: PE first, the LMFB pair last.",
+   "start_frame": 261,
+   "end_frame": 341
+  },
+  {
+   "label": "2/7",
+   "caption": "",
+   "start_frame": 342,
+   "end_frame": 374
+  },
+  {
+   "label": "3/7",
+   "caption": "The gearmotor turns the crank and the head comes in. This tray stopped 2.5 mm off in y and 1.5 mm low: the align 4 pins find their cones and the plate, floating on four springs, follows them (align 4 takes up 4 mm).",
+   "start_frame": 375,
+   "end_frame": 454
+  },
+  {
+   "label": "4/7",
+   "caption": "The last 15 mm, at Staubli's mating speed (10 mm/s, shown 3 times slower): first the electrical frame, from above, its carriers drawn see-through.",
+   "start_frame": 455,
+   "end_frame": 485
+  },
+  {
+   "label": "4/7",
+   "caption": "PE makes first, then Ethernet and L1/L2/N; the LMFB pair makes last, so it only closes once everything else is home. The hard-stop screws take the end force, not the contacts.",
+   "start_frame": 486,
+   "end_frame": 568
+  },
+  {
+   "label": "4/7",
+   "caption": "The same 15 mm again, for the fluid frame below, its bodies see-through.",
+   "start_frame": 569,
+   "end_frame": 596
+  },
+  {
+   "label": "4/7",
+   "caption": "Each plug's nose pushes the socket's sleeve back while the socket's piston pushes the plug's poppet back: the flow opens only once both seals are inside each other, and shuts again the same way. The vacuum pair has no valves: its nose seals in an O-ring with 3.5 mm to go.",
+   "start_frame": 597,
+   "end_frame": 679
+  },
+  {
+   "label": "5/7",
+   "caption": "",
+   "start_frame": 680,
+   "end_frame": 701
+  },
+  {
+   "label": "5/7",
+   "caption": "Only with the LMFB loop closed does the dock's relay let the contactor close, so the contacts never mate or part under load; then the valves open, the vacuum's isolation valve last. The crank stops at dead centre: the couplings' 175 N of springs can't push the head back, powered or not.",
+   "start_frame": 702,
+   "end_frame": 783
+  },
+  {
+   "label": "5/7",
+   "caption": "",
+   "start_frame": 784,
+   "end_frame": 807
+  },
+  {
+   "label": "5/7",
+   "caption": "Vacuum, on trays B, K and M and always in the bay: Staubli's largest bore, an open-flow UCT08 pair, between two normally closed valves. A scroll pump on the floor keeps the riser at its base pressure, where it runs quiet; each tray only pumps its own few litres. Staubli rates the pair to 14 mbar: lower needs its confirmation.",
+   "start_frame": 808,
+   "end_frame": 906
+  },
+  {
+   "label": "5/7",
+   "caption": "",
+   "start_frame": 907,
+   "end_frame": 927
+  },
+  {
+   "label": "6/7",
+   "caption": "To let go, in reverse: the contactor opens first (the tray's UPS takes over), then the valves shut and vent each coupling's side of the line, and the sensors confirm 0 bar. For vacuum the tray's valve and the isolation valve shut and N2 fills the stretch between them to atmospheric: no coupling parts with pressure across it.",
+   "start_frame": 928,
+   "end_frame": 996
+  },
+  {
+   "label": "6/7",
+   "caption": "The head pulls back 75 mm: the LMFB pair breaks first, PE last, and each coupling's valves shut flush before its faces part. The align pins' tips end 18.8 mm clear of the tray's side.",
+   "start_frame": 997,
+   "end_frame": 1068
+  },
+  {
+   "label": "7/7",
+   "caption": "The extractor takes the tray: nothing on it stands proud of its side, and its sockets are touch-safe (IP2X). In transit its UPS carries it, until the bay's dock does all this again.",
+   "start_frame": 1069,
+   "end_frame": 1146
+  }
+ ]
+}

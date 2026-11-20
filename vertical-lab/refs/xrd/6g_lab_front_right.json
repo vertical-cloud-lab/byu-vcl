@@ -1,0 +1,54 @@
+{
+ "source": "https://youtu.be/8tI9uFKevr0?t=20 (Rigaku, 'New 6th generation MiniFlex', 0:20: in a lab, door shut)",
+ "video": "8tI9uFKevr0",
+ "t": 20,
+ "pose": {
+  "door": 0.0
+ },
+ "points": {
+  "panel tl": [
+   282,
+   69.3
+  ],
+  "panel tr": [
+   423.2,
+   69.5
+  ],
+  "strip bl": [
+   280.8,
+   240.5
+  ],
+  "strip br": [
+   417.5,
+   252.5
+  ],
+  "strip tr": [
+   418.5,
+   219
+  ],
+  "estop": [
+   399.5,
+   236
+  ],
+  "seam left": [
+   255.5,
+   206.3
+  ],
+  "front bottom left": [
+   255.5,
+   300
+  ],
+  "lamp": [
+   351.5,
+   67
+  ],
+  "handle top": [
+   283.8,
+   152.5
+  ],
+  "handle bottom": [
+   284.5,
+   188.8
+  ]
+ }
+}

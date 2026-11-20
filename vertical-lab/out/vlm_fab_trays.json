@@ -1,0 +1,47 @@
+{
+ "name": "vlm_fab_trays",
+ "fps": 15,
+ "n_frames": 504,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "Three more trays. The blue boxes are what fits through the Shuttle's opening: the tray's inside, 2426 x 840 mm, by 727.5 mm of product height. The metal printers behind stand on red boxes of the same height.",
+   "start_frame": 0,
+   "end_frame": 89
+  },
+  {
+   "label": "2/6",
+   "caption": "Tray G: two Formlabs Form 4s, a Form Wash and a Form Cure, in the order a print goes. Every one fits closed. The Form 4's cover opens to 844 mm and the Form Cure's door swings out, so they open only at the opening, where there is about 845 mm under the header.",
+   "start_frame": 90,
+   "end_frame": 170
+  },
+  {
+   "label": "3/6",
+   "caption": "Tray H: the DDM Novastar SPR-45VA stencil printer, turned 90 degrees because it is 889 mm deep against the tray's 840, and the open-source Opulo LumenPnP v4. The right end is free for a reflow oven.",
+   "start_frame": 171,
+   "end_frame": 251
+  },
+  {
+   "label": "4/6",
+   "caption": "Tray I: two SnowX SnowPods, desktop LPBF, 660 mm tall: the only powder-bed printer found that goes through the opening, with 67.5 mm to spare. Each makes its own nitrogen from air with a NitroPod, so the tray needs only power. A Kickstarter kit: not shipping yet.",
+   "start_frame": 252,
+   "end_frame": 338
+  },
+  {
+   "label": "5/6",
+   "caption": "The other metal printers: Sharebot's MetalONE and One Click Metal's MPRINT (LPBF), and Meltio's M450, wire and laser, the most compact DED found. Each stands well above its red box, so none goes through the opening; they stand in the line with the Aconity MIDI.",
+   "start_frame": 339,
+   "end_frame": 428
+  },
+  {
+   "label": "6/6",
+   "caption": "The Shuttle's six slots already hold trays A-F, so trays G, H and I need a second Shuttle.",
+   "start_frame": 429,
+   "end_frame": 503
+  }
+ ]
+}

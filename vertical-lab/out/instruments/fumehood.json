@@ -1,0 +1,41 @@
+{
+ "name": "instruments/fumehood",
+ "fps": 8,
+ "n_frames": 138,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "The sash rises to its stop, 457 mm (18 in) open. The arm works through that opening, as a person does.",
+   "start_frame": 0,
+   "end_frame": 26
+  },
+  {
+   "label": "2/5",
+   "caption": "Air sweeps in under the sash, over the airfoil, through the baffle's slots and up the 325 mm collar to the building's exhaust.",
+   "start_frame": 27,
+   "end_frame": 56
+  },
+  {
+   "label": "3/5",
+   "caption": "A polished Al coupon goes into Weck's reagent (KMnO4 and NaOH in water) for a few seconds: an HF-free tint etch for Al alloys.",
+   "start_frame": 57,
+   "end_frame": 84
+  },
+  {
+   "label": "4/5",
+   "caption": "Then into the rinse water, while the hood keeps pulling.",
+   "start_frame": 85,
+   "end_frame": 112
+  },
+  {
+   "label": "5/5",
+   "caption": "Sash down. Nothing here uses HF: ICP-MS goes out to the BYU Spectroscopic Facility's Agilent 8900. 1219 mm wide, 2.4 m tall with its base: it stands on the floor.",
+   "start_frame": 113,
+   "end_frame": 137
+  }
+ ]
+}

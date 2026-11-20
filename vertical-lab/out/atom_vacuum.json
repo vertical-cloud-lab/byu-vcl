@@ -1,0 +1,317 @@
+{
+ "name": "atom_vacuum",
+ "fps": 15,
+ "n_frames": 2240,
+ "size": [
+  1920,
+  1080
+ ],
+ "substeps": [
+  {
+   "label": "1/10 Area",
+   "caption": "The vacuum station by the atomizer: the Nilfisk 118EXP grounded to the building's ground bar, a grounded steel pail with its lid set on, a 30 lb Class D extinguisher and the sign at the tape. Where a MiR250 parks to work, a bonded steel plate is set flush in the floor (ours).",
+   "start_frame": 0,
+   "end_frame": 95
+  },
+  {
+   "label": "1/10 Area",
+   "caption": "Sign: COMBUSTIBLE METAL POWDER IN USE. Authorized personnel only. NO water, NO compressed air (vacuum SOP 2.3). Every loose metal object in the zone is bonded or removed.",
+   "start_frame": 96,
+   "end_frame": 149
+  },
+  {
+   "label": "2/10 The chamber",
+   "caption": "After a run: cold, vented, door open. The powder was already brushed into the container and the container taken off (DAL SOP steps 2-3), so it is not drawn.",
+   "start_frame": 150,
+   "end_frame": 218
+  },
+  {
+   "label": "3/10 MiR250 2",
+   "caption": "MiR250 2 drives in and parks in front of the station, clear of the hose and the vacuum, its two ground shoes lifted while it drives.",
+   "start_frame": 219,
+   "end_frame": 325
+  },
+  {
+   "label": "3/10 Bond",
+   "caption": "It lowers its two sprung copper-graphite shoes onto the floor plate (ours). Every spot where a MiR250 works at the atomizer has such a plate, its leads run in a floor channel to the area's ground bar, so nobody clips a lead on and nothing trails across the floor.",
+   "start_frame": 326,
+   "end_frame": 358
+  },
+  {
+   "label": "3/10 Bond",
+   "caption": "Two readings before the arm may move: the MiR's meter, shoe to shoe through the plate (both shoes on metal), and the station's monitor, the plate through its two leads to the bar. Both under 1 ohm (ours; NFPA 77 finds under 10 ohm usual for a sound bond): the lamp turns green. Readings illustrative.",
+   "start_frame": 359,
+   "end_frame": 415
+  },
+  {
+   "label": "4/10 Take the wand",
+   "caption": "The arm reaches for the wand in our holster: the 2F-85 closes on the flats of our clamp-on fin. Nothing is drilled into the Nilfisk wand.",
+   "start_frame": 416,
+   "end_frame": 464
+  },
+  {
+   "label": "4/10 Take the wand",
+   "caption": "In onto the fin.",
+   "start_frame": 465,
+   "end_frame": 485
+  },
+  {
+   "label": "4/10 Take the wand",
+   "caption": "Grip.",
+   "start_frame": 486,
+   "end_frame": 500
+  },
+  {
+   "label": "4/10 Take the wand",
+   "caption": "Lift: the locating pin comes out of the holster's hole, the collar off the fork.",
+   "start_frame": 501,
+   "end_frame": 524
+  },
+  {
+   "label": "4/10 Take the wand",
+   "caption": "Out of the fork, towards the arm.",
+   "start_frame": 525,
+   "end_frame": 548
+  },
+  {
+   "label": "5/10 Continuity",
+   "caption": "To the continuity fixture (ours): the tool tip goes onto the bonded spring pad, spring probes touch each joint, a relay box switches the milliohm meter between them.",
+   "start_frame": 549,
+   "end_frame": 599
+  },
+  {
+   "label": "5/10 Continuity",
+   "caption": "Down onto the pad.",
+   "start_frame": 600,
+   "end_frame": 626
+  },
+  {
+   "label": "5/10 Continuity",
+   "caption": "Each joint must read 0.1 ohm or less (the OEM manual, UL 1213 par. 22), or the run stops. Readings shown are illustrative: the lab's crevice tool read open on 2026-08-19.",
+   "start_frame": 627,
+   "end_frame": 686
+  },
+  {
+   "label": "5/10 Continuity",
+   "caption": "Lift off the pad.",
+   "start_frame": 687,
+   "end_frame": 703
+  },
+  {
+   "label": "6/10 Equalize",
+   "caption": "Equalization touch: the tool tip on the bonded ground button beside the pad, away from the powder (vacuum SOP 3.1).",
+   "start_frame": 704,
+   "end_frame": 729
+  },
+  {
+   "label": "6/10 Equalize",
+   "caption": "Touch.",
+   "start_frame": 730,
+   "end_frame": 753
+  },
+  {
+   "label": "6/10 Equalize",
+   "caption": "Clear.",
+   "start_frame": 754,
+   "end_frame": 767
+  },
+  {
+   "label": "6/10 Vacuum on",
+   "caption": "Vacuum ON before the tool goes near the powder (SOP 3.2). The SOP's switch is on the motor head: a relay on its supply is ours, to be cleared with Nilfisk and EHS.",
+   "start_frame": 768,
+   "end_frame": 799
+  },
+  {
+   "label": "7/10 Into the chamber",
+   "caption": "The chamber is drawn see-through so the passes inside can be seen. The arm stays outside: only the wand and its tool go through the door.",
+   "start_frame": 800,
+   "end_frame": 829
+  },
+  {
+   "label": "7/10 View port",
+   "caption": "Round the inside of the view port (one of the two crevices: DAL 178 SOP, T4 6:51), slowly, the nozzle close to the wall (SOP 3.3-3.4).",
+   "start_frame": 830,
+   "end_frame": 873
+  },
+  {
+   "label": "7/10 View port",
+   "caption": "Round the inside of the view port (one of the two crevices: DAL 178 SOP, T4 6:51), slowly, the nozzle close to the wall (SOP 3.3-3.4).",
+   "start_frame": 874,
+   "end_frame": 997
+  },
+  {
+   "label": "7/10 Sloped floor",
+   "caption": "Now the chamber is shown cut open at its middle.",
+   "start_frame": 998,
+   "end_frame": 1015
+  },
+  {
+   "label": "7/10 Sloped floor",
+   "caption": "Down the 45 deg floor towards the outlet, a lane at a time, at about 30 mm/s, the nozzle 11 mm off.",
+   "start_frame": 1016,
+   "end_frame": 1054
+  },
+  {
+   "label": "7/10 Sloped floor",
+   "caption": "Down the 45 deg floor towards the outlet, a lane at a time, at about 30 mm/s, the nozzle 11 mm off.",
+   "start_frame": 1055,
+   "end_frame": 1163
+  },
+  {
+   "label": "7/10 Sloped floor",
+   "caption": "Back up the next lane. The catch bowl, 290 mm past the door at the floor's foot, is out of the wand's reach with the arm outside: a person vacuums it, and the cone from below.",
+   "start_frame": 1164,
+   "end_frame": 1202
+  },
+  {
+   "label": "7/10 Sloped floor",
+   "caption": "Back up the next lane. The catch bowl, 290 mm past the door at the floor's foot, is out of the wand's reach with the arm outside: a person vacuums it, and the cone from below.",
+   "start_frame": 1203,
+   "end_frame": 1311
+  },
+  {
+   "label": "7/10 Corners",
+   "caption": "Along the front corner, where the sloped floor meets the front wall.",
+   "start_frame": 1312,
+   "end_frame": 1343
+  },
+  {
+   "label": "7/10 Corners",
+   "caption": "Along the front corner, where the sloped floor meets the front wall.",
+   "start_frame": 1344,
+   "end_frame": 1422
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "Out of the chamber and over to our tool rack, the wand upright.",
+   "start_frame": 1423,
+   "end_frame": 1467
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "Out of the chamber and over to our tool rack, the wand upright.",
+   "start_frame": 1468,
+   "end_frame": 1487
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "The crevice tool goes into pocket A from the front: its collar slides between our two slotted plates.",
+   "start_frame": 1488,
+   "end_frame": 1510
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "In.",
+   "start_frame": 1511,
+   "end_frame": 1537
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "The arm pulls the wand straight up off the tool's spigot; the upper plate holds the tool down.",
+   "start_frame": 1538,
+   "end_frame": 1564
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "Over the dust brush in pocket B.",
+   "start_frame": 1565,
+   "end_frame": 1593
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "Down onto its spigot (a push fit; about 30 N, assumed).",
+   "start_frame": 1594,
+   "end_frame": 1620
+  },
+  {
+   "label": "8/10 Tool change",
+   "caption": "Out of the pocket to the front, with the brush.",
+   "start_frame": 1621,
+   "end_frame": 1648
+  },
+  {
+   "label": "9/10 Brush",
+   "caption": "The dust brush on the plate: brush-and-capture, the bristles just kissing it while the airflow takes what they lift (SOP 3).",
+   "start_frame": 1649,
+   "end_frame": 1680
+  },
+  {
+   "label": "9/10 Brush",
+   "caption": "The dust brush on the plate: brush-and-capture, the bristles just kissing it while the airflow takes what they lift (SOP 3).",
+   "start_frame": 1681,
+   "end_frame": 1759
+  },
+  {
+   "label": "9/10 Brush",
+   "caption": "Then the door's sealing face, where its seal lands: along the free edge and the top. The brush cannot meet the 45 deg floor square from the door, so the floor had the crevice tool.",
+   "start_frame": 1760,
+   "end_frame": 1792
+  },
+  {
+   "label": "9/10 Brush",
+   "caption": "Then the door's sealing face, where its seal lands: along the free edge and the top. The brush cannot meet the 45 deg floor square from the door, so the floor had the crevice tool.",
+   "start_frame": 1793,
+   "end_frame": 1886
+  },
+  {
+   "label": "10/10 Shut down",
+   "caption": "Lift the tool clear of the powder, into clean air.",
+   "start_frame": 1887,
+   "end_frame": 1925
+  },
+  {
+   "label": "10/10 Shut down",
+   "caption": "Run-on in clean air for 20 s to clear the bores (SOP 4.1); time-lapse.",
+   "start_frame": 1926,
+   "end_frame": 1965
+  },
+  {
+   "label": "10/10 Shut down",
+   "caption": "OFF, then wait at least 60 s for the dust to settle before anything is opened (SOP 4.2); time-lapse.",
+   "start_frame": 1966,
+   "end_frame": 2014
+  },
+  {
+   "label": "10/10 Liner",
+   "caption": "Liner check: 25 % at most (SOP 4.3). Sealing the liner (gooseneck, 2-3 turns, ESD tape) and lifting it into the pail stay a person's job.",
+   "start_frame": 2015,
+   "end_frame": 2076
+  },
+  {
+   "label": "10/10 Holster",
+   "caption": "The wand goes back in its holster, its tool hanging down, the pin in the hole.",
+   "start_frame": 2077,
+   "end_frame": 2123
+  },
+  {
+   "label": "10/10 Holster",
+   "caption": "Into the fork.",
+   "start_frame": 2124,
+   "end_frame": 2146
+  },
+  {
+   "label": "10/10 Holster",
+   "caption": "Down onto it.",
+   "start_frame": 2147,
+   "end_frame": 2166
+  },
+  {
+   "label": "10/10 Holster",
+   "caption": "Let go and back off. Wiping (dry, then a barely damp 70 % IPA wipe) and the log follow.",
+   "start_frame": 2167,
+   "end_frame": 2190
+  },
+  {
+   "label": "10/10 Holster",
+   "caption": "",
+   "start_frame": 2191,
+   "end_frame": 2202
+  },
+  {
+   "label": "10/10 Holster",
+   "caption": "",
+   "start_frame": 2203,
+   "end_frame": 2239
+  }
+ ]
+}

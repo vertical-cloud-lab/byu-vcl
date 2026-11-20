@@ -1,0 +1,170 @@
+{
+ "key": "mastersizer",
+ "free": [
+  "deck",
+  "bay_x0",
+  "bay_w",
+  "cass_z0",
+  "z_cut",
+  "cap_w",
+  "dome_x",
+  "dome_y",
+  "sw_x1",
+  "sw_y",
+  "fit_z",
+  "aero_x",
+  "aero_y",
+  "hop_x",
+  "hop_z"
+ ],
+ "params": {
+  "deck": 380.3,
+  "bay_x0": 185.5,
+  "bay_w": 102.5,
+  "cass_z0": 188.5,
+  "z_cut": 67.2,
+  "cap_w": 23.5,
+  "dome_x": 237.7,
+  "dome_y": 136.8,
+  "sw_x1": 543.7,
+  "sw_y": 122.2,
+  "fit_z": 264.2,
+  "aero_x": 152.4,
+  "aero_y": 137.5,
+  "hop_x": 78.1,
+  "hop_z": 329.5
+ },
+ "start": {
+  "deck": 381.0,
+  "bay_x0": 186.0,
+  "bay_w": 102.0,
+  "cass_z0": 189.0,
+  "z_cut": 69.0,
+  "cap_w": 24.0,
+  "dome_x": 238.0,
+  "dome_y": 141.0,
+  "sw_x1": 541.0,
+  "sw_y": 130.0,
+  "fit_z": 264.0,
+  "aero_x": 152.0,
+  "aero_y": 138.0,
+  "hop_x": 79.0,
+  "hop_z": 331.0
+ },
+ "views": {
+  "aero_demo_0001": {
+   "source": "https://youtu.be/iaHJ8QEwJ-I?t=1 (Malvern Panalytical, Mastersizer Aero S - Rapid & efficient dry powder dispersion, 0:01)",
+   "size": [
+    1072,
+    720
+   ],
+   "camera": [
+    1.823411993088496,
+    0.5385246192614699,
+    -0.3981679526854998,
+    402.2718089245944,
+    170.02763699241726,
+    1663.87569770945,
+    7.354922916990133,
+    -0.001133692210718554
+   ],
+   "focal_px": 1563.9,
+   "k1": -0.0011,
+   "rms_px_camera_only": 4.25,
+   "rms_px": 4.18,
+   "residual_px": {
+    "top front left": 9.4,
+    "bay left top": 3.7,
+    "bay right top": 1.6,
+    "top front right": 4.9,
+    "cassette bottom left": 2.7,
+    "cassette bottom right": 2.5,
+    "hose fitting": 3.1,
+    "cut at bay right": 6.9,
+    "dome top": 3.8,
+    "swoosh tip": 7.9,
+    "aero LED": 0.5,
+    "hopper top": 0.5,
+    "back top edge (1)": 3.1,
+    "back top edge (2)": 0.3,
+    "back top edge (3)": 4.3,
+    "right cut (1)": 4.0,
+    "right cut (2)": 1.7,
+    "right cut (3)": 2.5,
+    "panel right edge (1)": 1.1,
+    "panel right edge (2)": 5.0,
+    "panel right edge (3)": 6.9,
+    "left edge (1)": 0.6,
+    "left edge (2)": 0.1
+   }
+  },
+  "metal_cell_0300": {
+   "source": "https://youtu.be/6ZuKAAHb_20?t=180 (Malvern Panalytical, Demonstration: Measuring metal powders with the Mastersizer 3000, 3:00)",
+   "size": [
+    1280,
+    720
+   ],
+   "camera": [
+    1.8372297747328308,
+    0.5467806355073889,
+    -0.3832138880402142,
+    230.76048111604155,
+    242.0313700419303,
+    1449.296871463986,
+    7.5568576018349125,
+    -0.00015110036865440468
+   ],
+   "focal_px": 1913.8,
+   "k1": -0.0002,
+   "rms_px_camera_only": 2.95,
+   "rms_px": 2.59,
+   "residual_px": {
+    "bay right top": 2.2,
+    "top front right": 3.5,
+    "cut at bay right": 1.6,
+    "swoosh tip": 5.6,
+    "front top edge (1)": 1.0,
+    "front top edge (2)": 0.9,
+    "right cut (1)": 1.9,
+    "right cut (2)": 1.2,
+    "right cut (3)": 3.0,
+    "panel right edge (1)": 0.3,
+    "panel right edge (2)": 2.8
+   }
+  },
+  "metal_photo_0018": {
+   "source": "https://youtu.be/6ZuKAAHb_20?t=18 (Malvern Panalytical, Demonstration: Measuring metal powders with the Mastersizer 3000, 0:18, a product photo)",
+   "size": [
+    1280,
+    720
+   ],
+   "camera": [
+    1.7091843946687515,
+    -0.37949943426463706,
+    0.3752277700192833,
+    91.55566282344019,
+    197.14178059956453,
+    1919.7354872940325,
+    6.984867650527306,
+    0.00016881974134262445
+   ],
+   "focal_px": 1080.2,
+   "k1": 0.0002,
+   "rms_px_camera_only": 3.11,
+   "rms_px": 2.95,
+   "residual_px": {
+    "top front left": 0.8,
+    "top back left": 1.8,
+    "bottom front left": 6.1,
+    "bay left top": 2.5,
+    "cassette bottom left": 2.2,
+    "cut at bay left": 6.5,
+    "dome top": 0.4,
+    "left edge (1)": 0.6,
+    "left edge (2)": 0.6,
+    "left edge (3)": 0.6,
+    "left cut (1)": 0.8
+   }
+  }
+ }
+}
