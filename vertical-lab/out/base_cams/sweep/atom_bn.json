@@ -1,0 +1,16 @@
+{
+ "script": "atom_bn.py",
+ "args": [],
+ "seconds": 22.1,
+ "arms": {
+  "atom_bn:ur": {
+   "scene": "atom_bn",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  }
+ },
+ "frames": {
+  "atom_bn:ur": 2250
+ }
+}

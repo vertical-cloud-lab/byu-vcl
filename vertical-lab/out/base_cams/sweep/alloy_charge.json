@@ -1,0 +1,16 @@
+{
+ "script": "alloy_charge.py",
+ "args": [],
+ "seconds": 189.8,
+ "arms": {
+  "alloy_charge:ur": {
+   "scene": "alloy_charge",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  }
+ },
+ "frames": {
+  "alloy_charge:ur": 2699
+ }
+}

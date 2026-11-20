@@ -1,0 +1,18 @@
+{
+ "script": "services.py",
+ "args": [
+  "baycam"
+ ],
+ "seconds": 53.2,
+ "arms": {
+  "bay_camera:ur": {
+   "scene": "bay_camera",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  }
+ },
+ "frames": {
+  "bay_camera:ur": 337
+ }
+}

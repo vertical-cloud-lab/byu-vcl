@@ -221,45 +221,69 @@ def _part_masks(margins=(0.0, 25.0), vox: float = 4.0) -> dict:
     return out
 
 
-def conflicts(sweep_dir: Path | None = None, margins=(0.0, 25.0)) -> dict:
-    """Per clip and per camera part: the frames in which any point of an arm's surface (its MiR's arm) comes within
-    each margin of the part. Margin 0 counts touching (to the voxels' size, 4 mm)."""
+def _dedup(p: np.ndarray, step: float) -> np.ndarray:
+    """One point per `step` mm voxel."""
+    k = np.floor(p / step).astype(np.int64)
+    _, idx = np.unique(k, axis=0, return_index=True)
+    return p[np.sort(idx)]
+
+
+def _frames(data, key):
+    """(frame numbers, q (N x 6), close (N,), the arm base in its MiR's frame (N x 4 x 4)) for one arm's rows."""
+    r = data[key]
+    Rl = np.tile(np.eye(4), (len(r), 1, 1))
+    Rl[:, :3, :4] = r[:, 8:20].reshape(-1, 3, 4)
+    return r[:, 0].astype(int), r[:, 1:7], r[:, 7], Rl
+
+
+def conflicts(sweep_dir: Path | None = None, margins=(0.0, 25.0), step: float = 6.0, chunk: int = 150) -> dict:
+    """Per clip and per camera part: the frames in which any point of an arm's surface (the arm on the same MiR)
+    comes within each margin of the part. Margin 0 counts touching, to the 4 mm voxels and the 6 mm point spacing."""
     import ur_arm
     sweep_dir = sweep_dir or SWEEP
     masks = _part_masks(margins)
-    arm = {k: v[::2] for k, v in _arm_points("ur10e").items()}
-    grip = {c: _gripper_points(c)[::2] for c in (0.0, 0.5, 1.0)}
-    rep = dict(method="frames in which a point of the arm's drawn surface (links, 2F-85, D405; sampled every 6 mm, "
-                      "every 2nd point) falls within the margin of a camera part's surface (4 mm voxels), in the frame "
-                      "of the MiR the arm rides on; per clip, per part", margins_mm=list(margins), clips={})
+    arm = {k: _dedup(v, step) for k, v in _arm_points("ur10e").items()}
+    grip = {c: _dedup(_gripper_points(c), step) for c in (0.0, 0.5, 1.0)}
+    rep = dict(method=f"frames in which a point of the arm's drawn surface (links, 2F-85 and D405, one point per "
+                      f"{step:g} mm voxel) falls within the margin of a camera part's surface (4 mm voxels), in the "
+                      f"frame of the MiR the arm rides on; per clip and part. Held parts are not included",
+               margins_mm=list(margins), clips={})
     for npz in sorted(Path(sweep_dir).glob("*.npz")):
         data = np.load(npz)
-        res = {f"{p} <= {mg:g} mm": 0 for p in masks for mg in margins}
-        first = {}
-        nfr = 0
+        res, first, nfr = {}, {}, 0
         for key in data.files:
-            for r in data[key]:
-                q, close = r[1:7], r[7]
-                Rl = np.eye(4)
-                Rl[:3, :4] = r[8:20].reshape(3, 4)
-                fk = ur_arm.fk("ur10e", q)
-                W = [p @ (Rl @ fk[l])[:3, :3].T + (Rl @ fk[l])[:3, 3] for l, p in arm.items()]
-                M = Rl @ fk["tool0"]
-                W.append(grip[min(grip, key=lambda c: abs(c - close))] @ M[:3, :3].T + M[:3, 3])
-                W = np.vstack(W)
-                for p, (lo, shape, grids) in masks.items():
-                    ijk = np.floor((W - lo) / 4.0).astype(int)
-                    ok = np.all((ijk >= 0) & (ijk < np.array(shape)), axis=1)
-                    if not ok.any():
-                        continue
-                    ijk = ijk[ok]
-                    for mg, gmask in grids.items():
-                        if gmask[ijk[:, 0], ijk[:, 1], ijk[:, 2]].any():
-                            res[f"{p} <= {mg:g} mm"] += 1
-                            first.setdefault(f"{p} <= {mg:g} mm", (key.split("__")[-1], int(r[0])))
-                nfr += 1
-        rep["clips"][npz.stem] = dict(arm_frames=nfr, hits={k: v for k, v in res.items() if v},
-                                      first={k: v for k, v in first.items()})
+            fr, Q, C, Rl = _frames(data, key)
+            for a in range(0, len(fr), chunk):
+                sl = slice(a, a + chunk)
+                fks = [ur_arm.fk("ur10e", q) for q in Q[sl]]
+                hit = {}
+                bodies = [(np.stack([Rl[sl][i] @ fks[i][l] for i in range(len(fks))]), pts) for l, pts in arm.items()]
+                for c, pts in grip.items():
+                    sel = np.abs(C[sl] - c) == np.min([np.abs(C[sl] - cc) for cc in grip], axis=0)
+                    Ms = np.stack([Rl[sl][i] @ fks[i]["tool0"] for i in range(len(fks))])
+                    bodies.append((Ms, pts, sel))
+                for b in bodies:
+                    Ms, pts = b[0], b[1]
+                    sel = b[2] if len(b) > 2 else np.ones(len(Ms), bool)
+                    W = np.einsum("tij,nj->tni", Ms[:, :3, :3], pts) + Ms[:, None, :3, 3]
+                    for p, (lo, shape, grids) in masks.items():
+                        ijk = np.floor((W - lo) / 4.0).astype(int)
+                        ok = np.all((ijk >= 0) & (ijk < np.array(shape)), axis=2)
+                        if not ok.any():
+                            continue
+                        ii = np.where(ok, ijk[..., 0], 0)
+                        jj = np.where(ok, ijk[..., 1], 0)
+                        kk = np.where(ok, ijk[..., 2], 0)
+                        for mg, gm in grids.items():
+                            h = (gm[ii, jj, kk] & ok).any(axis=1) & sel
+                            k = f"{p} <= {mg:g} mm"
+                            hit[k] = hit.get(k, np.zeros(len(Ms), bool)) | h
+                for k, h in hit.items():
+                    res[k] = res.get(k, 0) + int(h.sum())
+                    if h.any() and k not in first:
+                        first[k] = (key.split("__")[-1], int(fr[sl][np.argmax(h)]))
+            nfr += len(fr)
+        rep["clips"][npz.stem] = dict(arm_frames=nfr, hits={k: v for k, v in res.items() if v}, first=first)
         print(npz.stem, nfr, {k: v for k, v in res.items() if v}, flush=True)
     tot = {}
     for c in rep["clips"].values():
@@ -269,8 +293,86 @@ def conflicts(sweep_dir: Path | None = None, margins=(0.0, 25.0)) -> dict:
     return rep
 
 
+def figure(sweep_dir: Path | None = None) -> Path:
+    """out/base_cams/sweep.png: seen from above, the lowest height over the cabinet top at which any clip's arm passed
+    each spot of the base (blank: never below 1.9 m), the cabinet, the arm's base and the cameras' parts drawn on it;
+    and the same seen from the back. From every recorded clip, 10 mm voxels."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Rectangle
+    import props as P
+    sweep_dir = Path(sweep_dir or SWEEP)
+    union, names = None, []
+    for npz in sorted(sweep_dir.glob("*.npz")):
+        g, _ = sweep_grid(npz)
+        union = g if union is None else union | g
+        names.append(npz.stem)
+    zc = BOUNDS[2, 0] + (np.arange(union.shape[2]) + 0.5) * VOX
+    over = union & (zc > P.CAB_TOP + 5)[None, None, :]
+    low = np.where(over.any(2), zc[np.argmax(over, axis=2)], np.nan)
+    low[low > 1900] = np.nan
+    x = BOUNDS[0, 0] + (np.arange(union.shape[0]) + 0.5) * VOX
+    y = BOUNDS[1, 0] + (np.arange(union.shape[1]) + 0.5) * VOX
+    fig, axs = plt.subplots(1, 2, figsize=(14.5, 6.4), gridspec_kw=dict(width_ratios=[1.25, 1]))
+    ax = axs[0]
+    im = ax.pcolormesh(x, y, low.T, cmap="viridis_r", vmin=P.CAB_TOP, vmax=1900, shading="auto")
+    fig.colorbar(im, ax=ax, label="lowest height (mm) any clip's arm passed, over the cabinet top")
+    L, Wd = P.MIR["L"], P.MIR["W"]
+    ax.add_patch(Rectangle((-L / 2, -Wd / 2), L, Wd, fill=False, ec="k", lw=1.6, label="MiR250 footprint"))
+    ax.add_patch(Rectangle((-P.CAB_X, -P.CAB_Y), 2 * P.CAB_X, 2 * P.CAB_Y, fill=False, ec="0.35", lw=1.0, ls="--",
+                           label="cabinet"))
+    import animate as A
+    ax.add_patch(plt.Circle(A.ARM_LOCAL, 95, fill=False, ec="w", lw=1.4))
+    ax.text(A.ARM_LOCAL[0], A.ARM_LOCAL[1] - 140, "arm base", color="w", ha="center", fontsize=9)
+    colours = {"L": "#2a73d9", "R": "#ee8019", "M": "#279e4d"}
+    for k in P.BASE_CAMS:
+        g = P.base_camera_geometry(k)
+        for part in ("post", "box"):
+            b = g[part].bounds
+            ax.add_patch(Rectangle((b[0], b[2]), b[1] - b[0], b[3] - b[2], fill=part == "post", fc=colours[k],
+                                   ec=colours[k], lw=1.6, alpha=0.95))
+        ax.text(g["box_centre"][0], g["box_centre"][1] + (60 if k != "M" else -95), f"{k}, {g['top']:.0f}",
+                color=colours[k], ha="center", fontsize=10, weight="bold",
+                bbox=dict(fc="w", ec="none", alpha=0.75, pad=1.5))
+    ax.set_xlim(-560, 560)
+    ax.set_ylim(-420, 900)
+    ax.set_aspect("equal")
+    ax.set_xlabel("x along the base (mm)")
+    ax.set_ylabel("y across it (mm): +y is the station side")
+    ax.set_title("From above: where the arms pass low over the base", fontsize=11)
+    ax.legend(loc="upper left", fontsize=8)
+    ax = axs[1]
+    side = union[:, :, :].any(1)                       # seen along y: x against z
+    ax.pcolormesh(x, zc, side.T, cmap="Greys", vmin=0, vmax=1.6, shading="auto")
+    ax.add_patch(Rectangle((-L / 2, 0), L, P.MIR["H"], fill=True, fc="0.25", ec="k"))
+    ax.add_patch(Rectangle((-P.CAB_X, P.MIR["H"]), 2 * P.CAB_X, P.CAB_H, fill=True, fc="0.8", ec="k"))
+    for k in P.BASE_CAMS:
+        g = P.base_camera_geometry(k)
+        for part in ("post", "box"):
+            b = g[part].bounds
+            ax.add_patch(Rectangle((b[0], b[4]), b[1] - b[0], b[5] - b[4], fill=True, fc=colours[k], ec=colours[k]))
+    ax.axhline(1800, color="#279e4d", lw=0.8, ls=":")
+    ax.text(-1150, 1825, "1.8 m: the MiR250's 3D cameras see obstacles up to here", fontsize=8, color="#279e4d")
+    ax.set_xlim(-1200, 1200)
+    ax.set_ylim(0, 2400)
+    ax.set_aspect("equal")
+    ax.set_xlabel("x (mm)")
+    ax.set_ylabel("z (mm)")
+    ax.set_title("Seen from the side: everywhere any arm went (grey)", fontsize=11)
+    fig.suptitle(f"The arms' sweep over their own MiR250 in {len(names)} clips, and the base cameras", fontsize=12)
+    fig.tight_layout()
+    OUT.mkdir(parents=True, exist_ok=True)
+    out = OUT / "sweep.png"
+    fig.savefig(out, dpi=110)
+    return out
+
+
 if __name__ == "__main__":
     sys.path.insert(0, str(HERE))
+    if len(sys.argv) > 1 and sys.argv[1] == "figure":
+        print(figure(Path(sys.argv[2]) if len(sys.argv) > 2 else None))
+        raise SystemExit
     if len(sys.argv) > 2 and sys.argv[1] == "record":
         record(sys.argv[2:])
     elif len(sys.argv) > 1 and sys.argv[1] == "analyse":

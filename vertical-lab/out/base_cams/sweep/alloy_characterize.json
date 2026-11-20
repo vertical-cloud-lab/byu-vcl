@@ -1,0 +1,16 @@
+{
+ "script": "alloy_characterize.py",
+ "args": [],
+ "seconds": 133.7,
+ "arms": {
+  "alloy_characterize:unit0ur": {
+   "scene": "alloy_characterize",
+   "prefix": "unit0ur",
+   "model": "ur10e",
+   "mir_group": "unit0_cab"
+  }
+ },
+ "frames": {
+  "alloy_characterize:unit0ur": 3198
+ }
+}
