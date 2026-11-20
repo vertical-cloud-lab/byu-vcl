@@ -174,8 +174,8 @@ def bench() -> None:
     # the HOLD bin, neutral grey, with a red tag that says HOLD
     sc.add("hold bin", _box(1050, 1300, -200, 120, z0, z0 + 130), GREY)
     sc.add("hold tag", _box(1125, 1225, -203, -200, z0 + 40, z0 + 100), (0.78, 0.06, 0.18), specular=0.05)
-    sc.cam = [(180, -2900, 2350), (180, 0, 930), (0, 0, 1)]
-    sc.view_angle = 38.0
+    sc.cam = [(150, -2500, 1900), (150, 0, 960), (0, 0, 1)]
+    sc.view_angle = 33.0
     img = Image.fromarray(sc.render_base())
     d = ImageDraw.Draw(img)
     fb, f = ImageFont.truetype(FONT_B, 30), ImageFont.truetype(FONT, 21)
@@ -187,15 +187,16 @@ def bench() -> None:
     n = len(an)
     for i, (text, xyz) in enumerate(an.items()):          # the rightmost item's label on the top row: no crossings
         x, y = _px(sc, xyz)
-        ty = 640 + 34 * (n - 1 - i)
+        ty = 668 + 34 * (n - 1 - i)
         d.line((x, y, x, ty - 4), fill=(140, 145, 153), width=2)
-        d.text((x - 8, ty), text, font=fl, fill=(31, 35, 40))
+        d.text((x - 8, ty), text, font=fl, fill=(31, 35, 40), stroke_width=3, stroke_fill="white")
     for nm, anchor in (("Al family set", an), ("Cu family set", an_cu)):
         x, y = _px(sc, list(anchor.values())[0])
-        d.text((x - 60, 150), nm, font=ImageFont.truetype(FONT_B, 26),
+        d.text((x - 60, 128), nm, font=ImageFont.truetype(FONT_B, 26),
                fill=tuple(int(255 * v) for v in (BLUE if nm.startswith("Al") else ORANGE)))
     x, y = _px(sc, (1175, -205, z0 + 140))
-    d.text((x - 90, y - 40), "HOLD bin: a red tag", font=fl, fill=(31, 35, 40))
+    d.text((x - 90, y - 40), "HOLD bin: a red tag", font=fl, fill=(31, 35, 40), stroke_width=3,
+           stroke_fill="white")
     img.save(OUT / "colour" / "bench.png", optimize=True)
     sc.pl.close()
 

@@ -162,7 +162,28 @@ database already knows a tool's state; the place tells the person.
 
 - **Answered:**
   - `metal_powder_segregation`, on keeping alloy powders apart: summarized above.
-  - `colour_cross_contamination`, on colour-coded cleaning and tools in food, healthcare and pharma: (still running at the time of writing.)
+  - `colour_cross_contamination`, on colour-coded cleaning and tools in food, healthcare and pharma
+    ([answer](../out/edison/colour_cross_contamination/answer.md)). Its bottom line: separating tools by zone or
+    material is a well-supported control, but the evidence that colour itself, rather than the separation, cleaning,
+    training and checking that come with it, prevents contamination is limited. The details that shaped this scheme:
+    - **Nobody prescribes the colours.** Codex's food-hygiene principles (CXC 1-1969, 2023) ask for separate,
+      designated cleaning tools per zone, and PIC/S GMP (PE 009-14) for equipment labelled with its contents and
+      cleanliness status. Neither prescribes colours.
+    - **Coded tools get misused.** In a 50-restaurant study, 18 % of premises misused colour-coded boards
+      (Faour-Klingbeil et al. 2016). That compliance failure is the most measured weakness of a colour code.
+    - **Schemes conflict between places.** The NHS uses yellow for isolation (with red bathrooms, blue general and green
+      kitchens, 2008), while a restaurant scheme uses yellow for raw poultry. So a lab needs its own legend.
+    - **More colours are not safer.** Use the fewest categories that keep the barriers you need; names or numbers stay
+      the authority.
+    - **About 8 % of men have a colour-vision deficiency.** Use palettes they can tell apart, plus written labels,
+      patterns or other non-colour cues (Thomas et al. 2019).
+    - **Prove clean by measurement.** A swab or residue method, not a look, shows a tool is clean.
+
+    **What that means here.** The failure the literature measures most is people using the wrong coded tool. A robot
+    can't make that mistake: the scheduler assigns each family's kit, and every use is logged against the tool's ID
+    (its name from the naming PR, #376). The colour is for the person who sweeps up a spill, swaps a sieve or tidies the
+    bench. The arm's wrist camera can also read a tool's band before it uses the tool, as a second check against the
+    database, but never as the first.
 - **Not sent:** `colour_code_human_factors`, `visual_management_labs` and `colour_machine_vision_labware`. Edison
   refused them with 402 "Insufficient ACU Balance" (1.00 ACU needed, 0.20 available) after the first two were accepted.
   Their text is in `out/edison/_unsent_colour_queries.json`, ready for a follow-up once the balance is topped up. My own
