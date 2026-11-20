@@ -193,7 +193,8 @@ def part_vlm():
     lbl = labels_for(sc, Wm, opt)
     sc.step(f"1/{n}", "Three cameras on the mobile base, after robot-arms PR 40's cell: one on each end of the cabinet, "
             "0.88 m up, and one on a mast at the back-left corner, 1.75 m up. Each is a Raspberry Pi Camera Module 3 Wide "
-            "with its own Pi 5, in a printed box whose wedge fixes its aim for good.", 3.0,
+            "with its own Pi 5, aimed for good by a printed wedge; the mast's Pi rides in its camera's box, the side "
+            "cameras' on the cabinet's ends.", 3.0,
             lambda u: show_frusta(sc, u), hold=2.2, labels=lbl)
 
     def look(key, step, caption, work, secs=3.0, view_secs=1.8, hold=0.8):
@@ -217,7 +218,7 @@ def part_vlm():
           (grip(A.GRIP_VIAL), 0.5, 0.2)])
     rb.grasp("vial")
     look("L", f"3/{n}", "The left side camera, low on the cabinet's end, looking forward past the arm: with the right one, "
-         "a pair 0.71 m apart that sees the work in front of the arm from 50-60 degrees apart, as robot-arms PR 40's side "
+         "a pair 0.74 m apart that sees the work in front of the arm from 50-60 degrees apart, as robot-arms PR 40's side "
          "cameras do (70 there): AprilTags on the station's face, and the gripper's fingertips, in 3-D, before and "
          "while the arm moves.",
          [(later(lambda: rb.line_to(above_rack)), 1.0, 0.0), (later(lambda: rb.joint_to(Tw=above_cup)), 1.8, 0.2)])
