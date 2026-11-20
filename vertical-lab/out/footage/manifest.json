@@ -1,5 +1,5 @@
 {
- "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2 and alloy_print.py into chapter 3, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. The lab's own (BYU VCL channel, DAL #159 and #219), plus one excerpt of Sterling Baird's MS&T 2026 talk; credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video. Round 8 dropped al_pour_oct08.mp4 (Oct 8, Al 6063: it dripped rather than atomized).",
+ "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2 and alloy_print.py into chapter 3, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video. Round 8 dropped al_pour_oct08.mp4 (Oct 8, Al 6063: it dripped rather than atomized). Round 13 dropped mst2026_stream.mp4, a melt stream from Sterling's MS&T 2026 talk that is AMAZEMET's footage, not the lab's, and al4047_oct22_c3k0n5_bag_and_jar.jpg (a bag of splats), for al_4yghtr_oct06_jar.jpg; notes/footage.md.",
  "files": [
   {
    "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
@@ -80,34 +80,19 @@
    ]
   },
   {
-   "file": "mst2026_stream.mp4",
-   "source": "https://youtu.be/YmvaeqOQAU4",
-   "title": "Let's discover stronger aerospace alloys 10x faster with AI at a tenth of the cost [MS&T 2026]",
-   "channel": "Sterling Baird (youtube.com/@sterling-baird)",
-   "source_start_s": 298.0,
-   "source_end_s": 305.0,
-   "shows": "a melt stream (a line of drops) falling onto the tip of a vibrating plate and breaking up into a spray of droplets, lit red; full-frame video in the talk after the slide 'Ultrasonic atomization enables chemical whitespace AM alloy discovery'. The talk's webcam inset (lower right) and the black bar (left) are cropped off in alloy_atomize.py (PLAN crop).",
-   "alloy": "not stated",
-   "run": "not stated in the talk",
-   "date": "",
-   "excerpt_of": "a 294-312 s fetch of YmvaeqOQAU4 (720p, format 136) through the stream-cam Pi",
-   "excerpt_window_s": [
-    4.0,
-    11.0
-   ],
-   "used_in": "alloy_atomize.py, chapter 2's pour beat (round 8), after Sterling's review: \"You could find the stream from a recent youtube video from me probably\". Replaces al_pour_oct08.mp4 (Oct 8 Al 6063, which dripped rather than atomized: 'a dud')."
-  },
-  {
    "file": "nab_k7m2q9_jar_of_powder.jpg",
    "shows": "a jar of the k7m2q9 NAB powder in a gloved hand",
    "source": "DAL #219 comment 6457884447",
    "date": "2026-10-27"
   },
   {
-   "file": "al4047_oct22_c3k0n5_bag_and_jar.jpg",
-   "shows": "Oct 22 Al 4047 run c3k0n5: bag and jar",
-   "source": "Ronnie Guymon, DAL #159 comment 6353788099",
-   "date": "2026-10-22"
+   "file": "al_4yghtr_oct06_jar.jpg",
+   "shows": "a jar of the lab's own atomized aluminium powder, lot 4yghtr: fine grey powder with a few coarse drops, the jar on its own (the run's bag of splats beside it is cropped off)",
+   "source": "Ronnie Guymon, DAL #159 comment 6353392867 (photo 74360075-8e9b-4305-bfd0-f5a46900752d, 4284 x 5712), cropped to (2560, 2000, 3960, 3800) and scaled to 1600 px",
+   "date": "2026-10-06",
+   "run": "4yghtr (Oct 6 2026, run 1)",
+   "alloy": "aluminium: 180 g of Al rod; the run log says 'Al 6067', the lab's rods then were 6063",
+   "used_in": "alloy_atomize.py, chapter 2's powder beat (round 13), in place of c3k0n5's bag and jar (Sterling, PR #318, 2026-11-20: \"that's aluminum slag/scrap. You should be able to find a better jar photo for the Al atomizer runs\")"
   },
   {
    "file": "nab_k7m2q9_sieved_three_jars.jpg",

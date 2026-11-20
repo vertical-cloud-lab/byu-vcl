@@ -2121,20 +2121,21 @@ PLAN = [
                  "3:55 Gage says \"It's melting in right now\")."),
     dict(beat="melt", file="nab_melt3.mp4", window=(14.0, 18.5), speed=MELT_SPEED,
          caption="The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219)."),
-    dict(beat="pour", file="mst2026_stream.mp4", window=(4.0, 11.0), crop=(0.283, 0.0, 0.818, 1.0),
-         tag="Sterling Baird's MS&T 2026 talk",
-         caption="Real footage, from Sterling Baird's MS&T 2026 talk (youtu.be/YmvaeqOQAU4, 4:58): a melt stream, a "
-                 "line of drops, falls onto the tip of the vibrating plate and breaks up into a spray of droplets. The "
-                 "talk doesn't name the alloy or the run."),
+    # Round 13 (run D): the MS&T 2026 talk's melt stream is out. It was AMAZEMET's footage shown in Sterling's talk, not
+    # the lab's (Sterling, PR #318, 2026-11-20: "that's not my video. That's from AMAZEMET"), and the lab's own pour
+    # below shows the same thing. notes/footage.md.
     dict(beat="pour", file="nab_pour1.mp4", window=(15.0, 22.5),
          caption="Real footage, Oct 27 2026, through the view port: the bronze jet lands on the tip of the W-coated "
                  "carbon-fibre plate and atomizes (2brsz-90seg). 91 % of the 1,080 g became usable powder (DAL #219)."),
     dict(beat="powder", file="nab_k7m2q9_jar_of_powder.jpg", seconds=3.0,
          caption="Real photo: the Oct 27 bronze powder as it came out of the atomizer, not yet sieved: lot k7m2q9 "
                  "(DAL #219). It is sieved in chapter 3."),
-    dict(beat="powder", file="al4047_oct22_c3k0n5_bag_and_jar.jpg", seconds=3.0,
-         caption="Real photo: the Oct 22 Al 4047 run, lot c3k0n5, 169 g in, as collected that day: a bag of "
-                 "splats and a jar of powder (Ronnie Guymon, DAL #159)."),
+    # Round 13 (run D): c3k0n5's photo was a phone shot of a screen, a bag of splats beside a jar of lumps (Sterling:
+    # "that's aluminum slag/scrap"); this is a jar of the lab's own atomized Al powder, cropped from DAL #159.
+    dict(beat="powder", file="al_4yghtr_oct06_jar.jpg", seconds=3.0,
+         caption="Real photo: the lab's own atomized aluminium, lot 4yghtr, from the Oct 6 2026 run (180 g of Al rod): "
+                 "fine powder and a few coarse drops in its jar; the run's splats went in a bag of their own "
+                 "(Ronnie Guymon, DAL #159)."),
 ]
 BEATS = ("charge", "melt", "pour", "powder")       # round 8: the sieved jars moved to chapter 3, after the sieving
 BADGE = (178, 34, 34)
