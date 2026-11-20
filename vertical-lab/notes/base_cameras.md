@@ -29,8 +29,8 @@ diagonal), each with **its own Raspberry Pi 5**. That is what robot-arms PR 40 c
 | | Where | Lens | Aim | What it sees |
 |---|---|---|---|---|
 | **M**, the mast | a 2040 extrusion, 1.36 m, clamped to the cabinet's left end at the base's back-left corner; a printed box on top (68 wide, 96 tall, 46 deep) holds the camera and its Pi 5 | 1.75 m up (top 1.80 m), at (−336, −201) | forward, 36° down, at (80, 850, 950) | over the arm's shoulder: the whole arm, the station in front of it, and what the gripper holds |
-| **L**, left end | a 285 mm 2020 post clamped to the cabinet's left end, 60 mm behind its middle; on its top, PR 40's camera case (49 × 29.5 × 8.6 mm) on a wedge. Its Pi 5 is on the cabinet's end, 30 mm under the top, on a 300 mm cable | 0.88 m up, at (−370, −54) | forward, 8° in and 8° up, at (−250, 800, 1000) | the station's face and the arm's work from low on the left, and the aisle on that side |
-| **R**, right end | the same on the right end | 0.88 m up, at (370, −54) | mirrored, at (250, 800, 1000) | the same from the right |
+| **L**, left end | a 285 mm 2020 post clamped to the cabinet's left end, 95 mm behind its middle; on its top, PR 40's camera case (49 × 29.5 × 8.6 mm) on a wedge. Its Pi 5 is on the cabinet's end, 30 mm under the top, on a 300 mm cable | 0.88 m up, at (−370, −89) | forward, 7° in and 8° up, at (−250, 800, 1000) | the station's face and the arm's work from low on the left, and the aisle on that side |
+| **R**, right end | the same on the right end, 60 mm behind its middle | 0.88 m up, at (370, −54) | forward, 8° in and 8° up, at (250, 800, 1000) | the same from the right |
 
 MiR frame, mm: origin on the floor at the middle of the base, x along it (800 mm), y across it (580 mm). +y is the side
 the arm faces and works on. The arm's base is at (0, 130), on the cabinet's top plate at 800 mm.
@@ -40,10 +40,13 @@ the arm faces and works on. The arm's base is at (0, 130), on the cabinet's top 
 - **1.8 m is the top.** The MiR250's two RealSense D435 cameras see obstacles up to 1800 mm high, 1.2 m in front of the
   base (MiR's spec sheet). Nothing on the base should be taller than what the base can see in its path. The folded
   arm stands 1.49 m. A standard 2.03 m (6 ft 8 in) door clears it.
-- **The side pair** is 0.74 m apart. It sees the work in front of the arm from 50-60° apart: 52° at 0.75 m in front of
-  the base, 59° at 0.65 m. PR 40's pair is 70° apart. Its twin found the error grows about as 1/sin of the angle, so
+- **The side pair** is 0.74 m apart. It sees the work in front of the arm from 50-60° apart: 51° at 0.75 m in front of
+  the base, 58° at 0.65 m. PR 40's pair is 70° apart. Its twin found the error grows about as 1/sin of the angle, so
   this pair should measure 10-20 % worse at the same range. Spots further forward would widen the angle, but they are
   where the arms pass far more often (below).
+- **The left camera stands 35 mm further back than the right one.** Chapter 2 hangs its loading tong in a sleeve on
+  the cabinet's left end at y = 0 (`alloy_atomize.TONG_AT`), and the open 2F-85 reaches 50 mm either side of it. The
+  first pass of audits with the cameras found the fingers in the left camera's case at y = −60.
 - **The side cameras' Pis sit under the cabinet top**, on its ends. A first version had the Pi in a box with each side
   camera, as the mast has. The audits with it in place found the arms' held parts passing through those boxes. One was
   the graphite nut, carried over the crucible's cradle at the cabinet's right end. The bare camera case, about a
@@ -91,8 +94,8 @@ frames in the MiR's frame. `out/base_cams/sweep/` has the recordings (`.npz`, on
 **What it found:**
 
 - **The arms pass over every part of the cabinet's rim, from about 1.0 m up to 2.0 m.**
-  - The folded arm's elbow sticks out 110 mm past the base's back edge at 1.29 m, and swings round a 0.53 m radius
-    when the base joint turns.
+  - The folded arm's elbow sticks out 170 mm past the base's back edge at 1.29 m, and its joint swings round a 0.53 m
+    radius when the base joint turns.
   - Reaching sideways, the forearm passes over the ends.
   - The atomizer clips reach the cabinet top's corners for the plate tools, the crucible's cradle and the cup carrier.
 - **No spot for a tall mast is clear of every clip's arm.** The scan tried 16 mast spots: both back corners, three
@@ -101,8 +104,8 @@ frames in the MiR's frame. `out/base_cams/sweep/` has the recordings (`.npz`, on
   almost all in the two crucible clips, whose cradle is on that side.
 - **Low on the ends, just behind the middle, is the quietest place for the side cameras.** The scan tried 42 spots
   and heights. At y = −60 with the camera under about 0.9 m, the arms came within about 20 mm in 5 frames on the right
-  and 74 on the left. Further forward, the arm's shoulder comes close: it sweeps a 0.25 m radius round the base at
-  0.9-1.06 m. Higher up, the forearm passes over the ends.
+  and 74 on the left. Further forward, the arm's upper arm comes close: at the shoulder it sweeps a 0.28 m radius round
+  the base, 0.9-1.07 m up. Higher up, the forearm passes over the ends.
 
 **With the cameras in place.** `base_cams_sweep.py conflicts` counts exactly (4 mm voxels, every arm-frame) the frames
 in which a point of an arm's surface came within 0 mm (touching) or 25 mm of each camera part, with the motions as
@@ -111,7 +114,9 @@ they were before the cameras. `out/base_cams/conflicts.json` has them:
 {CONFLICT_TABLE}
 
 **What happens to them.** Joint moves in the clips are planned round whatever is drawn (`robot.py`, `collide.py`), so a
-move that would swing the elbow through the mast now goes round it. Straight-line moves are not re-planned, and the
+move that would swing the elbow through the mast now goes round it. The planner now tries once more before it
+falls back to the straight joint line: three times as long, from another seed. In the first pass of audits, a
+2,500-iteration search missed the way round the mast in chapter 3. Straight-line moves are not re-planned, and the
 sweep doesn't include what the gripper holds. So the real check is the clips' own collision audit with the cameras in
 place. Each clip ran as `ARM_AUDIT=1 ARM_AUDIT_TAG=basecams` (nothing rendered, round 11's strict rules, at the clip's
 own frame rate), writing `out/collisions/<clip>_basecams.json`. `base_cams_audit.py` reads them, and

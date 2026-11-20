@@ -3,20 +3,22 @@
 
 Sterling (PR #318, 2026-11-20) asked for two or three cameras on each mobile base: one on either side and one higher
 up on a rod or extrusion. Anything fixed to the base is inside the UR10e's reach (1300 mm, on an 800 x 580 mm base),
-so the question is not whether the arm *could* hit a camera but whether it does in the work the clips show. This
-runs a clip as ``ARM_AUDIT=1`` would (nothing drawn, every frame's update run), records every arm's joints and its
-base's pose relative to the MiR it rides on, frame by frame, and then sweeps the arm's drawn meshes (links, 2F-85,
-D405 and whatever it holds is left out: held parts are checked by the audit) through those frames in the MiR's own
-frame:
+so the question is not whether the arm *could* hit a camera but whether it does in the work the clips show.
 
-    python3 base_cams_sweep.py record atom_latch.py [args]     # -> out/base_cams/sweep/<clip>.npz (no audit JSON)
-    python3 base_cams_sweep.py analyse                         # -> out/base_cams/sweep.json and sweep.png
+    python3 base_cams_sweep.py record <clip>.py [args]  # run the clip as ARM_AUDIT=1 does (nothing drawn, its audit
+                                                         # JSON untouched) and record, frame by frame, every arm's
+                                                         # joints and its base's pose in the frame of the MiR it rides
+                                                         # on -> out/base_cams/sweep/<clip>.npz and .json
+    python3 base_cams_sweep.py conflicts [dir]          # per clip and camera part: the frames in which the arm's surface
+                                                         # comes within 0 and 25 mm of it -> out/base_cams/conflicts.json
+    python3 base_cams_sweep.py figure [dir]             # -> out/base_cams/sweep.png: where the arms pass low over the
+                                                         # base, seen from above and from the side, with the cameras
+    python3 base_cams_sweep.py analyse                  # each part's closest approach over all clips -> sweep.json
 
-``analyse`` reports, for every camera part ``props.base_camera_parts()`` draws and for each clip, the arm's closest
-approach (mm) over all frames, from a 10 mm voxel sweep of points sampled every 6 mm over the arm's surfaces. Run it
-through ``runner_guard.py slot`` like any other scene. The joint moves are planned against the scene as it is drawn
-(robot.py), so a camera the arm never comes near leaves every planned path as it was; ``ARM_AUDIT=1`` on the clip
-with the cameras in place is the check that settles it.
+Record on code without the cameras (#364 used a git worktree of the commit before them), so that what is recorded is
+the motion the cameras then have to stay clear of. The arm's drawn surfaces are the links, the 2F-85 and the D405,
+as points one per 6 mm; what the gripper holds is left out (the clips' own ``ARM_AUDIT=1`` with the cameras in place
+checks it, base_cams_audit.py tallies that). Run anything that builds a scene through ``runner_guard.py slot``.
 """
 from __future__ import annotations
 

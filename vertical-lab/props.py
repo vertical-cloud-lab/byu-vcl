@@ -147,10 +147,12 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
 # and two side cameras raised 350-500 mm that look at the arm's work from 70-90 deg apart, each a Raspberry Pi Camera
 # Module 3 Wide (102 x 67 deg) with its own Pi 5 on its 2020 post, aimed by printed parts that never move. Here, on each
 # MiR250 (the arm faces +y, the station side; MiR frame as mir250()):
-#   L, R  a short 2020 post clamped to each end of the cabinet, a printed camera box on top (the Wide behind its front
-#         face, the Pi 5 behind it) turned in and up at the arm's work in front of the base, 0.9 m off the floor;
-#   M     the mast: a 2040 extrusion clamped to the cabinet's left end at the base's back-left corner, its camera box at
-#         1.8 m (the height the MiR250's own 3D cameras watch up to), looking forward and down over the arm.
+#   L, R  a short 2020 post clamped to each end of the cabinet, the Wide in PR 40's printed case on a wedge on top, 0.88 m
+#         off the floor, turned a little in and up at the arm's work in front of the base; its Pi 5 on the cabinet's
+#         end under the top, where no arm goes, on a 300 mm cable;
+#   M     the mast: a 2040 extrusion clamped to the cabinet's left end at the base's back-left corner, a printed box on
+#         top (the Wide in front, its Pi 5 behind) at 1.75-1.80 m (the MiR250's own 3D cameras watch up to 1.8 m),
+#         looking forward and down over the arm.
 # Where (posts, heights, aims) comes from base_cams_sweep.py: every arm's frames in every clip, swept in the MiR's
 # frame. Nothing on an 800 x 580 base is out of a UR10e's reach, and in the clips the arm passes over every part of the
 # cabinet's rim between about 1.0 and 2.0 m; these are the places it passes least (notes/base_cameras.md).
@@ -164,9 +166,9 @@ CAB_X, CAB_Y = MIR["L"] / 2 - 40.0, MIR["W"] / 2 - 30.0       # the cabinet's ha
 CAB_TOP = MIR["H"] + CAB_H                                    # 780
 BASE_CAMS = {
     # post: the extrusion's centre (x, y), its section (along x, along y) and its z range (the box sits on its top);
-    # aim: the point the camera's axis passes through (MiR frame). base_cams_sweep.py scanned 46 spots and heights
-    # against every recorded frame of 17 clips: y = -60 on each end with the box under 0.92 m, and the back-left
-    # corner for the mast, are where the arms pass least (notes/base_cameras.md, "Where the arms go")
+    # aim: the point the camera's axis passes through (MiR frame). A scan of 58 spots and heights against every
+    # recorded frame of 17 clips (base_cams_sweep.py): just behind the middle of each end under 0.9 m, and the
+    # back-left corner for the mast, are where the arms pass least (notes/base_cameras.md, "Where the arms go")
     # kind "case": only the camera in its case on the post's top, its Pi 5 on the cabinet's end face below the top,
     # on a 300 mm cable (#364's first audits: the arms' held parts pass where a whole camera-and-Pi box stood)
     # L stands 35 mm further back than R: chapter 2's tong hangs in a sleeve on the cabinet's left end at y = 0
