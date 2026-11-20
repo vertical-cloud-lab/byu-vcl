@@ -174,17 +174,69 @@ DOOR_MARGIN = 3.0            # the funnel's rim under the side door opening's to
 SEAT_Z_FUNNEL = DOOR_TOP_Z - DOOR_MARGIN - FUNNEL_H - FUNNEL_CARRY_GAP - CUP_L - SEAT_LIFT   # 174.5
 TINE_SLOT_W = 11.0           # the upper tine's slot round the funnel's 9 mm stem (its 28 mm flange rests on the tine)
 
+# ------------------------------------------------------------- round 14: a dose post, a pocketed nest, our draft shield
+# Sterling (PR #318, 2026-11-20): "The dose is still going from way too high up. We probably need more of a custom breeze
+# break that extends higher up ... that's way too long of a fall distance before it lands in the cup ... maybe you could
+# reverse the orientation of the balance to free up space (again, with a custom breeze break)"; and at 9:54: "when it's
+# actually on the pedestal, it still looks relatively unsecure". Measured on v5's own meshes (doser_shield.py,
+# out/doser_shield.json), what sets the fall is not the balance but v5's electronics carriage (EC): it parks right over
+# the stream's axis, its -x face 4 mm past the axis and its underside 344.8 mm up there, so nothing standing on the pan
+# can reach higher than about 335 mm while the EC is parked. Docked and tilted to 30°, the EC lifts clear: the column over
+# the pan is free to 404-412 mm. So, ours (v5 itself is unchanged):
+# * the HR-202i's top door gives way to a fixed ROOF PLATE (clear, antistatic) on the chamber's top rails, with a 21 mm
+#   hole at the pan's axis; its side doors stay shut, so neither door pusher is needed any more;
+# * a DOSE POST on the pan: v5's riser foot, a 16 mm carbon-fibre tube up through the roof plate's hole without touching
+#   it, and on top a NEST, a disc with a 4 mm ring round the vessel's foot (0.25 mm a side, a 1 mm lead-in) and two
+#   grooves for the fork's tines: the vessel is held all round, the fork's slot passing the ring's -y segment;
+# * the vessel stands on the post only while a module is docked and tilted to 30°: the shuttle brings it in after the
+#   tilt and takes it out before the tilt back. The cup's rim is SEAT_CUP + 63.5 mm up, about 45 mm under the exit
+#   instead of 153; the vial's about 49 mm instead of 156. Parked, the empty post's top is 11 mm under the EC;
+# * a DRAFT SHIELD (the "turret") on the roof plate round the dose zone, up to SHIELD_TOP: clear panels in a teal frame,
+#   a notch in its +x wall and roof where the EC comes and goes, and a sliding door in its -y wall for the shuttle;
+# * the SHUTTLE's fork is narrower (two 4 mm tines 6 mm apart, which drop into the nest's grooves) and rides higher; the
+#   port in v5's -y panel is cut higher to match.
+# STATION picks the station ("r14", this; "r9", rounds 9-13's pedestal through the balance's side door, which the
+# maintenance clip still uses); NEST the vessel the post is fitted for ("cup" or "vial": one nest each, swapped with
+# the vessel type, since a ring that holds a 19 mm cup can't hold a 28 mm vial).
+STATION = "r14"
+NEST = "vial"
+ROOF_Z = (307.5, 311.5)                            # the roof plate, in the top door's place (its glass was 305-312)
+ROOF_HOLE_D = 21.0                                 # round the post's 16 mm tube: 2.5 mm a side, never touched
+POST_D, POST_HUB = 16.0, (44.0, 13.0)              # the carbon-fibre tube; v5's riser foot carries a 44 mm hub
+NEST_RING_H, NEST_RING_T, NEST_CLEAR, NEST_LEAD = 4.0, 2.5, 0.25, 1.0
+NEST_DISC_T = 10.5                                 # the nest's disc under the seat: the grooves are 9 mm deep in it
+TINE_X = (3.0, 7.0)                                # the r14 fork's tines, |x| from the vessel's axis
+GROOVE_X = (2.5, 7.5)                              # the nest's grooves round them
+GROOVE_D = 9.0
+TINE_TIP = 8.0                                     # the tines end 8 mm past the vessel's axis (+y)
+SEATS = {"cup": 327.0, "vial": 325.0}              # the nest's seat (the vessel's foot), rig frame: see doser_shield.py
+SHIELD = dict(x=(-40.0, 78.0), y=(-45.0, 50.0), notch_x=(20.0, 78.0), notch_y=(-27.0, 37.0), wall=3.0, frame=8.0)
+SHIELD_TOP = 405.0                                 # 8.6 mm under the outlet doors of the modules passing in a
+#                                                    chain shift (413.6 mm), 11 under the next modules' augers (416.1)
+SHIELD_NOTCH_Z = 318.0                             # the +x wall's notch for the EC (its lowest, parked, 324.6 mm)
+SHIELD_DOOR = dict(x=(11.0, 56.0), z=(314.0, 401.0), slide=52.0)   # the -y door's opening; it slides -x
+PORT_R14 = (0.0, 67.0, 100.0, 410.0)               # the -y panel's port for the r14 shuttle (x0, x1, z0, z1)
+REVERSE_AT_TILT = True                             # v5's reverse turn done at the dose tilt, with the vessel still under the
+#                                                    exit, before the shuttle takes it out (v5 does it after the tilt back)
+
+
+def seat_z_of(kind: str = "vial", station: str | None = None) -> float:
+    """The vessel's foot on its seat, rig frame: our nest on the dose post (r14) or round 9's pedestal (r9)."""
+    if (station or STATION) == "r14":
+        return SEATS["cup" if kind == "cup" else "vial"]
+    return SEAT_Z
+
 
 def seat_base_z(kind: str = "vial") -> float:
-    """The vessel's foot on our pedestal, rig frame (one pedestal height for the vial and the cups)."""
-    return SEAT_Z
+    """The vessel's foot on our pedestal or post, rig frame."""
+    return seat_z_of(kind)
 
 
 def vessel_at(kind: str = "vial", shuttle: float = 0.0, fork: float = 0.0, seat_z: float | None = None) -> np.ndarray:
     """Base centre of a vessel riding the fork, rig frame: shuttle 0 over the pan, 1 at the hand-over outside the -y
     panel; fork 0 carrying (SEAT_LIFT over the pedestal), 1 dropped (the vessel on the pedestal, if over the pan).
     `seat_z`: the pedestal's top (SEAT_Z; SEAT_Z_FUNNEL with the funnel option)."""
-    sz = SEAT_Z if seat_z is None else seat_z
+    sz = seat_z_of(kind) if seat_z is None else seat_z
     z = sz + SEAT_LIFT - FORK_DROP * fork
     if shuttle < 1e-6:
         z = max(z, sz)
@@ -276,6 +328,142 @@ def pusher_meshes() -> dict[str, pv.PolyData]:
     return out
 
 
+_R14: dict = {}
+
+
+def nest_ring_r(kind: str) -> tuple[float, float]:
+    """The nest ring's inner and outer radius for a vessel kind."""
+    r = (CUP_D / 2) if kind == "cup" else VIAL_R
+    return r + NEST_CLEAR, r + NEST_CLEAR + NEST_RING_T
+
+
+def post_meshes(kind: str = "vial") -> dict[str, pv.PolyData]:
+    """Ours (r14): the dose post on the pan, rig frame. "foot": v5's riser foot and a hub (PETG); "tube": the 16 mm
+    carbon-fibre tube up through the roof plate; "nest": the disc on top, its ring round the vessel's foot (a 1 mm
+    45° lead-in at its mouth) and the two grooves the fork's tines drop into, open to -y (where the shuttle comes from)
+    and running 2 mm past the tines' tips. CadQuery for the nest, tessellated once per kind."""
+    key = ("post", kind)
+    if key in _R14:
+        return {k: v.copy() for k, v in _R14[key].items()}
+    import cadquery as cq
+    from props import _cq_mesh
+    s = seat_z_of(kind, "r14")
+    ri, ro = nest_ring_r(kind)
+    disc_r = ro + 0.5
+    z0 = s - NEST_DISC_T
+    nest = cq.Workplane("XY").circle(disc_r).extrude(NEST_DISC_T).translate((0, 0, z0))
+    ring = cq.Workplane("XY").circle(ro).circle(ri).extrude(NEST_RING_H).translate((0, 0, s))
+    nest = nest.union(ring)
+    lead = cq.Solid.makeCone(ri, ri + NEST_LEAD + 0.3, NEST_LEAD + 0.3, pnt=cq.Vector(0, 0, s + NEST_RING_H - NEST_LEAD),
+                             dir=cq.Vector(0, 0, 1))
+    nest = nest.cut(cq.Workplane("XY").add(lead))
+    for sx in (-1, 1):                    # the grooves, from the disc's -y edge to 2 mm past the tines' tips
+        a, b = sorted((sx * GROOVE_X[0], sx * GROOVE_X[1]))
+        g = cq.Workplane("XY").box(b - a, disc_r + TINE_TIP + 2.0 + 2.0, GROOVE_D + NEST_RING_H + 1.0, centered=False)
+        nest = nest.cut(g.translate((a, -disc_r - 2.0, s - GROOVE_D)))
+    out = {"nest": _cq_mesh(nest.val(), 0.15)}
+    foot_top = PAN_TOP + 3.0
+    prof = np.array([[0.0, PAN_TOP], [SEAT_FOOT_D / 2, PAN_TOP], [SEAT_FOOT_D / 2, foot_top],
+                     [POST_HUB[0] / 2, foot_top], [POST_HUB[0] / 2, foot_top + POST_HUB[1] - 3.0],
+                     [POST_HUB[0] / 2 - 3.0, foot_top + POST_HUB[1]], [0.0, foot_top + POST_HUB[1]]])
+    line = pv.PolyData(np.c_[prof[:, 0], np.zeros(len(prof)), prof[:, 1]], lines=np.r_[len(prof), np.arange(len(prof))])
+    out["foot"] = line.extrude_rotate(resolution=56, capping=False).triangulate().clean()
+    out["tube"] = pv.Cylinder(center=(0, 0, (foot_top + POST_HUB[1] + z0) / 2), direction=(0, 0, 1), radius=POST_D / 2,
+                              height=z0 - foot_top - POST_HUB[1] + 0.5, resolution=40).triangulate()
+    for k in out:
+        out[k] = out[k].translate((*PAN_XY, 0.0), inplace=False)
+        out[k].clear_data()
+    _R14[key] = out
+    return {k: v.copy() for k, v in out.items()}
+
+
+def roof_mesh() -> pv.PolyData:
+    """Ours (r14): the clear roof plate in the HR-202i's top-door rails (its glass top door is off), a 21 mm hole at the
+    pan's axis for the post. Rig frame."""
+    if "roof" not in _R14:
+        import cadquery as cq
+        from props import _cq_mesh
+        x0, x1 = DOOR_X[0] - 4.0, DOOR_X[1] + 8.0          # the top door's outline when shut (-49 .. 103 mm)
+        y0, y1 = float(PAN_XY[1]) - 82.0, float(PAN_XY[1]) + 82.0
+        plate = cq.Workplane("XY").box(x1 - x0, y1 - y0, ROOF_Z[1] - ROOF_Z[0], centered=False).translate(
+            (x0, y0, ROOF_Z[0]))
+        hole = cq.Workplane("XY").circle(ROOF_HOLE_D / 2).extrude(10.0).translate((*PAN_XY, ROOF_Z[0] - 5.0))
+        m = _cq_mesh(plate.cut(hole).val(), 0.3)
+        m.clear_data()
+        _R14["roof"] = m
+    return _R14["roof"].copy()
+
+
+def shield_meshes() -> dict[str, pv.PolyData]:
+    """Ours (r14): the draft shield round the dose zone, standing on the roof plate. "panels": clear walls and roof (the
+    -y wall's door opening, and a notch in the +x wall and the roof where v5's EC parks, docks and tilts, cut out);
+    "frame": teal corner posts and top rails; "door": the -y wall's sliding door, shut (it slides -x). Rig frame."""
+    if "shield" in _R14:
+        return {k: v.copy() for k, v in _R14["shield"].items()}
+    S = SHIELD
+    x0, x1 = S["x"]
+    y0, y1 = S["y"]
+    t, f = S["wall"], S["frame"]
+    zb, zt = ROOF_Z[1], SHIELD_TOP
+    nx0, nx1 = S["notch_x"]
+    ny0, ny1 = S["notch_y"]
+    dx0, dx1 = SHIELD_DOOR["x"]
+    dz0, dz1 = SHIELD_DOOR["z"]
+    box = lambda *b: pv.Box(bounds=b).triangulate()        # noqa: E731
+    panels = [box(x0, x0 + t, y0, y1, zb, zt),                                         # -x wall
+              box(x0, x1, y1 - t, y1, zb, zt),                                         # +y wall
+              # -y wall, round the door opening
+              box(x0, dx0, y0, y0 + t, zb, zt), box(dx1, x1, y0, y0 + t, zb, zt),
+              box(dx0, dx1, y0, y0 + t, zb, dz0), box(dx0, dx1, y0, y0 + t, dz1, zt),
+              # +x wall, round the EC's notch
+              box(x1 - t, x1, y0, ny0, zb, zt), box(x1 - t, x1, ny1, y1, zb, zt), box(x1 - t, x1, ny0, ny1, zb, SHIELD_NOTCH_Z),
+              # roof, round the notch
+              box(x0, nx0, y0, y1, zt - t, zt), box(nx0, x1, y0, ny0, zt - t, zt), box(nx0, x1, ny1, y1, zt - t, zt)]
+    frame = []
+    for xx in (x0, x1 - f):
+        for yy in (y0, y1 - f):
+            frame.append(box(xx, xx + f, yy, yy + f, zb, zt))
+    for yy in (y0, y1 - f):              # top and bottom rails; over the -y door the top rail is only the 4 mm above it
+        frame.append(box(x0, x1, yy, yy + f, max(zt - f, SHIELD_DOOR["z"][1]) if yy == y0 else zt - f, zt))
+        frame.append(box(x0, x1, yy, yy + f, zb, zb + f))
+    for xx in (x0, x1 - f):
+        frame.append(box(xx, xx + f, y0, y1, zt - f, zt) if xx == x0 else box(xx, xx + f, y0, ny0, zt - f, zt))
+    frame.append(box(x1 - f, x1, ny1, y1, zt - f, zt))
+    door = box(dx0 - 4.0, dx1 + 4.0, y0 - t - 1.0, y0 - 1.0, dz0 - 4.0, dz1 + 4.0).merge(
+        box(dx1 - 2.0, dx1 + 4.0, y0 - t - 9.0, y0 - t - 1.0, (dz0 + dz1) / 2 - 20.0, (dz0 + dz1) / 2 + 20.0))
+    out = {"panels": pv.merge(panels), "frame": pv.merge(frame), "door": door}
+    for m in out.values():
+        m.clear_data()
+    _R14["shield"] = out
+    return {k: v.copy() for k, v in out.items()}
+
+
+def shuttle_meshes_r14(kind: str = "vial") -> dict[str, pv.PolyData]:
+    """Ours (r14): the shuttle, its fork riding high enough to carry the vessel over the nest's ring. The rail, its
+    bracket and leg are round 9's; the carriage carries a taller column and a fork of two 4 mm tines 6 mm apart (TINE_X),
+    which end TINE_TIP past the vessel's axis and drop into the nest's grooves. Drawn with the shuttle in and the fork
+    carrying. Rig frame."""
+    x = float(PAN_XY[0])
+    yv = float(PAN_XY[1])
+    zf = seat_z_of(kind, "r14") + SEAT_LIFT               # the tines' top, carrying: the vessel's foot
+    yc = yv + TINE_TIP + 5.0 - FORK_L                     # the carriage's centre: the column 175 mm behind the tips
+    box = lambda *b: pv.Box(bounds=b).triangulate()       # noqa: E731
+    rail = box(x - 10, x + 10, RAIL_Y[1], RAIL_Y[0], *RAIL_Z)
+    bracket = box(x - 10, x + 10, -186.0, -174.0, 35.0, RAIL_Z[0])
+    leg = box(x - 10, x + 10, RAIL_Y[1] + 5, RAIL_Y[1] + 25, 0.0, RAIL_Z[0])
+    carriage = box(x - 20, x + 20, yc - 25, yc + 25, *CARR_Z)
+    column = box(x - 6, x + 6, yc - 6, yc + 6, CARR_Z[1], zf - FORK_T)
+    root_end = yv - (VIAL_R + NEST_CLEAR + NEST_RING_T) - 3.0     # the fork's solid root stops short of the ring
+    fork = box(x - TINE_X[1], x + TINE_X[1], yc - 6, root_end, zf - FORK_T, zf)
+    for sx in (-1, 1):
+        a, b = sorted((sx * TINE_X[0], sx * TINE_X[1]))
+        fork = fork.merge(box(x + a, x + b, root_end, yv + TINE_TIP, zf - FORK_T, zf))
+    out = {"fixed": rail.merge(bracket).merge(leg), "moving": carriage.merge(column).merge(fork)}
+    for m in out.values():
+        m.clear_data()
+    return out
+
+
 def _sources_hash() -> str:
     """The tessellation cache's key: v5's and the vendor helpers' sources and what in this file shapes the meshes (not
     the whole file, so the lab's own parts, drawn fresh every run, can change without re-tessellating the rig)."""
@@ -302,12 +490,14 @@ def _keys(pl) -> list[str]:
     return sorted({p.key for p in pl} - SKIP)
 
 
-def part_meshes() -> dict[str, pv.PolyData]:
-    """Every unique part, tessellated once in its own frame and cached."""
+def part_meshes(port=None) -> dict[str, pv.PolyData]:
+    """Every unique part, tessellated once in its own frame and cached. `port`: the cut in the -y panel (x0, x1, z0, z1;
+    PORT, or PORT_R14 for round 14's higher shuttle)."""
+    port = PORT if port is None else port
     cache = HERE / ".cache" / f"carousel5_{_sources_hash()}.pkl"
     if cache.exists():
         out = pickle.loads(cache.read_bytes())
-        out["panel_side"] = _cut_port(out["panel_side"])   # ours: the port, cut fresh (it isn't in the cache's key)
+        out["panel_side"] = _cut_port(out["panel_side"], port)   # ours: the port, cut fresh (not in the cache's key)
         return out
     cache.parent.mkdir(exist_ok=True)
     out = {}
@@ -320,14 +510,14 @@ def part_meshes() -> dict[str, pv.PolyData]:
             m = m.triangulate().decimate_pro(1 - n / m.n_cells, preserve_topology=False).clean()
         out[key] = m
     cache.write_bytes(pickle.dumps(out))
-    out["panel_side"] = _cut_port(out["panel_side"])       # ours: the port the shuttle passes the -y panel through
+    out["panel_side"] = _cut_port(out["panel_side"], port)   # ours: the port the shuttle passes the -y panel through
     return out
 
 
-def _cut_port(m: pv.PolyData) -> pv.PolyData:
-    """The -y panel with PORT cut out of it, in the panel's own frame."""
+def _cut_port(m: pv.PolyData, port=None) -> pv.PolyData:
+    """The -y panel with `port` (PORT by default) cut out of it, in the panel's own frame."""
     M = next(p.M for p in CL.placements(CL.State(ext=0.0, beaker=False)) if p.key == "panel_side")
-    x0, x1, z0, z1 = PORT
+    x0, x1, z0, z1 = PORT if port is None else port
     corners = np.array([[x, y, z, 1.0] for x in (x0, x1) for y in (-400.0, 0.0) for z in (z0, z1)])
     loc = (np.linalg.inv(M) @ corners.T).T[:, :3]
     lo, hi = loc.min(0), loc.max(0)
@@ -385,10 +575,15 @@ class Carousel:
         `funnel`: None (as built: no funnel), or the colour of the powder's funnel on the shuttle's upper tine (the
         funnel option, round 10), which also puts the vessel on the shorter pedestal (SEAT_Z_FUNNEL)."""
         self.sc, self.group = sc, group
-        self.seat_z = SEAT_Z if funnel is None else SEAT_Z_FUNNEL
-        self.parts = part_meshes()
+        self.station = "r9" if funnel is not None else STATION
+        self.nest = NEST
+        self.r14 = self.station == "r14"
+        self.seat_z = (seat_z_of(self.nest, "r14") if self.r14 else SEAT_Z) if funnel is None else SEAT_Z_FUNNEL
+        # r14: the HR-202i's top door is off (our roof plate is in its rails), so it isn't drawn
+        self.skip = set(SKIP) | ({"hr202i_top_door"} if self.r14 else set())
+        self.parts = part_meshes(PORT_R14 if self.r14 else PORT)
         self.state = dict(shift=0.0, ext=0.0, tilt=0.0, spin=0.0, tap=0.0, magnet_on=False, top_door=0.0,
-                          side_door=0.0, shuttle=1.0, fork=0.0)
+                          side_door=0.0, shuttle=1.0, fork=0.0, shield_door=0.0)
         self.state.update(state)
         pl = self._pl()
         self.keys = [p.key for p in pl]
@@ -397,7 +592,7 @@ class Carousel:
         # others' modules and carriages can then be ghosted to show the docked one, which rides inside the loop
         groups: dict[tuple, list[int]] = {}
         for i, p in enumerate(pl):
-            if p.key in SKIP:
+            if p.key in self.skip:
                 continue
             hl = highlight is not None and p.module == highlight
             col = HIGHLIGHT if (hl and p.key in HL_KEYS) else p.color
@@ -421,6 +616,31 @@ class Carousel:
             if a < 1:
                 self.glass.append(name)
             self.actors.append((name, mesh, slices))
+        self.fork_group = f"{group}_fork"
+        self.door_group = f"{group}_shielddoor"
+        self.prefix = prefix
+        if self.r14:                   # round 14: the roof plate, the dose post and nest, the draft shield, the shuttle
+            sc.add(f"{prefix}/ours_roof", roof_mesh(), (0.80, 0.86, 0.90), group, specular=0.6, opacity=0.30)
+            self.glass.append(f"{prefix}/ours_roof")
+            pm = post_meshes(self.nest)
+            sc.add(f"{prefix}/ours_post_foot", pm["foot"], OURS, group, specular=0.3)
+            sc.add(f"{prefix}/ours_post_tube", pm["tube"], (0.13, 0.13, 0.14), group, specular=0.5)
+            sc.add(f"{prefix}/ours_post_nest", pm["nest"], OURS, group, specular=0.3)
+            sh = shield_meshes()
+            sc.add(f"{prefix}/ours_shield", sh["panels"], (0.82, 0.88, 0.92), group, specular=0.6, opacity=0.16)
+            self.glass.append(f"{prefix}/ours_shield")
+            sc.add(f"{prefix}/ours_shield_frame", sh["frame"], OURS, group, specular=0.3)
+            sc.add(f"{prefix}/ours_shield_door", sh["door"], (0.82, 0.88, 0.92), self.door_group, specular=0.6,
+                   opacity=0.22)
+            self.glass.append(f"{prefix}/ours_shield_door")
+            sc.parent[self.door_group] = group
+            sm = shuttle_meshes_r14(self.nest)
+            sc.add(f"{prefix}/ours_shuttle_rail", sm["fixed"], OURS_DARK, group, specular=0.4)
+            sc.add(f"{prefix}/ours_shuttle_fork", sm["moving"], OURS, self.fork_group, specular=0.3)
+            sc.parent[self.fork_group] = group
+            self._last = None
+            self.set()
+            return
         # ours: the door pushers (their fingers in child groups that slide with the doors), the pedestal riser on the
         # pan and the vessel shuttle (its carriage and fork in a child group, self.fork_group)
         pm = pusher_meshes()
@@ -433,7 +653,6 @@ class Carousel:
         sc.add(f"{prefix}/ours_seat", seat_mesh(seat_z=self.seat_z), OURS, group, specular=0.3)
         sm = shuttle_meshes(self.seat_z, tine=funnel is not None)
         sc.add(f"{prefix}/ours_shuttle_rail", sm["fixed"], OURS_DARK, group, specular=0.4)
-        self.fork_group = f"{group}_fork"
         sc.add(f"{prefix}/ours_shuttle_fork", sm["moving"], OURS, self.fork_group, specular=0.3)
         sc.parent[self.fork_group] = group
         if funnel is not None:                # the funnel option: the powder's funnel on the upper tine
@@ -461,7 +680,7 @@ class Carousel:
         """World position of a vessel's base on the fork (now, or at the given shuttle and fork states)."""
         s = self.state["shuttle"] if shuttle is None else shuttle
         f = self.state["fork"] if fork is None else fork
-        return (self.sc.world(self.group) @ np.r_[vessel_at("vial", s, f, self.seat_z), 1.0])[:3]
+        return (self.sc.world(self.group) @ np.r_[vessel_at(self.nest, s, f, self.seat_z), 1.0])[:3]
 
     def _pl(self):
         s = self.state
@@ -478,8 +697,11 @@ class Carousel:
             assert len(keys) == len(self.keys) and not bad, f"the rig's instance list changed with its state: {bad[:3]}"
         Ms = [p.M if p.group != "elec" else self.board @ p.M for p in pl]
         last, self._last = self._last, Ms
-        self.sc.gmat[f"{self.group}_sidefinger"] = _T((self.state["side_door"], 0.0, 0.0))
-        self.sc.gmat[f"{self.group}_topfinger"] = _T((self.state["top_door"], 0.0, 0.0))
+        if self.r14:
+            self.sc.gmat[self.door_group] = _T((-SHIELD_DOOR["slide"] * self.state["shield_door"], 0.0, 0.0))
+        else:
+            self.sc.gmat[f"{self.group}_sidefinger"] = _T((self.state["side_door"], 0.0, 0.0))
+            self.sc.gmat[f"{self.group}_topfinger"] = _T((self.state["top_door"], 0.0, 0.0))
         self.sc.gmat[f"{self.group}_fork"] = _T((0.0, -TRAVEL * self.state["shuttle"], -FORK_DROP * self.state["fork"]))
         for name, mesh, slices in self.actors:
             if last is not None and all(np.array_equal(Ms[i], last[i]) for i, _, _ in slices):

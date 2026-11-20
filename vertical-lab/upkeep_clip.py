@@ -59,6 +59,11 @@ import lab                            # noqa: E402
 import props as P                     # noqa: E402
 import robot as RB                    # noqa: E402
 import vlm as V                       # noqa: E402
+import carousel as _CR                # noqa: E402
+
+# Round 14 made the doser's dose post and draft shield (carousel.STATION "r14") the default; this clip's balance
+# check was choreographed for rounds 9-13's pedestal, set through the HR-202i's side door, so it keeps that station
+_CR.STATION = "r9"
 
 NAME = "upkeep_clip"
 TITLE = "Vertical cloud lab: maintenance in the workflow"
