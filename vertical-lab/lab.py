@@ -133,8 +133,40 @@ def _equipment() -> dict:
     return eq
 
 
+def _repowder_fixtures() -> list[tuple]:
+    """What #353 added round the machine that stays put, for every scene that draws the merged rePowder (the set-up
+    movie, chapter 3, the finale, ...; Sterling, PR #318, 2026-11-20: "the atomizer is missing the new renders in other
+    spots across the video"): DAL PR 189's three viewport camera units with their displays (atom_cams.py, from the
+    committed STEP tessellation; door shut, the top arm in its working dimple over the lid window), and the bonded floor
+    plates at every spot a MiR250 works at the atomizer, their floor channels and the ground bar (atom_ground.py).
+    [(mesh, colour, opacity)], model frame."""
+    import atom_cams as CAMS
+    import atom_ground as GND
+    out = []
+    moves = dict(front=CAMS.front_move(), left=CAMS.left_move(), post=np.eye(4), arm=np.eye(4))
+    for k, m in CAMS.dal_parts().items():
+        u = CAMS.unit_of(k, m)
+        if u not in moves:                        # None (the Onshape model's rough machine) or DAL's old lid window
+            continue
+        mesh = m.transform(moves[u], inplace=False)
+        if k.startswith("(machine) front port nut"):  # DAL drew the nut solid: give it the glass's bore
+            pp, nn = CAMS.port_axis()
+            mesh = CAMS.bore(mesh, pp, nn, CAMS.PORT_GLASS_R)
+        col, op = CAMS.colour_of(k)
+        out.append((mesh.triangulate(), col, op))
+    for _, (mesh, col) in GND.fixture_meshes().items():
+        out.append((mesh, col, 1.0))
+    return out
+
+
+# DAL's port nut, glass and LED cover replace the model's own viewport flange and glass (atom_cams.add_units does the
+# same in the atomizer clips)
+_REPLACED_BY_FIXTURES = ("viewport_flange", "viewport_glass")
+
+
 def _repowder() -> dict:
-    """The rePowder and its utilities, one mesh per colour, in the model's own frame (front towards -y)."""
+    """The rePowder and its utilities, one mesh per colour, in the model's own frame (front towards -y), with the
+    fixtures round it (``_repowder_fixtures``)."""
     import importlib.util
     spec = importlib.util.spec_from_file_location("repowder_model", HERE / "repowder" / "model.py")
     rp = importlib.util.module_from_spec(spec)
@@ -142,7 +174,7 @@ def _repowder() -> dict:
     spec.loader.exec_module(rp)
     by: dict[tuple, list] = {}
     for p in rp.parts():
-        if p.name == "floor":                     # the training scene's own floor
+        if p.name == "floor" or p.name in _REPLACED_BY_FIXTURES:   # the training scene's own floor
             continue
         m = rp.tess(p.shape, max(p.tol, 0.5))
         if m is not None:
@@ -150,6 +182,8 @@ def _repowder() -> dict:
     for name, r in rp.pipe_routes().items():
         tube = pv.Spline(np.array(r["pts"], float), 120).tube(radius=r["r"], n_sides=14).triangulate()
         by.setdefault((tuple(round(c, 3) for c in r["color"]), 1.0), []).append(tube)
+    for mesh, col, op in _repowder_fixtures():
+        by.setdefault((tuple(round(c, 3) for c in col), op), []).append(mesh)
     out = {}
     for i, ((col, op), ms) in enumerate(sorted(by.items())):
         mesh = pv.merge(ms, merge_points=False) if len(ms) > 1 else ms[0]
@@ -164,7 +198,8 @@ def meshes(rebuild: bool = False) -> dict:
     me = HERE / "lab.py"
     parts = {"vlm": (_vlm_entries, [HERE / "vlm.py", me, HERE / "lab_models" / "common.py"]),
              "equipment": (_equipment, [me, *(HERE / "lab_models").glob("*.py")]),
-             "repowder": (_repowder, [me, *(HERE / "repowder").glob("*.py")])}
+             "repowder": (_repowder, [me, *(HERE / "repowder").glob("*.py"), HERE / "atom_cams.py",
+                                      HERE / "atom_ground.py", HERE / "out" / "atom" / "cams_dal189_parts.npz"])}
     data = {}
     for key, (build, srcs) in parts.items():
         path = CACHE / f"{key}_{_hash_sources(*srcs)}.pkl"

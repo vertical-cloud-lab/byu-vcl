@@ -9,6 +9,7 @@ the vacuum attachment and doing an actual vacuuming of the inside of the chamber
 | --- | --- |
 | [`atom_nilfisk.py`](../atom_nilfisk.py) | The models: the Nilfisk CFM 118EXP, the hose (a relaxed chain), the wand, cuff, crevice tool and dust brush, the steel pail, the Class D extinguisher on its stand, the area sign, and our station |
 | [`atom_vacuum.py`](../atom_vacuum.py) | The clip `atom_vacuum` |
+| [`atom_ground.py`](../atom_ground.py) | Ground within reach (ours): the bonded floor plates at every spot a MiR250 works at the atomizer, their channels and the ground bar; the MiR250's two sprung shoes and its bond lamp |
 | [`out/atom/vacuum_bom.json`](../out/atom/vacuum_bom.json) | The bill of materials, with the vacuum count |
 | `out/atom_vacuum.{gif,json}`, `out/mp4/atom_vacuum.mp4`, `out/atom_vacuum_still.png` | The render |
 | `out/collisions/atom_vacuum.json`, `out/collisions/atom_vacuum_hose.json` | The arm audit and the hose check |
@@ -65,7 +66,7 @@ about 3 % of 3048 mm (the links stretch a little under gravity).
 | --- | --- | --- | --- |
 | 0 | After the run: cold, vented, door open; powder brushed into the container, the container's valve closed and the container taken off | a person (other clips) | DAL SOP collection steps 1-3 |
 | 1 | Area checks: the vacuum's ground cable to the ground bar, the station and the pail bonded, extinguisher and pail staged, sign up | a person at the start of the day; the clip shows the result | SOP 2.2, 2.3 |
-| 2 | MiR250 2 parks in front of our station | MiR250 2 | ours |
+| 2 | MiR250 2 parks in front of our station, on its bonded floor plate; it lowers its two shoes, the two bond readings pass and its lamp turns green before the arm moves | MiR250 2 + the station's monitor | ours (below, "Ground within reach"); NFPA 484 (2015, 8.5.2) via `atom_sleeve.md` |
 | 3 | Take the wand (crevice tool fitted) from the holster by its fin | arm 2 | ours |
 | 4 | Continuity: the tool tip on the bonded spring pad, three spring probes on the joints, a relay box switches the 4-wire meter; each joint <= 0.1 ohm, the hose <= 1e4 ohm, the body < 1 ohm to ground, or the run stops | arm 2 + our fixture | OEM manual (UL 1213 par. 22, accessories doc 15.1), SOP 1.1 |
 | 5 | Equalization touch on the bonded ground button, away from the powder | arm 2 | SOP 3.1 |
@@ -172,6 +173,126 @@ our two stations.
 - The dust brush cannot meet the 45 deg floor square from the door (the floor faces up and away from the door, so the
   brush would meet it at about 17 deg and its head would scrape): the floor is done with the crevice tool, which drags
   at that angle as it is meant to, and the brush is used on the plate and the door's sealing face, which face the arm.
+
+## Ground within reach (2026-11-20)
+
+Sterling, on PR #318 (2026-11-20, at 25:53 of round 12's long-form): "Nice on having a ground cable and ground bar or
+similar. I wonder about trying to have a mobile ground bar of sorts (overhead), or maybe better, just making sure ground
+is available within close reach pretty much anywhere nearby machines or where the mobile manipulator would be."
+
+**Why a MiR250 needs it.** [`atom_sleeve.md`](atom_sleeve.md) has the rule: NFPA 484 (2015, 8.5.2) wants mobile metal
+equipment bonded or grounded before use. A MiR250 on its tyres is an isolated conductor, and the arm, its sleeve and the
+tools it holds near the powder bond through it. The vacuum's own chain (tool, wand, hose, body) is a separate matter: it
+is bonded through the vacuum's ground cable and checked joint by joint (UL 1213's 0.1 ohm, above).
+
+**The options**
+
+| Option | For | Against |
+| --- | --- | --- |
+| An overhead bonded rail with a trolley and a retractable lead | reaches anywhere under the rail; one connection to the building's ground | a lead hanging in two arms' workspace and over the MiRs' paths; the trolley's sliding contact is one more joint to check; an arm has to clip and unclip a clamp at every stop; a ceiling rail to put up and inspect |
+| A bonding reel on each MiR250, its lead clipped by the arm to a stud | works wherever there is a stud | an extra grasp, and a spring clamp a 2F-85 must open, at every stop; a cable on the floor while the MiR works; an interlock so it never drives off clipped on |
+| Ground studs on each machine, leads clipped by a person | what the lab does now: the vacuum's cable to the bar | a person at every MiR stop |
+| **Bonded plates in the floor where the MiRs park, two sprung shoes on each MiR250 (chosen)** | automatic on parking; nothing to clip, nothing trailing, nothing overhead; read every time | floor work at each spot; parking has to land the shoes on the plate; powder on a plate can raise the contact resistance (the reading catches that, and the plates are inside the vacuumed area) |
+
+**The design (ours, [`atom_ground.py`](../atom_ground.py))**
+
+- **Plates.** 304 stainless, set flush (2 mm proud, a stepped edge), wherever a MiR250 parks to work. Each spot's plate
+  spans +-148 mm along the MiR and +-214 mm across it, round the two shoes. That covers the MiR's +-60-85 mm without a
+  marker (MiR's figure, quoted in round 4), the shoes' +-70 mm spread and a margin.
+  - The atomizer's 16 spots are the clips' and chapters' (`ATOMIZER_SPOTS`). Where plates overlap, they are joined and
+    laid side by side (`plate_rects`).
+  - The lab's floor gets 13 of them: 5 joined areas, 1.16 m² of plate. The other three spots put a MiR250 where the
+    machine's vacuum pump or chapter 3's wash module stands (`NOT_IN_LAB`). That is a layout fault in those clips, below.
+  - Each joined area has a recessed terminal and two leads in a flush floor channel to the area's ground bar, the bar the
+    vacuum's cable already goes to.
+- **Shoes.** Two copper-graphite blocks, 46 x 38 mm, 140 mm apart, each on a spring, under a crossbar.
+  - A 24 V actuator lowers them 15 mm once the MiR has parked and lifts them before it drives, so they don't drag dust
+    or wear on the floor.
+  - Everything hangs on a bracket from the top module's ballast plate at the MiR's front end. Nothing is drilled into the
+    MiR250 itself.
+  - The shoes' leads go to the top module's ground, which the arm's sleeve and tool changer bond to
+    ([`atom_sleeve.md`](atom_sleeve.md)).
+- **Two readings before the arm may reach for powder or a tool.** A failed reading stops the step.
+  1. The MiR's own 4-wire meter: shoe A, through the plate, to shoe B, at most 1 ohm. This shows both shoes are on metal.
+  2. The station's monitor: the plate, through its two leads, to the bar, at most 1 ohm. This shows the plate is still
+     bonded.
+- **The lamp** is on the cabinet's front face: amber until both readings pass, green once bonded.
+- **The 1 ohm limit is ours**, deliberately tighter than the published figures for a static ground:
+  - NFPA 77 calls a bonding resistance of 10 ohm or less with copper wire (25 ohm with stainless or other metals)
+    typical in practice, and a higher one a sign that the metal path isn't continuous (Annex A.3.3.2, 7.3.1.6.1).
+  - ESIG's guide asks for a temporary earth of 10 ohm or less for a vehicle on pneumatic tyres standing on a dry floor
+    (3.3.5.1).
+
+  Both are as summarised by Newson Gale's page on the standards
+  ([industry standards and guidelines](https://newson-gale.com/static-electricity/industry-standards-guidelines/),
+  read 2026-11-20); the standards themselves weren't open to read. The readings on screen (0.12 and 0.05 ohm) are
+  illustrative.
+- **What it doesn't replace.**
+  - The vacuum's ground cable to the bar, which a person checks at the start of the day (SOP 2.2).
+  - The pail's bonding wire and the station's lug.
+  - People's own grounding. If EHS wants static-dissipative footwear (NFPA 484 for dusts under 100 mJ, see
+    [`atom_sleeve.md`](atom_sleeve.md)), that needs a dissipative floor where people stand. The plates are only where
+    the MiRs park.
+- **For EHS and MiR to sign off:** the plates, the shoes and the 1 ohm limits. Also whether a ground path from a top
+  module's bracket to the MiR250's chassis is allowed (MiR), and whether the lab's floor can take recessed plates and
+  channels.
+
+**On screen.** In `atom_vacuum` (step 3/10, "Bond"), MiR250 2 parks on its plate, lowers its shoes, both readings pass
+and its lamp turns green. Only then does the arm reach for the wand. MiR250 1, parked at the right since before the
+clip, is already bonded. In the lab's scenes, `lab._repowder()` draws the 13 spots' plates, their channels and the bar
+(below).
+
+**Found on the way, not fixed (other clips' files):**
+
+- `atom_crucible`'s MiR250 2 (`MIR2_AT`, -960, -40, turned 90 deg) and `atom_base.PARK["left"]` put the MiR's body over
+  the model's vacuum pump (x -880..-420, y 120..340, on the floor).
+- `atom_container`'s MiR250 2 (`B_FRONT`) stands where chapter 3 puts the sieve wash module's stand.
+
+The audits miss both: collide.py checks a MiR against the machine only while it moves, and these are parked.
+
+## The area sign (2026-11-20)
+
+The sign's text ran off both edges of its board (25:53 in round 12's long-form): "COMBUSTIBLE METAL" was set 44 mm tall
+on one line, about 530 mm wide on a 460 mm board. `atom_nilfisk.fit_text` now measures every line and sets one scale
+for the whole block, so the widest line fits inside a 34 mm margin and a 12 mm black border. The warning is in three
+lines (COMBUSTIBLE / METAL POWDER / IN USE) and the rules in three smaller ones (Authorized personnel only / NO water /
+NO compressed air), with the wording of SOP 2.3. The widest line is now 368 mm on the 460 mm board, and every line sits
+inside the margins (checked in code, `sign_meshes.info`). It was the only text board in the atomizer clips.
+
+## Where the atomizer's fixtures now appear (2026-11-20)
+
+Sterling (21:12 in round 12's long-form): "the atomizer is missing the new renders in other spots across the video".
+Every lab scene draws the rePowder from `lab._repowder()`, which tessellates `repowder/model.py`, so they already had the
+turned lid and #353's latch wherever they were rendered after #353 merged. #353's fixtures were only in its own clips.
+`lab._repowder()` now adds:
+
+- DAL PR 189's three viewport camera units with their displays (front, left and top), as `atom_cams` places them: the
+  door shut, the top arm in its working dimple over the lid window. DAL's port nut and glass replace the model's port
+  flange and glass, as in the clips.
+- The bonded floor plates at the atomizer's working spots, their channels and the ground bar (above).
+
+The scenes that draw the merged rePowder, and so show these once re-rendered:
+
+- the set-up movie (`setup_lab.py`);
+- chapter 3, the sieving cell beside the rePowder (`alloy_print.py`, through `alloy_workflow.build`);
+- chapters 1, 4, 5, 6 and 7 in their wide shots (`alloy_charge.py`, `alloy_powder.py`, `alloy_workflow.py`,
+  `alloy_prep.py`, `alloy_characterize.py`);
+- the finale (`timelapse.py`);
+- the maintenance clip (`upkeep_clip.py`);
+- the services clips (`services.py`, `ups.py`);
+- the older `animate.py`, `line.py`, `warehouse.py` and `reach.py`.
+
+Chapter 2 (`alloy_atomize.py`) hides the merged copy and loads the model part by part. It shows the camera units only if
+it calls `atom_cams.add_units(sc)`, which works on its scene, and the plates only if it adds
+`atom_ground.plate_meshes(...)`. Changing `lab.py` changes the key of all three of `lab.meshes()`'s caches, so each
+scene re-tessellates once (about 10 s here).
+
+Not checked by a render:
+
+- The front unit stands out to y = -355 in the model frame, at z 918 and up, above a docked MiR's cabinet (z 800). A
+  chapter 3 or set-up arm that sweeps past the chamber's front at that height would meet it, and the audit of their
+  next render will show it.
+- In the set-up movie the plates, being part of the merged rePowder, arrive with the machine when it is set down.
 
 ## Not done, or assumed
 

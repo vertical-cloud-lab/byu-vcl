@@ -18,6 +18,7 @@ import os
 import numpy as np
 
 import atom_base as AB
+import atom_ground as G
 import atom_nilfisk as N
 import alloy_atomize as AA
 import ur_arm
@@ -165,6 +166,18 @@ def main():
     AB.mir_at(mb, MIR_START)
     rb = mb.rb
     sc.soft = set(getattr(sc, "soft", set()))
+    # ---- ground within reach (atom_ground.py, notes/atom_vacuum.md "Ground within reach"): a bonded floor plate at each
+    # spot a MiR250 works, its leads in a floor channel to the ground bar; two sprung shoes and a bond lamp on each MiR250.
+    # MiR250 1 has been parked at the right since before the clip: its shoes are down and its lamp green.
+    rects = G.plate_rects(["vacuum", "right"])
+    for name, (mesh, col) in {**G.plate_meshes(rects), **G.channel_meshes(rects)}.items():
+        sc.add(name, mesh.translate(AB.RP, inplace=False), col, "static", specular=0.35)
+    G.add_shoes(sc, ma, down=1.0)
+    G.add_lamp(sc, ma, "green")
+    G.add_shoes(sc, mb, down=0.0)
+    G.add_lamp(sc, mb, "amber")
+    shoes_b = G.shoe_points(MIR_PARK)
+    plate_b = next(r for r in rects if r[0] <= shoes_b[0][0] <= r[1] and r[2] <= shoes_b[0][1] <= r[3])
 
     # ---- the area: vacuum, pail, extinguisher, sign, station, ground bonds
     place(sc, N.vacuum_meshes(), "vac:body", AB.WT(T((*VAC_AT, 0)) @ R((0, 0, 1), VAC_YAW)))
@@ -285,19 +298,23 @@ def main():
     def gauges(**kv):
         AB.status(sc, **kv)
 
-    gauges(Vacuum="off", Continuity="not checked", Liner="3 % (from the last session's log)", Timer="")
+    gauges(Vacuum="off", Continuity="not checked", Liner="3 % (from the last session's log)", Timer="",
+           Bond="MiR250 1 bonded (0.1 ohm); MiR250 2 not parked")
     eye0, at0 = (600, -3200, 2400), (-760, -500, 450)
 
     # ============================================================================ 1. the area
     sc.step("1/10 Area", "The vacuum station by the atomizer: the Nilfisk 118EXP grounded to the building's ground "
-            "bar, a grounded steel pail with its lid set on, a 30 lb Class D extinguisher and the sign at the tape.",
+            "bar, a grounded steel pail with its lid set on, a 30 lb Class D extinguisher and the sign at the tape. "
+            "Where a MiR250 parks to work, a bonded steel plate is set flush in the floor (ours).",
             4.0, cam_to=AB.cam(eye0, at0), hold=1.6,
             labels=[("Nilfisk CFM 118EXP (lab has)", W2((VAC_AT[0], VAC_AT[1], 980)), (0.10, 0.30)),
                     ("Ground cable to the ground bar", W2((gb[0] - 40, gb[1] - 60, 30)), (0.30, 0.18)),
                     ("Uline S-7344 pail, lid set on, not crimped", W2((PAIL_AT[0], PAIL_AT[1], 380)), (0.05, 0.55)),
                     ("Class D, 30 lb NaCl (Amerex B570)", W2((EXT_AT[0], EXT_AT[1], 800)), (0.12, 0.72)),
                     ("Our station: holster, tool rack, continuity fixture", W2((STN_AT[0], STN_AT[1] - 150, 1040)),
-                     (0.55, 0.22))])
+                     (0.55, 0.22)),
+                    ("Bonded floor plate (ours)", W2(((plate_b[0] + plate_b[1]) / 2, plate_b[2] + 40, 2)),
+                     (0.55, 0.80))])
     sc.step("1/10 Area", "Sign: COMBUSTIBLE METAL POWDER IN USE. Authorized personnel only. NO water, NO compressed "
             "air (vacuum SOP 2.3). Every loose metal object in the zone is bonded or removed.", 2.4,
             cam_to=AB.cam((-850, -2700, 1100), (-1210, -1560, 650)), hold=1.2)
@@ -310,8 +327,32 @@ def main():
                     ("Container removed", W2((M.CHUTE_X, 0, 300)), (0.70, 0.70))])
     # ============================================================================ 3. MiR250 2 parks
     up, secs = AB.mir_drive(mb, MIR_PARK)
+    gauges(Bond="MiR250 1 bonded (0.1 ohm); MiR250 2 driving, its shoes up")
     sc.step("3/10 MiR250 2", "MiR250 2 drives in and parks in front of the station, clear of the hose and the "
-            "vacuum.", secs, up, cam_to=AB.cam((1100, -3300, 2300), (-400, -1300, 500)), hold=0.6)
+            "vacuum, its two ground shoes lifted while it drives.", secs, up,
+            cam_to=AB.cam((1100, -3300, 2300), (-400, -1300, 500)), hold=0.6)
+    # ---- bonded before the arm moves (atom_ground.py; notes/atom_vacuum.md, "Ground within reach")
+    shoe_c = (shoes_b[0] + shoes_b[1]) / 2
+    lamp_w = mb.world(G.LAMP_AT)
+    CAM_SHOE = AB.cam((shoe_c[0] + 980, shoe_c[1] - 1150, 820), (shoe_c[0] - 170, shoe_c[1] - 90, 300))
+    gauges(Bond="MiR250 2: shoes coming down")
+    sc.step("3/10 Bond", "It lowers its two sprung copper-graphite shoes onto the floor plate (ours). Every spot where "
+            "a MiR250 works at the atomizer has such a plate, its leads run in a floor channel to the area's ground "
+            "bar, so nobody clips a lead on and nothing trails across the floor.", 1.6, G.shoes_anim(sc, mb, 0.0, 1.0),
+            cam_to=CAM_SHOE, hold=0.6,
+            labels=[("Two sprung shoes, copper-graphite (ours)", W2(shoe_c + (0, -60, 30)), (0.10, 0.70)),
+                    ("Bonded floor plate, leads to the ground bar", W2((shoe_c[0] + 100, plate_b[2] + 30, 2)),
+                     (0.52, 0.86)),
+                    ("Bond lamp", tuple(lamp_w), (0.70, 0.24))])
+    gauges(Bond="MiR250 2: shoe-plate-shoe 0.12 ohm, plate-bar 0.05 ohm (each <= 1): BONDED")
+
+    def bonded(u):
+        G.lamp(sc, mb, "green" if u > 0.25 else "amber")
+    sc.step("3/10 Bond", "Two readings before the arm may move: the MiR's meter, shoe to shoe through the plate (both "
+            "shoes on metal), and the station's monitor, the plate through its two leads to the bar. Both under 1 "
+            "ohm (ours; NFPA 77 finds under 10 ohm usual for a sound bond): the lamp turns green. Readings "
+            "illustrative.", 1.2, bonded, hold=2.6,
+            labels=[("Bond lamp: green", tuple(lamp_w), (0.70, 0.24))])
     # ============================================================================ 4. take the wand
     W0 = sc.world("vac:wand")
     g_tcp = tcp_of(W0)
@@ -405,9 +446,13 @@ def main():
         """The wand upright with its fitted tool's spigot top at tool_top (+ offsets)."""
         return AB.WT(T(tool_top + np.array([0, dy, dz + N.WAND_L - N.TOOL_COLLAR[0] + N.SEAT_GAP])))
 
-    sc.step("8/10 Tool change", "Out of the chamber and over to our tool rack, the wand upright.", 3.4,
-            rb.joint_to(Tw=tcp_of(hang_at(pa, -110, 150))), cam_to=AB.cam((150, -1050, 900), (-330, -270, 650)),
-            hold=0.1)
+    # round 14: by way of a pose high and well out in front of the rack. Straight to the pose over pocket A, the joint
+    # move took the crevice tool past the station 1.5 mm deep for a frame (round 13's audit, frame 1358)
+    sc.step("8/10 Tool change", "Out of the chamber and over to our tool rack, the wand upright.", 3.0,
+            rb.joint_to(Tw=tcp_of(hang_at(pa, -260, 330))), cam_to=AB.cam((150, -1050, 900), (-330, -270, 650)),
+            hold=0.0)
+    sc.step("8/10 Tool change", "Out of the chamber and over to our tool rack, the wand upright.", 1.2,
+            rb.line_to(tcp_of(hang_at(pa, -110, 150))), hold=0.1)
     sc.step("8/10 Tool change", "The crevice tool goes into pocket A from the front: its collar slides between our "
             "two slotted plates.", 1.4, rb.line_to(tcp_of(hang_at(pa, -110, 0))), hold=0.1)
     sc.step("8/10 Tool change", "In.", 1.6, rb.line_to(tcp_of(hang_at(pa, 0, 0))), hold=0.2)

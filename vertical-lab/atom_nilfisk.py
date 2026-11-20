@@ -375,24 +375,75 @@ def extinguisher_meshes() -> dict:
 
 
 SIGN_LINES = ("COMBUSTIBLE METAL", "POWDER IN USE", "Authorized personnel only", "NO water, NO compressed air")
-# SOP 2.3: "COMBUSTIBLE METAL POWDER IN USE - Authorized Personnel Only - NO Water, NO Compressed Air"
+# SOP 2.3: "COMBUSTIBLE METAL POWDER IN USE - Authorized Personnel Only - NO Water, NO Compressed Air". Laid out on the
+# board as SIGN_BLOCKS: the warning in three big lines, the rules in three smaller ones (round 13's sign drew
+# "COMBUSTIBLE METAL" 44 mm tall on one line, about 530 mm wide on a 460 mm board, so it ran off both edges: PR #318,
+# 25:53 in round 12's long-form). Every line is now measured and the whole block scaled to fit inside the margins.
+SIGN_BLOCKS = ((("COMBUSTIBLE", "METAL POWDER", "IN USE"), 1.0),
+               (("Authorized personnel only", "NO water", "NO compressed air"), 0.56))
+SIGN_W, SIGN_H, SIGN_Z0 = 460.0, 620.0, 300.0     # the board, and its foot's height
+SIGN_MARGIN = 34.0                                 # clear space inside the border, every side
+SIGN_BORDER = 12.0                                 # the black border's width
+
+
+def fit_text(blocks, w: float, h: float, gap: float = 0.32, block_gap: float = 0.9, depth: float = 2.0) -> tuple:
+    """Lines of 3-D text laid out to fit a w x h box (x across, z up, the box's centre at the origin), as ONE scale
+    for every line: blocks are ((lines, relative size), ...), each line centred. The scale is the largest that keeps
+    the widest line inside w and the stack (line heights, `gap` x line height between lines, `block_gap` x the next
+    block's line height between blocks) inside h. Returns (mesh, info) with info["widths"] and info["height"] in mm,
+    so a caller can check that nothing is wider than the box. The text faces -y (it is drawn in the x-z plane, its
+    depth towards -y)."""
+    raw = []                                      # (block, line, mesh at Text3D's own size, its width, its height)
+    for bi, (lines, rel) in enumerate(blocks):
+        for line in lines:
+            t = pv.Text3D(line, depth=depth)
+            b = t.bounds
+            raw.append((bi, rel, t, b[1] - b[0], b[3] - b[2]))
+    cap = max(r[4] for r in raw)                  # a full line's height (capitals), at Text3D's own size
+    widest = max(r[3] * r[1] / 1.0 for r in raw)  # widths in units of each line's own scale, times its block's size
+    s_w = w / widest
+    stack = 0.0
+    for k, (bi, rel, _, _, _) in enumerate(raw):
+        stack += cap * rel
+        if k + 1 < len(raw):
+            nxt = raw[k + 1]
+            stack += (gap * cap * rel) if nxt[0] == bi else (block_gap * cap * nxt[1])
+    s_h = h / stack
+    s = min(s_w, s_h)
+    meshes, widths, z = [], [], h / 2 if s == s_h else s * stack / 2
+    for k, (bi, rel, t, wd, _) in enumerate(raw):
+        k_s = s * rel
+        t = t.scale((k_s, k_s, 1.0), inplace=False)
+        b = t.bounds
+        z -= cap * k_s                            # this line's baseline: its capitals' height under the last line
+        t.translate((-(b[0] + b[1]) / 2, -b[2] + z, 0.0), inplace=True)
+        t.rotate_x(90, inplace=True)              # x stays x, y -> z, the depth (+z) -> -y
+        meshes.append(t.triangulate())
+        widths.append(wd * k_s)
+        if k + 1 < len(raw):
+            nxt = raw[k + 1]
+            z -= (gap * cap * k_s) if nxt[0] == bi else (block_gap * cap * s * nxt[1])
+    out = meshes[0].merge(meshes[1:]) if len(meshes) > 1 else meshes[0]
+    return out, dict(scale=s, widths=widths, height=s * stack, box=(w, h))
 
 
 def sign_meshes() -> dict:
-    """An A-frame floor sign (yellow) with the SOP's wording, its face toward -y."""
-    w, h = 460.0, 620.0
-    board = _box(-w / 2, w / 2, -8, 0, 300, 300 + h)
-    legs = _box(-w / 2, -w / 2 + 25, -4, 160, 0, 300 + h).merge(_box(w / 2 - 25, w / 2, -4, 160, 0, 300 + h))
-    texts = []
-    for k, (line, size) in enumerate(zip(SIGN_LINES, (44, 44, 26, 26))):
-        t = pv.Text3D(line, depth=2.0, height=size)
-        b = t.bounds
-        t.translate((-(b[0] + b[1]) / 2, 0, 0), inplace=True)
-        t.rotate_x(90, inplace=True)
-        t.translate((0, -10.0, 300 + h - 90 - k * 110 - (0 if k < 2 else 40)), inplace=True)
-        texts.append(t.triangulate())
+    """An A-frame floor sign (yellow, a black border) with the SOP's wording, its face toward -y. The text is fitted
+    to the board inside SIGN_MARGIN (fit_text): ``sign_meshes.info`` has the widths it came to."""
+    w, h, z0 = SIGN_W, SIGN_H, SIGN_Z0
+    board = _box(-w / 2, w / 2, -8, 0, z0, z0 + h)
+    legs = _box(-w / 2, -w / 2 + 25, -4, 160, 0, z0 + h).merge(_box(w / 2 - 25, w / 2, -4, 160, 0, z0 + h))
+    b, e = SIGN_BORDER, -9.5
+    border = _box(-w / 2, w / 2, e, -8, z0 + h - b, z0 + h).merge(
+        [_box(-w / 2, w / 2, e, -8, z0, z0 + b), _box(-w / 2, -w / 2 + b, e, -8, z0, z0 + h),
+         _box(w / 2 - b, w / 2, e, -8, z0, z0 + h)])
+    inner_w = w - 2 * (b + SIGN_MARGIN)
+    inner_h = h - 2 * (b + SIGN_MARGIN)
+    text, info = fit_text(SIGN_BLOCKS, inner_w, inner_h)
+    text.translate((0.0, -9.5, z0 + h / 2), inplace=True)
+    sign_meshes.info = info
     return {"sign board": (board, YELLOW), "sign legs": (legs, (0.20, 0.20, 0.22)),
-            "sign text": (texts[0].merge(texts[1:]), BLACK)}
+            "sign border": (border, BLACK), "sign text": (text, BLACK)}
 
 
 # --------------------------------------------------------------------------------------------- our station

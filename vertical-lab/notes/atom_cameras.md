@@ -135,6 +135,13 @@ the views; it has no part here); moved. Chapter 2's
 - The feeds were checked by casting each camera's axis: before the bores, the front pair saw DAL's solid nut 10 mm
   away and the left camera the door's plate.
 
+## In the lab's other scenes (2026-11-20)
+
+The three units are also part of the merged rePowder that every lab scene draws (`lab._repowder()`): door shut, the top
+arm in its working dimple, DAL's port nut and glass in place of the model's. So the set-up movie, chapter 3, the finale
+and the other whole-lab scenes show them once re-rendered (list in [`atom_vacuum.md`](atom_vacuum.md), "Where the
+atomizer's fixtures now appear"). Chapter 2 draws the model part by part and would need `add_units(sc)`.
+
 ## Not done
 
 - The lid is not opened (ghosts only), no tilt for the front HQ or the left camera (DAL's own open item for the HQ),
