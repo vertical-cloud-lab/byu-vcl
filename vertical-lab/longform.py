@@ -702,6 +702,13 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
     "glovebox_tray": "the tipper's powder pour drawn through the jar",
     "atom_vacuum": "the crevice tool 1.5 mm into its station for one frame (8/10)",
     "alloy_print": "a fingertip on the sieving cell's frame by the funnel",
+    "vlm_hookups": "the bay's dock head coming out through the bay's side wall, drawn without its opening",
+    "bay_camera": "the vial 3 mm into its rack as it is set down",
+    "atom_plate": "a fingertip 1.5 mm into the furnace for one frame",
+    "scaleup": "the work itself: the saw through the brackets, the deposition's glow on the beads",
+    "packaging": "the labeller's arm on the bag as it labels it",
+    "upkeep_clip": "one frame of a moving part touching, under 3 mm",
+    "atom_vacuum": "the crevice tool 3 mm into its station, the brush 0.3 mm, one frame each",
 }
 
 
