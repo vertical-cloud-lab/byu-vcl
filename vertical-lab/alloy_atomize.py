@@ -398,7 +398,7 @@ def add_stream(sc, radius=1.4):
 
 def stream(sc, on, thick=1.0, frac=1.0):
     sc.alpha["stream"] = 1.0 if on > 0.02 else 0.0
-    sc.gmat[g("stream")] = S((thick, thick, max(frac, 0.01)), (0, 0, STREAM_TOP))
+    sc.gmat[g("stream")] = S((thick, thick, max(frac, 0.01) * getattr(sc, "stream_k", 1.0)), (0, 0, STREAM_TOP))
 
 
 def film(sc, on):
@@ -639,6 +639,55 @@ class Mir:
 
     def world(self, p):
         return (self.sc.world(self.g) @ np.r_[p, 1.0])[:3]
+
+
+def path_branch(rb, sc, poses, close, n_chk: int = 16) -> np.ndarray:
+    """Round 14: of the IK solutions at poses[0], the one from which the arm can follow every pose (densely, as follow()
+    does, no joint over 20 deg in a step) with the fewest hits of its own links (self and arm; what it holds and its
+    fingertips on the tong may touch, as the audit allows); its joints at poses[0]. From the furnace's right, the
+    nearest branch over the crucible put the forearm through the furnace's body as the tong went down the bore."""
+    import collide
+    dense = []
+    for A0, A1 in zip(poses[:-1], poses[1:]):
+        sl = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack([A0[:3, :3], A1[:3, :3]])))
+        k = max(4, int(np.linalg.norm(A1[:3, 3] - A0[:3, 3]) / 6.0))
+        for t in np.linspace(0, 1, k, endpoint=False):
+            Mx = np.eye(4)
+            Mx[:3, :3] = sl([t]).as_matrix()[0]
+            Mx[:3, 3] = A0[:3, 3] + (A1[:3, 3] - A0[:3, 3]) * t
+            dense.append(Mx)
+    dense.append(poses[-1])
+    chk = rb.checker()
+    world = chk.snapshot()
+    cands = collide.ik_all(rb.model, inv(sc.world(rb.root)) @ poses[0], rb.q)
+    if not cands:
+        cands = [rb.solve(poses[0])]           # raises ValueError if out of reach: the move needs a new pose
+    best, best_hits = cands[0], None
+    for q0 in cands:
+        q, path, ok = q0.copy(), [q0.copy()], True
+        for Mx in dense[1:]:
+            try:
+                q2 = rb.solve(Mx, q)
+            except ValueError:
+                ok = False
+                break
+            if np.abs(q2 - q).max() > math.radians(20):
+                ok = False
+                break
+            q = q2
+            path.append(q)
+        if not ok:
+            continue
+        hits = 0
+        for i in np.linspace(0, len(path) - 1, n_chk).astype(int):
+            hits += sum(1 for h in chk.collisions(path[i], close, world) if h[0] in ("self", "arm"))
+        if best_hits is None or hits < best_hits:
+            best, best_hits = q0, hits
+        if hits == 0:
+            break
+    if best_hits:
+        print(f"warning: {sc.label}: best branch down the path has {best_hits} hit(s)", flush=True)
+    return best
 
 
 def straight(m, x1, y1):
@@ -1390,13 +1439,13 @@ def stage_meshes() -> dict:
 
     def gearbox(c):                                                             # a 30 mm cube under a knob
         return pv.Box(bounds=(c[0] - 15.0, c[0] + 15.0, c[1] - 15.0, c[1] + 15.0, c[2] - 15.0, c[2] + 15.0)).triangulate()
-    u_gbox = gearbox(ku[0] - ku[1] * 37.0)
+    u_gbox = gearbox(ku[0] - ku[1] * KNOB_UP).merge(_cy(tuple(ku[0] - ku[1] * 32.0), tuple(ku[1]), 6.0, 22.0))
     u_knob = hex_knob(ku[0] - ku[1] * 11.0, ku[1], ku[2])
     ring = C.lathe([(56.0, -8.0), (66.0, -8.0), (66.0, 8.0), (56.0, 8.0)], res=48).translate((0, 0, 14.0),
                                                                                            inplace=False)
-    v_screw = _cy((0.0, -80.0, 14.0), (0, 1, 0), 4.0, 40.0, res=16)
+    v_screw = _cy((0.0, -107.0, 14.0), (0, 1, 0), 4.0, 94.0, res=16)
     v_knob = hex_knob(kv[0] - kv[1] * 11.0, kv[1], kv[2])
-    v_gbox = gearbox(kv[0] - kv[1] * 37.0)
+    v_gbox = gearbox(kv[0] - kv[1] * KNOB_UP).merge(_cy(tuple(kv[0] - kv[1] * 32.0), tuple(kv[1]), 6.0, 22.0))
     v_block = _bx(-14.0, 14.0, -98.0, -58.0, 4.0, 24.0)
     return {"stage base": (tf(base), dark, "stage_base"), "stage bellows": (tf(bell), steel, "stage_base"),
             "stage carriage": (tf(carriage), ours, "stage_u"), "stage u screw": (tf(u_screw), steel, "stage_base"),
@@ -1414,18 +1463,23 @@ def knob_axes() -> dict:
     rest. Each sits on a gearbox (a 30 mm cube) at its screw's end: the u screw's outer end up-slope of the stack, the v
     screw's front end."""
     F = stage_frame()
-    au = np.array([-0.5, 0.0, math.sqrt(0.75)])                    # up, leaning 30 deg out to the left and to the
-    av = np.array([0.0, -0.5, math.sqrt(0.75)])                    # front: the hands stay clear of DAL's left camera
-    gu = (F @ np.r_[74.0, 0.0, 25.0, 1.0])[:3]                     # unit on the door, above (round 14's audit)
-    gv = (F @ np.r_[0.0, -112.0, 14.0, 1.0])[:3]                   # the u screw's end; the v screw's front end
-    return {"u": (gu + au * 37.0, au, np.array([0.0, 1.0, 0.0])),
-            "v": (gv + av * 37.0, av, np.array([1.0, 0.0, 0.0]))}
+    au = np.array([-0.45, -0.30, 0.84])                           # up, leaning out towards each arm (MiR250 2 at the
+    av = np.array([0.30, -0.45, 0.84])                            # front left, MiR250 1 in front): the hands stay
+    au, av = au / np.linalg.norm(au), av / np.linalg.norm(av)     # clear of DAL's left camera unit on the door and the
+    gu = (F @ np.r_[74.0, 0.0, 25.0, 1.0])[:3]                     # door's lower clamp (round 14's audit)
+    gv = (F @ np.r_[0.0, -170.0, 14.0, 1.0])[:3]                   # the u screw's end; the v screw's front end
+    return {"u": (gu + au * KNOB_UP, au, np.array([0.0, 1.0, 0.0]) - au * au[1]),
+            "v": (gv + av * KNOB_UP, av, np.array([1.0, 0.0, 0.0]) - av * av[0])}
+
+
+KNOB_UP = 57.0                         # a knob's top face over its gearbox's centre: 15 (the box) + a 20 mm neck + 22
 
 
 def hex_knob(c, a, fn, af: float = 32.0, length: float = 22.0) -> pv.PolyData:
     """A hex knob: centre c, axis a, two flats with normal +-fn, `af` across the flats, `length` long (model frame)."""
     a = np.asarray(a, float) / np.linalg.norm(a)
-    fn = np.asarray(fn, float) / np.linalg.norm(fn)
+    fn = np.asarray(fn, float) - a * float(np.dot(fn, a))
+    fn = fn / np.linalg.norm(fn)
     t = np.cross(a, fn)
     r = af / 2 / math.cos(math.radians(30.0))
     ring = [math.cos(math.radians(30.0 + 60.0 * k)) * r * fn + math.sin(math.radians(30.0 + 60.0 * k)) * r * t
@@ -1445,7 +1499,8 @@ def stage_knob_grasp(which: str, turns: float = 0.0) -> np.ndarray:
     c, a, fn = knob_axes()[which]
     G = np.eye(4)
     z = -a
-    x = fn
+    x = fn - a * float(np.dot(fn, a))
+    x = x / np.linalg.norm(x)
     G[:3, 0], G[:3, 1], G[:3, 2], G[:3, 3] = x, np.cross(z, x), z, W(c - a * 11.0)
     return G @ R((0, 0, 1), 360.0 * KNOB_SENSE[which] * turns)
 
@@ -1459,6 +1514,9 @@ def stage_move(sc, u: float, v: float):
     off = T(tuple(sd * u + np.array([0.0, v, 0.0])))
     sc.gmat[g("stack")] = off
     sc.gmat[g("cover")] = off
+    # slid in, the plate meets the stream higher; 2 mm short, as the stream's flat end meets the 45 deg plate 1.4 mm
+    # deep at its upper edge (the audit: 3 mm once the plate moved)
+    sc.stream_k = 1.0 - (u * math.sqrt(2.0) + 2.0) / (STREAM_TOP - M.IMPACT[2])
 
 
 def stage_knob(sc, which: str, turns: float):
@@ -1744,6 +1802,8 @@ def finish(sc):
     """Save the 3-D render to out/clean/ (its MP4, its GIF frames as PNGs, its JSON with the footage slots), then
     splice the footage in. ARM_AUDIT=1 renders nothing: it only writes out/collisions/alloy_atomize.json."""
     if PREVIEW or AUDIT:
+        if AUDIT:                          # where each sub-step's frames are, to read the audit's frame numbers by
+            Path("/tmp/alloy_atomize_substeps.json").write_text(json.dumps(sc.substeps, indent=0))
         return sc.save()
     raw_json, raw_gif = (part_paths(PART[0])[1:] if PART else (RAW_JSON, RAW_GIF))
     if raw_gif.exists():
@@ -1824,8 +1884,9 @@ def movie():
     # the chamber's door side, each to one axis of the plate's landing stage (STEER_A, STEER_B, model frame).
     x_load, y_load = RP[0] + AL.A_AT[0], RP[1] + AL.A_AT[1]
     x_lid, y_lid = RP[0] + AL.B_AT[0], RP[1] + AL.B_AT[1]
-    STEER_A = (-500.0, -760.0, 0.0)                   # MiR250 1 in the pour: front left, its arm on the v knob
-    STEER_B = (-950.0, -40.0, 90.0)                   # MiR250 2: left of the door, its arm on the u knob
+    STEER_A = (-50.0, -950.0, 0.0)                    # MiR250 1 in the pour: in front, its arm on the v knob
+    STEER_B = (-900.0, -470.0, 0.0)                   # MiR250 2: front left, its arm on the u knob; both clear of
+                                                      # the vacuum pump left of the door (x -880..-420, y 120..340)
     y_park = -2450.0                                  # the MiR broadside, 260 mm clear of the view port
     x_wait = RP[0] + 1150.0                           # out of the cutaway's line of sight, in front of the HX
     x_cont = RP[0] + M.CHUTE_X - 320.0                # arm base 320 mm left of the container: room to reach in
@@ -2025,13 +2086,16 @@ def movie():
         sc.step(f"2/{n}", cap, 0.6 * f, rb.line_to(T((0, 0, 150)) @ rb.tcp_world()), hold=0.05)
         path = tong_path(k)
         grips = [tong_tcp(T(RP) @ tong_frame_for(k, Mx)) for Mx in path]
-        # by way of a pose in front of the furnace, right of the open lid: swung straight over, the tong's handle
-        # grazed the lid's edge (one frame at 1.5 deg planning steps, the tong 0.2 m out from the wrist)
-        stage = grips[0].copy()
-        stage[0, 3], stage[1, 3] = RP[0] + 60.0, RP[1] - 200.0
+        # round 14: by way of a pose 45 mm straight over the descent's first pose (the cup's foot then over the rod's
+        # adapter's top), so the cup comes down onto it, not sideways past the adapter (a straight line from round 6's
+        # pose in front of the furnace passed 14 mm from the rod's axis: the cup 6 mm into the adapter, which 6 fps had
+        # stepped over); higher is out of the arm's reach from the furnace's right. The IK branch is the one that
+        # follows the whole descent clear (path_branch)
+        stage = T((0, 0, 45)) @ grips[0]
+        q_st = path_branch(rb, sc, [stage] + grips, GRIP_TONG)
         # cup 1 is followed down a cut-open bore (the cut is drawn only: ARM_AUDIT=1 checks the whole furnace)
         cut_in = (lambda u: set_cut(sc, u, FUR_G)) if (k == 0 and not AUDIT) else None
-        mv = rb.joint_to(Tw=stage)
+        mv = rb.joint_to(q1=q_st)
         sc.step(f"2/{n}", cap, 1.3 * f, (lambda u: (mv(u), cut_in(u))) if cut_in else mv, hold=0.0,
                 cam_to=CAM_CUT if k == 0 else None)
         sc.step(f"2/{n}", cap, 0.6 * f, rb.line_to(grips[0]), hold=0.05)
@@ -2129,8 +2193,7 @@ def movie():
     cap = ("MiR250 2 goes round to the left of the chamber's door, where the plate's landing stage is (ours): in the "
            "pour, both arms steer the plate. MiR250 1 waits at the right.")
     show_g(mir="waiting, right", mirB="to the door")
-    for leg in (dict(m=mir_b, to=(STEER_B[0], -650.0)), dict(m=mir_b, turn=90.0),
-                dict(m=mir_b, straight=(STEER_B[0], STEER_B[1]))):
+    for leg in (dict(m=mir_b, to=(STEER_B[0], STEER_B[1])),):
         m_ = leg["m"]
         if "to" in leg:
             x1, y1 = RP[0] + leg["to"][0], RP[1] + leg["to"][1]
@@ -2243,7 +2306,7 @@ def movie():
     cap = ("Before the pour, MiR250 1 comes round to the front left of the chamber's door, where MiR250 2 already "
            "waits: the plate is steered during the pour.")
     show_g(mir="to the door")
-    for leg in (dict(to=(250.0, -1150.0)), dict(to=(STEER_A[0], STEER_A[1])), dict(turn=0.0)):
+    for leg in (dict(to=(STEER_A[0], STEER_A[1])),):
         if "to" in leg:
             x1, y1 = RP[0] + leg["to"][0], RP[1] + leg["to"][1]
             sc.step(f"4/{n}", cap, mir.secs(x1, y1), mir.drive(x1, y1), hold=0.05, cam_to=CAM_STEER)
@@ -2263,8 +2326,14 @@ def movie():
                (0.08, 0.30)),
               ("u knob: along the axis", tuple(W(ku[0])), (0.06, 0.62)),
               ("v knob: across", tuple(W(kv[0])), (0.66, 0.74))]
-    sc.step(f"4/{n}", cap, 2.2, RB.both(rbB.joint_to(Tw=G_u0 @ T((0, 0, -90))), rb.joint_to(Tw=G_v0 @ T((0, 0, -90))),
-                                       rbB.grip_to(0.35), rb.grip_to(0.35)), hold=0.6, cam_to=CAM_KNOBS, labels=lbl_st)
+    # each arm on the IK branch that turns its knob through the whole pour's corrections clear (path_branch): the
+    # nearest put arm 1's forearm into DAL's front camera unit, or turned the gripper into its own forearm
+    q_u = path_branch(rbB, sc, [G_u0 @ T((0, 0, -90)), G_u0] + [stage_knob_grasp("u", t) for t in (0.15, 0.3, 0.42)],
+                      c_knob3)
+    q_v = path_branch(rb, sc, [G_v0 @ T((0, 0, -90)), G_v0] + [stage_knob_grasp("v", t) for t in (0.12, 0.24, 0.36)],
+                      c_knob3)
+    sc.step(f"4/{n}", cap, 2.2, RB.both(rbB.joint_to(q1=q_u), rb.joint_to(q1=q_v), rbB.grip_to(0.35), rb.grip_to(0.35)),
+            hold=0.6, cam_to=CAM_KNOBS, labels=lbl_st)
     sc.step(f"4/{n}", cap, 0.9, RB.both(rbB.line_to(G_u0), rb.line_to(G_v0)), hold=0.05, labels=lbl_st)
     sc.step(f"4/{n}", cap, 0.4, RB.both(rbB.grip_to(c_knob3), rb.grip_to(c_knob3)), hold=0.8, labels=lbl_st)
     rbB.events.append((sc.n, "grasp", g("stage_uknob"), None))
@@ -2393,14 +2462,12 @@ def movie():
     gv1 = T(tuple(sd * steer["u"])) @ stage_knob_grasp("v", steer["v_turns"])
     sc.step(f"4/{n}", cap, 0.8, RB.both(rbB.line_to(gu1 @ T((0, 0, -90))), rb.line_to(gv1 @ T((0, 0, -90)))),
             hold=0.05)
-    show_g(arm="parked", armB="parked")
-    sc.step(f"4/{n}", cap, 1.6, RB.both(rbB.joint_to(PARK), rb.joint_to(PARK)), hold=0.05)
+    show_g(armB="parked")
+    sc.step(f"4/{n}", cap, 1.6, rbB.joint_to(PARK), hold=0.05)
     show_g(mirB="back to the aisle")
-    x1, y1 = RP[0] + STEER_B[0], RP[1] - 650.0
-    sc.step(f"4/{n}", cap, max(1.2, P.ramp_secs(float(np.hypot(x1 - mir_b.x, y1 - mir_b.y)), MIR_SPEED)),
-            straight(mir_b, x1, y1), hold=0.05)
-    sc.step(f"4/{n}", cap, 1.6, sc.AB.mir_turn(mir_b, 0.0), hold=0.05)
     sc.step(f"4/{n}", cap, mir_b.secs(*B_HOME), mir_b.drive(*B_HOME), hold=0.1)
+    show_g(arm="parked")
+    sc.step(f"4/{n}", cap, 1.6, rb.joint_to(PARK), hold=0.05)
     show_g(armB=None, mirB=None)
 
     # ------------------------------------------------------------------ 5. the container onto the MiR
@@ -2423,8 +2490,10 @@ def movie():
     a_h = np.array([math.sin(math.radians(-15.0)), math.cos(math.radians(-15.0)), 0.0])
     grasp_h = P.tcp_frame(W(handle), a_h, 90.0)
     pre_h = grasp_h @ T((0, 0, -120))
-    cap = ("The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the "
-           "MiR's cabinet. It goes next to the sieve shaker.")
+    cap = ("The arm takes the container off by its valve's red lever and carries it to the cradle on the MiR. A stand-in: "
+           "the lever is the valve's handle, not a lifting point, and the turnaround's design (next chapter) holds the "
+           "container's weight from below on a fork while the other arm opens the clamp. That is not yet animated "
+           "without collisions. Next, the sieve shaker.")
     show_g(arm="container")
     # the fingers only open to 19 mm for the 12 mm bar: open wide, the upper one reaches the chamber valve's handle,
     # 27 mm over this one

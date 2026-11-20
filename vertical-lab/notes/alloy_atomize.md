@@ -80,7 +80,18 @@ lands.
 
 #### Checked
 
-ROUND14_AUDIT
+Strict audit (`ARM_AUDIT=1`, the whole lab, 12 fps): **0 of 2451 frames** with an arm in collision, **0** mover frames
+(`out/collisions/alloy_atomize.json`). On the way there (the lite scene, the rePowder and the units only):
+
+| Found | Why | Fixed |
+| --- | --- | --- |
+| A cup 6 mm into the rod's adapter, cups 1 and 2 (one frame each) | The straight move from round 6's waiting pose in front of the furnace to over the crucible passed 14 mm from the rod's axis; at 6 fps the frame it was deepest had been stepped over | The cup goes 45 mm straight over its first descent pose, then straight down (higher is out of reach from the furnace's right) |
+| Arm 1's forearm and upper arm in the furnace's body and the chamber (20 frames, cup 1 at the floor) | From the furnace's right, the nearest IK branch over the crucible came down the bore elbow-low | `path_branch`: of the IK branches over the cup's place, the one that follows the whole descent with no hits |
+| Arm 2's upper arm in its own cabinet at the u knob; arm 1's wrist in its own cabinet at the v knob | The knobs at the stage's height, level: the arms reached them low, folded into their own cabinets | Both knobs on top of gearboxes, on a 20 mm neck, facing up and leaning 30 deg towards their arms |
+| Arm 2's wrist in DAL's left camera unit on the door; arm 1's fingers on the door's lower clamp | Knobs straight up, under the unit; the v knob 16 mm from the clamp's knob | The lean; the v screw's gearbox 58 mm further out |
+| A wrist flip turning a knob (171-180 deg in a step) | 1.5 turns of a 2 mm lead took wrist 3 past its stop, and the IK took the other wrist branch | An 8 mm lead (no correction turns the wrist more than 90 deg); the v knob turns the other way; each arm on the branch that turns clear through every correction (`path_branch`): the nearest put arm 1's forearm into DAL's front camera unit, or the gripper into its own forearm |
+| MiR250 2 through the rePowder's vacuum pump, and the two MiR250s into each other (16-70 frames) | The first pour spots: MiR250 2 left of the door, facing it, where the pump stands (x -880..-420, y 120..340) | MiR250 2 at the front left (-900, -470), MiR250 1 in front (-50, -950), 50 mm apart; MiR250 2 leaves before arm 1 parks |
+| The plate and its melt film 3 mm into the stream (two frames) | Slid in, the plate meets the stream higher, and the stream was still drawn to the old landing | The stream ends where the moved plate is (`stage_move`), 2 mm short as its flat end meets the 45 deg plate |
 
 ### Round 11 (PR #318, 2026-11-14): the stricter collision audit
 
