@@ -153,9 +153,9 @@ def _repowder_fixtures() -> list[tuple]:
             pp, nn = CAMS.port_axis()
             mesh = CAMS.bore(mesh, pp, nn, CAMS.PORT_GLASS_R)
         col, op = CAMS.colour_of(k)
-        out.append((mesh.triangulate(), col, op))
-    for _, (mesh, col) in GND.fixture_meshes().items():
-        out.append((mesh, col, 1.0))
+        out.append((mesh.triangulate(), col, op, None))
+    for name, (mesh, col) in GND.fixture_meshes().items():
+        out.append((mesh, col, 1.0, name))
     return out
 
 
@@ -182,9 +182,16 @@ def _repowder() -> dict:
     for name, r in rp.pipe_routes().items():
         tube = pv.Spline(np.array(r["pts"], float), 120).tube(radius=r["r"], n_sides=14).triangulate()
         by.setdefault((tuple(round(c, 3) for c in r["color"]), 1.0), []).append(tube)
-    for mesh, col, op in _repowder_fixtures():
-        by.setdefault((tuple(round(c, 3) for c in col), op), []).append(mesh)
     out = {}
+    for mesh, col, op, name in _repowder_fixtures():
+        # round 14: what lies on the floor (the bonded plates, their terminals and channels, all under 6 mm) stays a
+        # mesh of its own, so collide.py's movers check counts it as a floor marking a MiR rolls onto; merged by colour
+        # with the machine's steel it read as an obstacle (chapter 3's audit: the MiR's skirt 3 mm into "repowder:c41")
+        if name is not None and float(mesh.bounds[5]) <= 6.0:
+            out[f"repowder:{name.replace(' ', '_')}"] = dict(mesh=mesh, color=tuple(col), opacity=op, specular=0.2,
+                                                            group="repowder", material="rp")
+            continue
+        by.setdefault((tuple(round(c, 3) for c in col), op), []).append(mesh)
     for i, ((col, op), ms) in enumerate(sorted(by.items())):
         mesh = pv.merge(ms, merge_points=False) if len(ms) > 1 else ms[0]
         out[f"repowder:c{i}"] = dict(mesh=mesh, color=col, opacity=op, specular=0.3, group="repowder", material="rp")

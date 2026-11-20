@@ -1920,7 +1920,7 @@ def movie():
     y_cont = -2650.0                                  # and 200 mm further out than for the lid: closer, the forearm
                                                       # comes down through the MiR's own cabinet to the low handle
     CAM_WIDE = [(-1500, -9200, 4300), (-1900, -1500, 900), (0, 0, 1)]
-    CAM_LOAD = cam((1300, -1500, 2200), (60, -40, 1250))      # round 14: from the front right, over arm 1's shoulder
+    CAM_LOAD = cam((1800, -2100, 2350), (40, -40, 1250))      # round 14: from the front right, over arm 1's shoulder
     CAM_TOP = cam((-480, -560, 1700), (0, 10, 1290))
     CAM_SEC = cam((-330, -820, 1430), (5, 0, 1262))
     CAM_CUT = cam((-250, -620, 1420), (-15, 20, 1255))      # round 14: into the cut-open bore, cup 1 on the tong
@@ -1928,8 +1928,9 @@ def movie():
     CAM_STEER = cam((-1700, -1900, 1750), (-330, -180, 860))  # round 14: both arms at the landing stage, the door side
     CAM_KNOBS = cam((-900, -900, 1150), (-280, -60, 800))     # round 14: the stage and its two knobs, close
     CAM_CHAMBER = cam((-900, -2200, 1000), (110, 0, 760))
-    CAM_POUR2 = cam((520, -1500, 1180), (-20, 0, 960))       # round 14: the pour from the front right, the arms at the
-    CAM_CHAMBER2 = cam((1300, -1900, 1050), (150, 0, 700))   # door behind it on the left; the container, the same side
+    CAM_POUR2 = cam((600, -500, 900), (-20, 0, 930))         # round 14: the pour from the front right, under DAL's
+    CAM_CHAMBER2 = cam((1300, -1900, 1050), (150, 0, 700))   # front camera unit and clear of arm 1 at its knob (from
+                                                             # higher, the unit or arm 1's elbow hid the plate)
     CAM_CONT = cam((1450, -1650, 1250), (250, -300, 520))
     CAM_CRADLE = cam((1900, -2500, 1750), (150, -560, 760))
     CAM_PAIR = cam((-800, -4300, 1500), (-280, -600, 520))   # round 9: both units from the front, their ballast plates
@@ -2245,7 +2246,7 @@ def movie():
             x1, y1 = RP[0] + leg["straight"][0], RP[1] + leg["straight"][1]
             sc.step(f"2/{n}", cap, max(1.2, P.ramp_secs(float(np.hypot(x1 - m_.x, y1 - m_.y)), MIR_SPEED)),
                     straight(m_, x1, y1), hold=0.05)
-    show_g(mirB="at the door, left")
+    show_g(mirB="at the door, front left")
     show_g(armB=None, mirB=None)
 
     # ------------------------------------------------------------------ 3. gas wash, heat, melt
@@ -2354,7 +2355,7 @@ def movie():
                     cam_to=CAM_STEER)
         else:
             sc.step(f"4/{n}", cap, 1.2, sc.AB.mir_turn(mir, leg["turn"]), hold=0.05)
-    show_g(mir="at the door, front left")
+    show_g(mir="in front of the door")
     steer = dict(u=0.0, v=0.0, u_turns=0.0, v_turns=0.0, now=LAND_TARGET, trail=[], drift=(0.0, 0.0))
     c_knob3 = sc.AL.LT.close_for_gap(32.8)
     G_u0, G_v0 = stage_knob_grasp("u"), stage_knob_grasp("v")
