@@ -1,77 +1,77 @@
 {
  "name": "vlm_hookups",
- "fps": 15,
- "n_frames": 595,
+ "fps": 12,
+ "n_frames": 473,
  "size": [
-  1280,
-  720
+  1920,
+  1080
  ],
  "substeps": [
   {
    "label": "1/6",
    "caption": "Every tray carries its own UPS, sized for what it must keep alive (tray A: Vertiv Liebert GXT5LI-1500LVRT2UXL), standing at its back right; its front lights green on mains, amber on battery. In its slot, a tray is plugged into the machine through one automatic coupling in the slot's right-hand side wall.",
    "start_frame": 0,
-   "end_frame": 101
+   "end_frame": 80
   },
   {
    "label": "2/6",
    "caption": "Stored in R2, docked: the dock in the side wall holds the plate home. Mains, Ethernet, compressed air, nitrogen and chilled water in and out are all live (the slow markers show which way each goes), from the service riser through the coupling to the tray; the UPS charges. Tray A's instruments are drawn faint.",
-   "start_frame": 102,
-   "end_frame": 200
+   "start_frame": 81,
+   "end_frame": 159
   },
   {
    "label": "3/6",
    "caption": "Before the tray may move: the air, N2 and water valves shut and their lines vent (Staubli: the couplings must not part under pressure); the contactor opens, so the UPS takes the load; then the dock pulls back 75 mm, its pins 19 mm clear of the tray.",
-   "start_frame": 201,
-   "end_frame": 293
+   "start_frame": 160,
+   "end_frame": 233
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's battery light are amber.",
-   "start_frame": 294,
-   "end_frame": 304
+   "start_frame": 234,
+   "end_frame": 241
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's battery light are amber.",
-   "start_frame": 305,
-   "end_frame": 336
+   "start_frame": 242,
+   "end_frame": 266
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's battery light are amber.",
-   "start_frame": 337,
-   "end_frame": 347
+   "start_frame": 267,
+   "end_frame": 274
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's battery light are amber.",
-   "start_frame": 348,
-   "end_frame": 356
+   "start_frame": 275,
+   "end_frame": 281
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's battery light are amber.",
-   "start_frame": 357,
-   "end_frame": 386
+   "start_frame": 282,
+   "end_frame": 305
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's battery light are amber.",
-   "start_frame": 387,
-   "end_frame": 399
+   "start_frame": 306,
+   "end_frame": 316
   },
   {
    "label": "5/6",
    "caption": "At the opening the bay's identical dock pushes in: the guide pins find the plate's bushings, the contacts and couplings mate, the contactor closes (the UPS recharges) and only then the valves open: the supplies fill the tray's lines again.",
-   "start_frame": 400,
-   "end_frame": 510
+   "start_frame": 317,
+   "end_frame": 405
   },
   {
    "label": "6/6",
    "caption": "Docked at the opening, as in its slot: on mains, with air, N2 and water. Where the tray is stored and where it is worked on, the same coupling; only the seconds between run on the tray's UPS.",
-   "start_frame": 511,
-   "end_frame": 594
+   "start_frame": 406,
+   "end_frame": 472
   }
  ]
 }
