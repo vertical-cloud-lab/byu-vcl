@@ -17,7 +17,7 @@ its parent's name plus a suffix from a fixed list: `lonsdale-pc`, `tray-d-cam0`,
 **physical unit** also gets a permanent asset number (`VCL-0023`) for its label and the records. Trays keep their
 letters, said aloud as NATO words ("tray Delta").
 
-The model has 239 named units: 41 stations, 32 computers, 31 cameras, 27 units, 23 sensors, 18 trays, 14 docks, 12 ups, 12 plates, 12 switchs, 6 robot parts, 6 stores, 2 pumps, 2 chargers, 1 hood.
+The model has 238 named units: 41 stations, 31 camera units, 31 computers, 27 other units, 23 AirGradients, 18 trays, 14 docks, 12 UPSs, 12 coupling plates, 12 switches, 6 robot parts, 6 passive stores, 2 pumps, 2 chargers, 1 tray hood.
 
 ## Three layers, and why
 

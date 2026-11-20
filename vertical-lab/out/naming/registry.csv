@@ -209,32 +209,31 @@ VCL-0207,galileo,station,station,,"floor (-4.3, -6.6) m",Instron 68SC-2 table fr
 VCL-0208,galileo-pc,computer,station,galileo,"floor (-4.3, -6.6) m",Instron 68SC-2 table frame: its computer,,,,
 VCL-0209,galileo-air,sensor,service,galileo,,AirGradient ONE (with display),,,,
 VCL-0210,davy,station,station,,"floor (+1.5, -6.7) m",Labconco Protector XStream ducted fume hood,Humphry Davy,1778-1829,the safety lamp (1815): working safely in bad air,https://en.wikipedia.org/wiki/Davy_lamp
-VCL-0211,davy-pc,computer,station,davy,"floor (+1.5, -6.7) m",Labconco Protector XStream ducted fume hood: its computer,,,,
-VCL-0212,davy-air,sensor,service,davy,,AirGradient ONE (with display),,,,
-VCL-0213,gibbs,station,printer,,"floor (+3.9, -6.6) m",InssTek MX-Lab DED (blends compositions in the melt pool),J. Willard Gibbs,1839-1903,"the phase rule and free energy, the thermodynamics behind screening alloy compositions",https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs
-VCL-0214,gibbs-pc,computer,printer,gibbs,"floor (+3.9, -6.6) m",InssTek MX-Lab DED (blends compositions in the melt pool): its computer,,,,
-VCL-0215,gibbs-air,sensor,service,gibbs,,AirGradient ONE (with display),,,,
-VCL-0216,lazarenko,station,station,,"floor (+6.6, -7.5) m",FANUC ROBOCUT wire EDM,Boris and Natalya Lazarenko,1910-1979 (Boris),invented electrical discharge machining (1943),https://en.wikipedia.org/wiki/Electrical_discharge_machining
-VCL-0217,lazarenko-pc,computer,station,lazarenko,"floor (+6.6, -7.5) m",FANUC ROBOCUT wire EDM: its computer,,,,
-VCL-0218,lazarenko-air,sensor,service,lazarenko,,AirGradient ONE (with display),,,,
-VCL-0219,javan,station,printer,,"floor (-9.4, -10.6) m",EOS M 400-4 (scale-up),Ali Javan,1926-2016,"the first gas laser (helium-neon, 1960, with Bennett and Herriott)",https://en.wikipedia.org/wiki/Ali_Javan
-VCL-0220,javan-pc,computer,printer,javan,"floor (-9.4, -10.6) m",EOS M 400-4 (scale-up): its computer,,,,
-VCL-0221,brunel,station,station,,"floor (+9.6, -10.7) m",Meltio robot cell (propeller repair),Isambard Kingdom Brunel,1806-1859,"the SS Great Britain (1843), the first iron, screw-propelled ocean liner",https://en.wikipedia.org/wiki/SS_Great_Britain
-VCL-0222,brunel-pc,computer,station,brunel,"floor (+9.6, -10.7) m",Meltio robot cell (propeller repair): its computer,,,,
-VCL-0223,aston,station,station,,"floor, south row's east end (planned, notes/icpms.md)","Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood",Francis Aston,1877-1945,"the mass spectrograph and isotopes, Nobel 1922",https://en.wikipedia.org/wiki/Francis_William_Aston
-VCL-0224,aston-pc,computer,station,aston,"floor, south row's east end (planned, notes/icpms.md)","Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood: its computer",,,,
-VCL-0225,blodgett,station,station,,"floor, beside the atomizer (atom_bn_station.py)",the atomizer's BN coating station (ours),Katharine Burr Blodgett,1898-1979,"thin coatings (Langmuir-Blodgett films, non-reflective glass)",https://en.wikipedia.org/wiki/Katharine_Burr_Blodgett
-VCL-0226,faraday-top,camera,camera,faraday,on the rePowder,"DAL PR 189 camera unit, top",,,,
-VCL-0227,faraday-front,camera,camera,faraday,on the rePowder,"DAL PR 189 camera unit, front",,,,
-VCL-0228,faraday-left,camera,camera,faraday,on the rePowder,"DAL PR 189 camera unit, left",,,,
-VCL-0229,faraday-chiller,unit,station,faraday,,the rePowder's chiller and optimizer,,,,
-VCL-0230,kirkaldy-oven,unit,station,kirkaldy,,Instron 3119-608 environmental chamber,,,,
-VCL-0231,deckard-depowder,unit,printer,deckard,,depowdering box,,,,
-VCL-0232,agricola-tipper,unit,station,agricola,,sieve tipper,,,,
-VCL-0233,agricola-wash,unit,station,agricola,,sieve wash module,,,,
-VCL-0234,charger-1,charger,robot,,"floor (-1.5, -6.5) m",MiR Charge 48V,,,,
-VCL-0235,charger-2,charger,robot,,"floor (-0.3, -6.5) m",MiR Charge 48V,,,,
-VCL-0236,charger-air,sensor,service,charger-1,,AirGradient ONE (with display),,,,
-VCL-0237,exvac-1,unit,service,,floor,Nilfisk CFM 118EXP explosion-proof vacuum,,,,
-VCL-0238,util-n2,unit,service,,floor,Parker Balston UHPN2-1100 N2 generator,,,,
-VCL-0239,util-chiller,unit,service,,floor,Thermo Scientific ThermoFlex 900 chiller,,,,
+VCL-0211,davy-air,sensor,service,davy,,AirGradient ONE (with display),,,,
+VCL-0212,gibbs,station,printer,,"floor (+3.9, -6.6) m",InssTek MX-Lab DED (blends compositions in the melt pool),J. Willard Gibbs,1839-1903,"the phase rule and free energy, the thermodynamics behind screening alloy compositions",https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs
+VCL-0213,gibbs-pc,computer,printer,gibbs,"floor (+3.9, -6.6) m",InssTek MX-Lab DED (blends compositions in the melt pool): its computer,,,,
+VCL-0214,gibbs-air,sensor,service,gibbs,,AirGradient ONE (with display),,,,
+VCL-0215,lazarenko,station,station,,"floor (+6.6, -7.5) m",FANUC ROBOCUT wire EDM,Boris and Natalya Lazarenko,1910-1979 (Boris),invented electrical discharge machining (1943),https://en.wikipedia.org/wiki/Electrical_discharge_machining
+VCL-0216,lazarenko-pc,computer,station,lazarenko,"floor (+6.6, -7.5) m",FANUC ROBOCUT wire EDM: its computer,,,,
+VCL-0217,lazarenko-air,sensor,service,lazarenko,,AirGradient ONE (with display),,,,
+VCL-0218,javan,station,printer,,"floor (-9.4, -10.6) m",EOS M 400-4 (scale-up),Ali Javan,1926-2016,"the first gas laser (helium-neon, 1960, with Bennett and Herriott)",https://en.wikipedia.org/wiki/Ali_Javan
+VCL-0219,javan-pc,computer,printer,javan,"floor (-9.4, -10.6) m",EOS M 400-4 (scale-up): its computer,,,,
+VCL-0220,brunel,station,station,,"floor (+9.6, -10.7) m",Meltio robot cell (propeller repair),Isambard Kingdom Brunel,1806-1859,"the SS Great Britain (1843), the first iron, screw-propelled ocean liner",https://en.wikipedia.org/wiki/SS_Great_Britain
+VCL-0221,brunel-pc,computer,station,brunel,"floor (+9.6, -10.7) m",Meltio robot cell (propeller repair): its computer,,,,
+VCL-0222,aston,station,station,,"floor, south row's east end (planned, notes/icpms.md)","Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood",Francis Aston,1877-1945,"the mass spectrograph and isotopes, Nobel 1922",https://en.wikipedia.org/wiki/Francis_William_Aston
+VCL-0223,aston-pc,computer,station,aston,"floor, south row's east end (planned, notes/icpms.md)","Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood: its computer",,,,
+VCL-0224,blodgett,station,station,,"floor, beside the atomizer (atom_bn_station.py)",the atomizer's BN coating station (ours),Katharine Burr Blodgett,1898-1979,"thin coatings (Langmuir-Blodgett films, non-reflective glass)",https://en.wikipedia.org/wiki/Katharine_Burr_Blodgett
+VCL-0225,faraday-top,camera,camera,faraday,on the rePowder,"DAL PR 189 camera unit, top",,,,
+VCL-0226,faraday-front,camera,camera,faraday,on the rePowder,"DAL PR 189 camera unit, front",,,,
+VCL-0227,faraday-left,camera,camera,faraday,on the rePowder,"DAL PR 189 camera unit, left",,,,
+VCL-0228,faraday-chiller,unit,station,faraday,,the rePowder's chiller and optimizer,,,,
+VCL-0229,kirkaldy-oven,unit,station,kirkaldy,,Instron 3119-608 environmental chamber,,,,
+VCL-0230,deckard-depowder,unit,printer,deckard,,depowdering box,,,,
+VCL-0231,agricola-tipper,unit,station,agricola,,sieve tipper,,,,
+VCL-0232,agricola-wash,unit,station,agricola,,sieve wash module,,,,
+VCL-0233,charger-1,charger,robot,,"floor (-1.5, -6.5) m",MiR Charge 48V,,,,
+VCL-0234,charger-2,charger,robot,,"floor (-0.3, -6.5) m",MiR Charge 48V,,,,
+VCL-0235,charger-air,sensor,service,charger-1,,AirGradient ONE (with display),,,,
+VCL-0236,exvac-1,unit,service,,floor,Nilfisk CFM 118EXP explosion-proof vacuum,,,,
+VCL-0237,util-n2,unit,service,,floor,Parker Balston UHPN2-1100 N2 generator,,,,
+VCL-0238,util-chiller,unit,service,,floor,Thermo Scientific ThermoFlex 900 chiller,,,,

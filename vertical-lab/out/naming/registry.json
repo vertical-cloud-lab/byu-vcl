@@ -2147,22 +2147,13 @@
   "asset": "VCL-0210"
  },
  {
-  "name": "davy-pc",
-  "kind": "computer",
-  "cls": "station",
-  "parent": "davy",
-  "where": "floor (+1.5, -6.7) m",
-  "what": "Labconco Protector XStream ducted fume hood: its computer",
-  "asset": "VCL-0211"
- },
- {
   "name": "davy-air",
   "kind": "sensor",
   "cls": "service",
   "parent": "davy",
   "where": "",
   "what": "AirGradient ONE (with display)",
-  "asset": "VCL-0212"
+  "asset": "VCL-0211"
  },
  {
   "name": "gibbs",
@@ -2176,7 +2167,7 @@
   "why": "the phase rule and free energy, the thermodynamics behind screening alloy compositions",
   "source": "https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs",
   "key": "ded",
-  "asset": "VCL-0213"
+  "asset": "VCL-0212"
  },
  {
   "name": "gibbs-pc",
@@ -2185,7 +2176,7 @@
   "parent": "gibbs",
   "where": "floor (+3.9, -6.6) m",
   "what": "InssTek MX-Lab DED (blends compositions in the melt pool): its computer",
-  "asset": "VCL-0214"
+  "asset": "VCL-0213"
  },
  {
   "name": "gibbs-air",
@@ -2194,7 +2185,7 @@
   "parent": "gibbs",
   "where": "",
   "what": "AirGradient ONE (with display)",
-  "asset": "VCL-0215"
+  "asset": "VCL-0214"
  },
  {
   "name": "lazarenko",
@@ -2208,7 +2199,7 @@
   "why": "invented electrical discharge machining (1943)",
   "source": "https://en.wikipedia.org/wiki/Electrical_discharge_machining",
   "key": "wire_edm",
-  "asset": "VCL-0216"
+  "asset": "VCL-0215"
  },
  {
   "name": "lazarenko-pc",
@@ -2217,7 +2208,7 @@
   "parent": "lazarenko",
   "where": "floor (+6.6, -7.5) m",
   "what": "FANUC ROBOCUT wire EDM: its computer",
-  "asset": "VCL-0217"
+  "asset": "VCL-0216"
  },
  {
   "name": "lazarenko-air",
@@ -2226,7 +2217,7 @@
   "parent": "lazarenko",
   "where": "",
   "what": "AirGradient ONE (with display)",
-  "asset": "VCL-0218"
+  "asset": "VCL-0217"
  },
  {
   "name": "javan",
@@ -2240,7 +2231,7 @@
   "why": "the first gas laser (helium-neon, 1960, with Bennett and Herriott)",
   "source": "https://en.wikipedia.org/wiki/Ali_Javan",
   "key": "eos_m400",
-  "asset": "VCL-0219"
+  "asset": "VCL-0218"
  },
  {
   "name": "javan-pc",
@@ -2249,7 +2240,7 @@
   "parent": "javan",
   "where": "floor (-9.4, -10.6) m",
   "what": "EOS M 400-4 (scale-up): its computer",
-  "asset": "VCL-0220"
+  "asset": "VCL-0219"
  },
  {
   "name": "brunel",
@@ -2263,7 +2254,7 @@
   "why": "the SS Great Britain (1843), the first iron, screw-propelled ocean liner",
   "source": "https://en.wikipedia.org/wiki/SS_Great_Britain",
   "key": "meltio_cell",
-  "asset": "VCL-0221"
+  "asset": "VCL-0220"
  },
  {
   "name": "brunel-pc",
@@ -2272,7 +2263,7 @@
   "parent": "brunel",
   "where": "floor (+9.6, -10.7) m",
   "what": "Meltio robot cell (propeller repair): its computer",
-  "asset": "VCL-0222"
+  "asset": "VCL-0221"
  },
  {
   "name": "aston",
@@ -2286,7 +2277,7 @@
   "why": "the mass spectrograph and isotopes, Nobel 1922",
   "source": "https://en.wikipedia.org/wiki/Francis_William_Aston",
   "key": "icpms",
-  "asset": "VCL-0223"
+  "asset": "VCL-0222"
  },
  {
   "name": "aston-pc",
@@ -2295,7 +2286,7 @@
   "parent": "aston",
   "where": "floor, south row's east end (planned, notes/icpms.md)",
   "what": "Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood: its computer",
-  "asset": "VCL-0224"
+  "asset": "VCL-0223"
  },
  {
   "name": "blodgett",
@@ -2309,7 +2300,7 @@
   "why": "thin coatings (Langmuir-Blodgett films, non-reflective glass)",
   "source": "https://en.wikipedia.org/wiki/Katharine_Burr_Blodgett",
   "key": "bn_station",
-  "asset": "VCL-0225"
+  "asset": "VCL-0224"
  },
  {
   "name": "faraday-top",
@@ -2319,7 +2310,7 @@
   "where": "on the rePowder",
   "what": "DAL PR 189 camera unit, top",
   "stream": true,
-  "asset": "VCL-0226"
+  "asset": "VCL-0225"
  },
  {
   "name": "faraday-front",
@@ -2329,7 +2320,7 @@
   "where": "on the rePowder",
   "what": "DAL PR 189 camera unit, front",
   "stream": true,
-  "asset": "VCL-0227"
+  "asset": "VCL-0226"
  },
  {
   "name": "faraday-left",
@@ -2339,7 +2330,7 @@
   "where": "on the rePowder",
   "what": "DAL PR 189 camera unit, left",
   "stream": true,
-  "asset": "VCL-0228"
+  "asset": "VCL-0227"
  },
  {
   "name": "faraday-chiller",
@@ -2348,7 +2339,7 @@
   "parent": "faraday",
   "where": "",
   "what": "the rePowder's chiller and optimizer",
-  "asset": "VCL-0229"
+  "asset": "VCL-0228"
  },
  {
   "name": "kirkaldy-oven",
@@ -2357,7 +2348,7 @@
   "parent": "kirkaldy",
   "where": "",
   "what": "Instron 3119-608 environmental chamber",
-  "asset": "VCL-0230"
+  "asset": "VCL-0229"
  },
  {
   "name": "deckard-depowder",
@@ -2366,7 +2357,7 @@
   "parent": "deckard",
   "where": "",
   "what": "depowdering box",
-  "asset": "VCL-0231"
+  "asset": "VCL-0230"
  },
  {
   "name": "agricola-tipper",
@@ -2375,7 +2366,7 @@
   "parent": "agricola",
   "where": "",
   "what": "sieve tipper",
-  "asset": "VCL-0232"
+  "asset": "VCL-0231"
  },
  {
   "name": "agricola-wash",
@@ -2384,7 +2375,7 @@
   "parent": "agricola",
   "where": "",
   "what": "sieve wash module",
-  "asset": "VCL-0233"
+  "asset": "VCL-0232"
  },
  {
   "name": "charger-1",
@@ -2393,7 +2384,7 @@
   "parent": null,
   "where": "floor (-1.5, -6.5) m",
   "what": "MiR Charge 48V",
-  "asset": "VCL-0234"
+  "asset": "VCL-0233"
  },
  {
   "name": "charger-2",
@@ -2402,7 +2393,7 @@
   "parent": null,
   "where": "floor (-0.3, -6.5) m",
   "what": "MiR Charge 48V",
-  "asset": "VCL-0235"
+  "asset": "VCL-0234"
  },
  {
   "name": "charger-air",
@@ -2411,7 +2402,7 @@
   "parent": "charger-1",
   "where": "",
   "what": "AirGradient ONE (with display)",
-  "asset": "VCL-0236"
+  "asset": "VCL-0235"
  },
  {
   "name": "exvac-1",
@@ -2420,7 +2411,7 @@
   "parent": null,
   "where": "floor",
   "what": "Nilfisk CFM 118EXP explosion-proof vacuum",
-  "asset": "VCL-0237"
+  "asset": "VCL-0236"
  },
  {
   "name": "util-n2",
@@ -2429,7 +2420,7 @@
   "parent": null,
   "where": "floor",
   "what": "Parker Balston UHPN2-1100 N2 generator",
-  "asset": "VCL-0238"
+  "asset": "VCL-0237"
  },
  {
   "name": "util-chiller",
@@ -2438,6 +2429,6 @@
   "parent": null,
   "where": "floor",
   "what": "Thermo Scientific ThermoFlex 900 chiller",
-  "asset": "VCL-0239"
+  "asset": "VCL-0238"
  }
 ]

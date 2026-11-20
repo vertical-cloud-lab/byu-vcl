@@ -271,7 +271,8 @@ def inventory() -> list[dict]:
         root, fam, what, who, life, why, src = STATIONS[key]
         rows.append(_row(root, "station", fam, None, where, what, namesake=who, life=life, why=why, source=src,
                          key=key))
-        if key not in ("unit1", "unit2", "vlm", "vlm2", "doser", "form4", "snowpod", "pcb_line", "bn_station"):
+        if key not in ("unit1", "unit2", "vlm", "vlm2", "doser", "form4", "snowpod", "pcb_line", "bn_station",
+                       "fumehood"):                   # no computer of its own (a hood, a fixture, or a group of units)
             rows.append(_row(f"{root}-pc", "computer", fam, root, where, f"{what}: its computer"))
 
     for k in ("vlm", "vlm2"):
