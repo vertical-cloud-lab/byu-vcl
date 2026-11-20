@@ -132,7 +132,7 @@ def save_view(sc, site: str, k: str):
 
 def labels_for(sc, Wm, opt, z_lift=0.0):
     out = []
-    pos = {"M": (0.16, 0.12), "L": (0.10, 0.52), "R": (0.86, 0.45)}
+    pos = {"M": (0.56, 0.11), "L": (0.10, 0.52), "R": (0.86, 0.45)}
     for k in ("M", "L", "R"):
         top = P.base_camera_geometry(k)["box_centre"]
         p = (Wm @ np.r_[top, 1.0])[:3] + (0, 0, z_lift)
@@ -221,7 +221,7 @@ def part_vlm():
          "cameras do (70 there): AprilTags on the station's face, and the gripper's fingertips, in 3-D, before and "
          "while the arm moves.",
          [(later(lambda: rb.line_to(above_rack)), 1.0, 0.0), (later(lambda: rb.joint_to(Tw=above_cup)), 1.8, 0.2)])
-    look("R", f"4/{n}", "The right side camera: the other half of the pair, and the aisle on this side. Both keep "
+    look("R", f"4/{n}", "The right side camera: the other half of the pair, and the aisle on this side. All three keep "
          "recording through a protective stop: they run on the MiR250's isolated 24 V output, which stays on in an "
          "emergency or protective stop (MiR250 electrical interface).",
          [(later(lambda: rb.line_to(cup)), 1.0, 0.1), (grip(0.0), 0.5, 0.1)])

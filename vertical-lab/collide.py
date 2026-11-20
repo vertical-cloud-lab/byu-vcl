@@ -1308,12 +1308,16 @@ class Auditor:
                 pk = (d_["arm"], d_["kind"], d_["part"], d_["other_group"] or d_["other"])
                 if d_["depth_mm"] is not None:
                     runs[-1]["_depth"][pk] = max(runs[-1]["_depth"].get(pk, 0.0), d_["depth_mm"])
+                runs[-1].setdefault("_bodies", set()).add(d_["other"])
             last = key
         for r in runs:
             key, dep = r.pop("_key"), r.pop("_depth")
             r["pairs"] = [dict(arm=a, kind=k, part=pt, other=o, **({"depth_mm": dep[(a, k, pt, o)]}
                                                                   if (a, k, pt, o) in dep else {}))
                           for a, k, pt, o in key]
+            # #364: the touched bodies' own names (the pairs give their groups: "amr" for any part of a MiR, the base
+            # cameras included)
+            r["bodies"] = sorted(str(b) for b in r.pop("_bodies", ()))[:16]
         n_bad = sum(r["frames"] for r in runs)
         rep = dict(clip=sc.name, frames_checked=len(self.frames), frames_with_collisions=n_bad,
                    runs=runs, rules=" ".join(self.__doc__.split("\n\n", 1)[1].split()),

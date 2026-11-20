@@ -131,38 +131,45 @@ def _gripper_points(close: float) -> np.ndarray:
     return np.vstack(out)
 
 
-def sweep_grid(npz: Path, every: int = 1) -> tuple[np.ndarray, dict]:
-    """A boolean voxel grid (MiR frame, VOX mm) of everything the arm's surfaces passed through in a clip, per arm."""
+def _dedup(p: np.ndarray, step: float) -> np.ndarray:
+    """One point per `step` mm voxel."""
+    k = np.floor(p / step).astype(np.int64)
+    _, idx = np.unique(k, axis=0, return_index=True)
+    return p[np.sort(idx)]
+
+
+def _frames(data, key):
+    """(frame numbers, q (N x 6), close (N,), the arm base in its MiR's frame (N x 4 x 4)) for one arm's rows."""
+    r = data[key]
+    Rl = np.tile(np.eye(4), (len(r), 1, 1))
+    Rl[:, :3, :4] = r[:, 8:20].reshape(-1, 3, 4)
+    return r[:, 0].astype(int), r[:, 1:7], r[:, 7], Rl
+
+
+def sweep_grid(npz: Path, every: int = 1, step: float = 6.0, chunk: int = 150) -> tuple[np.ndarray, dict]:
+    """A boolean voxel grid (MiR frame, VOX mm) of everything the arm's surfaces passed through in a clip (points one
+    per `step` mm voxel of the links, the 2F-85 and the D405), and {arm: frames}."""
     import ur_arm
     data = np.load(npz)
     shape = tuple(int(np.ceil((hi - lo) / VOX)) for lo, hi in BOUNDS)
     grid = np.zeros(shape, bool)
     info = {}
-    cache: dict = {}
+    arm = {k: _dedup(v, step) for k, v in _arm_points("ur10e").items()}
+    grip = _dedup(_gripper_points(0.5), step)
     for key in data.files:
-        rows = data[key][::every]
-        if not len(rows):
-            continue
-        model = "ur10e"
-        pts = cache.setdefault(model, _arm_points(model))
-        gp = {c: _gripper_points(c) for c in (0.0, 0.5, 1.0)}
-        n = 0
-        for r in rows:
-            q, close = r[1:7], r[7]
-            Rl = np.eye(4)
-            Rl[:3, :4] = r[8:20].reshape(3, 4)
-            fk = ur_arm.fk(model, q)
-            bodies = [(Rl @ fk[l], pts[l]) for l in pts]
-            gc = min(gp, key=lambda c: abs(c - close))
-            bodies.append((Rl @ fk["tool0"], gp[gc]))
-            for M, p in bodies:
-                w = p @ M[:3, :3].T + M[:3, 3]
-                ijk = np.floor((w - BOUNDS[:, 0]) / VOX).astype(int)
+        fr, Q, _, Rl = _frames(data, key)
+        Q, Rl = Q[::every], Rl[::every]
+        for a in range(0, len(Q), chunk):
+            fks = [ur_arm.fk("ur10e", q) for q in Q[a:a + chunk]]
+            Rc = Rl[a:a + chunk]
+            for l, pts in list(arm.items()) + [("tool0", grip)]:
+                Ms = np.stack([Rc[i] @ fks[i][l] for i in range(len(fks))])
+                W = (np.einsum("tij,nj->tni", Ms[:, :3, :3], pts) + Ms[:, None, :3, 3]).reshape(-1, 3)
+                ijk = np.floor((W - BOUNDS[:, 0]) / VOX).astype(int)
                 ok = np.all((ijk >= 0) & (ijk < np.array(shape)), axis=1)
                 ijk = ijk[ok]
                 grid[ijk[:, 0], ijk[:, 1], ijk[:, 2]] = True
-            n += 1
-        info[key] = n
+        info[key] = len(Q)
     return grid, info
 
 
@@ -219,21 +226,6 @@ def _part_masks(margins=(0.0, 25.0), vox: float = 4.0) -> dict:
         dist = distance_transform_edt(~occ, sampling=vox)
         out[name] = (lo, shape, {mg: dist <= mg + vox * 0.87 for mg in margins})
     return out
-
-
-def _dedup(p: np.ndarray, step: float) -> np.ndarray:
-    """One point per `step` mm voxel."""
-    k = np.floor(p / step).astype(np.int64)
-    _, idx = np.unique(k, axis=0, return_index=True)
-    return p[np.sort(idx)]
-
-
-def _frames(data, key):
-    """(frame numbers, q (N x 6), close (N,), the arm base in its MiR's frame (N x 4 x 4)) for one arm's rows."""
-    r = data[key]
-    Rl = np.tile(np.eye(4), (len(r), 1, 1))
-    Rl[:, :3, :4] = r[:, 8:20].reshape(-1, 3, 4)
-    return r[:, 0].astype(int), r[:, 1:7], r[:, 7], Rl
 
 
 def conflicts(sweep_dir: Path | None = None, margins=(0.0, 25.0), step: float = 6.0, chunk: int = 150) -> dict:

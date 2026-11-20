@@ -157,6 +157,8 @@ BASE_CAMS_ON = True
 CM3W = dict(hfov=102.0, vfov=67.0, dfov=120.0, px=(4608, 2592))           # raspberrypi.com, Camera Module 3 Wide
 BOX = dict(w=68.0, h=96.0, d=46.0, lens_d=9.0, lens_out=3.0, lens_up=26.0)  # printed box, portrait: the Wide near
 #   the top of its front face, the Pi 5 (85 x 56) standing behind it; w across the picture, h up it, d along the view
+CASE = dict(w=49.0, h=29.5, d=8.6, lens_d=7.0, lens_out=4.0)   # robot-arms PR 40's cam_case for the Wide, 49 x 29.5 x 8.6
+PI_CASE = dict(along=92.0, up=64.0, t=30.0)                    # a Pi 5 + Active Cooler in a vented printed case
 CAB_X, CAB_Y = MIR["L"] / 2 - 40.0, MIR["W"] / 2 - 30.0       # the cabinet's half-length (360) and half-width (260)
 CAB_TOP = MIR["H"] + CAB_H                                    # 780
 BASE_CAMS = {
@@ -164,12 +166,14 @@ BASE_CAMS = {
     # aim: the point the camera's axis passes through (MiR frame). base_cams_sweep.py scanned 46 spots and heights
     # against every recorded frame of 17 clips: y = -60 on each end with the box under 0.92 m, and the back-left
     # corner for the mast, are where the arms pass least (notes/base_cameras.md, "Where the arms go")
-    "L": dict(what="left side camera", post=(-(CAB_X + 11.0), -60.0), sec=(20.0, 20.0), z=(560.0, 790.0),
-              aim=(-250.0, 800.0, 1000.0)),
-    "R": dict(what="right side camera", post=(CAB_X + 11.0, -60.0), sec=(20.0, 20.0), z=(560.0, 790.0),
-              aim=(250.0, 800.0, 1000.0)),
+    # kind "case": only the camera in its case on the post's top, its Pi 5 on the cabinet's end face below the top,
+    # on a 300 mm cable (#364's first audits: the arms' held parts pass where a whole camera-and-Pi box stood)
+    "L": dict(what="left side camera", post=(-(CAB_X + 11.0), -60.0), sec=(20.0, 20.0), z=(560.0, 845.0),
+              aim=(-250.0, 800.0, 1000.0), kind="case"),
+    "R": dict(what="right side camera", post=(CAB_X + 11.0, -60.0), sec=(20.0, 20.0), z=(560.0, 845.0),
+              aim=(250.0, 800.0, 1000.0), kind="case"),
     "M": dict(what="mast camera", post=(-(MIR["L"] / 2 - 14.0), -(MIR["W"] / 2 - 24.0)), sec=(20.0, 40.0),
-              z=(330.0, 1690.0), aim=(80.0, 850.0, 950.0)),
+              z=(330.0, 1690.0), aim=(80.0, 850.0, 950.0), kind="box"),
 }
 CAM_COLOURS = dict(alu=(0.78, 0.79, 0.81), petg=(0.10, 0.10, 0.11), lens=(0.05, 0.07, 0.12), cable=(0.04, 0.04, 0.04))
 
@@ -205,6 +209,8 @@ def base_camera_geometry(key: str) -> dict:
         x_in, x_out = side * (CAB_X - 2.0), px + side * (sx / 2 + 3.0)
         post = post.merge(pv.Box(bounds=(min(x_in, x_out), max(x_in, x_out), py - sy / 2 - 3, py + sy / 2 + 3,
                                          zc - 20, zc + 20)).triangulate())
+    if c.get("kind") == "case":
+        return _case_camera(c, post, side)
     # the camera box: a printed wedge on the post's top sets its yaw and pitch for good; the box sits on the wedge, moved
     # inboard as far as it takes to stay inside the MiR250's footprint (2 mm in), the Wide near the top of its front face
     w, h, d = BOX["w"], BOX["h"], BOX["d"]
@@ -222,10 +228,10 @@ def base_camera_geometry(key: str) -> dict:
     lens = centre + up_off + Fc[:3, 2] * (d / 2 + BOX["lens_out"])
     Fr = _cam_frame(lens, c["aim"])
     box = _obox(Fc, -w / 2, w / 2, -h / 2, h / 2, -d / 2, d / 2)
-    bx = box.bounds
-    wedge = pv.Box(bounds=(min(px - sx / 2, bx[0] + 8) - 3, max(px + sx / 2, bx[1] - 8) + 3,
-                           min(py - sy / 2, bx[2] + 8) - 3, max(py + sy / 2, bx[3] - 8) + 3,
-                           z1, z1 + 12.0)).triangulate()             # the bracket under the box, on the post's top
+    # the printed wedge: a cap on the extrusion's top and a neck from it to the middle of the box's back-bottom edge
+    wedge = pv.Box(bounds=(px - sx / 2 - 3, px + sx / 2 + 3, py - sy / 2 - 3, py + sy / 2 + 3, z1, z1 + 12.0)).triangulate()
+    heel = centre - Fc[:3, 2] * (d / 2 - 8.0) + Fc[:3, 1] * (h / 2 - 8.0)
+    wedge = wedge.merge(pv.Line((px, py, z1 + 6.0), heel).tube(radius=9.0, n_sides=12).triangulate())
     barrel = pv.Cylinder(center=tuple(centre + up_off + Fc[:3, 2] * (d / 2 + BOX["lens_out"] / 2)),
                          direction=tuple(Fc[:3, 2]), radius=BOX["lens_d"] / 2, height=BOX["lens_out"],
                          resolution=24).triangulate()
@@ -240,6 +246,40 @@ def base_camera_geometry(key: str) -> dict:
     return out
 
 
+def _case_camera(c: dict, post: pv.PolyData, side: float) -> dict:
+    """A side camera as robot-arms PR 40 builds one: the Wide in its printed case on a wedge on the post's top, the
+    wedge's faces cut to the aim; its Pi 5 on the cabinet's end face, 30 mm under the top, behind the post; the
+    ribbon down the post's outboard slot to it, and the Pi's PoE lead through the end into the cabinet."""
+    px, py = c["post"]
+    sx, sy = c["sec"]
+    z0, z1 = c["z"]
+    w, h, d = CASE["w"], CASE["h"], CASE["d"]
+    wedge = pv.Box(bounds=(px - 14, px + 14, py - 14, py + 14, z1, z1 + 18.0)).triangulate()
+    seat = np.array([px, py, z1 + 18.0])
+    F0 = _cam_frame(seat, c["aim"])
+    centre = seat - F0[:3, 1] * (h / 2 + 1.0)
+    Fc = _cam_frame(centre, c["aim"])
+    case = _obox(Fc, -w / 2, w / 2, -h / 2, h / 2, -d / 2, d / 2)
+    lens = centre + Fc[:3, 2] * (d / 2 + CASE["lens_out"])
+    barrel = pv.Cylinder(center=tuple(centre + Fc[:3, 2] * (d / 2 + CASE["lens_out"] / 2)), direction=tuple(Fc[:3, 2]),
+                         radius=CASE["lens_d"] / 2, height=CASE["lens_out"], resolution=24).triangulate()
+    pa, pu, pt = PI_CASE["along"], PI_CASE["up"], PI_CASE["t"]
+    y1 = py - sy / 2 - 8.0
+    zt = CAB_TOP - 30.0
+    x_in = side * CAB_X
+    pi = pv.Box(bounds=(min(x_in, x_in + side * pt), max(x_in, x_in + side * pt), y1 - pa, y1, zt - pu, zt)).triangulate()
+    xo = px + side * (sx / 2 - 2.6)
+    run = [centre - Fc[:3, 2] * (d / 2) + Fc[:3, 1] * (h / 2 - 4.0), (xo, py, z1 + 4.0), (xo, py, zt - 20.0),
+           (side * (CAB_X + pt), y1 - 12.0, zt - 20.0)]
+    ribbon = pv.merge([pv.Line(run[i], run[i + 1]).tube(radius=1.6, n_sides=8) for i in range(len(run) - 1)])
+    lead = pv.Line((side * (CAB_X + pt / 2), y1 - pa + 10.0, zt - pu), (side * (CAB_X + 6.0), y1 - pa + 10.0, zt - pu - 40.0))
+    cable = ribbon.merge(lead.tube(radius=2.6, n_sides=10)).triangulate()
+    out = dict(post=post, box=case.merge(wedge), lens=barrel, cable=cable, pi=pi, frame=_cam_frame(lens, c["aim"]),
+               box_centre=centre)
+    out["top"] = max(float(m.bounds[5]) for m in (out["post"], out["box"], out["lens"]))
+    return out
+
+
 def base_camera_parts() -> dict[str, tuple[pv.PolyData, tuple]]:
     """The three cameras' meshes for mir250(): {"amr cam L post": (mesh, rgb), ...}, MiR frame."""
     out = {}
@@ -249,6 +289,8 @@ def base_camera_parts() -> dict[str, tuple[pv.PolyData, tuple]]:
         out[f"amr cam {k} box"] = (g["box"], CAM_COLOURS["petg"])
         out[f"amr cam {k} lens"] = (g["lens"], CAM_COLOURS["lens"])
         out[f"amr cam {k} cable"] = (g["cable"], CAM_COLOURS["cable"])
+        if "pi" in g:
+            out[f"amr cam {k} pi"] = (g["pi"], CAM_COLOURS["petg"])
     return out
 
 
