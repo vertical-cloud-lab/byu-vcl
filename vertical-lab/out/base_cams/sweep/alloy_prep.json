@@ -1,0 +1,23 @@
+{
+ "script": "alloy_prep.py",
+ "args": [],
+ "seconds": 319.1,
+ "arms": {
+  "alloy_prep:unit0ur": {
+   "scene": "alloy_prep",
+   "prefix": "unit0ur",
+   "model": "ur10e",
+   "mir_group": "unit0_cab"
+  },
+  "alloy_prep:unit1ur": {
+   "scene": "alloy_prep",
+   "prefix": "unit1ur",
+   "model": "ur10e",
+   "mir_group": "unit1_cab"
+  }
+ },
+ "frames": {
+  "alloy_prep:unit0ur": 3539,
+  "alloy_prep:unit1ur": 3539
+ }
+}

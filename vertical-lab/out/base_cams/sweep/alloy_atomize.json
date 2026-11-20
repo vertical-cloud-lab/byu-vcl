@@ -1,0 +1,23 @@
+{
+ "script": "alloy_atomize.py",
+ "args": [],
+ "seconds": 26.9,
+ "arms": {
+  "alloy_atomize:ur": {
+   "scene": "alloy_atomize",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  },
+  "alloy_atomize:urB": {
+   "scene": "alloy_atomize",
+   "prefix": "urB",
+   "model": "ur10e",
+   "mir_group": "amrB"
+  }
+ },
+ "frames": {
+  "alloy_atomize:ur": 2303,
+  "alloy_atomize:urB": 2303
+ }
+}

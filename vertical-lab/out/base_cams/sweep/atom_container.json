@@ -1,0 +1,23 @@
+{
+ "script": "atom_container.py",
+ "args": [],
+ "seconds": 11.9,
+ "arms": {
+  "atom_container:ur": {
+   "scene": "atom_container",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  },
+  "atom_container:urB": {
+   "scene": "atom_container",
+   "prefix": "urB",
+   "model": "ur10e",
+   "mir_group": "amrB"
+  }
+ },
+ "frames": {
+  "atom_container:ur": 576,
+  "atom_container:urB": 576
+ }
+}

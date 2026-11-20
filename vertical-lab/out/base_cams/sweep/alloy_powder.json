@@ -1,0 +1,16 @@
+{
+ "script": "alloy_powder.py",
+ "args": [],
+ "seconds": 133.2,
+ "arms": {
+  "alloy_powder:unit0ur": {
+   "scene": "alloy_powder",
+   "prefix": "unit0ur",
+   "model": "ur10e",
+   "mir_group": "unit0_cab"
+  }
+ },
+ "frames": {
+  "alloy_powder:unit0ur": 2625
+ }
+}

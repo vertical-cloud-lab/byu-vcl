@@ -1,0 +1,23 @@
+{
+ "script": "atom_vacuum.py",
+ "args": [],
+ "seconds": 155.1,
+ "arms": {
+  "atom_vacuum:ur": {
+   "scene": "atom_vacuum",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  },
+  "atom_vacuum:urB": {
+   "scene": "atom_vacuum",
+   "prefix": "urB",
+   "model": "ur10e",
+   "mir_group": "amrB"
+  }
+ },
+ "frames": {
+  "atom_vacuum:ur": 1782,
+  "atom_vacuum:urB": 1782
+ }
+}

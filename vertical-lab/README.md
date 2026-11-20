@@ -492,6 +492,31 @@ its times.
 - **YouTube:** the new video is public and was uploaded without notifying subscribers. Rounds 7-11's long-forms
   (unlisted) are superseded; a `@claude-youtube` run can remove them.
 
+## Cameras on the mobile manipulators: two on the ends, one on a mast (#364, 2026-11-20)
+
+Sterling, PR #318: "add two or three cameras to the mobile manipulator (one on either side, one that's situated higher
+up, maybe on some kind of rod or extrusion, mimicking the three cameras described in" robot-arms PR 40. The full
+write-up is [`notes/base_cameras.md`](notes/base_cameras.md).
+
+![What each base camera sees, at the VLM and at the rePowder](out/base_cams/views.png)
+
+- **What:** each MiR250 + UR10e carries three Raspberry Pi Camera Module 3 Wides, each with its own Pi 5:
+  - **a mast:** a 2040 extrusion at the base's back-left corner, lens at 1.75 m, top at 1.80 m (the height the
+    MiR250's own 3D cameras see obstacles up to);
+  - **two side cameras:** robot-arms PR 40's case on a wedge, on short 2020 posts at the cabinet's ends, lenses at
+    0.88 m. Their Pis sit on the cabinet's ends, under the top.
+
+  They take their power from the MiR250's isolated 24 V, which stays on through a protective stop, and everything is
+  inside the base's footprint. `props.mir250()` draws them, so every clip has them; `VLAB_BASE_CAMS=0` leaves them out.
+- **Where from:** [`base_cams_sweep.py`](base_cams_sweep.py) recorded every arm's frames in its own MiR's frame in 17
+  clips (59,660 arm-frames), on the code before the cameras. The arms pass over every part of the cabinet's rim between
+  about 1.0 and 2.0 m, so the cameras went where they pass least. The clips' own audits with the cameras in place
+  ([`base_cams_audit.py`](base_cams_audit.py), `out/collisions/*_basecams.json`) are the check. 15 of the 17 clips have no camera contact in any frame. In chapters 2 and 4 the arms still go
+  where the mast stands, so those two leave the cameras out (`props.BASE_CAMS_OPT_OUT`) until they are re-planned.
+- **The clip:** [`base_cameras.py`](base_cameras.py) makes `out/mp4/base_cameras.mp4`, 46 s at 1920 × 1080. It shows
+  the base parked at the VLM and at the rePowder, and looks through each camera while the arm works. Its audit found 0
+  frames in collision.
+
 ## The trays' UPSs: real units, sized tray by tray (`ups.py`)
 
 Sterling, PR #318, 2026-11-18: "identify real UPS's rather than what looks like a placeholder there, and we might
