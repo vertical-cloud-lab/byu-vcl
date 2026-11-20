@@ -39,13 +39,14 @@ one a day (hollow) against ten a day (filled), coloured by where it goes.
   waters can go down the drain only if Risk Management says so. [Who picks it up](#who-picks-it-up-and-how) has the
   procedure.
 - **How much.** About 1.6 t a year at one a day and 17 t at ten, liquids by mass. Most of it is water (polishing,
-  the EDM's tank, the quench) that may be drained. What leaves through Risk Management is about **230 kg of
-  combustible metal and 60 kg of chemicals a year at one a day, 2.2 t and 0.5 t at ten**.
+  the EDM's tank, the quench) that may be drained. What leaves through Risk Management is about **90 kg of
+  combustible metal and 60 kg of chemicals a year at one a day, 0.5 t and 0.5 t at ten**, if the surplus powder is
+  kept or recycled; with it thrown away, the metal is 230 kg and 2.2 t.
 - **The biggest hazardous stream is one the lab hasn't decided about yet: the surplus powder.** Only 17 % of a
   charge is under 63 µm, the printer's cut. 74 % comes out at 63–250 µm, which the route never uses: 222 g of every
   300 g run, **135 kg a year at one a day and 1.6 t at ten**. It fills the 581-jar store in 65 days at one a day and in
   8 at ten (PR #332). Kept, it is stock; thrown away, it is most of the lab's hazardous waste.
-- **The cheapest cuts**, in order (details in [Making less of it](#making-less-of-it-and-making-it-less-hazardous)):
+- **The cheapest cuts**, in order (the table in [What it costs, and the levers](#what-it-costs-and-the-levers)):
   1. **Decide what the surplus powder is for** before the store fills: DED feedstock for the same alloy, the next
      run of a promoted alloy, metal scrap by family, a reference sample kept. Make less of it with a finer atomization
      if AMAZEMET's higher-frequency sonotrodes allow it.
@@ -163,9 +164,9 @@ waste as far as this survey goes.
   ([NJ fact sheet](https://www.nj.gov/health/eoh/rtkweb/documents/fs/0054.pdf)); gas-atomized powder has its own
   oxide, and which entry applies is Risk Management's call. Magnesium and the Al-Li master alloy are worse
   (magnesium powder is UN1418, 4.3 with a 4.2 subsidiary).
-- The MIDI's filter condensate is the most reactive of all: nanometre condensate that the AMAZEMET manual warns "can
-  spontaneously ignite" (DAL's manual notes); LPBF makers wet it before the housing is opened (upkeep cites GE
-  US12172115B2).
+- Filter condensate is the most reactive of all. The rePowder's manual warns that "metal condensate can spontaneously
+  ignite" (DAL's manual notes), and the MIDI's circulation filter collects the laser's nanometre condensate, which
+  LPBF makers wet before the housing is opened (upkeep cites GE US12172115B2).
 - Cu-family powders (Cu-Ni, NAB, bronze) are much less ignitable but are kept apart all the same: aluminium with
   copper oxide is a thermite pair (DAL SOP 253; PR 80).
 - Alloys with chromium (DAL #146 buys Cr) could fail the TCLP for chromium (D007) in any of these streams. Keep a
@@ -225,16 +226,16 @@ discard it, it is a combustible metal waste like the fines, and by far the large
 
 What it could be instead, roughly from best to worst:
 1. **Feedstock for DED.** DED takes 45–105 and 100–200 µm cuts (DAL PR #220), and 70 % of the bronze run fell in
-   50–200 µm (DAL #219). PR #332's D3 rung already uses an InssTek MX-Lab for screening; the same alloy's coarse cut
-   on a DED block is a second data point, not waste.
+   50–200 µm (DAL #219). The floor's DED machine (and PR #332's MX-Lab, rung D3) feeds powder of this size, so the
+   same alloy's coarse cut on a DED block is a second data point, not waste.
 2. **The next run of a promoted alloy.** A promoted alloy takes 8 more 300 g runs (3 at 684 g) for its 440 g of
    fines. Pressing the earlier runs' coarse cut into the next charge cups (the vacuum press already presses cups) would
    cut the new metal those runs need by up to three quarters. The cost is oxide: every particle brings its skin into
    the melt. Worth a trial on one alloy, with oxygen measured.
 3. **Make less of it.** For a capillary-wave (ultrasonic) atomizer, the particle size scales roughly as
-   frequency^(−2/3) (Lang, *J. Acoust. Soc. Am.* 34, 6, 1962), so going from 40 kHz to 60 or 80 kHz would shift much of
+   frequency^(−2/3) (Lang, *J. Acoust. Soc. Am.* 34, 6 (1962)), so going from 40 kHz to 60 or 80 kHz would shift much of
    the 63–125 µm into the printer's cut. Ask AMAZEMET which sonotrode frequencies the rePowder takes and what they do to
-   yield (`notes/scaleup.md` and #331 list the contacts).
+   yield (#331's `procurement/production.md` has AMAZEMET's contacts and its other open questions).
 4. **A reference sample and the rest melted into scrap.** Keep 10–20 g of each cut sealed (tray O, or gasketed metal
    cans for anything under 63 µm, `notes/lab_r8.md`) and melt the rest by family into a slug: in the rePowder's
    furnace between runs, or in a small induction melter under argon. A slug is scrap metal and goes to BYU's metal
@@ -394,9 +395,11 @@ liners, filters under sand, and the pickup link above. The vertical lab adds liq
   liner a week per vacuum), which is why changing liners by fill matters more than any chemical.
 - **Where the lab sits matters.** On campus the vertical lab is part of BYU's large-quantity site and its Subpart K
   programme. On a separate site (the warehouse option, `notes/warehouse.md`) it would need its own EPA ID and its own
-  generator category: by these numbers a very small quantity generator at one a day (about 25 kg of hazardous waste a
-  month, under 100) and a small quantity generator at ten a day (about 230 kg a month), each with its own rules.
-  At ten a day the lab alone would add roughly a tenth to what the whole university ships a year.
+  generator category, which these numbers put in the **surplus powder's hands**. At one a day it would be a very small
+  quantity generator either way (12-24 kg of hazardous waste a month, against the 100 kg line). At ten a day it is about
+  80 kg a month with the surplus powder kept or melted into scrap, still under the line, and about 230 kg if the
+  powder is thrown away, which makes a small quantity generator with its own rules. For scale: at ten a day the lab
+  alone would add 4-7 % to what the whole university ships a year with the surplus kept out of it, 12-18 % with it.
 
 ## The waste station: where waste waits, and how the arms and MiRs move it
 
@@ -414,9 +417,9 @@ waste is made.
    vented solvent cabinet (left: the three IPA containers and the used BN cans) and a vented acid cabinet (right: the
    *Acid Aqueous* container on one tray, the Weck's bottle on a second, a shelf apart). An **intake tray** on the hood's
    work surface, inside the airflow at the right-hand end and away from the etch, takes the closed bottles the arm
-   brings. It is served from the hood's own MiR dock, so it needs no new dock, and the arm already reaches in under
-   the 18 in sash (`notes/atom_bn.md`). Each day-shift a person moves the bottles from the tray into the cabinets'
-   containers, checks the labels and dates, and files the pickup request.
+   brings. It is served from the hood's dock line, so it needs no new dock, and an arm on a MiR can reach into a hood
+   under its 18 in sash (`notes/atom_bn.md`). Each day-shift a person moves the bottles from the tray into the
+   cabinets' containers, checks the labels and dates, and files the pickup request.
 3. **At the machine, where it is easier**: the EDM's wire bin (brass), the PX500's waste tank on tray F (upkeep
    `px_waste`, emptied weekly at Shuttle 1's opening), the sulfide-seawater bottle on tray A, the scrap bins by family
    beside the atomizer cell, and the battery pail by the MiR chargers.
@@ -438,13 +441,18 @@ waste is made.
 ![The waste station: the fume hood's base as the solvent and acid cabinets, the intake tray, and a unit bringing a bottle](../out/waste_station_still.png)
 
 [`out/waste_station_still.png`](../out/waste_station_still.png), from [`waste_station.py`](../waste_station.py): a
-MiR250 + UR10e at the hood's dock sets a capped bottle of sieve-wash IPA in the intake tray, reaching in under the
-sash. Our design throughout; the hood is `instruments_r7.FH`'s Labconco XStream 4 ft drawn as boxes, the cabinets'
-size is the hood's base, and the containers are typical sizes.
+MiR250 + UR10e sets a capped bottle of sieve-wash IPA in the intake tray's right-hand nest, 230 mm inside the sash.
+The unit stands on the hood's dock line, 760 mm right of the hood's centre: from there the script's search finds a
+pose with the gripper 15° down, the forearm outside the hood's right post and the wrists under the raised sash, with
+no point of the arm's or gripper's meshes within 10 mm of the posts, sash, fascia or work surface. That is a check of
+this one pose, not the arm audit of a move. Our design throughout; the hood is `instruments_r7.FH`'s Labconco XStream
+4 ft drawn as boxes (that module needs CadQuery), the cabinets are the hood's base, and the containers are typical
+sizes.
 
-**What is not done.** The station isn't in `setup_lab.py`'s floor plan or the set-up movie, the intake tray and its
-nests aren't checked against the hood's sash with the arm audit, and upkeep doesn't yet book the waste person-time
-(about an hour a week at one a day: liners, consolidation, labels, requests; open item below).
+**What is not done.** The station isn't in `setup_lab.py`'s floor plan or the set-up movie; the swap at a tray
+station and the drive aren't animated or audited (`ARM_AUDIT=1`); and upkeep doesn't yet book the waste person-time
+(about an hour a week at one a day: liners, consolidation, labels, requests). To resume: add a `waste` task to
+`upkeep.TASKS` (weekly, 1 h, a person at the hood) and re-run `python3 upkeep.py && python3 timelapse.py model`.
 
 ## What it costs, and the levers
 
@@ -455,7 +463,7 @@ size:
 | Lever | What it saves | Effort |
 |---|---|---|
 | A rule for the surplus powder: keep a reference sample, use the coarse cut (DED, the next run of a promoted alloy), melt the rest into scrap | 135 kg a year of class 4.1/4.3 powder at one a day, 1.6 t at ten; at ten a day, the difference between pickups every three weeks and every week | a policy now; a melt step later |
-| Liners changed by fill, not weekly | about three quarters of 156 liners and 234 L a year | agree it with Risk Management |
+| Liners changed by fill, not weekly | about three quarters of the 156 liners a year, and of their 234 L | agree it with Risk Management |
 | The waters drained, or settled and filtered | 770 L of collected liquid a year at one a day, 9.4 m³ at ten | a ruling, a settling tank |
 | Brass and aluminium scrap recycled | 100 kg a year at one a day, 1.1 t at ten, out of the waste stream and sold | bins, a habit |
 | A finer atomization (a higher-frequency sonotrode, if AMAZEMET has one) | a bigger share of each charge in the printer's cut, so less surplus | a question to AMAZEMET |

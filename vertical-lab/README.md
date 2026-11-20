@@ -106,6 +106,29 @@ its times.
 - **YouTube:** the new video is public and was uploaded without notifying subscribers. Rounds 7-11's long-forms
   (unlisted) are superseded; a `@claude-youtube` run can remove them.
 
+## Waste: where each stream goes, how it is picked up, and how to make less of it (`waste.py`)
+
+Sterling, PR #318, 2026-11-20: "consider waste and disposal procedures. Where does each waste go, how do we get
+pickups, and what can we do to minimize the hazard and risk, and thereby the cost of disposal?" The full write-up is
+[`notes/waste.md`](notes/waste.md): every workflow's waste streams, an amount per unit of work times the finale's year
+(one fully tested alloy a day) and PR #332's R11 (ten a day), each stream's classification, how it is kept, where it
+goes, and how to cut it.
+
+![Every waste stream, a year, at one a day and at ten](out/waste_streams.png)
+
+- **Pickups are BYU Risk Management's** (Environmental Management): BYU works under EPA's academic-lab rule (Subpart
+  K); a pickup is requested in the [Pickup Request app](https://riskapps.byu.edu/apps/pickuprequest/) at 80 % full; at
+  most 55 gal of unwanted material in a lab and nothing older than 12 months. The atomizer already uses this route.
+- **The biggest hazardous stream is undecided: the surplus powder.** 74 % of every charge comes out at 63-250 µm,
+  which the route never uses: 135 kg a year at one a day, 1.6 t at ten. Use it (DED, the next run of a promoted alloy),
+  melt it into scrap (powder isn't scrap metal; a slug is), or it becomes most of the lab's hazardous waste.
+- **The other big levers:** a drain ruling for the polishing water (770 L a year, 9.4 m³ at ten), vacuum liners changed
+  by fill (their plastic outweighs the fines three to one), brass and aluminium scrap recycled, and the alloy families
+  and waste classes kept apart.
+- **A waste station** under and in the ducted fume hood: its base as vented solvent and acid cabinets, an intake tray
+  where a unit sets capped bottles (`waste_station.py`, [still](out/waste_station_still.png)); powder waste stays at
+  the atomizer cell and never rides a MiR.
+
 ## The trays' UPSs: real units, sized tray by tray (`ups.py`)
 
 Sterling, PR #318, 2026-11-18: "identify real UPS's rather than what looks like a placeholder there, and we might
@@ -2640,6 +2663,8 @@ xvfb-run -a python3 tour.py                               # round 3: every instr
 python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
 python3 ups.py                                            # each tray's UPS, sized -> out/ups.json (notes/ups.md)
 python3 ups.py figure; xvfb-run -a python3 ups.py lineup  # out/ups_sizing.png, out/ups_lineup.png
+python3 waste.py                                          # the waste streams -> out/waste_model.json, out/waste_streams.png
+xvfb-run -a python3 waste_station.py                      # the waste station's still -> out/waste_station_still.png
 xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
 python3 charge.py                                         # the alloy route's charge recipe -> out/alloy_recipe.json
 xvfb-run -a python3 alloy_charge.py                       # chapter 1 with the vacuum press -> out/alloy_charge_vacuum.*
