@@ -61,10 +61,12 @@ lands.
   - Each axis is a lead screw, 8 mm a turn, ending in a hex knob, 32 mm across the flats, that the 2F-85 holds on two
     flats and turns with its wrist; a wrap-spring brake holds the screw when the knob is let go. The coarse lead keeps
     every correction under half a turn of the wrist (a 2 mm lead needed 1.5 turns, past what the arm can follow without
-    letting go and regrasping). The u screw comes out through a right-angle gearbox, its knob facing left.
-- **The arms:** MiR250 2 stands left of the door (model (-950, -40), facing the door), its arm on the u knob; MiR250 1
-  at the front left (model (-500, -760)), its arm on the v knob. Both hold on through the pour; arm 1's hand also
-  rides the carriage when u changes.
+    letting go and regrasping). Each screw ends in a right-angle gearbox with its knob on top, on a 20 mm neck, facing
+    up and leaning 30 deg towards its arm, clear of DAL's left camera unit on the door and the door's lower clamp.
+- **The arms:** MiR250 2 stands at the front left of the door (model (-900, -470)), its arm on the u knob; MiR250 1
+  in front of the chamber (model (-50, -950)), its arm on the v knob: both clear of the rePowder's vacuum pump, left
+  of the door, and 50 mm apart. Both hold on through the pour; arm 1's hand also rides the carriage when u changes.
+  Each arm is on the IK branch that turns its knob through every correction clear (`path_branch`).
 - **The sensing:** DAL PR 189's two cameras on the plate, the door's sight glass (from the side) and the front view
   port. The stream is the brightest thing in either picture; the plate's edges and hole are found in the first frames
   of the pour, and the plate's own 119.6 x 20.8 mm gives the scale. The two views give the landing along and across

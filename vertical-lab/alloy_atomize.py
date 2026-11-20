@@ -1,4 +1,9 @@
-"""Chapter 2 of the alloy route, atomize: the MiR250 brings the four charged 5N Al cups from the VLM to the rePowder,
+"""Chapter 2 of the alloy route, atomize. Round 14 (PR #318, 2026-11-20): the model's latch worked with the latch clip's
+moves (atom_latch.Work: lever over centre, the loop lifted off the keeper's hook, no arm on the lid), the loading tong
+redrawn as two bars pinned to the 2F-85's fingertips (tong_meshes, tong_figure), DAL PR 189's camera units, the MiRs'
+ground shoes on the floor plates (atom_ground), and the plate steered during the pour by both arms through a landing
+stage on the door (stage_meshes, steer_picture; ours). Before round 14: the MiR250 brings the four charged 5N Al cups
+from the VLM to the rePowder,
 the UR10e undoes the lid's draw latch, opens the lid, and sets the cups on the crucible's floor round the sealing rod
 with a loading tong; the machine melts and atomizes them; the arm takes the powder container off onto the MiR (#303,
 rounds 4 to 6). Round 9: a second MiR250 + UR10e comes for the lid, and its arm holds the lid down on its seal while
@@ -1398,7 +1403,7 @@ def wrap_overlay(sc):
 #     u mm nearer the hole (the plate's face is square to the axis, the stream vertical): model.py landing().
 #   v, across, along y, +-6 mm (8 mm a turn): moves the plate sideways under the stream, which stays where it is.
 # Each axis is a lead screw ending in a three-lobed knob the 2F-85 holds and turns with its wrist (a turn of the knob
-# is a turn of wrist 3). Arm 2, at the door, holds the u knob; arm 1, at the front left, the v knob; both hold on for
+# is a turn of wrist 3). Arm 2, at the door's front left, holds the u knob; arm 1, in front, the v knob; both hold on for
 # the whole pour. The sensing is DAL PR 189's two cameras on the plate (the door's sight glass from the side, the front
 # view port): the stream is the brightest thing in either picture, and the plate's edges and hole are found in the
 # first frames of the pour; the two give where the stream meets the plate, along and across it, in mm (the plate's own
