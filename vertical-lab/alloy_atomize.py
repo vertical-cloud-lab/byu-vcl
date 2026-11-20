@@ -690,6 +690,23 @@ def path_branch(rb, sc, poses, close, n_chk: int = 16) -> np.ndarray:
     return best
 
 
+def bonded(sc, m, drive_up, lower: bool = True):
+    """update(u): a MiR250's drive with its ground shoes lifted for it (the first 10 %) and lowered onto the floor plate
+    at the end (the last 10 %, lower=True), its bond lamp off while it drives and green once parked: the shoe-to-shoe
+    and plate-to-bar readings pass (atom_ground; ours)."""
+    G = sc.GND
+
+    def up(u):
+        if u <= 0.1:
+            G.set_shoes(sc, m, 1.0 - u / 0.1)
+            G.lamp(sc, m, "off")
+        drive_up(window(u, 0.1, 0.9))
+        if u >= 0.9 and lower:
+            G.set_shoes(sc, m, (u - 0.9) / 0.1)
+            G.lamp(sc, m, "green" if u >= 0.99 else "amber")
+    return up
+
+
 def straight(m, x1, y1):
     """update(u): a MiR250 driven straight to (x1, y1) along its heading (it is differential drive: the target must be
     ahead of or behind it), from rest to rest at its 0.3 m/s^2 (props.ramp_frac)."""
@@ -1770,6 +1787,16 @@ def build():
     add_cups(sc, mir)
     sc.tong_home = add_tong(sc, mir)
     flange_clamp(sc, 1.0)
+    # round 14: ground within reach (atom_ground, the vacuum clip's design): the lab's bonded floor plates at the
+    # atomizer's MiR spots, as lab._repowder() draws them for the other scenes (hidden here with the merged copy), and
+    # each MiR250's two sprung shoes and bond lamp
+    import atom_ground as GND
+    sc.GND = GND
+    for name, (mesh, col) in GND.fixture_meshes().items():
+        sc.add(f"rp {name}", mesh, col, "rp", specular=0.2)
+    for m_ in (mir, mir_b):
+        GND.add_shoes(sc, m_, down=0.0)
+        GND.add_lamp(sc, m_, "off")
     wrap_overlay(sc)
     return sc, L, mir, pool, powder, spray, drops, vent, mir_b
 
@@ -1927,10 +1954,22 @@ def movie():
     sc.step(f"1/{n}", cap, 1.0, None, hold=1.0, labels=lbl)
     show_g(mir="driving", mirB="driving")
     t_drive = max(mir.secs(x_load, y_load), mir_b.secs(x_lid, y_lid))
-    sc.step(f"1/{n}", cap, t_drive, RB.both(mir.drive(x_load, y_load), mir_b.drive(x_lid, y_lid)), hold=0.2,
+    sc.step(f"1/{n}", cap, t_drive + 1.0, RB.both(bonded(sc, mir, mir.drive(x_load, y_load)),
+                                                 bonded(sc, mir_b, mir_b.drive(x_lid, y_lid))), hold=0.2,
             cam_to=CAM_PAIR, labels=[("AMAZEMET rePowder atomizer", tuple(W((250, 0, 1700))), (0.16, 0.24))])
     show_g(mir="at the rePowder, right", mirB="at the rePowder, front left")
     H_bal = P.MIR["H"] + BALLAST_T / 2
+    cap = ("Parked, each MiR250 lowers two sprung copper-graphite shoes onto a bonded steel plate set in the floor; its "
+           "lamp turns green once shoe to shoe and plate to the ground bar both read 1 ohm or less, before any arm moves "
+           "near the powder (ours, as in the vacuum clip; to be checked by EHS).")
+    pts = [sc.GND.shoe_points((mir.x - RP[0], mir.y - RP[1], mir.yaw))[0], sc.GND.shoe_points((mir_b.x - RP[0],
+                                                                                              mir_b.y - RP[1],
+                                                                                              mir_b.yaw))[0]]
+    sc.step(f"1/{n}", cap, 0.8, None, hold=3.2, cam_to=CAM_PAIR,
+            labels=[("ground shoes on the floor plate", tuple(W(pts[1]) + (0.0, 0.0, 10.0)), (0.06, 0.74)),
+                    ("bond lamp: green", tuple(mir.world((sc.GND.LAMP_AT[0] + 26.0, sc.GND.LAMP_AT[1],
+                                                           sc.GND.LAMP_AT[2]))), (0.72, 0.30)),
+                    ("the same under MiR250 1", tuple(W(pts[0]) + (0.0, 0.0, 10.0)), (0.72, 0.74))])
     cap = (f"Two MiR250 + UR10e units: arm 1 works the furnace's latch and loads the cups, from its right; arm 2 swings "
            f"the lid, from the front left; in the pour both steer the plate. Each MiR250 carries a {BALLAST_KG:.0f} kg "
            f"steel plate, {BALLAST['T']:.0f} mm thick, on its deck under the cabinet: the weight as low as a top module "
@@ -2075,7 +2114,8 @@ def movie():
                    f"the jaws open only with the cup standing. Neighbours stand {CUP_GAP:.1f} mm apart; the jaws pass "
                    f"them with 1.3 mm to spare.")
         show_g(arm=f"cup {k + 1}: carrier to crucible")
-        sc.step(f"2/{n}", cap, 1.4 * f, rb.joint_to(Tw=T((0, 0, 90)) @ g_pick), hold=0.05)
+        sc.step(f"2/{n}", cap, 1.4 * f, rb.joint_to(Tw=T((0, 0, 90)) @ g_pick), hold=0.05,
+                cam_to=CAM_LOAD if k == 1 else None)          # cups 2-4: the arm going to and fro, from the front right
         sc.step(f"2/{n}", cap, 0.7 * f, rb.line_to(g_pick), hold=0.05)
         if k == 0:
             show_pic(sc, fig, frac=0.40)
@@ -2169,7 +2209,7 @@ def movie():
     # round 14: arm 2 shuts the lid by its knob and arm 1 hooks the loop on and closes the lever over centre, the latch
     # clip's moves (atom_latch.Work); nobody presses on the lid
     show_g(arm="parked")
-    sc.step(f"2/{n}", "Arm 1 stands back from the furnace.", 1.2, rb.joint_to(PARK), hold=0.05)
+    sc.step(f"2/{n}", "Arm 1 stands back from the furnace.", 1.2, rb.joint_to(PARK), hold=0.05, cam_to=W2.CAM_LID)
     W2.close_lid(cap="Arm 2 brings the lid back down by its knob onto its O-ring, after IPA on the seal and the face it "
                  "meets (DAL SOP, Loading the Furnace 8).", rows_open="open, charged")
     W2.clamp()
@@ -2197,7 +2237,8 @@ def movie():
         m_ = leg["m"]
         if "to" in leg:
             x1, y1 = RP[0] + leg["to"][0], RP[1] + leg["to"][1]
-            sc.step(f"2/{n}", cap, m_.secs(x1, y1), m_.drive(x1, y1), hold=0.05, cam_to=CAM_STEER)
+            sc.step(f"2/{n}", cap, m_.secs(x1, y1) + 1.0, bonded(sc, m_, m_.drive(x1, y1)), hold=0.05,
+                    cam_to=CAM_STEER)
         elif "turn" in leg:
             sc.step(f"2/{n}", cap, 1.6, sc.AB.mir_turn(m_, leg["turn"]), hold=0.05)
         else:
@@ -2309,7 +2350,8 @@ def movie():
     for leg in (dict(to=(STEER_A[0], STEER_A[1])),):
         if "to" in leg:
             x1, y1 = RP[0] + leg["to"][0], RP[1] + leg["to"][1]
-            sc.step(f"4/{n}", cap, mir.secs(x1, y1), mir.drive(x1, y1), hold=0.05, cam_to=CAM_STEER)
+            sc.step(f"4/{n}", cap, mir.secs(x1, y1) + 1.0, bonded(sc, mir, mir.drive(x1, y1)), hold=0.05,
+                    cam_to=CAM_STEER)
         else:
             sc.step(f"4/{n}", cap, 1.2, sc.AB.mir_turn(mir, leg["turn"]), hold=0.05)
     show_g(mir="at the door, front left")
@@ -2465,7 +2507,7 @@ def movie():
     show_g(armB="parked")
     sc.step(f"4/{n}", cap, 1.6, rbB.joint_to(PARK), hold=0.05)
     show_g(mirB="back to the aisle")
-    sc.step(f"4/{n}", cap, mir_b.secs(*B_HOME), mir_b.drive(*B_HOME), hold=0.1)
+    sc.step(f"4/{n}", cap, mir_b.secs(*B_HOME) + 0.5, bonded(sc, mir_b, mir_b.drive(*B_HOME), lower=False), hold=0.1)
     show_g(arm="parked")
     sc.step(f"4/{n}", cap, 1.6, rb.joint_to(PARK), hold=0.05)
     show_g(armB=None, mirB=None)
@@ -2482,7 +2524,7 @@ def movie():
         set_gas(sc, 0.8 * (1.0 - window(u, 0.0, 0.5)))
         flange_clamp(sc, 1.0 - window(u, 0.5, 1.0))
     sc.step(f"5/{n}", cap, 1.6, close_up, hold=0.1, cam_to=CAM_CONT)
-    sc.step(f"5/{n}", cap, mir.secs(x_cont, y_cont), mir.drive(x_cont, y_cont), hold=0.1)
+    sc.step(f"5/{n}", cap, mir.secs(x_cont, y_cont) + 1.0, bonded(sc, mir, mir.drive(x_cont, y_cont)), hold=0.1)
     show_g(mir="at the rePowder")
     # model.py container_handle, model frame: taken at its outer end, clear of the open flange clamp's front half
     # (over the handle's inner 40 mm), level from the front and a little from the right; fingers close vertically
@@ -2522,8 +2564,9 @@ def movie():
     sc.step(f"5/{n}", cap, 1.3, rb.joint_to(PARK), hold=0.2)
     show_g(mir="lining up")
     x_back = END_POSE[0] - 613.0                      # back off along the front, then an S-curve onto the hand-off spot
-    sc.step(f"5/{n}", cap, mir.secs(x_back, y_park), mir.drive(x_back, y_park), hold=0.0)
-    sc.step(f"5/{n}", cap, mir.secs(*END_POSE) + 0.6, mir.drive(*END_POSE), hold=0.2)
+    sc.step(f"5/{n}", cap, mir.secs(x_back, y_park) + 0.5, bonded(sc, mir, mir.drive(x_back, y_park), lower=False),
+            hold=0.0)
+    sc.step(f"5/{n}", cap, mir.secs(*END_POSE) + 1.1, bonded(sc, mir, mir.drive(*END_POSE)), hold=0.2)
     show_g(mir="at the rePowder")
     b440 = next(iter(MIDI_BUILDS))
     cap = (f"How much powder: the four cups make about {four['under_63um_g']:.0f} g of the MIDI's 20-63 um cut, at "

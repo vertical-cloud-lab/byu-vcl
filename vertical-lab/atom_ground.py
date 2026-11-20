@@ -158,6 +158,8 @@ ATOMIZER_SPOTS = {
     "load": (150.0, -750.0, 0.0),        # alloy_atomize: x_load, y_park
     "wait": (1150.0, -750.0, 0.0),       # alloy_atomize: x_wait
     "container": (-32.0, -950.0, 0.0),   # alloy_atomize: x_cont, y_cont
+    "pour_u": (-900.0, -470.0, 0.0),     # alloy_atomize (round 14): MiR250 2 in the pour, its arm on the stage's u knob
+    "pour_v": (-50.0, -950.0, 0.0),      # alloy_atomize (round 14): MiR250 1 in the pour, on the v knob
 }
 # Spots whose MiR250 stands where the model's own vacuum pump stands (repowder/model.py vacuum_pump: x -880..-420,
 # y 120..340, on the floor): the lab's plates leave them out (lab._repowder, fixture_meshes). The clips that use them

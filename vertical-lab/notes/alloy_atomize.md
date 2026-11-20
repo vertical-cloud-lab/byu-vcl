@@ -40,6 +40,7 @@ Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), an
 | 19:21 | "we're working on automating the other aspects of the atomizer. This should be replaced with the latest we have there" | The "Still by hand: building this stack" aside, and its nut turning by itself, are gone: the caption says the two arms build the stack in the turnaround (#353's rebuild: the crucible held from above, the graphite nut threaded on from below with a socket key), with the rebuild clip's picture beside the cut-open stack |
 | 21:12 | the new atomizer renders are missing elsewhere | Chapter 2 now draws DAL PR 189's three viewport camera units and their displays (`atom_cams.add_units`, as the turnaround's camera clip has them), the top one's arm parked for loading. It stays parked through this chapter: the camera clip shows it swung back over the lid's window |
 | (new) | "both arms adjust the plate's position in real time during the pour" | Designed and shown: a landing stage, below |
+| 25:53 (the vacuum clip) | ground within reach wherever the arm works | Both MiR250s carry the vacuum clip's ground shoes and bond lamp (`atom_ground`): each lowers its two sprung copper-graphite shoes onto the floor's bonded plate when it parks and lifts them before it drives (`bonded()`), and its lamp turns green once the two readings pass. The plates are the lab's (`atom_ground.fixture_meshes`, as `lab._repowder()` draws them for the other scenes), with this chapter's two pour spots added (`pour_u`, `pour_v`) |
 
 #### Steering the plate in the pour (ours)
 
