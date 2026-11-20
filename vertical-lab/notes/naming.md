@@ -34,10 +34,16 @@ says where a thing is, or what it is looking at, is wrong the day it moves. IEC 
 what a thing does, what it is, and where it is are three separate designations. Here the call name is the job, the
 asset number is the thing, and the location is a field in the registry (`timp, slot R1`), not part of either.
 
+RFC 1178, "Choosing a Name for Your Computer" (1990), says the same of naming a machine after a project or a place:
+"If this isn't wrong now, it inevitably will be." It recommends a theme instead.
+
 **Why a name rather than a code like `xrd-01`?** People say these names many times a day, over the noise of a lab, and
 the narration voice says them in every video. A short, distinct word is easier to say, hear and remember than a code,
 and a code like `xrd-01` is wrong as soon as the lab has a second kind of diffractometer. The codes still exist: the
 registry gives each station's type, maker and model.
+
+Labs that run robots already name them. UBC's thin-film self-driving lab is Ada, after Ada Lovelace; King's College's
+robot scientists are Adam and Eve; Springer Nature ran a piece on instrument nicknames in 2026 (sources below).
 
 ## The families
 
@@ -58,36 +64,36 @@ names plus the 2 couples: the balance of the fields' histories, not a target met
 | Name | What | Where | Named for | Why it fits |
 |---|---|---|---|---|
 | **timp** | Kardex Shuttle XP 500, 9.15 m, Shuttle 1 | floor, Shuttle 1 | [Mount Timpanogos](https://en.wikipedia.org/wiki/Mount_Timpanogos), 3,582 m | the peak over Provo; locals call it Timp |
-| **nebo** | Kardex Shuttle XP 500, 9.15 m, Shuttle 2 | floor, Shuttle 2 | [Mount Nebo](https://en.wikipedia.org/wiki/Mount_Nebo_(Utah)), 3,636 m | the highest peak of the Wasatch, south of Provo |
-| **elsie** | MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 1 | floor, mobile | [W. Grey Walter's Elsie](https://en.wikipedia.org/wiki/William_Grey_Walter), 1949 | a robot tortoise that found its way back to its hutch to recharge |
+| **nebo** | Kardex Shuttle XP 500, 9.15 m, Shuttle 2 | floor, Shuttle 2 | [Mount Nebo](https://en.wikipedia.org/wiki/Mount_Nebo_(Utah)), 3,637 m | the highest peak of the Wasatch, south of Provo |
+| **elsie** | MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 1 | floor, mobile | [W. Grey Walter's Elsie](https://cyberneticzoo.com/?p=491), 1949 | a robot tortoise built to steer home to its lit hutch to recharge |
 | **freddy** | MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 2 | floor, mobile | [Edinburgh's Freddy](https://en.wikipedia.org/wiki/Freddy_II), 1969-1976 | a hand-eye robot that assembled models from a heap of parts by vision |
-| **ruska** | Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS | timp, slot R1 | [Ernst Ruska](https://en.wikipedia.org/wiki/Ernst_Ruska), 1906-1988 | built the first electron microscope (1931-33), Nobel 1986 |
+| **ruska** | Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS | timp, slot R1 | [Ernst Ruska](https://en.wikipedia.org/wiki/Ernst_Ruska), 1906-1988 | built the first electron microscope with Max Knoll (1931-33), Nobel 1986 |
 | **lonsdale** | Rigaku MiniFlex XRD | timp, slot R1 | [Kathleen Lonsdale](https://en.wikipedia.org/wiki/Kathleen_Lonsdale), 1903-1971 | X-ray crystallographer; showed by X-ray diffraction that the benzene ring is flat (1929); one of the first two women elected FRS (1945) |
 | **pasteur** | Opentrons OT-2 liquid handler | timp, slot R2 | [Louis Pasteur](https://en.wikipedia.org/wiki/Pasteur_pipette), 1822-1895 | the Pasteur pipette is named for him; the OT-2 is the lab's pipette |
-| **tafel** | CubXL corrosion cell with its EZstat Pro potentiostat | timp, slot R2 | [Julius Tafel](https://en.wikipedia.org/wiki/Julius_Tafel), 1862-1918 | the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes |
-| **lavoisier** | multi-doser (chain carousel v5) on an A&D HR-202i | timp, slot R3 | [Antoine and Marie-Anne Paulze Lavoisier](https://en.wikipedia.org/wiki/Antoine_Lavoisier), 1743-1794, 1758-1836 | chemistry by the balance: mass in, mass out, and she drew and translated the work |
+| **tafel** | CubXL corrosion cell with its EZstat Pro potentiostat | timp, slot R2 | [Julius Tafel](https://en.wikipedia.org/wiki/Tafel_equation), 1862-1918 | the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes |
+| **lavoisier** | multi-doser (chain carousel v5) on an A&D HR-202i | timp, slot R3 | [Antoine and Marie-Anne Paulze Lavoisier](https://en.wikipedia.org/wiki/Marie-Anne_Paulze_Lavoisier), 1743-1794, 1758-1836 | chemistry by the balance: mass in, mass out; she drew the Traite's 13 plates (1789) |
 | **bridgman** | Specac Atlas Autotouch 15T vacuum press | timp, slot R3 | [Percy W. Bridgman](https://en.wikipedia.org/wiki/Percy_Williams_Bridgman), 1882-1961 | high-pressure physics, Nobel 1946 |
-| **tabor** | Plastometrex PLX-Benchtop (indentation plastometry) | timp, slot R4 | [David Tabor](https://en.wikipedia.org/wiki/David_Tabor), 1913-2005 | The Hardness of Metals (1951): indentation hardness as about three times the flow stress, at a representative strain; plastometry turns an indent into a stress-strain curve |
-| **sneddon** | KLA iMicro nanoindenter | timp, slot R4 | [Ian Sneddon](https://en.wikipedia.org/wiki/Ian_Sneddon), 1919-2000 | the elastic contact solution for a punch of any profile (1965) that nanoindentation's unloading analysis rests on |
+| **tabor** | Plastometrex PLX-Benchtop (indentation plastometry) | timp, slot R4 | [David Tabor](https://en.wikipedia.org/wiki/David_Tabor_(physicist)), 1913-2005 | The Hardness of Metals (1951): indentation hardness as about three times the flow stress, at a representative strain; plastometry turns an indent into a stress-strain curve |
+| **sneddon** | KLA iMicro nanoindenter | timp, slot R4 | [Ian Sneddon](https://doi.org/10.1016/0020-7225(65)90019-4), 1919-2000 | the elastic solution for an axisymmetric punch of arbitrary profile (1965) that nanoindentation's unloading analysis rests on |
 | **tyndall** | Malvern Mastersizer 3000 with Aero S (laser diffraction) | timp, slot R4 | [John Tyndall](https://en.wikipedia.org/wiki/Tyndall_effect), 1820-1893 | the Tyndall effect: light scattered by particles |
-| **beilby** | LECO PX500 grinder-polisher with its disc magazine | timp, slot F2 | [George Beilby](https://en.wikipedia.org/wiki/George_Beilby), 1850-1924 | the Beilby layer, the flowed skin polishing leaves on a metal |
-| **wilm** | Nabertherm NAT 15/65 furnace with the quench tank | timp, slot F2 | [Alfred Wilm](https://en.wikipedia.org/wiki/Alfred_Wilm), 1869-1937 | found age hardening in aluminium alloys (1906); the furnace does the bars' T6 |
+| **beilby** | LECO PX500 grinder-polisher with its disc magazine | timp, slot F2 | [George Beilby](https://www.nature.com/articles/137516a0), 1850-1924 | the Beilby layer, the flowed skin polishing leaves on a metal |
+| **wilm** | Nabertherm NAT 15/65 furnace with the quench tank | timp, slot F2 | [Alfred Wilm](https://nvlpubs.nist.gov/nistpubs/sp958-lide/html/014-015.html), 1869-1937 | found age hardening in aluminium alloys (c. 1906, published 1911); the furnace does the bars' T6 |
 | **baekeland** | LECO MX400 hot mounting press | timp, slot F2 | [Leo Baekeland](https://en.wikipedia.org/wiki/Leo_Baekeland), 1863-1944 | Bakelite, the phenolic of a hot-mounted puck |
 | **schlenk** | the tray's N2 glovebox (ours) | nebo, slot 2R1 | [Wilhelm Schlenk](https://en.wikipedia.org/wiki/Wilhelm_Schlenk), 1879-1943 | the Schlenk line: handling air-sensitive material |
-| **sorby** | Keyence VHX-7000 digital microscope with EA-300 LIBS | nebo, slot 2R1 | [Henry Clifton Sorby](https://en.wikipedia.org/wiki/Henry_Clifton_Sorby), 1826-1908 | first to look at polished, etched steel under a microscope (1863): metallography |
-| **petch** | ZwickRoell zwickiLine Z5.0 TN (horizontal tensile) | nebo, slot 2R2 | [Norman Petch](https://en.wikipedia.org/wiki/Hall%E2%80%93Petch_relation), 1917-1992 | the Hall-Petch relation: yield strength from grain size, read off tensile tests |
-| **sandland** | Mitutoyo HM-220 micro-Vickers tester | nebo, slot 2R2 | [George E. Sandland](https://en.wikipedia.org/wiki/Vickers_hardness_test), 1920s | devised the Vickers test with Robert L. Smith at Vickers Ltd (1921) |
-| **noddack** | Bruker S2 PUMA XRF with XY autochanger | nebo, slot 2R3 | [Ida Noddack](https://en.wikipedia.org/wiki/Ida_Noddack), 1896-1978 | found rhenium (1925) by its X-ray spectrum, which is what an XRF reads |
+| **sorby** | Keyence VHX-7000 digital microscope with EA-300 LIBS | nebo, slot 2R1 | [Henry Clifton Sorby](https://en.wikipedia.org/wiki/Henry_Clifton_Sorby), 1826-1908 | founded metallography (1863): polished, etched steel under the microscope |
+| **petch** | ZwickRoell zwickiLine Z5.0 TN (horizontal tensile) | nebo, slot 2R2 | [Norman Petch](https://en.wikipedia.org/wiki/Grain_boundary_strengthening), 1917-1992 | the Hall-Petch relation: yield strength from grain size, read off tensile tests |
+| **sandland** | Mitutoyo HM-220 micro-Vickers tester | nebo, slot 2R2 | [George E. Sandland](https://www.gracesguide.co.uk/G._E._Sandland), d. 1961 | devised the Vickers test with Robert L. Smith at Vickers Ltd (1921, published 1922) |
+| **noddack** | Bruker S2 PUMA XRF with XY autochanger | nebo, slot 2R3 | [Ida Noddack](https://sites.chemistry.unt.edu/~jimm/REDISCOVERY%207-09-2018/Hexagon%20Articles/rhenium%20and%20technetium.pdf), 1896-1978 | with Walter Noddack and Otto Berg, found rhenium (1925) by its X-ray spectrum, which is what an XRF reads |
 | **maudslay** | Makera Carvera CNC mill | nebo, slot 2R3 | [Henry Maudslay](https://en.wikipedia.org/wiki/Henry_Maudslay), 1771-1831 | the screw-cutting lathe and the machine-tool trade |
 | **eisler** | PCB line: DDM stencil printer, Opulo LumenPnP, Puhui reflow oven | nebo, slot 2R4 | [Paul Eisler](https://en.wikipedia.org/wiki/Paul_Eisler), 1907-1992 | invented the printed circuit board |
-| **faraday** | AMAZEMET rePowder ultrasonic atomizer | floor, (-3.4, -1.9) m | [Michael Faraday](https://en.wikipedia.org/wiki/Faraday_wave), 1791-1867 | Faraday waves (1831): the surface waves on a vibrated liquid that ultrasonic atomization breaks into drops |
-| **agricola** | sieving cell: Retsch AS 200, tipper and wash module | floor, (-2.0, -1.3) m | [Georgius Agricola](https://en.wikipedia.org/wiki/Georgius_Agricola), 1494-1555 | De re metallica (1556), whose woodcuts show ore sieved and screened by size |
+| **faraday** | AMAZEMET rePowder ultrasonic atomizer | floor, (-3.4, -1.9) m | [Michael Faraday](https://en.wikipedia.org/wiki/Ultrasonic_atomization), 1791-1867 | Faraday waves (1831): the capillary waves on a vibrated liquid, one leading explanation of how ultrasonic atomization makes drops |
+| **agricola** | sieving cell: Retsch AS 200, tipper and wash module | floor, (-2.0, -1.3) m | [Georgius Agricola](https://library.si.edu/image-gallery/68489), 1494-1555 | De re metallica (1556), whose woodcuts show ore sieved and screened by size |
 | **ramsay** | Inert PureLab HE glovebox | floor, (-7.3, -0.0) m | [William Ramsay](https://en.wikipedia.org/wiki/William_Ramsay), 1852-1916 | found argon (with Rayleigh, 1894) and the other noble gases |
 | **mclean** | packaging station: sealer, label printers, foam inserts | floor, (+10.1, -1.2) m | [Malcom McLean](https://en.wikipedia.org/wiki/Malcom_McLean), 1913-2001 | the shipping container |
-| **kirkaldy** | Instron 68FM-100 with its 3119-608 chamber | floor, (-6.4, -6.8) m | [David Kirkaldy](https://en.wikipedia.org/wiki/David_Kirkaldy), 1820-1897 | built the first universal testing machine and ran the first testing works (London, 1866): 'Facts not Opinions' |
-| **galileo** | Instron 68SC-2 table frame | floor, (-4.3, -6.6) m | [Galileo Galilei](https://en.wikipedia.org/wiki/Two_New_Sciences), 1564-1642 | Two New Sciences (1638) began the strength of materials with a bar pulled in tension |
+| **kirkaldy** | Instron 68FM-100 with its 3119-608 chamber | floor, (-6.4, -6.8) m | [David Kirkaldy](https://engineeringhalloffame.org/profile/david-kirkaldy), 1820-1897 | built his Universal Testing Machine (1865) and opened the first independent commercial testing works (Southwark, 1866): 'Facts not Opinions' |
+| **galileo** | Instron 68SC-2 table frame | floor, (-4.3, -6.6) m | [Galileo Galilei](https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_001to061.html), 1564-1642 | Two New Sciences (1638) began the strength of materials with a bar pulled in tension |
 | **davy** | Labconco Protector XStream ducted fume hood | floor, (+1.5, -6.7) m | [Humphry Davy](https://en.wikipedia.org/wiki/Davy_lamp), 1778-1829 | the safety lamp (1815): working safely in bad air |
-| **lazarenko** | FANUC ROBOCUT wire EDM | floor, (+6.6, -7.5) m | [Boris and Natalya Lazarenko](https://en.wikipedia.org/wiki/Electrical_discharge_machining), 1910-1979, 1911-1979 | invented electrical discharge machining (1943) |
+| **lazarenko** | FANUC ROBOCUT wire EDM | floor, (+6.6, -7.5) m | [Boris and Natalya Lazarenko](https://en.wikipedia.org/wiki/Electrical_discharge_machining), 1910-1979 (Boris) | invented electrical discharge machining (1943) |
 | **brunel** | Meltio robot cell (propeller repair) | floor, (+9.6, -10.7) m | [Isambard Kingdom Brunel](https://en.wikipedia.org/wiki/SS_Great_Britain), 1806-1859 | the SS Great Britain (1843), the first iron, screw-propelled ocean liner |
 | **aston** | Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood | floor, south row's east end (planned, notes/icpms.md) | [Francis Aston](https://en.wikipedia.org/wiki/Francis_William_Aston), 1877-1945 | the mass spectrograph and isotopes, Nobel 1922 |
 | **blodgett** | the atomizer's BN coating station (ours) | floor, beside the atomizer (atom_bn_station.py) | [Katharine Burr Blodgett](https://en.wikipedia.org/wiki/Katharine_Burr_Blodgett), 1898-1979 | thin coatings (Langmuir-Blodgett films, non-reflective glass) |
@@ -97,7 +103,7 @@ names plus the 2 couples: the balance of the fields' histories, not a target met
 | **maiman** | SnowX SnowPod desktop LPBF printers with the NitroPod | nebo, slot 2F2 | [Theodore Maiman](https://en.wikipedia.org/wiki/Theodore_Maiman), 1927-2007 | the first working laser (1960): a small laser for small printers |
 | **deckard** | Aconity MIDI+ LPBF printer and the depowdering box | floor, (+7.0, -0.9) m | [Carl Deckard](https://en.wikipedia.org/wiki/Carl_Deckard), 1961-2019 | invented selective laser sintering: the powder bed and the laser |
 | **gibbs** | InssTek MX-Lab DED (blends compositions in the melt pool) | floor, (+3.9, -6.6) m | [J. Willard Gibbs](https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs), 1839-1903 | the phase rule and free energy, the thermodynamics behind screening alloy compositions |
-| **javan** | EOS M 400-4 (scale-up) | floor, (-9.4, -10.6) m | [Ali Javan](https://en.wikipedia.org/wiki/Ali_Javan), 1926-2016 | the first gas laser (helium-neon, 1960) |
+| **javan** | EOS M 400-4 (scale-up) | floor, (-9.4, -10.6) m | [Ali Javan](https://en.wikipedia.org/wiki/Ali_Javan), 1926-2016 | the first gas laser (helium-neon, 1960, with Bennett and Herriott) |
 
 **Siblings** take a number: the two Form 4s are `senefelder-1` and `-2`, the two SnowPods `maiman-1` and `-2`, and the
 three-each plan (notes/three_each.md) would give `pasteur-1` to `-3` and `tafel-1` to `-3`. **Spares** for the next of
@@ -222,6 +228,35 @@ Nothing here renames a real device. When the lab adopts the scheme:
 
 ## Sources
 
-- RFC 1123 (host names) and RFC 1178, "Choosing a Name for Your Computer": (being added in this run)
+- [RFC 1178](https://www.rfc-editor.org/rfc/rfc1178), "Choosing a Name for Your Computer" (Libes, 1990): use a theme;
+  don't name a machine after a project or place.
+- [RFC 952](https://www.rfc-editor.org/rfc/rfc952), [RFC 1123 section 2.1](https://www.rfc-editor.org/rfc/rfc1123#section-2.1)
+  and [RFC 1035 section 2.3.4](https://www.rfc-editor.org/rfc/rfc1035#section-2.3.4): letters, digits and hyphens, not
+  ending in a hyphen, 63 characters a label.
+- [Microsoft: computer names](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/naming-conventions-for-computer-domain-site-ou):
+  NetBIOS names stop at 15 characters (the 16th is reserved).
+- IEC 81346-1:2022, reference designation: "=" function, "-" product, "+" location
+  ([EPLAN's summary](https://www.eplan.help/en-us/infoportal/content/Plattform/2026/Content/htm/projectstructure_k_referenzkennzeichnung.htm)).
+- [ISA-5.1](https://www.isa.org/intech/2020/september-october/isa-5-1-instrumentation-symbols-and-identification):
+  instrument tags by measured variable, function and loop number (the functional codes this scheme keeps as a field).
+- [The ICAO/NATO spelling alphabet](https://en.wikipedia.org/wiki/NATO_phonetic_alphabet) (1956): "Alfa" and "Juliett"
+  so that every language says them the same way.
+- Precedents: [UBC's Ada](https://chem.ubc.ca/node/36349), named after Ada Lovelace;
+  [Adam and Eve](https://www.cam.ac.uk/research/news/robot-scientist-becomes-first-machine-to-discover-new-scientific-knowledge),
+  robot scientists; ["Nicknames for lab instruments"](https://communities.springernature.com/posts/nicknames-for-lab-instruments)
+  (Springer Nature Communities, 2026).
 - docs/stream-cams.md, "Renaming the workflow" (streamingLambda's substring matching).
-- The namesakes' pages are linked in the table; each claim is being checked against its source in this run.
+- The namesakes' sources are linked in the table. Every date and claim was checked against a source on 2026-11-20.
+  That check changed:
+  - Kirkaldy's "first universal testing machine": Werder's (1852) is usually called the first, so his is now the first
+    independent commercial testing works (1866);
+  - Wilm's date: c. 1906, published 1911;
+  - Sandland's dates: died 1961, birth unknown;
+  - Natalya Lazarenko's dates, which no source gives;
+  - Elsie's recharging: the robot was built to steer home to its hutch, but how often it really recharged itself is
+    disputed;
+  - Faraday waves: one leading explanation of ultrasonic atomization (cavitation is the other);
+  - Nebo's height: 3,637 m;
+  - the credits for Ruska (with Max Knoll), Noddack (with Walter Noddack and Otto Berg) and Javan (with Bennett and
+    Herriott);
+  - two dead links.

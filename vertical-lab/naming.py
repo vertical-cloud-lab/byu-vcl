@@ -47,8 +47,9 @@ FAMILIES = {
     "station": ("people whose own work is the station's job", "Say the name and you have a hint of what it does."),
     "printer": ("pioneers of printing", "The polymer printers are printers; the metal ones are named for laser and "
                 "powder-bed pioneers, since that is the process."),
-    "robot": ("robots of history", "Elsie found her own way back to her hutch to recharge (1949); Freddy assembled "
-              "models from a heap of parts by vision (1973). A MiR250 with a UR12e and a wrist camera does both."),
+    "robot": ("robots of history", "Elsie was built to steer home to her lit hutch to recharge (1949); Freddy "
+              "assembled models from a heap of parts by vision (1973). A MiR250 with a UR12e and a wrist camera does "
+              "both."),
     "shuttle": ("the Wasatch peaks over Provo", "The two tallest things in the lab after round 14's 9.15 m Shuttles."),
 }
 
@@ -61,11 +62,11 @@ STATIONS = {
     "ot2": ("pasteur", "station", "Opentrons OT-2 liquid handler", "Louis Pasteur", "1822-1895",
             "the Pasteur pipette is named for him; the OT-2 is the lab's pipette", W + "Pasteur_pipette"),
     "cubxl": ("tafel", "station", "CubXL corrosion cell with its EZstat Pro potentiostat", "Julius Tafel", "1862-1918",
-              "the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes", W + "Julius_Tafel"),
+              "the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes", W + "Tafel_equation"),
     # ---------------------------------------------------------------- tray B
     "doser": ("lavoisier", "station", "multi-doser (chain carousel v5) on an A&D HR-202i", "Antoine and Marie-Anne "
-              "Paulze Lavoisier", "1743-1794, 1758-1836", "chemistry by the balance: mass in, mass out, and she "
-              "drew and translated the work", W + "Antoine_Lavoisier"),
+              "Paulze Lavoisier", "1743-1794, 1758-1836", "chemistry by the balance: mass in, mass out; she drew the "
+              "Traite's 13 plates (1789)", W + "Marie-Anne_Paulze_Lavoisier"),
     "vacuum_press": ("bridgman", "station", "Specac Atlas Autotouch 15T vacuum press", "Percy W. Bridgman", "1882-1961",
                      "high-pressure physics, Nobel 1946", W + "Percy_Williams_Bridgman"),
     # ---------------------------------------------------------------- tray C
@@ -76,41 +77,47 @@ STATIONS = {
                W + "Aldus_Manutius"),
     # ---------------------------------------------------------------- tray D
     "sem": ("ruska", "station", "Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS", "Ernst Ruska", "1906-1988",
-            "built the first electron microscope (1931-33), Nobel 1986", W + "Ernst_Ruska"),
+            "built the first electron microscope with Max Knoll (1931-33), Nobel 1986", W + "Ernst_Ruska"),
     "xrd": ("lonsdale", "station", "Rigaku MiniFlex XRD", "Kathleen Lonsdale", "1903-1971",
             "X-ray crystallographer; showed by X-ray diffraction that the benzene ring is flat (1929); one of the "
             "first two women elected FRS (1945)", W + "Kathleen_Lonsdale"),
     # ---------------------------------------------------------------- tray E
     "pip": ("tabor", "station", "Plastometrex PLX-Benchtop (indentation plastometry)", "David Tabor", "1913-2005",
             "The Hardness of Metals (1951): indentation hardness as about three times the flow stress, at a "
-            "representative strain; plastometry turns an indent into a stress-strain curve", W + "David_Tabor"),
+            "representative strain; plastometry turns an indent into a stress-strain curve",
+            W + "David_Tabor_(physicist)"),
     "nanoindenter": ("sneddon", "station", "KLA iMicro nanoindenter", "Ian Sneddon", "1919-2000",
-                     "the elastic contact solution for a punch of any profile (1965) that nanoindentation's "
-                     "unloading analysis rests on", W + "Ian_Sneddon"),
+                     "the elastic solution for an axisymmetric punch of arbitrary profile (1965) that "
+                     "nanoindentation's unloading analysis rests on", "https://doi.org/10.1016/0020-7225(65)90019-4"),
     "mastersizer": ("tyndall", "station", "Malvern Mastersizer 3000 with Aero S (laser diffraction)", "John Tyndall",
                     "1820-1893", "the Tyndall effect: light scattered by particles", W + "Tyndall_effect"),
     # ---------------------------------------------------------------- tray F
     "polisher": ("beilby", "station", "LECO PX500 grinder-polisher with its disc magazine", "George Beilby",
-                 "1850-1924", "the Beilby layer, the flowed skin polishing leaves on a metal", W + "George_Beilby"),
+                 "1850-1924", "the Beilby layer, the flowed skin polishing leaves on a metal",
+                 "https://www.nature.com/articles/137516a0"),
     "furnace": ("wilm", "station", "Nabertherm NAT 15/65 furnace with the quench tank", "Alfred Wilm", "1869-1937",
-                "found age hardening in aluminium alloys (1906); the furnace does the bars' T6", W + "Alfred_Wilm"),
+                "found age hardening in aluminium alloys (c. 1906, published 1911); the furnace does the bars' T6",
+                "https://nvlpubs.nist.gov/nistpubs/sp958-lide/html/014-015.html"),
     "mounting_press": ("baekeland", "station", "LECO MX400 hot mounting press", "Leo Baekeland", "1863-1944",
                        "Bakelite, the phenolic of a hot-mounted puck", W + "Leo_Baekeland"),
     # ---------------------------------------------------------------- tray K
     "glovebox_tray": ("schlenk", "station", "the tray's N2 glovebox (ours)", "Wilhelm Schlenk", "1879-1943",
                       "the Schlenk line: handling air-sensitive material", W + "Wilhelm_Schlenk"),
     "vhx": ("sorby", "station", "Keyence VHX-7000 digital microscope with EA-300 LIBS", "Henry Clifton Sorby",
-            "1826-1908", "first to look at polished, etched steel under a microscope (1863): metallography",
+            "1826-1908", "founded metallography (1863): polished, etched steel under the microscope",
             W + "Henry_Clifton_Sorby"),
     # ---------------------------------------------------------------- tray L
     "tensile_h": ("petch", "station", "ZwickRoell zwickiLine Z5.0 TN (horizontal tensile)", "Norman Petch",
                   "1917-1992", "the Hall-Petch relation: yield strength from grain size, read off tensile tests",
-                  W + "Hall%E2%80%93Petch_relation"),
-    "hardness": ("sandland", "station", "Mitutoyo HM-220 micro-Vickers tester", "George E. Sandland", "1920s",
-                 "devised the Vickers test with Robert L. Smith at Vickers Ltd (1921)", W + "Vickers_hardness_test"),
+                  W + "Grain_boundary_strengthening"),
+    "hardness": ("sandland", "station", "Mitutoyo HM-220 micro-Vickers tester", "George E. Sandland", "d. 1961",
+                 "devised the Vickers test with Robert L. Smith at Vickers Ltd (1921, published 1922)",
+                 "https://www.gracesguide.co.uk/G._E._Sandland"),
     # ---------------------------------------------------------------- tray M
     "xrf": ("noddack", "station", "Bruker S2 PUMA XRF with XY autochanger", "Ida Noddack", "1896-1978",
-            "found rhenium (1925) by its X-ray spectrum, which is what an XRF reads", W + "Ida_Noddack"),
+            "with Walter Noddack and Otto Berg, found rhenium (1925) by its X-ray spectrum, which is what an XRF "
+            "reads", "https://sites.chemistry.unt.edu/~jimm/REDISCOVERY%207-09-2018/Hexagon%20Articles/"
+            "rhenium%20and%20technetium.pdf"),
     "cnc": ("maudslay", "station", "Makera Carvera CNC mill", "Henry Maudslay", "1771-1831",
             "the screw-cutting lathe and the machine-tool trade", W + "Henry_Maudslay"),
     # ---------------------------------------------------------------- tray H
@@ -126,11 +133,11 @@ STATIONS = {
                 W + "Theodore_Maiman"),
     # ---------------------------------------------------------------- floor
     "repowder": ("faraday", "station", "AMAZEMET rePowder ultrasonic atomizer", "Michael Faraday", "1791-1867",
-                 "Faraday waves (1831): the surface waves on a vibrated liquid that ultrasonic atomization breaks "
-                 "into drops", W + "Faraday_wave"),
+                 "Faraday waves (1831): the capillary waves on a vibrated liquid, one leading explanation of how "
+                 "ultrasonic atomization makes drops", W + "Ultrasonic_atomization"),
     "sieve_cell": ("agricola", "station", "sieving cell: Retsch AS 200, tipper and wash module", "Georgius Agricola",
                    "1494-1555", "De re metallica (1556), whose woodcuts show ore sieved and screened by size",
-                   W + "Georgius_Agricola"),
+                   "https://library.si.edu/image-gallery/68489"),
     "aconity": ("deckard", "printer", "Aconity MIDI+ LPBF printer and the depowdering box", "Carl Deckard",
                 "1961-2019", "invented selective laser sintering: the powder bed and the laser", W + "Carl_Deckard"),
     "glovebox": ("ramsay", "station", "Inert PureLab HE glovebox", "William Ramsay", "1852-1916",
@@ -138,20 +145,22 @@ STATIONS = {
     "packaging": ("mclean", "station", "packaging station: sealer, label printers, foam inserts", "Malcom McLean",
                   "1913-2001", "the shipping container", W + "Malcom_McLean"),
     "instron_floor": ("kirkaldy", "station", "Instron 68FM-100 with its 3119-608 chamber", "David Kirkaldy",
-                      "1820-1897", "built the first universal testing machine and ran the first testing works "
-                      "(London, 1866): 'Facts not Opinions'", W + "David_Kirkaldy"),
+                      "1820-1897", "built his Universal Testing Machine (1865) and opened the first independent "
+                      "commercial testing works (Southwark, 1866): 'Facts not Opinions'",
+                      "https://engineeringhalloffame.org/profile/david-kirkaldy"),
     "instron_small": ("galileo", "station", "Instron 68SC-2 table frame", "Galileo Galilei", "1564-1642",
                       "Two New Sciences (1638) began the strength of materials with a bar pulled in tension",
-                      W + "Two_New_Sciences"),
+                      "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_001to061.html"),
     "fumehood": ("davy", "station", "Labconco Protector XStream ducted fume hood", "Humphry Davy", "1778-1829",
                  "the safety lamp (1815): working safely in bad air", W + "Davy_lamp"),
     "ded": ("gibbs", "printer", "InssTek MX-Lab DED (blends compositions in the melt pool)", "J. Willard Gibbs",
             "1839-1903", "the phase rule and free energy, the thermodynamics behind screening alloy compositions",
             W + "Josiah_Willard_Gibbs"),
-    "wire_edm": ("lazarenko", "station", "FANUC ROBOCUT wire EDM", "Boris and Natalya Lazarenko", "1910-1979, "
-                 "1911-1979", "invented electrical discharge machining (1943)", W + "Electrical_discharge_machining"),
+    "wire_edm": ("lazarenko", "station", "FANUC ROBOCUT wire EDM", "Boris and Natalya Lazarenko",
+                 "1910-1979 (Boris)", "invented electrical discharge machining (1943)",
+                 W + "Electrical_discharge_machining"),
     "eos_m400": ("javan", "printer", "EOS M 400-4 (scale-up)", "Ali Javan", "1926-2016",
-                 "the first gas laser (helium-neon, 1960)", W + "Ali_Javan"),
+                 "the first gas laser (helium-neon, 1960, with Bennett and Herriott)", W + "Ali_Javan"),
     "meltio_cell": ("brunel", "station", "Meltio robot cell (propeller repair)", "Isambard Kingdom Brunel",
                     "1806-1859", "the SS Great Britain (1843), the first iron, screw-propelled ocean liner",
                     W + "SS_Great_Britain"),
@@ -162,13 +171,13 @@ STATIONS = {
                    W + "Katharine_Burr_Blodgett"),
     # ---------------------------------------------------------------- robots and Shuttles
     "unit1": ("elsie", "robot", "MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 1", "W. Grey Walter's Elsie",
-              "1949", "a robot tortoise that found its way back to its hutch to recharge",
-              W + "William_Grey_Walter"),
+              "1949", "a robot tortoise built to steer home to its lit hutch to recharge",
+              "https://cyberneticzoo.com/?p=491"),
     "unit2": ("freddy", "robot", "MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 2", "Edinburgh's Freddy",
               "1969-1976", "a hand-eye robot that assembled models from a heap of parts by vision", W + "Freddy_II"),
     "vlm": ("timp", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 1", "Mount Timpanogos", "3,582 m",
             "the peak over Provo; locals call it Timp", W + "Mount_Timpanogos"),
-    "vlm2": ("nebo", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 2", "Mount Nebo", "3,636 m",
+    "vlm2": ("nebo", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 2", "Mount Nebo", "3,637 m",
              "the highest peak of the Wasatch, south of Provo", W + "Mount_Nebo_(Utah)"),
 }
 # spare names, checked like the rest, for the next unit of a family (the three-each plan, a third robot, Shuttle 3)
@@ -401,7 +410,8 @@ def lev(a, b) -> int:
 
 def lab_words(min_count: int = 3) -> dict:
     """Words the lab writes and says: the narration and every notes file, with their counts."""
-    text = (HERE / "narration.json").read_text() + " ".join(p.read_text() for p in (HERE / "notes").glob("*.md"))
+    text = (HERE / "narration.json").read_text() + " ".join(p.read_text() for p in (HERE / "notes").glob("*.md")
+                                                            if p.name != "naming.md")     # not this scheme's own
     words = {}
     for w in re.findall(r"[A-Za-z][a-z]{2,}", text):
         words[w.lower()] = words.get(w.lower(), 0) + 1
