@@ -131,18 +131,18 @@
    "tips_per_spot": 3
   },
   "P20 + P300": {
-   "fill_min": 3.0749272307598736,
-   "collect_min": 3.100937806794237,
+   "fill_min": 3.093370858210854,
+   "collect_min": 3.1624165649641713,
    "acid_min": 1.2896077399120438,
-   "head_min": 7.465472777466155,
+   "head_min": 7.545395163087069,
    "transfers": 6,
    "tips_per_spot": 4
   },
   "Flex 1-Channel 1000 uL": {
-   "fill_min": 2.745552230759874,
-   "collect_min": 3.100937806794237,
+   "fill_min": 2.7660451501498518,
+   "collect_min": 3.1624165649641713,
    "acid_min": 1.2896077399120438,
-   "head_min": 7.136097777466154,
+   "head_min": 7.218069455026067,
    "transfers": 6,
    "tips_per_spot": 3
   }
@@ -159,22 +159,22 @@
     "chloride_rise_pct": 1.401510816341478
    },
    "P20 + P300": {
-    "fill_uL": 0.1442293089570175,
+    "fill_uL": 0.14509440638609006,
     "leak check, open": 0.19400559684637936,
     "cap going on, open": 0.09700279842318968,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.3446430690177942,
-    "total_uL": 1.7798807732443809,
-    "pct_of_150uL": 1.1865871821629206,
-    "chloride_rise_pct": 1.200836149997575
+    "total_uL": 1.7807458706734534,
+    "pct_of_150uL": 1.1871639137823022,
+    "chloride_rise_pct": 1.2014268194331157
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.12877999094958675,
+    "fill_uL": 0.12974121031522293,
     "leak check, open": 0.19400559684637936,
     "cap going on, open": 0.09700279842318968,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.3446430690177942,
-    "total_uL": 1.76443145523695,
-    "pct_of_150uL": 1.1762876368246333,
-    "chloride_rise_pct": 1.1902888574978787
+    "total_uL": 1.765392674602586,
+    "pct_of_150uL": 1.1769284497350574,
+    "chloride_rise_pct": 1.1909450205020544
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.43755849835297433,
@@ -210,22 +210,22 @@
     "chloride_rise_pct": 1.8930917810284997
    },
    "P20 + P300": {
-    "fill_uL": 0.19387795231571542,
+    "fill_uL": 0.19504084576168046,
     "leak check, open": 0.2607889348313637,
     "cap going on, open": 0.13039446741568184,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.8075150376986182,
-    "total_uL": 2.392576392261379,
-    "pct_of_150uL": 1.5950509281742526,
-    "chloride_rise_pct": 1.6209051914757078
+    "total_uL": 2.393739285707344,
+    "pct_of_150uL": 1.5958261904715627,
+    "chloride_rise_pct": 1.6217057963013426
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.17311045255013296,
+    "fill_uL": 0.17440255637898297,
     "leak check, open": 0.2607889348313637,
     "cap going on, open": 0.13039446741568184,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.8075150376986182,
-    "total_uL": 2.371808892495797,
-    "pct_of_150uL": 1.5812059283305313,
-    "chloride_rise_pct": 1.6066097367329002
+    "total_uL": 2.3731009963246468,
+    "pct_of_150uL": 1.5820673308830977,
+    "chloride_rise_pct": 1.6074990481684148
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.5881810451181979,
@@ -261,22 +261,22 @@
     "chloride_rise_pct": 0.9146503208098622
    },
    "P20 + P300": {
-    "fill_uL": 0.09458066559831957,
+    "fill_uL": 0.09514796701049968,
     "leak check, open": 0.1272222588613951,
     "cap going on, open": 0.06361112943069755,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 0.8817711003369698,
-    "total_uL": 1.167185154227382,
-    "pct_of_150uL": 0.778123436151588,
-    "chloride_rise_pct": 0.7842256799596825
+    "total_uL": 1.1677524556395622,
+    "pct_of_150uL": 0.7785016370930414,
+    "chloride_rise_pct": 0.7846098375229538
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.08444952934904056,
+    "fill_uL": 0.0850798642514629,
     "leak check, open": 0.1272222588613951,
     "cap going on, open": 0.06361112943069755,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 0.8817711003369698,
-    "total_uL": 1.157054017978103,
-    "pct_of_150uL": 0.7713693453187354,
-    "chloride_rise_pct": 0.7773657060764272
+    "total_uL": 1.1576843528805254,
+    "pct_of_150uL": 0.771789568587017,
+    "chloride_rise_pct": 0.7777924898892286
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.2869359515877508,
@@ -312,22 +312,22 @@
     "chloride_rise_pct": 2.3582397817844436
    },
    "P20 + P300": {
-    "fill_uL": 0.26005444701398484,
+    "fill_uL": 0.26161427167900997,
     "leak check, open": 0.35133051096317397,
     "cap going on, open": 0.17566525548158698,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.1500417329370745,
-    "total_uL": 2.93709194639582,
-    "pct_of_150uL": 1.9580612975972134,
-    "chloride_rise_pct": 1.9971670527045848
+    "total_uL": 2.9386517710608455,
+    "pct_of_150uL": 1.9591011807072305,
+    "chloride_rise_pct": 1.9982488984706448
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.2321983622818385,
+    "fill_uL": 0.23393150079853306,
     "leak check, open": 0.35133051096317397,
     "cap going on, open": 0.17566525548158698,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.1500417329370745,
-    "total_uL": 2.909235861663674,
-    "pct_of_150uL": 1.9394905744424493,
-    "chloride_rise_pct": 1.9778508043697185
+    "total_uL": 2.9109690001803683,
+    "pct_of_150uL": 1.9406460001202455,
+    "chloride_rise_pct": 1.9790524013880706
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 0.7788246571166396,
@@ -363,22 +363,22 @@
     "chloride_rise_pct": 3.0457410460755563
    },
    "P20 + P300": {
-    "fill_uL": 0.36228114871791217,
+    "fill_uL": 0.3644541362516091,
     "leak check, open": 0.49209474250118307,
     "cap going on, open": 0.24604737125059153,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.627203726899866,
-    "total_uL": 3.7276269893695524,
-    "pct_of_150uL": 2.4850846595797016,
-    "chloride_rise_pct": 2.5484149280183166
+    "total_uL": 3.7297999769032497,
+    "pct_of_150uL": 2.4865333179355,
+    "chloride_rise_pct": 2.549938385477213
    },
    "Flex 1-Channel 1000 uL": {
-    "fill_uL": 0.3234749122108211,
+    "fill_uL": 0.3258893428038177,
     "leak check, open": 0.49209474250118307,
     "cap going on, open": 0.24604737125059153,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.627203726899866,
-    "total_uL": 3.6888207528624615,
-    "pct_of_150uL": 2.4592138352416413,
-    "chloride_rise_pct": 2.5212159261129186
+    "total_uL": 3.691235183455458,
+    "pct_of_150uL": 2.460823455636972,
+    "chloride_rise_pct": 2.5229077615984696
    },
    "P20 only (now), O-ring cap": {
     "fill_uL": 1.068230474812525,
@@ -3136,5 +3136,216 @@
   },
   "onset_marangoni": 80,
   "onset_rayleigh": 1101
+ },
+ "sulfide_stock_per_opening": {
+  "one draw": {
+   "t_open_s": 48.53294054067798,
+   "headspace_pct": 0.19244086081165657,
+   "open_pct": 0.2755209259104517,
+   "per_opening_pct": 0.4679617867221082
+  },
+  "eight P20 draws (a well of stock alone)": {
+   "t_open_s": 358.359867822877,
+   "headspace_pct": 0.19244086081165657,
+   "open_pct": 1.3509814991758133,
+   "per_opening_pct": 1.54342235998747
+  },
+  "one P300 draw (a well of stock alone)": {
+   "t_open_s": 47.88751570407667,
+   "headspace_pct": 0.19244086081165657,
+   "open_pct": 0.27237668120047276,
+   "per_opening_pct": 0.46481754201212927
+  }
+ },
+ "prices_usd": {
+  "OT-2 GEN2 P20 single (999-00002)": 2950,
+  "OT-2 GEN2 P300 single (999-00003)": 2950,
+  "Flex 1-Channel 5-1000 uL (999-00187)": 3600,
+  "Flex 1-Channel 1-50 uL (999-00186)": 3600,
+  "OT-2 20 or 300 uL tips, per rack of 96": 8.5,
+  "Flex tips, per rack of 96": 16.0
+ },
+ "accuracy": {
+  "P20 only (now)": {
+   "asw": {
+    "per_transfer_uL": 19.3,
+    "n": 7,
+    "systematic_pct": 1.5256995762533223,
+    "cv_pct": 0.30625698912544075
+   },
+   "sulfide": {
+    "per_transfer_uL": 15.0,
+    "n": 1,
+    "systematic_pct": 1.707518749639422,
+    "cv_pct": 0.8830074998557688
+   },
+   "collect": {
+    "per_transfer_uL": 18.75,
+    "n": 8,
+    "systematic_pct": 1.5465547021957406,
+    "cv_pct": 0.28942654159836473
+   },
+   "acid": {
+    "per_transfer_uL": 20.0,
+    "n": 1,
+    "systematic_pct": 1.5,
+    "cv_pct": 0.8
+   }
+  },
+  "P20 + P300": {
+   "asw": {
+    "per_transfer_uL": 135.0,
+    "n": 1,
+    "systematic_pct": 1.1568718413496701,
+    "cv_pct": 0.5098102889447693
+   },
+   "sulfide": {
+    "per_transfer_uL": 15.0,
+    "n": 1,
+    "systematic_pct": 1.707518749639422,
+    "cv_pct": 0.8830074998557688
+   },
+   "collect": {
+    "per_transfer_uL": 150.0,
+    "n": 1,
+    "systematic_pct": 1.0,
+    "cv_pct": 0.4
+   },
+   "acid": {
+    "per_transfer_uL": 20.0,
+    "n": 1,
+    "systematic_pct": 1.5,
+    "cv_pct": 0.8
+   }
+  },
+  "Flex 1-Channel 1000 uL": {
+   "asw_200uL_tip": {
+    "per_transfer_uL": 135.0,
+    "n": 1,
+    "systematic_pct": NaN,
+    "cv_pct": NaN,
+    "note": "specified at 200.0 uL only"
+   },
+   "asw_50uL_tip_3x45": {
+    "per_transfer_uL": 45.0,
+    "n": 3,
+    "systematic_pct": 0.7059087075230392,
+    "cv_pct": 0.23132489964071248
+   },
+   "sulfide_50uL_tip": {
+    "per_transfer_uL": 15.0,
+    "n": 1,
+    "systematic_pct": 2.852954353761519,
+    "cv_pct": 1.4503332396167425
+   },
+   "collect_200uL_tip": {
+    "per_transfer_uL": 150.0,
+    "n": 1,
+    "systematic_pct": NaN,
+    "cv_pct": NaN,
+    "note": "specified at 200.0 uL only"
+   },
+   "acid_50uL_tip": {
+    "per_transfer_uL": 20.0,
+    "n": 1,
+    "systematic_pct": 2.2907300390241696,
+    "cv_pct": 1.1754680190784828
+   }
+  },
+  "P300 at 20 uL (if it took the acid)": {
+   "acid": {
+    "per_transfer_uL": 20.0,
+    "n": 1,
+    "systematic_pct": 4.0,
+    "cv_pct": 2.5
+   }
+  }
+ },
+ "specs": {
+  "P20": {
+   "points": [
+    [
+     1.0,
+     15.0,
+     5.0
+    ],
+    [
+     10.0,
+     2.0,
+     1.0
+    ],
+    [
+     20.0,
+     1.5,
+     0.8
+    ]
+   ],
+   "source": "https://insights.opentrons.com/hubfs/Products/Pipettes/GEN2%20Pipette%20White%20Paper.pdf"
+  },
+  "P300": {
+   "points": [
+    [
+     20.0,
+     4.0,
+     2.5
+    ],
+    [
+     150.0,
+     1.0,
+     0.4
+    ],
+    [
+     300.0,
+     0.6,
+     0.3
+    ]
+   ],
+   "source": "https://insights.opentrons.com/hubfs/Products/Pipettes/GEN2%20Pipette%20White%20Paper.pdf"
+  },
+  "Flex 1000, 50 uL tip": {
+   "points": [
+    [
+     5.0,
+     5.0,
+     2.5
+    ],
+    [
+     50.0,
+     0.5,
+     0.3
+    ]
+   ],
+   "source": "https://insights.opentrons.com/hubfs/Products/Pipettes/Tech%20Data%20Sheet_Pipette%20Accuracy.pdf"
+  },
+  "Flex 1000, 200 uL tip": {
+   "points": [
+    [
+     200.0,
+     0.5,
+     0.15
+    ]
+   ],
+   "source": "https://insights.opentrons.com/hubfs/Products/Pipettes/Tech%20Data%20Sheet_Pipette%20Accuracy.pdf"
+  },
+  "Flex 50, 50 uL tip": {
+   "points": [
+    [
+     1.0,
+     8.0,
+     7.0
+    ],
+    [
+     10.0,
+     1.5,
+     0.5
+    ],
+    [
+     50.0,
+     1.25,
+     0.4
+    ]
+   ],
+   "source": "https://insights.opentrons.com/hubfs/Products/Pipettes/Tech%20Data%20Sheet_Pipette%20Accuracy.pdf"
+  }
  }
 }

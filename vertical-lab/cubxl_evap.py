@@ -479,6 +479,25 @@ def sulfide_stock_fill(case: dict, fill_min_p20: float, fill_min_big: float) -> 
     return res
 
 
+def sulfide_stock_opening(case: dict, t_open_s: float, head_ml: float = 4.0) -> dict:
+    """H2S lost from an 18 mL sulfide stock each time its cap comes off: the headspace (in equilibrium, assumed swept
+    out) plus what leaves the liquid while the vial is open (semi-infinite liquid, escape velocity k at the surface:
+    Carslaw & Jaeger's Robin solution)."""
+    from math import erfc
+    t_c, u = case["t"], case["u"]
+    part = k_aw_h2s(t_c) * h2s_fraction(PH_WELL, t_c)
+    head = part * head_ml / VIAL["ml"]
+    a = math.pi * (VIAL["body_r"] * 1e-3) ** 2
+    k = g_vial_open(d_h2s_air(t_c), u) / a * part
+    hh = k / D_S_AQ
+    x = hh * math.sqrt(D_S_AQ * t_open_s)
+    m_per_area = (D_S_AQ / k) * (math.exp(x * x) * erfc(x) - 1 + 2 * x / math.sqrt(math.pi)) if x < 25 else \
+        2 * math.sqrt(D_S_AQ * t_open_s / math.pi) - D_S_AQ / k
+    open_loss = m_per_area * a / (VIAL["ml"] * 1e-6)
+    return dict(t_open_s=t_open_s, headspace_pct=100 * head, open_pct=100 * open_loss,
+                per_opening_pct=100 * (head + open_loss))
+
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Tubes overnight, stock vials, rinse cups
 # ---------------------------------------------------------------------------------------------------------------------
@@ -506,7 +525,22 @@ def leaky_cap_ul_day(t_c: float, rh: float, gap_mm: float = 0.05, land_mm: float
 # ---------------------------------------------------------------------------------------------------------------------
 # Accuracy at the volumes moved (filled from Opentrons' published specifications; see SPECS)
 # ---------------------------------------------------------------------------------------------------------------------
-SPECS: dict[str, dict] = {}         # name -> {"points": [(uL, systematic %, CV %)], "source": url}
+# Opentrons' published figures (read 2026-11-20). OT-2 GEN2: the GEN2 pipette white paper, Table 1; Flex: the
+# "Pipette Accuracy" tech data sheet (May 2026), by tip
+_WP = "https://insights.opentrons.com/hubfs/Products/Pipettes/GEN2%20Pipette%20White%20Paper.pdf"
+_TDS = "https://insights.opentrons.com/hubfs/Products/Pipettes/Tech%20Data%20Sheet_Pipette%20Accuracy.pdf"
+SPECS: dict[str, dict] = {
+    "P20": dict(points=[(1.0, 15.0, 5.0), (10.0, 2.0, 1.0), (20.0, 1.5, 0.8)], source=_WP),
+    "P300": dict(points=[(20.0, 4.0, 2.5), (150.0, 1.0, 0.4), (300.0, 0.6, 0.3)], source=_WP),
+    "Flex 1000, 50 uL tip": dict(points=[(5.0, 5.0, 2.5), (50.0, 0.5, 0.3)], source=_TDS),
+    "Flex 1000, 200 uL tip": dict(points=[(200.0, 0.5, 0.15)], source=_TDS),
+    "Flex 50, 50 uL tip": dict(points=[(1.0, 8.0, 7.0), (10.0, 1.5, 0.5), (50.0, 1.25, 0.4)], source=_TDS),
+}
+# plunger: ul per mm of travel (Opentrons shared-data pipetteModelSpecs.json piecewise tables at these volumes)
+UL_PER_MM = {"P20": 0.76, "P300": 9.18}
+PRICES_USD = {"OT-2 GEN2 P20 single (999-00002)": 2950, "OT-2 GEN2 P300 single (999-00003)": 2950,
+              "Flex 1-Channel 5-1000 uL (999-00187)": 3600, "Flex 1-Channel 1-50 uL (999-00186)": 3600,
+              "OT-2 20 or 300 uL tips, per rack of 96": 8.50, "Flex tips, per rack of 96": 16.0}
 
 
 def spec_at(name: str, ul: float) -> tuple[float, float]:
@@ -521,6 +555,10 @@ def spec_at(name: str, ul: float) -> tuple[float, float]:
 
 def series_error(name: str, ul: float, n: int) -> dict:
     """n equal transfers: the systematic error adds in step (same %), the random error falls as 1/sqrt(n)."""
+    pts = SPECS[name]["points"]
+    if len(pts) == 1:                                  # one published point: only that volume is specified
+        sys_, cv = (pts[0][1], pts[0][2]) if abs(ul - pts[0][0]) < 1e-6 else (float("nan"), float("nan"))
+        return dict(per_transfer_uL=ul, n=n, systematic_pct=sys_, cv_pct=cv, note=f"specified at {pts[0][0]} uL only")
     sys_, cv = spec_at(name, ul)
     return dict(per_transfer_uL=ul, n=n, systematic_pct=sys_, cv_pct=cv / math.sqrt(n) if cv == cv else cv)
 
@@ -575,15 +613,28 @@ def main(argv):
                         marangoni=1.5e-4 * dt_k * hh / (0.955e-3 * 1.43e-7),
                         rayleigh=9.81 * 2.2e-4 * dt_k * hh ** 3 / (0.955e-6 * 1.43e-7))
     res["evaporative_cooling"] = dict(cases=marg, onset_marangoni=80, onset_rayleigh=1101)
+    # the sulfide stock, opened for one draw (cap off, aspirate, to S1 and back, cap on: about 40 s) or for the eight
+    # P20 draws of a well made of stock alone (0.1 or 10 mg/L): the P20 fill time
+    one = STEP_S["decap"] + transfer_s(DECK["S10"], DECK["S1"], 15.0, P20_PLUNGER_S_PER_UL) + STEP_S["cap"]
+    res["sulfide_stock_per_opening"] = {
+        "one draw": sulfide_stock_opening(base, one),
+        "eight P20 draws (a well of stock alone)": sulfide_stock_opening(base, plans["P20 only (now)"]["fill_min"] * 60),
+        "one P300 draw (a well of stock alone)": sulfide_stock_opening(
+            base, STEP_S["decap"] + transfer_s(DECK["S10"], DECK["S1"], 150.0, p300_s_per_ul) + STEP_S["cap"])}
     if SPECS:
         acc = {}
         acc["P20 only (now)"] = dict(asw=series_error("P20", 19.3, 7), sulfide=series_error("P20", 15.0, 1),
                                      collect=series_error("P20", 18.75, 8), acid=series_error("P20", 20.0, 1))
         acc["P20 + P300"] = dict(asw=series_error("P300", 135.0, 1), sulfide=series_error("P20", 15.0, 1),
                                  collect=series_error("P300", 150.0, 1), acid=series_error("P20", 20.0, 1))
-        for k in [k for k in SPECS if k.startswith("Flex")]:
-            acc[k] = dict(asw=series_error(k, 135.0, 1), sulfide=series_error(k, 15.0, 1),
-                          collect=series_error(k, 150.0, 1), acid=series_error(k, 20.0, 1))
+        acc["Flex 1-Channel 1000 uL"] = dict(
+            asw_200uL_tip=series_error("Flex 1000, 200 uL tip", 135.0, 1),
+            asw_50uL_tip_3x45=series_error("Flex 1000, 50 uL tip", 45.0, 3),
+            sulfide_50uL_tip=series_error("Flex 1000, 50 uL tip", 15.0, 1),
+            collect_200uL_tip=series_error("Flex 1000, 200 uL tip", 150.0, 1),
+            acid_50uL_tip=series_error("Flex 1000, 50 uL tip", 20.0, 1))
+        acc["P300 at 20 uL (if it took the acid)"] = dict(acid=series_error("P300", 20.0, 1))
+        res["prices_usd"] = PRICES_USD
         res["accuracy"] = acc
         res["specs"] = SPECS
     (OUT / "cubxl_evap.json").write_text(json.dumps(res, indent=1, default=float))
@@ -592,7 +643,8 @@ def main(argv):
     return res
 
 
-P300_PLUNGER_S_PER_UL = P20_PLUNGER_S_PER_UL / 20.0   # placeholder until the P300's ul_per_mm is in (set below)
+# the plunger runs at the P20's measured 26.8 mm in 5.0 s; the P300 moves 9.18 uL a mm against the P20's 0.76
+P300_PLUNGER_S_PER_UL = P20_PLUNGER_S_PER_UL * UL_PER_MM["P20"] / UL_PER_MM["P300"]
 
 
 SURFACE, INK, INK2, MUTED, GRID, AXIS = "#fcfcfb", "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
