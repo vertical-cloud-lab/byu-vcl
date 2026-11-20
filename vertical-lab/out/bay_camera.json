@@ -1,83 +1,83 @@
 {
  "name": "bay_camera",
- "fps": 6,
- "n_frames": 193,
+ "fps": 12,
+ "n_frames": 397,
  "size": [
-  1280,
-  720
+  1920,
+  1080
  ],
  "substeps": [
   {
    "label": "1/4",
-   "caption": "From where an operator stands, 0.9 m in front of the opening, eyes at 1.6 m: the bay's overhead camera, up under the header at the back of the bay, looking down over the presented tray (here tray B, the doser's).",
+   "caption": "From an operator's eyes at the opening, looking up under the header: the bay has a roof, and two stream cameras hang from it on short drops, one at the back looking forward, one behind the header looking back. Each is a Pi 5 with an HQ Camera and a Camera Module 3 Wide on a pan-tilt head.",
    "start_frame": 0,
-   "end_frame": 45
+   "end_frame": 95
   },
   {
    "label": "2/4",
-   "caption": "What it covers: the Camera Module 3 Wide (blue) sees 102 x 67 degrees, the whole tray; the HQ Camera with the 16 mm lens (orange) 22.2 x 16.8 degrees, a patch about a tenth of it, for detail.",
-   "start_frame": 46,
-   "end_frame": 79
+   "caption": "What each Wide covers, 102 x 67 degrees: the back one (blue) 94 % of the tray's floor and the arm coming in, the front one (orange) 82 %, the instruments' fronts where the arm works. The top of the back one's picture looks out into the room, so its stream gets a privacy mask there; the front one sees none of it.",
+   "start_frame": 96,
+   "end_frame": 170
   },
   {
    "label": "3/4",
-   "caption": "Into the camera.",
-   "start_frame": 80,
-   "end_frame": 92
+   "caption": "Into the back unit's Wide.",
+   "start_frame": 171,
+   "end_frame": 196
   },
   {
    "label": "3/4",
-   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
-   "start_frame": 93,
-   "end_frame": 104
+   "caption": "What the back unit's Wide sees: the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 197,
+   "end_frame": 219
   },
   {
    "label": "3/4",
-   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
-   "start_frame": 105,
-   "end_frame": 108
+   "caption": "What the back unit's Wide sees: the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 220,
+   "end_frame": 226
   },
   {
    "label": "3/4",
-   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
-   "start_frame": 109,
-   "end_frame": 114
+   "caption": "What the back unit's Wide sees: the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 227,
+   "end_frame": 240
   },
   {
    "label": "3/4",
-   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
-   "start_frame": 115,
-   "end_frame": 132
+   "caption": "What the back unit's Wide sees: the whole presented tray from behind, 94 % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 241,
+   "end_frame": 269
   },
   {
    "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
-   "start_frame": 133,
-   "end_frame": 141
+   "caption": "Now the front unit's Wide, from behind the header.",
+   "start_frame": 270,
+   "end_frame": 298
   },
   {
    "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
-   "start_frame": 142,
-   "end_frame": 153
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 299,
+   "end_frame": 321
   },
   {
    "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
-   "start_frame": 154,
-   "end_frame": 157
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 322,
+   "end_frame": 328
   },
   {
    "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
-   "start_frame": 158,
-   "end_frame": 166
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 329,
+   "end_frame": 346
   },
   {
    "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
-   "start_frame": 167,
-   "end_frame": 192
+   "caption": "What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial on the doser's shuttle fork, outside the port in its panel; 82 % of the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few centimetres.",
+   "start_frame": 347,
+   "end_frame": 396
   }
  ]
 }

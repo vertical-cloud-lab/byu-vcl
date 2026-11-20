@@ -94,19 +94,20 @@ CHAPTERS = [
                  "A real VLM in operation, from the sample's perspective (Sterling Baird, youtu.be/ck8QJhVqPiY)",
                  None)]),
     dict(key="setup", title="The lab set up from scratch",
-         card=["An empty bay: the layout taped out, utilities overhead, two Kardex Shuttle XP 500s going up with a "
-               "996 mm opening, the floor machines, the arm assembled onto its MiR250, then every tray loaded by "
+         card=["An empty bay: the layout taped out, utilities overhead, two 30 ft (9.15 m) Kardex Shuttle XP 500s going "
+               "up with a 996 mm opening, the floor machines, the arm assembled onto its MiR250, then every tray loaded by "
                "people: a UPS and stream cameras on each powered one, neither on the sample and powder-jar stores, "
                "whose short trays the camera over each bay inventories."],
          parts=[("mp4", "setup_lab.mp4", None),
-                ("still", "tray_plan.png", 14.0, "Every tray from above, with its UPS, dock plate and cameras where it "
-                 "needs them, and the slot each one takes", "What goes on which tray")]),
+                ("still", "tray_plan.png", 14.0, "Every tray from above, each part's own footprint: its UPS with an "
+                 "AirGradient on it, dock plate and cameras where it needs them, nothing closer than 10 mm; and the slot "
+                 "each one takes in the 30 ft Shuttles", "What goes on which tray")]),
     dict(key="services", title="Services: UPS, automatic hookups, cabling and cameras",
          card=["Each powered tray carries a UPS sized for it: a Vertiv Liebert lithium unit of 800, 1500 or 3000 VA. In "
                "its slot and again in the picking bay, a floating dock in the side wall mates two Stäubli CombiTac "
                "frames with the tray's: mains, Ethernet, air, N2 and chilled water. In transit the dock vents the lines "
                "to 0 bar and lets go, and the tray runs on its UPS.",
-               "Then the cabling, the stream camera unit, and what the camera over the bay sees."],
+               "Then the cabling, the stream camera unit, and what the two cameras hung from the bay's roof see."],
          parts=[("mp4", "vlm_hookups.mp4", "Storage to the bay: the hookups and the UPS"),
                 ("mp4", "vlm_coupling.mp4", "The coupling, part by part: Stäubli CombiTac on a floating dock"),
                 ("mp4", "vlm_services.mp4", "The docks in every slot"),
@@ -116,7 +117,7 @@ CHAPTERS = [
                  "docks in and out", "The docks against the lift"),
                 ("mp4", "vlm_cabling.mp4", "Cabling"),
                 ("mp4", "instruments/stream_cam.mp4", "The stream camera unit: height, pan, tilt"),
-                ("mp4", "bay_camera.mp4", "The camera over the bay, and what it sees")]),
+                ("mp4", "bay_camera.mp4", "The cameras over the bay, and what each sees")]),
     dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL",
          card=["The OT-2 makes up the CubXL's electrolyte (digital-wetlab PR #83). The CubXL runs DAL's copper corrosion "
                "screen spot by spot (DAL PR #180), with the volumes a real pipette moves; its magnet holds one cap at a "

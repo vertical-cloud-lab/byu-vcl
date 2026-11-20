@@ -1489,7 +1489,10 @@ CAM_S_R2 = [(1930, 930, 1480), (1240, 1320, 1150), (0, 0, 1)]
 CAM_S_MID = [(5200, -2900, 2500), (700, -200, 1100), (0, 0, 1)]
 CAM_S_BAY = [(1930, -1130, 1240), (1240, -740, 910), (0, 0, 1)]
 CAM_S_CAMS = [(1500, -3900, 1560), (-150, -1000, 1180), (0, 0, 1)]     # under the header, as the camera still
-CAM_S_EYE = (420.0, -2450.0, 1600.0)     # round 11: an operator's eyes, 0.9 m in front of the face (movie_bay_camera)
+# round 14: an operator's eyes at the opening, 0.26 m in front of its face, 1.5 m up, looking up under the header into
+# the bay (round 11-13's 0.9 m out and 1.6 m up looked at the header, which hides the bay's roof and the cameras' drops)
+CAM_S_EYE = (420.0, -1820.0, 1500.0)
+CAM_S_EYE_ANGLE = 62.0
 
 
 def movie_services(data, idata):
@@ -1589,15 +1592,16 @@ def movie_services(data, idata):
     va0 = sc.view_angle
     # round 14 (PR #318, 2026-11-20): the bay has a roof, and two units hang from it, not one on a bar
     tb, tf = np.array(bay_cam_point("back")), np.array(bay_cam_point("front"))
-    cam_op = [tuple(CAM_S_EYE), tuple((tb + tf) / 2 + (0, 0, -140)), (0, 0, 1)]
+    cam_op = [tuple(CAM_S_EYE), tuple((tb + tf) / 2 + (0, 0, 10)), (0, 0, 1)]
     lbl_op = [("back unit: a Pi 5, HQ Camera (16 mm lens) and\nCamera Module 3 Wide on a pan-tilt head",
                tuple(tb), (0.96, 0.15)),
               ("front unit, behind the header, looking back", tuple(tf), (0.40, 0.08)),
               ("both hung from the bay's roof", (-700.0, (tb[1] + tf[1]) / 2, V.BAY_ROOF_Z), (0.03, 0.50))]
-    cap_op = ("And two overhead ones, seen from where an operator stands (the cladding drawn solid for them): hung "
+    cap_op = ("And two overhead ones, seen by an operator at the opening looking up (the cladding drawn solid): hung "
               "from the bay's roof over Kardex's product envelope, one at the back looking forward and down, one "
               "behind the header looking back at the instruments' fronts.")
-    sc.step(f"6/{n}", cap_op, 1.6, L.skin(0.0), hold=2.0, cam_to=cam_op, view_angle_to=48.0, labels=lbl_op, still=True)
+    sc.step(f"6/{n}", cap_op, 1.6, L.skin(0.0), hold=2.0, cam_to=cam_op, view_angle_to=CAM_S_EYE_ANGLE, labels=lbl_op,
+            still=True)
     sc.step(f"6/{n}", cap_op, 0.8, L.skin(1.0), hold=0.4, view_angle_to=va0)
     return sc.save()
 
@@ -1931,8 +1935,10 @@ def movie_bay_camera(data, idata):
                                      (-60, -80, 100, -110, -90, 0), (-120, -80, 100, -110, -90, 0))]
     seats = reach.seats()
     rack, cup = seats["vial rack (tray B)"], seats["multi-doser shuttle fork (tray B)"]
-    poses = [T((0, 0, 140)) @ rack, rack, T((0, 0, 140)) @ rack, T((0, 0, 130)) @ cup, cup, T((0, 0, 130)) @ cup,
-             T((0, 0, 140)) @ rack]
+    # round 14: the vial comes 30 mm straight up out of its seat first (round 13's audit: the joint move from the
+    # seat to 140 mm over it took the vial 3 mm into the rack for two frames)
+    poses = [T((0, 0, 140)) @ rack, rack, T((0, 0, 30)) @ rack, T((0, 0, 140)) @ rack, T((0, 0, 130)) @ cup, cup,
+             T((0, 0, 130)) @ cup, T((0, 0, 140)) @ rack]
     qs = [rb.q.copy()]
     for Tw in poses:
         sol = reach.solve("ur10e", Tw, [qs[-1]] + seeds)
@@ -1950,17 +1956,17 @@ def movie_bay_camera(data, idata):
             rb.set(path[j] + (path[j + 1] - path[j]) * (s_ - j))
         return up if len(path) > 1 else (lambda u: None)
     n = 4
-    eye = np.array(CAM_S_EYE)                         # an operator's eyes, 1.6 m up, 0.9 m in front of the VLM's face
+    eye = np.array(CAM_S_EYE)                         # an operator's eyes at the opening (CAM_S_EYE)
     back, front = np.array(bay_cam_point("back")), np.array(bay_cam_point("front"))
     cam_op = [tuple(eye), tuple((back + front) / 2 + (0, 0, 10)), (0, 0, 1)]
     roof_pt = (-700.0, (BAY_UNITS["back"]["y"] + BAY_UNITS["front"]["y"]) / 2, V.BAY_ROOF_Z)
     lbl1 = [("back unit: ceiling, middle back,\nlooking forward over the tray", tuple(back), (0.66, 0.16)),
             ("front unit: ceiling, middle front,\nlooking back at the instruments' fronts", tuple(front), (0.34, 0.10)),
             ("the bay's roof", roof_pt, (0.14, 0.30))]
-    sc.step(f"1/{n}", "From where an operator stands, 0.9 m in front of the opening, eyes at 1.6 m: the bay has a roof, "
+    sc.step(f"1/{n}", "From an operator's eyes at the opening, looking up under the header: the bay has a roof, "
             "and two stream cameras hang from it on short drops, one at the back looking forward, one behind the "
             "header looking back. Each is a Pi 5 with an HQ Camera and a Camera Module 3 Wide on a pan-tilt head.",
-            4.2, None, hold=2.8, cam_to=cam_op, view_angle_to=40.0, labels=lbl1)
+            4.2, None, hold=2.8, cam_to=cam_op, view_angle_to=CAM_S_EYE_ANGLE, labels=lbl1)
 
     def show_fr(u):
         L.skin(1.0)(u)
@@ -2013,8 +2019,8 @@ def movie_bay_camera(data, idata):
     rb.grasp("vial")
     L.svc_lines[2] = ("Arm", "vial: rack to the doser's shuttle")
     L.gauges()
-    sc.step(f"3/{n}", capb, 1.0, arm(2, 3), hold=0.0)
-    sc.step(f"3/{n}", capb, 2.0, arm(3, 4), hold=0.4, still=True)
+    sc.step(f"3/{n}", capb, 1.2, arm(2, 4), hold=0.0)
+    sc.step(f"3/{n}", capb, 2.0, arm(4, 5), hold=0.4, still=True)
     # ---- the front unit's Wide
     cam_f, into_f = into("front", frusta=False)
 
@@ -2030,13 +2036,13 @@ def movie_bay_camera(data, idata):
             f"on the doser's shuttle fork, outside the port in its panel; {view['front']['share_of_tray'] * 100:.0f} % of "
             "the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few "
             "centimetres.")
-    sc.step(f"4/{n}", capf, 1.8, arm(4, 5), hold=0.1)
+    sc.step(f"4/{n}", capf, 1.8, arm(5, 6), hold=0.1)
     sc.step(f"4/{n}", capf, 0.5, rb.grip_to(0.0), hold=0.1)
     rb.release(L.carousel.fork_group)
     L.svc_lines[2] = ("Arm", "vial on the shuttle's fork")
     L.gauges()
-    sc.step(f"4/{n}", capf, 1.2, arm(5, 6), hold=0.3)
-    sc.step(f"4/{n}", capf, 2.6, arm(6, 7), hold=1.6, still=True)
+    sc.step(f"4/{n}", capf, 1.2, arm(6, 7), hold=0.3)
+    sc.step(f"4/{n}", capf, 2.6, arm(7, 8), hold=1.6, still=True)
     return sc.save()
 
 
@@ -2130,6 +2136,7 @@ def movie_cabling(data, idata):
     supplies quoted are notes/voltage.md's and CIRCUITS'."""
     import setup_lab as SL
     import warehouse as W
+    idata = SL.load_all()                     # the set-up movie's models (fab_tour's, round 7's, the reflow oven)
     sc, L, F, items, rigs, units, util, ulabel, vp = SL.build(data, idata, name="vlm_cabling",
                                                                title="Vertical cloud lab: power, network and gases")
     SL.add_bay_cams(sc)
@@ -2146,7 +2153,7 @@ def movie_cabling(data, idata):
     yv = V.UNIT_D / 2 + V.SKIN
     yn, ys = W.Y_FACE_N + 700.0, W.Y_FACE_S - 600.0
     n = 6
-    wide = [(10500, -21500, 13800), (600, -1600, 3900), (0, 0, 1)]
+    wide = [(16000, -32000, 20000), (700, -2200, 3300), (0, 0, 1)]
 
     def lb(cam, items_):
         return W.auto(sc, cam, items_)
@@ -2166,7 +2173,7 @@ def movie_cabling(data, idata):
                               ("glovebox", (-7300.0, yn - 60, 2500.0)),
                               ("AirGradient ONE on each junction box", (-1700.0 - 160.0, yn - 60, 2410.0)),
                               ("argon line", (-6000.0, yn + 230, 4150.0))]))
-    cam_v = [(8200, -6200, 6400), (2200, 600, 3300), (0, 0, 1)]
+    cam_v = [(3900, 7400, 5400), (1815, 1000, 1700), (0, 0, 1)]          # from behind, down into the gap
     sc.step(f"3/{n}", "The Shuttles: each takes 208 V three-phase (#53; a used unit's plate: 8.6 kVA) to a disconnect on "
             "its back. Between them an N2 generator, a compressor and a chiller feed the trays' couplings through each "
             "Shuttle's right-hand side, where the risers run up to every slot's dock: 208Y/120 V on a 30 A breaker, "
@@ -2183,7 +2190,7 @@ def movie_cabling(data, idata):
                               ("MiR chargers", (-900.0, ys + 60, 1900.0)),
                               ("fume hood duct to the roof", (900.0, ys - 300, 6000.0)),
                               ("wire EDM: 200 V 3-ph, 13 kVA", (6600.0, ys + 60, 1900.0))]))
-    cam_u = [(-200, -5600, 2600), (-900, -3600, 700), (0, 0, 1)]
+    cam_u = [(1900, -2900, 2300), (-1300, -5600, 800), (0, 0, 1)]        # setup_lab.CAM_UNIT
     sc.step(f"5/{n}", "The arms: each UR10e and its control box ride a MiR250 on its 48 V battery, so no cable or rail "
             "crosses the floor. Each charges on a MiR Charge 48V (100-240 V in, 48 V at up to 40 A out) in its bay on "
             "the south side of the aisle.", 3.0, None, hold=2.0, cam_to=cam_u,
