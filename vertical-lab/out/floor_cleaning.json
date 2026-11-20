@@ -465,8 +465,8 @@
   },
   "triggers_per_year": {
    "atomizer": 668,
-   "midi": 339,
-   "sieving": 600
+   "sieving": 600,
+   "midi": 339
   },
   "person": {
    "tested": 309,

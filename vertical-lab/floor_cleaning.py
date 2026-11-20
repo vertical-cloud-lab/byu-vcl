@@ -513,7 +513,7 @@ def year(jobs_by: dict) -> dict:
                            unit_transfer_h=[round(sum(b - a for a, b, u, s in base_sim["unit_log"] if u == i), 1)
                                         for i in (0, 1)],
                            what="upkeep.py's year (seed 303, upkeep and failures): no floor cleaning booked")
-    trig_n = {z: 0 for z in set(TRIGGERS.values())}
+    trig_n = dict.fromkeys(TRIGGERS.values(), 0)          # atomizer, sieving, midi: a fixed order in the JSON
     for e in base_sim["events"]:
         if e["step"] in TRIGGERS and not e.get("interrupted"):
             trig_n[TRIGGERS[e["step"]]] += 1
@@ -573,6 +573,12 @@ def year(jobs_by: dict) -> dict:
 
 
 # ================================================================================================ figures
+OPTION_NAMES = dict(person="E: a person with the 118EXP", units_pou="D: units 1-2 + the stations' vacuums",
+                    unit3="C: unit 3 + the stations' vacuums", disc="A: Roomba-class disc",
+                    pad="B: commercial vacuum robot (Gausium class)", mir="C1: MiR250 + floor nozzle",
+                    mir_arm="(C with the vacuum on board)")
+
+
 def plot_reach(F: Floor, R: dict, cov: dict, path=None):
     """Six panels, one per cleaner, of the north row (where the atomizer, the sieving cell, the openings, the MIDI and
     the glovebox are): the floor it cleans in its colour, the floor it doesn't in pale grey, the powder zones
@@ -601,7 +607,8 @@ def plot_reach(F: Floor, R: dict, cov: dict, path=None):
                                    lw=1.1, ec=U.INK, ls=(0, (3, 2)) if z == "aisle" else "-"))
         t = cov["total"]
         z = cov["zones"]
-        ax.set_title(f"{ROBOTS[k]['label']}: {t['reached_robot_zones'][k]:.0%} of the zones' floor, "
+        name = "C or D: an arm + the stations' vacuums" if k == "units_pou" else OPTION_NAMES[k]
+        ax.set_title(f"{name}: {t['reached_robot_zones'][k]:.0%} of the zones' floor, "
                      f"{t['reached_robot_edge_band'][k]:.0%} of the 300 mm along their machines' edges, EOS aside "
                      f"(atomizer {z['atomizer']['reached'][k]:.0%}, sieving {z['sieving']['reached'][k]:.0%}, "
                      f"MIDI {z['midi']['reached'][k]:.0%})", fontsize=10.5, color=U.INK, loc="left")
@@ -639,11 +646,7 @@ def plot_year(y: dict, cov: dict, path=None):
     import upkeep as U
     path = path or OUT / f"{NAME}_year.png"
     keys = ["person", "units_pou", "unit3", "disc", "pad", "mir", "mir_arm"]
-    names = dict({k: ROBOTS[k]["label"] for k in ROBOTS}, person="E: a person with the 118EXP",
-                 units_pou="D: units 1-2 + the stations' vacuums", unit3="C: unit 3 + the stations' vacuums",
-                 disc="A: Roomba-class disc", pad="B: commercial vacuum robot (Gausium class)",
-                 mir="C1: MiR250 + floor nozzle", mir_arm="(C with the vacuum on board)")
-    labels = [names[k] for k in keys]
+    labels = [OPTION_NAMES[k] for k in keys]
     cols = [U.SLOTS[["disc", "pad", "mir", "mir_arm", "units_pou", "person", "unit3"].index(k)] for k in keys]
     fig, axs = plt.subplots(1, 3, figsize=(16.5, 5.3), dpi=110, sharey=True,
                             gridspec_kw=dict(width_ratios=[1.0, 1.15, 0.9]))
