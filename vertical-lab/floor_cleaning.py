@@ -185,20 +185,20 @@ ROBOTS = {
     "units_pou": dict(
         label="units 1-2 + vacuums at the stations", shape="rect", L=800.0, W=580.0, clear=50.0,
         cleans=("arm_hose", 1300.0, 7000.0), w_eff=0.30, v=0.15, k=1.25, fixed_min=4.0,
-        source="the two existing MiR250 + UR10e units, taking the wand of a 118EXP that stands at each powder "
-               "zone, as arm 2 does at the atomizer (atom_vacuum); a 25 ft (7.6 m) conductive hose, 7.0 m of reach "
-               "(Ruwac's EXP151525CB kit has one); arm reach as above"),
+        source="the two existing MiR250 + UR10e units, taking the wand of a 118EXP at one of two stations (POU), as "
+               "arm 2 does at the atomizer (atom_vacuum); a 25 ft (7.6 m) conductive hose, 7.0 m of reach in a straight "
+               "line (Ruwac's EXP151525CB kit has one); arm reach as above"),
     "person": dict(
         label="a person with the 118EXP", shape="disc", d=450.0, clear=0.0, cleans=("arm", 1000.0),
         w_eff=0.30, v=0.30, k=1.3, fixed_min=10.0,
         source="the lab's practice: the 118EXP by hand (vacuum SOP); a person stands where a 450 mm circle fits and "
                "the wand reaches 1.0 m; 10 min a job for the SOP's continuity check, area checks and liner check"),
 }
-# point-of-use vacuum stations for units_pou (ours): the atomizer's (PR #353), one at the sieving cell, one at the MIDI
-# (atom_vacuum.md's third vacuum serves the printer line), one by each opening, one at the DED
-POU = {"atomizer": (-5230.0, -1640.0), "sieving": (-2800.0, -900.0), "midi": (5500.0, -1300.0),
-       "opening 1": (-1700.0, -1600.0), "opening 2": (1815.0, -1600.0), "DED": (3000.0, -6300.0),
-       "glovebox": (-6500.0, -1400.0)}
+# point-of-use vacuum stations for units_pou (ours): two, each with an Al-family and a Cu-family 118EXP. The atomizer's
+# (PR #353's, at floor_cleaning.VAC_STATION) reaches the atomizer, the sieving cell, the glovebox and Shuttle 1's
+# opening; the printer line's (atom_vacuum.md's third vacuum, beside the MIDI) reaches the MIDI, Shuttle 2's opening and
+# the DED across the aisle. Neither reaches the EOS (no MiR dock: people clean it, as now)
+POU = {"atomizer": (-5230.0, -1640.0), "printer line": (5500.0, -1300.0)}
 
 
 def _shift(a, oy: int, ox: int) -> np.ndarray:

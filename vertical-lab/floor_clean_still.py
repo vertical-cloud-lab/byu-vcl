@@ -456,7 +456,8 @@ def clip():
               Bond="clipped to the floor stud")
     sc.label = "Option C"
     wide = [(-600.0, -6900.0, 3900.0), (-3650.0, -1750.0, 300.0), (0, 0, 1)]
-    close = [(-2350.0, -3650.0, 1300.0), (-3550.0, -2150.0, 200.0), (0, 0, 1)]
+    # the lanes seen along their length: from the strip's east end (in front of the sieving bench), looking west
+    close = [(-2250.0, -2750.0, 1350.0), (-3600.0, -2120.0, 120.0), (0, 0, 1)]
     sc.cam, sc.view_angle = list(wide), 40.0
     t0 = rb.tcp_world()
     lane1_w, up1, over2, down2, lane2_e, lift = (T(tuple(p_)) @ t0 for p_ in STROKES)
@@ -465,8 +466,8 @@ def clip():
             "fixture (as in atom_vacuum), its bonding lead on the floor stud.", 2.5, cam_to=wide, labels=lab_w,
             hold=1.5)
     sc.step("2/4 Lane 1", "Along the machine's base, the blade on the floor: 480 mm at 0.15 m/s (assumed), slow "
-            "for fine powder.", 3.2, rb.line_to(lane1_w), cam_to=close,
-            labels=[("Floor squeegee, 14 in (ours: assumed)", (SQ_AT[0], SQ_AT[1], 50.0), (0.70, 0.83))], hold=0.4)
+            "for fine powder. The 14 in squeegee head is ours (assumed size).", 3.2, rb.line_to(lane1_w), cam_to=close,
+            labels=[], hold=0.4)
     cap2 = "Up 30 mm, 110 mm out, down: the 356 mm head overlaps the first lane by 246 mm."
     sc.step("3/4 Lane 2", cap2, 1.0, rb.line_to(up1), hold=0.0)
     sc.step("3/4 Lane 2", cap2, 1.0, rb.line_to(over2), hold=0.0)

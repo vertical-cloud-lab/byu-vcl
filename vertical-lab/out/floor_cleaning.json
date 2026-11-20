@@ -36,29 +36,9 @@
    -5230.0,
    -1640.0
   ],
-  "sieving": [
-   -2800.0,
-   -900.0
-  ],
-  "midi": [
+  "printer line": [
    5500.0,
    -1300.0
-  ],
-  "opening 1": [
-   -1700.0,
-   -1600.0
-  ],
-  "opening 2": [
-   1815.0,
-   -1600.0
-  ],
-  "DED": [
-   3000.0,
-   -6300.0
-  ],
-  "glovebox": [
-   -6500.0,
-   -1400.0
   ]
  },
  "robots": {
@@ -142,7 +122,7 @@
    "v": 0.15,
    "k": 1.25,
    "fixed_min": 4.0,
-   "source": "the two existing MiR250 + UR10e units, taking the wand of a 118EXP that stands at each powder zone, as arm 2 does at the atomizer (atom_vacuum); a 25 ft (7.6 m) conductive hose, 7.0 m of reach (Ruwac's EXP151525CB kit has one); arm reach as above"
+   "source": "the two existing MiR250 + UR10e units, taking the wand of a 118EXP at one of two stations (POU), as arm 2 does at the atomizer (atom_vacuum); a 25 ft (7.6 m) conductive hose, 7.0 m of reach in a straight line (Ruwac's EXP151525CB kit has one); arm reach as above"
   },
   "person": {
    "label": "a person with the 118EXP",
@@ -333,7 +313,7 @@
     "pad": 0.968,
     "mir": 0.954,
     "mir_arm": 0.996,
-    "units_pou": 0.845,
+    "units_pou": 0.663,
     "person": 0.995
    },
    "reached_zones": {
@@ -465,9 +445,9 @@
    "what": "upkeep.py's year (seed 303, upkeep and failures): no floor cleaning booked"
   },
   "triggers_per_year": {
-   "atomizer": 668,
    "sieving": 600,
-   "midi": 339
+   "midi": 339,
+   "atomizer": 668
   },
   "person": {
    "tested": 309,
