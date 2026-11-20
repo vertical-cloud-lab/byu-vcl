@@ -159,6 +159,23 @@ def room_share(c, yaw, tilt, hfov, vfov, n=61) -> float:
     return hits / n ** 2
 
 
+ROOM_MAX = 0.02      # a bay camera may show this much of the room through the opening (people): ours
+
+
+def least_room(c, hfov, vfov, yaws, tilts) -> tuple:
+    """As best_aim, but the aim that sees the least of the room, then the most floor."""
+    best = None
+    for yaw in yaws:
+        for tilt in tilts:
+            room = room_share(c, yaw, tilt, hfov, vfov, n=31)
+            cov = coverage(c, yaw, tilt, hfov, vfov)
+            key = (-round(room, 3), cov)
+            if best is None or key > best[0]:
+                best = (key, yaw, tilt, cov, coverage(c, yaw, tilt, hfov, vfov, dz=WORK_DZ), room)
+    _, yaw, tilt, cov, cov2, room = best
+    return yaw, tilt, cov, cov2, room
+
+
 def best_aim(c, hfov, vfov, yaws, tilts, room_max=None) -> tuple:
     """(yaw, tilt, floor coverage, coverage 300 mm up, room share): the aim that sees the most of the tray's floor
     (then the most of the plane 300 mm over it), seeing at most room_max of the room."""
@@ -202,6 +219,351 @@ SEATS = {        # reach.seats(), world (Shuttle 1's bay): where the arm works i
     "CubXL holder seat (tray A)": (-156.0, -1342.0, 987.0),
     "tray's back left, 150 mm up": (-1000.0, -700.0, FLOOR_Z + 150.0),
 }
+
+
+# ===================================================================================================== the candidates
+# Researched 2026-11-20 (makers' datasheets where they could be opened; prices from one retailer each, on that day:
+# Black Friday prices were in effect). Figures not published are None; ours are marked so.
+# its length at 45 deg + half its diameter + 50 mm of bracket); h_up_mm: how far it rises over its aim pivot on a tray
+# post (a turret or dome on the post's face: half its base; a bullet or box at 45 deg: as hang_mm less the bracket).
+def _b(L, D):            # bullet/box at 45 degrees: (hang, h_up), ours
+    up = 0.5 * L * 0.7071 + D / 2
+    return round(up + 50.0, 1), round(up, 1)
+
+
+FIXED = {
+    "amcrest_t1179": dict(
+        type="turret", maker="Amcrest (Dahua-made)", model="IP5M-T1179EW-AI-V3", short="Amcrest IP5M-T1179EW (aurora's)",
+        res_txt="2960 x 1668, 20 fps", px=(2960, 1668), lens_txt="2.8 mm", hfov=(111.0,), vfov=(58.0,), zoom_txt="none",
+        ir_txt="30 m", poe_txt="af, 5.0 W", w_max=5.0, w_typ=2.9, size_txt="Ø110 x 101 mm, 372 g", dia_mm=110.0,
+        hang_mm=100.8, lens_drop_mm=60.0, h_up_mm=55.0, min_focus_mm=1100.0,
+        onvif_txt="ONVIF; RTSP; P2P can be off", ndaa_txt="**no**: Dahua-made; out of stock",
+        price=79.99, vendor="amcrest.com (out of stock)",
+        price_url="https://www.amcrest.com/products/5mp-poe-camera-turret-ip5m-t1179ew-ai-v3", price_date="2026-11-20",
+        price_kind="opened", src=["https://support.amcrest.com/hc/en-us/articles/22062123278733"],
+        note="aurora's camera; Amcrest says it can no longer import Dahua-made products; P360/T78/R360"),
+    "amlink_t5171": dict(
+        type="turret", maker="AMLINK (Amcrest's new brand, FOXLINK, Taiwan)", model="AL5M-T5171EW",
+        short="AMLINK AL5M-T5171EW", res_txt="2960 x 1668, 20 fps", px=(2960, 1668), lens_txt="2.8 mm",
+        hfov=(111.0,), vfov=(58.0,), zoom_txt="none", ir_txt="30 m, can be off", poe_txt="af, 8.2 W (typ. 3.2)",
+        w_max=8.2, w_typ=3.2, size_txt="Ø123 x 95 mm", dia_mm=123.0, hang_mm=94.9, lens_drop_mm=58.0, h_up_mm=61.5,
+        min_focus_mm=1100.0, onvif_txt="S/G/T; RTSP; H.264 only", ndaa_txt="maker says yes (not verified)",
+        price=94.99, vendor="amcrest.com",
+        price_url="https://www.amcrest.com/products/amlink-5mp-security-ai-ip-poe-turret-camera-al5m-t5171ew",
+        price_date="2026-11-20", price_kind="opened", src=["https://support.amcrest.com/hc/en-us/articles/49392408278669"],
+        note="the nearest thing to aurora's turret still sold; P360/T78/R360"),
+    "reolink_520a": dict(
+        type="eyeball turret", maker="Reolink", model="RLC-520A (2.8 mm)", short="Reolink RLC-520A",
+        res_txt="2560 x 1920, 25 fps", px=(2560, 1920), lens_txt="2.8 mm", hfov=(100.0,), vfov=(75.0,),
+        zoom_txt="none", ir_txt="30 m", poe_txt="af; < 12 W (DC figure)", w_max=12.0, w_typ=None,
+        size_txt="Ø105 x 95 mm, 468 g", dia_mm=105.0, hang_mm=95.0, lens_drop_mm=58.0, h_up_mm=52.5,
+        min_focus_mm=None, onvif_txt="ONVIF, RTSP (enable them); P2P can be off; main stream <= 8 Mbit/s",
+        ndaa_txt="yes (not a named company; Reolink's own statement)", price=59.99, vendor="reolink.com",
+        price_url="https://reolink.com/us/product/rlc-520a/", price_date="2026-11-20", price_kind="opened",
+        src=["https://reolink.com/us/product/rlc-520a/",
+             "https://support.reolink.com/articles/900000617826-Which-Reolink-Products-Support-CGI-RTSP-ONVIF/"],
+        note="a 4 mm version is 80 x 48 deg"),
+    "unifi_g5turret": dict(
+        type="turret", maker="Ubiquiti", model="UniFi G5 Turret Ultra", short="UniFi G5 Turret Ultra",
+        res_txt="2688 x 1512, 30 fps", px=(2688, 1512), lens_txt="fixed", hfov=(102.4,), vfov=(54.9,),
+        zoom_txt="none", ir_txt="30 m", poe_txt="PoE, 4 W", w_max=4.0, w_typ=None, size_txt="Ø90 x 71 mm, 330 g",
+        dia_mm=90.0, hang_mm=71.2, lens_drop_mm=45.0, h_up_mm=45.0, min_focus_mm=None,
+        onvif_txt="no ONVIF; RTSP only through a UniFi Protect console", ndaa_txt="yes (maker)",
+        price=129.0, vendor="store.ui.com (plus a console)",
+        price_url="https://store.ui.com/us/en/products/uvc-g5-turret-ultra", price_date="2026-11-20",
+        price_kind="opened", src=["https://techspecs.ui.com/unifi/cameras-nvrs/uvc-g5-turret-ultra?s=us"],
+        note="needs a Protect console between it and the Pi"),
+    "axis_m3086v": dict(
+        type="indoor mini dome", maker="Axis", model="M3086-V", short="Axis M3086-V (mini dome)",
+        res_txt="2688 x 1512, 30 fps", px=(2688, 1512), lens_txt="2.4 mm", hfov=(130.0,), vfov=(93.0,),
+        zoom_txt="none", ir_txt="none", poe_txt="af Class 2, 4.2 W (typ. 3.6)", w_max=4.2, w_typ=3.6,
+        size_txt="Ø101 x 56 mm, 150 g", dia_mm=101.0, hang_mm=56.0, lens_drop_mm=35.0, h_up_mm=50.5,
+        min_focus_mm=None, onvif_txt="G/M/S/T; local; cloud (O3C) can be off", ndaa_txt="yes (Axis)",
+        price=462.99, vendor="CDW (backordered)",
+        price_url="https://www.cdw.com/product/axis-m3086-v-network-surveillance-camera-dome/7058880",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://www.axis.com/dam/public/b2/9f/e9/datasheet-axis-m3086-v-dome-camera-en-US-555390.pdf"],
+        note="P+-175/T+-80/R+-175 inside the dome; no true CBR (MBR with a fixed GOP)"),
+    "hanwha_qne8011r": dict(
+        type="turret", maker="Hanwha Vision", model="QNE-8011R", short="Hanwha QNE-8011R (turret)",
+        res_txt="2592 x 1944, 30 fps", px=(2592, 1944), lens_txt="2.8 mm", hfov=(105.0,), vfov=(77.0,),
+        zoom_txt="none", ir_txt="20 m, can be off", poe_txt="af Class 3, 7.4 W (typ. 5.5)", w_max=7.4, w_typ=5.5,
+        size_txt="Ø125 x 87 mm, 645 g", dia_mm=125.0, hang_mm=87.4, lens_drop_mm=52.0, h_up_mm=62.5,
+        min_focus_mm=None, onvif_txt="S/G/T; local; no P2P", ndaa_txt="yes (Hanwha)", price=388.78,
+        vendor="a1securitycameras (CDW $377.99, snippet)",
+        price_url="https://www.a1securitycameras.com/samsung-hanwha-qne-8011r-5mp-h-265-ir-outdoor-turret-ip-security-camera-with-2-8mm-fixed-lens.html",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://hvsgmpprdstorage.blob.core.windows.net/pim/QNE-8011R/DataSheet_QNE-8011R_20261116_EN_193649.pdf"],
+        note="P350/T75/R360; CBR with GOV length"),
+    "reolink_510a": dict(
+        type="mini bullet", maker="Reolink", model="RLC-510A", short="Reolink RLC-510A (bullet)",
+        res_txt="2560 x 1920, 25 fps", px=(2560, 1920), lens_txt="4 mm", hfov=(80.0,), vfov=(42.0,), zoom_txt="none",
+        ir_txt="30 m", poe_txt="af; < 12 W (DC figure)", w_max=12.0, w_typ=None, size_txt="186 x Ø67 mm, 415 g",
+        dia_mm=67.0, hang_mm=_b(186, 67)[0], lens_drop_mm=80.0, h_up_mm=_b(186, 67)[1], min_focus_mm=None,
+        onvif_txt="ONVIF (enable it); RTSP; H.264 only", ndaa_txt="yes (as Reolink above)", price=59.99,
+        vendor="reolink.com", price_url="https://reolink.com/us/product/rlc-510a/", price_date="2026-11-20",
+        price_kind="opened", src=["https://reolink.com/us/product/rlc-510a/"], note=""),
+    "axis_m2036le": dict(
+        type="mini bullet", maker="Axis", model="M2036-LE", short="Axis M2036-LE (bullet)",
+        res_txt="2688 x 1512, 30 fps", px=(2688, 1512), lens_txt="2.4 mm", hfov=(130.0,), vfov=(71.0,),
+        zoom_txt="none; focuses from 0.5 m", ir_txt="20 m, can be off", poe_txt="af Class 3, 12.95 W (typ. 5)",
+        w_max=12.95, w_typ=5.0, size_txt="170 x Ø101 mm, 491 g", dia_mm=101.0, hang_mm=_b(170, 101)[0],
+        lens_drop_mm=90.0, h_up_mm=_b(170, 101)[1], min_focus_mm=500.0, onvif_txt="G/M/S/T; local",
+        ndaa_txt="yes (Axis)", price=539.99, vendor="CDW",
+        price_url="https://www.cdw.com/product/axis-m2036-le-network-surveillance-camera-bullet/6900392",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://www.axis.com/dam/public/bc/50/1b/datasheet-axis-m2036-le-bullet-camera-en-US-555403.pdf"],
+        note="TM2001 bracket included"),
+    "reolink_811a": dict(
+        type="varifocal bullet", maker="Reolink", model="RLC-811A", short="Reolink RLC-811A (5x bullet)",
+        res_txt="3840 x 2160, 25 fps", px=(3840, 2160), lens_txt="2.7-13.5 mm", hfov=(105.0, 31.0), vfov=(55.0, 17.0),
+        zoom_txt="5x, motorized", ir_txt="30 m", poe_txt="af; < 12 W (DC figure)", w_max=12.0, w_typ=None,
+        size_txt="238 x 80 x 72 mm, 838 g", dia_mm=80.0, hang_mm=_b(238, 80)[0], lens_drop_mm=90.0,
+        h_up_mm=_b(238, 80)[1], min_focus_mm=None, onvif_txt="ONVIF; RTSP; its 4K main stream is H.265 only",
+        ndaa_txt="yes (as Reolink above)", price=97.99, vendor="reolink.com",
+        price_url="https://reolink.com/us/product/rlc-811a/", price_date="2026-11-20", price_kind="opened",
+        src=["https://reolink.com/us/product/rlc-811a/"], note="4K at <= 8 Mbit/s is under YouTube's 4K minimum"),
+    "amcrest_vt1289": dict(
+        type="varifocal turret", maker="Amcrest (Dahua-made)", model="IP5M-VT1289EW-AI",
+        short="Amcrest IP5M-VT1289EW (5x turret)", res_txt="2592 x 1944, 20 fps", px=(2592, 1944),
+        lens_txt="2.7-13.5 mm", hfov=(100.0, 30.0), vfov=(72.0, 23.0), zoom_txt="5x, motorized; focuses from 0.8 m",
+        ir_txt="40 m", poe_txt="af, 6.4 W", w_max=6.4, w_typ=4.2, size_txt="Ø122 x 108 mm, 685 g", dia_mm=122.0,
+        hang_mm=108.3, lens_drop_mm=65.0, h_up_mm=61.0, min_focus_mm=800.0, onvif_txt="ONVIF not listed; RTSP",
+        ndaa_txt="**no**: Dahua-made", price=154.99, vendor="amcrest.com (snippet)",
+        price_url="https://amcrest.com/new-products/color/white.html", price_date="2026-11-20", price_kind="snippet",
+        src=["https://support.amcrest.com/hc/en-us/articles/17236607643917"], note=""),
+    "axis_m4216lv": dict(
+        type="varifocal dome", maker="Axis", model="M4216-LV", short="Axis M4216-LV (2x dome)",
+        res_txt="2304 x 1728, 30 fps", px=(2304, 1728), lens_txt="3-6 mm", hfov=(100.0, 45.0), vfov=(72.0, 34.0),
+        zoom_txt="2x, remote zoom and focus", ir_txt="20 m, can be off", poe_txt="af Class 3, 9.7 W (typ. 5)",
+        w_max=9.7, w_typ=5.0, size_txt="Ø121 x 71 mm, 375 g", dia_mm=121.0, hang_mm=71.0, lens_drop_mm=42.0,
+        h_up_mm=60.5, min_focus_mm=None, onvif_txt="G/M/S/T; local", ndaa_txt="yes (Axis)", price=649.99,
+        vendor="CDW", price_url="https://www.cdw.com/product/axis-m4216-lv-4mp-network-dome-camera/6771472",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://www.axis.com/dam/public/ca/74/e4/datasheet-axis-m4216-lv-dome-camera-en-US-490176.pdf"],
+        note="P+-180/T-40..+65/R+-105"),
+    "axis_m1137": dict(
+        type="box (CS mount)", maker="Axis", model="M1137 Mk II", short="Axis M1137 Mk II (box)",
+        res_txt="2592 x 1944, 30 fps", px=(2592, 1944), lens_txt="2.8-13 mm (i-CS 3.5-10 mm)", hfov=(112.0, 24.0),
+        vfov=(82.0, 19.0), zoom_txt="4.6x by hand (i-CS: 2.9x, remote); focuses from 0.8 m", ir_txt="none",
+        poe_txt="af Class 3, 7.2 W (typ. 4.5)", w_max=7.2, w_typ=4.5, size_txt="64 x 70 x 179 mm, 205 g",
+        dia_mm=70.0, hang_mm=_b(179, 70)[0], lens_drop_mm=80.0, h_up_mm=_b(179, 70)[1], min_focus_mm=800.0,
+        onvif_txt="G/M/S/T; local; 1/4-20 thread", ndaa_txt="yes (Axis)", price=657.0,
+        vendor="networkdevicesinc (i-CS $803.99 at CDW)", price_url="https://networkdevicesinc.com/products/02484-001",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://www.axis.com/dam/public/2c/1e/98/datasheet-axis-m1137-mk-ii-box-camera-en-US-504528.pdf"],
+        note="10-28 V DC too"),
+    "axis_p1385": dict(
+        type="box (CS mount)", maker="Axis", model="P1385", short="Axis P1385 (box)", res_txt="1920 x 1080, 60 fps",
+        px=(1920, 1080), lens_txt="2.8-13 mm", hfov=(121.0, 26.0), vfov=(64.0, 15.0), zoom_txt="4.6x by hand",
+        ir_txt="none", poe_txt="af Class 3, 9.3 W", w_max=9.31, w_typ=2.97, size_txt="480 g (drawing only)",
+        dia_mm=75.0, hang_mm=None, lens_drop_mm=80.0, h_up_mm=None, min_focus_mm=None,
+        onvif_txt="G/M/S/T; local; 1/4-20 thread", ndaa_txt="yes (Axis)", price=958.99, vendor="CDW",
+        price_url="https://www.cdw.com/product/axis-p13-series-p1385-network-surveillance-camera-box/8066983",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://www.axis.com/dam/public/26/55/ff/datasheet-axis-p1385-box-camera-en-US-518378.pdf"], note=""),
+    "axis_f2105": dict(
+        type="sensor on a cable", maker="Axis", model="F9111-R Mk II + F2105-RE + 8 m cable",
+        short="Axis F2105-RE sensor (F-series)", res_txt="1920 x 1080, 60 fps", px=(1920, 1080), lens_txt="3.1 mm",
+        hfov=(108.0,), vfov=(58.0,), zoom_txt="none", ir_txt="none", poe_txt="at Class 4, 25.5 W (main unit)",
+        w_max=25.5, w_typ=8.6, size_txt="sensor Ø30 x 46 mm, 50 g; main unit 675 g", dia_mm=30.0, hang_mm=46.0,
+        lens_drop_mm=10.0, h_up_mm=15.0, min_focus_mm=None, onvif_txt="G/M/S/T; local", ndaa_txt="yes (Axis)",
+        price=1033.97, vendor="CDW (main unit + sensor + cable)",
+        price_url="https://www.cdw.com/product/axis-f-series-f9111-r-mk-ii-video-server-1-channels/8334770",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://www.axis.com/dam/public/a4/c1/17/datasheet-axis-f2105-re-standard-sensor-en-US-504514.pdf"],
+        note="the main unit can live off the tray's floor, the sensor anywhere within 8 m"),
+    "axis_p1275": dict(
+        type="mini dome on a cable", maker="Axis", model="P1275 Mk II", short="Axis P1275 Mk II (on a cable)",
+        res_txt="1920 x 1080, 30 fps", px=(1920, 1080), lens_txt="2.8-6 mm, by hand", hfov=(99.0, 53.0),
+        vfov=(53.0, 30.0), zoom_txt="2x by hand; focuses from 0.1 m", ir_txt="none", poe_txt="af Class 2, 4.1 W",
+        w_max=4.1, w_typ=3.4, size_txt="sensor unit 112 g (drawing only), on 8 m", dia_mm=None, hang_mm=None,
+        lens_drop_mm=None, h_up_mm=None, min_focus_mm=100.0, onvif_txt="G/M/S/T; local", ndaa_txt="yes (Axis)",
+        price=532.0, vendor="networkdevicesinc (backorder)", price_url="https://networkdevicesinc.com/products/02859-001",
+        price_date="2026-11-20", price_kind="opened",
+        src=["https://www.axis.com/dam/public/aa/f2/93/datasheet-axis-p1275-mk-ii-modular-varifocal-dome-camera-en-US-441939.pdf"],
+        note="P360/T0-90/R360"),
+    "axis_p1265": dict(
+        type="pinhole on a cable", maker="Axis", model="P1265 Mk II", short="Axis P1265 Mk II (pinhole)",
+        res_txt="1080p", px=(1920, 1080), lens_txt="3.7 mm", hfov=(91.0,), vfov=(45.0,),
+        zoom_txt="none; focuses from 0.2 m", ir_txt="none", poe_txt="af Class 2", w_max=6.49, w_typ=None,
+        size_txt="pinhole sensor on a cable", dia_mm=None, hang_mm=None, lens_drop_mm=None, h_up_mm=None,
+        min_focus_mm=200.0, onvif_txt="G/M/S/T; local", ndaa_txt="yes (Axis)", price=499.99, vendor="CDW",
+        price_url="https://www.cdw.com/", price_date="2026-11-20", price_kind="snippet", src=[], note="class 2 max"),
+    "ccdcam_board": dict(
+        type="IP board", maker="Shenzhen CCDCAM", model="IMA50L12 (IMX335)", short="CCDCAM IMA50L12 board",
+        res_txt="2592 x 1944, 30 fps", px=(2592, 1944), lens_txt="M12, not included", hfov=(100.0,), vfov=(75.0,),
+        zoom_txt="none", ir_txt="none (IR-cut only)", poe_txt="'DC12V/POE', 1.9 W", w_max=1.9, w_typ=None,
+        size_txt="38 x 38 mm board", dia_mm=None, hang_mm=None, lens_drop_mm=None, h_up_mm=None, min_focus_mm=None,
+        onvif_txt="'ONVIF 2.6'; RTSP; Danale P2P (firewall it)", ndaa_txt="unknown maker: get a declaration",
+        price=17.05, vendor="Global Sources (snippet)",
+        price_url="https://www.globalsources.com/product/network-camera-module_1200330767f.htm",
+        price_date="2026-11-20", price_kind="snippet", src=["https://p.globalsources.com/IMAGES/PDT/SPEC/151/K1197603151.pdf"],
+        note="the HQ Camera's 38 mm board size; a housing and lens are ours to add"),
+    "mobotix_s74": dict(
+        type="modular, with temperature", maker="Mobotix", model="S74 + 45° module + MultiSense",
+        short="Mobotix S74 + MultiSense", res_txt="3840 x 2160, 30 fps", px=(3840, 2160), lens_txt="45° module",
+        hfov=(45.0,), vfov=(25.3,), zoom_txt="none", ir_txt="optional module", poe_txt="at Class 4, 25 W", w_max=25.0,
+        w_typ=None, size_txt="module Ø50 x 43 mm on 1-3 m; body 36 x 232 x 110 mm", dia_mm=50.0, hang_mm=42.5,
+        lens_drop_mm=20.0, h_up_mm=25.0, min_focus_mm=None, onvif_txt="G/S/T; local",
+        ndaa_txt="yes (Mobotix)", price=1628.0, vendor="a1 / VoIP Supply (parts, partly snippets)",
+        price_url="https://www.a1securitycameras.com/mobotix-mx-f-msa.html", price_date="2026-11-20",
+        price_kind="snippet", src=["https://www.mobotix.com/sites/default/files/2026-04/Mx_TS_S74_V2.72_EN_20260421.pdf"],
+        note="temperature, not humidity; vertical angle ours (16:9)"),
+}
+
+
+PTZ = {
+    "axis_m5075g": dict(
+        type="mini PTZ", maker="Axis", model="M5075-G", short="Axis M5075-G (5x PTZ)",
+        res_txt="1080p, 60 fps", px=(1920, 1080), lens_txt="2.2-11 mm", hfov=(71.0, 14.0), vfov=(40.0, 8.0),
+        zoom_txt="5x, autofocus", ir_txt="none", poe_txt="af Class 3, 9.5 W (typ. 4.4)", w_max=9.5, w_typ=4.4,
+        size_txt="Ø130 x 63 mm, 380 g", dia_mm=130.0, hang_mm=63.0, lens_drop_mm=40.0, h_up_mm=None,
+        onvif_txt="G/M/S/T; local, cloud optional", ndaa_txt="allowed (Axis letter, 2024-12-19)",
+        th_txt="no (device temperature events only)", min_focus_tele_mm=None,
+        price=649.99, vendor="Newegg", price_url="https://www.newegg.com/p/N82E16881121781",
+        price_date="2026-11-20", price_kind="snippet",
+        src=["https://www.axis.com/dam/public/6e/44/d0/datasheet-axis-m5075-g-ptz-camera-en-US-555399.pdf",
+             "https://www.axis.com/dam/public/permalink/253055/axis-ndaa-section-889-compliancepdf-en-US_253055.pdf"],
+        note="indoor IP51; pan +-179 deg, tilt 90 deg, 100 deg/s; 256 presets; polygon privacy masks; microSD; "
+             "AXIS M50 mounting kit included; CDW $819.99, MSRP $709 (snippets)"),
+    "dahua_sd1a404": dict(
+        type="mini PTZ", maker="Dahua", model="SD1A404XB-GNR (Amcrest IP4M-1066EW in the US)",
+        short="Dahua SD1A404XB-GNR (4x PTZ)", res_txt="2560 x 1440, 30 fps", px=(2560, 1440), lens_txt="2.8-12 mm",
+        hfov=(96.9, 31.6), vfov=(54.0, 17.8), zoom_txt="4x; focuses from 0.2-0.5 m", ir_txt="15 m",
+        poe_txt="af, 8.5 W with IR (3 W without)", w_max=8.5, w_typ=3.0, size_txt="Ø128 x 65 mm, 485 g",
+        dia_mm=128.0, hang_mm=65.0, lens_drop_mm=40.0, h_up_mm=None, onvif_txt="S/G/T; P2P listed",
+        ndaa_txt="**not on federal funds** (Dahua)", th_txt="no", min_focus_tele_mm=500.0,
+        price=289.99, vendor="Amcrest (IP4M-1066EW)",
+        price_url="https://amcrest.com/4mp-poe-camera-ptz-4x-optical-zoom-ip4m-1066ew.html",
+        price_date="2026-11-20", price_kind="snippet",
+        src=["https://www.dahuasecurity.com/asset/upload/uploads/soft/20211015/DH-SD1A404XB-GNR_datasheet_20200605_DE_High.pdf",
+             "https://ipvm.com/reports/dahua-oem"],
+        note="outdoor IP66; pan 0-355, tilt 5-90; 300 presets; end of sale 2027-06-30 (eol.network, snippet); the "
+             "vertical angles are 16:9 of the published horizontal ones (ours); no US price for the Dahua itself"),
+    "hik_2a404": dict(
+        type="mini PTZ", maker="Hikvision", model="DS-2DE2A404IW-DE3", short="Hikvision DS-2DE2A404IW-DE3 (4x PTZ)",
+        res_txt="2560 x 1440, 25 fps", px=(2560, 1440), lens_txt="2.8-12 mm", hfov=(96.7, 31.6), vfov=(54.0, 17.8),
+        zoom_txt="4x; focuses from 1.5 m at full zoom", ir_txt="20 m", poe_txt="af, 11.2 W with IR", w_max=11.2,
+        size_txt="Ø131 x 102 mm, 530 g", dia_mm=131.0, hang_mm=102.0, lens_drop_mm=60.0, h_up_mm=None,
+        onvif_txt="S/G/T", ndaa_txt="**not on federal funds** (Hikvision)", th_txt="no", min_focus_tele_mm=1500.0,
+        price=242.99, vendor="IPSecurityDepot", price_url="https://ipsecuritydepot.com/Hikvision-DS-2DE2A404IW-DE3",
+        price_date="2026-11-20", price_kind="snippet",
+        src=["https://download.securityrussia.com/ru_datasheet_of_ds-2de2a404iw-de32.8-12mmc_v5.6.12.pdf"],
+        note="marked discontinued on Hikvision's PH site (snippet)"),
+    "reolink_823s2": dict(
+        type="PTZ, 16x", maker="Reolink", model="RLC-823S2", short="Reolink RLC-823S2 (16x PTZ)",
+        res_txt="3840 x 2160, 25 fps", px=(3840, 2160), lens_txt="5.3-86 mm", hfov=(54.2, 3.6), vfov=(30.5, 2.0),
+        zoom_txt="16x; close focus not published", ir_txt="80 m", poe_txt="at, < 24 W", w_max=24.0,
+        size_txt="373 x 177 x 140 mm with its mount, 2.3 kg", dia_mm=177.0, hang_mm=140.0, lens_drop_mm=90.0,
+        h_up_mm=None, onvif_txt="ONVIF (profile not stated); P2P can be turned off",
+        ndaa_txt="allowed (not a named company; Reolink's own statement)", th_txt="no", min_focus_tele_mm=None,
+        price=339.99, vendor="Amazon (list; $230-259 on sale)", price_url="https://reolink.com/us/product/rlc-823s2/",
+        price_date="2026-11-20", price_kind="snippet", src=["https://reolink.com/us/product/rlc-823s2/"],
+        note="outdoor IP66; too tall for the band and too wide for the strip"),
+    "reolink_trackmix": dict(
+        type="dual-lens tracker", maker="Reolink", model="TrackMix PoE", short="Reolink TrackMix PoE (wide + tele)",
+        res_txt="3840 x 2160, 25 fps", px=(3840, 2160), lens_txt="2.8 + 8 mm, fixed", hfov=(104.0, 38.0),
+        vfov=(55.0, 21.0), zoom_txt="none (two fixed lenses, '6x hybrid')", ir_txt="30 m", poe_txt="af, < 12 W",
+        w_max=12.0, size_txt="228 x 147 x 110 mm, 1.21 kg", dia_mm=147.0, hang_mm=110.0, lens_drop_mm=70.0,
+        h_up_mm=None, onvif_txt="ONVIF; P2P can be turned off", ndaa_txt="allowed (as Reolink above)", th_txt="no",
+        min_focus_tele_mm=None, price=199.99, vendor="Reolink store",
+        price_url="https://reolink.com/us/product/reolink-trackmix-poe/", price_date="2026-11-20",
+        price_kind="snippet", src=["https://reolink.com/us/product/reolink-trackmix-poe/"],
+        note="the pair in one body, but with no optical zoom"),
+    "axis_m5000g": dict(
+        type="overview + PTZ", maker="Axis", model="M5000-G", short="Axis M5000-G (360° + 10x PTZ)",
+        res_txt="PTZ 1080p; overview 3 x 5 MP", px=(1920, 1080), lens_txt="4.7-47 mm", hfov=(61.8, 6.7),
+        vfov=(36.0, 3.8), zoom_txt="10x", ir_txt="none", poe_txt="at Class 4, 13.4 W", w_max=13.4,
+        size_txt="Ø247 x 138 mm, 1.95 kg", dia_mm=247.0, hang_mm=138.0, lens_drop_mm=90.0, h_up_mm=None,
+        onvif_txt="G/M/S/T; local", ndaa_txt="allowed (Axis letter)", th_txt="no", min_focus_tele_mm=None,
+        price=1455.99, vendor="CDW",
+        price_url="https://www.cdw.com/product/axis-m50-series-m5000-g-network-surveillance-panoramic-camera-dome/9030103",
+        price_date="2026-11-20", price_kind="snippet",
+        src=["https://www.axis.com/dam/public/d7/f5/cd/datasheet-axis-m5000-g-ptz-camera-en-US-555401.pdf"],
+        note="the pair in one dome; 138 mm tall: only if the roof is higher than assumed"),
+    "ptzoptics_movese20": dict(
+        type="conference PTZ", maker="PTZOptics", model="Move SE 20X", short="PTZOptics Move SE 20X",
+        res_txt="1080p, 60 fps", px=(1920, 1080), lens_txt="4.42-88.5 mm", hfov=(60.7, 3.4), vfov=(34.1, 1.9),
+        zoom_txt="20x; close focus not published", ir_txt="none", poe_txt="af (but 'max 18 W'): plan an at port",
+        w_max=18.0, size_txt="169 x 142 x 164 mm, 1.4 kg", dia_mm=169.0, hang_mm=164.0, lens_drop_mm=100.0,
+        h_up_mm=None, onvif_txt="ONVIF (profile not stated); RTSP, SRT, NDI", ndaa_txt="allowed (PTZOptics' claim)",
+        th_txt="no", min_focus_tele_mm=None, price=1349.0, vendor="Best Buy / Newegg",
+        price_url="https://www.bestbuy.com/product/ptzoptics-move-se-20x-grey-gray/J39HLS9JC2",
+        price_date="2026-11-20", price_kind="snippet", src=["https://docs.ptzoptics.com/docs/cameras/move-se/technical-specs"],
+        note="a broadcast camera, not a security one; too big for the band"),
+    "sony_srga12": dict(
+        type="conference PTZ", maker="Sony", model="SRG-A12", short="Sony SRG-A12 (12x, AI framing)",
+        res_txt="2160p30 / 1080p60", px=(3840, 2160), lens_txt="4.4-52.8 mm", hfov=(70.0, 6.7), vfov=(39.4, 3.8),
+        zoom_txt="12x; focuses from 0.4 m at full zoom", ir_txt="none", poe_txt="bt Class 8, 71.3 W", w_max=71.3,
+        size_txt="157 x 184 x 200 mm, 2.0 kg", dia_mm=184.0, hang_mm=200.0, lens_drop_mm=120.0, h_up_mm=None,
+        onvif_txt="no ONVIF (VISCA over IP, CGI); RTSP", ndaa_txt="no statement found", th_txt="no",
+        min_focus_tele_mm=400.0, price=2284.95, vendor="Newegg", price_url="https://www.newegg.com/p/34G-005N-00012",
+        price_date="2026-11-20", price_kind="snippet", src=["https://www.sony.jp/products/catalog/SPC_SRG-A12.pdf"],
+        note="the only PTZ found that focuses closer than 0.5 m at full zoom; 90 W PoE++ or its own adapter"),
+}
+
+CANDIDATES = {**FIXED, **PTZ}
+
+GEAR = {   # USD, one retailer each, seen 2026-11-20; "opened": the page itself; "snippet": a search result; "ours": estimate
+    "pi5_4gb": dict(what="Raspberry Pi 5, 4 GB", price=110.0, vendor="Raspberry Pi list (product brief, Nov 2026); "
+                    "PiShop $110", url="https://www.pishop.us/product/raspberry-pi-5-4gb/", kind="opened"),
+    "pi5_8gb": dict(what="Raspberry Pi 5, 8 GB", price=175.0, vendor="Raspberry Pi list; PiShop $175",
+                    url="https://www.pishop.us/product/raspberry-pi-5-8gb/", kind="opened"),
+    "psu27": dict(what="Raspberry Pi 27 W USB-C supply", price=12.95, vendor="PiShop",
+                  url="https://www.pishop.us/product/raspberry-pi-27w-usb-c-power-supply-black-us/", kind="opened"),
+    "cooler": dict(what="Raspberry Pi Active Cooler", price=12.95, vendor="PiShop",
+                   url="https://www.pishop.us/product/raspberry-pi-active-cooler/", kind="opened"),
+    "poe_hat": dict(what="Waveshare PoE HAT (H), 802.3af/at, 5 V 5 A, isolated", price=21.99, vendor="Waveshare",
+                    url="https://www.waveshare.com/poe-hat-h.htm", kind="opened"),
+    "sd": dict(what="microSD, 64 GB high-endurance (SanDisk)", price=29.00, vendor="Staples",
+               url="https://www.staples.com/sandisk-high-endurance-64gb-microsd-memory-card-with-adapter-class-10-uhs-i-v30-sdsqqnr-064g-gn6ia/product_IM1ZS3423",
+               kind="snippet"),
+    "hq": dict(what="Raspberry Pi HQ Camera", price=55.00, vendor="PiShop (out of stock)",
+               url="https://www.pishop.us/product/raspberry-pi-hq-camera/", kind="opened"),
+    "lens16": dict(what="Raspberry Pi 16 mm C-mount lens", price=62.50, vendor="PiShop",
+                   url="https://www.pishop.us/product/16mm-telephoto-lens-for-raspberry-pi-hq-camera/", kind="opened"),
+    "cm3w": dict(what="Raspberry Pi Camera Module 3 Wide", price=38.50, vendor="PiShop",
+                 url="https://www.pishop.us/product/raspberry-pi-camera-module-3-wide/", kind="opened"),
+    "ribbon": dict(what="camera ribbon, 300 mm", price=2.45, vendor="PiShop", url="https://www.pishop.us/", kind="opened"),
+    "switch": dict(what="Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+, 52 W)", price=109.0, vendor="Ubiquiti store",
+                   url="https://store.ui.com/us/en/products/usw-lite-8-poe", kind="opened"),
+    "post_mount": dict(what="2020 post, printed foot and head, T-nuts (the HQ/Wide unit's)", price=15.0,
+                       vendor="ours", url="", kind="ours"),
+    "plate": dict(what="printed plate for a camera's base on a 2020 slot or a module, T-nuts, screws", price=4.0,
+                  vendor="ours", url="", kind="ours"),
+    "patch": dict(what="Cat 6 patch lead, 1-3 m", price=5.0, vendor="ours", url="", kind="ours"),
+    "pi_plate": dict(what="printed plate for the Pi 5 on the tray", price=3.0, vendor="ours", url="", kind="ours"),
+    "_relay": dict(what="a Pi 5 relaying a tray's or a bay's cameras",
+                   items=[("pi5_4gb", 1), ("cooler", 1), ("psu27", 1), ("sd", 1), ("pi_plate", 1), ("patch", 1)]),
+    "_per_camera": dict(what="what each security camera needs besides itself",
+                        items=[("plate", 1), ("patch", 1), ("sd", 1)]),
+    "_pi_unit": dict(what="today's HQ/Wide unit, for comparison",
+                     items=[("pi5_4gb", 1), ("cooler", 1), ("psu27", 1), ("sd", 1), ("hq", 1), ("lens16", 1),
+                            ("cm3w", 1), ("ribbon", 2), ("post_mount", 1), ("patch", 1)]),
+}
+
+TIERS = {   # what each tier puts where; every tier keeps the Axis M5075-G as the PTZ (no budget mini PTZ fits the band)
+    "A. NDAA: Hanwha turrets on the trays, Axis in the bay": dict(
+        tray="hanwha_qne8011r", bay={"back_wide": "axis_m3086v", "back_ptz": "axis_m5075g", "front": "axis_m3086v",
+                                     "top": "axis_m3086v"},
+        extra=[("a PoE switch for each bay set (USW-Lite-8-PoE)", 2, 109.0)]),
+    "B. NDAA, smallest: Axis mini domes everywhere (no IR on the trays)": dict(
+        tray="axis_m3086v", bay={"back_wide": "axis_m3086v", "back_ptz": "axis_m5075g", "front": "axis_m3086v",
+                                 "top": "axis_m3086v"},
+        extra=[("a PoE switch for each bay set (USW-Lite-8-PoE)", 2, 109.0)]),
+    "C. Low cost: Reolink turrets on the trays and the strip, Axis on the roof": dict(
+        tray="reolink_520a", bay={"back_wide": "axis_m3086v", "back_ptz": "axis_m5075g", "front": "reolink_520a",
+                                  "top": "axis_m3086v"},
+        extra=[("a PoE switch for each bay set (USW-Lite-8-PoE)", 2, 109.0)]),
+}
+CHOICE = TIERS["A. NDAA: Hanwha turrets on the trays, Axis in the bay"]["bay"]
+TRAY_CHOICES = ["hanwha_qne8011r", "axis_m3086v", "reolink_520a"]
+FIG_FIT_KEYS = ["axis_m3086v", "unifi_g5turret", "axis_m4216lv", "hanwha_qne8011r", "amlink_t5171", "reolink_520a",
+                "amcrest_t1179", "amcrest_vt1289", "axis_f2105", "reolink_510a", "axis_m2036le", "reolink_811a",
+                "axis_m1137", "axis_m5075g", "dahua_sd1a404", "hik_2a404", "reolink_trackmix", "axis_m5000g",
+                "reolink_823s2", "ptzoptics_movese20", "sony_srga12"]
+STILL_TRAY_CAM = "hanwha_qne8011r"
 
 
 def tray_spots() -> list:
@@ -267,11 +629,14 @@ def bay_analysis(choice: dict, cands: dict, arm: dict | None = None) -> dict:
         if spot == "top":
             yaw, tilt = 0.0, 90.0
             cov, cov2, room = coverage(c, 0, 90, hf, vf), coverage(c, 0, 90, hf, vf, WORK_DZ), room_share(c, 0, 90, hf, vf)
-        elif spot.startswith("back"):
-            yaw, tilt, cov, cov2, room = best_aim(c, hf, vf, np.arange(170.0, 191.0, 5.0), np.arange(30.0, 81.0, 2.5))
         else:
-            yaw, tilt, cov, cov2, room = best_aim(c, hf, vf, np.arange(-40.0, 1.0, 5.0) if c[0] > 0 else
-                                                  np.arange(0.0, 41.0, 5.0), np.arange(40.0, 86.0, 2.5))
+            yaws = np.arange(170.0, 191.0, 5.0) if spot.startswith("back") else (
+                np.arange(-40.0, 1.0, 5.0) if c[0] > 0 else np.arange(0.0, 41.0, 5.0))
+            tilts = np.arange(30.0, 86.0, 2.5)
+            try:     # the most floor with at most 2 % of the picture on the room (people), else the least room
+                yaw, tilt, cov, cov2, room = best_aim(c, hf, vf, yaws, tilts, room_max=ROOM_MAX)
+            except TypeError:
+                yaw, tilt, cov, cov2, room = least_room(c, hf, vf, yaws, tilts)
         low = BAY_SPOTS[spot][1][2] - cam["hang_mm"]
         in_strip = BAY_SPOTS[spot][1][1] + cam["dia_mm"] / 2 <= TRAY_Y[0]
         r = dict(camera=key, label=BAY_SPOTS[spot][0], mount=BAY_SPOTS[spot][1], lens=tuple(round(v, 1) for v in c),
@@ -504,6 +869,7 @@ def fig_fit(cands: dict, keys: list, head: dict, path: Path) -> Path:
                                  gridspec_kw=dict(height_ratios=[1, 1.15], hspace=0.55))
     fig.subplots_adjust(left=0.06, right=0.985, top=0.88, bottom=0.08)
     gap = 60.0
+    keys = [k for k in keys if cands[k].get("dia_mm") and cands[k].get("hang_mm")]
     xs, x = [], 0.0
     for k in keys:
         w = max(cands[k]["dia_mm"], 60.0)
@@ -846,16 +1212,23 @@ def tables(res: dict) -> dict:
     """The generated tables of notes/security_cameras.md, by marker."""
     C = res["candidates"]
     t = {}
-    rows = []
-    for k, c in C.items():
-        fov = "/".join(f"{h:.0f}" for h in c["hfov"]) + "°"
-        rows.append((c["type"], f"{c['maker']} {c['model']}", c["res_txt"], f"{c['lens_txt']}, {fov}",
-                     c.get("zoom_txt", "none"), c.get("ir_txt", "-"), c["poe_txt"], c["size_txt"],
-                     c.get("onvif_txt", "-"), c.get("ndaa_txt", "-"), f"${c['price']:,.0f}",
-                     f"[{c['vendor']}]({c['price_url']}), {c['price_date']}" + (" (snippet)" if c.get("price_kind")
-                                                                                == "snippet" else "")))
-    t["CANDIDATES"] = _md(rows, ["Type", "Model", "Resolution", "Lens, across", "Optical zoom", "IR",
-                                 "PoE, max", "Size", "ONVIF / local", "Federal funds", "Price", "Seen at"])
+    for which, keep in (("FIXED_TABLE", lambda c: "PTZ" not in c["type"] and "tracker" not in c["type"]
+                          and "overview" not in c["type"]),
+                         ("PTZ_CANDS_TABLE", lambda c: "PTZ" in c["type"] or "tracker" in c["type"]
+                          or "overview" in c["type"])):
+        rows = []
+        for k, c in C.items():
+            if not keep(c):
+                continue
+            fov = "-".join(f"{h:.0f}" for h in c["hfov"]) + " x " + "-".join(f"{v:.0f}" for v in c["vfov"]) + "°"
+            rows.append((c["type"], f"{c['maker']} **{c['model']}**", c["res_txt"], f"{c['lens_txt']}; {fov}",
+                         c.get("zoom_txt", "none"), c.get("ir_txt", "-"), c["poe_txt"], c["size_txt"],
+                         c.get("onvif_txt", "-"), c.get("ndaa_txt", "-"), f"${c['price']:,.0f}",
+                         f"[{c['vendor']}]({c['price_url']})" + (" (snippet)" if c.get("price_kind") == "snippet"
+                                                                 else "")))
+        t[which] = _md(rows, ["Type", "Model", "Resolution", "Lens; across x up", "Zoom, focus", "IR",
+                              "PoE, most it draws", "Size", "ONVIF, RTSP, local", "On federal money", "Price",
+                              "Seen 2026-11-20 at"])
     rows = []
     for spot, r in res["bay"].items():
         c = C[r["camera"]]

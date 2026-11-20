@@ -33,7 +33,53 @@ on the same switch, since 2026-11-19:
 So the pattern carries over as is: **one Pi 5 per group of cameras, not one per camera.** A tray's two or three
 cameras are under a tenth of one core.
 
-<!-- CANDIDATES -->
+## The candidates
+
+Researched on 2026-11-20 from the makers' datasheets where they could be opened; each price is one retailer's on that
+day (Black Friday prices were in effect) and marked "snippet" where only a search result showed it. Every figure, with
+its datasheet, is in `security_cams.CANDIDATES` and `out/security_cameras.json`.
+
+### Fixed cameras: turret, mini dome, bullet, varifocal, box, sensor on a cable, board
+
+<!-- BEGIN:FIXED_TABLE -->
+| Type | Model | Resolution | Lens; across x up | Zoom, focus | IR | PoE, most it draws | Size | ONVIF, RTSP, local | On federal money | Price | Seen 2026-11-20 at |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| turret | Amcrest (Dahua-made) **IP5M-T1179EW-AI-V3** | 2960 x 1668, 20 fps | 2.8 mm; 111 x 58° | none | 30 m | af, 5.0 W | Ø110 x 101 mm, 372 g | ONVIF; RTSP; P2P can be off | **no**: Dahua-made; out of stock | $80 | [amcrest.com (out of stock)](https://www.amcrest.com/products/5mp-poe-camera-turret-ip5m-t1179ew-ai-v3) |
+| turret | AMLINK (Amcrest's new brand, FOXLINK, Taiwan) **AL5M-T5171EW** | 2960 x 1668, 20 fps | 2.8 mm; 111 x 58° | none | 30 m, can be off | af, 8.2 W (typ. 3.2) | Ø123 x 95 mm | S/G/T; RTSP; H.264 only | maker says yes (not verified) | $95 | [amcrest.com](https://www.amcrest.com/products/amlink-5mp-security-ai-ip-poe-turret-camera-al5m-t5171ew) |
+| eyeball turret | Reolink **RLC-520A (2.8 mm)** | 2560 x 1920, 25 fps | 2.8 mm; 100 x 75° | none | 30 m | af; < 12 W (DC figure) | Ø105 x 95 mm, 468 g | ONVIF, RTSP (enable them); P2P can be off; main stream <= 8 Mbit/s | yes (not a named company; Reolink's own statement) | $60 | [reolink.com](https://reolink.com/us/product/rlc-520a/) |
+| turret | Ubiquiti **UniFi G5 Turret Ultra** | 2688 x 1512, 30 fps | fixed; 102 x 55° | none | 30 m | PoE, 4 W | Ø90 x 71 mm, 330 g | no ONVIF; RTSP only through a UniFi Protect console | yes (maker) | $129 | [store.ui.com (plus a console)](https://store.ui.com/us/en/products/uvc-g5-turret-ultra) |
+| indoor mini dome | Axis **M3086-V** | 2688 x 1512, 30 fps | 2.4 mm; 130 x 93° | none | none | af Class 2, 4.2 W (typ. 3.6) | Ø101 x 56 mm, 150 g | G/M/S/T; local; cloud (O3C) can be off | yes (Axis) | $463 | [CDW (backordered)](https://www.cdw.com/product/axis-m3086-v-network-surveillance-camera-dome/7058880) |
+| turret | Hanwha Vision **QNE-8011R** | 2592 x 1944, 30 fps | 2.8 mm; 105 x 77° | none | 20 m, can be off | af Class 3, 7.4 W (typ. 5.5) | Ø125 x 87 mm, 645 g | S/G/T; local; no P2P | yes (Hanwha) | $389 | [a1securitycameras (CDW $377.99, snippet)](https://www.a1securitycameras.com/samsung-hanwha-qne-8011r-5mp-h-265-ir-outdoor-turret-ip-security-camera-with-2-8mm-fixed-lens.html) |
+| mini bullet | Reolink **RLC-510A** | 2560 x 1920, 25 fps | 4 mm; 80 x 42° | none | 30 m | af; < 12 W (DC figure) | 186 x Ø67 mm, 415 g | ONVIF (enable it); RTSP; H.264 only | yes (as Reolink above) | $60 | [reolink.com](https://reolink.com/us/product/rlc-510a/) |
+| mini bullet | Axis **M2036-LE** | 2688 x 1512, 30 fps | 2.4 mm; 130 x 71° | none; focuses from 0.5 m | 20 m, can be off | af Class 3, 12.95 W (typ. 5) | 170 x Ø101 mm, 491 g | G/M/S/T; local | yes (Axis) | $540 | [CDW](https://www.cdw.com/product/axis-m2036-le-network-surveillance-camera-bullet/6900392) |
+| varifocal bullet | Reolink **RLC-811A** | 3840 x 2160, 25 fps | 2.7-13.5 mm; 105-31 x 55-17° | 5x, motorized | 30 m | af; < 12 W (DC figure) | 238 x 80 x 72 mm, 838 g | ONVIF; RTSP; its 4K main stream is H.265 only | yes (as Reolink above) | $98 | [reolink.com](https://reolink.com/us/product/rlc-811a/) |
+| varifocal turret | Amcrest (Dahua-made) **IP5M-VT1289EW-AI** | 2592 x 1944, 20 fps | 2.7-13.5 mm; 100-30 x 72-23° | 5x, motorized; focuses from 0.8 m | 40 m | af, 6.4 W | Ø122 x 108 mm, 685 g | ONVIF not listed; RTSP | **no**: Dahua-made | $155 | [amcrest.com (snippet)](https://amcrest.com/new-products/color/white.html) (snippet) |
+| varifocal dome | Axis **M4216-LV** | 2304 x 1728, 30 fps | 3-6 mm; 100-45 x 72-34° | 2x, remote zoom and focus | 20 m, can be off | af Class 3, 9.7 W (typ. 5) | Ø121 x 71 mm, 375 g | G/M/S/T; local | yes (Axis) | $650 | [CDW](https://www.cdw.com/product/axis-m4216-lv-4mp-network-dome-camera/6771472) |
+| box (CS mount) | Axis **M1137 Mk II** | 2592 x 1944, 30 fps | 2.8-13 mm (i-CS 3.5-10 mm); 112-24 x 82-19° | 4.6x by hand (i-CS: 2.9x, remote); focuses from 0.8 m | none | af Class 3, 7.2 W (typ. 4.5) | 64 x 70 x 179 mm, 205 g | G/M/S/T; local; 1/4-20 thread | yes (Axis) | $657 | [networkdevicesinc (i-CS $803.99 at CDW)](https://networkdevicesinc.com/products/02484-001) |
+| box (CS mount) | Axis **P1385** | 1920 x 1080, 60 fps | 2.8-13 mm; 121-26 x 64-15° | 4.6x by hand | none | af Class 3, 9.3 W | 480 g (drawing only) | G/M/S/T; local; 1/4-20 thread | yes (Axis) | $959 | [CDW](https://www.cdw.com/product/axis-p13-series-p1385-network-surveillance-camera-box/8066983) |
+| sensor on a cable | Axis **F9111-R Mk II + F2105-RE + 8 m cable** | 1920 x 1080, 60 fps | 3.1 mm; 108 x 58° | none | none | at Class 4, 25.5 W (main unit) | sensor Ø30 x 46 mm, 50 g; main unit 675 g | G/M/S/T; local | yes (Axis) | $1,034 | [CDW (main unit + sensor + cable)](https://www.cdw.com/product/axis-f-series-f9111-r-mk-ii-video-server-1-channels/8334770) |
+| mini dome on a cable | Axis **P1275 Mk II** | 1920 x 1080, 30 fps | 2.8-6 mm, by hand; 99-53 x 53-30° | 2x by hand; focuses from 0.1 m | none | af Class 2, 4.1 W | sensor unit 112 g (drawing only), on 8 m | G/M/S/T; local | yes (Axis) | $532 | [networkdevicesinc (backorder)](https://networkdevicesinc.com/products/02859-001) |
+| pinhole on a cable | Axis **P1265 Mk II** | 1080p | 3.7 mm; 91 x 45° | none; focuses from 0.2 m | none | af Class 2 | pinhole sensor on a cable | G/M/S/T; local | yes (Axis) | $500 | [CDW](https://www.cdw.com/) (snippet) |
+| IP board | Shenzhen CCDCAM **IMA50L12 (IMX335)** | 2592 x 1944, 30 fps | M12, not included; 100 x 75° | none | none (IR-cut only) | 'DC12V/POE', 1.9 W | 38 x 38 mm board | 'ONVIF 2.6'; RTSP; Danale P2P (firewall it) | unknown maker: get a declaration | $17 | [Global Sources (snippet)](https://www.globalsources.com/product/network-camera-module_1200330767f.htm) (snippet) |
+| modular, with temperature | Mobotix **S74 + 45° module + MultiSense** | 3840 x 2160, 30 fps | 45° module; 45 x 25° | none | optional module | at Class 4, 25 W | module Ø50 x 43 mm on 1-3 m; body 36 x 232 x 110 mm | G/S/T; local | yes (Mobotix) | $1,628 | [a1 / VoIP Supply (parts, partly snippets)](https://www.a1securitycameras.com/mobotix-mx-f-msa.html) (snippet) |
+<!-- END:FIXED_TABLE -->
+
+### PTZ and other moving cameras
+
+<!-- BEGIN:PTZ_CANDS_TABLE -->
+| Type | Model | Resolution | Lens; across x up | Zoom, focus | IR | PoE, most it draws | Size | ONVIF, RTSP, local | On federal money | Price | Seen 2026-11-20 at |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| mini PTZ | Axis **M5075-G** | 1080p, 60 fps | 2.2-11 mm; 71-14 x 40-8° | 5x, autofocus | none | af Class 3, 9.5 W (typ. 4.4) | Ø130 x 63 mm, 380 g | G/M/S/T; local, cloud optional | allowed (Axis letter, 2024-12-19) | $650 | [Newegg](https://www.newegg.com/p/N82E16881121781) (snippet) |
+| mini PTZ | Dahua **SD1A404XB-GNR (Amcrest IP4M-1066EW in the US)** | 2560 x 1440, 30 fps | 2.8-12 mm; 97-32 x 54-18° | 4x; focuses from 0.2-0.5 m | 15 m | af, 8.5 W with IR (3 W without) | Ø128 x 65 mm, 485 g | S/G/T; P2P listed | **not on federal funds** (Dahua) | $290 | [Amcrest (IP4M-1066EW)](https://amcrest.com/4mp-poe-camera-ptz-4x-optical-zoom-ip4m-1066ew.html) (snippet) |
+| mini PTZ | Hikvision **DS-2DE2A404IW-DE3** | 2560 x 1440, 25 fps | 2.8-12 mm; 97-32 x 54-18° | 4x; focuses from 1.5 m at full zoom | 20 m | af, 11.2 W with IR | Ø131 x 102 mm, 530 g | S/G/T | **not on federal funds** (Hikvision) | $243 | [IPSecurityDepot](https://ipsecuritydepot.com/Hikvision-DS-2DE2A404IW-DE3) (snippet) |
+| PTZ, 16x | Reolink **RLC-823S2** | 3840 x 2160, 25 fps | 5.3-86 mm; 54-4 x 30-2° | 16x; close focus not published | 80 m | at, < 24 W | 373 x 177 x 140 mm with its mount, 2.3 kg | ONVIF (profile not stated); P2P can be turned off | allowed (not a named company; Reolink's own statement) | $340 | [Amazon (list; $230-259 on sale)](https://reolink.com/us/product/rlc-823s2/) (snippet) |
+| dual-lens tracker | Reolink **TrackMix PoE** | 3840 x 2160, 25 fps | 2.8 + 8 mm, fixed; 104-38 x 55-21° | none (two fixed lenses, '6x hybrid') | 30 m | af, < 12 W | 228 x 147 x 110 mm, 1.21 kg | ONVIF; P2P can be turned off | allowed (as Reolink above) | $200 | [Reolink store](https://reolink.com/us/product/reolink-trackmix-poe/) (snippet) |
+| overview + PTZ | Axis **M5000-G** | PTZ 1080p; overview 3 x 5 MP | 4.7-47 mm; 62-7 x 36-4° | 10x | none | at Class 4, 13.4 W | Ø247 x 138 mm, 1.95 kg | G/M/S/T; local | allowed (Axis letter) | $1,456 | [CDW](https://www.cdw.com/product/axis-m50-series-m5000-g-network-surveillance-panoramic-camera-dome/9030103) (snippet) |
+| conference PTZ | PTZOptics **Move SE 20X** | 1080p, 60 fps | 4.42-88.5 mm; 61-3 x 34-2° | 20x; close focus not published | none | af (but 'max 18 W'): plan an at port | 169 x 142 x 164 mm, 1.4 kg | ONVIF (profile not stated); RTSP, SRT, NDI | allowed (PTZOptics' claim) | $1,349 | [Best Buy / Newegg](https://www.bestbuy.com/product/ptzoptics-move-se-20x-grey-gray/J39HLS9JC2) (snippet) |
+| conference PTZ | Sony **SRG-A12** | 2160p30 / 1080p60 | 4.4-52.8 mm; 70-7 x 39-4° | 12x; focuses from 0.4 m at full zoom | none | bt Class 8, 71.3 W | 157 x 184 x 200 mm, 2.0 kg | no ONVIF (VISCA over IP, CGI); RTSP | no statement found | $2,285 | [Newegg](https://www.newegg.com/p/34G-005N-00012) (snippet) |
+<!-- END:PTZ_CANDS_TABLE -->
+
+<!-- CANDIDATE_NOTES -->
 
 ## The bay
 
@@ -55,16 +101,44 @@ cameras are under a tenth of one core.
 
   | A camera there | Lowest point | Nearest the arm |
   |---|---|---|
-  | Ø130 x 180 mm (a PTZ), front strip, x = 0 | 1649 mm | 17 mm |
+  | Ø130 x 180 mm (a tall PTZ), front strip, x = 0 | 1649 mm | 17 mm |
   | the same, x = 170 mm | 1649 mm | 31 mm |
   | the same, x = 650 mm | 1649 mm | 137 mm |
-  | Ø110 x 100 mm (a turret), front strip, x = 450 mm | 1729 mm | 171 mm |
-  | Ø110 x 95 mm, the roof's middle back (y = -645) | 1734 mm | 281 mm |
-  | Ø110 x 95 mm, the roof's middle (y = -1030) | 1734 mm | 236 mm |
+  | Ø100 x 90 mm (a turret), front strip, x = 0 | 1739 mm | 105 mm |
+  | the same, x = 300 mm | 1739 mm | 146 mm |
+  | Ø100 x 90 mm, roof, middle back (y = -645), x = -120 mm | 1739 mm | 286 mm |
+  | Ø130 x 63 mm (a mini PTZ), roof, middle back, x = +120 mm | 1766 mm | 313 mm |
+  | Ø100 x 90 mm, roof, over the tray's centre | 1739 mm | 242 mm |
 
-  So the front pair stands right of the middle, at x = 450 and 650 mm.
+  So the middle front camera stands 300 mm right of the middle, and nothing tall goes in the strip's middle.
 
-<!-- BAY -->
+### The set: four per Shuttle
+
+![The bay in section with the band and the strip, and what each camera sees of the presented tray](../out/security_cameras_bay.png)
+
+<!-- BEGIN:BAY_TABLE -->
+| Spot | Camera | Mount (x, y) | Heading / tilt, ° | Tray floor seen | 300 mm up | Room in the picture | Lowest point | Nearest the arm | mm/px at the tray's centre |
+|---|---|---|---|---|---|---|---|---|---|
+| middle back: wide | Axis M3086-V (mini dome) | (-120, -645) | 175 / 85 | 100 % | 96 % | 8 % | 1773 mm, +40 mm to the band | 320 mm | 1.63 |
+| middle back: PTZ | Axis M5075-G (5x PTZ) | (120, -645) | 180 / 70 | 54 % | 25 % | 0 % | 1766 mm, +32 mm to the band | 313 mm | 0.75 |
+| middle front | Axis M3086-V (mini dome) | (300, -1522) | 0 / 45 | 100 % | 97 % | 0 % | 1773 mm, in the strip | 178 mm | 1.76 |
+| middle, straight down | Axis M3086-V (mini dome) | (0, -1030) | 0 / 90 | 100 % | 100 % | 20 % | 1773 mm, +40 mm to the band | 275 mm | 1.50 |
+<!-- END:BAY_TABLE -->
+
+<!-- BAY_NOTES -->
+
+### The PTZ at full zoom on the workflow's seats
+
+<!-- BEGIN:PTZ_TABLE -->
+| The PTZ at full zoom on | Distance | Picture across | mm/px | In focus (closer than ? mm is not) |
+|---|---|---|---|---|
+| vial rack (tray B) | 1191 mm | 292 mm | 0.15 | - |
+| doser shuttle fork (tray B) | 895 mm | 220 mm | 0.12 | - |
+| CubXL holder seat (tray A) | 1098 mm | 270 mm | 0.14 | - |
+| tray's back left, 150 mm up | 1367 mm | 336 mm | 0.17 | - |
+<!-- END:PTZ_TABLE -->
+
+<!-- PTZ_NOTES -->
 
 ## On the trays
 
@@ -77,6 +151,20 @@ camera does decide is **each tray's slot**, since a slot is the tray's tallest t
 (`vlm.py`, `setup_lab.py fit`). The camera heads are the tallest thing on seven of the twelve powered trays:
 
 <!-- BEGIN:HEADROOM_TABLE -->
+| Tray | Slot | Span | Tallest other thing (top) | Camera heads' top | Highest top for the same slot | Span with no camera above it |
+|---|---|---|---|---|---|---|
+| D | R1 | 750 | Rigaku MiniFlex (6th generation) (725) | 706 | 730 | 750 |
+| A | R2 | 750 | Opentrons OT-2 (665) | 705 | 730 | 700 |
+| B | R3 | 900 | multi-doser: chain carousel v5 on an HR-202i, 13 powders (857) | 688 | 880 | 900 |
+| E | R4 | 725 | Plastometrex PLX-Benchtop (692) | 703 | 705 | 725 |
+| C | F1 | 725 | Bambu Lab H2D (629) | 695 | 705 | 650 |
+| F | F2 | 750 | LECO PX500 + disc magazine (680) | 706 | 730 | 700 |
+| K | 2R1 | 850 | Custom N2 glovebox (purge-only) (813) | 679 | 830 | 850 |
+| L | 2R2 | 725 | Mitutoyo HM-220 Type D (AVPAK) (598) | 696 | 705 | 625 |
+| M | 2R3 | 750 | Sentry Air Systems ductless hood, 24 in (717) | 691 | 730 | 750 |
+| H | 2R4 | 550 | DDM Novastar SPR-45VA (519) | 411 | 530 | 550 |
+| G | 2F1 | 725 | Formlabs Form 4 (557) | 699 | 705 | 600 |
+| I | 2F2 | 725 | SnowX SnowPod (663) | 689 | 705 | 700 |
 <!-- END:HEADROOM_TABLE -->
 
 So a camera that replaces a head on the same post, aimed at the same point, must keep its top within 2 mm (tray E) to
@@ -85,13 +173,38 @@ at or below their tray's tallest instrument would free 425 mm of slot height** a
 column), more than half a tray slot; that is a reason to prefer the small ones and the module-side mounts.
 
 <!-- BEGIN:POSTFIT_TABLE -->
+| On a tray post | Over the pivot | Top | Trays it fits as they are | Slots that grow (mm) |
+|---|---|---|---|---|
+| Amcrest IP5M-T1179EW (aurora's) | 55 | 698 | ABCDEFGHIKLM | none |
+| AMLINK AL5M-T5171EW | 62 | 704 | ABCDEFGHIKLM | none |
+| Reolink RLC-520A | 52 | 696 | ABCDEFGHIKLM | none |
+| UniFi G5 Turret Ultra | 45 | 688 | ABCDEFGHIKLM | none |
+| Axis M3086-V (mini dome) | 50 | 694 | ABCDEFGHIKLM | none |
+| Hanwha QNE-8011R (turret) | 62 | 706 | ABDFHKM | E +25, C +25, L +25, G +25, I +25 |
+| Reolink RLC-510A (bullet) | 99 | 742 | BHK | D +25, A +25, E +50, C +50, F +25, L +50, M +25, G +50, I +50 |
+| Axis M2036-LE (bullet) | 111 | 754 | BHK | D +25, A +25, E +50, C +50, F +25, L +50, M +25, G +50, I +50 |
+| Reolink RLC-811A (5x bullet) | 124 | 767 | BHK | D +50, A +50, E +75, C +75, F +50, L +75, M +50, G +75, I +75 |
+| Amcrest IP5M-VT1289EW (5x turret) | 61 | 704 | ABCDEFGHIKLM | none |
+| Axis M4216-LV (2x dome) | 60 | 704 | ABCDEFGHIKLM | none |
+| Axis M1137 Mk II (box) | 98 | 741 | BHK | D +25, A +25, E +50, C +50, F +25, L +50, M +25, G +50, I +50 |
+| Axis F2105-RE sensor (F-series) | 15 | 658 | ABCDEFGHIKLM | none |
+| Mobotix S74 + MultiSense | 25 | 668 | ABCDEFGHIKLM | none |
 <!-- END:POSTFIT_TABLE -->
 
 ![Each candidate to scale under the bay's roof and on a tray post](../out/security_cameras_fit.png)
 
 ### Mounting: tray, module top, module side, bay ceiling
 
-<!-- MOUNTING -->
+| Where | How it is held | How it is aimed |
+|---|---|---|
+| A tray's 2020 post (the 24 places the HQ/Wide units stand now) | a printed plate on two M5 drop-in T-nuts in the post's slot, the camera's base screwed to it, as the unit's sliding block is now | height: slide the plate up the slot; aim: the camera's own pan, tilt and rotate, by hand, then locked |
+| The top of a module | the same plate on a printed L-bracket over the top edge, or on the module's own extrusion | the same |
+| A module's side | the plate on two M4 rivnuts in the panel, or VHB tape on a painted or glass face | the same |
+| The bay's roof | the camera's base on three M4 rivnuts, its lead through a grommet to the side cavity | by hand (fixed cameras), over ONVIF (the PTZ) |
+| A tight spot (inside a cabinet or the glovebox) | a pinhole or sensor-on-a-cable camera, its main unit outside | fixed |
+
+A turret's ball sits in its base, so one plate design per camera model serves every row above. No magnet bases on
+tray B (its A&D HR-202i balance) or near the multi-doser's balance pan.
 
 ### Seeing in the dark
 
@@ -143,6 +256,23 @@ switch, which `ups.py` already puts on every powered tray's UPS-backed branch (a
 - **the tray's switch must be managed**, with a camera VLAN that has no gateway (aurora's isolation), since the
   same switch carries the tray's instruments and PCs to the lab network.
 
+<!-- BEGIN:POWER_TABLE -->
+| Tray | Cameras | UPS | Backed, rated W | Backed, typical W | Change | Runtime, min | PoE from the switch | Still fits |
+|---|---|---|---|---|---|---|---|---|
+| A | 2 | GXT5LI-1500LVRT2UXL | 641 -> 614 | 221 -> 230 | +10 | 27 -> 26 | 15 W, 2 ports | yes |
+| B | 1 | PSI5-800SRT2ULIN | 493 -> 493 | 48 -> 55 | +7 | 120 -> 104 | 7 W, 1 ports | yes |
+| C | 2 | PSI5-800SRT2ULIN | 114 -> 87 | 16 -> 26 | +10 | 360 -> 226 | 15 W, 2 ports | yes |
+| D | 3 | GXT5LI-3000LVRT2UXL | 2541 -> 2487 | 540 -> 552 | +12 | 22 -> 22 | 22 W, 3 ports | yes |
+| E | 3 | GXT5LI-1500LVRT2UXL | 991 -> 937 | 325 -> 337 | +12 | 19 -> 18 | 22 W, 3 ports | yes |
+| F | 2 | PSI5-800SRT2ULIN | 114 -> 87 | 16 -> 26 | +10 | 360 -> 226 | 15 W, 2 ports | yes |
+| K | 1 | GXT5LI-1500LVRT2UXL | 820 -> 820 | 214 -> 221 | +7 | 28 -> 27 | 7 W, 1 ports | yes |
+| L | 2 | GXT5LI-1500LVRT2UXL | 1004 -> 977 | 176 -> 186 | +10 | 35 -> 33 | 15 W, 2 ports | yes |
+| M | 2 | GXT5LI-1500LVRT2UXL | 749 -> 722 | 171 -> 180 | +10 | 36 -> 34 | 15 W, 2 ports | yes |
+| H | 2 | PSI5-800SRT2ULIN | 514 -> 487 | 56 -> 66 | +10 | 103 -> 88 | 15 W, 2 ports | yes |
+| G | 2 | PSI5-800SRT2ULIN | 114 -> 87 | 16 -> 26 | +10 | 360 -> 226 | 15 W, 2 ports | yes |
+| I | 2 | PSI5-800SRT2ULIN | 114 -> 87 | 16 -> 26 | +10 | 360 -> 226 | 15 W, 2 ports | yes |
+<!-- END:POWER_TABLE -->
+
 <!-- POWER_TRAYS -->
 
 ### The bay
@@ -168,7 +298,18 @@ feeds the service risers and the bay camera; the bay's set and its Pi 5 go on th
 - **Isolation as in aurora:** cameras on a VLAN with no gateway; P2P, cloud, UPnP and the vendor app off; NTP from the
   Pi; a viewer account for RTSP and the admin login kept off the Pi; firmware loaded by hand.
 
-<!-- BOM -->
+## Bill of materials and cost
+
+<!-- BEGIN:COST_TABLE -->
+| Tier | Per tray point (camera, mount, lead, card, its share of the Pi 5) | Per bay set (with its Pi 5) | Pi 5s | Whole lab |
+|---|---|---|---|---|
+| A. NDAA: Hanwha turrets on the trays, Axis in the bay | $513 | $2,364 | 14 | **$17,263** |
+| B. NDAA, smallest: Axis mini domes everywhere (no IR on the trays) | $587 | $2,364 | 14 | **$19,044** |
+| C. Low cost: Reolink turrets on the trays and the strip, Axis on the roof | $184 | $1,961 | 14 | **$8,566** |
+| today: HQ + Wide units (for comparison) | $346 | - | 26 | $8,991 |
+<!-- END:COST_TABLE -->
+
+<!-- BOM_NOTES -->
 
 ## Open questions
 
