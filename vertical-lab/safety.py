@@ -81,21 +81,22 @@ B570 = dict(
 # The 811 heavy-duty vehicle bracket (Buckeye 700229 = Model 811): its own frame has the back of its web at y = 0, the
 # foot plate on z = 0 and the front to -y, so a B570 stands on the foot plate with its axis at y = -(BUSH + r).
 B811 = dict(H=17.5 * IN, W=8.125 * IN, D=8.125 * IN, t=3.0, web=110.0, kg=9.0 * LB, z_strap=(311.0, 336.0),
-            bush=4.0, price_usd=118.0,
+            bush=4.0, price_usd=79.95,
             source="Buckeye datasheet 700229 / Model 811 (qrfs.com): cylinder 7.5-8.5 in, 17.50 x 8.125 x 8.125 in, "
                    "9 lb, powder-coated carbon steel, rubber bushings, UL 299, DOT, USCG; fits 30 lb Class D. Fire "
                    "Supply Depot lists the Amerex 811 at 9.75 W x 8.125 D x 17.5 H in with the strap's latch, "
-                   "7/16 in holes. Shape from Buckeye's photo; the web and flange split, the strap height and the latch "
-                   "are read off it")
+                   "7/16 in holes, $79.95. Shape from Buckeye's photo; the web and flange split, the strap height and "
+                   "the latch are read off it")
 # The 680R: its own frame on the floor midway between the wheels, the axle along x, its front (the label) to -y.
 W680 = dict(H=52 * IN, W=28 * IN, D=45 * IN, wheel=36 * IN, tread=2.5 * IN, agent_lb=150.0, ship_lb=444.0,
             hose_ft=25.0, hose_in=0.75, argon_ft3=110.0, psi=125, discharge_s=80, range_ft=(4, 8),
-            d_agent=305.0, h_agent=880.0, d_argon=178.0, h_argon=960.0, price_usd=None,
+            d_agent=305.0, h_agent=880.0, d_argon=178.0, h_argon=960.0, price_usd=11541.0, list_usd=16589.79,
             source="Amerex wheeled catalogue (wheeled-extinguisher-catalog-english.pdf) p. 11: 680R P/N 10897, 150 lb "
                    "Super D, 444 lb shipping, 52 H x 28 W x 45 D in, 36 x 2.5 in steel wheels with non-sparking rubber "
                    "treads, argon cylinder DOT 3AA2015 110 ft3 regulated to 125 psi, 25 ft x 0.75 in hose, 80 s, "
                    "4-8 ft with the applicator, extension wand (nozzle sold separately); the cylinders' sizes are ours, "
-                   "from the agent's volume and the catalogue's photo")
+                   "from the agent's volume and the catalogue's photo. Price: Tiger Medical's sale price $11,541 (list "
+                   "$16,589.79); All Security Equipment $10,931.99; others to $22,573")
 PAIL = dict(d=300.0, h=360.0, lb=50.0, price_usd=519.0,
             source="Brooks/Amerex Super D, 50 lb pail (safetyemporium.com 09530; Brooks 50DPAIL, absupply.net, "
                    "about $519); the pail's size and colour aren't published: a 5 gal open-head pail, drawn plain; a "
@@ -105,7 +106,7 @@ POST = dict(s=41.3, h=2150.0, base=254.0, base_t=9.5,
             source="ours: a 1-5/8 in 12 ga strut channel (Unistrut P1000 class) on a 10 x 10 x 3/8 in post base, "
                    "anchored with four 1/2 in wedge anchors, painted fire red; the Amerex hook on its face, the signs above")
 NFPA10 = dict(top_max=42 * IN, bottom_min=4 * IN, travel_max=75 * 12 * IN, travel_ideal=25 * 12 * IN,
-              keep_clear=36 * IN,
+              keep_clear=36 * IN, keep_clear_w=24 * IN,
               source="NFPA 10 6.1.3.8.2-3 (gross weight over 40 lb: top at most 3.5 ft above the floor, bottom at least "
                      "4 in) and 6.5 / OSHA 29 CFR 1910.157(d)(5) (Class D agent within 75 ft of travel); 25 ft is the "
                      "lab's vacuum SOP's 'ideally' (PR 80, vacuum-operating-sop.md gate 0.2)")
@@ -740,12 +741,13 @@ def post_parts(with_unit: bool = True) -> dict:
         q = np.asarray(m.points, float)
         m.points = np.c_[-q[:, 1] + s / 2 + 40.0, q[:, 0], q[:, 2] + fz - SIGN["w"]]       # out to +x, under the leg
         _add(p, name, m, mat)
-    # the keep-clear square on the floor: yellow and black hatching round a 36 x 36 in area in front
-    k = NFPA10["keep_clear"]
+    # the keep-clear area taped on the floor in front: 24 in wide, 36 in out (DAL suggested 36 x 36 in; on this floor a
+    # 36 in square in front of a unit between two machines runs into the docked MiR250s)
+    k, kw = NFPA10["keep_clear"], NFPA10["keep_clear_w"]
     y0, y1 = -s / 2 - k, -s / 2
     tape = []
-    for (xa, xb, ya, yb) in ((-k / 2, k / 2, y0, y0 + 50), (-k / 2, k / 2, y1 - 50, y1), (-k / 2, -k / 2 + 50, y0, y1),
-                             (k / 2 - 50, k / 2, y0, y1)):
+    for (xa, xb, ya, yb) in ((-kw / 2, kw / 2, y0, y0 + 50), (-kw / 2, kw / 2, y1 - 50, y1),
+                             (-kw / 2, -kw / 2 + 50, y0, y1), (kw / 2 - 50, kw / 2, y0, y1)):
         tape.append(pv.Box(bounds=(xa, xb, ya, yb, 0.0, 1.2)).triangulate())
     _add(p, "keep clear", _merge(tape), "floor_yellow")
     return p
@@ -780,23 +782,23 @@ def pail_parts() -> dict:
 
 
 # ================================================================================================ the MiR250's unit
-# The B570 rides at the back of each MiR250 (its -x end: the shoes, the camera targets and the 3-D cameras are at
-# the front), in an 811 bracket bolted through a 6 mm aluminium adapter plate (ours) to the cabinet's back panel. It
-# hangs over the MiR's own deck, under the arm's base, its label out; shifted to the aisle side (-y) so it stays out of
-# the target posts' feet at the docks a MiR backs into. See mir_mount() and notes/safety.md.
-MIR_MOUNT = dict(x_back=None, y=-112.0, z_foot=310.0, plate_t=6.0, plate=(470.0, 250.0), plate_kg=1.9)
+# The B570 rides on the aisle side of each MiR250 (its -y side, the side away from the arm: at every dock the arm's side
+# faces the machine, so this side faces the aisle), centred along it, in an 811 bracket bolted through a 6 mm aluminium
+# adapter plate (ours) to the cabinet's side panel. It hangs over the MiR's own deck edge, under the arm's base, its
+# label out. There it stays inside the circle the MiR250 already sweeps turning on the spot (494 mm): mounted on the
+# back end instead, it made that circle 619 mm and six docks lost their pivot spot (notes/safety.md). The cabinet's door
+# (the UR control box's) moves from that side to the front end (props.mir250).
+MIR_MOUNT = dict(x=0.0, z_foot=310.0, plate_t=6.0, plate=(470.0, 250.0), plate_kg=1.9)
 CLASS_D_ON_MIR = os.environ.get("VLAB_MIR_CLASS_D", "1") != "0"
 
 
 def mir_mount() -> np.ndarray:
     """4x4: the 811 bracket's frame on a MiR250 (MiR-local: the floor at its centre, x along it, the arm's side +y):
-    its web's back on the adapter plate on the cabinet's -x end, its front (-y in its frame) to -x."""
+    its web's back on the adapter plate on the cabinet's -y side, its front (-y in its frame) to the MiR's -y."""
     import props as P
-    from scene import T, R
-    x_cab = -P.MIR["L"] / 2 + 40.0                         # the cabinet's end (props.mir250)
-    xb = x_cab - MIR_MOUNT["plate_t"]
-    # bracket frame -> MiR: its -y (front) to MiR -x, its +x (the B570's applicator side) to MiR -y, z up
-    return T((xb, MIR_MOUNT["y"], MIR_MOUNT["z_foot"])) @ R((0, 0, 1), -90.0)
+    from scene import T
+    y_cab = -P.MIR["W"] / 2 + 30.0                         # the cabinet's side (props.mir250)
+    return T((MIR_MOUNT["x"], y_cab - MIR_MOUNT["plate_t"], MIR_MOUNT["z_foot"]))
 
 
 def mir_parts() -> dict:
@@ -805,9 +807,9 @@ def mir_parts() -> dict:
     import props as P
     M = mir_mount()
     p: dict = {}
-    x_cab = -P.MIR["L"] / 2 + 40.0
+    y_cab = -P.MIR["W"] / 2 + 30.0
     pw, ph = MIR_MOUNT["plate"]
-    plate = pv.Box(bounds=(x_cab - MIR_MOUNT["plate_t"], x_cab, MIR_MOUNT["y"] - ph / 2, MIR_MOUNT["y"] + ph / 2,
+    plate = pv.Box(bounds=(MIR_MOUNT["x"] - ph / 2, MIR_MOUNT["x"] + ph / 2, y_cab - MIR_MOUNT["plate_t"], y_cab,
                            MIR_MOUNT["z_foot"] - 5.0, MIR_MOUNT["z_foot"] - 5.0 + pw)).triangulate()
     _add(p, "class D adapter plate", plate, "alu")
     for name, (mesh, mat) in bracket811_parts().items():
@@ -849,12 +851,11 @@ def mir_footprint() -> dict:
     pts = np.vstack([m.points for m, _ in mir_parts().values()])
     xs, ys = pts[:, 0], pts[:, 1]
     L, W = P.MIR["L"], P.MIR["W"]
-    beyond = xs < -L / 2
     r = float(np.max(np.hypot(xs, ys)))
     return dict(mir=(-L / 2, L / 2, -W / 2, W / 2),
                 unit=(float(xs.min()), float(xs.max()), float(ys.min()), float(ys.max())),
-                behind_mm=float(-L / 2 - xs.min()), side=(float(ys[beyond].min()), float(ys[beyond].max())),
-                top_mm=float(pts[:, 2].max()), bottom_mm=float(pts[:, 2].min()),
+                beside_mm=float(-W / 2 - ys.min()), along=(float(xs.min()), float(xs.max())),
+                top_mm=float(pts[:, 2].max()), bottom_mm=float(pts[:, 2].min()), r_unit=r,
                 r_turn=max(r, float(math.hypot(L / 2, W / 2))), r_turn_mir=float(math.hypot(L / 2, W / 2)))
 
 
@@ -864,21 +865,23 @@ def mir_footprint() -> dict:
 # spot reaches it (``plan_check``), it hangs outside the station's own powder area, and it is seen from the aisle.
 # kind: "b570" (on a post, its front to `face`), "680r" (the wheeled unit), "pail".
 PLACES = [
-    # station, kind, x, y, face (the direction its front looks: -1 to -y, +1 to +y), what it covers
-    ("glovebox", "b570", -6750.0, -1250.0, -1, "the floor glovebox"),
-    ("repowder", "b570", -5150.0, -1300.0, -1, "the rePowder atomizer"),
-    ("repowder", "680r", -5950.0, -1150.0, -1, "the rePowder atomizer"),
-    ("repowder", "pail", -5450.0, -1050.0, -1, "the rePowder atomizer"),
-    ("sieve_cell", "b570", -2470.0, -1720.0, -1, "the sieving cell"),
-    ("vlm", "b570", 1815.0, -1200.0, -1, "Shuttle 1's opening"),
-    ("vlm2", "b570", 5380.0, -1250.0, -1, "Shuttle 2's opening"),
-    ("aconity", "b570", 8600.0, -1200.0, -1, "the Aconity MIDI and its depowdering box"),
-    ("aconity", "pail", 8600.0, -850.0, -1, "the Aconity MIDI"),
-    ("packaging", "b570", 11350.0, -1300.0, -1, "the packaging station"),
-    ("ded", "b570", 5050.0, -6650.0, 1, "the MX-Lab DED"),
-    ("eos_m400", "b570", -7050.0, -9950.0, 1, "the EOS M 400-4"),
-    ("eos_m400", "680r", -7050.0, -10750.0, 1, "the EOS M 400-4"),
+    # station, kind, x, y, face (the direction its front looks: -1 to -y, +1 to +y), what it covers. Each is the
+    # nearest spot to its station that clears everything (safety_render.place_search, 50 mm grid, then rounded)
+    ("glovebox", "b570", -8050.0, -1150.0, -1, "the floor glovebox (west of it)"),
+    ("repowder", "b570", -5150.0, -1450.0, -1, "the rePowder atomizer (its fire point, west of it)"),
+    ("repowder", "680r", -6300.0, -1000.0, -1, "the rePowder atomizer (its fire point)"),
+    ("repowder", "pail", -5650.0, -1475.0, -1, "the rePowder atomizer (its fire point)"),
+    ("vlm", "b570", 1750.0, -1150.0, -1, "both Shuttles' openings (in the gap between them)"),
+    ("aconity", "b570", 8495.0, -1150.0, -1, "the Aconity MIDI and its depowdering (east of it)"),
+    ("aconity", "pail", 8485.0, -800.0, -1, "the Aconity MIDI"),
+    ("packaging", "b570", 10786.0, -2050.0, -1, "the packaging station (east of its dock)"),
+    ("ded", "b570", 4900.0, -6650.0, 1, "the MX-Lab DED (east of it)"),
+    ("eos_m400", "b570", -9450.0, -9550.0, 1, "the EOS M 400-4 (in front of it)"),
+    ("eos_m400", "680r", -10200.0, -9050.0, 1, "the EOS M 400-4"),
 ]
+# The sieving cell has no spot of its own: its bench stands 85 mm from the rePowder and 20 mm from Shuttle 1, and its
+# front is its MiR250's dock and target post. It is covered by the docked MiR's own unit while a MiR works there, and
+# by the rePowder's fire point and the unit between the Shuttles (out/safety.json, "walks").
 # where each hazard is, for the walk: the point a person would fight a fire from, at the station's working face
 HAZARDS = {
     "glovebox": (-7300.0, -1250.0), "repowder": (-3500.0, -1950.0), "sieve_cell": (-1982.0, -1650.0),

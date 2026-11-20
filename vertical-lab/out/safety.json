@@ -1,0 +1,750 @@
+{
+ "b570": {
+  "model": "Amerex B570",
+  "part_no": "16882",
+  "envelope_mm": {
+   "x": [
+    -151.14151000976562,
+    153.98197734910792
+   ],
+   "y": [
+    -101.37290518391698,
+    101.37290518391698
+   ],
+   "z": [
+    0.0,
+    908.8880615234375
+   ]
+  },
+  "overall_in": [
+   35.8,
+   12.0,
+   8.0
+  ],
+  "datasheet_in": [
+   35,
+   13,
+   8
+  ],
+  "cylinder_in": 7.75,
+  "source": "Amerex Class D datasheet (amerex-fire.com/upl/downloads/library/class-d-extinguishers.pdf): B570 P/N 16882, 30 lb Super D, 35 H x 13 W x 8 D in, 53 lb shipping, 195 psig, 3-6 ft, 24 s, chrome-plated brass valve, 'soft flow' extension applicator, wall bracket; shapes and heights measured off the datasheet's render; Grainger 8C249 at $958.01 (DAL #126)"
+ },
+ "heights": {
+  "on its hook (post or wall)": {
+   "bottom_mm": 140,
+   "lever_top_mm": 826,
+   "hose_top_mm": 1047,
+   "bottom_ok": true,
+   "lever_ok": true,
+   "hose_ok": true
+  },
+  "on a MiR250, in the 811": {
+   "bottom_mm": 313,
+   "lever_top_mm": 999,
+   "hose_top_mm": 1220,
+   "bottom_ok": true,
+   "lever_ok": true,
+   "hose_ok": false
+  }
+ },
+ "nfpa10": {
+  "top_max": 1066.8,
+  "bottom_min": 101.6,
+  "travel_max": 22860.0,
+  "travel_ideal": 7620.0,
+  "keep_clear": 914.4,
+  "keep_clear_w": 609.5999999999999,
+  "source": "NFPA 10 6.1.3.8.2-3 (gross weight over 40 lb: top at most 3.5 ft above the floor, bottom at least 4 in) and 6.5 / OSHA 29 CFR 1910.157(d)(5) (Class D agent within 75 ft of travel); 25 ft is the lab's vacuum SOP's 'ideally' (PR 80, vacuum-operating-sop.md gate 0.2)"
+ },
+ "mir": {
+  "footprint": {
+   "mir": [
+    -400.0,
+    400.0,
+    -290.0,
+    290.0
+   ],
+   "unit": [
+    -151.14151000976562,
+    153.98197734910792,
+    -489.8958844373879,
+    -260.0
+   ],
+   "beside_mm": 199.8958844373879,
+   "along": [
+    -151.14151000976562,
+    153.98197734910792
+   ],
+   "top_mm": 1221.8880615234375,
+   "bottom_mm": 305.0,
+   "r_unit": 495.6993118356264,
+   "r_turn": 495.6993118356264,
+   "r_turn_mir": 494.064773081425
+  },
+  "load": {
+   "payload_kg": {
+    "before": 205.8,
+    "unit": 28.7,
+    "after": 234.5,
+    "with_held_part": 247.0,
+    "limit": 250.0,
+    "margin_with_held_part": 3.0
+   },
+   "items": {
+    "before": {
+     "ur": 33.3,
+     "control_box": 12.0,
+     "cabinet": 25.0,
+     "gripper": 1.2,
+     "on_top": 3.0,
+     "ballast": 131.3
+    },
+    "unit": {
+     "b570": 22.7,
+     "bracket_811": 4.1,
+     "adapter_plate": 1.9
+    }
+   },
+   "unit_cog_mm": [
+    1,
+    -365,
+    565
+   ],
+   "restoring_moment_change_Nm": {
+    "+x": 91.2,
+    "-x": 91.8,
+    "+y": 166.1,
+    "-y": -39.4
+   },
+   "whole_robot_kg": 331.5,
+   "note": "restoring moment about each edge of the support rectangle (alloy_atomize.WHEELS, +-325 x +-225 mm, an estimate) the unit adds (> 0) or takes away (< 0); the unit hangs 130 mm outside the -x (back) edge, so it is the one edge it weakens"
+  }
+ },
+ "docks": {
+  "glovebox": {
+   "dock": [
+    -7300,
+    -1932,
+    0
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    -7750,
+    -1932
+   ],
+   "approach_was": 450,
+   "pivot_now": [
+    -7750,
+    -1932
+   ],
+   "approach_now": 450,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "repowder": {
+   "dock": [
+    -3487,
+    -2230,
+    0
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    -5362,
+    -2230
+   ],
+   "approach_was": 1875,
+   "pivot_now": [
+    -5337,
+    -2230
+   ],
+   "approach_now": 1850,
+   "hits_before": [
+    "repowder"
+   ],
+   "new_hits": [],
+   "ok": true
+  },
+  "sieve_cell": {
+   "dock": [
+    -1700,
+    -2232,
+    0
+   ],
+   "backs_in": true,
+   "pivot_was": [
+    -775,
+    -2232
+   ],
+   "approach_was": 925,
+   "pivot_now": [
+    -775,
+    -2232
+   ],
+   "approach_now": 925,
+   "hits_before": [
+    "repowder"
+   ],
+   "new_hits": [],
+   "ok": true
+  },
+  "vlm": {
+   "dock": [
+    0,
+    -1932,
+    0
+   ],
+   "backs_in": true,
+   "pivot_was": [
+    1800,
+    -1932
+   ],
+   "approach_was": 1800,
+   "pivot_now": [
+    1800,
+    -1932
+   ],
+   "approach_now": 1800,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "vlm2": {
+   "dock": [
+    3630,
+    -1932,
+    0
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    1830,
+    -1932
+   ],
+   "approach_was": 1800,
+   "pivot_now": [
+    1830,
+    -1932
+   ],
+   "approach_now": 1800,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "aconity": {
+   "dock": [
+    6520,
+    -2082,
+    0
+   ],
+   "backs_in": true,
+   "pivot_was": [
+    8270,
+    -2082
+   ],
+   "approach_was": 1750,
+   "pivot_now": [
+    8270,
+    -2082
+   ],
+   "approach_now": 1750,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "packaging": {
+   "dock": [
+    10050,
+    -1932,
+    0
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    8575,
+    -1932
+   ],
+   "approach_was": 1475,
+   "pivot_now": [
+    8575,
+    -1932
+   ],
+   "approach_now": 1475,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "instron_floor": {
+   "dock": [
+    -6188,
+    -5448,
+    180
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    -5738,
+    -5448
+   ],
+   "approach_was": 450,
+   "pivot_now": [
+    -5738,
+    -5448
+   ],
+   "approach_now": 450,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "instron_small": {
+   "dock": [
+    -4300,
+    -5868,
+    180
+   ],
+   "backs_in": true,
+   "pivot_was": [
+    -4925,
+    -5868
+   ],
+   "approach_was": 625,
+   "pivot_now": [
+    -4925,
+    -5868
+   ],
+   "approach_now": 625,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "fumehood": {
+   "dock": [
+    1500,
+    -5868,
+    180
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    2500,
+    -5868
+   ],
+   "approach_was": 1000,
+   "pivot_now": [
+    2500,
+    -5868
+   ],
+   "approach_now": 1000,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "ded": {
+   "dock": [
+    3900,
+    -5868,
+    180
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    4950,
+    -5868
+   ],
+   "approach_was": 1050,
+   "pivot_now": [
+    4950,
+    -5868
+   ],
+   "approach_now": 1050,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  },
+  "wire_edm": {
+   "dock": [
+    6600,
+    -5868,
+    180
+   ],
+   "backs_in": false,
+   "pivot_was": [
+    8050,
+    -5868
+   ],
+   "approach_was": 1450,
+   "pivot_now": [
+    8050,
+    -5868
+   ],
+   "approach_now": 1450,
+   "hits_before": [],
+   "new_hits": [],
+   "ok": true
+  }
+ },
+ "places": [
+  {
+   "station": "glovebox",
+   "kind": "b570",
+   "at": [
+    -8050.0,
+    -1150.0
+   ],
+   "face": -1,
+   "covers": "the floor glovebox (west of it)",
+   "solid": [
+    -8210,
+    -7890,
+    -1402,
+    -1023
+   ],
+   "nearest_machine": [
+    188,
+    "glovebox"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "repowder",
+   "kind": "b570",
+   "at": [
+    -5150.0,
+    -1450.0
+   ],
+   "face": -1,
+   "covers": "the rePowder atomizer (its fire point, west of it)",
+   "solid": [
+    -5310,
+    -4990,
+    -1702,
+    -1323
+   ],
+   "nearest_machine": [
+    155,
+    "repowder"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "repowder",
+   "kind": "680r",
+   "at": [
+    -6300.0,
+    -1000.0
+   ],
+   "face": -1,
+   "covers": "the rePowder atomizer (its fire point)",
+   "solid": [
+    -6681,
+    -5919,
+    -1282,
+    -368
+   ],
+   "nearest_machine": [
+    217,
+    "glovebox"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "repowder",
+   "kind": "pail",
+   "at": [
+    -5650.0,
+    -1475.0
+   ],
+   "face": -1,
+   "covers": "the rePowder atomizer (its fire point)",
+   "solid": [
+    -5820,
+    -5480,
+    -1635,
+    -1315
+   ],
+   "nearest_machine": [
+    645,
+    "repowder"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "vlm",
+   "kind": "b570",
+   "at": [
+    1750.0,
+    -1150.0
+   ],
+   "face": -1,
+   "covers": "both Shuttles' openings (in the gap between them)",
+   "solid": [
+    1590,
+    1910,
+    -1402,
+    -1023
+   ],
+   "nearest_machine": [
+    175,
+    "vlm"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "aconity",
+   "kind": "b570",
+   "at": [
+    8495.0,
+    -1150.0
+   ],
+   "face": -1,
+   "covers": "the Aconity MIDI and its depowdering (east of it)",
+   "solid": [
+    8335,
+    8655,
+    -1402,
+    -1023
+   ],
+   "nearest_machine": [
+    149,
+    "aconity"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "aconity",
+   "kind": "pail",
+   "at": [
+    8485.0,
+    -800.0
+   ],
+   "face": -1,
+   "covers": "the Aconity MIDI",
+   "solid": [
+    8315,
+    8655,
+    -960,
+    -640
+   ],
+   "nearest_machine": [
+    129,
+    "aconity"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "packaging",
+   "kind": "b570",
+   "at": [
+    10786.0,
+    -2050.0
+   ],
+   "face": -1,
+   "covers": "the packaging station (east of its dock)",
+   "solid": [
+    10626,
+    10946,
+    -2302,
+    -1923
+   ],
+   "nearest_machine": [
+    311,
+    "packaging"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "ded",
+   "kind": "b570",
+   "at": [
+    4900.0,
+    -6650.0
+   ],
+   "face": 1,
+   "covers": "the MX-Lab DED (east of it)",
+   "solid": [
+    4740,
+    5060,
+    -6777,
+    -6398
+   ],
+   "nearest_machine": [
+    179,
+    "ded"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "eos_m400",
+   "kind": "b570",
+   "at": [
+    -9450.0,
+    -9550.0
+   ],
+   "face": 1,
+   "covers": "the EOS M 400-4 (in front of it)",
+   "solid": [
+    -9610,
+    -9290,
+    -9677,
+    -9298
+   ],
+   "nearest_machine": [
+    86,
+    "eos_m400"
+   ],
+   "hits": [],
+   "ok": true
+  },
+  {
+   "station": "eos_m400",
+   "kind": "680r",
+   "at": [
+    -10200.0,
+    -9050.0
+   ],
+   "face": 1,
+   "covers": "the EOS M 400-4",
+   "solid": [
+    -10581,
+    -9819,
+    -9682,
+    -8768
+   ],
+   "nearest_machine": [
+    81,
+    "eos_m400"
+   ],
+   "hits": [],
+   "ok": true
+  }
+ ],
+ "walks": {
+  "glovebox": {
+   "m": 0.89,
+   "ft": 2.9,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "repowder": {
+   "m": 2.14,
+   "ft": 7.0,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "sieve_cell": {
+   "m": 3.87,
+   "ft": 12.7,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "vlm": {
+   "m": 2.0,
+   "ft": 6.5,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "vlm2": {
+   "m": 2.08,
+   "ft": 6.8,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "aconity": {
+   "m": 1.9,
+   "ft": 6.2,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "packaging": {
+   "m": 1.06,
+   "ft": 3.5,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "ded": {
+   "m": 1.3,
+   "ft": 4.3,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  },
+  "eos_m400": {
+   "m": 0.5,
+   "ft": 1.6,
+   "nfpa10_75ft": true,
+   "sop_25ft": true
+  }
+ },
+ "bom": {
+  "rows": [
+   {
+    "item": "Amerex B570, 30 lb Class D (Super D), with its wall hook",
+    "qty": 9,
+    "unit_usd": 958.01,
+    "source": "Grainger 8C249 (DAL #126)"
+   },
+   {
+    "item": "Amerex 811 heavy-duty vehicle bracket (Buckeye 700229)",
+    "qty": 2,
+    "unit_usd": 79.95,
+    "source": "Fire Supply Depot (4+: $69.95)"
+   },
+   {
+    "item": "Adapter plate for the 811 on the MiR's cabinet, 6 mm 6061, 250 x 470 mm, with 4 x M10 (ours)",
+    "qty": 2,
+    "unit_usd": 60.0,
+    "source": "estimate"
+   },
+   {
+    "item": "Amerex 680R, 150 lb Class D (Super D) wheeled, argon, 36 in wheels",
+    "qty": 2,
+    "unit_usd": 11541.0,
+    "source": "Tiger Medical sale price (list $16,589.79)"
+   },
+   {
+    "item": "Super D Class D powder, 50 lb pail (Brooks 50DPAIL)",
+    "qty": 2,
+    "unit_usd": 519.0,
+    "source": "absupply.net"
+   },
+   {
+    "item": "Metal scoop for the pail",
+    "qty": 2,
+    "unit_usd": null,
+    "source": "safetyemporium.com 09461, price not found"
+   },
+   {
+    "item": "Floor post: 1-5/8 in strut, 2.15 m, post base, 4 wedge anchors, red (ours)",
+    "qty": 7,
+    "unit_usd": 150.0,
+    "source": "estimate"
+   },
+   {
+    "item": "CLASS D sign, 7 x 10 in rigid plastic",
+    "qty": 7,
+    "unit_usd": 20.0,
+    "source": "estimate (DAL's parts list)"
+   },
+   {
+    "item": "Double-sided CLASS D flag sign and its aluminium flag bracket (DAL's)",
+    "qty": 7,
+    "unit_usd": 35.0,
+    "source": "estimate"
+   },
+   {
+    "item": "2 in yellow/black floor tape for the 36 x 36 in keep-clear squares, 108 ft roll",
+    "qty": 1,
+    "unit_usd": 30.0,
+    "source": "estimate"
+   }
+  ],
+  "total_usd": 34486.99,
+  "annual": "Annual service by a contractor (BYU Risk Management doesn't service Class D; the College's industrial hygienist suggested Associated Fire Protection, Salt Lake City); 6-year maintenance and 12-year hydrostatic test for dry powder; recharge after any use (B570 manual, DAL's mounting study)"
+ },
+ "docks_ok": true,
+ "places_ok": true,
+ "walks_ok": true
+}
