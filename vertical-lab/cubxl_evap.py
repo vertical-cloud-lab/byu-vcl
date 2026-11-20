@@ -216,6 +216,7 @@ def t_xy(d: float) -> float:
 
 
 MOVE_OVERHEAD = STEP_S["move_33mm"] - t_xy(33.0)    # Z up to the safe plane and down again, CubOS's round trips
+LIFT_S = 40.0 / 40.0                                 # the P300's 40 mm lift, one way, at an assumed 40 mm/s
 
 
 def t_move(a, b) -> float:
@@ -282,6 +283,12 @@ def spot_plan(option: str, p300_s_per_ul: float) -> dict:
         col += 2 * STEP_S["mix_cycle"] + transfer_s(d["S1"], d["TUBE"], 150.0, big) + STEP_S["drop_tip"]
         n_tr += 3
         tips += 2
+        if not flex:
+            # the P300's lift (r9_cubxl.P3["lift"]): lowered and raised at each of its visits, 40 mm each way at an
+            # assumed 40 mm/s: the fill's ASW draw, S1, the tip back, the mixing tip, S1, the waste (6); the collection's
+            # tip, S1, tube, waste, tip, DI, S1, S1 again for the rinse, tube, waste (10)
+            fill += 6 * 2 * LIFT_S
+            col += 10 * 2 * LIFT_S
     # the acid: the night's one acid tip from rack 2 and back, 20 uL from the capped acid vial, from above the tube rim
     acid += STEP_S["decap"] + STEP_S["pick_up_tip"] + transfer_s(d["ACID"], d["TUBE"], 20.0, p20, back=False)
     acid += t_move(d["TUBE"], d["RACK2"]) + STEP_S["drop_tip"] + t_move(d["RACK2"], d["ACID"]) + STEP_S["cap"]

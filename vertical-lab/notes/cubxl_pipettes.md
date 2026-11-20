@@ -74,8 +74,8 @@ computed").
 | 150 µL to the tube | 8 × 18.75: ±1.6 %, CV 0.3 % | P300: ±1.0 %, CV 0.4 % | not specified (200 µL tip) |
 | 20 µL of acid | ±1.5 %, CV 0.8 % | the P20: the same (the P300 at its 20 µL floor: ±4 %, 2.5 %) | 50 µL tip: ±2.3 %, CV 1.2 % |
 | Transfers a spot | 33 | 6 | 6 |
-| Head time a spot | **22.5 min**: fill 6.0, collect and rinse 15.2, acid 1.3 | **8.9 min**: fill and mix 4.4, 3.2, 1.3 | 7.3 min: 2.9, 3.2, 1.3 |
-| The well open before the cap goes on | 9 min | 7.4 min | 5.9 min |
+| Head time a spot | **22.5 min**: fill 6.0, collect and rinse 15.2, acid 1.3 | **9.4 min**: fill and mix 4.6, 3.5, 1.3, with the lift's moves (§4) | 7.3 min: 2.9, 3.2, 1.3 |
+| The well open before the cap goes on | 9 min | 7.6 min | 5.9 min |
 | Mixes the 150 µL well after the sulfide? | barely: 20 µL strokes stir the top | yes, with the P300 | yes |
 | New tips a spot | 3 | 4, the ASW tip serving the night as DAL's acid tip does (2 if the mixing tip waits in its slot to collect the same well, and a night tip adds the DI) | 3 |
 | Size | 44.5 × 32.3 mm, 330.5 mm long | a second body the same size, 311.5 mm long | 64 × 50 mm, 374.5 mm long, 2.5 kg (Opentrons' sheet; may include packing) |
@@ -89,9 +89,9 @@ is the 2023 price; the 2024 list had $2,250.
 
 ### What the P300 buys, and what it doesn't
 
-- **Head time, 22.5 → 8.9 min a spot.** DAL's night is set by the measurement (52 min a spot), and the head already
+- **Head time, 22.5 → 9.4 min a spot.** DAL's night is set by the measurement (52 min a spot), and the head already
   collects spot k−1 while spot k is measured, so most of the saving is slack. What comes off the night is the fill
-  (6.0 → 4.4 min a spot with the P300's mixing, about 13 min over 8 spots). It also takes 27 transfers a spot, about 200 a night, off the
+  (6.0 → 4.6 min a spot with the P300's mixing, about 11 min over 8 spots). It also takes 27 transfers a spot, about 200 a night, off the
   P20's plunger and the gantry.
 - **Accuracy: a wash.** Every option is within ±1-3 % at these volumes. The P20 is the right tool for the 15 µL of
   sulfide and the 20 µL of acid; the P300's single 135 µL is a little better than seven P20 draws in systematic
@@ -147,11 +147,11 @@ which gives the 1.6 µL/h under the cap and 6.1 µL/h with no cap that the proto
 | Water lost from the 150 µL well in one spot | 22 °C, 40 % RH, still | 22 °C, 20 % RH | VLM: 27 °C, 30 % RH, 0.07 m/s |
 |---|---|---|---|
 | Fill, P20 (8 transfers, 6.0 min) | 0.44 µL | 0.59 µL | 0.78 µL |
-| Fill, P20 + P300 (2 transfers and a P300 mix, 4.4 min) | 0.21 µL | 0.28 µL | 0.37 µL |
+| Fill, P20 + P300 (2 transfers and a P300 mix, 4.6 min) | 0.22 µL | 0.29 µL | 0.39 µL |
 | Leak check and cap going on (3 min open) | 0.29 µL | 0.39 µL | 0.53 µL |
 | 52 min of electrochemistry under the clearance cap | 1.34 µL | 1.81 µL | 2.15 µL |
 | **Whole spot, P20 only** | **2.07 µL (1.4 %)** | **2.79 µL (1.9 %)** | **3.46 µL (2.3 %)** |
-| Whole spot, P20 + P300 | 1.84 µL (1.2 %) | 2.48 µL (1.7 %) | 3.05 µL (2.0 %) |
+| Whole spot, P20 + P300 | 1.85 µL (1.2 %) | 2.49 µL (1.7 %) | 3.07 µL (2.0 %) |
 | Whole spot, P20 only, O-ring cap with its 0.3 mm vent | 0.74 µL (0.5 %) | 0.99 µL (0.7 %) | 1.32 µL (0.9 %) |
 
 - **Chloride rises by the same fraction:** 0.55 M becomes 0.557-0.563 M by the end of a spot. That is within the

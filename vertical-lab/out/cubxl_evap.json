@@ -131,10 +131,10 @@
    "tips_per_spot": 3
   },
   "P20 + P300": {
-   "fill_min": 4.433111463451339,
-   "collect_min": 3.1624165649641713,
+   "fill_min": 4.633111463451339,
+   "collect_min": 3.495749898297505,
    "acid_min": 1.2896077399120438,
-   "head_min": 8.885135768327554,
+   "head_min": 9.418469101660888,
    "transfers": 6,
    "tips_per_spot": 4
   },
@@ -159,13 +159,13 @@
     "chloride_rise_pct": 1.401510816341478
    },
    "P20 + P300": {
-    "fill_uL": 0.20793487289941978,
+    "fill_uL": 0.21731586296085778,
     "leak check, open": 0.19400559684637936,
     "cap going on, open": 0.09700279842318968,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.3446430690177942,
-    "total_uL": 1.843586337186783,
-    "pct_of_150uL": 1.229057558124522,
-    "chloride_rise_pct": 1.2443513524717176
+    "total_uL": 1.852967327248221,
+    "pct_of_150uL": 1.235311551498814,
+    "chloride_rise_pct": 1.2507623634563814
    },
    "Flex 1-Channel 1000 uL": {
     "fill_uL": 0.1342110013005737,
@@ -210,13 +210,13 @@
     "chloride_rise_pct": 1.8930917810284997
    },
    "P20 + P300": {
-    "fill_uL": 0.27951314240008057,
+    "fill_uL": 0.29212338893705664,
     "leak check, open": 0.2607889348313637,
     "cap going on, open": 0.13039446741568184,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 1.8075150376986182,
-    "total_uL": 2.478211582345744,
-    "pct_of_150uL": 1.6521410548971627,
-    "chloride_rise_pct": 1.679895294740863
+    "total_uL": 2.49082182888272,
+    "pct_of_150uL": 1.6605478859218135,
+    "chloride_rise_pct": 1.6885876931625576
    },
    "Flex 1-Channel 1000 uL": {
     "fill_uL": 0.18041100174827548,
@@ -261,13 +261,13 @@
     "chloride_rise_pct": 0.9146503208098622
    },
    "P20 + P300": {
-    "fill_uL": 0.13635660339875894,
+    "fill_uL": 0.1425083369846589,
     "leak check, open": 0.1272222588613951,
     "cap going on, open": 0.06361112943069755,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 0.8817711003369698,
-    "total_uL": 1.2089610920278213,
-    "pct_of_150uL": 0.8059740613518809,
-    "chloride_rise_pct": 0.8125227842354033
+    "total_uL": 1.2151128256137214,
+    "pct_of_150uL": 0.8100752170758143,
+    "chloride_rise_pct": 0.81669102869939
    },
    "Flex 1-Channel 1000 uL": {
     "fill_uL": 0.08801100085287192,
@@ -312,13 +312,13 @@
     "chloride_rise_pct": 2.3582397817844436
    },
    "P20 + P300": {
-    "fill_uL": 0.37491955537897514,
+    "fill_uL": 0.39183406603227083,
     "leak check, open": 0.35133051096317397,
     "cap going on, open": 0.17566525548158698,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.1500417329370745,
-    "total_uL": 3.051957054760811,
-    "pct_of_150uL": 2.034638036507207,
-    "chloride_rise_pct": 2.0768953390540412
+    "total_uL": 3.0688715654141063,
+    "pct_of_150uL": 2.0459143769427373,
+    "chloride_rise_pct": 2.0886462917082627
    },
    "Flex 1-Channel 1000 uL": {
     "fill_uL": 0.2419908129547738,
@@ -363,13 +363,13 @@
     "chloride_rise_pct": 3.0457410460755563
    },
    "P20 + P300": {
-    "fill_uL": 0.5222994213677097,
+    "fill_uL": 0.5458629805371009,
     "leak check, open": 0.49209474250118307,
     "cap going on, open": 0.24604737125059153,
     "OCP, EIS, LPR, rest, hold, OCP: capped": 2.627203726899866,
-    "total_uL": 3.8876452620193502,
-    "pct_of_150uL": 2.5917635080129005,
-    "chloride_rise_pct": 2.6607231599209857
+    "total_uL": 3.9112088211887412,
+    "pct_of_150uL": 2.6074725474591607,
+    "chloride_rise_pct": 2.6772819390376457
    },
    "Flex 1-Channel 1000 uL": {
     "fill_uL": 0.337116748831149,
