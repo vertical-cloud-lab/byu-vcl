@@ -31,7 +31,13 @@ PARK_SEAT = 6                       # holder seat of the cap-parking vial (y 233
 # deck's front left, the one place found clear of the capper, the camera and the bare P20 whenever either pipette works
 # (the capper's footprint over the tube rack, rack 2 and the holder ruled out the middle of the deck).
 P3 = dict(off=(55.0, -23.0), noz=16.0, tip_len=59.3, seat=8.3, rack=(55.0, 10.0), pitch=9.0, cols=4, rows=2,
-          rack_top=60.0, tip_top=68.0)
+          rack_top=60.0, tip_top=68.0, lift=40.0)
+# The lift (round 14, after the audit): with both pipettes fixed on one Z, the P300 dipping 35 mm into the ASW vial put
+# the bare P20 nozzle, 34 mm behind it, onto the next vial's cap (the holder's pitch is 33 mm), and the deeper it
+# reached as the stock ran down the worse it got. So the P300 rides its own 40 mm lift (an Actuonix L16-50-class linear
+# actuator), as each of an OT-2's two mounts has its own Z: stowed, its tip ends where a P20 tip does; working, it
+# hangs 40 mm lower, so the carriage, the P20 and the capper stay 40 mm higher. It stows before every move at travel
+# height: deployed at the travel plane, its tip's end would be at 47 mm, below the caps and the racks.
 P3_HANG = P3["tip_len"] - P3["seat"] - P3["noz"]            # 35.0: a 300 uL tip's end below the carriage's reference
 P3_TIPS = {"ptip": (0, 0), "ptip2": (1, 0), "ptip3": (2, 0), "ptip4": (3, 0)}     # (column, row) of the four used
 P3_TIP_HOME = {k: (P3["rack"][0] + c * P3["pitch"], P3["rack"][1] + r * P3["pitch"]) for k, (c, r) in P3_TIPS.items()}
@@ -53,7 +59,7 @@ def p3_tip_level(ul: float) -> float:
 
 def _corr_start(**kw) -> dict:
     return IL._corr_start(pcap="", ptip="rack", ptip2="rack", ptip3="rack", ptip4="rack", p3_ul=0.0, p3_liq="",
-                          di=CORR["stock_ml"], **kw)
+                          p3drop=0.0, di=CORR["stock_ml"], **kw)
 
 
 
@@ -103,13 +109,27 @@ def _corr_spot() -> Timeline:
     go, travel, down, pip_to, bare_to, capper_to, camera_to = (h.go, h.travel, h.down, h.pip_to, h.bare_to,
                                                                h.capper_to, h.camera_to)
 
-    def p3_to(x, y, tip_end):            # the P300 with a tip, its end at deck z tip_end
-        travel(x - P3["off"][0], y - P3["off"][1])
-        down(tip_end + P3_HANG)
+    def p3_stow():                       # up to the travel plane, then the lift raises the P300
+        if tl.states[-1].get("p3drop", 0.0) > 0.0:
+            if tl.states[-1]["z"] < TZ - 1e-6:
+                go(max(0.25, (TZ - tl.states[-1]["z"]) / 110.0), z=TZ)
+            go(0.3, p3drop=0.0)
 
-    def p3_bare(x, y, nozzle):           # the bare P300 nozzle at deck z `nozzle`
+    def p3_over(x, y):                   # stowed over (x, y) at the travel plane, then the lift lowers the P300
+        s_ = tl.states[-1]
+        if s_.get("p3drop", 0.0) > 0.0 and math.hypot(s_["x"] - (x - P3["off"][0]), s_["y"] - (y - P3["off"][1])) > 0.01:
+            p3_stow()
         travel(x - P3["off"][0], y - P3["off"][1])
-        down(nozzle - P3["noz"])
+        if tl.states[-1].get("p3drop", 0.0) < P3["lift"]:
+            go(0.3, p3drop=P3["lift"])
+
+    def p3_to(x, y, tip_end):            # the P300 with a tip, lowered on its lift, its end at deck z tip_end
+        p3_over(x, y)
+        down(tip_end + P3_HANG + P3["lift"])
+
+    def p3_bare(x, y, nozzle):           # the bare P300 nozzle, lowered on its lift, at deck z `nozzle`
+        p3_over(x, y)
+        down(nozzle - P3["noz"] + P3["lift"])
     st = p["stations"]
     S1 = (st[0], p["station_y"])
     hy = lambda k: p["holder_y0"] + k * p["holder_dy"]     # noqa: E731
@@ -127,7 +147,7 @@ def _corr_spot() -> Timeline:
     # 1. the P300 takes a 300 µL tip from its rack (front left); one tip on the head at a time
     p3_bare(*P3_TIP_HOME["ptip"], seat)
     go(0.25, ptip="head", panel=1, what="the P300 takes a 300 µL tip from its rack")
-    go(0.3, z=TZ)
+    p3_stow()
     tl.mark("tip")
     # 2. the capper lifts the ASW cap; the P300 draws 135 µL and dispenses it into S1 from above the meniscus; the cap
     # goes back; the tip, which only ever touches ASW, goes back to its rack for the next well
@@ -139,12 +159,13 @@ def _corr_spot() -> Timeline:
        what="the P300 draws 135 µL of ASW")
     p3_to(*S1, over)
     go(0.5, p3_ul=0.0, well=135.0, what="and dispenses it into S1, above the meniscus")
+    p3_stow()
     capper_to(*asw, p["vial_cap"])
     go(0.2, vcap="", what="the ASW cap goes back")
     go(0.25, z=TZ)
     p3_bare(*P3_TIP_HOME["ptip"], seat + 2.0)
     go(0.25, ptip="rack", xfer="", p3_liq="", what="the P300's ASW tip goes back to its rack, for the next well")
-    go(0.3, z=TZ)
+    p3_stow()
     tl.mark("asw")
     # 3. sulfide last, with the P20: a 20 µL tip, the sulfide cap off, 15 µL from above the meniscus, the cap back, the
     # tip to the waste; then the P300 mixes S1 with a fresh tip (3 strokes of 80 µL), and that tip to the waste too
@@ -166,7 +187,7 @@ def _corr_spot() -> Timeline:
     go(0.3, tip="waste", xfer="", liq="", what="the P20's tip drops into the waste")
     p3_bare(*P3_TIP_HOME["ptip2"], seat)
     go(0.25, ptip2="head", what="the P300 takes a fresh tip to mix the well")
-    go(0.3, z=TZ)
+    p3_stow()
     for k in range(1, 4):
         h.speed = 1.0 if k == 1 else 0.5
         p3_to(*S1, face + 2.0)
@@ -174,8 +195,9 @@ def _corr_spot() -> Timeline:
            what=f"mixes S1: draws {MIX_UL:.0f} µL", lapse=0 if k == 1 else 1)
         go(0.3, p3_ul=0.0, well=150.0, what="and returns it")
     h.speed = 1.0
-    p3_to(*p["waste"], 60.0)
+    p3_to(*p["waste"], 45.0)
     go(0.3, ptip2="waste", xfer="", p3_liq="", lapse=0, what="the mixing tip drops into the waste")
+    p3_stow()
     tl.mark("filled")
     # 4. leak check with the head camera, 2 min
     camera_to(*S1)
@@ -208,17 +230,17 @@ def _corr_spot() -> Timeline:
     # (the capper opens the DI vial), adds it to S1 from above, rinses S1 with two strokes and carries it to tube 1
     p3_bare(*P3_TIP_HOME["ptip3"], seat)
     go(0.25, ptip3="head", what="the P300 takes a new tip")
-    go(0.3, z=TZ)
+    p3_stow()
     p3_to(*S1, face + 0.5)
     go(0.5, p3_ul=150.0, p3_liq="the well's liquid", well=0.0, xfer="collect: 1 transfer of 150 µL (P300)",
        what="draws S1's 150 µL")
     p3_to(*tube1, 40.0)
     go(0.5, p3_ul=0.0, tube=150.0, what="dispenses it into tube 1, above the rim")
-    p3_to(*p["waste"], 60.0)
+    p3_to(*p["waste"], 45.0)
     go(0.3, ptip3="waste", xfer="", p3_liq="", what="the tip drops into the waste")
     p3_bare(*P3_TIP_HOME["ptip4"], seat)
     go(0.25, ptip4="head", what="a fresh tip for the rinse")
-    go(0.3, z=TZ)
+    p3_stow()
     capper_to(*di, p["vial_cap"])
     go(0.2, vcap="di", what="the capper lifts the DI water cap")
     go(0.25, z=TZ)
@@ -227,6 +249,7 @@ def _corr_spot() -> Timeline:
        what="draws 150 µL of DI water")
     p3_to(*S1, over)
     go(0.5, p3_ul=0.0, well=150.0, what="adds it to S1 from above")
+    p3_stow()
     capper_to(*di, p["vial_cap"])
     go(0.2, vcap="", what="the DI cap goes back")
     go(0.25, z=TZ)
@@ -240,8 +263,9 @@ def _corr_spot() -> Timeline:
     go(0.5, p3_ul=150.0, p3_liq="the rinse", well=0.0, xfer="rinse: to the tube", lapse=0, what="draws the rinse")
     p3_to(*tube1, 40.0)
     go(0.5, p3_ul=0.0, tube=300.0, what="into tube 1: 300 µL")
-    p3_to(*p["waste"], 60.0)
+    p3_to(*p["waste"], 45.0)
     go(0.3, ptip4="waste", xfer="", p3_liq="", what="the tip drops into the waste")
+    p3_stow()
     tl.mark("collected")
     # 9. acidify at once: the acid cap off, the night's one acid tip (rack 2), 20 µL of 1 M HNO3 from above the rim,
     # the acid tip back to its rack, the cap back
@@ -439,19 +463,20 @@ def corr_offsets(s: dict) -> dict:
     z_home = P3["tip_top"] - P3["tip_len"]
     for key, home in P3_TIP_HOME.items():
         where = s.get(key, "rack")
-        if where == "head":          # its end P3_HANG below the carriage's reference
-            at = (s["x"] + P3["off"][0], s["y"] + P3["off"][1], s["z"] - P3_HANG)
+        if where == "head":          # its end P3_HANG below the carriage's reference, less what the lift has lowered
+            at = (s["x"] + P3["off"][0], s["y"] + P3["off"][1], s["z"] - P3_HANG - s.get("p3drop", 0.0))
         elif where == "waste":
             at = (p["waste"][0] + P3_JITTER[key][0], p["waste"][1] + P3_JITTER[key][1], 2.0)
         else:
             at = (home[0], home[1], z_home)
         out[key] = (at[0] - home[0], at[1] - home[1], at[2] - z_home)
+    out["p3"] = (0.0, 0.0, -s.get("p3drop", 0.0))      # the P300 on its lift, below the tools
     return out
 
 
 # the liquid in the P300's tip (round 14): a cone up the bore from the tip's end, modelled 150 uL tall, on the head
 LEVEL_AT = dict(IL.LEVEL_AT)
-LEVEL_AT["p3liq"] = (_cz(CORR["travel_z"]) - P3_HANG + 0.15, p3_tip_level(150.0), "tools")
+LEVEL_AT["p3liq"] = (_cz(CORR["travel_z"]) - P3_HANG + 0.15, p3_tip_level(150.0), "p3")
 
 
 def corr_levels(s: dict) -> dict:
@@ -535,10 +560,15 @@ def cubxl_corrosion() -> Instrument:
     # ---- round 14: the P300 (OT-2 GEN2 single, 20-300 uL) on a bracket 34 mm in front of the P20, its nozzle 16 mm
     # higher (P3): shaft, body and top drawn as the P20's, the bracket back to the capper's arm
     qx, qy, qz = hx0 + P3["off"][0], hy0 + P3["off"][1], zr + P3["noz"]
-    tools.add("P300 shaft", cyl(9, 44, x=qx, y=qy, z=qz), "lab_pip_shaft")
-    tools.add("P300 body", box(qx - 16, qy - 13, qz + 44, qx + 16, qy + 13, qz + 150), "lab_pip")
-    tools.add("P300 top", box(qx - 16, qy - 13, qz + 150, qx + 16, qy + 13, qz + 162), "inst_grey")
-    tools.add("P300 bracket", box(qx - 10, qy + 13, qz + 70, qx + 10, py - 13, qz + 110), "lab_mount")
+    p3 = _piece(inst, "p3")              # the P300 rides its lift (P3["lift"]): this piece moves down, the lift doesn't
+    p3.add("P300 shaft", cyl(9, 44, x=qx, y=qy, z=qz), "lab_pip_shaft")
+    p3.add("P300 body", box(qx - 16, qy - 13, qz + 44, qx + 16, qy + 13, qz + 150), "lab_pip")
+    p3.add("P300 top", box(qx - 16, qy - 13, qz + 150, qx + 16, qy + 13, qz + 162), "inst_grey")
+    p3.add("P300 slider", box(qx - 8, qy - 15, qz + 100, qx + 8, qy - 13, qz + 140), "steel")
+    tools.add("P300 lift (linear actuator, 50 mm stroke)", box(qx - 9, qy - 35, qz + 40, qx + 9, qy - 15, qz + 172),
+              "printer_black")
+    tools.add("P300 lift mount", box(qx - 9, qy - 35, qz + 172, qx + 9, py + 13, qz + 182), "lab_mount")
+    tools.add("P300 lift riser", box(px - 9, py - 13, zr + 162, px + 9, py + 13, qz + 172), "lab_mount")
     h150 = p3_tip_level(150.0)
     p3_shape = cq.Workplane().add(cq.Solid.makeCone(0.35, 0.35 + 0.045 * h150, h150,
                                                     cq.Vector(qx, qy, zr - P3_HANG + 0.15), cq.Vector(0, 0, 1)))
@@ -577,6 +607,7 @@ def cubxl_corrosion() -> Instrument:
         "gantry": Track(knots=knots("gantry")),
         "carriage": Track(parent="gantry", knots=knots("carriage")),
         "tools": Track(parent="carriage", knots=knots("tools")),
+        "p3": Track(parent="tools", knots=knots("p3")),
         **{k: Track(knots=knots(k)) for k in ("cap", "vcap_asw", "vcap_s10", "vcap_acid", "vcap_di", "tip", "tip2",
                                               "tip3", "ptip", "ptip2", "ptip3", "ptip4")},
         **{k: Level(parent=LEVEL_AT[k][2], knots=lknots(k), z0=LEVEL_AT[k][0], h0=LEVEL_AT[k][1])

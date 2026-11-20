@@ -21,9 +21,10 @@ The CubXL on tray A runs DAL's copper corrosion screen
 - **Pipettes: add a P300 beside the P20; don't switch to a Flex.** One OT-2 GEN2 P300 single ($2,950) moves the 135 µL
   of seawater, the 150 µL collection and the rinse in single transfers: **6 transfers a spot instead of 33, and about 9
   min of head time instead of 22.5** (the CubXL's own measured step times). It is the pipette the PANDA firmware was
-  written for, so CubOS drives it the way it drives the P20. Accuracy is a wash (±1-2 % at these volumes either way).
+  written for, so CubOS drives it the way it drives the P20. It needs its own 40 mm lift on the head (§4: fixed beside
+  the P20 on the one Z axis, it puts the P20 onto the next vial's cap). Accuracy is a wash (±1-2 % at these volumes either way).
   What it really buys is mixing the well after the sulfide. A Flex 1-Channel 1000 µL ($3,600) would need a CAN FD and
-  36 V integration that nobody has published, and it is less accurate at 15 µL than the P20 it would replace.
+  36 V integration with no published example, and it is less accurate at 15 µL than the P20 it would replace.
 - **Evaporation is small. Sulfide loss is not.** A spot loses **1-3 %** of the well's water, so chloride rises 1-3 %;
   two thirds of that happens under the cap during the measurement, and the many small P20 transfers add only 0.2-0.4
   µL. The open ICP-MS tubes lose **2-12 %** waiting for the morning: use the morning weight, not 320 µL. But H₂S leaves
@@ -78,9 +79,9 @@ computed").
 | Mixes the 150 µL well after the sulfide? | barely: 20 µL strokes stir the top | yes, with the P300 | yes |
 | New tips a spot | 3 | 4, the ASW tip serving the night as DAL's acid tip does (2 if the mixing tip waits in its slot to collect the same well, and a night tip adds the DI) | 3 |
 | Size | 44.5 × 32.3 mm, 330.5 mm long | a second body the same size, 311.5 mm long | 64 × 50 mm, 374.5 mm long, 2.5 kg (Opentrons' sheet; may include packing) |
-| On the head | as now, on Ben's PAW-V2 mount at (+55, +11) from the capper | a second bracket **34 mm in front of the P20** (an OT-2's two mounts are 34 mm apart) and **about 20 mm higher**: a 300 µL tip hangs 51.1 mm below its nozzle against 31 mm for a 20 µL tip (59.3 and 39.2 mm long, 8.2 and 8.25 mm on the nozzle), so both tip ends sit at one height on the CubXL's one Z axis (the model, which hangs the P20's tip 35 mm as DAL does, raises it 16) | an adapter plate for its two captive 2.5 mm screws and the contact pins on its back (the connector isn't published); 200 µL tips hang 48.6 mm |
-| Driven by CubOS? | yes: the PANDA Arduino and a TMC2209 drive the pipette's bare stepper and limit switch over its 10-pin ribbon ([`opentrons-pipette-wiring.md`](../../cubos/docs/opentrons-pipette-wiring.md)) | **yes, the same way.** The PANDA firmware's stock constants *are* a P300 GEN2's (300 µL, `UL_TO_MM` 0.1098, the one constant upstream calibrated: [`cubos/firmware/README.md`](../../cubos/firmware/README.md)), and CubOS already has a `p300_single_gen2` model. Simplest: a second Uno + TMC2209 on its own `/dev/serial/by-id` port with Opentrons' P300 planes (bottom −14.5, blowout −19, drop-tip −37 mm; 9.18 µL/mm; 1.25 A to drop a tip) | **no, not without a project.** It is a smart device: STM32 with its own driver, pressure, capacitive and tip-presence sensors, on CAN FD at 500 kbit/s and 36 V. Opentrons' firmware and host code are open (Apache-2.0, `ot3-firmware`, `opentrons-hardware`), but no one has published running a Flex pipette off a Flex |
-| Cost | owned | **$2,950** (999-00003) + about $40 (Uno, driver board) | $3,600 (999-00187) + a CAN FD adapter and a 36 V supply + the development |
+| On the head | as now, on Ben's PAW-V2 mount at (+55, +11) from the capper | **on its own 40 mm lift** (§4), 34 mm in front of the P20 (an OT-2's two mounts are 34 mm apart), stowed **about 20 mm higher**: a 300 µL tip hangs 51.1 mm below its nozzle against 31 mm for a 20 µL tip (59.3 and 39.2 mm long, 8.2 and 8.25 mm on the nozzle), so both tip ends sit at one height on the CubXL's one Z axis (the model, which hangs the P20's tip 35 mm as DAL does, raises it 16) | an adapter plate for its two captive 2.5 mm screws and the contact pins on its back (the connector isn't published); 200 µL tips hang 48.6 mm |
+| Driven by CubOS? | yes: the PANDA Arduino and a TMC2209 drive the pipette's bare stepper and limit switch over its 10-pin ribbon ([`opentrons-pipette-wiring.md`](../../cubos/docs/opentrons-pipette-wiring.md)) | **yes, the same way.** The PANDA firmware's stock constants *are* a P300 GEN2's (300 µL, `UL_TO_MM` 0.1098, the one constant upstream calibrated: [`cubos/firmware/README.md`](../../cubos/firmware/README.md)), and CubOS already has a `p300_single_gen2` model. Simplest: a second Uno + TMC2209 on its own `/dev/serial/by-id` port with Opentrons' P300 planes (bottom −14.5, blowout −19, drop-tip −37 mm; 9.18 µL/mm; 1.25 A to drop a tip) | **no, not without a project.** It is a smart device: STM32 with its own driver, pressure, capacitive and tip-presence sensors, on CAN FD at 500 kbit/s and 36 V. Opentrons' firmware and host code are open (Apache-2.0, `ot3-firmware`, `opentrons-hardware`), but we found no report of a Flex pipette run off a Flex |
+| Cost | owned | **$2,950** (999-00003) + about $150 (a second Uno and driver, a 50 mm linear actuator for the lift) | $3,600 (999-00187) + a CAN FD adapter and a 36 V supply + the development |
 | Tips | $8.50 a rack of 96 (20 µL) | 300 µL tips $8.50 a rack, in a rack of their own on the deck | $16 a rack (Flex tips) |
 
 Prices from opentrons.com, read 2026-11-20. The $1,250 in [`docs/pipette-selection-cubxl.md`](../../docs/pipette-selection-cubxl.md)
@@ -105,12 +106,13 @@ is the 2023 price; the 2024 list had $2,250.
 
 **Recommendation: keep the P20 and add an OT-2 GEN2 P300 single beside it.** The P300 takes the ASW, the collection,
 the rinse and the mixing; the P20 keeps the sulfide and the acid. It is the same pipette family, tips, wiring and
-firmware the CubXL already runs, so the risk is mechanical: the bracket, and checking every move for the second
-tool's shadow, as DAL's deck check does for the capper.
+firmware the CubXL already runs, so the risk is mechanical: the bracket, the P300's own short lift (§4 shows why it
+can't simply be bolted on beside the P20), and checking every move for the second tool's shadow, as DAL's deck check
+does for the capper.
 
 **Not the Flex 1-Channel 1000, for now.** It costs only $650 more than a P300 and its pressure and tip-presence
-sensing would be welcome on an unattended night, but nobody has driven one off a Flex, it is 2.5 kg and 374.5 mm
-long on a head built for a P20, and at 15 µL it is less accurate than the P20 it would replace. Revisit it if the
+sensing would be welcome on an unattended night, but we found no report of one driven off a Flex, it is 2.5 kg and
+374.5 mm long on a head built for a P20, and at 15 µL it is less accurate than the P20 it would replace. Revisit it if the
 CubXL ever needs millilitre transfers, or once someone publishes a Flex pipette on a third-party gantry.
 
 ## 2. Evaporation, and what really moves the sulfide
@@ -325,9 +327,17 @@ through `tour.load` and [`cubxl_rig.py`](../cubxl_rig.py)) now has it. DAL's pro
 note's proposal, and says so.
 
 - **The P300 sits 34 mm in front of the P20** (CubOS offset (+55, −23) from the capper; an OT-2's two mounts are 34 mm
-  apart), its nozzle 16 mm higher, so a seated 300 µL tip ends 35 mm below the carriage as a P20 tip does. Beside the
-  P20 in x, at (+89, +11), the capper would come down on the cup block whenever the P300 worked at S1. Only one tip is
-  on the head at a time: on one Z axis, a tip on the idle pipette would hang into whatever is under it.
+  apart), its nozzle 16 mm higher when stowed, so a seated 300 µL tip ends 35 mm below the carriage as a P20 tip does.
+  Beside the P20 in x, at (+89, +11), the capper would come down on the cup block whenever the P300 worked at S1. Only
+  one tip is on the head at a time: on one Z axis, a tip on the idle pipette would hang into whatever is under it.
+- **It rides its own 40 mm lift.** The first audit of the clip, with the P300 fixed, found the bare P20 nozzle on the
+  10 mg/L stock's cap while the P300 drew ASW: Ben's holder has a 33 mm pitch, so a pipette 34 mm behind another sits
+  over the next vial, and the P20 hangs 35 mm higher than the P300's tip end. Drawing 35 mm into the vial put it 1 mm
+  into that cap, and a running-down stock needs deeper draws. So the P300 is lowered 40 mm on a linear actuator (50 mm
+  stroke, an Actuonix L16-class part, about $100) only while it works, and stowed before every move at the travel
+  plane; the carriage, the P20 and the capper stay 40 mm higher meanwhile. The alternative is DAL's to choose: an empty
+  seat behind every stock the P300 draws from (ASW, DI and both sulfide stocks: seats at y 35, 101, 167 and 233 with
+  68, 134, 200 and 266 empty), which leaves no seat in the holder for the acid, the FeSO₄ spare or the parking vial.
 - **Its tips: a printed 2 × 4 rack at the deck's front left** (x 55-82, y 10-19). With three tools on one carriage,
   every pickup puts the capper, the camera and the bare P20 somewhere else on the deck; the middle of the deck, the
   obvious place, puts the capper over Ben's rack 1 when either pipette draws from the holder, or the camera over rack
@@ -345,7 +355,17 @@ note's proposal, and says so.
 - Scenes that load the CubXL through `cubxl_rig` (the workflow and the long-form's tray A) will show the P300 at
   their next render; `cubxl_rig.pose` now also sets the P300's tip liquid. None of them is re-rendered here.
 
-**Audit and render:** in progress (this session); see the PR description for the result.
+**The audit** ([`interference.py`](../interference.py): MuJoCo and FCL, every frame of the clip at 15 fps, 1419
+frames; [`out/interference.json`](../out/interference.json), key `cubxl_corrosion`) finds **no new fault**:
+- **Faults (11), all of a kind already there:** each seated tip overlaps its nozzle (the model's tips are solid), 4
+  for the P300's tips as for the P20's 2; the tips standing in their racks; the gantry's uprights in their rails.
+- **Minor (9):** Ben's capper mount brushing rack 1 by 1.03 mm on the way to the stocks (round 7's finding, unchanged);
+  the tips' ends in the liquids they draw from; the vial caps seated on their vials, now including the DI vial's,
+  which moves.
+- **Touching (4):** two spent tips side by side in the waste, the tips on the waste's floor, and the P300's nozzle on
+  its rack's top as it presses into a tip.
+- **Before the lift** the same audit found the bare P20 nozzle 0.5 mm into the 10 mg/L stock's cap while the P300 drew
+  ASW (frames 142-145): that is why the P300 has its lift. With it, that contact is gone.
 
 ## 5. Open
 
@@ -356,7 +376,8 @@ note's proposal, and says so.
   for a week in 10 mg/L S seawater against the master (§3).
 - **DAL's calls, not this note's:** an O-ring cap for sulfide spots, and how the electromagnet gets it off; the mixing
   step; the leak check before the sulfide; using the morning tube mass.
-- **Hardware for the P300:** a bracket on Ben's PAW-V2 mount; a second Uno and TMC2209 on their own
+- **Hardware for the P300:** a bracket on Ben's PAW-V2 mount and the 40 mm lift with its own limit switch (or DAL's
+  empty seats behind the P300's stocks instead); a second Uno and TMC2209 on their own
   `/dev/serial/by-id` port (never `ttyACM*`: see CLAUDE.md on the Pico and the Arduino); Opentrons' P300 plunger
   planes in the firmware, checked gravimetrically as the P20's still have to be; 1.25 A to drop a tip. Whether a
   CubOS protocol can name which of two `pipette` instruments a step uses is untested.
