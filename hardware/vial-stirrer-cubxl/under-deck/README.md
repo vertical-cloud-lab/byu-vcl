@@ -42,7 +42,7 @@ Two new printed parts. Everything else is today's compact stirrer, unchanged.
   1 mm apart, so the screws squeeze the deck between the collar and the frame. Because keys and
   bosses sit in the same slots, the magnets line up with the vial to within the slots'
   0.1 mm a side. Being screwed down, the collar can't come up with a cap when the capper pulls it
-  ([risk 3](../README.md#risks-and-open-questions) goes away). The screws are 28 mm from the axis,
+  ([risk 3](../README.md#risks-and-open-questions) goes away). The screws are 31 mm from the axis,
   against 8.1 mm for the magnets' outer edge. Even so, use non-magnetic ones (A4/316 or brass).
 
 `build_under_deck.py` draws the two parts from `vial_stirrer.fs`'s numbers, through
@@ -109,8 +109,8 @@ bound, with the water held still).
 - **Four slots instead of two.** The collar is 37 × 71 mm on the deck and uses two columns of two
   rows.
 - **It stays put.** Moving it means four screws from the top while holding the drive underneath.
-- **Liquid:** the vial stands on solid deck, with the drive behind 9 mm of polycarbonate. Today a
-  drip can run down the cup into the fan.
+- **Liquid:** the vial stands on solid deck, and the drive is under 9 mm of polycarbonate, away from
+  anything spilled on the deck.
 - **Cable:** it runs under the deck, out of the gantry's way.
 - **Printing isn't worked out.** The frame prints bosses up with no supports. The collar's keys
   hang under its bars. Either print them with supports, or make them separate press-fit keys like
