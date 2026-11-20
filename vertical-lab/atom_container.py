@@ -10,6 +10,12 @@ fresh splash disc goes back on, clamped, its valve open.
 Who does what here: arm 1 (MiR250 1) brushes, works the valve, the flange clamp and the cap; arm 2 (MiR250 2) holds the
 container's weight from below with a fork (ours: the 2F-85 opens to 85 mm, the container is 130 mm across) and carries
 it. Tools and fixtures drawn here are ours and assumed unless the notes say otherwise (notes/atom_latch_container.md).
+
+Round 14 (Sterling, PR #318, 2026-11-20): the brush is a tool the 2F-85 can't drop (a square grip between two
+collars), it lies one way only on its rest (V-blocks and a fin in a slot), and its head is disposable, one per run:
+pushed onto a spring-detent spigot from a spring-fed magazine in the rest's pocket, stripped into a grounded waste can
+after brushing (atom_brush.py, which also says why an ultrasonic IPA wash was not chosen). The clip's steps: 1 the
+state, 2 the brush taken, 3 brushing, 4 the used head off and a fresh one on, 5 the dust settles, 6 the valve shut.
 """
 from __future__ import annotations
 
@@ -25,10 +31,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import atom_base as AB                 # noqa: E402
+import atom_brush as BR                # noqa: E402
 import atom_latch_tools as LT          # noqa: E402
 import alloy_atomize as AA             # noqa: E402
 import props as P                      # noqa: E402
-from scene import OUT, PREVIEW, AUDIT, T, R, window  # noqa: E402
+from scene import OUT, PREVIEW, AUDIT, T, R, mix, window  # noqa: E402
 
 M = AB.M
 NAME = "atom_container"
@@ -62,18 +69,10 @@ def fork_meshes() -> dict:
     return {"atc fork": (blk.merge(stem).merge(bar).merge(prongs[0]).merge(prongs[1]).triangulate(), al)}
 
 
-def brush_meshes() -> dict:
-    """An anti-static brush on a long handle (ours; AMAZEMET ships a set of anti-static brushes, 178_manual): the handle
-    along tool +y from the grip, 680 mm, the bristles at its far end pointing along tool -x. TCP at the grip. The handle
-    is long so the arm stays outside the door while the bristles reach the outlet, 400 mm in."""
-    h = pv.Cylinder(center=(0, 300, 0), direction=(0, 1, 0), radius=9.0, height=680.0, resolution=24).triangulate()
-    head = pv.Box(bounds=(-10, 8, 620, 660, -32, 32))
-    bris = pv.Box(bounds=(-40, -10, 622, 658, -30, 30))
-    return {"atc brush handle": (h.merge(head).triangulate(), (0.15, 0.15, 0.17)),
-            "atc brush bristles": (bris.triangulate(), (0.25, 0.22, 0.20))}
-
-
-BRUSH_TIP = np.array([-40.0, 640.0, 0.0])  # the bristles' tips, TCP frame
+# The anti-static brush (ours; AMAZEMET ships a set of anti-static brushes, 178_manual) is atom_brush.py's since round
+# 14: a long stainless shaft, so the arm stays outside the door while the bristles reach the outlet 400 mm in, with a
+# square grip between two collars at the TCP and a disposable head (bristles along tool -x) at its far end.
+BRUSH_TIP = BR.BRUSH_TIP                # the bristles' tips, TCP frame
 
 
 def cradle_meshes(slot_dir: float) -> pv.PolyData:
@@ -239,19 +238,38 @@ def main():
            "amr")
     seatA = np.array([cx_l, cy_l, cz_l + CRADLE_RAIL_TOP])
     top = P.MIR["H"] + P.CAB_H
-    rest_at = np.array([-230.0, -190.0, top])
-    # the brush lies along MiR-local x, handle on the two rests (tool y along local +x, tool z down)
-    for name, (mesh, col) in brush_meshes().items():
-        sc.add(name, mesh, col, "atc brush", specular=0.2)
-    Rb = np.eye(4)
-    Rb[:3, 0], Rb[:3, 1], Rb[:3, 2] = (0, 1, 0), (1, 0, 0), (0, 0, -1)     # tool x local +y: bristles to local -y
-    brush_home = T((rest_at[0] - 40.0, rest_at[1], top + 62.0 + 9.0)) @ Rb
+    # Round 14 (Sterling, PR #318, 2026-11-20: "not much of an automation-friendly grip for the gripper. Seems like it
+    # would slip out"; "Cross-contamination for the anti-static brush ... Disposable heads?"): the brush is a tool with
+    # a square grip between two collars, it lies one way only on V-blocks (a fin in a slot), and its head is
+    # disposable, one per run, pushed onto a spigot from a spring-fed magazine and stripped into a grounded can
+    # (atom_brush.py). It lies along MiR-local x (tool y along local +x, tool z down), as round 12's did.
+    for name, (mesh, col) in BR.brush_meshes().items():
+        sc.add(name, mesh, col, "atc brush", specular=0.35)
+    brush_home = BR.rest_pose_local(top)
     sc.parent["atc brush"] = "amr"
     sc.gmat["atc brush"] = brush_home
-    # fix the rests under the handle: at local x = brush start + 0 and + 330
-    for k, xx in enumerate((70.0, 420.0)):           # clear of where the fingers take the handle
-        sc.add(f"atc brush rest {k}", pv.Box(bounds=(-12, 12, -14, 14, 0, 62)).translate(
-            (rest_at[0] - 40.0 + xx, rest_at[1], top), inplace=False), (0.30, 0.32, 0.36), "amr")
+    for name, (mesh, col) in BR.rest_meshes(top).items():
+        sc.add(name, mesh, col, "amr")
+    for name, (mesh, col) in BR.station_meshes(top).items():
+        sc.add(name, mesh, col, "amr", specular=0.3)
+    movers, fixed = BR.spring_meshes(top)
+    for name, (mesh, col) in fixed.items():
+        sc.add(name, mesh, col, "amr", specular=0.4)
+    for name, (mesh, col) in movers.items():
+        sc.add(name, mesh, col, "atc pusher", specular=0.3)
+    sc.parent["atc pusher"] = "amr"
+    sc.gmat["atc pusher"] = np.eye(4)
+    # three heads: head 1 on the brush (sitting in the rest's pocket), heads 2 and 3 in the magazine behind it
+    for k in range(3):
+        grp = f"atc head{k + 1}"
+        for name, (mesh, col) in BR.head_meshes(str(k + 1)).items():
+            sc.add(name, mesh, col, grp, specular=0.25)
+        if k == 0:
+            sc.parent[grp] = "atc brush"
+            sc.gmat[grp] = np.eye(4)
+        else:
+            sc.parent[grp] = "amr"
+            sc.gmat[grp] = BR.head_slot_local(k, top)
     cap_at = np.array([-250.0, 150.0, top])
     sc.add("atc cap peg", pv.Cylinder(center=(cap_at[0], cap_at[1], top + 20), direction=(0, 0, 1), radius=30.0,
                                       height=40.0, resolution=36).triangulate(), (0.30, 0.32, 0.36), "amr")
@@ -300,24 +318,57 @@ def main():
     sc.cam = CAM_DOOR
 
     # ---------------------------------------------------------------- 1. the state
-    rows(Container="under the outlet, full", Valve="open", Clamp="closed", Arm_1="parked", Arm_2="parked")
+    def L(p_local):
+        """A MiR250 1-local point -> the world (labels, cameras)."""
+        return ma.world(np.asarray(p_local, float))
+
+    def mir_cam(eye_local, at_local):
+        return [tuple(L(eye_local)), tuple(L(at_local)), (0, 0, 1)]
+
+    zr = top + BR.REST_DZ                                   # the resting shaft's axis
+    CAM_GRIP = mir_cam((-520.0, -690.0, zr + 300.0), (-230.0, -190.0, zr - 15.0))     # the grip on its rest
+    CAM_REST = mir_cam((150.0, -1100.0, zr + 450.0), (150.0, -190.0, zr))               # the whole brush, the pocket
+    CAM_STATION = mir_cam((600.0, -700.0, zr + 380.0), (350.0, -130.0, zr + 40.0))     # the can and its bar
+    rows(Container="under the outlet, full", Valve="open", Clamp="closed", Arm_1="parked", Arm_2="parked",
+         Brush="on its rest, a fresh head on")
     cap1 = ("After the run: cold, vented (Pressure Control off, Vent Valve), the door's two clamps swung off, then the "
             "door opened (178_sop After a run; T2 39:00). Paper under the opening catches what falls (DAL SOP 1).")
-    sc.step("1/5", cap1, 2.4, None, hold=1.2,
+    sc.step("1/6", cap1, 2.4, None, hold=1.2,
             labels=[("powder on the cone, bowl, view port", tuple(AB.W((80, -40, 640))), (0.62, 0.20)),
-                    ("anti-static brush (ours, on a long handle)", tuple(MiRw(ma, brush_home[:3, 3])), (0.12, 0.62))])
+                    ("anti-static brush on its rest, a fresh head on (ours)", tuple(L((40.0, -190.0, zr + 20.0))),
+                     (0.10, 0.62))])
 
     # ---------------------------------------------------------------- 2. the brush
     brush_w = sc.world("atc brush")
     pre = T((0, 0, 120)) @ brush_w
     rows(Arm_1="takes the brush")
-    cap2 = ("Arm 1 takes the anti-static brush (AMAZEMET supplies a set; this long-handled one is ours) and reaches in "
-            "through the door.")
-    sc.step("2/5", cap2, 2.2, AB.both(rb.joint_to(Tw=pre), rb.grip_to(0.3)), hold=0.05)
-    sc.step("2/5", cap2, 0.8, rb.line_to(brush_w), hold=0.05)
-    sc.step("2/5", cap2, 0.4, rb.grip_to(LT.close_for_gap(18.8)), hold=0.05)
+    cap2 = ("Arm 1 takes the brush by its grip (ours): a square block between two collars. Flat pads on flat faces "
+            "can't turn on it, and the collars, 1 mm clear of the fingertips, stop it sliding along the fingers or "
+            "pivoting out of them. On its rest it lies one way only: two V-blocks, and a fin under the shaft in a slot.")
+    sc.step("2/6", cap2, 2.4, AB.both(rb.joint_to(Tw=pre), rb.grip_to(0.3)), hold=0.05, cam_to=CAM_GRIP,
+            labels=[("square grip between two collars (ours)", tuple(L((BR.REST[0], BR.REST[1], zr + 22.0))),
+                     (0.08, 0.20)),
+                    ("fin in the rest's slot: one way only", tuple(L((-200.0, -190.0, zr - 28.0))), (0.08, 0.74)),
+                    ("V-blocks", tuple(L((-190.0, -170.0, zr - 12.0))), (0.66, 0.78))])
+    sc.step("2/6", cap2, 0.8, rb.line_to(brush_w), hold=0.05)
+    sc.step("2/6", cap2, 0.4, rb.grip_to(LT.close_for_gap(BR.GRIP_CLOSE_GAP)), hold=0.8)
     rb.grasp("atc brush")
-    sc.step("2/5", cap2, 0.8, rb.line_to(pre), hold=0.05)
+    f_lift = rb.line_to(pre)
+    feed0 = {k: sc.gmat[f"atc head{k}"].copy() for k in (2, 3)}
+
+    def lift_feed(u):
+        f_lift(u)
+        w = window(u, 0.5, 1.0)
+        for k in (2, 3):
+            sc.gmat[f"atc head{k}"] = T((0.0, BR.POCKET_PITCH * w, 0.0)) @ feed0[k]
+        sc.gmat["atc pusher"] = T((0.0, BR.POCKET_PITCH * w, 0.0))
+    cap2b = ("It lifts the brush out with a fresh head on: one head per run (ours). Its spring slides the magazine's "
+             "next head into the rest's pocket, ready for the end of this run.")
+    rows(Brush="fresh head on; the next one in the pocket")
+    sc.step("2/6", cap2b, 1.8, lift_feed, hold=0.5, cam_to=CAM_REST,
+            labels=[("fresh head: orange ferrule on a spring-detent spigot", tuple(L((360.0, -190.0, zr + 150.0))),
+                     (0.62, 0.20)),
+                    ("magazine, spring-fed (ours)", tuple(L((360.0, -300.0, zr + 10.0))), (0.70, 0.66))])
 
     def tcp_for_tip(p_model, handle, bristles):
         """The TCP pose putting the bristle tips at model point p, the handle along `handle` (grip to head), the
@@ -349,45 +400,113 @@ def main():
     bowl = [tcp_for_tip((CX - 20 + 12 * math.cos(a), 12 * math.sin(a), 448.0), hb, (-0.665, 0.0, -0.747))
             for a in np.linspace(math.pi, 3 * math.pi, 13)]
     entry = tcp_for_tip((-60.0, 0.0, 860.0), hy, nz)
-    rows(Arm_1="brushing")
+    rows(Arm_1="brushing", Brush="in use")
     cap3 = ("It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop "
             "After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the "
             "stack on the open door.")
-    sc.step("3/5", cap3, 2.4, AB.both(rb.joint_to(Tw=entry), lambda u: AA.set_cut(sc, u, AA.CH_G)), hold=0.05,
+    sc.step("3/6", cap3, 2.4, AB.both(rb.joint_to(Tw=entry), lambda u: AA.set_cut(sc, u, AA.CH_G)), hold=0.05,
             cam_to=CAM_IN)
     f_cone = AA.follow(rb, [entry] + cone)
+
+    def bristles(f):                                  # the head's bristles take on the run's dust as it brushes
+        sc.color["atc head1 bristles"] = mix(BR.BRISTLE_NEW, BR.BRISTLE_USED, f)
 
     def brush_cone(u):
         f_cone(u)
         sc.alpha["atc dust cone"] = 1.0 - window(u, 0.15, 1.0)
-    sc.step("3/5", cap3, 4.5, brush_cone, hold=0.05)
+        bristles(0.6 * window(u, 0.1, 1.0))
+    sc.step("3/6", cap3, 4.5, brush_cone, hold=0.05)
     f_bowl = AA.follow(rb, [cone[-1]] + bowl)
 
     def brush_bowl(u):
         f_bowl(u)
         sc.alpha["atc dust bowl"] = 1.0 - window(u, 0.2, 1.0)
-    sc.step("3/5", cap3, 3.6, brush_bowl, hold=0.05)
-    sc.step("3/5", cap3, 1.6, rb.joint_to(Tw=entry), hold=0.05)
-    # the brush back on its rest
-    rows(Arm_1="brush back")
-    sc.step("3/5", "The brush goes back on its rest.", 2.2, AB.both(rb.joint_to(Tw=pre),
-                                                                     lambda u: AA.set_cut(sc, 1.0 - u, AA.CH_G)),
-            hold=0.05, cam_to=CAM_DOOR)
-    sc.step("3/5", "The brush goes back on its rest.", 0.8, rb.line_to(brush_w), hold=0.05)
-    rb.release("amr")
-    sc.step("3/5", "The brush goes back on its rest.", 0.4, rb.grip_to(0.3), hold=0.05)
-    sc.step("3/5", "The brush goes back on its rest.", 0.7, rb.line_to(pre), hold=0.05)
+        bristles(0.6 + 0.4 * window(u, 0.1, 1.0))
+    sc.step("3/6", cap3, 3.6, brush_bowl, hold=0.05)
+    sc.step("3/6", cap3, 1.6, rb.joint_to(Tw=entry), hold=0.05)
 
-    # ---------------------------------------------------------------- 3. the dust settles
+    # ---------------------------------------------------------------- 4. the used head off, a fresh one on
+    Wm = sc.world("amr")                              # MiR250 1 stays put until step 5
+
+    def strip_w(dx=0.0, dz=0.0):
+        return Wm @ BR.strip_pose_local(top, dx, dz)
+
+    def rest_w(dx=0.0, dz=0.0):
+        return Wm @ BR.rest_pose_local(top, dx=dx, dz=dz)
+
+    def checkers_reread():
+        """What the arm holds changed under the same name (a head on or off the brush): the checkers re-read it."""
+        chks = [rb._checker]
+        for aud in (getattr(sc, "auditor", None), sc.__dict__.get("inline_auditor")):
+            if aud is not None:
+                chks += list(getattr(aud, "checkers", {}).values())
+        for chk in chks:
+            if chk is not None:
+                chk.held_group = None
+
+    cx_c, cy_c = BR.CAN_C
+    can_lbl = tuple(L((cx_c + 20.0, cy_c + 40.0, top + BR.CAN_H - 10.0)))
+    cap4 = ("The used head goes into a grounded waste can on MiR250 1 (ours). The shaft drops into the slot of a "
+            "stripper bar across the can's mouth and pulls back: the bar holds the head's orange ferrule, the head "
+            "comes off the spigot's spring detent and falls into the can, with this run's powder on it.")
+    rows(Arm_1="the used head off", Brush="dusty head: into the waste")
+    sc.step("4/6", cap4, 2.8, AB.both(rb.joint_to(Tw=strip_w(dz=60.0)), lambda u: AA.set_cut(sc, 1.0 - u, AA.CH_G)),
+            hold=0.05, cam_to=CAM_STATION,
+            labels=[("waste can, bonded to the MiR (ours)", can_lbl, (0.72, 0.70)),
+                    ("stripper bar", tuple(L((BR.BAR_X[1], cy_c - 30.0, top + BR.STRIP[2] + 20.0))), (0.70, 0.30))])
+    sc.step("4/6", cap4, 1.0, rb.line_to(strip_w()), hold=0.1)
+    pull = rb.line_to(strip_w(dx=-BR.STRIP_PULL))
+    off_at = 3.0 / BR.STRIP_PULL                      # the ferrule meets the bar 3 mm into the pull
+    st_h = {"off": False}
+
+    def strip(u):
+        if u >= off_at and not st_h["off"]:
+            pull(off_at)                              # the head comes off exactly where the bar stops it
+            W1 = sc.world("atc head1")
+            sc.parent.pop("atc head1", None)
+            sc.gmat["atc head1"] = W1
+            checkers_reread()
+            st_h["off"] = True
+        pull(u)
+    sc.step("4/6", cap4, 1.4, strip, hold=0.1)
+    W_off = sc.world("atc head1")
+    drop = BR.STRIP[2] - BR.BLOCK["z"][1] - 1.5        # its block's end down onto the can's floor
+
+    def fall(u):
+        sc.gmat["atc head1"] = T((0.0, 0.0, -drop * u * u)) @ W_off
+    sc.step("4/6", cap4, 0.6, fall, hold=0.3)
+    Wh = sc.world("atc head1")
+    sc.parent["atc head1"] = "amr"
+    sc.gmat["atc head1"] = AA.inv(sc.world("amr")) @ Wh
+    sc.step("4/6", cap4, 0.8, rb.line_to(strip_w(dx=-BR.STRIP_PULL, dz=60.0)), hold=0.05)
+    cap4b = (f"A fresh head on: the headless shaft goes down onto its rest {BR.PUSH:.0f} mm short and pushes along its "
+             "axis onto the head waiting in the pocket, until the detent clicks. One head per run, so no bristle "
+             "that touched this alloy touches the next, and nothing is washed: an ultrasonic IPA bath would put "
+             "reactive fines in a solvent, needs drying, and can't show the bristles' roots are clean.")
+    rows(Arm_1="a fresh head on", Brush="headless, to its rest")
+    sc.step("4/6", cap4b, 2.6, rb.joint_to(Tw=rest_w(dx=-BR.PUSH, dz=60.0)), hold=0.05, cam_to=CAM_REST,
+            labels=[("next head, in the rest's pocket", tuple(L((360.0, -190.0, zr + 10.0))), (0.66, 0.24))])
+    sc.step("4/6", cap4b, 1.0, rb.line_to(rest_w(dx=-BR.PUSH)), hold=0.1)
+    sc.step("4/6", cap4b, 1.4, rb.line_to(rest_w(dx=-BR.PUSH_SHORT)), hold=0.3)
+    Wh2 = sc.world("atc head2")
+    sc.parent["atc head2"] = "atc brush"
+    sc.gmat["atc head2"] = AA.inv(sc.world("atc brush")) @ Wh2
+    checkers_reread()
+    rows(Brush="on its rest, a fresh head on")
+    rb.release("amr")
+    sc.step("4/6", cap4b, 0.4, rb.grip_to(0.3), hold=0.05)
+    sc.step("4/6", cap4b, 0.7, rb.line_to(T((0, 0, 120)) @ rest_w(dx=-BR.PUSH_SHORT)), hold=0.05)
+
+    # ---------------------------------------------------------------- 5. the dust settles
     def settle(u):
         rows(Container="dust settling", Arm_1="parked", Clock=f"{60 * u:4.0f} s of 60")
     cap5 = "The dust settles for a minute before anyone reaches in again (178_sop After a run 2; T2 50:32). Time-lapse."
-    sc.step("4/5", cap5, 2.4, AB.both(rb.joint_to(np.radians(AA.A.PARK_DEG)), settle), hold=0.4)
+    sc.step("5/6", cap5, 2.4, AB.both(rb.joint_to(np.radians(AA.A.PARK_DEG)), settle), hold=0.4)
     rows(Container="under the outlet, full", Arm_1="to the container")
     drive, secs = AB.mir_drive(ma, A_FRONT)
-    sc.step("4/5", "MiR250 1 drives round to the container.", secs, drive, hold=0.1, cam_to=CAM_CONT)
+    sc.step("5/6", "MiR250 1 drives round to the container.", secs, drive, hold=0.1, cam_to=CAM_CONT)
 
-    # ---------------------------------------------------------------- 4. the valve shut
+    # ---------------------------------------------------------------- 6. the valve shut
     lev_g0 = AB.tcp(tuple(LEVER_END), (0.0, 1.0, 0.0), 90.0)       # from the front, fingers across the bar (vertical)
     def lever_pose(c):
         return T(AB.RP) @ lever_rot(c) @ T(-AB.RP) @ lev_g0
@@ -396,10 +515,10 @@ def main():
     rows(Arm_1="closing the valve")
     # the fingers open only 12 mm over the 12 mm bar: opened to 62 mm, the upper one met the chamber's outlet above it
     lev_open = LT.close_for_gap(24.8)
-    sc.step("5/5", cap6, 2.2, AB.both(rb.joint_to(Tw=lever_pose(0.0) @ T((0, 0, -90))), rb.grip_to(lev_open)),
+    sc.step("6/6", cap6, 2.2, AB.both(rb.joint_to(Tw=lever_pose(0.0) @ T((0, 0, -90))), rb.grip_to(lev_open)),
             hold=0.05)
-    sc.step("5/5", cap6, 0.8, rb.line_to(lever_pose(0.0)), hold=0.05)
-    sc.step("5/5", cap6, 0.4, rb.grip_to(LT.close_for_gap(12.8)), hold=0.05)
+    sc.step("6/6", cap6, 0.8, rb.line_to(lever_pose(0.0)), hold=0.05)
+    sc.step("6/6", cap6, 0.4, rb.grip_to(LT.close_for_gap(12.8)), hold=0.05)
     rb.events.append((sc.n, "grasp", "atc lever", None))
     f_lev = AA.follow(rb, [lever_pose(c) for c in np.linspace(0, 1, 10)])
 
@@ -407,22 +526,22 @@ def main():
         f_lev(u)
         sc.gmat["atc lever"] = lever_rot(u)
         rows(Valve="shut" if u > 0.98 else "closing")
-    sc.step("5/5", cap6, 1.8, shut, hold=0.1)
+    sc.step("6/6", cap6, 1.8, shut, hold=0.1)
     rb.events.append((sc.n, "grasp", "atc lever", None))
-    sc.step("5/5", cap6, 0.4, rb.grip_to(lev_open), hold=0.05)
+    sc.step("6/6", cap6, 0.4, rb.grip_to(lev_open), hold=0.05)
     rb.events.append((sc.n, "release", "atc lever", None))
-    sc.step("5/5", cap6, 0.7, rb.line_to(lever_pose(1.0) @ T((0, 0, -90))), hold=0.05)
+    sc.step("6/6", cap6, 0.7, rb.line_to(lever_pose(1.0) @ T((0, 0, -90))), hold=0.05)
     if not FULL:
         # the rest (the fork under it, the clamp, onto MiR250 1, the cap, the clean container) is drawn below but its
         # two-arm moves still collide (audit of 2026-11-19 01:42: 994 frames in steps 6-8), so the clip stops here
         rows(Container="valve shut, ready to come off", Valve="shut", Arm_1="parked")
-        sc.step("5/5", "Arm 1 stands back.", 1.4, rb.joint_to(np.radians(AA.A.PARK_DEG)), hold=0.2, cam_to=CAM_WIDE)
+        sc.step("6/6", "Arm 1 stands back.", 1.4, rb.joint_to(np.radians(AA.A.PARK_DEG)), hold=0.2, cam_to=CAM_WIDE)
         capN = (f"Next, not animated yet: arm 2 holds the weight from below with a fork (ours; the 2F-85 opens to 85 mm, "
                 f"the container is 130 mm across), arm 1 opens the clamp, the container goes onto MiR250 1, capped, and a "
                 f"clean one with a fresh splash disc goes on. It weighs about {sums['container_kg']:.1f} kg empty "
                 f"(the model's stainless) plus 0.14-1.6 kg of powder: under the UR10e's {UR10E_PAYLOAD:g} kg, near or over "
                 f"the 2F-85's {GRIPPER_PAYLOAD:g} kg.")
-        sc.step("5/5", capN, 0.5, None, hold=8.0)
+        sc.step("6/6", capN, 0.5, None, hold=8.0)
         if not (PREVIEW or AUDIT):
             (OUT / "atom").mkdir(parents=True, exist_ok=True)
             (OUT / "atom" / "atom_container_mass.json").write_text(json.dumps(sums, indent=1) + "\n")
