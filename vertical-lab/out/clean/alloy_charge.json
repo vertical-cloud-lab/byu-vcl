@@ -1,0 +1,4841 @@
+{
+ "name": "alloy_charge",
+ "fps": 12,
+ "n_frames": 3371,
+ "size": [
+  1920,
+  1080
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 0,
+   "end_frame": 30
+  },
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 31,
+   "end_frame": 40
+  },
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 41,
+   "end_frame": 67
+  },
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 68,
+   "end_frame": 77
+  },
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 78,
+   "end_frame": 85
+  },
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 86,
+   "end_frame": 111
+  },
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 112,
+   "end_frame": 119
+  },
+  {
+   "label": "1/6",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug pressed home. Four go into the crucible a run: tray B holds four 5N Al cups for this run's Al-10Si and four oxygen-free Cu cups for a 90/10 Cu-Ni run.",
+   "start_frame": 125,
+   "end_frame": 169
+  },
+  {
+   "label": "1/6",
+   "caption": "The multi-doser is powder-doser's chain carousel v5: an A&D HR-202i, 220 g to 0.1 mg, stands on the tray under the dose point, inside the doser's base and touching nothing of it, and each cup is weighed as it doses. Ours round it: a carbon-fibre dose post on the pan, up through a plate in the balance's top-door rails, with a nest that holds the cup; a clear draft shield over it; and a shuttle that carries the cup in and out. The cup's rim stands 45 mm under the auger's exit (153 mm before), and only the cup touches the powder.",
+   "start_frame": 170,
+   "end_frame": 222
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 223,
+   "end_frame": 234
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 235,
+   "end_frame": 240
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 241,
+   "end_frame": 244
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 245,
+   "end_frame": 248
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 249,
+   "end_frame": 254
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 255,
+   "end_frame": 264
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 265,
+   "end_frame": 272
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 273,
+   "end_frame": 275
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 276,
+   "end_frame": 279
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 280,
+   "end_frame": 285
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level, and sets it on the fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance).",
+   "start_frame": 286,
+   "end_frame": 293
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 294,
+   "end_frame": 309
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 310,
+   "end_frame": 318
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 319,
+   "end_frame": 328
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 329,
+   "end_frame": 332
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 333,
+   "end_frame": 344
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 345,
+   "end_frame": 347
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 348,
+   "end_frame": 350
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 351,
+   "end_frame": 360
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 361,
+   "end_frame": 364
+  },
+  {
+   "label": "2/6",
+   "caption": "With the dose post empty, the carousel brings module 6 (Si) to the station; the P16s lift the electronics carriage to dock it and it tilts 30°, which takes the carriage clear of the post (it parks right over it). Our shield's door slides open and the shuttle sets the cup in the nest on the post: a 4 mm ring round its foot holds it, the fork drops on down the nest's grooves and backs out, and the door shuts.",
+   "start_frame": 365,
+   "end_frame": 376
+  },
+  {
+   "label": "2/6",
+   "caption": "v5's dose-to turns the auger a quarter turn at a time and reads the balance after each, to 3.92 g: the powder falls 45 mm into the cup's 1/2 in bore (153 mm before), inside the shield, up to 27 mm; then one turn back, the cup still under the exit. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 377,
+   "end_frame": 402
+  },
+  {
+   "label": "2/6",
+   "caption": "v5's dose-to turns the auger a quarter turn at a time and reads the balance after each, to 3.92 g: the powder falls 45 mm into the cup's 1/2 in bore (153 mm before), inside the shield, up to 27 mm; then one turn back, the cup still under the exit. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 403,
+   "end_frame": 408
+  },
+  {
+   "label": "2/6",
+   "caption": "The door shut and the station still, the reading settles: 36.0024 g, the cup's 32.08 g (weighed once, when it was turned) plus 3.9224 g of Si against 3.92 g. Inside ±1 % (assumed), it goes on; a short cup gets another quarter turn where it stands.",
+   "start_frame": 409,
+   "end_frame": 431
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 432,
+   "end_frame": 435
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 436,
+   "end_frame": 445
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 446,
+   "end_frame": 447
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 448,
+   "end_frame": 451
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 452,
+   "end_frame": 462
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 463,
+   "end_frame": 466
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 467,
+   "end_frame": 474
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 475,
+   "end_frame": 481
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 482,
+   "end_frame": 491
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 492,
+   "end_frame": 497
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 498,
+   "end_frame": 501
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 502,
+   "end_frame": 503
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 504,
+   "end_frame": 509
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 510,
+   "end_frame": 519
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 520,
+   "end_frame": 525
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 526,
+   "end_frame": 529
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 530,
+   "end_frame": 533
+  },
+  {
+   "label": "2/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 534,
+   "end_frame": 539
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 540,
+   "end_frame": 560
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 561,
+   "end_frame": 562
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 563,
+   "end_frame": 564
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 565,
+   "end_frame": 565
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 566,
+   "end_frame": 566
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 567,
+   "end_frame": 567
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 568,
+   "end_frame": 569
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 570,
+   "end_frame": 571
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 572,
+   "end_frame": 573
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 574,
+   "end_frame": 577
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 578,
+   "end_frame": 579
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 580,
+   "end_frame": 581
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 582,
+   "end_frame": 583
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 584,
+   "end_frame": 584
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 585,
+   "end_frame": 586
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 587,
+   "end_frame": 588
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 589,
+   "end_frame": 590
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 591,
+   "end_frame": 592
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 593,
+   "end_frame": 593
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 594,
+   "end_frame": 594
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 595,
+   "end_frame": 595
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 596,
+   "end_frame": 597
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 598,
+   "end_frame": 599
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 600,
+   "end_frame": 601
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 602,
+   "end_frame": 605
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 606,
+   "end_frame": 607
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 608,
+   "end_frame": 609
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 610,
+   "end_frame": 611
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 612,
+   "end_frame": 612
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 613,
+   "end_frame": 614
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 615,
+   "end_frame": 616
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 617,
+   "end_frame": 618
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 619,
+   "end_frame": 620
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 621,
+   "end_frame": 621
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 622,
+   "end_frame": 622
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 623,
+   "end_frame": 623
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 624,
+   "end_frame": 625
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 626,
+   "end_frame": 627
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 628,
+   "end_frame": 629
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 630,
+   "end_frame": 633
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 634,
+   "end_frame": 635
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 636,
+   "end_frame": 637
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 638,
+   "end_frame": 639
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 640,
+   "end_frame": 640
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 641,
+   "end_frame": 642
+  },
+  {
+   "label": "2/6",
+   "caption": "The same for the other three Al cups, shown faster: 3.92 g of Si each, dosed by weight on the pan.",
+   "start_frame": 643,
+   "end_frame": 644
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 645,
+   "end_frame": 656
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 657,
+   "end_frame": 662
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 663,
+   "end_frame": 666
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 667,
+   "end_frame": 670
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 671,
+   "end_frame": 676
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 677,
+   "end_frame": 686
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 687,
+   "end_frame": 694
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 695,
+   "end_frame": 697
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 698,
+   "end_frame": 701
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 702,
+   "end_frame": 707
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the top-up, the cup's own metal: back to the doser's shuttle.",
+   "start_frame": 708,
+   "end_frame": 715
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 716,
+   "end_frame": 731
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 732,
+   "end_frame": 740
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 741,
+   "end_frame": 750
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 751,
+   "end_frame": 754
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 755,
+   "end_frame": 766
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 767,
+   "end_frame": 769
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 770,
+   "end_frame": 772
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 773,
+   "end_frame": 782
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 783,
+   "end_frame": 786
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1 (AlSi10Mg) comes to the station, docks and tilts; the cup goes back into the nest.",
+   "start_frame": 787,
+   "end_frame": 798
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1, AlSi10Mg: 3.91 g tops the bore up to where the plug will stand, 46 mm up, so the plug has powder to press. AlSi10Mg is itself 10 % Si, so the cup stays Al-10Si.",
+   "start_frame": 799,
+   "end_frame": 824
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 1, AlSi10Mg: 3.91 g tops the bore up to where the plug will stand, 46 mm up, so the plug has powder to press. AlSi10Mg is itself 10 % Si, so the cup stays Al-10Si.",
+   "start_frame": 825,
+   "end_frame": 830
+  },
+  {
+   "label": "3/6",
+   "caption": "39.9116 g: 3.9224 g of Si and 3.9092 g of AlSi10Mg, tapped 46 mm up the bore.",
+   "start_frame": 831,
+   "end_frame": 853
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 854,
+   "end_frame": 857
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 858,
+   "end_frame": 867
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 868,
+   "end_frame": 869
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 870,
+   "end_frame": 873
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 874,
+   "end_frame": 884
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 885,
+   "end_frame": 888
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 889,
+   "end_frame": 896
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 897,
+   "end_frame": 903
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 904,
+   "end_frame": 913
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 914,
+   "end_frame": 919
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 920,
+   "end_frame": 923
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 924,
+   "end_frame": 925
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 926,
+   "end_frame": 931
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 932,
+   "end_frame": 941
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 942,
+   "end_frame": 947
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 948,
+   "end_frame": 951
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 952,
+   "end_frame": 955
+  },
+  {
+   "label": "3/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 956,
+   "end_frame": 961
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 962,
+   "end_frame": 970
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 971,
+   "end_frame": 976
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 977,
+   "end_frame": 980
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 981,
+   "end_frame": 985
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 986,
+   "end_frame": 993
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 994,
+   "end_frame": 999
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 1000,
+   "end_frame": 1002
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 1003,
+   "end_frame": 1005
+  },
+  {
+   "label": "3/6",
+   "caption": "Its plug goes into the mouth at the rack, on its 15° lead-in, 8.0 mm proud: low down, where the gripper can come at it from above. (The press works too high for that: the wrist would hit the VLM's opening.)",
+   "start_frame": 1006,
+   "end_frame": 1010
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1011,
+   "end_frame": 1019
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1020,
+   "end_frame": 1025
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1026,
+   "end_frame": 1029
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1030,
+   "end_frame": 1033
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1034,
+   "end_frame": 1039
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1040,
+   "end_frame": 1050
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1051,
+   "end_frame": 1056
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1057,
+   "end_frame": 1062
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1063,
+   "end_frame": 1066
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1067,
+   "end_frame": 1072
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its bottom 10 mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, #222's steel sleeve.",
+   "start_frame": 1073,
+   "end_frame": 1079
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1080,
+   "end_frame": 1089
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1090,
+   "end_frame": 1095
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1096,
+   "end_frame": 1099
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1100,
+   "end_frame": 1104
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1105,
+   "end_frame": 1112
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1113,
+   "end_frame": 1118
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1119,
+   "end_frame": 1121
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1122,
+   "end_frame": 1124
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1125,
+   "end_frame": 1130
+  },
+  {
+   "label": "3/6",
+   "caption": "Then the die's punch, from its rest beside the press, held level by its flange. It goes down into the die's bore and stands on the plug; its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+   "start_frame": 1131,
+   "end_frame": 1138
+  },
+  {
+   "label": "3/6",
+   "caption": "The shuttle carries the die in under the leadscrew and the guard comes down: the press won't start with it up. V1 opens to the pump, slowly at first through the needle valve so the powder stays put. Air leaves the cup through the plug's vent and out of the die's port: under 1 mbar in about 2 min.",
+   "start_frame": 1139,
+   "end_frame": 1147
+  },
+  {
+   "label": "3/6",
+   "caption": "The shuttle carries the die in under the leadscrew and the guard comes down: the press won't start with it up. V1 opens to the pump, slowly at first through the needle valve so the powder stays put. Air leaves the cup through the plug's vent and out of the die's port: under 1 mbar in about 2 min.",
+   "start_frame": 1148,
+   "end_frame": 1155
+  },
+  {
+   "label": "3/6",
+   "caption": "The shuttle carries the die in under the leadscrew and the guard comes down: the press won't start with it up. V1 opens to the pump, slowly at first through the needle valve so the powder stays put. Air leaves the cup through the plug's vent and out of the die's port: under 1 mbar in about 2 min.",
+   "start_frame": 1156,
+   "end_frame": 1177
+  },
+  {
+   "label": "3/6",
+   "caption": "Start: program 1 pumps up to 3.2 t (31.4 kN). The ram lifts the die 2 mm to the leadscrew, then drives the plug 8.0 mm to flush: the powder goes from 52 to 63 % dense, with no air in it (DAL #140). It holds a minute, topping the load up as the powder settles; at flush the punch's collar lands on the catch ring, and F1 under it takes what's left.",
+   "start_frame": 1178,
+   "end_frame": 1198
+  },
+  {
+   "label": "3/6",
+   "caption": "Start: program 1 pumps up to 3.2 t (31.4 kN). The ram lifts the die 2 mm to the leadscrew, then drives the plug 8.0 mm to flush: the powder goes from 52 to 63 % dense, with no air in it (DAL #140). It holds a minute, topping the load up as the powder settles; at flush the punch's collar lands on the catch ring, and F1 under it takes what's left.",
+   "start_frame": 1199,
+   "end_frame": 1210
+  },
+  {
+   "label": "3/6",
+   "caption": "Slow release; V2 lets dry argon into the die, so the cup sees no air until it is out; the guard goes up and the shuttle brings the die out. The plug is flush with the rim.",
+   "start_frame": 1211,
+   "end_frame": 1218
+  },
+  {
+   "label": "3/6",
+   "caption": "Slow release; V2 lets dry argon into the die, so the cup sees no air until it is out; the guard goes up and the shuttle brings the die out. The plug is flush with the rim.",
+   "start_frame": 1219,
+   "end_frame": 1227
+  },
+  {
+   "label": "3/6",
+   "caption": "Slow release; V2 lets dry argon into the die, so the cup sees no air until it is out; the guard goes up and the shuttle brings the die out. The plug is flush with the rim.",
+   "start_frame": 1228,
+   "end_frame": 1235
+  },
+  {
+   "label": "3/6",
+   "caption": "Slow release; V2 lets dry argon into the die, so the cup sees no air until it is out; the guard goes up and the shuttle brings the die out. The plug is flush with the rim.",
+   "start_frame": 1236,
+   "end_frame": 1244
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1245,
+   "end_frame": 1253
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1254,
+   "end_frame": 1259
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1260,
+   "end_frame": 1263
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1264,
+   "end_frame": 1269
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1270,
+   "end_frame": 1277
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1278,
+   "end_frame": 1283
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1284,
+   "end_frame": 1286
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1287,
+   "end_frame": 1289
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1290,
+   "end_frame": 1292
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1293,
+   "end_frame": 1295
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1296,
+   "end_frame": 1298
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1299,
+   "end_frame": 1303
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about 30 N), and puts it back on its rest, which is a brush cup: a ring of nylon bristles in its pocket, drawn on by a vacuum line. In and out twice, the punch's nose, collar and O-ring leave their fines there. The pin pushes the cup up out of F1 and stops with its bottom 10 mm in the catch ring.",
+   "start_frame": 1304,
+   "end_frame": 1309
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1310,
+   "end_frame": 1318
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1319,
+   "end_frame": 1324
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1325,
+   "end_frame": 1328
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1329,
+   "end_frame": 1332
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1333,
+   "end_frame": 1338
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1339,
+   "end_frame": 1348
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1349,
+   "end_frame": 1356
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1357,
+   "end_frame": 1359
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1360,
+   "end_frame": 1363
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1364,
+   "end_frame": 1369
+  },
+  {
+   "label": "3/6",
+   "caption": "Pressed, the cup goes back to the doser to be weighed again (Sterling, PR #318), so a run records each charge as pressed and catches powder lost at the press.",
+   "start_frame": 1370,
+   "end_frame": 1377
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1378,
+   "end_frame": 1386
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1387,
+   "end_frame": 1396
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1397,
+   "end_frame": 1400
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1401,
+   "end_frame": 1412
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1413,
+   "end_frame": 1415
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1416,
+   "end_frame": 1418
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1419,
+   "end_frame": 1428
+  },
+  {
+   "label": "3/6",
+   "caption": "The module at the station docks and tilts with no auger turn, only so the carriage stands clear of the post; the cup goes into the nest.",
+   "start_frame": 1429,
+   "end_frame": 1432
+  },
+  {
+   "label": "3/6",
+   "caption": "43.0813 g: 39.9116 g before pressing plus its 3.1700 g plug (weighed once, when it was turned) is 43.0816 g, so -0.3 mg: inside ±1.0 mg, no powder lost. The reading goes into the run's record with the cup's serial.",
+   "start_frame": 1433,
+   "end_frame": 1455
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1456,
+   "end_frame": 1459
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1460,
+   "end_frame": 1469
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1470,
+   "end_frame": 1471
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1472,
+   "end_frame": 1475
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1476,
+   "end_frame": 1486
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1487,
+   "end_frame": 1490
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1491,
+   "end_frame": 1498
+  },
+  {
+   "label": "3/6",
+   "caption": "Out again.",
+   "start_frame": 1499,
+   "end_frame": 1505
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1506,
+   "end_frame": 1515
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1516,
+   "end_frame": 1521
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1522,
+   "end_frame": 1525
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1526,
+   "end_frame": 1527
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1528,
+   "end_frame": 1533
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1534,
+   "end_frame": 1545
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1546,
+   "end_frame": 1551
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1552,
+   "end_frame": 1556
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1557,
+   "end_frame": 1560
+  },
+  {
+   "label": "3/6",
+   "caption": "The charged cup, 43.1 g, its plug flush on 7.8 g of powder pressed to 63 % under vacuum, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1561,
+   "end_frame": 1566
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1567,
+   "end_frame": 1572
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1573,
+   "end_frame": 1581
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1582,
+   "end_frame": 1587
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1588,
+   "end_frame": 1591
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1592,
+   "end_frame": 1597
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1598,
+   "end_frame": 1606
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1607,
+   "end_frame": 1613
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1614,
+   "end_frame": 1616
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1617,
+   "end_frame": 1619
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1620,
+   "end_frame": 1622
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1623,
+   "end_frame": 1625
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1626,
+   "end_frame": 1631
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1632,
+   "end_frame": 1640
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1641,
+   "end_frame": 1646
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1647,
+   "end_frame": 1649
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1650,
+   "end_frame": 1654
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1655,
+   "end_frame": 1660
+  },
+  {
+   "label": "3/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand. At a change of run the bore and the punch are swabbed with IPA as well (notes).",
+   "start_frame": 1661,
+   "end_frame": 1668
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1669,
+   "end_frame": 1692
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1693,
+   "end_frame": 1694
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1695,
+   "end_frame": 1696
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1697,
+   "end_frame": 1697
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1698,
+   "end_frame": 1698
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1699,
+   "end_frame": 1699
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1700,
+   "end_frame": 1701
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1702,
+   "end_frame": 1703
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1704,
+   "end_frame": 1705
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1706,
+   "end_frame": 1709
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1710,
+   "end_frame": 1711
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1712,
+   "end_frame": 1713
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1714,
+   "end_frame": 1715
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1716,
+   "end_frame": 1716
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1717,
+   "end_frame": 1718
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1719,
+   "end_frame": 1720
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1721,
+   "end_frame": 1721
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1722,
+   "end_frame": 1722
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1723,
+   "end_frame": 1723
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1724,
+   "end_frame": 1725
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1726,
+   "end_frame": 1727
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1728,
+   "end_frame": 1728
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1729,
+   "end_frame": 1729
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1730,
+   "end_frame": 1730
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1731,
+   "end_frame": 1731
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1732,
+   "end_frame": 1735
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1736,
+   "end_frame": 1739
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1740,
+   "end_frame": 1740
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1741,
+   "end_frame": 1741
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1742,
+   "end_frame": 1742
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1743,
+   "end_frame": 1743
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1744,
+   "end_frame": 1744
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1745,
+   "end_frame": 1745
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1746,
+   "end_frame": 1746
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1747,
+   "end_frame": 1748
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1749,
+   "end_frame": 1749
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1750,
+   "end_frame": 1750
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1751,
+   "end_frame": 1751
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1752,
+   "end_frame": 1753
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1754,
+   "end_frame": 1755
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1756,
+   "end_frame": 1757
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1758,
+   "end_frame": 1759
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1760,
+   "end_frame": 1761
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1762,
+   "end_frame": 1763
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1764,
+   "end_frame": 1764
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1765,
+   "end_frame": 1766
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1767,
+   "end_frame": 1768
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1769,
+   "end_frame": 1769
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1770,
+   "end_frame": 1770
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1771,
+   "end_frame": 1771
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1772,
+   "end_frame": 1772
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1773,
+   "end_frame": 1774
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1775,
+   "end_frame": 1776
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1777,
+   "end_frame": 1777
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1778,
+   "end_frame": 1778
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1779,
+   "end_frame": 1779
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1780,
+   "end_frame": 1781
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1782,
+   "end_frame": 1783
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1784,
+   "end_frame": 1785
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1786,
+   "end_frame": 1789
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1790,
+   "end_frame": 1791
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1792,
+   "end_frame": 1793
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1794,
+   "end_frame": 1795
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1796,
+   "end_frame": 1796
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1797,
+   "end_frame": 1798
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1799,
+   "end_frame": 1800
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1801,
+   "end_frame": 1801
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1802,
+   "end_frame": 1802
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1803,
+   "end_frame": 1803
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1804,
+   "end_frame": 1805
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1806,
+   "end_frame": 1807
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1808,
+   "end_frame": 1808
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1809,
+   "end_frame": 1809
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1810,
+   "end_frame": 1810
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1811,
+   "end_frame": 1811
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1812,
+   "end_frame": 1815
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1816,
+   "end_frame": 1819
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1820,
+   "end_frame": 1820
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1821,
+   "end_frame": 1821
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1822,
+   "end_frame": 1822
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1823,
+   "end_frame": 1823
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1824,
+   "end_frame": 1824
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1825,
+   "end_frame": 1825
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1826,
+   "end_frame": 1826
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1827,
+   "end_frame": 1828
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1829,
+   "end_frame": 1829
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1830,
+   "end_frame": 1830
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1831,
+   "end_frame": 1831
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1832,
+   "end_frame": 1833
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1834,
+   "end_frame": 1835
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1836,
+   "end_frame": 1837
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1838,
+   "end_frame": 1839
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1840,
+   "end_frame": 1841
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1842,
+   "end_frame": 1843
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1844,
+   "end_frame": 1844
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1845,
+   "end_frame": 1846
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1847,
+   "end_frame": 1848
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1849,
+   "end_frame": 1849
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1850,
+   "end_frame": 1850
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1851,
+   "end_frame": 1851
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1852,
+   "end_frame": 1852
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1853,
+   "end_frame": 1854
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1855,
+   "end_frame": 1856
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1857,
+   "end_frame": 1857
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1858,
+   "end_frame": 1858
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1859,
+   "end_frame": 1859
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1860,
+   "end_frame": 1861
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1862,
+   "end_frame": 1863
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1864,
+   "end_frame": 1865
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1866,
+   "end_frame": 1869
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1870,
+   "end_frame": 1871
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1872,
+   "end_frame": 1873
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1874,
+   "end_frame": 1875
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1876,
+   "end_frame": 1876
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1877,
+   "end_frame": 1878
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1879,
+   "end_frame": 1880
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1881,
+   "end_frame": 1881
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1882,
+   "end_frame": 1882
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1883,
+   "end_frame": 1883
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1884,
+   "end_frame": 1885
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1886,
+   "end_frame": 1887
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1888,
+   "end_frame": 1888
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1889,
+   "end_frame": 1889
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1890,
+   "end_frame": 1890
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1891,
+   "end_frame": 1891
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1892,
+   "end_frame": 1895
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1896,
+   "end_frame": 1899
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1900,
+   "end_frame": 1900
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1901,
+   "end_frame": 1901
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1902,
+   "end_frame": 1902
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1903,
+   "end_frame": 1903
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1904,
+   "end_frame": 1904
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1905,
+   "end_frame": 1905
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1906,
+   "end_frame": 1906
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1907,
+   "end_frame": 1908
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1909,
+   "end_frame": 1909
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1910,
+   "end_frame": 1910
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1911,
+   "end_frame": 1911
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1912,
+   "end_frame": 1913
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1914,
+   "end_frame": 1915
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1916,
+   "end_frame": 1917
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1918,
+   "end_frame": 1919
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1920,
+   "end_frame": 1921
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1922,
+   "end_frame": 1923
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1924,
+   "end_frame": 1924
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1925,
+   "end_frame": 1926
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1927,
+   "end_frame": 1928
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1929,
+   "end_frame": 1929
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1930,
+   "end_frame": 1930
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1931,
+   "end_frame": 1931
+  },
+  {
+   "label": "3/6",
+   "caption": "The other three Al cups the same way, faster: 3.91 g of AlSi10Mg each, weighed, plugged, pressed at 3.2 t under vacuum and onto the MiR250. Four cups make the run's 172.3 g of Al-10Si.",
+   "start_frame": 1932,
+   "end_frame": 1932
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1933,
+   "end_frame": 1940
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1941,
+   "end_frame": 1944
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1945,
+   "end_frame": 1947
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1948,
+   "end_frame": 1950
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1951,
+   "end_frame": 1954
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1955,
+   "end_frame": 1961
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1962,
+   "end_frame": 1966
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1967,
+   "end_frame": 1968
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1969,
+   "end_frame": 1971
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1972,
+   "end_frame": 1975
+  },
+  {
+   "label": "4/6",
+   "caption": "The first Cu cup in full, as the Al cups.",
+   "start_frame": 1976,
+   "end_frame": 1981
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 1982,
+   "end_frame": 1992
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 1993,
+   "end_frame": 1998
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 1999,
+   "end_frame": 2005
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 2006,
+   "end_frame": 2008
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 2009,
+   "end_frame": 2016
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 2017,
+   "end_frame": 2018
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 2019,
+   "end_frame": 2020
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 2021,
+   "end_frame": 2027
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 2028,
+   "end_frame": 2030
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 (Ni) docks and tilts; the cup goes into the nest.",
+   "start_frame": 2031,
+   "end_frame": 2042
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 doses 14.62 g of Ni, 22 mm up the bore.",
+   "start_frame": 2043,
+   "end_frame": 2061
+  },
+  {
+   "label": "4/6",
+   "caption": "Module 3 doses 14.62 g of Ni, 22 mm up the bore.",
+   "start_frame": 2062,
+   "end_frame": 2065
+  },
+  {
+   "label": "4/6",
+   "caption": "120.9061 g: 14.6361 g of Ni against 14.62 g. A Cu cup is 121 g here, well inside the HR-202i's 220 g.",
+   "start_frame": 2066,
+   "end_frame": 2085
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2086,
+   "end_frame": 2088
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2089,
+   "end_frame": 2095
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2096,
+   "end_frame": 2096
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2097,
+   "end_frame": 2099
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2100,
+   "end_frame": 2106
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2107,
+   "end_frame": 2109
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2110,
+   "end_frame": 2114
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2115,
+   "end_frame": 2119
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2120,
+   "end_frame": 2126
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2127,
+   "end_frame": 2130
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2131,
+   "end_frame": 2133
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2134,
+   "end_frame": 2134
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2135,
+   "end_frame": 2138
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2139,
+   "end_frame": 2145
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2146,
+   "end_frame": 2149
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2150,
+   "end_frame": 2152
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2153,
+   "end_frame": 2155
+  },
+  {
+   "label": "4/6",
+   "caption": "The shuttle brings it out, the module tilts back and parks; back to the rack, to wait for its top-up.",
+   "start_frame": 2156,
+   "end_frame": 2159
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2160,
+   "end_frame": 2176
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2177,
+   "end_frame": 2178
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2179,
+   "end_frame": 2180
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2181,
+   "end_frame": 2181
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2182,
+   "end_frame": 2182
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2183,
+   "end_frame": 2183
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2184,
+   "end_frame": 2185
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2186,
+   "end_frame": 2187
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2188,
+   "end_frame": 2189
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2190,
+   "end_frame": 2193
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2194,
+   "end_frame": 2195
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2196,
+   "end_frame": 2197
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2198,
+   "end_frame": 2199
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2200,
+   "end_frame": 2200
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2201,
+   "end_frame": 2202
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2203,
+   "end_frame": 2204
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2205,
+   "end_frame": 2206
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2207,
+   "end_frame": 2208
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2209,
+   "end_frame": 2209
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2210,
+   "end_frame": 2210
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2211,
+   "end_frame": 2211
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2212,
+   "end_frame": 2213
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2214,
+   "end_frame": 2215
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2216,
+   "end_frame": 2217
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2218,
+   "end_frame": 2221
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2222,
+   "end_frame": 2223
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2224,
+   "end_frame": 2225
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2226,
+   "end_frame": 2227
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2228,
+   "end_frame": 2228
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2229,
+   "end_frame": 2230
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2231,
+   "end_frame": 2232
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2233,
+   "end_frame": 2234
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2235,
+   "end_frame": 2236
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2237,
+   "end_frame": 2237
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2238,
+   "end_frame": 2238
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2239,
+   "end_frame": 2239
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2240,
+   "end_frame": 2241
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2242,
+   "end_frame": 2243
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2244,
+   "end_frame": 2245
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2246,
+   "end_frame": 2249
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2250,
+   "end_frame": 2251
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2252,
+   "end_frame": 2253
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2254,
+   "end_frame": 2255
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2256,
+   "end_frame": 2256
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2257,
+   "end_frame": 2258
+  },
+  {
+   "label": "4/6",
+   "caption": "Then the Cu-10Ni run, the other three Cu cups' Ni, faster: 14.62 g each, dosed by weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.",
+   "start_frame": 2259,
+   "end_frame": 2260
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2261,
+   "end_frame": 2268
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2269,
+   "end_frame": 2272
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2273,
+   "end_frame": 2275
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2276,
+   "end_frame": 2278
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2279,
+   "end_frame": 2282
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2283,
+   "end_frame": 2289
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2290,
+   "end_frame": 2294
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2295,
+   "end_frame": 2296
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2297,
+   "end_frame": 2299
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2300,
+   "end_frame": 2303
+  },
+  {
+   "label": "5/6",
+   "caption": "The first Cu cup again, for its Cu.",
+   "start_frame": 2304,
+   "end_frame": 2309
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2310,
+   "end_frame": 2320
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2321,
+   "end_frame": 2326
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2327,
+   "end_frame": 2333
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2334,
+   "end_frame": 2336
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2337,
+   "end_frame": 2344
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2345,
+   "end_frame": 2346
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2347,
+   "end_frame": 2348
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2349,
+   "end_frame": 2355
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2356,
+   "end_frame": 2358
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9 (Cu) docks; into the nest.",
+   "start_frame": 2359,
+   "end_frame": 2370
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9: 14.96 g of Cu, worked out from the Ni the balance read so the cup stays 10 wt % Ni, tops the bore up to the plug line.",
+   "start_frame": 2371,
+   "end_frame": 2389
+  },
+  {
+   "label": "5/6",
+   "caption": "Module 9: 14.96 g of Cu, worked out from the Ni the balance read so the cup stays 10 wt % Ni, tops the bore up to the plug line.",
+   "start_frame": 2390,
+   "end_frame": 2393
+  },
+  {
+   "label": "5/6",
+   "caption": "135.8633 g: 14.6361 g of Ni and 14.9573 g of Cu, tapped 46 mm up the bore.",
+   "start_frame": 2394,
+   "end_frame": 2413
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2414,
+   "end_frame": 2416
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2417,
+   "end_frame": 2423
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2424,
+   "end_frame": 2424
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2425,
+   "end_frame": 2427
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2428,
+   "end_frame": 2434
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2435,
+   "end_frame": 2437
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2438,
+   "end_frame": 2442
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2443,
+   "end_frame": 2447
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2448,
+   "end_frame": 2454
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2455,
+   "end_frame": 2458
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2459,
+   "end_frame": 2461
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2462,
+   "end_frame": 2462
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2463,
+   "end_frame": 2466
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2467,
+   "end_frame": 2473
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2474,
+   "end_frame": 2477
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2478,
+   "end_frame": 2480
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2481,
+   "end_frame": 2483
+  },
+  {
+   "label": "5/6",
+   "caption": "Out, and back to the rack for its plug.",
+   "start_frame": 2484,
+   "end_frame": 2487
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2488,
+   "end_frame": 2493
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2494,
+   "end_frame": 2497
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2498,
+   "end_frame": 2500
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2501,
+   "end_frame": 2504
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2505,
+   "end_frame": 2510
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2511,
+   "end_frame": 2514
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2515,
+   "end_frame": 2516
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2517,
+   "end_frame": 2518
+  },
+  {
+   "label": "5/6",
+   "caption": "The plug, into the mouth at the rack.",
+   "start_frame": 2519,
+   "end_frame": 2522
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2523,
+   "end_frame": 2528
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2529,
+   "end_frame": 2532
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2533,
+   "end_frame": 2535
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2536,
+   "end_frame": 2538
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2539,
+   "end_frame": 2542
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2543,
+   "end_frame": 2549
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2550,
+   "end_frame": 2553
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2554,
+   "end_frame": 2557
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2558,
+   "end_frame": 2560
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2561,
+   "end_frame": 2564
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the die's catch ring, on the pin, which lowers it into F1.",
+   "start_frame": 2565,
+   "end_frame": 2569
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2570,
+   "end_frame": 2576
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2577,
+   "end_frame": 2580
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2581,
+   "end_frame": 2583
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2584,
+   "end_frame": 2587
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2588,
+   "end_frame": 2593
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2594,
+   "end_frame": 2597
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2598,
+   "end_frame": 2599
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2600,
+   "end_frame": 2601
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2602,
+   "end_frame": 2605
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch, from its rest into the die.",
+   "start_frame": 2606,
+   "end_frame": 2611
+  },
+  {
+   "label": "5/6",
+   "caption": "Shuttle in, guard down, pumped below 1 mbar.",
+   "start_frame": 2612,
+   "end_frame": 2617
+  },
+  {
+   "label": "5/6",
+   "caption": "Shuttle in, guard down, pumped below 1 mbar.",
+   "start_frame": 2618,
+   "end_frame": 2622
+  },
+  {
+   "label": "5/6",
+   "caption": "Shuttle in, guard down, pumped below 1 mbar.",
+   "start_frame": 2623,
+   "end_frame": 2637
+  },
+  {
+   "label": "5/6",
+   "caption": "3.2 t: the plug goes 8.0 mm to flush, the powder from 55 to 66 % dense.",
+   "start_frame": 2638,
+   "end_frame": 2651
+  },
+  {
+   "label": "5/6",
+   "caption": "3.2 t: the plug goes 8.0 mm to flush, the powder from 55 to 66 % dense.",
+   "start_frame": 2652,
+   "end_frame": 2661
+  },
+  {
+   "label": "5/6",
+   "caption": "Released, vented with dry Ar, out.",
+   "start_frame": 2662,
+   "end_frame": 2666
+  },
+  {
+   "label": "5/6",
+   "caption": "Released, vented with dry Ar, out.",
+   "start_frame": 2667,
+   "end_frame": 2672
+  },
+  {
+   "label": "5/6",
+   "caption": "Released, vented with dry Ar, out.",
+   "start_frame": 2673,
+   "end_frame": 2677
+  },
+  {
+   "label": "5/6",
+   "caption": "Released, vented with dry Ar, out.",
+   "start_frame": 2678,
+   "end_frame": 2683
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2684,
+   "end_frame": 2689
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2690,
+   "end_frame": 2693
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2694,
+   "end_frame": 2696
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2697,
+   "end_frame": 2700
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2701,
+   "end_frame": 2706
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2707,
+   "end_frame": 2710
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2711,
+   "end_frame": 2712
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2713,
+   "end_frame": 2714
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2715,
+   "end_frame": 2716
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2717,
+   "end_frame": 2718
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2719,
+   "end_frame": 2720
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2721,
+   "end_frame": 2724
+  },
+  {
+   "label": "5/6",
+   "caption": "The punch through its brush cup onto its rest; the pin pushes the cup up into the catch ring.",
+   "start_frame": 2725,
+   "end_frame": 2728
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2729,
+   "end_frame": 2734
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2735,
+   "end_frame": 2738
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2739,
+   "end_frame": 2741
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2742,
+   "end_frame": 2744
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2745,
+   "end_frame": 2748
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2749,
+   "end_frame": 2755
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2756,
+   "end_frame": 2760
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2761,
+   "end_frame": 2762
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2763,
+   "end_frame": 2765
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2766,
+   "end_frame": 2769
+  },
+  {
+   "label": "5/6",
+   "caption": "Back to the doser, to be weighed again.",
+   "start_frame": 2770,
+   "end_frame": 2775
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2776,
+   "end_frame": 2781
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2782,
+   "end_frame": 2788
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2789,
+   "end_frame": 2791
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2792,
+   "end_frame": 2799
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2800,
+   "end_frame": 2801
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2802,
+   "end_frame": 2803
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2804,
+   "end_frame": 2810
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the nest.",
+   "start_frame": 2811,
+   "end_frame": 2813
+  },
+  {
+   "label": "5/6",
+   "caption": "146.3531 g against 146.3533 g expected: -0.2 mg.",
+   "start_frame": 2814,
+   "end_frame": 2833
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2834,
+   "end_frame": 2836
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2837,
+   "end_frame": 2843
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2844,
+   "end_frame": 2844
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2845,
+   "end_frame": 2847
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2848,
+   "end_frame": 2854
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2855,
+   "end_frame": 2857
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2858,
+   "end_frame": 2862
+  },
+  {
+   "label": "5/6",
+   "caption": "Out again.",
+   "start_frame": 2863,
+   "end_frame": 2867
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2868,
+   "end_frame": 2874
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2875,
+   "end_frame": 2878
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2879,
+   "end_frame": 2881
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2882,
+   "end_frame": 2882
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2883,
+   "end_frame": 2886
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2887,
+   "end_frame": 2893
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2894,
+   "end_frame": 2897
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2898,
+   "end_frame": 2900
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2901,
+   "end_frame": 2903
+  },
+  {
+   "label": "5/6",
+   "caption": "The charged Cu cup, 146.4 g, goes back on the rack for its own run.",
+   "start_frame": 2904,
+   "end_frame": 2907
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2908,
+   "end_frame": 2911
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2912,
+   "end_frame": 2917
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2918,
+   "end_frame": 2921
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2922,
+   "end_frame": 2924
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2925,
+   "end_frame": 2928
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2929,
+   "end_frame": 2934
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2935,
+   "end_frame": 2939
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2940,
+   "end_frame": 2941
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2942,
+   "end_frame": 2943
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2944,
+   "end_frame": 2945
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2946,
+   "end_frame": 2947
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2948,
+   "end_frame": 2951
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2952,
+   "end_frame": 2957
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2958,
+   "end_frame": 2961
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2962,
+   "end_frame": 2963
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2964,
+   "end_frame": 2967
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2968,
+   "end_frame": 2971
+  },
+  {
+   "label": "5/6",
+   "caption": "Before the next cup, the die: the pin goes down, and the arm takes the bore wand from its rest beside the punch's, a 19.6 mm nylon brush on a hollow stem with its own vacuum line. Down F1 to 5 mm over the pin, two strokes up through the catch ring, back to its rest: the fines the escaping air left in the bore go up the wand.",
+   "start_frame": 2972,
+   "end_frame": 2977
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 2978,
+   "end_frame": 2994
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 2995,
+   "end_frame": 2996
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 2997,
+   "end_frame": 2998
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 2999,
+   "end_frame": 2999
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3000,
+   "end_frame": 3000
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3001,
+   "end_frame": 3001
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3002,
+   "end_frame": 3003
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3004,
+   "end_frame": 3005
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3006,
+   "end_frame": 3007
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3008,
+   "end_frame": 3011
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3012,
+   "end_frame": 3013
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3014,
+   "end_frame": 3015
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3016,
+   "end_frame": 3017
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3018,
+   "end_frame": 3018
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3019,
+   "end_frame": 3020
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3021,
+   "end_frame": 3022
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3023,
+   "end_frame": 3023
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3024,
+   "end_frame": 3024
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3025,
+   "end_frame": 3025
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3026,
+   "end_frame": 3027
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3028,
+   "end_frame": 3029
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3030,
+   "end_frame": 3030
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3031,
+   "end_frame": 3031
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3032,
+   "end_frame": 3032
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3033,
+   "end_frame": 3033
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3034,
+   "end_frame": 3037
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3038,
+   "end_frame": 3041
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3042,
+   "end_frame": 3042
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3043,
+   "end_frame": 3043
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3044,
+   "end_frame": 3044
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3045,
+   "end_frame": 3045
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3046,
+   "end_frame": 3046
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3047,
+   "end_frame": 3047
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3048,
+   "end_frame": 3048
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3049,
+   "end_frame": 3050
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3051,
+   "end_frame": 3051
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3052,
+   "end_frame": 3052
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3053,
+   "end_frame": 3053
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3054,
+   "end_frame": 3055
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3056,
+   "end_frame": 3057
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3058,
+   "end_frame": 3059
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3060,
+   "end_frame": 3061
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3062,
+   "end_frame": 3063
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3064,
+   "end_frame": 3065
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3066,
+   "end_frame": 3066
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3067,
+   "end_frame": 3068
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3069,
+   "end_frame": 3070
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3071,
+   "end_frame": 3071
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3072,
+   "end_frame": 3072
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3073,
+   "end_frame": 3073
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3074,
+   "end_frame": 3074
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3075,
+   "end_frame": 3076
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3077,
+   "end_frame": 3078
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3079,
+   "end_frame": 3079
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3080,
+   "end_frame": 3080
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3081,
+   "end_frame": 3081
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3082,
+   "end_frame": 3083
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3084,
+   "end_frame": 3085
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3086,
+   "end_frame": 3087
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3088,
+   "end_frame": 3091
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3092,
+   "end_frame": 3093
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3094,
+   "end_frame": 3095
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3096,
+   "end_frame": 3097
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3098,
+   "end_frame": 3098
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3099,
+   "end_frame": 3100
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3101,
+   "end_frame": 3102
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3103,
+   "end_frame": 3103
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3104,
+   "end_frame": 3104
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3105,
+   "end_frame": 3105
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3106,
+   "end_frame": 3107
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3108,
+   "end_frame": 3109
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3110,
+   "end_frame": 3110
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3111,
+   "end_frame": 3111
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3112,
+   "end_frame": 3112
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3113,
+   "end_frame": 3113
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3114,
+   "end_frame": 3117
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3118,
+   "end_frame": 3121
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3122,
+   "end_frame": 3122
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3123,
+   "end_frame": 3123
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3124,
+   "end_frame": 3124
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3125,
+   "end_frame": 3125
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3126,
+   "end_frame": 3126
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3127,
+   "end_frame": 3127
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3128,
+   "end_frame": 3128
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3129,
+   "end_frame": 3130
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3131,
+   "end_frame": 3131
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3132,
+   "end_frame": 3132
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3133,
+   "end_frame": 3133
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3134,
+   "end_frame": 3135
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3136,
+   "end_frame": 3137
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3138,
+   "end_frame": 3139
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3140,
+   "end_frame": 3141
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3142,
+   "end_frame": 3143
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3144,
+   "end_frame": 3145
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3146,
+   "end_frame": 3146
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3147,
+   "end_frame": 3148
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3149,
+   "end_frame": 3150
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3151,
+   "end_frame": 3151
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3152,
+   "end_frame": 3152
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3153,
+   "end_frame": 3153
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3154,
+   "end_frame": 3154
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3155,
+   "end_frame": 3156
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3157,
+   "end_frame": 3158
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3159,
+   "end_frame": 3159
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3160,
+   "end_frame": 3160
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3161,
+   "end_frame": 3161
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3162,
+   "end_frame": 3163
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3164,
+   "end_frame": 3165
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3166,
+   "end_frame": 3167
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3168,
+   "end_frame": 3171
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3172,
+   "end_frame": 3173
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3174,
+   "end_frame": 3175
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3176,
+   "end_frame": 3177
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3178,
+   "end_frame": 3178
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3179,
+   "end_frame": 3180
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3181,
+   "end_frame": 3182
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3183,
+   "end_frame": 3183
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3184,
+   "end_frame": 3184
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3185,
+   "end_frame": 3185
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3186,
+   "end_frame": 3187
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3188,
+   "end_frame": 3189
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3190,
+   "end_frame": 3190
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3191,
+   "end_frame": 3191
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3192,
+   "end_frame": 3192
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3193,
+   "end_frame": 3193
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3194,
+   "end_frame": 3197
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3198,
+   "end_frame": 3201
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3202,
+   "end_frame": 3202
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3203,
+   "end_frame": 3203
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3204,
+   "end_frame": 3204
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3205,
+   "end_frame": 3205
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3206,
+   "end_frame": 3206
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3207,
+   "end_frame": 3207
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3208,
+   "end_frame": 3208
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3209,
+   "end_frame": 3210
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3211,
+   "end_frame": 3211
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3212,
+   "end_frame": 3212
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3213,
+   "end_frame": 3213
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3214,
+   "end_frame": 3215
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3216,
+   "end_frame": 3217
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3218,
+   "end_frame": 3219
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3220,
+   "end_frame": 3221
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3222,
+   "end_frame": 3223
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3224,
+   "end_frame": 3225
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3226,
+   "end_frame": 3226
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3227,
+   "end_frame": 3228
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3229,
+   "end_frame": 3230
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3231,
+   "end_frame": 3231
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3232,
+   "end_frame": 3232
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3233,
+   "end_frame": 3233
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3234,
+   "end_frame": 3234
+  },
+  {
+   "label": "5/6",
+   "caption": "The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is 146 g. They go back on the rack for their own run.",
+   "start_frame": 3235,
+   "end_frame": 3239
+  },
+  {
+   "label": "6/6",
+   "caption": "Made up: four Al-10Si cups, 172.3 g together, on the MiR250 for the rePowder, and four 90/10 Cu-Ni cups on the rack, 584.7 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe_pressed.json). Tray B goes back into storage.",
+   "start_frame": 3240,
+   "end_frame": 3247
+  },
+  {
+   "label": "6/6",
+   "caption": "Made up: four Al-10Si cups, 172.3 g together, on the MiR250 for the rePowder, and four 90/10 Cu-Ni cups on the rack, 584.7 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe_pressed.json). Tray B goes back into storage.",
+   "start_frame": 3248,
+   "end_frame": 3273
+  },
+  {
+   "label": "6/6",
+   "caption": "Made up: four Al-10Si cups, 172.3 g together, on the MiR250 for the rePowder, and four 90/10 Cu-Ni cups on the rack, 584.7 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe_pressed.json). Tray B goes back into storage.",
+   "start_frame": 3274,
+   "end_frame": 3282
+  },
+  {
+   "label": "6/6",
+   "caption": "Made up: four Al-10Si cups, 172.3 g together, on the MiR250 for the rePowder, and four 90/10 Cu-Ni cups on the rack, 584.7 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe_pressed.json). Tray B goes back into storage.",
+   "start_frame": 3283,
+   "end_frame": 3292
+  },
+  {
+   "label": "6/6",
+   "caption": "Made up: four Al-10Si cups, 172.3 g together, on the MiR250 for the rePowder, and four 90/10 Cu-Ni cups on the rack, 584.7 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe_pressed.json). Tray B goes back into storage.",
+   "start_frame": 3293,
+   "end_frame": 3318
+  },
+  {
+   "label": "6/6",
+   "caption": "Made up: four Al-10Si cups, 172.3 g together, on the MiR250 for the rePowder, and four 90/10 Cu-Ni cups on the rack, 584.7 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe_pressed.json). Tray B goes back into storage.",
+   "start_frame": 3323,
+   "end_frame": 3370
+  }
+ ],
+ "stills": {
+  "dose": 395,
+  "weigh": 425,
+  "press": 1196,
+  "reweigh": 1449,
+  "clean": 1616
+ },
+ "reweighed_after_press": {
+  "cup1": {
+   "before_press_g": 39.9116,
+   "plug_g": 3.17,
+   "expected_g": 43.0816,
+   "measured_g": 43.0813,
+   "difference_mg": -0.3
+  },
+  "cup2": {
+   "before_press_g": 39.9071,
+   "plug_g": 3.17,
+   "expected_g": 43.0771,
+   "measured_g": 43.0773,
+   "difference_mg": 0.2
+  },
+  "cup3": {
+   "before_press_g": 39.912,
+   "plug_g": 3.17,
+   "expected_g": 43.082,
+   "measured_g": 43.0816,
+   "difference_mg": -0.4
+  },
+  "cup4": {
+   "before_press_g": 39.909,
+   "plug_g": 3.17,
+   "expected_g": 43.079,
+   "measured_g": 43.0791,
+   "difference_mg": 0.1
+  },
+  "cup5": {
+   "before_press_g": 135.8633,
+   "plug_g": 10.49,
+   "expected_g": 146.3533,
+   "measured_g": 146.3531,
+   "difference_mg": -0.2
+  },
+  "cup6": {
+   "before_press_g": 135.5975,
+   "plug_g": 10.49,
+   "expected_g": 146.0875,
+   "measured_g": 146.0878,
+   "difference_mg": 0.3
+  },
+  "cup7": {
+   "before_press_g": 135.7442,
+   "plug_g": 10.49,
+   "expected_g": 146.2342,
+   "measured_g": 146.2341,
+   "difference_mg": -0.1
+  },
+  "cup8": {
+   "before_press_g": 135.5704,
+   "plug_g": 10.49,
+   "expected_g": 146.0604,
+   "measured_g": 146.0599,
+   "difference_mg": -0.5
+  }
+ },
+ "render": "1080p (out/hd/), audited as it rendered; out/mp4/ is a 720p copy"
+}

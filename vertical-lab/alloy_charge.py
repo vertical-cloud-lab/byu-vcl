@@ -1064,6 +1064,7 @@ def movie():
         cl, vp = K.cl, K.vp
         cam_bore = cam_near(vp.die_top(), (-330.0, -560.0, 330.0), (40.0, 0.0, 30.0))
         L.note(3, "Press", "the bore: brushed and vacuumed")
+        L.note(0, "Arm", "the bore wand: the die's bore")
         sc.step(st, cap, 0.7 * f, vp.to(e=0.0), hold=H(0.05), cam_to=cam_bore if detail else None)
         gw = cl.grasp_rest()
         gd = cl.grasp_die()

@@ -24,6 +24,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import carousel as C        # noqa: E402
+C.STATION = "r9"            # round 14 made the dose post ("r14") the default; this study is of rounds 9-13's pedestal
 
 CL, CP = C.CL, C.CP
 OUT = HERE / "out"
