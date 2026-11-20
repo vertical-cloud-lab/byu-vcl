@@ -128,7 +128,7 @@ the transducer's cable and cooling air, and whether the plate may move while it 
 | Step | In the cell | How |
 | --- | --- | --- |
 | Paper under the opening | arm | A tray on the MiR under the door (ours) |
-| Powder brushed from the plate, cone, view port and bowl into the cup; dust settles | **arm 2** | Clip `atom_container` |
+| Powder brushed from the plate, cone, view port and bowl into the cup; dust settles | **arm 2** | Clip `atom_container`. Round 14: the brush has a square grip between two collars and a V-rest with a fin slot, and **one disposable head per run** from a magazine on its rest, stripped into a grounded can after (`atom_brush.py`; ultrasonic IPA cleaning rejected, [`atom_latch_container.md`](atom_latch_container.md)) |
 | **Cup's valve closed; cup removed**; powder into a jar; cup cleaned | **arms 1 and 2** | Clip `atom_container`; the jar and its 6-character ID go on through chapter 3 |
 | Splashes, bowl metal and leftovers weighed separately | arm | On chapter 1's balance |
 | Door, sonotrode and plate cleaned; **plate off if cracked**; never ground; one alloy per plate; condition logged | arm 2 | Clip `atom_plate` |
@@ -157,9 +157,13 @@ The lab's rules, and what each becomes when an arm does the work:
 - **Combustible metal dust: bonding and grounding.** The vacuum's ground chain is checked before every use, joint by
   joint, to 0.1 Ω (UL 1213 par. 22 via Nilfisk's manual; byu-vcl PR 80); the arm does this on a fixture
   ([`atom_vacuum.md`](atom_vacuum.md)). Every tool that touches powder (the wand, the brushes, the scraper) is metal or
-  conductive and bonded through the arm's flange to the MiR's ground and the building's (ours: a bonding lead from the
-  MiR to a floor point at each station, to be checked by EHS). The vacuum SOP's isolated-conductor sweep covers the
-  MiRs and their carried parts: every metal object near the powder bonded or out of the zone.
+  conductive and bonded through the arm's flange to the MiR's ground and the building's. Round 14 (ours, to be checked
+  by EHS; `atom_ground.py`, [`atom_vacuum.md`](atom_vacuum.md)): a stainless plate set flush in the floor at every spot
+  a MiR250 parks to work at the atomizer, its leads in a floor channel to the area's ground bar; each MiR250 lowers two
+  sprung copper-graphite shoes onto it when parked, and no arm moves near the powder until shoe to shoe and plate to bar
+  both read 1 ohm or less (the MiR's bond lamp turns green). Nothing to clip on, nothing trailing. Shown in the vacuum
+  clip and on both units in chapter 2. The vacuum SOP's isolated-conductor sweep covers the MiRs and their carried
+  parts: every metal object near the powder bonded or out of the zone.
 - **A Class D extinguisher at the station**, never water, CO₂ or ABC. The two units stay outside the yellow lines
   while powder is out unless they are working.
 - **Hearing protection while the ultrasonics or induction run**, the full-face P3 respirator before the chamber
