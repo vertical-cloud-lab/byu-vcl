@@ -415,6 +415,10 @@ def opening() -> dict:
             x2, x3 = sorted((sx * ow, sx * (ow - 8)))
             w = w.union(box(x2, yb0, z, x3, yb1, z + 4))
         walls = w if walls is None else walls.union(w)
+    # round 14: a window in the right-hand wall for the bay's dock (coupling.DOCK: y 170-442 on the tray, up to 158 mm
+    # over its underside), as its pulled-back head passes through it (the hookups clip's audit: 50 mm "into bay side
+    # walls"); the column walls' windows at the slots are drawn by the clips that show the slot docks
+    walls = walls.cut(box(ow - 9, Y_OPEN + 165, Z_OPEN - 22, ow + 13, Y_OPEN + 447, Z_OPEN + 165))
     p["bay side walls"] = (walls, "vlm_bay", "bay")
     # round 14: the roof, between the side walls, from the front panel to 1 mm short of the shutter's front face
     roof = box(-ow, yb0, BAY_ROOF_Z, ow, yb1, BAY_ROOF_Z + BAY_ROOF_T)
@@ -451,6 +455,10 @@ def tray(key: str) -> dict:
     pan = box(-w / 2, -d / 2, 0, w / 2, d / 2, T_FLOOR + T_RIM)
     pan = pan.cut(box(-w / 2 + 12, -d / 2 + 12, T_FLOOR, w / 2 - 12, d / 2 - 12, T_FLOOR + T_RIM + 1))
     pan = pan.cut(box(-w / 2 + 12, -d / 2 - 1, T_FLOOR + 12, w / 2 - 12, -d / 2 + 13, T_FLOOR + T_RIM + 1))  # low front lip
+    # round 14: a notch in the right-hand rim where the coupling's plate sits (coupling.YC 280 +- 100 mm), so a dock's
+    # guide pins and noses reach the plate through the rim, not through solid sheet (the services and hookups clips'
+    # mover audits: the pins 25 mm "into tray A")
+    pan = pan.cut(box(w / 2 - 13, d / 2 - 152 - 100, T_FLOOR + 3, w / 2 + 1, d / 2 - 152 + 100, T_FLOOR + T_RIM + 1))
     p[f"tray {key}"] = (pan, "vlm_tray", f"tray_{key}")
     # the tray's own socket at the back right, where the slot's connector meets it, and a power strip
     p[f"tray {key} socket"] = (box(w / 2 - 250, d / 2 - 50, T_FLOOR, w / 2 - 150, d / 2 - 12, T_FLOOR + 70), "vlm_power",

@@ -391,7 +391,7 @@ the tilt does the rest (`bay_mount_check()`).
 | Unit | Where | Aim | Wide sees of the tray | Of the room | Arm, least gap |
 |---|---|---|---|---|---|
 | back | middle back, pan axis at y -645, 10 mm off the shutter | forward, 64 deg down | 94 % | 28 % | 315 mm |
-| front | middle front, y -1350, just behind the header's LED light | back, 61 deg down | 82 % | 0 % | 183 mm |
+| front | middle front, y -1350, just behind the header's LED light | back, 61 deg down | 82 % | 0 % | 180 mm |
 
 - **"Of the room"** is the share of the Wide's picture whose rays leave through the opening before they meet the
   tray's floor (`out_of_bay`).
@@ -436,6 +436,18 @@ The fixes:
 Now nothing on any of the twelve trays touches. The nearest pairs are the data line 3.5 mm over the box, and the
 cord, the UPS and the dock plate more than 10 mm from the lines. The lines lie side by side in a loom, so they touch
 each other, as tubes in a bundle do.
+
+**Two cut-outs the dock always needed** (vlm.py), both found by the services and hookups clips' audits of moving
+parts:
+
+| Where | Cut | The audit before |
+|---|---|---|
+| Each tray's right-hand rim, where the coupling's plate sits | a notch, y 180-380 mm on the tray | a dock's guide pins and noses 25 mm "into tray A" |
+| The bay's right-hand wall | a window for the bay's dock | its head 50 mm "into bay side walls" as it pulled back and came in |
+
+Round 13's services audit had the first, 10 frames. With both cut, the services, hookups and bay-camera clips are at
+0 frames, arm and moving parts alike. The column walls' windows at the slots aren't drawn; the clips that show a slot
+dock fade those walls out.
 
 ### Round 14: cabling on the two-Shuttle floor, without the rail
 

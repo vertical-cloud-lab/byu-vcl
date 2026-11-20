@@ -291,7 +291,7 @@ def _tray_starts(tray: str | None = None) -> dict:
 
 def line_paths(tray: str | None = None) -> dict:
     """{medium: [(x, y, z)]} of the tray's lines, tray frame: from the coupling's stubs up over the bracket, then mains
-    into the UPS's back (the UPS feeds the tray's power strip) and the rest back to the rim and along it, over the
+    into the tray's distribution box (which feeds the UPS and the unbacked strip) and the rest back to the rim and along it, over the
     power strip, to a manifold block left of the UPS. tray: no vacuum line unless it is in CP.VAC_TRAYS (None: with)."""
     out = {}
     ux = UPS_AT[0] + UPS["d"] / 2                       # the UPS's back, facing the plate: x = 1060
@@ -1018,7 +1018,7 @@ CAM_H = CAM_PIVOT - TILT_AXIS[2]        # the block's height on a tray post: 543
 #   picture looks out through the opening into the room (28 %), so its stream wants a privacy mask there.
 # * front: the middle of the front, just behind the header and its LED light, looking back and down: the instruments'
 #   fronts, where the arm works, 83 % of the floor and none of the room. Checked against the arm on every reach.py pose
-#   (bay_arm_clearance(): 183 mm at the least, capsules of 75 mm round the links); a unit in a front corner, looking
+#   (bay_arm_clearance(): 180 mm at the least, capsules of 75 mm round the links); a unit in a front corner, looking
 #   across, kept 313 mm but saw 11-32 % of the room (round 14's comparison, notes/services.md).
 BAY_SHELF = dict(w=60.0, d=72.0, t=6.0, y0=-26.0)      # the shelf under the yoke, pan-axis frame (y from -26 to +46)
 BAY_DROP = dict(y=36.0, foot=60.0, foot_t=6.0)         # the drop's centre behind the pan axis; the foot on the roof
@@ -1799,7 +1799,8 @@ def movie_hookups(data, idata):
             ("mains contactor: closed", at_slot(*vp["power"]), (0.88, 0.26)),
             ("Ethernet: linked", at_slot(*vp["data"]), (0.88, 0.34)),
             ("dock head pressed on the plate", at_slot(X_FACE + 10, PLATE_Y + 70, PLATE_Z0 + PLATE_H), (0.88, 0.52)),
-            ("lines on the tray: mains into the UPS,\nthe rest along the back rim", at_slot(1100, 400, 70), (0.10, 0.62))]
+            ("lines on the tray: mains into its distribution box,\nwhich feeds the UPS; the rest along the back rim",
+             at_slot(1100, 400, 70), (0.10, 0.62))]
     sc.step(f"2/{n}", f"Stored in {slot}, docked: the dock in the side wall holds the plate home. Mains, Ethernet, "
             "compressed air, nitrogen and chilled water in and out are all live (the slow markers show which way each goes), "
             "from the service riser through the coupling to the tray; the UPS charges. Tray A's instruments are drawn faint.",

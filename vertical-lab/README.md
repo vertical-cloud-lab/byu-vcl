@@ -53,6 +53,14 @@ charge chapter, the atomizer and the narration). Each point below links its note
   - The close-up is re-rendered.
 - **The tray's lines, its mains and the UPS's cord, re-routed.** They ran through the tray's distribution box and
   across each other, a round-12 fault (notes/services.md).
+- **What this adds, counted from the model** (`out/round14_a_bom.json`):
+  - 23 AirGradient ONEs (12 trays, 11 stations), USD 230 each;
+  - four bay camera units, two per bay;
+  - the vacuum modules: sockets on 3 trays, plugs on 5 docks, blind carriers on 9 trays;
+  - two HiScroll 12 pumps, USD 8.3-9k each;
+  - 20 high-bay lights.
+
+  The priced part comes to about USD 22,600. The rest is for #331's quote list.
 
 Running it (round 14, A; renders at 1080p with their own audits, two heavy jobs at a time through `runner_guard.py`):
 
