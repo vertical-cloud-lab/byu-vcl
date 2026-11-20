@@ -185,23 +185,38 @@ def floor_figure(path: Path) -> None:
     for yy in (y0, y1):                                                   # 75 mm yellow lane edges
         ax.add_patch(Rectangle((x0, yy - 37), x1 - x0, 75, fc=Y, ec="none", zorder=3))
     mir = (580.0, 890.0)                                                  # MiR250 footprint, props.MIR
+    zones = []
     for k, dk in plan["floor"]["docks"].items():
         dx, dy = dk["dock"][:2]
         a = dk["dock"][2] if len(dk["dock"]) > 2 else 0
         w, h = (mir[1], mir[0]) if abs(np.sin(np.radians(a))) > 0.7 else (mir[0], mir[1])
-        # the dock's operating hazard zone: the docked MiR plus 0.5 m round it, hatched black/yellow
-        ax.add_patch(Rectangle((dx - w / 2 - 500, dy - h / 2 - 500), w + 1000, h + 1000, fc=Y, ec="#1f1f1f",
-                               hatch="///", lw=0.8, zorder=2.5, alpha=0.9))
-        ax.add_patch(Rectangle((dx - w / 2, dy - h / 2), w, h, fc="none", ec="white", lw=2.2, zorder=3))
-    # keep-clear and safety equipment: illustrative spots until the safety-assets PR places the extinguishers
-    keep = [(-3300, -2300), (2350, -2300), (8600, -6100), (-8000, -6100)]
-    for kx, ky in keep:
-        ax.add_patch(Rectangle((kx - 450, ky - 450), 900, 900, fc="white", ec=FLOOR["keep clear"]["rgb"], lw=2.5,
-                               hatch="\\\\", zorder=3))
-    ax.add_patch(Rectangle((-5200 - 450, -6150), 900, 600, fc=FLOOR["safety equipment"]["rgb"], ec="none", zorder=3))
+        # the dock's operating hazard zone, 0.5 m round the docked MiR: its edge in black/yellow tape (not a filled
+        # area), the dock itself outlined in white
+        z = (dx - w / 2 - 500, dy - h / 2 - 500, w + 1000, h + 1000)
+        zones.append(z)
+        ax.add_patch(Rectangle(z[:2], z[2], z[3], fill=False, ec=Y, lw=4.5, zorder=3))
+        ax.add_patch(Rectangle(z[:2], z[2], z[3], fill=False, ec="#1f1f1f", lw=4.5, ls=(0, (2, 2)), zorder=3.1))
+        ax.add_patch(Rectangle((dx - w / 2, dy - h / 2), w, h, fill=False, ec="white", lw=2.2, zorder=3))
+    # keep-clear and safety-equipment spots: illustrative, put where nothing else is (free floor next to the rows)
+    taken = [(a, c, b - a, d - c) for a, b, c, d in plan["floor"]["machines"].values()] + zones
+
+    def free(cx, cy, half=500):
+        return all(cx + half < x or cx - half > x + w or cy + half < y or cy - half > y + h for x, y, w, h in taken)
+    spots = []
+    for cy, xs in ((-1950.0, (-9300, 9800)), (-5900.0, (-9500, -2700, 9300))):
+        for x_want in xs:
+            cands = sorted((abs(cx - x_want), cx) for cx in range(-10000, 10001, 100) if free(cx, cy))
+            if cands:
+                spots.append((cands[0][1], cy))
+                taken.append((cands[0][1] - 450, cy - 450, 900, 900))
+    for i, (kx, ky) in enumerate(spots):
+        green = i == len(spots) - 1
+        ax.add_patch(Rectangle((kx - 450, ky - 450), 900, 900, fc=FLOOR["safety equipment"]["rgb"] if green else
+                               "white", ec="none" if green else FLOOR["keep clear"]["rgb"], lw=2.5,
+                               hatch=None if green else "\\\\", zorder=3))
     handles = [Patch(fc=Y, ec="none", label="yellow: lane edge (the MiR250s' aisle)"),
-               Patch(fc=Y, ec="#1f1f1f", hatch="///", label="black/yellow: operating hazard zone, 0.5 m round "
-                     "each docked MiR250 (ISO 3691-4)"),
+               Patch(fc="white", ec=Y, lw=3, ls="--", label="black/yellow tape: the edge of an operating hazard "
+                     "zone, 0.5 m round each docked MiR250 (ISO 3691-4)"),
                Patch(fc="white", ec="#8a8f98", label="white: where a robot docks, or a cart, bin or stand goes"),
                Patch(fc="white", ec=FLOOR["keep clear"]["rgb"], hatch="\\\\", label="red/white: keep clear "
                      "(extinguisher, electrical panel, eyewash); spots illustrative"),
