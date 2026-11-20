@@ -108,12 +108,13 @@ Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), th
     ([`notes/vacuum_press.md`](notes/vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20)).
 - **Each cup weighed again after the press fit.** It goes back to the HR-202i and is read against its weight before
   pressing plus its plug's (±1.0 mg), recorded in the clip's JSON.
-- **Re-rendered at 1080p, 12 fps, each checking its own frames** (`VIZ3D_AUDIT=1`, round 11's strict rules):
+- **Re-rendered at 1080p, each checking its own frames** (`VIZ3D_AUDIT=1`, round 11's strict rules):
 
   | Clip | Length | Frames in collision (arm; movers; all) | Round 13 | Files |
   |---|---|---|---|---|
   | Chapter 1, `alloy_charge.py` | 5:10 (3,723 frames) | **0 of 2,732**; 0; 0 | 0 of 2,147 | [1080p](out/hd/alloy_charge.mp4), [720p](out/mp4/alloy_charge.mp4), [GIF](out/alloy_charge.gif), [audit](out/collisions/alloy_charge.json) |
   | 9:22, `animate.py workflow` | 1:48 (1,300 frames) | **0 of 1,144**; 0; 0 | 5 (the vial in Ben's holder) | [1080p](out/hd/vlm_workflow.mp4), [720p](out/mp4/vlm_workflow.mp4), [GIF](out/vlm_workflow.gif), [audit](out/collisions/vlm_workflow.json) |
+  | Maintenance, `upkeep_clip.py` (10 fps; its balance check moved to the new station) | 2:07 (1,271 frames) | **0 of 1,016**; 1 (part 3: the person's glove 3 mm into the iMicro's panel); 1 | 0 | [1080p](out/hd/upkeep_clip.mp4), [720p](out/mp4/upkeep_clip.mp4), [GIF](out/upkeep_clip.gif), [audit](out/collisions/upkeep_clip.json) |
 
   The 9:22 clip is drawn in the whole lab as run A left it at `51a72c1` (the 9150 mm Shuttles, trays A-S, the bay's
   roof, the coupling's vacuum line), its opening and closing views `setup_lab.ORBIT`'s last as A moved it.
