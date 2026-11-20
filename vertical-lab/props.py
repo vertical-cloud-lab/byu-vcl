@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 import math
+import os
 
 import numpy as np
 import pyvista as pv
@@ -153,7 +154,7 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
 # Where (posts, heights, aims) comes from base_cams_sweep.py: every arm's frames in every clip, swept in the MiR's
 # frame. Nothing on an 800 x 580 base is out of a UR10e's reach, and in the clips the arm passes over every part of the
 # cabinet's rim between about 1.0 and 2.0 m; these are the places it passes least (notes/base_cameras.md).
-BASE_CAMS_ON = True
+BASE_CAMS_ON = os.environ.get("VLAB_BASE_CAMS", "1") != "0"     # VLAB_BASE_CAMS=0: the MiR250 without them, as before #364
 CM3W = dict(hfov=102.0, vfov=67.0, dfov=120.0, px=(4608, 2592))           # raspberrypi.com, Camera Module 3 Wide
 BOX = dict(w=68.0, h=96.0, d=46.0, lens_d=9.0, lens_out=3.0, lens_up=26.0)  # printed box, portrait: the Wide near
 #   the top of its front face, the Pi 5 (85 x 56) standing behind it; w across the picture, h up it, d along the view
@@ -168,7 +169,9 @@ BASE_CAMS = {
     # corner for the mast, are where the arms pass least (notes/base_cameras.md, "Where the arms go")
     # kind "case": only the camera in its case on the post's top, its Pi 5 on the cabinet's end face below the top,
     # on a 300 mm cable (#364's first audits: the arms' held parts pass where a whole camera-and-Pi box stood)
-    "L": dict(what="left side camera", post=(-(CAB_X + 11.0), -60.0), sec=(20.0, 20.0), z=(560.0, 845.0),
+    # L stands 35 mm further back than R: chapter 2's tong hangs in a sleeve on the cabinet's left end at y = 0
+    # (alloy_atomize.TONG_AT), and the open 2F-85 reaches 50 mm either side of it
+    "L": dict(what="left side camera", post=(-(CAB_X + 11.0), -95.0), sec=(20.0, 20.0), z=(560.0, 845.0),
               aim=(-250.0, 800.0, 1000.0), kind="case"),
     "R": dict(what="right side camera", post=(CAB_X + 11.0, -60.0), sec=(20.0, 20.0), z=(560.0, 845.0),
               aim=(250.0, 800.0, 1000.0), kind="case"),

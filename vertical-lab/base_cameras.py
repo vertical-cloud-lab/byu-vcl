@@ -132,7 +132,7 @@ def save_view(sc, site: str, k: str):
 
 def labels_for(sc, Wm, opt, z_lift=0.0):
     out = []
-    pos = {"M": (0.56, 0.11), "L": (0.10, 0.52), "R": (0.86, 0.45)}
+    pos = {"M": (0.66, 0.16), "L": (0.10, 0.52), "R": (0.86, 0.45)}
     for k in ("M", "L", "R"):
         top = P.base_camera_geometry(k)["box_centre"]
         p = (Wm @ np.r_[top, 1.0])[:3] + (0, 0, z_lift)
@@ -167,7 +167,7 @@ def part_vlm():
     Wm = sc.world("amr")
     opt = add_frusta(sc, Wm)
     L.svc_lines = [("Base", "MiR250 at Shuttle 1's opening"), (f"Tray {k}", "at the opening"),
-                   ("Cameras", "3 x Camera Module 3 Wide, a Pi 5 each")]
+                   ("Cameras", "3 x Camera Module 3 Wide + Pi 5")]
     L.gauges()
     # the arm's work: the bay-camera clip's vial from the rack to the doser's shuttle fork (services.movie_bay_camera),
     # the long moves planned round everything drawn (robot.joint_to), the ones in and out of a seat straight lines
@@ -262,7 +262,7 @@ def part_atomizer():
     q_park = rb.q.copy()
     look_T = AB.tcp(vp + vn * 220.0, -vn)
     near_T = AB.tcp(vp + vn * 150.0, -vn)
-    AB.status(sc, Base="MiR250 at the rePowder's front", Cameras="3 x Camera Module 3 Wide, a Pi 5 each")
+    AB.status(sc, Base="MiR250 at the rePowder's front", Cameras="3 x Camera Module 3 Wide + Pi 5")
     over = AB.cam((2300, -3300, 2300), (-80, -500, 1150))
     sc.cam = over
     sc.view_angle = 30.0

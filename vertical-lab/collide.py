@@ -636,7 +636,8 @@ def path_hits(chk: Checker, path, close, world=None, allow=None) -> list[tuple[i
     return out
 
 
-def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 2500, step: float = 0.35):
+def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 2500, step: float = 0.35,
+                    retry: bool = True):
     """A collision-free joint path [q0, ..., q1] (list of arrays), or None. The straight line if it is clear,
     otherwise RRT-Connect, shortcut. What the gripper or the held part touches at either end is allowed throughout."""
     q0, q1 = np.asarray(q0, float), np.asarray(q1, float)
@@ -705,6 +706,14 @@ def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 250
                 return path, dict(planned=True, iterations=it + 1, nodes=len(A) + len(B), waypoints=len(path))
         A, pa, B, pb = B, pb, A, pa
         swapped = not swapped
+    if retry:
+        # #364: one more try, three times as long and from another seed, before the move falls back to the straight
+        # joint line. The base cameras' mast narrows some ways round over the cabinet's back-left corner, and a
+        # 2,500-iteration search missed one in chapter 3
+        got, info = plan_joint_move(chk, q0, q1, close, seed=seed + 7919, iters=3 * iters, step=step, retry=False)
+        if got is not None:
+            return got, dict(info, retried=True)
+        return None, dict(reason=f"no path in {iters} iterations, nor in {3 * iters} more")
     return None, dict(reason=f"no path in {iters} iterations")
 
 
