@@ -1,0 +1,157 @@
+{
+ "note": "Pieces cut with bambu/studio/cut_recording.py (PR 234 branch @49677cf) from 5 min x11grab segments, then concatenated and scaled to 960x540 (crf 32). The login (18:39:15-18:40:05), the home/print-history pages (account name), and the A1 mini checks (20:44:45-20:48:40, whole-room camera) are not in any piece. Raw recording deleted with the runner.",
+ "plans": {
+  "intro": {
+   "day": "2026-11-19",
+   "parts": [
+    {
+     "from": "18:38:59",
+     "to": "18:39:15",
+     "speed": 2,
+     "label": "Bambu Studio on the runner, logged out (the login is cut)"
+    },
+    {
+     "from": "18:40:05",
+     "to": "18:41:42",
+     "speed": 2,
+     "label": "Device page: H2D idle, last job's part still on the plate; nozzles and HMS"
+    },
+    {
+     "from": "18:47:10",
+     "to": "18:50:00",
+     "speed": 4,
+     "label": "Prepare: Sync info; left 0.4 mm nozzle chosen (right is 0.6 mm)"
+    },
+    {
+     "from": "18:57:45",
+     "to": "18:58:35",
+     "speed": 2,
+     "label": "After the plate was cleared: live view"
+    },
+    {
+     "from": "19:49:00",
+     "to": "20:03:00",
+     "speed": 4,
+     "label": "Import rack, 4 keys and bar; 0.20 mm Standard, 3 walls, 20 %; slice (left nozzle only)"
+    },
+    {
+     "from": "20:03:00",
+     "to": "20:06:40",
+     "speed": 4,
+     "label": "Pre-send frame posted; 90 s hold with the thread polled"
+    },
+    {
+     "from": "20:06:40",
+     "to": "20:10:00",
+     "speed": 2,
+     "label": "Send dialog, final frame, Send at 20:08:58 UTC, printing"
+    }
+   ],
+   "blur": [
+    [
+     "18:40:25",
+     "18:41:42"
+    ],
+    [
+     "18:57:45",
+     "18:58:35"
+    ],
+    [
+     "20:03:30",
+     "20:10:00"
+    ]
+   ]
+  },
+  "print1": {
+   "day": "2026-11-19",
+   "parts": [
+    {
+     "from": "20:10:00",
+     "to": "20:44:45",
+     "speed": 60,
+     "label": "Start-up, first layer, layers 1-8"
+    },
+    {
+     "from": "20:48:40",
+     "to": "21:40:00",
+     "speed": 60,
+     "label": "Layers 9-38"
+    }
+   ],
+   "blur": [
+    [
+     "20:10:00",
+     "21:40:00"
+    ]
+   ]
+  },
+  "print2": {
+   "day": "2026-11-19",
+   "parts": [
+    {
+     "from": "21:40:00",
+     "to": "23:10:00",
+     "speed": 60,
+     "label": "Layers 38-89"
+    }
+   ],
+   "blur": [
+    [
+     "21:40:00",
+     "23:10:00"
+    ]
+   ]
+  },
+  "print3": {
+   "day": "2026-11-19",
+   "parts": [
+    {
+     "from": "23:10:00",
+     "to": "23:56:00",
+     "speed": 60,
+     "label": "Layers 89-125: keys and bar finish"
+    }
+   ],
+   "blur": [
+    [
+     "23:10:00",
+     "23:56:00"
+    ]
+   ]
+  },
+  "print4": {
+   "day": "2026-11-19",
+   "parts": [
+    {
+     "from": "23:56:00",
+     "to": "23:59:59",
+     "speed": 60,
+     "label": "Layers 125-134: the rack's pads (this run's watch ends at 00:06 UTC; the print finishes about 00:53)"
+    }
+   ],
+   "blur": [
+    [
+     "23:56:00",
+     "23:59:59"
+    ]
+   ]
+  },
+  "print4b": {
+   "day": "2026-11-20",
+   "parts": [
+    {
+     "from": "00:00:00",
+     "to": "00:06:25",
+     "speed": 60,
+     "label": "."
+    }
+   ],
+   "blur": [
+    [
+     "00:00:00",
+     "00:06:25"
+    ]
+   ]
+  }
+ }
+}

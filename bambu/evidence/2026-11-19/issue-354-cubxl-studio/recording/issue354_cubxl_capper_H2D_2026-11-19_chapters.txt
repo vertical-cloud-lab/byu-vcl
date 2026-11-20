@@ -1,0 +1,12 @@
+0:00 Bambu Studio on the runner, logged out (the login is cut)
+0:08 Device page: H2D idle, last job's part still on the plate; nozzles and HMS
+0:56 Prepare: Sync info; left 0.4 mm nozzle chosen (right is 0.6 mm)
+1:39 After the plate was cleared: live view
+2:04 Import rack, 4 keys and bar; 0.20 mm Standard, 3 walls, 20 %; slice (left nozzle only)
+5:34 Pre-send frame posted; 90 s hold with the thread polled
+6:29 Send dialog, final frame, Send at 20:08:58 UTC, printing
+8:09 Start-up, first layer, layers 1-8
+8:43 Layers 9-38
+9:31 Layers 38-89
+11:01 Layers 89-125: keys and bar finish
+11:47 Layers 125-134: the rack's pads (this run's watch ends at 00:06 UTC; the print finishes about 00:53)

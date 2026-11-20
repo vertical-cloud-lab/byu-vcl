@@ -76,5 +76,22 @@
   "state": "Homing toolhead, layer 0/175, left hotend 118/140 C, right 26/0 C, bed 32/55 C, ETA 00:30 UTC"
  },
  "sent_file": "sent/vial_rack_9x20mL_v2_H2D_0.4L_blackPLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code untouched)",
- "key_design_issue_found_after_send": "The v2 deck keys on this plate have latch-arm tops 0.45 mm (horizontal) under a 45-degree chamfer; the arms jam before the barbs clear a 10.0 mm slot. Fixed as deck_clip_key_v2_1 (commit 98b01a1); not printed in this run. A1 minis checked 20:45-20:47 UTC: Tinkerbell idle but its last part (AOR_tester) still on the plate; Thumbelina starting someone else's AOR_tester job. H2D print left running unchanged."
+ "key_design_issue_found_after_send": "The v2 deck keys on this plate have latch-arm tops 0.45 mm (horizontal) under a 45-degree chamfer; the arms jam before the barbs clear a 10.0 mm slot. Fixed as deck_clip_key_v2_1 (commit 98b01a1); not printed in this run. A1 minis checked 20:45-20:47 UTC: Tinkerbell idle but its last part (AOR_tester) still on the plate; Thumbelina starting someone else's AOR_tester job. H2D print left running unchanged.",
+ "watch": {
+  "tool": "watch_studio.py (Studio Device page OCR, 10 s samples, frames every 5 min)",
+  "from": "2026-11-19T20:11:10Z",
+  "to": "2026-11-20T00:06:29Z",
+  "last_state": "layer 134/175 (81 %), left nozzle 220/220 C, right 41/0 C, bed 55/55 C, ETA 00:53 UTC, no HMS alert or dialog",
+  "not_watched": "00:06 UTC to the finish (~00:53): this job's 6 h limit (~00:36) ends the session first",
+  "events": [
+   "20:44:45-20:48:40 Device page switched to the A1 minis to look for a free printer (none), then back to the H2D",
+   "20:46 live view 'Loading failed [2:2]', restarted with play"
+  ]
+ },
+ "a1_minis": {
+  "Tinkerbell": "idle, its last job's part (blue AOR_tester) on the plate (20:46)",
+  "Thumbelina": "'Part Studio 2 - AOR_tester' Downloading (100%) with the bed at 65/65 C at 18:40 and again at 20:46: possibly stuck, worth a look"
+ },
+ "signed_out": "2026-11-20T00:08:40Z (Studio home > account menu > Log out); Studio closed, ~/.config/BambuStudio and /tmp/bamboo_model deleted 00:08:36",
+ "recording": "recording/issue354_cubxl_capper_H2D_2026-11-19.mp4 (12.0 min, 9.2 MB, chapters in *_chapters.txt)"
 }
