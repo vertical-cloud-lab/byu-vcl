@@ -12,18 +12,26 @@ behind each choice are digested, with links, in [`colour_sources.md`](colour_sou
 
 - **Colour only where a person makes a decision, one meaning per colour in each place it appears, and always with a
   word or shape beside it.** Everything else stays white, grey, black, steel and clear glass. That is Sterling's own
-  rule from the renders ("technicolor jars", "candy-coloured" powder), and the literature agrees: the reviewed AM
-  sources recommend colour *and* a label, and no standard prescribes a colour scheme for powder equipment (Edison,
-  below).
+  rule from the renders ("technicolor jars", "candy-coloured" powder), and the literature agrees:
+  - the reviewed AM sources recommend colour *and* a label;
+  - no standard prescribes a colour scheme for powder equipment (Edison, below);
+  - the FAA's human-factors standard says colour "shall not be introduced solely for aesthetic, stylistic, or
+    decorative purposes".
 - **The code that matters most is the alloy family,** on every tool and container that touches powder: **blue for
   Al, orange for Cu.** Two colours cover the lab today. They stay far apart for every kind of colour vision (at least
   53 in CAM02-UCS, where 1 is a just-noticeable difference).
 - **A third family gets brown, and there is no fourth hue.** With blue and orange in use, a search over 18 product
   colours found only brown, black and white still clearly distinct for all three colour-vision deficiencies. Green and
   purple, the obvious picks, fail for tritan vision. Black and white are what tools come in anyway.
-- **The safety colours stay reserved** (red, orange-on-machines, yellow, green, blue, the radiation trefoil), and
-  everything else takes its convention from a standard: floor marking (OSHA, and ISO 3691-4 for the robots' docks),
-  stack lights (IEC 60204-1), pipe markers (ASME A13.1), wiring (NEC and IEC 60445), cable labels (TIA-606).
+- **The safety colours keep their meanings and are never borrowed.** ANSI Z535.2 gives red danger, orange warning,
+  yellow caution, blue notice and green safety equipment; OSHA 1910.144 gives red fire equipment and danger and yellow
+  caution; 10 CFR 20.1901 gives the magenta-on-yellow radiation trefoil on the XRD and XRF. Everything else follows an
+  existing convention:
+  - floor marking: OSHA, the visual-workplace convention, and ISO 3691-4 with MiR's own guide for the robots' docks;
+  - stack lights: IEC 60204-1;
+  - pipe markers: ASME A13.1;
+  - wiring: NEC and IEC 60445;
+  - cable labels: TIA-606.
 - **The model already has a colour code that would fail.** Chapter 1's funnels carry one hue per powder
   (`charge.FUNNEL_LABEL`): the Ni and Cu funnels, used one after the other for the same Cu-Ni charge, are 6.8 apart
   for protan vision. Under this scheme they carry their family's band and the powder's name.
@@ -39,10 +47,10 @@ things within one.
 | Channel | Colours and meanings | From |
 |---|---|---|
 | **Tools and containers that touch powder** | blue Al family, orange Cu family, brown reserved for a third; grey or black: touches no powder | this scheme |
-| **Floor** | yellow lane edge; white where a robot docks or a cart goes; black/yellow operating hazard zone; red/white keep clear; green safety equipment | OSHA 1910.144, visual-workplace practice, ISO 3691-4 |
+| **Floor** | yellow lane edge; white where a robot docks or a cart goes; black/yellow operating hazard zone; red/white keep clear; green safety equipment | OSHA 1910.176 (marked aisles, any colour), the visual-workplace convention, ISO 3691-4 and MiR's user guide |
 | **Stack lights and beacons** | green running, yellow abnormal or in upkeep, blue waiting for a person, red fault, white idle; fixed order, red at the top | IEC 60204-1 |
-| **Safety signs and equipment** | reserved: red fire and danger, orange dangerous machine parts, yellow caution, green safety equipment, blue mandatory, magenta-on-yellow radiation (the XRD's and XRF's trefoils) | ANSI Z535, ISO 3864, OSHA 1910.144 |
-| **Pipes and the lines to the docks** | ASME A13.1's colour pairs by contents, with the name and flow arrow | ASME A13.1 |
+| **Safety signs and equipment** | reserved: red danger and fire equipment, orange warning, yellow caution, green safety equipment, blue notice or mandatory, magenta-on-yellow radiation (the XRD's and XRF's trefoils) | ANSI Z535.2 (Z535.1 defines only the colours), OSHA 1910.144, ISO 3864, 10 CFR 20.1901 |
+| **Pipes and the lines to the docks** | ASME A13.1's colour pairs by contents, with the name and flow arrow | ASME A13.1 (2026) |
 | **Wiring** | as the code says, in each of the lab's two electrical worlds; never trusted, always labelled | NEC 200.6, 250.119; IEC 60445 |
 | **Network** | one jacket colour, and a label at both ends with the names from the naming PR | TIA-606 |
 
@@ -147,8 +155,17 @@ database already knows a tool's state; the place tells the person.
 ![](../out/colour/floor_bay.png)
 
 - **Five meanings,** each with its own colour or pattern; the rest is bare floor.
-- **ISO 3691-4 operating hazard zones:** where a docked robot comes within 0.5 m of something fixed, which is every
-  dock, the zone is marked in black/yellow.
+- **OSHA prescribes no colours.** It asks for marked aisles (1910.176), and its letters say the lines "may be any color
+  so long as they clearly define the area". The colours here are the visual-workplace convention (yellow lanes, white
+  equipment places, red/white keep-clear, black/yellow hazards).
+- **Operating hazard zones round the docks.** A MiR250 docks within 0.5 m of a station with its personnel detection
+  muted, which ISO 3691-4 calls an operating hazard zone. MiR's user guide (v1.2, section 10.7) puts two rules on it:
+  - it has to be marked with signal tape "at least one meter away from the potentially hazardous area in all
+    directions";
+  - "It is not allowed to have work stations in operating hazard zones."
+
+  So the tape runs 1 m outside each docked robot, and zones that overlap are taped as one. Nothing a person works at,
+  such as the HOLD bin or a spill kit, goes inside one.
 - **No red floor area.** A red "hold" area would sit next to the green safety-equipment squares, and red and green are
   6.9 apart for deutan vision. Holds go in the HOLD bin instead.
 - **The keep-clear and safety-equipment spots are illustrative** until the safety-assets PR places the extinguishers.
@@ -156,15 +173,102 @@ database already knows a tool's state; the place tells the person.
 ## 3. Stack lights and the finale's beacons
 
 - **Colours follow IEC 60204-1:** green running, yellow abnormal (warming up, in upkeep), blue waiting for a person
-  (mandatory action), red fault, white idle.
+  (mandatory action), red fault, white idle. IEC 60073 adds that "the use of only a single means of coding is often
+  insufficient".
 - **Position is the second cue.** Red and green are 12.6 apart for deutan vision, and blue and green 13.1 for tritan,
   so every tower keeps the same order, red at the top.
 - **The finale's beacons already match:** amber for upkeep, red for a fault waiting. A person-needed beacon would be
   blue.
+- **The MiR250 has fixed colours of its own** (user guide v1.2): blue for off, blinking blue for "waiting for a user
+  action", green for normal, red for a stop, yellow while its personnel detection is muted. They mostly agree with IEC
+  60204-1, except that a steady blue MiR is off.
 
-## 4-7. Pipes, wiring, network and gas
+## 4. Pipes and the lines to the docks
 
-(being written in this run from the standards digest, `colour_sources.md`.)
+- **ASME A13.1** (current edition 2026; its colour table is paywalled, so the 2020 pairs from a marker maker's summary
+  are used here) marks a pipe with its contents in words, a flow arrow, and a colour pair by class:
+  - fire-quenching: white on red;
+  - toxic or corrosive: black on orange;
+  - flammable or oxidizing: black on yellow;
+  - combustible: white on brown;
+  - water: white on green;
+  - compressed air: white on blue;
+  - four pairs defined by the user.
+- **For this lab:**
+  - **Air, nitrogen and argon in compressed-air colours, white on blue,** as is usual for inert gases, each named in
+    the legend.
+  - **Chilled water in and out: white on green.**
+  - **Vacuum: one of the user-defined pairs, black on white,** named "VACUUM".
+  - **Where:** markers by every valve, branch and wall penetration, and on the overhead runs. A label sits beside each
+    of the CombiTac's fluid modules at the docks.
+- **The coupling can't be cross-connected anyway.** Each medium has its own module in a fixed place in the frame, so the
+  labels are for the person who works on the lines.
+
+## 5. Gas cylinders: read the label
+
+- **CGA C-7:** "The handler or user of compressed gas containers shall not rely on the color of the container to
+  identify the product."
+- **US suppliers:** Airgas doesn't colour-code its industrial cylinders.
+- **The lab's own gases conflict between conventions.** Its argon (the rePowder, the ICP-MS dewar) would have a dark
+  green shoulder under Europe's EN 1089-3; green is oxygen on a US medical cylinder.
+- **So:** no cylinder colour means anything here. The contents label does, and the pipe marker downstream.
+
+## 6. Wiring: two electrical worlds in one room
+
+- **The two conventions:**
+  - **US 208Y/120 (the trays, most floor machines):** phases conventionally black, red and blue; neutral white or grey
+    (NEC 200.6); ground green or green-yellow (NEC 250.119). The phase colours are not mandated.
+  - **IEC 60445 (the 400 V European machines: the rePowder, the Aconity):** L1 brown, L2 black, L3 grey, neutral blue,
+    earth green-yellow.
+- **The clash:** blue is a phase in the US and the neutral under IEC; grey is a US neutral and an IEC phase.
+- **NEC 210.5(C)(1)** already requires, where more than one voltage system feeds branch circuits, each ungrounded
+  conductor identified by system and phase at every termination, and the scheme posted at each panel.
+- **Recommendation:** do exactly that. Add a label inside each European machine's supply enclosure: "IEC colours:
+  blue = neutral".
+- **Receptacles:**
+  - Orange already means isolated ground (NEC 406.3), so no orange outlets for anything else.
+  - The trays' UPS-backed outlets get a "UPS" label, not a colour. Hospitals mark their critical-branch receptacles
+    with "a distinctive color or marking" (NEC 517.31(E)); a label is enough here.
+
+## 7. Network
+
+- **TIA-606 colour-codes termination labels** ("recommended but not required"). No standard sets jacket colours.
+- **Recommendation:** one jacket colour throughout, as bought, and a printed label at both ends of every cable. The
+  label names the switch port and the device in the naming PR's names (#376: `tray-d-sw/3`, `lonsdale-pc`). A colour
+  per network would add a channel for no decision a person makes.
+
+## 8. Metallography consumables: don't trust the makers' colours
+
+- **Makers' grit colours disagree:**
+  - Buehler colours its diamond discs by grit: red is 75 µm, green 240 µm.
+  - Kemet's red is grit 80 (251 µm), and its green grit 220 (76 µm).
+  - Struers names no colours.
+- **So:** a disc's grit is read from its label and its slot in the PX500's magazine, which the arm already tracks.
+
+## 9. Why so few colours: the human-factors limits
+
+- **MIL-STD-1472H** (5.4.5.6.3): on labels, "the number of different colors shall not exceed five". This scheme uses
+  two on tools, five on the floor and five in the lights.
+- **FAA-HF-STD-010A:** colour must be redundant with "at least one other coding dimension that is independent of the
+  operator's color vision". It also says colour "shall not be introduced solely for aesthetic, stylistic, or
+  decorative purposes", which is Sterling's point about the renders. NASA-STD-3001 asks for "an additional cue" too.
+- **Prevalence:** about 1 in 12 men of Northern European ancestry has red-green colour-vision deficiency (MedlinePlus;
+  Birch 2012: about 8 % of men, 0.4 % of women). Brightness is no backup: "protans may not recognize brightness
+  differences that are apparent to others" (FAA).
+- **Even blood tubes, the best-known lab colour code, are not harmonised.** ISO 6710:2017 leaves the cap colours to an
+  informative annex because no consensus could be reached, and one maker's EU-coded EDTA tube has the red cap that US
+  practice uses for serum. Every tube carries its additive in words. The words are the authority here too.
+
+## 10. Powder safety: segregation is also a fire rule
+
+- **The standard has moved.** NFPA 484 (combustible metals) has been folded into NFPA 660, effective 6 December 2024.
+- **Dedicated equipment for Al.** NFPA 484 restricts which dusts may be collected together. The Aluminum Association
+  asks that aluminium dust collection be "dedicated for that use only", and that ordinary industrial vacuums not be
+  used.
+- **Al and Cu are a thermite pair.** Aluminium powder mixed with copper oxides "caused a strong explosion" on heating
+  (NOAA CAMEO).
+- **So** the Al and Cu families' vacuums, collectors and waste cans stay separate for safety as well as purity. The
+  colour band makes that visible. The safety-assets PR covers the extinguishers.
 
 ## The Edison queries
 
@@ -206,3 +310,12 @@ database already knows a tool's state; the place tells the person.
 - **Physical colours:** the sRGB targets are for buying by eye under the lab's own lights, and for the check. Real tape
   and handle colours differ by maker. Check the bought ones under the lab's LED lighting, with a colour-vision
   simulator on a phone.
+
+## Sources
+
+- [`colour_sources.md`](colour_sources.md): the standards digest gathered for this PR (13 topics, every fact linked,
+  weaker support marked).
+- [`out/edison/metal_powder_segregation/answer.md`](../out/edison/metal_powder_segregation/answer.md) and
+  [`out/edison/colour_cross_contamination/answer.md`](../out/edison/colour_cross_contamination/answer.md): the two Edison
+  literature answers, with their full trajectories beside them.
+- The colour-vision simulation: Machado, Oliveira and Fernandes (2009), through colorspacious.
