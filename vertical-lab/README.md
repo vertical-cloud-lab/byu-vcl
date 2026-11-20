@@ -9,6 +9,125 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Round 13: collisions, artifacts, everything at 1080p, drawn at 10-15 fps (2026-11-20)
+
+Sterling on #318 (2026-11-20): "continue fixing collisions or weird artifacts and rendering at higher resolution and
+fps ... Upload to YouTube as unlisted".
+
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 13)](https://www.youtube.com/watch?v=ySiuvP9C190), unlisted, 1:17:17, 55 chapters, 1920 x 1080 at 30 fps, narrated (55 lines, 9.3 min, Kokoro). 38 of its 43 3-D clips were rendered this round, at 1080p and drawn at 10-15 fps; `out/longform.json` lists every part and its source. Round 12's public video ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)) is superseded.
+
+### A frame two to three times cheaper
+
+Round 12's 1080p renders were kept in `out/hd/`, which is git-ignored, so they went with that runner: every clip had to
+be rendered again to be at 1080p. On the 4-core runner that meant making a frame cheaper first. Measured with a
+profiling hook on chapters 1 and 4 at 1920 x 1080 (CPU per frame, `scene.py`):
+
+| Change | Before | After |
+| --- | --- | --- |
+| FXAA in place of SSAA (`VIZ3D_AA`; SSAA was the default and renders oversampled) | 1.82 s | 0.91 s |
+| Depth peeling only on frames with something see-through (`VIZ3D_PEEL=auto`) | 0.91 s | 0.70 s |
+| Depth peeling at 3 passes, not 6 (`VIZ3D_PEELS`): VTK's cost is per pass, however little is see-through | 1.38-1.57 s | 1.11-1.18 s |
+| The clipping range from the visible bounds every 8 frames, padded by a metre (`VIZ3D_CLIP_EVERY`) | a tenth of the main thread | |
+| Fonts loaded once, each caption wrapped once | | |
+
+- Merging all 1,266 actors of a frame into one changed nothing, so the cost is in triangles and pixels, not draw
+  calls. Resolution costs CPU (0.30 s at 960 x 540, 0.61 s at 1080p, 1.48 s at 2160p, no anti-aliasing), even though
+  a single render's wall time barely shows it: round 12's "resolution is nearly free" was wall time on an idle machine.
+- 3 peel passes change 600-1,000 of 2 million pixels, all where see-through parts overlap. FXAA against SSAA softens
+  edges a little; at 1080p it reads the same.
+- Chapter 6 now loads only the trays it presents (F and M) with the cladding opaque, as chapters 4, 5 and 7 do.
+- **A startup fault.** With three renders and the audits running (load 7-12), a new process's first X connection
+  failed about half the time; VTK then fell back to OSMesa, which isn't installed, and the render died at its first
+  frame, after the scene build. `scene.py` makes the window again until it is an X one.
+
+### Collisions fixed
+
+Three helper agents worked on the clips with frames left in round 12's table, each on its own files, auditing through
+`runner_guard.py` (strict rules, at 6 fps while fixing, then at 15 fps on the final code). Frames in collision, round
+12's render against round 13's 1080p render, each audited at the rate it is drawn (10-15 fps; round 12's at 6-10):
+
+| Clip | Round 12 | Round 13 | What changed |
+| --- | --- | --- | --- |
+| `atom_latch` | 123 | 0 | Unclamping, the loop is lifted off the hook's lip, the lever let down, the loop let fall over it (the training video's way); hooking on, the hanging loop is carried round its pin between lightly closed pads. The gripper turns about 36 deg, not 170, and the forearm stays out of the machine. The lid's knob grasp tilted 20 deg. A camera at the latch's height. |
+| `alloy_powder` (ch. 4) | 30 | 0 | The MiniFlex door opens 40 deg, clear of camera D1; the holder set 4 mm forward and not spun (its fin hit the 2-theta arm); the SEM stub carrier into the cup's real position; the Mastersizer cover swung away from the iMicro; the XRF through the park pose. |
+| `atom_container` | 18 | 0 | A smaller brush circle in the bowl, a steeper cone stroke, the fingers 12 mm over the valve's bar. |
+| `atom_crucible_in` | 16 | 0 | The wrist turns back before lifting off the sealing rod's lever. |
+| `atom_vacuum` | 11 | 2 | The holster approached from 200 mm up and backed off upwards. Left: the crevice tool 3 mm into its station and the brush 0.3 mm, a frame each. |
+| `atom_plate` | 2 | 1 | The fingers closed to 38 mm on the way to the top bolt's knob. Left: a fingertip 1.5 mm into the furnace for a frame, with the latch back. |
+| `alloy_print` (ch. 3) | 2 | 1 | The gripper opens wider on the No. 325's tab; one fingertip touch left on the sieving cell's frame. |
+| `setup_lab` | 2 arm / 88 all | 0 arm / 35 all | Each tray loaded back to front (machines had slid through UPSs and camera posts already down); the VLMs' posts, columns, lift, trays and cladding put in place on the base instead of slid through each other and the cable trays; the floor machines set down on their footprints, not rolled 2.6 m through their drops and dock posts; the first arm stretches straight up. |
+| `scaleup` | 73 (movers) | 0 arm / 107 all | The EOS door opens before the cart rolls up and shuts after it rolls away; what is left is the work itself (the saw through the brackets, the deposition's glow on the beads). |
+
+**An artifact found on the way.** Round 12 made `alloy_atomize.load_rp` leave out the rePowder model's own latch,
+meant for chapter 2 (which draws its own). It did so for every caller, so every atomizer clip lost the latch's base,
+hold-down foot and bolt, and drew its lever and loop attached to nothing. `load_rp(own_latch=True)` is now chapter 2's
+alone. With the latch back, the rebuild clip's first render stopped in the collision checker (a held part's group no
+longer under the group it was held by: `collide._rel` now goes through the world matrices), and was rendered again.
+
+**Other fixes:** the chapters' burned-in titles are numbered of 7 (chapter 1 said "1/4"); the finale writes its 1080p
+frames to `out/hd/` (round 12's wrote none); chapter 6 draws its cladding opaque with only trays F and M loaded, as
+chapters 4, 5 and 7 do.
+
+**Chapter 2, held back.** Chapter 2 was rendered at 1080p this round too, and its own audit found **143 of 1,539
+frames** with arm 1's forearm and wrist camera in the rePowder's lid while it loads the cups (step 2/5; round 11's
+audit, on round 11's model, had 0). Round 12 never rendered or audited chapter 2 again after #353 turned the lid
+assembly 90 deg, so chapter 2's planned moves no longer match the model's open lid. The long-form keeps round 11's
+render (720p, 6 fps, scaled up), as round 12 did; the 1080p audit is `out/collisions/alloy_atomize_r13_1080p.json`.
+The fix is to re-plan chapter 2's cup loading against the turned lid (or open it to where the moves were planned).
+
+### Rendering at 1080p, at 10-15 fps
+
+Everything that renders this round was drawn at 1920 x 1080: chapters 1 (12 fps), 3 (10), 4 (12), 5 (12), 6 (10) and 7
+(15); the set-up movie (10); the services, hookups, cabling and bay-camera clips (10); the coupling (15); all eight
+atomizer clips (10-12); the scale-up (10); maintenance (10); the 8:00 clip (10); 13 instrument clips (15); the route
+diagrams (30). Round 12 drew the chapters at 6 fps and the clips at 10. The long-form encodes everything at 30 fps.
+Each fresh clip checked its own frames as it rendered (`VIZ3D_AUDIT=1` or the clip's own auditor, round 11's strict
+rules), at the rate it is drawn. The checks chapter ends on
+`out/collisions/round13_table.png`, and `out/collisions/round13_summary.json` has the numbers.
+
+How the work was spread: a priority list fed to `runner_guard.py` one job at a time (what was 1080p in round 12
+first, so nothing got worse; then the collision-fixed clips; then the clips round 12 had at 720p), three or four
+renders at once, and a fourth slot shared by the three fix agents' audits. Chapters 1 and 5 were restarted on the
+faster `scene.py` after their first starts, at 0.4-0.5 frames a second, would have run past the upload.
+
+**Not rendered this round, kept at their earlier 720p renders and scaled up:** chapter 2 (above), the finale, the OT-2
+clip, the vacuum press and the fabrication tour. The last four were 720p in round 12 too; there was no CPU left for
+them before the upload.
+
+### Still open after round 13
+
+- **Chapter 2** needs its cup loading re-planned against #353's turned lid (143 frames at 1080p); until then the video
+  shows round 11's render.
+- **Not at 1080p:** chapter 2, the finale, the OT-2 clip, the vacuum press, the fabrication tour. Each renders with
+  `VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=10` (chapter 2 without `VIZ3D_HD`, then
+  its 1080p splice moved to `out/hd/`; the fabrication tour's nine clips then joined into `out/hd/fabrication_tour.mp4`).
+- **Collision frames left in the video** (the table at the end of the checks chapter):
+  - chapter 6: 3 arm frames (a hot mount set 12 mm into its holder) and the CNC's lid opening into the bay above it
+    (6 frames); the rest is the work itself (end mill, pistons, the press's charge);
+  - chapter 5: the plate 6 mm into the depowdering box's rotor for one frame;
+  - the vacuum clip: the crevice tool 3 mm into its station; chapter 3, the plate clip and the bay-camera clip: a
+    fingertip or a vial 1.5-3 mm into a fixture for a frame or two;
+  - the hookups clip: the bay's dock head comes out through the bay's side wall, drawn without an opening;
+  - the set-up movie: floor machines set down over their utility drops, the control box into its cabinet as built.
+- **Chapter 5's last shots** have a target post's tag cube in the foreground of the Instron.
+- **The XRD door** opens 40 deg in chapter 4, to clear camera D1; moving D1 would let it open fully.
+- **The Mastersizer's tour clip** still swings its cover over the iMicro (chapter 4 swings it the other way).
+
+### Running it (round 13)
+
+```bash
+python3 runner_guard.py watch &                       # memory log and watchdog, as before
+VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12 \
+  python3 runner_guard.py slot --mem 3500 --label ch4 -- env VLAB_ONLY_TRAYS=DEM xvfb-run -a python3 alloy_powder.py
+VLAB_ONLY_TRAYS=FM ... alloy_prep.py; VLAB_ONLY_TRAYS=F ... alloy_workflow.py; VLAB_ONLY_TRAYS=DEKL ... alloy_characterize.py
+python3 longform.py audit                              # -> out/collisions/round13_table.png, round13_summary.json
+python3 longform.py; LONGFORM_PRIVACY=unlisted python3 longform.py upload
+```
+
+`VIZ3D_AA` (fxaa), `VIZ3D_PEEL` (auto), `VIZ3D_PEELS` (3), `VIZ3D_CLIP_EVERY` (8) and `VIZ3D_PRESET` (faster) are
+`scene.py`'s new switches; the old behaviour is `VIZ3D_AA=ssaa VIZ3D_PEEL=on VIZ3D_PEELS=6 VIZ3D_CLIP_EVERY=1
+VIZ3D_PRESET=slow`.
+
 ## Round 12: everything in one long-form, at 1080p, narrated, public (2026-11-20)
 
 Sterling on #318 (2026-11-20): "pull in the latest from everywhere and above and bring it altogether and create a fresh
