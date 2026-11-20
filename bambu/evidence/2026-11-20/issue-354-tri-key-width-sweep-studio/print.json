@@ -1,0 +1,68 @@
+{
+ "issue": "https://github.com/vertical-cloud-lab/byu-vcl/issues/354",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/issues/354 (benwhitney5463, 2026-11-20T19:53:40Z): print the deck keys above, but make the stem the triangle shape that we have in the stir modules (with the 0.05mm interference fit)",
+ "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/44806368941",
+ "route": "Bambu Studio 02.08.02.61 GUI on the runner, logged in with password + authenticator code (no e-mailed code), sent through Bambu's cloud",
+ "printer": "Tinkerbell (Bambu Lab A1 mini)",
+ "plate": "Textured PEI",
+ "nozzle": {
+  "diameter": "0.4 mm stainless steel, Standard flow (used)",
+  "source": "Studio Device page > Printer Parts, 2026-11-20T20:00:51Z"
+ },
+ "filament": "Bambu PLA Basic profile, blue PLA on the external spool",
+ "previous_run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/44804135274 (planned stem keys x2 + tri keys x1 on Tinkerbell; cancelled 19:51:45Z before slicing, nothing sent)",
+ "objects": {
+  "deck_clip_key_v2_1_tri_w10.0_c0.5.stl": 2,
+  "deck_clip_key_v2_1_tri_w10.2_c0.3.stl": 2,
+  "deck_clip_key_v2_1_tri_w10.4_c0.1.stl": 2,
+  "deck_clip_key_v2_1_tri_w10.5_c0.0.stl": 2
+ },
+ "source_files": "modules/electromagnetic-capper/v2/stl/print_oriented/width_sweep/ on claude/issue-354-20261120-1921 @ 617b2a9",
+ "layout": "one STL with 8 bodies from scripts/combine_plate.py: columns left to right (+x) = w10.0, w10.2, w10.4, w10.5 at 22 mm pitch, two of each 36 mm apart in y; Studio centred it on the plate. The 1-4 dimples on each key's top also identify the width.",
+ "slice": {
+  "preset": "0.20mm Standard @BBL A1M",
+  "printer_preset": "Bambu Lab A1 mini 0.4 nozzle",
+  "filament_preset": "Bambu PLA Basic @BBL A1M",
+  "wall_loops": 3,
+  "sparse_infill": "20% grid",
+  "brim": "none",
+  "supports": "off",
+  "arc_fitting": "on (A1M default)",
+  "estimate": "54m 26s (model 48m 28s)",
+  "layers": 85,
+  "max_z_mm": 17.0,
+  "filament_g": 21.07,
+  "plate_1_gcode_md5": "370a174a8400b5f8fba933258ffb275a",
+  "checked_from_gcode": "outer-wall extents incl. arcs + 0.42 mm line width: pills 10.00/10.20/10.40/10.50 x 24.80 mm; triangle nub 7.66 x 6.95 mm on all 8 keys (model: 7.67 across corners, 6.95 corner to flat). See gcode_check.txt"
+ },
+ "send_options": {
+  "timelapse": "off",
+  "auto_bed_leveling": "on",
+  "flow_dynamics_calibration": "on"
+ },
+ "plate_rule_2026_10_23": {
+  "frame_1": {
+   "utc": "2026-11-20T19:59:43Z",
+   "file": "20261120T195943Z_tinkerbell_camera_studio.jpg",
+   "read": "clear; bright; only the faint flat first-layer outlines of earlier prints. Same as the cancelled run's 19:43:19Z frame.",
+   "posted": "2026-11-20T20:01:24Z"
+  },
+  "hold": {
+   "from": "2026-11-20T20:01:24Z",
+   "until": "2026-11-20T20:08:27Z",
+   "new_comments": "none asking to hold; the only new comment (benwhitney5463, 19:56:22Z, before frame 1) noted that the earlier run's print was stopped"
+  },
+  "frame_2_right_before_send": {
+   "utc": "2026-11-20T20:07:47Z",
+   "file": "20261120T200747Z_tinkerbell_camera_presend.jpg",
+   "read": "unchanged (mean absolute difference 0.9% whole frame, 1.6% plate region)"
+  },
+  "last_thread_poll": "2026-11-20T20:08:26Z, no new comments"
+ },
+ "send_utc": "2026-11-20T20:08:27Z",
+ "started": {
+  "utc": "2026-11-20T20:09:22Z",
+  "state": "Heatbed preheating, layer 0/85, nozzle 85/100 C, bed 33/65 C, estimated finish 21:03 UTC"
+ },
+ "sent_file": "sent/tri_keys_width_sweep_x2_A1mini_0.4_PLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code identical to the checked slice)"
+}

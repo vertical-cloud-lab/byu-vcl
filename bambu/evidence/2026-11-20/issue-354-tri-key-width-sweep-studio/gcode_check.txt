@@ -1,0 +1,41 @@
+printer_settings_id = Bambu Lab A1 mini 0.4 nozzle
+print_settings_id = 0.20mm Standard @BBL A1M
+filament_settings_id = "Bambu PLA Basic @BBL A1M"
+nozzle_diameter = 0.4
+layer_height = 0.2
+initial_layer_print_height = 0.2
+wall_loops = 3
+sparse_infill_density = 20%
+sparse_infill_pattern = grid
+brim_type = no_brim
+enable_support = 0
+curr_bed_type = Textured PEI Plate
+elefant_foot_compensation = 0
+nozzle_temperature = 220
+nozzle_temperature_initial_layer = 220
+textured_plate_temp = 65
+textured_plate_temp_initial_layer = 65
+top_shell_layers = 5
+bottom_shell_layers = 3
+xy_contour_compensation = 0
+xy_hole_compensation = 0
+enable_prime_tower = 0
+timelapse_type = 0
+print_sequence = by layer
+filament_type = PLA
+filament_colour = #00AE42
+default_filament_colour = ""
+tools ['T0', 'T1000', 'T255']
+heat commands ['M104 S0', 'M104 S140', 'M104 S170', 'M104 S180', 'M104 S220', 'M109 S100 H170', 'M109 S140', 'M109 S170', 'M109 S180', 'M109 S200', 'M109 S220', 'M140 S0', 'M140 S65', 'M190 S65']
+extrusion extents X 51.46..128.54  Y 59.81..119.98  top Z 17.00
+z=0.2: outer-wall centreline width x length per key (x0, w, L): [(52.35, 9.3, 19.887), (52.35, 9.3, 19.887), (74.35, 9.3, 19.887), (74.35, 9.3, 19.887), (96.35, 9.3, 19.887), (96.35, 9.3, 19.887), (118.35, 9.3, 19.887), (118.35, 9.3, 19.887)]
+
+outer-wall centreline extents incl. arcs; add the 0.42 mm line width for the outside of the part
+z= 0.20: w10.0#1 9.720x24.719 | w10.0#2 9.720x24.719 | w10.2#1 9.720x24.719 | w10.2#2 9.720x24.719 | w10.4#1 9.720x24.718 | w10.4#2 9.720x24.718 | w10.5#1 9.720x24.718 | w10.5#2 9.720x24.718
+z= 4.00: w10.0#1 10.890x24.791 | w10.0#2 10.890x24.791 | w10.2#1 10.890x24.792 | w10.2#2 10.890x24.792 | w10.4#1 10.890x24.792 | w10.4#2 10.890x24.792 | w10.5#1 10.890x24.792 | w10.5#2 10.890x24.792
+z=12.00: w10.0#1 10.000x24.793 | w10.0#2 10.000x24.792 | w10.2#1 10.201x24.796 | w10.2#2 10.200x24.794 | w10.4#1 10.400x24.791 | w10.4#2 10.400x24.793 | w10.5#1 10.500x24.796 | w10.5#2 10.500x24.797
+z=14.00: w10.0#1 10.000x24.798 | w10.0#2 10.000x24.798 | w10.2#1 10.200x24.797 | w10.2#2 10.200x24.798 | w10.4#1 10.400x24.797 | w10.4#2 10.400x24.797 | w10.5#1 10.501x24.797 | w10.5#2 10.500x24.797
+z=15.40: w10.0#1 7.663x6.948 | w10.0#2 7.663x6.949 | w10.2#1 7.664x6.949 | w10.2#2 7.663x6.948 | w10.4#1 7.664x6.948 | w10.4#2 7.664x6.948 | w10.5#1 7.664x6.949 | w10.5#2 7.663x6.948
+z=16.00: w10.0#1 7.665x6.951 | w10.0#2 7.662x6.950 | w10.2#1 7.663x6.950 | w10.2#2 7.662x6.948 | w10.4#1 7.665x6.948 | w10.4#2 7.665x6.948 | w10.5#1 7.665x6.950 | w10.5#2 7.663x6.950
+z=16.60: w10.0#1 7.664x6.950 | w10.0#2 7.665x6.951 | w10.2#1 7.664x6.949 | w10.2#2 7.665x6.950 | w10.4#1 7.665x6.950 | w10.4#2 7.666x6.950 | w10.5#1 7.665x6.950 | w10.5#2 7.665x6.950
+z=17.00: w10.0#1 7.268x6.548 | w10.0#2 7.267x6.548 | w10.2#1 7.268x6.548 | w10.2#2 7.267x6.549 | w10.4#1 7.268x6.548 | w10.4#2 7.268x6.549 | w10.5#1 7.267x6.548 | w10.5#2 7.267x6.548
