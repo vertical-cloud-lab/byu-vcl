@@ -1,0 +1,653 @@
+{
+ "name": "machining_cell",
+ "fps": 15,
+ "n_frames": 2334,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "The charge-cup cell on the lab floor: a bar-fed CNC lathe, a UR10e on a pedestal, two ultrasonic baths each holding one closed vessel of IPA, a vacuum dryer, a weigh module, a dimension gauge and the cup rack the MiR250 takes to tray J.",
+   "start_frame": 0,
+   "end_frame": 81
+  },
+  {
+   "label": "2/6",
+   "caption": "The bar loader pushes the Ø20 mm bar 72.5 mm out of the collet. Bar and cup are drawn in half section, the door see-through.",
+   "start_frame": 82,
+   "end_frame": 125
+  },
+  {
+   "label": "2/6",
+   "caption": "Turning tool: face the end, then turn the OD to 19.05 mm. Dry but for an alcohol MQL mist at the insert (PCD or sharp uncoated carbide, kept for this metal only).",
+   "start_frame": 126,
+   "end_frame": 189
+  },
+  {
+   "label": "2/6",
+   "caption": "Index to the 12.5 mm drill.",
+   "start_frame": 190,
+   "end_frame": 221
+  },
+  {
+   "label": "2/6",
+   "caption": "Drill 12.5 mm, 47.6 mm deep with a 118° point, pecking to break the chips (drawn as one pass).",
+   "start_frame": 222,
+   "end_frame": 277
+  },
+  {
+   "label": "2/6",
+   "caption": "Index to the boring bar.",
+   "start_frame": 278,
+   "end_frame": 309
+  },
+  {
+   "label": "2/6",
+   "caption": "Finish-bore to 12.70 mm, the press fit's size for the plug, and break the rim's edge.",
+   "start_frame": 310,
+   "end_frame": 357
+  },
+  {
+   "label": "2/6",
+   "caption": "Index to the parting blade; the parts catcher comes in under the cup.",
+   "start_frame": 358,
+   "end_frame": 389
+  },
+  {
+   "label": "2/6",
+   "caption": "Part off at 63.5 mm, the blade chamfering the cup's base on the way in.",
+   "start_frame": 390,
+   "end_frame": 429
+  },
+  {
+   "label": "2/6",
+   "caption": "The cup drops into the catcher's tray.",
+   "start_frame": 430,
+   "end_frame": 441
+  },
+  {
+   "label": "3/6",
+   "caption": "The catcher brings it down to the belt, turning it to lie along the belt, base first ...",
+   "start_frame": 442,
+   "end_frame": 473
+  },
+  {
+   "label": "3/6",
+   "caption": "... and tips it out onto the belt.",
+   "start_frame": 474,
+   "end_frame": 490
+  },
+  {
+   "label": "3/6",
+   "caption": "The belt carries it out through the guard: the door stays shut and the arm never reaches into the machine.",
+   "start_frame": 491,
+   "end_frame": 538
+  },
+  {
+   "label": "3/6",
+   "caption": "The upender stands it up, mouth up.",
+   "start_frame": 539,
+   "end_frame": 562
+  },
+  {
+   "label": "3/6",
+   "caption": "The arm comes to the upender ...",
+   "start_frame": 563,
+   "end_frame": 594
+  },
+  {
+   "label": "3/6",
+   "caption": "",
+   "start_frame": 595,
+   "end_frame": 614
+  },
+  {
+   "label": "3/6",
+   "caption": "... grips the cup ...",
+   "start_frame": 615,
+   "end_frame": 624
+  },
+  {
+   "label": "3/6",
+   "caption": "",
+   "start_frame": 625,
+   "end_frame": 639
+  },
+  {
+   "label": "3/6",
+   "caption": "",
+   "start_frame": 640,
+   "end_frame": 651
+  },
+  {
+   "label": "3/6",
+   "caption": "To the blow-off station: ...",
+   "start_frame": 652,
+   "end_frame": 681
+  },
+  {
+   "label": "3/6",
+   "caption": "... two nozzles at its foot and a lance over the bore blow the chips off it.",
+   "start_frame": 682,
+   "end_frame": 715
+  },
+  {
+   "label": "3/6",
+   "caption": "",
+   "start_frame": 716,
+   "end_frame": 730
+  },
+  {
+   "label": "4/6",
+   "caption": "Into the basket, the fourth cup of the run's set.",
+   "start_frame": 731,
+   "end_frame": 760
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 761,
+   "end_frame": 778
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 779,
+   "end_frame": 788
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 789,
+   "end_frame": 798
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 799,
+   "end_frame": 815
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the basket by its handle.",
+   "start_frame": 816,
+   "end_frame": 845
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 846,
+   "end_frame": 860
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 861,
+   "end_frame": 870
+  },
+  {
+   "label": "4/6",
+   "caption": "The wash vessel's lid opens ...",
+   "start_frame": 871,
+   "end_frame": 888
+  },
+  {
+   "label": "4/6",
+   "caption": "... the basket goes into the first vessel of IPA, and its own cap shuts the vessel.",
+   "start_frame": 889,
+   "end_frame": 918
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 919,
+   "end_frame": 944
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 945,
+   "end_frame": 950
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 951,
+   "end_frame": 965
+  },
+  {
+   "label": "4/6",
+   "caption": "Ultrasound, 5 min, through the bath's water into the shut vessel (shown sped up).",
+   "start_frame": 966,
+   "end_frame": 1003
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1004,
+   "end_frame": 1018
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1019,
+   "end_frame": 1024
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1025,
+   "end_frame": 1048
+  },
+  {
+   "label": "4/6",
+   "caption": "The vessel's lid shuts behind it.",
+   "start_frame": 1049,
+   "end_frame": 1066
+  },
+  {
+   "label": "4/6",
+   "caption": "The rinse vessel's lid opens ...",
+   "start_frame": 1067,
+   "end_frame": 1084
+  },
+  {
+   "label": "4/6",
+   "caption": "... the basket goes into the second vessel, clean IPA, and its own cap shuts the vessel.",
+   "start_frame": 1085,
+   "end_frame": 1114
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1115,
+   "end_frame": 1140
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1141,
+   "end_frame": 1146
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1147,
+   "end_frame": 1161
+  },
+  {
+   "label": "4/6",
+   "caption": "Ultrasound, 2 min, through the bath's water into the shut vessel (shown sped up).",
+   "start_frame": 1162,
+   "end_frame": 1199
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1200,
+   "end_frame": 1214
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1215,
+   "end_frame": 1220
+  },
+  {
+   "label": "4/6",
+   "caption": "",
+   "start_frame": 1221,
+   "end_frame": 1244
+  },
+  {
+   "label": "4/6",
+   "caption": "The vessel's lid shuts behind it.",
+   "start_frame": 1245,
+   "end_frame": 1262
+  },
+  {
+   "label": "5/6",
+   "caption": "Into the vacuum dryer: its lid opens ...",
+   "start_frame": 1263,
+   "end_frame": 1280
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1281,
+   "end_frame": 1310
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1311,
+   "end_frame": 1336
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1337,
+   "end_frame": 1342
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1343,
+   "end_frame": 1357
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1358,
+   "end_frame": 1375
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1376,
+   "end_frame": 1390
+  },
+  {
+   "label": "5/6",
+   "caption": "Pumped down at 45 °C: the IPA in each blind bore boils off, through the condenser to the pump. Then back-filled with dry nitrogen (shown sped up: about 10 min).",
+   "start_frame": 1391,
+   "end_frame": 1439
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1440,
+   "end_frame": 1457
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1458,
+   "end_frame": 1475
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1476,
+   "end_frame": 1490
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1491,
+   "end_frame": 1496
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1497,
+   "end_frame": 1517
+  },
+  {
+   "label": "5/6",
+   "caption": "Back on its stand.",
+   "start_frame": 1518,
+   "end_frame": 1547
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1548,
+   "end_frame": 1568
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1569,
+   "end_frame": 1574
+  },
+  {
+   "label": "5/6",
+   "caption": "",
+   "start_frame": 1575,
+   "end_frame": 1589
+  },
+  {
+   "label": "6/6",
+   "caption": "The cup, dry, to the weigh module ...",
+   "start_frame": 1590,
+   "end_frame": 1619
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1620,
+   "end_frame": 1634
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1635,
+   "end_frame": 1642
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1643,
+   "end_frame": 1651
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1652,
+   "end_frame": 1666
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1667,
+   "end_frame": 1699
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1700,
+   "end_frame": 1717
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1718,
+   "end_frame": 1725
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1726,
+   "end_frame": 1733
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1734,
+   "end_frame": 1748
+  },
+  {
+   "label": "6/6",
+   "caption": "Weighed with the shield down: the empty cup's own mass (32.08 g by CAD for 5N Al), recorded against its place in the rack, so the charge station doses against what the cup really weighs.",
+   "start_frame": 1749,
+   "end_frame": 1798
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1799,
+   "end_frame": 1813
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1814,
+   "end_frame": 1828
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1829,
+   "end_frame": 1836
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1837,
+   "end_frame": 1844
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1845,
+   "end_frame": 1859
+  },
+  {
+   "label": "6/6",
+   "caption": "On to the dimension gauge's stage.",
+   "start_frame": 1860,
+   "end_frame": 1889
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1890,
+   "end_frame": 1907
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1908,
+   "end_frame": 1911
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1912,
+   "end_frame": 1919
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1920,
+   "end_frame": 1934
+  },
+  {
+   "label": "6/6",
+   "caption": "Lit from below and above, it reads the OD and the bore at the mouth: the press fit's two numbers.",
+   "start_frame": 1935,
+   "end_frame": 1976
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1977,
+   "end_frame": 1991
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 1992,
+   "end_frame": 1999
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2000,
+   "end_frame": 2014
+  },
+  {
+   "label": "6/6",
+   "caption": "Racked: into the cassette, chapter 1's charge rack, cups in front and plugs behind.",
+   "start_frame": 2015,
+   "end_frame": 2050
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2051,
+   "end_frame": 2068
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2069,
+   "end_frame": 2083
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2084,
+   "end_frame": 2089
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2090,
+   "end_frame": 2104
+  },
+  {
+   "label": "6/6",
+   "caption": "The run's other three cups and four plugs go the same way (not shown).",
+   "start_frame": 2105,
+   "end_frame": 2130
+  },
+  {
+   "label": "6/6",
+   "caption": "The lid goes on.",
+   "start_frame": 2131,
+   "end_frame": 2160
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2161,
+   "end_frame": 2175
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2176,
+   "end_frame": 2181
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2182,
+   "end_frame": 2196
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2197,
+   "end_frame": 2226
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2227,
+   "end_frame": 2244
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2245,
+   "end_frame": 2250
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 2251,
+   "end_frame": 2265
+  },
+  {
+   "label": "6/6",
+   "caption": "One run's set, cleaned, dried, weighed, measured and racked. The MiR250's arm takes the cassette through the front window, over the light curtain, to tray J.",
+   "start_frame": 2266,
+   "end_frame": 2333
+  }
+ ]
+}
