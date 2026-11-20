@@ -208,6 +208,61 @@ links its notes.
 - The OT-2's clip still shows it diluting the ICP-MS samples on tray A. The card and narration say that step moved.
 - Run A places the ICP-MS station on the set-up floor.
 
+## Round 14 (C): the atomizer chapters (2026-11-20)
+
+Sterling's notes on round 12's public video, for the atomizer (PR #318, 2026-11-20 ~18:00 UTC; run (C) of a
+claude-super hand-off). Timestamps are in round 12's long-form ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)).
+
+| Time | Note | Now |
+| --- | --- | --- |
+| 17:28 | holding the lid down while working the latch seems unnecessary; the unlatching step is missing | No arm presses on the lid, in chapter 2 and in `atom_latch`: opened only at atmosphere, nothing pushes the lid up; closing, the latch's own over-centre draw squeezes the seal. Chapter 2 drops its round-6 latch (front right, one lever pulled out and down, the loop never unhooked) for the model's latch on the housing's right face and the latch clip's moves (`atom_latch.Work`): the lever over centre, then the unlatching proper (the loop lifted off the keeper's hook and let fall over the folded lever), then the lid; closing is the reverse. MiR250 1 works from the furnace's right, so the cups no longer go in past the turned lid ([notes](notes/alloy_atomize.md#round-14-pr-318-2026-11-20-the-models-latch-the-tong-explained-the-plate-steered), [latch notes](notes/atom_latch_container.md#round-14-2026-11-20-no-arm-on-the-lid-chapter-2-uses-the-same-moves)) |
+| 18:06 | how does the loading tong work? | Redesigned as two flat bars that slide past each other, each pinned to one of the 2F-85's fingertips, so each jaw moves with its finger; a flexure keeps the jaws open when the tong is left alone. On screen: a taken-apart figure while the arm picks it up, and cup 1 followed down a cut-open bore, the jaws opening on the floor cone |
+| 19:21 | the stack "still by hand" | The aside now says the two arms build it in the turnaround (#353's rebuild), with that clip's picture |
+| 21:12 | the new atomizer renders are missing elsewhere | Chapter 2 draws DAL PR 189's camera units. The set-up movie, chapter 3 and the finale take the rePowder from `lab._repowder()`, which now adds the units and the ground plates (below) |
+| (new) | the two arms adjust the plate in real time during the pour | A landing stage between the door and the stack's housing, sealed by a bellows (ours): one knob slides the stack along its axis, the other moves it across; arm 2 and arm 1 each hold one through the pour and turn it when the melt-stream cameras put the landing more than 1 mm off target (a schematic of their measurement is in the corner) |
+| 23:59 | the latch clip's collision | 0 frames since round 13; re-audited at 0 of 1,123 without the press, re-rendered at 1080p |
+| 24:58 | a collision, and a grip that would slip | At 24:58 the arm is putting the anti-static brush back: the brush now has a square grip between two collars and a V-rest with a fin slot ([`atom_brush.py`](atom_brush.py)); the clip is at 0 of 723 frames |
+| (24:58) | the brush carrying powder from one alloy to the next | One disposable head per run: a spring magazine on the brush's rest, a stripper bar over a grounded can. Ultrasonic cleaning in IPA rejected: reactive fines in a solvent bath, a new waste stream, drying, and no check that the bristles' roots are clean |
+| 25:53 | the sign's text bleeds off its edges | Fitted: every line measured and scaled together inside a margin (`atom_nilfisk.fit_text`); the widest line 368 mm on the 460 mm board. It was the only text board in the atom_* clips |
+| 25:53 | ground within reach, near every machine and wherever the arm works | A stainless plate set flush in the floor at every spot a MiR250 parks to work at the atomizer, its leads in a floor channel to the area's ground bar; two sprung copper-graphite shoes on each MiR250, lowered once it is parked; the arm waits until shoe to shoe and plate to bar both read 1 ohm or less, then the MiR's bond lamp turns green ([`atom_ground.py`](atom_ground.py), [notes](notes/atom_vacuum.md)). Compared and rejected: an overhead trolley with a lead, a reel on each MiR, studs a person clips. Shown in the vacuum clip (a new 3/10, "Bond") and on both MiRs in chapter 2. Ours, for EHS to check |
+
+**Rendered at 1080p** (each with its own strict audit; the 1080p MP4 and its sub-steps committed under `out/hd/` and
+`out/clean/` for the long-form, a 720p copy in `out/mp4/`):
+
+| Clip | Length | Drawn at | Audit (strict) |
+| --- | --- | --- | --- |
+| `alloy_atomize` (chapter 2) | 288 s, 25 s of it the lab's footage | 12 fps | 0 of 2,527 frames on the whole lab, movers 0 |
+| `atom_latch` | 93 s | 15 fps | 0 of 1,123 frames, movers 0 |
+| `atom_container` | 62 s | 15 fps | 0 of 723 frames, movers 0 |
+| `atom_vacuum` | 149 s | 15 fps | 0 of 1,836 frames, movers 0 |
+| `atom_plate` | 152 s | 15 fps | 0 of 2,146 frames, movers 0 |
+| `atom_crucible_in` | 148 s | 15 fps | 0 of 2,004 frames, movers 0 |
+| `atom_crucible_out` | 113 s | 15 fps | 0 of 1,520 frames, movers 0 |
+
+The last three were re-rendered unchanged: their committed MP4s were #353's 720p renders of 2026-11-19, from
+before round 13 put the rePowder's latch back in these clips and took the rebuild's 16 frames out of collision;
+round 13's 1080p renders of them stayed on its runner (`out/hd/` is git-ignored). `atom_bn` and `atom_cameras`
+are queued the same way.
+
+**For the long-form** (not rebuilt here): the clips above changed, and with them their sub-steps' numbering, so
+`narration.json`'s lines anchored on `alloy_atomize`, `atom_latch` and `atom_container` sub-steps need re-anchoring
+(chapter 2: the stack line now at sub-step 120, the powder line at 162; `atom_latch`'s and `atom_container`'s are already on the new clips' 9 and 28). The set-up movie, chapter 3 and the finale pick up the camera units and the plates from `lab._repowder()`
+when next rendered.
+
+**Open:**
+- **Chapter 2 still takes the container off by its valve's lever** (a stand-in, said so on screen). The turnaround's
+  design, a fork under its flat bottom while the other arm opens the clamp, is still not animated without collisions
+  (`atom_container.py`, `ATOM_CONTAINER_FULL=1`).
+- **The sealing rod's safety pin:** the turnaround's crucible clips pull it before lifting the rod's lever; chapter 2
+  lifts the lever without it.
+- **The top camera stays parked in chapter 2**; the camera clip shows it swung back over the lid's window.
+- **The landing stage is ours, to check with AMAZEMET** (the stack's seal at the door, the transducer's cable and cooling
+  air, whether the plate may move while it vibrates). The drift on screen is illustrative.
+- **Layout:** setup_lab's AprilTag post for the rePowder (`TARGET_AT`, model (938, -379)) stands inside MiR250 1's
+  footprint at the latch spot (650, -560), which chapter 2 now uses (chapter 2's floor doesn't draw the post).
+  `atom_crucible`'s MiR250 2 (-960, -40, 90 deg) and `atom_base.PARK["left"]` stand over the model's vacuum pump, and
+  `atom_container`'s second MiR250 stands where chapter 3 puts the wash module.
+
 ## Round 13: collisions, artifacts, everything at 1080p, drawn at 10-15 fps (2026-11-20)
 
 Sterling on #318 (2026-11-20): "continue fixing collisions or weird artifacts and rendering at higher resolution and
