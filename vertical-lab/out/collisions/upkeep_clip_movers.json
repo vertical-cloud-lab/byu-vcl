@@ -1,5 +1,15 @@
 {
- "frames_checked": 1491,
- "frames_in_collision": 0,
- "pairs": []
+ "frames_checked": 400,
+ "frames_in_collision": 1,
+ "pairs": [
+  {
+   "a": "person/glove",
+   "b": "xtable/frame",
+   "frames": 1,
+   "first": 456,
+   "last": 456,
+   "depth": 3.0,
+   "label": "3/3 A person's task"
+  }
+ ]
 }
