@@ -644,25 +644,40 @@ def narration_track(meta: dict, total: float, wav: Path) -> list[dict]:
 
 
 # ===================================================================================================== the audit table
-ROUND12_START = os.environ.get("ROUND12_START", "2026-11-20T04:00:00Z")   # audits written after this are this round's
 
 
 def audit_rows() -> list[dict]:
     """Every 3-D clip in the plan with its collision audit (out/collisions/<clip>.json): frames checked, frames with
     an arm in collision, frames with anything moving in collision, and whether the clip and its audit are this
     round's 1080p render or an earlier render reused."""
-    t0 = dt.datetime.strptime(ROUND12_START, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc).timestamp()
+    # this round's audits: the reports that differ from the last commit before this round's renders (ROUND12_BASE),
+    # or didn't exist then (file times can't tell: merges and checkouts touch them)
+    base = os.environ.get("ROUND12_BASE", "95f6e5c")
+    st = subprocess.run(["git", "diff", "--name-only", base, "--", "out/collisions"], capture_output=True, text=True,
+                        cwd=HERE).stdout.split()
+    st += subprocess.run(["git", "ls-files", "--others", "--exclude-standard", "out/collisions"], capture_output=True,
+                         text=True, cwd=HERE).stdout.split()
+    changed = {str(Path(x).relative_to("out/collisions")) if x.startswith("out/collisions/") else
+               str(Path(x).relative_to("vertical-lab/out/collisions")) if x.startswith("vertical-lab/out/collisions/")
+               else Path(x).name for x in st}
     rows, seen = [], set()
     for r in plan():
         if r["kind"] != "mp4" or r.get("missing") or "/dag/" in str(r["src"]):
             continue
-        name = Path(str(r["src"])).stem
+        srcp = Path(str(r["src"]))
+        for base in (HD, MP4):
+            try:
+                rel = srcp.relative_to(base).with_suffix("")
+                break
+            except ValueError:
+                rel = Path(srcp.stem)
+        name = srcp.stem
         if name in seen:
             continue
         seen.add(name)
-        a = OUT / "collisions" / f"{name}.json"
+        a = OUT / "collisions" / f"{rel}.json"
         rep = json.loads(a.read_text()) if a.exists() else None
-        fresh = a.exists() and a.stat().st_mtime > t0
+        fresh = a.exists() and str(rel) + ".json" in changed
         rows.append(dict(clip=name, chapter=r["chapter"], hd=not r.get("upscaled"), seconds=round(r["seconds"], 1),
                          audit_this_round=fresh, fps=(rep or {}).get("fps"),
                          frames_checked=(rep or {}).get("frames_checked"),
@@ -671,42 +686,61 @@ def audit_rows() -> list[dict]:
     return rows
 
 
+AUDIT_NOTES = {   # what the frames that remain are, where it is known (README, notes/arm_collisions.md, #353's notes)
+    "hip": "by design: the press drawn through a tray's outline, to show it doesn't fit",
+    "setup_lab": "the build-up's parts sliding into place; the Mastersizer across tray E's UPS (3); the arms touch (2)",
+    "vlm_services": "the dock heads meeting the trays' plates as they mate",
+    "alloy_prep": "mostly the work itself: the end mill in the slice, the pistons on the holder, compound round the coupon",
+    "alloy_powder": "the XRD's door through camera D1 (25-50 mm); set-downs 3 and 12 mm deep; the forearm on the gripper",
+    "vlm_workflow": "by design: the holder grips its vial (round 11)",
+    "scaleup": "the cart drives through the EOS's door while it is shut (not fixed)",
+    "atom_latch": "the loop swung over the lever, into the machine; the fix (the loop dropped) not made (#353)",
+    "atom_vacuum": "the upper arm against the vacuum and its own wrist, in the last holster steps (#353)",
+    "atom_plate": "a fingertip 3 mm into the chamber's face (#353)",
+}
+
+
 def audit_table(path: Path):
-    """audit_rows() as one table, 1920 x 951 (the still area at 1080p), and out/collisions/round12_summary.json."""
+    """audit_rows() as one table, 1920 wide (scrolled if tall), and out/collisions/round12_summary.json."""
     rows = audit_rows()
+    for r in rows:
+        r["note"] = AUDIT_NOTES.get(r["clip"], "")
     (OUT / "collisions" / "round12_summary.json").write_text(json.dumps(rows, indent=1) + "\n")
-    W, H = 1920, 951
+    W, row_h = 1920, 36
+    H = 150 + row_h * len(rows) + 70
     im = Image.new("RGB", (W, H), (246, 247, 249))
     d = ImageDraw.Draw(im)
-    d.text((40, 20), "Every clip in this video, checked frame by frame for collisions (FCL, round 11's strict rules)",
+    d.text((40, 22), "Every clip in this video, checked frame by frame for collisions (FCL, round 11's strict rules)",
            font=font(34, True), fill=BLUE)
-    cols = [(40, "Clip"), (560, "Rendered"), (850, "Frames checked"), (1100, "Arm in collision"),
-            (1390, "Anything moving"), (1650, "Audit")]
-    y = 78
-    fh = font(24, bold=True)
+    cols = [(40, "Clip"), (440, "Rendered"), (760, "Frames checked"), (980, "Arm in collision"),
+            (1200, "Anything moving"), (1420, "What the frames are")]
+    y = 84
+    fh = font(22, bold=True)
     for x, h in cols:
         d.text((x, y), h, font=fh, fill=GREY)
-    y += 38
-    d.line((30, y - 4, W - 30, y - 4), fill=BLUE, width=3)
-    row_h = min(34.0, (H - y - 50) / max(1, len(rows)))
-    fb = font(int(row_h * 0.66))
+    y += 40
+    d.line((30, y - 6, W - 30, y - 6), fill=BLUE, width=3)
+    fb, fn = font(23), font(19)
     for i, r in enumerate(rows):
-        yy = int(y + i * row_h)
+        yy = y + i * row_h
         if i % 2 == 0:
-            d.rectangle((30, yy - 2, W - 30, int(yy + row_h) - 2), fill=(235, 238, 244))
+            d.rectangle((30, yy - 3, W - 30, yy + row_h - 3), fill=(235, 238, 244))
         d.text((40, yy), r["clip"], font=fb, fill=INK)
-        d.text((560, yy), ("1080p, this round" if r["hd"] else "720p, earlier, scaled up"), font=fb,
+        d.text((440, yy), "1080p, this round" if r["hd"] else "720p, earlier, scaled up", font=fb,
                fill=INK if r["hd"] else (170, 60, 30))
         fc = r["frames_checked"]
-        d.text((850, yy), "-" if fc is None else f"{fc}", font=fb, fill=INK)
-        for x, key in ((1100, "arm_frames"), (1390, "all_frames")):
+        d.text((760, yy), "-" if fc is None else f"{fc}" + ("" if r["audit_this_round"] else " (earlier)"), font=fb,
+               fill=INK if r["audit_this_round"] else GREY)
+        for x, key in ((980, "arm_frames"), (1200, "all_frames")):
             v = r[key]
             d.text((x, yy), "-" if v is None else f"{v}", font=fb, fill=(20, 120, 50) if v == 0 else
                    (170, 60, 30) if v else GREY)
-        d.text((1650, yy), "this render" if r["audit_this_round"] else ("earlier" if fc is not None else "none"),
-               font=fb, fill=INK if r["audit_this_round"] else GREY)
-    d.text((40, H - 40), "Frames checked: every frame that moves, at the rate shown. A frame counts once however many "
-           "parts touch. Each clip's runs are in out/collisions/<clip>.json.", font=font(20), fill=GREY)
+        note = r["note"] or ("" if not (r["all_frames"] or r["arm_frames"]) else f"out/collisions/{r['clip']}.json")
+        while note and d.textlength(note, font=fn) > W - 1420 - 40:
+            note = note[:-2].rstrip() + "…"
+        d.text((1420, yy + 2), note, font=fn, fill=INK)
+    d.text((40, H - 50), "Frames checked: every frame as shown. A frame counts once however many parts touch. "
+           "\"Anything moving\" adds trays, doors, MiRs, tables and people to the arms.", font=font(20), fill=GREY)
     im.save(path, optimize=True)
     return rows
 
@@ -963,7 +997,7 @@ def upload(meta: dict) -> str:
     from youtube.yt_service import with_triggering_link
     desc = with_triggering_link(description(meta, commit))
     body = {"snippet": {"title": TITLE[:100], "description": desc, "tags": Y.TAGS,
-                        "categoryId": "28", "defaultLanguage": "en"},
+                        "categoryId": "28", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
             "status": {"privacyStatus": PRIVACY, "selfDeclaredMadeForKids": False, "embeddable": True}}
     media = MediaFileUpload(str(dst), mimetype="video/mp4", chunksize=16 << 20, resumable=True)
     req = yt.videos().insert(part="snippet,status", body=body, media_body=media, notifySubscribers=False)
