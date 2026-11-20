@@ -67,18 +67,18 @@
    "unit": [
     -144.02593994140625,
     166.97960594767474,
-    -489.8958844373879,
+    -472.797905183917,
     -260.0
    ],
-   "beside_mm": 199.8958844373879,
+   "beside_mm": 182.797905183917,
    "along": [
     -144.02593994140625,
     166.97960594767474
    ],
    "top_mm": 1216.9088134765625,
    "bottom_mm": 305.0,
-   "r_unit": 495.6993118356264,
-   "r_turn": 495.6993118356264,
+   "r_unit": 476.582417616565,
+   "r_turn": 494.064773081425,
    "r_turn_mir": 494.064773081425
   },
   "load": {
@@ -106,15 +106,21 @@
     }
    },
    "unit_cog_mm": [
-    9,
-    -365,
+    11,
+    -364,
     565
    ],
    "restoring_moment_change_Nm": {
-    "+x": 89.0,
-    "-x": 94.0,
-    "+y": 166.1,
-    "-y": -39.4
+    "+x": 88.3,
+    "-x": 94.7,
+    "+y": 165.8,
+    "-y": -39.1
+   },
+   "restoring_moment_without_Nm": {
+    "+x": 965.0,
+    "-x": 965.0,
+    "+y": 626.0,
+    "-y": 711.0
    },
    "whole_robot_kg": 331.5,
    "note": "restoring moment about each edge of the support rectangle (alloy_atomize.WHEELS, +-325 x +-225 mm, an estimate) the unit adds (> 0) or takes away (< 0); the unit hangs 130 mm outside the -x (back) edge, so it is the one edge it weakens"
@@ -735,7 +741,7 @@
     "source": "estimate"
    },
    {
-    "item": "2 in yellow/black floor tape for the 36 x 36 in keep-clear squares, 108 ft roll",
+    "item": "2 in yellow/black floor tape for the 24 x 36 in keep-clear areas, 108 ft roll",
     "qty": 1,
     "unit_usd": 30.0,
     "source": "estimate"

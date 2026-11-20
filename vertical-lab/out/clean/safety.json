@@ -1,0 +1,77 @@
+{
+ "name": "safety",
+ "fps": 15,
+ "n_frames": 829,
+ "size": [
+  1920,
+  1080
+ ],
+ "substeps": [
+  {
+   "label": "Amerex B570",
+   "caption": "The lab's own Class D extinguisher: 30 lb of Super D, a sodium-chloride powder that crusts over burning metal. Built from Amerex's datasheet and render.",
+   "start_frame": 0,
+   "end_frame": 102
+  },
+  {
+   "label": "Amerex B570",
+   "caption": "Its parts, as Amerex draws them: a chrome-plated brass valve, a hose in a turn and a half, a soft-flow applicator held in two lattice bands.",
+   "start_frame": 103,
+   "end_frame": 162
+  },
+  {
+   "label": "The valve",
+   "caption": "Chrome-plated brass. The gauge reads in the green; a large-loop stainless pin and a red tamper seal hold the lever.",
+   "start_frame": 163,
+   "end_frame": 238
+  },
+  {
+   "label": "The applicator",
+   "caption": "Its soft-flow cup lays the powder on gently, so it never blasts burning metal into the air; it comes off for a straight stream.",
+   "start_frame": 239,
+   "end_frame": 314
+  },
+  {
+   "label": "On a post at each station",
+   "caption": "Hung from its own hook so its lever is at 826 mm and its hose at 1047 mm: NFPA 10's 42 in for a unit over 40 lb. CLASS D signs at 60 and 80 in, a keep-clear square.",
+   "start_frame": 315,
+   "end_frame": 409
+  },
+  {
+   "label": "Amerex 811 vehicle bracket",
+   "caption": "Heavy duty, box type, sold for 30 lb Class D units: 17.5 in tall, rubber-lined, with a quick-release strap.",
+   "start_frame": 410,
+   "end_frame": 466
+  },
+  {
+   "label": "Strapped in",
+   "caption": "It stands on the foot plate, its back on the bushings; the strap goes round above the lower band, clear of the label, and latches over centre.",
+   "start_frame": 467,
+   "end_frame": 544
+  },
+  {
+   "label": "On every MiR250",
+   "caption": "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over its scanners' plane, wherever the robot works. Its turning circle stays 494 mm.",
+   "start_frame": 545,
+   "end_frame": 633
+  },
+  {
+   "label": "Available for use",
+   "caption": "Anyone near the robot takes it: throw the strap's latch, lift it off the foot plate and go. It is 50 lb, so it hangs low.",
+   "start_frame": 634,
+   "end_frame": 700
+  },
+  {
+   "label": "Where the most powder is",
+   "caption": "An Amerex 680R: 150 lb of the same agent, argon-regulated to 125 psi, on 36 in non-sparking wheels, at the rePowder and the EOS. A 50 lb pail of it with a scoop beside.",
+   "start_frame": 701,
+   "end_frame": 805
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 806,
+   "end_frame": 828
+  }
+ ]
+}

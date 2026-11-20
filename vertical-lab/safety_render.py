@@ -314,11 +314,22 @@ def mir_load(fp) -> dict:
         inward = (a - coord) * (1 if a > 0 else -1)            # mm inside the edge (> 0 holds the robot down)
         dM[name] = round(mtot * g * inward / 1000.0, 1)
     whole = 97.0 + s1
+    # the moment the robot's own weight holds it down with about each edge, without the unit: the MiR250 and the top
+    # module at its centre, the arm (parked) over its base at animate.ARM_LOCAL
+    import animate as A_
+    arm_y = A_.ARM_LOCAL[1]
+    base = []
+    for name, (a, u) in edges.items():
+        def inside(cx, cy):
+            coord = cx if u[0] else cy
+            return (a - coord) * (1 if a > 0 else -1)
+        mom = (97.0 + s0 - m["ur10e"]) * inside(0.0, 0.0) + m["ur10e"] * inside(0.0, arm_y)
+        base.append((name, round(mom * g / 1000.0, 0)))
     return dict(payload_kg=dict(before=round(s0, 1), unit=round(sum(unit.values()), 1), after=round(s1, 1),
                                 with_held_part=round(s1 + held, 1), limit=AA.MIR250_PAYLOAD,
                                 margin_with_held_part=round(AA.MIR250_PAYLOAD - s1 - held, 1)),
                 items=dict(before=before, unit=unit), unit_cog_mm=[round(float(v)) for v in cog],
-                restoring_moment_change_Nm=dM, whole_robot_kg=round(whole, 1),
+                restoring_moment_change_Nm=dM, restoring_moment_without_Nm=dict(base), whole_robot_kg=round(whole, 1),
                 note="restoring moment about each edge of the support rectangle (alloy_atomize.WHEELS, +-325 x "
                      "+-225 mm, an estimate) the unit adds (> 0) or takes away (< 0); the unit hangs 130 mm outside the "
                      "-x (back) edge, so it is the one edge it weakens")
@@ -360,7 +371,7 @@ def bom() -> dict:
         ("Floor post: 1-5/8 in strut, 2.15 m, post base, 4 wedge anchors, red (ours)", n_fixed, 150.0, "estimate"),
         ("CLASS D sign, 7 x 10 in rigid plastic", n_fixed, 20.0, "estimate (DAL's parts list)"),
         ("Double-sided CLASS D flag sign and its aluminium flag bracket (DAL's)", n_fixed, 35.0, "estimate"),
-        ("2 in yellow/black floor tape for the 36 x 36 in keep-clear squares, 108 ft roll", 1, 30.0, "estimate"),
+        ("2 in yellow/black floor tape for the 24 x 36 in keep-clear areas, 108 ft roll", 1, 30.0, "estimate"),
     ]
     total = sum((q * p) for _, q, p, _ in rows if p)
     return dict(rows=[dict(item=i, qty=q, unit_usd=p, source=s) for i, q, p, s in rows], total_usd=round(total, 2),
@@ -729,6 +740,53 @@ def photo() -> str:
     return str(path)
 
 
+# ================================================================================================ in the lab
+LAB_VIEWS = [  # (camera, look-at, title): the units at the north row's west end, between the Shuttles, the east end,
+    # the south row's DED and the EOS
+    ((-3200.0, -7800.0, 3300.0), (-6300.0, -1500.0, 700.0), "The glovebox's unit and the rePowder's fire point"),
+    ((4600.0, -6400.0, 2600.0), (1750.0, -1500.0, 800.0), "Between the Shuttles: one unit for both openings"),
+    ((10600.0, -5600.0, 2900.0), (8900.0, -1500.0, 700.0), "The Aconity MIDI's unit and pail; the packaging station's"),
+    ((-7300.0, -6900.0, 2600.0), (-9800.0, -9600.0, 700.0), "The EOS M 400-4: a B570 in front, a 680R beside it"),
+]
+
+
+def lab_stills() -> str:
+    """out/safety_lab.png: the lab with its Class D units, from setup_lab.build (the trays' instruments left out, the
+    Shuttles clad: VLAB_ONLY_TRAYS=""), a MiR250 docked at the rePowder and one at the Aconity, four views."""
+    from PIL import Image, ImageDraw
+    from scene import font
+    os.environ.setdefault("VLAB_ONLY_TRAYS", "")
+    import lab
+    import setup_lab as SL
+    import warehouse as W
+    data = lab.meshes()
+    idata = SL.load_all()
+    sc, L, F, items, rigs, units, util, ulabel, vp = SL.build(data, idata, mp4=False, name="safety_lab")
+    for u, key in zip(units, ("repowder", "aconity")):
+        u.set(W.dock_pose(key))
+    sc.apply()
+    shots = []
+    for cam, look, title in LAB_VIEWS:
+        sc.cam = [cam, look, (0, 0, 1)]
+        sc.view_angle = 34.0
+        shots.append((Image.fromarray(sc.render_base()), title))
+    sc.pl.close()
+    w, h = shots[0][0].size
+    tw, th = w // 2, h // 2
+    sheet = Image.new("RGB", (2 * tw, 2 * th + 140), SURF)
+    d = ImageDraw.Draw(sheet)
+    d.text((24, 16), "Class D in the lab: B570s at the powder stations, two 680Rs, two pails, one on each MiR250",
+           font=font(int(30 * w / 1920 + 4), bold=True), fill=INK)
+    for i, (im, title) in enumerate(shots):
+        r, c = divmod(i, 2)
+        sheet.paste(im.resize((tw, th)), (c * tw, 70 + r * (th + 34)))
+        d.text((c * tw + 14, 70 + r * (th + 34) + th + 2), title, font=font(22, bold=True), fill=INK)
+    path = OUT / "safety_lab.png"
+    sheet.save(path, optimize=True)
+    print("->", path.relative_to(HERE))
+    return str(path)
+
+
 # ================================================================================================ the clip
 def clip() -> str:
     """A short clip: the B570 turned round with its parts named, its valve, on its post, the 811 taking it, a MiR250
@@ -746,23 +804,25 @@ def clip() -> str:
     sc.gmat["b570"] = T((0.0, 0.0, 0.0))
     bb = _bb(b)
     tour.contact_shadow(sc, bb, name="shadow b570")
-    cam0 = tour.frame_cam(bb, (-0.55, -1.6, 0.35), pad=0.60)
+    cam0 = tour.frame_cam(bb, (-0.55, -1.6, 0.35), pad=0.95, look_z=0.5)
     sc.cam = cam0
 
     def turn(u):
         sc.gmat["b570"] = R((0, 0, 1), 360.0 * u)
     sc.step("Amerex B570", "The lab's own Class D extinguisher: 30 lb of Super D, a sodium-chloride powder that crusts "
-            "over burning metal. Built from Amerex's datasheet and render.", 7.0, turn, hold=0.6,
+            "over burning metal. Built from Amerex's datasheet and render.", 6.0, turn, hold=0.3)
+    sc.step("Amerex B570", "Its parts, as Amerex draws them: a chrome-plated brass valve, a hose in a turn and a half, "
+            "a soft-flow applicator held in two lattice bands.", 1.0, None, hold=3.0,
             labels=[("squeeze lever, pin, gauge", (40.0, -10.0, 690.0), (0.62, 0.20)),
-                    ("hose", (-140.0, 0.0, 800.0), (0.18, 0.18)),
+                    ("hose", (-133.0, 20.0, 760.0), (0.18, 0.22)),
                     ("soft-flow applicator", (S.B570["wand_x"], 0.0, 300.0), (0.72, 0.55)),
-                    ("lattice bands hold it", (0.0, -R_ - 3.0, 290.0), (0.20, 0.62))])
+                    ("lattice bands hold it", (-60.0, -R_ - 3.0, 290.0), (0.20, 0.62))])
     sc.step("The valve", "Chrome-plated brass. The gauge reads in the green; a large-loop stainless pin and a red "
             "tamper seal hold the lever.", 3.5, None, hold=1.6,
-            cam_to=[(-230.0, -470.0, 800.0), (20.0, 0.0, 660.0), (0, 0, 1)])
+            cam_to=[(-300.0, -600.0, 830.0), (20.0, 0.0, 680.0), (0, 0, 1)])
     sc.step("The applicator", "Its soft-flow cup lays the powder on gently, so it never blasts burning metal "
             "into the air; it comes off for a straight stream.", 3.5, None, hold=1.6,
-            cam_to=[(380.0, -420.0, 260.0), (100.0, 0.0, 110.0), (0, 0, 1)])
+            cam_to=[(470.0, -760.0, 140.0), (120.0, -30.0, 90.0), (0, 0, 1)])
     # 2. on its post
     post = S.post_parts(with_unit=True)
     xp = 1600.0
@@ -771,7 +831,7 @@ def clip() -> str:
     for n in names_p:
         sc.alpha[n] = 0.0
     pb = _bb(post, T((xp, 0.0, 0.0)))
-    cam_p = tour.frame_cam(pb, (-0.9, -1.6, 0.5), pad=0.62, look_z=0.47)
+    cam_p = tour.frame_cam(pb, (-0.9, -1.6, 0.45), pad=1.0, look_z=0.5)
 
     def show_post(u):
         for n in names_p:
@@ -791,7 +851,7 @@ def clip() -> str:
     Mb = S.b570_in_811()
     for n in held:
         sc.alpha[n] = 0.0
-    cam_b = tour.frame_cam((xb - 200, xb + 200, -260, 60, 0, 950), (-0.8, -1.6, 0.5), pad=0.75, look_z=0.42)
+    cam_b = tour.frame_cam((xb - 200, xb + 200, -260, 60, 0, 950), (-0.8, -1.6, 0.5), pad=1.0, look_z=0.45)
 
     def bracket_in(u):
         for n in states[0.0]:
@@ -815,10 +875,11 @@ def clip() -> str:
     for n in u_.names():
         if "class D" in n:
             pass
-    mir_cam = [(xm - 2900.0, -2300.0, 1700.0), (xm - 250.0, -80.0, 700.0), (0, 0, 1)]
-    sc.step("On every MiR250", "Each MiR250 carries one in an 811 on its cabinet's back end, under the arm and above "
-            "its rear scanner, wherever the robot works.", 4.5, None, cam_to=mir_cam, hold=1.4,
-            labels=[("B570 in its 811", (xm - 470.0, -110.0, 700.0), (0.30, 0.30))])
+    mir_cam = [(xm - 1900.0, -3300.0, 1800.0), (xm, -200.0, 700.0), (0, 0, 1)]
+    sc.step("On every MiR250", "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over "
+            "its scanners' plane, wherever the robot works. Its turning circle stays 494 mm.", 4.5, None,
+            cam_to=mir_cam, hold=1.4,
+            labels=[("B570 in its 811", (xm, -380.0, 700.0), (0.30, 0.30))])
     mir_unit = [n for n in sc.actors if n.startswith("amr/amr class D ") and any(
         t in n for t in ("cd_yellow", "chrome", "rubber", "black_plastic", "handle", "gauge", "label", "print", "star",
                          "seal", "steel"))]
@@ -828,7 +889,7 @@ def clip() -> str:
         lift_names.append(n)
     sc.step("Available for use", "Anyone near the robot takes it: throw the strap's latch, lift it off the foot plate "
             "and go. It is 50 lb, so it hangs low.", 3.5, None, hold=1.0,
-            cam_to=[(xm - 1700.0, -1300.0, 1150.0), (xm - 470.0, -110.0, 650.0), (0, 0, 1)])
+            cam_to=[(xm - 900.0, -2100.0, 1200.0), (xm, -380.0, 700.0), (0, 0, 1)])
     # 5. the 680R and the pail
     xw = 7600.0
     w = S.w680r_parts()
@@ -869,6 +930,8 @@ def main(what: str):
         photo()
     elif what == "clip":
         clip()
+    elif what == "lab":
+        lab_stills()
     elif what == "all":
         report()
         plan()

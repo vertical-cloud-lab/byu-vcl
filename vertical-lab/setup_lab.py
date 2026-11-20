@@ -1166,7 +1166,8 @@ class Unit:
         self.sc, self.name, self.pose = sc, name, list(pose)
         cab = f"{name}_cab"
         for nm, (mesh, col) in P.mir250().items():
-            grp = cab if ("cabinet" in nm or "e-stop" in nm) else name
+            # the safety PR's Class D unit hangs on the cabinet's side (safety.mir_mount), so it comes in with it
+            grp = cab if ("cabinet" in nm or "e-stop" in nm or "class D" in nm) else name
             sc.add(f"{name}/{nm}", mesh, col, grp, **(dict(ambient=0.8) if "light" in nm else {}))
         holder, seat = P.buffer_holder()
         sc.add(f"{name}/holder", holder.translate((*A.BUFFER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, cab)

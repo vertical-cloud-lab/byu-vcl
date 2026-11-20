@@ -19,7 +19,7 @@ The assets, each built part by part from the maker's own figures and pictures:
 * **Model 811 heavy-duty vehicle bracket** (``bracket811_parts``): Amerex's box-type bracket, the one Buckeye sells as
   700229 "also identified as Model 811": for 30 lb Class D units, 7.5-8.5 in cylinders, 17.5 in tall, 8.125 in wide
   and deep, 9 lb, powder-coated carbon steel with rubber bushings and a quick-release strap (Buckeye's datasheet).
-  It holds the B570 on the back of each MiR250 (``mir_mount``).
+  It holds the B570 on the aisle side of each MiR250 (``mir_mount``).
 * **Amerex 680R** (``w680r_parts``): 150 lb Super D on 36 x 2.5 in steel wheels with non-sparking treads, argon
   cylinder (110 ft3) regulated to 125 psi, 25 ft x 0.75 in hose, extension wand; 52 x 28 x 45 in (Amerex's wheeled
   catalogue, p. 11). At the atomizer and at the EOS, where the most powder is.
@@ -309,9 +309,11 @@ def class_d_star(h=22.0, depth=0.6):
     return out
 
 
-def b570_parts(hose: bool = True, lod: str = "full") -> dict:
+def b570_parts(hose: bool = True, lod: str = "full", lean: float = 0.0) -> dict:
     """{name: (PolyData, material)}: the Amerex B570, part by part, in its own frame (see B570). lod "lab" leaves out
-    the label's small print (for whole-lab scenes, where it is a few pixels)."""
+    the label's small print (for whole-lab scenes, where it is a few pixels). lean > 0 drapes the hose's coil forward
+    (out of the label's side), by `lean` mm per mm of height over the valve: the robot-mounted unit's, so the coil
+    leans away from the arm's work over the cabinet (mir_parts)."""
     import cadquery as cq
     pv = _pv()
     b = B570
@@ -382,6 +384,9 @@ def b570_parts(hose: bool = True, lod: str = "full") -> dict:
                 (-95.0, 29.0, 652.0), (-127.0, 25.0, 690.0), (-133.0, 21.0, 727.0), (-125.0, 17.0, 790.0),
                 (-103.0, 14.0, 835.0), (-60.0, 11.0, 872.0), (7.0, 8.0, 893.0), (72.0, 5.0, 871.0),
                 (103.0, 3.0, 835.0), (116.0, 1.0, 798.0), (119.0, 0.0, 777.0)]
+        if lean:
+            path = [(x, y - lean * max(0.0, z - 690.0) * (1.0 if 2 <= i < len(path) - 3 else 0.0), z)
+                    for i, (x, y, z) in enumerate(path)]
         _add(p, "B570 hose", _tube(path, 11.0), "rubber")
     # the applicator: chrome quick-detach coupling, a black tapered grip, the wand, the soft-flow cup
     wx = b["wand_x"]
@@ -808,7 +813,10 @@ def pail_parts() -> dict:
 # label out. There it stays inside the circle the MiR250 already sweeps turning on the spot (494 mm): mounted on the
 # back end instead, it made that circle 619 mm and six docks lost their pivot spot (notes/safety.md). The cabinet's door
 # (the UR control box's) moves from that side to the front end (props.mir250).
-MIR_MOUNT = dict(x=0.0, z_foot=310.0, plate_t=6.0, plate=(470.0, 250.0), plate_kg=1.9)
+MIR_MOUNT = dict(x=0.0, z_foot=310.0, plate_t=6.0, plate=(470.0, 250.0), plate_kg=1.9, hose_lean=0.45)
+# hose_lean: on the robot the hose's coil is draped forward, away from the cabinet (b570_parts(lean=...)): hung in the
+# frontal plane as Amerex draws it, its top stood 110 mm off the cabinet's side, where arm B's forearm passed it in the
+# plate swap (atom_plate, step 11: 3 frames at 4 fps; 0 without the unit)
 CLASS_D_ON_MIR = os.environ.get("VLAB_MIR_CLASS_D", "1") != "0"
 
 
@@ -835,7 +843,7 @@ def mir_parts() -> dict:
     for name, (mesh, mat) in bracket811_parts().items():
         _add(p, name, mesh.transform(M, inplace=False), mat)
     Mb = M @ b570_in_811()
-    for name, (mesh, mat) in b570_parts().items():
+    for name, (mesh, mat) in b570_parts(lean=MIR_MOUNT["hose_lean"]).items():
         _add(p, name, mesh.transform(Mb, inplace=False), mat)
     return p
 
