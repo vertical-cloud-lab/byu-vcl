@@ -62,6 +62,26 @@ charge chapter, the atomizer and the narration). Each point below links its note
 
   The priced part comes to about USD 22,600. The rest is for #331's quote list.
 
+**Rendered at 1080p this run,** each checking its own frames:
+
+| Clip | Length, fps | Arm frames in collision | Moving parts | Round 13 |
+|---|---|---|---|---|
+| `setup_lab` | 122 s, 10 | 0 of 948 | 45 | 0 / 35 |
+| `vlm_services` | 37 s, 12 | 0 of 295 | 0 | 0 / 10 |
+| `vlm_hookups` | 39 s, 12 | 0 of 428 | 0 | not kept |
+| `bay_camera` | 33 s, 12 | 0 of 285 | 0 | 2 / 0 |
+| `vlm_cabling` | 35 s, 12 | 0 of 262 | 0 | (the old line) |
+| `vlm_coupling` | 77 s, 15 | 0 of 728 | 0 | 0 |
+
+- **The set-up movie's 45 frames** are rigging moves: machines set down past their own drops, junction boxes and
+  target posts, the MiR onto its charger plate, the UR control box into its cabinet. They are round 13's 35 plus the
+  rePowder past a target post.
+- **The 1080p files** are in `out/hd/`.
+- **Figures:**
+  - [`out/bay_camera_views.png`](out/bay_camera_views.png): what each bay camera sees;
+  - [`out/airgradient_mounts.png`](out/airgradient_mounts.png): the AirGradient on a tray's UPS and on a station's
+    junction box.
+
 Running it (round 14, A; renders at 1080p with their own audits, two heavy jobs at a time through `runner_guard.py`):
 
 ```bash
