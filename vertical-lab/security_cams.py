@@ -564,6 +564,7 @@ FIG_FIT_KEYS = ["axis_m3086v", "unifi_g5turret", "axis_m4216lv", "hanwha_qne8011
                 "axis_m1137", "axis_m5075g", "dahua_sd1a404", "hik_2a404", "reolink_trackmix", "axis_m5000g",
                 "reolink_823s2", "ptzoptics_movese20", "sony_srga12"]
 STILL_TRAY_CAM = "hanwha_qne8011r"
+STILL_CAM = [(1650.0, -3500.0, 1430.0), (-60.0, -1000.0, 1500.0), (0, 0, 1)]   # eye, look-at, up: front right
 
 
 def tray_spots() -> list:
@@ -708,10 +709,13 @@ def fig_bay(choice: dict, cands: dict, res: dict, path: Path) -> Path:
             t = math.radians(r["tilt_deg"] + dv)
             dy, dz = cy * math.cos(t), -math.sin(t)
             s_ = (FLOOR_Z - lz) / dz if dz < -1e-6 else 3000.0
-            ax.plot([ly, ly + s_ * dy], [lz, lz + s_ * dz], color=col, lw=0.7, alpha=0.6)
-        ax.add_patch(Circle((y + cam["dia_mm"] / 2 + 38, z - cam["hang_mm"] / 2 - 10), 26, color=INK, lw=0))
-        ax.text(y + cam["dia_mm"] / 2 + 38, z - cam["hang_mm"] / 2 - 10, str(n), color=SURF, ha="center",
-                va="center", fontsize=8, fontweight="bold")
+            ax.plot([ly, ly + s_ * dy], [lz, lz + s_ * dz], color=col, lw=0.6, alpha=0.45)
+        by, bz = {"back_wide": (-150.0, -150.0), "back_ptz": (-40.0, -150.0), "front": (95.0, -150.0),
+                  "top": (0.0, -150.0)}.get(spot, (0.0, -150.0))
+        ax.plot([y, y + by], [z - cam["hang_mm"], z + bz + 26], color=MUTED, lw=0.6)
+        ax.add_patch(Circle((y + by, z + bz), 26, color=INK, lw=0, zorder=5))
+        ax.text(y + by, z + bz, str(n), color=SURF, ha="center", va="center", fontsize=8, fontweight="bold",
+                zorder=6)
     ax.set_xlim(-1900, -480)
     ax.set_ylim(780, 2080)
     ax.set_aspect("equal")
@@ -723,16 +727,17 @@ def fig_bay(choice: dict, cands: dict, res: dict, path: Path) -> Path:
     txt = dict(fontsize=8, color=INK2)
     ax.text(-1040, 1300, f"goods envelope: up to {V.MAX_GOODS_H:.1f} mm\n(the 996 mm opening's estimate, vlm.py)",
             ha="center", **txt)
-    ax.text(-1040, ENV_Z + BAND / 2, f"{BAND:.1f} mm: all a roof camera may hang over the tray", ha="center",
-            va="center", fontsize=8, color=INK)
+    ax.annotate(f"the band (blue): {BAND:.1f} mm, all a roof camera may hang over the tray", (-1250, ENV_Z + 30),
+                (-1250, 1500), fontsize=8, color=INK, ha="center",
+                arrowprops=dict(arrowstyle="->", color=INK2, lw=0.8))
     ax.text(-1040, ROOF_Z + 22, "assumed roof: the opening's clear height, 1829 mm", ha="center", fontsize=8, color=INK)
     ax.text(-1040, F1_Z + 95, "tray F1, stored over the opening (1950 mm)", ha="center", **txt)
     ax.text(FRONT_STRIP[0] - 10, 1000, "front strip: no goods\never pass under it", ha="right", **txt)
     ax.text(-1631, 1600, "UR10e elbow at its\nhighest near the strip", ha="right", va="bottom", **txt)
     ax.text(SHUTTER_Y + 18, 1350, "shutter", rotation=90, va="center", **txt)
     ax.text(-1650, 1840, "header", ha="right", **txt)
-    ax.set_title("The bay in section, every camera drawn at x = 0 (the back pair is at x = -120 and +120 mm, the "
-                 "front one at +300)", loc="left", fontsize=10, color=INK)
+    ax.set_title("The bay in section (cameras 1-2 stand at x = -120 / +120 mm, 3 at +300, 4 at 0)", loc="left",
+                 fontsize=10, color=INK)
     # one plan per camera: the presented tray's floor, the picture on it (filled) and 300 mm up (dashed)
     order = ["back_wide", "back_ptz", "front", "top"]
     num = {k: n for n, k in enumerate(res, 1)}
@@ -856,95 +861,78 @@ def post_fit(cands: dict, head: dict) -> dict:
 
 
 def fig_fit(cands: dict, keys: list, head: dict, path: Path) -> Path:
-    """out/security_cameras_fit.png: each candidate to scale, (a) hung from the bay's roof against the 95.5 mm band,
-    (b) on a tray post at the HQ/Wide head's pivot against the trays' headroom."""
+    """out/security_cameras_fit.png: (a) how far each candidate hangs from the bay's roof, against the 95.5 mm band;
+    (b) each fixed candidate's top on a tray post at the HQ/Wide head's pivot, against the trays' slot limits."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    from matplotlib.patches import FancyBboxPatch, Rectangle
+    from matplotlib.lines import Line2D
     import services as S
     plt.rcParams.update({"font.size": 9, "axes.edgecolor": AXIS, "axes.labelcolor": INK2, "xtick.color": MUTED,
-                         "ytick.color": MUTED, "font.family": "DejaVu Sans"})
-    fig, (a1, a2) = plt.subplots(2, 1, figsize=(16, 9.2), dpi=150, facecolor=SURF,
-                                 gridspec_kw=dict(height_ratios=[1, 1.15], hspace=0.55))
-    fig.subplots_adjust(left=0.06, right=0.985, top=0.88, bottom=0.08)
-    gap = 60.0
-    keys = [k for k in keys if cands[k].get("dia_mm") and cands[k].get("hang_mm")]
-    xs, x = [], 0.0
-    for k in keys:
-        w = max(cands[k]["dia_mm"], 60.0)
-        xs.append(x + w / 2)
-        x += w + gap + 90.0
+                         "ytick.color": INK2, "font.family": "DejaVu Sans"})
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(16, 8.4), dpi=150, facecolor=SURF,
+                                 gridspec_kw=dict(width_ratios=[1.15, 1], wspace=0.55))
+    fig.subplots_adjust(left=0.17, right=0.97, top=0.83, bottom=0.08)
+    moving = lambda c: len(c["hfov"]) > 1
     # (a) the roof
-    a1.set_facecolor(SURF)
-    a1.axhline(ROOF_Z, color=INK, lw=1.6)
-    a1.axhline(ENV_Z, color=CRIT, lw=1.0, ls="--")
-    a1.add_patch(Rectangle((-200, ENV_Z), x + 400, BAND, color=BLUE, alpha=0.10, lw=0))
-    a1.text(-150, ROOF_Z + 8, "the bay's roof (assumed at 1829 mm)", fontsize=8, color=INK)
-    a1.text(-150, ENV_Z - 22, "top of the goods + Kardex's 20 mm (1733.5 mm): over the tray, nothing hangs lower; "
-            "the front strip has no such limit", fontsize=8, color=INK2)
-    for k, cx in zip(keys, xs):
+    ks = sorted([k for k in keys if cands[k].get("hang_mm")], key=lambda k: cands[k]["hang_mm"])
+    for i, k in enumerate(ks):
         c = cands[k]
-        d, h = c["dia_mm"], c["hang_mm"]
-        col = ORANGE if len(c["hfov"]) > 1 else BLUE
-        a1.add_patch(FancyBboxPatch((cx - d / 2, ROOF_Z - h), d, h, boxstyle="round,pad=0,rounding_size=8",
-                                    color=col, lw=0, alpha=0.85))
-        low = ROOF_Z - h
-        ok = low >= ENV_Z
-        a1.text(cx, low - 18, ("fits the band, " if ok else "strip only, ") + f"{abs(low - ENV_Z):.0f} mm "
-                + ("spare" if ok else "below the band"), ha="center", va="top", fontsize=7.5,
-                color=INK if ok else CRIT)
-        a1.text(cx, ROOF_Z + 40, c["short"], ha="center", va="bottom", fontsize=7.5, color=INK, rotation=0, wrap=True)
-    a1.set_xlim(-200, x + 200)
-    a1.set_ylim(ROOF_Z - 260, ROOF_Z + 110)
-    a1.set_aspect("equal")
-    a1.set_xticks([])
-    a1.set_ylabel("z, mm")
-    for s in ("top", "right", "bottom"):
-        a1.spines[s].set_visible(False)
-    a1.set_title("(a) Hung from the bay's roof, to scale (published height; a bullet or box camera on its ceiling "
-                 "bracket)", loc="left", fontsize=10, color=INK)
+        h = c["hang_mm"]
+        a1.barh(i, h, height=0.62, color=ORANGE if moving(c) else BLUE, lw=0)
+        spare = BAND - h
+        txt = (f"fits, {spare:.0f} mm spare" if spare >= 5 else f"at the limit ({spare:.1f} mm spare)" if spare >= 0
+               else "front strip only")
+        a1.text(h + 4, i, f"{h:.0f} mm  {txt}", va="center", fontsize=8, color=INK if spare >= 5 else CRIT)
+    a1.axvline(BAND, color=CRIT, lw=1.0, ls="--")
+    a1.text(BAND + 3, len(ks) - 0.2, f"the band: {BAND:.1f} mm", fontsize=8, color=CRIT, va="bottom")
+    a1.set_yticks(range(len(ks)), [cands[k]["short"] for k in ks], fontsize=8)
+    a1.set_xlim(0, 290)
+    a1.set_xlabel("how far it hangs below the roof, mm (published height; a bullet or box camera on a bracket: ours)")
+    a1.set_title("(a) Under the bay's roof: what may hang over the tray", loc="left", fontsize=10, color=INK)
     # (b) a tray post
-    a2.set_facecolor(SURF)
     piv = V.T_FLOOR + S.CAM_H + S.TILT_AXIS[2]
-    lims = sorted({h["highest_top_same_slot_mm"] for h in head.values() if h["highest_top_same_slot_mm"] < 800})
-    a2.axhline(piv, color=MUTED, lw=0.8, ls=":")
-    a2.text(-150, piv - 4, "aim pivot: the HQ/Wide head's tilt axis, 643 mm", fontsize=7.5, color=INK2, va="top")
-    for lim in lims:
-        trays = "".join(sorted(k for k, h in head.items() if h["highest_top_same_slot_mm"] == lim))
-        a2.axhline(lim, color=CRIT if lim == min(lims) else AXIS, lw=0.9, ls="--")
-        a2.text(x + 180, lim + 2, f"trays {trays}: top <= {lim:.0f} mm keeps the slot", fontsize=7.5, ha="right",
-                va="bottom", color=INK2)
-    cur = max(max(h["camera_tops_mm"]) for h in head.values())
-    for k, cx in zip(keys, xs):
+    kb = sorted([k for k in keys if cands[k].get("h_up_mm") is not None], key=lambda k: cands[k]["h_up_mm"])
+    lims = {}
+    for t, h in head.items():
+        lims.setdefault(h["highest_top_same_slot_mm"], []).append(t)
+    tight = min(l for l in lims if l > 600)
+    for i, k in enumerate(kb):
         c = cands[k]
-        if c.get("h_up_mm") is None:
-            continue
-        d = c["dia_mm"]
         top = piv + c["h_up_mm"]
-        bot = piv - c.get("h_down_mm", c["h_up_mm"])
-        col = ORANGE if len(c["hfov"]) > 1 else BLUE
-        a2.add_patch(FancyBboxPatch((cx - d / 2, bot), d, top - bot, boxstyle="round,pad=0,rounding_size=8",
-                                    color=col, lw=0, alpha=0.85))
-        a2.add_patch(Rectangle((cx - d / 2 - 22, piv - 300), 20, 300 + 60, color=AXIS, lw=0))   # the 2020 post
-        a2.text(cx, top + 10, f"top {top:.0f}", ha="center", va="bottom", fontsize=7.5,
-                color=INK if top <= min(lims) else CRIT)
-        a2.text(cx, piv - 320, c["short"], ha="center", va="top", fontsize=7.5, color=INK)
-    a2.set_xlim(-200, x + 200)
-    a2.set_ylim(piv - 380, max(lims) + 70)
-    a2.set_aspect("equal")
-    a2.set_xticks([])
-    a2.set_ylabel("z over the tray's underside, mm")
-    for s in ("top", "right", "bottom"):
-        a2.spines[s].set_visible(False)
-    a2.set_title(f"(b) On a tray's 2020 post in place of the HQ/Wide head (its top today: up to {cur:.0f} mm), aimed "
-                 "down; the box is what the camera sweeps as it is aimed (our estimate from the maker's dimensions)",
-                 loc="left", fontsize=10, color=INK)
-    fig.suptitle("Security cameras to scale: under the bay's roof, and on the trays' camera posts", x=0.06,
-                 ha="left", fontsize=13, color=INK, y=0.975)
-    fig.text(0.06, 0.925, "Blue: fixed cameras; orange: motorized zoom (PTZ or varifocal). A red label: outside the "
-             "band, or a top that would make the tightest trays' slots taller by a 25 mm step.", fontsize=8.5,
-             color=INK2)
+        a2.barh(i, c["h_up_mm"], left=piv, height=0.62, color=ORANGE if moving(c) else BLUE, lw=0)
+        a2.text(top + 2, i, f"top {top:.0f} mm", va="center", fontsize=8, color=INK if top <= tight else CRIT)
+    cur = max(max(h["camera_tops_mm"]) for h in head.values())
+    for lim, trays in sorted(lims.items()):
+        if lim < 600 or lim > 800:
+            continue
+        a2.axvline(lim, color=CRIT if lim == tight else MUTED, lw=1.0, ls="--")
+        a2.text(lim + 1, len(kb) - 0.2 + (0.0 if lim == tight else 0.9), f"trays {''.join(sorted(trays))}: "
+                f"<= {lim:.0f}", fontsize=8, color=CRIT if lim == tight else INK2, va="bottom")
+    a2.axvline(cur, color=INK2, lw=0.8, ls=":")
+    a2.text(cur - 1, -1.0, f"HQ/Wide heads today: up to {cur:.0f}", fontsize=8, color=INK2, ha="right")
+    a2.set_yticks(range(len(kb)), [cands[k]["short"] for k in kb], fontsize=8)
+    a2.set_xlim(piv - 5, 790)
+    a2.set_ylim(-1.6, len(kb) + 0.9)
+    a2.set_xlabel(f"over the tray's underside, mm: from the aim pivot ({piv:.0f}, the head's tilt axis) to the top")
+    a2.set_title("(b) On a tray's 2020 post, aimed down: its top against the slot", loc="left", fontsize=10,
+                 color=INK)
+    for ax in (a1, a2):
+        ax.set_facecolor(SURF)
+        ax.grid(axis="x", color=GRID, lw=0.5)
+        ax.set_axisbelow(True)
+        for sp in ("top", "right"):
+            ax.spines[sp].set_visible(False)
+    leg = [Line2D([0], [0], color=BLUE, lw=6), Line2D([0], [0], color=ORANGE, lw=6)]
+    fig.legend(leg, ["fixed lens", "motorized zoom (PTZ or varifocal)"], loc="upper right", ncol=2, frameon=False,
+               bbox_to_anchor=(0.97, 0.915), fontsize=9)
+    fig.suptitle("Security cameras against the room they have: the bay's roof band and the trays' slots",
+                 x=0.03, ha="left", fontsize=13, color=INK, y=0.975)
+    fig.text(0.03, 0.925, "(a) Over the tray a roof camera has 95.5 mm (the roof assumed at 1829 mm, the goods' "
+             "top plus Kardex's 20 mm at 1733.5); taller ones can only go in the front strip. (b) A turret or dome "
+             "on the post's face rises half its base over its pivot, a bullet or box camera about half its length "
+             "at 45 degrees (ours); past the red line, trays C, E, G, I and L need a 25 mm taller slot unless the "
+             "camera is set lower.", fontsize=8.5, color=INK2, wrap=True)
     fig.savefig(path, facecolor=SURF)
     plt.close(fig)
     return path
@@ -1003,18 +991,19 @@ def _turret_meshes(base_c, n, D, H, look) -> dict:
 
 
 def _ptz_meshes(top_c, D, H, look) -> dict:
-    """A PTZ hanging from top_c: a mount ring, a body and a dome, looking along `look`."""
+    """A PTZ hanging from top_c, D across and H tall: a base disc and a dome under it, its lens looking along
+    `look`."""
     import pyvista as pv
     look = np.asarray(look, float) / np.linalg.norm(look)
     down = np.array([0.0, 0.0, -1.0])
-    ring = pv.Cylinder(center=top_c + down * 0.06 * H, direction=down, radius=0.42 * D, height=0.12 * H,
-                       resolution=48)
-    body = pv.Cylinder(center=top_c + down * 0.36 * H, direction=down, radius=D / 2, height=0.48 * H, resolution=48)
-    dome_c = top_c + down * (H - D / 2)
-    dome = pv.Sphere(radius=0.47 * D, center=dome_c, theta_resolution=40, phi_resolution=40)
-    lens = pv.Cylinder(center=dome_c + look * 0.40 * D, direction=look, radius=0.13 * D, height=0.16 * D,
+    rd = min(0.70 * H, 0.45 * D)                 # the dome's radius
+    t = H - rd                                   # the base disc's thickness
+    base = pv.Cylinder(center=top_c + down * t / 2, direction=down, radius=D / 2, height=t, resolution=64)
+    dome_c = top_c + down * t
+    dome = pv.Sphere(radius=rd, center=dome_c, theta_resolution=48, phi_resolution=48, start_phi=90, end_phi=180)
+    lens = pv.Cylinder(center=dome_c + look * rd * 0.92, direction=look, radius=0.12 * D, height=0.12 * D,
                        resolution=32)
-    return {"sec_white": [ring, body, dome], "sec_black": [lens]}
+    return {"sec_white": [base, dome], "sec_black": [lens]}
 
 
 def _add_mesh_group(sc, g, by_mat, parent=None):
@@ -1065,8 +1054,8 @@ def still(choice: dict, cands: dict, res: dict, tray_cam: str, k: str = "A") -> 
             by = _turret_meshes(top, (0, 0, -1), cam["dia_mm"], cam["hang_mm"], f)
         _add_mesh_group(sc, f"secbay_{spot}", by)
         lbl.append((f"{r['label']}: {cam['short']}", tuple(top - (0, 0, cam["hang_mm"])),
-                    {"back_wide": (0.30, 0.06), "back_ptz": (0.62, 0.06), "front": (0.80, 0.14),
-                     "top": (0.12, 0.10)}[spot]))
+                    {"back_wide": (0.16, 0.05), "back_ptz": (0.52, 0.05), "front": (0.86, 0.16),
+                     "top": (0.16, 0.16)}[spot]))
     # tray k's posts, each with a turret where the head's tilt axis was, looking at the head's aim point
     c = cands[tray_cam]
     mast = S.meshes_of(f"mast{S.POST_H}True", lambda: S.mast_parts(S.POST_H, True), 0.5)
@@ -1087,12 +1076,13 @@ def still(choice: dict, cands: dict, res: dict, tray_cam: str, k: str = "A") -> 
         by.setdefault("sec_plate", []).append(plate)
         _add_mesh_group(sc, f"sectur_{k}{i}", by, parent=f"tray_{k}")
         lbl.append((f"{c['short']} on a tray post", tuple(A.tray_world(k, (x, y, zc + 60.0))),
-                    (0.10 + 0.55 * i, 0.30)))
-    sc.cam = [(1650.0, -3350.0, 1640.0), (150.0, -1050.0, 1380.0), (0, 0, 1)]
+                    (0.10 + 0.62 * i, 0.42)))
+    sc.cam = list(STILL_CAM)
     sc.step("", f"Tray {k} at the opening with a {c['short']} on each of its two camera posts, where the HQ/Wide "
-            "heads were; under a roof assumed at the opening's top (drawn see-through), the front pair under the "
-            "header (a wide turret and a PTZ, here on the CubXL's holder seat), a turret at the middle back and one "
-            "looking straight down.", 0.1, None, hold=0.0, labels=lbl, still=True)
+            "heads were. Under a roof assumed at the opening's top (drawn see-through): the pair at the middle back "
+            "(an Axis M3086-V mini dome and the M5075-G PTZ, here turned to the CubXL's holder seat), a mini dome in "
+            "the strip under the header looking back, and one looking straight down. Simple shapes at each model's "
+            "published size.", 0.1, None, hold=0.0, labels=lbl, still=True)
     return sc.save()
 
 

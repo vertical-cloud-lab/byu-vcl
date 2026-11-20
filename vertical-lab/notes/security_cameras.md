@@ -12,12 +12,37 @@ This is research and a recommendation. The Pi camera units in `services.py` and 
 unchanged. [`security_cams.py`](../security_cams.py) does the geometry, the power and the cost;
 [`out/security_cameras.json`](../out/security_cameras.json) has every number below.
 
-<!-- SUMMARY -->
+## In short
+
+| Where | Recommended | Why | Each |
+|---|---|---|---|
+| **The trays' 24 camera posts** | **Hanwha QNE-8011R** turret (5 MP, 2.8 mm, 105 x 77°, IR) on a printed plate on the post; or the **Reolink RLC-520A** where federal money isn't involved | covers what the Camera Module 3 Wide did, sees in a dark slot, fits every tray's slot (top 705-706 mm against today's 706), af Class 3 | $389 / $60 |
+| **Bay, middle back, pair** | **Axis M3086-V** mini dome (130 x 93°) beside an **Axis M5075-G** PTZ (5x, 71-14°) | both under 64 mm tall, so they fit the 95.5 mm a roof leaves over the goods; they face the arm's work, the D405 sees it from the arm's side | $463 + $650 |
+| **Bay, middle front** | **Axis M3086-V**, in the strip under the header, looking back | sees the whole tray and none of the room | $463 |
+| **Bay, middle, straight down** | **Axis M3086-V** | the whole tray floor, square: inventory and layout checks | $463 |
+| **Tight spots** (inside a cabinet or the glovebox) | **Axis F-series** sensor on a cable, or the **Axis P1275 Mk II** (focuses from 0.1 m) | a 30 mm sensor, its main unit elsewhere | $532-1,034 |
+
+- **Cost.** About **$17,300** for the whole lab with NDAA-compliant cameras (24 tray points at **$513** each with their
+  share of a Pi 5, two bay sets at **$2,364**), **$19,000** with Axis mini domes on the trays too, or **$8,600** with
+  Reolink turrets on the trays and in the strip. Today's 26 HQ/Wide units come to $9,000 at today's prices
+  ([cost](#bill-of-materials-and-cost)).
+- **One Pi 5 per powered tray and one per bay: 14, not 26.** It only copies H.264 streams to YouTube, as aurora's does
+  at 3 % of a core per camera, and drives the PTZ over ONVIF.
+- **Power is not a problem.** The fixed cameras draw 4.2-7.4 W at most (802.3af Class 2-3), the PTZ 9.5 W. A Pi 5 can't
+  power them, but every powered tray already has a PoE switch on its UPS-backed branch (`ups.py`): three cameras use
+  at most 22 W of its 52 W. The backed branch's rated load falls by 27 W for every Pi removed and its typical draw rises
+  7-12 W, which leaves every tray's UPS as it is, with 18-226 minutes of runtime. Nothing changes at the CombiTac.
+- **What's lost:** the HQ Camera's detail on the trays. At the median tray distance (633 mm) a 5 MP turret resolves
+  0.64 mm per pixel against the Wide's 0.34 and the HQ's 0.06. The bay's PTZ gets 0.12-0.17 mm per pixel on the
+  workflow's seats when a tray is presented; a varifocal or a box camera can bring it back on a few posts.
+- **Federal money:** Hikvision and Dahua, and the brands they make for (Amcrest, aurora's), can't be bought on grant
+  funds (2 CFR 200.216), and the FCC barred their further import in June 2026. Amcrest's turret is out of stock.
+- **Temperature and humidity:** none of these cameras has an ambient sensor. The AirGradient per tray stays.
 
 ## What aurora's rig already showed (borysgroup/aurora-cloud-infra PR 35)
 
-Two Amcrest **IP5M-T1179EW-AI-V3** turrets (5 MP, Dahua OEM) in the Aurora glovebox stream to YouTube through a Pi 5
-on the same switch, since 2026-11-19:
+Two Amcrest **IP5M-T1179EW-AI-V3** turrets (5 MP, made by Dahua) in the Aurora glovebox stream to YouTube through a
+Pi 5 on the same switch, since 2026-11-19:
 
 - **The Pi 5 only copies the streams.** `ffmpeg` pulls each camera's H.264 over RTSP (TCP) and writes it to YouTube's
   ingest with `-c:v copy`: no decode, no encode, **about 3 % of one core per camera**. Each 1080p, 20 fps, 4 Mbit/s
@@ -79,7 +104,24 @@ its datasheet, is in `security_cams.CANDIDATES` and `out/security_cameras.json`.
 | conference PTZ | Sony **SRG-A12** | 2160p30 / 1080p60 | 4.4-52.8 mm; 70-7 x 39-4° | 12x; focuses from 0.4 m at full zoom | none | bt Class 8, 71.3 W | 157 x 184 x 200 mm, 2.0 kg | no ONVIF (VISCA over IP, CGI); RTSP | no statement found | $2,285 | [Newegg](https://www.newegg.com/p/34G-005N-00012) (snippet) |
 <!-- END:PTZ_CANDS_TABLE -->
 
-<!-- CANDIDATE_NOTES -->
+**What the research found:**
+
+- **Aurora's turret is gone.** amcrest.com shows the IP5M-T1179EW-AI-V3 out of stock, and Amcrest has told customers
+  it can no longer import Dahua-made products. Its new brand, AMLINK (made by FOXLINK in Taiwan), sells a near twin,
+  the AL5M-T5171EW, at $94.99; AMLINK's NDAA claim is its own.
+- **Close focus is rarely published, and fixed lenses are focused for a room.** Amcrest's and AMLINK's 2.8 mm turrets
+  list 1.1 m, the Axis M2036-LE 0.5 m, the Axis P1275 Mk II 0.1 m. Half the tray cameras aim at points 340-630 mm away
+  (A0 339 mm, C1 368, E2 412, D1 418), so try one camera at a tray before buying 24.
+- **UniFi cameras need a UniFi Protect console.** The RTSP stream comes from the console, not the camera, and it has no
+  ONVIF, so it doesn't fit a Pi pulling the camera directly.
+- **Reolink's 4K varifocal (RLC-811A) sends 4K only as H.265, at up to 8 Mbit/s**, under YouTube's 11 Mbit/s for 4K;
+  at 1080p or 2K in H.264 it is fine. Reolink's ONVIF and RTSP have to be switched on in its settings.
+- **Mini PTZs:** the only ones that fit the band are the Axis M5075-G (63 mm) and Dahua's SD1A404XB-GNR (65 mm, 4x,
+  focuses from 0.2-0.5 m, but Dahua). Everything with 12x or more is 102-290 mm tall and, where published, focuses no
+  closer than 1-2 m at full zoom (Hikvision 1.5 m, Marshall 1.0-1.5 m, Hanwha 2.0 m). The Sony SRG-A12 focuses from
+  0.4 m but is 200 mm tall and needs 90 W of PoE++.
+- **The pair in one body:** the Axis M5000-G (a 360° overview and a 10x PTZ in one 138 mm dome) would fit only under a
+  higher roof; the Reolink TrackMix's "6x hybrid zoom" is two fixed lenses.
 
 ## The bay
 
@@ -125,7 +167,19 @@ its datasheet, is in `security_cams.CANDIDATES` and `out/security_cameras.json`.
 | middle, straight down | Axis M3086-V (mini dome) | (0, -1030) | 0 / 90 | 100 % | 100 % | 20 % | 1773 mm, +40 mm to the band | 275 mm | 1.50 |
 <!-- END:BAY_TABLE -->
 
-<!-- BAY_NOTES -->
+- **1-2, the pair at the middle back**, where the HQ/Wide bay unit is now (Sterling: "At 6:42, it's not worth showing
+  both the wide and the HQ"). The mini dome's 130 x 93° picture takes in the whole tray from nearly overhead; the
+  PTZ beside it zooms on whatever the arm is doing, from the side facing the arm, so the arm doesn't hide the gripper,
+  and the D405 on the wrist sees the same work from the arm's side. 8 % of the dome's picture is the floor in front of
+  the opening through its lower edge; a privacy mask in the camera covers it, so the Pi still only copies.
+- **3, the middle front**, hangs in the strip and looks back at the shutter: the whole tray, the arm from behind, and
+  none of the room.
+- **4, straight down** from the middle of the roof: the whole floor, square to it, for checking a tray's layout against
+  its plan. 20 % of its picture lies outside the bay at its front edge (the floor in front, and whoever stands there);
+  mask everything outside the tray's outline, which never moves.
+- **Fit.** All four hang 56-63 mm, 32-40 mm clear of the goods, and stay 178-320 mm from the UR10e's capsules.
+- **Each Shuttle's set is four cameras on four PoE ports** (3 x Class 2 and 1 x Class 3, 36 W reserved by class, 22 W
+  at most drawn) plus its Pi 5.
 
 ### The PTZ at full zoom on the workflow's seats
 
@@ -138,11 +192,32 @@ its datasheet, is in `security_cams.CANDIDATES` and `out/security_cameras.json`.
 | tray's back left, 150 mm up | 1367 mm | 336 mm | 0.17 | - |
 <!-- END:PTZ_TABLE -->
 
-<!-- PTZ_NOTES -->
+At full zoom the M5075-G's 14° picture is 220-340 mm across at the seats: 0.12-0.17 mm per pixel at 1080p, close to
+the HQ Camera's 0.1 mm per pixel from the bay unit. Axis doesn't publish its closest focus at full zoom; the seats are
+0.9-1.4 m away, so ask Axis (open question below). If it can't focus there it zooms out a little. Presets per seat
+replace any tracking: the workflow already knows which seat the arm is going to (`reach.seats`).
 
 ## On the trays
 
-<!-- TRAYS_INTRO -->
+**One camera per HQ/Wide unit, on the same posts.** The 24 units on the twelve powered trays stay where
+`services.TRAY_CAMS` and `setup_lab.CAMS` put them (passive trays J, N and O have none since round 11). Each becomes a
+turret on a printed plate in the post's T-slot, at the height the head's tilt axis is now, aimed at the same point.
+
+**What changes in the picture:** at each unit's aim point (`tray_detail` in the JSON; the median distance is 633 mm):
+
+| Camera | mm per pixel at the median unit | at the closest (A0, 339 mm) |
+|---|---|---|
+| Camera Module 3 Wide (today) | 0.34 | 0.18 |
+| HQ Camera, 16 mm lens (today) | 0.06 | 0.03 |
+| Hanwha QNE-8011R | 0.64 | 0.34 |
+| Reolink RLC-520A | 0.59 | 0.32 |
+| Axis M3086-V | 1.01 | 0.54 |
+| Axis M4216-LV at 2x | 0.23 | 0.12 |
+| Axis M1137 Mk II at 13 mm (box) | 0.10 | 0.06 |
+
+A 5 MP turret sees about what the Wide does at half its detail. Where the HQ's close-up matters on a tray in its slot
+(the CubXL's cell on A, a print's first layer on C or G), a remote-zoom dome (Axis M4216-LV, 2x) or a box camera with a
+manual zoom (Axis M1137 Mk II) takes its place; neither is in the totals.
 
 ### Slot height: the trays' real limit
 
@@ -216,7 +291,12 @@ OpenFlexures on D): ONVIF's imaging service, or the camera's own day/night sched
 
 ### Temperature and humidity
 
-<!-- TH -->
+None of the 26 candidates logs ambient temperature or humidity. Axis cameras raise only "above/below operating
+temperature" events about themselves; Mobotix's MultiSense module (on its S74, about $1,600 with a sensor module) reads
+temperature but not humidity; the only ONVIF camera found with both is Dahua's HY-SAV849HA-ET, which can't be bought on
+federal funds. The nearest PoE alternative to the AirGradient is Axis's own D6310 air quality sensor (temperature,
+humidity, CO2, particulates, VOC over MQTT and ONVIF, about 2.8 W) at $1,092.99 (CDW). So the AirGradient per tray and
+per station, as planned, does this job for a fraction of that.
 
 ## Power
 
@@ -234,7 +314,10 @@ measured draw.
 | 5-6 | 802.3bt (PoE++) | 45-60 W | 40-51 W |
 | 7-8 | 802.3bt | 75-90 W | 62-71.3 W |
 
-<!-- POWER_CAMS -->
+**What the recommended cameras draw** (makers' datasheets): Axis M3086-V Class 2, 4.2 W at most (3.6 typical); Hanwha
+QNE-8011R Class 3, 7.4 W (5.5); Axis M5075-G Class 3, 9.5 W (4.4); Reolink publishes only "< 12 W" on 12 V. Every
+candidate but three runs on 802.3af: the Axis F-series main unit and the Mobotix S74 want 802.3at (25 W), and the Sony
+SRG-A12 wants 802.3bt Class 8 (71.3 W). None needs more than a PoE+ port on the tray's switch.
 
 ### The Pi 5 doesn't power them
 
@@ -273,14 +356,22 @@ switch, which `ups.py` already puts on every powered tray's UPS-backed branch (a
 | I | 2 | PSI5-800SRT2ULIN | 114 -> 87 | 16 -> 26 | +10 | 360 -> 226 | 15 W, 2 ports | yes |
 <!-- END:POWER_TABLE -->
 
-<!-- POWER_TRAYS -->
+With the Hanwha turrets (above; `tray_power_pi_on_poe` in the JSON has the Pi on a PoE HAT instead). The UPS each
+tray has now still carries it: the rated load falls (one 27 W Pi supply instead of two or three), the typical draw rises
+7-12 W, and the camera-only trays' 360 minutes (a capped estimate) fall to 226. With Reolink's "< 12 W" taken at face
+value the typical rise is 10-22 W and trays D and E put 36 W on the switch, still inside its 52 W.
+
+**The Pi on PoE too?** Then the tray's switch powers everything, through its four PoE+ ports: three cameras and the
+Pi on D and E, 35 W at most. There is still no official Pi 5 PoE HAT (announced in 2023, not released); Waveshare's PoE
+HAT (H), isolated, 5 V 5 A, is $21.99. A Pi 5 on its own 27 W supply is simpler and leaves a port free.
 
 ### The bay
 
 The bay's cameras are on the machine, not a tray. `notes/services.md` already has a PoE+ switch on the VLM's side that
 feeds the service risers and the bay camera; the bay's set and its Pi 5 go on that switch.
 
-<!-- POWER_BAY -->
+Four cameras need four PoE ports and 22 W at most; a Ubiquiti USW-Lite-8-PoE ($109, 52 W) per bay does it, on the
+same circuit as the VLM's own controls, and is in the totals.
 
 ## Streaming and control on the Pi 5
 
@@ -309,7 +400,26 @@ feeds the service risers and the bay camera; the bay's set and its Pi 5 go on th
 | today: HQ + Wide units (for comparison) | $346 | - | 26 | $8,991 |
 <!-- END:COST_TABLE -->
 
-<!-- BOM_NOTES -->
+**What's in each line** (`security_cams.GEAR`, all on 2026-11-20):
+
+| Item | Price | Where |
+|---|---|---|
+| Raspberry Pi 5, 4 GB (list price since April 2026's memory-driven rise) | $110.00 | [PiShop](https://www.pishop.us/product/raspberry-pi-5-4gb/) |
+| Raspberry Pi Active Cooler | $12.95 | [PiShop](https://www.pishop.us/product/raspberry-pi-active-cooler/) |
+| Raspberry Pi 27 W USB-C supply | $12.95 | [PiShop](https://www.pishop.us/product/raspberry-pi-27w-usb-c-power-supply-black-us/) |
+| microSD, 64 GB high-endurance (one per Pi, one per camera for recording through a transit) | $29.00 | [Staples](https://www.staples.com/sandisk-high-endurance-64gb-microsd-memory-card-with-adapter-class-10-uhs-i-v30-sdsqqnr-064g-gn6ia/product_IM1ZS3423) (snippet) |
+| Printed plate, T-nuts and screws per camera; printed plate for a Pi | $4 / $3 | ours |
+| Cat 6 patch lead | $5 | ours |
+| Ubiquiti USW-Lite-8-PoE, one per bay | $109.00 | [Ubiquiti](https://store.ui.com/us/en/products/usw-lite-8-poe) |
+| Today's unit: HQ Camera $55.00, 16 mm lens $62.50, Camera Module 3 Wide $38.50, two ribbons $2.45 each, post and printed head $15 (ours), with the Pi kit above | $345.80 a unit | [PiShop](https://www.pishop.us/product/raspberry-pi-hq-camera/) |
+
+- **A relay Pi** (Pi 5 4 GB, cooler, supply, card, plate, lead) is $172.90; **each camera's extras** (plate, lead,
+  card) $38.
+- **Not counted:** the trays' PoE switches, which `ups.py` already puts on every powered tray; labour; tax and
+  shipping; the varifocal upgrade (Axis M4216-LV, $650 a point); a Pi 5 per camera, if wanted, would add 18 relays,
+  $3,112.
+- **Grant money:** tiers A and B are NDAA-compliant by their makers' statements; tier C relies on Reolink's own
+  statement, which covers Section 889(a)(1)(B) only. Ask BYU's sponsored-programs office before buying C on a grant.
 
 ## Open questions
 
