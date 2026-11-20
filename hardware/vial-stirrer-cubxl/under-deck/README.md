@@ -46,8 +46,8 @@ Two new printed parts. Everything else is today's compact stirrer, unchanged.
   against 8.1 mm for the magnets' outer edge. Even so, use non-magnetic ones (A4/316 or brass).
 
 `build_under_deck.py` draws the two parts from `vial_stirrer.fs`'s numbers, through
-`compact/build_compact.py`. They are [`parts/collar.step`](parts/collar.step) and
-[`parts/frame.step`](parts/frame.step), with STLs.
+`compact/build_compact.py`. They are [`step/under-deck/collar.step`](../step/under-deck/collar.step) and
+[`frame.step`](../step/under-deck/frame.step), with STLs in [`stl/under-deck/`](../stl/under-deck).
 
 ## What the deck does to the coupling
 
@@ -130,7 +130,7 @@ bound, with the water held still).
 
 ```bash
 pip install cadquery magpylib trimesh shapely networkx matplotlib pyvista    # PIP_TIMEOUT=600 PIP_RETRIES=2
-python under-deck/build_under_deck.py                              # parts/*.stl, parts/*.step
+python under-deck/build_under_deck.py                              # stl/under-deck/, step/under-deck/
 python under-deck/coupling_through_deck.py > under-deck/coupling_through_deck_output.txt
 python under-deck/render_under_deck.py section                     # img/under_deck_section.png
 xvfb-run -a python under-deck/render_under_deck.py views           # img/under_deck_views.png

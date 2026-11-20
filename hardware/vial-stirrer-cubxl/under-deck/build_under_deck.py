@@ -19,7 +19,7 @@ slots (25 mm columns, 45 mm rows), so it stands on solid polycarbonate: the near
                   the frame's bosses: they sandwich the deck, and keys and bosses in the same
                   slots line the magnets up with the vial
 
-    python under-deck/build_under_deck.py      # from hardware/vial-stirrer-cubxl: STLs and STEP into under-deck/
+    python under-deck/build_under_deck.py      # from hardware/vial-stirrer-cubxl: stl/under-deck/, step/under-deck/
 """
 from __future__ import annotations
 
@@ -142,18 +142,21 @@ def bought():
                 inserts=inserts, fan_screws=fan_screws)
 
 
-def export_all(outdir: pathlib.Path):
-    outdir.mkdir(parents=True, exist_ok=True)
+def export_all():
+    """STL and STEP into stl/under-deck/ and step/under-deck/, beside the compact parts (a folder named
+    parts/ would be ignored by the repo's .gitignore)."""
+    stl_dir, step_dir = ROOT / "stl" / "under-deck", ROOT / "step" / "under-deck"
+    stl_dir.mkdir(parents=True, exist_ok=True)
+    step_dir.mkdir(parents=True, exist_ok=True)
     parts = {"collar": collar(), "frame": frame()}
     for name, wp in parts.items():
-        cq.exporters.export(wp, str(outdir / f"{name}.stl"), tolerance=0.02, angularTolerance=0.15)
-        cq.exporters.export(wp, str(outdir / f"{name}.step"))
+        cq.exporters.export(wp, str(stl_dir / f"{name}.stl"), tolerance=0.02, angularTolerance=0.15)
+        cq.exporters.export(wp, str(step_dir / f"{name}.step"))
     return parts
 
 
 if __name__ == "__main__":
-    out = HERE / "parts"
-    parts = export_all(out)
+    parts = export_all()
     for name, wp in parts.items():
         s = wp.val()
         bb = s.BoundingBox()
