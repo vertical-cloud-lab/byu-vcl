@@ -44,6 +44,37 @@ charge chapter, the atomizer and the narration). Each point below links its note
   - 21.4 m of slots is left free: enough for the three-each plan without a third Shuttle.
   - The cable trays and argon run round the Shuttles' backs, under a 36 ft roof with high-bay lights.
 - **The CombiTac vacuum line:** see notes/coupling.md, "Vacuum".
+## Round 14 (B): the doser's fall cut to 45 mm, a nest that holds the vessel, the die cleaned, every cup weighed again (2026-11-20)
+
+Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), the charge chapter and the doser:
+
+- **"The dose is still going from way too high up ... a custom breeze break that extends higher up."** What limits it is
+  v5's electronics carriage, which parks right over the stream's axis, not the balance. Turning the balance round
+  would put its rear housing through v5's front hatch and free nothing over the pan. Measured on v5's meshes in every
+  state of the carriage ([`doser_shield.py`](doser_shield.py), [`out/doser_shield.json`](out/doser_shield.json)):
+  - **The station (ours, v5 unchanged).** A carbon-fibre dose post on the pan rises through a roof plate in the
+    HR-202i's top-door rails. A vessel stands on it only while a module is docked and tilted. Round it is a clear draft
+    shield, up to 405 mm, notched for the carriage, with a sliding door for the shuttle.
+  - **The fall: 153.4 → 45.4 mm into a charge cup, 155.9 → 49.9 mm into the vial.** None of it is now in the open; in
+    rounds 9-13, 124 mm of it was. A Stokes estimate of drift in a 0.1 m/s draft gives about 8× less.
+  - **Clearances:** every part of ours is at least 8.2 mm from every v5 part in every state.
+  - Details: [`notes/multidoser.md`](notes/multidoser.md#round-14-a-dose-post-a-nest-that-holds-the-vessel-our-draft-shield-pr-318-2026-11-20).
+
+  ![](out/doser_shield_section.png)
+- **"On the pedestal, it still looks relatively unsecure" (9:54).** The post's nest has a 4 mm ring round the vessel's
+  foot, 0.25 mm a side with a lead-in, and grooves the fork's narrower tines drop into. There is one nest for the cup
+  and one for the vial.
+- **The die and punch cleaned between presses.**
+  - After every press, the punch goes back through a brush-and-vacuum cup in its rest, and a bore wand brushes and
+    vacuums the die's bore (`alloy_press.Cleaner`).
+  - At a change of run, an IPA swab as well (not animated).
+  - The target: carry-over of at most 10 ppm of the next charge, 0.43 mg in an Al cup and 1.46 mg in a Cu cup, shown by
+    validation swabs and ICP-MS
+    ([`notes/vacuum_press.md`](notes/vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20)).
+- **Each cup weighed again after the press fit.** It goes back to the HR-202i and is read against its weight before
+  pressing plus its plug's (±1.0 mg), recorded in the clip's JSON.
+- **Re-rendered at 1080p:** chapter 1 (`alloy_charge.py`) and the 9:22 clip (`animate.py workflow`), each checking
+  its own frames. The renders, audits and what is left are listed under "Rendered" below.
 
 ## Round 13: collisions, artifacts, everything at 1080p, drawn at 10-15 fps (2026-11-20)
 

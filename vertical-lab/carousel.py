@@ -521,7 +521,7 @@ def _cut_port(m: pv.PolyData, port=None) -> pv.PolyData:
     corners = np.array([[x, y, z, 1.0] for x in (x0, x1) for y in (-400.0, 0.0) for z in (z0, z1)])
     loc = (np.linalg.inv(M) @ corners.T).T[:, :3]
     lo, hi = loc.min(0), loc.max(0)
-    return m.clip_box((lo[0], hi[0], lo[1], hi[1], lo[2], hi[2]), invert=True).extract_surface().triangulate().clean()
+    return m.clip_box((lo[0], hi[0], lo[1], hi[1], lo[2], hi[2]), invert=True).extract_surface(algorithm="dataset_surface").triangulate().clean()
 
 
 BOARD_AT = (-530.0, -360.0)     # the electronics board's corner (min x, min y), rig frame: on tray B, left of the

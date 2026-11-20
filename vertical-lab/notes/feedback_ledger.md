@@ -273,3 +273,12 @@ Round 10's outcome for each open point is in the last column.
 | Point | Status |
 |---|---|
 | "Something more real and high-fidelity for the liquid, gas, and power transfer modules (quick disconnect, etc.) for the VLM" | ✅ `coupling.py` ([`coupling.md`](coupling.md)): Stäubli CombiTac frames, electrical over fluid, align 4 pins and cones, SCT03 and LCT06 couplings that shut off on both sides, PE first and LMFB last, part by part from the catalogue; a floating dock on MGN12 guides with a self-locking slider-crank, an energy chain and a valve bank (ours); in every VLM dock (`services.py`), the lift check re-run; the close-up `vlm_coupling` |
+
+### Nov 20 18:00: round 12's video, the charge chapter and the doser (run B)
+
+| Point | Status |
+|---|---|
+| "The dose is still going from way too high up ... a custom breeze break that extends higher up ... reverse the orientation of the balance to free up space" (9:22-11:13, 11:45, 16:13) | ✅ `carousel.py` (`STATION = "r14"`), [`multidoser.md`](multidoser.md#round-14-a-dose-post-a-nest-that-holds-the-vessel-our-draft-shield-pr-318-2026-11-20), `doser_shield.py`: the limit is v5's electronics carriage, which parks over the stream's axis, not the balance. A carbon-fibre dose post on the pan with a nest; a vessel is on it only while a module is docked and tilted; a clear draft shield to 405 mm round it. Falls 153.4 → 45.4 mm (cup), 155.9 → 49.9 mm (vial); the turned-round balance hits v5's front hatch |
+| "When it's actually on the pedestal, it still looks relatively unsecure" (9:54) | ✅ the nest's 4 mm ring holds the vessel's foot all round (0.25 mm a side, a lead-in), a nest for the cup and one for the vial; the fork's tines drop into its grooves |
+| The die and punch need cleaning between presses; cross-contamination run to run | ✅ `alloy_press.Cleaner`, [`vacuum_press.md`](vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20): the punch through a brush cup, the bore by a vacuum wand, after every press; an IPA swab at a run change (not animated); target ≤ 10 ppm of the next charge (0.43 mg Al cup, 1.46 mg Cu cup), shown by validation swabs and ICP-MS |
+| Weigh each cup again after the press fit | ✅ chapter 1: back to the HR-202i, read against its weight before pressing plus its plug (±1.0 mg), recorded in the clip's JSON |

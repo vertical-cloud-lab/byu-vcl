@@ -1145,7 +1145,7 @@ def movie():
     out = sc.save()
     if not (scene.PREVIEW or os.environ.get("ARM_AUDIT")):
         cut_stills()
-        jp = OUT / f"{NAME}.json"
+        jp = OUT / ("clean" if scene.HD else "") / f"{NAME}.json"
         try:
             j = json.loads(jp.read_text())
             j["reweighed_after_press"] = {f"cup{k + 1}": v for k, v in sorted(reweighed.items())}
@@ -1158,13 +1158,14 @@ def movie():
 
 
 def cut_stills():
-    """out/alloy_charge_<name>.png: the frames STILLS names, cut from the MP4 (alloy_route.SHEET uses _press)."""
-    mp4 = OUT / "mp4" / f"{NAME}.mp4"
+    """out/alloy_charge_<name>.png: the frames STILLS names, cut from the MP4 (alloy_route.SHEET uses _press). A 1080p
+    render (VIZ3D_HD=1) writes its MP4 to out/hd/ and its JSON to out/clean/ (scene.py): the stills come from there."""
+    mp4 = OUT / ("hd" if scene.HD else "mp4") / f"{NAME}.mp4"
+    jp = OUT / ("clean" if scene.HD else "") / f"{NAME}.json"
     for name, k in STILLS.items():
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp4), "-vf", f"select=eq(n\\,{int(k)})",
                         "-vframes", "1", str(OUT / f"{NAME}_{name}.png")], check=False)
-    (OUT / f"{NAME}.json").write_text(json.dumps(dict(json.loads((OUT / f"{NAME}.json").read_text()),
-                                                      stills=STILLS), indent=1, ensure_ascii=False) + "\n")
+    jp.write_text(json.dumps(dict(json.loads(jp.read_text()), stills=STILLS), indent=1, ensure_ascii=False) + "\n")
 
 
 def with_caption(sc, cap, fn, cut=False):

@@ -666,6 +666,23 @@ def workflow(data, lab=True):
     test = IL.powder_test()
     cub.pose(cubxl_rig.state_at(test, 0.0))
     q = IL.POWDER_TEST
+    # Round 14: the seat in Ben's tight-fit 9-vial holder that the dosed vial goes into, drawn with its lips flexed open.
+    # The STEP's PETG lips are 25.92 mm across, and a 20 mL vial pushes them apart, which a rigid mesh can't show: the
+    # strict audit read the vial as 50 mm into the holder (round 11 left it, "a grip by design"). The holder is clipped
+    # to the vial's own cylinder (1 mm round it, 0.4 mm round its neck band) at that seat only; its other seats are 33 mm away
+    sx, sy = IL._cx(q["seat"][0]), IL._cy(q["seat"][1])
+    for nm in cub.rig.names.get("body", []):
+        if "petg_dark" not in nm:
+            continue
+        m = pv.wrap(sc.actors[nm].GetMapper().GetInput()).copy()
+        pts = np.asarray(m.points)
+        if np.hypot(pts[:, 0] - sx, pts[:, 1] - sy).min() > P.VIAL_R + 3.0:
+            continue
+        m.point_data["r_seat"] = np.hypot(pts[:, 0] - sx, pts[:, 1] - sy)
+        m2 = m.clip_scalar(scalars="r_seat", value=P.VIAL_R + 1.0, invert=False).extract_surface(
+            algorithm="dataset_surface").triangulate()
+        m2.clear_data()
+        sc.set_mesh(nm, m2)
     sc.cam = list(CAM_LAB if lab else CAM_WIDE)
     L.extra_gauges = [("Arm", f"{ROBOT_NAME}, parked"), ("Doser", "module 1 at the station"),
                       ("HR-202i", "0.0000 g  (220 g x 0.1 mg)"), ("CubXL P20", "parked, no tip")]
