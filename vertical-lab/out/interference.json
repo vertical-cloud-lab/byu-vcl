@@ -24385,20 +24385,20 @@
    "model": "Staubli CombiTac frames (align 4), on a floating dock",
    "module": "services",
    "frames": 196,
-   "parts": 169,
-   "nonconvex_parts": 112,
-   "mujoco_geoms": 1162,
+   "parts": 187,
+   "nonconvex_parts": 124,
+   "mujoco_geoms": 1340,
    "moving_pieces": 15,
    "pose_error_mm": 0.0,
-   "candidates": 3722,
+   "candidates": 3935,
    "confirmed": 490,
    "intended_not_rechecked": 1745,
-   "rejected_by_exact": 1487,
+   "rejected_by_exact": 1700,
    "seconds": {
-    "geometry": 53.1,
-    "sweep": 2.5,
-    "loose": 1.5,
-    "total": 58.0
+    "geometry": 20.0,
+    "sweep": 4.3,
+    "loose": 1.8,
+    "total": 27.7
    },
    "findings": [
     {
@@ -24415,7 +24415,7 @@
      "all_frames": false,
      "thickness_mm": 0.0,
      "volume_mm3": 0.0,
-     "mujoco_depth_mm": 0.49,
+     "mujoco_depth_mm": 0.53,
      "frames": 41,
      "first_frame": 0,
      "last_frame": 235,
@@ -24446,7 +24446,7 @@
      "all_frames": false,
      "thickness_mm": 0.0,
      "volume_mm3": 0.0,
-     "mujoco_depth_mm": 0.41,
+     "mujoco_depth_mm": 0.4,
      "frames": 41,
      "first_frame": 0,
      "last_frame": 235,
@@ -24629,7 +24629,7 @@
      "all_frames": false,
      "thickness_mm": 3.5,
      "volume_mm3": 219.9,
-     "mujoco_depth_mm": 6.12,
+     "mujoco_depth_mm": 6.23,
      "frames": 21,
      "first_frame": 0,
      "last_frame": 230,
@@ -24668,17 +24668,17 @@
      "intended": "the dock's lines run into the chain's first link, bolted to its bracket",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 3.28,
-     "volume_mm3": 109.1,
-     "mujoco_depth_mm": 5.23,
+     "thickness_mm": 2.85,
+     "volume_mm3": 80.3,
+     "mujoco_depth_mm": 4.17,
      "frames": 21,
      "first_frame": 0,
      "last_frame": 230,
      "worst_frame": 80,
      "at_mm": [
-      116.0,
-      -47.0,
-      -9.4
+      115.5,
+      -47.1,
+      -9.5
      ],
      "actions": [
       -1,
@@ -24759,7 +24759,7 @@
      "worst_frame": 100,
      "at_mm": [
       156.7,
-      18.0,
+      -46.0,
       -46.8
      ],
      "actions": [
@@ -24797,11 +24797,11 @@
      "frames": 21,
      "first_frame": 0,
      "last_frame": 230,
-     "worst_frame": 60,
+     "worst_frame": 0,
      "at_mm": [
-      125.1,
-      -46.0,
-      -32.7
+      123.7,
+      18.0,
+      -32.0
      ],
      "actions": [
       -1,
@@ -24841,7 +24841,7 @@
      "worst_frame": 80,
      "at_mm": [
       134.5,
-      -46.0,
+      18.0,
       -49.9
      ],
      "actions": [
@@ -25018,7 +25018,7 @@
      "worst_frame": 0,
      "at_mm": [
       -0.3,
-      53.5,
+      64.5,
       30.6
      ],
      "actions": [
@@ -25084,7 +25084,7 @@
      "worst_frame": 0,
      "at_mm": [
       -0.3,
-      -53.5,
+      -64.5,
       30.6
      ],
      "actions": [
@@ -36358,16 +36358,16 @@
    "openflexure_v7"
   ],
   "frames": 11503,
-  "mujoco_geoms": 8359,
-  "candidates": 118701,
+  "mujoco_geoms": 8537,
+  "candidates": 118914,
   "confirmed": 55232,
-  "rejected_by_exact": 11014,
+  "rejected_by_exact": 11227,
   "faults": 365,
   "minor": 128,
   "moving_faults": 201,
   "intended": 334,
   "loose": 18,
-  "seconds": 3451.8
+  "seconds": 3421.5
  },
  "method": {
   "tessellation_mm_rad": [

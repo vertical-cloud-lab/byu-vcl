@@ -8,16 +8,37 @@
   },
   "sliding_N": 74.0,
   "coupling_springs_N": 175.0,
+  "vacuum_coupling_sliding_N": 16.0,
+  "plugging_N": 302.0,
+  "holding_N": 175.0,
+  "crank_torque_worst_Nm": 14.71,
+  "vacuum_pulls_halves_together_N": 11.3,
+  "note": "plugging = 1.5 x the contacts' sliding forces (p.135) plus the four couplings' springs (43 and 44.5 N without pressure, p.73, p.75) plus, with vacuum, the UCT08 pair's maximum sliding force at 0 bar (16 N, p.67; no spring); every coupling is vented to atmosphere before mating and parting, so no pressure term; evacuated, the vacuum coupling pulls the halves together, which only helps the dead centre hold; the crank's torque is the worst over the last 15 mm of travel, where everything engages"
+ },
+ "plugging_without_vacuum": {
+  "contacts": {
+   "ct3": 3,
+   "pe": 1,
+   "lmfb": 2,
+   "gbit": 4
+  },
+  "sliding_N": 74.0,
+  "coupling_springs_N": 175.0,
+  "vacuum_coupling_sliding_N": 0.0,
   "plugging_N": 286.0,
   "holding_N": 175.0,
   "crank_torque_worst_Nm": 13.93,
-  "note": "plugging = 1.5 x the contacts' sliding forces (p.135) plus the four couplings' springs (43 and 44.5 N without pressure, p.73, p.75); the couplings are vented before mating, so no pressure term; the crank's torque is the worst over the last 15 mm of travel, where everything engages"
+  "vacuum_pulls_halves_together_N": 0.0,
+  "note": "plugging = 1.5 x the contacts' sliding forces (p.135) plus the four couplings' springs (43 and 44.5 N without pressure, p.73, p.75) plus, with vacuum, the UCT08 pair's maximum sliding force at 0 bar (16 N, p.67; no spring); every coupling is vented to atmosphere before mating and parting, so no pressure term; evacuated, the vacuum coupling pulls the halves together, which only helps the dead centre hold; the crank's torque is the worst over the last 15 mm of travel, where everything engages"
  },
  "clear": {
   "align_pin_tip_mated_x": 1168.8,
   "align_pin_tip_pulled_back_x": 1243.8,
   "gap_to_tray_side_pulled_back_mm": 18.8,
   "nose_gap_pulled_back_mm": 56.5,
+  "vacuum_nose_gap_pulled_back_mm": 59.5,
+  "fluid_frame_end_y_mm": 84.0,
+  "panel_half_length_mm": 90.0,
   "dock_to_cladding_mm": 2.0
  },
  "stroke_mm": 75.0,
@@ -75,10 +96,195 @@
     {
      "type": "CT-E-UCT08-2 + 2 x LCT06",
      "width_mm": 42.0
+    },
+    {
+     "type": "CT-E-UCT08-1 + UCT08/10",
+     "width_mm": 22.0
     }
    ],
-   "length_with_end_pieces_mm": 146.0,
+   "length_with_end_pieces_mm": 168.0,
    "centre_z_mm": 40.0
+  }
+ },
+ "vacuum": {
+  "module": "CT-E-UCT08-1 + UCT08/10",
+  "carrier_width_mm": 22.0,
+  "coupling": {
+   "s_front": 24.0,
+   "s_body": 11.0,
+   "p_nose": 9.5,
+   "p_body": 24.0,
+   "p_rear": 9.5,
+   "sw": 14.0,
+   "nose_d": 12.0,
+   "sleeve_d": 14.0,
+   "bore": 8.0,
+   "tube": 10.0,
+   "tube_id": 8.0,
+   "thread": "push-in, 10 mm tube",
+   "spring": 0.0,
+   "slide": 16.0,
+   "shutoff": false,
+   "min_mbar": 14.0
+  },
+  "trays": {
+   "B": "the vacuum press (vacuum_press.py): its evacuable die is pumped below 1 mbar for 2 min before pressing; the line replaces the rotary-vane pump drawn beside the press",
+   "K": "the glovebox (instruments_r7.py): three pump-and-N2-refill cycles of its 150 x 300 mm mini antechamber (about 5.3 L) for every transfer; the line replaces the pump in the glovebox's bay",
+   "M": "the S2 PUMA XRF (instruments_char.py): Bruker lists air, vacuum, He or N2, and a 'Helium mode with reduced pressure' for loose powder; vacuum needs a pump (and presumably so does the reduced-pressure mode), which the line provides instead of Bruker's own"
+  },
+  "bay": "always: the bay's dock carries the vacuum plug for whichever of these trays it is presented",
+  "others": "every other powered tray: the same carrier, empty, its bore blind-plugged at the back; its slot's dock has an empty carrier and no vacuum block",
+  "sequence": [
+   "mating: the tray's valve and the dock's isolation valve are shut, the stretch between them at atmosphere (vented with N2 when it last parted); the O-ring seals with 3.5 mm to go, after air and N2 open and before the LMFB pair",
+   "mated (LMFB loop closed): the isolation valve opens, slowly at first, and pumps the stretch up to the tray's valve; the gauge shows it falling; the tray's valve opens when the instrument asks for vacuum, and the tray's line and the instrument are pumped through it",
+   "before letting go: the instrument's own vent (the press's V2, the antechamber's refill) brings it up with dry gas, the tray's valve shuts, the isolation valve shuts (the riser stays under vacuum), the vent valve lets N2 into the stretch between the two valves until the gauge reads atmospheric, then the head pulls back"
+  ],
+  "line": {
+   "pump": {
+    "name": "Pfeiffer HiScroll 12",
+    "S_m3h": 12.1,
+    "p_ult_mbar": 0.006
+   },
+   "line": [
+    {
+     "what": "the tray's line, 10 x 8 mm, to the instrument",
+     "bore_mm": 8.0,
+     "length_mm": 1500.0
+    },
+    {
+     "what": "the UCT08 pair",
+     "bore_mm": 8.0,
+     "length_mm": 78.0
+    },
+    {
+     "what": "the dock's tube through the energy chain",
+     "bore_mm": 8.0,
+     "length_mm": 600.0
+    },
+    {
+     "what": "DN16 branch, isolation valve to the riser",
+     "bore_mm": 16.0,
+     "length_mm": 1000.0
+    },
+    {
+     "what": "DN25 riser and run to the pump",
+     "bore_mm": 25.0,
+     "length_mm": null
+    }
+   ],
+   "gas_load_mbar_l_s": 0.001,
+   "method": "each element a round tube, its conductance the laminar plus the molecular term (Leybold eq. 1.28a, 1.28b, air at 20 C); the pressure marched from the pump's inlet to the tray for each throughput; the pump's speed taken as S0 (1 - p_ult / p); pump-down times by integrating V dp / (Q(p) - Q0); fittings, valves and bends not counted",
+   "cases": {
+    "6 m": {
+     "effective_speed_at_tray_l_s": {
+      "100 mbar": 2.923,
+      "14 mbar": 1.402,
+      "1 mbar": 0.142,
+      "0.1 mbar": 0.035
+     },
+     "pump_speed_l_s": 3.36,
+     "base_pressure_at_tray_mbar": 0.0394,
+     "pump_down": {
+      "B": {
+       "what": "the press's evacuable die, its port and the tray's line (estimate)",
+       "volume_l": 0.1,
+       "to 14 mbar, s": 0.2,
+       "to 1 mbar, s": 0.9,
+       "to 0.1 mbar, s": 5.3
+      },
+      "K": {
+       "what": "the 150 x 300 mm mini antechamber",
+       "volume_l": 5.3,
+       "to 14 mbar, s": 8.7,
+       "to 1 mbar, s": 46.9,
+       "to 0.1 mbar, s": 280.9
+      },
+      "M": {
+       "what": "the S2 PUMA's sample chamber (volume not published: 2 L assumed)",
+       "volume_l": 2.0,
+       "to 14 mbar, s": 3.3,
+       "to 1 mbar, s": 17.7,
+       "to 0.1 mbar, s": 106.0
+      }
+     },
+     "molecular_conductance_whole_line_l_s": 0.0248,
+     "best_at_1e_5_mbar_with_1e_5_mbar_l_s": 0.0004,
+     "turbo_foreline_mbar_at_1e_4_mbar_l_s": 0.0098
+    },
+    "10 m": {
+     "effective_speed_at_tray_l_s": {
+      "100 mbar": 2.916,
+      "14 mbar": 1.384,
+      "1 mbar": 0.139,
+      "0.1 mbar": 0.033
+     },
+     "pump_speed_l_s": 3.36,
+     "base_pressure_at_tray_mbar": 0.0407,
+     "pump_down": {
+      "B": {
+       "what": "the press's evacuable die, its port and the tray's line (estimate)",
+       "volume_l": 0.1,
+       "to 14 mbar, s": 0.2,
+       "to 1 mbar, s": 0.9,
+       "to 0.1 mbar, s": 5.5
+      },
+      "K": {
+       "what": "the 150 x 300 mm mini antechamber",
+       "volume_l": 5.3,
+       "to 14 mbar, s": 8.7,
+       "to 1 mbar, s": 47.7,
+       "to 0.1 mbar, s": 290.9
+      },
+      "M": {
+       "what": "the S2 PUMA's sample chamber (volume not published: 2 L assumed)",
+       "volume_l": 2.0,
+       "to 14 mbar, s": 3.3,
+       "to 1 mbar, s": 18.0,
+       "to 0.1 mbar, s": 109.8
+      }
+     },
+     "molecular_conductance_whole_line_l_s": 0.0235,
+     "best_at_1e_5_mbar_with_1e_5_mbar_l_s": 0.00042,
+     "turbo_foreline_mbar_at_1e_4_mbar_l_s": 0.0099
+    },
+    "15 m": {
+     "effective_speed_at_tray_l_s": {
+      "100 mbar": 2.907,
+      "14 mbar": 1.362,
+      "1 mbar": 0.135,
+      "0.1 mbar": 0.032
+     },
+     "pump_speed_l_s": 3.36,
+     "base_pressure_at_tray_mbar": 0.0423,
+     "pump_down": {
+      "B": {
+       "what": "the press's evacuable die, its port and the tray's line (estimate)",
+       "volume_l": 0.1,
+       "to 14 mbar, s": 0.2,
+       "to 1 mbar, s": 0.9,
+       "to 0.1 mbar, s": 5.7
+      },
+      "K": {
+       "what": "the 150 x 300 mm mini antechamber",
+       "volume_l": 5.3,
+       "to 14 mbar, s": 8.7,
+       "to 1 mbar, s": 48.7,
+       "to 0.1 mbar, s": 303.1
+      },
+      "M": {
+       "what": "the S2 PUMA's sample chamber (volume not published: 2 L assumed)",
+       "volume_l": 2.0,
+       "to 14 mbar, s": 3.3,
+       "to 1 mbar, s": 18.4,
+       "to 0.1 mbar, s": 114.4
+      }
+     },
+     "molecular_conductance_whole_line_l_s": 0.0222,
+     "best_at_1e_5_mbar_with_1e_5_mbar_l_s": 0.00045,
+     "turbo_foreline_mbar_at_1e_4_mbar_l_s": 0.01
+    }
+   },
+   "turbo": "at 1e-5 mbar the gas is in molecular flow and the whole line conducts what 'molecular_conductance_whole_line_l_s' gives, a few hundredths of a litre per second: even a clean chamber's 1e-5 mbar l/s would sit at 'best_at_1e_5...' mbar, however big the pump. A turbo at the tray pumps the chamber at its own 10-35 l/s and needs only its foreline below its maximum (HiPace 10/30/80: 25, 24, 22 mbar; nEXT85: 18), which the line holds at the 'turbo_foreline...' value. A leak at the coupling only adds to the foreline's gas load, which the turbo's compression (3e6 for N2, HiPace 10) keeps off the chamber; the foreline could even be held above the coupling's 14 mbar rating."
   }
  },
  "sources": {
@@ -96,6 +302,13 @@
   "mating_speed": "p.135: 'CombiTac was tested at a mating speed of 600 mm/min by an automatic process. Plugging force is equal to 1.5 times the sliding force.'",
   "hard_stop": "p.82: screw CT-SHR-HS (M4) gives the end pieces a hard stop 'so that the force does not impact on the contacts during the mating process'.",
   "mgn12": "HIWIN MGN12H miniature guide: rail 12 x 8 mm, block 27 mm wide, 45.4 mm long (hiwin.com MG series).",
-  "igus": "igus E2 micro energy chains, e.g. series E2.15 (inner height 15 mm, bend radii from 18 mm): our size, not a selected part."
+  "igus": "igus E2 micro energy chains, e.g. series E2.15 (inner height 15 mm, bend radii from 18 mm): our size, not a selected part.",
+  "vac": "p.66-67, p.69: CT-B-UCT08/10 (33.0194, socket) and CT-S-UCT08/10 (33.0594, plug), pneumatic, nominal bore 8 mm, no shut-off (open flow), push-in clamp for a 10 mm OD calibrated PA or PU tube (no thread, no across-flats), socket 11 mm behind its carrier, plug nose 9.5 mm proud and 9.5 mm behind; max. 15 bar; min. working pressure 14 mbar (pressures absolute, p.60, p.70); no spring, max. sliding force 16 N at 0 bar (134 N at 15 bar). Carrier CT-E-UCT08-1 (33.4032), 22 mm wide (p.83), the 1-pole version of the LCT06's CT-E-UCT08-2. The largest bore in the range: there is no LCT08 or UCT10.",
+  "vac_rating": "p.62, p.65, p.66, p.73: every pneumatic and fluid coupling: 'Min. working pressure (mbar) 14'; p.75, LCT06: 'Min. vacuum absolute pressure (mbar) 14'; p.62: 'Vacuum compatibility only when mated'; p.63, p.67, p.73, p.75: 'Connecting and disconnecting under pressure is prohibited'. Below 14 mbar is outside the catalogue: ask Staubli for leak rates, or helium leak-test the pair.",
+  "vac_alt": "p.74-75: CT-B-LCT06 / CT-S-LCT06 (33.0229 / 33.0629) also fit CT-E-UCT08-1 and shut off both sides, but at 6 mm through two poppets, with 44.5 N of springs: the self-sealing alternative, not chosen.",
+  "scroll": "Pfeiffer HiScroll 12 (PD S20 000): 12.1 m3/h (boost 14), ultimate 6e-3 mbar, 47 dB(A), 24 kg, 419 x 265 x 322 mm, DN 25 KF inlet, standby at 50 % of nominal speed (settable 40-100 %), automatic standby with a gauge (HiScroll 12 datasheet p.4, https://assets.testequity.com/te1/Documents/pdf/pfeiffer-vacuum/Pfeiffer_Vacuum_Hiscroll_12_PD-S20-000-B_Datasheet-1024.pdf; HiScroll 12/18 operating instructions p.41-42, https://lesker.com/NewWeb/vacuum_pumps/pdf/manuals/HiScroll%2012_18%20Operating%20Instructions%20(PU0081BEN_A).pdf). About USD 8,300-9,000 (Across International, TestEquity, seen 2026-11-20).",
+  "scroll_alt": "Edwards nXDS10i: 11.4 m3/h, 7e-3 mbar, 52 dB(A) 'for low fan speed, typical at ultimate', 25.8 kg, 432 x 282 x 302 mm, NW25, standby 67-100 % of speed (nXDS brochure 3601-0088-01 p.6-9, https://assets.testequity.com/te1/Documents/pdf/Edwards/Edwards_nXDS_Brochure_0425.pdf); about USD 6,900 (Marshall Scientific, seen 2026-11-20). Agilent IDP-10: 10.2 m3/h, 2e-2 mbar, 53 dB(A), 24.7 kg (datasheet 5991-7603EN).",
+  "turbo": "Pfeiffer HiPace 30 (DN 40 KF, PM P05 282): 22 l/s N2, max. foreline 24 mbar N2, <1e-7 hPa, 80 W, 2 kg; HiPace 10: 10 l/s, 25 mbar, 1.8 kg; HiPace 80 Neo: 35 l/s, 22 mbar, 1.7 kg (Pfeiffer datasheets p.3); Edwards nEXT85: 47 l/s (NW40), max. backing 18 mbar (forced air, 20 C), 80 W (datasheet p.2). Edwards' T-Station 85 backs its nEXT85H with a 3 m3/h mXDS3s scroll, not an nXDS (datasheet 3601 0254 01).",
+  "conductance": "Leybold, Fundamentals of Vacuum Technology (2016), p.16-17: a long round tube, air at 20 C, laminar C = 135 d^4 / l * p (eq. 1.28a, d p > 0.6 mbar cm), molecular C = 12.1 d^3 / l (eq. 1.28b, d p < 1e-2 mbar cm), l/s with d and l in cm and p the mean pressure in mbar; in between, eq. 1.26 (Knudsen). https://vacuumpumpsupply.com/content/FVT_Fundamentals_of_Vacuum_Technology_EN58774555441f3.pdf"
  }
 }

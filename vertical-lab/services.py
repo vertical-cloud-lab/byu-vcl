@@ -159,7 +159,8 @@ HOME = {"A": "R2", "B": "R3", "C": "F1", "D": "R1", "E": "R4", "F": "F2"}
 # ===================================================================================================== materials
 # the six media's colours. Round 8 (PR #318: "The rapid flowing of vibrant colors showing the connections/piping (e.g.,
 # liquid, gas) is a bit over the top."): each is mixed 45 % towards a mid grey, so the lines read as a quiet tint that
-# still tells the media apart; MEDIA_VIVID keeps round 4's colours
+# still tells the media apart; MEDIA_VIVID keeps round 4's colours. The seventh, the vacuum line (2026-11-20), is a
+# plain dark grey
 MEDIA_VIVID = {"svc_power": (0.96, 0.55, 0.10), "svc_data": (0.18, 0.68, 0.32), "svc_air": (0.55, 0.80, 0.95),
                "svc_n2": (0.55, 0.38, 0.78), "svc_cws": (0.12, 0.36, 0.85), "svc_cwr": (0.86, 0.18, 0.18)}
 MUTE = 0.45
@@ -176,6 +177,7 @@ MATERIALS = {
     "svc_n2": (*muted(MEDIA_VIVID["svc_n2"]), 1.0, 0.3),           # purple: nitrogen
     "svc_cws": (*muted(MEDIA_VIVID["svc_cws"]), 1.0, 0.3),         # blue: chilled water supply
     "svc_cwr": (*muted(MEDIA_VIVID["svc_cwr"]), 1.0, 0.3),         # red: chilled water return
+    "svc_vac": (0.24, 0.24, 0.26, 1.0, 0.4),       # dark grey: the vacuum line, thick-walled (2026-11-20, not muted)
     "svc_plate": (0.30, 0.31, 0.33, 1.0, 0.5),      # anodised carrier plates
     "svc_housing": (0.20, 0.21, 0.23, 0.55, 0.3),   # the dock's actuator housing, drawn see-through
     "svc_alu": (0.78, 0.79, 0.81, 1.0, 0.6),        # 2020 extrusion
@@ -207,6 +209,9 @@ MEDIA = [   # (key, label for the leader lines, material, coupling)
     ("n2", "nitrogen", "svc_n2", "SCT03, G1/8, shut-off both sides"),
     ("cws", "chilled water in", "svc_cws", "LCT06, G1/4, shut-off both sides"),
     ("cwr", "chilled water out", "svc_cwr", "LCT06, G1/4, shut-off both sides"),
+    # 2026-11-20 (PR #318: "the CombiTac should probably have a port for vacuum"): only on the trays in CP.VAC_TRAYS
+    # and at the bay; the functions below take tray= (None: with vacuum, as the bay's dock and those trays have it)
+    ("vac", "vacuum, roughing", "svc_vac", "UCT08/10, 8 mm, open flow; trays B, K, M and the bay; 14 mbar rated"),
 ]
 
 # ===================================================================================================== the coupling
@@ -256,59 +261,69 @@ def _xc(d, x0, x1, y, z):
     return cq.Workplane("YZ").circle(d / 2).extrude(hi - lo).translate((lo, y, z))
 
 
-def plate_parts() -> dict:
+def plate_parts(tray: str | None = None) -> dict:
     """The tray's half, in the tray's frame: {name: (shape, material)}: coupling.tray_half, without the couplings'
-    valve parts (they are inside the bodies; coupling.py's close-up shows them)."""
-    return CP.tray_half(internals=False)
+    valve parts (they are inside the bodies; coupling.py's close-up shows them). tray: its vacuum socket only if it is
+    in CP.VAC_TRAYS; None: with it (the general case)."""
+    return CP.tray_half(internals=False, vacuum=CP.has_vacuum(tray))
 
 
 MANIFOLD_X = 580.0          # tray frame: the end of the tray's lines, a manifold block left of the UPS on the back rim
 
 
-def _tray_starts() -> dict:
+def _tray_starts(tray: str | None = None) -> dict:
     """{medium: [(x, y, z)]}: where each line leaves the tray's half of the coupling (tray frame), as coupling.py draws
     the stubs: the mains cable out of its gland, the Cat 6A cable out of the RJ45 plug, each tube out of its fitting's
-    collet."""
+    collet; the vacuum line (only with vacuum) up out of the tee behind the tray's vacuum valve."""
     gx = CP.X_M - CP.CARRIER["depth"] - 30.0
     gy = FACE["data"][0]
     out = {"power": [(gx - 60.0, CP.YC - 8.0, CP.Z_E + 48.0)],
            "data": [(CP.X_M - 34.9 - 60.0, gy, CP.Z_E + 34.0)]}
     for y, z, what, med, key in CP.pole_points("F"):
-        c = CP.CPL[what]
-        fx = CP.X_M - c["s_front"] - c["s_body"] - 19.0
+        if what == "vac":
+            if CP.has_vacuum(tray):
+                out[med] = [(CP.VAC_TRAY["riser_x"], y, z + 9.0)]
+            continue
+        fx = CP.fitting_end(what, "socket")
         out[med] = [(fx, y, z), (fx - 10.0, y, z)]
     return out
 
 
-def line_paths() -> dict:
+def line_paths(tray: str | None = None) -> dict:
     """{medium: [(x, y, z)]} of the tray's lines, tray frame: from the coupling's stubs up over the bracket, then mains
     into the UPS's back (the UPS feeds the tray's power strip) and the rest back to the rim and along it, over the
-    power strip, to a manifold block left of the UPS."""
+    power strip, to a manifold block left of the UPS. tray: no vacuum line unless it is in CP.VAC_TRAYS (None: with)."""
     out = {}
     ux = UPS_AT[0] + UPS["d"] / 2                       # the UPS's back, facing the plate: x = 1060
-    st = _tray_starts()
+    st = _tray_starts(tray)
     j = 0
     for i, (key, *_) in enumerate(MEDIA):
+        if key not in st:
+            continue
         pts = list(st[key])
         x0, y0, z0 = pts[-1]
-        zt = PLATE_Z0 + PLATE_H + 30.0 + 6.0 * i        # over the bracket, one layer each
+        wide = 1.0 if key == "vac" else 0.0             # the vacuum line is 2 mm thicker: 1 mm more room on each run
+        zt = PLATE_Z0 + PLATE_H + 30.0 + 6.0 * i + wide  # over the bracket, one layer each
         if key == "power":
             out[key] = pts + [(x0, y0, zt), (ux + 40, y0, zt), (ux + 40, UPS_AT[1], zt), (ux + 1, UPS_AT[1], zt)]
             continue
-        yr = V.TRAY_D / 2 - 18.0 - 6.5 * j              # along the back rim, over the power strip
-        zr = 58.0 + 6.5 * j
+        yr = V.TRAY_D / 2 - 18.0 - 6.5 * j - wide       # along the back rim, over the power strip
+        zr = 58.0 + 6.5 * j + wide
         out[key] = pts + [(x0, y0, zt), (ux + 60 - 8 * j, y0, zt), (ux + 60 - 8 * j, yr, zt), (ux + 60 - 8 * j, yr, zr),
                           (MANIFOLD_X + 40, yr, zr)]
         j += 1
     return out
 
 
-def tray_lines(live_mat=True) -> dict:
-    """The tray's lines (line_paths) and the manifold they end at (tray frame); coloured when live."""
+def tray_lines(live_mat=True, tray: str | None = None) -> dict:
+    """The tray's lines (line_paths) and the manifold they end at (tray frame); coloured when live. tray: as line_paths;
+    the vacuum line is a thicker tube."""
     p = {}
+    lp = line_paths(tray)
     for (key, _, mat, _) in MEDIA:
-        p[f"line {key}"] = (hose(line_paths()[key], 7.0), mat if live_mat else "svc_plate")
-    yr0 = V.TRAY_D / 2 - 18.0 - 6.5 * 4 - 6
+        if key in lp:
+            p[f"line {key}"] = (hose(lp[key], 9.0 if key == "vac" else 7.0), mat if live_mat else "svc_plate")
+    yr0 = V.TRAY_D / 2 - 18.0 - 6.5 * (len(lp) - 2) - 6       # the rim's lines: all but mains
     p["manifold"] = (box(MANIFOLD_X - 30, yr0, 40.0, MANIFOLD_X + 40, V.TRAY_D / 2 - 12, 100.0), "svc_alu")
     return p
 
@@ -328,6 +343,13 @@ def dock_paths() -> dict:
         head = [(1286.0, y, -2.0), (1286.0, y, z - 8.0), (CP.X_M + 40.0, y, z)] if key not in ("power", "data") else \
             [(CP.X_M + CP.CARRIER["depth"] + 46.0, CP.YC - 96.0, -4.0),
              (CP.X_M + CP.CARRIER["depth"] + 46.0, CP.YC - 96.0, CP.Z_E + 20.0), (CP.X_M + 40.0, y, z)]
+        if key == "vac":                                # under the valve bank, then up through the isolation valve
+            zu = CP.VALVES_Z[0] - 14.0
+            out[key] = [(RISER["x"], ry, zu), (xv, ry + 14.0, zu), (xv, yv, zu), (xv, yv, zv - 4.0),
+                        (CP.CHAIN["x_fixed"] + 10.0, CP.CHAIN["y"], zl), (CP.CHAIN["x_fixed"] + 30.0, CP.CHAIN["y"],
+                                                                         zc - 6.0),
+                        (CP.CHAIN["x_end0"] + 6.0, CP.CHAIN["y"], zc + 6.0)] + head + [(X_FACE + 2.0, y, z)]
+            continue
         out[key] = [(RISER["x"], ry, zv - 30.0), (xv, yv - 14.0, zv - 30.0), (xv, yv, zv - 4.0),
                     (CP.CHAIN["x_fixed"] + 10.0, CP.CHAIN["y"], zl), (CP.CHAIN["x_fixed"] + 30.0, CP.CHAIN["y"], zc - 6.0),
                     (CP.CHAIN["x_end0"] + 6.0, CP.CHAIN["y"], zc + 6.0)] + head + [(X_FACE + 2.0, y, z)]
@@ -350,17 +372,24 @@ def switch_light_mesh(key: str):
     return pv.Sphere(radius=3.2, center=(x, y, z + 1.5), theta_resolution=12, phi_resolution=10)
 
 
-def dock_parts(head=True) -> dict:
+def dock_parts(head=True, tray: str | None = None) -> dict:
     """The slot's half, in the slot's frame (the frame of a tray standing in the slot): {name: (shape, material)}.
     head=True gives the moving head at s = 0 (it slides +x by STROKE to let go), False the fixed frame, guides, drive,
-    valve bank and the supply lines from the riser. The crank and its rod are dock_crank_parts()."""
+    valve bank and the supply lines from the riser. The crank and its rod are dock_crank_parts(). tray: the slot's
+    tray; its dock has the vacuum line only if the tray is in CP.VAC_TRAYS. None: with it, as the bay's dock always has."""
+    vac = CP.has_vacuum(tray)
     if head:
-        return CP.head_parts(internals=False)
-    p = CP.dock_fixed()
+        return CP.head_parts(internals=False, vacuum=vac)
+    p = CP.dock_fixed(vacuum=vac)
     vp = CP.valve_points()
     ry = PLATE_Y + RISER["dy"] + 40.0
     for (key, _, mat, _) in MEDIA:
         x, y, z = vp[key]
+        if key == "vac":            # DN16, under the valve bank from the riser, up into the isolation valve
+            if vac:
+                zu, z0 = CP.VALVES_Z[0] - 14.0, CP.VALVES_Z[0] + 6.0
+                p["supply vac"] = (hose([(x, y, z0), (x, y, zu), (x, ry + 8.0, zu), (x, ry, zu)], 16.0), mat)
+            continue
         p[f"supply {key}"] = (hose([(x, CP.YC - 60.0, z - 30.0), (x, ry + 6.0, z - 30.0), (x, ry, z - 30.0)], 6.0), mat)
     return p
 
@@ -1199,15 +1228,44 @@ def add_bay_camera(sc, x=0.0, tag: str = "") -> str:
     return bay_groups("back", tag)["head"]
 
 
+DOCK_VAC: dict = {}           # pos -> whether add_docks gave its dock the vacuum plug
+
+
+def tray_in(pos: str):
+    """The tray stored in slot `pos` (setup_lab.TRAYS, else HOME), None at the bay ('open': any tray, so its dock always
+    has the vacuum plug), '' for a slot no tray uses."""
+    if pos == "open":
+        return None
+    for k, slot in HOME.items():
+        if slot == pos:
+            return k
+    try:
+        import setup_lab
+        for k, (slot, _) in setup_lab.TRAYS.items():
+            if slot == pos:
+                return k
+    except Exception:                                 # noqa: BLE001  (a dock still gets drawn)
+        pass
+    return ""
+
+
 def add_docks(sc, positions) -> dict:
     """A dock at each storage slot or bay position: {pos: head group}. The head slides +x by STROKE (set_dock)."""
     from scene import T
-    fixed = meshes_of("dock_fixed", lambda: dock_parts(head=False), 0.5)
-    head = meshes_of("dock_head", lambda: dock_parts(head=True), 0.3)
+    # round 14 (the vacuum line, coupling.VAC_TRAYS): the bay's dock always carries the vacuum plug, a slot's dock only
+    # if its tray uses vacuum (dock_parts(tray=None) is the bay's, with it)
+    variants = {}
+    for vac in (True, False):
+        tr = None if vac else ""
+        variants[vac] = (meshes_of(f"dock_fixed_{int(vac)}", lambda tr=tr: dock_parts(head=False, tray=tr), 0.5),
+                         meshes_of(f"dock_head_{int(vac)}", lambda tr=tr: dock_parts(head=True, tray=tr), 0.3))
     drive = {k: meshes_of(f"dock_{k}", lambda k=k: dock_crank_parts()[k], 0.3) for k in ("crank", "rod")}
     out = {}
     for pos in positions:
         yc, zs = V.SLOTS[pos]
+        vac = CP.has_vacuum(tray_in(pos))
+        fixed, head = variants[vac]
+        DOCK_VAC[pos] = vac
         g, gh = f"dock_{pos}", f"dockhead_{pos}"
         add_meshes(sc, g, fixed, g)
         add_meshes(sc, gh, head, gh)
@@ -1223,6 +1281,8 @@ def add_docks(sc, positions) -> dict:
         r, gg, b, _, _ = MATERIALS["cpl_chain"]
         sc.add(f"dockchain_{pos}", CP.chain_mesh(0.0), (r, gg, b), g, specular=0.2)
         for key, *_ in MEDIA:
+            if key == "vac" and not vac:
+                continue
             sc.add(f"swlight_{pos}_{key}", switch_light_mesh(key), SWITCH_C[True], g, ambient=0.7, specular=0.2)
     riser = meshes_of("riser", riser_parts, 2.0)
     for yc, name in ((V.Y_FRONT, "front"), (V.Y_REAR, "rear")):
@@ -1249,11 +1309,20 @@ def set_dock(sc, pos, u):
         sc.set_mesh(f"dockchain_{pos}", _CHAIN_MESH[key])
 
 
+BAY_TRAY_VAC = False          # round 14: whether the tray at the bay uses vacuum; the clips here present A or B (no: A)
+
+
 def set_switches(sc, pos, on):
-    """The dock's valves, contactor and link light at `pos`: on = True / False for all, or {medium: bool}."""
+    """The dock's valves, contactor and link light at `pos`: on = True / False for all, or {medium: bool}. The vacuum
+    line's isolation valve opens only where the docked tray uses vacuum (coupling.VAC_TRAYS; at the bay, BAY_TRAY_VAC)."""
     for key, *_ in MEDIA:
+        n = f"swlight_{pos}_{key}"
+        if n not in sc.actors:
+            continue
         v = on.get(key, False) if isinstance(on, dict) else bool(on)
-        sc.color[f"swlight_{pos}_{key}"] = SWITCH_C[v]
+        if key == "vac":
+            v = v and (BAY_TRAY_VAC if pos == "open" else CP.has_vacuum(tray_in(pos)))
+        sc.color[n] = SWITCH_C[v]
 
 
 UPS_LED = {"mains": (0.15, 0.80, 0.30), "battery": (1.0, 0.62, 0.10)}     # charging on mains / carrying the tray
@@ -1294,8 +1363,10 @@ def add_ups_meshes(sc, tray: str, group: str, prefix: str | None = None) -> list
 def add_tray_services(sc, tray: str, ups=True) -> list:
     """The tray's plate, its lines (coloured when live) and its UPS with its markings and status LEDs, riding with
     group tray_<k>."""
-    add_meshes(sc, f"plate_{tray}", meshes_of("plate", plate_parts, 0.4), f"tray_{tray}")
-    names = add_meshes(sc, f"lines_{tray}", meshes_of("lines", tray_lines, 0.5), f"tray_{tray}")
+    vac = int(CP.has_vacuum(tray))                     # round 14: the vacuum socket and line only on VAC_TRAYS
+    add_meshes(sc, f"plate_{tray}", meshes_of(f"plate_{vac}", lambda: plate_parts(tray), 0.4), f"tray_{tray}")
+    names = add_meshes(sc, f"lines_{tray}", meshes_of(f"lines_{vac}", lambda: tray_lines(True, tray), 0.5),
+                       f"tray_{tray}")
     if ups:
         add_ups_meshes(sc, tray, f"tray_{tray}")
         import airgradient                               # round 14: the tray's AirGradient ONE, on its UPS
@@ -1332,6 +1403,8 @@ class Flow:
         for pos in places:
             yc, zs = V.SLOTS[pos]
             for (key, _, mat, _), dy in zip(MEDIA, INSERT_DY):
+                if key == "vac":                      # round 14: no beads on the vacuum line, which draws gas away
+                    continue
                 pts = np.array(dp[key] + lp[key], float) + (0.0, yc, zs)
                 cum = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))]
                 self.paths[(pos, key)] = (pts, cum)
@@ -1344,7 +1417,7 @@ class Flow:
 
     def set(self, pos, f, keys=None):
         for key, *_ in MEDIA:
-            if keys is None or key in keys:
+            if (keys is None or key in keys) and (pos, key) in self.on:
                 self.on[(pos, key)] = float(f)
 
     def __call__(self, sc):
@@ -2173,17 +2246,8 @@ def movie_cabling(data, idata):
                               ("glovebox", (-7300.0, yn - 60, 2500.0)),
                               ("AirGradient ONE on each junction box", (-1700.0 - 160.0, yn - 60, 2410.0)),
                               ("argon line", (-6000.0, yn + 230, 4150.0))]))
-    cam_v = [(3900, 7400, 5400), (1815, 1000, 1700), (0, 0, 1)]          # from behind, down into the gap
-    sc.step(f"3/{n}", "The Shuttles: each takes 208 V three-phase (#53; a used unit's plate: 8.6 kVA) to a disconnect on "
-            "its back. Between them an N2 generator, a compressor and a chiller feed the trays' couplings through each "
-            "Shuttle's right-hand side, where the risers run up to every slot's dock: 208Y/120 V on a 30 A breaker, "
-            "Ethernet, air, N2 and chilled water.", 3.6, None, hold=2.2, cam_to=cam_v,
-            labels=lb(cam_v, [("208 V 3-phase to Shuttle 1", (900.0, yv + 70.0, 2650.0)),
-                              ("to Shuttle 2", (X2 + 900.0, yv + 70.0, 2650.0)),
-                              ("docks' supply into each side cavity", (X2 / 2, 900.0, 2600.0)),
-                              ("N2, air, chilled water", (X2 / 2, 900.0, 900.0))]))
     cam_s = [(5200, -15500, 6200), (2600, -6500, 1600), (0, 0, 1)]
-    sc.step(f"4/{n}", "The south row: the 68FM-100 (208-240 V, three-phase preferred), the MiR chargers (100-240 V), "
+    sc.step(f"3/{n}", "The south row: the 68FM-100 (208-240 V, three-phase preferred), the MiR chargers (100-240 V), "
             "the fume hood with its duct up through the 36 ft roof, the MX-Lab DED (220 V single-phase, 20 A) and the "
             "wire EDM, the biggest load here at 13 kVA, 200 V three-phase.", 3.4, None, hold=2.0, cam_to=cam_s,
             labels=lb(cam_s, [("68FM-100", (-6400.0, ys + 60, 2530.0)),
@@ -2191,10 +2255,21 @@ def movie_cabling(data, idata):
                               ("fume hood duct to the roof", (900.0, ys - 300, 6000.0)),
                               ("wire EDM: 200 V 3-ph, 13 kVA", (6600.0, ys + 60, 1900.0))]))
     cam_u = [(1900, -2900, 2300), (-1300, -5600, 800), (0, 0, 1)]        # setup_lab.CAM_UNIT
-    sc.step(f"5/{n}", "The arms: each UR10e and its control box ride a MiR250 on its 48 V battery, so no cable or rail "
+    sc.step(f"4/{n}", "The arms: each UR10e and its control box ride a MiR250 on its 48 V battery, so no cable or rail "
             "crosses the floor. Each charges on a MiR Charge 48V (100-240 V in, 48 V at up to 40 A out) in its bay on "
             "the south side of the aisle.", 3.0, None, hold=2.0, cam_to=cam_u,
             labels=lb(cam_u, [("MiR Charge 48V", (W.CHARGERS[0], W.Y_FACE_S + 200.0, 300.0))]))
+    over = [(1815, -6000, 17000), (1815, 0, 3500), (0, 0, 1)]           # over the 9.15 m roofs, so no move flies through
+    sc.step(f"5/{n}", "Round the back of the Shuttles.", 1.8, None, hold=0.0, cam_to=over)
+    cam_v = [(3900, 7400, 5400), (1815, 1000, 1700), (0, 0, 1)]          # from behind, down into the gap
+    sc.step(f"5/{n}", "The Shuttles: each takes 208 V three-phase (#53; a used unit's plate: 8.6 kVA) to a disconnect on "
+            "its back. Between them an N2 generator, a compressor and a chiller feed the trays' couplings through each "
+            "Shuttle's right-hand side, where the risers run up to every slot's dock: 208Y/120 V on a 30 A breaker, "
+            "Ethernet, air, N2 and chilled water.", 3.6, None, hold=2.2, cam_to=cam_v,
+            labels=lb(cam_v, [("208 V 3-phase to Shuttle 1", (900.0, yv + 70.0, 2650.0)),
+                              ("to Shuttle 2", (X2 + 900.0, yv + 70.0, 2650.0)),
+                              ("docks' supply into each side cavity", (X2 / 2, 900.0, 2600.0)),
+                              ("N2, air, chilled water", (X2 / 2, 900.0, 900.0))]))
     sc.step(f"6/{n}", "All of it: one overhead route per row, drops at the stations, an air monitor at each, nothing on "
             "the floor.", 2.6, None, hold=2.4, cam_to=wide, still=True)
     return sc.save()
@@ -2650,7 +2725,7 @@ def tray_boxes(k: str) -> dict:
     each instrument's box and each camera unit's pieces."""
     from scene import T
     out = {"tray pan": np.array([-V.TRAY_W / 2, V.TRAY_W / 2, -V.TRAY_D / 2, V.TRAY_D / 2, 0.0, V.T_FLOOR + V.T_RIM])}
-    for parts in (plate_parts(), tray_lines(), ups_parts(k)):
+    for parts in (plate_parts(k), tray_lines(True, k), ups_parts(k)):
         for n, (s, _) in parts.items():
             out.update(_bboxes(n, s))
     for key, bb in tray_instrument_boxes().get(k, []):

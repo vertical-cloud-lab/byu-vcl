@@ -41,50 +41,50 @@
    "R1 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R1 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R2 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R2 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R3 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R3 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R4 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    },
    "R4 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    }
   },
   "A": {
@@ -127,50 +127,50 @@
    "R1 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R1 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R2 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R2 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R3 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R3 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R4 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    },
    "R4 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    }
   },
   "B": {
@@ -213,50 +213,50 @@
    "R1 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R1 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R2 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R2 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R3 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R3 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R4 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    },
    "R4 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    }
   },
   "C": {
@@ -299,50 +299,50 @@
    "R1 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R1 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R2 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R2 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R3 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R3 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R4 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    },
    "R4 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    }
   },
   "D": {
@@ -385,50 +385,50 @@
    "R1 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R1 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R2 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R2 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R3 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R3 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R4 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    },
    "R4 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    }
   },
   "E": {
@@ -471,50 +471,50 @@
    "R1 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R1 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R2 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R2 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R3 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R3 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R4 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    },
    "R4 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    }
   },
   "F": {
@@ -557,50 +557,50 @@
    "R1 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R1 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 140.0
+    "dock": "supply vac",
+    "lift_z": 60.0
    },
    "R2 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R2 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 890.0
+    "dock": "supply vac",
+    "lift_z": 810.0
    },
    "R3 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R3 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 1640.0
+    "dock": "supply vac",
+    "lift_z": 1560.0
    },
    "R4 engaged": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    },
    "R4 pulled back": {
     "gap_mm": 683.0,
     "moving": "extractor: extractor carriages #2",
-    "dock": "supply power",
-    "lift_z": 2540.0
+    "dock": "supply vac",
+    "lift_z": 2460.0
    }
   }
  },

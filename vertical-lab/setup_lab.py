@@ -224,7 +224,7 @@ INSTALL_AT = 0                                 # the first unit is put together 
 CAM_ROOM = [(11000, -22000, 15500), (500, -2700, 0), (0, 0, 1)]
 CAM_TOP = [(2000, -15000, 22500), (300, -2800, 0), (0, 0, 1)]
 CAM_UTIL = [(16000, -32000, 20000), (700, -2200, 3300), (0, 0, 1)]    # round 14: up to the 10.97 m roof steel
-CAM_VLM = [(12800, -15400, 9200), (1800, -400, 4300), (0, 0, 1)]     # round 14: the 9150 mm Shuttles whole
+CAM_VLM = [(19500, -24500, 12500), (1800, -500, 4600), (0, 0, 1)]    # round 14: the 9150 mm Shuttles whole
 CAM_FLOOR = [(6200, -21500, 17500), (700, -2900, 0), (0, 0, 1)]
 # round 8: the scale-up machines past the south row's ends (the EOS lower left, the Meltio cell lower right) with the
 # whole lab behind them; a camera test of five views found this the one that shows both whole
@@ -241,7 +241,7 @@ BAY_VIEW_ANGLE = 62.0
 ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (700, -2300, 600), (0, 0, 1)],
          [(3500, -15500, 5600), (700, -2300, 900), (0, 0, 1)],
-         [(13500, -21500, 15500), (700, -2300, 2200), (0, 0, 1)]]     # round 14: the 9150 mm Shuttles in the last
+         [(18000, -28500, 17500), (1200, -2200, 3600), (0, 0, 1)]]    # round 14: the 9150 mm Shuttles in the last
 
 
 # ------------------------------------------------------------------------------------------------ round 8's modules
@@ -1457,7 +1457,8 @@ def movie(data, idata):
                 if key not in ("ups", "cam"):
                     lbls.append((nm, tuple(np.array(sc.world(g)[:3, 3]) + (0, 0, 420))))
             ncam = sum(1 for it in lst if it[0] == "cam")
-            extra = ", its UPS" + (f" and {ncam} camera post{'s' if ncam > 1 else ''}" if ncam else "")
+            extra = ", its UPS with an AirGradient on it" + (f", and {ncam} camera post{'s' if ncam > 1 else ''}"
+                                                             if ncam else "")
             if k in PASSIVE:                     # round 11: no UPS, no dock plate, no cameras
                 extra = (f". Nothing on it draws power: no UPS, no dock plate, no cameras, and a slot "
                          f"{V.SPAN[A.HOME[k]]:.0f} mm tall")

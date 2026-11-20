@@ -44,6 +44,24 @@ charge chapter, the atomizer and the narration). Each point below links its note
   - 21.4 m of slots is left free: enough for the three-each plan without a third Shuttle.
   - The cable trays and argon run round the Shuttles' backs, under a 36 ft roof with high-bay lights.
 - **The CombiTac vacuum line:** see notes/coupling.md, "Vacuum".
+
+Running it (round 14, A; renders at 1080p with their own audits, two heavy jobs at a time through `runner_guard.py`):
+
+```bash
+python3 setup_lab.py fit                   # every tray solid to solid (10 mm), the 30 ft columns -> out/tray_plan.{png,json}
+python3 ot2_deck.py; python3 airgradient.py   # the OT-2's deck; the AirGradient on each tray's UPS
+python3 services.py json                   # both bay cameras' views and arm clearances, the heat, out/cabling.json
+H="VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12"
+python3 runner_guard.py slot --mem 5000 --label baycam -- env $H xvfb-run -a python3 services.py baycam
+python3 runner_guard.py slot --mem 6500 --label cabling -- env $H xvfb-run -a python3 services.py cabling
+python3 runner_guard.py slot --mem 5000 --label services -- env $H xvfb-run -a python3 services.py services hookups
+python3 runner_guard.py slot --mem 7000 --label setup -- env VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 \
+    VIZ3D_AUDIT=1 VIZ3D_FPS=10 xvfb-run -a python3 setup_lab.py
+```
+
+Each 1080p render is in `out/hd/` and `out/clean/` (committed, as run C does, so the next long-form needn't render
+it again); `out/mp4/` keeps a 720p copy, with the GIF and the still made from it.
+
 ## Round 14 (B): the doser's fall cut to 45 mm, a nest that holds the vessel, the die cleaned, every cup weighed again (2026-11-20)
 
 Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), the charge chapter and the doser:
