@@ -1137,12 +1137,13 @@ def movie(data, idata):
     chargers = [n for n, g in sc.group_of.items() if g.startswith("charger") and not g.endswith("_tape")]
     unit_names = [n for u in units for n in u.all_names()]
     # round 10: where each item's centre is in its tray (for its start on the lift table), and the two lift tables
-    yc_of = {}
+    yc_of, ynear_of = {}, {}
     for k in items:
         Mi = np.linalg.inv(sc.world(f"tray_{k}"))
         for key, g, names, _ in items[k]:
             bb = _bounds_of(sc, names, Mi)
             yc_of[(k, g)] = 0.0 if bb is None else (bb[2] + bb[3]) / 2
+            ynear_of[(k, g)] = 0.0 if bb is None else bb[2]       # the edge nearest the opening
     tables = {}
     for u, xu in V.SHUTTLE_X.items():
         g = f"lift_table{u}"
@@ -1195,22 +1196,27 @@ def movie(data, idata):
     s = A.slide_in
     sc.step(f"4/{n}", "Two Kardex Shuttle XP 500s go together where their footprints are taped, 800 mm apart: base "
             "frames, posts, storage columns.", 2.6,
-            A.both(s(L, ["base", "u2_base"], (0, 0, 900)), s(L, ["posts", "u2_posts"], (0, 0, 1800)),
-                   s(L, ["col_front", "col_rear", "u2_col_front", "u2_col_rear"], (2600, 0, 0))),
+            # round 13: the posts and columns fade in on the base, not slid in (round 12's audit: the columns slid
+            # through the base frames as it came down, the lift's rails through the posts, the trays through the
+            # columns and the cladding through the cable trays overhead)
+            stagger([s(L, ["base", "u2_base"], (0, 0, 900)),          # down first, then the rest on it
+                     s(L, ["posts", "u2_posts"], (0, 0, 0)),
+                     s(L, ["col_front", "col_rear", "u2_col_front", "u2_col_rear"], (0, 0, 0))], overlap=0.4),
             hold=0.3, cam_to=CAM_VLM)
     passive = [k for k in trays if k in PASSIVE]
     pas = ", ".join(passive[:-1]) + f" and {passive[-1]}" if len(passive) > 1 else "".join(passive)
     sc.step(f"4/{n}", f"The extractors and their drives, then {len(trays)} empty trays, A to {max(trays)}: "
             f"{len(trays) - len(passive)} electrified, each with its dock plate at the back right, and "
             f"{len(passive)} plain ones for storage ({pas}).", 2.6,
-            A.both(s(L, ["lift_rails", "u2_lift_rails"], (0, 0, 2500)), s(L, ["drive", "u2_drive"], (0, 0, 1400)),
-                   s(L, ["lift", "belts", "u2_lift", "u2_belts"], (0, 0, 2400)), s(L, tray_groups, (3200, 0, 0))),
+            stagger([s(L, ["lift_rails", "u2_lift_rails", "drive", "u2_drive"], (0, 0, 0)),
+                     s(L, ["lift", "belts", "u2_lift", "u2_belts"], (0, 0, 0)), s(L, tray_groups, (0, 0, 0))],
+                    overlap=0.5),
             hold=0.3)
     sc.step(f"4/{n}", "The cladding, the openings (996 mm tall), the consoles and the shutters.", 2.2,
-            A.both(s(L, ["skin_L", "u2_skin_L"], (-900, 0, 0)), s(L, ["skin_R", "u2_skin_R"], (900, 0, 0)),
-                   s(L, ["skin_back", "u2_skin_back"], (0, 900, 0)), s(L, ["skin_top", "u2_skin_top"], (0, 0, 900)),
-                   s(L, ["skin_front", "bay", "console", "shutter", "u2_skin_front", "u2_bay", "u2_console",
-                         "u2_shutter"], (0, -900, 0))),
+            stagger([s(L, ["skin_L", "u2_skin_L", "skin_R", "u2_skin_R", "skin_back", "u2_skin_back"], (0, 0, 0)),
+                     s(L, ["skin_top", "u2_skin_top"], (0, 0, 0)),
+                     s(L, ["skin_front", "bay", "console", "shutter", "u2_skin_front", "u2_bay", "u2_console",
+                           "u2_shutter"], (0, 0, 0))], overlap=0.5),
             hold=0.6)
     L.apply_state()
     # ------------------------------------------------------------------ 5. the floor machines
@@ -1223,13 +1229,14 @@ def movie(data, idata):
         names = F.groups[k]
         roots = [root] + (["wh_sieve:body"] if k == "sieve_cell" and "sieve_cell" in F.rigs else []) + \
             ([f"bench_{k}"] if k in W.BENCH else [])
-        dy = -2600 if row == "N" or k in R8_MERGED["floor"] else 2600   # the scale-up machines come in from outside
-        fs.append(s(L, roots, (0, dy, 0), names=names))
+        # round 13: set down on its footprint, 80 mm, not rolled 2.6 m in from the aisle: the roll took the wire EDM
+        # through its utility drop and the fume hood through its dock's target post (round 12's audit)
+        fs.append(s(L, roots, (0, 0, 80), names=names))
     late = [k for k in R8_MERGED["floor"] if k in order]      # round 8's scale-up machines, past the south row's ends
     main = [k for k in order if k not in late]
     fs_main = [f for k, f in zip(order, fs) if k not in late]
-    sc.step(f"5/{n}", "The floor machines are rigged in on pallet jacks and machine skates (the Aconity MIDI is "
-            "1450 kg, the 100 kN Instron 799 kg), fronts to the aisle: the glovebox (its antechamber to the aisle), "
+    sc.step(f"5/{n}", "The floor machines, rigged in on pallet jacks and machine skates (the Aconity MIDI is "
+            "1450 kg, the 100 kN Instron 799 kg), are set down fronts to the aisle: the glovebox (its antechamber to the aisle), "
             "the rePowder, the sieving cell, the Aconity MIDI, the packaging station; across the aisle the two "
             "Instrons, the ducted fume hood, the DED and the wire EDM.", 5.8,
             stagger(fs_main, overlap=0.36), hold=1.2, cam_to=CAM_FLOOR,
@@ -1301,7 +1308,9 @@ def movie(data, idata):
     sc.step(f"6/{n}", "The Robotiq 2F-85 goes on the flange.", 1.4, gripper_on, hold=0.2)
     rb.set()
     others = [nm for uu in units if uu is not u0 for nm in uu.all_names()]
-    q_ready = np.radians((-90.0, -100.0, 110.0, -100.0, -90.0, 0.0))
+    # round 13: it stretches straight up; round 12's stretch reached sideways, its wrist camera 12 mm into the second
+    # unit's upper arm, 1.2 m away at the other charger
+    q_ready = np.radians((-90.0, -90.0, 0.0, -90.0, -90.0, 180.0))
 
     def wake(u):
         for nm in others:
@@ -1347,7 +1356,11 @@ def movie(data, idata):
             L.apply_state()
         if lst:
             fs, lbls = [], []
-            for key, g, names, nm in lst:
+            # round 13: back to front. Everything comes in from the lift table's deck at the opening, so an item put
+            # down before one that goes behind it was crossed by it: round 12's audit had the VHX, the CNC, the reflow
+            # oven and the Mastersizer sliding through their trays' UPSs, and camera posts through their instruments.
+            # Farthest first, each later item stops short of what is already down.
+            for key, g, names, nm in sorted(lst, key=lambda it: -ynear_of.get((k, it[1]), 0.0)):
                 tr = V.Y_OPEN + yc_of.get((k, g), 0.0) - LIFT_START_Y     # from the lift table's deck
                 fs.append(rig_in(sc, g, names, travel=tr) if key != "rack" and not g.startswith("eq_") else
                           A.item_in(L, g, travel=tr))

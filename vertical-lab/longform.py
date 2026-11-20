@@ -43,6 +43,7 @@ FPS = int(os.environ.get("LONGFORM_FPS", "30"))
 K = SIZE[1] / 720              # the pixel sizes below were chosen at 1280 x 720
 HD = OUT / "hd"                # round 12's 1080p renders; a clip not there falls back to out/mp4/ (720p, scaled up)
 CARD_S = 6.0
+AUDIT_TAG = os.environ.get("LONGFORM_AUDIT_TAG", "round13")   # out/collisions/<tag>_table.png, _summary.json
 # every part is encoded with the same settings, so the join is a stream copy
 X264 = ["-c:v", "libx264", "-preset", os.environ.get("LONGFORM_PRESET", "veryfast"), "-crf", "18", "-pix_fmt", "yuv420p",
         "-profile:v", "high", "-g", str(2 * FPS), "-video_track_timescale", "15360"]
@@ -245,8 +246,8 @@ CHAPTERS = [
                  "Arm collisions, checked and planned round"),
                 ("still", "collisions/round11_sheet.png", 12.0, "Round 11's stricter check, clip by clip: frames in "
                  "collision under the old rules and the new, before and after the fixes", "The stricter check, round 11"),
-                ("still", "collisions/round12_table.png", 14.0, "This video's own check: every clip checked frame by "
-                 "frame as it was rendered, at the rate it is shown", "This video, checked frame by frame")]),
+                ("still", f"collisions/{AUDIT_TAG}_table.png", 14.0, "This video's own check: every clip checked "
+                 "frame by frame as it was rendered, at the rate it is drawn", "This video, checked frame by frame")]),
     # Round 10: Sterling (2026-11-07), "maintenance over long-term and how that gets handled in workflows".
     dict(key="upkeep", title="Maintenance over the long term, inside the workflow",
          card=["Maintenance is booked into the same schedule as the work: calendar service, consumables by use, "
@@ -652,7 +653,7 @@ def audit_rows() -> list[dict]:
     round's 1080p render or an earlier render reused."""
     # this round's audits: the reports that differ from the last commit before this round's renders (ROUND12_BASE),
     # or didn't exist then (file times can't tell: merges and checkouts touch them)
-    base = os.environ.get("ROUND12_BASE", "95f6e5c")
+    base = os.environ.get("ROUND_BASE", os.environ.get("ROUND12_BASE", "8bc05dd"))   # round 13 started on 8bc05dd
     st = subprocess.run(["git", "diff", "--name-only", base, "--", "out/collisions"], capture_output=True, text=True,
                         cwd=HERE).stdout.split()
     st += subprocess.run(["git", "ls-files", "--others", "--exclude-standard", "out/collisions"], capture_output=True,
@@ -678,7 +679,9 @@ def audit_rows() -> list[dict]:
         a = OUT / "collisions" / f"{rel}.json"
         rep = json.loads(a.read_text()) if a.exists() else None
         fresh = a.exists() and str(rel) + ".json" in changed
+        cm = clip_meta(str(r["src"])) or {}
         rows.append(dict(clip=name, chapter=r["chapter"], hd=not r.get("upscaled"), seconds=round(r["seconds"], 1),
+                         drawn_fps=cm.get("fps"),
                          audit_this_round=fresh, fps=(rep or {}).get("fps"),
                          frames_checked=(rep or {}).get("frames_checked"),
                          arm_frames=(rep or {}).get("frames_with_collisions"),
@@ -701,11 +704,11 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (README, 
 
 
 def audit_table(path: Path):
-    """audit_rows() as one table, 1920 wide (scrolled if tall), and out/collisions/round12_summary.json."""
+    """audit_rows() as one table, 1920 wide (scrolled if tall), and out/collisions/<AUDIT_TAG>_summary.json."""
     rows = audit_rows()
     for r in rows:
         r["note"] = AUDIT_NOTES.get(r["clip"], "")
-    (OUT / "collisions" / "round12_summary.json").write_text(json.dumps(rows, indent=1) + "\n")
+    (OUT / "collisions" / f"{AUDIT_TAG}_summary.json").write_text(json.dumps(rows, indent=1) + "\n")
     W, row_h = 1920, 36
     H = 150 + row_h * len(rows) + 70
     im = Image.new("RGB", (W, H), (246, 247, 249))
@@ -726,7 +729,8 @@ def audit_table(path: Path):
         if i % 2 == 0:
             d.rectangle((30, yy - 3, W - 30, yy + row_h - 3), fill=(235, 238, 244))
         d.text((40, yy), r["clip"], font=fb, fill=INK)
-        d.text((440, yy), "1080p, this round" if r["hd"] else "720p, earlier, scaled up", font=fb,
+        fps = f", {r['drawn_fps']} fps" if r.get("drawn_fps") else ""
+        d.text((440, yy), f"1080p{fps}" if r["hd"] else f"720p{fps}, scaled up", font=fb,
                fill=INK if r["hd"] else (170, 60, 30))
         fc = r["frames_checked"]
         d.text((760, yy), "-" if fc is None else f"{fc}" + ("" if r["audit_this_round"] else " (earlier)"), font=fb,
@@ -934,7 +938,8 @@ def sheet(record, dst: Path, tmp: Path):
 
 
 # ===================================================================================================== YouTube
-TITLE = "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)"
+TITLE = os.environ.get("LONGFORM_TITLE",
+                       "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)")
 PRIVACY = os.environ.get("LONGFORM_PRIVACY", "public")     # Sterling, 2026-11-20: "upload that to YouTube as public"
 
 
@@ -955,6 +960,11 @@ def description(meta: dict, commit: str) -> str:
     if up:
         head += (f"{len(up)} of the clips are earlier 720p renders from the same code, scaled up; the rest were "
                  "rendered at 1920 x 1080 for this video.\n\n")
+    rates = sorted({int(m["fps"]) for p in meta["parts"] if p["kind"] == "mp4" and "/dag/" not in str(p["src"])
+                    for m in [clip_meta(str(p["src"])) or {}] if m.get("fps")})
+    if rates:
+        head += (f"The 3-D is drawn at {rates[0]}" + (f"-{rates[-1]}" if rates[-1] != rates[0] else "") +
+                 " frames a second and encoded at 30.\n\n")
     chap = "Chapters\n" + "".join(f"{c['stamp']} {c['title']}\n" for c in meta["youtube_chapters"])
     tail = ("\nThe real VLM at the start: Sterling Baird, \"Vertical Lift Module in operation - from the sample's "
             "perspective\", https://www.youtube.com/watch?v=ck8QJhVqPiY . The atomizer footage in chapter 2 is the "
@@ -1051,7 +1061,7 @@ if __name__ == "__main__":
     elif args and args[0] == "upload":
         upload(json.loads((OUT / "longform.json").read_text()))
     elif args and args[0] == "audit":                 # the audit table for the checks chapter
-        for r in audit_table(OUT / "collisions" / "round12_table.png"):
+        for r in audit_table(OUT / "collisions" / f"{AUDIT_TAG}_table.png"):
             print(r)
     elif args and args[0] == "tts":                   # speak the narration into the cache ahead of the build
         print(len(tts(json.loads(NARRATION.read_text()))), "lines in", TTS_DIR)

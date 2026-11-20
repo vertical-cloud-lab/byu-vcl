@@ -126,9 +126,18 @@ if os.environ.get("VIZ3D_QUICK_EXIT", "1") != "0":
     atexit.register(_quick_exit)
 
 
+_FONTS: dict = {}
+_WRAP: dict = {}
+
+
 def font(size, bold=False, mono=False):
-    name = "DejaVuSansMono.ttf" if mono else ("DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf")
-    return ImageFont.truetype(str(FONT_DIR / name), int(round(size)))
+    """A DejaVu face, loaded once per (size, style): the overlay asks for its fonts on every frame."""
+    key = (int(round(size)), bool(bold), bool(mono))
+    f = _FONTS.get(key)
+    if f is None:
+        name = "DejaVuSansMono.ttf" if mono else ("DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf")
+        f = _FONTS[key] = ImageFont.truetype(str(FONT_DIR / name), key[0])
+    return f
 
 
 def size_scale(size) -> float:
@@ -447,18 +456,22 @@ class Scene:
         if self.caption:
             fc = font(18 * s)
             maxw = W - 60 * s
-            paras = [p.strip() for p in self.caption.split("|")]
-            lines = []
-            for p in paras:
-                words, cur = p.split(), ""
-                for w_ in words:
-                    t = (cur + " " + w_).strip()
-                    if d.textlength(t, font=fc) > maxw and cur:
-                        lines.append(cur)
-                        cur = w_
-                    else:
-                        cur = t
-                lines.append(cur)
+            memo = _WRAP.get((self.caption, W, s))       # round 13: wrapped once per caption, not on every frame
+            if memo is None:
+                paras = [p.strip() for p in self.caption.split("|")]
+                lines = []
+                for p in paras:
+                    words, cur = p.split(), ""
+                    for w_ in words:
+                        t = (cur + " " + w_).strip()
+                        if d.textlength(t, font=fc) > maxw and cur:
+                            lines.append(cur)
+                            cur = w_
+                        else:
+                            cur = t
+                    lines.append(cur)
+                memo = _WRAP[(self.caption, W, s)] = lines
+            lines = memo
             lh = 24 * s
             h = len(lines) * lh + 2 * pad
             d.rectangle((0, H - h - 8 * s, W, H), fill=(255, 255, 255, 232))
