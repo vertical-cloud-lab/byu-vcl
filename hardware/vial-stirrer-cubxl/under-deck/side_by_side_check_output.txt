@@ -1,0 +1,52 @@
+collar  valid True, 1 solid,   5308.1 mm3, x -18.50..18.50, y -22.00..22.00, z -3.00..17.08
+frame   valid True, 1 solid,   7582.3 mm3, x -24.50..24.50, y -22.00..22.00, z -13.34..-4.00
+stirrer frame -> deck frame: z + -32.83; the compact base hangs to z -32.83, 23.83 mm under the deck's underside
+magnet faces z -10.185; deck underside z -9.0; vial's outside bottom z 0: gap 10.185 mm
+
+Screws and inserts
+  ok  fan screw M3 x 16: thread in the base's insert (mm)                              4.37   (need >= 3.00)
+  ok  fan screw M3 x 16: tip above the insert hole's floor (mm)                        3.13   (need >= 0.30)
+  ok  fan screw: plastic under its head, pad included (mm)                             1.13   (need >= 1.00)
+  ok  fan screw head below the deck's underside (mm)                                   0.20   (need >= 0.10)
+  ok  clamp screw M3 x 12: thread in the insert (mm)                                   5.00   (need >= 4.00)
+  ok  clamp screw M3 x 12: tip above the insert hole's floor (mm)                      1.50   (need >= 0.30)
+  ok  collar key to frame boss, in the slot (mm)                                       1.00   (need >= 0.50)
+  ok  clamp insert: wall to the boss's sides (mm)                                      2.60   (need >= 1.20)
+  ok  clamp insert: wall to the boss's round end (mm)                                  1.60   (need >= 1.20)
+  ok  clamp insert: wall to the boss's flat end (mm)                                   3.70   (need >= 1.20)
+  note: a fan screw's shank (x 14.5 to 17.5) reaches its slot's edge (x 17.5), so it can't come up through the slot as the clamp
+
+Side by side: the smallest gap from each part of one module to any part of a neighbour (mm)
+  neighbours at the grid's closest pitch, 50 mm in X and 45 mm in Y
+
+  X, +50               1.00   (frame to the neighbour's frame)
+  Y, +45               1.00   (collar to the neighbour's collar)
+  diagonal, +50 +45    5.56   (frame to the neighbour's frame)
+  diagonal, +50 -45    5.56   (frame to the neighbour's frame)
+
+Each part against the deck (slots included): overlap must be 0
+  collar         overlap    0.000 mm3, gap  0.00 mm
+  frame          overlap    0.000 mm3, gap  0.00 mm
+  base           overlap    0.000 mm3, gap  4.83 mm
+  fan            overlap    0.000 mm3, gap  4.33 mm
+  vial           overlap    0.000 mm3, gap  0.00 mm
+  clamp screws   overlap    0.000 mm3, gap  3.50 mm
+  fan screws     overlap    0.000 mm3, gap  0.20 mm
+
+Footprint of each part, x and y (the cell is 49 x 44, centred on the vial)
+  collar  x  -18.50 ..  18.50   y  -22.00 ..  22.00
+  frame   x  -24.50 ..  24.50   y  -22.00 ..  22.00
+  base    x  -24.50 ..  24.50   y  -22.00 ..  22.00
+
+The head: the pipette is 55 mm +X, 11 mm +Y of the capper (gantry file). While the capper
+works vial V the pipette hangs over V + (55, 11), tip end about 21 mm above the deck; while the
+pipette works deep in V the capper hangs over V - (55, 11), about at V's rim. Plan distance from
+there to each neighbour's axis (cup radius 16.7, vial 13.75, cap 12.6; all are taller than 21 mm):
+  neighbour at X, 50 (two columns)      12.1 mm   (  -4.6 from the cup's edge)
+  neighbour at X, 75 (three columns)    22.8 mm   (  +6.1 from the cup's edge)
+  neighbour at X, 100                   46.3 mm   ( +29.6 from the cup's edge)
+  neighbour at Y, 45 (one row)          64.7 mm   ( +48.0 from the cup's edge)
+  neighbour at diagonal 50, 45          34.4 mm   ( +17.7 from the cup's edge)
+  neighbour at diagonal 50, -45         56.2 mm   ( +39.5 from the cup's edge)
+
+0 check(s) failed
