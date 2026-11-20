@@ -1,0 +1,8 @@
+# Changes to these files need sgbaird's review (ruleset "main: PRs, code owners
+# for the vcl-bot path"). They decide what an approved @claude-super run, which
+# holds the vcl-bot key, actually executes. Other paths have no owner, so PRs
+# that touch only them merge without review.
+/.github/CODEOWNERS                          @sgbaird
+/.github/workflows/                          @sgbaird
+/.github/scripts/dispatch_claude.py          @sgbaird
+/.github/scripts/post_queue.py               @sgbaird
