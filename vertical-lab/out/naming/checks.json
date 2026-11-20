@@ -1,0 +1,143 @@
+{
+ "hard": {
+  "unique": [],
+  "rfc1123": [],
+  "windows_15": [],
+  "length": [],
+  "in_repo_strings": [],
+  "suffix_list": [],
+  "stream_substring": [],
+  "brand": [],
+  "sounds_like_a_person": []
+ },
+ "soft": {
+  "close_pairs": [
+   {
+    "a": "tafel",
+    "b": "maiman",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "teɪfəl",
+     "meɪmən"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "tafel",
+    "b": "kibble",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "teɪfəl",
+     "kɪbəl"
+    ],
+    "both_in_use": false
+   },
+   {
+    "a": "bridgman",
+    "b": "maiman",
+    "spelled": 4,
+    "sounds": 0.5,
+    "ipa": [
+     "bɹɪdʒmən",
+     "meɪmən"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "sneddon",
+    "b": "sandland",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "snɛdən",
+     "sændlənd"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "beilby",
+    "b": "davy",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "beɪlbi",
+     "deɪvi"
+    ],
+    "both_in_use": true
+   },
+   {
+    "a": "baekeland",
+    "b": "sandland",
+    "spelled": 4,
+    "sounds": 0.5,
+    "ipa": [
+     "bikɛlənd",
+     "sændlənd"
+    ],
+    "both_in_use": true
+   }
+  ],
+  "everyday_words": {
+   "gibbs": 3.65,
+   "aston": 3.66
+  },
+  "sounds_like_lab_word": {},
+  "lab_word_itself": {}
+ },
+ "ipa": {
+  "timp": "tɪmp",
+  "nebo": "niboʊ",
+  "elsie": "ɛlsi",
+  "freddy": "fɹɛdi",
+  "ruska": "ɹʌskə",
+  "lonsdale": "lɑnsdeɪl",
+  "pasteur": "pæstʊɹ",
+  "tafel": "teɪfəl",
+  "lavoisier": "lɐvɔɪziɚ",
+  "bridgman": "bɹɪdʒmən",
+  "tabor": "tæbɚ",
+  "sneddon": "snɛdən",
+  "tyndall": "tɪndɔl",
+  "gutenberg": "ɡjutənbɜɡ",
+  "aldus": "ɔldəs",
+  "beilby": "beɪlbi",
+  "wilm": "wɪlm",
+  "baekeland": "bikɛlənd",
+  "schlenk": "ʃlɛŋk",
+  "sorby": "sɔɹbi",
+  "petch": "pɛtʃ",
+  "sandland": "sændlənd",
+  "noddack": "nɑdæk",
+  "maudslay": "mɔdsleɪ",
+  "eisler": "aɪslɚ",
+  "senefelder": "sɛnɪfɛldɚ",
+  "maiman": "meɪmən",
+  "faraday": "fæɹɐdeɪ",
+  "agricola": "æɡɹɪkoʊlə",
+  "deckard": "dɛkɚd",
+  "ramsay": "ɹæmseɪ",
+  "mclean": "məklin",
+  "kirkaldy": "kɜkældi",
+  "galileo": "ɡælᵻleɪoʊ",
+  "davy": "deɪvi",
+  "gibbs": "ɡɪbz",
+  "lazarenko": "læzɐɹɛŋkoʊ",
+  "javan": "dʒɑvæn",
+  "brunel": "bɹʌnəl",
+  "aston": "ɐstɑn",
+  "blodgett": "blɑdʒɪt",
+  "unimate": "ʌnɪmeɪt",
+  "genghis": "dʒɛŋɡɪs",
+  "cascade": "kɐskeɪd",
+  "lonepeak": "loʊnpik",
+  "moseley": "moʊsli",
+  "bragg": "bɹæɡ",
+  "pourbaix": "pɔɹbeɪks",
+  "kibble": "kɪbəl",
+  "bodoni": "bədoʊni",
+  "schawlow": "ʃɔloʊ"
+ },
+ "ok": true
+}
