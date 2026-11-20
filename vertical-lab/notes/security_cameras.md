@@ -16,7 +16,7 @@ unchanged. [`security_cams.py`](../security_cams.py) does the geometry, the powe
 
 | Where | Recommended | Why | Each |
 |---|---|---|---|
-| **The trays' 24 camera posts** | **Hanwha QNE-8011R** turret (5 MP, 2.8 mm, 105 x 77°, IR) on a printed plate on the post; or the **Reolink RLC-520A** where federal money isn't involved | covers what the Camera Module 3 Wide did, sees in a dark slot, fits every tray's slot (top 705-706 mm against today's 706), af Class 3 | $389 / $60 |
+| **The trays' 24 camera posts** | **Hanwha QNE-8011R** turret (5 MP, 2.8 mm, 105 x 77°, IR) on a printed plate on the post; or the **Reolink RLC-520A** where federal money isn't involved | covers what the Camera Module 3 Wide did, sees in a dark slot (IR), af Class 3; set 1 mm under today's heads it fits every tray's slot | $389 / $60 |
 | **Bay, middle back, pair** | **Axis M3086-V** mini dome (130 x 93°) beside an **Axis M5075-G** PTZ (5x, 71-14°) | both under 64 mm tall, so they fit the 95.5 mm a roof leaves over the goods; they face the arm's work, the D405 sees it from the arm's side | $463 + $650 |
 | **Bay, middle front** | **Axis M3086-V**, in the strip under the header, looking back | sees the whole tray and none of the room | $463 |
 | **Bay, middle, straight down** | **Axis M3086-V** | the whole tray floor, square: inventory and layout checks | $463 |
@@ -35,8 +35,12 @@ unchanged. [`security_cams.py`](../security_cams.py) does the geometry, the powe
 - **What's lost:** the HQ Camera's detail on the trays. At the median tray distance (633 mm) a 5 MP turret resolves
   0.64 mm per pixel against the Wide's 0.34 and the HQ's 0.06. The bay's PTZ gets 0.12-0.17 mm per pixel on the
   workflow's seats when a tray is presented; a varifocal or a box camera can bring it back on a few posts.
+- **The bay's roof decides the bay set.** With a roof at the opening's top (1829 mm, assumed), a camera over the tray
+  may hang 95.5 mm; the four chosen hang 56-63 mm. A taller one (most PTZs) fits only in the strip under the header,
+  where the arm's elbow passes. Kardex has to say where the roof is.
 - **Federal money:** Hikvision and Dahua, and the brands they make for (Amcrest, aurora's), can't be bought on grant
-  funds (2 CFR 200.216), and the FCC barred their further import in June 2026. Amcrest's turret is out of stock.
+  funds (2 CFR 200.216). Amcrest says it can no longer import Dahua-made cameras (an FCC order of June 2026, DA 26-635,
+  bars further imports of covered equipment for public-safety and government uses), and its turret is out of stock.
 - **Temperature and humidity:** none of these cameras has an ambient sensor. The AirGradient per tray stays.
 
 ## What aurora's rig already showed (borysgroup/aurora-cloud-infra PR 35)
@@ -133,9 +137,9 @@ its datasheet, is in `security_cams.CANDIDATES` and `out/security_cameras.json`.
   camera hung from a roof there, anywhere over the tray, has 95.5 mm before the tallest goods would reach it. The
   HQ/Wide bay unit sits higher only because the model draws the bay open up to tray F1 (1950 mm).
 - **The front strip is free of goods.** A tray slides in from the shaft and stops with its front edge at
-  y = -1462 mm. So the 110 mm strip from there to the front of the LED light (y = -1572 mm) is never swept by
-  anything on a tray. A taller camera can hang there, limited only by the arm and the operator: that is where a PTZ
-  goes.
+  y = -1462 mm. So the 120 mm strip from there to the header's face (y = -1582 mm) is never swept by anything on a
+  tray. A taller camera can hang there, limited only by the arm and by a person leaning in under the header (at
+  1.65-1.83 m it is at head height: keep it off the side people load from).
 - **The sides are no use.** The bay's walls stand 25 mm outside the tray, and the shutter's path takes the back.
 - **The UR10e** (`services.bay_arm_clearance`'s 320 poses: the workflow's seats and the presented tray on a 100 mm
   grid, gripper down at 100 and 250 mm; the arm as 75 mm capsules from the shoulder to the TCP). Reaching the tray's
@@ -152,7 +156,8 @@ its datasheet, is in `security_cams.CANDIDATES` and `out/security_cameras.json`.
   | Ø130 x 63 mm (a mini PTZ), roof, middle back, x = +120 mm | 1766 mm | 313 mm |
   | Ø100 x 90 mm, roof, over the tray's centre | 1739 mm | 242 mm |
 
-  So the middle front camera stands 300 mm right of the middle, and nothing tall goes in the strip's middle.
+  So the middle front camera stands 300 mm right of the middle, and nothing tall goes in the strip's middle. The PTZ
+  chosen is short enough for the roof, where the arm is 313 mm away.
 
 ### The set: four per Shuttle
 
@@ -181,15 +186,17 @@ its datasheet, is in `security_cams.CANDIDATES` and `out/security_cameras.json`.
 - **Each Shuttle's set is four cameras on four PoE ports** (3 x Class 2 and 1 x Class 3, 36 W reserved by class, 22 W
   at most drawn) plus its Pi 5.
 
+![The bay's set under an assumed roof (see-through), and tray A's two turrets where the HQ/Wide heads were](../out/security_cameras_3d_still.png)
+
 ### The PTZ at full zoom on the workflow's seats
 
 <!-- BEGIN:PTZ_TABLE -->
-| The PTZ at full zoom on | Distance | Picture across | mm/px | In focus (closer than ? mm is not) |
+| The PTZ at full zoom on | Distance | Picture across | mm/px | In focus at full zoom? |
 |---|---|---|---|---|
-| vial rack (tray B) | 1191 mm | 292 mm | 0.15 | - |
-| doser shuttle fork (tray B) | 895 mm | 220 mm | 0.12 | - |
-| CubXL holder seat (tray A) | 1098 mm | 270 mm | 0.14 | - |
-| tray's back left, 150 mm up | 1367 mm | 336 mm | 0.17 | - |
+| vial rack (tray B) | 1191 mm | 292 mm | 0.15 | not published |
+| doser shuttle fork (tray B) | 895 mm | 220 mm | 0.12 | not published |
+| CubXL holder seat (tray A) | 1098 mm | 270 mm | 0.14 | not published |
+| tray's back left, 150 mm up | 1367 mm | 336 mm | 0.17 | not published |
 <!-- END:PTZ_TABLE -->
 
 At full zoom the M5075-G's 14° picture is 220-340 mm across at the seats: 0.12-0.17 mm per pixel at 1080p, close to
@@ -285,8 +292,8 @@ tray B (its A&D HR-202i balance) or near the multi-doser's balance pan.
 
 The trays spend most of their time in their slots, unlit, and some keep working there: the printers (C, G), the
 CubXL (A), the furnace (F). The HQ/Wide units see nothing there (the Wide has an IR-cut filter and neither has a light).
-Every security camera here has infrared LEDs and switches to night mode by itself, so a tray in its slot can still be
-watched. Keep IR off in the lit bay and near anything optical (the colour sensor's NIR channel on the OT-2's tray, the
+The recommended tray turrets (Hanwha's, Reolink's) have infrared LEDs and switch to night mode by themselves, so a tray
+in its slot can still be watched; the Axis mini dome of tier B has none, which is why it isn't the first choice there. Keep IR off in the lit bay and near anything optical (the colour sensor's NIR channel on the OT-2's tray, the
 OpenFlexures on D): ONVIF's imaging service, or the camera's own day/night schedule, holds it off.
 
 ### Temperature and humidity
@@ -317,7 +324,7 @@ measured draw.
 **What the recommended cameras draw** (makers' datasheets): Axis M3086-V Class 2, 4.2 W at most (3.6 typical); Hanwha
 QNE-8011R Class 3, 7.4 W (5.5); Axis M5075-G Class 3, 9.5 W (4.4); Reolink publishes only "< 12 W" on 12 V. Every
 candidate but three runs on 802.3af: the Axis F-series main unit and the Mobotix S74 want 802.3at (25 W), and the Sony
-SRG-A12 wants 802.3bt Class 8 (71.3 W). None needs more than a PoE+ port on the tray's switch.
+SRG-A12 wants 802.3bt Class 8 (71.3 W). None of the recommended ones needs more than an 802.3af port.
 
 ### The Pi 5 doesn't power them
 
@@ -335,7 +342,8 @@ switch, which `ups.py` already puts on every powered tray's UPS-backed branch (a
 - **no PoE crosses the dock**, and nothing new does: the cameras need only the 120 V branch and the one data line;
 - **the cameras ride through a transit** (6-8 s off the dock) and a stranded tray (the UPS's 10 minutes and more),
   as the HQ/Wide units do; only the uplink drops, so the YouTube stream stalls for the transit and the relay picks it
-  up again. A camera's own microSD card (edge recording, ONVIF Profile G) keeps the footage across the gap;
+  up again. A camera's own microSD card (edge recording, ONVIF Profile G), where it takes one, keeps the footage across
+  the gap;
 - **the tray's switch must be managed**, with a camera VLAN that has no gateway (aurora's isolation), since the
   same switch carries the tray's instruments and PCs to the lab network.
 
@@ -343,12 +351,12 @@ switch, which `ups.py` already puts on every powered tray's UPS-backed branch (a
 | Tray | Cameras | UPS | Backed, rated W | Backed, typical W | Change | Runtime, min | PoE from the switch | Still fits |
 |---|---|---|---|---|---|---|---|---|
 | A | 2 | GXT5LI-1500LVRT2UXL | 641 -> 614 | 221 -> 230 | +10 | 27 -> 26 | 15 W, 2 ports | yes |
-| B | 1 | PSI5-800SRT2ULIN | 493 -> 493 | 48 -> 55 | +7 | 120 -> 104 | 7 W, 1 ports | yes |
+| B | 1 | PSI5-800SRT2ULIN | 493 -> 493 | 48 -> 55 | +7 | 120 -> 104 | 7 W, 1 port | yes |
 | C | 2 | PSI5-800SRT2ULIN | 114 -> 87 | 16 -> 26 | +10 | 360 -> 226 | 15 W, 2 ports | yes |
 | D | 3 | GXT5LI-3000LVRT2UXL | 2541 -> 2487 | 540 -> 552 | +12 | 22 -> 22 | 22 W, 3 ports | yes |
 | E | 3 | GXT5LI-1500LVRT2UXL | 991 -> 937 | 325 -> 337 | +12 | 19 -> 18 | 22 W, 3 ports | yes |
 | F | 2 | PSI5-800SRT2ULIN | 114 -> 87 | 16 -> 26 | +10 | 360 -> 226 | 15 W, 2 ports | yes |
-| K | 1 | GXT5LI-1500LVRT2UXL | 820 -> 820 | 214 -> 221 | +7 | 28 -> 27 | 7 W, 1 ports | yes |
+| K | 1 | GXT5LI-1500LVRT2UXL | 820 -> 820 | 214 -> 221 | +7 | 28 -> 27 | 7 W, 1 port | yes |
 | L | 2 | GXT5LI-1500LVRT2UXL | 1004 -> 977 | 176 -> 186 | +10 | 35 -> 33 | 15 W, 2 ports | yes |
 | M | 2 | GXT5LI-1500LVRT2UXL | 749 -> 722 | 171 -> 180 | +10 | 36 -> 34 | 15 W, 2 ports | yes |
 | H | 2 | PSI5-800SRT2ULIN | 514 -> 487 | 56 -> 66 | +10 | 103 -> 88 | 15 W, 2 ports | yes |
@@ -370,19 +378,23 @@ HAT (H), isolated, 5 V 5 A, is $21.99. A Pi 5 on its own 27 W supply is simpler 
 The bay's cameras are on the machine, not a tray. `notes/services.md` already has a PoE+ switch on the VLM's side that
 feeds the service risers and the bay camera; the bay's set and its Pi 5 go on that switch.
 
-Four cameras need four PoE ports and 22 W at most; a Ubiquiti USW-Lite-8-PoE ($109, 52 W) per bay does it, on the
-same circuit as the VLM's own controls, and is in the totals.
+Four cameras need four PoE ports and 22 W at most; a Ubiquiti USW-Lite-8-PoE ($109, 52 W) per bay does it, and is in
+the totals.
 
 ## Streaming and control on the Pi 5
 
 - **One Pi 5 per powered tray and one per bay**, each relaying its cameras with `ffmpeg -c:v copy` as aurora does
   (`amcrest_relay.py`'s pattern: probe the camera, ask the picam Lambda for a broadcast, copy, restart on stall, end the
   broadcast before YouTube's 12 h archive limit).
-- **H.264 on the main stream.** The Pi 5 has a hardware HEVC decoder and no H.264 encoder or decoder, so anything that
-  isn't a straight copy costs CPU (aurora: 0.54 cores to re-encode 720p20). Set each camera's main stream to H.264,
+- **H.264 on the main stream.** The Pi 5 has a hardware HEVC decoder and no H.264 encoder or decoder (Raspberry Pi's
+  [white paper RP-010033](https://pip-assets.raspberrypi.com/categories/685-app-notes-guides-whitepapers/documents/RP-010033-WP-1-H.264%20encoding%20performance%20on%20Raspberry%20Pi%205_series%20computers.pdf)),
+  so anything that isn't a straight copy costs CPU (aurora: 0.54 cores to re-encode 720p20). YouTube takes H.264,
+  H.265 and AV1 over RTMP(S) ([its encoder settings](https://support.google.com/youtube/answer/2853702)), but H.265
+  over RTMP needs an "enhanced RTMP" client. Set each camera's main stream to H.264,
   CBR, a 2 s GOP, at the resolution YouTube is to get; keep H.265 for local recording if wanted.
-- **Masks in the camera.** Every candidate below has privacy masks applied before its encoder, so the cameras that
-  see the room (the bay's middle back unit; a few tray units) need no blur on the Pi.
+- **Masks in the camera.** A privacy mask drawn in the camera is applied before it encodes, so the cameras that see
+  the room (the bay's middle back and top-down ones; a few tray units) need no blur on the Pi. Axis's datasheets list
+  polygon privacy masks; check each other model's before relying on it.
 - **The PTZ's control is ONVIF.** A small service on the bay's Pi (python-onvif-zeep, or the camera's own HTTP API)
   moves it to a preset per workflow seat when the arm is about to work there; the workflow already knows the seat
   (`reach.seats`). Presets avoid closed-loop tracking; a wrist camera (the D405) gives the arm's own view anyway.
@@ -426,15 +438,16 @@ same circuit as the VLM's own controls, and is in the totals.
 **Kardex** (to add to PR #331's questions for the dealer):
 1. Is there a roof over the access opening, and at what height? This note assumes 1829 mm, the 996 mm opening's top.
    May cameras be fixed to it and to the header's underside (M6 rivnuts or a strip), and can the LED light under the
-   header be split for the front pair? Where may a camera's Cat 6 run to the side cavity?
+   header be split for the middle front camera? Where may a camera's Cat 6 run to the side cavity?
 2. The largest product height through the 996 mm opening. 856.5 mm is our estimate; the band is 95.5 mm only if it
    holds.
-3. Is anything in the front strip under the header (a light curtain, a height check, a sensor), which would decide
-   between the strip and the roof for the PTZ?
+3. Is anything in the front strip under the header (a light curtain, a height check, a sensor) where the middle front
+   camera would hang?
 
 **The camera makers** (for each model on the shortlist):
-1. The minimum focus distance at the long end of the zoom. The bay's PTZ works at 0.79-1.14 m from the workflow's
-   seats, and most PTZ makers publish none.
+1. The minimum focus distance at the long end of the zoom. The bay's PTZ works 0.9-1.4 m from the workflow's seats,
+   and Axis publishes none for the M5075-G. For the fixed ones: how close is sharp (the tray cameras aim at points
+   0.34-1.16 m away)?
 2. The PoE class and the maximum draw with IR on and IR off; whether IR can be held off for good.
 3. ONVIF PTZ: absolute moves and presets, how repeatable a preset is, and how fast.
 4. Does it run with no cloud account or app ever, with P2P and UPnP off, and take firmware from a file?
@@ -466,3 +479,14 @@ draw a third of it.
   efficiency.
 - **The roof is assumed.** If Kardex's roof is higher than 1829 mm, the band grows (up to 216.5 mm under tray F1's
   1950 mm in today's tray plan, less the roof's own depth) and a PTZ could hang over the tray too.
+
+## Reproduce
+
+```bash
+cd vertical-lab
+python3 security_cams.py arm notes     # out/security_cameras.json, both figures, the UR10e check, this note's tables
+python3 runner_guard.py slot --mem 5000 -- xvfb-run -a python3 security_cams.py still   # the 3-D still, a few minutes
+```
+
+The candidates, prices and their sources are `CANDIDATES` and `GEAR` in `security_cams.py`; the tiers are `TIERS`.
+Change a price or a choice there and rerun: the tables above between `BEGIN`/`END` markers are regenerated.

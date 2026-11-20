@@ -4,6 +4,9 @@ would go, what it sees in the bay, whether it fits, what it draws and what it co
     python3 security_cams.py           # out/security_cameras.json and the two figures below (matplotlib, a few seconds)
     python3 security_cams.py arm       # the same, plus the UR10e's clearance to every bay spot (reach.py's 320 poses,
                                        # about 30 s per spot; services.bay_arm_clearance's method, our points)
+    python3 security_cams.py notes     # also refill the generated tables in notes/security_cameras.md
+    python3 runner_guard.py slot --mem 5000 -- xvfb-run -a python3 security_cams.py still
+                                       # also out/security_cameras_3d_still.png: one 3-D still (a few minutes)
 
 Figures: out/security_cameras_bay.png (the bay in section and what each bay camera sees of the presented tray) and
 out/security_cameras_fit.png (each candidate to scale against the bay's roof band and the trays' slot headroom).
@@ -1054,8 +1057,8 @@ def still(choice: dict, cands: dict, res: dict, tray_cam: str, k: str = "A") -> 
             by = _turret_meshes(top, (0, 0, -1), cam["dia_mm"], cam["hang_mm"], f)
         _add_mesh_group(sc, f"secbay_{spot}", by)
         lbl.append((f"{r['label']}: {cam['short']}", tuple(top - (0, 0, cam["hang_mm"])),
-                    {"back_wide": (0.16, 0.05), "back_ptz": (0.52, 0.05), "front": (0.86, 0.16),
-                     "top": (0.16, 0.16)}[spot]))
+                    {"back_wide": (0.03, 0.10), "back_ptz": (0.97, 0.05), "front": (0.97, 0.16),
+                     "top": (0.16, 0.20)}[spot]))
     # tray k's posts, each with a turret where the head's tilt axis was, looking at the head's aim point
     c = cands[tray_cam]
     mast = S.meshes_of(f"mast{S.POST_H}True", lambda: S.mast_parts(S.POST_H, True), 0.5)
@@ -1178,19 +1181,6 @@ def run(arm: bool = False) -> dict:
     return out
 
 
-if __name__ == "__main__":
-    words = sys.argv[1:]
-    res = run(arm="arm" in words)
-    if "still" in words:
-        print(still(CHOICE, CANDIDATES, res["bay"], STILL_TRAY_CAM, "A"))
-    for spot, r in res["bay"].items():
-        print(spot, r["camera"], f"cover {r['floor_coverage']:.2f} / {r['coverage_300mm_up']:.2f}",
-              f"room {r['room_share']:.2f}", f"low {r['lowest_point_mm']}", f"band {r['band_margin_mm']}",
-              r.get("arm", {}).get("smallest_gap_mm"))
-    for name, c in res["cost"].items():
-        print(name, c.get("total"), c.get("per_tray_point", c.get("per_point")))
-
-
 # ===================================================================================================== the note's tables
 def _md(rows, head) -> str:
     out = ["| " + " | ".join(head) + " |", "|" + "|".join("---" for _ in head) + "|"]
@@ -1236,10 +1226,10 @@ def tables(res: dict) -> dict:
     if ptz:
         c = C[ptz["camera"]]
         rows = [(name, f"{v['distance_mm']} mm", f"{v['picture_width_mm']} mm", f"{v['mm_per_px']:.2f}",
-                 "-" if v["focus_ok"] is None else ("yes" if v["focus_ok"] else "**no**"))
+                 "not published" if v["focus_ok"] is None else ("yes" if v["focus_ok"] else "**no**"))
                 for name, v in ptz["tele"].items()]
         t["PTZ_TABLE"] = _md(rows, ["The PTZ at full zoom on", "Distance", "Picture across", "mm/px",
-                                    f"In focus (closer than {c.get('min_focus_tele_mm') or '?'} mm is not)"])
+                                    "In focus at full zoom?"])
     rows = []
     for k, h in res["tray_headroom"].items():
         rows.append((k, h["slot"], f"{h['span_mm']:.0f}", f"{h['tallest_other']} ({h['tallest_other_mm']:.0f})",
@@ -1260,7 +1250,7 @@ def tables(res: dict) -> dict:
         rows.append((k, p["cameras"], p["ups"].replace("Liebert ", ""), f"{p['backed_rated_now_w']} -> "
                      f"{p['backed_rated_w']}", f"{p['backed_typical_now_w']} -> {p['backed_typical_w']:.0f}",
                      f"{p['typical_change_w']:+.0f}", f"{p['runtime_now_min']} -> {p['runtime_min']}",
-                     f"{p['poe_w']:.0f} W, {p['poe_ports']} ports", "yes" if p["ups_still_ok"] and p["poe_ok"]
+                     f"{p['poe_w']:.0f} W, {p['poe_ports']} port" + ("s" if p["poe_ports"] != 1 else ""), "yes" if p["ups_still_ok"] and p["poe_ok"]
                      else "**no**"))
     t["POWER_TABLE"] = _md(rows, ["Tray", "Cameras", "UPS", "Backed, rated W", "Backed, typical W", "Change",
                                   "Runtime, min", "PoE from the switch", "Still fits"])
@@ -1287,3 +1277,18 @@ def fill_notes(res: dict, path: Path = HERE / "notes" / "security_cameras.md") -
             i, j = s.index(a) + len(a), s.index(b)
             s = s[:i] + "\n" + md + "\n" + s[j:]
     path.write_text(s)
+
+
+if __name__ == "__main__":
+    words = sys.argv[1:]
+    res = run(arm="arm" in words)
+    if "notes" in words:
+        fill_notes(json.loads((OUT / "security_cameras.json").read_text()))
+    if "still" in words:
+        print(still(CHOICE, CANDIDATES, res["bay"], STILL_TRAY_CAM, "A"))
+    for spot, r in res["bay"].items():
+        print(spot, r["camera"], f"cover {r['floor_coverage']:.2f} / {r['coverage_300mm_up']:.2f}",
+              f"room {r['room_share']:.2f}", f"low {r['lowest_point_mm']}", f"band {r['band_margin_mm']}",
+              r.get("arm", {}).get("smallest_gap_mm"))
+    for name, c in res["cost"].items():
+        print(name, c.get("total"), c.get("per_tray_point", c.get("per_point")))
