@@ -35,7 +35,7 @@
   "substep": 8,
   "label": "4/7",
   "offset": 0.5,
-  "text": "Earth makes first and a monitoring pair last; power is switched only once that pair closes. The couplings are Staubli catalogue parts, the dock that drives them our design.",
+  "text": "Earth makes first and a monitoring pair last, and power is switched only once that pair closes. The couplings are catalogue parts; the dock that drives them is our own design.",
   "source": "out/vlm_coupling.json caption; notes/coupling.md (The order things connect; What is ours)"
  },
  {
@@ -49,7 +49,7 @@
   "chapter": "corrosion",
   "part": "card",
   "offset": 0.5,
-  "text": "Tray A is a corrosion station: the O T two makes up solutions and dilutions, and the Cub X L runs the alloy lab's copper corrosion screen, spot by spot.",
+  "text": "The first tray is a corrosion station: the O T two makes up solutions and dilutions, and the Cub X L runs the alloy lab's copper corrosion screen, spot by spot.",
   "source": "longform.py corrosion card; notes/ot2_corrosion.md; notes/cubxl_corrosion.md"
  },
  {
@@ -113,7 +113,7 @@
   "chapter": "alloy2",
   "part": "card",
   "offset": 0.5,
-  "text": "Both MiR two-fifty units, each a U R ten E arm on a ballasted base, go to the atomizer: one holds the lid down while the other works the latch.",
+  "text": "Both mobile robots, each a Universal Robots arm on a ballasted M I R base, go to the atomizer: one holds the lid down while the other works the latch.",
   "source": "longform.py alloy2 card; out/alloy_atomize.json caption (substeps 2, 3)"
  },
  {
@@ -201,7 +201,7 @@
   "substep": 114,
   "label": "9/9",
   "offset": 0.5,
-  "text": "Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need Amazemet's agreement, and is the first question for them.",
+  "text": "Here the arm presses the machine's own keys. A direct link to the atomizer's controls would need the maker's agreement, and is the first question for them.",
   "source": "out/atom_crucible_in.json caption; notes/atomizer_automation.md (The cell; Questions for AMAZEMET)"
  },
  {

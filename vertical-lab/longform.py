@@ -101,12 +101,12 @@ CHAPTERS = [
                  "needs them, and the slot each one takes", "What goes on which tray")]),
     dict(key="services", title="Services: UPS, automatic hookups, cabling and cameras",
          card=["Each powered tray carries a UPS sized for it: a Vertiv Liebert lithium unit of 800, 1500 or 3000 VA. In "
-               "its slot and again in the picking bay, a floating dock in the side wall mates two Staubli CombiTac "
+               "its slot and again in the picking bay, a floating dock in the side wall mates two Stäubli CombiTac "
                "frames with the tray's: mains, Ethernet, air, N2 and chilled water. In transit the dock vents the lines "
                "to 0 bar and lets go, and the tray runs on its UPS.",
                "Then the cabling, the stream camera unit, and what the camera over the bay sees."],
          parts=[("mp4", "vlm_hookups.mp4", "Storage to the bay: the hookups and the UPS"),
-                ("mp4", "vlm_coupling.mp4", "The coupling, part by part: Staubli CombiTac on a floating dock"),
+                ("mp4", "vlm_coupling.mp4", "The coupling, part by part: Stäubli CombiTac on a floating dock"),
                 ("mp4", "vlm_services.mp4", "The docks in every slot"),
                 ("still", "ups_lineup.png", 12.0, "Three real UPSs, sized tray by tray from each tray's own loads: Vertiv "
                  "Liebert PSI5-800, GXT5LI-1500 and GXT5LI-3000, lithium (notes/ups.md)", "A real UPS for each tray"),
@@ -145,13 +145,12 @@ CHAPTERS = [
                "container. Cut with the lab's own footage, each piece badged with its alloy, date and source."],
          parts=[("mp4", "dag/route_dag_ch2.mp4", None), ("mp4", "alloy_atomize.mp4", None)]),
     # Round 12: PR #353 (Sterling, 2026-11-19: automate "all aspects of the process"), merged into this branch
-    dict(key="atomizer", title="Automating the atomizer's turnaround: cameras, latch, container, vacuum, plate, crucible",
-         card=["Between runs the rePowder is taken apart, cleaned and rebuilt; today that is a person's work, step by "
-               "step from the lab's SOP. Here both arms do it, with tools the gripper holds by a handle: the furnace "
-               "latch unclamped and clamped, the powder container off, the chamber vacuumed with the explosion-proof "
-               "Nilfisk, the plate swapped at 50 N m, the crucible out, cleaned and recoated with boron nitride, and "
-               "back in with its graphite nut threaded on from below. The viewport cameras watch the melt and the stream.",
-               "Tools, fixtures and the robot's moves are our designs (PR #353's notes say which numbers are assumed)."],
+    dict(key="atomizer", title="Automating the atomizer's turnaround",
+         card=["Between runs the rePowder is taken apart, cleaned and rebuilt, by hand today, following the lab's SOP. "
+               "Here two arms do it with tools held by a handle: the latch, the powder container, the chamber vacuumed "
+               "with the explosion-proof Nilfisk, the plate swapped, the crucible cleaned and recoated with boron "
+               "nitride, and the rebuild, with the viewport cameras watching.",
+               "The tools, fixtures and moves are our designs (PR #353)."],
          parts=[("mp4", "atom_cameras.mp4", "The melt and the stream, watched"),
                 ("mp4", "atom_latch.mp4", "The furnace latch, unclamped and clamped"),
                 ("mp4", "atom_container.mp4", "The powder down and the container off"),
@@ -361,6 +360,7 @@ def card_image(over: str, title: str, lines: list[str], foot: str | None = None)
     for para in lines:
         for ln in wrap(d, para, fb, w):
             if y > SIZE[1] - int(110 * K):
+                print(f"  card {title[:40]!r}: text cut off at {ln[:40]!r}", flush=True)
                 break
             d.text((x, y), ln, font=fb, fill=INK)
             y += int(40 * K)
@@ -906,7 +906,7 @@ def description(meta: dict, commit: str) -> str:
     up = [p for p in meta["parts"] if p.get("upscaled_from_720p")]
     head = ("A design study of an automated alloy lab at BYU's Vertical Cloud Lab, in one video: two Kardex Shuttle XP "
             "500 vertical lift modules holding the instruments on powered trays, each tray with its own UPS and a "
-            "Staubli CombiTac coupling that docks in its slot and at the opening; two UR10e arms on MiR250 mobile "
+            "Stäubli CombiTac coupling that docks in its slot and at the opening; two UR10e arms on MiR250 mobile "
             "bases; the alloy route from charge cups through atomizing, sieving, printing, cutting, heat treatment and "
             "tensile tests to sample prep and characterization; the atomizer's turnaround automated; maintenance "
             "booked into the schedule; and what it would take to go from one alloy a day to ten.\n\n"

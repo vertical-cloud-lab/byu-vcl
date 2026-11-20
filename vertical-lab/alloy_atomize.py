@@ -270,6 +270,12 @@ def load_rp(sc: Scene, ghost: dict | None = None) -> dict:
     for name, m in ms.items():
         if name == "floor":
             continue
+        if name.startswith("latch_"):
+            # round 12: the model has drawn its own latch since #327/#353 (lever, loop, keeper, bolt, foot on the
+            # right face), in groups named as this chapter's own latch's (latch_lever, latch_loop), so it would be
+            # drawn twice and ride this chapter's latch frame. This chapter keeps its own (LATCH_AZ), which its arm
+            # poses were planned and audited against; the atomizer chapter (atom_latch.py) shows the model's.
+            continue
         grp = g("knob") if name == "hood_knob" else g(m["group"])    # its own group, so a grasp of it is just that
         wants = m["group"] in cut
         if wants and m.get("gone"):

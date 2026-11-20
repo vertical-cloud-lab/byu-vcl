@@ -101,6 +101,31 @@ def _wait_for_x(timeout=60.0):
 _wait_for_x()
 
 
+def _quick_exit():
+    """At interpreter exit, after every other atexit handler (registered first, so it runs last): flush and leave
+    with os._exit. A whole-lab scene's teardown frees thousands of VTK wrappers, each a walk of VTK's ghost map, and a
+    finished render sat there for minutes holding its render slot. Files are closed by then (encoders in save())."""
+    import sys
+    try:
+        sys.stdout.flush()
+        sys.stderr.flush()
+    finally:
+        os._exit(1 if _FAILED else 0)
+
+
+_FAILED: list = []
+if os.environ.get("VIZ3D_QUICK_EXIT", "1") != "0":
+    import atexit
+    import sys as _sys
+    _hook0 = _sys.excepthook
+
+    def _hook(t, v, tb):                     # an uncaught error still exits 1
+        _FAILED.append(t)
+        _hook0(t, v, tb)
+    _sys.excepthook = _hook
+    atexit.register(_quick_exit)
+
+
 def font(size, bold=False, mono=False):
     name = "DejaVuSansMono.ttf" if mono else ("DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf")
     return ImageFont.truetype(str(FONT_DIR / name), int(round(size)))
