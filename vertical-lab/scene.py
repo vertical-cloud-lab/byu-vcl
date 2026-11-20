@@ -515,10 +515,40 @@ class Scene:
                 return True
         return False
 
+    def _set_camera(self):
+        """The camera onto VTK. pyvista's camera_position setter resets the clipping range from every visible actor's
+        bounds, a tenth of a whole-lab frame's main-thread time (round 13, py-spy on chapters 5 and 7). Here the visible
+        bounds are taken every VIZ3D_CLIP_EVERY frames (8), padded by a metre for whatever moves in between, and the
+        clipping range is set from those. The first frame goes through pyvista, so its camera counts as set."""
+        every = int(os.environ.get("VIZ3D_CLIP_EVERY", "8"))
+        n = self.__dict__.get("_clip_n", 0)
+        self._clip_n = n + 1
+        if every <= 1 or n == 0:
+            self.pl.camera_position = self.cam
+            self.pl.camera.view_angle = self.view_angle
+            return
+        ren = self.pl.renderer
+        cam = ren.GetActiveCamera()
+        cam.SetPosition(*(float(v) for v in self.cam[0]))
+        cam.SetFocalPoint(*(float(v) for v in self.cam[1]))
+        cam.SetViewUp(*(float(v) for v in self.cam[2]))
+        cam.SetViewAngle(float(self.view_angle))
+        b = self.__dict__.get("_clip_b")
+        if b is None or n % every == 0:
+            vb = ren.ComputeVisiblePropBounds()
+            if vb[0] > vb[1]:                         # nothing visible
+                b = None
+            else:
+                pad = 1000.0
+                b = self._clip_b = (vb[0] - pad, vb[1] + pad, vb[2] - pad, vb[3] + pad, vb[4] - pad, vb[5] + pad)
+        if b is not None:
+            ren.ResetCameraClippingRange(*b)
+        else:
+            ren.ResetCameraClippingRange()
+
     def render_base(self) -> np.ndarray:
         self.apply()
-        self.pl.camera_position = self.cam
-        self.pl.camera.view_angle = self.view_angle
+        self._set_camera()
         if os.environ.get("VIZ3D_PEEL", "auto") == "auto":
             need = self._needs_peeling()
             if need != self.__dict__.get("_peel_on", True):
