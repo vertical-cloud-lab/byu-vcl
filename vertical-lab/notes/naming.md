@@ -50,7 +50,7 @@ robot scientists are Adam and Eve; Springer Nature ran a piece on instrument nic
 | Class | Family | Why |
 |---|---|---|
 | Shuttles | the Wasatch peaks over Provo | the two tallest things in the lab now they are 9.15 m |
-| Mobile manipulators | robots of history | Grey Walter's Elsie found her own way back to her hutch to recharge (1949); Edinburgh's Freddy assembled models from a heap of parts by vision (1973). A MiR250 with a UR12e and a wrist camera does both |
+| Mobile manipulators | robots of history | Grey Walter's Elsie was built to steer home to her lit hutch to recharge (1949); Edinburgh's Freddy assembled models from a heap of parts by vision (1973). A MiR250 with a UR12e and a wrist camera does both |
 | Polymer printers | pioneers of printing | Gutenberg's press, Aldus's pocket books, Senefelder's lithography |
 | Metal printers | laser and powder-bed pioneers | the process is the laser and the powder bed |
 | Every other station | someone whose own work is the station's job | say the name and you have a hint of what it does |
