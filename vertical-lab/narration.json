@@ -3,7 +3,7 @@
   "chapter": "intro",
   "part": "card",
   "offset": 0.5,
-  "text": "A real vertical lift module, a V L M, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.",
+  "text": "A real vertical lift module, a VLM, filmed from the sample's point of view. The planned lab keeps its instruments on the trays of two of these.",
   "source": "README.md (The real VLM); longform.py intro card"
  },
  {
@@ -26,7 +26,7 @@
   "chapter": "services",
   "part": "card",
   "offset": 0.5,
-  "text": "Each powered tray has its own U P S. Docks in the side wall, in its slot and at the opening, bring mains, network, air, nitrogen and chilled water.",
+  "text": "Each powered tray has its own UPS. Docks in the side wall, in its slot and at the opening, bring mains, network, air, nitrogen and chilled water.",
   "source": "longform.py services card; out/vlm_hookups.json caption; notes/coupling.md"
  },
  {
@@ -49,7 +49,7 @@
   "chapter": "corrosion",
   "part": "card",
   "offset": 0.5,
-  "text": "The first tray is a corrosion station: the O T two makes up solutions and dilutions, and the Cub X L runs the alloy lab's copper corrosion screen, spot by spot.",
+  "text": "The first tray is a corrosion station: the OT-2 makes up solutions and dilutions, and the CubXL runs the alloy lab's copper corrosion screen, spot by spot.",
   "source": "longform.py corrosion card; notes/ot2_corrosion.md; notes/cubxl_corrosion.md"
  },
  {
@@ -58,8 +58,8 @@
   "substep": 8,
   "label": "9/13",
   "offset": 0.5,
-  "text": "One part sample to nine of dilute nitric acid: the tenfold dilution needed before I C P mass spectrometry, which goes out to B Y U's spectroscopy facility.",
-  "source": "out/instruments/ot2_corrosion_prep.json caption; out/instruments/fumehood.json caption; notes/ot2_corrosion.md"
+  "text": "One part sample to nine of dilute nitric acid, for ICP mass spectrometry. That step moves to an ICP-MS station on the floor, with its own fume hood, so no acid rides on a tray.",
+  "source": "out/instruments/ot2_corrosion_prep.json caption; out/instruments/fumehood.json caption; notes/ot2_corrosion.md; notes/icpms.md (round 13: the ICP-MS station)"
  },
  {
   "chapter": "corrosion",
@@ -90,8 +90,8 @@
   "chapter": "alloy1",
   "part": "dal_workflow_table.png",
   "offset": 0.5,
-  "text": "This is the alloy lab's workflow today, seventeen steps, mostly by hand, with the station each would use here and what is still missing.",
-  "source": "notes/dal_workflow.md"
+  "text": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column lists what still takes a person.",
+  "source": "longform.py DAL_STEPS (round 13: per step, automated, no station yet, or still a person's); notes/dal_workflow.md"
  },
  {
   "chapter": "alloy1",
@@ -113,7 +113,7 @@
   "chapter": "alloy2",
   "part": "card",
   "offset": 0.5,
-  "text": "Both mobile robots, each a Universal Robots arm on a ballasted M I R base, go to the atomizer: one holds the lid down while the other works the latch.",
+  "text": "Both mobile robots, each a Universal Robots arm on a ballasted MiR250, go to the atomizer and open its furnace together.",
   "source": "longform.py alloy2 card; out/alloy_atomize.json caption (substeps 2, 3)"
  },
  {
@@ -147,7 +147,7 @@
   "substep": 13,
   "label": "5/9",
   "offset": 0.5,
-  "text": "The arm no longer swings the loop over the lever, which took its forearm into the machine. It lifts the loop off the hook, lets the lever down, and lets the loop fall over it, as the training video shows.",
+  "text": "Unclamping follows the training video: the arm lifts the loop off its hook, lets the lever down, and lets the loop fall over it, keeping its forearm clear of the machine.",
   "source": "atom_latch.py (round 13); notes/atom_latch_container.md"
  },
  {
@@ -192,8 +192,8 @@
   "substep": 82,
   "label": "8/10",
   "offset": 0.5,
-  "text": "In the alloy lab's table, the boron nitride recoat stayed manual, an aerosol job. Here the arm does it in a fume hood, touching up only the scraped spots.",
-  "source": "notes/dal_workflow.md (step 3); out/atom_bn.json caption (substeps 82, 87); notes/atom_bn.md"
+  "text": "Boron nitride goes on as an aerosol, so the recoat happens in a fume hood: the arm scrapes off what has cracked or lifted, then sprays thin coats over the scraped spots.",
+  "source": "notes/atom_bn.md (scrape what has cracked or lifted, mask the seat, thin coats in the hood)"
  },
  {
   "chapter": "atomizer",
@@ -233,7 +233,7 @@
   "chapter": "alloy4",
   "part": "card",
   "offset": 0.5,
-  "text": "While the build prints, a retained sample of the sieved powder goes round the trays: size distribution, X-ray diffraction, X-ray fluorescence and the S E M.",
+  "text": "While the build prints, a retained sample of the sieved powder goes round the trays: size distribution, X-ray diffraction, X-ray fluorescence and the SEM.",
   "source": "longform.py alloy4 card; out/alloy_powder.json caption"
  },
  {
@@ -242,14 +242,14 @@
   "substep": 78,
   "label": "4/7",
   "offset": 0.5,
-  "text": "These S E M images are real: the lab's own atomized aluminium alloy powder. The diffraction pattern, size curve and composition panel in this chapter are computed or illustrative.",
+  "text": "These SEM images are real: the lab's own atomized aluminium alloy powder. The diffraction pattern, size curve and composition panel in this chapter are computed or illustrative.",
   "source": "out/alloy_powder.json caption (substeps 65, 78, 117, 147)"
  },
  {
   "chapter": "alloy5",
   "part": "card",
   "offset": 0.5,
-  "text": "The build is depowdered, its bars cut off in the wire E D M, rinsed and heat treated, then pulled at room temperature and at two hundred degrees.",
+  "text": "The build is cleared of powder, its bars cut off in the wire EDM, rinsed and heat treated, then pulled at room temperature and at two hundred degrees.",
   "source": "longform.py alloy5 card; out/alloy_workflow.json caption"
  },
  {
@@ -297,7 +297,7 @@
   "chapter": "alloy7",
   "part": "card",
   "offset": 0.5,
-  "text": "The trays come to the opening in turn: the S E M, the nanoindenter, the indentation plastometer, micro-Vickers hardness and the digital microscope.",
+  "text": "The trays come to the opening in turn: the SEM, the nanoindenter, the indentation plastometer, micro-Vickers hardness and the digital microscope.",
   "source": "longform.py alloy7 card; out/alloy_characterize.json caption"
  },
  {
@@ -306,7 +306,7 @@
   "substep": 18,
   "label": "SEM",
   "offset": 0.5,
-  "text": "No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed; only the S E M inset, of the lab's powder, is real.",
+  "text": "No section of the lab's own prints has been imaged yet, so these data panels are illustrative or computed; only the SEM inset, of the lab's powder, is real.",
   "source": "out/alloy_characterize.json caption (substep 183)"
  },
  {
@@ -338,7 +338,7 @@
   "substep": 0,
   "label": "1/6",
   "offset": 1.0,
-  "text": "The M X Lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.",
+  "text": "The MX-Lab feeds up to six powders to one nozzle, so a single build can hold six different compositions.",
   "source": "out/instruments/ded.json caption (substeps 0, 4, 5)"
  },
  {

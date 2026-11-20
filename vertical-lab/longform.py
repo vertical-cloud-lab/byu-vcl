@@ -86,7 +86,8 @@ BOTTLENECK = "cc31ddc"
 CHAPTERS = [
     dict(key="intro", title="A real VLM, then the plan",
          card=["A Kardex vertical lift module (VLM) holds the lab's equipment on electrified trays, each powered tray "
-               "with its own UPS. A UR10e arm on a MiR250 mobile base works at its opening and at the machines too big for a tray.",
+               "with its own UPS. A UR12e arm (the UR10e, renamed in 2025) on a MiR250 mobile base works at its opening and at the "
+               "machines too big for a tray.",
                "Everything after the first clip is a 3-D animation, built from the makers' published figures and "
                "photos and checked for collisions. Real footage, photos and data are badged as such."],
          parts=[("footage", "footage/vlm_real_ck8QJhVqPiY.mp4",
@@ -117,11 +118,11 @@ CHAPTERS = [
                 ("mp4", "instruments/stream_cam.mp4", "The stream camera unit: height, pan, tilt"),
                 ("mp4", "bay_camera.mp4", "The camera over the bay, and what it sees")]),
     dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL",
-         card=["The OT-2 makes up the CubXL's electrolyte and dilutes the corrosion wells' samples for ICP-MS, which "
-               "goes out to the BYU Spectroscopic Facility (digital-wetlab PR #83, direction 5). The CubXL runs DAL's "
-               "copper corrosion screen spot by spot (DAL PR #180), with the volumes a real pipette moves; its "
-               "capper's magnet holds one cap at a time, so a second cap waits on an empty parking vial. The multi-doser "
-               "(chain carousel v5, an A&D HR-202i under its dose point) doses atomized powder for it by weight."],
+         card=["The OT-2 makes up the CubXL's electrolyte (digital-wetlab PR #83). The CubXL runs DAL's copper corrosion "
+               "screen spot by spot (DAL PR #180), with the volumes a real pipette moves; its magnet holds one cap at a "
+               "time, so a second cap waits on an empty vial. The multi-doser doses atomized powder for it by weight.",
+               "The wells' samples go to an ICP-MS station on the floor, its acids kept in a fume hood (round 13); the "
+               "OT-2's clip still shows the old dilution on the tray."],
          parts=[("mp4", "instruments/ot2_corrosion_prep.mp4", "The OT-2: electrolyte and ICP dilutions"),
                 ("mp4", "instruments/cubxl_corrosion.mp4", "The CubXL's corrosion screen"),
                 ("mp4", "vlm_workflow.mp4", "Atomized powder dosed for the CubXL")]),
@@ -131,7 +132,7 @@ CHAPTERS = [
                "and its vented plug pressed "
                "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load."],
          parts=[("mp4", "dag/route_dag_ch1.mp4", "The route as a function network (DAL's ONR YIP DAG)"),
-                ("still", "dal_workflow_table.png", 12.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
+                ("still", "dal_workflow_table.png", 14.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
                  "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
                 ("mp4", "alloy_charge.mp4", "The charge cups"),
                 ("still", "doser_raise_section.png", 14.0, "Raise the balance on a block to shorten the fall? In v5 the "
@@ -140,8 +141,8 @@ CHAPTERS = [
                  "Can the cup come closer to the exit?"),
                 ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
     dict(key="alloy2", title="Alloy route 2/7: melt and atomize in the rePowder",
-         card=["Both MiR250 + UR10e units go to the AMAZEMET rePowder, each with a 131 kg ballast plate low in its base: "
-               "one holds the furnace's lid down while the other works its latch. A loading tool lowers each of the "
+         card=["Both MiR250 + UR12e units go to the AMAZEMET rePowder, each with a 131 kg ballast plate low in its base, "
+               "and open its furnace together. A loading tool lowers each of the "
                "four Al cups into the crucible. Pump-downs with argon, induction melt, the pour, the ultrasonic spray, powder in the "
                "container. Cut with the lab's own footage, each piece badged with its alloy, date and source."],
          parts=[("mp4", "dag/route_dag_ch2.mp4", None), ("mp4", "alloy_atomize.mp4", None)]),
@@ -482,52 +483,94 @@ def warm(skip=()):
 
 
 # ===================================================================================================== DAL's steps
-DAL_STEPS = [   # notes/dal_workflow.md, condensed: (step, station in the vertical lab, still missing)
-    ("Pick a composition", "software: BO over a CALPHAD-screened space", ""),
-    ("Weigh the charge", "multi-doser + A&D HR-202i on tray B; vacuum press", "cutting rod or wire to mass"),
-    ("Coat the crucible (BN)", "by hand, under extraction", "stays manual: an aerosol job"),
-    ("Atomize", "AMAZEMET rePowder, beside the VLM", "computer control of the rePowder"),
-    ("Recover and sieve", "sieving cell beside the rePowder (Retsch AS 200)", ""),
-    ("Store", "jars in the glovebox", "a dry cabinet on a tray"),
-    ("Characterize the powder", "SEM, Mastersizer, XRF, VHX with LIBS", "SEM stub prep"),
-    ("Ship powder out", "packaging station", "a dangerous-goods check per powder"),
-    ("Print", "Aconity MIDI, DED, beside the VLM; depowdering box", ""),
-    ("Cut parts off the plate", "FANUC ROBOCUT wire EDM", ""),
-    ("Heat treat", "Nabertherm NAT 15/65, tray F", ""),
-    ("Density (Archimedes)", "not modelled", "a balance with a density kit"),
-    ("Metallography", "LECO PX500 on tray F; OpenFlexure array, VHX", "a mounting press"),
-    ("Mechanical testing", "Instrons; PIP and iMicro on tray E", "a hardness tester"),
-    ("Corrosion", "the CubXL set up for corrosion, tray A", ""),
-    ("Long-term monitoring", "OpenFlexure array, stream cameras", ""),
-    ("Records", "Pi 5 stream cameras on every tray; MongoDB", ""),
+# Round 13 (run D): per step, what this design does with it. Sterling on round 12's card (PR #318, 2026-11-20): '"most by
+# hand" is dissatisfying and misleading', e.g. the BN coating is automated in #353's clips. Status: "auto", automated
+# in this design and shown in the video (the chapter says where); "progress", designed or being designed, not in the
+# video yet; "none", no station yet; "manual", stays a person's. The last column is what, inside the step, still
+# takes a person or is still open. notes/dal_workflow.md has the long form with sources.
+DAL_STEPS = [   # (step, station in this design, status, still by hand or open)
+    ("Pick a composition", "software: Bayesian optimization over a CALPHAD-screened space", "auto", ""),
+    ("Weigh the charge", "multi-doser + 0.1 mg balance, vacuum press, tray B (ch. 1)", "auto",
+     "the cups and plugs are machined by hand; a separate PR studies machining them"),
+    ("Coat the crucible (BN)", "scraped and sprayed by the arm in a fume hood (turnaround)", "auto", ""),
+    ("Atomize", "rePowder: loaded, opened, rebuilt by two arms (ch. 2, turnaround)", "auto",
+     "the arm presses its keys until AMAZEMET opens an interface; booster swaps and argon cylinders"),
+    ("Recover and sieve", "explosion-proof vacuum (turnaround); sieving cell with wash (ch. 3)", "auto", ""),
+    ("Store", "753-jar store on trays N and O", "auto", "dry storage at about 25 % RH (DAL #131) not designed"),
+    ("Characterize the powder", "laser diffraction, XRD with its prep, XRF, SEM (ch. 4)", "auto",
+     "composition by ICP-MS: a fume-hood station (in progress)"),
+    ("Ship powder out", "packaging station: labels, seal, box", "auto", "the dangerous-goods call for each powder"),
+    ("Print", "Aconity MIDI fed by the arm; depowdering box (ch. 3, 5)", "auto", ""),
+    ("Cut parts off the plate", "wire EDM, bars caught in a comb (ch. 5)", "auto", ""),
+    ("Heat treat", "Nabertherm furnace, tray F (ch. 5)", "auto", "the schedule is still DAL's to set"),
+    ("Density (Archimedes)", "no station yet", "none", "a balance with a density kit"),
+    ("Metallography", "EDM sections, hot mounting, PX500 with ready discs (ch. 6)", "auto",
+     "re-papering the discs"),
+    ("Mechanical testing", "tensile at 20 and 200 °C (ch. 5); Vickers, nanoindenter, PIP (ch. 7)", "auto",
+     "the nanoindenter's tip change"),
+    ("Corrosion", "CubXL and OT-2, tray A", "auto",
+     "impedance waits on the potentiostat; ICP-MS samples go out until the station is built"),
+    ("Long-term monitoring", "stream cameras only", "none",
+     "repeat imaging of stored samples (the OpenFlexure array was dropped)"),
+    ("Records", "cameras on every powered tray and over each bay; MongoDB", "auto", ""),
 ]
+STATUS = {"auto": ("AUTOMATED HERE", (30, 120, 60)), "progress": ("IN PROGRESS", (190, 120, 0)),
+          "none": ("NO STATION YET", (120, 124, 130)), "manual": ("BY HAND", (170, 60, 30))}
+
+
+def _cell(d: ImageDraw.ImageDraw, xy, text: str, width: int, size: int, fill, row_h: float, bold=False):
+    """`text` at `xy` in one line at `size`, or wrapped to two lines a little smaller if one line won't fit."""
+    for sz in range(size, size - 4, -1):                # one line, up to 3 px smaller
+        f = font(sz, bold)
+        if d.textlength(text, font=f) <= width:
+            d.text((xy[0], xy[1] + (size - sz) / 2), text, font=f, fill=fill)
+            return
+    for sz in range(size - 2, 13, -1):
+        f = font(sz, bold)
+        lines = wrap(d, text, f, width)
+        if len(lines) <= 2:
+            gap = min(row_h / 2 - 1, sz * 1.12)
+            for k, ln in enumerate(lines):
+                d.text((xy[0], xy[1] - 4 + k * gap), ln, font=f, fill=fill)
+            return
+    d.text(xy, text, font=font(14, bold), fill=fill)
 
 
 def dal_table(path: Path):
-    """notes/dal_workflow.md's 17 steps as one table, 1920 x 951 (the still area at 1080p)."""
+    """DAL's 17 steps as one table, 1920 x 951 (the still area at 1080p): the station each runs at in this design,
+    whether it is automated here, and what still takes a person or is open."""
     W, H = 1920, 951
     im = Image.new("RGB", (W, H), (246, 247, 249))
     d = ImageDraw.Draw(im)
-    fh, fb, fn = font(30, bold=True), font(27), font(27, bold=True)
-    cols = [(40, "#"), (100, "Step (DAL, by hand today)"), (600, "Station in the vertical lab"),
-            (1360, "Still missing")]
-    y = 26
-    d.text((40, y), "The alloy workflow, step by step: what DAL does by hand, and where it goes", font=font(36, True),
-           fill=BLUE)
-    y += 62
+    fh = font(26, bold=True)
+    cols = [(40, "#"), (92, "DAL's step"), (450, "In this design"), (1125, "Status"), (1365, "Still by hand, or open")]
+    y = 22
+    d.text((40, y), "The alloy lab's 17 steps: what this design automates, and what still needs a person",
+           font=font(36, True), fill=BLUE)
+    y += 58
     for x, h in cols:
         d.text((x, y), h, font=fh, fill=GREY)
-    y += 44
+    y += 40
     d.line((40, y - 6, W - 40, y - 6), fill=BLUE, width=3)
-    row_h = (H - y - 10) / len(DAL_STEPS)
-    for i, (step, where, gap) in enumerate(DAL_STEPS):
+    foot = 34
+    row_h = (H - y - foot - 8) / len(DAL_STEPS)
+    for i, (step, where, status, left) in enumerate(DAL_STEPS):
         yy = int(y + i * row_h)
         if i % 2 == 0:
             d.rectangle((30, yy - 3, W - 30, int(yy + row_h) - 3), fill=(235, 238, 244))
-        d.text((40, yy), f"{i + 1}", font=fn, fill=BLUE)
-        d.text((100, yy), step, font=fb, fill=INK)
-        d.text((600, yy), where, font=fb, fill=INK)
-        d.text((1360, yy), gap or "-", font=fb, fill=(170, 60, 30) if gap else GREY)
+        d.text((40, yy + 2), f"{i + 1}", font=font(25, True), fill=BLUE)
+        _cell(d, (92, yy + 4), step, 450 - 92 - 14, 25, INK, row_h)
+        _cell(d, (450, yy + 5), where, 1125 - 450 - 16, 22, INK, row_h)
+        label, colour = STATUS[status]
+        fc = font(19, True)
+        tw = d.textlength(label, font=fc)
+        d.rounded_rectangle((1125, yy + 4, 1125 + tw + 20, yy + 4 + 30), radius=7, fill=colour)
+        d.text((1135, yy + 8), label, font=fc, fill="white")
+        _cell(d, (1365, yy + 6), left or "-", W - 40 - 1365, 20, (170, 60, 30) if left else GREY, row_h)
+    n_auto = sum(s == "auto" for _, _, s, _ in DAL_STEPS)
+    d.text((40, H - foot), f"{n_auto} of {len(DAL_STEPS)} steps automated in this design and shown in this video "
+           "(the chapter is in parentheses). All of it is a design, not yet built; notes/dal_workflow.md has the sources.",
+           font=font(20), fill=GREY)
     im.save(path, optimize=True)
 
 
@@ -543,23 +586,145 @@ KOKORO = (os.environ.get("KOKORO_MODEL", "/tmp/kokoro/kokoro-v1.0.onnx"),
 LINE_RMS_DB = -18.0                                           # each line levelled to this RMS (dBFS), peaks under -1
 
 
+# How the voice says what the text writes (round 13, run D). The lines are written as they should read in the
+# subtitles (OT-2, SEM, MiR); Kokoro's front end (espeak) would say several of these as words ("ups", "sem", "my R")
+# or with the wrong stress, so each line is spoken from phonemes: SAY respells a written form as text, then IPA gives
+# the phonemes of the words no respelling fixes (Kokoro's phoneme input). Checked by ear and by machine with
+# `python3 longform.py narration-check` (faster-whisper back, out/narration/check.json).
+SAY = {
+    "MiR250": "MiR two-fifty",                                          # MiR itself is in IPA, below
+    "OT-2": "O T two", "UPS": "U P S", "SEM": "S E M", "BYU": "B Y U", "EDM": "E D M", "VLM": "V L M",
+    "ICP-MS": "I C P M S", "ICP-OES": "I C P O E S", "ICP": "I C P", "CubXL": "Cub X L", "MX-Lab": "M X Lab",
+    "UR12e": "U R twelve E", "UR10e": "U R ten E", "HNO3": "nitric acid", "HCl": "hydrochloric acid",
+    "PTFE": "P T F E", "AirGradient": "Air Gradient",
+    "aluminium": "aluminum",             # the voice is American (af_heart, en-us): the text keeps the repo's spelling
+}
+IPA = {   # espeak's own reading in the comment
+    "MiR": "mˈiːɹ", "MiRs": "mˈiːɹz",    # Sterling: said "meer". espeak's "meer" (mˈɪɹ) came back as "mirror" before
+    #                                    a consonant; the long vowel came back as "mere", and "MiR250" as "Mir 250"
+    "potentiostat": "pətˌɛnʃiəstˈæt",    # espeak: pətˈɛntɪˌɑːstæt, "puh-TEN-tee-AH-stat"; Sterling: mispronounced
+    "doser": "dˈoʊsɚ", "doser's": "dˈoʊsɚz", "dosers": "dˈoʊsɚz",     # espeak: dˈoʊzɚ, heard back as "dozer"
+    "Vertiv": "vˈɜːtɪv",                 # espeak: vˈɜːɾɪv, heard back as "verdive"
+    "depowdered": "dˌiːpˈaʊdɚd",         # espeak: dᵻpˈaʊdɚd, heard back as "de-powered"
+    "Instron": "ˈɪnstɹɑːn",              # espeak: ɪnstɹˈɑːn
+    "Stäubli": "ʃtˈɔɪbli",               # espeak: stˈɛʌbli
+}
+_TOK = None
+
+
+def _word(keys):
+    return re.compile(r"(?<![\w-])(" + "|".join(map(re.escape, sorted(keys, key=len, reverse=True))) + r")(?![\w-])")
+
+
+def spoken(text: str) -> str:
+    """The line as the voice is to say it (SAY applied)."""
+    return _word(SAY).sub(lambda m: SAY[m.group(1)], text)
+
+
+def phonemes(text: str) -> str:
+    """The line's phonemes for Kokoro: espeak's, except IPA's words."""
+    global _TOK
+    if _TOK is None:
+        from kokoro_onnx.tokenizer import Tokenizer
+        _TOK = Tokenizer()
+    t, out, pos = spoken(text), [], 0
+    for m in _word(IPA).finditer(t):
+        if t[pos:m.start()].strip():
+            out.append(_TOK.phonemize(t[pos:m.start()].strip()))
+        out.append(IPA[m.group(1)])
+        pos = m.end()
+    if t[pos:].strip():
+        out.append(_TOK.phonemize(t[pos:].strip()))
+    return " ".join(out)
+
+
 def tts(lines: list[dict]) -> list[Path]:
-    """Each line spoken once by Kokoro (cached on voice, speed and text) -> its WAV."""
+    """Each line spoken once by Kokoro from its phonemes (cached on voice, speed and phonemes) -> its WAV."""
     import soundfile as sf
     TTS_DIR.mkdir(parents=True, exist_ok=True)
     k, paths = None, []
     for ln in lines:
-        key = hashlib.sha256(f"{VOICE}|{SPEED}|{ln['text']}".encode()).hexdigest()[:16]
+        ph = phonemes(ln["text"])
+        key = hashlib.sha256(f"{VOICE}|{SPEED}|ph|{ph}".encode()).hexdigest()[:16]
         p = TTS_DIR / f"{key}.wav"
         if not p.exists():
             if k is None:
                 from kokoro_onnx import Kokoro
                 k = Kokoro(*KOKORO)
-            y, sr = k.create(ln["text"], voice=VOICE, speed=SPEED, lang="en-us")
+            y, sr = k.create(ph, voice=VOICE, speed=SPEED, lang="en-us", is_phonemes=True)
             assert sr == SR, sr
             sf.write(str(p), y, sr)
         paths.append(p)
     return paths
+
+
+def _norm(s: str) -> str:
+    """For comparing a line with what the recognizer heard: numbers as words, no punctuation, one spelling."""
+    from num2words import num2words
+    s = s.replace("°", " degrees").replace("%", " percent").replace("µm", " microns")
+    s = re.sub(r"(\d),(\d{3})", r"\1\2", s)
+    s = re.sub(r"\d+(\.\d+)?", lambda m: " " + num2words(float(m.group()) if "." in m.group() else int(m.group())) + " ",
+               s)
+    s = re.sub(r"(?<=[A-Z])-(?=[A-Z])", "", s)                    # ICP-MS -> ICPMS
+    s = s.lower().replace("-", " ").replace("’", "'")
+    for a, b in (("metre", "meter"), ("litre", "liter"), ("modelled", "modeled"), ("catalogue", "catalog"),
+                 ("ageing", "aging"), ("colour", "color"), ("aluminium", "aluminum"), ("grey", "gray")):
+        s = s.replace(a, b)
+    s = re.sub(r"[^a-z' ]", " ", s)
+    s = re.sub(r"'s\b|s'", "s", s)
+    out, single = [], False
+    for w in s.split():                                       # letters said one by one, written as one word: u p s = ups
+        one = len(w) == 1 and w != "a"
+        if one and single:
+            out[-1] += w
+        else:
+            out.append(w)
+        single = one
+    return " ".join(out)
+
+
+def narration_check(models=("base.en", "small.en")) -> list[dict]:
+    """Every line spoken, then transcribed back by faster-whisper (two model sizes) and compared word by word with
+    the spoken form (out/narration/check.json): the word error rate, each difference, and the words the recognizer
+    was least sure of. A respelling or a phoneme fix goes in SAY or IPA. Also writes out/narration/lines.ogg, every
+    line in order with a second between, to listen to."""
+    import jiwer
+    import soundfile as sf
+    from faster_whisper import WhisperModel
+    from scipy.signal import resample_poly
+    lines = json.loads(NARRATION.read_text())
+    paths = tts(lines)
+    asr = {m: WhisperModel(m, device="cpu", compute_type="int8") for m in models}
+    rows, audio = [], []
+    for i, (ln, p) in enumerate(zip(lines, paths)):
+        y, sr = sf.read(str(p), dtype="float32")
+        audio += [y, np.zeros(sr, np.float32)]
+        y16 = resample_poly(y, 2, 3).astype(np.float32)                 # 24 kHz -> 16 kHz
+        ref = _norm(spoken(ln["text"]))
+        row = dict(i=i, chapter=ln["chapter"], part=ln["part"], text=ln["text"], spoken=spoken(ln["text"]),
+                   phonemes=phonemes(ln["text"]), seconds=round(len(y) / sr, 2))
+        for m, model in asr.items():
+            segs, _ = model.transcribe(y16, language="en", word_timestamps=True, beam_size=5)
+            words = [w for sg in segs for w in sg.words]
+            heard = "".join(w.word for w in words).strip()
+            o = jiwer.process_words(ref, _norm(heard))
+            diffs = [(a.type, " ".join(o.references[0][a.ref_start_idx:a.ref_end_idx]),
+                      " ".join(o.hypotheses[0][a.hyp_start_idx:a.hyp_end_idx]))
+                     for a in o.alignments[0] if a.type != "equal"]
+            row[m] = dict(heard=heard, wer=round(o.wer, 3), diffs=diffs,
+                          unsure=[(w.word.strip(), round(w.probability, 2)) for w in words if w.probability < 0.5])
+        rows.append(row)
+        print(f"{i:2d} {row['seconds']:5.1f} s  " + "  ".join(f"{m} {row[m]['wer']:.2f}" for m in asr) +
+              "".join(f"  [{m}: {d}]" for m in asr for d in row[m]["diffs"][:3]), flush=True)
+    dst = OUT / "narration"
+    dst.mkdir(parents=True, exist_ok=True)
+    (dst / "check.json").write_text(json.dumps(dict(
+        voice=f"Kokoro v1.0 {VOICE}, speed {SPEED}", recognizers=[f"faster-whisper {m}" for m in models],
+        say=SAY, ipa=IPA, lines=rows), indent=1, ensure_ascii=False) + "\n")
+    wav = Path(tempfile.gettempdir()) / "narration_lines.wav"
+    sf.write(str(wav), np.concatenate(audio), SR)
+    run("ffmpeg", "-y", "-loglevel", "error", "-i", wav, "-c:a", "libopus", "-b:a", "32k", dst / "lines.ogg")
+    return rows
 
 
 def clip_meta(src: str) -> dict | None:
@@ -956,7 +1121,7 @@ def description(meta: dict, commit: str) -> str:
     up = [p for p in meta["parts"] if p.get("upscaled_from_720p")]
     head = ("A design study of an automated alloy lab at BYU's Vertical Cloud Lab, in one video: two Kardex Shuttle XP "
             "500 vertical lift modules holding the instruments on powered trays, each tray with its own UPS and a "
-            "Stäubli CombiTac coupling that docks in its slot and at the opening; two UR10e arms on MiR250 mobile "
+            "Stäubli CombiTac coupling that docks in its slot and at the opening; two UR12e arms (the UR10e, renamed in 2025) on MiR250 mobile "
             "bases; the alloy route from charge cups through atomizing, sieving, printing, cutting, heat treatment and "
             "tensile tests to sample prep and characterization; the atomizer's turnaround automated; maintenance "
             "booked into the schedule; and what it would take to go from one alloy a day to ten.\n\n"
@@ -1072,6 +1237,8 @@ if __name__ == "__main__":
     elif args and args[0] == "audit":                 # the audit table for the checks chapter
         for r in audit_table(OUT / "collisions" / f"{AUDIT_TAG}_table.png"):
             print(r)
+    elif args and args[0] == "narration-check":       # speak every line and hear it back (faster-whisper)
+        narration_check()
     elif args and args[0] == "tts":                   # speak the narration into the cache ahead of the build
         print(len(tts(json.loads(NARRATION.read_text()))), "lines in", TTS_DIR)
     elif args and args[0] == "warm":                  # normalise the clips into the cache ahead of the build

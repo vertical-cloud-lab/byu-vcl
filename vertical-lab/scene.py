@@ -129,6 +129,35 @@ if os.environ.get("VIZ3D_QUICK_EXIT", "1") != "0":
 _FONTS: dict = {}
 _WRAP: dict = {}
 
+# What a frame says, where it differs from what the code says (round 13, run D). Universal Robots renamed the UR10e the
+# UR12e in June 2025, for the 12.5 kg it already carried; the arm is mechanically unchanged (notes/ur12e.md). The code,
+# its identifiers, the notes and the old clips keep "UR10e"; every title, status, label and caption drawn from here on
+# says "UR12e". Same length and digit widths, so no layout moves.
+ON_SCREEN = {"UR10e": "UR12e"}
+
+
+def shown(text: str) -> str:
+    """`text` with ON_SCREEN's names, as a frame shows it."""
+    for a, b in ON_SCREEN.items():
+        text = text.replace(a, b)
+    return text
+
+
+class _Shown:
+    """An ImageDraw that draws and measures text through shown()."""
+
+    def __init__(self, d):
+        self._d = d
+
+    def __getattr__(self, name):
+        return getattr(self._d, name)
+
+    def text(self, xy, text, *a, **k):
+        return self._d.text(xy, shown(text), *a, **k)
+
+    def textlength(self, text, *a, **k):
+        return self._d.textlength(shown(text), *a, **k)
+
 
 def _plotter(size) -> pv.Plotter:
     """pv.Plotter(off_screen=True). Round 13: on a loaded runner (three renders and the audits, load 7-12), VTK's first
@@ -415,7 +444,7 @@ class Scene:
         if CLEAN:
             return img
         W, H = img.size
-        d = ImageDraw.Draw(img, "RGBA")
+        d = _Shown(ImageDraw.Draw(img, "RGBA"))   # "UR10e" in the code is drawn "UR12e" (ON_SCREEN)
         s = max(scale, 0.80)                      # GIF text is kept larger than a straight downscale
         pad = 10 * s
         # title, top left; smaller (down to 70 %) or cut short if it would run under the step label

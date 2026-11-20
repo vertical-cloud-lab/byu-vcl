@@ -24,3 +24,36 @@ by hand.
 | 15 | Corrosion and electrochemistry | the CubXL with the NuVant EZstat Pro (byu-vcl #231; DAL #221, PR #177, PR #180); conductivity and spectroscopy with Dr. Porter (DAL #148) | | the CubXL, set up for corrosion (round 4) | |
 | 16 | Long-term monitoring | optical monitoring of samples over time (DAL #233) | | the OpenFlexure array and the stream cameras | |
 | 17 | Records | stream cameras to YouTube (DAL #147, PR #189); MongoDB | the channel | Pi 5 cameras on every tray and over the bay (round 4) | |
+
+## Round 13: what this design does with each step
+
+Sterling on round 12's card (PR #318, 2026-11-20): '11:43 "most by hand" is dissatisfying and misleading. For example,
+coating the crucible is being explored as automated in another PR'. The table above is round 4's, and its last column
+is out of date (the mounting press, the hardness tester and the BN recoat all have stations now). The long-form's card
+(`longform.DAL_STEPS`, drawn as [`out/dal_workflow_table.png`](../out/dal_workflow_table.png)) now says, per step,
+whether this design automates it and shows it, or has no station yet, and what inside the step still takes a person:
+
+| # | Step | In this design | Status | Still by hand, or open |
+|---|---|---|---|---|
+| 1 | Pick a composition | Bayesian optimization over a CALPHAD-screened space | automated | |
+| 2 | Weigh the charge | multi-doser + HR-202i, vacuum press, tray B (ch. 1) | automated | the cups and plugs are machined by hand; a separate PR studies machining them |
+| 3 | Coat the crucible (BN) | scraped and sprayed by the arm in a fume hood (`atom_bn`, #353) | automated | |
+| 4 | Atomize | the rePowder, loaded, opened, cleaned and rebuilt by two arms (ch. 2, the turnaround clips) | automated | the arm presses the HMI's keys until AMAZEMET opens an interface (DAL #151); booster swaps and argon cylinders stay a person's (`notes/atomizer_automation.md`) |
+| 5 | Recover and sieve | the explosion-proof Nilfisk (`atom_vacuum`); the sieving cell with its wash module (ch. 3) | automated | |
+| 6 | Store | the 753-jar store on trays N and O | automated | dry storage at about 25 % RH (DAL #131) isn't designed |
+| 7 | Characterize the powder | laser diffraction, XRD with its prep, XRF, SEM with stub prep (ch. 4) | automated | composition by ICP-MS: the new station (`notes/icpms.md`), not in a chapter yet |
+| 8 | Ship powder out | the packaging station | automated | the dangerous-goods call for each powder |
+| 9 | Print | the Aconity MIDI, fed by the arm; the depowdering box (ch. 3, 5) | automated | |
+| 10 | Cut parts off the plate | the wire EDM, bars caught in a comb (ch. 5; #328's orientations) | automated | |
+| 11 | Heat treat | the Nabertherm furnace on tray F (ch. 5) | automated | the schedule is still DAL's to set |
+| 12 | Density (Archimedes) | no station | no station yet | a balance with a density kit |
+| 13 | Metallography | EDM sections, MX400 hot mounting, the PX500 with pre-loaded discs (ch. 6) | automated | re-papering the discs |
+| 14 | Mechanical testing | tensile at 20 and 200 C (ch. 5); micro-Vickers, nanoindenter, PIP (ch. 7) | automated | the nanoindenter's tip change (the maintenance clip) |
+| 15 | Corrosion | the CubXL and the OT-2 on tray A | automated | impedance waits on the potentiostat; ICP-MS samples go to BYU's facility until the station is built |
+| 16 | Long-term monitoring | the stream cameras only | no station yet | repeat imaging of stored samples (the OpenFlexure array was dropped in round 8) |
+| 17 | Records | Pi 5 cameras on every powered tray and over each bay; MongoDB | automated | |
+
+"Automated" means automated in this design and shown in the video; all of it is a design, not yet built. The
+narration over the card now says so ("fifteen are automated and shown in this video, two have no station yet, and the
+last column lists what still takes a person"), and the BN line in the turnaround chapter no longer refers to the old
+card.
