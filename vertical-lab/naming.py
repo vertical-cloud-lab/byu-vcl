@@ -186,7 +186,7 @@ STATIONS = {
 SPARES = {
     "robot": ["unimate", "genghis"],
     "shuttle": ["cascade", "lonepeak"],
-    "station": ["moseley", "bragg", "pourbaix", "kibble"],
+    "station": ["moseley", "bragg", "pourbaix", "kibble", "whitworth"],
     "printer": ["bodoni", "schawlow"],
 }
 
@@ -209,6 +209,7 @@ SUFFIX = {
     "an explosion-proof vacuum cleaner", "back": "a bay's back ceiling camera", "front": "a bay's front ceiling "
     "camera", "top": "a top camera", "left": "a left camera", "bay": "a Shuttle's picking bay", "hood": "a tray hood",
     "store": "a passive store", "1": "", "2": "", "3": "", "tray": "a tray",
+    "right": "a right camera", "mast": "a mast camera",     # #374's cameras on the mobile bases: elsie-left/-right/-mast
 }
 
 

@@ -108,7 +108,7 @@ names plus the 2 couples: the balance of the fields' histories, not a target met
 **Siblings** take a number: the two Form 4s are `senefelder-1` and `-2`, the two SnowPods `maiman-1` and `-2`, and the
 three-each plan (notes/three_each.md) would give `pasteur-1` to `-3` and `tafel-1` to `-3`. **Spares** for the next of
 each class, checked like the rest, are in `naming.SPARES` (`unimate`, `genghis`; `cascade`, `lonepeak`; `moseley`,
-`bragg`, `pourbaix`, `kibble`; `bodoni`, `schawlow`).
+`bragg`, `pourbaix`, `kibble`, `whitworth`; `bodoni`, `schawlow`).
 
 ## Everything else: parent plus suffix
 
@@ -214,6 +214,15 @@ Nothing here renames a real device. When the lab adopts the scheme:
 | Chemical elements | `copper`, `nickel` | in a metals lab, "put the Cu cups in Nickel" is ambiguous |
 | Utah places for everything | `provo`, `ogden` | a station name and a city are confused; no hint of the job; kept for the Shuttles |
 | Greek myth | `atlas`, `argus`, `hephaestus` | fun, but many are brands (Atlas Copco, Argus), and the hint is loose |
+
+## The other open PRs, named
+
+- **#374, cameras on the mobile bases:** `elsie-left`, `elsie-right` and `elsie-mast` (and the same for `freddy`).
+- **#370, security cameras:** a camera takes its parent's name and a place suffix, as the Pi units do
+  (`tray-d-cam0`, `timp-bay-front`). The scheme doesn't care what kind of camera it is.
+- **#366/#369, a third MiR250 for floor cleaning:** the next robot name in `naming.SPARES` (`unimate`, `genghis`).
+- **#367, the cup and plug machining station:** a call name from the station family. `whitworth` would fit (Joseph
+  Whitworth, the standard screw thread and precision machining). It is in the spares and passes every check.
 
 ## Open
 
