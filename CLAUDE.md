@@ -206,7 +206,7 @@ comment is dead text (the script drops `<!-- if-trigger -->` blocks in that case
 pings work, the workflow mints an installation token for the lab's own GitHub App when the
 secrets below exist; App-token events do trigger `claude.yml`, whose `allowed_bots` names that
 App. Bots on `allowed_bots` skip the write-permission check, so keep the list to that one App.
-These two secrets are **environment secrets of `claude-super`** (sgbaird approves every run,
+These two secrets are **environment secrets of `claude-super`** (sgbaird approves every job that uses them,
 deploys from `main` only), read by `post-queued-comments.yml` and `claude-super.yml`, never by
 `claude.yml`.
 
@@ -216,17 +216,28 @@ deploys from `main` only), read by `post-queued-comments.yml` and `claude-super.
 | `VCL_BOT_PRIVATE_KEY` | Its private key (PEM). Regenerate from the App's settings page to rotate. |
 
 **Handing tasks to other threads (`@claude-super`).** A comment with `@claude-super` from
-sgbaird starts [`claude-super.yml`](.github/workflows/claude-super.yml) once he approves it in
-Actions. It is an ordinary session plus a one-hour `vcl-bot` token, and it posts `@claude ...`
-comments on other PRs and issues only through `.github/scripts/dispatch_claude.py`, which caps a
-run at 10 (so at most 10 children at once, 6 h each), refuses other workflows' tags, checks the target's `claude.yml` lets `vcl-bot` in, and
-links back to the parent; `--new-issue <title>` opens a fresh issue as the child's thread (for
-"open a new PR" tasks). The parent has the same secrets and tailnet as `claude.yml`, but its token dies at minute 60,
-so it dispatches early and hands long or parallel work to children. Each one starts a plain `@claude` run there, on its own runner. Those
-children never see the token, and `vcl-bot` can't start `@claude-super`, so it is one level deep.
-In a plain `@claude` run you have no way to dispatch; say so and suggest `@claude-super` instead.
-A repo outside byu-vcl needs `vcl-bot` installed on it and the same `allowed_bots: vcl-bot` and
-sender-filter lines in its `claude.yml`.
+sgbaird starts [`claude-super.yml`](.github/workflows/claude-super.yml), which runs three jobs:
+
+1. **plan**: an ordinary session with exactly `claude.yml`'s permissions, secrets and tailnet,
+   and no environment, so the `vcl-bot` key is never on its runner. It records each hand-off with
+   `python3 .github/scripts/dispatch_claude.py plan (--number <n> | --new-issue <title>) --body-file <file>`
+   (`list` shows the plan). `--new-issue` gives a child asked to open a new PR a fresh thread.
+   Nothing is posted from this job.
+2. **review**: a fresh runner with code from `main`, no secrets and no Claude. It re-checks the plan
+   and writes every ping verbatim to the run summary, with its sha256.
+3. **dispatch**: waits in the `claude-super` environment for sgbaird's approval, then refuses
+   any plan whose sha256 differs, mints a `vcl-bot` token and posts each ping. It also lists the
+   links on the parent thread.
+
+Every stage checks: at most 10 pings (10 children at once, 6 h each) unless the ping named
+more (never above 20); bodies start with `@claude` and hold no other workflow's tag; no `@` in
+new-issue titles; the target's `claude.yml` lets `vcl-bot` in. Each posted ping starts a plain
+`@claude` run there, on its own runner. Children never see the key or a token, and `vcl-bot`
+can't start `@claude-super`, so it is one level deep. As the plan job, plan, record, write your
+final comment and finish: nothing goes out until you end, so hand long or parallel work to children,
+including work on your own thread. In a plain `@claude` run you have no way to hand off; say so and
+suggest `@claude-super` instead. A repo outside byu-vcl needs `vcl-bot` installed on it and the
+same `allowed_bots: vcl-bot` and sender-filter lines in its `claude.yml`.
 
 **Other services**
 
