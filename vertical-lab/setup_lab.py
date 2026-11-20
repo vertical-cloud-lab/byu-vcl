@@ -58,6 +58,13 @@ TRAYS = {
     "H": ("2R4", "PCB assembly"), "G": ("2F1", "resin printing"), "I": ("2F2", "desktop LPBF"),
 }
 ORDER = ["D", "A", "B", "E", "J", "C", "F", "K", "L", "M", "H", "G", "I"]      # loading order: Shuttle 1, then 2
+# Round 13: the 9150 mm Shuttles (vlm.UNIT_H) take three more passive stores over the trays they have, in slots of
+# their own height (vlm.COLUMNS): a second sample store over tray E, and a second rack each of atomized lots and of
+# feedstock over tray H, both as r8_store builds N's and O's (TALL_TRAYS; added after merge_r8, which would otherwise
+# move r8_store's stores back onto N and O)
+TALL_TRAYS = {"S": ("R5", "sample storage, second store", [("storage", 0.0, 0.0, 0.0)]),
+              "P": ("2R5", "powder store: atomized lots, second rack", [("powder_store_lots", 0.0, 0.0, 0.0)]),
+              "Q": ("2R6", "powder store: feedstock, second rack", [("powder_store_feed", 0.0, 0.0, 0.0)])}
 # Round 11 (Sterling, PR #318, 2026-11-13: "Do we actually need cameras on the jars at all times? In terms of inventory,
 # we're going to get that with the overhead camera in the bay anyway"): the storage trays are passive. Nothing on them
 # draws power or gas, so they carry no UPS, no dock plate or tray lines, no socket, power strip or power lamp and no
@@ -216,8 +223,8 @@ INSTALL_AT = 0                                 # the first unit is put together 
 
 CAM_ROOM = [(11000, -22000, 15500), (500, -2700, 0), (0, 0, 1)]
 CAM_TOP = [(2000, -15000, 22500), (300, -2800, 0), (0, 0, 1)]
-CAM_UTIL = [(9600, -17500, 9800), (300, -2600, 2400), (0, 0, 1)]
-CAM_VLM = [(9800, -10400, 6600), (1800, -400, 1900), (0, 0, 1)]
+CAM_UTIL = [(10500, -21500, 13800), (600, -1600, 3900), (0, 0, 1)]    # round 13: up to the 10.97 m roof steel
+CAM_VLM = [(12800, -15400, 9200), (1800, -400, 4300), (0, 0, 1)]     # round 13: the 9150 mm Shuttles whole
 CAM_FLOOR = [(6200, -21500, 17500), (700, -2900, 0), (0, 0, 1)]
 # round 8: the scale-up machines past the south row's ends (the EOS lower left, the Meltio cell lower right) with the
 # whole lab behind them; a camera test of five views found this the one that shows both whole
@@ -232,7 +239,7 @@ BAY_VIEW_ANGLE = 34.0
 ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (700, -2300, 600), (0, 0, 1)],
          [(3500, -15500, 5600), (700, -2300, 900), (0, 0, 1)],
-         [(11500, -18500, 12500), (700, -2600, 300), (0, 0, 1)]]
+         [(13500, -21500, 15500), (700, -2300, 2200), (0, 0, 1)]]     # round 13: the 9150 mm Shuttles in the last
 
 
 # ------------------------------------------------------------------------------------------------ round 8's modules
@@ -327,6 +334,14 @@ def merge_r8() -> dict:
         ITEMS[p["tray"]].append((key, float(p["x"]), None if p.get("y") is None else float(p["y"]),
                                  float(p.get("turn", 0.0))))
         R8_MERGED["moved"][key] = dict(p, was=R8_MERGED["trays"].get(key))
+    for k, (slot, role, its) in TALL_TRAYS.items():   # round 13: the stores the taller Shuttles take
+        if k in TRAYS or slot not in V.SLOTS:
+            continue
+        TRAYS[k] = (slot, role)
+        PASSIVE.add(k)
+        ORDER.insert(ORDER.index("F") + 1 if V.SLOT_SHUTTLE[slot] == 1 else len(ORDER), k)
+        ITEMS[k] = list(its)
+        R8_MERGED["new_trays"][k] = dict(slot=slot, role=role, module="setup_lab.TALL_TRAYS", passive=True)
     R8_MERGED["no_dock"] = sorted(NO_DOCK)
     R8_MERGED["passive_trays"] = sorted(PASSIVE)
     R8_MERGED["done"] = True
@@ -628,10 +643,14 @@ def add_tray(sc: Scene, L: TwoLab, k: str):
 def add_ups(sc: Scene, k: str) -> list:
     """The tray's UPS as its own group, so it can be carried in: round 12, its own real unit (ups.py: sized for what
     the tray must keep alive), with its cradle, markings and status lights (services.add_ups_meshes)."""
+    import airgradient
     import services
     g = f"ups_{k}"
     names = services.add_ups_meshes(sc, k, g)
     sc.parent[g] = f"tray_{k}"
+    # round 13 (PR #318: "Each tray should have an airgradient"): the tray's AirGradient ONE stands on its UPS on a
+    # printed riser (airgradient.py), so it goes on with the UPS; tray_parts checks it as a part of its own
+    names += airgradient.add_to_tray(sc, k, parent=g)
     return names
 
 
@@ -775,22 +794,79 @@ def junction_box(x, y, z, face):
             "socket holes": (W._merge(holes), (0.10, 0.10, 0.11)), "network ports": (W._merge(port), (0.15, 0.40, 0.85))}
 
 
+# Round 13: the building and its services for 9150 mm Shuttles (vlm.UNIT_H; Sterling, PR #318, 2026-11-20: taller VLMs
+# "affect many other things, like the overhead facilities (power, etc.)"). Until round 12 the north cable tray ran at
+# 4.3 m "over the north row, above the VLM's 3950 mm roof", the argon line beside it, the VLMs' feeds and the docks'
+# supply line came down onto the Shuttles' roofs, and the hangers and the fume hood's duct stopped at 6 m. With 9.15 m
+# units all of that ran through them. Now the north tray and the argon line jog round the back of both Shuttles, the
+# VLMs' 208 V feeds drop to a disconnect on each one's back, the docks' supply goes into each Shuttle's right-hand side
+# cavity (where its risers are) at 2.6 m, and the building is PR #344's 36 ft high bay: roof steel at 10.97 m, the
+# hangers and the duct up to it, LED high-bay lights at 10.2 m. The routes are ours, drawn to read, not a design.
+Z_CEIL = 10970.0                 # PR #344: the 36 ft buildings near BYU; a 9.15 m Shuttle needs 31.5 ft clear under
+#                                  NFPA 13's 18 in, 33 ft under ESFR (notes/kardex_height.md)
+LIGHT = dict(z=10200.0, d=330.0, h=150.0, pitch=(4000.0, 3600.0), lm=24000.0, w=150.0)   # UFO high bays (ours)
+
+
+def _path_tray(path, z, w=300.0, h=100.0):
+    """A ladder-less cable tray (a sheet with two side walls) along an axis-aligned plan path at height z."""
+    out = []
+    for (xa, ya), (xb, yb) in zip(path[:-1], path[1:]):
+        if abs(ya - yb) < 1e-6:
+            x0, x1 = sorted((xa, xb))
+            x0, x1 = x0 - w / 2, x1 + w / 2
+            out += [W._box(x0, ya - w / 2, z, x1, ya + w / 2, z + 12), W._box(x0, ya - w / 2, z, x1, ya - w / 2 + 12,
+                                                                               z + h),
+                    W._box(x0, ya + w / 2 - 12, z, x1, ya + w / 2, z + h)]
+        else:
+            y0, y1 = sorted((ya, yb))
+            out += [W._box(xa - w / 2, y0, z, xa + w / 2, y1, z + 12), W._box(xa - w / 2, y0, z, xa - w / 2 + 12, y1,
+                                                                               z + h),
+                    W._box(xa + w / 2 - 12, y0, z, xa + w / 2, y1, z + h)]
+    return W._merge(out)
+
+
+def _pipe(pts, r=14.0, res=14):
+    """A pipe along a polyline."""
+    out = []
+    for a, b in zip(pts[:-1], pts[1:]):
+        a, b = np.asarray(a, float), np.asarray(b, float)
+        d = b - a
+        L_ = float(np.linalg.norm(d))
+        if L_ < 1e-6:
+            continue
+        out.append(pv.Cylinder(center=(a + b) / 2, direction=d / L_, radius=r, height=L_ + r * 0.5,
+                               resolution=res).triangulate())
+    return W._merge(out)
+
+
+def _along(path, step):
+    """Points every `step` mm along an axis-aligned plan path."""
+    pts = []
+    for (xa, ya), (xb, yb) in zip(path[:-1], path[1:]):
+        L_ = math.hypot(xb - xa, yb - ya)
+        for t in np.arange(0.0, L_, step):
+            pts.append((xa + (xb - xa) * t / L_, ya + (yb - ya) * t / L_))
+    return pts
+
+
 def utilities(hood=None) -> tuple[dict, tuple]:
     """Cable trays over both rows with a drop to each station ending in a grey junction box (sockets and a network
-    port), a network cable in each tray, an argon line from a cylinder manifold to the gas users, and the fume hood's
-    duct. Layout choices, drawn to read, not a design. -> ({name: (mesh, colour)}, a junction box's label point)."""
-    zn, yn = 4300.0, W.Y_FACE_N + 700.0          # over the north row, above the VLM's 3950 mm roof
+    port) and an AirGradient ONE on the box (round 13), a network cable in each tray, an argon line from a cylinder
+    manifold to the gas users, the fume hood's duct, and (round 13) the high bay's lights. Layout choices, drawn to
+    read, not a design. -> ({name: (mesh, colour)}, a junction box's label point)."""
+    import airgradient as AGm
+    zn, yn = 4300.0, W.Y_FACE_N + 700.0          # over the north row
     zs, ys = 3200.0, W.Y_FACE_S - 600.0
     xs = (-9200.0, 11000.0)
-
-    def tray(x0, x1, y, z):
-        return W._merge([W._box(x0, y - 150, z, x1, y + 150, z + 12), W._box(x0, y - 150, z, x1, y - 138, z + 100),
-                         W._box(x0, y + 138, z, x1, y + 150, z + 100)])
-    trays = W._merge([tray(*xs, yn, zn), tray(xs[0] + 1200, xs[1], ys, zs)])
-    hangers = W._merge([W._box(x - 15, y - 15, z + 100, x + 15, y + 15, 6000) for x in np.arange(xs[0], xs[1], 3000)
-                        for y, z in ((yn, zn), (ys, zs))])
-    net = W._merge([pv.Cylinder(center=((xs[0] + xs[1]) / 2, y + 60, z + 35), direction=(1, 0, 0), radius=18,
-                                height=xs[1] - xs[0], resolution=16).triangulate() for y, z in ((yn, zn), (ys, zs))])
+    yb = V.UNIT_D / 2 + V.SKIN + 250.0           # round 13: behind both Shuttles (their backs at 1562)
+    xa, xb = -V.UNIT_W / 2 - V.SKIN - 335.0, X2 + V.UNIT_W / 2 + V.SKIN + 335.0     # round them, 335 mm clear
+    north_path = [(xs[0], yn), (xa, yn), (xa, yb), (xb, yb), (xb, yn), (xs[1], yn)]
+    south_path = [(xs[0] + 1200, ys), (xs[1], ys)]
+    trays = W._merge([_path_tray(north_path, zn), _path_tray(south_path, zs)])
+    hangers = W._merge([W._box(x - 15, y - 15, z + 100, x + 15, y + 15, Z_CEIL)
+                        for path, z in ((north_path, zn), (south_path, zs)) for x, y in _along(path, 3000.0)])
+    net = W._merge([_pipe([(x, y + (60 if abs(y - yn) < 1 or abs(y - ys) < 1 else 0), z + 35) for x, y in path],
+                          18.0, 16) for path, z in ((north_path, zn), (south_path, zs))])
     drops, parts = [], {}
     north = {"glovebox": -7300.0, "repowder": -3640.0, "sieve_cell": -1700.0, "vlm": 900.0, "vlm2": X2 + 900.0,
              "aconity": 7300.0, "packaging": 10050.0}
@@ -800,15 +876,24 @@ def utilities(hood=None) -> tuple[dict, tuple]:
     def add(d):
         for k, (m, c) in d.items():
             parts.setdefault(k, ([], c))[0].append(m)
+
+    def add_ag(x, y, z, face):                  # round 13: the station's AirGradient ONE on its junction box
+        for mat, mesh in AGm.at_junction_box(x, y, z, face).items():
+            parts.setdefault(f"AirGradient {mat}", ([], AGm.colour(mat)))[0].append(mesh)
     label = None
+    yv = V.UNIT_D / 2 + V.SKIN                   # the Shuttles' backs
     for key, x in north.items():
-        z_end = 3975.0 if key.startswith("vlm") else 2500.0
+        if key.startswith("vlm"):                # round 13: down behind the Shuttle to a disconnect on its back
+            z_end = 2650.0
+            drops.append(_pipe([(x, yb, zn), (x, yb, z_end + 150.0), (x, yv + 140.0, z_end + 150.0)], 22.0, 16))
+            add({"junction boxes": (W._box(x - 160, yv, z_end - 260, x + 160, yv + 140, z_end + 200),
+                                    (0.62, 0.64, 0.66))})
+            continue
+        z_end = 2500.0
         drops.append(pv.Cylinder(center=(x, yn - 60, (zn + z_end) / 2), direction=(0, 0, 1), radius=22,
                                  height=zn - z_end, resolution=16).triangulate())
-        if not key.startswith("vlm"):
-            add(junction_box(x, yn - 60, z_end, -1))
-        else:
-            add({"junction boxes": (W._box(x - 120, yn - 120, z_end - 5, x + 120, yn, z_end + 150), (0.62, 0.64, 0.66))})
+        add(junction_box(x, yn - 60, z_end, -1))
+        add_ag(x, yn - 60, z_end, -1)
     # round 11: the box at the 68FM-100 hung at 1720-1900 mm, inside the frame's crosshead (1610-1810 at rest in
     # r8_test's model, up to the top plate at 2137 over its travel; chapter 5 found it): it goes over the frame's top
     # (2287 mm), 63 mm clear, at 2350-2530 mm, the machine's cable up its back
@@ -818,38 +903,37 @@ def utilities(hood=None) -> tuple[dict, tuple]:
         drops.append(pv.Cylinder(center=(x, ys + 60, (zs + ze) / 2), direction=(0, 0, 1), radius=22,
                                  height=zs - ze, resolution=16).triangulate())
         add(junction_box(x, ys + 60, ze, +1))
+        add_ag(x, ys + 60, ze, +1)
         if key == "instron_small":
             label = (x, ys + 60, 1800.0)
+    # the argon line: from the cylinders at the west end along the north tray (beside it, 230 mm behind, 150 mm under
+    # its floor), round the Shuttles with it, a drop to each gas user; the DED's down the west end to the south tray
     gas_users = [-7300.0, -3640.0, 7300.0]
     gx0 = xs[0] - 400
-    ar = [pv.Cylinder(center=((gx0 + gas_users[-1]) / 2, yn + 230, zn - 150), direction=(1, 0, 0), radius=14,
-                      height=gas_users[-1] - gx0, resolution=14).triangulate(),
-          pv.Cylinder(center=(gx0, yn + 230, zn / 2), direction=(0, 0, 1), radius=14, height=zn,
-                      resolution=14).triangulate()]
+    za = zn - 150
+    ar_path = [(gx0, yn + 230), (xa + 230, yn + 230), (xa + 230, yb + 230), (xb + 230, yb + 230), (xb + 230, yn + 230),
+               (gas_users[-1] + 200, yn + 230)]
+    ar = [_pipe([(x, y, za) for x, y in ar_path]), _pipe([(gx0, yn + 230, 0.0), (gx0, yn + 230, za)])]
     for x in gas_users:
-        ar.append(pv.Cylinder(center=(x + 200, yn + 230, (zn - 150 + 1800) / 2), direction=(0, 0, 1), radius=12,
-                              height=zn - 150 - 1800, resolution=14).triangulate())
+        ar.append(_pipe([(x + 200, yn + 230, za), (x + 200, yn + 230, 1800.0)], 12.0))
     xd = FLOOR_PLAN["ded"][0]                    # the DED's argon: down the south tray
-    ar.append(pv.Cylinder(center=(gx0, (yn + 230 + ys - 200) / 2, zs - 150), direction=(0, 1, 0), radius=14,
-                          height=yn + 230 - (ys - 200), resolution=14).triangulate())
-    ar.append(pv.Cylinder(center=((gx0 + xd) / 2, ys - 200, zs - 150), direction=(1, 0, 0), radius=14,
-                          height=xd - gx0, resolution=14).triangulate())
-    ar.append(pv.Cylinder(center=(xd + 200, ys - 200, (zs - 150 + 1800) / 2), direction=(0, 0, 1), radius=12,
-                          height=zs - 150 - 1800, resolution=14).triangulate())
+    ar.append(_pipe([(gx0, yn + 230, zs - 150), (gx0, ys - 200, zs - 150), (xd + 200, ys - 200, zs - 150),
+                     (xd + 200, ys - 200, 1800.0)]))
     cyl = [pv.Cylinder(center=(gx0 - 300 + 260 * i, yn + 700, 750), direction=(0, 0, 1), radius=115, height=1500,
                        resolution=24).triangulate() for i in range(4)]
-    # the ducted hood's exhaust: up from its top, behind the south cable tray, to the roof (a 180 mm duct; a layout
+    # the ducted hood's exhaust: up from its top, behind the south cable tray, through the roof (a 180 mm duct; a layout
     # choice). hood: the hood's world bounds
     duct = None
     if hood is not None:
         z0 = hood[5]
-        duct = pv.Cylinder(center=((hood[0] + hood[1]) / 2, hood[2] + 110.0, (z0 + 6200.0) / 2), direction=(0, 0, 1),
-                           radius=90, height=6200.0 - z0, resolution=28).triangulate()
+        duct = pv.Cylinder(center=((hood[0] + hood[1]) / 2, hood[2] + 110.0, (z0 + Z_CEIL + 300.0) / 2),
+                           direction=(0, 0, 1), radius=90, height=Z_CEIL + 300.0 - z0, resolution=28).triangulate()
     # round 10: what the trays' couplings carry besides mains and Ethernet (services.py: compressed air, N2, chilled
     # water) comes from units at the back of the 800 mm gap between the Shuttles, where no MiR turns (they turn at the
     # front): the N2 generator (Parker Balston UHPN2-1100, 305 x 406 x 889 mm, services.SOURCES["n2"]), an oil-free
     # compressor for it and for the docks' air (our size), and the chiller (ThermoFlex 900, size not found: not to
-    # size). A line from them goes up and over both roofs to the risers' drops.
+    # size). Round 13: their line goes into each Shuttle's right-hand side cavity at 2.6 m, where the risers run, not
+    # over the roofs: Shuttle 1's straight across the gap, Shuttle 2's round its back.
     xg = X2 / 2                                  # the gap's middle: 1815
     units_ = {"N2 generator": (305.0, 406.0, 889.0, 200.0, (0.86, 0.87, 0.88)),
               "air compressor": (450.0, 450.0, 650.0, 660.0, (0.30, 0.45, 0.62)),
@@ -857,18 +941,27 @@ def utilities(hood=None) -> tuple[dict, tuple]:
     for nm, (w, d, h, y0, col) in units_.items():
         out_units = W._box(xg - w / 2, y0, 0.0, xg + w / 2, y0 + d, h)
         parts.setdefault(nm, ([], col))[0].append(out_units)
-    svc = [pv.Cylinder(center=(xg, 900.0, (950.0 + 4150.0) / 2), direction=(0, 0, 1), radius=30, height=3200.0,
-                       resolution=14).triangulate(),
-           pv.Cylinder(center=((900.0 + X2 + 900.0) / 2, 900.0, 4150.0), direction=(1, 0, 0), radius=30,
-                       height=X2, resolution=14).triangulate()]
-    for x in (900.0, X2 + 900.0):
-        svc.append(pv.Cylinder(center=(x, 900.0, (V.UNIT_H + 4150.0) / 2), direction=(0, 0, 1), radius=30,
-                               height=4150.0 - V.UNIT_H, resolution=14).triangulate())
+    xr1 = V.UNIT_W / 2 + V.SKIN                  # Shuttle 1's right side, Shuttle 2's
+    xr2 = X2 + V.UNIT_W / 2 + V.SKIN
+    zsv = 2600.0
+    svc = [_pipe([(xg, 900.0, 950.0), (xg, 900.0, zsv), (xr1 - 20.0, 900.0, zsv)], 30.0),
+           _pipe([(xg, 900.0, zsv), (xg, yv + 120.0, zsv), (xr2 + 220.0, yv + 120.0, zsv), (xr2 + 220.0, 900.0, zsv),
+                  (xr2 - 20.0, 900.0, zsv)], 30.0)]
     parts.setdefault("dock supply line", ([], (0.55, 0.66, 0.74)))[0].extend(svc)
+    # round 13: LED high-bay lights (UFO fixtures, 24,000 lm, 150 W: a common size, ours) on a 4.0 x 3.6 m grid at
+    # 10.2 m, each on a hook from the roof steel
+    lights, hooks = [], []
+    for x in np.arange(-8000.0, 10001.0, LIGHT["pitch"][0]):
+        for y in np.arange(1800.0, -9001.0, -LIGHT["pitch"][1]):
+            z = LIGHT["z"]
+            lights.append(pv.Cylinder(center=(x, y, z), direction=(0, 0, 1), radius=LIGHT["d"] / 2,
+                                      height=LIGHT["h"], resolution=28).triangulate())
+            hooks.append(W._box(x - 6, y - 6, z + LIGHT["h"] / 2, x + 6, y + 6, Z_CEIL))
     out = {"cable trays": (trays, (0.70, 0.72, 0.74)), "tray hangers": (hangers, (0.55, 0.57, 0.60)),
            "network cable": (net, (0.15, 0.40, 0.85)), "power drops": (W._merge(drops), (0.30, 0.31, 0.33)),
            "argon line": (W._merge(ar), (0.25, 0.60, 0.35)), "argon cylinders": (W._merge(cyl), (0.30, 0.55, 0.36)),
-           "hood duct": (duct, (0.78, 0.79, 0.81))}
+           "hood duct": (duct, (0.78, 0.79, 0.81)), "high-bay lights": (W._merge(lights), (0.86, 0.87, 0.85)),
+           "light hooks": (W._merge(hooks), (0.40, 0.41, 0.43))}
     for k, (ms, c) in parts.items():
         out[k] = (W._merge(ms), c)
     return {k: v for k, v in out.items() if v[0] is not None}, label
@@ -1173,22 +1266,24 @@ def movie(data, idata):
     def util_on(u):
         for i, nm in enumerate(names_u):
             sc.alpha[nm] = window(u, i / (len(names_u) + 1), (i + 2) / (len(names_u) + 1))
-    ulbls = [("cable tray: power and network", (5200, W.Y_FACE_N + 700, 4400)),
+    ulbls = [("cable tray: power and network, round the Shuttles' backs", (8000, W.Y_FACE_N + 700, 4400)),
              ("argon cylinders", (-9500, W.Y_FACE_N + 1400, 1500)),
-             ("VLM supply, 208 V 3-phase", (900, W.Y_FACE_N + 640, 4300)),
-             ("N2 generator, compressor, chiller", (X2 / 2, 900.0, 950.0))]
+             ("VLM supply, 208 V 3-phase, onto its back", (900, V.UNIT_D / 2 + V.SKIN + 70, 2700)),
+             ("N2 generator, compressor, chiller", (X2 / 2, 900.0, 950.0)),
+             ("LED high-bay lights at 10.2 m, 36 ft roof", (-4000, -2400, 10200))]
     if ulabel is not None:
         ulbls.append(("power and network drop", ulabel))
-    sc.step(f"3/{n}", "Utilities: cable trays over both rows. A drop comes down to every station and ends in a grey "
-            "junction box with sockets and a network port. 208 V three-phase goes to each VLM (#53), argon from a "
-            "cylinder manifold to the glovebox, the rePowder, the Aconity and the DED, and a duct up from the fume "
-            "hood. Between the Shuttles, at the back: an N2 generator, a compressor and a chiller for the trays' "
-            "couplings. Layout choices, not a design.", 4.2, util_on, hold=2.0, cam_to=CAM_UTIL,
+    sc.step(f"3/{n}", "Utilities, in a high bay with a 36 ft roof for the 30 ft Shuttles: cable trays over both rows, "
+            "round the Shuttles' backs. A drop comes down to every station and ends in a grey junction box with "
+            "sockets, a network port and an AirGradient air monitor. 208 V three-phase goes to each VLM (#53), argon "
+            "from a cylinder manifold to the glovebox, the rePowder, the Aconity and the DED, and a duct up from the "
+            "fume hood. Between the Shuttles, at the back: an N2 generator, a compressor and a chiller for the trays' "
+            "couplings. Layout choices, not a design.", 4.6, util_on, hold=2.2, cam_to=CAM_UTIL,
             labels=W.auto(sc, CAM_UTIL, ulbls))
     # ------------------------------------------------------------------ 4. the VLMs
     s = A.slide_in
-    sc.step(f"4/{n}", "Two Kardex Shuttle XP 500s go together where their footprints are taped, 800 mm apart: base "
-            "frames, posts, storage columns.", 2.6,
+    sc.step(f"4/{n}", f"Two Kardex Shuttle XP 500s, {V.UNIT_H / 1000:.2f} m (30 ft) tall, go together where their "
+            "footprints are taped, 800 mm apart: base frames, posts, storage columns.", 2.8,
             # round 13: the posts and columns fade in on the base, not slid in (round 12's audit: the columns slid
             # through the base frames as it came down, the lift's rails through the posts, the trays through the
             # columns and the cladding through the cable trays overhead)
@@ -1495,7 +1590,8 @@ def _fcl_of(sc: Scene, names, Mi):
 # solid to solid (FCL's distance), or CLEAR_LINES_MM from the lines and the plate on the back rim.
 CLEAR_MM = 10.0                # the least gap between two things on a tray: placing them by hand from a lift table
 CLEAR_LINES_MM = 5.0           # from the tray's own lines and its dock plate, which lie on the back rim and the side
-BY_DESIGN = {frozenset(("ups", "plate")), frozenset(("ups", "lines")), frozenset(("plate", "lines"))}   # they join
+BY_DESIGN = {frozenset(("ups", "plate")), frozenset(("ups", "lines")), frozenset(("plate", "lines")),
+             frozenset(("ups", "monitor"))}         # they join: the mains line ends at the UPS, the monitor sits on it
 PLAN_GRID = 4.0                # mm per pixel of the footprints
 PLAN_MASKS: dict = {}          # tray -> [(label, kind, mask)], for draw_plan
 
@@ -1529,8 +1625,14 @@ def tray_parts(sc: Scene, items: dict, k: str) -> list:
             out.append((f"{g} post", "cam", _bounds_of(sc, post, Mi), post))
             out.append((f"{g} head", "cam", _bounds_of(sc, head, Mi), head))
             continue
-        kind = {"ups": "ups", "airgradient": "monitor"}.get(key, "item")
-        out.append((nm if key != "ups" else "UPS", kind, _bounds_of(sc, names, Mi), names))
+        if key == "ups":                             # round 13: the UPS and the AirGradient on it, apart
+            ag = [n for n in names if sc.group_of[n].startswith("ag_")]
+            rest = [n for n in names if n not in set(ag)]
+            out.append(("UPS", "ups", _bounds_of(sc, rest, Mi), rest))
+            if ag:
+                out.append(("AirGradient ONE", "monitor", _bounds_of(sc, ag, Mi), ag))
+            continue
+        out.append((nm, "item", _bounds_of(sc, names, Mi), names))
     plate = [n for n in sc.actors if n.startswith(f"plate_{k}/")]
     lines = [n for n in sc.actors if n.startswith(f"lines_{k}/")]
     out.append(("dock plate", "plate", _bounds_of(sc, plate, Mi), plate))

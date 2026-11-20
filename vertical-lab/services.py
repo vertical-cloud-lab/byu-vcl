@@ -1298,6 +1298,8 @@ def add_tray_services(sc, tray: str, ups=True) -> list:
     names = add_meshes(sc, f"lines_{tray}", meshes_of("lines", tray_lines, 0.5), f"tray_{tray}")
     if ups:
         add_ups_meshes(sc, tray, f"tray_{tray}")
+        import airgradient                               # round 13: the tray's AirGradient ONE, on its UPS
+        airgradient.add_to_tray(sc, tray)
     return names
 
 
@@ -2049,7 +2051,6 @@ PANEL = (-500.0, 2300.0, 900.0, 500.0, 2450.0, 2100.0)        # a 208Y/120 V pan
 SWITCH_AT = (1430.0, 200.0, 2600.0)                            # PoE+ switch on the VLM's right-hand side
 UTIL = {"n2": (1700.0, 700.0), "chiller": (1700.0, 1250.0)}    # beside the VLM, right-hand side, behind the line
 CHARGER_AT = (-2000.0, -1500.0)                                # MiR Charge 48V, in the gap left of the VLM
-RAIL_CTRL_AT = (10150.0, -2250.0)                              # MachineMotion 2 and the UR control box, rail's end
 
 CIRCUITS = [   # (key, what, supply, load, source, kind)
     ("vlm", "Kardex Shuttle XP 500 (drives, controls)", "208 V 3-phase (#53)",
@@ -2072,8 +2073,6 @@ CIRCUITS = [   # (key, what, supply, load, source, kind)
      "Instron 6800 table-model brochure (snippet)", "snippet"),
     ("wire_edm", "FANUC ROBOCUT alpha-C400iC", "200 V +-10 % 3-phase (or 220 V)", "13 kVA (36 A per phase at 208 V)",
      "FANUC Europe data sheet (snippet)", "snippet"),
-    ("rail", "Vention MachineMotion 2 (four-drive) for the rail", "85-264 V 1-phase", "1200 W typical, 9 A rated at "
-     "120 V", "Vention MachineMotion 2 user manual (snippet)", "snippet"),
     ("ur", "UR10e control box", "100-240 V 1-phase, 47-440 Hz", "350 W typical, 615 W maximum average",
      "UR's specifications via a cobot guide (snippet)", "snippet"),
     ("mir", "MiR Charge 48V (MiR250 layout only)", "100-240 V 1-phase, a standard 15 A outlet",
@@ -2123,144 +2122,74 @@ def ladder_mesh(path=LADDER_PATH, z=LADDER_Z, w=LADDER_W, h=90.0, pitch=300.0):
 
 
 def movie_cabling(data, idata):
-    import line
-    import pyvista as pv
-    M = mats()
-    loads = line.TRAY_LOADS        # the OpenFlexure meshes may not be built yet: leave out what isn't loaded
-    line.TRAY_LOADS = {k: [x for x in v if x[0] in idata] for k, v in loads.items()}
-    try:
-        sc, L, rigs = line.build("vlm_cabling", data, idata)
-    finally:
-        line.TRAY_LOADS = loads
-    sc.title = "Vertical cloud lab: power and network cabling"
-    add_docks(sc, [HOME[k] for k in HOME] + ["open"])
-    for k in HOME:
-        add_tray_services(sc, k)
-        add_tray_cameras(sc, k)
-    add_bay_camera(sc)
+    """Power, network, gases and the docks' supply for the whole lab. Round 13 (Sterling, PR #318, 2026-11-20, at 5:56
+    of round 12's video: "shows a rail still. We moved fully over to the mobile manipulator setup, no?"): rounds 4-12
+    drew this clip on round 3's one-Shuttle line, with the arm's floor rail, its cable chain and its MachineMotion
+    controls. Now it is setup_lab's lab as the set-up movie builds it (two 9150 mm Shuttles, every tray loaded, both
+    rows, two MiR250 + UR10e units on their chargers) and setup_lab.utilities()'s services, the rest drawn faint. The
+    supplies quoted are notes/voltage.md's and CIRCUITS'."""
+    import setup_lab as SL
+    import warehouse as W
+    sc, L, F, items, rigs, units, util, ulabel, vp = SL.build(data, idata, name="vlm_cabling",
+                                                               title="Vertical cloud lab: power, network and gases")
+    SL.add_bay_cams(sc)
     L.skin(1.0)(1.0)
-    L.apply_state()
     L.show_gauges = False
-    keep = {n for n, g in sc.group_of.items() if g.startswith(("dock", "riser", "cam", "baycam", "floor"))}
-    for n in sc.actors:
-        if n in keep or n in ("floor", "line floor", "floor shadow"):
-            continue
-        sc.base_alpha[n] = min(sc.base_alpha[n], 0.16)
-    POW, NET = M["svc_power"][:3], M["svc_data"][:3]
-    # the machines' extents in the line (from the models; see notes/services.md)
-    mach = {"glovebox": (-6350.0, -758.0, 1795.0), "repowder": (-3600.0, -700.0, 1600.0),
-            "aconity": (3250.0, -328.0, 2324.0), "instron_floor": (5600.0, -766.0, 2287.0),
-            "instron_small": (7000.0, -927.0, 1410.0), "wire_edm": (8700.0, 982.0, 1970.0)}
-    sc.add("cab/ladder", ladder_mesh(), M["svc_ladder"][:3], "cabling", specular=0.5)
-    sc.add("cab/panel", _box(*PANEL), M["svc_cabinet"][:3], "cabling")
-    feed = _tube([((PANEL[0] + PANEL[3]) / 2, (PANEL[1] + PANEL[4]) / 2, PANEL[5]),
-                  ((PANEL[0] + PANEL[3]) / 2, (PANEL[1] + PANEL[4]) / 2, LADDER_Z + 30),
-                  ((PANEL[0] + PANEL[3]) / 2, 2000.0, LADDER_Z + 30)], 30)
-    sc.add("cab/feed", feed, POW, "cabling")
-    drops = {}
-    for key, (x, back, top) in mach.items():
-        if back > LADDER_Y:                  # the ladder passes over it: straight down into its top
-            pts = [(x, LADDER_Y, LADDER_Z), (x, LADDER_Y, top + 30)]
-        else:
-            pts = [(x, LADDER_Y, LADDER_Z), (x, LADDER_Y, 1150.0), (x, back + 5, 1150.0)]
-        drops[key] = pts[-1]
-        sc.add(f"cab/drop {key}", _tube(pts, 16), POW, "cabling")
-    # the VLM: its supply into the back panel, and the riser feeds over the top from the utilities and the switch
-    sc.add("cab/drop vlm", _tube([(1200, 2000, LADDER_Z), (1200, 1600, LADDER_Z)], 22), POW, "cabling")
-    drops["vlm"] = (1200, 1600, LADDER_Z)
-    sc.add("cab/drop docks", _tube([(1450, 2000, LADDER_Z), (1450, 1700, LADDER_Z), (1450, 1700, 3880),
-                                    (RISER["x"], 1700, 3880), (RISER["x"], V.Y_REAR + PLATE_Y + RISER["dy"], 3880),
-                                    (RISER["x"], V.Y_REAR + PLATE_Y + RISER["dy"], 3800)], 18), POW, "cabling")
-    sc.add("cab/drop docks front", _tube([(RISER["x"], 1700, 3880), (RISER["x"], V.Y_FRONT + PLATE_Y + RISER["dy"],
-                                                                       3880),
-                                          (RISER["x"], V.Y_FRONT + PLATE_Y + RISER["dy"], 3800)], 18), POW, "cabling")
-    # the switch and its links
-    sx, sy, sz = SWITCH_AT
-    sc.add("cab/switch", _box(sx, sy - 220, sz - 22, sx + 60, sy + 220, sz + 22), M["svc_ups"][:3], "cabling")
-    net = [_tube([(1750, sy, LADDER_Z), (sx + 30, sy, LADDER_Z), (sx + 30, sy, sz + 22)], 8),
-           _tube([(sx + 30, sy - 200, sz), (sx + 30, sy - 200, 3860), (RISER["x"] + 20, sy - 200, 3860),
-                  (RISER["x"] + 20, V.Y_FRONT + PLATE_Y + RISER["dy"], 3860),
-                  (RISER["x"] + 20, V.Y_FRONT + PLATE_Y + RISER["dy"], 3800)], 8),
-           _tube([(sx + 30, sy + 200, sz), (sx + 30, sy + 200, 3860), (RISER["x"] + 20, sy + 200, 3860),
-                  (RISER["x"] + 20, V.Y_REAR + PLATE_Y + RISER["dy"], 3860),
-                  (RISER["x"] + 20, V.Y_REAR + PLATE_Y + RISER["dy"], 3800)], 8),
-           _tube([(sx + 30, sy - 100, sz - 22), (sx + 30, sy - 100, 1900), (1380, sy - 100, 1900),
-                  (1380, BAY_CAM["y"], 1900), (1380, BAY_CAM["y"], BAY_CAM["bar_z"]),
-                  (V.OPEN_W / 2, BAY_CAM["y"], BAY_CAM["bar_z"])], 8)]
-    sc.add("cab/network", pv.merge(net), NET, "cabling")
-    # the N2 generator and the chiller beside the VLM, and their hoses to the risers' tops
-    nx, ny = UTIL["n2"]
-    sc.add("cab/n2 generator", _box(nx, ny, 0, nx + N2GEN["w"], ny + N2GEN["d"], N2GEN["h"]), M["svc_cabinet"][:3],
-           "cabling")
-    cx, cy = UTIL["chiller"]
-    sc.add("cab/chiller", _box(cx, cy, 0, cx + 500, cy + 600, 700), (0.55, 0.62, 0.70), "cabling")
-    hoses = {"svc_n2": [(nx + 150, ny + 200, N2GEN["h"]), (nx + 150, ny + 200, 3900), (RISER["x"] - 20, ny + 200, 3900)],
-             "svc_cws": [(cx + 150, cy + 300, 700), (cx + 150, cy + 300, 3920), (RISER["x"] - 10, cy + 300, 3920)],
-             "svc_cwr": [(cx + 300, cy + 300, 700), (cx + 300, cy + 300, 3940), (RISER["x"], cy + 300, 3940)],
-             "svc_air": [(1750, 900, LADDER_Z), (1600, 900, LADDER_Z), (1600, 900, 3960), (RISER["x"] + 10, 900, 3960)]}
-    for mat, pts in hoses.items():
-        sc.add(f"cab/{mat}", _tube(pts, 10), M[mat][:3], "cabling")
-    sc.add("cab/drop utilities", _tube([(1750, 1000, LADDER_Z), (nx + 250, 1000, LADDER_Z), (nx + 250, 1000, 1200),
-                                        (nx + 250, ny + 300, 1200), (nx + 250, ny + 300, N2GEN["h"])], 12), POW,
-           "cabling")
-    # the rail: its cable chain in a trough in front of the beam, and the controls at its right-hand end
-    ry = line.RAIL_Y - 124.0 - 70.0
-    sc.add("cab/rail trough", _box(line.RAIL_X[0], ry - 45, 0, line.RAIL_X[1], ry + 45, 70), M["svc_ladder"][:3],
-           "cabling")
-    fx = (line.RAIL_X[0] + line.RAIL_X[1]) / 2
-    chain = pv.merge([_box(line.PARK_X, ry - 35, 8, fx, ry + 35, 36), _box(line.PARK_X - 60, ry - 35, 8,
-                                                                            line.PARK_X, ry + 35, 360)])
-    sc.add("cab/rail chain", chain, M["svc_chain"][:3], "cabling")
-    rx, ry2 = RAIL_CTRL_AT
-    sc.add("cab/rail controls", _box(rx - 250, ry2 - 200, 0, rx + 250, ry2 + 200, 900), M["svc_cabinet"][:3], "cabling")
-    sc.add("cab/rail feed", _tube([(10200, LADDER_Y, LADDER_Z), (10200, LADDER_Y, 2400), (10200, ry2, 2400),
-                                   (10200, ry2, 900)], 14), POW, "cabling")
-    sc.add("cab/rail run", _tube([(rx - 250, ry, 40), (fx, ry, 40)], 12), (0.2, 0.2, 0.22), "cabling")
-    # the MiR's charger (marker, not to size) and its feed from the ladder
-    mx, my = CHARGER_AT
-    sc.add("cab/mir charger", _box(mx - 150, my - 60, 0, mx + 150, my + 60, 450), (0.25, 0.25, 0.27), "cabling")
-    sc.add("cab/mir feed", _tube([(-1750, -900, LADDER_Z), (mx, -900, LADDER_Z), (mx, -900, 30), (mx, my + 60, 30)],
-                                 12), POW, "cabling")
     L.apply_state()
+    keep = set(util.values())
+    floor = {n for n, g in sc.group_of.items() if g in ("floor", "tape")} | {"footprints"}
+    for n in sc.actors:
+        if n in keep or n in floor:
+            continue
+        sc.base_alpha[n] = min(sc.base_alpha.get(n, 1.0), 0.16)
+    X2 = V.SHUTTLE_X[2]
+    yv = V.UNIT_D / 2 + V.SKIN
+    yn, ys = W.Y_FACE_N + 700.0, W.Y_FACE_S - 600.0
     n = 6
-    def lbl(t, p, at):
-        return (t, tuple(p), at)
-    sc.step(f"1/{n}", "Power and network for the line, everything else drawn faint: one ladder tray overhead at 2.8 m, "
-            "behind the machines and round the back of the VLM, with a drop to each machine.", 3.4, None, hold=1.6,
-            cam_to=[(4600, -16800, 11500), (1200, -300, 1200), (0, 0, 1)],
-            labels=[lbl("ladder tray, 2.8 m up", (-4500, LADDER_Y, LADDER_Z + 90), (0.30, 0.12)),
-                    lbl("208Y/120 V panel (placement ours)", (0, 2375, 2100), (0.66, 0.22))])
-    sc.step(f"2/{n}", "Left: the glovebox (rating not found) and the rePowder atomizer, which needs 400 V three-phase "
-            "and 230 V on 32 A plugs, its optimizer drawing up to about 60 A (the install call).", 3.0, None, hold=1.6,
-            cam_to=[(-7400, -8200, 4600), (-4600, -900, 1300), (0, 0, 1)],
-            labels=[lbl("rePowder: 400 V 3-ph + 230 V, 32 A plugs", drops["repowder"], (0.70, 0.18)),
-                    lbl("glovebox: rating not found", drops["glovebox"], (0.20, 0.18)),
-                    lbl("MiR Charge 48V: 100-240 V in, 48 V 40 A out", (mx, my, 450), (0.80, 0.42))])
-    sc.step(f"3/{n}", "The VLM: its 208 V three-phase supply (#53) into the back, and the dock circuits up and over the "
-            "top into the two risers. A PoE+ switch on its side feeds the risers and the bay camera; N2 and chilled "
-            "water come from units standing beside it.", 3.4, None, hold=2.0,
-            cam_to=[(6200, -5200, 5600), (900, 300, 2600), (0, 0, 1)],
-            labels=[lbl("VLM: 208 V 3-phase", drops["vlm"], (0.20, 0.14)),
-                    lbl("dock circuits, 208Y/120 V", (RISER["x"], 1700, 3880), (0.20, 0.24)),
-                    lbl("PoE+ switch", (sx + 60, sy, sz), (0.84, 0.30)),
-                    lbl("N2 generator (Parker UHPN2-1100)", (nx + 150, ny, N2GEN["h"]), (0.84, 0.46)),
-                    lbl("chiller (ThermoFlex 900; box not to size)", (cx + 250, cy, 700), (0.84, 0.58)),
-                    lbl("service risers", (RISER["x"], V.Y_FRONT + PLATE_Y + RISER["dy"], 2600), (0.20, 0.40))])
-    sc.step(f"4/{n}", "Right: the Aconity MIDI (supply not found), the two Instrons and the wire EDM, the biggest load "
-            "here at 13 kVA, three-phase 200 V.", 3.0, None, hold=1.8,
-            cam_to=[(9400, -9800, 5200), (6000, -800, 1300), (0, 0, 1)],
-            labels=[lbl("Aconity MIDI: not found", drops["aconity"], (0.16, 0.16)),
-                    lbl("68FM-100: 208-240 V 1-ph or 3-ph", drops["instron_floor"], (0.36, 0.10)),
-                    lbl("68SC-2: 1-ph, 1400 VA", drops["instron_small"], (0.62, 0.10)),
-                    lbl("ROBOCUT: 200 V 3-ph, 13 kVA", drops["wire_edm"], (0.84, 0.16))])
-    sc.step(f"5/{n}", "The rail: its cable chain lies in a trough in front of the beam and follows the carriage; "
-            "MachineMotion 2 (1200 W typical) and the UR10e's control box (350 W typical) stand at its end.", 3.0,
-            None, hold=1.8, cam_to=[(3600, -6400, 2600), (2200, -1900, 300), (0, 0, 1)],
-            labels=[lbl("cable chain to the carriage", (line.PARK_X + 300, ry, 36), (0.20, 0.30)),
-                    lbl("chain trough, full length", (2600, ry, 70), (0.70, 0.30))])
-    sc.step(f"6/{n}", "All of it: one overhead route, drops at the machines' backs, nothing on the floor of the cell "
-            "but the rail's own chain.", 2.6, None, hold=2.4,
-            cam_to=[(4600, -16800, 11500), (1200, -300, 1200), (0, 0, 1)], still=True)
+    wide = [(10500, -21500, 13800), (600, -1600, 3900), (0, 0, 1)]
+
+    def lb(cam, items_):
+        return W.auto(sc, cam, items_)
+    sc.step(f"1/{n}", "Power, network and gases for the whole lab, everything else drawn faint: two cable trays, one "
+            "over each row, the north one round the backs of the two 30 ft Shuttles, with a drop to every station "
+            "ending in a junction box, its sockets, a network port and an AirGradient air monitor. Nothing runs on "
+            "the floor: the arms ride MiR250s and charge at their chargers.", 4.0, None, hold=2.0, cam_to=wide,
+            labels=lb(wide, [("north cable tray, 4.3 m", (-5000.0, yn, 4400.0)),
+                             ("south cable tray, 3.2 m", (-2000.0, ys, 3300.0)),
+                             ("round the Shuttles' backs", (X2 / 2, yv + 250.0, 4400.0))]))
+    cam_n = [(-6200, -9800, 6200), (-4200, -900, 2000), (0, 0, 1)]
+    sc.step(f"2/{n}", "The north row: the glovebox, the rePowder (400 V three-phase and 230 V on 32 A plugs, from its "
+            "install call), the sieving cell, and past the Shuttles the Aconity MIDI (400 V three-phase, 32 A, from a "
+            "dealer's listing) and the packaging station. The argon line runs beside the tray to each gas user.", 3.4,
+            None, hold=2.0, cam_to=cam_n,
+            labels=lb(cam_n, [("rePowder: 400 V 3-ph + 230 V, 32 A", (-3640.0, yn - 60, 2500.0)),
+                              ("glovebox", (-7300.0, yn - 60, 2500.0)),
+                              ("AirGradient ONE on each junction box", (-1700.0 - 160.0, yn - 60, 2410.0)),
+                              ("argon line", (-6000.0, yn + 230, 4150.0))]))
+    cam_v = [(8200, -6200, 6400), (2200, 600, 3300), (0, 0, 1)]
+    sc.step(f"3/{n}", "The Shuttles: each takes 208 V three-phase (#53; a used unit's plate: 8.6 kVA) to a disconnect on "
+            "its back. Between them an N2 generator, a compressor and a chiller feed the trays' couplings through each "
+            "Shuttle's right-hand side, where the risers run up to every slot's dock: 208Y/120 V on a 30 A breaker, "
+            "Ethernet, air, N2 and chilled water.", 3.6, None, hold=2.2, cam_to=cam_v,
+            labels=lb(cam_v, [("208 V 3-phase to Shuttle 1", (900.0, yv + 70.0, 2650.0)),
+                              ("to Shuttle 2", (X2 + 900.0, yv + 70.0, 2650.0)),
+                              ("docks' supply into each side cavity", (X2 / 2, 900.0, 2600.0)),
+                              ("N2, air, chilled water", (X2 / 2, 900.0, 900.0))]))
+    cam_s = [(5200, -15500, 6200), (2600, -6500, 1600), (0, 0, 1)]
+    sc.step(f"4/{n}", "The south row: the 68FM-100 (208-240 V, three-phase preferred), the MiR chargers (100-240 V), "
+            "the fume hood with its duct up through the 36 ft roof, the MX-Lab DED (220 V single-phase, 20 A) and the "
+            "wire EDM, the biggest load here at 13 kVA, 200 V three-phase.", 3.4, None, hold=2.0, cam_to=cam_s,
+            labels=lb(cam_s, [("68FM-100", (-6400.0, ys + 60, 2530.0)),
+                              ("MiR chargers", (-900.0, ys + 60, 1900.0)),
+                              ("fume hood duct to the roof", (900.0, ys - 300, 6000.0)),
+                              ("wire EDM: 200 V 3-ph, 13 kVA", (6600.0, ys + 60, 1900.0))]))
+    cam_u = [(-200, -5600, 2600), (-900, -3600, 700), (0, 0, 1)]
+    sc.step(f"5/{n}", "The arms: each UR10e and its control box ride a MiR250 on its 48 V battery, so no cable or rail "
+            "crosses the floor. Each charges on a MiR Charge 48V (100-240 V in, 48 V at up to 40 A out) in its bay on "
+            "the south side of the aisle.", 3.0, None, hold=2.0, cam_to=cam_u,
+            labels=lb(cam_u, [("MiR Charge 48V", (W.CHARGERS[0], W.Y_FACE_S + 200.0, 300.0))]))
+    sc.step(f"6/{n}", "All of it: one overhead route per row, drops at the stations, an air monitor at each, nothing on "
+            "the floor.", 2.6, None, hold=2.4, cam_to=wide, still=True)
     return sc.save()
 
 
@@ -2987,8 +2916,13 @@ def write_json():
         docks_and_lift=dock_clearance(),
         heat=heat_budget())
     (OUT / "services.json").write_text(json.dumps(services, indent=1) + "\n")
-    cab = dict(route=dict(ladder_z_mm=LADDER_Z, ladder_y_mm=LADDER_Y, width_mm=LADDER_W, path_xy_mm=LADDER_PATH,
-                          note="placements of the ladder, panel, switch and controls are ours"),
+    import setup_lab as SL
+    cab = dict(route=dict(north_tray_z_mm=4300.0, south_tray_z_mm=3200.0, roof_steel_z_mm=SL.Z_CEIL,
+                          lights=SL.LIGHT, building="PR #344's 36 ft high bay",
+                          note="round 13: setup_lab.utilities(), the cabling clip on the two-Shuttle floor with no rail "
+                               "(rounds 4-12: round 3's one-Shuttle line, a ladder tray at 2.8 m and the rail's chain); "
+                               "the north tray jogs round the backs of the 9150 mm Shuttles; the routes are ours",
+                          voltages="notes/voltage.md, out/voltage.json"),
                circuits=[dict(key=k, what=w, supply=s, load=l, source=src, kind=kind)
                          for k, w, s, l, src, kind in CIRCUITS])
     (OUT / "cabling.json").write_text(json.dumps(cab, indent=1) + "\n")
