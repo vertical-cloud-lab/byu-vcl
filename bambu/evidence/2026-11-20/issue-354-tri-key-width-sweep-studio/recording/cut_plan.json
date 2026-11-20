@@ -1,0 +1,9 @@
+{
+ "day": "2026-11-20",
+ "parts": [
+  {"from": "19:58:56", "to": "20:01:50", "speed": 2, "label": "Device page: Tinkerbell picked, live camera, plate read, 0.4 mm nozzle confirmed"},
+  {"from": "20:01:50", "to": "20:08:40", "speed": 3, "label": "Prepare: sync to the A1 mini, import 8 keys, 3 walls / 20% / no brim, slice, pre-Send frame, Send"},
+  {"from": "20:08:40", "to": "21:03:04", "speed": 30, "label": "Printing on Tinkerbell, 85 layers, to the finished plate"}
+ ],
+ "blur": [["19:59:10", "20:01:52"], ["20:07:20", "20:08:08"], ["20:08:27", "21:03:05"]]
+}

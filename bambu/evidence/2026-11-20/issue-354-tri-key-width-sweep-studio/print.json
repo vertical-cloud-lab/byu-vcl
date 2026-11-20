@@ -64,5 +64,26 @@
   "utc": "2026-11-20T20:09:22Z",
   "state": "Heatbed preheating, layer 0/85, nozzle 85/100 C, bed 33/65 C, estimated finish 21:03 UTC"
  },
- "sent_file": "sent/tri_keys_width_sweep_x2_A1mini_0.4_PLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code identical to the checked slice)"
+ "sent_file": "sent/tri_keys_width_sweep_x2_A1mini_0.4_PLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code identical to the checked slice)",
+ "layer_1": "2026-11-20T20:15:35Z (about 7 min of start-up: heating, nozzle cleaning, bed levelling, flow calibration)",
+ "finished": {
+  "utc": "about 2026-11-20T21:02:55Z: layer 85/85 at 21:02:25-21:03:26 with the targets set to 0 by 21:03:26; the bed came forward with all 8 keys standing at 21:03:02 (recording)",
+  "minutes_after_send": 54.5,
+  "studio_estimate": "54m 26s",
+  "hms_or_dialogs": "none seen",
+  "frame": "frames/20261120T210302Z_finished_8_keys.jpg (from the recording, room corners blurred)"
+ },
+ "parts_collected": "Someone at the printer lifted the plate off at about 21:03:07Z, took the keys and put the plate back; the 21:04:42Z frame shows it empty. That stretch is not in the published cut, which ends at 21:03:04.",
+ "watch": {
+  "tool": "bambu/studio/watch_studio.py from PR 234's branch, WATCH_LAYOUT=a1mini BED_TARGET=65, 10 s samples, a frame every 5 min",
+  "log": "watch_monitor.jsonl (298 samples, 20:10:30Z-21:04:03Z)",
+  "exit": "20 at 21:04:03Z, a false alarm: OCR read the cooling nozzle as 646 C (Studio showed 147/0 at 21:04:34). The job panel already read 100 %, layer 85/85, Finished; the watcher's finish rule wants a % sign it didn't read.",
+  "rate": "layer 23 at 20:30:48, 39 at 20:42:10, 72 at 20:56:12, 85 at 21:03:26"
+ },
+ "recording": {
+  "file": "recording/issue354_tri_keys_A1mini_2026-11-20.mp4 (5.5 min, 11.3 MB) with recording/issue354_tri_keys_A1mini_2026-11-20_chapters.txt",
+  "raw": "x11grab 15 fps from 19:58:47Z (after the login and the Synchronise prompt, so neither the login nor the account name is in it) to 21:05:33Z; raw segments not committed",
+  "cut": "recording/cut_plan.json via cut_recording.py: 19:58:56-20:01:50 at 2x, 20:01:50-20:08:40 at 3x, 20:08:40-21:03:04 at 30x; the camera pane's upper corners blurred whenever it was on screen"
+ },
+ "signed_out": "2026-11-20T21:05:57Z from Studio's account menu; Studio then closed and ~/.config/BambuStudio deleted"
 }

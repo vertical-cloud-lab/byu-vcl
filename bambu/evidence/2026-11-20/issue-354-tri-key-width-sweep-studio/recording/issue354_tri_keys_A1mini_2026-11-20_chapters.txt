@@ -1,0 +1,3 @@
+0:00 Device page: Tinkerbell picked, live camera, plate read, 0.4 mm nozzle confirmed
+1:27 Prepare: sync to the A1 mini, import 8 keys, 3 walls / 20% / no brim, slice, pre-Send frame, Send
+3:43 Printing on Tinkerbell, 85 layers, to the finished plate
