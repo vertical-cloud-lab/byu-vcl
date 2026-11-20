@@ -30,7 +30,7 @@ ARM_AUDIT=1 VIZ3D_FPS=10 xvfb-run -a python3 floor_clean_still.py clip          
 
 ## The short answer
 
-1. **No robot on the market may vacuum this powder, and none can be bought rated for it.**
+1. **No floor-cleaning robot on the market is rated for this powder.**
    - No autonomous floor cleaner has any ATEX, IECEx or Class II rating. The makers who address it forbid it:
      - Kärcher (KIRA B 50, B 200): "Never ... vacuum ... explosive dusts";
      - Tennant (T7AMR): "Flammable materials or reactive metals can cause an explosion or fire. Do not pick up.";
@@ -59,7 +59,8 @@ ARM_AUDIT=1 VIZ3D_FPS=10 xvfb-run -a python3 floor_clean_still.py clip          
      and nightly sweeps a year (7.9 h a week) with no alloys lost in the model, but they would carry powder on their
      wheels and grippers to every tray.
    - **Reach.** Of the floor within 300 mm of a machine's edge, where powder collects, an arm with a wand reaches
-     100 %. A MiR250 with a nozzle reaches 74 %, a commercial vacuum robot 80 % and a Roomba-sized disc 93 %.
+     100 %, on a station's hose or with the vacuum on board. A MiR250 with a nozzle reaches 74 %, a commercial vacuum
+     robot 79 % and a Roomba-sized disc 96 %. These leave out the EOS, whose powder people handle.
 4. **The option to try first is C: unit 3.** It is a third MiR250 + UR12e that owns the powder floor, and maybe the
    atomizer's powder steps too, which `atom_sleeve.md` already calls "the cleanest separation". A pass works like this:
    - It parks at a zone, clips its bonding lead onto a floor ground stud, and checks continuity on the station's
@@ -103,8 +104,8 @@ machine, so each source here is its footprint grown by 600 mm. The two exception
 In all, 88 m² of the lab's 305 m² of open floor. The Meltio cell is not a zone: it feeds wire, not powder.
 
 The floor is `setup_lab.py fit`'s plan (`out/tray_plan.json`). Two things are added, both ours:
-- **The atomizer's vacuum station.** PR #353's clip (`atom_vacuum.py`) stands its pail, extinguisher and sign at
-  y -2460 to -3260 in the atomizer's own frame, which on the lab's plan is the aisle. Here the two 118EXPs (Al family
+- **The atomizer's vacuum station.** PR #353's clip (`atom_vacuum.py`) stands its pail, extinguisher and sign at the
+  lab's y -2460 to -3260, which on the lab's plan is the aisle (y -2400 to -5400). Here the two 118EXPs (Al family
   west, Cu family east) stand west of the machine and behind the dock line, with the post, the pails, the extinguisher
   and the sign (`floor_cleaning.VAC_STATION`, 1.19 x 1.64 m, as `floor_clean_still.py` draws it). The lab's floor plan
   should take this or another place for it.
@@ -243,17 +244,19 @@ cell, the openings, the MIDI and the glovebox are. Coloured: floor the cleaner r
   - the commercial robot: its 690 mm width at either end;
   - a MiR250: a 560 mm nozzle across its back, its lanes driven both ways;
   - an arm: the floor within the wand's 1.3 m of anywhere the robot can stand.
-- Units 1 and 2 (D): the same arm reach, but only within a 25 ft hose's 7.0 m of one of the two stations (the
-  atomizer's, and the printer line's beside the MIDI). The EOS is out of their reach.
+- C as recommended, and D: the same arm reach, but only within a 25 ft hose's 7.0 m of one of the two stations (the
+  atomizer's, and the printer line's beside the MIDI). That covers every zone but the EOS, which has no MiR dock and
+  whose powder people handle (`notes/scaleup.md`). So the shares below leave the EOS out, with its own row.
 
-| Share of the floor it can clean | A: disc | B: Gausium Vacuum 40 class | C1: MiR250 + nozzle | **C: MiR250 + UR12e** | D: units 1-2 + stations | E: a person |
+| Share of the floor it can clean | A: disc | B: Gausium Vacuum 40 class | C1: MiR250 + nozzle | **C and D: an arm + the stations' vacuums** | (C with the vacuum on board) | E: a person |
 | --- | --- | --- | --- | --- | --- | --- |
-| the powder zones (88 m²) | 99 % | 97 % | 96 % | **100 %** | 91 % | 100 % |
-| **within 300 mm of a machine's edge** in the zones (14.4 m²) | 93 % | 80 % | 74 % | **100 %** | 72 % | 100 % |
+| the zones a robot serves (81 m², all but the EOS) | 99 % | 97 % | 96 % | **100 %** | 100 % | 100 % |
+| **within 300 mm of a machine's edge** there (10.4 m²) | 96 % | 79 % | 74 % | **100 %** | 100 % | 100 % |
 | the atomizer's zone | 92 % | 86 % | 82 % | 100 % | 100 % | 100 % |
 | the sieving cell's zone | 84 % | 68 % | 72 % | 100 % | 100 % | 100 % |
 | the MIDI's zone | 99 % | 79 % | 76 % | 100 % | 100 % | 100 % |
 | the glovebox's zone | 100 % | 94 % | 89 % | 100 % | 100 % | 100 % |
+| the EOS's zone (people's) | 94 % | 90 % | 86 % | 0: no station in reach | 100 % | 99 % |
 
 **The edge band is the row that matters.** Powder that is kicked, drifts or falls off a cup ends up against a machine's
 base, round a post's foot and in the gaps between machines. A MiR250-sized rectangle leaves a quarter of it:
@@ -262,8 +265,7 @@ base, round a post's foot and in the gaps between machines. A MiR250-sized recta
 - round the target posts;
 - along the MIDI's sides.
 
-A 350 mm disc gets into most of it. An arm with a crevice tool or a squeegee gets into all of it. D scores 72 % only
-because the EOS has no station; the north row's zones are at 100 %.
+A 350 mm disc gets into most of it. An arm with a crevice tool or a squeegee gets into all of it.
 
 **What this doesn't model:**
 - the arm reaching under overhangs (a cabinet's toe kick), or round a machine to the floor behind it (no occlusion);
@@ -288,12 +290,12 @@ factor for turns and edges, plus a fixed time. All of these are assumed, and lis
   4.1-4.3);
 - the person: 10 min of set-up and checks.
 
-| Minutes a pass | A | B | C1 | C | D | E |
+| Minutes a pass | A | B | C1 | C and D | (C, vacuum on board) | E |
 | --- | --- | --- | --- | --- | --- | --- |
 | the atomizer's zone | 2.9 | 1.3 | 3.7 | 5.8 | 5.8 | 10.9 |
 | the sieving cell's | 1.9 | 1.1 | 3.3 | 4.9 | 4.9 | 10.5 |
 | the MIDI's | 4.1 | 1.4 | 3.9 | 6.7 | 6.7 | 11.4 |
-| the nightly sweep (every zone and the aisle) | 49 | 11 | 23 | 46 | 43 | 33 (at 08:00) |
+| the nightly sweep (every zone and the aisle) | 49 | 11 | 23 | 43 (the EOS left to people) | 46 | 33 (at 08:00) |
 
 **Who does it, and what it costs:**
 
@@ -301,7 +303,7 @@ factor for turns and edges, plus a fixed time. All of these are assumed, and lis
 | --- | --- | --- | --- | --- |
 | E: a person with the 118EXP | the one person's shift; passes fit round the crucible hours, the nightly sweep becomes 08:00 on weekdays | **9.3 h a week**; their week goes from 31.0 h to **39.0 h** (busiest 43.3), 15 weeks over 40 h, 76 h of upkeep slid past the year's end | median **19 h**, 95th percentile **96 h** (nights and weekends) | 309 (no change) |
 | D: units 1 and 2 | whichever unit is free first; the nightly sweep on unit 1 | 7.9 h a week of unit time | median 0, at most 0.4 h | 309; seeds 1-8: no change |
-| A, B, C1, C: a cleaner of its own | its own line; it waits for a unit's transfer at the same dock, and at the atomizer for the person's crucible hour | 1.9 (B) to 8.3 h (C) a week | median 0, 95th percentile 1.0 h (the crucible hour) | 309 |
+| C: unit 3 (and A, B, C1: a cleaner of its own) | its own line; it waits for a unit's transfer at the same dock, and at the atomizer for the person's crucible hour | **C: 7.9 h a week** (1.1 h a day); A 7.1, B 1.9, C1 4.6 | median 0, 95th percentile 1.0 h (the crucible hour) | 309 |
 
 **Four findings:**
 1. **The one person can't take it on.** The floor passes would fill the slack the model found in their week
@@ -313,14 +315,15 @@ factor for turns and edges, plus a fixed time. All of these are assumed, and lis
      sieving, the depowdering lance, the chamber's vacuum session. Counting all of them, the two units are busy about
      1,700 h a year, 10 % of it, so there is still room.
    - The case against D is contamination, not time.
-3. **A cleaner of its own is busy under an hour and a half a day**: 0.3 h for a commercial robot, 1.2 h for a MiR250
-   with an arm. Its passes wait only on two things:
+3. **A cleaner of its own is busy under an hour and a half a day**: 0.3 h for a commercial robot, 1.1 h for unit 3.
+   Its passes wait only on two things:
    - a unit's transfer at the same dock (7 passes a year);
    - the person's crucible hour at the atomizer (419 a year, never more than 1.1 h).
-4. **The battery.** C and D leave the vacuum on wall power, so the MiR's 1.63 kWh pack does only the driving and the
-   arm. Were the 118EXP to ride on C1 or C through an inverter, it would draw 1.1 or 2.1 kWh a day: 45 or 82 min on
-   the charger at MiR's 52 min from 10 to 90 %. That is easy for the pack. But it is 1.2 kW against a 480 W top-module
-   supply, through electrics that nothing lists for Group E.
+4. **The battery.** C leaves the vacuums on wall power, so unit 3's 1.63 kWh pack does only the driving and the arm:
+   about 0.45 kWh a day, 18 min on the charger at MiR's 52 min from 10 to 90 % (400 W while working, assumed). Were
+   the 118EXP to ride on the MiR (C1, or C with the vacuum on board), it would be 1.1 or 2.1 kWh a day: 45 or 82 min.
+   That is easy for the pack. But it is 1.2 kW against a 480 W top-module supply, through electrics that nothing lists
+   for Group E.
 
 ## Docking, emptying, and keeping the families apart
 
@@ -336,8 +339,9 @@ NFPA 484 (2015) 8.5.2). The answer is Sterling's "ground ... within close reach"
   conductive tyres, but the lab's floor is epoxy or vinyl.
 
 **Emptying.** The vacuums stay at their stations, so nothing is emptied on the robot.
-- **Floor passes collect grams, not kilograms.** A 118EXP liner at the SOP's 25 % limit holds about 1.65 gal. That is
-  kilograms of Al-Si powder, so a floor-only liner lasts weeks.
+- **Floor passes should collect grams, not kilograms** (an estimate: nothing measures it yet). A 118EXP liner at the
+  SOP's 25 % limit holds about 1.65 gal, which is kilograms of Al-Si powder, so a liner used only on the floor would
+  last weeks.
 - **NFPA wants the vacuum emptied each shift** (484 11.6.2(2)). The lab's SOP lets a liner under 25 % stay between
   sessions of the same family. That is a conflict for the DHA to settle; the cautious reading is a person emptying it
   at the end of each day shift.
@@ -372,8 +376,8 @@ sensitive half: GESTIS lists a 25 µm copper powder as not explosible and bronze
 | Scoop and brush first (484 11.5) | no | no | no | **yes** | yes | yes |
 | Ground checked after each move | needs a conductive floor and a monitored contact | as A | as A | **park, bond, check** | as C | the SOP |
 | One metal per collector | one bin, so one robot per family | as A | a vacuum swap or two robots | **the stations' family vacuums** | as C | as C |
-| Edge floor reached | 93 % | 80 % | 74 % | **100 %** | 72 % (north row 100 %) | 100 % |
-| Its time | 7.1 h a week | 1.9 h | 4.6 h | 8.3 h | 7.9 h of units 1-2 | **9.3 h of the person: weeks of 39-43 h** |
+| Edge floor reached (all but the EOS) | 96 % | 79 % | 74 % | **100 %** | 100 % | 100 % |
+| Its time | 7.1 h a week | 1.9 h | 4.6 h | 7.9 h of its own | 7.9 h of units 1-2 | **9.3 h of the person: weeks of 39-43 h** |
 | Powder waits | 1 h at most | 1 h | 1 h | 1 h | 0.4 h | median 19 h, 95th pct 96 h |
 | Alloys a year | 309 | 309 | 309 | 309 | 309 | 309 |
 | Powder carried to the trays | no | no | no | **no** | **yes: units 1-2's wheels, grippers, wands** | no |

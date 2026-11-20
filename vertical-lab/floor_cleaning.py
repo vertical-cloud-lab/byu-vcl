@@ -177,13 +177,13 @@ ROBOTS = {
                "for fine powder (assumed); 3 min a job for the continuity check, run-on and settle (vacuum SOP 1, "
                "4.1-4.3)"),
     "mir_arm": dict(
-        label="MiR250 + UR10e + wand", shape="rect", L=800.0, W=580.0, clear=50.0, cleans=("arm", 1300.0),
+        label="MiR250 + UR12e, vacuum on board", shape="rect", L=800.0, W=580.0, clear=50.0, cleans=("arm", 1300.0),
         w_eff=0.30, v=0.15, k=1.25, fixed_min=4.0,
         source="MiR250 + UR10e; the 14 in (356 mm) floor tool on the wand, 0.30 m a stroke with overlap; the "
                "floor 1.3 m from the robot's centre at most (the UR10e's 1300 mm reach from a base about 600 mm up, "
                "plus the wand: assumed); 0.15 m/s strokes; 4 min a job (continuity on the fixture, as atom_vacuum)"),
     "units_pou": dict(
-        label="units 1-2 + vacuums at the stations", shape="rect", L=800.0, W=580.0, clear=50.0,
+        label="an arm + the stations' vacuums (C or D)", shape="rect", L=800.0, W=580.0, clear=50.0,
         cleans=("arm_hose", 1300.0, 7000.0), w_eff=0.30, v=0.15, k=1.25, fixed_min=4.0,
         source="the two existing MiR250 + UR10e units, taking the wand of a 118EXP at one of two stations (POU), as "
                "arm 2 does at the atomizer (atom_vacuum); a 25 ft (7.6 m) conductive hose, 7.0 m of reach in a straight "
@@ -306,6 +306,17 @@ def coverage(F: Floor, R: dict) -> dict:
     edge = (ndimage.distance_transform_edt(F.free) * CELL <= 300.0) & F.free & allz
     tot["edge_band_m2"] = round(F.area_m2(edge), 1)
     tot["reached_edge_band"] = {k: round(F.area_m2(R[k]["covered"] & edge) / F.area_m2(edge), 3) for k in R}
+    # the same without the EOS, whose powder people handle (no MiR dock, notes/scaleup.md): the zones a robot serves
+    rz = np.zeros_like(F.free)
+    for z, zd in F.zones.items():
+        if z != "EOS":
+            rz |= zd["mask"]
+    edge_r = edge & rz
+    tot["robot_zones"] = "every zone but the EOS"
+    tot["robot_zones_m2"] = round(F.area_m2(rz), 1)
+    tot["robot_edge_band_m2"] = round(F.area_m2(edge_r), 1)
+    tot["reached_robot_zones"] = {k: round(F.area_m2(R[k]["covered"] & rz) / F.area_m2(rz), 3) for k in R}
+    tot["reached_robot_edge_band"] = {k: round(F.area_m2(R[k]["covered"] & edge_r) / F.area_m2(edge_r), 3) for k in R}
     return dict(zones=zones, total=tot)
 
 
@@ -533,8 +544,10 @@ def year(jobs_by: dict) -> dict:
             spread.append(_tested(TL.simulate(upkeep=up_s)) - _tested(TL.simulate(upkeep=U.Upkeep(seed=s))))
         rec["tested_change_seeds_1_8"] = spread
         out[key] = rec
-    for key in ("disc", "pad", "mir", "mir_arm"):
-        jobs, night = jobs_by[key]
+    # "unit3" is option C as recommended: a third unit of its own, using the stations' vacuums and hoses, so its passes
+    # are units_pou's (the same arm, the same hose reach) but booked on its own line
+    for key, jkey in (("disc", "disc"), ("pad", "pad"), ("mir", "mir"), ("mir_arm", "mir_arm"), ("unit3", "units_pou")):
+        jobs, night = jobs_by[jkey]
         oc = own_cleaner(base_sim, jobs, night)
         busy = sum(r["t1"] - r["t0"] for r in oc["log"])
         out[key] = dict(latency=_lat(oc["log"]), busy_h_day=round(busy / (TL.YEAR_H / 24), 2),
@@ -552,6 +565,10 @@ def year(jobs_by: dict) -> dict:
         out[key]["battery_kwh"] = round(U.MIR_KWH["value"], 2)
         out[key]["charge_min_day"] = round(kwh / (0.8 * U.MIR_KWH["value"]) * 52.0, 0)
         out[key]["top_module_w"] = 480.0
+    # unit 3 with the vacuums on wall power: the pack does only the driving and the arm (the same assumed 400 W)
+    busy = out["unit3"]["busy_h_day"]
+    out["unit3"]["energy_kwh_day"] = round(busy * 0.4, 2)
+    out["unit3"]["charge_min_day"] = round(busy * 0.4 / (0.8 * U.MIR_KWH["value"]) * 52.0, 0)
     return out
 
 
@@ -584,8 +601,8 @@ def plot_reach(F: Floor, R: dict, cov: dict, path=None):
                                    lw=1.1, ec=U.INK, ls=(0, (3, 2)) if z == "aisle" else "-"))
         t = cov["total"]
         z = cov["zones"]
-        ax.set_title(f"{ROBOTS[k]['label']}: {t['reached_zones'][k]:.0%} of the powder zones' floor, "
-                     f"{t['reached_edge_band'][k]:.0%} of the 300 mm along their machines' edges "
+        ax.set_title(f"{ROBOTS[k]['label']}: {t['reached_robot_zones'][k]:.0%} of the zones' floor, "
+                     f"{t['reached_robot_edge_band'][k]:.0%} of the 300 mm along their machines' edges, EOS aside "
                      f"(atomizer {z['atomizer']['reached'][k]:.0%}, sieving {z['sieving']['reached'][k]:.0%}, "
                      f"MIDI {z['midi']['reached'][k]:.0%})", fontsize=10.5, color=U.INK, loc="left")
         ax.set_xlim(*xl)
@@ -621,10 +638,14 @@ def plot_year(y: dict, cov: dict, path=None):
     import matplotlib.pyplot as plt
     import upkeep as U
     path = path or OUT / f"{NAME}_year.png"
-    keys = ["person", "units_pou", "disc", "pad", "mir", "mir_arm"]
-    labels = [ROBOTS[k]["label"] for k in keys]
-    cols = [U.SLOTS[["disc", "pad", "mir", "mir_arm", "units_pou", "person"].index(k)] for k in keys]
-    fig, axs = plt.subplots(1, 3, figsize=(16.5, 4.8), dpi=110, sharey=True,
+    keys = ["person", "units_pou", "unit3", "disc", "pad", "mir", "mir_arm"]
+    names = dict({k: ROBOTS[k]["label"] for k in ROBOTS}, person="E: a person with the 118EXP",
+                 units_pou="D: units 1-2 + the stations' vacuums", unit3="C: unit 3 + the stations' vacuums",
+                 disc="A: Roomba-class disc", pad="B: commercial vacuum robot (Gausium class)",
+                 mir="C1: MiR250 + floor nozzle", mir_arm="(C with the vacuum on board)")
+    labels = [names[k] for k in keys]
+    cols = [U.SLOTS[["disc", "pad", "mir", "mir_arm", "units_pou", "person", "unit3"].index(k)] for k in keys]
+    fig, axs = plt.subplots(1, 3, figsize=(16.5, 5.3), dpi=110, sharey=True,
                             gridspec_kw=dict(width_ratios=[1.0, 1.15, 0.9]))
     fig.patch.set_facecolor(U.SURF)
     ypos = np.arange(len(keys))[::-1]
@@ -657,13 +678,13 @@ def plot_year(y: dict, cov: dict, path=None):
     ax.set_xlim(0, max(p95) * 1.75 + 1)
     ax.set_xlabel("hours (solid: median; pale: 95th percentile)", color=U.INK2)
     ax = axs[2]
-    e = [cov["total"]["reached_edge_band"][k] * 100 for k in keys]
+    e = [cov["total"]["reached_robot_edge_band"]["units_pou" if k == "unit3" else k] * 100 for k in keys]
     ax.barh(ypos, e, color=cols, height=0.62)
     for yy, v in zip(ypos, e):
         ax.text(v + 1.5, yy, f"{v:.0f} %", va="center", fontsize=9, color=U.INK2)
     ax.set_xlim(0, 118)
-    ax.set_title("Edge floor reached", loc="left", fontsize=11, color=U.INK)
-    ax.set_xlabel("% of the zones' floor within 300 mm of a machine", color=U.INK2)
+    ax.set_title("Edge floor reached (every zone but the EOS)", loc="left", fontsize=11, color=U.INK)
+    ax.set_xlabel("% of the floor within 300 mm of a machine", color=U.INK2)
     for ax in axs:
         U._style(ax)
     fig.tight_layout()
