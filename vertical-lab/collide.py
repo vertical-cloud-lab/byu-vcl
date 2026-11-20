@@ -573,10 +573,14 @@ def _tcp() -> np.ndarray:
 
 
 def _rel(sc, group: str, top: str) -> np.ndarray:
-    """group's matrix relative to its ancestor `top` (identity for top itself)."""
+    """group's matrix relative to its ancestor `top` (identity for top itself). Round 13: if `top` turns out not to be
+    an ancestor (a held part's body re-parented since the grasp: the rebuild clip's render stopped on KeyError 'rp'
+    once the rePowder's latch was back in the atomizer scenes), the relative matrix is taken through the world."""
     M, g = np.eye(4), group
     while g != top:
         M = sc.gmat.get(g, np.eye(4)) @ M
+        if g not in sc.parent:
+            return np.linalg.inv(sc.world(top)) @ sc.world(group)
         g = sc.parent[g]
     return M
 

@@ -689,17 +689,19 @@ def audit_rows() -> list[dict]:
     return rows
 
 
-AUDIT_NOTES = {   # what the frames that remain are, where it is known (README, notes/arm_collisions.md, #353's notes)
+AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13: README, notes/arm_collisions.md, the notes files)
     "hip": "by design: the press drawn through a tray's outline, to show it doesn't fit",
-    "setup_lab": "the build-up's parts sliding into place; the Mastersizer across tray E's UPS (3); the arms touch (2)",
+    "setup_lab": "floor machines set down over their utility drops; the control box into its cabinet as it is built",
     "vlm_services": "the dock heads meeting the trays' plates as they mate",
-    "alloy_prep": "mostly the work itself: the end mill in the slice, the pistons on the holder, compound round the coupon",
-    "alloy_powder": "the XRD's door through camera D1 (25-50 mm); set-downs 3 and 12 mm deep; the forearm on the gripper",
+    "alloy_prep": "mostly the work itself (end mill, pistons, press charge); the CNC's lid into the bay above (6)",
+    "alloy_workflow": "the plate 6 mm into the depowdering box's rotor for one frame",
     "vlm_workflow": "by design: the holder grips its vial (round 11)",
-    "scaleup": "the cart drives through the EOS's door while it is shut (not fixed)",
-    "atom_latch": "the loop swung over the lever, into the machine; the fix (the loop dropped) not made (#353)",
-    "atom_vacuum": "the upper arm against the vacuum and its own wrist, in the last holster steps (#353)",
-    "atom_plate": "a fingertip 3 mm into the chamber's face (#353)",
+    "cubxl_corrosion": "the work itself: the pipette tip into its well",
+    "ded": "the work itself: the melt pool's glow on the part",
+    "fumehood": "the drawn airflow's arrows crossing", "fumehood_tray": "the drawn airflow's arrows crossing",
+    "glovebox_tray": "the tipper's powder pour drawn through the jar",
+    "atom_vacuum": "the crevice tool 1.5 mm into its station for one frame (8/10)",
+    "alloy_print": "a fingertip on the sieving cell's frame by the funnel",
 }
 
 
