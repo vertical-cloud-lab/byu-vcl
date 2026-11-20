@@ -115,6 +115,8 @@ comes with the family's name, never on its own.
 | Racks, carrier pockets | a band on the rack's front edge | |
 | Powder-waste cans | a 25 mm band | one per family, never mixed (Al fines with iron oxide is a thermite) |
 
+![](../out/colour/labels.png)
+
 **State is a place, not a colour.** A clean tool is in its family's outlined place on the shadow board; one to be
 cleaned is in the family's "to clean" tub; anything uncertain goes in the HOLD bin with a red tag that says HOLD. The
 database already knows a tool's state; the place tells the person.

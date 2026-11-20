@@ -254,7 +254,79 @@ def main(argv) -> int:
     if len(argv) < 2 or argv[1] != "check":
         palette_figure(res, OUT / "palette_cvd.png")
         floor_figure(OUT / "floor_marking.png")
+        labels_figure(OUT / "labels.png")
     return 0 if res["ok"] else 1
+
+
+
+# ===================================================================================================== label mock-ups
+def labels_figure(path: Path) -> None:
+    """Print-size mock-ups (300 dpi): jar labels with the family stripe, tool tags, a waste-can label, the HOLD tag.
+    The text is the authority; the stripe or band only makes a mismatch easy to see."""
+    from PIL import Image, ImageDraw, ImageFont
+    import qrcode
+    F, FB, FM = ("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+                 "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf")
+    s = 300 / 25.4
+    ink, ink2 = (31, 35, 40), (75, 85, 99)
+
+    def rgb(h):
+        return tuple(int(255 * v) for v in _rgb1(h))
+
+    def label(w, h, stripe, lines, qr=None, stripe_mm=4.0, border=(150, 150, 150), fill="white"):
+        W_, H_ = int(w * s), int(h * s)
+        im = Image.new("RGB", (W_, H_), fill)
+        d = ImageDraw.Draw(im)
+        if stripe:
+            d.rectangle((0, 0, W_, int(stripe_mm * s)), fill=rgb(stripe))
+        d.rectangle((1, 1, W_ - 2, H_ - 2), outline=border, width=3)
+        qx = W_
+        if qr:
+            q = qrcode.make(qr, border=1).convert("RGB").resize((int((h - stripe_mm - 4) * s),) * 2, 0)
+            qx = W_ - q.size[0] - int(1.5 * s)
+            im.paste(q, (qx, int((stripe_mm + 2) * s)))
+        y = (stripe_mm + 1.8) * s if stripe else 2.0 * s
+        for text, mm, font, col in lines:
+            f = ImageFont.truetype(font, int(mm * s))
+            while d.textlength(text, font=f) > qx - 3.5 * s and f.size > 10:
+                f = ImageFont.truetype(font, f.size - 2)
+            d.text((2.0 * s, y), text, font=f, fill=col)
+            y += mm * s * 1.25
+        return im
+    al, cu = FAMILY["Al"]["rgb"], FAMILY["Cu"]["rgb"]
+    items = [
+        ("Jar label (Al lot), 70 x 32 mm", label(70, 32, al, [("c3k0n5", 6.0, FM, ink), ("Al 4047 · 20-63 µm · 250 mL", 3.0, F, ink2),
+                                                              ("AL FAMILY · tray O", 2.8, FB, ink2)], qr="lot c3k0n5")),
+        ("Jar label (Cu lot)", label(70, 32, cu, [("k7m2q9", 6.0, FM, ink), ("630 bronze (NAB) · 45-105 µm · 250 mL", 3.0, F, ink2),
+                                                  ("CU FAMILY · tray O", 2.8, FB, ink2)], qr="lot k7m2q9")),
+        ("Tool tag on a sieve tab, 12 mm tape", label(48, 12, al, [("AL · sieve No. 325 · #1", 3.4, FB, ink)], stripe_mm=3.0)),
+        ("Funnel band text", label(48, 12, cu, [("CU · Ni powder · funnel", 3.4, FB, ink)], stripe_mm=3.0)),
+        ("Powder-waste can, 90 x 40 mm", label(90, 40, al, [("AL FAMILY POWDER WASTE", 5.0, FB, ink),
+                                                            ("Al, Si and Mg fines only. Never Cu, Fe or oxides.", 2.9, F, ink2),
+                                                            ("Class D extinguisher. Keep lid on.", 2.9, F, ink2)], stripe_mm=6.0)),
+        ("HOLD tag (red), 50 x 30 mm", label(50, 30, None, [("HOLD", 9.0, FB, (255, 255, 255)),
+                                                            ("do not use: waiting for a decision", 2.6, F, (255, 255, 255))],
+                                              border=(120, 10, 25), fill=(200, 16, 46))),
+    ]
+    pad, cols = 60, 2
+    rows_h = []
+    for i in range(0, len(items), cols):
+        rows_h.append(max(im.height for _, im in items[i:i + cols]) + 70)
+    Wt = cols * (max(im.width for _, im in items) + pad) + pad
+    sheet = Image.new("RGB", (Wt, sum(rows_h) + 190), "white")
+    d = ImageDraw.Draw(sheet)
+    d.text((pad, 24), "Label mock-ups at print size (300 dpi): the family stripe along the top; the words underneath "
+           "are the authority.\nThe lots and fractions are examples.", font=ImageFont.truetype(FB, 34), fill=ink,
+           spacing=8)
+    y = 130
+    for r, i in enumerate(range(0, len(items), cols)):
+        x = pad
+        for cap, im in items[i:i + cols]:
+            d.text((x, y), cap, font=ImageFont.truetype(F, 30), fill=ink2)
+            sheet.paste(im, (x, y + 45))
+            x += max(im2.width for _, im2 in items) + pad
+        y += rows_h[r]
+    sheet.save(path, optimize=True)
 
 
 if __name__ == "__main__":
