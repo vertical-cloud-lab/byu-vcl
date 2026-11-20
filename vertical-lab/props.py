@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import math
 import os
+import sys
 
 import numpy as np
 import pyvista as pv
@@ -156,7 +157,14 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
 # Where (posts, heights, aims) comes from base_cams_sweep.py: every arm's frames in every clip, swept in the MiR's
 # frame. Nothing on an 800 x 580 base is out of a UR10e's reach, and in the clips the arm passes over every part of the
 # cabinet's rim between about 1.0 and 2.0 m; these are the places it passes least (notes/base_cameras.md).
-BASE_CAMS_ON = os.environ.get("VLAB_BASE_CAMS", "1") != "0"     # VLAB_BASE_CAMS=0: the MiR250 without them, as before #364
+# Two chapters' moves were planned before the mast and go through where it stands (#364's audits, at 15 fps: chapter 2
+# 139 -> 184 frames in collision, 45 of them the arm on a camera; chapter 4 4 -> 361, a swing round the base's back-left
+# corner that the chapter's own IK-branch search can't re-plan). Until they are re-planned with the cameras in the
+# scene, a run of either script leaves the cameras out unless VLAB_BASE_CAMS says otherwise; take a script off this
+# list once its audit with the cameras is clean. VLAB_BASE_CAMS=0 / 1 forces them off / on for any clip.
+BASE_CAMS_OPT_OUT = {"alloy_atomize.py", "alloy_prep.py"}
+BASE_CAMS_ON = os.environ.get("VLAB_BASE_CAMS", "0" if os.path.basename(sys.argv[0] if sys.argv else "") in
+                              BASE_CAMS_OPT_OUT else "1") != "0"
 CM3W = dict(hfov=102.0, vfov=67.0, dfov=120.0, px=(4608, 2592))           # raspberrypi.com, Camera Module 3 Wide
 BOX = dict(w=68.0, h=96.0, d=46.0, lens_d=9.0, lens_out=3.0, lens_up=26.0)  # printed box, portrait: the Wide near
 #   the top of its front face, the Pi 5 (85 x 56) standing behind it; w across the picture, h up it, d along the view

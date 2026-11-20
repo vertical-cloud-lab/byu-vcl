@@ -42,6 +42,8 @@ def summary() -> dict:
         cam_mv = [r for r in mv.get("runs", []) if any(cam(q.get("body")) or cam(q.get("other")) for q in r["pairs"])]
         b = COLL / f"{BASE.get(c, c)}.json"
         base = json.loads(b.read_text()) if b.exists() else None
+        nc = COLL / f"{c}_nocams.json"          # the same audit with VLAB_BASE_CAMS=0, where it was run
+        nocams = json.loads(nc.read_text()) if nc.exists() else None
         out[c] = dict(fps=d["fps"], frames=d["frames_checked"], arm_frames_in_collision=d["frames_with_collisions"],
                       all_frames_in_collision=d.get("frames_with_collisions_all"),
                       camera_frames=sum(r["frames"] for r in cam_runs) + sum(r["frames"] for r in cam_mv),
@@ -52,20 +54,25 @@ def summary() -> dict:
                                         pairs=[(q["body"], q["other"]) for q in r["pairs"][:4]]) for r in cam_mv],
                       committed=dict(file=b.name, fps=base.get("fps"), arm_frames_in_collision=base.get("frames_with_collisions"),
                                      all_frames_in_collision=base.get("frames_with_collisions_all"))
-                      if base else None)
+                      if base else None,
+                      nocams=dict(file=nc.name, fps=nocams.get("fps"), arm_frames_in_collision=nocams["frames_with_collisions"],
+                                  all_frames_in_collision=nocams.get("frames_with_collisions_all")) if nocams else None)
     return out
 
 
 if __name__ == "__main__":
     s = summary()
     (COLL / "basecams_summary.json").write_text(json.dumps(s, indent=1) + "\n")
-    print("| Clip | fps | frames | with a camera part | arm frames in collision (all) | committed audit, arm (all) |")
+    print("| Clip | frames (15 fps) | touching a camera part | in collision with the cameras: arm (all) | the same "
+          "without them (`VLAB_BASE_CAMS=0`): arm (all) | the committed audit: arm (all) |")
     print("|---|---|---|---|---|---|")
     for c, r in s.items():
         if r.get("missing"):
             print(f"| `{c}` | not run | | | | |")
             continue
-        cm = r["committed"]
-        print(f"| `{c}` | {r['fps']} | {r['frames']} | {r['camera_frames']} | {r['arm_frames_in_collision']} "
-              f"({r['all_frames_in_collision']}) | " + (f"{cm['arm_frames_in_collision']} ({cm['all_frames_in_collision']}) at "
-                                                         f"{cm['fps']} fps, `{cm['file']}`" if cm else "none") + " |")
+        cm, nc = r["committed"], r["nocams"]
+        print(f"| `{c}` | {r['frames']:,} | **{r['camera_frames']}** | {r['arm_frames_in_collision']} "
+              f"({r['all_frames_in_collision']}) | " +
+              (f"{nc['arm_frames_in_collision']} ({nc['all_frames_in_collision']})" if nc else "not run") + " | " +
+              (f"{cm['arm_frames_in_collision']} ({cm['all_frames_in_collision']}) at {cm['fps']} fps"
+               if cm and cm.get("fps") else "older format" if cm else "none") + " |")

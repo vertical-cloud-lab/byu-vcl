@@ -8,7 +8,9 @@ Sterling, on PR #318 (2026-11-20):
 > related to that, adding cameras to the mobile base
 
 Each MiR250 + UR10e now carries three cameras. `props.mir250()` draws them (`props.base_camera_parts`), so every clip
-with a MiR250 has them from now on. [`base_cameras.py`](../base_cameras.py) shows them and looks through each one, at
+with a MiR250 has them from now on. Chapters 2 and 4 are the exception: their moves still go where the mast stands,
+so they leave the cameras out until they are re-planned (below). `VLAB_BASE_CAMS=0` or `1` forces the cameras off or
+on for any clip. [`base_cameras.py`](../base_cameras.py) shows them and looks through each one, at
 the VLM and at the rePowder: `out/mp4/base_cameras.mp4`, 46 s at 1920 × 1080. [`base_cams_sweep.py`](../base_cams_sweep.py)
 is the check that placed them, and [`base_cams_audit.py`](../base_cams_audit.py) tallies the clips' collision audits
 with them in place.
@@ -116,7 +118,28 @@ frames in the MiR's frame. `out/base_cams/sweep/` has the recordings (`.npz`, on
 in which a point of an arm's surface came within 0 mm (touching) or 25 mm of each camera part, with the motions as
 they were before the cameras. `out/base_cams/conflicts.json` has them:
 
-{CONFLICT_TABLE}
+| Clip | arm-frames | mast | mast's box | L post | L case | R post | R case |
+|---|---|---|---|---|---|---|---|
+| `alloy_atomize` | 4,606 | 39 / 50 |  | 8 / 19 | 17 / 32 |  |  |
+| `alloy_characterize` | 3,198 | 51 / 81 | 10 / 14 |  |  |  | 0 / 6 |
+| `alloy_charge` | 2,699 | 15 / 32 |  | 10 / 23 | 15 / 24 |  |  |
+| `alloy_powder` | 2,625 | 29 / 131 |  | 0 / 66 | 0 / 100 |  |  |
+| `alloy_prep` | 7,078 | 65 / 102 |  |  | 0 / 1 |  |  |
+| `alloy_print` | 3,410 | 16 / 24 | 2 / 3 |  |  |  |  |
+| `alloy_workflow` | 10,498 | 179 / 549 | 0 / 3 |  |  |  |  |
+| `atom_bn` | 2,250 | 3 / 4 |  |  |  |  | 0 / 10 |
+| `atom_container` | 1,152 | 3 / 10 |  |  |  |  |  |
+| `atom_crucible_in` | 4,008 | 6 / 8 |  |  |  |  |  |
+| `atom_crucible_out` | 3,040 | 8 / 17 | 3 / 10 |  |  |  |  |
+| `atom_latch` | 2,520 | 5 / 18 |  |  |  |  |  |
+| `atom_plate` | 4,292 | 0 / 1 |  |  |  |  |  |
+| `atom_vacuum` | 3,564 | 1 / 7 |  |  |  |  |  |
+| **all 17** | **59,660** | **420 / 1034** | **15 / 30** | **18 / 108** | **32 / 157** | **0 / 0** | **0 / 16** |
+
+Each cell gives the frames touching, then the frames within 25 mm. The motions are as recorded before the
+cameras, so a joint move that now goes round a camera still counts here. The lenses and cables are left out:
+the cable runs in the extrusion's slot, and the lens touches only where its case does. No other clip's arm
+comes within 25 mm of a camera (3 clips).
 
 **What happens to them.** Joint moves in the clips are planned round whatever is drawn (`robot.py`, `collide.py`), so a
 move that would swing the elbow through the mast now goes round it. The planner now tries once more before it
@@ -124,10 +147,57 @@ falls back to the straight joint line: three times as long, from another seed. I
 2,500-iteration search missed the way round the mast in chapter 3. Straight-line moves are not re-planned, and the
 sweep doesn't include what the gripper holds. So the real check is the clips' own collision audit with the cameras in
 place. Each clip ran as `ARM_AUDIT=1 ARM_AUDIT_TAG=basecams` (nothing rendered, round 11's strict rules, at the clip's
-own frame rate), writing `out/collisions/<clip>_basecams.json`. `base_cams_audit.py` reads them, and
+own frame rate, 15 fps here), writing `out/collisions/<clip>_basecams.json`. `base_cams_audit.py` reads them, and
 `out/collisions/basecams_summary.json` has the result:
 
-{AUDIT_TABLE}
+| Clip | frames (15 fps) | touching a camera part | in collision with the cameras: arm (all) | the same without them (`VLAB_BASE_CAMS=0`): arm (all) | the committed audit: arm (all) |
+|---|---|---|---|---|---|
+| `alloy_charge` | 2,699 | **0** | 1 (1) | 0 (0) | 0 (0) at 12 fps |
+| `alloy_atomize` | 2,303 | **45** | 184 (375) | 139 (330) | 0 (0) at 6 fps |
+| `alloy_powder` | 2,625 | **0** | 0 (0) | not run | 0 (0) at 15 fps |
+| `alloy_prep` | 3,539 | **52** | 361 (489) | 4 (143) | 3 (96) at 10 fps |
+| `alloy_print` | 3,410 | **0** | 0 (0) | not run | 1 (1) at 15 fps |
+| `alloy_characterize` | 3,198 | **0** | 0 (0) | not run | 0 (0) at 15 fps |
+| `alloy_workflow` | 5,249 | **0** | 3 (4) | 2 (3) | 1 (1) at 12 fps |
+| `vlm_workflow` | 1,446 | **0** | 13 (13) | 13 (13) | older format |
+| `bay_camera` | 337 | **0** | 3 (3) | not run | 21 (21) at 6 fps |
+| `upkeep_clip` | 1,491 | **0** | 0 (0) | not run | 0 (0) at 15 fps |
+| `atom_bn` | 2,250 | **0** | 0 (0) | not run | 0 (0) at 10 fps |
+| `atom_container` | 576 | **0** | 0 (0) | not run | 0 (0) at 15 fps |
+| `atom_crucible_in` | 2,004 | **0** | 0 (0) | not run | 0 (0) at 15 fps |
+| `atom_crucible_out` | 1,520 | **0** | 0 (0) | not run | 0 (0) at 10 fps |
+| `atom_latch` | 1,260 | **0** | 0 (0) | not run | 0 (0) at 15 fps |
+| `atom_plate` | 2,146 | **0** | 0 (0) | not run | 0 (0) at 15 fps |
+| `atom_vacuum` | 1,782 | **0** | 1 (1) | not run | 1 (1) at 15 fps |
+
+How to read the table:
+
+- **The planner went round the mast.** In 420 frames across 14 clips, the motions recorded before the cameras passed
+  through the mast. With the mast drawn, every such joint move was re-planned round it, except in chapters 2 and 4.
+- **15 of the 17 clips are untouched.** No arm, gripper or held part touches a camera part in any of their frames.
+  Their collisions with the cameras in place are the ones they had without them, plus two that come from paths
+  re-planned round the cameras:
+  - chapter 1: wrist 2 grazes the VLM's access table for 1 frame;
+  - chapter 7: one extra frame at the depowdering box.
+
+  The others are already in the committed audits: the 8:00 clip's vial into the CubXL (13 frames), the bay camera
+  clip's vial in its rack (3), the vacuum clip's tool rack (1).
+- **Chapters 2 and 4 hit the cameras**, and they now leave the cameras out unless `VLAB_BASE_CAMS=1`
+  (`props.BASE_CAMS_OPT_OUT`).
+  - **Chapter 2** (`alloy_atomize.py`) comes to 45 frames. In 16 of them the open gripper takes or returns the loading
+    tong at its sleeve on the cabinet's left end, 60 mm from the left camera. In the other 29 a finger brushes the mast
+    as the gripper carries the tong over the base's back-left corner (to x = −400, y = −280, at 1.13-1.28 m).
+    Chapter 2's other 139 frames are its own: they are there without the cameras too. Round 13 found them when #353
+    turned the rePowder's lid, and chapter 2 needs re-planning for that anyway.
+  - **Chapter 4** (`alloy_prep.py`) goes from 4 frames to 361. Polishing at tray F, the arm flips its elbow and swings
+    the tool from the polisher, on the right, round the base's back-left corner to x = −861 mm. The forearm passes
+    where the mast stands. With the mast there, the chapter's own search for an IK branch with clear lines finds none,
+    and the moves after it fall back to straight lines through the furnace, the polisher and the cabinet.
+
+  Both are fixable in those chapters: swing the arm round the front of the base, not its back-left corner; carry the
+  tong over the cabinet's middle; hang its sleeve 30 mm further forward. Once a chapter's audit with
+  `VLAB_BASE_CAMS=1` is clean, take it off the list. Their audits without the cameras are what they render now:
+  139 frames and 4, as before.
 
 ## The checks the hand-off asked for
 
@@ -191,8 +261,13 @@ Two bases: about $1,600, plus a spare camera and Pi.
 
 ## Open questions
 
-1. **The audits' remaining contacts** (above), if any, are straight-line moves or held parts. Re-plan or re-time those
-   moves in their clips. If one camera keeps coming back, move the camera rather than the move.
+1. **Re-plan chapters 2 and 4 with the cameras in the scene**, then take them off `props.BASE_CAMS_OPT_OUT`.
+   - Chapter 4: swing round the front of the base, not the back-left corner.
+   - Chapter 2: carry the tong over the cabinet's middle, and hang its sleeve 30 mm further forward.
+
+   Chapter 2 needs re-planning anyway for #353's turned lid. In the scan, chapter 4's arm passed the back-right
+   corner far less (12 frames against 78), chapter 2's as often (43 and 43). But the crucible clips' arms pass
+   there in about 2,100 frames, so moving the mast would only trade them for chapter 4.
 2. **Does MiR's router pass top-module Ethernet traffic to the facility Wi-Fi?** If not, the base needs its own Wi-Fi
    client for the streams. MiR's documentation says only that the top-module port carries the REST API and Modbus.
 3. **The mast's sway.** The mast is a 1.36 m 2040 cantilever with a 0.2 kg box on top, on a base that brakes at

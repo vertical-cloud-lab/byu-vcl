@@ -287,74 +287,111 @@ def conflicts(sweep_dir: Path | None = None, margins=(0.0, 25.0), step: float = 
     return rep
 
 
+def traffic(sweep_dir: Path | None = None, z0: float = 785.0, z1: float = 1850.0, step: float = 8.0,
+            chunk: int = 150) -> tuple[np.ndarray, int, list]:
+    """Per 10 mm column of the MiR frame (x, y over BOUNDS): in how many arm-frames, over all recorded clips, any point
+    of an arm's surface was in that column between z0 and z1 (above the cabinet top, below 1.85 m)."""
+    import ur_arm
+    sweep_dir = Path(sweep_dir or SWEEP)
+    nx, ny = (int(np.ceil((BOUNDS[i, 1] - BOUNDS[i, 0]) / VOX)) for i in (0, 1))
+    count = np.zeros((nx, ny), np.int32)
+    arm = {k: _dedup(v, step) for k, v in _arm_points("ur10e").items()}
+    grip = _dedup(_gripper_points(0.5), step)
+    total, names = 0, []
+    for npz in sorted(sweep_dir.glob("*.npz")):
+        data = np.load(npz)
+        names.append(npz.stem)
+        for key in data.files:
+            fr, Q, _, Rl = _frames(data, key)
+            for a0 in range(0, len(Q), chunk):
+                fks = [ur_arm.fk("ur10e", q) for q in Q[a0:a0 + chunk]]
+                Rc = Rl[a0:a0 + chunk]
+                T_ = len(fks)
+                occ = np.zeros((T_, nx, ny), bool)
+                for l, pts in list(arm.items()) + [("tool0", grip)]:
+                    Ms = np.stack([Rc[i] @ fks[i][l] for i in range(T_)])
+                    W = np.einsum("tij,nj->tni", Ms[:, :3, :3], pts) + Ms[:, None, :3, 3]
+                    ok = (W[..., 2] > z0) & (W[..., 2] < z1)
+                    i = np.floor((W[..., 0] - BOUNDS[0, 0]) / VOX).astype(int)
+                    j = np.floor((W[..., 1] - BOUNDS[1, 0]) / VOX).astype(int)
+                    ok &= (i >= 0) & (i < nx) & (j >= 0) & (j < ny)
+                    t = np.broadcast_to(np.arange(T_)[:, None], ok.shape)
+                    occ[t[ok], i[ok], j[ok]] = True
+                count += occ.sum(0, dtype=np.int32)
+                total += T_
+    return count, total, names
+
+
 def figure(sweep_dir: Path | None = None) -> Path:
-    """out/base_cams/sweep.png: seen from above, the lowest height over the cabinet top at which any clip's arm passed
-    each spot of the base (blank: never below 1.9 m), the cabinet, the arm's base and the cameras' parts drawn on it;
-    and the same seen from the back. From every recorded clip, 10 mm voxels."""
+    """out/base_cams/sweep.png. Left: seen from above, in how many of all the recorded arm-frames an arm passed over
+    each spot of the base between the cabinet top and 1.85 m (the mast's height), the cabinet, the arm's base and the
+    cameras' parts drawn on it. Right: everywhere any arm went, seen from the back, with the cameras."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.colors import LogNorm
     from matplotlib.patches import Rectangle
     import props as P
+    import animate as A
     sweep_dir = Path(sweep_dir or SWEEP)
-    union, names = None, []
+    count, total, names = traffic(sweep_dir)
+    union = None
     for npz in sorted(sweep_dir.glob("*.npz")):
         g, _ = sweep_grid(npz)
         union = g if union is None else union | g
-        names.append(npz.stem)
+    x = BOUNDS[0, 0] + (np.arange(count.shape[0]) + 0.5) * VOX
+    y = BOUNDS[1, 0] + (np.arange(count.shape[1]) + 0.5) * VOX
     zc = BOUNDS[2, 0] + (np.arange(union.shape[2]) + 0.5) * VOX
-    over = union & (zc > P.CAB_TOP + 5)[None, None, :]
-    low = np.where(over.any(2), zc[np.argmax(over, axis=2)], np.nan)
-    low[low > 1900] = np.nan
-    x = BOUNDS[0, 0] + (np.arange(union.shape[0]) + 0.5) * VOX
-    y = BOUNDS[1, 0] + (np.arange(union.shape[1]) + 0.5) * VOX
-    fig, axs = plt.subplots(1, 2, figsize=(14.5, 6.4), gridspec_kw=dict(width_ratios=[1.25, 1]))
+    fig, axs = plt.subplots(1, 2, figsize=(15.5, 6.8), gridspec_kw=dict(width_ratios=[1.2, 1]))
     ax = axs[0]
-    im = ax.pcolormesh(x, y, low.T, cmap="viridis_r", vmin=P.CAB_TOP, vmax=1900, shading="auto")
-    fig.colorbar(im, ax=ax, label="lowest height (mm) any clip's arm passed, over the cabinet top")
+    c = np.where(count > 0, count, np.nan).astype(float)
+    im = ax.pcolormesh(x, y, c.T, cmap="magma_r", norm=LogNorm(vmin=1, vmax=max(10, np.nanmax(c))), shading="auto")
+    fig.colorbar(im, ax=ax, label=f"arm-frames (of {total:,}) with an arm over the spot, 0.79-1.85 m up")
     L, Wd = P.MIR["L"], P.MIR["W"]
-    ax.add_patch(Rectangle((-L / 2, -Wd / 2), L, Wd, fill=False, ec="k", lw=1.6, label="MiR250 footprint"))
-    ax.add_patch(Rectangle((-P.CAB_X, -P.CAB_Y), 2 * P.CAB_X, 2 * P.CAB_Y, fill=False, ec="0.35", lw=1.0, ls="--",
+    ax.add_patch(Rectangle((-L / 2, -Wd / 2), L, Wd, fill=False, ec="k", lw=1.8, label="MiR250 footprint"))
+    ax.add_patch(Rectangle((-P.CAB_X, -P.CAB_Y), 2 * P.CAB_X, 2 * P.CAB_Y, fill=False, ec="0.3", lw=1.0, ls="--",
                            label="cabinet"))
-    import animate as A
-    ax.add_patch(plt.Circle(A.ARM_LOCAL, 95, fill=False, ec="w", lw=1.4))
-    ax.text(A.ARM_LOCAL[0], A.ARM_LOCAL[1] - 140, "arm base", color="w", ha="center", fontsize=9)
-    colours = {"L": "#2a73d9", "R": "#ee8019", "M": "#279e4d"}
+    ax.add_patch(plt.Circle(A.ARM_LOCAL, 95, fill=False, ec="k", lw=1.2))
+    ax.text(A.ARM_LOCAL[0], A.ARM_LOCAL[1] - 150, "arm base", ha="center", fontsize=9)
+    colours = {"L": "#2a73d9", "R": "#ee8019", "M": "#20a050"}
     for k in P.BASE_CAMS:
         g = P.base_camera_geometry(k)
         for part in ("post", "box"):
             b = g[part].bounds
-            ax.add_patch(Rectangle((b[0], b[2]), b[1] - b[0], b[3] - b[2], fill=part == "post", fc=colours[k],
-                                   ec=colours[k], lw=1.6, alpha=0.95))
-        ax.text(g["box_centre"][0], g["box_centre"][1] + (60 if k != "M" else -95), f"{k}, {g['top']:.0f}",
+            ax.add_patch(Rectangle((b[0], b[2]), b[1] - b[0], b[3] - b[2], fill=True, fc=colours[k], ec="k", lw=0.6,
+                                   alpha=0.9))
+        ax.text(g["box_centre"][0] + (60 if k == "R" else -60 if k == "L" else 0),
+                g["box_centre"][1] + (95 if k != "M" else -110), f"{k}: {g['top'] / 1000:.2f} m",
                 color=colours[k], ha="center", fontsize=10, weight="bold",
-                bbox=dict(fc="w", ec="none", alpha=0.75, pad=1.5))
-    ax.set_xlim(-560, 560)
-    ax.set_ylim(-420, 900)
+                bbox=dict(fc="w", ec="none", alpha=0.85, pad=1.5))
+    ax.set_xlim(-620, 620)
+    ax.set_ylim(-470, 950)
     ax.set_aspect("equal")
     ax.set_xlabel("x along the base (mm)")
-    ax.set_ylabel("y across it (mm): +y is the station side")
-    ax.set_title("From above: where the arms pass low over the base", fontsize=11)
+    ax.set_ylabel("y across it (mm); the arm works towards +y")
+    ax.set_title("Seen from above: how often the arms pass over each spot", fontsize=11)
     ax.legend(loc="upper left", fontsize=8)
     ax = axs[1]
-    side = union[:, :, :].any(1)                       # seen along y: x against z
+    side = union.any(1)                                # seen along y: x against z
     ax.pcolormesh(x, zc, side.T, cmap="Greys", vmin=0, vmax=1.6, shading="auto")
     ax.add_patch(Rectangle((-L / 2, 0), L, P.MIR["H"], fill=True, fc="0.25", ec="k"))
-    ax.add_patch(Rectangle((-P.CAB_X, P.MIR["H"]), 2 * P.CAB_X, P.CAB_H, fill=True, fc="0.8", ec="k"))
+    ax.add_patch(Rectangle((-P.CAB_X, P.MIR["H"]), 2 * P.CAB_X, P.CAB_H, fill=True, fc="0.85", ec="k"))
     for k in P.BASE_CAMS:
         g = P.base_camera_geometry(k)
         for part in ("post", "box"):
             b = g[part].bounds
             ax.add_patch(Rectangle((b[0], b[4]), b[1] - b[0], b[5] - b[4], fill=True, fc=colours[k], ec=colours[k]))
-    ax.axhline(1800, color="#279e4d", lw=0.8, ls=":")
-    ax.text(-1150, 1825, "1.8 m: the MiR250's 3D cameras see obstacles up to here", fontsize=8, color="#279e4d")
+    ax.axhline(1800, color="#20a050", lw=1.0, ls=":")
+    ax.text(-1180, 2470, "dotted: 1.8 m, the height the MiR250's 3D cameras see obstacles up to", fontsize=8,
+            color="#106030", bbox=dict(fc="w", ec="none", alpha=0.85))
     ax.set_xlim(-1200, 1200)
-    ax.set_ylim(0, 2400)
+    ax.set_ylim(0, 2550)
     ax.set_aspect("equal")
     ax.set_xlabel("x (mm)")
     ax.set_ylabel("z (mm)")
-    ax.set_title("Seen from the side: everywhere any arm went (grey)", fontsize=11)
-    fig.suptitle(f"The arms' sweep over their own MiR250 in {len(names)} clips, and the base cameras", fontsize=12)
+    ax.set_title("Seen from the back: everywhere any arm went (grey)", fontsize=11)
+    fig.suptitle(f"Where the arms go over their own MiR250 in {len(names)} clips ({total:,} arm-frames), and the base "
+                 f"cameras", fontsize=12)
     fig.tight_layout()
     OUT.mkdir(parents=True, exist_ok=True)
     out = OUT / "sweep.png"
