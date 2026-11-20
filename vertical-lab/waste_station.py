@@ -128,7 +128,7 @@ def hood() -> list:
         a((f"post {sx}", box(x0, YF, Z0, x0 + FH["post"], YB, ZT - 200), WHITE, 1.0))
     a(("hood top", box(-XW, YF, ZT - 200, XW, YB, ZT), WHITE, 1.0))
     a(("back", box(-XI, YB - 30, Z0, XI, YB, ZT - 200), WHITE, 1.0))
-    a(("fascia", box(-XI, YF, FH["sash"][1] + SASH_LIFT * 0 + 0, XI, YF + 20, ZT - 200), WHITE, 1.0))
+    a(("fascia", box(-XI, YF, FH["sash"][1], XI, YF + 20, ZT - 200), WHITE, 1.0))
     a(("airfoil", box(-XI, YF, Z0, XI, YF + 39, Z0 + 28), STEEL, 1.0))
     a(("baffle", box(-XI, YB - 78, Z0 + 28, XI, YB - 66, ZT - 240), LINER, 1.0))
     s0, s1 = FH["sash"]
@@ -199,9 +199,7 @@ def work_surface() -> tuple[list, list]:
         for nm, m, c, op in bottle(x1 + 45, ry, Z0 + 30, 26.0, 120.0, (1, 1, 1), fill=0.0, glass=HDPE):
             out.append((f"empty {k} {nm}", m, c, op))
     for k, (bx, liq) in enumerate(((-380.0, WECK_C), (-280.0, (0.75, 0.88, 1.0)))):
-        beaker = cyl(32, 70, bx, YF + 260, Z0).boolean_difference(cyl(29, 70, bx, YF + 260, Z0 + 3)) \
-            if False else cyl(32, 70, bx, YF + 260, Z0)
-        out.append((f"etch beaker {k}", beaker, GLASS, 0.35))
+        out.append((f"etch beaker {k}", cyl(32, 70, bx, YF + 260, Z0), GLASS, 0.35))
         out.append((f"etch liquid {k}", cyl(29, 22, bx, YF + 260, Z0 + 3), liq, 0.9))
     return out, nests
 
@@ -298,8 +296,7 @@ def build() -> tuple[Scene, dict]:
     tcp = rb.tcp_world()
     for nm, m, c, op in held:
         sc.add(f"held/{nm}", m, c, "held", opacity=op)
-    sc.gmat["held"] = T(target - np.array([0, 0, 0])) @ T((0, 0, 0))
-    sc.gmat["held"] = T((target[0], target[1], target[2]))
+    sc.gmat["held"] = T((target[0], target[1], target[2]))      # the bottle's axis through the grasp point
     return sc, dict(mir_x=round(float(mir_x)), back=back, pitch=pitch, tcp=np.round(tcp[:3, 3], 1).tolist(),
                     target=target.tolist(), hood_points_hit=_hits(base, q, arm_pts, grip_pts))
 
