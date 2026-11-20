@@ -16,7 +16,25 @@ The CubXL on tray A runs DAL's copper corrosion screen
 [`cubxl_corrosion.md`](cubxl_corrosion.md). Code for this note: [`cubxl_evap.py`](../cubxl_evap.py) →
 [`out/cubxl_evap.json`](../out/cubxl_evap.json), [`out/cubxl_evap.png`](../out/cubxl_evap.png).
 
-SECTION_SUMMARY
+## In short
+
+- **Pipettes: add a P300 beside the P20; don't switch to a Flex.** One OT-2 GEN2 P300 single ($2,950) moves the 135 µL
+  of seawater, the 150 µL collection and the rinse in single transfers: **6 transfers a spot instead of 33, and 7.5
+  min of head time instead of 22.5** (the CubXL's own measured step times). It is the pipette the PANDA firmware was
+  written for, so CubOS drives it the way it drives the P20. Accuracy is a wash (±1-2 % at these volumes either way).
+  What it really buys is mixing the well after the sulfide. A Flex 1-Channel 1000 µL ($3,600) would need a CAN FD and
+  36 V integration that nobody has published, and it is less accurate at 15 µL than the P20 it would replace.
+- **Evaporation is small. Sulfide loss is not.** A spot loses **1-3 %** of the well's water, so chloride rises 1-3 %;
+  two thirds of that happens under the cap during the measurement, and the many small P20 transfers add only 0.3-0.5
+  µL. The open ICP-MS tubes lose **2-12 %** waiting for the morning: use the morning weight, not 320 µL. But H₂S leaves
+  the well far faster than water: under DAL's clearance cap the metal sees **between a tenth and two thirds** of the
+  nominal sulfide over the measurement, depending on mixing that nobody controls. Seal the well for sulfide spots
+  (DAL's O-ring cap keeps 89 %), mix after the sulfide, and do the leak check before it.
+- **Reference: a leak-free Ag/AgCl element in a sleeve of the screen's own seawater.** No 2-3 mm reference has sulfide
+  data, so keep the silver out of the sulfide: an LF-1.6 in a 3 mm sleeve of sulfide-free ASW, parked in ASW. No
+  junction potential, no KCl into the well, about 50 µL to refill a week. Qualify the bare LF-2 in sulfide first: if
+  it holds, it needs no sleeve at all.
+- **The clip** [`cubxl_corrosion`](../out/mp4/instruments/cubxl_corrosion.mp4) now has the P300 on the head (§4).
 
 ## 1. The pipettes: add a P300 beside the P20; not a Flex, not yet
 
@@ -240,8 +258,113 @@ compressing the sulfide response (`protocol.md` §3); this is a second, independ
 6. **For water**: weigh the tubes and the stocks, as above; a lid over the tube rack. Lowering the room's dryness or
    humidifying the VLM is not needed for the well: 1-3 % per spot is fine.
 
-SECTION_REFERENCE
+## 3. A reference electrode that survives the screen
 
-SECTION_MODEL
+### Why Ag/AgCl is the weak point here
 
-SECTION_OPEN
+- **Sulfide turns silver chloride into silver sulfide.** A sulfided Ag surface reads the sulfide activity (about 29 mV
+  a decade) instead of the chloride, and sits roughly half a volt negative of Ag/AgCl in seawater at these doses
+  (standard thermodynamic data; the exact figure hangs on H₂S's poorly known second dissociation constant). That is a
+  dead reference, not a drift.
+- **A porous junction blackens.** In a conventional reference the filling is AgCl-saturated KCl, so silver ions meet
+  incoming sulfide inside the frit and Ag₂S clogs it. That is why pH-electrode makers offer silver-ion traps and long
+  diffusion paths for sulfide samples (Mettler Toledo's ARGENTHAL, Hamilton's Everef).
+- **A porous junction also feeds the well,** and so does storage: DAL's sequence goes from the park cup straight onto
+  the next well (`decap park_cup`, `cap S_k`), so a film of whatever the reference is stored in, say 3 M KCl, rides
+  into 150 µL each time. Store it in the screen's own seawater and the carry-over is harmless.
+- **How much sulfide it sees** depends on §2's fixes: with the clearance cap the well's sulfide halves in about half an
+  hour; with the sealed cap that §2 recommends for sulfide spots, the reference sits in up to 10 mg/L for an hour.
+
+### The options
+
+| | Sulfide | Upkeep | Into the well | Size | Impedance | Cost |
+|---|---|---|---|---|---|---|
+| **Leak-free Ag/AgCl** (Innovative Instruments LF-1, LF-1.6, LF-2; eDAQ's ET072-1 is the same 2 × 65 mm format) | no data. The junction is "highly conductive but not porous", so nothing flows through it. Walker & Dick show such junctions work as bipolar electrodes ([*Anal. Chem.* 93, 10065, 2021](https://doi.org/10.1021/acs.analchem.1c00675); [*Analyst* 148, 2149, 2023](https://doi.org/10.1039/D3AN00107E)), so sulfide reacting at its outer face could move the reading: untested | "completely sealed, never needs refilling ... can be used for months, if not years"; no KCl storage; recovers after drying out ([data sheet](https://www.2in.com/products/reference/LFinfo.pdf)) | "does not introduce potassium, chloride or other ions" | 1.0, 1.6 or 2.0 mm | under 10 kΩ (a reseller's figure) | quote; DAL budgets ~$250 |
+| WPI Dri-Ref, DRIREF-2 / SUPER-Dri-Ref SDR2 | no data | stored in KCl; "long life" | ~5.7 × 10⁻⁸ mL/h (DRIREF-2); "does not leak electrolyte at all" (SDR2); the KCl it is stored in rides in unless rinsed | 2 mm × 13 / 9 cm | ~2.7 kΩ / under 5 kΩ | $158 / $219 ([WPI](https://wpiinc.com/blog/post/compare-dri-ref-reference-electrodes)) |
+| Double-junction Ag/AgCl, outer fill replaceable | slows sulfide down; the outer fill is changed, not the element | refill the outer chamber | the outer fill, slowly | **none at 2-3 mm found**: Pine 9.5 mm, BASi 6 mm, Gamry 4 mm | higher than single | $150-300 |
+| Ag/AgCl with a replaceable frit (refillable single junction, e.g. Microelectrodes Inc. MI-402, 2 mm × 9.5 cm, 3 M KCl) | the frit blackens and clogs | refill after "many weeks", swap frits | 3 M KCl, through a porous junction | 2 mm | low | $167 ([maker](https://www.microelectrodes.com/product-page/mi-402-flexible-micro-reference-electrode)) |
+| Gel or polymer references with a silver trap (Mettler ARGENTHAL/Xerolyt, Hamilton Everef) | made for sulfide samples | none until spent | slow | only as 3 mm and larger combination pH electrodes, no mini reference alone | — | — |
+| Hg/Hg₂SO₄ (chloride-free) | mercury forms HgS just as silver forms Ag₂S | refill | saturated K₂SO₄ | 4 mm at the junction at the smallest | — | mercury on a robot deck |
+| Silver-free iodine/iodide (Thermo ROSS) | no precipitate; Thermo recommends it for sulfide samples | refill | KCl | 16 mm alone; 3 mm only as a pH combination electrode | — | — |
+| A pseudo-reference in the well: bare Ag/AgCl wire (the cathodic-protection "Ag/AgCl/seawater"), zinc, Pt | Ag/AgCl wire: poisoned outright, and it takes sulfide out of the well; zinc forms ZnS and puts Zn²⁺ into the ICP-MS sample; Pt answers O₂ and sulfide | none | the electrode itself | any | low | ~$0 |
+| Ionic-liquid salt bridge (HORIBA PUREIL) | probably fine | low | the ionic liquid | full size only | 100 kΩ to MΩ: poor at 100 kHz | — |
+| Solid-state composite with suspended AgCl ([Macedo et al., *Analyst* 149, 5225, 2024](https://doi.org/10.1039/d4an01076k)) | built for it: "sulphide species are precipitated as Ag₂S, inhibiting their diffusion through the polymer composite" | none | none | made, not bought | higher than liquid-filled | a research electrode |
+
+No 2-3 mm reference electrode has published sulfide data. The approach with a track record keeps the silver out of
+the sulfide: voltammetry in sulfidic sediments puts the Ag/AgCl reference in the overlying water, not the sulfide zone
+(e.g. [Luther et al., *J. Environ. Monit.* 3, 61, 2001](https://doi.org/10.1039/b006499h)).
+
+### Recommendation: a leak-free element in a sleeve of the screen's own seawater
+
+1. **A leak-free Ag/AgCl element (LF-1.6) inside a 3 mm sleeve filled with sulfide-free D1141, with a porous ceramic
+   or Vycor tip, parked in that same seawater.** It is a double junction whose outer fill is the well's own background
+   electrolyte:
+   - the silver never meets sulfide: what crosses the tip in an hour (about 0.2 nmol at 10 mg/L through a 1 mm
+     ceramic pin, a few µM in the sleeve) diffuses back out into the park cup's clean seawater before the next spot;
+   - seawater against seawater gives no junction potential to speak of, and nothing but seawater reaches the well;
+   - upkeep is refilling the sleeve (about 50 µL) weekly, or whenever DAL's nightly check against the master
+     reference moves past its limit; the sealed element lasts months to years;
+   - it fits: a 3 mm sleeve in the cap's centre, the Pt coil (2.6 mm radius) around it, the tip still 3 mm above the
+     metal; the cap's capillary hole goes from 2 to 3 mm;
+   - the sleeve adds a few kΩ; for the 100 kHz end of DAL's EIS, couple a short Pt wire to the reference through
+     0.1-1 µF (the usual dual-reference fix in Gamry's and Metrohm's EIS notes).
+2. **Qualify the bare LF-2 first.** If a week in 10 mg/L S seawater moves it less than 2 mV against the master
+   (through a salt bridge), it is the lowest-upkeep option of all and needs no sleeve.
+3. **Either way, store the reference in the screen's seawater, not KCl** (§ above), run the sulfide spots last in the
+   night, and keep DAL's nightly master check: it is what tells a poisoned reference from a real result.
+4. **Not** a bare silver wire, zinc or platinum in the well, a mercury electrode, or a refillable fritted Ag/AgCl.
+   Watch the sulfide-resistant solid-state composite: it is the right idea, but not yet a part to buy.
+
+The model keeps its 2 mm leak-free reference in the cap: the choice waits on the bare LF-2's sulfide test (2), and the
+sleeve would only make it 3 mm.
+
+## 4. The model and the clip
+
+The P20 + P300 choice is clear enough to draw, so [`r9_cubxl.py`](../r9_cubxl.py) (the CubXL every scene loads,
+through `tour.load` and [`cubxl_rig.py`](../cubxl_rig.py)) now has it. DAL's protocol is not changed: the clip is this
+note's proposal, and says so.
+
+- **The P300 sits 34 mm in front of the P20** (CubOS offset (+55, −23) from the capper; an OT-2's two mounts are 34 mm
+  apart), its nozzle 16 mm higher, so a seated 300 µL tip ends 35 mm below the carriage as a P20 tip does. Beside the
+  P20 in x, at (+89, +11), the capper would come down on the cup block whenever the P300 worked at S1. Only one tip is
+  on the head at a time: on one Z axis, a tip on the idle pipette would hang into whatever is under it.
+- **Its tips: a printed 2 × 4 rack at the deck's front left** (x 55-82, y 10-19). With three tools on one carriage,
+  every pickup puts the capper, the camera and the bare P20 somewhere else on the deck; the middle of the deck, the
+  obvious place, puts the capper over Ben's rack 1 when either pipette draws from the holder, or the camera over rack
+  2. The front left is clear of all of them, but holds 12 tips at most (3 × 4). A night of 8 spots needs about 10 if
+  each spot's mixing tip is set back in its slot and reused for that well's collection and rinse, as DAL already does
+  with the acid tip, and the ASW and DI tips (which only touch their own stock) serve the night; the clip draws the
+  simpler 3 new tips a spot.
+- **The spot:** the P300 fills S1 with 135 µL of ASW in one transfer and returns that tip to its rack; the P20 adds the
+  15 µL of sulfide; the P300 mixes S1 (3 strokes of 80 µL, a fresh tip); after the measurement the P300 moves the
+  150 µL to tube 1, then a fresh tip adds 150 µL of DI water (the capper now opens the DI vial, which round 9 left
+  shut), rinses S1 with two strokes and carries it to the tube; the P20 adds the acid as before. The panel shows what
+  each tip holds. The cap-parking vial of round 9 is still on the deck but this order doesn't need it: no two stocks
+  are open at once.
+- **Head time** in the clip's captions is [`cubxl_evap.py`](../cubxl_evap.py)'s, from the measured step times.
+- Scenes that load the CubXL through `cubxl_rig` (the workflow and the long-form's tray A) will show the P300 at
+  their next render; `cubxl_rig.pose` now also sets the P300's tip liquid. None of them is re-rendered here.
+
+**Audit and render:** in progress (this session); see the PR description for the result.
+
+## 5. Open
+
+- **Bench checks before anything is bought.** (a) Weigh what the P20 and a P300 actually deliver with DAL's
+  dispense-from-above move (Tate's law says a 20 µL tip can hold a 12 µL drop). (b) A dye test: 15 µL of dyed ASW onto
+  135 µL in a printed well, filmed from the head camera, settles whether the drop mixes itself (between A and B of §2).
+  (c) Sulfide in a witness well after 63 min under each cap, by methylene blue, to check §2's model. (d) The bare LF-2
+  for a week in 10 mg/L S seawater against the master (§3).
+- **DAL's calls, not this note's:** an O-ring cap for sulfide spots, and how the electromagnet gets it off; the mixing
+  step; the leak check before the sulfide; using the morning tube mass.
+- **Hardware for the P300:** a bracket on Ben's PAW-V2 mount; a second Uno and TMC2209 on their own
+  `/dev/serial/by-id` port (never `ttyACM*`: see CLAUDE.md on the Pico and the Arduino); Opentrons' P300 plunger
+  planes in the firmware, checked gravimetrically as the P20's still have to be; 1.25 A to drop a tip. Whether a
+  CubOS protocol can name which of two `pipette` instruments a step uses is untested.
+- **The deck:** the front-left rack holds 12 P300 tips at most within the head's shadows; anything more means moving
+  Ben's labware, which is DAL's conclusion for any third tool on the head too (`cubxl-setup.md` §3).
+- **Not modelled:** the copper's own uptake of sulfide (§2 gives its size), sulfide oxidation by air, and the reference
+  sleeve (§3).
+
+Reproduce: `python3 cubxl_evap.py` (a few seconds) → `out/cubxl_evap.json`, `out/cubxl_evap.png`;
+`VIZ3D_FPS=12 xvfb-run -a python3 tour.py cubxl_corrosion` → the clip; `python3 interference.py cubxl_corrosion` →
+its audit in `out/interference.json`.

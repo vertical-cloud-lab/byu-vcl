@@ -67,8 +67,8 @@ class CubRig:
         sc = self.sc
         for k, d in r9_cubxl.corr_offsets(s).items():
             sc.gmat[f"{PREFIX}{k}"] = T(d)
-        for k, h in IL.corr_levels(s).items():
-            z0, h0, _ = IL.LEVEL_AT[k]
+        for k, h in r9_cubxl.corr_levels(s).items():       # the P20's tip, S1, tube 1, and (round 14) the P300's tip
+            z0, h0, _ = r9_cubxl.LEVEL_AT[k]
             sc.gmat[f"{PREFIX}{k}"] = IL.Level(knots=((0.0, h), (1.0, h)), z0=z0, h0=h0).matrix(0.0)
 
     def play(self, tl, a: str, b: str, on_state=None):
