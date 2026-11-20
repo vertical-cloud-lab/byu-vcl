@@ -74,7 +74,8 @@ CAM_DOSE = [(1000, -1600, 1330), (245, -1320, 1170), (0, 0, 1)]     # along the 
 CAM_CUB = [(1500, -3300, 2000), (60, -1420, 1010), (0, 0, 1)]
 # round 8, the workflow in the whole lab (PR #318: "In 9:09, suddenly the VLM only has a few things on board"): the wide
 # shots take in both Shuttles, every tray loaded, and the floor; the close-ups at Shuttle 1's opening are round 2's
-CAM_LAB = [(11500, -18500, 12500), (700, -2600, 300), (0, 0, 1)]        # the whole lab: setup_lab.ORBIT's last view
+CAM_LAB = [(13500, -21500, 15500), (700, -2300, 2200), (0, 0, 1)]      # the whole lab: setup_lab.ORBIT's last view
+#                                                                       (round 14: run A's, for the 9150 mm Shuttles)
 CAM_LAB_VLM = [(7600, -9000, 5200), (1600, -900, 1700), (0, 0, 1)]      # both Shuttles, see-through, and the dock
 CAM_LAB_OPEN = [(3500, -5900, 2700), (0, -1000, 1300), (0, 0, 1)]       # setup_lab.CAM_OPEN: clear of the south row
 LAB_TITLE = "Vertical cloud lab: atomized powder dosed for the CubXL"

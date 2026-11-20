@@ -587,7 +587,7 @@ def movie():
             L.note(2, "HR-202i", f"{v:.4f} g{'  stable: ' + what if u > 0.85 else ''}")
         if still:
             STILLS[still] = sc.n + int(round(1.4 * f * scene.FPS)) + int(round(0.6 * scene.FPS))
-        sc.step(st, cap, 1.4 * f, settle, hold=1.2 if detail else 0.0)
+        sc.step(st, cap, 1.4 * f, settle, hold=2.6 if detail else 0.0)
 
     def from_fork(i, st, cap, f, H, detail):
         """Cup i, from the shuttle's fork at the hand-over, into the gripper."""
@@ -657,8 +657,8 @@ def movie():
         L.note(2, "HR-202i", "0.0000 g  tared (the post)")
         shuttle_in(i, st, c_in, f, H, detail)
         L.note(2, "HR-202i", f"{g0:.4f} g")
-        if detail:
-            sc.step(st, c_in, 0.6, None, hold=0.4, cam_to=cam_dose)
+        if detail:                             # round 14: time to read what changed (the caption is the station's)
+            sc.step(st, c_in, 0.6, None, hold=2.4, cam_to=cam_dose)
             K.cut(i, True, sleeve=None)
         L.note(1, "Doser", f"module {m + 1} tilted, dosing {pname} by auger turns")
         spin0 = car.state["spin"]
@@ -686,7 +686,7 @@ def movie():
             L.note(2, "HR-202i", f"{g0 + grams * kq:.4f} g")
         if still:
             STILLS[still] = sc.n + int(round(3.4 * f * 0.8 * scene.FPS))
-        sc.step(st, c_dose, 3.4 * f, run, hold=0.3 if detail else 0.0, live=False)
+        sc.step(st, c_dose, 3.4 * f, run, hold=2.6 if detail else 0.0, live=False)
         sc.alpha["stream"] = 0.0
         if layer == 0:
             K.powder_h[i] = h_to
@@ -1088,7 +1088,7 @@ def movie():
         for _ in range(2):
             sc.step(st, cap, 0.5 * f, rb.line_to(lvl(gd + (0, 0, AP.WAND_STROKE), dd)), hold=0.0)
             sc.step(st, cap, 0.5 * f, rb.line_to(lvl(gd, dd)), hold=0.0)
-        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(over, dd)), hold=H(0.05))
+        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(over, dd)), hold=2.0 if detail else 0.0)
         sc.step(st, cap, 1.2 * f, pre(lvl(gw + (0, 0, lift), dw), lvl(gw + (0, 0, 1), dw)), hold=H(0.05))
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(gw + (0, 0, 1), dw)), hold=H(0.05))
         sc.step(st, cap, 0.3 * f, rb.grip_to(AP.OPEN_FLANGE), hold=H(0.05))

@@ -325,7 +325,7 @@ cup's cycle in chapter 1 (`alloy_charge.py`).
 |---|---|---|
 | Every press, the punch going back | Its rest is a **brush cup**: a ring of nylon bristles in the pocket's mouth, a vacuum line under it. The arm takes the punch in and out of it twice before letting go. | brush cup, vacuum elbow |
 | Every press, once the cup is out | The pin goes down; the arm takes the **bore wand** from its rest beside the punch's (a 19.6 mm nylon brush on a hollow stem, a 50 mm handle held level like the punch's flange, its own vacuum line), puts it down F1 to 5 mm over the pin, strokes it twice up through the catch ring, and puts it back. The pin comes back up for the next cup. | wand, its rest, hose |
-| The die's port | A 40 µm sintered disc in the port stops what the pump draws off the cup before it reaches the valves and the pump (and is a part to change, `upkeep.py`). | filter disc |
+| The die's port | A 40 µm sintered disc in the port stops what the pump draws off the cup before it reaches the valves and the pump. It is a consumable, not yet in `upkeep.py`'s list, and not drawn. | filter disc |
 | A change of run (Al to Cu here) | Both of the above, then the bore, the catch ring, the punch's face and its O-ring swabbed with IPA, a wet swab and a dry one (not animated). | swab station (to design) |
 
 The vacuum lines go to the lab's explosion-proof vacuum (the Nilfisk of DAL #80, `atom_nilfisk.py`), since the

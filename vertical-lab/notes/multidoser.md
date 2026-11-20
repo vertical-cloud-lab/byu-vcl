@@ -379,7 +379,7 @@ ratio, about 8× less. What the stream does inside still air over 45 mm is still
 
 ### What changes for the arm
 
-The hand-over is 106 mm higher (the fork at the seat + 6 mm), and the vessel has to wait on the fork until a module
+The hand-over is 106-108 mm higher (the fork at the seat + 6 mm), and the vessel has to wait on the fork until a module
 is docked and tilted. Chapter 1 and the 9:22 clip are re-scripted for it (`alloy_charge.py`, `animate.py workflow`).
 
 ### Assumed, not measured
