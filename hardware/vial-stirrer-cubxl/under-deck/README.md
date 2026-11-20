@@ -7,8 +7,10 @@ on the deck, held by a holder that isn't under it. On 2026-11-20: *"can you chan
 for the stirrers to sit side by side? There is nothing under the deck right now, and there plenty of
 clearance for the stir module."*
 
-**Status: a mock-up to discuss.** Nothing is printed, measured or checked for printing. The
-magnet numbers come from the same model as
+**Status: a mock-up, printed once.** Two frames and two collars were printed in PLA on the H2D on
+2026-11-20 ([record](../print/2026-11-20-h2d-under-deck/README.md)). The frames were printed
+without their 0.5 mm pads, so they need four 0.5 mm M3 washers (see [the parts](#the-parts)).
+Nothing has been assembled or measured yet. The magnet numbers come from the same model as
 [`../analysis/coupling_vs_height.py`](../analysis/coupling_vs_height.py), calibrated on the same
 observations. The first version, at commit `c549ed6`, reached into the far half of each slot. Its
 collar and frame were 71 and 72 mm long, so two of them needed two rows (90 mm) in Y.
@@ -176,12 +178,21 @@ bound, with the water held still).
 - **Liquid:** the vial stands on solid deck, and the drive is under 9 mm of polycarbonate, away from
   anything spilled on the deck.
 - **Cable:** it runs under the deck, out of the gantry's way.
-- **Printing isn't worked out:**
-  - The collar's keys hang under its bars. Print them with supports, or make them separate
-    press-fit keys like today's, cut to half length.
-  - The frame prints bosses up with no supports. But then its 0.5 mm pads are on the bottom, so the
-    plate between them would need support. Alternatively, leave the pads off and put 0.5 mm M3
-    washers on the fan screws, plus two more at the other corners.
+- **Printing, as done on 2026-11-20** ([record](../print/2026-11-20-h2d-under-deck/README.md)):
+  - **Collar:** keys down, as drawn. Its bars and ring sit 3 mm above the keys, so they print on
+    tree supports from the bed (30°, build plate only), only 0.2–2.8 mm high.
+  - **Frame:** fan face down and bosses up, **without the 0.5 mm pads**. With the pads, the whole
+    fan face (1632 mm²) would sit 0.5 mm above the bed. That face is the clearance over the rotor, so
+    support marks there would eat into the 0.5 mm. The print file is `frame.stl` with the pads cut
+    off ([`make_print_stls.py`](../print/2026-11-20-h2d-under-deck/make_print_stls.py)), and four
+    0.5 mm M3 washers go at the fan's corners, as in the compact build. Two are on the fan screws,
+    and the two at the corners without a screw are loose, so a dab of glue keeps them in place
+    while assembling. The stack heights are unchanged. Only the plastic under each fan-screw head
+    changes: 0.63 mm, with the washer under it, instead of 1.13 mm including the pad. So
+    tighten those screws snug only, as `BUILD.md` already says for the fan.
+  - Bambu's `0.20mm Standard` with `BUILD.md`'s changes (4 walls, 30 % infill, 0.15 mm
+    elephant-foot compensation). These were PLA, since the H2D had no PETG loaded; `BUILD.md` asks
+    for PETG.
 - **One stirrer per Uno channel.** The firmware drives one fan and reads one Hall sensor. A second
   stirrer needs a second PWM pin and a second Hall interrupt (D3), and a channel in the `30`/`31`
   commands.

@@ -1,0 +1,218 @@
+{
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/348 (benwhitney5463, @claude-print: \"print the extra parts I would need now for the under the deck stir module (just the frame and the collar) print two of each\")",
+ "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/44799950751",
+ "tracking_comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/348#issuecomment-7048369657",
+ "route": "Bambu Studio 02.08.02.61 GUI on the runner (bambu/studio/setup_runner.sh), logged in with password + authenticator code (bambu-totp; no e-mailed code), sent through Bambu's cloud with LAN acceleration",
+ "printer": "BYU VCL H2D - Theoden",
+ "printers_checked": {
+  "Thumbelina (A1 mini)": "not idle: 'Part Studio 2 - AOR tester' shown as Downloading (100%) with the bed at 64-65/65 C (the same state as 2026-11-19 18:40 and 20:46 UTC). It has the only PETG loaded (AMS Lite A4)",
+  "Tinkerbell (A1 mini)": "idle, last job 'Size down (19.5mm)' finished; blue PLA on the external spool only, no AMS",
+  "BYU VCL H2D - Theoden": "idle, last job vial_rack_9x20mL_v2 finished 175/175; heaters off; HMS: two lubrication reminders only"
+ },
+ "plate": "Textured PEI (as on 2026-11-19; Studio's Send dialog showed PEI)",
+ "nozzles": {
+  "left": "0.4 mm hardened steel, Standard flow (USED)",
+  "right": "0.6 mm hardened steel, TPU High Flow (not used)",
+  "source": "Studio Device page > Printer Parts (19:27:06 UTC) and Studio's Switch diameter prompt (19:29:31 UTC: 'Left nozzle: 0.4mm' / 'Right nozzle: 0.6mm')"
+ },
+ "filament": "Bambu PLA Basic profile, AMS slot A3 (left AMS), listed as white PLA. PLA, not the PETG BUILD.md asks for: the H2D had no PETG loaded. Ben, 19:29:57 UTC: 'PLA not PETG.'",
+ "objects": {
+  "hardware/vial-stirrer-cubxl/stl/under-deck/collar.stl": 2,
+  "hardware/vial-stirrer-cubxl/print/2026-11-20-h2d-under-deck/frame_no_pads.stl": 2
+ },
+ "source_commit": "20c21e6 (collar.stl, frame.stl); frame_no_pads.stl from frame.stl by make_print_stls.py, commit 7a5283b",
+ "geometry_change": "frame.stl's four 0.5 mm corner pads cut off (73.0 mm3, 146 mm2); single watertight body, 1778 mm2 on the bed, no overhang. Replace the pads with four 0.5 mm M3 washers at the fan's corners. Ben, 19:29:57 UTC: 'I'll use the washers.'",
+ "orientation": {
+  "collar": "keys down (as drawn)",
+  "frame_no_pads": "fan face down, bosses up (as drawn)"
+ },
+ "slice": {
+  "preset": "0.20mm Standard @BBL H2D (printer: Bambu Lab H2D 0.4 nozzle; filament: Bambu PLA Basic @BBL H2D)",
+  "changed_in_gui": {
+   "wall_loops": "2 -> 4",
+   "sparse_infill_density": "15% -> 30%",
+   "enable_support": "off -> on",
+   "support_on_build_plate_only": "off -> on"
+  },
+  "kept": {
+   "support_type": "tree(auto)",
+   "support_threshold_angle": 30,
+   "support_top_z_distance": 0.2,
+   "elefant_foot_compensation": 0.15,
+   "sparse_infill_pattern": "grid",
+   "brim_type": "auto_brim (Studio added none: no Brim or Skirt feature in the G-code)",
+   "layer_height": 0.2
+  },
+  "supports_where": "only under the collars' bars and rings, z 0.20-2.80 mm (from the G-code); none on the frames",
+  "filament_grouping": "custom: filament 1 on Left (physical_extruder_map 1,0; only T1 heated, M104 S220 T1)",
+  "estimate": "1h 17m 8s",
+  "layers": 100,
+  "max_z_mm": 20.0,
+  "filament_g": 28.35,
+  "filament_m": 9.35,
+  "plate_1_gcode_md5": "f58c49a8e635b44976c2708c85c5af11",
+  "first_slice_rejected": "19:35 UTC: before Arrange, the four parts overlapped at the plate centre (Studio: 'Conflicts of gcode paths ... frame_no_pads.stl <-> collar.stl'); arranged and re-sliced at 19:37"
+ },
+ "send_options": {
+  "job_name": "under_deck_stirrer_frame_collar_x2",
+  "timelapse": "off",
+  "auto_bed_leveling": "on",
+  "flow_dynamics_calibration": "on",
+  "nozzle_offset_calibration": "off",
+  "ams": "PLA -> A3 (left)"
+ },
+ "plate_rule_2026_10_23": {
+  "frame_1": {
+   "utc": "2026-11-20T19:25:46Z",
+   "file": "20261120T192546Z_h2d_camera_first.jpg",
+   "source": "Studio's Printer Preview still on the Device page",
+   "read": "empty: textured plate with faint white outlines of an old first layer (also in 2026-11-19's frames); behind the bed, outside the chamber: a white stand, a blue part and a cardboard box (also there on 2026-11-19). Bright enough.",
+   "posted": "2026-11-20T19:28:13Z"
+  },
+  "reply": {
+   "utc": "2026-11-20T19:29:57Z",
+   "by": "benwhitney5463",
+   "text": "PLA not PETG. I'll use the washers."
+  },
+  "polled": "19:32:23, 19:35:51, 19:37:49, 19:39:17, 19:40:22 UTC; no other comments",
+  "frame_2_presend": {
+   "utc": "2026-11-20T19:38:55Z",
+   "file": "20261120T193855Z_h2d_camera_presend.jpg",
+   "read": "unchanged: plate-region mean luma 127.9 in both, mean absolute difference 3.9/255"
+  },
+  "wait": {
+   "from": "2026-11-20T19:28:13Z",
+   "until_send": "2026-11-20T19:40:28Z",
+   "minutes": 12.25
+  }
+ },
+ "send_utc": "2026-11-20T19:40:28Z",
+ "started": {
+  "utc": "2026-11-20T19:41:06Z",
+  "state": "Homing toolhead, layer 0/100, left nozzle 62/140 C, right 26/0 C, bed 27/55 C, ETA 20:58 UTC"
+ },
+ "sent_file": "sent/under_deck_stirrer_frame_collar_x2_H2D_0.4L_PLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code untouched, MD5 f58c49a8...)",
+ "watch": {
+  "tool": "watch_studio.py (Studio Device page OCR every 10 s, camera frames every 60-180 s) from PR 234's branch, plus the screen recording",
+  "from": "2026-11-20T19:42:48Z",
+  "to": "2026-11-20T21:06:09Z",
+  "layer_1": "about 19:49:20 UTC (layer 0 at 19:48:17, layer 1 at 19:49:23), 8.9 min after Send",
+  "samples": {
+   "19:53:46": "layer 1, 12 %",
+   "20:04:08": "layer 6, 25 %",
+   "20:12:58": "layer 11, 37 %",
+   "20:25:24": "layer 16, 53 %",
+   "20:41:05": "layer 27, 72 %",
+   "20:47:21": "layer 34, 80 %",
+   "20:53:36": "layer 52, 88 %",
+   "20:59:52": "layer 83, 95 %",
+   "21:03:09": "layer 100/100"
+  },
+  "temperatures": "left nozzle 218-221 C (target 220), right nozzle off, bed 55/55 C, chamber 26-30 C throughout",
+  "dialogs_or_hms": "none during the print; after it, HMS still only the two lubrication reminders (21:06:46)"
+ },
+ "finished": {
+  "utc": "2026-11-20T21:03:09Z",
+  "note": "layer 100/100 at 21:03:09 (Studio's job panel: 100 %, Finished); the bed lowered by 21:03:41",
+  "after_send_min": 82.7,
+  "studio_estimate": "1h 17m 8s (plus about 8.9 min of start-up before layer 1)",
+  "parts_on_plate": "frames/20261120T210416Z_finished_parts_on_plate.jpg (21:04:16): two collars with their four fingers on their tree supports, two frames with bore, bosses and holes; nothing loose or stringy",
+  "parts_removed": "about 21:04:26 UTC, by someone at the printer (an arm in the camera, not published); the plate was empty at 21:04:46"
+ },
+ "timeline": [
+  [
+   "19:14:15",
+   "run started (approved in the bambu-print environment); the request was posted just before"
+  ],
+  [
+   "19:14:21",
+   "tracking comment created"
+  ],
+  [
+   "19:14-19:22",
+   "apt crawled at ~20-60 KB/s; the .debs were fetched with curl instead, checked against apt's signed index (size + MD5), and installed from that cache"
+  ],
+  [
+   "19:23:21",
+   "screen recorder started; Studio up at 19:23:50, logged out"
+  ],
+  [
+   "19:24:18",
+   "Log In; authenticator code typed 19:24:35; logged in 19:24:49 (no e-mailed code)"
+  ],
+  [
+   "19:25:00-19:26:00",
+   "Device page: Thumbelina busy (stuck 'Downloading (100%)', bed 65 C), Tinkerbell idle (blue PLA only), H2D idle"
+  ],
+  [
+   "19:25:46",
+   "first frame (Studio's Printer Preview of the H2D)"
+  ],
+  [
+   "19:26:51-19:27:06",
+   "HMS (two lubrication reminders) and Printer Parts (0.4 standard + 0.6 TPU high flow)"
+  ],
+  [
+   "19:28:13",
+   "frame posted at the top of the tracking comment"
+  ],
+  [
+   "19:29:31",
+   "Sync info: Switch diameter prompt, left 0.4 mm chosen"
+  ],
+  [
+   "19:29:57",
+   "Ben: 'PLA not PETG. I'll use the washers.'"
+  ],
+  [
+   "19:30-19:35",
+   "collar.stl and frame_no_pads.stl imported and cloned; 4 walls, 30 %, supports (tree, 30 deg, build plate only)"
+  ],
+  [
+   "19:35:50",
+   "first slice: G-code path conflict, the parts overlapped (not arranged yet)"
+  ],
+  [
+   "19:36:40",
+   "arranged; re-sliced 19:37:35: 100 layers, 28.35 g, 1 h 17 min, no warnings"
+  ],
+  [
+   "19:38:55",
+   "pre-Send frame, unchanged"
+  ],
+  [
+   "19:40:22",
+   "last thread poll before Send: no new comments"
+  ],
+  [
+   "19:40:28",
+   "Send"
+  ],
+  [
+   "19:41:06",
+   "homing, layer 0/100"
+  ],
+  [
+   "19:49:20",
+   "layer 1 (about)"
+  ],
+  [
+   "21:03:09",
+   "layer 100/100, Finished"
+  ],
+  [
+   "21:04:26",
+   "parts taken off the plate by someone at the printer"
+  ],
+  [
+   "21:07:15",
+   "signed out of the Bambu account in Studio"
+  ],
+  [
+   "21:07:35",
+   "Studio closed; ~/.config/BambuStudio and /tmp/bamboo_model deleted"
+  ]
+ ],
+ "github_token": "re-minted with scripts/refresh_github_app_token.py at 20:06 and 20:50 UTC; the tracking comment was updated over REST after 20:13",
+ "recording": "recording/under_deck_stirrer_H2D_2026-11-20.mp4 (7.0 min, 3.1 MB, 960x540; chapters in *_chapters.txt). Cut by wall-clock time with recording/cut_recording_h2d.py (from the 2026-11-09 H2D run) and cut_plan_intro.json + cut_plan_print.json. The login (19:23:50-19:25:05), the home page with the account name, the part removal and the sign-out are not in it; the room behind the H2D is blurred. Raw recording deleted on the runner. Not on YouTube: a print run has no YouTube token"
+}
