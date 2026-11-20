@@ -261,7 +261,7 @@ def g(name: str) -> str:
     return f"rp:{name}"
 
 
-def load_rp(sc: Scene, ghost: dict | None = None) -> dict:
+def load_rp(sc: Scene, ghost: dict | None = None, own_latch: bool = False) -> dict:
     """#124's load_machine(defer=True), every group prefixed rp: and riding on "rp", the model placed at RP. Parts
     whose group is in FURNACE_CUT or CHAMBER_CUT are added whole and halved at y = 0; set_cut() blends them."""
     ms = M.meshes()
@@ -270,11 +270,13 @@ def load_rp(sc: Scene, ghost: dict | None = None) -> dict:
     for name, m in ms.items():
         if name == "floor":
             continue
-        if name.startswith("latch_"):
+        if own_latch and name.startswith("latch_"):
             # round 12: the model has drawn its own latch since #327/#353 (lever, loop, keeper, bolt, foot on the
             # right face), in groups named as this chapter's own latch's (latch_lever, latch_loop), so it would be
             # drawn twice and ride this chapter's latch frame. This chapter keeps its own (LATCH_AZ), which its arm
-            # poses were planned and audited against; the atomizer chapter (atom_latch.py) shows the model's.
+            # poses were planned and audited against. Round 13: only this chapter (own_latch=True). Round 12 left it
+            # out for every caller, so the atomizer clips (atom_base.build) lost the model's latch too: no base, foot
+            # or bolt, and a lever and loop on no parent.
             continue
         grp = g("knob") if name == "hood_knob" else g(m["group"])    # its own group, so a grasp of it is just that
         wants = m["group"] in cut
@@ -1365,7 +1367,7 @@ def build():
     for n in list(sc.actors):                   # the merged rePowder: replaced by its parts
         if n.startswith("repowder:"):
             sc.alpha[n] = 0.0
-    load_rp(sc, ghost={"stack_cover": 0.35})
+    load_rp(sc, ghost={"stack_cover": 0.35}, own_latch=True)
     for k in range(4):
         sc.show(sc.members(g(f"slug{k}")), 0.0)
     pool = Pool(sc, level=-30)

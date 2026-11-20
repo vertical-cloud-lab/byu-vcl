@@ -11,11 +11,15 @@ the latch on the housing's right face, the bolt running back into the blue cabin
 lid's own frame (atom_latch_tools) and carried over with M.LID_TURN_T.
 
 Unclamping (vented, the bolt back): arm 2 holds the lid down with its closed fingertips; arm 1 (MiR250 1, right of the
-furnace) takes the lever's free end and pulls it out and up about the top pivot, through dead centre to 150 deg; the
-loop goes slack and its bar rides up the keeper; arm 2 takes the loop by its legs, lifts the bar off and lays the loop
-over the lever; arm 1 folds the lever down; arm 2 swings the lid up and over to the left by its knob, 105 deg about
-the left hinge. Clamping is the reverse, with the over-centre curve and the seal's squeeze in an inset, then the bolt
-in at the pump-down and the leak check the machine allows. ``ARM_AUDIT=1`` checks every frame; ``PREVIEW=1`` the last frame of each step.
+furnace) takes the lever's free end and pulls it out and up about the top pivot, through dead centre to 60 deg, and
+lets it back onto the slack loop (41.5 deg). Round 13: arm 1 then takes the loop by its legs, lifts the bar up the
+keeper's plate over the hook's lip, tips the loop just past upright, lets the lever down on the loop's pin and lets
+the loop go: it falls over the lever (T4 5:29.5-5:35, read backwards). Arm 2 swings the lid up and over to the left by
+its knob, 105 deg about the left hinge. Clamping: the lid down; arm 1 closes lightly on the hanging loop's legs and,
+keeping one attitude, carries them round the loop's pin (the loop turning between the pads, ours), raises the lever on
+it and tips the bar onto the keeper's plate, which it slides down onto the hook; then over centre, with the curve and
+the seal's squeeze in an inset, the bolt in at the pump-down and the leak check the machine allows. ``ARM_AUDIT=1``
+checks every frame; ``PREVIEW=1`` the last frame of each step.
 """
 from __future__ import annotations
 
@@ -49,6 +53,11 @@ LEVER_ALPHA = -35.0                    # arm 1's approach to the lever: in, and 
                                        # above the latch (under it, on the turned lid, is the chamber's top plate)
 GAP_LEVER = 52.0 + 0.8                 # the lever's flanges are 52 mm across: pads 0.4 mm off each
 GAP_LEGS = 2 * (LT.LEG_X + LT.LEG_R) + 0.8
+LEGS_ALPHAS = (-65.0, -40.0, -50.0, -25.0)   # the loop's legs grasp: in and down this much (tried in order)
+PIVOT_ALPHAS = (-45.0, -30.0, -60.0, -15.0)  # the light grasp on the legs for hooking on: the hand's attitude
+KNOB_TILTS = (((1, 0, 0), 20.0), (None, 0.0), ((0, 0, 1), -20.0), ((0, 0, 1), 20.0), ((1, 0, 0), -20.0),
+              ((0, 1, 0), 20.0), ((0, 1, 0), -20.0))    # the knob grasp tilted (axis, deg) about the ball: round
+                                                        # 13's audit cleared the first; the rest are fallbacks
 GAP_KNOB = 28.0 + 0.8                  # the lid's 28 mm ball knob
 LID_KNOB_N = AA.LID_KNOB_N
 F_PEAK = AA.LATCH_F["expected"]        # N at the lever's free end: chapter 2's estimate (Kipp K0080 cover latches)
@@ -67,12 +76,23 @@ def drop_actor(sc, name):
 
 
 def swap_latch(sc):
-    """The model's lever, loop, keeper and pin out; atom_latch_tools' in, on the same groups (and so the same joints)."""
+    """The model's lever, loop, keeper and pin out; atom_latch_tools' in, on the same groups (and so the same joints).
+    Round 13: alloy_atomize.load_rp has left every latch_* part of the model out since round 12 (chapter 2 draws its
+    own latch), so this clip had lost the base, the hold-down foot and the bolt, and its lever and loop rode on no
+    parent: they were drawn (and audited) RP away from the machine. The three come back from the model here, and the
+    lever's and the bolt's groups ride on "rp" again."""
     for part in ("latch_lever", "latch_loop", "latch_keeper", "latch_pin"):
         for n in [n for n in list(sc.actors) if n in (part, part + "#cut", "w:" + part)]:
             drop_actor(sc, n)
+    ms = M.meshes()
+    for part in ("latch_base", "latch_foot", "latch_bolt"):
+        if part in ms and not any(n in sc.actors for n in (part, "w:" + part)):
+            sc.add(part, ms[part]["whole"], ms[part]["color"], AB.g(ms[part]["group"]),
+                   opacity=ms[part]["opacity"])
     for name, (mesh, col, grp) in LT.latch_meshes().items():
         sc.add("atl " + name, mesh, col, AB.g(grp), specular=0.4)
+    for grp in ("latch_lever", "latch_bolt"):
+        sc.parent.setdefault(AB.g(grp), "rp")
 
 
 def joints_now(sc):
@@ -105,9 +125,27 @@ def lid_pose(v, G):
     return model_pose("lid", {"lid": v}, G)
 
 
-def knob_grasp_model():
+def pivot_pose(deg, loop_val, alpha_deg, s=26.0, back=15.5):
+    """The 2F-85 across the loop's two legs from outside, `s` mm up them from the pin, closed lightly so the loop can
+    turn between the pads: the tool keeps one attitude (lid frame: approaching along (0, cos a, sin a), fingers along
+    the lever's axis) and only follows the grip point, as the loop turns about its pin. World pose."""
+    a = math.radians(alpha_deg)
+    z = np.array([0.0, math.cos(a), math.sin(a)])
+    x = np.array([1.0, 0.0, 0.0])
+    y = np.cross(z, x)
+    u = (LT.HOOK - LT.Q0) / LT.LOOP_L
+    Mw = M.joint_world("loop", {"latch": deg / M.LATCH_OPEN_DEG, "loop": loop_val})
+    p = AB.W((Mw @ np.r_[LT.turn(LT.Q0 + u * s), 1.0])[:3])
+    Mx = np.eye(4)
+    Mx[:3, :3] = TURN[:3, :3] @ np.column_stack([x, y, z])
+    Mx[:3, 3] = p - TURN[:3, :3] @ z * back
+    return Mx
+
+
+def knob_grasp_model(tilt_axis=None, tilt_deg=0.0):
     """The 2F-85 on the lid's ball knob (model frame, lid shut): pads either side of the ball across x, approaching
-    down along the stalk (model.py hood_knob: kd), so the hand stands up and out of the lid's front."""
+    down along the stalk (model.py hood_knob: kd), so the hand stands up and out of the lid's front; tilted by
+    tilt_deg about tilt_axis (model frame) through the ball's centre, if given."""
     kd = np.array([0.62, -0.15, 0.77])
     kd /= np.linalg.norm(kd)
     c = M.knob_centre(turned=False) + kd * 5.0      # 5 mm out along the stalk: the pads still span the 28 mm ball
@@ -118,7 +156,11 @@ def knob_grasp_model():
     y = np.cross(z, x)
     Mx = np.eye(4)
     Mx[:3, 0], Mx[:3, 1], Mx[:3, 2], Mx[:3, 3] = x, y, z, c
-    return TURN @ Mx                                # onto the machine: the knob on the lid's right facet
+    G = TURN @ Mx                                   # onto the machine: the knob on the lid's right facet
+    if tilt_axis is not None and tilt_deg:
+        ball = (TURN @ np.r_[M.knob_centre(turned=False), 1.0])[:3]
+        G = T(tuple(ball)) @ R(tilt_axis, tilt_deg) @ T(tuple(-ball)) @ G
+    return G
 
 
 def pick_branch(rb, sc, poses, move, close, skip, back=100.0, n_chk=14, score=False):
@@ -255,6 +297,8 @@ def main():
     CAM_WIDE = AB.cam((1300, -2300, 2050), (0, -250, 1150))
     CAM_LATCH = AB.cam((520, 60, 1950), (165, 72, 1330))     # from above the right, over arm 1's reach
     CAM_LATCH2 = AB.cam((430, 150, 1720), (170, 72, 1340))   # closer, in front of the cabinet's top edge
+    CAM_LOOP = AB.cam((440, -240, 1300), (165, 72, 1320))    # round 13: the loop from the front right, at its height,
+                                                              # under arm 1's wrist (from above, the wrist hid it)
     CAM_LID = AB.cam((300, -1900, 2150), (-90, 0, 1430))
     sc.cam = CAM_WIDE
 
@@ -311,45 +355,88 @@ def main():
     def ride_d(d):
         return ride_val(d / M.LATCH_OPEN_DEG)[0]
 
-    def legs_state(s_):
-        """The loop held by its legs: s_ 0..0.4 lifts the lever from TH_REST to TH_UP by the loop (its bar riding up
-        the plate), 0.4..1 swings the loop out over the lever's top while the lever folds down, ending on its web."""
-        if s_ <= 0.4:
-            d = TH_REST + (TH_UP - TH_REST) * (s_ / 0.4)
-            return d, ride_d(d)
-        w = (s_ - 0.4) / 0.6
-        d = TH_UP * (1.0 - w)
-        t = ride_d(TH_UP) + (LT.on_web() - ride_d(TH_UP)) * min(1.0, w / 0.55)
-        return d, t
+    # Round 13: the loop is no longer swung over the lever's top in the hand. Held by its legs through that 180 deg
+    # swing the gripper turned with it and arm 1's forearm swept into the furnace and the chamber (02:31's audit: 44 and
+    # 63 frames). Now (T4 5:29.5-5:35 read backwards, notes/repowder_refine.md: "lift the loop's cross bar off the
+    # keeper's lip and let it fall"; there a second hand holds the lever up) the hand only lifts the bar over the lip
+    # and tips the loop just past upright; it lets the lever down on the loop's pin, then lets the loop go and it falls
+    # over the lever. Hooking it on, the hand closes lightly on the legs and keeps one attitude while the loop turns
+    # between its pads, up about its pin; then it raises the lever on the loop and tips the loop onto the plate.
+    PHI_OUT = -15.0                         # the loop's own angle (deg, about the lever's axis, 0 = as hooked, +
+                                            # leaning onto the lid) once tipped out: its bar ~5 mm clear of the lip
+                                            # with the lever down
 
-    def legs_move(u):
-        d, t = legs_state(u)
-        set_latch(sc, d, t)
+    def phi_of(d, t):                       # the loop's own angle from the lever's and the loop's joint
+        return d + t * M.LOOP_OPEN_DEG
+
+    def t_of(d, phi):
+        return (phi - d) / M.LOOP_OPEN_DEG
+
+    PHI_UP = phi_of(TH_UP, ride_d(TH_UP))   # leaning on the keeper's plate with the lever at TH_UP (~21 deg)
+    PHI_WEB = phi_of(0.0, LT.on_web())      # hanging over the folded lever's web (-162 deg)
+
+    def unhook_state(s_):
+        """Arm 1 holding the loop by its legs: s_ 0..0.35 lifts it, the lever rising from TH_REST to TH_UP on the loop's
+        pin and the bar riding up the keeper's plate over the hook's lip; 0.35..0.55 tips it out past upright, clear of
+        the lip; 0.55..1 lets the lever down on it, flat onto its base."""
+        if s_ <= 0.35:
+            d = TH_REST + (TH_UP - TH_REST) * (s_ / 0.35)
+            return d, ride_d(d)
+        if s_ <= 0.55:
+            w = (s_ - 0.35) / 0.2
+            return TH_UP, t_of(TH_UP, PHI_UP + (PHI_OUT - PHI_UP) * w)
+        w = (s_ - 0.55) / 0.45
+        d = TH_UP * (1.0 - w)
+        return d, t_of(d, PHI_OUT)
+
+    def hook_state(s_):
+        """Arm 1 holding the loop's legs lightly (pivot_pose): s_ 0..0.4 turns the loop up about its pin, from hanging
+        over the folded lever to just past upright; 0.4..0.6 raises the lever on the loop's pin to TH_UP; 0.6..0.75
+        tips the loop in onto the keeper's plate, above the lip; 0.75..1 lowers it: the bar slides down the plate onto
+        the hook and the lever comes to rest at TH_REST."""
+        if s_ <= 0.4:
+            return 0.0, t_of(0.0, PHI_WEB + (PHI_OUT - PHI_WEB) * (s_ / 0.4))
+        if s_ <= 0.6:
+            d = TH_UP * (s_ - 0.4) / 0.2
+            return d, t_of(d, PHI_OUT)
+        if s_ <= 0.75:
+            w = (s_ - 0.6) / 0.15
+            return TH_UP, t_of(TH_UP, PHI_OUT + (PHI_UP - PHI_OUT) * w)
+        d = TH_UP + (TH_REST - TH_UP) * (s_ - 0.75) / 0.25
+        return d, ride_d(d)
+
+    def state_move(fn):
+        def mv(u):
+            set_latch(sc, *fn(u))
+        return mv
     arc_open = [lever_pose(d, G_lever) for d in np.linspace(0.0, 60.0, 13)]
     # MiR 1 stays where it starts (A_AT: its corner clear of the rePowder's base frame; the 02:13 render's search moved
-    # it, without a drive, onto a spot whose corner stood in the frame). The loop's grasp: of a few approach angles,
-    # with the tool as is or turned 180 deg about its axis, the one whose arm follows the loop's swing with the fewest
-    # hits (the default, in and down 40 deg, is kept unless another does better and follows the whole swing)
+    # it, without a drive, onto a spot whose corner stood in the frame). The loop's grasps: of a few approach angles,
+    # with the tool as is or turned 180 deg about its axis, the one whose arm follows the loop with the fewest hits
     q_lev, s1 = pick_branch(rb, sc, arc_open, lever_move, c_lever, ("atl latch_lever", "atl latch_loop"), back=100.0,
                             score=True)
     best = None
-    for alpha in (-40.0, -10.0, -65.0, 15.0):
+    for alpha in LEGS_ALPHAS:
         for spin in (0.0, 180.0):
             Gc = TURN @ LT.legs_grasp(alpha_deg=alpha) @ R((0, 0, 1), spin)
-            path_c = [loop_pose(*legs_state(s_), Gc) for s_ in np.linspace(0, 1, 26)]
+            path_c = [loop_pose(*unhook_state(s_), Gc) for s_ in np.linspace(0, 1, 26)]
             rb.set(np.radians(AA.A.PARK_DEG))
-            q2, s2 = pick_branch(rb, sc, path_c, legs_move, c_legs, ("atl latch_loop", "atl latch_lever"), back=90.0,
-                                 score=True)
-            print("loop grasp", alpha, spin, "hits", s2, flush=True)
+            q2, s2 = pick_branch(rb, sc, path_c, state_move(unhook_state), c_legs,
+                                 ("atl latch_loop", "atl latch_lever"), back=90.0, score=True)
+            print("loop grasp (unhook)", alpha, spin, "hits", s2, flush=True)
             if s2 < 999 and (best is None or s2 < best[0]):
                 best = (s2, Gc, q2)
+            if s2 == 0:
+                break
+        if best is not None and best[0] == 0:
+            break
     lever_move(0.0)
     rb.set(np.radians(AA.A.PARK_DEG))
     if best is not None:
         _, G_legs, q_legs = best
     else:
-        q_legs = pick_branch(rb, sc, [loop_pose(*legs_state(s_), G_legs) for s_ in np.linspace(0, 1, 26)],
-                             legs_move, c_legs, ("atl latch_loop", "atl latch_lever"), back=90.0)
+        q_legs = pick_branch(rb, sc, [loop_pose(*unhook_state(s_), G_legs) for s_ in np.linspace(0, 1, 26)],
+                             state_move(unhook_state), c_legs, ("atl latch_loop", "atl latch_lever"), back=90.0)
     lever_move(0.0)
     g0 = lever_pose(0.0, G_lever)
     pre_lev = g0 @ T((0, 0, -100))
@@ -404,55 +491,79 @@ def main():
     sc.step("4/9", "Arm 2 lets go of the lid, which now sits free.", 1.6, rbB.joint_to(np.radians(AA.A.PARK_DEG)),
             hold=0.05)
 
-    # ---------------------------------------------------------------- 4. arm 1 lifts the loop off, folds the lever
-    g_legs = loop_pose(*legs_state(0.0), G_legs)
+    # ---------------------------------------------------------------- 4. arm 1 lifts the loop off and lets it fall
+    g_legs = loop_pose(*unhook_state(0.0), G_legs)
     rows(Arm_1="to the loop", Loop="slack, on the hook")
     cap = ("Arm 1 takes the loop by its two legs, from outside, clear of the lever and the keeper. Lifting it raises "
            "the lever on the loop's pin, and the bar rides up the keeper's plate, over the hook's lip.")
     sc.step("5/9", cap, 2.2, AB.both(rb.joint_to(q1=rb.solve(g_legs @ T((0, 0, -90)), q_legs)), rb.grip_to(0.10)),
             hold=0.05)
-    sc.step("5/9", cap, 0.9, rb.line_to(g_legs), hold=0.05)
+    sc.step("5/9", cap, 0.9, rb.line_to(g_legs), hold=0.05, cam_to=CAM_LOOP)
     sc.step("5/9", cap, 0.4, rb.grip_to(c_legs), hold=0.1)
     rb.events.append((sc.n, "grasp", AB.g("latch_loop"), AB.g("latch_lever")))
-    f_legs = AA.follow(rb, [loop_pose(*legs_state(s_), G_legs) for s_ in np.linspace(0, 0.4, 8)])
+    f_legs = AA.follow(rb, [loop_pose(*unhook_state(s_), G_legs) for s_ in np.linspace(0, 0.35, 8)])
 
     def lift_up(u):
         f_legs(u)
-        d, t = legs_state(0.4 * u)
+        d, t = unhook_state(0.35 * u)
         latch_state(d, t, 0.0)
         rows(Lever=f"{d:5.1f} deg", Loop="lifted: the bar rides up the plate")
     sc.step("5/9", cap, 1.8, lift_up, hold=0.1,
             labels=[("loop lifted off the hook", tuple(AB.W(LT.turn((LT.LX - 36, -175, 1395)))), (0.12, 0.30))])
     rb.events.append((sc.n, "grasp", AB.g("latch_loop"), AB.g("latch_lever")))
-    f_fold = AA.follow(rb, [loop_pose(*legs_state(s_), G_legs) for s_ in np.linspace(0.4, 1.0, 16)])
+    f_out = AA.follow(rb, [loop_pose(*unhook_state(s_), G_legs) for s_ in np.linspace(0.35, 1.0, 16)])
 
-    def fold(u):
-        f_fold(u)
-        d, t = legs_state(0.4 + 0.6 * u)
+    def tip_down(u):
+        f_out(u)
+        d, t = unhook_state(0.35 + 0.65 * u)
         latch_state(d, t, 0.0)
-        rows(Lever=f"{d:5.1f} deg", Loop="swung over the lever")
-    cap = ("It swings the loop out over the lever's top and lets the lever down with it: folded, the lever has the "
-           "loop hanging over it (T4 5:08, 5:29.5; the hand's moves read backwards from 5:29.5-5:41).")
-    sc.step("5/9", cap, 3.2, fold, hold=0.2)
-    q_web = rb.q.copy()
+        rows(Lever=f"{d:5.1f} deg", Loop="tipped out past upright, clear of the lip")
+    cap = ("Clear of the lip, it tips the loop out just past upright and lets the lever down on the loop's pin, flat "
+           "onto its base.")
+    sc.step("5/9", cap, 2.4, tip_down, hold=0.1)
     rb.events.append((sc.n, "grasp", AB.g("latch_loop"), AB.g("latch_lever")))
-    sc.step("5/9", cap, 0.4, rb.grip_to(0.10), hold=0.05)
+    g_out = loop_pose(*unhook_state(1.0), G_legs)
     rb.events.append((sc.n, "release", AB.g("latch_loop"), AB.g("latch_lever")))
-    g_web = loop_pose(*legs_state(1.0), G_legs)
-    sc.step("5/9", cap, 0.8, rb.line_to(g_web @ T((0, 0, -90))), hold=0.05)
+    open_legs = rb.grip_to(0.0)
+
+    def let_fall(u):
+        open_legs(min(1.0, u / 0.3))
+        w = max(0.0, (u - 0.2) / 0.8) ** 2           # off its balance slowly, then faster: gravity
+        latch_state(0.0, t_of(0.0, PHI_OUT + (PHI_WEB - PHI_OUT) * w), 0.0)
+        rows(Lever="folded", Loop="falling over the lever" if u < 1.0 else "hanging over the lever")
+    cap = ("Then it opens its fingers and lets the loop fall: it tips out over the lever and hangs down over it (T4 "
+           "5:08; T4 5:29.5-5:35 read backwards: the hand lifts the bar off the lip and lets the loop fall, while a "
+           "second hand holds the lever up; one-handed, the lever goes down first).")
+    sc.step("5/9", cap, 1.0, let_fall, hold=0.3)
+    sc.step("5/9", cap, 0.8, rb.line_to(g_out @ T((0, 0, -90))), hold=0.05)
     rows(Lever="folded", Loop="hanging over the lever", Seal=None, Arm_1="parked")
     sc.step("5/9", cap, 1.6, rb.joint_to(np.radians(AA.A.PARK_DEG)), hold=0.05)
 
     # ---------------------------------------------------------------- 6. the lid up and over to the left
-    G_knob = knob_grasp_model()
     c_knob = LT.close_for_gap(GAP_KNOB)
-    gk0 = lid_pose(0.0, G_knob)
 
     def lid_move(u):
         AB.set_joints(sc, lid=u)
-    q_knob = pick_branch(rbB, sc, [lid_pose(s, G_knob) for s in np.linspace(0, 1, 22)], lid_move, c_knob,
-                         ("knob", "hood"), back=45.0)
+    # round 13: the grasp down the stalk put arm 2's wrist on the blue cabinet with the lid shut (02:31's audit, 16
+    # frames, and the same coming back down in 8/9); the hand tilted about the ball's centre clears it
+    best_k = None
+    q_b0 = rbB.q.copy()
+    for ax, tau in KNOB_TILTS:
+        Gk = knob_grasp_model(ax, tau)
+        rbB.set(q_b0)
+        qk, sk = pick_branch(rbB, sc, [lid_pose(s, Gk) for s in np.linspace(0, 1, 22)], lid_move, c_knob,
+                             ("knob", "hood"), back=60.0, n_chk=22, score=True)
+        print("knob grasp", ax, tau, "hits", sk, flush=True)
+        if sk < 999 and (best_k is None or sk < best_k[0]):
+            best_k = (sk, Gk, qk)
+        if sk == 0:
+            break
+    if best_k is None:
+        raise RuntimeError("atom_latch: no IK branch follows the lid's swing with any of KNOB_TILTS")
+    _, G_knob, q_knob = best_k
+    rbB.set(q_b0)
     lid_move(0.0)
+    gk0 = lid_pose(0.0, G_knob)
     rows(Lever="folded", Loop="hanging over the lever", Arm_1="parked", Arm_2="to the knob")
     cap = (f"Arm 2 takes the lid's knob, on its right facet, and swings the lid up and over to the left about its "
            f"hinge, 105 deg (the hinge is on the left: DAL PR 189; T4 5:14.5-5:16.5 shows one rotation, no lift or "
@@ -503,36 +614,62 @@ def main():
     sc.step("8/9", cap, 1.6, rbB.joint_to(np.radians(AA.A.PARK_DEG)), hold=0.05, cam_to=CAM_LATCH2)
 
     # ---------------------------------------------------------------- 8. hook the loop on, shut over centre
+    # The loop hangs over the folded lever; hooking it on needs it turned up ~180 deg about its pin. Held rigidly, the
+    # hand would turn with it (the old swing's collisions), so arm 1 closes lightly on its legs and keeps one attitude:
+    # the loop turns between the pads while the hand carries the legs round the pin (ours). Of a few attitudes, the
+    # one whose arm follows with the fewest hits.
+    best_p = None
+    q_park_1 = rb.q.copy()
+    for a_piv in PIVOT_ALPHAS:
+        rb.set(np.radians(AA.A.PARK_DEG))
+        q3, s3 = pick_branch(rb, sc, [pivot_pose(*hook_state(s_), a_piv) for s_ in np.linspace(0, 1, 41)],
+                             state_move(hook_state), c_legs, ("atl latch_loop",), back=90.0, n_chk=24, score=True)
+        print("loop grasp (hook on)", a_piv, "hits", s3, flush=True)
+        if s3 < 999 and (best_p is None or s3 < best_p[0]):
+            best_p = (s3, a_piv, q3)
+        if s3 == 0:
+            break
+    if best_p is None:
+        raise RuntimeError("atom_latch: no IK branch follows the loop's hook-on with any of PIVOT_ALPHAS")
+    a_piv, q_piv = best_p[1], best_p[2]
+    set_latch(sc, *hook_state(0.0))
+    rb.set(q_park_1)
+    g_h0 = pivot_pose(*hook_state(0.0), a_piv)
     rows(Arm_1="to the loop")
-    cap = ("Arm 1 takes the loop's legs again and swings it back over the lever's top, raising the lever with it, "
-           "and lays the bar on the keeper's plate (\"hook the loop on\", T4 5:30-5:35).")
-    sc.step("8/9", cap, 2.2, AB.both(rb.joint_to(q1=rb.solve(g_web @ T((0, 0, -90)), q_web)), rb.grip_to(0.10)),
-            hold=0.05, cam_to=CAM_LATCH2)
-    sc.step("8/9", cap, 0.9, rb.line_to(g_web), hold=0.05)
+    cap = ("Arm 1 takes the hanging loop by its two legs again, closing only lightly, so that the loop can turn "
+           "between its pads (ours).")
+    sc.step("8/9", cap, 2.2, AB.both(rb.joint_to(q1=rb.solve(g_h0 @ T((0, 0, -90)), q_piv)), rb.grip_to(0.10)),
+            hold=0.05, cam_to=CAM_LOOP)
+    sc.step("8/9", cap, 0.9, rb.line_to(g_h0), hold=0.05)
     sc.step("8/9", cap, 0.4, rb.grip_to(c_legs), hold=0.05)
     rb.events.append((sc.n, "grasp", AB.g("latch_loop"), AB.g("latch_lever")))
-    f_unfold = AA.follow(rb, [loop_pose(*legs_state(s_), G_legs) for s_ in np.linspace(1.0, 0.4, 16)])
+    f_up = AA.follow(rb, [pivot_pose(*hook_state(s_), a_piv) for s_ in np.linspace(0.0, 0.6, 25)])
 
-    def unfold(u):
-        f_unfold(u)
-        d, t = legs_state(1.0 - 0.6 * u)
+    def turn_up(u):
+        f_up(u)
+        d, t = hook_state(0.6 * u)
         latch_state(d, t, 0.0)
-        rows(Lever=f"{d:5.1f} deg", Loop="over onto the keeper")
-    sc.step("8/9", cap, 3.2, unfold, hold=0.1)
+        rows(Lever=f"{d:5.1f} deg", Loop="turning up about its pin" if u < 0.66 else "past upright, clear of the lip")
+    cap = ("Its hand keeps one attitude and carries the legs round the loop's pin: the loop turns up off the lever "
+           "to just past upright; then it raises the lever on the loop's pin, the bar clear of the hook's lip.")
+    sc.step("8/9", cap, 3.2, turn_up, hold=0.1)
     rb.events.append((sc.n, "grasp", AB.g("latch_loop"), AB.g("latch_lever")))
-    f_down = AA.follow(rb, [loop_pose(*legs_state(s_), G_legs) for s_ in np.linspace(0.4, 0.0, 8)])
+    f_on = AA.follow(rb, [pivot_pose(*hook_state(s_), a_piv) for s_ in np.linspace(0.6, 1.0, 14)])
 
-    def seat(u):
-        f_down(u)
-        d, t = legs_state(0.4 * (1.0 - u))
+    def hook_on(u):
+        f_on(u)
+        d, t = hook_state(0.6 + 0.4 * u)
         latch_state(d, t, 0.0)
-        rows(Lever=f"{d:5.1f} deg", Loop="on the hook" if u > 0.98 else "sliding down the plate")
-    cap = f"Lowered, the bar slides down the plate onto the hook; the lever rests at {TH_REST:.0f} deg on the slack loop."
-    sc.step("8/9", cap, 1.8, seat, hold=0.1)
+        rows(Lever=f"{d:5.1f} deg", Loop="onto the keeper's plate" if u < 0.375 else
+             ("on the hook" if u > 0.98 else "sliding down the plate"))
+    cap = (f"It tips the loop in onto the keeper's plate and lowers it: the bar slides down the plate onto the hook "
+           f"and the lever rests at {TH_REST:.0f} deg on the slack loop (\"hook the loop on\", T4 5:30-5:35).")
+    sc.step("8/9", cap, 2.4, hook_on, hold=0.1)
     rb.events.append((sc.n, "grasp", AB.g("latch_loop"), AB.g("latch_lever")))
     sc.step("8/9", cap, 0.4, rb.grip_to(0.10), hold=0.05)
     rb.events.append((sc.n, "release", AB.g("latch_loop"), AB.g("latch_lever")))
-    sc.step("8/9", cap, 0.8, rb.line_to(g_legs @ T((0, 0, -90))), hold=0.05)
+    g_h1 = pivot_pose(*hook_state(1.0), a_piv)
+    sc.step("8/9", cap, 0.8, rb.line_to(g_h1 @ T((0, 0, -90))), hold=0.05)
     rows(Arm_2="to the lid's top")
     cap = "Arm 2 presses the lid's top again, so the seal is squeezed evenly while the loop draws the lid down."
     sc.step("8/9", cap, 2.2, rbB.joint_to(q1=rbB.solve(pre_press, q_press)), hold=0.05, cam_to=CAM_WIDE)
