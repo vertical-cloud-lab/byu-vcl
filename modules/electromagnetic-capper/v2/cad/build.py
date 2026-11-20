@@ -30,7 +30,17 @@ Triangle-interface versions (2026-11-19, @benwhitney5463 on #354):
             R1.1 pocket, so it presses in. It fits every part with that pocket.
   rack_tri  the same rack with two of those pockets in place of the stem pockets.
 
-Run:  python build.py [outdir] [rack,key,bar,rack_tri,key_tri]     (needs cadquery)
+Width sweep (2026-11-20, @benwhitney5463 on #354): the rack still wobbles on the deck. The
+printed keys measured 0.7 mm narrower than the deck's slots, so the slots are taken as 10.5 mm
+wide (the 9.8 mm pill + 0.7), and the sweep keys leave 0.5, 0.3, 0.1 and 0 mm of clearance in
+width: 10.0, 10.2, 10.4 and 10.5 mm wide, all still 24.8 mm long.
+
+  sweep     v2_1 keys (stem and tri tops) with only the rigid locating pill widened. A 45-degree
+            flare at the pill's bottom steps it back to the v2_1 outline at z = rigid_bottom, so
+            the latch arms, barbs and everything below the pill are v2_1's, as is the top. Told
+            apart by 1-4 dimples at the -y end of the top face (1 = 0.5 mm clearance ... 4 = 0).
+
+Run:  python build.py [outdir] [rack,key,bar,rack_tri,key_tri,sweep]     (needs cadquery)
 All dimensions in mm.  Rack frame: z=0 is the rack bottom (deck top), vial 1 at
 (0,0), vials along -y.  Key frame: z=0 is the deck top.  Bar frame: y=0 is the
 backboard's front face, z=0 the bar's top.
@@ -84,6 +94,10 @@ P = dict(
     nub_h=2.0,
     nub_lead=0.3,           # 45-degree lead-in chamfer round the nub's top
     mark_step=0.05,         # one dimple in the key's top face per 0.05 mm of press, at the end away from the point
+    # ---- width sweep (2026-11-20): wider locating pills, same length ----
+    slot_w_meas=10.5,       # deck slot width: the printed 9.8 mm pill + the 0.7 mm clearance Ben measured
+    sweep_clear=(0.5, 0.3, 0.1, 0.0),   # clearance in width (total, not per side): pills 10.0, 10.2, 10.4, 10.5
+    sweep_mark_y=-8.8,      # 1-4 dimples, Ø1.2 x 0.4 mm, at the -y (arm root) end of the top face
     # ---- bar ----
     bar_w=13.0, bar_t=10.0, bar_len=135.0,
     prong_t=2.7, prong_h=5.6, prong_len=6.4, hook_drop=3.2, hook_t=3.0, prong_pitch=20.0, prong_top=8.0,
@@ -203,9 +217,11 @@ def build_rack(p=P, pocket="stem"):
             body = body.cut(tri_prism(p["tri_pocket_r"], -0.01, p["tri_pocket_depth"], 0.0, ky, p))
     return body
 
-def build_key(p=P, top="stem"):
+def build_key(p=P, top="stem", pill_w=None, marks=0):
     """top="stem": the 6 x 12 x 5 mm crush-rib stem (v2_1).  top="tri": Cubware's triangular nub at
-    the stir module's 0.05 mm press, with its dimple (key_tri).  Everything below z = 0 is the same."""
+    the stir module's 0.05 mm press, with its dimple (key_tri).  Everything below z = 0 is the same.
+    pill_w (width sweep): widen the rigid locating pill to this width, same length; nothing else
+    changes.  marks: that many dimples at the -y end of the top face, to tell sweep keys apart."""
     w, l = p["pill_w"], p["pill_l"]
     hx = w / 2
     # rigid locating pill z in [rigid_bottom, 0]
@@ -255,6 +271,21 @@ def build_key(p=P, top="stem"):
         prof = [(s * (hx - 0.3), min(zt_b + 0.3, arm_top)), (s * hx, min(zt_b, arm_top)), (s * (hx + u), z_tip), (s * (hx + u), z_tip - 0.25), (s * hx, z_bot - 0.25), (s * (hx - 0.3), z_bot - 0.25)]
         barb = cq.Workplane("XZ").polyline(prof).close().extrude(-(by1 - by0)).translate((0, by0, 0))
         key = key.union(barb)
+    if pill_w is not None and pill_w > w + 1e-9:
+        # Width sweep: only the rigid pill grows, to pill_w wide and still l long (a stadium, so its
+        # ends stay round and it gets no longer). Its bottom flares out at 45 degrees from v2_1's
+        # outline at z = rigid_bottom, so there is no overhang, the slot meets a lead-in, and the
+        # 45-degree transition, latch arms and barbs below keep v2_1's clearances exactly.
+        d = (pill_w - w) / 2
+        zf = p["rigid_bottom"] + d
+        flare = (cq.Workplane("XY").workplane(offset=p["rigid_bottom"]).slot2D(l, w, angle=90)
+                 .workplane(offset=d).slot2D(l, pill_w, angle=90).loft(ruled=True))
+        wide = cq.Workplane("XY").slot2D(l, pill_w, angle=90).extrude(-zf).translate((0, 0, zf))
+        key = key.union(flare).union(wide)
+    for k in range(marks):
+        # dimples, Ø1.2 x 0.4 mm, 2.2 mm apart across the -y end (the stir module's size)
+        key = key.cut(cq.Workplane("XY").center((k - (marks - 1) / 2) * 2.2, p["sweep_mark_y"]).circle(0.6)
+                      .extrude(0.9).translate((0, 0, -0.4)))
     if top == "tri":
         # Cubware's nub, grown by nub_press over the pocket, with a lead-in round its top
         # (vial_stirrer.fs makeKey; the stir module's deck_key.stl)
@@ -328,23 +359,48 @@ def build_bar(p=P):
             bar = bar.union(g)
     return bar
 
-def export(obj, name, outdir):
-    os.makedirs(os.path.join(outdir, "step"), exist_ok=True); os.makedirs(os.path.join(outdir, "stl"), exist_ok=True)
-    cq.exporters.export(obj, os.path.join(outdir, "step", name + ".step"))
-    cq.exporters.export(obj, os.path.join(outdir, "stl", name + ".stl"), tolerance=0.01, angularTolerance=0.1)
+def export(obj, name, outdir, sub=""):
+    os.makedirs(os.path.join(outdir, "step", sub), exist_ok=True); os.makedirs(os.path.join(outdir, "stl", sub), exist_ok=True)
+    cq.exporters.export(obj, os.path.join(outdir, "step", sub, name + ".step"))
+    cq.exporters.export(obj, os.path.join(outdir, "stl", sub, name + ".stl"), tolerance=0.01, angularTolerance=0.1)
+
+def sweep_keys(p=P):
+    """(name, key) for the width sweep: each clearance in sweep_clear, with the stem and the tri top.
+    Dimples count up as the fit gets tighter: 1 for the first clearance, 2 for the next, and so on."""
+    out = []
+    for i, c in enumerate(p["sweep_clear"]):
+        pw = round(p["slot_w_meas"] - c, 3)
+        for top, stem in (("stem", "deck_clip_key_v2_1"), ("tri", "deck_clip_key_v2_1_tri")):
+            out.append((f"{stem}_w{pw:.1f}_c{c:.1f}", build_key(p, top=top, pill_w=pw, marks=i + 1)))
+    return out
+
+def describe(nm, o):
+    bb = o.val().BoundingBox()
+    print(nm, "valid", o.val().isValid(), "solids", len(o.solids().vals()), "bbox", [round(v, 2) for v in (bb.xmin, bb.ymin, bb.zmin, bb.xmax, bb.ymax, bb.zmax)], "vol", round(o.val().Volume(), 1))
+    return bb
 
 if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-    which = sys.argv[2].split(",") if len(sys.argv) > 2 else ["rack", "key", "bar", "rack_tri", "key_tri"]
+    which = sys.argv[2].split(",") if len(sys.argv) > 2 else ["rack", "key", "bar", "rack_tri", "key_tri", "sweep"]
     builders = {"rack": (build_rack, "vial_rack_9x20mL_v2"),
                 "key": (build_key, "deck_clip_key_v2_1"),
                 "bar": (build_bar, "magnet_bar_v2"),
                 "rack_tri": (lambda: build_rack(pocket="tri"), "vial_rack_9x20mL_v2_tri"),
                 "key_tri": (lambda: build_key(top="tri"), "deck_clip_key_v2_1_tri")}
     for nm in which:
+        if nm == "sweep":
+            # as drawn in step/ and stl/width_sweep/, and moved to the bed (as drawn, top up) in
+            # stl/print_oriented/width_sweep/
+            po = os.path.join(out, "stl", "print_oriented", "width_sweep")
+            os.makedirs(po, exist_ok=True)
+            for fname, o in sweep_keys():
+                bb = describe(fname, o)
+                export(o, fname, out, "width_sweep")
+                cq.exporters.export(o.translate((-bb.xmin, -bb.ymin, -bb.zmin)), os.path.join(po, fname + ".stl"),
+                                    tolerance=0.01, angularTolerance=0.1)
+            continue
         fn, fname = builders[nm]
         o = fn()
-        bb = o.val().BoundingBox()
-        print(nm, "valid", o.val().isValid(), "solids", len(o.solids().vals()), "bbox", [round(v, 2) for v in (bb.xmin, bb.ymin, bb.zmin, bb.xmax, bb.ymax, bb.zmax)], "vol", round(o.val().Volume(), 1))
+        describe(nm, o)
         export(o, fname, out)
     json.dump(P, open(os.path.join(out, "cad", "params.json"), "w"), indent=1)

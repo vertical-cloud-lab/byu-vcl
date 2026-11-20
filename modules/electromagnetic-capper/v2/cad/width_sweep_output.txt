@@ -1,0 +1,41 @@
+Deck key width sweep, measured from the STLs
+Deck slot taken as 10.50 mm wide: the 9.80 mm pill + the 0.70 mm Ben measured (total, not a side).
+
+key                                       W@-0.2   W@-3  W@-5.9   L@-3  band  below z=-6 vs v2_1  dimples
+deck_clip_key_v2_1_w10.0_c0.5             10.000 10.000  10.000 24.797  5.90          0.0000 mm²    1
+deck_clip_key_v2_1_w10.2_c0.3             10.200 10.200  10.000 24.797  5.80          0.0000 mm²    2
+deck_clip_key_v2_1_w10.4_c0.1             10.400 10.400  10.000 24.797  5.70          0.0000 mm²    3
+deck_clip_key_v2_1_w10.5_c0.0             10.500 10.500  10.000 24.797  5.65          0.0000 mm²    4
+deck_clip_key_v2_1_tri_w10.0_c0.5         10.000 10.000  10.000 24.797  5.90          0.0000 mm²    1 (+1 at +y)
+deck_clip_key_v2_1_tri_w10.2_c0.3         10.200 10.200  10.000 24.797  5.80          0.0000 mm²    2 (+1 at +y)
+deck_clip_key_v2_1_tri_w10.4_c0.1         10.400 10.400  10.000 24.797  5.70          0.0000 mm²    3 (+1 at +y)
+deck_clip_key_v2_1_tri_w10.5_c0.0         10.500 10.500  10.000 24.797  5.65          0.0000 mm²    4 (+1 at +y)
+deck_clip_key_v2_1 (for comparison)               9.800         24.797
+deck_clip_key_v2_1_tri (for comparison)           9.800         24.797
+
+W = pill width (x) at that height, L = length (y), band = how far down from the top the pill is
+at its full width (below that, the 45-degree flare steps it back to v2_1's 9.8 mm at z = -6).
+'below z=-6 vs v2_1' is the largest area by which any section from z = -6.2 to -14.5 differs from
+v2_1's: zero means the transition, latch arms, barbs and ends are v2_1's.
+
+10.5 mm key, below the pill: barb tips at x = ±5.750 mm, arm outer faces at x = ±4.900 mm, and 0.700 mm from each arm's free end to the +y end block (v2_1: 0.700)
+
+Clearance to the slot, key centred in it (mm). The slot's length is unknown: Cubware's drawing says 25.0,
+and if it is as oversize in length as in width it is 25.5. 'a side' is (slot - key) / 2.
+key         width, total  a side  nearest at the ends, L 25.0  L 25.5
+  10.0 mm       0.500     0.250                    0.100       0.263
+  10.2 mm       0.300     0.150                    0.100       0.166
+  10.4 mm       0.100     0.050                    0.055       0.071
+  10.5 mm       0.000     0.000                    0.009       0.023
+
+Latch in a 10.5 mm slot (v2_1's, so the same for all eight keys and for the keys printed on 2026-11-19 bar the
+chamfer fix):
+  barbs reach 0.50 mm past the slot edge (they reach 0.75 in the 10.0 mm slot they were drawn for)
+  to clip in, each arm moves 0.50 mm: 3.7 N, 0.90 % peak strain (FEA, linear: 5.5 N and 1.35 % at 0.75 mm)
+  the ramps meet the slot's bottom edge at z = -9.46: no vertical play on a deck 9.46 mm or thicker
+     9.0 mm deck: 0.46 mm of vertical play
+     9.5 mm deck: arms held 0.03 mm in, key pulled down 0.2 N
+    10.0 mm deck: arms held 0.31 mm in, key pulled down 2.7 N
+
+Lateral play of the rack at each key = the clearance in width, so 0.5 -> 0.3 -> 0.1 -> 0 mm. The keys are
+225 mm apart, so the rack can also turn by up to clearance / 225 rad: 0.13, 0.08, 0.03 and 0 degrees.
