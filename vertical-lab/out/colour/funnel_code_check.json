@@ -1,0 +1,95 @@
+{
+ "what": "charge.FUNNEL_LABEL, the model's per-powder funnel colours, through the same check",
+ "rows": [
+  {
+   "a": "Ni",
+   "b": "Cu",
+   "normal": 42.0,
+   "protan": 6.8,
+   "deutan": 11.0,
+   "tritan": 55.3,
+   "worst": "protan"
+  },
+  {
+   "a": "Ni",
+   "b": "Fe",
+   "normal": 52.8,
+   "protan": 21.2,
+   "deutan": 7.2,
+   "tritan": 63.4,
+   "worst": "deutan"
+  },
+  {
+   "a": "Fe",
+   "b": "Cu",
+   "normal": 16.4,
+   "protan": 16.1,
+   "deutan": 10.8,
+   "tritan": 13.4,
+   "worst": "deutan"
+  },
+  {
+   "a": "Ni",
+   "b": "Al",
+   "normal": 49.8,
+   "protan": 50.7,
+   "deutan": 48.2,
+   "tritan": 11.7,
+   "worst": "tritan"
+  },
+  {
+   "a": "Si",
+   "b": "Cu",
+   "normal": 27.1,
+   "protan": 25.1,
+   "deutan": 19.9,
+   "tritan": 22.2,
+   "worst": "deutan"
+  },
+  {
+   "a": "Si",
+   "b": "Ni",
+   "normal": 37.5,
+   "protan": 20.7,
+   "deutan": 29.5,
+   "tritan": 47.8,
+   "worst": "protan"
+  },
+  {
+   "a": "Si",
+   "b": "Fe",
+   "normal": 43.5,
+   "protan": 41.2,
+   "deutan": 30.7,
+   "tritan": 35.6,
+   "worst": "deutan"
+  },
+  {
+   "a": "Fe",
+   "b": "Al",
+   "normal": 59.5,
+   "protan": 46.5,
+   "deutan": 52.9,
+   "tritan": 63.6,
+   "worst": "protan"
+  },
+  {
+   "a": "Si",
+   "b": "Al",
+   "normal": 70.1,
+   "protan": 66.6,
+   "deutan": 71.5,
+   "tritan": 51.1,
+   "worst": "tritan"
+  },
+  {
+   "a": "Cu",
+   "b": "Al",
+   "normal": 59.6,
+   "protan": 52.2,
+   "deutan": 58.1,
+   "tritan": 56.3,
+   "worst": "protan"
+  }
+ ]
+}
