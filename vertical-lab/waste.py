@@ -20,6 +20,8 @@ what decides containers, pickups and where the effort to cut hazard and cost sho
 
     python3 waste.py            # out/waste_model.json, out/waste_streams.png
     python3 waste.py table      # the table, printed
+    python3 waste.py markdown   # the table as notes/waste.md has it
+    python3 waste.py pickups    # Risk Management's containers a year, and what stands in the lab between pickups
 """
 from __future__ import annotations
 
@@ -145,7 +147,7 @@ STREAMS = [
     S("lpbf_full", "LPBF powder left from full plates", "metal", "full_builds", 380.0, "g",
       "the 170 mm cylinder's 440 g (powder-doser#31) less about 60 g of E8 bars (assumed); sieved and kept while the "
       "alloy may be rebuilt, then waste", kg_per_unit=1e-3, workflow="chapter 5", undecided=True),
-    S("filters", "Filters loaded with metal fines", "metal", "one", 1.0, "set",
+    S("filters", "Filters loaded with metal fines", "metal", "one", 1.0, "kg",
       "a year, one a day: the rePowder's safety and pump filters, inspected every 20 h of running and replaced when "
       "worn (AMAZEMET manual via DAL PR 178; one in four assumed: 21 x 0.05 kg), its main (HEPA) filter about every "
       "two months, backfilled with sand in a grounded container (6 x 6 kg with the sand), Nilfisk main "
@@ -202,7 +204,7 @@ STREAMS = [
     S("aerosol", "BN spray cans", "universal", "runs", 13.0 / CAN_G, "cans",
       "atom_bn.md: a touch-up of two light passes of 0.35 s bursts and 4 s inverted, about 12 g a run, and about 30 g "
       "a new crucible every 15 runs (assumed), from 368 g cans", kg_per_unit=0.12, workflow="atom_bn"),
-    S("batteries", "Batteries: UPS, MiR, small cells", "universal", "one", 1.0, "set",
+    S("batteries", "Batteries: UPS, MiR, small cells", "universal", "one", 1.0, "kg",
       "averaged over their lives: 12 LiFePO4 UPS batteries at up to 10 years (Vertiv, ups.md: 1.2 a year, about 5 kg "
       "each), the MiR250s' Li-NMC packs at 3,000 cycles (upkeep: 2.5 and 4.9 years, about 11 kg each), 1 kg of small "
       "cells; none in the first year. Ten a day x 1.86, PR #332's equipment scale", kg_per_unit=1.0,
@@ -290,7 +292,61 @@ def amounts() -> dict:
             tot[row["route"]] = tot.get(row["route"], 0.0) + row[name]["kg_year"]
         res.setdefault("route_kg_year", {})[name] = {k: round(v, 1) for k, v in tot.items()}
     res["charge"] = charge_split()
+    res["pickups"] = pickups(res)
     return res
+
+
+# ===================================================================================================== containers, pickups
+# Risk Management's containers (RMS ULM procedures and FAQ, read through archive.org snapshots, 2026): 5 gal Acid
+# Aqueous, Base Aqueous and Flammable Solvents containers, 5 gal buckets for solids; "Schedule a pickup when a container
+# is 80% full"; at most 55 gal of unwanted material in a lab; nothing older than 12 months.
+GAL = 3.785
+FULL = 0.8                                   # RMS: request a pickup at 80 % full
+LAB_LIMIT_L = 55 * GAL                       # RMS / Subpart K: 55 gal of unwanted material in a laboratory
+POWDER_KG_L = 1.4                            # bulk density of the Al alloy powders, kg/L (assumed: AlSi10Mg taps ~1.4-1.5)
+LINER_L = 1.5                                # a sealed liner with its fines, L (assumed)
+CONTAINERS = [
+    # (what, container, volume L, streams (key, how many L per native unit))
+    ("waste powder, LPBF leftovers, characterization powder", "5 gal solids bucket (combustible metal)", 5 * GAL,
+     [("lpbf_screen", 1e-3 / POWDER_KG_L), ("char_powder", 1e-3 / POWDER_KG_L)]),          # g -> L
+    ("sealed vacuum liners", "5 gal solids bucket via the grounded pail", 5 * GAL, [("liners", LINER_L)]),
+    ("filters in sand", "grounded can, one a filter (counted as 4 L each)", 4.0, [("filters", 4.0 / 6.0)]),
+    ("IPA: sieve wash with Al fines", "Flammable Solvents, 5 gal (or a 2.5 gal safety can)", 5 * GAL,
+     [("ipa_sieve", 1e-3)]),                                                              # mL -> L
+    ("IPA: bar rinse and wipes", "Flammable Solvents, 5 gal", 5 * GAL, [("ipa_misc", 1.0)]),
+    ("IPA with resin (Form Wash)", "Flammable Solvents, 5 gal", 5 * GAL, [("formwash", 1.0)]),
+    ("acidified ICP leftovers, leach acid", "Acid Aqueous, 5 gal", 5 * GAL, [("icp_acid", 1.0)]),
+    ("Weck's, spent", "1 L bottle (base, oxidizer)", 1.0, [("weck", 1e-3)]),
+    ("seawater with sulfide", "1 L bottle on tray A", 1.0, [("seawater", 1.0)]),
+    # undecided: only if the lab discards them
+    ("IF DISCARDED: surplus powder and full plates' leftovers", "5 gal solids bucket (combustible metal)", 5 * GAL,
+     [("surplus", 1.0 / POWDER_KG_L), ("lpbf_full", 1e-3 / POWDER_KG_L)]),
+]
+
+
+def pickups(res: dict) -> dict:
+    """Container loads a year by kind, and the unwanted material standing in the lab at a pickup interval."""
+    by = {r["key"]: r for r in res["streams"]}
+    out = {}
+    for name in res["units"]:
+        rows, litres_year = [], 0.0
+        for what, cont, vol, parts in CONTAINERS:
+            L = sum(by[k][name]["year"] * f for k, f in parts)
+            loads = L / (vol * FULL)
+            rows.append(dict(what=what, container=cont, litres_year=round(L, 1),
+                             loads_year=round(max(loads, 1.0 if L > 0 else 0.0), 1)))
+            litres_year += L
+        # the lab's standing stock just before a pickup, every `days`, counting every open container as full
+        decided = [r for r in rows if not r["what"].startswith("IF DISCARDED")]
+        stand = {d: round(sum(r["litres_year"] * d / 365 for r in decided), 0) for d in (7, 14, 30, 90)}
+        stand_all = {d: round(sum(r["litres_year"] * d / 365 for r in rows), 0) for d in (7, 14, 30, 90)}
+        out[name] = dict(containers=rows, litres_year=round(sum(r["litres_year"] for r in decided), 0),
+                         litres_year_with_surplus=round(litres_year, 0),
+                         loads_year=round(sum(r["loads_year"] for r in decided), 0),
+                         loads_year_with_surplus=round(sum(r["loads_year"] for r in rows), 0),
+                         standing_litres_before_pickup=stand, standing_litres_with_surplus=stand_all,
+                         lab_limit_litres=round(LAB_LIMIT_L))
+    return out
 
 
 def charge_split() -> list:
@@ -338,6 +394,34 @@ def table(res: dict | None = None) -> str:
     for name, tot in res["route_kg_year"].items():
         lines.append(f"{name}: " + ", ".join(f"{ROUTES[k][0]} {v:,.0f} kg" for k, v in tot.items()))
     return "\n".join(lines)
+
+
+PER = {"runs": "an atomizer run", "good_runs": "a good run", "failed_runs": "a failed run", "atomized": "an alloy atomized",
+       "screening_builds": "a screening build", "full_builds": "a full plate", "tested": "an alloy tested",
+       "polishes": "a polish", "nights": "a corrosion night", "edm_h": "an EDM hour", "weeks": "a week",
+       "vacuums": "a vacuum a year", "rePowders": "a rePowder a year", "furnaces": "a furnace a year",
+       "person_days": "a person-day", "one": "a year"}
+
+
+def markdown(res: dict | None = None) -> str:
+    """The notes' table: per unit of work, a day and a year at one a day and at ten (native units)."""
+    res = res or amounts()
+    out = ["| Stream | Goes to | Per unit of work | One a day: a day | a year | Ten a day: a day | a year |",
+           "|---|---|---|---|---|---|---|"]
+    for r in sorted(res["streams"], key=lambda r: (list(ROUTES).index(r["route"]), -r["ten_a_day"]["kg_year"])):
+        a, b = r["one_a_day"], r["ten_a_day"]
+        per = "see basis" if r["per"] == "one" or r["key"] in ("filters", "surplus", "batteries") else \
+            f"{fmt(r['amount'], r['unit'])} {PER[r['per']]}"
+        name = r["name"] + (" *(undecided)*" if r.get("undecided") else "")
+        out.append(f"| {name} | {ROUTES[r['route']][0]} | {per} | {fmt(a['day'], a['unit'])} | "
+                   f"{fmt(a['year'], a['unit'])} | {fmt(b['day'], b['unit'])} | {fmt(b['year'], b['unit'])} |")
+    tot = res["route_kg_year"]
+    out.append("")
+    out.append("| Goes to | One a day, kg a year | Ten a day, kg a year |")
+    out.append("|---|---|---|")
+    for k in ROUTES:
+        out.append(f"| {ROUTES[k][0]} | {tot['one_a_day'].get(k, 0):,.0f} | {tot['ten_a_day'].get(k, 0):,.0f} |")
+    return "\n".join(out)
 
 
 def figure(res: dict | None = None, path: Path | None = None) -> Path:
@@ -474,6 +558,12 @@ def main(argv: list[str]) -> None:
     res = amounts()
     if argv[:1] == ["table"]:
         print(table(res))
+        return
+    if argv[:1] == ["markdown"]:
+        print(markdown(res))
+        return
+    if argv[:1] == ["pickups"]:
+        print(json.dumps(res["pickups"], indent=1))
         return
     OUT.mkdir(exist_ok=True)
     res["what"] = ("The vertical lab's waste streams (waste.py): an amount per unit of work, times the units in a year at "

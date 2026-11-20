@@ -194,7 +194,7 @@
    "route": "metal",
    "per": "one",
    "amount": 1.0,
-   "unit": "set",
+   "unit": "kg",
    "kg_per_unit": 1.0,
    "basis": "a year, one a day: the rePowder's safety and pump filters, inspected every 20 h of running and replaced when worn (AMAZEMET manual via DAL PR 178; one in four assumed: 21 x 0.05 kg), its main (HEPA) filter about every two months, backfilled with sand in a grounded container (6 x 6 kg with the sand), Nilfisk main and two HEPAs a year per vacuum (3 x 1.5 kg), the MIDI's circulation filter every 1,000 build hours (upkeep ac_filter: 1.3 x 5 kg, wetted), the depowdering box's monthly filter (13 x 0.3 kg), the Mastersizer extractor's (1 kg): about 53 kg; half fixed and half scaled by runs for ten a day",
    "workflow": "upkeep.py",
@@ -202,13 +202,13 @@
    "one_a_day": {
     "year": 52.95,
     "day": 0.1451,
-    "unit": "set",
+    "unit": "kg",
     "kg_year": 52.95
    },
    "ten_a_day": {
     "year": 269.436,
     "day": 0.7382,
-    "unit": "set",
+    "unit": "kg",
     "kg_year": 269.44
    }
   },
@@ -554,7 +554,7 @@
    "route": "universal",
    "per": "one",
    "amount": 1.0,
-   "unit": "set",
+   "unit": "kg",
    "kg_per_unit": 1.0,
    "basis": "averaged over their lives: 12 LiFePO4 UPS batteries at up to 10 years (Vertiv, ups.md: 1.2 a year, about 5 kg each), the MiR250s' Li-NMC packs at 3,000 cycles (upkeep: 2.5 and 4.9 years, about 11 kg each), 1 kg of small cells; none in the first year. Ten a day x 1.86, PR #332's equipment scale",
    "workflow": "ups.md, upkeep.py",
@@ -562,13 +562,13 @@
    "one_a_day": {
     "year": 13.645,
     "day": 0.0374,
-    "unit": "set",
+    "unit": "kg",
     "kg_year": 13.64
    },
    "ten_a_day": {
     "year": 25.38,
     "day": 0.0695,
-    "unit": "set",
+    "unit": "kg",
     "kg_year": 25.38
    }
   },
@@ -867,6 +867,170 @@
    "route": "metal"
   }
  ],
+ "pickups": {
+  "one_a_day": {
+   "containers": [
+    {
+     "what": "waste powder, LPBF leftovers, characterization powder",
+     "container": "5 gal solids bucket (combustible metal)",
+     "litres_year": 9.3,
+     "loads_year": 1.0
+    },
+    {
+     "what": "sealed vacuum liners",
+     "container": "5 gal solids bucket via the grounded pail",
+     "litres_year": 234.0,
+     "loads_year": 15.5
+    },
+    {
+     "what": "filters in sand",
+     "container": "grounded can, one a filter (counted as 4 L each)",
+     "litres_year": 35.3,
+     "loads_year": 11.0
+    },
+    {
+     "what": "IPA: sieve wash with Al fines",
+     "container": "Flammable Solvents, 5 gal (or a 2.5 gal safety can)",
+     "litres_year": 25.3,
+     "loads_year": 1.7
+    },
+    {
+     "what": "IPA: bar rinse and wipes",
+     "container": "Flammable Solvents, 5 gal",
+     "litres_year": 11.6,
+     "loads_year": 1.0
+    },
+    {
+     "what": "IPA with resin (Form Wash)",
+     "container": "Flammable Solvents, 5 gal",
+     "litres_year": 15.6,
+     "loads_year": 1.0
+    },
+    {
+     "what": "acidified ICP leftovers, leach acid",
+     "container": "Acid Aqueous, 5 gal",
+     "litres_year": 10.8,
+     "loads_year": 1.0
+    },
+    {
+     "what": "Weck's, spent",
+     "container": "1 L bottle (base, oxidizer)",
+     "litres_year": 1.5,
+     "loads_year": 1.9
+    },
+    {
+     "what": "seawater with sulfide",
+     "container": "1 L bottle on tray A",
+     "litres_year": 2.3,
+     "loads_year": 2.9
+    },
+    {
+     "what": "IF DISCARDED: surplus powder and full plates' leftovers",
+     "container": "5 gal solids bucket (combustible metal)",
+     "litres_year": 104.9,
+     "loads_year": 6.9
+    }
+   ],
+   "litres_year": 346.0,
+   "litres_year_with_surplus": 451.0,
+   "loads_year": 37.0,
+   "loads_year_with_surplus": 44.0,
+   "standing_litres_before_pickup": {
+    "7": 7.0,
+    "14": 13.0,
+    "30": 28.0,
+    "90": 85.0
+   },
+   "standing_litres_with_surplus": {
+    "7": 9.0,
+    "14": 17.0,
+    "30": 37.0,
+    "90": 111.0
+   },
+   "lab_limit_litres": 208
+  },
+  "ten_a_day": {
+   "containers": [
+    {
+     "what": "waste powder, LPBF leftovers, characterization powder",
+     "container": "5 gal solids bucket (combustible metal)",
+     "litres_year": 112.6,
+     "loads_year": 7.4
+    },
+    {
+     "what": "sealed vacuum liners",
+     "container": "5 gal solids bucket via the grounded pail",
+     "litres_year": 624.0,
+     "loads_year": 41.2
+    },
+    {
+     "what": "filters in sand",
+     "container": "grounded can, one a filter (counted as 4 L each)",
+     "litres_year": 179.6,
+     "loads_year": 56.1
+    },
+    {
+     "what": "IPA: sieve wash with Al fines",
+     "container": "Flammable Solvents, 5 gal (or a 2.5 gal safety can)",
+     "litres_year": 232.6,
+     "loads_year": 15.4
+    },
+    {
+     "what": "IPA: bar rinse and wipes",
+     "container": "Flammable Solvents, 5 gal",
+     "litres_year": 140.9,
+     "loads_year": 9.3
+    },
+    {
+     "what": "IPA with resin (Form Wash)",
+     "container": "Flammable Solvents, 5 gal",
+     "litres_year": 15.6,
+     "loads_year": 1.0
+    },
+    {
+     "what": "acidified ICP leftovers, leach acid",
+     "container": "Acid Aqueous, 5 gal",
+     "litres_year": 131.5,
+     "loads_year": 8.7
+    },
+    {
+     "what": "Weck's, spent",
+     "container": "1 L bottle (base, oxidizer)",
+     "litres_year": 18.8,
+     "loads_year": 23.5
+    },
+    {
+     "what": "seawater with sulfide",
+     "container": "1 L bottle on tray A",
+     "litres_year": 28.2,
+     "loads_year": 35.2
+    },
+    {
+     "what": "IF DISCARDED: surplus powder and full plates' leftovers",
+     "container": "5 gal solids bucket (combustible metal)",
+     "litres_year": 1223.3,
+     "loads_year": 80.8
+    }
+   ],
+   "litres_year": 1484.0,
+   "litres_year_with_surplus": 2707.0,
+   "loads_year": 198.0,
+   "loads_year_with_surplus": 279.0,
+   "standing_litres_before_pickup": {
+    "7": 28.0,
+    "14": 57.0,
+    "30": 122.0,
+    "90": 366.0
+   },
+   "standing_litres_with_surplus": {
+    "7": 52.0,
+    "14": 104.0,
+    "30": 223.0,
+    "90": 668.0
+   },
+   "lab_limit_litres": 208
+  }
+ },
  "what": "The vertical lab's waste streams (waste.py): an amount per unit of work, times the units in a year at one fully tested alloy a day (the finale's year) and at ten (PR #332's R11). Modelled, not weighed; each stream's basis says what is sourced and what is assumed.",
  "routes": {
   "metal": "EHS: combustible metal",
