@@ -62,13 +62,13 @@ B570 = dict(
     d=7.75 * IN,            # cylinder, 196.9 mm
     z_wall=533.0,           # top of the straight wall (21.0 in)
     z_dome=575.0,           # top of the shell's head (22.65 in in the render)
-    neck=(26.0, 575.0, 583.0),          # the yellow neck ring: radius, z0, z1
-    collar=(20.0, 583.0, 620.0),        # the threaded collar the valve screws onto (to 24.4 in)
-    z_seat=620.0,           # the wall hook's seat, under the valve body
-    z_gauge=643.0,          # the gauge's centre (25.3 in)
+    neck=(26.0, 575.0, 581.0),          # the yellow neck ring: radius, z0, z1
+    collar=(20.0, 581.0, 605.0),        # the threaded collar the valve screws onto
+    z_seat=605.0,           # the wall hook's seat, under the valve body
+    z_gauge=621.0,          # the gauge's centre (24.4 in)
     z_lever=686.0,          # the squeeze lever's tip, the highest rigid point (27.0 in)
-    z_hose=907.0,           # the top of the hose's loop (35.7 in)
-    wand_x=116.0,           # the applicator's axis, 17.5 mm outside the shell
+    z_hose=904.0,           # the top of the hose's coil (35.6 in)
+    wand_x=119.0,           # the applicator's axis, 20.5 mm outside the shell
     bands=((272.0, 305.0), (466.0, 499.0)),   # the two black lattice bands that hold the applicator
     label=(337.0, 436.0),   # the instruction label (13.3-17.2 in)
     logo=(185.0, 207.0),    # the Amerex diamond (7.3-8.1 in)
@@ -126,6 +126,7 @@ MATS = {
     "gauge_green": (0.12, 0.62, 0.27, 1.0, 0.3),
     "label": (0.96, 0.96, 0.94, 1.0, 0.15),
     "print": (0.05, 0.05, 0.05, 1.0, 0.1),
+    "picto": (0.55, 0.55, 0.55, 1.0, 0.1),           # the label's pictograms and small print, as grey
     "star": (0.98, 0.83, 0.08, 1.0, 0.2),
     "seal": (0.86, 0.13, 0.12, 1.0, 0.3),            # the red tamper seal on the pin (the lab's photo)
     "hook_red": (0.76, 0.10, 0.09, 1.0, 0.4),
@@ -215,7 +216,7 @@ def _text_w(s, h):
 def _on_cyl(mesh, r, s0=0.0, z0=0.0):
     """Wrap a flat mesh (x along the surface, y up, z out of it) onto a cylinder of radius r about z, its x = 0 on the
     cylinder's front (-y); s0 shifts it along the surface, z0 up."""
-    m = mesh.copy()
+    m = mesh.triangulate().subdivide_adaptive(max_edge_len=2.0).copy()
     p = np.asarray(m.points, float)
     a = (p[:, 0] + s0) / r
     rr = r + p[:, 2]
@@ -332,16 +333,16 @@ def b570_parts(hose: bool = True) -> dict:
     r0, z0, z1 = b["neck"]
     rc, c0, c1 = b["collar"]
     neck = _cyl(r0, z1 - z0, (0, 0, z0)).fuse(_cyl(rc, c1 - c0, (0, 0, c0)))
-    for zg in (c0 + 11.0, c0 + 23.0):
+    for zg in (c0 + 6.0, c0 + 15.0):
         neck = neck.cut(_cyl(rc + 1, 3.0, (0, 0, zg)).cut(_cyl(rc - 2.0, 3.0, (0, 0, zg))))
     _add(p, "B570 collar", _mesh(neck), "cd_yellow")
     # the valve: a chrome-plated brass body on the collar, the gauge's boss to the front, the outlet to the left
     zv0, zg = c1, b["z_gauge"]
-    body = _cyl(17.0, 44.0, (0, 0, zv0)).fuse(_cyl(15.5, 26.0, (0, 2.0, zg), (0, -1, 0)))
-    body = body.fuse(_cyl(10.5, 34.0, (-6.0, 0, 648.0), (-1, 0, 0)))          # the outlet boss
-    body = body.fuse(_box(-34.0, -9.0, 656.0, 14.0, 9.0, 668.0))               # the levers' pivot block
+    body = _cyl(17.0, 45.0, (0, 0, zv0)).fuse(_cyl(15.5, 26.0, (0, 2.0, zg), (0, -1, 0)))
+    body = body.fuse(_cyl(10.5, 34.0, (-6.0, 0, 626.0), (-1, 0, 0)))          # the outlet boss, to the left
+    body = body.fuse(_box(-34.0, -9.0, 640.0, 14.0, 9.0, 654.0))               # the levers' pivot block
     _add(p, "B570 valve", _mesh(body), "chrome")
-    _add(p, "B570 ferrule", _mesh(_cyl(12.5, 24.0, (-40.0, 0, 648.0), (-1, 0, 0))), "chrome")
+    _add(p, "B570 ferrule", _mesh(_cyl(12.5, 24.0, (-40.0, 0, 626.0), (-1, 0, 0))), "chrome")
     # the gauge: a chrome bezel, a red face, a green arc at the top (the operable range), a needle in the green
     bezel = _cyl(15.0, 4.0, (0, -24.0, zg), (0, -1, 0)).cut(_cyl(12.0, 5.0, (0, -23.5, zg), (0, -1, 0)))
     _add(p, "B570 gauge bezel", _mesh(bezel), "chrome")
@@ -357,35 +358,42 @@ def b570_parts(hose: bool = True) -> dict:
     _add(p, "B570 gauge needle", _on_face(needle, 0.0, zg, -25.4, -1), "print")
     # the squeeze lever (chrome, on top, rising to its tip) and the carry handle (black chrome, falling to its end),
     # both to the right; Amerex's render, in mm from the axis and the bottom
-    lever = [(-34.0, 657.0), (-34.0, 669.0), (-12.0, 677.0), (55.0, 684.0), (99.0, 686.0), (99.0, 681.0),
-             (55.0, 675.0), (-6.0, 663.0)]
+    lever = [(-34.0, 645.0), (-34.0, 656.0), (-12.0, 664.0), (55.0, 680.0), (99.0, 686.0), (99.0, 681.0),
+             (55.0, 673.0), (-6.0, 652.0)]
     _add(p, "B570 lever", _mesh(_prism(lever, -8.0, 8.0)), "chrome")
-    handle = [(8.0, 650.0), (20.0, 657.0), (60.0, 640.0), (102.0, 610.0), (102.0, 602.0), (60.0, 627.0),
-              (18.0, 641.0)]       # its end stops 5 mm short of the applicator's grip
+    handle = [(8.0, 630.0), (20.0, 638.0), (60.0, 627.0), (104.0, 604.0), (104.0, 596.0), (60.0, 615.0),
+              (18.0, 623.0)]       # its end stops 5 mm short of the applicator's grip
     _add(p, "B570 handle", _mesh(_prism(handle, -9.0, 9.0)), "handle")
     # the large-loop stainless pull pin through the levers, and the red tamper seal on it (the lab's photo)
-    pin = _cyl(2.0, 26.0, (8.0, -13.0, 664.0), (0, 1, 0))
-    ring = cq.Solid.makeTorus(12.0, 1.4, cq.Vector(8.0, -14.0, 690.0), cq.Vector(1, 0, 0))
+    pin = _cyl(2.0, 26.0, (8.0, -13.0, 650.0), (0, 1, 0))
+    ring = cq.Solid.makeTorus(12.0, 1.4, cq.Vector(8.0, -14.0, 676.0), cq.Vector(1, 0, 0))
     _add(p, "B570 pin", _mesh(pin.fuse(ring)), "steel")
-    _add(p, "B570 seal", _mesh(_box(4.0, -18.0, 670.0, 12.0, -14.0, 682.0)), "seal")
+    _add(p, "B570 seal", _mesh(_box(4.0, -18.0, 656.0, 12.0, -14.0, 668.0)), "seal")
     # the hose: from the outlet to the left, up over the top in a loop, down the right side to the coupling
     if hose:
-        path = [(-64.0, 0, 648.0), (-92.0, 0, 666.0), (-122.0, 0, 708.0), (-139.0, 0, 775.0), (-130.0, 0, 845.0),
-                (-86.0, 0, 891.0), (-12.0, 0, 896.0), (62.0, 0, 885.0), (112.0, 0, 852.0), (127.0, 0, 818.0),
-                (118.0, 0, 799.0)]
+        # a turn and a half, as Amerex's render shows it (two strands up the left and over the top): out to the left,
+        # up and over (the inner turn), down the right, behind the valve's collar, up the left again and over (the
+        # outer turn), down to the applicator's coupling; each turn a hose's width behind the last
+        path = [(-64.0, 0.0, 626.0), (-88.0, 2.0, 636.0), (-104.0, 4.0, 668.0), (-107.0, 6.0, 720.0),
+                (-102.0, 7.0, 785.0), (-72.0, 8.0, 835.0), (-28.0, 9.0, 852.0), (14.0, 10.0, 845.0),
+                (48.0, 12.0, 815.0), (73.0, 14.0, 778.0), (82.0, 16.0, 740.0), (78.0, 18.0, 700.0),
+                (60.0, 21.0, 664.0), (30.0, 26.0, 642.0), (0.0, 37.0, 624.0), (-42.0, 34.0, 630.0),
+                (-95.0, 29.0, 652.0), (-127.0, 25.0, 690.0), (-133.0, 21.0, 727.0), (-125.0, 17.0, 790.0),
+                (-103.0, 14.0, 835.0), (-60.0, 11.0, 872.0), (7.0, 8.0, 893.0), (72.0, 5.0, 871.0),
+                (103.0, 3.0, 835.0), (116.0, 1.0, 798.0), (119.0, 0.0, 777.0)]
         _add(p, "B570 hose", _tube(path, 11.0), "rubber")
     # the applicator: chrome quick-detach coupling, a black tapered grip, the wand, the soft-flow cup
     wx = b["wand_x"]
-    cpl = _cyl(13.0, 51.0, (wx, 0, 743.0)).fuse(_cyl(15.5, 9.0, (wx, 0, 784.0)))
-    _add(p, "B570 coupling", _mesh(cpl), "chrome")
-    grip = cq.Solid.makeCone(10.5, 15.0, 83.0, cq.Vector(wx, 0, 660.0), cq.Vector(0, 0, 1))
-    _add(p, "B570 applicator", _mesh(grip.fuse(_cyl(9.5, 563.0, (wx, 0, 97.0)))), "black_plastic")
-    tilt = math.radians(15.0)
+    cpl = _cyl(13.0, 77.0, (wx, 0, 700.0)).fuse(_cyl(15.5, 10.0, (wx, 0, 758.0))).fuse(_cyl(15.5, 8.0, (wx, 0, 706.0)))
+    _add(p, "B570 coupling", _mesh(cpl), "chrome")           # the quick-detach coupling, 700-777 mm (the render)
+    grip = cq.Solid.makeCone(9.5, 13.5, 140.0, cq.Vector(wx, 0, 560.0), cq.Vector(0, 0, 1))
+    _add(p, "B570 applicator", _mesh(grip.fuse(_cyl(9.0, 462.0, (wx, 0, 99.0)))), "black_plastic")
+    tilt = math.radians(22.0)
     d = (0.0, -math.sin(tilt), -math.cos(tilt))
-    top = cq.Vector(wx, 0.0, 99.0)
-    cup = cq.Solid.makeCylinder(38.0, 80.0, top, cq.Vector(*d))
-    cup = cup.cut(cq.Solid.makeCylinder(34.0, 80.0, top + cq.Vector(*d) * 4.0, cq.Vector(*d)))
-    cup = cup.fuse(cq.Solid.makeCone(12.0, 38.0, 4.0, top - cq.Vector(*d) * 0.0, cq.Vector(*d)))
+    top = cq.Vector(wx + 5.0, 0.0, 98.0)
+    cup = cq.Solid.makeCylinder(43.0, 86.0, top, cq.Vector(*d))
+    cup = cup.cut(cq.Solid.makeCylinder(39.0, 86.0, top + cq.Vector(*d) * 4.0, cq.Vector(*d)))
+    cup = cup.fuse(cq.Solid.makeCone(11.0, 43.0, 5.0, top, cq.Vector(*d)))
     _add(p, "B570 nozzle", _mesh(cup), "black_plastic")
     # the two lattice bands (diamond windows) with the applicator's clip on the right
     for i, (zb0, zb1) in enumerate(b["bands"]):
@@ -409,10 +417,14 @@ def b570_parts(hose: bool = True) -> dict:
     hdr = _text("INSTRUCTIONS", 6.5, 0.25)
     w_ = hdr.bounds[1]
     _add(p, "B570 label print", _on_cyl(hdr, rl + 0.55, -w_ / 2, l1 - 9.6), "label")
-    for k in range(4):                                     # the four pictograms' panels, as blocks of grey print
-        s = -60.0 + k * 31.0
-        pic = _flat_poly([(0, 0), (24, 0), (24, 20), (0, 20)], 0.2)
-        _add(p, "B570 label print", _on_cyl(pic, rl + 0.4, s, l1 - 36.0), "print")
+    for k in range(4):                                     # the four pictograms, as grey panels with a number disc
+        a0 = math.degrees((-62.0 + k * 31.0) / R)
+        _add(p, "B570 label pictos", _sector(rl + 0.35, a0, a0 + math.degrees(24.0 / R), l1 - 40.0, l1 - 16.0, 0.15,
+                                             8), "picto")
+    for a0, a1 in ((-78.0, -46.0), (46.0, 78.0)):          # the two columns of small print either side
+        for i in range(9):
+            zz = l0 + 12.0 + i * 8.5
+            _add(p, "B570 label pictos", _sector(rl + 0.35, a0 + 2, a1 - 2, zz, zz + 2.6, 0.12, 8), "picto")
     for txt, s, z in (("COMBUSTIBLE", -66.0, 375.0), ("METALS", -60.0, 366.0), ("FIRE", 26.0, 375.0),
                       ("EXTINGUISHER", 20.0, 366.0)):
         _add(p, "B570 label print", _on_cyl(_text(txt, 5.0, 0.25), rl + 0.5, s, z), "print")
@@ -422,14 +434,14 @@ def b570_parts(hose: bool = True) -> dict:
     cau = _text("CAUTION: FIRE MAY RE-IGNITE, ALLOW METAL TO COOL BEFORE CLEANUP.", 2.6, 0.2)
     _add(p, "B570 label print", _on_cyl(cau, rl + 0.5, -cau.bounds[1] / 2, l0 + 6.0), "print")
     g0, g1 = b["logo"]
-    dia = [(-36.0, 0.0), (0.0, -(g1 - g0) / 2), (36.0, 0.0), (0.0, (g1 - g0) / 2)]
+    dia = [(-54.0, 0.0), (0.0, -(g1 - g0) / 2 - 2.0), (54.0, 0.0), (0.0, (g1 - g0) / 2 + 2.0)]
     out = _flat_poly(dia, 0.3)
     inner = _flat_poly([(x * 0.9, y * 0.78) for x, y in dia], 0.5)
     zc = (g0 + g1) / 2
     _add(p, "B570 logo", _on_cyl(out, R + 0.3, 0.0, zc), "print")
     _add(p, "B570 logo white", _on_cyl(inner, R + 0.35, 0.0, zc), "label")
-    am = _text("AMEREX", 5.0, 0.25)
-    _add(p, "B570 logo", _on_cyl(am, R + 0.95, -am.bounds[1] / 2, zc - 2.5), "print")
+    am = _text("AMEREX", 6.0, 0.25)
+    _add(p, "B570 logo", _on_cyl(am, R + 0.95, -am.bounds[1] / 2, zc - 3.0), "print")
     return p
 
 

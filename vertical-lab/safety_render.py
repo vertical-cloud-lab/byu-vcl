@@ -409,6 +409,7 @@ def plan() -> str:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.patches import Rectangle, Circle, Polygon
+    import matplotlib.patheffects as pe
     fl = floor()
     fp = S.mir_footprint()
     rep = json.loads((OUT / "safety.json").read_text()) if (OUT / "safety.json").exists() else report()
@@ -419,7 +420,7 @@ def plan() -> str:
     d = np.where(np.isfinite(dist), dist, np.nan).T / 1000.0
     im = ax.imshow(d, origin="lower", extent=(x0 - 50, x0 + dist.shape[0] * 100 - 50, y0 - 50,
                                               y0 + dist.shape[1] * 100 - 50),
-                   cmap="YlOrBr_r", vmin=0, vmax=7.62, alpha=0.38, interpolation="nearest")
+                   cmap="Blues", vmin=0, vmax=7.62, alpha=0.55, interpolation="nearest")
     cb = fig.colorbar(im, ax=ax, fraction=0.025, pad=0.01)
     cb.set_label("walk to the nearest fixed Class D unit, m (scale ends at 7.6 m, the lab's 25 ft; NFPA 10 allows "
                  "22.9 m, 75 ft)", fontsize=11, color=INK2)
@@ -450,7 +451,7 @@ def plan() -> str:
           "pail": dict(marker="h", s=150, c="#ffffff", edgecolors="#8a6d00", zorder=6)}
     seen = set()
     for (station, kind, x, y, face, what), pc in zip(S.PLACES, rep["places"]):
-        lab = {"b570": "B570 on a post, CLASS D signs, keep-clear square",
+        lab = {"b570": "B570 on a post, CLASS D signs, keep-clear area",
                "680r": "680R, 150 lb wheeled", "pail": "Super D pail and scoop"}[kind]
         ax.scatter([x], [y], label=None if kind in seen else lab, **mk[kind])
         seen.add(kind)
@@ -463,10 +464,11 @@ def plan() -> str:
     for k, (x, y) in S.HAZARDS.items():
         w = rep["walks"][k]
         ax.plot([x], [y], marker="x", color="#b3261e", ms=9, mew=2, zorder=7)
-        ax.text(x, y - 330 if y > -5000 else y + 230, f"{w['m']:.1f} m", color="#b3261e", fontsize=10, ha="center",
-                zorder=7, fontweight="bold")
+        t = ax.text(x, y - 360 if y > -5000 else y + 230, f"{w['m']:.1f} m", color=INK, fontsize=11, ha="center",
+                    zorder=7, fontweight="bold")
+        t.set_path_effects([pe.withStroke(linewidth=3, foreground="white")])
     ax.scatter([], [], marker="x", c="#b3261e", label="where the hazard is, and the walk to the nearest unit")
-    ax.plot([], [], color="#c79a00", lw=1.2, label="a docked MiR250's B570 in its 811 bracket (behind the MiR)")
+    ax.plot([], [], color="#c79a00", lw=1.2, label="a docked MiR250's B570 in its 811 bracket (on its aisle side)")
     ax.plot([], [], color="#2f6db5", lw=0.8, ls=":", label="docked MiR250s; their turning circles with the unit "
                                                            f"({fp['r_turn']:.0f} mm, was {fp['r_turn_mir']:.0f})")
     ax.set_xlim(-12300, 12300)
@@ -485,7 +487,7 @@ def plan() -> str:
                  f"{sum(1 for p in S.PLACES if p[1] == '680r')} 680Rs, 2 pails, and one B570 on each MiR250. "
                  f"Longest walk from a powder station to a fixed unit: {worst['m']:.1f} m ({worst['ft']:.0f} ft)",
                  fontsize=15, color=INK, loc="left")
-    ax.legend(loc="lower right", fontsize=10, frameon=True, facecolor="white", edgecolor=GRID)
+    ax.legend(loc="upper left", bbox_to_anchor=(0.0, -0.07), ncol=3, fontsize=11, frameon=False)
     path = OUT / "safety_plan.png"
     fig.savefig(path, bbox_inches="tight", facecolor=SURF)
     plt.close(fig)
@@ -702,13 +704,14 @@ def photo() -> str:
     bg = Image.new("RGB", ref.size, (255, 255, 255))
     bg.paste(ref, mask=mask)
     for i, (im, cap) in enumerate(((bg, "Amerex's render (datasheet)"), (img, "the model"),
-                                   (Image.fromarray(over), f"overlap {iou:.0%}: red Amerex only, blue model only"))):
+                                   (Image.fromarray(over), f"overlap {iou:.0%} (intersection over union)"))):
         out.paste(im, (40 + i * (Wr + 40), 90))
         dr.text((40 + i * (Wr + 40), 100 + Hr), cap, font=font(24, bold=i == 2), fill=INK)
-    dr.text((40, Hr + 150), "Scaled so the cylinder is 7.75 in across (272 px); the render then spans 35.7 x 12.7 in, "
-                            "the datasheet 35 x 13 x 8 in. The hose's loop is flexible; the rest is the shape to match.",
-            font=font(22), fill=INK2)
-    dr.text((40, Hr + 185), f"Source: {AMEREX_PDF} (fetched at run time, not committed)", font=font(20), fill=INK2)
+    dr.text((40 + 2 * (Wr + 40), 132 + Hr), "red: Amerex's only; blue: the model's only", font=font(20), fill=INK2)
+    dr.text((40, Hr + 170), "Scaled so the cylinder is 7.75 in across (272 px); the render then spans 35.7 x 12.7 in "
+                            "(datasheet: 35 x 13 x 8 in).", font=font(20), fill=INK2)
+    dr.text((40, Hr + 198), f"Amerex's render: {AMEREX_PDF}, fetched at run time, not committed.", font=font(18),
+            fill=INK2)
     path = OUT / "safety_b570_vs_amerex.png"
     out.save(path, optimize=True)
     print(f"-> {path.relative_to(HERE)}  IoU {iou:.3f}")
