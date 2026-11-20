@@ -387,9 +387,9 @@
  },
  {
   "chapter": "checks",
-  "part": "collisions/round12_table.png",
+  "part": "collisions/round13_table.png",
   "offset": 0.5,
-  "text": "This video's own check: each clip drawn for it was checked frame by frame as it rendered. The table lists, clip by clip, the frames where something still touches.",
+  "text": "This video's own check: the clips drawn for it were checked frame by frame as they rendered. The table lists, clip by clip, the frames where something still touches.",
   "source": "out/collisions/round12_summary.json"
  },
  {

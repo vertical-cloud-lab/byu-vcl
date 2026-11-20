@@ -130,6 +130,24 @@ _FONTS: dict = {}
 _WRAP: dict = {}
 
 
+def _plotter(size) -> pv.Plotter:
+    """pv.Plotter(off_screen=True). Round 13: on a loaded runner (three renders and the audits, load 7-12), VTK's first
+    X connection in a new process failed about half the time ("bad X server connection"), and VTK fell back to OSMesa,
+    which isn't installed: the render then died at its first frame, after the scene build. A second try connects, so a
+    window that came up as OSMesa while DISPLAY is set is closed and made again."""
+    import time
+    pl = None
+    for attempt in range(40):
+        pl = pv.Plotter(off_screen=True, window_size=size, lighting="none")
+        if not os.environ.get("DISPLAY") or pl.render_window.GetClassName() != "vtkOSOpenGLRenderWindow":
+            if attempt:
+                print(f"scene.py: an X window on try {attempt + 1}", flush=True)
+            return pl
+        pl.close()
+        time.sleep(0.5 + 0.25 * min(attempt, 8))
+    return pl
+
+
 def font(size, bold=False, mono=False):
     """A DejaVu face, loaded once per (size, style): the overlay asks for its fonts on every frame."""
     key = (int(round(size)), bool(bold), bool(mono))
@@ -200,7 +218,7 @@ def _vtk_matrix(m: np.ndarray) -> vtk.vtkMatrix4x4:
 class Scene:
     def __init__(self, name: str, title: str, size=SIZE, gif=True, mp4=True):
         self.name, self.title, self.size = name, title, size
-        self.pl = pv.Plotter(off_screen=True, window_size=size, lighting="none")
+        self.pl = _plotter(size)
         light_kit(self.pl.renderer)
         self.pl.set_background("white")
         # VIZ3D_AA: "fxaa" (default since round 13: a screen-space filter, enough at 1920 x 1080), "ssaa" (renders
@@ -209,7 +227,11 @@ class Scene:
         aa = os.environ.get("VIZ3D_AA", "fxaa")
         if aa != "none":
             self.pl.enable_anti_aliasing(aa)
-        self.pl.enable_depth_peeling(number_of_peels=6, occlusion_ratio=0.0)
+        # VIZ3D_PEELS (round 13: 3, was 6): VTK's dual depth peeling costs about the same per pass whatever is
+        # see-through, and peels two layers a pass. On a chapter-1 frame with 20 small translucent parts, 6 passes took
+        # 1.38-1.57 s of CPU and 3 took 1.11-1.18 s (no peeling: 0.68), with 600-1000 of 2 million pixels changed by
+        # more than 8 levels, all where see-through parts overlap. An occlusion ratio didn't stop the passes early.
+        self.pl.enable_depth_peeling(number_of_peels=int(os.environ.get("VIZ3D_PEELS", "3")), occlusion_ratio=0.0)
         self._peel_on = True      # depth peeling is switched off for a frame with nothing see-through (render_base)
         self.actors: dict[str, vtk.vtkActor] = {}
         self.group_of: dict[str, str] = {}
