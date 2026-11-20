@@ -83,6 +83,16 @@ HEADER_H = 95.0         # white header band with the logo
 POST_W = 115.0          # anthracite side posts of the opening
 CONSOLE_X = OPEN_W / 2 + POST_W / 2       # the OPTIC panel, on the right post at header height
 CONSOLE_Z = Z_OPEN_TOP - 40.0
+# Round 13 (Sterling, PR #318, 2026-11-20: "It's still showing the picking bay as being 'open top'. In real kardex
+# systems, I'm pretty sure there's a 'roof' to the bay"): until round 12 the bay was open above the header's underside,
+# so from the opening one looked up into the front column at the underside of the tray stored over the bay. The bay now
+# has a roof, a 3 mm sheet with two folded ribs on top, between its side walls (which now run up to it), from the front
+# panel back to the shutter's plane, under the supports of the slot over the opening (Z_FRONT_HI, less the supports'
+# 6 mm and 5 mm clear). Its height is ours: Kardex's renders show a closed bay but give no figure. The bay cameras hang
+# from it (services.BAY_UNITS).
+BAY_ROOF_Z = 1910.0     # the roof's underside: the header's top (Z_OPEN_TOP + HEADER_H = 1924) less 14 mm
+BAY_ROOF_T = 3.0
+BAY_RIB_H = 22.0        # its ribs' height over the sheet: 1935, 9 mm under the supports at Z_FRONT_HI - 6
 
 # --- layout choices (not published; set so the lab's equipment fits) ------------------------
 T_FLOOR = 3.0           # tray floor (TH1 + 22.5-23.5 - 21: a 1.5-2.5 mm sheet; 3 mm here)
@@ -386,12 +396,18 @@ def opening() -> dict:
     walls = None
     for sx in (-1, 1):
         x0, x1 = sorted((sx * ow, sx * (ow + 12)))
-        w = box(x0, yb0, Z_SILL, x1, yb1, Z_OPEN_TOP)
+        w = box(x0, yb0, Z_SILL, x1, yb1, BAY_ROOF_Z)          # round 13: up to the roof (was Z_OPEN_TOP)
         for z in range(int(Z_OPEN + 60), int(Z_OPEN_TOP) - 20, 50):
             x2, x3 = sorted((sx * ow, sx * (ow - 8)))
             w = w.union(box(x2, yb0, z, x3, yb1, z + 4))
         walls = w if walls is None else walls.union(w)
     p["bay side walls"] = (walls, "vlm_bay", "bay")
+    # round 13: the roof, between the side walls, from the front panel to 1 mm short of the shutter's front face
+    roof = box(-ow, yb0, BAY_ROOF_Z, ow, yb1, BAY_ROOF_Z + BAY_ROOF_T)
+    for yr in (yb0 + 0.30 * (yb1 - yb0), yb0 + 0.72 * (yb1 - yb0)):
+        roof = roof.union(box(-ow, yr - 15.0, BAY_ROOF_Z + BAY_ROOF_T, ow, yr - 12.0, BAY_ROOF_Z + BAY_RIB_H)).union(
+            box(-ow, yr + 12.0, BAY_ROOF_Z + BAY_ROOF_T, ow, yr + 15.0, BAY_ROOF_Z + BAY_RIB_H))
+    p["bay roof"] = (roof, "vlm_bay", "bay")
     # the 12 in OPTIC touch panel on the right post, at header height, tilted towards the operator
     pan = rbox(300, 40, 200, 8).rotate((0, 0, 0), (1, 0, 0), -10).translate((CONSOLE_X, yo - 60, CONSOLE_Z - 100))
     p["console"] = (pan, "vlm_frame", "console")

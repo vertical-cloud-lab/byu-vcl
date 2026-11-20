@@ -136,6 +136,14 @@ class Lab:
                     for name, e in entries.items():
                         sc.add(f"{g}/{name}", e["mesh"].transform(T((-cx, -cy, -bb[4])), inplace=False), e["color"], g,
                                opacity=e["opacity"])
+                    if key == "ot2":                    # round 13 (PR #318: "The OT-2 is empty"): its deck
+                        try:
+                            import ot2_deck
+                            for name, e in ot2_deck.entries().items():
+                                sc.add(f"{g}/{name}", e["mesh"].transform(T((-cx, -cy, -bb[4])), inplace=False),
+                                       e["color"], g, opacity=e["opacity"])
+                        except Exception as ex:          # noqa: BLE001  (a nicety: the lab still builds without it)
+                            print("animate: no OT-2 deck:", ex, flush=True)
                     sc.gmat[g] = T((x, y, V.T_FLOOR))
                 sc.parent[g] = f"tray_{k}"
                 self.eq_groups[k].append(g)

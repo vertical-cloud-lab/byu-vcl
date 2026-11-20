@@ -24,7 +24,23 @@
      "height_mm": 547.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_D0 head",
+       "gap_mm": 215.9,
+       "need_mm": 10.0,
+       "a": [
+        -346.4,
+        -213.6
+       ],
+       "b": [
+        -249.0,
+        -286.8
+       ]
+      }
+     ]
     },
     {
      "item": "Rigaku MiniFlex (6th generation)",
@@ -40,7 +56,36 @@
      "height_mm": 722.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_D1 head",
+       "gap_mm": 52.8,
+       "need_mm": 10.0,
+       "a": [
+        227.6,
+        -201.0
+       ],
+       "b": [
+        227.6,
+        -253.8
+       ]
+      },
+      {
+       "other": "cam_D0 head",
+       "gap_mm": 66.2,
+       "need_mm": 10.0,
+       "a": [
+        -215.8,
+        -195.2
+       ],
+       "b": [
+        -258.0,
+        -246.2
+       ]
+      }
+     ]
     },
     {
      "item": "Powder prep station: XRD holder, SEM stub, XRF cup (our design)",
@@ -56,7 +101,9 @@
      "height_mm": 144.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "UPS",
@@ -72,7 +119,23 @@
      "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_D2 post",
+       "gap_mm": 21.0,
+       "need_mm": 10.0,
+       "a": [
+        860.0,
+        251.0
+       ],
+       "b": [
+        860.0,
+        230.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_D0 post",
@@ -88,7 +151,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_D0 head",
@@ -104,7 +169,36 @@
      "height_mm": 679.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Rigaku MiniFlex (6th generation)",
+       "gap_mm": 66.2,
+       "need_mm": 10.0,
+       "a": [
+        -258.0,
+        -246.2
+       ],
+       "b": [
+        -215.8,
+        -195.2
+       ]
+      },
+      {
+       "other": "Hitachi TM4000PlusII",
+       "gap_mm": 215.9,
+       "need_mm": 10.0,
+       "a": [
+        -249.0,
+        -286.8
+       ],
+       "b": [
+        -346.4,
+        -213.6
+       ]
+      }
+     ]
     },
     {
      "item": "cam_D1 post",
@@ -120,7 +214,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_D1 head",
@@ -136,7 +232,23 @@
      "height_mm": 673.4,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Rigaku MiniFlex (6th generation)",
+       "gap_mm": 52.8,
+       "need_mm": 10.0,
+       "a": [
+        227.6,
+        -253.8
+       ],
+       "b": [
+        227.6,
+        -201.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_D2 post",
@@ -152,7 +264,36 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "UPS",
+       "gap_mm": 21.0,
+       "need_mm": 10.0,
+       "a": [
+        860.0,
+        230.0
+       ],
+       "b": [
+        860.0,
+        251.0
+       ]
+      },
+      {
+       "other": "tray lines",
+       "gap_mm": 171.4,
+       "need_mm": 5.0,
+       "a": [
+        899.0,
+        230.0
+       ],
+       "b": [
+        899.0,
+        384.8
+       ]
+      }
+     ]
     },
     {
      "item": "cam_D2 head",
@@ -168,23 +309,59 @@
      "height_mm": 703.1,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_D2 post",
+       "gap_mm": 171.4,
+       "need_mm": 5.0,
+       "a": [
+        899.0,
+        384.8
+       ],
+       "b": [
+        899.0,
+        230.0
+       ]
+      }
+     ]
     }
    ],
    "ok": true,
@@ -206,7 +383,7 @@
    "shuttle": 1,
    "slot_z_mm": 1050.0,
    "span_mm": 750.0,
-   "tallest_mm": 702.3,
+   "tallest_mm": 702.2,
    "span_needed_mm": 750.0,
    "span_ok": true,
    "items": [
@@ -224,7 +401,36 @@
      "height_mm": 662.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "UPS",
+       "gap_mm": 35.2,
+       "need_mm": 10.0,
+       "a": [
+        1045.0,
+        225.2
+       ],
+       "b": [
+        1045.0,
+        251.0
+       ]
+      },
+      {
+       "other": "tray lines",
+       "gap_mm": 37.2,
+       "need_mm": 5.0,
+       "a": [
+        1072.2,
+        233.7
+       ],
+       "b": [
+        1101.3,
+        256.8
+       ]
+      }
+     ]
     },
     {
      "item": "CubXL + NuVant EZstat Pro",
@@ -240,7 +446,36 @@
      "height_mm": 538.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_A0 head",
+       "gap_mm": 340.3,
+       "need_mm": 10.0,
+       "a": [
+        -633.7,
+        -132.0
+       ],
+       "b": [
+        -928.6,
+        -2.9
+       ]
+      },
+      {
+       "other": "cam_A1 head",
+       "gap_mm": 419.8,
+       "need_mm": 10.0,
+       "a": [
+        51.3,
+        188.0
+       ],
+       "b": [
+        220.0,
+        257.6
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
@@ -256,7 +491,23 @@
      "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Opentrons OT-2",
+       "gap_mm": 35.2,
+       "need_mm": 10.0,
+       "a": [
+        1045.0,
+        251.0
+       ],
+       "b": [
+        1045.0,
+        225.2
+       ]
+      }
+     ]
     },
     {
      "item": "cam_A0 post",
@@ -272,7 +523,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_A0 head",
@@ -285,10 +538,26 @@
       511,
       705
      ],
-     "height_mm": 702.3,
+     "height_mm": 702.2,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "CubXL + NuVant EZstat Pro",
+       "gap_mm": 340.3,
+       "need_mm": 10.0,
+       "a": [
+        -928.6,
+        -2.9
+       ],
+       "b": [
+        -633.7,
+        -132.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_A1 post",
@@ -304,7 +573,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_A1 head",
@@ -320,23 +591,73 @@
      "height_mm": 671.1,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "CubXL + NuVant EZstat Pro",
+       "gap_mm": 419.8,
+       "need_mm": 10.0,
+       "a": [
+        220.0,
+        257.6
+       ],
+       "b": [
+        51.3,
+        188.0
+       ]
+      }
+     ]
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Opentrons OT-2",
+       "gap_mm": 37.2,
+       "need_mm": 5.0,
+       "a": [
+        1101.3,
+        256.8
+       ],
+       "b": [
+        1072.2,
+        233.7
+       ]
+      }
+     ]
     }
    ],
    "ok": true,
@@ -374,7 +695,23 @@
      "height_mm": 69.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "multi-doser: chain carousel v5 on an HR-202i, 13 powders",
+       "gap_mm": 36.0,
+       "need_mm": 10.0,
+       "a": [
+        -140.0,
+        -346.0
+       ],
+       "b": [
+        -140.0,
+        -310.0
+       ]
+      }
+     ]
     },
     {
      "item": "multi-doser: chain carousel v5 on an HR-202i, 13 powders",
@@ -390,7 +727,49 @@
      "height_mm": 854.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Specac Atlas Autotouch 15T, vacuum press",
+       "gap_mm": 27.5,
+       "need_mm": 10.0,
+       "a": [
+        -380.0,
+        106.0
+       ],
+       "b": [
+        -407.5,
+        106.0
+       ]
+      },
+      {
+       "other": "vial rack",
+       "gap_mm": 36.0,
+       "need_mm": 10.0,
+       "a": [
+        -140.0,
+        -310.0
+       ],
+       "b": [
+        -140.0,
+        -346.0
+       ]
+      },
+      {
+       "other": "tray lines",
+       "gap_mm": 133.4,
+       "need_mm": 5.0,
+       "a": [
+        540.0,
+        249.0
+       ],
+       "b": [
+        550.0,
+        382.0
+       ]
+      }
+     ]
     },
     {
      "item": "Specac Atlas Autotouch 15T, vacuum press",
@@ -406,14 +785,30 @@
      "height_mm": 640.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "multi-doser: chain carousel v5 on an HR-202i, 13 powders",
+       "gap_mm": 27.5,
+       "need_mm": 10.0,
+       "a": [
+        -407.5,
+        106.0
+       ],
+       "b": [
+        -380.0,
+        106.0
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
       754,
-      1120,
+      1118,
       250,
       406,
       3,
@@ -422,7 +817,9 @@
      "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_B0 post",
@@ -438,7 +835,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_B0 head",
@@ -446,7 +845,7 @@
      "box_mm": [
       756,
       927,
-      -283,
+      -282,
       -126,
       511,
       688
@@ -454,23 +853,59 @@
      "height_mm": 685.1,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "multi-doser: chain carousel v5 on an HR-202i, 13 powders",
+       "gap_mm": 133.4,
+       "need_mm": 5.0,
+       "a": [
+        550.0,
+        382.0
+       ],
+       "b": [
+        540.0,
+        249.0
+       ]
+      }
+     ]
     }
    ],
    "ok": true,
@@ -510,7 +945,23 @@
      "height_mm": 689.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_E0 head",
+       "gap_mm": 77.6,
+       "need_mm": 10.0,
+       "a": [
+        -642.0,
+        -220.2
+       ],
+       "b": [
+        -585.2,
+        -273.1
+       ]
+      }
+     ]
     },
     {
      "item": "KLA iMicro",
@@ -526,7 +977,36 @@
      "height_mm": 521.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Malvern Mastersizer 3000 + Aero S",
+       "gap_mm": 28.5,
+       "need_mm": 10.0,
+       "a": [
+        21.5,
+        -118.4
+       ],
+       "b": [
+        50.0,
+        -118.4
+       ]
+      },
+      {
+       "other": "cam_E0 head",
+       "gap_mm": 61.0,
+       "need_mm": 10.0,
+       "a": [
+        -494.0,
+        -259.0
+       ],
+       "b": [
+        -494.0,
+        -320.0
+       ]
+      }
+     ]
     },
     {
      "item": "Malvern Mastersizer 3000 + Aero S",
@@ -542,7 +1022,62 @@
      "height_mm": 505.9,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "UPS",
+       "gap_mm": 25.2,
+       "need_mm": 10.0,
+       "a": [
+        875.0,
+        231.6
+       ],
+       "b": [
+        875.0,
+        251.0
+       ]
+      },
+      {
+       "other": "KLA iMicro",
+       "gap_mm": 28.5,
+       "need_mm": 10.0,
+       "a": [
+        50.0,
+        -118.4
+       ],
+       "b": [
+        21.5,
+        -118.4
+       ]
+      },
+      {
+       "other": "dock plate",
+       "gap_mm": 55.6,
+       "need_mm": 5.0,
+       "a": [
+        1100.0,
+        143.6
+       ],
+       "b": [
+        1130.5,
+        190.0
+       ]
+      },
+      {
+       "other": "tray lines",
+       "gap_mm": 71.4,
+       "need_mm": 5.0,
+       "a": [
+        1084.5,
+        186.7
+       ],
+       "b": [
+        1103.0,
+        255.7
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
@@ -558,7 +1093,23 @@
      "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Malvern Mastersizer 3000 + Aero S",
+       "gap_mm": 25.2,
+       "need_mm": 10.0,
+       "a": [
+        875.0,
+        251.0
+       ],
+       "b": [
+        875.0,
+        231.6
+       ]
+      }
+     ]
     },
     {
      "item": "cam_E0 post",
@@ -574,7 +1125,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_E0 head",
@@ -590,7 +1143,36 @@
      "height_mm": 688.8,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "KLA iMicro",
+       "gap_mm": 61.0,
+       "need_mm": 10.0,
+       "a": [
+        -494.0,
+        -320.0
+       ],
+       "b": [
+        -494.0,
+        -259.0
+       ]
+      },
+      {
+       "other": "Plastometrex PLX-Benchtop",
+       "gap_mm": 77.6,
+       "need_mm": 10.0,
+       "a": [
+        -585.2,
+        -273.1
+       ],
+       "b": [
+        -642.0,
+        -220.2
+       ]
+      }
+     ]
     },
     {
      "item": "cam_E1 post",
@@ -606,7 +1188,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_E1 head",
@@ -622,7 +1206,23 @@
      "height_mm": 700.1,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Malvern Mastersizer 3000 + Aero S",
+       "gap_mm": 203.8,
+       "need_mm": 10.0,
+       "a": [
+        160.0,
+        278.0
+       ],
+       "b": [
+        160.0,
+        173.6
+       ]
+      }
+     ]
     },
     {
      "item": "cam_E2 post",
@@ -638,7 +1238,23 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Malvern Mastersizer 3000 + Aero S",
+       "gap_mm": 196.1,
+       "need_mm": 10.0,
+       "a": [
+        926.0,
+        -330.0
+       ],
+       "b": [
+        926.0,
+        -141.4
+       ]
+      }
+     ]
     },
     {
      "item": "cam_E2 head",
@@ -654,23 +1270,87 @@
      "height_mm": 687.3,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Malvern Mastersizer 3000 + Aero S",
+       "gap_mm": 158.0,
+       "need_mm": 10.0,
+       "a": [
+        966.7,
+        -236.2
+       ],
+       "b": [
+        966.7,
+        -131.4
+       ]
+      }
+     ]
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Malvern Mastersizer 3000 + Aero S",
+       "gap_mm": 55.6,
+       "need_mm": 5.0,
+       "a": [
+        1130.5,
+        190.0
+       ],
+       "b": [
+        1100.0,
+        143.6
+       ]
+      }
+     ]
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Malvern Mastersizer 3000 + Aero S",
+       "gap_mm": 71.4,
+       "need_mm": 5.0,
+       "a": [
+        1103.0,
+        255.7
+       ],
+       "b": [
+        1084.5,
+        186.7
+       ]
+      }
+     ]
     }
    ],
    "ok": true,
@@ -710,7 +1390,9 @@
      "height_mm": 300.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     }
    ],
    "ok": true,
@@ -747,7 +1429,23 @@
      "height_mm": 626.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_C0 head",
+       "gap_mm": 49.9,
+       "need_mm": 10.0,
+       "a": [
+        -799.9,
+        -252.1
+       ],
+       "b": [
+        -835.1,
+        -287.3
+       ]
+      }
+     ]
     },
     {
      "item": "Bambu Lab A1 mini",
@@ -763,14 +1461,30 @@
      "height_mm": 482.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_C1 head",
+       "gap_mm": 238.7,
+       "need_mm": 10.0,
+       "a": [
+        362.8,
+        -29.4
+       ],
+       "b": [
+        242.8,
+        -196.0
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
       754,
-      1121,
+      1118,
       250,
       406,
       3,
@@ -779,7 +1493,9 @@
      "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_C0 post",
@@ -795,7 +1511,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_C0 head",
@@ -811,7 +1529,23 @@
      "height_mm": 672.2,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Bambu Lab H2D",
+       "gap_mm": 49.9,
+       "need_mm": 10.0,
+       "a": [
+        -835.1,
+        -287.3
+       ],
+       "b": [
+        -799.9,
+        -252.1
+       ]
+      }
+     ]
     },
     {
      "item": "cam_C1 post",
@@ -827,7 +1561,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_C1 head",
@@ -843,23 +1579,59 @@
      "height_mm": 691.7,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Bambu Lab A1 mini",
+       "gap_mm": 238.7,
+       "need_mm": 10.0,
+       "a": [
+        242.8,
+        -196.0
+       ],
+       "b": [
+        362.8,
+        -29.4
+       ]
+      }
+     ]
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     }
    ],
    "ok": true,
@@ -897,7 +1669,9 @@
      "height_mm": 677.1,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "Nabertherm NAT 15/65",
@@ -913,7 +1687,36 @@
      "height_mm": 510.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "tray lines",
+       "gap_mm": 25.0,
+       "need_mm": 5.0,
+       "a": [
+        525.0,
+        412.0
+       ],
+       "b": [
+        550.0,
+        412.0
+       ]
+      },
+      {
+       "other": "water tank with a lift basket, our design",
+       "gap_mm": 35.0,
+       "need_mm": 10.0,
+       "a": [
+        525.0,
+        -169.0
+       ],
+       "b": [
+        560.0,
+        -169.0
+       ]
+      }
+     ]
     },
     {
      "item": "LECO MX400",
@@ -929,7 +1732,9 @@
      "height_mm": 666.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "six-shelf disc magazine (ours)",
@@ -945,7 +1750,9 @@
      "height_mm": 638.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "water tank with a lift basket, our design",
@@ -961,14 +1768,43 @@
      "height_mm": 326.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_F1 post",
+       "gap_mm": 16.0,
+       "need_mm": 10.0,
+       "a": [
+        680.2,
+        69.0
+       ],
+       "b": [
+        680.2,
+        85.0
+       ]
+      },
+      {
+       "other": "Nabertherm NAT 15/65",
+       "gap_mm": 35.0,
+       "need_mm": 10.0,
+       "a": [
+        560.0,
+        -169.0
+       ],
+       "b": [
+        525.0,
+        -169.0
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
       754,
-      1119,
+      1118,
       250,
       406,
       3,
@@ -977,7 +1813,9 @@
      "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_F0 post",
@@ -993,7 +1831,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_F0 head",
@@ -1009,7 +1849,9 @@
      "height_mm": 672.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_F1 post",
@@ -1025,7 +1867,23 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "water tank with a lift basket, our design",
+       "gap_mm": 16.0,
+       "need_mm": 10.0,
+       "a": [
+        680.2,
+        85.0
+       ],
+       "b": [
+        680.2,
+        69.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_F1 head",
@@ -1041,23 +1899,59 @@
      "height_mm": 703.1,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Nabertherm NAT 15/65",
+       "gap_mm": 25.0,
+       "need_mm": 5.0,
+       "a": [
+        550.0,
+        412.0
+       ],
+       "b": [
+        525.0,
+        412.0
+       ]
+      }
+     ]
     }
    ],
    "ok": true,
@@ -1099,7 +1993,23 @@
      "height_mm": 810.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
+       "gap_mm": 20.0,
+       "need_mm": 10.0,
+       "a": [
+        235.0,
+        80.0
+       ],
+       "b": [
+        255.0,
+        80.0
+       ]
+      }
+     ]
     },
     {
      "item": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
@@ -1115,7 +2025,64 @@
      "height_mm": 716.2,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [
+      "UPS"
+     ],
+     "nearest": [
+      {
+       "other": "UPS",
+       "gap_mm": 7.0,
+       "need_mm": 10.0,
+       "a": [
+        709.0,
+        262.5
+       ],
+       "b": [
+        709.0,
+        269.5
+       ]
+      },
+      {
+       "other": "Custom N2 glovebox (purge-only)",
+       "gap_mm": 20.0,
+       "need_mm": 10.0,
+       "a": [
+        255.0,
+        80.0
+       ],
+       "b": [
+        235.0,
+        80.0
+       ]
+      },
+      {
+       "other": "cam_K0 head",
+       "gap_mm": 84.9,
+       "need_mm": 10.0,
+       "a": [
+        524.3,
+        191.4
+       ],
+       "b": [
+        524.3,
+        275.8
+       ]
+      },
+      {
+       "other": "tray lines",
+       "gap_mm": 122.0,
+       "need_mm": 5.0,
+       "a": [
+        865.0,
+        262.5
+       ],
+       "b": [
+        865.0,
+        384.5
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
@@ -1131,7 +2098,25 @@
      "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [
+      "Keyence VHX-7000 (VHX-S750E free-angle stand)"
+     ],
+     "nearest": [
+      {
+       "other": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
+       "gap_mm": 7.0,
+       "need_mm": 10.0,
+       "a": [
+        709.0,
+        269.5
+       ],
+       "b": [
+        709.0,
+        262.5
+       ]
+      }
+     ]
     },
     {
      "item": "cam_K0 post",
@@ -1147,7 +2132,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_K0 head",
@@ -1163,26 +2150,76 @@
      "height_mm": 675.8,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
+       "gap_mm": 84.9,
+       "need_mm": 10.0,
+       "a": [
+        524.3,
+        275.8
+       ],
+       "b": [
+        524.3,
+        191.4
+       ]
+      }
+     ]
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
+       "gap_mm": 122.0,
+       "need_mm": 5.0,
+       "a": [
+        865.0,
+        384.5
+       ],
+       "b": [
+        865.0,
+        262.5
+       ]
+      }
+     ]
     }
    ],
-   "ok": true,
+   "ok": false,
    "load": {
     "known_kg": 25.2,
     "not_found": [
@@ -1216,7 +2253,52 @@
      "height_mm": 448.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [
+      "Mitutoyo HM-220 Type D (AVPAK)",
+      "UPS"
+     ],
+     "nearest": [
+      {
+       "other": "UPS",
+       "gap_mm": 3.0,
+       "need_mm": 10.0,
+       "a": [
+        599.0,
+        248.0
+       ],
+       "b": [
+        599.0,
+        251.0
+       ]
+      },
+      {
+       "other": "Mitutoyo HM-220 Type D (AVPAK)",
+       "gap_mm": 9.7,
+       "need_mm": 10.0,
+       "a": [
+        -668.0,
+        23.2
+       ],
+       "b": [
+        -677.7,
+        23.2
+       ]
+      },
+      {
+       "other": "tray lines",
+       "gap_mm": 134.0,
+       "need_mm": 5.0,
+       "a": [
+        620.0,
+        248.0
+       ],
+       "b": [
+        620.0,
+        382.0
+       ]
+      }
+     ]
     },
     {
      "item": "Mitutoyo HM-220 Type D (AVPAK)",
@@ -1232,7 +2314,38 @@
      "height_mm": 595.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [
+      "ZwickRoell zwickiLine Z5.0 TN"
+     ],
+     "nearest": [
+      {
+       "other": "ZwickRoell zwickiLine Z5.0 TN",
+       "gap_mm": 9.7,
+       "need_mm": 10.0,
+       "a": [
+        -677.7,
+        23.2
+       ],
+       "b": [
+        -668.0,
+        23.2
+       ]
+      },
+      {
+       "other": "cam_L0 post",
+       "gap_mm": 12.7,
+       "need_mm": 10.0,
+       "a": [
+        -677.7,
+        322.0
+       ],
+       "b": [
+        -665.0,
+        322.0
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
@@ -1248,7 +2361,25 @@
      "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [
+      "ZwickRoell zwickiLine Z5.0 TN"
+     ],
+     "nearest": [
+      {
+       "other": "ZwickRoell zwickiLine Z5.0 TN",
+       "gap_mm": 3.0,
+       "need_mm": 10.0,
+       "a": [
+        599.0,
+        251.0
+       ],
+       "b": [
+        599.0,
+        248.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_L0 post",
@@ -1264,7 +2395,23 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Mitutoyo HM-220 Type D (AVPAK)",
+       "gap_mm": 12.7,
+       "need_mm": 10.0,
+       "a": [
+        -665.0,
+        322.0
+       ],
+       "b": [
+        -677.7,
+        322.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_L0 head",
@@ -1280,7 +2427,9 @@
      "height_mm": 685.7,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_L1 post",
@@ -1296,7 +2445,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_L1 head",
@@ -1312,26 +2463,62 @@
      "height_mm": 692.7,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "ZwickRoell zwickiLine Z5.0 TN",
+       "gap_mm": 134.0,
+       "need_mm": 5.0,
+       "a": [
+        620.0,
+        382.0
+       ],
+       "b": [
+        620.0,
+        248.0
+       ]
+      }
+     ]
     }
    ],
-   "ok": true,
+   "ok": false,
    "load": {
     "known_kg": 139.0,
     "not_found": [],
@@ -1366,7 +2553,36 @@
      "height_mm": 620.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Sentry Air Systems ductless hood, 24 in",
+       "gap_mm": 12.0,
+       "need_mm": 10.0,
+       "a": [
+        -540.0,
+        -379.8
+       ],
+       "b": [
+        -528.0,
+        -379.8
+       ]
+      },
+      {
+       "other": "cam_M0 post",
+       "gap_mm": 20.6,
+       "need_mm": 10.0,
+       "a": [
+        -541.6,
+        322.0
+       ],
+       "b": [
+        -525.0,
+        322.0
+       ]
+      }
+     ]
     },
     {
      "item": "Sentry Air Systems ductless hood, 24 in",
@@ -1382,7 +2598,36 @@
      "height_mm": 714.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Bruker S2 PUMA Series 2, XY Autochanger",
+       "gap_mm": 12.0,
+       "need_mm": 10.0,
+       "a": [
+        -528.0,
+        -379.8
+       ],
+       "b": [
+        -540.0,
+        -379.8
+       ]
+      },
+      {
+       "other": "Makera Carvera",
+       "gap_mm": 12.0,
+       "need_mm": 10.0,
+       "a": [
+        502.0,
+        30.9
+       ],
+       "b": [
+        514.0,
+        30.9
+       ]
+      }
+     ]
     },
     {
      "item": "Makera Carvera",
@@ -1398,7 +2643,23 @@
      "height_mm": 540.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Sentry Air Systems ductless hood, 24 in",
+       "gap_mm": 12.0,
+       "need_mm": 10.0,
+       "a": [
+        514.0,
+        30.9
+       ],
+       "b": [
+        502.0,
+        30.9
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
@@ -1414,7 +2675,9 @@
      "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_M0 post",
@@ -1430,7 +2693,23 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Bruker S2 PUMA Series 2, XY Autochanger",
+       "gap_mm": 20.6,
+       "need_mm": 10.0,
+       "a": [
+        -525.0,
+        322.0
+       ],
+       "b": [
+        -541.6,
+        322.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_M0 head",
@@ -1446,7 +2725,9 @@
      "height_mm": 684.7,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_M1 post",
@@ -1462,7 +2743,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_M1 head",
@@ -1478,23 +2761,45 @@
      "height_mm": 688.3,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     }
    ],
    "ok": true,
@@ -1534,7 +2839,49 @@
      "height_mm": 516.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "cam_H0 post",
+       "gap_mm": 13.5,
+       "need_mm": 10.0,
+       "a": [
+        -1091.5,
+        322.0
+       ],
+       "b": [
+        -1105.0,
+        322.0
+       ]
+      },
+      {
+       "other": "cam_H1 post",
+       "gap_mm": 27.5,
+       "need_mm": 10.0,
+       "a": [
+        -202.5,
+        322.0
+       ],
+       "b": [
+        -175.0,
+        322.0
+       ]
+      },
+      {
+       "other": "cam_H0 head",
+       "gap_mm": 33.0,
+       "need_mm": 10.0,
+       "a": [
+        -1091.5,
+        360.6
+       ],
+       "b": [
+        -1123.2,
+        360.6
+       ]
+      }
+     ]
     },
     {
      "item": "Opulo LumenPnP v4.2",
@@ -1550,7 +2897,62 @@
      "height_mm": 364.2,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Puhui T-962A",
+       "gap_mm": 15.6,
+       "need_mm": 10.0,
+       "a": [
+        753.4,
+        -120.2
+       ],
+       "b": [
+        769.0,
+        -120.2
+       ]
+      },
+      {
+       "other": "UPS",
+       "gap_mm": 38.4,
+       "need_mm": 10.0,
+       "a": [
+        723.7,
+        266.4
+       ],
+       "b": [
+        760.2,
+        278.2
+       ]
+      },
+      {
+       "other": "tray lines",
+       "gap_mm": 118.6,
+       "need_mm": 5.0,
+       "a": [
+        679.7,
+        266.0
+       ],
+       "b": [
+        679.7,
+        384.5
+       ]
+      },
+      {
+       "other": "cam_H1 head",
+       "gap_mm": 158.1,
+       "need_mm": 10.0,
+       "a": [
+        99.6,
+        264.9
+       ],
+       "b": [
+        17.8,
+        339.8
+       ]
+      }
+     ]
     },
     {
      "item": "Puhui T-962A",
@@ -1566,14 +2968,30 @@
      "height_mm": 261.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Opulo LumenPnP v4.2",
+       "gap_mm": 15.6,
+       "need_mm": 10.0,
+       "a": [
+        769.0,
+        -120.2
+       ],
+       "b": [
+        753.4,
+        -120.2
+       ]
+      }
+     ]
     },
     {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
       754,
-      1120,
+      1118,
       250,
       406,
       3,
@@ -1582,7 +3000,23 @@
      "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Opulo LumenPnP v4.2",
+       "gap_mm": 38.4,
+       "need_mm": 10.0,
+       "a": [
+        760.2,
+        278.2
+       ],
+       "b": [
+        723.7,
+        266.4
+       ]
+      }
+     ]
     },
     {
      "item": "cam_H0 post",
@@ -1598,7 +3032,23 @@
      "height_mm": 320.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "DDM Novastar SPR-45VA",
+       "gap_mm": 13.5,
+       "need_mm": 10.0,
+       "a": [
+        -1105.0,
+        322.0
+       ],
+       "b": [
+        -1091.5,
+        322.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_H0 head",
@@ -1614,7 +3064,23 @@
      "height_mm": 404.2,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "DDM Novastar SPR-45VA",
+       "gap_mm": 33.0,
+       "need_mm": 10.0,
+       "a": [
+        -1123.2,
+        360.6
+       ],
+       "b": [
+        -1091.5,
+        360.6
+       ]
+      }
+     ]
     },
     {
      "item": "cam_H1 post",
@@ -1630,7 +3096,23 @@
      "height_mm": 320.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "DDM Novastar SPR-45VA",
+       "gap_mm": 27.5,
+       "need_mm": 10.0,
+       "a": [
+        -175.0,
+        322.0
+       ],
+       "b": [
+        -202.5,
+        322.0
+       ]
+      }
+     ]
     },
     {
      "item": "cam_H1 head",
@@ -1646,23 +3128,73 @@
      "height_mm": 407.7,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Opulo LumenPnP v4.2",
+       "gap_mm": 158.1,
+       "need_mm": 10.0,
+       "a": [
+        17.8,
+        339.8
+       ],
+       "b": [
+        99.6,
+        264.9
+       ]
+      }
+     ]
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": [
+      {
+       "other": "Opulo LumenPnP v4.2",
+       "gap_mm": 118.6,
+       "need_mm": 5.0,
+       "a": [
+        679.7,
+        384.5
+       ],
+       "b": [
+        679.7,
+        266.0
+       ]
+      }
+     ]
     }
    ],
    "ok": true,
@@ -1700,7 +3232,9 @@
      "height_mm": 554.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "Formlabs Form 4",
@@ -1716,7 +3250,9 @@
      "height_mm": 554.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "Formlabs Form Wash (2nd Gen)",
@@ -1732,7 +3268,9 @@
      "height_mm": 405.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "Formlabs Form Cure (2nd Gen)",
@@ -1748,14 +3286,16 @@
      "height_mm": 404.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
       754,
-      1121,
+      1118,
       250,
       406,
       3,
@@ -1764,7 +3304,9 @@
      "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_G0 post",
@@ -1780,7 +3322,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_G0 head",
@@ -1796,7 +3340,9 @@
      "height_mm": 693.8,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_G1 post",
@@ -1812,7 +3358,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_G1 head",
@@ -1828,23 +3376,45 @@
      "height_mm": 696.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     }
    ],
    "ok": true,
@@ -1884,7 +3454,9 @@
      "height_mm": 660.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "SnowX SnowPod",
@@ -1900,7 +3472,9 @@
      "height_mm": 660.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "UPS",
@@ -1916,7 +3490,9 @@
      "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_I0 post",
@@ -1932,7 +3508,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_I0 head",
@@ -1948,7 +3526,9 @@
      "height_mm": 683.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_I1 post",
@@ -1964,7 +3544,9 @@
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
      "item": "cam_I1 head",
@@ -1980,23 +3562,45 @@
      "height_mm": 686.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     },
     {
-     "item": "dock plate and tray lines",
+     "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      550,
+      1104,
       1219,
       190,
-      420,
+      370,
       3,
+      141
+     ],
+     "height_mm": 138.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
+    },
+    {
+     "item": "tray lines",
+     "kind": "lines",
+     "box_mm": [
+      550,
+      1160,
+      256,
+      420,
+      28,
       182
      ],
      "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     }
    ],
    "ok": true,
@@ -2034,7 +3638,9 @@
      "height_mm": 182.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     }
    ],
    "ok": true,
@@ -2071,7 +3677,9 @@
      "height_mm": 104.5,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": []
+     "overlaps": [],
+     "too_close": [],
+     "nearest": []
     }
    ],
    "ok": true,
@@ -2326,7 +3934,7 @@
    "repowder": [
     -4655,
     -2615,
-    -1899,
+    -1897,
     -700
    ],
    "aconity": [
@@ -2631,5 +4239,7 @@
    "O"
   ]
  },
- "method": "setup_lab.py fit: each item, UPS, dock plate (with its tray lines) and camera rig measured from its meshes as drawn, an axis-aligned box in the tray's frame; overlaps are 3-D box overlaps of more than 1 mm; a slot needs the tallest top + 20 mm, on the 25 mm pitch"
+ "clearance_mm": 10.0,
+ "clearance_to_lines_mm": 5.0,
+ "method": "setup_lab.py fit (round 13): each item, UPS, the dock plate, the tray's lines and each camera rig's post and head, as drawn, in the tray's frame. Pairs whose boxes come within 30 mm are measured solid to solid with FCL (python-fcl, on the meshes): a touch ('overlaps') or a gap under 10 mm (5 mm to the lines and the plate; 'too_close') fails; the UPS against the plate and lines is by design. Until round 12 a pair failed only if its boxes overlapped and the solids touched. A slot needs the tallest top + 20 mm, on the 25 mm pitch"
 }

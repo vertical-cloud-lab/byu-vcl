@@ -970,14 +970,46 @@ TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward o
 CAM_PIVOT = 640.0                       # the tilt axis over the tray floor; the head's top stays under 727.5 mm
 POST_H = 590.0                          # the tray posts: 22 mm over the sliding block at its CAM_PIVOT height
 CAM_H = CAM_PIVOT - TILT_AXIS[2]        # the block's height on a tray post: 543 mm
-# The bay unit sits on a 2020 bar across the back of the bay, 72 mm in front of the shutter's plane, over the top of
-# Kardex's product envelope at the opening and under tray F1, which is stored over the opening. With the 996 mm
-# opening (vlm.py) that envelope tops out at 1733.5 mm, only 166.5 mm under F1 at 1900, so the bay unit has no post or
-# sliding block: its yoke is bolted straight onto a saddle clamp on the bar (bay_at). y and bar_z are the bar's centre;
-# the head looks forward (-y), tilted down.
-BAY_CAM = dict(y=-635.0, bar_z=V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR + 25.0, tilt=64.0)
-BAY_CAM["pivot_z"] = BAY_CAM["bar_z"] + 14.0 + TILT_AXIS[2] - PAN_AXIS[2]     # the tilt axis, 68 mm over the clamp
-BAY_CAM["pivot_y"] = BAY_CAM["y"] + TILT_AXIS[1] - PAN_AXIS[1]               # 13 mm in front of the bar
+# The bay units. Rounds 7-12 stood one on a 2020 bar across the back of the bay, its yoke on a saddle clamp, over the
+# top of Kardex's product envelope at the opening (1733.5 mm with the 996 mm opening) and under the tray stored over
+# the bay. Round 13 (Sterling, PR #318, 2026-11-20: the bay has a roof, "I don't think that 2020 bar is needed ... the
+# camera could be mounted" to it; "We can also have multiple overhead cameras in the bay to get different angles (e.g.,
+# ceiling middle back, ceiling middle front)"): two units hang from the bay's roof (vlm.BAY_ROOF_Z), each on a short
+# 2020 drop with a printed shelf at its foot, the yoke bolted onto the shelf (no sliding block), the drop behind the
+# yoke. Both shelves are where round 12's clamp top was, 33 mm over the envelope, so a head clears the goods and the
+# roof (bay_mount_check()). Pan stays at 0: each mount is turned (yaw) to face its subject and the tilt does the rest.
+# * back: the middle of the back, 10 mm in front of where round 12's unit stood (its roof foot keeps 10 mm off the
+#   shutter): it looks forward and down over the whole tray (94 % of its floor) and the arm coming in. The top of its
+#   picture looks out through the opening into the room (28 %), so its stream wants a privacy mask there.
+# * front: the middle of the front, just behind the header and its LED light, looking back and down: the instruments'
+#   fronts, where the arm works, 83 % of the floor and none of the room. Checked against the arm on every reach.py pose
+#   (bay_arm_clearance(): 183 mm at the least, capsules of 75 mm round the links); a unit in a front corner, looking
+#   across, kept 313 mm but saw 11-32 % of the room (round 13's comparison, notes/services.md).
+BAY_SHELF = dict(w=60.0, d=72.0, t=6.0, y0=-26.0)      # the shelf under the yoke, pan-axis frame (y from -26 to +46)
+BAY_DROP = dict(y=36.0, foot=60.0, foot_t=6.0)         # the drop's centre behind the pan axis; the foot on the roof
+BAY_SHELF_Z = V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR + 39.0     # 1772.5: the shelf's top, the yoke's foot
+BAY_UNITS = {   # name: x, y of the pan axis (world, Shuttle 1), the mount's yaw (0 looks forward, -y), the tilt down
+    "back": dict(x=0.0, y=-645.0, yaw=0.0, tilt=64.0, where="ceiling, middle back"),
+    "front": dict(x=0.0, y=-1350.0, aim=(0.0, -800.0, V.Z_OPEN + V.T_FLOOR), where="ceiling, middle front"),
+}
+
+
+def _aim_bay_unit(u: dict) -> dict:
+    """Fill in a front-style unit's yaw and tilt from its aim point: the Wide's axis through it."""
+    if "aim" not in u:
+        return u
+    ax, ay, az = u["aim"]
+    dx, dy = ax - u["x"], ay - u["y"]
+    yaw = math.degrees(math.atan2(dx, -dy))              # the head's forward, (sin yaw, -cos yaw), along (dx, dy)
+    tz = BAY_SHELF_Z + TILT_AXIS[2] - PAN_AXIS[2]
+    tilt = math.degrees(math.atan2(tz - az, math.hypot(dx, dy)))
+    return {**u, "yaw": round(yaw, 1), "tilt": round(min(tilt, TILT_MAX), 1)}
+
+
+BAY_UNITS = {k: _aim_bay_unit(u) for k, u in BAY_UNITS.items()}
+BAY_CAM = dict(y=BAY_UNITS["back"]["y"], tilt=BAY_UNITS["back"]["tilt"], shelf_z=BAY_SHELF_Z)   # the back unit
+BAY_CAM["pivot_z"] = BAY_SHELF_Z + TILT_AXIS[2] - PAN_AXIS[2]     # the tilt axis, 68 mm over the shelf
+BAY_CAM["pivot_y"] = BAY_CAM["y"] + TILT_AXIS[1] - PAN_AXIS[1]    # 13 mm in front of the pan axis
 LAMP_UPS = (1.0, 0.62, 0.10)
 
 
@@ -1083,9 +1115,10 @@ def add_tray_cameras(sc, tray: str, layout=None, h=CAM_H) -> list:
     return groups
 
 
-def bay_cam_point() -> tuple:
-    """The bay unit's tilt axis, world: where its labels point."""
-    return (0.0, BAY_CAM["pivot_y"], BAY_CAM["pivot_z"])
+def bay_cam_point(unit: str = "back", x: float = 0.0) -> tuple:
+    """A bay unit's tilt axis, world: where its labels point."""
+    m = bay_at(x, unit) @ I._R((0, 0, 1), 0.0, PAN_AXIS)
+    return tuple(float(c) for c in (m @ np.array([*TILT_AXIS, 1.0]))[:3])
 
 
 def head_point(x, y, ax, ay, az, post=None, h=CAM_H, dz=0.0) -> tuple:
@@ -1109,36 +1142,61 @@ def add_cameras(sc, L=None, trays="ABCDEF") -> list:
 
 
 def bay_parts() -> dict:
-    """The bar across the bay and the printed saddle clamp the bay unit's yoke is bolted to, world frame."""
-    b = BAY_CAM
-    x0, x1 = -V.OPEN_W / 2, V.OPEN_W / 2
-    bar = box(x0, b["y"] - 10, b["bar_z"] - 10, x1, b["y"] + 10, b["bar_z"] + 10)
-    clamp = box(-24, b["y"] - 14, b["bar_z"] - 14, 24, b["y"] + 14, b["bar_z"] + 14).edges("|X").fillet(3.0)
-    clamp = clamp.cut(box(-25, b["y"] - 10.2, b["bar_z"] - 10.2, 25, b["y"] + 10.2, b["bar_z"] + 10.2))
-    return {"bay bar": (bar, "svc_alu"), "saddle clamp": (clamp, "svc_petg")}
+    """A bay unit's mount, in its pan-axis frame (the yoke's foot at the origin, the head looking along -y): the shelf
+    the yoke is bolted to, the 2020 drop behind it up to the bay's roof, a gusset, and the printed foot screwed to the
+    roof's underside."""
+    sh, dr = BAY_SHELF, BAY_DROP
+    drop = V.BAY_ROOF_Z - BAY_SHELF_Z                       # 137.5 mm, shelf top to the roof
+    shelf = box(-sh["w"] / 2, sh["y0"], -sh["t"], sh["w"] / 2, sh["y0"] + sh["d"], 0.0).edges("|Z").fillet(4.0)
+    e = RIG["post"] / 2
+    post = box(-e, dr["y"] - e, 0.0, e, dr["y"] + e, drop - dr["foot_t"])
+    for ang in (0, 90, 180, 270):                           # its four T-slots
+        slot = box(-3.0, e - 1.8, -1, 3.0, e + 1, drop + 1).rotate((0, 0, 0), (0, 0, 1), ang).translate((0, dr["y"], 0))
+        post = post.cut(slot)
+    f = dr["foot"] / 2
+    foot = box(-f, dr["y"] - f, drop - dr["foot_t"], f, dr["y"] + f, drop).edges("|Z").fillet(5.0)
+    foot = foot.union(box(-e - 4.5, dr["y"] - e - 4.5, drop - dr["foot_t"] - 30.0, e + 4.5, dr["y"] + e + 4.5,
+                          drop - dr["foot_t"]).cut(box(-e - 0.25, dr["y"] - e - 0.25, drop - 60.0, e + 0.25,
+                                                       dr["y"] + e + 0.25, drop)))
+    gusset = cq.Workplane("YZ").polyline([(dr["y"] - e, 0.0), (dr["y"] - e - 24.0, 0.0), (dr["y"] - e, 34.0)]).close() \
+        .extrude(2.5, both=True)
+    return {"2020 drop": (post, "svc_alu"), "shelf": (shelf.union(gusset), "svc_petg"), "roof foot": (foot, "svc_petg")}
 
 
-def bay_at(x: float = 0.0) -> np.ndarray:
-    """The bay unit's rig frame, world: placed so that its pan axis stands on the saddle clamp's top (no post, no
-    block); use with h = 0."""
-    return I._T((x, BAY_CAM["y"] - PAN_AXIS[1], BAY_CAM["bar_z"] + 14.0 - PAN_AXIS[2]))
+def bay_mount(x: float = 0.0, unit: str = "back") -> np.ndarray:
+    """A bay unit's mount frame, world: its pan axis on the shelf's top, turned by its yaw (x shifts it to a Shuttle)."""
+    u = BAY_UNITS[unit]
+    return I._T((x + u["x"], u["y"], BAY_SHELF_Z)) @ I._R((0, 0, 1), u["yaw"])
 
 
-def add_bay_camera(sc, x=0.0) -> str:
-    """The overhead unit at the bay: its yoke on a saddle clamp on a 2020 bar across the back of the bay, over Kardex's
-    product envelope and under the tray stored over the opening; the head looks down and forward over the presented
-    tray. Returns the head's group."""
-    b = BAY_CAM
-    add_meshes(sc, "baycam", meshes_of("baybar", bay_parts, 0.5), "baycam")
-    sc.gmat["baycam"] = np.eye(4)
-    sc.gmat["baycamrig"] = bay_at(x)
-    for k in ("pan", "head"):
-        add_meshes(sc, f"baycamrig{k}", meshes_of(f"rig_{k}", lambda k=k: rig_pieces()[k], 0.3), f"baycamrig{k}")
-    sc.gmat["baycamrigpan"] = I._R((0, 0, 1), 0.0, PAN_AXIS)
-    sc.parent["baycamrigpan"] = "baycamrig"
-    sc.gmat["baycamrighead"] = I._R((1, 0, 0), b["tilt"], TILT_AXIS)
-    sc.parent["baycamrighead"] = "baycamrigpan"
-    return "baycamrighead"
+def bay_at(x: float = 0.0, unit: str = "back") -> np.ndarray:
+    """A bay unit's rig frame, world: placed so that its pan axis stands on the shelf's top (no post, no block); use
+    with h = 0."""
+    return bay_mount(x, unit) @ I._T((-PAN_AXIS[0], -PAN_AXIS[1], -PAN_AXIS[2]))
+
+
+def bay_groups(unit: str = "back", tag: str = "") -> dict:
+    """The scene groups of a bay unit: mount, rig, pan and head (round 12's names for the back unit of Shuttle 1)."""
+    p = "baycam" if unit == "back" else "baycamf"
+    return dict(mount=f"{p}{tag}", rig=f"{p}rig{tag}", pan=f"{p}rig{tag}pan", head=f"{p}rig{tag}head")
+
+
+def add_bay_camera(sc, x=0.0, tag: str = "") -> str:
+    """The bay's two overhead units (BAY_UNITS), each hung from the bay's roof on its drop and shelf, the head looking
+    down over the presented tray. x moves them to another Shuttle's bay, tag names their groups ('2' for Shuttle 2).
+    Returns the back unit's head group."""
+    for unit, u in BAY_UNITS.items():
+        g = bay_groups(unit, tag)
+        add_meshes(sc, g["mount"], meshes_of("baymount", bay_parts, 0.5), g["mount"])
+        sc.gmat[g["mount"]] = bay_mount(x, unit)
+        sc.gmat[g["rig"]] = bay_at(x, unit)
+        for k in ("pan", "head"):
+            add_meshes(sc, g[k], meshes_of(f"rig_{k}", lambda k=k: rig_pieces()[k], 0.3), g[k])
+        sc.gmat[g["pan"]] = I._R((0, 0, 1), 0.0, PAN_AXIS)
+        sc.parent[g["pan"]] = g["rig"]
+        sc.gmat[g["head"]] = I._R((1, 0, 0), u["tilt"], TILT_AXIS)
+        sc.parent[g["head"]] = g["pan"]
+    return bay_groups("back", tag)["head"]
 
 
 def add_docks(sc, positions) -> dict:
@@ -1527,18 +1585,18 @@ def movie_services(data, idata):
     # through the see-through cladding, where it was all but invisible. Now it gets its own shot from an operator's eyes
     # (movie_bay_camera's opening view), the cladding solid while it is shown, then see-through again.
     va0 = sc.view_angle
-    tgt = np.array(bay_cam_point())
-    cam_op = [tuple(CAM_S_EYE), tuple(tgt + (0, 0, -60)), (0, 0, 1)]
-    lbl_op = [("overhead camera: a Pi 5 with the HQ Camera (16 mm lens)\nand the Camera Module 3 Wide, on a pan-tilt "
-               "head", tuple(tgt), (0.96, 0.15)),
-              ("on a 2020 bar across\nthe back of the bay", (-700.0, BAY_CAM["y"], BAY_CAM["bar_z"]), (0.03, 0.50))]
-    sc.step(f"6/{n}", "And an overhead one at the back of the bay, seen from where an operator stands (the cladding "
-            "drawn solid for it): above Kardex's product envelope, under the tray stored over the opening, looking "
-            "down on the presented tray.", 1.6, L.skin(0.0), hold=1.8, cam_to=cam_op, view_angle_to=40.0,
-            labels=lbl_op, still=True)
-    sc.step(f"6/{n}", "And an overhead one at the back of the bay, seen from where an operator stands (the cladding "
-            "drawn solid for it): above Kardex's product envelope, under the tray stored over the opening, looking "
-            "down on the presented tray.", 0.8, L.skin(1.0), hold=0.4, view_angle_to=va0)
+    # round 13 (PR #318, 2026-11-20): the bay has a roof, and two units hang from it, not one on a bar
+    tb, tf = np.array(bay_cam_point("back")), np.array(bay_cam_point("front"))
+    cam_op = [tuple(CAM_S_EYE), tuple((tb + tf) / 2 + (0, 0, -140)), (0, 0, 1)]
+    lbl_op = [("back unit: a Pi 5, HQ Camera (16 mm lens) and\nCamera Module 3 Wide on a pan-tilt head",
+               tuple(tb), (0.96, 0.15)),
+              ("front unit, behind the header, looking back", tuple(tf), (0.40, 0.08)),
+              ("both hung from the bay's roof", (-700.0, (tb[1] + tf[1]) / 2, V.BAY_ROOF_Z), (0.03, 0.50))]
+    cap_op = ("And two overhead ones, seen from where an operator stands (the cladding drawn solid for them): hung "
+              "from the bay's roof over Kardex's product envelope, one at the back looking forward and down, one "
+              "behind the header looking back at the instruments' fronts.")
+    sc.step(f"6/{n}", cap_op, 1.6, L.skin(0.0), hold=2.0, cam_to=cam_op, view_angle_to=48.0, labels=lbl_op, still=True)
+    sc.step(f"6/{n}", cap_op, 0.8, L.skin(1.0), hold=0.4, view_angle_to=va0)
     return sc.save()
 
 
@@ -1829,12 +1887,15 @@ def _cam_scene_cls():
 
 
 def movie_bay_camera(data, idata):
+    """The bay's two overhead units, hung from its roof (round 13; rounds 7-12: one unit on a 2020 bar), seen from
+    where an operator stands, then what each one's Wide sees while the arm works on the presented tray. Round 12
+    showed one unit's Wide and then its HQ (Sterling, PR #318, 2026-11-20, at 6:42: "it's not worth showing both the
+    wide and the HQ"): now one picture per unit, the Wide's."""
     import animate as A
     import reach
     from scene import SIZE, T
-    sc, L, live = build_vlm("bay_camera", data, idata, "Vertical cloud lab: the overhead camera at the bay",
+    sc, L, live = build_vlm("bay_camera", data, idata, "Vertical cloud lab: the cameras over the bay",
                             robot=True, scene_cls=_cam_scene_cls())
-    L.skin(1.0)(1.0)
     k = "B"                                           # the doser's tray: the arm's busiest
     L.tray[k] = [V.Y_OPEN, V.Z_OPEN]
     L.where[k] = "open"
@@ -1842,30 +1903,28 @@ def movie_bay_camera(data, idata):
     set_dock(sc, "open", 0.0)
     set_dock(sc, HOME[k], 1.0)
     L.svc_lines = [(f"Tray {k}", "at the opening, docked"), ("Arm", "UR10e on a MiR250")]
+    L.skin(0.0)(1.0)                                  # the cladding solid while the operator looks up (round 11)
     L.apply_state()
     sc.cam = [(2500, -6600, 2500), (0, -900, 1350), (0, 0, 1)]
     rb = L.robot
-    b = BAY_CAM
-    opt = camera_optics(bay_at(), 0.0, 0.0, 0.0, b["tilt"])
     fov = camera_fov()
     zf = V.Z_OPEN + V.T_FLOOR
-    M = mats()
+    opt = {u: camera_optics(bay_at(0.0, u), 0.0, 0.0, 0.0, BAY_UNITS[u]["tilt"]) for u in BAY_UNITS}
+    view = {u: bay_view(unit=u)["wide"] for u in BAY_UNITS}
     fr = {}
-    for key, col in (("wide", (0.20, 0.45, 0.85)), ("hq", (0.95, 0.55, 0.10))):
-        c, f, r, u = opt[key]
-        half = (51.0, 33.5) if key == "wide" else (fov["hq_16mm"]["across"] / 2, fov["hq_16mm"]["up_down"] / 2)
-        sides, edges, P = frustum_meshes(c, f, r, u, half, zf)
-        sc.add(f"frustum {key}", sides, col, "frusta", opacity=0.16 if key == "wide" else 0.30, specular=0.0,
-               ambient=0.6)
-        sc.add(f"frustum {key} edges", edges, col, "frusta", ambient=0.6, specular=0.0)
-        fr[key] = P
+    for u, col in (("back", (0.20, 0.45, 0.85)), ("front", (0.95, 0.55, 0.10))):
+        c, f, r, uu = opt[u]["wide"]
+        sides, edges, P = frustum_meshes(c, f, r, uu, FOV_HALF["wide"], zf)
+        sc.add(f"frustum {u}", sides, col, "frusta", opacity=0.16, specular=0.0, ambient=0.6)
+        sc.add(f"frustum {u} edges", edges, col, "frusta", ambient=0.6, specular=0.0)
+        fr[u] = P
     hide(sc, ("frusta",), 0.0)
     # round 11 (audit-a): the pictures' pyramids are overlays, not solids; the collision checks skip them, as liquids
     sc.fluids = set(getattr(sc, "fluids", ())) | {nm for nm in sc.actors if sc.group_of[nm] == "frusta"}
-    rig = ("baycamrig", "baycamrigsl", "baycamrigpan", "baycamrighead")
+    rigs = {u: tuple(bay_groups(u).values()) for u in BAY_UNITS}
     # the arm's work (round 10, the multi-doser v5): from parked, over the vial rack, down to the vial, take it, up,
     # over the vessel shuttle's fork outside the doser's -y panel, down, set the vial on it upright, up and away (as
-    # animate.workflow's step 2). Round 8 took it level into the v2 doser's cup, which v5 doesn't have
+    # animate.workflow's step 2)
     seeds = [np.radians(q) for q in ((-90, -100, 120, -110, -90, 0), (-90, -60, 90, -120, -90, 0),
                                      (-60, -80, 100, -110, -90, 0), (-120, -80, 100, -110, -90, 0))]
     seats = reach.seats()
@@ -1878,92 +1937,104 @@ def movie_bay_camera(data, idata):
         if sol is None:
             raise RuntimeError(f"baycam: no IK for a pose at {np.round(Tw[:3, 3])}")
         qs.append(np.asarray(sol[0], float))
-    fork = L.carousel.fork_group
 
     def arm(i0, i1):
         """The arm along the joint waypoints qs[i0..i1], over the step."""
         path = qs[i0:i1 + 1]
 
         def up(u):
-            s = u * (len(path) - 1)
-            j = min(int(s), len(path) - 2)
-            rb.set(path[j] + (path[j + 1] - path[j]) * (s - j))
+            s_ = u * (len(path) - 1)
+            j = min(int(s_), len(path) - 2)
+            rb.set(path[j] + (path[j + 1] - path[j]) * (s_ - j))
         return up if len(path) > 1 else (lambda u: None)
     n = 4
-    eye = np.array([420.0, -2450.0, 1600.0])           # an operator's eyes, 1.6 m up, 0.9 m in front of the VLM's face
-    target = np.array(bay_cam_point())
-    cam_op = [tuple(eye), tuple(target + (0, 0, -60)), (0, 0, 1)]
-    lbl1 = [("overhead camera: Pi 5, HQ Camera with a 16 mm lens,\nCamera Module 3 Wide, on a pan-tilt head",
-             target, (0.62, 0.12)),
-            ("on a 2020 bar across the back of the bay", (-700.0, b["y"], b["bar_z"]), (0.20, 0.26))]
-    sc.step(f"1/{n}", "From where an operator stands, 0.9 m in front of the opening, eyes at 1.6 m: the bay's overhead "
-            "camera, up under the header at the back of the bay, looking down over the presented tray (here tray B, "
-            "the doser's).", 4.0, None, hold=2.6, cam_to=cam_op, view_angle_to=50.0, labels=lbl1)
+    eye = np.array(CAM_S_EYE)                         # an operator's eyes, 1.6 m up, 0.9 m in front of the VLM's face
+    back, front = np.array(bay_cam_point("back")), np.array(bay_cam_point("front"))
+    cam_op = [tuple(eye), tuple((back + front) / 2 + (0, 0, 10)), (0, 0, 1)]
+    roof_pt = (-700.0, (BAY_UNITS["back"]["y"] + BAY_UNITS["front"]["y"]) / 2, V.BAY_ROOF_Z)
+    lbl1 = [("back unit: ceiling, middle back,\nlooking forward over the tray", tuple(back), (0.66, 0.16)),
+            ("front unit: ceiling, middle front,\nlooking back at the instruments' fronts", tuple(front), (0.34, 0.10)),
+            ("the bay's roof", roof_pt, (0.14, 0.30))]
+    sc.step(f"1/{n}", "From where an operator stands, 0.9 m in front of the opening, eyes at 1.6 m: the bay has a roof, "
+            "and two stream cameras hang from it on short drops, one at the back looking forward, one behind the "
+            "header looking back. Each is a Pi 5 with an HQ Camera and a Camera Module 3 Wide on a pan-tilt head.",
+            4.2, None, hold=2.8, cam_to=cam_op, view_angle_to=40.0, labels=lbl1)
 
     def show_fr(u):
+        L.skin(1.0)(u)
         hide(sc, ("frusta",), u)
         arm(0, 1)(u)
-    lbl2 = [(f"Wide: {fov['wide']['across']:.0f} x {fov['wide']['up_down']:.0f} deg", tuple(fr["wide"][2]),
-             (0.10, 0.60)),
-            (f"HQ, 16 mm lens: {fov['hq_16mm']['across']:.1f} x {fov['hq_16mm']['up_down']:.1f} deg",
-             tuple((fr["hq"][1] + fr["hq"][2]) / 2), (0.86, 0.66))]
-    sc.step(f"2/{n}", f"What it covers: the Camera Module 3 Wide (blue) sees {fov['wide']['across']:.0f} x "
-            f"{fov['wide']['up_down']:.0f} degrees, the whole tray; the HQ Camera with the 16 mm lens (orange) "
-            f"{fov['hq_16mm']['across']:.1f} x {fov['hq_16mm']['up_down']:.1f} degrees, a patch about a tenth of it, "
-            "for detail.", 3.0, show_fr, hold=2.6, labels=lbl2)
-    # ---- through its own lenses
-    c, f, r, u = opt["wide"]
+    lbl2 = [(f"back unit's Wide: {view['back']['share_of_tray'] * 100:.0f} % of the tray", tuple(fr["back"][3]),
+             (0.12, 0.62)),
+            (f"front unit's Wide: {view['front']['share_of_tray'] * 100:.0f} % of the tray", tuple(fr["front"][1]),
+             (0.84, 0.30))]
+    sc.step(f"2/{n}", f"What each Wide covers, {fov['wide']['across']:.0f} x {fov['wide']['up_down']:.0f} degrees: the "
+            f"back one (blue) {view['back']['share_of_tray'] * 100:.0f} % of the tray's floor and the arm coming in, "
+            f"the front one (orange) {view['front']['share_of_tray'] * 100:.0f} %, the instruments' fronts where the "
+            "arm works. The top of the back one's picture looks out into the room, so its stream gets a privacy mask "
+            "there; the front one sees none of it.", 3.4, show_fr, hold=2.8,
+            cam_to=[(3300, -4300, 3200), (0, -1000, 1150), (0, 0, 1)], view_angle_to=34.0, labels=lbl2)
     va_wide = 2 * math.degrees(math.atan(math.tan(math.radians(51.0)) * SIZE[1] / SIZE[0]))
-    cam_wide = [tuple(c), tuple(c + f * 1000.0), tuple(u)]
+    mask = (1.0 - math.tan(math.radians(33.5)) / math.tan(math.radians(va_wide / 2))) / 2
 
-    def into_wide(s):
-        hide(sc, ("frusta",), 1.0 - min(1.0, 2 * s))
-        hide(sc, rig, 1.0 - min(1.0, max(0.0, (s - 0.6) / 0.3)))
-        sc.mask_y = (1.0 - math.tan(math.radians(33.5)) / math.tan(math.radians(va_wide / 2))) / 2 * \
-            max(0.0, (s - 0.85) / 0.15)
-    sc.step(f"3/{n}", "Into the camera.", 2.2, into_wide, hold=0.0, cam_to=cam_wide, view_angle_to=va_wide)
-    L.svc_lines = [("Camera", "Camera Module 3 Wide"), ("Picture", "102 x 67 deg, 16:9"), ("Arm", "to the vial rack")]
+    def into(u_name, frusta=True):
+        c, f, r, uu = opt[u_name]["wide"]
+        up_img = np.array((0.0, 0.0, 1.0)) - f * f[2]   # the picture's up: the world's up, as the Pi would turn it
+        up_img = up_img / np.linalg.norm(up_img)
+        cam = [tuple(c), tuple(c + f * 1000.0), tuple(up_img)]
+
+        def go(s_):
+            if frusta:
+                hide(sc, ("frusta",), 1.0 - min(1.0, 2 * s_))
+            for nm in rigs[u_name]:
+                hide(sc, (nm,), 1.0 - min(1.0, max(0.0, (s_ - 0.6) / 0.3)))
+            sc.mask_y = mask * max(0.0, (s_ - 0.85) / 0.15)
+        return cam, go
+
+    def leave(u_name):
+        def go(s_):
+            sc.mask_y = mask * (1.0 - s_)
+            for nm in rigs[u_name]:
+                hide(sc, (nm,), s_)
+        return go
+    # ---- the back unit's Wide
+    cam_b, into_b = into("back")
+    sc.step(f"3/{n}", "Into the back unit's Wide.", 2.2, into_b, hold=0.0, cam_to=cam_b, view_angle_to=va_wide)
+    L.svc_lines = [("Camera", "back unit, Camera Module 3 Wide"), ("Picture", "102 x 67 deg, 16:9"),
+                   ("Arm", "to the vial rack")]
     L.gauges()
-    capw = ("What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own "
-            "position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).")
-    sc.step(f"3/{n}", capw, 1.8, arm(1, 2), hold=0.1)
-    sc.step(f"3/{n}", capw, 0.5, rb.grip_to(A.GRIP_VIAL), hold=0.1)
+    capb = (f"What the back unit's Wide sees: the whole presented tray from behind, {view['back']['share_of_tray'] * 100:.0f}"
+            " % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees "
+            "across (Raspberry Pi's figures: 102 x 67, 120 diagonal).")
+    sc.step(f"3/{n}", capb, 1.8, arm(1, 2), hold=0.1)
+    sc.step(f"3/{n}", capb, 0.5, rb.grip_to(A.GRIP_VIAL), hold=0.1)
     rb.grasp("vial")
     L.svc_lines[2] = ("Arm", "vial: rack to the doser's shuttle")
     L.gauges()
-    sc.step(f"3/{n}", capw, 1.0, arm(2, 3), hold=0.0)
-    sc.step(f"3/{n}", capw, 2.4, arm(3, 4), hold=0.6, still=True)
-    # the head turns on its pan and tilt joints to put the HQ on the shuttle's fork, where the gripper sets the vial
-    at = bay_at()
-    _, pan_c, tilt_c = rig_pose(float(at[0, 3]), float(at[1, 3]), tuple(cup[:3, 3] + (0, 0, -40.0)), h=0.0,
-                                z0=float(at[2, 3]), post=0.0)
-    c, f, r, u = camera_optics(at, 0.0, 0.0, pan_c, tilt_c)["hq"]
-    hq = fov["hq_16mm"]
-    cam_hq = [tuple(c), tuple(c + f * 1000.0), tuple(u)]
-    va_hq = hq["up_down"]
-    mx = (1.0 - math.tan(math.radians(hq["across"] / 2)) /
-          (math.tan(math.radians(va_hq / 2)) * SIZE[0] / SIZE[1])) / 2
+    sc.step(f"3/{n}", capb, 1.0, arm(2, 3), hold=0.0)
+    sc.step(f"3/{n}", capb, 2.0, arm(3, 4), hold=0.4, still=True)
+    # ---- the front unit's Wide
+    cam_f, into_f = into("front", frusta=False)
 
-    def to_hq(s):
-        sc.mask_y = 0.0
-        sc.mask_x = mx * s
-        sc.gmat["baycamrigpan"] = I._R((0, 0, 1), pan_c * s, PAN_AXIS)
-        sc.gmat["baycamrighead"] = I._R((1, 0, 0), b["tilt"] + (tilt_c - b["tilt"]) * s, TILT_AXIS)
-    L.svc_lines = [("Camera", "HQ Camera, 16 mm lens"), ("Picture", f"{hq['across']:.1f} x {hq['up_down']:.1f} deg, "
-                                                                     "4:3"), ("Arm", "at the doser's shuttle")]
+    def swap(s_):
+        leave("back")(min(1.0, 2 * s_))
+        into_f(max(0.0, 2 * s_ - 1.0))
+    sc.step(f"4/{n}", "Now the front unit's Wide, from behind the header.", 2.4, swap, hold=0.0, cam_to=cam_f,
+            view_angle_to=va_wide)
+    L.svc_lines = [("Camera", "front unit, Camera Module 3 Wide"), ("Picture", "102 x 67 deg, 16:9"),
+                   ("Arm", "at the doser's shuttle")]
     L.gauges()
-    caph = (f"What the HQ Camera sees through the 16 mm lens, {hq['across']:.1f} x {hq['up_down']:.1f} degrees (its "
-            f"sensor is {hq['sensor_mm'][0]} x {hq['sensor_mm'][1]} mm: 2 atan(6.29 / 32) across), with the head "
-            f"turned {abs(pan_c):.0f} degrees and tilted {tilt_c:.0f} down onto the multi-doser's vessel shuttle: a 4:3 "
-            "close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.")
-    sc.step(f"4/{n}", caph, 1.4, to_hq, hold=0.2, cam_to=cam_hq, view_angle_to=va_hq)
-    sc.step(f"4/{n}", caph, 1.8, arm(4, 5), hold=0.1)
-    sc.step(f"4/{n}", caph, 0.5, rb.grip_to(0.0), hold=0.1)
-    rb.release(fork)
+    capf = (f"What the front unit's Wide sees, looking back: the instruments' fronts and the gripper standing the vial "
+            f"on the doser's shuttle fork, outside the port in its panel; {view['front']['share_of_tray'] * 100:.0f} % of "
+            "the tray's floor and none of the room. The wrist's own camera (a RealSense D405) sees the last few "
+            "centimetres.")
+    sc.step(f"4/{n}", capf, 1.8, arm(4, 5), hold=0.1)
+    sc.step(f"4/{n}", capf, 0.5, rb.grip_to(0.0), hold=0.1)
+    rb.release(L.carousel.fork_group)
     L.svc_lines[2] = ("Arm", "vial on the shuttle's fork")
     L.gauges()
-    sc.step(f"4/{n}", caph, 1.2, arm(5, 6), hold=0.3)
-    sc.step(f"4/{n}", caph, 2.6, arm(6, 7), hold=1.6)
+    sc.step(f"4/{n}", capf, 1.2, arm(5, 6), hold=0.3)
+    sc.step(f"4/{n}", capf, 2.6, arm(6, 7), hold=1.6, still=True)
     return sc.save()
 
 
@@ -2294,13 +2365,32 @@ def _world_points(at, post, h, pan, tilt, post_h=POST_H, foot=True) -> dict:
     return {k: (p @ ms[k].T)[:, :3] for k, p in _rig_points(post_h, foot).items()}
 
 
-def bay_points() -> np.ndarray:
-    """Every point of the bay unit, its clamp and bar, world."""
-    from scene import T
-    b = BAY_CAM
-    pts = {k: v for k, v in _world_points(bay_at(), 0.0, 0.0, 0.0, b["tilt"]).items() if k in ("pan", "head")}
-    bar = np.vstack([m.points for m in meshes_of("baybar", bay_parts, 0.5).values() if m.n_points])
-    return np.vstack([*pts.values(), bar])
+def bay_points(unit: str = "back") -> np.ndarray:
+    """Every point of a bay unit (its yoke, head and mount: shelf, drop and roof foot), world, Shuttle 1."""
+    u = BAY_UNITS[unit]
+    pts = {k: v for k, v in _world_points(bay_at(0.0, unit), 0.0, 0.0, 0.0, u["tilt"]).items() if k in ("pan", "head")}
+    M = bay_mount(0.0, unit)
+    mnt = np.vstack([m.points for m in meshes_of("baymount", bay_parts, 0.5).values() if m.n_points])
+    mnt = (np.c_[mnt, np.ones(len(mnt))] @ M.T)[:, :3]
+    return np.vstack([*pts.values(), mnt])
+
+
+def bay_mount_check() -> dict:
+    """Each bay unit against the bay: its lowest point over the product envelope's top (the tray presented: tray floor
+    + MAX_GOODS_H + GOODS_CLEAR), its highest under the roof, and its x and y inside the bay's walls, the header's inner
+    face and the shutter."""
+    top_env = V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR
+    out = {}
+    for unit in BAY_UNITS:
+        P = bay_points(unit)
+        lo, hi = P.min(0), P.max(0)
+        out[unit] = dict(lowest_mm=round(float(lo[2]), 1), over_envelope_mm=round(float(lo[2] - top_env), 1),
+                         highest_mm=round(float(hi[2]), 1), roof_mm=V.BAY_ROOF_Z,
+                         x_mm=[round(float(lo[0])), round(float(hi[0]))], y_mm=[round(float(lo[1])), round(float(hi[1]))],
+                         to_shutter_mm=round(float(V.Y_SHUTTER - 6.0 - hi[1]), 1),
+                         to_side_walls_mm=round(float(V.OPEN_W / 2 - max(abs(lo[0]), abs(hi[0]))), 1),
+                         **{k: BAY_UNITS[unit][k] for k in ("x", "y", "yaw", "tilt", "where")})
+    return out
 
 
 def camera_optics(at, post, h, pan, tilt) -> dict:
@@ -2317,33 +2407,34 @@ def camera_optics(at, post, h, pan, tilt) -> dict:
     return out
 
 
-def bay_view(step=25.0) -> dict:
-    """What the bay unit sees of the presented tray's floor: the share of a 25 mm grid inside each camera's picture
+def bay_view(step=25.0, unit: str = "back") -> dict:
+    """What a bay unit sees of the presented tray's floor: the share of a 25 mm grid inside each camera's picture
     (rectilinear, the published angles: Wide 102 x 67, HQ with the 16 mm lens 22.2 x 16.7 degrees), where the Wide's
-    axis meets the floor, and what it misses."""
-    from scene import T
-    b = BAY_CAM
-    opt = camera_optics(bay_at(), 0.0, 0.0, 0.0, b["tilt"])
+    axis meets the floor, what it misses, and the share of its picture that looks out into the room (out_of_bay)."""
+    u = BAY_UNITS[unit]
+    opt = camera_optics(bay_at(0.0, unit), 0.0, 0.0, 0.0, u["tilt"])
     z = V.Z_OPEN + V.T_FLOOR
     xs = np.arange(-V.TRAY_W / 2, V.TRAY_W / 2 + 1, step)
     ys = np.arange(V.Y_OPEN - V.TRAY_D / 2, V.Y_OPEN + V.TRAY_D / 2 + 1, step)
     P = np.array([(x, y, z) for x in xs for y in ys])
     out = {}
     for k, (hw, hv) in (("wide", (51.0, 33.5)), ("hq", (11.1, 8.35))):
-        c, f, r, u = opt[k]
+        c, f, r, uu = opt[k]
         d = P - c
         fw = d @ f
         ok = (fw > 0) & (np.abs(d @ r) <= fw * math.tan(math.radians(hw))) & \
-             (np.abs(d @ u) <= fw * math.tan(math.radians(hv)))
+             (np.abs(d @ uu) <= fw * math.tan(math.radians(hv)))
         t = (z - c[2]) / f[2]
         hit = c + f * t
         miss = P[~ok]
-        out[k] = dict(share_of_tray=round(float(ok.mean()), 3), axis_hits_y=round(float(hit[1])),
-                      axis_hits_from_tray_centre_mm=round(float(hit[1] - V.Y_OPEN)),
+        out[k] = dict(share_of_tray=round(float(ok.mean()), 3), axis_hits=[round(float(hit[0])), round(float(hit[1]))],
+                      axis_hits_from_tray_centre_mm=[round(float(hit[0])), round(float(hit[1] - V.Y_OPEN))],
                       distance_mm=round(float(t)), lens_at=[round(float(v)) for v in c],
+                      sees_room=round(float(out_of_bay(c, frustum_rays(f, r, uu, (hw, hv))).mean()), 3),
                       missed_y_range=None if not len(miss) else [round(float(miss[:, 1].min())),
                                                                  round(float(miss[:, 1].max()))])
     out["tray_y_range"] = [V.Y_OPEN - V.TRAY_D / 2, V.Y_OPEN + V.TRAY_D / 2]
+    out.update({k: u[k] for k in ("where", "yaw", "tilt")})
     return out
 
 
@@ -2419,15 +2510,15 @@ def _seg_dist(P, a, b):
     return np.linalg.norm(P - (a + t[:, None] * ab), axis=1)
 
 
-def bay_arm_clearance(radius=75.0) -> dict:
+def bay_arm_clearance(radius=75.0, unit: str = "back") -> dict:
     """The UR10e on its MiR250 at the opening (reach.py's poses: the workflow's seats, and every reachable point of
-    the presented tray on a 50 mm grid, gripper down, 100 and 250 mm over its floor) against the bay unit, its post
-    and its bar: the arm as capsules of `radius` round its links from the shoulder to the TCP (the UR10e's tubes are
+    the presented tray on a 100 mm grid, gripper down, 100 and 250 mm over its floor) against a bay unit and its
+    mount: the arm as capsules of `radius` round its links from the shoulder to the TCP (the UR10e's tubes are
     about 90 mm across, its joints about 150, the 2F-85 about 150 wide), so this is conservative."""
     import animate as A
     import reach
     import ur_arm
-    P = bay_points()
+    P = bay_points(unit)
     seeds = [np.radians(q) for q in ((-90, -100, 120, -110, -90, 0), (-90, -60, 90, -120, -90, 0),
                                      (-60, -80, 100, -110, -90, 0), (-120, -80, 100, -110, -90, 0),
                                      (-90, -120, 60, -30, 90, 0), (-90, -45, 45, -90, -90, 0))]
@@ -2581,15 +2672,9 @@ def camera_clearances() -> dict:
             top = max(float(p[:, 2].max()) for p in pts.values()) - V.T_FLOOR
             tops[f"{k}{i}"] = dict(top_over_floor_mm=round(top, 1), post_yaw_deg=round(post), pan_deg=round(pan, 1),
                                    tilt_down_deg=round(tilt, 1))
-    P = bay_points()
     env = V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR
-    f1 = V.SLOTS["F1"][1]
     r = head_reach()
-    return dict(tray_units=tops, limit_mm=V.MAX_GOODS_H, bay_lowest_mm=round(float(P[:, 2].min()), 1),
-                envelope_top_mm=env, bay_margin_mm=round(float(P[:, 2].min()) - env, 1),
-                bay_highest_mm=round(float(P[:, 2].max()), 1), tray_F1_underside_mm=f1,
-                bay_margin_to_F1_mm=round(f1 - float(P[:, 2].max()), 1),
-                bay_to_shutter_mm=round(V.Y_SHUTTER - float(P[:, 1].max()), 1),
+    return dict(tray_units=tops, limit_mm=V.MAX_GOODS_H, envelope_top_mm=env, bay_units=bay_mount_check(),
                 tray_units_to_instruments=tray_unit_gaps(),
                 head=dict(rises_over_tilt_axis_mm=r["up"], reaches_below_mm=-r["down"],
                           gap_to_yoke_base_at_max_tilt_mm=r["gap_to_base"], tilt_max_deg=TILT_MAX))
@@ -2882,13 +2967,18 @@ def write_json():
                                            tilt=f"head between the yoke's arms, two thumb knobs, 15 deg up to "
                                                 f"{TILT_MAX:.0f} down")),
                      clearances=camera_clearances(),
-                     bay_camera=dict(bar_y=BAY_CAM["y"], bar_z=BAY_CAM["bar_z"], tilt_axis_y=BAY_CAM["pivot_y"],
-                                     tilt_axis_z=BAY_CAM["pivot_z"], tilt_deg=BAY_CAM["tilt"],
-                                     arm=bay_arm_clearance()),
+                     bay_cameras={u: dict(where=BAY_UNITS[u]["where"], pan_axis_xy=[BAY_UNITS[u]["x"],
+                                                                                      BAY_UNITS[u]["y"]],
+                                          shelf_top_z=BAY_SHELF_Z, roof_z=V.BAY_ROOF_Z, yaw_deg=BAY_UNITS[u]["yaw"],
+                                          tilt_deg=BAY_UNITS[u]["tilt"], tilt_axis=[round(v) for v in bay_cam_point(u)],
+                                          mount="hung from the bay's roof: a 2020 drop with a printed shelf at its "
+                                                "foot, the yoke on the shelf (round 13; rounds 7-12: a 2020 bar across "
+                                                "the back of the bay)", arm=bay_arm_clearance(unit=u))
+                                  for u in BAY_UNITS},
                      fov=dict(wide="102 x 67 deg (Camera Module 3 Wide)",
                               hq_16mm="22.2 x 16.7 deg: Raspberry Pi's figure for its 16 mm C-mount lens on the HQ "
                                       "Camera (robot-arms lenses.py)"),
-                     bay_view=bay_view(),
+                     bay_view={u: bay_view(unit=u) for u in BAY_UNITS},
                      views=dict(method="the tray presented, the share of each camera's rectilinear picture (Wide 102 x "
                                        "67 deg, HQ with the 16 mm lens 22.2 x 16.7 deg) whose rays leave through the "
                                        "opening into the room before they meet the tray's floor; nothing else counts "

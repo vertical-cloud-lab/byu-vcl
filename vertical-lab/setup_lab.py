@@ -87,8 +87,11 @@ def _items() -> dict:
     out["J"] = [("storage", STORAGE_X, 0.0, 0.0)]               # centred on the tray (round 11: no UPS, no dock)
     # the Keyence VHX is 624 mm deep as modelled: tray C has no room for it between its camera posts and the UPS, so it
     # went to K, beside the glovebox, in front of the UPS
-    out["K"] = [("glovebox_tray", -460.0, 7.0, 0.0), ("vhx", 570.0, -50.0, 0.0)]
-    out["L"] = [("tensile_h", -23.5, None, 0.0), ("hardness", -944.0, 11.0, 0.0)]      # the tester in front of the UPS
+    # round 13 (fit's clearance check, CLEAR_MM): the VHX stood 7 mm from tray K's UPS, solid to solid, and the
+    # zwickiLine 3 mm from tray L's and 9.7 mm from the HM-220; the VHX moves 5 mm forward (y -50 -> -55), the
+    # zwickiLine 10 mm forward (its front 20 mm behind the lip, not 30) and 5 mm right: 12, 13 and 14.7 mm
+    out["K"] = [("glovebox_tray", -460.0, 7.0, 0.0), ("vhx", 570.0, -55.0, 0.0)]
+    out["L"] = [("tensile_h", -18.5, -81.0, 0.0), ("hardness", -944.0, 11.0, 0.0)]      # the tester in front of the UPS
     out["M"] = [("xrf", -875.0, None, 0.0), ("fumehood_tray", -13.0, None, 0.0), ("cnc", 819.0, None, 0.0)]
     # round 8 (PR #318: "It's also not really clear why we'd want both v7's and delta stages"): the OpenFlexure array
     # leaves tray D; the Keyence VHX does its imaging (notes/lab_r8.md)
@@ -1038,22 +1041,12 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
 
 
 def add_bay_cams(sc: Scene) -> list[str]:
-    """The overhead camera over each Shuttle's bay (services.py's, and a copy at X2). -> their actor names."""
+    """The overhead cameras over each Shuttle's bay (services.py's two units, hung from the bay's roof since round 13,
+    and a copy of both at X2). -> their actor names."""
     import services as S
     S.add_bay_camera(sc)
-    S.add_meshes(sc, "baycam2", S.meshes_of("baybar", S.bay_parts, 0.5), "baycam2")
-    sc.gmat["baycam2"] = T((X2, 0, 0))
-    # the second unit as services.add_bay_camera builds the first (on its bar, no post), over Shuttle 2's bay. Round 7's
-    # copy still called _add_rig with the post-mounted unit's BAY_CAM["h"], which services.py no longer has
-    sc.gmat["baycamrig2"] = S.bay_at(X2)
-    for k in ("pan", "head"):
-        S.add_meshes(sc, f"baycamrig2{k}", S.meshes_of(f"rig_{k}", lambda k=k: S.rig_pieces()[k], 0.3),
-                     f"baycamrig2{k}")
-    sc.gmat["baycamrig2pan"] = S.I._R((0, 0, 1), 0.0, S.PAN_AXIS)
-    sc.parent["baycamrig2pan"] = "baycamrig2"
-    sc.gmat["baycamrig2head"] = S.I._R((1, 0, 0), S.BAY_CAM["tilt"], S.TILT_AXIS)
-    sc.parent["baycamrig2head"] = "baycamrig2pan"
-    return [nm for nm in sc.actors if sc.group_of[nm].startswith(("baycam", "baycamrig"))]
+    S.add_bay_camera(sc, x=X2, tag="2")
+    return [nm for nm in sc.actors if sc.group_of[nm].startswith(("baycam", "baycamf"))]
 
 
 def W_unit(sc, i):
@@ -1396,7 +1389,8 @@ def movie(data, idata):
     L.apply_state()
     for nm in cam_names:
         sc.alpha[nm] = 0.0
-    u2_cam = [nm for nm in cam_names if sc.group_of[nm].startswith(("baycam2", "baycamrig2"))]
+    u2_cam = [nm for nm in cam_names if sc.group_of[nm] in {g for u in services.BAY_UNITS
+                                                             for g in services.bay_groups(u, "2").values()}]
     by_unit = {2: u2_cam, 1: [nm for nm in cam_names if nm not in set(u2_cam)]}
     va0 = sc.view_angle
 
@@ -1409,30 +1403,32 @@ def movie(data, idata):
         return up
     for i, unit in enumerate((2, 1)):
         x = V.SHUTTLE_X[unit]
-        tgt = np.array([x, *services.bay_cam_point()[1:]])
+        tb = np.array(services.bay_cam_point("back", x))
+        tf = np.array(services.bay_cam_point("front", x))
+        tgt = (tb + tf) / 2
         side = 1.0 if i == 0 else -1.0          # the operator right of the middle at the first, left at the second
-        view = [(x + side * BAY_EYE[0], BAY_EYE[1], BAY_EYE[2]), tuple(tgt + (0, 0, -60)), (0, 0, 1)]
-        lbl = [(f"Shuttle {unit}'s overhead camera: a Pi 5 with the HQ Camera (16 mm lens)\nand the Camera "
-                "Module 3 Wide, on a pan-tilt head", tuple(tgt), (0.96, 0.15)),
-               ("on a 2020 bar across the back of the bay,\nunder the tray stored over the opening",
-                (x - side * 700.0, services.BAY_CAM["y"], services.BAY_CAM["bar_z"]),
+        view = [(x + side * BAY_EYE[0], BAY_EYE[1], BAY_EYE[2]), tuple(tgt + (0, 0, -140)), (0, 0, 1)]
+        lbl = [(f"Shuttle {unit}'s back unit: a Pi 5, HQ Camera (16 mm lens)\nand Camera Module 3 Wide, on a "
+                "pan-tilt head", tuple(tb), (0.96, 0.15)),
+               ("its front unit, looking back", tuple(tf), (0.50, 0.08) if side > 0 else (0.50, 0.08)),
+               ("both hung from the bay's roof", (x - side * 700.0, tgt[1], V.BAY_ROOF_Z),
                 (0.03, 0.62) if side > 0 else (0.97, 0.62))]
         if i == 0:
-            cap = (f"The bay cameras go on, one over each opening: Shuttle {unit}'s first, seen from where an operator "
-                   "stands, eyes at 1.6 m (the cladding drawn solid for it). It sits up under the header at the back "
-                   "of the bay and looks down over the presented tray.")
-            sc.step(f"8/{n}", cap, 1.2, A.both(L.skin(0.0), cams_on(unit, tables=True)), hold=0.9, cam_to=view,
+            cap = (f"The bay cameras go on, two in each bay: Shuttle {unit}'s first, seen from where an operator "
+                   "stands, eyes at 1.6 m (the cladding drawn solid for them). They hang from the bay's roof, one at "
+                   "the back looking forward over the presented tray, one behind the header looking back at it.")
+            sc.step(f"8/{n}", cap, 1.2, A.both(L.skin(0.0), cams_on(unit, tables=True)), hold=1.1, cam_to=view,
                     labels=lbl, view_angle_to=BAY_VIEW_ANGLE)
         else:
-            cap = (f"Then Shuttle {unit}'s: the same unit on the same bar. Together with the D405 on the arm's wrist, "
-                   "it sees what is on every tray the Shuttle presents.")
+            cap = (f"Then Shuttle {unit}'s: the same two. With the D405 on the arm's wrist, they see what is on every "
+                   "tray the Shuttle presents.")
             sc.step(f"8/{n}", cap, 1.1, cams_on(unit), hold=0.9, cam_to=view, labels=lbl)
     pas = ", ".join(sorted(PASSIVE)[:-1]) + f" and {sorted(PASSIVE)[-1]}" if len(PASSIVE) > 1 else "".join(PASSIVE)
     sc.step(f"8/{n}", f"Every tray with instruments carries its own stream cameras; the storage trays ({pas}) carry "
             "none: the bay camera takes their stock whenever one is presented, the only time a jar or a sample can "
             "come or go.", 0.9, L.skin(1.0), hold=0.4, cam_to=CAM_VLM, view_angle_to=va0,
-            labels=W.auto(sc, CAM_VLM, [("overhead camera at the bay", services.bay_cam_point()),
-                                        ("overhead camera at the bay", (X2, *services.bay_cam_point()[1:]))]))
+            labels=W.auto(sc, CAM_VLM, [("overhead cameras at the bay", services.bay_cam_point("back")),
+                                        ("overhead cameras at the bay", services.bay_cam_point("back", X2))]))
     # ------------------------------------------------------------------ 9. orbit
     L.apply_state()
     cap = (f"Set up: two Shuttles with trays A-{max(trays)}, the floor machines, two MiR250 + UR10e units on charge.")
@@ -1444,9 +1440,8 @@ def movie(data, idata):
 
 
 # ================================================================================================ the checks
-def _fcl_of(sc: Scene, names, Mi):
-    """One FCL mesh of the visible actors `names`, in the frame Mi maps to (the tray's)."""
-    import fcl
+def _tri_of(sc: Scene, names, Mi):
+    """(points (n, 3), faces (m, 3)) of the visible actors `names`, in the frame Mi maps to (the tray's), or None."""
     vs, fs, off = [], [], 0
     for n in names:
         a = sc.actors.get(n)
@@ -1469,17 +1464,62 @@ def _fcl_of(sc: Scene, names, Mi):
         off += len(p)
     if not vs:
         return None
+    return np.vstack(vs), np.vstack(fs)
+
+
+def _fcl_obj(tri):
+    """An FCL collision object of a (points, faces) mesh, or None."""
+    import fcl
+    if tri is None:
+        return None
+    v, f = tri
     bvh = fcl.BVHModel()
-    v, f = np.vstack(vs), np.vstack(fs)
     bvh.beginModel(len(v), len(f))
     bvh.addSubModel(v, f)
     bvh.endModel()
     return fcl.CollisionObject(bvh, fcl.Transform())
 
 
+def _fcl_of(sc: Scene, names, Mi):
+    """One FCL mesh of the visible actors `names`, in the frame Mi maps to (the tray's)."""
+    return _fcl_obj(_tri_of(sc, names, Mi))
+
+
+# Round 13 (Sterling, PR #318, 2026-11-20, of the tray plan at 2:50 in round 12's video: "the overhead planning layouts
+# (2D) ... show overlap between certain modules and the UPS"). Until round 12 the plan drew every part as its bounding
+# box, the dock plate and the tray's lines as one box (x 550-1219, y 190-420 on every powered tray) over the UPS, and
+# `fit` failed a pair only when the boxes overlapped *and* FCL found the solids touching. So the drawing showed boxes
+# lapping over the OT-2, the Mastersizer, the VHX, the LumenPnP and the zwickiLine where the solids were in fact
+# apart, and a pair 1 mm apart passed as "fits". Now: the plan draws each part's own footprint (its triangles
+# projected onto the tray), the plate and the lines are two parts, and two things on a tray must stand CLEAR_MM apart,
+# solid to solid (FCL's distance), or CLEAR_LINES_MM from the lines and the plate on the back rim.
+CLEAR_MM = 10.0                # the least gap between two things on a tray: placing them by hand from a lift table
+CLEAR_LINES_MM = 5.0           # from the tray's own lines and its dock plate, which lie on the back rim and the side
+BY_DESIGN = {frozenset(("ups", "plate")), frozenset(("ups", "lines")), frozenset(("plate", "lines"))}   # they join
+PLAN_GRID = 4.0                # mm per pixel of the footprints
+PLAN_MASKS: dict = {}          # tray -> [(label, kind, mask)], for draw_plan
+
+
+def _footprint(tri, x0, y0, nx, ny, res=PLAN_GRID):
+    """A boolean mask (ny, nx) of a mesh's footprint on the tray: its triangles projected onto z = 0, rasterized."""
+    from PIL import Image, ImageDraw
+    img = Image.new("L", (nx, ny), 0)
+    if tri is None:
+        return np.zeros((ny, nx), bool)
+    v, f = tri
+    p = (v[:, :2] - (x0, y0)) / res
+    a, b, c = p[f[:, 0]], p[f[:, 1]], p[f[:, 2]]
+    area = np.abs((b[:, 0] - a[:, 0]) * (c[:, 1] - a[:, 1]) - (c[:, 0] - a[:, 0]) * (b[:, 1] - a[:, 1])) / 2
+    d = ImageDraw.Draw(img)
+    for i in np.nonzero(area > 0.02)[0]:
+        d.polygon([tuple(a[i]), tuple(b[i]), tuple(c[i])], fill=1)
+    return np.asarray(img, bool)
+
+
 def tray_parts(sc: Scene, items: dict, k: str) -> list:
-    """[(label, kind, (x0, x1, y0, y1, z0, z1))] on tray k, in the tray's frame: its items, its UPS, its dock plate and
-    tray lines, and each camera rig in two parts (the post on its foot, and the head with its yoke)."""
+    """[(label, kind, (x0, x1, y0, y1, z0, z1), names)] on tray k, in the tray's frame: its items, its UPS, its dock
+    plate, the tray's lines (round 13: two parts, not one box), and each camera rig in two parts (the post on its foot,
+    and the head with its yoke)."""
     Mi = np.linalg.inv(sc.world(f"tray_{k}"))
     out = []
     for key, g, names, nm in items.get(k, []):
@@ -1489,62 +1529,93 @@ def tray_parts(sc: Scene, items: dict, k: str) -> list:
             out.append((f"{g} post", "cam", _bounds_of(sc, post, Mi), post))
             out.append((f"{g} head", "cam", _bounds_of(sc, head, Mi), head))
             continue
-        out.append((nm if key != "ups" else "UPS", "ups" if key == "ups" else "item", _bounds_of(sc, names, Mi), names))
-    plate = [n for n in sc.actors if n.startswith((f"plate_{k}/", f"lines_{k}/"))]
-    out.append(("dock plate and tray lines", "plate", _bounds_of(sc, plate, Mi), plate))
+        kind = {"ups": "ups", "airgradient": "monitor"}.get(key, "item")
+        out.append((nm if key != "ups" else "UPS", kind, _bounds_of(sc, names, Mi), names))
+    plate = [n for n in sc.actors if n.startswith(f"plate_{k}/")]
+    lines = [n for n in sc.actors if n.startswith(f"lines_{k}/")]
+    out.append(("dock plate", "plate", _bounds_of(sc, plate, Mi), plate))
+    out.append(("tray lines", "lines", _bounds_of(sc, lines, Mi), lines))
     return [o for o in out if o[2] is not None]
 
 
 def check_trays(sc: Scene, items: dict) -> dict:
-    """Each tray's parts against each other: their boxes first, then, where two boxes overlap, the meshes themselves
-    (FCL), so a camera head over an instrument's low corner isn't a clash."""
+    """Each tray's parts against each other. Where two boxes come within the clearance of each other, the solids
+    themselves: FCL says whether they touch and, if not, how far apart they are (round 13: a gap under CLEAR_MM, or
+    CLEAR_LINES_MM to the lines and the plate, fails, as a touch always did). Also each part's footprint for the
+    plan (PLAN_MASKS), and the nearest points of every pair under 30 mm."""
     import fcl
     inside = (V.TRAY_W / 2 - 12.0, V.TRAY_D / 2 - 12.0)
     edge = (V.TRAY_W / 2, V.TRAY_D / 2)
+    x0g, y0g = -V.TRAY_W / 2 - 20.0, -V.TRAY_D / 2 - 20.0
+    nx, ny = int((V.TRAY_W + 40.0) / PLAN_GRID) + 1, int((V.TRAY_D + 40.0) / PLAN_GRID) + 1
     rep = {}
     for k in ORDER:
         parts = tray_parts(sc, items, k)
         Mi = np.linalg.inv(sc.world(f"tray_{k}"))
-        objs = {}
+        tris, objs = {}, {}
+
+        def tri(i):
+            if i not in tris:
+                tris[i] = _tri_of(sc, parts[i][3], Mi)
+            return tris[i]
 
         def obj(i):
             if i not in objs:
-                objs[i] = _fcl_of(sc, parts[i][3], Mi)
+                objs[i] = _fcl_obj(tri(i))
             return objs[i]
 
-        def hit(i, j):
+        def gap(i, j):
+            """(gap mm, point on i, point on j): 0 if the solids touch."""
             a, b = obj(i), obj(j)
             if a is None or b is None:
-                return True
+                return 0.0, None, None
             res = fcl.CollisionResult()
-            return fcl.collide(a, b, fcl.CollisionRequest(), res) > 0 or res.is_collision
-        rows, top = [], 0.0
-        for i, (lbl, kind, b, _) in enumerate(parts):
-            over = []
-            for j, (lbl2, kind2, b2, _) in enumerate(parts):
-                if j == i or (kind == kind2 == "cam" and lbl.split()[0] == lbl2.split()[0]):
+            if fcl.collide(a, b, fcl.CollisionRequest(), res) > 0 or res.is_collision:
+                c = res.contacts[0].pos if res.contacts else None
+                return 0.0, c, c
+            dres = fcl.DistanceResult()
+            d = fcl.distance(a, b, fcl.DistanceRequest(enable_nearest_points=True), dres)
+            return max(0.0, float(d)), np.asarray(dres.nearest_points[0]), np.asarray(dres.nearest_points[1])
+        near = {i: [] for i in range(len(parts))}
+        for i in range(len(parts)):
+            for j in range(i + 1, len(parts)):
+                (lbl, kind, b, _), (lbl2, kind2, b2, _) = parts[i], parts[j]
+                if kind == kind2 == "cam" and lbl.split()[0] == lbl2.split()[0]:
+                    continue                             # a rig's own post and head
+                if frozenset((kind, kind2)) in BY_DESIGN:
+                    continue                             # the mains line ends at the UPS, the lines leave the plate
+                need = CLEAR_LINES_MM if {kind, kind2} & {"plate", "lines"} else CLEAR_MM
+                box_gap = max(max(b2[2 * a] - b[2 * a + 1], b[2 * a] - b2[2 * a + 1]) for a in range(3))
+                if box_gap >= 30.0:
                     continue
-                if {kind, kind2} <= {"ups", "plate", "cam"} and kind != kind2 and {kind, kind2} != {"ups", "cam"}:
-                    continue                             # services.py's own parts against each other: its call
-                    # (round 12: but each tray's UPS is now its own size, so a UPS is checked against the cameras)
-                if all(b[2 * a] < b2[2 * a + 1] - 1.0 and b2[2 * a] < b[2 * a + 1] - 1.0 for a in range(3)) and \
-                        hit(min(i, j), max(i, j)):
-                    over.append(lbl2)
+                g, pa, pb = gap(i, j)
+                rec = dict(other=None, gap_mm=round(g, 1), need_mm=need,
+                           a=None if pa is None else [round(float(v), 1) for v in pa[:2]],
+                           b=None if pb is None else [round(float(v), 1) for v in pb[:2]])
+                near[i].append({**rec, "other": lbl2})
+                near[j].append({**rec, "other": lbl, "a": rec["b"], "b": rec["a"]})
+        rows, top, masks = [], 0.0, []
+        for i, (lbl, kind, b, _) in enumerate(parts):
             lim = edge if kind == "cam" else inside           # a camera head may lean over the rim, not the edge
-            rim = kind == "plate" or (b[0] >= -lim[0] - 0.5 and b[1] <= lim[0] + 0.5 and b[2] >= -lim[1] - 0.5
-                                      and b[3] <= lim[1] + 0.5)
+            rim = kind in ("plate", "lines") or (b[0] >= -lim[0] - 0.5 and b[1] <= lim[0] + 0.5 and
+                                                 b[2] >= -lim[1] - 0.5 and b[3] <= lim[1] + 0.5)
             h = b[5] - V.T_FLOOR
             top = max(top, b[5])
+            clash = sorted({n["other"] for n in near[i] if n["gap_mm"] <= 0.0})
+            close = sorted({n["other"] for n in near[i] if 0.0 < n["gap_mm"] < n["need_mm"]})
             rows.append(dict(item=lbl, kind=kind, box_mm=[round(float(v)) for v in b], height_mm=round(float(h), 1),
                              under_goods_height=bool(h <= V.MAX_GOODS_H + 0.5), inside_rim=bool(rim),
-                             overlaps=over))
+                             overlaps=clash, too_close=close,
+                             nearest=sorted(near[i], key=lambda n: n["gap_mm"])[:4]))
+            masks.append((lbl, kind, _footprint(tri(i), x0g, y0g, nx, ny)))
+        PLAN_MASKS[k] = masks
         slot = TRAYS[k][0]
         need = V.PITCH * math.ceil((top + V.GOODS_CLEAR - 1e-6) / V.PITCH)
         rep[k] = dict(role=TRAYS[k][1], slot=slot, shuttle=V.SLOT_SHUTTLE[slot], slot_z_mm=V.SLOTS[slot][1],
                       span_mm=V.SPAN[slot], tallest_mm=round(float(top - V.T_FLOOR), 1), span_needed_mm=need,
                       span_ok=bool(need <= V.SPAN[slot]), items=rows,
-                      ok=bool(need <= V.SPAN[slot] and all(not r["overlaps"] and r["inside_rim"] and
-                                                           r["under_goods_height"] for r in rows)))
+                      ok=bool(need <= V.SPAN[slot] and all(not r["overlaps"] and not r["too_close"] and r["inside_rim"]
+                                                           and r["under_goods_height"] for r in rows)))
     return rep
 
 
@@ -1606,32 +1677,62 @@ def check_floor(sc: Scene, F: Floor) -> dict:
 
 
 def draw_plan(rep: dict, path):
-    """Every tray from above, its items, UPS, dock plate and camera posts, with its slot; and both Shuttles' columns."""
+    """Every tray from above: each part's own footprint (round 13; until round 12 its bounding box), items blue, the
+    UPS amber with its model, the dock plate red, the tray's lines thin red, camera posts and heads green; a part that
+    touches another or stands closer than the clearance is outlined red, with a red tick between the nearest points and
+    the gap. And both Shuttles' columns."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.patches import Rectangle
-    cols = {"item": "#4a7bd0", "ups": "#e0a020", "plate": "#c8553d", "cam": "#2e9c6a"}
+    import ups as U
+    cols = {"item": "#4a7bd0", "ups": "#e0a020", "plate": "#b8402c", "lines": "#d06a50", "cam": "#2e9c6a",
+            "monitor": "#8a4fbf"}
+    order = {"lines": 0, "plate": 1, "item": 2, "ups": 3, "monitor": 4, "cam": 5}
     trays = [k for k in ORDER]
     nrow = math.ceil(len(trays) / 2)
     fig = plt.figure(figsize=(18, 2.35 * nrow), dpi=110)
     gs = fig.add_gridspec(nrow, 3, width_ratios=[1, 1, 0.55], wspace=0.06, hspace=0.55, top=0.95)
+    x0g, y0g = -V.TRAY_W / 2 - 20.0, -V.TRAY_D / 2 - 20.0
     for i, k in enumerate(trays):
         ax = fig.add_subplot(gs[i % nrow, i // nrow])
         r = rep[k]
         ax.add_patch(Rectangle((-V.TRAY_W / 2, -V.TRAY_D / 2), V.TRAY_W, V.TRAY_D, fc="#eceef0", ec="#555", lw=1.0))
         ax.add_patch(Rectangle((-V.TRAY_W / 2 + 12, -V.TRAY_D / 2 + 12), V.TRAY_W - 24, V.TRAY_D - 24, fc="none",
                                ec="#999", lw=0.6, ls=":"))
-        for it in r["items"]:
-            x0, x1, y0, y1 = it["box_mm"][:4]
-            bad = it["overlaps"] or not it["inside_rim"] or not it["under_goods_height"]
-            kind = it["kind"]
-            alpha = 0.35 if it["item"].endswith("head") else 0.75
-            ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, fc=cols[kind], alpha=alpha,
-                                   ec="red" if bad else "#222", lw=1.4 if bad else 0.5))
+        rows = {it["item"]: it for it in r["items"]}
+        masks = sorted(PLAN_MASKS.get(k, []), key=lambda m: order.get(m[1], 9))
+        for lbl, kind, mask in masks:
+            if not mask.any():
+                continue
+            it = rows.get(lbl, {})
+            bad = bool(it.get("overlaps") or it.get("too_close") or not it.get("inside_rim", True)
+                       or not it.get("under_goods_height", True))
+            ny, nx = mask.shape
+            xs = x0g + (np.arange(nx) + 0.5) * PLAN_GRID
+            ys = y0g + (np.arange(ny) + 0.5) * PLAN_GRID
+            alpha = 0.35 if lbl.endswith("head") else 0.85
+            ax.contourf(xs, ys, mask.astype(float), levels=[0.5, 1.5], colors=[cols.get(kind, "#777")], alpha=alpha)
+            ax.contour(xs, ys, mask.astype(float), levels=[0.5], colors=["red" if bad else "#222"],
+                       linewidths=1.4 if bad else 0.4)
+            yy, xx = np.nonzero(mask)
+            cx, cy = x0g + (xx.mean() + 0.5) * PLAN_GRID, y0g + (yy.mean() + 0.5) * PLAN_GRID
             if kind == "item":
-                ax.text((x0 + x1) / 2, (y0 + y1) / 2, f"{it['item'][:26]}\n{it['height_mm']:.0f} mm", ha="center",
-                        va="center", fontsize=6.0, color="white")
+                ax.text(cx, cy, f"{lbl[:26]}\n{it.get('height_mm', 0):.0f} mm", ha="center", va="center",
+                        fontsize=6.0, color="white")
+            elif kind == "ups" and U.unit_of(k):
+                m = U.unit_of(k)
+                ax.text(cx, cy, f"UPS {m.get('short', m['model'])}", ha="center", va="center", fontsize=5.2,
+                        color="#3a2a00")
+            elif kind == "monitor":
+                ax.text(cx, cy + 60, "AirGradient", ha="center", va="bottom", fontsize=5.0, color="#4a2070")
+        for it in r["items"]:                            # the pairs under the clearance: a red tick and the gap
+            for n in it.get("nearest", []):
+                if n["gap_mm"] < n["need_mm"] and n["a"] and n["b"] and it["item"] < n["other"]:
+                    (xa, ya), (xb, yb) = n["a"], n["b"]
+                    ax.plot([xa, xb], [ya, yb], color="red", lw=1.6)
+                    ax.text((xa + xb) / 2, (ya + yb) / 2 + 25, f"{n['gap_mm']:.0f} mm", color="red", fontsize=6.0,
+                            ha="center")
         ax.set_xlim(-V.TRAY_W / 2 - 30, V.TRAY_W / 2 + 30)
         ax.set_ylim(-V.TRAY_D / 2 - 30, V.TRAY_D / 2 + 30)
         ax.set_aspect("equal")
@@ -1639,8 +1740,10 @@ def draw_plan(rep: dict, path):
         ax.set_yticks([])
         ok = "fits" if r["ok"] else "CHECK"
         pas = " (passive: no UPS, dock plate or cameras)" if k in PASSIVE else ""
+        gaps = [n["gap_mm"] for it in r["items"] for n in it.get("nearest", []) if n["need_mm"] == CLEAR_MM]
+        least = f"; least gap {min(gaps):.0f} mm" if gaps else ""
         ax.set_title(f"Tray {k}: {r['role']}{pas}\nShuttle {r['shuttle']}, slot {r['slot']}: {r['span_mm']:.0f} mm "
-                     f"(needs {r['span_needed_mm']:.0f}; tallest {r['tallest_mm']:.0f}): {ok}", fontsize=8,
+                     f"(needs {r['span_needed_mm']:.0f}; tallest {r['tallest_mm']:.0f}{least}): {ok}", fontsize=8,
                      loc="left")
         ax.text(0, -V.TRAY_D / 2 - 22, "front: the opening, where the arm works", ha="center", va="top", fontsize=5.5,
                 color="#555")
@@ -1688,11 +1791,11 @@ def draw_plan(rep: dict, path):
     ax.set_xticks([])
     ax.set_ylabel("height over the floor, mm (tray bottoms; 25 mm pitch)", fontsize=7)
     ax.tick_params(labelsize=6.5)
-    fig.suptitle("The tray plan: every tray from above, front (the opening) at the bottom. Items blue, UPS amber, "
-                 "dock plate and tray lines red, camera posts and heads green; a red outline is a clash.\nRight: the "
-                 "two Shuttles' columns, each slot as tall as its tray needs, and what each column has left (dashed) "
-                 "(setup_lab.py fit)", fontsize=10.5,
-                 x=0.12, y=0.995, ha="left")
+    fig.suptitle("The tray plan: every tray from above, front (the opening) at the bottom, each part's own footprint. "
+                 "Items blue, UPS amber, dock plate and tray lines red, camera posts and heads green, AirGradient "
+                 f"purple; a red outline and tick: closer than {CLEAR_MM:.0f} mm, solid to solid ({CLEAR_LINES_MM:.0f} "
+                 "mm to the lines).\nRight: the two Shuttles' columns, each slot as tall as its tray needs, and what each "
+                 "column has left (dashed) (setup_lab.py fit)", fontsize=10.5, x=0.12, y=0.995, ha="left")
     fig.savefig(path, bbox_inches="tight")
     plt.close(fig)
 
@@ -1774,9 +1877,13 @@ def fit(data, idata) -> dict:
                                              for k, v in V.SLOTS.items()},
                shuttle_x=V.SHUTTLE_X, max_goods_h_mm=V.MAX_GOODS_H, goods_clear_mm=V.GOODS_CLEAR,
                r8={k: v for k, v in R8_MERGED.items() if k != "done"},
-               method="setup_lab.py fit: each item, UPS, dock plate (with its tray lines) and camera rig measured from "
-                      "its meshes as drawn, an axis-aligned box in the tray's frame; overlaps are 3-D box overlaps "
-                      "of more than 1 mm; a slot needs the tallest top + 20 mm, on the 25 mm pitch")
+               clearance_mm=CLEAR_MM, clearance_to_lines_mm=CLEAR_LINES_MM,
+               method="setup_lab.py fit (round 13): each item, UPS, the dock plate, the tray's lines and each camera "
+                      "rig's post and head, as drawn, in the tray's frame. Pairs whose boxes come within 30 mm are "
+                      "measured solid to solid with FCL (python-fcl, on the meshes): a touch ('overlaps') or a gap under "
+                      f"{CLEAR_MM:.0f} mm ({CLEAR_LINES_MM:.0f} mm to the lines and the plate; 'too_close') fails; the "
+                      "UPS against the plate and lines is by design. Until round 12 a pair failed only if its boxes "
+                      "overlapped and the solids touched. A slot needs the tallest top + 20 mm, on the 25 mm pitch")
     (OUT / "tray_plan.json").write_text(json.dumps(out, indent=1) + "\n")
     draw_plan(rep, OUT / "tray_plan.png")
     draw_floor(frep, OUT / "tray_plan_floor.png")
@@ -1790,15 +1897,17 @@ if __name__ == "__main__":
     if args and args[0] == "fit":
         out = fit(data, idata)
         for k, r in out["trays"].items():
-            bad = [(it["item"], it["overlaps"], it["inside_rim"], it["under_goods_height"]) for it in r["items"]
-                   if it["overlaps"] or not it["inside_rim"] or not it["under_goods_height"]]
+            bad = [(it["item"], it["overlaps"], it["too_close"], it["inside_rim"], it["under_goods_height"])
+                   for it in r["items"] if it["overlaps"] or it["too_close"] or not it["inside_rim"]
+                   or not it["under_goods_height"]]
             print(f"tray {k} {r['slot']}: span {r['span_mm']:.0f}, needs {r['span_needed_mm']:.0f} "
                   f"(tallest {r['tallest_mm']:.0f}) {'ok' if r['ok'] else 'CHECK'} {bad if bad else ''}")
         if "-v" in args:
             for k, r in out["trays"].items():
                 print("tray", k)
                 for it in r["items"]:
-                    print("   ", it["item"][:40].ljust(40), it["box_mm"], it["overlaps"], it["inside_rim"])
+                    print("   ", it["item"][:40].ljust(40), it["box_mm"], it["overlaps"], it["inside_rim"],
+                          [(n["other"][:24], n["gap_mm"]) for n in it["nearest"][:3]])
         for k, d in out["floor"]["docks"].items():
             print(f"dock {k}: {'ok' if d['ok'] else 'CHECK'} pivot {d['pivot']} {d['hits']}")
         print("machines in the aisle:", out["floor"]["machines_in_aisle"])
