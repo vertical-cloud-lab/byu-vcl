@@ -37,8 +37,8 @@ diagonal), each with **its own Raspberry Pi 5**. That is what robot-arms PR 40 c
 MiR frame, mm: origin on the floor at the middle of the base, x along it (800 mm), y across it (580 mm). +y is the side
 the arm faces and works on. The arm's base is at (0, 130), on the cabinet's top plate at 800 mm.
 
-- **Everything stays inside the MiR250's footprint** (800 × 580 mm), within 1 mm. Nothing changes in its safety
-  fields, or in the docks, aisles and turning circles the lab was laid out with (`setup_lab.py fit`).
+- **Everything stays inside the MiR250's footprint** (800 × 580 mm); the mast comes within 1 mm of its edge. Nothing
+  changes in its safety fields, or in the docks, aisles and turning circles the lab was laid out with (`setup_lab.py fit`).
 - **1.8 m is the top.** The MiR250's two RealSense D435 cameras see obstacles up to 1800 mm high, 1.2 m in front of the
   base (MiR's spec sheet). Nothing on the base should be taller than what the base can see in its path. The folded
   arm stands 1.49 m. A standard 2.03 m (6 ft 8 in) door clears it.
@@ -96,7 +96,10 @@ That makes 59,660 arm-frames. The set-up movie (`setup_lab.py`) was left out: it
 its arms only unfold at the chargers. The arm's drawn surfaces (links, 2F-85 and D405) were then put through those
 frames in the MiR's frame. `out/base_cams/sweep/` has the recordings (`.npz`, one row per frame, and their `.json`).
 
-![Where the arms pass low over their own base, and the cameras](../out/base_cams/sweep.png)
+![How often the arms pass over each spot of their own base, and the cameras](../out/base_cams/sweep.png)
+
+The side cameras stand only 0.11 m over the cabinet top, below most of the traffic the left panel counts (0.79-1.85 m);
+the mast rises through all of it.
 
 **What it found:**
 
@@ -138,8 +141,8 @@ they were before the cameras. `out/base_cams/conflicts.json` has them:
 
 Each cell gives the frames touching, then the frames within 25 mm. The motions are as recorded before the
 cameras, so a joint move that now goes round a camera still counts here. The lenses and cables are left out:
-the cable runs in the extrusion's slot, and the lens touches only where its case does. No other clip's arm
-comes within 25 mm of a camera (3 clips).
+the cable runs in the extrusion's slot, and the lens touches only where its case does. The three clips missing from
+the table (the 8:00 clip, the bay camera clip and the upkeep clip) never come within 25 mm of a camera.
 
 **What happens to them.** Joint moves in the clips are planned round whatever is drawn (`robot.py`, `collide.py`), so a
 move that would swing the elbow through the mast now goes round it. The planner now tries once more before it
@@ -172,7 +175,7 @@ own frame rate, 15 fps here), writing `out/collisions/<clip>_basecams.json`. `ba
 
 How to read the table:
 
-- **The planner went round the mast.** In 420 frames across 14 clips, the motions recorded before the cameras passed
+- **The planner went round the mast.** In 420 frames across 13 clips, the motions recorded before the cameras passed
   through the mast. With the mast drawn, every such joint move was re-planned round it, except in chapters 2 and 4.
 - **15 of the 17 clips are untouched.** No arm, gripper or held part touches a camera part in any of their frames.
   Their collisions with the cameras in place are the ones they had without them, plus two that come from paths
@@ -180,8 +183,10 @@ How to read the table:
   - chapter 1: wrist 2 grazes the VLM's access table for 1 frame;
   - chapter 7: one extra frame at the depowdering box.
 
-  The others are already in the committed audits: the 8:00 clip's vial into the CubXL (13 frames), the bay camera
-  clip's vial in its rack (3), the vacuum clip's tool rack (1).
+  The others were there before the cameras:
+  - the 8:00 clip's vial into the CubXL (13 frames, the same without them);
+  - the bay camera clip's vial in its rack (3; its committed audit has 21 at 6 fps);
+  - the vacuum clip's tool rack (1, as committed).
 - **Chapters 2 and 4 hit the cameras**, and they now leave the cameras out unless `VLAB_BASE_CAMS=1`
   (`props.BASE_CAMS_OPT_OUT`).
   - **Chapter 2** (`alloy_atomize.py`) comes to 45 frames. In 16 of them the open gripper takes or returns the loading
