@@ -252,7 +252,10 @@ def build():
     u = units[0]
     L.robot = u.robot
     L.unit = getattr(L, "unit", {})
-    L.skin(1.0)(1.0)
+    # round 13: with VLAB_ONLY_TRAYS=FM (setup_lab.build loads only the two trays this chapter presents, F and M) the
+    # cladding is opaque, as in chapters 4, 5 and 7, so the empty trays in the Shuttles don't show; see-through over the
+    # whole lab, this chapter cost twice as much per frame as they do
+    L.skin(0.0 if os.environ.get("VLAB_ONLY_TRAYS") else 1.0)(1.0)
     L.show_gauges = False
     L.apply_state()
     return sc, L, F, rigs, u
