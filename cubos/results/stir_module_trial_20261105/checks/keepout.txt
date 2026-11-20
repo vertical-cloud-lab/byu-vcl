@@ -1,0 +1,26 @@
+== stir_module_trial.yaml | stir_module_trial.yaml | 21 poses | keep-out 24.0 mm from vial_1 axis (126.0, 45.0) while capped
+step command      moving   tip  vial_1 capped closest tip-axis to vial_1  tip end Z on laterals
+   1 move         vial_cap off  yes                            135.0                     99
+   2 decap        vial_cap off  yes                             65.7                    122
+   3 pick_up_tip  pipette  on   yes                             85.7                     87
+   4 aspirate     pipette  on   yes                             45.3                     87
+   5 cap          vial_cap on   yes                             45.3                     87
+   6 decap        vial_cap on   yes                             56.1                     87
+   7 blowout      pipette  on   no                               0.0                     87
+   8 cap          vial_cap on   part                             0.0                     87
+   9 drop_tip     pipette  on   yes                             56.1                     87
+
+closest the tip comes to vial_1's axis while it is capped and the tip is on: 45.3 mm (step 4 aspirate); keep-out 24.0 mm -> PASS
+
+where the tip goes down (tip on), with deck-file labware within 30 mm:
+  step  3 pick_up_tip  moving   tip over deck (291.332, 89) down to tip-end Z 80: tip rack (8 tips within 30 mm)
+  step  3 pick_up_tip  moving   tip over deck (291.332, 89) down to tip-end Z 24: tip rack (8 tips within 30 mm)
+  step  4 aspirate     moving   tip over deck (136.668, 89) down to tip-end Z 21: vial_2 0.0 mm
+  step  5 cap          passive  tip over deck (191.668, 100) down to tip-end Z 64: nothing in the deck file
+  step  5 cap          passive  tip over deck (191.668, 100) down to tip-end Z 20: nothing in the deck file
+  step  6 decap        passive  tip over deck (181, 56) down to tip-end Z 64: nothing in the deck file
+  step  6 decap        passive  tip over deck (181, 56) down to tip-end Z 30: nothing in the deck file
+  step  7 blowout      moving   tip over deck (126, 45) down to tip-end Z 46: vial_1 0.0 mm
+  step  8 cap          passive  tip over deck (181, 56) down to tip-end Z 64: nothing in the deck file
+  step  8 cap          passive  tip over deck (181, 56) down to tip-end Z 30: nothing in the deck file
+  step  9 drop_tip     moving   tip over deck (291.332, 89) down to tip-end Z 59: tip rack (8 tips within 30 mm)

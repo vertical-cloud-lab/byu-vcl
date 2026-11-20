@@ -1,0 +1,384 @@
+{
+ "what": "The compact (49 x 44 mm) stirrer's printed parts on one plate: compact base, compact vial holder, magnet carrier, 2 x deck key (0.05 mm press fit)",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6480898247",
+ "request_text": "@claude-print go ahead and print the parts for the compact stirrer (keep in mind the 0.05 press fit for the deck keys)",
+ "requested_by": "benwhitney5463",
+ "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/40770637184",
+ "workflow": "claude-print.yml (@claude-print), environment bambu-print",
+ "approved_by": "benwhitney5463",
+ "printer_choice": "A1 mini: the request named no printer; the stirrer's earlier parts were printed on the A1 mini in the same PETG (print/2026-10-21-a1mini/, print/2026-10-22-a1mini-keys/)",
+ "plate_rule": "sgbaird 2026-10-23: frame first, the run reads the plate, a wait for objections, a fresh frame before Send; no plate-clear reply needed",
+ "plate_check": {
+  "first_frame": {
+   "file": "20261028T212701Z_camera.jpg",
+   "utc": "2026-10-28T21:27:01Z",
+   "posted_utc": "2026-10-28T21:29:22Z",
+   "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6480920681",
+   "read": "plate empty: Textured PEI, its texture, the faint outlines printed on it, lamp glare; someone's black print (the previous job, Mounting Plate) on the bench just behind the bed, the red box beside the plate's far right corner"
+  },
+  "hold": {
+   "utc": "2026-10-28T21:34:33Z",
+   "why": "from the high view the run could not tell whether the black print behind the bed was in the bed's travel (runbook section 2: hold until a person explains it)"
+  },
+  "go": [
+   {
+    "by": "benwhitney5463",
+    "utc": "2026-10-28T21:39:23Z",
+    "text": "everything is clear of the build plate for the print",
+    "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6481331031",
+    "permission": "write"
+   },
+   {
+    "by": "benwhitney5463",
+    "utc": "2026-10-28T21:43:25Z",
+    "text": "everything is clear of the build plate (under a quote of the tracking comment)",
+    "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6481412856",
+    "side_effect": "the quote contained the print trigger, so it queued run 40774293105; approved by benwhitney5463, it ran 21:44:00-21:44:14Z and did nothing"
+   }
+  ],
+  "wait": "the frame was posted at 21:29:22Z; Send came at 21:54:09Z, 24 min 47 s later, after a fresh frame; the thread was polled before Send and nothing else asked to wait",
+  "second_frame": {
+   "file": "20261028T215252Z_camera.jpg",
+   "utc": "2026-10-28T21:52:52Z",
+   "read": "plate unchanged (mean absolute difference 2.64 of 255 over the plate region from the first frame); the black print behind the bed had been turned"
+  },
+  "hms_before_send": "empty at 21:27:36Z and again at about 21:52Z (Assistant (HMS) tab)",
+  "nozzle": "0.4 mm stainless steel, standard flow, read off the printer (Printer Parts), 2026-10-28T21:27:13Z"
+ },
+ "source": {
+  "branch": "claude/issue-169-20261009-2151",
+  "commits": {
+   "base_compact.stl": "b9f57f5",
+   "vial_holder_compact.stl": "be33b4a (unchanged at b9f57f5)",
+   "magnet_carrier.stl": "85c5d28",
+   "deck_key.stl": "85c5d28"
+  },
+  "files_md5": {
+   "hardware/vial-stirrer-cubxl/stl/compact/base_compact.stl": "f7fc6f13592db7b35ea21e3a3ec05f3d",
+   "hardware/vial-stirrer-cubxl/stl/compact/vial_holder_compact.stl": "9d26f77e390d5899fbaa4d7002fd2c94",
+   "hardware/vial-stirrer-cubxl/stl/magnet_carrier.stl": "84c241f7db03fb13f88b4eb47cdedc00",
+   "hardware/vial-stirrer-cubxl/stl/deck_key.stl": "fc2bb14d3cd7b228053a834a42651613"
+  },
+  "imported_as": "base_compact.stl, vial_holder_compact.stl, magnet_carrier.stl, deck_key_a.stl and deck_key_b.stl (two byte-identical copies of stl/deck_key.stl); five objects, not one object with parts",
+  "base_reloaded": "the first slice (21:49) warned that base_compact.stl had a floating cantilever: the bars between the -Y wall's vents, cut through by the cable notch. The base was rebuilt without -Y vents (b9f57f5) and reloaded from disk before the slice that was sent",
+  "layout": "Studio's Arrange; bounding boxes on the 180 x 180 mm bed from the file's plate_1.json (mm, X then Y)",
+  "bboxes": {
+   "base_compact": [
+    111.43,
+    91.0,
+    160.43,
+    135.0
+   ],
+   "vial_holder_compact": [
+    111.43,
+    45.0,
+    160.43,
+    89.0
+   ],
+   "magnet_carrier": [
+    91.57,
+    80.5,
+    110.57,
+    99.5
+   ],
+   "deck_key_a": [
+    99.63,
+    101.14,
+    109.43,
+    125.91
+   ],
+   "deck_key_b": [
+    99.63,
+    54.09,
+    109.43,
+    78.86
+   ]
+  },
+  "gcode_label_ids": {
+   "206": "base_compact",
+   "228": "deck_key_a",
+   "250": "deck_key_b",
+   "272": "magnet_carrier",
+   "294": "vial_holder_compact"
+  }
+ },
+ "slicer": {
+  "app": "Bambu Studio 02.08.02.61 (AppImage) on the CI runner, bundled profiles (the 2.8.0.6 configuration update was cancelled)",
+  "printer_preset": "Bambu Lab A1 mini 0.4 nozzle (set by Sync info; the empty project had started as an A1)",
+  "process_preset": "0.20mm Standard @BBL A1M",
+  "filament_preset": "Bambu PETG Basic @BBL A1M 0.4 nozzle (GFG00), white: project filament 1 set to the AMS's A4 entry",
+  "plate": "Textured PEI Plate",
+  "changed_in_gui": {
+   "global": {
+    "wall_loops": "2 -> 4",
+    "sparse_infill_density": "15% -> 30%",
+    "elefant_foot_compensation": "0 -> 0.15 mm"
+   },
+   "magnet_carrier_only": {
+    "sparse_infill_density": "100%",
+    "sparse_infill_pattern": "grid -> rectilinear (Studio: grid can't do 100%)"
+   },
+   "why": "BUILD.md stage 1: PETG, at least 4 walls, 30 % infill or more, elephant-foot compensation, the magnet carrier at 100 %, no supports; the same settings as print/2026-10-21-a1mini"
+  },
+  "left_at_preset": {
+   "enable_support": 0,
+   "brim_type": "auto_brim (made no brim)",
+   "enable_circle_compensation": 0,
+   "layer_height_mm": 0.2,
+   "nozzle_temperature": 245,
+   "textured_plate_temp": 70
+  },
+  "checked_in_config_block": "wall_loops = 4, sparse_infill_density = 30%, elefant_foot_compensation = 0.15, enable_support = 0, curr_bed_type = Textured PEI Plate, printer_settings_id = Bambu Lab A1 mini 0.4 nozzle, filament_settings_id = Bambu PETG Basic @BBL A1M 0.4 nozzle"
+ },
+ "gcode_checks": {
+  "how": "check_slice.py on compact_stirrer_parts.gcode.3mf; output in check_slice_output.txt; sizes are outer-wall toolpath spans plus one line width",
+  "base_compact": {
+   "outline_mm": [
+    49.0,
+    44.0
+   ],
+   "at_z": [
+    5,
+    10,
+    18
+   ],
+   "top_layer_z": 19.0
+  },
+  "vial_holder_compact": {
+   "flange_outline_mm": [
+    49.0,
+    44.0
+   ],
+   "cup_outer_diameter_mm": 33.402,
+   "top_layer_z": 22.0
+  },
+  "magnet_carrier": {
+   "outline_mm": [
+    19.0,
+    18.99
+   ],
+   "top_layer_z": 3.2,
+   "infill": "solid: about 3x the sparse-infill length per area of the 30 % keys"
+  },
+  "deck_keys": {
+   "nub_A_mm": [
+    6.943,
+    6.942
+   ],
+   "nub_B_mm": [
+    7.658,
+    7.658
+   ],
+   "model_A_B_mm": [
+    6.95,
+    7.67
+   ],
+   "dimples": [
+    1,
+    1
+   ]
+  }
+ },
+ "estimates": {
+  "total": "1h 11m 20s",
+  "model": "1h 5m 17s (G-code header)",
+  "layers": 110,
+  "max_z_mm": 22.0,
+  "filament_g": 27.11,
+  "filament_m": 9.02
+ },
+ "send": {
+  "utc": "2026-10-28T21:54:09Z",
+  "printer": "Thumbelina, the A1 Mini (Bambu Lab A1 mini, 0.4 mm)",
+  "route": "Bambu Studio on the runner, logged in to the lab's Bambu account (password + authenticator code), sent through Bambu's cloud",
+  "job_name": "compact_stirrer_parts",
+  "plate": "Textured PEI",
+  "ams_mapping": "project filament 1 (PETG Basic, white) -> AMS Lite A4",
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true
+ },
+ "sent_file": {
+  "path": "compact_stirrer_parts.gcode.3mf",
+  "how": "copied from /tmp/bamboo_model/.../Metadata/.<pid>.0.3mf, which Studio writes at Send; only DesignerUserId blanked",
+  "plate_1_gcode_md5": "a4a94f0268d8ffbfe13347abf12c7f91",
+  "matches_studio_slice": true
+ },
+ "printer_before": {
+  "utc": "2026-10-28T21:27:01Z",
+  "state": "idle after the last job (Mounting Plate, 100 %, Finished), no HMS alerts",
+  "nozzle_c": 21,
+  "bed_c": 21,
+  "ams_lite": {
+   "A1": "PLA Basic, dark blue",
+   "A2": "empty",
+   "A3": "PLA Basic, black",
+   "A4": "PETG Basic, white"
+  }
+ },
+ "timeline_utc": [
+  [
+   "21:16:54",
+   "request (@claude-print, benwhitney5463)"
+  ],
+  [
+   "21:17:49",
+   "run approved (benwhitney5463) and started"
+  ],
+  [
+   "21:21:27",
+   "screen recording started; Studio's first start: certificate prompt, wizard, plug-in, Beta prompts, configuration update cancelled"
+  ],
+  [
+   "21:24:24",
+   "Log In pressed (e-mail and password typed from the environment); Bambu asked for the authenticator code"
+  ],
+  [
+   "21:24:41",
+   "code typed (bambu-totp), Confirm; logged in; Studio selected the A1 mini by itself"
+  ],
+  [
+   "21:25:16",
+   "Device page: idle after Mounting Plate (100 %, Finished), heaters off; live view from 21:25:37"
+  ],
+  [
+   "21:27:01",
+   "first frame (20261028T212701Z_camera.jpg): plate empty, a black print standing on the bench behind the bed"
+  ],
+  [
+   "21:27:13",
+   "Printer Parts: 0.4 mm stainless, standard flow"
+  ],
+  [
+   "21:27:36",
+   "Assistant (HMS): no alerts"
+  ],
+  [
+   "21:27:58",
+   "frame pushed (3a05b42)"
+  ],
+  [
+   "21:29:22",
+   "frame, state, nozzle and plan at the top of the tracking comment"
+  ],
+  [
+   "21:34:33",
+   "hold: can't tell from the high view whether the black print is in the bed's travel"
+  ],
+  [
+   "21:39:23",
+   "go: benwhitney5463, everything is clear of the build plate for the print"
+  ],
+  [
+   "21:42:40",
+   "compact base and holder built (CadQuery); pushed 21:43:03 (be33b4a)"
+  ],
+  [
+   "21:43:25",
+   "benwhitney5463 repeats the go under a quote of the tracking comment; the quote queues print run 40774293105, approved, which ran 21:44:00-21:44:14 and did nothing"
+  ],
+  [
+   "21:44-21:49",
+   "Sync info (the empty project had started as an A1), filament 1 set to the AMS's A4 PETG Basic, five STLs imported as five objects, arranged, settings set"
+  ],
+  [
+   "21:49:10",
+   "sliced: floating-cantilever warning on base_compact.stl"
+  ],
+  [
+   "21:49-21:50",
+   "base rebuilt with no vents in its -Y wall, reloaded from disk; sliced again at 21:50:57: 27.11 g, 1 h 11 min 20 s, no warning"
+  ],
+  [
+   "21:51-21:52",
+   "Studio's G-code checked: config block, the carrier's solid infill"
+  ],
+  [
+   "21:52:05",
+   "Assistant (HMS): no alerts"
+  ],
+  [
+   "21:52:52",
+   "second frame (20261028T215252Z_camera.jpg): plate unchanged"
+  ],
+  [
+   "21:53:07",
+   "thread polled: nothing new asking to wait"
+  ],
+  [
+   "21:54:09",
+   "Send"
+  ],
+  [
+   "21:54:57",
+   "job started: changing filament (PETG from A4); nozzle up to 258 C for the purge"
+  ],
+  [
+   "21:56:47",
+   "the first watcher stopped on an OCR misread (bed 560); restarted 21:59:50 with a plausibility check"
+  ],
+  [
+   "21:59:50",
+   "auto bed leveling"
+  ],
+  [
+   "22:00:35",
+   "flow dynamics calibration"
+  ],
+  [
+   "22:02:14",
+   "layer 1 at 246 C / 70 C"
+  ],
+  [
+   "22:05:57",
+   "layer 2 (layer 1 took 3 min 43 s)"
+  ],
+  [
+   "22:16:33",
+   "layer 10"
+  ],
+  [
+   "22:31:09",
+   "layer 20"
+  ],
+  [
+   "22:41:26",
+   "layer 30"
+  ],
+  [
+   "22:51:16",
+   "layer 50"
+  ],
+  [
+   "22:59:02",
+   "layer 80"
+  ],
+  [
+   "23:06:14",
+   "layer 110/110"
+  ],
+  [
+   "23:06:25",
+   "job panel: Finished, Printing label gone; heaters off by 23:06:57; 100 % by 23:07:30"
+  ],
+  [
+   "23:07:09",
+   "the parts on the plate, gantry parked high (20261028T230709Z_finished.jpg)"
+  ],
+  [
+   "23:07:35",
+   "Assistant (HMS): no alerts"
+  ],
+  [
+   "23:08:20",
+   "signed out of the Bambu account"
+  ],
+  [
+   "23:08:52",
+   "Studio closed, its config deleted; recording stopped"
+  ]
+ ],
+ "watching": "Studio's Device page, OCR about every 11 s and a camera crop every 60 s (an A1 mini, PETG copy of PR #234's bambu/studio/watch_studio.py: nozzle limit 280 C until printing, 260 C after; bed 80 C; a hard limit needs two plausible readings in a row, after an OCR misread of 56 C as 560 C stopped the first watcher at 21:56:47Z)",
+ "recording": "the runner's screen was recorded in 1 min segments; the two covering the login (21:23:40-21:25:37Z) were deleted at once; the cut recording is in recording/",
+ "outcome": "finished: layer 110/110 and Finished at 23:06:25Z, 72.3 min after Send against Studio's 1 h 11 min 20 s; no pause, dialog or HMS alert. The parts were left on the plate for benwhitney5463 (frame at 23:07:09Z). Nothing has been assembled or fitted"
+}

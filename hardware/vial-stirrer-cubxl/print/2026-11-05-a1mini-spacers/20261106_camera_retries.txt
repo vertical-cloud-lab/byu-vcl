@@ -1,0 +1,13 @@
+A1 mini camera over the LAN, 2026-11-06, read-only (bambu_lan.py from PR #234 at 042975e, through the CubXL Pi)
+
+18:14:10 UTC  preflight: TLS to port 6000 opened, 80-byte login sent, no frame header in 20 s
+              -> "TimeoutError: The read operation timed out"
+18:15-18:17   retry 1, 45 s timeout: same, failed after 46.0 s
+              retry 2, 10 s later, 45 s timeout: same, failed after 46.0 s
+
+At the same time MQTT on port 8883 answered in 1.5 s (pushall + get_version). The CubXL Pi held no
+other connection to any port 6000, so the stream was not busy with this Pi. ipcam settings in the
+report are the same as on 2026-10-30, when a frame came back first time:
+{"ipcam_record": "enable", "mode_bits": 3, "resolution": "1080p", "timelapse": "disable"}.
+On 2026-11-05 from 23:14 UTC, Bambu Studio's live view of the same printer failed on every try with
+"Loading failed. Please check the network and try again. [2:2]".

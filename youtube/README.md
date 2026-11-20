@@ -47,8 +47,15 @@ python youtube/yt_service.py --full                 # full token (admin runs onl
 from youtube.yt_service import get_youtube_service, upload_video
 ```
 
-Uploads default to `private`. Videos uploaded through the API from an unaudited Cloud
-project are locked private anyway; publish from YouTube Studio.
+Uploads default to `public`; pass `--privacy unlisted` or `--privacy private` when asked.
+Since 2026-11-02 YouTube no longer locks uploads from unverified (unaudited) API projects to
+private ([revision history](https://developers.google.com/youtube/v3/revision_history)), so no audit is needed and
+the privacy set at upload sticks. Videos uploaded before then may still be locked. Changing
+privacy afterwards is an edit: the full token (`@claude-youtube`) or YouTube Studio.
+
+In a GitHub Actions run the helper appends `Requested in <link>` to the description: the
+exact comment, review or issue that started the run, read from `$GITHUB_EVENT_PATH`.
+`--no-source-link` (or `source_link=False`) skips it.
 
 ## The OAuth client
 

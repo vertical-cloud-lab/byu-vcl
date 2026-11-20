@@ -1,0 +1,29 @@
+{
+  "file": "../results/20261026_c1-10k/20261026-C1-hold2.nuvdt",
+  "nuvdt_header": [
+    "NBLOCKS:1   NUVANT_VERSION:1   DATA_TYPE:methodDATA;",
+    "NLINES:1   COMM_PAR:1.000000 Range 2 None FALSE FALSE {} {} 0.000000 0.000000 FALSE 0.000000 0.000000 0.000000 0.000000 Range 3 Range 2 Range 2 Range 3 Range 1;",
+    "METHOD:ExtTB METHOD_DATA: 5 0.5 0 0.04 1E-7 -0.1 1 1 FALSE 600 TRUE 1 Potentiostat FALSE 0 FALSE;",
+    "TIMEOFST: 1;",
+    "DATAID:Absolute Time Current Potential;"
+  ],
+  "points": 633,
+  "sample_interval_s": 0.9500541687011719,
+  "ocp": [],
+  "lpr": [],
+  "hold": [
+    {
+      "t_start_s": 0.0,
+      "t_end_s": 600.4343428611755,
+      "points": 633,
+      "E_mean_V": 0.03994467760941936,
+      "I_mean_A": 3.855802214299324e-06,
+      "I_sd_A": 2.016961979366183e-09,
+      "charge_C": 0.0023151567402171155,
+      "I_expected_A": 3.994467760941936e-06,
+      "deviation_pct": -3.4714398748811828,
+      "pass": false
+    }
+  ],
+  "pass": false
+}

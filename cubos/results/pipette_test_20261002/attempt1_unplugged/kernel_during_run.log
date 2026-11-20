@@ -1,0 +1,4 @@
+2026-10-02T13:42:59-06:00 <host> kernel: usb 3-2: USB disconnect, device number 8
+2026-10-02T13:42:59-06:00 <host> kernel: usb 3-2: failed to send control message: -19
+2026-10-02T13:42:59-06:00 <host> kernel: ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
+2026-10-02T13:42:59-06:00 <host> kernel: ch341 3-2:1.0: device disconnected

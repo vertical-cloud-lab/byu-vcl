@@ -1,0 +1,5 @@
+vial out, hand in view             -6..-3 s: vial median 17.44, p90 36.99 | bare deck median 8.03
+vial in, hands off, Hall 300-360   +22..+33 s: vial median 5.43, p90 6.20 | bare deck median 1.26
+vial in, hands off, Hall erratic   +62..+73 s: vial median 2.55, p90 3.28 | bare deck median 5.11
+vial in, Hall 60-810               +75..+89 s: vial median 2.14, p90 2.65 | bare deck median 5.09
+after 30,0                         +91..+97 s: vial median 1.34, p90 2.25 | bare deck median 1.96

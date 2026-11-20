@@ -1,0 +1,10 @@
+0:00 Bambu Studio's first start on the runner (the login after it is cut)
+0:31 Device page: the A1 mini idle, the plate empty, the nozzle (0.4 mm) and the HMS list
+1:53 The 10-28 sliced file opened, a fresh frame, then Send
+3:16 The printer prepares: PETG loaded, bed levelling, flow calibration
+4:13 Printing, layer 1 to 57
+5:01 Paused at layer 57: AMS Lite slot 4 filament may be tangled or stuck
+5:51 Still paused, waiting for someone at the printer (21:07-21:31 UTC; 21:31-22:01 is cut)
+6:15 Resumed from Studio at 22:03:18, after Ben freed the filament
+7:30 Printing, layer 57 to 110
+7:42 Finished: 100 %, heaters off, no HMS alert

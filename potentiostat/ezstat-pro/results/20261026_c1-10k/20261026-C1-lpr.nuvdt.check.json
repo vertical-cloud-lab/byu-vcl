@@ -1,0 +1,26 @@
+{
+  "file": "../results/20261026_c1-10k/20261026-C1-lpr.nuvdt",
+  "nuvdt_header": [
+    "NBLOCKS:1   NUVANT_VERSION:1   DATA_TYPE:methodDATA;",
+    "NLINES:1   COMM_PAR:1.000000 Range 2 None FALSE FALSE {} {} 0.000000 0.000000 FALSE 0.000000 0.000000 0.000000 0.000000 Range 3 Range 2 Range 2 Range 3 Range 1;",
+    "METHOD:CorrInh METHOD_DATA: TRUE 1 1200 FALSE 0 20 0.01 10 FALSE 0;",
+    "TIMEOFST: 1;",
+    "DATAID:Absolute Time Current Potential;"
+  ],
+  "points": 1154,
+  "sample_interval_s": 1.0400595664978027,
+  "ocp": [
+    {
+      "t_start_s": 0.0,
+      "t_end_s": 1198.9515762329102,
+      "points": 1154,
+      "E_mean_V": -4.2145519657007e-05,
+      "E_sd_V": 1.2612235912891578e-05,
+      "E_first_V": -3.5235026818516446e-05,
+      "E_last_V": -4.222201254929658e-05,
+      "drift_mV_per_10min": 0.0006440931181594978
+    }
+  ],
+  "lpr": [],
+  "hold": []
+}

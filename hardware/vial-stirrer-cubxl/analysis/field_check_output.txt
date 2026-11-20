@@ -1,0 +1,21 @@
+US1881 worst-case trip points: BOP <= +9.5 mT, BRP >= -9.5 mT
+
+Hall element, drive magnets only:
+  spot 1.40 mm in, 0.425 mm deep     r 11.70: +-20.1 mT
+  spot 1.58 mm in, 0.46 mm deep      r 11.88: +-18.3 mT
+  0.5 mm further out                 r 12.20: +-15.8 mT
+  1.0 mm further out                 r 12.70: +-12.7 mT
+
+Hall element with a coupled bar (bar axis 3 mm above the inner floor, 15 x 6 mm bar):
+  core 3 x 10 mm, J 0.5 T: nominal +-18.3 mT, 1 mm further out +-11.2 mT
+  core 3 x 12 mm, J 0.8 T: nominal +-16.3 mT, 1 mm further out +- 9.6 mT
+  core 4 x 12 mm, J 0.6 T: nominal +-15.1 mT, 1 mm further out +- 8.7 mT
+  core 4 x 12 mm, J 1.0 T: nominal +-11.7 mT, 1 mm further out +- 6.0 mT
+  core 4 x 12 mm, J 0.6 T, vial on a 1 mm spacer: nominal +-15.7 mT
+
+Horizontal field at the bar:
+  15 x 6 mm bar, centre (z 29.63): 17.5 mT; mean over its length  7.7 mT
+  3 x 12 mm bar, centre (z 28.13): 29.1 mT; mean over its length 16.4 mT
+  15 x 6 mm bar on a 1 mm spacer: 12.7 mT
+  15 x 6 mm bar on a 2 mm spacer:  9.4 mT
+  15 x 6 mm bar on a 3 mm spacer:  7.0 mT

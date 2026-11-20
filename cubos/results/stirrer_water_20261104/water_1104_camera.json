@@ -1,0 +1,1 @@
+{"first_bytes_utc": "23:19:13.94Z", "cmd": ["rpicam-vid", "--camera", "1", "-t", "0", "-n", "--verbose", "0", "--mode", "2304:1296:10:P", "--roi", "0,0.716,0.375,0.284", "--width", "864", "--height", "368", "--framerate", "30", "--shutter", "20000", "--codec", "mjpeg", "-q", "75", "--autofocus-mode", "manual", "--lens-position", "1.16", "--save-pts", "water_1104_pts.txt"]}

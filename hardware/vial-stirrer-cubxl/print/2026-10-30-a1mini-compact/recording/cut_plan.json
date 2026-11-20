@@ -1,0 +1,18 @@
+{"day": "2026-10-30",
+ "parts": [
+  {"from": "19:55:06", "to": "19:57:10", "speed": 4, "label": "Bambu Studio's first start on the runner (the login after it is cut)"},
+  {"from": "19:58:10", "to": "20:03:40", "speed": 4, "label": "Device page: the A1 mini idle, the plate empty, the nozzle (0.4 mm) and the HMS list"},
+  {"from": "20:03:40", "to": "20:06:25", "speed": 2, "label": "The 10-28 sliced file opened, a fresh frame, then Send"},
+  {"from": "20:06:25", "to": "20:14:05", "speed": 8, "label": "The printer prepares: PETG loaded, bed levelling, flow calibration"},
+  {"from": "20:14:05", "to": "21:05:20", "speed": 64, "label": "Printing, layer 1 to 57"},
+  {"from": "21:05:20", "to": "21:07:00", "speed": 2, "label": "Paused at layer 57: AMS Lite slot 4 filament may be tangled or stuck"},
+  {"from": "21:07:00", "to": "21:31:30", "speed": 64, "label": "Still paused, waiting for someone at the printer"}
+ ],
+ "blur": [
+  ["19:58:20", "20:04:05", [[274, 136, 1024, 362]]],
+  ["20:04:40", "20:05:45", [[274, 136, 1024, 362]]],
+  ["20:06:13", "20:10:00", [[274, 136, 1024, 362]]],
+  ["20:10:00", "20:14:05", [[274, 136, 360, 220], [1054, 136, 244, 200]]],
+  ["20:14:05", "21:05:20", [[274, 136, 340, 150], [274, 286, 170, 100], [1064, 136, 234, 170]]],
+  ["21:05:20", "23:59:00", [[274, 136, 430, 250]]]
+ ]}

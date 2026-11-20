@@ -1,0 +1,10 @@
+{"day": "2026-10-30",
+ "parts": [
+  {"from": "22:01:30", "to": "22:04:00", "speed": 2, "label": "Resumed from Studio at 22:03:18, after Ben freed the filament"},
+  {"from": "22:04:00", "to": "22:17:50", "speed": 64, "label": "Printing, layer 57 to 110"},
+  {"from": "22:17:50", "to": "22:19:15", "speed": 2, "label": "Finished: 100 %, heaters off, no HMS alert"}
+ ],
+ "blur": [
+  ["22:01:30", "22:17:50", [[274, 136, 430, 250], [1064, 136, 234, 170]]],
+  ["22:17:50", "22:19:15", [[274, 136, 1024, 350]]]
+ ]}

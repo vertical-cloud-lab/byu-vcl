@@ -1,0 +1,2 @@
+spacer_d10_h4.6.stl: Ø10.000 x 4.600 mm, plain cylinder, volume 361.0 mm³ (exact cylinder 361.3), 384 faces, md5 0fdeab17f144ef0ab7f9e0efafc440f5
+spacer_d15_h4.6_onshape.stl: Ø15.000 x 4.600 mm, plain cylinder, volume 810.1 mm³ (exact cylinder 812.9), 176 faces, md5 67c2c89a8585a23a98e9cc5527673011

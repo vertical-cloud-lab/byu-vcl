@@ -1,0 +1,42 @@
+{
+  "file": "../results/20261026_c1-10k/20261026-C1-lpr.csv",
+  "columns": {
+    "V": "Cell Potential[V]",
+    "I": "Cell Current[A]",
+    "t": "Relative Time [s]"
+  },
+  "units": {
+    "V": "v",
+    "I": "a",
+    "t": "s"
+  },
+  "points": 9,
+  "sample_interval_s": 12.0,
+  "ocp": [],
+  "lpr": [
+    {
+      "t_start_s": 0.0,
+      "t_end_s": 96.0,
+      "points": 9,
+      "E_from_V": -0.0088098386,
+      "E_to_V": 0.0070678108,
+      "E_mid_V": -0.0008710138999999998,
+      "I_at_mid_A": -2.3080313072946488e-07,
+      "I_mean_A": -2.3000934811111108e-07,
+      "I_sd_A": 5.097523135059585e-07,
+      "I_range_A": [
+        -1.0256363e-06,
+        5.6275398e-07
+      ],
+      "slope_S": 9.999582278092523e-05,
+      "Rp_ohm": 10000.417739357365,
+      "residual_sd_A": 6.322342343042587e-10,
+      "Rp_resolved": true,
+      "R_ohm": 10000.0,
+      "deviation_pct": 0.004177393573645532,
+      "pass": true
+    }
+  ],
+  "hold": [],
+  "pass": true
+}

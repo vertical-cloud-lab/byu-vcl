@@ -190,19 +190,21 @@ def switch_exits():
     return tan, purple
 
 
-def base_axes():
-    fig = plt.figure(figsize=(W, H), dpi=200)
+def base_axes(y_min=0.0):
+    """y_min < 0 adds that much canvas below the usual layout."""
+    fig = plt.figure(figsize=(W, H - y_min), dpi=200)
     ax = fig.add_axes([0, 0, 1, 1])
     ax.set_xlim(0, W)
-    ax.set_ylim(0, H)
+    ax.set_ylim(y_min, H)
     ax.axis("off")
     return fig, ax
 
 
 def figure_stepdir(path):
-    fig, ax = base_axes()
-    ax.text(0.3, 8.3, "Figure 1 — Tic T500 as a drop-in for the TMC2209: the Arduino keeps STEP/DIR "
-            "and the limit switch", ha="left", va="center", fontsize=15, fontweight="bold")
+    fig, ax = base_axes(y_min=-0.3)
+    ax.text(0.3, 8.3, "Figure 1 — Tic T500 as built (12/12 on 2026-09-30 and 10-02): the Arduino "
+            "keeps STEP/DIR and the limit switch", ha="left", va="center", fontsize=15,
+            fontweight="bold")
 
     used = {("T", 7.50): "step", ("T", 7.85): "dir", ("T", 8.20): "gnd",
             ("R", "VIN"): "vplus", ("R", "GND"): "vminus",
@@ -211,17 +213,35 @@ def figure_stepdir(path):
         ("control mode:", 11, "normal"),
         ("STEP/DIR", 13, "bold"),
         ("step 1/8 · 990 mA", 11, "normal"),
-        ("set over USB first", 10, "normal"),
+        ("saved on the Tic: tic_p20.txt", 10, "normal"),
         ("left-edge pins unused", 10, "normal"),
     ])
     draw_header(ax)
     draw_psu(ax)
     draw_coils(ax)
 
+    # Raspberry Pi: the Arduino and the Tic each have their own USB cable to it
+    ax.add_patch(FancyBboxPatch((0.35, 7.08), 3.4, 0.8, boxstyle="round,pad=0,rounding_size=0.12",
+                                fc="#e7f0e7", ec="#3c6e3c", lw=2, zorder=4))
+    ax.text(2.05, 7.62, "Raspberry Pi 5 (CubXL Pi)", ha="center", va="center", fontsize=14,
+            fontweight="bold", zorder=5)
+    ax.text(2.05, 7.30, "runs cubxl_run.py · CubOS", ha="center", va="center", fontsize=10,
+            zorder=5)
+    wire(ax, [(1.05, 7.08), (1.05, 6.79)], "usb", lw=5)
+    ax.add_patch(Rectangle((0.77, 6.55), 0.56, 0.26, fc="#c9c9c9", ec="#555555", lw=1.4, zorder=5))
+    ax.text(1.05, 6.68, "USB-B", ha="center", va="center", fontsize=8.5, fontweight="bold",
+            color="#222222", zorder=6)
+    ax.text(1.2, 6.94, "PANDA serial, 115200", ha="left", va="center", fontsize=9.5,
+            color=C["usb"])
+    # drawn over the switch and STEP/DIR/GND wires; the white edge shows it crossing them
+    wire(ax, [(3.75, 7.24), (6.38, 7.24), (6.38, TIC["y1"] + 0.16)], "usb", lw=5, z=4)
+    ax.text(4.65, 7.47, "USB (ticcmd): cubxl_run.py checks the settings, energizes the Tic and "
+            "polls VIN", ha="left", va="center", fontsize=9.5, color=C["usb"])
+
     # Arduino column
     sq_x = 3.35
-    ax.text(1.95, 6.3, "Arduino Uno R3", ha="center", va="center", fontsize=19, fontweight="bold")
-    ax.text(1.95, 5.98, "capper + pipette · USB-B to the Pi as now", ha="center", va="center",
+    ax.text(2.0, 6.2, "Arduino Uno R3", ha="center", va="center", fontsize=19, fontweight="bold")
+    ax.text(2.0, 5.9, "capper + pipette · PANDA firmware", ha="center", va="center",
             fontsize=10, color="#333333")
     rows = [
         (5.55, "D9  (limit switch)", "tan"),
@@ -231,7 +251,7 @@ def figure_stepdir(path):
         (3.20, "A2  (STEP, D16)", "step"),
         (2.45, "A0, A1  (old UART): unused", None),
         (1.95, "A4  (old EN): unused", None),
-        (1.45, "5V: unused", None),
+        (1.45, "5V  (old VDD): unused", None),
     ]
     for y, label, col in rows:
         ax.add_patch(Rectangle((sq_x, y - 0.21), 0.42, 0.42, fc=C[col] if col else C["unused"],
@@ -252,16 +272,18 @@ def figure_stepdir(path):
     wire(ax, purple + [(11.85, 7.70), (4.45, 7.70), (4.45, 5.00), (ard_x, 5.00)], "purple")
 
     # notes
-    ax.add_patch(Rectangle((0.25, 0.1), 15.5, 0.88, fc="#f7f7f7", ec="#bbbbbb", lw=1.2, zorder=0))
+    ax.add_patch(Rectangle((0.25, -0.22), 15.5, 1.2, fc="#f7f7f7", ec="#bbbbbb", lw=1.2, zorder=0))
     notes = (
         "Motor: coil A = header pins 3 + 4 → A1 + A2; coil B = header pins 1 + 2 → B1 + B2. "
-        "Swapping the two wires of ONE coil only reverses the direction of travel.\n"
+        "This is the polarity proven on 2026-09-29: DIR LOW moves the plunger UP, to the switch.\n"
+        "Swapping the two wires of ONE coil reverses the motor, and the HOME that starts every "
+        "run would then drive the plunger down into the tip ejector.\n"
         "Leave A0/A1 (and the 10 kΩ bridge), A4 and 5V unconnected. Never move the old EN wire "
         "to RST: the firmware holds A4 LOW, which would keep the Tic in reset.\n"
-        "Firmware: STEPS_PER_MM 1592 → 796, because the T500 stops at 1/8 step. Rewire only with "
-        "the 12 V off; Pololu warns that doing it live can destroy the driver."
+        "Rewire only with the 12 V off; Pololu warns that doing it live can destroy the driver. "
+        "With 12 V on, the Tic holds the motor at 990 mA, so it and the pipette get warm."
     )
-    ax.text(0.45, 0.54, notes, ha="left", va="center", fontsize=10.5, color="#222222",
+    ax.text(0.45, 0.38, notes, ha="left", va="center", fontsize=10.5, color="#222222",
             linespacing=1.5)
     fig.savefig(path, dpi=200, facecolor="white")
     plt.close(fig)

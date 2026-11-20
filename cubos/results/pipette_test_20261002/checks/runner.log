@@ -1,0 +1,29 @@
+19:41:13Z  == checks_20261002: cub_xl_ben_3_instrument.yaml | ben_2vials_tiprack.yaml | pipette_test.yaml
+19:41:13Z  -- 1. checks
+19:41:13Z  byu-vcl 0e6076a | CubOS 496819c + 4 patch(es): grbl-prompt-status-polling.patch, p20-gen2-plunger-constants.patch, pipette-connect-tolerate-failed-home-main.patch, tipped-hover-clamp-main.patch
+19:41:13Z  Pi up 1 day, 21 hours, 49 minutes, throttled=0x0
+19:41:13Z  ports: gantry /dev/ttyUSB0 -> /dev/ttyUSB0, vial_capper_decapper /dev/ttyACM0 -> /dev/ttyACM0, pipette /dev/ttyACM0 -> /dev/ttyACM0 (none held open)
+19:41:13Z  protocol: 12 steps, step 0 = home
+19:41:16Z  GRBL: <Alarm|WPos:364.000,281.000,125.000|FS:0,0|WCO:-364.000,-281.000,-125.000> | $20=1 $21=1 travel [364.0, 281.0, 125.0] G54 [-364.0, -281.0, -125.0] | feed F3000 vs max [5000.0, 5000.0, 5000.0]
+19:41:16Z  Arduino:
+19:41:20Z                 connect          dt=  3.770s  ok
+19:41:20Z    19:41:20.716 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+19:41:20Z    19:41:20.724 cap sensor       dt=  0.004s  OK:{"value1":0}
+19:41:20Z    19:41:20.728 EMAG_OFF         dt=  0.004s  OK:{"msg":"Electromagnet off"}
+19:41:20Z  -- 2. gates
+19:41:21Z  gate validate         PASS  (0.4 s)  Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ign
+19:41:25Z  gate mock             PASS  (4.5 s)  OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 12
+19:41:30Z  gate shadow           PASS  (4.6 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+19:41:34Z  gate shadow_tipstuck  PASS  (4.6 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+19:41:35Z  Tic: settings = tic_p20.txt; was De-energized, VIN 12.5 V; now energized=Yes, VIN 11.3 V, stopping: None
+19:41:35Z  Tic de-energized
+19:41:35Z  -- 5. summary
+# checks_20261002
+
+✅ **checks only: all passed, nothing run**
+
+- **Code:** byu-vcl `0e6076a` · CubOS `496819c` + `grbl-prompt-status-polling`, `p20-gen2-plunger-constants`, `pipette-connect-tolerate-failed-home-main`, `tipped-hover-clamp-main`
+- **GRBL:** travel [364.0, 281.0, 125.0], G54 [-364.0, -281.0, -125.0], `$20=1` `$21=1`, feed F3000
+
+Files: `runner.log` (everything), `checks.json`, `gate_*.log`, `run_hardware.log`, `step_trace.json`, `plunger_trace.json`, `gantry_*.log`, `tic_*`, `arduino_*.log`, `frames/`.
+

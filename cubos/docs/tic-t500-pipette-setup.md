@@ -2,6 +2,17 @@
 
 Written 2026-09-29, as a candidate replacement for the condemned Adafruit 6121
 TMC2209 board (§22 of [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md)).
+**2026-10-07: the pipette is back on the TMC2209.** With the spreadCycle firmware
+(§26 of the wiring doc) it ran `pipette_test` 12/12
+([record](../results/tmc2209_spreadcycle_20261007/README.md)), and runs since
+then have used it, with `cubxl_run.py --no-tic`. The last run on the Tic was
+`pipette_test_20261006`, 12/12 after the 10-05 rewire
+([record](../results/pipette_test_20261006/README.md)).
+**2026-10-05: the newly bought TMC2209 board did not turn the plunger** in either
+direction ([record](https://github.com/vertical-cloud-lab/byu-vcl/blob/1e35861/cubos/results/tmc2209_probe_20261005/README.md)),
+so Ben is moving the pipette back to the Tic. Figure 1 is the wiring to restore.
+It is also the wiring that ran `pipette_test` 12/12 on 2026-09-30 and again on
+2026-10-02 ([record](https://github.com/vertical-cloud-lab/byu-vcl/blob/d921c64/cubos/results/pipette_test_20261002c/README.md)).
 **Status, 2026-09-30: the pipette works on the Tic.** With `STEPS_PER_MM 796`
 flashed, the trio ran 12/12 (campaign 68), and Ben saw it aspirate, dispense and
 drop the tip ([record](../results/pipette_test_20260930b/README.md)). The ruler
@@ -62,15 +73,15 @@ USB. Its `TX`/`RX` pins are a 5 V TTL serial port, which is a UART, but they are
 for sending motion commands from a microcontroller. Neither figure below needs
 them.
 
-## Figure 1 — drop-in for the TMC2209 (do this first)
+## Figure 1 — drop-in for the TMC2209 (as built)
 
-![Tic T500 wired as a STEP/DIR drop-in between the Arduino and the P20](_static/tic-t500-pipette-stepdir.png)
+![Tic T500 wired as a STEP/DIR drop-in between the Arduino and the P20, with both on USB to the CubXL Pi](_static/tic-t500-pipette-stepdir.png)
 
 The Tic runs in **STEP/DIR mode** and takes the TMC2209's place. Everything
 already proven stays as it is: the Arduino's `STEP`/`DIR` output, the limit
 switch on D9, the PANDA command set, CubOS, and the capper on the same Arduino.
 If the plunger turns, the old driver was the whole problem. If it doesn't,
-`ticcmd --status` says why.
+`ticcmd --status` says why. This is how it was wired for every run on the Tic.
 
 | from | to | wire | notes |
 | --- | --- | --- | --- |
@@ -85,7 +96,13 @@ If the plunger turns, the old driver was the whole problem. If it doesn't,
 | Arduino `GND` | Tic `GND` (top edge) | | common ground; `STEP`/`DIR` need it |
 | 12 V supply `+` | Tic `VIN` | | the big terminal next to `GND` |
 | 12 V supply `−` | Tic `GND` (terminal side) | | |
-| Tic USB Micro-B | Raspberry Pi | data cable | for settings and status |
+| Tic USB Micro-B | Raspberry Pi | data cable | needed for every run (below) |
+| Arduino USB-B | Raspberry Pi | | PANDA serial at 115200, as with the TMC2209 |
+
+**The Tic's USB cable is not optional.** `cubxl_run.py` uses it (through `ticcmd`)
+to check the Tic's settings against [`tic_p20.txt`](./tic_p20.txt), energize it,
+poll VIN during the run and de-energize it afterwards. Without it the runner
+refuses to start, unless it is given `--no-tic`.
 
 Leave these **unconnected**:
 
@@ -107,6 +124,19 @@ firmware already stops upward moves on it.
 pins 1 + 2 and goes to `B1` + `B2`. Swapping the two wires of *one* coil only
 reverses the direction of travel. Never split one coil across `A` and `B`:
 that leaves the motor silent, with no buzzing (§16.3 of the wiring doc).
+
+**Header pin numbers.** The numbers in the table and in Figure 1 are the ribbon
+numbering: with the motor rows at the bottom, pin 1 is the bottom-right hole.
+Counting left to right from the bottom row instead swaps every pair (1↔2 …
+9↔10). That count puts the switch on 5 (return) and 8 (signal), which are the
+same two holes. It is how Ben reads the switch wiring that has worked since
+2026-09-29. On the coils the swap is harmless: each coil fills one row, so both
+coils reverse together and the direction stays the same. On the switch it is
+not, because the left-to-right "6 and 7" are the pipette's ID-chip pins. Go by
+position: the switch return is the left hole of the middle row, and the switch
+signal is the right hole of the row above it. §27 of the
+[wiring doc](./opentrons-pipette-wiring.md) has all three numberings,
+Opentrons' own included.
 
 ### Tic settings (Tic Control Center → Apply settings)
 

@@ -1,0 +1,27 @@
+{
+ "utc": "2026-11-06T18:17:54Z",
+ "document": "793acc919f1bebafa8462ee6",
+ "workspace": "cad10a9d92e7f67337d1ccff",
+ "element": "2a6df5b4fb9978ac4416905e",
+ "name": "Stir module spacer",
+ "owner": "Vertical Cloud Lab",
+ "modifiedAt": "2026-11-05T23:02:05.331+00:00",
+ "modifiedBy": "benjamin Whitney",
+ "parts": [
+  {
+   "name": "Stir Module Spacer",
+   "partId": "JHD",
+   "bodyType": "solid",
+   "isHidden": false
+  }
+ ],
+ "volume_mm3": 812.887,
+ "stl": {
+  "file": "stl/spacer/spacer_d15_h4.6_onshape.stl",
+  "bytes": 8884,
+  "md5": "67c2c89a8585a23a98e9cc5527673011",
+  "options": "binary, millimetre, angleTolerance 0.15 rad, chordTolerance 0.02 mm"
+ },
+ "api_calls": 5,
+ "note": "Read-only. The part is a plain cylinder, 15.000 mm across and 4.600 mm tall (STL bounds); Onshape gives its volume as 812.887 mm3, which is pi x 7.5^2 x 4.6. Ben described it as 10 mm across."
+}

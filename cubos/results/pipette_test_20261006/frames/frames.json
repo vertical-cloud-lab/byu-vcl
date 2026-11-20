@@ -1,0 +1,134 @@
+[
+  {
+    "tag": "step02_decap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step02_decap__cam0_csi0.jpg",
+    "dt_s": 0.69,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:20:46",
+    "error": null
+  },
+  {
+    "tag": "step02_decap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step02_decap__cam1_csi1.jpg",
+    "dt_s": 0.64,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:20:46",
+    "error": null
+  },
+  {
+    "tag": "step03_pick_up_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step03_pick_up_tip__cam0_csi0.jpg",
+    "dt_s": 0.68,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:20:56",
+    "error": null
+  },
+  {
+    "tag": "step03_pick_up_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step03_pick_up_tip__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:20:56",
+    "error": null
+  },
+  {
+    "tag": "step04_aspirate",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step04_aspirate__cam0_csi0.jpg",
+    "dt_s": 0.67,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:21:10",
+    "error": null
+  },
+  {
+    "tag": "step04_aspirate",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step04_aspirate__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:21:10",
+    "error": null
+  },
+  {
+    "tag": "step08_blowout",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step08_blowout__cam0_csi0.jpg",
+    "dt_s": 0.65,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:21:36",
+    "error": null
+  },
+  {
+    "tag": "step08_blowout",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step08_blowout__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:21:37",
+    "error": null
+  },
+  {
+    "tag": "step09_drop_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step09_drop_tip__cam0_csi0.jpg",
+    "dt_s": 0.67,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:21:50",
+    "error": null
+  },
+  {
+    "tag": "step09_drop_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step09_drop_tip__cam1_csi1.jpg",
+    "dt_s": 0.61,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:21:51",
+    "error": null
+  },
+  {
+    "tag": "step10_cap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step10_cap__cam0_csi0.jpg",
+    "dt_s": 0.66,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:21:59",
+    "error": null
+  },
+  {
+    "tag": "step10_cap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step10_cap__cam1_csi1.jpg",
+    "dt_s": 0.63,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:22:00",
+    "error": null
+  }
+]

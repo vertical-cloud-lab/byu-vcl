@@ -1,0 +1,175 @@
+{
+ "folder": "vcl-shared > CubXL",
+ "folder_id": "a3519a23bb5dde572d2e8dbe",
+ "docs": {
+  "base_compact": {
+   "name": "Stir module base (compact)",
+   "file": "step/compact/base_compact.step",
+   "commit": "7bd9e7b",
+   "did": "b0a94bac496289d8dd8962c6",
+   "wid": "209a9017572cef08cf43ab11",
+   "owner": "Vertical Cloud Lab",
+   "parentId": "a3519a23bb5dde572d2e8dbe",
+   "translation": {
+    "state": "DONE",
+    "elements": [
+     "8790585813322aad029f0dd7"
+    ],
+    "failure": null
+   },
+   "check": {
+    "parts_onshape": 1,
+    "solids_step": 1,
+    "volume_onshape_mm3": 11121.4,
+    "volume_step_mm3": 11121.4,
+    "rel_diff": -0.0
+   },
+   "url": "https://cad.onshape.com/documents/b0a94bac496289d8dd8962c6/w/209a9017572cef08cf43ab11/e/8790585813322aad029f0dd7"
+  },
+  "vial_holder_compact": {
+   "name": "Stir module vial holder (compact)",
+   "file": "step/compact/vial_holder_compact.step",
+   "commit": "7bd9e7b",
+   "did": "68a93fd17c5379e566dbcdd8",
+   "wid": "9da3e01c0532c38803126726",
+   "owner": "Vertical Cloud Lab",
+   "parentId": "a3519a23bb5dde572d2e8dbe",
+   "translation": {
+    "state": "DONE",
+    "elements": [
+     "a223552e5324c6c02e9c30fb"
+    ],
+    "failure": null
+   },
+   "check": {
+    "parts_onshape": 1,
+    "solids_step": 1,
+    "volume_onshape_mm3": 11447.35,
+    "volume_step_mm3": 11450.99,
+    "rel_diff": -0.000318
+   },
+   "url": "https://cad.onshape.com/documents/68a93fd17c5379e566dbcdd8/w/9da3e01c0532c38803126726/e/a223552e5324c6c02e9c30fb"
+  },
+  "magnet_carrier": {
+   "name": "Stir module magnet carrier",
+   "file": "step/magnet_carrier.step",
+   "commit": "7bd9e7b",
+   "did": "a98c2a1ba66edcc3d83e79b3",
+   "wid": "787912a825c9269be6b103fa",
+   "owner": "Vertical Cloud Lab",
+   "parentId": "a3519a23bb5dde572d2e8dbe",
+   "translation": {
+    "state": "DONE",
+    "elements": [
+     "73d85dc79512ef1ed13c848a"
+    ],
+    "failure": null
+   },
+   "check": {
+    "parts_onshape": 1,
+    "solids_step": 1,
+    "volume_onshape_mm3": 799.09,
+    "volume_step_mm3": 799.09,
+    "rel_diff": 0.0
+   },
+   "url": "https://cad.onshape.com/documents/a98c2a1ba66edcc3d83e79b3/w/787912a825c9269be6b103fa/e/73d85dc79512ef1ed13c848a"
+  },
+  "deck_key": {
+   "name": "Stir module deck key",
+   "file": "step/deck_key.step",
+   "commit": "7bd9e7b",
+   "did": "78f56c77ba6ccdd186d25d6d",
+   "wid": "f07dde3e7d214250c82ae758",
+   "owner": "Vertical Cloud Lab",
+   "parentId": "a3519a23bb5dde572d2e8dbe",
+   "translation": {
+    "state": "DONE",
+    "elements": [
+     "e970122e2d97747dd1562196"
+    ],
+    "failure": null
+   },
+   "check": {
+    "parts_onshape": 1,
+    "solids_step": 1,
+    "volume_onshape_mm3": 2295.01,
+    "volume_step_mm3": 2295.11,
+    "rel_diff": -4.3e-05
+   },
+   "url": "https://cad.onshape.com/documents/78f56c77ba6ccdd186d25d6d/w/f07dde3e7d214250c82ae758/e/e970122e2d97747dd1562196"
+  },
+  "base": {
+   "name": "Stir module base (56 x 56)",
+   "file": "step/base.step",
+   "commit": "7bd9e7b",
+   "did": "16486637864da3fef98d58f9",
+   "wid": "64574d6774d5f14f39b1662f",
+   "owner": "Vertical Cloud Lab",
+   "parentId": "a3519a23bb5dde572d2e8dbe",
+   "translation": {
+    "state": "DONE",
+    "elements": [
+     "8dd20414e333043b983be773"
+    ],
+    "failure": null
+   },
+   "check": {
+    "parts_onshape": 1,
+    "solids_step": 1,
+    "volume_onshape_mm3": 23754.25,
+    "volume_step_mm3": 23754.07,
+    "rel_diff": 8e-06
+   },
+   "url": "https://cad.onshape.com/documents/16486637864da3fef98d58f9/w/64574d6774d5f14f39b1662f/e/8dd20414e333043b983be773"
+  },
+  "vial_holder": {
+   "name": "Stir module vial holder (56 x 56)",
+   "file": "step/vial_holder.step",
+   "commit": "7bd9e7b",
+   "did": "749fdc410a7fcf8118f934cb",
+   "wid": "dcfbeb8e868cf7d64ae87154",
+   "owner": "Vertical Cloud Lab",
+   "parentId": "a3519a23bb5dde572d2e8dbe",
+   "translation": {
+    "state": "DONE",
+    "elements": [
+     "e42dee1f2080c7b2eb1aa428"
+    ],
+    "failure": null
+   },
+   "check": {
+    "parts_onshape": 1,
+    "solids_step": 1,
+    "volume_onshape_mm3": 17111.75,
+    "volume_step_mm3": 17115.48,
+    "rel_diff": -0.000218
+   },
+   "url": "https://cad.onshape.com/documents/749fdc410a7fcf8118f934cb/w/dcfbeb8e868cf7d64ae87154/e/e42dee1f2080c7b2eb1aa428"
+  },
+  "vial_stirrer_assembly": {
+   "name": "Stir module assembly (56 x 56)",
+   "file": "step/vial_stirrer_assembly.step",
+   "commit": "7bd9e7b",
+   "did": "26ed1fa66c56b742374d9682",
+   "wid": "af7f8a2ac4be6e997df3a3f3",
+   "owner": "Vertical Cloud Lab",
+   "parentId": "a3519a23bb5dde572d2e8dbe",
+   "translation": {
+    "state": "DONE",
+    "elements": [
+     "21c19fbbd3ad7baa4c40f801"
+    ],
+    "failure": null
+   },
+   "check": {
+    "parts_onshape": 39,
+    "solids_step": 39,
+    "volume_onshape_mm3": 65486.4,
+    "volume_step_mm3": 65490.16,
+    "rel_diff": -5.7e-05
+   },
+   "url": "https://cad.onshape.com/documents/26ed1fa66c56b742374d9682/w/af7f8a2ac4be6e997df3a3f3/e/21c19fbbd3ad7baa4c40f801"
+  }
+ },
+ "api_calls_last_run": 24
+}

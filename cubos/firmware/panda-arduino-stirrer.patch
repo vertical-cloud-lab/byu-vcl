@@ -1,0 +1,343 @@
+diff --git a/include/Interface.h b/include/Interface.h
+index 1b5932a..d3ed66e 100644
+--- a/include/Interface.h
++++ b/include/Interface.h
+@@ -35,8 +35,10 @@ enum CommandCodes
+     CMD_CONTACT_ON_10 = 26,
+     CMD_CONTACT_ON_5 = 27,
+     CMD_EMAG_ON_GRAB = 28,
+-    CMD_PIPETTE_DRIVER_STATUS = 29  // [VCL] TMC2209 fault flags, read back
++    CMD_PIPETTE_DRIVER_STATUS = 29, // [VCL] TMC2209 fault flags, read back
+                                     // over the single-wire UART
++    CMD_STIR = 30,                  // [VCL] magnetic stirrer: rpm[, seconds]; rpm 0 stops
++    CMD_STIR_STATUS = 31            // [VCL] magnetic stirrer: target, rpm, duty, stalled
+ };
+ 
+ // Response codes are kept for backward compatibility and internal use
+diff --git a/include/Stirrer.h b/include/Stirrer.h
+new file mode 100644
+index 0000000..4ec49f5
+--- /dev/null
++++ b/include/Stirrer.h
+@@ -0,0 +1,41 @@
++#ifndef STIRRER_H
++#define STIRRER_H
++
++#include <Arduino.h>
++
++// [VCL] Single-vial magnetic stirrer (byu-vcl hardware/vial-stirrer-cubxl):
++// a 2-wire 40 mm fan switched low-side by an N-MOSFET, two opposite-pole
++// magnets on its hub, and a US1881 Hall latch beside them that gives one
++// falling edge per turn. Closed-loop rpm, after the Pioreactor's stirring job.
++//
++// Pins: the only free hardware PWM pin and the free external interrupt.
++#define STIR_PWM_PIN 10        // OC1B -> 100 R -> MOSFET gate (10 k gate pull-down on the stirrer)
++#define STIR_HALL_PIN 2        // INT0 <- US1881 output (open drain, 10 k pull-up to 5 V on the stirrer)
++
++// Timer1 is otherwise unused by this firmware (EMAG is on pin 11, Timer2), so it
++// is set to phase-correct PWM with TOP = ICR1: 16 MHz / (2 * 64 * 625) = 200 Hz,
++// the Pioreactor's fan PWM frequency. D9 (pipette limit switch) shares Timer1
++// but stays a plain input: only OC1B is connected.
++#define STIR_PWM_TOP 625
++
++#define STIR_PULSES_PER_REV 1      // one latch toggle pair per turn
++#define STIR_MIN_EDGE_US 5000UL    // ignore edges closer than this (12,000 rpm): noise on the cable
++#define STIR_UPDATE_MS 2000UL      // control update period
++#define STIR_KP 0.0002f            // duty fraction per rpm of error, per update. Tune on the bench
++#define STIR_MAX_STEP 0.075f       // the Pioreactor clamps each update to 7.5 points of duty
++#define STIR_RAMP 100.0f           // setpoint ramp, rpm per second
++#define STIR_DC_START 0.30f        // Pioreactor initial_duty_cycle = 30
++#define STIR_RPM_MIN 100.0f        // Pioreactor: ~125 rpm practical floor
++#define STIR_RPM_MAX 2000.0f       // Pioreactor cap
++#define STIR_KICK_MS 500UL         // full power, to break the fan free
++#define STIR_PAUSE_MS 750UL        // off before a stall kick, as the Pioreactor does
++#define STIR_STALL_TRIES 5         // updates with no pulses before giving up
++#define STIR_STALL_DUTY_MAX 0.60f  // Pioreactor's "avoid the death spiral" cap
++
++void setupStirrer();
++void updateStirrer();                          // call from loop(); never blocks, never prints
++float setStirrer(float rpm, float seconds);    // rpm <= 0 stops; seconds <= 0 runs until stopped.
++                                               // Returns the target actually set (clamped)
++void sendStirrerStatusResponse();
++
++#endif // STIRRER_H
+diff --git a/src/Interface.cpp b/src/Interface.cpp
+index 77f47af..747c2cc 100644
+--- a/src/Interface.cpp
++++ b/src/Interface.cpp
+@@ -3,6 +3,7 @@
+ #include "Magnet.h"
+ #include "LineBreak.h"
+ #include "Pipette.h"
++#include "Stirrer.h"
+ 
+ void setupInterface()
+ {
+@@ -373,6 +374,24 @@ void processCommands()
+             break;
+ 
+             
++        case CMD_STIR:
++            // [VCL] Usage: CMD_STIR,<rpm>[,<seconds>]
++            //   rpm 0 stops. rpm is clamped to 100-2000. With seconds, the
++            //   stirrer stops itself after that long; without, it runs until
++            //   told to stop or the board resets (opening the port resets it).
++            if (argCount < 1) {
++                sendJsonErrorResponse("Missing stir rpm");
++            } else {
++                const float seconds = (argCount > 1 && args[1] > 0) ? args[1] : 0.0f;
++                const float rpmSet = setStirrer(args[0], seconds);
++                sendJsonResponse(true, rpmSet > 0 ? "Stirring" : "Stirrer off", rpmSet, seconds);
++            }
++            break;
++
++        case CMD_STIR_STATUS:
++            sendStirrerStatusResponse();
++            break;
++
+         case CMD_MOVE_RELATIVE:
+             if (argCount < 3) {
+                 sendJsonErrorResponse("Missing relative move arguments (direction, steps, velocity)");
+diff --git a/src/Stirrer.cpp b/src/Stirrer.cpp
+new file mode 100644
+index 0000000..6922600
+--- /dev/null
++++ b/src/Stirrer.cpp
+@@ -0,0 +1,198 @@
++#include "Stirrer.h"
++
++// [VCL] See Stirrer.h. Mirrors byu-vcl's XIAO RP2040 firmware for the same
++// stirrer (hardware/vial-stirrer-cubxl/firmware/main.py), which follows the
++// Pioreactor's stirring.py: an additive P loop, a full-power kick from rest,
++// and a pause-then-kick on stall. Two differences forced by sharing this board:
++//   - nothing here blocks: kicks and pauses are timed phases, and
++//   - nothing is printed unprompted, since every line on this port is a reply
++//     to a command. A stall shows up as `stalled` in the status reply.
++// Pipette moves block loop() for seconds at a time. The PWM and the pulse count
++// carry on in hardware meanwhile, so only the control update (and the end of a
++// kick or a timed run) waits for the move to finish.
++
++enum StirPhase { STIR_RUN, STIR_PAUSE, STIR_KICK };
++
++static volatile uint16_t hallCount = 0;
++static volatile unsigned long lastEdgeUs = 0;
++
++static float target = 0.0f;       // rpm asked for
++static float setpoint = 0.0f;     // ramped toward target
++static float duty = 0.0f;         // 0..1 while running
++static float rpm = 0.0f;          // last measurement
++static bool stalled = false;
++static uint8_t zeroUpdates = 0;
++static unsigned long stopAtMs = 0;    // end of a timed run; 0 = none
++static bool timed = false;
++static StirPhase phase = STIR_RUN;
++static unsigned long phaseUntilMs = 0;
++static unsigned long lastUpdateMs = 0;
++
++static void hallEdge()
++{
++    unsigned long now = micros();
++    if (now - lastEdgeUs >= STIR_MIN_EDGE_US) {
++        hallCount++;
++        lastEdgeUs = now;
++    }
++}
++
++static void applyDuty()
++{
++    uint16_t level;
++    if (target <= 0.0f || phase == STIR_PAUSE) {
++        level = 0;
++    } else if (phase == STIR_KICK) {
++        level = STIR_PWM_TOP;
++    } else {
++        level = (uint16_t)(constrain(duty, 0.0f, 1.0f) * STIR_PWM_TOP + 0.5f);
++    }
++    OCR1B = level;      // 0 holds the output low, TOP holds it high
++}
++
++static void startKick(bool pauseFirst)
++{
++    phase = pauseFirst ? STIR_PAUSE : STIR_KICK;
++    phaseUntilMs = millis() + (pauseFirst ? STIR_PAUSE_MS : STIR_KICK_MS);
++    applyDuty();
++}
++
++static void stopStirrer()
++{
++    target = 0.0f;
++    setpoint = 0.0f;
++    duty = 0.0f;
++    zeroUpdates = 0;
++    timed = false;
++    phase = STIR_RUN;
++    applyDuty();
++}
++
++void setupStirrer()
++{
++    digitalWrite(STIR_PWM_PIN, LOW);
++    pinMode(STIR_PWM_PIN, OUTPUT);
++
++    // Phase-correct PWM, TOP = ICR1 (mode 10), clk/64, non-inverting on OC1B only.
++    TCCR1B = 0;
++    TCCR1A = _BV(COM1B1) | _BV(WGM11);
++    ICR1 = STIR_PWM_TOP;
++    OCR1B = 0;
++    TCNT1 = 0;
++    TCCR1B = _BV(WGM13) | _BV(CS11) | _BV(CS10);
++
++    pinMode(STIR_HALL_PIN, INPUT_PULLUP);
++    attachInterrupt(digitalPinToInterrupt(STIR_HALL_PIN), hallEdge, FALLING);
++
++    stopStirrer();
++    stalled = false;
++    lastUpdateMs = millis();
++}
++
++float setStirrer(float rpmTarget, float seconds)
++{
++    if (!(rpmTarget > 0.0f)) {          // also catches NaN
++        stopStirrer();
++        return 0.0f;
++    }
++    target = constrain(rpmTarget, STIR_RPM_MIN, STIR_RPM_MAX);
++    stalled = false;
++    zeroUpdates = 0;
++    timed = seconds > 0.0f;
++    if (timed) {
++        stopAtMs = millis() + (unsigned long)(seconds * 1000.0f);
++    }
++    if (setpoint <= 0.0f) {             // from rest: start now rather than at the next update
++        setpoint = min(target, STIR_RPM_MIN);
++        duty = STIR_DC_START;
++        noInterrupts();
++        hallCount = 0;                  // count this run's turns only
++        interrupts();
++        lastUpdateMs = millis();
++        startKick(false);
++    } else {
++        applyDuty();
++    }
++    return target;
++}
++
++void updateStirrer()
++{
++    unsigned long now = millis();
++
++    if (timed && (long)(now - stopAtMs) >= 0) {
++        stopStirrer();
++    }
++    if (phase != STIR_RUN && (long)(now - phaseUntilMs) >= 0) {
++        if (phase == STIR_PAUSE) {
++            phase = STIR_KICK;
++            phaseUntilMs = now + STIR_KICK_MS;
++        } else {
++            phase = STIR_RUN;
++        }
++        applyDuty();
++    }
++
++    if (now - lastUpdateMs < STIR_UPDATE_MS) {
++        return;
++    }
++    float dt = (now - lastUpdateMs) / 1000.0f;
++    lastUpdateMs = now;
++
++    noInterrupts();
++    uint16_t n = hallCount;
++    hallCount = 0;
++    interrupts();
++    rpm = n / (float)STIR_PULSES_PER_REV / dt * 60.0f;
++
++    if (target <= 0.0f) {
++        return;
++    }
++    if (phase != STIR_RUN) {            // still kicking: judge it next update
++        return;
++    }
++    if (setpoint <= 0.0f) {             // starting from rest
++        setpoint = min(target, STIR_RPM_MIN);
++        duty = STIR_DC_START;
++        startKick(false);
++        return;
++    }
++
++    float step = STIR_RAMP * dt;
++    setpoint = (setpoint < target) ? min(target, setpoint + step) : max(target, setpoint - step);
++
++    if (rpm < 1.0f) {                   // no pulses: pause, kick, and give up after a few tries
++        if (++zeroUpdates > STIR_STALL_TRIES) {
++            stopStirrer();
++            stalled = true;
++            return;
++        }
++        duty = min(duty * 1.01f, STIR_STALL_DUTY_MAX);
++        startKick(true);
++        return;
++    }
++    zeroUpdates = 0;
++
++    float delta = constrain(STIR_KP * (setpoint - rpm), -STIR_MAX_STEP, STIR_MAX_STEP);
++    duty = constrain(duty + delta, 0.0f, 1.0f);
++    applyDuty();
++}
++
++void sendStirrerStatusResponse()
++{
++    // OK:{"target":600,"setpoint":400,"rpm":387.0,"duty":0.312,"stalled":0,"left_s":120}
++    Serial.print(F("OK:{\"target\":"));
++    Serial.print(target, 0);
++    Serial.print(F(",\"setpoint\":"));
++    Serial.print(setpoint, 0);
++    Serial.print(F(",\"rpm\":"));
++    Serial.print(rpm, 1);
++    Serial.print(F(",\"duty\":"));
++    Serial.print(target > 0.0f ? duty : 0.0f, 3);
++    Serial.print(F(",\"stalled\":"));
++    Serial.print(stalled ? 1 : 0);
++    Serial.print(F(",\"left_s\":"));
++    long left = timed ? (long)(stopAtMs - millis()) : -1000L;
++    Serial.print(timed ? (left > 0 ? left / 1000L : 0L) : -1L);
++    Serial.println(F("}"));
++}
+diff --git a/src/pawduino_v2.1.cpp b/src/pawduino_v2.1.cpp
+index f3c4ead..2f3883b 100644
+--- a/src/pawduino_v2.1.cpp
++++ b/src/pawduino_v2.1.cpp
+@@ -8,6 +8,7 @@
+  - Electromagnet for vial cap handling
+  - Status LEDs for sample lighting, contact angle measurements, and feeback.
+  - OpenTrons pipette motor and limit switch control
++ - [VCL] Single-vial magnetic stirrer: fan PWM on D10, Hall sensor on D2
+ 
+  Author: Gregory Robben
+  Last Updated: May 2025
+@@ -19,6 +20,7 @@
+ #include "Magnet.h"
+ #include "LineBreak.h"
+ #include "Pipette.h"
++#include "Stirrer.h"
+ 
+ void setup()
+ {
+@@ -28,6 +30,7 @@ void setup()
+   setupMagnet();
+   setupLineBreak();
+   setupPipette();
++  setupStirrer();   // [VCL] after setupMagnet(): it owns Timer1 from here on
+ 
+   Serial.println("OK:Ready");
+ }
+@@ -40,6 +43,9 @@ void loop()
+   // Check the magnet safety timer
+   checkMagnetTimer();
+ 
++  // [VCL] Stirrer speed loop, timed runs and kicks
++  updateStirrer();
++
+   // Update line break LED based on sensor state
+   // updateLineBreakLED();
+ }
+\ No newline at end of file

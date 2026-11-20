@@ -7,12 +7,18 @@ into `ffmpeg` and pushes RTMP to the *BYU VCL Hardware Streams* YouTube channel.
 camera's settings live on its Pi, in a file that also holds a secret, so none of it is
 in this repo. This page records what is set and what has been changed.
 
+> **2026-11-10:** the OT-2 lid camera (`hqcam-ot2-lid`, workflow `OT2 overhead`, on the Pi 5
+> behind `RPI_STREAM_CAM_HOSTNAME`) went to the Borys lab at the University of Utah. Its last
+> VCL broadcast was ended that day; the *OT2 overhead Livestreams Playlist* stays as an
+> archive. "The other stream-cam Pi" below means that Pi, and the frame-grabbing it did now
+> needs a replacement host. The rebuild is tracked in vertical-cloud-lab/digital-wetlab.
+
 ## `picam-ot2`: now pointed at the atomizer room
 
 | | |
 | --- | --- |
 | Pi | Raspberry Pi Zero 2 W behind `OT2_STREAM_CAM_HOSTNAME` (user `OT2_STREAM_CAM_USERNAME`, sudo password `OT2_STREAM_CAM_PASSWORD`), Camera Module 3 (imx708), Debian 13 |
-| Points at | the atomizer room, as of 2026-10-01, **not the OT-2**. It streams as `CAM_NAME = "picam-ot2"` and `WORKFLOW_NAME = "atomizer"`, so broadcasts are titled *atomizer stream picam-ot2, …* and go into the [*atomizer Livestreams Playlist*](https://www.youtube.com/playlist?list=PLeosQpHvsjiY) (`PLeosQpHvsjiY`). Until 2026-10-01 17:38 MDT the workflow was `OT-2`, whose broadcasts the Lambda files into the *OT-2 Livestreams Playlist* (`PLdKz1vXA-rfQ`). The robot itself is cabled to the Pi behind `RPI_STREAM_CAM_HOSTNAME` ([`wireless-color-sensor/ot2/README.md`](../wireless-color-sensor/ot2/README.md#run-it)) |
+| Points at | the atomizer room, as of 2026-10-01, **not the OT-2**. It streams as `CAM_NAME = "picam-ot2"` and `WORKFLOW_NAME = "atomizer"`, so broadcasts are titled *atomizer stream picam-ot2, …* and go into the [*atomizer Livestreams Playlist*](https://www.youtube.com/playlist?list=PLeosQpHvsjiY) (`PLeosQpHvsjiY`). Until 2026-10-01 17:38 MDT the workflow was `OT-2`, whose broadcasts the Lambda files into the *OT-2 Livestreams Playlist* (`PLdKz1vXA-rfQ`). The robot itself was cabled to the Pi behind `RPI_STREAM_CAM_HOSTNAME`, which left on 2026-11-10 (see the note at the top) ([`wireless-color-sensor/ot2/README.md`](../wireless-color-sensor/ot2/README.md#run-it)) |
 | Client | `~/ac-training-lab/src/ac_training_lab/picam/device.py`, upstream `87a3ccb` plus a local patch, run by `device.service`. The patch adds `SENSOR_MODE`, and on the libx264 path a 2 s keyframe interval and (since 2026-10-01) `-r FRAME_RATE`. Since 2026-10-01 18:52 it also passes `--flush` to `rpicam-vid` and `-flags low_delay` to ffmpeg's video input; see [The overlay that skipped seconds](#the-overlay-that-skipped-seconds). Since 19:55 it also reads an optional `PIXELATE_BLOCKS`; see [Pixelation](#pixelation). The file before the `-r` change is `~/device.py.bak-2026-10-01`, before the `--flush` change `~/device.py.bak-2026-10-01-flush`, and before pixelation `~/device.py.bak-2026-10-01-pixelate` |
 | Settings | `my_secrets.py` in the same directory, mode `600`. It also holds the Lambda URL, so read individual lines rather than `cat` it |
 | Watchdog | `stream-watchdog.timer` runs `/usr/local/bin/stream-watchdog.sh` every minute. It restarts `device.service` after 3 checks in a row with no RTMP bytes acknowledged, at most 6 times a day by default |

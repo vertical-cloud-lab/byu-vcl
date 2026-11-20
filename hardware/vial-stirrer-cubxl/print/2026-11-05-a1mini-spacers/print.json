@@ -1,0 +1,127 @@
+{
+ "what": "Two Ø15 × 4.6 mm stir-module spacers (Ben's Onshape part, exported byte for byte) on one A1 mini plate, side by side",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6694380432",
+ "request_text": "print two of hardware/vial-stirrer-cubxl/stl/spacer/spacer_d15_h4.6_onshape.stl from branch claude/issue-169-20261009-2151 on the A1 mini, side by side, white PETG Basic from A4, with BUILD.md's settings. The plate is clear.",
+ "requested_by": "benwhitney5463",
+ "earlier_request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6671877169 (2026-11-05; that run held for want of a frame and of the file, see README)",
+ "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/42286050196",
+ "workflow": "claude-print.yml (@claude-print), environment bambu-print; Run Claude Code step started 2026-11-06T20:10:47Z",
+ "tracking_comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6694391789",
+ "plate_rule": "sgbaird 2026-10-23: frame first, the run reads the plate; if it can't tell, it says what it sees and waits for a person (the one case that needs a reply); at least 90 s after the post, polling the thread; another frame before Send",
+ "plate_check": {
+  "first_frame": {
+   "file": "20261106T202811Z_device_page.jpg",
+   "utc": "2026-11-06T20:28:11Z",
+   "read": "no frame: Studio's live view failed at 20:28 and 20:29 with 'Loading failed. Please check the network and try again. [2:2]'; the camera pane showed only Studio's placeholder",
+   "posted_utc": "2026-11-06T20:30:51Z",
+   "asked": "someone at the printer to switch it off and on (to bring the camera back), or to reply that the plate was clear right now"
+  },
+  "go": {
+   "by": "benwhitney5463",
+   "utc": "2026-11-06T20:35:26Z",
+   "text": "the plate is clear right now",
+   "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6694912778",
+   "why_needed": "the request's own 'The plate is clear' (20:10:18Z) predated the run; with no frame, the rule needs a person's reply"
+  },
+  "thread_polls": "every 20 s from 20:31:10Z to the end of the run; no other comment was posted before Send",
+  "second_try_before_send": {
+   "utc": "2026-11-06T20:35:58Z",
+   "result": "live view 'Video Stopped', no picture",
+   "file": "20261106T203636Z_device_page_before_send.jpg"
+  },
+  "hms_before_send": "empty at 20:30:05Z (Assistant (HMS) tab)",
+  "nozzle": "0.4 mm stainless steel, standard flow, read off the printer (Printer Parts), 2026-11-06T20:29:50Z",
+  "printer_state": "idle: last job 'Base' 100 % Finished; nozzle 21 C, bed 21 C, heaters off",
+  "ams_lite": "A1 PLA Basic dark blue, A2 empty, A3 PLA Basic black, A4 PETG Basic white"
+ },
+ "source": {
+  "branch": "claude/issue-169-20261009-2151",
+  "stl": "hardware/vial-stirrer-cubxl/stl/spacer/spacer_d15_h4.6_onshape.stl",
+  "stl_md5": "67c2c89a8585a23a98e9cc5527673011",
+  "stl_in_studio": "15 x 15 x 4.6 mm, volume 810.127 mm3, 176 triangles"
+ },
+ "slicer": {
+  "app": "Bambu Studio 02.08.02.61 (AppImage) on the CI runner, bundled profiles (the 2.8.0.6 configuration update was cancelled)",
+  "printer_preset": "Bambu Lab A1 mini 0.4 nozzle (set by Sync info; the empty project had started as an A1)",
+  "process_preset": "0.20mm Standard @BBL A1M",
+  "filament_preset": "Bambu PETG Basic @BBL A1M 0.4 nozzle (white): project filament 1 set to the AMS's A4 entry",
+  "plate": "Textured PEI Plate",
+  "copies": "imported once, Clone x1, Arrange: centres (118.05, 87.04) and (133.95, 92.96) mm, 2 mm apart",
+  "changed_in_gui": {
+   "wall_loops": "2 -> 4",
+   "sparse_infill_density": "15% -> 30%",
+   "elefant_foot_compensation": "0 -> 0.15 mm"
+  },
+  "left_at_preset": {
+   "enable_support": 0,
+   "brim_type": "auto_brim (made no brim: no Brim feature in the G-code)",
+   "enable_circle_compensation": 0,
+   "layer_height_mm": 0.2,
+   "nozzle_temperature": 245,
+   "textured_plate_temp": 70
+  },
+  "why": "BUILD.md stage 1: PETG, at least 4 walls, 30 % infill or more, elephant-foot compensation; the settings of the stirrer's other PETG prints"
+ },
+ "gcode_checks": "check_slice.py on the sent file (check_slice_output.txt): 23 layers to 4.60 mm; outer wall centreline 14.58 mm on layers 2-23 (Ø15.00 mm with 0.42 mm lines), 14.20 mm on layer 1 (Ø14.70 mm with 0.5 mm lines)",
+ "estimates": {
+  "layers": 23,
+  "max_z_mm": 4.6,
+  "filament_g": 1.48,
+  "filament_m": 0.49,
+  "total": "11m59s",
+  "model": "5m37s",
+  "prepare": "6m3s"
+ },
+ "send": {
+  "utc": "2026-11-06T20:37:06Z",
+  "printer": "Thumbelina, the A1 Mini (Bambu Lab A1 mini, 0.4 mm)",
+  "route": "Bambu Studio on the runner, logged in to the lab's Bambu account (password + authenticator code), sent through Bambu's cloud",
+  "job_name": "spacers_d15_x2 (the dialog offered spacer_d15_h4.6_onshape)",
+  "plate": "PEI (Textured PEI)",
+  "ams_mapping": "PETG -> A4",
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true,
+  "dialog": "20261106T203700Z_send_dialog.png"
+ },
+ "sent_file": {
+  "file": "spacers_d15_x2.gcode.3mf",
+  "from": "the 3MF Studio wrote to /tmp/bamboo_model at Send (.6238.0.3mf), DesignerUserId blanked",
+  "plate_1_gcode_md5": "015fe05f86b497214c4e7aea52b7733e",
+  "same_as_slice": true
+ },
+ "watching": "Studio's Device page every 10 s by OCR (watch_a1mini_nocam.py; log watch_monitor.jsonl): no camera, so no frames; the job panel saved at each layer change in panels/",
+ "timeline_utc": {
+  "20:10:18": "request",
+  "20:10:47": "run started (Run Claude Code step)",
+  "20:24:12": "Bambu Studio started on the runner (apt install took 11 min)",
+  "20:26:49": "Log In pressed",
+  "20:27:04": "authenticator code typed and confirmed; logged in",
+  "20:27:29": "Device page: A1 mini idle after Base, heaters off",
+  "20:28:11": "live view failed [2:2]",
+  "20:29:39": "live view failed again [2:2]",
+  "20:29:50": "nozzle 0.4 mm stainless, standard (Printer Parts)",
+  "20:30:05": "HMS list empty",
+  "20:30:51": "Device page posted in the tracking comment; holding for a person (no frame)",
+  "20:31:10": "thread polled every 20 s from here",
+  "20:31:30-20:34:29": "Sync info, import, Clone, Arrange, PETG from A4, 4 walls, 30 %, 0.15 mm EFC, sliced",
+  "20:35:26": "benwhitney5463: 'the plate is clear right now'",
+  "20:35:58": "one more try at the live view: 'Video Stopped', no picture",
+  "20:37:06": "Send",
+  "20:38:42": "job on the printer, layer 0/23, heating",
+  "20:45:00": "layer 1",
+  "20:50:33": "layer 23/23",
+  "20:50:56": "bed heater off",
+  "20:51:07": "nozzle heater off",
+  "20:51:29": "100 %, Finished",
+  "20:52:55": "HMS list empty after the print"
+ },
+ "outcome": {
+  "result": "printed: 100 %, layer 23/23, Finished, no pause, dialog or HMS alert",
+  "finished_utc": "2026-11-06T20:51:29Z",
+  "after_send": "14 min 23 s (Studio's estimate 11 min 59 s); layer 1 came 7 min 54 s after Send",
+  "parts": "left on the plate; not seen (no camera) and not yet reported on",
+  "camera": "no picture at any point in the run: live view [2:2] at 20:28 and 20:29, 'Video Stopped' at 20:36",
+  "watcher_note": "watch_a1mini_nocam.py stopped at 20:52:36 on an OCR misread of the cooling nozzle (641 C), after the finish; it never matched its finish rule because OCR dropped the % sign from '100 %'"
+ }
+}

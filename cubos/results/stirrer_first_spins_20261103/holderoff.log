@@ -1,0 +1,24 @@
+22:47:35.97Z before: OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+22:47:35.97Z 30,1200,16 -> OK:{"msg":"Stirring","v":[1200.00,16.00]}
+22:47:36.99Z   1.0 s  OK:{"target":1200,"setpoint":100,"rpm":0.0,"duty":0.300,"stalled":0,"left_s":14}
+22:47:38.00Z   2.0 s  OK:{"target":1200,"setpoint":300,"rpm":510.0,"duty":0.258,"stalled":0,"left_s":13}
+22:47:39.01Z   3.0 s  OK:{"target":1200,"setpoint":300,"rpm":510.0,"duty":0.258,"stalled":0,"left_s":12}
+22:47:40.02Z   4.0 s  OK:{"target":1200,"setpoint":500,"rpm":390.0,"duty":0.280,"stalled":0,"left_s":11}
+22:47:41.03Z   5.1 s  OK:{"target":1200,"setpoint":500,"rpm":390.0,"duty":0.280,"stalled":0,"left_s":10}
+22:47:42.04Z   6.1 s  OK:{"target":1200,"setpoint":700,"rpm":330.0,"duty":0.354,"stalled":0,"left_s":9}
+22:47:43.06Z   7.1 s  OK:{"target":1200,"setpoint":700,"rpm":330.0,"duty":0.354,"stalled":0,"left_s":8}
+22:47:44.07Z   8.1 s  OK:{"target":1200,"setpoint":900,"rpm":480.0,"duty":0.429,"stalled":0,"left_s":7}
+22:47:45.08Z   9.1 s  OK:{"target":1200,"setpoint":900,"rpm":480.0,"duty":0.429,"stalled":0,"left_s":6}
+22:47:46.09Z  10.1 s  OK:{"target":1200,"setpoint":1100,"rpm":630.0,"duty":0.504,"stalled":0,"left_s":5}
+22:47:47.10Z  11.1 s  OK:{"target":1200,"setpoint":1100,"rpm":630.0,"duty":0.504,"stalled":0,"left_s":4}
+22:47:48.11Z  12.1 s  OK:{"target":1200,"setpoint":1200,"rpm":810.0,"duty":0.579,"stalled":0,"left_s":3}
+22:47:49.13Z  13.2 s  OK:{"target":1200,"setpoint":1200,"rpm":810.0,"duty":0.579,"stalled":0,"left_s":2}
+22:47:50.14Z  14.2 s  OK:{"target":1200,"setpoint":1200,"rpm":990.0,"duty":0.621,"stalled":0,"left_s":1}
+22:47:51.15Z  15.2 s  OK:{"target":1200,"setpoint":1200,"rpm":990.0,"duty":0.621,"stalled":0,"left_s":0}
+22:47:52.16Z  16.2 s  OK:{"target":0,"setpoint":0,"rpm":1110.0,"duty":0.000,"stalled":0,"left_s":-1}
+22:47:53.18Z  17.2 s  OK:{"target":0,"setpoint":0,"rpm":1110.0,"duty":0.000,"stalled":0,"left_s":-1}
+22:47:54.19Z  18.2 s  OK:{"target":0,"setpoint":0,"rpm":360.0,"duty":0.000,"stalled":0,"left_s":-1}
+22:47:55.20Z  19.2 s  OK:{"target":0,"setpoint":0,"rpm":360.0,"duty":0.000,"stalled":0,"left_s":-1}
+22:47:56.22Z  20.2 s  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+22:47:56.22Z stop: OK:{"msg":"Stirrer off"}
+22:47:56.22Z after: OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}

@@ -1,0 +1,142 @@
+{
+ "name": "cubxl_shuttle_workflow",
+ "fps": 30,
+ "size": [
+  1280,
+  720
+ ],
+ "duration_s": 101.16,
+ "chapters": [
+  {
+   "title": "The real CubXL, Ben's idea and his measurements",
+   "start_s": 0.0,
+   "end_s": 5.4
+  },
+  {
+   "title": "The same machine as a model",
+   "start_s": 5.4,
+   "end_s": 10.0
+  },
+  {
+   "title": "The doser's parts, one at a time",
+   "start_s": 10.0,
+   "end_s": 27.0
+  },
+  {
+   "title": "Before the run, by hand",
+   "start_s": 27.0,
+   "end_s": 51.0
+  },
+  {
+   "title": "The run, step by step",
+   "start_s": 51.0,
+   "end_s": 90.16
+  },
+  {
+   "title": "After the run",
+   "start_s": 90.16,
+   "end_s": 96.16
+  },
+  {
+   "title": "Summary",
+   "start_s": 96.16,
+   "end_s": 101.16
+  }
+ ],
+ "run_captions": [
+  {
+   "caption": "1  Home: GRBL drives the gantry to +Y, the back. The steel tab on its right side plate stops against the docked shuttle",
+   "start_s": 51.3,
+   "end_s": 53.5
+  },
+  {
+   "caption": "2  Magnets on: two 5 V, 0.3 A electromagnets, switched by the doser's own board. A dock switch and a Hall sensor tell CubOS the doser is home and coupled",
+   "start_s": 53.5,
+   "end_s": 55.1
+  },
+  {
+   "caption": "3  Forward to vial 1, outlet up at −10°: moving forwards, the tab pulls the shuttle through the magnets",
+   "start_s": 55.1,
+   "end_s": 57.5
+  },
+  {
+   "caption": "4  Tilt to 35°: the tip drops 36 mm, to 17 mm over the rim, 129 mm behind the capper",
+   "start_s": 57.5,
+   "end_s": 58.8
+  },
+  {
+   "caption": "5  Dose 20 mg: the vibration motor runs and the auger turns about 0.05 turn (estimates: 380 mg per turn, 10 mg/s)",
+   "start_s": 58.8,
+   "end_s": 61.2
+  },
+  {
+   "caption": "6  Back to park, −10°: the capillary slopes back into the tube, so shaking while towed should move powder back, not out",
+   "start_s": 61.2,
+   "end_s": 62.3
+  },
+  {
+   "caption": "7  Back to vial 2: moving back, the tab pushes the shuttle by contact. Then the same cycle, 50 mg",
+   "start_s": 62.3,
+   "end_s": 66.98
+  },
+  {
+   "caption": "8  Vials 3 and 4: 100 and 200 mg. The dose series doubles; the front four vials are also in the capper's and the pipette's reach",
+   "start_s": 66.98,
+   "end_s": 76.35
+  },
+  {
+   "caption": "9  Vial 6, at the back of the row: only the doser reaches the back four vials. 50 mg",
+   "start_s": 76.35,
+   "end_s": 81.16
+  },
+  {
+   "caption": "10  The head works in front of the doser: it runs to its right end and back. No part of the doser is ever in front of the beam's front face",
+   "start_s": 81.16,
+   "end_s": 84.06
+  },
+  {
+   "caption": "11  Back to the dock: the tab pushes the shuttle home",
+   "start_s": 84.06,
+   "end_s": 85.56
+  },
+  {
+   "caption": "12  Magnets off: the doser stays on its dock, on its rail. With the power cut, it stays where it is",
+   "start_s": 85.56,
+   "end_s": 86.96
+  },
+  {
+   "caption": "13  The gantry goes on without it. The four front vials can now be capped or pipetted by the head",
+   "start_s": 86.96,
+   "end_s": 90.16
+  }
+ ],
+ "doses_mg": [
+  {
+   "vial": 1,
+   "mg": 20.0
+  },
+  {
+   "vial": 2,
+   "mg": 50.0
+  },
+  {
+   "vial": 3,
+   "mg": 100.0
+  },
+  {
+   "vial": 4,
+   "mg": 200.0
+  },
+  {
+   "vial": 6,
+   "mg": 50.0
+  }
+ ],
+ "assumptions": {
+  "mg_per_turn": 380.0,
+  "rate_mg_per_s": 10.0,
+  "bulk_density_g_per_cm3": 1.2,
+  "park_deg": -10.0,
+  "dose_deg": 35.0
+ }
+}
