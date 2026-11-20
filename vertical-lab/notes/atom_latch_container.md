@@ -108,7 +108,9 @@ leave 1.85 times. Numbers from `out/atom/atom_latch_stability.json`.
 
 ## The container (clip `atom_container`)
 
-**What the rendered clip shows: steps 1-5 below** (the state, the brushing, the dust settling, the valve shut). Steps 6-13
+**What the rendered clip shows: steps 1-5 below** (the state, the brushing, the dust settling, the valve shut), with,
+since round 14, the brush's used head stripped off and a fresh one pushed on between steps 3 and 4 (the clip's own
+step 4/6; "Round 14" below). Steps 6-13
 are written in `atom_container.py` (`ATOM_CONTAINER_FULL=1` runs them) but their two-arm moves still collide: its audit at
 01:42 found 994 frames in collision in those steps (arm 2's forearm folding onto its own MiR250 with the fork under the
 container, arm 1 and arm 2 crowding the clamp). Not rendered; the next session should move MiR250 2 (the fork's arm) and
@@ -118,7 +120,7 @@ the open door.
 | # | Step | Who | Source |
 | --- | --- | --- | --- |
 | 1 | Vented, cold; the door's two clamps swung off, then the door opened; paper under the opening | (done before the clip) | 178_sop After a run (T2 39:00, T5 77:17); DAL SOP Powder Collection 1 |
-| 2 | An anti-static brush taken from MiR250 1's rest | arm 1 | AMAZEMET's set of anti-static brushes (178_manual); this long-handled one is ours |
+| 2 | An anti-static brush taken from MiR250 1's rest, by its square grip, with a fresh head on | arm 1 | AMAZEMET's set of anti-static brushes (178_manual); this long-handled one, its grip, rest and disposable heads are ours (round 14) |
 | 3 | The cone (the 45 deg underside) brushed down to the outlet, the catch bowl brushed round in a circle, the view port's glass in a circle | arm 1 | DAL SOP Powder Collection 2; 178_sop After a run 2 (T2 43:37, T4 08:47) |
 | 4 | The dust settles, 60 s (time-lapse) | | 178_sop After a run 2 (T2 50:32) |
 | 5 | The container's valve shut: its lever pulled down a quarter turn | arm 1 | 178_sop After a run 3 ("pull down and move", T2 53:39); the direction is ours |
@@ -150,6 +152,65 @@ before unclamping is an open question below.
 **The clamp.** Drawn here as two half-rings hinged at the right and joined at the left by a T-handle bolt, replacing the
 model's two halves that slid straight apart (ours, assumed). The lab should say what the real clamp is (a hinged KF/ISO clamp
 with a wing nut, a chain clamp, a V-band).
+
+## Round 14 (2026-11-20): the brush as a tool the gripper can't drop, one head per run
+
+Sterling on PR #318, at the moment round 12's clip puts the brush back on its rest (24:58 in the long-form): "There's
+also not much of an automation-friendly grip for the gripper. Seems like it would slip out." And: "Cross-contamination
+for the anti-static brush is going to be a concern.. how to handle that? Thorough cleaning? (e.g., ultrasonic
+cleaning). Disposable heads? (e.g., kind of like disposable wand attachments in other contexts)." Everything below is
+ours (`atom_brush.py`), drawn to the 2F-85's own geometry (`ur_arm.py`); none of it is a catalogue part.
+
+**Why it would slip.** Round 12/13's brush had a plain 18 mm round handle. Flat pads on a round bar hold by friction
+only: the brush could turn about its own axis, and its weight (a 0.3 kg brush a few hundred mm out) twists it about the
+fingers' closing line, the usual way a parallel gripper drops a long tool.
+
+**The grip.** The 2F-85 now closes on an 18 x 18 mm square block (flat pads on flat faces: it can't turn about the
+shaft) between two collars of 37 mm diameter whose inner faces stand 1 mm clear of the fingertips' sides (the
+fingertips span y -14.3..13.5 mm in the TCP frame, closed on 18.8 mm). The collars stop it sliding along the fingers,
+and it can't pivot about their closing line more than a few degrees before a fingertip bears on a collar: form-fit, not
+friction. The collars' radius (18.5 mm) is wide enough to stop a fingertip (whose face is 9.4 mm off the axis) and
+short of the inner knuckles (19.4 mm behind the grasp point). The pads close on the same 18.8 mm gap as before, so the
+grasp, the brushing poses and their audit are unchanged.
+
+**The rest.** Two V-blocks under the shaft centre it. The first has a slot that takes a 4 mm fin hanging under the
+shaft by the grip: the brush lies one way only (fin down, bristles out), can't roll, and can't slide off. The slot is 59
+mm long, so the fin still sits in it during the 25 mm push that puts a fresh head on.
+
+**One head per run.** The head (bristles in a block, on an orange ferrule) goes onto a 12 x 20 mm spigot at the shaft's
+end and is held by a spring ball detent (~30 N, assumed): push on, strip off, like a pipette tip. The cycle:
+
+1. The brush waits on its rest with a fresh head on, the head sitting in the rest's open-topped pocket.
+2. Taken up, it lifts the head out of the pocket; a spring-fed magazine (a pusher plate on a gas spring) slides the
+   next head into the pocket.
+3. After brushing, the arm drops the shaft into the slot of a stripper bar across the mouth of a waste can on MiR250 1
+   and pulls back 30 mm: after 3 mm the bar holds the ferrule (the 18 mm shaft passes the 20 mm slot, the 22 mm ferrule
+   doesn't), the head comes off the detent and falls into the can with the run's powder on it.
+4. The headless shaft goes down onto its rest 25 mm short and pushes along its axis onto the head waiting in the
+   pocket until the detent clicks; the arm lets go.
+
+The can is steel, bonded to the MiR's frame (a ground strap is drawn), and goes to the same combustible-metal waste as
+the vacuum's liners (`atom_vacuum.md`). The head's bristles are conductive (carbon or stainless fibre, as anti-static
+brushes are); its size, its detent force and its cost are ours, not a product's. One head goes per run; three are drawn
+in the magazine.
+
+**Why not clean the brush between alloys.** An ultrasonic IPA wash was the other way. It was not chosen because:
+
+- it puts reactive fine Al powder (and Mg or Al-Li, for those alloys) into a solvent bath, which is a fire load and a
+  new solvent waste stream to collect, store and ship;
+- the brush has to be fully dry before it touches dry powder again (wet bristles cake fines), which adds time between
+  runs;
+- the powder lodges at the bristles' roots, where nothing on the arm can see or test whether the brush is clean. A
+  cleaned brush can't be shown free of the last alloy; a new head is free of it by construction.
+
+The same reasoning is why the lab keeps one plate, sieve set and vacuum per alloy family; a head is cheap enough to
+throw away each run.
+
+**Audit.** Strict rules at 15 fps (`ARM_AUDIT=1 VIZ3D_FPS=15 xvfb-run -a python3 atom_container.py`): **0 of 723
+frames** with an arm in collision, movers 0 (out/collisions/atom_container.json). The first pass found the falling head
+3 mm into the can's wall (6 frames: the can was 90 mm across, centred on the stripping line); the can is now 88 mm
+across, centred on the falling head's footprint, with 2-3 mm all round, and the stripping line moved 20 mm towards the
+container's cradle to keep the can clear of the pocket's wall.
 
 ## Round 13 (2026-11-20): the latch clip at 0 frames in collision
 
