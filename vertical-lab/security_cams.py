@@ -236,6 +236,7 @@ def _b(L, D):            # bullet/box at 45 degrees: (hang, h_up), ours
 
 FIXED = {
     "amcrest_t1179": dict(
+        aim_txt="pan 360, tilt 78, rotate 360 (by hand)",
         type="turret", maker="Amcrest (Dahua-made)", model="IP5M-T1179EW-AI-V3", short="Amcrest IP5M-T1179EW (aurora's)",
         res_txt="2960 x 1668, 20 fps", px=(2960, 1668), lens_txt="2.8 mm", hfov=(111.0,), vfov=(58.0,), zoom_txt="none",
         ir_txt="30 m", poe_txt="af, 5.0 W", w_max=5.0, w_typ=2.9, size_txt="Ø110 x 101 mm, 372 g", dia_mm=110.0,
@@ -246,6 +247,7 @@ FIXED = {
         price_kind="opened", src=["https://support.amcrest.com/hc/en-us/articles/22062123278733"],
         note="aurora's camera; Amcrest says it can no longer import Dahua-made products; P360/T78/R360"),
     "amlink_t5171": dict(
+        aim_txt="pan 360, tilt 78, rotate 360 (by hand)",
         type="turret", maker="AMLINK (Amcrest's new brand, FOXLINK, Taiwan)", model="AL5M-T5171EW",
         short="AMLINK AL5M-T5171EW", res_txt="2960 x 1668, 20 fps", px=(2960, 1668), lens_txt="2.8 mm",
         hfov=(111.0,), vfov=(58.0,), zoom_txt="none", ir_txt="30 m, can be off", poe_txt="af, 8.2 W (typ. 3.2)",
@@ -256,6 +258,7 @@ FIXED = {
         price_date="2026-11-20", price_kind="opened", src=["https://support.amcrest.com/hc/en-us/articles/49392408278669"],
         note="the nearest thing to aurora's turret still sold; P360/T78/R360"),
     "reolink_520a": dict(
+        aim_txt="ball base, by hand (ranges not published)",
         type="eyeball turret", maker="Reolink", model="RLC-520A (2.8 mm)", short="Reolink RLC-520A",
         res_txt="2560 x 1920, 25 fps", px=(2560, 1920), lens_txt="2.8 mm", hfov=(100.0,), vfov=(75.0,),
         zoom_txt="none", ir_txt="30 m", poe_txt="af; < 12 W (DC figure)", w_max=12.0, w_typ=None,
@@ -267,6 +270,7 @@ FIXED = {
              "https://support.reolink.com/articles/900000617826-Which-Reolink-Products-Support-CGI-RTSP-ONVIF/"],
         note="a 4 mm version is 80 x 48 deg"),
     "unifi_g5turret": dict(
+        aim_txt="by hand (ranges not published)",
         type="turret", maker="Ubiquiti", model="UniFi G5 Turret Ultra", short="UniFi G5 Turret Ultra",
         res_txt="2688 x 1512, 30 fps", px=(2688, 1512), lens_txt="fixed", hfov=(102.4,), vfov=(54.9,),
         zoom_txt="none", ir_txt="30 m", poe_txt="PoE, 4 W", w_max=4.0, w_typ=None, size_txt="Ø90 x 71 mm, 330 g",
@@ -277,6 +281,7 @@ FIXED = {
         price_kind="opened", src=["https://techspecs.ui.com/unifi/cameras-nvrs/uvc-g5-turret-ultra?s=us"],
         note="needs a Protect console between it and the Pi"),
     "axis_m3086v": dict(
+        aim_txt="pan +-175, tilt +-80, rotate +-175 (by hand)",
         type="indoor mini dome", maker="Axis", model="M3086-V", short="Axis M3086-V (mini dome)",
         res_txt="2688 x 1512, 30 fps", px=(2688, 1512), lens_txt="2.4 mm", hfov=(130.0,), vfov=(93.0,),
         zoom_txt="none", ir_txt="none", poe_txt="af Class 2, 4.2 W (typ. 3.6)", w_max=4.2, w_typ=3.6,
@@ -288,6 +293,7 @@ FIXED = {
         src=["https://www.axis.com/dam/public/b2/9f/e9/datasheet-axis-m3086-v-dome-camera-en-US-555390.pdf"],
         note="P+-175/T+-80/R+-175 inside the dome; no true CBR (MBR with a fixed GOP)"),
     "hanwha_qne8011r": dict(
+        aim_txt="pan 350, tilt 75, rotate 360 (by hand)",
         type="turret", maker="Hanwha Vision", model="QNE-8011R", short="Hanwha QNE-8011R (turret)",
         res_txt="2592 x 1944, 30 fps", px=(2592, 1944), lens_txt="2.8 mm", hfov=(105.0,), vfov=(77.0,),
         zoom_txt="none", ir_txt="20 m, can be off", poe_txt="af Class 3, 7.4 W (typ. 5.5)", w_max=7.4, w_typ=5.5,
@@ -299,6 +305,7 @@ FIXED = {
         src=["https://hvsgmpprdstorage.blob.core.windows.net/pim/QNE-8011R/DataSheet_QNE-8011R_20261116_EN_193649.pdf"],
         note="P350/T75/R360; CBR with GOV length"),
     "reolink_510a": dict(
+        aim_txt="ball bracket, by hand",
         type="mini bullet", maker="Reolink", model="RLC-510A", short="Reolink RLC-510A (bullet)",
         res_txt="2560 x 1920, 25 fps", px=(2560, 1920), lens_txt="4 mm", hfov=(80.0,), vfov=(42.0,), zoom_txt="none",
         ir_txt="30 m", poe_txt="af; < 12 W (DC figure)", w_max=12.0, w_typ=None, size_txt="186 x Ø67 mm, 415 g",
@@ -307,6 +314,7 @@ FIXED = {
         vendor="reolink.com", price_url="https://reolink.com/us/product/rlc-510a/", price_date="2026-11-20",
         price_kind="opened", src=["https://reolink.com/us/product/rlc-510a/"], note=""),
     "axis_m2036le": dict(
+        aim_txt="TM2001 bracket, by hand",
         type="mini bullet", maker="Axis", model="M2036-LE", short="Axis M2036-LE (bullet)",
         res_txt="2688 x 1512, 30 fps", px=(2688, 1512), lens_txt="2.4 mm", hfov=(130.0,), vfov=(71.0,),
         zoom_txt="none; focuses from 0.5 m", ir_txt="20 m, can be off", poe_txt="af Class 3, 12.95 W (typ. 5)",
@@ -318,6 +326,7 @@ FIXED = {
         src=["https://www.axis.com/dam/public/bc/50/1b/datasheet-axis-m2036-le-bullet-camera-en-US-555403.pdf"],
         note="TM2001 bracket included"),
     "reolink_811a": dict(
+        aim_txt="bracket, by hand; zoom remote",
         type="varifocal bullet", maker="Reolink", model="RLC-811A", short="Reolink RLC-811A (5x bullet)",
         res_txt="3840 x 2160, 25 fps", px=(3840, 2160), lens_txt="2.7-13.5 mm", hfov=(105.0, 31.0), vfov=(55.0, 17.0),
         zoom_txt="5x, motorized", ir_txt="30 m", poe_txt="af; < 12 W (DC figure)", w_max=12.0, w_typ=None,
@@ -327,6 +336,7 @@ FIXED = {
         price_url="https://reolink.com/us/product/rlc-811a/", price_date="2026-11-20", price_kind="opened",
         src=["https://reolink.com/us/product/rlc-811a/"], note="4K at <= 8 Mbit/s is under YouTube's 4K minimum"),
     "amcrest_vt1289": dict(
+        aim_txt="pan 360, tilt 78, rotate 360 (by hand); zoom remote",
         type="varifocal turret", maker="Amcrest (Dahua-made)", model="IP5M-VT1289EW-AI",
         short="Amcrest IP5M-VT1289EW (5x turret)", res_txt="2592 x 1944, 20 fps", px=(2592, 1944),
         lens_txt="2.7-13.5 mm", hfov=(100.0, 30.0), vfov=(72.0, 23.0), zoom_txt="5x, motorized; focuses from 0.8 m",
@@ -336,6 +346,7 @@ FIXED = {
         price_url="https://amcrest.com/new-products/color/white.html", price_date="2026-11-20", price_kind="snippet",
         src=["https://support.amcrest.com/hc/en-us/articles/17236607643917"], note=""),
     "axis_m4216lv": dict(
+        aim_txt="pan +-180, tilt -40..+65, rotate +-105 (by hand); zoom remote",
         type="varifocal dome", maker="Axis", model="M4216-LV", short="Axis M4216-LV (2x dome)",
         res_txt="2304 x 1728, 30 fps", px=(2304, 1728), lens_txt="3-6 mm", hfov=(100.0, 45.0), vfov=(72.0, 34.0),
         zoom_txt="2x, remote zoom and focus", ir_txt="20 m, can be off", poe_txt="af Class 3, 9.7 W (typ. 5)",
@@ -346,6 +357,7 @@ FIXED = {
         src=["https://www.axis.com/dam/public/ca/74/e4/datasheet-axis-m4216-lv-dome-camera-en-US-490176.pdf"],
         note="P+-180/T-40..+65/R+-105"),
     "axis_m1137": dict(
+        aim_txt="any tripod head (1/4-20)",
         type="box (CS mount)", maker="Axis", model="M1137 Mk II", short="Axis M1137 Mk II (box)",
         res_txt="2592 x 1944, 30 fps", px=(2592, 1944), lens_txt="2.8-13 mm (i-CS 3.5-10 mm)", hfov=(112.0, 24.0),
         vfov=(82.0, 19.0), zoom_txt="4.6x by hand (i-CS: 2.9x, remote); focuses from 0.8 m", ir_txt="none",
@@ -357,6 +369,7 @@ FIXED = {
         src=["https://www.axis.com/dam/public/2c/1e/98/datasheet-axis-m1137-mk-ii-box-camera-en-US-504528.pdf"],
         note="10-28 V DC too"),
     "axis_p1385": dict(
+        aim_txt="any tripod head (1/4-20)",
         type="box (CS mount)", maker="Axis", model="P1385", short="Axis P1385 (box)", res_txt="1920 x 1080, 60 fps",
         px=(1920, 1080), lens_txt="2.8-13 mm", hfov=(121.0, 26.0), vfov=(64.0, 15.0), zoom_txt="4.6x by hand",
         ir_txt="none", poe_txt="af Class 3, 9.3 W", w_max=9.31, w_typ=2.97, size_txt="480 g (drawing only)",
@@ -366,6 +379,7 @@ FIXED = {
         price_date="2026-11-20", price_kind="opened",
         src=["https://www.axis.com/dam/public/26/55/ff/datasheet-axis-p1385-box-camera-en-US-518378.pdf"], note=""),
     "axis_f2105": dict(
+        aim_txt="the sensor on Axis's small mounts",
         type="sensor on a cable", maker="Axis", model="F9111-R Mk II + F2105-RE + 8 m cable",
         short="Axis F2105-RE sensor (F-series)", res_txt="1920 x 1080, 60 fps", px=(1920, 1080), lens_txt="3.1 mm",
         hfov=(108.0,), vfov=(58.0,), zoom_txt="none", ir_txt="none", poe_txt="at Class 4, 25.5 W (main unit)",
@@ -377,6 +391,7 @@ FIXED = {
         src=["https://www.axis.com/dam/public/a4/c1/17/datasheet-axis-f2105-re-standard-sensor-en-US-504514.pdf"],
         note="the main unit can live off the tray's floor, the sensor anywhere within 8 m"),
     "axis_p1275": dict(
+        aim_txt="pan 360, tilt 0-90, rotate 360 (by hand)",
         type="mini dome on a cable", maker="Axis", model="P1275 Mk II", short="Axis P1275 Mk II (on a cable)",
         res_txt="1920 x 1080, 30 fps", px=(1920, 1080), lens_txt="2.8-6 mm, by hand", hfov=(99.0, 53.0),
         vfov=(53.0, 30.0), zoom_txt="2x by hand; focuses from 0.1 m", ir_txt="none", poe_txt="af Class 2, 4.1 W",
@@ -387,6 +402,7 @@ FIXED = {
         src=["https://www.axis.com/dam/public/aa/f2/93/datasheet-axis-p1275-mk-ii-modular-varifocal-dome-camera-en-US-441939.pdf"],
         note="P360/T0-90/R360"),
     "axis_p1265": dict(
+        aim_txt="fixed in its housing",
         type="pinhole on a cable", maker="Axis", model="P1265 Mk II", short="Axis P1265 Mk II (pinhole)",
         res_txt="1080p", px=(1920, 1080), lens_txt="3.7 mm", hfov=(91.0,), vfov=(45.0,),
         zoom_txt="none; focuses from 0.2 m", ir_txt="none", poe_txt="af Class 2", w_max=6.49, w_typ=None,
@@ -394,6 +410,7 @@ FIXED = {
         min_focus_mm=200.0, onvif_txt="G/M/S/T; local", ndaa_txt="yes (Axis)", price=499.99, vendor="CDW",
         price_url="https://www.cdw.com/", price_date="2026-11-20", price_kind="snippet", src=[], note="class 2 max"),
     "ccdcam_board": dict(
+        aim_txt="our housing",
         type="IP board", maker="Shenzhen CCDCAM", model="IMA50L12 (IMX335)", short="CCDCAM IMA50L12 board",
         res_txt="2592 x 1944, 30 fps", px=(2592, 1944), lens_txt="M12, not included", hfov=(100.0,), vfov=(75.0,),
         zoom_txt="none", ir_txt="none (IR-cut only)", poe_txt="'DC12V/POE', 1.9 W", w_max=1.9, w_typ=None,
@@ -404,6 +421,7 @@ FIXED = {
         price_date="2026-11-20", price_kind="snippet", src=["https://p.globalsources.com/IMAGES/PDT/SPEC/151/K1197603151.pdf"],
         note="the HQ Camera's 38 mm board size; a housing and lens are ours to add"),
     "mobotix_s74": dict(
+        aim_txt="each module on its own mount",
         type="modular, with temperature", maker="Mobotix", model="S74 + 45° module + MultiSense",
         short="Mobotix S74 + MultiSense", res_txt="3840 x 2160, 30 fps", px=(3840, 2160), lens_txt="45° module",
         hfov=(45.0,), vfov=(25.3,), zoom_txt="none", ir_txt="optional module", poe_txt="at Class 4, 25 W", w_max=25.0,
@@ -418,6 +436,7 @@ FIXED = {
 
 PTZ = {
     "axis_m5075g": dict(
+        aim_txt="motorized: pan +-179, tilt 90, 100°/s; 256 presets",
         type="mini PTZ", maker="Axis", model="M5075-G", short="Axis M5075-G (5x PTZ)",
         res_txt="1080p, 60 fps", px=(1920, 1080), lens_txt="2.2-11 mm", hfov=(71.0, 14.0), vfov=(40.0, 8.0),
         zoom_txt="5x, autofocus", ir_txt="none", poe_txt="af Class 3, 9.5 W (typ. 4.4)", w_max=9.5, w_typ=4.4,
@@ -431,6 +450,7 @@ PTZ = {
         note="indoor IP51; pan +-179 deg, tilt 90 deg, 100 deg/s; 256 presets; polygon privacy masks; microSD; "
              "AXIS M50 mounting kit included; CDW $819.99, MSRP $709 (snippets)"),
     "dahua_sd1a404": dict(
+        aim_txt="motorized: pan 0-355, tilt 5-90; 300 presets",
         type="mini PTZ", maker="Dahua", model="SD1A404XB-GNR (Amcrest IP4M-1066EW in the US)",
         short="Dahua SD1A404XB-GNR (4x PTZ)", res_txt="2560 x 1440, 30 fps", px=(2560, 1440), lens_txt="2.8-12 mm",
         hfov=(96.9, 31.6), vfov=(54.0, 17.8), zoom_txt="4x; focuses from 0.2-0.5 m", ir_txt="15 m",
@@ -445,6 +465,7 @@ PTZ = {
         note="outdoor IP66; pan 0-355, tilt 5-90; 300 presets; end of sale 2027-06-30 (eol.network, snippet); the "
              "vertical angles are 16:9 of the published horizontal ones (ours); no US price for the Dahua itself"),
     "hik_2a404": dict(
+        aim_txt="motorized: pan 0-355, tilt 0-90; 300 presets",
         type="mini PTZ", maker="Hikvision", model="DS-2DE2A404IW-DE3", short="Hikvision DS-2DE2A404IW-DE3 (4x PTZ)",
         res_txt="2560 x 1440, 25 fps", px=(2560, 1440), lens_txt="2.8-12 mm", hfov=(96.7, 31.6), vfov=(54.0, 17.8),
         zoom_txt="4x; focuses from 1.5 m at full zoom", ir_txt="20 m", poe_txt="af, 11.2 W with IR", w_max=11.2,
@@ -455,6 +476,7 @@ PTZ = {
         src=["https://download.securityrussia.com/ru_datasheet_of_ds-2de2a404iw-de32.8-12mmc_v5.6.12.pdf"],
         note="marked discontinued on Hikvision's PH site (snippet)"),
     "reolink_823s2": dict(
+        aim_txt="motorized: pan 360, tilt 90; 64 presets",
         type="PTZ, 16x", maker="Reolink", model="RLC-823S2", short="Reolink RLC-823S2 (16x PTZ)",
         res_txt="3840 x 2160, 25 fps", px=(3840, 2160), lens_txt="5.3-86 mm", hfov=(54.2, 3.6), vfov=(30.5, 2.0),
         zoom_txt="16x; close focus not published", ir_txt="80 m", poe_txt="at, < 24 W", w_max=24.0,
@@ -465,6 +487,7 @@ PTZ = {
         price_date="2026-11-20", price_kind="snippet", src=["https://reolink.com/us/product/rlc-823s2/"],
         note="outdoor IP66; too tall for the band and too wide for the strip"),
     "reolink_trackmix": dict(
+        aim_txt="motorized: pan 355, tilt 0-90; 64 presets",
         type="dual-lens tracker", maker="Reolink", model="TrackMix PoE", short="Reolink TrackMix PoE (wide + tele)",
         res_txt="3840 x 2160, 25 fps", px=(3840, 2160), lens_txt="2.8 + 8 mm, fixed", hfov=(104.0, 38.0),
         vfov=(55.0, 21.0), zoom_txt="none (two fixed lenses, '6x hybrid')", ir_txt="30 m", poe_txt="af, < 12 W",
@@ -475,6 +498,7 @@ PTZ = {
         price_kind="snippet", src=["https://reolink.com/us/product/reolink-trackmix-poe/"],
         note="the pair in one body, but with no optical zoom"),
     "axis_m5000g": dict(
+        aim_txt="motorized: pan 360, tilt 180; 100 presets",
         type="overview + PTZ", maker="Axis", model="M5000-G", short="Axis M5000-G (360° + 10x PTZ)",
         res_txt="PTZ 1080p; overview 3 x 5 MP", px=(1920, 1080), lens_txt="4.7-47 mm", hfov=(61.8, 6.7),
         vfov=(36.0, 3.8), zoom_txt="10x", ir_txt="none", poe_txt="at Class 4, 13.4 W", w_max=13.4,
@@ -486,6 +510,7 @@ PTZ = {
         src=["https://www.axis.com/dam/public/d7/f5/cd/datasheet-axis-m5000-g-ptz-camera-en-US-555401.pdf"],
         note="the pair in one dome; 138 mm tall: only if the roof is higher than assumed"),
     "ptzoptics_movese20": dict(
+        aim_txt="motorized: pan +-170, tilt -30..+90; 255 presets",
         type="conference PTZ", maker="PTZOptics", model="Move SE 20X", short="PTZOptics Move SE 20X",
         res_txt="1080p, 60 fps", px=(1920, 1080), lens_txt="4.42-88.5 mm", hfov=(60.7, 3.4), vfov=(34.1, 1.9),
         zoom_txt="20x; close focus not published", ir_txt="none", poe_txt="af (but 'max 18 W'): plan an at port",
@@ -496,6 +521,7 @@ PTZ = {
         price_date="2026-11-20", price_kind="snippet", src=["https://docs.ptzoptics.com/docs/cameras/move-se/technical-specs"],
         note="a broadcast camera, not a security one; too big for the band"),
     "sony_srga12": dict(
+        aim_txt="motorized: pan +-170, tilt -20..+90; 256 presets",
         type="conference PTZ", maker="Sony", model="SRG-A12", short="Sony SRG-A12 (12x, AI framing)",
         res_txt="2160p30 / 1080p60", px=(3840, 2160), lens_txt="4.4-52.8 mm", hfov=(70.0, 6.7), vfov=(39.4, 3.8),
         zoom_txt="12x; focuses from 0.4 m at full zoom", ir_txt="none", poe_txt="bt Class 8, 71.3 W", w_max=71.3,
@@ -1202,11 +1228,12 @@ def tables(res: dict) -> dict:
                 continue
             fov = "-".join(f"{h:.0f}" for h in c["hfov"]) + " x " + "-".join(f"{v:.0f}" for v in c["vfov"]) + "°"
             rows.append((c["type"], f"{c['maker']} **{c['model']}**", c["res_txt"], f"{c['lens_txt']}; {fov}",
-                         c.get("zoom_txt", "none"), c.get("ir_txt", "-"), c["poe_txt"], c["size_txt"],
+                         c.get("zoom_txt", "none"), c.get("aim_txt", "-"), c.get("ir_txt", "-"), c["poe_txt"],
+                         c["size_txt"],
                          c.get("onvif_txt", "-"), c.get("ndaa_txt", "-"), f"${c['price']:,.0f}",
                          f"[{c['vendor']}]({c['price_url']})" + (" (snippet)" if c.get("price_kind") == "snippet"
                                                                  else "")))
-        t[which] = _md(rows, ["Type", "Model", "Resolution", "Lens; across x up", "Zoom, focus", "IR",
+        t[which] = _md(rows, ["Type", "Model", "Resolution", "Lens; across x up", "Zoom, focus", "Aim", "IR",
                               "PoE, most it draws", "Size", "ONVIF, RTSP, local", "On federal money", "Price",
                               "Seen 2026-11-20 at"])
     rows = []

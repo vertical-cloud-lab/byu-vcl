@@ -2155,6 +2155,7 @@
  },
  "candidates": {
   "amcrest_t1179": {
+   "aim_txt": "pan 360, tilt 78, rotate 360 (by hand)",
    "type": "turret",
    "maker": "Amcrest (Dahua-made)",
    "model": "IP5M-T1179EW-AI-V3",
@@ -2195,6 +2196,7 @@
    "note": "aurora's camera; Amcrest says it can no longer import Dahua-made products; P360/T78/R360"
   },
   "amlink_t5171": {
+   "aim_txt": "pan 360, tilt 78, rotate 360 (by hand)",
    "type": "turret",
    "maker": "AMLINK (Amcrest's new brand, FOXLINK, Taiwan)",
    "model": "AL5M-T5171EW",
@@ -2235,6 +2237,7 @@
    "note": "the nearest thing to aurora's turret still sold; P360/T78/R360"
   },
   "reolink_520a": {
+   "aim_txt": "ball base, by hand (ranges not published)",
    "type": "eyeball turret",
    "maker": "Reolink",
    "model": "RLC-520A (2.8 mm)",
@@ -2276,6 +2279,7 @@
    "note": "a 4 mm version is 80 x 48 deg"
   },
   "unifi_g5turret": {
+   "aim_txt": "by hand (ranges not published)",
    "type": "turret",
    "maker": "Ubiquiti",
    "model": "UniFi G5 Turret Ultra",
@@ -2316,6 +2320,7 @@
    "note": "needs a Protect console between it and the Pi"
   },
   "axis_m3086v": {
+   "aim_txt": "pan +-175, tilt +-80, rotate +-175 (by hand)",
    "type": "indoor mini dome",
    "maker": "Axis",
    "model": "M3086-V",
@@ -2356,6 +2361,7 @@
    "note": "P+-175/T+-80/R+-175 inside the dome; no true CBR (MBR with a fixed GOP)"
   },
   "hanwha_qne8011r": {
+   "aim_txt": "pan 350, tilt 75, rotate 360 (by hand)",
    "type": "turret",
    "maker": "Hanwha Vision",
    "model": "QNE-8011R",
@@ -2396,6 +2402,7 @@
    "note": "P350/T75/R360; CBR with GOV length"
   },
   "reolink_510a": {
+   "aim_txt": "ball bracket, by hand",
    "type": "mini bullet",
    "maker": "Reolink",
    "model": "RLC-510A",
@@ -2436,6 +2443,7 @@
    "note": ""
   },
   "axis_m2036le": {
+   "aim_txt": "TM2001 bracket, by hand",
    "type": "mini bullet",
    "maker": "Axis",
    "model": "M2036-LE",
@@ -2476,6 +2484,7 @@
    "note": "TM2001 bracket included"
   },
   "reolink_811a": {
+   "aim_txt": "bracket, by hand; zoom remote",
    "type": "varifocal bullet",
    "maker": "Reolink",
    "model": "RLC-811A",
@@ -2518,6 +2527,7 @@
    "note": "4K at <= 8 Mbit/s is under YouTube's 4K minimum"
   },
   "amcrest_vt1289": {
+   "aim_txt": "pan 360, tilt 78, rotate 360 (by hand); zoom remote",
    "type": "varifocal turret",
    "maker": "Amcrest (Dahua-made)",
    "model": "IP5M-VT1289EW-AI",
@@ -2560,6 +2570,7 @@
    "note": ""
   },
   "axis_m4216lv": {
+   "aim_txt": "pan +-180, tilt -40..+65, rotate +-105 (by hand); zoom remote",
    "type": "varifocal dome",
    "maker": "Axis",
    "model": "M4216-LV",
@@ -2602,6 +2613,7 @@
    "note": "P+-180/T-40..+65/R+-105"
   },
   "axis_m1137": {
+   "aim_txt": "any tripod head (1/4-20)",
    "type": "box (CS mount)",
    "maker": "Axis",
    "model": "M1137 Mk II",
@@ -2644,6 +2656,7 @@
    "note": "10-28 V DC too"
   },
   "axis_p1385": {
+   "aim_txt": "any tripod head (1/4-20)",
    "type": "box (CS mount)",
    "maker": "Axis",
    "model": "P1385",
@@ -2686,6 +2699,7 @@
    "note": ""
   },
   "axis_f2105": {
+   "aim_txt": "the sensor on Axis's small mounts",
    "type": "sensor on a cable",
    "maker": "Axis",
    "model": "F9111-R Mk II + F2105-RE + 8 m cable",
@@ -2726,6 +2740,7 @@
    "note": "the main unit can live off the tray's floor, the sensor anywhere within 8 m"
   },
   "axis_p1275": {
+   "aim_txt": "pan 360, tilt 0-90, rotate 360 (by hand)",
    "type": "mini dome on a cable",
    "maker": "Axis",
    "model": "P1275 Mk II",
@@ -2768,6 +2783,7 @@
    "note": "P360/T0-90/R360"
   },
   "axis_p1265": {
+   "aim_txt": "fixed in its housing",
    "type": "pinhole on a cable",
    "maker": "Axis",
    "model": "P1265 Mk II",
@@ -2806,6 +2822,7 @@
    "note": "class 2 max"
   },
   "ccdcam_board": {
+   "aim_txt": "our housing",
    "type": "IP board",
    "maker": "Shenzhen CCDCAM",
    "model": "IMA50L12 (IMX335)",
@@ -2846,6 +2863,7 @@
    "note": "the HQ Camera's 38 mm board size; a housing and lens are ours to add"
   },
   "mobotix_s74": {
+   "aim_txt": "each module on its own mount",
    "type": "modular, with temperature",
    "maker": "Mobotix",
    "model": "S74 + 45\u00b0 module + MultiSense",
@@ -2886,6 +2904,7 @@
    "note": "temperature, not humidity; vertical angle ours (16:9)"
   },
   "axis_m5075g": {
+   "aim_txt": "motorized: pan +-179, tilt 90, 100\u00b0/s; 256 presets",
    "type": "mini PTZ",
    "maker": "Axis",
    "model": "M5075-G",
@@ -2930,6 +2949,7 @@
    "note": "indoor IP51; pan +-179 deg, tilt 90 deg, 100 deg/s; 256 presets; polygon privacy masks; microSD; AXIS M50 mounting kit included; CDW $819.99, MSRP $709 (snippets)"
   },
   "dahua_sd1a404": {
+   "aim_txt": "motorized: pan 0-355, tilt 5-90; 300 presets",
    "type": "mini PTZ",
    "maker": "Dahua",
    "model": "SD1A404XB-GNR (Amcrest IP4M-1066EW in the US)",
@@ -2974,6 +2994,7 @@
    "note": "outdoor IP66; pan 0-355, tilt 5-90; 300 presets; end of sale 2027-06-30 (eol.network, snippet); the vertical angles are 16:9 of the published horizontal ones (ours); no US price for the Dahua itself"
   },
   "hik_2a404": {
+   "aim_txt": "motorized: pan 0-355, tilt 0-90; 300 presets",
    "type": "mini PTZ",
    "maker": "Hikvision",
    "model": "DS-2DE2A404IW-DE3",
@@ -3016,6 +3037,7 @@
    "note": "marked discontinued on Hikvision's PH site (snippet)"
   },
   "reolink_823s2": {
+   "aim_txt": "motorized: pan 360, tilt 90; 64 presets",
    "type": "PTZ, 16x",
    "maker": "Reolink",
    "model": "RLC-823S2",
@@ -3058,6 +3080,7 @@
    "note": "outdoor IP66; too tall for the band and too wide for the strip"
   },
   "reolink_trackmix": {
+   "aim_txt": "motorized: pan 355, tilt 0-90; 64 presets",
    "type": "dual-lens tracker",
    "maker": "Reolink",
    "model": "TrackMix PoE",
@@ -3100,6 +3123,7 @@
    "note": "the pair in one body, but with no optical zoom"
   },
   "axis_m5000g": {
+   "aim_txt": "motorized: pan 360, tilt 180; 100 presets",
    "type": "overview + PTZ",
    "maker": "Axis",
    "model": "M5000-G",
@@ -3142,6 +3166,7 @@
    "note": "the pair in one dome; 138 mm tall: only if the roof is higher than assumed"
   },
   "ptzoptics_movese20": {
+   "aim_txt": "motorized: pan +-170, tilt -30..+90; 255 presets",
    "type": "conference PTZ",
    "maker": "PTZOptics",
    "model": "Move SE 20X",
@@ -3184,6 +3209,7 @@
    "note": "a broadcast camera, not a security one; too big for the band"
   },
   "sony_srga12": {
+   "aim_txt": "motorized: pan +-170, tilt -20..+90; 256 presets",
    "type": "conference PTZ",
    "maker": "Sony",
    "model": "SRG-A12",
