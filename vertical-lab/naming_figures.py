@@ -143,10 +143,11 @@ def trays(rows: list[dict], path: Path) -> None:
                     continue
                 w, h = bx1 - bx0, by1 - by0
                 fs, text, rot = (6.0 if small else 9.5), nm, 0
-                MM_PER_CHAR_PT = 2.75                     # about 0.6 em a character, at this figure's scale
+                MM_PER_CHAR_PT = 5.4                      # about 0.6 em a character: a panel is ~4 in for 2520 mm
                 if len(text) * MM_PER_CHAR_PT * fs > 0.92 * w:
-                    if h > 1.6 * w and len(text) * MM_PER_CHAR_PT * fs <= 0.92 * h:
+                    if h > 1.6 * w:                       # tall and narrow: along its length
                         rot = 90
+                        fs = min(fs, 0.92 * h / (len(text) * MM_PER_CHAR_PT))
                     elif "-" in text and not small:
                         text = text.replace("-", "-\n", 1)
                         fs = min(fs, 0.92 * w / (max(len(x) for x in text.split("\n")) * MM_PER_CHAR_PT))
@@ -158,8 +159,10 @@ def trays(rows: list[dict], path: Path) -> None:
             shname = N.STATIONS["vlm" if s == 1 else "vlm2"][0]
             ax.text(-1225, 470, f"tray {t} · “{N.NATO[t]}”", fontsize=10.5, weight="bold", color=INK,
                     va="bottom")
-            ax.text(1225, 470, f"{shname}, slot {slot}: {d['role']}", fontsize=8, color=INK2, va="bottom",
-                    ha="right")
+            role = d["role"].replace(", second rack", " (rack 2)").replace(", second store", " (store 2)")
+            ax.text(-1225 + 1000, 478, role, fontsize=7.4, color=INK2, va="bottom", ha="left")
+            ax.text(1225, 470, f"{shname} {slot}", fontsize=9, color=ACCENT, va="bottom", ha="right",
+                    weight="bold")
             ax.set_xlim(-1260, 1260)
             ax.set_ylim(-470, 640)
             ax.set_aspect("equal")
