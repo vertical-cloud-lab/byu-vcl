@@ -21,8 +21,8 @@ The CubXL on tray A runs DAL's copper corrosion screen
 - **Pipettes: add a P300 beside the P20; don't switch to a Flex.** One OT-2 GEN2 P300 single ($2,950) moves the 135 µL
   of seawater, the 150 µL collection and the rinse in single transfers: **6 transfers a spot instead of 33, and about 9
   min of head time instead of 22.5** (the CubXL's own measured step times). It is the pipette the PANDA firmware was
-  written for, so CubOS drives it the way it drives the P20. It needs its own 40 mm lift on the head (§4: fixed beside
-  the P20 on the one Z axis, it puts the P20 onto the next vial's cap). Accuracy is a wash (±1-2 % at these volumes either way).
+  written for, so CubOS drives it the way it drives the P20. It needs its own 40 mm lift on the head (§4: fixed on
+  the one Z axis, it puts the P20 onto the next vial's cap). Accuracy is a wash (±1-2 % at these volumes either way).
   What it really buys is mixing the well after the sulfide. A Flex 1-Channel 1000 µL ($3,600) would need a CAN FD and
   36 V integration with no published example, and it is less accurate at 15 µL than the P20 it would replace.
 - **Evaporation is small. Sulfide loss is not.** A spot loses **1-3 %** of the well's water, so chloride rises 1-3 %;
@@ -332,7 +332,7 @@ note's proposal, and says so.
   one tip is on the head at a time: on one Z axis, a tip on the idle pipette would hang into whatever is under it.
 - **It rides its own 40 mm lift.** The first audit of the clip, with the P300 fixed, found the bare P20 nozzle on the
   10 mg/L stock's cap while the P300 drew ASW: Ben's holder has a 33 mm pitch, so a pipette 34 mm behind another sits
-  over the next vial, and the P20 hangs 35 mm higher than the P300's tip end. Drawing 35 mm into the vial put it 1 mm
+  over the next vial, and the bare P20 nozzle is only 35 mm above the P300's tip end. Drawing 35 mm into the vial put it 1 mm
   into that cap, and a running-down stock needs deeper draws. So the P300 is lowered 40 mm on a linear actuator (50 mm
   stroke, an Actuonix L16-class part, about $100) only while it works, and stowed before every move at the travel
   plane; the carriage, the P20 and the capper stay 40 mm higher meanwhile. The alternative is DAL's to choose: an empty
