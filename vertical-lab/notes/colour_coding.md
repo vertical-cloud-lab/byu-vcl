@@ -79,7 +79,7 @@ things within one.
 | Al | blue | `#0072B2` | the lab's main family; the most distinct colour from the orange for every kind of colour vision |
 | Cu | orange | `#E69F00` | copper-coloured, so it is remembered |
 | a third (Ni-base, Fe-base or Ti, whichever comes first) | brown | `#7B4A2A` | the only hue left that stays clear of both |
-| (none) | grey or black | | touches no powder, or is cleaned to a validated limit between every use |
+| (none) | black, or bare steel | `#111111` | touches no powder, or is cleaned to a validated limit between every use. Not grey: a mid-grey is 19.7 from the brown for protan vision and 18.8 from the blue for tritan vision |
 
 ![](../out/colour/palette_cvd.png)
 
@@ -88,12 +88,18 @@ things within one.
 | Al blue / Cu orange | 64.7 | 56.9 | 64.4 | 53.5 |
 | Al blue / brown | 46.2 | 40.8 | 42.2 | 43.8 |
 | Cu orange / brown | 38.7 | 37.6 | 38.5 | 35.4 |
+| brown / black (the neutral) | 35.6 | 30.1 | 35.0 | 37.2 |
 | *rejected:* Al blue / green | 34.6 | 36.7 | 35.0 | **11.7** |
 | *rejected:* Cu orange / purple | 39.7 | 44.9 | 39.2 | **11.0** |
 
 Differences are CAM02-UCS distances between the simulated colours (Machado et al. 2009, full dichromacy, through
 colorspacious). The check passes at 20 or more, accepts 12-20 only with a second cue, and fails below 12
 (`out/colour/cvd_check.json`).
+
+A second, independent check agrees: a palette validator built for chart colours (OKLab, its own colour-vision
+simulation) passes the three family colours on colour-vision separation (worst pair brown and blue, 20.1 for deutan
+vision, against its target of 8). It also flags the brown as low in chroma. That is one more reason the brown always
+comes with the family's name, never on its own.
 
 **Where the band goes, kept small:**
 

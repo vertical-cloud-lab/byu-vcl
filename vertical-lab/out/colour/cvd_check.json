@@ -23,6 +23,16 @@
     "grade": "pass"
    },
    {
+    "a": "Al",
+    "b": "general",
+    "normal": 46.5,
+    "protan": 48.1,
+    "deutan": 44.5,
+    "tritan": 46.3,
+    "worst": "deutan",
+    "grade": "pass"
+   },
+   {
     "a": "Cu",
     "b": "next",
     "normal": 38.7,
@@ -30,6 +40,26 @@
     "deutan": 38.5,
     "tritan": 35.4,
     "worst": "tritan",
+    "grade": "pass"
+   },
+   {
+    "a": "Cu",
+    "b": "general",
+    "normal": 72.5,
+    "protan": 67.7,
+    "deutan": 73.5,
+    "tritan": 70.6,
+    "worst": "protan",
+    "grade": "pass"
+   },
+   {
+    "a": "next",
+    "b": "general",
+    "normal": 35.6,
+    "protan": 30.1,
+    "deutan": 35.0,
+    "tritan": 37.2,
+    "worst": "protan",
     "grade": "pass"
    }
   ],

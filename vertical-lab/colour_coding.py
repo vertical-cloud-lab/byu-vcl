@@ -42,7 +42,9 @@ FAMILY = {   # the alloy family a tool or container is dedicated to: its handle,
     "next": dict(name="brown", rgb="#7B4A2A", why="reserved: the only hue left that stays clear of blue and orange",
                  reserved=True),
 }
-NEUTRAL = {"general": dict(name="grey/black", rgb="#5F6368",
+# The neutral is black (or bare steel), not grey: a mid-grey sits 19.7 from the brown for protan vision and 18.8 from
+# the blue for tritan vision; black is at least 30 from all three.
+NEUTRAL = {"general": dict(name="black or bare steel", rgb="#111111",
                            why="touches no powder, or is cleaned to a validated limit between every use")}
 
 FLOOR = {    # floor tape and paint (OSHA 1910.144 and the usual visual-workplace convention; ISO 3691-4 for the AMRs)
@@ -73,7 +75,7 @@ SAFETY = {   # reserved by ANSI Z535.1 / ISO 3864 / OSHA 1910.144: never used fo
     "mandatory, information": "#005EB8", "radiation (trefoil, XRD and XRF)": "#B5148A",
 }
 
-PALETTES = {"alloy family": {k: v["rgb"] for k, v in FAMILY.items()},
+PALETTES = {"alloy family": {**{k: v["rgb"] for k, v in FAMILY.items()}, "general": NEUTRAL["general"]["rgb"]},
             "alloy family in use": {k: v["rgb"] for k, v in FAMILY.items() if not v.get("reserved")},
             "floor": {k: v["rgb"] for k, v in FLOOR.items() if "rgb2" not in v},
             "lights": {k: v["rgb"] for k, v in LIGHTS.items()},
@@ -134,8 +136,10 @@ def palette_figure(res: dict, path: Path) -> None:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.patches import Rectangle
-    groups = [("Alloy family (tools, containers)", {k: v["rgb"] for k, v in FAMILY.items()},
-               {k: v["name"] + (" (reserved)" if v.get("reserved") else "") for k, v in FAMILY.items()}),
+    groups = [("Alloy family (tools, containers)", {**{k: v["rgb"] for k, v in FAMILY.items()},
+                                                     "general": NEUTRAL["general"]["rgb"]},
+               {**{k: v["name"] + (" (reserved)" if v.get("reserved") else "") for k, v in FAMILY.items()},
+                "general": "black"}),
               ("Indicator lights (IEC 60204-1)", {k: v["rgb"] for k, v in LIGHTS.items()},
                {k: v["name"] for k, v in LIGHTS.items()}),
               ("Floor (single colours)", {k: v["rgb"] for k, v in FLOOR.items() if "rgb2" not in v},
