@@ -336,7 +336,7 @@ def main():
     # ---- bonded before the arm moves (atom_ground.py; notes/atom_vacuum.md, "Ground within reach")
     shoe_c = (shoes_b[0] + shoes_b[1]) / 2
     lamp_w = mb.world(G.LAMP_AT)
-    CAM_SHOE = AB.cam((shoe_c[0] + 1080, shoe_c[1] - 1300, 980), (shoe_c[0] - 200, shoe_c[1] - 130, 400))
+    CAM_SHOE = AB.cam((shoe_c[0] + 1550, shoe_c[1] - 1750, 1000), (shoe_c[0] - 170, shoe_c[1] - 170, 330))
     gauges(Bond="MiR250 2: shoes coming down")
     sc.step("3/10 Bond", "It lowers its two sprung copper-graphite shoes onto the floor plate (ours). Every spot where "
             "a MiR250 works at the atomizer has such a plate, its leads run in a floor channel to the area's ground "

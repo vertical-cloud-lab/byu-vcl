@@ -140,6 +140,29 @@ our two stations.
 
 ## The render and what was checked
 
+**2026-11-20 (this round).** The clip with the sign fitted, the floor plates, the bond step and the tool rack approached
+from a pose clear of the station.
+
+- **The render.** 149.3 s, 2240 frames at 15 fps, 1920 x 1080 (`VIZ3D_HD=1`), rendered and audited in one pass.
+  - `out/hd/atom_vacuum.mp4` with its text-free copy in `out/clean/` (both git-ignored; the 1080p file is
+    force-added);
+  - the 720p copy `out/mp4/atom_vacuum.mp4`;
+  - `out/atom_vacuum.gif`, from the 720p copy at 3 fps and 448 px to stay under 5 MB;
+  - `out/atom_vacuum_still.png`, the first floor lane at 74 s;
+  - `out/atom/atom_vacuum_bond.png` (the lamp green) and `out/atom/atom_vacuum_sign.png`.
+- **Arm audit** (strict, round 11 rules, 15 fps): **0 of 1836 checked frames**; movers 0. Round 13 left 1 frame: the
+  crevice tool 1.5 mm into the station during the joint move to the tool rack. The move now goes by way of a pose
+  150 mm further out and 180 mm higher, then down in a straight line.
+- **The hose check** (`out/collisions/atom_vacuum_hose.json`) stays as before in kind. The hose rests on and against our
+  station in every frame, its drawn tube 3-6 mm into the station's base, post and lug where it bends over them.
+  - It lies in the gripper's left finger and fingertip in about 50 of 1836 frames, holding the wand by the fin with the
+    hose hanging from the cuff just above.
+  - With the gripper's knuckles and fingers added to the hose's obstacles, that fell to 41 frames, but the hose then lay
+    in the rePowder's vacuum pump in 140 frames instead of 16, so they were left out.
+  - A finer chain (the links are 62 mm) is the fix.
+
+**Round 12 (2026-11-19).**
+
 - **The clip**: `atom_vacuum`, 142 s, 1420 frames at 10 fps (`VIZ3D_FPS=10`: the render queue was full), 1280 x 720;
   `out/mp4/atom_vacuum.mp4` (8.0 MB); `out/atom_vacuum.gif` re-encoded to 512 px with every other frame (3.5 MB: the
   scene's own GIF was 8.7 MB); `out/atom_vacuum_still.png` is the first floor lane (taken from the MP4 at 68 s).
