@@ -20,7 +20,10 @@ are modelled and checked, not printed. See [Triangle-interface versions](#triang
 [`bambu/evidence/2026-11-19/issue-354-cubxl-studio/`](../../../bambu/evidence/2026-11-19/issue-354-cubxl-studio/)).
 After the print started, I found that the v2 key's latch arms run into the chamfer above them
 (see [the key](#deck_clip_key_v2_1)), and fixed it in **v2_1**, which hasn't been printed yet.
-Nothing here has been tried on the machine.
+
+**2026-11-20:** on the CubXL, the rack clipped down with the v2 keys won't lift out but still
+wobbles. The slots measure 0.7 mm wider than the keys, so there are now keys in four wider sizes
+to find the fit. See [Width sweep](#width-sweep-2026-11-20).
 
 ## vial_rack_9x20mL_v2
 
@@ -55,7 +58,9 @@ Above about 29 mm, the vial no longer fits past the rigid posts (Ø29.2 mm).
 ![](img/key_sections.png)
 
 - **The pill locates the key.** The top 6 mm is the old key's 9.8 × 24.8 mm pill, 0.10 mm a
-  side in the slot, so the rack goes back exactly where it was.
+  side in a 10.0 mm slot, so the rack goes back exactly where it was. The CubXL's slots turned
+  out to be about 10.5 mm wide, which leaves 0.35 mm a side: see
+  [Width sweep](#width-sweep-2026-11-20).
 - **Two latch arms clip under the deck.** They sit below the pill, each with a barb whose upper
   face is a 30° ramp. That ramp catches the deck's bottom edge for any deck from **8.9 to 10.3
   mm** thick, with no vertical play: Cubware's CAD says 10 mm, and PANDA-BEAR's parts list buys
@@ -165,6 +170,81 @@ A1 mini in PETG. If keys from another printer or filament come out loose in the 
 `python cad/check_tri_fit.py` for the checks and `python cad/render_tri.py` for the renders.
 `build.py` with no list rebuilds everything, the printed parts included.
 
+## Width sweep (2026-11-20)
+
+![](img/deck_key_width_sweep.png)
+
+@benwhitney5463 [reported](https://github.com/vertical-cloud-lab/byu-vcl/issues/354#issuecomment-7048533636)
+that the rack, clipped down with the keys printed on 2026-11-19, won't come up but still wobbles.
+He measured 0.7 mm of clearance between those keys and the deck's slots. Their pills are 9.8 mm
+wide, so the slots are about **10.5 mm** wide, not the 10.0 mm in Cubware's CAD. He asked for keys
+that leave 0.5, 0.3, 0.1 and 0 mm, made wider but not longer:
+
+| Clearance, total | A side | Pill (mm) | Dimples | Stem top, for `vial_rack_9x20mL_v2` | Triangle nub, for `vial_rack_9x20mL_v2_tri` |
+|---|---|---|---|---|---|
+| 0.5 | 0.25 | 10.0 × 24.8 | 1 | [`deck_clip_key_v2_1_w10.0_c0.5`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_w10.0_c0.5.stl) | [`deck_clip_key_v2_1_tri_w10.0_c0.5`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_tri_w10.0_c0.5.stl) |
+| 0.3 | 0.15 | 10.2 × 24.8 | 2 | [`deck_clip_key_v2_1_w10.2_c0.3`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_w10.2_c0.3.stl) | [`deck_clip_key_v2_1_tri_w10.2_c0.3`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_tri_w10.2_c0.3.stl) |
+| 0.1 | 0.05 | 10.4 × 24.8 | 3 | [`deck_clip_key_v2_1_w10.4_c0.1`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_w10.4_c0.1.stl) | [`deck_clip_key_v2_1_tri_w10.4_c0.1`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_tri_w10.4_c0.1.stl) |
+| 0 | 0 | 10.5 × 24.8 | 4 | [`deck_clip_key_v2_1_w10.5_c0.0`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_w10.5_c0.0.stl) | [`deck_clip_key_v2_1_tri_w10.5_c0.0`](stl/print_oriented/width_sweep/deck_clip_key_v2_1_tri_w10.5_c0.0.stl) |
+
+The STLs above sit on the bed. As-drawn copies (z = 0 at the deck top) are in
+[`stl/width_sweep/`](stl/width_sweep/), and STEP files are in [`step/width_sweep/`](step/width_sweep/).
+
+- **Only the pill changed.** That's the top 6 mm of the key, the part that sits in the slot. Its
+  bottom flares out at 45° from v2_1's 9.8 mm outline at z = −6, so it prints without support and
+  meets the slot with a lead-in. The full width runs 5.65–5.9 mm down from the top, depending on the key.
+- **The rest is v2_1's:** the tops, the transition, the latch arms, the barbs, and the 0.7 mm gap
+  at each arm's free end. [`cad/check_width_sweep.py`](cad/check_width_sweep.py) compares each key
+  with v2_1 section by section from the meshes ([output](cad/width_sweep_output.txt)).
+- **The latch stays as it is, because it already works** (the rack doesn't lift out).
+  - In a 10.5 mm slot the barbs reach 0.50 mm past the slot's edge. They were drawn to reach
+    0.75 mm in a 10.0 mm slot.
+  - Clipping in takes about 3.7 N per arm at 0.9 % peak strain, against the FEA's 5.5 N and
+    1.35 % at 0.75 mm.
+  - Moving the arms out with the pill would make the wider keys clip in harder as well as fit
+    tighter, so the test would change two things at once.
+- **The length is still 24.8 mm.** The pill stays a stadium, so its ends get rounder as it widens,
+  like the slot's round ends. Every key fits inside the slot's outline, whether the slot is 25.0 mm
+  long (Cubware's CAD) or 25.5 mm.
+- **Telling them apart:** 1 to 4 dimples at the −y end of the top face, the end where the arms are
+  joined on. One dimple is the loosest key, four the tightest. On the triangle-nub keys, the single
+  dimple at the other end is still the 0.05 mm nub press.
+
+**Testing them:**
+
+1. **Print one of each.** Use the top that matches your rack: the stem for the rack printed on
+   2026-11-19.
+   - They print as drawn, top up, with no supports. The pill sits 9 mm above the bed, so elephant's
+     foot doesn't reach it.
+   - The 0.7 mm was measured on keys from the H2D in PLA, so the closest match is that printer and
+     filament again. On another printer, measure the printed pills first.
+2. **Measure each pill across its flats with calipers.** If one isn't within about 0.05 mm of its
+   nominal width, its clearance shifts by the same amount.
+3. **Try each key alone in an empty slot.** Push it in until its top is flush with the deck, then
+   rock it side to side. Keep the widest one that goes all the way in by hand and comes back out
+   when you push it up from below.
+4. **Fit the rack.** Print a second key of that width (two per rack), press both into the rack and
+   clip it down. Post the width that fit on #354, so the default keys can be rebuilt at that width.
+
+**If none of them fit:**
+- **The 10.5 mm key is still loose:** the slot is wider than 10.5 mm. Measure it, set
+  `slot_w_meas` to that width, and rebuild.
+- **Even the 10.0 mm key won't go in:** the slot is narrower than 10.5 mm. Set `slot_w_meas` to
+  the measured width, or `sweep_clear` to larger values, and rebuild.
+
+**If the rack still lifts a little once the width is right,** measure the deck's thickness. In a
+10.5 mm slot, the barbs' ramps meet the slot's bottom edge 9.46 mm below the deck top.
+- On a deck at least that thick, nothing moves: on a 10 mm deck, each key is pulled down with about
+  2.7 N.
+- On a thinner deck, the key can lift by the difference, 0.46 mm on a 9.0 mm deck.
+- The fix would be to move the arms out with the pill, so the ramps catch about 8.9 mm down.
+  That would be a new version, not a parameter change.
+
+**Rebuild:** `python cad/build.py . sweep` writes all eight. Then run `python cad/check_width_sweep.py`
+for the checks and `python cad/render_width_sweep.py` for the figure. Set the sweep with
+`slot_w_meas` and `sweep_clear` in `build.py`. The v2_1 and v2_1_tri keys still rebuild byte for
+byte.
+
 ## magnet_bar_v2
 
 ![](img/magnet_bar.png)
@@ -208,6 +288,7 @@ A1 mini in PETG. If keys from another printer or filament come out loose in the 
 |---|---|---|
 | Vials loose | vial OD under ~27 mm | `r_pad` smaller, by about 0.8 mm per 1 mm the vial is under 28 mm |
 | Vials too hard to insert | OD over ~28.5 mm | `r_pad` larger |
+| Rack wobbles on the deck | slots wider than the pill (10.5 mm measured, against 9.8) | Not a `params.json` change: print the [width sweep](#width-sweep-2026-11-20) and use the width that fits (`pill_w` sets the whole key, latch included) |
 | Key doesn't clip | deck thicker than 10.3 mm | `barb_top` lower |
 | Key rattles up and down | deck thinner than 8.9 mm | `barb_top` higher |
 | Stem won't go into the rack | pocket printed small | `pocket_clear` 0.05 → 0.10 |
