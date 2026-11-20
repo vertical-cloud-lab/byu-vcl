@@ -26,10 +26,10 @@ from common import box, cyl, rbox  # noqa: E402  (lab-models' helpers, copied fr
 IN = 25.4
 TRAY_W, TRAY_D = 2450.0, 864.0       # #53: 96.46 x 34.00 in; the Shuttle XP's 864 mm tray depth
 UNIT_W, UNIT_D = 2780.0, 3074.0      # Relevator Group listing for an XP 500 2450 x 864 (module W x D)
-# Round 13 (Sterling, PR #318, 2026-11-20: "The VLMs here seem.. short. We could probably assume taller VLMs. See #344
+# Round 14 (Sterling, PR #318, 2026-11-20: "The VLMs here seem.. short. We could probably assume taller VLMs. See #344
 # ... Not going to be 50', but maybe something closer to 30'. Kardex made it sound like building higher at a later stage
 # is also feasible"): 9150 mm, 30 ft 0.2 in, on Kardex's 100 mm grid from 2550 and inside the Shuttle 250/500's
-# published 2550-30050 mm (notes/kardex_height.md). Rounds 3-12: 3950 mm, #53's "less than 13'".
+# published 2550-30050 mm (notes/kardex_height.md). Rounds 3-13: 3950 mm, #53's "less than 13'".
 UNIT_H = 9150.0
 UNIT_H_53 = 3950.0                   # #53: "less than 13'" (3962 mm); Shuttle XP heights step 100 mm from 2550
 PITCH = 25.0                         # Kardex: tray supports on a 25 mm pitch (Optiflex)
@@ -44,10 +44,10 @@ SOURCES = {
                                       "the 2450 x 864 configuration Kardex sells as XP 500-2450x864"],
     "unit_w_d_mm": [UNIT_W, UNIT_D, "Relevator Group, 'Vertical Lift Modules Kardex Shuttle XP 500 - 3 units 2450x864': "
                                       "module width 2 780 mm / tray 2 450 mm, module depth 3 074 mm / tray 864 mm"],
-    "unit_h_mm": [UNIT_H, "round 13: about 30 ft (Sterling, PR #318, 2026-11-20); Kardex Shuttle factsheet 8103-US-2112 "
+    "unit_h_mm": [UNIT_H, "round 14: about 30 ft (Sterling, PR #318, 2026-11-20); Kardex Shuttle factsheet 8103-US-2112 "
                           "(2024) and the Shuttle XP brochure (2014): Shuttle 250/500 heights 2 550-30 050 mm in 100 mm "
                           "steps; kardex.com: 'standard device heights extending up to 30 m'; the 2014 brochure: 'The "
-                          "height of the unit can be modified quickly and easily' (notes/kardex_height.md). Rounds 3-12 "
+                          "height of the unit can be modified quickly and easily' (notes/kardex_height.md). Rounds 3-13 "
                           "used 3 950 mm, the tallest under #53's 13 ft"],
     "tray_pitch_mm": [PITCH, "Kardex Shuttle XP literature: 25 mm incremental tray storage (Optiflex)"],
     "tray_capacity": [TRAYS, "#53: light 502 lb, medium 794 lb, strong 1 080 lb per tray"],
@@ -91,8 +91,8 @@ HEADER_H = 95.0         # white header band with the logo
 POST_W = 115.0          # anthracite side posts of the opening
 CONSOLE_X = OPEN_W / 2 + POST_W / 2       # the OPTIC panel, on the right post at header height
 CONSOLE_Z = Z_OPEN_TOP - 40.0
-# Round 13 (Sterling, PR #318, 2026-11-20: "It's still showing the picking bay as being 'open top'. In real kardex
-# systems, I'm pretty sure there's a 'roof' to the bay"): until round 12 the bay was open above the header's underside,
+# Round 14 (Sterling, PR #318, 2026-11-20: "It's still showing the picking bay as being 'open top'. In real kardex
+# systems, I'm pretty sure there's a 'roof' to the bay"): until round 13 the bay was open above the header's underside,
 # so from the opening one looked up into the front column at the underside of the tray stored over the bay. The bay now
 # has a roof, a 3 mm sheet with two folded ribs on top, between its side walls (which now run up to it), from the front
 # panel back to the shutter's plane, under the supports of the slot over the opening (Z_FRONT_HI, less the supports'
@@ -129,7 +129,7 @@ SHUTTLE_X = {1: 0.0, 2: UNIT_W + 2 * SKIN + SHUTTLE_GAP}  # the second Shuttle's
 # so each slot is its own load's height: J 475 -> 325 (the drawer cabinet, 300 mm), N 475 -> 225 (500 mL jars, 182 mm
 # over the floor with their rack), O 500 -> 150 (125 mL jars, 104 mm). N and O both go under Shuttle 2's access table
 # (300-793 mm), which frees 2R5 at the top of its rear column (notes/tray_plan.md).
-# Round 13: with the units 9150 mm tall (UNIT_H), every tray keeps its slot, so nothing the arm does at the opening
+# Round 14: with the units 9150 mm tall (UNIT_H), every tray keeps its slot, so nothing the arm does at the opening
 # changes, and each column gains about 5.2-5.5 m on top (8890 mm under the drive bay, against 3690). Three more passive
 # stores go in over Shuttle 1's E and Shuttle 2's H (setup_lab.TALL_TRAYS: a second sample store, S; another rack of
 # atomized lots, P; another of feedstock, Q), which takes the powder store from 753 jars to 1506; the rest is left free
@@ -138,7 +138,7 @@ COLUMNS = {     # Shuttle: column: [(slot, span in mm)], bottom to top
     1: {"rear": [("R1", 750), ("R2", 750), ("R3", 900), ("R4", 725), ("R5", 325)],   # D, A, B (v5 doser), E; S (store)
         "front_low": [("F0", 325)],                                             # tray J (passive storage)
         "front": [("F1", 725), ("F2", 750)]},       # trays C, F (round 11: F's camera F1 behind the quench tank, 703 mm)
-    # round 13: 2R4 550 -> 625 for tray H's AirGradient on its UPS (583 mm over the tray's underside)
+    # round 14: 2R4 550 -> 625 for tray H's AirGradient on its UPS (583 mm over the tray's underside)
     2: {"rear": [("2R1", 850), ("2R2", 725), ("2R3", 750), ("2R4", 625), ("2R5", 150), ("2R6", 225)],   # K, L, M, H; P, Q
         "front_low": [("2F0", 225), ("2F0b", 150)],                             # trays N, O (passive jar stores)
         "front": [("2F1", 725), ("2F2", 725)]},                                 # trays G, I
@@ -410,13 +410,13 @@ def opening() -> dict:
     walls = None
     for sx in (-1, 1):
         x0, x1 = sorted((sx * ow, sx * (ow + 12)))
-        w = box(x0, yb0, Z_SILL, x1, yb1, BAY_ROOF_Z)          # round 13: up to the roof (was Z_OPEN_TOP)
+        w = box(x0, yb0, Z_SILL, x1, yb1, BAY_ROOF_Z)          # round 14: up to the roof (was Z_OPEN_TOP)
         for z in range(int(Z_OPEN + 60), int(Z_OPEN_TOP) - 20, 50):
             x2, x3 = sorted((sx * ow, sx * (ow - 8)))
             w = w.union(box(x2, yb0, z, x3, yb1, z + 4))
         walls = w if walls is None else walls.union(w)
     p["bay side walls"] = (walls, "vlm_bay", "bay")
-    # round 13: the roof, between the side walls, from the front panel to 1 mm short of the shutter's front face
+    # round 14: the roof, between the side walls, from the front panel to 1 mm short of the shutter's front face
     roof = box(-ow, yb0, BAY_ROOF_Z, ow, yb1, BAY_ROOF_Z + BAY_ROOF_T)
     for yr in (yb0 + 0.30 * (yb1 - yb0), yb0 + 0.72 * (yb1 - yb0)):
         roof = roof.union(box(-ow, yr - 15.0, BAY_ROOF_Z + BAY_ROOF_T, ow, yr - 12.0, BAY_ROOF_Z + BAY_RIB_H)).union(

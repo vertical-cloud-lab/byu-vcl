@@ -58,7 +58,7 @@ TRAYS = {
     "H": ("2R4", "PCB assembly"), "G": ("2F1", "resin printing"), "I": ("2F2", "desktop LPBF"),
 }
 ORDER = ["D", "A", "B", "E", "J", "C", "F", "K", "L", "M", "H", "G", "I"]      # loading order: Shuttle 1, then 2
-# Round 13: the 9150 mm Shuttles (vlm.UNIT_H) take three more passive stores over the trays they have, in slots of
+# Round 14: the 9150 mm Shuttles (vlm.UNIT_H) take three more passive stores over the trays they have, in slots of
 # their own height (vlm.COLUMNS): a second sample store over tray E, and a second rack each of atomized lots and of
 # feedstock over tray H, both as r8_store builds N's and O's (TALL_TRAYS; added after merge_r8, which would otherwise
 # move r8_store's stores back onto N and O)
@@ -94,7 +94,7 @@ def _items() -> dict:
     out["J"] = [("storage", STORAGE_X, 0.0, 0.0)]               # centred on the tray (round 11: no UPS, no dock)
     # the Keyence VHX is 624 mm deep as modelled: tray C has no room for it between its camera posts and the UPS, so it
     # went to K, beside the glovebox, in front of the UPS
-    # round 13 (fit's clearance check, CLEAR_MM): the VHX stood 7 mm from tray K's UPS, solid to solid, and the
+    # round 14 (fit's clearance check, CLEAR_MM): the VHX stood 7 mm from tray K's UPS, solid to solid, and the
     # zwickiLine 3 mm from tray L's and 9.7 mm from the HM-220; the VHX moves 5 mm forward (y -50 -> -55), the
     # zwickiLine 10 mm forward (its front 20 mm behind the lip, not 30) and 5 mm right: 12, 13 and 14.7 mm
     out["K"] = [("glovebox_tray", -460.0, 7.0, 0.0), ("vhx", 570.0, -55.0, 0.0)]
@@ -223,8 +223,8 @@ INSTALL_AT = 0                                 # the first unit is put together 
 
 CAM_ROOM = [(11000, -22000, 15500), (500, -2700, 0), (0, 0, 1)]
 CAM_TOP = [(2000, -15000, 22500), (300, -2800, 0), (0, 0, 1)]
-CAM_UTIL = [(10500, -21500, 13800), (600, -1600, 3900), (0, 0, 1)]    # round 13: up to the 10.97 m roof steel
-CAM_VLM = [(12800, -15400, 9200), (1800, -400, 4300), (0, 0, 1)]     # round 13: the 9150 mm Shuttles whole
+CAM_UTIL = [(10500, -21500, 13800), (600, -1600, 3900), (0, 0, 1)]    # round 14: up to the 10.97 m roof steel
+CAM_VLM = [(12800, -15400, 9200), (1800, -400, 4300), (0, 0, 1)]     # round 14: the 9150 mm Shuttles whole
 CAM_FLOOR = [(6200, -21500, 17500), (700, -2900, 0), (0, 0, 1)]
 # round 8: the scale-up machines past the south row's ends (the EOS lower left, the Meltio cell lower right) with the
 # whole lab behind them; a camera test of five views found this the one that shows both whole
@@ -239,7 +239,7 @@ BAY_VIEW_ANGLE = 34.0
 ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (700, -2300, 600), (0, 0, 1)],
          [(3500, -15500, 5600), (700, -2300, 900), (0, 0, 1)],
-         [(13500, -21500, 15500), (700, -2300, 2200), (0, 0, 1)]]     # round 13: the 9150 mm Shuttles in the last
+         [(13500, -21500, 15500), (700, -2300, 2200), (0, 0, 1)]]     # round 14: the 9150 mm Shuttles in the last
 
 
 # ------------------------------------------------------------------------------------------------ round 8's modules
@@ -334,7 +334,7 @@ def merge_r8() -> dict:
         ITEMS[p["tray"]].append((key, float(p["x"]), None if p.get("y") is None else float(p["y"]),
                                  float(p.get("turn", 0.0))))
         R8_MERGED["moved"][key] = dict(p, was=R8_MERGED["trays"].get(key))
-    for k, (slot, role, its) in TALL_TRAYS.items():   # round 13: the stores the taller Shuttles take
+    for k, (slot, role, its) in TALL_TRAYS.items():   # round 14: the stores the taller Shuttles take
         if k in TRAYS or slot not in V.SLOTS:
             continue
         TRAYS[k] = (slot, role)
@@ -648,7 +648,7 @@ def add_ups(sc: Scene, k: str) -> list:
     g = f"ups_{k}"
     names = services.add_ups_meshes(sc, k, g)
     sc.parent[g] = f"tray_{k}"
-    # round 13 (PR #318: "Each tray should have an airgradient"): the tray's AirGradient ONE stands on its UPS on a
+    # round 14 (PR #318: "Each tray should have an airgradient"): the tray's AirGradient ONE stands on its UPS on a
     # printed riser (airgradient.py), so it goes on with the UPS; tray_parts checks it as a part of its own
     names += airgradient.add_to_tray(sc, k, parent=g)
     return names
@@ -794,8 +794,8 @@ def junction_box(x, y, z, face):
             "socket holes": (W._merge(holes), (0.10, 0.10, 0.11)), "network ports": (W._merge(port), (0.15, 0.40, 0.85))}
 
 
-# Round 13: the building and its services for 9150 mm Shuttles (vlm.UNIT_H; Sterling, PR #318, 2026-11-20: taller VLMs
-# "affect many other things, like the overhead facilities (power, etc.)"). Until round 12 the north cable tray ran at
+# Round 14: the building and its services for 9150 mm Shuttles (vlm.UNIT_H; Sterling, PR #318, 2026-11-20: taller VLMs
+# "affect many other things, like the overhead facilities (power, etc.)"). Until round 13 the north cable tray ran at
 # 4.3 m "over the north row, above the VLM's 3950 mm roof", the argon line beside it, the VLMs' feeds and the docks'
 # supply line came down onto the Shuttles' roofs, and the hangers and the fume hood's duct stopped at 6 m. With 9.15 m
 # units all of that ran through them. Now the north tray and the argon line jog round the back of both Shuttles, the
@@ -851,14 +851,14 @@ def _along(path, step):
 
 def utilities(hood=None) -> tuple[dict, tuple]:
     """Cable trays over both rows with a drop to each station ending in a grey junction box (sockets and a network
-    port) and an AirGradient ONE on the box (round 13), a network cable in each tray, an argon line from a cylinder
-    manifold to the gas users, the fume hood's duct, and (round 13) the high bay's lights. Layout choices, drawn to
+    port) and an AirGradient ONE on the box (round 14), a network cable in each tray, an argon line from a cylinder
+    manifold to the gas users, the fume hood's duct, and (round 14) the high bay's lights. Layout choices, drawn to
     read, not a design. -> ({name: (mesh, colour)}, a junction box's label point)."""
     import airgradient as AGm
     zn, yn = 4300.0, W.Y_FACE_N + 700.0          # over the north row
     zs, ys = 3200.0, W.Y_FACE_S - 600.0
     xs = (-9200.0, 11000.0)
-    yb = V.UNIT_D / 2 + V.SKIN + 250.0           # round 13: behind both Shuttles (their backs at 1562)
+    yb = V.UNIT_D / 2 + V.SKIN + 250.0           # round 14: behind both Shuttles (their backs at 1562)
     xa, xb = -V.UNIT_W / 2 - V.SKIN - 335.0, X2 + V.UNIT_W / 2 + V.SKIN + 335.0     # round them, 335 mm clear
     north_path = [(xs[0], yn), (xa, yn), (xa, yb), (xb, yb), (xb, yn), (xs[1], yn)]
     south_path = [(xs[0] + 1200, ys), (xs[1], ys)]
@@ -877,13 +877,13 @@ def utilities(hood=None) -> tuple[dict, tuple]:
         for k, (m, c) in d.items():
             parts.setdefault(k, ([], c))[0].append(m)
 
-    def add_ag(x, y, z, face):                  # round 13: the station's AirGradient ONE on its junction box
+    def add_ag(x, y, z, face):                  # round 14: the station's AirGradient ONE on its junction box
         for mat, mesh in AGm.at_junction_box(x, y, z, face).items():
             parts.setdefault(f"AirGradient {mat}", ([], AGm.colour(mat)))[0].append(mesh)
     label = None
     yv = V.UNIT_D / 2 + V.SKIN                   # the Shuttles' backs
     for key, x in north.items():
-        if key.startswith("vlm"):                # round 13: down behind the Shuttle to a disconnect on its back
+        if key.startswith("vlm"):                # round 14: down behind the Shuttle to a disconnect on its back
             z_end = 2650.0
             drops.append(_pipe([(x, yb, zn), (x, yb, z_end + 150.0), (x, yv + 140.0, z_end + 150.0)], 22.0, 16))
             add({"junction boxes": (W._box(x - 160, yv, z_end - 260, x + 160, yv + 140, z_end + 200),
@@ -932,7 +932,7 @@ def utilities(hood=None) -> tuple[dict, tuple]:
     # water) comes from units at the back of the 800 mm gap between the Shuttles, where no MiR turns (they turn at the
     # front): the N2 generator (Parker Balston UHPN2-1100, 305 x 406 x 889 mm, services.SOURCES["n2"]), an oil-free
     # compressor for it and for the docks' air (our size), and the chiller (ThermoFlex 900, size not found: not to
-    # size). Round 13: their line goes into each Shuttle's right-hand side cavity at 2.6 m, where the risers run, not
+    # size). Round 14: their line goes into each Shuttle's right-hand side cavity at 2.6 m, where the risers run, not
     # over the roofs: Shuttle 1's straight across the gap, Shuttle 2's round its back.
     xg = X2 / 2                                  # the gap's middle: 1815
     units_ = {"N2 generator": (305.0, 406.0, 889.0, 200.0, (0.86, 0.87, 0.88)),
@@ -948,7 +948,7 @@ def utilities(hood=None) -> tuple[dict, tuple]:
            _pipe([(xg, 900.0, zsv), (xg, yv + 120.0, zsv), (xr2 + 220.0, yv + 120.0, zsv), (xr2 + 220.0, 900.0, zsv),
                   (xr2 - 20.0, 900.0, zsv)], 30.0)]
     parts.setdefault("dock supply line", ([], (0.55, 0.66, 0.74)))[0].extend(svc)
-    # round 13: LED high-bay lights (UFO fixtures, 24,000 lm, 150 W: a common size, ours) on a 4.0 x 3.6 m grid at
+    # round 14: LED high-bay lights (UFO fixtures, 24,000 lm, 150 W: a common size, ours) on a 4.0 x 3.6 m grid at
     # 10.2 m, each on a hook from the roof steel
     lights, hooks = [], []
     for x in np.arange(-8000.0, 10001.0, LIGHT["pitch"][0]):
@@ -1134,7 +1134,7 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
 
 
 def add_bay_cams(sc: Scene) -> list[str]:
-    """The overhead cameras over each Shuttle's bay (services.py's two units, hung from the bay's roof since round 13,
+    """The overhead cameras over each Shuttle's bay (services.py's two units, hung from the bay's roof since round 14,
     and a copy of both at X2). -> their actor names."""
     import services as S
     S.add_bay_camera(sc)
@@ -1580,8 +1580,8 @@ def _fcl_of(sc: Scene, names, Mi):
     return _fcl_obj(_tri_of(sc, names, Mi))
 
 
-# Round 13 (Sterling, PR #318, 2026-11-20, of the tray plan at 2:50 in round 12's video: "the overhead planning layouts
-# (2D) ... show overlap between certain modules and the UPS"). Until round 12 the plan drew every part as its bounding
+# Round 14 (Sterling, PR #318, 2026-11-20, of the tray plan at 2:50 in round 12's video: "the overhead planning layouts
+# (2D) ... show overlap between certain modules and the UPS"). Until round 13 the plan drew every part as its bounding
 # box, the dock plate and the tray's lines as one box (x 550-1219, y 190-420 on every powered tray) over the UPS, and
 # `fit` failed a pair only when the boxes overlapped *and* FCL found the solids touching. So the drawing showed boxes
 # lapping over the OT-2, the Mastersizer, the VHX, the LumenPnP and the zwickiLine where the solids were in fact
@@ -1614,7 +1614,7 @@ def _footprint(tri, x0, y0, nx, ny, res=PLAN_GRID):
 
 def tray_parts(sc: Scene, items: dict, k: str) -> list:
     """[(label, kind, (x0, x1, y0, y1, z0, z1), names)] on tray k, in the tray's frame: its items, its UPS, its dock
-    plate, the tray's lines (round 13: two parts, not one box), and each camera rig in two parts (the post on its foot,
+    plate, the tray's lines (round 14: two parts, not one box), and each camera rig in two parts (the post on its foot,
     and the head with its yoke)."""
     Mi = np.linalg.inv(sc.world(f"tray_{k}"))
     out = []
@@ -1625,7 +1625,7 @@ def tray_parts(sc: Scene, items: dict, k: str) -> list:
             out.append((f"{g} post", "cam", _bounds_of(sc, post, Mi), post))
             out.append((f"{g} head", "cam", _bounds_of(sc, head, Mi), head))
             continue
-        if key == "ups":                             # round 13: the UPS and the AirGradient on it, apart
+        if key == "ups":                             # round 14: the UPS and the AirGradient on it, apart
             ag = [n for n in names if sc.group_of[n].startswith("ag_")]
             rest = [n for n in names if n not in set(ag)]
             out.append(("UPS", "ups", _bounds_of(sc, rest, Mi), rest))
@@ -1642,7 +1642,7 @@ def tray_parts(sc: Scene, items: dict, k: str) -> list:
 
 def check_trays(sc: Scene, items: dict) -> dict:
     """Each tray's parts against each other. Where two boxes come within the clearance of each other, the solids
-    themselves: FCL says whether they touch and, if not, how far apart they are (round 13: a gap under CLEAR_MM, or
+    themselves: FCL says whether they touch and, if not, how far apart they are (round 14: a gap under CLEAR_MM, or
     CLEAR_LINES_MM to the lines and the plate, fails, as a touch always did). Also each part's footprint for the
     plan (PLAN_MASKS), and the nearest points of every pair under 30 mm."""
     import fcl
@@ -1779,7 +1779,7 @@ def check_floor(sc: Scene, F: Floor) -> dict:
 
 
 def draw_plan(rep: dict, path):
-    """Every tray from above: each part's own footprint (round 13; until round 12 its bounding box), items blue, the
+    """Every tray from above: each part's own footprint (round 14; until round 13 its bounding box), items blue, the
     UPS amber with its model, the dock plate red, the tray's lines thin red, camera posts and heads green; a part that
     touches another or stands closer than the clearance is outlined red, with a red tick between the nearest points and
     the gap. And both Shuttles' columns."""
@@ -1980,11 +1980,11 @@ def fit(data, idata) -> dict:
                shuttle_x=V.SHUTTLE_X, max_goods_h_mm=V.MAX_GOODS_H, goods_clear_mm=V.GOODS_CLEAR,
                r8={k: v for k, v in R8_MERGED.items() if k != "done"},
                clearance_mm=CLEAR_MM, clearance_to_lines_mm=CLEAR_LINES_MM,
-               method="setup_lab.py fit (round 13): each item, UPS, the dock plate, the tray's lines and each camera "
+               method="setup_lab.py fit (round 14): each item, UPS, the dock plate, the tray's lines and each camera "
                       "rig's post and head, as drawn, in the tray's frame. Pairs whose boxes come within 30 mm are "
                       "measured solid to solid with FCL (python-fcl, on the meshes): a touch ('overlaps') or a gap under "
                       f"{CLEAR_MM:.0f} mm ({CLEAR_LINES_MM:.0f} mm to the lines and the plate; 'too_close') fails; the "
-                      "UPS against the plate and lines is by design. Until round 12 a pair failed only if its boxes "
+                      "UPS against the plate and lines is by design. Until round 13 a pair failed only if its boxes "
                       "overlapped and the solids touched. A slot needs the tallest top + 20 mm, on the 25 mm pitch")
     (OUT / "tray_plan.json").write_text(json.dumps(out, indent=1) + "\n")
     draw_plan(rep, OUT / "tray_plan.png")

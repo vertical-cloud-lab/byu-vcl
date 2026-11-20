@@ -970,21 +970,21 @@ TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward o
 CAM_PIVOT = 640.0                       # the tilt axis over the tray floor; the head's top stays under 727.5 mm
 POST_H = 590.0                          # the tray posts: 22 mm over the sliding block at its CAM_PIVOT height
 CAM_H = CAM_PIVOT - TILT_AXIS[2]        # the block's height on a tray post: 543 mm
-# The bay units. Rounds 7-12 stood one on a 2020 bar across the back of the bay, its yoke on a saddle clamp, over the
+# The bay units. Rounds 7-13 stood one on a 2020 bar across the back of the bay, its yoke on a saddle clamp, over the
 # top of Kardex's product envelope at the opening (1733.5 mm with the 996 mm opening) and under the tray stored over
-# the bay. Round 13 (Sterling, PR #318, 2026-11-20: the bay has a roof, "I don't think that 2020 bar is needed ... the
+# the bay. Round 14 (Sterling, PR #318, 2026-11-20: the bay has a roof, "I don't think that 2020 bar is needed ... the
 # camera could be mounted" to it; "We can also have multiple overhead cameras in the bay to get different angles (e.g.,
 # ceiling middle back, ceiling middle front)"): two units hang from the bay's roof (vlm.BAY_ROOF_Z), each on a short
 # 2020 drop with a printed shelf at its foot, the yoke bolted onto the shelf (no sliding block), the drop behind the
-# yoke. Both shelves are where round 12's clamp top was, 33 mm over the envelope, so a head clears the goods and the
+# yoke. Both shelves are where round 13's clamp top was, 33 mm over the envelope, so a head clears the goods and the
 # roof (bay_mount_check()). Pan stays at 0: each mount is turned (yaw) to face its subject and the tilt does the rest.
-# * back: the middle of the back, 10 mm in front of where round 12's unit stood (its roof foot keeps 10 mm off the
+# * back: the middle of the back, 10 mm in front of where round 13's unit stood (its roof foot keeps 10 mm off the
 #   shutter): it looks forward and down over the whole tray (94 % of its floor) and the arm coming in. The top of its
 #   picture looks out through the opening into the room (28 %), so its stream wants a privacy mask there.
 # * front: the middle of the front, just behind the header and its LED light, looking back and down: the instruments'
 #   fronts, where the arm works, 83 % of the floor and none of the room. Checked against the arm on every reach.py pose
 #   (bay_arm_clearance(): 183 mm at the least, capsules of 75 mm round the links); a unit in a front corner, looking
-#   across, kept 313 mm but saw 11-32 % of the room (round 13's comparison, notes/services.md).
+#   across, kept 313 mm but saw 11-32 % of the room (round 14's comparison, notes/services.md).
 BAY_SHELF = dict(w=60.0, d=72.0, t=6.0, y0=-26.0)      # the shelf under the yoke, pan-axis frame (y from -26 to +46)
 BAY_DROP = dict(y=36.0, foot=60.0, foot_t=6.0)         # the drop's centre behind the pan axis; the foot on the roof
 BAY_SHELF_Z = V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR + 39.0     # 1772.5: the shelf's top, the yoke's foot
@@ -1298,7 +1298,7 @@ def add_tray_services(sc, tray: str, ups=True) -> list:
     names = add_meshes(sc, f"lines_{tray}", meshes_of("lines", tray_lines, 0.5), f"tray_{tray}")
     if ups:
         add_ups_meshes(sc, tray, f"tray_{tray}")
-        import airgradient                               # round 13: the tray's AirGradient ONE, on its UPS
+        import airgradient                               # round 14: the tray's AirGradient ONE, on its UPS
         airgradient.add_to_tray(sc, tray)
     return names
 
@@ -1587,7 +1587,7 @@ def movie_services(data, idata):
     # through the see-through cladding, where it was all but invisible. Now it gets its own shot from an operator's eyes
     # (movie_bay_camera's opening view), the cladding solid while it is shown, then see-through again.
     va0 = sc.view_angle
-    # round 13 (PR #318, 2026-11-20): the bay has a roof, and two units hang from it, not one on a bar
+    # round 14 (PR #318, 2026-11-20): the bay has a roof, and two units hang from it, not one on a bar
     tb, tf = np.array(bay_cam_point("back")), np.array(bay_cam_point("front"))
     cam_op = [tuple(CAM_S_EYE), tuple((tb + tf) / 2 + (0, 0, -140)), (0, 0, 1)]
     lbl_op = [("back unit: a Pi 5, HQ Camera (16 mm lens) and\nCamera Module 3 Wide on a pan-tilt head",
@@ -1889,7 +1889,7 @@ def _cam_scene_cls():
 
 
 def movie_bay_camera(data, idata):
-    """The bay's two overhead units, hung from its roof (round 13; rounds 7-12: one unit on a 2020 bar), seen from
+    """The bay's two overhead units, hung from its roof (round 14; rounds 7-13: one unit on a 2020 bar), seen from
     where an operator stands, then what each one's Wide sees while the arm works on the presented tray. Round 12
     showed one unit's Wide and then its HQ (Sterling, PR #318, 2026-11-20, at 6:42: "it's not worth showing both the
     wide and the HQ"): now one picture per unit, the Wide's."""
@@ -2122,8 +2122,8 @@ def ladder_mesh(path=LADDER_PATH, z=LADDER_Z, w=LADDER_W, h=90.0, pitch=300.0):
 
 
 def movie_cabling(data, idata):
-    """Power, network, gases and the docks' supply for the whole lab. Round 13 (Sterling, PR #318, 2026-11-20, at 5:56
-    of round 12's video: "shows a rail still. We moved fully over to the mobile manipulator setup, no?"): rounds 4-12
+    """Power, network, gases and the docks' supply for the whole lab. Round 14 (Sterling, PR #318, 2026-11-20, at 5:56
+    of round 12's video: "shows a rail still. We moved fully over to the mobile manipulator setup, no?"): rounds 4-13
     drew this clip on round 3's one-Shuttle line, with the arm's floor rail, its cable chain and its MachineMotion
     controls. Now it is setup_lab's lab as the set-up movie builds it (two 9150 mm Shuttles, every tray loaded, both
     rows, two MiR250 + UR10e units on their chargers) and setup_lab.utilities()'s services, the rest drawn faint. The
@@ -2901,7 +2901,7 @@ def write_json():
                                           shelf_top_z=BAY_SHELF_Z, roof_z=V.BAY_ROOF_Z, yaw_deg=BAY_UNITS[u]["yaw"],
                                           tilt_deg=BAY_UNITS[u]["tilt"], tilt_axis=[round(v) for v in bay_cam_point(u)],
                                           mount="hung from the bay's roof: a 2020 drop with a printed shelf at its "
-                                                "foot, the yoke on the shelf (round 13; rounds 7-12: a 2020 bar across "
+                                                "foot, the yoke on the shelf (round 14; rounds 7-13: a 2020 bar across "
                                                 "the back of the bay)", arm=bay_arm_clearance(unit=u))
                                   for u in BAY_UNITS},
                      fov=dict(wide="102 x 67 deg (Camera Module 3 Wide)",
@@ -2919,8 +2919,8 @@ def write_json():
     import setup_lab as SL
     cab = dict(route=dict(north_tray_z_mm=4300.0, south_tray_z_mm=3200.0, roof_steel_z_mm=SL.Z_CEIL,
                           lights=SL.LIGHT, building="PR #344's 36 ft high bay",
-                          note="round 13: setup_lab.utilities(), the cabling clip on the two-Shuttle floor with no rail "
-                               "(rounds 4-12: round 3's one-Shuttle line, a ladder tray at 2.8 m and the rail's chain); "
+                          note="round 14: setup_lab.utilities(), the cabling clip on the two-Shuttle floor with no rail "
+                               "(rounds 4-13: round 3's one-Shuttle line, a ladder tray at 2.8 m and the rail's chain); "
                                "the north tray jogs round the backs of the 9150 mm Shuttles; the routes are ours",
                           voltages="notes/voltage.md, out/voltage.json"),
                circuits=[dict(key=k, what=w, supply=s, load=l, source=src, kind=kind)

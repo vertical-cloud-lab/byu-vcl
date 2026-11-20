@@ -1,4 +1,4 @@
-"""An AirGradient ONE on every powered tray and at every floor station (#303, PR #318, round 13).
+"""An AirGradient ONE on every powered tray and at every floor station (#303, PR #318, round 14).
 
 Sterling, PR #318, 2026-11-20: "Each tray should have an airgradient added to it for environmental monitoring. Each
 station should also have one". notes/airgradient.md has the choice, the sources and the data path; in short:

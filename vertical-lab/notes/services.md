@@ -361,6 +361,90 @@ the same operator's view, cladding solid, with the unit labelled, then back to s
 2026-11-14: 223 frames, 37.2 s at 6 fps, against 206 frames, 34.3 s; the shot of the unit runs 32.5-35.8 s, and the still is that
 shot). `vlm_hookups` never labels the bay unit, so it is unchanged.
 
+### Round 14: a roof on the bay, and two cameras hung from it
+
+![The bay's two cameras](../out/bay_camera_still.png)
+
+Sterling, PR #318, 2026-11-20, on round 12's video:
+
+- "It's still showing the picking bay as being 'open top'. In real kardex systems, I'm pretty sure there's a 'roof' to
+  the bay. For this reason, I don't think that 2020 bar is needed (6:27) and the camera could be mounted";
+- "We can also have multiple overhead cameras in the bay to get different angles (e.g., ceiling middle back, ceiling
+  middle front)";
+- of 6:42: "it's not worth showing both the wide and the HQ."
+
+**The roof** (`vlm.opening()`, `vlm.BAY_ROOF_Z`):
+
+- a 3 mm sheet with two folded ribs, between the bay's side walls (which now run up to it), from the front panel to
+  1 mm short of the shutter;
+- its underside at 1910 mm, 14 mm under the header's top, its ribs 9 mm under the supports of the slot over the bay;
+- drawn in the bay walls' material, so it ghosts with them when the cladding is see-through;
+- **its height is ours:** Kardex's renders show a closed bay, but give no figure.
+
+**The cameras** (`services.BAY_UNITS`, `bay_parts()`, `add_bay_camera()`). Each is the same Pi 5 unit as before: an
+HQ Camera with the 16 mm lens and a Camera Module 3 Wide, on the pan-tilt yoke. Each hangs from the roof on a 137.5 mm
+2020 drop with a printed foot on the roof and a printed shelf at its lower end; the yoke is bolted to the shelf, the
+drop behind it. The shelf tops are at 1772.5 mm, where round 13's clamp was, so a unit's lowest point is 33 mm over the
+product envelope (1733.5 mm) and its highest is the roof. Pan stays at 0: each mount is turned to face its subject and
+the tilt does the rest (`bay_mount_check()`).
+
+| Unit | Where | Aim | Wide sees of the tray | Of the room | Arm, least gap |
+|---|---|---|---|---|---|
+| back | middle back, pan axis at y -645, 10 mm off the shutter | forward, 64 deg down | 94 % | 28 % | 315 mm |
+| front | middle front, y -1350, just behind the header's LED light | back, 61 deg down | 82 % | 0 % | 183 mm |
+
+- **"Of the room"** is the share of the Wide's picture whose rays leave through the opening before they meet the
+  tray's floor (`out_of_bay`).
+  - The back unit's top 28 % looks out into the room, so its stream wants a privacy mask there.
+  - The front unit sees none.
+- **"Arm, least gap"** is against every `reach.py` pose, with the arm as capsules of 75 mm round its links
+  (`bay_arm_clearance()`).
+- **The front unit's place.** A unit in a front corner looking across kept 313 mm from the arm. But it saw 11-32 % of
+  the room through the opening, so the middle won.
+
+**The clip** (`movie_bay_camera`, out/bay_camera.*). One picture per camera, each one's Wide, not the Wide and then the
+HQ:
+
+1. both units from an operator's eyes (1.6 m up, 0.9 m out), the cladding solid;
+2. both Wides' pyramids;
+3. the back unit's view while the arm takes a vial from the rack;
+4. the front unit's view while it stands the vial on the doser's shuttle fork.
+
+The services clip's own bay shot and the set-up movie's (step 8) show both units hung from the roof too. The
+security-camera study (a separate PR) may replace the Pi units; these stay until it does.
+
+### Round 14: cabling on the two-Shuttle floor, without the rail
+
+Sterling, PR #318, 2026-11-20, at 5:56: "shows a rail still. We moved fully over to the mobile manipulator setup,
+no?". That was this clip: rounds 4-13 drew it on round 3's one-Shuttle line, with the arm's floor rail, its cable
+chain in a trough and its MachineMotion controls.
+
+`movie_cabling` is now built on the set-up movie's lab (`setup_lab.build`): two 9150 mm Shuttles with every tray
+loaded, both rows, and the two MiR250 + UR10e units on their chargers. It shows `setup_lab.utilities()`'s services,
+everything else faint, in six steps:
+
+1. the whole;
+2. the north row;
+3. the Shuttles' feeds and the docks' supply;
+4. the south row;
+5. the arms, which ride their MiR250's 48 V battery and charge at a MiR Charge 48V, so nothing crosses the floor;
+6. the whole again.
+
+For the taller Shuttles, `utilities()` changes:
+
+- the north cable tray and the argon line jog round the backs of both Shuttles, not over them;
+- each VLM's 208 V feed drops to a disconnect on its back;
+- the docks' supply (N2, air, chilled water from the units between the Shuttles) goes into each Shuttle's right-hand
+  side cavity at 2.6 m, where the risers are;
+- the hangers and the fume hood's duct go up to a 36 ft roof (PR #344's buildings), with LED high-bay lights at 10.2 m
+  (`setup_lab.Z_CEIL`, `LIGHT`).
+
+**Each floor station's junction box carries an AirGradient ONE** (notes/airgradient.md).
+
+The voltages quoted are notes/voltage.md's, per machine with sources.
+
+The section below is round 4's, kept for the record. Its ladder, panel and rail are gone from the model.
+
 ### Cabling
 
 ![Cabling](../out/vlm_cabling_still.png)

@@ -136,7 +136,7 @@ class Lab:
                     for name, e in entries.items():
                         sc.add(f"{g}/{name}", e["mesh"].transform(T((-cx, -cy, -bb[4])), inplace=False), e["color"], g,
                                opacity=e["opacity"])
-                    if key == "ot2":                    # round 13 (PR #318: "The OT-2 is empty"): its deck
+                    if key == "ot2":                    # round 14 (PR #318: "The OT-2 is empty"): its deck
                         try:
                             import ot2_deck
                             for name, e in ot2_deck.entries().items():

@@ -9,6 +9,42 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Round 14 (A): the lab, the VLM and its services (2026-11-20)
+
+Sterling's notes on round 12's video, handed to run A of four (the lab, the VLM and its services; B, C and D took the
+charge chapter, the atomizer and the narration). Each point below links its notes.
+
+- **The tray plan (2:50) showed modules overlapping the UPSs; `fit` passed.**
+  - **The drawing:** every part was drawn as its bounding box, the dock plate and the tray's lines as one box over the
+    UPS.
+  - **The check:** a pair failed only if its boxes overlapped *and* its solids touched.
+  - **Now:** the plan draws each part's own footprint, and `fit` fails two things closer than 10 mm, solid to solid
+    (5 mm to the lines).
+  - **Two real tight spots, fixed:** tray K's VHX (7 mm from its UPS) and tray L's zwickiLine (3 mm).
+  - [notes/tray_plan.md](notes/tray_plan.md).
+- **The OT-2 has its deck** in every lab scene (`ot2_deck.py`): tips, the tube block, the deep-well plate and the
+  reservoir, as its own clip sets them out.
+- **Voltages per machine,** with sources ([notes/voltage.md](notes/voltage.md), `out/voltage.json`).
+  - Not all 120 V. On the trays, the furnace needs 208 V (across L1-L2) and the PX500 is sold only as 230 V, both on
+    tray F. Nothing on a tray is three-phase.
+  - Tray D's GXT5LI-3000 takes 24 A on one leg, the 30 A breaker's continuous limit. Two smaller units on opposite
+    legs, or one 3 kVA unit fed at 208 V, would split it.
+  - Five machines draw 12-15 A at 120 V and want their own branch.
+- **The rail at 5:56** was the cabling clip, still on round 3's one-Shuttle line. It is rebuilt on the two-Shuttle
+  floor, mobile manipulators only.
+- **The bay has a roof,** with two cameras hung from it (middle back and middle front) in place of round 13's 2020
+  bar. The bay-camera clip shows each one's Wide, not a Wide and an HQ.
+  - The front camera sees none of the room; the back one's picture wants a privacy mask.
+  - [notes/services.md](notes/services.md).
+- **An AirGradient ONE on every powered tray** (on its UPS) **and at every floor station** (on its junction box):
+  `airgradient.py`, [notes/airgradient.md](notes/airgradient.md).
+- **The Shuttles are 9150 mm, 30 ft** ([notes/kardex_height.md](notes/kardex_height.md)): on Kardex's grid; its
+  published range is 2550-30050 mm.
+  - Every tray keeps its slot, and three more stores go in, which takes the powder store to 1506 jars.
+  - 21.4 m of slots is left free: enough for the three-each plan without a third Shuttle.
+  - The cable trays and argon run round the Shuttles' backs, under a 36 ft roof with high-bay lights.
+- **The CombiTac vacuum line:** see notes/coupling.md, "Vacuum".
+
 ## Round 13: collisions, artifacts, everything at 1080p, drawn at 10-15 fps (2026-11-20)
 
 Sterling on #318 (2026-11-20): "continue fixing collisions or weird artifacts and rendering at higher resolution and

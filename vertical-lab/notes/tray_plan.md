@@ -1,9 +1,69 @@
-# The tray plan: which tray goes in which slot, and why (#303, PR #318 rounds 7, 8 and 11)
+# The tray plan: which tray goes in which slot, and why (#303, PR #318 rounds 7, 8, 11 and 14)
 
 `vlm.COLUMNS` holds the plan, `setup_lab.TRAYS`/`ITEMS`/`CAMS` what is on each tray, and
 `xvfb-run --server-num=60 python3 setup_lab.py fit` checks it. The check writes `out/tray_plan.json`, draws
 `out/tray_plan.png` (every tray from above, and both Shuttles' columns) and `out/tray_plan_floor.png` (the floor
 plan for MiR250 docking).
+
+## Round 14: 30 ft Shuttles, a stricter check and a plan drawn as it is
+
+Sterling, PR #318, 2026-11-20, on round 12's video: at 2:50 "the overhead planning layouts (2D) ... show overlap
+between certain modules and the UPS", and "The VLMs here seem.. short ... maybe something closer to 30'".
+
+**Why `fit` passed while the drawing showed overlaps.** Two reasons, both in `setup_lab.py`:
+
+- **The drawing.** `draw_plan` drew every part as its bounding box. The dock plate and the tray's lines were one part,
+  whose box ran from x 550 to 1219 and y 190 to 420 on every powered tray, and it was drawn last, over the UPS (amber).
+  So every tray showed a red-orange block lapping over whatever stood at its back right: the OT-2 (A), the Mastersizer
+  (E), the VHX (K), the zwickiLine (L), the LumenPnP (H). The lines are hoses on the back rim and the plate is at the
+  side, so the solids weren't touching.
+- **The check.** `check_trays` failed a pair only if their boxes overlapped *and* FCL found the meshes touching. A pair
+  1 mm apart passed as "fits".
+
+**What changed:**
+
+- **The plan draws each part's own footprint,** its triangles projected onto the tray, rasterized at 4 mm. The UPS is
+  drawn over the plate and lines and labelled with its model. The plate and the lines are two parts.
+- **`fit` measures every close pair solid to solid** (FCL's distance on the meshes): two things on a tray must stand
+  at least 10 mm apart (`CLEAR_MM`), or 5 mm from the lines and the plate (`CLEAR_LINES_MM`). A pair under that is
+  outlined red on the plan, with a red tick between the nearest points and the gap. Each item's four nearest
+  neighbours and their gaps are in `out/tray_plan.json`.
+- **Two real tight spots, both fixed:**
+  - the Keyence VHX was 7 mm from tray K's UPS: it moves 5 mm forward, now 12 mm;
+  - the zwickiLine was 3 mm from tray L's UPS and 9.7 mm from the HM-220: it moves 10 mm forward (its front 20 mm
+    behind the lip, not 30) and 5 mm right, now 13 and 14.7 mm.
+- **Everything else was already at least 12 mm apart.**
+
+**30 ft Shuttles** (`vlm.UNIT_H` 3950 -> 9150 mm; notes/kardex_height.md). 9150 mm is 30 ft 0.2 in, on Kardex's
+100 mm grid from 2550, inside the Shuttle 250/500's published 2550-30050 mm. Kardex's 2014 brochure says the height
+"can be modified quickly and easily", pre and post construction. The drive bay stays 260 mm, so the columns run to
+8890 mm.
+
+- **Every tray keeps its slot,** so nothing the arm does at the opening changes.
+- **Three more stores go in,** all passive (no UPS, plate or cameras):
+  - over tray E: S, a second sample store (R5, 325 mm);
+  - over tray H: P, a second rack of atomized lots (2R5, 150 mm, 489 jars of 125 mL), and Q, a second rack of
+    feedstock (2R6, 225 mm, 264 jars of 500 mL).
+
+  The powder store goes from 753 jars to 1506.
+- **Tray H's slot grows from 550 to 625 mm** for the AirGradient on its UPS (below).
+- **Left free:** 5140 mm in Shuttle 1's rear column, 5465 in its front column, 5265 and 5490 in Shuttle 2's: 21.4 m of
+  slots in all, against 9.4 m used. That is enough for:
+  - round 10's three-each plan (`notes/three_each.md`, option 1: five trays, 3500 mm of column) without the third
+    Shuttle it needed at 3950 mm;
+  - more stores: at 150 mm a slot, a metre of column holds six racks of 489 jars.
+- **The real limits are elsewhere now:**
+  - the opening's time: every tray goes through the same opening (#332);
+  - Kardex's 70 t unit capacity: a tray at 490 kg strong is 7 t per 14 trays;
+  - the floor: about 85 kN/m² at 70 t on the footprint, our estimate.
+
+**AirGradient ONE on every powered tray** (`airgradient.py`, notes/airgradient.md). It stands on the tray's UPS on a
+printed riser (ours), so it goes on with the UPS. On the GXT5 units it stands along the UPS, between the cradle's
+straps, its front to the opening; on the 300 mm PSI5-800 the straps are 130 mm apart, so it stands across.
+
+- Its top is 574-583 mm over the tray's underside.
+- `fit` checks it as a part of its own (purple on the plan), against everything but the UPS it sits on.
+- The nearest is the VHX, at 15.5 mm.
 
 ## How tall each slot is
 

@@ -1,4 +1,4 @@
-"""The OT-2's deck as tray A carries it in the lab scenes (#303, PR #318, round 13).
+"""The OT-2's deck as tray A carries it in the lab scenes (#303, PR #318, round 14).
 
 Sterling, PR #318, 2026-11-20, of round 12's video: "The OT-2 is empty". Every scene that builds the lab
 (animate.Lab, so the set-up movie, the services, hookups and bay-camera clips, the chapters' VLMs) drew Opentrons'
