@@ -386,6 +386,13 @@
   "source": "README.md (A stricter audit; Still open after round 11); out/collisions/round11_summary.json"
  },
  {
+  "chapter": "checks",
+  "part": "collisions/round12_table.png",
+  "offset": 0.5,
+  "text": "This video's own check: each clip drawn for it was checked frame by frame as it rendered. The table lists, clip by clip, the frames where something still touches.",
+  "source": "out/collisions/round12_summary.json"
+ },
+ {
   "chapter": "upkeep",
   "part": "card",
   "offset": 1.0,

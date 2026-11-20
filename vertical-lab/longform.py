@@ -539,7 +539,7 @@ SPEED = float(os.environ.get("NARRATION_SPEED", "0.96"))
 SR = 24000                                                    # Kokoro's rate
 KOKORO = (os.environ.get("KOKORO_MODEL", "/tmp/kokoro/kokoro-v1.0.onnx"),
           os.environ.get("KOKORO_VOICES", "/tmp/kokoro/voices-v1.0.bin"))
-LINE_RMS_DB = -20.0                                           # each line levelled to this RMS (dBFS), peaks under -1
+LINE_RMS_DB = -18.0                                           # each line levelled to this RMS (dBFS), peaks under -1
 
 
 def tts(lines: list[dict]) -> list[Path]:
@@ -624,8 +624,8 @@ def narration_track(meta: dict, total: float, wav: Path) -> list[dict]:
     free, placed = 0.0, []
     for r, p in zip(rows, paths):
         y, sr = sf.read(str(p), dtype="float32")
-        y = y * (10 ** (LINE_RMS_DB / 20) / (float(np.sqrt(np.mean(y ** 2))) + 1e-9))
-        y = np.clip(y, -0.89, 0.89)
+        rms, peak = float(np.sqrt(np.mean(y ** 2))) + 1e-9, float(np.abs(y).max()) + 1e-9
+        y = y * min(10 ** (LINE_RMS_DB / 20) / rms, 0.89 / peak)        # never clipped: a spiky line gets less gain
         t = max(r["t"], free + 0.6)
         if t - r["t"] > 0.5:
             print(f"  narration: pushed {t - r['t']:.1f} s later: {r['text'][:60]}", flush=True)
@@ -840,8 +840,10 @@ def build():
     if NARRATION.exists() and os.environ.get("LONGFORM_NARRATION", "1") != "0":
         wav = tmp / "narration.wav"
         placed = narration_track(meta, total, wav)
+        # EBU R128 to -16 LUFS (speech-gated, so the long silences don't count), true peak -1.5 dB
         run("ffmpeg", "-y", "-loglevel", "error", "-i", silent, "-i", wav, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
-            "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-t", f"{total:.3f}", "-movflags", "+faststart", dst)
+            "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-t", f"{total:.3f}",
+            "-movflags", "+faststart", dst)
         meta["narration"] = dict(voice=f"Kokoro v1.0 {VOICE}, speed {SPEED}", lines=len(placed),
                                  spoken_s=round(sum(r["end"] - r["t"] for r in placed), 1),
                                  srt="out/longform_narration.srt")

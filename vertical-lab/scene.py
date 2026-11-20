@@ -579,15 +579,19 @@ class Scene:
             print("preview", self.name, len(self.preview))
             return
         OUT.mkdir(parents=True, exist_ok=True)
-        if self.__dict__.get("inline_auditor") is not None:
-            self.inline_auditor.save()
         for proc in (self.mp4, self.mp4_text):
             if proc is not None:
                 proc.stdin.close()
                 proc.wait()
         meta = dict(name=self.name, fps=FPS, n_frames=self.n, size=list(self.size), substeps=self.substeps)
-        (self.mp4_dir if CLEAN or HD else OUT).joinpath(f"{self.name}.json").write_text(
-            json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+        jpath = (self.mp4_dir if CLEAN or HD else OUT).joinpath(f"{self.name}.json")
+        jpath.parent.mkdir(parents=True, exist_ok=True)          # out/clean/instruments/ when no clean MP4 made it
+        jpath.write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+        if self.__dict__.get("inline_auditor") is not None:      # after the video and its JSON are safe on disk
+            try:
+                self.inline_auditor.save()
+            except Exception as e:
+                print(f"{self.name}: the inline audit's report failed to save: {e!r}", flush=True)
         if self.still is not None and not (CLEAN or HD):
             Image.fromarray(self.still[1]).convert("RGB").save(OUT / f"{self.name}_still.png", optimize=True)
         info = f"{self.name}: {self.n} frames, {self.n / FPS:.1f} s"

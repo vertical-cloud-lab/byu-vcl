@@ -1331,6 +1331,7 @@ class Auditor:
         rep = self.report()
         tag = os.environ.get("ARM_AUDIT_TAG", "")
         path = OUT / f"{self.sc.name}{'_' + tag if tag else ''}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)       # a tour clip's name has a folder: instruments/<key>
         path.write_text(json.dumps(rep, indent=1) + "\n")
         print(f"{self.sc.name}: {rep['frames_with_collisions']} of {rep['frames_checked']} frames with collisions, "
               f"{len(rep['runs'])} runs ({rep['rules_version']}) -> {path.relative_to(HERE)}", flush=True)
