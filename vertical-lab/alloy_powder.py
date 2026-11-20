@@ -56,7 +56,7 @@ import vlm as V                       # noqa: E402
 import warehouse as W                 # noqa: E402
 
 NAME = "alloy_powder"
-TITLE = "Vertical cloud lab: the alloy route 4/7, the powder checked"
+TITLE = "Vertical cloud lab, the alloy route 4/7: the powder checked"
 HERE = Path(__file__).resolve().parent
 X2 = SL.X2
 DOCK1 = W.dock_pose("vlm")                       # (0, -1932, 0): Shuttle 1's dock

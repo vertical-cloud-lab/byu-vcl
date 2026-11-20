@@ -64,7 +64,7 @@ sys.path.insert(0, str(lab.HERE / "lab_models"))
 import labware as LW                   # noqa: E402
 
 NAME = "alloy_charge"
-TITLE = "Vertical cloud lab, the alloy route 1/4: the atomizer charge"
+TITLE = "Vertical cloud lab, the alloy route 1/7: the charge cups"
 # the punch's rest, 40 mm further left than alloy_press puts it (still in front of the control tower): with eight cups
 # the rack's first plug stands beside the rest, and taking it from above put the gripper's knuckles in the rest's post
 AP.REST_LOCAL = (110.0, AP.REST_LOCAL[1])

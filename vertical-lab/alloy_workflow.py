@@ -49,7 +49,7 @@ import props as P                     # noqa: E402
 import robot as RB                    # noqa: E402
 import tour                           # noqa: E402
 
-TITLE = "Vertical cloud lab: from the metal printer to the tensile test"
+TITLE = "Vertical cloud lab, the alloy route 5/7: depowder, cut, heat treat, test"
 NAME = __import__("os").environ.get("CH5_NAME", "alloy_workflow")   # CH5_NAME: a partial render under its own name
 HERE = Path(__file__).resolve().parent
 SEM = Path("/tmp/dal/figures/sem/AlSi10Mg_carbon_adhesive_SEM.png")

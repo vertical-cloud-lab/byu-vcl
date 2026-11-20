@@ -342,13 +342,15 @@ def main():
     state.update(plate=1.0, cart=1.0, carry=True, arrive=1.0)
     sc.step(f"3/{n}", "The chamber door opens. A 400 mm build plate comes up on a lift table cart and is slid "
             "across onto the platform, the table lowering with it.", 4.5,
-            lambda u: (E.v.update(door=window(u, 0, 0.35), load=window(u, 0.45, 1.0)),
-                       state.update(arrive=1.0 - window(u, 0.0, 0.4)), eos_apply()), hold=0.4,
+            # round 13: the door swings out first and the cart rolls up after it (its swing went through the cart)
+            lambda u: (E.v.update(door=window(u, 0, 0.3), load=window(u, 0.6, 1.0)),
+                       state.update(arrive=1.0 - window(u, 0.3, 0.58)), eos_apply()), hold=0.4,
             cam_to=CAM_CH)
     state.update(carry=False, away=0.0, arrive=0.0)
     sc.step(f"3/{n}", "Door shut; argon in. Drawn see-through from here. The cart rolls aside.", 2.0,
-            lambda u: (E.v.update({"door": 1 - u, "~body": 0.85 * u, "~door": 0.85 * u}),
-                       state.update(away=u), eos_apply()), hold=0.3)
+            lambda u: (E.v.update({"door": 1 - window(u, 0.45, 1.0), "~body": 0.85 * window(u, 0.45, 1.0),
+                                   "~door": 0.85 * window(u, 0.45, 1.0)}),
+                       state.update(away=window(u, 0.0, 0.42)), eos_apply()), hold=0.3)   # the cart clear, then the door
 
     # 4. the build
     nsweep = 9
@@ -380,8 +382,8 @@ def main():
         E.v["platform"] = 1.0 - window(u, 0.0, 0.45)
         state["cake"] = 1.0 - window(u, 0.25, 0.55)
         E.v.update({"~body": 0.85 * (1 - window(u, 0.45, 0.65)), "~door": 0.85 * (1 - window(u, 0.45, 0.65)),
-                    "door": window(u, 0.55, 0.8)})
-        state["away"] = 1.0 - window(u, 0.55, 1.0)            # the cart back to the door
+                    "door": window(u, 0.5, 0.72)})
+        state["away"] = 1.0 - window(u, 0.75, 1.0)            # the cart back to the door, once it is open
         eos_apply()
     sc.step(f"5/{n}", "Done. The platform lifts the plate out of the powder, which is unpacked and sieved for reuse "
             "under argon in the setup station; the door opens.", 5.0, unpack, hold=0.3, cam_to=CAM_CH)

@@ -75,7 +75,7 @@ TAIL = int(__import__("os").environ.get("ATOMIZE_TAIL", "0"))
 # side by side, then `python3 alloy_atomize.py merge` joins them and splices the footage in
 PART = tuple(int(x) for x in __import__("os").environ["ATOMIZE_PART"].split(":")) \
     if __import__("os").environ.get("ATOMIZE_PART") else None
-TITLE = "Vertical cloud lab: the charge cups into the atomizer"
+TITLE = "Vertical cloud lab, the alloy route 2/7: melt and atomize"
 
 _spec = importlib.util.spec_from_file_location("repowder_model", HERE / "repowder" / "model.py")
 M = importlib.util.module_from_spec(_spec)

@@ -194,12 +194,14 @@ class Scene:
         self.pl = pv.Plotter(off_screen=True, window_size=size, lighting="none")
         light_kit(self.pl.renderer)
         self.pl.set_background("white")
-        # VIZ3D_AA: "ssaa" (default; renders oversampled, the costliest on the software renderer), "fxaa" (a cheap
-        # screen-space filter, enough at 1920 x 1080), "msaa" or "none"
-        aa = os.environ.get("VIZ3D_AA", "ssaa")
+        # VIZ3D_AA: "fxaa" (default since round 13: a screen-space filter, enough at 1920 x 1080), "ssaa" (renders
+        # oversampled: round 12's default, measured in round 13 at twice fxaa's CPU per 1080p frame, 1.82 s against
+        # 0.91 s on a chapter-4 frame), "msaa" or "none"
+        aa = os.environ.get("VIZ3D_AA", "fxaa")
         if aa != "none":
             self.pl.enable_anti_aliasing(aa)
         self.pl.enable_depth_peeling(number_of_peels=6, occlusion_ratio=0.0)
+        self._peel_on = True      # depth peeling is switched off for a frame with nothing see-through (render_base)
         self.actors: dict[str, vtk.vtkActor] = {}
         self.group_of: dict[str, str] = {}
         self.parent: dict[str, str] = {}
@@ -235,9 +237,12 @@ class Scene:
         if mp4:
             self.mp4_path = self.mp4_dir / f"{name}.mp4"
             if HD:      # the clean one is also the input of ../ppt/'s captioned clips; both are kept as delivered
-                self.mp4 = encoder(self.mp4_path, size, crf=18, preset="slow") if HD_CLEAN else None
+                # round 13: crf 16 at x264's "faster" (VIZ3D_PRESET) in place of crf 18 "slow": these are intermediates
+                # that longform.py encodes again, and "slow" cost the runner CPU the renders needed
+                pre = os.environ.get("VIZ3D_PRESET", "faster")
+                self.mp4 = encoder(self.mp4_path, size, crf=16, preset=pre) if HD_CLEAN else None
                 self.mp4_text_path = OUT / "hd" / f"{name}.mp4"
-                self.mp4_text = encoder(self.mp4_text_path, size, crf=18, preset="slow")
+                self.mp4_text = encoder(self.mp4_text_path, size, crf=16, preset=pre)
             else:
                 self.mp4 = encoder(self.mp4_path, size, crf=16 if CLEAN else 21)
         self.gif = gif
@@ -463,10 +468,27 @@ class Scene:
         return img
 
     # ------------------------------------------------------------------------------- frames
+    def _needs_peeling(self) -> bool:
+        """Whether this frame has anything see-through to peel. Depth peeling costs a quarter of a 1080p frame's CPU
+        even when nothing is translucent (round 13: 0.91 s against 0.70 s on a chapter-4 frame), and with nothing
+        translucent the picture is the same without it. Anything added to the renderer outside Scene.add keeps it on."""
+        ren = self.pl.renderer
+        if ren.GetActors().GetNumberOfItems() != len(self.actors) or ren.GetVolumes().GetNumberOfItems():
+            return True
+        for a in self.actors.values():
+            if a.GetVisibility() and a.HasTranslucentPolygonalGeometry():
+                return True
+        return False
+
     def render_base(self) -> np.ndarray:
         self.apply()
         self.pl.camera_position = self.cam
         self.pl.camera.view_angle = self.view_angle
+        if os.environ.get("VIZ3D_PEEL", "auto") == "auto":
+            need = self._needs_peeling()
+            if need != self.__dict__.get("_peel_on", True):
+                self.pl.renderer.SetUseDepthPeeling(need)
+                self._peel_on = need
         self.pl.render()
         return self.pl.screenshot(return_img=True)
 
@@ -614,6 +636,7 @@ def encoder(path: Path, size, crf, preset="medium") -> subprocess.Popen:
     return subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{size[0]}x{size[1]}",
          "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264", "-preset", preset, "-crf", str(crf), "-pix_fmt", "yuv420p",
+         *(["-threads", os.environ["FFMPEG_THREADS"]] if os.environ.get("FFMPEG_THREADS") else []),   # runner_guard: 2
          "-movflags", "+faststart", str(path)], stdin=subprocess.PIPE)
 
 

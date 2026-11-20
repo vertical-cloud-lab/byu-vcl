@@ -50,7 +50,7 @@ import tour                           # noqa: E402
 from alloy_workflow import held_point, status  # noqa: E402
 
 NAME = "alloy_print"
-TITLE = "Vertical cloud lab: from the atomizer's powder to the printed plate"
+TITLE = "Vertical cloud lab, the alloy route 3/7: sieve and print"
 
 # ------------------------------------------------------------------------------------------------- layout
 BENCH = dict(x=-1982.5, w=1065.0, d=600.0, h=700.0)     # a lab bench between the rePowder and the VLM (assumed)
