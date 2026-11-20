@@ -1,4 +1,4 @@
-# The narration's pronunciation, checked line by line (round 13, run D)
+# The narration's pronunciation, checked line by line (round 14, run D)
 
 Sterling on round 12's video (PR #318, 2026-11-20): "Potentiostat is mispronounced in the narration. Look for other
 hiccups like that in the narration. 'MiR' should be pronounced 'meer' (common pronunciation)."
@@ -39,11 +39,11 @@ python3 longform.py narration-check      # every line spoken, then heard back by
 
 It writes [`out/narration/check.json`](../out/narration/check.json) (per line: the text, what is spoken, the phonemes,
 what each model heard, the word error rate, each difference, and the words heard with less than 50 % confidence) and
-[`out/narration/lines.ogg`](../out/narration/lines.ogg), all 55 lines in order with a second between, to listen to
-(9.3 min, 2.3 MB). The comparison writes numbers as words, merges letters said one by one (U P S = UPS), and takes
+[`out/narration/lines.ogg`](../out/narration/lines.ogg), all 56 lines in order with a second between, to listen to
+(9.6 min of speech, 2.4 MB). The comparison writes numbers as words, merges letters said one by one (U P S = UPS), and takes
 metre/meter and similar spellings as the same.
 
-**This round's result:** mean word error 1.3 % (small.en) and 2.6 % (base.en); 40 and 34 of the 55 lines word-perfect.
+**This round's result:** mean word error 1.3 % (small.en) and 2.7 % (base.en); 40 and 34 of the 56 lines word-perfect.
 Every remaining difference is a number written another way ("a hundred" as "one hundred", "250" as "two hundred and
 fifty"), a homophone ("Kardex" as "Cardex", "missed" as "mist"), or "round" heard as "around". The machine check
 catches a wrong word, not a wrong stress: "potentiostat" was transcribed correctly in round 12 too, so the stressed and

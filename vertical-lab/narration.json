@@ -72,6 +72,16 @@
  },
  {
   "chapter": "corrosion",
+  "part": "icpms",
+  "substep": 12,
+  "label": "5/8",
+  "match": "Inside, an acid-rated dilutor (QPrep class)",
+  "offset": 0.5,
+  "text": "The concentrated acids stay in this hood, in a dilutor with an all-fluoropolymer path: Hamilton's own tables advise against nitric acid on its pipetting heads. The arm, in its cover, only moves racks.",
+  "source": "notes/icpms.md (Hamilton's STAR resistance table; the dilutor; the arm's cover)"
+ },
+ {
+  "chapter": "corrosion",
   "part": "vlm_workflow",
   "substep": 25,
   "label": "3/6",
@@ -122,8 +132,9 @@
   "substep": 106,
   "label": "3/5",
   "offset": 0.5,
-  "text": "Building the crucible stack stays a person's job here: a thin graphite nut threaded on from below while the crucible is held still. The next chapter takes it on.",
-  "source": "out/alloy_atomize.json caption; notes/crucible_automation.md"
+  "text": "The stack under the charge is built between runs by the two arms: one holds the graphite crucible still while the other threads the thin nut on from below. The next chapter shows it.",
+  "source": "alloy_atomize.py (round 14, run C: the stack aside); notes/atom_crucible.md",
+  "match": "The stack under the charge was built by the two arms"
  },
  {
   "chapter": "alloy2",
@@ -132,7 +143,8 @@
   "label": "4/5",
   "offset": 0.5,
   "text": "Four cups make about a hundred and forty grams of powder, some twenty-six grams of it in the printer's size range. A fuller crucible, or the larger four-hundred cubic centimetre one, makes several times more a run.",
-  "source": "out/alloy_atomize.json caption (substeps 118, 137); notes/alloy_atomize.md (How much powder a run makes)"
+  "source": "out/alloy_atomize.json caption (substeps 118, 137); notes/alloy_atomize.md (How much powder a run makes)",
+  "match": "The powder collects in the container"
  },
  {
   "chapter": "atomizer",
@@ -144,20 +156,22 @@
  {
   "chapter": "atomizer",
   "part": "atom_latch",
-  "substep": 13,
+  "substep": 9,
   "label": "5/9",
   "offset": 0.5,
-  "text": "Unclamping follows the training video: the arm lifts the loop off its hook, lets the lever down, and lets the loop fall over it, keeping its forearm clear of the machine.",
-  "source": "atom_latch.py (round 13); notes/atom_latch_container.md"
+  "text": "Unlatching follows the training video: with the lever eased open, the arm lifts the loop off the keeper's hook, lets the lever down and lets the loop fall over it. No arm presses on the lid.",
+  "source": "out/atom_latch.json (sub-steps 5-14); notes/atom_latch_container.md",
+  "match": "Unlatching: arm 1 takes the loop by its two legs"
  },
  {
   "chapter": "atomizer",
   "part": "atom_container",
-  "substep": 22,
-  "label": "5/5",
+  "substep": 28,
+  "label": "6/6",
   "offset": 0.5,
   "text": "Taking the container off isn't animated yet. At an estimated four kilograms empty, it is near or past the gripper's five-kilogram limit with powder, so a second arm would hold it from below.",
-  "source": "out/atom_container.json caption"
+  "source": "out/atom_container.json caption",
+  "match": "Next, not animated yet: arm 2 holds the weight from below"
  },
  {
   "chapter": "atomizer",

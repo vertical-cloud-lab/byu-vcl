@@ -1,6 +1,6 @@
 # The real footage and photos in the long-form, and their credits
 
-Round 13, run D (Sterling's notes on round 12's public video, PR #318, 2026-11-20). The excerpts live in
+Round 14, run D (Sterling's notes on round 12's public video, PR #318, 2026-11-20). The excerpts live in
 [`out/footage/`](../out/footage/), each with its source in [`out/footage/manifest.json`](../out/footage/manifest.json).
 Chapter 2 cuts them in at its slots (`alloy_atomize.py`, `PLAN`, then `python3 alloy_atomize.py splice`); chapter 3
 and the long-form's opening use the rest.

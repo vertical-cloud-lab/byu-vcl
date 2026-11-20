@@ -25,7 +25,7 @@ by hand.
 | 16 | Long-term monitoring | optical monitoring of samples over time (DAL #233) | | the OpenFlexure array and the stream cameras | |
 | 17 | Records | stream cameras to YouTube (DAL #147, PR #189); MongoDB | the channel | Pi 5 cameras on every tray and over the bay (round 4) | |
 
-## Round 13: what this design does with each step
+## Round 14 (run D): what this design does with each step
 
 Sterling on round 12's card (PR #318, 2026-11-20): '11:43 "most by hand" is dissatisfying and misleading. For example,
 coating the crucible is being explored as automated in another PR'. The table above is round 4's, and its last column

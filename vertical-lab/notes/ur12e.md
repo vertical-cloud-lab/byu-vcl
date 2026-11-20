@@ -1,4 +1,4 @@
-# UR10e or UR12e? The same arm, renamed (round 13, run D)
+# UR10e or UR12e? The same arm, renamed (round 14, run D)
 
 Sterling on PR #318 (2026-11-20): "I think UR10e-s have been replaced by UR12e-s (apparently a rebrand of the UR10e
 maybe?). Not sure if that affects the CAD model, but the naming should probably be updated throughout, which will be a

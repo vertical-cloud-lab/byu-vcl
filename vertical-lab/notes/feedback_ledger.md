@@ -282,3 +282,15 @@ Round 10's outcome for each open point is in the last column.
 | "When it's actually on the pedestal, it still looks relatively unsecure" (9:54) | ✅ the nest's 4 mm ring holds the vessel's foot all round (0.25 mm a side, a lead-in), a nest for the cup and one for the vial; the fork's tines drop into its grooves |
 | The die and punch need cleaning between presses; cross-contamination run to run | ✅ `alloy_press.Cleaner`, [`vacuum_press.md`](vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20): the punch through a brush cup, the bore by a vacuum wand, after every press; an IPA swab at a run change (not animated); target ≤ 10 ppm of the next charge (0.43 mg Al cup, 1.46 mg Cu cup), shown by validation swabs and ICP-MS |
 | Weigh each cup again after the press fit | ✅ chapter 1: back to the HR-202i, read against its weight before pressing plus its plug (±1.0 mg), recorded in the clip's JSON |
+
+### Nov 20 18:00: round 12's video, the narration, footage, cards, ICP-MS and the arm's name (run D)
+
+| Point | Status |
+|---|---|
+| "Potentiostat is mispronounced in the narration. Look for other hiccups like that ... 'MiR' should be pronounced 'meer'" | ✅ `longform.SAY` / `IPA`: every line written as it reads and spoken from phonemes (potentiostat, MiR as "meer", doser, Vertiv); all 56 lines spoken and heard back by faster-whisper (`longform.py narration-check`, [`narration.md`](narration.md), `out/narration/check.json`, `lines.ogg`) |
+| 11:43, "most by hand" is dissatisfying and misleading | ✅ the 17-step card redrawn per step: 15 automated and shown, 2 with no station, and what still takes a person ([`dal_workflow.md`](dal_workflow.md)); its line rewritten |
+| 11:46, a simplified version of the tray setups? More trays? | 💬 yes: chapter 1 is still staged in round 2's one-Shuttle lab with trays A-C (`alloy_charge.py` builds `animate.Lab`), where chapters 2-7 use `setup_lab.build`'s two Shuttles and every tray. Run B's file; not changed here |
+| 20:05, "that's not my video. That's from AMAZEMET" | ✅ the MS&T 2026 clip is out of chapter 2; the lab's own Oct 27 pour stays ([`footage.md`](footage.md)) |
+| 20:26, "that's aluminum slag/scrap ... a better jar photo for the Al atomizer runs" | ✅ a jar of the lab's own atomized Al, lot 4yghtr, cropped from DAL #159 ([`footage.md`](footage.md)) |
+| ICP-MS as a module; the OT-2 and acids; a standalone fume hood with a harsh-chemicals liquid handler (Hamilton?); a sleeve for the arms | ✅ `icpms.py`, [`icpms.md`](icpms.md): a polypropylene trace-metals hood with an acid-rated dilutor (Hamilton's own table rates its STAR head unsuitable for nitric acid) and a hot block; an Agilent 7850 + SPS 4 beside it; the arm in a PTFE-laminate cover; a clip; where it goes on the floor, for run A |
+| UR10e replaced by the UR12e? Rename everywhere? | ✅ a pure rename (June 2025), mechanically unchanged ([`ur12e.md`](ur12e.md)): every frame drawn from now on says UR12e (`scene.ON_SCREEN`), the cards and description too; code, notes and old records keep UR10e |

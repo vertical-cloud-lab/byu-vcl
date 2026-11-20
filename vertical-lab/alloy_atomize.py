@@ -2558,7 +2558,7 @@ PLAN = [
                  "3:55 Gage says \"It's melting in right now\")."),
     dict(beat="melt", file="nab_melt3.mp4", window=(14.0, 18.5), speed=MELT_SPEED,
          caption="The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219)."),
-    # Round 13 (run D): the MS&T 2026 talk's melt stream is out. It was AMAZEMET's footage shown in Sterling's talk, not
+    # Round 14 (run D): the MS&T 2026 talk's melt stream is out. It was AMAZEMET's footage shown in Sterling's talk, not
     # the lab's (Sterling, PR #318, 2026-11-20: "that's not my video. That's from AMAZEMET"), and the lab's own pour
     # below shows the same thing. notes/footage.md.
     dict(beat="pour", file="nab_pour1.mp4", window=(15.0, 22.5),
@@ -2567,7 +2567,7 @@ PLAN = [
     dict(beat="powder", file="nab_k7m2q9_jar_of_powder.jpg", seconds=3.0,
          caption="Real photo: the Oct 27 bronze powder as it came out of the atomizer, not yet sieved: lot k7m2q9 "
                  "(DAL #219). It is sieved in chapter 3."),
-    # Round 13 (run D): c3k0n5's photo was a phone shot of a screen, a bag of splats beside a jar of lumps (Sterling:
+    # Round 14 (run D): c3k0n5's photo was a phone shot of a screen, a bag of splats beside a jar of lumps (Sterling:
     # "that's aluminum slag/scrap"); this is a jar of the lab's own atomized Al powder, cropped from DAL #159.
     dict(beat="powder", file="al_4yghtr_oct06_jar.jpg", seconds=3.0,
          caption="Real photo: the lab's own atomized aluminium, lot 4yghtr, from the Oct 6 2026 run (180 g of Al rod): "

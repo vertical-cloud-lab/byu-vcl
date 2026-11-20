@@ -118,14 +118,16 @@ CHAPTERS = [
                 ("mp4", "vlm_cabling.mp4", "Cabling"),
                 ("mp4", "instruments/stream_cam.mp4", "The stream camera unit: height, pan, tilt"),
                 ("mp4", "bay_camera.mp4", "The cameras over the bay, and what each sees")]),
-    dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL",
+    dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL, and the ICP-MS beside the VLM",
          card=["The OT-2 makes up the CubXL's electrolyte (digital-wetlab PR #83). The CubXL runs DAL's copper corrosion "
                "screen spot by spot (DAL PR #180), with the volumes a real pipette moves; its magnet holds one cap at a "
                "time, so a second cap waits on an empty vial. The multi-doser doses atomized powder for it by weight.",
-               "The wells' samples go to an ICP-MS station on the floor, its acids kept in a fume hood (round 13); the "
+               "The wells' samples go to an ICP-MS station on the floor, its acids kept in a fume hood (round 14); the "
                "OT-2's clip still shows the old dilution on the tray."],
          parts=[("mp4", "instruments/ot2_corrosion_prep.mp4", "The OT-2: electrolyte and ICP dilutions"),
                 ("mp4", "instruments/cubxl_corrosion.mp4", "The CubXL's corrosion screen"),
+                # round 14 (D): the ICP-MS station on the floor, its acids in a fume hood (icpms.py, notes/icpms.md)
+                ("mp4", "icpms.mp4", "An ICP-MS station, its acids in a fume hood"),
                 ("mp4", "vlm_workflow.mp4", "Atomized powder dosed for the CubXL")]),
     dict(key="alloy1", title="Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum",
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
@@ -484,7 +486,7 @@ def warm(skip=()):
 
 
 # ===================================================================================================== DAL's steps
-# Round 13 (run D): per step, what this design does with it. Sterling on round 12's card (PR #318, 2026-11-20): '"most by
+# Round 14 (run D): per step, what this design does with it. Sterling on round 12's card (PR #318, 2026-11-20): '"most by
 # hand" is dissatisfying and misleading', e.g. the BN coating is automated in #353's clips. Status: "auto", automated
 # in this design and shown in the video (the chapter says where); "progress", designed or being designed, not in the
 # video yet; "none", no station yet; "manual", stays a person's. The last column is what, inside the step, still
@@ -587,7 +589,7 @@ KOKORO = (os.environ.get("KOKORO_MODEL", "/tmp/kokoro/kokoro-v1.0.onnx"),
 LINE_RMS_DB = -18.0                                           # each line levelled to this RMS (dBFS), peaks under -1
 
 
-# How the voice says what the text writes (round 13, run D). The lines are written as they should read in the
+# How the voice says what the text writes (round 14, run D). The lines are written as they should read in the
 # subtitles (OT-2, SEM, MiR); Kokoro's front end (espeak) would say several of these as words ("ups", "sem", "my R")
 # or with the wrong stress, so each line is spoken from phonemes: SAY respells a written form as text, then IPA gives
 # the phonemes of the words no respelling fixes (Kokoro's phoneme input). Checked by ear and by machine with
@@ -761,7 +763,14 @@ def narration_times(meta: dict) -> list[dict]:
                 cm = clip_meta(r["src"])
                 subs = (cm or {}).get("substeps", [])
                 i = ln.get("substep")
-                if i is not None and i < len(subs) and subs[i]["label"] != ln.get("label"):
+                # round 14 (D): a line may anchor on a phrase of the sub-step's caption ("match"), which survives a
+                # clip that gains or loses steps (chapter 2 was being reworked while its narration was rewritten)
+                found = [j for j, sb in enumerate(subs) if ln.get("match") and ln["match"] in (sb.get("caption") or "")]
+                if found:
+                    i = found[0]
+                elif ln.get("match"):
+                    print(f"  narration: {part} has no caption with {ln['match']!r}; by sub-step index", flush=True)
+                if not found and i is not None and i < len(subs) and subs[i]["label"] != ln.get("label"):
                     hit = [j for j, sb in enumerate(subs) if sb["label"] == ln.get("label")]
                     print(f"  narration: {part} sub-step {i} is now {subs[i]['label']!r}; "
                           f"{'using ' + str(hit[0]) if hit else 'kept'}", flush=True)

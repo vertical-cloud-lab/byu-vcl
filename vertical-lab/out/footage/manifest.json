@@ -1,5 +1,5 @@
 {
- "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2 and alloy_print.py into chapter 3, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video. Round 8 dropped al_pour_oct08.mp4 (Oct 8, Al 6063: it dripped rather than atomized). Round 13 dropped mst2026_stream.mp4, a melt stream from Sterling's MS&T 2026 talk that is AMAZEMET's footage, not the lab's, and al4047_oct22_c3k0n5_bag_and_jar.jpg (a bag of splats), for al_4yghtr_oct06_jar.jpg; notes/footage.md.",
+ "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2 and alloy_print.py into chapter 3, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video. Round 8 dropped al_pour_oct08.mp4 (Oct 8, Al 6063: it dripped rather than atomized). Round 14 dropped mst2026_stream.mp4, a melt stream from Sterling's MS&T 2026 talk that is AMAZEMET's footage, not the lab's, and al4047_oct22_c3k0n5_bag_and_jar.jpg (a bag of splats), for al_4yghtr_oct06_jar.jpg; notes/footage.md.",
  "files": [
   {
    "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
@@ -92,7 +92,7 @@
    "date": "2026-10-06",
    "run": "4yghtr (Oct 6 2026, run 1)",
    "alloy": "aluminium: 180 g of Al rod; the run log says 'Al 6067', the lab's rods then were 6063",
-   "used_in": "alloy_atomize.py, chapter 2's powder beat (round 13), in place of c3k0n5's bag and jar (Sterling, PR #318, 2026-11-20: \"that's aluminum slag/scrap. You should be able to find a better jar photo for the Al atomizer runs\")"
+   "used_in": "alloy_atomize.py, chapter 2's powder beat (round 14), in place of c3k0n5's bag and jar (Sterling, PR #318, 2026-11-20: \"that's aluminum slag/scrap. You should be able to find a better jar photo for the Al atomizer runs\")"
   },
   {
    "file": "nab_k7m2q9_sieved_three_jars.jpg",

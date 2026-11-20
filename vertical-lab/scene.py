@@ -129,7 +129,7 @@ if os.environ.get("VIZ3D_QUICK_EXIT", "1") != "0":
 _FONTS: dict = {}
 _WRAP: dict = {}
 
-# What a frame says, where it differs from what the code says (round 13, run D). Universal Robots renamed the UR10e the
+# What a frame says, where it differs from what the code says (round 14, run D). Universal Robots renamed the UR10e the
 # UR12e in June 2025, for the 12.5 kg it already carried; the arm is mechanically unchanged (notes/ur12e.md). The code,
 # its identifiers, the notes and the old clips keep "UR10e"; every title, status, label and caption drawn from here on
 # says "UR12e". Same length and digit widths, so no layout moves.

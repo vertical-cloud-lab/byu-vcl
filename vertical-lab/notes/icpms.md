@@ -1,4 +1,4 @@
-# An ICP-MS station of the lab's own, its acids in a fume hood (round 13, run D)
+# An ICP-MS station of the lab's own, its acids in a fume hood (round 14, run D)
 
 Sterling on PR #318 (2026-11-20, on round 12's video):
 

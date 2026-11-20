@@ -1,4 +1,4 @@
-"""An ICP-MS station on the floor, its acids in a fume hood of their own (round 13, run D; PR #318, #303).
+"""An ICP-MS station on the floor, its acids in a fume hood of their own (round 14, run D; PR #318, #303).
 
     xvfb-run -a python3 icpms.py              # the clip -> out/mp4/icpms.mp4, out/icpms.gif, out/icpms.json,
                                               #    out/icpms_still.png, out/icpms_bom.json
@@ -72,7 +72,7 @@ HTOP = WS + HOOD["H"]                                        # the hood's top, 2
 POST = HOOD["post"]
 XI0, XI1 = HX0 + POST, HX1 - POST                            # inside the side posts
 PANEL = (XI1 - XI0) / 4                                      # four sliding sash panels, 407 mm
-OPEN_X = (XI0 + 2 * PANEL, XI1)                              # the right half, open: panels 2-4 slid left
+OPEN_X = (XI0 + 2 * PANEL + 28.0, XI1)                       # the right half, open: panels 1-3 slid left
 DEWAR_XY = (BX1 + DEWAR["gap"] + DEWAR["d"] / 2, YB - DEWAR["d"] / 2 - 30.0)
 
 # the racks (ours): 15 mL PP tubes, 17 x 118 mm (+ 12 mm cap), 4 columns x 6 rows; a central handle for the 2F-85
@@ -87,7 +87,8 @@ HEAD_PARK = (-860.0, 150.0)                                              # the h
 PROBE_DX = 34.0                                                          # the probe beside the decapping chuck, in x
 TUBE_TOP = RACK_IN[2] + RACK["floor"] + RACK["tube_h"]                   # a tube's rim, 1098; its cap's top 1110
 PROBE_TIP = TUBE_TOP + RACK["cap_h"] + 25.0                              # the probe's tip at rest, over the caps
-CHUCK_BOT = TUBE_TOP + RACK["cap_h"] + 30.0                              # the chuck's jaws at rest
+CHUCK_BOT = RACK_IN[2] + RACK["handle"][2] + 15.0                       # the chuck's jaws at rest, 15 mm over the
+#                                                                          racks' handles (it carries a cap over them)
 SPS_X = BX0 + 80.0 + SPS["W"] / 2                                        # the SPS 4's centre
 SPS_RACK = (SPS_X - 120.0, BYF + 60.0 + SPS["D"] / 2 - 20.0, BENCH["H"] + 45.0)
 ICP_X = SPS_X + SPS["W"] / 2 + 60.0 + ICP["W"] / 2
@@ -385,9 +386,9 @@ def station() -> Instrument:
         _ycyl(16, 90, x=dx_ - 90, y=dy_ - 45, z=1805)), "chrome")
     # ---------------------------------------------------------------- the moves, for a tour of the station alone
     inst.joints.update({
-        "sash1": Joint("slide", vec=(-PANEL, 0, 0)),
-        "sash2": Joint("slide", vec=(-PANEL, 0, 0)),
-        "sash3": Joint("slide", vec=(-2 * PANEL, 0, 0)),
+        "sash1": Joint("slide", vec=(-(PANEL - 10.0), 0, 0)),          # back track: behind panel 0, 2 mm off the post
+        "sash2": Joint("slide", vec=(-(PANEL - 18.0), 0, 0)),          # front track: 2 mm right of panel 0
+        "sash3": Joint("slide", vec=(-(2 * PANEL - 28.0), 0, 0)),      # back track: 2 mm right of panel 1
         "head": Joint("path", path=_head_path()),
         "beam": Joint("follow", path=_head_path(), jac=_Y_ONLY),
         "probe": Joint("slide", vec=(0, 0, -(PROBE_TIP - (RACK_IN[2] + RACK["floor"] + 12.0))), parent="head"),
@@ -474,14 +475,17 @@ REGISTRY = {"icpms": station}
 
 
 # ===================================================================================================== the clip
-MIR_X = -380.0                       # the MiR250 parks in front of the station, between the hood's opening and the SPS 4
+MIR_X = -830.0                       # the MiR250 docks in front of the hood's open half (its middle is x -813)
+MIR_X_SPS = 90.0                     # ... and then in front of the SPS 4 (its rack at x 40)
 MIR_Y = HYF - 60.0 - 290.0           # 60 mm clear of the hood's front
-MIR_FROM = 1500.0                    # it drives in from 1.5 m to the right, at the MiR's published 0.3 m/s^2
+MIR_FROM = 2400.0                    # it drives in from 2.4 m to the right, at the MiR's published 0.3 m/s^2
 CARRIER = (266.0, -40.0)             # the rack's carrier on the MiR's cabinet top (local), right of the arm's plate,
                                      # the rack turned 90 deg so it fits beside the plate
-HANDLE_GRASP = RACK["handle"][2] - 11.0      # the pads' centre on the handle's T top, over the rack's base
-STOW_DEG = (90.0, -150.0, 135.0, -75.0, -90.0, 180.0)   # animate.PARK_DEG turned to face away from the station, so the
+HANDLE_GRASP = RACK["handle"][2] - 11.0      # the pads' centre on the handle's T top (36 mm across, 22 mm tall), over
+#                                              the rack's base; the 16 mm web under it leaves the fingertips room
+STOW_DEG = (0.0, -150.0, 135.0, -75.0, -90.0, 180.0)    # animate.PARK_DEG turned to face along the MiR (+x), so the
 #                                                          folded arm doesn't stand between the camera and the hood
+#                                                          (checked clear at both docks, with a rack on the carrier)
 
 
 def sleeve(sc, rb, inflate: float = 6.0):
@@ -509,7 +513,7 @@ def sleeve(sc, rb, inflate: float = 6.0):
 def bom() -> dict:
     """The station's parts with their sizes, sources and prices where public (out/icpms_bom.json)."""
     return dict(
-        note="Round 13, run D: the ICP-MS station (icpms.py, notes/icpms.md). Prices are public figures, not quotes.",
+        note="Round 14, run D: the ICP-MS station (icpms.py, notes/icpms.md). Prices are public figures, not quotes.",
         items=[
             dict(item="ICP-MS", product="Agilent 7850 (UHMI standard)", size_mm=[730, 600, 595], mass_kg=100,
                  power="200-240 V single phase, 30 A circuit", argon="20 L/min", exhaust="150 mm, 5-7 m3/min",
@@ -546,12 +550,12 @@ def clip():
     import ur_arm
     from scene import Scene, T
 
-    grip = ur_arm.close_for(RACK["handle"][0] + 0.3)          # on the handle's 16 mm web
+    grip = ur_arm.close_for(RACK["handle"][0] + 20.0 + 0.3)   # on the handle's T top, 36 mm across
     opened = ur_arm.close_for(52.0)                          # around the 36 mm T top, with room
     tour.MATS.update(MATERIALS_ALL)
     inst = station()
     ents = tour.piece_entries(inst)
-    sc = Scene("icpms", "An ICP-MS station on the floor, its acids kept in a fume hood (round 13)")
+    sc = Scene("icpms", "An ICP-MS station on the floor, its acids kept in a fume hood")
     sc.intro = 0.8
     bb = inst.bbox()
     tour.studio(sc, size=12000.0, shadow_of=bb)
@@ -591,12 +595,33 @@ def clip():
     add_parts("rack_in", parts_in, "amr", T((CARRIER[0], CARRIER[1], cz + 4.0)) @ R((0, 0, 1), -90.0))
     add_parts("rack_in_cap0", {"cap": (cap0, "icp_cap_in")}, "rack_in", np.eye(4))
     add_parts("rack_out", rack_parts(False), None, T(RACK_OUT))
+    sc.fluids = {"rack_in/liquid", "rack_out/liquid"}         # the probes dip into these (collide: liquids)
     rb = RB.Robot(sc, A.ROBOT, "amr", T((*A.ARM_LOCAL, P.AMR_TOP)), q0=A.PARK_DEG)
     sleeve(sc, rb)
     rb.set(close=opened)
 
     def down_at(p, spin=0.0):
         return P.tcp_frame(np.asarray(p, float), (0, 0, -1), spin)
+
+    def over(p, dz, spin=0.0):
+        """The joints over p (dz up) in the arm's IK branch that stays clear all the way down the straight line to p,
+        the nearest such branch to where the arm is: the planner alone may take a branch clear at the top that puts a
+        wrist through the SPS 4's beam at the bottom."""
+        import collide
+        chk = rb.checker()
+        W = chk.snapshot()
+        top, bot = np.asarray(p, float) + (0, 0, dz), np.asarray(p, float)
+        best = None
+        for q in collide.ik_all(rb.model, np.linalg.inv(sc.world(rb.root)) @ down_at(top, spin), rb.q) or []:
+            qq, ok = q.copy(), True
+            for u in np.linspace(0.0, 1.0, 16):
+                qq = rb.solve(down_at(top + (bot - top) * u, spin), qq)
+                if chk.collisions(qq, rb.close, W):
+                    ok = False
+                    break
+            if ok and (best is None or np.abs(q - rb.q).sum() < np.abs(best - rb.q).sum()):
+                best = q
+        return best
 
     def grasp_point(g):
         return (sc.world(g) @ np.r_[0.0, 0.0, HANDLE_GRASP, 1.0])[:3]
@@ -615,7 +640,7 @@ def clip():
     sps_cam = tour.close_cam((SPS_X + 150.0, BYF + 150.0, 1200.0), 2300.0, (0.70, -1.45, 0.80))
     labels = list(inst.labels)
     n = 8
-    sc.step(f"1/{n}", "An ICP-MS station on the floor beside the VLM (round 13): its concentrated acids stay in a "
+    sc.step(f"1/{n}", "An ICP-MS station on the floor beside the VLM: its concentrated acids stay in a "
             "metal-free polypropylene fume hood, off every tray. Beside it an Agilent 7850 ICP-MS with its SPS 4 "
             "autosampler, the chiller and forepump under the bench, and liquid argon in a 180 L dewar.", 6.0, None,
             hold=1.5, labels=labels)
@@ -674,25 +699,49 @@ def clip():
     sc.step(f"6/{n}", "The hot block digests chips or powder of each build in nitric and hydrochloric acid, aqua regia "
             "for the copper alloys. With no HF, silicon over about 1 % won't dissolve, so Si comes from the XRF.", 4.0,
             None, hold=0.8, cam_to=block_cam)
-    # the filled autosampler rack to the SPS 4
-    cap7 = ("The filled autosampler rack (dilute acid, open tubes) goes to the SPS 4: its lid lifts (the actuator is "
-            "ours) and the arm sets the rack on the tray.")
+    # the filled autosampler rack to the SPS 4: onto the MiR's carrier, a drive of 0.9 m, then into the SPS 4
+    cap7 = ("The filled autosampler rack (dilute acid, open tubes) rides on the MiR to the SPS 4, whose lid lifts (the "
+            "actuator is ours): the arm sets the rack on its tray.")
     gp = grasp_point("rack_out")
     sc.step(f"7/{n}", cap7, 2.0, rb.joint_to(Tw=down_at(gp + (0, 0, 150.0))), hold=0.0, cam_to=hood_cam)
     sc.step(f"7/{n}", cap7, 0.8, rb.line_to(down_at(gp)), hold=0.0)
     sc.step(f"7/{n}", cap7, 0.4, rb.grip_to(grip), hold=0.0)
     rb.grasp("rack_out")
     sc.step(f"7/{n}", cap7, 0.8, rb.line_to(down_at(gp + (0, 0, 220.0))), hold=0.0)
-    sc.step(f"7/{n}", cap7, 1.6, rig.move({"sps_door": (None, 1.0)}), hold=0.0, cam_to=sps_cam)
+    car_tgt = (sc.world("amr") @ np.r_[CARRIER[0], CARRIER[1], cz + 4.0 + HANDLE_GRASP + 1.0, 1.0])[:3]
+    sc.step(f"7/{n}", cap7, 2.4, rb.joint_to(Tw=down_at(car_tgt + (0, 0, 150.0), 90.0)), hold=0.0)
+    sc.step(f"7/{n}", cap7, 0.8, rb.line_to(down_at(car_tgt, 90.0)), hold=0.0)
+    sc.step(f"7/{n}", cap7, 0.4, rb.grip_to(opened), hold=0.0)
+    rb.release("amr")
+    sc.step(f"7/{n}", cap7, 0.8, rb.line_to(down_at(car_tgt + (0, 0, 180.0), 90.0)), hold=0.0)
+    sc.step(f"7/{n}", cap7, 2.0, RB.both(rb.joint_to(q1=np.radians(STOW_DEG)),
+                                         rig.move({"sash1": (None, 0.0), "sash2": (None, 0.0), "sash3": (None, 0.0)})),
+            hold=0.2)
+    d2 = abs(MIR_X_SPS - MIR_X)
+
+    def drive2(u):
+        f = P.ramp_frac(u, d2, 600.0)
+        sc.gmat["amr"] = T((MIR_X + (MIR_X_SPS - MIR_X) * f, MIR_Y, 0.0))
+        rb.set()
+    sc.step(f"7/{n}", cap7, P.ramp_secs(d2, 600.0), drive2, hold=0.1, cam_to=sps_cam)
+    sc.step(f"7/{n}", cap7, 1.6, rig.move({"sps_door": (None, 1.0)}), hold=0.0)
+    gp = grasp_point("rack_out")
+    sc.step(f"7/{n}", cap7, 2.0, rb.joint_to(Tw=down_at(gp + (0, 0, 150.0), 90.0)), hold=0.0)
+    sc.step(f"7/{n}", cap7, 0.8, rb.line_to(down_at(gp, 90.0)), hold=0.0)
+    sc.step(f"7/{n}", cap7, 0.4, rb.grip_to(grip), hold=0.0)
+    rb.grasp("rack_out")
+    sc.step(f"7/{n}", cap7, 0.8, rb.line_to(down_at(gp + (0, 0, 220.0), 90.0)), hold=0.0)
     tgt = np.asarray(SPS_RACK, float) + (0, 0, HANDLE_GRASP + 1.0)
-    sc.step(f"7/{n}", cap7, 2.8, rb.joint_to(Tw=down_at(tgt + (0, 0, 130.0))), hold=0.0)
-    sc.step(f"7/{n}", cap7, 0.9, rb.line_to(down_at(tgt)), hold=0.0)
+    # over the SPS 4's tower and beam (1370 mm) on the way in and out: the wrist stays above them
+    q_over = over(tgt, 300.0)
+    sc.step(f"7/{n}", cap7, 2.6, rb.joint_to(q1=q_over) if q_over is not None else rb.joint_to(Tw=down_at(tgt + (0, 0, 300.0))),
+            hold=0.0)
+    sc.step(f"7/{n}", cap7, 1.2, rb.line_to(down_at(tgt)), hold=0.0)
     sc.step(f"7/{n}", cap7, 0.4, rb.grip_to(opened), hold=0.0)
     rb.release("icp:body")
-    sc.step(f"7/{n}", cap7, 0.8, rb.line_to(down_at(tgt + (0, 0, 220.0))), hold=0.0)
+    sc.step(f"7/{n}", cap7, 1.2, rb.line_to(down_at(tgt + (0, 0, 380.0))), hold=0.0)
     sc.step(f"7/{n}", cap7, 2.4, rb.joint_to(q1=np.radians(STOW_DEG)), hold=0.0)
-    sc.step(f"7/{n}", cap7, 1.4, rig.move({"sps_door": (None, 0.0), "sash1": (None, 0.0), "sash2": (None, 0.0),
-                                           "sash3": (None, 0.0)}), hold=0.3)
+    sc.step(f"7/{n}", cap7, 1.4, rig.move({"sps_door": (None, 0.0)}), hold=0.3)
     cap8 = ("The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs "
             "20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its "
             "own. About $160-220k for the ICP-MS; the hood, dilutor and cover are quotes.")
