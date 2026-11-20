@@ -1,0 +1,53 @@
+{
+ "name": "floor_cleaning_clip",
+ "fps": 10,
+ "n_frames": 192,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4 After a run",
+   "caption": "After a run: unit 3 has the Al-family wand, continuity checked on the station's fixture (as in atom_vacuum), its bonding lead on the floor stud.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/4 Lane 1",
+   "caption": "Along the machine's base, the blade on the floor: 480 mm at 0.15 m/s (assumed), slow for fine powder. The 14 in squeegee head is ours (assumed size).",
+   "start_frame": 50,
+   "end_frame": 85
+  },
+  {
+   "label": "3/4 Lane 2",
+   "caption": "Up 30 mm, 110 mm out, down: the 356 mm head overlaps the first lane by 246 mm.",
+   "start_frame": 86,
+   "end_frame": 95
+  },
+  {
+   "label": "3/4 Lane 2",
+   "caption": "Up 30 mm, 110 mm out, down: the 356 mm head overlaps the first lane by 246 mm.",
+   "start_frame": 96,
+   "end_frame": 105
+  },
+  {
+   "label": "3/4 Lane 2",
+   "caption": "Up 30 mm, 110 mm out, down: the 356 mm head overlaps the first lane by 246 mm.",
+   "start_frame": 106,
+   "end_frame": 115
+  },
+  {
+   "label": "3/4 Lane 2",
+   "caption": "Back east along the second lane, then the next 480 mm of the zone.",
+   "start_frame": 116,
+   "end_frame": 151
+  },
+  {
+   "label": "4/4 Lift clear",
+   "caption": "Lift clear: 20 s of run-on in clean air (vacuum SOP 4.1), then the next zone. A visible spill is not the robot's: it stops and calls the person (SOP 8).",
+   "start_frame": 152,
+   "end_frame": 191
+  }
+ ]
+}
