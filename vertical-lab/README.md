@@ -73,8 +73,44 @@ Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), th
     ([`notes/vacuum_press.md`](notes/vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20)).
 - **Each cup weighed again after the press fit.** It goes back to the HR-202i and is read against its weight before
   pressing plus its plug's (±1.0 mg), recorded in the clip's JSON.
-- **Re-rendered at 1080p:** chapter 1 (`alloy_charge.py`) and the 9:22 clip (`animate.py workflow`), each checking
-  its own frames. The renders, audits and what is left are listed under "Rendered" below.
+- **Re-rendered at 1080p, 12 fps, each checking its own frames** (`VIZ3D_AUDIT=1`, round 11's strict rules):
+
+  | Clip | Length | Frames in collision (arm; movers; all) | Round 13 | Files |
+  |---|---|---|---|---|
+  | Chapter 1, `alloy_charge.py` | 4:41 (3,371 frames) | **0 of 2,732**; 0; 0 | 0 of 2,147 | [1080p](out/hd/alloy_charge.mp4), [720p](out/mp4/alloy_charge.mp4), [GIF](out/alloy_charge.gif), [audit](out/collisions/alloy_charge.json) |
+  | 9:22, `animate.py workflow` | 1:48 (1,300 frames) | **0 of 1,144**; 0; 0 | 5 (the vial in Ben's holder) | [1080p](out/hd/vlm_workflow.mp4), [720p](out/mp4/vlm_workflow.mp4), [GIF](out/vlm_workflow.gif), [audit](out/collisions/vlm_workflow.json) |
+
+  The 9:22 clip's last frames in collision were the vial going into Ben's tight-fit 9-vial holder on the CubXL (round
+  11: "a grip by design"). That seat is now drawn with its PETG lips flexed open: the holder is clipped to the vial's
+  own cylinder, 1 mm round it, at that seat only.
+
+  ![](out/round14_doser_sheet.png)
+
+### Running it (round 14, B)
+
+```bash
+python3 doser_shield.py; python3 doser_shield.py figure        # the room over the pan, the checks, the section
+ARM_AUDIT=1 VIZ3D_FPS=4 xvfb-run -a python3 alloy_charge.py    # a quick audit (about 6 min); then the render:
+FFMPEG_THREADS=2 VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 alloy_charge.py
+FFMPEG_THREADS=2 VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 animate.py workflow
+```
+
+### Still open (B)
+
+- **Nothing here is measured.** The post, nest, roof plate, shield, fork, brush cup and wand are our designs, not built.
+  Whether the HR-202i's glass top door lifts out of its rails for a plate of ours is to check on the balance (or the
+  GH-202 that replaces it). The stream's own spread over 45 mm of still air is still powder-doser's T8b.
+- **The die's cleaning is a plan to validate**, with swabs and ICP-MS at the run changes. The IPA swab at a change of
+  run is not animated.
+- **The maintenance clip still shows rounds 9-13's pedestal** (`upkeep_clip.py` pins `carousel.STATION = "r9"`). Its
+  balance check would now need a module docked and tilted, and a nest for the check weight.
+- **For the next long-form** (run D's narration, `longform.py`): chapter 1's still "Can the cup come closer to the
+  exit?" (`doser_raise_section.png`, round 10) and its narration line ("The cup can't come closer to the outlet ...")
+  are out of date. Suggested: `doser_shield_section.png`, captioned "The doser's carriage parks right over the cup,
+  so a cup stands on our dose post only while a module is docked and tilted: 45 mm under the exit (153 before),
+  inside our draft shield", and the line "The doser's carriage parks right over the cup, so the cup goes onto its post
+  only while a module is docked and tilted. It now stands forty-five millimetres under the outlet, inside a draft
+  shield of its own."
 
 ## Round 13: collisions, artifacts, everything at 1080p, drawn at 10-15 fps (2026-11-20)
 
