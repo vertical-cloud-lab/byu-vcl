@@ -1,49 +1,113 @@
-# The fan under the deck, so the deck is the spacer (mock-up, 2026-11-19)
+# The fan under the deck, so the deck is the spacer (mock-up, 2026-11-19; side by side, 2026-11-20)
 
-Asked by @benwhitney5463 on [PR #348](https://github.com/vertical-cloud-lab/byu-vcl/pull/348):
-the 4.6 mm spacer isn't enough for steady stirring, and a bigger one puts the vial even higher.
-Could the fan go under the deck and use the 9 mm deck as the spacer? The vial would then stand on
-the deck, held by a holder that isn't under it.
+Asked by @benwhitney5463 on [PR #348](https://github.com/vertical-cloud-lab/byu-vcl/pull/348).
+On 2026-11-19: the 4.6 mm spacer isn't enough for steady stirring, and a bigger one puts the vial even
+higher. Could the fan go under the deck and use the 9 mm deck as the spacer? The vial would then stand
+on the deck, held by a holder that isn't under it. On 2026-11-20: *"can you change the design to allow
+for the stirrers to sit side by side? There is nothing under the deck right now, and there plenty of
+clearance for the stir module."*
 
 **Status: a mock-up to discuss.** Nothing is printed, measured or checked for printing. The
 magnet numbers come from the same model as
 [`../analysis/coupling_vs_height.py`](../analysis/coupling_vs_height.py), calibrated on the same
-observations.
+observations. The first version, at commit `c549ed6`, reached into the far half of each slot. Its
+collar and frame were 71 and 72 mm long, so two of them needed two rows (90 mm) in Y.
 
-![Section: today's stack on the 4.6 mm spacer, and the under-deck mock-up](../img/under_deck_section.png)
+![Six modules on the slot grid, from above, to scale](../img/under_deck_side_by_side_plan.png)
 
-![The mock-up on the deck, from below, and exploded](../img/under_deck_views.png)
+![Section: today's stack on the 4.6 mm spacer, the mock-up, and two modules 45 mm apart sharing a slot](../img/under_deck_section.png)
 
-## The idea
+![Four modules side by side, from above and below, and one exploded](../img/under_deck_views.png)
+
+## Side by side
+
+- **One stirrer per 50 × 45 mm of deck:** two slot columns in X, one row in Y. That is the
+  closest a 40 mm fan allows on this grid, the same as the compact on-deck layout in
+  [`../analysis/deck_tiling.py`](../analysis/deck_tiling.py).
+- **How:** every part of a module stays inside 49 × 44 mm round its vial. In each of its four
+  slots it uses only the half nearest its vial, 10 to 22 mm from the vial's axis. The other half
+  belongs to the neighbour 45 mm away in Y. A neighbour 50 mm away in X uses different slots.
+- **Why two clamp screws, not four.** The fan's four screws are at (±16, ±16) mm, under the near
+  half of every slot. A screw at x = 16 can't come up through a slot whose edge is at x = 17.5. And a
+  screw head under a half-slot leaves no room there for a boss and an insert. So two fan screws on
+  one diagonal, (16, −16) and (−16, 16), hold the frame, fan and base together. The other diagonal's
+  half-slots take the clamp, at (12.5, 16) and (−12.5, −16).
+- **Checked in CadQuery** ([`side_by_side_check_output.txt`](side_by_side_check_output.txt)), on a
+  block at 50 × 45 mm:
+  - Neighbours' parts are 1.0 mm apart in X (frame to frame) and in Y (collar to collar), and 5.6 mm
+    apart diagonally.
+  - No part overlaps the deck.
+  - Each screw has enough thread and doesn't bottom out.
+- **Neighbours don't disturb each other's sensing** ([`neighbour_field_output.txt`](neighbour_field_output.txt)):
+  - A spinning neighbour puts at most 0.1 mT on this module's Hall sensor, and all eight neighbours
+    at once 0.3 mT. The US1881 trips at 9.5 mT.
+  - A neighbour 45 mm away in Y puts up to 11 % of this module's own drive field on its bar (8 %
+    at 50 mm in X, 2.5 % at 75 mm). Nearly all of that comes from the neighbour's *bar*, with the
+    strongest of the four guessed cores. That nudges the bar but shouldn't uncouple it.
+
+### The head decides how close they can be in X
+
+The pipette is 55 mm +X and 11 mm +Y of the capper (the gantry file's offsets).
+
+- **While the capper works vial A**, the pipette hangs over A + (55, 11), with its tip end
+  about 21 mm above the deck.
+- **While the pipette works deep in A**, the capper hangs over A − (55, 11), at about A's rim.
+
+| neighbour | from that spot to the neighbour's axis | |
+|---|---:|---|
+| 50 mm away in X | 12 mm | **inside its cup and vial: the pipette would come down on it** |
+| 75 mm in X (one free slot column) | 23 mm | 6 mm outside its cup, 9 mm outside the vial |
+| 45 mm in Y | 65 mm | clear |
+| diagonal, 50 and 45 mm | 34 mm | clear |
+
+- **So put stirrers in a column along Y, 45 mm apart.** If more than one column is needed, leave a
+  free slot column between them, 75 mm apart.
+- At 75 mm, I don't know whether the capper's jaws clear a capped vial. That needs the capper's
+  size, or one slow jog.
+- The modules also fit 50 mm apart in X, but only on a deck the head never works that way.
+- **The cable says the same:** at 50 mm in X, the compact base's −X cable notch faces the
+  neighbour's wall, 1 mm away. In a column along Y, or with a free column between, it is clear.
+
+## The parts
 
 Two new printed parts. Everything else is today's compact stirrer, unchanged.
 
-- **Collar, on the deck (new).** The 9-vial holder's cup (the 2 mm ring, the four spring fingers
-  up to 17 mm, the 3° pocket), with **no floor**. The vial goes through it and stands on the deck.
-  Two bars, 12 mm wide and 3 mm thick, carry four Cubware pill keys (9.8 × 24.8 mm) that go 3 mm into four deck
-  slots. Nothing of it is under the vial.
+- **Collar, on the deck (new).**
+  - The 9-vial holder's cup (the 2 mm ring, the four spring fingers up to 17 mm, the 3° pocket),
+    with **no floor**. The vial goes through it and stands on the deck.
+  - Two bars, 12 × 44 × 3 mm, over the slot columns.
+  - Four half-length keys, 9.8 mm wide, that go 3 mm into the near half of each slot.
+  - Two holes for the clamp screws.
+  - It is 37 × 44 mm. Nothing of it is under the vial.
 - **The deck is the spacer.** The vial stands between four slots, so it is on solid polycarbonate.
   The nearest slot edge is 14.5 mm from its axis, and the vial's radius is 13.75 mm. In deck
   coordinates that is X ≈ 149.2 + 25n, Y ≈ 67.5 + 45m: midway between two slot columns, like
   today's stirrer, but also midway between two rows.
-- **Frame, under the deck (new).** It replaces the vial holder. It is the compact holder's flange
-  up to its recess ceiling (stirrer z 20 → 23.83), with the cup and the 1.2 mm floor gone, so its
-  top face sits against the deck's underside. It has:
+- **Frame, under the deck (new).** It replaces the vial holder. It is the compact holder's flange,
+  49 × 44 mm, up to its recess ceiling (stirrer z 20 → 23.83), with the cup and the 1.2 mm floor
+  gone, so its top face sits against the deck's underside. It has:
   - a Ø20.6 bore for the carrier;
   - the Hall sensor's pocket at −X (r 10.2–13.4), open to the deck, so the sensor sits exactly
-    where it does today relative to the magnets, with a groove for its leads;
-  - counterbores for the same four M3 × 20 screws that hold it and the fan to the base;
-  - four half-pill bosses that go 5 mm up into the same slots as the collar's keys.
-- **Reused as they are:** the compact base, the fan, the magnet carrier and magnets, the Hall
-  sensor, the junction board, the cable and the four M3 × 20 screws. The frame goes on where the
-  holder went.
-- **Clamp.** Four M3 × 12 screws go in from the top, through the collar's bars and keys, into
-  heat-set inserts in the frame's bosses, at (±12.5, ±28) mm. Each slot holds a key and a boss,
-  1 mm apart, so the screws squeeze the deck between the collar and the frame. Because keys and
-  bosses sit in the same slots, the magnets line up with the vial to within the slots'
-  0.1 mm a side. Being screwed down, the collar can't come up with a cap when the capper pulls it
-  ([risk 3](../README.md#risks-and-open-questions) goes away). The screws are 31 mm from the axis,
-  against 8.1 mm for the magnets' outer edge. Even so, use non-magnetic ones (A4/316 or brass).
+    where it does today relative to the magnets. Its leads' groove ends in a slot that drops past
+    the fan's −X edge into the base, inside the frame's own footprint;
+  - 0.5 mm pads on the fan's four corners, outside the blades. They keep today's 0.5 mm over the
+    rotor, as the compact build's four 0.5 mm washers do. The pads are printed so that the two
+    corners without a screw don't rock;
+  - two counterbores for the fan screws, on one diagonal;
+  - two half-length bosses that go 5 mm up into the other diagonal's half-slots, each with an
+    M3 × 5.7 heat-set insert.
+- **Screws:**
+  - **Two M3 × 16 fan screws** go through the frame and the fan into the base's post inserts. Their
+    heads sit 0.2 mm below the deck's underside. The first version had four M3 × 20, but under a
+    3.83 mm frame an M3 × 20 would bottom out 0.7 mm in the base's insert holes.
+  - **Two M3 × 12 clamp screws** go in from the top, through the collar's keys, into the bosses'
+    inserts. They squeeze the deck between the collar and the frame.
+  - Use stainless or brass, as in BOM item 12, not steel.
+- **Lining up.** Keys and bosses sit in the same slots, so the magnets line up with the vial to
+  within the slots' 0.1 mm a side. Being screwed down, the collar can't come up with a cap
+  ([risk 3](../README.md#risks-and-open-questions) goes away).
+- **Reused as they are:** the compact base (all four inserts in; two go unused), the fan, the
+  magnet carrier and magnets, the Hall sensor, the junction board and the cable.
 
 `build_under_deck.py` draws the two parts from `vial_stirrer.fs`'s numbers, through
 `compact/build_compact.py`. They are [`step/under-deck/collar.step`](../step/under-deck/collar.step) and
@@ -104,35 +168,42 @@ bound, with the water held still).
 
 ## What it costs
 
-- **Room under the deck.** The base hangs 23.8 mm below the deck's underside, over a 49 × 72 mm
-  frame, plus the cable. I don't know what is under the CubXL deck.
-- **Four slots instead of two.** The collar is 37 × 71 mm on the deck and uses two columns of two
-  rows.
-- **It stays put.** Moving it means four screws from the top while holding the drive underneath.
+- **Room under the deck: there is plenty.** Ben, 2026-11-20: nothing is under the deck, and there
+  is plenty of clearance. Each module hangs 23.8 mm below the deck's underside, over 49 × 44 mm.
+- **One 50 × 45 mm cell per stirrer.** That is two slot columns in X and one row in Y. In X, the
+  head needs a free column between stirrers, so in practice it is 75 mm.
+- **It stays put.** Moving it means two screws from the top while holding the drive underneath.
 - **Liquid:** the vial stands on solid deck, and the drive is under 9 mm of polycarbonate, away from
   anything spilled on the deck.
 - **Cable:** it runs under the deck, out of the gantry's way.
-- **Printing isn't worked out.** The frame prints bosses up with no supports. The collar's keys
-  hang under its bars. Either print them with supports, or make them separate press-fit keys like
-  today's, cut to 3 mm.
+- **Printing isn't worked out:**
+  - The collar's keys hang under its bars. Print them with supports, or make them separate
+    press-fit keys like today's, cut to half length.
+  - The frame prints bosses up with no supports. But then its 0.5 mm pads are on the bottom, so the
+    plate between them would need support. Alternatively, leave the pads off and put 0.5 mm M3
+    washers on the fan screws, plus two more at the other corners.
+- **One stirrer per Uno channel.** The firmware drives one fan and reads one Hall sensor. A second
+  stirrer needs a second PWM pin and a second Hall interrupt (D3), and a channel in the `30`/`31`
+  commands.
 
 ## Questions for Ben
 
-1. What is under the deck where the stirrer would go? It needs about 25 mm of clear height below
-   the deck's underside over 50 × 72 mm, and a way out for the cable. A photo would settle it.
+1. Is a column along Y, 45 mm apart, the arrangement you want? If two stirrers must sit 50 mm apart
+   in X, the protocol can't cap or decap the −X one while the +X one is there.
 2. Is the deck 9.0 mm there? At 10 mm the gap is 11.2 mm, which still couples at 600 rpm.
-3. Is anything within about 55 mm +X and 11 mm +Y of that spot taller than about 20 mm? The
-   pipette tip passes there while the capper works this vial.
-4. Should the collar keep the 9-vial holder's spring fingers? They are what holds the vial while the
+3. Should the collar keep the 9-vial holder's spring fingers? They are what holds the vial while the
    capper twists the cap, so the mock-up keeps them.
+4. How many stirrers do you have in mind? See the last point above.
 
 ## Run
 
 ```bash
 pip install cadquery magpylib trimesh shapely networkx matplotlib pyvista    # PIP_TIMEOUT=600 PIP_RETRIES=2
-python under-deck/build_under_deck.py                              # stl/under-deck/, step/under-deck/
+python under-deck/build_under_deck.py --check                      # stl/under-deck/, step/under-deck/, side_by_side_check_output.txt
 python under-deck/coupling_through_deck.py > under-deck/coupling_through_deck_output.txt
+python under-deck/neighbour_field.py > under-deck/neighbour_field_output.txt
 python under-deck/render_under_deck.py section                     # img/under_deck_section.png
+python under-deck/render_under_deck.py plan                        # img/under_deck_side_by_side_plan.png
 xvfb-run -a python under-deck/render_under_deck.py views           # img/under_deck_views.png
 ```
 

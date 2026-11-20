@@ -1,0 +1,16 @@
+Hall element at (-11.7, 0.0) mm from the axis; bar axis 37.43 mm (stirrer frame), core (1.0, 4, 12)
+This module's own drive at its bar, horizontal: 2.1 mT
+
+neighbour at (mm)     max |Bz| at the Hall   max horizontal at the bar
+  (  50,    0)           0.021 mT             0.172 mT (8.08 % of its own)
+  ( -50,    0)           0.099 mT             0.172 mT (8.08 % of its own)
+  (   0,   45)           0.055 mT             0.233 mT (10.92 % of its own)
+  (   0,  -45)           0.055 mT             0.233 mT (10.92 % of its own)
+  (  50,   45)           0.009 mT             0.073 mT (3.45 % of its own)
+  ( -50,   45)           0.024 mT             0.073 mT (3.45 % of its own)
+  (  50,  -45)           0.009 mT             0.073 mT (3.45 % of its own)
+  ( -50,  -45)           0.024 mT             0.073 mT (3.45 % of its own)
+  (  75,    0)           0.006 mT             0.054 mT (2.52 % of its own)
+  ( -75,    0)           0.019 mT             0.054 mT (2.52 % of its own)
+
+All eight neighbours at 50 x 45, each at its worst angle at once: 0.30 mT at the Hall, against 9.5 to trip it
