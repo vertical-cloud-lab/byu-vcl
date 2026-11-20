@@ -27,6 +27,7 @@ red, earlier stages fade to grey, and later ones aren't drawn yet. One caption a
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import tempfile
 from pathlib import Path
@@ -44,6 +45,12 @@ from PIL import Image  # noqa: E402
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "out" / "dag"
 OUT_MP4 = HERE / "out" / "mp4" / "dag"
+# VIZ3D_HD=1 (round 12's 1080p long-form): 1920 x 1080 at VIZ3D_FPS (30), everything to out/hd/dag/ so the committed
+# 720p cards stay as they are
+HD = bool(os.environ.get("VIZ3D_HD"))
+CLIP_FPS = int(os.environ.get("VIZ3D_FPS", "30")) if HD else 15
+if HD:
+    OUT = OUT_MP4 = HERE / "out" / "hd" / "dag"
 SOURCE = ("digital-alloy-lab, onr-yip-figs-oct27-integrate @ b553306, benchmarks/bofn-prelim/dag/network_dag.py",
           "https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/b553306/benchmarks/bofn-prelim/dag/network_dag.py")
 
@@ -58,7 +65,7 @@ RED = "#E00000"
 NODE_FILL, NODE_LINE, EDGE = "#F4F4F4", "#595959", "#404040"
 WHITE = "#FFFFFF"
 
-W, H, DPI = 12.8, 7.2, 100            # 1280 x 720
+W, H, DPI = 12.8, 7.2, (150 if HD else 100)   # 1280 x 720, or 1920 x 1080 with VIZ3D_HD
 COLS = ["I", "C", "A", "L", "T", "O"]
 HEADERS = {"I": "Inputs", "C": "CALPHAD", "A": "Atomize", "L": "Print", "T": "Test", "O": "Objective"}
 COSTS = {"C": "$10", "A": "$1,500", "L": "$2,500", "T": "$200"}      # DAL's COSTS, per call / run / build / bar
@@ -218,9 +225,10 @@ def blend(a: Image.Image, b: Image.Image, u: float) -> Image.Image:
     return Image.blend(a, b, float(np.clip(u, 0, 1)))
 
 
-def clip(frames_png: list[Path], holds: list[float], path: Path, fps=15, fade=0.8, lead=None):
+def clip(frames_png: list[Path], holds: list[float], path: Path, fps=None, fade=0.8, lead=None):
     """An MP4 of the beats: each held `holds[i]` seconds, cross-faded `fade` s into the next. `lead` is the state
     the clip fades in from (the previous chapter's last beat)."""
+    fps = fps or CLIP_FPS
     ims = [Image.open(p).convert("RGB") for p in frames_png]
     seq = []
     if lead is not None:

@@ -466,7 +466,9 @@ class Scene:
         if self.want_still:
             self.still = (self.n, np.asarray(hi).copy())
             self.want_still = False
-        for proc, frame in ((self.mp4, base if HD else hi), (self.mp4_text, hi)):
+        # HD: self.mp4 is the text-free copy, unless VIZ3D_HD_CLEAN=0 (then it is only ever a clip's own encoder, which
+        # wants the frame as shown, text and all)
+        for proc, frame in ((self.mp4, base if HD and HD_CLEAN else hi), (self.mp4_text, hi)):
             if proc is not None:
                 buf = np.asarray(frame.convert("RGB") if isinstance(frame, Image.Image) else frame).tobytes()
                 for _ in range(n):
