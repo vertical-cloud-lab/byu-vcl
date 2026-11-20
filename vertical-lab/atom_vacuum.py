@@ -270,6 +270,8 @@ def main():
         sc.set_mesh("vac hose", hose.mesh().translate(AB.RP, inplace=False))
 
     link_caps = []
+    # (round 14 tried the 2F-85's knuckles and fingers as capsules too: the hose then lay in the gripper's left finger
+    # for 41 frames instead of 50 of 1836, but in the rePowder's vacuum pump for 140 instead of 16; left out)
     for l in ("shoulder", "upper_arm", "forearm", "wrist1", "wrist2", "wrist3", "gr_base", "gr_camera"):
         grp = f"{rb.prefix}_{l}"
         pts = [np.asarray(sc.actors[n].GetMapper().GetInput().GetPoints().GetData()) for n in sc.members(grp)
@@ -334,7 +336,7 @@ def main():
     # ---- bonded before the arm moves (atom_ground.py; notes/atom_vacuum.md, "Ground within reach")
     shoe_c = (shoes_b[0] + shoes_b[1]) / 2
     lamp_w = mb.world(G.LAMP_AT)
-    CAM_SHOE = AB.cam((shoe_c[0] + 980, shoe_c[1] - 1150, 820), (shoe_c[0] - 170, shoe_c[1] - 90, 300))
+    CAM_SHOE = AB.cam((shoe_c[0] + 1080, shoe_c[1] - 1300, 980), (shoe_c[0] - 200, shoe_c[1] - 130, 400))
     gauges(Bond="MiR250 2: shoes coming down")
     sc.step("3/10 Bond", "It lowers its two sprung copper-graphite shoes onto the floor plate (ours). Every spot where "
             "a MiR250 works at the atomizer has such a plate, its leads run in a floor channel to the area's ground "
