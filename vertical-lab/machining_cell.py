@@ -6,8 +6,9 @@ One cup's path through the recommended cell (notes/machining.md), as a model and
 
 1. **The lathe** (a compact bar-fed CNC turning centre with a short-bar loader, drawn at the size of the machine named
    in ``machining.LATHE``; the inside is ours) turns the cup from Ø20 mm bar: face, turn the OD to 19.05 mm, drill
-   12.5 mm with a 118 deg point, finish-bore 12.70 mm, chamfer, part off. Dry, with a minimum-quantity mist of a
-   volatile ester at the tool. The bar and the cup are drawn in half section while they are in the machine.
+   12.5 mm with a 118 deg point, finish-bore 12.70 mm, chamfer, part off. Dry but for a minimum-quantity mist of
+   alcohol at the tool (as DESY, CERN and Thermo Fisher machine high-purity Al and Cu). The bar and the cup are drawn
+   in half section while they are in the machine.
 2. **The parts catcher** takes the cup as it is parted off and a short belt carries it out through the guard to a
    nest, so the door stays shut and the arm never reaches into the machine.
 3. **The arm** (a UR10e on a pedestal, Robotiq 2F-85, wrist camera) picks the cup off the nest, stands it upright,
@@ -53,7 +54,9 @@ TITLE = "Vertical cloud lab: a charge cup machined, cleaned, dried and racked"
 Z_ARM = 760.0                    # the UR10e's base plate on its pedestal
 BENCH_Z = 860.0                  # bench tops
 FRONT_Y = 950.0                  # the cell's front (the fence), on the south row's face line
-LATHE = dict(x0=-850.0, x1=1100.0, y1=-800.0, D=1650.0, H=1950.0, loader_l=1300.0)   # body; front face at y1
+# Body box: the Haas ST-10's installed size with its chip conveyor (3437 x 1596 x 2167 mm, Haas layout drawing 12/2024),
+# the conveyor's end at -x; front face at y1. Its Bar Feeder V2 (4 ft bars; 2104 x 1283 mm) behind the headstock (+x).
+LATHE = dict(x0=-1937.0, x1=1500.0, y1=-800.0, D=1596.0, H=2167.0, loader_l=2104.0, loader_w=1283.0)
 SPIN_Y, SPIN_Z = -1270.0, 1050.0                                    # the spindle's axis, along x
 X_COLLET = 198.0                 # the collet's face; the bar comes out towards -x
 BAR_R = 10.0                     # Ø20 mm bar (5N Al, DAL #152; OFE Cu bought at 20 mm too, so both are turned)
@@ -68,17 +71,23 @@ GROOVE_X = END + CUP_L + GROOVE_W / 2       # 191.5: the parting groove's centre
 CUP_BASE_X = END + CUP_L         # 190: the cup's base, when parted
 TURRET_U = np.array([0.0, math.cos(math.radians(-45)), math.sin(math.radians(-45))])  # turret -> axis, along the slant
 TURRET_R = 283.0                 # turret centre to the working tool's tip (on the axis at X = 0)
+X_INDEX = -80.0                  # where the turret's centre goes along x to index: every tool clear of bar and headstock
 BELT_X = (END + CUP_BASE_X) / 2  # 158.25: under the parted cup, and the belt's middle
 BELT_Z = 880.0                   # belt top
 UP_Y = -700.0                    # the upender's pivot: the lying cup's base against its end plate
 BELT_Y = (-1150.0, UP_Y - 33.0)  # inside the machine -> the upender, outside the guard
 NEST = np.array([BELT_X, UP_Y + CUP_R, BELT_Z])            # the cup's base centre, stood up on the upender
-BLOW = np.array([-760.0, -560.0, 945.0])                   # the cup's base, lowered into the blow-off ring
-BASKET = np.array([-820.0, -320.0, 984.0])                 # the basket's floor centre on its stand (long side along y)
-PANS = {"wash": np.array([-860.0, -40.0]), "rinse": np.array([-860.0, 215.0])}
-PAN = dict(ix=124.0, iy=224.0, depth=150.0, rim=1130.0, wall=3.0)
-DRYER = np.array([-860.0, 520.0])
+BLOW = np.array([-720.0, -610.0, 945.0])                   # the cup's base, lowered into the blow-off ring
+BASKET = np.array([-800.0, -400.0, 1032.0])                # the basket's feet on its stand (one row along y)
+# Two small ultrasonic baths (sized after Elma's Elmasonic P 60 H: 365 x 186 x 271 mm outside, 5.75 L), water in the
+# tank, each with ONE closed stainless vessel of IPA hung in it: Elma's manual allows "max. 1 litre" of a flammable
+# liquid, and only in a separate vessel standing in water (notes/machining.md). Each vessel holds about 0.6 L.
+PANS = {"wash": np.array([-905.0, -20.0]), "rinse": np.array([-705.0, -20.0])}
+PAN = dict(ix=46.0, iy=196.0, depth=125.0, rim=1157.0, wall=2.0, ipa=76.0)
+TANK = dict(x=186.0, y=365.0, top=BENCH_Z + 271.0, water=1100.0)
+DRYER = np.array([-860.0, 420.0])
 DRYER_R = 140.0
+DRYER_RIM = BASKET[2] + 171.0          # the basket's handle (top at 159) 12 mm under the rim, so the lid shuts
 WEIGH = np.array([720.0, -420.0, 952.0])                   # the cup's base on the weigh module's seat
 VISION = np.array([760.0, 160.0, 965.0])                   # the cup's base on the gauge's glass stage
 RACK_AT = np.array([0.0, 780.0, 920.0])                    # charge.rack()'s frame on the north bench
@@ -230,7 +239,7 @@ def lathe_parts() -> dict:
     x0, x1, y1, D, H = LATHE["x0"], LATHE["x1"], LATHE["y1"], LATHE["D"], LATHE["H"]
     y0 = y1 - D
     t = 20.0
-    door = dict(x0=-520.0, x1=470.0, z0=930.0, z1=1720.0)
+    door = dict(x0=-620.0, x1=520.0, z0=930.0, z1=1800.0)
     slot = dict(x0=100.0, x1=215.0, z0=855.0, z1=915.0)        # the belt's way out under the door
     body = [
         _box(x0, x1, y0, y0 + t, 0, H),                      # back
@@ -251,12 +260,16 @@ def lathe_parts() -> dict:
           _box(door["x1"] - 60, door["x1"], y1, y1 + 30, door["z0"], door["z1"]),
           _box(door["x1"] - 50, door["x1"] - 30, y1 + 30, y1 + 60, 1150, 1500)]           # the handle
     glass = _box(door["x0"] + 60, door["x1"] - 60, y1 + 10, y1 + 18, door["z0"] + 70, door["z1"] - 60)
-    pendant = _merge([_box(620, 1040, y1, y1 + 90, 1150, 1750), _box(650, 1010, y1 + 90, y1 + 92, 1430, 1720)])
+    pendant = _merge([_box(820, 1240, y1, y1 + 90, 1150, 1750), _box(850, 1210, y1 + 90, y1 + 92, 1430, 1720)])
     # inside: the chip pan sloping back, the slant bed, the headstock, the collet nose
-    pan = _merge([_box(x0 + t, x1 - t, y0 + t, y1 - t, 640, 660)])
-    bed = _box(-800, 700, SPIN_Y - 420, SPIN_Y - 130, 660, 1000).rotate_x(0, inplace=False)
-    slant = _merge([_box(-800, 700, SPIN_Y - 330, SPIN_Y - 250, 900, 1330)]).rotate_x(
-        -45.0, point=(0, SPIN_Y - 290, 1115), inplace=False)
+    pan = _merge([_box(-1000, x1 - t, y0 + t, y1 - t, 640, 660)])
+    # the slant bed behind the turret's reach (620-700 mm from the axis along the slant), on a base casting
+    n = np.array([0.0, -TURRET_U[2], TURRET_U[1]])
+    Mb = np.eye(4)
+    Mb[:3, 0], Mb[:3, 1], Mb[:3, 2] = (1, 0, 0), n, -TURRET_U
+    Mb[:3, 3] = (0, SPIN_Y, SPIN_Z)
+    slant = _box(-800, 700, -330, 330, 620, 700).transform(Mb, inplace=False)
+    bed = _box(-800, 700, -2430, -1660, 90, 1240)
     head = _box(260, 760, SPIN_Y - 260, SPIN_Y + 250, 760, 1340)
     nose = _cyl((240, SPIN_Y, SPIN_Z), (262, SPIN_Y, SPIN_Z), 95.0, res=64)
     # the belt: a short narrow conveyor along y, from under the spindle out through the slot to the upender (ours)
@@ -269,9 +282,9 @@ def lathe_parts() -> dict:
                          _box(BELT_X - 30, BELT_X + 30, UP_Y - 40, UP_Y + 25, 520, BELT_Z - 30),
                          _box(BELT_X + 22, BELT_X + 52, UP_Y - 18, UP_Y + 18, BELT_Z - 40, BELT_Z + 4)])
     # the short-bar loader behind the headstock (sized by machining.LATHE), bars on its sloping magazine
-    lx0, lx1 = x1, x1 + LATHE.get("loader_l", 1650.0)
-    loader = [_box(lx0, lx1, SPIN_Y - 330, SPIN_Y + 330, 90, 960), _box(lx0 + 60, lx1 - 60, SPIN_Y - 300, SPIN_Y + 300,
-                                                                      960, 1000)]
+    lx0, lx1, lw = x1, x1 + LATHE["loader_l"], LATHE["loader_w"]
+    loader = [_box(lx0, lx1, SPIN_Y - lw / 2, SPIN_Y + lw / 2, 90, 900), _box(lx0 + 60, lx1 - 60, SPIN_Y - 300,
+                                                                            SPIN_Y + 300, 900, 1000)]
     bars = []
     for k in range(6):
         y = SPIN_Y - 250 + 42 * k
@@ -279,12 +292,14 @@ def lathe_parts() -> dict:
                          BAR_R, res=24))
     feed = _cyl((x1 - 10, SPIN_Y, SPIN_Z), (lx0 + 120, SPIN_Y, SPIN_Z), 45.0, res=32)
     # the chip conveyor out of the back into the bin of the metal being cut, and the other metal's bin beside it
-    conv = _box(-300, 100, y0 - 700, y0 + 10, 600, 760).rotate_x(-12.0, point=(0, y0, 680), inplace=False)
-    bin_al = _open_box(-330, 130, y0 - 1150, y0 - 650, 90, 640, 6)
-    bin_cu = _open_box(230, 690, y0 - 1150, y0 - 650, 90, 640, 6)
-    # MQL unit on the west side, its line to the turret (drawn to the side panel)
-    mql = _merge([_box(x0 - 220, x0, -1300, -1060, 1100, 1420), _cyl((x0 - 110, -1180, 1420), (x0 - 110, -1180, 1520),
-                                                                     35.0, res=24)])
+    # the chip conveyor (inside the body's -x end) lifts the chips into the bin of the metal being cut; the other
+    # metal's bin waits beside it, so Al and Cu chips never share a bin
+    conv = _box(x0 + 40, -1050, SPIN_Y - 250, SPIN_Y + 250, 700, 1250).rotate_y(0, inplace=False)
+    bin_al = _open_box(x0 + 60, x0 + 560, y1 + 60, y1 + 560, 0, 650, 6)
+    bin_cu = _open_box(x0 + 620, x0 + 1120, y1 + 60, y1 + 560, 0, 650, 6)
+    # the alcohol MQL unit on the body's front left, its line into the work zone (drawn to the panel)
+    mql = _merge([_box(-1000, -760, y1, y1 + 160, 1300, 1620), _cyl((-880, y1 + 80, 1620), (-880, y1 + 80, 1720),
+                                                                    35.0, res=24)])
     return {
         "lathe/skin": (_merge(body), SHEET, 1.0),
         "lathe/trim": (_merge(trim + [pendant]), TRIM, 1.0),
@@ -343,12 +358,12 @@ def turret_parts() -> dict:
                        .transform(_frame(u, n, c), inplace=False))
         if k in (1, 4):                                         # radial: a shank to the axis, the insert at its tip
             w = 2.6 if k == 4 else 12.0
-            sh = _box(-w / 2 if k == 4 else -6, w / 2 if k == 4 else 6, -6, 6, 0, TURRET_R - 205.0 - 8.0)
+            sh = _box(-w / 2 if k == 4 else -12, w / 2 if k == 4 else 0, -6, 6, 0, TURRET_R - 205.0 - 8.0)
             shanks.append(sh.transform(_frame(u, n, u * 205.0), inplace=False))
             if k == 4:
                 tip = _box(-1.3, 1.3, -5, 5, TURRET_R - 205.0 - 8.0, TURRET_R - 205.0 - 0.3)
-            else:
-                tip = _box(-6, 4, -5, 5, TURRET_R - 205.0 - 8.0, TURRET_R - 205.0 - 0.3)
+            else:                                               # the cutting edge at the tip's +x face
+                tip = _box(-10, 0, -5, 5, TURRET_R - 205.0 - 8.0, TURRET_R - 205.0 - 0.3)
             tips.append(tip.transform(_frame(u, n, u * 205.0), inplace=False))
         else:                                                   # axial: a holder at the axis, the tool along +x
             ctr = u * TURRET_R
@@ -362,8 +377,8 @@ def turret_parts() -> dict:
                 shanks.append(body)
                 tips.append(point)
             else:
-                body = _cyl(ctr + (110, 0, 0), ctr + (TOOL_L - 4.0, 0, 0), 4.5, res=20)
-                ins = _box(TOOL_L - 6.0, TOOL_L, -1.5, 1.5, -2.0, BORE_R - 0.4).translate(ctr, inplace=False)
+                body = _cyl(ctr + (110, 0, 0), ctr + (TOOL_L - 6.0, 0, 0), 4.5, res=20)
+                ins = _cyl(ctr + (TOOL_L - 6.0, 0, 0), ctr + (TOOL_L, 0, 0), BORE_R - 0.05, res=24)
                 shanks.append(body)
                 tips.append(ins)
     return {"turret/drum": (_merge([disc, hub]), (0.55, 0.56, 0.60), 1.0),
@@ -407,8 +422,8 @@ CATCH_BELT = np.array([BELT_X, BELT_Y[0] + 55.0, BELT_Z + 6.0])
 
 
 def catcher_parts() -> dict:
-    tray = _open_box(-46, 46, -22, 22, -3, 6, 3)
-    arm = _box(-62, -46, -6, 6, -3, 4)
+    tray = _open_box(-40, 34, -22, 22, -3, 6, 3)
+    arm = _box(-56, -40, -6, 6, -3, 4)
     return {"catcher/tray": (_merge([tray, arm]), (0.62, 0.63, 0.66), 1.0)}
 
 
@@ -430,77 +445,85 @@ def upender_pose(u: float) -> np.ndarray:
 
 
 # ------------------------------------------------------------------------------------------------ the cell's stations
+BASKET_CAP = 125.0               # the cap's underside over the basket's feet: shuts a vessel 125 mm deep
+BASKET_HANDLE = 152.0            # the handle bar's centre
+
+
 def basket_parts() -> tuple[dict, list, list, np.ndarray]:
-    """The cleaning basket (ours: 316 stainless, two rows of four pockets along y, a handle bar over the middle), frame
-    at the middle of its floor's underside. The cups' row is on the +x side, where a level gripper reaches them from
-    the arm's side; the plugs' row behind. Returns its parts, the cup and plug seats and the handle bar's centre."""
-    fx, fy = 82.0, 200.0
-    ys = [-63.0, -21.0, 21.0, 63.0]
-    floor = _box(-fx / 2, fx / 2, -fy / 2, fy / 2, 0, 4)
-    rims = [_ring(C.STOCK_D / 2 + 3.0, C.STOCK_D / 2 + 0.8, 4, 9).translate((19.0, y, 0), inplace=False) for y in ys]
-    rims += [_ring(C.CUP_BORE_D / 2 + 2.5, C.CUP_BORE_D / 2 + 0.6, 4, 7).translate((-22.0, y, 0), inplace=False)
-             for y in ys]
-    posts = [_box(-4, 4, s_ * (fy / 2 - 8) - 4, s_ * (fy / 2 - 8) + 4, 4, 121) for s_ in (-1, 1)]
-    bar = _box(-7, 7, -fy / 2 + 4, fy / 2 - 4, 107, 121)
-    feet = [_box(-fx / 2, -fx / 2 + 8, -fy / 2, fy / 2, -4, 0), _box(fx / 2 - 8, fx / 2, -fy / 2, fy / 2, -4, 0)]
-    parts = {"basket/frame": (_merge([floor] + posts + [bar] + feet), SS, 1.0), "basket/rims": (_merge(rims), SS, 1.0)}
-    return parts, [np.array([19.0, y, 4.0]) for y in ys], [np.array([-22.0, y, 4.0]) for y in ys], np.array([0, 0, 114.0])
+    """The cleaning basket (ours, 316 stainless): one row along y of the run's four cups with its four plugs between
+    them, under a cap plate that shuts the IPA vessel it is lowered into, a handle bar on the cap. Frame: the middle
+    of its feet's underside. A level gripper sets each cup in from +x; the pads pass over the 9.5 mm plugs. Returns its
+    parts, the cup and plug seats and the handle's centre."""
+    fx, fy = 40.0, 190.0
+    ys, yp = [-60.0, -20.0, 20.0, 60.0], [-40.0, 0.0, 40.0, 80.0]
+    feet = [_box(-fx / 2, fx / 2, -fy / 2, -fy / 2 + 10, 0, 4), _box(-fx / 2, fx / 2, fy / 2 - 10, fy / 2, 0, 4)]
+    floor = _box(-fx / 2, fx / 2, -fy / 2, fy / 2, 4, 8)
+    rims = [_ring(C.STOCK_D / 2 + 3.0, C.STOCK_D / 2 + 0.8, 8, 13).translate((0, y, 0), inplace=False) for y in ys]
+    rims += [_ring(C.CUP_BORE_D / 2 + 2.5, C.CUP_BORE_D / 2 + 0.6, 8, 11).translate((0, y, 0), inplace=False)
+             for y in yp]
+    posts = [_box(-4, 4, s_ * 99 - 4, s_ * 99 + 4, 8, BASKET_CAP) for s_ in (-1, 1)]
+    cap = _box(-33, 33, -108, 108, BASKET_CAP, BASKET_CAP + 4)
+    hposts = [_box(-4, 4, s_ * 50 - 4, s_ * 50 + 4, BASKET_CAP + 4, BASKET_HANDLE - 7) for s_ in (-1, 1)]
+    bar = _box(-7, 7, -60, 60, BASKET_HANDLE - 7, BASKET_HANDLE + 7)
+    parts = {"basket/frame": (_merge(feet + [floor] + posts + hposts + [bar]), SS, 1.0),
+             "basket/cap": (cap, (0.70, 0.71, 0.74), 1.0), "basket/rims": (_merge(rims), SS, 1.0)}
+    return parts, [np.array([0, y, 8.0]) for y in ys], [np.array([0, y, 8.0]) for y in yp], np.array(
+        [0, 0, BASKET_HANDLE])
 
 
 def bath_parts() -> dict:
-    """The ultrasonic bath (water) and the two closed IPA pans standing in it, the slot hood behind (ours, sized for
-    the basket; the bath's size after a 9-10 L bench unit)."""
-    x0, x1, y0, y1 = -1000.0, -720.0, -175.0, 350.0
-    top = PAN["rim"] - 10.0
-    tank = _open_box(x0, x1, y0, y1, BENCH_Z, top, 4)
-    ctrl = _box(x1, x1 + 8, y0 + 40, y0 + 200, BENCH_Z + 40, BENCH_Z + 130)
-    water = _box(x0 + 4, x1 - 4, y0 + 4, y1 - 4, BENCH_Z + 4, top - 40)
-    pans, ipa = [], []
+    """Two bench ultrasonic baths (sized after Elma's Elmasonic P 60 H: 186 x 365 x 271 mm outside), water in each
+    tank, and in each ONE closed stainless vessel of IPA hung from a cover plate (ours: 46 x 196 mm inside, 125 deep,
+    76 mm of IPA, about 0.6 L): Elma allows "max. 1 litre" of a flammable liquid, in a separate vessel standing in
+    water. A slot hood behind draws off the vapour (the same duct as the dryer's pump)."""
+    tanks, plates, water, vessels, ipa = [], [], [], [], []
     for k, (px, py) in PANS.items():
+        hx, hy = TANK["x"] / 2, TANK["y"] / 2
+        tanks.append(_open_box(px - hx, px + hx, py - hy, py + hy, BENCH_Z, TANK["top"], 4))
+        tanks.append(_box(px + hx, px + hx + 6, py - 120, py + 40, BENCH_Z + 30, BENCH_Z + 120))      # its panel
         ix, iy, w = PAN["ix"], PAN["iy"], PAN["wall"]
-        z1 = PAN["rim"]
-        z0 = z1 - PAN["depth"]
-        pans.append(_open_box(px - ix / 2 - w, px + ix / 2 + w, py - iy / 2 - w, py + iy / 2 + w, z0 - w, z1, w))
-        pans.append(_holed(px - ix / 2 - 12, px + ix / 2 + 12, py - iy / 2 - 12, py + iy / 2 + 12, z1 - 4, z1,
-                           [(px - ix / 2, px + ix / 2, py - iy / 2, py + iy / 2)]))
-        ipa.append(_box(px - ix / 2, px + ix / 2, py - iy / 2, py + iy / 2, z0, z1 - 35))
-    # a lid plate under the pans' rims, spanning the tank between them (the pans hang from it)
-    plate = [_holed(x0, x1, y0, y1, top - 2, top,
-                    [(px - PAN["ix"] / 2 - PAN["wall"], px + PAN["ix"] / 2 + PAN["wall"], py - PAN["iy"] / 2 - PAN["wall"],
-                      py + PAN["iy"] / 2 + PAN["wall"]) for px, py in PANS.values()])]
-    hood = _merge([_box(x0 - 70, x0 - 10, y0, y1, BENCH_Z, top + 230),
-                   _box(x0 - 70, x0 - 50, y0 + 20, y1 - 20, top + 30, top + 200),
-                   _cyl((x0 - 40, 0, top + 230), (x0 - 40, 0, 2600), 75.0, res=32)])
-    return {"bath/tank": (_merge([tank, ctrl]), (0.72, 0.73, 0.75), 1.0),
-            "bath/plate": (_merge(plate), (0.66, 0.67, 0.70), 1.0),
-            "bath/water": (water, WATER, 0.45),
-            "bath/pans": (_merge(pans), SS, 1.0),
+        z1, z0 = PAN["rim"], PAN["rim"] - PAN["depth"]
+        plates.append(_holed(px - hx, px + hx, py - hy, py + hy, TANK["top"], TANK["top"] + 3,
+                             [(px - ix / 2 - w, px + ix / 2 + w, py - iy / 2 - w, py + iy / 2 + w)]))
+        vessels.append(_open_box(px - ix / 2 - w, px + ix / 2 + w, py - iy / 2 - w, py + iy / 2 + w, z0 - w, z1, w))
+        vessels.append(_holed(px - ix / 2 - 10, px + ix / 2 + 10, py - iy / 2 - 10, py + iy / 2 + 10, z1 - 3, z1,
+                              [(px - ix / 2, px + ix / 2, py - iy / 2, py + iy / 2)]))
+        water.append(_box(px - hx + 4, px + hx - 4, py - hy + 4, py + hy - 4, BENCH_Z + 24, TANK["water"]))
+        ipa.append(_box(px - ix / 2, px + ix / 2, py - iy / 2, py + iy / 2, z0, z0 + PAN["ipa"]))
+    x0 = min(p[0] for p in PANS.values()) - TANK["x"] / 2
+    hood = _merge([_box(x0 - 70, x0 - 10, -230, 190, BENCH_Z, TANK["top"] + 260),
+                   _box(x0 - 70, x0 - 50, -210, 170, TANK["top"] + 40, TANK["top"] + 230),
+                   _cyl((x0 - 40, -20, TANK["top"] + 260), (x0 - 40, -20, 2700), 75.0, res=32)])
+    return {"bath/tank": (_merge(tanks), (0.72, 0.73, 0.75), 1.0),
+            "bath/plate": (_merge(plates), (0.66, 0.67, 0.70), 1.0),
+            "bath/water": (_merge(water), WATER, 0.40),
+            "bath/vessel": (_merge(vessels), SS, 1.0),
             "bath/ipa": (_merge(ipa), IPA, 0.55),
             "bath/hood": (hood, (0.62, 0.64, 0.68), 1.0)}
 
 
 def pan_lid(k: str) -> tuple[pv.PolyData, np.ndarray]:
-    """A pan's lid (hinged at its back, -x, edge) in its own frame at the hinge; and where the hinge is."""
+    """A vessel's lid (hinged at its -x edge), in its own frame at the hinge; and where the hinge is. It shuts the
+    vessel whenever the basket isn't in it (the basket's own cap shuts it while it is)."""
     ix, iy = PAN["ix"], PAN["iy"]
-    lid = _merge([_box(0, ix + 24, -iy / 2 - 12, iy / 2 + 12, 0, 5), _box(ix + 14, ix + 24, -30, 30, 5, 22)])
+    lid = _merge([_box(0, ix + 74, -iy / 2 - 12, iy / 2 + 12, 0, 5), _box(ix + 60, ix + 74, -30, 30, 5, 20)])
     px, py = PANS[k]
-    return lid, np.array([px - ix / 2 - 12, py, PAN["rim"]])
+    return lid, np.array([px - ix / 2 - 37, py, PAN["rim"]])
 
 
 def dryer_parts() -> dict:
     """The vacuum dryer (ours): a heated stainless pot with a hinged lid, a chemistry diaphragm pump and a condenser
-    under the bench."""
+    under the bench, its exhaust to the bath's duct."""
     x, y = DRYER
-    rim = PAN["rim"]
+    rim, fl = DRYER_RIM, BASKET[2]
     pot = C.lathe([(DRYER_R - 8, BENCH_Z + 12), (DRYER_R, BENCH_Z + 12), (DRYER_R, rim), (DRYER_R - 8, rim),
                    (DRYER_R - 8, BENCH_Z + 20)], res=64).translate((x, y, 0), inplace=False)
-    floor = C.lathe([(0, PAN["rim"] - PAN["depth"] - 8), (DRYER_R - 8, PAN["rim"] - PAN["depth"] - 8),
-                     (DRYER_R - 8, PAN["rim"] - PAN["depth"]), (0, PAN["rim"] - PAN["depth"])], res=64).translate(
+    floor = C.lathe([(0, fl - 8), (DRYER_R - 8, fl - 8), (DRYER_R - 8, fl), (0, fl)], res=64).translate(
         (x, y, 0), inplace=False)
     flange = _ring(DRYER_R + 14, DRYER_R - 8, rim - 8, rim).translate((x, y, 0), inplace=False)
     base = _box(x - DRYER_R - 20, x + DRYER_R + 20, y - DRYER_R - 20, y + DRYER_R + 20, BENCH_Z, BENCH_Z + 12)
-    pump = _box(-1100, -820, 420, 690, 120, 400)
-    cond = _merge([_cyl((-1000, 720, 120), (-1000, 720, 560), 55.0, res=24),
+    pump = _box(-1080, -800, y - 130, y + 130, 120, 400)
+    cond = _merge([_cyl((-1000, y + 230, 120), (-1000, y + 230, 560), 55.0, res=24),
                    _cyl((x - DRYER_R - 5, y, BENCH_Z - 60), (-1000, y, BENCH_Z - 60), 12.0, res=16)])
     return {"dryer/pot": (_merge([pot, flange, base]), SS, 1.0), "dryer/floor": (floor, (0.50, 0.51, 0.53), 1.0),
             "dryer/pump": (_merge([pump, cond]), (0.20, 0.36, 0.62), 1.0)}
@@ -512,7 +535,7 @@ def dryer_lid() -> tuple[pv.PolyData, np.ndarray]:
         (DRYER_R + 14, 0, 0), inplace=False)
     knob = _box(2 * DRYER_R + 8, 2 * DRYER_R + 40, -30, 30, 0, 30)
     win = _cyl((DRYER_R + 14, 0, 14), (DRYER_R + 14, 0, 16), 70.0, res=48)
-    return _merge([disc, knob, win]), np.array([x - DRYER_R - 14, y, PAN["rim"]])
+    return _merge([disc, knob, win]), np.array([x - DRYER_R - 14, y, DRYER_RIM])
 
 
 def weigh_parts() -> dict:
@@ -575,7 +598,7 @@ def bench_parts() -> dict:
             legs.append(_box(lx - 25, lx + 25, ly - 25, ly + 25, 0, BENCH_Z - 30))
     ped = _merge([_box(-130, 130, -130, 130, 0, Z_ARM - 15), _box(-300, 300, -300, 300, 0, 20),
                   _box(-140, 140, -140, 140, Z_ARM - 15, Z_ARM)])
-    stand = _box(BASKET[0] - 50, BASKET[0] + 50, BASKET[1] - 110, BASKET[1] + 110, BENCH_Z, BASKET[2] - 4)
+    stand = _box(BASKET[0] - 30, BASKET[0] + 30, BASKET[1] - 105, BASKET[1] + 105, BENCH_Z, BASKET[2])
     riser = _box(RACK_AT[0] - 185, RACK_AT[0] + 185, RACK_AT[1] - 50, RACK_AT[1] + 50, BENCH_Z, RACK_AT[2])
     rest = _box(LID_REST[0] - 50, LID_REST[0] + 50, LID_REST[1] - 185, LID_REST[1] + 185, BENCH_Z, BENCH_Z + 8)
     blow = BLOW
@@ -636,7 +659,8 @@ def movie():
     # --- static parts
     for name, (m, c, op) in {**bench_parts(), **lathe_parts(), **bath_parts(), **dryer_parts(), **weigh_parts(),
                              **vision_parts()}.items():
-        sc.add(name, m, c, "static", opacity=op, specular=0.2)
+        grp = "static" if name == "bench/ped" else name.split("/")[0]     # the arm stands on "static": its pedestal
+        sc.add(name, m, c, grp, opacity=op, specular=0.2)                  # one group per station, for the audit
     for nm in ("bath/water", "bath/ipa"):
         sc.fluids.add(nm)
     # --- moving parts
@@ -709,16 +733,19 @@ def movie():
         sc.gauges = list(g.items())
 
     status(Lathe="bar in: 5N Al, Ø20 mm" if metal == "Al" else "bar in: OFE Cu (C10100), Ø20 mm",
-           Cup="-", Basket="3 of 4 cups, 4 of 4 plugs", Bath="IPA pans shut", Dryer="vented, lid shut",
+           Cup="-", Basket="3 of 4 cups, 4 of 4 plugs", Bath="IPA vessels shut", Dryer="vented, lid shut",
            Arm="UR10e, parked")
 
     def spin(u, n0=[0.0], rate=4.0):
         sc.gmat["spindle"] = (T((0, SPIN_Y, SPIN_Z)) @ R((1, 0, 0), (n0[0] + u * 360 * rate) % 360)
                               @ T((0, -SPIN_Y, -SPIN_Z)))
 
+    TS = {"tool": 1, "x": END0 - 60.0, "r": 40.0}       # the tool at work, its tip's x and r
+
     def tur(tool, x_tip, r, idx=None):
         Mt, Mr = turret_pose(tool, x_tip, r, idx)
         sc.gmat["turret"], sc.gmat["turret_rot"] = Mt, Mr
+        TS.update(tool=tool, x=x_tip, r=r)
 
     tur(1, END0 - 60.0, 40.0)
     W = {"end": END0, "turned": 0.0, "hole_r": 0.0, "hole_d": 0.0, "groove": 0.0}
@@ -736,7 +763,7 @@ def movie():
     CAM_LATHE = [(430, -470, 1300), (150, -1020, 950), (0, 0, 1)]
     CAM_WORK = [(150, -765, 1120), (162, -1270, 1050), (0, 0, 1)]
     CAM_NEST = [(-560, 200, 1550), (150, -660, 950), (0, 0, 1)]
-    CAM_BATH = [(-250, 1250, 1950), (-830, -60, 1050), (0, 0, 1)]
+    CAM_BATH = [(-200, 1350, 2350), (-800, -150, 1050), (0, 0, 1)]
     CAM_EAST = [(1950, -1150, 1800), (700, -80, 1000), (0, 0, 1)]
     CAM_RACK = [(-1500, 1500, 1650), (0, 720, 960), (0, 0, 1)]
     sc.cam = CAM_WIDE
@@ -745,10 +772,10 @@ def movie():
     sc.step("1/6", "The charge-cup cell on the lab floor: a bar-fed CNC lathe, a UR10e on a pedestal, an ultrasonic "
                    "bath with two closed IPA pans, a vacuum dryer, a weigh module, a dimension gauge and the cup rack "
                    "the MiR250 takes to tray J.", 3.0, hold=1.5,
-            labels=[("CNC turning centre + short-bar loader", (300, -1300, 1950), (0.70, 0.12)),
+            labels=[("bar-fed CNC lathe (Haas ST-10 size) + 4 ft bar feeder", (300, -1300, 2167), (0.62, 0.10)),
                     ("UR10e on a pedestal", (0, 0, 1300), (0.42, 0.22)),
-                    ("ultrasonic bath: 2 closed IPA pans", (-860, 80, 1130), (0.08, 0.40)),
-                    ("vacuum dryer", (-860, 520, 1140), (0.08, 0.58)),
+                    ("2 ultrasonic baths, each with 1 closed IPA vessel", (-805, -20, 1160), (0.06, 0.40)),
+                    ("vacuum dryer", (-860, 420, 1210), (0.08, 0.58)),
                     ("weigh module", tuple(WEIGH + (0, 0, 100)), (0.86, 0.36)),
                     ("dimension gauge", tuple(VISION + (0, 0, 330)), (0.87, 0.52)),
                     ("cup rack (cassette) for tray J", tuple(RACK_AT + (0, 0, 60)), (0.55, 0.82))])
@@ -758,6 +785,7 @@ def movie():
         W["end"] = END0 + 75.0 * (1 - u)
         W["end"] = min(W["end"], X_COLLET - 4.0)
         rework()
+        tur(1, END0 - 60.0 + 60.0 * u, 40.0 - 28.0 * u)
     W["end"] = X_COLLET - 4.0
     rework()
     sc.step("2/6", "The bar loader pushes the Ø20 mm bar 72.5 mm out of the collet. Bar and cup are drawn in half "
@@ -773,38 +801,43 @@ def movie():
         else:                                            # turn the OD to 19.05 mm over 68 mm
             v = (u - 0.25) / 0.75
             W["end"] = END
-            W["turned"] = 68.0 * v
+            W["turned"] = 65.0 * v
             tur(1, END + W["turned"], CUP_R)
         rework()
-    sc.step("2/6", "Turning tool: face the end, then turn the OD to 19.05 mm. Dry, with an MQL mist of a volatile ester "
-                   "at the insert (polished or PCD, kept for this metal only).", 4.0, face_turn, hold=0.3,
+    sc.step("2/6", "Turning tool: face the end, then turn the OD to 19.05 mm. Dry but for an alcohol MQL mist "
+                   "at the insert (PCD or sharp uncoated carbide, kept for this metal only).", 4.0, face_turn, hold=0.3,
             labels=[("PCD turning insert", (END + 30, SPIN_Y - 20, SPIN_Z + 30), (0.18, 0.25))])
     sc.show(["chips"], 0.4)
 
     def index(tool, x_tip, r):
-        Mt0, Mr0 = sc.gmat["turret"].copy(), sc.gmat["turret_rot"].copy()
-        a0 = math.degrees(math.atan2(Mr0[2, 1], Mr0[1, 1]))
-        a1 = -TOOL_ANG[tool]
+        """Retract the tool at work (an axial one out of its hole along -x first), take the turret to the index
+        position (X_INDEX: every tool clear of the bar and the headstock), turn the drum, then bring the new tool to
+        its start, (x_tip, r)."""
+        t0, x0, r0 = TS["tool"], TS["x"], TS["r"]
+        P0 = turret_pose(t0, x0, r0)[0][:3, 3]
+        P1 = turret_pose(t0, END - 30.0, r0)[0][:3, 3] if t0 in (2, 3) else turret_pose(t0, x0, r0 + 50.0)[0][:3, 3]
+        P2 = np.r_[X_INDEX, P1[1:] - TURRET_U[1:] * 60.0]
+        P4 = turret_pose(tool, END - 30.0, r)[0][:3, 3] if tool in (2, 3) else turret_pose(tool, x_tip, r + 50.0)[0][:3, 3]
+        P5 = turret_pose(tool, x_tip, r)[0][:3, 3]
+        a0, a1 = -TOOL_ANG[t0], -TOOL_ANG[tool]
         da = (a1 - a0 + 180) % 360 - 180
-        Mt1, _ = turret_pose(tool, x_tip, r)
-        back = T(-TURRET_U * 60.0)
+        legs = [(P0, P1), (P1, P2), None, (P2, P4), (P4, P5)]
 
         def up(u):
-            if u < 0.3:
-                v = u / 0.3
-                sc.gmat["turret"] = T(Mt0[:3, 3] + (back[:3, 3]) * v)
-                sc.gmat["turret_rot"] = Mr0
-            elif u < 0.7:
-                v = (u - 0.3) / 0.4
-                sc.gmat["turret"] = T(Mt0[:3, 3] + back[:3, 3] + (Mt1[:3, 3] + back[:3, 3] - Mt0[:3, 3] - back[:3, 3]) * v)
+            k = min(4, int(u * 5))
+            v = u * 5 - k
+            if legs[k] is None:
+                sc.gmat["turret"] = T(P2)
                 sc.gmat["turret_rot"] = R((1, 0, 0), a0 + da * v)
             else:
-                v = (u - 0.7) / 0.3
-                sc.gmat["turret"] = T(Mt1[:3, 3] + back[:3, 3] * (1 - v))
-                sc.gmat["turret_rot"] = R((1, 0, 0), a1)
+                pa, pb = legs[k]
+                sc.gmat["turret"] = T(pa + (pb - pa) * v)
+                sc.gmat["turret_rot"] = R((1, 0, 0), a0 if k < 2 else a1)
+            if u >= 1.0:
+                tur(tool, x_tip, r)
         return up
     # retract the turning tool off the bar first
-    sc.step("2/6", "Index to the 12.5 mm drill.", 1.2, index(2, END - 20.0, 0.0), hold=0.1)
+    sc.step("2/6", "Index to the 12.5 mm drill.", 2.0, index(2, END - 20.0, 0.0), hold=0.1)
 
     def drill(u):
         spin(u, rate=10)
@@ -816,12 +849,12 @@ def movie():
     sc.show(["chips"], 0.7)
     sc.step("2/6", "Drill 12.5 mm, 47.6 mm deep with a 118° point, pecking to break the chips (drawn as one pass).",
             3.5, drill, hold=0.3)
-    sc.step("2/6", "Index to the boring bar.", 1.2, index(3, END - 20.0, 0.0), hold=0.1)
+    sc.step("2/6", "Index to the boring bar.", 2.0, index(3, END - 20.0, 0.0), hold=0.1)
 
     def bore(u):
         spin(u, rate=10)
         W["hole_r"] = BORE_R
-        tur(3, END + 47.6 * math.sin(math.pi * u) - 1.0, -(BORE_R - 1.0))
+        tur(3, END - 20.0 + (47.6 + 20.0) * math.sin(math.pi * u), 0.0)
         rework()
     sc.step("2/6", "Finish-bore to 12.70 mm, the press fit's size for the plug, and break the rim's edge.", 3.0, bore,
             hold=0.2)
@@ -833,7 +866,7 @@ def movie():
         else:
             p = mid + (CATCH_UNDER - mid) * ((u - 0.7) / 0.3)
         sc.gmat["catcher"] = T(p)
-    sc.step("2/6", "Index to the parting blade; the parts catcher comes in under the cup.", 1.4,
+    sc.step("2/6", "Index to the parting blade; the parts catcher comes in under the cup.", 2.0,
             RB.both(index(4, GROOVE_X, CUP_R + 2.0), catch_in), hold=0.1)
 
     def part(u):
@@ -914,7 +947,7 @@ def movie():
     g_blow_hi = g_blow.copy()
     g_blow_hi[2, 3] += 120.0
     sc.step("3/6", "To the blow-off station: ...", 2.0, rb.joint_to(Tw=g_blow_hi), hold=0.0, cam_to=CAM_BATH)
-    sc.step("3/6", "... a ring nozzle round its foot and a lance into the bore blow off the chips and the MQL film.",
+    sc.step("3/6", "... a ring nozzle round its foot and a lance into the bore blow the chips off it.",
             1.5, rb.line_to(g_blow), hold=0.8)
     sc.step("3/6", "", 1.0, rb.line_to(g_blow_hi), hold=0.0)
     # into the basket's front row
@@ -937,7 +970,7 @@ def movie():
     # 4: the basket through the two IPA pans and the dryer
     g_h = dwn(BASKET + (0, 0, handle[2]), 0.0)                    # fingers across the bar (along x)
     g_h_hi = g_h.copy()
-    g_h_hi[2, 3] = PAN["rim"] + 230.0
+    g_h_hi[2, 3] = DRYER_RIM + 30.0 + handle[2]
 
     def hinge_open(group, hinge, deg):
         def up(u):
@@ -958,46 +991,45 @@ def movie():
 
     def into(k, secs_note, son_label, son_secs):
         px, py = PANS[k]
-        g_in = dwn((px, py, PAN["rim"] - PAN["depth"] + 4 + handle[2]), 0.0)
+        g_in = dwn((px, py, PAN["rim"] - PAN["depth"] + handle[2]), 0.0)
         g_over = g_in.copy()
-        g_over[2, 3] = PAN["rim"] + 230.0
-        sc.step("4/6", f"The {k} pan's lid opens ...", 1.2, RB.both(rb.line_to(g_h_hi) if k == "wash" else None,
-                                                                   hinge_open(f"lid_{k}", lids[k], 105.0)), hold=0.0)
-        sc.step("4/6", f"... the basket goes into the {secs_note} ...", 2.0, rb.joint_to(Tw=g_over), hold=0.0)
+        g_over[2, 3] = PAN["rim"] + 30.0 + handle[2]
+        sc.step("4/6", f"The {k} vessel's lid opens ...", 1.2, RB.both(rb.line_to(g_h_hi) if k == "wash" else None,
+                                                                       hinge_open(f"lid_{k}", lids[k], 105.0)),
+                hold=0.0)
+        sc.step("4/6", f"... the basket goes into the {secs_note}, and its own cap shuts the vessel.", 2.0,
+                rb.joint_to(Tw=g_over), hold=0.0)
         sc.step("4/6", "", 1.6, rb.line_to(g_in), hold=0.1)
         sc.step("4/6", "", 0.4, rb.grip_to(OPEN_BAR), hold=0.0)
         rb.release(None)
         sc.step("4/6", "", 1.0, rb.line_to(g_over), hold=0.0)
-        sc.step("4/6", "", 1.0, hinge_close(f"lid_{k}", lids[k], 105.0), hold=0.0)
         status(Bath=son_label)
         ipa = "bath/ipa"
-        base_c = IPA
 
         def son(u):
             f = 0.5 + 0.5 * math.sin(u * 60.0)
-            sc.color[ipa] = tuple(c * (0.92 + 0.08 * f) for c in base_c)
+            sc.color[ipa] = tuple(c * (0.92 + 0.08 * f) for c in IPA)
             sc.color["bath/water"] = tuple(c * (0.92 + 0.08 * f) for c in WATER)
-        sc.step("4/6", f"Ultrasound, {son_secs}, through the water into the shut pan (shown sped up).", 2.5, son,
-                hold=0.0, live=True)
+        sc.step("4/6", f"Ultrasound, {son_secs}, through the bath's water into the shut vessel (shown sped up).", 2.5,
+                son, hold=0.0, live=True)
         sc.color.pop(ipa, None)
         sc.color.pop("bath/water", None)
-        sc.step("4/6", "", 1.2, hinge_open(f"lid_{k}", lids[k], 105.0), hold=0.0)
-        sc.step("4/6", "", 1.0, rb.line_to(g_in.copy() @ T((0, 0, 0))), hold=0.0)
+        sc.step("4/6", "", 1.0, rb.line_to(g_in), hold=0.0)
         sc.step("4/6", "", 0.4, rb.grip_to(GRIP_BAR), hold=0.0)
         rb.grasp("basket")
-        sc.step("4/6", "", 1.6, rb.line_to(g_over), hold=0.3)
-        sc.step("4/6", "", 1.0, hinge_close(f"lid_{k}", lids[k], 105.0), hold=0.0)
+        sc.step("4/6", "", 1.6, rb.line_to(g_over), hold=0.2)
+        sc.step("4/6", "The vessel's lid shuts behind it.", 1.0, hinge_close(f"lid_{k}", lids[k], 105.0), hold=0.0)
         return g_over
 
-    into("wash", "first pan of IPA", "wash pan: 40 kHz, 5 min", "5 min")
-    status(Bath="wash done; rinse pan")
-    into("rinse", "second pan, clean IPA", "rinse pan: 40 kHz, 2 min", "2 min")
-    status(Bath="IPA pans shut")
+    into("wash", "first vessel of IPA", "wash vessel: 37 kHz, 5 min", "5 min")
+    status(Bath="wash done; to the rinse")
+    into("rinse", "second vessel, clean IPA", "rinse vessel: 37 kHz, 2 min", "2 min")
+    status(Bath="IPA vessels shut")
     # the dryer
     gx, gy = DRYER
-    g_d = dwn((gx, gy, PAN["rim"] - PAN["depth"] + 4 + handle[2]), 0.0)
+    g_d = dwn((gx, gy, BASKET[2] + handle[2]), 0.0)
     g_d_over = g_d.copy()
-    g_d_over[2, 3] = PAN["rim"] + 230.0
+    g_d_over[2, 3] = DRYER_RIM + 30.0 + handle[2]
     sc.step("5/6", "Into the vacuum dryer: its lid opens ...", 1.2, hinge_open("dlid", dhinge, 110.0), hold=0.0)
     sc.step("5/6", "", 2.0, rb.joint_to(Tw=g_d_over), hold=0.0)
     sc.step("5/6", "", 1.6, rb.line_to(g_d), hold=0.1)
