@@ -745,6 +745,14 @@ def clip():
     cap8 = ("The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs "
             "20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its "
             "own. About $160-220k for the ICP-MS; the hood, dilutor and cover are quotes.")
+    d3 = 2300.0                                              # the MiR250 leaves for its next job, out of the view
+
+    def leave(u):
+        f = P.ramp_frac(u, d3, 600.0)
+        sc.gmat["amr"] = T((MIR_X_SPS + d3 * f, MIR_Y, 0.0))
+        rb.set()
+    sc.step(f"8/{n}", "Its rack set, the MiR250 leaves for its next job, and the SPS 4 starts on the rack.",
+            P.ramp_secs(d3, 600.0), RB.both(leave, rig.move({"sps_arm": (None, sps_v(1))})), hold=0.0)
     for k in (1, 2, 3, 4):
         sc.step(f"8/{n}", cap8, 1.0, rig.move({"sps_arm": (None, sps_v(k))}), hold=0.0)
         sc.step(f"8/{n}", cap8, 0.7, rig.move({"sps_probe": (None, 1.0)}), hold=0.4)

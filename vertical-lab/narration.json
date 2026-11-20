@@ -114,10 +114,10 @@
  },
  {
   "chapter": "alloy1",
-  "part": "doser_raise_section.png",
+  "part": "doser_shield_section.png",
   "offset": 0.5,
-  "text": "The cup can't come closer to the outlet: a raised balance would hit the doser's carriage, about thirteen millimetres above it. A funnel per powder is designed, not yet in the clip.",
-  "source": "notes/alloy_charge.md (Round 10); longform.py still caption"
+  "text": "A post on the balance pan now brings the cup up to forty-five millimetres under the outlet, inside a clear draft shield of our own. Before, the powder fell a hundred and fifty-three millimetres, most of it in open air.",
+  "source": "notes/multidoser.md (round 14, run B: the dose post and draft shield); out/doser_shield.json"
  },
  {
   "chapter": "alloy2",

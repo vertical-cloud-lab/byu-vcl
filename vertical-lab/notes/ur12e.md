@@ -34,7 +34,8 @@ Nothing in the model, the IK or the collision checks changes.
   files that write the label; clips rendered before it still say UR10e until they are re-rendered.
 - **The long-form's text:** the opening card says "A UR12e arm (the UR10e, renamed in 2025)", the atomizer chapter's
   card "MiR250 + UR12e", the YouTube description "two UR12e arms (the UR10e, renamed in 2025)". The narration says
-  "a Universal Robots arm", and `longform.SAY` speaks "UR12e" as "U R twelve E" where it appears.
+  "a Universal Robots arm", and `longform.SAY` speaks "UR12e" as "U R twelve E" where it appears. Uploads are tagged
+  with both names (`youtube_upload.TAGS`), so a search for either finds them.
 - **Left as they are:** code identifiers (`animate.ROBOT = "ur10e"`, `ur_arm.MODELS["ur10e"]`, `UR10E_PAYLOAD`, cache
   and file names), the notes and README sections of earlier rounds, `out/` JSON records, and YouTube descriptions of
   past uploads. Renaming those would break the pinned ROS description's file names and make old records disagree with

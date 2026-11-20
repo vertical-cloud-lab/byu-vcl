@@ -137,7 +137,9 @@ ON_SCREEN = {"UR10e": "UR12e"}
 
 
 def shown(text: str) -> str:
-    """`text` with ON_SCREEN's names, as a frame shows it."""
+    """`text` with ON_SCREEN's names, as a frame shows it (anything that isn't a string, as it is)."""
+    if not isinstance(text, str):
+        return text
     for a, b in ON_SCREEN.items():
         text = text.replace(a, b)
     return text

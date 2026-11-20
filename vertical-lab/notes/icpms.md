@@ -94,10 +94,11 @@ either row, so:
   (the EDM ends at about 7,650) to 11,650, the fronts on the row line (y = −6,238) facing north. Turned to face north,
   the model's left and right swap: the bench with the ICP-MS at the west end (x ≈ 7,850-9,650), the hood at the east
   end (x ≈ 9,750-11,580), and the dewar behind the bench (y ≈ −7,500) instead of beside it, which saves 0.6 m. The
-  MiR docks 60 mm off the hood's front with its centre 60 mm inside the hood's edge next to the bench (x ≈ 9,810), as
-  in the clip: the hood's open half and the SPS 4 are both in reach from there. It stays 1.9 m clear of the Meltio
-  cell (y < −9,000). In `FLOOR_PLAN` terms, roughly `"icpms": (9715, "S", 0.0, 9810)` without the dewar; check which
-  way `setup_lab` mirrors a south-row machine.
+  MiR docks twice, as in the clip: in front of the hood's open half (its centre 60 mm off the hood's front, in line
+  with the open half's middle, x ≈ 10,260), then in front of the SPS 4 (x ≈ 9,340). Both docks are on the aisle's
+  south edge, like the row's other docks. The station stays 1.9 m clear of the Meltio cell (y < −9,000). In
+  `FLOOR_PLAN` terms, roughly `"icpms": (9715, "S", 0.0, 10260)` without the dewar, with a second dock for the SPS 4;
+  check which way `setup_lab` mirrors a south-row machine.
 - **Or a room of its own.** ICP-MS labs are usually separate: clean air for trace metals, the acids away from metal
   powder and the robots. If the building has a room off the floor with a door the MiR can open, that is the better
   place; the station and the clip are the same.
@@ -115,9 +116,22 @@ either row, so:
 
 ## The clip (`icpms.py`)
 
-Eight steps, about 85 s, collision-checked as it renders (`VIZ3D_AUDIT=1`, round 11's strict rules): the station; the
-MiR250 + UR12e driving in at its published 0.3 m/s²; the sash; the capped rack into the hood; the dilutor's cycle on
-tube 0 in full; the hot block; the autosampler rack to the SPS 4; the SPS 4 sampling, with the utilities and costs.
+![The clip, six frames](../out/icpms_sheet.png)
+
+[MP4, 720p](../out/mp4/icpms.mp4) · [GIF](../out/icpms.gif) · 1080p for the long-form: `out/hd/icpms.mp4`
+
+Eight steps, 99.8 s at 1080p (drawn at 12 fps), collision-checked as it rendered (`VIZ3D_AUDIT=1`, round 11's
+strict rules): **0 of 1,070 frames in collision, the arm and everything that moves** ([`out/collisions/icpms.json`](../out/collisions/icpms.json)). The steps: the station; the MiR250 + UR12e driving in at its published 0.3 m/s²; the
+sash's right half opening; the capped rack into the hood; the dilutor's cycle on tube 0 in full (the cap off, the
+aliquot, the dilution into the autosampler rack, the cap back); the hot block; the autosampler rack onto the MiR's
+carrier, a 0.9 m drive and into the SPS 4 under its lifted lid; the MiR leaving while the SPS 4 samples, with the
+utilities and costs.
+
+How the arm stays clear (each found by the audit and fixed): two docks, one per job, so the arm's base is never in
+front of the hood's post; the folded arm turned along the MiR so it neither enters the hood nor hides it; the pads on
+the handle's 36 mm T top; the SPS 4 placed from an IK branch checked clear all the way down (`over()` in the clip:
+the planner alone took a branch that put a wrist into the SPS 4's beam at the bottom); the sash panels' travel short
+of each other on their tracks; the decapping chuck carried over the racks' handles.
 
 **Ours, at assumed sizes:** the station's layout, the racks and their handles, the MiR's rack carrier, the dilutor's
 geometry and decapping head, the SPS 4 lid's actuator, the hot block's size, the base cabinet. **Not modelled:** the

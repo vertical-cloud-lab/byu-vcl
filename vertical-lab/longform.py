@@ -133,21 +133,25 @@ CHAPTERS = [
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
                "is dosed by weight on the A&D HR-202i under the multi-doser's dose point (chain carousel v5, no funnel), "
                "and its vented plug pressed "
-               "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load."],
+               "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load. The die is "
+               "cleaned between presses, and every cup weighed again."],
          parts=[("mp4", "dag/route_dag_ch1.mp4", "The route as a function network (DAL's ONR YIP DAG)"),
                 ("still", "dal_workflow_table.png", 14.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
                  "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
                 ("mp4", "alloy_charge.mp4", "The charge cups"),
-                ("still", "doser_raise_section.png", 14.0, "Raise the balance on a block to shorten the fall? In v5 the "
-                 "parked carriage is 12.6 mm over the HR-202i, so no block fits; the cup stays 153 mm under the exit, "
-                 "and the option is each powder's own funnel on our shuttle (round 10)",
-                 "Can the cup come closer to the exit?"),
+                # round 14 (D): run B's dose post and draft shield (doser_shield.py) in place of round 10's "can the cup
+                # come closer?" section, which the new station answers
+                ("still", "doser_shield_section.png", 14.0, "The fall shortened (round 14): a dose post on the pan lifts "
+                 "the cup to 45 mm under the exit, inside a clear draft shield (both ours), so none of the fall is in "
+                 "open air; it was 153 mm (notes/multidoser.md)", "A shorter fall: a dose post and a draft shield"),
                 ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
     dict(key="alloy2", title="Alloy route 2/7: melt and atomize in the rePowder",
          card=["Both MiR250 + UR12e units go to the AMAZEMET rePowder, each with a 131 kg ballast plate low in its base, "
                "and open its furnace together. A loading tool lowers each of the "
                "four Al cups into the crucible. Pump-downs with argon, induction melt, the pour, the ultrasonic spray, powder in the "
-               "container. Cut with the lab's own footage, each piece badged with its alloy, date and source."],
+               "container. During the pour both arms hold the knobs of a landing stage (ours) and trim the plate under "
+               "the stream from the melt-stream cameras. Cut with the lab's own footage, each piece badged with its "
+               "alloy, date and source."],
          parts=[("mp4", "dag/route_dag_ch2.mp4", None), ("mp4", "alloy_atomize.mp4", None)]),
     # Round 12: PR #353 (Sterling, 2026-11-19: automate "all aspects of the process"), merged into this branch
     dict(key="atomizer", title="Automating the atomizer's turnaround",

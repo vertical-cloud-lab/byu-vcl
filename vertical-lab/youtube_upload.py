@@ -35,7 +35,7 @@ REPO = "vertical-cloud-lab/byu-vcl"
 PR = f"https://github.com/{REPO}/pull/318"
 CHANNEL = "UCKC7WzMu6QEh7O55zZlT2lw"
 TAGS = ["vertical cloud lab", "BYU", "self-driving lab", "laboratory automation", "vertical lift module",
-        "Kardex Shuttle", "UR10e", "3-D animation", "alloy development"]
+        "Kardex Shuttle", "UR12e", "UR10e", "3-D animation", "alloy development"]   # UR12e: the UR10e renamed (notes/ur12e.md)
 DESC_BYTES = 4900            # YouTube's limit is 5000 bytes
 TITLE_CHARS = 100
 

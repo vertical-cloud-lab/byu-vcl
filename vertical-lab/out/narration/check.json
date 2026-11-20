@@ -472,21 +472,33 @@
   {
    "i": 14,
    "chapter": "alloy1",
-   "part": "doser_raise_section.png",
-   "text": "The cup can't come closer to the outlet: a raised balance would hit the doser's carriage, about thirteen millimetres above it. A funnel per powder is designed, not yet in the clip.",
-   "spoken": "The cup can't come closer to the outlet: a raised balance would hit the doser's carriage, about thirteen millimetres above it. A funnel per powder is designed, not yet in the clip.",
-   "phonemes": "ðə kˈʌp kˈænt kˈʌm klˈoʊsɚ tə ðɪ ˈaʊtlɛt: ɐ ɹˈeɪzd bˈæləns wʊd hˈɪt ðə dˈoʊsɚz kˈæɹɪdʒ, ɐbˌaʊt θˈɜːtiːn mˈɪlɪmˌiːɾɚz əbˈʌv ɪt. ɐ fˈʌnəl pɜː pˈaʊdɚɹ ɪz dɪzˈaɪnd, nˌɑːt jˈɛt ɪnðə klˈɪp.",
-   "seconds": 10.84,
+   "part": "doser_shield_section.png",
+   "text": "A post on the balance pan now brings the cup up to forty-five millimetres under the outlet, inside a clear draft shield of our own. Before, the powder fell a hundred and fifty-three millimetres, most of it in open air.",
+   "spoken": "A post on the balance pan now brings the cup up to forty-five millimetres under the outlet, inside a clear draft shield of our own. Before, the powder fell a hundred and fifty-three millimetres, most of it in open air.",
+   "phonemes": "ɐ pˈoʊst ɔnðə bˈæləns pˈæn nˈaʊ bɹˈɪŋz ðə kˈʌp ˌʌp tə fˈɔːɹɾifˈaɪv mˈɪlɪmˌiːɾɚz ˌʌndɚ ðɪ ˈaʊtlɛt, ɪnsˈaɪd ɐ klˈɪɹ dɹˈæft ʃˈiːld ʌv ˌaʊɚɹ ˈoʊn. bᵻfˈɔːɹ, ðə pˈaʊdɚ fˈɛl ɐ hˈʌndɹɪd ænd fˈɪftiθɹˈiː mˈɪlɪmˌiːɾɚz, mˈoʊst əv ɪɾ ɪn ˈoʊpən ˈɛɹ.",
+   "seconds": 13.38,
    "base.en": {
-    "heard": "The cup can't come closer to the outlet. A raised balance would hit the doser's carriage, about 13 millimeters above it. A funnel per powder is designed, not yet in the clip.",
-    "wer": 0.0,
-    "diffs": [],
+    "heard": "A post on the balance pan now brings the cup up to 45 millimeters under the outlet, inside a clear draft shield of our own. Before, the powder fell 153 millimeters, most of it in open air.",
+    "wer": 0.024,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
     "unsure": []
    },
    "small.en": {
-    "heard": "The cup can't come closer to the outlet. A raised balance would hit the doser's carriage, about 13 millimeters above it. A funnel per powder is designed, not yet in the clip.",
-    "wer": 0.0,
-    "diffs": [],
+    "heard": "A post on the balance pan now brings the cup up to 45 millimeters under the outlet, inside a clear draft shield of our own. Before, the powder fell 153 millimeters, most of it in open air.",
+    "wer": 0.024,
+    "diffs": [
+     [
+      "substitute",
+      "a",
+      "one"
+     ]
+    ],
     "unsure": []
    }
   },

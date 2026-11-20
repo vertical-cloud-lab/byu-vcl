@@ -43,7 +43,7 @@ what each model heard, the word error rate, each difference, and the words heard
 (9.6 min of speech, 2.4 MB). The comparison writes numbers as words, merges letters said one by one (U P S = UPS), and takes
 metre/meter and similar spellings as the same.
 
-**This round's result:** mean word error 1.3 % (small.en) and 2.7 % (base.en); 40 and 34 of the 56 lines word-perfect.
+**This round's result:** mean word error 1.4 % (small.en) and 2.8 % (base.en); 39 and 33 of the 56 lines word-perfect.
 Every remaining difference is a number written another way ("a hundred" as "one hundred", "250" as "two hundred and
 fifty"), a homophone ("Kardex" as "Cardex", "missed" as "mist"), or "round" heard as "around". The machine check
 catches a wrong word, not a wrong stress: "potentiostat" was transcribed correctly in round 12 too, so the stressed and
@@ -60,4 +60,10 @@ unusual words were also read off espeak's phonemes one by one (all 690 distinct 
 - **The atomizer:** the card's line no longer says one arm holds the lid while the other works the latch (run C is
   deciding whether the lid hold stays); the latch line no longer begins "The arm no longer swings the loop", which only
   made sense next to the round before; the BN line no longer quotes the old card's "stayed manual".
+- **Run B's dose post:** the line over chapter 1's figure said the cup can't come closer to the outlet. Run B's
+  dose post and draft shield bring it to 45 mm (from 153), so the line and the figure (`out/doser_shield_section.png`,
+  in place of `doser_raise_section.png`) now say that.
+- **Run C's chapter 2:** the stack line now says the two arms build the stack between runs. That line and the
+  container, latch and powder lines anchor on a phrase of their sub-step's caption (`"match"` in `narration.json`), not
+  only an index, so they follow the chapter as it changes.
 - **Written forms** in eight more lines (VLM, UPS, OT-2, CubXL, SEM, wire EDM, MX-Lab).

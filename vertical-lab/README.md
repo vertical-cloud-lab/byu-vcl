@@ -112,6 +112,81 @@ FFMPEG_THREADS=2 VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 
   only while a module is docked and tilted. It now stands forty-five millimetres under the outlet, inside a draft
   shield of its own."
 
+## Round 14 (D): the narration said right, the footage credited, the 17-step card, an ICP-MS station, the UR12e (2026-11-20)
+
+Sterling's notes on round 12's public video, handed to run D of four (the narration, the footage, the chapter cards,
+ICP-MS and the arm's name; A, B and C took the lab and its services, the charge chapter and the atomizer). Each point
+links its notes.
+
+- **The narration's pronunciation** ([notes/narration.md](notes/narration.md)).
+  - **Fixed:** "potentiostat" (espeak said "puh-TEN-tee-AH-stat") and "MiR", now "meer". The same check found more:
+    "doser" was heard back as "dozer", "Vertiv" as "verdive", "depowdered" as "de-powered" and "recoating" as
+    "recoding".
+  - **How:** each line in `narration.json` is now written as it reads in the subtitles (OT-2, SEM, MiR250). The voice
+    speaks it from phonemes: `longform.SAY` respells a written form, and `longform.IPA` gives Kokoro the phonemes of
+    the words a respelling can't fix.
+  - **Checked by machine:** `python3 longform.py narration-check` speaks every line and hears it back with
+    faster-whisper base.en and small.en. It writes [`out/narration/check.json`](out/narration/check.json) and every
+    line in one file to listen to, [`out/narration/lines.ogg`](out/narration/lines.ogg). Result: 56 lines, 9.6 min of speech, mean word error 1.4 % (small.en) and 2.8 % (base.en). Every remaining difference is a number written another way or a homophone.
+  - **Checked by eye:** espeak's phonemes for all 690 distinct words.
+  - **Kept in step with runs B and C:**
+    - Chapter 1's figure is now run B's dose post and draft shield (a 45 mm fall, from 153), and its line says so.
+    - The atomizer lines follow run C's chapter 2 and latch clip. A line can now anchor on a phrase of its sub-step's
+      caption.
+- **11:43, "most by hand"** ([notes/dal_workflow.md](notes/dal_workflow.md)).
+  - DAL's 17-step card now says, per step, what this design does: 15 steps automated and shown in the video (the
+    chapter given), 2 with no station yet (density, long-term imaging), and what inside each step still takes a person.
+  - Its line is rewritten. The BN line no longer quotes the old card.
+
+  ![The 17-step card](out/dal_workflow_table.png)
+- **11:46, a simplified tray setup? Yes.**
+  - Chapter 1 is still staged in round 2's one-Shuttle lab with trays A-C: `alloy_charge.py` builds `animate.Lab`.
+    Chapters 2-7 use `setup_lab.build`'s two Shuttles and every tray.
+  - Its title bar still says "the alloy route 1/4".
+  - `alloy_charge.py` is run B's file, so this run left it. The fix is to stage it on `setup_lab.build`, as
+    `alloy_powder.py` does (with `VLAB_ONLY_TRAYS` to keep it light).
+- **20:05, AMAZEMET's footage** ([notes/footage.md](notes/footage.md)).
+  - The melt stream cut from Sterling's MS&T 2026 talk is AMAZEMET's, so it is out of chapter 2.
+  - The pour beat is the lab's own Oct 27 bronze jet on the plate, which already followed it.
+- **20:26, the slag photo** ([notes/footage.md](notes/footage.md)).
+  - c3k0n5's "bag and jar" was a phone photo of a screen showing a lump of splats.
+  - Chapter 2 now shows a jar of the lab's own atomized aluminium, lot 4yghtr, cropped from Ronnie Guymon's photo in
+    DAL #159. Every Al photo in DAL #157 and #159 was looked at.
+  - Chapter 2 picks up both changes when run C re-renders it: `splice()` skips a file that isn't in `out/footage/`.
+- **ICP-MS: there was none; now a station on the floor** ([`icpms.py`](icpms.py), [notes/icpms.md](notes/icpms.md),
+  [`out/icpms_bom.json`](out/icpms_bom.json)).
+  - **The hood:** a metal-free polypropylene trace-metals hood (HEMCO UniFlow, 6 ft) on an acid cabinet. The
+    concentrated HNO3 and HCl live only there. No HF.
+  - **Inside the hood:** an acid-rated dilutor with an all-fluoropolymer path (QPrep class) and a graphite hot block.
+  - **Not a Hamilton:** Hamilton's own resistance table rates the STAR's CO-RE head "not recommended" for nitric acid
+    at 5-10 % and 70 %, and a STARlet is 1.1 m wide. Opentrons' manuals say to keep corrosives away from the OT-2.
+  - **Beside the hood:** an Agilent 7850 (its aerosol dilution takes samples up to 25 % dissolved solids, so seawater
+    needs no big liquid dilution) with its SPS 4. The chiller and forepump sit under the bench, the 180 L argon dewar
+    beside it. About $160-220k for the ICP-MS.
+  - **The arm:** works it in a PTFE-laminate cover. It carries capped tubes in and the autosampler rack out, never an
+    open concentrated acid.
+  - **Which instrument:** ICP-OES suits percent-level alloy composition, ICP-MS the trace metals in the corrosion
+    electrolyte. Si above about 1 % needs HF, so silicon comes from the XRF.
+  - **The clip,** 99.8 s at 1080p ([MP4, 720p](out/mp4/icpms.mp4), [GIF](out/icpms.gif)): **0 of 1,070 frames in collision**
+    under the strict audit, arm and everything that moves. The audit's first pass found 597; the notes say what
+    fixed them. It is in the long-form's corrosion chapter, with a narration line.
+
+    ![The ICP-MS station, six frames](out/icpms_sheet.png)
+  - **Where it goes (for run A):** the south row's east end, past the wire EDM, or a room of its own. The notes give
+    the numbers.
+- **UR10e or UR12e: the same arm, renamed** (June 2025, for its 12.5 kg payload; mechanically unchanged;
+  [notes/ur12e.md](notes/ur12e.md)).
+  - Every frame drawn from now on says UR12e (`scene.ON_SCREEN`); so do the cards and the YouTube description.
+  - Code identifiers, notes and old records keep UR10e.
+
+**Still open (D):**
+- The long-form isn't rebuilt or uploaded. The next build takes the new narration, the card, the ICP-MS clip and the
+  footage changes.
+- Clips rendered before this round still say UR10e until they are re-rendered.
+- Chapter 1's one-Shuttle staging (above) is open.
+- The OT-2's clip still shows it diluting the ICP-MS samples on tray A. The card and narration say that step moved.
+- Run A places the ICP-MS station on the set-up floor.
+
 ## Round 13: collisions, artifacts, everything at 1080p, drawn at 10-15 fps (2026-11-20)
 
 Sterling on #318 (2026-11-20): "continue fixing collisions or weird artifacts and rendering at higher resolution and
