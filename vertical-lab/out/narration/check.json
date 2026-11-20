@@ -422,29 +422,31 @@
    "i": 12,
    "chapter": "alloy1",
    "part": "dal_workflow_table.png",
-   "text": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column lists what still takes a person.",
-   "spoken": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column lists what still takes a person.",
-   "phonemes": "ðɪ ˈælɔɪ lˈæbz sˈɛvəntˌiːn stˈɛps, ænd wʌt ðɪs dɪzˈaɪn dˈʌz wɪð ˈiːtʃ: fˈɪftiːn ɑːɹ ˈɔːɾəmˌeɪɾᵻd ænd ʃˈoʊn ɪn ðɪs vˈɪdɪoʊ, tˈuː hæv nˈoʊ stˈeɪʃən jˈɛt, ænd ðə lˈæst kˈɑːlʌm lˈɪsts wʌt stˈɪl tˈeɪks ɐ pˈɜːsən.",
-   "seconds": 11.9,
+   "text": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
+   "spoken": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
+   "phonemes": "ðɪ ˈælɔɪ lˈæbz sˈɛvəntˌiːn stˈɛps, ænd wʌt ðɪs dɪzˈaɪn dˈʌz wɪð ˈiːtʃ: fˈɪftiːn ɑːɹ ˈɔːɾəmˌeɪɾᵻd ænd ʃˈoʊn ɪn ðɪs vˈɪdɪoʊ, tˈuː hæv nˈoʊ stˈeɪʃən jˈɛt, ænd ðə lˈæst kˈɑːlʌm sˈɛz wʌt ɪz stˈɪl baɪ hˈænd, ɪn pɹˈɑːɡɹɛs, ɔːɹ ˈoʊpən.",
+   "seconds": 13.4,
    "base.en": {
-    "heard": "The alloy labs 17 steps, and what this design does with each. 15 are automated and shown in this video, two have no station yet, and the last column lists what still takes a person.",
+    "heard": "the alloy lab's 17 steps, and what this design does with each. 15 are automated and shown in this video, two have no station yet, and the last column says what is still by hand in progress or open.",
     "wer": 0.0,
     "diffs": [],
     "unsure": [
      [
-      "The",
-      0.36
-     ],
-     [
-      "labs",
-      0.45
+      "lab's",
+      0.49
      ]
     ]
    },
    "small.en": {
-    "heard": "the Alloy Labs 17 steps, and what this design does with each. 15 are automated and shown in this video, two have no station yet, and the last column lists what still takes a person.",
-    "wer": 0.0,
-    "diffs": [],
+    "heard": "the Alloy Lab 17 steps, and what this design does with each. 15 are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
+    "wer": 0.026,
+    "diffs": [
+     [
+      "substitute",
+      "labs",
+      "lab"
+     ]
+    ],
     "unsure": []
    }
   },

@@ -127,7 +127,9 @@ links its notes.
     the words a respelling can't fix.
   - **Checked by machine:** `python3 longform.py narration-check` speaks every line and hears it back with
     faster-whisper base.en and small.en. It writes [`out/narration/check.json`](out/narration/check.json) and every
-    line in one file to listen to, [`out/narration/lines.ogg`](out/narration/lines.ogg). Result: 56 lines, 9.6 min of speech, mean word error 1.4 % (small.en) and 2.8 % (base.en). Every remaining difference is a number written another way or a homophone.
+    line in one file to listen to, [`out/narration/lines.ogg`](out/narration/lines.ogg).
+    - Result: 56 lines, 9.7 min of speech, mean word error 1.4 % (small.en) and 2.8 % (base.en).
+    - Every remaining difference is a number written another way or a homophone.
   - **Checked by eye:** espeak's phonemes for all 690 distinct words.
   - **Kept in step with runs B and C:**
     - Chapter 1's figure is now run B's dose post and draft shield (a 45 mm fall, from 153), and its line says so.
@@ -135,7 +137,8 @@ links its notes.
       caption.
 - **11:43, "most by hand"** ([notes/dal_workflow.md](notes/dal_workflow.md)).
   - DAL's 17-step card now says, per step, what this design does: 15 steps automated and shown in the video (the
-    chapter given), 2 with no station yet (density, long-term imaging), and what inside each step still takes a person.
+    chapter given), 2 with no station yet (density, long-term imaging). Its last column tags what inside each step is
+    still by hand (4), in progress (3) or open (4).
   - Its line is rewritten. The BN line no longer quotes the old card.
 
   ![The 17-step card](out/dal_workflow_table.png)

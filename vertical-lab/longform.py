@@ -495,32 +495,33 @@ def warm(skip=()):
 # in this design and shown in the video (the chapter says where); "progress", designed or being designed, not in the
 # video yet; "none", no station yet; "manual", stays a person's. The last column is what, inside the step, still
 # takes a person or is still open. notes/dal_workflow.md has the long form with sources.
-DAL_STEPS = [   # (step, station in this design, status, still by hand or open)
+DAL_STEPS = [   # (step, station in this design, status, what inside it is still by hand, in progress or open)
     ("Pick a composition", "software: Bayesian optimization over a CALPHAD-screened space", "auto", ""),
     ("Weigh the charge", "multi-doser + 0.1 mg balance, vacuum press, tray B (ch. 1)", "auto",
-     "the cups and plugs are machined by hand; a separate PR studies machining them"),
+     "in progress: machining the cups and plugs (a separate PR); by hand until then"),
     ("Coat the crucible (BN)", "scraped and sprayed by the arm in a fume hood (turnaround)", "auto", ""),
     ("Atomize", "rePowder: loaded, opened, rebuilt by two arms (ch. 2, turnaround)", "auto",
-     "the arm presses its keys until AMAZEMET opens an interface; booster swaps and argon cylinders"),
+     "by hand: booster swaps, argon cylinders; the arm presses the HMI until AMAZEMET opens an interface"),
     ("Recover and sieve", "explosion-proof vacuum (turnaround); sieving cell with wash (ch. 3)", "auto", ""),
-    ("Store", "753-jar store on trays N and O", "auto", "dry storage at about 25 % RH (DAL #131) not designed"),
+    ("Store", "753-jar store on trays N and O", "auto", "open: dry storage at about 25 % RH (DAL #131)"),
     ("Characterize the powder", "laser diffraction, XRD with its prep, XRF, SEM (ch. 4)", "auto",
-     "composition by ICP-MS: the new hood station (in the corrosion chapter), not yet in the route"),
-    ("Ship powder out", "packaging station: labels, seal, box", "auto", "the dangerous-goods call for each powder"),
+     "in progress: composition by ICP-MS, the new hood station (corrosion chapter)"),
+    ("Ship powder out", "packaging station: labels, seal, box", "auto", "by hand: the dangerous-goods call for each powder"),
     ("Print", "Aconity MIDI fed by the arm; depowdering box (ch. 3, 5)", "auto", ""),
     ("Cut parts off the plate", "wire EDM, bars caught in a comb (ch. 5)", "auto", ""),
-    ("Heat treat", "Nabertherm furnace, tray F (ch. 5)", "auto", "the schedule is still DAL's to set"),
-    ("Density (Archimedes)", "no station yet", "none", "a balance with a density kit"),
+    ("Heat treat", "Nabertherm furnace, tray F (ch. 5)", "auto", "open: the schedule, DAL's to set"),
+    ("Density (Archimedes)", "no station yet", "none", "open: a balance with a density kit"),
     ("Metallography", "EDM sections, hot mounting, PX500 with ready discs (ch. 6)", "auto",
-     "re-papering the discs"),
+     "by hand: re-papering the discs"),
     ("Mechanical testing", "tensile at 20 and 200 °C (ch. 5); Vickers, nanoindenter, PIP (ch. 7)", "auto",
-     "the nanoindenter's tip change"),
+     "by hand: the nanoindenter's tip change"),
     ("Corrosion", "CubXL and OT-2, tray A", "auto",
-     "impedance waits on the potentiostat; ICP-MS samples go out until the station is built"),
+     "in progress: impedance (a potentiostat requested); the ICP-MS station"),
     ("Long-term monitoring", "stream cameras only", "none",
-     "repeat imaging of stored samples (the OpenFlexure array was dropped)"),
+     "open: repeat imaging of stored samples (the OpenFlexure array was dropped)"),
     ("Records", "cameras on every powered tray and over each bay; MongoDB", "auto", ""),
 ]
+TAGS = {"by hand:": (170, 60, 30), "in progress:": (190, 120, 0), "open:": (110, 114, 120)}
 STATUS = {"auto": ("AUTOMATED HERE", (30, 120, 60)), "progress": ("IN PROGRESS", (190, 120, 0)),
           "none": ("NO STATION YET", (120, 124, 130)), "manual": ("BY HAND", (170, 60, 30))}
 
@@ -543,6 +544,33 @@ def _cell(d: ImageDraw.ImageDraw, xy, text: str, width: int, size: int, fill, ro
     d.text(xy, text, font=font(14, bold), fill=fill)
 
 
+def _tagged(d: ImageDraw.ImageDraw, xy, text: str, width: int, size: int, row_h: float):
+    """The last column: its tag ("by hand:", "in progress:", "open:") bold in its colour, then the text in ink; on two
+    lines, a little smaller, if one won't hold it."""
+    if not text:
+        d.text(xy, "-", font=font(size), fill=GREY)
+        return
+    tag = next((t for t in TAGS if text.startswith(t)), "")
+    rest = text[len(tag):].strip()
+    for sz in range(size, 13, -1):
+        fb, fr = font(sz, True), font(sz)
+        tw = d.textlength(tag + " ", font=fb) if tag else 0
+        if tw + d.textlength(rest, font=fr) <= width:
+            lines = [rest]
+        else:
+            lines = wrap(d, rest, fr, width - tw)
+            if len(lines) > 2 or sz > size - 2:
+                continue
+        gap = min(row_h / 2 - 1, sz * 1.12)
+        y0 = xy[1] - (4 if len(lines) > 1 else 0)
+        if tag:
+            d.text((xy[0], y0), tag, font=fb, fill=TAGS[tag])
+        for k, ln in enumerate(lines):
+            d.text((xy[0] + tw, y0 + k * gap), ln, font=fr, fill=INK)
+        return
+    d.text(xy, text, font=font(14), fill=INK)
+
+
 def dal_table(path: Path):
     """DAL's 17 steps as one table, 1920 x 951 (the still area at 1080p): the station each runs at in this design,
     whether it is automated here, and what still takes a person or is open."""
@@ -550,7 +578,7 @@ def dal_table(path: Path):
     im = Image.new("RGB", (W, H), (246, 247, 249))
     d = ImageDraw.Draw(im)
     fh = font(26, bold=True)
-    cols = [(40, "#"), (92, "DAL's step"), (450, "In this design"), (1125, "Status"), (1365, "Still by hand, or open")]
+    cols = [(40, "#"), (92, "DAL's step"), (450, "In this design"), (1125, "Status"), (1365, "By hand, in progress, or open")]
     y = 22
     d.text((40, y), "The alloy lab's 17 steps: what this design automates, and what still needs a person",
            font=font(36, True), fill=BLUE)
@@ -573,11 +601,11 @@ def dal_table(path: Path):
         tw = d.textlength(label, font=fc)
         d.rounded_rectangle((1125, yy + 4, 1125 + tw + 20, yy + 4 + 30), radius=7, fill=colour)
         d.text((1135, yy + 8), label, font=fc, fill="white")
-        _cell(d, (1365, yy + 6), left or "-", W - 40 - 1365, 20, (170, 60, 30) if left else GREY, row_h)
+        _tagged(d, (1365, yy + 6), left, W - 40 - 1365, 20, row_h)
     n_auto = sum(s == "auto" for _, _, s, _ in DAL_STEPS)
-    d.text((40, H - foot), f"{n_auto} of {len(DAL_STEPS)} steps automated in this design and shown in this video "
-           "(the chapter is in parentheses). All of it is a design, not yet built; notes/dal_workflow.md has the sources.",
-           font=font(20), fill=GREY)
+    d.text((40, H - foot), f"{n_auto} of {len(DAL_STEPS)} steps automated here and shown (the chapter in parentheses). "
+           "By hand: still a person's. In progress: being designed. Open: no design yet. A design, not yet built.",
+           font=font(19), fill=GREY)
     im.save(path, optimize=True)
 
 

@@ -100,7 +100,7 @@
   "chapter": "alloy1",
   "part": "dal_workflow_table.png",
   "offset": 0.5,
-  "text": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column lists what still takes a person.",
+  "text": "The alloy lab's seventeen steps, and what this design does with each: fifteen are automated and shown in this video, two have no station yet, and the last column says what is still by hand, in progress, or open.",
   "source": "longform.py DAL_STEPS (round 13: per step, automated, no station yet, or still a person's); notes/dal_workflow.md"
  },
  {
