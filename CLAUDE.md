@@ -730,3 +730,13 @@ same way as above, with the `ONSHAPE_ADMIN_*` values, and sign out at the end.
   administers other companies, such as a course company. Never change anything there.
 - On 2026-11-10 the company-wide share of the `vcl-shared` folder was set to edit without
   Delete, so only the owner can delete lab documents. Don't put Delete back unless Sterling asks.
+
+## Weekly safety review
+
+[`safety-review.yml`](.github/workflows/safety-review.yml) runs every Monday, reviews safety across
+all public `vertical-cloud-lab` repos and files a public `safety-review` issue assigned to Sterling.
+How it works and what it can't reach: [`docs/safety-review/README.md`](docs/safety-review/README.md).
+If you're asked to change what it looks for or how the report reads, edit
+[`docs/safety-review/PROMPT.md`](docs/safety-review/PROMPT.md); the workflow itself is a human
+commit. If you're pinged on a report issue, its findings are AI-written: verify against the linked
+threads before acting, and keep any follow-up within what Sterling asked for.

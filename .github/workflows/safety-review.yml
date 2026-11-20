@@ -1,0 +1,145 @@
+name: Weekly lab safety review
+
+# Once a week, Claude reviews lab safety across every public vertical-cloud-lab
+# repo and files the report as a byu-vcl issue labelled safety-review, assigned
+# to sgbaird. See docs/safety-review/README.md; the review's instructions are
+# docs/safety-review/PROMPT.md, which @claude runs can edit (this file they
+# can't).
+#
+# Three steps, two jobs:
+#
+#   collect   No model. safety_review_collect.py pulls every issue, PR, comment,
+#             review, commit and workflow run in the window, the standing
+#             safety backlog, text-only clones of the active repos, the last
+#             few reports and AirGradient data, so coverage doesn't depend on
+#             what the session thinks to look for.
+#   review    Claude reads the bundle and writes report.md. Its token is this
+#             job's GITHUB_TOKEN, read-only below, and its only secret is the
+#             Claude OAuth token: it reads public comments, so it gets nothing
+#             a prompt injection could misuse. No tailnet, no MQTT, no Pis.
+#   post      Fresh runner, no Claude. Defuses @mentions in the report and
+#             files it with the one write permission in this workflow.
+
+on:
+  schedule:
+    # Mondays 13:00 UTC: 06:00 MST / 07:00 MDT, so the report is waiting at
+    # the start of the week.
+    - cron: "0 13 * * 1"
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: Days to look back (the run also reaches back to the last report, up to 35 days)
+        default: "8"
+      post_issue:
+        description: File the report as an issue (off = run summary and artifact only)
+        type: boolean
+        default: true
+
+concurrency:
+  group: safety-review
+  cancel-in-progress: false
+
+env:
+  # "opus" is the CLI alias for the latest Opus.
+  SAFETY_MODEL: opus
+  SAFETY_EFFORT: max
+  SAFETY_ASSIGNEE: sgbaird
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BASH_DEFAULT_TIMEOUT_MS: "900000"
+      BASH_MAX_TIMEOUT_MS: "3600000"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Collect the week's activity and lab data
+        env:
+          # Only this step sees the AirGradient key; the session never does.
+          AIRGRADIENT_API_KEY: ${{ secrets.AIRGRADIENT_API_KEY }}
+          LOOKBACK_DAYS: ${{ inputs.lookback_days || '8' }}
+        run: |
+          python3 -I .github/scripts/safety_review_collect.py \
+            --out "$RUNNER_TEMP/safety-review" --lookback-days "$LOOKBACK_DAYS"
+          cat "$RUNNER_TEMP/safety-review/MANIFEST.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # The job's own read-only token, not the Claude app's write token.
+          github_token: ${{ github.token }}
+          prompt: |
+            This is the scheduled weekly lab safety review for the BYU Vertical Cloud Lab
+            (run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+
+            Your instructions are in docs/safety-review/PROMPT.md in this checkout. Read that file
+            first and follow it. The collected bundle is in ${{ runner.temp }}/safety-review
+            (start with MANIFEST.md). Write the finished report to
+            ${{ runner.temp }}/safety-review/report.md. A later job, not you, files it as an issue.
+          claude_args: |
+            --model ${{ env.SAFETY_MODEL }}
+            --effort ${{ env.SAFETY_EFFORT }}
+            --permission-mode bypassPermissions
+
+      - name: Check the report and show it in the run summary
+        run: |
+          report="$RUNNER_TEMP/safety-review/report.md"
+          if [[ ! -s "$report" ]]; then
+            echo "No report was written to $report" >&2
+            exit 1
+          fi
+          { echo; echo "---"; echo; cat "$report"; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the report
+        uses: actions/upload-artifact@v4
+        with:
+          name: safety-review
+          path: |
+            ${{ runner.temp }}/safety-review/report.md
+            ${{ runner.temp }}/safety-review/MANIFEST.md
+            ${{ runner.temp }}/safety-review/manifest.json
+            ${{ runner.temp }}/safety-review/index.md
+          retention-days: 90
+
+  post:
+    needs: review
+    if: ${{ github.event_name == 'schedule' || inputs.post_issue }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout the posting script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+
+      - name: Download the report
+        uses: actions/download-artifact@v4
+        with:
+          name: safety-review
+          path: ${{ runner.temp }}/safety-review
+
+      - name: File the report as an issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 -I .github/scripts/safety_review_post.py \
+            --report "$RUNNER_TEMP/safety-review/report.md" \
+            --manifest "$RUNNER_TEMP/safety-review/manifest.json" \
+            --assignee "$SAFETY_ASSIGNEE"
