@@ -1,0 +1,183 @@
+{
+  "source": "Amazon product pages (amazon.com/dp/<ASIN>/?th=1), fetched by headless Chromium on the CubOS Pi 5 (home IP) with fetch/run.sh and fetch/amz.js. The listings' images are not committed.",
+  "on_hand_note": "sgbaird, 2026-10-03: two of the M2.5 kits and one of the M2 kit (https://github.com/vertical-cloud-lab/byu-vcl/pull/234)",
+  "kits": [
+    {
+      "asin": "B0CKBWQSNY",
+      "url": "https://www.amazon.com/dp/B0CKBWQSNY/",
+      "retrieved_utc": "2026-10-03T03:49:50.129Z",
+      "title": "350PCS M2.5 Black Male Female Nylon Hex Spacer Standoff Screw Nut Set Assortment Kit (Black) for PCB Motherboard Circuit Board, Raspberry Pi and Hats",
+      "brand": "COMRUN",
+      "part_number": "SO350NYM25",
+      "upc": "644197406056",
+      "material": "Nylon",
+      "color": "Black",
+      "thread": "M2.5",
+      "pieces": 350,
+      "price_usd": 9.99,
+      "on_hand": 2,
+      "contents": [
+        {
+          "part": "male-female hex standoff, 6 mm body + 6 mm stud",
+          "label": "M2.5*6+6",
+          "qty": 25
+        },
+        {
+          "part": "male-female hex standoff, 10 mm body + 6 mm stud",
+          "label": "M2.5*10+6",
+          "qty": 25
+        },
+        {
+          "part": "male-female hex standoff, 15 mm body + 6 mm stud",
+          "label": "M2.5*15+6",
+          "qty": 25
+        },
+        {
+          "part": "male-female hex standoff, 20 mm body + 6 mm stud",
+          "label": "M2.5*20+6",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 6 mm",
+          "label": "M2.5*6",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 10 mm",
+          "label": "M2.5*10",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 15 mm",
+          "label": "M2.5*15",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 20 mm",
+          "label": "M2.5*20",
+          "qty": 25
+        },
+        {
+          "part": "washer",
+          "label": "Washer M2.5",
+          "qty": 40
+        },
+        {
+          "part": "hex nut",
+          "label": "Nuts M2.5",
+          "qty": 50
+        },
+        {
+          "part": "Phillips pan head screw, 6 mm",
+          "label": "PM M2.5*6",
+          "qty": 20
+        },
+        {
+          "part": "Phillips pan head screw, 8 mm",
+          "label": "PM M2.5*8",
+          "qty": 20
+        },
+        {
+          "part": "Phillips pan head screw, 12 mm",
+          "label": "PM M2.5*12",
+          "qty": 20
+        }
+      ],
+      "contents_from": "the listing's 'From the manufacturer' (A+) image; the text gives only the total of 350",
+      "used_in_this_mount": {
+        "camera -> deck": "4 x PM M2.5*12 + 4 x Nuts M2.5",
+        "Pi 5 -> deck": "4 x M2.5*6+6 standoffs + 4 x Nuts M2.5 (under the deck) + 4 x PM M2.5*6",
+        "total": {
+          "PM M2.5*12": 4,
+          "PM M2.5*6": 4,
+          "M2.5*6+6": 4,
+          "Nuts M2.5": 8
+        }
+      }
+    },
+    {
+      "asin": "B0BXT4FG1T",
+      "url": "https://www.amazon.com/dp/B0BXT4FG1T/",
+      "retrieved_utc": "2026-10-03T03:50:06.750Z",
+      "title": "350PCS M2 Black Male Female Nylon Hex Spacer Standoff Screw Nut Set Assortment Kit (Black) for PCB Motherboard Circuit Board",
+      "brand": "COMRUN",
+      "part_number": "SO350NYM2",
+      "upc": "644197405691",
+      "material": "Nylon",
+      "color": "Black",
+      "thread": "M2",
+      "pieces": 350,
+      "price_usd": 13.99,
+      "on_hand": 1,
+      "contents": [
+        {
+          "part": "male-female hex standoff, 6 mm body + 6 mm stud",
+          "label": "M2*6+6",
+          "qty": 25
+        },
+        {
+          "part": "male-female hex standoff, 10 mm body + 6 mm stud",
+          "label": "M2*10+6",
+          "qty": 25
+        },
+        {
+          "part": "male-female hex standoff, 15 mm body + 6 mm stud",
+          "label": "M2*15+6",
+          "qty": 25
+        },
+        {
+          "part": "male-female hex standoff, 20 mm body + 6 mm stud",
+          "label": "M2*20+6",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 6 mm",
+          "label": "M2*6",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 10 mm",
+          "label": "M2*10",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 15 mm",
+          "label": "M2*15",
+          "qty": 25
+        },
+        {
+          "part": "female-female hex standoff, 20 mm",
+          "label": "M2*20",
+          "qty": 25
+        },
+        {
+          "part": "washer",
+          "label": "Washer M2",
+          "qty": 40
+        },
+        {
+          "part": "hex nut",
+          "label": "Nuts M2",
+          "qty": 50
+        },
+        {
+          "part": "Phillips pan head screw, 6 mm",
+          "label": "PM M2*6",
+          "qty": 20
+        },
+        {
+          "part": "Phillips pan head screw, 8 mm",
+          "label": "PM M2*8",
+          "qty": 20
+        },
+        {
+          "part": "Phillips pan head screw, 12 mm",
+          "label": "PM M2*12",
+          "qty": 20
+        }
+      ],
+      "contents_from": "the listing's 'From the manufacturer' (A+) text",
+      "used_in_this_mount": null
+    }
+  ]
+}

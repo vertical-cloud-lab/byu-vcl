@@ -1,0 +1,6 @@
+cad/.cache/
+onshape/screenshots/
+onshape/last_run.json
+slice/build/
+__pycache__/
+hardware/mcmaster/*.step

@@ -1,0 +1,113 @@
+{
+ "still": "still_0358Z_lit.jpg",
+ "still_path": "camera/frames/2026-10-20/still_0358Z_lit.jpg",
+ "method": "rail centre lines (midpoints of their two dark edges), least-squares similarity to Opentrons' slot pitch",
+ "rails_used": [
+  {
+   "rail": "11|8",
+   "points": 13
+  },
+  {
+   "rail": "8|5",
+   "points": 15
+  },
+  {
+   "rail": "5|2",
+   "points": 15
+  },
+  {
+   "rail": "4|5",
+   "points": 12
+  },
+  {
+   "rail": "8|9",
+   "points": 14
+  }
+ ],
+ "fit": {
+  "A": 0.10529118894723148,
+  "B": 0.0025870769781494163,
+  "C": -222.93607715008656,
+  "F": 170.98784176562492,
+  "rms_mm": 0.06796957024653846,
+  "max_mm": 0.18041314564837307
+ },
+ "px_per_mm_at_deck": 9.495,
+ "field_at_deck_mm": [
+  427.2,
+  320.2
+ ],
+ "focal_mm": 9.15,
+ "focal_note": "pinhole model, pupil 621.7 mm above the deck (coverage.py); about +-2 %",
+ "rotation_deg": 1.41,
+ "axis_offset_mm": [
+  -5.5,
+  16.2
+ ],
+ "axis_offset_note": "where the picture's centre is on the deck, from the deck centre (midpoint of slots 5 and 8); +x right, +y back (seen from the door)",
+ "slots_in_view": {
+  "1": 0.62,
+  "2": 0.59,
+  "3": 0.56,
+  "4": 1.0,
+  "5": 1.0,
+  "6": 1.0,
+  "7": 1.0,
+  "8": 1.0,
+  "9": 1.0,
+  "10": 0.91,
+  "11": 0.96,
+  "12": 0.99
+ },
+ "target": {
+  "slot": 7,
+  "slot_centre_mm": [
+   64.0,
+   224.0
+  ],
+  "margin_mm": 5.0,
+  "field_at_plate_top_mm": [
+   137.76,
+   103.25
+  ],
+  "focal_mm": 27.72,
+  "plate_fills": [
+   0.927,
+   0.828
+  ]
+ },
+ "target_note": "looking straight down at the plate in slot 7, centred, with margin_mm of deck left and right of it at the plate's top (14.35 mm up)",
+ "axis_offset_from_target_mm": [
+  127.0,
+  -29.0
+ ],
+ "deck_span_mm": [
+  393.0,
+  357.5
+ ],
+ "to_do": {
+  "slide_mount_mm": {
+   "toward_door": -29.0,
+   "to_the_right": -127.0
+  },
+  "turn_mount_deg": {
+   "clockwise_seen_from_above": 1.41
+  },
+  "zoom": {
+   "zoom in": "from 9.15 to 27.72 mm"
+  }
+ },
+ "still_to_deck": [
+  [
+   9.491740529557632,
+   0.2332185974164742,
+   169.3590160079452
+  ],
+  [
+   0.2332185974164742,
+   -9.491740529557632,
+   3325.786232240933
+  ]
+ ],
+ "still_to_deck_note": "2 x 3 affine from deck mm (x right, y back, slot 1's front-left corner at 0,0) to still pixels"
+}

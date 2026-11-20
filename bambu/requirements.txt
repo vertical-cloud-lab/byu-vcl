@@ -1,0 +1,3 @@
+paho-mqtt>=2.0
+pillow
+cryptography

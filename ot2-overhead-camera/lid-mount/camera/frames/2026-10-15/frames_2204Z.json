@@ -1,0 +1,36 @@
+{
+  "camera": "HQ Camera (IMX477) + 8-50 mm zoom on the lid mount's Pi 5 (RPI_STREAM_CAM_HOSTNAME)",
+  "taken with": "rpicam-still -n -t 3000 --width 4056 --height 3040 --metadata (auto exposure)",
+  "OT-2 state": "no protocol run and no maintenance run; rail lights off, except 22:07:00-22:07:05 UTC (second frame) and 22:08:33-22:08:37 UTC (the OT-2's own camera picture), then back off",
+  "frames": [
+    {
+      "caption": "22:04 UTC · auto exposure · OT-2 rail lights off (room light only)",
+      "ExposureTime_us": 66654,
+      "AnalogueGain": 7.88,
+      "Lux": 4.62,
+      "ColourTemperature_K": 3653,
+      "FocusFoM": 370,
+      "mean_RGB_0_255": [60.7, 62.5, 61.4],
+      "corner_brightness_vs_centre": 0.20
+    },
+    {
+      "caption": "22:07 UTC · auto exposure · OT-2 rail lights on",
+      "ExposureTime_us": 32332,
+      "AnalogueGain": 2.0,
+      "Lux": 136.1,
+      "ColourTemperature_K": 4619,
+      "FocusFoM": 373,
+      "mean_RGB_0_255": [134.7, 134.8, 138.0],
+      "corner_brightness_vs_centre": 0.27
+    },
+    {
+      "caption": "22:08 UTC · the OT-2's own camera (POST /camera/picture, 640 x 480) · rail lights on, for the deck layout"
+    }
+  ],
+  "zoom estimate": {
+    "measured": "the dark labware at the top of the 22:07 frame spans 1130 px between its half-contrast edges, 0.279 of the 4056 px width",
+    "expected for a 127.76 mm labware footprint at deck level": {"8 mm": 1086, "10 mm": 1358, "12 mm": 1629},
+    "reading": "about 8 mm, i.e. at or near the wide end. The dark, round corners (20-27 % of the centre's brightness) agree: the base's aperture clears the whole view cone only from about 9 mm. Blur and the labware's height above the deck make this good to about a millimetre."
+  },
+  "reading": "The lens is no longer blocked (17:39-17:42 UTC frames): the rail lights raise Lux from 4.6 to 136 and labware shows. The image is badly out of focus. The zoom, focus and iris are manual rings, so the focus has to be set at the robot."
+}

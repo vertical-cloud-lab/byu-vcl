@@ -1,0 +1,120 @@
+{
+ "what": "Two printed C-CS spacer rings for the OT-2 lid camera (variant A, one notch: male thread 0.12 mm under basic per side, female 0.22 mm over; variant B, two notches: 0.22 / 0.32 mm), a stopgap copy of Amazon B09STVLLVY",
+ "result": "printed; Studio's Device page showed 100 % and no 'Printing' label at 2026-10-23T23:52:53Z; no HMS alert or error dialog appeared during the print",
+ "printer": {
+  "model": "Bambu Lab A1 mini",
+  "name_in_studio": "Thumbelina, the A1 Mini",
+  "nozzle": "0.4 mm standard",
+  "ams": "AMS lite: A1 dark-blue PLA, A3 black PLA (used), A4 PETG, A2 empty",
+  "mode": "Bambu cloud",
+  "lan": "not reachable from this run: claude-print.yml has no Tailscale step and no A1_MINI_IP / A1_MINI_ACCESS_CODE, so the checks and the watching were done on Studio's Device page"
+ },
+ "why_not_the_h2d": "asked for 'on the H2D (if available)'; at 22:59:43 UTC Studio's Device page showed the H2D paused at layer 75/1041 (11 %) of another job, doser_augers_x25_H2D, with HMS 0300-801E 'The extrusion motor is overloaded'. Nothing on it was clicked. The requester then wrote 'good to go on A1 mini'",
+ "route": "route 3 in bambu/README.md: Bambu Studio 02.08.02.61 GUI on the GitHub Actions runner's Xvfb display, logged in to the lab's Bambu account (password plus a bambu-totp authenticator code, in an approved @claude-print run), sent through Bambu's cloud",
+ "source": {
+  "models": [
+   "ot2-overhead-camera/lid-mount/exports/c_cs_spacer_A.stl",
+   "ot2-overhead-camera/lid-mount/exports/c_cs_spacer_B.stl"
+  ],
+  "generated_by": "ot2-overhead-camera/lid-mount/cad/c_cs_spacer.py at commit 1471b0f on claude/ot2-lid-camera-mount-20260925 (PR #234)",
+  "stl_md5": {
+   "A": "ebb84c694ffce75313e7f6a810b780ef",
+   "B": "6b41061bdba040deae3f2b09f269586a"
+  },
+  "size_mm": "30 x 30 x 9 each: 5.0 mm flange (female 1\"-32, 4.6 mm deep, then a 0.4 mm bridged roof to cut out) and a 4.0 mm male 1\"-32 end"
+ },
+ "presets": {
+  "machine": "Bambu Lab A1 mini 0.4 nozzle",
+  "process": "0.08mm High Quality @BBL A1M (modified as below)",
+  "filament": "Bambu PLA Basic @BBL A1M (GFA00), black",
+  "plate": "Textured PEI Plate"
+ },
+ "gui_changes_from_stock": {
+  "wall_loops": "2 -> 6, so both rings are all perimeters with no sparse infill",
+  "printer_preset": "Prepare page started on 'Bambu Lab A1'; Sync info set it to the connected A1 mini",
+  "filament": "AMS sync mapped filament 1 to A3 (black PLA Basic); 'Add unused AMS filaments' unticked",
+  "left_at_preset_values": "0.08 mm layers (0.2 mm first layer), outer walls 60 mm/s at 2000 mm/s2, seam aligned, classic wall generator, thin bridges, no supports, elephant-foot compensation 0, circle compensation off"
+ },
+ "slice_checks": {
+  "slicer_warnings": "none in Studio's viewport; slice_info.config stores only not_support_traditional_timelapse, which applies with timelapse on (it was off)",
+  "plate_gcode_md5": "348a56c46f01b24944c59cec1dddf898",
+  "start_gcode": "Bambu's A1 mini start G-code: M620 S0A filament load, M190 S65, G29 bed levelling",
+  "layers": "111: 0.2 mm first layer, then 0.08 mm; top at 9.00 mm. Bridge (the roof) at 4.68 mm, flange top surface at 5.00 mm, male thread 5.08-9.00 mm"
+ },
+ "send_options": {
+  "job_name": "c_cs_spacer_A",
+  "plate_type": "Textured PEI",
+  "ams_mapping": "filament 1 (PLA) -> A3, black Bambu PLA Basic",
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true
+ },
+ "sent_file": {
+  "path": "sent/c_cs_spacer_A1mini.3mf",
+  "provenance": "Studio's own upload copy, written to /tmp/bamboo_model/<session>/Metadata/.<pid>.0.3mf at the moment of Send; DesignerUserId (the lab's Bambu account ID) blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_1_gcode_md5": "348a56c46f01b24944c59cec1dddf898",
+  "same_gcode_as": [
+   "Studio's slice in /tmp/bamboo_model, copied at 23:10 UTC before Send"
+  ]
+ },
+ "estimates": {
+  "model_time": "31m47s (G-code header; Studio's panel said 30m15s)",
+  "total_time": "38m24s",
+  "filament_g": 3.59,
+  "filament_m": 1.18,
+  "layers": 111,
+  "max_z_mm": 9.0
+ },
+ "go": {
+  "by": "sgbaird",
+  "comments": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6376495292"
+  ],
+  "text": "'good to go on A1 mini' (23:04:56 UTC), then 'plate clear' (23:05:37 UTC)",
+  "asked_for": "plate empty, Textured PEI, room for the bed to travel back (boxes behind the printer), someone able to reach the printer; or 'wait' for the H2D",
+  "frame_shown": "20261023T230336Z_a1mini_camera_studio.jpg"
+ },
+ "request_comment": "the @claude-print comment of 2026-10-23T22:42:14Z on PR #234",
+ "thread_comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6376202869",
+ "timeline_utc": {
+  "request": "2026-10-23T22:42:14Z",
+  "run_started": "2026-10-23T22:43:27Z",
+  "recording_started": "2026-10-23T22:51:35Z",
+  "login": "2026-10-23T22:57:55Z to 22:58:47Z (cut from the video)",
+  "h2d_seen_paused": "2026-10-23T22:59:43Z",
+  "a1mini_idle": "2026-10-23T23:00:54Z",
+  "frame_posted_go_asked": "2026-10-23T23:04:25Z",
+  "go": "2026-10-23T23:05:37Z",
+  "sliced": "2026-10-23T23:08:29Z",
+  "fresh_check": "2026-10-23T23:10:06Z",
+  "send": "2026-10-23T23:10:45Z",
+  "layer 1": "2026-10-23T23:21:06Z",
+  "layer 2": "2026-10-23T23:21:17Z",
+  "layer 5": "2026-10-23T23:22:21Z",
+  "layer 10": "2026-10-23T23:23:29Z",
+  "layer 25": "2026-10-23T23:29:11Z",
+  "layer 50": "2026-10-23T23:38:39Z",
+  "layer 57": "2026-10-23T23:41:20Z",
+  "layer 58": "2026-10-23T23:42:46Z",
+  "layer 110": "2026-10-23T23:51:59Z",
+  "layer 111": "2026-10-23T23:52:10Z",
+  "finished": "2026-10-23T23:52:53Z"
+ },
+ "monitor": {
+  "how": "bambu/studio/watch_studio.py with WATCH_LAYOUT=a1mini BED_TARGET=65: an OCR of Studio's Device page every 10 s, a camera frame every 30 s",
+  "samples": 202,
+  "while_printing": 149,
+  "nozzle_c": [
+   219,
+   220
+  ],
+  "bed_c": [
+   65,
+   65
+  ],
+  "note": "OCR readings, so approximate; the bed's target often reads 165 or 64 for 65",
+  "gap": "no samples 23:43:29-23:48:04 UTC (layers 59-81): the watcher, run in the background, hit the session's 30 min limit for background commands and was restarted in the foreground. The recording ran throughout, and a Device-page screenshot at 23:47:54 showed layer 81, 219/220 C and 64/65 C",
+  "ended": "exit 20 at 23:53:57 on an OCR misread of the cooling bed (657 for 57 C); the print had finished at 23:52:53"
+ },
+ "recording": "recording/c_cs_spacer_A1mini_2026-10-23.mp4 (10.9 min; the login is cut and the camera pane's upper corners are blurred; not yet on YouTube: claude-print.yml has no YouTube token)"
+}

@@ -1,0 +1,24 @@
+[Unit]
+Description=Start picam device.py script
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=3600
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=@USER@
+Environment=HOME=@HOME@
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=@HOME@/ac-training-lab/src/ac_training_lab/picam
+ExecStart=@HOME@/ac-training-lab/src/ac_training_lab/picam/venv/bin/python3 @HOME@/ac-training-lab/src/ac_training_lab/picam/device.py
+# This Pi also runs CubOS and the OT-2 link; let them win when the CPU is busy.
+Nice=5
+Restart=always
+RestartSec=10
+TimeoutStartSec=60
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,179 @@
+{
+ "gcode": "new_plate.gcode",
+ "rings": {
+  "C": {
+   "object_id": 94,
+   "centre_xy": [
+    50.069,
+    69.999
+   ],
+   "notches_seen": 3,
+   "ring": "C",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.005,
+     0.001,
+     -0.004
+    ],
+    "worst_abs_mm": 0.013
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.007,
+     -0.001,
+     -0.003
+    ],
+    "worst_abs_mm": 0.071
+   }
+  },
+  "F": {
+   "object_id": 94,
+   "centre_xy": [
+    50.069,
+    109.999
+   ],
+   "notches_seen": 6,
+   "ring": "F",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.005,
+     -0.0,
+     -0.005
+    ],
+    "worst_abs_mm": 0.013
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.007,
+     -0.002,
+     -0.003
+    ],
+    "worst_abs_mm": 0.071
+   }
+  },
+  "D": {
+   "object_id": 94,
+   "centre_xy": [
+    90.069,
+    69.999
+   ],
+   "notches_seen": 4,
+   "ring": "D",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.006,
+     0.0,
+     -0.004
+    ],
+    "worst_abs_mm": 0.014
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.007,
+     -0.001,
+     -0.003
+    ],
+    "worst_abs_mm": 0.071
+   }
+  },
+  "G": {
+   "object_id": 94,
+   "centre_xy": [
+    90.069,
+    109.999
+   ],
+   "notches_seen": 7,
+   "ring": "G",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.005,
+     -0.0,
+     -0.004
+    ],
+    "worst_abs_mm": 0.014
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.007,
+     -0.002,
+     -0.003
+    ],
+    "worst_abs_mm": 0.07
+   }
+  },
+  "E": {
+   "object_id": 94,
+   "centre_xy": [
+    130.069,
+    69.999
+   ],
+   "notches_seen": 5,
+   "ring": "E",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.005,
+     -0.0,
+     -0.004
+    ],
+    "worst_abs_mm": 0.013
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.007,
+     -0.002,
+     -0.003
+    ],
+    "worst_abs_mm": 0.07
+   }
+  },
+  "H": {
+   "object_id": 94,
+   "centre_xy": [
+    130.069,
+    109.999
+   ],
+   "notches_seen": 8,
+   "ring": "H",
+   "end_bore_path_r": 11.259,
+   "end_bore_path_r_model": 11.26,
+   "female": {
+    "layers": 42,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.005,
+     -0.0,
+     -0.004
+    ],
+    "worst_abs_mm": 0.014
+   },
+   "male": {
+    "layers": 32,
+    "sliced_minus_model_mm_p5_p50_p95": [
+     -0.007,
+     -0.002,
+     -0.003
+    ],
+    "worst_abs_mm": 0.071
+   }
+  }
+ }
+}

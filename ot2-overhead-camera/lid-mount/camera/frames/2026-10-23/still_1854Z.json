@@ -1,0 +1,67 @@
+{
+ "what": "Lid camera stills after @timothy-commins backed the knurled back-focus ring all the way out (\"extended the adapter all the way\"), 2026-10-23",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234 (trigger comment, 2026-10-23 18:48 UTC)",
+ "stills": [
+  "still_1854Z_ring_all_the_way_out.jpg",
+  "still_1904Z_ring_all_the_way_out.jpg (after the Pi's scheduled 13:00 MDT reboot at 19:00:22 UTC; unchanged, mean |difference| 1.5 grey levels)"
+ ],
+ "saved_at": "half resolution (2028 x 1520); measured at full resolution",
+ "taken_utc": [
+  "2026-10-23T18:54:20Z",
+  "2026-10-23T19:04:29Z"
+ ],
+ "how": "ssh to the lid camera Pi over the tailnet, then curl -s localhost:8081/still (picam_source.py); the stream kept running",
+ "ot2": "rail lights already on (GET /robot/lights); no maintenance run and no current protocol run; nothing on the robot changed",
+ "metadata_1854": {
+  "ExposureTime": 66654,
+  "AnalogueGain": 15.52,
+  "Lux": 3.87,
+  "ColourTemperature": 4688,
+  "ScalerCrop": [
+   0,
+   0,
+   4056,
+   3040
+  ]
+ },
+ "focus_score": {
+  "centre": 7.6,
+  "best_2min": 7.8,
+  "note": "still at the exposure and gain limits (66.7 ms, gain 15.5-16), so the score is mostly noise; don't read focus from it"
+ },
+ "scale": {
+  "well_pitch_px": 348.1,
+  "px_per_mm": 38.68,
+  "field_mm": [
+   104.9,
+   78.6
+  ],
+  "same_at_2026_10_22_2147Z": {
+   "well_pitch_px": 261.0,
+   "px_per_mm": 29.01
+  },
+  "ratio": 1.333,
+  "method": "dark well centres (local minima), median nearest-neighbour spacing over ~280 links; 9 mm plate pitch",
+  "reading": "the picture is a third bigger: moving the lens further from the sensor magnifies it. With the 12.5-22.4 mm ring travel (9.9 mm), that puts the exit pupil about 30 mm in front of the sensor at 18:08, if the zoom wasn't touched"
+ },
+ "blur": {
+  "spot_rms_radius_px": {
+   "18:08": 137.4,
+   "18:54": 70.0,
+   "19:04": 69.0
+  },
+  "reading": "about half the blur of 18:08; the wells' rims and the gaps between wells now show, but it is not sharp (a sharp still would have a spot of a few px)"
+ },
+ "focus_side": {
+  "method": "focus_side.py: each paint-filled well fitted as a disc convolved with a triangular blur spot, apex up or down, or a round spot (focus_side.json)",
+  "18:08": "apex up in 4/4 wells, by 12-83 % in rms: the iris's upright shape, picture behind the sensor (calibration: ring fully in, focus at NEAR)",
+  "18:54_and_19:04": "apex down in 8/8 wells, but only by 0.2-6 % in rms: leaning towards the turned-over shape, picture in front of the sensor",
+  "plausibility": "If the spot had NOT turned over, halving it with a 9.9 mm move would leave about 10 mm still to add (delta2 = 9.9 / (137/70 - 1)), about 15 mm past the 17.53 mm C-mount flange distance; at 25-35 mm zoom that focuses 0.07-0.12 m away, not on a plate 0.6 m away, which a lens rated 0.2 m to infinity at 17.53 mm can't need. If it HAS turned over, the picture is about 9.9 / (1 + 137/70) = 3.3 mm in front of the sensor, and the right ring position is about 6.6 mm out from fully in: 1.6 mm past the C-mount distance, inside the 1.1-2.2 mm (f^2/(u-f)) that a 25-35 mm zoom needs for 0.6 m with focus at FAR. The thin-lens fit of the scale change agrees only with the turned-over reading and has the focus near FAR.",
+  "caveats": [
+   "the 9.9 mm assumes the ring went from fully in to fully out",
+   "the 18:08 and 18:54 spot sizes assume the iris and zoom weren't changed in between",
+   "the up/down margin today is small; the at-the-robot test in the README settles it"
+  ]
+ },
+ "advice": "Don't stack another spacer on the ring as it is now. Nudge the focus thumbscrew: sharper towards FAR (or blurrier towards NEAR) means the lens is too far from the sensor, so back the knurled ring in about 3 mm (deck-to-silver-rim gap about 22-23 mm by Tim's 16 mm reference), then refocus from FAR. A 5 mm C-CS ring is still worth having so the knurled ring can sit 1-2 mm out from fully in, mid-thread, instead of at the end of its travel."
+}
