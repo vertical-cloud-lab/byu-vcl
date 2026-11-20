@@ -6,6 +6,12 @@ comment posted here starts an ordinary @claude run in the target thread.
 
     python3 .github/scripts/dispatch_claude.py \
         --repo vertical-cloud-lab/byu-vcl --number 353 --body-file task.md
+    python3 .github/scripts/dispatch_claude.py \
+        --repo vertical-cloud-lab/byu-vcl --new-issue "Security cameras" --body-file task.md
+
+--new-issue opens a fresh issue as vcl-bot (pointing back to the parent, with
+no @claude in it) and posts the task there, so a child asked to open a new PR
+has a thread of its own. Both forms count toward the cap.
 
 Checks, before posting:
 - the body starts with "@claude" and contains no other workflow's tag
@@ -13,7 +19,7 @@ Checks, before posting:
   any of which would stop claude.yml from running it;
 - the target is a vertical-cloud-lab repo whose claude.yml lets vcl-bot in
   (skipped with a warning if that file can't be read);
-- this run has dispatched fewer than --max comments (default 6), counted in
+- this run has dispatched fewer than --max comments (default 10), counted in
   a file under $RUNNER_TEMP.
 
 Appends a footer linking back to the parent comment and run. Reads the token
@@ -40,9 +46,12 @@ def gh(args, token, stdin=None):
 def main():
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     p.add_argument("--repo", required=True, help="owner/name, e.g. vertical-cloud-lab/byu-vcl")
-    p.add_argument("--number", required=True, type=int, help="PR or issue number")
+    g = p.add_mutually_exclusive_group(required=True)
+    g.add_argument("--number", type=int, help="existing PR or issue number")
+    g.add_argument("--new-issue", metavar="TITLE",
+                   help="open a new issue with this title as the child's thread (e.g. for a new PR)")
     p.add_argument("--body-file", required=True, type=Path)
-    p.add_argument("--max", type=int, default=6, help="dispatch cap for this run")
+    p.add_argument("--max", type=int, default=10, help="dispatch cap for this run (= children running at once)")
     p.add_argument("--dry-run", action="store_true")
     a = p.parse_args()
 
@@ -82,15 +91,28 @@ def main():
     full = body + footer
 
     if a.dry_run:
-        print(f"[dry run] {a.repo}#{a.number}:\n{full}")
+        where = a.number if a.number else f"new issue '{a.new_issue}'"
+        print(f"[dry run] {a.repo} {where}:\n{full}")
         return
+
+    if a.new_issue:
+        # The issue body has no @claude, so opening it starts nothing; the task
+        # comment below is what starts the child.
+        intro = "Thread for a task handed off by a claude-super run"
+        intro += f" from [this comment]({parent})." if parent else "."
+        intro += " The task is in the first comment below."
+        r = gh(["api", "-X", "POST", f"repos/{a.repo}/issues", "-f", f"title={a.new_issue}",
+                "-F", "body=@-", "--jq", ".number"], token, stdin=intro)
+        if r.returncode != 0:
+            sys.exit(f"Creating the issue failed: {r.stderr.strip()}")
+        a.number = int(r.stdout.strip())
 
     r = gh(["api", "-X", "POST", f"repos/{a.repo}/issues/{a.number}/comments",
             "-F", "body=@-", "--jq", ".html_url"], token, stdin=full)
     if r.returncode != 0:
         sys.exit(f"Post failed: {r.stderr.strip()}")
     url = r.stdout.strip()
-    ledger.append({"repo": a.repo, "number": a.number, "url": url})
+    ledger.append({"repo": a.repo, "number": a.number, "url": url, "new_issue": bool(a.new_issue)})
     LEDGER.write_text(json.dumps(ledger, indent=2))
     print(f"Dispatched {len(ledger)}/{a.max}: {url}")
 
