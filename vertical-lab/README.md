@@ -9,6 +9,103 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Round 12: everything in one long-form, at 1080p, narrated, public (2026-11-20)
+
+Sterling on #318 (2026-11-20): "pull in the latest from everywhere and above and bring it altogether and create a fresh
+render of the entire full video, add a mild amount of non-cringe-AI narration, and upload that to YouTube as public
+... Probably 1080p at 30 fps, unless you need to drop to 720p".
+
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)](https://www.youtube.com/watch?v=G6_1FtXHmKI), public, 1:19:15, 55 chapters,
+1920 × 1080 at 30 fps, with a narration. [`longform.py`](longform.py) builds it; `out/longform.json` lists every part
+with its start, its source and whether it was scaled up from 720p; `out/longform_narration.srt` has the narration with
+its times.
+
+### What came in
+
+- **#353, the atomizer's turnaround, merged** (a fast-forward: it was stacked on this branch with nothing behind). Its
+  eight clips are a chapter of their own after chapter 2, in turnaround order, with its turnaround timeline.
+- **`main`, merged**: among the rest, the YouTube service's public default (#355) and the triggering comment's link in
+  every upload's description (#356).
+- **The coupling close-up and the UPS line-up** (2026-11-18) are in the services chapter, and every tray rendered this
+  round carries its own Vertiv unit and the CombiTac dock.
+- **#332's bottleneck ladder** is a chapter before the finale, and **#328's three build orientations** stay in chapter
+  5, both as figures at their pinned commits. #327's back-hinge sheet is out of the checks chapter: #353 turned the lid
+  to hinge on the left.
+
+### Rendering at 1080p: a 3× faster frame, and what still didn't fit
+
+- **The speed-up** (`scene.py`, frames bit-identical to before, checked on a clip's 268 frame hashes):
+  - A whole-lab frame at 1920 × 1080 took 2.2 s, and 1.4 s of that was `Scene.apply()`. pyvista's wrappers are
+    Python subclasses of the VTK classes, so every `actor.GetProperty()` made a new wrapper, and dropping it made VTK's
+    Python wrapping walk its whole map of about 2,600 "ghosts" (0.5 ms a call; py-spy put 96 % of `apply()` in
+    `vtkPythonUtil::RemoveObjectFromMap`).
+  - Each actor's property, mapper and mesh wrappers are now kept for the scene's life, and `apply()` sends VTK only
+    what changed. A frame now takes 0.79 s, of which `apply()` is 0.01 s. The collision checker's per-frame scan of
+    `GetMapper().GetInput()` gets the same saving.
+  - Resolution is nearly free on the software renderer: 0.74 s at 1920 × 1080 against 0.61 s at 640 × 360. The cost
+    is the 5.1 M triangles, half of them in about 50 over-tessellated parts.
+  - Two ideas that didn't pay: drawing the heaviest meshes decimated, by swapping mappers for the draw (5 % faster
+    once the wrappers were fixed, not worth the risk to the picture), and anti-aliasing (SSAA and FXAA cost the same).
+- **The frame rate.** Even so, a 1080p whole-lab frame costs about 2.5 CPU-seconds, and the 4-core runner draws about
+  1.4 frames a second. At a native 30 fps, the video's ~72 min of 3-D would have taken about a day. So the 3-D is
+  drawn at 10 fps (cubxl_corrosion, ded, fumehood, fumehood_tray, glovebox, glovebox_tray, hip, packaging, powder_store_feed, powder_store_lots, storage, stream_cam, tensile_h, vlm_coupling, vlm_services); 6 fps (alloy_characterize, alloy_charge, alloy_powder, alloy_prep, alloy_workflow, setup_lab), and encoded at 30 fps by repeating frames. The chapters move as they did in round 11 (6 fps); the short clips at 10 fps, against 15 before; everything rendered this round is sharper.
+- **Fresh at 1080p (21 clips):** `alloy_characterize`, `alloy_charge`, `alloy_powder`, `alloy_prep`, `alloy_workflow`, `cubxl_corrosion`, `ded`, `fumehood`, `fumehood_tray`, `glovebox`, `glovebox_tray`, `hip`, `packaging`, `powder_store_feed`, `powder_store_lots`, `setup_lab`, `storage`, `stream_cam`, `tensile_h`, `vlm_coupling`, `vlm_services`.
+- **Earlier renders from the same code, scaled up from 720p (20 clips):** `alloy_atomize`, `alloy_print`, `atom_bn`, `atom_cameras`, `atom_container`, `atom_crucible_in`, `atom_crucible_out`, `atom_latch`, `atom_plate`, `atom_vacuum`, `bay_camera`, `fabrication_tour`, `ot2_corrosion_prep`, `scaleup`, `timelapse`, `upkeep_clip`, `vacuum_press`, `vlm_cabling`, `vlm_hookups`, `vlm_workflow`.
+  - **The eight atomizer clips** were rendered the day before (#353) at 10 fps, from the code merged here, with no
+    trays in view. Re-rendering them at 6 fps would have cost an hour and made them choppier.
+  - **Chapter 2's** round-11 render already opens the lid about the left hinge that #353 settled on. The current code
+    would also draw the model's own latch, which #327 added and whose groups share chapter 2's latch's names, so that
+    latch is now left out of chapter 2's scene (`load_rp`). Chapter 2 keeps its own, the one its arm poses were
+    planned and audited against.
+  - **Chapter 3's** 1080p render was corrupted by a test of mine that wrote the same file while it rendered, so it is
+    round 11's. **The finale's** 1080p render wrote no frames: `timelapse.py` writes to the scene's own encoder, which
+    `VIZ3D_HD_CLEAN=0` turned off. **The OT-2 clip** stopped on a singular matrix at 10 fps. All three are their
+    earlier renders.
+  - **Out of render time:** the hookups, cabling, bay-camera, vacuum-press, 8:00, scale-up and maintenance clips and
+    the fabrication tour.
+- **Each fresh clip checked its own frames** while it rendered (`VIZ3D_AUDIT=1` for clips without an auditor of their
+  own, the strict round-11 rules), at the rate it is shown. The checks chapter ends on the table, and
+  `out/collisions/round12_summary.json` has the numbers: 22 clips audited as they rendered; 10 at 0 frames in collision (vlm_coupling, stream_cam, alloy_charge, alloy_workflow, alloy_characterize, tensile_h, glovebox, storage, powder_store_feed, powder_store_lots); with frames left: setup_lab 2 arm / 88 in all, vlm_services 0 arm / 10 in all, cubxl_corrosion 0 arm / 30 in all, alloy_print 2 arm / 2 in all, alloy_powder 14 arm / 30 in all, alloy_prep 1 arm / 56 in all, glovebox_tray 0 arm / 28 in all, fumehood 0 arm / 15 in all, fumehood_tray 0 arm / 4 in all, packaging 0 arm / 2 in all, ded 0 arm / 36 in all, hip 0 arm / 14 in all.
+
+### The narration
+
+- **54 lines, about 1,500 words**, roughly 9.3 min of speech in 1:19:15 (12 %), in
+  [`narration.json`](narration.json).
+  - Each line is anchored to a chapter's card, a still, or a clip's sub-step (by index, checked against the label),
+    and gives the file its facts come from.
+  - The tone is plain: what the picture doesn't say, what is real and what is assumed, a number where it matters.
+- **The voice** is Kokoro v1.0 (open weights, Apache 2.0), `af_heart` at speed 0.96, run on the runner with
+  `kokoro-onnx`. No cloud voice was used. Each line is levelled to −20 dBFS RMS with peaks under −1 dBFS, and placed so
+  no two overlap.
+- **Checked by ear, by machine:** faster-whisper (`base.en`) transcribed every line back, and the word error rate per
+  line is low. Most differences were numbers written as digits. Five lines were reworded where the voice misread an
+  abbreviation, then checked again: "Tray A" came out as "tray uh", "MiR" as "my R", "a UR10e" as "of you are",
+  "Stäubli" as "stably", and the rePowder maker's name was garbled.
+
+### Still open after round 12
+
+- **Not at 1080p (20 clips, 720p scaled up):** listed above. A follow-up run can render them with
+  `VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1` and rebuild with `python3 longform.py`. Each clip
+  falls back to out/mp4/ until its 1080p file and JSON are in out/hd/ and out/clean/. The finale needs
+  `VIZ3D_HD_CLEAN=1`.
+- **Collisions left in the video**, from the table:
+  - chapter 4: 30 frames, unchanged from round 11 (the XRD's door through camera D1's head at 25-50 mm, the zero-background
+    holder and the puck set down 3 and 12 mm deep, the forearm folding on the gripper);
+  - the atomizer clips from #353: the latch 123 frames, the container 18, the rebuild 16, the vacuum 11, the plate 2;
+  - chapter 3: 2 frames; chapter 6: 56, mostly its own work;
+  - the set-up movie: the two arms touch for 2 frames as they stretch, and the Mastersizer slides across tray E's new UPS
+    for 3;
+  - the scale-up's cart through the EOS's shut door;
+  - the instrument clips' own mechanisms, as "anything moving": the CubXL 30, the DED 36, the tray glovebox 28, the
+    fume hood 15.
+- **Burned-in titles:** some chapter clips still carry their old numbering in the title bar (chapter 1 says "the alloy
+  route 1/4"). The cards between them have the current numbering.
+- **Chapter 2's latch** sits where chapter 2 has always drawn it (the front-right face), 30° round from #353's model,
+  whose latch is on the right face. Chapter 2 still opens the lid about the left hinge, as #353 has it.
+- **The GIFs and stills in out/** are round 11's. This round wrote only 1080p video and audits.
+- **YouTube:** the new video is public and was uploaded without notifying subscribers. Rounds 7-11's long-forms
+  (unlisted) are superseded; a `@claude-youtube` run can remove them.
+
 ## The trays' UPSs: real units, sized tray by tray (`ups.py`)
 
 Sterling, PR #318, 2026-11-18: "identify real UPS's rather than what looks like a placeholder there, and we might

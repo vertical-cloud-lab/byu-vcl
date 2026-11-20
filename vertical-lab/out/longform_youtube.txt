@@ -1,53 +1,71 @@
-Everything on PR #318 of the BYU Vertical Cloud Lab, in one video: a Kardex Shuttle XP 500 vertical lift module holding the lab's equipment on electrified trays, a UR10e on a MiR250 at its opening, the alloy route from charge cups to a tensile bar, every instrument doing its job, maintenance booked into the workflow, and the alternatives. 3-D animation built from makers' published figures and photos; real footage is badged as such.
+A design study of an automated alloy lab at BYU's Vertical Cloud Lab, in one video: two Kardex Shuttle XP 500 vertical lift modules holding the instruments on powered trays, each tray with its own UPS and a Stäubli CombiTac coupling that docks in its slot and at the opening; two UR10e arms on MiR250 mobile bases; the alloy route from charge cups through atomizing, sieving, printing, cutting, heat treatment and tensile tests to sample prep and characterization; the atomizer's turnaround automated; maintenance booked into the schedule; and what it would take to go from one alloy a day to ten.
 
-Code, notes and sources: https://github.com/vertical-cloud-lab/byu-vcl/tree/c371877/vertical-lab
+It is a 3-D animation, not footage of a working lab: built from makers' published sizes and photos, with our own designs where nothing exists yet, and every arm move checked for collisions frame by frame. Real footage, photos and data are badged as such; everything else on screen is computed or illustrative. The narration is a synthetic voice (Kokoro, an open text-to-speech model).
+
+Code, notes and sources: https://github.com/vertical-cloud-lab/byu-vcl/tree/28c80fa/vertical-lab
 PR: https://github.com/vertical-cloud-lab/byu-vcl/pull/318
+
+20 of the clips are earlier 720p renders from the same code, scaled up; the rest were rendered at 1920 x 1080 for this video.
 
 Chapters
 0:00 A real VLM, then the plan
 0:23 The lab set up from scratch
-2:26 What goes on which tray
-2:40 Services: UPS, automatic hookups, cabling and cameras
-3:26 The docks in every slot
-4:03 The docks against the lift
-4:44 The stream camera unit: height, pan, tilt
-5:04 The camera over the bay, and what it sees
-5:36 Tray A: the corrosion station, OT-2 and CubXL
-6:41 The CubXL's corrosion screen
-8:03 Atomized powder dosed for the CubXL
-9:54 Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum
-10:13 DAL's 17 steps, and where each runs
-10:25 The charge cups
-14:40 Can the cup come closer to the exit?
-14:54 The vacuum press with its catch ring
-15:44 Alloy route 2/7: melt and atomize in the rePowder
-19:40 Alloy route 3/7: sieve and print
-24:56 Alloy route 4/7: the powder, checked
-28:46 Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature
-35:51 Three build orientations through the wire EDM (PR #328)
-36:05 Alloy route 6/7: sample prep: section, mount, grind and polish
-41:20 Alloy route 7/7: characterizing the build
-45:49 The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping
-46:03 A tensile tester on its side: zwickiLine Z5.0 TN
-46:21 A glovebox on a tray
-46:52 The floor glovebox
-47:34 The sample store: cups, plugs, vials
-48:05 The powder-jar store: feedstock and atomized lots
-48:48 Packaging
-49:17 Fabrication: metal printers, DED, resin and PCB assembly
-52:27 InssTek MX-Lab DED
-52:52 Scaling up: large-format printing and ship-part repair
-54:52 What doesn't fit, and getting a tray out
-55:16 Taller bays: Kardex and Modula
-55:30 How the models were checked
-55:45 Fitted to footage of the real machines
-56:01 The rePowder, refitted to the lab's videos (PR #327)
-56:19 MuJoCo interference check
-56:30 Arm collisions, checked and planned round
-56:51 Maintenance over the long term, inside the workflow
-59:05 A year of maintenance, booked
-59:19 The whole lab at speed: an hour, a day, a week, a month
+2:27 What goes on which tray
+2:41 Services: UPS, automatic hookups, cabling and cameras
+3:27 The coupling, part by part: Stäubli CombiTac on a floating dock
+4:33 The docks in every slot
+5:10 A real UPS for each tray
+5:22 The docks against the lift
+6:02 The stream camera unit: height, pan, tilt
+6:22 The camera over the bay, and what it sees
+6:54 Tray A: the corrosion station, OT-2 and CubXL
+8:00 The CubXL's corrosion screen
+9:22 Atomized powder dosed for the CubXL
+11:13 Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum
+11:33 DAL's 17 steps, and where each runs
+11:45 The charge cups
+15:59 Can the cup come closer to the exit?
+16:13 The vacuum press with its catch ring
+17:04 Alloy route 2/7: melt and atomize in the rePowder
+21:00 Automating the atomizer's turnaround
+22:51 The furnace latch, unclamped and clamped
+24:34 The powder down and the container off
+25:25 Vacuuming the chamber
+27:47 Swapping the plate
+30:17 Taking the furnace apart
+32:14 Cleaning the crucible and recoating it with boron nitride
+34:51 The rebuild, and the graphite nut from below
+37:17 The turnaround, timed
+37:29 Alloy route 3/7: sieve and print
+42:46 Alloy route 4/7: the powder, checked
+46:37 Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature
+53:44 Three build orientations through the wire EDM (PR #328)
+53:58 Alloy route 6/7: sample prep: section, mount, grind and polish
+59:13 Alloy route 7/7: characterizing the build
+1:03:43 The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping
+1:03:58 A tensile tester on its side: zwickiLine Z5.0 TN
+1:04:15 A glovebox on a tray
+1:04:46 The floor glovebox
+1:05:27 The sample store: cups, plugs, vials
+1:05:58 The powder-jar store: feedstock and atomized lots
+1:06:41 Packaging
+1:07:11 Fabrication: metal printers, DED, resin and PCB assembly
+1:10:21 InssTek MX-Lab DED
+1:10:46 Scaling up: large-format printing and ship-part repair
+1:12:47 What doesn't fit, and getting a tray out
+1:13:10 Taller bays: Kardex and Modula
+1:13:24 How the models were checked
+1:13:40 Fitted to footage of the real machines
+1:13:56 MuJoCo interference check
+1:14:07 Arm collisions, checked and planned round
+1:14:28 This video, checked frame by frame
+1:14:42 Maintenance over the long term, inside the workflow
+1:16:57 A year of maintenance, booked
+1:17:11 From one alloy a day to ten: the bottlenecks
+1:17:33 The whole lab at speed: an hour, a day, a week, a month
 
 The real VLM at the start: Sterling Baird, "Vertical Lift Module in operation - from the sample's perspective", https://www.youtube.com/watch?v=ck8QJhVqPiY . The atomizer footage in chapter 2 is the lab's own (DAL #159, #219).
 
 Assumed, not published: the docks, the fixtures and cells, the press's die, the camera mounts and several electrical ratings; each notes file in vertical-lab/notes says which numbers are which.
+
+Requested in https://github.com/vertical-cloud-lab/byu-vcl/pull/318#issuecomment-7030074368
