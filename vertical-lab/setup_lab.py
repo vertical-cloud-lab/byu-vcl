@@ -1129,6 +1129,14 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
     for nm, (mesh, col) in umesh.items():
         sc.add(f"util/{nm}", mesh, col, "util", specular=0.2)
         util[nm] = f"util/{nm}"
+    # the safety PR (Sterling, PR #318, 2026-11-20: "Class D fire extinguishers at each station"): the fixed Class D
+    # units at the powder stations (safety.PLACES: a B570 on a post with its CLASS D signs, the 680Rs, the Super D
+    # pails), with the utilities, so the set-up movie brings them in with them. VLAB_CLASS_D=0 leaves them out.
+    if os.environ.get("VLAB_CLASS_D", "1") != "0":
+        import safety
+        for nm, (mesh, col, spec) in safety.floor_meshes().items():
+            sc.add(f"util/{nm}", mesh, col, "util", specular=spec)
+            util[nm] = f"util/{nm}"
     L.apply_state()
     sc.apply()
     sc.add("footprints", footprints(sc, F), W.TAPE_W, "tape", specular=0.0, ambient=0.5)

@@ -524,7 +524,7 @@ def _bb(parts, M=None):
     return (lo[0], hi[0], lo[1], hi[1], lo[2], hi[2])
 
 
-def shot(parts, direction, size=(900, 1200), pad=0.62, look_z=0.45, va=30.0, name="safety_shot", extra=None):
+def shot(parts, direction, size=(1000, 1000), pad=0.95, look_z=0.47, va=30.0, name="safety_shot", extra=None):
     import tour
     from PIL import Image
     sc = _studio(name, size)
@@ -547,56 +547,66 @@ def sheet() -> str:
     from scene import font, T
     b = S.b570_parts()
     tiles = []
-    tiles.append((shot(b, (-0.55, -1.6, 0.35), pad=0.56), "Amerex B570, 30 lb Super D",
+    tiles.append((shot(b, (-0.55, -1.6, 0.35), pad=0.92), "Amerex B570, 30 lb Super D",
                   ["the lab's own Class D unit (DAL #126)", "35 x 13 x 8 in, 50 lb charged, 195 psig",
                    "soft-flow applicator, 3-6 ft, 24 s"]))
     import tour
     valve = {k: v for k, v in b.items()}
     from PIL import Image as _I
-    sc = _studio("safety_valve", (900, 1200))
+    sc = _studio("safety_valve", (1000, 1000))
     add_parts(sc, valve, "asset")
-    sc.cam = [(-260.0, -520.0, 820.0), (20.0, 0.0, 660.0), (0, 0, 1)]
+    sc.cam = [(-330.0, -640.0, 860.0), (20.0, 0.0, 690.0), (0, 0, 1)]
     sc.view_angle = 30.0
     tiles.append((_I.fromarray(sc.render_base()), "Its valve, close up",
                    ["chrome-plated brass, gauge in the green", "large-loop stainless pin, red tamper seal",
                     "squeeze lever over the carry handle"]))
     sc.pl.close()
     post = S.post_parts()
-    tiles.append((shot(post, (-0.9, -1.6, 0.5), pad=0.60, look_z=0.47), "On its post at a station",
+    tiles.append((shot(post, (-0.9, -1.6, 0.45), pad=0.98, look_z=0.5), "On its post at a station",
                   ["hung from its own hook: lever 826 mm,", "hose loop 1047 mm, bottom 140 mm (NFPA 10)",
                    "CLASS D sign at 60 in, flag at 80 in"]))
-    br = S.bracket811_parts(closed=0.0)
-    tiles.append((shot(br, (-0.7, -1.6, 0.7), pad=0.70, look_z=0.5), "Amerex 811 vehicle bracket",
+    br = S.bracket811_parts(closed=1.0)
+    tiles.append((shot(br, (-0.7, -1.6, 0.7), pad=1.05, look_z=0.5), "Amerex 811 vehicle bracket",
                   ["heavy duty, box type, for 30 lb Class D", "17.5 x 8.125 x 8.125 in, 9 lb, rubber-lined",
-                   "quick-release strap (shown open)"]))
+                   "quick-release strap with an over-centre latch"]))
     held = dict(S.bracket811_parts(closed=1.0))
     Mb = S.b570_in_811()
     for k, (m, mat) in b.items():
         held[k] = (m.transform(Mb, inplace=False), mat)
-    tiles.append((shot(held, (-0.8, -1.6, 0.45), pad=0.58), "A B570 in the 811",
-                  ["as it rides on each MiR250's back", "strap over the lower band, clear of the label",
+    tiles.append((shot(held, (1.3, 0.75, 0.5), pad=0.92), "A B570 in the 811, from behind",
+                  ["as it rides on each MiR250's aisle side", "strap over the lower band, clear of the label",
                    "standing on the foot plate"]))
-    tiles.append((shot(S.w680r_parts(), (-0.9, -1.5, 0.45), pad=0.62), "Amerex 680R, 150 lb wheeled",
+    tiles.append((shot(S.w680r_parts(), (-0.9, -1.5, 0.45), pad=0.98), "Amerex 680R, 150 lb wheeled",
                   ["Super D, argon-regulated to 125 psi", "36 in non-sparking wheels, 25 ft hose",
                    "at the rePowder and the EOS"]))
-    tiles.append((shot(S.pail_parts(), (-0.8, -1.6, 0.7), pad=0.75, look_z=0.45), "Super D, 50 lb pail",
+    tiles.append((shot(S.pail_parts(), (-0.8, -1.6, 0.7), pad=1.0, look_z=0.45), "Super D, 50 lb pail",
                   ["the same agent, with a scoop", "for a small spill or a hot spot", "at the rePowder and the MIDI"]))
-    W, H = 3600, 2460
+    import warehouse as W
+    sc = _studio("safety_sheet_mir", (1000, 1000))
+    W.Amr(sc, "amr", (0.0, 0.0, 0.0))
+    tour.contact_shadow(sc, (-400.0, 400.0, -500.0, 300.0, 0.0, 1300.0))
+    sc.cam = [(-1700.0, -2900.0, 1700.0), (0.0, -200.0, 720.0), (0, 0, 1)]
+    sc.view_angle = 30.0
+    tiles.append((_I.fromarray(sc.render_base()), "On each MiR250, always",
+                  ["in an 811 on the cabinet's aisle side", "200 mm out; turning circle 494 -> 496 mm",
+                   "payload 234.5 of 250 kg with it"]))
+    sc.pl.close()
+    W, H = 3600, 2280
     cols = 4
-    tw, th = W // cols, 1060
+    tw, th = W // cols, 880
     sheet = Image.new("RGB", (W, H), SURF)
     d = ImageDraw.Draw(sheet)
     d.text((40, 24), "Safety assets: Class D extinguishers, built part by part from Amerex's datasheets and the lab's "
                      "own B570", font=font(54, bold=True), fill=INK)
     for i, (img, title, lines) in enumerate(tiles):
         r, c = divmod(i, cols)
-        x, y = c * tw, 110 + r * (th + 120)
+        x, y = c * tw, 110 + r * (th + 190)
         im = img.copy()
         im.thumbnail((tw - 20, th - 20))
         sheet.paste(im, (x + (tw - im.size[0]) // 2, y))
-        d.text((x + 30, y + th - 20), title, font=font(36, bold=True), fill=INK)
+        d.text((x + 30, y + th + 4), title, font=font(36, bold=True), fill=INK)
         for j, t in enumerate(lines):
-            d.text((x + 30, y + th + 26 + j * 34), t, font=font(28), fill=INK2)
+            d.text((x + 30, y + th + 52 + j * 34), t, font=font(28), fill=INK2)
     # the last tile: the MiR250 view is its own figure (mir_figure); the plan is safety_plan.png
     path = OUT / "safety_assets.png"
     sheet.save(path, optimize=True)
@@ -612,7 +622,7 @@ def mir_figure() -> str:
     from scene import font
     rep = json.loads((OUT / "safety.json").read_text())
     shots = []
-    for direction, look in (((-1.5, -0.9, 0.55), (-250.0, -60.0, 650.0)), ((0.2, -1.6, 0.45), (-150.0, 0.0, 700.0))):
+    for direction, look in (((-0.9, -1.6, 0.55), (0.0, -250.0, 700.0)), ((0.15, -1.7, 0.35), (0.0, -330.0, 620.0))):
         sc = _studio("safety_mir", (1400, 1100))
         u = W.Amr(sc, "amr", (0.0, 0.0, 0.0))
         bb = (-600.0, 400.0, -300.0, 300.0, 0.0, 1500.0)
@@ -628,13 +638,13 @@ def mir_figure() -> str:
     W_, H_ = 2800, 1360
     img = Image.new("RGB", (W_, H_), SURF)
     dr = ImageDraw.Draw(img)
-    dr.text((40, 20), "A B570 rides on each MiR250: an 811 bracket on the cabinet's back end, under the arm",
+    dr.text((40, 20), "A B570 rides on each MiR250: an 811 bracket on the cabinet's aisle side, under the arm",
             font=font(48, bold=True), fill=INK)
     for i, s in enumerate(shots):
         img.paste(s, (i * 1400, 90))
-    lines = [f"Hangs {fp['behind_mm']:.0f} mm behind the MiR, between y {fp['side'][0]:.0f} and {fp['side'][1]:.0f} mm; "
-             f"turning circle {fp['r_turn']:.0f} mm (was {fp['r_turn_mir']:.0f}); its bottom {fp['bottom_mm']:.0f} mm "
-             f"up, above the rear scanner",
+    lines = [f"Sticks out {fp['beside_mm']:.0f} mm on the aisle side, along x {fp['along'][0]:.0f} to {fp['along'][1]:.0f} mm; "
+             f"its turning circle grows {fp['r_turn'] - fp['r_turn_mir']:.0f} mm ({fp['r_turn_mir']:.0f} -> {fp['r_turn']:.0f} mm); "
+             f"its bottom {fp['bottom_mm']:.0f} mm up, over the scanners' plane",
              f"Payload: {ld['payload_kg']['before']:.0f} kg before, {ld['payload_kg']['after']:.0f} kg with the unit "
              f"({ld['payload_kg']['with_held_part']:.0f} kg holding 12.5 kg) of the MiR250's {ld['payload_kg']['limit']:.0f}",
              "Restoring moment it adds about each edge, N m: " +

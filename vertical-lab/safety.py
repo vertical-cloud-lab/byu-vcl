@@ -309,8 +309,9 @@ def class_d_star(h=22.0, depth=0.6):
     return out
 
 
-def b570_parts(hose: bool = True) -> dict:
-    """{name: (PolyData, material)}: the Amerex B570, part by part, in its own frame (see B570)."""
+def b570_parts(hose: bool = True, lod: str = "full") -> dict:
+    """{name: (PolyData, material)}: the Amerex B570, part by part, in its own frame (see B570). lod "lab" leaves out
+    the label's small print (for whole-lab scenes, where it is a few pixels)."""
     import cadquery as cq
     pv = _pv()
     b = B570
@@ -414,6 +415,11 @@ def b570_parts(hose: bool = True) -> dict:
     rl = R + 0.25
     _add(p, "B570 label", _sector(rl, -78.0, 78.0, l0, l1, 0.35), "label")
     _add(p, "B570 label header", _sector(rl + 0.3, -78.0, 78.0, l1 - 11.0, l1 - 1.5, 0.2), "print")
+    if lod != "full":
+        for mesh, mat in class_d_star(22.0, 0.5):
+            _add(p, "B570 label star" if mat == "star" else "B570 label print", _on_cyl(mesh, rl + 0.45, 0.0, 372.0),
+                 mat)
+        return p
     hdr = _text("INSTRUCTIONS", 6.5, 0.25)
     w_ = hdr.bounds[1]
     _add(p, "B570 label print", _on_cyl(hdr, rl + 0.55, -w_ / 2, l1 - 9.6), "label")
@@ -522,13 +528,14 @@ def bracket811_parts(closed: float = 1.0) -> dict:
     keep = _sector_solid(rs - 1, rs + 3, 180.0 + a_end, 180.0 + a_end + sweep, z0, z1, (0, ya))
     strap = ring.intersect(keep)
     p["811 strap"] = (_mesh(strap), "bracket")
-    # the hinge (left) and the over-centre latch (right front) with its adjusting bolt
+    # the hinge on the left flange, and the over-centre latch at the strap's free end (on the right side when shut)
     ah = math.radians(180.0 + a_end)
     hx, hy = (rs + 4) * math.sin(ah), ya - (rs + 4) * math.cos(ah)
-    a_l = math.radians(35.0)
+    a_deg = 180.0 + a_end + sweep - 28.0
+    a_l = math.radians(a_deg)
     lx, ly = (rs + 9) * math.sin(a_l), ya - (rs + 9) * math.cos(a_l)
-    latch = _box(lx - 6.0, ly - 32.0, z0 - 3.0, lx + 6.0, ly + 32.0, z1 + 3.0)
-    latch = latch.rotate(_v(lx, ly, 0), _v(lx, ly, 1), 35.0)
+    latch = _box(lx - 6.0, ly - 30.0, z0 - 3.0, lx + 6.0, ly + 30.0, z1 + 3.0)
+    latch = latch.rotate(_v(lx, ly, 0), _v(lx, ly, 1), -a_deg)
     p["811 latch"] = (_mesh(latch.fuse(_cyl(5.0, z1 - z0 + 10, (hx, hy, z0 - 5)))), "chrome")
     return p
 
@@ -579,7 +586,8 @@ def w680r_parts() -> dict:
             off = 18.0 if k % 2 else -18.0                   # laced: alternate spokes to either flange
             a_ = np.array([sx * xw + off, yax + 40 * math.cos(a), zax + 40 * math.sin(a)])
             b_ = np.array([sx * xw, yax + (rw - 38.0) * math.cos(a), zax + (rw - 38.0) * math.sin(a)])
-            spokes.append(_tube([a_, (a_ + b_) / 2, b_], 4.5, 10))
+            spokes.append(_pv().Cylinder(center=(a_ + b_) / 2, direction=b_ - a_, radius=4.5,
+                                         height=float(np.linalg.norm(b_ - a_)), resolution=8).triangulate())
         _add(p, "680R wheels", _merge(spokes), "cd_yellow")
         _add(p, "680R hub caps", _mesh(_cyl(30.0, 12.0, (sx * (xw + 45.0), yax, zax), (sx, 0, 0))), "rubber")
     _add(p, "680R axle", _mesh(_cyl(16.0, 2 * xw, (-xw, yax, zax), (1, 0, 0))), "steel")
@@ -716,7 +724,7 @@ def sign_parts(kind: str = "flat") -> dict:
     return p
 
 
-def post_parts(with_unit: bool = True) -> dict:
+def post_parts(with_unit: bool = True, lod: str = "full") -> dict:
     """A floor-anchored post (ours, POST) with the Amerex hook and a B570 on its front (-y) face, the flat CLASS D sign
     above it at 60-70 in, the flag sign at 80 in sticking out to the side (+x), and a 36 x 36 in keep-clear square taped
     on the floor in front. Frame: the post's axis at the origin on the floor, its front face to -y."""
@@ -739,7 +747,7 @@ def post_parts(with_unit: bool = True) -> dict:
     for name, (mesh, mat) in hook_parts(10.0).items():
         _add(p, name, mesh.transform(M, inplace=False), mat)
     if with_unit:
-        for name, (mesh, mat) in b570_parts().items():
+        for name, (mesh, mat) in b570_parts(lod=lod).items():
             _add(p, name, mesh.transform(M, inplace=False), mat)
     for name, (mesh, mat) in sign_parts("flat").items():
         _add(p, name, mesh.translate((0.0, -s / 2 - SIGN["t"], 60 * IN - 0.0), inplace=False), mat)
@@ -900,6 +908,42 @@ HAZARDS = {
     "vlm": (0.0, -1650.0), "vlm2": (3630.0, -1650.0), "aconity": (6950.0, -1650.0), "packaging": (10050.0, -1700.0),
     "ded": (3900.0, -6150.0), "eos_m400": (-9450.0, -9650.0),
 }
+
+
+def floor_parts(lod: str = "lab") -> dict:
+    """{name: (PolyData, material)}, world: every fixed unit of PLACES where it stands (a post with its B570, signs and
+    keep-clear area; a 680R; a pail), turned to face the way PLACES says."""
+    from scene import T, R
+    out: dict = {}
+    built = {"b570": post_parts(True, lod), "680r": w680r_parts(), "pail": pail_parts()}
+    for station, kind, x, y, face, _ in PLACES:
+        M = T((x, y, 0.0)) @ R((0, 0, 1), 0.0 if face < 0 else 180.0)
+        for name, (mesh, mat) in built[kind].items():
+            _add(out, f"{kind} {name}", mesh.transform(M, inplace=False), mat)
+    return out
+
+
+def floor_meshes() -> dict:
+    """{name: (PolyData, rgb, specular)} for setup_lab.build: floor_parts merged by material, cached on safety.py."""
+    import hashlib
+    import pickle
+    cache = HERE / ".cache"
+    cache.mkdir(exist_ok=True)
+    h = hashlib.sha256((HERE / "safety.py").read_bytes()).hexdigest()[:16]
+    path = cache / f"safety_floor_{h}.pkl"
+    if path.exists():
+        return pickle.loads(path.read_bytes())
+    by: dict = {}
+    for name, (mesh, mat) in floor_parts().items():
+        by.setdefault(mat, []).append(mesh)
+    out = {}
+    for mat, ms in by.items():
+        m = _merge(ms).clean().triangulate()
+        if m.n_cells > 20000:                  # at lab scale: a quarter of the triangles (quadric decimation)
+            m = m.decimate(0.75).compute_normals(split_vertices=True, feature_angle=35.0)
+        out[f"class D {mat}"] = (m, colour(mat), MATS[mat][4])
+    path.write_bytes(pickle.dumps(out))
+    return out
 
 
 if __name__ == "__main__":
