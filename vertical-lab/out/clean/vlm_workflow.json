@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/6",
-   "caption": "An example run in the lab as set up: two Kardex Shuttles with every tray loaded (A-O), the floor machines, one MiR250 + UR10e docked at Shuttle 1's opening and the other on its charger. The multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide).",
+   "caption": "An example run in the lab as set up: two Kardex Shuttles with every tray loaded (A-S), the floor machines, one MiR250 + UR10e docked at Shuttle 1's opening and the other on its charger. The multi-doser doses 25 mg of an atomized powder and the CubXL adds electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; the metal it gives up tracks its oxide).",
    "start_frame": 0,
    "end_frame": 47
   },

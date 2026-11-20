@@ -104,9 +104,11 @@ Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), th
 
   | Clip | Length | Frames in collision (arm; movers; all) | Round 13 | Files |
   |---|---|---|---|---|
-  | Chapter 1, `alloy_charge.py` | 4:41 (3,371 frames) | **0 of 2,732**; 0; 0 | 0 of 2,147 | [1080p](out/hd/alloy_charge.mp4), [720p](out/mp4/alloy_charge.mp4), [GIF](out/alloy_charge.gif), [audit](out/collisions/alloy_charge.json) |
+  | Chapter 1, `alloy_charge.py` | 5:10 (3,723 frames) | **0 of 2,732**; 0; 0 | 0 of 2,147 | [1080p](out/hd/alloy_charge.mp4), [720p](out/mp4/alloy_charge.mp4), [GIF](out/alloy_charge.gif), [audit](out/collisions/alloy_charge.json) |
   | 9:22, `animate.py workflow` | 1:48 (1,300 frames) | **0 of 1,144**; 0; 0 | 5 (the vial in Ben's holder) | [1080p](out/hd/vlm_workflow.mp4), [720p](out/mp4/vlm_workflow.mp4), [GIF](out/vlm_workflow.gif), [audit](out/collisions/vlm_workflow.json) |
 
+  The 9:22 clip is drawn in the whole lab as run A left it at `51a72c1` (the 9150 mm Shuttles, trays A-S, the bay's
+  roof, the coupling's vacuum line), its opening and closing views `setup_lab.ORBIT`'s last as A moved it.
   The 9:22 clip's last frames in collision were the vial going into Ben's tight-fit 9-vial holder on the CubXL (round
   11: "a grip by design"). That seat is now drawn with its PETG lips flexed open: the holder is clipped to the vial's
   own cylinder, 1 mm round it, at that seat only.
