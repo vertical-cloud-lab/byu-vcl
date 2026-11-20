@@ -90,7 +90,7 @@ a person, with the reason.
 | Sealing rod: tip clean; stood on the nozzle; lever down; safety pin; SEALING ROD | arm 1 | Same clip, and chapter 2 |
 | Splash disc in the container's flange; container clamped with its valve open; catch bowl in | **arms 1 and 2** | [`atom_latch_container.md`](atom_latch_container.md), clip `atom_container` |
 | Charge cleaned and weighed (250-300 g Al) | arm 1 | Chapter 1 makes the charge cups; chapter 2 loads them with the tong |
-| Furnace seal wiped with IPA; **lid closed; latch adjusted until nothing hisses** | **arms 1 and 2** | Clip `atom_latch` |
+| Furnace seal wiped with IPA; **lid closed; latch adjusted until nothing hisses** | **arms 1 and 2** | Clip `atom_latch`, and chapter 2 with the same moves (`atom_latch.Work`): arm 2 the lid by its knob, arm 1 the loop and the lever; since round 14 no arm presses on the lid |
 
 ### The run (DAL SOP "Atomizer Trial", "End of run")
 
@@ -101,6 +101,17 @@ machine's (by interface, or the arm pressing keys). What needs eyes is the pour:
 still watches the first runs. The O₂ reading (the low 20s ppm ideal, above 29 ppm wash again) and the generator's
 display (a trip freezes the nozzle, Nov 5) are read off the HMI and the generator: an interface, or a camera on each
 (DAL issue 151's comment: "a camera positioned above the HMI is probably the quickest way").
+
+**Steering the plate during the pour (round 14, ours; chapter 2).** Sterling (PR #318, 2026-11-20): "we can probably
+have the two arms working together to adjust the position of the plate in real-time during the several minutes of
+atomization". A two-axis landing stage between the chamber's door and the stack's housing, sealed by an edge-welded
+bellows, moves the stack under argon: one axis slides it along its axis (the stream lands nearer to or further from the
+plate's hole; the lab sets it at 75 mm, #261), the other moves it across, under the stream. Each is a lead screw, 8 mm a
+turn, with a braked hex knob on top; arm 2 (left of the door) holds one knob and arm 1 (front left) the other through
+the pour. The melt-stream cameras above give the landing along and across the plate in mm, and the cell turns a knob
+an eighth or a quarter of a turn when it is more than 1 mm off. To check with AMAZEMET: the stack's seal at the door,
+the transducer's cable and cooling air, and whether the plate may move while it vibrates. Details in
+[`alloy_atomize.md`](alloy_atomize.md#steering-the-plate-in-the-pour-ours).
 
 ### Cooldown and shut-down (DAL SOP "Cooldown and Shut Down")
 

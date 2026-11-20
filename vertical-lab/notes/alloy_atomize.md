@@ -1,12 +1,15 @@
 ## The alloy route, chapter 2: atomize (`alloy_atomize.py`)
 
 MiR250 1 brings the four charged 5N Al cups from the VLM to the rePowder, and MiR250 2 comes from the aisle for the
-lid (round 9). Arm 2 holds the lid down while arm 1 undoes the latch; arm 1 opens the lid, swings the sealing rod's lever
-up, loads the cups round the rod, lowers the lever and shuts the lid; arm 2 holds it down again while arm 1 closes the
-latch. The machine, cut open at the furnace axis, washes, melts and atomizes the
-charge. Arm 1 then takes the powder container off onto its MiR. Clips and photos of the lab's own runs are cut in
-where the animation reaches the same moment: the charge, the melt, the pour onto the plate and the powder as it comes out,
-not yet sieved (the sieved jars are chapter 3's since round 8).
+lid (round 9). Round 14: arm 1, from the furnace's right, undoes the model's latch the way the latch clip does
+(`atom_latch.Work`): the lever out over centre, then the unlatching proper, the loop lifted off the keeper's hook and
+let fall over the folded lever. Arm 2 swings the lid up and over to the left by its knob. Arm 1 swings the sealing rod's
+lever up, loads the cups round the rod with the loading tong, lowers the lever. Arm 2 shuts the lid, and arm 1 hooks the
+loop on and closes the lever over centre; nobody presses on the lid. The machine, cut open at the furnace axis, washes,
+melts and atomizes the charge, and during the pour the two arms steer the plate through a landing stage on the door
+(ours). Arm 1 then takes the powder container off onto its MiR. Clips and photos of the lab's own runs are cut in where
+the animation reaches the same moment: the charge, the melt, the pour onto the plate and the powder as it comes out, not
+yet sieved (the sieved jars are chapter 3's since round 8).
 
 | | |
 |---|---|
@@ -24,6 +27,60 @@ python3 alloy_atomize.py splice             # only cut the footage into the last
 python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /tmp/footage (FOOTAGE=...) to out/footage/
 python3 alloy_atomize.py powder             # print the powder sums
 ```
+
+### Round 14 (PR #318, 2026-11-20): the model's latch, the tong explained, the plate steered
+
+Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), and what changed:
+
+| Time | Note | Now |
+| --- | --- | --- |
+| 17:28 | "holding the lid down while working the latch seems unnecessary? It's also still missing the typical 'unlatching' step" | The chapter's own round-6 latch (front right, `LATCH_AZ` -30 deg, one lever pulled out and down by a tab, the loop never unhooked) is gone. The chapter now works the model's latch on the housing's right face, where #353's turned lid assembly put it, with the latch clip's moves (`atom_latch.Work`). Opening: the bolt is back (at atmosphere); the lever goes out over centre and back onto the slack loop; then the unlatching, the loop taken by its legs, lifted off the keeper's hook and let fall over the folded lever; then the lid. Closing is the reverse: lid down, loop hooked on, lever down over centre, the bolt in at the first pump-down. No arm presses on the lid: opened at atmosphere nothing pushes it up, a ~10 kg lid on its O-ring doesn't jump, and closing, the latch's over-centre draw (0.6 mm at dead centre) squeezes the seal; the leak check at -850 mbar is what says it seals. The operator's palm in T4 5:17-5:24 is a person steadying the lid with a free hand. |
+| 17:28 | round 13: the cup loading went through the turned lid (143 frames) | MiR250 1 now stands right of the furnace (`atom_latch.A_AT`, model (650, -560)) for the latch and the cups; the lid opens to the left, away from it. MiR250 2 stands at the front left (`atom_latch.B_AT`) for the knob |
+| 18:06 | "I'm confused how the loading tong is designed and how it works" | Redesigned and shown: two flat spring-steel bars (6 x 3.4 mm) slide past each other; each carries a jaw at the bottom and a handle half at the top, and each handle half is pinned to one of the 2F-85's fingertips, so each jaw moves with its finger. A spring-steel flexure joins the halves at the top (the jaws stand open when the tong is left alone), and two collars keep the bars together. A picture of it taken apart, and magnified on the cup, is on screen while the arm picks it up and while cup 1 is gripped and let go; cup 1 goes down a cut-open bore, the jaws opening on the floor cone. Ours, not built |
+| 19:21 | "we're working on automating the other aspects of the atomizer. This should be replaced with the latest we have there" | The "Still by hand: building this stack" aside, and its nut turning by itself, are gone: the caption says the two arms build the stack in the turnaround (#353's rebuild: the crucible held from above, the graphite nut threaded on from below with a socket key), with the rebuild clip's picture beside the cut-open stack |
+| 21:12 | the new atomizer renders are missing elsewhere | Chapter 2 now draws DAL PR 189's three viewport camera units and their displays (`atom_cams.add_units`, as the turnaround's camera clip has them), the top one's arm parked for loading. It stays parked through this chapter: the camera clip shows it swung back over the lid's window |
+| (new) | "both arms adjust the plate's position in real time during the pour" | Designed and shown: a landing stage, below |
+
+#### Steering the plate in the pour (ours)
+
+The lab sets where the stream lands once, before the run: the stack is slid in its housing until the stream lands 75 mm
+from the plate's hole, 7 mm clear of the upper sonotrode (`repowder/model.py` `SETUPS["measured"]`, #261; the stream
+can land 68-108 mm from the hole), and the plate is only 20.8 mm wide. In a pour the landing drifts: the nozzle wears,
+its bore can part-block (a generator trip froze it on Nov 5) and bend the stream, and the plate erodes where the stream
+lands.
+
+- **The stage** (`stage_meshes`): two axes between the chamber's door and the stack's housing, its base on the end of
+  the door's port boss (76 mm out along the stack's axis), its carriage short of the stack's cover (147 mm out); an
+  edge-welded bellows (9 convolutions, 84-110 mm across) seals it, so the stack moves under argon without opening
+  anything.
+  - **u, along the stack's axis, about ±10 mm:** slides the stack in or out. The plate's face is square to the axis and
+    the stream vertical, so sliding it in by u brings the landing u mm nearer the hole (`landing_of`, after
+    `model.py landing()`).
+  - **v, across (along y), about ±6 mm:** moves the plate sideways under the stream, which stays where it is.
+  - Each axis is a lead screw, 8 mm a turn, ending in a hex knob, 32 mm across the flats, that the 2F-85 holds on two
+    flats and turns with its wrist; a wrap-spring brake holds the screw when the knob is let go. The coarse lead keeps
+    every correction under half a turn of the wrist (a 2 mm lead needed 1.5 turns, past what the arm can follow without
+    letting go and regrasping). The u screw comes out through a right-angle gearbox, its knob facing left.
+- **The arms:** MiR250 2 stands left of the door (model (-950, -40), facing the door), its arm on the u knob; MiR250 1
+  at the front left (model (-500, -760)), its arm on the v knob. Both hold on through the pour; arm 1's hand also
+  rides the carriage when u changes.
+- **The sensing:** DAL PR 189's two cameras on the plate, the door's sight glass (from the side) and the front view
+  port. The stream is the brightest thing in either picture; the plate's edges and hole are found in the first frames
+  of the pour, and the plate's own 119.6 x 20.8 mm gives the scale. The two views give the landing along and across
+  the plate in mm. The cell acts when it is more than 1 mm off target, so the arms turn a knob an eighth or a quarter of a turn
+  now and then.
+- **On screen:** the landing drifts 1.4 mm along and 1.2 mm across, then 3 and 2.4 mm. Arm 2 turns the u knob an eighth
+  of a turn, then a quarter; arm 1 the v knob an eighth, then three sixteenths. The corner shows a schematic of what the
+  cameras measure (`steer_picture`: the plate face on, the target, the landing and its trail, each arm's turns). The
+  drift is illustrative; the stage's movements are a millimetre or two, too small to see in the 3-D view.
+- **To check with AMAZEMET:** whether the stack's seal at the door, the transducer's cable and its cooling air allow a
+  moving housing; whether the plate may move while it vibrates; the bellows' spring force and the argon's push on it
+  (at +150 mbar on a ~70 cm2 bellows, about 100 N, which the screws take, not the arms). A motorised stage would do the
+  same without the arms; the arms keep motors and their feedthroughs off AMAZEMET's door.
+
+#### Checked
+
+ROUND14_AUDIT
 
 ### Round 11 (PR #318, 2026-11-14): the stricter collision audit
 

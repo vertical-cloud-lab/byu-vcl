@@ -232,6 +232,26 @@ arm in collision, 0 mover frames (out/collisions/atom_latch_r13fix.json; the rou
   (meant for chapter 2, which draws its own), so the atomizer clips had no latch base, hold-down foot or bolt, and a
   lever and loop on no parent. load_rp now leaves them out for chapter 2 only (`own_latch=True`).
 
+## Round 14 (2026-11-20): no arm on the lid; chapter 2 uses the same moves
+
+Sterling (PR #318, 2026-11-20, of chapter 2 at 17:28): "holding the lid down while working the latch seems unnecessary?
+It's also still missing the typical 'unlatching' step that has to happen before pulling the latch down."
+
+- **No press.** Arm 2 no longer holds the lid down, opening or closing (steps 3/9 and the press before 9/9 are gone;
+  `ATOM_LATCH_PRESS=1` brings them back). The furnace is only opened at atmosphere (the bolt goes back only then), so
+  nothing pushes the lid up when the loop comes off, and a ~10 kg lid sitting on its O-ring has no stored pressure to
+  let go. Closing, the latch's own over-centre draw squeezes the seal (0.6 mm at dead centre, about 100 N at the lever);
+  the lid's weight keeps it on the O-ring while the loop is hooked on, and the leak check at -850 mbar is what says it
+  seals. The palm on the lid in T4 5:17-5:24 is a person steadying it with a free hand.
+- **The unlatching is its own step**, as it was already here: after the lever goes over centre, the loop is lifted off
+  the keeper's hook and let fall over the folded lever. Chapter 2 had neither: its own round-6 latch went out and down
+  in one move with the loop never unhooked. Chapter 2 now calls the same code, `atom_latch.Work` (vent, unclamp,
+  open_lid, close_lid, clamp, pump), on the model's latch, so the two can't drift apart.
+- **Audit, 15 fps, strict:** 0 of 1123 frames with an arm in collision, 0 mover frames
+  (`out/collisions/atom_latch.json`). Re-rendered at 1080p, 15 fps (93 s, its inline audit 0).
+- **The margins** (`out/atom/atom_latch_stability.json`): with the lid's 58 N on its knob MiR250 2 would tip at
+  1546 N; MiR250 1 on the lever at 783 N (pulling) and 690 N (pushing), slides at 952 N.
+
 ## Audit results and what is still wrong (2026-11-19, the rendered scripts)
 
 - **atom_latch** (the turned lid, one-armed latch; final pass 02:31, render and audit together at 10 fps, 103.1 s, 1031
