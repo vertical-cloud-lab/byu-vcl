@@ -29,8 +29,8 @@ diagonal), each with **its own Raspberry Pi 5**. That is what robot-arms PR 40 c
 | | Where | Lens | Aim | What it sees |
 |---|---|---|---|---|
 | **M**, the mast | a 2040 extrusion, 1.36 m, clamped to the cabinet's left end at the base's back-left corner; a printed box on top (68 wide, 96 tall, 46 deep) holds the camera and its Pi 5 | 1.75 m up (top 1.80 m), at (−336, −201) | forward, 36° down, at (80, 850, 950) | over the arm's shoulder: the whole arm, the station in front of it, and what the gripper holds |
-| **L**, left end | a 285 mm 2020 post clamped to the cabinet's left end, 95 mm behind its middle; on its top, PR 40's camera case (49 × 29.5 × 8.6 mm) on a wedge. Its Pi 5 is on the cabinet's end, 30 mm under the top, on a 300 mm cable | 0.88 m up, at (−370, −89) | forward, 7° in and 8° up, at (−250, 800, 1000) | the station's face and the arm's work from low on the left, and the aisle on that side |
-| **R**, right end | the same on the right end, 60 mm behind its middle | 0.88 m up, at (370, −54) | forward, 8° in and 8° up, at (250, 800, 1000) | the same from the right |
+| **L**, left end | a 285 mm 2020 post clamped to the cabinet's left end, 60 mm behind its middle; on its top, PR 40's camera case (49 × 29.5 × 8.6 mm) on a wedge. Its Pi 5 is on the cabinet's end, 30 mm under the top, on a 300 mm cable | 0.88 m up, at (−370, −54) | forward, 8° in and 8° up, at (−250, 800, 1000) | the station's face and the arm's work from low on the left, and the aisle on that side |
+| **R**, right end | the same on the right end | 0.88 m up, at (370, −54) | forward, 8° in and 8° up, at (250, 800, 1000) | the same from the right |
 
 MiR frame, mm: origin on the floor at the middle of the base, x along it (800 mm), y across it (580 mm). +y is the side
 the arm faces and works on. The arm's base is at (0, 130), on the cabinet's top plate at 800 mm.
@@ -40,13 +40,18 @@ the arm faces and works on. The arm's base is at (0, 130), on the cabinet's top 
 - **1.8 m is the top.** The MiR250's two RealSense D435 cameras see obstacles up to 1800 mm high, 1.2 m in front of the
   base (MiR's spec sheet). Nothing on the base should be taller than what the base can see in its path. The folded
   arm stands 1.49 m. A standard 2.03 m (6 ft 8 in) door clears it.
-- **The side pair** is 0.74 m apart. It sees the work in front of the arm from 50-60° apart: 51° at 0.75 m in front of
-  the base, 58° at 0.65 m. PR 40's pair is 70° apart. Its twin found the error grows about as 1/sin of the angle, so
+- **The side pair** is 0.74 m apart. It sees the work in front of the arm from 50-60° apart: 52° at 0.75 m in front of
+  the base, 59° at 0.65 m. PR 40's pair is 70° apart. Its twin found the error grows about as 1/sin of the angle, so
   this pair should measure 10-20 % worse at the same range. Spots further forward would widen the angle, but they are
   where the arms pass far more often (below).
-- **The left camera stands 35 mm further back than the right one.** Chapter 2 hangs its loading tong in a sleeve on
-  the cabinet's left end at y = 0 (`alloy_atomize.TONG_AT`), and the open 2F-85 reaches 50 mm either side of it. The
-  first pass of audits with the cameras found the fingers in the left camera's case at y = −60.
+- **On the left end there is no gap wide enough for a camera at this height.** Two of the clips' fixtures are there:
+  - chapter 2's loading tong, which hangs in a sleeve on the cabinet's left end at y = 0 (`alloy_atomize.TONG_AT`);
+  - the vial holder at (−300, −150) on the cabinet top (`animate.BUFFER_LOCAL`), which chapters 1-3 and others use.
+
+  Taking them, the open 2F-85 reaches over the end to y = −70 and to y = −80, between 0.83 and 0.9 m up. That leaves
+  a 10 mm band, and the camera needs 28 mm. A second pass of audits with the left camera moved back to y = −95 put
+  83 of chapter 3's frames in it. At y = −60 only chapter 2's tong grasp touches it (below). That fixture is chapter
+  2's alone, and moving its sleeve 30 mm forward would clear it.
 - **The side cameras' Pis sit under the cabinet top**, on its ends. A first version had the Pi in a box with each side
   camera, as the mast has. The audits with it in place found the arms' held parts passing through those boxes. One was
   the graphite nut, carried over the crucible's cradle at the cabinet's right end. The bare camera case, about a
