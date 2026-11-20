@@ -1,0 +1,557 @@
+{
+ "demand_pairs_per_day": 67.0,
+ "cycle": {
+  "Al": {
+   "cup": [
+    [
+     "bar feed, collet",
+     5.0,
+     "non-cutting"
+    ],
+    [
+     "face",
+     0.83,
+     "turn and face"
+    ],
+    [
+     "turn OD 20 -> 19.05 over 68 mm",
+     5.67,
+     "turn and face"
+    ],
+    [
+     "drill 12.5 x 47.6 + point",
+     5.04,
+     "drill and bore"
+    ],
+    [
+     "finish-bore 12.70 x 47.6",
+     6.45,
+     "drill and bore"
+    ],
+    [
+     "rim and OD chamfers",
+     1.0,
+     "turn and face"
+    ],
+    [
+     "part off, chamfering the base",
+     3.24,
+     "part off"
+    ],
+    [
+     "4 indexes, 5 rapids",
+     7.0,
+     "non-cutting"
+    ],
+    [
+     "catch, onto the belt",
+     3.0,
+     "non-cutting"
+    ]
+   ],
+   "plug": [
+    [
+     "bar feed, collet",
+     5.0,
+     "non-cutting"
+    ],
+    [
+     "face",
+     0.83,
+     "turn and face"
+    ],
+    [
+     "rough OD 20 -> 13.2 (2 passes x 12 mm)",
+     1.6,
+     "turn and face"
+    ],
+    [
+     "finish OD 12.73, 15 deg lead-in, top chamfer",
+     2.0,
+     "turn and face"
+    ],
+    [
+     "vent 1.59 through",
+     7.51,
+     "vent (plug)"
+    ],
+    [
+     "part off, chamfering the top",
+     2.29,
+     "part off"
+    ],
+    [
+     "4 indexes, 4 rapids",
+     6.0,
+     "non-cutting"
+    ],
+    [
+     "catch, onto the belt",
+     3.0,
+     "non-cutting"
+    ]
+   ]
+  },
+  "Cu": {
+   "cup": [
+    [
+     "bar feed, collet",
+     5.0,
+     "non-cutting"
+    ],
+    [
+     "face",
+     1.15,
+     "turn and face"
+    ],
+    [
+     "turn OD 20 -> 19.05 over 68 mm",
+     11.65,
+     "turn and face"
+    ],
+    [
+     "drill 12.5 x 47.6 + point",
+     7.05,
+     "drill and bore"
+    ],
+    [
+     "finish-bore 12.70 x 47.6",
+     13.17,
+     "drill and bore"
+    ],
+    [
+     "rim and OD chamfers",
+     1.0,
+     "turn and face"
+    ],
+    [
+     "part off, chamfering the base",
+     4.96,
+     "part off"
+    ],
+    [
+     "4 indexes, 5 rapids",
+     7.0,
+     "non-cutting"
+    ],
+    [
+     "catch, onto the belt",
+     3.0,
+     "non-cutting"
+    ]
+   ],
+   "plug": [
+    [
+     "bar feed, collet",
+     5.0,
+     "non-cutting"
+    ],
+    [
+     "face",
+     1.15,
+     "turn and face"
+    ],
+    [
+     "rough OD 20 -> 13.2 (2 passes x 12 mm)",
+     3.43,
+     "turn and face"
+    ],
+    [
+     "finish OD 12.73, 15 deg lead-in, top chamfer",
+     2.31,
+     "turn and face"
+    ],
+    [
+     "vent 1.59 through",
+     10.35,
+     "vent (plug)"
+    ],
+    [
+     "part off, chamfering the top",
+     2.99,
+     "part off"
+    ],
+    [
+     "4 indexes, 4 rapids",
+     6.0,
+     "non-cutting"
+    ],
+    [
+     "catch, onto the belt",
+     3.0,
+     "non-cutting"
+    ]
+   ]
+  }
+ },
+ "pair_seconds": {
+  "Al": 65.5,
+  "Cu": 88.2
+ },
+ "capacity": {
+  "0.0": {
+   "al_share": 0.0,
+   "demand_pairs_per_day": 67.0,
+   "hours_per_day": {
+    "lathe": 1.64,
+    "arm (UR10e)": 2.04,
+    "wash vessel": 1.4,
+    "rinse vessel": 0.56,
+    "vacuum dryer": 2.79,
+    "weigh module": 0.19,
+    "dimension gauge": 0.11
+   },
+   "pair_seconds": {
+    "Al": 65.5,
+    "Cu": 88.2,
+    "mix": 88.2
+   },
+   "ceiling_pairs": {
+    "8 h": 192,
+    "24 h": 576
+   },
+   "limiting": "vacuum dryer"
+  },
+  "0.5": {
+   "al_share": 0.5,
+   "demand_pairs_per_day": 67.0,
+   "hours_per_day": {
+    "lathe": 1.43,
+    "arm (UR10e)": 2.04,
+    "wash vessel": 1.4,
+    "rinse vessel": 0.56,
+    "vacuum dryer": 2.79,
+    "weigh module": 0.19,
+    "dimension gauge": 0.11
+   },
+   "pair_seconds": {
+    "Al": 65.5,
+    "Cu": 88.2,
+    "mix": 76.8
+   },
+   "ceiling_pairs": {
+    "8 h": 192,
+    "24 h": 576
+   },
+   "limiting": "vacuum dryer"
+  },
+  "1.0": {
+   "al_share": 1.0,
+   "demand_pairs_per_day": 67.0,
+   "hours_per_day": {
+    "lathe": 1.22,
+    "arm (UR10e)": 2.04,
+    "wash vessel": 1.4,
+    "rinse vessel": 0.56,
+    "vacuum dryer": 2.79,
+    "weigh module": 0.19,
+    "dimension gauge": 0.11
+   },
+   "pair_seconds": {
+    "Al": 65.5,
+    "Cu": 88.2,
+    "mix": 65.5
+   },
+   "ceiling_pairs": {
+    "8 h": 192,
+    "24 h": 576
+   },
+   "limiting": "vacuum dryer"
+  }
+ },
+ "bar": {
+  "mm_used": 81.0,
+  "pairs_per_bar": 13,
+  "mm_per_pair": 93.8,
+  "Al": {
+   "bar_g": 79.5,
+   "parts_g": 35.2,
+   "chips_g": 44.3,
+   "yield_pct": 44.3
+  },
+  "Cu": {
+   "bar_g": 263.4,
+   "parts_g": 116.8,
+   "chips_g": 146.6,
+   "yield_pct": 44.3
+  }
+ },
+ "costs": {
+  "capex_usd": [
+   230548,
+   321128
+  ],
+  "capex_items": [
+   {
+    "item": "Haas ST-10 turning centre",
+    "low": 64995,
+    "high": 64995,
+    "source": "Haas list, verified 2026-10-02"
+   },
+   {
+    "item": "Haas Bar Feeder V2 (4 ft bars)",
+    "low": 12000,
+    "high": 20000,
+    "source": "est.; Haas price not found"
+   },
+   {
+    "item": "auto door, parts catcher, belt and upender, tool probe",
+    "low": 10000,
+    "high": 15000,
+    "source": "est."
+   },
+   {
+    "item": "alcohol MQL unit and mist collector",
+    "low": 6000,
+    "high": 10000,
+    "source": "est."
+   },
+   {
+    "item": "UR10e / UR12e",
+    "low": 50818,
+    "high": 52674,
+    "source": "distributor listings, 2026"
+   },
+   {
+    "item": "Robotiq 2F-85 and wrist camera",
+    "low": 5000,
+    "high": 7000,
+    "source": "est."
+   },
+   {
+    "item": "pedestal, benches, fence, light curtain",
+    "low": 10000,
+    "high": 18000,
+    "source": "est."
+   },
+   {
+    "item": "two Elmasonic P 60 H baths",
+    "low": 3998,
+    "high": 6722,
+    "source": "US$1,999-3,361 each"
+   },
+   {
+    "item": "IPA vessels, lids, actuators, slot hood, duct",
+    "low": 4000,
+    "high": 8000,
+    "source": "est."
+   },
+   {
+    "item": "vacuum dryer: heated pot, lid actuator, chemistry pump, condenser",
+    "low": 8000,
+    "high": 14000,
+    "source": "est.; BINDER VDL 23 (ATEX inside) $16,927-19,000"
+   },
+   {
+    "item": "A&D AD-4212C-301 + motorised draft shield",
+    "low": 7737,
+    "high": 9737,
+    "source": "$6,736.50 + est. $1-3k"
+   },
+   {
+    "item": "dimension gauge: Keyence IM-8000 class",
+    "low": 18000,
+    "high": 45000,
+    "source": "IM-8005 ~$45k (aggregator, unverified); Mitutoyo LSM-9506 $12,924 + air plug est. $5k"
+   },
+   {
+    "item": "integration, programming, risk assessment",
+    "low": 30000,
+    "high": 50000,
+    "source": "est."
+   }
+  ],
+  "per_pair_ex_material_usd": {
+   "capital, 7 years straight-line": 1.61,
+   "maintenance, 3 %/yr of capital": 0.34,
+   "tools (PCD and uncoated carbide, one set per metal)": 0.55,
+   "IPA, about 1.1 L a day at $15-30/L": 0.37,
+   "spent IPA and fines to hazardous waste, $5/L": 0.08,
+   "power, about 17 kWh a day at $0.10": 0.03,
+   "labour, 0.15 FTE at $80k loaded": 0.49
+  },
+  "per_pair_ex_material_total_usd": 3.47,
+  "material_per_pair_usd": {
+   "Al": [
+    11.45,
+    93.81
+   ],
+   "Cu": [
+    11.06,
+    11.06
+   ]
+  },
+  "material_per_year_usd": {
+   "Al": [
+    139980,
+    1147062
+   ],
+   "Cu": [
+    135270,
+    135270
+   ]
+  },
+  "pairs_per_year": 24455
+ },
+ "floor": {
+  "x": -2935.0,
+  "y": -7188.0,
+  "dock": [
+   -2935.0,
+   -5868.0,
+   180.0
+  ],
+  "cell": [
+   {
+    "part": "fence",
+    "rect_mm": [
+     -4035,
+     -1835,
+     -7978,
+     -6238
+    ]
+   },
+   {
+    "part": "lathe (Haas ST-10 size, its chip conveyor at the left end)",
+    "rect_mm": [
+     -4872,
+     -1435,
+     -9584,
+     -7988
+    ]
+   },
+   {
+    "part": "bar feeder, 4 ft bars",
+    "rect_mm": [
+     -1435,
+     669,
+     -9100,
+     -7816
+    ]
+   },
+   {
+    "part": "chip bins: Al under the conveyor, Cu waiting",
+    "rect_mm": [
+     -5432,
+     -4932,
+     -8708,
+     -7668
+    ]
+   },
+   {
+    "part": "west bench: blow-off, basket, two baths, vacuum dryer",
+    "rect_mm": [
+     -4015,
+     -3525,
+     -7888,
+     -6428
+    ]
+   },
+   {
+    "part": "east bench: weigh module, dimension gauge, cassette lid",
+    "rect_mm": [
+     -2385,
+     -1855,
+     -7888,
+     -6428
+    ]
+   },
+   {
+    "part": "north bench: the cassette (charge rack), under the front window",
+    "rect_mm": [
+     -3525,
+     -2385,
+     -6568,
+     -6248
+    ]
+   }
+  ]
+ },
+ "cutting_data": {
+  "Al": {
+   "turn": [
+    400.0,
+    0.12
+   ],
+   "rough": [
+    400.0,
+    0.15
+   ],
+   "drill": [
+    150.0,
+    0.2
+   ],
+   "bore": [
+    300.0,
+    0.08
+   ],
+   "part": [
+    200.0,
+    0.05
+   ],
+   "vent": [
+    60.0,
+    0.02
+   ],
+   "peck_d": 1.5
+  },
+  "Cu": {
+   "turn": [
+    220.0,
+    0.1
+   ],
+   "rough": [
+    160.0,
+    0.15
+   ],
+   "drill": [
+    120.0,
+    0.2
+   ],
+   "bore": [
+    150.0,
+    0.06
+   ],
+   "part": [
+    120.0,
+    0.04
+   ],
+   "vent": [
+    60.0,
+    0.015
+   ],
+   "peck_d": 1.0
+  }
+ },
+ "noncutting_s_est": {
+  "bar_feed": 5.0,
+  "index": 0.5,
+  "rapid": 1.0,
+  "peck": 0.5,
+  "catch": 3.0,
+  "chamfer": 1.0
+ },
+ "arm_s_est": {
+  "load_part": 16.0,
+  "unload_part": 32.0,
+  "basket_moves": 48.0,
+  "lid": 15.0
+ },
+ "cleaning": {
+  "wash_min": 5.0,
+  "rinse_min": 2.0,
+  "dry_min": 10.0,
+  "pairs_per_basket": 4
+ },
+ "sources": {
+  "al": "Pure Al is ASM machinability group E ('needs optimum tool design and machine settings to control chip and finish'); Sandvik: uncoated and PCD grades first, positive sharp edges, built-up edge worst at low speed; Haas starts wrought Al at 490 m/min with its HTSU10 insert (Haas turning-insert speeds and feeds). Drilling, boring and parting speeds here are conservative choices for MQL rather than flood (est.)",
+  "cu": "German Copper Institute (DKI i.18, 2010): Cu-OFE C10100 machinability 20 (free-cutting brass 100), chip breaker recommended; carbide turning 220/160/120 m/min at chip thickness 0.1/0.32/0.8 mm; solid-carbide drilling 160 m/min at 0.24-0.29 mm/rev for \u00d812-16 mm. Here drilling at 120 m/min and 0.20 mm/rev under MQL, pecking each diameter (est.)",
+  "haas": "Haas ST-10: 3437 x 1596 x 2167 mm installed with chip conveyor, 3,585 kg, 44 mm bar, 15 hp, 6,000 rpm, 12-station turret, US$64,995 list (Haas layout drawing 12/2024; Machine Tool Index, verified 2026-10-02); Bar Feeder V2 for bars up to 4 ft, 10-76 mm, footprint 2104 x 1283 mm",
+  "ur": "UR12e (the UR10e, renamed in May 2025): 12.5 kg, 1300 mm, US$50,818-52,674 (Universal Robots press release 12 May 2025 and FAQ; distributor listings)",
+  "elma": "Elmasonic P 60 H: 5.75 L, 365 x 186 x 271 mm, 37/80 kHz, US$1,999-3,361; Elma's manual: flammable liquids 'max. 1 litre' only in a separate vessel in the water-filled tank",
+  "ad": "A&D AD-4212C-301 weighing module: 51 g at 0.1 mg / 320 g at 1 mg, RS-232C, US$6,736.50",
+  "price_al": "5N Al: High Purity Aluminum US$475 for \u00d825 x 305 mm (about $1,180/kg) and $2,350 for \u00d8150 x 350 mm (about $144/kg); Advent 99.9995 % \u00d820 x 500 mm $1,535 (about $3,500/kg)",
+  "price_cu": "C10100 3/4 in round, ASTM B187: Southern Copper $194.53 for 72 in (4.644 kg), about $42/kg"
+ },
+ "note": "Cutting times from the published data in SOURCES at the ST-10's 6,000 rpm; non-cutting times, the arm's times, tool and labour costs are estimates. The demand is PR #332's R11 (ten alloys a day)."
+}

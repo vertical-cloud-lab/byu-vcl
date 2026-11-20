@@ -77,13 +77,13 @@ BELT_Z = 880.0                   # belt top
 UP_Y = -700.0                    # the upender's pivot: the lying cup's base against its end plate
 BELT_Y = (-1150.0, UP_Y - 33.0)  # inside the machine -> the upender, outside the guard
 NEST = np.array([BELT_X, UP_Y + CUP_R, BELT_Z])            # the cup's base centre, stood up on the upender
-BLOW = np.array([-720.0, -610.0, 945.0])                   # the cup's base, lowered into the blow-off ring
+BLOW = np.array([-660.0, -560.0, 1040.0])                  # the cup's base at the blow-off station, on its riser
 BASKET = np.array([-800.0, -400.0, 1032.0])                # the basket's feet on its stand (one row along y)
 # Two small ultrasonic baths (sized after Elma's Elmasonic P 60 H: 365 x 186 x 271 mm outside, 5.75 L), water in the
 # tank, each with ONE closed stainless vessel of IPA hung in it: Elma's manual allows "max. 1 litre" of a flammable
 # liquid, and only in a separate vessel standing in water (notes/machining.md). Each vessel holds about 0.6 L.
-PANS = {"wash": np.array([-905.0, -20.0]), "rinse": np.array([-705.0, -20.0])}
-PAN = dict(ix=46.0, iy=196.0, depth=125.0, rim=1157.0, wall=2.0, ipa=76.0)
+PANS = {"wash": np.array([-875.0, -20.0]), "rinse": np.array([-680.0, -20.0])}
+PAN = dict(ix=46.0, iy=220.0, depth=125.0, rim=1157.0, wall=2.0, ipa=76.0)
 TANK = dict(x=186.0, y=365.0, top=BENCH_Z + 271.0, water=1100.0)
 DRYER = np.array([-860.0, 420.0])
 DRYER_R = 140.0
@@ -94,7 +94,7 @@ RACK_AT = np.array([0.0, 780.0, 920.0])                    # charge.rack()'s fra
 LID_REST = np.array([760.0, 560.0, BENCH_Z])               # the cassette's lid, its long side along y
 HERO = 3                                                   # the rack pocket the clip's cup goes to
 PARK = [-90.0, -110.0, 120.0, -100.0, -90.0, 0.0]          # the arm's joints, parked (deg)
-BASKET_POCKET = 0                                          # its pocket in the basket
+BASKET_POCKET = 1                                          # its pocket in the basket (no post beside it)
 
 CUP_GRASP = 50.0                 # grasp point over a cup's base (chapter 1: 45; here 50, so the pads clear the upender's
                                  # 30 mm trough when the cup stands on it)
@@ -268,8 +268,8 @@ def lathe_parts() -> dict:
     Mb = np.eye(4)
     Mb[:3, 0], Mb[:3, 1], Mb[:3, 2] = (1, 0, 0), n, -TURRET_U
     Mb[:3, 3] = (0, SPIN_Y, SPIN_Z)
-    slant = _box(-800, 700, -330, 330, 620, 700).transform(Mb, inplace=False)
-    bed = _box(-800, 700, -2430, -1660, 90, 1240)
+    slant = _box(-800, 700, -380, 380, 760, 840).transform(Mb, inplace=False)
+    bed = _merge([_box(-800, 700, -2380, -1950, 90, 1500), _box(-800, 700, -1950, -1500, 90, 930)])
     head = _box(260, 760, SPIN_Y - 260, SPIN_Y + 250, 760, 1340)
     nose = _cyl((240, SPIN_Y, SPIN_Z), (262, SPIN_Y, SPIN_Z), 95.0, res=64)
     # the belt: a short narrow conveyor along y, from under the spindle out through the slot to the upender (ours)
@@ -294,9 +294,10 @@ def lathe_parts() -> dict:
     # the chip conveyor out of the back into the bin of the metal being cut, and the other metal's bin beside it
     # the chip conveyor (inside the body's -x end) lifts the chips into the bin of the metal being cut; the other
     # metal's bin waits beside it, so Al and Cu chips never share a bin
-    conv = _box(x0 + 40, -1050, SPIN_Y - 250, SPIN_Y + 250, 700, 1250).rotate_y(0, inplace=False)
-    bin_al = _open_box(x0 + 60, x0 + 560, y1 + 60, y1 + 560, 0, 650, 6)
-    bin_cu = _open_box(x0 + 620, x0 + 1120, y1 + 60, y1 + 560, 0, 650, 6)
+    conv = _merge([_box(x0 + 40, -1050, SPIN_Y - 250, SPIN_Y + 250, 700, 1250),
+                   _box(x0 - 330, x0 + 40, SPIN_Y - 150, SPIN_Y + 150, 900, 1180)])
+    bin_al = _open_box(x0 - 560, x0 - 60, SPIN_Y - 250, SPIN_Y + 250, 0, 650, 6)
+    bin_cu = _open_box(x0 - 560, x0 - 60, SPIN_Y + 290, SPIN_Y + 790, 0, 650, 6)
     # the alcohol MQL unit on the body's front left, its line into the work zone (drawn to the panel)
     mql = _merge([_box(-1000, -760, y1, y1 + 160, 1300, 1620), _cyl((-880, y1 + 80, 1620), (-880, y1 + 80, 1720),
                                                                     35.0, res=24)])
@@ -391,10 +392,12 @@ TOOL_L = 175.0                   # the axial tools' tips, along +x from the turr
 
 
 def _frame(u, n, origin):
-    """A frame with z along u (radial), y along n, x along the spindle's axis, at `origin` (turret frame)."""
+    """A right-handed frame with x along the spindle's axis (+x), z along u (radial), y = z x x, at `origin` (turret
+    frame). (`n` is kept for the callers; until 2026-11-20 x was n x u, which is -x, so every insert pointed into the
+    work.)"""
     M = np.eye(4)
-    M[:3, 0] = np.cross(n, u)
-    M[:3, 1] = n
+    M[:3, 0] = (1.0, 0.0, 0.0)
+    M[:3, 1] = (0.0, u[2], -u[1])
     M[:3, 2] = u
     M[:3, 3] = origin
     return M
@@ -422,7 +425,7 @@ CATCH_BELT = np.array([BELT_X, BELT_Y[0] + 55.0, BELT_Z + 6.0])
 
 
 def catcher_parts() -> dict:
-    tray = _open_box(-40, 34, -22, 22, -3, 6, 3)
+    tray = _merge([_box(-40, 34, -22, 22, -3, 0), _box(-40, 34, -22, -19, -3, 6), _box(-40, 34, 19, 22, -3, 6)])
     arm = _box(-56, -40, -6, 6, -3, 4)
     return {"catcher/tray": (_merge([tray, arm]), (0.62, 0.63, 0.66), 1.0)}
 
@@ -454,15 +457,16 @@ def basket_parts() -> tuple[dict, list, list, np.ndarray]:
     them, under a cap plate that shuts the IPA vessel it is lowered into, a handle bar on the cap. Frame: the middle
     of its feet's underside. A level gripper sets each cup in from +x; the pads pass over the 9.5 mm plugs. Returns its
     parts, the cup and plug seats and the handle's centre."""
-    fx, fy = 40.0, 190.0
-    ys, yp = [-60.0, -20.0, 20.0, 60.0], [-40.0, 0.0, 40.0, 80.0]
+    fx, fy = 40.0, 214.0
+    ys, yp = [-66.0, -22.0, 22.0, 66.0], [-44.0, 0.0, 44.0, 88.0]
     feet = [_box(-fx / 2, fx / 2, -fy / 2, -fy / 2 + 10, 0, 4), _box(-fx / 2, fx / 2, fy / 2 - 10, fy / 2, 0, 4)]
     floor = _box(-fx / 2, fx / 2, -fy / 2, fy / 2, 4, 8)
     rims = [_ring(C.STOCK_D / 2 + 3.0, C.STOCK_D / 2 + 0.8, 8, 13).translate((0, y, 0), inplace=False) for y in ys]
     rims += [_ring(C.CUP_BORE_D / 2 + 2.5, C.CUP_BORE_D / 2 + 0.6, 8, 11).translate((0, y, 0), inplace=False)
              for y in yp]
-    posts = [_box(-4, 4, s_ * 99 - 4, s_ * 99 + 4, 8, BASKET_CAP) for s_ in (-1, 1)]
-    cap = _box(-33, 33, -108, 108, BASKET_CAP, BASKET_CAP + 4)
+    posts = [_box(sx * 16 - 4, sx * 16 + 4, sy * 102 - 4, sy * 102 + 4, 4, BASKET_CAP) for sx in (-1, 1)
+             for sy in (-1, 1)]
+    cap = _box(-33, 33, -118, 118, BASKET_CAP, BASKET_CAP + 4)
     hposts = [_box(-4, 4, s_ * 50 - 4, s_ * 50 + 4, BASKET_CAP + 4, BASKET_HANDLE - 7) for s_ in (-1, 1)]
     bar = _box(-7, 7, -60, 60, BASKET_HANDLE - 7, BASKET_HANDLE + 7)
     parts = {"basket/frame": (_merge(feet + [floor] + posts + hposts + [bar]), SS, 1.0),
@@ -491,9 +495,9 @@ def bath_parts() -> dict:
         water.append(_box(px - hx + 4, px + hx - 4, py - hy + 4, py + hy - 4, BENCH_Z + 24, TANK["water"]))
         ipa.append(_box(px - ix / 2, px + ix / 2, py - iy / 2, py + iy / 2, z0, z0 + PAN["ipa"]))
     x0 = min(p[0] for p in PANS.values()) - TANK["x"] / 2
-    hood = _merge([_box(x0 - 70, x0 - 10, -230, 190, BENCH_Z, TANK["top"] + 260),
-                   _box(x0 - 70, x0 - 50, -210, 170, TANK["top"] + 40, TANK["top"] + 230),
-                   _cyl((x0 - 40, -20, TANK["top"] + 260), (x0 - 40, -20, 2700), 75.0, res=32)])
+    hood = _merge([_box(x0 - 110, x0 - 50, -230, 190, BENCH_Z, TANK["top"] + 260),
+                   _box(x0 - 110, x0 - 90, -210, 170, TANK["top"] + 40, TANK["top"] + 230),
+                   _cyl((x0 - 80, -20, TANK["top"] + 260), (x0 - 80, -20, 2700), 60.0, res=32)])
     return {"bath/tank": (_merge(tanks), (0.72, 0.73, 0.75), 1.0),
             "bath/plate": (_merge(plates), (0.66, 0.67, 0.70), 1.0),
             "bath/water": (_merge(water), WATER, 0.40),
@@ -530,12 +534,14 @@ def dryer_parts() -> dict:
 
 
 def dryer_lid() -> tuple[pv.PolyData, np.ndarray]:
+    """The dryer's lid, hinged on its north (+y) edge so it opens away from the arm and inside the fence; its own
+    frame at the hinge."""
     x, y = DRYER
     disc = C.lathe([(0, 0), (DRYER_R + 14, 0), (DRYER_R + 14, 14), (0, 14)], res=64).translate(
-        (DRYER_R + 14, 0, 0), inplace=False)
-    knob = _box(2 * DRYER_R + 8, 2 * DRYER_R + 40, -30, 30, 0, 30)
-    win = _cyl((DRYER_R + 14, 0, 14), (DRYER_R + 14, 0, 16), 70.0, res=48)
-    return _merge([disc, knob, win]), np.array([x - DRYER_R - 14, y, DRYER_RIM])
+        (0, -(DRYER_R + 14), 0), inplace=False)
+    knob = _box(-30, 30, -(2 * DRYER_R + 40), -(2 * DRYER_R + 8), 0, 30)
+    win = _cyl((0, -(DRYER_R + 14), 14), (0, -(DRYER_R + 14), 16), 70.0, res=48)
+    return _merge([disc, knob, win]), np.array([x, y + DRYER_R + 14, DRYER_RIM])
 
 
 def weigh_parts() -> dict:
@@ -577,42 +583,47 @@ def vision_parts() -> dict:
 def rack_lid_mesh() -> tuple[pv.PolyData, float]:
     """The cassette's lid (ours, printed PETG): a cover over charge.rack(), open below, a knob on top. Frame: the
     rack's frame, the lid seated. Returns it and the knob's grasp height in that frame."""
-    w = C.RACK_COLS * C.RACK_PITCH + 16
-    d, h0, h1, t = 80.0, C.RACK_H, C.RACK_H + 52.0, 3.0
+    w = C.RACK_COLS * C.RACK_PITCH + 16 + 2.0          # 1 mm clear of the rack all round
+    d, h0, h1, t = 80.0 + 2.0, C.RACK_H, C.RACK_H + 52.0, 3.0
     shell = _merge([_box(-w / 2 - t, w / 2 + t, -d / 2 - t, d / 2 + t, h1 - t, h1),
                     _box(-w / 2 - t, -w / 2, -d / 2 - t, d / 2 + t, h0 - 12, h1), _box(w / 2, w / 2 + t, -d / 2 - t,
                                                                                       d / 2 + t, h0 - 12, h1),
                     _box(-w / 2 - t, w / 2 + t, -d / 2 - t, -d / 2, h0 - 12, h1), _box(-w / 2 - t, w / 2 + t, d / 2,
                                                                                       d / 2 + t, h0 - 12, h1)])
-    knob = _box(-10, 10, -18, 18, h1, h1 + 24)
-    return _merge([shell, knob]), h1 + 14.0
+    knob = _box(-10, 10, -18, 18, h1, h1 + 38)
+    return _merge([shell, knob]), h1 + 28.0
 
 
 def bench_parts() -> dict:
     """The three benches round the arm, its pedestal, the fence (the front open over the north bench, behind a light
     curtain, for the MiR's arm), and the floor."""
     tops, legs = [], []
-    for (x0, x1, y0, y1) in ((-1150, -600, -700, 760), (550, 1150, -700, 760), (-600, 550, 620, 940)):
+    for (x0, x1, y0, y1) in ((-1080, -590, -700, 760), (550, 1080, -700, 760), (-590, 550, 620, 940)):
         tops.append(_box(x0, x1, y0, y1, BENCH_Z - 30, BENCH_Z))
         for (lx, ly) in ((x0 + 40, y0 + 40), (x1 - 40, y0 + 40), (x0 + 40, y1 - 40), (x1 - 40, y1 - 40)):
             legs.append(_box(lx - 25, lx + 25, ly - 25, ly + 25, 0, BENCH_Z - 30))
     ped = _merge([_box(-130, 130, -130, 130, 0, Z_ARM - 15), _box(-300, 300, -300, 300, 0, 20),
                   _box(-140, 140, -140, 140, Z_ARM - 15, Z_ARM)])
-    stand = _box(BASKET[0] - 30, BASKET[0] + 30, BASKET[1] - 105, BASKET[1] + 105, BENCH_Z, BASKET[2])
+    stand = _box(BASKET[0] - 30, BASKET[0] + 30, BASKET[1] - 112, BASKET[1] + 112, BENCH_Z, BASKET[2])
     riser = _box(RACK_AT[0] - 185, RACK_AT[0] + 185, RACK_AT[1] - 50, RACK_AT[1] + 50, BENCH_Z, RACK_AT[2])
     rest = _box(LID_REST[0] - 50, LID_REST[0] + 50, LID_REST[1] - 185, LID_REST[1] + 185, BENCH_Z, BENCH_Z + 8)
     blow = BLOW
+    bd = radial(BLOW)
+    side = np.array([-bd[1], bd[0], 0.0])
+    far = np.r_[bd, 0.0]
+    post = blow + far * 70.0
     blow_m = _merge([_box(blow[0] - 70, blow[0] + 70, blow[1] - 45, blow[1] + 45, BENCH_Z, BENCH_Z + 10),
-                     _cyl((blow[0] - 60, blow[1], BENCH_Z + 10), (blow[0] - 60, blow[1], blow[2] + 130), 9.0, res=16),
-                     _cyl((blow[0] - 60, blow[1], blow[2] + 130), (blow[0] - 12, blow[1], blow[2] + 130), 5.0, res=12),
-                     _cyl((blow[0], blow[1], blow[2] + 130), (blow[0], blow[1], blow[2] + 95), 3.0, res=12),
-                     _cyl((blow[0] - 12, blow[1], blow[2] + 130), (blow[0], blow[1], blow[2] + 130), 4.0, res=12),
-                     _cyl((blow[0] - 60, blow[1], blow[2] + 20), (blow[0] - 30, blow[1], blow[2] + 20), 6.0, res=12)])
-    ring = _ring(C.STOCK_D / 2 + 14, C.STOCK_D / 2 + 6, blow[2] + 12, blow[2] + 26).translate(
-        (blow[0], blow[1], 0), inplace=False)
-    sock = _open_box(blow[0] - 45, blow[0] + 45, blow[1] - 40, blow[1] + 40, BENCH_Z + 10, blow[2] - 4, 3)
+                     _cyl((post[0], post[1], BENCH_Z + 10), (post[0], post[1], blow[2] + 130), 9.0, res=16),
+                     _cyl(post + (0, 0, 130), blow + (0, 0, 130), 5.0, res=12),
+                     _cyl(blow + (0, 0, 130), blow + (0, 0, 95), 3.0, res=12)])
+    ring = _merge([_cyl(blow + side * 52 + (0, 0, 12), blow + side * 22 + (0, 0, 12), 4.0, res=12),
+                   _cyl(blow - side * 52 + (0, 0, 12), blow - side * 22 + (0, 0, 12), 4.0, res=12),
+                   _cyl(post + (0, 0, 12), blow + side * 52 + (0, 0, 12), 4.0, res=12),
+                   _cyl(post + (0, 0, 12), blow - side * 52 + (0, 0, 12), 4.0, res=12)])
+    sock = _merge([_box(blow[0] - 70, blow[0] + 70, blow[1] - 45, blow[1] + 45, BENCH_Z, blow[2] - 90),
+                   _open_box(blow[0] - 45, blow[0] + 45, blow[1] - 40, blow[1] + 40, blow[2] - 90, blow[2] - 4, 3)])
     posts, rails, mesh = [], [], []
-    fx0, fx1, fy0, fy1, fh = -1250.0, 1250.0, LATHE["y1"] + 10, FRONT_Y, 1400.0
+    fx0, fx1, fy0, fy1, fh = -1100.0, 1100.0, LATHE["y1"] + 10, FRONT_Y, 1400.0
     for (x, y) in ((fx0, fy0), (fx0, fy1), (fx1, fy0), (fx1, fy1), (fx0, 80), (fx1, 80), (-420, fy1), (420, fy1)):
         posts.append(_box(x - 20, x + 20, y - 20, y + 20, 0, fh))
     for (xa, xb, ya, yb) in ((fx0, fx0, fy0, fy1), (fx1, fx1, fy0, fy1), (fx0, -420, fy1, fy1), (420, fx1, fy1, fy1)):
@@ -647,6 +658,72 @@ def chips(n=60, seed=3) -> pv.PolyData:
                               inplace=False)
         ms.append(tube.triangulate())
     return _merge(ms)
+
+
+# ------------------------------------------------------------------------------------------------ in the lab
+CTX_H = {"instron_floor": 2000.0, "instron_small": 1500.0, "fumehood": 2581.0, "charger0": 287.0, "charger1": 287.0,
+         "ded": 2000.0, "wire_edm": 2200.0, "eos_m400": 2700.0, "repowder": 2000.0, "sieve_cell": 1150.0,
+         "vlm": 6000.0, "vlm2": 6000.0, "glovebox": 1900.0, "aconity": 2200.0, "packaging": 1200.0}
+CTX_NAME = {"instron_floor": "Instron 68FM-100", "instron_small": "Instron 68SC-2", "fumehood": "fume hood",
+            "charger0": "MiR charger 0", "charger1": "MiR charger 1", "vlm": "Kardex VLM 1", "vlm2": "Kardex VLM 2",
+            "repowder": "rePowder atomizer", "sieve_cell": "sieving cell", "ded": "DED"}
+
+
+def lab_context(sc) -> list:
+    """The cell's neighbours on the lab floor (out/tray_plan.json's footprints, heights estimated), the aisle's tape
+    and a MiR250 docked at the cell's front, in the cell's frame (machining.FLOOR is where the cell stands). Returns
+    leader labels for them."""
+    import json
+    import machining as MA
+    fl = json.loads((HERE / "out" / "tray_plan.json").read_text())["floor"]
+    X, Y = MA.FLOOR["x"], MA.FLOOR["y"]
+    labels = []
+    boxes = []
+    for k, (x0, x1, y0, y1) in fl["machines"].items():
+        if k not in CTX_H or abs((x0 + x1) / 2 - X) > 9000:
+            continue
+        boxes.append(_box(x0 - X, x1 - X, y0 - Y, y1 - Y, 0, CTX_H[k]))
+        if k in CTX_NAME:
+            labels.append((CTX_NAME[k], ((x0 + x1) / 2 - X, (y0 + y1) / 2 - Y, CTX_H[k])))
+    sc.add("ctx/machines", _merge(boxes), (0.82, 0.84, 0.87), "ctx", opacity=1.0, specular=0.1)
+    a = fl["aisle_mm"]
+    tape = _merge([_box(a[0] - X, a[1] - X, yy - Y - 30, yy - Y + 30, 0, 2) for yy in (a[2], a[3])])
+    sc.add("ctx/tape", tape, (0.98, 0.80, 0.10), "ctx")
+    sc.add("ctx/floor", _box(-9500, 9500, -4500, 9000, -25, -1), FLOOR_C, "ctx", specular=0.05)
+    dx, dy, _ = MA.FLOOR["dock"]
+    mir = _merge([_box(dx - X - 445, dx - X + 445, dy - Y - 290, dy - Y + 290, 0, 350),
+                  _box(dx - X - 200, dx - X + 200, dy - Y - 200, dy - Y + 200, 350, 750)])
+    sc.add("ctx/mir", mir, (0.30, 0.31, 0.33), "ctx", specular=0.2)
+    labels.append(("MiR250 docked at the cell", (dx - X, dy - Y, 750)))
+    return labels
+
+
+def still_lab(sc, path):
+    """One frame: the cell in its place on the floor, from over the aisle (MCELL_STILL=lab)."""
+    from PIL import Image
+    labs = lab_context(sc)
+    sc.cam = [(5200, 7800, 5600), (-600, -700, 700), (0, 0, 1)]
+    sc.view_angle = 34.0
+    pos = {"Instron 68SC-2": (0.10, 0.48), "MiR charger 0": (0.62, 0.30), "fume hood": (0.86, 0.36),
+           "Instron 68FM-100": (0.06, 0.30), "MiR250 docked at the cell": (0.50, 0.16), "Kardex VLM 1": (0.80, 0.10),
+           "Kardex VLM 2": (0.94, 0.20), "MiR charger 1": (0.74, 0.22), "rePowder atomizer": (0.30, 0.10),
+           "sieving cell": (0.50, 0.06), "DED": (0.95, 0.45)}
+    sc.labels = [(t, xyz, pos.get(t, (0.9, 0.9)), 1.0) for t, xyz in labs if t in pos]
+    sc.labels += [("the machining cell: bar-fed lathe, UR10e, IPA baths, vacuum dryer, weigh, gauge, cassette",
+                   (0.0, -300.0, 1500.0), (0.20, 0.86), 1.0)]
+    sc.caption = ("The cup-and-plug cell on the south row, between the Instron 68SC-2 and MiR charger 0; the lathe "
+                  "and its bar feeder stand behind the row.")
+    sc.title = "Vertical cloud lab: the charge-cup machining cell in the lab"
+    base = sc.render_base()
+    anchors = [sc.project(xyz) for _, xyz, _, _ in sc.labels]
+    img = sc.overlay(Image.fromarray(base), SC_size_scale(sc), anchors)
+    img.convert("RGB").save(path, optimize=True)
+    print("wrote", path)
+
+
+def SC_size_scale(sc) -> float:
+    import scene
+    return scene.size_scale(sc.size)
 
 
 # ------------------------------------------------------------------------------------------------ the clip
@@ -725,6 +802,9 @@ def movie():
     # --- the arm
     rb = RB.Robot(sc, "ur10e", "static", T((0, 0, Z_ARM)), q0=PARK)
     sc.apply()
+    if os.environ.get("MCELL_STILL") == "lab":
+        sc.show(["floor"], 0.0)
+        return still_lab(sc, HERE / "out" / "machining_lab.png")
 
     # --- helpers
     def status(**kv):
@@ -762,10 +842,10 @@ def movie():
     CAM_WIDE = [(3700, 3500, 3700), (-100, -550, 900), (0, 0, 1)]
     CAM_LATHE = [(430, -470, 1300), (150, -1020, 950), (0, 0, 1)]
     CAM_WORK = [(150, -765, 1120), (162, -1270, 1050), (0, 0, 1)]
-    CAM_NEST = [(-560, 200, 1550), (150, -660, 950), (0, 0, 1)]
+    CAM_NEST = [(620, -130, 1380), (140, -690, 950), (0, 0, 1)]
     CAM_BATH = [(-200, 1350, 2350), (-800, -150, 1050), (0, 0, 1)]
-    CAM_EAST = [(1950, -1150, 1800), (700, -80, 1000), (0, 0, 1)]
-    CAM_RACK = [(-1500, 1500, 1650), (0, 720, 960), (0, 0, 1)]
+    CAM_EAST = [(1180, 380, 1850), (680, -180, 990), (0, 0, 1)]
+    CAM_RACK = [(-250, 1180, 1450), (60, 740, 960), (0, 0, 1)]
     sc.cam = CAM_WIDE
 
     # 1: the cell
@@ -801,7 +881,7 @@ def movie():
         else:                                            # turn the OD to 19.05 mm over 68 mm
             v = (u - 0.25) / 0.75
             W["end"] = END
-            W["turned"] = 65.0 * v
+            W["turned"] = 68.0 * v                      # past the parting groove (x 190-193)
             tur(1, END + W["turned"], CUP_R)
         rework()
     sc.step("2/6", "Turning tool: face the end, then turn the OD to 19.05 mm. Dry but for an alcohol MQL mist "
@@ -892,7 +972,7 @@ def movie():
 
     def to_belt(u):
         sc.gmat["catcher"] = T(CATCH_UNDER + (CATCH_BELT - CATCH_UNDER) * u) @ R((0, 0, 1), 90.0 * u)
-        tur(4, GROOVE_X + 120 * u, CUP_R + 40.0 + 60 * u)
+        tur(4, GROOVE_X + (X_INDEX - GROOVE_X) * u, CUP_R + 40.0 + 60 * u)
     sc.step("3/6", "The catcher brings it down to the belt, turning it to lie along the belt, base first ...", 2.0,
             to_belt, hold=0.1, cam_to=CAM_LATHE, view_angle_to=30.0)
     Wc = sc.world("cup")
@@ -900,14 +980,19 @@ def movie():
     sc.gmat["cup"] = Wc
     on_belt = T((0, 70.0, BELT_Z + CUP_R - Wc[2, 3])) @ Wc
 
-    def tip(u):                          # over the tray's low side wall and down onto the belt
-        lift = 9.0 * math.sin(math.pi * min(1.0, u * 1.25))
-        sc.gmat["cup"] = T((0, 70.0 * u, (BELT_Z + CUP_R - Wc[2, 3]) * u + lift)) @ Wc
-        if u > 0.6:
-            sc.gmat["catcher"] = T(CATCH_BELT + (CATCH_PARK - CATCH_BELT) * ((u - 0.6) / 0.4)) @ R(
-                (0, 0, 1), 90.0 * (1 - (u - 0.6) / 0.4))
+    def tip(u):                          # lifted clear of the tray, slid off its open end, set down on the belt
+        dz = BELT_Z + CUP_R - Wc[2, 3]
+        if u < 0.2:
+            off = (0.0, 4.0 * u / 0.2)
+        elif u < 0.75:
+            off = (70.0 * (u - 0.2) / 0.55, 4.0)
+        else:
+            off = (70.0, 4.0 + (dz - 4.0) * (u - 0.75) / 0.25)
+        sc.gmat["cup"] = T((0, off[0], off[1])) @ Wc
     sc.step("3/6", "... and tips it out onto the belt.", 1.0, tip, hold=0.1)
-    sc.gmat["catcher"] = T(CATCH_PARK)
+
+    def catcher_home(u):
+        sc.gmat["catcher"] = T(CATCH_BELT + (CATCH_PARK - CATCH_BELT) * u) @ R((0, 0, 1), 90.0 * (1 - u))
     for name, (m, c, op) in upender_parts().items():
         sc.add(name, m, c, "upender", opacity=op)
     sc.gmat["upender"] = upender_pose(0.0)
@@ -917,6 +1002,7 @@ def movie():
 
     def belt(u):
         sc.gmat["cup"] = T((0, run * u, 0)) @ on_belt
+        catcher_home(min(1.0, u * 2.0))
     sc.step("3/6", "The belt carries it out through the guard: the door stays shut and the arm never reaches into "
                    "the machine.", 3.0, belt, hold=0.2, cam_to=CAM_NEST)
     sc.parent["cup"] = "upender"
@@ -945,9 +1031,9 @@ def movie():
     bd = radial(BLOW)
     g_blow = lvl(BLOW + (0, 0, CUP_GRASP), bd)
     g_blow_hi = g_blow.copy()
-    g_blow_hi[2, 3] += 120.0
+    g_blow_hi[:3, 3] -= np.r_[bd, 0] * 130.0
     sc.step("3/6", "To the blow-off station: ...", 2.0, rb.joint_to(Tw=g_blow_hi), hold=0.0, cam_to=CAM_BATH)
-    sc.step("3/6", "... a ring nozzle round its foot and a lance into the bore blow the chips off it.",
+    sc.step("3/6", "... two nozzles at its foot and a lance over the bore blow the chips off it.",
             1.5, rb.line_to(g_blow), hold=0.8)
     sc.step("3/6", "", 1.0, rb.line_to(g_blow_hi), hold=0.0)
     # into the basket's front row
@@ -958,11 +1044,11 @@ def movie():
     g_bk_back = g_bk.copy()
     g_bk_back[0, 3] += 120.0
     g_bk_back_hi = g_bk_back.copy()
-    g_bk_back_hi[2, 3] += 6.0
+    g_bk_back_hi[2, 3] += 8.0
     sc.step("4/6", "Into the basket, the fourth cup of the run's set.", 2.0, rb.joint_to(Tw=g_bk_back_hi), hold=0.0)
-    sc.step("4/6", "", 1.2, rb.line_to(g_bk @ T((0, 0, 0)) if False else T((0, 0, 6.0)) @ g_bk), hold=0.0)
-    sc.step("4/6", "", 0.4, rb.line_to(g_bk), hold=0.1)
-    sc.step("4/6", "", 0.5, rb.grip_to(OPEN_CUP), hold=0.1)
+    sc.step("4/6", "", 1.2, rb.line_to(T((0, 0, 8.0)) @ g_bk), hold=0.0)
+    sc.step("4/6", "", 0.5, rb.line_to(g_bk), hold=0.1)
+    sc.step("4/6", "", 0.5, rb.grip_to(OPEN_RACK), hold=0.1)
     rb.release("basket")
     status(Arm="UR10e", Basket="4 of 4 cups, 4 of 4 plugs", Cup="in the basket")
     sc.step("4/6", "", 1.0, rb.line_to(g_bk_back), hold=0.1)
@@ -972,14 +1058,14 @@ def movie():
     g_h_hi = g_h.copy()
     g_h_hi[2, 3] = DRYER_RIM + 30.0 + handle[2]
 
-    def hinge_open(group, hinge, deg):
+    def hinge_open(group, hinge, deg, axis=(0, 1, 0)):
         def up(u):
-            sc.gmat[group] = T(hinge) @ R((0, 1, 0), -deg * u)
+            sc.gmat[group] = T(hinge) @ R(axis, -deg * u)
         return up
 
-    def hinge_close(group, hinge, deg):
+    def hinge_close(group, hinge, deg, axis=(0, 1, 0)):
         def up(u):
-            sc.gmat[group] = T(hinge) @ R((0, 1, 0), -deg * (1 - u))
+            sc.gmat[group] = T(hinge) @ R(axis, -deg * (1 - u))
         return up
 
     sc.step("4/6", "The arm takes the basket by its handle.", 2.0, RB.both(rb.joint_to(Tw=g_h_hi),
@@ -1017,9 +1103,14 @@ def movie():
         sc.step("4/6", "", 1.0, rb.line_to(g_in), hold=0.0)
         sc.step("4/6", "", 0.4, rb.grip_to(GRIP_BAR), hold=0.0)
         rb.grasp("basket")
-        sc.step("4/6", "", 1.6, rb.line_to(g_over), hold=0.2)
-        sc.step("4/6", "The vessel's lid shuts behind it.", 1.0, hinge_close(f"lid_{k}", lids[k], 105.0), hold=0.0)
-        return g_over
+        sc.step("4/6", "", 1.6, rb.line_to(g_over), hold=0.0)
+        g_off = g_over.copy()
+        g_off[0, 3] += 170.0
+        g_off[2, 3] += 150.0
+        sc.step("4/6", "The vessel's lid shuts behind it.", 1.2, RB.both(rb.line_to(g_off),
+                                                                        hinge_close(f"lid_{k}", lids[k], 105.0)),
+                hold=0.0)
+        return g_off
 
     into("wash", "first vessel of IPA", "wash vessel: 37 kHz, 5 min", "5 min")
     status(Bath="wash done; to the rinse")
@@ -1030,13 +1121,16 @@ def movie():
     g_d = dwn((gx, gy, BASKET[2] + handle[2]), 0.0)
     g_d_over = g_d.copy()
     g_d_over[2, 3] = DRYER_RIM + 30.0 + handle[2]
-    sc.step("5/6", "Into the vacuum dryer: its lid opens ...", 1.2, hinge_open("dlid", dhinge, 110.0), hold=0.0)
+    sc.step("5/6", "Into the vacuum dryer: its lid opens ...", 1.2, hinge_open("dlid", dhinge, 105.0, (1, 0, 0)), hold=0.0)
     sc.step("5/6", "", 2.0, rb.joint_to(Tw=g_d_over), hold=0.0)
     sc.step("5/6", "", 1.6, rb.line_to(g_d), hold=0.1)
     sc.step("5/6", "", 0.4, rb.grip_to(OPEN_BAR), hold=0.0)
     rb.release(None)
     sc.step("5/6", "", 1.0, rb.line_to(g_d_over), hold=0.0)
-    sc.step("5/6", "", 1.0, hinge_close("dlid", dhinge, 110.0), hold=0.0)
+    g_d_away = g_d_over.copy()
+    g_d_away[:3, 3] += (380.0, 0.0, 60.0)
+    sc.step("5/6", "", 1.2, rb.line_to(g_d_away), hold=0.0)
+    sc.step("5/6", "", 1.0, hinge_close("dlid", dhinge, 105.0, (1, 0, 0)), hold=0.0)
 
     def pump(u):
         p = 1013.0 * (1 - u) + 2.0 * u if u < 0.8 else 2.0 + 1011.0 * ((u - 0.8) / 0.2)
@@ -1044,27 +1138,27 @@ def movie():
     sc.step("5/6", "Pumped down at 45 °C: the IPA in each blind bore boils off, through the condenser to the pump. Then "
                    "back-filled with dry nitrogen (shown sped up: about 10 min).", 3.0, pump, hold=0.3, live=True)
     status(Dryer="vented, dry")
-    sc.step("5/6", "", 1.2, hinge_open("dlid", dhinge, 110.0), hold=0.0)
+    sc.step("5/6", "", 1.2, hinge_open("dlid", dhinge, 105.0, (1, 0, 0)), hold=0.0)
+    sc.step("5/6", "", 1.2, rb.line_to(g_d_over), hold=0.0)
     sc.step("5/6", "", 1.0, rb.line_to(g_d), hold=0.0)
     sc.step("5/6", "", 0.4, rb.grip_to(GRIP_BAR), hold=0.0)
     rb.grasp("basket")
     sc.step("5/6", "", 1.4, rb.line_to(g_d_over), hold=0.0)
-    sc.step("5/6", "Back on its stand.", 2.0, RB.both(rb.joint_to(Tw=g_h_hi), hinge_close("dlid", dhinge, 110.0)),
-            hold=0.0)
-    sc.step("5/6", "", 1.4, rb.line_to(g_h), hold=0.0)
+    sc.step("5/6", "Back on its stand.", 2.0, rb.joint_to(Tw=g_h_hi), hold=0.0)
+    sc.step("5/6", "", 1.4, RB.both(rb.line_to(g_h), hinge_close("dlid", dhinge, 105.0, (1, 0, 0))), hold=0.0)
     sc.step("5/6", "", 0.4, rb.grip_to(OPEN_BAR), hold=0.0)
     rb.release(None)
     sc.step("5/6", "", 1.0, rb.line_to(g_h_hi), hold=0.0)
 
     # 5: weigh and measure
     sc.step("6/6", "The cup, dry, to the weigh module ...", 2.0, RB.both(rb.joint_to(Tw=g_bk_back),
-                                                                        rb.grip_to(OPEN_CUP)), hold=0.0,
+                                                                        rb.grip_to(OPEN_RACK)), hold=0.0,
             cam_to=CAM_EAST)
     sc.step("6/6", "", 1.0, rb.line_to(g_bk), hold=0.0)
     sc.step("6/6", "", 0.5, rb.grip_to(GRIP_CUP), hold=0.0)
     rb.grasp("cup")
     status(Arm="UR10e: the cup", Cup="dry")
-    sc.step("6/6", "", 1.0, rb.line_to(T((0, 0, 6.0)) @ g_bk), hold=0.0)
+    sc.step("6/6", "", 0.6, rb.line_to(T((0, 0, 8.0)) @ g_bk), hold=0.0)
     sc.step("6/6", "", 1.0, rb.line_to(g_bk_back_hi), hold=0.0)
     wd = radial(WEIGH)
     g_w = lvl(WEIGH + (0, 0, CUP_GRASP), wd)
@@ -1073,8 +1167,10 @@ def movie():
 
     def shield(u):
         sc.gmat["shield"] = T((0, 0, 140.0 * u))
-    sc.step("6/6", "", 2.2, RB.both(rb.joint_to(Tw=g_w_back), shield), hold=0.0)
-    sc.step("6/6", "", 1.2, rb.line_to(g_w), hold=0.0)
+    g_w_back_hi = T((0, 0, 8.0)) @ g_w_back
+    sc.step("6/6", "", 2.2, RB.both(rb.joint_to(Tw=g_w_back_hi), shield), hold=0.0)
+    sc.step("6/6", "", 1.2, rb.line_to(T((0, 0, 8.0)) @ g_w), hold=0.0)
+    sc.step("6/6", "", 0.5, rb.line_to(g_w), hold=0.0)
     sc.step("6/6", "", 0.5, rb.grip_to(OPEN_CUP), hold=0.0)
     rb.release(None)
     sc.step("6/6", "", 1.0, rb.line_to(g_w_back), hold=0.0)
@@ -1092,7 +1188,8 @@ def movie():
     sc.step("6/6", "", 1.0, rb.line_to(g_w), hold=0.0)
     sc.step("6/6", "", 0.5, rb.grip_to(GRIP_CUP), hold=0.0)
     rb.grasp("cup")
-    sc.step("6/6", "", 1.0, rb.line_to(g_w_back), hold=0.0)
+    sc.step("6/6", "", 0.5, rb.line_to(T((0, 0, 8.0)) @ g_w), hold=0.0)
+    sc.step("6/6", "", 1.0, rb.line_to(g_w_back_hi), hold=0.0)
     vd = radial(VISION)
     g_v = lvl(VISION + (0, 0, CUP_GRASP), vd)
     g_v_back = g_v.copy()
@@ -1101,7 +1198,8 @@ def movie():
                                                                      lambda u: sc.gmat.__setitem__(
                                                                          "shield", T((0, 0, 140.0 * (1 - u))))),
             hold=0.0)
-    sc.step("6/6", "", 1.2, rb.line_to(g_v), hold=0.0)
+    sc.step("6/6", "", 1.2, rb.line_to(T((0, 0, 2.0)) @ g_v), hold=0.0)
+    sc.step("6/6", "", 0.3, rb.line_to(g_v), hold=0.0)
     sc.step("6/6", "", 0.5, rb.grip_to(OPEN_CUP), hold=0.0)
     rb.release(None)
     sc.step("6/6", "", 1.0, rb.line_to(g_v_back), hold=0.0)
@@ -1119,9 +1217,11 @@ def movie():
     g_r = lvl(seat + (0, 0, CUP_GRASP), (0.0, 1.0))
     g_r_back = g_r.copy()
     g_r_back[1, 3] -= 130.0
+    lift_r = C.CUP_POCKET + 6.0                                    # over the rack's top, then down into the pocket
     sc.step("6/6", "Racked: into the cassette, chapter 1's charge rack, cups in front and plugs behind.", 2.4,
-            rb.joint_to(Tw=g_r_back), hold=0.0, cam_to=CAM_RACK)
-    sc.step("6/6", "", 1.2, RB.both(rb.line_to(g_r), rb.grip_to(OPEN_RACK)), hold=0.0)
+            rb.joint_to(Tw=T((0, 0, lift_r)) @ g_r_back), hold=0.0, cam_to=CAM_RACK)
+    sc.step("6/6", "", 1.2, rb.line_to(T((0, 0, lift_r)) @ g_r), hold=0.0)
+    sc.step("6/6", "", 1.0, rb.line_to(g_r), hold=0.0)
     sc.step("6/6", "", 0.4, rb.grip_to(OPEN_RACK), hold=0.0)
     rb.release("rack")
     status(Arm="UR10e")
@@ -1159,6 +1259,9 @@ def movie():
     sc.step("6/6", "One run's set, cleaned, dried, weighed, measured and racked. The MiR250's arm takes the cassette "
                    "through the front window, over the light curtain, to tray J.", 2.5,
             rb.joint_to(q1=np.radians(PARK)), hold=2.0, cam_to=CAM_WIDE, still=True)
+    if os.environ.get("MCELL_STEPS"):
+        for st in sc.substeps:
+            print(f"{st['start_frame']:5d}-{st['end_frame']:5d} {st['label']} {st['caption'][:60]}")
     return sc.save()
 
 
