@@ -59,11 +59,11 @@ import lab                            # noqa: E402
 import props as P                     # noqa: E402
 import robot as RB                    # noqa: E402
 import vlm as V                       # noqa: E402
-import carousel as _CR                # noqa: E402
 
-# Round 14 made the doser's dose post and draft shield (carousel.STATION "r14") the default; this clip's balance
-# check was choreographed for rounds 9-13's pedestal, set through the HR-202i's side door, so it keeps that station
-_CR.STATION = "r9"
+# Round 14: the doser's station is the dose post with its nest, inside our draft shield (carousel.STATION "r14"): the
+# weight goes onto the post's nest (the vial's, 28.5 mm across its 24 mm foot) through the shield's door, with the
+# electronics carriage docked, since it parks right over the post (doser_shield.py). The weight is short enough
+# (37.5 mm) to pass under the docked carriage untilted, so no module tilts over it.
 
 NAME = "upkeep_clip"
 TITLE = "Vertical cloud lab: maintenance in the workflow"
@@ -735,26 +735,29 @@ def movie():
         step(0.4, rb.grip_to(0.0))
         rb.release(car.fork_group)
         lin(A.down(p_hand + (0, 0, 120), spin=180.0), 0.7)
-        say("2/3 A check between jobs", "The arm parks. The side door opens, the shuttle carries the weight in, sets it "
-                                       "on the pedestal on the pan and backs out; the door shuts. The HR-202i has no "
-                                       "internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so "
-                                       "this weight is its check, and once a month its calibration.")
-        status(L, Arm="parked", Doser="shuttle in", **{"HR-202i": "0.0000 g  tared"})
-        step(1.2, RB.both(rb.joint_to(PARK), car.to(side_door=C.SIDE_OPEN)), cam=cam_close)
+        say("2/3 A check between jobs", "The arm parks and the doser docks its carriage, which parks right over the dose "
+                                       "post otherwise (no module tilts: the weight is short enough). Our shield's door "
+                                       "opens, the shuttle sets the weight in the post's nest and backs out; the door "
+                                       "shuts. The HR-202i has no internal mass (A&D's HR-i manual: calibrate 'using a "
+                                       "weight that you have'), so this weight is its check, and once a month its "
+                                       "calibration.")
+        status(L, Arm="parked", Doser="carriage docked; shuttle in", **{"HR-202i": "0.0000 g  tared (the post)"})
+        step(1.2, RB.both(rb.joint_to(PARK), car.to(ext=C.DOCK_EXT, magnet_on=True)), cam=cam_close)
+        step(0.5, car.to(shield_door=1.0))
         step(1.8, car.to(shuttle=0.0),
-             labels=[("A&D HR-202i, side door open", tuple(rig_w(pan + (-80, -120, 120))), (0.24, 0.24)),
-                     ("the pedestal on the pan", tuple(rig_w(pan + (0, 0, -60))), (0.70, 0.66))])
+             labels=[("our draft shield, its door open", tuple(rig_w(pan + (-30, -60, 40))), (0.24, 0.24)),
+                     ("the dose post's nest, on the pan", tuple(rig_w(pan + (0, 0, -80))), (0.70, 0.66))])
         step(0.5, car.to(fork=A.SET_U), hold=0.0)
         car.reparent("w_weight", rig)
         step(0.3, car.to(fork=1.0))
         step(1.4, car.to(shuttle=1.0))
-        step(0.7, car.to(side_door=0.0, fork=0.0))
+        step(0.7, car.to(shield_door=0.0, fork=0.0))
         reading = WEIGHT["g"] + TODAY_MG / 1000.0
 
         def settle(v):
             r = WEIGHT["g"] * min(1.0, v * 1.15) + (TODAY_MG / 1000.0 if v > 0.85 else 0.0)
             sc.clock = ("HR-202i, 220 g x 0.1 mg", f"{r:9.4f} g" + ("  stable" if v > 0.85 else ""))
-        say("2/3 A check between jobs", "Doors shut, the reading settles: 100.0001 g against the weight's certificate. "
+        say("2/3 A check between jobs", "The door shut, the reading settles: 100.0001 g against the weight's certificate. "
                                        "The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is "
                                        "shown), and the mean goes on the control chart against the lab's limits.")
         status(L, Doser="the check weight on the pan", **{"HR-202i": "settling"})
@@ -794,13 +797,14 @@ def movie():
                                        "tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two "
                                        "night-time jobs.")
         status(L, Doser="shuttle out", **{"HR-202i": ""})
-        step(0.7, car.to(side_door=C.SIDE_OPEN, fork=1.0), cam=cam_close)
+        step(0.7, car.to(shield_door=1.0, fork=1.0), cam=cam_close)
         step(1.4, car.to(shuttle=0.0), hold=0.0)
         step(0.3, car.to(fork=A.SET_U), hold=0.0)
         car.reparent("w_weight", car.fork_group)
         step(0.4, car.to(fork=0.0), hold=0.0)
         step(1.4, car.to(shuttle=1.0), hold=0.0)
-        step(0.5, car.to(side_door=0.0))
+        step(0.5, car.to(shield_door=0.0))
+        step(0.9, car.to(ext=0.0, magnet_on=False), hold=0.0)
         status(L, Arm="the weight: shuttle to the deck", Doser="")
         go(Tw=A.down(p_hand + (0, 0, 120), spin=180.0), secs=1.4, grip=0.0, cam=A.CAM_WORK)
         lin(A.down(p_hand, spin=180.0), 0.7)

@@ -131,8 +131,10 @@ FFMPEG_THREADS=2 VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_HD_CLEAN=0 VIZ3D_AUDIT=1 
   GH-202 that replaces it). The stream's own spread over 45 mm of still air is still powder-doser's T8b.
 - **The die's cleaning is a plan to validate**, with swabs and ICP-MS at the run changes. The IPA swab at a change of
   run is not animated.
-- **The maintenance clip still shows rounds 9-13's pedestal** (`upkeep_clip.py` pins `carousel.STATION = "r9"`). Its
-  balance check would now need a module docked and tilted, and a nest for the check weight.
+- **The maintenance clip's balance check is on the new station too** (`upkeep_clip.py`): the 100 g check weight goes
+  onto the vial's nest with the carriage docked and no module tilted, at 0 arm and 0 mover frames in collision (4 fps
+  audit of the whole clip). The people check there still finds the person's glove 3 mm into the extraction table's
+  frame for one frame in part 3, which this run didn't touch.
 - **For the next long-form** (run D's narration, `longform.py`): chapter 1's still "Can the cup come closer to the
   exit?" (`doser_raise_section.png`, round 10) and its narration line ("The cup can't come closer to the outlet ...")
   are out of date. Suggested: `doser_shield_section.png`, captioned "The doser's carriage parks right over the cup,

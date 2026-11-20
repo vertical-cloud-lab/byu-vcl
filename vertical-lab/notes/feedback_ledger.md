@@ -282,6 +282,7 @@ Round 10's outcome for each open point is in the last column.
 | "When it's actually on the pedestal, it still looks relatively unsecure" (9:54) | ✅ the nest's 4 mm ring holds the vessel's foot all round (0.25 mm a side, a lead-in), a nest for the cup and one for the vial; the fork's tines drop into its grooves |
 | The die and punch need cleaning between presses; cross-contamination run to run | ✅ `alloy_press.Cleaner`, [`vacuum_press.md`](vacuum_press.md#round-14-cleaning-the-die-and-the-punch-between-presses-pr-318-2026-11-20): the punch through a brush cup, the bore by a vacuum wand, after every press; an IPA swab at a run change (not animated); target ≤ 10 ppm of the next charge (0.43 mg Al cup, 1.46 mg Cu cup), shown by validation swabs and ICP-MS |
 | Weigh each cup again after the press fit | ✅ chapter 1: back to the HR-202i, read against its weight before pressing plus its plug (±1.0 mg), recorded in the clip's JSON |
+| (follow-on) the maintenance clip's balance check on the same station | ✅ `upkeep_clip.py`: the check weight onto the vial's nest, the carriage docked, no module tilted |
 
 ### Nov 20 18:00: round 12's video, the narration, footage, cards, ICP-MS and the arm's name (run D)
 

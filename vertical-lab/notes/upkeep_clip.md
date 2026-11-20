@@ -166,8 +166,11 @@ are grey; upkeep is coloured by who does it:
 - **The weight.** The A&D HR-202i under the multi-doser's dose point is checked with a 100 g OIML class E2 weight.
   The weight lives in tray J's store and rides on the MiR's deck in a low seat of its own (ours).
 - **Into the balance.** The arm takes the weight by its body, as weight tongs would, and stands it on our vessel
-  shuttle's fork outside the doser. The shuttle carries it through the balance's side door onto the pedestal on the
-  pan and backs out, as round 9's 8:37 clip sets a vial.
+  shuttle's fork outside the doser. Round 14 (PR #318, the doser's dose post and draft shield, `multidoser.md`): the
+  doser docks its electronics carriage first, since it parks right over the dose post, but tilts no module (the
+  weight, 37.5 mm tall, passes 4.3 mm under the docked carriage). The shield's door opens, and the shuttle sets the
+  weight in the post's nest (the vial's, 28.5 mm across the weight's 24 mm foot) and backs out. Rounds 9-13 set it
+  through the balance's side door on a pedestal.
 - **The reading.** It settles to 100.0001 g. The shuttle lifts the weight off and back ten times, for USP <41>'s
   repeatability (one is shown). The mean goes on a control chart against the lab's limits.
 - **The what-if.** A reading outside the limits is repeated once. Still out, the doser is flagged, no doses are booked

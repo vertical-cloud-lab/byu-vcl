@@ -386,6 +386,6 @@ is docked and tilted. Chapter 1 and the 9:22 clip are re-scripted for it (`alloy
 
 The post, nest, roof plate, shield and fork are our designs, not built. That the HR-202i's glass top door lifts out of
 its rails, and that a plate of our own seats in them, is assumed: to check on a real HR-202i (or the GH-202 that
-replaces it). The post's mass and stiffness are estimates. The maintenance clip still
-shows rounds 9-13's pedestal (`upkeep_clip.py` pins `carousel.STATION = "r9"`): its balance check would now need a
-module docked and tilted too.
+replaces it). The post's mass and stiffness are estimates. The maintenance clip's
+balance check is on the new station too: its 100 g check weight goes onto the vial's nest with the carriage docked but
+no module tilted (the weight is 37.5 mm tall), audited at 0 frames in collision ([`upkeep_clip.md`](upkeep_clip.md)).
