@@ -10256,23 +10256,149 @@
    "title": "Copper corrosion spots on the CubXL",
    "model": "CubXL + NuVant EZstat Pro",
    "module": "r9_cubxl",
-   "frames": 1125,
-   "parts": 97,
-   "nonconvex_parts": 32,
-   "mujoco_geoms": 691,
-   "moving_pieces": 15,
+   "frames": 1419,
+   "parts": 110,
+   "nonconvex_parts": 38,
+   "mujoco_geoms": 754,
+   "moving_pieces": 22,
    "pose_error_mm": 0.0,
-   "candidates": 8004,
-   "confirmed": 7822,
+   "candidates": 16420,
+   "confirmed": 12763,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 182,
+   "rejected_by_exact": 3657,
    "seconds": {
-    "geometry": 680.4,
-    "sweep": 4.8,
-    "loose": 2.8,
-    "total": 689.0
+    "geometry": 6.4,
+    "sweep": 6.3,
+    "loose": 2.0,
+    "total": 15.5
    },
    "findings": [
+    {
+     "a": "ptip / ptip (P300 rack)",
+     "b": "p3 / P300 shaft",
+     "pieces": [
+      "ptip",
+      "p3"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 5.29,
+     "volume_mm3": 374.1,
+     "mujoco_depth_mm": 8.15,
+     "frames": 151,
+     "first_frame": 71,
+     "last_frame": 229,
+     "worst_frame": 120,
+     "at_mm": [
+      54.6,
+      -184.1,
+      220.5
+     ],
+     "actions": [
+      1,
+      2
+     ],
+     "captions": [
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one "
+     ]
+    },
+    {
+     "a": "ptip2 / ptip2 (P300 rack)",
+     "b": "p3 / P300 shaft",
+     "pieces": [
+      "ptip2",
+      "p3"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 5.29,
+     "volume_mm3": 374.1,
+     "mujoco_depth_mm": 8.13,
+     "frames": 78,
+     "first_frame": 412,
+     "last_frame": 489,
+     "worst_frame": 419,
+     "at_mm": [
+      -116.0,
+      -222.5,
+      208.9
+     ],
+     "actions": [
+      3
+     ],
+     "captions": [
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L"
+     ]
+    },
+    {
+     "a": "ptip3 / ptip3 (P300 rack)",
+     "b": "p3 / P300 shaft",
+     "pieces": [
+      "ptip3",
+      "p3"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 5.29,
+     "volume_mm3": 374.1,
+     "mujoco_depth_mm": 8.13,
+     "frames": 96,
+     "first_frame": 904,
+     "last_frame": 999,
+     "worst_frame": 947,
+     "at_mm": [
+      5.0,
+      7.5,
+      154.0
+     ],
+     "actions": [
+      8
+     ],
+     "captions": [
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti"
+     ]
+    },
+    {
+     "a": "ptip4 / ptip4 (P300 rack)",
+     "b": "p3 / P300 shaft",
+     "pieces": [
+      "ptip4",
+      "p3"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 5.29,
+     "volume_mm3": 374.1,
+     "mujoco_depth_mm": 8.13,
+     "frames": 183,
+     "first_frame": 1027,
+     "last_frame": 1209,
+     "worst_frame": 1060,
+     "at_mm": [
+      138.0,
+      -32.5,
+      209.0
+     ],
+     "actions": [
+      8
+     ],
+     "captions": [
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti"
+     ]
+    },
     {
      "a": "tip / tip (rack 1)",
      "b": "tools / P20 shaft",
@@ -10288,55 +10414,20 @@
      "thickness_mm": 3.31,
      "volume_mm3": 111.3,
      "mujoco_depth_mm": 4.0,
-     "frames": 296,
-     "first_frame": 59,
-     "last_frame": 370,
-     "worst_frame": 121,
+     "frames": 81,
+     "first_frame": 306,
+     "last_frame": 386,
+     "worst_frame": 321,
      "at_mm": [
-      189.8,
-      3.1,
-      204.3
+      193.0,
+      -87.5,
+      186.6
      ],
      "actions": [
-      1,
-      2,
       3
      ],
      "captions": [
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope"
-     ]
-    },
-    {
-     "a": "tip2 / tip2 (rack 1)",
-     "b": "tools / P20 shaft",
-     "pieces": [
-      "tip2",
-      "tools"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 3.31,
-     "volume_mm3": 111.3,
-     "mujoco_depth_mm": 4.0,
-     "frames": 177,
-     "first_frame": 759,
-     "last_frame": 935,
-     "worst_frame": 935,
-     "at_mm": [
-      205.0,
-      -82.5,
-      177.8
-     ],
-     "actions": [
-      8
-     ],
-     "captions": [
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a"
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L"
      ]
     },
     {
@@ -10355,13 +10446,13 @@
      "volume_mm3": 111.3,
      "mujoco_depth_mm": 4.0,
      "frames": 56,
-     "first_frame": 1014,
-     "last_frame": 1069,
-     "worst_frame": 1064,
+     "first_frame": 1308,
+     "last_frame": 1363,
+     "worst_frame": 1323,
      "at_mm": [
-      -72.0,
-      -143.5,
-      179.4
+      138.0,
+      -164.5,
+      201.0
      ],
      "actions": [
       9
@@ -10385,9 +10476,9 @@
      "thickness_mm": 3.11,
      "volume_mm3": 213.9,
      "mujoco_depth_mm": 6.48,
-     "frames": 47,
+     "frames": 279,
      "first_frame": 0,
-     "last_frame": 62,
+     "last_frame": 310,
      "worst_frame": 0,
      "at_mm": [
       111.3,
@@ -10397,61 +10488,16 @@
      "actions": [
       -1,
       0,
-      1
-     ],
-     "captions": [
-      "as modelled",
-      "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack."
-     ]
-    },
-    {
-     "a": "body / tip rack 1",
-     "b": "tip2 / tip2 (rack 1)",
-     "pieces": [
-      "body",
-      "tip2"
-     ],
-     "level": "fault",
-     "kind": "built in",
-     "intended": null,
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 3.11,
-     "volume_mm3": 213.9,
-     "mujoco_depth_mm": 6.48,
-     "frames": 692,
-     "first_frame": 0,
-     "last_frame": 763,
-     "worst_frame": 0,
-     "at_mm": [
-      102.8,
-      -143.5,
-      120.4
-     ],
-     "actions": [
-      -1,
-      0,
       1,
       2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
+      3
      ],
      "captions": [
       "as modelled",
       "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope",
-      "4  The head camera checks for liquid outside the O-ring (2 min).",
-      "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
-      "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
-      "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a"
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L"
      ]
     },
     {
@@ -10469,9 +10515,9 @@
      "thickness_mm": 7.0,
      "volume_mm3": 67200.0,
      "mujoco_depth_mm": 7.0,
-     "frames": 1125,
+     "frames": 1419,
      "first_frame": 0,
-     "last_frame": 1220,
+     "last_frame": 1514,
      "worst_frame": 0,
      "at_mm": [
       -316.5,
@@ -10496,16 +10542,16 @@
      "captions": [
       "as modelled",
       "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
       "4  The head camera checks for liquid outside the O-ring (2 min).",
       "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
       "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
       "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
       "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
-      "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells ",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
       "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
      ]
     },
@@ -10524,9 +10570,9 @@
      "thickness_mm": 7.0,
      "volume_mm3": 67200.0,
      "mujoco_depth_mm": 7.0,
-     "frames": 1125,
+     "frames": 1419,
      "first_frame": 0,
-     "last_frame": 1220,
+     "last_frame": 1514,
      "worst_frame": 0,
      "at_mm": [
       316.5,
@@ -10551,16 +10597,71 @@
      "captions": [
       "as modelled",
       "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
       "4  The head camera checks for liquid outside the O-ring (2 min).",
       "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
       "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
       "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
       "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
-      "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells ",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
+      "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
+     ]
+    },
+    {
+     "a": "body / tip rack 1",
+     "b": "tip2 / tip2 (rack 1)",
+     "pieces": [
+      "body",
+      "tip2"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 3.11,
+     "volume_mm3": 213.9,
+     "mujoco_depth_mm": 6.48,
+     "frames": 1419,
+     "first_frame": 0,
+     "last_frame": 1514,
+     "worst_frame": 0,
+     "at_mm": [
+      102.8,
+      -143.5,
+      120.4
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "captions": [
+      "as modelled",
+      "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
+      "4  The head camera checks for liquid outside the O-ring (2 min).",
+      "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
+      "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
+      "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
+      "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
       "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
      ]
     },
@@ -10579,9 +10680,9 @@
      "thickness_mm": 3.11,
      "volume_mm3": 213.9,
      "mujoco_depth_mm": 6.48,
-     "frames": 1078,
+     "frames": 1372,
      "first_frame": 0,
-     "last_frame": 1220,
+     "last_frame": 1514,
      "worst_frame": 0,
      "at_mm": [
       -72.0,
@@ -10606,50 +10707,17 @@
      "captions": [
       "as modelled",
       "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
       "4  The head camera checks for liquid outside the O-ring (2 min).",
       "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
       "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
       "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
       "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
-      "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells ",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
       "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
-     ]
-    },
-    {
-     "a": "body / cap-parking vial (empty)",
-     "b": "vcap_asw / ASW (D1141, no heavy metals) cap",
-     "pieces": [
-      "body",
-      "vcap_asw"
-     ],
-     "level": "minor",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 1.61,
-     "volume_mm3": 304.9,
-     "mujoco_depth_mm": 1.93,
-     "frames": 215,
-     "first_frame": 116,
-     "last_frame": 338,
-     "worst_frame": 116,
-     "at_mm": [
-      138.0,
-      0.5,
-      134.2
-     ],
-     "actions": [
-      2,
-      3
-     ],
-     "captions": [
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope"
      ]
     },
     {
@@ -10664,56 +10732,23 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 1.06,
-     "volume_mm3": 13.8,
+     "thickness_mm": 1.03,
+     "volume_mm3": 14.4,
      "mujoco_depth_mm": 1.0,
-     "frames": 11,
-     "first_frame": 133,
-     "last_frame": 287,
-     "worst_frame": 133,
+     "frames": 4,
+     "first_frame": 336,
+     "last_frame": 339,
+     "worst_frame": 336,
      "at_mm": [
       98.1,
-      -142.2,
+      -109.6,
       134.6
      ],
      "actions": [
-      2,
       3
      ],
      "captions": [
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope"
-     ]
-    },
-    {
-     "a": "body / ASW (D1141, no heavy metals) liquid",
-     "b": "tip / tip (rack 1)",
-     "pieces": [
-      "body",
-      "tip"
-     ],
-     "level": "minor",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 0.89,
-     "volume_mm3": 2.3,
-     "mujoco_depth_mm": 2.5,
-     "frames": 8,
-     "first_frame": 133,
-     "last_frame": 207,
-     "worst_frame": 133,
-     "at_mm": [
-      138.0,
-      -131.5,
-      116.1
-     ],
-     "actions": [
-      2
-     ],
-     "captions": [
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold"
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L"
      ]
     },
     {
@@ -10732,9 +10767,9 @@
      "volume_mm3": 2.3,
      "mujoco_depth_mm": 2.5,
      "frames": 4,
-     "first_frame": 285,
-     "last_frame": 288,
-     "worst_frame": 285,
+     "first_frame": 336,
+     "last_frame": 339,
+     "worst_frame": 336,
      "at_mm": [
       138.0,
       -98.5,
@@ -10744,7 +10779,7 @@
       3
      ],
      "captions": [
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope"
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L"
      ]
     },
     {
@@ -10763,9 +10798,9 @@
      "volume_mm3": 2.3,
      "mujoco_depth_mm": 2.5,
      "frames": 3,
-     "first_frame": 1033,
-     "last_frame": 1035,
-     "worst_frame": 1033,
+     "first_frame": 1327,
+     "last_frame": 1329,
+     "worst_frame": 1327,
      "at_mm": [
       138.0,
       -164.5,
@@ -10779,6 +10814,68 @@
      ]
     },
     {
+     "a": "body / ASW (D1141, no heavy metals) liquid",
+     "b": "ptip / ptip (P300 rack)",
+     "pieces": [
+      "body",
+      "ptip"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.84,
+     "volume_mm3": 2.0,
+     "mujoco_depth_mm": 2.5,
+     "frames": 5,
+     "first_frame": 147,
+     "last_frame": 151,
+     "worst_frame": 147,
+     "at_mm": [
+      138.0,
+      -131.5,
+      116.1
+     ],
+     "actions": [
+      2
+     ],
+     "captions": [
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one "
+     ]
+    },
+    {
+     "a": "body / DI water liquid",
+     "b": "ptip4 / ptip4 (P300 rack)",
+     "pieces": [
+      "body",
+      "ptip4"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.84,
+     "volume_mm3": 2.0,
+     "mujoco_depth_mm": 2.5,
+     "frames": 5,
+     "first_frame": 1064,
+     "last_frame": 1068,
+     "worst_frame": 1064,
+     "at_mm": [
+      138.0,
+      -32.5,
+      116.1
+     ],
+     "actions": [
+      8
+     ],
+     "captions": [
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti"
+     ]
+    },
+    {
      "a": "body / vial ASW (D1141, no heavy metals)",
      "b": "vcap_asw / ASW (D1141, no heavy metals) cap",
      "pieces": [
@@ -10786,16 +10883,16 @@
       "vcap_asw"
      ],
      "level": "minor",
-     "kind": "built in",
+     "kind": "guide",
      "intended": null,
      "at_rest": true,
      "all_frames": false,
      "thickness_mm": 1.61,
      "volume_mm3": 304.9,
      "mujoco_depth_mm": 2.05,
-     "frames": 881,
+     "frames": 1362,
      "first_frame": 0,
-     "last_frame": 1220,
+     "last_frame": 1514,
      "worst_frame": 0,
      "at_mm": [
       138.0,
@@ -10820,16 +10917,16 @@
      "captions": [
       "as modelled",
       "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
       "4  The head camera checks for liquid outside the O-ring (2 min).",
       "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
       "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
       "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
       "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
-      "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells ",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
       "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
      ]
     },
@@ -10848,9 +10945,9 @@
      "thickness_mm": 1.61,
      "volume_mm3": 304.9,
      "mujoco_depth_mm": 2.05,
-     "frames": 1075,
+     "frames": 1367,
      "first_frame": 0,
-     "last_frame": 1220,
+     "last_frame": 1514,
      "worst_frame": 0,
      "at_mm": [
       138.0,
@@ -10875,16 +10972,16 @@
      "captions": [
       "as modelled",
       "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
       "4  The head camera checks for liquid outside the O-ring (2 min).",
       "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
       "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
       "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
       "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
-      "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells ",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
       "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
      ]
     },
@@ -10903,9 +11000,9 @@
      "thickness_mm": 1.61,
      "volume_mm3": 304.9,
      "mujoco_depth_mm": 1.93,
-     "frames": 1020,
+     "frames": 1314,
      "first_frame": 0,
-     "last_frame": 1220,
+     "last_frame": 1514,
      "worst_frame": 0,
      "at_mm": [
       138.0,
@@ -10930,53 +11027,210 @@
      "captions": [
       "as modelled",
       "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
-      "1  The CubXL's P20 (1-20 \u00b5L) takes a 20 \u00b5L tip from Ben's rack.",
-      "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same hold",
-      "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks ope",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
       "4  The head camera checks for liquid outside the O-ring (2 min).",
       "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
       "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
       "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
       "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
-      "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells ",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
       "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
      ]
     },
     {
-     "a": "tools / camera lens",
-     "b": "cap / steel disc",
+     "a": "body / vial DI water",
+     "b": "vcap_di / DI water cap",
      "pieces": [
-      "tools",
-      "cap"
+      "body",
+      "vcap_di"
+     ],
+     "level": "minor",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 1.61,
+     "volume_mm3": 304.9,
+     "mujoco_depth_mm": 2.01,
+     "frames": 1368,
+     "first_frame": 0,
+     "last_frame": 1514,
+     "worst_frame": 0,
+     "at_mm": [
+      138.0,
+      -32.5,
+      134.2
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "captions": [
+      "as modelled",
+      "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations",
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 \u00b5L of ASW in one ",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
+      "4  The head camera checks for liquid outside the O-ring (2 min).",
+      "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) fro",
+      "6  Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR \u00b110 mV, rest 5 min, a +50 mV hold",
+      "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
+      "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
+      "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
+     ]
+    },
+    {
+     "a": "tip / tip (rack 1)",
+     "b": "ptip4 / ptip4 (P300 rack)",
+     "pieces": [
+      "tip",
+      "ptip4"
      ],
      "level": "touching",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.5,
-     "volume_mm3": 16.0,
-     "mujoco_depth_mm": 0.5,
-     "frames": 9,
-     "first_frame": 784,
-     "last_frame": 898,
-     "worst_frame": 784,
+     "thickness_mm": 0.38,
+     "volume_mm3": 0.8,
+     "mujoco_depth_mm": 0.6,
+     "frames": 4,
+     "first_frame": 1212,
+     "last_frame": 1215,
+     "worst_frame": 1213,
      "at_mm": [
-      -90.1,
-      9.1,
-      140.8
+      202.8,
+      -87.4,
+      119.7
      ],
      "actions": [
       8
      ],
      "captions": [
-      "8  A new tip moves the well's 150 \u00b5L to tube 1 for ICP-MS, 8 transfers of 18.75 \u00b5L, then a"
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti"
+     ]
+    },
+    {
+     "a": "body / P300 tip rack",
+     "b": "p3 / P300 shaft",
+     "pieces": [
+      "body",
+      "p3"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.3,
+     "volume_mm3": 3.2,
+     "mujoco_depth_mm": 0.3,
+     "frames": 11,
+     "first_frame": 72,
+     "last_frame": 1029,
+     "worst_frame": 412,
+     "at_mm": [
+      -116.0,
+      -222.5,
+      139.8
+     ],
+     "actions": [
+      1,
+      3,
+      8
+     ],
+     "captions": [
+      "1  The P300 (20-300 \u00b5L) takes a 300 \u00b5L tip from its rack at the deck's front left. One tip",
+      "3  Sulfide last, with the P20 (1-20 \u00b5L): a 20 \u00b5L tip, 15 \u00b5L of the 10 mg/L S stock, 150 \u00b5L",
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti"
+     ]
+    },
+    {
+     "a": "body / tip waste",
+     "b": "ptip3 / ptip3 (P300 rack)",
+     "pieces": [
+      "body",
+      "ptip3"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.81,
+     "frames": 489,
+     "first_frame": 1002,
+     "last_frame": 1514,
+     "worst_frame": 1002,
+     "at_mm": null,
+     "actions": [
+      8,
+      9,
+      10,
+      11
+     ],
+     "captions": [
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
+      "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
+      "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
+     ]
+    },
+    {
+     "a": "body / tip waste",
+     "b": "ptip4 / ptip4 (P300 rack)",
+     "pieces": [
+      "body",
+      "ptip4"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.62,
+     "frames": 274,
+     "first_frame": 1217,
+     "last_frame": 1514,
+     "worst_frame": 1217,
+     "at_mm": null,
+     "actions": [
+      8,
+      9,
+      10,
+      11
+     ],
+     "captions": [
+      "8  The P300 moves the well's 150 \u00b5L to tube 1 in one transfer (the P20 took 8). A fresh ti",
+      "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 \u00b5L",
+      "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a ",
+      "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the s"
      ]
     }
    ],
    "loose": [],
    "not_rigid_left_out": [
+    "p3liq",
     "tipliq",
     "tubeliq",
     "wellliq"
@@ -36357,17 +36611,17 @@
    "openflexure_delta",
    "openflexure_v7"
   ],
-  "frames": 11503,
-  "mujoco_geoms": 8359,
-  "candidates": 118701,
-  "confirmed": 55232,
-  "rejected_by_exact": 11014,
-  "faults": 365,
-  "minor": 128,
-  "moving_faults": 201,
+  "frames": 11797,
+  "mujoco_geoms": 8422,
+  "candidates": 127117,
+  "confirmed": 60173,
+  "rejected_by_exact": 14489,
+  "faults": 368,
+  "minor": 129,
+  "moving_faults": 204,
   "intended": 334,
   "loose": 18,
-  "seconds": 3451.8
+  "seconds": 2778.3
  },
  "method": {
   "tessellation_mm_rad": [

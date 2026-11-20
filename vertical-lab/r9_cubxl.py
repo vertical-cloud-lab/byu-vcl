@@ -11,6 +11,8 @@ clip: the ASW stock stays open (its cap parked) while the sulfide stock is opene
 """
 from __future__ import annotations
 
+import math
+
 import instruments_lab as IL
 
 # every helper, constant and material of instruments_lab, so the copied functions below run unchanged
@@ -21,23 +23,59 @@ CAMS, PLOTS = IL.CAMS, IL.PLOTS
 
 PARK_SEAT = 6                       # holder seat of the cap-parking vial (y 233)
 
+# ---- round 14 (PR #372, notes/cubxl_pipettes.md): an OT-2 GEN2 P300 single beside the P20, as that note recommends.
+# It sits 34 mm in front of the P20 (the spacing of an OT-2's two mounts): beside it in x, the capper would sit over the
+# cup block whenever the P300 worked at S1. Its nozzle is 16 mm above the P20's, so a seated 300 uL tip (59.3 mm long,
+# 8.3 mm on the nozzle) ends 35 mm below the carriage's reference, as a P20 tip does: on the CubXL's one Z axis the
+# two tips' ends share a height, and only one tip is on the head at a time. Its tips: a printed 2 x 4 rack at the
+# deck's front left, the one place found clear of the capper, the camera and the bare P20 whenever either pipette works
+# (the capper's footprint over the tube rack, rack 2 and the holder ruled out the middle of the deck).
+P3 = dict(off=(55.0, -23.0), noz=16.0, tip_len=59.3, seat=8.3, rack=(55.0, 10.0), pitch=9.0, cols=4, rows=2,
+          rack_top=60.0, tip_top=68.0, lift=40.0)
+# The lift (round 14, after the audit): with both pipettes fixed on one Z, the P300 dipping 35 mm into the ASW vial put
+# the bare P20 nozzle, 34 mm behind it, onto the next vial's cap (the holder's pitch is 33 mm), and the deeper it
+# reached as the stock ran down the worse it got. So the P300 rides its own 40 mm lift (an Actuonix L16-50-class linear
+# actuator), as each of an OT-2's two mounts has its own Z: stowed, its tip ends where a P20 tip does; working, it
+# hangs 40 mm lower, so the carriage, the P20 and the capper stay 40 mm higher. It stows before every move at travel
+# height: deployed at the travel plane, its tip's end would be at 47 mm, below the caps and the racks.
+P3_HANG = P3["tip_len"] - P3["seat"] - P3["noz"]            # 35.0: a 300 uL tip's end below the carriage's reference
+P3_TIPS = {"ptip": (0, 0), "ptip2": (1, 0), "ptip3": (2, 0), "ptip4": (3, 0)}     # (column, row) of the four used
+P3_TIP_HOME = {k: (P3["rack"][0] + c * P3["pitch"], P3["rack"][1] + r * P3["pitch"]) for k, (c, r) in P3_TIPS.items()}
+P3_JITTER = {"ptip2": (-7.0, 6.0), "ptip3": (7.0, -6.0), "ptip4": (-2.0, -9.0), "ptip": (8.0, 8.0)}
+MIX_UL = 80.0                       # a mixing stroke: 150 uL stands 4.4 mm; 70 uL left still covers the tip at 2 mm
+
+
+def p3_tip_level(ul: float) -> float:
+    """Height above a 300 uL tip's end of `ul` microlitres: its bore widens from 0.7 mm at the end at 0.09 mm/mm."""
+    if ul <= 0:
+        return 0.0
+    z, v, dz = 0.0, 0.0, 0.05
+    while v < ul and z < 50:
+        r = 0.35 + 0.045 * (z + dz / 2)
+        v += math.pi * r * r * dz
+        z += dz
+    return z
+
 
 def _corr_start(**kw) -> dict:
-    return IL._corr_start(pcap="", **kw)
+    return IL._corr_start(pcap="", ptip="rack", ptip2="rack", ptip3="rack", ptip4="rack", p3_ul=0.0, p3_liq="",
+                          p3drop=0.0, di=CORR["stock_ml"], **kw)
 
 
 
 
 _CORR_SEGS = (("start", "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations, S1 "
                         "C71500 Cu-Ni, S2 C95800 NAB, S3 a DED pad, S4 a PTFE blank; Ben's 9-vial holder of stocks; three "
-                        "cups; 2 x 8 ICP-MS tubes; two tip racks. On the head: the capper, a P20 and a camera."),
-              ("tip", "1  The CubXL's P20 (1-20 µL) takes a 20 µL tip from Ben's rack."),
-              ("asw", "2  The capper lifts the seawater cap and sets it on an empty parking vial in the same holder, so the "
-                      "magnet is free. The P20 builds S1's well from 135 µL of ASW: 7 transfers of 19.3 µL, each "
-                      "dispensed from above the meniscus."),
-              ("filled", "3  Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks open, "
-                         "one cap parked, one carried). 15 µL of the 10 mg/L S stock, same tip, makes 150 µL at 1 mg/L S; "
-                         "then each cap goes home in turn and the tip goes to the waste."),
+                        "cups; 2 x 8 ICP-MS tubes; tip racks. On the head: the capper, the P20, a P300 34 mm in front of "
+                        "it (proposed, notes/cubxl_pipettes.md) and a camera."),
+              ("tip", "1  The P300 (20-300 µL) takes a 300 µL tip from its rack at the deck's front left. One tip on "
+                      "the head at a time: the two pipettes share one Z axis."),
+              ("asw", "2  The capper lifts the seawater cap. The P300 builds S1's well from 135 µL of ASW in one "
+                      "transfer (the P20 alone took 7), dispensed from above the meniscus; the cap goes back. The tip "
+                      "only ever touches ASW, so it goes back to its rack for the next well."),
+              ("filled", "3  Sulfide last, with the P20 (1-20 µL): a 20 µL tip, 15 µL of the 10 mg/L S stock, 150 µL "
+                         "at 1 mg/L S. Then the P300 mixes the well, 3 strokes of 80 µL with a fresh tip: H2S leaves "
+                         "a sulfide layer at the top far faster than it reaches the metal."),
               ("leak", "4  The head camera checks for liquid outside the O-ring (2 min)."),
               ("capped", "5  The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) from "
                          "its park cup and sets it over S1's boss: no O-ring, two small lid magnets hold it. No tip on."),
@@ -45,12 +83,14 @@ _CORR_SEGS = (("start", "Copper corrosion on the CubXL, as DAL's copper screen l
                            "for 10 min, OCP 5 min. EIS needs the requested potentiostat: the EZstat Pro has none, so "
                            "until then OCP runs 30 min."),
               ("parked", "7  The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked."),
-              ("collected", "8  A new tip moves the well's 150 µL to tube 1 for ICP-MS, 8 transfers of 18.75 µL, then "
-                            "a 150 µL DI rinse the same way: 16 transfers."),
+              ("collected", "8  The P300 moves the well's 150 µL to tube 1 in one transfer (the P20 took 8). A fresh "
+                            "tip adds 150 µL of DI water from above, rinses S1 twice and carries the rinse to the "
+                            "tube: 3 transfers where the P20 took 24."),
               ("acid", "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 µL of "
-                       "1 M HNO3 from above the rim: 320 µL at 62 mM HNO3. The acid tip goes back to rack 2."),
-              ("imaged", "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells "
-                         "(three pieces, two wells each, and S4's two blanks) take about 9 h of a 12 h night."),
+                       "1 M HNO3 from above the rim with the P20: 320 µL at 62 mM HNO3. The acid tip goes back to "
+                       "rack 2."),
+              ("imaged", "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a spot, "
+                         "against 22.5 with the P20 alone (CubXL step times, notes/cubxl_pipettes.md)."),
               ("end", "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the scan, "
                       "then its own tube. On every spot it would swamp the tube's copper (3.4 mC against the "
                       "hold's 0.2-2.8 mC)."))
@@ -60,73 +100,104 @@ _CORR_SEGS = (("start", "Copper corrosion on the CubXL, as DAL's copper screen l
 
 def _corr_spot() -> Timeline:
     """The head and everything that changes on the deck through one spot (protocol.md section 4, render_cubxl_cu.py's
-    build_story). Numbers interpolate between waypoints; text (what the tip holds, which transfer) holds from the
-    waypoint where it is set."""
+    build_story), with the P300 of round 14 taking the big transfers. Numbers interpolate between waypoints; text (what
+    the tip holds, which transfer) holds from the waypoint where it is set."""
     p = CORR
     TZ = p["travel_z"]
     tl = Timeline(_corr_start())
     h = Head(tl)
     go, travel, down, pip_to, bare_to, capper_to, camera_to = (h.go, h.travel, h.down, h.pip_to, h.bare_to,
                                                                h.capper_to, h.camera_to)
+
+    def p3_stow():                       # up to the travel plane, then the lift raises the P300
+        if tl.states[-1].get("p3drop", 0.0) > 0.0:
+            if tl.states[-1]["z"] < TZ - 1e-6:
+                go(max(0.25, (TZ - tl.states[-1]["z"]) / 110.0), z=TZ)
+            go(0.3, p3drop=0.0)
+
+    def p3_over(x, y):                   # stowed over (x, y) at the travel plane, then the lift lowers the P300
+        s_ = tl.states[-1]
+        if s_.get("p3drop", 0.0) > 0.0 and math.hypot(s_["x"] - (x - P3["off"][0]), s_["y"] - (y - P3["off"][1])) > 0.01:
+            p3_stow()
+        travel(x - P3["off"][0], y - P3["off"][1])
+        if tl.states[-1].get("p3drop", 0.0) < P3["lift"]:
+            go(0.3, p3drop=P3["lift"])
+
+    def p3_to(x, y, tip_end):            # the P300 with a tip, lowered on its lift, its end at deck z tip_end
+        p3_over(x, y)
+        down(tip_end + P3_HANG + P3["lift"])
+
+    def p3_bare(x, y, nozzle):           # the bare P300 nozzle, lowered on its lift, at deck z `nozzle`
+        p3_over(x, y)
+        down(nozzle - P3["noz"] + P3["lift"])
     st = p["stations"]
     S1 = (st[0], p["station_y"])
     hy = lambda k: p["holder_y0"] + k * p["holder_dy"]     # noqa: E731
     acid, asw, s10, di = (p["holder_x"], hy(1)), (p["holder_x"], hy(2)), (p["holder_x"], hy(3)), (p["holder_x"], hy(5))
     tube1 = (p["tubes_x0"], p["tubes_y"][0])
-    r1a1, r1a2 = p["rack1"], (p["rack1"][0] - p["rack_pitch"], p["rack1"][1])
+    r1a1 = p["rack1"]
     r2a1 = CORR["rack2_drawn"]
     lid, face, cup = p["lid"], p["face"], p["cup_rim"]
     cap_face = p["cap_h"]              # the magnet face sits on the cap's disc, cap_h above where the cap rests
     over = lid + 1.0                   # dispense with the tip end 1 mm over the lid: above the meniscus (4.4 mm max)
+    seat = P3["tip_top"] - P3["seat"]  # the P300's nozzle, pressed into a tip in its rack
     # 0. the deck, the head parked
     go(2.6)
     tl.mark("start")
-    # 1. a 20 µL tip from Ben's rack
-    bare_to(*r1a1, p["tip_top"] - 4.0)
-    go(0.2, tip="head", panel=1, what="takes a 20 µL tip from Ben's rack 1")
-    go(0.3, z=TZ)
+    # 1. the P300 takes a 300 µL tip from its rack (front left); one tip on the head at a time
+    p3_bare(*P3_TIP_HOME["ptip"], seat)
+    go(0.25, ptip="head", panel=1, what="the P300 takes a 300 µL tip from its rack")
+    p3_stow()
     tl.mark("tip")
-    # 2. the capper lifts the seawater cap and parks it on the empty parking vial (seat 6), so the magnet is free; 135 µL
-    # of ASW in 7 transfers of 19.3 µL, from above the meniscus
-    pv = (p["holder_x"], hy(PARK_SEAT))
+    # 2. the capper lifts the ASW cap; the P300 draws 135 µL and dispenses it into S1 from above the meniscus; the cap
+    # goes back; the tip, which only ever touches ASW, goes back to its rack for the next well
     capper_to(*asw, p["vial_cap"])
     go(0.2, vcap="asw", what="the capper lifts the ASW cap")
     go(0.25, z=TZ)
-    capper_to(*pv, p["vial_cap"])
-    go(0.2, vcap="", pcap="asw", what="and sets it on the empty parking vial: the magnet is free")
+    p3_to(*asw, 35.0)
+    go(0.5, p3_ul=135.0, p3_liq="ASW", asw=p["stock_ml"] - 0.135, xfer="ASW: 1 transfer of 135 µL (P300)",
+       what="the P300 draws 135 µL of ASW")
+    p3_to(*S1, over)
+    go(0.5, p3_ul=0.0, well=135.0, what="and dispenses it into S1, above the meniscus")
+    p3_stow()
+    capper_to(*asw, p["vial_cap"])
+    go(0.2, vcap="", what="the ASW cap goes back")
     go(0.25, z=TZ)
-    for k in range(1, 8):
-        h.speed = 1.0 if k == 1 else 0.18
-        lapse = 0 if k == 1 else 1
-        pip_to(*asw, 35.0)
-        go(0.35, tip_ul=TIP_UL, liq="ASW", asw=p["stock_ml"] - k * TIP_UL / 1000, xfer=f"ASW transfer {k} of 7",
-           what=f"draws {TIP_UL:.1f} µL of ASW", lapse=lapse)
-        pip_to(*S1, over)
-        go(0.35, tip_ul=0.0, well=k * TIP_UL, what=f"dispenses it into S1, above the meniscus")
-    h.speed = 1.0
+    p3_bare(*P3_TIP_HOME["ptip"], seat + 2.0)
+    go(0.25, ptip="rack", xfer="", p3_liq="", what="the P300's ASW tip goes back to its rack, for the next well")
+    p3_stow()
     tl.mark("asw")
-    # 3. sulfide last, with the ASW still open: the magnet takes the sulfide stock's cap (the ASW cap is on the parking
-    # vial), 15 µL of the 10 mg/L S stock with the same tip -> 150 µL at 1 mg/L S; the tip to the waste; then each cap
-    # goes back on its own vial, one at a time
+    # 3. sulfide last, with the P20: a 20 µL tip, the sulfide cap off, 15 µL from above the meniscus, the cap back, the
+    # tip to the waste; then the P300 mixes S1 with a fresh tip (3 strokes of 80 µL), and that tip to the waste too
+    bare_to(*r1a1, p["tip_top"] - 4.0)
+    go(0.2, tip="head", what="the P20 takes a 20 µL tip from Ben's rack 1")
+    go(0.3, z=TZ)
     capper_to(*s10, p["vial_cap"])
-    go(0.2, vcap="s10", what="the capper lifts the 10 mg/L S cap: two stocks open, one cap parked, one on the magnet")
+    go(0.2, vcap="s10", what="the capper lifts the 10 mg/L S cap")
     go(0.25, z=TZ)
     pip_to(*s10, 35.0)
-    go(0.35, tip_ul=15.0, liq="10 mg/L S", s10=p["stock_ml"] - 0.015, xfer="sulfide, 1 transfer",
-       what="draws 15 µL of the 10 mg/L S stock")
+    go(0.35, tip_ul=15.0, liq="10 mg/L S", s10=p["stock_ml"] - 0.015, xfer="sulfide: 1 transfer of 15 µL (P20)",
+       what="the P20 draws 15 µL of the 10 mg/L S stock")
     pip_to(*S1, over)
     go(0.35, tip_ul=0.0, well=150.0, what="adds it to S1: 150 µL at 1 mg/L S")
     capper_to(*s10, p["vial_cap"])
     go(0.2, vcap="", what="the sulfide cap goes back")
     go(0.25, z=TZ)
-    capper_to(*pv, p["vial_cap"])
-    go(0.2, vcap="asw", pcap="", what="the magnet fetches the ASW cap from the parking vial")
-    go(0.25, z=TZ)
-    capper_to(*asw, p["vial_cap"])
-    go(0.2, vcap="", what="and returns it to the ASW vial")
-    go(0.25, z=TZ)
     pip_to(*p["waste"], 60.0)
-    go(0.3, tip="waste", xfer="", liq="", what="the tip drops into the waste")
+    go(0.3, tip="waste", xfer="", liq="", what="the P20's tip drops into the waste")
+    p3_bare(*P3_TIP_HOME["ptip2"], seat)
+    go(0.25, ptip2="head", what="the P300 takes a fresh tip to mix the well")
+    p3_stow()
+    for k in range(1, 4):
+        h.speed = 1.0 if k == 1 else 0.5
+        p3_to(*S1, face + 2.0)
+        go(0.3, p3_ul=MIX_UL, p3_liq="the well's liquid", well=150.0 - MIX_UL, xfer=f"mix: stroke {k} of 3 (P300)",
+           what=f"mixes S1: draws {MIX_UL:.0f} µL", lapse=0 if k == 1 else 1)
+        go(0.3, p3_ul=0.0, well=150.0, what="and returns it")
+    h.speed = 1.0
+    p3_to(*p["waste"], 45.0)
+    go(0.3, ptip2="waste", xfer="", p3_liq="", lapse=0, what="the mixing tip drops into the waste")
+    p3_stow()
     tl.mark("filled")
     # 4. leak check with the head camera, 2 min
     camera_to(*S1)
@@ -155,28 +226,46 @@ def _corr_spot() -> Timeline:
     go(0.25, cap="park", what="parked")
     go(0.25, z=TZ)
     tl.mark("parked")
-    # 8. a new tip; the well's 150 µL to tube 1 in 8 transfers of 18.75 µL; the 150 µL DI rinse the same way
-    bare_to(*r1a2, p["tip_top"] - 4.0)
-    go(0.2, tip2="head", what="a new tip")
-    go(0.3, z=TZ)
-    for k in range(1, 9):
-        h.speed = 1.0 if k == 1 else 0.15
-        pip_to(*S1, face + 0.5)
-        go(0.35, tip_ul=18.75, liq="the well's liquid", well=150.0 - k * 18.75, xfer=f"collect: transfer {k} of 8",
-           what="draws 18.75 µL from S1", lapse=0 if k == 1 else 1)
-        pip_to(*tube1, 40.0)
-        go(0.35, tip_ul=0.0, tube=k * 18.75, what="dispenses it into tube 1, above the rim")
+    # 8. the P300: a new tip moves the well's 150 µL to tube 1 in one transfer; a fresh tip draws 150 µL of DI water
+    # (the capper opens the DI vial), adds it to S1 from above, rinses S1 with two strokes and carries it to tube 1
+    p3_bare(*P3_TIP_HOME["ptip3"], seat)
+    go(0.25, ptip3="head", what="the P300 takes a new tip")
+    p3_stow()
+    p3_to(*S1, face + 0.5)
+    go(0.5, p3_ul=150.0, p3_liq="the well's liquid", well=0.0, xfer="collect: 1 transfer of 150 µL (P300)",
+       what="draws S1's 150 µL")
+    p3_to(*tube1, 40.0)
+    go(0.5, p3_ul=0.0, tube=150.0, what="dispenses it into tube 1, above the rim")
+    p3_to(*p["waste"], 45.0)
+    go(0.3, ptip3="waste", xfer="", p3_liq="", what="the tip drops into the waste")
+    p3_bare(*P3_TIP_HOME["ptip4"], seat)
+    go(0.25, ptip4="head", what="a fresh tip for the rinse")
+    p3_stow()
+    capper_to(*di, p["vial_cap"])
+    go(0.2, vcap="di", what="the capper lifts the DI water cap")
+    go(0.25, z=TZ)
+    p3_to(*di, 35.0)
+    go(0.5, p3_ul=150.0, p3_liq="DI water", di=p["stock_ml"] - 0.150, xfer="rinse: 150 µL of DI water (P300)",
+       what="draws 150 µL of DI water")
+    p3_to(*S1, over)
+    go(0.5, p3_ul=0.0, well=150.0, what="adds it to S1 from above")
+    p3_stow()
+    capper_to(*di, p["vial_cap"])
+    go(0.2, vcap="", what="the DI cap goes back")
+    go(0.25, z=TZ)
+    for k in range(1, 3):
+        h.speed = 0.5
+        p3_to(*S1, face + 2.0)
+        go(0.3, p3_ul=MIX_UL, p3_liq="the rinse", well=150.0 - MIX_UL, xfer=f"rinse: stroke {k} of 2", lapse=1)
+        go(0.3, p3_ul=0.0, well=150.0)
     h.speed = 1.0
-    go(0.6, well=150.0, xfer="DI rinse: 150 µL into S1", liq="", lapse=1, what="the 150 µL DI rinse")
-    for k in range(1, 9):
-        h.speed = 0.10
-        pip_to(*S1, face + 0.5)
-        go(0.35, tip_ul=18.75, liq="the rinse", well=150.0 - k * 18.75, xfer=f"rinse: transfer {k} of 8", lapse=1)
-        pip_to(*tube1, 40.0)
-        go(0.35, tip_ul=0.0, tube=150.0 + k * 18.75)
-    h.speed = 1.0
-    pip_to(*p["waste"], 60.0)
-    go(0.3, tip2="waste", xfer="", liq="", lapse=0, what="the tip drops into the waste")
+    p3_to(*S1, face + 0.5)
+    go(0.5, p3_ul=150.0, p3_liq="the rinse", well=0.0, xfer="rinse: to the tube", lapse=0, what="draws the rinse")
+    p3_to(*tube1, 40.0)
+    go(0.5, p3_ul=0.0, tube=300.0, what="into tube 1: 300 µL")
+    p3_to(*p["waste"], 45.0)
+    go(0.3, ptip4="waste", xfer="", p3_liq="", what="the tip drops into the waste")
+    p3_stow()
     tl.mark("collected")
     # 9. acidify at once: the acid cap off, the night's one acid tip (rack 2), 20 µL of 1 M HNO3 from above the rim,
     # the acid tip back to its rack, the cap back
@@ -187,7 +276,7 @@ def _corr_spot() -> Timeline:
     go(0.2, tip3="head", what="the night's one acid tip, from rack 2")
     go(0.3, z=TZ)
     pip_to(*acid, 35.0)
-    go(0.35, tip_ul=20.0, liq="1 M HNO3", acid=p["stock_ml"] - 0.020, xfer="acid, 1 transfer",
+    go(0.35, tip_ul=20.0, liq="1 M HNO3", acid=p["stock_ml"] - 0.020, xfer="acid, 1 transfer (P20)",
        what="draws 20 µL of 1 M HNO3")
     pip_to(*tube1, 37.0)
     go(0.35, tip_ul=0.0, tube=320.0, what="adds it from above the rim: 320 µL, 62 mM HNO3")
@@ -251,7 +340,7 @@ def _corr_parts(inst: Instrument):
     except Exception:
         vcap = cyl(28, 18.5, z=-18.0)
     movable = {"1 M HNO3, trace metal": "vcap_acid", "ASW (D1141, no heavy metals)": "vcap_asw",
-               "ASW + 10 mg/L S": "vcap_s10"}
+               "ASW + 10 mg/L S": "vcap_s10", "DI water": "vcap_di"}
     for name, k, mat in p["stocks"]:
         x, y = hx, hy[k]
         body.add(f"vial {name}", tube(27.5, 25.2, p["vial_rim"], x=x, y=y, z=dz).union(cyl(27.5, 1.5, x=x, y=y, z=dz)),
@@ -315,6 +404,27 @@ def _corr_parts(inst: Instrument):
     wx, wy = _cx(p["waste"][0]), _cy(p["waste"][1])
     body.add("tip waste", tube(p["waste_d"], p["waste_d"] - 3, p["waste_top"], x=wx, y=wy, z=dz)
              .union(cyl(p["waste_d"], 2, x=wx, y=wy, z=dz)), "printer_grey")
+    # ---- round 14: the P300's tips, a printed 2 x 4 rack at the deck's front left (Opentrons 300 uL tips, 59.3 mm,
+    # their collars on the rack's top, in pockets so nothing overlaps)
+    tip3 = _revolve_rz([(0, 0), (0.45, 0), (2.4, 46.0), (2.9, 50.0), (3.8, 51.5), (3.8, P3["tip_len"]),
+                        (0, P3["tip_len"])])
+    xs3 = [P3["rack"][0] + c * P3["pitch"] for c in range(P3["cols"])]
+    ys3 = [P3["rack"][1] + r * P3["pitch"] for r in range(P3["rows"])]
+    rk3 = box(_cx(xs3[0] - 5.5), _cy(ys3[0] - 5.5), dz, _cx(xs3[-1] + 5.5), _cy(ys3[-1] + 5.5), _cz(P3["rack_top"]))
+    for x_ in xs3:
+        for y_ in ys3:
+            rk3 = rk3.cut(cyl(8.2, P3["rack_top"], x=_cx(x_), y=_cy(y_), z=dz + 4.0))
+    body.add("P300 tip rack", rk3, "lab_petg")
+    z_tip3 = _cz(P3["tip_top"] - P3["tip_len"])
+    spare3 = []
+    for c, x_ in enumerate(xs3):
+        for r, y_ in enumerate(ys3):
+            key = next((k for k, cr in P3_TIPS.items() if cr == (c, r)), None)
+            if key:
+                _piece(inst, key).add(f"{key} (P300 rack)", tip3.translate((_cx(x_), _cy(y_), z_tip3)), "lab_tip")
+            else:
+                spare3.append(tip3.translate((_cx(x_), _cy(y_), z_tip3)).val())
+    body.add("P300 tips", cq.Workplane().add(cq.Compound.makeCompound(spare3)), "lab_tip")
     return body
 
 
@@ -334,7 +444,7 @@ def corr_offsets(s: dict) -> dict:
     else:
         at = park
     out["cap"] = tuple(a - b for a, b in zip(at, park))
-    for name, k in (("asw", 2), ("s10", 3), ("acid", 1)):     # a vial cap on the magnet: its top at the magnet face
+    for name, k in (("asw", 2), ("s10", 3), ("acid", 1), ("di", 5)):   # a vial cap on the magnet: its top at the face
         hx, hy = p["holder_x"], p["holder_y0"] + k * p["holder_dy"]
         out[f"vcap_{name}"] = ((s["x"] - hx, s["y"] - hy, s["z"] - p["magnet"] - p["vial_cap"])
                                if s["vcap"] == name else
@@ -349,6 +459,30 @@ def corr_offsets(s: dict) -> dict:
         else:
             at = (home[0], home[1], p["tip_top"] - p["tip_len"])
         out[key] = (at[0] - home[0], at[1] - home[1], at[2] - (p["tip_top"] - p["tip_len"]))
+    # round 14: the P300's four tips (states without them, e.g. instruments_lab.powder_test's, leave them in the rack)
+    z_home = P3["tip_top"] - P3["tip_len"]
+    for key, home in P3_TIP_HOME.items():
+        where = s.get(key, "rack")
+        if where == "head":          # its end P3_HANG below the carriage's reference, less what the lift has lowered
+            at = (s["x"] + P3["off"][0], s["y"] + P3["off"][1], s["z"] - P3_HANG - s.get("p3drop", 0.0))
+        elif where == "waste":
+            at = (p["waste"][0] + P3_JITTER[key][0], p["waste"][1] + P3_JITTER[key][1], 2.0)
+        else:
+            at = (home[0], home[1], z_home)
+        out[key] = (at[0] - home[0], at[1] - home[1], at[2] - z_home)
+    out["p3"] = (0.0, 0.0, -s.get("p3drop", 0.0))      # the P300 on its lift, below the tools
+    return out
+
+
+# the liquid in the P300's tip (round 14): a cone up the bore from the tip's end, modelled 150 uL tall, on the head
+LEVEL_AT = dict(IL.LEVEL_AT)
+LEVEL_AT["p3liq"] = (_cz(CORR["travel_z"]) - P3_HANG + 0.15, p3_tip_level(150.0), "p3")
+
+
+def corr_levels(s: dict) -> dict:
+    """instruments_lab.corr_levels, and the P300 tip's liquid."""
+    out = IL.corr_levels(s)
+    out["p3liq"] = p3_tip_level(s.get("p3_ul", 0.0))
     return out
 
 
@@ -365,8 +499,8 @@ def cubxl_corrosion() -> Instrument:
         "#180 lays them out for copper (alloy-corrosion/copper/deck_cu.py, protocol.md, render_cubxl_cu.py at aeda51a); "
         "Ben's capper mount, 9-vial holder and vial cap STEPs (modules/electromagnetic-capper/cad); NuVant's EZstat Pro "
         "(255 x 245 x 102 mm, nuvant.com) beside it, as in byu-vcl #231 / DAL #221",
-        props=("cap", "vcap_asw", "vcap_s10", "vcap_acid", "tip", "tip2", "tip3", "tipliq", "wellliq", "tubeliq", "led",
-               "clock"))
+        props=("cap", "vcap_asw", "vcap_s10", "vcap_acid", "vcap_di", "tip", "tip2", "tip3", "ptip", "ptip2", "ptip3",
+               "ptip4", "tipliq", "p3liq", "wellliq", "tubeliq", "led", "clock"))
     cub = equipment.cubxl(0.05, 0.0, 0.5)          # carriage at CubOS x 0, gantry at y 0
     gantry_names = ("gantry upright L", "gantry upright R", "gantry beam", "cable chain")
     carriage_names = ("z carriage", "tool plate", "controller")
@@ -423,6 +557,22 @@ def cubxl_corrosion() -> Instrument:
     tl_shape = cq.Workplane().add(cq.Solid.makeCone(0.3, 0.3 + 0.072 * h20, h20, cq.Vector(px, py, zr - hang + 0.15),
                                                     cq.Vector(0, 0, 1)))
     _piece(inst, "tipliq").add("liquid in the tip", tl_shape, "lab_well")
+    # ---- round 14: the P300 (OT-2 GEN2 single, 20-300 uL) on a bracket 34 mm in front of the P20, its nozzle 16 mm
+    # higher (P3): shaft, body and top drawn as the P20's, the bracket back to the capper's arm
+    qx, qy, qz = hx0 + P3["off"][0], hy0 + P3["off"][1], zr + P3["noz"]
+    p3 = _piece(inst, "p3")              # the P300 rides its lift (P3["lift"]): this piece moves down, the lift doesn't
+    p3.add("P300 shaft", cyl(9, 44, x=qx, y=qy, z=qz), "lab_pip_shaft")
+    p3.add("P300 body", box(qx - 16, qy - 13, qz + 44, qx + 16, qy + 13, qz + 150), "lab_pip")
+    p3.add("P300 top", box(qx - 16, qy - 13, qz + 150, qx + 16, qy + 13, qz + 162), "inst_grey")
+    p3.add("P300 slider", box(qx - 8, qy - 15, qz + 100, qx + 8, qy - 13, qz + 140), "steel")
+    tools.add("P300 lift (linear actuator, 50 mm stroke)", box(qx - 9, qy - 35, qz + 40, qx + 9, qy - 15, qz + 172),
+              "printer_black")
+    tools.add("P300 lift mount", box(qx - 9, qy - 35, qz + 172, qx + 9, py + 13, qz + 182), "lab_mount")
+    tools.add("P300 lift riser", box(px - 9, py - 13, zr + 162, px + 9, py + 13, qz + 172), "lab_mount")
+    h150 = p3_tip_level(150.0)
+    p3_shape = cq.Workplane().add(cq.Solid.makeCone(0.35, 0.35 + 0.045 * h150, h150,
+                                                    cq.Vector(qx, qy, zr - P3_HANG + 0.15), cq.Vector(0, 0, 1)))
+    _piece(inst, "p3liq").add("liquid in the P300's tip", p3_shape, "lab_well")
     # ---- the electrode cap, modelled on the park cup: 26 mm flange, 16 mm body, steel disc, the Ag/AgCl capillary in a
     # Pt coil 3 mm below the skirt, two pogo pins at +-11 mm
     cap = _piece(inst, "cap")
@@ -457,9 +607,11 @@ def cubxl_corrosion() -> Instrument:
         "gantry": Track(knots=knots("gantry")),
         "carriage": Track(parent="gantry", knots=knots("carriage")),
         "tools": Track(parent="carriage", knots=knots("tools")),
-        **{k: Track(knots=knots(k)) for k in ("cap", "vcap_asw", "vcap_s10", "vcap_acid", "tip", "tip2", "tip3")},
+        "p3": Track(parent="tools", knots=knots("p3")),
+        **{k: Track(knots=knots(k)) for k in ("cap", "vcap_asw", "vcap_s10", "vcap_acid", "vcap_di", "tip", "tip2",
+                                              "tip3", "ptip", "ptip2", "ptip3", "ptip4")},
         **{k: Level(parent=LEVEL_AT[k][2], knots=lknots(k), z0=LEVEL_AT[k][0], h0=LEVEL_AT[k][1])
-           for k in ("tipliq", "wellliq", "tubeliq")},
+           for k in ("tipliq", "p3liq", "wellliq", "tubeliq")},
         "led": Joint("fade"),
         "clock": Track(knots=((0.0, (0.0, 0.0, 0.0)), (1.0, (1.0, 0.0, 0.0)))),
     }
@@ -489,12 +641,15 @@ def cubxl_corrosion() -> Instrument:
                    ("Ben's 9-vial holder: ASW, sulfide, acid, DI", (hxw, _cy(150), _cz(60)), (0.74, 0.80)),
                    ("empty vial: parks a cap", (hxw, _cy(hpy), _cz(60)), (0.62, 0.30)),
                    ("ICP-MS tubes", (_cx(200), _cy(28), _cz(32)), (0.14, 0.70)),
+                   ("P300 tips (proposed)", (_cx(68), _cy(14), _cz(P3["tip_top"])), (0.06, 0.52)),
                    ("NuVant EZstat Pro", (ex - 40, 60 - ed / 2, eh), (0.90, 0.40))]
     inst.step_labels = {i: [] for i in range(1, len(inst.actions))}
     inst.cam = (0.55, -1.5, 1.25)
     inst.framing = (0.80, 0.30)
     inst.notes = ["Deck, head and spot: DAL PR #180's copper plan (aeda51a), not yet built",
-                  "P20 volumes and levels to scale; the measurement plot is illustrative"]
+                  "Round 14: a P300 beside the P20 takes the 135 and 150 uL transfers and mixes the well; proposed in "
+                  "notes/cubxl_pipettes.md, not DAL's plan",
+                  "P20 and P300 volumes and levels to scale; the measurement plot is illustrative"]
     return inst
 
 
@@ -508,8 +663,70 @@ _C_TUBE = (_corr_w(400.0, -340.0, 400.0), _corr_w(210.0, 100.0, 30.0))
 _C_OVER = ((560.0, -1450.0, 1250.0), (60.0, 0.0, 180.0))
 # the stock-and-parking-vial view: the holder from the side of the deck, the stocks and the parking vial in frame
 _C_HOLD = (_corr_w(140.0, 40.0, 340.0), _corr_w(318.0, 175.0, 45.0))
+def _draw_corr_overlay_r14(sc, img, s):
+    """instruments_lab._draw_corr_overlay with both pipettes in the liquid panel and the P300's transfer counts on the
+    closing card (round 14)."""
+    from PIL import ImageDraw
+    from scene import font
+    v = _gv(sc, "cubxl_corrosion:clock")
+    st = _corr_state(v)
+    W, H = img.size
+    d = ImageDraw.Draw(img, "RGBA")
+    ft, fs, fm = font(13.5 * s, bold=True), font(12 * s), font(12 * s, mono=True)
+    ink, mute = (20, 20, 24, 255), (80, 84, 90, 255)
+    measuring = 0.0005 < st["meas"] < 0.9999 or (st["meas"] >= 0.9999 and st["cap"] == "S1")
+    if st["panel"] > 0.5 and not measuring:
+        x0, y0 = W - 345 * s, 46 * s
+        p3ul, p3liq = st.get("p3_ul", 0.0), st.get("p3_liq", "")
+        rows = [("P300 tip", f"{p3ul:5.1f} µL {p3liq}" if p3ul > 0.05 else "  0.0 µL"),
+                ("P20 tip", f"{st['tip_ul']:5.1f} µL {st['liq']}" if st["tip_ul"] > 0.05 else "  0.0 µL"),
+                ("well S1", f"{st['well']:5.1f} µL, {well_level(st['well'], st['capped'] > 0.5):.1f} mm deep"),
+                ("tube 1", f"{st['tube']:5.1f} µL, {tube_level(st['tube']):4.1f} mm"),
+                ("ASW vial", f"{st['asw']:.3f} mL")]
+        if st.get("di", CORR["stock_ml"]) < CORR["stock_ml"] - 1e-6:
+            rows.append(("DI vial", f"{st['di']:.3f} mL"))
+        if st["acid"] < CORR["stock_ml"] - 1e-6:
+            rows.append(("acid vial", f"{st['acid']:.3f} mL"))
+        h = (30 + 19 * len(rows) + (20 if st["xfer"] else 0)) * s
+        d.rounded_rectangle((x0, y0, W - 10 * s, y0 + h), 6 * s, fill=(255, 255, 255, 232), outline=(150, 156, 164, 255))
+        d.text((x0 + 10 * s, y0 + 6 * s), "P300 (20-300 µL) + P20 (1-20 µL)", font=ft, fill=ink)
+        for i, (k, val) in enumerate(rows):
+            yy = y0 + (28 + 19 * i) * s
+            d.text((x0 + 10 * s, yy), k, font=fs, fill=mute)
+            d.text((x0 + 92 * s, yy), val, font=fm, fill=ink)
+        if st["xfer"]:
+            yy = y0 + (28 + 19 * len(rows)) * s
+            d.text((x0 + 10 * s, yy), st["xfer"] + ("  (sped up)" if st["lapse"] > 0.5 else ""), font=ft,
+                   fill=(30, 60, 140, 255))
+    if measuring:
+        _draw_corr_measure(d, W, H, s, st["meas"])
+    if st["end"] > 0.02:
+        a = min(1.0, st["end"] * 4)
+        x0, y0, x1 = W * 0.16, 70 * s, W * 0.84
+        d.rounded_rectangle((x0, y0, x1, y0 + 275 * s), 8 * s, fill=(255, 255, 255, int(238 * a)),
+                            outline=(150, 156, 164, int(255 * a)))
+        al = int(255 * a)
+        lines = [("One spot (DAL protocol.md section 4), with a P300 beside the P20 (proposed)", True),
+                 ("fill: 135 µL ASW (P300, 1 transfer)  >  15 µL sulfide (P20)  >  mix (P300)", False),
+                 ("leak check  >  cap on  >  OCP 20 min  >  EIS at OCP 10 min  >  LPR ±10 mV", False),
+                 ("rest 5 min  >  +50 mV hold 10 min  >  OCP 5 min  >  cap off, rinsed", False),
+                 ("well + DI rinse to its tube (3 P300 transfers, the P20 alone took 24)  >  20 µL HNO3", False),
+                 ("6 transfers a spot instead of 33; the head works about 9 min a spot instead of 22.5", False),
+                 ("Each piece's second well: the same, OCP only (the companion)", False),
+                 ("Selected spots only, last: fill to EIS, then cyclic polarization", True),
+                 ("from 50 mV below OCP at 1 mV/s, reversing at 1 mA/cm2, back to E_corr; its own tube", False),
+                 ("Nobody has run a spot yet: DAL's plan, PR #180; the P300 is notes/cubxl_pipettes.md's", False)]
+        for i, (t, b) in enumerate(lines):
+            d.text((x0 + 16 * s, y0 + (14 + 25 * i) * s), t, font=ft if b else fs,
+                   fill=(20, 20, 24, al) if i < 9 else (150, 40, 30, al))
+
+
 _CORR_TL = _corr_spot()
 IL._CORR_TL = _CORR_TL          # the measurement overlay (instruments_lab._draw_corr_overlay) reads the timeline there
-CAMS["instruments/cubxl_corrosion"] = {0: _C_WIDE, 2: _C_HOLD, 3: _C_HOLD, 4: _C_FILL, 5: _C_CELL, 6: _C_CELL,
-                                       7: _C_FILL, 8: _C_TUBE, 10: _C_WIDE, 11: _C_OVER}
+PLOTS["instruments/cubxl_corrosion"] = _draw_corr_overlay_r14
+# round 14: the P300 fetches its tips from the deck's front left and works at the holder and S1, so steps 1-3 use a
+# view of the whole front half of the deck
+_C_P300 = (_corr_w(240.0, -470.0, 600.0), _corr_w(195.0, 135.0, 75.0))
+CAMS["instruments/cubxl_corrosion"] = {0: _C_WIDE, 1: _C_P300, 2: _C_P300, 3: _C_P300, 4: _C_FILL, 5: _C_CELL,
+                                       6: _C_CELL, 7: _C_FILL, 8: _C_P300, 10: _C_WIDE, 11: _C_OVER}
 REGISTRY = {"cubxl_corrosion": cubxl_corrosion}
