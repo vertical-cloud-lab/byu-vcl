@@ -43,7 +43,16 @@ charge chapter, the atomizer and the narration). Each point below links its note
   - Every tray keeps its slot, and three more stores go in, which takes the powder store to 1506 jars.
   - 21.4 m of slots is left free: enough for the three-each plan without a third Shuttle.
   - The cable trays and argon run round the Shuttles' backs, under a 36 ft roof with high-bay lights.
-- **The CombiTac vacuum line:** see notes/coupling.md, "Vacuum".
+- **A vacuum line through the CombiTac coupling** (`coupling.py`, [notes/coupling.md](notes/coupling.md), "Vacuum").
+  - **The module:** Stäubli's open-flow UCT08/10 pair, 8 mm, the largest bore it makes, in the fluid frame.
+  - **The rating:** Stäubli rates its couplings to only 14 mbar absolute. That is enough for tray K's antechamber, but
+    not for tray B's die (under 1 mbar) without a leak test.
+  - **Where:** the socket on trays B, K and M, a blind carrier on the others, the plug on the bay's dock and theirs.
+  - **The pump:** a Pfeiffer HiScroll 12 per Shuttle, kept at base pressure behind the docks' isolation valves; a
+    turbo, where one is needed, goes at the tray.
+  - The close-up is re-rendered.
+- **The tray's lines, its mains and the UPS's cord, re-routed.** They ran through the tray's distribution box and
+  across each other, a round-12 fault (notes/services.md).
 
 Running it (round 14, A; renders at 1080p with their own audits, two heavy jobs at a time through `runner_guard.py`):
 

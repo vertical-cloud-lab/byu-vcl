@@ -413,6 +413,30 @@ HQ:
 The services clip's own bay shot and the set-up movie's (step 8) show both units hung from the roof too. The
 security-camera study (a separate PR) may replace the Pi units; these stay until it does.
 
+### Round 14: the tray's lines, its mains and the UPS's cord, re-routed
+
+The vacuum helper's checks found the UPS's input cord crossing the tray's rim lines. Measured with FCL on every
+powered tray (this run), three faults went back to rounds 4-12:
+
+- **The data, air and N2 lines ran through the tray's distribution box,** 58-66 mm deep. That is `vlm.tray`'s socket,
+  x 975-1075, y 382-420, top at 73 mm.
+- **The air, N2 and chilled-water lines crossed the UPS's input cord,** 3-34 mm deep. The cord ran 40 mm over the box
+  and came down onto its top.
+- **The mains line still ended in the UPS's back,** as in round 4. Since round 12 the dock's mains go to the
+  distribution box, which feeds the UPS and the unbacked strip (notes/ups.md).
+
+The fixes:
+
+- **The rim lines** run 22 mm higher, from 80 mm (`services.line_paths`), so they pass over the box. The manifold
+  they end at goes up to 122 mm.
+- **The cord** drops straight behind the UPS, 25 mm off its back, runs forward at 45 mm over the floor and plugs into
+  the box's front face (`ups.cord_parts`).
+- **The mains line** comes down 30 mm behind the UPS's back and into the box's right-hand end.
+
+Now nothing on any of the twelve trays touches. The nearest pairs are the data line 3.5 mm over the box, and the
+cord, the UPS and the dock plate more than 10 mm from the lines. The lines lie side by side in a loom, so they touch
+each other, as tubes in a bundle do.
+
 ### Round 14: cabling on the two-Shuttle floor, without the rail
 
 Sterling, PR #318, 2026-11-20, at 5:56: "shows a rail still. We moved fully over to the mobile manipulator setup,

@@ -305,10 +305,16 @@ def line_paths(tray: str | None = None) -> dict:
         wide = 1.0 if key == "vac" else 0.0             # the vacuum line is 2 mm thicker: 1 mm more room on each run
         zt = PLATE_Z0 + PLATE_H + 30.0 + 6.0 * i + wide  # over the bracket, one layer each
         if key == "power":
-            out[key] = pts + [(x0, y0, zt), (ux + 40, y0, zt), (ux + 40, UPS_AT[1], zt), (ux + 1, UPS_AT[1], zt)]
+            # round 14: into the tray's distribution box (vlm.tray's socket: x 975-1075, y 382-420, z 3-73) through its
+            # right end, as round 12's two branches have it (ups.py: the box feeds the UPS and the unbacked strip);
+            # rounds 4-13 ran the mains into the UPS's back
+            sx = 1090.0
+            out[key] = pts + [(x0, y0, zt), (sx, y0, zt), (sx, 401.0, zt), (sx, 401.0, 40.0), (1076.0, 401.0, 40.0)]
             continue
         yr = V.TRAY_D / 2 - 18.0 - 6.5 * j - wide       # along the back rim, over the power strip
-        zr = 58.0 + 6.5 * j + wide
+        # round 14: 22 mm higher than round 7-13's 58 mm, so every rim line passes over the tray's distribution box
+        # (vlm.tray's socket, its top at 73 mm), which the data, air and N2 lines ran through, 58-66 mm deep (FCL)
+        zr = 80.0 + 6.5 * j + wide
         out[key] = pts + [(x0, y0, zt), (ux + 60 - 8 * j, y0, zt), (ux + 60 - 8 * j, yr, zt), (ux + 60 - 8 * j, yr, zr),
                           (MANIFOLD_X + 40, yr, zr)]
         j += 1
@@ -324,7 +330,7 @@ def tray_lines(live_mat=True, tray: str | None = None) -> dict:
         if key in lp:
             p[f"line {key}"] = (hose(lp[key], 9.0 if key == "vac" else 7.0), mat if live_mat else "svc_plate")
     yr0 = V.TRAY_D / 2 - 18.0 - 6.5 * (len(lp) - 2) - 6       # the rim's lines: all but mains
-    p["manifold"] = (box(MANIFOLD_X - 30, yr0, 40.0, MANIFOLD_X + 40, V.TRAY_D / 2 - 12, 100.0), "svc_alu")
+    p["manifold"] = (box(MANIFOLD_X - 30, yr0, 40.0, MANIFOLD_X + 40, V.TRAY_D / 2 - 12, 122.0), "svc_alu")   # r14: to 122
     return p
 
 

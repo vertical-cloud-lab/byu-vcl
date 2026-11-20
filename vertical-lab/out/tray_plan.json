@@ -110,9 +110,9 @@
      "kind": "ups",
      "box_mm": [
       507,
-      1118,
+      1090,
       251,
-      406,
+      387,
       3,
       435
      ],
@@ -314,15 +314,15 @@
       },
       {
        "other": "tray lines",
-       "gap_mm": 167.5,
+       "gap_mm": 181.9,
        "need_mm": 5.0,
        "a": [
-        821.0,
+        899.0,
         230.0
        ],
        "b": [
-        821.0,
-        377.5
+        899.0,
+        385.0
        ]
       }
      ]
@@ -363,7 +363,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -386,9 +386,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -396,14 +396,14 @@
      "nearest": [
       {
        "other": "cam_D2 post",
-       "gap_mm": 167.5,
+       "gap_mm": 181.9,
        "need_mm": 5.0,
        "a": [
-        821.0,
-        377.5
+        899.0,
+        385.0
        ],
        "b": [
-        821.0,
+        899.0,
         230.0
        ]
       }
@@ -475,19 +475,6 @@
         1045.0,
         251.0
        ]
-      },
-      {
-       "other": "dock plate",
-       "gap_mm": 46.5,
-       "need_mm": 5.0,
-       "a": [
-        1072.2,
-        233.7
-       ],
-       "b": [
-        1104.7,
-        266.9
-       ]
       }
      ]
     },
@@ -541,9 +528,9 @@
      "kind": "ups",
      "box_mm": [
       577,
-      1118,
+      1090,
       251,
-      406,
+      387,
       3,
       435
      ],
@@ -690,7 +677,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -702,21 +689,7 @@
      "inside_rim": true,
      "overlaps": [],
      "too_close": [],
-     "nearest": [
-      {
-       "other": "Opentrons OT-2",
-       "gap_mm": 46.5,
-       "need_mm": 5.0,
-       "a": [
-        1104.7,
-        266.9
-       ],
-       "b": [
-        1072.2,
-        233.7
-       ]
-      }
-     ]
+     "nearest": []
     },
     {
      "item": "tray lines",
@@ -727,9 +700,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -899,9 +872,9 @@
      "kind": "ups",
      "box_mm": [
       754,
-      1118,
+      1090,
       250,
-      406,
+      388,
       3,
       444
      ],
@@ -970,7 +943,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -993,9 +966,9 @@
       244,
       420,
       28,
-      188
+      190
      ],
-     "height_mm": 185.5,
+     "height_mm": 186.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -1193,9 +1166,9 @@
      "kind": "ups",
      "box_mm": [
       577,
-      1118,
+      1090,
       251,
-      406,
+      387,
       3,
       435
      ],
@@ -1419,7 +1392,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -1456,9 +1429,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -1611,9 +1584,9 @@
      "kind": "ups",
      "box_mm": [
       754,
-      1118,
+      1090,
       250,
-      406,
+      388,
       3,
       444
      ],
@@ -1746,7 +1719,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -1769,9 +1742,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -1949,9 +1922,9 @@
      "kind": "ups",
      "box_mm": [
       754,
-      1118,
+      1090,
       250,
-      406,
+      388,
       3,
       444
      ],
@@ -2070,7 +2043,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -2093,9 +2066,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -2289,9 +2262,9 @@
      "kind": "ups",
      "box_mm": [
       577,
-      1118,
+      1090,
       251,
-      406,
+      387,
       3,
       435
      ],
@@ -2402,7 +2375,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -2425,9 +2398,9 @@
       244,
       420,
       28,
-      188
+      190
      ],
-     "height_mm": 185.5,
+     "height_mm": 186.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -2435,11 +2408,11 @@
      "nearest": [
       {
        "other": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
-       "gap_mm": 119.5,
+       "gap_mm": 118.5,
        "need_mm": 5.0,
        "a": [
         865.0,
-        377.0
+        376.0
        ],
        "b": [
         865.0,
@@ -2514,15 +2487,15 @@
       },
       {
        "other": "tray lines",
-       "gap_mm": 137.5,
+       "gap_mm": 144.0,
        "need_mm": 5.0,
        "a": [
-        550.0,
+        617.7,
         238.0
        ],
        "b": [
-        550.0,
-        375.5
+        617.7,
+        382.0
        ]
       }
      ]
@@ -2577,9 +2550,9 @@
      "kind": "ups",
      "box_mm": [
       577,
-      1118,
+      1090,
       251,
-      406,
+      387,
       3,
       435
      ],
@@ -2712,7 +2685,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -2735,9 +2708,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -2745,14 +2718,14 @@
      "nearest": [
       {
        "other": "ZwickRoell zwickiLine Z5.0 TN",
-       "gap_mm": 137.5,
+       "gap_mm": 144.0,
        "need_mm": 5.0,
        "a": [
-        550.0,
-        375.5
+        617.7,
+        382.0
        ],
        "b": [
-        550.0,
+        617.7,
         238.0
        ]
       }
@@ -2907,9 +2880,9 @@
      "kind": "ups",
      "box_mm": [
       577,
-      1118,
+      1090,
       251,
-      406,
+      387,
       3,
       435
      ],
@@ -3028,7 +3001,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -3051,9 +3024,9 @@
       244,
       420,
       28,
-      188
+      190
      ],
-     "height_mm": 185.5,
+     "height_mm": 186.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -3187,15 +3160,15 @@
       },
       {
        "other": "tray lines",
-       "gap_mm": 111.7,
+       "gap_mm": 121.7,
        "need_mm": 5.0,
        "a": [
-        723.7,
+        679.7,
         266.0
        ],
        "b": [
-        723.7,
-        377.0
+        679.7,
+        384.6
        ]
       },
       {
@@ -3250,9 +3223,9 @@
      "kind": "ups",
      "box_mm": [
       754,
-      1118,
+      1090,
       250,
-      406,
+      388,
       3,
       444
      ],
@@ -3427,7 +3400,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -3450,9 +3423,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -3460,14 +3433,14 @@
      "nearest": [
       {
        "other": "Opulo LumenPnP v4.2",
-       "gap_mm": 111.7,
+       "gap_mm": 121.7,
        "need_mm": 5.0,
        "a": [
-        723.7,
-        377.0
+        679.7,
+        384.6
        ],
        "b": [
-        723.7,
+        679.7,
         266.0
        ]
       }
@@ -3572,9 +3545,9 @@
      "kind": "ups",
      "box_mm": [
       754,
-      1118,
+      1090,
       250,
-      406,
+      388,
       3,
       444
      ],
@@ -3679,7 +3652,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -3702,9 +3675,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -3776,9 +3749,9 @@
      "kind": "ups",
      "box_mm": [
       754,
-      1118,
+      1090,
       250,
-      406,
+      388,
       3,
       444
      ],
@@ -3883,7 +3856,7 @@
      "item": "dock plate",
      "kind": "plate",
      "box_mm": [
-      1072,
+      1104,
       1219,
       190,
       370,
@@ -3906,9 +3879,9 @@
       244,
       420,
       28,
-      188
+      182
      ],
-     "height_mm": 185.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": [],
@@ -4113,16 +4086,18 @@
     ],
     "backs_in": false,
     "pivot": [
-     -5062,
+     -5362,
      -2230
     ],
-    "approach_mm": 1575,
+    "approach_mm": 1875,
     "target_post": [
      -2837,
      -2079
     ],
-    "hits": [],
-    "ok": true
+    "hits": [
+     "repowder"
+    ],
+    "ok": false
    },
    "sieve_cell": {
     "dock": [
@@ -4140,8 +4115,10 @@
      -2350,
      -2012
     ],
-    "hits": [],
-    "ok": true
+    "hits": [
+     "repowder"
+    ],
+    "ok": false
    },
    "vlm": {
     "dock": [
@@ -4323,9 +4300,9 @@
     1143
    ],
    "repowder": [
-    -4655,
-    -2615,
-    -1897,
+    -4835,
+    -2045,
+    -3160,
     -700
    ],
    "aconity": [
@@ -4419,8 +4396,10 @@
    -5400,
    -2400
   ],
-  "machines_in_aisle": [],
-  "ok": true,
+  "machines_in_aisle": [
+   "repowder"
+  ],
+  "ok": false,
   "method": "Every dock: the docked MiR250, its approach along the dock line from the pivot spot at its open end, and the pivot itself (a circle of the MiR's half-diagonal), against every machine's plan rectangle and every target post's foot; and the aisle against the machines. Margin 30 mm."
  },
  "slots": {
@@ -4671,5 +4650,5 @@
  },
  "clearance_mm": 10.0,
  "clearance_to_lines_mm": 5.0,
- "method": "setup_lab.py fit (round 13): each item, UPS, the dock plate, the tray's lines and each camera rig's post and head, as drawn, in the tray's frame. Pairs whose boxes come within 30 mm are measured solid to solid with FCL (python-fcl, on the meshes): a touch ('overlaps') or a gap under 10 mm (5 mm to the lines and the plate; 'too_close') fails; the UPS against the plate and lines is by design. Until round 12 a pair failed only if its boxes overlapped and the solids touched. A slot needs the tallest top + 20 mm, on the 25 mm pitch"
+ "method": "setup_lab.py fit (round 14): each item, UPS, the dock plate, the tray's lines and each camera rig's post and head, as drawn, in the tray's frame. Pairs whose boxes come within 30 mm are measured solid to solid with FCL (python-fcl, on the meshes): a touch ('overlaps') or a gap under 10 mm (5 mm to the lines and the plate; 'too_close') fails; the UPS against the plate and lines is by design. Until round 13 a pair failed only if its boxes overlapped and the solids touched. A slot needs the tallest top + 20 mm, on the 25 mm pitch"
 }

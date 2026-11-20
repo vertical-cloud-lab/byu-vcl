@@ -608,8 +608,14 @@ def cord_parts(k: str) -> dict:
     r = rear(m) if m.get("family") else m.get("rear", {})
     cy, cz = r.get("cord", (0.0, 130.0))
     sx, sy, sz = SOCKET[0] - bx, SOCKET[1] - yc, SOCKET[2] - z0
-    pts = [(14.0, cy, cz), (52.0, cy, cz), (52.0, cy, sz + 40.0), (52.0, sy, sz + 40.0), (sx + 20.0, sy, sz + 40.0),
-           (sx + 20.0, sy, sz - 2.0)]
+    # round 14: low and in front of the tray's rim lines, into the distribution box's front face. Round 12's cord ran
+    # 40 mm over the box and came down onto its top, across the air, N2 and chilled-water lines on the back rim (3-34 mm
+    # deep, FCL; the vacuum helper found it): now it drops straight behind the unit, 25 mm off its back (the dock plate's
+    # bracket starts 44 mm off it), runs forward at 45 mm over the floor, clear over the cradle's angle, and plugs into
+    # the box's front (y 382), 6 mm in front of the nearest rim line
+    yf = SOCKET[1] - 19.0 - yc - 7.0                   # 7 mm in front of the box's front face (its y 382)
+    pts = [(14.0, cy, cz), (25.0, cy, cz), (25.0, cy, 45.0), (25.0, yf, 45.0), (sx + 25.0, yf, 45.0),
+           (sx + 25.0, yf + 8.0, 45.0)]
     return {"input cord": (hose(pts, 11.0), "ups_outlet")}
 
 
