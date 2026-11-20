@@ -45,7 +45,8 @@ NONCUT = dict(bar_feed=5.0, index=0.5, rapid=1.0, peck=0.5, catch=3.0, chamfer=1
 SOURCES = {
     "al": "Pure Al is ASM machinability group E ('needs optimum tool design and machine settings to control chip and "
           "finish'); Sandvik: uncoated and PCD grades first, positive sharp edges, built-up edge worst at low speed; "
-          "Haas starts wrought Al at 490 m/min with its HTSU10 insert (Haas turning-insert speeds and feeds). Drilling, "
+          "Haas starts wrought Al at 490 m/min with its HTSU10 insert (Haas turning-insert speeds and feeds). "
+          "Drilling, "
           "boring and parting speeds here are conservative choices for MQL rather than flood (est.)",
     "cu": "German Copper Institute (DKI i.18, 2010): Cu-OFE C10100 machinability 20 (free-cutting brass 100), chip "
           "breaker recommended; carbide turning 220/160/120 m/min at chip thickness 0.1/0.32/0.8 mm; solid-carbide "

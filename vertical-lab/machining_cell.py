@@ -30,7 +30,8 @@ floor plan the cell stands in the south row (``machining.FLOOR``).
     python3 runner_guard.py slot --label mcell -- xvfb-run -a python3 machining_cell.py     # render (VIZ3D_FPS=12)
     PREVIEW=1 xvfb-run -a python3 machining_cell.py      # the last frame of each sub-step -> /tmp/preview_*.png
     ARM_AUDIT=1 xvfb-run -a python3 machining_cell.py    # nothing drawn, every frame checked -> out/collisions/
-    MCELL_STILL=lab xvfb-run -a python3 machining_cell.py   # the cell in its place on the floor -> out/machining_lab.png
+    MCELL_STILL=lab xvfb-run -a python3 machining_cell.py   # the cell on the floor -> out/machining_lab.png
+    MCELL_GIF=1 python3 machining_cell.py                  # out/machining_cell.gif, cut from the MP4
 """
 from __future__ import annotations
 
@@ -71,7 +72,7 @@ GROOVE_X = END + CUP_L + GROOVE_W / 2       # 191.5: the parting groove's centre
 CUP_BASE_X = END + CUP_L         # 190: the cup's base, when parted
 TURRET_U = np.array([0.0, math.cos(math.radians(-45)), math.sin(math.radians(-45))])  # turret -> axis, along the slant
 TURRET_R = 283.0                 # turret centre to the working tool's tip (on the axis at X = 0)
-X_INDEX = -80.0                  # where the turret's centre goes along x to index: every tool clear of bar and headstock
+X_INDEX = -80.0                  # the turret's centre along x when it indexes: every tool clear of bar and headstock
 BELT_X = (END + CUP_BASE_X) / 2  # 158.25: under the parted cup, and the belt's middle
 BELT_Z = 880.0                   # belt top
 UP_Y = -700.0                    # the upender's pivot: the lying cup's base against its end plate
@@ -96,7 +97,7 @@ HERO = 3                                                   # the rack pocket the
 PARK = [-90.0, -110.0, 120.0, -100.0, -90.0, 0.0]          # the arm's joints, parked (deg)
 BASKET_POCKET = 1                                          # its pocket in the basket (no post beside it)
 
-CUP_GRASP = 50.0                 # grasp point over a cup's base (chapter 1: 45; here 50, so the pads clear the upender's
+CUP_GRASP = 50.0                 # grasp point over a cup's base (chapter 1: 45; 50 here, so the pads clear the
                                  # 30 mm trough when the cup stands on it)
 GRIP_CUP, OPEN_CUP, OPEN_RACK = 0.80, 0.66, 0.75           # alloy_charge's closures on the 19.05 mm cup
 GRIP_BAR, OPEN_BAR = 0.86, 0.66                            # on the basket's 14 mm handle bar
@@ -247,7 +248,8 @@ def lathe_parts() -> dict:
         _box(x0, x1, y0, y1, H - t, H),                      # roof
         _box(x0, door["x0"], y1 - t, y1, 0, H - t), _box(door["x1"], x1, y1 - t, y1, 0, H - t),   # front, beside
         _box(door["x0"], door["x1"], y1 - t, y1, door["z1"], H - t),       # over the door
-        _box(door["x0"], slot["x0"], y1 - t, y1, 0, door["z0"]), _box(slot["x1"], door["x1"], y1 - t, y1, 0, door["z0"]),
+        _box(door["x0"], slot["x0"], y1 - t, y1, 0, door["z0"]),
+        _box(slot["x1"], door["x1"], y1 - t, y1, 0, door["z0"]),
         _box(slot["x0"], slot["x1"], y1 - t, y1, 0, slot["z0"]), _box(slot["x0"], slot["x1"], y1 - t, y1, slot["z1"],
                                                                       door["z0"]),
     ]
@@ -636,7 +638,8 @@ def bench_parts() -> dict:
     tape = _merge([_box(fx0 - 60, fx1 + 60, fy1 + 20, fy1 + 80, 0, 1.5)])
     return {"bench/tops": (_merge(tops), TOP_C, 1.0), "bench/legs": (_merge(legs + [stand, riser, rest]), BENCH_C, 1.0),
             "bench/ped": (ped, (0.30, 0.31, 0.33), 1.0),
-            "bench/blow": (_merge([blow_m, sock]), (0.36, 0.37, 0.40), 1.0), "bench/ring": (ring, (0.20, 0.55, 0.85), 1.0),
+            "bench/blow": (_merge([blow_m, sock]), (0.36, 0.37, 0.40), 1.0),
+            "bench/ring": (ring, (0.20, 0.55, 0.85), 1.0),
             "fence/posts": (_merge(posts + rails), FENCE, 1.0), "fence/mesh": (_merge(mesh), (0.25, 0.25, 0.26), 0.12),
             "fence/curtain": (curtain, (0.95, 0.55, 0.10), 1.0),
             "floor": (floor, FLOOR_C, 1.0), "floor_tape": (tape, (0.98, 0.80, 0.10), 1.0)}
@@ -702,18 +705,27 @@ def still_lab(sc, path):
     """One frame: the cell in its place on the floor, from over the aisle (MCELL_STILL=lab)."""
     from PIL import Image
     labs = lab_context(sc)
-    sc.cam = [(5200, 7800, 5600), (-600, -700, 700), (0, 0, 1)]
-    sc.view_angle = 34.0
-    pos = {"Instron 68SC-2": (0.10, 0.48), "MiR charger 0": (0.62, 0.30), "fume hood": (0.86, 0.36),
-           "Instron 68FM-100": (0.06, 0.30), "MiR250 docked at the cell": (0.50, 0.16), "Kardex VLM 1": (0.80, 0.10),
-           "Kardex VLM 2": (0.94, 0.20), "MiR charger 1": (0.74, 0.22), "rePowder atomizer": (0.30, 0.10),
-           "sieving cell": (0.50, 0.06), "DED": (0.95, 0.45)}
-    sc.labels = [(t, xyz, pos.get(t, (0.9, 0.9)), 1.0) for t, xyz in labs if t in pos]
-    sc.labels += [("the machining cell: bar-fed lathe, UR10e, IPA baths, vacuum dryer, weigh, gauge, cassette",
-                   (0.0, -300.0, 1500.0), (0.20, 0.86), 1.0)]
-    sc.caption = ("The cup-and-plug cell on the south row, between the Instron 68SC-2 and MiR charger 0; the lathe "
-                  "and its bar feeder stand behind the row.")
+    sc.cam = [(3600, 4300, 4300), (-700, -900, 600), (0, 0, 1)]
+    sc.view_angle = 40.0
+    keep = {"Instron 68SC-2", "MiR charger 0", "Instron 68FM-100", "MiR250 docked at the cell"}
+    sc.caption = ("The cup-and-plug cell on the south row, seen from over the aisle: its front between the Instron "
+                  "68SC-2 and MiR charger 0, where a MiR250 docks; the lathe and its bar feeder behind the row.")
     sc.title = "Vertical cloud lab: the charge-cup machining cell in the lab"
+    labs = [(t, xyz) for t, xyz in labs if t in keep]
+    labs += [("the machining cell: bar-fed lathe, UR10e, IPA baths, vacuum dryer, weigh, gauge, cassette",
+              (0.0, 300.0, 1450.0)), ("Haas ST-10-size lathe", (-200.0, -1600.0, 2167.0)),
+             ("4 ft bar feeder", (2550.0, -1270.0, 1000.0))]
+    sc.labels = []
+    sc.render_base()                                    # sets the camera, so the anchors can be projected
+    placed = []
+    for t, xyz in labs:
+        px, py = sc.project(xyz)
+        fx = max(0.02, px - 0.10) if px < 0.5 else min(0.98, px + 0.10)
+        fy = min(0.86, max(0.08, py - 0.08))
+        while any(abs(fy - q) < 0.045 and (fx < 0.5) == (r < 0.5) for r, q in placed):
+            fy = min(0.86, fy + 0.05)
+        placed.append((fx, fy))
+        sc.labels.append((t, xyz, (fx, fy), 1.0))
     base = sc.render_base()
     anchors = [sc.project(xyz) for _, xyz, _, _ in sc.labels]
     img = sc.overlay(Image.fromarray(base), SC_size_scale(sc), anchors)
@@ -730,7 +742,10 @@ def SC_size_scale(sc) -> float:
 def movie():
     metal = os.environ.get("MCELL_METAL", "Al")
     col = AL if metal == "Al" else CU_C
-    sc = Scene(NAME, TITLE)
+    lab = os.environ.get("MCELL_STILL") == "lab"
+    # the still writes no video: a Scene opens its MP4 encoder on out/mp4/<name>.mp4 at once, and on 2026-11-20 a
+    # still run beside the render truncated the render's MP4 under it. The GIF is cut from the MP4 afterwards (gif())
+    sc = Scene(NAME, TITLE, gif=False, mp4=not lab)
     sc.fluids = set()
     sc.soft = set()
     # --- static parts
@@ -844,14 +859,15 @@ def movie():
     CAM_WORK = [(150, -765, 1120), (162, -1270, 1050), (0, 0, 1)]
     CAM_NEST = [(620, -130, 1380), (140, -690, 950), (0, 0, 1)]
     CAM_BATH = [(-200, 1350, 2350), (-800, -150, 1050), (0, 0, 1)]
-    CAM_EAST = [(1180, 380, 1850), (680, -180, 990), (0, 0, 1)]
+    CAM_EAST = [(1010, -120, 1650), (700, -420, 1000), (0, 0, 1)]
+    CAM_GAUGE = [(1020, -260, 1380), (740, 150, 1010), (0, 0, 1)]
     CAM_RACK = [(-250, 1180, 1450), (60, 740, 960), (0, 0, 1)]
     sc.cam = CAM_WIDE
 
     # 1: the cell
-    sc.step("1/6", "The charge-cup cell on the lab floor: a bar-fed CNC lathe, a UR10e on a pedestal, an ultrasonic "
-                   "bath with two closed IPA pans, a vacuum dryer, a weigh module, a dimension gauge and the cup rack "
-                   "the MiR250 takes to tray J.", 3.0, hold=1.5,
+    sc.step("1/6", "The charge-cup cell on the lab floor: a bar-fed CNC lathe, a UR10e on a pedestal, two ultrasonic "
+                   "baths each holding one closed vessel of IPA, a vacuum dryer, a weigh module, a dimension gauge and "
+                   "the cup rack the MiR250 takes to tray J.", 3.0, hold=1.5,
             labels=[("bar-fed CNC lathe (Haas ST-10 size) + 4 ft bar feeder", (300, -1300, 2167), (0.62, 0.10)),
                     ("UR10e on a pedestal", (0, 0, 1300), (0.42, 0.22)),
                     ("2 ultrasonic baths, each with 1 closed IPA vessel", (-805, -20, 1160), (0.06, 0.40)),
@@ -897,7 +913,7 @@ def movie():
         P0 = turret_pose(t0, x0, r0)[0][:3, 3]
         P1 = turret_pose(t0, END - 30.0, r0)[0][:3, 3] if t0 in (2, 3) else turret_pose(t0, x0, r0 + 50.0)[0][:3, 3]
         P2 = np.r_[X_INDEX, P1[1:] - TURRET_U[1:] * 60.0]
-        P4 = turret_pose(tool, END - 30.0, r)[0][:3, 3] if tool in (2, 3) else turret_pose(tool, x_tip, r + 50.0)[0][:3, 3]
+        P4 = (turret_pose(tool, END - 30.0, r) if tool in (2, 3) else turret_pose(tool, x_tip, r + 50.0))[0][:3, 3]
         P5 = turret_pose(tool, x_tip, r)[0][:3, 3]
         a0, a1 = -TOOL_ANG[t0], -TOOL_ANG[tool]
         da = (a1 - a0 + 180) % 360 - 180
@@ -1121,7 +1137,8 @@ def movie():
     g_d = dwn((gx, gy, BASKET[2] + handle[2]), 0.0)
     g_d_over = g_d.copy()
     g_d_over[2, 3] = DRYER_RIM + 30.0 + handle[2]
-    sc.step("5/6", "Into the vacuum dryer: its lid opens ...", 1.2, hinge_open("dlid", dhinge, 105.0, (1, 0, 0)), hold=0.0)
+    sc.step("5/6", "Into the vacuum dryer: its lid opens ...", 1.2, hinge_open("dlid", dhinge, 105.0, (1, 0, 0)),
+            hold=0.0)
     sc.step("5/6", "", 2.0, rb.joint_to(Tw=g_d_over), hold=0.0)
     sc.step("5/6", "", 1.6, rb.line_to(g_d), hold=0.1)
     sc.step("5/6", "", 0.4, rb.grip_to(OPEN_BAR), hold=0.0)
@@ -1135,7 +1152,8 @@ def movie():
     def pump(u):
         p = 1013.0 * (1 - u) + 2.0 * u if u < 0.8 else 2.0 + 1011.0 * ((u - 0.8) / 0.2)
         status(Dryer=f"45 °C, {p:6.0f} mbar" + ("  (N2 back-fill)" if u >= 0.8 else ""))
-    sc.step("5/6", "Pumped down at 45 °C: the IPA in each blind bore boils off, through the condenser to the pump. Then "
+    sc.step("5/6", "Pumped down at 45 °C: the IPA in each blind bore boils off, through the condenser to the pump. "
+                   "Then "
                    "back-filled with dry nitrogen (shown sped up: about 10 min).", 3.0, pump, hold=0.3, live=True)
     status(Dryer="vented, dry")
     sc.step("5/6", "", 1.2, hinge_open("dlid", dhinge, 105.0, (1, 0, 0)), hold=0.0)
@@ -1197,7 +1215,7 @@ def movie():
     sc.step("6/6", "On to the dimension gauge's stage.", 2.0, RB.both(rb.joint_to(Tw=g_v_back),
                                                                      lambda u: sc.gmat.__setitem__(
                                                                          "shield", T((0, 0, 140.0 * (1 - u))))),
-            hold=0.0)
+            hold=0.0, cam_to=CAM_GAUGE)
     sc.step("6/6", "", 1.2, rb.line_to(T((0, 0, 2.0)) @ g_v), hold=0.0)
     sc.step("6/6", "", 0.3, rb.line_to(g_v), hold=0.0)
     sc.step("6/6", "", 0.5, rb.grip_to(OPEN_CUP), hold=0.0)
@@ -1265,5 +1283,21 @@ def movie():
     return sc.save()
 
 
+def gif(fps: int = 4, width: int = 520, lossy: int = 130, colors: int = 48):
+    """out/machining_cell.gif from the MP4: 4 fps, 520 px, 48 colours, gifsicle --lossy=130 (under 4.9 MB)."""
+    import subprocess
+    mp4, out = HERE / "out" / "mp4" / f"{NAME}.mp4", HERE / "out" / f"{NAME}.gif"
+    tmp = Path("/tmp") / f"{NAME}_raw.gif"
+    th = os.environ.get("FFMPEG_THREADS", "2")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-threads", th, "-i", str(mp4), "-vf",
+                    f"fps={fps},scale={width}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors={colors}[p];"
+                    "[b][p]paletteuse=dither=bayer:bayer_scale=4", "-threads", th, str(tmp)], check=True)
+    subprocess.run(["gifsicle", "-O3", f"--lossy={lossy}", str(tmp), "-o", str(out)], check=True)
+    print(f"{out.name}: {out.stat().st_size / 1e6:.2f} MB")
+
+
 if __name__ == "__main__":
-    movie()
+    if os.environ.get("MCELL_GIF"):
+        gif()
+    else:
+        movie()
