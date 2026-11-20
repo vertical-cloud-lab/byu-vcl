@@ -260,7 +260,7 @@ claude-super hand-off). Timestamps are in round 12's long-form ([G6_1FtXHmKI](ht
 | 17:28 | holding the lid down while working the latch seems unnecessary; the unlatching step is missing | No arm presses on the lid, in chapter 2 and in `atom_latch`: opened only at atmosphere, nothing pushes the lid up; closing, the latch's own over-centre draw squeezes the seal. Chapter 2 drops its round-6 latch (front right, one lever pulled out and down, the loop never unhooked) for the model's latch on the housing's right face and the latch clip's moves (`atom_latch.Work`): the lever over centre, then the unlatching proper (the loop lifted off the keeper's hook and let fall over the folded lever), then the lid; closing is the reverse. MiR250 1 works from the furnace's right, so the cups no longer go in past the turned lid ([notes](notes/alloy_atomize.md#round-14-pr-318-2026-11-20-the-models-latch-the-tong-explained-the-plate-steered), [latch notes](notes/atom_latch_container.md#round-14-2026-11-20-no-arm-on-the-lid-chapter-2-uses-the-same-moves)) |
 | 18:06 | how does the loading tong work? | Redesigned as two flat bars that slide past each other, each pinned to one of the 2F-85's fingertips, so each jaw moves with its finger; a flexure keeps the jaws open when the tong is left alone. On screen: a taken-apart figure while the arm picks it up, and cup 1 followed down a cut-open bore, the jaws opening on the floor cone |
 | 19:21 | the stack "still by hand" | The aside now says the two arms build it in the turnaround (#353's rebuild), with that clip's picture |
-| 21:12 | the new atomizer renders are missing elsewhere | Chapter 2 draws DAL PR 189's camera units. The set-up movie, chapter 3 and the finale take the rePowder from `lab._repowder()`, which now adds the units and the ground plates (below) |
+| 21:12 | the new atomizer renders are missing elsewhere | Chapter 2 draws DAL PR 189's camera units. Every other lab scene takes the rePowder from `lab._repowder()`, which now adds the units and the ground plates (below): chapter 3 is re-rendered with them; the set-up movie, the finale and the wide shots of chapters 1 and 4-7 take them when next rendered |
 | (new) | the two arms adjust the plate in real time during the pour | A landing stage between the door and the stack's housing, sealed by a bellows (ours): one knob slides the stack along its axis, the other moves it across; arm 2 and arm 1 each hold one through the pour and turn it when the melt-stream cameras put the landing more than 1 mm off target (a schematic of their measurement is in the corner) |
 | 23:59 | the latch clip's collision | 0 frames since round 13; re-audited at 0 of 1,123 without the press, re-rendered at 1080p |
 | 24:58 | a collision, and a grip that would slip | At 24:58 the arm is putting the anti-static brush back: the brush now has a square grip between two collars and a V-rest with a fin slot ([`atom_brush.py`](atom_brush.py)); the clip is at 0 of 723 frames |
@@ -282,6 +282,7 @@ claude-super hand-off). Timestamps are in round 12's long-form ([G6_1FtXHmKI](ht
 | `atom_crucible_out` | 113 s | 15 fps | 0 of 1,520 frames, movers 0 |
 | `atom_bn` | 155 s | 15 fps | 0 of 2,250 frames, movers 0 |
 | `atom_cameras` | 105 s | 15 fps | 0 of 1,181 frames, movers 0 |
+| `alloy_print` (chapter 3) | 272 s | 12 fps | 1 of 2,709 frames (round 13's 0.3 mm fingertip graze), movers 0 |
 
 The last five were re-rendered without changes of their own: their committed MP4s were #353's 720p renders of
 2026-11-19, from before round 13 put the rePowder's latch back in these clips and took the rebuild's 16 frames and
@@ -290,8 +291,10 @@ git-ignored). So all eight turnaround clips and chapter 2 are now at 1080p in gi
 
 **For the long-form** (not rebuilt here): the clips above changed, and with them their sub-steps' numbering, so
 `narration.json`'s lines anchored on `alloy_atomize`, `atom_latch` and `atom_container` sub-steps need re-anchoring
-(chapter 2: the stack line now at sub-step 120, the powder line at 162; `atom_latch`'s and `atom_container`'s are already on the new clips' 9 and 28). The set-up movie, chapter 3 and the finale pick up the camera units and the plates from `lab._repowder()`
-when next rendered.
+(chapter 2: the stack line now at sub-step 120, the powder line at 162; `atom_latch`'s and `atom_container`'s are already on the new clips' 9 and 28). Chapter 3 is re-rendered with the camera units and the plates from `lab._repowder()` (its sieving cell stands
+beside the rePowder; the plates are kept as floor markings, since merged by colour with the machine's steel they
+read as an obstacle under a MiR's skirt); the set-up movie (run A renders it last), the finale and the other wide
+shots pick them up when next rendered.
 
 **Open:**
 - **Chapter 2 still takes the container off by its valve's lever** (a stand-in, said so on screen). The turnaround's
