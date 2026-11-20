@@ -132,14 +132,14 @@
   "arm2_lid": {
    "mass_kg": 299.8,
    "cog_mm": [
-    22,
-    37,
-    386
+    20,
+    32,
+    388
    ],
    "force_point_mm": [
     635,
-    593,
-    1450
+    591,
+    1451
    ],
    "force_dir": [
     0.0,
@@ -148,27 +148,27 @@
    ],
    "edges": {
     "+x": {
-     "restoring_Nm": 892.1,
+     "restoring_Nm": 896.0,
      "lever_mm": 310.4,
-     "tips_at_N": 2875.0
+     "tips_at_N": 2887.0
     },
     "-x": {
-     "restoring_Nm": 1019.2,
+     "restoring_Nm": 1015.4,
      "lever_mm": -960.4,
      "tips_at_N": null
     },
     "+y": {
-     "restoring_Nm": 554.3,
-     "lever_mm": 367.9,
-     "tips_at_N": 1507.0
+     "restoring_Nm": 566.5,
+     "lever_mm": 366.4,
+     "tips_at_N": 1546.0
     },
     "-y": {
-     "restoring_Nm": 769.0,
-     "lever_mm": -817.9,
+     "restoring_Nm": 756.8,
+     "lever_mm": -816.4,
      "tips_at_N": null
     }
    },
-   "tips_at_N": 1507.0,
+   "tips_at_N": 1546.0,
    "tips_about": "+y",
    "slides_at_N": null
   }
@@ -306,14 +306,14 @@
   "arm2_lid": {
    "mass_kg": 168.5,
    "cog_mm": [
-    38,
-    65,
-    438
+    36,
+    58,
+    441
    ],
    "force_point_mm": [
     635,
-    593,
-    1450
+    591,
+    1451
    ],
    "force_dir": [
     0.0,
@@ -322,27 +322,27 @@
    ],
    "edges": {
     "+x": {
-     "restoring_Nm": 473.7,
+     "restoring_Nm": 477.5,
      "lever_mm": 310.4,
-     "tips_at_N": 1526.0
+     "tips_at_N": 1539.0
     },
     "-x": {
-     "restoring_Nm": 600.8,
+     "restoring_Nm": 596.9,
      "lever_mm": -960.4,
      "tips_at_N": null
     },
     "+y": {
-     "restoring_Nm": 264.6,
-     "lever_mm": 367.9,
-     "tips_at_N": 719.0
+     "restoring_Nm": 276.8,
+     "lever_mm": 366.4,
+     "tips_at_N": 755.0
     },
     "-y": {
-     "restoring_Nm": 479.3,
-     "lever_mm": -817.9,
+     "restoring_Nm": 467.1,
+     "lever_mm": -816.4,
      "tips_at_N": null
     }
    },
-   "tips_at_N": 719.0,
+   "tips_at_N": 755.0,
    "tips_about": "+y",
    "slides_at_N": null
   }
