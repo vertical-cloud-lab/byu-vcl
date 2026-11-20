@@ -14,7 +14,7 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 Sterling on #318 (2026-11-20): "continue fixing collisions or weird artifacts and rendering at higher resolution and
 fps ... Upload to YouTube as unlisted".
 
-**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 13)](https://www.youtube.com/watch?v=ySiuvP9C190), unlisted, 1:17:17, 55 chapters, 1920 x 1080 at 30 fps, narrated (55 lines, 9.3 min, Kokoro). 38 of its 43 3-D clips were rendered this round, at 1080p and drawn at 10-15 fps; `out/longform.json` lists every part and its source. Round 12's public video ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)) is superseded.
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 13)](https://www.youtube.com/watch?v=ySiuvP9C190), unlisted, 1:17:17, 55 chapters, 1920 x 1080 at 30 fps, narrated (55 lines, 9.3 min, Kokoro). 36 of its 41 3-D clips (3,618 of 4,223 s) were rendered this round, at 1080p and drawn at 10-15 fps; `out/longform.json` lists every part and its source. Round 12's public video ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)) is superseded.
 
 ### A frame two to three times cheaper
 
