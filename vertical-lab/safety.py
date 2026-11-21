@@ -31,9 +31,13 @@ The assets, each built part by part from the maker's own figures and pictures:
     xvfb-run -a python3 safety.py sheet  # the assets one by one -> out/safety_assets.png
     xvfb-run -a python3 safety.py photo  # the B570 beside Amerex's own render -> out/safety_b570_vs_amerex.png
     python3 safety.py plan               # the floor: every unit, the walk to it -> out/safety_plan.png
+    xvfb-run -a python3 safety.py mir    # a MiR250 with its unit -> out/safety_mir.png
+    VLAB_ONLY_TRAYS= xvfb-run -a python3 safety.py lab   # the lab with its units -> out/safety_lab.png
     xvfb-run -a python3 safety.py clip   # a short clip -> out/mp4/safety.mp4 (VIZ3D_HD=1: out/hd/safety.mp4)
 
-The B570 rides on each MiR250 by default (``props.mir250``, CLASS_D_ON_MIR); ``VLAB_MIR_CLASS_D=0`` leaves it off.
+The B570 rides on each MiR250 by default (``props.mir250``, CLASS_D_ON_MIR), on the cabinet's aisle side with its hose
+stowed low; ``VLAB_MIR_CLASS_D=0`` leaves it off. The fixed units (PLACES) go into ``setup_lab.build`` with the
+utilities; ``VLAB_CLASS_D=0`` leaves them out.
 """
 from __future__ import annotations
 

@@ -51,13 +51,13 @@
   },
   {
    "label": "On every MiR250",
-   "caption": "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over its scanners' plane, wherever the robot works. Its turning circle stays 494 mm.",
+   "caption": "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over its scanners' plane, wherever the robot works. Its turning circle grows 5 mm, to 499 mm.",
    "start_frame": 545,
    "end_frame": 633
   },
   {
    "label": "Available for use",
-   "caption": "Anyone near the robot takes it: throw the strap's latch, lift it off the foot plate and go. It is 50 lb, so it hangs low.",
+   "caption": "Anyone near the robot takes it: throw the strap's latch, lift it off the foot plate and go. On the robot its hose is stowed low, out of the arm's way.",
    "start_frame": 634,
    "end_frame": 700
   },
