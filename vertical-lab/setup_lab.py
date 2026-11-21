@@ -1129,6 +1129,14 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
     for nm, (mesh, col) in umesh.items():
         sc.add(f"util/{nm}", mesh, col, "util", specular=0.2)
         util[nm] = f"util/{nm}"
+    # the safety PR (Sterling, PR #318, 2026-11-20: "Class D fire extinguishers at each station"): the fixed Class D
+    # units at the powder stations (safety.PLACES: a B570 on a post with its CLASS D signs, the 680Rs, the Super D
+    # pails), with the utilities, so the set-up movie brings them in with them. VLAB_CLASS_D=0 leaves them out.
+    if os.environ.get("VLAB_CLASS_D", "1") != "0":
+        import safety
+        for nm, (mesh, col, spec) in safety.floor_meshes().items():
+            sc.add(f"util/{nm}", mesh, col, "util", specular=spec)
+            util[nm] = f"util/{nm}"
     L.apply_state()
     sc.apply()
     sc.add("footprints", footprints(sc, F), W.TAPE_W, "tape", specular=0.0, ambient=0.5)
@@ -1158,12 +1166,18 @@ class Unit:
         self.sc, self.name, self.pose = sc, name, list(pose)
         cab = f"{name}_cab"
         for nm, (mesh, col) in P.mir250().items():
-            grp = cab if ("cabinet" in nm or "e-stop" in nm) else name
+            # the safety PR's Class D unit hangs on the cabinet's side (safety.mir_mount), so it comes in with it: a
+            # group of its own under the cabinet's, so an audit names it
+            grp = (f"{name}_classd" if "class D" in nm else
+                   cab if ("cabinet" in nm or "e-stop" in nm) else name)
             sc.add(f"{name}/{nm}", mesh, col, grp, **(dict(ambient=0.8) if "light" in nm else {}))
         holder, seat = P.buffer_holder()
         sc.add(f"{name}/holder", holder.translate((*A.BUFFER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, cab)
         sc.parent[cab] = name
         sc.gmat[cab] = np.eye(4)
+        if any(g == f"{name}_classd" for g in sc.group_of.values()):
+            sc.parent[f"{name}_classd"] = cab
+            sc.gmat[f"{name}_classd"] = np.eye(4)
         cb = f"{name}_cb"                         # the control box, standing on the MiR's top, inside the cabinet
         H0 = P.MIR["H"]
         box = pv.Box(bounds=(-230, 230, -127, 127, H0 + 5, H0 + 5 + 449)).triangulate()
@@ -1186,7 +1200,7 @@ class Unit:
         if part == "base":
             return [n for n, g in sc.group_of.items() if g == nm]
         if part == "cabinet":
-            return [n for n, g in sc.group_of.items() if g == f"{nm}_cab"]
+            return [n for n, g in sc.group_of.items() if g in (f"{nm}_cab", f"{nm}_classd")]
         if part == "control box":
             return [n for n, g in sc.group_of.items() if g == f"{nm}_cb"]
         if part == "arm":

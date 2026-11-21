@@ -566,7 +566,11 @@ def ejector_body(pc, bar_xs) -> pv.PolyData:
 # Also, it's positioned rather high". Round 4's plate carrier and bar holder stood on posts 120 and 230 mm tall; these
 # are low pockets on the cabinet's top plate instead, each with a 3 mm lead-in: the plate in a 30 mm block bored to
 # take it and its stud, the specimen rack in a frame, and a rest for the tongs. MiR frame (z from the cabinet's top).
-POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-90.0, 255.0), block_h=40.0, rack_h=20.0,
+# the safety PR: the plate's pocket moves 60 mm towards the arm's side (y -110 -> -50): with the Class D unit on the
+# cabinet's aisle side (safety.mir_mount), the arm's wrist, setting the plate in from the aisle side, ran into its
+# coupling (chapter 5's audit, 10 frames at 4 fps). Nearer the arm (-30, -10) the plate meets the arm's own upper arm
+# when it is taken out again (section 3)
+POCKETS = dict(plate=(255.0, -50.0), rack=(-255.0, -120.0), tongs=(-90.0, 255.0), block_h=40.0, rack_h=20.0,
                pocket=12.0, cradle=(250.0, 150.0), cradle_h=30.0, channel=(12.0, 5.0), channel_dx=15.0)
 
 
