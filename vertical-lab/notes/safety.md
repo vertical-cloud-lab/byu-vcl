@@ -185,7 +185,7 @@ point and the unit between the Shuttles (4.0 m). To give it one, its target post
 | Chapter 2, atomize (two arms) | **0** of 846 | (round 14's: 0) |
 | The plate swap (atom_plate) | **0** of 569 (3 with the hose in its coil) | 0 of 569 |
 | BN coating (atom_bn) | **0** of 582 | (round 14's: 0) |
-| Chapter 5, cut, heat-treat, test | CH5_RESULT | 0 of 1,411 |
+| Chapter 5, cut, heat-treat, test | **0** of 1,411 (14 with the hose in its coil and the plate's pocket where it was) | 0 of 1,411 |
 
 The JSONs are `out/collisions/<clip>_classd.json` and `<clip>_noclassd.json`. Chapter 5 also checks the MiR250 bodies
 (with their units) against everything as they drive: 0 of 1,411 frames.

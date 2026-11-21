@@ -9,6 +9,58 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Safety assets: Class D extinguishers at the powder stations and on every MiR250 (2026-11-20)
+
+Sterling, PR #318: "create a new PR focused on assets for safety. Class D fire extinguishers at each station, etc.
+Focused primarily on faithful reconstruction / asset creation. Noting that we might even want to have a class D fire
+extinguisher mounted at all times to the MiR250 and available for use". The code is [`safety.py`](safety.py) and
+[`safety_render.py`](safety_render.py); the write-up, with every source, is [`notes/safety.md`](notes/safety.md).
+
+![The assets](out/safety_assets.png)
+
+- **Amerex B570** (the lab's own unit, DAL #126): 30 lb Super D, built part by part from Amerex's datasheet and its
+  render, and checked against that render: **89 %** front-silhouette overlap
+  ([`out/safety_b570_vs_amerex.png`](out/safety_b570_vs_amerex.png)). The datasheet's 35 in includes the hose's coil;
+  the squeeze lever is at 27 in.
+- **Amerex 811** heavy-duty vehicle bracket (Buckeye 700229: 30 lb Class D, 7.5-8.5 in cylinders), the B570's own
+  wall hook, an **Amerex 680R** (150 lb wheeled, argon-regulated), **Super D** 50 lb pails with a scoop, CLASS D signs
+  at 60 and 80 in on a floor post, a 20 x 36 in keep-clear area taped in front.
+- **Where:** a B570 at the glovebox, the rePowder (with a 680R and a pail: its fire point), between the two Shuttles,
+  between Shuttle 2 and the Aconity MIDI (with a pail), packaging, the DED and the EOS (with a 680R), each placed by a
+  search clear of machines, docks, lanes, turning circles, target posts, the aisle, the Shuttles' fronts and chapter
+  5's depowdering box. Every
+  powder station is within **4.0 m** walk of one (NFPA 10: 75 ft, 22.9 m; the lab's vacuum SOP: ideally 25 ft).
+  On the posts the units meet NFPA 10's heights (lever 826 mm, hose 1044 mm, bottom 140 mm).
+  The sieving cell has no room for one of its own: its docked MiR's unit and two others 4.0 m away cover it.
+- **On every MiR250:** a B570 in an 811 on the cabinet's **aisle side**, its hose stowed low. On the cabinet's back
+  end it grew the MiR's turning circle from 494 to 619 mm and six docks lost their pivot spot; on the side the circle
+  grows 5 mm, to 499, and every dock is as before. With its hose in the coil Amerex draws, the arm's wrists went
+  through the coil in chapter 5 and the plate swap. Payload 234.5 of 250 kg (247 holding a full 12.5 kg). The UR
+  control box's door moves to the cabinet's front end, and chapter 5's plate pocket on the cabinet moves 60 mm towards
+  the arm, the arm lifting straight off it.
+- **In every lab scene from now on:** the fixed units go into `setup_lab.build` (with the utilities) and the MiR's
+  into `props.mir250`, so the chapters pick them up when next rendered (`VLAB_CLASS_D=0`, `VLAB_MIR_CLASS_D=0` leave
+  them out).
+
+| The floor | A MiR250 with its unit |
+| --- | --- |
+| ![](out/safety_plan.png) | ![](out/safety_mir.png) |
+
+![In the lab](out/safety_lab.png)
+
+The arms against the MiR's unit (`ARM_AUDIT=1`, strict rules, 4 fps; the same clip without the unit for comparison):
+
+| Clip | With the unit on both MiR250s | Without it |
+| --- | --- | --- |
+| Chapter 1, the charge | **0** of 1,129 frames | 0 (round 14) |
+| Chapter 2, atomize (two arms) | **0** of 846 | 0 (round 14) |
+| The plate swap (`atom_plate`) | **0** of 569 (3 with the hose in its coil) | 0 of 569 |
+| BN coating (`atom_bn`) | **0** of 582 | 0 (round 14) |
+| Chapter 5, cut, heat-treat, test | **0** of 1,411 (14 with the hose in its coil and the plate's pocket where it was) | 0 of 1,411 |
+
+Clip: `out/hd/safety.mp4` (1080p, 15 fps), `out/mp4/safety.mp4`, `out/safety.gif`. BoM: about $34,500
+(`out/safety.json`), two thirds of it the two 680Rs.
+
 ## Round 14 (A): the lab, the VLM and its services (2026-11-20)
 
 Sterling's notes on round 12's video, handed to run A of four (the lab, the VLM and its services; B, C and D took the
