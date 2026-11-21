@@ -34,6 +34,11 @@ REPOWDER_RECT = (-4835.0, -2615.0, -2055.0, -700.0)
 REPOWDER_PLATES = (-4795.0, -2045.0, -3160.0, -1620.0)
 RACKING = {"rack W": (-12900.0, -11833.0, -9200.0, 4515.0), "rack E": (11833.0, 12900.0, -9200.0, 4515.0),
            "rack N": (-11000.0, 10944.0, 2800.0, 3867.0)}        # warehouse.RACKS
+# what the chapters stand on the floor that setup_lab's plan doesn't: chapter 5's depowdering box and its suction
+# lance's post (alloy_workflow.DBox, at the Aconity's x + 1508 and + 170 on the row's front; measured off their meshes).
+# The first search put the Aconity's post and pail inside the box (chapter 5's audit found it: 11 frames)
+FIXTURES = {"depowdering box (ch. 5)": (8248.0, 8674.0, -1602.0, -942.0),
+            "lance post (ch. 5)": (7040.0, 7217.0, -1652.0, -1566.0)}
 
 
 def floor() -> dict:
@@ -153,6 +158,7 @@ def obstacles(fl, fp) -> dict:
     dk = dock_check(fl, fp)
     rects = {k: tuple(v) for k, v in fl["machines"].items() if not k.startswith("charger")}
     rects.update(RACKING)
+    rects.update(FIXTURES)
     mirs, lanes, circles = {}, {}, {}
     for key, d in dk.items():
         xd, yd, hd = d["dock"]
@@ -343,12 +349,14 @@ def heights() -> dict:
     hang = S.HANG_BOTTOM
     mir_b = S.MIR_MOUNT["z_foot"] + S.B811["t"]
     rows = {}
-    for where, z0 in (("on its hook (post or wall)", hang), ("on a MiR250, in the 811", mir_b)):
+    top_mir = S.mir_footprint()["top_mm"] - mir_b          # on the robot the hose is stowed low (b570_parts)
+    for where, z0, top in (("on its hook (post or wall)", hang, b["z_hose"]), ("on a MiR250, in the 811", mir_b,
+                                                                              top_mir)):
         rows[where] = dict(bottom_mm=round(z0), lever_top_mm=round(z0 + b["z_lever"]),
-                           hose_top_mm=round(z0 + b["z_hose"]),
+                           hose_top_mm=round(z0 + top),
                            bottom_ok=z0 >= S.NFPA10["bottom_min"],
                            lever_ok=z0 + b["z_lever"] <= S.NFPA10["top_max"],
-                           hose_ok=z0 + b["z_hose"] <= S.NFPA10["top_max"])
+                           hose_ok=z0 + top <= S.NFPA10["top_max"])
     return rows
 
 
@@ -744,8 +752,8 @@ def photo() -> str:
 LAB_VIEWS = [  # (camera, look-at, title): the units at the north row's west end, between the Shuttles, the east end,
     # the south row's DED and the EOS
     ((-3200.0, -7800.0, 3300.0), (-6300.0, -1500.0, 700.0), "The glovebox's unit and the rePowder's fire point"),
-    ((4600.0, -6400.0, 2600.0), (1750.0, -1500.0, 800.0), "Between the Shuttles: one unit for both openings"),
-    ((10600.0, -5600.0, 2900.0), (8900.0, -1500.0, 700.0), "The Aconity MIDI's unit and pail; the packaging station's"),
+    ((4600.0, -6400.0, 2600.0), (1750.0, -1500.0, 800.0), "Between the Shuttles: Shuttle 1's unit"),
+    ((9300.0, -6200.0, 3100.0), (7100.0, -1500.0, 700.0), "At the Aconity MIDI: a docked MiR250's unit; the MIDI's, left"),
     ((-7300.0, -6900.0, 2600.0), (-9800.0, -9600.0, 700.0), "The EOS M 400-4: a B570 in front, a 680R beside it"),
 ]
 
@@ -877,7 +885,7 @@ def clip() -> str:
             pass
     mir_cam = [(xm - 1900.0, -3300.0, 1800.0), (xm, -200.0, 700.0), (0, 0, 1)]
     sc.step("On every MiR250", "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over "
-            "its scanners' plane, wherever the robot works. Its turning circle stays 494 mm.", 4.5, None,
+            "its scanners' plane, wherever the robot works. Its turning circle grows 5 mm, to 499 mm.", 4.5, None,
             cam_to=mir_cam, hold=1.4,
             labels=[("B570 in its 811", (xm, -380.0, 700.0), (0.30, 0.30))])
     mir_unit = [n for n in sc.actors if n.startswith("amr/amr class D ") and any(
@@ -888,7 +896,7 @@ def clip() -> str:
     for n in mir_unit:
         lift_names.append(n)
     sc.step("Available for use", "Anyone near the robot takes it: throw the strap's latch, lift it off the foot plate "
-            "and go. It is 50 lb, so it hangs low.", 3.5, None, hold=1.0,
+            "and go. On the robot its hose is stowed low, out of the arm's way.", 3.5, None, hold=1.0,
             cam_to=[(xm - 900.0, -2100.0, 1200.0), (xm, -380.0, 700.0), (0, 0, 1)])
     # 5. the 680R and the pail
     xw = 7600.0

@@ -106,7 +106,7 @@ POST = dict(s=41.3, h=2150.0, base=254.0, base_t=9.5,
             source="ours: a 1-5/8 in 12 ga strut channel (Unistrut P1000 class) on a 10 x 10 x 3/8 in post base, "
                    "anchored with four 1/2 in wedge anchors, painted fire red; the Amerex hook on its face, the signs above")
 NFPA10 = dict(top_max=42 * IN, bottom_min=4 * IN, travel_max=75 * 12 * IN, travel_ideal=25 * 12 * IN,
-              keep_clear=36 * IN, keep_clear_w=24 * IN,
+              keep_clear=36 * IN, keep_clear_w=20 * IN,
               source="NFPA 10 6.1.3.8.2-3 (gross weight over 40 lb: top at most 3.5 ft above the floor, bottom at least "
                      "4 in) and 6.5 / OSHA 29 CFR 1910.157(d)(5) (Class D agent within 75 ft of travel); 25 ft is the "
                      "lab's vacuum SOP's 'ideally' (PR 80, vacuum-operating-sop.md gate 0.2)")
@@ -309,7 +309,7 @@ def class_d_star(h=22.0, depth=0.6):
     return out
 
 
-def b570_parts(hose: bool = True, lod: str = "full", lean: float = 0.0) -> dict:
+def b570_parts(hose: bool = True, lod: str = "full", lean: float = 0.0, stowed: bool = False) -> dict:
     """{name: (PolyData, material)}: the Amerex B570, part by part, in its own frame (see B570). lod "lab" leaves out
     the label's small print (for whole-lab scenes, where it is a few pixels). lean > 0 drapes the hose's coil forward
     (out of the label's side), by `lean` mm per mm of height over the valve: the robot-mounted unit's, so the coil
@@ -387,6 +387,15 @@ def b570_parts(hose: bool = True, lod: str = "full", lean: float = 0.0) -> dict:
         if lean:
             path = [(x, y - lean * max(0.0, z - 690.0) * (1.0 if 2 <= i < len(path) - 3 else 0.0), z)
                     for i, (x, y, z) in enumerate(path)]
+        if stowed:
+            # on the robot (mir_parts): the hose secured low instead of in its coil, so nothing but the valve and the
+            # coupling stands over the cabinet top: down the left, across the front just over the lower band (the label
+            # stays clear), up the right outside the applicator, over into the coupling. About the coil's length
+            path = [(-64.0, 0.0, 626.0), (-105.0, -20.0, 600.0), (-125.0, -45.0, 520.0), (-125.0, -60.0, 420.0),
+                    (-110.0, -80.0, 335.0), (-60.0, -110.0, 304.0), (0.0, -116.0, 300.0), (60.0, -110.0, 304.0),
+                    (110.0, -85.0, 335.0), (150.0, -55.0, 420.0), (158.0, -45.0, 520.0), (155.0, -40.0, 620.0),
+                    (150.0, -35.0, 720.0), (140.0, -25.0, 795.0), (127.0, -9.0, 815.0), (120.0, -1.0, 797.0),
+                    (119.0, 0.0, 778.0)]
         _add(p, "B570 hose", _tube(path, 11.0), "rubber")
     # the applicator: chrome quick-detach coupling, a black tapered grip, the wand, the soft-flow cup
     wx = b["wand_x"]
@@ -766,8 +775,8 @@ def post_parts(with_unit: bool = True, lod: str = "full") -> dict:
         q = np.asarray(m.points, float)
         m.points = np.c_[-q[:, 1] + s / 2 + 40.0, q[:, 0], q[:, 2] + fz - SIGN["w"]]       # out to +x, under the leg
         _add(p, name, m, mat)
-    # the keep-clear area taped on the floor in front: 24 in wide, 36 in out (DAL suggested 36 x 36 in; on this floor a
-    # 36 in square in front of a unit between two machines runs into the docked MiR250s)
+    # the keep-clear area taped on the floor in front: 20 in wide, 36 in out (DAL suggested 36 x 36 in; on this floor a
+    # 36 in square in front of a unit between two machines runs into the docked MiR250s and the target posts)
     k, kw = NFPA10["keep_clear"], NFPA10["keep_clear_w"]
     y0, y1 = -s / 2 - k, -s / 2
     tape = []
@@ -813,10 +822,11 @@ def pail_parts() -> dict:
 # label out. There it stays inside the circle the MiR250 already sweeps turning on the spot (494 mm): mounted on the
 # back end instead, it made that circle 619 mm and six docks lost their pivot spot (notes/safety.md). The cabinet's door
 # (the UR control box's) moves from that side to the front end (props.mir250).
-MIR_MOUNT = dict(x=0.0, z_foot=310.0, plate_t=6.0, plate=(470.0, 250.0), plate_kg=1.9, hose_lean=0.45)
-# hose_lean: on the robot the hose's coil is draped forward, away from the cabinet (b570_parts(lean=...)): hung in the
-# frontal plane as Amerex draws it, its top stood 110 mm off the cabinet's side, where arm B's forearm passed it in the
-# plate swap (atom_plate, step 11: 3 frames at 4 fps; 0 without the unit)
+MIR_MOUNT = dict(x=0.0, z_foot=310.0, plate_t=6.0, plate=(470.0, 250.0), plate_kg=1.9)
+# On the robot the hose is stowed low (b570_parts(stowed=True)). Hung in its coil as Amerex draws it, the coil rose
+# 1,217 mm, 437 mm over the cabinet top and 110 mm off its side: the arm's wrists went through it in the plate swap
+# (atom_plate step 11) and in chapter 5 (steps 2 and 6), 3 and 14 frames at 4 fps, 0 without the unit; leaning the coil
+# 90 mm out cleared the plate swap but not chapter 5 (audit snapshots, notes/safety.md)
 CLASS_D_ON_MIR = os.environ.get("VLAB_MIR_CLASS_D", "1") != "0"
 
 
@@ -843,7 +853,7 @@ def mir_parts() -> dict:
     for name, (mesh, mat) in bracket811_parts().items():
         _add(p, name, mesh.transform(M, inplace=False), mat)
     Mb = M @ b570_in_811()
-    for name, (mesh, mat) in b570_parts(lean=MIR_MOUNT["hose_lean"]).items():
+    for name, (mesh, mat) in b570_parts(stowed=True).items():
         _add(p, name, mesh.transform(Mb, inplace=False), mat)
     return p
 
@@ -896,12 +906,13 @@ PLACES = [
     # station, kind, x, y, face (the direction its front looks: -1 to -y, +1 to +y), what it covers. Each is the
     # nearest spot to its station that clears everything (safety_render.place_search, 50 mm grid, then rounded)
     ("glovebox", "b570", -8050.0, -1150.0, -1, "the floor glovebox (west of it)"),
-    ("repowder", "b570", -5150.0, -1450.0, -1, "the rePowder atomizer (its fire point, west of it)"),
+    ("repowder", "b570", -5150.0, -1400.0, -1, "the rePowder atomizer (its fire point, west of it)"),
     ("repowder", "680r", -6300.0, -1000.0, -1, "the rePowder atomizer (its fire point)"),
     ("repowder", "pail", -5650.0, -1475.0, -1, "the rePowder atomizer (its fire point)"),
     ("vlm", "b570", 1750.0, -1150.0, -1, "both Shuttles' openings (in the gap between them)"),
-    ("aconity", "b570", 8495.0, -1150.0, -1, "the Aconity MIDI and its depowdering (east of it)"),
-    ("aconity", "pail", 8485.0, -800.0, -1, "the Aconity MIDI"),
+    ("aconity", "b570", 5380.0, -1250.0, -1, "the Aconity MIDI, its depowdering box and Shuttle 2 (in the gap "
+                                              "between Shuttle 2 and the MIDI)"),
+    ("aconity", "pail", 5380.0, -850.0, -1, "the Aconity MIDI (behind its post)"),
     ("packaging", "b570", 10786.0, -2050.0, -1, "the packaging station (east of its dock)"),
     ("ded", "b570", 4900.0, -6650.0, 1, "the MX-Lab DED (east of it)"),
     ("eos_m400", "b570", -9450.0, -9550.0, 1, "the EOS M 400-4 (in front of it)"),

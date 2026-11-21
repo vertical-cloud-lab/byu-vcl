@@ -1166,13 +1166,18 @@ class Unit:
         self.sc, self.name, self.pose = sc, name, list(pose)
         cab = f"{name}_cab"
         for nm, (mesh, col) in P.mir250().items():
-            # the safety PR's Class D unit hangs on the cabinet's side (safety.mir_mount), so it comes in with it
-            grp = cab if ("cabinet" in nm or "e-stop" in nm or "class D" in nm) else name
+            # the safety PR's Class D unit hangs on the cabinet's side (safety.mir_mount), so it comes in with it: a
+            # group of its own under the cabinet's, so an audit names it
+            grp = (f"{name}_classd" if "class D" in nm else
+                   cab if ("cabinet" in nm or "e-stop" in nm) else name)
             sc.add(f"{name}/{nm}", mesh, col, grp, **(dict(ambient=0.8) if "light" in nm else {}))
         holder, seat = P.buffer_holder()
         sc.add(f"{name}/holder", holder.translate((*A.BUFFER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, cab)
         sc.parent[cab] = name
         sc.gmat[cab] = np.eye(4)
+        if any(g == f"{name}_classd" for g in sc.group_of.values()):
+            sc.parent[f"{name}_classd"] = cab
+            sc.gmat[f"{name}_classd"] = np.eye(4)
         cb = f"{name}_cb"                         # the control box, standing on the MiR's top, inside the cabinet
         H0 = P.MIR["H"]
         box = pv.Box(bounds=(-230, 230, -127, 127, H0 + 5, H0 + 5 + 449)).triangulate()
@@ -1195,7 +1200,7 @@ class Unit:
         if part == "base":
             return [n for n, g in sc.group_of.items() if g == nm]
         if part == "cabinet":
-            return [n for n, g in sc.group_of.items() if g == f"{nm}_cab"]
+            return [n for n, g in sc.group_of.items() if g in (f"{nm}_cab", f"{nm}_classd")]
         if part == "control box":
             return [n for n, g in sc.group_of.items() if g == f"{nm}_cb"]
         if part == "arm":

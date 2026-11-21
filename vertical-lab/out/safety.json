@@ -41,7 +41,7 @@
   "on a MiR250, in the 811": {
    "bottom_mm": 313,
    "lever_top_mm": 999,
-   "hose_top_mm": 1217,
+   "hose_top_mm": 1138,
    "bottom_ok": true,
    "lever_ok": true,
    "hose_ok": false
@@ -53,7 +53,7 @@
   "travel_max": 22860.0,
   "travel_ideal": 7620.0,
   "keep_clear": 914.4,
-  "keep_clear_w": 609.5999999999999,
+  "keep_clear_w": 508.0,
   "source": "NFPA 10 6.1.3.8.2-3 (gross weight over 40 lb: top at most 3.5 ft above the floor, bottom at least 4 in) and 6.5 / OSHA 29 CFR 1910.157(d)(5) (Class D agent within 75 ft of travel); 25 ft is the lab's vacuum SOP's 'ideally' (PR 80, vacuum-operating-sop.md gate 0.2)"
  },
  "mir": {
@@ -65,20 +65,20 @@
     290.0
    ],
    "unit": [
-    -144.02593994140625,
-    166.97960594767474,
-    -472.797905183917,
+    -136.9776611328125,
+    168.91929626464844,
+    -498.4676513671875,
     -260.0
    ],
-   "beside_mm": 182.797905183917,
+   "beside_mm": 208.4676513671875,
    "along": [
-    -144.02593994140625,
-    166.97960594767474
+    -136.9776611328125,
+    168.91929626464844
    ],
-   "top_mm": 1216.9088134765625,
+   "top_mm": 1138.4674072265625,
    "bottom_mm": 305.0,
-   "r_unit": 476.582417616565,
-   "r_turn": 494.064773081425,
+   "r_unit": 498.7931671078628,
+   "r_turn": 498.7931671078628,
    "r_turn_mir": 494.064773081425
   },
   "load": {
@@ -106,15 +106,15 @@
     }
    },
    "unit_cog_mm": [
-    11,
-    -364,
+    15,
+    -374,
     565
    ],
    "restoring_moment_change_Nm": {
-    "+x": 88.3,
-    "-x": 94.7,
-    "+y": 165.8,
-    "-y": -39.1
+    "+x": 87.3,
+    "-x": 95.7,
+    "+y": 168.6,
+    "-y": -41.9
    },
    "restoring_moment_without_Nm": {
     "+x": 965.0,
@@ -249,10 +249,10 @@
    ],
    "approach_was": 1750,
    "pivot_now": [
-    8270,
+    8295,
     -2082
    ],
-   "approach_now": 1750,
+   "approach_now": 1775,
    "hits_before": [],
    "new_hits": [],
    "ok": true
@@ -412,15 +412,15 @@
    "kind": "b570",
    "at": [
     -5150.0,
-    -1450.0
+    -1400.0
    ],
    "face": -1,
    "covers": "the rePowder atomizer (its fire point, west of it)",
    "solid": [
     -5310,
     -4990,
-    -1702,
-    -1323
+    -1652,
+    -1273
    ],
    "nearest_machine": [
     155,
@@ -499,19 +499,19 @@
    "station": "aconity",
    "kind": "b570",
    "at": [
-    8495.0,
-    -1150.0
+    5380.0,
+    -1250.0
    ],
    "face": -1,
-   "covers": "the Aconity MIDI and its depowdering (east of it)",
+   "covers": "the Aconity MIDI, its depowdering box and Shuttle 2 (in the gap between Shuttle 2 and the MIDI)",
    "solid": [
-    8335,
-    8655,
-    -1402,
-    -1023
+    5220,
+    5540,
+    -1502,
+    -1123
    ],
    "nearest_machine": [
-    149,
+    174,
     "aconity"
    ],
    "hits": [],
@@ -521,19 +521,19 @@
    "station": "aconity",
    "kind": "pail",
    "at": [
-    8485.0,
-    -800.0
+    5380.0,
+    -850.0
    ],
    "face": -1,
-   "covers": "the Aconity MIDI",
+   "covers": "the Aconity MIDI (behind its post)",
    "solid": [
-    8315,
-    8655,
-    -960,
-    -640
+    5210,
+    5550,
+    -1010,
+    -690
    ],
    "nearest_machine": [
-    129,
+    164,
     "aconity"
    ],
    "hits": [],
@@ -636,14 +636,14 @@
    "sop_25ft": true
   },
   "repowder": {
-   "m": 2.14,
-   "ft": 7.0,
+   "m": 2.24,
+   "ft": 7.3,
    "nfpa10_75ft": true,
    "sop_25ft": true
   },
   "sieve_cell": {
-   "m": 3.87,
-   "ft": 12.7,
+   "m": 3.97,
+   "ft": 13.0,
    "nfpa10_75ft": true,
    "sop_25ft": true
   },
@@ -654,14 +654,14 @@
    "sop_25ft": true
   },
   "vlm2": {
-   "m": 2.08,
-   "ft": 6.8,
+   "m": 1.94,
+   "ft": 6.4,
    "nfpa10_75ft": true,
    "sop_25ft": true
   },
   "aconity": {
-   "m": 1.9,
-   "ft": 6.2,
+   "m": 1.7,
+   "ft": 5.6,
    "nfpa10_75ft": true,
    "sop_25ft": true
   },

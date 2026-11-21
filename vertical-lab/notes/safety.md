@@ -14,10 +14,10 @@ checks, the figures, the clip). The numbers below are in [`out/safety.json`](../
 | --- | --- | --- |
 | Every MiR250 (both units; a third for floor cleaning, #366, would carry one too) | an Amerex **B570** in an Amerex **811** heavy-duty vehicle bracket, on the cabinet's aisle side | "mounted at all times to the MiR250 and available for use": whoever is near the robot has one, wherever it is working |
 | Glovebox (floor) | B570 on a post, west of it | 0.9 m walk |
-| rePowder atomizer | a **fire point** west of it: B570 on a post, an Amerex **680R** (150 lb, wheeled), a 50 lb pail of Super D with a scoop | the most metal and the finest powder in the lab; 2.1 m walk |
-| Sieving cell | nothing of its own (see below); its docked MiR250's unit, the rePowder's fire point and the unit between the Shuttles | 3.9 m walk to the nearest fixed unit |
-| Both Shuttles' openings | one B570 on a post in the 800 mm gap between them | 2.0 and 2.1 m walks; the floor in front of each opening stays clear for Kardex's extraction table |
-| Aconity MIDI (and its depowdering) | B570 on a post east of it, a Super D pail behind it | 1.9 m walk |
+| rePowder atomizer | a **fire point** west of it: B570 on a post, an Amerex **680R** (150 lb, wheeled), a 50 lb pail of Super D with a scoop | the most metal and the finest powder in the lab; 2.2 m walk |
+| Sieving cell | nothing of its own (see below); its docked MiR250's unit, the rePowder's fire point and the unit between the Shuttles | 4.0 m walk to the nearest fixed unit |
+| Shuttle 1's opening (and Shuttle 2's) | a B570 on a post in the 800 mm gap between the Shuttles | 2.0 m walk; the floor in front of each opening stays clear for Kardex's extraction table |
+| Aconity MIDI, its depowdering box, Shuttle 2's opening | a B570 on a post in the gap between Shuttle 2 and the MIDI, a Super D pail behind it | 1.7 m from the MIDI, 1.9 m from Shuttle 2's opening |
 | Packaging station | B570 on a post east of its dock | 1.1 m |
 | MX-Lab DED | B570 on a post east of it | 1.3 m |
 | EOS M 400-4 | B570 on a post in front of it, a 680R beside it | 0.5 m; 100 kg of powder in its containers |
@@ -87,19 +87,19 @@ mounting study: "never use the CO2 or water on a metal fire").
   double-sided flag sign at 80 in on DAL's aluminium flag bracket, so the unit is seen from along the aisle.
 - **Posts** (ours): a 1-5/8 in 12 ga strut channel, 2.15 m, on a 10 x 10 x 3/8 in post base with four 1/2 in wedge
   anchors, painted fire red; the B570's hook on its front, the signs above. Where the stations stand there are no walls.
-- **Keep-clear area:** 24 in wide and 36 in out, taped yellow in front of each post. DAL suggested 36 x 36 in; on this
-  floor a 36 in square in front of a unit between two machines runs into the docked MiR250s.
+- **Keep-clear area:** 20 in wide and 36 in out, taped yellow in front of each post. DAL suggested 36 x 36 in; on this
+  floor a 36 in square in front of a unit between two machines runs into the docked MiR250s and the target posts.
 
 ## Mounting heights (NFPA 10 6.1.3.8: gross weight over 40 lb, top at most 42 in, bottom at least 4 in)
 
 | | Bottom | Squeeze lever | Top of the hose's coil |
 | --- | --- | --- | --- |
 | On its hook (post) | 140 mm (5.5 in) | 826 mm (32.5 in) | 1044 mm (41.1 in) |
-| On a MiR250, in the 811 | 313 mm | 999 mm (39.3 in) | 1217 mm (47.9 in) |
+| On a MiR250, in the 811 (hose stowed) | 313 mm | 999 mm (39.3 in) | the coupling 1090 mm, the hose's bend 1138 mm (44.8 in) |
 
-On a post both readings of "top" pass. On the MiR the lever passes and the hose's coil doesn't: it rides on the 811's
-foot plate, over the MiR's deck. NFPA 10's heights are written for installed hangers, not vehicles; the lever, which is
-what a person lifts it by, is under 42 in.
+On a post both readings of "top" pass. On the MiR the lever passes and the coupling and hose don't: the unit rides on
+the 811's foot plate, over the MiR's deck. NFPA 10's heights are written for installed hangers, not vehicles; the lever,
+which is what a person lifts it by, is under 42 in.
 
 ## The walk (NFPA 10 6.5 and OSHA 1910.157(d)(5): Class D agent within 75 ft of travel; the lab's vacuum SOP: ideally 25 ft)
 
@@ -112,17 +112,19 @@ fire at each station to where they would take the nearest fixed unit:
 | glovebox | 0.9 m |
 | packaging | 1.1 m |
 | MX-Lab DED | 1.3 m |
-| Aconity MIDI | 1.9 m |
-| Shuttle 1, Shuttle 2 | 2.0, 2.1 m |
-| rePowder | 2.1 m |
-| sieving cell | 3.9 m |
+| Aconity MIDI | 1.7 m |
+| Shuttle 1, Shuttle 2 | 2.0, 1.9 m |
+| rePowder | 2.2 m |
+| sieving cell | 4.0 m |
 
 All are under the lab's 25 ft (7.6 m), let alone NFPA 10's 75 ft. The MiR250s' units aren't counted: they move.
 
 ## Where each unit stands: a search, not a guess
 
 Each fixed unit is the spot nearest its station (50 mm grid) that clears, on the floor plan `setup_lab.py fit` last
-measured (`out/tray_plan.json`): every machine and the racking by 50 mm; every docked MiR250 with its unit, every
+measured (`out/tray_plan.json`): every machine, the racking and chapter 5's depowdering box and lance post (which the
+floor plan doesn't hold; the first search put the Aconity's post and pail inside the box, and chapter 5's audit
+found it) by 50 mm; every docked MiR250 with its unit, every
 approach lane and every pivot circle by 30 mm; every AprilTag target post's foot; the aisle; the floor in front of each
 Shuttle's opening (Kardex's extraction table and cart); the rePowder's bonded floor plates, where chapter 2's MiR250s
 park; and every other unit by 50 mm. Its keep-clear area must miss the machines, the docked MiRs, the posts, the aisle
@@ -131,7 +133,7 @@ and the other units. `places_check` re-checks all eleven: all clear.
 **The sieving cell has no spot of its own.** Its bench stands 85 mm from the rePowder and 20 mm from Shuttle 1, and its
 front is its MiR250's dock and target post; a unit hung on the bench's front would stand in the arm's way into the
 enclosure, with its valve over the bench top. It is covered by its docked MiR's own unit (0.6 m), the rePowder's fire
-point and the unit between the Shuttles (3.9 m). To give it one, its target post or the cell would have to move.
+point and the unit between the Shuttles (4.0 m). To give it one, its target post or the cell would have to move.
 
 ## The MiR250's unit
 
@@ -142,21 +144,34 @@ point and the unit between the Shuttles (3.9 m). To give it one, its target post
   MiR, grew the circle the MiR sweeps turning on the spot from 494 to 619 mm, and **six docks lost their pivot spot**
   (both Shuttles, the Aconity, packaging, the fume hood, the DED): each MiR turns on its dock line, 80 mm off the
   machines. On the aisle side (the MiR's -y, the side away from the arm, which faces the aisle at every dock), centred,
-  it sticks out 200 mm but stays inside that circle: **494 to 496 mm, every dock as before.** The UR control box's
+  it sticks out 208 mm and the circle grows only to **499 mm: every dock as before.** It has to stay centred: shifted
+  80 mm towards either end, three docks (both Shuttles, packaging) lose their pivot spot again. The UR control box's
   door moves from that side to the cabinet's front end.
 - **The mount:** the 811 bolted through a 6 mm aluminium adapter plate (ours, 250 x 470 mm, four M10) to the cabinet's
   side; the foot plate 310 mm up, over the MiR's deck and its scanners' plane; the label out, the strap's latch to
-  the front. A person at a docked MiR takes it from the aisle: throw the latch, lift it off the foot plate.
+  the side. A person at a docked MiR takes it from the aisle: throw the latch, lift it off the foot plate.
+- **Its hose is stowed low.** Hung in its coil as Amerex draws it, the hose rises to 1,217 mm, 437 mm over the cabinet
+  top and 110 mm off its side, and the audits' snapshots show the arm's wrists passing through the coil: in the plate
+  swap (3 frames at 4 fps) and in chapter 5 (14), none without the unit. Leaning the coil 90 mm out cleared the plate
+  swap but not chapter 5. So on the robot the hose runs down the unit's outer side, across its front just over the
+  lower band (the label stays clear) and up beside the applicator into its coupling, under a strap (ours): the unit's
+  top is then the coupling at 1,090 mm and the hose's bend into it at 1,138 mm. On a vehicle the hose wants securing
+  in any case.
+- **Two small changes to chapter 5.** Its last contact was one pose: the arm setting the build plate into its pocket
+  on the cabinet's aisle side, its wrist over the unit's coupling, then backing off 110 mm towards the aisle. The
+  pocket moves 60 mm towards the arm's side (`alloy_models.POCKETS["plate"]`, y -110 to -50), and the arm lifts
+  straight up 90 mm off the plate instead (`alloy_workflow.py`). Tried and dropped: the pocket at y -30 or -10 (the
+  plate meets the arm's own upper arm when it is taken out for the EDM) and at +20 (the upper arm again).
 - **Payload:** the top module was 205.8 kg (UR10e 33.3, control box 12, cabinet 25, gripper 1.2, carried items 3,
   ballast plate 131.3: `alloy_atomize.MASS`); the unit adds 28.7 kg (the B570 charged 22.7, the 811 4.1, the plate 1.9):
   **234.5 kg, 247.0 with the arm holding its full 12.5 kg, against the MiR250's 250.** 3 kg to spare. If a top module
   ever needs more, the ballast plate is the place to give (the unit itself sits low and on the outside of the
   support, so it does part of the ballast's job, below).
-- **Tipping:** the unit's centre of mass is 365 mm out on the aisle side, 140 mm outside the support rectangle's
+- **Tipping:** the unit's centre of mass is about 370 mm out on the aisle side, 145 mm outside the support rectangle's
   -y edge (`alloy_atomize.WHEELS`, an estimate). About each edge it changes the moment the robot's weight holds it
-  down with (parked arm; without the unit: 626 N m about +y, 711 about -y, 965 about either end): **+166 N m about the
-  +y edge** (+26 %, the machine side, where the arm pushes and pulls), +88 about +x, +95 about -x, and **-39 N m about
-  the -y edge** (-5.5 %, the aisle side).
+  down with (parked arm; without the unit: 626 N m about +y, 711 about -y, 965 about either end): **+169 N m about the
+  +y edge** (+27 %, the machine side, where the arm pushes and pulls), +87 about +x, +96 about -x, and **-42 N m about
+  the -y edge** (-6 %, the aisle side).
 - **MiR's rules:** "top-module mounting dimensions are equal to robot footprint ... contact MiR if a bigger top module
   is required" (MiR250 spec sheet). A 200 mm overhang is a question for MiR, and the robot's footprint has to be
   extended in its settings so its planner and protective fields allow for it. Two MiR250s passing in the 3.0 m aisle:
@@ -168,10 +183,12 @@ point and the unit between the Shuttles (3.9 m). To give it one, its target post
 | --- | --- | --- |
 | Chapter 1, the charge | **0** of 1,129 frames | (round 14's: 0) |
 | Chapter 2, atomize (two arms) | **0** of 846 | (round 14's: 0) |
-| Chapter 5, cut, heat-treat, test | see `out/collisions/alloy_workflow_classd.json` | see `alloy_workflow_noclassd.json` |
-| The plate swap (atom_plate) | see `atom_plate_classd.json` | see `atom_plate_noclassd.json` |
+| The plate swap (atom_plate) | **0** of 569 (3 with the hose in its coil) | 0 of 569 |
+| BN coating (atom_bn) | **0** of 582 | (round 14's: 0) |
+| Chapter 5, cut, heat-treat, test | CH5_RESULT | 0 of 1,411 |
 
-(The table is filled in from the runs; the README section has the final numbers.)
+The JSONs are `out/collisions/<clip>_classd.json` and `<clip>_noclassd.json`. Chapter 5 also checks the MiR250 bodies
+(with their units) against everything as they drive: 0 of 1,411 frames.
 
 ## The bill (out/safety.json, "bom")
 
