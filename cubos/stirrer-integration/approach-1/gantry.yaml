@@ -1,0 +1,102 @@
+# gantry.yaml -- approach 1, EXAMPLE. Does not load on CubOS main yet:
+# `stirrer` is not an instrument type there (see ../README.md).
+#
+# Ben's cub_xl_ben_3_instrument.yaml (2026-10-02), the gantry file the
+# 2026-11-05 stir trial ran on, unchanged except for `stirrer_1` at the end.
+#
+# Approach 1: the stirrer is an ordinary entry under `instruments:`. It is
+# built by the same registry, shares the Uno's PawduinoLink with the capper
+# and the pipette, and is torn down with them. What makes it deck-mounted is
+# not this file but the registry entry for its type (proposed):
+#
+#   # packages/core/src/cubos/instruments/registry.yaml
+#   stirrer:
+#     interface: cubos.instruments.stirrer.interface.StirrerInstrument
+#     mount: deck        # new key, default `head`
+#     vendors:
+#       pawduino:
+#         module: cubos.instruments.stirrer.vendors.pawduino
+#         class_name: PawduinoStirrer
+#       mock:
+#         module: cubos.instruments.stirrer.vendors.mock
+#         class_name: MockStirrer
+#
+# Everything that assumes "every instrument rides on the head" skips
+# `mount: deck` types: tool calibration, offset calibration, motion
+# envelopes, the bounds and home-pose checks. So a deck-mounted entry has no
+# offset_x / offset_y / depth / motion_envelope, and the loader should reject
+# them if given rather than silently ignore them.
+
+serial_port: /dev/ttyUSB0
+gantry_type: cub_xl
+cnc:
+  factory_z_travel_mm: 124.0
+  calibration_block_height_mm: 35.0
+  y_axis_motion: head
+  safe_z: 115.0
+working_volume:
+  x_min: 0.0
+  x_max: 361.0
+  y_min: 0.0
+  y_max: 278.0
+  z_min: 0.0
+  z_max: 122.0
+origin_policy: deck_origin
+grbl_settings:
+  dir_invert_mask: 1
+  status_report: 0
+  soft_limits: true
+  homing_enable: true
+  homing_dir_mask: 0
+  homing_pull_off: 3.0
+  steps_per_mm_x: 400.0
+  steps_per_mm_y: 400.0
+  steps_per_mm_z: 400.0
+  max_travel_x: 364.0
+  max_travel_y: 281.0
+  max_travel_z: 125.0
+instruments:
+  vial_capper_decapper:
+    type: capper
+    vendor: pawduino
+    offset_x: 0.0
+    offset_y: 0.0
+    depth: -16.0
+    capture_retries: 2
+    capture_settle_s: 1
+    engage_depth_mm: 15
+    offline: false
+    park_position:
+    - 236
+    - 25
+    port: /dev/ttyACM0
+  pipette:
+    type: pipette
+    vendor: opentrons
+    offset_x: 55.0
+    offset_y: 11.0
+    depth: 0.0
+    pipette_model: p20_single_gen2
+    port: /dev/ttyACM0
+    offline: false
+  camera_3:
+    type: camera
+    vendor: mount_only
+    offset_x: -40.0
+    offset_y: 10.0
+    depth: -110.0
+
+  # ── New ─────────────────────────────────────────────────────────────────
+  stirrer_1:
+    type: stirrer
+    vendor: pawduino
+    # Exactly the same string as the capper and the pipette. PawduinoLink
+    # shares one link per port *string* (no realpath), so the by-id path here
+    # and /dev/ttyACM0 above would open the Uno twice, and the second open
+    # resets the board mid-run. Moving all three to
+    # /dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00
+    # is a good idea, but only all three together.
+    port: /dev/ttyACM0
+    offline: false
+    # channel: 1   # only once the firmware drives more than one stirrer
+    #              # (one today: D10 PWM, D2 Hall)

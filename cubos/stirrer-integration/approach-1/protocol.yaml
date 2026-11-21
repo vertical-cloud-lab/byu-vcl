@@ -1,0 +1,89 @@
+# protocol.yaml -- approach 1, EXAMPLE. Does not load on CubOS main yet:
+# `stir` is not a command there (see ../README.md).
+#
+# The 2026-11-05 stir_module_trial protocol, which ran 11/11 on the CubXL
+# (cubos/configs/protocol/vcl/stir_module_trial.yaml), with the stir moved
+# into the protocol. On 11-05 it could not be: CubOS holds the Uno's port for
+# the whole run, so a separate script opened the port after the run ended
+# (resetting the Uno) and sent `30,600,60`. Steps 0-8 are unchanged; see the
+# original file for the keep-out reasoning behind them.
+#
+# Proposed command (modelled on `set_lights`):
+#
+#   - stir:
+#       instrument: <a `stirrer` instrument>
+#       rpm: <float>        # 0 stops. The firmware clamps 100-2000.
+#       seconds: <float>    # optional; omitted = until stopped or run end
+#       wait: <bool>        # default true when `seconds` is given: block
+#                           # until the firmware's timer ends, polling `31`
+#                           # once a second into the run log
+#
+# `rpm: 0` rather than `off: true`, because YAML reads a bare `off` as a
+# boolean (the same reason `set_lights` has `all_off`). Run teardown stops
+# every stirrer, the way `disconnect_instruments` turns every light off, so
+# an aborted run never leaves one spinning.
+
+positions:
+  park_position: [206.0, 25.0, 115.0]
+
+protocol:
+  - home:
+
+  - move:
+      instrument: vial_capper_decapper
+      position: park_position
+      travel_z: 115
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  - aspirate:
+      position: vial_2
+      volume_ul: 20.0
+      height: -35.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - blowout:
+      position: vial_1
+      height: -20.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # 9. NEW. Stir vial 1 at 600 rpm for 60 s, capped. The step names the
+  #    stirrer, not the vial: in approach 1 CubOS does not know which vial
+  #    sits on which stirrer.
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 60
+
+  # 10. Tip back into A1 (step 9 on 11-05).
+  - drop_tip:
+      position: tip_rack.A1
+
+  - home:
+
+# Non-blocking form, to do other work while it stirs:
+#
+#   - stir:
+#       instrument: stirrer_1
+#       rpm: 600
+#       wait: false
+#   - drop_tip:
+#       position: tip_rack.A1
+#   - stir:
+#       instrument: stirrer_1
+#       rpm: 0

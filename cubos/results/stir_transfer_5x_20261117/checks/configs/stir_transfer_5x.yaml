@@ -1,0 +1,234 @@
+# stir_transfer_5x.yaml -- five vial 2 -> vial 1 transfers with one tip, stirring
+# vial 1 while vial 2 is being worked on. CubXL; deck stir_module_trial_stirrer.yaml,
+# gantry cub_xl_ben_3_instrument_stirrer.yaml. Needs CubOS with
+# cubos/patches/stirrer-approach-1.patch (the `stirrer` type and `stir` command).
+#
+# Asked for by @benwhitney5463 on PR #348, 2026-11-17: "pickup a pipette tip,
+# uncap vial 2, aspirate in vial 2, cap vial 2, uncap vial 1, blowout in vial 1,
+# cap vial 1 and repeat this 5 times ... while we [are] uncapping vial 2,
+# aspirating, and recapping vial 2, stir vial 1."
+#
+#   0 home   1 capper to park   2 pick_up_tip A1 (once; the same tip all five times)
+#   then five times, cycle k = 1..5 (steps 3+8(k-1) .. 10+8(k-1)):
+#     stir vial 1 on: stirrer_1 at 600 rpm, no wait
+#     decap vial_2 -> aspirate 20 uL in vial_2 -> cap vial_2      (vial 1 stirring, capped)
+#     stir off
+#     decap vial_1 -> blowout in vial_1 -> cap vial_1             (stirrer stopped)
+#   43 drop_tip back into A1   44 home
+#
+# The stirrer is off whenever vial 1 is open: the tip never enters a vial that
+# is being stirred (the bar is on its floor and the vortex lowers the surface;
+# docs/vial-mixing.md), and vial 1 is never decapped or recapped while it spins.
+# `seconds: 120` with `wait: false` is a backstop the firmware enforces itself:
+# each stir is stopped by the protocol about 30 s in, but if the host vanished
+# the stirrer would still stop at 120 s. Run teardown also stops it.
+#
+# Heights and paths are the 11-05 stir_module_trial.yaml's, which ran 11/11:
+#   aspirate vial_2 at height -35 (tip end 35 mm below vial 2's rim, deck Z 21);
+#   blowout vial_1 at height -20 (tip end 20 mm below the rim, deck Z 46, clear
+#   of the stir bar). The tip goes on before vial 2 is opened (11-05 opened it
+#   first), so decap vial_2 now puts the tip beside the capper at deck
+#   (191.668, 100) down to Z 20, exactly as cap vial_2 did on 11-05.
+# The tip must never pass over vial 1 while it is capped (on the stir module it
+# is too tall for a tipped pipette to clear its cap): checked from the mock run
+# by cubos/tools/capped_vial_keepout.py, as on 11-05.
+
+positions:
+  park_position: [206.0, 25.0, 115.0]
+
+protocol:
+  - home:
+
+  - move:
+      instrument: vial_capper_decapper
+      position: park_position
+      travel_z: 115
+
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  # ── cycle 1 of 5 ──────────────────────────────────────────────────────────
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 120
+      wait: false
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - aspirate:
+      position: vial_2
+      volume_ul: 20.0
+      height: -35.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 0
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - blowout:
+      position: vial_1
+      height: -20.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # ── cycle 2 of 5 ──────────────────────────────────────────────────────────
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 120
+      wait: false
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - aspirate:
+      position: vial_2
+      volume_ul: 20.0
+      height: -35.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 0
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - blowout:
+      position: vial_1
+      height: -20.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # ── cycle 3 of 5 ──────────────────────────────────────────────────────────
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 120
+      wait: false
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - aspirate:
+      position: vial_2
+      volume_ul: 20.0
+      height: -35.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 0
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - blowout:
+      position: vial_1
+      height: -20.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # ── cycle 4 of 5 ──────────────────────────────────────────────────────────
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 120
+      wait: false
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - aspirate:
+      position: vial_2
+      volume_ul: 20.0
+      height: -35.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 0
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - blowout:
+      position: vial_1
+      height: -20.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # ── cycle 5 of 5 ──────────────────────────────────────────────────────────
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 120
+      wait: false
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - aspirate:
+      position: vial_2
+      volume_ul: 20.0
+      height: -35.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 0
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - blowout:
+      position: vial_1
+      height: -20.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # Tip back into A1, as on 11-05.
+  - drop_tip:
+      position: tip_rack.A1
+
+  - home:
