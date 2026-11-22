@@ -274,11 +274,11 @@
    "n2 generator": {
     "at": [
      1415.0,
-     400.0
+     -300.0
     ],
     "gas": "nitrogen",
     "sensor_mm": 1524.0,
-    "from_source_m": 0.4,
+    "from_source_m": 0.81,
     "density_vs_air": 0.97,
     "icpms_suggested": false
    }
@@ -515,15 +515,15 @@
    "kind": "o2wall",
    "at": [
     1415.0,
-    400.0
+    -300.0
    ],
    "face": 90.0,
-   "covers": "the N2 generator between the Shuttles (on Shuttle 1's side)",
+   "covers": "the N2 generator between the Shuttles (on Shuttle 1's side, in front of it)",
    "solid": [
     1415,
     1578,
-    307,
-    493
+    -393,
+    -207
    ],
    "hits": [],
    "ok": true,

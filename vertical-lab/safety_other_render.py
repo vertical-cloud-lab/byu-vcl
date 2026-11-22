@@ -237,10 +237,10 @@ def sheet() -> str:
 
 # ================================================================================================ in the lab
 LAB_VIEWS = [
-    ((-8200.0, -5600.0, 2300.0), (-11833.0, -3714.0, 1100.0), "The aisle's west end: the building's ABC unit on rack W"),
-    ((2900.0, -4300.0, 2700.0), (500.0, -6900.0, 1200.0), "The fume hood's shower and eyewash, west of it"),
-    ((-1800.0, 1600.0, 2400.0), (-3440.0, -350.0, 900.0), "Behind the rePowder: its argon monitor, the sensor low"),
-    ((3600.0, -400.0, 2300.0), (1415.0, 400.0, 1400.0), "Between the Shuttles: the N2 generator's monitor"),
+    ((-8200.0, -5600.0, 2300.0), (-11833.0, -3714.0, 1100.0), "Rack W, the aisle's west end: the building's ABC unit"),
+    ((450.0, -3700.0, 2300.0), (450.0, -7000.0, 1150.0), "West of the fume hood: its shower and eyewash"),
+    ((-2150.0, 1700.0, 2300.0), (-3440.0, -350.0, 1050.0), "Behind the rePowder: its argon monitor, sensor low"),
+    ((2150.0, -950.0, 1750.0), (1450.0, -250.0, 1450.0), "Between the Shuttles: the N2 generator's monitor"),
 ]
 
 

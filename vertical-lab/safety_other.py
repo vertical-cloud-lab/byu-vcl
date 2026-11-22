@@ -239,8 +239,7 @@ def abc_parts(lod: str = "full") -> dict:
         for txt, h, z, mat in (("DRY CHEMICAL", 9.0, l1 - 19.0, "label"), ("FIRE EXTINGUISHER", 6.5, 222.0, "print"),
                                ("NOT FOR METAL FIRES", 5.5, 208.0, "abc_red")):
             t = _text(txt, h, 0.25)
-            _add(p, "B456 label print" if mat != "abc_red" else "B456 label red", _on_cyl(t, rl + 0.55,
-                                                                                         -t.bounds[1] / 2, z), mat)
+            _add(p, f"B456 label text {mat}", _on_cyl(t, rl + 0.55, -t.bounds[1] / 2, z), mat)
         for i in range(8):
             zz = l0 + 10.0 + i * 10.0
             _add(p, "B456 label pictos", _sector(rl + 0.35, -60.0, 60.0, zz, zz + 3.0, 0.12, 8), "picto")
@@ -394,7 +393,7 @@ def shower_parts(lod: str = "full") -> dict:
         _add(p, "eyewash heads", _mesh(hd), "shower_orange")
         cap = _cyl(17.0, 4.0, (dx, by, ey)).rotate(cq.Vector(dx, by - 17.0, ey), cq.Vector(1, 0, 0), -70.0)
         _add(p, "eyewash covers", _mesh(cap), "shower_orange")
-    _add(p, "eyewash heads", _mesh(_box(-g, by - 7.0, ey - 97.0, g, by + 7.0, ey - 83.0)), "galv")
+    _add(p, "eyewash manifold", _mesh(_box(-g, by - 7.0, ey - 97.0, g, by + 7.0, ey - 83.0)), "galv")
     vx = s["valve_x"]
     _add(p, "eyewash valve", _mesh(_box(vx - 20.0, by - 22.0, ey - 115.0, vx + 20.0, by + 22.0, ey - 65.0)), "brass")
     flag = _box(vx, by - 8.0, ey - 70.0, vx + s["flag"], by + 8.0, ey - 60.0)
@@ -483,8 +482,8 @@ def o2_parts(gas: str = "argon", lead: float = 0.0) -> dict:
     t = _text("OXYGEN %", 7.0, 0.3)
     _add(p, "O2 print", _on_face(t, -t.bounds[1] / 2, h - 69.0, -d - 2.3, -1), "print")
     for i, (txt, x) in enumerate((("19.5", -35.0), ("18.0", 35.0))):
-        _add(p, "O2 lamps", pv.Cylinder(center=(x, -d - 3.0, 27.0), direction=(0, -1, 0), radius=6.0, height=3.0,
-                                         resolution=16).triangulate(), "led_red" if i else "caution")
+        _add(p, f"O2 lamp {txt}", pv.Cylinder(center=(x, -d - 3.0, 27.0), direction=(0, -1, 0), radius=6.0, height=3.0,
+                                               resolution=16).triangulate(), "led_red" if i else "caution")
         tt = _text(txt, 6.0, 0.3)
         _add(p, "O2 print", _on_face(tt, x - tt.bounds[1] / 2, 10.0, -d - 2.3, -1), "print")
     t = _text("O2 MONITOR", 8.0, 0.3)
@@ -602,8 +601,9 @@ PLACES = [
     ("eos_m400", "o2", -7000.0, -9300.0, 180.0, "the EOS M 400-4's argon", {"gas": "argon"}),
     ("icpms", "o2", 9300.0, -7500.0, 0.0, "the ICP-MS station's 180 L liquid argon dewar", {"gas": "argon",
                                                                                            "icpms": True}),
-    ("n2 generator", "o2wall", 1415.0, 400.0, 90.0, "the N2 generator between the Shuttles (on Shuttle 1's side)",
-     {"gas": "nitrogen"}),
+    # nitrogen's on Shuttle 1's side in front of the generator: beside it, its display would face the generator 92 mm off
+    ("n2 generator", "o2wall", 1415.0, -300.0, 90.0, "the N2 generator between the Shuttles (on Shuttle 1's side, "
+                                                     "in front of it)", {"gas": "nitrogen"}),
 ]
 # where each hazard is: the point a person would be at (the hoods' fronts), or where the gas comes in
 HAZARDS = {

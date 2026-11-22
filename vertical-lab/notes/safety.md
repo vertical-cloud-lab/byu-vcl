@@ -225,7 +225,7 @@ checks) and [`safety_other_render.py`](../safety_other_render.py) (the figures);
 | West of the fume hood | a Guardian **G1902** shower and eyewash | 1.2 m from the hood; the side away from the DED's powder |
 | In front of the ICP-MS hood's closed half (the station at notes/icpms.md's suggested spot) | a G1902 | 0.9 m from the hood; goes in with the station |
 | Each argon user and store: the cylinder manifold, the glovebox, the rePowder, the Aconity MIDI, the DED, the EOS M 400-4, the ICP-MS station's dewar | a PureAire **O2 monitor** on a post, its sensor 12 in up | argon sinks; 0.3-0.9 m from where the gas comes in (the EOS's 2.5 m, its inlet not known) |
-| Shuttle 1's side, by the N2 generator | a PureAire O2 monitor on the Shuttle's panel, at 5 ft | nitrogen mixes at breathing height |
+| Shuttle 1's side, in front of the N2 generator | a PureAire O2 monitor on the Shuttle's panel, at 5 ft | nitrogen mixes at breathing height; 0.8 m from the generator |
 
 ![The floor](../out/safety_other_plan.png)
 
@@ -312,8 +312,9 @@ checks) and [`safety_other_render.py`](../safety_other_render.py) (the figures);
   front: where its gas comes in isn't modelled), and the ICP-MS station's 180 L liquid argon dewar (liquid argon makes
   about 847 times its volume of gas: 180 L is about 150 m3). Each is placed by the same search as the other units,
   within Columbia's 20 ft detection radius of its source (0.3-0.9 m; the EOS 2.5 m). And one for nitrogen, on Shuttle
-  1's side by the N2 generator between the Shuttles (Parker Balston UHPN2-1100: 1.1 L/min at most, little gas, but it
-  is where nitrogen is made, in an 800 mm gap).
+  1's side in front of the N2 generator between the Shuttles (Parker Balston UHPN2-1100: 1.1 L/min at most, little gas,
+  but it is where nitrogen is made, in an 800 mm gap). Beside the generator its display would face the generator from
+  92 mm away, so it hangs 0.7 m further forward, where it can be read from the gap.
 - **What it doesn't cover:** the AirGradient ONEs on the junction boxes are air-quality monitors, not O2 monitors, and
   stay as they are. The Meltio cell's shielding gas isn't in the model.
 
