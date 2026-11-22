@@ -14,6 +14,21 @@ by the Pi's own ffmpeg, so whole videos never cross the Pi's Wi-Fi.
 Pick from the contact sheets the moments that show the machine whole from different sides, grab those, read
 anchor pixels off the gridded copies, and copy the chosen frames to ``refs/<key>/<view>.jpg`` with their picks in
 ``<view>.json`` (see register.py). ``.frames/`` is scratch space and is not committed.
+
+**Through a tunnel instead** (since 2026-11-10: the OT-2 lid camera Pi this was written for has left the lab, and
+``RPI_STREAM_CAM_*`` point at nothing). Set ``FRAMES_SOCKS=127.0.0.1:1080`` and everything runs on the runner, its
+traffic relayed by any Pi this run can reach over an SSH SOCKS tunnel, so YouTube sees the Pi's network: yt-dlp
+through its ``--proxy``, the runner's ffmpeg through proxychains4 (``apt install ffmpeg proxychains4``; node for
+yt-dlp's JS challenges). Nothing is installed or written on the Pi; ``tunnel`` opens it (``PI_USER``/``PI_HOST``,
+else ``CUBXL_PI_USERNAME``/``CUBXL_PI_HOSTNAME``)::
+
+    python3 frames.py tunnel                       # ssh -f -N -D 127.0.0.1:1080 to the Pi
+    FRAMES_SOCKS=127.0.0.1:1080 python3 frames.py list "ytsearch30:Haas ST-10 lathe"
+    FRAMES_SOCKS=127.0.0.1:1080 python3 frames.py storyboard VIDEO_ID
+    FRAMES_SOCKS=127.0.0.1:1080 python3 frames.py grab VIDEO_ID 12 31.5
+
+The frames are single range reads, as on the Pi, and ``FRAMES_PACE`` seconds (default 2) pass between them, so the
+Pi's Wi-Fi never carries a whole video.
 """
 from __future__ import annotations
 
@@ -88,6 +103,91 @@ for j in jobs:
 '''
 
 
+SOCKS = os.environ.get("FRAMES_SOCKS", "")          # "host:port" of an SSH SOCKS tunnel: run here, relayed
+PACE = float(os.environ.get("FRAMES_PACE", "2"))
+NODE = next((p for p in ("/usr/local/bin/node", "/usr/bin/node") if os.path.exists(p)), "node")
+
+
+def tunnel(port: int = 1080) -> None:
+    """Open the SOCKS tunnel through a Pi (it relays only). PI_USER/PI_HOST, else the CubXL Pi's."""
+    user = os.environ.get("PI_USER") or os.environ["CUBXL_PI_USERNAME"]
+    host = os.environ.get("PI_HOST") or os.environ["CUBXL_PI_HOSTNAME"]
+    r = subprocess.run(["ssh", "-f", "-N", "-o", "BatchMode=yes", "-o", "ExitOnForwardFailure=yes", "-o",
+                        "ServerAliveInterval=30", "-D", f"127.0.0.1:{port}", f"{user}@{host}"],
+                       capture_output=True, text=True, timeout=60)
+    print("tunnel up" if r.returncode == 0 else "tunnel failed: " + r.stderr.replace(host, "<pi>")[-300:])
+
+
+def _ydl(**kw):
+    import yt_dlp
+    opts = {"quiet": True, "no_warnings": True, "skip_download": True, "proxy": f"socks5://{SOCKS}",
+            "js_runtimes": {"node": {"path": NODE}}}
+    opts.update(kw)
+    return yt_dlp.YoutubeDL(opts)
+
+
+def _proxychains_conf() -> str:
+    host, port = SOCKS.split(":")
+    p = SCRATCH / "proxychains.conf"
+    SCRATCH.mkdir(parents=True, exist_ok=True)
+    p.write_text(f"strict_chain\nproxy_dns\nquiet_mode\ntcp_read_time_out 15000\ntcp_connect_time_out 8000\n"
+                 f"[ProxyList]\nsocks5 {host} {port}\n")
+    return str(p)
+
+
+def _storyboard_local(ids: list[str]) -> None:
+    import time
+    for vid in ids:
+        out = SCRATCH / "sb" / vid
+        out.mkdir(parents=True, exist_ok=True)
+        try:
+            with _ydl() as y:
+                info = y.extract_info("https://www.youtube.com/watch?v=" + vid, download=False)
+                sb = sorted((f for f in info["formats"] if str(f.get("format_id", "")).startswith("sb")),
+                            key=lambda f: -(f.get("width") or 0))
+                if not sb:
+                    print(json.dumps({"id": vid, "error": "no storyboard"}), flush=True)
+                    continue
+                f, frags = sb[0], []
+                for i, fr in enumerate(f.get("fragments", [])):
+                    p = out / ("sheet_%03d.jpg" % i)
+                    if not p.exists():
+                        p.write_bytes(y.urlopen(fr["url"]).read())
+                        time.sleep(0.2)
+                    frags.append({"file": p.name, "duration": fr.get("duration")})
+        except Exception as e:                                       # noqa: BLE001 - report and go on
+            print(json.dumps({"id": vid, "error": str(e)[:200]}), flush=True)
+            continue
+        meta = {"id": vid, "title": info.get("title"), "duration": info.get("duration"), "rows": f.get("rows"),
+                "columns": f.get("columns"), "width": f.get("width"), "height": f.get("height"), "fragments": frags}
+        (out / "meta.json").write_text(json.dumps(meta))
+        print(json.dumps({k: meta[k] for k in ("id", "title", "duration")}), flush=True)
+
+
+def _grab_local(vid: str, times: list[float]) -> list[Path]:
+    import time
+    with _ydl() as y:
+        info = y.extract_info("https://www.youtube.com/watch?v=" + vid, download=False)
+    fmts = {f["format_id"]: f for f in info["formats"]}
+    f = next((fmts[k] for k in ("136", "398", "247", "135", "134", "18") if k in fmts and fmts[k].get("url")), None)
+    if f is None:
+        raise RuntimeError(f"{vid}: no video format")
+    hdrs = "".join("%s: %s\r\n" % kv for kv in (f.get("http_headers") or {}).items())
+    conf, paths = _proxychains_conf(), []
+    SCRATCH.mkdir(parents=True, exist_ok=True)
+    for t in times:
+        p = SCRATCH / ("%s_%06.1f.jpg" % (vid, t))
+        if not p.exists():
+            r = subprocess.run(["proxychains4", "-q", "-f", conf, "ffmpeg", "-nostdin", "-loglevel", "error", "-y",
+                                "-headers", hdrs, "-ss", "%.2f" % t, "-i", f["url"], "-frames:v", "1", "-q:v", "2",
+                                str(p)], capture_output=True, text=True, timeout=180)
+            time.sleep(PACE)
+        print(json.dumps({"id": vid, "t": t, "ok": p.exists(), **({} if p.exists() else {"err": r.stderr[-200:]})}),
+              flush=True)
+        paths.append(p)
+    return paths
+
+
 def _ssh(cmd: str, stdin: str | None = None, timeout=1800) -> str:
     user, host = os.environ["RPI_STREAM_CAM_USERNAME"], os.environ["RPI_STREAM_CAM_HOSTNAME"]
     r = subprocess.run(["ssh", "-o", "BatchMode=yes", "-o", "StrictHostKeyChecking=accept-new", "-o",
@@ -109,6 +209,9 @@ def _pull(remote_dir: str, local: Path, names: list[str]) -> None:
 
 
 def storyboard(ids: list[str]) -> list[Path]:
+    if SOCKS:
+        _storyboard_local(ids)
+        return contact(ids)
     _ssh("cat > /tmp/vcl_storyboard.py", PI_STORYBOARD)
     print(_ssh("~/.venvs/ytframes/bin/python /tmp/vcl_storyboard.py " + " ".join(ids)), end="")
     _pull("~/ytframes/sb", SCRATCH / "sb", ids)
@@ -158,6 +261,8 @@ def contact(ids: list[str], per=48) -> list[Path]:
 
 
 def grab(vid: str, times: list[float]) -> list[Path]:
+    if SOCKS:
+        return _grab_local(vid, times)
     _ssh("cat > /tmp/vcl_frames.py", PI_FRAMES)
     print(_ssh("~/.venvs/ytframes/bin/python /tmp/vcl_frames.py", json.dumps([{"id": vid, "t": times}])), end="")
     names = ["%s_%06.1f.jpg" % (vid, t) for t in times]
@@ -189,14 +294,17 @@ def grid(src: str, step=50, crop=None) -> Path:
 
 def listing(url: str) -> None:
     """Ids, titles and lengths of a channel, playlist or search page (works from the runner; no Pi needed)."""
-    r = subprocess.run(["yt-dlp", "--flat-playlist", "--print", "%(id)s | %(title)s | %(duration)s", url],
+    proxy = ["--proxy", f"socks5://{SOCKS}"] if SOCKS else []
+    r = subprocess.run(["yt-dlp", *proxy, "--flat-playlist", "--print", "%(id)s | %(title)s | %(duration)s", url],
                        capture_output=True, text=True, timeout=300)
     print(r.stdout or r.stderr[-500:])
 
 
 if __name__ == "__main__":
     cmd, args = sys.argv[1], sys.argv[2:]
-    if cmd == "list":
+    if cmd == "tunnel":
+        tunnel(int(args[0]) if args else 1080)
+    elif cmd == "list":
         listing(args[0])
     elif cmd == "storyboard":
         storyboard(args)

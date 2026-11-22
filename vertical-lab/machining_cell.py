@@ -55,11 +55,42 @@ TITLE = "Vertical cloud lab: a charge cup machined, cleaned, dried and racked"
 Z_ARM = 760.0                    # the UR10e's base plate on its pedestal
 BENCH_Z = 860.0                  # bench tops
 FRONT_Y = 950.0                  # the cell's front (the fence), on the south row's face line
-# Body box: the Haas ST-10's installed size with its chip conveyor (3437 x 1596 x 2167 mm, Haas layout drawing 12/2024),
-# the conveyor's end at -x; front face at y1. Its Bar Feeder V2 (4 ft bars; 2104 x 1283 mm) behind the headstock (+x).
-LATHE = dict(x0=-1937.0, x1=1500.0, y1=-800.0, D=1596.0, H=2167.0, loader_l=2104.0, loader_w=1283.0)
-SPIN_Y, SPIN_Z = -1270.0, 1050.0                                    # the spindle's axis, along x
 X_COLLET = 198.0                 # the collet's face; the bar comes out towards -x
+
+# The Haas ST-10's outside, in its own frame: x along the spindle from the enclosure's headstock end towards the chip
+# conveyor (the operator's left to right), y from the enclosure's front face into the machine, z up from the floor; mm.
+# From Haas's machine layout drawing (ST-10/15 MLD, 12/20/2024): the front elevation's height and width breakdown (read
+# at 3.176 mm a pixel at 200 dpi, checked against its own dimensions to 1 %), the plan's depths and the bar feeder page.
+# Footage of the machine (refs/st10/, machining_fit.py) checks it and fits what the drawing doesn't dimension. Until
+# round 14 of #367 the lathe was a 3437 x 1596 x 2167 mm box: the installed envelope, conveyor and all, as one block.
+ST10 = dict(
+    W=2160.0, D=1021.0, H=1842.0,                # enclosure: 680 px of the elevation; 40.2 in deep (plan); 72.5 in
+    t=20.0,                                      # its sheet metal, drawn thick enough to read
+    base_h=676.0, base_x1=2087.0, base_y0=35.0, base_y1=985.0, feet=76.0,   # the dark base; 3.0 in leveling pads
+    door_x0=794.0, door_x1=1382.0, door_z0=680.0, door_z1=1636.0,   # the opening: 23.3 in wide, its sill 26.8 in up
+    panel_x0=767.0, panel_w=642.0,               # the sliding door, shut (it slides to the left, over the white panel)
+    win_x0=235.0, win_w=238.0, win_z0=1143.0, win_z1=1486.0,        # its window, from the door's left edge
+    surround_x0=740.0, surround_x1=1430.0,       # the dark grey surround of the door on the front
+    pend_x0=1492.0, pend_x1=1969.0, pend_z0=1032.0, pend_z1=1667.0, pend_d=205.0,   # the pendant, 8.1 in proud
+    scr_x0=1620.0, scr_x1=1937.0, scr_z0=1376.0, scr_z1=1604.0,     # its screen
+    lcov_w=285.0, lcov_y0=20.0, lcov_y1=470.0, lcov_z0=375.0, lcov_z1=1590.0,   # the spindle motor's cover, left end
+    cab_x0=950.0, cab_x1=1900.0, cab_d=270.0, cab_h=1842.0,          # the electrical cabinet on the back (to 49.8 in)
+    conv_x1=3138.0, conv_y0=130.0, conv_y1=510.0, conv_low=300.0, conv_top=1576.0, conv_dis=1064.0,
+    conv_head=343.0,                             # the conveyor's head, 62.1 in to its top; it drops chips at 41.9 in
+    spin_y=307.0, spin_z=991.0,                  # the spindle's axis: 12.1 in behind the front face, 39 in up
+    nose_x=860.0,                                # the spindle nose (collet face) from the enclosure's left end (est.)
+    feed_l=2104.0, feed_y1=1283.0,               # Bar Feeder V2: 82.9 in long, 50.5 in deep (bar feeder page)
+    feed_y0=0.0, feed_z0=700.0, feed_z1=1150.0, feed_lid=100.0, feed_body_y1=860.0,
+)
+X_HEAD = X_COLLET + ST10["nose_x"]   # the enclosure's headstock end in the cell (the operator's left)
+Y_FRONT = -800.0                     # its front face in the cell
+SPIN_Y, SPIN_Z = Y_FRONT - ST10["spin_y"], ST10["spin_z"]           # the spindle's axis, along x
+M_ST10 = np.array([[-1.0, 0, 0, X_HEAD], [0, -1.0, 0, Y_FRONT], [0, 0, 1.0, 0], [0, 0, 0, 1.0]])   # machine -> cell
+# The envelope for machining.py's floor plan: the conveyor's end (-x) to the motor cover (+x), the pendant to the
+# cabinet; the bar feeder beyond the motor cover. Overall 3423 mm against Haas's 3437 (their 1/2 in tolerance).
+LATHE = dict(x0=X_HEAD - ST10["conv_x1"], x1=X_HEAD + ST10["lcov_w"], y1=Y_FRONT + ST10["pend_d"],
+             D=ST10["pend_d"] + ST10["D"] + ST10["cab_d"], H=ST10["cab_h"], loader_l=ST10["feed_l"],
+             loader_w=ST10["feed_y1"])
 BAR_R = 10.0                     # Ø20 mm bar (5N Al, DAL #152; OFE Cu bought at 20 mm too, so both are turned)
 CUP_R = C.STOCK_D / 2            # 9.525: the cup's OD, turned
 DRILL_R = 6.25                   # 12.5 mm drill, 118 deg point
@@ -234,6 +265,111 @@ def cup_in_bar() -> np.ndarray:
 
 
 # ------------------------------------------------------------------------------------------------ the lathe
+def _slab(p0, p1, half_w, y0, y1):
+    """A box between two points in the machine's xz plane, half_w either side of the line (an inclined conveyor)."""
+    p0, p1 = np.asarray(p0, float), np.asarray(p1, float)
+    d = p1 - p0
+    L = float(np.hypot(*d))
+    a = math.degrees(math.atan2(d[1], d[0]))
+    b = _box(0, L, y0, y1, -half_w, half_w)
+    return b.rotate_y(-a, inplace=False).translate((p0[0], 0, p0[1]), inplace=False)
+
+
+ST10_GREY = (0.33, 0.35, 0.37)       # the base, the door's surround, the conveyor (Haas's dark grey)
+ST10_WHITE = (0.90, 0.91, 0.92)      # the enclosure's panels
+ST10_DOOR = (0.25, 0.26, 0.28)
+
+
+def st10_parts(p=None, inside=True) -> dict:
+    """{name: (mesh, colour, opacity)} of the ST-10 and its bar feeder in the machine's frame (see ST10). inside=False
+    leaves the enclosure closed and solid (machining_fit.py's silhouettes)."""
+    p = dict(ST10, **(p or {}))
+    W, D, H, t, bh = p["W"], p["D"], p["H"], p["t"], p["base_h"]
+    dx0, dx1, dz0, dz1 = p["door_x0"], p["door_x1"], p["door_z0"], p["door_z1"]
+    out = {}
+    if inside:          # walls, and the front round the door's opening, so the clip can look in
+        enc = [_box(0, W, D - t, D, bh, H), _box(0, t, 0, D, bh, H), _box(W - t, W, 0, D, bh, H),
+               _box(0, W, 0, D, H - t, H), _box(0, dx0, 0, t, bh, H - t), _box(dx1, W, 0, t, bh, H - t),
+               _box(dx0, dx1, 0, t, dz1, H - t), _box(dx0, dx1, 0, t, bh, dz0)]
+    else:
+        enc = [_box(0, W, 0, D, bh, H)]
+    out["skin"] = (_merge(enc), ST10_WHITE, 1.0)
+    sx0, sx1 = p["surround_x0"], p["surround_x1"]
+    out["surround"] = (_merge([_box(sx0, dx0, -4, 0, bh, H - 60), _box(dx1, sx1, -4, 0, bh, H - 60),
+                               _box(dx0, dx1, -4, 0, dz1, H - 60), _box(sx0, sx1, -4, 0, bh, dz0)]), ST10_GREY, 1.0)
+    out["base"] = (_merge([_box(0, p["base_x1"], p["base_y0"], p["base_y1"], p["feet"], bh),
+                           _box(-5, W + 5, -12, p["base_y1"], bh - 28, bh)]), ST10_GREY, 1.0)
+    feet = [_cyl((x, y, 0), (x, y, p["feet"]), 45.0, res=16) for x in (150, p["base_x1"] - 150)
+            for y in (p["base_y0"] + 90, p["base_y1"] - 90)]
+    out["feet"] = (_merge(feet), DARK, 1.0)
+    out["lcov"] = (_box(-p["lcov_w"], 0, p["lcov_y0"], p["lcov_y1"], p["lcov_z0"], p["lcov_z1"]), ST10_WHITE, 1.0)
+    out["cabinet"] = (_box(p["cab_x0"], p["cab_x1"], D, D + p["cab_d"], p["feet"], p["cab_h"]), ST10_WHITE, 1.0)
+    pd = p["pend_d"]
+    out["pendant"] = (_merge([_box(p["pend_x0"], p["pend_x1"], -pd, -pd + 95, p["pend_z0"], p["pend_z1"]),
+                              _box(p["pend_x1"] - 90, p["pend_x1"] - 20, -pd + 95, 0, p["pend_z1"] - 160,
+                                   p["pend_z1"] - 60)]), ST10_WHITE, 1.0)
+    out["screen"] = (_box(p["scr_x0"], p["scr_x1"], -pd - 2, -pd, p["scr_z0"], p["scr_z1"]), DARK, 1.0)
+    # the chip conveyor out of the base's right end: a low run, the incline, the head over its bin
+    xh0 = p["conv_x1"] - p["conv_head"]
+    cy0, cy1, lo = p["conv_y0"], p["conv_y1"], p["conv_low"]
+    conv = [_box(p["base_x1"] - 200, p["base_x1"] + 280, cy0, cy1, lo, lo + 210),
+            _slab((p["base_x1"] + 120, lo + 105), (xh0 + 60, p["conv_top"] - 120), 115.0, cy0, cy1),
+            _box(xh0, p["conv_x1"], cy0, cy1, p["conv_top"] - 330, p["conv_top"]),
+            _box(xh0 + 60, p["conv_x1"] - 60, cy0 + 20, cy1 - 20, p["conv_dis"], p["conv_top"] - 330)]
+    out["conveyor"] = (_merge(conv), ST10_GREY, 1.0)
+    # the door, shut, with its window and handle (it slides left over the white panel; machining_cell fades it)
+    x0d = p["panel_x0"]
+    df = [_box(x0d, x0d + p["panel_w"], -30, -6, dz0 - 20, p["win_z0"]),
+          _box(x0d, x0d + p["panel_w"], -30, -6, p["win_z1"], dz1 + 30),
+          _box(x0d, x0d + p["win_x0"], -30, -6, p["win_z0"], p["win_z1"]),
+          _box(x0d + p["win_x0"] + p["win_w"], x0d + p["panel_w"], -30, -6, p["win_z0"], p["win_z1"]),
+          _box(x0d + p["panel_w"] - 75, x0d + p["panel_w"] - 55, -70, -30, 1150, 1450)]
+    out["door"] = (_merge(df), ST10_DOOR, 1.0)
+    out["glass"] = (_box(x0d + p["win_x0"], x0d + p["win_x0"] + p["win_w"], -22, -14, p["win_z0"], p["win_z1"]),
+                    GLASS, 0.25)
+    # the bar feeder beyond the motor cover: its stand and feet, the body, the dark lid over the magazine
+    fx1 = -p["lcov_w"]
+    fx0 = fx1 - p["feed_l"]
+    fy0, fyb, fy1 = p["feed_y0"], p["feed_body_y1"], p["feed_y1"]
+    stand = [_box(fx0 + 120, fx1 - 120, fy0 + 120, fyb - 160, p["feet"], p["feed_z0"])]
+    for x in (fx0 + 120, fx1 - 200):
+        stand.append(_box(x, x + 80, fy0, fy1, 0, 70))
+    out["feeder_stand"] = (_merge(stand), ST10_GREY, 1.0)
+    out["feeder"] = (_box(fx0, fx1, fy0, fyb, p["feed_z0"], p["feed_z1"]), ST10_WHITE, 1.0)
+    out["feeder_lid"] = (_box(fx0 + 30, fx1 - 30, fy0 + 30, fyb - 30, p["feed_z1"], p["feed_z1"] + p["feed_lid"]),
+                         ST10_GREY, 1.0)
+    return out
+
+
+def st10_anchors(p=None, pose=None) -> dict:
+    """Named points of the ST-10 in its frame, for picks in footage (machining_fit.py; register.py's convention)."""
+    p = dict(ST10, **(p or {}))
+    W, H, bh, pd = p["W"], p["H"], p["base_h"], p["pend_d"]
+    x0d, wx0, wx1 = p["panel_x0"], p["panel_x0"] + p["win_x0"], p["panel_x0"] + p["win_x0"] + p["win_w"]
+    xh0 = p["conv_x1"] - p["conv_head"]
+    fx1 = -p["lcov_w"]
+    fx0 = fx1 - p["feed_l"]
+    return {"enc tl": (0, 0, H), "enc tr": (W, 0, H), "enc bl": (0, 0, bh), "enc br": (W, 0, bh),
+            "base bl": (0, p["base_y0"], p["feet"]), "base br": (p["base_x1"], p["base_y0"], p["feet"]),
+            "win tl": (wx0, -30, p["win_z1"]), "win tr": (wx1, -30, p["win_z1"]),
+            "win bl": (wx0, -30, p["win_z0"]), "win br": (wx1, -30, p["win_z0"]),
+            "door tl": (x0d, -30, p["door_z1"] + 30), "door tr": (x0d + p["panel_w"], -30, p["door_z1"] + 30),
+            "scr tl": (p["scr_x0"], -pd, p["scr_z1"]), "scr tr": (p["scr_x1"], -pd, p["scr_z1"]),
+            "scr bl": (p["scr_x0"], -pd, p["scr_z0"]), "scr br": (p["scr_x1"], -pd, p["scr_z0"]),
+            "pend tl": (p["pend_x0"], -pd, p["pend_z1"]), "pend tr": (p["pend_x1"], -pd, p["pend_z1"]),
+            "pend bl": (p["pend_x0"], -pd, p["pend_z0"]), "pend br": (p["pend_x1"], -pd, p["pend_z0"]),
+            "lcov tl": (-p["lcov_w"], p["lcov_y0"], p["lcov_z1"]), "lcov bl": (-p["lcov_w"], p["lcov_y0"], p["lcov_z0"]),
+            "conv head tl": (xh0, p["conv_y0"], p["conv_top"]), "conv head tr": (p["conv_x1"], p["conv_y0"], p["conv_top"]),
+            "feed tl": (fx0, p["feed_y0"], p["feed_z1"]), "feed tr": (fx1, p["feed_y0"], p["feed_z1"]),
+            "feed bl": (fx0, p["feed_y0"], p["feed_z0"]), "feed br": (fx1, p["feed_y0"], p["feed_z0"]),
+            "lid tl": (fx0 + 30, p["feed_y0"] + 30, p["feed_z1"] + p["feed_lid"]),
+            "lid tr": (fx1 - 30, p["feed_y0"] + 30, p["feed_z1"] + p["feed_lid"])}
+
+
+def _to_cell(m: pv.PolyData) -> pv.PolyData:
+    return m.transform(M_ST10, inplace=False)
+
+
 def lathe_parts() -> dict:
     """{name: (mesh, colour, opacity)} of the turning centre's body, cell frame. Its front (the door) faces +y, the
     headstock is at +x, the short-bar loader behind it; the chip conveyor leaves at the back into one bin per metal."""
