@@ -77,7 +77,7 @@ the write-up is in [`notes/safety.md`](notes/safety.md#the-other-safety-assets-o
   units are white and yellow-starred on red posts at the stations. NFPA 10: the farthest walk 19.0 m of 75 ft (22.9 m);
   the hoods 9.8 m and 0.9 m of 50 ft.
 - **A Guardian G1902 shower and eyewash** (its spec sheet: head 84 in up and 24 in out, eyewash 37.5 in, triangle
-  handle 65.5 in) at the fume hood (1.2 m, on the side away from the DED's powder) and at the ICP-MS hood (0.9 m, at
+  handle 65.5 in) at the fume hood (1.2 m, on the side away from the DED's powder) and at the ICP-MS hood (0.95 m, at
   notes/icpms.md's suggested spot; it goes in with the station). ANSI Z358.1: within 10 s and immediately adjacent,
   the heights, the spray's 16 in clear. Tempered water from a thermostatic mixing valve, and (ours) a floor drain.
 - **PureAire 99028 O2 monitors** (alarms at 19.5 and 18.0 %, a horn and strobe, a CAUTION sign) at every argon user

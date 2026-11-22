@@ -223,7 +223,7 @@ checks) and [`safety_other_render.py`](../safety_other_render.py) (the figures);
 | --- | --- | --- |
 | Rack W's upright at the aisle's west end, rack E's upright by the ICP-MS station, rack N's upright behind Shuttle 1 | an Amerex **B456** (10 lb ABC) each, under a red FIRE EXTINGUISHER sign and an ABC placard | NFPA 10's 75 ft for the whole floor, 50 ft for both hoods; 4.3 m or more from every Class D unit |
 | West of the fume hood | a Guardian **G1902** shower and eyewash | 1.2 m from the hood; the side away from the DED's powder |
-| In front of the ICP-MS hood's closed half (the station at notes/icpms.md's suggested spot) | a G1902 | 0.9 m from the hood; goes in with the station |
+| In front of the ICP-MS hood's closed half (the station at notes/icpms.md's suggested spot) | a G1902 | 0.95 m from the hood; goes in with the station |
 | Each argon user and store: the cylinder manifold, the glovebox, the rePowder, the Aconity MIDI, the DED, the EOS M 400-4, the ICP-MS station's dewar | a PureAire **O2 monitor** on a post, its sensor 12 in up | argon sinks; 0.3-0.9 m from where the gas comes in (the EOS's 2.5 m, its inlet not known) |
 | Shuttle 1's side, in front of the N2 generator | a PureAire O2 monitor on the Shuttle's panel, at 5 ft | nitrogen mixes at breathing height; 0.8 m from the generator |
 
@@ -284,7 +284,7 @@ checks) and [`safety_other_render.py`](../safety_other_render.py) (the figures);
   36 in green square round it, kept clear. ANSI asks for neither. But a shower runs 20 gpm for 15 minutes, 1,100 L,
   and this floor holds metal powder: the water needs somewhere to go.
 - **ANSI/ISEA Z358.1** (`shower_check`): reached within 10 s (about 55 ft, 16.8 m) and, for a strong acid or caustic,
-  immediately adjacent (read here as 3 m): **1.2 m** from the fume hood (Weck's reagent: KMnO4 and NaOH) and **0.9 m**
+  immediately adjacent (read here as 3 m): **1.2 m** from the fume hood (Weck's reagent: KMnO4 and NaOH) and **0.95 m**
   from the ICP-MS hood (HNO3, HCl). The water column 82-96 in up: 84 in. The eyewash 33-53 in: 37.5 in. The actuator at
   most 69 in: 65.5 in. The spray's centre 16 in from any obstruction: its 32 in square is kept off every machine, docked
   MiR250, target post, the aisle and the other units (`places_check`).
