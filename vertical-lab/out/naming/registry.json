@@ -1,6 +1,6 @@
 [
  {
-  "name": "timpanogos",
+  "name": "timp",
   "kind": "station",
   "cls": "shuttle",
   "parent": null,
@@ -8,47 +8,52 @@
   "what": "Kardex Shuttle XP 500, 9.15 m, Shuttle 1",
   "namesake": "Mount Timpanogos",
   "life": "3,582 m",
-  "why": "the peak over Provo. Locals say Timp, but the narration voice's Timp was heard as 'temp'",
+  "why": "the peak over Provo, which everyone in Utah County calls Timp",
   "source": "https://en.wikipedia.org/wiki/Mount_Timpanogos",
   "key": "vlm",
+  "role": "vlm",
   "asset": "VCL-0001"
  },
  {
-  "name": "timpanogos-bay-back",
+  "name": "timp-bay-back",
   "kind": "camera",
   "cls": "camera",
-  "parent": "timpanogos",
-  "where": "timpanogos, bay ceiling, back",
+  "parent": "timp",
+  "where": "timp, bay ceiling, back",
   "what": "bay camera unit, ceiling back (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "vlm-bay-back",
   "asset": "VCL-0002"
  },
  {
-  "name": "timpanogos-bay-front",
+  "name": "timp-bay-front",
   "kind": "camera",
   "cls": "camera",
-  "parent": "timpanogos",
-  "where": "timpanogos, bay ceiling, front",
+  "parent": "timp",
+  "where": "timp, bay ceiling, front",
   "what": "bay camera unit, ceiling front (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "vlm-bay-front",
   "asset": "VCL-0003"
  },
  {
-  "name": "timpanogos-bay-dock",
+  "name": "timp-bay-dock",
   "kind": "dock",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, bay",
+  "parent": "timp",
+  "where": "timp, bay",
   "what": "the bay's CombiTac dock",
+  "role": "vlm-bay-dock",
   "asset": "VCL-0004"
  },
  {
-  "name": "timpanogos-vac",
+  "name": "timp-vac",
   "kind": "pump",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, riser foot",
+  "parent": "timp",
+  "where": "timp, riser foot",
   "what": "Pfeiffer HiScroll 12 scroll pump",
+  "role": "vlm-vac",
   "asset": "VCL-0005"
  },
  {
@@ -63,6 +68,7 @@
   "why": "the highest peak of the Wasatch, south of Provo",
   "source": "https://en.wikipedia.org/wiki/Mount_Nebo_(Utah)",
   "key": "vlm2",
+  "role": "vlm2",
   "asset": "VCL-0006"
  },
  {
@@ -73,6 +79,7 @@
   "where": "nebo, bay ceiling, back",
   "what": "bay camera unit, ceiling back (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "vlm2-bay-back",
   "asset": "VCL-0007"
  },
  {
@@ -83,6 +90,7 @@
   "where": "nebo, bay ceiling, front",
   "what": "bay camera unit, ceiling front (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "vlm2-bay-front",
   "asset": "VCL-0008"
  },
  {
@@ -92,6 +100,7 @@
   "parent": "nebo",
   "where": "nebo, bay",
   "what": "the bay's CombiTac dock",
+  "role": "vlm2-bay-dock",
   "asset": "VCL-0009"
  },
  {
@@ -101,6 +110,7 @@
   "parent": "nebo",
   "where": "nebo, riser foot",
   "what": "Pfeiffer HiScroll 12 scroll pump",
+  "role": "vlm2-vac",
   "asset": "VCL-0010"
  },
  {
@@ -115,6 +125,7 @@
   "why": "a robot tortoise built to steer home to its lit hutch to recharge",
   "source": "https://cyberneticzoo.com/?p=491",
   "key": "unit1",
+  "role": "unit1",
   "asset": "VCL-0011"
  },
  {
@@ -124,6 +135,7 @@
   "parent": "elsie",
   "where": "floor, mobile",
   "what": "MiR250 (its fleet name)",
+  "role": "unit1-base",
   "asset": "VCL-0012"
  },
  {
@@ -133,6 +145,7 @@
   "parent": "elsie",
   "where": "floor, mobile",
   "what": "UR12e control box",
+  "role": "unit1-arm",
   "asset": "VCL-0013"
  },
  {
@@ -142,6 +155,7 @@
   "parent": "elsie",
   "where": "floor, mobile",
   "what": "Intel RealSense D405 wrist camera",
+  "role": "unit1-wrist",
   "asset": "VCL-0014"
  },
  {
@@ -156,6 +170,7 @@
   "why": "a hand-eye robot that assembled models from a heap of parts by vision",
   "source": "https://en.wikipedia.org/wiki/Freddy_II",
   "key": "unit2",
+  "role": "unit2",
   "asset": "VCL-0015"
  },
  {
@@ -165,6 +180,7 @@
   "parent": "freddy",
   "where": "floor, mobile",
   "what": "MiR250 (its fleet name)",
+  "role": "unit2-base",
   "asset": "VCL-0016"
  },
  {
@@ -174,6 +190,7 @@
   "parent": "freddy",
   "where": "floor, mobile",
   "what": "UR12e control box",
+  "role": "unit2-arm",
   "asset": "VCL-0017"
  },
  {
@@ -183,82 +200,90 @@
   "parent": "freddy",
   "where": "floor, mobile",
   "what": "Intel RealSense D405 wrist camera",
+  "role": "unit2-wrist",
   "asset": "VCL-0018"
  },
  {
   "name": "tray-d",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R1",
+  "parent": "timp",
+  "where": "timp, slot R1",
   "what": "tray D (Delta): microscopy and diffraction",
   "letter": "D",
   "spoken": "tray Delta",
   "passive": false,
+  "role": "tray-d",
   "asset": "VCL-0019"
  },
  {
-  "name": "timpanogos-r1-dock",
+  "name": "timp-r1-dock",
   "kind": "dock",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R1",
+  "parent": "timp",
+  "where": "timp, slot R1",
   "what": "slot R1's CombiTac dock",
+  "role": "vlm-r1-dock",
   "asset": "VCL-0020"
  },
  {
-  "name": "ruska",
+  "name": "pyrite",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS",
-  "namesake": "Ernst Ruska",
-  "life": "1906-1988",
-  "why": "built the first electron microscope with Max Knoll (1931-33), Nobel 1986",
-  "source": "https://en.wikipedia.org/wiki/Ernst_Ruska",
+  "namesake": "pyrite (fool's gold)",
+  "life": "FeS2",
+  "why": "it looks like gold; the SEM's EDS sees the iron and the sulfur",
+  "source": "https://en.wikipedia.org/wiki/Pyrite",
   "key": "sem",
+  "role": "sem",
   "asset": "VCL-0021"
  },
  {
-  "name": "ruska-pc",
+  "name": "pyrite-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "ruska",
-  "where": "timpanogos, slot R1",
+  "parent": "pyrite",
+  "where": "timp, slot R1",
   "what": "Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS: its computer",
+  "role": "sem-pc",
   "asset": "VCL-0022"
  },
  {
-  "name": "lonsdale",
+  "name": "quartz",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "Rigaku MiniFlex XRD",
-  "namesake": "Kathleen Lonsdale",
-  "life": "1903-1971",
-  "why": "X-ray crystallographer; showed by X-ray diffraction that the benzene ring is flat (1929); one of the first two women elected FRS (1945)",
-  "source": "https://en.wikipedia.org/wiki/Kathleen_Lonsdale",
+  "namesake": "quartz (rock crystal)",
+  "life": "SiO2",
+  "why": "the crystal the word was coined for (Greek krystallos, ice): the XRD tells one crystal from another",
+  "source": "https://en.wikipedia.org/wiki/Quartz",
   "key": "xrd",
+  "role": "xrd",
   "asset": "VCL-0023"
  },
  {
-  "name": "lonsdale-pc",
+  "name": "quartz-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "lonsdale",
-  "where": "timpanogos, slot R1",
+  "parent": "quartz",
+  "where": "timp, slot R1",
   "what": "Rigaku MiniFlex XRD: its computer",
+  "role": "xrd-pc",
   "asset": "VCL-0024"
  },
  {
-  "name": "lonsdale-prep",
+  "name": "quartz-prep",
   "kind": "unit",
   "cls": "station",
-  "parent": "lonsdale",
-  "where": "timpanogos, slot R1",
+  "parent": "quartz",
+  "where": "timp, slot R1",
   "what": "Powder prep station: XRD holder, SEM stub, XRF cup (our design)",
+  "role": "xrd-prep",
   "asset": "VCL-0025"
  },
  {
@@ -266,8 +291,9 @@
   "kind": "ups",
   "cls": "service",
   "parent": "tray-d",
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-d-ups",
   "asset": "VCL-0026"
  },
  {
@@ -275,8 +301,9 @@
   "kind": "sensor",
   "cls": "service",
   "parent": "tray-d",
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-d-air",
   "asset": "VCL-0027"
  },
  {
@@ -284,9 +311,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-d",
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-d-cam0",
   "asset": "VCL-0028"
  },
  {
@@ -294,9 +322,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-d",
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-d-cam1",
   "asset": "VCL-0029"
  },
  {
@@ -304,9 +333,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-d",
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-d-cam2",
   "asset": "VCL-0030"
  },
  {
@@ -314,8 +344,9 @@
   "kind": "plate",
   "cls": "service",
   "parent": "tray-d",
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-d-plate",
   "asset": "VCL-0031"
  },
  {
@@ -323,75 +354,82 @@
   "kind": "switch",
   "cls": "service",
   "parent": "tray-d",
-  "where": "timpanogos, slot R1",
+  "where": "timp, slot R1",
   "what": "PoE+ switch",
+  "role": "tray-d-sw",
   "asset": "VCL-0032"
  },
  {
   "name": "tray-a",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R2",
+  "parent": "timp",
+  "where": "timp, slot R2",
   "what": "tray A (Alfa): liquid handling, corrosion",
   "letter": "A",
   "spoken": "tray Alfa",
   "passive": false,
+  "role": "tray-a",
   "asset": "VCL-0033"
  },
  {
-  "name": "timpanogos-r2-dock",
+  "name": "timp-r2-dock",
   "kind": "dock",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R2",
+  "parent": "timp",
+  "where": "timp, slot R2",
   "what": "slot R2's CombiTac dock",
+  "role": "vlm-r2-dock",
   "asset": "VCL-0034"
  },
  {
-  "name": "ostwald",
+  "name": "aquamarine",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "Opentrons OT-2 liquid handler",
-  "namesake": "Wilhelm Ostwald",
-  "life": "1853-1932",
-  "why": "developed the Ostwald-Folin pipette, a volumetric pipette for viscous liquids; Nobel 1909",
-  "source": "https://en.wikipedia.org/wiki/Pipette",
+  "namesake": "aquamarine (sea-blue beryl)",
+  "life": "Be3Al2Si6O18",
+  "why": "Latin aqua marina, 'sea water': the station that moves liquids",
+  "source": "https://en.wikipedia.org/wiki/Aquamarine_(gem)",
   "key": "ot2",
+  "role": "ot2",
   "asset": "VCL-0035"
  },
  {
-  "name": "ostwald-pc",
+  "name": "aquamarine-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "ostwald",
-  "where": "timpanogos, slot R2",
+  "parent": "aquamarine",
+  "where": "timp, slot R2",
   "what": "Opentrons OT-2 liquid handler: its computer",
+  "role": "ot2-pc",
   "asset": "VCL-0036"
  },
  {
-  "name": "tafel",
+  "name": "halite",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "CubXL corrosion cell with its EZstat Pro potentiostat",
-  "namesake": "Julius Tafel",
-  "life": "1862-1918",
-  "why": "the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes",
-  "source": "https://en.wikipedia.org/wiki/Tafel_equation",
+  "namesake": "halite (rock salt)",
+  "life": "NaCl",
+  "why": "salt: the cell's electrolytes are 0.6, 0.06 and 0.006 M NaCl, and salt water is what corrodes",
+  "source": "https://en.wikipedia.org/wiki/Halite",
   "key": "cubxl",
+  "role": "cubxl",
   "asset": "VCL-0037"
  },
  {
-  "name": "tafel-pc",
+  "name": "halite-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "tafel",
-  "where": "timpanogos, slot R2",
+  "parent": "halite",
+  "where": "timp, slot R2",
   "what": "CubXL corrosion cell with its EZstat Pro potentiostat: its computer",
+  "role": "cubxl-pc",
   "asset": "VCL-0038"
  },
  {
@@ -399,8 +437,9 @@
   "kind": "ups",
   "cls": "service",
   "parent": "tray-a",
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-a-ups",
   "asset": "VCL-0039"
  },
  {
@@ -408,8 +447,9 @@
   "kind": "sensor",
   "cls": "service",
   "parent": "tray-a",
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-a-air",
   "asset": "VCL-0040"
  },
  {
@@ -417,9 +457,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-a",
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-a-cam0",
   "asset": "VCL-0041"
  },
  {
@@ -427,9 +468,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-a",
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-a-cam1",
   "asset": "VCL-0042"
  },
  {
@@ -437,8 +479,9 @@
   "kind": "plate",
   "cls": "service",
   "parent": "tray-a",
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-a-plate",
   "asset": "VCL-0043"
  },
  {
@@ -446,75 +489,82 @@
   "kind": "switch",
   "cls": "service",
   "parent": "tray-a",
-  "where": "timpanogos, slot R2",
+  "where": "timp, slot R2",
   "what": "PoE+ switch",
+  "role": "tray-a-sw",
   "asset": "VCL-0044"
  },
  {
   "name": "tray-b",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R3",
+  "parent": "timp",
+  "where": "timp, slot R3",
   "what": "tray B (Bravo): powder dosing, vacuum press",
   "letter": "B",
   "spoken": "tray Bravo",
   "passive": false,
+  "role": "tray-b",
   "asset": "VCL-0045"
  },
  {
-  "name": "timpanogos-r3-dock",
+  "name": "timp-r3-dock",
   "kind": "dock",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R3",
+  "parent": "timp",
+  "where": "timp, slot R3",
   "what": "slot R3's CombiTac dock",
+  "role": "vlm-r3-dock",
   "asset": "VCL-0046"
  },
  {
-  "name": "lavoisier",
+  "name": "talc",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R3",
+  "where": "timp, slot R3",
   "what": "multi-doser (chain carousel v5) on an A&D HR-202i",
-  "namesake": "Antoine and Marie-Anne Paulze Lavoisier",
-  "life": "1743-1794, 1758-1836",
-  "why": "chemistry by the balance: mass in, mass out; she drew the Traite's 13 plates (1789)",
-  "source": "https://en.wikipedia.org/wiki/Marie-Anne_Paulze_Lavoisier",
+  "namesake": "talc",
+  "life": "Mg3Si4O10(OH)2",
+  "why": "talcum powder, the powder everyone knows: the doser weighs out powders",
+  "source": "https://en.wikipedia.org/wiki/Talc",
   "key": "doser",
+  "role": "doser",
   "asset": "VCL-0047"
  },
  {
-  "name": "lavoisier-rack",
+  "name": "talc-rack",
   "kind": "unit",
   "cls": "station",
-  "parent": "lavoisier",
-  "where": "timpanogos, slot R3",
+  "parent": "talc",
+  "where": "timp, slot R3",
   "what": "vial rack",
+  "role": "doser-rack",
   "asset": "VCL-0048"
  },
  {
-  "name": "bridgman",
+  "name": "sandstone",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R3",
+  "where": "timp, slot R3",
   "what": "Specac Atlas Autotouch 15T vacuum press",
-  "namesake": "Percy W. Bridgman",
-  "life": "1882-1961",
-  "why": "high-pressure physics, Nobel 1946",
-  "source": "https://en.wikipedia.org/wiki/Percy_Williams_Bridgman",
+  "namesake": "sandstone",
+  "life": "rock",
+  "why": "sand pressed and cemented into stone, as the press turns a powder into a pellet",
+  "source": "https://en.wikipedia.org/wiki/Sandstone",
   "key": "vacuum_press",
+  "role": "vacuum_press",
   "asset": "VCL-0049"
  },
  {
-  "name": "bridgman-pc",
+  "name": "sandstone-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "bridgman",
-  "where": "timpanogos, slot R3",
+  "parent": "sandstone",
+  "where": "timp, slot R3",
   "what": "Specac Atlas Autotouch 15T vacuum press: its computer",
+  "role": "vacuum_press-pc",
   "asset": "VCL-0050"
  },
  {
@@ -522,8 +572,9 @@
   "kind": "ups",
   "cls": "service",
   "parent": "tray-b",
-  "where": "timpanogos, slot R3",
+  "where": "timp, slot R3",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-b-ups",
   "asset": "VCL-0051"
  },
  {
@@ -531,8 +582,9 @@
   "kind": "sensor",
   "cls": "service",
   "parent": "tray-b",
-  "where": "timpanogos, slot R3",
+  "where": "timp, slot R3",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-b-air",
   "asset": "VCL-0052"
  },
  {
@@ -540,9 +592,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-b",
-  "where": "timpanogos, slot R3",
+  "where": "timp, slot R3",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-b-cam0",
   "asset": "VCL-0053"
  },
  {
@@ -550,8 +603,9 @@
   "kind": "plate",
   "cls": "service",
   "parent": "tray-b",
-  "where": "timpanogos, slot R3",
+  "where": "timp, slot R3",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-b-plate",
   "asset": "VCL-0054"
  },
  {
@@ -559,98 +613,107 @@
   "kind": "switch",
   "cls": "service",
   "parent": "tray-b",
-  "where": "timpanogos, slot R3",
+  "where": "timp, slot R3",
   "what": "PoE+ switch",
+  "role": "tray-b-sw",
   "asset": "VCL-0055"
  },
  {
   "name": "tray-e",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R4",
+  "parent": "timp",
+  "where": "timp, slot R4",
   "what": "tray E (Echo): mechanical testing, particle size",
   "letter": "E",
   "spoken": "tray Echo",
   "passive": false,
+  "role": "tray-e",
   "asset": "VCL-0056"
  },
  {
-  "name": "timpanogos-r4-dock",
+  "name": "timp-r4-dock",
   "kind": "dock",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R4",
+  "parent": "timp",
+  "where": "timp, slot R4",
   "what": "slot R4's CombiTac dock",
+  "role": "vlm-r4-dock",
   "asset": "VCL-0057"
  },
  {
-  "name": "prandtl",
+  "name": "marble",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "Plastometrex PLX-Benchtop (indentation plastometry)",
-  "namesake": "Ludwig Prandtl",
-  "life": "1875-1953",
-  "why": "On the hardness of plastic bodies (1920): the plastic flow under a punch, the problem indentation plastometry turns back into a stress-strain curve",
-  "source": "https://en.wikipedia.org/wiki/Ludwig_Prandtl",
+  "namesake": "marble",
+  "life": "rock (CaCO3)",
+  "why": "the rock, and the glass ball: the PIP presses a hard ball into the metal and reads its stress-strain curve from the dent",
+  "source": "https://en.wikipedia.org/wiki/Marble_(toy)",
   "key": "pip",
+  "role": "pip",
   "asset": "VCL-0058"
  },
  {
-  "name": "prandtl-pc",
+  "name": "marble-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "prandtl",
-  "where": "timpanogos, slot R4",
+  "parent": "marble",
+  "where": "timp, slot R4",
   "what": "Plastometrex PLX-Benchtop (indentation plastometry): its computer",
+  "role": "pip-pc",
   "asset": "VCL-0059"
  },
  {
-  "name": "sneddon",
+  "name": "sapphire",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "KLA iMicro nanoindenter",
-  "namesake": "Ian Sneddon",
-  "life": "1919-2000",
-  "why": "the elastic solution for an axisymmetric punch of arbitrary profile (1965) that nanoindentation's unloading analysis rests on",
-  "source": "https://doi.org/10.1016/0020-7225(65)90019-4",
+  "namesake": "sapphire (corundum)",
+  "life": "Al2O3",
+  "why": "Mohs 9: of all minerals only diamond, the indenter's tip, is harder",
+  "source": "https://en.wikipedia.org/wiki/Sapphire",
   "key": "nanoindenter",
+  "role": "nanoindenter",
   "asset": "VCL-0060"
  },
  {
-  "name": "sneddon-pc",
+  "name": "sapphire-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "sneddon",
-  "where": "timpanogos, slot R4",
+  "parent": "sapphire",
+  "where": "timp, slot R4",
   "what": "KLA iMicro nanoindenter: its computer",
+  "role": "nanoindenter-pc",
   "asset": "VCL-0061"
  },
  {
-  "name": "tyndall",
+  "name": "opal",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "Malvern Mastersizer 3000 with Aero S (laser diffraction)",
-  "namesake": "John Tyndall",
-  "life": "1820-1893",
-  "why": "the Tyndall effect: light scattered by particles",
-  "source": "https://en.wikipedia.org/wiki/Tyndall_effect",
+  "namesake": "opal",
+  "life": "SiO2·nH2O",
+  "why": "its colours are light diffracted by silica spheres a few hundred nanometres across; the Mastersizer sizes particles by the light they diffract",
+  "source": "https://en.wikipedia.org/wiki/Opal",
   "key": "mastersizer",
+  "role": "mastersizer",
   "asset": "VCL-0062"
  },
  {
-  "name": "tyndall-pc",
+  "name": "opal-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "tyndall",
-  "where": "timpanogos, slot R4",
+  "parent": "opal",
+  "where": "timp, slot R4",
   "what": "Malvern Mastersizer 3000 with Aero S (laser diffraction): its computer",
+  "role": "mastersizer-pc",
   "asset": "VCL-0063"
  },
  {
@@ -658,8 +721,9 @@
   "kind": "ups",
   "cls": "service",
   "parent": "tray-e",
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-e-ups",
   "asset": "VCL-0064"
  },
  {
@@ -667,8 +731,9 @@
   "kind": "sensor",
   "cls": "service",
   "parent": "tray-e",
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-e-air",
   "asset": "VCL-0065"
  },
  {
@@ -676,9 +741,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-e",
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-e-cam0",
   "asset": "VCL-0066"
  },
  {
@@ -686,9 +752,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-e",
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-e-cam1",
   "asset": "VCL-0067"
  },
  {
@@ -696,9 +763,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-e",
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-e-cam2",
   "asset": "VCL-0068"
  },
  {
@@ -706,8 +774,9 @@
   "kind": "plate",
   "cls": "service",
   "parent": "tray-e",
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-e-plate",
   "asset": "VCL-0069"
  },
  {
@@ -715,20 +784,22 @@
   "kind": "switch",
   "cls": "service",
   "parent": "tray-e",
-  "where": "timpanogos, slot R4",
+  "where": "timp, slot R4",
   "what": "PoE+ switch",
+  "role": "tray-e-sw",
   "asset": "VCL-0070"
  },
  {
   "name": "tray-j",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot F0",
+  "parent": "timp",
+  "where": "timp, slot F0",
   "what": "tray J (Juliett): sample storage",
   "letter": "J",
   "spoken": "tray Juliett",
   "passive": true,
+  "role": "tray-j",
   "asset": "VCL-0071"
  },
  {
@@ -736,75 +807,82 @@
   "kind": "store",
   "cls": "service",
   "parent": "tray-j",
-  "where": "timpanogos, slot F0",
+  "where": "timp, slot F0",
   "what": "Storage load (our design)",
+  "role": "tray-j-store",
   "asset": "VCL-0072"
  },
  {
   "name": "tray-c",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot F1",
+  "parent": "timp",
+  "where": "timp, slot F1",
   "what": "tray C (Charlie): 3D printing",
   "letter": "C",
   "spoken": "tray Charlie",
   "passive": false,
+  "role": "tray-c",
   "asset": "VCL-0073"
  },
  {
-  "name": "timpanogos-f1-dock",
+  "name": "timp-f1-dock",
   "kind": "dock",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot F1",
+  "parent": "timp",
+  "where": "timp, slot F1",
   "what": "slot F1's CombiTac dock",
+  "role": "vlm-f1-dock",
   "asset": "VCL-0074"
  },
  {
-  "name": "gutenberg",
+  "name": "shale",
   "kind": "station",
   "cls": "printer",
   "parent": null,
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "Bambu Lab H2D",
-  "namesake": "Johannes Gutenberg",
-  "life": "c. 1400-1468",
-  "why": "the movable-type press",
-  "source": "https://en.wikipedia.org/wiki/Johannes_Gutenberg",
+  "namesake": "shale",
+  "life": "rock",
+  "why": "laid down in thin layers, and it splits along them: a print is built the same way",
+  "source": "https://en.wikipedia.org/wiki/Shale",
   "key": "h2d",
+  "role": "h2d",
   "asset": "VCL-0075"
  },
  {
-  "name": "gutenberg-pc",
+  "name": "shale-pc",
   "kind": "computer",
   "cls": "printer",
-  "parent": "gutenberg",
-  "where": "timpanogos, slot F1",
+  "parent": "shale",
+  "where": "timp, slot F1",
   "what": "Bambu Lab H2D: its computer",
+  "role": "h2d-pc",
   "asset": "VCL-0076"
  },
  {
-  "name": "aldus",
+  "name": "mica",
   "kind": "station",
   "cls": "printer",
   "parent": null,
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "Bambu Lab A1 mini",
-  "namesake": "Aldus Manutius",
-  "life": "c. 1450-1515",
-  "why": "the Aldine Press: italic type and the small, portable octavo book; the H2D's small partner",
-  "source": "https://en.wikipedia.org/wiki/Aldus_Manutius",
+  "namesake": "mica",
+  "life": "sheet silicate group",
+  "why": "it splits into layers thinner than paper, and a print is built of layers; the H2D's small partner",
+  "source": "https://en.wikipedia.org/wiki/Mica",
   "key": "a1mini",
+  "role": "a1mini",
   "asset": "VCL-0077"
  },
  {
-  "name": "aldus-pc",
+  "name": "mica-pc",
   "kind": "computer",
   "cls": "printer",
-  "parent": "aldus",
-  "where": "timpanogos, slot F1",
+  "parent": "mica",
+  "where": "timp, slot F1",
   "what": "Bambu Lab A1 mini: its computer",
+  "role": "a1mini-pc",
   "asset": "VCL-0078"
  },
  {
@@ -812,8 +890,9 @@
   "kind": "ups",
   "cls": "service",
   "parent": "tray-c",
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-c-ups",
   "asset": "VCL-0079"
  },
  {
@@ -821,8 +900,9 @@
   "kind": "sensor",
   "cls": "service",
   "parent": "tray-c",
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-c-air",
   "asset": "VCL-0080"
  },
  {
@@ -830,9 +910,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-c",
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-c-cam0",
   "asset": "VCL-0081"
  },
  {
@@ -840,9 +921,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-c",
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-c-cam1",
   "asset": "VCL-0082"
  },
  {
@@ -850,8 +932,9 @@
   "kind": "plate",
   "cls": "service",
   "parent": "tray-c",
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-c-plate",
   "asset": "VCL-0083"
  },
  {
@@ -859,116 +942,127 @@
   "kind": "switch",
   "cls": "service",
   "parent": "tray-c",
-  "where": "timpanogos, slot F1",
+  "where": "timp, slot F1",
   "what": "PoE+ switch",
+  "role": "tray-c-sw",
   "asset": "VCL-0084"
  },
  {
   "name": "tray-f",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot F2",
+  "parent": "timp",
+  "where": "timp, slot F2",
   "what": "tray F (Foxtrot): polishing and heat treatment",
   "letter": "F",
   "spoken": "tray Foxtrot",
   "passive": false,
+  "role": "tray-f",
   "asset": "VCL-0085"
  },
  {
-  "name": "timpanogos-f2-dock",
+  "name": "timp-f2-dock",
   "kind": "dock",
   "cls": "service",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot F2",
+  "parent": "timp",
+  "where": "timp, slot F2",
   "what": "slot F2's CombiTac dock",
+  "role": "vlm-f2-dock",
   "asset": "VCL-0086"
  },
  {
-  "name": "beilby",
+  "name": "emery",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "LECO PX500 grinder-polisher with its disc magazine",
-  "namesake": "George Beilby",
-  "life": "1850-1924",
-  "why": "the Beilby layer, the flowed skin polishing leaves on a metal",
-  "source": "https://www.nature.com/articles/137516a0",
+  "namesake": "emery",
+  "life": "rock (corundum and magnetite)",
+  "why": "the abrasive of emery paper and emery boards",
+  "source": "https://en.wikipedia.org/wiki/Emery_(rock)",
   "key": "polisher",
+  "role": "polisher",
   "asset": "VCL-0087"
  },
  {
-  "name": "beilby-pc",
+  "name": "emery-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "beilby",
-  "where": "timpanogos, slot F2",
+  "parent": "emery",
+  "where": "timp, slot F2",
   "what": "LECO PX500 grinder-polisher with its disc magazine: its computer",
+  "role": "polisher-pc",
   "asset": "VCL-0088"
  },
  {
-  "name": "preston",
+  "name": "obsidian",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "Nabertherm NAT 15/65 furnace with the quench tank",
-  "namesake": "George Dawson Preston",
-  "life": "1896-1972",
-  "why": "with Guinier, found the zones (1938) that harden an aged Al-Cu alloy, the hardening the furnace's T6 does",
-  "source": "https://en.wikipedia.org/wiki/George_Dawson_Preston",
+  "namesake": "obsidian",
+  "life": "volcanic glass",
+  "why": "lava quenched too fast to crystallize: the furnace is the station with the quench tank",
+  "source": "https://en.wikipedia.org/wiki/Obsidian",
   "key": "furnace",
+  "role": "furnace",
   "asset": "VCL-0089"
  },
  {
-  "name": "preston-pc",
+  "name": "obsidian-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "preston",
-  "where": "timpanogos, slot F2",
+  "parent": "obsidian",
+  "where": "timp, slot F2",
   "what": "Nabertherm NAT 15/65 furnace with the quench tank: its computer",
+  "role": "furnace-pc",
   "asset": "VCL-0090"
  },
  {
-  "name": "baekeland",
+  "name": "fossil",
   "kind": "station",
   "cls": "station",
   "parent": null,
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "LECO MX400 hot mounting press",
-  "namesake": "Leo Baekeland",
-  "life": "1863-1944",
-  "why": "Bakelite, the phenolic of a hot-mounted puck",
-  "source": "https://en.wikipedia.org/wiki/Leo_Baekeland",
+  "namesake": "a fossil",
+  "life": "",
+  "why": "a specimen set in stone, as the press sets a sample in a resin puck",
+  "source": "https://en.wikipedia.org/wiki/Fossil",
   "key": "mounting_press",
+  "role": "mounting_press",
   "asset": "VCL-0091"
  },
  {
-  "name": "baekeland-pc",
+  "name": "fossil-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "baekeland",
-  "where": "timpanogos, slot F2",
+  "parent": "fossil",
+  "where": "timp, slot F2",
   "what": "LECO MX400 hot mounting press: its computer",
+  "role": "mounting_press-pc",
   "asset": "VCL-0092"
  },
  {
-  "name": "beilby-rack",
+  "name": "emery-rack",
   "kind": "unit",
   "cls": "station",
-  "parent": "beilby",
-  "where": "timpanogos, slot F2",
+  "parent": "emery",
+  "where": "timp, slot F2",
   "what": "six-shelf disc magazine (ours)",
+  "role": "polisher-rack",
   "asset": "VCL-0093"
  },
  {
-  "name": "preston-quench",
+  "name": "obsidian-quench",
   "kind": "unit",
   "cls": "station",
-  "parent": "preston",
-  "where": "timpanogos, slot F2",
+  "parent": "obsidian",
+  "where": "timp, slot F2",
   "what": "water tank with a lift basket, our design",
+  "role": "furnace-quench",
   "asset": "VCL-0094"
  },
  {
@@ -976,8 +1070,9 @@
   "kind": "ups",
   "cls": "service",
   "parent": "tray-f",
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-f-ups",
   "asset": "VCL-0095"
  },
  {
@@ -985,8 +1080,9 @@
   "kind": "sensor",
   "cls": "service",
   "parent": "tray-f",
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-f-air",
   "asset": "VCL-0096"
  },
  {
@@ -994,9 +1090,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-f",
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-f-cam0",
   "asset": "VCL-0097"
  },
  {
@@ -1004,9 +1101,10 @@
   "kind": "camera",
   "cls": "camera",
   "parent": "tray-f",
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-f-cam1",
   "asset": "VCL-0098"
  },
  {
@@ -1014,8 +1112,9 @@
   "kind": "plate",
   "cls": "service",
   "parent": "tray-f",
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-f-plate",
   "asset": "VCL-0099"
  },
  {
@@ -1023,20 +1122,22 @@
   "kind": "switch",
   "cls": "service",
   "parent": "tray-f",
-  "where": "timpanogos, slot F2",
+  "where": "timp, slot F2",
   "what": "PoE+ switch",
+  "role": "tray-f-sw",
   "asset": "VCL-0100"
  },
  {
   "name": "tray-s",
   "kind": "tray",
   "cls": "tray",
-  "parent": "timpanogos",
-  "where": "timpanogos, slot R5",
+  "parent": "timp",
+  "where": "timp, slot R5",
   "what": "tray S (Sierra): sample storage, second store",
   "letter": "S",
   "spoken": "tray Sierra",
   "passive": true,
+  "role": "tray-s",
   "asset": "VCL-0101"
  },
  {
@@ -1044,8 +1145,9 @@
   "kind": "store",
   "cls": "service",
   "parent": "tray-s",
-  "where": "timpanogos, slot R5",
+  "where": "timp, slot R5",
   "what": "Storage load (our design)",
+  "role": "tray-s-store",
   "asset": "VCL-0102"
  },
  {
@@ -1058,6 +1160,7 @@
   "letter": "K",
   "spoken": "tray Kilo",
   "passive": false,
+  "role": "tray-k",
   "asset": "VCL-0103"
  },
  {
@@ -1067,52 +1170,57 @@
   "parent": "nebo",
   "where": "nebo, slot 2R1",
   "what": "slot 2R1's CombiTac dock",
+  "role": "vlm2-r1-dock",
   "asset": "VCL-0104"
  },
  {
-  "name": "rutherford",
+  "name": "agate",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "nebo, slot 2R1",
   "what": "the tray's N2 glovebox (ours)",
-  "namesake": "Daniel Rutherford",
-  "life": "1749-1819",
-  "why": "isolated nitrogen (1772), the gas this glovebox is purged with",
-  "source": "https://en.wikipedia.org/wiki/Daniel_Rutherford",
+  "namesake": "agate",
+  "life": "SiO2",
+  "why": "it grows inside a closed hollow in rock, shut off from the world outside",
+  "source": "https://en.wikipedia.org/wiki/Agate",
   "key": "glovebox_tray",
+  "role": "glovebox_tray",
   "asset": "VCL-0105"
  },
  {
-  "name": "rutherford-pc",
+  "name": "agate-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "rutherford",
+  "parent": "agate",
   "where": "nebo, slot 2R1",
   "what": "the tray's N2 glovebox (ours): its computer",
+  "role": "glovebox_tray-pc",
   "asset": "VCL-0106"
  },
  {
-  "name": "sorby",
+  "name": "tigereye",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "nebo, slot 2R1",
   "what": "Keyence VHX-7000 digital microscope with EA-300 LIBS",
-  "namesake": "Henry Clifton Sorby",
-  "life": "1826-1908",
-  "why": "founded metallography (1863): polished, etched steel under the microscope",
-  "source": "https://en.wikipedia.org/wiki/Henry_Clifton_Sorby",
+  "namesake": "tiger's eye",
+  "life": "quartz with fibres",
+  "why": "the stone with an eye in it: the lab's eye for a close look",
+  "source": "https://en.wikipedia.org/wiki/Tiger's_eye",
   "key": "vhx",
+  "role": "vhx",
   "asset": "VCL-0107"
  },
  {
-  "name": "sorby-pc",
+  "name": "tigereye-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "sorby",
+  "parent": "tigereye",
   "where": "nebo, slot 2R1",
   "what": "Keyence VHX-7000 digital microscope with EA-300 LIBS: its computer",
+  "role": "vhx-pc",
   "asset": "VCL-0108"
  },
  {
@@ -1122,6 +1230,7 @@
   "parent": "tray-k",
   "where": "nebo, slot 2R1",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-k-ups",
   "asset": "VCL-0109"
  },
  {
@@ -1131,6 +1240,7 @@
   "parent": "tray-k",
   "where": "nebo, slot 2R1",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-k-air",
   "asset": "VCL-0110"
  },
  {
@@ -1141,6 +1251,7 @@
   "where": "nebo, slot 2R1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-k-cam0",
   "asset": "VCL-0111"
  },
  {
@@ -1150,6 +1261,7 @@
   "parent": "tray-k",
   "where": "nebo, slot 2R1",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-k-plate",
   "asset": "VCL-0112"
  },
  {
@@ -1159,6 +1271,7 @@
   "parent": "tray-k",
   "where": "nebo, slot 2R1",
   "what": "PoE+ switch",
+  "role": "tray-k-sw",
   "asset": "VCL-0113"
  },
  {
@@ -1171,6 +1284,7 @@
   "letter": "L",
   "spoken": "tray Lima",
   "passive": false,
+  "role": "tray-l",
   "asset": "VCL-0114"
  },
  {
@@ -1180,52 +1294,57 @@
   "parent": "nebo",
   "where": "nebo, slot 2R2",
   "what": "slot 2R2's CombiTac dock",
+  "role": "vlm2-r2-dock",
   "asset": "VCL-0115"
  },
  {
-  "name": "griffith",
+  "name": "rift",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "nebo, slot 2R2",
   "what": "ZwickRoell zwickiLine Z5.0 TN (horizontal tensile)",
-  "namesake": "A. A. Griffith",
-  "life": "1893-1963",
-  "why": "the theory of fracture (1921): a bar's strength is set by its flaws, which every pull to failure tests",
-  "source": "https://en.wikipedia.org/wiki/Alan_Arnold_Griffith",
+  "namesake": "a rift",
+  "life": "landform",
+  "why": "where the crust is pulled apart, as Utah's Basin and Range is: the frame that pulls sideways",
+  "source": "https://en.wikipedia.org/wiki/Rift",
   "key": "tensile_h",
+  "role": "tensile_h",
   "asset": "VCL-0116"
  },
  {
-  "name": "griffith-pc",
+  "name": "rift-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "griffith",
+  "parent": "rift",
   "where": "nebo, slot 2R2",
   "what": "ZwickRoell zwickiLine Z5.0 TN (horizontal tensile): its computer",
+  "role": "tensile_h-pc",
   "asset": "VCL-0117"
  },
  {
-  "name": "sandland",
+  "name": "topaz",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "nebo, slot 2R2",
   "what": "Mitutoyo HM-220 micro-Vickers tester",
-  "namesake": "George E. Sandland",
-  "life": "d. 1961",
-  "why": "devised the Vickers test with Robert L. Smith at Vickers Ltd (1921, published 1922)",
-  "source": "https://www.gracesguide.co.uk/G._E._Sandland",
+  "namesake": "topaz",
+  "life": "Al2SiO4(F,OH)2",
+  "why": "Mohs 8, the hardness scale everyone learns, and Utah's state gem (1969)",
+  "source": "https://en.wikipedia.org/wiki/Topaz",
   "key": "hardness",
+  "role": "hardness",
   "asset": "VCL-0118"
  },
  {
-  "name": "sandland-pc",
+  "name": "topaz-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "sandland",
+  "parent": "topaz",
   "where": "nebo, slot 2R2",
   "what": "Mitutoyo HM-220 micro-Vickers tester: its computer",
+  "role": "hardness-pc",
   "asset": "VCL-0119"
  },
  {
@@ -1235,6 +1354,7 @@
   "parent": "tray-l",
   "where": "nebo, slot 2R2",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-l-ups",
   "asset": "VCL-0120"
  },
  {
@@ -1244,6 +1364,7 @@
   "parent": "tray-l",
   "where": "nebo, slot 2R2",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-l-air",
   "asset": "VCL-0121"
  },
  {
@@ -1254,6 +1375,7 @@
   "where": "nebo, slot 2R2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-l-cam0",
   "asset": "VCL-0122"
  },
  {
@@ -1264,6 +1386,7 @@
   "where": "nebo, slot 2R2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-l-cam1",
   "asset": "VCL-0123"
  },
  {
@@ -1273,6 +1396,7 @@
   "parent": "tray-l",
   "where": "nebo, slot 2R2",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-l-plate",
   "asset": "VCL-0124"
  },
  {
@@ -1282,6 +1406,7 @@
   "parent": "tray-l",
   "where": "nebo, slot 2R2",
   "what": "PoE+ switch",
+  "role": "tray-l-sw",
   "asset": "VCL-0125"
  },
  {
@@ -1294,6 +1419,7 @@
   "letter": "M",
   "spoken": "tray Mike",
   "passive": false,
+  "role": "tray-m",
   "asset": "VCL-0126"
  },
  {
@@ -1303,29 +1429,32 @@
   "parent": "nebo",
   "where": "nebo, slot 2R3",
   "what": "slot 2R3's CombiTac dock",
+  "role": "vlm2-r3-dock",
   "asset": "VCL-0127"
  },
  {
-  "name": "noddack",
+  "name": "fluorite",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "nebo, slot 2R3",
   "what": "Bruker S2 PUMA XRF with XY autochanger",
-  "namesake": "Ida Noddack",
-  "life": "1896-1978",
-  "why": "with Walter Noddack and Otto Berg, found rhenium (1925) by its X-ray spectrum, which is what an XRF reads",
-  "source": "https://sites.chemistry.unt.edu/~jimm/REDISCOVERY%207-09-2018/Hexagon%20Articles/rhenium%20and%20technetium.pdf",
+  "namesake": "fluorite",
+  "life": "CaF2",
+  "why": "fluorescence is named after it (Stokes, 1852), and an XRF reads X-ray fluorescence",
+  "source": "https://en.wikipedia.org/wiki/Fluorescence",
   "key": "xrf",
+  "role": "xrf",
   "asset": "VCL-0128"
  },
  {
-  "name": "noddack-pc",
+  "name": "fluorite-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "noddack",
+  "parent": "fluorite",
   "where": "nebo, slot 2R3",
   "what": "Bruker S2 PUMA XRF with XY autochanger: its computer",
+  "role": "xrf-pc",
   "asset": "VCL-0129"
  },
  {
@@ -1335,29 +1464,32 @@
   "parent": "tray-m",
   "where": "nebo, slot 2R3",
   "what": "Sentry Air Systems ductless hood, 24 in",
+  "role": "tray-m-hood",
   "asset": "VCL-0130"
  },
  {
-  "name": "maudslay",
+  "name": "garnet",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "nebo, slot 2R3",
   "what": "Makera Carvera CNC mill",
-  "namesake": "Henry Maudslay",
-  "life": "1771-1831",
-  "why": "the screw-cutting lathe and the machine-tool trade",
-  "source": "https://en.wikipedia.org/wiki/Henry_Maudslay",
+  "namesake": "garnet",
+  "life": "silicate group",
+  "why": "it cuts metal: the abrasive of garnet paper and of waterjet cutters",
+  "source": "https://en.wikipedia.org/wiki/Garnet",
   "key": "cnc",
+  "role": "cnc",
   "asset": "VCL-0131"
  },
  {
-  "name": "maudslay-pc",
+  "name": "garnet-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "maudslay",
+  "parent": "garnet",
   "where": "nebo, slot 2R3",
   "what": "Makera Carvera CNC mill: its computer",
+  "role": "cnc-pc",
   "asset": "VCL-0132"
  },
  {
@@ -1367,6 +1499,7 @@
   "parent": "tray-m",
   "where": "nebo, slot 2R3",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-m-ups",
   "asset": "VCL-0133"
  },
  {
@@ -1376,6 +1509,7 @@
   "parent": "tray-m",
   "where": "nebo, slot 2R3",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-m-air",
   "asset": "VCL-0134"
  },
  {
@@ -1386,6 +1520,7 @@
   "where": "nebo, slot 2R3",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-m-cam0",
   "asset": "VCL-0135"
  },
  {
@@ -1396,6 +1531,7 @@
   "where": "nebo, slot 2R3",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-m-cam1",
   "asset": "VCL-0136"
  },
  {
@@ -1405,6 +1541,7 @@
   "parent": "tray-m",
   "where": "nebo, slot 2R3",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-m-plate",
   "asset": "VCL-0137"
  },
  {
@@ -1414,6 +1551,7 @@
   "parent": "tray-m",
   "where": "nebo, slot 2R3",
   "what": "PoE+ switch",
+  "role": "tray-m-sw",
   "asset": "VCL-0138"
  },
  {
@@ -1426,6 +1564,7 @@
   "letter": "H",
   "spoken": "tray Hotel",
   "passive": false,
+  "role": "tray-h",
   "asset": "VCL-0139"
  },
  {
@@ -1435,47 +1574,52 @@
   "parent": "nebo",
   "where": "nebo, slot 2R4",
   "what": "slot 2R4's CombiTac dock",
+  "role": "vlm2-r4-dock",
   "asset": "VCL-0140"
  },
  {
-  "name": "eisler",
+  "name": "galena",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "nebo, slot 2R4",
   "what": "PCB line: DDM stencil printer, Opulo LumenPnP, Puhui reflow oven",
-  "namesake": "Paul Eisler",
-  "life": "1907-1992",
-  "why": "invented the printed circuit board",
-  "source": "https://en.wikipedia.org/wiki/Paul_Eisler",
+  "namesake": "galena",
+  "life": "PbS",
+  "why": "lead ore, and the crystal in a crystal radio: electronics' first semiconductor",
+  "source": "https://en.wikipedia.org/wiki/Galena",
   "key": "pcb_line",
+  "role": "pcb_line",
   "asset": "VCL-0141"
  },
  {
-  "name": "eisler-paste",
+  "name": "galena-paste",
   "kind": "unit",
   "cls": "station",
-  "parent": "eisler",
+  "parent": "galena",
   "where": "nebo, slot 2R4",
   "what": "DDM Novastar SPR-45VA",
+  "role": "pcb_line-paste",
   "asset": "VCL-0142"
  },
  {
-  "name": "eisler-pnp",
+  "name": "galena-pnp",
   "kind": "unit",
   "cls": "station",
-  "parent": "eisler",
+  "parent": "galena",
   "where": "nebo, slot 2R4",
   "what": "Opulo LumenPnP v4.2",
+  "role": "pcb_line-pnp",
   "asset": "VCL-0143"
  },
  {
-  "name": "eisler-reflow",
+  "name": "galena-reflow",
   "kind": "unit",
   "cls": "station",
-  "parent": "eisler",
+  "parent": "galena",
   "where": "nebo, slot 2R4",
   "what": "Puhui T-962A",
+  "role": "pcb_line-reflow",
   "asset": "VCL-0144"
  },
  {
@@ -1485,6 +1629,7 @@
   "parent": "tray-h",
   "where": "nebo, slot 2R4",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-h-ups",
   "asset": "VCL-0145"
  },
  {
@@ -1494,6 +1639,7 @@
   "parent": "tray-h",
   "where": "nebo, slot 2R4",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-h-air",
   "asset": "VCL-0146"
  },
  {
@@ -1504,6 +1650,7 @@
   "where": "nebo, slot 2R4",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-h-cam0",
   "asset": "VCL-0147"
  },
  {
@@ -1514,6 +1661,7 @@
   "where": "nebo, slot 2R4",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-h-cam1",
   "asset": "VCL-0148"
  },
  {
@@ -1523,6 +1671,7 @@
   "parent": "tray-h",
   "where": "nebo, slot 2R4",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-h-plate",
   "asset": "VCL-0149"
  },
  {
@@ -1532,6 +1681,7 @@
   "parent": "tray-h",
   "where": "nebo, slot 2R4",
   "what": "PoE+ switch",
+  "role": "tray-h-sw",
   "asset": "VCL-0150"
  },
  {
@@ -1544,6 +1694,7 @@
   "letter": "G",
   "spoken": "tray Golf",
   "passive": false,
+  "role": "tray-g",
   "asset": "VCL-0151"
  },
  {
@@ -1553,56 +1704,62 @@
   "parent": "nebo",
   "where": "nebo, slot 2F1",
   "what": "slot 2F1's CombiTac dock",
+  "role": "vlm2-f1-dock",
   "asset": "VCL-0152"
  },
  {
-  "name": "senefelder",
+  "name": "gypsum",
   "kind": "station",
   "cls": "printer",
   "parent": null,
   "where": "nebo, slot 2F1",
   "what": "Formlabs Form 4 resin printers with Form Wash and Form Cure",
-  "namesake": "Alois Senefelder",
-  "life": "1771-1834",
-  "why": "invented lithography (1796), which stereolithography is named from",
-  "source": "https://en.wikipedia.org/wiki/Alois_Senefelder",
+  "namesake": "gypsum (plaster)",
+  "life": "CaSO4·2H2O",
+  "why": "plaster of Paris is made from it: a liquid that sets solid, as the Form 4's resin does",
+  "source": "https://en.wikipedia.org/wiki/Gypsum",
   "key": "form4",
+  "role": "form4",
   "asset": "VCL-0153"
  },
  {
-  "name": "senefelder-1",
+  "name": "gypsum-1",
   "kind": "unit",
   "cls": "printer",
-  "parent": "senefelder",
+  "parent": "gypsum",
   "where": "nebo, slot 2F1",
   "what": "Formlabs Form 4",
+  "role": "form4-1",
   "asset": "VCL-0154"
  },
  {
-  "name": "senefelder-2",
+  "name": "gypsum-2",
   "kind": "unit",
   "cls": "printer",
-  "parent": "senefelder",
+  "parent": "gypsum",
   "where": "nebo, slot 2F1",
   "what": "Formlabs Form 4",
+  "role": "form4-2",
   "asset": "VCL-0155"
  },
  {
-  "name": "senefelder-wash",
+  "name": "gypsum-wash",
   "kind": "unit",
   "cls": "printer",
-  "parent": "senefelder",
+  "parent": "gypsum",
   "where": "nebo, slot 2F1",
   "what": "Formlabs Form Wash (2nd Gen)",
+  "role": "form4-wash",
   "asset": "VCL-0156"
  },
  {
-  "name": "senefelder-cure",
+  "name": "gypsum-cure",
   "kind": "unit",
   "cls": "printer",
-  "parent": "senefelder",
+  "parent": "gypsum",
   "where": "nebo, slot 2F1",
   "what": "Formlabs Form Cure (2nd Gen)",
+  "role": "form4-cure",
   "asset": "VCL-0157"
  },
  {
@@ -1612,6 +1769,7 @@
   "parent": "tray-g",
   "where": "nebo, slot 2F1",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-g-ups",
   "asset": "VCL-0158"
  },
  {
@@ -1621,6 +1779,7 @@
   "parent": "tray-g",
   "where": "nebo, slot 2F1",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-g-air",
   "asset": "VCL-0159"
  },
  {
@@ -1631,6 +1790,7 @@
   "where": "nebo, slot 2F1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-g-cam0",
   "asset": "VCL-0160"
  },
  {
@@ -1641,6 +1801,7 @@
   "where": "nebo, slot 2F1",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-g-cam1",
   "asset": "VCL-0161"
  },
  {
@@ -1650,6 +1811,7 @@
   "parent": "tray-g",
   "where": "nebo, slot 2F1",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-g-plate",
   "asset": "VCL-0162"
  },
  {
@@ -1659,6 +1821,7 @@
   "parent": "tray-g",
   "where": "nebo, slot 2F1",
   "what": "PoE+ switch",
+  "role": "tray-g-sw",
   "asset": "VCL-0163"
  },
  {
@@ -1671,6 +1834,7 @@
   "letter": "I",
   "spoken": "tray India",
   "passive": false,
+  "role": "tray-i",
   "asset": "VCL-0164"
  },
  {
@@ -1680,38 +1844,42 @@
   "parent": "nebo",
   "where": "nebo, slot 2F2",
   "what": "slot 2F2's CombiTac dock",
+  "role": "vlm2-f2-dock",
   "asset": "VCL-0165"
  },
  {
-  "name": "maiman",
+  "name": "cinder",
   "kind": "station",
   "cls": "printer",
   "parent": null,
   "where": "nebo, slot 2F2",
   "what": "SnowX SnowPod desktop LPBF printers with the NitroPod",
-  "namesake": "Theodore Maiman",
-  "life": "1927-2007",
-  "why": "the first working laser (1960): a small laser for small printers",
-  "source": "https://en.wikipedia.org/wiki/Theodore_Maiman",
+  "namesake": "cinder",
+  "life": "volcanic rock",
+  "why": "small bits of lava that freeze as they fly: the two small powder-bed printers",
+  "source": "https://en.wikipedia.org/wiki/Cinder_cone",
   "key": "snowpod",
+  "role": "snowpod",
   "asset": "VCL-0166"
  },
  {
-  "name": "maiman-1",
+  "name": "cinder-1",
   "kind": "unit",
   "cls": "printer",
-  "parent": "maiman",
+  "parent": "cinder",
   "where": "nebo, slot 2F2",
   "what": "SnowX SnowPod",
+  "role": "snowpod-1",
   "asset": "VCL-0167"
  },
  {
-  "name": "maiman-2",
+  "name": "cinder-2",
   "kind": "unit",
   "cls": "printer",
-  "parent": "maiman",
+  "parent": "cinder",
   "where": "nebo, slot 2F2",
   "what": "SnowX SnowPod",
+  "role": "snowpod-2",
   "asset": "VCL-0168"
  },
  {
@@ -1721,6 +1889,7 @@
   "parent": "tray-i",
   "where": "nebo, slot 2F2",
   "what": "Vertiv Liebert UPS (RDU120 card)",
+  "role": "tray-i-ups",
   "asset": "VCL-0169"
  },
  {
@@ -1730,6 +1899,7 @@
   "parent": "tray-i",
   "where": "nebo, slot 2F2",
   "what": "AirGradient ONE (no display)",
+  "role": "tray-i-air",
   "asset": "VCL-0170"
  },
  {
@@ -1740,6 +1910,7 @@
   "where": "nebo, slot 2F2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-i-cam0",
   "asset": "VCL-0171"
  },
  {
@@ -1750,6 +1921,7 @@
   "where": "nebo, slot 2F2",
   "what": "stream camera unit (Pi 5 + HQ + Camera Module 3 Wide)",
   "stream": true,
+  "role": "tray-i-cam1",
   "asset": "VCL-0172"
  },
  {
@@ -1759,6 +1931,7 @@
   "parent": "tray-i",
   "where": "nebo, slot 2F2",
   "what": "CombiTac coupling, tray half",
+  "role": "tray-i-plate",
   "asset": "VCL-0173"
  },
  {
@@ -1768,6 +1941,7 @@
   "parent": "tray-i",
   "where": "nebo, slot 2F2",
   "what": "PoE+ switch",
+  "role": "tray-i-sw",
   "asset": "VCL-0174"
  },
  {
@@ -1780,6 +1954,7 @@
   "letter": "N",
   "spoken": "tray November",
   "passive": true,
+  "role": "tray-n",
   "asset": "VCL-0175"
  },
  {
@@ -1789,6 +1964,7 @@
   "parent": "tray-n",
   "where": "nebo, slot 2F0",
   "what": "264 powder jars in racks (our design)",
+  "role": "tray-n-store",
   "asset": "VCL-0176"
  },
  {
@@ -1801,6 +1977,7 @@
   "letter": "O",
   "spoken": "tray Oscar",
   "passive": true,
+  "role": "tray-o",
   "asset": "VCL-0177"
  },
  {
@@ -1810,6 +1987,7 @@
   "parent": "tray-o",
   "where": "nebo, slot 2F0b",
   "what": "489 powder jars in racks (our design)",
+  "role": "tray-o-store",
   "asset": "VCL-0178"
  },
  {
@@ -1822,6 +2000,7 @@
   "letter": "P",
   "spoken": "tray Papa",
   "passive": true,
+  "role": "tray-p",
   "asset": "VCL-0179"
  },
  {
@@ -1831,6 +2010,7 @@
   "parent": "tray-p",
   "where": "nebo, slot 2R5",
   "what": "489 powder jars in racks (our design)",
+  "role": "tray-p-store",
   "asset": "VCL-0180"
  },
  {
@@ -1843,6 +2023,7 @@
   "letter": "Q",
   "spoken": "tray Quebec",
   "passive": true,
+  "role": "tray-q",
   "asset": "VCL-0181"
  },
  {
@@ -1852,529 +2033,580 @@
   "parent": "tray-q",
   "where": "nebo, slot 2R6",
   "what": "264 powder jars in racks (our design)",
+  "role": "tray-q-store",
   "asset": "VCL-0182"
  },
  {
-  "name": "ruska-eds",
+  "name": "pyrite-eds",
   "kind": "unit",
   "cls": "station",
-  "parent": "ruska",
+  "parent": "pyrite",
   "where": "",
   "what": "Oxford AZtecOne EDS analyser",
+  "role": "sem-eds",
   "asset": "VCL-0183"
  },
  {
-  "name": "tafel-pi",
+  "name": "halite-pi",
   "kind": "unit",
   "cls": "station",
-  "parent": "tafel",
+  "parent": "halite",
   "where": "",
   "what": "the CubXL's Raspberry Pi 5",
+  "role": "cubxl-pi",
   "asset": "VCL-0184"
  },
  {
-  "name": "sorby-kvm",
+  "name": "tigereye-kvm",
   "kind": "unit",
   "cls": "station",
-  "parent": "sorby",
+  "parent": "tigereye",
   "where": "",
   "what": "PiKVM V4 Mini",
+  "role": "vhx-kvm",
   "asset": "VCL-0185"
  },
  {
-  "name": "maiman-n2",
+  "name": "cinder-n2",
   "kind": "unit",
   "cls": "station",
-  "parent": "maiman",
+  "parent": "cinder",
   "where": "",
   "what": "SnowX NitroPod N2 generator",
+  "role": "snowpod-n2",
   "asset": "VCL-0186"
  },
  {
-  "name": "bridgman-vac",
+  "name": "sandstone-vac",
   "kind": "unit",
   "cls": "station",
-  "parent": "bridgman",
+  "parent": "sandstone",
   "where": "",
   "what": "Edwards RV3 rotary-vane pump",
+  "role": "vacuum_press-vac",
   "asset": "VCL-0187"
  },
  {
-  "name": "rutherford-vac",
+  "name": "agate-vac",
   "kind": "unit",
   "cls": "station",
-  "parent": "rutherford",
+  "parent": "agate",
   "where": "",
   "what": "antechamber pump",
+  "role": "glovebox_tray-vac",
   "asset": "VCL-0188"
  },
  {
-  "name": "faraday",
+  "name": "pearl",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (-3.4, -1.9) m",
   "what": "AMAZEMET rePowder ultrasonic atomizer",
-  "namesake": "Michael Faraday",
-  "life": "1791-1867",
-  "why": "Faraday waves (1831): the capillary waves on a vibrated liquid, one leading explanation of how ultrasonic atomization makes drops",
-  "source": "https://en.wikipedia.org/wiki/Ultrasonic_atomization",
+  "namesake": "a pearl",
+  "life": "aragonite (CaCO3)",
+  "why": "a sphere: the atomizer makes metal powder in spheres",
+  "source": "https://en.wikipedia.org/wiki/Pearl",
   "key": "repowder",
+  "role": "repowder",
   "asset": "VCL-0189"
  },
  {
-  "name": "faraday-pc",
+  "name": "pearl-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "faraday",
+  "parent": "pearl",
   "where": "floor (-3.4, -1.9) m",
   "what": "AMAZEMET rePowder ultrasonic atomizer: its computer",
+  "role": "repowder-pc",
   "asset": "VCL-0190"
  },
  {
-  "name": "faraday-air",
+  "name": "pearl-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "faraday",
+  "parent": "pearl",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "repowder-air",
   "asset": "VCL-0191"
  },
  {
-  "name": "agricola",
+  "name": "dune",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (-2.0, -1.3) m",
   "what": "sieving cell: Retsch AS 200, tipper and wash module",
-  "namesake": "Georgius Agricola",
-  "life": "1494-1555",
-  "why": "De re metallica (1556), whose woodcuts show ore sieved and screened by size",
-  "source": "https://library.si.edu/image-gallery/68489",
+  "namesake": "a dune",
+  "life": "sand",
+  "why": "the wind sorts its sand by grain size, as the sieves sort powder",
+  "source": "https://en.wikipedia.org/wiki/Dune",
   "key": "sieve_cell",
+  "role": "sieve_cell",
   "asset": "VCL-0192"
  },
  {
-  "name": "agricola-pc",
+  "name": "dune-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "agricola",
+  "parent": "dune",
   "where": "floor (-2.0, -1.3) m",
   "what": "sieving cell: Retsch AS 200, tipper and wash module: its computer",
+  "role": "sieve_cell-pc",
   "asset": "VCL-0193"
  },
  {
-  "name": "agricola-air",
+  "name": "dune-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "agricola",
+  "parent": "dune",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "sieve_cell-air",
   "asset": "VCL-0194"
  },
  {
-  "name": "deckard",
+  "name": "magma",
   "kind": "station",
   "cls": "printer",
   "parent": null,
   "where": "floor (+7.0, -0.9) m",
   "what": "Aconity MIDI+ LPBF printer and the depowdering box",
-  "namesake": "Carl Deckard",
-  "life": "1961-2019",
-  "why": "invented selective laser sintering: the powder bed and the laser",
-  "source": "https://en.wikipedia.org/wiki/Carl_Deckard",
+  "namesake": "magma",
+  "life": "molten rock",
+  "why": "the melt every volcanic rock starts as: the printer melts its powder bed with a laser",
+  "source": "https://en.wikipedia.org/wiki/Magma",
   "key": "aconity",
+  "role": "aconity",
   "asset": "VCL-0195"
  },
  {
-  "name": "deckard-pc",
+  "name": "magma-pc",
   "kind": "computer",
   "cls": "printer",
-  "parent": "deckard",
+  "parent": "magma",
   "where": "floor (+7.0, -0.9) m",
   "what": "Aconity MIDI+ LPBF printer and the depowdering box: its computer",
+  "role": "aconity-pc",
   "asset": "VCL-0196"
  },
  {
-  "name": "deckard-air",
+  "name": "magma-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "deckard",
+  "parent": "magma",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "aconity-air",
   "asset": "VCL-0197"
  },
  {
-  "name": "ramsay",
+  "name": "geode",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (-7.3, -0.0) m",
   "what": "Inert PureLab HE glovebox",
-  "namesake": "William Ramsay",
-  "life": "1852-1916",
-  "why": "found argon (with Rayleigh, 1894) and the other noble gases",
-  "source": "https://en.wikipedia.org/wiki/William_Ramsay",
+  "namesake": "a geode",
+  "life": "",
+  "why": "a closed stone with a clean, crystal-lined room inside",
+  "source": "https://en.wikipedia.org/wiki/Geode",
   "key": "glovebox",
+  "role": "glovebox",
   "asset": "VCL-0198"
  },
  {
-  "name": "ramsay-pc",
+  "name": "geode-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "ramsay",
+  "parent": "geode",
   "where": "floor (-7.3, -0.0) m",
   "what": "Inert PureLab HE glovebox: its computer",
+  "role": "glovebox-pc",
   "asset": "VCL-0199"
  },
  {
-  "name": "ramsay-air",
+  "name": "geode-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "ramsay",
+  "parent": "geode",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "glovebox-air",
   "asset": "VCL-0200"
  },
  {
-  "name": "mclean",
+  "name": "pumice",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (+10.1, -1.2) m",
   "what": "packaging station: sealer, label printers, foam inserts",
-  "namesake": "Malcom McLean",
-  "life": "1913-2001",
-  "why": "the shipping container",
-  "source": "https://en.wikipedia.org/wiki/Malcom_McLean",
+  "namesake": "pumice",
+  "life": "volcanic glass foam",
+  "why": "stone foam, light enough to float: the station packs samples in foam",
+  "source": "https://en.wikipedia.org/wiki/Pumice",
   "key": "packaging",
+  "role": "packaging",
   "asset": "VCL-0201"
  },
  {
-  "name": "mclean-pc",
+  "name": "pumice-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "mclean",
+  "parent": "pumice",
   "where": "floor (+10.1, -1.2) m",
   "what": "packaging station: sealer, label printers, foam inserts: its computer",
+  "role": "packaging-pc",
   "asset": "VCL-0202"
  },
  {
-  "name": "mclean-air",
+  "name": "pumice-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "mclean",
+  "parent": "pumice",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "packaging-air",
   "asset": "VCL-0203"
  },
  {
-  "name": "kirkaldy",
+  "name": "boulder",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (-6.4, -6.8) m",
   "what": "Instron 68FM-100 with its 3119-608 chamber",
-  "namesake": "David Kirkaldy",
-  "life": "1820-1897",
-  "why": "built his Universal Testing Machine (1865) and opened the first independent commercial testing works (Southwark, 1866): 'Facts not Opinions'",
-  "source": "https://engineeringhalloffame.org/profile/david-kirkaldy",
+  "namesake": "a boulder",
+  "life": "over 256 mm",
+  "why": "the big stone: the 100 kN frame (the 2 kN one is pebble)",
+  "source": "https://en.wikipedia.org/wiki/Boulder",
   "key": "instron_floor",
+  "role": "instron_floor",
   "asset": "VCL-0204"
  },
  {
-  "name": "kirkaldy-pc",
+  "name": "boulder-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "kirkaldy",
+  "parent": "boulder",
   "where": "floor (-6.4, -6.8) m",
   "what": "Instron 68FM-100 with its 3119-608 chamber: its computer",
+  "role": "instron_floor-pc",
   "asset": "VCL-0205"
  },
  {
-  "name": "kirkaldy-air",
+  "name": "boulder-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "kirkaldy",
+  "parent": "boulder",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "instron_floor-air",
   "asset": "VCL-0206"
  },
  {
-  "name": "galileo",
+  "name": "pebble",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (-4.3, -6.6) m",
   "what": "Instron 68SC-2 table frame",
-  "namesake": "Galileo Galilei",
-  "life": "1564-1642",
-  "why": "Two New Sciences (1638) began the strength of materials with a bar pulled in tension",
-  "source": "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_001to061.html",
+  "namesake": "a pebble",
+  "life": "4-64 mm",
+  "why": "the small stone: the 2 kN frame (the 100 kN one is boulder)",
+  "source": "https://en.wikipedia.org/wiki/Pebble",
   "key": "instron_small",
+  "role": "instron_small",
   "asset": "VCL-0207"
  },
  {
-  "name": "galileo-pc",
+  "name": "pebble-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "galileo",
+  "parent": "pebble",
   "where": "floor (-4.3, -6.6) m",
   "what": "Instron 68SC-2 table frame: its computer",
+  "role": "instron_small-pc",
   "asset": "VCL-0208"
  },
  {
-  "name": "galileo-air",
+  "name": "pebble-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "galileo",
+  "parent": "pebble",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "instron_small-air",
   "asset": "VCL-0209"
  },
  {
-  "name": "davy",
+  "name": "fumarole",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (+1.5, -6.7) m",
   "what": "Labconco Protector XStream ducted fume hood",
-  "namesake": "Humphry Davy",
-  "life": "1778-1829",
-  "why": "the safety lamp (1815): working safely in bad air",
-  "source": "https://en.wikipedia.org/wiki/Davy_lamp",
+  "namesake": "a fumarole",
+  "life": "volcanic vent",
+  "why": "a vent that lets a volcano's gases out (Latin fumus, smoke), as the hood lets out the lab's fumes",
+  "source": "https://en.wikipedia.org/wiki/Fumarole",
   "key": "fumehood",
+  "role": "fumehood",
   "asset": "VCL-0210"
  },
  {
-  "name": "davy-air",
+  "name": "fumarole-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "davy",
+  "parent": "fumarole",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "fumehood-air",
   "asset": "VCL-0211"
  },
  {
-  "name": "gibbs",
+  "name": "olivine",
   "kind": "station",
   "cls": "printer",
   "parent": null,
   "where": "floor (+3.9, -6.6) m",
   "what": "InssTek MX-Lab DED (blends compositions in the melt pool)",
-  "namesake": "J. Willard Gibbs",
-  "life": "1839-1903",
-  "why": "the phase rule and free energy, the thermodynamics behind screening alloy compositions",
-  "source": "https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs",
+  "namesake": "olivine",
+  "life": "(Mg,Fe)2SiO4",
+  "why": "one crystal with any blend of magnesium and iron, a solid solution: the DED blends compositions in its melt pool",
+  "source": "https://en.wikipedia.org/wiki/Olivine",
   "key": "ded",
+  "role": "ded",
   "asset": "VCL-0212"
  },
  {
-  "name": "gibbs-pc",
+  "name": "olivine-pc",
   "kind": "computer",
   "cls": "printer",
-  "parent": "gibbs",
+  "parent": "olivine",
   "where": "floor (+3.9, -6.6) m",
   "what": "InssTek MX-Lab DED (blends compositions in the melt pool): its computer",
+  "role": "ded-pc",
   "asset": "VCL-0213"
  },
  {
-  "name": "gibbs-air",
+  "name": "olivine-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "gibbs",
+  "parent": "olivine",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "ded-air",
   "asset": "VCL-0214"
  },
  {
-  "name": "lazarenko",
+  "name": "flint",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (+6.6, -7.5) m",
   "what": "FANUC ROBOCUT wire EDM",
-  "namesake": "Boris and Natalya Lazarenko",
-  "life": "1910-1979 (Boris)",
-  "why": "invented electrical discharge machining (1943)",
-  "source": "https://en.wikipedia.org/wiki/Electrical_discharge_machining",
+  "namesake": "flint",
+  "life": "SiO2 (chert)",
+  "why": "struck with steel it throws sparks, and the EDM cuts with sparks",
+  "source": "https://en.wikipedia.org/wiki/Flint",
   "key": "wire_edm",
+  "role": "wire_edm",
   "asset": "VCL-0215"
  },
  {
-  "name": "lazarenko-pc",
+  "name": "flint-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "lazarenko",
+  "parent": "flint",
   "where": "floor (+6.6, -7.5) m",
   "what": "FANUC ROBOCUT wire EDM: its computer",
+  "role": "wire_edm-pc",
   "asset": "VCL-0216"
  },
  {
-  "name": "lazarenko-air",
+  "name": "flint-air",
   "kind": "sensor",
   "cls": "service",
-  "parent": "lazarenko",
+  "parent": "flint",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "wire_edm-air",
   "asset": "VCL-0217"
  },
  {
-  "name": "javan",
+  "name": "basalt",
   "kind": "station",
   "cls": "printer",
   "parent": null,
   "where": "floor (-9.4, -10.6) m",
   "what": "EOS M 400-4 (scale-up)",
-  "namesake": "Ali Javan",
-  "life": "1926-2016",
-  "why": "the first gas laser (helium-neon, 1960, with Bennett and Herriott)",
-  "source": "https://en.wikipedia.org/wiki/Ali_Javan",
+  "namesake": "basalt",
+  "life": "volcanic rock",
+  "why": "the commonest rock made from melt, laid down in the biggest volumes: the scale-up printer",
+  "source": "https://en.wikipedia.org/wiki/Basalt",
   "key": "eos_m400",
+  "role": "eos_m400",
   "asset": "VCL-0218"
  },
  {
-  "name": "javan-pc",
+  "name": "basalt-pc",
   "kind": "computer",
   "cls": "printer",
-  "parent": "javan",
+  "parent": "basalt",
   "where": "floor (-9.4, -10.6) m",
   "what": "EOS M 400-4 (scale-up): its computer",
+  "role": "eos_m400-pc",
   "asset": "VCL-0219"
  },
  {
-  "name": "brunel",
+  "name": "lava",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor (+9.6, -10.7) m",
   "what": "Meltio robot cell (propeller repair)",
-  "namesake": "Isambard Kingdom Brunel",
-  "life": "1806-1859",
-  "why": "the SS Great Britain (1843), the first iron, screw-propelled ocean liner",
-  "source": "https://en.wikipedia.org/wiki/SS_Great_Britain",
+  "namesake": "lava",
+  "life": "molten rock",
+  "why": "new rock laid down on old, as the cell lays new metal on a worn propeller",
+  "source": "https://en.wikipedia.org/wiki/Lava",
   "key": "meltio_cell",
+  "role": "meltio_cell",
   "asset": "VCL-0220"
  },
  {
-  "name": "brunel-pc",
+  "name": "lava-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "brunel",
+  "parent": "lava",
   "where": "floor (+9.6, -10.7) m",
   "what": "Meltio robot cell (propeller repair): its computer",
+  "role": "meltio_cell-pc",
   "asset": "VCL-0221"
  },
  {
-  "name": "aston",
+  "name": "ruby",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor, south row's east end (planned, notes/icpms.md)",
   "what": "Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood",
-  "namesake": "Francis Aston",
-  "life": "1877-1945",
-  "why": "the mass spectrograph and isotopes, Nobel 1922",
-  "source": "https://en.wikipedia.org/wiki/Francis_William_Aston",
+  "namesake": "ruby (corundum)",
+  "life": "Al2O3 + Cr",
+  "why": "red from a trace of chromium: the ICP-MS measures traces",
+  "source": "https://en.wikipedia.org/wiki/Ruby",
   "key": "icpms",
+  "role": "icpms",
   "asset": "VCL-0222"
  },
  {
-  "name": "aston-pc",
+  "name": "ruby-pc",
   "kind": "computer",
   "cls": "station",
-  "parent": "aston",
+  "parent": "ruby",
   "where": "floor, south row's east end (planned, notes/icpms.md)",
   "what": "Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood: its computer",
+  "role": "icpms-pc",
   "asset": "VCL-0223"
  },
  {
-  "name": "blodgett",
+  "name": "borax",
   "kind": "station",
   "cls": "station",
   "parent": null,
   "where": "floor, beside the atomizer (atom_bn_station.py)",
   "what": "the atomizer's BN coating station (ours)",
-  "namesake": "Katharine Burr Blodgett",
-  "life": "1898-1979",
-  "why": "thin coatings (Langmuir-Blodgett films, non-reflective glass)",
-  "source": "https://en.wikipedia.org/wiki/Katharine_Burr_Blodgett",
+  "namesake": "borax",
+  "life": "Na2B4O7·10H2O",
+  "why": "the boron mineral everyone knows: the station coats parts with boron nitride",
+  "source": "https://en.wikipedia.org/wiki/Borax",
   "key": "bn_station",
+  "role": "bn_station",
   "asset": "VCL-0224"
  },
  {
-  "name": "faraday-top",
+  "name": "pearl-top",
   "kind": "camera",
   "cls": "camera",
-  "parent": "faraday",
+  "parent": "pearl",
   "where": "on the rePowder",
   "what": "DAL PR 189 camera unit, top",
   "stream": true,
+  "role": "repowder-top",
   "asset": "VCL-0225"
  },
  {
-  "name": "faraday-front",
+  "name": "pearl-front",
   "kind": "camera",
   "cls": "camera",
-  "parent": "faraday",
+  "parent": "pearl",
   "where": "on the rePowder",
   "what": "DAL PR 189 camera unit, front",
   "stream": true,
+  "role": "repowder-front",
   "asset": "VCL-0226"
  },
  {
-  "name": "faraday-left",
+  "name": "pearl-left",
   "kind": "camera",
   "cls": "camera",
-  "parent": "faraday",
+  "parent": "pearl",
   "where": "on the rePowder",
   "what": "DAL PR 189 camera unit, left",
   "stream": true,
+  "role": "repowder-left",
   "asset": "VCL-0227"
  },
  {
-  "name": "faraday-chiller",
+  "name": "pearl-chiller",
   "kind": "unit",
   "cls": "station",
-  "parent": "faraday",
+  "parent": "pearl",
   "where": "",
   "what": "the rePowder's chiller and optimizer",
+  "role": "repowder-chiller",
   "asset": "VCL-0228"
  },
  {
-  "name": "kirkaldy-oven",
+  "name": "boulder-oven",
   "kind": "unit",
   "cls": "station",
-  "parent": "kirkaldy",
+  "parent": "boulder",
   "where": "",
   "what": "Instron 3119-608 environmental chamber",
+  "role": "instron_floor-oven",
   "asset": "VCL-0229"
  },
  {
-  "name": "deckard-depowder",
+  "name": "magma-depowder",
   "kind": "unit",
   "cls": "printer",
-  "parent": "deckard",
+  "parent": "magma",
   "where": "",
   "what": "depowdering box",
+  "role": "aconity-depowder",
   "asset": "VCL-0230"
  },
  {
-  "name": "agricola-tipper",
+  "name": "dune-tipper",
   "kind": "unit",
   "cls": "station",
-  "parent": "agricola",
+  "parent": "dune",
   "where": "",
   "what": "sieve tipper",
+  "role": "sieve_cell-tipper",
   "asset": "VCL-0231"
  },
  {
-  "name": "agricola-wash",
+  "name": "dune-wash",
   "kind": "unit",
   "cls": "station",
-  "parent": "agricola",
+  "parent": "dune",
   "where": "",
   "what": "sieve wash module",
+  "role": "sieve_cell-wash",
   "asset": "VCL-0232"
  },
  {
@@ -2384,6 +2616,7 @@
   "parent": null,
   "where": "floor (-1.5, -6.5) m",
   "what": "MiR Charge 48V",
+  "role": "charger-1",
   "asset": "VCL-0233"
  },
  {
@@ -2393,6 +2626,7 @@
   "parent": null,
   "where": "floor (-0.3, -6.5) m",
   "what": "MiR Charge 48V",
+  "role": "charger-2",
   "asset": "VCL-0234"
  },
  {
@@ -2402,6 +2636,7 @@
   "parent": "charger-1",
   "where": "",
   "what": "AirGradient ONE (with display)",
+  "role": "charger-air",
   "asset": "VCL-0235"
  },
  {
@@ -2411,6 +2646,7 @@
   "parent": null,
   "where": "floor",
   "what": "Nilfisk CFM 118EXP explosion-proof vacuum",
+  "role": "exvac-1",
   "asset": "VCL-0236"
  },
  {
@@ -2420,6 +2656,7 @@
   "parent": null,
   "where": "floor",
   "what": "Parker Balston UHPN2-1100 N2 generator",
+  "role": "util-n2",
   "asset": "VCL-0237"
  },
  {
@@ -2429,6 +2666,7 @@
   "parent": null,
   "where": "floor",
   "what": "Thermo Scientific ThermoFlex 900 chiller",
+  "role": "util-chiller",
   "asset": "VCL-0238"
  }
 ]

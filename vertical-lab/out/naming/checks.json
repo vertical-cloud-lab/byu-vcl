@@ -13,154 +13,149 @@
  "soft": {
   "close_pairs": [
    {
-    "a": "tafel",
-    "b": "maiman",
-    "spelled": 5,
+    "a": "pyrite",
+    "b": "tigereye",
+    "spelled": 6,
     "sounds": 0.5,
     "ipa": [
-     "teɪfəl",
-     "meɪmən"
+     "paɪɹaɪt",
+     "taɪɡɚɹaɪ"
     ],
     "both_in_use": true
    },
    {
-    "a": "tafel",
-    "b": "kibble",
-    "spelled": 5,
-    "sounds": 0.5,
-    "ipa": [
-     "teɪfəl",
-     "kɪbəl"
-    ],
-    "both_in_use": false
-   },
-   {
-    "a": "bridgman",
-    "b": "maiman",
+    "a": "pyrite",
+    "b": "fluorite",
     "spelled": 4,
     "sounds": 0.5,
     "ipa": [
-     "bɹɪdʒmən",
-     "meɪmən"
+     "paɪɹaɪt",
+     "flʊɹɹaɪt"
     ],
     "both_in_use": true
    },
    {
-    "a": "prandtl",
-    "b": "preston",
+    "a": "halite",
+    "b": "sapphire",
     "spelled": 5,
     "sounds": 0.5,
     "ipa": [
-     "pɹændtəl",
-     "pɹɛstən"
+     "hælaɪt",
+     "sæfaɪɚ"
     ],
     "both_in_use": true
    },
    {
-    "a": "prandtl",
-    "b": "brunel",
-    "spelled": 4,
+    "a": "halite",
+    "b": "agate",
+    "spelled": 3,
     "sounds": 0.5,
     "ipa": [
-     "pɹændtəl",
-     "bɹʌnəl"
+     "hælaɪt",
+     "æɡeɪt"
     ],
     "both_in_use": true
    },
    {
-    "a": "sneddon",
-    "b": "sandland",
-    "spelled": 5,
+    "a": "marble",
+    "b": "fossil",
+    "spelled": 6,
     "sounds": 0.5,
     "ipa": [
-     "snɛdən",
-     "sændlənd"
+     "mɑɹbəl",
+     "fɑsəl"
     ],
     "both_in_use": true
    },
    {
-    "a": "beilby",
-    "b": "davy",
-    "spelled": 5,
+    "a": "marble",
+    "b": "pebble",
+    "spelled": 3,
     "sounds": 0.5,
     "ipa": [
-     "beɪlbi",
-     "deɪvi"
+     "mɑɹbəl",
+     "pɛbəl"
     ],
     "both_in_use": true
    },
    {
-    "a": "baekeland",
-    "b": "sandland",
-    "spelled": 4,
+    "a": "opal",
+    "b": "topaz",
+    "spelled": 2,
     "sounds": 0.5,
     "ipa": [
-     "bikɛlənd",
-     "sændlənd"
+     "oʊpəl",
+     "toʊpæz"
     ],
     "both_in_use": true
    }
   ],
   "everyday_words": {
-   "preston": 3.79,
-   "griffith": 3.53,
-   "gibbs": 3.65,
-   "aston": 3.66
+   "quartz": 3.7,
+   "sandstone": 3.57,
+   "marble": 3.96,
+   "shale": 3.69,
+   "fossil": 3.99,
+   "rift": 3.64,
+   "pearl": 4.14,
+   "boulder": 3.71,
+   "flint": 3.77,
+   "lava": 3.73,
+   "ruby": 3.98
   },
   "sounds_like_lab_word": {},
   "lab_word_itself": {}
  },
  "ipa": {
-  "timpanogos": "tɪmpɐnoʊɡoʊz",
+  "timp": "tɪmp",
   "nebo": "niboʊ",
   "elsie": "ɛlsi",
   "freddy": "fɹɛdi",
-  "ruska": "ɹʌskə",
-  "lonsdale": "lɑnsdeɪl",
-  "ostwald": "ɑstwəld",
-  "tafel": "teɪfəl",
-  "lavoisier": "lɐvɔɪziɚ",
-  "bridgman": "bɹɪdʒmən",
-  "prandtl": "pɹændtəl",
-  "sneddon": "snɛdən",
-  "tyndall": "tɪndɔl",
-  "gutenberg": "ɡjutənbɜɡ",
-  "aldus": "ɔldəs",
-  "beilby": "beɪlbi",
-  "preston": "pɹɛstən",
-  "baekeland": "bikɛlənd",
-  "rutherford": "ɹʌðɚfɚd",
-  "sorby": "sɔɹbi",
-  "griffith": "ɡɹɪfɪθ",
-  "sandland": "sændlənd",
-  "noddack": "nɑdæk",
-  "maudslay": "mɔdsleɪ",
-  "eisler": "aɪslɚ",
-  "senefelder": "sɛnɪfɛldɚ",
-  "maiman": "meɪmən",
-  "faraday": "fæɹɐdeɪ",
-  "agricola": "æɡɹɪkoʊlə",
-  "deckard": "dɛkɚd",
-  "ramsay": "ɹæmseɪ",
-  "mclean": "məklin",
-  "kirkaldy": "kɜkældi",
-  "galileo": "ɡælᵻleɪoʊ",
-  "davy": "deɪvi",
-  "gibbs": "ɡɪbz",
-  "lazarenko": "læzɐɹɛŋkoʊ",
-  "javan": "dʒɑvæn",
-  "brunel": "bɹʌnəl",
-  "aston": "ɐstɑn",
-  "blodgett": "blɑdʒɪt",
+  "pyrite": "paɪɹaɪt",
+  "quartz": "kwɔɹts",
+  "aquamarine": "ækwɐmɚɹin",
+  "halite": "hælaɪt",
+  "talc": "tælk",
+  "sandstone": "sændstoʊn",
+  "marble": "mɑɹbəl",
+  "sapphire": "sæfaɪɚ",
+  "opal": "oʊpəl",
+  "shale": "ʃeɪl",
+  "mica": "maɪkə",
+  "emery": "ɛmɚɹi",
+  "obsidian": "əbsɪdiən",
+  "fossil": "fɑsəl",
+  "agate": "æɡeɪt",
+  "tigereye": "taɪɡɚɹaɪ",
+  "rift": "ɹɪft",
+  "topaz": "toʊpæz",
+  "fluorite": "flʊɹɹaɪt",
+  "garnet": "ɡɑɹnɪt",
+  "galena": "ɡɐlinə",
+  "gypsum": "dʒɪpsəm",
+  "cinder": "sɪndɚ",
+  "pearl": "pɜl",
+  "dune": "dun",
+  "magma": "mæɡmə",
+  "geode": "dʒioʊd",
+  "pumice": "pjumɪs",
+  "boulder": "boʊldɚ",
+  "pebble": "pɛbəl",
+  "fumarole": "fjumɚɹoʊl",
+  "olivine": "ɑlɪvaɪn",
+  "flint": "flɪnt",
+  "basalt": "bɐzɔlt",
+  "lava": "lɑvə",
+  "ruby": "ɹubi",
+  "borax": "bɔɹæks",
   "unimate": "ʌnɪmeɪt",
   "genghis": "dʒɛŋɡɪs",
   "cascade": "kɐskeɪd",
   "lonepeak": "loʊnpik",
-  "moseley": "moʊsli",
-  "bragg": "bɹæɡ",
-  "kibble": "kɪbəl",
-  "whitworth": "wɪtwɜθ",
-  "bodoni": "bədoʊni"
+  "lapis": "læpiz",
+  "turquoise": "tɜkwɔɪs",
+  "citrine": "sɪtɹin",
+  "chert": "tʃɜt"
  },
  "ok": true
 }

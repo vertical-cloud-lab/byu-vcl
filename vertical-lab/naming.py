@@ -1,19 +1,22 @@
 """Names for every piece of equipment in the vertical lab, generated from the model, with checks.
 
-Sterling, PR #318, 2026-11-20: "open another PR focused on clever naming schemes for each piece of equipment".
-The write-up is notes/naming.md. Three layers:
+Sterling, PR #318, 2026-11-20: "open another PR focused on clever naming schemes for each piece of equipment". Round 2,
+PR #376, 2026-11-22: people's names needed their history explained first ("prandtl" hard to spell, pronounce, and
+obscure); "something kind of self-consistent with halite"; keep the mountains, and call one "timp". The write-up is
+notes/naming.md. Three layers:
 
-1. **A call name for each station**, from a family that says what class of thing it is, and inside the family from
-   someone whose own work is the station's job: the XRD is Lonsdale (X-ray crystallography), the SEM Ruska (the first
-   electron microscope), the tensile frame Kirkaldy (the first universal testing machine), the doser Lavoisier
-   (weighing), the atomizer Faraday (the surface waves ultrasonic atomization breaks into drops). Robots are named
-   after robots of history, the Shuttles after the peaks over Provo, printers after printers. The name belongs to the
-   role, not the box: a replacement MiniFlex is still Lonsdale.
+1. **A call name for each station**, from a family that says what class of thing it is. Stations are stones, and the
+   stone's own property is the station's job, so the hint needs no history: the CubXL is halite (salt; its
+   electrolyte is salt water), the XRF fluorite (fluorescence is named after it), the Mastersizer opal (its colours
+   are diffraction), the PIP marble (a ball pressed into the metal), the three tensile frames pebble, cobble and
+   boulder, by size. Robots are robots of history, the Shuttles the peaks over Provo (timp and nebo). The name
+   belongs to the role, not the box: a replacement MiniFlex is still quartz.
 2. **Everything bolted to a station, a tray, a Shuttle or a robot takes its parent's name and a suffix** from a fixed
-   list (SUFFIX): ``lonsdale-pc``, ``tray-d-cam0``, ``timp-bay-front``, ``elsie-arm``. So a hostname says where to look,
+   list (SUFFIX): ``quartz-pc``, ``tray-d-cam0``, ``timp-bay-front``, ``elsie-arm``. So a hostname says where to look,
    and code can derive one.
 3. **A permanent asset number** (VCL-0001 ...) for the physical unit, on its label and in out/naming/asset_ids.json.
-   It is never reused, and it doesn't change when a unit moves or its role is renamed.
+   It is keyed by the role (``xrd-pc``), not the name (``quartz-pc``), so it doesn't change when a unit moves or its
+   role is renamed; round 2's renames kept every number. It is never reused.
 
 Tray letters stay as they are (A-S); said aloud they are NATO words ("tray Delta"), since the narration voice said
 "Tray A" as "tray uh" in round 12.
@@ -42,166 +45,169 @@ OUT = HERE / "out" / "naming"
 REPO_STRINGS = ("vertical-cloud-lab", "byu-vcl", "digital-alloy-lab", "digital-wetlab", "powder-doser", "robot-arms")
 
 # ===================================================================================================== the families
-# class -> (family, why this family). The family tells you the class from the name alone.
+# class -> (family, why this family). Round 2 (Sterling, PR #376, 2026-11-22): "a lot of people would need the
+# historical context explained to them in advance ... 'prandtl' hard to spell, pronounce, and is obscure ... The
+# names also don't have to be real people. It could also be something kind of self-consistent with halite. I
+# particularly like the use of mountain names for the vertical lift modules. Referring to one as 'timp' would be
+# quite good." So the stations are stones, and a stone's own property, not a person's history, is the hint.
 FAMILIES = {
-    "station": ("people whose own work is the station's job", "Say the name and you have a hint of what it does."),
-    "printer": ("pioneers of printing", "The polymer printers are printers; the metal ones are named for laser and "
-                "powder-bed pioneers, since that is the process."),
+    "station": ("stones: minerals, rocks and gems", "A stone everyone has heard of, whose own property is the "
+                "station's job: halite is salt, and the CubXL's electrolyte is salt water."),
+    "printer": ("stones made the way a print is", "Stones built in layers for the polymer printers (shale, mica) "
+                "and rocks from melt for the metal ones (magma, basalt, cinder, olivine)."),
     "robot": ("robots of history", "Elsie was built to steer home to her lit hutch to recharge (1949); Freddy "
               "assembled models from a heap of parts by vision (1973). A MiR250 with a UR12e and a wrist camera does "
               "both."),
-    "shuttle": ("the Wasatch peaks over Provo", "The two tallest things in the lab after round 14's 9.15 m Shuttles."),
+    "shuttle": ("the Wasatch peaks over Provo", "The two tallest things in the lab after round 14's 9.15 m Shuttles: "
+                "Timp and Nebo."),
 }
 
-# station key -> (call name, family, what it is, namesake, life, why the name fits, source). Every namesake is dead:
-# a living person's name on a machine is a favour you can't ask for. Women where the fit is as good: Lonsdale,
-# Noddack, Blodgett; Lazarenko and Lavoisier are couples.
+# station key -> (call name, family, what it is, the stone, what it is made of, why the name fits, source). The
+# columns are the round-1 ones (the 4th held a namesake, the 5th their dates), so the registry and labels didn't change
+# shape. A name no one can spell from hearing it, or say from reading it, is out, however good its story.
 W = "https://en.wikipedia.org/wiki/"
 STATIONS = {
     # ---------------------------------------------------------------- tray A
-    "ot2": ("ostwald", "station", "Opentrons OT-2 liquid handler", "Wilhelm Ostwald", "1853-1932",
-            "developed the Ostwald-Folin pipette, a volumetric pipette for viscous liquids; Nobel 1909",
-            W + "Pipette"),
-    "cubxl": ("tafel", "station", "CubXL corrosion cell with its EZstat Pro potentiostat", "Julius Tafel", "1862-1918",
-              "the Tafel equation (1905); the CubXL's polarization scans are read as Tafel slopes", W + "Tafel_equation"),
+    "ot2": ("aquamarine", "station", "Opentrons OT-2 liquid handler", "aquamarine (sea-blue beryl)", "Be3Al2Si6O18",
+            "Latin aqua marina, 'sea water': the station that moves liquids", W + "Aquamarine_(gem)"),
+    "cubxl": ("halite", "station", "CubXL corrosion cell with its EZstat Pro potentiostat", "halite (rock salt)",
+              "NaCl", "salt: the cell's electrolytes are 0.6, 0.06 and 0.006 M NaCl, and salt water is what corrodes",
+              W + "Halite"),
     # ---------------------------------------------------------------- tray B
-    "doser": ("lavoisier", "station", "multi-doser (chain carousel v5) on an A&D HR-202i", "Antoine and Marie-Anne "
-              "Paulze Lavoisier", "1743-1794, 1758-1836", "chemistry by the balance: mass in, mass out; she drew the "
-              "Traite's 13 plates (1789)", W + "Marie-Anne_Paulze_Lavoisier"),
-    "vacuum_press": ("bridgman", "station", "Specac Atlas Autotouch 15T vacuum press", "Percy W. Bridgman", "1882-1961",
-                     "high-pressure physics, Nobel 1946", W + "Percy_Williams_Bridgman"),
+    "doser": ("talc", "station", "multi-doser (chain carousel v5) on an A&D HR-202i", "talc", "Mg3Si4O10(OH)2",
+              "talcum powder, the powder everyone knows: the doser weighs out powders", W + "Talc"),
+    "vacuum_press": ("sandstone", "station", "Specac Atlas Autotouch 15T vacuum press", "sandstone", "rock",
+                     "sand pressed and cemented into stone, as the press turns a powder into a pellet",
+                     W + "Sandstone"),
     # ---------------------------------------------------------------- tray C
-    "h2d": ("gutenberg", "printer", "Bambu Lab H2D", "Johannes Gutenberg", "c. 1400-1468",
-            "the movable-type press", W + "Johannes_Gutenberg"),
-    "a1mini": ("aldus", "printer", "Bambu Lab A1 mini", "Aldus Manutius", "c. 1450-1515",
-               "the Aldine Press: italic type and the small, portable octavo book; the H2D's small partner",
-               W + "Aldus_Manutius"),
+    "h2d": ("shale", "printer", "Bambu Lab H2D", "shale", "rock", "laid down in thin layers, and it splits along them: "
+            "a print is built the same way", W + "Shale"),
+    "a1mini": ("mica", "printer", "Bambu Lab A1 mini", "mica", "sheet silicate group", "it splits into layers thinner "
+               "than paper, and a print is built of layers; the H2D's small partner", W + "Mica"),
     # ---------------------------------------------------------------- tray D
-    "sem": ("ruska", "station", "Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS", "Ernst Ruska", "1906-1988",
-            "built the first electron microscope with Max Knoll (1931-33), Nobel 1986", W + "Ernst_Ruska"),
-    "xrd": ("lonsdale", "station", "Rigaku MiniFlex XRD", "Kathleen Lonsdale", "1903-1971",
-            "X-ray crystallographer; showed by X-ray diffraction that the benzene ring is flat (1929); one of the "
-            "first two women elected FRS (1945)", W + "Kathleen_Lonsdale"),
+    "sem": ("pyrite", "station", "Hitachi TM4000PlusII SEM with Oxford AZtecOne EDS", "pyrite (fool's gold)", "FeS2",
+            "it looks like gold; the SEM's EDS sees the iron and the sulfur", W + "Pyrite"),
+    "xrd": ("quartz", "station", "Rigaku MiniFlex XRD", "quartz (rock crystal)", "SiO2",
+            "the crystal the word was coined for (Greek krystallos, ice): the XRD tells one crystal from another",
+            W + "Quartz"),
     # ---------------------------------------------------------------- tray E
-    "pip": ("prandtl", "station", "Plastometrex PLX-Benchtop (indentation plastometry)", "Ludwig Prandtl",
-            "1875-1953", "On the hardness of plastic bodies (1920): the plastic flow under a punch, the problem "
-            "indentation plastometry turns back into a stress-strain curve", W + "Ludwig_Prandtl"),
-    "nanoindenter": ("sneddon", "station", "KLA iMicro nanoindenter", "Ian Sneddon", "1919-2000",
-                     "the elastic solution for an axisymmetric punch of arbitrary profile (1965) that "
-                     "nanoindentation's unloading analysis rests on", "https://doi.org/10.1016/0020-7225(65)90019-4"),
-    "mastersizer": ("tyndall", "station", "Malvern Mastersizer 3000 with Aero S (laser diffraction)", "John Tyndall",
-                    "1820-1893", "the Tyndall effect: light scattered by particles", W + "Tyndall_effect"),
+    "pip": ("marble", "station", "Plastometrex PLX-Benchtop (indentation plastometry)", "marble", "rock (CaCO3)",
+            "the rock, and the glass ball: the PIP presses a hard ball into the metal and reads its stress-strain "
+            "curve from the dent", W + "Marble_(toy)"),
+    "nanoindenter": ("sapphire", "station", "KLA iMicro nanoindenter", "sapphire (corundum)", "Al2O3",
+                     "Mohs 9: of all minerals only diamond, the indenter's tip, is harder", W + "Sapphire"),
+    "mastersizer": ("opal", "station", "Malvern Mastersizer 3000 with Aero S (laser diffraction)", "opal",
+                    "SiO2·nH2O", "its colours are light diffracted by silica spheres a few hundred nanometres "
+                    "across; the Mastersizer sizes particles by the light they diffract", W + "Opal"),
     # ---------------------------------------------------------------- tray F
-    "polisher": ("beilby", "station", "LECO PX500 grinder-polisher with its disc magazine", "George Beilby",
-                 "1850-1924", "the Beilby layer, the flowed skin polishing leaves on a metal",
-                 "https://www.nature.com/articles/137516a0"),
-    "furnace": ("preston", "station", "Nabertherm NAT 15/65 furnace with the quench tank", "George Dawson Preston",
-                "1896-1972", "with Guinier, found the zones (1938) that harden an aged Al-Cu alloy, the hardening "
-                "the furnace's T6 does", W + "George_Dawson_Preston"),
-    "mounting_press": ("baekeland", "station", "LECO MX400 hot mounting press", "Leo Baekeland", "1863-1944",
-                       "Bakelite, the phenolic of a hot-mounted puck", W + "Leo_Baekeland"),
+    "polisher": ("emery", "station", "LECO PX500 grinder-polisher with its disc magazine", "emery",
+                 "rock (corundum and magnetite)", "the abrasive of emery paper and emery boards",
+                 W + "Emery_(rock)"),
+    "furnace": ("obsidian", "station", "Nabertherm NAT 15/65 furnace with the quench tank", "obsidian",
+                "volcanic glass", "lava quenched too fast to crystallize: the furnace is the station with the "
+                "quench tank", W + "Obsidian"),
+    "mounting_press": ("fossil", "station", "LECO MX400 hot mounting press", "a fossil", "",
+                       "a specimen set in stone, as the press sets a sample in a resin puck", W + "Fossil"),
     # ---------------------------------------------------------------- tray K
-    "glovebox_tray": ("rutherford", "station", "the tray's N2 glovebox (ours)", "Daniel Rutherford", "1749-1819",
-                      "isolated nitrogen (1772), the gas this glovebox is purged with", W + "Daniel_Rutherford"),
-    "vhx": ("sorby", "station", "Keyence VHX-7000 digital microscope with EA-300 LIBS", "Henry Clifton Sorby",
-            "1826-1908", "founded metallography (1863): polished, etched steel under the microscope",
-            W + "Henry_Clifton_Sorby"),
+    "glovebox_tray": ("agate", "station", "the tray's N2 glovebox (ours)", "agate", "SiO2",
+                      "it grows inside a closed hollow in rock, shut off from the world outside", W + "Agate"),
+    "vhx": ("tigereye", "station", "Keyence VHX-7000 digital microscope with EA-300 LIBS", "tiger's eye",
+            "quartz with fibres", "the stone with an eye in it: the lab's eye for a close look", W + "Tiger's_eye"),
     # ---------------------------------------------------------------- tray L
-    "tensile_h": ("griffith", "station", "ZwickRoell zwickiLine Z5.0 TN (horizontal tensile)", "A. A. Griffith",
-                  "1893-1963", "the theory of fracture (1921): a bar's strength is set by its flaws, which every pull "
-                  "to failure tests", W + "Alan_Arnold_Griffith"),
-    "hardness": ("sandland", "station", "Mitutoyo HM-220 micro-Vickers tester", "George E. Sandland", "d. 1961",
-                 "devised the Vickers test with Robert L. Smith at Vickers Ltd (1921, published 1922)",
-                 "https://www.gracesguide.co.uk/G._E._Sandland"),
+    "tensile_h": ("rift", "station", "ZwickRoell zwickiLine Z5.0 TN (horizontal tensile)", "a rift", "landform",
+                  "where the crust is pulled apart, as Utah's Basin and Range is: the frame that pulls sideways",
+                  W + "Rift"),
+    "hardness": ("topaz", "station", "Mitutoyo HM-220 micro-Vickers tester", "topaz", "Al2SiO4(F,OH)2",
+                 "Mohs 8, the hardness scale everyone learns, and Utah's state gem (1969)", W + "Topaz"),
     # ---------------------------------------------------------------- tray M
-    "xrf": ("noddack", "station", "Bruker S2 PUMA XRF with XY autochanger", "Ida Noddack", "1896-1978",
-            "with Walter Noddack and Otto Berg, found rhenium (1925) by its X-ray spectrum, which is what an XRF "
-            "reads", "https://sites.chemistry.unt.edu/~jimm/REDISCOVERY%207-09-2018/Hexagon%20Articles/"
-            "rhenium%20and%20technetium.pdf"),
-    "cnc": ("maudslay", "station", "Makera Carvera CNC mill", "Henry Maudslay", "1771-1831",
-            "the screw-cutting lathe and the machine-tool trade", W + "Henry_Maudslay"),
+    "xrf": ("fluorite", "station", "Bruker S2 PUMA XRF with XY autochanger", "fluorite", "CaF2",
+            "fluorescence is named after it (Stokes, 1852), and an XRF reads X-ray fluorescence",
+            W + "Fluorescence"),
+    "cnc": ("garnet", "station", "Makera Carvera CNC mill", "garnet", "silicate group",
+            "it cuts metal: the abrasive of garnet paper and of waterjet cutters", W + "Garnet"),
     # ---------------------------------------------------------------- tray H
-    "pcb_line": ("eisler", "station", "PCB line: DDM stencil printer, Opulo LumenPnP, Puhui reflow oven",
-                 "Paul Eisler", "1907-1992", "invented the printed circuit board", W + "Paul_Eisler"),
+    "pcb_line": ("galena", "station", "PCB line: DDM stencil printer, Opulo LumenPnP, Puhui reflow oven", "galena",
+                 "PbS", "lead ore, and the crystal in a crystal radio: electronics' first semiconductor",
+                 W + "Galena"),
     # ---------------------------------------------------------------- tray G
-    "form4": ("senefelder", "printer", "Formlabs Form 4 resin printers with Form Wash and Form Cure",
-              "Alois Senefelder", "1771-1834", "invented lithography (1796), which stereolithography is named from",
-              W + "Alois_Senefelder"),
+    "form4": ("gypsum", "printer", "Formlabs Form 4 resin printers with Form Wash and Form Cure", "gypsum (plaster)",
+              "CaSO4·2H2O", "plaster of Paris is made from it: a liquid that sets solid, as the Form 4's resin does",
+              W + "Gypsum"),
     # ---------------------------------------------------------------- tray I
-    "snowpod": ("maiman", "printer", "SnowX SnowPod desktop LPBF printers with the NitroPod",
-                "Theodore Maiman", "1927-2007", "the first working laser (1960): a small laser for small printers",
-                W + "Theodore_Maiman"),
+    "snowpod": ("cinder", "printer", "SnowX SnowPod desktop LPBF printers with the NitroPod", "cinder",
+                "volcanic rock", "small bits of lava that freeze as they fly: the two small powder-bed printers",
+                W + "Cinder_cone"),
     # ---------------------------------------------------------------- floor
-    "repowder": ("faraday", "station", "AMAZEMET rePowder ultrasonic atomizer", "Michael Faraday", "1791-1867",
-                 "Faraday waves (1831): the capillary waves on a vibrated liquid, one leading explanation of how "
-                 "ultrasonic atomization makes drops", W + "Ultrasonic_atomization"),
-    "sieve_cell": ("agricola", "station", "sieving cell: Retsch AS 200, tipper and wash module", "Georgius Agricola",
-                   "1494-1555", "De re metallica (1556), whose woodcuts show ore sieved and screened by size",
-                   "https://library.si.edu/image-gallery/68489"),
-    "aconity": ("deckard", "printer", "Aconity MIDI+ LPBF printer and the depowdering box", "Carl Deckard",
-                "1961-2019", "invented selective laser sintering: the powder bed and the laser", W + "Carl_Deckard"),
-    "glovebox": ("ramsay", "station", "Inert PureLab HE glovebox", "William Ramsay", "1852-1916",
-                 "found argon (with Rayleigh, 1894) and the other noble gases", W + "William_Ramsay"),
-    "packaging": ("mclean", "station", "packaging station: sealer, label printers, foam inserts", "Malcom McLean",
-                  "1913-2001", "the shipping container", W + "Malcom_McLean"),
-    "instron_floor": ("kirkaldy", "station", "Instron 68FM-100 with its 3119-608 chamber", "David Kirkaldy",
-                      "1820-1897", "built his Universal Testing Machine (1865) and opened the first independent "
-                      "commercial testing works (Southwark, 1866): 'Facts not Opinions'",
-                      "https://engineeringhalloffame.org/profile/david-kirkaldy"),
-    "instron_small": ("galileo", "station", "Instron 68SC-2 table frame", "Galileo Galilei", "1564-1642",
-                      "Two New Sciences (1638) began the strength of materials with a bar pulled in tension",
-                      "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_001to061.html"),
-    "fumehood": ("davy", "station", "Labconco Protector XStream ducted fume hood", "Humphry Davy", "1778-1829",
-                 "the safety lamp (1815): working safely in bad air", W + "Davy_lamp"),
-    "ded": ("gibbs", "printer", "InssTek MX-Lab DED (blends compositions in the melt pool)", "J. Willard Gibbs",
-            "1839-1903", "the phase rule and free energy, the thermodynamics behind screening alloy compositions",
-            W + "Josiah_Willard_Gibbs"),
-    "wire_edm": ("lazarenko", "station", "FANUC ROBOCUT wire EDM", "Boris and Natalya Lazarenko",
-                 "1910-1979 (Boris)", "invented electrical discharge machining (1943)",
-                 W + "Electrical_discharge_machining"),
-    "eos_m400": ("javan", "printer", "EOS M 400-4 (scale-up)", "Ali Javan", "1926-2016",
-                 "the first gas laser (helium-neon, 1960, with Bennett and Herriott)", W + "Ali_Javan"),
-    "meltio_cell": ("brunel", "station", "Meltio robot cell (propeller repair)", "Isambard Kingdom Brunel",
-                    "1806-1859", "the SS Great Britain (1843), the first iron, screw-propelled ocean liner",
-                    W + "SS_Great_Britain"),
-    "icpms": ("aston", "station", "Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood", "Francis Aston",
-              "1877-1945", "the mass spectrograph and isotopes, Nobel 1922", W + "Francis_William_Aston"),
-    "bn_station": ("blodgett", "station", "the atomizer's BN coating station (ours)", "Katharine Burr Blodgett",
-                   "1898-1979", "thin coatings (Langmuir-Blodgett films, non-reflective glass)",
-                   W + "Katharine_Burr_Blodgett"),
+    "repowder": ("pearl", "station", "AMAZEMET rePowder ultrasonic atomizer", "a pearl", "aragonite (CaCO3)",
+                 "a sphere: the atomizer makes metal powder in spheres", W + "Pearl"),
+    "sieve_cell": ("dune", "station", "sieving cell: Retsch AS 200, tipper and wash module", "a dune", "sand",
+                   "the wind sorts its sand by grain size, as the sieves sort powder", W + "Dune"),
+    "aconity": ("magma", "printer", "Aconity MIDI+ LPBF printer and the depowdering box", "magma", "molten rock",
+                "the melt every volcanic rock starts as: the printer melts its powder bed with a laser", W + "Magma"),
+    "glovebox": ("geode", "station", "Inert PureLab HE glovebox", "a geode", "",
+                 "a closed stone with a clean, crystal-lined room inside", W + "Geode"),
+    "packaging": ("pumice", "station", "packaging station: sealer, label printers, foam inserts", "pumice",
+                  "volcanic glass foam", "stone foam, light enough to float: the station packs samples in foam",
+                  W + "Pumice"),
+    "instron_floor": ("boulder", "station", "Instron 68FM-100 with its 3119-608 chamber", "a boulder", "over 256 mm",
+                      "the big stone: the 100 kN frame (the 2 kN one is pebble)", W + "Boulder"),
+    "instron_small": ("pebble", "station", "Instron 68SC-2 table frame", "a pebble", "4-64 mm",
+                      "the small stone: the 2 kN frame (the 100 kN one is boulder)", W + "Pebble"),
+    "fumehood": ("fumarole", "station", "Labconco Protector XStream ducted fume hood", "a fumarole", "volcanic vent",
+                 "a vent that lets a volcano's gases out (Latin fumus, smoke), as the hood lets out the lab's fumes",
+                 W + "Fumarole"),
+    "ded": ("olivine", "printer", "InssTek MX-Lab DED (blends compositions in the melt pool)", "olivine",
+            "(Mg,Fe)2SiO4", "one crystal with any blend of magnesium and iron, a solid solution: the DED blends "
+            "compositions in its melt pool", W + "Olivine"),
+    "wire_edm": ("flint", "station", "FANUC ROBOCUT wire EDM", "flint", "SiO2 (chert)",
+                 "struck with steel it throws sparks, and the EDM cuts with sparks", W + "Flint"),
+    "eos_m400": ("basalt", "printer", "EOS M 400-4 (scale-up)", "basalt", "volcanic rock",
+                 "the commonest rock made from melt, laid down in the biggest volumes: the scale-up printer",
+                 W + "Basalt"),
+    "meltio_cell": ("lava", "station", "Meltio robot cell (propeller repair)", "lava", "molten rock",
+                    "new rock laid down on old, as the cell lays new metal on a worn propeller", W + "Lava"),
+    "icpms": ("ruby", "station", "Agilent 7850 ICP-MS with SPS 4, in its own trace-metals hood", "ruby (corundum)",
+              "Al2O3 + Cr", "red from a trace of chromium: the ICP-MS measures traces", W + "Ruby"),
+    "bn_station": ("borax", "station", "the atomizer's BN coating station (ours)", "borax", "Na2B4O7·10H2O",
+                   "the boron mineral everyone knows: the station coats parts with boron nitride", W + "Borax"),
     # ---------------------------------------------------------------- robots and Shuttles
     "unit1": ("elsie", "robot", "MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 1", "W. Grey Walter's Elsie",
               "1949", "a robot tortoise built to steer home to its lit hutch to recharge",
               "https://cyberneticzoo.com/?p=491"),
     "unit2": ("freddy", "robot", "MiR250 + UR12e + Robotiq 2F-85 + RealSense D405, unit 2", "Edinburgh's Freddy",
               "1969-1976", "a hand-eye robot that assembled models from a heap of parts by vision", W + "Freddy_II"),
-    "vlm": ("timpanogos", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 1", "Mount Timpanogos", "3,582 m",
-            "the peak over Provo. Locals say Timp, but the narration voice's Timp was heard as 'temp'",
-            W + "Mount_Timpanogos"),
+    "vlm": ("timp", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 1", "Mount Timpanogos", "3,582 m",
+            "the peak over Provo, which everyone in Utah County calls Timp", W + "Mount_Timpanogos"),
     "vlm2": ("nebo", "shuttle", "Kardex Shuttle XP 500, 9.15 m, Shuttle 2", "Mount Nebo", "3,637 m",
              "the highest peak of the Wasatch, south of Provo", W + "Mount_Nebo_(Utah)"),
 }
-# spare names, checked like the rest, for the next unit of a family (the three-each plan, a third robot, Shuttle 3)
-# (dropped by the checks: caxton, too like aston; rammler, like ramsay; tresca, like ruska; ayrton, like aston;
-# shakey, like davy and beilby; ericsson, like Gage Erickson. Dropped by the narration voice's check, heard as other
-# words: timp "temp", pasteur "pastor", schlenk "schlink", petch "patch", tabor "table", wilm "will", pourbaix
-# "poor bay", schawlow "shallow")
+# round 1's names (people), for the record: notes/naming.md has the table, and asset_ids.json kept every number
+ROUND1 = {"ot2": "ostwald", "cubxl": "tafel", "doser": "lavoisier", "vacuum_press": "bridgman", "h2d": "gutenberg",
+          "a1mini": "aldus", "sem": "ruska", "xrd": "lonsdale", "pip": "prandtl", "nanoindenter": "sneddon",
+          "mastersizer": "tyndall", "polisher": "beilby", "furnace": "preston", "mounting_press": "baekeland",
+          "glovebox_tray": "rutherford", "vhx": "sorby", "tensile_h": "griffith", "hardness": "sandland",
+          "xrf": "noddack", "cnc": "maudslay", "pcb_line": "eisler", "form4": "senefelder", "snowpod": "maiman",
+          "repowder": "faraday", "sieve_cell": "agricola", "aconity": "deckard", "glovebox": "ramsay",
+          "packaging": "mclean", "instron_floor": "kirkaldy", "instron_small": "galileo", "fumehood": "davy",
+          "ded": "gibbs", "wire_edm": "lazarenko", "eos_m400": "javan", "meltio_cell": "brunel", "icpms": "aston",
+          "bn_station": "blodgett", "unit1": "elsie", "unit2": "freddy", "vlm": "timpanogos", "vlm2": "nebo"}
+# spare names, checked like the rest, for the next unit of a family (the three-each plan, a third robot, Shuttle 3,
+# #367's machining station). Dropped: jade (MDI JADE, the XRD software), onyx (Markforged's filament), granite (the
+# balance's granite block), amber (the beacons go amber), diamond and graphite (an indenter tip, a crucible),
+# calcite (too like halite), hematite (likewise), apatite (said "appetite"), corundum ("conundrum"), niter
+# ("neither"), touchstone, sunstone and whetstone (too like sandstone), jasper (a common first name), chalk (too like
+# talc), cobble (too like pebble and marble), emerald (too like emery). beryl was the VHX's (the first spectacles were
+# ground from it, hence German Brille) until it sounded like pebble, so it is not a spare either.
 SPARES = {
     "robot": ["unimate", "genghis"],
     "shuttle": ["cascade", "lonepeak"],
-    "station": ["moseley", "bragg", "kibble", "whitworth"],
-    "printer": ["bodoni"],
+    "station": ["lapis", "turquoise", "citrine", "chert"],
 }
 
 # How the narration voice is to say a name, for longform.SAY / longform.IPA once a name is narrated (longform.py is not
-# changed here). Each passed the voice-and-recognizer check (out/naming/tts_check.json), except Baekeland and Aston,
-# which are the right pronunciations ("BAKE-land", "AS-tun"; espeak said "be killin'" and "a-STAHN") and are heard
-# right by one of the two recognizers.
-PRONOUNCE = {"Lavoisier": {"ipa": "lɐvwˈɑːzieɪ"}, "Gutenberg": {"ipa": "ɡˈuːtənbɜːɹɡ"}, "Aldus": {"ipa": "ˈældʌs"},
-             "Maudslay": {"ipa": "mˈɔːdzli"}, "Senefelder": {"ipa": "sˈɛnɛfˌɛldɚ"}, "Ramsay": {"say": "Ramsey"},
-             "Lazarenko": {"ipa": "lˌæzɐɹˈɛnkoʊ"}, "Brunel": {"ipa": "bɹuːnˈɛl"}, "Unimate": {"ipa": "jˈuːnɪmˌeɪt"},
-             "Genghis": {"ipa": "ɡˈɛŋɡɪs"}, "Cascade": {"ipa": "kæskˈeɪd"}, "Moseley": {"ipa": "mˈoʊzli"},
-             "Quebec": {"ipa": "kwɪbˈɛk"}, "Baekeland": {"ipa": "bˈeɪklænd"}, "Aston": {"ipa": "ˈæstʌn"}}
+# changed here). Round 1's voice-and-recognizer check (out/naming/tts_check.json) found these for the names kept.
+PRONOUNCE = {"Unimate": {"ipa": "jˈuːnɪmˌeɪt"}, "Genghis": {"ipa": "ɡˈɛŋɡɪs"}, "Cascade": {"ipa": "kæskˈeɪd"},
+             "Quebec": {"ipa": "kwɪbˈɛk"}}
 
 # Tray letters said aloud. ICAO spells two of them Alfa and Juliett so that they are said the same in every language.
 NATO = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "Alfa Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliett Kilo "
@@ -372,11 +378,14 @@ def inventory() -> list[dict]:
         rows.append(_row(f"{fa}-{u}", "camera", "camera", fa, "on the rePowder", f"DAL PR 189 camera unit, {u}",
                          stream=True))
     rows += [_row(f"{fa}-chiller", "unit", "station", fa, "", "the rePowder's chiller and optimizer"),
-             _row(f"{STATIONS['instron_floor'][0]}-oven", "unit", "station", "kirkaldy", "",
+             _row(f"{STATIONS['instron_floor'][0]}-oven", "unit", "station", STATIONS["instron_floor"][0], "",
                   "Instron 3119-608 environmental chamber"),
-             _row(f"{STATIONS['aconity'][0]}-depowder", "unit", "printer", "deckard", "", "depowdering box"),
-             _row(f"{STATIONS['sieve_cell'][0]}-tipper", "unit", "station", "agricola", "", "sieve tipper"),
-             _row(f"{STATIONS['sieve_cell'][0]}-wash", "unit", "station", "agricola", "", "sieve wash module"),
+             _row(f"{STATIONS['aconity'][0]}-depowder", "unit", "printer", STATIONS["aconity"][0], "",
+                  "depowdering box"),
+             _row(f"{STATIONS['sieve_cell'][0]}-tipper", "unit", "station", STATIONS["sieve_cell"][0], "",
+                  "sieve tipper"),
+             _row(f"{STATIONS['sieve_cell'][0]}-wash", "unit", "station", STATIONS["sieve_cell"][0], "",
+                  "sieve wash module"),
              _row("charger-1", "charger", "robot", None, f"floor ({sum(floor['charger0'][:2]) / 2000:+.1f}, "
                   f"{sum(floor['charger0'][2:]) / 2000:+.1f}) m", "MiR Charge 48V"),
              _row("charger-2", "charger", "robot", None, f"floor ({sum(floor['charger1'][:2]) / 2000:+.1f}, "
@@ -389,20 +398,31 @@ def inventory() -> list[dict]:
 
 
 # ===================================================================================================== asset numbers
+def role_key(name: str) -> str:
+    """A unit's role key: its name with the station's call name swapped for the station's key in STATIONS. A rename
+    keeps the asset number: round 1's lonsdale-pc and round 2's quartz-pc are both xrd-pc."""
+    root, sep, rest = name.partition("-")
+    key = {v[0]: k for k, v in STATIONS.items()}.get(root)
+    return key + sep + rest if key else name
+
+
 def assign_assets(rows: list[dict]) -> None:
-    """VCL-0001 ... in out/naming/asset_ids.json: a name keeps its number, a new name takes the next free one, and a
-    number is never reused (retired names stay in the file)."""
+    """VCL-0001 ... in out/naming/asset_ids.json, keyed by role_key: a unit keeps its number through any rename, a new
+    unit takes the next free one, and a number is never reused (retired keys stay in the file)."""
     p = OUT / "asset_ids.json"
     ids = json.loads(p.read_text())["ids"] if p.exists() else {}
     nxt = max((int(v.split("-")[1]) for v in ids.values()), default=0) + 1
     for r in rows:
-        if r["name"] not in ids:
-            ids[r["name"]] = f"VCL-{nxt:04d}"
+        r["role"] = role_key(r["name"])
+        if r["role"] not in ids:
+            ids[r["role"]] = f"VCL-{nxt:04d}"
             nxt += 1
-        r["asset"] = ids[r["name"]]
+        r["asset"] = ids[r["role"]]
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(dict(note="Permanent asset numbers: a number stays with its unit and is never reused. "
-                                 "Retired names stay here.", ids=ids), indent=1) + "\n")
+    p.write_text(json.dumps(dict(note="Permanent asset numbers, keyed by the unit's role (naming.role_key: the "
+                                 "station's key in naming.STATIONS, not its call name, so a rename keeps every "
+                                 "number). A number stays with its unit and is never reused; retired keys stay here.",
+                                 ids=ids), indent=1) + "\n")
 
 
 # ===================================================================================================== checks
@@ -487,7 +507,7 @@ def check(rows: list[dict]) -> dict:
     for w in vocab:
         vph.setdefault(ipa(w), []).append(w)
     res["soft"]["sounds_like_lab_word"] = {n: vph[ph[n]] for n in pool if ph[n] in vph and n not in vph[ph[n]]}
-    res["soft"]["lab_word_itself"] = {n: vocab[n] for n in pool if n in vocab and n not in ("faraday",)}
+    res["soft"]["lab_word_itself"] = {n: vocab[n] for n in pool if n in vocab}
     pph = {p: ipa(p) for p in PEOPLE}
     res["hard"]["sounds_like_a_person"] = [(n, p) for n in pool for p in PEOPLE
                                            if ph[n] == pph[p] or lev(list(ph[n]), list(pph[p])) <= 1]
@@ -500,7 +520,8 @@ def check(rows: list[dict]) -> dict:
 def registry(rows: list[dict]) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "registry.json").write_text(json.dumps(rows, indent=1, ensure_ascii=False) + "\n")
-    keys = ["asset", "name", "kind", "cls", "parent", "where", "what", "namesake", "life", "why", "source"]
+    keys = ["asset", "role", "name", "kind", "cls", "parent", "where", "what", "namesake", "life", "why",
+            "source"]
     with open(OUT / "registry.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=keys, extrasaction="ignore")
         w.writeheader()
