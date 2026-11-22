@@ -1,0 +1,15 @@
+{
+ "source": "https://youtu.be/EwjfuTWPSV8?t=9 (Concord Machine Tools, 2020 Haas ST10 CNC Lathe For Sale, 0:09: a 2020 ST-10 with auto door and the Haas Bar Feeder, from the front right, wide angle)",
+ "video": "EwjfuTWPSV8",
+ "t": 9.0,
+ "points": {
+  "enc tl": [456, 205], "enc bl": [458, 461],
+  "win tl": [681, 234], "win tr": [751, 232], "win bl": [681, 350], "win br": [752, 349],
+  "scr tl": [877, 158], "scr tr": [1036, 155], "scr bl": [877, 282], "scr br": [1033, 272]
+ },
+ "init_points": ["enc tl", "enc bl", "win tl", "win tr", "win bl", "win br", "scr tl", "scr tr", "scr bl", "scr br"],
+ "lines": {"z": [[[606, 195], [606, 490]], [[821, 140], [823, 415]], [[456, 210], [458, 455]]]},
+ "cam_hint": [1700, -1600, 1500], "look_at": [600, 300, 1100], "cam_z": 1500,
+ "sam_points": ["win bl", "scr bl", "enc bl"],
+ "ignore": [[[0, 632], [525, 632], [525, 720], [0, 720]], [[1040, 118], [1210, 118], [1210, 288], [1040, 288]]]
+}

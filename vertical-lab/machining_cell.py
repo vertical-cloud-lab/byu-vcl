@@ -64,16 +64,18 @@ X_COLLET = 198.0                 # the collet's face; the bar comes out towards 
 # Footage of the machine (refs/st10/, machining_fit.py) checks it and fits what the drawing doesn't dimension. Until
 # round 14 of #367 the lathe was a 3437 x 1596 x 2167 mm box: the installed envelope, conveyor and all, as one block.
 ST10 = dict(
-    W=2160.0, D=1021.0, H=1842.0,                # enclosure: 680 px of the elevation; 40.2 in deep (plan); 72.5 in
+    W=2160.0, D=1021.0, H=1795.0,                # enclosure: 680 px of the elevation; 40.2 in deep (plan); its roof
+                                                 # (72.5 in, 1842 mm, is the top of a small box on the roof)
     t=20.0,                                      # its sheet metal, drawn thick enough to read
-    base_h=676.0, base_x1=2087.0, base_y0=35.0, base_y1=985.0, feet=76.0,   # the dark base; 3.0 in leveling pads
+    base_h=676.0, base_x0=40.0, base_x1=2087.0, base_y0=35.0, base_y1=985.0, feet=76.0,   # the dark base; 3.0 in pads
     door_x0=794.0, door_x1=1382.0, door_z0=680.0, door_z1=1636.0,   # the opening: 23.3 in wide, its sill 26.8 in up
     panel_x0=767.0, panel_w=642.0,               # the sliding door, shut (it slides to the left, over the white panel)
     win_x0=235.0, win_w=238.0, win_z0=1143.0, win_z1=1486.0,        # its window, from the door's left edge
     surround_x0=740.0, surround_x1=1430.0,       # the dark grey surround of the door on the front
     pend_x0=1492.0, pend_x1=1969.0, pend_z0=1032.0, pend_z1=1667.0, pend_d=205.0,   # the pendant, 8.1 in proud
     scr_x0=1620.0, scr_x1=1937.0, scr_z0=1376.0, scr_z1=1604.0,     # its screen
-    lcov_w=285.0, lcov_y0=20.0, lcov_y1=470.0, lcov_z0=375.0, lcov_z1=1590.0,   # the spindle motor's cover, left end
+    lcov_w=130.0, lcov_y0=20.0, lcov_y1=470.0, lcov_z0=800.0, lcov_z1=1290.0,   # the spindle's cover at the left end
+                                                 # (as seen in footage; the drawing shows a larger outline, 285 mm)
     cab_x0=950.0, cab_x1=1900.0, cab_d=270.0, cab_h=1842.0,          # the electrical cabinet on the back (to 49.8 in)
     conv_x1=3138.0, conv_y0=130.0, conv_y1=510.0, conv_low=300.0, conv_top=1576.0, conv_dis=1064.0,
     conv_head=343.0,                             # the conveyor's head, 62.1 in to its top; it drops chips at 41.9 in
@@ -297,9 +299,9 @@ def st10_parts(p=None, inside=True) -> dict:
     sx0, sx1 = p["surround_x0"], p["surround_x1"]
     out["surround"] = (_merge([_box(sx0, dx0, -4, 0, bh, H - 60), _box(dx1, sx1, -4, 0, bh, H - 60),
                                _box(dx0, dx1, -4, 0, dz1, H - 60), _box(sx0, sx1, -4, 0, bh, dz0)]), ST10_GREY, 1.0)
-    out["base"] = (_merge([_box(0, p["base_x1"], p["base_y0"], p["base_y1"], p["feet"], bh),
+    out["base"] = (_merge([_box(p["base_x0"], p["base_x1"], p["base_y0"], p["base_y1"], p["feet"], bh),
                            _box(-5, W + 5, -12, p["base_y1"], bh - 28, bh)]), ST10_GREY, 1.0)
-    feet = [_cyl((x, y, 0), (x, y, p["feet"]), 45.0, res=16) for x in (150, p["base_x1"] - 150)
+    feet = [_cyl((x, y, 0), (x, y, p["feet"]), 45.0, res=16) for x in (p["base_x0"] + 110, p["base_x1"] - 150)
             for y in (p["base_y0"] + 90, p["base_y1"] - 90)]
     out["feet"] = (_merge(feet), DARK, 1.0)
     out["lcov"] = (_box(-p["lcov_w"], 0, p["lcov_y0"], p["lcov_y1"], p["lcov_z0"], p["lcov_z1"]), ST10_WHITE, 1.0)
@@ -350,7 +352,7 @@ def st10_anchors(p=None, pose=None) -> dict:
     fx1 = -p["lcov_w"]
     fx0 = fx1 - p["feed_l"]
     return {"enc tl": (0, 0, H), "enc tr": (W, 0, H), "enc bl": (0, 0, bh), "enc br": (W, 0, bh),
-            "base bl": (0, p["base_y0"], p["feet"]), "base br": (p["base_x1"], p["base_y0"], p["feet"]),
+            "base bl": (p["base_x0"], p["base_y0"], p["feet"]), "base br": (p["base_x1"], p["base_y0"], p["feet"]),
             "win tl": (wx0, -30, p["win_z1"]), "win tr": (wx1, -30, p["win_z1"]),
             "win bl": (wx0, -30, p["win_z0"]), "win br": (wx1, -30, p["win_z0"]),
             "door tl": (x0d, -30, p["door_z1"] + 30), "door tr": (x0d + p["panel_w"], -30, p["door_z1"] + 30),

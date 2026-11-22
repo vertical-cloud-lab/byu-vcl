@@ -45,35 +45,52 @@ HERE = Path(__file__).resolve().parent
 REFS = HERE / "refs"
 OUT = HERE / "out" / "register"
 MASKS = HERE / ".frames" / "masks"
-WORK_W = 640                                      # the comparison runs at this width (the frames are 1280)
+WORK_W = 480                                      # the comparison runs at this width (the frames are 1280)
 
 
 def _st10():
+    """The ST-10. Each free dimension carries how far the drawing is trusted on it (mm, one sigma): Haas's tolerance
+    of 1/2 in where the drawing dimensions it, ~60 mm where it was read off the drawing's scale, ~250 mm where it was
+    guessed (the bar feeder's heights, the motor cover)."""
     import machining_cell as M
-    return dict(params=dict(M.ST10), anchors=M.st10_anchors,
+    drawn, read, guessed = 13.0, 60.0, 250.0
+    free = {"H": read, "base_h": drawn, "pend_d": drawn, "conv_top": drawn, "feed_l": drawn,
+            "W": read, "base_x0": read, "base_x1": read, "pend_x0": read, "pend_x1": read, "pend_z0": read,
+            "pend_z1": read, "scr_x0": read, "scr_x1": read, "scr_z0": read, "scr_z1": read, "panel_x0": read,
+            "win_x0": read, "win_w": read, "win_z0": read, "win_z1": read, "conv_x1": read,
+            "lcov_w": guessed, "lcov_z0": guessed, "lcov_z1": guessed, "conv_head": guessed, "conv_low": guessed,
+            "feed_z0": guessed, "feed_z1": guessed, "feed_lid": guessed}
+    # the overall width is dimensioned (135.3 in) though its two parts aren't
+    cons = [(lambda q: q["lcov_w"] + q["conv_x1"], 3437.0, drawn)]
+    return dict(params=dict(M.ST10), anchors=M.st10_anchors, free=free, cons=cons,
                 parts=lambda p, names=None: {k: v for k, v in M.st10_parts(p, inside=False).items()
-                                             if names is None or any(k.startswith(n) for n in names)},
-                free=["W", "H", "base_h", "base_x1", "pend_x0", "pend_x1", "pend_z0", "pend_z1", "pend_d",
-                      "scr_x0", "scr_x1", "scr_z0", "scr_z1", "panel_x0", "win_x0", "win_w", "win_z0", "win_z1",
-                      "lcov_w", "lcov_z0", "lcov_z1", "conv_x1", "conv_top", "conv_head", "conv_low",
-                      "feed_z0", "feed_z1", "feed_lid", "feed_l"])
+                                             if names is None or any(k.startswith(n) for n in names)})
 
 
 KEYS = {"st10": _st10}
 
 
 # ============================================================================================ silhouettes
-def silhouette(meshes: dict, cam, size) -> np.ndarray:
-    """uint8 mask (h, w) of the union of every triangle of the meshes, through the camera (register.project)."""
+def triangles(meshes: dict) -> list:
+    """[(points (n, 3), faces (m, 3))] of the meshes, triangulated once."""
+    out = []
+    for mesh, _c, _o in meshes.values():
+        tri = mesh.triangulate()
+        out.append((np.asarray(tri.points, float), tri.faces.reshape(-1, 4)[:, 1:]))
+    return out
+
+
+def silhouette(meshes, cam, size) -> np.ndarray:
+    """uint8 mask (h, w) of the union of every triangle of the meshes (a parts dict, or triangles()), through the
+    camera (register.project)."""
     import cv2
     w, h = size
     m = np.zeros((h, w), np.uint8)
-    for mesh, _c, _o in meshes.values():
-        tri = mesh.triangulate()
-        f = tri.faces.reshape(-1, 4)[:, 1:]
-        uv = RG.project(cam, np.asarray(tri.points, float), size)
-        if not np.all(np.isfinite(uv)):
-            continue
+    Rm = RG.rodrigues(cam[:3])
+    for pts, f in (triangles(meshes) if isinstance(meshes, dict) else meshes):
+        zc = pts @ Rm[2] + cam[5]                               # depth in front of the camera, mm
+        f = f[(zc[f] > 50.0).all(axis=1)]                       # a triangle behind the camera has no image
+        uv = np.clip(np.nan_to_num(RG.project(cam, pts, size)), -4 * w, 5 * w)
         polys = np.round(uv[f] * 16).astype(np.int32)           # 4 fractional bits
         for tri_uv in polys:                                     # one at a time: fillPoly's even-odd rule would cut
             cv2.fillConvexPoly(m, tri_uv, 1, lineType=cv2.LINE_8, shift=4)   # a box's back faces out of its front
@@ -229,18 +246,22 @@ def load_mask(key: str, name: str):
 
 
 # ============================================================================================ the fit
-def fit(key: str, rounds: int = 3, only=None) -> dict:
+def fit(key: str, rounds: int = 3, only=None, resume: bool = False) -> dict:
     import cv2
     from scipy.optimize import minimize
     spec = KEYS[key]()
     p0 = dict(spec["params"])
-    free = list(spec["free"])
+    sig = dict(spec["free"])
+    free = list(sig)
     V = views(key)
     if only:
         V = {k: v for k, v in V.items() if k in only}
+    start = dict(p0)
+    if resume and (REFS / key / "fit.json").exists():      # start from the last fit (the pull stays to the drawing)
+        start.update(json.loads((REFS / key / "fit.json").read_text())["params"])
     data = {}
     for n, v in V.items():
-        cam = pick_camera(key, v, p0)
+        cam = pick_camera(key, v, start)
         tgt = load_mask(key, n)
         if tgt is None:
             tgt = sam_mask(key, n, v, cam, p0)
@@ -250,9 +271,19 @@ def fit(key: str, rounds: int = 3, only=None) -> dict:
                        tgt=cv2.resize(tgt, size, interpolation=cv2.INTER_NEAREST),
                        keep=cv2.resize(keep_mask(v).astype(np.uint8), size, interpolation=cv2.INTER_NEAREST) > 0)
 
+    memo = {}
+
+    def tris(params, parts):
+        k = (json.dumps({q: round(float(params[q]), 3) for q in free}), tuple(parts or ()))
+        if k not in memo:
+            if len(memo) > 64:
+                memo.clear()
+            memo[k] = triangles(spec["parts"](params, parts))
+        return memo[k]
+
     def score(n, cam, params):
         d = data[n]
-        sil = silhouette(spec["parts"](params, d["v"].get("parts")), _scaled(cam, d["s"]), d["size"])
+        sil = silhouette(tris(params, d["v"].get("parts")), _scaled(cam, d["s"]), d["size"])
         return overlap(sil, d["tgt"], d["keep"])
 
     def picks_rms(n, cam, params):
@@ -261,26 +292,31 @@ def fit(key: str, rounds: int = 3, only=None) -> dict:
 
     # the model as it was before this fit: the cell's previous box (machining_cell's old LATHE) is another model, so
     # "before" here is the drawing's model at the picks' camera, and fit.json says so
-    before = {n: score(n, d["cam"], p0) for n, d in data.items()}
-    params = dict(p0)
-    scale = {k: max(abs(p0[k]), 50.0) for k in free}
+    before = {n: score(n, d["cam"], start) for n, d in data.items()}
+    params = dict(start)
+    scale = {k: sig[k] for k in free}             # Powell steps in sigmas
     groups = {}
     for n, d in data.items():
         groups.setdefault(RG.group(d["v"]), []).append(n)
 
+    # the loss, per view: 1 % of IoU costs 1; a pixel of mean outline distance 0.3 (at WORK_W); the picks' rms 0.04 a
+    # px squared (5 px costs 1); a dimension one sigma off its drawn value 0.5
+    def view_loss(n, cam, params):
+        iou, dist = score(n, cam, params)
+        return (1 - iou) * 100 + 0.3 * dist + 0.04 * picks_rms(n, cam, params) ** 2
+
     def cam_loss(x, n, params):
         cam = np.r_[x[:7], data[n]["cam"][7]]
-        iou, dist = score(n, cam, params)
-        return (1 - iou) * 100 + 0.3 * dist + 0.05 * picks_rms(n, cam, params) ** 2 / 25.0 + height_penalty(cam)
+        return view_loss(n, cam, params) + height_penalty(cam)
 
     def par_loss(x):
         q = dict(params)
         q.update({k: p0[k] + x[i] * scale[k] for i, k in enumerate(free)})
-        tot = 0.0
-        for n, d in data.items():
-            iou, dist = score(n, d["cam"], q)
-            tot += (1 - iou) * 100 + 0.3 * dist + 0.05 * picks_rms(n, d["cam"], q) ** 2 / 25.0
-        return tot / len(data) + 4.0 * float(np.sum(np.asarray(x) ** 2) / 0.01)   # 10 % off costs 4
+        tot = sum(view_loss(n, d["cam"], q) for n, d in data.items()) / len(data)
+        tot += 0.5 * float(np.sum(np.asarray(x) ** 2))
+        for fn_, target, s_ in spec.get("cons", []):
+            tot += 0.5 * ((fn_(q) - target) / s_) ** 2
+        return tot
 
     log = []
     for r in range(rounds):
@@ -289,13 +325,13 @@ def fit(key: str, rounds: int = 3, only=None) -> dict:
                            options=dict(xtol=1e-3, ftol=1e-3, maxfev=1500))
             d["cam"] = np.r_[sol.x, d["cam"][7]]
         x0 = np.array([(params[k] - p0[k]) / scale[k] for k in free])
-        sol = minimize(par_loss, x0, method="Powell", options=dict(xtol=1e-3, ftol=1e-4, maxfev=4000))
+        sol = minimize(par_loss, x0, method="Powell", options=dict(xtol=1e-2, ftol=1e-4, maxfev=6000))
         params.update({k: p0[k] + sol.x[i] * scale[k] for i, k in enumerate(free)})
         it = {n: score(n, d["cam"], params) for n, d in data.items()}
         log.append({n: [round(a, 4), round(b, 2)] for n, (a, b) in it.items()})
         print(f"round {r + 1}: " + ", ".join(f"{n} IoU {a:.3f} ({b:.1f} px)" for n, (a, b) in it.items()), flush=True)
     after = {n: score(n, d["cam"], params) for n, d in data.items()}
-    out = {"key": key, "work_width_px": WORK_W, "free": free,
+    out = {"key": key, "work_width_px": WORK_W, "free": sig,
            "params": {k: round(float(params[k]), 1) for k in free}, "start": {k: p0[k] for k in free},
            "changed_mm": {k: round(float(params[k] - p0[k]), 1) for k in free if abs(params[k] - p0[k]) >= 5.0},
            "rounds": log, "views": {}}
@@ -383,7 +419,9 @@ if __name__ == "__main__":
             m = sam_mask(key, n, v, cam, spec["params"])
             print(n, "mask", int(m.sum()), "px")
     elif cmd == "fit":
-        print(json.dumps(fit(key, only=rest or None)["views"], indent=1))
+        resume = "--resume" in rest
+        rest = [r for r in rest if r != "--resume"]
+        print(json.dumps(fit(key, only=rest or None, resume=resume)["views"], indent=1))
     elif cmd == "draw":
         draw(key)
     else:
