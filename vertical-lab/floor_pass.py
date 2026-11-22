@@ -525,9 +525,9 @@ def render(pl: dict):
     tally = fig.text(px, 0.30, "", fontsize=8.6, color=INK, va="top", linespacing=1.45)
     msg = fig.text(px, 0.165, "", fontsize=8.0, color=SPILL, va="top", linespacing=1.35)
     fig.text(0.012, 0.008, "Floor: purple, cleaned tonight; sand, a powder zone not yet; grey hatched, the EOS's zone "
-             "(people's); dark grey, machines.\nBrass dots: ground studs at the work spots (ours). Faint dashed "
-             "circles: each station's hose, 7.0 m. Unit 3: the purple MiR250, white arrow forward; its arm's 1.3 m "
-             "reach dashed.", fontsize=7.4, color=INK2, va="bottom", linespacing=1.3)
+             "(people's); dark grey, machines. Black line: the hose, drawn straight.\nBrass dots: ground studs at the work "
+             "spots (ours). Faint dashed circles: each station's hose, 7.0 m. Unit 3: the purple MiR250, white arrow "
+             "forward; its arm's 1.3 m reach dashed.", fontsize=7.4, color=INK2, va="bottom", linespacing=1.3)
 
     # cleaning progress bookkeeping
     clean_ev = [e for e in events if e["kind"] == "clean"]
