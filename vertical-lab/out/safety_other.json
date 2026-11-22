@@ -136,7 +136,7 @@
     60,
     100
    ],
-   "source": "ANSI/ISEA Z358.1-2014 (R2020): reached within 10 s (about 55 ft, 16.8 m, at a normal walk), on the same level, unobstructed; immediately adjacent where the hazard is a strong acid or caustic (Appendix B5, read here as within 3 m); the shower's column of water 82-96 in up, 20 in across at 60 in, its centre at least 16 in from any obstruction, 20 gpm for 15 min; the eyewash's heads 33-53 in up, 0.4 gpm for 15 min; tepid water, 60-100 F; the actuator at most 69 in up, on in 1 s; a highly visible sign; activated weekly"
+   "source": "ANSI/ISEA Z358.1-2014 (Bradley's quick compliance guide; Minnesota DLI): reached within 10 s (about 55 ft, 16.8 m, at a normal walk), on the same level, unobstructed; immediately adjacent where the hazard is a strong acid or caustic (Appendix B5, read here as within 3 m); the shower's column of water 82-96 in up, 20 in across at 60 in, its centre at least 16 in from any obstruction, 20 gpm for 15 min; the eyewash's heads 33-53 in up, 0.4 gpm for 15 min; tepid water, 60-100 F; the actuator at most 69 in up, on in 1 s; a highly visible sign; activated weekly"
   },
   "check": {
    "fumehood": {
@@ -161,10 +161,10 @@
    },
    "icpms": {
     "at": [
-     10950.0,
+     11015.0,
      -5750.0
     ],
-    "walk_m": 0.92,
+    "walk_m": 0.95,
     "within_10s": true,
     "adjacent_3m": true,
     "head_mm": 2134,
@@ -349,7 +349,7 @@
    "face": 180.0,
    "covers": "the ducted fume hood (Weck's reagent: KMnO4 and NaOH)",
    "solid": [
-    229,
+    161,
     574,
     -7424,
     -6563
@@ -361,14 +361,14 @@
    "station": "icpms",
    "kind": "shower",
    "at": [
-    10950.0,
+    11015.0,
     -5750.0
    ],
    "face": 180.0,
    "covers": "the ICP-MS station's hood (HNO3, HCl), at its suggested spot",
    "solid": [
-    10729,
-    11074,
+    10726,
+    11139,
     -5874,
     -5013
    ],

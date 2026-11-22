@@ -13,13 +13,14 @@ The assets, each built part by part from the maker's figures:
   4-A:80-B:C, stored pressure. Red, so it can't be taken for the yellow Class D units, and hung where a warehouse keeps
   its extinguishers: on the racking's uprights, at the ends of the aisle (``rack_parts``), under a red FIRE
   EXTINGUISHER sign and an ABC placard that says NOT FOR METAL FIRES. Never next to a powder station.
-* **Combination drench shower and eye/face wash** (``shower_parts``), Guardian G1902 class: a floor-mounted galvanized
-  column, an ABS showerhead on its arm with a pull rod and triangle handle, an ABS eye/face wash bowl with two flip-top
-  heads and a push flag, stay-open ball valves, the green ISO 7010 sign; with what the standard asks round it (ANSI/ISEA
-  Z358.1): tepid water from a thermostatic mixing valve, a clear floor under the spray, and (ours) a floor drain.
-* **Oxygen-deficiency monitor** (``o2_parts``), PureAire class: a zirconia O2 sensor that reads to 25 %, its display,
-  two alarm relays at 19.5 % and 18 %, a horn and strobe on top, a CAUTION sign. For argon (heavier than air) the
-  sensor goes low, 300 mm off the floor, on a lead from the monitor; for nitrogen it sits in the breathing zone.
+* **Guardian G1902 combination drench shower and eyewash** (``shower_parts``, its spec sheet): a floor-mounted
+  galvanized column in orange covers, an orange ABS showerhead on its arm with a pull rod and triangle handle, two
+  flip-top eyewash heads in a stainless bowl with a flag handle, stay-open ball valves, its green sign; with what the
+  standard asks round it (ANSI/ISEA Z358.1): tepid water from a thermostatic mixing valve, a clear floor under the
+  spray, and (ours) a floor drain.
+* **PureAire 99028 O2 deficiency monitor** (``o2_parts``): a zirconium oxide sensor that reads to 25 %, its display,
+  alarms at 19.5 % and 18 %, a 90 dB horn, PureAire's horn/strobe on top, a CAUTION sign. For argon (heavier than air)
+  the remote sensor goes low, 12 in off the floor; for nitrogen the monitor itself sits in the breathing zone, at 5 ft.
 
     python3 safety_other.py                     # the checks -> out/safety_other.json
     python3 safety_other.py plan                # the floor: every unit, the walks -> out/safety_other_plan.png
@@ -93,7 +94,7 @@ MIXER = dict(w=12 * IN, h=10.75 * IN, d=7.125 * IN, cab=(16 * IN, 14 * IN, 8 * I
 ANSI = dict(travel_s=10.0, travel_m=16.8, adjacent_m=3.0, head_min=82 * IN, head_max=96 * IN, spray_d=20 * IN,
             spray_clear=16 * IN, eye_min=33 * IN, eye_max=53 * IN, actuator_max=69 * IN, shower_gpm=20.0,
             eye_gpm=0.4, minutes=15, tepid_f=(60, 100),
-            source="ANSI/ISEA Z358.1-2014 (R2020): reached within 10 s (about 55 ft, 16.8 m, at a normal walk), on the "
+            source="ANSI/ISEA Z358.1-2014 (Bradley's quick compliance guide; Minnesota DLI): reached within 10 s (about 55 ft, 16.8 m, at a normal walk), on the "
                    "same level, unobstructed; immediately adjacent where the hazard is a strong acid or caustic "
                    "(Appendix B5, read here as within 3 m); the shower's column of water 82-96 in up, 20 in across at "
                    "60 in, its centre at least 16 in from any obstruction, 20 gpm for 15 min; the eyewash's heads "
@@ -588,7 +589,7 @@ PLACES = [
     ("building", "abc", -28.0, 2800.0, 0.0, "behind the Shuttles (rack N's upright)", {}),
     # an eyewash and drench shower beside each hood with acids or caustics, the side away from any powder
     ("fumehood", "shower", 450.0, -7300.0, 180.0, "the ducted fume hood (Weck's reagent: KMnO4 and NaOH)", {}),
-    ("icpms", "shower", 10950.0, -5750.0, 180.0, "the ICP-MS station's hood (HNO3, HCl), at its suggested spot",
+    ("icpms", "shower", 11015.0, -5750.0, 180.0, "the ICP-MS station's hood (HNO3, HCl), at its suggested spot",
      {"icpms": True}),
     # O2 monitors: one where each gas is stored or used; argon's sensor low, nitrogen's in the breathing zone
     ("argon cylinders", "o2", -9500.0, -700.0, 0.0, "the argon cylinder manifold", {"gas": "argon"}),
@@ -637,8 +638,8 @@ def place_rects(kind, x, y, face) -> dict:
         return dict(solid=_turn((-130.0, 130.0, -ABC["d"] - 60.0, 0.0), x, y, face))
     if kind == "shower":
         s = SHOWER
-        sol = _turn((-s["flange_d"] / 2 - 10.0, s["bowl_d"] / 2 + 80.0, s["head_y"] - s["head_d"] / 2,
-                     s["flange_d"] / 2 + 10.0), x, y, face)
+        sol = _turn((-s["flange_d"] / 2 - 10.0, s["valve_x"] + s["flag"] + 10.0, s["head_y"] - s["head_d"] / 2,
+                     s["flange_d"] / 2 + 10.0), x, y, face)            # to the eyewash's flag handle, on its right
         c = ANSI["spray_clear"]
         cl = _turn((-c, c, s["head_y"] - c, s["head_y"] + c), x, y, face)
         return dict(solid=sol, clear=cl)
