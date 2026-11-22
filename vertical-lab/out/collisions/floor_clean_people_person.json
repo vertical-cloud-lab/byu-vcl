@@ -1,0 +1,6 @@
+{
+ "what": "the person's clearance in plan to the floor plan's machines and posts, and in 3-D (axis-aligned boxes of each part) to the robots' parts, every rendered frame; the tools they hold and the person's own body against each other are not checked",
+ "min_clearance_mm": 379.0,
+ "nearest": "post 2",
+ "frames": 260
+}

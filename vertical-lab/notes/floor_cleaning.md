@@ -20,12 +20,18 @@ This explores the idea. It doesn't decide it: the dust hazard analysis (DHA) and
 | [`out/floor_cleaning_still.png`](../out/floor_cleaning_still.png), [`out/floor_cleaning_still_close.png`](../out/floor_cleaning_still_close.png) | The stills |
 | [`out/mp4/floor_cleaning_clip.mp4`](../out/mp4/floor_cleaning_clip.mp4), [`out/floor_cleaning_clip.gif`](../out/floor_cleaning_clip.gif) | The clip: two squeegee lanes along the rePowder's front |
 | [`out/collisions/floor_cleaning_still.json`](../out/collisions/floor_cleaning_still.json), [`out/collisions/floor_cleaning_clip.json`](../out/collisions/floor_cleaning_clip.json) | Their collision checks: 0 hits |
+| [`floor_pass.py`](../floor_pass.py) | [The whole nightly pass](#the-whole-pass-and-the-persons-part-animated), top-down: unit 3 through every zone and the aisle, on the model's floor, reach and pass rates |
+| [`out/mp4/floor_pass.mp4`](../out/mp4/floor_pass.mp4), [`out/floor_pass.gif`](../out/floor_pass.gif), [`out/floor_pass_still.png`](../out/floor_pass_still.png), [`out/floor_pass.json`](../out/floor_pass.json) | It, its last frame, and its route, work spots, studs and minutes step by step |
+| [`floor_clean_people.py`](../floor_clean_people.py) | [The person's part](#the-whole-pass-and-the-persons-part-animated), in the lab: a visible spill, swept up by the person, the residue left to unit 3 |
+| [`out/mp4/floor_clean_people.mp4`](../out/mp4/floor_clean_people.mp4), [`out/floor_clean_people.gif`](../out/floor_clean_people.gif), [`out/collisions/floor_clean_people.json`](../out/collisions/floor_clean_people.json), [`out/collisions/floor_clean_people_person.json`](../out/collisions/floor_clean_people_person.json) | It, the arm's audit, and the person's clearance |
 
 ```bash
 python3 floor_cleaning.py              # the model -> out/floor_cleaning.{json,_reach.png,_year.png} (about 15 s)
 python3 runner_guard.py slot --label fcstill --mem 4500 -- xvfb-run -a python3 floor_clean_still.py       # the stills
 python3 runner_guard.py slot --label fcclip --mem 4500 -- env VIZ3D_FPS=10 xvfb-run -a python3 floor_clean_still.py clip
 ARM_AUDIT=1 VIZ3D_FPS=10 xvfb-run -a python3 floor_clean_still.py clip                                    # audit only
+python3 floor_pass.py                  # the whole nightly pass -> out/floor_pass.{gif,json,_still.png} (about 3 min)
+python3 runner_guard.py slot --label fcppl --mem 5000 -- env VIZ3D_FPS=10 xvfb-run -a python3 floor_clean_people.py
 ```
 
 ## The short answer
@@ -432,6 +438,114 @@ position-based dynamics, the station, the sieving enclosure and Shuttle 1. New a
   the vacuums, the machine and the squeegee, and capsules for the arm's links. It has no self-collision, so where its
   slack curls on the floor it can pass through itself.
 
+## The whole pass and the person's part, animated
+
+Sterling, on PR #369 (2026-11-22): "show animated visualizations of the processes here, including the human-in-the-loop
+interactions mentioned at the end. Also, I want to see an animated visualization of a full pass across the facility".
+
+### The whole nightly pass
+
+![Unit 3's nightly pass, top-down](../out/floor_pass.gif)
+
+[`out/mp4/floor_pass.mp4`](../out/mp4/floor_pass.mp4) (90 s; [GIF](../out/floor_pass.gif)), from
+[`floor_pass.py`](../floor_pass.py). Unit 3 leaves its charger at 01:00 and works every zone a robot serves, then the
+aisle, and goes back to charge.
+
+**What comes from the model** (`floor_cleaning.py`'s `units_pou`):
+- where the robot's centre can be, and the floor it cleans: within the arm's 1.3 m and the hose's 7.0 m;
+- the zones, and which station serves which;
+- the stroke rate: 0.30 m at 0.15 m/s, times 1.25 for turns and edges;
+- the 4 min of continuity check, run-on and settle;
+- driving at 0.5 m/s.
+
+**The route, ours:**
+1. The atomizer's station: the Al-family wand out of its holster, and continuity on the station's fixture.
+2. Its zones: the glovebox, the atomizer, the sieving cell, Shuttle 1's opening, and the west half of the aisle.
+3. The wand back: 20 s of run-on, off, 60 s to settle, the holster.
+4. The printer line's station, the same way: Shuttle 2's opening, the MIDI, the DED, the east half of the aisle.
+5. The charger, with the wheels over its brush strip.
+
+**At each work spot:** park, clip the bonding lead to the spot's stud and read the bond, look over the floor in
+reach, work the lanes, check the floor's colour, unclip. The spots are a greedy cover of each zone by the arm's reach,
+from where the robot can stand, in a nearest-neighbour order.
+
+| | |
+| --- | --- |
+| Work spots | **53**: 31 in the aisle, 7 at the MIDI, 5 at the atomizer, 4 at the DED, 2 each at the glovebox and the sieving cell, 1 at each opening |
+| Ground studs (ours: spots under 800 mm apart share one) | **45** |
+| Floor cleaned | 78.3 of the 80.7 m² a robot serves (97 %). The rest is the 2.3 m² left round a visible spill |
+| Driving | 178 m |
+| Time | **89 min**, against the model's 43 |
+
+**Where the extra 46 minutes come from** (all ours, assumed):
+- 53 spots × 40 s: 20 s to clip, read and unclip the bond, and 10 s each for the look and the colour check. That is
+  35 min;
+- the second station's pick-up and return: 4 min;
+- driving between 53 spots, the scoop at the sieving cell and the wheel strip: the rest.
+
+The model books one 4 min fixed time a pass and no bonding. **So bonding at every spot roughly doubles the nightly
+sweep.** It still ends at about 02:29, so it fits the night with hours to spare. Two things follow:
+- **The aisle is most of it:** 61 of the 81 m² and 31 of the 53 spots. If the DHA treats the aisle more lightly than
+  the zones, the night shortens most there.
+- **A sprung chassis contact on a floor plate** would make each bond a second or two, not 20 s. That needs a plate at
+  every spot.
+
+**The route uses the corridor behind the machines.** The model's floor runs to the north racking, so there is about
+1.2 m behind the Shuttles and more behind the rePowder. The zones' floor behind the rePowder and the sieving cell is
+reached from there. Whether that corridor is clear in the lab is for the floor plan.
+
+**Two events, as illustrations** (the model has no spill rate):
+- **Loose powder by the sieving cell's door:** unit 3 scoops and brushes it into the conductive bag before the lanes
+  (NFPA 484 11.5).
+- **A visible layer in front of Shuttle 1's opening:** its camera sees it from the atomizer's zone, 3 m off. It is a
+  person's job (vacuum SOP 8). Unit 3 keeps 1 m away, leaves that floor, messages the person and EHS, and carries on.
+  At 08:00 the person deals with it.
+
+**The person's tasks after the night,** in the last frame:
+- the spill: restrict access, scoop it into a conductive bag, and the residue with the 118EXP;
+- the liners, checked and emptied at the end of the day shift (NFPA 484 11.6.2(2));
+- the EOS's floor, which is theirs.
+
+### A weekday of passes, and where they wait for the person
+
+![A weekday of unit 3's passes](../out/floor_day.gif)
+
+[`out/mp4/floor_day.mp4`](../out/mp4/floor_day.mp4) ([GIF](../out/floor_day.gif)), from
+[`floor_day.py`](../floor_day.py): Monday, day 36 of the model's year (seed 303), all from the model.
+- **01:00:** the nightly sweep, nobody in.
+- **08:00:** the person's shift starts with run 1's crucible hour at the atomizer.
+- **10:30, and again at 13:00:** a run ends and its floor pass is due, but the next run's crucible hour starts at once,
+  with the person at the machine. Unit 3 waits the hour outside the zone and cleans as the person leaves. This is the
+  model's one routine wait for a person: 419 of the year's 1,607 passes, never more than 1.1 h.
+- **The sieving's and the depowdering's passes** go straight away. The model has 7 a year that wait for unit 1 or 2 at
+  the same dock; on this day, one waits 6 min for unit 3 itself, busy with the atomizer's.
+- **16:00:** the shift ends. No pass waits for a person after that, but a visible spill would wait for the morning.
+
+### The person's part: a visible spill
+
+![A visible spill: the person's bulk, unit 3's residue](../out/floor_clean_people.gif)
+
+[`out/mp4/floor_clean_people.mp4`](../out/mp4/floor_clean_people.mp4) ([GIF](../out/floor_clean_people.gif)), from
+[`floor_clean_people.py`](../floor_clean_people.py), in the lab of the stills:
+1. **Lanes.** Unit 3 finishes its two lanes along the rePowder's front.
+2. **Colour check.** It lifts clear, and its camera checks the strip's colour (11.4.1).
+3. **A visible spill.** Its camera finds a visible layer in the aisle by the sieving cell (a dropped cup; ours). Unit 3
+   stops its vacuum, keeps 1 m away, and messages the person and EHS.
+4. **The person** comes with a natural-bristle push broom and a conductive lobby dustpan.
+5. **The bulk, by hand.** Three strokes into the pan. NFPA 484 11.5.1: "conductive, nonsparking scoops and soft brooms
+   as well as brushes that have natural fiber bristles".
+6. **The residue is unit 3's.** The pan goes into a conductive bag, sealed, to the grounded pail (SOP 4.4), and is
+   logged. Unit 3 then parks there, bonds, squeegees and checks the colour (11.5.2: vacuums "only for residual
+   amounts").
+
+**Models.** The broom (a 12 in head on a 1.2 m handle), the dustpan (300 mm, on a 0.8 m handle) and the spill
+(320 x 240 mm, 12 mm deep) are ours. The person is `people.Person`.
+
+**The checks.**
+- **The arm,** audited as it rendered under round 11's strict rules: 0 of the 260 audited frames with a collision, and 0 with a new contact among the things that move ([`out/collisions/floor_clean_people.json`](../out/collisions/floor_clean_people.json)). The arm's IK branch is the still's, chosen against the same strokes.
+- **The person,** checked on the same 260 frames, since the arm audit doesn't see a body that bends in place: their posed body comes no nearer than 379 mm, in plan, to the floor plan's machines and posts (the nearest is the sieving cell's dock post), and no nearer than that to unit 1's or unit 3's parts ([`out/collisions/floor_clean_people_person.json`](../out/collisions/floor_clean_people_person.json)).
+- **Not checked:** the broom and the dustpan against the person's body and each other, and the hose (a soft part, as in the clip).
+
 ## Cost
 
 | Item | For | Price | Source |
@@ -465,8 +579,11 @@ cabinet and the integration. The stations are the same for C and D, and D needs 
 The model has no clutter, no occlusion and no hose management.
 
 **Not done:**
-- the clip shows two lanes, not a whole pass: no scooping, no continuity check (`atom_vacuum` shows that one), no
-  colour check;
+- in 3-D, the clips show the lanes, the colour check and the person's part, but not the arm clipping the bonding lead,
+  its own scoop and brush, or the continuity check (`atom_vacuum` shows that one). The whole pass shows each of those
+  as a step, from above;
+- a person emptying a vacuum's liner (sealing it, into the grounded pail, a fresh liner, the log) is not animated:
+  `atom_vacuum`'s clip has it as a caption;
 - the floor-colour check by camera is an idea, not built;
 - the AirGradient monitors Sterling asked for on every tray and station read PM2.5 and PM10. A rise near a station after
   a run could call an extra pass. Not modelled.

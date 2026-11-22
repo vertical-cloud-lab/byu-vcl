@@ -1,0 +1,101 @@
+{
+ "name": "floor_clean_people",
+ "fps": 10,
+ "n_frames": 333,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6 Lanes",
+   "caption": "Unit 3 works two lanes of the squeegee along the rePowder's front, bonded to the floor stud, on the hose of the Al-family 118EXP at the station.",
+   "start_frame": 0,
+   "end_frame": 41
+  },
+  {
+   "label": "1/6 Lanes",
+   "caption": "Up 30 mm, 110 mm out, down, and back east along the second lane.",
+   "start_frame": 42,
+   "end_frame": 48
+  },
+  {
+   "label": "1/6 Lanes",
+   "caption": "Up 30 mm, 110 mm out, down, and back east along the second lane.",
+   "start_frame": 49,
+   "end_frame": 55
+  },
+  {
+   "label": "1/6 Lanes",
+   "caption": "Up 30 mm, 110 mm out, down, and back east along the second lane.",
+   "start_frame": 56,
+   "end_frame": 61
+  },
+  {
+   "label": "1/6 Lanes",
+   "caption": "Up 30 mm, 110 mm out, down, and back east along the second lane.",
+   "start_frame": 62,
+   "end_frame": 93
+  },
+  {
+   "label": "2/6 Colour check",
+   "caption": "Lift clear. The camera checks the strip's colour: NFPA 484 11.4.1 allows no metal dust that \"obscures the color of the surface beneath it\". Clear.",
+   "start_frame": 94,
+   "end_frame": 105
+  },
+  {
+   "label": "2/6 Colour check",
+   "caption": "Lift clear. The camera checks the strip's colour: NFPA 484 11.4.1 allows no metal dust that \"obscures the color of the surface beneath it\". Clear.",
+   "start_frame": 106,
+   "end_frame": 125
+  },
+  {
+   "label": "3/6 A visible spill",
+   "caption": "Its camera finds a visible layer in the aisle by the sieving cell (a dropped cup; ours, an illustration). That is a person's job (vacuum SOP 8): unit 3 stops its vacuum, keeps 1 m away and messages the person and EHS.",
+   "start_frame": 126,
+   "end_frame": 155
+  },
+  {
+   "label": "3/6 A visible spill",
+   "caption": "Its camera finds a visible layer in the aisle by the sieving cell (a dropped cup; ours, an illustration). That is a person's job (vacuum SOP 8): unit 3 stops its vacuum, keeps 1 m away and messages the person and EHS.",
+   "start_frame": 156,
+   "end_frame": 163
+  },
+  {
+   "label": "4/6 The person",
+   "caption": "The person comes with a natural-bristle push broom and a conductive lobby dustpan, and restricts access to the area (SOP 8).",
+   "start_frame": 164,
+   "end_frame": 220
+  },
+  {
+   "label": "5/6 The bulk",
+   "caption": "The bulk first, by hand: NFPA 484 11.5.1, \"conductive, nonsparking scoops and soft brooms as well as brushes that have natural fiber bristles\". The robot never sweeps a visible spill.",
+   "start_frame": 221,
+   "end_frame": 235
+  },
+  {
+   "label": "5/6 The bulk",
+   "caption": "The bulk first, by hand: NFPA 484 11.5.1, \"conductive, nonsparking scoops and soft brooms as well as brushes that have natural fiber bristles\". The robot never sweeps a visible spill.",
+   "start_frame": 236,
+   "end_frame": 252
+  },
+  {
+   "label": "5/6 The bulk",
+   "caption": "The bulk first, by hand: NFPA 484 11.5.1, \"conductive, nonsparking scoops and soft brooms as well as brushes that have natural fiber bristles\". The robot never sweeps a visible spill.",
+   "start_frame": 253,
+   "end_frame": 269
+  },
+  {
+   "label": "5/6 The bulk",
+   "caption": "The bulk first, by hand: NFPA 484 11.5.1, \"conductive, nonsparking scoops and soft brooms as well as brushes that have natural fiber bristles\". The robot never sweeps a visible spill.",
+   "start_frame": 270,
+   "end_frame": 286
+  },
+  {
+   "label": "6/6 The residue",
+   "caption": "The pan tipped back and lifted: into a conductive bag, sealed, to the grounded pail (SOP 4.4), and logged. The residue is unit 3's: it parks there, bonds, squeegees and checks the colour (11.5.2: vacuums \"only for residual amounts\").",
+   "start_frame": 287,
+   "end_frame": 332
+  }
+ ]
+}
