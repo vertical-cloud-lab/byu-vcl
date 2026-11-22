@@ -323,6 +323,46 @@ def simulate(sc: dict, seed: int, days: int = DAYS) -> dict:
                 call_to_arrival_min=float(np.mean(st["call_wait"])) if st["call_wait"] else 0.0)
 
 
+# ---------------------------------------------------------------------------------------------------- drying
+# A lumped check of the dryer's 10 min (the cell's limit, above). Under vacuum the IPA boils off at the temperature where
+# its vapour pressure meets the chamber's (the condenser at -10 C holds it near 7 mbar: about -2 C for IPA); the heat to
+# do it comes first from the part's own heat (it cools from 45 C), then from the pot's 45 C walls, by radiation and by
+# conduction through the basket's few contacts, both poor in a vacuum. Constants: IPA 0.786 g/mL, 756 J/g; Al 0.90,
+# Cu 0.385 J/g K; Antoine for IPA (log10 mmHg = 8.00308 - 1505.52 / (T_C + 211.6)).
+DRY = dict(T_wall=318.15, p_ch_mbar=7.0, emissivity=0.10, area_m2=0.0061, pump_down_s=180.0,
+           contact_w_per_k=(0.01, 0.05), bore_ml=6.0, film_ml=0.2)
+PART_G = {"Al": 32.08 + 3.17, "Cu": 106.27 + 10.48}       # a cup and its plug (notes/machining.md)
+CP = {"Al": 0.90, "Cu": 0.385}
+
+
+def ipa_t_eq(p_mbar: float) -> float:
+    """K at which IPA's vapour pressure is p_mbar."""
+    mmhg = p_mbar * 0.750062
+    return 1505.52 / (8.00308 - math.log10(mmhg)) - 211.6 + 273.15
+
+
+def drying() -> dict:
+    """Minutes to dry a basket (heat-limited, per pair, the basket's four pairs in parallel): bores full of IPA, or
+    drained to a film, for Al and Cu, at the poor and the good end of the contact conductance."""
+    d = DRY
+    T_eq = ipa_t_eq(d["p_ch_mbar"])
+    out = {"T_eq_C": round(T_eq - 273.15, 1)}
+    for metal in ("Al", "Cu"):
+        C = PART_G[metal] * CP[metal]
+        sens = C * (d["T_wall"] - T_eq)                    # J the part gives up cooling to T_eq
+        rad = 5.67e-8 * d["emissivity"] * d["area_m2"] * (d["T_wall"] ** 4 - T_eq ** 4)
+        for case, ml in (("bore full", d["bore_ml"] + d["film_ml"]), ("drained", d["film_ml"])):
+            latent = ml * 0.786 * 756.0
+            rest = max(0.0, latent - sens)
+            mins = []
+            for g in d["contact_w_per_k"]:
+                q = rad + g * (d["T_wall"] - T_eq)
+                mins.append(round((d["pump_down_s"] + rest / q) / 60.0, 1))
+            out[f"{metal}, {case}"] = dict(ipa_g=round(ml * 0.786, 2), latent_J=round(latent), part_heat_J=round(sens),
+                                           minutes_poor_good_contact=mins)
+    return out
+
+
 def run(scenarios=None, seeds: int = SEEDS) -> dict:
     out = {}
     for name, sc in (scenarios or SCENARIOS).items():
@@ -395,13 +435,20 @@ def plot(res: dict, path=OUT / "machining_sim.png"):
 def main(argv):
     res = run()
     sens = sensitivity()
+    dry = drying()
+    print("drying:", json.dumps(dry))
+    for m in (6.0, 20.0, 40.0):                         # the pedestal against the dryer's time
+        rs = [simulate(dict(dry_s=(0.8 * m * 60, 1.2 * m * 60)), seed) for seed in range(3)]
+        sens[f"pedestal, dryer {m:.0f} min"] = {k: round(float(np.mean([r[k] for r in rs])), 3) for k in
+                                                ("pairs_per_calendar_day", "lathe_blocked_h_per_day", "lead_h_median")}
     for k, v in sens.items():
         print(f"  {k:40s} {v}")
     OUT.mkdir(exist_ok=True)
     (OUT / "machining_sim.json").write_text(json.dumps(dict(
         note="machining_sim.py: SimPy, part by part; times from machining.py, stoppages est. (BASE)",
         base={k: v for k, v in BASE.items() if k != "arm"} | {"arm_s": BASE["arm"]}, shift=SHIFT,
-        week_days=WEEK_DAYS, days=DAYS, seeds=SEEDS, scenarios=res, fleet_wait_sensitivity=sens), indent=1))
+        week_days=WEEK_DAYS, days=DAYS, seeds=SEEDS, scenarios=res, fleet_wait_sensitivity=sens, drying_check=dry,
+        drying_constants=DRY), indent=1))
     print(plot(res))
 
 

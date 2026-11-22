@@ -411,6 +411,73 @@
    "visits_per_day": 4.3,
    "lathe_blocked_h_per_day": 5.575,
    "lead_h_median": 18.35
+  },
+  "pedestal, dryer 6 min": {
+   "pairs_per_calendar_day": 134.405,
+   "lathe_blocked_h_per_day": 3.315,
+   "lead_h_median": 0.409
+  },
+  "pedestal, dryer 20 min": {
+   "pairs_per_calendar_day": 71.024,
+   "lathe_blocked_h_per_day": 5.476,
+   "lead_h_median": 0.969
+  },
+  "pedestal, dryer 40 min": {
+   "pairs_per_calendar_day": 39.595,
+   "lathe_blocked_h_per_day": 6.615,
+   "lead_h_median": 1.976
   }
+ },
+ "drying_check": {
+  "T_eq_C": -4.9,
+  "Al, bore full": {
+   "ipa_g": 4.87,
+   "latent_J": 3684,
+   "part_heat_J": 1582,
+   "minutes_poor_good_contact": [
+    55.0,
+    16.1
+   ]
+  },
+  "Al, drained": {
+   "ipa_g": 0.16,
+   "latent_J": 119,
+   "part_heat_J": 1582,
+   "minutes_poor_good_contact": [
+    3.0,
+    3.0
+   ]
+  },
+  "Cu, bore full": {
+   "ipa_g": 4.87,
+   "latent_J": 3684,
+   "part_heat_J": 2242,
+   "minutes_poor_good_contact": [
+    38.7,
+    12.0
+   ]
+  },
+  "Cu, drained": {
+   "ipa_g": 0.16,
+   "latent_J": 119,
+   "part_heat_J": 2242,
+   "minutes_poor_good_contact": [
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "drying_constants": {
+  "T_wall": 318.15,
+  "p_ch_mbar": 7.0,
+  "emissivity": 0.1,
+  "area_m2": 0.0061,
+  "pump_down_s": 180.0,
+  "contact_w_per_k": [
+   0.01,
+   0.05
+  ],
+  "bore_ml": 6.0,
+  "film_ml": 0.2
  }
 }

@@ -61,7 +61,7 @@ SOURCES = {
             "liquids 'max. 1 litre' only in a separate vessel in the water-filled tank",
     "ad": "A&D AD-4212C-301 weighing module: 51 g at 0.1 mg / 320 g at 1 mg, RS-232C, US$6,736.50",
     "price_al": "5N Al: High Purity Aluminum US$475 for Ø25 x 305 mm (about $1,180/kg) and $2,350 for Ø150 x 350 mm "
-                "(about $144/kg); Advent 99.9995 % Ø20 x 500 mm $1,535 (about $3,500/kg)",
+                "(about $144/kg); Advent 99.9995 % (5N5, not 5N) Ø20 x 500 mm $1,535 (about $3,500/kg)",
     "price_cu": "C10100 3/4 in round, ASTM B187: Southern Copper $194.53 for 72 in (4.644 kg), about $42/kg",
 }
 
@@ -207,7 +207,47 @@ CAPEX = [   # (item, low, high, source or "est.")
                                                              "Mitutoyo LSM-9506 $12,924 + air plug est. $5k"),
     ("integration, programming, risk assessment", 30000, 50000, "est."),
 ]
-PRICE = {"Al": (144.0, 1180.0), "Cu": (42.0, 42.0)}      # US$/kg, SOURCES["price_al"], ["price_cu"]
+PRICE = {"Al": (144.0, 1180.0), "Cu": (42.0, 42.0)}      # US$/kg, SOURCES["price_al"], ["price_cu"] (the PR's 5N case)
+
+# Bar by grade, US$/kg low-high, as published (notes/machining_material.md; every price, with its page, in
+# out/machining_prices.json; accessed 2026-11-22). No 25-100 kg price for 4N-5N Ø20 bar is published: bulk needs quotes.
+GRADES = {
+    "Al": {
+        "99.7 % (1070A/1080A bar)": (8.0, 15.0, "est.: no list price found; P1020 delivered in the US is $5.3-5.5/kg "
+                                                 "(LME $3.10 + Midwest premium) before drawing and the stockist"),
+        "4N, 99.99 %": (141.0, 406.0, "HPA: Ø127-150 mm billet $141-146/kg (to be drawn to Ø20, quote) to Ø22 x "
+                                      "540 mm rod $406/kg; China 4N ingot $3.95/kg (SMM, 20 Nov 2026)"),
+        "4N6, 99.996 %": (248.0, 340.0, "HPA Ø50 rod $248-340/kg, no thinner stock; China 4N6 ingot $4.08/kg"),
+        "5N, 99.999 %": (141.0, 1175.0, "HPA Ø150 mm billet $141/kg to Ø25 x 305 mm rod $1,175/kg; Thermo Ø22 rod "
+                                        "$3,020/kg"),
+    },
+    "Cu": {
+        "C10100 OFE (4N)": (39.0, 65.0, "Ø20 C101 $39/kg (1st Choice, UK, 3 m); 3/4 in C101 $52/kg (McMaster "
+                                        "8965K72, 6 ft $241.10) and $65/kg (OnlineMetals, 12 ft $612.56), both read in "
+                                        "a browser through the CubXL Pi"),
+        "4N5, 99.995 %": (940.0, 1141.0, "Thermo Ø25.4 mm rod $940/kg; lab catalogues only"),
+        "5N, 99.999 %": (1202.0, 1629.0, "Thermo 5N rod Ø9.5-19 mm; China 5N cathode-class $17.89/kg (SMM)"),
+    },
+}
+# The grades the cups should be (notes/machining_material.md): 4N Al as the clean baseline (99.7 % when a run copies a
+# commercial alloy; 5N only with Si and Mg of matching purity), and OFE copper, which is Grade A cathode cast without
+# oxygen.
+RECOMMENDED = {"Al": "4N, 99.99 %", "Cu": "C10100 OFE (4N)"}
+
+
+def material_by_grade(al_share: float = 0.5) -> dict:
+    """US$ a pair and a year of bar for each grade (94 mm of Ø20 bar a pair; half the pairs Al by default)."""
+    bp = bar_per_pair()
+    out = {}
+    for m, gs in GRADES.items():
+        share = al_share if m == "Al" else 1 - al_share
+        kg_year = DEMAND * 365 * share * bp[m]["bar_g"] / 1000
+        out[m] = {"bar_kg_per_year": round(kg_year), "grades": {
+            g: dict(usd_per_kg=(lo, hi), per_pair_usd=(round(bp[m]["bar_g"] / 1000 * lo, 2),
+                                                        round(bp[m]["bar_g"] / 1000 * hi, 2)),
+                    per_year_usd=(round(kg_year * lo, -2), round(kg_year * hi, -2)), source=src)
+            for g, (lo, hi, src) in gs.items()}, "recommended": RECOMMENDED[m]}
+    return out
 
 
 def costs(al_share: float = 0.5) -> dict:
@@ -317,6 +357,60 @@ def plot_day(path=OUT / "machining_day.png"):
 # The cell's arm pedestal on the lab floor: between the Instron 68SC-2 (x -4540..-4060) and MiR charger 0 (x
 # -1811..-1189) on the south row, whose front is y -6238 (out/tray_plan.json). The cell's front zone is 2.2 m wide
 # there; behind the row's machines (y < -6873) the lathe and its bar feeder have the floor to themselves.
+FORM_STYLE = {"shot/pellet": ("#2a78d6", "o"), "powder": ("#eb6834", "s"), "rod": ("#1baf7a", "^"),
+              "ingot/block/plate": ("#eda100", "D"), "wire": ("#e87ba4", "X")}       # colour and marker: never colour alone
+PURITY_ORDER = ["3N", "3N5", "4N", "4N5", "5N", "5N5", "6N"]
+
+
+def plot_prices(path=OUT / "machining_prices.png"):
+    """Every published price (out/machining_prices.json) by purity and form, per kg on a log scale, against the
+    commodity metal, and the bar the cups would be cut from."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    d = json.loads((OUT / "machining_prices.json").read_text())
+    import numpy as np
+    rng = np.random.default_rng(1)
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5.2), sharey=True)
+    refs = {"Al": [(3.10, "LME aluminium, 99.7 %"), (3.95, "4N ingot, China (SMM)")],
+            "Cu": [(12.47, "LME copper, Grade A"), (17.89, "5N copper, China (SMM)")]}
+    for ax, metal, name in ((axes[0], "Al", "Aluminium"), (axes[1], "Cu", "Copper")):
+        for form, (col, mk) in FORM_STYLE.items():
+            pts = [q for q in d["points"] if q["metal"] == metal and q["form"] == form and q.get("verified_on_page")
+                   and not q.get("marketplace") and q.get("purity_group", q.get("purity_class")) in PURITY_ORDER]
+            if not pts:
+                continue
+            x = np.array([PURITY_ORDER.index(q.get("purity_group", q.get("purity_class"))) for q in pts], float)
+            x += rng.uniform(-0.22, 0.22, len(x)) + 0.0
+            y = [q["price_per_kg_usd"] for q in pts]
+            ax.scatter(x, y, s=34, color=col, marker=mk, edgecolor="#fcfcfb", linewidth=0.8, label=form, zorder=3)
+        for k, (v, lab) in enumerate(refs[metal]):           # the lower line labelled under it, the upper over it
+            ax.axhline(v, color="#7a7a78", lw=1.0, ls="--", zorder=1)
+            ax.text(len(PURITY_ORDER) - 0.55, v * (0.88 if k == 0 else 1.13), lab, ha="right",
+                    va="top" if k == 0 else "bottom", fontsize=8, color="#555553")
+        ax.set_yscale("log")
+        ax.set_xticks(range(len(PURITY_ORDER)))
+        ax.set_xticklabels(PURITY_ORDER)
+        ax.set_xlim(-0.6, len(PURITY_ORDER) - 0.4)
+        ax.set_title(name, fontsize=11)
+        ax.grid(axis="y", color="#e6e6e3", lw=0.6, which="major")
+        for sp in ("top", "right"):
+            ax.spines[sp].set_visible(False)
+        ax.set_xlabel("purity (4N5 includes HPA's 99.996 %)")
+    axes[0].set_ylabel("US$ per kg, published list price (log)")
+    from matplotlib.lines import Line2D
+    handles = [Line2D([], [], ls="", marker=mk, color=col, markeredgecolor="#fcfcfb", markersize=7, label=form)
+               for form, (col, mk) in FORM_STYLE.items()]
+    axes[0].legend(handles=handles, title="form", fontsize=8, title_fontsize=8, loc="upper left", frameon=False)
+    n = sum(1 for q in d["points"] if q.get("verified_on_page") and not q.get("marketplace"))
+    fig.suptitle(f"What Al and Cu cost by purity and form: {n} prices read on the vendors' pages, 2026-11-22",
+                 fontsize=11)
+    fig.tight_layout()
+    fig.savefig(path, dpi=130)
+    plt.close(fig)
+    return path
+
+
 FLOOR = dict(x=-2935.0, y=-6238.0 - 950.0, dock=(-2935.0, -5868.0, 180.0))
 
 
@@ -326,12 +420,13 @@ def cell_rects() -> list[tuple[str, tuple, str]]:
     L = M.LATHE
     X, Y = FLOOR["x"], FLOOR["y"]
     r = [("fence", (-1100, 1100, L["y1"] + 10, M.FRONT_Y), "none"),
-         ("lathe (Haas ST-10 size, its chip conveyor at the left end)", (L["x0"], L["x1"], L["y1"] - L["D"], L["y1"]),
-          "#9aa6b5"),
-         ("bar feeder, 4 ft bars", (L["x1"], L["x1"] + L["loader_l"], M.SPIN_Y - L["loader_w"] / 2,
-                                    M.SPIN_Y + L["loader_w"] / 2), "#b9c2cc"),
-         ("chip bins: Al under the conveyor, Cu waiting", (L["x0"] - 560, L["x0"] - 60, M.SPIN_Y - 250,
-                                                            M.SPIN_Y + 790), "#d9d2c0"),
+         ("lathe (the Haas ST-10 as measured: conveyor at the left end, electrical cabinet behind; its pendant "
+          "hangs over the west bench)", (L["x0"], L["x1"], L["y1"] - L["D"], M.Y_FRONT), "#9aa6b5"),
+         ("bar feeder, 4 ft bars", (L["x1"], L["x1"] + L["loader_l"], M.Y_FRONT - L["loader_w"], M.Y_FRONT),
+          "#b9c2cc"),
+         ("chip bins: Al under the conveyor's head, Cu behind it",
+          (M.X_HEAD - M.ST10["conv_x1"] - 40, M.X_HEAD - M.ST10["conv_x1"] + M.ST10["conv_head"] + 40,
+           M.Y_FRONT - 1120, M.Y_FRONT - 80), "#d9d2c0"),
          ("west bench: blow-off, basket, two baths, vacuum dryer", (-1080, -590, -700, 760), "#e6e2d6"),
          ("east bench: weigh module, dimension gauge, cassette lid", (550, 1080, -700, 760), "#e6e2d6"),
          ("north bench: the cassette (charge rack), under the front window", (-590, 550, 620, 940), "#e6e2d6")]
@@ -405,10 +500,11 @@ def main():
         costs=costs(),
         floor=dict(FLOOR, cell=[dict(part=n, rect_mm=[round(v) for v in r]) for n, r, _ in cell_rects()]),
         cutting_data=CUT, noncutting_s_est=NONCUT, arm_s_est=ARM, cleaning=CLEAN, sources=SOURCES,
+        material_by_grade=material_by_grade(),
         note="Cutting times from the published data in SOURCES at the ST-10's 6,000 rpm; non-cutting times, the arm's "
              "times, tool and labour costs are estimates. The demand is PR #332's R11 (ten alloys a day).")
     (OUT / "machining.json").write_text(json.dumps(rep, indent=1) + "\n")
-    for p in (plot_cycle(), plot_day(), plot_floor()):
+    for p in (plot_cycle(), plot_day(), plot_floor(), plot_prices()):
         print("wrote", p.relative_to(HERE))
     print(json.dumps(dict(pair_seconds=rep["pair_seconds"], capacity=rep["capacity"]["0.5"], bar=rep["bar"],
                           capex=rep["costs"]["capex_usd"], per_pair=rep["costs"]["per_pair_ex_material_total_usd"],

@@ -407,35 +407,35 @@
     "rect_mm": [
      -4035,
      -1835,
-     -7978,
+     -7773,
      -6238
     ]
    },
    {
-    "part": "lathe (Haas ST-10 size, its chip conveyor at the left end)",
+    "part": "lathe (the Haas ST-10 as measured: conveyor at the left end, electrical cabinet behind; its pendant hangs over the west bench)",
     "rect_mm": [
-     -4872,
-     -1435,
-     -9584,
+     -5015,
+     -1747,
+     -9279,
      -7988
     ]
    },
    {
     "part": "bar feeder, 4 ft bars",
     "rect_mm": [
-     -1435,
-     669,
-     -9100,
-     -7816
+     -1747,
+     357,
+     -9271,
+     -7988
     ]
    },
    {
-    "part": "chip bins: Al under the conveyor, Cu waiting",
+    "part": "chip bins: Al under the conveyor's head, Cu behind it",
     "rect_mm": [
-     -5432,
-     -4932,
-     -8708,
-     -7668
+     -5055,
+     -4632,
+     -9108,
+     -8068
     ]
    },
    {
@@ -550,8 +550,127 @@
   "ur": "UR12e (the UR10e, renamed in May 2025): 12.5 kg, 1300 mm, US$50,818-52,674 (Universal Robots press release 12 May 2025 and FAQ; distributor listings)",
   "elma": "Elmasonic P 60 H: 5.75 L, 365 x 186 x 271 mm, 37/80 kHz, US$1,999-3,361; Elma's manual: flammable liquids 'max. 1 litre' only in a separate vessel in the water-filled tank",
   "ad": "A&D AD-4212C-301 weighing module: 51 g at 0.1 mg / 320 g at 1 mg, RS-232C, US$6,736.50",
-  "price_al": "5N Al: High Purity Aluminum US$475 for \u00d825 x 305 mm (about $1,180/kg) and $2,350 for \u00d8150 x 350 mm (about $144/kg); Advent 99.9995 % \u00d820 x 500 mm $1,535 (about $3,500/kg)",
+  "price_al": "5N Al: High Purity Aluminum US$475 for \u00d825 x 305 mm (about $1,180/kg) and $2,350 for \u00d8150 x 350 mm (about $144/kg); Advent 99.9995 % (5N5, not 5N) \u00d820 x 500 mm $1,535 (about $3,500/kg)",
   "price_cu": "C10100 3/4 in round, ASTM B187: Southern Copper $194.53 for 72 in (4.644 kg), about $42/kg"
+ },
+ "material_by_grade": {
+  "Al": {
+   "bar_kg_per_year": 972,
+   "grades": {
+    "99.7 % (1070A/1080A bar)": {
+     "usd_per_kg": [
+      8.0,
+      15.0
+     ],
+     "per_pair_usd": [
+      0.64,
+      1.19
+     ],
+     "per_year_usd": [
+      7800.0,
+      14600.0
+     ],
+     "source": "est.: no list price found; P1020 delivered in the US is $5.3-5.5/kg (LME $3.10 + Midwest premium) before drawing and the stockist"
+    },
+    "4N, 99.99 %": {
+     "usd_per_kg": [
+      141.0,
+      406.0
+     ],
+     "per_pair_usd": [
+      11.21,
+      32.28
+     ],
+     "per_year_usd": [
+      137100.0,
+      394700.0
+     ],
+     "source": "HPA: \u00d8127-150 mm billet $141-146/kg (to be drawn to \u00d820, quote) to \u00d822 x 540 mm rod $406/kg; China 4N ingot $3.95/kg (SMM, 20 Nov 2026)"
+    },
+    "4N6, 99.996 %": {
+     "usd_per_kg": [
+      248.0,
+      340.0
+     ],
+     "per_pair_usd": [
+      19.72,
+      27.03
+     ],
+     "per_year_usd": [
+      241100.0,
+      330500.0
+     ],
+     "source": "HPA \u00d850 rod $248-340/kg, no thinner stock; China 4N6 ingot $4.08/kg"
+    },
+    "5N, 99.999 %": {
+     "usd_per_kg": [
+      141.0,
+      1175.0
+     ],
+     "per_pair_usd": [
+      11.21,
+      93.41
+     ],
+     "per_year_usd": [
+      137100.0,
+      1142200.0
+     ],
+     "source": "HPA \u00d8150 mm billet $141/kg to \u00d825 x 305 mm rod $1,175/kg; Thermo \u00d822 rod $3,020/kg"
+    }
+   },
+   "recommended": "4N, 99.99 %"
+  },
+  "Cu": {
+   "bar_kg_per_year": 3221,
+   "grades": {
+    "C10100 OFE (4N)": {
+     "usd_per_kg": [
+      39.0,
+      65.0
+     ],
+     "per_pair_usd": [
+      10.27,
+      17.12
+     ],
+     "per_year_usd": [
+      125600.0,
+      209300.0
+     ],
+     "source": "\u00d820 C101 $39/kg (1st Choice, UK, 3 m); 3/4 in C101 $52/kg (McMaster 8965K72, 6 ft $241.10) and $65/kg (OnlineMetals, 12 ft $612.56), both read in a browser through the CubXL Pi"
+    },
+    "4N5, 99.995 %": {
+     "usd_per_kg": [
+      940.0,
+      1141.0
+     ],
+     "per_pair_usd": [
+      247.6,
+      300.54
+     ],
+     "per_year_usd": [
+      3027500.0,
+      3674800.0
+     ],
+     "source": "Thermo \u00d825.4 mm rod $940/kg; lab catalogues only"
+    },
+    "5N, 99.999 %": {
+     "usd_per_kg": [
+      1202.0,
+      1629.0
+     ],
+     "per_pair_usd": [
+      316.61,
+      429.08
+     ],
+     "per_year_usd": [
+      3871300.0,
+      5246600.0
+     ],
+     "source": "Thermo 5N rod \u00d89.5-19 mm; China 5N cathode-class $17.89/kg (SMM)"
+    }
+   },
+   "recommended": "C10100 OFE (4N)"
+  }
  },
  "note": "Cutting times from the published data in SOURCES at the ST-10's 6,000 rpm; non-cutting times, the arm's times, tool and labour costs are estimates. The demand is PR #332's R11 (ten alloys a day)."
 }
