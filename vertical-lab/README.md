@@ -87,7 +87,9 @@ the write-up is in [`notes/safety.md`](notes/safety.md#the-other-safety-assets-o
   other): all thirteen clear. They go into `setup_lab.build` (`VLAB_SAFETY_OTHER=0` leaves them out). About $26,100
   before the plumbing; the arm audits weren't re-run.
 
-![The floor](out/safety_other_plan.png)
+| The floor | In the lab |
+| --- | --- |
+| ![](out/safety_other_plan.png) | ![](out/safety_other_lab.png) |
 
 ## Round 14 (A): the lab, the VLM and its services (2026-11-20)
 

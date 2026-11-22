@@ -229,6 +229,8 @@ checks) and [`safety_other_render.py`](../safety_other_render.py) (the figures);
 
 ![The floor](../out/safety_other_plan.png)
 
+![In the lab](../out/safety_other_lab.png)
+
 ### The building's ordinary extinguishers, kept apart and signed differently
 
 - **Amerex B456** (Amerex's catalogue, ABC table p. 16, brackets p. 19): 10 lb ABC (monoammonium phosphate), UL
