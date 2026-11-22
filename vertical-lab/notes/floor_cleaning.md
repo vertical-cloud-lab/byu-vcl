@@ -473,7 +473,7 @@ from where the robot can stand, in a nearest-neighbour order.
 | --- | --- |
 | Work spots | **53**: 31 in the aisle, 7 at the MIDI, 5 at the atomizer, 4 at the DED, 2 each at the glovebox and the sieving cell, 1 at each opening |
 | Ground studs (ours: spots under 800 mm apart share one) | **45** |
-| Floor cleaned | 78.3 of the 80.7 m² a robot serves (97 %). The rest is the 2.3 m² left round a visible spill |
+| Floor cleaned | 78.3 of the 80.7 m² a robot serves (97 %). The rest is mostly the 2.3 m² left round a visible spill |
 | Driving | 178 m |
 | Time | **89 min**, against the model's 43 |
 
@@ -531,7 +531,8 @@ reached from there. Whether that corridor is clear in the lab is for the floor p
 2. **Colour check.** It lifts clear, and its camera checks the strip's colour (11.4.1).
 3. **A visible spill.** Its camera finds a visible layer in the aisle by the sieving cell (a dropped cup; ours). Unit 3
    stops its vacuum, keeps 1 m away, and messages the person and EHS.
-4. **The person** comes with a natural-bristle push broom and a conductive lobby dustpan.
+4. **The person** comes with a natural-bristle push broom and a conductive lobby dustpan. SOP 8 also has them restrict
+   access, ventilate and call EHS; that isn't drawn.
 5. **The bulk, by hand.** Three strokes into the pan. NFPA 484 11.5.1: "conductive, nonsparking scoops and soft brooms
    as well as brushes that have natural fiber bristles".
 6. **The residue is unit 3's.** The pan goes into a conductive bag, sealed, to the grounded pail (SOP 4.4), and is
@@ -539,12 +540,19 @@ reached from there. Whether that corridor is clear in the lab is for the floor p
    amounts").
 
 **Models.** The broom (a 12 in head on a 1.2 m handle), the dustpan (300 mm, on a 0.8 m handle) and the spill
-(320 x 240 mm, 12 mm deep) are ours. The person is `people.Person`.
+(330 x 250 mm, 12 mm deep) are ours. The person is `people.Person`.
 
 **The checks.**
-- **The arm,** audited as it rendered under round 11's strict rules: 0 of the 260 audited frames with a collision, and 0 with a new contact among the things that move ([`out/collisions/floor_clean_people.json`](../out/collisions/floor_clean_people.json)). The arm's IK branch is the still's, chosen against the same strokes.
-- **The person,** checked on the same 260 frames, since the arm audit doesn't see a body that bends in place: their posed body comes no nearer than 379 mm, in plan, to the floor plan's machines and posts (the nearest is the sieving cell's dock post), and no nearer than that to unit 1's or unit 3's parts ([`out/collisions/floor_clean_people_person.json`](../out/collisions/floor_clean_people_person.json)).
-- **Not checked:** the broom and the dustpan against the person's body and each other, and the hose (a soft part, as in the clip).
+- **The arm,** audited as it rendered under round 11's strict rules: 0 of the 260 audited frames with a collision, and 0
+  with a new contact among the things that move
+  ([`out/collisions/floor_clean_people.json`](../out/collisions/floor_clean_people.json)). The arm's IK branch is the
+  still's, chosen against the same strokes.
+- **The person,** checked on the same 260 frames, since the arm audit doesn't see a body that bends in place: their
+  posed body comes no nearer than 379 mm, in plan, to the floor plan's machines and posts (the nearest is the sieving
+  cell's dock post), and no nearer than that to unit 1's or unit 3's parts
+  ([`out/collisions/floor_clean_people_person.json`](../out/collisions/floor_clean_people_person.json)).
+- **Not checked:** the broom and the dustpan against the person's body and each other, and the hose (a soft part, as in
+  the clip).
 
 ## Cost
 
@@ -581,7 +589,10 @@ The model has no clutter, no occlusion and no hose management.
 **Not done:**
 - in 3-D, the clips show the lanes, the colour check and the person's part, but not the arm clipping the bonding lead,
   its own scoop and brush, or the continuity check (`atom_vacuum` shows that one). The whole pass shows each of those
-  as a step, from above;
+  as a step, from above. **Animating them showed a gap in the design:** at a work spot away from the station, the arm
+  is holding the wand, so it has no hand free to clip the lead or pick up a scoop. Either unit 3 carries a holster for
+  the wand (and a rack for the scoop and brush) on its cabinet, or the bond is a sprung contact under the chassis
+  landing on a floor plate, and the loose powder is taken with the wand's own brush tool. That is for Sterling;
 - a person emptying a vacuum's liner (sealing it, into the grounded pail, a fresh liner, the log) is not animated:
   `atom_vacuum`'s clip has it as a caption;
 - the floor-colour check by camera is an idea, not built;

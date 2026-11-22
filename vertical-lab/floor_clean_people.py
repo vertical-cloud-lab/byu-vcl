@@ -17,7 +17,7 @@ amounts") and checks the colour again.
 Models: floor_clean_still.build (the area; unit 3, a MiR250 + UR10e + 2F-85, with the 118EXP's wand and our floor
 squeegee; the 15 ft hose; the vacuum station; the bonding lead and stud), people.Person (MakeHuman's CC0 body, skinned
 and dressed). New here, ours: the push broom (a 12 in natural-bristle head on a 1.2 m handle), the lobby dustpan
-(conductive, 300 mm wide, on a 0.8 m handle), the spill (a patch about 320 x 240 mm and 12 mm deep), and where they are.
+(conductive, 300 mm wide, on a 0.8 m handle), the spill (a patch 330 x 250 mm and 12 mm deep), and where they are.
 """
 from __future__ import annotations
 
@@ -258,8 +258,8 @@ def main():
                    look=(SPILL[0], SPILL[1], 0.0))
         pose_tools(hr, hl, head, hd, lip, hd + 90.0)
     AA.status(sc, Person="on the way, with a natural-bristle broom and a conductive dustpan")
-    sc.step("4/6 The person", "The person comes with a natural-bristle push broom and a conductive lobby dustpan, and "
-            "restricts access to the area (SOP 8).", 5.5, walk, cam_to=close, view_angle_to=40.0,
+    sc.step("4/6 The person", "The person comes with a natural-bristle push broom and a conductive lobby dustpan. SOP 8 "
+            "also has them restrict access, ventilate and call EHS (not drawn).", 5.5, walk, cam_to=close, view_angle_to=40.0,
             labels=[("The person (the lab's one person on shift)", (P_WORK[0], P_WORK[1], 1850.0), (0.86, 0.22))],
             hold=0.2)
 
