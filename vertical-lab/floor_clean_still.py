@@ -101,8 +101,9 @@ def squeegee(tool_end: np.ndarray, d: np.ndarray) -> dict:
             "squeegee neck": (neck.merge(spigot), N.ALU)}
 
 
-def build(clip: bool = False):
-    sc = Scene(CLIP if clip else NAME, TITLE, gif=clip, mp4=clip)
+def build(clip: bool = False, name: str | None = None, title: str | None = None):
+    """The scene (floor_clean_people.py builds its clip on it, under its own name)."""
+    sc = Scene(name or (CLIP if clip else NAME), title or TITLE, gif=clip, mp4=clip)
     sc.soft = set()
     # ---- the floor, the aisle's tape (warehouse.Floor._tape: 3 in lines on the aisle's edges, a dashed centre line)
     sc.add("lab floor", pv.Plane(center=(-3000, -3200, -1.5), direction=(0, 0, 1), i_size=14000, j_size=9000),

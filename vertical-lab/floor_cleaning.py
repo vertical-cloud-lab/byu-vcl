@@ -285,7 +285,9 @@ def reach(F: Floor, key: str) -> dict:
         cov = (ndimage.distance_transform_edt(~cen_h) * CELL <= how[1]) & F.free & near
     else:
         raise ValueError(how)
-    return dict(centres=cen, covered=cov)
+    # layers: where the centre can be at each heading ([any] for a disc; [0 deg, 90 deg] for a rectangle), for
+    # floor_pass.py's route
+    return dict(centres=cen, covered=cov, layers=layers)
 
 
 def coverage(F: Floor, R: dict) -> dict:
