@@ -268,7 +268,7 @@ tray L on nebo).
     in its slot ([`tts_check.json`](../out/naming/tts_check.json); listen to all of them in
     [`names.ogg`](../out/naming/names.ogg)). Round 1's check of the people's names is the same file at commit
     [1acf876](https://github.com/vertical-cloud-lab/byu-vcl/blob/1acf876/vertical-lab/out/naming/tts_check.json).
-  - **Result:** the final run, with every fix in naming.PRONOUNCE applied, is in the next commit.
+  - **Result:** with the fixes below, 41 of the 49 names were heard right in all four slots (two sentences, two recognizers). At the first try, before any fix, it was 31 of 49, on a list that still had fumarole and chert.
   - **Fixed with a phoneme:** halite is "HAY-lite" (espeak's "HAL-ite" came back once as "highlight"), olivine
     "OL-ih-veen" (espeak said "-vine", which came back as "olive oil"), basalt "buh-SAWLT". Unimate, Genghis and Cascade
     keep round 1's fixes.
@@ -276,7 +276,7 @@ tray L on nebo).
     `chimney` now), the spare `chert` ("shirt", "church"), and two candidates, `beryl` ("barrel") and `spinel`
     ("spindle").
   - **Kept: said right, but the recognizer spells them as a name or a homophone:** mica ("Micah"), emery ("Emory"),
-    pearl ("purl"), topaz ("Topas"), galena ("Galina"), and a few one-off misspellings (geode, lapis; talc run into the
+    pearl ("purl"), topaz ("Topas"), galena ("Galina"), and a few one-off misspellings (geode, lapis, olivine; talc run into the
     next word as "talkas").
   - **To watch:** `timp` is heard as "temp" after "to" by both recognizers, as in round 1, and right in "Timp has
     finished" (see [timp](#timp)). `cinder` came back once as "center". `mica` sounds just like Micah: nobody in the

@@ -466,7 +466,8 @@ BRANDS = ("opentrons", "bambu", "hitachi", "oxford", "rigaku", "plastometrex", "
           "retsch", "aconity", "inert", "labconco", "insstek", "fanuc", "eos", "meltio", "agilent", "kardex",
           "vertiv", "staubli", "airgradient", "nilfisk", "parker", "thermo", "specac", "edwards", "pfeiffer", "instron",
           "robotiq", "intel", "universal", "mir", "teledyne", "michell", "sentry", "hemco", "olympus", "hamilton",
-          "tyler", "gilson", "mettler", "sartorius", "struers", "buehler", "zeiss", "nikon", "leica", "thermofisher")
+          "tyler", "gilson", "mettler", "sartorius", "struers", "buehler", "zeiss", "nikon", "leica", "thermofisher",
+          "jade", "onyx")         # round 2's stones that are also brands: MDI JADE (XRD software), Markforged Onyx
 
 
 def check(rows: list[dict]) -> dict:
