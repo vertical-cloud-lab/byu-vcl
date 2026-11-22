@@ -303,8 +303,11 @@ database already knows a tool's state; the place tells the person.
 
 ## Open
 
-- **Sterling's call:** blue for Al and orange for Cu, or the other way round; and whether to dedicate sieve sets and
-  crucibles per family now.
+- **Settled:** blue for Al and orange for Cu. Sterling, 2026-11-22: "blue and orange as mentioned are fine for now".
+- **Still Sterling's call:** whether to dedicate sieve sets and crucibles per family now.
+- **What to buy:** the bill of materials and shopping list are in [`colour_bom.md`](colour_bom.md). Every line was
+  priced through the CubXL Pi, with part numbers, sellers and lead times. It also gives the RAL and Pantone codes to
+  order the colours by.
 - **Not drawn in the chapters:** the bands and stripes are in two stills here, not in the alloy chapters. The funnel
   code and the blue "ours" parts are noted above, not changed.
 - **Physical colours:** the sRGB targets are for buying by eye under the lab's own lights, and for the check. Real tape

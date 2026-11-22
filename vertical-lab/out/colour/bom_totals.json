@@ -1,0 +1,49 @@
+{
+ "note": "USD, per pack at qty 1 x qty_packs, before shipping and tax; prices read 2026-11-22 through the CubXL Pi's SOCKS tunnel (BYU network). 'unpriced' counts lines that need a quote.",
+ "totals": {
+  "family": {
+   "now": 684.27,
+   "soon": 126.0,
+   "optional": 248.4,
+   "unpriced": 3
+  },
+  "labels": {
+   "now": 140.92,
+   "soon": 746.06,
+   "optional": 578.0,
+   "unpriced": 2
+  },
+  "floor": {
+   "now": 933.3,
+   "soon": 805.0,
+   "optional": 788.78,
+   "unpriced": 0
+  },
+  "lights": {
+   "now": 0.0,
+   "soon": 9988.44,
+   "optional": 0.0,
+   "unpriced": 0
+  },
+  "kit": {
+   "now": 173.0,
+   "soon": 2234.45,
+   "optional": 603.0,
+   "unpriced": 9
+  },
+  "all": {
+   "now": 1931.49,
+   "soon": 13899.95,
+   "optional": 2218.18,
+   "unpriced": 14
+  }
+ },
+ "floor_lengths": {
+  "docks": 12,
+  "hazard_outlines": 8,
+  "lane_edges_m": 40.8,
+  "hazard_tape_m": 83.1,
+  "hazard_perimeter_m": 104.5,
+  "dock_outlines_m": 35.3
+ }
+}
