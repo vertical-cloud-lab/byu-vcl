@@ -97,6 +97,22 @@
    },
    "cells": 26471,
    "floor_m2": 265.0
+  },
+  "fewest": {
+   "n": 2,
+   "worst_m": 16.6,
+   "at": [
+    [
+     -11833.0,
+     -6457.0,
+     90.0
+    ],
+    [
+     5458.0,
+     2800.0,
+     0.0
+    ]
+   ]
   }
  },
  "shower": {
@@ -524,10 +540,10 @@
  "bom": {
   "rows": [
    {
-    "item": "Amerex B456, 10 lb ABC, with its wall hook",
+    "item": "Amerex B456, 10 lb ABC, with its 801 wall bracket",
     "qty": 3,
     "unit_usd": 92.99,
-    "source": "distributor listings"
+    "source": "Webstaurant"
    },
    {
     "item": "Rack-upright clamp plate and U-bolts for it (ours)",
@@ -542,16 +558,16 @@
     "source": "estimate"
    },
    {
-    "item": "Combination drench shower and eye/face wash, Guardian G1902 class",
+    "item": "Guardian G1902 combination drench shower and eyewash, its sign",
     "qty": 2,
     "unit_usd": 967.75,
-    "source": "distributor listings"
+    "source": "Webstaurant"
    },
    {
-    "item": "Thermostatic mixing valve in its cabinet (Guardian G3600LF class)",
+    "item": "Thermostatic mixing valve (Guardian G3800LF, now the G6040) in a surface cabinet",
     "qty": 2,
     "unit_usd": 994.0,
-    "source": "distributor listings"
+    "source": "the G6040's sale price (list $1,603)"
    },
    {
     "item": "Plumbing: hot and cold water to each shower, a floor drain under it (a contractor's quote)",
@@ -560,16 +576,16 @@
     "source": "not priced"
    },
    {
-    "item": "O2 monitor with a remote sensor (PureAire class)",
+    "item": "PureAire 99028 O2 deficiency monitor with remote sensor",
     "qty": 8,
     "unit_usd": 2375.0,
-    "source": "distributor listings"
+    "source": "PureAire ($2,375-2,755)"
    },
    {
-    "item": "Remote horn/strobe for it",
+    "item": "PureAire 42002 horn/strobe",
     "qty": 8,
     "unit_usd": 220.0,
-    "source": "distributor listings"
+    "source": "PureAire ($220-315)"
    },
    {
     "item": "O2 monitor post: strut, base, anchors, conduit (ours)",
@@ -584,7 +600,9 @@
     "source": "estimate"
    }
   ],
-  "total_usd": 26127.47
+  "total_usd": 26127.47,
+  "note": "the ICP-MS station's shower and O2 monitor are counted; they go in with the station",
+  "upkeep": "showers: activated weekly, inspected yearly (ANSI Z358.1); O2 monitors: calibrated and their alarms tested as PureAire's manual says; ABC units: monthly checks, yearly service, a 6-year maintenance and a 12-year hydrostatic test (NFPA 10)"
  },
  "places_ok": true
 }

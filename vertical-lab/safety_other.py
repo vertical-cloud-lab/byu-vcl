@@ -23,6 +23,7 @@ The assets, each built part by part from the maker's figures:
 
     python3 safety_other.py                     # the checks -> out/safety_other.json
     python3 safety_other.py plan                # the floor: every unit, the walks -> out/safety_other_plan.png
+    python3 safety_other.py abc-search          # the fewest ordinary units on the racking that pass the rules
     xvfb-run -a python3 safety_other.py sheet   # the assets one by one -> out/safety_other_assets.png
     VLAB_ONLY_TRAYS= xvfb-run -a python3 safety_other.py lab   # in the lab -> out/safety_other_lab.png
 
@@ -907,7 +908,9 @@ def abc_candidates() -> list:
 def abc_search(n_max: int = 4) -> dict:
     """The fewest ordinary units on the racking (abc_candidates) that meet NFPA 10 (every reachable cell within 75 ft of
     walking, both hoods within 50 ft) and keep apart from the Class D (3 m from every Class D unit; at every powder
-    station a Class D unit nearer by 3 m or more), then the shortest farthest walk. -> the choice and the runners-up."""
+    station a Class D unit nearer by 3 m or more), then the shortest farthest walk. -> the fewest and the runners-up.
+    PLACES doesn't take the fewest (two, both where few walk): it takes three that pass, one at each end of the floor
+    and one behind the Shuttles (notes/safety.md)."""
     import itertools
     import safety_render as SR
     cd = [(x, y) for _, k, x, y, f, _ in S.PLACES if k != "pail"]
@@ -939,29 +942,36 @@ def abc_search(n_max: int = 4) -> dict:
 def bom() -> dict:
     n = {k: sum(1 for p in PLACES if p[1] == k) for k in ("abc", "shower", "o2", "o2wall")}
     rows = [
-        ("Amerex B456, 10 lb ABC, with its wall hook", n["abc"], ABC["price_usd"], "distributor listings"),
+        ("Amerex B456, 10 lb ABC, with its 801 wall bracket", n["abc"], ABC["price_usd"], "Webstaurant"),
         ("Rack-upright clamp plate and U-bolts for it (ours)", n["abc"], 25.0, "estimate"),
         ("FIRE EXTINGUISHER sign, 7 x 10 in, and an ABC / NOT FOR METAL FIRES placard", n["abc"], 30.0, "estimate"),
-        ("Combination drench shower and eye/face wash, Guardian G1902 class", n["shower"], SHOWER["price_usd"],
-         "distributor listings"),
-        ("Thermostatic mixing valve in its cabinet (Guardian G3600LF class)", n["shower"], MIXER["price_usd"],
-         "distributor listings"),
+        ("Guardian G1902 combination drench shower and eyewash, its sign", n["shower"], SHOWER["price_usd"],
+         "Webstaurant"),
+        ("Thermostatic mixing valve (Guardian G3800LF, now the G6040) in a surface cabinet", n["shower"],
+         MIXER["price_usd"], "the G6040's sale price (list $1,603)"),
         ("Plumbing: hot and cold water to each shower, a floor drain under it (a contractor's quote)", n["shower"],
          None, "not priced"),
-        ("O2 monitor with a remote sensor (PureAire class)", n["o2"] + n["o2wall"], O2["price_usd"],
-         "distributor listings"),
-        ("Remote horn/strobe for it", n["o2"] + n["o2wall"], O2["strobe_usd"], "distributor listings"),
+        ("PureAire 99028 O2 deficiency monitor with remote sensor", n["o2"] + n["o2wall"], O2["price_usd"],
+         "PureAire ($2,375-2,755)"),
+        ("PureAire 42002 horn/strobe", n["o2"] + n["o2wall"], O2["strobe_usd"], "PureAire ($220-315)"),
         ("O2 monitor post: strut, base, anchors, conduit (ours)", n["o2"], 120.0, "estimate"),
         ("CAUTION ARGON / NITROGEN IN USE sign, 7 x 10 in", n["o2"] + n["o2wall"], 20.0, "estimate"),
     ]
     total = sum(q * p for _, q, p, _ in rows if p)
-    return dict(rows=[dict(item=i, qty=q, unit_usd=p, source=s) for i, q, p, s in rows], total_usd=round(total, 2))
+    return dict(rows=[dict(item=i, qty=q, unit_usd=p, source=s) for i, q, p, s in rows], total_usd=round(total, 2),
+                note="the ICP-MS station's shower and O2 monitor are counted; they go in with the station",
+                upkeep="showers: activated weekly, inspected yearly (ANSI Z358.1); O2 monitors: calibrated and their "
+                       "alarms tested as PureAire's manual says; ABC units: monthly checks, yearly service, a 6-year "
+                       "maintenance and a 12-year hydrostatic test (NFPA 10)")
 
 
 def report() -> dict:
     ob = obstacles()
+    srch = abc_search()
     rep = dict(abc=dict(model=ABC["model"], rating=ABC["rating"], source=ABC["source"], top_mm=ABC_TOP_Z,
-                        top_ok=ABC_TOP_Z <= NFPA10_ABC["top_max"], check=abc_check()),
+                        top_ok=ABC_TOP_Z <= NFPA10_ABC["top_max"], check=abc_check(),
+                        fewest=dict(n=srch["choice"][0], worst_m=round(srch["choice"][1] / 1000.0, 2),
+                                    at=srch["choice"][2]) if srch["choice"] else None),
                shower=dict(model=SHOWER["model"], source=SHOWER["source"], ansi=ANSI, check=shower_check()),
                o2=dict(model=O2["model"], source=O2["source"], alarms=[O2["alarm_low"], O2["alarm_high"]],
                        osha=OSHA_O2, sensor_mm=SENSOR_Z, check=o2_check()),

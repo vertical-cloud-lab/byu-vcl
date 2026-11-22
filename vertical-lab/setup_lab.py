@@ -1137,6 +1137,14 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
         for nm, (mesh, col, spec) in safety.floor_meshes().items():
             sc.add(f"util/{nm}", mesh, col, "util", specular=spec)
             util[nm] = f"util/{nm}"
+    # the safety PR's other assets (Sterling, PR #379, 2026-11-22: "Do these"): the building's ordinary extinguishers on
+    # the racking, a shower and eyewash at the fume hood, the O2 monitors at the argon users and the N2 generator
+    # (safety_other.PLACES; the ICP-MS station's come in with the station). VLAB_SAFETY_OTHER=0 leaves them out.
+    if os.environ.get("VLAB_SAFETY_OTHER", "1") != "0":
+        import safety_other
+        for nm, (mesh, col, spec) in safety_other.floor_meshes().items():
+            sc.add(f"util/{nm}", mesh, col, "util", specular=spec)
+            util[nm] = f"util/{nm}"
     L.apply_state()
     sc.apply()
     sc.add("footprints", footprints(sc, F), W.TAPE_W, "tape", specular=0.0, ambient=0.5)

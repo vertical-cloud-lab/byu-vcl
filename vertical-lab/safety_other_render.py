@@ -3,6 +3,7 @@
     python3 safety_other.py                     # report: NFPA 10 for the ordinary units, ANSI Z358.1 for the showers,
                                                 #   the O2 monitors, every spot's clearances, the BoM -> out/safety_other.json
     python3 safety_other.py plan                # out/safety_other_plan.png
+    python3 safety_other.py abc-search          # the fewest ordinary units on the racking that pass
     xvfb-run -a python3 safety_other.py sheet   # out/safety_other_assets.png
     VLAB_ONLY_TRAYS= xvfb-run -a python3 safety_other.py lab   # out/safety_other_lab.png
 """
@@ -206,7 +207,7 @@ def sheet() -> str:
     sc = SR._studio("so_o2", (1000, 1000))
     SR.add_parts(sc, o2, "asset")
     zb = SO.O2_BOX_Z
-    sc.cam = [(-300.0, -900.0, zb + 380.0), (0.0, -40.0, zb + 260.0), (0, 0, 1)]
+    sc.cam = [(-380.0, -1150.0, zb + 420.0), (0.0, -40.0, zb + 285.0), (0, 0, 1)]
     sc.view_angle = 34.0
     tiles.append((Image.fromarray(sc.render_base()), "Its monitor, close up",
                   ["zirconia sensor, 0-25 %, 10+ years", "6.5 x 4.5 x 3.25 in, a 90 dB horn inside",
@@ -285,6 +286,10 @@ def main(what: str):
         sheet()
     elif what == "lab":
         lab_stills()
+    elif what == "abc-search":
+        r = SO.abc_search()
+        print(json.dumps(dict(candidates=r["candidates"], fewest=r["choice"], runners_up=r["runners_up"]), default=float,
+                         indent=1))
     elif what == "all":
         SO.report()
         plan()

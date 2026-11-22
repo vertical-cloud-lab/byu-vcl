@@ -23,9 +23,9 @@ checks, the figures, the clip). The numbers below are in [`out/safety.json`](../
 | EOS M 400-4 | B570 on a post in front of it, a 680R beside it | 0.5 m; 100 kg of powder in its containers |
 
 Not given one: the fume hood (Weck's reagent, no powder), the wire EDM (deionised water), both Instrons, the Meltio cell
-(wire, not powder) and the ICP-MS station (acids; it wants an eyewash and a shower, not Class D). The building's own
-ordinary (ABC/CO2) extinguishers aren't modelled; keep them apart from the Class D units and signed differently (DAL's
-mounting study: "never use the CO2 or water on a metal fire").
+(wire, not powder) and the ICP-MS station (acids; it has an eyewash and a shower instead, below). The building's own
+ordinary extinguishers, kept apart from the Class D units and signed differently, the showers and the O2 monitors are
+in [the other safety assets](#the-other-safety-assets-ordinary-extinguishers-showers-o2-monitors) below.
 
 ![The floor](../out/safety_plan.png)
 
@@ -209,6 +209,153 @@ About **$34,500**, two thirds of it the two 680Rs. Upkeep: monthly checks logged
 contractor (BYU Risk Management doesn't service Class D; the College's industrial hygienist suggested Associated Fire
 Protection, Salt Lake City); 6-year maintenance and a 12-year hydrostatic test for dry powder; recharge after any use.
 
+## The other safety assets: ordinary extinguishers, showers, O2 monitors
+
+Sterling, on this PR (2026-11-22), of the list of what wasn't modelled ("the building's ordinary extinguishers (keep them
+apart and signed differently); an eyewash and shower at the ICP-MS hood and the fume hood; O2 monitors where argon and
+nitrogen are used"): "Do these." The code is [`safety_other.py`](../safety_other.py) (the models, where they go, the
+checks) and [`safety_other_render.py`](../safety_other_render.py) (the figures); the numbers are in
+[`out/safety_other.json`](../out/safety_other.json).
+
+![The other safety assets](../out/safety_other_assets.png)
+
+| Where | What | Why there |
+| --- | --- | --- |
+| Rack W's upright at the aisle's west end, rack E's upright by the ICP-MS station, rack N's upright behind Shuttle 1 | an Amerex **B456** (10 lb ABC) each, under a red FIRE EXTINGUISHER sign and an ABC placard | NFPA 10's 75 ft for the whole floor, 50 ft for both hoods; 4.3 m or more from every Class D unit |
+| West of the fume hood | a Guardian **G1902** shower and eyewash | 1.2 m from the hood; the side away from the DED's powder |
+| In front of the ICP-MS hood's closed half (the station at notes/icpms.md's suggested spot) | a G1902 | 0.9 m from the hood; goes in with the station |
+| Each argon user and store: the cylinder manifold, the glovebox, the rePowder, the Aconity MIDI, the DED, the EOS M 400-4, the ICP-MS station's dewar | a PureAire **O2 monitor** on a post, its sensor 12 in up | argon sinks; 0.3-0.9 m from where the gas comes in (the EOS's 2.5 m, its inlet not known) |
+| Shuttle 1's side, by the N2 generator | a PureAire O2 monitor on the Shuttle's panel, at 5 ft | nitrogen mixes at breathing height |
+
+![The floor](../out/safety_other_plan.png)
+
+### The building's ordinary extinguishers, kept apart and signed differently
+
+- **Amerex B456** (Amerex's catalogue, ABC table p. 16, brackets p. 19): 10 lb ABC (monoammonium phosphate), UL
+  4-A:80-B:C, 20 H x 7.75 W x 5 D in on a 5 in cylinder, 18 lb shipping, 195 psig, 15-21 ft, 22 s, aluminium valve,
+  hose and nozzle, the 801 wall bracket; $92.99 (Webstaurant). Not the B402 the PR first named: that is Amerex's 5 lb
+  unit (3-A:40-B:C, 15.25 in). Drawn part by part: the red shell, the valve and gauge, the lever over the carry handle,
+  the pin, the tamper seal and the inspection tag, the hose down the left side to the nozzle in its clip, the label with
+  NFPA 10's letter symbols (A in a green triangle, B in a red square, C in a blue circle) and NOT FOR METAL FIRES. The
+  valve, lever and hose follow Amerex's family look (the B570's), not a B456's photo.
+- **Where a warehouse keeps them: on the racking.** Each hangs on a steel plate clamped to a rack upright's aisle face
+  with two U-bolts (ours), its top at 1,200 mm (NFPA 10 6.1.3.8.1: at most 5 ft for 40 lb or less; the handle inside
+  the ADA's 48 in reach), facing the floor. They are the building's, not a station's, and they read that way: away
+  from the machines, on the building's edge, on the paths people walk to the exits.
+- **Apart from the Class D units, by rule** (`abc_check`): every ordinary unit is 3 m or more in a straight line from
+  every fixed Class D unit (they are 4.33-4.57 m), and at every powder station the nearest extinguisher by walking is a
+  Class D unit, nearer by 3 m or more. The walks, Class D then ordinary: EOS 0.5 / 6.6 m, glovebox 0.9 / 5.1, packaging
+  1.1 / 12.8, DED 1.3 / 10.8, Aconity 1.7 / 10.7, Shuttles 2.0 / 7.3 and 1.9 / 7.4, rePowder 2.2 / 8.5, sieving
+  4.0 / 9.3. Someone fighting a metal fire reaches a yellow unit first.
+- **Signed differently.** Class D: a white sign with a red band and the yellow star, CLASS D, COMBUSTIBLE METALS ONLY,
+  NO WATER - NO CO2, on red posts at the stations, with a flag sign at 80 in. Ordinary: a solid red FIRE EXTINGUISHER
+  sign with a white arrow down, and under it a placard (ours) with A B C in their own colours and shapes, NOT FOR METAL
+  FIRES and USE THE YELLOW CLASS D, on the blue racking. No shared shape, colour or mount.
+- **NFPA 10:** Class A, ordinary hazard (Table 6.2.1.1): every reachable 100 mm cell of the floor within 75 ft of
+  walking, round the machines grown 250 mm for a body: the farthest is **19.0 m** (62 ft), at the floor's south edge by
+  the Meltio cell's west side. Class B at the hoods (Table 6.3.1.1, an 80-B unit, extra hazard: 50 ft): the fume hood 9.8 m,
+  the ICP-MS hood 0.9 m. By area a 4-A unit covers 6,000 ft2 and the checked floor is 265 m2 (2,850 ft2).
+- **Chosen with a search, not by it.** `abc_search` tries every upright facing the floor (21; 17 of them 3 m from
+  every Class D unit) in ones, twos and threes against these rules. Two would do: rack W's with rack N's upright behind
+  the Aconity, 16.6 m at worst. But then nothing is near the ICP-MS hood (10.8 m) or the floor's east half, and both
+  stand where few walk. The three chosen pass at 19.0 m (the best three, two of them behind the Shuttles, 16.4 m): one
+  on the main aisle's axis at its west end, seen down its length; one at the south-east, by the ICP-MS station (rack
+  E's upright on the aisle's axis is 2.0 m from the packaging station's Class D unit, too close); and one in the
+  corridor behind the Shuttles.
+- **Left out of the walk:** the dead ends round the Meltio cell in the south-east corner, against walls the model
+  doesn't have: the pocket behind it, 1.1 m between it and the east wall and closed at its north end by rack E, and the
+  strip south of it. They are 26.9 m from the nearest unit. If people work there, the cell wants a unit of its own.
+
+### An eyewash and drench shower at each hood
+
+- **Guardian G1902** (its spec sheet, rev. 0615, "tested to and comply with ANSI Z358.1-2014"): the shower arm's centre
+  line 89 in up and the actuating arm 5-3/4 in over it; a 10 in orange ABS showerhead, its underside 84 in up and its
+  centre 24 in from the pipe; a 1 in stay-open brass ball valve with a stainless actuating arm and a 29 in pull rod with
+  a triangle handle, its bottom 65.5 in up; two GS-Plus eyewash heads 6.5 in apart, their tops 37.5 in up, in an
+  11-1/8 in stainless bowl 9.25 in from the pipe; a 1/2 in ball valve 6 in beside the bowl and a cast aluminium flag
+  handle 5 in beyond it; schedule 40 galvanized pipe in orange polyethylene covers; 1-1/4 in NPT top inlet, the bowl's
+  waste out at 9.25 in; a 9 in cast aluminium floor flange; 20 gpm; a green identification sign (EMERGENCY SHOWER / EYE
+  WASH, with ISO 7010's E012 and E011 pictograms drawn plainly); $967.75 (Webstaurant).
+- **Tempered water:** ANSI wants 60-100 F. A thermostatic mixing valve (Guardian G3800LF: 3-44 gpm, 85 F with a 90 F
+  limit, 12 x 10.75 x 7.1 in; discontinued, its successor the G6040 about $994) in a surface cabinet hung on the supply
+  over the column (ours), hot and cold down from the roof steel. **Ours, too: a floor drain** under each shower and a
+  36 in green square round it, kept clear. ANSI asks for neither. But a shower runs 20 gpm for 15 minutes, 1,100 L,
+  and this floor holds metal powder: the water needs somewhere to go.
+- **ANSI/ISEA Z358.1** (`shower_check`): reached within 10 s (about 55 ft, 16.8 m) and, for a strong acid or caustic,
+  immediately adjacent (read here as 3 m): **1.2 m** from the fume hood (Weck's reagent: KMnO4 and NaOH) and **0.9 m**
+  from the ICP-MS hood (HNO3, HCl). The water column 82-96 in up: 84 in. The eyewash 33-53 in: 37.5 in. The actuator at
+  most 69 in: 65.5 in. The spray's centre 16 in from any obstruction: its 32 in square is kept off every machine, docked
+  MiR250, target post, the aisle and the other units (`places_check`).
+- **Away from the powder.** At the fume hood the shower goes west, into the 880 mm gap by the chargers, not east into
+  the gap by the DED: its floor square is 2.3 m from the DED's machine. The ICP-MS hood's is 3.1 m from the packaging
+  station.
+- **The ICP-MS station isn't on the floor yet.** Its shower is placed at notes/icpms.md's suggested spot (the south row's
+  east end, facing north): in front of the hood's closed half, its spray 31 mm clear of the MiR250 docked at the hood's
+  open half, because the 253 mm between the hood and rack E is too narrow. It, the station's O2 monitor and the station
+  go into `setup_lab.build` together (`safety_other.ICPMS_ON_FLOOR`).
+
+### Oxygen monitors where argon and nitrogen are used
+
+- **PureAire 99028** (O2 deficiency monitor with remote sensor; its product page and manual): a zirconium oxide sensor,
+  0-25 % O2, over 10 years' life, on a 10-30 ft cable; a 3/4 in backlit LCD; alarms at 19.5 % and 18.0 % (OSHA 29 CFR
+  1910.134: oxygen deficient below 19.5 %), two relays and a fault relay, a 90 dB horn inside, 4-20 mA, 24 VDC; a
+  6.5 x 4.5 x 3.25 in enclosure (the manual says 5.125 x 3.15 x 3.00 in); $2,375-2,755. Its horn/strobe, P/N 42002,
+  $220-315, over it. The sensor head's and the strobe's sizes aren't published: ours. Under the strobe's box, a 7 x
+  10 in ANSI Z535 CAUTION sign: ARGON (or NITROGEN) IN USE, OXYGEN MONITOR, IF THE ALARM SOUNDS LEAVE THE AREA.
+- **The sensor's height follows the gas.** Argon is 1.38 times as dense as air (from the molar masses), so its sensor
+  sits at 12 in, PureAire's lowest ("no closer than 12 inches above floor level ... the characteristics of the gas
+  (lighter or heavier than air) ... should all be considered"); the monitor itself at eye level, 1.4-1.5 m. Nitrogen
+  (0.97) mixes: its sensor is the monitor, at 5 ft (Emory's 4-6 ft for liquid nitrogen; Columbia's PureAire units at
+  about 5 ft). Nobody we found publishes an argon height; 12 in is a reading of PureAire's rule, not a quoted figure.
+- **Where:** one at each place argon is stored or comes in: the four-cylinder manifold at the west end, the glovebox,
+  the rePowder, the Aconity MIDI and the DED (each where setup_lab's argon line comes down), the EOS M 400-4 (by its
+  front: where its gas comes in isn't modelled), and the ICP-MS station's 180 L liquid argon dewar (liquid argon makes
+  about 847 times its volume of gas: 180 L is about 150 m3). Each is placed by the same search as the other units,
+  within Columbia's 20 ft detection radius of its source (0.3-0.9 m; the EOS 2.5 m). And one for nitrogen, on Shuttle
+  1's side by the N2 generator between the Shuttles (Parker Balston UHPN2-1100: 1.1 L/min at most, little gas, but it
+  is where nitrogen is made, in an 800 mm gap).
+- **What it doesn't cover:** the AirGradient ONEs on the junction boxes are air-quality monitors, not O2 monitors, and
+  stay as they are. The Meltio cell's shielding gas isn't in the model.
+
+### The arms, the docks, the bill
+
+- **Clear of every dock, lane and turning circle:** every unit is checked like the Class D units (`places_check`: all
+  thirteen clear), against the machines, the racking, chapter 5's fixtures, every docked MiR250 with its unit, every
+  approach lane and pivot circle, the target posts' feet, the aisle, the Shuttles' fronts, the rePowder's plates, every
+  Class D unit and keep-clear area, and each other. The ICP-MS station's footprint and its two docked MiR250s are
+  added for the purpose. **Not re-run:** the arm audits. The units stand where no dock, lane or pivot circle reaches,
+  as the Class D units do, so the arms' clips should not meet them; the next full render's inline audit is the check.
+- **In every lab scene from now on:** `setup_lab.build` adds them after the Class D units; `VLAB_SAFETY_OTHER=0` leaves
+  them out.
+
+| Item | Qty | Each | Source |
+| --- | --- | --- | --- |
+| Amerex B456, 10 lb ABC, with its 801 bracket | 3 | $92.99 | Webstaurant |
+| Rack-upright clamp plate and U-bolts (ours) | 3 | ~$25 | estimate |
+| FIRE EXTINGUISHER sign and ABC placard | 3 | ~$30 | estimate |
+| Guardian G1902 shower and eyewash | 2 | $967.75 | Webstaurant |
+| Mixing valve (G3800LF, now G6040) in a cabinet | 2 | ~$994 | the G6040's sale price (list $1,603) |
+| Plumbing: hot and cold water, a floor drain | 2 | not priced | a contractor's quote |
+| PureAire 99028 O2 monitor with remote sensor | 8 | $2,375 | PureAire ($2,375-2,755) |
+| PureAire 42002 horn/strobe | 8 | $220 | PureAire ($220-315) |
+| O2 monitor post (ours) | 7 | ~$120 | estimate |
+| CAUTION ARGON / NITROGEN IN USE sign | 8 | ~$20 | estimate |
+
+About **$26,100** before the plumbing, four fifths of it the eight O2 monitors (one of them, and one shower, the ICP-MS
+station's). Upkeep: showers activated weekly and inspected yearly (ANSI Z358.1); O2 monitors calibrated and their alarms
+tested as PureAire's manual says; the ABC units checked monthly and serviced yearly, with a 6-year maintenance and a
+12-year hydrostatic test (NFPA 10).
+
+### Open, for the other assets
+
+- **For BYU EHS:** the building's own extinguishers, signs and their positions (these stand in for them); whether the
+  showers' floor drains are wanted, and where the drains go; whether O2 monitors are wired to a central panel and an
+  alarm at the entrances, as some campuses do, rather than standing alone as drawn.
+- **For BYU Facilities:** hot and cold water to two points on the floor, and a floor drain under each.
+- **For Kardex and EHS:** nitrogen reaches each tray through the docks' couplings inside the Shuttles. A leak inside a
+  Shuttle is out of reach of any monitor on the floor; whether a sensor is wanted inside, at the service door.
+- **For PureAire:** the sensor head's size, and a mounting height for argon.
+
 ## Open
 
 - **For MiR:** the 200 mm overhang on a top module, and the footprint and protective-field settings for it.
@@ -221,8 +368,7 @@ Protection, Salt Lake City); 6-year maintenance and a 12-year hydrostatic test f
   something an extinguisher at the opening reaches. Kardex offers fire suppression inside its units; ask what is
   compatible with combustible metal powder (no water, no CO2).
 - **The sieving cell** has no unit of its own (above).
-- **Not modelled:** the building's ordinary extinguishers; an eyewash and shower at the ICP-MS hood and the fume hood
-  (ANSI Z358.1); O2 monitors where argon and nitrogen are used (the AirGradients aren't O2 monitors).
+- **The other safety assets** have their own open questions ([below](#open-for-the-other-assets)).
 
 ## Sources
 
@@ -241,6 +387,22 @@ Protection, Salt Lake City); 6-year maintenance and a 12-year hydrostatic test f
   station: <= 75 ft travel distance per OSHA 1910.157, ideally <= 25 ft. Never water, CO2, or ABC on this powder."
 - NFPA 10 (2022) 6.1.3.8 and 6.5; OSHA 29 CFR 1910.157(d)(5).
 - MiR250 specifications (2023-06-28, Hartfiel's copy): payload 250 kg; top modules equal to the robot's footprint.
+- Amerex's portable catalogue, ABC dry chemical (p. 16), CO2 (p. 15) and brackets (p. 19): https://www.webstaurantstore.com/documents/specsheets/amerex_abc_dry_chemical_specs.pdf,
+  https://www.webstaurantstore.com/documents/pdf/brochure/amerex_portable-fire-extinguisher_catalog_brochure.pdf;
+  B456 at Webstaurant: https://www.webstaurantstore.com/amerex-fe-b456-10-lb-dry-chemical-abc-fire-extinguisher-with-wall-bracket-14967-ul-rating-4a-80b-c/62B14967.html
+- Guardian Equipment G1902 spec sheet (rev. 0615): https://www.cooneybrothers.com/userfiles/ad/documents/Guardian_G1902_Specification_Sheet.pdf;
+  at Webstaurant: https://www.webstaurantstore.com/guardian-equipment-g1902-safety-station-with-eyewash-and-stainless-steel-bowl/436G1902.html
+- Guardian G3800LF mixing valve spec sheet: https://res.cloudinary.com/consolidated-supply/resource/raw/guardian_g3800_specification_sheet.pdf
+- ANSI/ISEA Z358.1-2014, via Bradley's quick compliance guide: https://www.webstaurantstore.com/documents/pdf/4055_efx_quick_compliance_guide.pdf;
+  Minnesota DLI on strong acids and caustics: https://www.dli.mn.gov/sites/default/files/pdf/emergency_eyewashes_showers.pdf
+- PureAire, O2 deficiency monitor with remote sensor: https://www.pureairemonitoring.com/product/oxygen-deficiency-monitor-with-remote-sensor/;
+  its manual (99028): https://www.pureairemonitoring.com/wp-content/uploads/2024/04/99028-Air-Check-O2-Remote-25-Manual.pdf;
+  where to mount one: https://www.pureairemonitoring.com/how-many-oxygen-monitors-should-be-installed-where-should-i-mount-one/
+- Emory EHS-339, oxygen monitoring: https://ehso.emory.edu/sso/documents/ehs-339-oxygen-monitoring-system-guidelines.pdf;
+  Columbia's oxygen sensor supplement: https://research.columbia.edu/sites/default/files/content/EHS/ProjectManagers/OxygenSensorSupplement2026.pdf;
+  UT Austin EHS on cryogens (expansion ratios): https://ehs.utexas.edu/working-safely/equipment-safety/cryogens
+- OSHA 29 CFR 1910.134(b), oxygen deficient atmosphere: https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.134
+- NFPA 10 (2022) Tables 6.2.1.1 and 6.3.1.1, 6.1.3.8.1.
 
 ## Running it
 
@@ -258,3 +420,12 @@ VLAB_MIR_CLASS_D=0 ARM_AUDIT=1 ARM_AUDIT_TAG=noclassd VIZ3D_FPS=4 xvfb-run -a py
 
 `VLAB_MIR_CLASS_D=0` leaves the MiR250s' units off (`props.mir250`); `VLAB_CLASS_D=0` leaves the fixed units out of
 `setup_lab.build`.
+
+```
+python3 safety_other.py                      # the other assets' checks -> out/safety_other.json
+python3 safety_other.py plan                 # out/safety_other_plan.png
+xvfb-run -a python3 safety_other.py sheet    # out/safety_other_assets.png
+VLAB_ONLY_TRAYS= xvfb-run -a python3 safety_other.py lab   # out/safety_other_lab.png
+```
+
+`VLAB_SAFETY_OTHER=0` leaves the ordinary extinguishers, the showers and the O2 monitors out of `setup_lab.build`.

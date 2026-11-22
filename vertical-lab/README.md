@@ -61,6 +61,34 @@ The arms against the MiR's unit (`ARM_AUDIT=1`, strict rules, 4 fps; the same cl
 Clip: `out/hd/safety.mp4` (1080p, 15 fps), `out/mp4/safety.mp4`, `out/safety.gif`. BoM: about $34,500
 (`out/safety.json`), two thirds of it the two 680Rs.
 
+### The other safety assets: ordinary extinguishers, showers, O2 monitors (2026-11-22)
+
+Sterling, PR #379, of what the PR hadn't modelled (the building's ordinary extinguishers, kept apart and signed
+differently; an eyewash and shower at the ICP-MS hood and the fume hood; O2 monitors where argon and nitrogen are used):
+"Do these." The code is [`safety_other.py`](safety_other.py) and [`safety_other_render.py`](safety_other_render.py);
+the write-up is in [`notes/safety.md`](notes/safety.md#the-other-safety-assets-ordinary-extinguishers-showers-o2-monitors).
+
+![The other safety assets](out/safety_other_assets.png)
+
+- **The building's ordinary extinguishers:** three Amerex **B456** (10 lb ABC, 4-A:80-B:C; Amerex's catalogue) on the
+  racking's uprights, where a warehouse keeps them, under a red FIRE EXTINGUISHER sign and an ABC / NOT FOR METAL FIRES
+  placard. **Kept apart:** 4.3 m or more from every Class D unit, and at every powder station a Class D unit is nearer
+  by 3 m or more. **Signed differently:** red, an arrow and A B C in their own shapes, on the blue racking; the Class D
+  units are white and yellow-starred on red posts at the stations. NFPA 10: the farthest walk 19.0 m of 75 ft (22.9 m);
+  the hoods 9.8 m and 0.9 m of 50 ft.
+- **A Guardian G1902 shower and eyewash** (its spec sheet: head 84 in up and 24 in out, eyewash 37.5 in, triangle
+  handle 65.5 in) at the fume hood (1.2 m, on the side away from the DED's powder) and at the ICP-MS hood (0.9 m, at
+  notes/icpms.md's suggested spot; it goes in with the station). ANSI Z358.1: within 10 s and immediately adjacent,
+  the heights, the spray's 16 in clear. Tempered water from a thermostatic mixing valve, and (ours) a floor drain.
+- **PureAire 99028 O2 monitors** (alarms at 19.5 and 18.0 %, a horn and strobe, a CAUTION sign) at every argon user
+  and store (the cylinder manifold, the glovebox, the rePowder, the Aconity, the DED, the EOS, the ICP-MS's dewar), the
+  sensor 12 in up because argon sinks; and one at 5 ft for the N2 generator, on Shuttle 1's side.
+- Every spot is checked like the Class D units' (every dock, lane, turning circle, target post, the aisle, each
+  other): all thirteen clear. They go into `setup_lab.build` (`VLAB_SAFETY_OTHER=0` leaves them out). About $26,100
+  before the plumbing; the arm audits weren't re-run.
+
+![The floor](out/safety_other_plan.png)
+
 ## Round 14 (A): the lab, the VLM and its services (2026-11-20)
 
 Sterling's notes on round 12's video, handed to run A of four (the lab, the VLM and its services; B, C and D took the
