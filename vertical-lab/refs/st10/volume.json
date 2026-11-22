@@ -1,0 +1,10 @@
+{
+ "note": "machining_fit.py volume st10: the old lathe (the 3437 x 1596 x 2167 mm box and the 2104 x 1283 x 1000 mm loader box, PR #373 at 5b41a36) against the measured ST-10's closed outside and its bar feeder, both placed by the spindle nose; voxel centres on a 25 mm grid tested against every part",
+ "step_mm": 25.0,
+ "measured_m3": 5.27,
+ "old_m3": 14.46,
+ "both_m3": 4.81,
+ "volume_iou": 0.322,
+ "old_outside_measured_m3": 9.65,
+ "measured_outside_old_m3": 0.46
+}

@@ -4,8 +4,8 @@ cleaning and drying step (IPA for example)").
 
 One cup's path through the recommended cell (notes/machining.md), as a model and a clip:
 
-1. **The lathe** (a compact bar-fed CNC turning centre with a short-bar loader, drawn at the size of the machine named
-   in ``machining.LATHE``; the inside is ours) turns the cup from Ø20 mm bar: face, turn the OD to 19.05 mm, drill
+1. **The lathe** (a Haas ST-10 with its Bar Feeder V2: the outside from Haas's machine layout drawing, ``ST10``, checked
+   against footage by machining_fit.py; the inside is ours) turns the cup from Ø20 mm bar: face, turn the OD to 19.05 mm, drill
    12.5 mm with a 118 deg point, finish-bore 12.70 mm, chamfer, part off. Dry but for a minimum-quantity mist of
    alcohol at the tool (as DESY, CERN and Thermo Fisher machine high-purity Al and Cu). The bar and the cup are drawn
    in half section while they are in the machine.
@@ -372,92 +372,86 @@ def _to_cell(m: pv.PolyData) -> pv.PolyData:
     return m.transform(M_ST10, inplace=False)
 
 
+SLOT = dict(x0=100.0, x1=215.0, z0=855.0, z1=915.0)    # the belt's way out through the door's lower panel (ours), cell
+# In the cell the pendant is swung back against the enclosure (it hangs on a swinging arm, R17.4 in on Haas's plan), its
+# face 110 mm proud instead of 205, clear of the blow-off station's post; footage and the fit keep it where Haas draws it
+CELL_ST10 = dict(pend_d=110.0)
+
+
 def lathe_parts() -> dict:
-    """{name: (mesh, colour, opacity)} of the turning centre's body, cell frame. Its front (the door) faces +y, the
-    headstock is at +x, the short-bar loader behind it; the chip conveyor leaves at the back into one bin per metal."""
-    x0, x1, y1, D, H = LATHE["x0"], LATHE["x1"], LATHE["y1"], LATHE["D"], LATHE["H"]
-    y0 = y1 - D
-    t = 20.0
-    door = dict(x0=-620.0, x1=520.0, z0=930.0, z1=1800.0)
-    slot = dict(x0=100.0, x1=215.0, z0=855.0, z1=915.0)        # the belt's way out under the door
-    body = [
-        _box(x0, x1, y0, y0 + t, 0, H),                      # back
-        _box(x0, x0 + t, y0, y1, 0, H), _box(x1 - t, x1, y0, y1, 0, H),      # sides
-        _box(x0, x1, y0, y1, H - t, H),                      # roof
-        _box(x0, door["x0"], y1 - t, y1, 0, H - t), _box(door["x1"], x1, y1 - t, y1, 0, H - t),   # front, beside
-        _box(door["x0"], door["x1"], y1 - t, y1, door["z1"], H - t),       # over the door
-        _box(door["x0"], slot["x0"], y1 - t, y1, 0, door["z0"]),
-        _box(slot["x1"], door["x1"], y1 - t, y1, 0, door["z0"]),
-        _box(slot["x0"], slot["x1"], y1 - t, y1, 0, slot["z0"]), _box(slot["x0"], slot["x1"], y1 - t, y1, slot["z1"],
-                                                                      door["z0"]),
-    ]
-    trim = [_box(x0 - 5, x1 + 5, y0 - 5, y1 + 5, 0, 90),      # plinth
-            _box(x0, x1, y1 - t - 2, y1 + 2, H - 140, H - t)]           # the header band
-    # the door: frame and window, slid shut; the control pendant on the right; a work light inside
-    df = [_box(door["x0"], door["x1"], y1, y1 + 30, door["z0"], door["z0"] + 70),
-          _box(door["x0"], door["x1"], y1, y1 + 30, door["z1"] - 60, door["z1"]),
-          _box(door["x0"], door["x0"] + 60, y1, y1 + 30, door["z0"], door["z1"]),
-          _box(door["x1"] - 60, door["x1"], y1, y1 + 30, door["z0"], door["z1"]),
-          _box(door["x1"] - 50, door["x1"] - 30, y1 + 30, y1 + 60, 1150, 1500)]           # the handle
-    glass = _box(door["x0"] + 60, door["x1"] - 60, y1 + 10, y1 + 18, door["z0"] + 70, door["z1"] - 60)
-    pendant = _merge([_box(820, 1240, y1, y1 + 90, 1150, 1750), _box(850, 1210, y1 + 90, y1 + 92, 1430, 1720)])
-    # inside: the chip pan sloping back, the slant bed, the headstock, the collet nose
-    pan = _merge([_box(-1000, x1 - t, y0 + t, y1 - t, 640, 660)])
-    # the slant bed behind the turret's reach (620-700 mm from the axis along the slant), on a base casting
+    """{name: (mesh, colour, opacity)} of the turning centre, cell frame. Its front (the door) faces +y, the headstock
+    is at +x with the bar feeder beyond it, the chip conveyor climbs out of the -x end into one bin per metal. The
+    outside is the measured ST-10 (``st10_parts``, placed by ``M_ST10``); the inside, the belt and the bins are ours."""
+    out = {}
+    sx0, sx1 = X_HEAD - SLOT["x1"], X_HEAD - SLOT["x0"]       # the slot in the machine's frame
+    for name, (m, col, op) in st10_parts(CELL_ST10, inside=True).items():
+        if name == "door":                                     # cut the belt's slot out of the door's lower panel
+            p = ST10
+            x0d, x1d = p["panel_x0"], p["panel_x0"] + p["panel_w"]
+            parts = [_box(x0d, x1d, -30, -6, SLOT["z1"], p["win_z0"]),
+                     _box(x0d, sx0, -30, -6, p["door_z0"] - 20, SLOT["z1"]),
+                     _box(sx1, x1d, -30, -6, p["door_z0"] - 20, SLOT["z1"]),
+                     _box(sx0, sx1, -30, -6, p["door_z0"] - 20, SLOT["z0"]),
+                     _box(x0d, x1d, -30, -6, p["win_z1"], p["door_z1"] + 30),
+                     _box(x0d, x0d + p["win_x0"], -30, -6, p["win_z0"], p["win_z1"]),
+                     _box(x0d + p["win_x0"] + p["win_w"], x1d, -30, -6, p["win_z0"], p["win_z1"]),
+                     _box(x1d - 75, x1d - 55, -70, -30, 1150, 1450)]
+            m = _merge(parts)
+        out[f"lathe/{name}"] = (_to_cell(m), col, op)
+    p = ST10
+    xe0, xe1 = X_HEAD - p["W"], X_HEAD                         # the enclosure in the cell
+    ye1, ye0 = Y_FRONT, Y_FRONT - p["D"]
+    t, bh = p["t"], p["base_h"]
+    # inside: the chip pan on the base, the slant bed beyond the turret's reach (760-840 mm from the axis along the
+    # slant, as before; the far side's tools reach 648 mm), narrowed to fit the real 1021 mm depth, its base casting
+    # against the back wall behind the tools' sweep, the headstock, the spindle nose
+    pan = _box(xe0 + t, xe1 - t, ye0 + t, ye1 - t, bh, bh + 12)
     n = np.array([0.0, -TURRET_U[2], TURRET_U[1]])
     Mb = np.eye(4)
     Mb[:3, 0], Mb[:3, 1], Mb[:3, 2] = (1, 0, 0), n, -TURRET_U
     Mb[:3, 3] = (0, SPIN_Y, SPIN_Z)
-    slant = _box(-800, 700, -380, 380, 760, 840).transform(Mb, inplace=False)
-    bed = _merge([_box(-800, 700, -2380, -1950, 90, 1500), _box(-800, 700, -1950, -1500, 90, 930)])
-    head = _box(260, 760, SPIN_Y - 260, SPIN_Y + 250, 760, 1340)
+    slant = _box(-800, 700, -140, 140, 760, 840).transform(Mb, inplace=False)
+    bed = _box(-800, 700, ye0 + t, ye0 + 140, bh, 1450)
+    head = _box(260, min(760, xe1 - t - 10), SPIN_Y - 260, SPIN_Y + 250, 760, 1340)
     nose = _cyl((240, SPIN_Y, SPIN_Z), (262, SPIN_Y, SPIN_Z), 95.0, res=64)
-    # the belt: a short narrow conveyor along y, from under the spindle out through the slot to the upender (ours)
+    # the belt: a short narrow conveyor along y, from under the spindle out through the door's slot to the upender
     belt = _box(BELT_X - 20, BELT_X + 20, BELT_Y[0], BELT_Y[1], BELT_Z - 22, BELT_Z)
     belt_frame = _merge([_box(BELT_X - 26, BELT_X - 20, BELT_Y[0] - 10, BELT_Y[1] + 2, BELT_Z - 40, BELT_Z + 4),
                          _box(BELT_X + 20, BELT_X + 26, BELT_Y[0] - 10, BELT_Y[1] + 2, BELT_Z - 40, BELT_Z + 4),
-                         _box(BELT_X - 20, BELT_X + 20, BELT_Y[1] - 80, BELT_Y[1] - 60, 660, BELT_Z - 40),
-                         _box(BELT_X - 20, BELT_X + 20, BELT_Y[0] + 20, BELT_Y[0] + 40, 660, BELT_Z - 40),
+                         _box(BELT_X - 20, BELT_X + 20, BELT_Y[1] - 80, BELT_Y[1] - 60, 520, BELT_Z - 40),
+                         _box(BELT_X - 20, BELT_X + 20, BELT_Y[0] + 20, BELT_Y[0] + 40, bh + 12, BELT_Z - 40),
                          # the upender's stand and its rotary actuator, beside the pivot
                          _box(BELT_X - 30, BELT_X + 30, UP_Y - 40, UP_Y + 25, 520, BELT_Z - 30),
                          _box(BELT_X + 22, BELT_X + 52, UP_Y - 18, UP_Y + 18, BELT_Z - 40, BELT_Z + 4)])
-    # the short-bar loader behind the headstock (sized by machining.LATHE), bars on its sloping magazine
-    lx0, lx1, lw = x1, x1 + LATHE["loader_l"], LATHE["loader_w"]
-    loader = [_box(lx0, lx1, SPIN_Y - lw / 2, SPIN_Y + lw / 2, 90, 900), _box(lx0 + 60, lx1 - 60, SPIN_Y - 300,
-                                                                            SPIN_Y + 300, 900, 1000)]
+    # the bar being fed: the feeder's channel and the spindle liner through the motor cover into the headstock; the
+    # magazine's bars on the feeder's top
+    fx1 = X_HEAD + p["lcov_w"]
+    feed = _cyl((xe1 - 200, SPIN_Y, SPIN_Z), (fx1 + 40, SPIN_Y, SPIN_Z), 45.0, res=32)
     bars = []
+    ztop = p["feed_z1"] + p["feed_lid"]
     for k in range(6):
-        y = SPIN_Y - 250 + 42 * k
-        bars.append(_cyl((lx0 + 120, y, 1000 + BAR_R + 6 * k / 5), (lx0 + 120 + 1000, y, 1000 + BAR_R + 6 * k / 5),
-                         BAR_R, res=24))
-    feed = _cyl((x1 - 10, SPIN_Y, SPIN_Z), (lx0 + 120, SPIN_Y, SPIN_Z), 45.0, res=32)
-    # the chip conveyor out of the back into the bin of the metal being cut, and the other metal's bin beside it
-    # the chip conveyor (inside the body's -x end) lifts the chips into the bin of the metal being cut; the other
-    # metal's bin waits beside it, so Al and Cu chips never share a bin
-    conv = _merge([_box(x0 + 40, -1050, SPIN_Y - 250, SPIN_Y + 250, 700, 1250),
-                   _box(x0 - 330, x0 + 40, SPIN_Y - 150, SPIN_Y + 150, 900, 1180)])
-    bin_al = _open_box(x0 - 560, x0 - 60, SPIN_Y - 250, SPIN_Y + 250, 0, 650, 6)
-    bin_cu = _open_box(x0 - 560, x0 - 60, SPIN_Y + 290, SPIN_Y + 790, 0, 650, 6)
-    # the alcohol MQL unit on the body's front left, its line into the work zone (drawn to the panel)
-    mql = _merge([_box(-1000, -760, y1, y1 + 160, 1300, 1620), _cyl((-880, y1 + 80, 1620), (-880, y1 + 80, 1720),
-                                                                    35.0, res=24)])
-    return {
-        "lathe/skin": (_merge(body), SHEET, 1.0),
-        "lathe/trim": (_merge(trim + [pendant]), TRIM, 1.0),
-        "lathe/door": (_merge(df), (0.30, 0.31, 0.34), 1.0),
-        "lathe/glass": (glass, GLASS, 0.18),
+        y = Y_FRONT - 180 - 42 * k
+        bars.append(_cyl((fx1 + 300, y, ztop + BAR_R), (fx1 + 1500, y, ztop + BAR_R), BAR_R, res=24))
+    # the conveyor's head drops into the bin of the metal being cut; the other metal's bin waits behind it
+    xd0, xd1 = X_HEAD - p["conv_x1"] - 40, X_HEAD - p["conv_x1"] + p["conv_head"] + 40
+    bin_al = _open_box(xd0, xd1, Y_FRONT - 560, Y_FRONT - 80, 0, 650, 6)
+    bin_cu = _open_box(xd0, xd1, Y_FRONT - 1120, Y_FRONT - 640, 0, 650, 6)
+    # the alcohol MQL unit on the enclosure's -x end, behind the conveyor, its line into the work zone
+    mql = _merge([_box(xe0 - 160, xe0, ye0 + 120, ye0 + 380, 1100, 1420),
+                  _cyl((xe0 - 80, ye0 + 250, 1420), (xe0 - 80, ye0 + 250, 1520), 35.0, res=24)])
+    out.update({
         "lathe/pan": (pan, (0.45, 0.46, 0.48), 1.0),
         "lathe/bed": (_merge([bed, slant]), (0.36, 0.37, 0.40), 1.0),
         "lathe/head": (_merge([head, nose]), (0.52, 0.53, 0.56), 1.0),
         "lathe/belt": (belt, DARK, 1.0),
         "lathe/beltframe": (belt_frame, STEEL, 1.0),
-        "lathe/loader": (_merge(loader + [feed]), SHEET, 1.0),
+        "lathe/loader": (feed, SHEET, 1.0),
         "lathe/bars": (_merge(bars), AL, 1.0),
-        "lathe/conveyor": (conv, TRIM, 1.0),
         "lathe/bin_al": (bin_al, (0.25, 0.45, 0.85), 1.0),
         "lathe/bin_cu": (bin_cu, (0.85, 0.45, 0.20), 1.0),
         "lathe/mql": (mql, (0.20, 0.36, 0.62), 1.0),
-    }
+    })
+    return out
 
 
 def collet_parts() -> dict:
@@ -763,7 +757,7 @@ def bench_parts() -> dict:
     sock = _merge([_box(blow[0] - 70, blow[0] + 70, blow[1] - 45, blow[1] + 45, BENCH_Z, blow[2] - 90),
                    _open_box(blow[0] - 45, blow[0] + 45, blow[1] - 40, blow[1] + 40, blow[2] - 90, blow[2] - 4, 3)])
     posts, rails, mesh = [], [], []
-    fx0, fx1, fy0, fy1, fh = -1100.0, 1100.0, LATHE["y1"] + 10, FRONT_Y, 1400.0
+    fx0, fx1, fy0, fy1, fh = -1100.0, 1100.0, Y_FRONT + 10, FRONT_Y, 1400.0
     for (x, y) in ((fx0, fy0), (fx0, fy1), (fx1, fy0), (fx1, fy1), (fx0, 80), (fx1, 80), (-420, fy1), (420, fy1)):
         posts.append(_box(x - 20, x + 20, y - 20, y + 20, 0, fh))
     for (xa, xb, ya, yb) in ((fx0, fx0, fy0, fy1), (fx1, fx1, fy0, fy1), (fx0, -420, fy1, fy1), (420, fx1, fy1, fy1)):
@@ -851,8 +845,8 @@ def still_lab(sc, path):
     sc.title = "Vertical cloud lab: the charge-cup machining cell in the lab"
     labs = [(t, xyz) for t, xyz in labs if t in keep]
     labs += [("the machining cell: bar-fed lathe, UR10e, IPA baths, vacuum dryer, weigh, gauge, cassette",
-              (0.0, 300.0, 1450.0)), ("Haas ST-10-size lathe", (-200.0, -1600.0, 2167.0)),
-             ("4 ft bar feeder", (2550.0, -1270.0, 1000.0))]
+              (0.0, 300.0, 1450.0)), ("Haas ST-10 lathe (as measured)", (-200.0, -1500.0, 1842.0)),
+             ("4 ft bar feeder", (2300.0, -1200.0, 1250.0))]
     sc.labels = []
     sc.render_base()                                    # sets the camera, so the anchors can be projected
     placed = []
@@ -993,8 +987,9 @@ def movie():
 
     sc.title = TITLE
     CAM_WIDE = [(3700, 3500, 3700), (-100, -550, 900), (0, 0, 1)]
-    CAM_LATHE = [(430, -470, 1300), (150, -1020, 950), (0, 0, 1)]
-    CAM_WORK = [(150, -765, 1120), (162, -1270, 1050), (0, 0, 1)]
+    dS = np.array([0.0, SPIN_Y + 1270.0, SPIN_Z - 1050.0])    # the spindle's move from round 13's (y -1270, z 1050)
+    CAM_LATHE = [tuple(np.array((430, -470, 1300)) + dS), tuple(np.array((150, -1020, 950)) + dS), (0, 0, 1)]
+    CAM_WORK = [tuple(np.array((150, -765, 1120)) + dS), (162, SPIN_Y, SPIN_Z), (0, 0, 1)]
     CAM_NEST = [(620, -130, 1380), (140, -690, 950), (0, 0, 1)]
     CAM_BATH = [(-200, 1350, 2350), (-800, -150, 1050), (0, 0, 1)]
     CAM_EAST = [(1010, -120, 1650), (700, -420, 1000), (0, 0, 1)]

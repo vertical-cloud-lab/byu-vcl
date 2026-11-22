@@ -30,7 +30,8 @@ Files:
   - output into **chapter 1's charge rack, lidded, as the cassette** the MiR250 takes to tray J.
 - **The lathe is not the constraint.** On the lathe a cup and plug take **66 s in 5N Al and 88 s in OFE Cu**, so 67 a
   day is about **1.4 h** of machining. The cell's own limit is the vacuum dryer, at 10 min per basket of four:
-  about **190 pairs in one 8 h shift**, nearly three times the need. So it can run while people are in the building.
+  about 190 pairs in one 8 h shift by the static sum. **The simulation (round 14) gives 159 a shift, 114 a calendar
+  day**, still 1.7 times the need, so it can run while people are in the building.
 - **Contamination is handled by practice, not by the machine**:
   - alcohol as the only lubricant (DESY, CERN and Thermo Fisher do this for high-purity Al and Cu);
   - PCD or sharp uncoated carbide, with one tool set per metal on the 12-station turret;
@@ -39,11 +40,107 @@ Files:
 - **It doesn't belong on a tray.** One robot-ready lathe does fit a tray, the EMCO Concept TURN 60. It takes only
   15 mm bar, though, and it would hold a VLM opening for hours a day. The bar-fed production machines weigh 2-6 t.
 - **Capital is about $230k-320k.** Running cost is about **$3.50 a pair** before material. Material dominates: 5N Al
-  costs **$11-94 a pair**, depending on how it's bought, and OFE Cu about **$11**.
+  costs **$11-94 a pair**, depending on how it's bought, and OFE Cu **$10-17**. 4N Al, the clean-baseline grade
+  (round 14), costs $11-32 from catalogues, and 99.7 % bar about $1 ([`machining_material.md`](machining_material.md)).
 - **The clip:** one cup is made, cleaned, dried, weighed, measured and racked, in **0 frames in collision**: 0 of
   1727 under `ARM_AUDIT=1` at 12 fps, and 0 of 2169 in the 15 fps render's own audit (arm and movers both).
 
 ![The cell in the lab: over the aisle, its front between the 68SC-2 and charger 0](../out/machining_lab.png)
+
+## Round 14 (PR #373's review, 2026-11-22): simulated, the lathe measured, the metal priced
+
+Sterling: "seems like you could benefit from running simulations"; "Your model of the machines probably need to be
+refined ... aiming for high perfection on the overlap between our model and the different images"; "it seems like the
+suggestion is to have a stand-alone robot arm rather than use one of the existing mobile manipulators"; and purity and
+cost (4N, 4N5, forms; where the aluminium in AlSi10Mg comes from; patents).
+
+### The cell, simulated part by part
+
+[`machining_sim.py`](../machining_sim.py) runs the cell in SimPy instead of adding up busy hours
+([`out/machining_sim.json`](../out/machining_sim.json)). It covers 5 seeds × 28 days, day shift 07:00-15:00, Monday to
+Friday:
+- the lathe's times from `cycle()`, with a 4 % spread;
+- a bar change every 13 pairs, and a magazine a person refills;
+- chip jams (0.4 % of Al parts, 0.2 % of Cu) waiting for a person;
+- the arm's moves with a 10 % spread, and misgrips;
+- wash 5 min, rinse 2 min, dryer 8-14 min;
+- 1 % of parts rejected by the scale or the gauge;
+- the IPA steps only while people are in.
+
+The stoppage rates are estimates.
+
+- **The pedestal design makes 114 pairs a calendar day** against the 67 needed: 159 in each working day's shift.
+  `capacity()`'s static ceiling of 190 a shift was a third too high. The dryer and the baskets set the pace, and the
+  lathe waits for them about 4 h of each shift.
+- **The arm works 4.9 h of the shift;** a pair takes 0.5 h from parting off to the rack (median).
+- **The dryer's 10 min holds only if the bores are drained** (`drying()`, a lumped heat balance; `DRY` lists the
+  constants).
+  - Under vacuum the IPA boils at about -5 °C, the condenser holding 7 mbar. Once the part's own heat is spent, the
+    rest has to come through the basket's few contacts and by radiation, both poor in a vacuum.
+  - With its bore full (6 mL), a cup takes **16-55 min in Al and 12-39 min in Cu**. Drained to a film (0.2 mL), it is
+    dry within the 3 min pump-down.
+  - In the simulation a 6 min dryer gives 134 pairs a day, a 20 min dryer 71 (barely the 67 needed), and 40 min only
+    40.
+  - **So the basket should hold the cups mouth-down, or tip them to drain after the rinse.** The clip still carries
+    them upright.
+
+![The cell simulated: output, arm hours and lead time for the pedestal arm and three ways of using a MiR250 + UR10e](../out/machining_sim.png)
+
+### A stand-alone arm, or one of the lab's MiR250 + UR10e units?
+
+The PR proposed a pedestal arm. The lab already has two MiR250 + UR10e units, and PR #332's bottleneck study has three
+at ten alloys a day, carrying about 3.8 h per alloy (38 of their 72 unit-hours a day). The simulation tried three ways
+of using one of them (`SCENARIOS`). In each, the fleet's response is an exponential wait, 15 min on average, then
+150 s to drive in, dock and re-localise on the cell's fiducials.
+
+| | Pairs a calendar day | Arm time a working day | Visits | Median lead time | Extra hardware |
+|---|---|---|---|---|---|
+| **pedestal UR10e** (the PR) | **114** | 4.9 h busy (the arm is the cell's) | - | **0.5 h** | the arm, $56-60k with gripper |
+| MiR unit stays the shift | 119 | **8.0 h** of a unit | 1 | 1.7 h | a 24-pair accumulator |
+| MiR unit + basket hoist | 97 | 4.3 h of a unit | 6.2 | 3.2 h | a hoist through baths and dryer (est. $10-20k), a 32-pair accumulator, six baskets |
+| ... the lathe also running overnight | 95 | 4.2 h | 6.0 | 20 h | a 64-pair accumulator; an unattended lathe with alcohol mist |
+
+- **The cell needs an arm in short bursts all shift.** A unit that comes and goes needs the baskets moved without it
+  (a hoist) and a buffer for the lathe. It still takes 4.3 h a day of a unit in about six visits.
+- **The visits make the cell hostage to the fleet.** At the hoist's settings, output falls with the fleet's response
+  time (`fleet_wait_sensitivity`): 108 pairs at a 5 min wait, 97 at 15, 83 at 30, and **67 at 60 min**, which is no
+  margin at all, with an 18 h lead time.
+- **A unit that stays the shift is a fixed arm with wheels.** It costs 8 h of the fleet a day.
+- **Recommendation: keep the pedestal arm.** It matches PR #332's finding that the cells want their own fixed arms and
+  the MiRs should carry. The shared unit is the fallback if the cell is built before the money for its arm, provided
+  the fleet has slack: it saves the arm but adds a hoist, an accumulator and fleet hours. The MiR250's arm still takes
+  the lidded rack to tray J, as before.
+
+### The lathe, measured against Haas's drawing and footage
+
+See [`refine_st10.md`](refine_st10.md). The lathe was a 3437 × 1596 × 2167 mm box: Haas's installed envelope,
+conveyor and all, drawn as one block. It is now Haas's own shape (`machining_cell.ST10`, from the machine layout
+drawing):
+- the 2160 × 1021 mm enclosure on its dark base;
+- the pendant to the right of the door;
+- the chip conveyor climbing out of the right end;
+- the electrical cabinet behind;
+- the Bar Feeder V2 at the left.
+
+It is checked against frames of the real machine by camera fit, background removal and silhouette IoU
+([`machining_fit.py`](../machining_fit.py)). The cell changed with it:
+- the spindle axis is now Haas's, 991 mm up and 307 mm behind the front, where it was 1050 and 470;
+- the pendant is on the right, swung back against the enclosure;
+- the slant bed and casting fit inside the real depth;
+- the conveyor's bins sit under its head.
+
+The collision audit is again 0 frames, arm and movers.
+
+### The metal: which purity, and what it costs
+
+See [`machining_material.md`](machining_material.md). Edison was out of credit (HTTP 402), so the research is from the
+web, patents and vendors' pages, some read through the Pi.
+- **Al: 99.7 % for runs that copy a commercial alloy, 4N as the clean baseline.** Commercial AlSi10Mg is smelter or
+  recycled aluminium, and its iron limits allow 99.7 % cups with room to spare.
+- **5N only pays off with Si and Mg of matching purity.**
+- **Cu: OFE is right.**
+- **Price follows the form more than the purity.** HPA's 4N and 5N billet cost the same $141-146/kg. Thin rod costs
+  up to $3,221/kg, and the PR's Ø20 "5N" rod at $3,500/kg was 5N5.
 
 ## What has to be made
 
@@ -393,7 +490,7 @@ At 67 pairs a day, half Al and half Cu (`capacity()`):
 
 | Who | Does |
 |---|---|
-| Lathe and bar feeder | feeds bar; faces, turns, drills, bores, chamfers, parts off; probes tool wear; lifts chips into the metal's bin; its catcher takes each part and a belt carries it out under the door; an upender (ours) stands the cup up |
+| Lathe and bar feeder | feeds bar; faces, turns, drills, bores, chamfers, parts off; probes tool wear; lifts chips into the metal's bin; its catcher takes each part and a belt carries it out through a slot in the door; an upender (ours) stands the cup up |
 | Arm (UR10e on a pedestal) | takes each part off the upender; blow-off; into the basket; the basket into the wash vessel, the rinse vessel and the dryer and back; each part to the weigh module, the gauge and the rack; the rack's lid |
 | MiR250 with its arm | the lidded rack from the cell's front window to tray J or tray B |
 | People | bars into the feeder's magazine (about 5 bars a day; the magazine's capacity for Ø20 was not found); chip bins; the IPA vessels daily; inserts weekly to monthly; campaign changeovers; NVR checks; about 0.15 FTE (est.) |
@@ -453,7 +550,9 @@ with people.
 
 `machining_cell.py` builds the cell in its own frame (x east, y north, origin at the arm's pedestal). `machining.FLOOR`
 puts it on the floor plan. **Drawn at published size:**
-- the lathe body (Haas ST-10, 3437 x 1596 x 2167 mm with its chip conveyor) and its Bar Feeder V2 (2104 x 1283 mm);
+- the lathe's outside: the Haas ST-10 from Haas's machine layout drawing (enclosure, base, pendant, conveyor,
+  electrical cabinet; `ST10`), checked against footage ([`refine_st10.md`](refine_st10.md)), and its Bar Feeder V2
+  (2104 x 1283 mm; its heights are estimates);
 - the UR10e and 2F-85 (`ur_arm.py`);
 - the baths (Elmasonic P 60 H);
 - the charge rack (`charge.py`).
@@ -470,7 +569,8 @@ The clip, one cup in six chapters:
    - the boring bar;
    - the catcher in under the cup;
    - parted off.
-3. The catcher turns the cup to lie along the belt, which carries it out under the door. The upender stands it up.
+3. The catcher turns the cup to lie along the belt, which carries it out through a slot in the door's lower panel
+   (the real ST-10's sill is at 680 mm, under the belt). The upender stands it up.
    The arm takes it to the blow-off station: two nozzles at its foot and a lance over the bore.
 4. Into the basket with the run's other three cups and four plugs. The basket goes into the wash vessel (its lid
    opens; the basket's cap shuts it), ultrasound, out; the vessel's lid shuts behind it. The same in the rinse vessel.
@@ -491,11 +591,24 @@ took six passes from 69 arm and 212 mover frames:
 - **A lid swept a held basket.** The basket now backs off first.
 - **The dryer's lid swung into the narrowed fence.** It is now hinged on its north edge.
 
-**Render.** 2026-11-20, 1280 x 720 at 15 fps (scene.py's FXAA default), in one `runner_guard.py` slot:
-- 2334 frames, 155.6 s, MP4 7.7 MB, about 5 min of rendering;
-- the render's own audit (`VIZ3D_AUDIT=1`): **0 of 2169 frames**
+**Round 14, the measured ST-10 in the cell: 0 of 1727 frames again**, arm and movers. The first try had 42 arm frames
+and 222 mover frames, from three causes:
+- **A slant bed set too close for the real depth.** The turret's far-side tools reach 648 mm from the axis. The bed
+  is back at 760-840 mm, narrowed so that it fits the 1021 mm enclosure.
+- **A fence moved to the pendant's face.** Its back stays at the enclosure's front.
+- **The blow-off station moved off the pendant.** It is back where it was, and the pendant is swung back against the
+  enclosure instead.
+
+The lathe's two clip cameras moved with the spindle.
+
+**Render.** Re-rendered 2026-11-22 with the measured ST-10 (round 14), 1280 x 720 at 15 fps (scene.py's FXAA
+default):
+- 2334 frames, 155.6 s, MP4 7.6 MB;
+- the render's own audit (`VIZ3D_AUDIT=1`): **0 of 2169 frames**, arm and movers
   ([`out/collisions/machining_cell_render15.json`](../out/collisions/machining_cell_render15.json));
-- the GIF is cut from the MP4 (`MCELL_GIF=1`: 4 fps, 520 px, 48 colours, `gifsicle --lossy=130`): 4.5 MB.
+- the GIF is cut from the MP4 (`MCELL_GIF=1`: 4 fps, 520 px, 48 colours, `gifsicle --lossy=130`): 4.4 MB;
+- the five stills below are frames 274, 967, 1750, 1955 and 2049 of the MP4. The 2026-11-20 render had 7.7 MB and
+  0 of 2169.
 
 ![Drilling the bore, the bar and cup in half section](../out/machining_cell_section.png)
 
@@ -524,7 +637,8 @@ took six passes from 69 arm and 212 mover frames:
 5. **Quotes**:
    - the ST-10 with the Bar Feeder V2, auto door, parts catcher and probe; the feeder's magazine capacity for Ø20 bar;
    - the EMCO MAXXTURN 25 with a short-bar loader;
-   - 5N Al as drawn Ø20 rod by the 100 kg, with chips taken back.
+   - Al as drawn Ø20 rod by the 100 kg, 4N (or 99.7 % 1070A/1080A for runs that copy a commercial alloy), with chips
+     taken back; C10100 Ø20 by the 100 kg ([`machining_material.md`](machining_material.md)).
 6. **The Al/Cu split of runs.** It is assumed half and half here; it moves the material bill most.
 7. **Floor and service access.** The cell's front fits the 2249 mm between the 68SC-2 and charger 0 with 24 mm a side,
    and the ST-10 weighs 3.6 t. Moving charger 0 0.5 m east would give service room. Check the floor loading and the
