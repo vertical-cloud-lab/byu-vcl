@@ -153,9 +153,9 @@ STATIONS = {
                       "the big stone: the 100 kN frame (the 2 kN one is pebble)", W + "Boulder"),
     "instron_small": ("pebble", "station", "Instron 68SC-2 table frame", "a pebble", "4-64 mm",
                       "the small stone: the 2 kN frame (the 100 kN one is boulder)", W + "Pebble"),
-    "fumehood": ("fumarole", "station", "Labconco Protector XStream ducted fume hood", "a fumarole", "volcanic vent",
-                 "a vent that lets a volcano's gases out (Latin fumus, smoke), as the hood lets out the lab's fumes",
-                 W + "Fumarole"),
+    "fumehood": ("chimney", "station", "Labconco Protector XStream ducted fume hood", "a rock chimney",
+                 "hot-spring vent", "the way the fumes go out; on the sea floor, hot springs build chimneys of rock "
+                 "to vent through", W + "Hydrothermal_vent"),
     "ded": ("olivine", "printer", "InssTek MX-Lab DED (blends compositions in the melt pool)", "olivine",
             "(Mg,Fe)2SiO4", "one crystal with any blend of magnesium and iron, a solid solution: the DED blends "
             "compositions in its melt pool", W + "Olivine"),
@@ -197,16 +197,21 @@ ROUND1 = {"ot2": "ostwald", "cubxl": "tafel", "doser": "lavoisier", "vacuum_pres
 # calcite (too like halite), hematite (likewise), apatite (said "appetite"), corundum ("conundrum"), niter
 # ("neither"), touchstone, sunstone and whetstone (too like sandstone), jasper (a common first name), chalk (too like
 # talc), cobble (too like pebble and marble), emerald (too like emery). beryl was the VHX's (the first spectacles were
-# ground from it, hence German Brille) until it sounded like pebble, so it is not a spare either.
+# ground from it, hence German Brille) until it sounded like pebble, so it is not a spare either. Dropped by the
+# narration voice's check, heard as other words: fumarole ("funeral", the fume hood's first name), beryl ("barrel"),
+# chert ("shirt", "church"), spinel ("spindle").
 SPARES = {
     "robot": ["unimate", "genghis"],
     "shuttle": ["cascade", "lonepeak"],
-    "station": ["lapis", "turquoise", "citrine", "chert"],
+    "station": ["lapis", "turquoise", "citrine", "whetstone"],
 }
 
 # How the narration voice is to say a name, for longform.SAY / longform.IPA once a name is narrated (longform.py is not
-# changed here). Round 1's voice-and-recognizer check (out/naming/tts_check.json) found these for the names kept.
-PRONOUNCE = {"Unimate": {"ipa": "jˈuːnɪmˌeɪt"}, "Genghis": {"ipa": "ɡˈɛŋɡɪs"}, "Cascade": {"ipa": "kæskˈeɪd"},
+# changed here). Each passed the voice-and-recognizer check (out/naming/tts_check.json). Halite is "HAY-lite" (espeak's
+# "HAL-ite" was heard once as "highlight"), olivine "OL-ih-veen" (espeak said "-vine": "olive oil"), basalt
+# "buh-SAWLT"; Unimate, Genghis, Cascade and Quebec are round 1's.
+PRONOUNCE = {"Halite": {"ipa": "hˈeɪlaɪt"}, "Olivine": {"ipa": "ˈɑːlɪvˌiːn"}, "Basalt": {"ipa": "bəsˈɔːlt"},
+             "Unimate": {"ipa": "jˈuːnɪmˌeɪt"}, "Genghis": {"ipa": "ɡˈɛŋɡɪs"}, "Cascade": {"ipa": "kæskˈeɪd"},
              "Quebec": {"ipa": "kwɪbˈɛk"}}
 
 # Tray letters said aloud. ICAO spells two of them Alfa and Juliett so that they are said the same in every language.

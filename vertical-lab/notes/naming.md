@@ -85,7 +85,7 @@ The model has 238 named units: 41 stations, 31 camera units, 31 computers, 27 ot
 | packaging station: sealer, label printers, foam inserts | mclean | **pumice** |
 | Instron 68FM-100 | kirkaldy | **boulder** |
 | Instron 68SC-2 table frame | galileo | **pebble** |
-| Labconco Protector XStream ducted fume hood | davy | **fumarole** |
+| Labconco Protector XStream ducted fume hood | davy | **chimney** |
 | InssTek MX-Lab DED | gibbs | **olivine** |
 | FANUC ROBOCUT wire EDM | lazarenko | **flint** |
 | EOS M 400-4 | javan | **basalt** |
@@ -167,7 +167,7 @@ robot scientists are Adam and Eve; Springer Nature ran a piece on instrument nic
 | **pumice** | packaging station: sealer, label printers, foam inserts | floor (+10.1, -1.2) m | [pumice](https://en.wikipedia.org/wiki/Pumice) (volcanic glass foam) | stone foam, light enough to float: the station packs samples in foam |
 | **boulder** | Instron 68FM-100 with its 3119-608 chamber | floor (-6.4, -6.8) m | [a boulder](https://en.wikipedia.org/wiki/Boulder) (over 256 mm) | the big stone: the 100 kN frame (the 2 kN one is pebble) |
 | **pebble** | Instron 68SC-2 table frame | floor (-4.3, -6.6) m | [a pebble](https://en.wikipedia.org/wiki/Pebble) (4-64 mm) | the small stone: the 2 kN frame (the 100 kN one is boulder) |
-| **fumarole** | Labconco Protector XStream ducted fume hood | floor (+1.5, -6.7) m | [a fumarole](https://en.wikipedia.org/wiki/Fumarole) (volcanic vent) | a vent that lets a volcano's gases out (Latin fumus, smoke), as the hood lets out the lab's fumes |
+| **chimney** | Labconco Protector XStream ducted fume hood | floor (+1.5, -6.7) m | [a rock chimney](https://en.wikipedia.org/wiki/Hydrothermal_vent) (hot-spring vent) | the way the fumes go out; on the sea floor, hot springs build chimneys of rock to vent through |
 | **olivine** | InssTek MX-Lab DED (blends compositions in the melt pool) | floor (+3.9, -6.6) m | [olivine](https://en.wikipedia.org/wiki/Olivine) ((Mg,Fe)2SiO4) | one crystal with any blend of magnesium and iron, a solid solution: the DED blends compositions in its melt pool |
 | **flint** | FANUC ROBOCUT wire EDM | floor (+6.6, -7.5) m | [flint](https://en.wikipedia.org/wiki/Flint) (SiO2 (chert)) | struck with steel it throws sparks, and the EDM cuts with sparks |
 | **basalt** | EOS M 400-4 (scale-up) | floor (-9.4, -10.6) m | [basalt](https://en.wikipedia.org/wiki/Basalt) (volcanic rock) | the commonest rock made from melt, laid down in the biggest volumes: the scale-up printer |
@@ -178,7 +178,7 @@ robot scientists are Adam and Eve; Springer Nature ran a piece on instrument nic
 **Siblings** take a number: the two Form 4s are `gypsum-1` and `-2`, the two SnowPods `cinder-1` and `-2`, and the
 three-each plan (notes/three_each.md) would give `aquamarine-1` to `-3` and `halite-1` to `-3`. **Spares** for the next
 of each class, checked like the rest, are in `naming.SPARES` (`unimate`, `genghis`; `cascade`, `lonepeak`; `lapis`,
-`turquoise`, `citrine`, `chert`).
+`turquoise`, `citrine`, `whetstone`).
 
 ### timp
 
@@ -242,11 +242,12 @@ station are named for their job: `charger-1`, `exvac-1` (the explosion-proof vac
   the narration voice's front end). This changed six first choices: `chalk` (too like `talc`) to `mica`, `cobble` (the
   zwickiLine, between pebble and boulder, but too like both `pebble` and `marble`) to `rift`, `beryl` (the VHX: the
   first spectacles were ground from it, hence German *Brille*) to `tigereye` (it sounded like `pebble`), and
-  `touchstone`, `calcite` and `corundum`, which were too like `sandstone`, `halite` and "conundrum". Seven pairs in use
-  are flagged and kept, none above 0.5, and each starts with a different sound:
+  `touchstone`, `calcite` and `corundum`, which were too like `sandstone`, `halite` and "conundrum". Eight pairs in use
+  are flagged and kept, none above 0.5, and each pair starts with different sounds:
 
 | Pair | Letters apart | Sound overlap | espeak |
 |---|---|---|---|
+| timp / chimney | 5 | 0.5 | tɪmp / tʃɪmni |
 | pyrite / tigereye | 6 | 0.5 | paɪɹaɪt / taɪɡɚɹaɪ |
 | pyrite / fluorite | 4 | 0.5 | paɪɹaɪt / flʊɹɹaɪt |
 | halite / sapphire | 5 | 0.5 | hælaɪt / sæfaɪɚ |
@@ -255,16 +256,33 @@ station are named for their job: `charger-1`, `exvac-1` (the explosion-proof vac
 | marble / pebble | 3 | 0.5 | mɑɹbəl / pɛbəl |
 | opal / topaz | 2 | 0.5 | oʊpəl / toʊpæz |
 
-`opal` and `topaz` are the pair to watch: they share "-op-". They are at least on different Shuttles (tray E on timp, tray L on nebo).
+`opal` and `topaz` are the pair to watch: they share "-op-". They are at least on different Shuttles (tray E on timp,
+tray L on nebo).
 
 - **Everyday words, now on purpose.** Round 1 avoided them; round 2 wants names people already know how to spell. These
-  are common enough to be everyday words (Zipf 3.5 or more): `quartz`, `sandstone`, `marble`, `shale`, `fossil`, `rift`, `pearl`, `boulder`, `flint`, `lava`, `ruby`. None is a word the lab uses for something else.
-- **Said right by the narration voice: not yet run for round 2.** Round 1 had every call name said by the narration's
-  own voice (Kokoro `af_heart`, through `longform.py`'s phoneme path) in two sentences and transcribed back by
-  faster-whisper base.en and small.en ([`tts_check.json`](../out/naming/tts_check.json), [`names.ogg`](../out/naming/names.ogg)).
-  Those files are round 1's and are kept as its record; of round 2's names they cover only timp, nebo, elsie and freddy.
-  The stones are ordinary English words, so they should be heard right more often than round 1's surnames, but that is
-  a guess until the check is run. `naming.PRONOUNCE` keeps round 1's fixes for the names still in use.
+  are common enough to be everyday words (Zipf 3.5 or more): `quartz`, `sandstone`, `marble`, `shale`, `fossil`, `rift`, `pearl`, `boulder`, `chimney`, `flint`, `lava`, `ruby`. None is a word the lab uses for something else.
+- **Said right by the narration voice.**
+  - **How it was tested:** as in round 1. Every call name and spare was said by the narration's own voice (Kokoro
+    `af_heart`, through `longform.py`'s phoneme path) in "Next, the arm takes the bar to {Name}." and "{Name} has
+    finished, so the robot comes back." Each was then transcribed back by faster-whisper base.en and small.en and judged
+    in its slot ([`tts_check.json`](../out/naming/tts_check.json); listen to all of them in
+    [`names.ogg`](../out/naming/names.ogg)). Round 1's check of the people's names is the same file at commit
+    [1acf876](https://github.com/vertical-cloud-lab/byu-vcl/blob/1acf876/vertical-lab/out/naming/tts_check.json).
+  - **Result:** the final run, with every fix in naming.PRONOUNCE applied, is in the next commit.
+  - **Fixed with a phoneme:** halite is "HAY-lite" (espeak's "HAL-ite" came back once as "highlight"), olivine
+    "OL-ih-veen" (espeak said "-vine", which came back as "olive oil"), basalt "buh-SAWLT". Unimate, Genghis and Cascade
+    keep round 1's fixes.
+  - **Dropped, heard as other words:** the fume hood's first name, `fumarole` ("funeral", even with a fix; it is
+    `chimney` now), the spare `chert` ("shirt", "church"), and two candidates, `beryl` ("barrel") and `spinel`
+    ("spindle").
+  - **Kept: said right, but the recognizer spells them as a name or a homophone:** mica ("Micah"), emery ("Emory"),
+    pearl ("purl"), topaz ("Topas"), galena ("Galina"), and a few one-off misspellings (geode, lapis; talc run into the
+    next word as "talkas").
+  - **To watch:** `timp` is heard as "temp" after "to" by both recognizers, as in round 1, and right in "Timp has
+    finished" (see [timp](#timp)). `cinder` came back once as "center". `mica` sounds just like Micah: nobody in the
+    lab has that name today, but a hostname outlives a roster.
+  - **Where the fixes live:** `naming.PRONOUNCE`, ready to go into `longform.IPA` when a name is narrated
+    (`longform.py` isn't changed here).
 
 ## Labels
 
@@ -315,8 +333,8 @@ Nothing here renames a real device. When the lab adopts the scheme:
 - **#370, security cameras:** a camera takes its parent's name and a place suffix, as the Pi units do
   (`tray-d-cam0`, `timp-bay-front`). The scheme doesn't care what kind of camera it is.
 - **#366/#369, a third MiR250 for floor cleaning:** the next robot name in `naming.SPARES` (`unimate`, `genghis`).
-- **#367, the cup and plug machining station:** `chert`, the stone flint is a kind of, knapped into tools since the
-  Stone Age. It is in the spares and passes every check.
+- **#367, the cup and plug machining station:** `whetstone`, the stone a machinist sharpens tools on. It is in the
+  spares and passes every hard check; by sound it is 0.56 like `sandstone`, but the two start differently.
 
 ## Open
 

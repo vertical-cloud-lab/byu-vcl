@@ -208,8 +208,8 @@ VCL-0206,instron_floor-air,boulder-air,sensor,service,boulder,,AirGradient ONE (
 VCL-0207,instron_small,pebble,station,station,,"floor (-4.3, -6.6) m",Instron 68SC-2 table frame,a pebble,4-64 mm,the small stone: the 2 kN frame (the 100 kN one is boulder),https://en.wikipedia.org/wiki/Pebble
 VCL-0208,instron_small-pc,pebble-pc,computer,station,pebble,"floor (-4.3, -6.6) m",Instron 68SC-2 table frame: its computer,,,,
 VCL-0209,instron_small-air,pebble-air,sensor,service,pebble,,AirGradient ONE (with display),,,,
-VCL-0210,fumehood,fumarole,station,station,,"floor (+1.5, -6.7) m",Labconco Protector XStream ducted fume hood,a fumarole,volcanic vent,"a vent that lets a volcano's gases out (Latin fumus, smoke), as the hood lets out the lab's fumes",https://en.wikipedia.org/wiki/Fumarole
-VCL-0211,fumehood-air,fumarole-air,sensor,service,fumarole,,AirGradient ONE (with display),,,,
+VCL-0210,fumehood,chimney,station,station,,"floor (+1.5, -6.7) m",Labconco Protector XStream ducted fume hood,a rock chimney,hot-spring vent,"the way the fumes go out; on the sea floor, hot springs build chimneys of rock to vent through",https://en.wikipedia.org/wiki/Hydrothermal_vent
+VCL-0211,fumehood-air,chimney-air,sensor,service,chimney,,AirGradient ONE (with display),,,,
 VCL-0212,ded,olivine,station,printer,,"floor (+3.9, -6.6) m",InssTek MX-Lab DED (blends compositions in the melt pool),olivine,"(Mg,Fe)2SiO4","one crystal with any blend of magnesium and iron, a solid solution: the DED blends compositions in its melt pool",https://en.wikipedia.org/wiki/Olivine
 VCL-0213,ded-pc,olivine-pc,computer,printer,olivine,"floor (+3.9, -6.6) m",InssTek MX-Lab DED (blends compositions in the melt pool): its computer,,,,
 VCL-0214,ded-air,olivine-air,sensor,service,olivine,,AirGradient ONE (with display),,,,

@@ -13,6 +13,17 @@
  "soft": {
   "close_pairs": [
    {
+    "a": "timp",
+    "b": "chimney",
+    "spelled": 5,
+    "sounds": 0.5,
+    "ipa": [
+     "tɪmp",
+     "tʃɪmni"
+    ],
+    "both_in_use": true
+   },
+   {
     "a": "pyrite",
     "b": "tigereye",
     "spelled": 6,
@@ -57,6 +68,17 @@
     "both_in_use": true
    },
    {
+    "a": "sandstone",
+    "b": "whetstone",
+    "spelled": 4,
+    "sounds": 0.56,
+    "ipa": [
+     "sændstoʊn",
+     "wɛtstoʊn"
+    ],
+    "both_in_use": false
+   },
+   {
     "a": "marble",
     "b": "fossil",
     "spelled": 6,
@@ -99,6 +121,7 @@
    "rift": 3.64,
    "pearl": 4.14,
    "boulder": 3.71,
+   "chimney": 3.55,
    "flint": 3.77,
    "lava": 3.73,
    "ruby": 3.98
@@ -141,7 +164,7 @@
   "pumice": "pjumɪs",
   "boulder": "boʊldɚ",
   "pebble": "pɛbəl",
-  "fumarole": "fjumɚɹoʊl",
+  "chimney": "tʃɪmni",
   "olivine": "ɑlɪvaɪn",
   "flint": "flɪnt",
   "basalt": "bɐzɔlt",
@@ -155,7 +178,7 @@
   "lapis": "læpiz",
   "turquoise": "tɜkwɔɪs",
   "citrine": "sɪtɹin",
-  "chert": "tʃɜt"
+  "whetstone": "wɛtstoʊn"
  },
  "ok": true
 }
