@@ -124,9 +124,11 @@ def views(key: str) -> dict:
     from PIL import Image
     out = {}
     for p in sorted((REFS / key).glob("*.json")):
-        if p.name == "fit.json":
+        if p.name in ("fit.json", "volume.json"):
             continue
         v = json.loads(p.read_text())
+        if "points" not in v:                          # not a view
+            continue
         v["frame"] = RG.frame_path(key, p.stem, v)
         v["size"] = Image.open(v["frame"]).size
         out[p.stem] = v
@@ -231,12 +233,28 @@ def sam_mask(key: str, name: str, v: dict, cam, params: dict, model: str = "sam2
     sam = SAM(os.environ.get("SAM_WEIGHTS", model))     # e.g. /tmp/sam2.1_l.pt: keep the 428 MB file out of the repo
     res = sam.predict(str(v["frame"]), bboxes=[box], points=[pts], labels=[[1] * len(pts)], verbose=False)
     m = res[0].masks.data.cpu().numpy()
-    m = (m.max(axis=0) > 0.5).astype(np.uint8)
+    m = fill_holes((m.max(axis=0) > 0.5).astype(np.uint8))
     out = MASKS / key
     out.mkdir(parents=True, exist_ok=True)
     cv2.imwrite(str(out / f"{name}.png"), m * 255)
     (out / f"{name}.json").write_text(json.dumps({"box": [float(b) for b in box], "points": pts, "model": model}))
     return m
+
+
+def fill_holes(m: np.ndarray, max_frac: float = 0.015) -> np.ndarray:
+    """The mask with its small enclosed holes filled (SAM leaves speckles on screens, decals and shiny panels; a
+    silhouette has no holes). A hole larger than max_frac of the frame stays: it may be floor seen between two parts."""
+    import cv2
+    bg = (m == 0).astype(np.uint8)
+    n, lab, stats, _ = cv2.connectedComponentsWithStats(bg, connectivity=4)
+    h, w = m.shape
+    out = m.copy()
+    for i in range(1, n):
+        x, y, ww, hh, area = stats[i]
+        touches = x == 0 or y == 0 or x + ww >= w or y + hh >= h
+        if not touches and area < max_frac * h * w:
+            out[lab == i] = 1
+    return out
 
 
 def load_mask(key: str, name: str):
@@ -246,6 +264,45 @@ def load_mask(key: str, name: str):
 
 
 # ============================================================================================ the fit
+def global_camera(key: str, v: dict, params: dict, tgt: np.ndarray, picks_w: float = 0.04) -> np.ndarray:
+    """A coarse search for the camera when the picks' camera starts badly (a close, wide shot): cameras on a grid
+    of positions round the view's "cam_hint", aimed at points along the machine, over focal lengths and lens terms,
+    scored as the fit scores (IoU, outline, picks) at a small size; the best few refined (Powell)."""
+    import cv2
+    from scipy.optimize import minimize
+    spec = KEYS[key]()
+    s = 320 / v["size"][0]
+    size = (320, int(round(v["size"][1] * s)))
+    t = cv2.resize(tgt, size, interpolation=cv2.INTER_NEAREST)
+    keep = cv2.resize(keep_mask(v).astype(np.uint8), size, interpolation=cv2.INTER_NEAREST) > 0
+    tr = triangles(spec["parts"](params, v.get("parts")))
+    A = spec["anchors"](params)
+
+    def loss(cam):
+        iou, dist = overlap(silhouette(tr, _scaled(cam, s), size), t, keep)
+        pr = RG.rms(RG.residuals(cam, A, v, v["size"])) if v.get("points") else 0.0
+        return (1 - iou) * 100 + 0.3 * dist * 1.5 + picks_w * min(pr, 200.0) ** 2 + height_penalty(cam)
+    hx, hy, hz = v.get("cam_hint", [params.get("W", 2000) / 2, -3000.0, 1600.0])
+    W = params.get("W", 2000.0)
+    cands = []
+    for dx in (-600, 0, 600):
+        for dy in (-700, 0, 700):
+            for dz in (-300, 0, 300):
+                for ax in (0.1 * W, 0.4 * W, 0.7 * W):
+                    for f in (0.45, 0.6, 0.8, 1.1, 1.6):
+                        for k1 in (0.0, -0.08, -0.18):
+                            c = look_at((hx + dx, hy + dy, hz + dz), (ax, 300.0, 1000.0), f * v["size"][0])
+                            c[7] = k1
+                            cands.append((loss(c), c))
+    cands.sort(key=lambda q: q[0])
+    best = None
+    for _, c0 in cands[:6]:
+        sol = minimize(lambda x: loss(x), c0, method="Powell", options=dict(xtol=1e-3, ftol=1e-3, maxfev=2500))
+        if best is None or sol.fun < best[0]:
+            best = (sol.fun, sol.x)
+    return best[1]
+
+
 def fit(key: str, rounds: int = 3, only=None, resume: bool = False) -> dict:
     import cv2
     from scipy.optimize import minimize
@@ -267,6 +324,8 @@ def fit(key: str, rounds: int = 3, only=None, resume: bool = False) -> dict:
             tgt = sam_mask(key, n, v, cam, p0)
         s = WORK_W / v["size"][0]
         size = (WORK_W, int(round(v["size"][1] * s)))
+        if v.get("global_init"):                       # a close, wide shot: search for the camera from scratch
+            cam = global_camera(key, v, start, tgt)
         data[n] = dict(v=v, cam=cam, s=s, size=size,
                        tgt=cv2.resize(tgt, size, interpolation=cv2.INTER_NEAREST),
                        keep=cv2.resize(keep_mask(v).astype(np.uint8), size, interpolation=cv2.INTER_NEAREST) > 0)
@@ -306,7 +365,7 @@ def fit(key: str, rounds: int = 3, only=None, resume: bool = False) -> dict:
         return (1 - iou) * 100 + 0.3 * dist + 0.04 * picks_rms(n, cam, params) ** 2
 
     def cam_loss(x, n, params):
-        cam = np.r_[x[:7], data[n]["cam"][7]]
+        cam = np.r_[x[:8]] if len(x) == 8 else np.r_[x[:7], data[n]["cam"][7]]
         return view_loss(n, cam, params) + height_penalty(cam)
 
     def par_loss(x):
@@ -321,9 +380,10 @@ def fit(key: str, rounds: int = 3, only=None, resume: bool = False) -> dict:
     log = []
     for r in range(rounds):
         for n, d in data.items():
-            sol = minimize(cam_loss, d["cam"][:7], args=(n, params), method="Powell",
-                           options=dict(xtol=1e-3, ftol=1e-3, maxfev=1500))
-            d["cam"] = np.r_[sol.x, d["cam"][7]]
+            x0 = d["cam"][:8] if d["v"].get("fit_k1") else d["cam"][:7]
+            sol = minimize(cam_loss, x0, args=(n, params), method="Powell",
+                           options=dict(xtol=1e-3, ftol=1e-3, maxfev=2000))
+            d["cam"] = np.r_[sol.x] if len(sol.x) == 8 else np.r_[sol.x, d["cam"][7]]
         x0 = np.array([(params[k] - p0[k]) / scale[k] for k in free])
         sol = minimize(par_loss, x0, method="Powell", options=dict(xtol=1e-2, ftol=1e-4, maxfev=6000))
         params.update({k: p0[k] + sol.x[i] * scale[k] for i, k in enumerate(free)})
@@ -407,6 +467,36 @@ def old_box_meshes() -> dict:
     return {"body": (body, None, 1.0), "loader": (loader, None, 1.0)}
 
 
+def volume_overlap(step: float = 25.0) -> dict:
+    """The 3-D overlap of the cell's old lathe (the 3437 x 1596 x 2167 box and the loader box) with the measured ST-10
+    (its closed outside and the bar feeder), on a grid of `step` mm: each voxel's centre tested against every part
+    (trimesh's ray test), in the machine's frame, both placed by the spindle nose as the cell places them."""
+    import trimesh
+    def occupancy(parts, grid):
+        occ = np.zeros(len(grid), bool)
+        for mesh, _c, _o in parts.values():
+            tri = mesh.triangulate()
+            tm = trimesh.Trimesh(np.asarray(tri.points), tri.faces.reshape(-1, 4)[:, 1:], process=True)
+            lo, hi = tm.bounds
+            sel = np.all((grid >= lo) & (grid <= hi), axis=1) & ~occ
+            if sel.any():
+                occ[np.flatnonzero(sel)[tm.contains(grid[sel])]] = True
+        return occ
+    import machining_cell as M
+    new = {k: v for k, v in M.st10_parts(inside=False).items() if k not in ("glass", "screen", "surround", "door")}
+    old = old_box_meshes()
+    lo = np.minimum.reduce([np.asarray(m.bounds)[0::2] for m, _, _ in list(new.values()) + list(old.values())])
+    hi = np.maximum.reduce([np.asarray(m.bounds)[1::2] for m, _, _ in list(new.values()) + list(old.values())])
+    axes = [np.arange(a + step / 2, b, step) for a, b in zip(lo, hi)]
+    grid = np.stack(np.meshgrid(*axes, indexing="ij"), -1).reshape(-1, 3)
+    a, b = occupancy(new, grid), occupancy(old, grid)
+    v = step ** 3 / 1e9
+    return {"step_mm": step, "measured_m3": round(a.sum() * v, 2), "old_m3": round(b.sum() * v, 2),
+            "both_m3": round((a & b).sum() * v, 2), "volume_iou": round((a & b).sum() / max(1, (a | b).sum()), 3),
+            "old_outside_measured_m3": round((b & ~a).sum() * v, 2),
+            "measured_outside_old_m3": round((a & ~b).sum() * v, 2)}
+
+
 if __name__ == "__main__":
     cmd, key = sys.argv[1], sys.argv[2]
     rest = sys.argv[3:]
@@ -424,5 +514,7 @@ if __name__ == "__main__":
         print(json.dumps(fit(key, only=rest or None, resume=resume)["views"], indent=1))
     elif cmd == "draw":
         draw(key)
+    elif cmd == "volume":
+        print(json.dumps(volume_overlap(), indent=1))
     else:
         sys.exit(__doc__)
