@@ -618,6 +618,8 @@ DAL `e7a01b3` and #318 `75c0ed0`) covers six things:
 
 ### 10. YouTube, Reddit, Hacker News, blogs and forums
 
+An [addendum](voices/voices_addendum_physsci.md) covers AI for science: the backlash over AlphaFold 3's withheld code, its non-commercial weights, the open clones (Boltz, Chai-1, Protenix) and Nature's 2026 feature on self-driving labs.
+
 Everything here was pulled through the Pi's browser, including five YouTube transcripts opened by
 mouse-clicking "Show transcript". [`voices/voices_digest.md`](voices/voices_digest.md) covers 21 sources
 with 125 quotes, each checked by script against the captured text. The index is
