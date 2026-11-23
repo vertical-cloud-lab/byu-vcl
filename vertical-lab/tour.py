@@ -295,7 +295,12 @@ def _stand_in(key: str, row: dict) -> I.Instrument:
 # Models the lab no longer uses, kept buildable but out of the gallery: the OpenFlexures (round 8: "I'm now not
 # entirely sure what to use the OpenFlexures for, especially if we already have a VHX") and the floor rail (round 7:
 # "Just stick with the mobile manipulator setup").
-GALLERY_SKIP = {"openflexure_v7", "openflexure_delta", "openflexure_array", "rail"}
+GALLERY_SKIP = {"openflexure_v7", "openflexure_delta", "openflexure_array", "rail",
+                # round 15: the round-4 dock block; the real CombiTac coupling has its own clip (coupling.py)
+                "tray_dock"}
+# round 15: where each machine is in the lab as built (setup_lab.FLOOR_PLAN), where a tile would otherwise guess from
+# its size; the HIP is drawn only to show it doesn't fit
+WHERE = {"packaging": "on the floor", "sieve": "in the sieving cell, on the floor", "hip": "does not fit: not in the lab"}
 
 
 def gallery(data: dict, cols=4) -> Path:
@@ -317,8 +322,12 @@ def gallery(data: dict, cols=4) -> Path:
         x, y = (i % cols) * tw, (i // cols) * (th + cap)
         sheet.paste(im.resize((tw, th), Image.LANCZOS), (x, y))
         fr = getattr(inst, "stand_in", None) or fit_report(inst)
-        where = "beside the VLM" if inst.floor or not fr["fits_tray"] else "on a VLM tray"
-        d.text((x + 10, y + th + 4), inst.model, font=f1, fill=(20, 20, 24))
+        where = WHERE.get(getattr(inst, "key", ""), "on the floor beside the VLM" if inst.floor or not fr["fits_tray"]
+                          else "on a VLM tray")
+        name = inst.model
+        while d.textlength(name, font=f1) > tw - 20 and len(name) > 8:      # round 15: long names stay in the tile
+            name = name[:-2].rstrip() + "\u2026" if not name.endswith("\u2026") else name[:-2].rstrip() + "\u2026"
+        d.text((x + 10, y + th + 4), name, font=f1, fill=(20, 20, 24))
         w, dd, h = inst.size
         d.text((x + 10, y + th + 24), f"{inst.title}", font=f2, fill=(70, 72, 78))
         d.text((x + 10, y + th + 40), f"{w:.0f} x {dd:.0f} x {h:.0f} mm, {where}", font=f2, fill=(70, 72, 78))

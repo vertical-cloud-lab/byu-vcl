@@ -627,6 +627,9 @@ class Scene:
                     small = Image.fromarray(base).resize(GIF_SIZE, Image.LANCZOS)
                     lo = self.overlay(small, GIF_SIZE[0] / self.size[0], anchors).convert("RGB")
                 self.gif_frames.append(lo)
+        if os.environ.get("VIZ3D_PROGRESS") and (self.n + n) // 300 > self.n // 300:   # round 15: a line per 300 frames
+            import time as _t
+            print(f"{self.name}: frame {self.n + n} at {_t.strftime('%H:%M:%S', _t.gmtime())}", flush=True)
         self.n += n
         return hi
 

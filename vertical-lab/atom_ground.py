@@ -28,7 +28,10 @@ Everything here is in the rePowder model's frame (x right, y back, z up; the fur
 """
 from __future__ import annotations
 
+import ast
 import math
+import re
+from pathlib import Path
 
 import numpy as np
 import pyvista as pv
@@ -161,12 +164,52 @@ ATOMIZER_SPOTS = {
     "pour_u": (-900.0, -470.0, 0.0),     # alloy_atomize (round 14): MiR250 2 in the pour, its arm on the stage's u knob
     "pour_v": (-50.0, -950.0, 0.0),      # alloy_atomize (round 14): MiR250 1 in the pour, on the v knob
 }
+# Round 15 (#303): a spot that a clip keeps as a literal tuple at its top level is read from that file (ast on its
+# text: nothing imported, nothing built), so a spot moved there moves its plate; the number above is the fallback
+SPOT_SOURCE = {"latch": ("atom_latch.py", "A_AT"), "lid": ("atom_latch.py", "B_AT"),
+               "vacuum": ("atom_vacuum.py", "MIR_PARK"), "brush": ("atom_container.py", "A_LEFT"),
+               "fork": ("atom_container.py", "B_FRONT"), "crucible_left": ("atom_crucible.py", "MIR2_AT")}
+
+
+def _read_spot(fname: str, const: str):
+    try:
+        txt = (Path(__file__).resolve().parent / fname).read_text()
+        m = re.search(rf"^{const}\s*=\s*(\([^)\n]*\))", txt, re.M)
+        v = tuple(float(a) for a in ast.literal_eval(m.group(1))) if m else None
+        return v if v is not None and len(v) == 3 else None
+    except (OSError, ValueError, SyntaxError, TypeError):
+        return None
+
+
+for _k, (_f, _c) in SPOT_SOURCE.items():
+    ATOMIZER_SPOTS[_k] = _read_spot(_f, _c) or ATOMIZER_SPOTS[_k]
 # Spots whose MiR250 stands where the model's own vacuum pump stands (repowder/model.py vacuum_pump: x -880..-420,
 # y 120..340, on the floor): the lab's plates leave them out (lab._repowder, fixture_meshes). The clips that use them
 # don't check a parked MiR against the machine (collide.py checks movers only while they move), so this is a layout
-# fault of those clips, not a plate's. "fork" (atom_container's MiR 2, x 510..1090, y -880..-80 at yaw 90) stands
-# where chapter 3 (alloy_print.py) puts the sieve wash module's stand, in front of the utility cabinet: left out too.
-NOT_IN_LAB = ("left", "crucible_left", "fork")
+# fault of those clips, not a plate's. Round 15: worked out from the spots (in_pump), not listed, so a spot moved off
+# the pump gets its plate back ("left", "crucible_left" and atom_container's "brush" stand in it now). "fork"
+# (atom_container's MiR 2, x 510..1090, y -880..-80 at yaw 90) stands where chapter 3 (alloy_print.py) puts the sieve
+# wash module's stand, in front of the utility cabinet: left out by name.
+PUMP = (-880.0, -420.0, 120.0, 340.0)
+NOT_IN_LAB_ALWAYS = ("fork",)
+# Round 15 (#303): what the plates and their channels keep CLEAR mm away from, model frame (x0, x1, y0, y1): the
+# sieving cell's target post's 300 mm foot plate, which the rePowder's dock reads too since round 15 (setup_lab:
+# SHARED_POST, the post at world (-2350, -2012); the set-up movie's audit had the plates 63-89 mm under it)
+KEEP_OUT = {"sieve cell post foot": (1275.0, 1575.0, -462.0, -162.0)}
+CLEAR = 10.0
+
+
+def in_pump(spot) -> bool:
+    """Does a MiR250 (800 x 580) at spot (x, y, yaw) stand in the vacuum pump's footprint? (separating axes)"""
+    x, y, yaw = spot
+    c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
+    mir = np.array([[x + c * a - s * b, y + s * a + c * b] for a in (-MIR_L / 2, MIR_L / 2) for b in (-MIR_W / 2, MIR_W / 2)])
+    pump = np.array([[PUMP[i], PUMP[j]] for i in (0, 1) for j in (2, 3)])
+    for ax in ((1.0, 0.0), (0.0, 1.0), (c, s), (-s, c)):
+        pa, pb = mir @ ax, pump @ ax
+        if pa.max() <= pb.min() or pb.max() <= pa.min():
+            return False
+    return True
 # the plate round a spot's two shoes: +-PLATE_ALONG along the MiR's heading, +-PLATE_ACROSS across it. The MiR250 parks
 # to +-60-85 mm without a marker (MiR's figure, quoted in PR #318's round 4), the shoes are +-70 mm apart, and a margin
 GUARD = 85.0
@@ -205,6 +248,11 @@ def plate_rects(spots=None) -> list[tuple]:
         i0, i1 = int(round((r[2] - y0) / STEP)), int(round((r[3] - y0) / STEP))
         j0, j1 = int(round((r[0] - x0) / STEP)), int(round((r[1] - x0) / STEP))
         grid[i0:i1, j0:j1] = True
+    for kx0, kx1, ky0, ky1 in KEEP_OUT.values():          # round 15: nothing laid under the floor's other things
+        i0, i1 = max(0, math.floor((ky0 - CLEAR - y0) / STEP)), min(ny, math.ceil((ky1 + CLEAR - y0) / STEP))
+        j0, j1 = max(0, math.floor((kx0 - CLEAR - x0) / STEP)), min(nx, math.ceil((kx1 + CLEAR - x0) / STEP))
+        if i0 < i1 and j0 < j1:
+            grid[i0:i1, j0:j1] = False
     labels, _ = ndimage.label(grid)
     out, used = [], np.zeros_like(grid)
     for i in range(ny):                           # greedy: the longest run in a row, grown down while it stays full
@@ -225,18 +273,31 @@ def plate_rects(spots=None) -> list[tuple]:
     return out
 
 
-def _terminal_at(rects, group, bar) -> np.ndarray:
-    """Where a joined area's bonding terminal sits: the corner of its pieces nearest the ground bar, 30 mm in."""
+def _route_clear(p, bar, half: float = 20.0) -> bool:
+    """Round 15: does a channel from p, square to the bar (along y, then along x), keep CLEAR of every KEEP_OUT?"""
     gb = np.asarray(bar, float)
-    best = None
+    for a, b in ((p, (p[0], gb[1])), ((p[0], gb[1]), gb)):
+        xa, xb = sorted((a[0], b[0]))
+        ya, yb = sorted((a[1], b[1]))
+        for kx0, kx1, ky0, ky1 in KEEP_OUT.values():
+            if xa - half < kx1 + CLEAR and xb + half > kx0 - CLEAR and ya - half < ky1 + CLEAR and yb + half > ky0 - CLEAR:
+                return False
+    return True
+
+
+def _terminal_at(rects, group, bar) -> np.ndarray:
+    """Where a joined area's bonding terminal sits: the corner of its pieces nearest the ground bar, 30 mm in; round 15:
+    the nearest whose channel keeps clear of KEEP_OUT (the "wait" plate's ran under the sieve cell's post's foot)."""
+    gb = np.asarray(bar, float)
+    cands = []
     for x0, x1, y0, y1, gr in rects:
         if gr != group:
             continue
         for cx, cy in ((x0, y0), (x0, y1), (x1, y0), (x1, y1)):
-            d = float(np.hypot(cx - gb[0], cy - gb[1]))
-            if best is None or d < best[0]:
-                best = (d, np.array([cx + (30.0 if cx == x0 else -30.0), cy + (30.0 if cy == y0 else -30.0)]))
-    return best[1]
+            cands.append((float(np.hypot(cx - gb[0], cy - gb[1])),
+                          np.array([cx + (30.0 if cx == x0 else -30.0), cy + (30.0 if cy == y0 else -30.0)])))
+    cands.sort(key=lambda c: c[0])
+    return next((p for _, p in cands if _route_clear(p, bar)), cands[0][1])
 
 
 def plate_meshes(rects, prefix: str = "gnd plate", bar=GROUND_BAR) -> dict:
@@ -284,7 +345,10 @@ def bar_meshes(bar=GROUND_BAR) -> dict:
 
 
 def lab_spots() -> list[str]:
-    return [k for k in ATOMIZER_SPOTS if k not in NOT_IN_LAB]
+    return [k for k in ATOMIZER_SPOTS if k not in NOT_IN_LAB_ALWAYS and not in_pump(ATOMIZER_SPOTS[k])]
+
+
+NOT_IN_LAB = tuple(k for k in ATOMIZER_SPOTS if k not in lab_spots())    # (the name kept for callers)
 
 
 def fixture_meshes() -> dict:

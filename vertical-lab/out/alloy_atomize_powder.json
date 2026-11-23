@@ -7,13 +7,13 @@
  "charges": [
   {
    "charge": "4 cups (this chapter)",
-   "al_g": 156.7,
-   "how": "out/alloy_recipe.json: 4 x 5N Al cup + plug + 3.92 g Si",
-   "usable_g": 142.9,
-   "under_63um_g": 26.5,
+   "al_g": 172.3,
+   "how": "out/alloy_recipe_pressed.json: 4 x 5N Al cup + plug + 3.92 g Si + 3.91 g AlSi10Mg",
+   "usable_g": 157.1,
+   "under_63um_g": 29.1,
    "runs_per_build": {
-    "the lab's planning figure": 17,
-    "a 30 mm build in the full 170 mm cylinder": 39
+    "the lab's planning figure": 16,
+    "a 30 mm build in the full 170 mm cylinder": 36
    }
   },
   {
@@ -56,8 +56,8 @@
   "A cup charge is limited by the cups, not the crucible: four 2.5 in cups hold 59 cm3 of metal, a quarter of the 225. The Oct 27 rod pieces were about 125 mm long (270 g each of 3/4 in rod), so cups that long would about double the charge."
  ],
  "model": {
-  "pool_level_mm": 21.6,
-  "powder_level_mm": 15.1,
+  "pool_level_mm": 24.4,
+  "powder_level_mm": 16.2,
   "melt_density": 2.37,
   "powder_bulk": 1.4,
   "cup_gap_mm": 2.17,

@@ -2,8 +2,10 @@
 moves (atom_latch.Work: lever over centre, the loop lifted off the keeper's hook, no arm on the lid), the loading tong
 redrawn as two bars pinned to the 2F-85's fingertips (tong_meshes, tong_figure), DAL PR 189's camera units, the MiRs'
 ground shoes on the floor plates (atom_ground), and the plate steered during the pour by both arms through a landing
-stage on the door (stage_meshes, steer_picture; ours). Before round 14: the MiR250 brings the four charged 5N Al cups
-from the VLM to the rePowder,
+stage on the door (stage_meshes, steer_picture; ours). Round 15 (2026-11-23): #364's base cameras and the Class D unit on
+both MiR250s (the tong's sleeve 30 mm forward, the cups taken across the carrier's row), the lever's safety pin pulled
+and put back as in the turnaround, chapter 1's pressed 172.3 g run. Before round 14: the MiR250 brings the four
+charged 5N Al cups from the VLM to the rePowder,
 the UR10e undoes the lid's draw latch, opens the lid, and sets the cups on the crucible's floor round the sealing rod
 with a loading tong; the machine melts and atomizes them; the arm takes the powder container off onto the MiR (#303,
 rounds 4 to 6). Round 9: a second MiR250 + UR10e comes for the lid, and its arm holds the lid down on its seal while
@@ -92,6 +94,12 @@ _spec.loader.exec_module(M)
 RP = np.array(A.REPOWDER_AT, float)   # the rePowder model's origin (the furnace axis on the floor) in the world
 RUN = json.loads((OUT / "alloy_recipe.json").read_text())["runs"]["Al-10Si"] if (OUT / "alloy_recipe.json").exists() \
     else C.recipe()["runs"]["Al-10Si"]
+# round 15 (QA, PR #318): chapter 1 now presses each cup's Si under a top-up of AlSi10Mg (alloy_press.py), so the run is
+# out/alloy_recipe_pressed.json's (172.3 g), not the unpressed recipe's 156.7 g
+if (OUT / "alloy_recipe_pressed.json").exists():
+    _pr = json.loads((OUT / "alloy_recipe_pressed.json").read_text())["runs"]["Al-10Si"]
+    RUN = dict(RUN, charge_g=_pr["run_g"], alloying_g=_pr["alloying_g"], top_up=_pr["top_up"], top_up_g=_pr["top_up_g"])
+CUP_HOLDS = f"Si + {RUN['top_up']}" if RUN.get("top_up") else "Si"     # what's pressed under each plug
 
 # ------------------------------------------------------------------------------------------------ the #124 port
 FURNACE_CUT = ("crucible", "holder", "nozzle", "furnace", "side_ins", "top_ins", "bottom_ins", "coil", "hood", "tc")
@@ -210,7 +218,10 @@ def powder_sums() -> dict:
     fines = k["fines_g"] * k["run1_share"] / k["charge_g"]
     metal_cm3 = k["charge_g"] / NAB_SOLID
     fill = metal_cm3 / CRUCIBLES["225 cm3"]
-    charges = {"4 cups (this chapter)": (RUN["charge_g"], "out/alloy_recipe.json: 4 x 5N Al cup + plug + 3.92 g Si"),
+    cups_how = (f"out/alloy_recipe_pressed.json: 4 x 5N Al cup + plug + {RUN['alloying_g']} g Si + "
+                f"{RUN['top_up_g']} g {RUN['top_up']}" if RUN.get("top_up")
+                else "out/alloy_recipe.json: 4 x 5N Al cup + plug + 3.92 g Si")
+    charges = {"4 cups (this chapter)": (RUN["charge_g"], cups_how),
                "225 cm3 crucible, filled as on Oct 27": (metal_cm3 * AL_SOLID,
                                                           f"{metal_cm3:.1f} cm3 of metal ({100 * fill:.0f} % of 225 "
                                                           f"cm3), the volume of k7m2q9's bronze, in Al at 2.70"),
@@ -245,8 +256,8 @@ def powder_sums() -> dict:
                    rod_to_wall_less_cup_mm=round(RADIAL_ROOM, 2)))
 
 
-POOL_LEVEL = level_for(pool_volume, RUN["charge_g"] / AL_LIQUID, -14.0, 37.0)     # 21.6 mm for 156.7 g
-POWDER_END = level_for(powder_volume, RUN["charge_g"] * 0.912 / POWDER_BULK, 3.0, 70.0)   # 15 mm: 143 g
+POOL_LEVEL = level_for(pool_volume, RUN["charge_g"] / AL_LIQUID, -14.0, 37.0)     # mm, for the run's charge
+POWDER_END = level_for(powder_volume, RUN["charge_g"] * 0.912 / POWDER_BULK, 3.0, 70.0)   # mm: 91 % of it
 
 
 def lighter(c, k=0.45):
@@ -773,27 +784,37 @@ def cam(eye, at) -> list:
 
 # ------------------------------------------------------------------------------------------------ the cups
 def add_cups(sc, mir):
-    """The four charged Al cups (cup, Si powder to 73 % of the cavity, plug pressed home), standing in the carrier's
+    """The four charged Al cups (cup, Si powder and, round 15, chapter 1's AlSi10Mg top-up over it to the plug, plug
+    pressed home), standing in the carrier's
     four pockets on the MiR. Each is a group cup0..cup3, its frame at the cup's base centre. The cups that end up at
     the back of the crucible (y > 0) get a copy halved through their own axis for the cutaway, and those at the front
     go with the half that is cut away."""
     top = C.FLOOR_Z + (C.FILL_TOP - C.FLOOR_Z) * C.fill_fraction("Al", "Si", 10.0)
+    layers = [("powder", C.powder_profile(top), C.POWDERS["Si"][0])]
+    if RUN.get("top_up"):       # round 15: chapter 1's pressed cups: the Si, then the top-up to the plug (alloy_press.py)
+        pr = json.loads((OUT / "alloy_recipe_pressed.json").read_text())["runs"]["Al-10Si"]
+        z_si = C.FLOOR_Z + (C.FILL_TOP - C.FLOOR_Z) * pr["column_mm_alloying"] / pr["column_mm_set"]
+        rb = C.CUP_BORE_D / 2 - 0.05
+        layers = [("powder", C.powder_profile(z_si), C.POWDERS["Si"][0]),
+                  ("topup", [(0, z_si), (rb, z_si), (rb, C.FILL_TOP - 0.05), (0, C.FILL_TOP - 0.05)],
+                   C.POWDERS["Al"][0])]
+    parts = ["cup", "plug"] + [nm for nm, _, _ in layers]
     for k in range(N_CUPS):
         grp = f"cup{k}"
         sc.add(f"{grp}/cup", C.cup(), C.AL_5N, grp, specular=0.6)
         sc.add(f"{grp}/plug", C.plug().translate((0, 0, C.PLUG_HOME_Z), inplace=False), C.AL_5N, grp, specular=0.6)
-        sc.add(f"{grp}/powder", C.powder(top), C.POWDERS["Si"][0], grp, specular=0.05)
+        for nm, prof, col in layers:
+            sc.add(f"{grp}/{nm}", C.lathe(prof), col, grp, specular=0.05)
         sc.parent[grp] = "amr"
         sc.gmat[grp] = T(mir.seats[k])
         if math.sin(math.radians(CUP_ANGLES[k])) > 0:       # at the back: halved through its axis (y >= 0 kept)
-            for part, prof, col in (("cup", C.cup_profile(), C.AL_5N),
-                                    ("plug", [(r, z + C.PLUG_HOME_Z) for r, z in C.plug_profile()], C.AL_5N),
-                                    ("powder", C.powder_profile(top), C.POWDERS["Si"][0])):
-                sc.add(f"{grp}/{part}#h", half_lathe(prof), col, grp, specular=0.4 if part != "powder" else 0.05)
+            for part, prof, col in [("cup", C.cup_profile(), C.AL_5N),
+                                    ("plug", [(r, z + C.PLUG_HOME_Z) for r, z in C.plug_profile()], C.AL_5N)] + layers:
+                sc.add(f"{grp}/{part}#h", half_lathe(prof), col, grp, specular=0.4 if part in ("cup", "plug") else 0.05)
                 sc.cutrole[f"{grp}/{part}#h"] = "half"
                 sc.cutrole[f"{grp}/{part}"] = "whole"
         else:                                               # at the front: in the half the cutaway removes
-            for part in ("cup", "plug", "powder"):
+            for part in parts:
                 sc.cutrole[f"{grp}/{part}"] = "whole"
         sc.cut_f[grp] = 0.0
 
@@ -1170,7 +1191,9 @@ TONG_GRASP = 185.0                    # the handle's centre, mm over the jaws' t
 TONG_OPEN = 1.6                       # mm each jaw (and its handle half) opens
 GRIP_TONG, GRIP_TONG_OPEN = 0.80, 0.77
 CUP_RAD = C.STOCK_D / 2
-TONG_AT = (-381.0, 0.0)               # its holder, a sleeve hung on the cabinet's -x end, MiR-local
+TONG_AT = (-381.0, 30.0)              # its holder, a sleeve hung on the cabinet's -x end, MiR-local (round 15: 30 mm
+                                      # forward, as #364 proposed: at y = 0 the open fingers reached its left camera)
+PIN_REST_Z = P.MIR["H"] + P.CAB_H + 110.0    # round 15: the lever's safety pin's axis on its rest on MiR250 1
 TONG_A_C, TONG_B_C = (0.70, 0.72, 0.75), (0.40, 0.52, 0.70)   # the two halves: bright steel and blued steel
 TONG_DK = (0.25, 0.26, 0.29)
 
@@ -1404,10 +1427,11 @@ def wrap_overlay(sc):
 #   v, across, along y, +-6 mm (8 mm a turn): moves the plate sideways under the stream, which stays where it is.
 # Each axis is a lead screw ending in a three-lobed knob the 2F-85 holds and turns with its wrist (a turn of the knob
 # is a turn of wrist 3). Arm 2, at the door's front left, holds the u knob; arm 1, in front, the v knob; both hold on for
-# the whole pour. The sensing is DAL PR 189's two cameras on the plate (the door's sight glass from the side, the front
-# view port): the stream is the brightest thing in either picture, and the plate's edges and hole are found in the
-# first frames of the pour; the two give where the stream meets the plate, along and across it, in mm (the plate's own
-# 119.6 x 20.8 mm for scale). The cell controller asks for a correction when the landing is more than 1 mm from its
+# the whole pour. The sensing is DAL PR 189's front view-port wide camera, the one that sees the landing (round 15:
+# atom_cameras, the door's camera sees only the nozzle and the stream's top): the stream is the brightest thing in its
+# picture, and the plate's edges and hole are found in the first frames of the pour; it gives where the stream meets
+# the plate, along and across it, in mm (the plate's own 119.6 x 20.8 mm for scale). The cell controller asks for a
+# correction when the landing is more than 1 mm from its
 # target, so the arms turn a knob an eighth or a quarter of a turn now and then, not all the time.
 STAGE_S = (78.0, 134.0)               # the stage along the axis, mm out from the door's plane (PORT): its base on the
                                       # end of the door's port boss (76 mm out), its carriage short of the stack's
@@ -1555,14 +1579,14 @@ def landing_of(u: float, v: float, drift=(0.0, 0.0)) -> tuple[float, float]:
 
 
 def steer_picture(state: dict, size=(900, 520)) -> Image.Image:
-    """The melt-stream cameras' view of the plate as the controller sees it (a schematic, not footage): the plate face
+    """The front wide camera's view of the plate as the controller sees it (a schematic, not footage): the plate face
     on, its hole and the upper sonotrode at its back end, the target, the landing now and its trail, and the last
     correction each arm made."""
     W_, H_ = size
     im = Image.new("RGB", size, (18, 20, 24))
     d = ImageDraw.Draw(im)
     f, fb, fs = _font(24), _font(26, True), _font(21)
-    d.text((18, 12), "Melt-stream cameras: where the stream lands (schematic)", fill=(235, 235, 240), font=fb)
+    d.text((18, 12), "Front wide camera: where the stream lands (schematic)", fill=(235, 235, 240), font=fb)
     px = 6.2                                                       # px a mm
     x0, yc = 70, 250
     Lp, Wp = M.PLATE_L, M.PLATE_W
@@ -1758,6 +1782,16 @@ def build():
         os.environ.pop("ATOMIZE_LITE", None)
     sc.AB, sc.AL = AB, AL
     load_rp(sc, ghost={"stack_cover": 0.35})
+    # round 15 (round 14 (C)'s report: the turnaround's clips pull it before lifting the lever, this chapter didn't):
+    # the sealing-rod lever's safety pin through its eye, as the crucible clips draw it (atom_crucible_tools.pin_meshes;
+    # without the eye's cross hole, so soft for the audit)
+    import atom_crucible_tools as CT
+    sc.CT = CT
+    for name, (mesh, col) in CT.pin_meshes(M.Z_ARM).items():
+        sc.add(name, mesh, col, "safety_pin", specular=0.4)
+    sc.parent["safety_pin"] = g("arm")
+    sc.gmat["safety_pin"] = np.eye(4)
+    sc.soft = set(getattr(sc, "soft", ())) | set(sc.members("safety_pin"))
     AL.swap_latch(sc)
     AB.set_joints(sc, lid=0.0, latch=0.0, loop=0.0, bolt=1.0, door=0.0, clamp0=0.0, clamp1=0.0)   # at atmosphere
     # DAL PR 189's three viewport cameras and their displays (atom_cams, as the turnaround's camera clip has them);
@@ -1791,6 +1825,12 @@ def build():
     mir_b.set(*B_HOME, 0.0)
     add_cups(sc, mir)
     sc.tong_home = add_tong(sc, mir)
+    # round 15: the pin's rest on MiR250 1, where the crucible clips have it (atom_crucible_tools.LAY1["pin"]): a thin
+    # fin the shaft lies on, its T-handle out over the end
+    px, py = CT.LAY1["pin"]
+    top = P.MIR["H"] + P.CAB_H
+    sc.add("amr/pin rest", _bx(px - 3.0, px + 3.0, py - 15.0, py + 15.0, top, PIN_REST_Z - 1.6).merge(
+        _bx(px - 20.0, px + 20.0, py - 20.0, py + 20.0, top, top + 6.0)), CT.FIX, "amr")
     flange_clamp(sc, 1.0)
     # round 14: ground within reach (atom_ground, the vacuum clip's design): the lab's bonded floor plates at the
     # atomizer's MiR spots, as lab._repowder() draws them for the other scenes (hidden here with the merged copy), and
@@ -1939,6 +1979,7 @@ def movie():
     CAM_CONT = cam((1450, -1650, 1250), (250, -300, 520))
     CAM_CRADLE = cam((1900, -2500, 1750), (150, -560, 760))
     CAM_PAIR = cam((-800, -4300, 1500), (-280, -600, 520))   # round 9: both units from the front, their ballast plates
+    CAM_PIN = cam((800, -2250, 1950), (480, -190, 1120))     # round 15: the lever's pin and its rest on MiR250 1
     rbB = mir_b.rb
     LMAP = {"Arm_1": "arm", "Arm_2": "armB", "Furnace": "fur", "Lever": "lever", "Loop": "loop", "Seal": "seal",
             "Pull": "pull", "Bolt": "bolt"}
@@ -1947,16 +1988,17 @@ def movie():
         """atom_latch.Work's gauge rows, into this chapter's."""
         show_g(**{LMAP[k]: v for k, v in kw.items() if k in LMAP})
 
-    show_g(arm="parked", mir="at the VLM's opening", armB="parked", mirB="waiting in the aisle",
-           charge=f"{N_CUPS} × 5N Al cup, Si, {m_cup:.1f} g")
+    show_g(arm="parked", mir="at Shuttle 1's opening", armB="parked", mirB="waiting in the aisle",
+           charge=f"{N_CUPS} × 5N Al cup, {CUP_HOLDS}, {m_cup:.1f} g")
     sc.cam = list(CAM_WIDE)
     # ------------------------------------------------------------------ 1. drive over
-    cap = (f"From the VLM to the atomizer: MiR250 1 carries the four charged 5N Al cups, {m_cup:.1f} g of Al-10Si "
-           f"(Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; "
+    cap = (f"From Shuttle 1 to the atomizer: MiR250 1 carries the four charged 5N Al cups, {m_cup:.1f} g of Al-10Si "
+           f"({CUP_HOLDS.replace(' + ', ' powder and a top-up of ')} pressed under each plug), to the AMAZEMET "
+           f"rePowder. Four charges is how the lab loads the crucible; "
            f"its own Al runs were 169-180 g (DAL #159). MiR250 2 comes over from the aisle for the lid.")
     lbl = [("AMAZEMET rePowder atomizer", tuple(W((250, 0, 1700))), (0.16, 0.24)),
            ("4 charged Al cups", tuple(mir.world((-300, -150, 1110))), (0.62, 0.30)),
-           ("Kardex VLM", (0, -1700, 2700), (0.80, 0.16))]
+           ("Shuttle 1", (0, -1700, 2700), (0.80, 0.16))]
     sc.step(f"1/{n}", cap, 1.0, None, hold=1.0, labels=lbl)
     show_g(mir="driving", mirB="driving")
     t_drive = max(mir.secs(x_load, y_load), mir_b.secs(x_lid, y_lid))
@@ -2008,6 +2050,30 @@ def movie():
     W2.open_lid(park_cap="The lid stands up over the left, and arm 2 parks clear of the opening. The top camera's arm "
                 "(DAL PR 189) is in its parked dimple over the blue frame, as it is for loading.")
     show_g(lever=None, loop=None, seal=None, pull=None, fur="open")
+    # round 15: the lever's safety pin out first, by its T-handle, the rod still seated, and onto its rest on the MiR, as
+    # the crucible clip does it (atom_crucible.py step 2), up 80 mm before the swing to the rest
+    CT = sc.CT
+    pin_g = np.array([0.0, CT.PIN_GRIP_Y, M.Z_ARM])
+    Gp = P.tcp_frame(tuple(W(pin_g)), (0, 0, -1), 180.0)
+    grip_pin = CT.gripper_gap_close(14.0) + 0.004
+    pin_rest = T((*CT.LAY1["pin"], PIN_REST_Z - M.Z_ARM)) @ T((0.0, 1.0, 0.0))    # the pin's frame there, MiR-local
+    cap = ("First arm 1 pulls the lever's safety pin out by its T-handle, the rod still seated on the nozzle, and lays it "
+           "on its rest on the MiR, as in the turnaround (ours).")
+    show_g(arm="the lever's safety pin")
+    sc.step(f"2/{n}", cap, 1.4, RB.both(rb.joint_to(Tw=Gp @ T((0, 0, -110))), rb.grip_to(0.0)), hold=0.05,
+            cam_to=CAM_TOP, labels=[("safety pin", tuple(W(pin_g + (0, -10, 12))), (0.30, 0.30))])
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(Gp), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(grip_pin), hold=0.05)
+    rb.grasp("safety_pin")
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(T((0.0, -48.0, 0.0)) @ Gp), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.5, rb.line_to(T((0.0, -48.0, 80.0)) @ Gp), hold=0.05)
+    Gp_rest = sc.world("amr") @ pin_rest @ inv(T(RP)) @ Gp
+    sc.step(f"2/{n}", cap, 2.4, rb.joint_to(Tw=T((0, 0, 90)) @ Gp_rest), hold=0.05, cam_to=CAM_PIN)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(Gp_rest), hold=0.05)
+    rb.release("amr")
+    sc.gmat["safety_pin"] = pin_rest
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.5, rb.line_to(T((0, 0, 90)) @ Gp_rest), hold=0.05)
     # the lever up off the adapter, out of the opening, as the machine is loaded by hand (training T4): down, its bar
     # lies over the places of the two cups nearest it, and the 2F-85's fingers would straddle it
     cap = ("Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the "
@@ -2021,8 +2087,8 @@ def movie():
     q_lev = arc_branch(rb, sc, lev_g, lev_pose, lambda u: lever(sc, M.ARM_RAISED * u), GRIP_LEVER,
                        ("holder_arm",), back=100.0)
     show_g(arm="sealing-rod lever")
-    sc.step(f"2/{n}", cap, 1.2, RB.both(rb.joint_to(q1=rb.solve(lev_g @ T((0, 0, -100)), q_lev)), rb.grip_to(0.0)),
-            hold=0.05, labels=[("sealing-rod lever", tuple(W((60, 0, M.Z_ARM + 20))), (0.74, 0.40))])
+    sc.step(f"2/{n}", cap, 2.0, RB.both(rb.joint_to(q1=rb.solve(lev_g @ T((0, 0, -100)), q_lev)), rb.grip_to(0.0)),
+            hold=0.05, cam_to=CAM_TOP, labels=[("sealing-rod lever", tuple(W((60, 0, M.Z_ARM + 20))), (0.74, 0.40))])
     sc.step(f"2/{n}", cap, 0.6, rb.line_to(lev_g), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_LEVER), hold=0.05)
     rb.events.append((sc.n, "grasp", g("arm"), None))
@@ -2101,7 +2167,10 @@ def movie():
         def up(u):
             tong_jaws(sc, f0 + (f1 - f0) * u)
         return up
-    xm = sc.world("amr")[:3, 0]
+    # round 15 (#364's base cameras on every MiR250): the tong's jaws, and so the fingers, across the carrier's row
+    # (along the MiR's -y), the wrist camera towards the MiR's +x; along the row, the outer finger over the first
+    # pocket was in the mast at the base's back-left corner (6-25 mm, 13 frames at 6 fps)
+    xm = -sc.world("amr")[:3, 1]
     for k in range(N_CUPS):
         cg = f"cup{k}"
         top = (sc.world(cg) @ np.r_[0.0, 0.0, C.SLUG_L, 1.0])[:3]
@@ -2212,6 +2281,24 @@ def movie():
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
     rb.events.append((sc.n, "release", g("arm"), None))
     sc.step(f"2/{n}", cap, 0.5, rb.line_to(lev_g @ T((0, 0, -100))), hold=0.05)
+    # round 15: the safety pin back in from its rest, as the crucible clip does it (atom_crucible.py step 9)
+    cap = "Arm 1 takes the safety pin off its rest and pushes it back through the lever's eye."
+    show_g(arm="the lever's safety pin")
+    Gp_src = sc.world("safety_pin") @ inv(T(RP)) @ Gp
+    sc.step(f"2/{n}", cap, 2.4, RB.both(rb.joint_to(Tw=T((0, 0, 90)) @ Gp_src), rb.grip_to(0.0)), hold=0.05,
+            cam_to=CAM_PIN)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(Gp_src), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(grip_pin), hold=0.05)
+    rb.grasp("safety_pin")
+    sc.step(f"2/{n}", cap, 0.5, rb.line_to(T((0, 0, 90)) @ Gp_src), hold=0.05)
+    sc.step(f"2/{n}", cap, 2.4, rb.joint_to(Tw=T((0.0, -48.0, 80.0)) @ Gp), hold=0.05, cam_to=CAM_TOP,
+            labels=[("safety pin", tuple(W(pin_g + (0, -10, 12))), (0.30, 0.30))])
+    sc.step(f"2/{n}", cap, 0.5, rb.line_to(T((0.0, -48.0, 0.0)) @ Gp), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(Gp), hold=0.05)
+    rb.release(g("arm"))
+    sc.gmat["safety_pin"] = np.eye(4)
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.5, rb.line_to(Gp @ T((0, 0, -100))), hold=0.05)
     # round 14: arm 2 shuts the lid by its knob and arm 1 hooks the loop on and closes the lever over centre, the latch
     # clip's moves (atom_latch.Work); nobody presses on the lid
     show_g(arm="parked")
@@ -2276,7 +2363,8 @@ def movie():
     k0 = back[0]
     sc.step(f"3/{n}", cap, 1.5, cut_open, hold=0.2, cam_to=CAM_SEC,
             labels=[("vented plug, 5N Al", tuple(W(vents[k0]) + (0, 4, 1)), (0.08, 0.26)),
-                    ("Si powder under it", tuple(W(cup_seat(k0) + (0, 3, 22))), (0.08, 0.56))])
+                    ("Si powder, " + (f"{RUN['top_up']} over it" if RUN.get("top_up") else "under it"),
+                     tuple(W(cup_seat(k0) + (0, 3, 22))), (0.08, 0.56))])
     # round 14 (Sterling, PR #318, 2026-11-20, at 19:21: "we're working on automating the other aspects of the
     # atomizer. This should be replaced with the latest we have there"): the stack under the charge is built by the
     # two arms in the turnaround (#353, the next chapter), not by hand: the aside says so, with the rebuild clip's picture
@@ -2334,7 +2422,7 @@ def movie():
             f = 1 - 0.95 * window(u, 0.05 + 0.06 * k, 0.72 + 0.05 * k)
             s = seats[k]
             sc.gmat[f"cup{k}"] = T(s) @ S((1 + 0.12 * (1 - f), 1 + 0.12 * (1 - f), f))
-            for part in ("cup", "plug", "powder", "cup#h", "plug#h", "powder#h"):
+            for part in ("cup", "plug", "powder", "topup", "cup#h", "plug#h", "powder#h", "topup#h"):
                 if f"cup{k}/{part}" in sc.actors:
                     sc.alpha[f"cup{k}/{part}"] = 1.0 if f > 0.07 else 0.0
         pool.set(-14 + (POOL_LEVEL + 14) * window(u, 0.05, 0.95))
@@ -2348,7 +2436,7 @@ def movie():
     # ------------------------------------------------------------------ 4. pour and atomize, the plate steered
     # round 14 (Sterling, PR #318, 2026-11-20: "the two arms working together to adjust the position of the plate in
     # real-time during the several minutes of atomization"): MiR250 1 comes round to the door too; each arm takes one
-    # knob of the landing stage (ours, stage_meshes) and holds it through the pour; the melt-stream cameras' landing
+    # knob of the landing stage (ours, stage_meshes) and holds it through the pour; the front wide camera's landing
     # error drives small turns (a schematic of what they measure is in the corner)
     cap = ("Before the pour, MiR250 1 comes round to the front left of the chamber's door, where MiR250 2 already "
            "waits: the plate is steered during the pour.")
@@ -2453,8 +2541,9 @@ def movie():
         shake(sc, True)
         show_g(pf=350.0, pc=150.0)
     cap = ("Droplets fly off the plate, freeze in the argon and run down the cone into the container. In the corner, "
-           "a schematic of what the melt-stream cameras (DAL PR 189: the door's sight glass and the front view port) "
-           "measure: where the stream meets the plate, in mm, the plate's own size for scale. The landing drifts as "
+           "a schematic of what the front view port's wide camera measures (DAL PR 189; the door's camera sees only the "
+           "nozzle and the stream's top): where the stream meets the plate, in mm, the plate's own size for scale. "
+           "The landing drifts as "
            "the nozzle wears and the plate erodes; the cell acts past 1 mm.")
     sc.step(f"4/{n}", cap, 3.6, drifting((0.0, 0.0), (1.4, 1.2), atomize), hold=0.3, live=True, still=True,
             labels=[("droplets freeze into powder", tuple(W(M.IMPACT + np.array([90, 0, -40]))), (0.70, 0.62))])
@@ -2539,7 +2628,7 @@ def movie():
     grasp_h = P.tcp_frame(W(handle), a_h, 90.0)
     pre_h = grasp_h @ T((0, 0, -120))
     cap = ("The arm takes the container off by its valve's red lever and carries it to the cradle on the MiR. A stand-in: "
-           "the lever is the valve's handle, not a lifting point, and the turnaround's design (next chapter) holds the "
+           "the lever is the valve's handle, not a lifting point, and the turnaround's design (next) holds the "
            "container's weight from below on a fork while the other arm opens the clamp. That is not yet animated "
            "without collisions. Next, the sieve shaker.")
     show_g(arm="container")

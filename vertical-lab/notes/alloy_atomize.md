@@ -28,6 +28,60 @@ python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /
 python3 alloy_atomize.py powder             # print the powder sums
 ```
 
+### Round 15 (PR #318, 2026-11-23): the base cameras and the Class D unit on both MiR250s, the lever's pin
+
+Sterling (2026-11-23 20:28 UTC): "re-render everything in a self-consistent and cohesive way. Fix collisions, nonsensical
+parts, etc." Every MiR250 now carries #364's three base cameras (`props.BASE_CAMS`: the 2040 mast at the base's
+back-left corner, up to 1.80 m, and the two 2020 posts with cameras at 0.88 m at the cabinet's ends) and the safety
+PR's Class D unit (an Amerex B570 in an 811 bracket, `safety.mir_meshes`, on the cabinet's −y side). Until round 15
+this chapter left the cameras out (`props.BASE_CAMS_OPT_OUT`); that list is now empty.
+
+Strict audit (`ARM_AUDIT=1`, the whole lab, round 11's rules), as round 14 left the chapter, with the cameras and the
+unit in: **19 of 1,249 frames at 6 fps**, all arm 1's, movers 0 (the Class D unit hit nothing):
+
+| Found | Why | Fixed |
+| --- | --- | --- |
+| The open fingers in the left camera's case and lens, taking the loading tong out of its sleeve and putting it back (frames 432-435, 695-698: 6-25 mm) | The sleeve hung at y = 0 on the cabinet's left end; the open 2F-85 reached to y = −70, the camera's lens is at y = −52 (`notes/base_cameras.md`) | The sleeve 30 mm forward (`TONG_AT` y = 30), as #364 proposed: the fingers reach y = −40 |
+| A finger in the mast taking cup 1 from the carrier, and the cup and the tong in it on the swing to the crucible (frames 457-482: 6-25 mm) | The carrier's first pocket (MiR-local (−330, −238)) is 60 mm in front of the mast, on the same line from the arm's base; the tong's jaws, and so the fingers, closed along the carrier's row (MiR x), so the outer finger reached the mast's face (x = −376). Starting from that contact, the joint move's planner took the mast as already touched | The tong's jaws close across the row (along the MiR's −y) for every cup, the wrist camera to the MiR's +x: both fingers stay over the row, about 35 mm from the mast; from a clear start the planner goes round it |
+
+After: **0 of 1,249** at 6 fps, movers 0.
+
+**The lever's safety pin** (round 14 (C)'s report: the turnaround's crucible clips pull the pin before they lift the
+lever, this chapter didn't). The pin is now drawn in the lever's eye (`atom_crucible_tools.pin_meshes`, soft for the
+audit as in the crucible clips: drawn without the eye's cross hole), with its rest on MiR250 1 where the crucible clips
+have it (`atom_crucible_tools.LAY1["pin"]`, MiR-local (345, 191), a thin fin the shaft lies on, the T-handle out over
+the end, the pin's axis 110 mm over the cabinet top). Arm 1 takes the T-handle from above, pulls the pin 48 mm out, lifts
+it and lays it on the rest before it lifts the lever, and puts it back after it lays the lever down, as
+`atom_crucible.py` steps 2 and 9 do (the arm 80-90 mm clear above both ends before each swing). `CAM_PIN` shows both
+the pin and the rest for the swings. Strict audit with it: **0 of 1,329** at 6 fps, movers 0. With every round-15
+change in (the pin, the floor plates and the pressed cups below): **0 of 2,728 frames at 12 fps, movers 0**
+(`ARM_AUDIT=1 VIZ3D_FPS=12 ARM_AUDIT_TAG=r15fix_ch2_12fps`, the whole lab:
+[`alloy_atomize_r15fix_ch2_12fps.json`](../out/collisions/alloy_atomize_r15fix_ch2_12fps.json)).
+
+**The bonded floor plates** (`atom_ground.py`). The set-up movie's audit with round 15's floor found the plates of
+the "right" and "cams" spots, and the "wait" plate's floor channel, 63-89 mm under the foot of the sieving cell's target
+post, which the rePowder's dock now reads too (`setup_lab.SHARED_POST`, the post at world (-2350, -2012)). The plates
+and channels now keep 10 mm clear of it (`atom_ground.KEEP_OUT`: the grid the plates are laid on leaves it empty, and a
+channel's terminal goes to the nearest corner whose run to the ground bar misses it). Every shoe of every spot is still
+on a plate, this chapter's included (latch, lid, pour_u, pour_v, container, dock). The spots that the clips keep as
+literal tuples (`atom_latch.A_AT`/`B_AT`, `atom_vacuum.MIR_PARK`, `atom_container.A_LEFT`/`B_FRONT`,
+`atom_crucible.MIR2_AT`) are read from those files' text (`SPOT_SOURCE`, nothing imported), and a spot whose MiR250
+stands in the vacuum pump's footprint is left out of the lab's plates by test (`in_pump`), not by a list: today "left",
+"crucible_left" and atom_container's "brush" (whose MiR250 is 18 mm into the pump); a spot moved off the pump gets its
+plate back. "fork" stays out by name (chapter 3's sieve wash stand).
+
+**On screen** (round 15's QA): the run is chapter 1's as it now presses it, 172.3 g (four cups, Si under a top-up of
+AlSi10Mg: `out/alloy_recipe_pressed.json`; it was the unpressed recipe's 156.7 g), and so are the sums from it (about
+157 g of powder, 29 g under 63 µm; 16 runs for a 440 g build). The cups are drawn with both layers. The first label is
+"Shuttle 1", not "Kardex VLM"; the container caption's "(next chapter)" is "(next)", the turnaround now between; the
+pour's caption and the corner schematic say the front wide camera measures the landing.
+
+**The container is still taken off by its valve's lever** (step 5, a stand-in, and the caption says so). The turnaround's
+container clip (`atom_container.py`) has arm 2 hold the weight from below on a fork while arm 1 opens the clamp, but that
+needs its own clamp (a T-bolt and a hinged front half in place of the model's flange clamp), a fork on MiR250 2 and a
+slotted cradle on MiR250 1, MiR250 2 at the container's right turned 90 deg, and some 20 more moves; it was not ported
+in round 15's time.
+
 ### Round 14 (PR #318, 2026-11-20): the model's latch, the tong explained, the plate steered
 
 Sterling's notes on round 12's public video (PR #318, 2026-11-20 ~18:00 UTC), and what changed:
@@ -67,10 +121,10 @@ lands.
   in front of the chamber (model (-50, -950)), its arm on the v knob: both clear of the rePowder's vacuum pump, left
   of the door, and 50 mm apart. Both hold on through the pour; arm 1's hand also rides the carriage when u changes.
   Each arm is on the IK branch that turns its knob through every correction clear (`path_branch`).
-- **The sensing:** DAL PR 189's two cameras on the plate, the door's sight glass (from the side) and the front view
-  port. The stream is the brightest thing in either picture; the plate's edges and hole are found in the first frames
-  of the pour, and the plate's own 119.6 x 20.8 mm gives the scale. The two views give the landing along and across
-  the plate in mm. The cell acts when it is more than 1 mm off target, so the arms turn a knob an eighth or a quarter of a turn
+- **The sensing:** DAL PR 189's front view-port wide camera (round 15: the camera clip, `atom_cameras.py`, finds it the
+  only one that sees the landing; the door's sight-glass camera sees the nozzle and the stream's top only). The stream
+  is the brightest thing in its picture; the plate's edges and hole are found in the first frames of the pour, and the
+  plate's own 119.6 x 20.8 mm gives the scale. It gives the landing along and across the plate in mm. The cell acts when it is more than 1 mm off target, so the arms turn a knob an eighth or a quarter of a turn
   now and then.
 - **On screen:** the landing drifts 1.4 mm along and 1.2 mm across, then 3 and 2.4 mm. Arm 2 turns the u knob an eighth
   of a turn, then a quarter; arm 1 the v knob an eighth, then three sixteenths. The corner shows a schematic of what the
@@ -438,9 +492,10 @@ Sterling (PR #318): *"We load multiple charges into the crucible (4), and potent
   section 10 and 16 mm behind the cut plane, so their powder, plug and vent show. The two front cups go with the half
   that is cut away.
 
-**The melt:** 156.7 g at 2.37 g/cm³ (liquid Al, assumed for Al-10Si) is 66.1 cm³. In the model's crucible round the
-rod that stands 21.6 mm above the floor cone's rim (it was 7.6 mm for round 4's 78 g). **The powder:** 143 g at
-1.40 g/cm³ loose (assumed) is a heap 15 mm deep at the container's wall.
+**The melt:** 172.3 g (round 15: chapter 1's pressed run; 156.7 g before) at 2.37 g/cm³ (liquid Al, assumed for
+Al-10Si) is 72.7 cm³. In the model's crucible round the rod that stands 24.4 mm above the floor cone's rim (it was
+7.6 mm for round 4's 78 g). **The powder:** 157 g at 1.40 g/cm³ loose (assumed) is a heap 16 mm deep at the
+container's wall.
 
 ### How much powder a run makes
 
@@ -456,7 +511,7 @@ He put 97 % of the usable powder down to the first run. For that run, that is **
 
 | Charge | Al in | Usable, < 250 µm | 20–63 µm | Runs for a 440 g build | Runs for a 30 mm build (1.0 kg) |
 |---|---|---|---|---|---|
-| 4 cups, this chapter (`out/alloy_recipe.json`) | 157 g | 143 g | 26 g | 17 | 39 |
+| 4 cups, this chapter (`out/alloy_recipe_pressed.json`, round 15) | 172 g | 157 g | 29 g | 16 | 36 |
 | 225 cm³ crucible filled as on Oct 27 (142.5 cm³ of metal, 63 %) | 385 g | 351 g | 65 g | 7 | 16 |
 | 400 cm³ crucible, the same fill (assumed) | 684 g | 624 g | 116 g | 4 | 9 |
 
@@ -505,7 +560,7 @@ above, and the reason a cup charge is so much smaller than a rod charge.
 
 | On screen | Value | Source |
 |---|---|---|
-| Charge | 4 cups, 156.7 g, Al-10Si (3.92 g of Si powder 27.7 mm up each bore) | `out/alloy_recipe.json` (charge.py: #222's cup and plug, tapped Si 1.10 g/cm³) |
+| Charge | 4 cups, 172.3 g, Al-10Si (round 15: 3.92 g of Si powder, then 3.91 g of AlSi10Mg to the plug, pressed, in each cup) | `out/alloy_recipe_pressed.json` (alloy_press.py; charge.py: #222's cup and plug) |
 | Four cups a run | how the lab loads the crucible; the lab's own Al runs were 169–180 g | PR #318; DAL #159 (Oct 6: 180 g of 6063; Oct 21 and 22: 169 g of 4047) |
 | Loading order | rod fitted and seated first, then the metal round it | GU500 manual pp. 15, 47–51, via #222 |
 | Getting past the rod's adapter | straight down misses by 1.35 mm; tipped in, −0.09 mm (−2.1 to +0.5) | #222 README, `loading_margin()` |

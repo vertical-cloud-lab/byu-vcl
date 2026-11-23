@@ -190,7 +190,8 @@ BASE_CAMS = {
     # back-left corner for the mast, are where the arms pass least (notes/base_cameras.md, "Where the arms go")
     # kind "case": only the camera in its case on the post's top, its Pi 5 on the cabinet's end face below the top,
     # on a 300 mm cable (#364's first audits: the arms' held parts pass where a whole camera-and-Pi box stood)
-    # L at y = -60, as R: on the left end, at the case's height, chapter 2's tong sleeve (alloy_atomize.TONG_AT, y = 0)
+    # L at y = -60, as R: on the left end, at the case's height, chapter 2's tong sleeve (alloy_atomize.TONG_AT, y = 0;
+    # 30 since round 15, which cleared the grasp)
     # and the vial holder (animate.BUFFER_LOCAL, y = -150) leave a gap only 10 mm wide between the open gripper's
     # reaches (y -70 and -80); here only the tong's grasp touches (notes/base_cameras.md)
     "L": dict(what="left side camera", post=(-(CAB_X + 11.0), -60.0), sec=(20.0, 20.0), z=(560.0, 845.0),

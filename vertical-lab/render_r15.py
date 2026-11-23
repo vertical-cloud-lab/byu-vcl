@@ -25,7 +25,8 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
 R15 = OUT / "r15"
 LOGS = Path("/tmp/rl")
-COMMON = dict(VIZ3D_HD="1", VIZ3D_HD_DIR="r15", VIZ3D_SIZE="1280x720", VIZ3D_HD_CLEAN="0", VIZ3D_AUDIT="1")
+COMMON = dict(VIZ3D_HD="1", VIZ3D_HD_DIR="r15", VIZ3D_SIZE="1280x720", VIZ3D_HD_CLEAN="0", VIZ3D_AUDIT="1",
+              VIZ3D_PROGRESS="1")
 
 TOUR = ["stream_cam", "tensile_h", "glovebox_tray", "glovebox", "fumehood", "fumehood_tray", "storage",
         "powder_store_feed", "powder_store_lots", "packaging", "ded", "hip", "cubxl_corrosion"]

@@ -221,7 +221,7 @@
  {
   "chapter": "alloy2",
   "part": "alloy_atomize",
-  "substep": 106,
+  "substep": 137,
   "label": "3/5",
   "offset": 0.5,
   "text": "The stack under the charge is built between runs by the two arms: one holds the graphite crucible still while the other threads the thin nut on from below. The next chapter shows it.",
@@ -231,11 +231,11 @@
  {
   "chapter": "alloy2",
   "part": "alloy_atomize",
-  "substep": 118,
+  "substep": 151,
   "label": "4/5",
   "offset": 0.5,
-  "text": "Four cups make about a hundred and forty grams of powder, some twenty-six grams of it in the printer's size range. A fuller crucible, or the larger four-hundred cubic centimetre one, makes several times more a run.",
-  "source": "out/alloy_atomize.json caption (substeps 118, 137); notes/alloy_atomize.md (How much powder a run makes)",
+  "text": "Four cups make about a hundred and fifty-seven grams of powder, some twenty-nine grams of it in the printer's size range. A fuller crucible, or the larger four-hundred cubic centimetre one, makes several times more a run.",
+  "source": "out/alloy_atomize.json caption (round 15: substeps 151, 173; chapter 1's pressed 172.3 g run); notes/alloy_atomize.md (How much powder a run makes)",
   "match": "The powder collects in the container"
  },
  {
