@@ -1,0 +1,4 @@
+open_now,n,median_employees,n_with_employees,median_revenue_$M,n_with_revenue,median_risk_events,share_still_operating
+closed (0),27,1185.0,14,390.0,10,4.0,0.93
+mixed (1-2),76,1072.0,44,1739.0,31,4.0,0.96
+open (3-4),40,170.0,10,25.0,14,3.0,0.98

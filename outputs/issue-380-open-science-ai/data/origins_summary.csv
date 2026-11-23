@@ -1,0 +1,7 @@
+origin,n,mean_open_initial,mean_open_now,closing_share,median_value_B
+academic,23,2.09,2.26,0.17,1.92
+community,7,3.29,2.86,0.43,3.58
+corporate,10,1.5,2.0,0.2,3.0
+founder_startup,86,1.65,1.41,0.42,5.0
+government,6,3.33,3.67,0.0,0.05
+nonprofit,5,3.0,3.0,0.2,426.59

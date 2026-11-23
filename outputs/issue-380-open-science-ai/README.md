@@ -204,6 +204,29 @@ organizations, so survivorship bias applies. Source: [`data/openness_outcomes_by
 | Companies founded before 2000 (incumbents) | 20 | 1.30 → 1.80 | **+0.50** | 40% | 50% |
 | Government, academic and foundation infrastructure | 18 | 3.33 → 3.61 | **+0.28** | 6% | 11% |
 
+**Size, origins and risk across groups A–G (143 organizations).** Sources:
+[`data/size_risk_by_openness.csv`](data/size_risk_by_openness.csv) and
+[`data/origins_summary.csv`](data/origins_summary.csv).
+
+| Openness today | n | Median employees (n) | Median revenue (n) | Still operating |
+| --- | --- | --- | --- | --- |
+| Closed (0) | 27 | 1,185 (14) | $390M (10) | 93% |
+| Mixed / open core (1–2) | 76 | 1,072 (44) | $1.74B (31) | 96% |
+| Open (3–4) | 40 | 170 (10) | $25M (14) | 98% |
+
+| Origin | n | Mean openness at founding → now | Made a closing move |
+| --- | --- | --- | --- |
+| Founder startup | 86 | 1.65 → **1.41** | 42% |
+| Academic spin-out or project | 23 | 2.09 → **2.26** | 17% |
+| Government | 6 | 3.33 → **3.67** | 0% |
+| Corporate spin-out | 10 | 1.50 → 2.00 | 20% |
+| Community | 7 | 3.29 → 2.86 | 43% |
+
+- **Size and survival:** the fully open organizations are much smaller by staff and revenue, and the most
+  likely to still be operating. The big revenue sits in the mixed, open-core middle.
+- **Origins:** academic and government origins drift *toward* openness, while founder startups drift away
+  from it. This matches the VC-era vs. incumbent result below.
+
 **Robustness checks** ([`scripts/robustness_checks.py`](scripts/robustness_checks.py),
 [`data/robustness_kinds_by_scope.csv`](data/robustness_kinds_by_scope.csv),
 [`data/robustness_openness_vs_value.csv`](data/robustness_openness_vs_value.csv)):
