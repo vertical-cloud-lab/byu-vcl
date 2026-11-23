@@ -17,6 +17,10 @@ os.makedirs(SHOTS, exist_ok=True)
 
 def human_move_click(page, locator):
     locator.wait_for(state="visible", timeout=15000)
+    try:
+        locator.scroll_into_view_if_needed(timeout=5000); time.sleep(random.uniform(0.3, 0.6))
+    except Exception:
+        pass
     box = locator.bounding_box()
     x = box["x"] + box["width"] * random.uniform(0.3, 0.7)
     y = box["y"] + box["height"] * random.uniform(0.35, 0.65)

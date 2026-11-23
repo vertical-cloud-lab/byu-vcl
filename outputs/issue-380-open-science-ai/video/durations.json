@@ -1,0 +1,22 @@
+{
+ "title": 20.3,
+ "oss_value": 36.3,
+ "open_science_value": 32.02,
+ "values": 38.77,
+ "relicense": 40.95,
+ "lanes_software": 19.95,
+ "stocks": 26.05,
+ "lanes_hardware": 35.15,
+ "lanes_science": 40.27,
+ "ai_values": 22.48,
+ "lanes_ai": 17.32,
+ "epoch_sector": 28.3,
+ "compute_gap": 15.1,
+ "openalex": 25.85,
+ "language": 28.38,
+ "quotes": 26.4,
+ "gh_threads": 38.08,
+ "dal": 45.83,
+ "takeaways": 38.7,
+ "end": 10.6
+}

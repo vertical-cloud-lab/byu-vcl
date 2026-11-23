@@ -1,0 +1,3 @@
+us,n,median_founded,median_age_yrs,share_operating,share_with_closing_move,share_with_opening_move,share_acquired_or_PE,n_with_value,median_value_usd_B
+False,34,2012.0,14.0,0.97,0.26,0.41,0.18,6,10.1
+True,87,2011.0,15.0,0.97,0.41,0.25,0.21,54,4.6

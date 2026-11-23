@@ -185,31 +185,33 @@ def s_ai_values(duration, mp4, png):
 # ---------------------------------------------------------------- stocks since IPO
 def s_stocks(duration, mp4, png):
     px = pd.read_csv("data/prices_weekly_close.csv", index_col=0, parse_dates=True)
-    oss = ["MDB", "ESTC", "GTLB"]; closed = ["SNOW", "DDOG", "CRWD", "OKTA", "TWLO", "ZS", "DOCU", "TEAM"]
+    oss = [("MDB", "MongoDB", BLUE), ("ESTC", "Elastic", AQUA), ("GTLB", "GitLab", YELLOW)]
+    closed = ["SNOW", "DDOG", "CRWD", "OKTA", "TWLO", "ZS", "DOCU", "TEAM"]
     def aligned(t):
         s = px[t].dropna(); y = (s.index - s.index[0]).days / 365.25; return pd.Series(s.values / s.values[0], index=y)
-    grid = np.round(np.arange(0, 10.01, 1 / 12), 4)
-    def med(ts):
-        a = pd.DataFrame({t: aligned(t).reindex(grid, method="nearest", tolerance=0.05) for t in ts}); return a.median(axis=1, skipna=True), a.count(axis=1)
-    mo, no = med(oss); mc, nc = med(closed)
-    # only keep where at least 2 names remain
-    mo[no < 2] = np.nan; mc[nc < 3] = np.nan
+    grid = np.round(np.arange(0, 11.01, 1 / 12), 4)
+    a = pd.DataFrame({t: aligned(t).reindex(grid, method="nearest", tolerance=0.05) for t in closed})
+    mc = a.median(axis=1, skipna=True); mc[a.count(axis=1) < 4] = np.nan
     fig, ax = fig_ax("Open-source-origin stocks vs closed software peers",
-                     "Growth of $1 from each company's first trading week, aligned by years since listing (median of each group, log scale)",
-                     rect=(0.08, 0.13, 0.74, 0.68))
-    source_note(fig, "Open-source origin: MongoDB, Elastic, GitLab (HashiCorp, Confluent, Couchbase left the market in buyouts). Closed: Snowflake, Datadog, CrowdStrike, Okta, Twilio, Zscaler, DocuSign, Atlassian.\nYahoo Finance weekly adjusted closes to 2026-11-23. Survivorship applies to both groups.")
-    ax.set_yscale("log"); ax.set_xlim(0, 10); ax.set_ylim(0.3, 20)
+                     "Growth of $1 from each company's first trading week, by years since listing (log scale)",
+                     rect=(0.08, 0.14, 0.74, 0.67))
+    source_note(fig, "Closed peers: Snowflake, Datadog, CrowdStrike, Okta, Twilio, Zscaler, DocuSign, Atlassian (median of those listed that long). HashiCorp, Confluent and Couchbase\nleft the market in buyouts (IBM $6.4B, IBM $11B, Haveli $1.5B). Yahoo Finance weekly adjusted closes to 2026-11-23.")
+    ax.set_yscale("log"); ax.set_xlim(0, 11); ax.set_ylim(0.25, 20)
     ax.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"${v:g}")); ax.set_xlabel("years since listing")
-    for t in oss + closed:
-        s = aligned(t); ax.plot(s.index, s.values, color=(BLUE if t in oss else ORANGE), alpha=0.16, lw=1.2)
-    lo, = ax.plot([], [], color=BLUE, lw=4, label="Open-source origin (median)"); lc, = ax.plot([], [], color=ORANGE, lw=4, label="Closed-source peers (median)")
-    to = ax.text(0, 0, "", fontsize=19, color=TEXT, va="center"); tc = ax.text(0, 0, "", fontsize=19, color=TEXT, va="center")
-    ax.legend(loc="upper left"); ax.axhline(1, color=TEXT2, lw=1, ls=(0, (4, 4)))
+    for t in closed:
+        s = aligned(t); ax.plot(s.index, s.values, color=ORANGE, alpha=0.13, lw=1.2)
+    ax.axhline(1, color=TEXT2, lw=1, ls=(0, (4, 4)))
+    series = [(aligned(t), lab, col) for t, lab, col in oss] + [(mc.dropna(), "Closed peers (median)", ORANGE)]
+    lines = [ax.plot([], [], color=col, lw=(4 if "median" in lab else 3), label=lab)[0] for _, lab, col in series]
+    tx = [ax.text(0, 0, "", fontsize=18, color=TEXT, va="center") for _ in series]
+    ax.legend(loc="upper left", ncol=2)
     def update(p):
-        xm = p * 10
-        for s, ln, tx in [(mo, lo, to), (mc, lc, tc)]:
-            ss = s.dropna(); ss = ss[ss.index <= xm]
-            if len(ss): ln.set_data(ss.index, ss.values); tx.set_position((ss.index[-1] + 0.12, ss.values[-1])); tx.set_text(f"${ss.values[-1]:.2f}")
+        xm = p * 11
+        for (s, lab, col), ln, t in zip(series, lines, tx):
+            ss = s[s.index <= xm]
+            if len(ss):
+                ln.set_data(ss.index, ss.values); t.set_position((ss.index[-1] + 0.12, ss.values[-1]))
+                t.set_text(f"{lab.split(' (')[0]} ${ss.values[-1]:.2f}" if p >= 1 else "")
     render(fig, update, duration, mp4, png)
 
 SCENES = {"values": s_values, "relicense": s_relicense, "lanes_software": s_lanes_software, "lanes_hardware": s_lanes_hardware,

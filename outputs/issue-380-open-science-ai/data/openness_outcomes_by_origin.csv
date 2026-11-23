@@ -1,0 +1,7 @@
+origin,n,median_founded,median_age_yrs,share_operating,share_with_closing_move,share_with_opening_move,share_acquired_or_PE,n_with_value,median_value_usd_B
+academic,18,2010.5,15.5,1.0,0.22,0.11,0.06,6,1.92
+community,7,2011.0,15.0,1.0,0.43,0.14,0.29,6,3.58
+corporate,9,2012.5,13.5,0.89,0.22,0.44,0.33,6,7.0
+founder_startup,73,2011.0,15.0,0.97,0.48,0.33,0.23,38,6.25
+government,5,2011.0,15.0,1.0,0.0,0.4,0.0,1,0.05
+nonprofit,4,2013.0,13.0,1.0,0.25,0.5,0.0,2,426.59

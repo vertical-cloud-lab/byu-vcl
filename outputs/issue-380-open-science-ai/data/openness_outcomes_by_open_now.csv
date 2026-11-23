@@ -1,0 +1,4 @@
+open_now,n,median_founded,median_age_yrs,share_operating,share_with_closing_move,share_with_opening_move,share_acquired_or_PE,n_with_value,median_value_usd_B
+closed (0),14,2011.0,15.0,0.93,0.14,0.0,0.21,5,2.0
+mixed (1-2),73,2012.0,14.0,0.96,0.56,0.4,0.23,44,6.2
+open (3-4),34,2006.5,19.5,1.0,0.06,0.21,0.12,11,0.05

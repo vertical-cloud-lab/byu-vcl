@@ -21,7 +21,7 @@ plt.rcParams.update({
     "axes.edgecolor": GRID, "grid.color": GRID, "grid.linewidth": 0.8, "axes.grid": True,
     "font.family": "DejaVu Sans", "font.size": 20, "axes.titlesize": 30, "axes.labelsize": 20,
     "xtick.labelsize": 18, "ytick.labelsize": 18, "legend.fontsize": 18, "legend.frameon": False,
-    "axes.spines.top": False, "axes.spines.right": False, "lines.linewidth": LW, "lines.solid_capstyle": "round",
+    "axes.spines.top": False, "axes.axisbelow": True, "axes.spines.right": False, "lines.linewidth": LW, "lines.solid_capstyle": "round",
 })
 
 def fig_ax(title=None, subtitle=None, rect=(0.08, 0.13, 0.86, 0.68)):
@@ -41,15 +41,21 @@ def ease(t):
     return 0.5 - 0.5 * np.cos(np.pi * t)
 
 def render(fig, update, duration, out_mp4, out_png=None, build=0.7):
-    """update(p) draws the frame for build progress p in [0, 1]; the last (1-build) of the clip holds."""
+    """update(p) draws the frame for build progress p in [0, 1]; the last (1-build) of the clip holds.
+    Frames go straight from the Agg canvas to ffmpeg; held frames reuse the last raster."""
+    import subprocess
     n = int(round(duration * FPS))
-    def f(i):
+    fig.canvas.draw(); w, h = fig.canvas.get_width_height()
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{w}x{h}", "-r", str(FPS), "-i", "-",
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", out_mp4]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    last, lastp = None, None
+    for i in range(n):
         p = min(1.0, (i / max(1, n - 1)) / build)
-        update(p)
-        return []
-    anim = animation.FuncAnimation(fig, f, frames=n, blit=False)
-    anim.save(out_mp4, writer=animation.FFMpegWriter(fps=FPS, codec="libx264",
-              extra_args=["-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20"]), dpi=DPI)
+        if last is None or p != lastp:
+            update(p); fig.canvas.draw(); last = bytes(fig.canvas.buffer_rgba()); lastp = p
+        pr.stdin.write(last)
+    pr.stdin.close(); pr.wait()
     if out_png:
         update(1.0); fig.savefig(out_png, dpi=DPI)
     plt.close(fig)

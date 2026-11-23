@@ -1,0 +1,86 @@
+[
+ {
+  "scene": "title",
+  "text": "What is open science worth in the age of AI? Over six hours, we combined nine literature reviews from Edison, a hundred and twenty-one company and project case files, Epoch AI and OpenAlex data, market prices, and nearly five thousand of our own GitHub comments. Here is what the numbers show."
+ },
+ {
+  "scene": "oss_value",
+  "text": "Start with software. A Harvard Business School study estimates that rewriting the open-source code that firms use would cost about four billion dollars, but that firms would need about eight point eight trillion dollars to replace it themselves. Researchers working with U.S. national accounts put American investment in open source at thirty-six to thirty-eight billion dollars in 2019, and a European Commission study linked sixty-five to ninety-five billion euros of EU output to it. These measure different things, but they agree on one point: the value of using open code dwarfs the cost of writing it."
+ },
+ {
+  "scene": "open_science_value",
+  "text": "Open science follows the same pattern. The Protein Data Bank costs about seven million dollars a year to run, while researchers spend an estimated five and a half billion dollars of time using it every year. It also supplied the training data for AlphaFold. When Celera restricted access to part of the human genome, later research and diagnostics on those genes fell by twenty to thirty percent. And open scientific hardware costs, on average, eighty-seven percent less than the commercial equivalent."
+ },
+ {
+  "scene": "values",
+  "text": "So who captures that value? Among about thirty commercial open-source companies with known prices, the biggest numbers belong to firms that wrap open code in a paid service. Databricks is valued at a hundred and ninety billion dollars. NVIDIA agreed to buy Hugging Face for twelve point nine billion, and IBM bought Confluent for eleven billion. Red Hat, the purest open-source subscription business, sold to IBM for thirty-four billion. MongoDB moved to a restrictive license in 2018 and is still worth about twenty-three billion. Openness alone does not set the price. Owning the service around it does."
+ },
+ {
+  "scene": "coss_vc",
+  "text": "A broader dataset points the same way in venture markets. The Linux Foundation, Serena Capital and the Commercial Open Source Startup Alliance matched more than eight hundred venture-backed open-source startups with closed-source peers. Median valuations at IPO were one point three billion dollars versus a hundred and seventy-one million, and at acquisition four hundred and eighty-two million versus thirty-four million. The open-source startups also raised at higher valuations and moved faster between rounds. One caution: the authors include a venture firm that backs open source, and only twelve percent of these startups have exited, so those medians describe the winners."
+ },
+ {
+  "scene": "relicense",
+  "text": "Licenses are not fixed. In our case files, changes to license or access terms roughly doubled after 2020: thirty-one closing moves and thirty opening moves, against sixteen and eleven in the decade before. When a company closed a project that others were reselling, a fork followed: OpenSearch, OpenTofu, Valkey. Elastic and Redis later added an open-source license back. AI moved the other way, with DeepSeek's MIT release, OpenAI's first open weights since GPT-2, and Anthropic giving its Model Context Protocol to the Linux Foundation. Meanwhile, Meta's newest frontier model shipped closed."
+ },
+ {
+  "scene": "lanes_software",
+  "text": "Seen as lanes over time, the most open software firms are also among the longest-lived. Red Hat, SUSE and Canonical have each lasted more than two decades. Most of the listed open-core firms ended up owned by someone else, but their code lived on in foundations, whatever happened to the company."
+ },
+ {
+  "scene": "stocks",
+  "text": "Did open-source roots hurt shareholders? It depends on the company. MongoDB is up about ten-fold since listing, Elastic is roughly flat after eight years, and GitLab is down about sixty percent, while the median closed-source peer of the same vintage grew about four- to six-fold. HashiCorp, Confluent and Couchbase left the market through buyouts. With so few survivors, this is no proof of an open-source penalty, but there is no premium either."
+ },
+ {
+  "scene": "lanes_hardware",
+  "text": "Hardware is different. The open-hardware pioneers have lasted: Adafruit and SparkFun for about two decades, Prusa for fourteen years. But they stay small and private. The large valuations went to firms that are closed or closing. MakerBot closed its designs in 2012, sold for about four hundred million dollars, and its goodwill was written off within three years. Bambu Lab paired open slicer software with closed printers and won a large share of the market. Arduino now belongs to Qualcomm. Openness scales in hardware mainly through shared standards like RISC-V and the Open Compute Project."
+ },
+ {
+  "scene": "lanes_science",
+  "text": "In the physical sciences, open infrastructure lasts. The Protein Data Bank has been open since 1971, and LAMMPS, Quantum ESPRESSO, the Materials Project and Jupyter keep growing with government and academic support. Closed codes last too: Gaussian, VASP and COMSOL have run for decades. The difference is control and capture. Ansys sold for thirty-five billion dollars, while OpenFOAM's maintainers run on about a quarter of a million euros a year. And the AI-for-science startups of 2025 and 2026 raised billions, almost all of it for closed work, often built on open public data."
+ },
+ {
+  "scene": "ai_values",
+  "text": "Frontier AI shows the split most starkly. Anthropic keeps its model weights closed while opening standards like MCP, and it listed on Nasdaq four days ago at over a trillion dollars. OpenAI's last private valuation was about eight hundred and fifty billion. DeepSeek, the most prominent open-weight lab, raised at around seventy billion."
+ },
+ {
+  "scene": "lanes_ai",
+  "text": "Big Tech opens what it does not sell. Google gave away Kubernetes, Meta gave away PyTorch and React to foundations, and NVIDIA publishes open models that run on its closed CUDA stack. But a company's own projects can close again, as Llama did."
+ },
+ {
+  "scene": "epoch_sector",
+  "text": "Who releases model weights? In Epoch AI's database of U.S. models, academia's open-weight share rose from about one in five in 2018 and 2019 to about four in five in 2024 and 2025. Industry's stayed near forty percent and has drifted down. Joint industry and academic projects look like academia. And in science, one study found that ninety-two percent of the foundation models adopted in research papers since 2019 were open-weight."
+ },
+ {
+  "scene": "compute_gap",
+  "text": "But the frontier is closed. In 2025, the largest open-weight training run used about one twelfth of the compute of the largest closed run, and so far in 2026 the gap has widened to roughly fifty-fold."
+ },
+ {
+  "scene": "openalex",
+  "text": "Papers tell a different story. The share of U.S. journal articles that anyone can read rose from about a quarter in 2000 to more than seventy percent today. Industry went from the least open sector to more open than academia overall. In the physical sciences, industry still trails, and government and national labs are the most open of all. Open papers and closed weights: that is the pattern of the AI era."
+ },
+ {
+  "scene": "language",
+  "text": "How do the labs talk about openness? We fetched forty-one primary documents through our lab's Raspberry Pi. Meta's 2024 manifesto mentions open source about ten times per thousand words. Anthropic's and OpenAI's writing is dominated instead by safety and by science, and both now pitch AI for scientific discovery. Anthropic's new Model Hardware Standard aims to let AI agents operate lab instruments, with an open-source release planned."
+ },
+ {
+  "scene": "quotes",
+  "text": "In 2015, OpenAI promised to share its code and patents. A 2016 email from Ilya Sutskever said it was totally OK not to share the science. Its 2018 charter expected less publishing. In July 2026, Anthropic called open-weight models without dangerous capabilities a public good, and said it has never advocated a ban, while arguing that every capable model should be safety-tested."
+ },
+ {
+  "scene": "gh_threads",
+  "text": "Our own repositories show the same tension at small scale. We coded a hundred and eighteen threads about commercialization in the Acceleration Consortium's lab repository and in the self-driving lab demo. The most common topics were replicating open hardware, kit costs, and sustainability. The one real attempt to sell the eighty-dollar demo kit, through GroupGets group buys, left a stated profit of two dollars and twenty-four cents per kit before shipping overhead. The institutional lab bought rather than sold, and its most frequent complaint was closed commercial equipment with no API or documentation."
+ },
+ {
+  "scene": "dal",
+  "text": "Finally, our own lab. The Digital Alloy Lab's repository went public under the MIT license in October 2026, with budgets and letters kept private. Its proposal drafts commit to releasing the FLAIME platform as open source while reviewing selective protection for the best alloy compositions, and they pair open pycalphad screening with commercial Thermo-Calc databases. The vertical cloud lab model in pull request 318 is the same pattern at lab scale: closed commercial instruments, orchestrated and documented in the open. The evidence says to keep open the layers others build on, such as drivers, schemas, data and digital twins, and to be deliberate about the rest."
+ },
+ {
+  "scene": "takeaways",
+  "text": "Six takeaways. Open code and data create far more value than they cost, but rarely capture it. Value goes to whoever runs the service, owns the data, or sells the hardware around the open core. Licenses are now strategic levers that move in both directions, and foundations are what keep openness durable. In hardware, openness pays in cost and longevity rather than valuation, except through open standards. AI for science runs on open public data and mostly open models, even as the frontier closes. And labs like ours add the most by opening the pieces others can build on."
+ },
+ {
+  "scene": "end",
+  "text": "All of the data, code, case files and sources behind this video are open on GitHub, in the BYU Vertical Cloud Lab repository, issue three eighty."
+ }
+]

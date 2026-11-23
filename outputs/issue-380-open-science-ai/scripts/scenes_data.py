@@ -195,7 +195,46 @@ def s_language(duration, mp4, png):
                 txt[j][i].set_y(v + 0.05); txt[j][i].set_text(f"{t.loc[o, k]:.1f}" if q > 0.98 else "")
     render(fig, update, duration, mp4, png)
 
-SCENES = {"oss_value": s_oss_value, "open_science_value": s_open_science_value, "epoch_sector": s_epoch_sector,
+
+# ---------------------------------------------------------------- COSS vs closed (VC data, LF/Serena/COSSA 2025)
+def s_coss_vc(duration, mp4, png):
+    fig = plt.figure(figsize=(W, H), dpi=DPI)
+    fig.text(0.06, 0.92, "Venture data: open-source vs matched closed-source startups", fontsize=32, fontweight="bold", va="center")
+    fig.text(0.06, 0.865, "800+ VC-backed commercial open-source (COSS) companies over 25 years; US software, PitchBook data", fontsize=21, color=TEXT2, va="center")
+    source_note(fig, "Source: Boysel, Lavergne & Trifiro, 'The State of Commercial Open Source 2025' (Linux Foundation, Serena Capital, COSSA), doi:10.70828/REYQ7474.\nSerena is a VC that invests in open source; only 12% of COSS companies have exited, so exit medians describe the winners.")
+    ax1 = fig.add_axes((0.07, 0.16, 0.33, 0.6)); ax2 = fig.add_axes((0.64, 0.16, 0.31, 0.6))
+    ex = [("IPO", 1.3e9, 171e6), ("M&A", 482e6, 34e6)]
+    ax1.set_yscale("log"); ax1.set_ylim(1e7, 5e9); ax1.set_xlim(-0.6, 1.6); ax1.set_xticks([0, 1]); ax1.set_xticklabels(["IPO", "M&A"], fontsize=22, color=TEXT)
+    ax1.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: money(v))); ax1.grid(axis="x", visible=False)
+    ax1.set_title("Median valuation at exit", loc="left", fontsize=22, color=TEXT2)
+    bw = 0.36
+    bo = ax1.bar([-bw / 2 - 0.01, 1 - bw / 2 - 0.01], [1e7, 1e7], width=bw, color=BLUE, label="Open source (COSS)")
+    bc = ax1.bar([bw / 2 + 0.01, 1 + bw / 2 + 0.01], [1e7, 1e7], width=bw, color=ORANGE, label="Closed-source peers")
+    ax1.legend(loc="upper right", fontsize=15)
+    to = [ax1.text(x, 1e7, "", ha="center", va="bottom", fontsize=18, color=TEXT) for x in [-bw / 2, 1 - bw / 2]]
+    tc = [ax1.text(x, 1e7, "", ha="center", va="bottom", fontsize=18, color=TEXT) for x in [bw / 2, 1 + bw / 2]]
+    rows = [("Pre-money valuation, Series A", 1.6), ("Pre-money valuation, Series B", 1.23), ("Round size, Seed", 1.45), ("Round size, Series A", 1.33),
+            ("Seed → Series A conversion", 1.91), ("Speed to Series A", 1.20), ("Speed to Series B", 1.34)]
+    ax2.set_xlim(0.8, 2.1); ax2.set_ylim(-0.6, len(rows) - 0.4); ax2.invert_yaxis()
+    ax2.set_yticks(range(len(rows))); ax2.set_yticklabels([r[0] for r in rows], fontsize=16, color=TEXT); ax2.tick_params(axis="y", length=0)
+    ax2.axvline(1, color=TEXT2, lw=1.2, ls=(0, (4, 4))); ax2.grid(axis="y", visible=False)
+    ax2.xaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"{v:.1f}×"))
+    ax2.set_title("COSS relative to matched closed peers (1× = same)", loc="left", fontsize=20, color=TEXT2)
+    bars2 = ax2.barh(range(len(rows)), [0] * len(rows), left=1, height=0.55, color=AQUA)
+    t2 = [ax2.text(1, i, "", va="center", fontsize=17, color=TEXT) for i in range(len(rows))]
+    def update(p):
+        for i, (lab, o, c) in enumerate(ex):
+            q = ease((p - i * 0.15) / 0.4)
+            vo = 10 ** (7 + q * (np.log10(o) - 7)); vc = 10 ** (7 + q * (np.log10(c) - 7))
+            bo[i].set_height(vo); bc[i].set_height(vc)
+            to[i].set_y(vo * 1.08); tc[i].set_y(vc * 1.08)
+            to[i].set_text(money(o) if q > 0.98 else ""); tc[i].set_text(money(c) if q > 0.98 else "")
+        for i, (lab, v) in enumerate(rows):
+            q = ease((p - 0.3 - i * 0.05) / 0.35); w = (v - 1) * q
+            bars2[i].set_width(w); t2[i].set_x(1 + w + 0.02); t2[i].set_text(f"{v:.2f}×" if q > 0.98 else "")
+    render(fig, update, duration, mp4, png)
+
+SCENES = {"coss_vc": s_coss_vc, "oss_value": s_oss_value, "open_science_value": s_open_science_value, "epoch_sector": s_epoch_sector,
           "openalex": s_openalex, "compute_gap": s_compute_gap, "language": s_language}
 if __name__ == "__main__":
     name = sys.argv[1]; dur = float(sys.argv[2]); png_only = "--png-only" in sys.argv
