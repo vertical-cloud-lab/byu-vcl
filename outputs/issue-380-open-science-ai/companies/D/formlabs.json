@@ -44,9 +44,10 @@
   "risk_events": [
     "2012-11: sued by 3D Systems over stereolithography patents used in the Form 1; settled and dismissed in 2014",
     "2021: last disclosed priced round (SoftBank Vision Fund 2, $2B valuation); no newer valuation disclosed",
-    "2026-10: launched $699 Form Studio 1, moving down-market into price competition with Asian resin printer makers"
+    "2026-08: leadership reshuffle: co-founder Natan Linder left the board; CEO Maxim Lobovsky became chairman, Dávid Lakatos president; ex-Apple hardware chief Dan Riccio joined as advisor and investor and director Rob Willett increased his stake (amounts undisclosed)",
+    "2026-10: launched $699 Form Studio 1 (shipping from 2026-11-16), moving down-market into price competition with Asian resin printer makers"
   ],
-  "robustness": "Diversified professional portfolio (SLA, SLS, materials, post-processing) with leading share of professional-class shipments (38% in 2025 per CONTEXT, via Wikipedia) and 55% of SLS printers sold worldwide in 2025; venture-backed with a 2021 $2B valuation but no IPO; acquired Micronics (2024) to extend SLS. Customers depend on a single vendor for firmware and software.",
+  "robustness": "Diversified professional portfolio (SLA, SLS, materials, post-processing) with 'annual revenues surpassing $250 million' (company, Aug and Oct 2026), leading share of professional-class shipments (38% in 2025 per CONTEXT, via Wikipedia) and 55% of SLS printers sold worldwide in 2025; venture-backed with a 2021 $2B valuation, new insider investment in 2026 and no IPO announced; acquired Micronics (2024) to extend SLS. Customers depend on a single vendor for firmware and software.",
   "physical_science_relevance": "SLA/SLS printers are widely used for lab prototyping, microfluidics, dental and medical devices and custom labware; biocompatible resins (Form 4B/4BL) serve biomedical research.",
   "openness_effect_assessment": "Formlabs shows a closed, venture-funded hardware company from an academic lab reaching unicorn valuation ($2B, 2021) and about $250M revenue (2025) without open designs. Its main openness-related exposure was the reverse: incumbent 3D Systems' patent suit in 2012, which it settled. Its later 'open material' and developer-platform moves open interfaces to grow its ecosystem while keeping designs proprietary.",
   "key_takeaway": "Formlabs is the US closed comparator that scaled: an MIT Media Lab spin-out with about $249M in disclosed venture rounds, a $2B 2021 valuation, about $250M 2025 revenue and 750 staff, larger than every open desktop-printer maker in this group. It suggests that in professional additive manufacturing, proprietary integration of printer, materials and software captured more value than open designs did, with selective interface openness used as a growth tool.",
@@ -54,7 +55,10 @@
   "searches": [],
   "fetched_urls": [
     "https://en.wikipedia.org/wiki/Formlabs",
-    "https://formlabs.com/company/press/"
+    "https://formlabs.com/company/press/",
+    "https://formlabs.com/company/press/",
+    "https://formlabs.com/company/press/formlabs-introduces-form-studio-1/",
+    "https://formlabs.com/company/press/formlabs-board-changes-dan-riccio/"
   ],
   "search_tool": "WebFetch (search budget exhausted)",
   "sources": [
@@ -73,11 +77,18 @@
       "supports": "Micronics acquisition (2024-07-11), Form 4 (2024-04-17), Form 4L and developer platform (2024-10-15), Fuse X1 (2026-06-09), Form Studio 1 (2026-10-14), board changes (2026)"
     },
     {
-      "url": "https://en.wikipedia.org/wiki/Stratasys",
-      "title": "Stratasys",
-      "publisher": "Wikipedia",
-      "date": "2026-11",
-      "supports": "context: incumbent patent litigation against newer printer makers (Bambu Lab, 2024)"
+      "url": "https://formlabs.com/company/press/formlabs-board-changes-dan-riccio/",
+      "title": "Formlabs Announces Former Apple Hardware Chief Dan Riccio as a Strategic Advisor and Board Changes",
+      "publisher": "Formlabs",
+      "date": "2026-08-12",
+      "supports": "revenue_latest_usd (annual revenues surpassing $250M), risk_events[2], robustness (leadership, new investors)"
+    },
+    {
+      "url": "https://formlabs.com/company/press/formlabs-introduces-form-studio-1/",
+      "title": "Formlabs introduces Form Studio 1",
+      "publisher": "Formlabs",
+      "date": "2026-10-14",
+      "supports": "risk_events[3] ($699, ships from 2026-11-16), revenue corroboration, 500 million parts printed"
     }
   ],
   "hardware_extras": {
@@ -92,9 +103,9 @@
     "clone_impacts": null
   },
   "notes": [
-    "No WebSearch queries could be run for Formlabs: the session-wide search budget (200 per turn, shared by all agents) was exhausted. Facts come from direct fetches of Wikipedia and the Formlabs press page (primary); 2025-2026 facts come from those fetches, not memory. The 4-search minimum was not met.",
+    "No WebSearch queries could be run for Formlabs: the session-wide search budget (200 per turn, shared by all agents) was exhausted. Facts come from direct fetches of Wikipedia and Formlabs press releases (primary); 2025-2026 facts come from those fetches, not memory. The 4-search minimum was not met.",
     "funding_total_usd = sum of the equity rounds listed on Wikipedia (19 + 35 + 30 + 15 + 150 = $249M); Wikipedia does not mention a Series D, so the total may be incomplete. The $2.95M Kickstarter (pre-sales crowdfunding) is excluded.",
-    "Revenue $250M (2025) and 750 employees (2026) are from the Wikipedia infobox only; not corroborated by a second source in this session.",
-    "Layoffs and IPO plans were not covered by the sources reached."
+    "Revenue: Wikipedia lists $250M for 2025; Formlabs' own releases (2026-08-12, 2026-10-14) say 'annual revenues surpassing $250 million' without naming the year, so revenue_year 2025 rests on Wikipedia.",
+    "2025-2026 status: operating and growing its product line (Form 4L 2024, Fuse X1 2026-06, Form Studio 1 2026-10); no layoffs, profitability figures or IPO plans were disclosed in the pages fetched."
   ]
 }

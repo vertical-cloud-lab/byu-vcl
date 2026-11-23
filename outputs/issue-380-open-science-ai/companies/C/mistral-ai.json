@@ -1,0 +1,161 @@
+{
+  "name": "Mistral AI SAS",
+  "slug": "mistral-ai",
+  "group": "C",
+  "category": "ai_lab",
+  "subcategory": "LLMs: open-weights (Apache-2.0) plus proprietary premier models, API and Le Chat",
+  "hq_country": "FR",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2023-04-28 in Paris by Arthur Mensch (formerly Google DeepMind) and Guillaume Lample and Timothée Lacroix (both formerly Meta). Non-US comparator positioned as Europe's sovereign AI champion.",
+  "founded_year": 2023,
+  "flagship_projects": [
+    "Mistral 7B",
+    "Mixtral",
+    "Mistral 3 (Large 3, Ministral 3)",
+    "Mistral Small 4",
+    "Mistral Large 4",
+    "Le Chat"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Initial 3: the first models were Apache-2.0 ('it can be used without restrictions', Mistral 7B, 2023-09-27; Mixtral, Dec 2023). Current 2 (open core): Mistral alternates. Flagships went proprietary or non-production (Mistral Medium/Large 2023-24; Codestral under a Non-Production Licence; Large 2 under the Mistral Research Licence; Medium 3, Magistral Medium, Devstral Medium closed). It then returned to Apache-2.0 for Small 3 (Jan 2025), the whole Mistral 3 family including the 675B-parameter Large 3 (2025-12-02) and Small 4 (March 2026). Large 4 (preview 2026-10-06) is labelled 'Mistral Ecosystem Open-Weight'; its licence terms were not available on the fetched page.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2023,
+      "license": "Apache-2.0 (Mistral 7B; Mixtral 8x7B)",
+      "note": "Mistral 7B announced 2023-09-27: 'We're releasing Mistral 7B under the Apache 2.0 license, it can be used without restrictions.'",
+      "source": "https://mistral.ai/news/announcing-mistral-7b"
+    },
+    {
+      "year": 2024,
+      "license": "Proprietary (Mistral Medium, Mistral Large); Mistral Non-Production Licence (Codestral 22B, May 2024); Mistral Research Licence (Large 2, July 2024)",
+      "note": "Codestral's licence 'forbids the usage of Codestral for commercial purposes'.",
+      "source": "https://en.wikipedia.org/wiki/Mistral_AI"
+    },
+    {
+      "year": 2025,
+      "license": "Apache-2.0 (Mistral Small 3, Jan 2025); proprietary (Medium 3, May 2025)",
+      "note": "Mixed open and closed releases.",
+      "source": "https://en.wikipedia.org/wiki/Mistral_AI"
+    },
+    {
+      "year": 2025,
+      "license": "Apache-2.0 (Mistral 3: Large 3, 675B total / 41B active MoE; Ministral 3 at 3B/8B/14B)",
+      "note": "Announced 2025-12-02: 'All models are released under the Apache 2.0 license.'",
+      "source": "https://mistral.ai/news/mistral-3"
+    },
+    {
+      "year": 2026,
+      "license": "Apache-2.0 (Small 4, March 2026); CC BY-NC 4.0 (Voxtral TTS, March 2026); 'Mistral Ecosystem Open-Weight' (Large 4, Oct 2026)",
+      "note": "Large 4 public preview 2026-10-06 via API; weights promised by end of October; licence terms not confirmed.",
+      "source": "https://mistral.ai/news/mistral-large-4"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "Apache-2.0 for all released models",
+      "to": "Proprietary, non-production or research licences for flagship/code models",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Coincided with Microsoft's $16M investment (Feb 2024); the small models stayed Apache-2.0.",
+      "source": "https://en.wikipedia.org/wiki/Mistral_AI"
+    },
+    {
+      "year": 2025,
+      "from": "Research/non-production licences for large models",
+      "to": "Apache-2.0 for the full Mistral 3 family including Large 3",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Re-opened at the frontier tier in a year when MIT-licensed DeepSeek and Apache-2.0 Qwen releases had made permissive licences common among open-weights rivals; Large 3 was billed as 'one of the best permissive open weight models in the world'.",
+      "source": "https://mistral.ai/news/mistral-3"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": "2026-09 (rounds: EUR105M Jun 2023; EUR385M Dec 2023; Microsoft $16M Feb 2024; EUR600M Jun 2024; EUR1.7B Series C Sep 2025; $830M debt Mar 2026; Samsung EUR3B transaction Sep 2026; USD total not computed)",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2026-09",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 1000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2024: flagship and code models moved to proprietary, non-production or research licences in the same year as Microsoft's $16M investment (Feb 2024), blurring the company's 'open' positioning",
+    "Valuation uncertainty: after the Sept 2026 Samsung transaction (EUR3B), Wikipedia says valuation reached EUR21B, while the cited Les Echos headline (2026-09-08) says nearly EUR25B; at the ECB rate of 1.1355 USD/EUR (2026-09-30) that is about $23.8-28.4B, so latest_value_usd is left null",
+    "2026-03: $830M debt raised for data centres near Paris and in Sweden (Reuters), adding capital intensity"
+  ],
+  "robustness": "Fast-growing (1,000+ staff in 2026) and backed by strategic industrial investors (ASML led the EUR1.7B Series C at EUR11.7B post-money on 2025-09-09 with EUR1.3B for ~11%; Samsung in 2026). Its Apache-2.0 models are irrevocably usable by others, so its open contribution is robust even if the company changes course; the business depends on selling premier models and enterprise/sovereign deployments against much larger US rivals.",
+  "physical_science_relevance": "Apache-2.0 models from small (3B) to frontier scale (675B) can be deployed on-premises in European labs and industry (e.g. ASML partnership for semiconductor manufacturing).",
+  "openness_effect_assessment": "Openness made Mistral famous within months of founding and underpinned its pitch as Europe's open alternative; valuations went from about EUR240M (June 2023) to EUR11.7B (Sept 2025) and EUR21-25B (Sept 2026). When it closed its flagships in 2024 it kept the open small models, and when permissive Chinese models raised the bar it re-opened at the frontier tier (Mistral 3, Dec 2025). The licence choice is tactical, tracking competition and customers' wish for on-premises deployment.",
+  "key_takeaway": "Mistral is the open-core AI lab: it uses Apache-2.0 releases for reach and sovereignty credentials, and keeps some premier models closed or under custom licences for revenue. Its licence history oscillates (open, then partly closed in 2024, then broadly open again in 2025-26), which shows that for AI labs openness is a competitive setting rather than a fixed identity. For the study, it is the best non-US example of openness used to build a high-valuation challenger quickly.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Mistral_AI (twice: overview; 2026 events and citations)",
+    "https://mistral.ai/news/mistral-3",
+    "https://mistral.ai/news/announcing-mistral-7b",
+    "https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai",
+    "https://mistral.ai/news/mistral-large-4",
+    "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html",
+    "https://www.lesechos.fr/tech-medias/intelligence-artificielle/la-levee-la-plus-importante-jamais-realisee-en-europe-mistral-valorise-a-pres-de-25-milliards-apres-un-nouveau-tour-de-table-avec-samsung-2250264 (fetch blocked)"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Mistral_AI",
+      "title": "Mistral AI",
+      "publisher": "Wikipedia (citing Les Echos 2026-09-08; Reuters 2026-03-30)",
+      "date": null,
+      "supports": "founded_year, origin_detail, license_history[1], license_history[2], license_history[4], relicensing_events[0], funding_as_of, employees_latest, risk_events[1], risk_events[2]"
+    },
+    {
+      "url": "https://mistral.ai/news/announcing-mistral-7b",
+      "title": "Mistral 7B",
+      "publisher": "Mistral AI",
+      "date": "2023-09-27",
+      "supports": "license_history[0], openness_initial"
+    },
+    {
+      "url": "https://mistral.ai/news/mistral-3",
+      "title": "Introducing Mistral 3",
+      "publisher": "Mistral AI",
+      "date": "2025-12-02",
+      "supports": "license_history[3], relicensing_events[1]"
+    },
+    {
+      "url": "https://mistral.ai/news/mistral-large-4",
+      "title": "Mistral Large 4",
+      "publisher": "Mistral AI",
+      "date": "2026-10-06",
+      "supports": "license_history[4], openness_notes"
+    },
+    {
+      "url": "https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai",
+      "title": "Mistral AI raises 1.7B€ to accelerate technological progress with AI",
+      "publisher": "Mistral AI",
+      "date": "2025-09-09",
+      "supports": "robustness (Series C EUR1.7B at EUR11.7B post-money, ASML lead)"
+    },
+    {
+      "url": "https://www.reuters.com/business/finance/frances-mistral-raises-830-million-debt-ai-data-centre-build-up-2026-03-30/",
+      "title": "France's Mistral raises $830 million debt for AI data centre build-up (cited by Wikipedia; not fetched)",
+      "publisher": "Reuters",
+      "date": "2026-03-30",
+      "supports": "risk_events[2]"
+    },
+    {
+      "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html",
+      "title": "ECB euro reference exchange rate: US dollar",
+      "publisher": "European Central Bank",
+      "date": "2026-09-30",
+      "supports": "risk_events[1] (USD conversion at 1.1355)"
+    }
+  ]
+}

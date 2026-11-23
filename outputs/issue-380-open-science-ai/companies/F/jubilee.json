@@ -1,0 +1,64 @@
+{
+  "name": "Jubilee (Machine Agency, University of Washington)",
+  "slug": "jubilee",
+  "group": "F",
+  "category": "hardware",
+  "subcategory": "open-source tool-changing motion platform (3D printing, plotting, lab automation)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Designed by Joshua Vasquez of Machine Agency at the University of Washington; the source repository was created on 3 Oct 2019. A companion project, science-jubilee (MIT licence), adapts the platform for lab automation with pipette, syringe and camera tools.",
+  "founded_year": 2019,
+  "flagship_projects": ["Jubilee motion platform", "science-jubilee (Python lab-automation interface)"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Design files under CC BY 4.0 and described in the README as OSHWA-certified open-source hardware; science-jubilee software under MIT. Scored 3 rather than 4 because development is led by one university lab (community uses Discord and a subreddit; no formal community governance found).",
+  "business_model": "grants",
+  "license_history": [
+    {"year": 2019, "license": "CC BY 4.0 (hardware design files); OSHWA certified per README", "note": "GitHub reports the licence as 'Other'", "source": "https://github.com/machineagency/jubilee"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Main hardware repository last pushed 12 May 2024, suggesting core design development has slowed; activity has shifted to tools and science-jubilee.",
+    "Single named kit vendor (Filastruder frame kit, from Feb 2022), so builders largely source parts themselves."
+  ],
+  "robustness": "Fully published design (466 commits, 630 stars, 126 forks) that anyone can build for about $1,350 per unit excluding tools; survives independently of the lab, but has a small commercial supply chain.",
+  "physical_science_relevance": "A low-cost, open tool-changing gantry that labs use as a configurable self-driving-lab platform (liquid handling, imaging, sample preparation), complementing closed commercial liquid handlers.",
+  "openness_effect_assessment": "Open, certified designs let other labs adapt Jubilee for chemistry and materials automation (science-jubilee), at a fraction of the cost of commercial robots. Without a company or foundation behind it, supply and maintenance rest on individual builders and one university group.",
+  "key_takeaway": "Jubilee shows the academic open-hardware route into self-driving labs: a university-designed, OSHWA-certified toolchanger that labs can build for about $1,350, with almost no commercial ecosystem. It is cheap and adaptable but thin on long-term maintenance and supply.",
+  "usage_metrics": [
+    {"metric": "GitHub stars (jubilee)", "value": 630, "date": "2026-11", "source": "https://api.github.com/repos/machineagency/jubilee"},
+    {"metric": "GitHub forks (jubilee)", "value": 126, "date": "2026-11", "source": "https://api.github.com/repos/machineagency/jubilee"},
+    {"metric": "estimated build cost per unit excluding tools (USD)", "value": 1350, "date": null, "source": "https://github.com/machineagency/jubilee"},
+    {"metric": "GitHub stars (science-jubilee)", "value": 48, "date": "2026-11", "source": "https://github.com/machineagency/science-jubilee"}
+  ],
+  "funding_sources": ["University of Washington research funding (specific grants not found)"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "The CHI 2020 paper (doi:10.1145/3313831.3376425) could not be fetched (403); its funding acknowledgements were not read.",
+    "No funding details, papers or institutional names beyond Machine Agency were found in the science-jubilee README; the Pozzo-lab association is not confirmed here.",
+    "ownership_status 'nonprofit' denotes a university-hosted academic project."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://jubilee3d.com/index.php?title=Main_Page", "https://github.com/machineagency/jubilee", "https://github.com/machineagency/science-jubilee", "https://jubilee3d.com/index.php?title=Getting_Parts", "https://dl.acm.org/doi/10.1145/3313831.3376425 (403)", "https://api.github.com/repos/machineagency/jubilee", "https://raw.githubusercontent.com/machineagency/science-jubilee/main/README.md"],
+  "sources": [
+    {"url": "https://github.com/machineagency/jubilee", "title": "machineagency/jubilee", "publisher": "GitHub", "date": null, "supports": "origin_detail (Vasquez, Machine Agency, UW), licence, OSHWA, cost, commits"},
+    {"url": "https://api.github.com/repos/machineagency/jubilee", "title": "GitHub API repository metadata", "publisher": "GitHub", "date": "2026-11-23", "supports": "founded_year (created 2019-10-03), last push 2024-05-12, stars, forks"},
+    {"url": "https://jubilee3d.com/index.php?title=Main_Page", "title": "Jubilee wiki main page", "publisher": "Jubilee project", "date": null, "supports": "description, community channels"},
+    {"url": "https://jubilee3d.com/index.php?title=Getting_Parts", "title": "Getting Parts", "publisher": "Jubilee project", "date": "2022-02", "supports": "risk_events[1] (Filastruder kit)"},
+    {"url": "https://github.com/machineagency/science-jubilee", "title": "machineagency/science-jubilee", "publisher": "GitHub", "date": null, "supports": "origin_detail (science-jubilee), usage_metrics[3]"}
+  ]
+}

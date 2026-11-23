@@ -1,0 +1,62 @@
+{
+  "name": "PyLabRobot",
+  "slug": "pylabrobot",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "hardware-agnostic Python SDK for lab automation (liquid handlers, plate readers, etc.)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Developed for the Sculpting Evolution Group at the MIT Media Lab; described in Wierenga, Golas, Ho, Coley and Esvelt, 'PyLabRobot: An open-source, hardware-agnostic interface for liquid-handling robots and accessories', Device 1(4):100111 (2023). The current GitHub organisation repository was created on 12 Aug 2022.",
+  "founded_year": 2022,
+  "flagship_projects": ["PyLabRobot"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "MIT-licensed throughout. Community project with corporate 'supporters' (instrument vendors) but no foundation or formal governance found, so scored 3.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2022, "license": "MIT", "note": "", "source": "https://api.github.com/repos/PyLabRobot/pylabrobot"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Reverse-engineered or community-written drivers for proprietary instruments (the README carries a disclaimer about the STAR driver); vendors could change firmware or protocols.",
+    "No disclosed funding; maintenance depends on a small group of contributors and vendor goodwill."
+  ],
+  "robustness": "Very active (last push 23 Nov 2026; 2,694 commits; 662 stars; 234 forks). Claims support for 80+ devices from 30+ manufacturers (Hamilton, Tecan, Opentrons, Beckman Coulter, Agilent, Thermo Fisher and others). Instrument makers such as Inheco, Tek-Matic, Byonoy, Alpaqua, Brooks and QInstruments are listed as supporters.",
+  "physical_science_relevance": "Provides an open software layer over closed commercial lab robots, which is the precondition for self-driving labs and AI agents that plan and execute wet-lab experiments across vendors.",
+  "openness_effect_assessment": "Open, permissive drivers break vendor lock-in for liquid-handling robots and let one protocol run on several platforms. Adoption by MIT, Duke, Sanofi, Google X, Retro Biosciences and others, and support from instrument vendors, suggest that openness at the software layer is being accepted even by makers of closed hardware.",
+  "key_takeaway": "PyLabRobot is the young (2022), academic-origin open layer for lab automation, analogous to what Linux drivers did for hardware: it opens closed instruments to programmatic and AI control. Its reach is growing quickly, but it has no visible funding model beyond contributor time and vendor support.",
+  "usage_metrics": [
+    {"metric": "PyPI downloads, last month", "value": 46562, "date": "2026-11", "source": "https://pypistats.org/packages/pylabrobot"},
+    {"metric": "GitHub stars", "value": 662, "date": "2026-11", "source": "https://api.github.com/repos/PyLabRobot/pylabrobot"},
+    {"metric": "supported devices (claimed)", "value": 80, "date": "2026-11", "source": "https://pylabrobot.org/"}
+  ],
+  "funding_sources": ["Academic origin (MIT Media Lab Sculpting Evolution Group)", "Instrument-vendor supporters who help develop the project (Inheco, Tek-Matic, Byonoy, Nugget Scientific, Alpaqua, Brooks, QInstruments)"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "founded_year 2022 is the creation date of the current GitHub repository; development may have started earlier.",
+    "The Device paper (Elsevier/Cell Press) could not be fetched (403), so its funding acknowledgements were not read.",
+    "No company, grant or revenue information found; business_model 'mixed' reflects academic origin plus vendor-supported community development."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://github.com/PyLabRobot/pylabrobot", "https://pylabrobot.org/", "https://pypistats.org/packages/pylabrobot", "https://doi.org/10.1016/j.device.2023.100111 (redirect)", "https://www.cell.com/device/fulltext/S2666-9986(23)00170-9 (403)", "https://api.github.com/repos/PyLabRobot/pylabrobot"],
+  "sources": [
+    {"url": "https://github.com/PyLabRobot/pylabrobot", "title": "PyLabRobot/pylabrobot", "publisher": "GitHub", "date": null, "supports": "origin_detail (MIT Media Lab), citation, commits, licence"},
+    {"url": "https://api.github.com/repos/PyLabRobot/pylabrobot", "title": "GitHub API repository metadata", "publisher": "GitHub", "date": "2026-11-23", "supports": "founded_year (created_at 2022-08-12), stars, forks, last push"},
+    {"url": "https://pylabrobot.org/", "title": "PyLabRobot", "publisher": "PyLabRobot", "date": null, "supports": "supported devices, users, supporters, licence"},
+    {"url": "https://pypistats.org/packages/pylabrobot", "title": "pylabrobot download stats", "publisher": "PyPI Stats", "date": null, "supports": "usage_metrics[0]"}
+  ]
+}

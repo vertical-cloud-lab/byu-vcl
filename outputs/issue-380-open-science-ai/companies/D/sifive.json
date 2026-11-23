@@ -8,18 +8,48 @@
   "origin": "academic",
   "origin_detail": "Founded September 2015 in the Bay Area by UC Berkeley RISC-V creators Krste Asanovic, Yunsup Lee and Andrew Waterman, commercialising the open RISC-V ISA and Berkeley's Rocket Chip generator.",
   "founded_year": 2015,
-  "flagship_projects": ["Freedom E300/U500 open SoC platforms (archived 2021)", "HiFive boards", "Performance (P-series) cores", "Intelligence (X-series) cores", "Essential cores"],
+  "flagship_projects": [
+    "Freedom E300/U500 open SoC platforms (archived 2021)",
+    "HiFive boards",
+    "Performance (P-series) cores",
+    "Intelligence (X-series) cores",
+    "Essential cores"
+  ],
   "openness_initial": 3,
   "openness_current": 2,
   "openness_notes": "Hardware column. In 2016 SiFive released the Chisel RTL and FPGA build flows of its first platforms (Freedom E300 and U500) as open source (Apache-2.0), building on the BSD-licensed Berkeley Rocket Chip generator, so its first products had open design files (3). Its revenue products since 2017 are proprietary, licensed and royalty-bearing core IP built on the open ISA; the Freedom repository was archived on 2021-03-02 and is no longer maintained. Today the ISA is open, older RTL and SDKs are open, and current cores are closed (2). Board-level design files for HiFive boards were not verified.",
   "business_model": "proprietary",
   "license_history": [
-    {"year": 2016, "license": "Apache-2.0 (Freedom E300/U500 SoC RTL and FPGA flows, sifive/freedom)", "note": "Announced as the industry's first open-source chip platforms; repository archived 2021-03-02.", "source": "https://github.com/sifive/freedom"},
-    {"year": 2016, "license": "BSD (Berkeley Rocket Chip generator, co-maintained with SiFive)", "note": "Licence per a third-party RISC-V cores list; Rocket Chip predates SiFive.", "source": "https://github.com/ultraembedded/riscv-cores-list"},
-    {"year": 2017, "license": "Proprietary commercial core IP (licence plus royalty)", "note": "Commercial cores (E/S/U, later P/X/Essential series) are licensed, not open.", "source": "https://en.wikipedia.org/wiki/SiFive"}
+    {
+      "year": 2016,
+      "license": "Apache-2.0 (Freedom E300/U500 SoC RTL and FPGA flows, sifive/freedom)",
+      "note": "Announced as the industry's first open-source chip platforms; repository archived 2021-03-02.",
+      "source": "https://github.com/sifive/freedom"
+    },
+    {
+      "year": 2016,
+      "license": "BSD (Berkeley Rocket Chip generator, co-maintained with SiFive)",
+      "note": "Licence per a third-party RISC-V cores list; Rocket Chip predates SiFive.",
+      "source": "https://github.com/ultraembedded/riscv-cores-list"
+    },
+    {
+      "year": 2017,
+      "license": "Proprietary commercial core IP (licence plus royalty)",
+      "note": "Commercial cores (E/S/U, later P/X/Essential series) are licensed, not open.",
+      "source": "https://en.wikipedia.org/wiki/SiFive"
+    }
   ],
   "relicensing_events": [
-    {"year": 2021, "from": "Open-source Freedom SoC platform (Apache-2.0), actively maintained", "to": "Freedom repository archived; product line consists of proprietary licensed cores", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Not a relicence of existing code: the open platform was frozen and the business is proprietary IP on an open ISA. Open RTL remains available read-only.", "source": "https://github.com/sifive/freedom"}
+    {
+      "year": 2021,
+      "from": "Open-source Freedom SoC platform (Apache-2.0), actively maintained",
+      "to": "Freedom repository archived; product line consists of proprietary licensed cores",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Not a relicence of existing code: the open platform was frozen and the business is proprietary IP on an open ISA. Open RTL remains available read-only.",
+      "source": "https://github.com/sifive/freedom"
+    }
   ],
   "funding_total_usd": 766000000,
   "funding_as_of": "2026-04",
@@ -55,23 +85,102 @@
     "SiFive open-source Freedom E300 U500 platform Rocket Chip BSD licence HiFive1 design files",
     "SiFive revenue 2023 $38 million operating loss"
   ],
+  "fetched_urls": [
+    "https://thenextweb.com/news/sifive-400m-series-g-risc-v-ipo",
+    "https://en.wikipedia.org/wiki/SiFive",
+    "https://github.com/sifive/freedom"
+  ],
+  "search_tool": "WebSearch + WebFetch (search budget exhausted)",
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/SiFive", "title": "SiFive", "publisher": "Wikipedia", "date": "2026-11", "supports": "founded_year, origin_detail, funding_total_usd, funding rounds, employees_latest, OpenFive sale"},
-    {"url": "https://www.tomshardware.com/news/intel-offers-dollar2-billion-for-risc-v-startup-sifive-bloomberg", "title": "Intel Offers $2 Billion for RISC-V Chip Startup SiFive: Bloomberg", "publisher": "Tom's Hardware", "date": "2021-06-10", "supports": "risk_events (Intel offer)"},
-    {"url": "https://www.bloomberg.com/news/articles/2021-06-10/chipmaker-sifive-is-said-to-draw-intel-takeover-interest", "title": "Chipmaker SiFive Is Said to Draw Intel Takeover Interest", "publisher": "Bloomberg", "date": "2021-06-10", "supports": "risk_events (Intel offer)"},
-    {"url": "https://www.businesswire.com/news/home/20220316005396/en", "title": "SiFive Leadership in RISC-V Powers $2.5B Company Valuation", "publisher": "Business Wire (SiFive press release)", "date": "2022-03-16", "supports": "Series F $175M, $2.5B valuation, total funding over $350M"},
-    {"url": "https://www.tomshardware.com/news/sifive-lays-off-hundreds-of-risc-v-developers", "title": "SiFive Lays Off Hundreds of RISC-V Developers", "publisher": "Tom's Hardware", "date": "2023-10-24", "supports": "risk_events (2023 layoffs)"},
-    {"url": "https://www.bloomberg.com/news/articles/2024-03-12/arm-rival-sifive-expects-licensing-revenue-to-surge-this-year", "title": "Arm Rival SiFive Expects Licensing Revenue to Surge This Year", "publisher": "Bloomberg", "date": "2024-03-12", "supports": "revenue_latest_usd, operating loss"},
-    {"url": "https://www.theregister.com/2024/03/13/google_tpu_sifive_riscv", "title": "(title not retrieved; Register article on Google TPU and SiFive RISC-V, cited in search results for SiFive's 2023 revenue)", "publisher": "The Register", "date": "2024-03-13", "supports": "revenue_latest_usd (second source)"},
-    {"url": "https://thenextweb.com/news/sifive-400m-series-g-risc-v-ipo", "title": "SiFive raises $400m Series G at $3.65bn valuation in final round before IPO", "publisher": "The Next Web", "date": "2026-04-10", "supports": "latest_value_usd, Series G, IPO statement"},
-    {"url": "https://www.businesswire.com/news/home/20260409986099/en/SiFive-Raises-$400-Million-to-Accelerate-High-Performance-RISC-V-Data-Center-Solutions-Company-Valuation-Now-Stands-at-$3.65-Billion", "title": "SiFive Raises $400 Million to Accelerate High-Performance RISC-V Data Center Solutions; Company Valuation Now Stands at $3.65 Billion", "publisher": "Business Wire (SiFive press release)", "date": "2026-04-09", "supports": "latest_value_usd (primary)"},
-    {"url": "https://github.com/sifive/freedom", "title": "sifive/freedom (archived)", "publisher": "GitHub", "date": "2021-03-02", "supports": "license_history (Apache-2.0), relicensing_events (archived 2021)"},
-    {"url": "https://www.sifive.com/press/sifive-introduces-industrys-first-open-source-chip-platforms", "title": "SiFive Introduces Industry's First Open-Source Chip Platforms", "publisher": "SiFive", "date": "2016-07", "supports": "openness_initial"}
+    {
+      "url": "https://en.wikipedia.org/wiki/SiFive",
+      "title": "SiFive",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "founded_year, origin_detail, funding_total_usd, funding rounds, employees_latest, OpenFive sale"
+    },
+    {
+      "url": "https://www.tomshardware.com/news/intel-offers-dollar2-billion-for-risc-v-startup-sifive-bloomberg",
+      "title": "Intel Offers $2 Billion for RISC-V Chip Startup SiFive: Bloomberg",
+      "publisher": "Tom's Hardware",
+      "date": "2021-06-10",
+      "supports": "risk_events (Intel offer)"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2021-06-10/chipmaker-sifive-is-said-to-draw-intel-takeover-interest",
+      "title": "Chipmaker SiFive Is Said to Draw Intel Takeover Interest",
+      "publisher": "Bloomberg",
+      "date": "2021-06-10",
+      "supports": "risk_events (Intel offer)"
+    },
+    {
+      "url": "https://www.businesswire.com/news/home/20220316005396/en",
+      "title": "SiFive Leadership in RISC-V Powers $2.5B Company Valuation",
+      "publisher": "Business Wire (SiFive press release)",
+      "date": "2022-03-16",
+      "supports": "Series F $175M, $2.5B valuation, total funding over $350M"
+    },
+    {
+      "url": "https://www.tomshardware.com/news/sifive-lays-off-hundreds-of-risc-v-developers",
+      "title": "SiFive Lays Off Hundreds of RISC-V Developers",
+      "publisher": "Tom's Hardware",
+      "date": "2023-10-24",
+      "supports": "risk_events (2023 layoffs)"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2024-03-12/arm-rival-sifive-expects-licensing-revenue-to-surge-this-year",
+      "title": "Arm Rival SiFive Expects Licensing Revenue to Surge This Year",
+      "publisher": "Bloomberg",
+      "date": "2024-03-12",
+      "supports": "revenue_latest_usd, operating loss"
+    },
+    {
+      "url": "https://www.theregister.com/2024/03/13/google_tpu_sifive_riscv",
+      "title": "(title not retrieved; Register article on Google TPU and SiFive RISC-V, cited in search results for SiFive's 2023 revenue)",
+      "publisher": "The Register",
+      "date": "2024-03-13",
+      "supports": "revenue_latest_usd (second source)"
+    },
+    {
+      "url": "https://thenextweb.com/news/sifive-400m-series-g-risc-v-ipo",
+      "title": "SiFive raises $400m Series G at $3.65bn valuation in final round before IPO",
+      "publisher": "The Next Web",
+      "date": "2026-04-10",
+      "supports": "latest_value_usd, Series G, IPO statement"
+    },
+    {
+      "url": "https://www.businesswire.com/news/home/20260409986099/en/SiFive-Raises-$400-Million-to-Accelerate-High-Performance-RISC-V-Data-Center-Solutions-Company-Valuation-Now-Stands-at-$3.65-Billion",
+      "title": "SiFive Raises $400 Million to Accelerate High-Performance RISC-V Data Center Solutions; Company Valuation Now Stands at $3.65 Billion",
+      "publisher": "Business Wire (SiFive press release)",
+      "date": "2026-04-09",
+      "supports": "latest_value_usd (primary; found via WebSearch, WebFetch returned HTTP 403)"
+    },
+    {
+      "url": "https://github.com/sifive/freedom",
+      "title": "sifive/freedom (archived)",
+      "publisher": "GitHub",
+      "date": "2021-03-02",
+      "supports": "license_history (Apache-2.0), relicensing_events (archived 2021)"
+    },
+    {
+      "url": "https://www.sifive.com/press/sifive-introduces-industrys-first-open-source-chip-platforms",
+      "title": "SiFive Introduces Industry's First Open-Source Chip Platforms",
+      "publisher": "SiFive",
+      "date": "2016-07",
+      "supports": "openness_initial"
+    }
   ],
   "hardware_extras": {
     "oshwa_certifications": null,
-    "hardware_licenses": ["Apache-2.0 (Freedom E300/U500 RTL, 2016, archived 2021)", "BSD (Rocket Chip generator, with UC Berkeley)", "ISA specification governed by RISC-V International (see risc-v-international.json)"],
-    "firmware_software_licenses": ["Apache-2.0 (sifive/freedom)", "Open-source SDKs and upstream toolchain/Linux contributions (licence per project, not individually verified)"],
+    "hardware_licenses": [
+      "Apache-2.0 (Freedom E300/U500 RTL, 2016, archived 2021)",
+      "BSD (Rocket Chip generator, with UC Berkeley)",
+      "ISA specification governed by RISC-V International (see risc-v-international.json)"
+    ],
+    "firmware_software_licenses": [
+      "Apache-2.0 (sifive/freedom)",
+      "Open-source SDKs and upstream toolchain/Linux contributions (licence per project, not individually verified)"
+    ],
     "patents": null,
     "clone_impacts": null
   },
@@ -81,6 +190,7 @@
     "The Intel offer was reported by Bloomberg from an anonymous source; Reuters only confirmed Intel was 'debating' a bid. Talks ended without a deal.",
     "Revenue after 2023 not disclosed; Bloomberg reported SiFive expected $60M licensing revenue in 2024 (a projection, not recorded as revenue).",
     "OSHWA certifications and patent counts were not found in these searches; set to null.",
-    "HQ: Santa Clara, California per Wikipedia (some older sources say San Mateo or San Francisco)."
+    "HQ: Santa Clara, California per Wikipedia (some older sources say San Mateo or San Francisco).",
+    "Failed fetch: the Business Wire Series G release returned HTTP 403, so its figures were checked against The Next Web and Wikipedia instead. search_tool uses the coordinator's label for 'both'; all of SiFive's searches ran before the budget was exhausted."
   ]
 }

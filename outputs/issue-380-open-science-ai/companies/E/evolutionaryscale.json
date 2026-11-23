@@ -1,0 +1,79 @@
+{
+  "name": "EvolutionaryScale, PBC",
+  "slug": "evolutionaryscale",
+  "group": "E",
+  "category": "ai_lab",
+  "subcategory": "protein language / generative biology foundation models (ESM3, ESM C)",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "A public benefit company formed by the team that began building ESM protein language models at Meta's FAIR lab in 2019 (Alexander Rives, co-founder and chief scientist; with Tom Sercu and Sal Candido). They left after Meta disbanded the team and launched publicly on 25 Jun 2024 with ~20 staff. Its website now says 'EvolutionaryScale is now part of Biohub'.",
+  "founded_year": null,
+  "flagship_projects": ["ESM3 (98B parameters; 1.4B 'ESM3-open')", "ESM C / ESM Cambrian (300M, 600M, 6B)", "esmGFP (ESM3-generated fluorescent protein)", "Forge API (now Biohub Platform)", "ESMFold2"],
+  "openness_initial": 1,
+  "openness_current": 2,
+  "openness_notes": "At launch (Jun 2024) the 98B ESM3 was reachable only by API for non-commercial use, and the 1.4B ESM3-open weights and code came under the 'EvolutionaryScale Community License Agreement'. That licence was non-commercial only, barred commercial entities and use in drug discovery, and prohibited using outputs to train other models: level 1. As of Nov 2026 the ESM3 release page, the ESM C page and the GitHub repo (now under the Biohub org) say ESM3-open and all three ESM C sizes are open weights under the MIT licence. The largest ESM3 models stay API-only via the Biohub Platform under Biohub terms, so it is open core (level 2). The homepage sentence announcing MIT still links to the old community licence.",
+  "business_model": "api",
+  "license_history": [
+    {"year": 2024, "license": "ESM3-open: EvolutionaryScale Community License Agreement (non-commercial, no drug discovery, no training other models); ESM3 98B via Forge API, non-commercial", "note": "Launch 25 Jun 2024", "source": "https://www.evolutionaryscale.ai/policies/community-license-agreement"},
+    {"year": null, "license": "ESM3-open and ESM C 300M/600M/6B under MIT; large ESM3 via Biohub Platform API", "note": "Current pages (Nov 2026). Date of relicensing not confirmed; appears tied to joining Biohub", "source": "https://github.com/evolutionaryscale/esm"}
+  ],
+  "relicensing_events": [
+    {"year": null, "from": "EvolutionaryScale Community License (non-commercial)", "to": "MIT", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Relicensing coincides with the company becoming part of the non-profit Biohub (date not confirmed; before Aug 2026, when Biohub named Rives its Head of Science). A rare case of an AI-for-science startup opening its weights further after leaving the VC model.", "source": "https://www.evolutionaryscale.ai/blog/esm-cambrian"}
+  ],
+  "funding_total_usd": 142000000,
+  "funding_as_of": "2024-06",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": null, "type": "acquisition", "value_usd": null, "counterparty": "Biohub (biohub.org)", "note": "Company site: 'EvolutionaryScale is now part of Biohub'; models and APIs moved to biohub.ai under Biohub terms. Date, structure (acquisition vs merger or donation) and terms not found. Biohub listed Alex Rives as its Head of Science on 27 Aug 2026.", "source": "https://www.evolutionaryscale.ai/"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 20,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Origin risk: the ESM team was disbanded at Meta (FAIR) before the spin-out",
+    "25 Jun 2024: $142M seed led by Nat Friedman, Daniel Gross and Lux Capital, with Amazon and NVentures",
+    "2025-2026 (date unconfirmed): ceased independent operation and became part of the non-profit Biohub; licences moved to MIT"
+  ],
+  "robustness": "As an independent VC-backed company it lasted roughly two years. The science and models now sit inside a philanthropically funded non-profit (Biohub), with weights for smaller models under MIT. That makes the models more robust to any single organization's fate (GitHub repo ~3.0k stars, ~408 forks) than they were under the non-commercial licence.",
+  "physical_science_relevance": "Low to moderate. This is biology (proteins), not physical science. It matters to the study as an AI-for-science lab whose models were trained on public-scale protein sequence data: the homepage cites 2.78 billion natural proteins and 771 billion tokens, but fetched pages do not name the source databases. It started with restrictive weights and opened them after moving to a non-profit.",
+  "openness_effect_assessment": "EvolutionaryScale launched with a restrictive, non-commercial 'community' licence designed to protect a VC business (API access to the 98B model). After it joined the non-profit Biohub, the smaller models moved to MIT. The open-weight releases (ESM3-open, ESM C) are what most researchers can actually use; commercial value was meant to come from the closed frontier model. The VC-funded API model did not persist as an independent company.",
+  "key_takeaway": "EvolutionaryScale is the counter-example to 'start open, then close'. It began as a Meta FAIR open-science project (ESM), raised a $142M seed as a company with non-commercial open weights, and within about two years was folded into the non-profit Biohub, where its open models moved to MIT. For the study it suggests that frontier scientific foundation models may find a more stable home in philanthropic or non-profit structures than in VC-backed API businesses. Its timeline (relicence date, deal terms) still needs confirming.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from evolutionaryscale.ai, GitHub, Biohub and TechCrunch pages listed in fetched_urls.",
+    "founded_year unknown (public launch Jun 2024; work began at Meta FAIR in 2019).",
+    "Date and terms of joining Biohub not found on evolutionaryscale.ai, biohub.org, biohub.ai or Wikipedia's Chan Zuckerberg Biohub page. Whether 'Biohub' is the Chan Zuckerberg Biohub network was not confirmed on fetched pages.",
+    "Original licences of ESM C models (Dec 2024) were not confirmed. The current ESM C page says all three sizes are MIT open weights.",
+    "employees_latest = ~20 at launch (TechCrunch, Jun 2024); no later figure.",
+    "evolutionaryscale.ai/blog and en.wikipedia.org/wiki/EvolutionaryScale returned 404."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.evolutionaryscale.ai/blog/esm3-release",
+    "https://www.evolutionaryscale.ai/",
+    "https://www.evolutionaryscale.ai/blog/esm-cambrian",
+    "https://www.evolutionaryscale.ai/policies/community-license-agreement",
+    "https://github.com/evolutionaryscale/esm",
+    "https://techcrunch.com/2024/06/25/evolutionaryscale-backed-by-amazon-and-nvidia-raises-142m-for-protein-generating-ai/",
+    "https://biohub.org/",
+    "https://biohub.org/news/",
+    "https://biohub.ai/",
+    "https://en.wikipedia.org/wiki/Chan_Zuckerberg_Biohub"
+  ],
+  "sources": [
+    {"url": "https://techcrunch.com/2024/06/25/evolutionaryscale-backed-by-amazon-and-nvidia-raises-142m-for-protein-generating-ai/", "title": "EvolutionaryScale, backed by Amazon and Nvidia, raises $142M for protein-generating AI", "publisher": "TechCrunch", "date": "2024-06-25", "supports": "funding_total_usd, origin_detail, employees_latest, risk_events[1]"},
+    {"url": "https://www.evolutionaryscale.ai/blog/esm3-release", "title": "ESM3 release", "publisher": "EvolutionaryScale", "date": "2024-06-25", "supports": "flagship_projects, openness_notes"},
+    {"url": "https://www.evolutionaryscale.ai/policies/community-license-agreement", "title": "EvolutionaryScale Community License Agreement", "publisher": "EvolutionaryScale", "date": "n.d.", "supports": "openness_initial, license_history[0]"},
+    {"url": "https://www.evolutionaryscale.ai/blog/esm-cambrian", "title": "ESM Cambrian", "publisher": "EvolutionaryScale", "date": "2024-12-04", "supports": "openness_current, relicensing_events[0]"},
+    {"url": "https://github.com/evolutionaryscale/esm", "title": "esm (now Biohub/esm)", "publisher": "GitHub", "date": "2026-11", "supports": "openness_current, license_history[1], robustness"},
+    {"url": "https://www.evolutionaryscale.ai/", "title": "EvolutionaryScale home page", "publisher": "EvolutionaryScale", "date": "2026-11", "supports": "exit_events[0], ownership_status, physical_science_relevance"},
+    {"url": "https://biohub.org/news/", "title": "Biohub news: TIME100 AI List (2026)", "publisher": "Biohub", "date": "2026-08-27", "supports": "exit_events[0] (Rives as Biohub Head of Science)"}
+  ]
+}

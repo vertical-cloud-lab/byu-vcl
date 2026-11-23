@@ -8,15 +8,37 @@
   "origin": "corporate",
   "origin_detail": "Began in 2009 as Facebook's internal 'Project Freedom' to design the hardware for its first own data centre in Prineville, Oregon. Facebook announced OCP on 2011-04-07, publishing specifications and mechanical CAD for its servers, racks, power and building; the OCP Foundation, a Delaware 501(c)(6) nonprofit, was formed the same year with founding participants including Intel, Rackspace, Fidelity/Goldman Sachs and Andy Bechtolsheim (accounts of the founding list differ).",
   "founded_year": 2011,
-  "flagship_projects": ["Open Rack (V3.1 base spec as of 2026)", "OCP server designs (Windmill, Winterfell, Leopard and later)", "OCP NIC 3.0", "OCP Accelerator Module (OAM)", "Wedge switches and FBOSS", "SONiC (linked project)"],
+  "flagship_projects": [
+    "Open Rack (V3.1 base spec as of 2026)",
+    "OCP server designs (Windmill, Winterfell, Leopard and later)",
+    "OCP NIC 3.0",
+    "OCP Accelerator Module (OAM)",
+    "Wedge switches and FBOSS",
+    "SONiC (linked project)"
+  ],
   "openness_initial": 4,
   "openness_current": 4,
   "openness_notes": "Hardware column applied to what the foundation stewards: shared specifications and design packages. At launch Facebook published specifications and mechanical CAD files for servers, power supplies, racks, battery backup and the building, described as free open hardware, and a multi-company foundation was set up the same year, so the designs were open with consortium governance from the start (4). Today contributions are made under the OCP CLA or the Open Web Foundation CLA and specifications are licensed under OWFa 1.0 or the OCP Hardware License (permissive or reciprocal/copyleft variant), governed by a foundation of 400+ member companies (4). Caveats: the board is mostly large-company seats (Meta chairs; Arm, Microsoft, AMD, Google, Intel, NVIDIA, plus one individual), the licence varies per contribution, and the 'OCP-recognized' market includes vendor products built to open specs whose own design files are not necessarily published.",
   "business_model": "mixed",
   "license_history": [
-    {"year": 2011, "license": "Specifications and mechanical CAD released free on the web (no licence named in the launch announcement)", "note": "Facebook Prineville server, rack, power and building designs.", "source": "https://about.fb.com/news/2011/04/facebook-launches-open-compute-project/"},
-    {"year": 2015, "license": "OCP IP policy: contributions under OCP CLA or OWF CLA; Specification License = OCP Hardware License (permissive or reciprocal) or OWFa 1.0", "note": "Year is the policy document's date; many earlier contributions (e.g. Open Rack, Open CloudServer) were already under OWFa 1.0 per OCP's wiki.", "source": "https://opencompute.org/documents/ocp-ip-rights-management-policy"},
-    {"year": 2021, "license": "Modified OWF CLA 1.0 (as of 2021-08-16)", "note": "Offered alongside the OCP CLA in the 2023 specification templates; authors pick one.", "source": "https://opencompute.org/documents/modified-owf-cla-10-as-of-august-16-2021"}
+    {
+      "year": 2011,
+      "license": "Specifications and mechanical CAD released free on the web (no licence named in the launch announcement)",
+      "note": "Facebook Prineville server, rack, power and building designs.",
+      "source": "https://about.fb.com/news/2011/04/facebook-launches-open-compute-project/"
+    },
+    {
+      "year": 2015,
+      "license": "OCP IP policy: contributions under OCP CLA or OWF CLA; Specification License = OCP Hardware License (permissive or reciprocal) or OWFa 1.0",
+      "note": "Year is the policy document's date; many earlier contributions (e.g. Open Rack, Open CloudServer) were already under OWFa 1.0 per OCP's wiki.",
+      "source": "https://opencompute.org/documents/ocp-ip-rights-management-policy"
+    },
+    {
+      "year": 2021,
+      "license": "Modified OWF CLA 1.0 (as of 2021-08-16)",
+      "note": "Offered alongside the OCP CLA in the 2023 specification templates; authors pick one.",
+      "source": "https://opencompute.org/documents/modified-owf-cla-10-as-of-august-16-2021"
+    }
   ],
   "relicensing_events": [],
   "funding_total_usd": null,
@@ -47,21 +69,88 @@
     "Open Compute Project specification licence OWFa CLA hardware license contributions \"OCP Accepted\" \"OCP Inspired\"",
     "Omdia OCP market forecast billion OCP-recognized equipment sales"
   ],
+  "fetched_urls": [
+    "https://www.opencompute.org/news/idc-raises-2029-forecast-for-ocp-recognized-infrastructure-spending-by-2-7x-to-800-billion/",
+    "https://en.wikipedia.org/wiki/Open_Compute_Project",
+    "https://about.fb.com/news/2011/04/facebook-launches-open-compute-project/"
+  ],
+  "search_tool": "WebSearch + WebFetch (search budget exhausted)",
   "sources": [
-    {"url": "https://about.fb.com/news/2011/04/facebook-launches-open-compute-project/", "title": "Facebook Launches Open Compute Project", "publisher": "Meta (Facebook) Newsroom", "date": "2011-04-07", "supports": "founded_year, origin_detail, license_history[0], efficiency and cost claims"},
-    {"url": "https://en.wikipedia.org/wiki/Open_Compute_Project", "title": "Open Compute Project", "publisher": "Wikipedia", "date": "2026-11", "supports": "Project Freedom origin, 501(c)(6) Delaware, board composition 2026, 400+ members (Feb 2025), BladeRoom litigation, Open Rack V3.1"},
-    {"url": "https://www.opencompute.org/index.php/blog/a-10-year-reflection-on-the-open-compute-project", "title": "A 10 Year Reflection on the Open Compute Project", "publisher": "Open Compute Project", "date": "2021", "supports": "founding companies list"},
-    {"url": "https://opencompute.org/documents/ocp-ip-rights-management-policy", "title": "OCP IP Rights Management Policy", "publisher": "Open Compute Project", "date": "2015", "supports": "license_history[1]"},
-    {"url": "https://www.opencompute.org/participate/legal-documents/", "title": "Legal Documents", "publisher": "Open Compute Project", "date": "2026", "supports": "license_history (OCP CLA, OWF CLA, OCP Hardware License)"},
-    {"url": "https://opencompute.org/documents/ocphl-r-copyleft-v10", "title": "OCP Hardware License - Reciprocal (copyleft) v1.0", "publisher": "Open Compute Project", "date": null, "supports": "hardware_extras.hardware_licenses"},
-    {"url": "https://www.networkworld.com/article/965446/what-is-the-open-compute-project.html", "title": "What is the Open Compute Project?", "publisher": "Network World", "date": null, "supports": "openness_effect_assessment (sales over $1.2B in 2017)"},
-    {"url": "https://datacenterknowledge.com/hardware/open-compute-project-hardware-sales-hit-46b-2025", "title": "Open Compute Project Hardware Sales to Hit $46B by 2025", "publisher": "Data Center Knowledge (Omdia study)", "date": "2021", "supports": "openness_effect_assessment (2020 $16.1B, 2021 $21.7B)"},
-    {"url": "https://www.opencompute.org/news/idc-raises-2029-forecast-for-ocp-recognized-infrastructure-spending-by-2-7x-to-800-billion/", "title": "IDC Raises 2029 Forecast for OCP-Recognized Infrastructure Spending by 2.7x to $800 Billion", "publisher": "Open Compute Project (IDC study)", "date": "2026-10-13", "supports": "openness_effect_assessment (2025 ~$154B, 2030 ~$892B, 42% CAGR)"}
+    {
+      "url": "https://about.fb.com/news/2011/04/facebook-launches-open-compute-project/",
+      "title": "Facebook Launches Open Compute Project",
+      "publisher": "Meta (Facebook) Newsroom",
+      "date": "2011-04-07",
+      "supports": "founded_year, origin_detail, license_history[0], efficiency and cost claims"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Open_Compute_Project",
+      "title": "Open Compute Project",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "Project Freedom origin, 501(c)(6) Delaware, board composition 2026, 400+ members (Feb 2025), BladeRoom litigation, Open Rack V3.1"
+    },
+    {
+      "url": "https://www.opencompute.org/index.php/blog/a-10-year-reflection-on-the-open-compute-project",
+      "title": "A 10 Year Reflection on the Open Compute Project",
+      "publisher": "Open Compute Project",
+      "date": "2021",
+      "supports": "founding companies list"
+    },
+    {
+      "url": "https://opencompute.org/documents/ocp-ip-rights-management-policy",
+      "title": "OCP IP Rights Management Policy",
+      "publisher": "Open Compute Project",
+      "date": "2015",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://www.opencompute.org/participate/legal-documents/",
+      "title": "Legal Documents",
+      "publisher": "Open Compute Project",
+      "date": "2026",
+      "supports": "license_history (OCP CLA, OWF CLA, OCP Hardware License)"
+    },
+    {
+      "url": "https://opencompute.org/documents/ocphl-r-copyleft-v10",
+      "title": "OCP Hardware License - Reciprocal (copyleft) v1.0",
+      "publisher": "Open Compute Project",
+      "date": null,
+      "supports": "hardware_extras.hardware_licenses"
+    },
+    {
+      "url": "https://www.networkworld.com/article/965446/what-is-the-open-compute-project.html",
+      "title": "What is the Open Compute Project?",
+      "publisher": "Network World",
+      "date": null,
+      "supports": "openness_effect_assessment (sales over $1.2B in 2017)"
+    },
+    {
+      "url": "https://datacenterknowledge.com/hardware/open-compute-project-hardware-sales-hit-46b-2025",
+      "title": "Open Compute Project Hardware Sales to Hit $46B by 2025",
+      "publisher": "Data Center Knowledge (Omdia study)",
+      "date": "2021",
+      "supports": "openness_effect_assessment (2020 $16.1B, 2021 $21.7B)"
+    },
+    {
+      "url": "https://www.opencompute.org/news/idc-raises-2029-forecast-for-ocp-recognized-infrastructure-spending-by-2-7x-to-800-billion/",
+      "title": "IDC Raises 2029 Forecast for OCP-Recognized Infrastructure Spending by 2.7x to $800 Billion",
+      "publisher": "Open Compute Project (IDC study)",
+      "date": "2026-10-13",
+      "supports": "openness_effect_assessment (2025 ~$154B, 2030 ~$892B, 42% CAGR)"
+    }
   ],
   "hardware_extras": {
     "oshwa_certifications": null,
-    "hardware_licenses": ["OWFa 1.0 (Open Web Foundation Agreement) for specifications", "OCP Hardware License - permissive", "OCP Hardware License - reciprocal (copyleft) v1.0", "Contribution licences: OCP CLA or modified OWF CLA 1.0"],
-    "firmware_software_licenses": ["OCP Software Contributor License Agreement for software contributions (project licences vary; not individually verified)"],
+    "hardware_licenses": [
+      "OWFa 1.0 (Open Web Foundation Agreement) for specifications",
+      "OCP Hardware License - permissive",
+      "OCP Hardware License - reciprocal (copyleft) v1.0",
+      "Contribution licences: OCP CLA or modified OWF CLA 1.0"
+    ],
+    "firmware_software_licenses": [
+      "OCP Software Contributor License Agreement for software contributions (project licences vary; not individually verified)"
+    ],
     "patents": "Specification licences (OWFa, OCP Hardware License) include contributor patent commitments for implementers; per-contribution details not verified.",
     "clone_impacts": "Copying is the goal: open specs are meant to be built by many vendors. A third party (BladeRoom) alleged its trade secrets leaked through OCP; settled 2018."
   },

@@ -1,0 +1,58 @@
+{
+  "name": "Prefect Technologies, Inc.",
+  "slug": "prefect",
+  "group": "B",
+  "category": "software",
+  "subcategory": "workflow orchestration (Python) / agentic orchestration",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Venture-backed startup behind the Prefect Python workflow framework; remote-first. Founder (commonly reported as Jeremiah Lowin) and founding year were not confirmed in fetched pages",
+  "founded_year": null,
+  "flagship_projects": ["Prefect (Apache-2.0)", "Prefect Cloud", "FastMCP", "Dagster (acquired 2026)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core: the Prefect framework is Apache-2.0 on GitHub (24.2k stars), while Prefect Cloud, a managed control plane and dashboard, is the commercial product. Also maintains the open-source FastMCP library and, since Jul 2026, the Apache-2.0 Dagster project. Early licence history (e.g. any source-available server component) was not verified.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2026, "license": "Apache-2.0 (prefect)", "note": "Current repository licence", "source": "https://github.com/PrefectHQ/prefect"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Crowded orchestration market (Airflow/Astronomer, Dagster, hyperscaler services); consolidated it by acquiring rival Dagster Labs in Jul 2026 (about 40 Dagster staff joined; terms undisclosed)",
+    "Repositioning toward AI 'context layer'/agentic orchestration (company mission statement, 2026)"
+  ],
+  "robustness": "Small private vendor whose main projects (Prefect, FastMCP, Dagster) are Apache-2.0 and could be forked; community of 25,000+ engineers and 100K+ workflows orchestrated per minute (company figures). Financial details (funding, revenue, headcount) were not available from fetched pages.",
+  "physical_science_relevance": "Prefect is used by research and lab-automation teams to orchestrate Python data and instrument workflows (e.g. self-driving-lab pipelines), as a lighter alternative to Airflow.",
+  "openness_effect_assessment": "An Apache-2.0 core gave Prefect a developer community that let it survive as a smaller rival to the ASF-governed Airflow and, in 2026, absorb its direct open-source competitor (Dagster) rather than be squeezed out. No evidence was found of licence tightening; consolidation, not relicensing, was its response to a crowded market.",
+  "key_takeaway": "Prefect illustrates the 'second-generation open-core' pattern in data tooling: permissive licence, a hosted cloud for revenue, and a 2026 consolidation move (buying Dagster) plus a pivot to AI agent orchestration (FastMCP). Its financial size is opaque, so conclusions about value are weak.",
+  "confidence": "low",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://www.prefect.io/blog",
+    "https://www.prefect.io/company",
+    "https://github.com/PrefectHQ/prefect",
+    "https://dagster.io/blog/prefect-is-acquiring-dagster"
+  ],
+  "sources": [
+    {"url": "https://www.prefect.io/company", "title": "Prefect company page", "publisher": "Prefect", "date": "2026", "supports": "origin_detail (remote-first), flagship_projects (Prefect, FastMCP, Dagster), robustness (25,000+ engineers, 100K+ workflows/min), risk_events (AI context-layer mission)"},
+    {"url": "https://github.com/PrefectHQ/prefect", "title": "PrefectHQ/prefect", "publisher": "GitHub", "date": "2026-11", "supports": "license_history[0], openness_notes (24.2k stars, Prefect Cloud)"},
+    {"url": "https://dagster.io/blog/prefect-is-acquiring-dagster", "title": "Prefect is Acquiring Dagster", "publisher": "Dagster Labs (Nick Schrock)", "date": "2026-07-13", "supports": "risk_events (acquisition of Dagster Labs, ~40 staff)"}
+  ],
+  "notes": [
+    "founded_year, founder, funding, valuation, revenue and headcount null: Prefect's blog index did not render, and Wikipedia has no article (Prefect_(software) and Prefect_Technologies returned 404). The commonly cited founder (Jeremiah Lowin) and founding year (~2018) are unverified here.",
+    "Failed fetches: https://en.wikipedia.org/wiki/Prefect_(software) (404), https://en.wikipedia.org/wiki/Prefect_Technologies (404), https://techcrunch.com/tag/prefect/ (404), https://www.prefect.io/blog/prefect-is-acquiring-dagster (post not found)."
+  ]
+}

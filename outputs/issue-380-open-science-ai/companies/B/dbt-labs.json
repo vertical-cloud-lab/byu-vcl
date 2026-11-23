@@ -1,0 +1,66 @@
+{
+  "name": "dbt Labs, Inc. (formerly Fishtown Analytics; now 'Fivetran + dbt Labs')",
+  "slug": "dbt-labs",
+  "group": "B",
+  "category": "software",
+  "subcategory": "analytics engineering / SQL data transformation",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2016 in Philadelphia as Fishtown Analytics, a data-analytics consulting firm, by Tristan Handy, Drew Banin and Connor McArthur; dbt began as an internal consulting tool; renamed dbt Labs in 2021; combined with Fivetran (joint brand 'Fivetran + dbt Labs' in use by Sep 2026)",
+  "founded_year": 2016,
+  "flagship_projects": ["dbt Core / dbt v1 (Apache-2.0)", "dbt Fusion engine / dbt v2 (Rust)", "dbt Cloud (SaaS)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core: dbt Core has been Apache-2.0 while dbt Cloud is proprietary SaaS. By Sep 2026 the Python engine (dbt v1) and the Rust Fusion engine (dbt v2) were both described as Apache-2.0-licensed. Whether Fusion was first released in 2025 under a source-available licence (reported elsewhere as ELv2) could not be confirmed from fetched pages.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2016, "license": "Apache-2.0 (dbt Core)", "note": "dbt Cloud proprietary SaaS", "source": "https://research.contrary.com/company/dbt-labs"},
+    {"year": 2026, "license": "Apache-2.0 (dbt v1 Python engine and dbt v2 Fusion Rust engine)", "note": "Core and Fusion merged into one engine with two versions; both 'remain Apache 2.0-licensed and security-supported'", "source": "https://wf.fivetran.com/press/fivetran-dbt-labs-announces-new-capabilities-to-make-enterprise-data-agent-ready-at-dbt-summit-2026"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 414000000,
+  "funding_as_of": "2022",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": null, "type": "merger", "value_usd": null, "counterparty": "Fivetran", "note": "By 16 Sep 2026 the companies issued releases as 'Fivetran + dbt Labs' with a shared chief product officer; announcement date, structure, valuation and closing date were not confirmed in fetched pages", "source": "https://wf.fivetran.com/press/fivetran-dbt-labs-announces-new-capabilities-to-make-enterprise-data-agent-ready-at-dbt-summit-2026"}
+  ],
+  "latest_value_usd": 4200000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2022-02",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 375,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2022 peak valuation ($4.2B, Series D led by Altimeter) not refreshed by any later priced round found",
+    "Consolidation: combined with ELT vendor Fivetran (joint brand by Sep 2026), ending independence",
+    "Strategic tension between free dbt Core and paid dbt Cloud, and new Rust engine (Fusion) licensing (2025 status unverified)"
+  ],
+  "robustness": "dbt is the de facto standard for SQL transformation (100,000+ data teams in 2026; ~9,000 companies on open-source dbt in Mar 2022) and the Apache-2.0 engine can be forked or self-hosted. The company is now part of a larger Fivetran combination, which adds scale but removes independence.",
+  "physical_science_relevance": "Low directly; dbt is used in research data warehouses (e.g. lab LIMS/ELN analytics) to version and test SQL transformations.",
+  "openness_effect_assessment": "Open-sourcing an internal consulting tool created a professional community ('analytics engineering') and a standard that drove rapid growth (paying customers tripled to ~1,800 in 2021; revenue up 6x in 2021) and a $4.2B valuation. Monetizing via dbt Cloud proved harder than adoption, and the company ultimately combined with Fivetran; as of 2026 both engines are Apache-2.0, so openness has not been retracted.",
+  "key_takeaway": "dbt Labs turned a consultancy's open-source tool into an industry standard and a $4.2B (2022) valuation, then consolidated with Fivetran rather than IPO. It shows how a permissive, community-defined standard can create large value for the ecosystem while the originating company's standalone outcome is merger rather than independence.",
+  "confidence": "low",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://research.contrary.com/company/dbt-labs",
+    "https://www.fivetran.com/press",
+    "https://wf.fivetran.com/press/fivetran-dbt-labs-announces-new-capabilities-to-make-enterprise-data-agent-ready-at-dbt-summit-2026",
+    "https://wf.fivetran.com/news-all",
+    "https://research.contrary.com/company/airbyte"
+  ],
+  "sources": [
+    {"url": "https://research.contrary.com/company/dbt-labs", "title": "dbt Labs business breakdown", "publisher": "Contrary Research", "date": "2022-10-08", "supports": "founded_year, origin_detail, funding_total_usd ($414M), latest_value_usd ($4.2B Series D, Feb 2022, Altimeter), employees_latest (375), customers, license_history[0]"},
+    {"url": "https://wf.fivetran.com/press/fivetran-dbt-labs-announces-new-capabilities-to-make-enterprise-data-agent-ready-at-dbt-summit-2026", "title": "Fivetran + dbt Labs Announces New Capabilities to Make Enterprise Data Agent-Ready at dbt Summit 2026", "publisher": "Fivetran + dbt Labs", "date": "2026-09-16", "supports": "exit_events[0] (joint brand), license_history[1], robustness (100,000+ data teams)"},
+    {"url": "https://www.fivetran.com/press", "title": "Fivetran press releases", "publisher": "Fivetran", "date": "2026-11", "supports": "exit_events[0] (Fivetran + dbt Labs releases in 2026)"},
+    {"url": "https://research.contrary.com/company/airbyte", "title": "Airbyte business breakdown (competitor section)", "publisher": "Contrary Research", "date": "2025-04-03", "supports": "funding_total_usd cross-check ($414.4M raised as of Apr 2025; $4.2B Series D Feb 2022)"}
+  ],
+  "notes": [
+    "Fivetran merger: the joint brand and shared executive confirm the combination happened, but the 2025 announcement, deal terms, combined ARR/valuation and closing date were not confirmed (Wikipedia pages for dbt Labs, dbt (software) and Fivetran returned 404; getdbt.com/blog 404; Fivetran's news archive did not render). exit_events[0].year left null.",
+    "revenue null: Contrary says Tristan Handy declined to disclose revenue (6x growth in 2021).",
+    "employees_latest 375 is from Oct 2022; no later figure found.",
+    "Fusion engine's 2025 licence (reported as ELv2) not verified; by Sep 2026 Fusion/dbt v2 is described as Apache-2.0."
+  ]
+}

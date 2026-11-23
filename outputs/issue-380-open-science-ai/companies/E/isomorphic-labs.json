@@ -1,0 +1,80 @@
+{
+  "name": "Isomorphic Labs Limited",
+  "slug": "isomorphic-labs",
+  "group": "E",
+  "category": "ai_lab",
+  "subcategory": "AI drug discovery (Alphabet spin-off of Google DeepMind)",
+  "hq_country": "GB",
+  "origin": "corporate",
+  "origin_detail": "Incorporated 24 Feb 2021 and announced 4 Nov 2021 as an Alphabet spin-off of DeepMind, led by founder-CEO Demis Hassabis. HQ London; offices in Lausanne (Dec 2022) and Cambridge, MA (Jun 2025). Wikipedia says members of the AlphaFold team moved to Isomorphic when that team was disbanded in 2026.",
+  "founded_year": 2021,
+  "flagship_projects": ["AlphaFold 3 (co-developed with Google DeepMind, May 2024)", "IsoDDE - Isomorphic Labs Drug Design Engine (technical report Feb 2026)", "Internal preclinical pipeline (oncology, immunology, inflammation)"],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "The company's engine (IsoDDE) and pipeline are proprietary. Its open-ish asset is AlphaFold 3, co-developed with Google DeepMind. Per Wikipedia, code and weights were made available on request for non-commercial use in Nov 2024 and the code became public in Feb 2025, still non-commercial. The GitHub README fetched in Nov 2026 states the source code is Apache-2.0, but the weights remain under the 'AlphaFold 3 Model Parameters Terms of Use' (last modified 2024-11-09). Those terms allow non-commercial organizations only, are revocable, bar redistribution, prohibit using outputs to train similar structure-prediction models, and exclude clinical use. Restricted weights mean level 1. By contrast, DeepMind's earlier AlphaFold DB (with EMBL-EBI) is CC BY 4.0.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2021, "license": "Proprietary", "note": "No public releases at founding", "source": "https://en.wikipedia.org/wiki/Isomorphic_Labs"},
+    {"year": 2024, "license": "AlphaFold 3 code + weights on request, non-commercial only", "note": "AF3 announced 8 May 2024; weights terms dated 2024-11-09", "source": "https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md"},
+    {"year": 2025, "license": "AlphaFold 3 code public (non-commercial per Wikipedia)", "note": "Feb 2025", "source": "https://en.wikipedia.org/wiki/AlphaFold"},
+    {"year": null, "license": "AlphaFold 3 source code Apache-2.0; weights still non-commercial", "note": "State as of README fetched Nov 2026; the date of the code relicence was not confirmed", "source": "https://github.com/google-deepmind/alphafold3"}
+  ],
+  "relicensing_events": [
+    {"year": 2024, "from": "Closed (AF3 paper/server only)", "to": "AF3 code and weights for non-commercial use on request", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Partial opening. Restrictive weights terms prevent commercial use and training of similar models. Open re-implementations exist (Wikipedia mentions ByteDance's Protenix, Apache-2.0).", "source": "https://en.wikipedia.org/wiki/AlphaFold"},
+    {"year": null, "from": "AF3 code non-commercial", "to": "AF3 code Apache-2.0 (weights unchanged)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Date not confirmed; inferred from the difference between Wikipedia's Feb 2025 description and the README fetched Nov 2026.", "source": "https://github.com/google-deepmind/alphafold3"}
+  ],
+  "funding_total_usd": 7700000000,
+  "funding_as_of": "2026-11",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Apr 2025: first external round, $600M led by Thrive Capital",
+    "Jan 2026: Max Jaderberg appointed president, succeeding Colin Murdoch; J&J multi-target collaboration",
+    "12 May 2026: $2.1B Series B led by Thrive Capital (Alphabet, GV, MGX, Temasek, CapitalG, UK Sovereign AI Fund)",
+    "17 Nov 2026: $5B Series C co-led by Greenoaks and Sequoia, with a16z and Alphabet",
+    "Nov 2026: pipeline still preclinical; first-in-human trials pending with no date"
+  ],
+  "robustness": "Financially very robust: Alphabet backing, about $7.7B of announced external capital since 2025, and pharma partners (Eli Lilly and Novartis, Jan 2024; Novartis expanded Feb 2025; J&J, Jan 2026; MSD). But the engine and pipeline are entirely proprietary, unvalidated in the clinic, and AF3 weights cannot be used commercially, so no commercial community fork of its core models is possible.",
+  "physical_science_relevance": "Moderate. Structural biology and medicinal chemistry rather than materials: AF3-class models predict protein-ligand, nucleic-acid and ion interactions. For this study it is the archetype of an AI lab built on open public data. Wikipedia says AlphaFold was trained on over 170,000 Protein Data Bank structures, yet Isomorphic keeps its derived models closed or restricted.",
+  "openness_effect_assessment": "Isomorphic inherits the brand and science of DeepMind's AlphaFold 2, which open public data (the PDB) and an open database (AlphaFold DB, CC BY 4.0) made famous. It has commercialized it as a closed drug-design company, releasing AF3 only under non-commercial weights terms after delay. Investors evidently do not penalize this: closed IP plus Alphabet compute attracted $7.7B in 2025-2026. Openness here built the reputation; closure is the business.",
+  "key_takeaway": "Isomorphic Labs is the clearest case of 'open public data in, closed models out'. AlphaFold was trained on the PDB, a decades-old open archive. Its open AlphaFold 2 and DB won a Nobel and built trust, yet the commercial successor (AF3, IsoDDE) ships with non-commercial weights or not at all. Investor appetite for that closed position is enormous: $600M in 2025, then $2.1B and $5B in 2026, the largest AI-for-science financing in this group, still with no clinical asset.",
+  "confidence": "medium",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from Wikipedia, isomorphiclabs.com and GitHub pages listed in fetched_urls.",
+    "funding_total_usd = $0.6B + $2.1B + $5.0B announced external rounds (my arithmetic). It excludes Alphabet's internal funding before 2025.",
+    "Valuation not stated in any fetched source: null.",
+    "Ownership: Alphabet subsidiary with growing external investor base; the ownership split is not disclosed. 'private_vc' is an approximation.",
+    "Novartis/Lilly deal values: Wikipedia only cites a reference title 'worth nearly $3B' combined; not recorded as a field.",
+    "The Nature AF3 paper page redirected to a login and could not be read."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Isomorphic_Labs",
+    "https://www.isomorphiclabs.com/",
+    "https://www.isomorphiclabs.com/news",
+    "https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-series-b-investment-round",
+    "https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-series-c-investment-round",
+    "https://github.com/google-deepmind/alphafold3",
+    "https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md",
+    "https://en.wikipedia.org/wiki/AlphaFold"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Isomorphic_Labs", "title": "Isomorphic Labs", "publisher": "Wikipedia", "date": "2026-11", "supports": "founded_year, origin_detail, risk_events[0], risk_events[1], risk_events[4], robustness (partners)"},
+    {"url": "https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-series-b-investment-round", "title": "Isomorphic Labs announces Series B investment round", "publisher": "Isomorphic Labs", "date": "2026-05-12", "supports": "risk_events[2], funding_total_usd"},
+    {"url": "https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-series-c-investment-round", "title": "Isomorphic Labs announces Series C investment round", "publisher": "Isomorphic Labs", "date": "2026-11-17", "supports": "risk_events[3], funding_total_usd"},
+    {"url": "https://www.isomorphiclabs.com/news", "title": "News", "publisher": "Isomorphic Labs", "date": "2026-11", "supports": "robustness (MSD collaboration)"},
+    {"url": "https://github.com/google-deepmind/alphafold3", "title": "google-deepmind/alphafold3", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes, license_history[3]"},
+    {"url": "https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md", "title": "AlphaFold 3 Model Parameters Terms of Use", "publisher": "Google DeepMind", "date": "2024-11-09", "supports": "openness_current, license_history[1]"},
+    {"url": "https://en.wikipedia.org/wiki/AlphaFold", "title": "AlphaFold", "publisher": "Wikipedia", "date": "2026-11", "supports": "license_history[2], relicensing_events[0], physical_science_relevance (PDB training), origin_detail (2026 team disbanded)"}
+  ]
+}

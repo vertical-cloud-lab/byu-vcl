@@ -1,0 +1,68 @@
+{
+  "name": "Airbyte, Inc.",
+  "slug": "airbyte",
+  "group": "B",
+  "category": "software",
+  "subcategory": "data integration (ELT connectors)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded Jan 2020 in San Francisco by Michel Tricot (CEO) and John Lafleur (COO), French founders in Y Combinator's Winter 2020 batch; pivoted from a marketing-data product during COVID-19; first open-source release late 2020",
+  "founded_year": 2020,
+  "flagship_projects": ["Airbyte (platform)", "Airbyte connectors (550+)", "PyAirbyte", "Airbyte Cloud", "Airbyte Enterprise"],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "Launched fully MIT-licensed (2020). In Sep 2021 the core platform moved to the Elastic License v2 (source-available, not OSI); connectors stayed MIT. In Jun 2023 ELv2 was extended to some API, database and warehouse source connectors. The self-hosted version remains free to use; Cloud and Enterprise (extra security features) are the business. Rated 1 because the core is ELv2.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2020, "license": "MIT", "note": "Initial open-source release", "source": "https://research.contrary.com/company/airbyte"},
+    {"year": 2021, "license": "Core platform ELv2; connectors MIT", "note": "Sep 2021", "source": "https://research.contrary.com/company/airbyte"},
+    {"year": 2023, "license": "ELv2 extended to some source connectors", "note": "Jun 2023", "source": "https://research.contrary.com/company/airbyte"},
+    {"year": 2026, "license": "Mixed MIT / ELv2 (README badges)", "note": "README points to a licences FAQ", "source": "https://github.com/airbytehq/airbyte"}
+  ],
+  "relicensing_events": [
+    {"year": 2021, "from": "MIT", "to": "Elastic License v2 (core platform)", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Made to stop cloud providers reselling the platform; done months before a $150M Series B at a $1.5B valuation (Dec 2021); no significant fork found", "source": "https://research.contrary.com/company/airbyte"},
+    {"year": 2023, "from": "MIT (some connectors)", "to": "Elastic License v2", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Extended the source-available licence to selected API, database and warehouse source connectors", "source": "https://research.contrary.com/company/airbyte"}
+  ],
+  "funding_total_usd": 181400000,
+  "funding_as_of": "2025-04",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 1500000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2021-12",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 140,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2021 and 2023 moves from MIT to ELv2 (source-available) for the core and some connectors",
+    "No new priced round found since the Dec 2021 $1.5B Series B (as of Apr 2025), a valuation set at the 2021 market peak",
+    "Larger competitors consolidating: Fivetran (valued $5.6B in 2021) and dbt Labs ($4.2B in 2022) agreed to merge in 2025",
+    "Executive turnover in finance/sales (2024-2025)"
+  ],
+  "robustness": "Large open community (20-25K Slack members; 170K+ deployments and 7K+ companies syncing daily as of Sep 2024; 22.4k GitHub stars) and MIT-licensed connectors that others can reuse, but the core platform is ELv2 and controlled by a single ~140-person VC-backed company. Shipped Airbyte 1.0 (Sep 2024) and 2.0 (Sep 2025), so it is still active.",
+  "physical_science_relevance": "Low directly; used to move operational and SaaS data into warehouses. Its connector-catalog model is relevant to research data integration.",
+  "openness_effect_assessment": "MIT licensing and a community connector catalog drove extremely fast adoption (zero to unicorn in under two years). Airbyte closed its core under ELv2 within ~18 months of launch, before rather than after scaling, which avoided a fork but turned it into a source-available vendor; it has since raised no disclosed new money, so the long-term value of the closing move is unproven.",
+  "key_takeaway": "Airbyte is the fast-closing case in this group: born MIT in 2020, ELv2 by 2021, a $1.5B valuation the same year, and then a long gap without new priced funding while bigger rivals merged. Openness bought rapid adoption; restriction came early to fend off cloud resellers, and the company's fate now depends on monetizing the cloud product.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Airbyte",
+    "https://github.com/airbytehq/airbyte",
+    "https://research.contrary.com/company/airbyte"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Airbyte", "title": "Airbyte", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, funding rounds, latest_value_usd ($1.5B Dec 2021), Grouparoo acquisition (Apr 2022), Airbyte 1.0 (Sep 2024) and 2.0 (Sep 2025)"},
+    {"url": "https://research.contrary.com/company/airbyte", "title": "Airbyte business breakdown", "publisher": "Contrary Research", "date": "2025-04-03", "supports": "license_history, relicensing_events, funding_total_usd ($181.4M), employees_latest (140), robustness, risk_events (competitor valuations)"},
+    {"url": "https://github.com/airbytehq/airbyte", "title": "airbytehq/airbyte", "publisher": "GitHub", "date": "2026-11", "supports": "license_history[3], robustness (22.4k stars), openness_notes (Cloud/Enterprise)"},
+    {"url": "https://blocksandfiles.com/2021/12/20/airbyte-two-french-guys-open-source-etl-startup-goes-from-zero-to-unicorn-in-2-years/", "title": "Airbyte goes from zero to unicorn in 2 years", "publisher": "Blocks and Files", "date": "2021-12-20", "supports": "latest_value_usd (cited by Wikipedia; not fetched directly)"}
+  ],
+  "notes": [
+    "funding_total_usd from Contrary Research (header $181.4M; another section says $181.2M): $5.2M seed (Mar 2021, Accel), $26M Series A (May 2021, Benchmark), $150M Series B (Dec 2021, Altimeter and Coatue).",
+    "revenue null: Contrary reports only that revenue grew ~4x in the six months before Mar 2024.",
+    "No 2026 funding or ownership change found in fetched pages; 2026 status inferred only from the active GitHub repository.",
+    "Contrary's reason for the ELv2 move (stop cloud resale) is the typical ELv2 rationale; the page excerpt did not quote Airbyte's own wording."
+  ]
+}

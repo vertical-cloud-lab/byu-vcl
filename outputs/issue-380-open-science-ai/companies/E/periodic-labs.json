@@ -1,0 +1,64 @@
+{
+  "name": "Periodic Labs",
+  "slug": "periodic-labs",
+  "group": "E",
+  "category": "ai_lab",
+  "subcategory": "AI scientist + autonomous materials-synthesis labs (superconductors, magnets, heat shields)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Launched 30 Sep 2025 by Liam Fedus (former head of post-training at OpenAI, ChatGPT co-creator) and Ekin Dogus Cubuk (led the Google DeepMind team behind GNoME). The founding team also lists co-creators of OpenAI Operator, the attention mechanism and MatterGen. High-throughput labs are in Menlo Park, CA.",
+  "founded_year": 2025,
+  "flagship_projects": ["Autonomous high-throughput powder-synthesis labs (Menlo Park)", "Periodic Neon (1-trillion-parameter model post-trained on lab data, Sep 2026)", "Academic Grant Program"],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "No code, model weights or datasets have been released. periodic.com lists none, and the Sep 2026 'Building Labs that Learn' post makes no commitment to publish data, code or weights. Output so far is blog posts and technical write-ups (research and infrastructure posts, Sep 2026). The a16z announcement frames proprietary experimental data, including negative results that 'rarely get published', as the training signal. The company runs an academic grant programme, but that is funding, not openness of its own outputs.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2025, "license": "Proprietary", "note": "No public releases found as of Nov 2026", "source": "https://periodic.com/news"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 300000000,
+  "funding_as_of": "2025-09",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "30 Sep 2025: $300M founding round led by a16z (backers per periodic.com: a16z, Felicis, DST, NVentures, Accel, Jeff Bezos, Elad Gil, Eric Schmidt, Jeff Dean)",
+    "15 Sep 2026: introduced Periodic Neon, claiming it beats leading closed frontier models on X-ray diffraction analysis (no benchmark numbers published)",
+    "No disclosed materials discoveries, revenue or valuation as of Nov 2026"
+  ],
+  "robustness": "Very well capitalized for a one-year-old company, with elite AI and materials talent and a scientific advisory board (Bertozzi, Kanatzidis, Kivelson, Shen, Wolverton). But it has a single-company proprietary stack, no product revenue disclosed, and its scientific claims are not independently validated. If it failed, nothing it built would be reusable by others, because nothing is open.",
+  "physical_science_relevance": "Very high. It states it starts 'with the physical sciences': powder-synthesis labs aimed at superconductors, magnets and heat shields. Periodic Neon targets X-ray diffraction analysis, and the company deploys custom agents with industry partners such as a semiconductor manufacturer working on chip heat dissipation. It is the purest materials-science entrant in the 2025-2026 AI-for-science funding wave.",
+  "openness_effect_assessment": "Closed from day one. The thesis is that the open literature is a poor training signal (it omits negative results), so the moat is proprietary experimental data from its own autonomous labs plus a large model post-trained on that data. The founders came from open-publishing research cultures (GNoME, MatterGen, attention), but none of Periodic's outputs are open. There is no evidence yet on whether this helps or hurts its science.",
+  "key_takeaway": "Periodic Labs is the clearest bet that physical-science AI value lies in closed, self-generated lab data. It raised $300M at founding, the largest round in this group for a pure materials-discovery startup, and its only public outputs a year later are blog posts and a claimed 1-trillion-parameter model it has not released. Its founders' previous work at Google and OpenAI built on and fed open materials science, yet Periodic itself returns nothing open. It is the reference point for a 'closed AI-for-materials' model.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from periodic.com and the a16z announcement listed in fetched_urls.",
+    "Valuation of the founding round was not stated in fetched sources: null. Any 2026 funding rounds could not be checked and none appear on periodic.com/news.",
+    "Headcount not stated.",
+    "The 'Building Labs that Learn' post shows Sep 15, 2026 in the body and Oct 1, 2026 in metadata.",
+    "en.wikipedia.org/wiki/Periodic_Labs returned 404."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://periodic.com/",
+    "https://periodic.com/news",
+    "https://periodic.com/news/building-labs-that-learn",
+    "https://a16z.com/announcement/investing-in-periodic-labs/"
+  ],
+  "sources": [
+    {"url": "https://a16z.com/announcement/investing-in-periodic-labs/", "title": "Investing in Periodic Labs", "publisher": "Andreessen Horowitz", "date": "2025-09-30", "supports": "funding_total_usd, founded_year, origin_detail, risk_events[0], openness_notes (negative results)"},
+    {"url": "https://periodic.com/", "title": "Periodic Labs home page", "publisher": "Periodic Labs", "date": "2026-10-01", "supports": "origin_detail (team), risk_events[0] (backers), robustness (SAB), physical_science_relevance, openness_notes"},
+    {"url": "https://periodic.com/news", "title": "Periodic Labs news", "publisher": "Periodic Labs", "date": "2026-11", "supports": "flagship_projects, risk_events[1], license_history[0]"},
+    {"url": "https://periodic.com/news/building-labs-that-learn", "title": "Building Labs that Learn", "publisher": "Periodic Labs", "date": "2026-09-15", "supports": "flagship_projects (Neon, Menlo Park labs), openness_notes"}
+  ]
+}

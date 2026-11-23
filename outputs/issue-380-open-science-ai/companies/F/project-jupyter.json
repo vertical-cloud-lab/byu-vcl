@@ -1,0 +1,62 @@
+{
+  "name": "Project Jupyter",
+  "slug": "project-jupyter",
+  "group": "F",
+  "category": "open_infrastructure",
+  "subcategory": "interactive computing (notebooks, JupyterLab, JupyterHub, kernels)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Grew out of IPython, created around 2001 by Fernando Perez as a physics graduate student at the University of Colorado Boulder; Brian Granger, Min Ragan-Kelley and others joined from 2004; the browser-based IPython Notebook was released in 2011 and became Project Jupyter in 2014 (UC Berkeley and Berkeley Lab). Since November 2024 the Jupyter Foundation operates under the Linux Foundation, with donations managed by LF Charities.",
+  "founded_year": 2014,
+  "flagship_projects": ["Jupyter Notebook (7.6.5, 6 Nov 2026)", "JupyterLab", "JupyterHub", "Jupyter notebook format (nbformat)", "Jupyter AI"],
+  "openness_initial": 3,
+  "openness_current": 4,
+  "openness_notes": "BSD-3-Clause ('100% open-source software'). Initially a researcher-led project (IPython era, scored 3); now governed by an Executive Council and Software Steering Council with a vendor-neutral Jupyter Foundation under the Linux Foundation and trademarks held by LF Charities (scored 4).",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2014, "license": "BSD-3-Clause", "note": "Inherited from IPython", "source": "https://jupyter.org/about"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "foundation",
+  "exit_events": [],
+  "latest_value_usd": 6000000,
+  "latest_value_type": "joint philanthropic grant (Helmsley Trust, Moore Foundation, Sloan Foundation), 2015; no current annual budget found",
+  "latest_value_date": "2015",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Dec 2022: original steering council dissolved and replaced by a new governance model (Executive Council, Software Steering Council).",
+    "Commercial clouds ship Jupyter-derived front ends (Google Colab, Amazon SageMaker, Azure), so much of the value is captured by platforms that are not obliged to fund upstream; the Nov 2024 Jupyter Foundation (AWS, Google, Meta, Bloomberg as premier members) is the response."
+  ],
+  "robustness": "High: permissive licence, an open notebook standard, multi-company funding (AWS, Bloomberg, Google, Microsoft, Quansight, QuantStack and others) and a Linux Foundation-hosted foundation. Embedded in DOE facilities (NERSC, where Jupyter accounted for roughly 20-25% of user interaction in 2021) and in every major cloud ML platform.",
+  "physical_science_relevance": "The default interactive environment for computational science and ML; born in a physics PhD and used at DOE facilities such as NERSC and KBase. Nature (2021) named it one of ten computer codes that transformed science.",
+  "openness_effect_assessment": "Openness and a standard file format let Jupyter become universal (about 10 million notebooks on GitHub by January 2021; the VS Code Jupyter extension passed 40 million downloads by July 2022) and let clouds build commercial notebook services on it. Philanthropic grants funded the core early on, and the 2024 Linux Foundation move tries to convert corporate dependence into sustained funding.",
+  "key_takeaway": "Jupyter is the archetype of academic open-science software becoming industry infrastructure for the AI era: a physics student's tool became the front end of Google Colab and SageMaker. Its sustainability path ran from philanthropy (Sloan, Moore, Helmsley) to a corporate-funded Linux Foundation entity, showing how value captured by big platforms is partly routed back through foundations.",
+  "usage_metrics": [
+    {"metric": "Jupyter notebooks on GitHub", "value": 10000000, "date": "2021-01", "source": "https://en.wikipedia.org/wiki/Project_Jupyter"},
+    {"metric": "VS Code Jupyter extension downloads", "value": 40000000, "date": "2022-07", "source": "https://en.wikipedia.org/wiki/Project_Jupyter"},
+    {"metric": "unique Jupyter users per month on NERSC Cori", "value": 700, "date": "2021", "source": "https://cs-newsarchive.lbl.gov//news-media/news/2021/project-jupyter-a-computer-code-that-transformed-science/"}
+  ],
+  "funding_sources": ["Alfred P. Sloan Foundation", "Gordon and Betty Moore Foundation", "Helmsley Charitable Trust", "Schmidt Futures", "EU Horizon 2020 (OpenDreamKit)", "AWS, Bloomberg, Google, Microsoft, Fastly, Rackspace, Quansight, QuantStack", "Jupyter Foundation members (AWS, Google, Meta, Bloomberg, Anaconda, Quansight, QuantStack, MD Anderson)", "DOE (via Berkeley Lab, NERSC and KBase use)"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "NumFOCUS fiscal sponsorship and NSF/CZI grants are not mentioned on the fetched pages, so they are not claimed here.",
+    "No current annual budget found; latest_value_usd is the 2015 joint grant, not a budget.",
+    "IPython start 'around 2001' is inferred from Berkeley Lab's 2021 statement 'twenty years ago'."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://en.wikipedia.org/wiki/Project_Jupyter", "https://jupyter.org/about", "https://www.linuxfoundation.org/press/linux-foundation-announces-formation-of-the-jupyter-foundation", "https://cs-newsarchive.lbl.gov//news-media/news/2021/project-jupyter-a-computer-code-that-transformed-science/"],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Project_Jupyter", "title": "Project Jupyter", "publisher": "Wikipedia", "date": null, "supports": "founded_year, latest_value_usd ($6M 2015 grant), usage_metrics[0-1], commercial derivatives, risk_events[0], Notebook 7.6.5"},
+    {"url": "https://jupyter.org/about", "title": "About Jupyter", "publisher": "Project Jupyter", "date": null, "supports": "governance, funders, licence, LF Charities"},
+    {"url": "https://www.linuxfoundation.org/press/linux-foundation-announces-formation-of-the-jupyter-foundation", "title": "Linux Foundation Announces Formation of the Jupyter Foundation", "publisher": "Linux Foundation", "date": "2024-11-19", "supports": "origin_detail (Nov 2024), funding_sources (members), risk_events[1]"},
+    {"url": "https://cs-newsarchive.lbl.gov//news-media/news/2021/project-jupyter-a-computer-code-that-transformed-science/", "title": "Project Jupyter: A Computer Code that Transformed Science", "publisher": "Berkeley Lab Computing Sciences", "date": "2021", "supports": "origin_detail (IPython history), physical_science_relevance (NERSC, KBase, Nature 2021), usage_metrics[2]"}
+  ]
+}

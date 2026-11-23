@@ -1,0 +1,64 @@
+{
+  "name": "Dagster Labs, Inc. (formerly Elementl)",
+  "slug": "dagster-labs",
+  "group": "B",
+  "category": "software",
+  "subcategory": "data orchestration (asset-based)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2018 as Elementl by Nick Schrock (founder/CTO; Pete Hunt became CEO in Nov 2022); renamed Dagster Labs in Aug 2023; acquired by Prefect in Jul 2026",
+  "founded_year": 2018,
+  "flagship_projects": ["Dagster (Apache-2.0)", "Dagster+ (cloud)", "Compass"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core: Dagster is Apache-2.0 (16.5k GitHub stars); the commercial product is the hosted Dagster+ service. No relicensing found. After the Prefect acquisition the open-source project is to be 'actively developed, not just maintained'.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2026, "license": "Apache-2.0 (dagster)", "note": "Current repository licence", "source": "https://github.com/dagster-io/dagster"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2026, "type": "acquisition", "value_usd": null, "counterparty": "Prefect Technologies", "note": "Announced 13 Jul 2026 by founder Nick Schrock; terms undisclosed; ~40 staff joined Prefect; Schrock left; Dagster brand, service and contracts continue", "source": "https://dagster.io/blog/prefect-is-acquiring-dagster"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 40,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Competed for 'nearly a decade' with Airflow/Astronomer and Prefect in a crowded orchestration market",
+    "Founder-to-professional CEO transition (Pete Hunt, Nov 2022), rename from Elementl (Aug 2023)",
+    "Jul 2026: sold to rival Prefect for undisclosed terms; founder departed; ~40 staff transferred"
+  ],
+  "robustness": "The Apache-2.0 code and community survive the company's sale; Prefect has committed to keep developing it under the Dagster brand. As a company, Dagster Labs raised at least a $33M Series B (May 2023) but ended as a small acquisition (about 40 staff) rather than an independent firm.",
+  "physical_science_relevance": "Asset-based orchestration with lineage is useful for reproducible scientific data pipelines; Dagster is used in some research data platforms.",
+  "openness_effect_assessment": "A permissive licence won Dagster a loyal data-engineering community (active projects tripled in the year to May 2023) and top-tier VC backing, but did not produce a standalone business at scale; the outcome was consolidation into a fellow open-core rival, with the open-source project preserved.",
+  "key_takeaway": "Dagster shows the typical end-state for a well-liked but sub-scale open-core tool in a crowded category: no relicensing drama, modest funding, then acquisition by a competitor that keeps the open project alive. Openness protected users' continuity even though investors likely saw a limited return.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://dagster.io/blog",
+    "https://dagster.io/blog/prefect-is-acquiring-dagster",
+    "https://dagster.io/blog/elementl-series-b",
+    "https://github.com/dagster-io/dagster"
+  ],
+  "sources": [
+    {"url": "https://dagster.io/blog", "title": "Dagster blog index", "publisher": "Dagster Labs", "date": "2026", "supports": "origin_detail (rename Aug 2023; Pete Hunt CEO Nov 2022), risk_events, Retain.ai joined Jan 2024, Compass launch Sep 2025"},
+    {"url": "https://dagster.io/blog/elementl-series-b", "title": "Elementl Raises $33 Million in Series B Funding", "publisher": "Elementl/Dagster Labs", "date": "2023-05-24", "supports": "founded_year (2018), founder, funding (Series B $33M, Georgian lead; Sequoia, Index, Amplify, Slow existing), openness_effect_assessment (growth)"},
+    {"url": "https://dagster.io/blog/prefect-is-acquiring-dagster", "title": "Prefect is Acquiring Dagster", "publisher": "Dagster Labs (Nick Schrock)", "date": "2026-07-13", "supports": "exit_events[0], employees_latest (~40 joining Prefect), openness_notes"},
+    {"url": "https://github.com/dagster-io/dagster", "title": "dagster-io/dagster", "publisher": "GitHub", "date": "2026-11", "supports": "license_history[0], openness_notes (16.5k stars)"}
+  ],
+  "notes": [
+    "funding_total_usd null: only the $33M Series B (May 2023) was confirmed; earlier rounds not fetched.",
+    "employees_latest 40 = staff joining Prefect at acquisition (Jul 2026), not a pre-deal headcount.",
+    "latest_value null: acquisition price undisclosed; no valuation found.",
+    "Failed fetch: https://en.wikipedia.org/wiki/Dagster (404)."
+  ]
+}

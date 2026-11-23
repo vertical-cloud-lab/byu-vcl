@@ -19,7 +19,7 @@
   ],
   "openness_initial": 1,
   "openness_current": 1,
-  "openness_notes": "Hardware designs and printer firmware are proprietary. The only open component is the slicer, Bambu Studio, licensed AGPL-3.0 because it is based on Prusa's PrusaSlicer (itself from Slic3r); its networking plugin is 'based on non-free libraries'. In January 2025 Bambu announced firmware with an authorization/authentication layer that gated third-party control of its printers behind its own software (Bambu Connect), a practical closing of interfaces rather than a licence change. Level 1 throughout; the date of the first public Bambu Studio source release was not verified.",
+  "openness_notes": "Hardware designs and printer firmware are proprietary. The only open component is the slicer, Bambu Studio, licensed AGPL-3.0 because it is based on Prusa's PrusaSlicer (itself from Slic3r); its networking plugin is 'based on non-free libraries'. On 2025-01-16 Bambu announced an 'authorization control system' (X1 firmware 01.08.03.00+, rolling out from 2025-01-23; P and A series later; 'All future Bambu Lab printer models will integrate authorization control technology as standard'): binding, remote video, firmware upgrades, starting prints over LAN or cloud, and motion/temperature/fan/AMS control now require authorization, routed for third-party slicers through a new Bambu Connect client; SD-card printing and status (MQTT push) are unaffected. After backlash it added an optional, unsupported LAN 'Developer Mode' (2025-01-20) that keeps MQTT, live video and FTP open, and the update itself is optional. This closes interfaces, not licences, so the level stays 1.",
   "business_model": "hardware_sales",
   "license_history": [
     {
@@ -38,13 +38,13 @@
   "relicensing_events": [
     {
       "year": 2025,
-      "from": "printers controllable over LAN/cloud by third-party tools",
-      "to": "firmware authorization/authentication architecture routing control through Bambu software (Bambu Connect)",
+      "from": "printers controllable over LAN/cloud by third-party tools via the Studio network plugin",
+      "to": "authorization-gated control through Bambu software (Bambu Connect beta), with an optional unsupported LAN Developer Mode",
       "direction": "closing",
       "fork": null,
       "fork_backer": null,
-      "outcome_note": "Users feared cloud authorization for LAN printing and restrictions on third-party slicers; Bambu edited the original post and called concerns misinformation; Louis Rossmann criticised unannounced terms-of-service changes. Whether the change was later reversed was not established in the sources reached.",
-      "source": "https://en.wikipedia.org/wiki/Bambu_Lab"
+      "outcome_note": "Announced 2025-01-16 (post updated 01-17 and 01-20); X1 firmware from 2025-01-23. OrcaSlicer users must use Bambu Connect after upgrading; full Home Assistant control no longer possible. Strong backlash (Hackaday commenters, Louis Rossmann); Bambu called claims of kill switches, backdoors or subscriptions 'entirely false' and added the optional Developer Mode for print farms.",
+      "source": "https://blog.bambulab.com/firmware-update-introducing-new-authorization-control-system-2/"
     }
   ],
   "funding_total_usd": null,
@@ -63,21 +63,26 @@
   "risk_events": [
     "2023-08: Bambu Cloud outage caused some printers to print uncontrollably or stop working",
     "2024-08: Stratasys sued Bambu Lab for patent infringement",
-    "2025-01: firmware authorization controversy over third-party software access and terms-of-service changes",
+    "2025-01-16: authorization-control firmware announced; community backlash over third-party lock-out and terms-of-service changes; optional LAN Developer Mode added 2025-01-20",
     "2025: security vulnerability found in the printers' cloud connection"
   ],
   "robustness": "Fast-growing and product-prolific (H2D, H2S, H2C in 2025; X2D, A2L, R1 laser and H3C in 2026) with a first flagship retail store in Shenzhen (Sept 2025), but customers depend on a single vendor's cloud and firmware; the 2023 cloud outage and 2025 vulnerability show that dependence. Patent litigation from Stratasys is an open exposure.",
   "physical_science_relevance": "Widely adopted fast multi-material printers are now common in labs, but closed firmware and cloud-gated control make them harder to integrate into automated, audited lab workflows than open printers.",
   "openness_effect_assessment": "Bambu Lab grew from a 2020 founding to market leadership while keeping hardware and firmware closed; its only open asset is an AGPL slicer it inherited from Prusa's open PrusaSlicer. Its success, which Josef Prusa blamed in 2025 for making open desktop hardware unviable, suggests that in this market closed, vertically integrated, venture-backed design and pricing beat openness, with openness benefiting Bambu as a free input rather than a strategy.",
   "key_takeaway": "Bambu Lab is the closed comparator that won: a DJI-alumni, VC-backed (IDG Capital) Shenzhen firm that reused open slicer code, kept printers and firmware proprietary, and in January 2025 tightened control further with authorization firmware, accepting a community backlash. Its rise is the main competitive force behind open pioneers' retreat (Prusa) and shows the 'open software, closed hardware' pattern at its most commercially effective.",
-  "confidence": "low",
+  "confidence": "medium",
   "searches": [],
   "fetched_urls": [
     "https://en.wikipedia.org/wiki/Bambu_Lab",
     "https://blog.bambulab.com/firmware-update-introducing-new-authorization-and-authentication-architecture/",
     "https://github.com/bambulab/BambuStudio",
     "https://blog.bambulab.com/",
-    "https://en.wikipedia.org/wiki/Stratasys"
+    "https://en.wikipedia.org/wiki/Stratasys",
+    "https://en.wikipedia.org/wiki/Bambu_Lab",
+    "https://blog.bambulab.com/firmware-update-introducing-new-authorization-control-system-2/",
+    "https://hackaday.com/2025/01/17/new-bambu-lab-firmware-update-adds-mandatory-authorization-control-system/",
+    "https://3dprintingindustry.com/news/bambu-lab-responds-to-backlash-over-new-firmware-update-235771/",
+    "https://equalocean.com/news/2024010520422"
   ],
   "search_tool": "WebFetch (search budget exhausted)",
   "sources": [
@@ -115,6 +120,34 @@
       "publisher": "Wikipedia",
       "date": "2026-11",
       "supports": "openness_effect_assessment (Prusa software used by competitor Bambu Lab)"
+    },
+    {
+      "url": "https://blog.bambulab.com/firmware-update-introducing-new-authorization-control-system-2/",
+      "title": "Firmware Update Introducing New Authorization Control System",
+      "publisher": "Bambu Lab blog",
+      "date": "2025-01-16",
+      "supports": "relicensing_events[0], openness_notes (scope of authorization, Bambu Connect, future models)"
+    },
+    {
+      "url": "https://hackaday.com/2025/01/17/new-bambu-lab-firmware-update-adds-mandatory-authorization-control-system/",
+      "title": "New Bambu Lab Firmware Update Adds Mandatory Authorization Control System",
+      "publisher": "Hackaday",
+      "date": "2025-01-17",
+      "supports": "relicensing_events[0] (X1 rollout 2025-01-23, community reaction)"
+    },
+    {
+      "url": "https://3dprintingindustry.com/news/bambu-lab-responds-to-backlash-over-new-firmware-update-235771/",
+      "title": "Bambu Lab Responds to Backlash Over New Firmware Update",
+      "publisher": "3D Printing Industry",
+      "date": "2025-01-20",
+      "supports": "relicensing_events[0] (optional LAN Developer Mode, update optional, 'misinformation' statement)"
+    },
+    {
+      "url": "https://equalocean.com/news/2024010520422",
+      "title": "Bambu Lab, Consumer-Grade 3D Printing Manufacturer, Nears CNY 1.5 Billion in Annual Revenue",
+      "publisher": "EqualOcean",
+      "date": "2024-01-05",
+      "supports": "notes (expected 2023 revenue CNY 1.5B; Series B 2023-10-08, investors; IDG Capital)"
     }
   ],
   "hardware_extras": {
@@ -131,10 +164,11 @@
     "clone_impacts": "Not a clone victim in the sources reached; it is the main beneficiary of open slicer code (PrusaSlicer). Community fork OrcaSlicer exists but was not verified in this session."
   },
   "notes": [
-    "No WebSearch queries could be run for Bambu Lab: the session-wide search budget (200 per turn, shared by all agents) was exhausted. 2025-2026 facts come from direct fetches of the Wikipedia article (Nov 2026) and GitHub, not memory; Wikipedia itself flags parts of the authorization-controversy section as needing independent sources. The 4-search minimum was not met; confidence low.",
-    "Funding: IDG Capital was revealed in 2023 as a partial funder (amount undisclosed). The 2022 X1 Kickstarter raised HK$55M (about US$7.02M per Wikipedia), which is pre-sales crowdfunding; funding_total_usd left null because equity amounts are undisclosed.",
-    "Revenue: Wikipedia cites an EqualOcean article titled about annual revenue 'nearing CNY 1.5 billion' without a year; not recorded.",
+    "No WebSearch queries could be run for Bambu Lab: the session-wide search budget (200 per turn, shared by all agents) was exhausted. 2025-2026 facts come from direct fetches (Bambu's own 2025-01-16 blog post, Hackaday, 3D Printing Industry, Wikipedia), not memory. The 4-search minimum was not met; confidence medium because the authorization facts are confirmed by the primary post plus two independent outlets, while financials remain thin.",
     "us_focus false: headquartered in Shenzhen; US office in Austin, Texas.",
-    "The Bambu blog URL for the January 2025 authorization post returned 404 when fetched; date taken as January 2025 from Wikipedia."
+    "Funding: EqualOcean (2024-01-05) reports a Series B concluded 2023-10-08 with Ming Shi Investment, Temasek, True Light and Wuyuan Capital among investors, amount undisclosed, and an early-2022 strategic investment by IDG Capital in the parent company (named 'Tiertime Technology' by EqualOcean). The 2022 X1 Kickstarter raised HK$55M (about US$7.02M per Wikipedia), pre-sales crowdfunding. funding_total_usd stays null because equity amounts are undisclosed; no valuation found.",
+    "Revenue: EqualOcean says Bambu Lab 'is expected to generate CNY 1.5 billion in revenue by 2023' (a forecast, single source). Not converted to USD because no exchange-rate source could be fetched; revenue_latest_usd left null.",
+    "An earlier guessed URL for the authorization post (firmware-update-introducing-new-authorization-and-authentication-architecture) returned 404; the correct post URL was taken from Wikipedia's references.",
+    "Wikipedia dates the cloud-connection vulnerability to 2025 but its cited Bitdefender article is from May 2023; the year is uncertain."
   ]
 }

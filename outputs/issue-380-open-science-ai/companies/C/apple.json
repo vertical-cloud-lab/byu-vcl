@@ -1,0 +1,71 @@
+{
+  "name": "Apple Inc.",
+  "slug": "apple",
+  "group": "C",
+  "category": "big_tech",
+  "subcategory": "consumer hardware and platforms (iPhone, Mac, iOS/macOS); on-device AI (Apple Intelligence)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1976-04-01 in Los Altos, California, as Apple Computer Company by Steve Jobs, Steve Wozniak and Ronald Wayne; incorporated 1977-01-03; IPO 1980-12-12.",
+  "founded_year": 1976,
+  "flagship_projects": ["Darwin (open core of macOS/iOS)", "WebKit", "Swift (Apache-2.0 since 2015)", "MLX (MIT)", "OpenELM (Apple Sample Code License)", "Apple Foundation Models (proprietary)"],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "Scored on the AI and developer-platform strategy. Initial 0: closed hardware and software. Current 1 (only peripheral parts open): Apple open-sourced Darwin (2000, APSL; APSL 2.0 from July 2003, which the FSF counts as free), and Swift went Apache-2.0 on 2015-12-03 (versions 1.0-2.1 were proprietary). Its ML framework MLX is MIT and small OpenELM models (April 2024) are under the Apple Sample Code License. The higher-level frameworks (Cocoa), the app platform and Apple Foundation Models are proprietary. Darwin openness has eroded: no installable images after Darwin 8.0.1 (2005), no mention of Darwin by name on Apple's open-source site since January 2023, and only an incomplete set of sources published.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2000, "license": "Apple Public Source License (Darwin)", "note": "Core components of Mac OS X released as open source; APSL 2.0 from July 2003 (free per FSF; incompatible with GPL). Cocoa and Carbon stayed closed.", "source": "https://en.wikipedia.org/wiki/Darwin_(operating_system)"},
+    {"year": 2015, "license": "Apache-2.0 with Runtime Library Exception (Swift 2.2+)", "note": "Open-sourced 2015-12-03; Swift 1.0-2.1 (from June 2014) were proprietary.", "source": "https://en.wikipedia.org/wiki/Swift_(programming_language)"},
+    {"year": 2024, "license": "Apple Sample Code License (OpenELM 270M-3B)", "note": "Paper 2024-04-22; pretrained with the CoreNet library on ~1.8T public tokens (RefinedWeb, PILE, RedPajama, Dolma subsets). Not an OSI licence.", "source": "https://huggingface.co/apple/OpenELM"},
+    {"year": 2025, "license": "Proprietary (Apple Foundation Models via the Foundation Models framework)", "note": "Announced 2025-06-09 for third-party apps; shipped with iOS/macOS 26 (2025-09-15); licence listed as proprietary.", "source": "https://en.wikipedia.org/wiki/Apple_Intelligence"}
+  ],
+  "relicensing_events": [
+    {"year": 2015, "from": "Proprietary Swift (1.0-2.1)", "to": "Apache-2.0 Swift (2.2+)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Opened the language to Linux/server use while the Apple platform SDKs stayed proprietary.", "source": "https://en.wikipedia.org/wiki/Swift_(programming_language)"},
+    {"year": 2023, "from": "Darwin promoted as Apple's open-source OS core", "to": "Darwin no longer named on Apple's open-source site; incomplete source collections", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Gradual reduction in transparency rather than a licence change (installable ISOs ended in 2005).", "source": "https://en.wikipedia.org/wiki/Darwin_(operating_system)"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {"year": 1980, "type": "IPO", "value_usd": 1778000000, "counterparty": "NASDAQ: AAPL", "note": "1980-12-12: 4.6M shares at $22, raising more than $100M; market cap $1.778B at the end of the first trading day.", "source": "https://en.wikipedia.org/wiki/Apple_Inc."}
+  ],
+  "latest_value_usd": 5070000000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 478830000000,
+  "revenue_year": 2026,
+  "employees_latest": 166000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "AI dependence on a rival: Jan 2026 multi-year partnership under which Apple's next-generation foundation models were expected to incorporate Google's Gemini models and cloud (Bloomberg reported a ~$1B/year deal on 2025-11-05); at WWDC June 2026 Apple said the new Siri does not run on Gemini but its models are 'refined using outputs from Gemini frontier models'",
+    "Declining transparency of Darwin sources since 2005 (and since 2023 on Apple's open-source site)"
+  ],
+  "robustness": "The world's most valuable company in this group ($5.07T on 2026-11-23, up 26% in a year; FY2026 revenue $478.8B). Its strength is vertical integration of hardware, OS and services, all proprietary; open projects (Swift, WebKit, MLX) are maintained by Apple without foundation governance. In AI it is a follower, buying or distilling frontier capability from Google rather than building an open ecosystem.",
+  "physical_science_relevance": "MLX makes Apple-silicon laptops usable for local ML on lab data; Swift and Darwin have little direct physical-science role.",
+  "openness_effect_assessment": "Apple shows that a near-closed strategy can still produce the highest market value: its returns come from integration and control, not from ecosystems built on open code. Where it opened things (Swift in 2015, MLX), it gained developer reach on its own hardware. Its limited participation in open AI has left it reliant on a competitor's frontier models (Gemini) rather than an open community.",
+  "key_takeaway": "Apple is the control case for the study: the least open of the big platforms in AI and developer tooling, and the most valuable. Openness at Apple is tactical and peripheral (Swift, MLX, small OpenELM models under a non-OSI licence), and even its open OS core has become less visible over time. Its 2026 reliance on Google's Gemini suggests that a closed strategy without frontier models of its own leaves it buying from rivals, a different risk from that faced by open-ecosystem players.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Apple_Inc.",
+    "https://en.wikipedia.org/wiki/Swift_(programming_language)",
+    "https://en.wikipedia.org/wiki/Darwin_(operating_system)",
+    "https://huggingface.co/apple/OpenELM",
+    "https://stockanalysis.com/stocks/aapl/market-cap/",
+    "https://github.com/ml-explore/mlx",
+    "https://stockanalysis.com/stocks/aapl/revenue/",
+    "https://en.wikipedia.org/wiki/Apple_Intelligence"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Apple_Inc.", "title": "Apple Inc.", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, exit_events[0], employees_latest"},
+    {"url": "https://en.wikipedia.org/wiki/Darwin_(operating_system)", "title": "Darwin (operating system)", "publisher": "Wikipedia", "date": null, "supports": "license_history[0], relicensing_events[1], openness_notes"},
+    {"url": "https://en.wikipedia.org/wiki/Swift_(programming_language)", "title": "Swift (programming language)", "publisher": "Wikipedia", "date": null, "supports": "license_history[1], relicensing_events[0]"},
+    {"url": "https://huggingface.co/apple/OpenELM", "title": "apple/OpenELM model card", "publisher": "Hugging Face / Apple", "date": "2024-04-22", "supports": "license_history[2]"},
+    {"url": "https://github.com/ml-explore/mlx", "title": "ml-explore/mlx", "publisher": "GitHub (Apple ML research)", "date": null, "supports": "flagship_projects (MLX, MIT), openness_notes"},
+    {"url": "https://en.wikipedia.org/wiki/Apple_Intelligence", "title": "Apple Intelligence", "publisher": "Wikipedia", "date": null, "supports": "license_history[3], risk_events[0]"},
+    {"url": "https://stockanalysis.com/stocks/aapl/market-cap/", "title": "Apple (AAPL) Market Cap", "publisher": "StockAnalysis", "date": "2026-11-23", "supports": "latest_value_usd ($5.07T at $349.08 close; +26.45% over one year)"},
+    {"url": "https://stockanalysis.com/stocks/aapl/revenue/", "title": "Apple Revenue", "publisher": "StockAnalysis", "date": "2026", "supports": "revenue_latest_usd (FY ending 2026-09-26: $478.83B; FY2025 $416.16B)"}
+  ]
+}
