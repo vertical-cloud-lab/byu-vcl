@@ -1,0 +1,29 @@
+{
+ "rules": "collide.Checker on the still's pose (the round-11 rules' pair list, one frame)",
+ "hits": [],
+ "n": 0,
+ "hose_drawn_mm": 4642.0,
+ "hose_mm": 4572.0,
+ "q_deg": [
+  47.2,
+  -151.06,
+  -98.64,
+  -137.92,
+  -54.76,
+  44.01
+ ],
+ "grasp_world": [
+  -3112.7,
+  -2312.6,
+  532.2
+ ],
+ "unit3": [
+  -3950.0,
+  -2860.0,
+  0.0
+ ],
+ "squeegee": [
+  -3270.0,
+  -2090.0
+ ]
+}

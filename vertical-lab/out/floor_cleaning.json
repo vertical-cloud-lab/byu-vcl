@@ -1,0 +1,602 @@
+{
+ "what": "Automatic floor cleaning: what each cleaner reaches on setup_lab's floor plan, its pass times, and its year on upkeep.py's schedule (floor_cleaning.py; notes/floor_cleaning.md). A model.",
+ "grid_mm": 25.0,
+ "floor_mm": {
+  "x": [
+   -11833.0,
+   11833.0
+  ],
+  "y": [
+   -12800.0,
+   2800.0
+  ]
+ },
+ "zone_pad_mm": 600.0,
+ "vacuum_station_mm": [
+  -5900.0,
+  -4710.0,
+  -1980.0,
+  -340.0
+ ],
+ "bay": {
+  "charger": [
+   -3411.0,
+   -2789.0,
+   -6725.0,
+   -6238.0
+  ],
+  "park": [
+   -3100.0,
+   -5818.0,
+   -90.0
+  ]
+ },
+ "point_of_use_mm": {
+  "atomizer": [
+   -5230.0,
+   -1640.0
+  ],
+  "printer line": [
+   5500.0,
+   -1300.0
+  ]
+ },
+ "robots": {
+  "disc": {
+   "label": "Roomba-class disc",
+   "shape": "disc",
+   "d": 350.0,
+   "clear": 10.0,
+   "cleans": [
+    "disc",
+    175.0
+   ],
+   "w_eff": 0.2,
+   "v": 0.25,
+   "k": 1.6,
+   "fixed_min": 1.0,
+   "source": "iRobot Roomba 900-class: about 350 mm across and 92 mm tall (assumed from its class; no model is picked). Bumps along edges; side brush to the edge. None is rated for combustible dust"
+  },
+  "pad": {
+   "label": "commercial vacuum robot (Gausium Vacuum 40 class)",
+   "shape": "rect",
+   "L": 800.0,
+   "W": 690.0,
+   "clear": 30.0,
+   "cleans": [
+    "front",
+    690.0,
+    1.0
+   ],
+   "w_eff": 0.65,
+   "v": 0.35,
+   "k": 1.3,
+   "fixed_min": 1.0,
+   "source": "Gausium Vacuum 40: 800 x 690 x 890 mm, 91 kg, a 720 mm path with its side brushes, 3 h (gausium.com specs; $42,000 at RobotLAB, 2026-11-20). The KIRA CV 60/1 is bigger: 50 x 30 x 52 in, 850 lb, a 24 in path (kaercher.com). 0.35 m/s is ours, slow for fine powder. None is rated for combustible dust"
+  },
+  "mir": {
+   "label": "MiR250 + floor nozzle",
+   "shape": "rect",
+   "L": 880.0,
+   "W": 580.0,
+   "clear": 50.0,
+   "cleans": [
+    "rear",
+    560.0,
+    80.0
+   ],
+   "w_eff": 0.5,
+   "v": 0.2,
+   "k": 1.3,
+   "fixed_min": 3.0,
+   "source": "MiR250 800 x 580 mm (warehouse.MIR250) with a 560 mm nozzle across its back (ours, 80 mm deep: a full-width squeegee nozzle, as the 118EXP's floor squeegee 01768800 does by hand); 0.2 m/s is slow for fine powder (assumed); 3 min a job for the continuity check, run-on and settle (vacuum SOP 1, 4.1-4.3)"
+  },
+  "mir_arm": {
+   "label": "MiR250 + UR12e, vacuum on board",
+   "shape": "rect",
+   "L": 800.0,
+   "W": 580.0,
+   "clear": 50.0,
+   "cleans": [
+    "arm",
+    1300.0
+   ],
+   "w_eff": 0.3,
+   "v": 0.15,
+   "k": 1.25,
+   "fixed_min": 4.0,
+   "source": "MiR250 + UR10e; the 14 in (356 mm) floor tool on the wand, 0.30 m a stroke with overlap; the floor 1.3 m from the robot's centre at most (the UR10e's 1300 mm reach from a base about 600 mm up, plus the wand: assumed); 0.15 m/s strokes; 4 min a job (continuity on the fixture, as atom_vacuum)"
+  },
+  "units_pou": {
+   "label": "an arm + the stations' vacuums (C or D)",
+   "shape": "rect",
+   "L": 800.0,
+   "W": 580.0,
+   "clear": 50.0,
+   "cleans": [
+    "arm_hose",
+    1300.0,
+    7000.0
+   ],
+   "w_eff": 0.3,
+   "v": 0.15,
+   "k": 1.25,
+   "fixed_min": 4.0,
+   "source": "the two existing MiR250 + UR10e units, taking the wand of a 118EXP at one of two stations (POU), as arm 2 does at the atomizer (atom_vacuum); a 25 ft (7.6 m) conductive hose, 7.0 m of reach in a straight line (Ruwac's EXP151525CB kit has one); arm reach as above"
+  },
+  "person": {
+   "label": "a person with the 118EXP",
+   "shape": "disc",
+   "d": 450.0,
+   "clear": 0.0,
+   "cleans": [
+    "arm",
+    1000.0
+   ],
+   "w_eff": 0.3,
+   "v": 0.3,
+   "k": 1.3,
+   "fixed_min": 10.0,
+   "source": "the lab's practice: the 118EXP by hand (vacuum SOP); a person stands where a 450 mm circle fits and the wand reaches 1.0 m; 10 min a job for the SOP's continuity check, area checks and liner check"
+  }
+ },
+ "coverage": {
+  "zones": {
+   "atomizer": {
+    "area_m2": 3.94,
+    "rect_mm": [
+     -5255.0,
+     -2015.0,
+     -2499.0,
+     -100.0
+    ],
+    "why": "the rePowder: container off, chamber vacuumed, liners, the crucible hour",
+    "reached": {
+     "disc": 0.917,
+     "pad": 0.862,
+     "mir": 0.824,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   },
+   "sieving": {
+    "area_m2": 1.94,
+    "rect_mm": [
+     -3130.0,
+     -835.0,
+     -2177.0,
+     -347.0
+    ],
+    "why": "the sieving cell: jars, sieves and the tipper on its downdraft bench",
+    "reached": {
+     "disc": 0.84,
+     "pad": 0.675,
+     "mir": 0.717,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   },
+   "midi": {
+    "area_m2": 5.79,
+    "rect_mm": [
+     5114.0,
+     8786.0,
+     -2162.0,
+     272.0
+    ],
+    "why": "the Aconity MIDI: the 55 mm kit's powder change, unloading, the depowdering lance and box",
+    "reached": {
+     "disc": 0.99,
+     "pad": 0.794,
+     "mir": 0.756,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   },
+   "opening 1": {
+    "area_m2": 2.09,
+    "rect_mm": [
+     -1098.0,
+     1098.0,
+     -2562.0,
+     -1612.0
+    ],
+    "why": "Shuttle 1's opening: powder trays B (the multi-doser), D (XRD and SEM prep), E (the Mastersizer) presented",
+    "reached": {
+     "disc": 1.0,
+     "pad": 1.0,
+     "mir": 1.0,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   },
+   "opening 2": {
+    "area_m2": 2.07,
+    "rect_mm": [
+     2532.0,
+     4728.0,
+     -2562.0,
+     -1612.0
+    ],
+    "why": "Shuttle 2's opening: tray M (the XRF's powder) presented",
+    "reached": {
+     "disc": 1.0,
+     "pad": 1.0,
+     "mir": 1.0,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   },
+   "glovebox": {
+    "area_m2": 1.86,
+    "rect_mm": [
+     -8302.0,
+     -6298.0,
+     -1762.0,
+     -562.0
+    ],
+    "why": "the glovebox's antechamber end, where powder goes in and out",
+    "reached": {
+     "disc": 1.0,
+     "pad": 0.935,
+     "mir": 0.889,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   },
+   "DED": {
+    "area_m2": 3.87,
+    "rect_mm": [
+     2638.0,
+     5161.0,
+     -7615.0,
+     -5638.0
+    ],
+    "why": "the powder-fed DED (InssTek MX-Lab class)",
+    "reached": {
+     "disc": 0.994,
+     "pad": 0.966,
+     "mir": 0.925,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   },
+   "EOS": {
+    "area_m2": 7.57,
+    "rect_mm": [
+     -12140.0,
+     -6760.0,
+     -12106.0,
+     -9163.0
+    ],
+    "why": "the EOS M 400-4: powder by the 100 kg, handled by people (no MiR dock)",
+    "reached": {
+     "disc": 0.936,
+     "pad": 0.898,
+     "mir": 0.859,
+     "mir_arm": 1.0,
+     "units_pou": 0.0,
+     "person": 0.994
+    }
+   },
+   "aisle": {
+    "area_m2": 61.2,
+    "rect_mm": [
+     -10200.0,
+     10200.0,
+     -5400.0,
+     -2400.0
+    ],
+    "why": "the aisle the units carry jars, cups and plates along",
+    "reached": {
+     "disc": 1.0,
+     "pad": 1.0,
+     "mir": 1.0,
+     "mir_arm": 1.0,
+     "units_pou": 1.0,
+     "person": 1.0
+    }
+   }
+  },
+  "total": {
+   "floor_m2": 304.7,
+   "zones_m2": 88.2,
+   "reached_floor": {
+    "disc": 0.99,
+    "pad": 0.968,
+    "mir": 0.954,
+    "mir_arm": 0.996,
+    "units_pou": 0.663,
+    "person": 0.995
+   },
+   "reached_zones": {
+    "disc": 0.989,
+    "pad": 0.966,
+    "mir": 0.956,
+    "mir_arm": 1.0,
+    "units_pou": 0.914,
+    "person": 0.999
+   },
+   "edge_band_m2": 14.4,
+   "reached_edge_band": {
+    "disc": 0.934,
+    "pad": 0.796,
+    "mir": 0.738,
+    "mir_arm": 1.0,
+    "units_pou": 0.724,
+    "person": 0.997
+   },
+   "robot_zones": "every zone but the EOS",
+   "robot_zones_m2": 80.7,
+   "robot_edge_band_m2": 10.4,
+   "reached_robot_zones": {
+    "disc": 0.994,
+    "pad": 0.972,
+    "mir": 0.965,
+    "mir_arm": 1.0,
+    "units_pou": 1.0,
+    "person": 1.0
+   },
+   "reached_robot_edge_band": {
+    "disc": 0.955,
+    "pad": 0.792,
+    "mir": 0.741,
+    "mir_arm": 1.0,
+    "units_pou": 1.0,
+    "person": 1.0
+   }
+  }
+ },
+ "jobs": {
+  "disc": {
+   "zone_min": {
+    "atomizer": 2.9,
+    "sieving": 1.9,
+    "midi": 4.1,
+    "opening 1": 2.1,
+    "opening 2": 2.1,
+    "glovebox": 2.0,
+    "DED": 3.1,
+    "EOS": 4.8,
+    "aisle": 33.6
+   },
+   "night_min": 49.1,
+   "night_area_m2": 87.3
+  },
+  "pad": {
+   "zone_min": {
+    "atomizer": 1.3,
+    "sieving": 1.1,
+    "midi": 1.4,
+    "opening 1": 1.2,
+    "opening 2": 1.2,
+    "glovebox": 1.2,
+    "DED": 1.4,
+    "EOS": 1.6,
+    "aisle": 6.8
+   },
+   "night_min": 10.7,
+   "night_area_m2": 85.2
+  },
+  "mir": {
+   "zone_min": {
+    "atomizer": 3.7,
+    "sieving": 3.3,
+    "midi": 3.9,
+    "opening 1": 3.5,
+    "opening 2": 3.4,
+    "glovebox": 3.4,
+    "DED": 3.8,
+    "EOS": 4.4,
+    "aisle": 16.3
+   },
+   "night_min": 22.9,
+   "night_area_m2": 84.4
+  },
+  "mir_arm": {
+   "zone_min": {
+    "atomizer": 5.8,
+    "sieving": 4.9,
+    "midi": 6.7,
+    "opening 1": 5.0,
+    "opening 2": 5.0,
+    "glovebox": 4.9,
+    "DED": 5.8,
+    "EOS": 7.5,
+    "aisle": 32.3
+   },
+   "night_min": 46.4,
+   "night_area_m2": 88.2
+  },
+  "units_pou": {
+   "zone_min": {
+    "atomizer": 5.8,
+    "sieving": 4.9,
+    "midi": 6.7,
+    "opening 1": 5.0,
+    "opening 2": 5.0,
+    "glovebox": 4.9,
+    "DED": 5.8,
+    "EOS": 4.0,
+    "aisle": 32.3
+   },
+   "night_min": 42.9,
+   "night_area_m2": 80.7
+  },
+  "person": {
+   "zone_min": {
+    "atomizer": 10.9,
+    "sieving": 10.5,
+    "midi": 11.4,
+    "opening 1": 10.5,
+    "opening 2": 10.5,
+    "glovebox": 10.4,
+    "DED": 10.9,
+    "EOS": 11.8,
+    "aisle": 24.7
+   },
+   "night_min": 32.8,
+   "night_area_m2": 88.2
+  }
+ },
+ "year": {
+  "baseline": {
+   "tested": 309,
+   "tested_planned_only": 324,
+   "person": {
+    "mean_h": 31.0,
+    "max_h": 38.6,
+    "floor_mean_h": 0.0,
+    "weeks_over_40": 0,
+    "slid_past_year_end_h": 0.5
+   },
+   "unit_transfer_h": [
+    711.3,
+    307.0
+   ],
+   "what": "upkeep.py's year (seed 303, upkeep and failures): no floor cleaning booked"
+  },
+  "triggers_per_year": {
+   "atomizer": 668,
+   "sieving": 600,
+   "midi": 339
+  },
+  "person": {
+   "tested": 309,
+   "tested_planned_only": 324,
+   "latency": {
+    "median_h": 19.33,
+    "p95_h": 96.11,
+    "max_h": 139.2,
+    "n": 1607
+   },
+   "passes": 1607,
+   "person": {
+    "mean_h": 39.0,
+    "max_h": 43.3,
+    "floor_mean_h": 9.3,
+    "weeks_over_40": 15,
+    "slid_past_year_end_h": 76.0
+   },
+   "unbooked": 8,
+   "tested_change_seeds_1_8": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    -1,
+    1
+   ]
+  },
+  "units_pou": {
+   "tested": 309,
+   "tested_planned_only": 324,
+   "latency": {
+    "median_h": 0.0,
+    "p95_h": 0.0,
+    "max_h": 0.4,
+    "n": 1607
+   },
+   "passes": 1607,
+   "unit_transfer_h": [
+    672.3,
+    346.0
+   ],
+   "floor_unit_h_week": 7.9,
+   "tested_change_seeds_1_8": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "disc": {
+   "latency": {
+    "median_h": 0.0,
+    "p95_h": 1.0,
+    "max_h": 1.1,
+    "n": 1607
+   },
+   "busy_h_day": 1.02,
+   "passes": 1607,
+   "waited_for_dock": 7,
+   "waited_for_person": 419,
+   "tested": 309
+  },
+  "pad": {
+   "latency": {
+    "median_h": 0.0,
+    "p95_h": 1.0,
+    "max_h": 1.1,
+    "n": 1607
+   },
+   "busy_h_day": 0.27,
+   "passes": 1607,
+   "waited_for_dock": 7,
+   "waited_for_person": 419,
+   "tested": 309
+  },
+  "mir": {
+   "latency": {
+    "median_h": 0.0,
+    "p95_h": 1.0,
+    "max_h": 1.1,
+    "n": 1607
+   },
+   "busy_h_day": 0.65,
+   "passes": 1607,
+   "waited_for_dock": 7,
+   "waited_for_person": 419,
+   "tested": 309,
+   "energy_kwh_day": 1.13,
+   "battery_kwh": 1.63,
+   "charge_min_day": 45.0,
+   "top_module_w": 480.0
+  },
+  "mir_arm": {
+   "latency": {
+    "median_h": 0.0,
+    "p95_h": 1.0,
+    "max_h": 1.1,
+    "n": 1607
+   },
+   "busy_h_day": 1.19,
+   "passes": 1607,
+   "waited_for_dock": 7,
+   "waited_for_person": 419,
+   "tested": 309,
+   "energy_kwh_day": 2.06,
+   "battery_kwh": 1.63,
+   "charge_min_day": 82.0,
+   "top_module_w": 480.0
+  },
+  "unit3": {
+   "latency": {
+    "median_h": 0.0,
+    "p95_h": 1.0,
+    "max_h": 1.1,
+    "n": 1607
+   },
+   "busy_h_day": 1.13,
+   "passes": 1607,
+   "waited_for_dock": 7,
+   "waited_for_person": 419,
+   "tested": 309,
+   "energy_kwh_day": 0.45,
+   "charge_min_day": 18.0
+  }
+ }
+}
