@@ -198,3 +198,11 @@ bench test; the lift force is DAL's open bench test 1 for the electrode cap).
 CubOS mm) is too tight: the parked ASW cap on the parking vial is hard to see behind the head. A pulled-back eye of about
 (15, -60, 545) looking at (318, 170, 50) was queued as a second render but was stopped for slot time and never viewed; it is
 unverified. The GIF in `out/instruments/` is the committed 598-frame GIF thinned to every second frame at 0.8 scale (3.8 MB).
+
+## Round 14: a P300 beside the P20 (PR #372)
+
+Sterling asked (PR #318, 2026-11-20) whether the CubXL should carry a P300 as well as its P20, about evaporation, and
+for a sturdier reference electrode. The answers are in [`cubxl_pipettes.md`](cubxl_pipettes.md). The clip now draws
+the recommendation: an OT-2 GEN2 P300 single 34 mm in front of the P20 on its own 40 mm lift, its tips at the deck's
+front left, taking the 135 µL fill, a mix after the sulfide, the collection and the rinse (6 transfers a spot instead
+of 33). DAL's protocol is unchanged; the clip says the P300 is a proposal.
