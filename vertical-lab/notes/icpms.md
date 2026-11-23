@@ -30,7 +30,7 @@ estimate or arithmetic. "(snippet)" means the figure came from a search extract 
 | Acid-rated dilutor | **Questron (HORIBA) QPrep** class, with a decapping head (ours) | 840 x 550 x 700 mm [E: QPrep's size isn't published] | "All-plastic construction", a "Teflon-coated rigid graphite probe", "capable of handling HF solutions"; dilutes, spikes internal standard, makes up standards, fills racks [M, Q1]. PFA lines and syringe pumps: no metal or PEEK where the acid goes |
 | Acids | HNO3, HCl, ultrapure water, in PFA bottles in a PP tray | 1 L bottles | Only here, inside the hood. **No HF anywhere** |
 | Arm cover | **PTFE-laminate robot suit** for the UR12e (Roboworld Robosuit class) | to fit | "10-mil laminated Teflon" for "caustic chemical environments", zips or hook-and-loop; quote only; no maker publishes an IP rating [M, R1; 3P, R2]. The UR12e is IP54, and UR says where liquids are present "additional measures should be taken, such as utilizing a protective robot cover" [M, U1, U3] |
-| Racks | 15 mL PP tubes, 4 x 6, with a central T handle for the 2F-85 (ours) | 190 x 176 x 178 mm | The arm carries the capped sample rack in and the open autosampler rack (2 % HNO3) out: never an open concentrated acid |
+| Racks | Autosampler racks: 15 mL PP tubes, 4 x 6, with a central T handle for the 2F-85 (ours). The samples come in the CubXL's own 2 x 8 rack of 0.5 mL tubes, set in a carrier (ours) with the same footprint and handle (round 15) | 190 x 160 x 178 mm (176 deep until round 15) | The arm carries the capped sample tubes in and the open autosampler rack (2 % HNO3) out: never an open concentrated acid |
 
 ### Why not a Hamilton (or the OT-2)
 
@@ -70,7 +70,8 @@ dilution, outside it. The arm only moves racks.
 A tenfold liquid dilution of 3.5 % TDS electrolyte still leaves about 0.35 % TDS, above Thermo's 0.2 % rule of thumb
 for plain ICP-MS [M, T2]. With UHMI (Agilent), AGD (Thermo) or AMS (PerkinElmer) the instrument dilutes the aerosol
 instead [M, A4, T2, P2]. The clip's dilutor makes the tenfold dilution into 2 % HNO3 with an internal standard; the
-7850 does the rest.
+7850 does the rest. Round 15: the CubXL's tube is already about half seawater (the well's 150 µL with a 150 µL DI
+rinse and 20 µL of 1 M HNO3, 320 µL), so about 1.6 % TDS, and about 0.16 % after the tenfold dilution [E].
 
 ## Utilities, and what it costs
 
@@ -85,6 +86,11 @@ instead [M, A4, T2, P2]. The clip's dilutor makes the tenfold dilution into 2 % 
 All of these go in #331's quote requests.
 
 ## Where it goes on the floor (for run A)
+
+**Round 15: not placed.** [lab_r15.md](lab_r15.md) found the spot suggested below to be the Meltio cell's forklift
+strip, over the wire EDM's only pivot spot, and without pivot spots for the station's own docks; it gives two ways
+forward (the north row's west end with a 200 mm setback, or a room of its own). The clip, drawn in a studio scene of
+its own, claims no floor position ("its spot on the floor is still open").
 
 The station is 4.3 m along its wall (hood, bench, dewar) and 0.81 m deep, plus about 1 m in front for the MiR250. The
 current floor (`setup_lab.FLOOR_PLAN`, [`out/tray_plan_floor.png`](../out/tray_plan_floor.png)) has no 4.3 m gap in
@@ -108,8 +114,8 @@ either row, so:
 - The arm reaches into the hood through its open half, as a person does: four panels on two tracks, three slid behind
   the first. Only the gripper, the wrist and the rack pass the sash plane.
 - It carries capped tubes in and an autosampler rack of dilute acid out. The concentrated acids never leave the hood;
-  the dilutor's head (ours) unscrews each tube's cap, takes its aliquot, dilutes it into the autosampler rack and puts
-  the cap back.
+  the dilutor's head (ours) takes each tube's cap off, takes its aliquot, dilutes it into the autosampler rack and puts
+  the cap back. Since round 15 the tubes are the CubXL's 0.5 mL ones, in the CubXL's own rack on a carrier (ours).
 - Its cover is drawn as a loose skin about 6 mm off the shoulder, upper arm, forearm and wrists 1-2. The collision
   check works on the arm's own bodies (`collide.ArmBodies`), so the cover itself isn't checked; a real suit's bulk at
   the elbow and wrist is for a fitting.
@@ -120,10 +126,10 @@ either row, so:
 
 [MP4, 720p](../out/mp4/icpms.mp4) · [GIF](../out/icpms.gif) · 1080p for the long-form: `out/hd/icpms.mp4`
 
-Eight steps, 99.8 s at 1080p (drawn at 12 fps), collision-checked as it rendered (`VIZ3D_AUDIT=1`, round 11's
+Round 14's render: eight steps, 99.8 s at 1080p (drawn at 12 fps), collision-checked as it rendered (`VIZ3D_AUDIT=1`, round 11's
 strict rules): **0 of 1,070 frames in collision, the arm and everything that moves** ([`out/collisions/icpms.json`](../out/collisions/icpms.json)). The steps: the station; the MiR250 + UR12e driving in at its published 0.3 m/s²; the
-sash's right half opening; the capped rack into the hood; the dilutor's cycle on tube 0 in full (the cap off, the
-aliquot, the dilution into the autosampler rack, the cap back); the hot block; the autosampler rack onto the MiR's
+sash's right half opening; the capped samples into the hood (round 15: the CubXL's 0.5 mL tubes on their carrier);
+the dilutor's cycle on tube 0 in full (the cap off, the aliquot, the dilution into the autosampler rack, the cap back); the hot block; the autosampler rack onto the MiR's
 carrier, a 0.9 m drive and into the SPS 4 under its lifted lid; the MiR leaving while the SPS 4 samples, with the
 utilities and costs.
 
@@ -133,10 +139,48 @@ the handle's 36 mm T top; the SPS 4 placed from an IK branch checked clear all t
 the planner alone took a branch that put a wrist into the SPS 4's beam at the bottom); the sash panels' travel short
 of each other on their tracks; the decapping chuck carried over the racks' handles.
 
-**Ours, at assumed sizes:** the station's layout, the racks and their handles, the MiR's rack carrier, the dilutor's
-geometry and decapping head, the SPS 4 lid's actuator, the hot block's size, the base cabinet. **Not modelled:** the
+**Ours, at assumed sizes:** the station's layout, the racks and their handles, the carrier for the CubXL's tube rack
+(round 15), the MiR's rack carrier, the dilutor's geometry and decapping head, the SPS 4 lid's actuator, the hot block's size, the base cabinet. **Not modelled:** the
 waste carboy in the acid cabinet, the scrubber (Questron sells one rated over 90 % for HNO3 [M, Q2 (snippet)]), the
 ICP-MS's cones and torch.
+
+## Round 15 (PR #318): what the CubXL sends, and the MiR250's new kit
+
+Sterling (2026-11-23): "re-render everything in a self-consistent and cohesive way. Fix collisions, nonsensical parts,
+etc."
+
+- **The samples are the CubXL's.** Round 14's incoming rack held 24 capped 15 mL tubes, each drawn about 70 mm full.
+  The CubXL ([cubxl_corrosion.md](cubxl_corrosion.md), round 15) sends a night's 9 tubes (8 wells and the stock
+  blank): 0.5 mL PP, 320 µL each with its 20 µL of 1 M HNO3, capped. The clip now brings them in the CubXL's own 2 x 8
+  tube rack (PETG, 96 x 34 x 20 mm, 12 mm pitch, the tubes drawn as `r9_cubxl.py` draws them), set in a pocket of a
+  carrier (ours) with the autosampler racks' footprint and T handle. The MiR's carrier, the dilutor's seat and the
+  arm's grasp are the same as for an autosampler rack, and no tube changes rack between the CubXL and the dilutor.
+  The CubXL needs a second tube rack for the next night [E].
+- **The dilution is this dilutor's, not the OT-2's.** [`ot2_corrosion.py`](../ot2_corrosion.py) has had no acid on its
+  deck since round 15. The dilutor takes 100 µL of each tube into 900 µL of 2 % HNO3 with an internal standard: 1.0 mL
+  in a 15 mL autosampler tube, tenfold, the OT-2's round-14 volumes and `waste.py`'s 1.0 mL a tube. 220 µL stays in
+  the tube for a re-run. The decapper's jaws are now 11.8 mm across for the 9.6 mm caps, 1.3 mm clear of the next cap
+  at the 12 mm pitch. The probe dips 9 mm up the tube's cone, about 1 mm off its wall. The dilutor fills the autosampler
+  rack row by row, the SPS 4's order, so the SPS 4's first row holds the night's first four samples.
+- **Captions.** Step 1 claims no floor position (it said "beside the VLM"; see "Where it goes on the floor"). Step 4
+  said "only capped tubes cross the opening", which step 7 contradicts: it carries the open autosampler rack out. It now
+  says the arm carries capped tubes in and only dilute acid out. Step 5 says the dilutor, not the OT-2, makes the
+  dilution. Step 8's "are quotes" is now "have no public price", and the BOM's `price: "quote"` is `"on request"`.
+- **The MiR250's new kit** (`props.mir250()`: the safety PR's Class D unit on the cabinet's −y side, #364's three base
+  cameras). The strict audit found the held rack 12 mm into the right base camera's case (x 346 on, z 845-894) as the
+  arm lifted a rack off the MiR's carrier. The carrier stood between the arm's plate (to x 170) and that camera with no
+  room to spare. The racks are now 160 mm deep (176 before; 6.5 mm of wall past the end tubes) and the carrier is 8 mm
+  nearer the arm, so a rack clears the camera's case by 8 mm. The Class D unit and the mast are on the far side.
+
+**Audit** (round 11's strict rules, arm and movers; `python3 runner_guard.py slot --mem 4000 --label icpfix -- env
+ARM_AUDIT=1 VIZ3D_FPS=8 ARM_AUDIT_TAG=r15fix_icp ARM_AUDIT_SNAP=auto xvfb-run -a python3 icpms.py`):
+
+| Pass | Arm | Movers |
+|---|---|---|
+| Round 14's clip with the new MiR kit, 8 fps | 4 of 707 frames, 3 runs: a held rack 12 mm into the right base camera's case | 0 |
+| The carrier 18 mm nearer the arm, 0.5 mL tubes, 8 fps | 5 of 707: the rack 12 mm into the arm's plate | 4 of 707: the probe through the tube's top. The profile copied from `r9_cubxl.py` closes the rim to 1.3 mm |
+| As committed, 8 fps | **0 of 707** | **0 of 707** |
+| As committed, 15 fps (`VIZ3D_FPS=15 ARM_AUDIT_TAG=r15fix_icp_15`) | **0 of 1,332** | **0 of 1,332** |
 
 ## Sources
 

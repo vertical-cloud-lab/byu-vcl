@@ -157,7 +157,7 @@ CHAPTERS = [
                 ("still", "safety_other_assets.png", 11.0, "The building's ABC units on the racking, 4.3 m or more from "
                  "any Class D unit and signed differently; a shower and eyewash at each hood; O2 monitors "
                  "(notes/safety.md)", "Ordinary extinguishers, showers and O2 monitors")]),
-    dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL, and the ICP-MS beside the VLM",
+    dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL, and an ICP-MS station",
          card=["The OT-2 makes up the CubXL's sulfide stock in seawater (digital-wetlab PR #83). The CubXL runs DAL's "
                "copper corrosion screen spot by spot (DAL PR #180) with its P20 and, proposed, a P300 on a lift of its "
                "own (PR #372); its magnet holds one cap at a time, so a second cap waits on an empty vial. The "
@@ -201,8 +201,9 @@ CHAPTERS = [
                 # doser's latest result (out/mp4/ext/credits.json); this lab's clips still use v5 with the dose post
                 ("ext", "ext/doser_drop_v10.mp4", "POWDER-DOSER'S OWN CAD RENDER", "of its newest design, v10 (PR "
                  "#185): the beaker 18 mm under the auger's exit. Not yet in this lab's animation, which uses v5 and "
-                 "the dose post (a 45 mm fall)", None),
-                ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
+                 "the dose post (a 45 mm fall)", None)]),
+                # round 15: the vacuum press's own close-up is out: chapter 1 now shows the press's whole cycle in the
+                # shared lab, and the close-up differs from it (plug set at the press, one powder layer, no cleaning)
     dict(key="alloy2", title="Alloy route 2/7: melt and atomize in the rePowder",
          card=["Both MiR250 + UR12e units go to the AMAZEMET rePowder, each with a 131 kg ballast plate low in its base, "
                "and open its furnace together. A loading tool lowers each of the "

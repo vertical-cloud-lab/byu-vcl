@@ -1,5 +1,5 @@
 {
- "note": "Round 14, run D: the ICP-MS station (icpms.py, notes/icpms.md). Prices are public figures, not quotes.",
+ "note": "Round 14, run D: the ICP-MS station (icpms.py, notes/icpms.md). Prices are public figures, not quotes; \"on request\" where none is published.",
  "items": [
   {
    "item": "ICP-MS",
@@ -51,7 +51,7 @@
     813,
     1499
    ],
-   "price": "quote",
+   "price": "on request",
    "source": "HEMCO UniFlow Trace Metals hood (LabWrench listing; HEMCO's literature): one-piece welded polypropylene chamber and baffle, 6 ft = 72 x 32 x 59 in, four horizontal sliding sashes on two tracks (at most half open), 100 fpm face velocity. Base cabinet and work surface heights estimated"
   },
   {
@@ -62,7 +62,7 @@
     550,
     700
    ],
-   "price": "quote",
+   "price": "on request",
    "source": "Questron (HORIBA) QPrep: 'all-plastic construction', 'Teflon-coated rigid graphite probe', dilutes, spikes internal standard, fills racks, 6 autosampler racks; size not published (ours, estimated). Hamilton Microlab STAR line operator's manual: the CO-RE head is rated 3, not for continuous contact, with 5-10 % and 70 % nitric acid; STARlet 1124 x 795 x 903 mm, 135 kg. Gilson GX-271 manual: avoid nitric acid over 10 % on PEEK. Opentrons OT-2 and Flex manuals: 'Keep corrosive materials ... away from the robot'"
   },
   {
@@ -73,7 +73,7 @@
     400,
     280
    ],
-   "price": "quote",
+   "price": "on request",
    "source": "SCP Science DigiPREP: graphite hot block, up to 450 C, 50 mL tubes; size estimated"
   },
   {
@@ -89,12 +89,12 @@
   {
    "item": "Arm cover",
    "product": "PTFE-laminate robot suit for the UR12e (Roboworld Robosuit class)",
-   "price": "quote",
+   "price": "on request",
    "source": "Roboworld Robosuit for UR3-UR12e (UR+ listing): over 18 fabrics, a 10-mil laminated Teflon option for 'caustic chemical environments', zips or hook-and-loop, quote only; no maker publishes an IP rating. UR: the UR12e (the renamed UR10e) is IP54, and where liquids are present 'additional measures should be taken, such as utilizing a protective robot cover'"
   },
   {
-   "item": "Racks and caps",
-   "product": "15 mL PP tube racks with a central handle (ours); PP screw caps"
+   "item": "Racks and carrier",
+   "product": "15 mL PP autosampler tube racks with a central handle (ours); a carrier with the same footprint and handle for the CubXL's 2 x 8 rack of capped 0.5 mL tubes (ours, round 15)"
   }
  ]
 }

@@ -82,7 +82,7 @@ JOBS.update({
 # round 15: clips whose helper audited the final code at 10-15 fps; their final render draws without auditing again
 # (chapter 2 was, but chapter 1's carrier re-spacing moved its cups afterwards, so it audits itself again; chapter 1's
 # last fix had no audit yet, so it does too)
-AUDITED = {"ch6", "atom_crucible_out", "atom_crucible_in", "atom_container"}
+AUDITED = {"ch6", "atom_crucible_out", "atom_crucible_in", "atom_container", "icpms"}
 
 
 def fps_of(name: str) -> int:

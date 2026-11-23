@@ -27,6 +27,8 @@ What it is (notes/icpms.md has every figure with its source):
   a duct of its own, not the hood's.
 * **The arm** works it from its MiR250 in a PTFE-laminate cover (Roboworld Robosuit class), and carries only capped
   sample tubes in and an autosampler rack of dilute (2 %) acid out: never an open concentrated acid.
+* **The samples** (round 15) are what the CubXL sends: a night's 9 capped 0.5 mL tubes of 320 uL in its own tube rack,
+  on a carrier (ours). The dilutor here makes their tenfold dilution; the OT-2 no longer dilutes anything.
 
 Frame: x to the right along the station, y away from you (the wall at the back), z up, mm, the origin on the floor at
 the middle of the station. The racks, the decapper, the transfer positions, the SPS 4 door's actuator, the arm's
@@ -75,18 +77,30 @@ PANEL = (XI1 - XI0) / 4                                      # four sliding sash
 OPEN_X = (XI0 + 2 * PANEL + 28.0, XI1)                       # the right half, open: panels 1-3 slid left
 DEWAR_XY = (BX1 + DEWAR["gap"] + DEWAR["d"] / 2, YB - DEWAR["d"] / 2 - 30.0)
 
-# the racks (ours): 15 mL PP tubes, 17 x 118 mm (+ 12 mm cap), 4 columns x 6 rows; a central handle for the 2F-85
-RACK = dict(W=190.0, D=176.0, H=60.0, floor=8.0, cols=(-75.0, -50.0, 50.0, 75.0), rows=6, pitch=26.0,
+# the autosampler racks (ours): 15 mL PP tubes, 17 x 118 mm, 4 columns x 6 rows; a central handle for the 2F-85
+RACK = dict(W=190.0, D=160.0, H=60.0, floor=8.0, cols=(-75.0, -50.0, 50.0, 75.0), rows=6, pitch=26.0,
             tube_d=17.0, tube_h=118.0, cap_d=20.0, cap_h=12.0, handle=(16.0, 110.0, 178.0))
+# round 15: D 160 (was 176, 6.5 mm of wall past the end tubes): on the MiR's carrier, between the arm's plate (x 170)
+# and #364's right base camera's case (props.BASE_CAMS "R", x 346 on, z 845-894), which a rack lifted off it hit
+# round 15 (PR #318): the samples are what the CubXL sends (r9_cubxl.py, notes/cubxl_corrosion.md): a night's 9 tubes
+# (8 wells and the stock blank), 0.5 mL PP, 320 uL each with its 20 uL of 1 M HNO3, capped, in the CubXL's own 2 x 8
+# tube rack (PETG, 96 x 34 x 20 mm, 12 mm pitch: instruments_lab.CORR). The rack sits in a pocket of a carrier (ours)
+# with the autosampler racks' footprint and T handle, so the MiR's carrier, the deck's seat and the grasp are the same.
+# Turned 90 deg in it: its rows along y, tube 0 at the front. The tubes' outside as r9_cubxl.py draws them
+MICRO = dict(cx=-55.0, rows_x=(-64.0, -46.0), y0=-42.0, pitch=12.0, n=9, rack=(34.0, 96.0, 20.0), z0=41.0,
+             tube_h=32.0, cap_d=9.6, cap_h=6.0, ul=320.0, level=18.2)   # level: 320 uL, instruments_lab.tube_level
 # where they stand (rack centres, on the dilutor's deck and the SPS 4's)
 DIL = dict(x0=-1290.0, x1=-450.0, y0=-260.0, y1=290.0, deck=40.0)       # the dilutor's frame, over the work surface
-RACK_IN = (-600.0, -110.0, WS + DIL["deck"])                             # capped samples, set by the arm
+RACK_IN = (-600.0, -110.0, WS + DIL["deck"])                             # the carrier of capped samples, set by the arm
 RACK_OUT = (-850.0, -110.0, WS + DIL["deck"])                            # the SPS 4 rack the dilutor fills
 GZ = WS + 600.0                                                          # the dilutor's head: its column's foot
 HEAD_PARK = (-860.0, 150.0)                                              # the head parked behind the racks
 PROBE_DX = 34.0                                                          # the probe beside the decapping chuck, in x
-TUBE_TOP = RACK_IN[2] + RACK["floor"] + RACK["tube_h"]                   # a tube's rim, 1098; its cap's top 1110
-PROBE_TIP = TUBE_TOP + RACK["cap_h"] + 25.0                              # the probe's tip at rest, over the caps
+TUBE_TOP = RACK_OUT[2] + RACK["floor"] + RACK["tube_h"]                  # an autosampler tube's rim, 1098
+PROBE_TIP = TUBE_TOP + RACK["cap_h"] + 25.0                              # the probe's tip at rest, 37 mm over them
+IN_TOP = RACK_IN[2] + MICRO["z0"] + MICRO["tube_h"]                      # a 0.5 mL tube's rim, 1045; its cap's top 1051
+IN_DIP = RACK_IN[2] + MICRO["z0"] + 9.0                                  # the probe's tip in one: 9 mm up its cone
+#                                                                          (about 1 mm off the wall), 9 mm under the 320 uL
 CHUCK_BOT = RACK_IN[2] + RACK["handle"][2] + 15.0                       # the chuck's jaws at rest, 15 mm over the
 #                                                                          racks' handles (it carries a cap over them)
 SPS_X = BX0 + 80.0 + SPS["W"] / 2                                        # the SPS 4's centre
@@ -144,6 +158,7 @@ MATERIALS = {
     "icp_graphite": (0.18, 0.18, 0.19, 1.0, 0.35),
     "icp_tube": (0.95, 0.95, 0.93, 0.50, 0.5),        # PP sample tubes
     "icp_cap_in": (0.15, 0.42, 0.82, 1.0, 0.3),       # blue caps: the corrosion samples
+    "icp_petg": (0.87, 0.86, 0.82, 1.0, 0.15),        # the CubXL's printed tube rack (instruments_lab's lab_petg)
     "icp_liquid": (0.78, 0.86, 0.92, 0.55, 0.6),
     "icp_acid_label": (0.98, 0.84, 0.15, 1.0, 0.1),   # yellow corrosive labels
     "icp_dewar": (0.75, 0.76, 0.78, 1.0, 0.7),
@@ -193,6 +208,52 @@ def tube_xy(i: int) -> tuple[float, float]:
     r = RACK
     ys = [(-(r["rows"] - 1) / 2 + k) * r["pitch"] for k in range(r["rows"])]
     return r["cols"][i // r["rows"]], ys[i % r["rows"]]
+
+
+def micro_xy(i: int) -> tuple[float, float]:
+    """0.5 mL tube i's (x, y) in the carrier: the CubXL rack's first row of 8 from the front, then its second."""
+    m = MICRO
+    return m["rows_x"][i // 8], m["y0"] + m["pitch"] * (i % 8)
+
+
+def carrier_parts():
+    """{name: (shape, material)} of the carrier (ours) holding the CubXL's tube rack with the night's 9 capped 0.5 mL
+    tubes (round 15), its base centre at the origin: the autosampler racks' body and T handle, a pocket left of the
+    handle for the CubXL rack."""
+    from instruments_lab import _TUBE_IN, _revolve_rz
+    r, m = RACK, MICRO
+    W, D, H = r["W"], r["D"], r["H"]
+    rw, rd, rh = m["rack"]
+    z0 = H - rh                                                     # the pocket's floor: the CubXL rack flush on top
+    body = box(-W / 2, -D / 2, 0, W / 2, D / 2, H).cut(
+        box(m["cx"] - rw / 2 - 1, -rd / 2 - 1, z0, m["cx"] + rw / 2 + 1, rd / 2 + 1, H + 1))
+    hw, hl, hh = r["handle"]
+    body = body.union(box(-hw / 2, -hl / 2, H, hw / 2, hl / 2, hh))
+    body = body.union(box(-hw / 2 - 10, -hl / 2, hh - 22, hw / 2 + 10, hl / 2, hh))    # the T top, as on the racks
+    xy = [micro_xy(i) for i in range(16)]
+    cub = box(m["cx"] - rw / 2, -rd / 2, z0, m["cx"] + rw / 2, rd / 2, H)
+    for x, y in xy:
+        cub = cub.cut(cyl(8.4, rh, x=x, y=y, z=m["z0"]))
+    # r9_cubxl.py's 0.5 mL tube: its outside and inside profiles, revolved; the 320 uL to its level
+    prof_out = [(0, 0), (1.3, 0), (3.6, 12.4), (3.85, 30.5), (4.6, 30.5), (4.6, m["tube_h"]), (0, m["tube_h"])]
+    prof_in = ([(0, _TUBE_IN[0][0])] + [(rr, zz) for zz, rr in _TUBE_IN] +
+               [(_TUBE_IN[-1][1], m["tube_h"] + 1), (0, m["tube_h"] + 1)])            # open at the rim, for the probe
+    tshape = _revolve_rz(prof_out).cut(_revolve_rz(prof_in))
+    lv = m["level"]
+    rl = float(np.interp(lv, [z for z, _ in _TUBE_IN], [rr for _, rr in _TUBE_IN]))
+    lshape = _revolve_rz([(0, _TUBE_IN[0][0])] + [(rr - 0.05, zz) for zz, rr in _TUBE_IN if zz < lv] +
+                         [(rl - 0.05, lv), (0, lv)])
+    tubes = liquid = caps = None
+    for i in range(m["n"]):
+        x, y = xy[i]
+        t = tshape.translate((x, y, m["z0"]))
+        tubes = t if tubes is None else tubes.union(t)
+        lq = lshape.translate((x, y, m["z0"]))
+        liquid = lq if liquid is None else liquid.union(lq)
+        c = cyl(m["cap_d"], m["cap_h"], x=x, y=y, z=m["z0"] + m["tube_h"])
+        caps = c if caps is None else caps.union(c)
+    return {"carrier": (body, "icp_pp_grey"), "cubxl rack": (cub, "icp_petg"), "tubes": (tubes, "icp_tube"),
+            "liquid": (liquid, "icp_liquid"), "caps": (caps, "icp_cap_in")}
 
 
 # ===================================================================================================== the station
@@ -294,7 +355,8 @@ def station() -> Instrument:
     probe.add("probe", cyl(2.4, 240, x=px_, y=py_, z=PROBE_TIP), "icp_pfa")
     chuck = _piece(inst, "chuck")
     chuck.add("chuck body", cyl(34, gz - 20 - (CHUCK_BOT + 40), x=hx, y=hy, z=CHUCK_BOT + 40), "icp_pp_grey")
-    chuck.add("chuck jaws", tube(28, 22, 40, x=hx, y=hy, z=CHUCK_BOT), "inst_dark")
+    # round 15: jaws for the 0.5 mL tubes' 9.6 mm caps, 1.3 mm clear of the next cap at the CubXL rack's 12 mm pitch
+    chuck.add("chuck jaws", tube(11.8, 10.2, 40, x=hx, y=hy, z=CHUCK_BOT), "inst_dark")
     # ---------------------------------------------------------------- the bench: the ICP-MS and its autosampler
     bh = BENCH["H"]
     body.add("bench top", box(BX0, BYF, bh - 30, BX1, YB, bh), "r7_epoxy" if "r7_epoxy" in I.MATERIALS else "inst_dark")
@@ -391,8 +453,8 @@ def station() -> Instrument:
         "sash3": Joint("slide", vec=(-(2 * PANEL - 28.0), 0, 0)),      # back track: 2 mm right of panel 1
         "head": Joint("path", path=_head_path()),
         "beam": Joint("follow", path=_head_path(), jac=_Y_ONLY),
-        "probe": Joint("slide", vec=(0, 0, -(PROBE_TIP - (RACK_IN[2] + RACK["floor"] + 12.0))), parent="head"),
-        "chuck": Joint("slide", vec=(0, 0, -(CHUCK_BOT - TUBE_TOP + 1.0)), parent="head"),
+        "probe": Joint("slide", vec=(0, 0, -(PROBE_TIP - IN_DIP)), parent="head"),       # 1.0: in a 0.5 mL tube
+        "chuck": Joint("slide", vec=(0, 0, -(CHUCK_BOT - IN_TOP - 0.5)), parent="head"),  # round a 0.5 mL tube's cap
         "sps_door": Joint("hinge", axis=(1, 0, 0), pivot=(0, sy1 + 5, bh + SPS["H"]), deg=-105.0),
         "sps_arm": Joint("path", path=_sps_path()),
         "sps_probe": Joint("slide", vec=(0, 0, -(SPS_TIP - (SPS_RACK[2] + RACK["floor"] + 12.0))), parent="sps_arm"),
@@ -415,7 +477,7 @@ def _rel(p):
     return (p[0] - HEAD_PARK[0], p[1] - HEAD_PARK[1], 0.0)
 
 
-IN0 = (RACK_IN[0] + tube_xy(0)[0], RACK_IN[1] + tube_xy(0)[1])
+IN0 = (RACK_IN[0] + micro_xy(0)[0], RACK_IN[1] + micro_xy(0)[1])        # round 15: the CubXL's first 0.5 mL tube
 OUT0 = (RACK_OUT[0] + tube_xy(0)[0], RACK_OUT[1] + tube_xy(0)[1])
 HEAD_STOPS = [("park", (0.0, 0.0, 0.0)), ("chuck_in0", _rel(IN0)), ("probe_in0", _rel((IN0[0] - PROBE_DX, IN0[1]))),
               ("probe_out0", _rel((OUT0[0] - PROBE_DX, OUT0[1]))), ("probe_in0b", _rel((IN0[0] - PROBE_DX, IN0[1]))),
@@ -440,7 +502,8 @@ _Y_ONLY = (((0, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0)), ((0, 0, 0, 0), (0, 0, 0, 
 
 def _sps_path():
     """The SPS 4's arm: parked over its standards rack, then along the first row of the rack the arm set down: tubes
-    0, 6, 12 and 18 (offsets from the park)."""
+    0, 6, 12 and 18 (offsets from the park). The dilutor fills the rack row by row, the SPS 4's order, so the night's
+    first four samples."""
     pts = [(0.0, 0.0, 0.0)]
     for i in (0, 6, 12, 18):
         x, y = tube_xy(i)
@@ -479,8 +542,10 @@ MIR_X = -830.0                       # the MiR250 docks in front of the hood's o
 MIR_X_SPS = 90.0                     # ... and then in front of the SPS 4 (its rack at x 40)
 MIR_Y = HYF - 60.0 - 290.0           # 60 mm clear of the hood's front
 MIR_FROM = 2400.0                    # it drives in from 2.4 m to the right, at the MiR's published 0.3 m/s^2
-CARRIER = (266.0, -40.0)             # the rack's carrier on the MiR's cabinet top (local), right of the arm's plate,
-                                     # the rack turned 90 deg so it fits beside the plate
+CARRIER = (258.0, -40.0)             # the rack's carrier on the MiR's cabinet top (local), right of the arm's plate,
+                                     # the rack turned 90 deg so it fits beside the plate. Round 15: the racks 16 mm
+                                     # shorter and the carrier 8 mm nearer the arm (was 266), so a rack lifted off it
+                                     # clears #364's right base camera's case by 8 mm (the audit found 12 mm into it)
 HANDLE_GRASP = RACK["handle"][2] - 11.0      # the pads' centre on the handle's T top (36 mm across, 22 mm tall), over
 #                                              the rack's base; the 16 mm web under it leaves the fingertips room
 STOW_DEG = (0.0, -150.0, 135.0, -75.0, -90.0, 180.0)    # animate.PARK_DEG turned to face along the MiR (+x), so the
@@ -513,7 +578,7 @@ def sleeve(sc, rb, inflate: float = 6.0):
 def bom() -> dict:
     """The station's parts with their sizes, sources and prices where public (out/icpms_bom.json)."""
     return dict(
-        note="Round 14, run D: the ICP-MS station (icpms.py, notes/icpms.md). Prices are public figures, not quotes.",
+        note="Round 14, run D: the ICP-MS station (icpms.py, notes/icpms.md). Prices are public figures, not quotes; \"on request\" where none is published.",
         items=[
             dict(item="ICP-MS", product="Agilent 7850 (UHMI standard)", size_mm=[730, 600, 595], mass_kg=100,
                  power="200-240 V single phase, 30 A circuit", argon="20 L/min", exhaust="150 mm, 5-7 m3/min",
@@ -524,24 +589,26 @@ def bom() -> dict:
             dict(item="Chiller", product="Agilent G3292A", size_mm=[368, 702, 576], mass_kg=85, power="2900 W"),
             dict(item="Forepump", product="the 7850's own (DS402 on the 7800: 164 x 541 x 242 mm, 35 kg)"),
             dict(item="Fume hood", product="HEMCO UniFlow Trace Metals, 6 ft, polypropylene, on an acid cabinet",
-                 size_mm=[1829, 813, 1499], price="quote", source=SOURCES["hood"]),
+                 size_mm=[1829, 813, 1499], price="on request", source=SOURCES["hood"]),
             dict(item="Dilutor", product="acid-rated, all-fluoropolymer fluid path (Questron/HORIBA QPrep class), "
-                 "with a decapping head (ours)", size_mm=[840, 550, 700], price="quote", source=SOURCES["dilutor"]),
+                 "with a decapping head (ours)", size_mm=[840, 550, 700], price="on request", source=SOURCES["dilutor"]),
             dict(item="Hot block", product="graphite digestion block (SCP Science DigiPREP class), 24 x 50 mL",
-                 size_mm=[500, 400, 280], price="quote", source=SOURCES["hot block"]),
+                 size_mm=[500, 400, 280], price="on request", source=SOURCES["hot block"]),
             dict(item="Argon", product="180 L liquid argon dewar, 22 psi, regulator within 3 m", size_mm=[508, 508, 1635],
                  source=SOURCES["argon"]),
             dict(item="Arm cover", product="PTFE-laminate robot suit for the UR12e (Roboworld Robosuit class)",
-                 price="quote", source=SOURCES["cover"]),
-            dict(item="Racks and caps", product="15 mL PP tube racks with a central handle (ours); PP screw caps"),
+                 price="on request", source=SOURCES["cover"]),
+            dict(item="Racks and carrier", product="15 mL PP autosampler tube racks with a central handle (ours); a "
+                 "carrier with the same footprint and handle for the CubXL's 2 x 8 rack of capped 0.5 mL tubes (ours, "
+                 "round 15)"),
         ])
 
 
 def clip():
-    """The station at work: the MiR250 + UR12e (the code's UR10e, renamed) in its PTFE cover brings a capped rack of
-    corrosion samples from tray A and sets it in the hood; the dilutor takes tube 0's cap off, dilutes its sample tenfold
-    into 2 % HNO3 with an internal standard in the autosampler rack, and puts the cap back (and so on for the rest);
-    the arm takes the filled autosampler rack to the SPS 4, which feeds the 7850."""
+    """The station at work: the MiR250 + UR12e (the code's UR10e, renamed) in its PTFE cover brings the CubXL's capped
+    0.5 mL tubes from tray A on their carrier and sets it in the hood; the dilutor takes tube 0's cap off, dilutes its
+    sample tenfold into 2 % HNO3 with an internal standard in the autosampler rack, and puts the cap back (and so on for
+    the rest); the arm takes the filled autosampler rack to the SPS 4, which feeds the 7850."""
     import animate as A
     import lab
     import props as P
@@ -571,13 +638,15 @@ def clip():
             sc.add(f"{g}/{part}", mesh_of(shape), (r, gg, b), g, opacity=a, specular=spec)
         sc.parent[g] = parent
         sc.gmat[g] = M
-    # the racks: the capped samples (tube 0's cap a group of its own, for the decapper), the empty autosampler rack
-    parts_in = rack_parts(True)
+    # the capped samples: round 15, the CubXL's 0.5 mL tubes in its rack, on the carrier (tube 0's cap a group of its
+    # own, for the decapper); the empty autosampler rack
+    parts_in = carrier_parts()
     caps = parts_in.pop("caps")
-    x0_, y0_ = tube_xy(0)
-    cap0 = cyl(RACK["cap_d"], RACK["cap_h"], x=x0_, y=y0_, z=RACK["floor"] + RACK["tube_h"])
-    parts_in["caps"] = (caps[0].cut(cyl(RACK["cap_d"] + 1, RACK["cap_h"] + 2, x=x0_, y=y0_,
-                                        z=RACK["floor"] + RACK["tube_h"] - 1)), caps[1])
+    x0_, y0_ = micro_xy(0)
+    m_ = MICRO
+    cap0 = cyl(m_["cap_d"], m_["cap_h"], x=x0_, y=y0_, z=m_["z0"] + m_["tube_h"])
+    parts_in["caps"] = (caps[0].cut(cyl(m_["cap_d"] + 1, m_["cap_h"] + 2, x=x0_, y=y0_,
+                                        z=m_["z0"] + m_["tube_h"] - 1)), caps[1])
     for name, (mesh, col) in P.mir250().items():
         kw = dict(ambient=0.8) if "light" in name else {}
         sc.add(f"amr/{name}", mesh, col, "amr", **kw)
@@ -590,8 +659,8 @@ def clip():
     x_in = MIR_X + MIR_FROM
     sc.gmat["amr"] = T((x_in, MIR_Y, 0.0))
     from scene import R
-    # turned -90 deg in the carrier: picked with the pads along y (spin 90) and set down with them along x (spin 0),
-    # the gripper's turn brings it square on the deck, tube 0 at its front left
+    # turned -90 deg in the MiR's carrier: picked with the pads along y (spin 90) and set down with them along x (spin
+    # 0), the gripper's turn brings it square on the deck, tube 0 at its front left
     add_parts("rack_in", parts_in, "amr", T((CARRIER[0], CARRIER[1], cz + 4.0)) @ R((0, 0, 1), -90.0))
     add_parts("rack_in_cap0", {"cap": (cap0, "icp_cap_in")}, "rack_in", np.eye(4))
     add_parts("rack_out", rack_parts(False), None, T(RACK_OUT))
@@ -640,9 +709,10 @@ def clip():
     sps_cam = tour.close_cam((SPS_X + 150.0, BYF + 150.0, 1200.0), 2300.0, (0.70, -1.45, 0.80))
     labels = list(inst.labels)
     n = 8
-    sc.step(f"1/{n}", "An ICP-MS station on the floor beside the VLM: its concentrated acids stay in a "
-            "metal-free polypropylene fume hood, off every tray. Beside it an Agilent 7850 ICP-MS with its SPS 4 "
-            "autosampler, the chiller and forepump under the bench, and liquid argon in a 180 L dewar.", 6.0, None,
+    # round 15: no floor position claimed (notes/lab_r15.md: round 14's spot is the Meltio cell's clearance)
+    sc.step(f"1/{n}", "An ICP-MS station of the lab's own (its spot on the floor is still open): its concentrated acids "
+            "stay in a metal-free polypropylene fume hood, off every tray. Beside it an Agilent 7850 ICP-MS with its "
+            "SPS 4 autosampler, the chiller and forepump under the bench, and liquid argon in a 180 L dewar.", 6.0, None,
             hold=1.5, labels=labels)
     dist = abs(MIR_FROM)
 
@@ -650,15 +720,15 @@ def clip():
         f = P.ramp_frac(u, dist, 600.0)
         sc.gmat["amr"] = T((x_in + (MIR_X - x_in) * f, MIR_Y, 0.0))
         rb.set()
-    sc.step(f"2/{n}", "A MiR250 + UR12e brings a capped rack of corrosion samples from tray A. The arm wears a "
-            "PTFE-laminate cover zipped at its base and wrist: the arm itself is IP54, and UR asks for a cover where "
-            "liquids are about.", P.ramp_secs(dist, 600.0), drive, hold=0.6, cam_to=mir_cam)
+    sc.step(f"2/{n}", "A MiR250 + UR12e brings the CubXL's night from tray A: 9 capped 0.5 mL tubes of 320 µL, in the "
+            "CubXL's rack on a carrier (ours). The arm wears a PTFE-laminate cover: it is IP54 itself, and UR asks for "
+            "a cover where liquids are about.", P.ramp_secs(dist, 600.0), drive, hold=0.6, cam_to=mir_cam)
     sc.step(f"3/{n}", "The right half of the sash opens: on two tracks, three panels slide behind the first. The arm "
             "works through the opening, as a person does.", 2.2,
             rig.move({"sash1": (None, 1.0), "sash2": (None, 1.0), "sash3": (None, 1.0)}), hold=0.4, cam_to=hood_cam)
-    # the capped rack: off the carrier (turned 90 deg there, so the pads close along y), onto the dilutor's deck
-    cap4 = ("The arm takes the rack by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. Only "
-            "capped tubes cross the opening, and the arm never carries an open concentrated acid.")
+    # the capped tubes' carrier: off the MiR's carrier (turned 90 deg there, so the pads close along y), onto the deck
+    cap4 = ("The arm takes the carrier by its handle (ours) and sets it on the dilutor's deck, 250 mm inside the sash. "
+            "It carries capped tubes in and only dilute acid out, never an open concentrated acid.")
     gp = grasp_point("rack_in")
     sc.step(f"4/{n}", cap4, 1.8, rb.joint_to(Tw=down_at(gp + (0, 0, 150.0), 90.0)), hold=0.0)
     sc.step(f"4/{n}", cap4, 0.8, rb.line_to(down_at(gp, 90.0)), hold=0.0)
@@ -673,9 +743,11 @@ def clip():
     sc.step(f"4/{n}", cap4, 0.8, rb.line_to(down_at(tgt + (0, 0, 180.0))), hold=0.0)
     sc.step(f"4/{n}", cap4, 2.4, rb.joint_to(q1=np.radians(STOW_DEG)), hold=0.3)
     # the dilutor: tube 0 in full
-    cap5 = ("Inside, an acid-rated dilutor (QPrep class): PFA probe and lines, syringe pumps, no metal or PEEK where the "
-            "acid goes. Its head (ours) unscrews tube 0's cap, takes an aliquot, makes a tenfold dilution into 2 % "
-            "nitric acid with an internal standard in the autosampler rack, and caps the tube again.")
+    # round 15: the dilution is this dilutor's, not the OT-2's (ot2_corrosion.py: no acid on its deck); 100 uL into
+    # 900 uL, the OT-2's round-14 volumes, leaving 220 uL for a re-run (waste.py's 1.0 mL a tube)
+    cap5 = ("Inside, an acid-rated dilutor (QPrep class), not the OT-2, makes the dilution: PFA probe and lines, no metal "
+            "or PEEK where the acid goes. Its head (ours) lifts the first tube's cap and takes 100 µL into 900 µL of "
+            "2 % nitric acid with an internal standard, tenfold, in the autosampler rack; then the cap goes back.")
     hv = HEAD_V
 
     def head_to(name):
@@ -694,7 +766,7 @@ def clip():
     sc.step(f"5/{n}", cap5, 0.8, rig.move({"chuck": (None, 1.0)}), hold=0.2)
     reparent("rack_in_cap0", "rack_in")
     sc.step(f"5/{n}", cap5, 0.7, rig.move({"chuck": (None, 0.0)}), hold=0.0)
-    sc.step(f"5/{n}", "The same for the other 23 tubes, about 40 s each (an estimate), then the head parks.", 1.6,
+    sc.step(f"5/{n}", "The same for the other 8 tubes, about 40 s each (an estimate), then the head parks.", 1.6,
             head_to("park_end"), hold=0.5)
     sc.step(f"6/{n}", "The hot block digests chips or powder of each build in nitric and hydrochloric acid, aqua regia "
             "for the copper alloys. With no HF, silicon over about 1 % won't dissolve, so Si comes from the XRF.", 4.0,
@@ -744,7 +816,7 @@ def clip():
     sc.step(f"7/{n}", cap7, 1.4, rig.move({"sps_door": (None, 0.0)}), hold=0.3)
     cap8 = ("The SPS 4 feeds the 7850, whose aerosol dilution takes salty samples up to 25 % dissolved solids. It needs "
             "20 L/min of argon (a 180 L dewar lasts about five days of plasma), 30 A at 208 V and an exhaust drop of its "
-            "own. About $160-220k for the ICP-MS; the hood, dilutor and cover are quotes.")
+            "own. About $160-220k for the ICP-MS; the hood, dilutor and cover have no public price.")
     d3 = 2300.0                                              # the MiR250 leaves for its next job, out of the view
 
     def leave(u):
