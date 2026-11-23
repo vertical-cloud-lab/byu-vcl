@@ -368,6 +368,18 @@ Source: [groups E and F](companies/E/_summary.md) and [F summary](companies/F/_s
     and neither is their main product.
   - Edison's sources put disclosed AI-for-materials funding from Sep 2025 to Jul 2026 at
     $1.98–2.29B, with 86–88% going to Periodic, CuspAI and Lila.
+- **Self-driving labs took off while open-hardware publishing plateaued** ([`figures/physsci_topics.png`](figures/physsci_topics.png),
+  [`data/openalex_physsci_topics.csv`](data/openalex_physsci_topics.csv), OpenAlex title/abstract matches):
+  - Self-driving and autonomous-lab papers went from 18 (2020) to 131 (2024) and 383 (2025). 67% of the
+    2025 papers are open access.
+  - The US-affiliated share of SDL papers fell from about two thirds (2020) to 28% (2025) as other
+    countries ramped up.
+  - Open-source-hardware papers rose from 37 (2010) to about 300 a year by 2020, then flattened (276–381
+    in 2024–25).
+  - HardwareX has published a steady 111–115 articles a year since 2023.
+
+  ![SDL and open hardware papers](figures/physsci_topics.png)
+
 - **US government open-source output:** 94% of DOE's 5,879 inventoried software releases are open
   source. New records fell from 839–1,051 a year (2020–22) to 446–588 (2023–24)
   ([F summary](companies/F/_summary.md)).
@@ -416,6 +428,7 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
 ![Epoch sectors](figures/epoch_sector.png)
 ![OpenAlex sectors](figures/openalex.png)
 ![Compute gap](figures/compute_gap.png)
+![DOE releases](figures/doe_code_by_year.png)
 
 - **Papers:**
   - The open-access share of US articles rose from 25% (2000) to about 71–72% (2024–25).
@@ -438,6 +451,19 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
     snippet).
   - The Chatbot Arena gap between open and closed fell from 8.0% to 1.7% (Jan 2024 → Feb 2025).
   - **92% of the foundation models adopted in science papers since 2019 were open-weight.**
+- **National labs' own software** ([`figures/doe_code_by_year.png`](figures/doe_code_by_year.png),
+  [`data/doe_code_by_year.csv`](data/doe_code_by_year.csv), [`data/doe_code_by_lab.csv`](data/doe_code_by_lab.csv)):
+  - DOE's code.json inventory lists 5,879 releases, **93.6% of them open source**. The other 374 are
+    "exempt by law".
+  - The top labs are LLNL (826 releases, 100% open), PNNL (721, 74%), Sandia (698, 96%), LBNL (641, 89%),
+    LANL (502, 99%) and ORNL (408, 99.5%).
+  - Licences are mostly permissive: BSD-3-Clause 1,928, MIT 1,137, Apache-2.0 378, GPL-3.0 252.
+  - Inventory records created per year fell from 1,051 (2020) to 446–588 (2023–24). The inventory was
+    last updated in April 2025 and its dates are record-creation dates, so read this as a slowdown in
+    cataloguing, not necessarily in releasing.
+  - The inventory's own SLOC-based estimate for unique open repositories is about 335M labor hours. It is
+    indicative only, but it suggests the national labs' open code is worth tens of billions of dollars at
+    replacement cost.
 - **Policy:**
   - OSTP's Holdren (2013) and Nelson (2022) memos; NIH's public-access policy, accelerated to
     2025-07-01.
