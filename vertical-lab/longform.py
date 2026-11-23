@@ -41,7 +41,9 @@ NAME = "vertical_lab_longform"
 SIZE = tuple(int(v) for v in os.environ.get("LONGFORM_SIZE", "1920x1080").split("x"))
 FPS = int(os.environ.get("LONGFORM_FPS", "30"))
 K = SIZE[1] / 720              # the pixel sizes below were chosen at 1280 x 720
-HD = OUT / "hd"                # round 12's 1080p renders; a clip not there falls back to out/mp4/ (720p, scaled up)
+# round 12's 1080p renders; a clip not there falls back to out/mp4/ (720p, scaled up). Round 15: LONGFORM_HD_DIR names
+# the folder of this pass's renders (VIZ3D_HD_DIR), e.g. r15 for the 720p pass drawn at up to 30 fps
+HD = OUT / os.environ.get("LONGFORM_HD_DIR", "hd")
 CARD_S = 6.0
 AUDIT_TAG = os.environ.get("LONGFORM_AUDIT_TAG", "round13")   # out/collisions/<tag>_table.png, _summary.json
 # every part is encoded with the same settings, so the join is a stream copy

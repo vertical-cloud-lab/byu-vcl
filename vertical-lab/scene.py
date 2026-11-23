@@ -303,7 +303,9 @@ class Scene:
                 # that longform.py encodes again, and "slow" cost the runner CPU the renders needed
                 pre = os.environ.get("VIZ3D_PRESET", "faster")
                 self.mp4 = encoder(self.mp4_path, size, crf=16, preset=pre) if HD_CLEAN else None
-                self.mp4_text_path = OUT / "hd" / f"{name}.mp4"
+                # round 15: VIZ3D_HD_DIR (default "hd") puts a pass of renders in a folder of its own, so a render
+                # that dies half-written can't replace a good one that the long-form would otherwise take
+                self.mp4_text_path = OUT / os.environ.get("VIZ3D_HD_DIR", "hd") / f"{name}.mp4"
                 self.mp4_text = encoder(self.mp4_text_path, size, crf=16, preset=pre)
             else:
                 self.mp4 = encoder(self.mp4_path, size, crf=16 if CLEAN else 21)
