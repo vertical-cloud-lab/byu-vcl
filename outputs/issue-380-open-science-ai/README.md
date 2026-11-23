@@ -11,7 +11,7 @@ below links to a file in this folder, and each file names its sources.
   It covers openness over time, the open-science commons, how the labs' language changed, the US licence mix, AM makers and the DAL audit.
   MP4: [`video/open_science_value_ai_part2.mp4`](video/open_science_value_ai_part2.mp4). Chapters: [`video/chapters_part2.txt`](video/chapters_part2.txt).
 
-**Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has seven evidence-linked actions. **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md).
+**Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has seven evidence-linked actions. **All figures:** [`FIGURES.md`](FIGURES.md). **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md).
 
 ## Short answer
 
@@ -146,6 +146,16 @@ where a 2025–26 fact couldn't be confirmed.
     discovery.** The Edison precedent search found none.
 - **The human genome:** Celera's temporary restrictions cut later research and diagnostics on the
   affected genes by about 20–30% (Williams 2013).
+- **Open access pays off downstream.** After the 2008 NIH Public Access Mandate, patents cited
+  NIH-funded research **12–27% more often** (Bryan & Ozcan 2021, difference-in-differences; via
+  [Edison](edison/open_science_roi_answer.md)). That is causal evidence that open papers feed industrial
+  innovation.
+
+![Policy timeline](figures/policy_timeline.png)
+
+US open access rose from about 25% to 72% of articles between 2000 and 2023, through the NIH mandate
+(2008), the Holdren (2013) and Nelson (2022) memos and the NIH data-sharing policy (2023). The small
+dip in 2024–25 is probably indexing lag in OA status.
 - **Materials:** the NIST Materials Genome Initiative analysis estimates $123–270B a year of
   *potential* US benefit from better materials-innovation infrastructure.
 - **Open scientific hardware** costs 87% less on average than the commercial equivalent, rising to 94%
