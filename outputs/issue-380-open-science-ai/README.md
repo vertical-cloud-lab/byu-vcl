@@ -580,6 +580,24 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
     science posts.
   - The 2025–26 documents were chosen *because* they are the labs' science and openness posts, so this
     shows emphasis in what they publish on these topics, not a random sample.
+- **Words vs. actions: what the labs actually publish on GitHub** (public non-fork repos via the GitHub
+  API, 2026-11-23; [`data/ai_lab_github_orgs.csv`](data/ai_lab_github_orgs.csv)):
+
+  | GitHub account | Public source repos | Total stars | Permissive licence | New repos 2024 → 2025 → 2026 | Most-starred |
+  | --- | --- | --- | --- | --- | --- |
+  | anthropics | 93 | 731k | 59 | 7 → 25 → 44 | skills, claude-code, claude-cookbooks |
+  | openai | 246 | 1.05M | 176 | 22 → 48 → 44 | codex, whisper, openai-cookbook |
+  | google-deepmind | 422 | 242k | 384 | 75 → 77 → 47 | mujoco, deepmind-research, alphafold |
+  | facebookresearch (Meta) | 1,471 | 986k | 504 | 170 → 212 → 141 | segment-anything, faiss, detectron2 |
+  | deepseek-ai | 47 | 782k | 38 | 11 → 15 → 17 | deepseek-harness, DeepSeek-V3, DeepSeek-R1 |
+  | allenai (Ai2) | 522 | 112k | 380 | 56 → 45 → 51 | olmocr, allennlp, OLMo |
+
+  - The closed-weight labs are rapidly opening the tooling *around* their models: Anthropic's new public
+    repos grew sixfold from 2024 to 2026 (skills, MCP and SDKs).
+  - Some of the most-starred repos are not under an open licence. For example, 28 of Anthropic's 93
+    have no licence file.
+  - Meta and DeepMind publish far more research code, and DeepSeek's few repos draw outsized attention.
+
 - **National labs and the Genesis Mission:**
   - Anthropic partnered with DOE in December 2025 "to affect the work being done at all 17 of America's
     national laboratories". In October 2026 it described 10,000 free and discounted Claude seats for
