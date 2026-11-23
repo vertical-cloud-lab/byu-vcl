@@ -1,0 +1,9 @@
+case,original,fork,orig_stars,orig_forks,orig_archived,orig_pushed,orig_license,orig_commits_12m,fork_stars,fork_forks,fork_archived,fork_pushed,fork_license,fork_commits_12m
+Elasticsearch → OpenSearch (2021),elastic/elasticsearch,opensearch-project/OpenSearch,78719,26147,False,2026-11-23,NOASSERTION,15524,14062,3025,False,2026-11-23,Apache-2.0,1463
+Redis → Valkey (2024),redis/redis,valkey-io/valkey,77636,24975,False,2026-11-23,NOASSERTION,650,27839,1482,False,2026-11-23,BSD-3-Clause,974
+Terraform → OpenTofu (2023),hashicorp/terraform,opentofu/opentofu,50316,10595,False,2026-11-23,NOASSERTION,1369,30971,1437,False,2026-11-23,MPL-2.0,846
+Akka → Apache Pekko (2022),akka/akka,apache/pekko,13293,3528,False,2026-11-20,NOASSERTION,150,1674,214,False,2026-11-23,Apache-2.0,889
+Puppet → OpenVox (2025),puppetlabs/puppet,OpenVoxProject/openvox,7985,2200,False,2026-08-06,Apache-2.0,0,211,68,False,2026-11-23,Apache-2.0,694
+MySQL → MariaDB (2009),mysql/mysql-server,MariaDB/server,12524,4439,False,2026-11-20,NOASSERTION,2682,8647,2231,False,2026-11-23,GPL-2.0,2487
+OpenOffice → LibreOffice (2010),apache/openoffice,LibreOffice/core,1268,389,False,2026-11-23,Apache-2.0,722,4686,1031,False,2026-11-23,GPL-3.0,10765
+Kibana → OpenSearch Dashboards (2021),elastic/kibana,opensearch-project/OpenSearch-Dashboards,21395,8653,False,2026-11-23,NOASSERTION,23659,2147,1290,False,2026-11-23,Apache-2.0,908

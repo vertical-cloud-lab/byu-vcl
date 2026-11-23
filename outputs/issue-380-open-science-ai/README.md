@@ -316,6 +316,27 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
 - Restoring OSI terms brought back the licence but not the cloud channel: AWS now recommends Valkey
   ([A summary](companies/A/_summary.md)).
 
+**Did the forks survive?** Commits on the default branch in the last 12 months, from the GitHub API,
+2026-11-23 ([`data/fork_vs_original.csv`](data/fork_vs_original.csv)):
+
+| Closing move → fork | Original: commits/yr (stars) | Fork: commits/yr (stars) | Which line is more active |
+| --- | --- | --- | --- |
+| Redis → Valkey (2024, Linux Foundation) | 650 (78k) | **974** (28k) | Fork |
+| Akka → Apache Pekko (2022, ASF) | 150 (13k) | **889** (1.7k) | Fork, 6× |
+| Puppet → OpenVox (2025) | **0**, last push 2026-08 (8k) | **694** (0.2k) | Fork; the public original went quiet |
+| OpenOffice → LibreOffice (2010) | 722 (1.3k) | **10,765** (4.7k) | Fork, 15× |
+| MySQL → MariaDB (2009) | 2,682 (12.5k) | 2,487 (8.6k) | Even |
+| Terraform → OpenTofu (2023, Linux Foundation) | **1,369** (50k) | 846 (31k) | Original, 1.6× |
+| Elasticsearch → OpenSearch (2021, Linux Foundation) | **15,524** (79k) | 1,463 (14k) | Original, about 10× |
+| Kibana → OpenSearch Dashboards (2021) | **23,659** (21k) | 908 (2k) | Original, about 26× |
+
+- **Every fork is alive and maintained.** The code survived each closing move.
+- **Whether the fork *overtakes* depends on what the vendor does next.**
+  - Vendors that kept investing heavily in public development under their new licence (Elastic,
+    HashiCorp) kept the main line.
+  - Where the vendor's public effort faded (Puppet, Akka, OpenOffice) or the licence reversed (Redis
+    back to AGPL in 2025), the foundation-hosted fork became the more active project.
+
 ![Software lanes](figures/lanes_software.png)
 
 ### 3. Public markets
