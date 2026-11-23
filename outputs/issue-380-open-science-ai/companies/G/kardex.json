@@ -1,0 +1,136 @@
+{
+  "name": "Kardex Holding AG",
+  "slug": "kardex",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "automated storage and retrieval: vertical lift modules (Kardex Shuttle), carousels, AutoStore systems, high-bay warehouses (closed comparator)",
+  "hq_country": "CH",
+  "origin": "corporate",
+  "origin_detail": "Roots in the Rand Ledger Company (1898, James H. Rand Sr.) and American Kardex (1915, James Rand Jr.), which became part of Remington Rand (1927) and Sperry Rand (1955); Sperry sold the division in 1978 as Kardex Systems. The Swiss Kardex AG was founded in 1977 in Zurich, listed on the SIX Swiss Exchange since 1989 (SIX: KARN), bought the US Kardex Systems in 2008 and Mlog Logistics in 2010. Divisions: Kardex Remstar (VLMs and carousels), Kardex Mlog (high-bay warehouses) and Kardex AS Solutions (AutoStore partner since 2021), plus Rocket Solution (majority since 2025).",
+  "founded_year": 1977,
+  "flagship_projects": [
+    "Kardex Shuttle vertical lift module",
+    "Kardex Megamat vertical carousel",
+    "Kardex Power Pick System warehouse software",
+    "AutoStore systems (Kardex AS Solutions)",
+    "Kardex Mlog high-bay warehouses"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Machines, controls and software (Kardex Power Pick System, Power Pick Cloud, Control Center, Analytics) are proprietary; integration is through Kardex's own interface products (Kardex Drive, Kardex JMIF). The fetched homepage does not mention open interfaces or APIs, and no open-source releases were found. Level 0 on the hardware scale.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": null,
+      "license": "Proprietary",
+      "note": "No open releases found",
+      "source": "https://www.kardex.com/en/"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {
+      "year": 1989,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "SIX Swiss Exchange",
+      "note": "Listed since 1989 per Wikipedia",
+      "source": "https://en.wikipedia.org/wiki/Kardex_Group"
+    }
+  ],
+  "latest_value_usd": 2048000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 930300000,
+  "revenue_year": 2025,
+  "employees_latest": 2957,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2025: net profit fell 48.3% to EUR 41.8M after a one-time, non-cash write-off of about EUR 39M of loans to Rocket Solution, a start-up it first invested in in 2020 and took majority control of in 2025",
+    "2025: free cash flow fell 77.4% to EUR 20.5M; US demand lagged expectations and the company flags uncertainty around tariffs and global trade",
+    "Market cap fell from CHF 2.31B (end-2021) to CHF 1.17B (end-2022) and was CHF 1.72B on 2026-11-23",
+    "Growing reliance on a partner's technology: AutoStore-based Kardex AS Solutions was the fastest-growing unit in 2025 (revenue +24.7%, bookings +59.1%)"
+  ],
+  "robustness": "A profitable listed company (2025 EBIT EUR 101.2M, 11.9% margin; record bookings EUR 981.6M and backlog EUR 599.2M; net cash EUR 136.5M) with 26.5% of revenue from life-cycle services on an installed base. Its systems are closed, so service and software support depend on Kardex.",
+  "physical_science_relevance": "Vertical lift modules are compact, automated storage for parts and consumables; Kardex lists healthcare/hospitals and pharmaceuticals among its industries, but its pages do not mention laboratories or sample storage. For a self-driving or high-throughput materials lab, a VLM is a plausible buffer for consumables, build plates, sample coupons or sealed powder containers between process steps (an inference, not a documented lab deployment). Its controls are closed, so integration into an open SDL orchestrator would go through Kardex's proprietary interfaces.",
+  "openness_effect_assessment": "Openness plays no visible role: Kardex is a century-old line of proprietary storage systems that grew through acquisitions and, since 2021, by reselling a partner's closed AutoStore technology. Its record 2025 bookings show demand for automation (reshoring, labour shortages) can be met entirely by closed products.",
+  "key_takeaway": "Kardex represents the closed, mature logistics-automation incumbents that labs end up buying: a 1898 filing-system brand reborn as a Swiss listed company (EUR 850M revenue, ~2,960 staff in 2025) selling proprietary vertical lift modules and AutoStore systems. It is profitable and stable but entirely closed, so labs that automate storage depend on its interfaces and service.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (Kardex Power Pick System, Power Pick Cloud, Control Center, Analytics; interface products Kardex Drive, JMIF)"
+    ],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Converted at the ECB reference rates of 2026-11-23 (1 EUR = 1.0939 USD; 1 CHF = 1.1908 USD): 2025 net revenues EUR 850.4M = $930.3M; market cap CHF 1.72B = $2.05B.",
+    "StockAnalysis.com does not state the market-cap currency for KARN; it is assumed to be CHF because the share is quoted in CHF (CHF 223.50 on 2026-11-23).",
+    "Division revenue 2025: Kardex Remstar EUR 572.8M (~2,200 staff), Kardex Mlog EUR 115.9M (420), Kardex AS Solutions EUR 162.6M (230).",
+    "founded_year 1977 refers to Kardex AG of Zurich (Wikipedia); the brand dates from 1915 and its predecessor from 1898."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Kardex",
+    "https://en.wikipedia.org/wiki/Kardex_Group",
+    "https://investors.kardex.com/newsroom/news/kardex-holding-ag-financial-results-2025/4cf92263-b51e-48de-87fc-3ebaabfdde7c",
+    "https://stockanalysis.com/quote/swx/KARN/market-cap/",
+    "https://www.kardex.com/en/",
+    "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Kardex_Group",
+      "title": "Kardex Group",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, exit_events[0], notes (division staff)"
+    },
+    {
+      "url": "https://investors.kardex.com/newsroom/news/kardex-holding-ag-financial-results-2025/4cf92263-b51e-48de-87fc-3ebaabfdde7c",
+      "title": "Kardex Holding AG: Financial Results 2025",
+      "publisher": "Kardex (investor relations)",
+      "date": "2026-03-12",
+      "supports": "revenue_latest_usd, employees_latest, risk_events[0], risk_events[1], risk_events[3], robustness, notes (division revenue)"
+    },
+    {
+      "url": "https://stockanalysis.com/quote/swx/KARN/market-cap/",
+      "title": "Kardex Holding (SWX:KARN) Market Cap",
+      "publisher": "StockAnalysis.com",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd, risk_events[2]"
+    },
+    {
+      "url": "https://www.kardex.com/en/",
+      "title": "Kardex: intralogistics solutions",
+      "publisher": "Kardex",
+      "date": "2026",
+      "supports": "flagship_projects, openness_notes, physical_science_relevance (industries served)"
+    },
+    {
+      "url": "https://www.kardex.com/en/company/news/kardex-holding-ag-kardex-becomes-a-partner-of-autostore/",
+      "title": "Kardex Holding AG: Kardex becomes a partner of AutoStore",
+      "publisher": "Kardex",
+      "date": "2021",
+      "supports": "origin_detail (AutoStore partner) (cited by Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+      "title": "Euro foreign exchange reference rates",
+      "publisher": "European Central Bank",
+      "date": "2026-11-23",
+      "supports": "notes (conversions)"
+    }
+  ]
+}

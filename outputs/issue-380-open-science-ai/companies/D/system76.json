@@ -197,5 +197,40 @@
     "The Thelio Io repository is the 'version 2' master repo; the hardware submodule is GPL-3.0. Thelio chassis design licensing was not checked.",
     "No 2025-2026 company events (funding, ownership, layoffs) were found in the fetched pages; the only 2025-2026 facts recorded are COSMIC and Pop!_OS release dates from Wikipedia's COSMIC article.",
     "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "relicensing_events[0].year",
+      "relicensing_events[1].year",
+      "license_history[3].year",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "relicensing_events[0].year", "value": 2018, "source": "https://api.github.com/repos/system76/thelio-io-hardware", "evidence": "\"description\": \"KiCad electrical design of Thelio Io board\", \"created_at\": \"2018-09-12T14:28:58Z\", license spdx_id \"GPL-3.0\""},
+      {"field": "license_history[3].year", "value": 2024, "source": "https://system76.com/blog/", "evidence": "'COSMIC Alpha Released! Here's what people are saying.' (Monday, August 26, 2024)"},
+      {"field": "still_operating", "value": true, "source": "https://system76.com/blog/", "evidence": "'Thelio Prime - A New Chapter', 'Wednesday, November 18, 2026'"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "founded_year", "reason": "No official page fetched states 2005. system76.com/about gives no year. The 2026-07-30 blog post (system76.com/blog/post/system76-goes-to-college-a-case-study) says 'over our company's two-decade history' and 'For over 20 years, System76 has supplied Linux computer hardware...', which fits 2005 but is not explicit. system76.com/press returned 404, de.wikipedia.org/wiki/System76 returned 404, and the 2026-11-18 Thelio Prime post gives no year."},
+      {"field": "relicensing_events[1].year", "reason": "Only the cited OSHWA certificate dates the Launch opening. System76's 2021-05-06 industrial-design post does not mention Launch, and system76.com/accessories/launch returned 404. api.github.com shows the system76/launch repo was created 2019-12-05 (licence GPL-3.0), so design files may have been public before the 2021 certification and release. 2021 is defensible as the certification year but was not re-confirmed."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://system76.com/about",
+      "https://blog.system76.com/ (301 to https://system76.com/blog/)",
+      "https://system76.com/blog/",
+      "https://api.github.com/repos/system76/thelio-io-hardware",
+      "https://api.github.com/repos/system76/launch",
+      "https://de.wikipedia.org/wiki/System76 (404)",
+      "https://system76.com/blog/post/thelio-prime-a-new-chapter",
+      "https://system76.com/blog/post/behind-the-scenes-of-system76-industrial-design",
+      "https://system76.com/blog/post/system76-goes-to-college-a-case-study",
+      "https://system76.com/press (404)",
+      "https://system76.com/accessories/launch (404)"
+    ],
+    "note": "relicensing_events[0].year rests on the repo's creation date, which need not be its public release date. System76's own 2021-05-06 post backs the 2018 factory move: 'Since moving into a factory space in 2018, System76 has delved deeper and deeper into manufacturing hardware in-house.' The blog index lists 'Celebrating 5 Years of Pop!_OS' (2022-10-19), consistent with license_history[0] 2017. Confidence unchanged: no primary page states the founding year or ownership, and finances are undisclosed."
+  }
 }

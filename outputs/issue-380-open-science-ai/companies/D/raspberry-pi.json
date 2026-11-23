@@ -6,7 +6,7 @@
   "subcategory": "single-board computers and microcontrollers (RP2040/RP2350)",
   "hq_country": "GB",
   "origin": "nonprofit",
-  "origin_detail": "The Raspberry Pi Foundation, a UK educational charity, was established in autumn 2008 to promote computer science in schools. It launched the $35 Model B on 29 Feb 2012. Its trading subsidiary, Raspberry Pi (Trading) Ltd, was incorporated on 18 Dec 2012 and renamed Raspberry Pi Ltd in 2021. It became part of Raspberry Pi Holdings plc, which listed on the London Stock Exchange in June 2024.",
+  "origin_detail": "The Raspberry Pi Foundation, a UK educational charity, was established in autumn 2008 to promote computer science in schools. It launched the $35 Model B on 29 Feb 2012. Its trading subsidiary was incorporated on 10 Sep 2012 as Newincco 1209 Ltd, took the name Raspberry Pi (Trading) Ltd on 18 Dec 2012 and was renamed Raspberry Pi Ltd in Nov 2021 (Companies House 08207441). It became part of Raspberry Pi Holdings plc, which listed on the London Stock Exchange in June 2024.",
   "founded_year": 2012,
   "flagship_projects": [
     "Raspberry Pi single-board computers (Model B 2012 to Pi 5)",
@@ -205,5 +205,42 @@
     "Units: 68M by March 2025 and over 75M by March 2026 (Wikipedia); the investor site says 73M+.",
     "Failed or unreadable fetches: investors.raspberrypi.com/reports/11/document (Final results 2025 PDF; binary content unreadable), investors.raspberrypi.com/news (no items rendered), companiesmarketcap.com/raspberry-pi-holdings/marketcap/ (404), google.com/finance/quote/RPI:LON (unsupported device).",
     "Patents and clones were not checked: no search was available, and no fetched page mentioned them."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "origin_detail",
+      "exit_events[0].year",
+      "exit_events[0].value_usd",
+      "latest_value_usd",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2012, "source": "https://find-and-update.company-information.service.gov.uk/company/08207441", "evidence": "RASPBERRY PI LTD, 08207441, Incorporated on \"10 September 2012\"; previous name \"RASPBERRY PI (TRADING) LIMITED\" 18 Dec 2012 - 12 Nov 2021"},
+      {"field": "exit_events[0].year", "value": 2024, "source": "https://investors.raspberrypi.com/ipo", "evidence": "IR IPO documents: \"Announcement of Offer Price of 280 pence per share\" (11 Jun 2024); \"Admission to Trading on the London Stock Exchange\" (14 Jun 2024)"},
+      {"field": "still_operating", "value": true, "source": "https://find-and-update.company-information.service.gov.uk/company/08207441", "evidence": "Company status: \"Active\" (Raspberry Pi Ltd, registered office 194 Cambridge Science Park, Cambridge)"}
+    ],
+    "contradicted": [
+      {"field": "origin_detail", "old": "The Raspberry Pi Foundation, a UK educational charity, was established in autumn 2008 to promote computer science in schools. It launched the $35 Model B on 29 Feb 2012. Its trading subsidiary, Raspberry Pi (Trading) Ltd, was incorporated on 18 Dec 2012 and renamed Raspberry Pi Ltd in 2021. It became part of Raspberry Pi Holdings plc, which listed on the London Stock Exchange in June 2024.", "new": "The Raspberry Pi Foundation, a UK educational charity, was established in autumn 2008 to promote computer science in schools. It launched the $35 Model B on 29 Feb 2012. Its trading subsidiary was incorporated on 10 Sep 2012 as Newincco 1209 Ltd, took the name Raspberry Pi (Trading) Ltd on 18 Dec 2012 and was renamed Raspberry Pi Ltd in Nov 2021 (Companies House 08207441). It became part of Raspberry Pi Holdings plc, which listed on the London Stock Exchange in June 2024.", "source": "https://find-and-update.company-information.service.gov.uk/company/08207441", "evidence": "Incorporated on \"10 September 2012\"; previous names \"NEWINCCO 1209 LIMITED\" 10 Sep 2012 - 18 Dec 2012, \"RASPBERRY PI (TRADING) LIMITED\" 18 Dec 2012 - 12 Nov 2021", "applied": true, "note": "Companies House is the statutory register. 18 Dec 2012 (from Wikipedia's infobox) is when the shelf company took the Raspberry Pi (Trading) name, not its incorporation date. founded_year 2012 is unaffected; only the one sentence was changed."}
+    ],
+    "unconfirmed": [
+      {"field": "exit_events[0].value_usd", "reason": "The IR IPO page gives only document titles (280p offer price, 11 Jun 2024); the offer-price and admission documents (/ipo/documents/9 and /17) return HTTP 422. Wikipedia's Raspberry_Pi_Holdings gives no offer price or valuation. The GBP 541.6M valuation (about $689M) still rests only on the cited CNBC article."},
+      {"field": "latest_value_usd", "reason": "Live market cap can't be fetched: the IR share-price page (investors.raspberrypi.com/share-price-information) does not render its widget, and the IR homepage shows no price or market cap. The value still rests on third-party StockAnalysis × X-Rates."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.raspberrypi.com/news/raspberry-pi-is-now-a-public-company/ (404)",
+      "https://investors.raspberrypi.com/",
+      "https://www.raspberrypi.com/ (no company details in footer)",
+      "https://investors.raspberrypi.com/ipo",
+      "https://investors.raspberrypi.com/share-price-information (price widget not rendered)",
+      "https://investors.raspberrypi.com/ipo/documents/9 (HTTP 422)",
+      "https://find-and-update.company-information.service.gov.uk/search/companies?q=raspberry+pi+ltd",
+      "https://find-and-update.company-information.service.gov.uk/company/08207441",
+      "https://en.wikipedia.org/wiki/Raspberry_Pi_Holdings",
+      "https://investors.raspberrypi.com/ipo/documents/17 (HTTP 422)"
+    ],
+    "note": "(1) exit_events[0].note says 'Listed 11 Jun 2024'. The IR site dates the offer-price announcement 11 Jun 2024 and 'Admission to Trading on the London Stock Exchange' 14 Jun 2024. The gap is probably conditional versus unconditional dealing, so this is left unchanged. (2) Companies House also lists Raspberry Pi Foundation (06758215), incorporated 25 Nov 2008, consistent with 'autumn 2008', and Raspberry Pi Holdings plc (15557387), incorporated 12 Mar 2024. (3) latest_value_usd and employees_latest (144) rest only on third-party StockAnalysis. Confidence stays medium: the IPO valuation and market cap are unconfirmed."
+  }
 }

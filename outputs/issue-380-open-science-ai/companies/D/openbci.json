@@ -79,5 +79,35 @@
     "Funding (including Kickstarter totals), ownership type, revenue, employees and valuation were not found. Kickstarter returned 403 and techcrunch.com/tag/openbci returned 404. ownership_status is null because VC-backed versus bootstrapped could not be confirmed.",
     "still_operating true rests on the Aug 2024 Galea pre-orders, the Jul 2025 GitHub activity and the Feb 2026 Wikipedia edit; 2026 company news was not verified.",
     "founded_year 2013 is the Kickstarter year; the incorporation date was not found."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "still_operating",
+      "openness_current",
+      "relicensing_events[0].year"
+    ],
+    "confirmed": [
+      {"field": "still_operating", "value": true, "source": "https://docs.openbci.com/", "evidence": "Last updated on Jul 28, 2026 ... Copyright © 2026 OpenBCI (official docs). The GitHub org API also shows the Documentation repo pushed 2026-11-13T20:24:55Z."}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "founded_year", "reason": "No official page reached gives a founding or Kickstarter year. docs.openbci.com (landing page, FAQ, General FAQ, Deprecated landing page and 8-bit board page) and shop.openbci.com say nothing, and openbci.com returned 403. The oldest public GitHub repo (OpenBCI_Radios) was created 2015-01-08, which neither supports nor contradicts 2013. The year still rests on Wikipedia alone."},
+      {"field": "openness_current", "reason": "No page states whether Galea's designs are open or closed. The GitHub org API lists 17 public repos, none for Galea, which fits the file's inference but proves nothing. shop.openbci.com lists Galea at '$ 42,980.00 USD' with no licence text, and docs.openbci.com does not mention Galea. docs.openbci.com/FAQ still says 'Our open-source, low-cost, and research-grade hardware lowers the barrier to entry.', a general claim that names no licence and does not mention Galea. The General FAQ is silent on licences."},
+      {"field": "relicensing_events[0].year", "reason": "2020 is Galea's unveiling per Wikipedia, not a documented licence change. No official page found describes Galea as closed or proprietary (same pages as for openness_current)."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://docs.openbci.com/",
+      "https://api.github.com/orgs/OpenBCI/repos?sort=pushed&per_page=30",
+      "https://shop.openbci.com/collections/frontpage",
+      "https://docs.openbci.com/Deprecated/DeprecatedLanding/",
+      "https://openbci.com/ (403)",
+      "https://docs.openbci.com/Deprecated/8bitBoardDep/",
+      "https://docs.openbci.com/FAQ/FAQLanding/",
+      "https://docs.openbci.com/FAQ/GenFAQ/"
+    ],
+    "note": "openness_current 2 and the 2020 'closing' event remain inferences from absence. founded_year rests on Wikipedia alone, and Wikipedia flags this article's notability. Side finding: shop.openbci.com now lists 'Ganglion Board (4-channels)' at $624.99, above the $499.00 that risk_events quotes from Wikipedia. The GitHub API also shows recent pushes to the OpenBCI_GUI (2026-04-10) and Ganglion library (2026-01-22) repos."
+  }
 }

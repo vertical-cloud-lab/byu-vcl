@@ -1,0 +1,179 @@
+{
+  "name": "Stratasys Ltd.",
+  "slug": "stratasys",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "polymer 3D printers (FDM, PolyJet, SAF, P3/Origin, Neo SLA), materials and GrabCAD software",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1989 in Eden Prairie, MN by S. Scott Crump and Lisa Crump around Crump's patented fused deposition modeling (FDM) process; IPO October 1994 (1.38M shares at $5). Merged with Israel's Objet in December 2012 to form Stratasys Ltd. (incorporated in Israel; dual HQ Minnetonka, MN and Rehovot, Israel).",
+  "founded_year": 1989,
+  "flagship_projects": [
+    "Fused Deposition Modeling (FDM)",
+    "PolyJet (from Objet, 2012)",
+    "SAF powder bed fusion (H350, from Xaar 3D)",
+    "P3 Programmable PhotoPolymerization (Origin One, from Origin, 2020)",
+    "Neo SLA (from RP Support)",
+    "GrabCAD Additive Manufacturing Platform",
+    "MakerBot (2013-2022, now an UltiMaker stake)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Proprietary printers, firmware and software, protected by about 2,700 granted and pending additive patents (FY2025 20-F); PolyJet heads are licensed from Ricoh. Its 'open' moves are interfaces, not open source: an 'Open' material tier of 'unvalidated materials accessible via an annual OpenAM Software License' and an Open Materials Library licence for P3. It bought MakerBot (2013) after MakerBot had closed its designs, and sued Bambu Lab for patent infringement in August 2024. 0 at both dates (OpenAM is a paid licence for third-party materials, not an open licence).",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 1989,
+      "license": "Proprietary, patent-based (FDM)",
+      "note": "FDM 'is a process that the company patented' (Wikipedia)",
+      "source": "https://en.wikipedia.org/wiki/Stratasys"
+    },
+    {
+      "year": 2025,
+      "license": "Proprietary; 'Open' material tier via paid annual OpenAM Software License",
+      "note": "Open Materials Library (OML) licence on P3; ~2,700 patents granted and pending",
+      "source": "https://www.sec.gov/Archives/edgar/data/1517396/000162828026015079/ssys-20251231.htm"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {
+      "year": 1994,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "Nasdaq (SSYS)",
+      "note": "October 1994 IPO of 1.38M shares at $5, netting about $5.7M",
+      "source": "https://en.wikipedia.org/wiki/Stratasys"
+    },
+    {
+      "year": 2012,
+      "type": "merger",
+      "value_usd": 3000000000,
+      "counterparty": "Objet Ltd.",
+      "note": "All-stock merger completed 2012-12-03; combined market capitalization about $3.0B",
+      "source": "https://en.wikipedia.org/wiki/Stratasys"
+    }
+  ],
+  "latest_value_usd": 468640000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 572000000,
+  "revenue_year": 2024,
+  "employees_latest": 1757,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2013: bought MakerBot for $403M in stock at the peak of the consumer 3D-printing boom (year-end 2013 market cap $6.57B); MakerBot goodwill later written off and MakerBot merged into UltiMaker (2022, 46.5% stake)",
+    "2014-2016: market cap fell from $6.57B (end-2013) to $861M (end-2016)",
+    "2023: contested consolidation: all-stock Desktop Metal merger (combined ~$1.8B) voted down and terminated in September; hostile tender offer by Nano Dimension (owner of ~14.5%) expired in July without purchases; ~$1.2B offer from 3D Systems in June; Nano proposed $16.50/share in December",
+    "Aug 2024: restructuring with a ~15% workforce reduction; Aug 2024 patent suit against Bambu Lab",
+    "Apr 2025: $120M PIPE from Fortissimo Capital (11,650,485 shares at $10.30)",
+    "Q3 2025: $33.9M impairment of the UltiMaker equity investment",
+    "May 2026: agreed to buy MarkForged from Nano Dimension for $42.5M cash",
+    "Nov 2026: FY2026 revenue guidance cut to $556-561M; market cap $469M, about 71% below end-2021 ($1.60B)"
+  ],
+  "robustness": "The most durable of the AM incumbents: profitable on a non-GAAP basis, $210.7M cash and no debt at 2026-09-30, ~2,700 patents, a broad technology portfolio and a strategic investor (Fortissimo). But revenue has drifted down and it remains a consolidation target. Users are locked into proprietary printers, materials and software; the OpenAM tier loosens materials, not designs.",
+  "physical_science_relevance": "Almost entirely polymer: its own description is 'a leader in polymer 3D printing solutions', and Wikipedia records no metal printing business. Relevance to an LPBF aluminium-alloy lab is indirect: FDM/PolyJet/SAF parts for fixtures, fluidics and labware in automated or self-driving-lab rigs, and the OpenAM 'Open' tier as an example of a closed vendor selling parameter and material freedom as a paid licence. Its FDM patents historically shaped the open RepRap ecosystem, which is not documented in the fetched pages.",
+  "openness_effect_assessment": "Stratasys has stayed closed and patent-driven (FDM, ~2,700 patents, the 2024 Bambu suit) and consolidated through acquisitions (Objet, MakerBot, Origin, Xaar 3D, MarkForged). That kept it the largest polymer AM incumbent, but did not protect its value: market cap fell from $6.57B (2013) to $0.47B (2026). Its partial opening, an 'Open' material tier sold through a paid OpenAM licence, is a response to customer demand for material freedom rather than a change of model.",
+  "key_takeaway": "Stratasys is the surviving closed polymer-AM incumbent: a 1989 FDM-patent company that grew through mergers, bought MakerBot just after MakerBot closed its designs, fought off or failed in three 2023 consolidation attempts, and in 2026 buys distressed peers (MarkForged for $42.5M) with a debt-free balance sheet. It shows that closed incumbents can outlast SPAC-era entrants, but at a fraction of their 2013 value, and that 'open' in its vocabulary means licensed access to third-party materials.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (GrabCAD Print/AM Platform, printer firmware)",
+      "OpenAM Software License (paid, annual) for unvalidated 'Open' materials"
+    ],
+    "patents": "About 2,700 granted and pending additive technology patents (FY2025 20-F); PolyJet heads under a non-exclusive Ricoh licence. Filed a patent suit against Bambu Lab in August 2024 (Wikipedia; outcome not verified).",
+    "clone_impacts": "Expiry of early FDM patents is commonly linked to the RepRap/desktop FDM boom, but no fetched page documents it."
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "revenue_latest_usd = 2024 ($572M, Wikipedia infobox). FY2025 revenue was not reached in the fetched 20-F sections; Q3 2026 revenue was $142.6M and FY2026 guidance $556-561M.",
+    "employees_latest = 1,757 from the FY2025 20-F (date not stated in the excerpt; likely 2025-12-31); Wikipedia gives 1,980 for 2023.",
+    "Market-cap history from StockAnalysis year-end values; data/prices_weekly_close.csv shows SSYS 89.7% below its 2021 weekly high and 96.1% below its 2013 high on 2026-11-23.",
+    "MakerBot details are in companies/D/makerbot.json."
+  ],
+  "confidence": "high",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Stratasys",
+    "https://stockanalysis.com/stocks/ssys/market-cap/",
+    "https://data.sec.gov/submissions/CIK0001517396.json",
+    "https://www.sec.gov/Archives/edgar/data/1517396/000162828026015079/ssys-20251231.htm",
+    "https://investors.stratasys.com/news-events/press-releases/rss",
+    "https://investors.stratasys.com/news-events/press-releases/detail/998/stratasys-releases-third-quarter-2026-financial-results",
+    "https://investors.stratasys.com/news-events/press-releases/detail/984/stratasys-to-acquire-markforged-inc-expanding-aerospace"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Stratasys",
+      "title": "Stratasys",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, exit_events, revenue_latest_usd, risk_events[0], risk_events[2], risk_events[3] (Bambu suit), license_history[0], physical_science_relevance"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1517396/000162828026015079/ssys-20251231.htm",
+      "title": "Stratasys Ltd. Form 20-F for fiscal 2025",
+      "publisher": "SEC EDGAR",
+      "date": "2026-03-05",
+      "supports": "employees_latest, openness_notes, license_history[1], hardware_extras, risk_events[2] (Nano tender offer, $16.50 proposal), risk_events[3] (15% workforce reduction), risk_events[4], risk_events[5]"
+    },
+    {
+      "url": "https://investors.stratasys.com/news-events/press-releases/detail/998/stratasys-releases-third-quarter-2026-financial-results",
+      "title": "Stratasys Releases Third Quarter 2026 Financial Results",
+      "publisher": "Stratasys (press release)",
+      "date": "2026-11-12",
+      "supports": "risk_events[7], robustness (cash, no debt), physical_science_relevance ('a leader in polymer 3D printing solutions')"
+    },
+    {
+      "url": "https://investors.stratasys.com/news-events/press-releases/detail/984/stratasys-to-acquire-markforged-inc-expanding-aerospace",
+      "title": "Stratasys to Acquire MarkForged, Inc.",
+      "publisher": "Stratasys (press release)",
+      "date": "2026-05-27",
+      "supports": "risk_events[6]"
+    },
+    {
+      "url": "https://stockanalysis.com/stocks/ssys/market-cap/",
+      "title": "Stratasys (SSYS) Market Cap",
+      "publisher": "StockAnalysis.com",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd, risk_events[0], risk_events[1], risk_events[7]"
+    },
+    {
+      "url": "https://www.voxelmatters.com/stratasys-files-patent-infringement-lawsuit-against-bambu-lab/",
+      "title": "Stratasys files patent infringement lawsuit against Bambu Lab",
+      "publisher": "VoxelMatters",
+      "date": "2024-08",
+      "supports": "risk_events[3] (cited by Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://www.reuters.com/markets/deals/stratasys-rejects-nano-dimensions-offer-acquire-company-2023-04-13/",
+      "title": "Stratasys rejects Nano Dimension's takeover offer, sets up hostile fight",
+      "publisher": "Reuters",
+      "date": "2023-04-13",
+      "supports": "risk_events[2] (cited by Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001517396/000120677416005045/stratasys_20f.htm",
+      "title": "Stratasys Ltd. Form 20-F for fiscal 2015",
+      "publisher": "SEC EDGAR",
+      "date": "2016",
+      "supports": "risk_events[0] (MakerBot goodwill written off by 2015-12-31) (cited by companies/D/makerbot.json, not fetched)"
+    },
+    {
+      "url": "https://investors.stratasys.com/news-events/press-releases/detail/793/stratasys-completes-merger-of-makerbot-with-ultimaker",
+      "title": "Stratasys Completes Merger of MakerBot With Ultimaker",
+      "publisher": "Stratasys",
+      "date": "2022-08-31",
+      "supports": "risk_events[0] (46.5% stake) (cited by companies/D/makerbot.json, not fetched)"
+    }
+  ]
+}

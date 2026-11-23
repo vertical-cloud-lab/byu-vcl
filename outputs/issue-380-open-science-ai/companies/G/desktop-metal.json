@@ -1,0 +1,195 @@
+{
+  "name": "Desktop Metal, Inc.",
+  "slug": "desktop-metal",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "metal and polymer additive manufacturing (binder jetting, bound metal deposition, photopolymer)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded October 2015 in Cambridge, MA by serial founder Ric Fulop (A123 Systems), Jonah Myerberg, Rick Chin (SolidWorks) and MIT faculty Ely Sachs (credited with coining '3D printing'), Christopher Schuh, A. John Hart and Yet-Ming Chiang; moved to Burlington, MA by 2017. Venture-backed by NEA, Kleiner Perkins, Lux, GV, GE Ventures, BMW iVentures, Lowe's and Ford.",
+  "founded_year": 2015,
+  "flagship_projects": [
+    "Studio System (bound metal deposition, 2017)",
+    "Production System P-1 / P-50 (Single Pass Jetting binder jetting)",
+    "Shop System (binder jetting, 2019)",
+    "Fiber (continuous fibre, 2019)",
+    "ExOne and EnvisionTEC lines (acquired 2021)",
+    "Live Suite software (Live Sinter, Live Parts)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Closed throughout: proprietary printers, firmware and software (the FY2023 10-K calls Live Sinter 'a proprietary sintering process simulation and compensation software application') and 'over 1,000 patents and pending patent applications' (2023). The only 'open' claim is that the Production System P-1 is 'an open platform binder jetting solution for process and materials development', i.e. open process/material settings for R&D, not published designs or code. Wikipedia mentions no open-source aspect. Scored 0 on the hardware scale at both dates.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2017,
+      "license": "Proprietary (hardware, firmware, Live Suite software)",
+      "note": "No open designs or code found; >1,000 patents and applications by end-2023",
+      "source": "https://www.sec.gov/Archives/edgar/data/1754820/000155837024003411/dm-20231231x10k.htm"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 438000000,
+  "funding_as_of": "2019-01",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2020,
+      "type": "merger",
+      "value_usd": 2500000000,
+      "counterparty": "Trine Acquisition Corp. (SPAC, NYSE: TRNE)",
+      "note": "SPAC merger announced 2020-08-26 at an implied pro forma equity value of 'up to $2.5 billion', with gross proceeds up to $575M ($300M trust + $275M PIPE at $10.00 from Miller Value, XN, Baron, Chamath Palihapitiya, JB Straubel, HPS); closed 2020-12-09, NYSE: DM. Production System volume shipments were still expected only in 2H 2021.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1754820/000121390020023752/ea126022ex99-1_trineacquisit.htm"
+    },
+    {
+      "year": 2025,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Nano Dimension Ltd.",
+      "note": "Agreement 2024-07-02; closed 2025-04-02 at $5.295 cash per Class A share; NYSE listing withdrawn (Form 25) and SEC registration terminated (Form 15-12G, 2025-04-14). Wikipedia gives the deal as $135-183M at signing; the 8-K gives no aggregate.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1754820/000110465925030938/tm2511129d1_8k.htm"
+    },
+    {
+      "year": 2025,
+      "type": "bankruptcy",
+      "value_usd": null,
+      "counterparty": null,
+      "note": "Filed for Chapter 11 in July 2025 'as part of a plan to sell its European assets'; Bloomberg (2025-07-28) headline: '3D Printer Facing Liquidation Blames Legal Fees for Bankruptcy', after lawyers demanded unpaid fees. Outcome of asset sales not confirmed.",
+      "source": "https://en.wikipedia.org/wiki/Desktop_Metal"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 148800000,
+  "revenue_year": 2024,
+  "employees_latest": 950,
+  "still_operating": null,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Dec 2020: listed through the Trine SPAC at an implied equity value up to $2.5B before its high-volume Production System shipped in volume",
+    "2021: acquisition spree, including EnvisionTEC (Feb 2021), Adaptive3D, Aerosint, Aidro, several dental labs, and the ExOne brand",
+    "May-Sep 2023: all-stock combination with Stratasys (combined value ~$1.8B, Desktop Metal holders ~41%) voted down by Stratasys shareholders and terminated",
+    "2024: revenue fell to $148.8M from $189.7M (2023); GAAP net loss $219.5M; year-end cash and short-term investments only $20.4M (preliminary, 8-K 2025-03-26)",
+    "Jul 2024-Apr 2025: Nano Dimension acquisition contested in court (a 2025-03-24 decision went against Nano, per Markforged's 10-K) before closing on 2025-04-02",
+    "Jul 2025: Chapter 11 filing three months after the takeover, with a plan to sell assets (Bloomberg: 'facing liquidation'); an IndustryWeek caption (Jan 2026) refers to 'Desktop Metal's sale to Arc Public Benefit Corp.' (details not confirmed)"
+  ],
+  "robustness": "Low. Every layer (printers, firmware, Live Suite software, sintering recipes) was proprietary and single-vendor, so the installed base depends on whoever acquired the assets in the 2025 bankruptcy, which could not be confirmed. Nothing was released openly that the user community could maintain.",
+  "physical_science_relevance": "Sinter-based metal AM (binder jetting, bound metal deposition) rather than laser powder-bed fusion: parts are printed green and sintered, so microstructures and alloy design rules differ from LPBF. The 10-K lists 'more than 20 standard metals, including aluminum, titanium, stainless steels, tool steels' for binder jetting, and the P-1 was positioned for 'process and materials development', which made it one of the few commercial metal systems sold for alloy R&D. No open API or SDL integration was documented. For a LPBF aluminium-alloy lab it is a closed comparator and a warning about vendor continuity.",
+  "openness_effect_assessment": "Openness played no role: Desktop Metal was closed from founding and competed on patents (>1,000 by 2023) and proprietary software. Its arc was driven by capital markets: a $2.5B SPAC valuation, an acquisition spree, a failed Stratasys merger, a contested sale to Nano Dimension and a Chapter 11 filing within about five years of listing. Proprietary control did not protect value, and customers had no open fallback when the vendor failed.",
+  "key_takeaway": "Desktop Metal is the clearest bust of the 2020-21 AM SPAC wave: an MIT-founded, $438M-venture-funded closed metal-AM company that listed at up to $2.5B in December 2020, lost most of its value, was bought by Nano Dimension for $5.295 a share in April 2025 and filed for Chapter 11 in July 2025. For a lab buying closed metal-AM tools, it shows that a vendor's survival risk becomes the lab's: sintering recipes, software and service disappear with the company unless the lab owns open process data.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (Live Suite, Live Sinter, printer firmware)"
+    ],
+    "patents": "Over 1,000 owned or co-owned patents and pending applications (FY2023 10-K). Sued Markforged in 2018 over metal-printing patents; a July 2018 ruling favoured Markforged (Wikipedia).",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "funding_total_usd is Wikipedia's venture total ($438M in the lead; $437M in the 2019 section). SPAC gross proceeds (up to $575M) are separate and not included.",
+    "The Desktop Metal IR site (ir.desktopmetal.com) no longer resolves, and the Bloomberg bankruptcy article returned 403, so the Chapter 11 facts rest on Wikipedia and the cited Bloomberg headline; still_operating is left null because the outcome of the asset sales was not confirmed.",
+    "Nano Dimension's aggregate price was not found in the fetched 8-K; Wikipedia's $135-183M range at signing is in exit_events[1].note only.",
+    "revenue_latest_usd is the preliminary unaudited FY2024 figure from the 2025-03-26 8-K; no FY2024 10-K was filed (NT 10-K on 2025-03-18).",
+    "The buyer of Desktop Metal's assets is unconfirmed; an IndustryWeek article (2026-01-30) mentions a 'sale to Arc Public Benefit Corp.' only in a related-article caption."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Desktop_Metal",
+    "https://www.sec.gov/Archives/edgar/data/1754820/000121390020023752/ea126022ex99-1_trineacquisit.htm",
+    "https://www.sec.gov/Archives/edgar/data/1754820/000121390020023752/0001213900-20-023752-index.htm",
+    "https://www.sec.gov/Archives/edgar/data/1754820/000155837024003411/dm-20231231x10k.htm",
+    "https://www.sec.gov/Archives/edgar/data/1754820/000155837025003712/dm-20250326x8k.htm",
+    "https://www.sec.gov/Archives/edgar/data/1754820/000110465925030938/tm2511129d1_8k.htm",
+    "https://data.sec.gov/submissions/CIK0001754820.json",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1754820&type=8-K&dateb=20200915&owner=include&count=10",
+    "https://www.sec.gov/Archives/edgar/data/1816613/000095017025046869/mkfg-20241231.htm",
+    "https://www.industryweek.com/technology-and-iiot/additive/article/55354147/carbon-ceo-additive-manufacturing-ready-to-move-on-from-the-embarrassment-of-2024-2025"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Desktop_Metal",
+      "title": "Desktop Metal",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail, founded_year, funding_total_usd, employees_latest, risk_events[2], exit_events[2], hardware_extras.patents"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1754820/000121390020023752/ea126022ex99-1_trineacquisit.htm",
+      "title": "Desktop Metal to become public, creating the only listed pure-play Additive Manufacturing 2.0 company (Trine 8-K Ex. 99.1)",
+      "publisher": "SEC EDGAR / Desktop Metal",
+      "date": "2020-08-26",
+      "supports": "exit_events[0], risk_events[0]"
+    },
+    {
+      "url": "https://data.sec.gov/submissions/CIK0001754820.json",
+      "title": "Desktop Metal, Inc. EDGAR submissions (former name Trine Acquisition Corp. to 2020-12-09)",
+      "publisher": "SEC EDGAR",
+      "date": "2026-11",
+      "supports": "exit_events[0] (closing 2020-12-09), exit_events[1] (Form 25 2025-04-02, Form 15-12G 2025-04-14), notes (NT 10-K)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1754820/000155837024003411/dm-20231231x10k.htm",
+      "title": "Desktop Metal Form 10-K for fiscal 2023",
+      "publisher": "SEC EDGAR",
+      "date": "2024-03",
+      "supports": "openness_notes, license_history[0], employees_latest (over 950 at 2023-12-31), risk_events[1], physical_science_relevance, hardware_extras.patents"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1754820/000155837025003712/dm-20250326x8k.htm",
+      "title": "Desktop Metal 8-K: preliminary fiscal 2024 results",
+      "publisher": "SEC EDGAR",
+      "date": "2025-03-26",
+      "supports": "revenue_latest_usd, risk_events[3], risk_events[2] ($10.0M Stratasys reimbursement)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1754820/000110465925030938/tm2511129d1_8k.htm",
+      "title": "Desktop Metal 8-K: completion of merger with Nano Dimension",
+      "publisher": "SEC EDGAR",
+      "date": "2025-04-02",
+      "supports": "exit_events[1], ownership_status"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1816613/000095017025046869/mkfg-20241231.htm",
+      "title": "Markforged Holding Corp Form 10-K for fiscal 2024",
+      "publisher": "SEC EDGAR",
+      "date": "2025-03-28",
+      "supports": "risk_events[4] (2025-03-24 decision against Nano in the Desktop Metal litigation)"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2025-07-28/desktop-metal-files-bankruptcy-after-lawyers-demand-unpaid-fees",
+      "title": "3D Printer Facing Liquidation Blames Legal Fees for Bankruptcy",
+      "publisher": "Bloomberg",
+      "date": "2025-07-28",
+      "supports": "exit_events[2], risk_events[5] (cited by Wikipedia, not fetched: 403)"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2023-05-25/stratasys-to-combine-with-desktop-metal-in-1-8-billion-deal",
+      "title": "Stratasys to Combine With Desktop Metal in $1.8 Billion Deal",
+      "publisher": "Bloomberg",
+      "date": "2023-05-25",
+      "supports": "risk_events[2] (cited by Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://en.globes.co.il/en/article-stratasys-shareholders-nix-merger-with-desktop-metal-1001459006",
+      "title": "Stratasys shareholders nix merger with Desktop Metal",
+      "publisher": "Globes",
+      "date": "2023-09-28",
+      "supports": "risk_events[2] (cited by Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://www.industryweek.com/technology-and-iiot/additive/article/55354147/carbon-ceo-additive-manufacturing-ready-to-move-on-from-the-embarrassment-of-2024-2025",
+      "title": "Carbon CEO: Additive Manufacturing Ready to Move on From the Embarrassment of 2024-2025",
+      "publisher": "IndustryWeek",
+      "date": "2026-01-30",
+      "supports": "risk_events[5] (Arc Public Benefit Corp. caption), openness_effect_assessment (SPACs 'did not do the industry any help')"
+    }
+  ]
+}

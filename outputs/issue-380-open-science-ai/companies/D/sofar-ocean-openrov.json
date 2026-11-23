@@ -82,5 +82,44 @@
     "hq_country US rests on OpenROV's Berkeley base and Sofar's US customers; Sofar's current HQ city is not stated on the pages fetched.",
     "Failed fetches: sofarocean.com/about (404), sofarocean.com/news (404), techcrunch.com/tag/sofar-ocean (404).",
     "business_model 'mixed': hardware sales (Spotter) plus data and software subscriptions (Marine Weather, Wayfinder). No revenue split was found."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "exit_events[0]",
+      "funding_total_usd",
+      "founded_year",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "exit_events[0]", "value": "2019 merger, OpenROV with Spoondrift Technologies", "source": "https://www.sec.gov/Archives/edgar/data/1687943/000168794319000001/xslFormDX01/primary_doc.xml", "evidence": "SEC Form D of Spoondrift Technologies, Inc. (signed 2019-02-20), business-combination box Yes: \"This offering includes the conversion of convertible promissory notes issued by OpenROV, Inc.,\""},
+      {"field": "still_operating", "value": true, "source": "https://www.sofarocean.com/updates", "evidence": "\"Press Release: Koch Shipping and Sofar Ocean Expand Agreement\" (September 8, 2026)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "Not comparable to the file's $8.65M floor (TechCrunch: $7M Series A + $1.3M OpenROV + $0.35M Spoondrift). SEC Form D and D/A (CIK 1687943, signed 2019-02-20 and 2019-04-02) report $11,542,224 of equity sold, first sale 2019-02-06, 18 investors, but that total includes converted OpenROV notes and is filed as part of a business combination, so the new-cash share is unknown. Neither confirms nor cleanly contradicts the floor; it suggests the floor is low. Sofar's about, careers and updates pages give no amounts."},
+      {"field": "founded_year", "reason": "No second page states 2011. openrov.com failed (TLS handshake error); sofarocean.com/company/about, /sofar-approach, /updates and /company/careers have no history; en.wikipedia.org/wiki/Sofar_Ocean_Technologies is 404."}
+    ],
+    "newer_info": [
+      {"field": "funding_total_usd", "value": 39100000, "date": "2021-10", "source": "https://www.sec.gov/Archives/edgar/data/1687943/000168794321000002/xslFormDX01/primary_doc.xml", "evidence": "SoFar Ocean Technologies, Inc. Form D: Total Amount Sold \"$39,100,000 USD\", date of first sale \"2021-10-15\", 16 investors", "note": "single equity round, not a cumulative total"},
+      {"field": "funding_total_usd", "value": 22250000, "date": "2024-11", "source": "https://www.sec.gov/Archives/edgar/data/1687943/000168794325000001/xslFormDX01/primary_doc.xml", "evidence": "SoFar Ocean Technologies, Inc. Form D/A (signed 2025-02-11): Total Amount Sold \"$22,250,000\", date of first sale \"2024-11-22\", 11 investors", "note": "single equity round; Form D filings dated 2022-08-10 (D/A) and 2023-10-02 (D) also exist but were not read"}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://en.wikipedia.org/wiki/Sofar_Ocean_Technologies (404)",
+      "https://www.sofarocean.com/",
+      "https://www.sofarocean.com/company/about",
+      "https://www.openrov.com/ (TLS handshake failure)",
+      "https://www.sofarocean.com/updates",
+      "https://www.sofarocean.com/sofar-approach",
+      "https://www.sofarocean.com/company/careers",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Sofar%20Ocean%22&forms=D",
+      "https://efts.sec.gov/LATEST/search-index?q=%22OpenROV%22&forms=D",
+      "https://www.sec.gov/Archives/edgar/data/1687943/000168794319000001/xslFormDX01/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1687943/000168794319000004/xslFormDX01/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1687943/000168794321000002/xslFormDX01/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1687943/000168794325000001/xslFormDX01/primary_doc.xml"
+    ],
+    "note": "SEC Form D filings (primary) show Spoondrift Technologies, Inc. (Delaware, incorporated 2016) is the surviving entity, later named SoFar Ocean Technologies, Inc. (same CIK 1687943). OpenROV co-founder Eric Stackpole is listed as a director in the Feb 2019 filing. The merger had closed by 2019-02-20, when the original Form D was signed describing OpenROV notes already assumed by Spoondrift. That is earlier than the 'March 2019' in origin_detail, which is TechCrunch's announcement date. funding_total_usd ($8.65M as of 2019-03) is very likely a large undercount. Later Form Ds show $39.1M (Oct 2021) and $22.25M (Nov 2024) rounds, so the note that later funding 'could not be found' is outdated; the lead may want to rebuild the total from EDGAR. OpenROV Inc. (CIK 1580267) also filed Form Ds on 2013-07-03 and 2016-10-25 (not read). Confidence left low: funding is in doubt and founded_year has no second source."
+  }
 }

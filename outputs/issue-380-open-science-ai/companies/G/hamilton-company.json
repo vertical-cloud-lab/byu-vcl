@@ -1,0 +1,127 @@
+{
+  "name": "Hamilton Company (Reno, NV) and Hamilton AG (formerly Hamilton Bonaduz AG, Switzerland)",
+  "slug": "hamilton-company",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "automated liquid handling (STAR line), precision syringes, sample storage, process-analytics sensors; sister Hamilton Medical (ventilators) (closed comparator)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Clark Hamilton, an MIT-trained chemical engineer, developed a microliter syringe for chromatography in his garage in Whittier, California, in the late 1940s and founded the Hamilton Company in 1950. Hamilton Bonaduz AG was set up in Bonaduz, Graubünden, in 1966 for Europe; the US company moved to Reno, Nevada, in 1970. Steve Hamilton took over in 1974, and the Swiss site then drove the development of pipetting robots. The group remains family-owned, with dual centres in Reno and Bonaduz/Domat-Ems; the Swiss company was renamed Hamilton AG in 2026.",
+  "founded_year": 1950,
+  "flagship_projects": [
+    "Microliter syringes for chromatography (late 1940s)",
+    "Automated pipetting robots, including the Hamilton STAR liquid handler",
+    "Hamilton Medical ventilators (1983)",
+    "Process Analytics sensors (1989; first optical oxygen sensor 2007)",
+    "Hamilton Storage automated frozen-sample stores (2007 US, 2015 CH)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Instruments, firmware and control software are proprietary; no Hamilton open-source releases or design files were found (hamiltoncompany.com returned HTTP 403 to the fetch tool, so its product pages could not be checked). Openness exists only from outside: the community PyLabRobot SDK (MIT) ships a firmware-level STAR driver ('If you use a firmware driver, such as the STAR driver provided here, you do so at your own risk'), and Hamilton is not among the vendors listed as supporting PyLabRobot. Level 0 for Hamilton itself.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 1950,
+      "license": "Proprietary",
+      "note": "Closed products throughout; no relicensing found",
+      "source": "https://jobs.hamilton.ch/ueber-uns/geschichte-und-milestones/"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_bootstrapped",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 3000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "1974: founder-to-son succession (Clark to Steve Hamilton); family ownership retained through 2026",
+    "2013: second European production site opened in Timișoara, Romania (syringes and lab instruments)",
+    "2020-2021 COVID surge: ventilator deliveries more than tripled in 2020, Process Analytics output rose up to fivefold, 300 jobs added in Graubünden and a ventilator plant built in Reno in four months (post-pandemic effects not reported on fetched pages)"
+  ],
+  "robustness": "A 75-year-old family-owned group with ~3,000 staff at 22 sites and about 150 patents a year, diversified across lab automation, syringes, storage, sensors and ventilators; no outside investors or debt pressure were found. Its liquid handlers are closed, but community open-source drivers (PyLabRobot's STAR backend) mean protocols written in open Python can run on STARs and be moved to other robots, which reduces customer lock-in without Hamilton's help.",
+  "physical_science_relevance": "Hamilton syringes are standard consumables in chromatography and analytical chemistry, and STAR liquid handlers are workhorses of high-throughput biology. For self-driving labs, the STAR is the main example of a closed commercial robot made scriptable by an open community driver: PyLabRobot advertises that switching a protocol from a Hamilton STAR to an Opentrons or Tecan is a one-line backend change. Direct relevance to LPBF aluminium-alloy development is low (powder and heat-treatment workflows rather than liquids), apart from wet-chemistry steps such as preparing etchants or dilutions for analysis.",
+  "openness_effect_assessment": "Hamilton grew for decades with closed products and family ownership, and its claim to be the largest global provider of automated liquid handling shows openness was not needed for market leadership. The open-source STAR driver built outside the company is a case of users opening a closed instrument themselves; there is no evidence Hamilton opposed or supported it.",
+  "key_takeaway": "Hamilton is the closed, family-owned incumbent of liquid handling: founded in a garage in 1950, never listed or VC-funded, and still privately held with ~3,000 staff. Its STAR robots are proprietary, yet the open PyLabRobot driver lets labs program them in MIT-licensed Python and port protocols to other brands, showing how open software can wrap a closed instrument without the vendor's involvement.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (vendor control software)",
+      "Third-party: PyLabRobot STAR firmware driver (MIT, community, not Hamilton)"
+    ],
+    "patents": "About 150 patents a year (Hamilton careers site, 2026)",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "founded_year: Hamilton's own history page says 1950; German Wikipedia says 1953 for the company and 1966 for Hamilton Bonaduz AG's incorporation.",
+    "employees_latest = about 3,000 at 22 sites (jobs.hamilton.ch, 2026). German Wikipedia gives 2,100 for Hamilton AG (1 Jan 2026), likely the Swiss entity only; the history page gives ~1,600 in Switzerland in 2021.",
+    "revenue is null: the only figure found is CHF 320M for 2009 (NZZ via German Wikipedia), too old and of unclear scope to use.",
+    "Product names such as Microlab STAR, STARlet, Vantage, Nimbus and the VENUS software could not be confirmed on fetched Hamilton pages (hamiltoncompany.com returned 403); only 'Hamilton STAR' is confirmed, via pylabrobot.org.",
+    "ownership_status 'private_bootstrapped' is used for family ownership with no outside investors found."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://de.wikipedia.org/wiki/Hamilton_Bonaduz",
+    "https://jobs.hamilton.ch/",
+    "https://jobs.hamilton.ch/ueber-uns/geschichte-und-milestones/",
+    "https://pylabrobot.org/",
+    "https://github.com/PyLabRobot/pylabrobot"
+  ],
+  "sources": [
+    {
+      "url": "https://jobs.hamilton.ch/ueber-uns/geschichte-und-milestones/",
+      "title": "Geschichte und Meilensteine",
+      "publisher": "Hamilton (careers site)",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, flagship_projects, risk_events, openness_effect_assessment (largest provider claim)"
+    },
+    {
+      "url": "https://jobs.hamilton.ch/",
+      "title": "Hamilton careers",
+      "publisher": "Hamilton",
+      "date": "2026",
+      "supports": "employees_latest, robustness (22 sites), hardware_extras.patents"
+    },
+    {
+      "url": "https://de.wikipedia.org/wiki/Hamilton_Bonaduz",
+      "title": "Hamilton (Unternehmen)",
+      "publisher": "Wikipedia (German)",
+      "date": "2026",
+      "supports": "origin_detail (renamed Hamilton AG 2026; family ownership 2016), notes (1953/1966, 2,100 employees, CHF 320M 2009)"
+    },
+    {
+      "url": "https://www.nzz.ch/personen_und_unternehmen-1.2688963",
+      "title": "Personen und Unternehmen",
+      "publisher": "NZZ",
+      "date": "2009-06-07",
+      "supports": "notes (2009 revenue) (cited by German Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://pylabrobot.org/",
+      "title": "PyLabRobot",
+      "publisher": "PyLabRobot",
+      "date": "2026-11",
+      "supports": "openness_notes (STAR backend; Hamilton not a supporter), physical_science_relevance (one-line backend switch)"
+    },
+    {
+      "url": "https://github.com/PyLabRobot/pylabrobot",
+      "title": "PyLabRobot/pylabrobot",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "openness_notes (MIT licence; STAR firmware driver disclaimer), hardware_extras"
+    }
+  ]
+}

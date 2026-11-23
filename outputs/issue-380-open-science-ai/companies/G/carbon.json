@@ -1,0 +1,145 @@
+{
+  "name": "Carbon, Inc.",
+  "slug": "carbon",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "resin 3D printing (CLIP / Digital Light Synthesis), proprietary dual-cure resins and production software",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded December 2013; Wikipedia lists six co-founders: chemist Joseph DeSimone (CEO 2014-Nov 2019, later a Stanford professor), Philip DeSimone, Alex and Nikita Ermoshkin, Edward Samulski and Steve Nelson. Its Continuous Liquid Interface Production (CLIP) was published in Science in 2015 by DeSimone and colleagues and previewed in a March 2015 TED talk. Backed by Sequoia, GV, GE, Fidelity, adidas, BMW, J&J and later Silver Lake and Baillie Gifford. HQ Redwood City, now Sunnyvale, CA; CEO Philip DeSimone (2026).",
+  "founded_year": 2013,
+  "flagship_projects": [
+    "CLIP / Digital Light Synthesis (DLS)",
+    "M1 / M2 / M3 / L1 printers",
+    "Dual-cure engineering resins (EP 3158400)",
+    "Design Engine (lattice design software), Printer OS",
+    "adidas 4D / Climacool midsoles, Riddell helmet padding, dental resins"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Closed: proprietary printers, cloud-connected Printer OS and software, and 'proprietary resins' (Sequoia's Jim Goetz, Nov 2025). Carbon enforces its IP: its foundational dual-cure patent EP 3158400 was upheld on appeal at the EPO against a competitor's opposition (Sept 2026), with the CEO pledging to 'protect our innovations'. No open materials programme, open API or developer platform is mentioned on its site. 0 at both dates.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2014,
+      "license": "Proprietary (hardware, Printer OS, Design Engine, resins); patent-protected dual-cure chemistry",
+      "note": "Unchanged through 2026",
+      "source": "https://www.carbon3d.com/news/press-releases/carbons-foundational-dual-cure-3d-printing-patent-upheld-on-appeal-at-the-european-patent-office"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 2500000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2019-12",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 500,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2014-2019: large VC rounds (four rounds 2014-2017; $81M in Sept 2016; a $260M round in 2019) reaching a valuation of about $2.5B; CEO Ellen Kullman said an IPO was 'not a short term' matter (Dec 2019)",
+    "2019-2026: CEO changes from Joseph DeSimone to Ellen Kullman (Nov 2019) to co-founder Philip DeSimone (CEO by 2026)",
+    "Nov 2025: a $60M round from existing investors (Sequoia, Silver Lake, adidas, Baillie Gifford, Madrone, Northgate) with no valuation disclosed, while 'nearing cash-flow-positive operations'",
+    "Jan 2026: CEO Phil DeSimone called 2024-2025 an 'embarrassment' for AM (SPAC listings of Desktop Metal and Markforged, Nano Dimension/Stratasys fights) and expected venture capital to 'completely come to a halt'",
+    "Sept 2026: EPO Board of Appeal upheld its dual-cure patent against an unnamed competitor"
+  ],
+  "robustness": "Private, never listed, so it avoided the SPAC-era crash, and it keeps insider support (Sequoia, Silver Lake) and production customers (adidas, Riddell, dental labs). But its 2025 round was small relative to the 2019 raise and came with no valuation, and users depend on proprietary resins and cloud software from a single vendor.",
+  "physical_science_relevance": "Polymer-only (photopolymer and dual-cure resins); no metals, so not relevant to LPBF alloy development directly. Relevance to a materials lab is as an example of chemistry-led AM (CLIP came out of polymer chemistry and was published in Science in 2015) and as a source of lattices, fixtures and fluidic parts for automated rigs. Its strategy statement, 'The materials, not the printer, dictate your opportunity', mirrors the alloy-first view of the Digital Alloy Lab, but Carbon keeps those materials proprietary.",
+  "openness_effect_assessment": "Carbon kept everything closed and monetised proprietary resins, enforcing patents (EP 3158400). Staying private and closed spared it the SPAC collapse that hit Desktop Metal, Markforged and Velo3D, but its valuation has not been re-established since 2019; openness played no visible role in either direction.",
+  "key_takeaway": "Carbon is the private, closed, materials-first AM unicorn: a 2013 chemistry startup valued at about $2.5B in 2019 that never went public, raised a small $60M insider round in 2025 and in 2026 still enforces its foundational dual-cure patent. Its CEO's view that materials, not printers, decide the opportunity is the same thesis the Digital Alloy Lab works on, but applied to proprietary resins instead of open alloy data.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (Printer OS, Design Engine, Custom Production Software)"
+    ],
+    "patents": "European Patent 3158400 (dual-cure 3D printing) upheld on appeal at the EPO, Sept 2026; portfolio size not disclosed.",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "latest_value_usd is the ~$2.5B figure in TechCrunch (2019-12-12; not explicitly labelled a valuation) and CNBC ('worth over $2.5 billion', cited by the Joseph DeSimone Wikipedia article). The Nov 2025 round disclosed no valuation.",
+    "funding_total_usd is null: no fetched page gives a total. Known rounds: $81M (2016, TechCrunch headline cited by Wikipedia), $260M (2019, TechCrunch), $60M (2025, Carbon).",
+    "employees_latest = ~500 (TechCrunch, Dec 2019); no newer headcount found.",
+    "The widely reported printer-subscription model was not confirmed on fetched pages, so business_model is hardware_sales.",
+    "Origin coded founder_startup: academic chemists are among the co-founders, but Wikipedia's body credits Alex Ermoshkin with the founding ideas, and the fetched pages do not tie the company to a university spin-out."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Carbon_(company)",
+    "https://en.wikipedia.org/wiki/Joseph_DeSimone",
+    "https://www.carbon3d.com/about",
+    "https://www.carbon3d.com/news",
+    "https://www.carbon3d.com/news/press-releases/60m-raise-accelerates-carbon-in-the-advanced-manufacturing-race",
+    "https://www.carbon3d.com/news/press-releases/carbons-foundational-dual-cure-3d-printing-patent-upheld-on-appeal-at-the-european-patent-office",
+    "https://techcrunch.com/2019/12/12/carbons-new-ceo-discusses-local-manufacturing-funding-and-a-potential-ipo/",
+    "https://www.industryweek.com/technology-and-iiot/additive/article/55354147/carbon-ceo-additive-manufacturing-ready-to-move-on-from-the-embarrassment-of-2024-2025"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Carbon_(company)",
+      "title": "Carbon (company)",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail (founders, investors), risk_events[0] (four rounds 2014-2017), flagship_projects; risk_events[0] ($81M, Sept 2016, via its citation of TechCrunch 'Carbon raises $81 million for international expansion of its rapid 3D-printing tech')"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Joseph_DeSimone",
+      "title": "Joseph DeSimone",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail (CEO 2014-2019, Science 2015, Stanford), latest_value_usd (CNBC citation)"
+    },
+    {
+      "url": "https://techcrunch.com/2019/12/12/carbons-new-ceo-discusses-local-manufacturing-funding-and-a-potential-ipo/",
+      "title": "Carbon's new CEO discusses local manufacturing, funding and a potential IPO",
+      "publisher": "TechCrunch",
+      "date": "2019-12-12",
+      "supports": "latest_value_usd, employees_latest, risk_events[0]"
+    },
+    {
+      "url": "https://www.carbon3d.com/news/press-releases/60m-raise-accelerates-carbon-in-the-advanced-manufacturing-race",
+      "title": "$60M Raise Accelerates Carbon in the Advanced Manufacturing Race",
+      "publisher": "Carbon (press release)",
+      "date": "2025-11-12",
+      "supports": "risk_events[2], openness_notes ('proprietary resins'), robustness"
+    },
+    {
+      "url": "https://www.carbon3d.com/news/press-releases/carbons-foundational-dual-cure-3d-printing-patent-upheld-on-appeal-at-the-european-patent-office",
+      "title": "Carbon's Foundational Dual-Cure 3D Printing Patent Upheld on Appeal at the European Patent Office",
+      "publisher": "Carbon (press release)",
+      "date": "2026-09-28",
+      "supports": "openness_notes, license_history, risk_events[4], hardware_extras.patents, origin_detail (Sunnyvale, CEO)"
+    },
+    {
+      "url": "https://www.industryweek.com/technology-and-iiot/additive/article/55354147/carbon-ceo-additive-manufacturing-ready-to-move-on-from-the-embarrassment-of-2024-2025",
+      "title": "Carbon CEO: Additive Manufacturing Ready to Move on From the Embarrassment of 2024-2025",
+      "publisher": "IndustryWeek",
+      "date": "2026-01-30",
+      "supports": "risk_events[3], physical_science_relevance (quote), key_takeaway"
+    },
+    {
+      "url": "https://www.carbon3d.com/about",
+      "title": "Who we are",
+      "publisher": "Carbon",
+      "date": "2026",
+      "supports": "origin_detail (board, investors), openness_notes (no open program), flagship_projects"
+    },
+    {
+      "url": "https://www.cnbc.com/2019/11/21/ellen-kullman-named-ceo-of-3d-printing-company-carbon.html",
+      "title": "CNBC on Ellen Kullman's appointment as Carbon CEO (title describes Carbon as 'a 3D printing start-up worth over $2.5 billion')",
+      "publisher": "CNBC",
+      "date": "2019-11-21",
+      "supports": "latest_value_usd, risk_events[1] (cited by the Joseph DeSimone Wikipedia article, not fetched)"
+    }
+  ]
+}

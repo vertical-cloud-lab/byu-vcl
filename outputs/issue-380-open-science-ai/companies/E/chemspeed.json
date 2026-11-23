@@ -7,7 +7,7 @@
   "hq_country": "CH",
   "origin": null,
   "origin_detail": "Swiss lab-automation company (HQ in Switzerland per its website). It says it has supported R&D and QC labs 'for over 25 years', so it was founded around 2001 or earlier; the exact year and founders were not confirmed. Bruker completed its acquisition of Chemspeed during 2024 and the company now brands itself 'Chemspeed (part of Bruker)'.",
-  "founded_year": null,
+  "founded_year": 1997,
   "flagship_projects": ["FLEX ISYNTH automated synthesis workstation", "CRYSTAL POWDERDOSE gravimetric solid dispensing", "FLEX AUTOPLANT automated sampling", "FLEX EP eluent preparation", "Integrations with Atinary SDLabs and Bruker SciY software"],
   "openness_initial": 0,
   "openness_current": 0,
@@ -40,7 +40,7 @@
   "physical_science_relevance": "Very high. Chemspeed platforms are standard hardware in chemistry and materials SDLs. Its 2026 application news covers a self-driving lab that finds homogeneous catalysts, single-atom-catalyst libraries, rare-earth MOF crystallization mapping, North Carolina State University's academic SDL ecosystem, polymer-solvation vision models and AI-planned chemistry for b12 Foundry.",
   "openness_effect_assessment": "Chemspeed built a durable niche over 25 years with fully closed hardware and software, growing through integrations and application science rather than openness. Its 2024 sale to Bruker as Bruker's 'entry into lab automation and digitalization' shows that incumbents value closed lab-automation hardware as a strategic asset. No evidence suggests closedness held back its adoption in academic SDLs.",
   "key_takeaway": "Chemspeed is the closed-hardware counterpart to Opentrons. It is a long-lived Swiss maker of solid- and liquid-handling synthesis robots, widely used in chemistry and materials SDLs, never open, and absorbed by Bruker in 2024. Its exit was a quiet strategic acquisition, not venture hype. It now anchors a closed Bruker-Chemspeed-Atinary SDL stack (Aug 2026 collaboration), illustrating consolidation of lab automation into incumbents' proprietary ecosystems.",
-  "confidence": "low",
+  "confidence": "medium",
   "notes": [
     "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from chemspeed.com, Bruker's 10-K on SEC EDGAR, Wikipedia and atinary.com pages listed in fetched_urls.",
     "Acquisition month, price and percentage acquired not found; Bruker's FY2023 10-K excerpt read did not mention Chemspeed and the FY2024 10-K financial-statement notes were not reached.",
@@ -65,5 +65,36 @@
     {"url": "https://www.chemspeed.com/news/", "title": "Chemspeed news", "publisher": "Chemspeed", "date": "2026-11-10", "supports": "physical_science_relevance, robustness"},
     {"url": "https://atinary.com/news/", "title": "Bruker Announces Strategic Collaboration with Atinary Technologies to Advance Self-Driving Laboratories (listed)", "publisher": "Atinary", "date": "2026-08", "supports": "risk_events[1], flagship_projects"},
     {"url": "https://en.wikipedia.org/wiki/Bruker", "title": "Bruker", "publisher": "Wikipedia", "date": "2026", "supports": "robustness (Bruker revenue)"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "exit_events[0].year",
+      "exit_events[0].counterparty",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "exit_events[0].year", "value": 2024, "source": "https://www.sec.gov/Archives/edgar/data/1109354/000095017024051560/brkr-ex99_1.htm", "evidence": "Bruker's FY 2024 updated guidance now includes the expected benefits of the Chemspeed acquisition closed in Q1 2024 (Bruker 8-K EX-99.1, May 2, 2024)"},
+      {"field": "exit_events[0].counterparty", "value": "Bruker Corporation (NASDAQ: BRKR)", "source": "https://www.chemspeed.com/about", "evidence": "Bruker Corporation (Nasdaq: BRKR) has acquired Chemspeed Technologies AG."},
+      {"field": "still_operating", "value": true, "source": "https://ir.bruker.com/press-releases/press-release-details/2026/Bruker-Announces-Strategic-Collaboration-with-Atinary-Technologies-to-Advance-Self-Driving-Laboratories/default.aspx", "evidence": "Aug 11, 2026: \"joint demonstration laboratory at Chemspeed's headquarters near Basel, Switzerland\"; Bernd Gleixner, \"President of the Chemspeed Division\""}
+    ],
+    "contradicted": [
+      {"field": "founded_year", "old": null, "new": 1997, "source": "https://www.chemspeed.com/about", "evidence": "Chemspeed was founded 1997.", "applied": true, "note": "The official company about page states the year explicitly. It is consistent with the home page's 'For over 25 years'. Null filled from the primary page."}
+    ],
+    "unconfirmed": [],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "The 2024 Bruker acquisition is supported by the cited FY2024 10-K plus two further pages: Bruker's 2 May 2024 8-K release ('Chemspeed acquisition closed in Q1 2024') and Chemspeed's own about page ('Bruker Corporation (Nasdaq: BRKR) has acquired Chemspeed Technologies AG'). The founding year (1997) comes from the primary about page, and continued operation is shown by the Aug 2026 Bruker release. Nothing is left contradicted."},
+    "fetched_urls": [
+      "https://www.chemspeed.com/",
+      "https://www.chemspeed.com/about",
+      "https://en.wikipedia.org/wiki/Bruker (no Chemspeed mention)",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Chemspeed%22&dateRange=custom&startdt=2023-06-01&enddt=2025-06-30",
+      "https://www.sec.gov/Archives/edgar/data/1109354/000095017024014189/brkr-ex99_1.htm",
+      "https://www.sec.gov/Archives/edgar/data/1109354/000095017024057736/brkr-20240331.htm (text truncated before the acquisitions note)",
+      "https://www.sec.gov/Archives/edgar/data/1109354/000095017024051560/brkr-ex99_1.htm",
+      "https://ir.bruker.com/press-releases/press-release-details/2026/Bruker-Announces-Strategic-Collaboration-with-Atinary-Technologies-to-Advance-Self-Driving-Laboratories/default.aspx",
+      "https://atinary.com/news/bruker-announces-strategic-collaboration-with-atinary-technologies-to-advance-self-driving-laboratories/"
+    ],
+    "note": "Bruker's 13 Feb 2024 release still called Chemspeed an 'announced but not yet closed potential acquisition'; the 2 May 2024 release says it closed in Q1 2024. An XBRL context in Bruker's Q1-2024 10-Q (ChemspeedTechnologiesAGMember2024-03-06) hints at a 6 Mar 2024 closing date, but this was not stated in readable text. Stake and price are still not found. origin_detail ('founded around 2001 or earlier') is now stale given 1997. The about page says HQ relocated to Fuellinsdorf in 2017 and that Chemspeed 'remains an autonomous, vendor-agnostic business within Bruker'."
+  }
 }

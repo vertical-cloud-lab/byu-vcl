@@ -32,14 +32,14 @@
   "us_focus": true,
   "risk_events": [
     "Rounds: Series A $7M (2016), B $14.5M (2018), C $34.5M (2019), D $50M (2020), E $200M (2021), F $100M (2021) at $6.1B (Bloomberg, 18 Nov 2021)",
-    "Nov 2021: filed Form S-1 with the SEC per Wikipedia; no IPO completed as of 2026",
+    "Nov 2021: Wikipedia, citing a Reuters report from anonymous sources, says Benchling filed Form S-1, but SEC EDGAR lists no S-1 or DRS for Benchling, Inc. (CIK 1687403), only a 2016 Form D, so any filing was a confidential draft; no IPO as of 2026",
     "No post-2021 valuation, tender or down round found in fetched sources (WebSearch budget exhausted before this company was searched)"
   ],
   "robustness": "A large installed base: as of 2025, more than 200,000 scientists, 1,300+ companies and 7,500+ academic institutions (Wikipedia). Lock-in is high because data and workflows live in a proprietary cloud. There is no open-source fallback if the vendor changes terms. It remains a private company with ~810 employees (2026).",
   "physical_science_relevance": "Low. Benchling is built for biology and biotech R&D. For physical-science SDLs it matters mainly as the dominant closed lab-data layer that automation and AI vendors integrate with through its API, and as the commercial comparator for open ELN and LIMS tools.",
   "openness_effect_assessment": "Benchling got the network effects open source usually provides by giving its closed product away free to academics (7,500+ institutions), so trained users carried it into industry: free but closed. It reached a $6.1B valuation in 2021 with no open-source component. That shows a closed SaaS can win the academic-to-industry funnel when the free tier is generous.",
   "key_takeaway": "Benchling is the closed-SaaS benchmark for lab software. It is founder-led (MIT/YC 2012), raised about $406M, was valued at $6.1B at the 2021 peak and has about 810 employees. It has never open-sourced its product, and its free academic tier did the community-building job that open source does for others. The lack of any public valuation, IPO or reported down round since 2021 makes its current value unknown. Fetched sources could not confirm 2023-2026 restructuring.",
-  "confidence": "low",
+  "confidence": "medium",
   "notes": [
     "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from Wikipedia (last edited 31 Oct 2026) and GitHub, listed in fetched_urls.",
     "funding_total_usd = sum of Series A-F as listed on Wikipedia (my arithmetic); excludes seed/YC money.",
@@ -56,5 +56,41 @@
   "sources": [
     {"url": "https://en.wikipedia.org/wiki/Benchling", "title": "Benchling", "publisher": "Wikipedia (citing Bloomberg 2021-11-18 for valuation)", "date": "2026-10-31", "supports": "founded_year, origin_detail, funding_total_usd, latest_value_usd, employees_latest, risk_events[0], risk_events[1], robustness, openness_notes (free academic use)"},
     {"url": "https://github.com/benchling", "title": "Benchling GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "latest_value_usd",
+      "latest_value_date",
+      "funding_total_usd",
+      "risk_events[1]"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2012, "source": "https://www.ycombinator.com/companies/benchling", "evidence": "\"Founded:2012\" \"Batch:Summer 2012\" (Y Combinator's official company page, an investor page independent of Wikipedia)"},
+      {"field": "latest_value_usd", "value": 6100000000, "source": "https://www.benchling.com/news/benchling-raises-100m-in-series-f-financing-co-led-by-altimeter-and-franklin-templeton", "evidence": "\"has raised $100 million in Series F funding at a $6.1 billion valuation.\" (official Benchling press release)"},
+      {"field": "latest_value_date", "value": "2021-11", "source": "https://www.benchling.com/news/benchling-raises-100m-in-series-f-financing-co-led-by-altimeter-and-franklin-templeton", "evidence": "\"SAN FRANCISCO, November 18, 2021\""},
+      {"field": "funding_total_usd", "value": 406000000, "source": "https://www.benchling.com/sitemap.xml", "evidence": "official /news release URLs: announces-7m, raises-14-5m-from-benchmark, raises-34-5m-series-c, raises-50m-series-d, raises-200m-series-e, raises-100m-in-series-f (sum $406M)"}
+    ],
+    "contradicted": [
+      {"field": "risk_events[1]", "old": "Nov 2021: filed Form S-1 with the SEC per Wikipedia; no IPO completed as of 2026", "new": "Nov 2021: Wikipedia, citing a Reuters report from anonymous sources, says Benchling filed Form S-1, but SEC EDGAR lists no S-1 or DRS for Benchling, Inc. (CIK 1687403), only a 2016 Form D, so any filing was a confidential draft; no IPO as of 2026", "source": "https://data.sec.gov/submissions/CIK0001687403.json", "evidence": "Benchling, Inc. submissions: filings.recent.form [\"D\"], filingDate [\"2016-10-13\"], filings.files [] (no S-1, S-1/A, DRS or 424B)", "applied": true, "note": "SEC EDGAR is the authoritative record of public filings, and a public S-1 would be listed there. Wikipedia's sentence ('filed Form S-1 with the U.S. Securities and Exchange Commission in November 2021') cites Reuters, 'Life sciences software startup Benchling files for U.S. listing -sources'. The text was reworded to keep the report but flag that no S-1 is on file."}
+    ],
+    "unconfirmed": [],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "founded_year (YC company page), the $6.1B Series F valuation and its Nov 2021 date (official Benchling release) and the round amounts behind funding_total_usd (official release URLs) now agree with the cited Wikipedia article. The one contradiction (S-1 claim) was corrected from SEC EDGAR, so nothing is left contradicted."},
+    "fetched_urls": [
+      "https://www.benchling.com/",
+      "https://www.benchling.com/blog (index lists no funding posts)",
+      "https://www.sec.gov/cgi-bin/browse-edgar?company=benchling&owner=include&count=40&action=getcompany (503)",
+      "https://www.benchling.com/about-us",
+      "https://www.benchling.com/news (index renders no items)",
+      "https://efts.sec.gov/LATEST/search-index?keysTyped=Benchling (EDGAR entity lookup: Benchling, Inc., CIK 1687403)",
+      "https://data.sec.gov/submissions/CIK0001687403.json",
+      "https://www.benchling.com/sitemap.xml (read at offsets 0 and 100000)",
+      "https://www.ycombinator.com/companies/benchling",
+      "https://www.benchling.com/news/benchling-raises-100m-in-series-f-financing-co-led-by-altimeter-and-franklin-templeton",
+      "https://www.benchling.com/blog/benchling-raises-50m-to-accelerate-life-science-rd-globally",
+      "https://en.wikipedia.org/wiki/Benchling"
+    ],
+    "note": "funding_total_usd is a sum of six round headlines (A $7M to F $100M); no page states a cumulative total, and the Series F release gives none. The $50M blog post (2020-05-27) is the same Series D led by Alkeon, not an extra round. Wikipedia's founding sentence carries no citation. employees_latest (810) is unsourced beyond Wikipedia; YC lists 'Team Size:750' (undated, self-reported). The about-us page gives HQ as 680 Folsom St., San Francisco and 'More than 1,300 organizations', consistent with the file."
+  }
 }

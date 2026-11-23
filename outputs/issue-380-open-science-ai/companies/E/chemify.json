@@ -7,7 +7,7 @@
   "hq_country": "GB",
   "origin": "academic",
   "origin_detail": "University of Glasgow spin-out founded by Lee Cronin, Regius Professor of Chemistry at Glasgow, to commercialize his lab's Chemputer, the XDL chemical programming language and the ChemPU literature database. Locations: Glasgow and San Francisco.",
-  "founded_year": 2022,
+  "founded_year": 2019,
   "flagship_projects": ["Chemputation / Chemputer", "XDL (chemical description language, from the Cronin lab)", "Genesis Agentic Chemputation Engine", "Chemifarm chemputation facility, Maryhill, Glasgow (opened 2025)", "Curie reactor systems"],
   "openness_initial": 0,
   "openness_current": 0,
@@ -62,5 +62,39 @@
     {"url": "https://www.chemify.io/", "title": "Chemify home page", "publisher": "Chemify", "date": "2026-11", "supports": "founded_year, flagship_projects, openness_notes, subcategory"},
     {"url": "https://en.wikipedia.org/wiki/Leroy_Cronin", "title": "Leroy Cronin", "publisher": "Wikipedia", "date": "2026", "supports": "origin_detail (Regius Professor), notes (2019 launch, GBP 33M 2023)"},
     {"url": "https://github.com/croningp", "title": "croningp (Cronin Group) GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes, license_history[0]"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "still_operating",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "still_operating", "value": true, "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290", "evidence": "CHEMIFY LIMITED, Company number SC645290, Company status: Active (filing history shows share allotments on 6 Oct and 5 Nov 2026)"}
+    ],
+    "contradicted": [
+      {"field": "founded_year", "old": 2022, "new": 2019, "source": "https://find-and-update.company-information.service.gov.uk/company/SC645290", "evidence": "CHEMIFY LIMITED ... Incorporated on 24 October 2019 ... Registered office address: School Of Chemistry, University Of Glasgow, Glasgow, Scotland, G12 8QQ", "applied": true, "note": "UK Companies House is the authoritative registry. Its filing history (page 3) shows the company trading before 2022: micro-company accounts to 31 Dec 2020 and 31 Dec 2021, share allotments on 23 Jul and 19 Oct 2021, and a director appointed 23 Jul 2021. Wikipedia (Leroy Cronin) independently says 'launched in 2019'. Chemify's own pages say 2022 ('2022 CHEMIFY FOUNDED' timeline on chemify.io; 20 Jun 2025 release: 'A 2022 spin-out from the University of Glasgow'), which probably marks the formal spin-out or seed round (allotments Feb-Mar 2022). Revert to 2022 if the analysis wants the self-described spin-out year rather than incorporation."}
+    ],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "Only the Series A component has a second page: Wikipedia (Leroy Cronin) says Chemify 'raised £33m in 2023' (about $43M). No independent page found for the >$50M Series B. The company's Business Wire release returned 403, and the 20 Jun 2025 release (reportablenews) gives no funding total. The $93M remains the cited news-page sum (lower bound)."},
+      {"field": "openness_current", "reason": "No independent page addresses Chemify's licensing. github.com/chemify holds only a 'github-slideshow' training repo, with no description or website linking it to the company, so it neither confirms nor contradicts openness 0."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://find-and-update.company-information.service.gov.uk/search/companies?q=chemify",
+      "https://find-and-update.company-information.service.gov.uk/company/SC645290",
+      "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history",
+      "https://find-and-update.company-information.service.gov.uk/company/SC645290/filing-history?page=3",
+      "https://www.chemify.io/news",
+      "https://www.chemify.io/",
+      "https://www.businesswire.com/news/home/20251021496528/en/Chemify-Raises-More-Than-%2450-Million-in-Oversubscribed-Series-B-to-Drive-Global-Expansion-of-Digital-Chemistry-and-Discovery (403)",
+      "https://en.wikipedia.org/wiki/Chemify (404)",
+      "https://chemify.reportablenews.com/pr/chemify-launches-the-world-s-first-chemputation-facility-revolutionizing-molecular-design-and-manufacture",
+      "https://en.wikipedia.org/wiki/Leroy_Cronin",
+      "https://github.com/chemify"
+    ],
+    "note": "founded_year changed 2022->2019 on registry evidence; the existing notes[1] (which says the company's 2022 date is used) is now stale. The registry also shows Leroy Cronin ceased to be a person with significant control on 23 Sep 2025, consistent with Series B dilution. The funding total is a sum of headline figures from the company news page, with only the 2023 leg independently confirmed."
+  }
 }

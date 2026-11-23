@@ -1,0 +1,185 @@
+{
+  "name": "Digital Science (Holtzbrinck Publishing Group), incl. Figshare",
+  "slug": "digital-science-figshare",
+  "group": "G",
+  "category": "open_infrastructure",
+  "subcategory": "commercial research-infrastructure group; Figshare general-purpose data repository (proprietary SaaS hosting openly licensed content), plus Dimensions, Altmetric, Overleaf, ReadCube, Symplectic",
+  "hq_country": "GB",
+  "origin": "founder_startup",
+  "origin_detail": "Figshare began as Mark Hahnel's personal tool for sharing the research outputs of his PhD in stem cell biology; Figshare Alpha launched in 2011 and V1 on 17 January 2012, a relaunch backed by Digital Science. Digital Science itself launched on 7 December 2010 in London as the technical division of Nature Publishing Group/Macmillan (founder Timo Hannay) and is run as an independent company by the Holtzbrinck Publishing Group, which also owns 53% of Springer Nature. Figshare is operated by Figshare LLP and branded 'a Digital Science solution'.",
+  "founded_year": 2011,
+  "flagship_projects": [
+    "Figshare.com (free individual repository, files up to 20 GB)",
+    "Figshare for Institutions / Institutional Repository (2014)",
+    "Figshare+ (2021, paid deposit of multi-TB datasets)",
+    "Dimensions (research database, 2018 relaunch)",
+    "Altmetric",
+    "Overleaf (AGPL-3.0 Community Edition, proprietary Server Pro and SaaS)",
+    "ReadCube, Symplectic Elements, Writefull, Metaphactory, IFI CLAIMS"
+  ],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "Figshare's code base is not open source and Figshare describes itself as a commercial vendor. Its openness is in the content and interfaces: most files are released CC BY and datasets CC0 (Wikipedia); the API is openly documented; and it supports DataCite DOIs, machine-readable metadata and OAI-PMH, with 'no vendor lock-in' on shared outputs. That is level 1 (only peripheral interfaces open; closed platform, corporate control). Elsewhere in the group, Overleaf is genuinely open core (AGPL-3.0 Community Edition, 18.4k GitHub stars, versus proprietary Server Pro and overleaf.com), and Dimensions has a free tier limited to publications and datasets; the rest of the portfolio is proprietary SaaS.",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2012,
+      "license": "Proprietary platform; deposited content CC BY (most files) and CC0 (datasets)",
+      "note": "Licences as described by Wikipedia; custom licences allowed from 2017 per Figshare",
+      "source": "https://en.wikipedia.org/wiki/Figshare"
+    },
+    {
+      "year": null,
+      "license": "AGPL-3.0 (Overleaf Community Edition)",
+      "note": "Server Pro adds SSO, tracked changes and support under a commercial licence",
+      "source": "https://github.com/overleaf/overleaf"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2012,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Digital Science (Holtzbrinck Publishing Group)",
+      "note": "Digital Science backed Figshare's January 2012 relaunch and Figshare is now 'part of Digital Science'; the stake, date of full ownership and terms were not found on fetched pages",
+      "source": "https://en.wikipedia.org/wiki/Figshare"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Open-science infrastructure owned by a publishing group: Digital Science's parent Holtzbrinck also owns 53% of Springer Nature",
+    "Jul 2026: CEO Daniel Hook (11 years) moved to a new Chief Scientific Officer role at Holtzbrinck; President Steve Leicht became CEO",
+    "Closed code means the platform cannot be forked or self-hosted if the owner changes course; mitigated by DOIs, an open API and CLOCKSS archiving of content"
+  ],
+  "robustness": "Commercially sustained (institutional subscriptions and Figshare+ charges) inside a large, long-lived family-owned media group, with public funding on top: a 2022 NIH Generalist Repository Ecosystem Initiative (GREI) award alongside Dryad, Mendeley Data, Dataverse, Zenodo, OSF and Vivli. Content is portable (DataCite DOIs, OAI-PMH, documented API) and CLOCKSS is an additional host, but the software is single-vendor and closed.",
+  "physical_science_relevance": "Figshare is one of the generalist repositories that funders such as NIH recognise and a common home for publishers' supplementary data (PLOS integration since 2013). For a materials lab its free tier (20 GB files, CC0 datasets with DOIs) and Figshare+ (multi-TB) suit large microscopy, CT or process-monitoring datasets; for the Digital Alloy Lab that could include LPBF build logs and melt-pool imaging, though Zenodo offers similar terms on open-source, publicly run infrastructure. Digital Science's Overleaf (AGPL core) and Dimensions are also widely used for writing and literature analytics.",
+  "openness_effect_assessment": "Open licences on content and free individual deposits drove Figshare's growth to over 8 million openly available research outputs and 150+ partner organisations by 2024, and earned it a place in NIH's GREI. Keeping the platform closed let Digital Science sell institutional repositories as SaaS, so Figshare is 'open science on closed infrastructure', unlike Zenodo (open-source InvenioRDM, CERN-operated).",
+  "key_takeaway": "Digital Science shows the commercial route to open-science infrastructure: a publisher-owned group (Holtzbrinck) that backed a PhD student's data-sharing tool in 2012 and turned it into institutional SaaS, while keeping the content openly licensed and the code closed. Researchers get free, DOI-backed open data deposit; institutions and funders get a vendor, not a commons, so portability rests on DOIs and APIs rather than forkable code.",
+  "usage_metrics": [
+    {
+      "metric": "research outputs made openly available on Figshare",
+      "value": 8000000,
+      "date": "2024",
+      "source": "https://info.figshare.com/about"
+    },
+    {
+      "metric": "partner organisations (Figshare)",
+      "value": 150,
+      "date": "2024",
+      "source": "https://info.figshare.com/about"
+    },
+    {
+      "metric": "publications covered by Dimensions",
+      "value": 106000000,
+      "date": "2021-10",
+      "source": "https://en.wikipedia.org/wiki/Digital_Science"
+    },
+    {
+      "metric": "Overleaf GitHub stars",
+      "value": 18400,
+      "date": "2026-11",
+      "source": "https://github.com/overleaf/overleaf"
+    },
+    {
+      "metric": "Digital Science employees",
+      "value": 250,
+      "date": "2017",
+      "source": "https://en.wikipedia.org/wiki/Digital_Science"
+    }
+  ],
+  "funding_sources": [
+    "Owner Digital Science / Holtzbrinck Publishing Group",
+    "Institutional repository subscriptions (Figshare for Institutions)",
+    "Figshare+ one-time Data Publishing Charges",
+    "NIH Generalist Repository Ecosystem Initiative award (2022)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "founded_year 2011 is Figshare Alpha; Digital Science was founded in 2010.",
+    "employees_latest is null: the only figure found is 250 for Digital Science in 2017 (Wikipedia); no Figshare headcount found.",
+    "No revenue or valuation for Digital Science or Figshare was found on fetched pages.",
+    "Wikipedia cites an Altmetric press release (2016) saying over 2.5 million research outputs had been deposited on Figshare by then (not fetched)."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Figshare",
+    "https://en.wikipedia.org/wiki/Digital_Science",
+    "https://info.figshare.com/about",
+    "https://figshare.com/",
+    "https://www.digital-science.com/about-us/",
+    "https://www.researchinformation.info/news/new-ceo-for-digital-science/",
+    "https://github.com/overleaf/overleaf"
+  ],
+  "sources": [
+    {
+      "url": "https://info.figshare.com/about",
+      "title": "About Figshare",
+      "publisher": "Figshare (Digital Science)",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, flagship_projects, openness_notes (not open source; open API), usage_metrics[0-1], robustness (GREI 2022), funding_sources"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Figshare",
+      "title": "Figshare",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail, license_history[0], exit_events[0], robustness (CLOCKSS), physical_science_relevance (PLOS 2013)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Digital_Science",
+      "title": "Digital Science",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail (2010, Macmillan, Holtzbrinck 53% of Springer Nature), usage_metrics[2], usage_metrics[4], risk_events[0]"
+    },
+    {
+      "url": "https://www.digital-science.com/about-us/",
+      "title": "About us",
+      "publisher": "Digital Science",
+      "date": "2026",
+      "supports": "origin_detail (launched 7 Dec 2010), flagship_projects (portfolio)"
+    },
+    {
+      "url": "https://www.researchinformation.info/news/new-ceo-for-digital-science/",
+      "title": "New CEO for Digital Science",
+      "publisher": "Research Information",
+      "date": "2026-07-31",
+      "supports": "risk_events[1]"
+    },
+    {
+      "url": "https://github.com/overleaf/overleaf",
+      "title": "overleaf/overleaf",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "openness_notes, license_history[1], usage_metrics[3]"
+    },
+    {
+      "url": "https://figshare.com/",
+      "title": "Figshare",
+      "publisher": "Figshare",
+      "date": "2026-11",
+      "supports": "flagship_projects (20 GB uploads, Figshare+ multi-TB)"
+    },
+    {
+      "url": "https://www.altmetric.com/press/press-releases/figshare-integrates-altmetric/",
+      "title": "Over 2.5 million research outputs deposited on Figshare will now display Altmetric Badges",
+      "publisher": "Altmetric",
+      "date": "2016",
+      "supports": "notes (2.5 million outputs) (cited by Wikipedia, not fetched)"
+    }
+  ]
+}

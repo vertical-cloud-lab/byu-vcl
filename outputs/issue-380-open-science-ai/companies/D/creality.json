@@ -192,5 +192,48 @@
     "Revenue not found in the sources reached; set to null.",
     "Ender-3 open-source date taken from the GitHub repository creation date (2018-06-30).",
     "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "exit_events[0].type",
+      "exit_events[0].year",
+      "exit_events[0].counterparty",
+      "still_operating",
+      "relicensing_events[0].year"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2014, "source": "https://zh.wikipedia.org/wiki/创想三维", "evidence": "該公司成立於2014年 ('the company was founded in 2014'); infobox '2014年'. Chinese Wikipedia, a separate article from the cited English one (independent secondary page)."},
+      {"field": "exit_events[0].type", "value": "IPO", "source": "https://www.creality.cn/", "evidence": "创想三维上市庆典暨十二周年新品发布会 ('Creality listing celebration and 12th-anniversary new product launch'): headline on Creality's official Chinese site; exchange not named"},
+      {"field": "still_operating", "value": true, "source": "https://www.creality.com/blog", "evidence": "Official blog lists new posts dated Nov 2-19, 2026, e.g. 'How to 3D Print a Picture: A Beginner's Guide' (Nov 19, 2026)."}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "exit_events[0].year", "reason": "No page states the listing year in text. The cited about-us page puts 'Officially listed on the HKEX.' last in a timeline whose last year label is 2026, so the year is matched by position only. creality.cn's headline pairs the listing celebration with the 12th anniversary (2014 + 12 = 2026), which supports 2026 only by arithmetic. The linked WeChat article is behind a verification wall, and creality.cn brand news (pages 1-6, 2025-09-28 to 2026-11-20) has no listing post. The HKEXnews Main Board new-listing page (documents dated 2026-06-30 to 2026-11-23) does not list Creality. That fits a listing before mid-2026 but is not evidence for any date, and the archive-page guess returned 404."},
+      {"field": "exit_events[0].counterparty", "reason": "Only the cited about-us page names the HKEX. creality.cn's listing headline does not name an exchange, and the investor-relations page shows only section labels ('Global Offering', 'Financial Reports', 'Documents on Display', 'Announcements & Circulars') with no stock code. English and Chinese Wikipedia do not mention a listing, and ir.creality.com does not resolve. No HKEXnews filing URL could be found without search."},
+      {"field": "relicensing_events[0].year", "reason": "The 2018 date rests only on the cited GitHub repository creation date (2018-06-30). English Wikipedia, the about-us page and page 1 of the Creality blog say nothing about the Ender-3 being open-sourced."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.creality.com/pages/about-us",
+      "https://en.wikipedia.org/wiki/Creality",
+      "https://www.creality.com/investor-relations",
+      "https://zh.wikipedia.org/wiki/创想三维",
+      "https://ir.creality.com/ (DNS: host not found)",
+      "https://www.creality.com/blog",
+      "https://www.cxsw3d.com/ (301 redirect to https://www.creality.cn/)",
+      "https://www.creality.cn/",
+      "https://mp.weixin.qq.com/s/EUZLvGzh0B3-Rx0iXokP5A (WeChat verification wall, no content)",
+      "https://www.creality.cn/blogs/tags/3d-printer-1",
+      "https://www.creality.cn/blogs/tags/3d-printer-1?page=2",
+      "https://www.creality.cn/blogs/tags/3d-printer-1?page=3",
+      "https://www.creality.cn/blogs/tags/3d-printer-1?page=4",
+      "https://www.creality.cn/blogs/tags/3d-printer-1?page=5",
+      "https://www.creality.cn/blogs/tags/3d-printer-1?page=6",
+      "https://www2.hkexnews.hk/New-Listings/New-Listing-Information/Main-Board?sc_lang=en (Creality not among listings with documents dated 2026-06-30 to 2026-11-23)",
+      "https://www2.hkexnews.hk/New-Listings/New-Listing-Information/Main-Board-Archive?sc_lang=en (404)"
+    ],
+    "note": "The cited about-us milestone timeline lists the years (2014...2026) and the entries in the same order but never pairs them in text. 2014 = 'Creality was founded by four founders.' and 2026 = 'Officially listed on the HKEX.' are matched only by position, as is 2023 = 'Launched the K1 and HALOT-MAGE flagship 3D printers.' A second official site (creality.cn) confirms that a listing (上市) took place, tied to the 12th anniversary, and has footer '© 2014-2025'. Listing date, exchange confirmation, stock code, proceeds and market cap still need an HKEXnews filing or the WeChat release, so latest_value and exit value_usd stay null. Confidence stays low: the IPO year and exchange have no explicit second page."
+  }
 }

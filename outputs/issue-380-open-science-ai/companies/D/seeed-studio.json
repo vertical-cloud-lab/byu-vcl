@@ -73,5 +73,30 @@
     "Funding, ownership type, revenue, employees and valuation were not found. English Wikipedia has no Seeed Studio company article (en: 'Seeed' is a German band; Seeed_Studio and Seeed_Technology return 404), zh.wikipedia (矽递科技, Seeed_Studio) returned 404, and the Seeed news center returned 403. ownership_status is null because VC-backed versus bootstrapped could not be confirmed.",
     "The founder is not named on the pages fetched.",
     "Confidence is low: the openness level rests on self-description plus two product pages, and there are no financials."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "still_operating",
+      "license_history[2].license"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2008, "source": "https://wiki.seeedstudio.com/", "evidence": "Seeed Studio described \"as being an IoT hardware partner since 2008\" (wiki platform description); seeed.cc footer also reads \"© 2008-2026 Seeed Technology Co.,Ltd.\""},
+      {"field": "still_operating", "value": true, "source": "https://github.com/Seeed-Studio", "evidence": "seeed_armbian_extension: Updated Nov 23, 2026 (five repositories updated Nov 23, 2026)"},
+      {"field": "license_history[2].license", "value": "Apache-2.0 (reCamera 2002 family hardware: schematics, KiCad sources, mechanical files)", "source": "https://raw.githubusercontent.com/Seeed-Studio/OSHW-reCamera-Series/main/LICENSE", "evidence": "Apache License / Version 2.0, January 2004 (repository LICENSE file; confirms the licence, not the file contents listed)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.seeed.cc/",
+      "https://www.seeed.cc/about-us",
+      "https://www.seeedstudio.com/blog/ (403)",
+      "https://raw.githubusercontent.com/Seeed-Studio/OSHW-reCamera-Series/main/LICENSE",
+      "https://github.com/Seeed-Studio",
+      "https://wiki.seeedstudio.com/"
+    ],
+    "note": "founded_year is confirmed only by Seeed's own pages using 'since 2008' / copyright-from-2008 wording, not an explicit 'founded in 2008'; the cited about page quotes Nanfang Daily. No second page gives funding, ownership, revenue or valuation (seeed.cc and seeed.cc/about-us silent; no stock listing or IR page found), so those nulls stand. The openness level (borderline 2/3) is a judgement this pass cannot confirm; only the reCamera Apache-2.0 licence was re-checked. Confidence left low: the second pages are all Seeed's own and the file's main gaps (financials, ownership) remain."
+  }
 }

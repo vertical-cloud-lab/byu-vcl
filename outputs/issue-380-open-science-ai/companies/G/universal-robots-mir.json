@@ -1,0 +1,180 @@
+{
+  "name": "Universal Robots A/S and Mobile Industrial Robots ApS (Teradyne Robotics)",
+  "slug": "universal-robots-mir",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "collaborative robot arms (cobots) and autonomous mobile robots (AMRs); Teradyne's Robotics segment",
+  "hq_country": "DK",
+  "origin": "academic",
+  "origin_detail": "Universal Robots was founded in 2005 in Odense, Denmark, by Esben Østergaard, Kasper Støy and Kristian Kassow, who met during joint research at the University of Southern Denmark and set out to make lightweight, easy-to-program arms for small and medium-sized firms. The UR5 (2008) is described by the company as the first commercially viable cobot. Teradyne (NASDAQ: TER, North Reading, MA; semiconductor test equipment) bought UR in 2015 for $285M. Mobile Industrial Robots (MiR, AMRs, Odense) is UR's sister company inside Teradyne's Robotics segment; the two opened a joint 20,000 m2 Odense headquarters for 600 employees in 2024. MiR's founding year and acquisition terms were not confirmed on fetched pages.",
+  "founded_year": 2005,
+  "flagship_projects": [
+    "UR5 (2008), UR10 (2012), UR3 (2015), e-Series (2018), UR16e (2019), UR20 (2022), UR30 (2024) cobots",
+    "PolyScope / PolyScope X controller software; AI Accelerator (PolyScope X + NVIDIA Jetson AGX Orin, 2024)",
+    "UR+ third-party ecosystem (2016) and UR Academy (120+ training centres)",
+    "Universal_Robots_ROS2_Driver (BSD-3-Clause, GitHub)",
+    "MiR250, MiR600, MiR1350, MiR1200 Pallet Jack AMRs and MiR Fleet software"
+  ],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "Arms, controllers, PolyScope software and MiR robots and fleet software are proprietary; no hardware design files are published. The open part is peripheral: the official-org Universal_Robots_ROS2_Driver is BSD-3-Clause (849 stars, 367 forks, 810 commits; supports ROS 2 Humble, Jazzy, Kilted, Lyrical and Rolling), and UR+ is an ecosystem for third-party add-ons rather than open source. That fits level 1 on the hardware scale ('only peripheral parts open'). openness_initial = 0 because no UR-published open-source software from the early years was found on fetched pages (not verified either way). Teradyne's 10-K mentions neither ROS nor UR+ by name, only an 'extensive ecosystem' of components and kits.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2008,
+      "license": "Proprietary (UR5 arm, controller and PolyScope)",
+      "note": "First product; sold through distributors in Denmark and Germany",
+      "source": "https://www.universal-robots.com/about-universal-robots/our-history/"
+    },
+    {
+      "year": null,
+      "license": "BSD-3-Clause (Universal_Robots_ROS2_Driver)",
+      "note": "Year the driver was first published not established; repository hosted under the UniversalRobots GitHub organisation",
+      "source": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2015,
+      "type": "acquisition",
+      "value_usd": 285000000,
+      "counterparty": "Teradyne, Inc.",
+      "note": "Company history page; Wikipedia gives the same figure, citing Ingeniøren ('Universal Robots solgt for 1,9 mia. kroner', 13 May 2015). Earn-out terms not confirmed.",
+      "source": "https://www.universal-robots.com/about-universal-robots/our-history/"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 308295000,
+  "revenue_year": 2025,
+  "employees_latest": 1000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Teradyne Robotics revenue fell from $375.2M (2023) to $364.8M (2024) and $308.3M (2025), with losses before taxes of $54.3M, $77.6M and $99.4M (FY2025 10-K segment note)",
+    "2025: Robotics restructuring cut about 400 employees, with $24.3M of Robotics severance ($15.3M paid in 2025, the rest due by Q3 2026); $4.9M asset impairment the same year",
+    "2023-2024: smaller Teradyne-wide headcount reductions of 215 and 98 people, primarily Semiconductor Test and Robotics, including voluntary early retirement",
+    "Robotics backlog fell from $42.3M (end-2023) to $36.6M (end-2024); most Robotics revenue is in foreign currencies, so a strong dollar weighs on reported growth (FY2024 10-K)",
+    "Robotics is a loss-making ~10% of a parent whose growth is semiconductor test ($2.52B of $3.19B revenue in 2025), so its future depends on Teradyne's commitment"
+  ],
+  "robustness": "Large installed base (100,000 UR cobots by 2025, up from 50,000 in 2020) and a training and integrator network (UR Academy, 120+ centres; UR+ add-on ecosystem) make UR arms a de facto standard cobot. Ownership by Teradyne (market cap $36.5B on 2026-11-23) gives financial backing, but the segment has lost money for three years and is being cut. Controllers and firmware are closed, so users depend on UR for the arm itself; the BSD-3 ROS 2 driver means lab integrations and orchestration code do not depend on UR's own software.",
+  "physical_science_relevance": "Cobot arms and AMRs are the generic 'hands and legs' of a self-driving lab: moving samples, vials, crucibles or build plates between closed instruments that were not designed to talk to each other. UR's BSD-3 ROS 2 driver is the open integration point that lets a lab script a UR arm from open orchestration code (ROS 2, Python) rather than PolyScope alone, and the 2024 AI Accelerator (NVIDIA Jetson) targets AI-driven perception. For the Digital Alloy Lab (LPBF aluminium alloys) a cobot is a plausible way to tend sample preparation, powder-handling or characterization stations around a closed LPBF machine, but no specific SDL or LPBF deployment was confirmed from fetched pages.",
+  "openness_effect_assessment": "UR grew to 100,000 installed cobots as a closed-hardware company whose openness is confined to interfaces (URScript, the BSD-3 ROS 2 driver) and a third-party add-on marketplace (UR+). Open drivers lowered integration costs for researchers and integrators without exposing the arm's design, which helped adoption, but they did not protect revenue: the Robotics segment shrank 18% from 2023 to 2025 and lost $99M in 2025, for reasons the filings attribute to demand and currency rather than openness.",
+  "key_takeaway": "Universal Robots shows the 'open interface, closed machine' model at scale: a university spin-out that sold a closed cobot, published open-source drivers so labs and integrators could program it from ROS, sold itself to Teradyne for $285M in 2015 and reached 100,000 units. A decade later the combined UR and MiR segment is shrinking and loss-making ($308M revenue, $99M pre-tax loss and ~400 job cuts in 2025), a reminder that a lab's open control code is portable while the closed arm it drives depends on one vendor's fortunes.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary (UR arms and controllers; MiR AMRs)"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (PolyScope / PolyScope X; MiR Fleet)",
+      "BSD-3-Clause (Universal_Robots_ROS2_Driver)"
+    ],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "revenue_latest_usd is Teradyne's Robotics segment (UR + MiR combined), FY2025 10-K; Teradyne does not report UR and MiR separately. Wikipedia lists UR revenue of $311M for 2021 (citing Statista).",
+    "employees_latest = 1,000+ for UR alone (Wikipedia, citing Robotics and Automation News, Nov 2022), before the 2025 cuts; the joint UR/MiR HQ (2024) was built for 600 employees. No current combined headcount found.",
+    "latest_value is null because UR and MiR have no separate valuation; parent Teradyne's market cap was $36.46B on 2026-11-23 (stockanalysis.com), versus $4.25B at end-2015.",
+    "MiR's acquisition by Teradyne (commonly reported as 2018, about $148M plus an earn-out of up to $124M) could not be confirmed on any fetched page, so no MiR exit event is recorded; the MiR 'about' page and Teradyne filings fetched describe MiR only as a Teradyne Robotics business.",
+    "Cobots installed: 50,000 (2020) and 100,000 (2025) per UR's history page; Teradyne's FY2024 10-K says 'over 75,000' sold."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Universal_Robots",
+    "https://www.universal-robots.com/about-universal-robots/our-history/",
+    "https://en.wikipedia.org/wiki/Teradyne",
+    "https://www.sec.gov/Archives/edgar/data/97210/000095017025023784/ter-20241231.htm",
+    "https://data.sec.gov/submissions/CIK0000097210.json",
+    "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/",
+    "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/FilingSummary.xml",
+    "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/R138.htm",
+    "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/R102.htm",
+    "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/R30.htm",
+    "https://stockanalysis.com/stocks/ter/market-cap/",
+    "https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver",
+    "https://mobile-industrial-robots.com/about-mir/"
+  ],
+  "sources": [
+    {
+      "url": "https://www.universal-robots.com/about-universal-robots/our-history/",
+      "title": "Our history",
+      "publisher": "Universal Robots",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, exit_events[0] ($285M), flagship_projects, robustness (50,000 in 2020; 100,000 in 2025; joint HQ for 600 employees, 2024)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Universal_Robots",
+      "title": "Universal Robots",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail (University of Southern Denmark), exit_events[0], employees_latest (1,000+, 2022), notes (2021 revenue $311M)"
+    },
+    {
+      "url": "https://ing.dk/artikel/universal-robots-solgt-19-mia-kroner-176102",
+      "title": "Universal Robots solgt for 1,9 mia. kroner",
+      "publisher": "Ingeniøren",
+      "date": "2015-05-13",
+      "supports": "exit_events[0] (cited by Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/R138.htm",
+      "title": "Teradyne FY2025 Form 10-K, Schedule of Segment Information",
+      "publisher": "Teradyne / SEC EDGAR",
+      "date": "2026-02-19",
+      "supports": "revenue_latest_usd, risk_events[0], risk_events[4]"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/R30.htm",
+      "title": "Teradyne FY2025 Form 10-K, Restructuring and Other",
+      "publisher": "Teradyne / SEC EDGAR",
+      "date": "2026-02-19",
+      "supports": "risk_events[1], risk_events[2]"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/R102.htm",
+      "title": "Teradyne FY2025 Form 10-K, Restructuring and Other - Additional Information",
+      "publisher": "Teradyne / SEC EDGAR",
+      "date": "2026-02-19",
+      "supports": "risk_events[1] ($24.3M Robotics severance, $4.9M impairment)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/97210/000095017025023784/ter-20241231.htm",
+      "title": "Teradyne Form 10-K for 2024",
+      "publisher": "Teradyne / SEC EDGAR",
+      "date": "2025-02",
+      "supports": "risk_events[3], notes (75,000 cobots), openness_notes (ecosystem wording), flagship_projects (MiR models)"
+    },
+    {
+      "url": "https://stockanalysis.com/stocks/ter/market-cap/",
+      "title": "Teradyne (TER) Market Cap",
+      "publisher": "StockAnalysis.com",
+      "date": "2026-11-23",
+      "supports": "robustness, notes (Teradyne market cap)"
+    },
+    {
+      "url": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver",
+      "title": "UniversalRobots/Universal_Robots_ROS2_Driver",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "openness_current, license_history[1], hardware_extras, physical_science_relevance"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Teradyne",
+      "title": "Teradyne",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail (Teradyne HQ, ticker)"
+    }
+  ]
+}

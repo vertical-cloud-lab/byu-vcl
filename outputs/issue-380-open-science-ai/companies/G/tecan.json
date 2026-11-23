@@ -1,0 +1,146 @@
+{
+  "name": "Tecan Group AG",
+  "slug": "tecan",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "laboratory automation and liquid handling (Freedom EVO, Fluent), OEM instrument components and contract manufacturing (closed comparator)",
+  "hq_country": "CH",
+  "origin": "founder_startup",
+  "origin_detail": "Founded on 18 March 1980 by engineers Heinz Abplanalp, Heini Maurer, Heinz Möckli and Gallus Blater, first in Abplanalp's home in Hombrechtikon; the name stands for 'Technische Analysegeräte'. Perkin-Elmer held the majority of voting shares from 1997 and sold out in 1999, when Tecan relisted in the main segment of the SWX Swiss Exchange (SIX: TECN). HQ Männedorf, canton of Zürich.",
+  "founded_year": 1980,
+  "flagship_projects": [
+    "Genesis liquid-handling series (1990s)",
+    "Freedom EVO platform (2003)",
+    "Fluent laboratory automation (2014-2015) and FluentControl software",
+    "Cavro OEM liquid-handling components",
+    "Introspect and LabNavigator software (2024)",
+    "Paramit contract development and manufacturing (acquired 2021)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Instruments, firmware and control software (EVOware, FluentControl) are proprietary; no open-source releases or published design files were found on fetched Tecan pages, whose history page does not mention open interfaces or APIs. Third parties have opened the interface instead: the community PyLabRobot SDK (MIT) can drive a Tecan EVO, and its site does not list Tecan among its vendor supporters. Level 0 on the hardware scale throughout.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 1980,
+      "license": "Proprietary",
+      "note": "Closed instruments and software throughout; no relicensing found",
+      "source": "https://www.tecan.com/history"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {
+      "year": 1999,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "SWX Swiss Exchange (SIX: TECN)",
+      "note": "Second listing, in the main segment, after Perkin-Elmer sold its majority stake on the open market; Wikipedia does not give the original listing year",
+      "source": "https://en.wikipedia.org/wiki/Tecan"
+    }
+  ],
+  "latest_value_usd": 3608000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 1051000000,
+  "revenue_year": 2025,
+  "employees_latest": 3500,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "1989: financial difficulties led to a temporary suspension of share trading; 1990 restructuring sold many subsidiaries to focus on laboratory automation",
+    "2021: COVID-era peak; sales grew 29.5% to CHF 946.6M and Tecan made its largest acquisition ever (Paramit, US contract manufacturer, completed August 2021; price not found on fetched pages)",
+    "2022-2025: sales fell from CHF 1.14B (2022) to CHF 882.5M (2025), with declines of 6.1%, 13.0% and 5.5% in 2023-2025; trailing 12 months to June 2026 CHF 870.5M (-4.0%)",
+    "Market cap fell from CHF 7.04B (end-2021) to CHF 1.63B (end-2025), about -77%, before recovering to CHF 3.03B on 2026-11-23"
+  ],
+  "robustness": "A 46-year-old listed incumbent with ~3,500 staff in 52 countries and a diversified mix of own-brand automation, OEM components (Cavro) and contract manufacturing (Paramit). Its closed platforms tie customers to Tecan software and consumables; community drivers (PyLabRobot) give users a partial exit for the EVO but are unsupported by Tecan.",
+  "physical_science_relevance": "Tecan liquid handlers are built for life-science and diagnostics labs, but the same pipetting robots are used to prepare precursor solutions in chemistry and materials automation. For a self-driving lab, a Tecan EVO can be scripted from open Python via PyLabRobot rather than only through EVOware. Little direct relevance to LPBF alloy development, which is powder- and furnace-based rather than liquid-based.",
+  "openness_effect_assessment": "Tecan shows that a fully closed instrument incumbent can last decades and grow by acquisition: no openness was needed for its 1990s-2021 expansion. Its recent stress came from the end of pandemic demand (sales -23% from 2022 to 2025, market cap -77% from end-2021 to end-2025), not from open competitors. Openness reaches its machines only from outside, through community drivers such as PyLabRobot.",
+  "key_takeaway": "Tecan is the archetypal closed liquid-handling incumbent: founded by four engineers in 1980, listed since 1999 and built on proprietary Genesis, Freedom EVO and Fluent platforms plus OEM manufacturing. Its 2021 COVID peak and largest-ever acquisition were followed by four years of falling sales and a 77% fall in market value to end-2025. For an open lab, Tecan robots are usable mainly through community open-source drivers that Tecan does not sponsor.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (EVOware, FluentControl, Introspect)"
+    ],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "CHF converted at the ECB reference rates of 2026-11-23 (1 CHF = 1.1908 USD): market cap CHF 3.03B = $3.61B; 2025 sales CHF 882.48M = $1.051B.",
+    "Revenue series is from StockAnalysis.com (CHF 506.2M in 2016 rising to CHF 1.14B in 2022, then CHF 882.5M in 2025); the 2025 annual report site returned HTTP 500 and could not be checked.",
+    "employees_latest = about 3,500 (2023) per Wikipedia; no 2025 headcount was found.",
+    "Acquisition prices from Wikipedia: IBL International EUR 29.0M (2014), Sias ~CHF 25M (2015), SPEware $50M cash plus up to $10M earn-out (2016). The Paramit price was not stated on any fetched page.",
+    "Wikipedia names Monica Manotas as CEO and Tania Micki as CFO (infobox)."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Tecan",
+    "https://www.tecan.com/history",
+    "https://archive.tecanannualreport.com/en/annual-report-2021/investor-relations/introduction/",
+    "https://stockanalysis.com/quote/swx/TECN/market-cap/",
+    "https://stockanalysis.com/quote/swx/TECN/revenue/",
+    "https://pylabrobot.org/",
+    "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Tecan",
+      "title": "Tecan",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, exit_events[0], employees_latest, risk_events[0], notes (acquisition prices, CEO)"
+    },
+    {
+      "url": "https://www.tecan.com/history",
+      "title": "Tecan company history",
+      "publisher": "Tecan",
+      "date": "2026",
+      "supports": "origin_detail, flagship_projects (Fluent 2014-15, FluentControl 2021, Introspect 2024), risk_events[1] (Paramit August 2021, largest acquisition)"
+    },
+    {
+      "url": "https://archive.tecanannualreport.com/en/annual-report-2021/investor-relations/introduction/",
+      "title": "Tecan Annual Report 2021: introduction",
+      "publisher": "Tecan",
+      "date": "2022-03",
+      "supports": "risk_events[1] (Paramit described as OEM developer and manufacturer)"
+    },
+    {
+      "url": "https://stockanalysis.com/quote/swx/TECN/market-cap/",
+      "title": "Tecan Group (SWX:TECN) Market Cap",
+      "publisher": "StockAnalysis.com",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd, risk_events[3]"
+    },
+    {
+      "url": "https://stockanalysis.com/quote/swx/TECN/revenue/",
+      "title": "Tecan Group (SWX:TECN) Revenue",
+      "publisher": "StockAnalysis.com",
+      "date": "2026-11-23",
+      "supports": "revenue_latest_usd, risk_events[1], risk_events[2]"
+    },
+    {
+      "url": "https://pylabrobot.org/",
+      "title": "PyLabRobot",
+      "publisher": "PyLabRobot",
+      "date": "2026-11",
+      "supports": "openness_notes (Tecan EVO backend; Tecan not a listed supporter), physical_science_relevance"
+    },
+    {
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+      "title": "Euro foreign exchange reference rates",
+      "publisher": "European Central Bank",
+      "date": "2026-11-23",
+      "supports": "notes (CHF conversion)"
+    }
+  ]
+}

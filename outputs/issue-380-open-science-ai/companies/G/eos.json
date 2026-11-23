@@ -1,0 +1,145 @@
+{
+  "name": "EOS GmbH Electro Optical Systems",
+  "slug": "eos",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "industrial laser powder-bed fusion (DMLS/LPBF) metal and polymer (SLS) systems, materials and software",
+  "hq_country": "DE",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1989 in Graefelfing near Munich by Hans J. Langer (formerly European manager at General Scanning) and Hans Steinbichler, initially to build a stereolithography machine to BMW's specification; Carl Zeiss held a majority in the 1990s until Langer and investors bought back 75.1% in 1997. HQ Krailling since 2002. Family-owned via EOS Holding AG (Langer family holding companies) and led in the 'second generation' by Marie Niehaus-Langer.",
+  "founded_year": 1989,
+  "flagship_projects": [
+    "EOSINT M250 (1996), first commercial direct metal laser sintering (DMLS) system",
+    "EOS M 290 / M 400 / M 400-4 metal LPBF systems",
+    "EOS M4 ONYX (ordered x200 by VulcanForms, Nov 2026)",
+    "EOS P-series polymer SLS (FORMIGA P 110, P 500, P 770; HELIOR)",
+    "EOS Build / EOSPRINT, EOS Smart Monitoring, EOS APIs",
+    "AMCM large-format systems (M 8K)",
+    "Additive Minds consulting (2016)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Closed designs, firmware and software, sold with 'validated EOS Material Sets' (machine, material and process parameters 'from a single source'). Software is delivered through subscription 'EOS Software Plans'; EOS offers 'open software interfaces' (EOS APIs) and 'standardized data access' for integration, which are interfaces rather than open-licensed code. No open parameter files, designs or OSI-licensed software found. 0 at both dates, consistent with Formlabs' interface-only 'open' modes in group D.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 1996,
+      "license": "Proprietary; DMLS process exclusively licensed from Electrolux Rapid Development",
+      "note": "Patent cross-licence with 3D Systems from 1997 (laser sintering) and 2004 settlement",
+      "source": "https://de.wikipedia.org/wiki/EOS_GmbH"
+    },
+    {
+      "year": 2026,
+      "license": "Proprietary; subscription EOS Software Plans; 'open software interfaces' (APIs)",
+      "note": "EOS Build builds on EOSPRINT with validated EOS Material Sets",
+      "source": "https://www.eos.info/metal-solutions/metal-software"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_bootstrapped",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 394100000,
+  "revenue_year": 2022,
+  "employees_latest": 1420,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "1993-2004: patent litigation with 3D Systems over laser sintering (and EOS suit against DTM from 2000), settled in 2004 by cross-licensing; EOS pays royalties to 3D Systems on certain US laser-sintering system sales",
+    "1997: sold its stereolithography business to 3D Systems for about $3.25M and refocused on laser sintering",
+    "2020: group revenue fell from EUR 361.6M (2019) to EUR 275.6M, recovering to EUR 318.6M (2021) and EUR 360.3M (2022)",
+    "2023-2026: competition from lower-cost and Chinese LPBF makers and the bust of US metal-AM SPACs (Desktop Metal, Velo3D) did not visibly affect EOS, which reported large production orders in 2026 (VulcanForms 200 M4 ONYX systems; Beehive Industries >$50M)"
+  ],
+  "robustness": "High for a private hardware maker: 37 years old, family-controlled (no VC or public-market pressure), ~EUR 360M revenue and ~1,420 staff (2022), a large production site (Gernlinden, capacity up to 1,000 systems a year) and presence in 35 countries. The flip side for users is single-vendor dependence: validated parameters, monitoring and software plans are proprietary and subscription-based.",
+  "physical_science_relevance": "Central to LPBF: EOS commercialised DMLS (EOSINT M250, 1996), and the EOS M 290 is the listed machine for every one of its aluminium materials. Its aluminium portfolio includes AlSi10Mg (also from 100% recycled feedstock), AlF357 (AMS 4289), Al5X1, Al2139 AM and, since July 2026, Constellium's CP1, i.e. high-strength Al alloys of the kind the Digital Alloy Lab develops. But parameter sets are sold as 'validated EOS Material Sets' within proprietary software, so new-alloy work on EOS machines relies on vendor licences and interfaces; in-situ optical-tomography monitoring and APIs exist but are not open-licensed, which limits closed-loop self-driving-lab use compared with open-parameter research machines (e.g. Aconity3D).",
+  "openness_effect_assessment": "EOS shows that a closed, patent-licensed and family-owned LPBF incumbent can be durable: it never relied on open source or outside capital and has stayed independent since 1997 while US SPAC-funded rivals collapsed. Its closedness shapes the research ecosystem, as users must buy parameter sets and software plans, and it has added APIs and data access only as interfaces.",
+  "key_takeaway": "EOS is the reference closed LPBF incumbent: a Munich family company that commercialised DMLS in 1996, settled its patent war with 3D Systems by cross-licensing, and sells machines, materials and 'validated' parameters from a single source on subscription. Its durability (about EUR 360M revenue, no outside investors) contrasts with the SPAC-funded US metal-AM entrants. For an LPBF aluminium-alloy lab, EOS sets the closed, validated-parameter benchmark (AlSi10Mg, AlF357, Al5X1, Al2139 AM, Constellium CP1), and its parameter and software model is the opposite of open science.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (EOS Build/EOSPRINT, Smart Monitoring, System Suite) via subscription EOS Software Plans",
+      "EOS APIs ('open software interfaces', not open source)"
+    ],
+    "patents": "Exclusive licence to DMLS from Electrolux Rapid Development (patented 1989). Cross-licensing with 3D Systems (1997 for laser sintering; 2004 settlement with royalties on certain US sales).",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "No English Wikipedia article exists under EOS_GmbH or Electro_Optical_Systems (404); history, ownership and financials come from German Wikipedia, which cites the Bundesanzeiger consolidated accounts of EOS Holding AG for FY 2021/22 (Oct-Sep).",
+    "revenue_latest_usd = EUR 360.3M (FY2022, group) converted at the ECB reference rate of 2026-11-23 (1 EUR = 1.0939 USD); employees ~1,420 (2022, group). No newer figures were found on eos.info.",
+    "ownership_status 'private_bootstrapped' = family-owned without venture capital (EOS Holding AG shareholders: Life Interest Beteiligungs GmbH 52.96%, LHUM Vermoegensverwaltungs GmbH 38.08%, Hella Langer 8.96%, per Creditreform via German Wikipedia).",
+    "AMCM appears in EOS navigation; whether it is a group company was not confirmed."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://de.wikipedia.org/wiki/EOS_GmbH",
+    "https://www.eos.info/",
+    "https://www.eos.info/about-us/who-we-are",
+    "https://www.eos.info/metal-solutions/metal-software",
+    "https://www.eos.info/metal-solutions/metal-materials/aluminium",
+    "https://www.eos.info/press-media/press-center",
+    "https://www.eos.info/press-media/press-center/press-releases",
+    "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+  ],
+  "sources": [
+    {
+      "url": "https://de.wikipedia.org/wiki/EOS_GmbH",
+      "title": "EOS GmbH",
+      "publisher": "Wikipedia (German)",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, revenue_latest_usd, employees_latest, risk_events[0]-[2], license_history[0], hardware_extras.patents, robustness (Gernlinden), notes (ownership)"
+    },
+    {
+      "url": "https://www.eos.info/about-us/who-we-are",
+      "title": "Who we are",
+      "publisher": "EOS",
+      "date": "2026",
+      "supports": "founded_year, origin_detail (second-generation leadership), robustness (35 countries)"
+    },
+    {
+      "url": "https://www.eos.info/metal-solutions/metal-software",
+      "title": "Metal software",
+      "publisher": "EOS",
+      "date": "2026",
+      "supports": "openness_notes, license_history[1], hardware_extras.firmware_software_licenses, physical_science_relevance"
+    },
+    {
+      "url": "https://www.eos.info/metal-solutions/metal-materials/aluminium",
+      "title": "Aluminium (metal materials)",
+      "publisher": "EOS",
+      "date": "2026",
+      "supports": "physical_science_relevance (AlSi10Mg, AlF357, Al5X1, Al2139 AM, Constellium CP1)"
+    },
+    {
+      "url": "https://www.eos.info/press-media/press-center/press-releases",
+      "title": "Press releases",
+      "publisher": "EOS",
+      "date": "2026-11",
+      "supports": "risk_events[3], flagship_projects (M4 ONYX), physical_science_relevance (Constellium partnership, Jul 2026)"
+    },
+    {
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+      "title": "Euro foreign exchange reference rates",
+      "publisher": "European Central Bank",
+      "date": "2026-11-23",
+      "supports": "revenue_latest_usd (conversion)"
+    },
+    {
+      "url": "https://www.bundesanzeiger.de/",
+      "title": "EOS Holding Aktiengesellschaft - Konzernabschluss zum Geschaeftsjahr vom 01.10.2021 bis zum 30.09.2022",
+      "publisher": "Bundesanzeiger",
+      "date": "2023",
+      "supports": "revenue_latest_usd, employees_latest (cited by German Wikipedia, not fetched)"
+    }
+  ]
+}

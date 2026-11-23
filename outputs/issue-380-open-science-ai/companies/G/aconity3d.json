@@ -1,0 +1,81 @@
+{
+  "name": "Aconity3D GmbH",
+  "slug": "aconity3d",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "research-grade, open-parameter laser powder-bed fusion (LPBF) machines; also DED (wire) and polymer SLS",
+  "hq_country": "DE",
+  "origin": "founder_startup",
+  "origin_detail": "LPBF machine builder based in Herzogenrath near Aachen (commercial register HRB 18970, Amtsgericht Aachen), managed by Yves Hagedorn (Managing Director), Andreas Goerres (Technical Director) and Hendrik Blom (Technology & Data Science Director); US subsidiary AconityUS, Inc. in El Paso, TX. Founding year, founders and any RWTH Aachen / Fraunhofer ILT spin-off origin could not be confirmed from fetched pages.",
+  "founded_year": null,
+  "flagship_projects": [
+    "AconityMIDI / MIDI+ (research LPBF with preheating up to 1,200 C / 1,000 C)",
+    "AconityMINI and AconityMICRO (small build volume for material development)",
+    "AconityTWO and AconityX (production LPBF)",
+    "AconityWIRE (wire DED, robot-based)",
+    "AconityPolymer (SLS)",
+    "AconityPLATFORM (modular, configurable machine architecture)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Scored 0 on the licensing scale because no design files, firmware or OSI-licensed software are published. But it is the most 'open' LPBF vendor in operational terms: its research systems are 'Open systems for everyone who wants to understand the process'; 'every parameter and scan strategy is freely accessible' with laser control 'layer by layer and vector by vector'; users get full access to process and monitoring data ('synchronised process data is available for analysis and publication'), open interfaces for third-party sensors, and 'documented interfaces' to raw data. The company's mission statement leads with 'openness'. This is open access to the process, not open-source hardware.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": null, "license": "Proprietary machines and control software with open parameter and data access ('open machine philosophy')", "note": "No published licence terms found", "source": "https://aconity3d.com/industries/research/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [],
+  "robustness": "Small private company with no disclosed funding, revenue or headcount; it appears stable (2026 product launches, a second user conference in May 2026, Formnext 2026, ISO 9001, America Makes membership, a US subsidiary in El Paso). Because users get full parameter and data access, the process knowledge generated on its machines stays with the user and is publishable, which reduces lock-in compared with recipe-based vendors even though the machines themselves are proprietary.",
+  "physical_science_relevance": "The closest commercial match to an open-science LPBF alloy lab. Research configurations target 'new alloys and materials, superalloys and intermetallics, and graded or multi-material parts'; the AconityMINI research configuration shrinks the build to 55 mm diameter for 'material development with minimal powder'; MIDI/MIDI+ offer high-temperature preheating (up to 1,200 C / 1,000 C) for crack-prone alloys. Free access to every parameter, scan vector and synchronised sensor stream is what closed-loop or self-driving LPBF experiments (e.g. Bayesian optimisation of Al-alloy process windows) require. Listed users are mostly research institutions (ETH Zurich Inspire, IWT Bremen, UniBw Munich, FAU Erlangen-Nuernberg, Innsbruck, UTEP's W.M. Keck Center, TII). No aluminium-specific examples were given on the fetched pages.",
+  "openness_effect_assessment": "Aconity3D built its niche on process openness rather than open licensing: by selling machines whose parameters, scan strategies and data are fully accessible, it serves universities and institutes that need to publish process data, a market the 'validated parameter set' incumbents (EOS, Velo3D) serve poorly. Without financial disclosures its commercial outcome cannot be quantified.",
+  "key_takeaway": "Aconity3D shows a third path between open-source hardware and closed incumbents: proprietary machines sold as open research instruments, with every laser parameter and sensor stream exposed for analysis and publication. For a lab developing LPBF aluminium alloys and aiming for self-driving experiments, that open process access, not open CAD files, is the openness that matters, and it is a criterion to require when buying closed instruments.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": ["Proprietary"],
+    "firmware_software_licenses": ["Proprietary control software with open parameter access and documented data interfaces (licence terms not published)"],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "No Wikipedia article exists (English or German, 404). The company website does not state a founding year, founders, headcount or revenue; founded_year, ownership_status and financial fields are null.",
+    "Customer names come from logos listed on the homepage, not from case studies.",
+    "openness scores follow the licensing-based scale in SCHEMA.md; the operational openness (full parameter and data access) is recorded in openness_notes and physical_science_relevance."
+  ],
+  "confidence": "low",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://aconity3d.com/",
+    "https://aconity3d.com/about-us/",
+    "https://aconity3d.com/about-us/team/",
+    "https://aconity3d.com/about-us/platform/",
+    "https://aconity3d.com/about-us/jobs/",
+    "https://aconity3d.com/news/",
+    "https://aconity3d.com/news/how-new-systems-are-setting-benchmarks-in-productivity-precision-and-process-freedom/",
+    "https://aconity3d.com/imprint/",
+    "https://aconity3d.com/industries/research/"
+  ],
+  "sources": [
+    {"url": "https://aconity3d.com/industries/research/", "title": "Research (industries)", "publisher": "Aconity3D", "date": "2026", "supports": "openness_notes, license_history, physical_science_relevance, flagship_projects (preheating, MINI research configuration)"},
+    {"url": "https://aconity3d.com/", "title": "Aconity3D home", "publisher": "Aconity3D", "date": "2026", "supports": "origin_detail (AconityUS El Paso), openness_notes (mission), physical_science_relevance (customer logos), robustness"},
+    {"url": "https://aconity3d.com/imprint/", "title": "Imprint", "publisher": "Aconity3D", "date": "2026", "supports": "origin_detail (HRB 18970, managing directors)"},
+    {"url": "https://aconity3d.com/about-us/team/", "title": "Our team", "publisher": "Aconity3D", "date": "2026", "supports": "origin_detail (roles)"},
+    {"url": "https://aconity3d.com/about-us/platform/", "title": "AconityPLATFORM", "publisher": "Aconity3D", "date": "2026", "supports": "flagship_projects, openness_notes ('open configurable' systems)"},
+    {"url": "https://aconity3d.com/news/how-new-systems-are-setting-benchmarks-in-productivity-precision-and-process-freedom/", "title": "How new systems are setting benchmarks in productivity, precision and process freedom", "publisher": "Aconity3D", "date": "2026-03-23", "supports": "openness_notes ('open machine philosophy', documented interfaces)"},
+    {"url": "https://aconity3d.com/news/", "title": "News", "publisher": "Aconity3D", "date": "2026-11", "supports": "robustness (2026 activity)"}
+  ]
+}

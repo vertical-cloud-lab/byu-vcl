@@ -67,5 +67,46 @@
     {"url": "https://stockanalysis.com/stocks/sdgr/market-cap/", "title": "Schrödinger (SDGR) Market Cap", "publisher": "StockAnalysis.com", "date": "2026-11-23", "supports": "latest_value_usd, risk_events[2]"},
     {"url": "https://stockanalysis.com/stocks/sdgr/company/", "title": "Schrödinger (SDGR) Company Profile", "publisher": "StockAnalysis.com", "date": "2026-11", "supports": "exit_events[0], employees_latest"},
     {"url": "https://github.com/schrodinger/pymol-open-source", "title": "schrodinger/pymol-open-source", "publisher": "GitHub", "date": "2026-11", "supports": "openness_current, license_history[1]"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "exit_events[0].year",
+      "revenue_latest_usd",
+      "risk_events[1]",
+      "latest_value_usd"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 1990, "source": "https://www.schrodinger.com/company/about/", "evidence": "\"Founded in 1990 with continuous investment in R&D\" (official About page)"},
+      {"field": "exit_events[0].year", "value": 2020, "source": "https://www.sec.gov/Archives/edgar/data/1490978/000119312520026787/d766269d424b4.htm", "evidence": "424B4: \"This is our initial public offering\"; \"The initial public offering price is $17.00 per share.\"; \"Prospectus dated February 5, 2020\"; Nasdaq symbol \"SDGR\""},
+      {"field": "revenue_latest_usd", "value": 255900000, "source": "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000009/sdgr-20251231xexx991.htm", "evidence": "8-K EX-99.1 (2026-02-25): \"Total revenue was $255.9 million, a 23.3% increase.\"; table \"Total revenues\" 255,869 (in thousands)"},
+      {"field": "risk_events[1]", "value": "FY2025: revenue $255.9M (software $199.5M, +11%), net loss ~$103M", "source": "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000009/sdgr-20251231xexx991.htm", "evidence": "\"Software revenue was $199.5 million, a 10.6% increase.\"; \"Net loss for the full year was $103.3 million, compared to $187.1 million.\" (file rounds 10.6% to 11%)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "latest_value_usd", "reason": "Live market cap dated 2026-11-23 rests on StockAnalysis only. No primary page gives a dated market cap: the IR site's stock quote is not rendered and Wikipedia has none. Not re-fetched."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000010/FilingSummary.xml",
+      "https://en.wikipedia.org/wiki/Schr%C3%B6dinger,_Inc.",
+      "https://ir.schrodinger.com/news-releases (404)",
+      "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000010/R9.htm (no founding/IPO text)",
+      "https://ir.schrodinger.com/news-events/press-releases (404)",
+      "https://www.schrodinger.com/about/ (404)",
+      "https://www.schrodinger.com/",
+      "https://ir.schrodinger.com/ (no headlines rendered)",
+      "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1490978&type=424B4&dateb=&owner=include&count=10 (503)",
+      "https://www.schrodinger.com/company/about/",
+      "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000010/R16.htm (no IPO text)",
+      "https://www.sec.gov/Archives/edgar/data/1490978/index.json",
+      "https://www.sec.gov/Archives/edgar/data/1490978/000119312520026787/0001193125-20-026787-index.htm",
+      "https://www.sec.gov/Archives/edgar/data/1490978/000119312520026879/0001193125-20-026879-index.htm (404)",
+      "https://www.sec.gov/Archives/edgar/data/1490978/000119312520026787/d766269d424b4.htm",
+      "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000009/0001490978-26-000009-index.htm",
+      "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000009/sdgr-20251231xexx991.htm"
+    ],
+    "note": "exit_events[0].value_usd left null. The 424B4 gives base-deal 'Proceeds, before expenses, to us' of $187,859,985 (11,882,352 shares at $17.00), plus a 30-day option on 1,782,352 more shares. But recursion.json stores an IPO-day market cap in the same field, so IPO value_usd needs one convention before any fill. Wikipedia's 2025 revenue cites the same 10-K, so it is not independent; the 8-K release was used instead. employees_latest (850, StockAnalysis) conflicts with the official About page ('over 800 employees'; '~900' in its at-a-glance box) and Wikipedia (1,015); not changed. Founders still rest on Wikipedia's unsourced infobox. Confidence stays medium because the market cap is unconfirmed."
+  }
 }

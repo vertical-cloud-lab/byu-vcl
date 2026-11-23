@@ -185,5 +185,31 @@
     "2026 products per Framework's blog: Laptop 12 with Intel Core Series 3 (2026-08-18), 192GB Framework Desktop pre-orders (2026-09-30), Wireless Touchpad Keyboard pre-orders (2026-11-17).",
     "Wikipedia cites PCWorld (2026-04-24) and PCMag (2026-04-23) headlines saying the Linux Laptop 13 Pro outsold the Windows model; not fetched, no figures given.",
     "TechCrunch (2026-08-07) quotes a community-forum estimate of 'hundreds of thousands' of devices sold; not used because it is unverified."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "relicensing_events[0].year",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2020, "source": "https://frame.work/about", "evidence": "We started in the San Francisco Bay Area in 2020."},
+      {"field": "relicensing_events[0].year", "value": 2022, "source": "https://frame.work/blog/mainboard-availability-and-open-source-release", "evidence": "Post dated 'Apr 18 2022': 'released a GitHub repository of CAD and electrical documentation, all under an open-source Creative Commons license.'"},
+      {"field": "still_operating", "value": true, "source": "https://frame.work/blog", "evidence": "'Pre-orders open for Framework Wireless Touchpad Keyboard' (Nov 17 2026)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "No page states a total. Framework's own Series A post (Jan 27 2022, a different page from the cited Series A-1 post) confirms 'We’ve just raised an $18M Series A round' with 'Spark Capital as our lead investor', but gives no seed amount. frame.work/about mentions the Series A and 'a new round of funding' without amounts. The $9M seed and the $225k from Linus Sebastian still rest on Wikipedia alone. The blog index (to 2026-11-17) shows no newer round."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://frame.work/blog/frameworks-series-a-and-the-years-ahead",
+      "https://frame.work/about",
+      "https://frame.work/blog/mainboard-availability-and-open-source-release",
+      "https://frame.work/blog"
+    ],
+    "note": "relicensing_events[0].year is confirmed for the mainboard-documentation half of the 2022 opening (April 2022 post). The EC-firmware half (2022-01-21, BSD-3-Clause) still rests on the cited post. license_history[1] says the April 2022 licence was 'not verified'; the post says 'all under an open-source Creative Commons license' (version not named), so that entry could be updated by hand. frame.work/about says Framework releases 'hardware documentation, 3D printable designs, and open source firmware' under open-source licences, consistent with openness_current 2. Confidence stays medium because funding_total_usd is a Wikipedia-based sum."
+  }
 }

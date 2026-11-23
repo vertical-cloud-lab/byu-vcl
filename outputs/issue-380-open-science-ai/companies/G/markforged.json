@@ -1,0 +1,94 @@
+{
+  "name": "Markforged Holding Corporation (MarkForged, Inc.)",
+  "slug": "markforged",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "composite (continuous carbon fibre) FFF and bound-metal 3D printers, 'Digital Forge' platform",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2013 by Gregory Mark and CTO David Benhaim; launched the Mark One continuous-carbon-fibre printer at SolidWorks World 2014. Seed from North Bridge and Matrix (2013); later Microsoft Ventures (M12), Porsche SE, Trinity, Next47 and Summit Partners. Based in the Boston area (Watertown, later Waltham, MA).",
+  "founded_year": 2013,
+  "flagship_projects": [
+    "Mark One / Mark Two (continuous carbon fibre FFF, 2014/2016)",
+    "X7 / X3 / X5 industrial composites",
+    "Metal X (bound-metal printing, 2018)",
+    "FX10 (2023) with Metal Kit",
+    "PX100 metal binder jetting (from Digital Metal)",
+    "Eiger cloud software / The Digital Forge (2020)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Closed from launch: proprietary printers and materials, cloud-connected 'proprietary software' (FY2024 10-K: 'Our proprietary software provides a single platform to interact with many of our hardware devices', covering Simulation, Inspection, Performance Advisor and Digital Source), and a patent portfolio of 71 US and 94 foreign issued patents (2024). The Wikipedia article and the fetched filings mention no open-source origin (e.g. no RepRap lineage). Scored 0 at both dates.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2014, "license": "Proprietary (hardware, materials, Eiger cloud software)", "note": "Closed from the Mark One onward", "source": "https://en.wikipedia.org/wiki/Markforged"},
+    {"year": 2024, "license": "Proprietary (hardware, firmware, Digital Forge software)", "note": "71 US + 94 foreign issued patents, 61 pending or allowed", "source": "https://www.sec.gov/Archives/edgar/data/1816613/000095017025046869/mkfg-20241231.htm"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 136800000,
+  "funding_as_of": "2019-03",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2021, "type": "merger", "value_usd": 2100000000, "counterparty": "one (SPAC sponsored by A-star, led by Kevin Hartz; NYSE: AONE)", "note": "Announced 2021-02-24 at an implied pro forma equity value of ~$2.1B, with a ~$210M PIPE (Baron, BlackRock, Miller Value, Wasatch, Wellington, M12, Porsche) and up to $425M gross proceeds, on ~$70M 2020 revenue; closed 2021-07-14, NYSE: MKFG.", "source": "https://www.sec.gov/Archives/edgar/data/1816613/000110465921027194/tm217725d1_ex99-1.htm"},
+    {"year": 2025, "type": "acquisition", "value_usd": 116000000, "counterparty": "Nano Dimension Ltd.", "note": "Agreement 2024-09-25 at $5.00 cash per share (after a 1-for-10 reverse split in Sept 2024); CFIUS investigation; closed 2025-04-25, NYSE delisting and Form 15-12G (2025-05-09). Wikipedia values the transaction at $116M.", "source": "https://www.sec.gov/Archives/edgar/data/1816613/000119312525095190/d920700d8k.htm"},
+    {"year": 2026, "type": "acquisition", "value_usd": 42500000, "counterparty": "Stratasys Ltd.", "note": "Announced 2026-05-27: Nano Dimension to sell MarkForged, Inc. (FFF/composites business, ~$70M 2025 revenue including the metal binder jetting line that Nano keeps) to Stratasys for $42.5M cash; closing expected 2H 2026 (not confirmed as closed).", "source": "https://investors.stratasys.com/news-events/press-releases/detail/984/stratasys-to-acquire-markforged-inc-expanding-aerospace"}
+  ],
+  "latest_value_usd": 42500000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2026-05",
+  "revenue_latest_usd": 85100000,
+  "revenue_year": 2024,
+  "employees_latest": 270,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2018: sued by Desktop Metal over metal-printing patents and alleged IP theft; a July 2018 ruling favoured Markforged",
+    "Jul 2021: listed via the 'one' SPAC at ~$2.1B implied equity value on ~$70M revenue",
+    "Apr 2024: jury verdict of $17.3M for Continuous Composites (patent case); Sept 2024 settlement with $18M paid 2024-10-10 plus $1M/$2M/$4M due in Q4 2025-2027, secured on patent rights",
+    "2023-2024: revenue fell from $93.8M to $85.1M with net losses of $103.6M and $85.6M; 1-for-10 reverse split effective 2024-09-19",
+    "Apr 2025: taken private by Nano Dimension at $5.00/share (~$116M); CEO Shai Terem and CFO resigned",
+    "May 2026: resold to Stratasys for $42.5M, about 2% of the 2021 SPAC equity value (my arithmetic)"
+  ],
+  "robustness": "Low as an independent entity: two changes of owner in about a year, with the composites business heading into Stratasys and the binder-jetting line staying with Nano Dimension. Customers rely on closed, cloud-connected software and proprietary consumables, so continuity depends on the new owner's support decisions. An installed base in '10,000 facilities across 70 countries' (2021) gives the acquirer a reason to keep supporting it.",
+  "physical_science_relevance": "Not a laser powder-bed fusion vendor. Its metal line (Metal X: 17-4 PH, copper, H13, Inconel 625, D2; FX10 Metal Kit; PX100 binder jetting) is extrusion- or binder-based plus sintering, and it offers no aluminium alloy; its continuous-carbon-fibre parts are marketed to 'replace machined aluminum parts'. Relevant to a lab mainly for strong fixtures, grippers and enclosures for automated rigs, not for alloy development. Closed cloud software limits scripted, self-driving-lab use.",
+  "openness_effect_assessment": "Markforged was closed by design and relied on patents both offensively and defensively; the patent strategy cost it a $17.3M verdict and an ~$25M settlement in 2024. Openness had no visible role in its rise (SPAC at ~$2.1B) or fall (resold for $42.5M in 2026); the decline tracked weak revenue growth, losses and post-SPAC re-pricing rather than licensing choices.",
+  "key_takeaway": "Markforged is a SPAC-era closed-hardware story: about $137M of venture money and a ~$2.1B SPAC valuation in 2021, then a 1-for-10 reverse split, a patent loss, a $116M take-private by Nano Dimension in 2025 and a $42.5M resale to Stratasys in 2026. Its proprietary, cloud-tied printers changed hands twice in thirteen months, which is the vendor-continuity risk a lab takes on when it buys closed AM hardware.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": ["Proprietary"],
+    "firmware_software_licenses": ["Proprietary (Eiger / Digital Forge cloud software, firmware)"],
+    "patents": "71 US and 94 foreign issued patents, 61 pending or allowed (FY2024 10-K); >170 issued and pending (Feb 2021). Lost a 2024 jury verdict ($17.3M) to Continuous Composites and settled; won a 2018 ruling against Desktop Metal.",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "funding_total_usd is Wikipedia's 'total of $136.8M raised by March 2019' (pre-SPAC venture money); SPAC proceeds (up to $425M gross) are separate.",
+    "The Nano Dimension closing press release on GlobeNewswire returned 403, so the $116M value rests on Wikipedia's citation of it.",
+    "The Stratasys purchase was announced, with closing expected in 2H 2026; its completion was not confirmed in the fetched Stratasys Q3 2026 release, which does not mention it.",
+    "employees_latest = 270 full-time employees at 2024-12-31 (FY2024 10-K); revenue_latest = FY2024. Stratasys gives ~$70M 2025 revenue for the business including binder jetting."
+  ],
+  "confidence": "high",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Markforged",
+    "https://data.sec.gov/submissions/CIK0001816613.json",
+    "https://www.sec.gov/Archives/edgar/data/1816613/000110465921027194/",
+    "https://www.sec.gov/Archives/edgar/data/1816613/000110465921027194/tm217725d1_ex99-1.htm",
+    "https://www.sec.gov/Archives/edgar/data/1816613/000110465921092201/tm2122182d1_8k.htm",
+    "https://www.sec.gov/Archives/edgar/data/1816613/000095017025046869/mkfg-20241231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1816613/000119312525095190/d920700d8k.htm",
+    "https://investors.stratasys.com/news-events/press-releases/detail/984/stratasys-to-acquire-markforged-inc-expanding-aerospace"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Markforged", "title": "Markforged", "publisher": "Wikipedia", "date": "2026", "supports": "founded_year, origin_detail, funding_total_usd, exit_events[1] ($116M), risk_events[0], license_history[0]"},
+    {"url": "https://www.sec.gov/Archives/edgar/data/1816613/000110465921027194/tm217725d1_ex99-1.htm", "title": "Markforged, leader in additive manufacturing, to become publicly listed through merger with one (8-K Ex. 99.1)", "publisher": "SEC EDGAR / Markforged", "date": "2021-02-24", "supports": "exit_events[0], risk_events[1], robustness (10,000 facilities, 70 countries), hardware_extras.patents (>170)"},
+    {"url": "https://www.sec.gov/Archives/edgar/data/1816613/000110465921092201/tm2122182d1_8k.htm", "title": "one / Markforged Holding Corp 8-K: completion of business combination", "publisher": "SEC EDGAR", "date": "2021-07-14", "supports": "exit_events[0] (closing 2021-07-14, NYSE: MKFG)"},
+    {"url": "https://www.sec.gov/Archives/edgar/data/1816613/000095017025046869/mkfg-20241231.htm", "title": "Markforged Holding Corp Form 10-K for fiscal 2024", "publisher": "SEC EDGAR", "date": "2025-03-28", "supports": "revenue_latest_usd, employees_latest, openness_notes, license_history[1], risk_events[2], risk_events[3], exit_events[1] (agreement terms), physical_science_relevance, hardware_extras"},
+    {"url": "https://www.sec.gov/Archives/edgar/data/1816613/000119312525095190/d920700d8k.htm", "title": "Markforged 8-K: completion of merger with Nano Dimension", "publisher": "SEC EDGAR", "date": "2025-04-25", "supports": "exit_events[1], risk_events[4]"},
+    {"url": "https://data.sec.gov/submissions/CIK0001816613.json", "title": "Markforged Holding Corp EDGAR submissions (former name 'one')", "publisher": "SEC EDGAR", "date": "2026-11", "supports": "exit_events[1] (Form 25 2025-04-25, Form 15-12G 2025-05-09)"},
+    {"url": "https://investors.stratasys.com/news-events/press-releases/detail/984/stratasys-to-acquire-markforged-inc-expanding-aerospace", "title": "Stratasys to Acquire MarkForged, Inc., Expanding Aerospace, Defense, and Industrial Production Capabilities", "publisher": "Stratasys (press release)", "date": "2026-05-27", "supports": "exit_events[2], latest_value_usd, risk_events[5], notes"},
+    {"url": "https://www.globenewswire.com/news-release/2025/04/25/3068305/0/en/Nano-Dimension-Announces-Closing-of-Markforged-Acquisition.html", "title": "Nano Dimension Announces Closing of Markforged Acquisition", "publisher": "GlobeNewswire", "date": "2025-04-25", "supports": "exit_events[1] (cited by Wikipedia, not fetched: 403)"}
+  ]
+}

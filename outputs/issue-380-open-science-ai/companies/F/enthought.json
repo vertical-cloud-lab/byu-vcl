@@ -49,12 +49,36 @@
     "2025-2026 items on enthought.com (agentic-AI survey 'The Ambition Gap ... in 2026', appointment of Toshio Mii as chairman for Japan, 2025 R&D Innovation Summit in Tokyo) are undated on the page and treated as unconfirmed for dating purposes.",
     "enthought.com also claims credit for scikit-learn and wxPython; these self-reported claims were not verified and are not used."
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "search_tool": "WebFetch (search budget exhausted)",
   "fetched_urls": ["https://en.wikipedia.org/wiki/Enthought", "https://www.enthought.com/about/ (404)", "https://www.enthought.com/company/", "https://www.enthought.com/"],
   "sources": [
     {"url": "https://en.wikipedia.org/wiki/Enthought", "title": "Enthought", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, license_history, flagship_projects"},
     {"url": "https://www.enthought.com/company/", "title": "Company", "publisher": "Enthought", "date": null, "supports": "SciPy conference, CEO, usage_metrics, 25 years"},
     {"url": "https://www.enthought.com/", "title": "Enthought home page", "publisher": "Enthought", "date": null, "supports": "current services and AI offerings, target industries, risk_events[0], physical_science_relevance"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "hq_country",
+      "license_history[0].license",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2001, "source": "https://www.enthought.com/company/", "evidence": "\"CEO Eric Jones PhD founded Enthought in 2001\" (official company page; the file cited only Wikipedia for this)"},
+      {"field": "hq_country", "value": "US", "source": "https://github.com/enthought", "evidence": "organization location \"Austin, TX\"; also \"(C) Copyright 2005-2026 Enthought, Inc., Austin, TX\" in traits LICENSE.txt"},
+      {"field": "license_history[0].license", "value": "BSD-style for most published code (Enthought Tool Suite)", "source": "https://github.com/enthought/traits/blob/main/LICENSE.txt", "evidence": "\"This software is OSI Certified Open Source Software.\" ... \"Neither the name of Enthought, Inc. nor the names of its contributors may be used to endorse or promote products\" (3-clause BSD)"},
+      {"field": "still_operating", "value": true, "source": "https://github.com/enthought/traits/blob/main/LICENSE.txt", "evidence": "\"(C) Copyright 2005-2026 Enthought, Inc., Austin, TX\"; company page: \"25\" \"Years Building Enterprise Scientific AI and Machine Learning Solutions\""}
+    ],
+    "contradicted": [],
+    "unconfirmed": [],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "founded_year (2001) is now confirmed by the official enthought.com company page in addition to the cited Wikipedia article, and the BSD licence of the Tool Suite by the primary traits LICENSE.txt; US HQ (Austin, TX) and current operation are confirmed by official GitHub pages. Nothing contradicted. Ownership and all financial fields remain null."},
+    "fetched_urls": [
+      "https://www.enthought.com/company/",
+      "https://github.com/enthought/traits/blob/main/LICENSE.txt",
+      "https://github.com/enthought"
+    ],
+    "note": "Co-founder Travis Vaught and the 2013 Canopy launch (license_history[1]) still rest on Wikipedia alone; the official company page names only Eric Jones as founder and does not mention Canopy or EPD. usage_metrics have date null (self-reported, undated on the page). ownership_status null: no page reached states ownership."
+  }
 }

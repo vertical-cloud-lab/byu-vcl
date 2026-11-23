@@ -1,0 +1,4 @@
+# Intermediate media (re-creatable with scripts/tts_narration.py and scripts/build_video.py)
+video/audio/*.wav
+video/scenes/*.mp4
+video/av/

@@ -44,20 +44,20 @@ def s_open_science_value(duration, mp4, png):
     fig = plt.figure(figsize=(W, H), dpi=DPI)
     fig.text(0.06, 0.92, "Open science is cheap to run and expensive to lose", fontsize=36, fontweight="bold")
     fig.text(0.06, 0.865, "Annual cost vs measured value of the Protein Data Bank; savings from open scientific hardware", fontsize=21, color=TEXT2)
-    ax1 = fig.add_axes((0.06, 0.16, 0.42, 0.6)); ax2 = fig.add_axes((0.56, 0.16, 0.39, 0.6))
+    ax1 = fig.add_axes((0.17, 0.16, 0.31, 0.6)); ax2 = fig.add_axes((0.67, 0.16, 0.28, 0.6))
     source_note(fig, "Sources: Sullivan, Brennan-Tonetta & Marxen (RCSB PDB economic impact, 2017; 2016 activity); Pearce (2020), 119 open hardware designs vs commercial equivalents.")
-    rows = [("PDB operating cost", 6.9e6), ("R&D return (conservative)", 1.1e9), ("Efficiency gain", 2.5e9), ("Use value (researcher time)", 5.5e9)]
+    rows = [("Operating cost", 6.9e6), ("R&D return", 1.1e9), ("Efficiency gain", 2.5e9), ("Use value", 5.5e9)]
     ax1.set_xscale("log"); ax1.set_xlim(1e6, 3e10); ax1.invert_yaxis(); ax1.set_ylim(-0.6, 3.6)
     ax1.set_yticks(range(4)); ax1.set_yticklabels([r[0] for r in rows], fontsize=17, color=TEXT); ax1.tick_params(axis="y", length=0)
     ax1.xaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: money(v) + "/yr")); ax1.grid(axis="y", visible=False)
-    ax1.set_title("Protein Data Bank, per year", loc="left", fontsize=22, color=TEXT2)
+    ax1.set_title("Protein Data Bank, per year (2016)", loc="left", fontsize=20, color=TEXT2)
     b1 = ax1.barh(range(4), [1e6] * 4, height=0.55, color=[ORANGE, BLUE, BLUE, BLUE])
     t1 = [ax1.text(1e6, i, "", va="center", fontsize=20, fontweight="bold") for i in range(4)]
     hw = [("Average, 119 designs", 87), ("Arduino-based", 89), ("3D-printed", 92), ("Arduino + 3D-printed", 94)]
     ax2.set_xlim(0, 100); ax2.invert_yaxis(); ax2.set_ylim(-0.6, 3.6)
     ax2.set_yticks(range(4)); ax2.set_yticklabels([h[0] for h in hw], fontsize=17, color=TEXT); ax2.tick_params(axis="y", length=0)
     ax2.xaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"{v:.0f}%")); ax2.grid(axis="y", visible=False)
-    ax2.set_title("Open scientific hardware: savings vs commercial", loc="left", fontsize=22, color=TEXT2)
+    ax2.set_title("Open hardware: savings vs commercial", loc="left", fontsize=20, color=TEXT2)
     b2 = ax2.barh(range(4), [0] * 4, height=0.55, color=AQUA)
     t2 = [ax2.text(0, i, "", va="center", fontsize=20, fontweight="bold") for i in range(4)]
     call = fig.text(0.06, 0.80, "", fontsize=22, color=TEXT)
@@ -219,7 +219,7 @@ def s_coss_vc(duration, mp4, png):
     ax2.set_yticks(range(len(rows))); ax2.set_yticklabels([r[0] for r in rows], fontsize=16, color=TEXT); ax2.tick_params(axis="y", length=0)
     ax2.axvline(1, color=TEXT2, lw=1.2, ls=(0, (4, 4))); ax2.grid(axis="y", visible=False)
     ax2.xaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"{v:.1f}×"))
-    ax2.set_title("COSS relative to matched closed peers (1× = same)", loc="left", fontsize=20, color=TEXT2)
+    ax2.set_title("COSS vs matched closed peers (1× = same)", loc="left", fontsize=19, color=TEXT2)
     bars2 = ax2.barh(range(len(rows)), [0] * len(rows), left=1, height=0.55, color=AQUA)
     t2 = [ax2.text(1, i, "", va="center", fontsize=17, color=TEXT) for i in range(len(rows))]
     def update(p):

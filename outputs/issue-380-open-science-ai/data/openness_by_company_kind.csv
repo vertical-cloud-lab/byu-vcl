@@ -1,0 +1,6 @@
+kind,n,mean_open_initial,mean_open_now,mean_change,share_closing_move,share_opening_move,median_value_B
+VC-era company (founded 2000+),71,1.86,1.52,-0.34,0.48,0.3,5.0
+bootstrapped,3,3.0,2.67,-0.33,0.33,0.67,
+long-standing (founded <2000),20,1.3,1.8,0.5,0.4,0.5,213.86
+other/unknown,9,2.11,2.0,-0.11,0.11,0.11,
+public/nonprofit infrastructure,18,3.33,3.61,0.28,0.06,0.11,0.01

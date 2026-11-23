@@ -6,8 +6,8 @@
   "subcategory": "workflow orchestration (Python) / agentic orchestration",
   "hq_country": "US",
   "origin": "founder_startup",
-  "origin_detail": "Venture-backed startup behind the Prefect Python workflow framework; remote-first. Founder (commonly reported as Jeremiah Lowin) and founding year were not confirmed in fetched pages",
-  "founded_year": null,
+  "origin_detail": "Venture-backed startup behind the Prefect Python workflow framework; remote-first. Founded in 2018 by Jeremiah Lowin, its founder and CEO (per Prefect's own 13 Jul 2026 Dagster acquisition letter)",
+  "founded_year": 2018,
   "flagship_projects": ["Prefect (Apache-2.0)", "Prefect Cloud", "FastMCP", "Dagster (acquired 2026)"],
   "openness_initial": 2,
   "openness_current": 2,
@@ -38,7 +38,7 @@
   "physical_science_relevance": "Prefect is used by research and lab-automation teams to orchestrate Python data and instrument workflows (e.g. self-driving-lab pipelines), as a lighter alternative to Airflow.",
   "openness_effect_assessment": "An Apache-2.0 core gave Prefect a developer community that let it survive as a smaller rival to the ASF-governed Airflow and, in 2026, absorb its direct open-source competitor (Dagster) rather than be squeezed out. No evidence was found of licence tightening; consolidation, not relicensing, was its response to a crowded market.",
   "key_takeaway": "Prefect illustrates the 'second-generation open-core' pattern in data tooling: permissive licence, a hosted cloud for revenue, and a 2026 consolidation move (buying Dagster) plus a pivot to AI agent orchestration (FastMCP). Its financial size is opaque, so conclusions about value are weak.",
-  "confidence": "low",
+  "confidence": "medium",
   "search_tool": "WebFetch (search budget exhausted)",
   "fetched_urls": [
     "https://www.prefect.io/blog",
@@ -54,5 +54,34 @@
   "notes": [
     "founded_year, founder, funding, valuation, revenue and headcount null: Prefect's blog index did not render, and Wikipedia has no article (Prefect_(software) and Prefect_Technologies returned 404). The commonly cited founder (Jeremiah Lowin) and founding year (~2018) are unverified here.",
     "Failed fetches: https://en.wikipedia.org/wiki/Prefect_(software) (404), https://en.wikipedia.org/wiki/Prefect_Technologies (404), https://techcrunch.com/tag/prefect/ (404), https://www.prefect.io/blog/prefect-is-acquiring-dagster (post not found)."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "origin_detail",
+      "license_history[0].license",
+      "flagship_projects[3]",
+      "funding_total_usd"
+    ],
+    "confirmed": [
+      {"field": "license_history[0].license", "value": "Apache-2.0 (prefect)", "source": "https://github.com/PrefectHQ/prefect/blob/main/LICENSE", "evidence": "\"Apache License\" \"Version 2.0, January 2004\"; \"Copyright 2019- Prefect Technologies, Inc.\" (the LICENSE file itself, not the repo landing page cited)"},
+      {"field": "flagship_projects[3]", "value": "Dagster (acquired 2026)", "source": "https://www.prefect.io/blog/prefect-is-acquiring-dagster-labs", "evidence": "\"A letter from Jeremiah Lowin, founder and CEO of Prefect · July 13, 2026\": \"Prefect is acquiring Dagster Labs to build the most innovative automation company for the age of AI.\""}
+    ],
+    "contradicted": [
+      {"field": "founded_year", "old": null, "new": 2018, "source": "https://www.prefect.io/blog/prefect-is-acquiring-dagster-labs", "evidence": "\"Prefect and Dagster were both founded in 2018\" (Prefect blog letter by founder and CEO Jeremiah Lowin, 2026-07-13; same sentence on https://www.prefect.io/prefect-acquires-dagster)", "applied": true, "note": "Null filled from Prefect's own official announcement (primary page), stated identically on a second Prefect page."},
+      {"field": "origin_detail", "old": "Venture-backed startup behind the Prefect Python workflow framework; remote-first. Founder (commonly reported as Jeremiah Lowin) and founding year were not confirmed in fetched pages", "new": "Venture-backed startup behind the Prefect Python workflow framework; remote-first. Founded in 2018 by Jeremiah Lowin, its founder and CEO (per Prefect's own 13 Jul 2026 Dagster acquisition letter)", "source": "https://www.prefect.io/blog/prefect-is-acquiring-dagster-labs", "evidence": "\"A letter from Jeremiah Lowin, founder and CEO of Prefect · July 13, 2026\"; \"Prefect and Dagster were both founded in 2018\"", "applied": true, "note": "Companion edit so origin_detail no longer says the founder and founding year are unconfirmed; rest of the text unchanged."}
+    ],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "Still null. prefect.io/sitemap.xml lists 33 /blog/ posts and no funding, press or news post; both Dagster acquisition pages give no funding, investors, valuation, revenue or headcount (the letter calls Prefect 'a profitable, fast-growing business'). No Wikipedia article (per original notes)."}
+    ],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "The file's key non-null facts are now two-sourced: the Apache-2.0 licence (cited repo page plus the LICENSE file) and the 2026 Dagster acquisition (cited dagster.io post plus Prefect's own letter and acquisition page). founded_year was filled from Prefect's own announcement. Nothing left contradicted. Funding, valuation, revenue and headcount remain null."},
+    "fetched_urls": [
+      "https://www.prefect.io/sitemap.xml (33 /blog/ URLs; none about funding, press or news)",
+      "https://github.com/PrefectHQ/prefect/blob/main/LICENSE",
+      "https://www.prefect.io/blog/prefect-is-acquiring-dagster-labs",
+      "https://www.prefect.io/prefect-acquires-dagster"
+    ],
+    "note": "Prefect's letter confirms the Dagster deal but gives no terms, closing date or staff count ('Many members of the Dagster team are joining Prefect'); the 'about 40 Dagster staff' in risk_events[0] rests on the dagster.io post alone. notes[0] (founded_year and founder unverified) predates this pass. ownership_status 'private_vc' is unconfirmed: no page reached mentions investors."
+  }
 }

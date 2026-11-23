@@ -62,5 +62,29 @@
     {"url": "https://github.com/Radical-AI/torch-sim", "title": "Radical-AI/torch-sim", "publisher": "GitHub", "date": "2026-11", "supports": "openness_current (MIT, stars/forks)"},
     {"url": "https://www.radical-ai.com/news", "title": "Radical AI news", "publisher": "Radical AI", "date": "2026-10-26", "supports": "origin_detail, risk_events[1], risk_events[2], physical_science_relevance, flagship_projects"},
     {"url": "https://www.radical-ai.com/", "title": "Radical AI home page", "publisher": "Radical AI", "date": "2026-11", "supports": "flagship_projects (Makino), risk_events[2]"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "funding_total_usd",
+      "openness_current",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "openness_current", "value": 1, "source": "https://pypi.org/project/torch-sim-atomistic/", "evidence": "License: 'The MIT License (MIT) Copyright 2025 Radical AI'; first release 0.1.0 on Apr 3, 2025 (matches TorchSim MIT open-sourcing in Apr 2025; the GitHub LICENSE file says the same but is the same repo as the cited page)"},
+      {"field": "still_operating", "value": true, "source": "https://pypi.org/project/torch-sim-atomistic/", "evidence": "Latest release 0.6.2 on Sep 23, 2026 (indirect evidence of activity, alongside the cited Oct 2026 news items)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "$55M appears only in the company's own 18 Jul 2025 post (cited). The post names no investors, so there is no investor announcement to cross-check, and en.wikipedia.org/wiki/Radical_AI returns 404."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://en.wikipedia.org/wiki/Radical_AI (404)",
+      "https://github.com/Radical-AI/torch-sim/blob/main/LICENSE",
+      "https://www.radical-ai.com/news/series-seed (re-read; cited page)",
+      "https://pypi.org/project/torch-sim-atomistic/"
+    ],
+    "note": "founded_year stays null; nothing fetched states it. Confidence left at low: the openness facts are now double-sourced, but funding rests on one company page."
+  }
 }

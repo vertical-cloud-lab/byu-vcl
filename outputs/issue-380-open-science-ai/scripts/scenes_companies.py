@@ -11,7 +11,7 @@ OUT = "video/scenes"; FIG = "figures"
 M = pd.read_csv("companies/companies_master.csv"); E = pd.read_csv("companies/events.csv")
 SHORT = {}
 PREFIX = {"Pivotal": "Pivotal / SpringSource", "RCSB Protein Data Bank": "Protein Data Bank (RCSB)", "LAMMPS": "LAMMPS (Sandia)",
-          "DOE CODE": "DOE CODE (national labs)", "The Apache Software": "Apache Software Fdn.", "MySQL AB": "MySQL AB", "Google DeepMind": "Google DeepMind (science)",
+          "DOE CODE": "DOE CODE (national labs)", "The Apache Software": "Apache Software Fdn.", "MySQL AB": "MySQL AB", "Google DeepMind": "DeepMind (science)",
           "International Business": "IBM", "Alibaba": "Alibaba (Qwen)", "Allen Institute": "Ai2", "Raspberry Pi": "Raspberry Pi", "Open Compute": "Open Compute Project",
           "RISC-V": "RISC-V International", "Tiger Data": "Timescale / Tiger Data", "The Materials Project": "Materials Project", "The Linux Foundation": "Linux Foundation",
           "The HDF Group": "HDF Group", "Zenodo": "Zenodo (CERN)", "OpenFlexure": "OpenFlexure", "Jubilee": "Jubilee (UW)", "Quantum ESPRESSO": "Quantum ESPRESSO",
@@ -170,10 +170,10 @@ def s_ai_values(duration, mp4, png):
     ax.set_yticks(range(n)); ax.set_yticklabels(d.lab, fontsize=20, color=TEXT); ax.tick_params(axis="y", length=0)
     ax.xaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: money(v))); ax.grid(axis="y", visible=False)
     bars = ax.barh(range(n), [1e9] * n, height=0.6, color=[OPEN_COL[o] for o in d.oc])
-    note = {"Anthropic": "public, Nov 2026", "OpenAI": "private, Apr 2026", "xAI": "bought by SpaceX, Feb 2026", "DeepSeek": "pre-money, Oct 2026", "Hugging Face": "NVIDIA deal, Sep 2026"}
+    note = {"Anthropic": "public, Nov 2026", "OpenAI": "private, Mar 2026", "xAI": "bought by SpaceX, Feb 2026", "DeepSeek": "pre-money, Oct 2026", "Hugging Face": "NVIDIA deal, Sep 2026"}
     txt = [ax.text(1e9, i, "", va="center", fontsize=18, color=TEXT) for i in range(n)]
     hs = [Patch(color=OPEN_COL[k], label=OPEN_LAB[k]) for k in sorted(set(d.oc), reverse=True)]
-    fig.legend(handles=hs, loc="center left", bbox_to_anchor=(0.80, 0.5), fontsize=17, title="Openness today", title_fontsize=18, labelcolor=TEXT)
+    ax.legend(handles=hs, loc="lower right", fontsize=16, title="Openness today", title_fontsize=17, labelcolor=TEXT)
     vals = d.latest_value_usd.values; labs = d.lab.values
     def update(p):
         for i in range(n):
@@ -214,7 +214,38 @@ def s_stocks(duration, mp4, png):
                 t.set_text(f"{lab.split(' (')[0]} ${ss.values[-1]:.2f}" if p >= 1 else "")
     render(fig, update, duration, mp4, png)
 
-SCENES = {"values": s_values, "relicense": s_relicense, "lanes_software": s_lanes_software, "lanes_hardware": s_lanes_hardware,
+
+# ---------------------------------------------------------------- who opens, who closes (by kind of organization)
+def s_kinds(duration, mp4, png):
+    t = pd.read_csv("data/openness_by_company_kind.csv").set_index("kind")
+    rows = [("VC-era company (founded 2000+)", "Companies founded since 2000\n(mostly venture-backed)"),
+            ("long-standing (founded <2000)", "Companies founded before 2000"),
+            ("public/nonprofit infrastructure", "Government, academic and\nfoundation infrastructure")]
+    fig, ax = fig_ax("Who opens, who closes", "Mean openness (0 closed – 4 open + open governance) at founding and today, across the 121 case files",
+                     rect=(0.27, 0.16, 0.50, 0.62))
+    source_note(fig, "Source: data/openness_by_company_kind.csv, from companies_master.csv (rubric in companies/SCHEMA.md). Convenience sample of notable organizations.")
+    ax.set_xlim(0, 4); ax.set_ylim(-0.6, len(rows) - 0.4); ax.invert_yaxis(); ax.set_yticks(range(len(rows)))
+    ax.set_yticklabels([r[1] for r in rows], fontsize=18, color=TEXT); ax.tick_params(axis="y", length=0); ax.grid(axis="y", visible=False)
+    ax.set_xlabel("mean openness score")
+    a0 = ax.scatter([], [], s=260, color=MUTED, zorder=3, label="At founding")
+    a1 = ax.scatter([], [], s=260, color=BLUE, zorder=4, edgecolors=SURFACE, linewidths=2, label="Today")
+    ax.legend(loc="lower right", fontsize=17)
+    arrows = [ax.annotate("", xy=(0, i), xytext=(0, i), arrowprops=dict(arrowstyle="-|>", color=TEXT2, lw=2.5, mutation_scale=22)) for i in range(len(rows))]
+    side = [fig.text(0.79, 0.0, "", fontsize=17, color=TEXT, va="center") for _ in rows]
+    def update(p):
+        xs0, xs1 = [], []
+        for i, (k, lab) in enumerate(rows):
+            o0, o1 = t.loc[k, "mean_open_initial"], t.loc[k, "mean_open_now"]
+            q = ease((p - i * 0.15) / 0.45); x1 = o0 + (o1 - o0) * q
+            xs0.append((o0, i)); xs1.append((x1, i))
+            arrows[i].xy = (x1, i); arrows[i].set_position((o0, i))
+            yfig = 0.16 + 0.62 * (1 - (i + 0.6) / (len(rows) + 0.2))
+            side[i].set_y(yfig)
+            side[i].set_text(f"n = {int(t.loc[k, 'n'])}\n{t.loc[k, 'mean_change']:+.2f} change\n{t.loc[k, 'share_closing_move']:.0%} made a closing move" if q > 0.98 else "")
+        a0.set_offsets(xs0); a1.set_offsets(xs1)
+    render(fig, update, duration, mp4, png)
+
+SCENES = {"kinds": s_kinds, "values": s_values, "relicense": s_relicense, "lanes_software": s_lanes_software, "lanes_hardware": s_lanes_hardware,
           "lanes_science": s_lanes_science, "lanes_ai": s_lanes_ai, "ai_values": s_ai_values, "stocks": s_stocks}
 if __name__ == "__main__":
     name = sys.argv[1]; dur = float(sys.argv[2])

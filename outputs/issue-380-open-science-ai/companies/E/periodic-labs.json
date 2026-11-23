@@ -39,7 +39,7 @@
   "physical_science_relevance": "Very high. It states it starts 'with the physical sciences': powder-synthesis labs aimed at superconductors, magnets and heat shields. Periodic Neon targets X-ray diffraction analysis, and the company deploys custom agents with industry partners such as a semiconductor manufacturer working on chip heat dissipation. It is the purest materials-science entrant in the 2025-2026 AI-for-science funding wave.",
   "openness_effect_assessment": "Closed from day one. The thesis is that the open literature is a poor training signal (it omits negative results), so the moat is proprietary experimental data from its own autonomous labs plus a large model post-trained on that data. The founders came from open-publishing research cultures (GNoME, MatterGen, attention), but none of Periodic's outputs are open. There is no evidence yet on whether this helps or hurts its science.",
   "key_takeaway": "Periodic Labs is the clearest bet that physical-science AI value lies in closed, self-generated lab data. It raised $300M at founding, the largest round in this group for a pure materials-discovery startup, and its only public outputs a year later are blog posts and a claimed 1-trillion-parameter model it has not released. Its founders' previous work at Google and OpenAI built on and fed open materials science, yet Periodic itself returns nothing open. It is the reference point for a 'closed AI-for-materials' model.",
-  "confidence": "low",
+  "confidence": "medium",
   "notes": [
     "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from periodic.com and the a16z announcement listed in fetched_urls.",
     "Valuation of the founding round was not stated in fetched sources: null. Any 2026 funding rounds could not be checked and none appear on periodic.com/news.",
@@ -60,5 +60,28 @@
     {"url": "https://periodic.com/", "title": "Periodic Labs home page", "publisher": "Periodic Labs", "date": "2026-10-01", "supports": "origin_detail (team), risk_events[0] (backers), robustness (SAB), physical_science_relevance, openness_notes"},
     {"url": "https://periodic.com/news", "title": "Periodic Labs news", "publisher": "Periodic Labs", "date": "2026-11", "supports": "flagship_projects, risk_events[1], license_history[0]"},
     {"url": "https://periodic.com/news/building-labs-that-learn", "title": "Building Labs that Learn", "publisher": "Periodic Labs", "date": "2026-09-15", "supports": "flagship_projects (Neon, Menlo Park labs), openness_notes"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2025, "source": "https://en.wikipedia.org/wiki/Liam_Fedus", "evidence": "Fedus 'co-founded Periodic Labs with Ekin Doğuş Çubuk'; the company 'was publicly announced in September 2025' (Wikipedia, secondary; independent of the cited a16z post)"},
+      {"field": "funding_total_usd", "value": 300000000, "source": "https://en.wikipedia.org/wiki/Liam_Fedus", "evidence": "'raised $300 million in seed financing' ... 'in a round led by Andreessen Horowitz' (agrees with the cited a16z announcement)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "openness_current", "reason": "Negative claim (no code, weights or data released) rests on periodic.com alone; github.com/periodic-labs returned 404 and there is no Wikipedia article on the company to cross-check."}
+    ],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "founded_year and funding_total_usd are stated both by the cited a16z announcement and, independently, by en.wikipedia.org/wiki/Liam_Fedus; openness rests on the absence of releases on periodic.com."},
+    "fetched_urls": [
+      "https://en.wikipedia.org/wiki/Periodic_Labs (404)",
+      "https://en.wikipedia.org/wiki/Liam_Fedus",
+      "https://github.com/periodic-labs (404)"
+    ],
+    "note": "No valuation for the founding round appears on either page, so latest_value_usd stays null."
+  }
 }

@@ -15,10 +15,10 @@
   "business_model": "api",
   "license_history": [
     {"year": 2024, "license": "ESM3-open: EvolutionaryScale Community License Agreement (non-commercial, no drug discovery, no training other models); ESM3 98B via Forge API, non-commercial", "note": "Launch 25 Jun 2024", "source": "https://www.evolutionaryscale.ai/policies/community-license-agreement"},
-    {"year": null, "license": "ESM3-open and ESM C 300M/600M/6B under MIT; large ESM3 via Biohub Platform API", "note": "Current pages (Nov 2026). Date of relicensing not confirmed; appears tied to joining Biohub", "source": "https://github.com/evolutionaryscale/esm"}
+    {"year": 2026, "license": "ESM3-open and ESM C 300M/600M/6B under MIT; large ESM3 via Biohub Platform API", "note": "Current pages (Nov 2026). Date of relicensing not confirmed; appears tied to joining Biohub", "source": "https://github.com/evolutionaryscale/esm"}
   ],
   "relicensing_events": [
-    {"year": null, "from": "EvolutionaryScale Community License (non-commercial)", "to": "MIT", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Relicensing coincides with the company becoming part of the non-profit Biohub (date not confirmed; before Aug 2026, when Biohub named Rives its Head of Science). A rare case of an AI-for-science startup opening its weights further after leaving the VC model.", "source": "https://www.evolutionaryscale.ai/blog/esm-cambrian"}
+    {"year": 2026, "from": "EvolutionaryScale Community License (non-commercial)", "to": "MIT", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Relicensing coincides with the company becoming part of the non-profit Biohub (date not confirmed; before Aug 2026, when Biohub named Rives its Head of Science). A rare case of an AI-for-science startup opening its weights further after leaving the VC model.", "source": "https://www.evolutionaryscale.ai/blog/esm-cambrian"}
   ],
   "funding_total_usd": 142000000,
   "funding_as_of": "2024-06",
@@ -75,5 +75,49 @@
     {"url": "https://github.com/evolutionaryscale/esm", "title": "esm (now Biohub/esm)", "publisher": "GitHub", "date": "2026-11", "supports": "openness_current, license_history[1], robustness"},
     {"url": "https://www.evolutionaryscale.ai/", "title": "EvolutionaryScale home page", "publisher": "EvolutionaryScale", "date": "2026-11", "supports": "exit_events[0], ownership_status, physical_science_relevance"},
     {"url": "https://biohub.org/news/", "title": "Biohub news: TIME100 AI List (2026)", "publisher": "Biohub", "date": "2026-08-27", "supports": "exit_events[0] (Rives as Biohub Head of Science)"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "openness_initial",
+      "openness_current",
+      "relicensing_events[0].year",
+      "license_history[1].year",
+      "exit_events[0].counterparty",
+      "exit_events[0].year",
+      "funding_total_usd"
+    ],
+    "confirmed": [
+      {"field": "openness_initial", "value": 1, "source": "https://raw.githubusercontent.com/Biohub/esm/b42b58b4b6adf14df5634bd5e453277d0879063e/LICENSE.md", "evidence": "\"You must restrict the usage of any copies of the AI Model or Derivative Works to usage for Non-Commercial Purposes\" (EvolutionaryScale Community License, initial commit 2024-06-25)"},
+      {"field": "openness_current", "value": 2, "source": "https://www.evolutionaryscale.ai/", "evidence": "\"ESM3-open is a small but powerful and safe model with weights and source code available on GitHub under an MIT license.\"; models/APIs \"governed by the Biohub Terms of Use\""},
+      {"field": "exit_events[0].counterparty", "value": "Biohub (biohub.org)", "source": "https://github.com/evolutionaryscale/esm/blob/main/LICENSE.md", "evidence": "\"Copyright 2026 Chan Zuckerberg Biohub, Inc.\" (repo now served as github.com/Biohub/esm); homepage: \"EvolutionaryScale is now part of Biohub.\""}
+    ],
+    "contradicted": [
+      {"field": "relicensing_events[0].year", "old": null, "new": 2026, "source": "https://github.com/Biohub/esm/commits/main/LICENSE.md", "evidence": "\"Update esm repo for ESMC paper (#304)\" Commits on May 27, 2026; its diff (commit c94ed8d) removes the Cambrian licence table and adds \"License (MIT)\"", "applied": true, "note": "Primary: the official repo's history for LICENSE.md. Diff checked at https://github.com/Biohub/esm/commit/c94ed8d763bbd7088b296949e5b401e8ea12073a. Dates the GitHub licence change; Hugging Face weight cards not checked."},
+      {"field": "license_history[1].year", "old": null, "new": 2026, "source": "https://github.com/Biohub/esm/commits/main/LICENSE.md", "evidence": "\"Update esm repo for ESMC paper (#304)\" Commits on May 27, 2026 (LICENSE.md becomes MIT, \"Copyright 2026 Chan Zuckerberg Biohub, Inc.\")", "applied": true, "note": "Companion of relicensing_events[0].year; same primary evidence."}
+    ],
+    "unconfirmed": [
+      {"field": "exit_events[0].year", "reason": "Still null. No dated announcement found on biohub.org/news (only a 2026-08-27 item calling Rives 'Biohub Head of Science'), chanzuckerberg.com/newsroom, biohub.ai/models/esm3 or Wikipedia's Chan_Zuckerberg_Initiative. Repo bound only: README still linked github.com/evolutionaryscale on 2026-01-26; first Biohub-branded commits 2026-05-27."},
+      {"field": "funding_total_usd", "reason": "$142M seed rests on TechCrunch alone. Not stated on evolutionaryscale.ai/blog/esm3-release or the homepage; TechCrunch links no press release or investor post; Wikipedia Nat_Friedman has no mention."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.evolutionaryscale.ai/blog/esm3-release",
+      "https://www.evolutionaryscale.ai/",
+      "https://github.com/evolutionaryscale/esm/blob/main/LICENSE.md",
+      "https://biohub.org/news/ (no EvolutionaryScale item)",
+      "https://github.com/Biohub/esm/commits/main/LICENSE.md",
+      "https://github.com/Biohub/esm/commit/c94ed8d763bbd7088b296949e5b401e8ea12073a",
+      "https://raw.githubusercontent.com/Biohub/esm/1b3e08025b8fcae39e9c9fe70e1dcde97707ffcd/LICENSE.md",
+      "https://raw.githubusercontent.com/Biohub/esm/b42b58b4b6adf14df5634bd5e453277d0879063e/LICENSE.md",
+      "https://en.wikipedia.org/wiki/Chan_Zuckerberg_Initiative (no mention)",
+      "https://techcrunch.com/2024/06/25/evolutionaryscale-backed-by-amazon-and-nvidia-raises-142m-for-protein-generating-ai/",
+      "https://chanzuckerberg.com/newsroom/ (no relevant item)",
+      "https://biohub.ai/models/esm3 (no relevant text)",
+      "https://en.wikipedia.org/wiki/Nat_Friedman (no mention)",
+      "https://github.com/Biohub/esm/commits/main/README.md",
+      "https://github.com/Biohub/esm/commit/453b2e2e713ee35a1dcbc684b11d03303a59294e"
+    ],
+    "note": "The MIT switch was not a single step from the 2024 Community License: LICENSE.md at v3.1.3 (2025-01-16) puts code under the 'Cambrian Open License Agreement' and ESM3-open weights under the 'Cambrian Non-Commercial License Agreement' (probably introduced with the 'esmc release' LICENSE.md commit of 2024-12-04, whose text was not opened); MIT replaced these on 2026-05-27. relicensing_events[0].from is therefore simplified; consider a Dec 2024/Jan 2025 license_history entry. The LICENSE copyright line ('Chan Zuckerberg Biohub, Inc.') settles that 'Biohub' is CZ Biohub. Free-text notes saying the relicence date is unconfirmed are now superseded. The repo's README history puts the Biohub rebranding between 2026-01-26 (README still linked github.com/evolutionaryscale) and 2026-05-27 (first 'Biohub Platform' commit, same day as the MIT switch); this dates the repo, not the corporate deal. Funding still rests on one journalism page, so confidence stays low."
+  }
 }

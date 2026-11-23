@@ -4,7 +4,7 @@
   "group": "E",
   "category": "sci_software",
   "subcategory": "no-code AI/ML experiment-optimization platform (SDLabs) and 'Self-Driving Labs(R)'",
-  "hq_country": "CH",
+  "hq_country": "US",
   "origin": "founder_startup",
   "origin_detail": "Co-founded by Dr Hermann Tribukait (CEO, economist) and Dr Loïc Roch (CTO, chemist with AI/ML for materials discovery expertise), who have worked together on AI-driven R&D since 2017 and say they coined the trademarked term 'Self-Driving Labs(R)'. US entity Atinary Technologies Inc.; Self-Driving Lab in Boston opened in 2026; new Biopôle office (Jan 2026). Swiss base inferred from site references (Biopôle office, Swiss BioTools podcast, Innovaud logo, SwissCAT+ project); HQ is not explicitly stated.",
   "founded_year": null,
@@ -59,5 +59,35 @@
     {"url": "https://atinary.com/about-us/", "title": "Atinary: About us", "publisher": "Atinary Technologies", "date": "2026", "supports": "origin_detail (founders, since 2017, 13 nationalities)"},
     {"url": "https://atinary.com/", "title": "Atinary home page", "publisher": "Atinary Technologies", "date": "2026-11", "supports": "flagship_projects, openness_notes, physical_science_relevance, robustness (partners)"},
     {"url": "https://atinary.com/news/", "title": "Atinary news", "publisher": "Atinary Technologies", "date": "2026", "supports": "risk_events[0-3], origin_detail (Boston, Biopôle)"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "hq_country",
+      "still_operating",
+      "founded_year",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "still_operating", "value": true, "source": "https://ir.bruker.com/press-releases/press-release-details/2026/Bruker-Announces-Strategic-Collaboration-with-Atinary-Technologies-to-Advance-Self-Driving-Laboratories/default.aspx", "evidence": "BOSTON--(BUSINESS WIRE)-- August 11, 2026 ... \"Bruker also made a minority investment in Atinary. Financial details were not disclosed.\""}
+    ],
+    "contradicted": [
+      {"field": "hq_country", "old": "CH", "new": "US", "source": "https://ir.bruker.com/press-releases/press-release-details/2026/Bruker-Announces-Strategic-Collaboration-with-Atinary-Technologies-to-Advance-Self-Driving-Laboratories/default.aspx", "evidence": "About Atinary Technologies: \"Headquartered in Menlo Park, California, with operations in Boston and Lausanne.\"", "applied": true, "note": "The file's CH was an explicit inference (Biopole office, Swiss podcast, Innovaud logo). The company's own boilerplate in its 11 Aug 2026 release, published on Bruker's IR site and mirrored on atinary.com, states a Menlo Park, CA headquarters. us_focus (false) and the origin_detail/notes text ('HQ is not explicitly stated', Swiss base) were NOT changed and should be revisited."}
+    ],
+    "unconfirmed": [
+      {"field": "founded_year", "reason": "Still null: no fetched page states a founding year. The Bruker release only says the term 'Self-Driving Labs' was coined by the founders in 2017. Tried the Bruker IR release, the atinary.com copy, en.wikipedia.org/wiki/Atinary_Technologies (404), and EDGAR full-text search (no Atinary filings)."},
+      {"field": "openness_current", "reason": "No second page addresses licensing. The Bruker release describes the SDLabs platform without saying whether it is proprietary or open, and github.com/atinary returns 404. Openness 0 rests on the absence of open releases on atinary.com (cited)."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://atinary.com/news/",
+      "https://en.wikipedia.org/wiki/Atinary_Technologies (404)",
+      "https://atinary.com/news/bruker-announces-strategic-collaboration-with-atinary-technologies-to-advance-self-driving-laboratories/",
+      "https://ir.bruker.com/press-releases/press-release-details/2026/Bruker-Announces-Strategic-Collaboration-with-Atinary-Technologies-to-Advance-Self-Driving-Laboratories/default.aspx",
+      "https://github.com/atinary (404)",
+      "https://www.sec.gov/cgi-bin/browse-edgar?company=atinary&owner=exclude&action=getcompany (503)",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Atinary%22 (no Atinary filings; 2 unrelated CGX Energy hits)"
+    ],
+    "note": "The Bruker collaboration (risk_events[2], 'Aug 2026 approx.') is dated exactly 11 Aug 2026 (Boston dateline). The same release says Bruker made a minority investment in Atinary with undisclosed terms, which is not in the file and is relevant to ownership/funding. hq_country was inferred rather than sourced; it is now corrected to the stated Menlo Park HQ."
+  }
 }

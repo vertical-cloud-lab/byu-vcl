@@ -7,7 +7,7 @@
   "hq_country": "US",
   "origin": null,
   "origin_detail": "Cambridge, MA company (501 Massachusetts Ave.) offering an AI platform and closed-loop 'predict-produce-prove' self-driving lab for materials and chemicals. Investors shown on its site: Embark Ventures, One Way Ventures, Taihill Venture, Flybridge, WorldQuant Ventures, ArcTern Ventures, Novo Holdings, Baidu Ventures, SIT Capital, Propagator Ventures. A Harvard spin-out origin and founders are not confirmed in fetched sources; CEO Jill Becker and CSO Semion Saikin are named in a news headline.",
-  "founded_year": null,
+  "founded_year": 2017,
   "flagship_projects": ["Kebotix AI platform", "Closed-loop self-driving lab (predict-produce-prove)"],
   "openness_initial": 0,
   "openness_current": 0,
@@ -59,5 +59,36 @@
     {"url": "https://www.kebotix.com/news", "title": "Kebotix news", "publisher": "Kebotix", "date": "2022-03 (latest dated item)", "supports": "risk_events[1], risk_events[2], origin_detail (CEO/CSO named)"},
     {"url": "https://www.kebotix.com/about-us", "title": "Kebotix: About us", "publisher": "Kebotix", "date": "2026-11 (fetched)", "supports": "origin_detail (HQ, investors)"},
     {"url": "https://www.technologyreview.com/technology/ai-discovered-molecules/", "title": "AI-discovered molecules (10 Breakthrough Technologies)", "publisher": "MIT Technology Review", "date": "2020", "supports": "risk_events[0]"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "still_operating",
+      "funding_total_usd"
+    ],
+    "confirmed": [],
+    "contradicted": [
+      {"field": "founded_year", "old": null, "new": 2017, "source": "https://www.sec.gov/Archives/edgar/data/1749021/000174902118000001/primary_doc.xml", "evidence": "Form D, Kebotix, Inc.: Jurisdiction of incorporation DELAWARE; Year of incorporation 2017 (also stated in the 2020 Form D)", "applied": true, "note": "SEC Form D filed by the issuer itself (CIK 1749021) states the incorporation year explicitly. The 2020 Form D repeats 2017. Null filled from a primary filing."}
+    ],
+    "unconfirmed": [
+      {"field": "still_operating", "reason": "Left null. No official page states current status, and kebotix.com shows only a (c) 2026 footer. The latest primary evidence of activity is from 2024. Ashland's 8 May 2024 release (8-K EX-99.1) says 'Kulkarni is the CEO of Kebotix, a startup company focused on commercializing artificial intelligence methods'. Kebotix's own Form D signed 2024-08-05 shows an equity first sale 2024-07-22, $4,999,765 sold of $9,999,999. A ConnectM 8-K exhibit (19 Oct 2026) lists 'Chief Executive Officer of Kebotix' among Ashish Kulkarni's executive roles, without saying whether the role is current. en.wikipedia.org/wiki/Kebotix returns 404. Nothing states 2026 status."},
+      {"field": "funding_total_usd", "reason": "Left null because no page states a total. SEC Form D equity sales: 2018 (first sale 2018-07-23) $5,055,279; 2020 (2020-04-02) $11,388,778 of $15M; 2023 (2023-03-29) $2,209,999 of $3,999,999; 2024 (2024-07-22) $4,999,765 of $9,999,999. That sums to $23,653,821 (my arithmetic; Reg D sales only). These are not filled."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.kebotix.com/",
+      "https://www.sec.gov/cgi-bin/browse-edgar?company=kebotix&owner=exclude&action=getcompany (503)",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Kebotix%22",
+      "https://www.sec.gov/Archives/edgar/data/1749021/000174902118000001/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1749021/000174902120000001/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1749021/000174902123000001/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1749021/000174902124000001/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1895249/000110465926116753/tm2627797d1_ex99-1.htm",
+      "https://www.sec.gov/Archives/edgar/data/1674862/000095017024055971/ash-ex99_1.htm",
+      "https://en.wikipedia.org/wiki/Kebotix (404)",
+      "https://en.wikipedia.org/wiki/Al%C3%A1n_Aspuru-Guzik"
+    ],
+    "note": "risk_events[2] ('no later news, funding or hiring evidence') and robustness ('no visible activity since 2022') are contradicted by Kebotix's own SEC Form Ds: equity sales in Mar 2023 and Jul 2024. The 2018 Form D lists Jill Becker (executive officer, director, promoter), Alan Aspuru-Guzik (director, promoter) and Semyon Dukach (director), which bears on the unconfirmed founders/origin. By the 2023 Form D, Ashish Kulkarni was executive officer and director, Becker was no longer listed, and Aspuru-Guzik, Semion Saykin and Dennis Sheberla were executive officers. Form Ds show a Delaware, privately funded company (ownership_status null not changed). Wikipedia (Alan Aspuru-Guzik) says 'He is the co-founder of Kebotix', which supports the founders' identity left unconfirmed in origin_detail. The earliest Form D gives the Cambridge address as 23 Perry Street, so the 501 Massachusetts Ave address is the later one."
+  }
 }

@@ -1,0 +1,124 @@
+{
+  "name": "Automata Technologies Ltd",
+  "slug": "automata",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "lab automation platform for life sciences (LINQ Bench modular hardware + LINQ orchestration software)",
+  "hq_country": "GB",
+  "origin": "founder_startup",
+  "origin_detail": "Co-founded by Mostafa ElSayed (CEO) and Suryansh Chandra, both formerly of Zaha Hadid Architects' computation and design group, who approached robotics from architecture and found automation 'overly complex'. The company first made affordable robotic arms (Eva was its first product) and then narrowed to life sciences, building what it calls the first fully automated lab bench. Offices in London (main listing), Cambridge and Newton (Massachusetts) and Babenhausen (Germany). Founding year not stated on fetched pages.",
+  "founded_year": null,
+  "flagship_projects": [
+    "Eva robotic arm (first product)",
+    "LINQ platform (orchestration, LINQ Canvas no-code workflows, Run Manager)",
+    "LINQ Bench (modular automated bench, Bridge and Maglev transport)",
+    "LINQ Cloud",
+    "Python SDK and REST API for custom steps"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Markets the platform as 'modular, configurable, and open by design' and 'open, integrated automation', but no open-source licence or published design files were found. 'Open' here means a Python SDK, REST API, GitHub sync for workflow versions and MCP connectivity to AI models; two UK patent applications are pending (GB2615613, GB2615525). Level 0 on the hardware scale; the 'open' language is about interfaces.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": null,
+      "license": "Proprietary (LINQ hardware and software)",
+      "note": "SDK and API offered, no licence named",
+      "source": "https://automata.tech/"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 135000000,
+  "funding_as_of": "2026-01",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Pivot from affordable general-purpose robot arms (Eva) to life-science lab benches",
+    "Feb 2022: $50M Series B (Octopus Ventures lead; Hummingbird, Latitude, ABB Technology Ventures, Isomer, In-Q-Tel) on COVID-era NHS testing work ('nearly a million tests' in recent months)",
+    "Oct 2023: $40M round backed by Dimension and A.P. Moller Holding",
+    "Jan 2026: $45M Series C led by Dimension with Danaher Ventures (plus a strategic partnership with Danaher), repositioned as 'the operating system for AI-ready labs'"
+  ],
+  "robustness": "VC-funded and still raising every 2-3 years; no revenue or valuation disclosed. Customers named include the Francis Crick Institute, Royal Marsden, Earlham Institute, bit.bio, Lonza and 'five top pharma companies', and Danaher (a large closed-instrument conglomerate) is now a strategic investor. Proprietary hardware and software mean customers depend on Automata's survival, partly offset by a Python SDK and API.",
+  "physical_science_relevance": "Built for biology (cell culture, genomics, NHS pathology), but its design pattern, a modular bench with track transport that integrates third-party instruments and is driven by software with an API and AI connectivity (MCP, NVIDIA collaboration in 2026), is the same architecture materials self-driving labs need. No materials-science or LPBF use was found; relevance to the Digital Alloy Lab is as a commercial comparator for orchestration rather than as a tool.",
+  "openness_effect_assessment": "Automata uses 'open' as a marketing term for API access while keeping hardware and software proprietary, and its funding ($135M across 2022-2026) has come from VCs and a closed-instrument strategic (Danaher). There is no evidence that openness, in the licensing sense, has played any role in its growth.",
+  "key_takeaway": "Automata is the venture-backed newcomer in lab automation: architects turned robot-arm makers turned life-science bench builders, with at least $135M raised since 2022 and a 2026 AI-lab pitch backed by Danaher. Like Opentrons' 2026 messaging, it redefines 'open' as API access rather than open licences, so labs gain scriptability but not the ability to fork or repair the system.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (LINQ platform; Python SDK and REST API without a stated open licence)"
+    ],
+    "patents": "UK patent applications GB2615613 and GB2615525 pending",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "funding_total_usd sums the three rounds found on the company news page ($50M Feb 2022, $40M Oct 2023, $45M Jan 2026); earlier seed and Series A rounds were not found, so the true total is higher.",
+    "Founding year, headcount, revenue and valuation were not stated on any fetched page."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://automata.tech/",
+    "https://automata.tech/about-us",
+    "https://automata.tech/about-us/company-news",
+    "https://automata.tech/company-news/automata-raises-45m-series-c-funding",
+    "https://automata.tech/company-news/automata-raises-us50-million-in-series-b-financing-to-accelerate-automation-in-life-sciences"
+  ],
+  "sources": [
+    {
+      "url": "https://automata.tech/about-us",
+      "title": "About us",
+      "publisher": "Automata",
+      "date": "2026",
+      "supports": "origin_detail, flagship_projects (Eva), openness_notes, hardware_extras.patents"
+    },
+    {
+      "url": "https://automata.tech/",
+      "title": "Automata: LINQ lab automation platform",
+      "publisher": "Automata",
+      "date": "2026",
+      "supports": "flagship_projects, openness_notes (SDK, REST API, MCP, GitHub sync), robustness (customers)"
+    },
+    {
+      "url": "https://automata.tech/about-us/company-news",
+      "title": "Company news",
+      "publisher": "Automata",
+      "date": "2026",
+      "supports": "risk_events[2], funding_total_usd, physical_science_relevance (NVIDIA)"
+    },
+    {
+      "url": "https://automata.tech/company-news/automata-raises-us50-million-in-series-b-financing-to-accelerate-automation-in-life-sciences",
+      "title": "Automata raises US$50 Million in Series B financing",
+      "publisher": "Automata (press release)",
+      "date": "2022-02-22",
+      "supports": "risk_events[1], funding_total_usd"
+    },
+    {
+      "url": "https://automata.tech/company-news/automata-raises-45m-series-c-funding",
+      "title": "Automata Raises $45M Series C to Build the Operating System for AI-Ready Labs",
+      "publisher": "Automata (press release)",
+      "date": "2026-01-29",
+      "supports": "risk_events[3], funding_total_usd, robustness (five top pharma), openness_notes ('open by design')"
+    },
+    {
+      "url": "https://automata.tech/company-news/automata-technologies",
+      "title": "$40m fundraise to expand life science lab automation",
+      "publisher": "Automata (press release)",
+      "date": "2023-10-03",
+      "supports": "risk_events[2] (listed on company news page, not fetched)"
+    }
+  ]
+}

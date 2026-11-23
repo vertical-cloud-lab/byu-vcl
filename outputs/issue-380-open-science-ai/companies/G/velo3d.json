@@ -1,0 +1,160 @@
+{
+  "name": "Velo3D, Inc.",
+  "slug": "velo3d",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "laser powder-bed fusion (L-PBF) metal printers and contract production (Sapphire)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Venture-backed startup founded in 2014 ('Since our founding in 2014') and led at its 2021 listing by CEO Benny Buller; went public on 2021-09-29 by merging with JAWS Spitfire Acquisition Corp, a SPAC incorporated 2020-09-11. Since the December 2024 debt-for-equity exchange it has been controlled by Arrayed Notes Acquisition Corp (parent Arrayed Additive), whose CEO Arun Jeldi became Velo3D's CEO. HQ Fremont, CA.",
+  "founded_year": 2014,
+  "flagship_projects": [
+    "Sapphire / Sapphire XC / Sapphire XC 1MZ L-PBF printers",
+    "Flow print-preparation software",
+    "Assure quality-validation software",
+    "Intelligent Fusion process (support-free printing)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Closed: the 10-Ks describe 'proprietary laser powder bed fusion (L-PBF) technology', 'Flow is a highly advanced and proprietary software platform', and the 'proprietary Intelligent Fusion manufacturing process', protected by 57 issued patents (45 US) as of the FY2025 10-K. Materials are supplied as vendor 'recipes' (16 metals by 2025). No open designs, firmware or parameter sets found. 0 at both dates.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2014,
+      "license": "Proprietary (Sapphire hardware, Flow and Assure software, Intelligent Fusion process)",
+      "note": "Unchanged through the FY2025 10-K",
+      "source": "https://www.sec.gov/Archives/edgar/data/1825079/000162828022007442/velo-20211231.htm"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {
+      "year": 2021,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "JAWS Spitfire Acquisition Corp. (SPAC)",
+      "note": "Business combination closed 2021-09-29; $155M PIPE (15.5M shares at $10.00), earn-out of up to 21,758,148 shares; NYSE: VLD. Implied equity value not found in fetched pages; StockAnalysis gives a $1.43B market cap at 2021-12-31.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1825079/000162828022007442/velo-20211231.htm"
+    },
+    {
+      "year": 2024,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Arrayed Notes Acquisition Corp. (Arrayed Additive)",
+      "note": "Change of control while the stock stayed public: on 2024-12-24 Arrayed exchanged $22.4M of secured notes (+$0.4M interest) for 185,151,333 new shares, giving it 95% of the company; six directors including Buller resigned; the remaining shares kept trading on OTCQX.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1825079/000149315224051999/ex99-1.htm"
+    }
+  ],
+  "latest_value_usd": 108720000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 45973000,
+  "revenue_year": 2025,
+  "employees_latest": 134,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Customer concentration: SpaceX was 41.1% of 2020 and 27.8% of 2021 revenue; top three customers 62.0% (2021), 47.0% (2024), 33.2% (2025)",
+    "Market cap fell from $1.43B (2021-12-31) to $333.7M (2022), $102.1M (2023) and $108.7M (2026-11-23) (StockAnalysis)",
+    "Dec 2023: $18M registered direct offering; 1-for-35 reverse split (2024-06-13) and 1-for-15 reverse split (2025-07-28)",
+    "Sept 2024: NYSE delisting notice (8-K Item 3.01, 2024-09-12); the stock (ticker VLD) moved to OTCQX, later OTC Pink (VLDX)",
+    "Dec 2024: debt-for-equity exchange gave Arrayed Notes Acquisition Corp. 95% of the stock; Arrayed CEO Arun Jeldi became CEO",
+    "Aug 2025: relisted on the Nasdaq Capital Market as VELO (2025-08-19) with a $20.1M offering at $3.00 per share",
+    "FY2025 10-K: 'substantial doubt about our ability to continue as a going concern'; 2025 net loss $71.4M on $46.0M revenue",
+    "Nov 2026: positive EBITDA target pushed from 2H 2026 to 2028; capex guidance cut from $40-50M to $10-20M"
+  ],
+  "robustness": "Fragile: a going-concern warning, recurring losses, two reverse splits and a controlling shareholder (Arrayed held 95% after the exchange; Jeldi beneficially owned ~48.6% by March 2026). Customers depend on proprietary Flow/Assure software and vendor-qualified recipes, so there is no open fallback. Partial offsets: growing defense-led revenue (Q3 2026 $20.5M, about +50% y/y from $13.6M), $75.7M cash and a $40.1M backlog at 2026-09-30, and a five-year Sandia CRADA (Nov 2026).",
+  "physical_science_relevance": "Directly relevant as a closed L-PBF platform: Sapphire printers make support-free metal parts in aluminium, titanium, nickel superalloys and copper alloys from 16 vendor-developed 'recipes' (2025). Parameters live in proprietary Flow software, so alloy-development work (new Al compositions, scan-strategy exploration, data for self-driving labs) is constrained compared with open-parameter research machines such as Aconity3D's. The 2026 Sandia CRADA and Arrayed's 'lightweight magnesium and aluminum alloy' manufacturing show the company moving toward defense production rather than research tooling.",
+  "openness_effect_assessment": "Velo3D stayed fully proprietary and sold support-free L-PBF as a differentiated, patent-protected process; that won SpaceX and aerospace customers but not a sustainable business at SPAC-era expectations. The collapse (a market cap of $1.43B to about $0.1B, delisting, debt-for-equity control by Arrayed) came from losses, customer concentration and cash needs; openness played no visible role either way.",
+  "key_takeaway": "Velo3D is the third 2021 metal-AM SPAC and the one that survived by being recapitalised rather than sold: after its value fell more than 90%, a creditor took 95% of the equity in 2024, and it relisted on Nasdaq in 2025 as a defense-focused producer with a going-concern warning. For an LPBF alloy lab it is the archetype of the closed, recipe-locked production printer, good at qualified parts and poor as an open research instrument.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (Flow, Assure, Intelligent Fusion)"
+    ],
+    "patents": "57 issued patents, 45 of them US (FY2025 10-K).",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "No Velo3D Wikipedia article exists (404), so history comes from SEC filings and the IR site.",
+    "Pre-SPAC venture funding and the SPAC's implied equity value were not found in fetched pages (the EDGAR 425 filing list returned 503), so funding_total_usd and exit_events[0].value_usd are null.",
+    "exit_events[1] is typed 'acquisition' (control acquired through a debt-for-equity exchange); the company remained publicly traded (OTCQX, then Nasdaq), so ownership_status stays 'public'.",
+    "revenue_latest_usd = FY2025 $45,973K (FY2024 $41,003K) from the 10-K income statement (R4); FY2026 guidance is $65-75M."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://ir.velo3d.com/",
+    "https://ir.velo3d.com/news-events/press-releases",
+    "https://ir.velo3d.com/news-events/press-releases/detail/223/velo3d-announces-third-quarter-2026-financial-results",
+    "https://stockanalysis.com/stocks/velo/market-cap/",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=velo3d&type=10-K&dateb=&owner=include&count=40",
+    "https://www.sec.gov/Archives/edgar/data/1825079/000119312526134997/0001193125-26-134997-index.htm",
+    "https://www.sec.gov/Archives/edgar/data/1825079/000119312526134997/velo-20251231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1825079/000119312526134997/R4.htm",
+    "https://www.sec.gov/Archives/edgar/data/1825079/000162828022007442/0001628280-22-007442-index.htm",
+    "https://www.sec.gov/Archives/edgar/data/1825079/000162828022007442/velo-20211231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1825079/000149315224051999/0001493152-24-051999-index.htm",
+    "https://www.sec.gov/Archives/edgar/data/1825079/000149315224051999/ex99-1.htm"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1825079/000162828022007442/velo-20211231.htm",
+      "title": "Velo3D Form 10-K for fiscal 2021",
+      "publisher": "SEC EDGAR",
+      "date": "2022-03-28",
+      "supports": "founded_year, origin_detail, exit_events[0], license_history[0], risk_events[0] (SpaceX 41.1%/27.8%, top three 62.0%)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1825079/000119312526134997/velo-20251231.htm",
+      "title": "Velo3D Form 10-K for fiscal 2025",
+      "publisher": "SEC EDGAR",
+      "date": "2026-03-31",
+      "supports": "employees_latest, openness_notes, hardware_extras.patents, risk_events[0] (2024-25 concentration), risk_events[2]-[6], robustness (Jeldi 48.6%), physical_science_relevance (16 metals)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1825079/000119312526134997/R4.htm",
+      "title": "Velo3D FY2025 Consolidated Statements of Operations (XBRL R4)",
+      "publisher": "SEC EDGAR",
+      "date": "2026-03-31",
+      "supports": "revenue_latest_usd, risk_events[6]"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1825079/000149315224051999/ex99-1.htm",
+      "title": "Velo3D Announces Debt for Equity Exchange Transaction (8-K Ex. 99.1)",
+      "publisher": "SEC EDGAR / Velo3D",
+      "date": "2024-12-24",
+      "supports": "exit_events[1], risk_events[4], physical_science_relevance (Arrayed Mg and Al alloys)"
+    },
+    {
+      "url": "https://ir.velo3d.com/news-events/press-releases/detail/223/velo3d-announces-third-quarter-2026-financial-results",
+      "title": "Velo3D Announces Third Quarter 2026 Financial Results",
+      "publisher": "Velo3D (press release)",
+      "date": "2026-11-10",
+      "supports": "risk_events[7], robustness (Q3 revenue, cash, backlog)"
+    },
+    {
+      "url": "https://ir.velo3d.com/news-events/press-releases",
+      "title": "Velo3D press releases",
+      "publisher": "Velo3D",
+      "date": "2026-11",
+      "supports": "robustness (Sandia CRADA, 2026-11-03), physical_science_relevance"
+    },
+    {
+      "url": "https://stockanalysis.com/stocks/velo/market-cap/",
+      "title": "Velo3D (VELO) Market Cap",
+      "publisher": "StockAnalysis.com",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd, risk_events[1], exit_events[0] note"
+    }
+  ]
+}

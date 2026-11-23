@@ -62,5 +62,41 @@
     "revenue null: Contrary says Tristan Handy declined to disclose revenue (6x growth in 2021).",
     "employees_latest 375 is from Oct 2022; no later figure found.",
     "Fusion engine's 2025 licence (reported as ELv2) not verified; by Sep 2026 Fusion/dbt v2 is described as Apache-2.0."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "latest_value_usd",
+      "exit_events[0].counterparty"
+    ],
+    "confirmed": [
+      {"field": "exit_events[0].counterparty", "value": "Fivetran", "source": "https://www.getdbt.com/", "evidence": "\"Fivetran + dbt Labs is now Fivetran.\" (official dbt Labs home page banner, undated, read 2026-11-23; confirms the combination, not its structure or date)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "founded_year", "reason": "getdbt.com/about-us names the founders (Tristan Handy, Drew Banin, Connor McArthur) but gives no year; fivetran.com/about has no dbt history; en.wikipedia.org/wiki/Fivetran 404. Still rests on Contrary Research alone."},
+      {"field": "funding_total_usd", "reason": "No official page found: getdbt.com/blog and getdbt.com/press 404; fivetran.com/press lists no dbt funding release; fivetran.com/about gives only Fivetran's own valuation. Rests on Contrary Research alone (its Airbyte page is the same publisher, not an independent cross-check)."},
+      {"field": "latest_value_usd", "reason": "The $4.2B (2022-02) Series D figure could not be found on an official page (getdbt.com/blog and /press 404; Fivetran press/blog/about pages silent). Rests on Contrary Research alone."}
+    ],
+    "newer_info": [
+      {"field": "exit_events[0]", "value": "combined company now branded Fivetran (no longer 'Fivetran + dbt Labs')", "date": "2026-11", "source": "https://www.getdbt.com/", "evidence": "Fivetran + dbt Labs is now Fivetran."},
+      {"field": "exit_events[0]", "value": "dbt Labs co-founder Tristan Handy signs as President and Co-Founder of Fivetran", "date": "2026-11-11", "source": "https://wf.fivetran.com/blog/founders-letter", "evidence": "\"Tristan Handy President, Co-Founder, Fivetran\"; meta description: \"Fivetran and dbt Labs founders share their vision for AI agents, open data infrastructure...\""}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.getdbt.com/blog (404)",
+      "https://www.fivetran.com/press (no merger or funding release listed)",
+      "https://www.fivetran.com/press/fivetran-and-dbt-labs-unite-to-set-the-standard-for-open-data-infrastructure (guessed; resolved to an unrelated 2023-04-28 release with no merger text)",
+      "https://www.fivetran.com/blog (no merger post listed)",
+      "https://en.wikipedia.org/wiki/Fivetran (404)",
+      "https://www.getdbt.com/",
+      "https://wf.fivetran.com/blog/founders-letter",
+      "https://www.getdbt.com/about-us",
+      "https://www.getdbt.com/press (404)",
+      "https://www.fivetran.com/about (no dbt Labs mention)"
+    ],
+    "note": "The 2025 merger announcement (date, terms, structure) was not found on any official page reached, so exit_events[0].year stays null and was not edited. founded_year, funding_total_usd ($414M) and latest_value_usd ($4.2B) all rest on one third-party page (Contrary Research, 2022); the Airbyte page cited as a cross-check is the same publisher. The name field ('now Fivetran + dbt Labs') is slightly stale: getdbt.com now says the combination 'is now Fivetran'. employees_latest (375) dates from Oct 2022."
+  }
 }

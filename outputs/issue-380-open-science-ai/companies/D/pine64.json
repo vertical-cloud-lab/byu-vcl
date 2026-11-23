@@ -171,5 +171,43 @@
     "Revenue, headcount and valuation not found; null.",
     "Failed fetches: pine64.org/2026/07/25/full-pinephone-3d-file-released/ (404; the post's real path is /2026/07/25/pinephone3dfiles_2026/) and pine64.org/documentation/PINE_A64/ (404).",
     "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "funding_as_of",
+      "still_operating",
+      "relicensing_events[0].year"
+    ],
+    "confirmed": [
+      {"field": "still_operating", "value": true, "source": "https://api.github.com/orgs/pine64/repos?sort=pushed&per_page=15", "evidence": "Official pine64 GitHub org: zigbee2mqtt pushed_at 2026-11-23T19:01:37Z; pinevoice_fw_e907 pushed_at 2026-10-08T12:52:47Z"}
+    ],
+    "contradicted": [
+      {"field": "funding_as_of", "old": "2015-12", "new": "2016-01 or later (campaign still raising on 2016-01-21)", "source": "https://techcrunch.com/2016/01/21/the-pine-a64-is-a-15-pc-with-endless-possibilities/", "evidence": "PINE64 has so far raised over $1.4 million in its Kickstarter campaign for their tiny, yet versatile, $15 computer.", "applied": false, "note": "This article, dated 2016-01-21, is the reference Wikipedia cites for '$1.7 million in December 2015'. It shows the campaign still raising money in late January 2016, so a $1.7M total cannot be as of Dec 2015 (Dec 2015 is when the campaign started). Not applied: TechCrunch is third-party journalism (already in the file's sources), and the close date was not found."}
+    ],
+    "unconfirmed": [
+      {"field": "founded_year", "reason": "Only Wikipedia's infobox gives October 2015, and it is uncited there. pine64.org/about/ is a 404, the pine64.org homepage, documentation index and Pine_A64 documentation page give no founding or Kickstarter date, and the pine64.com store shows only 'Pine Store ltd. Copyright 2022'. The California SOS filings Wikipedia cites sit on a retired host (businesssearch.sos.ca.gov does not resolve), and the tool cannot fetch the Internet Archive copy. TechCrunch (2016-01-21) names co-founder Johnson Jeng but gives no founding date."},
+      {"field": "funding_total_usd", "reason": "Only Wikipedia states 'over US$1.7 million'. The reference it cites (TechCrunch, 2016-01-21, in the file's sources) gives only an interim 'so far raised over $1.4 million', which neither confirms nor contradicts a final $1.7M. The Kickstarter campaign page returned 403."},
+      {"field": "relicensing_events[0].year", "reason": "Only Pine64's own cited post and homepage state the July 2026 3D-file release. The PinePhone 'Schematics and certifications' page lists no 3D/STEP files and no licence (footer '© 2026 PINE64' only)."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://pine64.org/about/ (404)",
+      "https://en.wikipedia.org/wiki/Pine64",
+      "https://pine64.com/",
+      "https://pine64.org/documentation/PinePhone/Further_information/Schematics_and_certifications/",
+      "https://techcrunch.com/2016/01/21/the-pine-a64-is-a-15-pc-with-endless-possibilities/",
+      "https://businesssearch.sos.ca.gov/Document/RetrievePDF?Id=03928399-21074167 (DNS: host not found)",
+      "https://web.archive.org/web/20201112013745/https://businesssearch.sos.ca.gov/Document/RetrievePDF?Id=03928399-21074167 (tool cannot fetch web.archive.org)",
+      "https://www.kickstarter.com/projects/pine64/pine-a64-first-15-64-bit-single-board-super-comput (403)",
+      "https://api.github.com/orgs/pine64/repos?sort=pushed&per_page=15",
+      "https://pine64.org/",
+      "https://www.cr.gov.hk/docs/wrpt/RNC063_2019.12.02-2019.12.08.pdf (text extracted locally with pdftotext)",
+      "https://pine64.org/documentation/",
+      "https://pine64.org/documentation/Pine_A64/"
+    ],
+    "note": "The source chain is weaker than it looks. Wikipedia's founding month (Oct 2015) and its co-founder are uncited, and the TechCrunch reference cited for '$1.7M in December 2015' actually says '$1.4 million so far' on 2016-01-21. The TechCrunch source entry in the file says 'not fetched'; it was fetched in this pass. origin_detail's Hong Kong entity is confirmed by a government registry: Hong Kong Companies Registry report RNC063 (02-08 Dec 2019) lists 'PINE STORE LIMITED 2899554 05-12-2019', i.e. incorporated 5 Dec 2019. pine64.com's footer reads 'Pine Store ltd. Copyright 2022'."
+  }
 }

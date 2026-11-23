@@ -103,5 +103,30 @@
     "ownership_status 'nonprofit' and business_model 'grants' are closest-fit enums: RepRap is an unincorporated academic/community project (EPSRC-funded at the start), not a registered nonprofit or foundation.",
     "EPSRC grant amounts were not found; funding_total_usd null.",
     "'Firmware lineage, e.g. Marlin' is descriptive context; individual firmware licences were not checked in this session beyond the Marlin fork (GPL-3.0) seen on the LulzBot GitHub page."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "license_history[0].license",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "license_history[0].license", "value": "GNU GPL (all project designs)", "source": "https://reprap.org/wiki/About", "evidence": "RepRap is distributed under an open-source license (the GNU General Public License)."},
+      {"field": "still_operating", "value": true, "source": "https://reprap.org/wiki/Special:RecentChanges", "evidence": "Most recent wiki edits listed: \"23 November 2026, 14:36: G-code\" (several edits that day)"}
+    ],
+    "contradicted": [
+      {"field": "founded_year", "old": 2005, "new": 2004, "source": "https://reprap.org/wiki/About", "evidence": "Developed by Adrian Bowyer and first introduced online in February 2004, RepRap brings affordability…", "applied": false, "note": "Definitional, not applied. The official site dates RepRap's first public appearance to Bowyer's essay (reprap.org/wiki/Wealth_Without_Money: 'the first appearance of the idea for RepRap on the Bath University website on 2 February 2004'); the cited Wikipedia dates the project start (EPSRC-funded) to 2005. No official page found that states 2005. Lead should pick one convention (idea published 2004 vs project started 2005)."}
+    ],
+    "unconfirmed": [],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://reprap.org/wiki/About",
+      "https://reprap.org/wiki/RepRap",
+      "https://reprap.org/wiki/Wealth_Without_Money",
+      "https://reprap.org/wiki/Special:RecentChanges",
+      "https://gtr.ukri.org/search/project?term=RepRap (no RepRap grant in UKRI Gateway to Research)"
+    ],
+    "note": "founded_year and the GPL licence rested only on Wikipedia; reprap.org/wiki/About confirms GPL but gives Feb 2004 (first online introduction) rather than 2005, and states no year for the licence, so license_history[0].year 2005 is unconfirmed. The cited reprap.org main page states only the wiki-content licence (GFDL), not the design licence, consistent with what it is cited for. EPSRC grant amount still not found (UKRI Gateway to Research has no RepRap project), so funding_total_usd stays null. Confidence left low because founded_year is contested."
+  }
 }

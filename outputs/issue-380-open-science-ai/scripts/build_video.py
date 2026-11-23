@@ -4,8 +4,8 @@ Usage: python build_video.py [--render] [--mux] [--join]  (default: all three)""
 import json, subprocess, sys, os, concurrent.futures as cf
 N = json.load(open("video/narration.json")); D = json.load(open("video/durations.json"))
 MOD = {}
-for m, names in [("scenes_data", ["oss_value", "open_science_value", "epoch_sector", "openalex", "compute_gap", "language"]),
-                 ("scenes_companies", ["values", "relicense", "lanes_software", "lanes_hardware", "lanes_science", "lanes_ai", "ai_values", "stocks"]),
+for m, names in [("scenes_data", ["coss_vc", "oss_value", "open_science_value", "epoch_sector", "openalex", "compute_gap", "language"]),
+                 ("scenes_companies", ["kinds", "values", "relicense", "lanes_software", "lanes_hardware", "lanes_science", "lanes_ai", "ai_values", "stocks"]),
                  ("scenes_cards", ["title", "quotes", "dal", "takeaways", "end", "gh_threads"])]:
     for n in names: MOD[n] = m
 LEAD, TAIL = 0.5, 1.0
@@ -41,7 +41,7 @@ if "join" in steps:
               "ai_values": "Frontier AI: value sits with closed weights", "lanes_ai": "Big Tech and AI labs over time", "epoch_sector": "Who releases model weights",
               "compute_gap": "The compute gap", "openalex": "Open-access papers by sector", "language": "How the labs talk about open",
               "quotes": "In their own words", "gh_threads": "Our own GitHub threads", "dal": "DAL and the vertical cloud lab (#318)",
-              "takeaways": "Takeaways", "end": "Data and sources"}
+              "takeaways": "Takeaways", "end": "Data and sources", "coss_vc": "Venture data: open vs closed startups", "kinds": "Who opens, who closes"}
     for x in N:
         m, sec = divmod(int(t), 60); chapters.append(f"{m}:{sec:02d} {titles.get(x['scene'], x['scene'])}"); t += vdur(x["scene"])
     open("video/chapters.txt", "w").write("\n".join(chapters) + "\n")

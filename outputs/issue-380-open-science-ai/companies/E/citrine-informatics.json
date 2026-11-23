@@ -62,5 +62,43 @@
     {"url": "https://citrine.io/", "title": "Citrine Informatics home page", "publisher": "Citrine Informatics", "date": "2026-11", "supports": "flagship_projects (Apex), robustness (customers), risk_events[2]"},
     {"url": "https://github.com/CitrineInformatics", "title": "CitrineInformatics GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes, license_history[0]"},
     {"url": "https://github.com/CitrineInformatics/lolo", "title": "CitrineInformatics/lolo", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2013, "source": "https://www.sec.gov/Archives/edgar/data/1675501/000167550116000001/primary_doc.xml", "evidence": "Form D, Citrine Informatics, Inc.: Jurisdiction of incorporation DELAWARE; Year of incorporation 2013; related persons Gregory Mulholland, Bryce Meredig (Executive Officer, Director)"},
+      {"field": "openness_current", "value": 1, "source": "https://raw.githubusercontent.com/CitrineInformatics/citrine-python/main/LICENSE", "evidence": "citrine-python LICENSE: \"Apache License / Version 2.0, January 2004 ... Copyright 2022 Citrine Informatics\" (open SDK = the peripheral open piece behind level 1)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "No page states a total. Each announced component is confirmed by its own release, separate from the cited listing page: '$7.6 million Series A' (7 Jun 2017), '$8 million convertible note from Tencent Holdings' (19 Apr 2018), $20M Series B (10 Oct 2019), '$16 million Series C' (4 Jan 2023). SEC Form Ds suggest the $51.6M sum is understated: equity sold was $8,757,049 (first sale 2016-05-09), $20,948,322 (2019-06-28), $12,354,375 (2020-10-23, possibly the undisclosed Dec 2020 UMI investment) and $12,595,504 (2022-10-28, partial Series C). That is $54.7M through 2022 (my arithmetic) before the $8M note. Whether the 2016 Form D overlaps the 2017 Series A is not stated. No single page contradicts $51.6M, so it was not changed."}
+    ],
+    "newer_info": [
+      {"field": "funding_total_usd", "value": 4999999, "date": "2023-09", "source": "https://www.sec.gov/Archives/edgar/data/1675501/000116840423000001/primary_doc.xml", "evidence": "Increment, not a cumulative total: Form D new notice, equity, date of first sale 2023-09-15, total amount sold 4999999"},
+      {"field": "funding_total_usd", "value": 2604987, "date": "2025-01", "source": "https://www.sec.gov/Archives/edgar/data/1675501/000116840425000001/primary_doc.xml", "evidence": "Increment, not a cumulative total: Form D new notice, equity/options, date of first sale 2025-01-24, offering 6100000, amount sold 2604987"}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.sec.gov/cgi-bin/browse-edgar?company=citrine+informatics&owner=exclude&action=getcompany (503)",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Citrine%20Informatics%22",
+      "https://www.sec.gov/Archives/edgar/data/1675501/000167550116000001/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1675501/000167550119000001/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1675501/000116840420000017/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1675501/000116840422000002/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1675501/000116840423000001/primary_doc.xml",
+      "https://www.sec.gov/Archives/edgar/data/1675501/000116840425000001/primary_doc.xml",
+      "https://raw.githubusercontent.com/CitrineInformatics/citrine-python/main/LICENSE",
+      "https://citrine.io/media-type/press-releases/",
+      "https://citrine.io/media-post/citrine-informatics-raises-series-c-funding-round/",
+      "https://citrine.io/media-post/citrine-informatics-raises-20m-in-series-b-funding/",
+      "https://citrine.io/media-post/citrine-informatics-raises-7-6m-to-revolutionize-materials-driven-product-development-with-ai/",
+      "https://citrine.io/media-post/citrine-informatics-closes-8-million-convertible-note-to-meet-international-demand-for-materials-driven-ai/"
+    ],
+    "note": "founded_year is now independently confirmed by an SEC filing. risk_events[1] ('No announced equity round since Jan 2023') is true only for announcements: Form Ds show unannounced equity sales in Sep 2023 ($5.0M) and Jan 2025 ($2.6M). Minor date drift: the listing page dates the Series C to 23 Jan 2023, but the release itself is dated 4 Jan 2023. Confidence was not raised to high because the funding total is unconfirmed and probably understated."
+  }
 }

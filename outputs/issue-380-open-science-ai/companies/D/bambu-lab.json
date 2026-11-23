@@ -170,5 +170,29 @@
     "Revenue: EqualOcean says Bambu Lab 'is expected to generate CNY 1.5 billion in revenue by 2023' (a forecast, single source). Not converted to USD because no exchange-rate source could be fetched; revenue_latest_usd left null.",
     "An earlier guessed URL for the authorization post (firmware-update-introducing-new-authorization-and-authentication-architecture) returned 404; the correct post URL was taken from Wikipedia's references.",
     "Wikipedia dates the cloud-connection vulnerability to 2025 but its cited Bitdefender article is from May 2023; the year is uncertain."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "relicensing_events[0].year",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2020, "source": "https://zh.wikipedia.org/wiki/拓竹科技", "evidence": "該公司成立於2020年 (the company was founded in 2020). Chinese Wikipedia, an independent secondary page; the file cites English Wikipedia"},
+      {"field": "relicensing_events[0].year", "value": 2025, "source": "https://blog.bambulab.com/updates-and-third-party-integration-with-bambu-connect/", "evidence": "Post dated 'Jan 20, 2025': 'By default, LAN mode will include an authorization process that ensures robust security.'"},
+      {"field": "still_operating", "value": true, "source": "https://blog.bambulab.com/", "evidence": "'Bambu Lab to present the Bambu Circle programme and showcase H3C and R1 at Formnext 2026' (Nov 11, 2026)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://bambulab.com/en/about-us (403)",
+      "https://bambulab.com/en-us/about-us (403)",
+      "https://blog.bambulab.com/",
+      "https://blog.bambulab.com/updates-and-third-party-integration-with-bambu-connect/",
+      "https://zh.wikipedia.org/wiki/拓竹科技"
+    ],
+    "note": "Bambu's own about pages returned 403, so founded_year rests on two Wikipedia editions (English and Chinese) with no primary page. Bambu's own 2025-01-20 post (a different post from the cited 2025-01-16 one) confirms the authorization change and an opt-in mode that leaves 'the MQTT channel, live stream, and FTP open', matching openness_notes. Chinese Wikipedia names IDG Capital as an investor (its infobox lists IDG as parent company), consistent with ownership_status private_vc, but gives no amounts. Confidence stays medium: financial fields are all null and the founding year has no primary page."
+  }
 }

@@ -42,7 +42,7 @@
   "physical_science_relevance": "SparkFun breakout and development boards (sensors, GNSS, motor drivers) are common building blocks in low-cost scientific instruments, and the published schematics allow them to be adapted for lab use.",
   "openness_effect_assessment": "SparkFun shows that open hardware plus no patents is compatible with long-term operation. It has run for 23 years with about 140-150 staff (2015-2018) while publishing everything, and it holds the second-largest OSHWA portfolio in this group (about 264 by 2020). Like Adafruit it stayed mid-sized and private. Value comes from in-house manufacturing, curation and education, not exclusivity. Its recorded legal disputes are about trademark and trade dress (SPARC, Fluke), not about copying of its designs.",
   "key_takeaway": "SparkFun is the long-lived, mid-sized open-hardware manufacturer. It was founded by a student in 2003 and still operates from Colorado, publishing schematics and EAGLE files for 400+ in-house designs, with an explicit no-patents policy and an early role in writing the OSHW definition. No valuation, funding or revenue is public, and no recent headcount was found beyond about 140 in 2018. It supports the pattern that open hardware firms can be durable but stay small and private. The trademark and trade-dress disputes (SPARC 2009-2010, Fluke 2014) show that brand, not design IP, is where open-hardware firms meet legal risk.",
-  "confidence": "medium",
+  "confidence": "high",
   "searches": [],
   "fetched_urls": [
     "https://en.wikipedia.org/wiki/SparkFun_Electronics",
@@ -68,5 +68,30 @@
     "employees_latest 140 is the Jan 2018 figure from the about page (Wikipedia: 150+ in 2015). No later headcount was found.",
     "No revenue figure was found.",
     "Failed fetches: news.sparkfun.com (403), github.com/sparkfun/SparkFun_RedBoard_Qwiic (404), en.wikipedia.org/wiki/Nathan_Seidle (404). 2024-2026 events are therefore unverified; the company website was live on 2026-11-23."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "still_operating",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2003, "source": "https://www.sparkfun.com/press-and-media", "evidence": "Nathan started SparkFun in his college apartment in 2003. (official press page; the cited about page also says 'Since 2003, SparkFun has been helping turn ideas into reality')"},
+      {"field": "still_operating", "value": true, "source": "https://www.sparkfun.com/press-and-media", "evidence": "Press releases 'SparkFun Launches New Affiliate Program' (August 11, 2026) and 'SparkPNT Enters the Next Chapter with Facet FP' (March 20, 2026); GitHub org pushes on 2026-11-23"},
+      {"field": "openness_current", "value": 3, "source": "https://raw.githubusercontent.com/sparkfun/SparkFun_Thing_Plus_ESP32-S3/main/LICENSE.md", "evidence": "SparkFun hardware is released under Creative Commons Share-alike 4.0 International. ... SparkFun code, firmware, and software is released under the MIT License"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [],
+    "confidence_change": {"old": "medium", "new": "high", "reason": "All three checked facts are confirmed by official SparkFun pages, independent of the cited Wikipedia article: founded_year 2003 (press-and-media page, plus the about page), still operating (2026 press releases and GitHub pushes), and openness_current 3 (board LICENSE.md: hardware CC BY-SA 4.0, code MIT). Nothing is contradicted."},
+    "fetched_urls": [
+      "https://www.sparkfun.com/about_sparkfun",
+      "https://api.github.com/orgs/sparkfun/repos?sort=pushed&per_page=20",
+      "https://raw.githubusercontent.com/sparkfun/SparkFun_Thing_Plus_ESP32-S3/main/LICENSE.md",
+      "https://www.sparkfun.com/news/2571 (301 redirect to news.sparkfun.com/2571)",
+      "https://news.sparkfun.com/2571 (403)",
+      "https://www.sparkfun.com/press-and-media"
+    ],
+    "note": "The design-file licence the file could not name is CC BY-SA 4.0 for hardware and MIT for code, per SparkFun's standard LICENSE.md (SparkFun_Thing_Plus_ESP32-S3). The press page's undated fact sheet says the company 'employs ~100 people (& ~12 dogs)', against employees_latest 140 (Jan 2018); this was not applied because it is undated. Ownership and funding remain null: the press page gives nothing, and Nate's history post (news.sparkfun.com/2571) returned 403. openness_initial (2003) was not checked."
+  }
 }

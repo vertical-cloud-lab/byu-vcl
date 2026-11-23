@@ -220,5 +220,37 @@
     "No revenue, employee count or valuation was found. The Qualcomm price was undisclosed.",
     "hq_country IT: the Terms name Arduino S.r.l. as the main contracting entity. Arduino AG (Switzerland) was the 2016 merger vehicle and Arduino LLC is the US entity. The co-founders also include US-based Tom Igoe.",
     "Patents were not checked; no search was available."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "funding_total_usd",
+      "exit_events[2]",
+      "ownership_status",
+      "founded_year"
+    ],
+    "confirmed": [
+      {"field": "funding_total_usd", "value": 54000000, "source": "https://blog.arduino.cc/2023/09/06/", "evidence": "Arduino blog post 'What will we do with an additional $22M?' (2023-09-06): \"taking our Series B funding to $54 million, thanks to an expansion co-led by CDP Venture Capital and Anzu Partners\""},
+      {"field": "exit_events[2]", "value": "2025 acquisition agreement with Qualcomm Technologies, price undisclosed", "source": "https://www.qualcomm.com/news/releases/2025/10/qualcomm-to-acquire-arduino-accelerating-developers--access-to-i", "evidence": "Qualcomm release headline: \"Qualcomm to Acquire Arduino—Accelerating Developers’ Access to its Leading Edge Computing and AI\" (URL dated 2025/10; body did not render)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "ownership_status", "reason": "Deal closing not confirmed by any primary page. Qualcomm's release rendered only its headline ('to Acquire'). Arduino's 2025-10-07 post says 'The closing of this transaction is subject to regulatory approval and other customary closing conditions.' arduino.cc/en/about makes no ownership statement. EDGAR full-text search finds no Qualcomm (CIK 804328) filing since 2025-10-01 mentioning Arduino, and no 10-K/10-Q/8-K mentioning both. Wikipedia's Arduino article says '(now owned by Qualcomm)' but gives no completion date (secondary only)."},
+      {"field": "founded_year", "reason": "Only the cited Wikipedia states 2005 ('The Arduino project began in 2005 as a tool for students at the Interaction Design Institute Ivrea'); arduino.cc/en/about gives no year."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://blog.arduino.cc/2025/10/07/a-new-chapter-for-arduino-with-qualcomm-uno-q-and-you/",
+      "https://www.qualcomm.com/news/releases/2025/10/qualcomm-to-acquire-arduino-accelerating-developers--access-to-i (headline only; body not rendered)",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Arduino%22&ciks=0000804328&dateRange=custom&startdt=2025-10-01&enddt=2026-11-23 (0 hits)",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Arduino%22%20%22Qualcomm%22&forms=10-K,10-Q,8-K&dateRange=custom&startdt=2025-10-01&enddt=2026-11-23 (0 hits)",
+      "https://blog.arduino.cc/2022/06/",
+      "https://blog.arduino.cc/2023/09/",
+      "https://blog.arduino.cc/2022/06/07/",
+      "https://blog.arduino.cc/2023/09/06/",
+      "https://www.arduino.cc/en/about",
+      "https://en.wikipedia.org/wiki/Arduino"
+    ],
+    "note": "The $54M total is Arduino's own figure for its Series B including the 2023 extension, matching the file's sum of the TechCrunch rounds; earlier funding, if any, remains unknown. The 2022-06-07 Arduino post ('Ready to transform the enterprise world? We are!') mentions Bosch, Renesas, Anzu Partners and Arm only as partners in its excerpt, so the $32M figure was not re-found separately. Qualcomm's SEC filings do not mention Arduino (EDGAR full-text search, 0 hits), so the file's suggestion to check Qualcomm's FY2026 10-K is unlikely to settle whether the deal closed. ownership_status 'acquired' still rests on Wikipedia alone. Confidence stays medium because closing is unconfirmed."
+  }
 }

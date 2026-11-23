@@ -83,7 +83,7 @@
   "physical_science_relevance": "Cura is one of the most widely used open slicers (1.4 million jobs a week in 2020 per Wikipedia) and is used across academic labs; 2026 activity includes medical (wound-care MOU with Bioactivx) and materials work.",
   "openness_effect_assessment": "Ultimaker started from the RepRap/fablab community and published its first two printers' designs, though only under non-commercial CC BY-NC terms. Its most successful open asset is software: making Cura open (now LGPL-3.0) made it a de facto standard slicer with about 1 million users by 2017, which supported printer sales even as later printer designs were not published. Openness in software, not hardware, appears to be what gave UltiMaker durable reach.",
   "key_takeaway": "UltiMaker is the 'open slicer, closed printers' pattern from the European side: its RepRap-community origins and non-commercially licensed early designs gave way to proprietary professional printers, while LGPL Cura became the ecosystem anchor. Consolidation (the 2022 MakerBot merger under NPM Capital) rather than openness determined its corporate path.",
-  "confidence": "low",
+  "confidence": "medium",
   "searches": [
     "Ultimaker MakerBot merger 2022 Stratasys 46.5% stake NPM Capital $62.4 million cash closed",
     "MakerBot brand 2025 2026 UltiMaker news Sketch Method discontinued layoffs"
@@ -189,5 +189,34 @@
     "No revenue or valuation for UltiMaker has been disclosed in the sources reached.",
     "us_focus false: Dutch HQ (Utrecht); significant US presence through MakerBot (New York) and US industrial/defense distribution.",
     "Openness of Ultimaker 3/S-series/Factor design files, firmware licences and any OSHWA certifications were not verified."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "exit_events[0]",
+      "license_history[2].license"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2011, "source": "https://www.sec.gov/Archives/edgar/data/1517396/000121390022025940/ea159739ex99-1_stratasys.htm", "evidence": "Established in 2011, Ultimaker is on a mission (Stratasys press release of 2022-05-12, SEC 6-K Ex. 99.1)"},
+      {"field": "funding_total_usd", "value": 62400000, "source": "https://www.sec.gov/Archives/edgar/data/1517396/000121390022025940/ea159739ex99-1_stratasys.htm", "evidence": "The combined $62.4 million of committed financial backing is intended to fuel ecosystem innovation"},
+      {"field": "exit_events[0]", "value": "2022 merger with MakerBot (Stratasys)", "source": "https://www.sec.gov/Archives/edgar/data/1517396/000121390022025940/ea159739ex99-1_stratasys.htm", "evidence": "NPM Capital plans to contribute Ultimaker's assets, invest $15.4 million, and own 54.4% ... Stratasys will contribute MakerBot's assets, invest $47 million, and own 45.6%"},
+      {"field": "license_history[2].license", "value": "LGPL-3.0 (UltiMaker Cura slicer)", "source": "https://raw.githubusercontent.com/Ultimaker/Cura/main/LICENSE", "evidence": "GNU LESSER GENERAL PUBLIC LICENSE / Version 3, 29 June 2007"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [],
+    "newer_info": [
+      {"field": "employees_latest", "value": 330, "date": "2022-05", "source": "https://www.sec.gov/Archives/edgar/data/1517396/000121390022025940/ea159739ex99-1_stratasys.htm", "evidence": "330 employees deliver a platform that enables customers to take full advantage of the unique Ultimaker Ecosystem", "note": "pre-merger Ultimaker headcount at the May 2022 announcement; newer than (and below) the file's 2019 figure of about 400"}
+    ],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "founded_year 2011, the $62.4M committed investment and the 2022 MakerBot merger terms are confirmed by Stratasys's 2022-05-12 release filed with the SEC (6-K Ex. 99.1, primary), in addition to the cited Wikipedia, TechCrunch and Stratasys completion release. Cura's LGPL-3.0 is confirmed by its LICENSE file. Nothing contradicted."},
+    "fetched_urls": [
+      "https://ultimaker.com/about-ultimaker/ (no relevant facts; only footer '© 2011-2026 UltiMaker')",
+      "https://investors.stratasys.com/news-events/press-releases (index renders no releases)",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Ultimaker%22&forms=6-K&dateRange=custom&startdt=2022-05-01&enddt=2022-09-30",
+      "https://www.sec.gov/Archives/edgar/data/1517396/000121390022025940/ea159739ex99-1_stratasys.htm",
+      "https://raw.githubusercontent.com/Ultimaker/Cura/main/LICENSE"
+    ],
+    "note": "funding_total_usd ($62.4M) is the 'committed financial backing' put in at the merger (NPM $15.4M, Stratasys $47M), not lifetime equity raised by Ultimaker; earlier funding is unknown. The 6-K confirms the announced split (54.4/45.6). The completion split (53.5/46.5) and the 2022-08-31 effective date rest only on the cited Stratasys completion release: EDGAR full-text search for May-Sept 2022 found no completion 6-K. openness_current and relicensing_events[0] (year null) were not re-checked; no page reached states whether later printer designs are published."
+  }
 }

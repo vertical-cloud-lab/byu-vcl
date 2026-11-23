@@ -1,0 +1,148 @@
+{
+  "name": "3D Systems Corporation",
+  "slug": "3d-systems",
+  "group": "G",
+  "category": "hardware",
+  "subcategory": "industrial 3D printers (SLA, SLS, MJP, CJP, direct metal printing), materials and healthcare solutions",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1986 in Valencia, CA by Chuck Hull, inventor of stereolithography (US Patent 4,575,330, 'Apparatus for Production of Three-Dimensional Objects by Stereolithography'). Listed on Nasdaq (TDSC), moved to the NYSE as DDD in May 2011; HQ in Rock Hill, SC since 2005.",
+  "founded_year": 1986,
+  "flagship_projects": [
+    "Stereolithography (SLA, the original 3D printing patent)",
+    "Selective laser sintering (SLS)",
+    "Direct Metal Printing (DMP) metal powder-bed fusion line (LayerWise, acquired 2014)",
+    "MultiJet and ColorJet printing",
+    "Healthcare: medical devices, dental, Simbionix simulators"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Wikipedia describes 3D Systems as a closed-source company that relies on in-house technology and patents. It enforced its stereolithography patents against the open/crowdfunded Formlabs Form 1 (2012 suit, settled 2014) and earlier against EOS (1990s, settled in 2004 with cross-licensing under which EOS pays royalties on certain US laser-sintering sales). No open hardware, firmware or OSI-licensed software found. 0 at both dates.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 1986,
+      "license": "Proprietary, patent-based (SLA patent US 4,575,330)",
+      "note": "Closed-source throughout per Wikipedia",
+      "source": "https://en.wikipedia.org/wiki/3D_Systems"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": 254520000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 386900000,
+  "revenue_year": 2025,
+  "employees_latest": 1925,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2012-2014: acquisition spree (Z Corp $137M, Jan 2012; Simbionix $120M and LayerWise, 2014; botObjects, 2015) during the 2013 3D-printing bubble; year-end market cap peaked at $9.55B (2013) then fell to $974M by end-2015",
+    "Nov 2012: sued Formlabs and Kickstarter over a stereolithography patent; dismissed/settled 2014 (featured in Netflix's Print the Legend)",
+    "2015-2016 and 2020: CEO turnover (Reichental out Oct 2015; Joshi Apr 2016; Graves May 2020)",
+    "2021: SPAC-era rerating to a $2.75B year-end market cap, then down to $227.9M by end-2025 (StockAnalysis)",
+    "Jun 2023: made a ~$1.2B offer for Stratasys during the Stratasys/Desktop Metal/Nano Dimension fight; not completed",
+    "2024: revenue $440.1M with a net loss of $255.6M",
+    "2025: divested Geomagic software (2025-04-01, $119.4M cash) and 3DXpert/Oqton (2025-10-31, $3.3M + up to $12.9M royalty); ~$55M annualized cost savings; debt equitization retired most notes due 2026",
+    "2025 revenue fell 12% to $386.9M; net income turned positive ($29.9M) mainly because of a $139.6M gain on dispositions, lower operating expenses and lower impairments"
+  ],
+  "robustness": "Forty-year-old public company with a large installed base and a healthcare segment ($179.6M in 2025), but shrinking: revenue down from $440.1M (2024) to $386.9M (2025), software assets sold, and market cap about $255M (2026-11-23), roughly 97% below its 2013 year-end peak. Users depend on proprietary printers, materials and (now divested) software, with no open fallback.",
+  "physical_science_relevance": "Its DMP line (from the 2014 LayerWise acquisition) is a closed metal laser powder-bed fusion platform used for aerospace and medical metal parts, and 3D Systems originated SLA and patents on SLS that shaped who could enter the market. For LPBF aluminium-alloy development it is a closed comparator: process parameters and build software are vendor-controlled, and the 2025 sale of its 3DXpert metal-AM software shows how tool chains can be divested out from under users. Specific DMP aluminium alloys were not confirmed in fetched pages.",
+  "openness_effect_assessment": "3D Systems used patents as its main moat (against EOS in the 1990s and Formlabs in 2012), which delayed but did not stop competition once key patents expired and crowdfunded entrants appeared. The closed, acquisition-driven strategy did not protect value: market cap fell from $9.55B (end-2013) to about $0.25B (Nov 2026) while lower-cost and open-ecosystem competitors grew.",
+  "key_takeaway": "3D Systems is the original closed AM incumbent: founded on Hull's 1986 SLA patent, enforced against newcomers, and enlarged through acquisitions in the 2012-2014 bubble. Its decline since then (a market cap down roughly 97% from the 2013 peak, divestiture of its software in 2025) shows that patents and proprietary ecosystems gave a head start, not durability. For a lab, its sale of the 3DXpert metal-AM software is a reminder that closed tool chains can change hands or disappear.",
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (printer software; Geomagic and 3DXpert/Oqton sold in 2025)"
+    ],
+    "patents": "Founded on US 4,575,330 (stereolithography). Sued EOS (1993-94; cross-licence settlement 2004) and Formlabs/Kickstarter (2012; settled 2014). Bought EOS's stereolithography business in 1997 for about $3.25M (de.wikipedia EOS).",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "employees_latest = 1,925 (2023, Wikipedia infobox); the body text gives 'over 2100' undated. A FY2025 headcount was not fetched.",
+    "Market-cap history from StockAnalysis year-end values; the existing data/prices_weekly_close.csv (weekly adjusted closes) shows DDD 96.8% below its 2021 high and 98.4% below its 2013 high on 2026-11-23.",
+    "The ~$1.2B Stratasys offer figure is from Wikipedia's Stratasys article; it was not completed (Stratasys remains an independent Nasdaq company per its FY2025 20-F).",
+    "Three 8-Ks filed 2026-11-05 to 2026-11-13 (Items 1.01, 1.02, 2.03, 3.02) suggest a further financing or exchange that was not read."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/3D_Systems",
+    "https://stockanalysis.com/stocks/ddd/market-cap/",
+    "https://data.sec.gov/submissions/CIK0000910638.json",
+    "https://www.sec.gov/Archives/edgar/data/910638/000162828026070184/",
+    "https://www.sec.gov/Archives/edgar/data/910638/000162828026070184/a3dq32026earningsrelease.htm",
+    "https://www.sec.gov/Archives/edgar/data/910638/000162828026015798/",
+    "https://www.sec.gov/Archives/edgar/data/910638/000162828026015798/a3d2025-12x31earningsrelea.htm",
+    "https://de.wikipedia.org/wiki/EOS_GmbH",
+    "https://en.wikipedia.org/wiki/Stratasys"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/3D_Systems",
+      "title": "3D Systems",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, openness_notes, license_history, employees_latest, risk_events[0]-[2], risk_events[5] (2024 revenue)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/910638/000162828026015798/a3d2025-12x31earningsrelea.htm",
+      "title": "3D Systems fourth quarter and full year 2025 results (8-K exhibit)",
+      "publisher": "SEC EDGAR / 3D Systems",
+      "date": "2026-03-09",
+      "supports": "revenue_latest_usd, risk_events[5]-[7], robustness"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/910638/000162828026070184/a3dq32026earningsrelease.htm",
+      "title": "3D Systems third quarter 2026 results (8-K exhibit)",
+      "publisher": "SEC EDGAR / 3D Systems",
+      "date": "2026-11-04",
+      "supports": "risk_events[6] (divestiture terms), robustness"
+    },
+    {
+      "url": "https://stockanalysis.com/stocks/ddd/market-cap/",
+      "title": "3D Systems (DDD) Market Cap",
+      "publisher": "StockAnalysis.com",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd, risk_events[0], risk_events[3], robustness"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Stratasys",
+      "title": "Stratasys",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "risk_events[4]"
+    },
+    {
+      "url": "https://de.wikipedia.org/wiki/EOS_GmbH",
+      "title": "EOS GmbH",
+      "publisher": "Wikipedia (German)",
+      "date": "2026",
+      "supports": "openness_notes (EOS suit and 2004 cross-licence), hardware_extras.patents"
+    },
+    {
+      "url": "https://patents.google.com/patent/US4575330",
+      "title": "US4575330A: Apparatus for production of three-dimensional objects by stereolithography",
+      "publisher": "Google Patents",
+      "date": "1986-03-11",
+      "supports": "origin_detail (cited by Wikipedia, not fetched)"
+    },
+    {
+      "url": "https://techcrunch.com/2014/12/01/3d-systems-v-form-labs-patent-lawsuit-dismissed/",
+      "title": "3D Systems v. Formlabs Patent Lawsuit Dismissed",
+      "publisher": "TechCrunch",
+      "date": "2014-12-01",
+      "supports": "risk_events[1] (cited by Wikipedia, not fetched)"
+    }
+  ]
+}

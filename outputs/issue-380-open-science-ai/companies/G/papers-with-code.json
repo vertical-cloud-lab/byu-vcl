@@ -1,0 +1,234 @@
+{
+  "name": "Papers with Code (Meta AI)",
+  "slug": "papers-with-code",
+  "group": "G",
+  "category": "open_infrastructure",
+  "subcategory": "free index linking ML papers to code, leaderboards (SOTA tables), methods and datasets",
+  "hq_country": "GB",
+  "origin": null,
+  "origin_detail": "The paperswithcode GitHub organisation was created on 15 June 2018. By April 2020 its core team (Marcin Kardas, Ross Taylor, Robert Stojnic) were at Facebook AI Research (FAIR) in London, where their AxCell paper described a results-extraction method 'used in an in-production setting at paperswithcode.com'; by November 2022 the same team, as Meta AI, released the Galactica science LLM from the paperswithcode/galai repository. Founding by Robert Stojnic and Ross Taylor and the 2019 move to Facebook AI are widely reported but were not confirmed on fetched pages.",
+  "founded_year": 2018,
+  "flagship_projects": [
+    "paperswithcode.com (papers, code links, SOTA leaderboards, methods, datasets)",
+    "paperswithcode-data (full data dumps, CC BY-SA 4.0)",
+    "sota-extractor, AxCell, paperswithcode-client, torchbench (Apache-2.0)",
+    "releasing-research-code (MIT, ~3,000 stars) and ai-deadlines (MIT, ~6,000 stars) repositories",
+    "Galactica science LLM (galai, Apache-2.0 code; Meta AI, 2022)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "All site data was published as regularly regenerated dumps under CC BY-SA 4.0 and the tooling under Apache-2.0 or MIT, and leaderboards were filled partly by crowdsourced contributions. The website's own code was not open and the service was run by a single corporate owner (Meta), so it does not reach level 4 (open governance). After the 2025 shutdown, the final CC BY-SA snapshot remains open and has been mirrored by a community archive (pwc-archive on Hugging Face) that powers a revival site, so the remaining artefact stays at level 3 although the service is gone.",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2019,
+      "license": "CC BY-SA 4.0 (data dumps)",
+      "note": "paperswithcode-data repository created 2019-01-31; 'All data is licenced under CC-BY-SA'",
+      "source": "https://github.com/paperswithcode/paperswithcode-data"
+    },
+    {
+      "year": null,
+      "license": "Apache-2.0 / MIT (sota-extractor, paperswithcode-client, torchbench, sotabench-eval; ai-deadlines, releasing-research-code)",
+      "note": "",
+      "source": "https://github.com/paperswithcode"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "defunct",
+  "exit_events": [
+    {
+      "year": null,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Facebook AI Research (Meta)",
+      "note": "Team affiliated with FAIR London by April 2020 (AxCell paper); commonly reported as a December 2019 acquisition, not confirmed on fetched pages; terms undisclosed",
+      "source": "https://arxiv.org/pdf/2004.14356"
+    },
+    {
+      "year": 2025,
+      "type": "shutdown",
+      "value_usd": null,
+      "counterparty": "Meta (owner); Hugging Face (redirect target)",
+      "note": "Users reported spam-vandalised dataset pages (2025-06-25), deleted leaderboard entries (2025-06-22), 502 errors (2025-06-29) and a redirect to Hugging Face (2025-08-14); the data repository's last push was 2025-09-08; on 2026-11-23 paperswithcode.com returned HTTP 302 to huggingface.co/papers/trending",
+      "source": "https://github.com/paperswithcode/paperswithcode-data/issues"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": false,
+  "end_year": 2025,
+  "us_focus": true,
+  "risk_events": [
+    "Single corporate owner: a free community resource run inside Meta AI, with no foundation, contract or funding of its own",
+    "2022: the team's Galactica model (Meta AI, trained on 48 million papers among 106 billion tokens) was available for only three days from 15 November 2022 before being withdrawn over inaccurate and racist output",
+    "June 2025: spam replaced dataset titles and descriptions and leaderboard entries were deleted, then the site returned 502 errors",
+    "Aug 2025: paperswithcode.com redirected to Hugging Face's Trending Papers, ending the leaderboards, with no announcement found on fetched pages",
+    "Community response: alternatives and revival projects built on the CC BY-SA dumps (GitHub issues #117 and #122, 2025; pwc-archive on Hugging Face powering paperswithcode.co)"
+  ],
+  "robustness": "The service proved fragile: when its corporate owner stopped maintaining it, it degraded and disappeared within about two months in 2025, and Hugging Face's Trending Papers replaces only the paper-and-code feed, not the leaderboards. The open licence made the data robust: the final CC BY-SA snapshot (576k papers with abstracts plus links, evaluation tables, methods and datasets) is mirrored on Hugging Face and reused by revival sites.",
+  "physical_science_relevance": "Papers with Code was the main public ledger of machine-learning results: AxCell (2020) describes it as a result-aggregation tool whose leaderboards were filled by crowdsourced contributions and semi-automatic extraction. ML-for-science work, including materials informatics and self-driving-lab models, depends on such shared baselines, so its loss removes a neutral place to compare methods (an inference; no materials-specific leaderboards were checked). Its team's Galactica model was trained on 48 million papers plus millions of compounds and proteins, an early attempt at an LLM interface to physical-science knowledge that Meta withdrew after three days. For the Digital Alloy Lab it is a cautionary example: reproducibility infrastructure hosted by one company can vanish, while openly licensed data survives.",
+  "openness_effect_assessment": "Open data and free access made Papers with Code a standard reference for ML state of the art (its GitHub organisation still has about 6,000 followers) and attracted Facebook AI, whose researchers used the platform and its data for work such as AxCell and Galactica's citation benchmark. Openness did not secure the service itself: it ended at the owner's discretion in 2025. The CC BY-SA licence is why its contents outlived it.",
+  "key_takeaway": "Papers with Code is the clearest case of open science infrastructure held by a big tech owner: a 2018 project whose CC BY-SA leaderboards became the standard record of ML progress, whose team moved inside Facebook AI and trained Meta's Galactica science LLM on the literature, and which was left to decay and redirected to Hugging Face in mid-2025. The open data licence let the community archive and revive it; the corporate hosting is what failed.",
+  "usage_metrics": [
+    {
+      "metric": "papers with abstracts in final archived dump (rows)",
+      "value": 576000,
+      "date": "2025-09",
+      "source": "https://huggingface.co/datasets/pwc-archive/papers-with-abstracts"
+    },
+    {
+      "metric": "GitHub organisation followers",
+      "value": 6001,
+      "date": "2026-11",
+      "source": "https://api.github.com/orgs/paperswithcode"
+    },
+    {
+      "metric": "paperswithcode-data GitHub stars",
+      "value": 951,
+      "date": "2026-11",
+      "source": "https://api.github.com/repos/paperswithcode/paperswithcode-data"
+    },
+    {
+      "metric": "leaderboards in AxCell training set from PwC labelling interface",
+      "value": 2295,
+      "date": "2020-04",
+      "source": "https://arxiv.org/pdf/2004.14356"
+    }
+  ],
+  "funding_sources": [
+    "Facebook AI Research / Meta AI (corporate hosting; amounts undisclosed)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "founded_year 2018 is the creation date of the paperswithcode GitHub organisation (2018-06-15), used as a proxy; origin is null because the founders and the circumstances of founding were not confirmed on fetched pages.",
+    "hq_country GB reflects the team's FAIR London affiliation in the 2020 AxCell paper; us_focus true because the owner, Meta, is a US company.",
+    "No Wikipedia article on Papers with Code exists (two URL variants returned 404), and no official shutdown announcement from Meta or Hugging Face was found; the shutdown chronology is reconstructed from dated GitHub issues and the live redirect.",
+    "The Hugging Face pwc-archive organisation describes its datasets as 'the last publicly available snapshot' of the Papers with Code data and says it powers paperswithcode.co, 'a revival of the legacy website'; the revival site itself does not say who runs it.",
+    "Galactica corpus: 48 million papers, 106 billion tokens total; the paper lists all authors as Meta AI and uses Papers with Code concepts for its citation benchmark."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://huggingface.co/papers/trending",
+    "https://github.com/paperswithcode/paperswithcode-data",
+    "https://github.com/paperswithcode/paperswithcode-data/issues",
+    "https://github.com/paperswithcode",
+    "https://api.github.com/orgs/paperswithcode",
+    "https://api.github.com/repos/paperswithcode/paperswithcode-data",
+    "https://huggingface.co/pwc-archive",
+    "https://huggingface.co/datasets/pwc-archive/papers-with-abstracts",
+    "https://paperswithcode.co/",
+    "https://github.com/paperswithcode/galai",
+    "https://arxiv.org/abs/2211.09085",
+    "https://arxiv.org/pdf/2211.09085",
+    "https://arxiv.org/pdf/2004.14356",
+    "https://en.wikipedia.org/wiki/Meta_AI"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/paperswithcode/paperswithcode-data/issues",
+      "title": "paperswithcode-data issues",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "exit_events[1], risk_events[2-4]"
+    },
+    {
+      "url": "https://huggingface.co/papers/trending",
+      "title": "Trending Papers",
+      "publisher": "Hugging Face",
+      "date": "2026-11-23",
+      "supports": "exit_events[1] (redirect target; paperswithcode.com returned HTTP 302 here when fetched)"
+    },
+    {
+      "url": "https://github.com/paperswithcode/paperswithcode-data",
+      "title": "paperswithcode/paperswithcode-data",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[0], openness_notes"
+    },
+    {
+      "url": "https://api.github.com/repos/paperswithcode/paperswithcode-data",
+      "title": "paperswithcode-data repository metadata",
+      "publisher": "GitHub API",
+      "date": "2026-11-23",
+      "supports": "license_history[0] (created 2019-01-31), exit_events[1] (last push 2025-09-08), usage_metrics[2]"
+    },
+    {
+      "url": "https://api.github.com/orgs/paperswithcode",
+      "title": "paperswithcode organisation metadata",
+      "publisher": "GitHub API",
+      "date": "2026-11-23",
+      "supports": "founded_year (created 2018-06-15), usage_metrics[1]"
+    },
+    {
+      "url": "https://github.com/paperswithcode",
+      "title": "Papers with code (GitHub organisation)",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "flagship_projects, license_history[1], openness_effect_assessment"
+    },
+    {
+      "url": "https://huggingface.co/pwc-archive",
+      "title": "paperswithcode Archive (pwc-archive)",
+      "publisher": "Hugging Face",
+      "date": "2026-11",
+      "supports": "risk_events[4], robustness, notes (revival)"
+    },
+    {
+      "url": "https://huggingface.co/datasets/pwc-archive/papers-with-abstracts",
+      "title": "pwc-archive/papers-with-abstracts",
+      "publisher": "Hugging Face",
+      "date": "2026-11",
+      "supports": "usage_metrics[0], robustness (cc-by-sa-4.0)"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2004.14356",
+      "title": "AxCell: Automatic Extraction of Results from Machine Learning Papers",
+      "publisher": "arXiv (Kardas et al.)",
+      "date": "2020-04-29",
+      "supports": "origin_detail (FAIR London affiliations; in production at paperswithcode.com), exit_events[0], usage_metrics[3]"
+    },
+    {
+      "url": "https://arxiv.org/abs/2211.09085",
+      "title": "Galactica: A Large Language Model for Science",
+      "publisher": "arXiv (Taylor et al., Meta AI)",
+      "date": "2022-11-16",
+      "supports": "origin_detail, risk_events[1] (corpus), notes (Galactica corpus, PwC citation benchmark)"
+    },
+    {
+      "url": "https://github.com/paperswithcode/galai",
+      "title": "paperswithcode/galai",
+      "publisher": "GitHub",
+      "date": "2023",
+      "supports": "flagship_projects (Galactica code Apache-2.0, model sizes)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Meta_AI",
+      "title": "Meta AI",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "risk_events[1] (available three days from 15 Nov 2022, withdrawn)"
+    },
+    {
+      "url": "https://www.technologyreview.com/2022/11/18/1063487/meta-large-language-model-ai-only-survived-three-days-gpt-3-science/",
+      "title": "Why Meta's latest large language model survived only three days online",
+      "publisher": "MIT Technology Review",
+      "date": "2022-11-18",
+      "supports": "risk_events[1] (cited by Wikipedia Meta AI, not fetched)"
+    },
+    {
+      "url": "https://paperswithcode.co/",
+      "title": "paperswithcode.co",
+      "publisher": "unknown (revival site)",
+      "date": "2026-11",
+      "supports": "risk_events[4]"
+    }
+  ]
+}

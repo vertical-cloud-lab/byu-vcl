@@ -65,5 +65,31 @@
     {"url": "https://www.orbitalindustries.com/news/announcements/introducing-curieos", "title": "Introducing CurieOS: From the Atoms Up", "publisher": "Orbital Industries", "date": "2026-08-11", "supports": "risk_events[1], flagship_projects"},
     {"url": "https://www.orbitalindustries.com/about", "title": "Orbital Industries: About", "publisher": "Orbital Industries", "date": "2026-11", "supports": "origin_detail (investors), subcategory"},
     {"url": "https://www.orbitalindustries.com/", "title": "Orbital Industries home page", "publisher": "Orbital Industries", "date": "2026-11", "supports": "risk_events[0], subcategory"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "license_history[0].license",
+      "license_history[0].year",
+      "founded_year",
+      "funding_total_usd"
+    ],
+    "confirmed": [
+      {"field": "license_history[0].license", "value": "Orb models (code + weights) Apache-2.0", "source": "https://raw.githubusercontent.com/orbital-materials/orb-models/main/LICENSE", "evidence": "Apache License / Version 2.0, January 2004 ... Copyright 2024 Orbital Materials, Inc."},
+      {"field": "license_history[0].year", "value": 2024, "source": "https://raw.githubusercontent.com/orbital-materials/orb-models/main/LICENSE", "evidence": "Copyright 2024 Orbital Materials, Inc."}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "founded_year", "reason": "Left null. UK Companies House lists ORBITAL MATERIALS LTD (14332843), incorporated 2 September 2022, 10 John Street, London, with initial officers Niamh Gavin and The Briars Group Limited later resigned. Active directors: James Gin-Pollock and Daniel Miodovnik (from 2 Sep 2022) and Jonathan William Godwin (from 14 Oct 2022). But no fetched company page ties this entity to Orbital, and the licence names a US parent ('Orbital Materials, Inc.') whose incorporation year is unknown, so 2022 was not filled."},
+      {"field": "funding_total_usd", "reason": "Left null. EDGAR full-text search for 'Orbital Materials' returned 0 hits (no Form D), and Wikipedia has no article (404 per the original pass). No official page with a funding figure was found within budget."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://raw.githubusercontent.com/orbital-materials/orb-models/main/LICENSE",
+      "https://efts.sec.gov/LATEST/search-index?q=%22Orbital%20Materials%22 (0 hits)",
+      "https://find-and-update.company-information.service.gov.uk/search/companies?q=orbital+materials",
+      "https://find-and-update.company-information.service.gov.uk/company/14332843/officers"
+    ],
+    "note": "The open-model licence (basis of openness 2) is confirmed by the repository's own LICENSE file. This is the same repository as the cited README page, so it is not a fully independent source and confidence was left unchanged. The copyright holder is a US 'Orbital Materials, Inc.', so the legal parent may be US-incorporated even though operations and datelines are London (hq_country GB not changed). The rename to Orbital Industries is not reflected in the LICENSE."
+  }
 }

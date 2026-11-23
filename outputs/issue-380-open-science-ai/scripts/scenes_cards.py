@@ -58,7 +58,7 @@ LAYERS = [
  ("Digital twin of the vertical cloud lab (#318: VLM trays, arms, instruments)", "Open", "scripts and renders in byu-vcl"),
  ("Instrument drivers and interfaces (MCP / MHS-style)", "Rec. open", "recommended here: shared drivers are what other labs reuse"),
  ("Data, digital-thread schema, campaign logs", "Open*", "FAIR deposit (Zenodo); embargo only where IP review needs it"),
- ("Top alloy compositions", "Decide", "proposal: month-6 review for selective IP"),
+ ("Top alloy compositions", "Decide", "drafts disagree: latest says \"published openly rather than licensed\"; earlier, a month-6 IP review"),
  ("CALPHAD databases (Thermo-Calc TCAL) and process tools", "Closed", "licensed; pycalphad for open screening"),
  ("Instruments: Aconity LPBF printer, rePowder atomizer, Kardex VLM, UR10e on MiR", "Closed", "commercial hardware, orchestrated and documented in the open (#318)"),
  ("Budgets, signed letters, CVs", "Private", "kept out when DAL went public (Oct 2026)"),
@@ -109,7 +109,7 @@ def s_takeaways(duration, mp4, png):
 def s_end(duration, mp4, png):
     fig, ax = blank()
     a1 = ax.text(0.5, 0.62, "Everything behind this video is open", fontsize=44, fontweight="bold", ha="center", va="center")
-    a2 = ax.text(0.5, 0.45, "121 case files · 9 Edison literature reviews · 4,928 GitHub comments · Epoch AI and OpenAlex data\n150+ searches and 41 primary documents fetched through a lab Raspberry Pi's browser",
+    a2 = ax.text(0.5, 0.45, "121 case files · 9 Edison literature reviews · 4,928 GitHub records · Epoch AI, OpenAlex and COSS data\n135 searches, 58 pages and 6 YouTube transcripts pulled through a lab Raspberry Pi's browser",
                  fontsize=22, color=TEXT2, ha="center", va="center", linespacing=1.6)
     a3 = ax.text(0.5, 0.27, "github.com/vertical-cloud-lab/byu-vcl  ·  issue #380", fontsize=26, color=BLUE, ha="center", va="center")
     a4 = ax.text(0.5, 0.12, "Narration: Kokoro-82M (Apache-2.0). Charts: matplotlib. Made by Claude (Anthropic) for the BYU Vertical Cloud Lab.", fontsize=16, color=MUTED, ha="center")

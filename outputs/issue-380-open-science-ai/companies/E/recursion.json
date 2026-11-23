@@ -92,5 +92,41 @@
     {"url": "https://huggingface.co/datasets/recursionpharma/rxrx3-core", "title": "recursionpharma/rxrx3-core", "publisher": "Hugging Face", "date": "2025-03-26", "supports": "license_history[2]"},
     {"url": "https://huggingface.co/recursionpharma/OpenPhenom", "title": "recursionpharma/OpenPhenom", "publisher": "Hugging Face", "date": "n.d.", "supports": "openness_notes (non-commercial EULA; trained on RxRx3 + JUMP-CP)"},
     {"url": "https://huggingface.co/boltz-community/boltz-2", "title": "boltz-community/boltz-2", "publisher": "Hugging Face", "date": "n.d.", "supports": "openness_notes (MIT tag)"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "exit_events[0].year",
+      "exit_events[0].value_usd",
+      "risk_events[0]",
+      "revenue_latest_usd",
+      "latest_value_usd"
+    ],
+    "confirmed": [
+      {"field": "exit_events[0].year", "value": 2021, "source": "https://www.sec.gov/Archives/edgar/data/1601830/000119312521119404/d89478d424b4.htm", "evidence": "424B4: \"The initial public offering price is $18.00 per share.\"; \"Prospectus dated April 15, 2021\"; symbol \"RXRX\". recursion.com/our-story: April 16, 2021 IPO closing, NASDAQ trading"},
+      {"field": "risk_events[0]", "value": "20 Nov 2024: completed acquisition of Exscientia by UK scheme of arrangement (0.7729 RXRX shares per Exscientia share; 102.1M shares issued)", "source": "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000039/R12.htm", "evidence": "\"On November 20, 2024, Recursion acquired all of the outstanding equity interests of Exscientia plc\"; \"0.7729\"; \"Approximately 102.1 million Recursion Class A shares were issued\" (FY2025 10-K note)"},
+      {"field": "revenue_latest_usd", "value": 74680000, "source": "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000039/R5.htm", "evidence": "FY2025 10-K, Statements of Operations ($ in thousands): \"Total revenue\" \"$ 74,681\"; \"Net loss\" \"$ (644,759)\". File's 74.68M is rounded; $1K off."}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "exit_events[0].value_usd", "reason": "No page states an IPO market cap ($2.92B is StockAnalysis's figure). Consistency check only: the 424B4 gives 152,687,244 Class A + 9,467,883 Class B shares outstanding after the offering; x $18.00 = $2.919B (my arithmetic, without the 3,636,363-share option)."},
+      {"field": "latest_value_usd", "reason": "Live market cap dated 2026-11-23 rests on StockAnalysis only; no primary page gives a dated market cap. Not re-fetched."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000039/FilingSummary.xml",
+      "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000039/R5.htm",
+      "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000039/R9.htm (no formation/IPO text)",
+      "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000039/R12.htm",
+      "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000039/rxrx-20251231.htm (first 100K of 505K chars; no founding/IPO sentence)",
+      "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001601830&type=424B4&dateb=&owner=include&count=40 (503, twice)",
+      "https://data.sec.gov/submissions/CIK0001601830.json (truncated; unusable)",
+      "https://en.wikipedia.org/wiki/Exscientia (404)",
+      "https://www.recursion.com/our-story",
+      "https://www.sec.gov/Archives/edgar/data/1601830/index.json",
+      "https://www.sec.gov/Archives/edgar/data/1601830/000119312521119404/0001193125-21-119404-index.htm",
+      "https://www.sec.gov/Archives/edgar/data/1601830/000119312521119404/d89478d424b4.htm"
+    ],
+    "note": "The $18.00 IPO price (previously StockAnalysis only) is now confirmed by the 424B4; base-deal proceeds before expenses were $405,818,178 (24,242,424 shares). FY2025 net loss $644.8M in risk_events[2] matches the 10-K ($644,759K); its TTM-to-Sep-2026 figures were not checked. The 10-K puts Exscientia consideration at about $630.1M ($616.9M in shares at $6.04 plus $13.2M replaced awards), which the file does not record. exit_events[0].value_usd is a derived IPO-day market cap, not proceeds; latest_value_usd and employees_latest rest on StockAnalysis alone. founded_year was not re-checked: it already rests on two cited pages (recursion.com/our-story: 'November 5, 2013: Recursion is founded', plus StockAnalysis). Confidence stays medium because both valuation figures are unconfirmed."
+  }
 }

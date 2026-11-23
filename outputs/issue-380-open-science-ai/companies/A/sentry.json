@@ -80,7 +80,7 @@
   "physical_science_relevance": "",
   "openness_effect_assessment": "Sentry closed pre-emptively, before any cloud provider resold it, then shortened the closed window with FSL. It reports over 4 million developers and no fork appeared, which suggests a SaaS-first product with a delayed-open licence loses little adoption. Financial effects could not be assessed because funding, valuation and revenue were not confirmed.",
   "key_takeaway": "Sentry is the architect of the 'delayed open source' middle ground: source-available now, Apache/MIT after two years, paired with direct payments to open-source maintainers ($1M in 2026). It is a third path between OSI licensing and permanent source-available licences, built for a company whose product is mainly consumed as a service.",
-  "confidence": "low",
+  "confidence": "medium",
   "search_tool": "WebFetch (search budget exhausted)",
   "fetched_urls": [
     "https://blog.sentry.io/introducing-the-functional-source-license-freedom-without-free-riding/",
@@ -118,5 +118,31 @@
       "supports": "robustness (over 4 million developers)"
     }
   ],
-  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. Confidence is low because funding, valuation, revenue, headcount, company founding year and HQ could not be confirmed: guessed Wikipedia titles (Sentry_(software), Sentry_(company), Sentry.io) returned 404 or a different subject, and sentry.io/press and /careers had no company data. ownership_status 'private_vc' is not confirmed by a fetched page."
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. Confidence is low because funding, valuation, revenue, headcount, company founding year and HQ could not be confirmed: guessed Wikipedia titles (Sentry_(software), Sentry_(company), Sentry.io) returned 404 or a different subject, and sentry.io/press and /careers had no company data. ownership_status 'private_vc' is not confirmed by a fetched page.",
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "relicensing_events[0].year",
+      "relicensing_events[0].from",
+      "relicensing_events[1].year",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "relicensing_events[0].year", "value": 2019, "source": "https://api.github.com/repos/getsentry/sentry/commits?path=LICENSE&since=2019-09-01T00:00:00Z&until=2020-02-01T00:00:00Z", "evidence": "commit ca8674c, author date 2019-11-06T22:58:01Z: \"meta(LICENSE): Switch to Business Source License 1.1 (#15470)\" (primary: getsentry/sentry LICENSE history)"},
+      {"field": "relicensing_events[0].from", "value": "BSD-3-Clause", "source": "https://api.github.com/repos/getsentry/sentry/commits/ca8674c533a0dffc48a177554479bb85fa05891b", "evidence": "diff removes \"-    3. Neither the name Sentry nor the names of its contributors may be used to endorse or promote...\" and adds \"+Business Source License 1.1\""},
+      {"field": "relicensing_events[1].year", "value": 2023, "source": "https://api.github.com/repos/getsentry/sentry/commits?path=LICENSE&per_page=100", "evidence": "2023-11-17T17:41:05Z: \"Relicense under FSL-1.0-Apache-2.0 (#60144)\" (primary: getsentry/sentry LICENSE history)"},
+      {"field": "openness_current", "value": 1, "source": "https://github.com/getsentry/sentry/blob/master/LICENSE.md", "evidence": "\"Functional Source License, Version 1.1, Apache 2.0 Future License\"; future licence \"effective on the second anniversary of the date we make the Software available\""}
+    ],
+    "contradicted": [],
+    "unconfirmed": [],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "The file's key facts, both relicensing events (BSD 3-clause to BSL 1.1 on 2019-11-06; BSL to FSL on 2023-11-17) and the current FSL licence, are confirmed by primary getsentry/sentry LICENSE commit history and LICENSE.md in addition to the cited Sentry blog posts; nothing contradicted. Funding, valuation and founding year remain null."},
+    "fetched_urls": [
+      "https://github.com/getsentry/sentry/blob/master/LICENSE.md",
+      "https://api.github.com/repos/getsentry/sentry/commits?path=LICENSE&per_page=100 (response truncated; first 32 commits, 2022-06 to 2023-11, read)",
+      "https://en.wikipedia.org/wiki/Business_Source_License (no mention of Sentry)",
+      "https://api.github.com/repos/getsentry/sentry/commits?path=LICENSE&since=2019-09-01T00:00:00Z&until=2020-02-01T00:00:00Z",
+      "https://api.github.com/repos/getsentry/sentry/commits/ca8674c533a0dffc48a177554479bb85fa05891b"
+    ],
+    "note": "Current LICENSE.md is FSL-1.1-Apache-2.0 (copyright 2008-2024); the 2023 commit relicensed to FSL-1.0-Apache-2.0, so a later FSL version bump is not recorded (minor). The 2019 BSL Change Date (2022-09-15, Apache-2.0) was rolled forward per release (commit 2020-01-07), consistent with the 36-month window. ownership_status 'private_vc', founded_year and all financial fields remain unsourced/null; no fetch attempted for them in this pass."
+  }
 }

@@ -161,5 +161,32 @@
     "business_model 'mixed': membership dues and events (summits) are the assumed revenue base of a 501(c)(6) trade association; not verified with financial filings.",
     "Membership: Wikipedia body text says over 400 member companies as of February 2025; its infobox says '50+ corporations' (outdated).",
     "Founding partners differ by source: Facebook lists Goldman Sachs, Andy Bechtolsheim, Intel and Rackspace; OCP's 10-year reflection lists Facebook, Intel, Rackspace, Fidelity and Andy Bechtolsheim. The 2011 announcement names AMD, Dell, HP and Intel as co-developers."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "ownership_status",
+      "still_operating",
+      "license_history[1].license"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2011, "source": "https://www.opencompute.org/about", "evidence": "The Open Compute Project was first initiated by Facebook, now Meta, in 2011. (Wikipedia, also fetched: 'Founded in 2011, OCP has significantly influenced...')"},
+      {"field": "ownership_status", "value": "foundation", "source": "https://www.opencompute.org/about", "evidence": "Page names the organization 'Open Compute Project Foundation' (legal form not stated there; Wikipedia: 'is a 501(c)(6) non-profit incorporated in the state of Delaware')"},
+      {"field": "still_operating", "value": true, "source": "https://www.opencompute.org/news", "evidence": "'Voting Is Open: 2026 OCP Project Lead Elections', November 20, 2026"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "license_history[1].license", "reason": "The cited URL now serves the 07-18-2024 revision of the IPR policy. Its text defines '“CLA” means the Open Web Foundation Contributor License Agreement 0.9' and '“Specification License” means the Open Web Foundation Agreement 0.9 (OWFa)', and does not mention an OCP CLA, OWFa 1.0 or the OCP Hardware License. The 2015 version the file describes could not be fetched, and the cited Legal Documents page now returns 404. No page fetched in this pass supports 'OCP Hardware License (permissive or reciprocal) or OWFa 1.0'."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.opencompute.org/about",
+      "https://www.opencompute.org/participate/legal-documents/ (404)",
+      "https://www.opencompute.org/news",
+      "https://en.wikipedia.org/wiki/Open_Compute_Project",
+      "https://opencompute.org/documents/ocp-ip-rights-management-policy (PDF, revision dated 07-18-2024; text extracted locally with pdftotext)"
+    ],
+    "note": "openness_notes and hardware_extras.hardware_licenses repeat the 'OWFa 1.0 or OCP Hardware License' description, but the current IPR policy names OWFa 0.9 and the OWF CLA 0.9. Specifications are still licensed under an Open Web Foundation agreement with foundation governance, so the openness level is probably unaffected, but the licence names should be re-checked by hand. Six of the nine listed sources (10-year reflection, IPR policy, Legal Documents, OCPHL-R, Network World, Data Center Knowledge) are absent from fetched_urls, so they were apparently never fetched in pass 1; the market figures from Network World and Data Center Knowledge remain unverified. Confidence unchanged."
+  }
 }

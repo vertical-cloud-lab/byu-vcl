@@ -4,7 +4,7 @@ This is a six-hour research run (2026-11-23, 21:45–03:30 UTC) for
 [vertical-cloud-lab/byu-vcl#380](https://github.com/vertical-cloud-lab/byu-vcl/issues/380). Every number
 below links to a file in this folder, and each file names its sources.
 
-**Video:** VIDEO_LINK_PLACEHOLDER (public; subscribers were not notified). The narrated, animated MP4 is
+**Video:** [youtube.com/watch?v=Aakq7PNsFpE](https://www.youtube.com/watch?v=Aakq7PNsFpE) (11:41, public, uploaded with `notifySubscribers=False`, marked as containing synthetic media because the narration is TTS). The narrated, animated MP4 is
 [`video/open_science_value_ai.mp4`](video/open_science_value_ai.mp4), and its chapters are in
 [`video/chapters.txt`](video/chapters.txt).
 
@@ -130,6 +130,14 @@ where a 2025–26 fact couldn't be confirmed.
 
 ### 2. Who captures the value: commercial open source
 
+**Total market value.** Commercial open source is a much smaller pool than the value it creates.
+- The 29 commercial OSS companies in groups A and B with a known value over $100M sum to about
+  **$375B**, at dates from 2008 to 2026. That is about $185B without Databricks.
+- The 13 of them valued in 2025–26 sum to about **$286B**.
+- Venture investment in COSS runs at about **$9B a year** across about 250 deals (LF/Serena/COSSA 2025).
+- Set that against the **$8.8T** demand-side value of the open code firms use: the companies capture
+  a few percent of it at most.
+
 ![Where the money went](figures/values.png)
 
 **Openness and outcomes across the 121 case files.** This is a convenience sample of notable
@@ -140,6 +148,26 @@ organizations, so survivorship bias applies. Source: [`data/openness_outcomes_by
 | Closed (0) | 25 | 15.5 | 12% | 48% | 8% | $35B (n=13, mostly Big Tech) |
 | Mixed (1–2) | 37 | 14.5 | 35% | 30% | 32% | $5.3B (n=19) |
 | Open (3–4) | 58 | 15 | 50% | 21% | 17% | $1.9B (n=28) |
+
+> **Snapshot note.** The tables in this section and the video use the 121-organization snapshot taken at
+> about 23:00 UTC. After that, one more hardware file arrived (A–F now has 122), group G added 21
+> AM, lab-automation and open-science-infrastructure organizations, and verification pass 2 corrected 16
+> values. Recomputed on A–F, the shifts are small and the direction is unchanged:
+> - VC-era: −0.37, with 49% making a closing move;
+> - long-standing: +0.48;
+> - public infrastructure: +0.28 and 6%.
+>
+> Re-run `scripts/companies_aggregate.py` and `scripts/openness_outcomes.py` for current numbers.
+
+**Long-standing companies vs. VC-era startups vs. public infrastructure** ([`data/openness_by_company_kind.csv`](data/openness_by_company_kind.csv)):
+
+![Who opens, who closes](figures/kinds.png)
+
+| Kind of organization | n | Mean openness at founding → today | Change | Made a closing move | Made an opening move |
+| --- | --- | --- | --- | --- | --- |
+| Companies founded since 2000 (mostly venture-backed) | 71 | 1.86 → 1.52 | **−0.34** | 48% | 30% |
+| Companies founded before 2000 (incumbents) | 20 | 1.30 → 1.80 | **+0.50** | 40% | 50% |
+| Government, academic and foundation infrastructure | 18 | 3.33 → 3.61 | **+0.28** | 6% | 11% |
 
 | Sector | n | Mean change in openness (now − founding) | Share that closed down | Share that opened up | Acquired or taken private |
 | --- | --- | --- | --- | --- | --- |
@@ -341,7 +369,7 @@ Source: [groups E and F](companies/E/_summary.md) and [F summary](companies/F/_s
   - The 2026 materials pitch "OpenAI for Science" but with gated science models (GPT-Rosalind for
     "qualified research organizations").
 - **Contrast:**
-  - Meta's 2024 manifesto mentions open source about 10 times per 1,000 words. In 2025 it said it would
+  - Meta's 2024 manifesto mentions open source about 12 times per 1,000 words, and its two documents together average 10. In 2025 it said it would
     be "careful about what we choose to open source", and in April 2026 it shipped Muse Spark closed.
   - DeepSeek's release notes are almost entirely about open source.
   - All quotes and links are in [`language/key_quotes.md`](language/key_quotes.md).
@@ -379,7 +407,10 @@ in [`coded_threads.csv`](gh-mining/coded_threads.csv).
 - Its Genesis Mission proposal drafts:
   - commit to releasing "the FLAIME software platform (BOFN/pKGFN workflow engine, Honegumi tutorial
     framework) … fully open-source";
-  - plan a "Month-6 internal review to assess selective IP for top compositions";
+  - disagree about the alloy compositions themselves. The current `.tex` says compositions will be
+    "published openly rather than licensed", while earlier drafts planned a "Month-6 internal review to
+    assess selective IP for top compositions". The [audit](dal/dal_openness_audit.md) recommends
+    reconciling the three IP statements before award negotiation;
   - use a funnel of open pycalphad screening followed by commercial Thermo-Calc (TCAL) where melt-pool
     and printability models are needed.
 - [#318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) is an open digital twin of a vertical
@@ -388,6 +419,27 @@ in [`coded_threads.csv`](gh-mining/coded_threads.csv).
   - the full alloy route from charge cups to atomizing (rePowder), printing (Aconity MIDI) and
     characterization;
   - every script, note and video public.
+
+**Openness audit.** [`dal/dal_openness_audit.md`](dal/dal_openness_audit.md) (about 2,500 words, cited to
+DAL `e7a01b3` and #318 `75c0ed0`) covers six things:
+- **Public vs. private.** It inventories what is public and what is held back.
+- **Dependency licences.** There is no GPL/AGPL dependency, and Thermo-Calc is the main proprietary one.
+  Two notices are missing: frazier-lab's MIT notice in the `partial_kgfn` port, and the CERN-OHL headers
+  for the OpenFlexure files in #318.
+- **Data access terms.** These include subscription databases (MMPDS, Knovel, ASM) that limit what can be
+  shared.
+- **Equipment.** Of about 20 items on the alloy route, only UR, MiR, the OT-2 and the CubXL have interfaces
+  the lab can program. The rePowder atomizer has no API, so the lab plans to read its settings with a camera.
+- **Genesis Mission FOA vs. the drafts.**
+  - The FOA wants data behind a paper public at publication; the drafts say within 12 months.
+  - Thermo-Calc's role differs across drafts.
+- **Concrete recommendations.**
+  - MIT for code, CERN-OHL-P-2.0 for hardware, and CC BY 4.0 (with CC0 metadata) for data.
+  - Zenodo plus the Materials Data Facility (with a NOMAD Oasis option) behind a JSON Schema for the
+    digital thread.
+  - A written embargo rule for compositions.
+  - One MIT, MCP-style driver per instrument.
+  - API rights in procurement.
 
 **What the evidence says to do**
 1. **Keep open the layers others build on.**
@@ -412,6 +464,33 @@ in [`coded_threads.csv`](gh-mining/coded_threads.csv).
    - The SDL-demo kit's $2.24 margin and LulzBot's collapse both point to services rather than units:
      cloud access, training, setup, and "commercialization-as-a-service" partners such as GroupGets.
 
+### 10. YouTube, Reddit, Hacker News, blogs and forums
+
+Everything here was pulled through the Pi's browser, including five YouTube transcripts opened by
+mouse-clicking "Show transcript". [`voices/voices_digest.md`](voices/voices_digest.md) covers 21 sources
+with 125 quotes, each checked by script against the captured text. The index is
+[`voices/voices_index.csv`](voices/voices_index.csv).
+- **Business models (talks):**
+  - Frank Nagle (HBS / Linux Foundation): firms that contribute get about twice the value of those that
+    only use open source.
+  - Sid Sijbrandij (GitLab): GitLab tried donations, consulting and support before open core, which runs at
+    about 90% gross margin.
+  - Mike Olson (Cloudera): services-only firms starve their product.
+  - A 2026 r/startups thread gives the same advice.
+- **Forks succeed on trust and backing, not licence text.**
+  - Valkey, backed by the hyperscalers, spread fast.
+  - OpenTofu lags Terraform, about 77× fewer searches (r/Terraform), because the BSL change never touched
+    internal users.
+- **Open hardware is narrowing to repair rights and software.**
+  - Prusa's Open Community License bars resale, and some Prusa forum members now call open source a
+    liability (alongside its 2026 layoffs thread).
+  - Arduino's "setting the record straight" post after Qualcomm skipped the patent clause that commenters
+    flagged.
+- **A perception gap on AI.** Reddit and HN threads cast Anthropic as hostile to open weights, yet none cites
+  its 2026-07-27 statement that it "has never advocated for a ban".
+- **Self-driving labs (talk):** in-house experimental data is described as the competitive edge, and
+  openness never comes up.
+
 ## US focus
 
 - 87 of the 121 organizations are US-headquartered.
@@ -425,6 +504,14 @@ in [`coded_threads.csv`](gh-mining/coded_threads.csv).
 - The case files are a **convenience sample of notable organizations**, not a census, and their values
   date from 2008 to 2026.
 - About 75 of the 121 files rest on WebFetch alone, as noted above.
+- A second verification pass ([`companies/VERIFICATION_PASS2.md`](companies/VERIFICATION_PASS2.md)) checked
+  161 facts in 38 low- and medium-confidence files:
+  - 99 were confirmed on an independent page, 16 values were corrected or filled, and 46 remain
+    unconfirmed.
+  - Unconfirmed examples: Lila's $550M, dbt Labs' $4.2B, and whether the Qualcomm–Arduino deal has
+    closed.
+  - The video was rendered before this pass, but none of its narrated numbers changed.
+- Headline 2025–26 claims were checked against independent sources ([`VERIFICATION.md`](VERIFICATION.md)).
 - Epoch's database is curated, not exhaustive, and the 2026 rows are incomplete.
 - OpenAlex's "is OA" includes green and bronze access, and ROR institution types are imperfect.
   National labs mostly appear as "facility".
@@ -442,5 +529,9 @@ in [`coded_threads.csv`](gh-mining/coded_threads.csv).
 - `language/`: the URL list, term counts and key quotes.
 - `pi-browser/`: query lists and the full search log.
 - `figures/`, `video/`: final frames, scenes, narration, audio and the final MP4.
+- `companies/CASEBOOK.md`: all 121 organizations, one by one, with each one's assessment, timeline and sources.
+- `voices/`: the digest of YouTube, Reddit, Hacker News, blog and forum content. `dal/`: the openness audit
+  of DAL and #318.
+- `VERIFICATION.md` and `companies/VERIFICATION_PASS2.md`: the verification logs.
 - `scripts/`: everything used, including `pi_browse.py`/`pi_search.py`, the scene renderers and
   `build_video.py`.

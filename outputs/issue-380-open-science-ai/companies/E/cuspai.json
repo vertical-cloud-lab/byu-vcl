@@ -21,9 +21,9 @@
   "funding_as_of": "2026-11",
   "ownership_status": "private_vc",
   "exit_events": [],
-  "latest_value_usd": null,
-  "latest_value_type": null,
-  "latest_value_date": null,
+  "latest_value_usd": 2600000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2026-07",
   "revenue_latest_usd": null,
   "revenue_year": null,
   "employees_latest": null,
@@ -38,7 +38,7 @@
   "physical_science_relevance": "Very high. It targets materials for semiconductors (Applied Materials, Lam, TEL, imec, Kioxia), photovoltaics (Oxford PV), batteries and automotive (Hyundai) and chemicals (Kemira). Lab partners include A*STAR, imec, DIFFER, DTU and the University of Cambridge, and data partners are the crystallographic databases CCDC and ICSD.",
   "openness_effect_assessment": "CuspAI is closed. Its advantage is assembled access to curated, licensed structural data (CCDC, ICSD), publisher literature (Wiley), partner labs and frontier models from open-leaning partners such as Meta, not its own open releases. It shows that some 2025-2026 AI-for-materials capital is flowing to proprietary 'foundry' models that aggregate others' data rather than publish their own.",
   "key_takeaway": "CuspAI, Cambridge UK, founded 2024 by Chad Edwards and Max Welling, had raised over $650M by late 2026, among the largest sums in AI for materials. It has released nothing open, and its edge is a partner ecosystem combining licensed crystallographic databases, Wiley literature, semiconductor and chemicals companies and Meta's open models. It is the archetype of consuming open and licensed scientific data while keeping outputs proprietary.",
-  "confidence": "low",
+  "confidence": "medium",
   "notes": [
     "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from the cusp.ai home page (read in three chunks) listed in fetched_urls.",
     "funding_total_usd = 'over $650M' per cusp.ai (lower bound; individual rounds, dates and valuation not given on the page).",
@@ -54,5 +54,33 @@
   ],
   "sources": [
     {"url": "https://www.cusp.ai/", "title": "CuspAI home page", "publisher": "CuspAI", "date": "2026-11 (fetched; privacy notice updated 2026-06-15)", "supports": "founded_year, origin_detail, funding_total_usd, risk_events[0], robustness, physical_science_relevance, openness_notes"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "latest_value_usd"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2024, "source": "https://en.wikipedia.org/wiki/Max_Welling", "evidence": "'In 2024, Welling co-founded CuspAI, a startup company that builds AI models to identify chemicals and materials...' (Wikipedia); also cusp.ai Series A post, 10 Sep 2025: 'When we started Cusp just a year ago'"}
+    ],
+    "contradicted": [
+      {"field": "latest_value_usd", "old": null, "new": 2600000000, "source": "https://cusp.ai/blog/launching-our-ai-materials-foundry-and-450-million-series-b", "evidence": "20 Jul 2026 post: '$450 million Series B' co-led by Kleiner Perkins and NEA; the round 'values Cusp at $2.6 billion.'", "applied": true, "note": "Filled a null from the company's own announcement (primary). Corroborated by en.wikipedia.org/wiki/Max_Welling: 'In July 2026, CuspAI raised $450 million in a Series B funding round, valuing the company at $2.6 billion.'"},
+      {"field": "latest_value_type", "old": null, "new": "private_valuation", "source": "https://cusp.ai/blog/launching-our-ai-materials-foundry-and-450-million-series-b", "evidence": "'values Cusp at $2.6 billion'", "applied": true, "note": "Companion to latest_value_usd."},
+      {"field": "latest_value_date", "old": null, "new": "2026-07", "source": "https://cusp.ai/blog/launching-our-ai-materials-foundry-and-450-million-series-b", "evidence": "post dated '20 Jul 2026'", "applied": true, "note": "Companion to latest_value_usd."}
+    ],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "'Over $650M' appears only on the cusp.ai home page. The company's three round announcements sum to at least $580M: $30M seed (blog dateline 18 Jun 2024), '$100M+' Series A (10 Sep 2025, co-led by NEA and Temasek) and $450M Series B (20 Jul 2026). Neither these posts nor Wikipedia state a total, so the remaining ~$70M is unexplained. Left unchanged as the company's own lower bound."}
+    ],
+    "confidence_change": {"old": "low", "new": "medium", "reason": "The founding year agrees across cusp.ai and Wikipedia (Max Welling). The valuation now rests on CuspAI's own Series B post plus Wikipedia. Funding total is consistent as a lower bound with the sum of officially announced rounds."},
+    "fetched_urls": [
+      "https://en.wikipedia.org/wiki/CuspAI (404)",
+      "https://en.wikipedia.org/wiki/Max_Welling",
+      "https://www.cusp.ai/blog",
+      "https://cusp.ai/blog/launching-our-ai-materials-foundry-and-450-million-series-b",
+      "https://cusp.ai/blog/securing-our-100m-series-a-to-revolutionise-materials-discovery-with-ai"
+    ],
+    "note": "The file's notes and risk_events[1] say round amounts and valuation were 'not stated'. cusp.ai/news returns 404, but cusp.ai/blog lists all three rounds. Those text fields were left as written."
+  }
 }

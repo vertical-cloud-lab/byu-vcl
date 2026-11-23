@@ -197,5 +197,31 @@
     "Valuation unconfirmed: an Axios Pro headline listed on Oxide's press page reads 'Compute constraints help Oxide hit $6B' (2026-10-09), but the article returned HTTP 403 and no fetched page states a valuation, so latest_value_usd stays null.",
     "The Micron Ventures investment (announced 2026-11-16, amount undisclosed) is not included in funding_total_usd.",
     "Failed fetches: en.wikipedia.org/wiki/Oxide_Computer_Company (404), en.wikipedia.org/wiki/Oxide_Computer (404), oxide.computer/company (404), the Axios article (403)."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2019, "source": "https://www.prnewswire.com/news-releases/oxide-raises-100m-series-b-to-scale-cloud-infrastructure-for-on-premises-computing-302516798.html", "evidence": "Founded in 2019 and based in Emeryville, California (same boilerplate in the 2026-02-10 Series C and 2026-10-09 Series D releases)"},
+      {"field": "still_operating", "value": true, "source": "https://www.prnewswire.com/news/oxide/", "evidence": "Oxide Raises $445M Series D as the Company Proves Vision of Full-Stack Cloud Infrastructure Enterprises Can Own (Oct 09, 2026)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "No page states the $834M total. Its components were checked against Oxide's own PR Newswire releases, which are different pages from the cited blog posts. Series B: '$100 million Series B financing round led by Thomas Tull's US Innovative Technology Fund' (2025-07-30), which 'more than doubles Oxide's capital raised to date', consistent with $89M before it. Series C: '$200 million Series C led by Thomas Tull's US Innovative Technology Fund (USIT)' (2026-02-10), 'doubling total funding for the second time'. Series D: $445M (2026-10-09). The $89M raised before Series B rests on the cited Series B blog post alone."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://en.wikipedia.org/wiki/Bryan_Cantrill",
+      "https://oxide.computer/blog",
+      "https://www.prnewswire.com/news-releases/oxide-raises-445m-series-d-as-the-company-proves-vision-of-full-stack-cloud-infrastructure-enterprises-can-own-302903159.html",
+      "https://www.prnewswire.com/news-releases/oxide-closes-200m-series-c-to-scale-on-premises-cloud-computing-302683724.html",
+      "https://www.prnewswire.com/news/oxide/",
+      "https://www.prnewswire.com/news-releases/oxide-raises-100m-series-b-to-scale-cloud-infrastructure-for-on-premises-computing-302516798.html"
+    ],
+    "note": "The Series C blog post is dated 2026-02-05, but its PR Newswire release is dated 2026-02-10. The release says USIT led the round. USIT led the Series B, so it was an existing investor, which fits Oxide's statement that the round came from existing investors. There is no Wikipedia article on Oxide. Bryan Cantrill's article says only 'He is now the co-founder and CTO of Oxide Computer company', with no year. No official page states a valuation, so latest_value stays null. Confidence stays medium because the total is a sum, not a stated figure."
+  }
 }

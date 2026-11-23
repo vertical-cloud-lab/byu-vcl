@@ -24,6 +24,10 @@
   "text": "Licenses are not fixed. In our case files, changes to license or access terms roughly doubled after 2020: thirty-one closing moves and thirty opening moves, against sixteen and eleven in the decade before. When a company closed a project that others were reselling, a fork followed: OpenSearch, OpenTofu, Valkey. Elastic and Redis later added an open-source license back. AI moved the other way, with DeepSeek's MIT release, OpenAI's first open weights since GPT-2, and Anthropic giving its Model Context Protocol to the Linux Foundation. Meanwhile, Meta's newest frontier model shipped closed."
  },
  {
+  "scene": "kinds",
+  "text": "Across all hundred and twenty-one case files, the direction of travel depends on who you are. Companies founded since 2000, mostly venture-backed, started moderately open and became less open on average, and nearly half made at least one closing move. Firms founded before 2000 moved the other way, opening the parts they don't sell. Government, academic and foundation infrastructure started the most open and stayed there: only one of eighteen ever made a closing move."
+ },
+ {
   "scene": "lanes_software",
   "text": "Seen as lanes over time, the most open software firms are also among the longest-lived. Red Hat, SUSE and Canonical have each lasted more than two decades. Most of the listed open-core firms ended up owned by someone else, but their code lived on in foundations, whatever happened to the company."
  },
@@ -61,7 +65,7 @@
  },
  {
   "scene": "language",
-  "text": "How do the labs talk about openness? We fetched forty-one primary documents through our lab's Raspberry Pi. Meta's 2024 manifesto mentions open source about ten times per thousand words. Anthropic's and OpenAI's writing is dominated instead by safety and by science, and both now pitch AI for scientific discovery. Anthropic's new Model Hardware Standard aims to let AI agents operate lab instruments, with an open-source release planned."
+  "text": "How do the labs talk about openness? We fetched forty-one primary documents through our lab's Raspberry Pi. Meta's writing mentions open source about ten times per thousand words, mostly in its 2024 manifesto. Anthropic's and OpenAI's writing is dominated instead by safety and by science, and both now pitch AI for scientific discovery. Anthropic's new Model Hardware Standard aims to let AI agents operate lab instruments, with an open-source release planned."
  },
  {
   "scene": "quotes",
@@ -73,7 +77,7 @@
  },
  {
   "scene": "dal",
-  "text": "Finally, our own lab. The Digital Alloy Lab's repository went public under the MIT license in October 2026, with budgets and letters kept private. Its proposal drafts commit to releasing the FLAIME platform as open source while reviewing selective protection for the best alloy compositions, and they pair open pycalphad screening with commercial Thermo-Calc databases. The vertical cloud lab model in pull request 318 is the same pattern at lab scale: closed commercial instruments, orchestrated and documented in the open. The evidence says to keep open the layers others build on, such as drivers, schemas, data and digital twins, and to be deliberate about the rest."
+  "text": "Finally, our own lab. The Digital Alloy Lab's repository went public under the MIT license in October 2026, with budgets and letters kept private. Its proposal drafts commit to releasing the FLAIME platform as open source. On the alloy compositions themselves the drafts disagree: the latest says they will be published openly rather than licensed, while earlier drafts planned a review for selective protection. And they pair open pycalphad screening with commercial Thermo-Calc databases. The vertical cloud lab model in pull request 318 is the same pattern at lab scale: closed commercial instruments, orchestrated and documented in the open. The evidence says to keep open the layers others build on, such as drivers, schemas, data and digital twins, and to be deliberate about the rest."
  },
  {
   "scene": "takeaways",

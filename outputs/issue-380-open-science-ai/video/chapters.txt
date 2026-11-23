@@ -1,0 +1,22 @@
+0:00 Intro
+0:21 What open-source software is worth
+0:59 Open science: PDB, genome, open hardware
+1:33 Where the money went in commercial open source
+2:13 Venture data: open vs closed startups
+2:56 Licences move both ways
+3:39 Who opens, who closes
+4:09 Openness over time: software
+4:30 Open-source-origin stocks vs closed peers
+4:59 Openness over time: hardware
+5:38 Physical-science infrastructure
+6:20 Frontier AI: value sits with closed weights
+6:44 Big Tech and AI labs over time
+7:02 Who releases model weights
+7:33 The compute gap
+7:50 Open-access papers by sector
+8:17 How the labs talk about open
+8:48 In their own words
+9:16 Our own GitHub threads
+9:55 DAL and the vertical cloud lab (#318)
+10:48 Takeaways
+11:29 Data and sources

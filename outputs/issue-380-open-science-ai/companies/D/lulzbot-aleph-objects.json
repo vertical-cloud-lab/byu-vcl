@@ -170,5 +170,41 @@
     "FAME 3D purchase price undisclosed; no later ownership change found in the sources reached (Wikipedia article flagged as needing update since 2020).",
     "OSHWA certification status and the date of the FSF RYF certification were not verified.",
     "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "exit_events[0].year",
+      "exit_events[0].counterparty",
+      "still_operating",
+      "openness_initial",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2011, "source": "https://lulzbot.com/about", "evidence": "Founded in 2011, for over 10 years we have proudly served Fortune 500 companies (official LulzBot about page; explicit, stronger than the copyright span the file cites)"},
+      {"field": "exit_events[0].counterparty", "value": "Fargo Additive Manufacturing Equipment 3D, LLC (FAME 3D)", "source": "https://lulzbot.com/press", "evidence": "Copyleft notice on the official site: '2011-2026 Fargo Additive Manufacturing Equipment 3D, LLC'; /about adds 'Based in Fargo, North Dakota, LulzBot® is ...'"},
+      {"field": "still_operating", "value": true, "source": "https://lulzbot.com/learn?contentType=Announcement", "evidence": "Official Learn feed: 'Print, STACK, Win: How LulzBot Brought Tic STACK Toe to Life' (Nov 25, 2025); 'TAZ 8: For Those Who Demand More' (Mar 25, 2025)"},
+      {"field": "openness_initial", "value": 3, "source": "https://ryf.fsf.org/vendors/AlephObjectsInc", "evidence": "FSF Respects Your Freedom vendor 'Aleph Objects, Inc' lists 'LulzBot Mini desktop 3D printer' and 'LulzBot TAZ 6 desktop 3D printer' (no dates shown; independent of the cited Wikipedia)"},
+      {"field": "openness_current", "value": 3, "source": "https://lulzbot.com/about", "evidence": "That's why our products come with freely licensed designs, specifications, and documentation ... Open Source Hardware communities are at the core of everything we do."}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "exit_events[0].year", "reason": "Only the cited Wikipedia article gives November 2019. lulzbot.com/press, /about and the Learn/Announcements feed (which goes back only to Mar 2023) do not mention the acquisition. en.wikipedia 'LulzBot' redirects to the same cited article, de.wikipedia has no Aleph_Objects article (404), www.fame3d.com does not resolve, and the Colorado SOS registry returned a session-timeout page instead of results. Wikipedia's references for the sale are third-party trade press and were not fetched."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://lulzbot.com/press",
+      "https://en.wikipedia.org/wiki/LulzBot (redirects to the cited Aleph Objects article)",
+      "https://www.fame3d.com/ (DNS: host not found)",
+      "https://lulzbot.com/learn?contentType=Announcement",
+      "https://www.coloradosos.gov/biz/BusinessEntityResults.do?entityName=Aleph+Objects&srchTyp=ENTITY (session-timeout page, no results)",
+      "https://de.wikipedia.org/wiki/Aleph_Objects (404)",
+      "https://lulzbot.com/about",
+      "https://ryf.fsf.org/",
+      "https://ryf.fsf.org/vendors",
+      "https://ryf.fsf.org/vendors/AlephObjectsInc"
+    ],
+    "note": "founded_year 2011 now has an explicit official statement (lulzbot.com/about). The file's note calling it 'supported only weakly' can be retired. The year of the FAME 3D sale (2019) and the 91-of-113 layoff figure still rest on Wikipedia alone. Confidence left at low because the year of the exit, the key fact, is single-sourced."
+  }
 }

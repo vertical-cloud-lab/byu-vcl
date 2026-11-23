@@ -62,5 +62,34 @@
     {"url": "https://www.lila.ai/news", "title": "Lila Sciences news", "publisher": "Lila Sciences", "date": "2026-11", "supports": "funding_total_usd, risk_events[1], risk_events[2], risk_events[3], risk_events[4], openness_notes, physical_science_relevance"},
     {"url": "https://www.reuters.com/business/ai-lab-lila-sciences-tops-13-billion-valuation-with-new-nvidia-backing-2025-10-14/", "title": "AI lab Lila Sciences tops $1.3 billion valuation with new Nvidia backing", "publisher": "Reuters (headline as listed on lila.ai; not fetched)", "date": "2025-10-14", "supports": "latest_value_usd"},
     {"url": "https://www.lila.ai/", "title": "Lila Sciences home page", "publisher": "Lila Sciences", "date": "2026-11", "supports": "flagship_projects, openness_notes ('proprietary AI Science Factory instruments'), origin_detail (CEO)"}
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "risk_events[0]",
+      "funding_total_usd",
+      "latest_value_usd"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2023, "source": "https://www.generalcatalyst.com/stories/our-investment-in-lila-sciences", "evidence": "'Since Lila's founding in 2023, its platform has performed experiments in multiple domains' (General Catalyst investment post, 10 Mar 2025; investor's own announcement, independent of the cited Latitude Media article)"},
+      {"field": "risk_events[0]", "value": "Mar 2025: $200M seed (Flagship Pioneering, General Catalyst and others)", "source": "https://www.generalcatalyst.com/stories/our-investment-in-lila-sciences", "evidence": "'Alongside Flagship Pioneering, we're excited to invest in Lila Sciences' $200M seed round.'"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "$550M total appears only in Lila's own 10 Oct 2025 blog post (cited via lila.ai/news; the card links to '#', so the post itself could not be opened). flagshippioneering.com returned 403, and the Wikipedia pages for Lila Sciences (404), Flagship Pioneering and Geoffrey von Maltzahn do not mention the Series A."},
+      {"field": "latest_value_usd", "reason": "$1.3B (2025-10) rests on a Reuters headline listed on lila.ai; WebFetch cannot fetch reuters.com, and no official or Wikipedia page states a valuation. Treat as a single-source lower bound."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.lila.ai/news (re-read; cited page)",
+      "https://en.wikipedia.org/wiki/Lila_Sciences (404)",
+      "https://www.generalcatalyst.com/stories/our-investment-in-lila-sciences",
+      "https://www.reuters.com/business/ai-lab-lila-sciences-tops-13-billion-valuation-with-new-nvidia-backing-2025-10-14/ (fetch blocked)",
+      "https://www.flagshippioneering.com/companies/lila-sciences (403)",
+      "https://en.wikipedia.org/wiki/Flagship_Pioneering (no mention)",
+      "https://en.wikipedia.org/wiki/Geoffrey_von_Maltzahn (no page or no mention)"
+    ],
+    "note": "Seed dates disagree slightly: the General Catalyst post is dated 10 Mar 2025, Latitude Media 17 Mar, lila.ai lists 24 Mar. lila.ai also gives two Series A figures ($235M on 15 Sep 2025, $350M on 10 Oct 2025) without reconciling them. Confidence left at low because the funding total and the valuation, the most consequential figures, each still rest on one page."
+  }
 }

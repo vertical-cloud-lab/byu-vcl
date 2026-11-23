@@ -71,5 +71,34 @@
     "revenue_latest_usd and employees_latest are 2016 figures (Wikipedia infobox). The about page now says 'over 100+ employees'. No revenue after 2016 was found.",
     "Patents and clone impacts: no information found in the pages fetched.",
     "2025-2026 events (e.g. tariffs) were not checked: no search was available, and the pages fetched did not cover them."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "funding_total_usd",
+      "still_operating",
+      "openness_current"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2005, "source": "https://www.adafruit.com/about", "evidence": "Adafruit was founded in 2005 by MIT engineer, Limor \"Ladyada\" Fried. (official about page; the file cites Wikipedia for this fact)"},
+      {"field": "still_operating", "value": true, "source": "https://api.github.com/orgs/adafruit/repos?sort=pushed&per_page=20", "evidence": "Official adafruit GitHub org: circuitpython pushed_at 2026-11-23T22:21:53Z; Adafruit_Blinka pushed_at 2026-11-23T22:19:04Z"},
+      {"field": "openness_current", "value": 3, "source": "https://raw.githubusercontent.com/adafruit/Adafruit-VL53L5CX-Time-of-Flight-PCB/main/README.md", "evidence": "Format is EagleCAD schematic and board layout ... Creative Commons Attribution/Share-Alike, all text above must be included in any redistribution. (PCB repo created 2026-11-19)"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "No fetched page states a funding amount or that there are no investors. adafruit.com/about says only 'Adafruit is a 100% woman owned manufacturing company' (already cited). adafruit.com/press says 'A Minority and Woman-owned Business Enterprise (M/WBE)' and nothing on investors. Wikipedia's body is silent; its only support is a Business Insider/TechInsider reference title ('...without a dime of funding'), which is not in the file's sources and so was not fetched. SEC EDGAR company search returned 503."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://www.adafruit.com/about",
+      "https://api.github.com/orgs/adafruit/repos?sort=pushed&per_page=20",
+      "https://en.wikipedia.org/wiki/Adafruit_Industries",
+      "https://www.sec.gov/cgi-bin/browse-edgar?company=adafruit&owner=exclude&action=getcompany (503)",
+      "https://www.adafruit.com/press",
+      "https://api.github.com/orgs/adafruit/repos?sort=created&direction=desc&per_page=40",
+      "https://raw.githubusercontent.com/adafruit/Adafruit-VL53L5CX-Time-of-Flight-PCB/main/README.md"
+    ],
+    "note": "funding_total_usd 0 (as of 2026-11) is inferred from ownership wording plus a 2015 headline, not a stated figure. Revenue ($45M, 2016) and employees (105, 2016) rest on Wikipedia, which cites Boing Boing (2017). Confidence stays medium because the funding fact is unconfirmed. The GitHub API reports CircuitPython's licence as NOASSERTION, while the file says MIT from the repo page; this was not checked further. Adafruit kept creating CC BY-SA PCB repos in Nov 2026 (e.g. MCP2222, LT8912B)."
+  }
 }

@@ -446,7 +446,7 @@ founded 2011 · US · origin: founder_startup · openness 2→2 · private_vc ·
 
 ### Sentry (Functional Software, Inc.)
 
-US · origin: founder_startup · openness 3→1 · private_vc · confidence: low · tool: WebFetch (search budget exhausted)
+US · origin: founder_startup · openness 3→1 · private_vc · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Sentry closed pre-emptively, before any cloud provider resold it, then shortened the closed window with FSL. It reports over 4 million developers and no fork appeared, which suggests a SaaS-first product with a delayed-open licence loses little adoption. Financial effects could not be assessed because funding, valuation and revenue were not confirmed.
 
@@ -946,7 +946,7 @@ founded 2020 · US · origin: founder_startup · openness 2→2 · private_vc ·
 
 ### Prefect Technologies, Inc.
 
-US · origin: founder_startup · openness 2→2 · private_vc · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2018 · US · origin: founder_startup · openness 2→2 · private_vc · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** An Apache-2.0 core gave Prefect a developer community that let it survive as a smaller rival to the ASF-governed Airflow and, in 2026, absorb its direct open-source competitor (Dagster) rather than be squeezed out. No evidence was found of licence tightening; consolidation, not relicensing, was its response to a crowded market.
 
@@ -2217,7 +2217,7 @@ founded 2011 · US · origin: founder_startup · openness 3→1 · private_vc ·
 
 ### SparkFun Electronics
 
-founded 2003 · US · origin: founder_startup · openness 3→3 · confidence: medium · tool: WebFetch (search budget exhausted)
+founded 2003 · US · origin: founder_startup · openness 3→3 · confidence: high · tool: WebFetch (search budget exhausted)
 
 **What openness did.** SparkFun shows that open hardware plus no patents is compatible with long-term operation. It has run for 23 years with about 140-150 staff (2015-2018) while publishing everything, and it holds the second-largest OSHWA portfolio in this group (about 264 by 2020). Like Adafruit it stayed mid-sized and private. Value comes from in-house manufacturing, curation and education, not exclusivity. Its recorded legal disputes are about trademark and trade dress (SPARC, Fluke), not about copying of its designs.
 
@@ -2270,7 +2270,7 @@ founded 2005 · US · origin: founder_startup · openness 1→2 · confidence: m
 
 ### UltiMaker (Ultimaker B.V.)
 
-founded 2011 · NL · origin: founder_startup · openness 2→1 · private_pe · funding $62.4M · confidence: low · tool: WebSearch + WebFetch (search budget exhausted)
+founded 2011 · NL · origin: founder_startup · openness 2→1 · private_pe · funding $62.4M · confidence: medium · tool: WebSearch + WebFetch (search budget exhausted)
 
 **What openness did.** Ultimaker started from the RepRap/fablab community and published its first two printers' designs, though only under non-commercial CC BY-NC terms. Its most successful open asset is software: making Cura open (now LGPL-3.0) made it a de facto standard slicer with about 1 million users by 2017, which supported printer sales even as later printer designs were not published. Openness in software, not hardware, appears to be what gave UltiMaker durable reach.
 
@@ -2303,7 +2303,7 @@ founded 2011 · NL · origin: founder_startup · openness 2→1 · private_pe ·
 
 ### Atinary Technologies
 
-CH · origin: founder_startup · openness 0→0 · private_vc · confidence: low · tool: WebFetch (search budget exhausted)
+US · origin: founder_startup · openness 0→0 · private_vc · confidence: low · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Atinary commercialized the self-driving-lab optimization layer as closed, no-code SaaS and trademarked the field's name. It differentiates through usability and integrations with closed instrument makers rather than openness. Its 2026 tie-up with Bruker and Chemspeed points to an emerging closed, vendor-integrated SDL stack. No evidence was found of open releases or of openness affecting its growth.
 
@@ -2325,13 +2325,13 @@ CH · origin: founder_startup · openness 0→0 · private_vc · confidence: low
 
 ### Benchling, Inc.
 
-founded 2012 · US · origin: founder_startup · openness 0→0 · private_vc · $6.10B (private_valuation, 2021-11) · funding $406.0M · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2012 · US · origin: founder_startup · openness 0→0 · private_vc · $6.10B (private_valuation, 2021-11) · funding $406.0M · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Benchling got the network effects open source usually provides by giving its closed product away free to academics (7,500+ institutions), so trained users carried it into industry: free but closed. It reached a $6.1B valuation in 2021 with no open-source component. That shows a closed SaaS can win the academic-to-industry funnel when the free tier is generous.
 
 **Takeaway.** Benchling is the closed-SaaS benchmark for lab software. It is founder-led (MIT/YC 2012), raised about $406M, was valued at $6.1B at the 2021 peak and has about 810 employees. It has never open-sourced its product, and its free academic tier did the community-building job that open source does for others. The lack of any public valuation, IPO or reported down round since 2021 makes its current value unknown. Fetched sources could not confirm 2023-2026 restructuring.
 
-**Risk events.** Rounds: Series A $7M (2016), B $14.5M (2018), C $34.5M (2019), D $50M (2020), E $200M (2021), F $100M (2021) at $6.1B (Bloomberg, 18 Nov 2021); Nov 2021: filed Form S-1 with the SEC per Wikipedia; no IPO completed as of 2026; No post-2021 valuation, tender or down round found in fetched sources (WebSearch budget exhausted before this company was searched)
+**Risk events.** Rounds: Series A $7M (2016), B $14.5M (2018), C $34.5M (2019), D $50M (2020), E $200M (2021), F $100M (2021) at $6.1B (Bloomberg, 18 Nov 2021); Nov 2021: Wikipedia, citing a Reuters report from anonymous sources, says Benchling filed Form S-1, but SEC EDGAR lists no S-1 or DRS for Benchling, Inc. (CIK 1687403), only a 2016 Form D, so any filing was a confidential draft; no IPO as of 2026; No post-2021 valuation, tender or down round found in fetched sources (WebSearch budget exhausted before this company was searched)
 
 **Robustness.** A large installed base: as of 2025, more than 200,000 scientists, 1,300+ companies and 7,500+ academic institutions (Wikipedia). Lock-in is high because data and workflows live in a proprietary cloud. There is no open-source fallback if the vendor changes terms. It remains a private company with ~810 employees (2026).
 
@@ -2346,7 +2346,7 @@ founded 2012 · US · origin: founder_startup · openness 0→0 · private_vc ·
 
 ### Chemify Ltd
 
-founded 2022 · GB · origin: academic · openness 0→0 · private_vc · funding $93.0M · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2019 · GB · origin: academic · openness 0→0 · private_vc · funding $93.0M · confidence: low · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Chemify is an academic open-science lineage commercialized as a closed platform. The Cronin lab published Chemputer software and XDL procedures alongside papers, which built the scientific case and community recognition. The company sells proprietary capacity, partly funded by public money (GBP 22M in grants). Fetched sources do not show whether the academic openness helped the company commercially.
 
@@ -2369,7 +2369,7 @@ founded 2022 · GB · origin: academic · openness 0→0 · private_vc · fundin
 
 ### Chemspeed Technologies AG
 
-CH · openness 0→0 · acquired · confidence: low · tool: WebFetch (search budget exhausted)
+founded 1997 · CH · openness 0→0 · acquired · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Chemspeed built a durable niche over 25 years with fully closed hardware and software, growing through integrations and application science rather than openness. Its 2024 sale to Bruker as Bruker's 'entry into lab automation and digitalization' shows that incumbents value closed lab-automation hardware as a strategic asset. No evidence suggests closedness held back its adoption in academic SDLs.
 
@@ -2419,7 +2419,7 @@ founded 2013 · US · origin: founder_startup · openness 1→1 · private_vc ·
 
 ### CuspAI (Cusp AI Limited)
 
-founded 2024 · GB · origin: founder_startup · openness 0→0 · private_vc · funding $650.0M · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2024 · GB · origin: founder_startup · openness 0→0 · private_vc · $2.60B (private_valuation, 2026-07) · funding $650.0M · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** CuspAI is closed. Its advantage is assembled access to curated, licensed structural data (CCDC, ICSD), publisher literature (Wiley), partner labs and frontier models from open-leaning partners such as Meta, not its own open releases. It shows that some 2025-2026 AI-for-materials capital is flowing to proprietary 'foundry' models that aggregate others' data rather than publish their own.
 
@@ -2483,7 +2483,7 @@ US · origin: corporate · openness 1→2 · acquired · funding $142.0M · conf
 
 **Takeaway.** EvolutionaryScale is the counter-example to 'start open, then close'. It began as a Meta FAIR open-science project (ESM), raised a $142M seed as a company with non-commercial open weights, and within about two years was folded into the non-profit Biohub, where its open models moved to MIT. For the study it suggests that frontier scientific foundation models may find a more stable home in philanthropic or non-profit structures than in VC-backed API businesses. Its timeline (relicence date, deal terms) still needs confirming.
 
-**Timeline.** None: EvolutionaryScale Community License (non-commercial) → MIT (opening); None: acquisition, Biohub (biohub.org)
+**Timeline.** 2026: EvolutionaryScale Community License (non-commercial) → MIT (opening); None: acquisition, Biohub (biohub.org)
 
 **Risk events.** Origin risk: the ESM team was disbanded at Meta (FAIR) before the spin-out; 25 Jun 2024: $142M seed led by Nat Friedman, Daniel Gross and Lux Capital, with Amazon and NVentures; 2025-2026 (date unconfirmed): ceased independent operation and became part of the non-profit Biohub; licences moved to MIT
 
@@ -2505,15 +2505,15 @@ US · origin: corporate · openness 1→2 · acquired · funding $142.0M · conf
 
 ### Isomorphic Labs Limited
 
-founded 2021 · GB · origin: corporate · openness 0→1 · private_vc · funding $7.70B · confidence: medium · tool: WebFetch (search budget exhausted)
+founded 2021 · GB · origin: corporate · openness 0→1 · private_vc · funding $7.70B · confidence: high · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Isomorphic inherits the brand and science of DeepMind's AlphaFold 2, which open public data (the PDB) and an open database (AlphaFold DB, CC BY 4.0) made famous. It has commercialized it as a closed drug-design company, releasing AF3 only under non-commercial weights terms after delay. Investors evidently do not penalize this: closed IP plus Alphabet compute attracted $7.7B in 2025-2026. Openness here built the reputation; closure is the business.
 
 **Takeaway.** Isomorphic Labs is the clearest case of 'open public data in, closed models out'. AlphaFold was trained on the PDB, a decades-old open archive. Its open AlphaFold 2 and DB won a Nobel and built trust, yet the commercial successor (AF3, IsoDDE) ships with non-commercial weights or not at all. Investor appetite for that closed position is enormous: $600M in 2025, then $2.1B and $5B in 2026, the largest AI-for-science financing in this group, still with no clinical asset.
 
-**Timeline.** 2024: Closed (AF3 paper/server only) → AF3 code and weights for non-commercial use on request (opening); None: AF3 code non-commercial → AF3 code Apache-2.0 (weights unchanged) (opening)
+**Timeline.** 2024: Closed (AF3 paper/server only) → AF3 code and weights for non-commercial use on request (opening); 2026: AF3 code non-commercial → AF3 code Apache-2.0 (weights unchanged) (opening)
 
-**Risk events.** Apr 2025: first external round, $600M led by Thrive Capital; Jan 2026: Max Jaderberg appointed president, succeeding Colin Murdoch; J&J multi-target collaboration; 12 May 2026: $2.1B Series B led by Thrive Capital (Alphabet, GV, MGX, Temasek, CapitalG, UK Sovereign AI Fund); 17 Nov 2026: $5B Series C co-led by Greenoaks and Sequoia, with a16z and Alphabet; Nov 2026: pipeline still preclinical; first-in-human trials pending with no date
+**Risk events.** 31 Mar 2025: first external round, $600M led by Thrive Capital; Jan 2026: Max Jaderberg appointed president, succeeding Colin Murdoch; J&J multi-target collaboration; 12 May 2026: $2.1B Series B led by Thrive Capital (Alphabet, GV, MGX, Temasek, CapitalG, UK Sovereign AI Fund); 17 Nov 2026: $5B Series C co-led by Greenoaks and Sequoia, with a16z and Alphabet; Nov 2026: pipeline still preclinical; first-in-human trials pending with no date
 
 **Robustness.** Financially very robust: Alphabet backing, about $7.7B of announced external capital since 2025, and pharma partners (Eli Lilly and Novartis, Jan 2024; Novartis expanded Feb 2025; J&J, Jan 2026; MSD). But the engine and pipeline are entirely proprietary, unvalidated in the clinic, and AF3 weights cannot be used commercially, so no commercial community fork of its core models is possible.
 
@@ -2533,7 +2533,7 @@ founded 2021 · GB · origin: corporate · openness 0→1 · private_vc · fundi
 
 ### Kebotix, Inc.
 
-US · openness 0→0 · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2017 · US · openness 0→0 · confidence: low · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Kebotix commercialized the self-driving-lab concept as a closed platform and partnership business. It released nothing open, so its methods left no public trace for the SDL community to build on. Its apparent stall after 2022, before the 2025 AI-for-science funding boom, suggests the closed model did not by itself secure capital or survival for an early mover.
 
@@ -2644,7 +2644,7 @@ GB · openness 2→2 · private_vc · confidence: low · tool: WebFetch (search 
 
 ### Periodic Labs
 
-founded 2025 · US · origin: founder_startup · openness 0→0 · private_vc · funding $300.0M · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2025 · US · origin: founder_startup · openness 0→0 · private_vc · funding $300.0M · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Closed from day one. The thesis is that the open literature is a poor training signal (it omits negative results), so the moat is proprietary experimental data from its own autonomous labs plus a large model post-trained on that data. The founders came from open-publishing research cultures (GNoME, MatterGen, attention), but none of Periodic's outputs are open. There is no evidence yet on whether this helps or hurts its science.
 
@@ -2887,7 +2887,7 @@ founded 2017 · US · origin: government · openness 3→3 · government · conf
 
 ### Enthought, Inc.
 
-founded 2001 · US · origin: founder_startup · openness 2→1 · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2001 · US · origin: founder_startup · openness 2→1 · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** Open-source work built Enthought's reputation and seeded SciPy and its conference, but the company did not capture the scientific-Python distribution market it pioneered and has moved to closed, client-specific AI services. The open commons it helped start outlived its own open product line.
 
@@ -3297,7 +3297,7 @@ founded 1971 · US · origin: government · openness 4→4 · government · $49.
 
 ### RDKit
 
-founded 2006 · openness 3→3 · confidence: low · tool: WebFetch (search budget exhausted)
+founded 2006 · openness 3→3 · confidence: medium · tool: WebFetch (search budget exhausted)
 
 **What openness did.** A permissive licence let RDKit become the standard molecular toolkit in open and commercial ML pipelines, reflected in millions of monthly downloads. The cost is that a very widely used dependency rests on a small core team and a services company, with no visible institutional funding.
 

@@ -107,5 +107,38 @@
     "funding_total_usd = sum of the equity rounds listed on Wikipedia (19 + 35 + 30 + 15 + 150 = $249M); Wikipedia does not mention a Series D, so the total may be incomplete. The $2.95M Kickstarter (pre-sales crowdfunding) is excluded.",
     "Revenue: Wikipedia lists $250M for 2025; Formlabs' own releases (2026-08-12, 2026-10-14) say 'annual revenues surpassing $250 million' without naming the year, so revenue_year 2025 rests on Wikipedia.",
     "2025-2026 status: operating and growing its product line (Form 4L 2024, Fuse X1 2026-06, Form Studio 1 2026-10); no layoffs, profitability figures or IPO plans were disclosed in the pages fetched."
-  ]
+  ],
+  "verification_pass2": {
+    "date": "2026-11-23",
+    "checked": [
+      "founded_year",
+      "latest_value_usd",
+      "latest_value_date",
+      "funding_total_usd",
+      "still_operating"
+    ],
+    "confirmed": [
+      {"field": "founded_year", "value": 2011, "source": "https://formlabs.com/company/press/funding-from-nea-bringing-valuation-over-one-billion-Jeff-Immelt-to-board-of-directors/", "evidence": "Since the company’s founding in 2011, they have outpaced competitors and established themselves as a leader in 3D printing."},
+      {"field": "latest_value_usd", "value": 2000000000, "source": "https://formlabs.com/company/press/formlabs-raises-series-e-funding-led-by-softbank-vision-fund-2", "evidence": "today announced it raised a $150 million Series E led by SoftBank Vision Fund 2*, doubling its valuation to $2 billion. (also formlabs.com/company/: 'achieved a $2 billion dollar valuation')"},
+      {"field": "latest_value_date", "value": "2021-05", "source": "https://formlabs.com/company/press/formlabs-raises-series-e-funding-led-by-softbank-vision-fund-2", "evidence": "Release dated 'May 19, 2021': 'Formlabs Doubles Valuation to $2 Billion with Close of $150 Million Series E Led By SoftBank Vision Fund 2'"},
+      {"field": "still_operating", "value": true, "source": "https://formlabs.com/company/press/", "evidence": "2026-10-14: Formlabs introduces Form Studio 1 (latest of 10 releases listed); separate 2026-02-17 release: Formlabs Appoints Rob Willett to Board of Directors"}
+    ],
+    "contradicted": [],
+    "unconfirmed": [
+      {"field": "funding_total_usd", "reason": "No page states a total. Formlabs' own releases give 'total raised funding to date to over $100 million' (2018-08-01, after the $15M NEA round) and a $150M Series E (2021-05-19). That is over $250M by 2021, just above the file's $249M, which sums only the rounds Wikipedia lists ($99M through 2018). The file likely undercounts slightly, probably by omitting a seed round. Not changed because no page gives an exact total."}
+    ],
+    "confidence_change": null,
+    "fetched_urls": [
+      "https://formlabs.com/company/",
+      "https://formlabs.com/company/press/",
+      "https://formlabs.com/company/press/?page=3 (served page 1, no older releases)",
+      "https://formlabs.com/company/press/?page=5 (served page 1, no older releases)",
+      "https://visionfund.com/portfolio/formlabs",
+      "https://formlabs.com/company/press/formlabs-appoints-rob-willett-to-board-of-directors/",
+      "https://en.wikipedia.org/wiki/Formlabs (reference list only, to find the official releases)",
+      "https://formlabs.com/company/press/formlabs-raises-series-e-funding-led-by-softbank-vision-fund-2",
+      "https://formlabs.com/company/press/funding-from-nea-bringing-valuation-over-one-billion-Jeff-Immelt-to-board-of-directors/"
+    ],
+    "note": "The $2B valuation and its May 2021 date are now confirmed by Formlabs' own release, which was linked from Wikipedia's references but not cited in the file. The company page says '750+ global employees' (matches employees_latest 750). It also says 'what we Kickstarted with the Form 1 in 2011', which conflicts with the October 2012 Kickstarter in origin_detail (from Wikipedia); this looks like loose wording and is left unchanged. Confidence stays medium only because no page states the funding total, and the company's own figures put it slightly above $249M."
+  }
 }

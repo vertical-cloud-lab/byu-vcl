@@ -21,7 +21,7 @@ plt.rcParams.update({
     "axes.edgecolor": GRID, "grid.color": GRID, "grid.linewidth": 0.8, "axes.grid": True,
     "font.family": "DejaVu Sans", "font.size": 20, "axes.titlesize": 30, "axes.labelsize": 20,
     "xtick.labelsize": 18, "ytick.labelsize": 18, "legend.fontsize": 18, "legend.frameon": False,
-    "axes.spines.top": False, "axes.axisbelow": True, "axes.spines.right": False, "lines.linewidth": LW, "lines.solid_capstyle": "round",
+    "axes.spines.top": False, "axes.axisbelow": True, "text.parse_math": False, "axes.spines.right": False, "lines.linewidth": LW, "lines.solid_capstyle": "round",
 })
 
 def fig_ax(title=None, subtitle=None, rect=(0.08, 0.13, 0.86, 0.68)):

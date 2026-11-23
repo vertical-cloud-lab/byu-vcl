@@ -1,0 +1,22 @@
+type,url,title,chars_or_segments,date_if_known
+youtube,https://www.youtube.com/watch?v=L4H5NRldNs0,Keynote: The Economic Value of Open Source - Frank Nagle - YouTube,169,
+youtube,https://www.youtube.com/watch?v=T_UM5PYk9NA,Mike Olson: Open Source Business Models - YouTube,44,
+youtube,https://www.youtube.com/watch?v=G6ZupYzr_Zg,"Keynote: Commercial Open Source Business Models - Sid Sijbrandij, Co-founder & CEO, GitLab - YouTube",142,2019-03 (inferred)
+youtube,https://www.youtube.com/watch?v=D27U3wHN8fs,"Limor Fried, Founder & CEO, Adafruit Industries | MAKERS - YouTube",34,
+youtube,https://www.youtube.com/watch?v=UAKI1TBDsWI,Accelerated Materials Discovery Through Self-Driving Labs - YouTube,104,
+youtube,https://www.youtube.com/watch?v=17ngZtwwgE8,How do open source projects make money? | Travis Oliphant and Lex Fridman - YouTube,0,
+reddit,https://www.reddit.com/r/hardware/comments/1p321yr/qualcomm_has_quietly_rewritten_arduinos_terms_and/,"Qualcomm has quietly rewritten Arduino's terms and conditions, and its not looking good : r/hardware",11799,2025-11-21
+reddit,https://www.reddit.com/r/Terraform/comments/1tku0gr/opentofu_is_3_years_old_terraform_still_has_a_77x/,OpenTofu Is 3 Years Old. Terraform Still Has a 77x Search Advantage. : r/Terraform,10446,~2026-05
+reddit,https://www.reddit.com/r/LocalLLaMA/comments/1v258lo/openai_released_gptoss_350_days_ago_will_we_ever/,OpenAI released gpt-oss 350 days ago. Will we ever see another open-weight model from them? : r/LocalLLaMA,11249,~2026-07
+reddit,https://www.reddit.com/r/OS_AI/comments/1xxxiag/anthropic_wants_to_ban_open_source_models_of/,Anthropic wants to ban open source models. Of course they do : r/OS_AI,10690,~2026-11-16
+reddit,https://www.reddit.com/r/startups/comments/1y18b2t/how_did_your_open_source_startup_make_money_i/,How did your open source startup make money? (I WILL NOT PROMOTE) : r/startups,15902,~2026-11-20
+reddit,https://www.reddit.com/r/NoStupidQuestions/comments/1y2e298/how_can_anthropic_be_valued_at_over_13_trillion/,How can Anthropic be valued at over $1.3 trillion at its IPO when it doesn't own physical infrastructure and has nearly $900B in compute bills? : r/NoStupidQuestions,16435,~2026-11-21
+hn,https://news.ycombinator.com/item?id=40092449,Valkey Is Rapidly Overtaking Redis | Hacker News,28704,2024-04-19
+hn,https://news.ycombinator.com/item?id=49332564,Anthropic's War on open source AI | Hacker News,22501,~2026-08
+hn,https://news.ycombinator.com/item?id=37581132,OpenTF is now OpenTofu | Hacker News,62461,2023-09-20
+blog,https://www.flowverify.co/blog/open-source-relicensing-2026-what-happened,Open-source relicensing in 2026: what actually happened | FlowVerify,17333,2026-05-10
+blog,https://opensourcelicenserisk.com/research/state-of-relicensing-exposure-2026/,"Open Source Relicensing Tracker 2026: Dates, Licenses, Forks",3681,2026-06-25
+blog,https://blog.prusa3d.com/core-one-cad-files-release-under-the-new-open-community-license-ocl_127290/,Open-sourcing CORE One CAD Files Under the New Open Community License (OCL) - Original Prusa 3D Printers,34514,2025-12-19
+blog,https://blog.arduino.cc/2025/11/21/the-arduino-terms-of-service-and-privacy-policy-update-setting-the-record-straight/,The Arduino Terms of Service and Privacy Policy update: setting the record straight | Arduino Blog,4086,2025-11-21
+forum,https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/prusa-3d-lays-off-nearly-twenty-five-percent-of-developers-due-to-financial-issues/,"Prusa 3D lays off nearly twenty five percent of developers due to financial issues – General discussion, announcements and releases – Prusa3D Forum",28733,2026-03-15
+blog,https://community.oshwa.org/t/oshwa-annual-survey/534/,OSHWA Annual Survey - OSHWA community archive,1002,2022-10-06

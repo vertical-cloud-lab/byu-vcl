@@ -143,16 +143,20 @@ prusa-research,Prusa Research a.s.,D,relicense,2025,"withheld CORE One CAD -> Op
 raspberry-pi,Raspberry Pi Holdings plc (and the Raspberry Pi Foundation),D,relicense,2014,Closed VideoCore IV graphics stack (binary userland until Oct 2012) -> BSD-3-Clause graphics stack plus documentation,opening,,,https://en.wikipedia.org/wiki/Raspberry_Pi
 raspberry-pi,Raspberry Pi Holdings plc (and the Raspberry Pi Foundation),D,IPO,2024,London Stock Exchange (ticker RPI),,,689000000.0,https://www.cnbc.com/2024/06/11/rasperry-pi-ipo-computing-firm-to-raise-211-million.html
 sifive,"SiFive, Inc.",D,relicense,2021,"Open-source Freedom SoC platform (Apache-2.0), actively maintained -> Freedom repository archived; product line consists of proprietary licensed cores",closing,,,https://github.com/sifive/freedom
+sofar-ocean-openrov,Sofar Ocean Technologies (formerly OpenROV),D,relicense,,"Open DIY kit (CAD, electronics and software published) -> Trident ready-to-use ROV with only an interfacing development kit (MIT) published",closing,,,https://github.com/OpenROV
+sofar-ocean-openrov,Sofar Ocean Technologies (formerly OpenROV),D,relicense,2019,OpenROV (open kits plus Trident) -> Sofar Ocean (proprietary Spotter sensor network and data products),closing,,,https://techcrunch.com/2019/03/27/sofar-ocean-technologies/
+sofar-ocean-openrov,Sofar Ocean Technologies (formerly OpenROV),D,relicense,2021,Closed Spotter platform interfaces -> Bristlemouth open hardware-interface standard (Apache-2.0 firmware),opening,,,https://www.bristlemouth.org/
+sofar-ocean-openrov,Sofar Ocean Technologies (formerly OpenROV),D,merger,2019,Spoondrift Technologies,,,,https://techcrunch.com/2019/03/27/sofar-ocean-technologies/
 system76,"System76, Inc.",D,relicense,2018,Resold/ODM hardware with closed designs -> In-house Thelio desktop with open (GPL-3.0) Thelio Io board design,opening,,,https://github.com/system76/thelio-io-hardware
 system76,"System76, Inc.",D,relicense,2021,No fully open-hardware product -> Launch keyboard: OSHWA-certified open hardware (US001062),opening,,,https://github.com/system76/launch
 ultimaker,UltiMaker (Ultimaker B.V.),D,relicense,,"published CC BY-NC printer designs (Original, Ultimaker 2) -> no published design files for later printers (Ultimaker 3 / S-series / Factor)",closing,,,https://en.wikipedia.org/wiki/Ultimaker
 ultimaker,UltiMaker (Ultimaker B.V.),D,merger,2022,MakerBot (Stratasys),,,,https://investors.stratasys.com/news-events/press-releases/detail/793/stratasys-completes-merger-of-makerbot-with-ultimaker
 chemspeed,Chemspeed Technologies AG,E,acquisition,2024,Bruker Corporation (NASDAQ: BRKR),,,,https://www.sec.gov/Archives/edgar/data/1109354/000095017025030897/brkr-20241231.htm
 emerald-cloud-lab,"Emerald Cloud Lab, Inc.",E,relicense,2023,Proprietary SLL -> SLL open source for research use (licence unnamed),opening,,,https://www.prnewswire.com/news-releases/emerald-cloud-lab-makes-programming-language-for-conducting-remote-scientific-experiments-open-source-301906218.html
-evolutionaryscale,"EvolutionaryScale, PBC",E,relicense,,EvolutionaryScale Community License (non-commercial) -> MIT,opening,,,https://www.evolutionaryscale.ai/blog/esm-cambrian
+evolutionaryscale,"EvolutionaryScale, PBC",E,relicense,2026,EvolutionaryScale Community License (non-commercial) -> MIT,opening,,,https://www.evolutionaryscale.ai/blog/esm-cambrian
 evolutionaryscale,"EvolutionaryScale, PBC",E,acquisition,,Biohub (biohub.org),,,,https://www.evolutionaryscale.ai/
 isomorphic-labs,Isomorphic Labs Limited,E,relicense,2024,Closed (AF3 paper/server only) -> AF3 code and weights for non-commercial use on request,opening,,,https://en.wikipedia.org/wiki/AlphaFold
-isomorphic-labs,Isomorphic Labs Limited,E,relicense,,AF3 code non-commercial -> AF3 code Apache-2.0 (weights unchanged),opening,,,https://github.com/google-deepmind/alphafold3
+isomorphic-labs,Isomorphic Labs Limited,E,relicense,2026,AF3 code non-commercial -> AF3 code Apache-2.0 (weights unchanged),opening,,,https://github.com/google-deepmind/alphafold3
 opentrons,"Opentrons Labworks, Inc.",E,relicense,2018,"Open hardware files (OT-One, Apache-2.0) + open software -> Proprietary hardware (OT-2) + open software",closing,,,https://en.wikipedia.org/wiki/Opentrons
 recursion,"Recursion Pharmaceuticals, Inc.",E,relicense,2019,Proprietary -> Curated sample datasets under CC BY-NC-SA 4.0,opening,,,https://www.rxrx.ai/rxrx1
 recursion,"Recursion Pharmaceuticals, Inc.",E,IPO,2021,Nasdaq (RXRX),,,2920000000.0,https://stockanalysis.com/stocks/rxrx/market-cap/
@@ -169,3 +173,19 @@ openfoam,OpenFOAM (OpenFOAM Foundation / CFD Direct; OpenCFD Ltd under ESI Group
 openfoam,OpenFOAM (OpenFOAM Foundation / CFD Direct; OpenCFD Ltd under ESI Group and Keysight),F,acquisition,2012,ESI Group,,,,https://en.wikipedia.org/wiki/ESI_Group
 openfoam,OpenFOAM (OpenFOAM Foundation / CFD Direct; OpenCFD Ltd under ESI Group and Keysight),F,acquisition,2023,Keysight Technologies,,,,https://www.keysight.com/us/en/about/newsroom/news-releases/2023/1103-pr23-005-keysight-completes-the-acquisition-of-a-controllin.html
 rcsb-pdb-wwpdb,RCSB Protein Data Bank and the Worldwide Protein Data Bank (wwPDB),F,relicense,2021,wwPDB historical data-access licence -> CC0 1.0,opening,,,https://pdbj.org/news/wwpdb-cc0-10
+desktop-metal,"Desktop Metal, Inc.",G,merger,2020,"Trine Acquisition Corp. (SPAC, NYSE: TRNE)",,,2500000000.0,https://www.sec.gov/Archives/edgar/data/1754820/000121390020023752/ea126022ex99-1_trineacquisit.htm
+desktop-metal,"Desktop Metal, Inc.",G,acquisition,2025,Nano Dimension Ltd.,,,,https://www.sec.gov/Archives/edgar/data/1754820/000110465925030938/tm2511129d1_8k.htm
+desktop-metal,"Desktop Metal, Inc.",G,bankruptcy,2025,"Filed for Chapter 11 in July 2025 'as part of a plan to sell its European assets'; Bloomberg (2025-07-28) headline: '3D Printer Facing Liquidation Blames Legal Fees for Bankruptcy', after lawyers demanded unpaid fees. Outcome of asset sales not confirmed.",,,,https://en.wikipedia.org/wiki/Desktop_Metal
+digital-science-figshare,"Digital Science (Holtzbrinck Publishing Group), incl. Figshare",G,acquisition,2012,Digital Science (Holtzbrinck Publishing Group),,,,https://en.wikipedia.org/wiki/Figshare
+kardex,Kardex Holding AG,G,IPO,1989,SIX Swiss Exchange,,,,https://en.wikipedia.org/wiki/Kardex_Group
+markforged,"Markforged Holding Corporation (MarkForged, Inc.)",G,merger,2021,"one (SPAC sponsored by A-star, led by Kevin Hartz; NYSE: AONE)",,,2100000000.0,https://www.sec.gov/Archives/edgar/data/1816613/000110465921027194/tm217725d1_ex99-1.htm
+markforged,"Markforged Holding Corporation (MarkForged, Inc.)",G,acquisition,2025,Nano Dimension Ltd.,,,116000000.0,https://www.sec.gov/Archives/edgar/data/1816613/000119312525095190/d920700d8k.htm
+markforged,"Markforged Holding Corporation (MarkForged, Inc.)",G,acquisition,2026,Stratasys Ltd.,,,42500000.0,https://investors.stratasys.com/news-events/press-releases/detail/984/stratasys-to-acquire-markforged-inc-expanding-aerospace
+papers-with-code,Papers with Code (Meta AI),G,acquisition,,Facebook AI Research (Meta),,,,https://arxiv.org/pdf/2004.14356
+papers-with-code,Papers with Code (Meta AI),G,shutdown,2025,Meta (owner); Hugging Face (redirect target),,,,https://github.com/paperswithcode/paperswithcode-data/issues
+stratasys,Stratasys Ltd.,G,IPO,1994,Nasdaq (SSYS),,,,https://en.wikipedia.org/wiki/Stratasys
+stratasys,Stratasys Ltd.,G,merger,2012,Objet Ltd.,,,3000000000.0,https://en.wikipedia.org/wiki/Stratasys
+tecan,Tecan Group AG,G,IPO,1999,SWX Swiss Exchange (SIX: TECN),,,,https://en.wikipedia.org/wiki/Tecan
+universal-robots-mir,Universal Robots A/S and Mobile Industrial Robots ApS (Teradyne Robotics),G,acquisition,2015,"Teradyne, Inc.",,,285000000.0,https://www.universal-robots.com/about-universal-robots/our-history/
+velo3d,"Velo3D, Inc.",G,merger,2021,JAWS Spitfire Acquisition Corp. (SPAC),,,,https://www.sec.gov/Archives/edgar/data/1825079/000162828022007442/velo-20211231.htm
+velo3d,"Velo3D, Inc.",G,acquisition,2024,Arrayed Notes Acquisition Corp. (Arrayed Additive),,,,https://www.sec.gov/Archives/edgar/data/1825079/000149315224051999/ex99-1.htm
