@@ -52,5 +52,29 @@
     "job": "job-futurehouse-paperqa3-precedent",
     "query": "Has anyone quantified, in dollar terms or as a share of value created, how much open scientific data and open-source software contributed to AI-for-science breakthroughs such as AlphaFold (trained on the Protein Data Bank) or machine-learning materials discovery (trained on the Materials Project, OQMD or AFLOW)?",
     "submitted_utc": "2026-11-23T21:51:20.067061Z"
+  },
+  "materials_open_data_value": {
+    "task_id": "b129aacc-00a4-4714-be1a-b82393e4be86",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What is the measured scientific and economic impact of open materials-science databases (the Materials Project, OQMD, AFLOW, NOMAD, JARVIS, Alexandria, OMat24) on machine-learning materials discovery? Include usage and citation statistics, documented discoveries or experimentally validated materials enabled by them, their funding levels, licensing changes (for example non-commercial terms on contributed data), and any cost-benefit or return-on-investment estimates.",
+    "submitted_utc": "2026-11-23T23:55:28.657284+00:00"
+  },
+  "lab_automation_business": {
+    "task_id": "c1e6868b-e2fe-47ff-aea3-b65769fdc39a",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What do market reports and academic studies show about the laboratory automation and self-driving laboratory market: market size and growth, business models (instrument sales, software, cloud labs, services), outcomes of cloud-lab companies (Emerald Cloud Lab, Strateos/Transcriptic), Opentrons, and the role of open-source hardware and software in adoption and cost? Give numbers with years and sources.",
+    "submitted_utc": "2026-11-23T23:55:29.872492+00:00"
+  },
+  "industry_publication_norms": {
+    "task_id": "1ba898e4-6506-4000-bae2-c6d5be87fdfb",
+    "job": "job-futurehouse-paperqa3",
+    "query": "How have industry AI labs' publication, code-release and model-weight release practices changed between 2018 and 2026? Include evidence on declining or increasing publication by companies such as OpenAI, Google DeepMind, Meta and Anthropic, staged or gated releases, the Foundation Model Transparency Index, and effects on academic research and reproducibility.",
+    "submitted_utc": "2026-11-23T23:55:30.879590+00:00"
+  },
+  "open_infrastructure_sustainability": {
+    "task_id": "ae90ebd6-6ee3-40ee-a101-527a44b2c5fb",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What does the literature say about the funding and sustainability of open scholarly and scientific infrastructure (arXiv, the Protein Data Bank, Zenodo, OSF, OpenAlex, community open-source scientific software)? Include costs, funding models (grants, memberships, consortia, endowments), documented failures or service reductions, and proposals for sustaining such infrastructure as AI increases its use.",
+    "submitted_utc": "2026-11-23T23:55:31.651581+00:00"
   }
 }

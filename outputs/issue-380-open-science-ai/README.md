@@ -448,6 +448,22 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
     community archive survives on Hugging Face because the data dumps were CC BY-SA.
   - These are the services AI labs and AI-for-science startups draw on. **Who pays for the commons** is
     the open question of the AI era.
+- **Heavy use, thin funding.** Usage and funding figures recorded in the case files
+  (`usage_metrics`, each with its source URL):
+
+| Infrastructure | Use (date) | Funding or budget |
+| --- | --- | --- |
+| RDKit (open cheminformatics) | 6.9M PyPI downloads a month (2026-11) | No visible institutional funding |
+| Materials Project (LBNL) | 650,000 registered users; 32,000 citations (2026-01) | DOE program funding |
+| Protein Data Bank (RCSB) | 247,287 structures (2026-01) | $49.4M over five years (US) |
+| arXiv | 2.9M papers; 284,486 submissions in 2025 | about $6.7M a year; deficit in FY2025 |
+| OSF (COS) | 1M users; 400k public projects (2026-08) | needs $4–5M a year; narrowed in 2026 |
+| OpenAlex (OurResearch) | 500M works; 115M API queries a month (2024) | non-profit |
+| OpenFOAM | (widely used CFD) | €250k a year of maintenance funding vs. a €500k target |
+| pycalphad / PyLabRobot | about 50k / 47k downloads a month | volunteer and grant-funded |
+| *Thermo-Calc (closed comparator)* | 2,000 customer organizations, 60 countries | commercial licences |
+| *Gaussian (closed comparator)* | n/a | $6,000 for a US academic site licence with source |
+
 - **Instrument and AM makers are closed.**
   - All 13 instrument and AM makers in group G score 0, except Universal Robots/MiR at 1 for its
     open-source ROS 2 driver.
@@ -562,6 +578,14 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
 ### 8. Open-source commercialization in `ac-dev-lab` and `self-driving-lab-demo`
 
 ![Our threads](figures/gh_threads.png)
+
+![Commercialization activity by quarter](figures/gh_timeline.png)
+
+- **Timing:** SDL-demo's commercialization discussion peaked in 2022–23, when Sterling ran the kit and
+  GroupGets experiments. `ac-dev-lab`'s commercialization-related threads, mostly BOMs, vendors and
+  replication, peaked in early 2025 and faded through 2026.
+- **Share of each repo:** 36% of `ac-dev-lab`'s 4,000-plus records sit in coded threads, against 27% for
+  SDL-demo ([`data/gh_coded_activity_by_quarter.csv`](data/gh_coded_activity_by_quarter.csv)).
 
 The full digest, with 58 quotes and 94 numbers checked by script, is
 [`gh-mining/commercialization_digest.md`](gh-mining/commercialization_digest.md). The coded threads are
