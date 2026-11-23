@@ -169,6 +169,34 @@ organizations, so survivorship bias applies. Source: [`data/openness_outcomes_by
 | Companies founded before 2000 (incumbents) | 20 | 1.30 → 1.80 | **+0.50** | 40% | 50% |
 | Government, academic and foundation infrastructure | 18 | 3.33 → 3.61 | **+0.28** | 6% | 11% |
 
+**Robustness checks** ([`scripts/robustness_checks.py`](scripts/robustness_checks.py),
+[`data/robustness_kinds_by_scope.csv`](data/robustness_kinds_by_scope.csv),
+[`data/robustness_openness_vs_value.csv`](data/robustness_openness_vs_value.csv)):
+- **The VC-era vs. incumbent difference is not noise.** Across all 143 files, mean openness change for
+  companies founded since 2000 minus that for companies founded before 2000 is −0.67, with a 95%
+  bootstrap CI of −1.04 to −0.31.
+- **US-only, the gap widens:**
+  - VC-era −0.46 (47% made a closing move, n = 59);
+  - long-standing +0.47 (n = 19);
+  - US public infrastructure 0.00 (8%, n = 13).
+- **Openness does not predict value within commercial OSS:** Spearman ρ = +0.11 (p = 0.57, n = 30).
+- **In the physical sciences the correlation is strongly negative:** ρ = −0.82 (p < 0.001, n = 14). The
+  open entries are government and non-profit infrastructure, whose "value" is a budget, so this measures
+  value capture, not value created.
+
+![Openness by year and sector](figures/openness_by_year_sector.png)
+
+**Openness as a function of calendar time** ([`data/openness_by_year_sector.csv`](data/openness_by_year_sector.csv);
+animated version in [`video/extras/openness_by_year_sector.mp4`](video/extras/openness_by_year_sector.mp4)):
+- Commercial OSS and hardware started out the most open, at about 2.8 in the mid-2000s, and have
+  declined steadily, to 1.97 and 2.18 by 2026.
+- Big Tech and AI labs rose from about 0.2 (1995) to about 2.0 (2017–2025), then dipped to 1.83 in
+  2026 (Meta's closed Muse Spark, Qwen's revenue cap).
+- Physical science rose to about 2.1 by 2007 and has drifted down as closed AI-for-science entrants
+  arrive.
+- **By 2026 every sector sits near 2, "open core / mixed"**: firms that started open closed up, and firms
+  that started closed opened the layers they don't sell.
+
 | Sector | n | Mean change in openness (now − founding) | Share that closed down | Share that opened up | Acquired or taken private |
 | --- | --- | --- | --- | --- | --- |
 | Commercial OSS software | 41 | **−0.54** | 49% | 5% | 37% |

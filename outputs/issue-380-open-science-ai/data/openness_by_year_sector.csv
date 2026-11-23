@@ -1,0 +1,171 @@
+sector,year,mean_open,n
+"AM & lab instruments, open-science infra",1990,0.0,6
+"AM & lab instruments, open-science infra",1991,0.5714285714285714,7
+"AM & lab instruments, open-science infra",1992,0.5714285714285714,7
+"AM & lab instruments, open-science infra",1993,0.5714285714285714,7
+"AM & lab instruments, open-science infra",1994,0.5714285714285714,7
+"AM & lab instruments, open-science infra",1995,0.5714285714285714,7
+"AM & lab instruments, open-science infra",1996,0.5714285714285714,7
+"AM & lab instruments, open-science infra",1997,0.5,8
+"AM & lab instruments, open-science infra",1998,0.5,8
+"AM & lab instruments, open-science infra",1999,0.5,8
+"AM & lab instruments, open-science infra",2000,0.5,8
+"AM & lab instruments, open-science infra",2001,0.5,8
+"AM & lab instruments, open-science infra",2002,0.5,8
+"AM & lab instruments, open-science infra",2003,0.5,8
+"AM & lab instruments, open-science infra",2004,0.5,8
+"AM & lab instruments, open-science infra",2005,0.5555555555555556,9
+"AM & lab instruments, open-science infra",2006,0.5555555555555556,9
+"AM & lab instruments, open-science infra",2007,0.5555555555555556,9
+"AM & lab instruments, open-science infra",2008,0.5555555555555556,9
+"AM & lab instruments, open-science infra",2009,0.5555555555555556,9
+"AM & lab instruments, open-science infra",2010,0.5555555555555556,9
+"AM & lab instruments, open-science infra",2011,0.9090909090909091,11
+"AM & lab instruments, open-science infra",2012,0.9090909090909091,11
+"AM & lab instruments, open-science infra",2013,1.1333333333333333,15
+"AM & lab instruments, open-science infra",2014,1.1764705882352942,17
+"AM & lab instruments, open-science infra",2015,1.1111111111111112,18
+"AM & lab instruments, open-science infra",2016,1.1111111111111112,18
+"AM & lab instruments, open-science infra",2017,1.1111111111111112,18
+"AM & lab instruments, open-science infra",2018,1.2105263157894737,19
+"AM & lab instruments, open-science infra",2019,1.2105263157894737,19
+"AM & lab instruments, open-science infra",2020,1.2105263157894737,19
+"AM & lab instruments, open-science infra",2021,1.2105263157894737,19
+"AM & lab instruments, open-science infra",2022,1.2105263157894737,19
+"AM & lab instruments, open-science infra",2023,1.2105263157894737,19
+"AM & lab instruments, open-science infra",2024,1.2105263157894737,19
+"AM & lab instruments, open-science infra",2025,1.1111111111111112,18
+"AM & lab instruments, open-science infra",2026,1.1111111111111112,18
+Big Tech & AI labs,1990,0.0,4
+Big Tech & AI labs,1991,0.0,4
+Big Tech & AI labs,1992,0.0,4
+Big Tech & AI labs,1993,0.0,5
+Big Tech & AI labs,1994,0.16666666666666666,6
+Big Tech & AI labs,1995,0.16666666666666666,6
+Big Tech & AI labs,1996,0.16666666666666666,6
+Big Tech & AI labs,1997,0.16666666666666666,6
+Big Tech & AI labs,1998,0.5714285714285714,7
+Big Tech & AI labs,1999,0.625,8
+Big Tech & AI labs,2000,0.625,8
+Big Tech & AI labs,2001,0.625,8
+Big Tech & AI labs,2002,0.625,8
+Big Tech & AI labs,2003,0.625,8
+Big Tech & AI labs,2004,0.8888888888888888,9
+Big Tech & AI labs,2005,0.8888888888888888,9
+Big Tech & AI labs,2006,0.8888888888888888,9
+Big Tech & AI labs,2007,0.8888888888888888,9
+Big Tech & AI labs,2008,0.8888888888888888,9
+Big Tech & AI labs,2009,0.8888888888888888,9
+Big Tech & AI labs,2010,1.2,10
+Big Tech & AI labs,2011,1.3,10
+Big Tech & AI labs,2012,1.3,10
+Big Tech & AI labs,2013,1.3,10
+Big Tech & AI labs,2014,1.6363636363636365,11
+Big Tech & AI labs,2015,1.9166666666666667,12
+Big Tech & AI labs,2016,1.9166666666666667,12
+Big Tech & AI labs,2017,2.0,12
+Big Tech & AI labs,2018,2.0,12
+Big Tech & AI labs,2019,1.8461538461538463,13
+Big Tech & AI labs,2020,2.0,14
+Big Tech & AI labs,2021,1.8,15
+Big Tech & AI labs,2022,1.8666666666666667,15
+Big Tech & AI labs,2023,1.8333333333333333,18
+Big Tech & AI labs,2024,2.0,18
+Big Tech & AI labs,2025,2.0,18
+Big Tech & AI labs,2026,1.8333333333333333,18
+Commercial OSS software,1992,2.0,1
+Commercial OSS software,1993,2.5,2
+Commercial OSS software,1994,2.5,2
+Commercial OSS software,1995,2.3333333333333335,3
+Commercial OSS software,1996,2.3333333333333335,3
+Commercial OSS software,1997,2.3333333333333335,3
+Commercial OSS software,1998,2.3333333333333335,3
+Commercial OSS software,1999,2.3333333333333335,3
+Commercial OSS software,2000,2.3333333333333335,3
+Commercial OSS software,2001,2.3333333333333335,3
+Commercial OSS software,2002,2.3333333333333335,3
+Commercial OSS software,2003,2.3333333333333335,3
+Commercial OSS software,2004,2.6,5
+Commercial OSS software,2005,2.875,8
+Commercial OSS software,2006,2.7777777777777777,9
+Commercial OSS software,2007,2.8181818181818183,11
+Commercial OSS software,2008,2.6923076923076925,13
+Commercial OSS software,2009,2.5625,16
+Commercial OSS software,2010,2.5625,16
+Commercial OSS software,2011,2.619047619047619,21
+Commercial OSS software,2012,2.6,25
+Commercial OSS software,2013,2.5,26
+Commercial OSS software,2014,2.5357142857142856,28
+Commercial OSS software,2015,2.5161290322580645,31
+Commercial OSS software,2016,2.4545454545454546,33
+Commercial OSS software,2017,2.4545454545454546,33
+Commercial OSS software,2018,2.2777777777777777,36
+Commercial OSS software,2019,2.2857142857142856,35
+Commercial OSS software,2020,2.289473684210526,38
+Commercial OSS software,2021,2.1578947368421053,38
+Commercial OSS software,2022,2.1315789473684212,38
+Commercial OSS software,2023,2.1052631578947367,38
+Commercial OSS software,2024,2.0,38
+Commercial OSS software,2025,2.0,38
+Commercial OSS software,2026,1.9736842105263157,38
+Hardware,2003,3.0,1
+Hardware,2004,3.0,1
+Hardware,2005,2.8,5
+Hardware,2006,2.8,5
+Hardware,2007,2.8,5
+Hardware,2008,2.8333333333333335,6
+Hardware,2009,2.857142857142857,7
+Hardware,2010,2.857142857142857,7
+Hardware,2011,2.5833333333333335,12
+Hardware,2012,2.2857142857142856,14
+Hardware,2013,2.3333333333333335,15
+Hardware,2014,2.25,16
+Hardware,2015,2.3684210526315788,19
+Hardware,2016,2.3684210526315788,19
+Hardware,2017,2.3684210526315788,19
+Hardware,2018,2.473684210526316,19
+Hardware,2019,2.4,20
+Hardware,2020,2.227272727272727,22
+Hardware,2021,2.1363636363636362,22
+Hardware,2022,2.1818181818181817,22
+Hardware,2023,2.1818181818181817,22
+Hardware,2024,2.1818181818181817,22
+Hardware,2025,2.1818181818181817,22
+Hardware,2026,2.1818181818181817,22
+Physical science (companies & infrastructure),1990,0.8333333333333334,6
+Physical science (companies & infrastructure),1991,0.8333333333333334,6
+Physical science (companies & infrastructure),1992,0.8333333333333334,6
+Physical science (companies & infrastructure),1993,0.8333333333333334,6
+Physical science (companies & infrastructure),1994,0.8333333333333334,6
+Physical science (companies & infrastructure),1995,0.8571428571428571,7
+Physical science (companies & infrastructure),1996,0.8571428571428571,7
+Physical science (companies & infrastructure),1997,0.75,8
+Physical science (companies & infrastructure),1998,1.0,9
+Physical science (companies & infrastructure),1999,1.3,10
+Physical science (companies & infrastructure),2000,1.3,10
+Physical science (companies & infrastructure),2001,1.2727272727272727,11
+Physical science (companies & infrastructure),2002,1.5,12
+Physical science (companies & infrastructure),2003,1.5,12
+Physical science (companies & infrastructure),2004,1.8461538461538463,13
+Physical science (companies & infrastructure),2005,1.8461538461538463,13
+Physical science (companies & infrastructure),2006,2.0,15
+Physical science (companies & infrastructure),2007,2.125,16
+Physical science (companies & infrastructure),2008,2.125,16
+Physical science (companies & infrastructure),2009,2.125,16
+Physical science (companies & infrastructure),2010,1.9444444444444444,18
+Physical science (companies & infrastructure),2011,2.0526315789473686,19
+Physical science (companies & infrastructure),2012,2.0,22
+Physical science (companies & infrastructure),2013,1.96,25
+Physical science (companies & infrastructure),2014,2.074074074074074,27
+Physical science (companies & infrastructure),2015,2.074074074074074,27
+Physical science (companies & infrastructure),2016,2.107142857142857,28
+Physical science (companies & infrastructure),2017,2.066666666666667,30
+Physical science (companies & infrastructure),2018,2.033333333333333,30
+Physical science (companies & infrastructure),2019,2.03125,32
+Physical science (companies & infrastructure),2020,2.03125,32
+Physical science (companies & infrastructure),2021,1.9696969696969697,33
+Physical science (companies & infrastructure),2022,2.0,34
+Physical science (companies & infrastructure),2023,1.9714285714285715,35
+Physical science (companies & infrastructure),2024,1.9444444444444444,36
+Physical science (companies & infrastructure),2025,1.8918918918918919,37
+Physical science (companies & infrastructure),2026,1.8918918918918919,37
