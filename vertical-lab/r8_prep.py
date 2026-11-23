@@ -88,8 +88,10 @@ MX = dict(W=203.0, D=460.0, H=480.0, slope_z0=300.0, slope_d=110.0, mold=(-25.0,
           charge=55.0, press=35.0)
 RAM_PRESSED = MX["press"] / MX["depth"]          # the ram's joint value once the compound is pressed (rises 35 mm)
 # the compound doser (ours): its hopper's post on the deck behind and left of the mold, 74 mm off the closure's line;
-# the chute 60 mm over the deck; parked, it points to the back of the deck, out of the closure's swing and the arm's way
-DOSER = dict(at=(-60.0, 70.0), z=MX["H"] + 60.0, park_deg=162.0)
+# the chute 66 mm over the deck; parked, it points to the back of the deck, out of the closure's swing and the arm's way.
+# Round 15: at 60, with a 22 mm spout, the spout swept through the closure's pivot knob (20 mm tall on the 36 mm bar,
+# 62 mm over the deck) on its way to the mold; now the spout is a 12 mm stub under the chute's end, 2 mm over the knob
+DOSER = dict(at=(-60.0, 70.0), z=MX["H"] + 66.0, park_deg=162.0)
 
 
 def mx_geometry() -> dict:
@@ -188,9 +190,9 @@ def mount_press() -> Instrument:
     a_ = math.degrees(math.atan2(my - dy_, mx - dx_))
     chute = box(0, -9, -6, L_ + 8, 9, 6).translate((0, 0, DOSER["z"] + 6))
     dos.add("doser chute", chute.rotate((0, 0, 0), (0, 0, 1), a_).translate((dx_, dy_, 0)), "stainless")
-    dos.add("chute spout", cyl(16, 22, x=mx, y=my, z=DOSER["z"] - 12), "stainless")
+    dos.add("chute spout", cyl(16, 12, x=mx, y=my, z=DOSER["z"] - 2), "stainless")
     pour = _piece(inst, "pour")
-    pour.add("compound falling", cyl(7, DOSER["z"] - 12 - (H - p["depth"] + p["charge"]), x=mx, y=my,
+    pour.add("compound falling", cyl(7, DOSER["z"] - 2 - (H - p["depth"] + p["charge"]), x=mx, y=my,
                                      z=H - p["depth"] + p["charge"]), "r8p_granules")
     inst.joints = {
         "closure": Joint("hinge", axis=(0, 0, 1), pivot=(px_, py_, 0), deg=95.0),
@@ -472,7 +474,9 @@ def polisher() -> Instrument:
     inst.joints = {
         "head": Joint("slide", vec=(0, 0, -drop)),
         "holder": Joint("spin", parent="head", axis=(0, 0, 1), pivot=(hx, hy, 0), deg=-150.0),
-        "pistons": Joint("slide", parent="holder", vec=(0, 0, -(PIST_GAP + PIST_PRESS))),
+        # round 15: the stroke less the feet's 4 mm (they hang under the rods' ends), so the feet stop on the mounts'
+        # backs; it took them 4 mm into the mounts (the audits' "pistons on the holder")
+        "pistons": Joint("slide", parent="holder", vec=(0, 0, -(PIST_GAP - 4.0 + PIST_PRESS))),
         "platen": Joint("spin", axis=(0, 0, 1), pivot=(bx, by, 0), deg=-720.0),
         "disc_320": Joint("path", path=disc_path(GRITS.index("320"))),
         "disc_400": Joint("path", path=disc_path(GRITS.index("400"))),
@@ -658,7 +662,9 @@ def cnc() -> Instrument:
     tl = Timeline(dict(gy=120.0, cx=150.0, sz=20.0, a="rack", b="rack"))
     ga = tools["tool_a"][1] - sy
     grab = p["tool_top"] - p["nose"]
-    cut_z = G["top"] - p["nose"] + 1.0 + 12.0          # the end mill's tip at the puck's top (tool stick-out ~12 mm)
+    # the end mill's tip at the puck's top: it is 50 mm under its collar's top (R7._tool), which rides at the nose. Round
+    # 15: "+ 13" (a 12 mm stick-out) put the tip 37 mm down, through the puck into the vise (round 11's audit, 25 mm)
+    cut_z = G["top"] - p["nose"] + 50.0
     tl.go(1.4, cx=tools["tool_a"][0], gy=ga).go(0.8, sz=grab).go(0.3, a="sp").go(0.8, sz=20.0).mark("tool_a")
     tl.go(1.0, cx=sx_ - 12.0, gy=sy_ - 4.0 - sy).go(0.5, sz=cut_z)
     for k, yy in enumerate((-4.0, 0.0, 4.0)):
@@ -692,7 +698,7 @@ def cnc() -> Instrument:
     V = tl.v
     tv = lambda a, b: {k: (a, b) for k in ("gantry", "carriage", "spindle", "tool_a", "tool_b")}  # noqa: E731
     inst.actions = [
-        ("Chapter 6's job for the Carvera: the steel mount, the wire-EDM slice of the printed AlSi10Mg build seated "
+        ("Chapter 6's job for the Carvera: the steel mount, the wire-EDM slice of the printed Al-10Si build seated "
          "in its pocket, 0.4 mm proud. The lid opens.", 2.2, {"lid": (0.0, 1.0)}),
         ("The arm sets the mount on the parallels in a small vise (ours).", 2.2, {"carrier": (0.0, 1.0)}),
         ("The vise clamps it; the lid closes. A 6 mm end mill from the tool changer.", 3.0,

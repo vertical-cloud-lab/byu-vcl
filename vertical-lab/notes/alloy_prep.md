@@ -359,3 +359,44 @@ What the stricter audit found (none of it fixed this round; the arm itself is cl
   (frames 199-202, 314-317, 335 of the tour). Open.
 
 
+## Round 15 (2026-11-23): the base cameras and the Class D unit on the MiR
+
+Sterling (PR #318, 2026-11-23): "re-render everything in a self-consistent and cohesive way. Fix collisions,
+nonsensical parts, etc." Every MiR250 now carries #364's three base cameras (`props.BASE_CAMS`: a 2040 mast at the
+base's back-left corner to 1.80 m, a 2020 post with a camera at 0.88 m at each end of the cabinet) and the safety PR's
+Class D unit on the cabinet's -y side (`safety.mir_meshes`, 208 mm out, 1.14 m tall). This chapter had opted out of
+the cameras (`props.BASE_CAMS_OPT_OUT`) because #364's audit found the arm going through them; the list is empty now.
+
+What the audit found with both on the MiR (`VLAB_ONLY_TRAYS=FM ARM_AUDIT=1 VIZ3D_FPS=6`, round 11's strict rules),
+and what changed:
+
+| Where | What hit what | Why | Fix |
+|---|---|---|---|
+| PX500, every disc change (144 arm frames) | the upper arm through the bay, the forearm into the cabinet, the mast and the left camera, a held disc into the Class D unit | a disc came 470 mm out from the platen before the move to the magazine, which put the wrist over the base's left end; with the mast and the left camera there, no IK branch had clear lines (`note: no IK branch with clear lines`), the planner then had no clear end pose, and the moves fell back to straight joint lines | the disc comes out 340 mm (`out_pol`): 3 of 8 IK branches clear both ways (`PREP_SERVE=polish`, at 470 none, at 400 two). At 340 the disc's back edge is 190 mm in front of the platen's centre, and its lines and the planned move on are clear |
+| Done (4) | the forearm into the cabinet and the left camera | the arm was left in a colliding pose by the last disc change | the same |
+| MX400, the hot mount into the holder (1) | the mount 12 mm into the holder | the holder is face down then, and its pockets had a ledge at the back: the mount went in from the back, through the ledge | plain bores right through, the mount held either way up by the assumed O-ring (round 9's option 3); the pistons press the mounts' backs through the same bore |
+| Carvera, tray M going back (3 movers) | the lid into tray H, the slot over the opening | the lid was left open at 65 deg (957 mm tall) when the tray went back into the column | the lid closes before tray M goes back. Presented, the open lid's top is at 1814 mm (957 mm over the tray), under the header (1829) and the bay's roof (1910); no audited frame has it touching anything, so its 65 deg stays |
+| Carvera, facing (15 movers) | the end mill 25 mm into the steel puck | `r8_prep.cnc` set the spindle for a 12 mm stick-out, but the end mill is drawn 50 mm under its collar: its tip went 37 mm below the puck's top | the tip at the puck's top (`r8_prep.py`) |
+| PX500, every grind (14 movers) | the pistons into the holder | their 29 mm feet in the holder's 30 mm apertures, and the stroke ignored the feet's 4 mm, so they went 4 mm into the mounts | the bores (above), and the stroke 8 mm, not 12: the feet stop on the mounts' backs (`r8_prep.py`) |
+| MX400 (4 movers) | the doser's spout and the falling compound into the closure's pivot knob; the stopper into the closure | the spout passed 14 mm through the pivot knob on its swing, and the compound fell while the chute swung; the closure swung off while the ram was already pushing the stopper up | the chute 6 mm higher with a 12 mm spout (`r8_prep.DOSER`); the chute swings in, pours, stops, swings back; the closure off first, then the ram, as in the video |
+| MX400, the cycle (17 movers) | the loose compound into the stopper and the closure (13); the pressed mount into the coupon (4) | a rigid 55 mm charge rode the ram's 35 mm up; the mount faded in round the coupon while both moved | inside the closed mold (hidden either way) the compound is drawn as the pressed mount from the stroke's start, so mount and coupon ride the ram as one |
+
+The arm's moves in the Holder step, where the holder is turned over by its tab at the back of the MiR, beside the Class
+D unit and 140 mm from the mast, were clear as they were.
+
+| Audit (`VLAB_ONLY_TRAYS=FM`) | fps | Arm | Movers | All |
+|---|---|---|---|---|
+| `alloy_prep_basecams.json` (#364, cameras, no Class D unit, round 13's code) | 15 | 361 of 3539 | | 489 |
+| before this round's fixes (cameras and Class D unit) | 6 | 149 of 1423 | 54 | 199 |
+| the arm's fixes, the lid, the bores, the end mill, the pistons | 6 | **0** of 1430 | 22 | 22 |
+| **final**: also the press's doser, pour, closure and cycle (`ARM_AUDIT_TAG=r15fix_ch6_10fps`) | 10 | **0** of 2379 | **1** | **1** |
+
+The one frame left is the work itself: in the final polish the head lowers the holder onto the cloth, into the 1 um
+alumina drawn on it (`F0_polisher:powder`, a suspension, not a solid). The pistons on the mounts' backs and the end mill
+through the slice's 0.4 mm skin touch by design, within the 1.5 mm the movers check allows.
+
+On screen the build is now "Al-10Si", as the route prints it (chapter 1's charge: 5N Al and Si, topped up with
+AlSi10Mg powder); the older rounds above keep the name they used.
+
+`r8_prep.py`'s changes (the end mill's depth, the pistons' stroke, the doser's height) also show in the tour clips of
+the Carvera, the PX500 and the MX400 (`out/instruments/{cnc,polisher,mount_press}.*`) once they are re-rendered.

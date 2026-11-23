@@ -1,4 +1,4 @@
-"""The alloy route, chapter 6: sample prep. Chapter 5's AlSi10Mg build is sectioned and two specimens are made for
+"""The alloy route, chapter 6: sample prep. Chapter 5's Al-10Si build is sectioned and two specimens are made for
 chapter 7 (#303, PR #318, round 8).
 
     VIZ3D_FPS=6 xvfb-run --server-num=11 -a python3 alloy_prep.py      # -> out/alloy_prep.{gif,json}, out/mp4/alloy_prep.mp4,
@@ -129,12 +129,13 @@ def holder_mesh():
     disc = cq.Workplane("XY").circle(p["d"] / 2).extrude(p["t"])
     for i in range(6):
         a = math.radians(30 + 60 * i)
-        # stepped bore: the mount's diameter up to the mount's back (7 mm in), then a 5 mm ledge with the piston's
-        # aperture. A mount rests on that ledge when the holder is carried face up; nothing clamps it (no set screw)
+        # round 15: a plain bore of the mount's diameter, right through, with a light O-ring that holds a mount either
+        # way up (assumed, as round 9 has it); nothing clamps it (no set screw). Round 9's ledge at the back stopped a
+        # mount loaded face up, but the hot mount goes into the face-down holder from its back and passed through the
+        # ledge (rounds 11-14's audits: 12 mm), and the pistons' feet grazed its 30 mm aperture
         c = (p["r"] * math.cos(a), p["r"] * math.sin(a))
-        disc = disc.cut(cq.Workplane("XY").circle(SP.MOUNT_D / 2 + 0.4).extrude(p["t"] - 5.0 + 1)
+        disc = disc.cut(cq.Workplane("XY").circle(SP.MOUNT_D / 2 + 0.4).extrude(p["t"] + 2)
                         .translate((c[0], c[1], -1)))
-        disc = disc.cut(cq.Workplane("XY").circle(RP.PIST_D / 2 + 2).extrude(p["t"] + 2).translate((c[0], c[1], -1)))
     for ang in (POCKET_STEEL, POCKET_HOT):
         a = math.radians(ang)
         for r0, r1 in ((p["r"] - 32.0, p["r"] - 12.0), (p["r"] + 12.0, p["r"] + 34.0)):
@@ -412,8 +413,8 @@ def movie():
 
     # ------------------------------------------------------------------ 0. the plan, the sectioning
     sc.cam = list(CAM_LAB)
-    status(sc, Build="AlSi10Mg, chapter 5's", Coupon="to cut", Slice="to cut")
-    st["cap"] = ("Chapter 6, sample prep. Chapter 5's AlSi10Mg build gives chapter 7 two specimens: a coupon "
+    status(sc, Build="Al-10Si, chapter 5's", Coupon="to cut", Slice="to cut")
+    st["cap"] = ("Chapter 6, sample prep. Chapter 5's Al-10Si build gives chapter 7 two specimens: a coupon "
                  "hot-mounted in conductive phenolic (SEM/EDS, micro-Vickers), and a slice set in a steel mount "
                  "(nanoindentation and PIP: nothing soft under the sample).")
     sc.step(st["lbl"], st["cap"], 4.5, None, hold=1.0)
@@ -497,8 +498,8 @@ def movie():
     st["lbl"] = "Holder"
     hw = sc.world("p_holder")
     st["cap"] = ("Into the holder, face up: its pocket has slots for the fingertips (ours). The holder's six pockets "
-                 "take 1.5 in mounts, which just sit in them: no set screw, nothing clamps them. A ledge at the back of each "
-                 "bore stops the mount.")
+                 "take 1.5 in mounts, which just sit in them: no set screw, nothing clamps them. A light O-ring in each "
+                 "bore keeps a mount in, either way up (assumed: LECO publishes none).")
     status(sc, Arm="the steel mount into the holder")
     pick("p_steel", vise[2], GRIP_MOUNT, cam=cam_cnc)
     Mh = hw @ R((0, 0, 1), 0.0) @ mount_in_holder(POCKET_STEEL)
@@ -509,10 +510,14 @@ def movie():
     place("p_steel", ctr[:2], fz, "p_holder", spin=-ang, open_to=OPEN_MOUNT, cam=cam_rest(), secs=2.4)
     park(1.4)
     status(sc, Arm="parked", Holder="face up, the steel mount in it")
+    # round 15: the lid shut before the tray goes back. Left open (65 deg, 957 mm tall), it rose into the slot over the
+    # opening and the bay's camera as tray M went in (round 14's audit, 6 frames); presented, it clears the bay's roof
+    st["cap"] = "The Carvera's lid closes."
+    sc.step(st["lbl"], st["cap"], 1.2, cnc.move({"lid": (1.0, 0.0)}), cam_to=cam_cnc, hold=0.1)
     L.store("M", st["lbl"], "Tray M goes back to its slot.", fast=0.45, hold=0.1)
     st["cap"] = ("The arm turns the holder over, by a tab (ours): the steel mount face down now, as the polisher needs "
-                 "it. Free in its hole, it is kept from dropping by a light O-ring grip in the bore (assumed: LECO "
-                 "publishes none), and the holder stays level.")
+                 "it. Free in its hole, it is kept from dropping by the O-ring's light grip, and the holder stays "
+                 "level.")
     Tg = sc.world("p_holder") @ tab_grasp()
     go(along(Tg, -110), secs=1.6, grip=g_open(44.0), cam=cam_rest())
     lin(Tg, 0.7)
@@ -560,8 +565,12 @@ def movie():
     sc.step(st["lbl"], st["cap"], 1.2, press.move({"ram": (1.0, 0.0)}), hold=0.1)
     st["cap"] = ("Conductive phenolic (carbon-filled: the SEM's path to ground), the SOP's 3/4 scoop, from a doser "
                  "(ours) where the video pours it by hand.")
-    sc.step(st["lbl"], st["cap"], 2.2, press.move(pr[5][2]), hold=0.1)
-    sc.step(st["lbl"], st["cap"], 0.9, press.move(pr[6][2]), hold=0.1)
+    # round 15: the chute swings over the mold, pours, stops, swings back (pr[5] and pr[6] pour while it swings: the
+    # falling compound swept through the closure's pivot, round 14's audit)
+    sc.step(st["lbl"], st["cap"], 0.9, press.move({"doser": (1.0, 0.0)}), hold=0.0)
+    sc.step(st["lbl"], st["cap"], 1.3, press.move({"pour": (0.0, 1.0), "charge": (0.0, 1.0)}), hold=0.1)
+    sc.step(st["lbl"], st["cap"], 0.3, press.move({"pour": (1.0, 0.0)}), hold=0.0)
+    sc.step(st["lbl"], st["cap"], 0.9, press.move({"doser": (0.0, 1.0)}), hold=0.1)
     st["cap"] = ("The stopper, green end up as the press's label says: set in the mold's mouth, then pressed down "
                  "onto the compound by the closed fingers (the SOP: an airtight fit).")
     status(sc, Arm="the stopper into the mold")
@@ -577,13 +586,20 @@ def movie():
     sc.step(st["lbl"], st["cap"], 1.2, press.move({"closure": (1.0, 0.0)}), hold=0.1)
     st["cap"] = ("Heating under pressure at the lab's settings on the screen: 300, 4.2, 100, 10:00 (300 F is 149 C, "
                  "4.2 thousand psi is 29 MPa: our reading of the units). The ram presses the loose compound solid.")
-    sc.step(st["lbl"], st["cap"], 3.0, press.move(pr[8][2]), hold=0.1)
+    # round 15: in the closed mold the compound is drawn as the pressed mount from the stroke's start (hidden either
+    # way): a rigid 55 mm charge riding up the ram's 35 mm went through the stopper and the closure (round 14's audit)
+    press.v.update(charge=0.0, mount=1.0)
+    press.apply()
+    sc.step(st["lbl"], st["cap"], 3.0, press.move({"glow": (0.0, 1.0), "ram": (0.0, RP.RAM_PRESSED)}), hold=0.1)
     st["cap"] = "Cooling, then Complete."
     sc.step(st["lbl"], st["cap"], 1.4, press.move(pr[9][2]), hold=0.1)
     # out: the stopper rides up on the mount
     rb.reparent("p_stopper", f"{press.prefix}ram")
     st["cap"] = "Closure off; the ram pushes the mount up out of the mold, the stopper on top."
-    sc.step(st["lbl"], st["cap"], 2.2, press.move({"closure": (0.0, 1.0), "ram": (RP.RAM_PRESSED, 1.0)}), hold=0.2)
+    # round 15: the closure off first, then the ram up, as in the lab's video (together, the stopper rose into the
+    # closure's bar before it had swung clear)
+    sc.step(st["lbl"], st["cap"], 1.0, press.move({"closure": (0.0, 1.0)}), hold=0.0)
+    sc.step(st["lbl"], st["cap"], 1.4, press.move({"ram": (RP.RAM_PRESSED, 1.0)}), hold=0.2)
     # the press's mount and our coupon become one part, the pressed hot mount (r8_specimens), face down on the ram
     ram_w = sc.world(f"{press.prefix}ram")
     Mhot = np.linalg.inv(ram_w) @ T(tuple(mold + (0, 0, SP.FACE_Z + SP.HOT["skin"]))) @ R((1, 0, 0), 180.0)
@@ -667,7 +683,9 @@ def movie():
         return sc.world(group) @ RP.handle_tcp()
     on_platen = f"{pol.prefix}platen"
     mag_body = f"{mag.prefix}body"
-    out_pol, out_mag, lift_pol = 470.0, 360.0, LIFT_POL
+    # round 15: a disc comes 340 mm out from the platen, not 470 (3/8 IK branches clear both ways, PREP_SERVE=polish):
+    # at 470 the wrist stood over the base's left end, and with #364's mast and left camera there no branch was clear
+    out_pol, out_mag, lift_pol = 340.0, 360.0, LIFT_POL
 
     def go_pre(T_pre, segs, secs=1.5, grip=None, cam=None):
         """A joint move to T_pre in an IK branch from which the straight lines that follow (segs, see clear_branch)

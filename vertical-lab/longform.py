@@ -251,8 +251,9 @@ CHAPTERS = [
          card=["Sections cut from the build, hot-mounted in conductive compound for the SEM, or set in a steel mount "
                "for indentation, then ground and polished with every disc change shown, the mounts standing free in the "
                "PX500's holder while its pistons press them down. Automated "
-               "polishing is the hard part, and the chapter says where. Every move re-planned in round 10: the "
-               "PX500's column behind the bowl, the gripper turned over the mold, 0 frames in collision."],
+               "polishing is the hard part, and the chapter says where. Re-planned in round 15 with the MiR250's "
+               "cameras and extinguisher aboard: the discs drawn out 340 mm, not 470, the CNC's lid shut before its "
+               "tray goes back, the mounts in plain bores; the arm in collision in 0 frames."],
          parts=[("mp4", "dag/route_dag_ch6.mp4", None), ("mp4", "alloy_prep.mp4", None)]),
     dict(key="alloy7", title="Alloy route 7/7: characterizing the build",
          card=["The trays come to the opening in turn: the SEM with the mount clamped in its holder, the VHX, "
@@ -1100,7 +1101,7 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
     "hip": "by design: the press drawn through a tray's outline, to show it doesn't fit",
     "setup_lab": "floor machines set down over their utility drops; the control box into its cabinet as it is built",
     "vlm_services": "the dock heads meeting the trays' plates as they mate",
-    "alloy_prep": "mostly the work itself (end mill, pistons, press charge); the CNC's lid into the bay above (6)",
+    "alloy_prep": "the work itself: the holder lowered into the alumina on the cloth",
     "alloy_workflow": "the plate 6 mm into the depowdering box's rotor for one frame",
     "vlm_workflow": "by design: the holder grips its vial (round 11)",
     "cubxl_corrosion": "the work itself: the pipette tip into its well",

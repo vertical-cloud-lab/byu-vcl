@@ -1622,8 +1622,10 @@ def movie_services(data, idata):
         set_dock(sc, slot, max(0.0, (u - 0.35) / 0.65))
         L.apply_state()
     lines_(f"in {slot}, releasing", f"carrying the tray, about {load_w:.0f} W", "pulling back", "pulled back, waiting")
-    sc.step(f"3/{n}", "To let it go: the air, N2 and water supplies close and vent (the couplings must not part under "
-            f"pressure), the tray's UPS takes the load, and the dock pulls back {STROKE:.0f} mm, clear of the tray.", 2.8,
+    # round 15: the same order as the coupling's close-up (coupling.py, notes/coupling.md): contactor, then valves
+    sc.step(f"3/{n}", "To let it go: the contactor opens and the tray's UPS takes the load, the air, N2 and water "
+            "supplies close and vent (the couplings must not part under pressure), and the dock pulls back "
+            f"{STROKE:.0f} mm, clear of the tray.", 2.8,
             release, hold=1.2, labels=[("UPS takes over", (UPS_AT[0], yc + UPS_AT[1], zs + UPS["h"]), (0.84, 0.55)),
                                        (f"dock pulled back {STROKE:.0f} mm", (1290, wy, wz), (0.84, 0.30))])
     hide(sc, cut, 1.0)
@@ -1831,8 +1833,8 @@ def movie_hookups(data, idata):
             ("UPS: on battery", (UPS_AT[0] - 80, yc + UPS_AT[1], zs + V.T_FLOOR + UPS["h"]), (0.10, 0.20)),
             (f"dock pulls back {STROKE:.0f} mm", at_slot(X_FACE + 40, PLATE_Y + 70, PLATE_Z0 + PLATE_H),
              (0.88, 0.52))]
-    sc.step(f"3/{n}", "Before the tray may move: the air, N2 and water valves shut and their lines vent (Staubli: the "
-            "couplings must not part under pressure); the contactor opens, so the UPS takes the load; then the dock "
+    sc.step(f"3/{n}", "Before the tray may move: the contactor opens, so the UPS takes the load; the air, N2 and water "
+            "valves shut and their lines vent (Staubli: the couplings must not part under pressure); then the dock "
             f"pulls back {STROKE:.0f} mm, its pins {CP.clear_mm()['gap_to_tray_side_pulled_back_mm']:.0f} mm clear of "
             "the tray.", 4.6, release, hold=1.6, labels=lbl3,
             live=True)
