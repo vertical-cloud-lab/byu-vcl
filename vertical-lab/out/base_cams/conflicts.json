@@ -1,0 +1,561 @@
+{
+ "method": "frames in which a point of the arm's drawn surface (links, 2F-85 and D405, one point per 6 mm voxel) falls within the margin of a camera part's surface (4 mm voxels), in the frame of the MiR the arm rides on; per clip and part. Held parts are not included",
+ "margins_mm": [
+  0.0,
+  25.0
+ ],
+ "clips": {
+  "alloy_atomize": {
+   "arm_frames": 4606,
+   "hits": {
+    "amr cam M post <= 0 mm": 39,
+    "amr cam M post <= 25 mm": 50,
+    "amr cam M cable <= 0 mm": 1,
+    "amr cam M cable <= 25 mm": 42,
+    "amr cam L post <= 0 mm": 8,
+    "amr cam L post <= 25 mm": 19,
+    "amr cam L box <= 0 mm": 17,
+    "amr cam L box <= 25 mm": 32,
+    "amr cam L lens <= 0 mm": 16,
+    "amr cam L lens <= 25 mm": 31,
+    "amr cam L cable <= 25 mm": 25
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "ur",
+     624
+    ],
+    "amr cam M post <= 25 mm": [
+     "ur",
+     621
+    ],
+    "amr cam M cable <= 25 mm": [
+     "ur",
+     624
+    ],
+    "amr cam L post <= 0 mm": [
+     "ur",
+     570
+    ],
+    "amr cam L post <= 25 mm": [
+     "ur",
+     567
+    ],
+    "amr cam L box <= 0 mm": [
+     "ur",
+     568
+    ],
+    "amr cam L box <= 25 mm": [
+     "ur",
+     564
+    ],
+    "amr cam L lens <= 0 mm": [
+     "ur",
+     569
+    ],
+    "amr cam L lens <= 25 mm": [
+     "ur",
+     565
+    ],
+    "amr cam L cable <= 25 mm": [
+     "ur",
+     566
+    ],
+    "amr cam M cable <= 0 mm": [
+     "ur",
+     2345
+    ]
+   }
+  },
+  "alloy_characterize": {
+   "arm_frames": 3198,
+   "hits": {
+    "amr cam M post <= 0 mm": 51,
+    "amr cam M post <= 25 mm": 81,
+    "amr cam M cable <= 0 mm": 39,
+    "amr cam M cable <= 25 mm": 64,
+    "amr cam M box <= 0 mm": 10,
+    "amr cam M box <= 25 mm": 14,
+    "amr cam M lens <= 0 mm": 4,
+    "amr cam M lens <= 25 mm": 9,
+    "amr cam R box <= 25 mm": 6
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "unit0ur",
+     256
+    ],
+    "amr cam M post <= 25 mm": [
+     "unit0ur",
+     255
+    ],
+    "amr cam M cable <= 0 mm": [
+     "unit0ur",
+     256
+    ],
+    "amr cam M cable <= 25 mm": [
+     "unit0ur",
+     255
+    ],
+    "amr cam M box <= 0 mm": [
+     "unit0ur",
+     380
+    ],
+    "amr cam M box <= 25 mm": [
+     "unit0ur",
+     380
+    ],
+    "amr cam M lens <= 25 mm": [
+     "unit0ur",
+     380
+    ],
+    "amr cam R box <= 25 mm": [
+     "unit0ur",
+     1011
+    ],
+    "amr cam M lens <= 0 mm": [
+     "unit0ur",
+     1124
+    ]
+   }
+  },
+  "alloy_charge": {
+   "arm_frames": 2699,
+   "hits": {
+    "amr cam M post <= 0 mm": 15,
+    "amr cam M post <= 25 mm": 32,
+    "amr cam M cable <= 0 mm": 11,
+    "amr cam M cable <= 25 mm": 19,
+    "amr cam L box <= 0 mm": 15,
+    "amr cam L box <= 25 mm": 24,
+    "amr cam L cable <= 0 mm": 9,
+    "amr cam L cable <= 25 mm": 23,
+    "amr cam L post <= 0 mm": 10,
+    "amr cam L post <= 25 mm": 23,
+    "amr cam L lens <= 0 mm": 1,
+    "amr cam L lens <= 25 mm": 16
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "ur",
+     363
+    ],
+    "amr cam M post <= 25 mm": [
+     "ur",
+     363
+    ],
+    "amr cam M cable <= 0 mm": [
+     "ur",
+     363
+    ],
+    "amr cam M cable <= 25 mm": [
+     "ur",
+     363
+    ],
+    "amr cam L box <= 0 mm": [
+     "ur",
+     1586
+    ],
+    "amr cam L box <= 25 mm": [
+     "ur",
+     1582
+    ],
+    "amr cam L cable <= 0 mm": [
+     "ur",
+     1587
+    ],
+    "amr cam L cable <= 25 mm": [
+     "ur",
+     1583
+    ],
+    "amr cam L post <= 0 mm": [
+     "ur",
+     1595
+    ],
+    "amr cam L post <= 25 mm": [
+     "ur",
+     1583
+    ],
+    "amr cam L lens <= 0 mm": [
+     "ur",
+     1587
+    ],
+    "amr cam L lens <= 25 mm": [
+     "ur",
+     1584
+    ]
+   }
+  },
+  "alloy_powder": {
+   "arm_frames": 2625,
+   "hits": {
+    "amr cam M post <= 0 mm": 29,
+    "amr cam M post <= 25 mm": 131,
+    "amr cam M cable <= 0 mm": 20,
+    "amr cam M cable <= 25 mm": 41,
+    "amr cam L cable <= 25 mm": 74,
+    "amr cam L post <= 25 mm": 66,
+    "amr cam L box <= 25 mm": 100,
+    "amr cam L lens <= 25 mm": 30
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "unit0ur",
+     288
+    ],
+    "amr cam M post <= 25 mm": [
+     "unit0ur",
+     262
+    ],
+    "amr cam M cable <= 0 mm": [
+     "unit0ur",
+     288
+    ],
+    "amr cam M cable <= 25 mm": [
+     "unit0ur",
+     287
+    ],
+    "amr cam L cable <= 25 mm": [
+     "unit0ur",
+     262
+    ],
+    "amr cam L post <= 25 mm": [
+     "unit0ur",
+     261
+    ],
+    "amr cam L box <= 25 mm": [
+     "unit0ur",
+     250
+    ],
+    "amr cam L lens <= 25 mm": [
+     "unit0ur",
+     277
+    ]
+   }
+  },
+  "alloy_prep": {
+   "arm_frames": 7078,
+   "hits": {
+    "amr cam M post <= 0 mm": 65,
+    "amr cam M post <= 25 mm": 102,
+    "amr cam M cable <= 0 mm": 34,
+    "amr cam M cable <= 25 mm": 75,
+    "amr cam L box <= 25 mm": 1
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "unit0ur",
+     892
+    ],
+    "amr cam M post <= 25 mm": [
+     "unit0ur",
+     891
+    ],
+    "amr cam M cable <= 25 mm": [
+     "unit0ur",
+     892
+    ],
+    "amr cam L box <= 25 mm": [
+     "unit0ur",
+     2134
+    ],
+    "amr cam M cable <= 0 mm": [
+     "unit0ur",
+     2261
+    ]
+   }
+  },
+  "alloy_print": {
+   "arm_frames": 3410,
+   "hits": {
+    "amr cam M post <= 0 mm": 16,
+    "amr cam M post <= 25 mm": 24,
+    "amr cam M cable <= 0 mm": 13,
+    "amr cam M cable <= 25 mm": 20,
+    "amr cam M box <= 0 mm": 2,
+    "amr cam M box <= 25 mm": 3,
+    "amr cam M lens <= 25 mm": 2
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "ur",
+     2174
+    ],
+    "amr cam M post <= 25 mm": [
+     "ur",
+     2173
+    ],
+    "amr cam M cable <= 25 mm": [
+     "ur",
+     2174
+    ],
+    "amr cam M cable <= 0 mm": [
+     "ur",
+     3125
+    ],
+    "amr cam M box <= 0 mm": [
+     "ur",
+     3127
+    ],
+    "amr cam M box <= 25 mm": [
+     "ur",
+     3127
+    ],
+    "amr cam M lens <= 25 mm": [
+     "ur",
+     3127
+    ]
+   }
+  },
+  "alloy_workflow": {
+   "arm_frames": 10498,
+   "hits": {
+    "amr cam M post <= 0 mm": 179,
+    "amr cam M post <= 25 mm": 549,
+    "amr cam M cable <= 0 mm": 156,
+    "amr cam M cable <= 25 mm": 192,
+    "amr cam M box <= 25 mm": 3
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "unit0ur",
+     184
+    ],
+    "amr cam M post <= 25 mm": [
+     "unit0ur",
+     183
+    ],
+    "amr cam M cable <= 25 mm": [
+     "unit0ur",
+     183
+    ],
+    "amr cam M cable <= 0 mm": [
+     "unit0ur",
+     601
+    ],
+    "amr cam M box <= 25 mm": [
+     "unit0ur",
+     694
+    ]
+   }
+  },
+  "animate_workflow": {
+   "arm_frames": 2892,
+   "hits": {},
+   "first": {}
+  },
+  "atom_bn": {
+   "arm_frames": 2250,
+   "hits": {
+    "amr cam M post <= 0 mm": 3,
+    "amr cam M post <= 25 mm": 4,
+    "amr cam M cable <= 0 mm": 2,
+    "amr cam M cable <= 25 mm": 4,
+    "amr cam R box <= 25 mm": 10
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "ur",
+     125
+    ],
+    "amr cam M post <= 25 mm": [
+     "ur",
+     125
+    ],
+    "amr cam M cable <= 0 mm": [
+     "ur",
+     126
+    ],
+    "amr cam M cable <= 25 mm": [
+     "ur",
+     125
+    ],
+    "amr cam R box <= 25 mm": [
+     "ur",
+     152
+    ]
+   }
+  },
+  "atom_container": {
+   "arm_frames": 1152,
+   "hits": {
+    "amr cam M post <= 0 mm": 3,
+    "amr cam M post <= 25 mm": 10,
+    "amr cam M cable <= 0 mm": 1,
+    "amr cam M cable <= 25 mm": 5
+   },
+   "first": {
+    "amr cam M post <= 25 mm": [
+     "ur",
+     135
+    ],
+    "amr cam M cable <= 25 mm": [
+     "ur",
+     137
+    ],
+    "amr cam M post <= 0 mm": [
+     "ur",
+     510
+    ],
+    "amr cam M cable <= 0 mm": [
+     "ur",
+     511
+    ]
+   }
+  },
+  "atom_crucible_in": {
+   "arm_frames": 4008,
+   "hits": {
+    "amr cam M post <= 0 mm": 6,
+    "amr cam M post <= 25 mm": 8,
+    "amr cam M cable <= 0 mm": 4,
+    "amr cam M cable <= 25 mm": 6
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "ur",
+     16
+    ],
+    "amr cam M post <= 25 mm": [
+     "ur",
+     15
+    ],
+    "amr cam M cable <= 0 mm": [
+     "ur",
+     16
+    ],
+    "amr cam M cable <= 25 mm": [
+     "ur",
+     16
+    ]
+   }
+  },
+  "atom_crucible_out": {
+   "arm_frames": 3040,
+   "hits": {
+    "amr cam M post <= 0 mm": 8,
+    "amr cam M post <= 25 mm": 17,
+    "amr cam M box <= 0 mm": 3,
+    "amr cam M box <= 25 mm": 10,
+    "amr cam M lens <= 25 mm": 1,
+    "amr cam M cable <= 0 mm": 6,
+    "amr cam M cable <= 25 mm": 11
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "ur",
+     1295
+    ],
+    "amr cam M post <= 25 mm": [
+     "ur",
+     1294
+    ],
+    "amr cam M box <= 0 mm": [
+     "ur",
+     1294
+    ],
+    "amr cam M box <= 25 mm": [
+     "ur",
+     1293
+    ],
+    "amr cam M lens <= 25 mm": [
+     "ur",
+     1294
+    ],
+    "amr cam M cable <= 0 mm": [
+     "ur",
+     1295
+    ],
+    "amr cam M cable <= 25 mm": [
+     "ur",
+     1294
+    ]
+   }
+  },
+  "atom_latch": {
+   "arm_frames": 2520,
+   "hits": {
+    "amr cam M post <= 0 mm": 5,
+    "amr cam M post <= 25 mm": 18,
+    "amr cam M cable <= 25 mm": 10
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "urB",
+     127
+    ],
+    "amr cam M post <= 25 mm": [
+     "urB",
+     125
+    ],
+    "amr cam M cable <= 25 mm": [
+     "urB",
+     126
+    ]
+   }
+  },
+  "atom_plate": {
+   "arm_frames": 4292,
+   "hits": {
+    "amr cam M post <= 25 mm": 1
+   },
+   "first": {
+    "amr cam M post <= 25 mm": [
+     "urB",
+     1284
+    ]
+   }
+  },
+  "atom_vacuum": {
+   "arm_frames": 3564,
+   "hits": {
+    "amr cam M post <= 0 mm": 1,
+    "amr cam M post <= 25 mm": 7,
+    "amr cam M cable <= 25 mm": 4
+   },
+   "first": {
+    "amr cam M post <= 0 mm": [
+     "urB",
+     345
+    ],
+    "amr cam M post <= 25 mm": [
+     "urB",
+     341
+    ],
+    "amr cam M cable <= 25 mm": [
+     "urB",
+     343
+    ]
+   }
+  },
+  "services_baycam": {
+   "arm_frames": 337,
+   "hits": {},
+   "first": {}
+  },
+  "upkeep_clip": {
+   "arm_frames": 1491,
+   "hits": {},
+   "first": {}
+  }
+ },
+ "total": {
+  "amr cam M post <= 0 mm": 420,
+  "amr cam M post <= 25 mm": 1034,
+  "amr cam M cable <= 0 mm": 287,
+  "amr cam M cable <= 25 mm": 493,
+  "amr cam L post <= 0 mm": 18,
+  "amr cam L post <= 25 mm": 108,
+  "amr cam L box <= 0 mm": 32,
+  "amr cam L box <= 25 mm": 157,
+  "amr cam L lens <= 0 mm": 17,
+  "amr cam L lens <= 25 mm": 77,
+  "amr cam L cable <= 25 mm": 122,
+  "amr cam M box <= 0 mm": 15,
+  "amr cam M box <= 25 mm": 30,
+  "amr cam M lens <= 0 mm": 4,
+  "amr cam M lens <= 25 mm": 12,
+  "amr cam R box <= 25 mm": 16,
+  "amr cam L cable <= 0 mm": 9
+ }
+}

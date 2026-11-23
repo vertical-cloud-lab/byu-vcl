@@ -1,0 +1,23 @@
+{
+ "script": "atom_latch.py",
+ "args": [],
+ "seconds": 34.5,
+ "arms": {
+  "atom_latch:ur": {
+   "scene": "atom_latch",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  },
+  "atom_latch:urB": {
+   "scene": "atom_latch",
+   "prefix": "urB",
+   "model": "ur10e",
+   "mir_group": "amrB"
+  }
+ },
+ "frames": {
+  "atom_latch:ur": 1260,
+  "atom_latch:urB": 1260
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "script": "atom_crucible.py",
+ "args": [
+  "out"
+ ],
+ "seconds": 29.4,
+ "arms": {
+  "atom_crucible_out:ur": {
+   "scene": "atom_crucible_out",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  },
+  "atom_crucible_out:urB": {
+   "scene": "atom_crucible_out",
+   "prefix": "urB",
+   "model": "ur10e",
+   "mir_group": "amrB"
+  }
+ },
+ "frames": {
+  "atom_crucible_out:ur": 1520,
+  "atom_crucible_out:urB": 1520
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "script": "atom_plate.py",
+ "args": [],
+ "seconds": 40.8,
+ "arms": {
+  "atom_plate:ur": {
+   "scene": "atom_plate",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  },
+  "atom_plate:urB": {
+   "scene": "atom_plate",
+   "prefix": "urB",
+   "model": "ur10e",
+   "mir_group": "amrB"
+  }
+ },
+ "frames": {
+  "atom_plate:ur": 2146,
+  "atom_plate:urB": 2146
+ }
+}

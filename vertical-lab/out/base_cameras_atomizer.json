@@ -1,0 +1,59 @@
+{
+ "name": "base_cameras_atomizer",
+ "fps": 10,
+ "n_frames": 212,
+ "size": [
+  1920,
+  1080
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "The same base parked at the rePowder's front: the cameras ride with it, so the views are the same relative to the arm at every station, which is what a learned policy or a calibration needs (robot-arms PR 40: a new camera position was the hardest change for policies to cope with).",
+   "start_frame": 0,
+   "end_frame": 59
+  },
+  {
+   "label": "2/5",
+   "caption": "The mast camera: the arm reaching to the chamber's viewport, the furnace and the lid above it, from outside the arm. Nothing at this station watches the arm itself: the rePowder's own cameras look at the melt and the stream.",
+   "start_frame": 60,
+   "end_frame": 77
+  },
+  {
+   "label": "2/5",
+   "caption": "The mast camera: the arm reaching to the chamber's viewport, the furnace and the lid above it, from outside the arm. Nothing at this station watches the arm itself: the rePowder's own cameras look at the melt and the stream.",
+   "start_frame": 78,
+   "end_frame": 103
+  },
+  {
+   "label": "3/5",
+   "caption": "The left side camera: the chamber's front, the latch and the viewport, and the gripper as it comes in, from low and to the left.",
+   "start_frame": 104,
+   "end_frame": 121
+  },
+  {
+   "label": "3/5",
+   "caption": "The left side camera: the chamber's front, the latch and the viewport, and the gripper as it comes in, from low and to the left.",
+   "start_frame": 122,
+   "end_frame": 139
+  },
+  {
+   "label": "4/5",
+   "caption": "The right side camera: the same work from the right, the base's footprint and the floor in front of the machine, where spilled powder would show.",
+   "start_frame": 140,
+   "end_frame": 157
+  },
+  {
+   "label": "4/5",
+   "caption": "The right side camera: the same work from the right, the base's footprint and the floor in front of the machine, where spilled powder would show.",
+   "start_frame": 158,
+   "end_frame": 171
+  },
+  {
+   "label": "5/5",
+   "caption": "Back out: the arm goes home. Each camera's frames are timestamped on its Pi, and every Pi is on the base's own switch, so the three pictures and the arm's log line up afterwards.",
+   "start_frame": 172,
+   "end_frame": 211
+  }
+ ]
+}

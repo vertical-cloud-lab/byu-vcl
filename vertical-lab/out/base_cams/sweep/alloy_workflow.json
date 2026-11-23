@@ -1,0 +1,23 @@
+{
+ "script": "alloy_workflow.py",
+ "args": [],
+ "seconds": 367.3,
+ "arms": {
+  "alloy_workflow:unit0ur": {
+   "scene": "alloy_workflow",
+   "prefix": "unit0ur",
+   "model": "ur10e",
+   "mir_group": "unit0_cab"
+  },
+  "alloy_workflow:unit1ur": {
+   "scene": "alloy_workflow",
+   "prefix": "unit1ur",
+   "model": "ur10e",
+   "mir_group": "unit1_cab"
+  }
+ },
+ "frames": {
+  "alloy_workflow:unit0ur": 5249,
+  "alloy_workflow:unit1ur": 5249
+ }
+}

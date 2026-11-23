@@ -636,7 +636,8 @@ def path_hits(chk: Checker, path, close, world=None, allow=None) -> list[tuple[i
     return out
 
 
-def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 2500, step: float = 0.35):
+def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 2500, step: float = 0.35,
+                    retry: bool = True):
     """A collision-free joint path [q0, ..., q1] (list of arrays), or None. The straight line if it is clear,
     otherwise RRT-Connect, shortcut. What the gripper or the held part touches at either end is allowed throughout."""
     q0, q1 = np.asarray(q0, float), np.asarray(q1, float)
@@ -705,6 +706,14 @@ def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 250
                 return path, dict(planned=True, iterations=it + 1, nodes=len(A) + len(B), waypoints=len(path))
         A, pa, B, pb = B, pb, A, pa
         swapped = not swapped
+    if retry:
+        # #364: one more try, three times as long and from another seed, before the move falls back to the straight
+        # joint line. The base cameras' mast narrows some ways round over the cabinet's back-left corner, and a
+        # 2,500-iteration search missed one in chapter 3
+        got, info = plan_joint_move(chk, q0, q1, close, seed=seed + 7919, iters=3 * iters, step=step, retry=False)
+        if got is not None:
+            return got, dict(info, retried=True)
+        return None, dict(reason=f"no path in {iters} iterations, nor in {3 * iters} more")
     return None, dict(reason=f"no path in {iters} iterations")
 
 
@@ -1308,12 +1317,16 @@ class Auditor:
                 pk = (d_["arm"], d_["kind"], d_["part"], d_["other_group"] or d_["other"])
                 if d_["depth_mm"] is not None:
                     runs[-1]["_depth"][pk] = max(runs[-1]["_depth"].get(pk, 0.0), d_["depth_mm"])
+                runs[-1].setdefault("_bodies", set()).add(d_["other"])
             last = key
         for r in runs:
             key, dep = r.pop("_key"), r.pop("_depth")
             r["pairs"] = [dict(arm=a, kind=k, part=pt, other=o, **({"depth_mm": dep[(a, k, pt, o)]}
                                                                   if (a, k, pt, o) in dep else {}))
                           for a, k, pt, o in key]
+            # #364: the touched bodies' own names (the pairs give their groups: "amr" for any part of a MiR, the base
+            # cameras included)
+            r["bodies"] = sorted(str(b) for b in r.pop("_bodies", ()))[:16]
         n_bad = sum(r["frames"] for r in runs)
         rep = dict(clip=sc.name, frames_checked=len(self.frames), frames_with_collisions=n_bad,
                    runs=runs, rules=" ".join(self.__doc__.split("\n\n", 1)[1].split()),

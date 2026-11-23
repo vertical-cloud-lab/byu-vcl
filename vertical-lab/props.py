@@ -13,6 +13,8 @@
 from __future__ import annotations
 
 import math
+import os
+import sys
 
 import numpy as np
 import pyvista as pv
@@ -129,7 +131,7 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
         door = pv.Box(bounds=(L / 2 - 40, L / 2 - 38, -W / 2 + 70, W / 2 - 70, H + 40, H + CAB_H - 40)).triangulate()
     estop = pv.Cylinder(center=(L / 2 - 90, -W / 2 + 60, AMR_TOP + 15), direction=(0, 0, 1), radius=20,
                         height=30).triangulate()
-    out = {
+    parts = {
         "amr body": (body.merge(skirt), (0.22, 0.23, 0.25)),
         "amr cover": (cover, (0.80, 0.81, 0.83)),
         "amr light band": (band, (0.55, 0.85, 1.00)),
@@ -138,12 +140,14 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
         "amr e-stop": (estop, (0.85, 0.12, 0.10)),
     }
     # the safety PR (Sterling, PR #318, 2026-11-20: "a class D fire extinguisher mounted at all times to the MiR250
-    # and available for use"): the Amerex B570 in an 811 vehicle bracket on the cabinet's back end (safety.py,
+    # and available for use"): the Amerex B570 in an 811 vehicle bracket on the cabinet (safety.py,
     # notes/safety.md); VLAB_MIR_CLASS_D=0 leaves it off
     import safety
     if safety.CLASS_D_ON_MIR:
-        out.update({f"amr {k}": v for k, v in safety.mir_meshes().items()})
-    return out
+        parts.update({f"amr {k}": v for k, v in safety.mir_meshes().items()})
+    if BASE_CAMS_ON:                 # #364: the three base cameras, so every clip that draws a MiR250 draws them
+        parts.update(base_camera_parts())
+    return parts
 
 
 # The MiR's intermediary storage (byu-vcl PR #318, round 7). Sterling: "There's no insertion gap for the

@@ -1,0 +1,7951 @@
+{
+ "clip": "alloy_atomize",
+ "frames_checked": 2303,
+ "frames_with_collisions": 184,
+ "runs": [
+  {
+   "label": "2/5",
+   "first_frame": 396,
+   "last_frame": 396,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 397,
+   "last_frame": 401,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 402,
+   "last_frame": 402,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 403,
+   "last_frame": 403,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 404,
+   "last_frame": 408,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 409,
+   "last_frame": 409,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 410,
+   "last_frame": 412,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 413,
+   "last_frame": 413,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 414,
+   "last_frame": 415,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 416,
+   "last_frame": 416,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 417,
+   "last_frame": 417,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 418,
+   "last_frame": 418,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 419,
+   "last_frame": 419,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 420,
+   "last_frame": 420,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 421,
+   "last_frame": 423,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 424,
+   "last_frame": 424,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 425,
+   "last_frame": 428,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 429,
+   "last_frame": 429,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate",
+    "wrist3"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 430,
+   "last_frame": 430,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate",
+    "wrist3"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 431,
+   "last_frame": 431,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate",
+    "wrist3"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 432,
+   "last_frame": 432,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate",
+    "wrist3"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 433,
+   "last_frame": 433,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 434,
+   "last_frame": 434,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 435,
+   "last_frame": 437,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 438,
+   "last_frame": 438,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 439,
+   "last_frame": 443,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 444,
+   "last_frame": 444,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 445,
+   "last_frame": 445,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 446,
+   "last_frame": 450,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 451,
+   "last_frame": 451,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 452,
+   "last_frame": 454,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 455,
+   "last_frame": 460,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 461,
+   "last_frame": 461,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 462,
+   "last_frame": 462,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_hinge_leaf"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 463,
+   "last_frame": 463,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_hinge_leaf"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 464,
+   "last_frame": 464,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 465,
+   "last_frame": 465,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 466,
+   "last_frame": 466,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 467,
+   "last_frame": 467,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:static"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:hood"
+    }
+   ],
+   "bodies": [
+    "cabinet",
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 468,
+   "last_frame": 468,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:hood"
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 469,
+   "last_frame": 469,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:hood"
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 470,
+   "last_frame": 470,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:static"
+    }
+   ],
+   "bodies": [
+    "cabinet"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 568,
+   "last_frame": 569,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "amr",
+     "depth_mm": 12.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam L box"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 570,
+   "last_frame": 575,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "amr",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "amr",
+     "depth_mm": 25.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam L box",
+    "amr/amr cam L lens"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 576,
+   "last_frame": 576,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "amr",
+     "depth_mm": 3.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam L box"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 612,
+   "last_frame": 612,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:tong_a",
+     "other": "amr",
+     "depth_mm": 3.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam L box"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 626,
+   "last_frame": 658,
+   "frames": 29,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "amr",
+     "depth_mm": 6.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam M post"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 684,
+   "last_frame": 684,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup0",
+     "other": "rp:rod",
+     "depth_mm": 6.0
+    }
+   ],
+   "bodies": [
+    "rod_adapter"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 816,
+   "last_frame": 816,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup1",
+     "other": "rp:rod",
+     "depth_mm": 6.0
+    }
+   ],
+   "bodies": [
+    "rod_adapter"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1137,
+   "last_frame": 1137,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "amr",
+     "depth_mm": 3.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam L box"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1138,
+   "last_frame": 1143,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "amr",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "amr",
+     "depth_mm": 25.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam L box",
+    "amr/amr cam L lens"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1144,
+   "last_frame": 1144,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "amr",
+     "depth_mm": 6.0
+    }
+   ],
+   "bodies": [
+    "amr/amr cam L box"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1298,
+   "last_frame": 1298,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:static"
+    }
+   ],
+   "bodies": [
+    "cabinet"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1300,
+   "last_frame": 1300,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:hood"
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1301,
+   "last_frame": 1301,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:static"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:hood"
+    }
+   ],
+   "bodies": [
+    "cabinet",
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1302,
+   "last_frame": 1302,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:hood"
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1303,
+   "last_frame": 1303,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1304,
+   "last_frame": 1304,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1305,
+   "last_frame": 1305,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1306,
+   "last_frame": 1306,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1307,
+   "last_frame": 1307,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 50.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_hinge_leaf"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1308,
+   "last_frame": 1308,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1309,
+   "last_frame": 1315,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1316,
+   "last_frame": 1318,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1319,
+   "last_frame": 1319,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1320,
+   "last_frame": 1324,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1325,
+   "last_frame": 1325,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1326,
+   "last_frame": 1326,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1327,
+   "last_frame": 1331,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1332,
+   "last_frame": 1332,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1333,
+   "last_frame": 1334,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1335,
+   "last_frame": 1336,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1337,
+   "last_frame": 1337,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1338,
+   "last_frame": 1338,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate",
+    "wrist3"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1339,
+   "last_frame": 1339,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate",
+    "wrist3"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1340,
+   "last_frame": 1340,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate",
+    "wrist3"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1341,
+   "last_frame": 1341,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1342,
+   "last_frame": 1342,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "hood#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1343,
+   "last_frame": 1343,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1344,
+   "last_frame": 1344,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "rp:hood"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ],
+   "bodies": [
+    "gripper",
+    "hood",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1345,
+   "last_frame": 1345,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1346,
+   "last_frame": 1346,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1347,
+   "last_frame": 1347,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1348,
+   "last_frame": 1348,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1349,
+   "last_frame": 1349,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1350,
+   "last_frame": 1350,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1351,
+   "last_frame": 1351,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 25.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1352,
+   "last_frame": 1352,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1353,
+   "last_frame": 1353,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1354,
+   "last_frame": 1355,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1356,
+   "last_frame": 1357,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1358,
+   "last_frame": 1358,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1359,
+   "last_frame": 1363,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1364,
+   "last_frame": 1364,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "rp:knob",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 0.3
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "hood",
+    "hood_knob",
+    "hood_knob#cut",
+    "w:hood",
+    "w:hood_knob",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1365,
+   "last_frame": 1365,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1366,
+   "last_frame": 1369,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "rp:hood",
+     "depth_mm": 12.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 3.0
+    }
+   ],
+   "bodies": [
+    "hood",
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 1370,
+   "last_frame": 1370,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "rp:hood",
+     "depth_mm": 1.5
+    }
+   ],
+   "bodies": [
+    "w:hood",
+    "w:hood_window_plate"
+   ]
+  }
+ ],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 166,
+ "fps": 15,
+ "arm_seconds": 28.6,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 2303,
+  "frames_moving": 878,
+  "frames_with_collisions": 191,
+  "runs": [
+   {
+    "label": "4/5",
+    "first_frame": 2013,
+    "last_frame": 2013,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:stream",
+      "body": "stream",
+      "other": "plate",
+      "other_group": "rp:plate",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:stream",
+      "body": "stream",
+      "other": "film",
+      "other_group": "rp:film",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2014,
+    "last_frame": 2014,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2015,
+    "last_frame": 2015,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2016,
+    "last_frame": 2016,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2017,
+    "last_frame": 2017,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2018,
+    "last_frame": 2018,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2019,
+    "last_frame": 2019,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2020,
+    "last_frame": 2020,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2021,
+    "last_frame": 2021,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2022,
+    "last_frame": 2022,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2023,
+    "last_frame": 2023,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2024,
+    "last_frame": 2024,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2025,
+    "last_frame": 2025,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2026,
+    "last_frame": 2026,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2027,
+    "last_frame": 2027,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2028,
+    "last_frame": 2028,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2029,
+    "last_frame": 2029,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2030,
+    "last_frame": 2030,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2031,
+    "last_frame": 2031,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2032,
+    "last_frame": 2032,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2033,
+    "last_frame": 2033,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2034,
+    "last_frame": 2034,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2035,
+    "last_frame": 2035,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2036,
+    "last_frame": 2036,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2037,
+    "last_frame": 2037,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2038,
+    "last_frame": 2038,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2039,
+    "last_frame": 2039,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2040,
+    "last_frame": 2040,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2041,
+    "last_frame": 2041,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2042,
+    "last_frame": 2042,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2043,
+    "last_frame": 2043,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2044,
+    "last_frame": 2044,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2045,
+    "last_frame": 2045,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2046,
+    "last_frame": 2046,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2047,
+    "last_frame": 2047,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2048,
+    "last_frame": 2048,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2049,
+    "last_frame": 2049,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2050,
+    "last_frame": 2050,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2051,
+    "last_frame": 2051,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2052,
+    "last_frame": 2052,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2053,
+    "last_frame": 2053,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2054,
+    "last_frame": 2054,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2055,
+    "last_frame": 2055,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2056,
+    "last_frame": 2056,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2057,
+    "last_frame": 2057,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2058,
+    "last_frame": 2058,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2059,
+    "last_frame": 2059,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2060,
+    "last_frame": 2060,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2061,
+    "last_frame": 2061,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2062,
+    "last_frame": 2062,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2063,
+    "last_frame": 2063,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2064,
+    "last_frame": 2064,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2065,
+    "last_frame": 2065,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2066,
+    "last_frame": 2066,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2067,
+    "last_frame": 2067,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2068,
+    "last_frame": 2068,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2069,
+    "last_frame": 2069,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2070,
+    "last_frame": 2070,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2071,
+    "last_frame": 2071,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2072,
+    "last_frame": 2072,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2073,
+    "last_frame": 2073,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2074,
+    "last_frame": 2074,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2075,
+    "last_frame": 2075,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2076,
+    "last_frame": 2076,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2077,
+    "last_frame": 2077,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2078,
+    "last_frame": 2078,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2079,
+    "last_frame": 2079,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2080,
+    "last_frame": 2080,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2081,
+    "last_frame": 2081,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2082,
+    "last_frame": 2082,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2083,
+    "last_frame": 2083,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2084,
+    "last_frame": 2084,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2085,
+    "last_frame": 2085,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2086,
+    "last_frame": 2086,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2087,
+    "last_frame": 2087,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2088,
+    "last_frame": 2088,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2089,
+    "last_frame": 2089,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2090,
+    "last_frame": 2090,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2091,
+    "last_frame": 2091,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2092,
+    "last_frame": 2092,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2093,
+    "last_frame": 2093,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2094,
+    "last_frame": 2094,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2095,
+    "last_frame": 2095,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2096,
+    "last_frame": 2096,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2097,
+    "last_frame": 2097,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2098,
+    "last_frame": 2098,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2099,
+    "last_frame": 2099,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2100,
+    "last_frame": 2100,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2101,
+    "last_frame": 2101,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2102,
+    "last_frame": 2102,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2103,
+    "last_frame": 2103,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2104,
+    "last_frame": 2104,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2105,
+    "last_frame": 2105,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2106,
+    "last_frame": 2106,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2107,
+    "last_frame": 2107,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2108,
+    "last_frame": 2108,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2109,
+    "last_frame": 2109,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2110,
+    "last_frame": 2110,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2111,
+    "last_frame": 2111,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2112,
+    "last_frame": 2112,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2113,
+    "last_frame": 2113,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2114,
+    "last_frame": 2114,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2115,
+    "last_frame": 2115,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2116,
+    "last_frame": 2116,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2117,
+    "last_frame": 2117,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2118,
+    "last_frame": 2118,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2119,
+    "last_frame": 2119,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2120,
+    "last_frame": 2120,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2121,
+    "last_frame": 2121,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2122,
+    "last_frame": 2122,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2123,
+    "last_frame": 2123,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2124,
+    "last_frame": 2124,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2125,
+    "last_frame": 2125,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2126,
+    "last_frame": 2126,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2127,
+    "last_frame": 2127,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2128,
+    "last_frame": 2128,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2129,
+    "last_frame": 2129,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2130,
+    "last_frame": 2130,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2131,
+    "last_frame": 2131,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2132,
+    "last_frame": 2132,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2133,
+    "last_frame": 2133,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2134,
+    "last_frame": 2134,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2135,
+    "last_frame": 2135,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2136,
+    "last_frame": 2136,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2137,
+    "last_frame": 2137,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2138,
+    "last_frame": 2138,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2139,
+    "last_frame": 2139,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2140,
+    "last_frame": 2140,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2141,
+    "last_frame": 2141,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2142,
+    "last_frame": 2142,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2143,
+    "last_frame": 2143,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2144,
+    "last_frame": 2144,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2145,
+    "last_frame": 2145,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2146,
+    "last_frame": 2146,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2147,
+    "last_frame": 2147,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2148,
+    "last_frame": 2148,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2149,
+    "last_frame": 2149,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2150,
+    "last_frame": 2150,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2151,
+    "last_frame": 2151,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2152,
+    "last_frame": 2152,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2153,
+    "last_frame": 2153,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2154,
+    "last_frame": 2154,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2155,
+    "last_frame": 2155,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2156,
+    "last_frame": 2156,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2157,
+    "last_frame": 2157,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2158,
+    "last_frame": 2158,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2159,
+    "last_frame": 2159,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2160,
+    "last_frame": 2160,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2161,
+    "last_frame": 2161,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2162,
+    "last_frame": 2162,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2163,
+    "last_frame": 2163,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2164,
+    "last_frame": 2164,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2165,
+    "last_frame": 2165,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2166,
+    "last_frame": 2166,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2167,
+    "last_frame": 2167,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2168,
+    "last_frame": 2168,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2169,
+    "last_frame": 2169,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2170,
+    "last_frame": 2170,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2171,
+    "last_frame": 2171,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2172,
+    "last_frame": 2172,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2173,
+    "last_frame": 2173,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2174,
+    "last_frame": 2174,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2175,
+    "last_frame": 2175,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2176,
+    "last_frame": 2176,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2177,
+    "last_frame": 2177,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2178,
+    "last_frame": 2178,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2179,
+    "last_frame": 2179,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2180,
+    "last_frame": 2180,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2181,
+    "last_frame": 2181,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2182,
+    "last_frame": 2182,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2183,
+    "last_frame": 2183,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2184,
+    "last_frame": 2184,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2185,
+    "last_frame": 2185,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2186,
+    "last_frame": 2186,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2187,
+    "last_frame": 2187,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2188,
+    "last_frame": 2188,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2189,
+    "last_frame": 2189,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2190,
+    "last_frame": 2190,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2191,
+    "last_frame": 2191,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2192,
+    "last_frame": 2192,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2193,
+    "last_frame": 2193,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2194,
+    "last_frame": 2194,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2195,
+    "last_frame": 2195,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2196,
+    "last_frame": 2196,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2197,
+    "last_frame": 2197,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2198,
+    "last_frame": 2198,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2199,
+    "last_frame": 2199,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2200,
+    "last_frame": 2200,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2201,
+    "last_frame": 2201,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2202,
+    "last_frame": 2202,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/5",
+    "first_frame": 2203,
+    "last_frame": 2203,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "rp:plate",
+      "body": "plate",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "rp:film",
+      "body": "film",
+      "other": "stream",
+      "other_group": "rp:stream",
+      "depth_mm": 3.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 16869,
+  "seconds": 5.7,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 375
+}

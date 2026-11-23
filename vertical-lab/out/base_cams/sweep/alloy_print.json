@@ -1,0 +1,16 @@
+{
+ "script": "alloy_print.py",
+ "args": [],
+ "seconds": 47.7,
+ "arms": {
+  "alloy_print:ur": {
+   "scene": "alloy_print",
+   "prefix": "ur",
+   "model": "ur10e",
+   "mir_group": "amr"
+  }
+ },
+ "frames": {
+  "alloy_print:ur": 3410
+ }
+}

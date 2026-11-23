@@ -1,0 +1,16 @@
+{
+ "script": "upkeep_clip.py",
+ "args": [],
+ "seconds": 117.8,
+ "arms": {
+  "upkeep_clip:unit0ur": {
+   "scene": "upkeep_clip",
+   "prefix": "unit0ur",
+   "model": "ur10e",
+   "mir_group": "unit0_cab"
+  }
+ },
+ "frames": {
+  "upkeep_clip:unit0ur": 1491
+ }
+}
