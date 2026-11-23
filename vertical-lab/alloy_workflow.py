@@ -1432,7 +1432,9 @@ def _movie(B):
         grip(0.0, 0.5)
         rb.release(amr.cab)
         status(sc, Plate="in its pocket on the MiR")
-        lin(tilt(p_c - a_dir * 110), 0.8, labels=[])
+        # the safety PR: straight up 90 mm, not 110 mm back along the aisle side (the Class D unit on the cabinet's
+        # aisle side, safety.mir_mount, stood where the wrist went)
+        lin(tilt(p_c + (0, 0, 90)), 0.8, labels=[])
         park(1.4, extra=RB.both(D_.door(0.0), W.ghost(0.0)))
         status(sc, Arm="parked")
         if STOP <= 2:

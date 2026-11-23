@@ -124,9 +124,12 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
     cab = pv.Box(bounds=(-L / 2 + 40, L / 2 - 40, -W / 2 + 30, W / 2 - 30, H, H + CAB_H)).triangulate()
     plate = pv.Box(bounds=(-170, 170, -W / 2 + 30, W / 2 - 30, H + CAB_H, AMR_TOP)).triangulate()
     door = pv.Box(bounds=(-L / 2 + 70, L / 2 - 70, -W / 2 + 28, -W / 2 + 30, H + 40, H + CAB_H - 40)).triangulate()
+    import safety
+    if safety.CLASS_D_ON_MIR:      # the safety PR: the -y side carries the Class D unit, so the door is on the front end
+        door = pv.Box(bounds=(L / 2 - 40, L / 2 - 38, -W / 2 + 70, W / 2 - 70, H + 40, H + CAB_H - 40)).triangulate()
     estop = pv.Cylinder(center=(L / 2 - 90, -W / 2 + 60, AMR_TOP + 15), direction=(0, 0, 1), radius=20,
                         height=30).triangulate()
-    return {
+    out = {
         "amr body": (body.merge(skirt), (0.22, 0.23, 0.25)),
         "amr cover": (cover, (0.80, 0.81, 0.83)),
         "amr light band": (band, (0.55, 0.85, 1.00)),
@@ -134,6 +137,13 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
         "amr cabinet door": (door, (0.70, 0.72, 0.75)),
         "amr e-stop": (estop, (0.85, 0.12, 0.10)),
     }
+    # the safety PR (Sterling, PR #318, 2026-11-20: "a class D fire extinguisher mounted at all times to the MiR250
+    # and available for use"): the Amerex B570 in an 811 vehicle bracket on the cabinet's back end (safety.py,
+    # notes/safety.md); VLAB_MIR_CLASS_D=0 leaves it off
+    import safety
+    if safety.CLASS_D_ON_MIR:
+        out.update({f"amr {k}": v for k, v in safety.mir_meshes().items()})
+    return out
 
 
 # The MiR's intermediary storage (byu-vcl PR #318, round 7). Sterling: "There's no insertion gap for the
