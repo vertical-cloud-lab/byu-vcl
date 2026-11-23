@@ -126,12 +126,18 @@ def check(names: list[str]) -> None:
 
 
 def fabjoin() -> None:
-    parts = [R15 / "fabrication" / f"{k}.mp4" for k in FAB if (R15 / "fabrication" / f"{k}.mp4").exists()]
-    lst = R15 / "fabrication" / "concat.txt"
-    lst.write_text("".join(f"file '{p.name}'\n" for p in parts))
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy",
-                    "-movflags", "+faststart", str(R15 / "fabrication_tour.mp4")], check=True)
-    print(f"fabrication_tour: {len(parts)} clips")
+    """The fabrication tour from this pass's clips where they exist (30 fps), else the committed 720p ones (15 fps:
+    round 15 re-rendered only the clips whose captions changed), re-encoded to one 30 fps file."""
+    parts = []
+    for k in FAB:
+        p = R15 / "fabrication" / f"{k}.mp4"
+        parts.append(p if p.exists() else OUT / "mp4" / "fabrication" / f"{k}.mp4")
+    lst = Path("/tmp/r15_fab_concat.txt")
+    lst.write_text("".join(f"file '{p}'\n" for p in parts))
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-threads", "2", "-f", "concat", "-safe", "0", "-i", str(lst),
+                    "-vf", "fps=30,setsar=1", "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-pix_fmt",
+                    "yuv420p", "-movflags", "+faststart", str(R15 / "fabrication_tour.mp4")], check=True)
+    print("fabrication_tour:", ", ".join(f"{p.parent.parent.name}/{p.name}" for p in parts))
 
 
 if __name__ == "__main__":

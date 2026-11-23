@@ -422,8 +422,8 @@
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow5/r7_flow_air0",
-      "other_group": "fumehood:flow5",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 12.0
      }
     ]
@@ -659,15 +659,15 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
+      "other": "fumehood:flow2/r7_flow_air0",
+      "other_group": "fumehood:flow2",
       "depth_mm": 50.0
      },
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow2/r7_flow_air0",
-      "other_group": "fumehood:flow2",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
       "depth_mm": 50.0
      },
      {
@@ -773,15 +773,15 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
+      "other": "fumehood:flow2/r7_flow_air0",
+      "other_group": "fumehood:flow2",
       "depth_mm": 50.0
      },
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow2/r7_flow_air0",
-      "other_group": "fumehood:flow2",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
       "depth_mm": 50.0
      },
      {
@@ -824,13 +824,6 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow5/r7_flow_air0",
       "other_group": "fumehood:flow5",
       "depth_mm": 999.0
@@ -843,10 +836,24 @@
       "depth_mm": 999.0
      },
      {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
+      "depth_mm": 999.0
+     },
+     {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
       "other": "fumehood:flow5/r7_flow_air0",
       "other_group": "fumehood:flow5",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow2",
+      "body": "fumehood:flow2/r7_flow_air0",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
@@ -871,13 +878,6 @@
       "depth_mm": 999.0
      },
      {
-      "mover": "fumehood:flow2",
-      "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
-      "depth_mm": 999.0
-     },
-     {
       "mover": "fumehood:flow3",
       "body": "fumehood:flow3/r7_flow_air0",
       "other": "fumehood:flow6/r7_flow_air0",
@@ -887,8 +887,8 @@
      {
       "mover": "fumehood:flow3",
       "body": "fumehood:flow3/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      }
     ]
@@ -931,13 +931,6 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow5/r7_flow_air0",
       "other_group": "fumehood:flow5",
       "depth_mm": 999.0
@@ -945,8 +938,8 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
@@ -959,15 +952,22 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      },
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow3/r7_flow_air0",
+      "other_group": "fumehood:flow3",
       "depth_mm": 999.0
      },
      {
@@ -980,8 +980,8 @@
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      }
     ]
@@ -996,50 +996,43 @@
      {
       "mover": "fumehood:flow0",
       "body": "fumehood:flow0/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow0",
-      "body": "fumehood:flow0/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow0",
-      "body": "fumehood:flow0/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow0",
-      "body": "fumehood:flow0/r7_flow_air0",
-      "other": "fumehood:flow5/r7_flow_air0",
-      "other_group": "fumehood:flow5",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow0",
-      "body": "fumehood:flow0/r7_flow_air0",
-      "other": "fumehood:flow2/r7_flow_air0",
-      "other_group": "fumehood:flow2",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow0",
-      "body": "fumehood:flow0/r7_flow_air0",
       "other": "fumehood:flow7/r7_flow_air0",
       "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      },
      {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
+      "mover": "fumehood:flow0",
+      "body": "fumehood:flow0/r7_flow_air0",
+      "other": "fumehood:flow3/r7_flow_air0",
+      "other_group": "fumehood:flow3",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow0",
+      "body": "fumehood:flow0/r7_flow_air0",
       "other": "fumehood:flow6/r7_flow_air0",
       "other_group": "fumehood:flow6",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow0",
+      "body": "fumehood:flow0/r7_flow_air0",
+      "other": "fumehood:flow5/r7_flow_air0",
+      "other_group": "fumehood:flow5",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow0",
+      "body": "fumehood:flow0/r7_flow_air0",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow0",
+      "body": "fumehood:flow0/r7_flow_air0",
+      "other": "fumehood:flow2/r7_flow_air0",
+      "other_group": "fumehood:flow2",
       "depth_mm": 999.0
      },
      {
@@ -1052,6 +1045,13 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow2/r7_flow_air0",
       "other_group": "fumehood:flow2",
       "depth_mm": 999.0
@@ -1059,15 +1059,15 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
       "depth_mm": 999.0
      },
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow3/r7_flow_air0",
+      "other_group": "fumehood:flow3",
       "depth_mm": 999.0
      },
      {
@@ -1086,6 +1086,13 @@
     "frames": 1,
     "depth_mm": 999.0,
     "pairs": [
+     {
+      "mover": "fumehood:flow0",
+      "body": "fumehood:flow0/r7_flow_air0",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
+      "depth_mm": 999.0
+     },
      {
       "mover": "fumehood:flow0",
       "body": "fumehood:flow0/r7_flow_air0",
@@ -1115,8 +1122,22 @@
       "depth_mm": 999.0
      },
      {
-      "mover": "fumehood:flow0",
-      "body": "fumehood:flow0/r7_flow_air0",
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow2/r7_flow_air0",
+      "other_group": "fumehood:flow2",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow7/r7_flow_air0",
       "other_group": "fumehood:flow7",
       "depth_mm": 999.0
@@ -1131,29 +1152,8 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow2/r7_flow_air0",
-      "other_group": "fumehood:flow2",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow3/r7_flow_air0",
       "other_group": "fumehood:flow3",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
@@ -1166,8 +1166,8 @@
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      }
     ]
@@ -1681,15 +1681,15 @@
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow5/r7_flow_air0",
-      "other_group": "fumehood:flow5",
+      "other": "fumehood:flow3/r7_flow_air0",
+      "other_group": "fumehood:flow3",
       "depth_mm": 25.0
      },
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
+      "other": "fumehood:flow5/r7_flow_air0",
+      "other_group": "fumehood:flow5",
       "depth_mm": 25.0
      }
     ]
@@ -1867,15 +1867,15 @@
      {
       "mover": "fumehood:flow3",
       "body": "fumehood:flow3/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 50.0
      },
      {
       "mover": "fumehood:flow3",
       "body": "fumehood:flow3/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 50.0
      }
     ]
@@ -1939,15 +1939,15 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
+      "other": "fumehood:flow2/r7_flow_air0",
+      "other_group": "fumehood:flow2",
       "depth_mm": 50.0
      },
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow2/r7_flow_air0",
-      "other_group": "fumehood:flow2",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
       "depth_mm": 50.0
      },
      {
@@ -1967,8 +1967,8 @@
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 50.0
      }
     ]
@@ -1997,13 +1997,6 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow5/r7_flow_air0",
       "other_group": "fumehood:flow5",
       "depth_mm": 999.0
@@ -2013,6 +2006,13 @@
       "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow2/r7_flow_air0",
       "other_group": "fumehood:flow2",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
       "depth_mm": 999.0
      },
      {
@@ -2053,15 +2053,15 @@
      {
       "mover": "fumehood:flow3",
       "body": "fumehood:flow3/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      },
      {
       "mover": "fumehood:flow3",
       "body": "fumehood:flow3/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      }
     ]
@@ -2097,13 +2097,6 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow5/r7_flow_air0",
       "other_group": "fumehood:flow5",
       "depth_mm": 999.0
@@ -2111,8 +2104,8 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
@@ -2125,15 +2118,22 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      },
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow3/r7_flow_air0",
+      "other_group": "fumehood:flow3",
       "depth_mm": 999.0
      },
      {
@@ -2169,15 +2169,15 @@
      {
       "mover": "fumehood:flow0",
       "body": "fumehood:flow0/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      },
      {
       "mover": "fumehood:flow0",
       "body": "fumehood:flow0/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow3/r7_flow_air0",
+      "other_group": "fumehood:flow3",
       "depth_mm": 999.0
      },
      {
@@ -2192,6 +2192,13 @@
       "body": "fumehood:flow0/r7_flow_air0",
       "other": "fumehood:flow5/r7_flow_air0",
       "other_group": "fumehood:flow5",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow0",
+      "body": "fumehood:flow0/r7_flow_air0",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
@@ -2202,8 +2209,22 @@
       "depth_mm": 999.0
      },
      {
-      "mover": "fumehood:flow0",
-      "body": "fumehood:flow0/r7_flow_air0",
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow5/r7_flow_air0",
+      "other_group": "fumehood:flow5",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow7/r7_flow_air0",
       "other_group": "fumehood:flow7",
       "depth_mm": 999.0
@@ -2218,29 +2239,8 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow5/r7_flow_air0",
-      "other_group": "fumehood:flow5",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
       "other": "fumehood:flow3/r7_flow_air0",
       "other_group": "fumehood:flow3",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
@@ -2290,15 +2290,8 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow6/r7_flow_air0",
-      "other_group": "fumehood:flow6",
-      "depth_mm": 999.0
-     },
-     {
-      "mover": "fumehood:flow1",
-      "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
@@ -2311,15 +2304,22 @@
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      },
      {
       "mover": "fumehood:flow1",
       "body": "fumehood:flow1/r7_flow_air0",
-      "other": "fumehood:flow4/r7_flow_air0",
-      "other_group": "fumehood:flow4",
+      "other": "fumehood:flow6/r7_flow_air0",
+      "other_group": "fumehood:flow6",
+      "depth_mm": 999.0
+     },
+     {
+      "mover": "fumehood:flow1",
+      "body": "fumehood:flow1/r7_flow_air0",
+      "other": "fumehood:flow3/r7_flow_air0",
+      "other_group": "fumehood:flow3",
       "depth_mm": 999.0
      },
      {
@@ -2332,22 +2332,22 @@
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow7/r7_flow_air0",
-      "other_group": "fumehood:flow7",
+      "other": "fumehood:flow4/r7_flow_air0",
+      "other_group": "fumehood:flow4",
       "depth_mm": 999.0
      },
      {
       "mover": "fumehood:flow2",
       "body": "fumehood:flow2/r7_flow_air0",
-      "other": "fumehood:flow3/r7_flow_air0",
-      "other_group": "fumehood:flow3",
+      "other": "fumehood:flow7/r7_flow_air0",
+      "other_group": "fumehood:flow7",
       "depth_mm": 999.0
      }
     ]
    }
   ],
   "fcl_pairs_checked": 885,
-  "seconds": 3.1,
+  "seconds": 4.1,
   "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
  },
  "frames_with_collisions_all": 47
