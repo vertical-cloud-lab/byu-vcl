@@ -206,3 +206,49 @@ for a sturdier reference electrode. The answers are in [`cubxl_pipettes.md`](cub
 the recommendation: an OT-2 GEN2 P300 single 34 mm in front of the P20 on its own 40 mm lift, its tips at the deck's
 front left, taking the 135 µL fill, a mix after the sulfide, the collection and the rinse (6 transfers a spot instead
 of 33). DAL's protocol is unchanged; the clip says the P300 is a proposal.
+
+## Round 15: no acid on the OT-2's deck, and where the tubes go (PR #318)
+
+Sterling (2026-11-20): "an OT-2 probably doesn't have great compatibility with many of the solvents that would be
+required for ICP-MS and ICP-OES. And it would be very risky to try to put high-hazard chemicals on a tray." Round 14
+answered with the ICP-MS station on the floor ([`icpms.md`](icpms.md)), but the OT-2's clip still made the 10x
+dilution on tray A from a 12 mL trough of 2 % HNO₃, with a matrix-matched standard, and round 14's deck
+([`ot2_deck.py`](../ot2_deck.py)) put that trough into every lab scene.
+
+- **The OT-2** ([`ot2_corrosion.py`](../ot2_corrosion.py), 5 steps, was 13) makes the CubXL's 0.1 mg/L S stock from
+  its 10 mg/L stock in seawater, as before, and nothing else: digital-wetlab PR #83's "electrolyte matrix". The
+  dilution, the blank matrix and the standard are gone from the clip and the deck. The station's acid-rated dilutor
+  makes them in its own hood. Its deck now holds the two tip racks, a printed block (ours) for the 10 mg/L stock's
+  1.5 mL tube (its nine 0.5 mL seats went with the dilution), the deep-well plate, and the NEST reservoir with
+  seawater in trough 1 only. Its last step says where the tubes go.
+- **The acid the CubXL keeps: DAL's 1 M, not concentrated.** DAL's step 12 acidifies each tube on the CubXL at once:
+  20 µL of 1 M trace-metal HNO₃ from a capped 20 mL vial, 62 mM in the 320 µL tube. Kept as DAL plans it, and it is the
+  only acid on tray A. 1 M is about 6 % HNO₃, against about 68 % (15-16 M) for the concentrated acid Sterling meant.
+  The vial stays capped, and the capper opens it only for one 20 µL draw per tube, about 180 µL a night. DAL's §9
+  already reads "Only 1 M trace-metal HNO₃ goes on the deck, in a capped vial. Dilute it from the concentrated acid in
+  the fume hood only". And it can't wait for the station: "Cu(I) replates or precipitates in near-neutral liquid, and
+  copper sticks to polypropylene at neutral pH" (§4, "Acidify at once"). Making the 1 M from concentrated acid belongs
+  in a hood: the station's, or the general fume hood.
+- **Where the tubes go.** DAL §9: "Label them, cap them in the morning, and store them for ICP." The CubXL clip says
+  so too: step 9 calls the 1 M vial the only acid on tray A, and the closing caption and card send the capped tubes
+  to the ICP-MS station on the floor (the end step is 1.5 s longer for it). Neither clip mentions the Spectroscopic
+  Facility.
+- **Not consistent yet:** `icpms.py`'s incoming rack is 24 capped 15 mL tubes, each drawn with about 70 mm of liquid.
+  The CubXL's samples are 320 µL in 0.5 mL tubes. Either that rack takes 0.5 mL tubes (an insert), or each tube's
+  320 µL goes into a 15 mL tube first. The OT-2 could make that transfer without any acid, but it belongs to the
+  station's design, so it isn't drawn.
+
+**Audit** (round 11's strict rules, `ARM_AUDIT=1 VIZ3D_FPS=10`, liquids not counted as obstacles):
+- **OT-2** (`ARM_AUDIT_TAG=r15fix_ot2`): no arm, 0 of 234 frames. The movers check finds 2 frames, at the two tip
+  pick-ups. In each, the nozzle seats 6 mm into a tip drawn as a solid (Opentrons' 7.47 and 8.25 mm overlaps), which
+  is the model, not a fault. Before this round the audit couldn't run at all: the hidden liquids were scaled to zero
+  height, and collide.Movers stopped on the singular matrix. They are now sunk and flattened to 0.1 % instead.
+- **CubXL** (`ARM_AUDIT_TAG=r15fix_cub`; the motion is #372's, unchanged): no arm, 0 of 959 frames. The movers check
+  finds 16 frames in 12 runs, every one a nozzle in its tip as it picks one up or lets it go: the P300's 8.3 mm seat
+  (rounded to 12 mm by `collide.depth`) on its four tips, and the P20's on its sulfide and acid tips. #372's
+  `interference.py` pass calls these "as modelled", and so does this one. Nothing else goes deeper than 1.5 mm: the
+  capper mount's 1.03 mm brush of rack 1 (round 7's finding, in #372's pass) is below the check's limit.
+  The liquids (tip, well and tube 1) now count as fluids in both clips, as they do in the chapters. Counted as
+  obstacles, as before this round (`ARM_AUDIT_TAG=r15fix_cub_wet`, the same clip with that hook bypassed), the movers
+  check gives 69 frames in 51 runs: these 16, plus 53 of a tip's own liquid inside it or a tip in the liquid it draws
+  from.

@@ -86,14 +86,16 @@ _CORR_SEGS = (("start", "Copper corrosion on the CubXL, as DAL's copper screen l
               ("collected", "8  The P300 moves the well's 150 µL to tube 1 in one transfer (the P20 took 8). A fresh "
                             "tip adds 150 µL of DI water from above, rinses S1 twice and carries the rinse to the "
                             "tube: 3 transfers where the P20 took 24."),
-              ("acid", "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 µL of "
-                       "1 M HNO3 from above the rim with the P20: 320 µL at 62 mM HNO3. The acid tip goes back to "
-                       "rack 2."),
+              ("acid", "9  Acidify at once: the capper opens the acid vial (1 M HNO3, the only acid on tray A) and the "
+                       "P20's acid tip, the night's one, adds 20 µL from above the rim: 320 µL at 62 mM HNO3. The tip "
+                       "goes back to rack 2."),
               ("imaged", "10  The head camera images the spot. Next: S2. With the P300 the head works about 9 min a spot, "
                          "against 22.5 with the P20 alone (CubXL step times, notes/cubxl_pipettes.md)."),
+              # round 15 (PR #318): where the tubes go, as the OT-2's clip and icpms.py now tell it (no dilution on tray A)
               ("end", "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the scan, "
                       "then its own tube. On every spot it would swamp the tube's copper (3.4 mC against the "
-                      "hold's 0.2-2.8 mC)."))
+                      "hold's 0.2-2.8 mC). Capped in the morning, the night's tubes go to the ICP-MS station on the "
+                      "floor."))
 
 
 
@@ -293,7 +295,7 @@ def _corr_spot() -> Timeline:
     travel(*p["park"])
     tl.mark("imaged")
     # 11. the sequence, in one card
-    go(4.0, end=1.0, panel=0, what="")
+    go(5.5, end=1.0, panel=0, what="")           # round 15: 4.0 -> 5.5 s, the card has a line more to read
     tl.mark("end")
     return tl
 
@@ -703,22 +705,23 @@ def _draw_corr_overlay_r14(sc, img, s):
     if st["end"] > 0.02:
         a = min(1.0, st["end"] * 4)
         x0, y0, x1 = W * 0.16, 70 * s, W * 0.84
-        d.rounded_rectangle((x0, y0, x1, y0 + 275 * s), 8 * s, fill=(255, 255, 255, int(238 * a)),
+        d.rounded_rectangle((x0, y0, x1, y0 + 300 * s), 8 * s, fill=(255, 255, 255, int(238 * a)),
                             outline=(150, 156, 164, int(255 * a)))
         al = int(255 * a)
         lines = [("One spot (DAL protocol.md section 4), with a P300 beside the P20 (proposed)", True),
                  ("fill: 135 µL ASW (P300, 1 transfer)  >  15 µL sulfide (P20)  >  mix (P300)", False),
                  ("leak check  >  cap on  >  OCP 20 min  >  EIS at OCP 10 min  >  LPR ±10 mV", False),
                  ("rest 5 min  >  +50 mV hold 10 min  >  OCP 5 min  >  cap off, rinsed", False),
-                 ("well + DI rinse to its tube (3 P300 transfers, the P20 alone took 24)  >  20 µL HNO3", False),
+                 ("well + DI rinse to its tube (3 P300 transfers, the P20 alone took 24)  >  20 µL 1 M HNO3", False),
                  ("6 transfers a spot instead of 33; the head works about 9 min a spot instead of 22.5", False),
                  ("Each piece's second well: the same, OCP only (the companion)", False),
                  ("Selected spots only, last: fill to EIS, then cyclic polarization", True),
                  ("from 50 mV below OCP at 1 mV/s, reversing at 1 mA/cm2, back to E_corr; its own tube", False),
+                 ("After the night: the tubes, capped, go to the ICP-MS station on the floor", True),   # round 15
                  ("Nobody has run a spot yet: DAL's plan, PR #180; the P300 is notes/cubxl_pipettes.md's", False)]
         for i, (t, b) in enumerate(lines):
             d.text((x0 + 16 * s, y0 + (14 + 25 * i) * s), t, font=ft if b else fs,
-                   fill=(20, 20, 24, al) if i < 9 else (150, 40, 30, al))
+                   fill=(20, 20, 24, al) if i < len(lines) - 1 else (150, 40, 30, al))
 
 
 _CORR_TL = _corr_spot()
@@ -729,4 +732,24 @@ PLOTS["instruments/cubxl_corrosion"] = _draw_corr_overlay_r14
 _C_P300 = (_corr_w(240.0, -470.0, 600.0), _corr_w(195.0, 135.0, 75.0))
 CAMS["instruments/cubxl_corrosion"] = {0: _C_WIDE, 1: _C_P300, 2: _C_P300, 3: _C_P300, 4: _C_FILL, 5: _C_CELL,
                                        6: _C_CELL, 7: _C_FILL, 8: _C_P300, 10: _C_WIDE, 11: _C_OVER}
+
+
+def _install_fluids():
+    """The liquids are not obstacles for ARM_AUDIT's movers check (collide.py skips sc.fluids), as in the chapters and
+    the OT-2's clip: the tips dip into S1 and tube 1, and each tip's liquid is drawn inside it (round 15)."""
+    import scene as S
+    if getattr(S.Scene.step, "_cub_fluids", False):
+        return
+    orig = S.Scene.step
+
+    def step(self, *a, **kw):
+        if self.name == "instruments/cubxl_corrosion":
+            wet = {f"cubxl_corrosion:{k}" for k in ("tipliq", "p3liq", "wellliq", "tubeliq")}
+            self.fluids = set(getattr(self, "fluids", set())) | {n for n, g in self.group_of.items() if g in wet}
+        return orig(self, *a, **kw)
+    step._cub_fluids = True
+    S.Scene.step = step
+
+
+_install_fluids()
 REGISTRY = {"cubxl_corrosion": cubxl_corrosion}

@@ -1,0 +1,917 @@
+{
+ "clip": "instruments/cubxl_corrosion",
+ "frames_checked": 959,
+ "frames_with_collisions": 0,
+ "runs": [],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 0,
+ "fps": 10,
+ "arm_seconds": 0.0,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 959,
+  "frames_moving": 782,
+  "frames_with_collisions": 69,
+  "runs": [
+   {
+    "label": "2/12",
+    "first_frame": 46,
+    "last_frame": 46,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "2/12",
+    "first_frame": 47,
+    "last_frame": 47,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "3/12",
+    "first_frame": 98,
+    "last_frame": 99,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/12",
+    "first_frame": 113,
+    "last_frame": 113,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip",
+      "body": "cubxl_corrosion:ptip/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "3/12",
+    "first_frame": 114,
+    "last_frame": 115,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/12",
+    "first_frame": 149,
+    "last_frame": 151,
+    "frames": 3,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip",
+      "body": "cubxl_corrosion:ptip/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "3/12",
+    "first_frame": 152,
+    "last_frame": 152,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip",
+      "body": "cubxl_corrosion:ptip/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/12",
+    "first_frame": 153,
+    "last_frame": 155,
+    "frames": 3,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 203,
+    "last_frame": 204,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tools",
+      "body": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other": "cubxl_corrosion:tip/lab_tip0",
+      "other_group": "cubxl_corrosion:tip",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 224,
+    "last_frame": 224,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tip",
+      "body": "cubxl_corrosion:tip/lab_tip0",
+      "other": "cubxl_corrosion:tipliq/lab_well0",
+      "other_group": "cubxl_corrosion:tipliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 238,
+    "last_frame": 238,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tip",
+      "body": "cubxl_corrosion:tip/lab_tip0",
+      "other": "cubxl_corrosion:tipliq/lab_well0",
+      "other_group": "cubxl_corrosion:tipliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 239,
+    "last_frame": 239,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tipliq",
+      "body": "cubxl_corrosion:tipliq/lab_well0",
+      "other": "cubxl_corrosion:tip/lab_tip0",
+      "other_group": "cubxl_corrosion:tip",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 272,
+    "last_frame": 273,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip2/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip2",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 274,
+    "last_frame": 274,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip2/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip2",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 292,
+    "last_frame": 292,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip2",
+      "body": "cubxl_corrosion:ptip2/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 293,
+    "last_frame": 294,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip2/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip2",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 297,
+    "last_frame": 297,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip2",
+      "body": "cubxl_corrosion:ptip2/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:ptip2",
+      "body": "cubxl_corrosion:ptip2/lab_tip0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 298,
+    "last_frame": 298,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip2/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip2",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 301,
+    "last_frame": 301,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip2",
+      "body": "cubxl_corrosion:ptip2/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:ptip2",
+      "body": "cubxl_corrosion:ptip2/lab_tip0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 302,
+    "last_frame": 302,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip2/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip2",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 303,
+    "last_frame": 303,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:wellliq",
+      "body": "cubxl_corrosion:wellliq/lab_well0",
+      "other": "cubxl_corrosion:ptip2/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip2",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 325,
+    "last_frame": 325,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip2",
+      "body": "cubxl_corrosion:ptip2/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 598,
+    "last_frame": 600,
+    "frames": 3,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip3/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 601,
+    "last_frame": 602,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip3/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip3",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 627,
+    "last_frame": 627,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip3",
+      "body": "cubxl_corrosion:ptip3/lab_tip0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "cubxl_corrosion:ptip3",
+      "body": "cubxl_corrosion:ptip3/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 628,
+    "last_frame": 628,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip3/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip3",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:wellliq",
+      "body": "cubxl_corrosion:wellliq/lab_well0",
+      "other": "cubxl_corrosion:ptip3/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip3",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 629,
+    "last_frame": 630,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip3/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip3",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 646,
+    "last_frame": 646,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip3",
+      "body": "cubxl_corrosion:ptip3/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 647,
+    "last_frame": 648,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip3/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 664,
+    "last_frame": 664,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip3",
+      "body": "cubxl_corrosion:ptip3/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 682,
+    "last_frame": 682,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 683,
+    "last_frame": 683,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 708,
+    "last_frame": 708,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 709,
+    "last_frame": 709,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 721,
+    "last_frame": 721,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 722,
+    "last_frame": 723,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 744,
+    "last_frame": 744,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 745,
+    "last_frame": 745,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:wellliq",
+      "body": "cubxl_corrosion:wellliq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 747,
+    "last_frame": 747,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 748,
+    "last_frame": 748,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 752,
+    "last_frame": 752,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 753,
+    "last_frame": 753,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:wellliq/lab_well0",
+      "other_group": "cubxl_corrosion:wellliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 754,
+    "last_frame": 755,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 773,
+    "last_frame": 773,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3liq/lab_well0",
+      "other_group": "cubxl_corrosion:p3liq",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 774,
+    "last_frame": 776,
+    "frames": 3,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3liq",
+      "body": "cubxl_corrosion:p3liq/lab_well0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 804,
+    "last_frame": 804,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 870,
+    "last_frame": 870,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tools",
+      "body": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other": "cubxl_corrosion:tip3/lab_tip0",
+      "other_group": "cubxl_corrosion:tip3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 883,
+    "last_frame": 883,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tip3",
+      "body": "cubxl_corrosion:tip3/lab_tip0",
+      "other": "cubxl_corrosion:tipliq/lab_well0",
+      "other_group": "cubxl_corrosion:tipliq",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 895,
+    "last_frame": 895,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tipliq",
+      "body": "cubxl_corrosion:tipliq/lab_well0",
+      "other": "cubxl_corrosion:tip3/lab_tip0",
+      "other_group": "cubxl_corrosion:tip3",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 905,
+    "last_frame": 905,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tools",
+      "body": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other": "cubxl_corrosion:tip3/lab_tip0",
+      "other_group": "cubxl_corrosion:tip3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 906,
+    "last_frame": 906,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tip3",
+      "body": "cubxl_corrosion:tip3/lab_tip0",
+      "other": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other_group": "cubxl_corrosion:tools",
+      "depth_mm": 3.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 3401,
+  "seconds": 18.2,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 69
+}

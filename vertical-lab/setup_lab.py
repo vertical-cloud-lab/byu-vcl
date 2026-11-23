@@ -216,8 +216,13 @@ DOCK_Y = {"repowder": -2230.0, "sieve_cell": W.DOCK_N - 300.0,
 TARGET_AT = {"vlm": (-1330.0, -1742.0), "vlm2": (X2 + 1330.0, -1742.0),
              # round 11: 150 mm off the Instron's face as before, 650 mm beyond the docked MiR's front end, west of the
              # chamber door's sweep, though the dock moved 420 mm out from the row
-             "instron_floor": (INSTRON_AXIS_X - 650.0, W.Y_FACE_S + 150.0),
-             "repowder": (A.REPOWDER_AT[0] + 288.0 + 650.0, -1899.0 - 180.0)}
+             "instron_floor": (INSTRON_AXIS_X - 650.0, W.Y_FACE_S + 150.0)}
+# round 15 (#303, round 14 (C)'s open fault): the rePowder's own post (model x 938, y -379) stood where MiR250 1 parks
+# for the latch (atom_latch.A_AT: model x 250..1050, y -850..-270). Nothing else fits between that spot, the dock line
+# and the aisle, so the rePowder's docked unit reads the sieving cell's post, 737 mm beyond its front end and 218 mm to
+# its left: one post, its cube's west face for the rePowder, its east face for the sieving cell (warehouse.tag: five
+# faces, five patterns). 115 mm clear of MiR250 1 at atom_base.PARK["right"], off every dock and approach.
+SHARED_POST = {"repowder": "sieve_cell"}
 SIEVE_BENCH = dict(x=-1982.5, w=1065.0, d=600.0, h=700.0, encl_h=1150.0)    # alloy_print.BENCH, ENCL_H
 INSTALL_AT = 0                                 # the first unit is put together at charger 0
 
@@ -368,6 +373,7 @@ def use_floor_plan():
         return (x, DOCK_Y.get(key, y), hd)
 
     def target_xy(key):
+        key = SHARED_POST.get(key, key)
         return np.array(TARGET_AT[key]) if key in TARGET_AT else target0(key)
     W.dock_pose, W.target_xy, W._setup_lab_patched = dock_pose, target_xy, True
 
@@ -690,6 +696,22 @@ class Floor(W.Floor):
             super()._tape()
         finally:
             W.STATIONS.update(held)
+        # round 15: a dock that reads another's post (SHARED_POST) gets no post of its own. warehouse.Floor._tape drew
+        # one for every dock, so the posts are drawn again here without those, each cube keeping its tag id
+        sc, posts, blacks, whites = self.sc, [], [], []
+        for ident, key in enumerate(k for k in W.STATIONS if k not in NO_DOCK):
+            if key in SHARED_POST or (key not in ("vlm", "repowder") and key not in self.groups):
+                continue
+            tx, ty = W.target_xy(key)
+            posts.append(pv.Cylinder(center=(tx, ty, W.TARGET_Z / 2), direction=(0, 0, 1), radius=25,
+                                     height=W.TARGET_Z, resolution=20).triangulate())
+            posts.append(W._box(tx - 150, ty - 150, 0, tx + 150, ty + 150, 12))
+            b, w = W.tag(ident=ident)
+            blacks.append(b.translate((tx, ty, W.TARGET_Z), inplace=False))
+            whites.append(w.translate((tx, ty, W.TARGET_Z), inplace=False))
+        sc.set_mesh("target posts", W._merge(posts).compute_normals(split_vertices=True, feature_angle=30.0))
+        sc.set_mesh("target black", W._merge(blacks))
+        sc.set_mesh("target white", W._merge(whites))
 
     def _stations(self):
         super()._stations()
@@ -723,6 +745,51 @@ class Floor(W.Floor):
             names += rig.all_names()
         self.groups["sieve_cell"] = names
         self.where["sieve_cell"] = np.array([b["x"], W.Y_FACE_N + 300, b["h"] + b["encl_h"]])
+        # round 15 (#303: one complete lab in every whole-lab clip): the chemical waste station (PR #371, notes/waste.md)
+        # in the ducted fume hood, in the hood's own frame (waste_station.FH is instruments_r7's hood), so it comes in
+        # with it. VLAB_WASTE=0 leaves it out.
+        if _on("VLAB_WASTE") and "fumehood" in self.rigs:
+            for nm, (mesh, col, op) in waste_parts().items():
+                sc.add(f"waste/{nm}", mesh, col, "waste", opacity=op, specular=0.2)
+            sc.parent["waste"] = "wh_fumehood:body"
+            sc.gmat["waste"] = np.eye(4)
+            self.groups["fumehood"] = self.groups["fumehood"] + sc.members("waste")
+        # round 15: floor-cleaning unit 3's charger (PR #369, floor_cleaning.BAY: a third MiR Charge 48V in the south
+        # row, 1.6 m west of unit 1's, outside every powder zone), drawn as warehouse.Floor._chargers draws the others;
+        # unit 3 itself is built in build(). VLAB_UNIT3=0 leaves both out.
+        if _on("VLAB_UNIT3"):
+            import floor_cleaning as FC
+            x3, g = (FC.BAY["charger"][0] + FC.BAY["charger"][1]) / 2, "charger2"
+            for nm, (mesh, col) in W.charger_mesh().items():
+                sc.add(f"{g}/{nm}", mesh, col, g, **(dict(ambient=0.8) if "led" in nm else {}))
+            sc.gmat[g] = T((x3, W.Y_FACE_S + (W.CHARGER["D_plate"] - W.CHARGER["D"]), 0))
+            bay = W.tape_rect(x3, W.Y_FACE_S + 20.0 + P.MIR["L"] / 2, P.MIR["W"] + 140, P.MIR["L"] + 140, t=50.0)
+            sc.add(f"{g}/bay tape", bay, W.TAPE_W, f"{g}_tape", specular=0.0, ambient=0.5)
+
+
+def _on(flag: str) -> bool:
+    """A round-15 floor item's switch: on unless the environment sets it to 0."""
+    return os.environ.get(flag, "1") != "0"
+
+
+def waste_parts() -> dict:
+    """What of the waste station (waste_station.py) shows on the lab's fume hood: {name: (mesh, rgb, opacity)} in the
+    hood's own frame. Its two base cabinets' doors (solvent yellow, acid blue) with their bands, 2 mm in front of the
+    hood's own doors (instruments_r7: yf + 38), and the intake tray, the delivered bottle, the empties and the etch on
+    the work surface, merged by colour. The cabinets' contents stay out: behind opaque doors they'd only cost triangles."""
+    import waste_station as WS
+    out, gap = {}, 10.0
+    for (x0, x1), door_c, band_c, name in (((-WS.XW, -gap / 2), WS.YELLOW, WS.RED, "solvent"),
+                                           ((gap / 2, WS.XW), WS.ACIDBLUE, (0.95, 0.95, 0.95), "acid")):
+        out[f"{name} cabinet doors"] = (WS.box(x0 + 8, WS.YF + 33, 50, x1 - 8, WS.YF + 36, WS.FH["cab"] - 40), door_c, 1.0)
+        out[f"{name} warning band"] = (WS.box(x0 + 60, WS.YF + 31, WS.FH["cab"] - 160, x1 - 60, WS.YF + 33,
+                                              WS.FH["cab"] - 100), band_c, 1.0)
+    by: dict = {}
+    for _, m, c, op in WS.work_surface()[0]:
+        by.setdefault((tuple(float(v) for v in c), float(op)), []).append(m)
+    for i, ((c, op), ms) in enumerate(by.items()):
+        out[f"surface {i}"] = (W._merge(ms), c, op)
+    return out
 
 
 def footprints(sc: Scene, F: Floor) -> pv.PolyData:
@@ -774,6 +841,9 @@ def machine_rects(sc: Scene, F: Floor) -> dict:
     for i, x in enumerate(W.CHARGERS):
         out[f"charger{i}"] = (x - W.CHARGER["W"] / 2, x + W.CHARGER["W"] / 2, W.Y_FACE_S - W.CHARGER["D_plate"],
                               W.Y_FACE_S)
+    if "charger2" in sc.gmat:                   # round 15: unit 3's (floor_cleaning.BAY)
+        x = sc.gmat["charger2"][0, 3]
+        out["charger2"] = (x - W.CHARGER["W"] / 2, x + W.CHARGER["W"] / 2, W.Y_FACE_S - W.CHARGER["D_plate"], W.Y_FACE_S)
     return out
 
 
@@ -1123,6 +1193,16 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
         for g in add_cams(sc, k):
             items[k].append(("cam", g, group_names(sc, g), "camera"))
     units = [W_unit(sc, i) for i in range(len(W.CHARGERS))]
+    # round 15: floor-cleaning unit 3 (PR #369, notes/floor_cleaning.md, option C: a third MiR250 + arm of its own,
+    # its orange band) parked on its charger (Floor._stations draws it); not one of `units`, which the clips drive.
+    # Its 118EXP vacuums stay on wall power at their station, which the floor plan hasn't taken yet.
+    F.unit3 = None
+    if "charger2" in sc.gmat:
+        import floor_cleaning as FC
+        F.unit3 = Unit(sc, "unit3", FC.BAY["park"])
+        lc, wc, zb = P.MIR["L"] - 80, P.MIR["W"] - 60, P.MIR["H"] + P.CAB_H
+        sc.add("unit3/unit 3 band", W._box(-lc / 2 - 1, -wc / 2 - 1, zb - 90, lc / 2 + 1, wc / 2 + 1, zb - 40),
+               (0.93, 0.47, 0.13), "unit3_cab")
     util = {}
     hood = _bounds_of(sc, F.groups["fumehood"]) if F.groups.get("fumehood") else None
     umesh, ulabel = utilities(hood)
@@ -1246,6 +1326,7 @@ def movie(data, idata):
         [n for n, g in sc.group_of.items() if g.startswith("charger") and g.endswith("_tape")]
     chargers = [n for n, g in sc.group_of.items() if g.startswith("charger") and not g.endswith("_tape")]
     unit_names = [n for u in units for n in u.all_names()]
+    u3_names = F.unit3.all_names() if F.unit3 is not None else []       # round 15: unit 3, with the second unit
     # round 10: where each item's centre is in its tray (for its start on the lift table), and the two lift tables
     yc_of, ynear_of = {}, {}
     for k in items:
@@ -1261,7 +1342,7 @@ def movie(data, idata):
             sc.add(f"{g}/{nm}", mesh, col, g, specular=0.3)
         sc.gmat[g] = T((xu, LIFT_TABLE_Y, 0.0))
         tables[u] = sc.members(g)
-    A.hide(L, L.groups(*vlm_groups, *u2, *tray_groups) + eq + machines + layout + chargers + unit_names +
+    A.hide(L, L.groups(*vlm_groups, *u2, *tray_groups) + eq + machines + layout + chargers + unit_names + u3_names +
            list(util.values()) + [n for v in tables.values() for n in v])
     L.skin(0.0)(1.0)
     L.show_gauges = False
@@ -1350,7 +1431,8 @@ def movie(data, idata):
     sc.step(f"5/{n}", "The floor machines, rigged in on pallet jacks and machine skates (the Aconity MIDI is "
             "1450 kg, the 100 kN Instron 799 kg), are set down fronts to the aisle: the glovebox (its antechamber to the aisle), "
             "the rePowder, the sieving cell, the Aconity MIDI, the packaging station; across the aisle the two "
-            "Instrons, the ducted fume hood, the DED and the wire EDM.", 5.8,
+            "Instrons, the ducted fume hood" + (" (its base the chemical waste's solvent and acid cabinets)"
+                                                if sc.members("waste") else "") + ", the DED and the wire EDM.", 5.8,
             stagger(fs_main, overlap=0.36), hold=1.2, cam_to=CAM_FLOOR,
             labels=W.auto(sc, CAM_FLOOR, W.floor_labels(F, main, have)))
     if late:
@@ -1371,7 +1453,9 @@ def movie(data, idata):
     def chargers_on(u):
         for nm in ch:
             sc.alpha[nm] = u
-    sc.step(f"6/{n}", "Two MiR Charge 48V chargers go in, then the first MiR250 rolls onto its charging plate.", 1.4,
+    sc.step(f"6/{n}", ("Three MiR Charge 48V chargers go in (the third, to the west, for the floor cleaner, unit 3), "
+                       if F.unit3 is not None else "Two MiR Charge 48V chargers go in, ") +
+            "then the first MiR250 rolls onto its charging plate.", 1.4,
             chargers_on, hold=0.1, cam_to=CAM_UNIT)
     base_names = u0.part_names("base")
 
@@ -1419,7 +1503,7 @@ def movie(data, idata):
             sc.alpha[nm] = min(1.0, u * 3)
     sc.step(f"6/{n}", "The Robotiq 2F-85 goes on the flange.", 1.4, gripper_on, hold=0.2)
     rb.set()
-    others = [nm for uu in units if uu is not u0 for nm in uu.all_names()]
+    others = [nm for uu in units if uu is not u0 for nm in uu.all_names()] + u3_names
     # round 13: it stretches straight up; round 12's stretch reached sideways, its wrist camera 12 mm into the second
     # unit's upper arm, 1.2 m away at the other charger
     q_ready = np.radians((-90.0, -90.0, 0.0, -90.0, -90.0, 180.0))
@@ -1427,10 +1511,10 @@ def movie(data, idata):
     def wake(u):
         for nm in others:
             sc.alpha[nm] = u
-    sc.step(f"6/{n}", "It wakes up and stretches. The second unit is built the same way at the other charger.", 1.8,
-            A.both(rb.joint_to(q_ready), wake), hold=0.2)
-    sc.step(f"6/{n}", "It wakes up and stretches. The second unit is built the same way at the other charger.", 1.4,
-            rb.joint_to(A.PARK_RAD), hold=0.4)
+    wake_cap = "It wakes up and stretches. The second unit is built the same way at the other charger" + \
+        (", and unit 3, the floor cleaner (orange band), at its own charger to the west." if u3_names else ".")
+    sc.step(f"6/{n}", wake_cap, 1.8, A.both(rb.joint_to(q_ready), wake), hold=0.2)
+    sc.step(f"6/{n}", wake_cap, 1.4, rb.joint_to(A.PARK_RAD), hold=0.4)
     # ------------------------------------------------------------------ 7. the trays
     def tables_on(u):
         for nm in (n for v in tables.values() for n in v):
@@ -1551,7 +1635,8 @@ def movie(data, idata):
                                         ("overhead cameras at the bay", services.bay_cam_point("back", X2))]))
     # ------------------------------------------------------------------ 9. orbit
     L.apply_state()
-    cap = (f"Set up: two Shuttles with trays A-{max(trays)}, the floor machines, two MiR250 + UR10e units on charge.")
+    cap = (f"Set up: two Shuttles with trays A-{max(trays)}, the floor machines, two MiR250 + UR10e units on charge" +
+           (", and unit 3, the floor cleaner, on its own charger." if u3_names else "."))
     sc.step(f"9/{n}", cap, 1.2, L.skin(0.0), hold=0.0)
     for i, cam in enumerate(ORBIT):
         last = i == len(ORBIT) - 1

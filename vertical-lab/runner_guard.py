@@ -164,9 +164,13 @@ def may_start(ticket: Path, need: int, free: int, avail: int) -> tuple[bool, int
     rank = names.index(ticket.name) if ticket.name in names else 0
     if free <= 0 or avail < need:
         return False, rank
+    ahead = q[:rank]
+    # round 15: a --low job (ticket ..._2) never backfills past a normal or quick waiter, even one held up by memory:
+    # the bulk final renders must not eat the memory a helper's fix audit is waiting for
+    if ticket.name.endswith("_2") and any(not n.endswith("_2") for n, _, _ in ahead):
+        return False, rank
     if rank < free:
         return True, rank
-    ahead = q[:rank]
     fit_ahead = sum(1 for _, nd, _ in ahead if nd <= avail)
     starving = any(nd > avail and time.time() - ts > BACKFILL_S for _, nd, ts in ahead)
     return (fit_ahead < free and not starving), rank

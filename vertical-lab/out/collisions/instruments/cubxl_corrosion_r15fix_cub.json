@@ -1,0 +1,216 @@
+{
+ "clip": "instruments/cubxl_corrosion",
+ "frames_checked": 959,
+ "frames_with_collisions": 0,
+ "runs": [],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 0,
+ "fps": 10,
+ "arm_seconds": 0.0,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 959,
+  "frames_moving": 782,
+  "frames_with_collisions": 16,
+  "runs": [
+   {
+    "label": "2/12",
+    "first_frame": 47,
+    "last_frame": 47,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "3/12",
+    "first_frame": 149,
+    "last_frame": 151,
+    "frames": 3,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip",
+      "body": "cubxl_corrosion:ptip/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 203,
+    "last_frame": 204,
+    "frames": 2,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tools",
+      "body": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other": "cubxl_corrosion:tip/lab_tip0",
+      "other_group": "cubxl_corrosion:tip",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 274,
+    "last_frame": 274,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip2/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip2",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "4/12",
+    "first_frame": 325,
+    "last_frame": 325,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip2",
+      "body": "cubxl_corrosion:ptip2/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 601,
+    "last_frame": 602,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip3/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip3",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 664,
+    "last_frame": 664,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip3",
+      "body": "cubxl_corrosion:ptip3/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 683,
+    "last_frame": 683,
+    "frames": 1,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:p3",
+      "body": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other": "cubxl_corrosion:ptip4/lab_tip0",
+      "other_group": "cubxl_corrosion:ptip4",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "9/12",
+    "first_frame": 804,
+    "last_frame": 804,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:ptip4",
+      "body": "cubxl_corrosion:ptip4/lab_tip0",
+      "other": "cubxl_corrosion:p3/lab_pip_shaft0",
+      "other_group": "cubxl_corrosion:p3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 870,
+    "last_frame": 870,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tools",
+      "body": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other": "cubxl_corrosion:tip3/lab_tip0",
+      "other_group": "cubxl_corrosion:tip3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 905,
+    "last_frame": 905,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tools",
+      "body": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other": "cubxl_corrosion:tip3/lab_tip0",
+      "other_group": "cubxl_corrosion:tip3",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "10/12",
+    "first_frame": 906,
+    "last_frame": 906,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cubxl_corrosion:tip3",
+      "body": "cubxl_corrosion:tip3/lab_tip0",
+      "other": "cubxl_corrosion:tools/lab_pip_shaft2",
+      "other_group": "cubxl_corrosion:tools",
+      "depth_mm": 3.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 14603,
+  "seconds": 1.9,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 16
+}

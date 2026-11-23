@@ -1,9 +1,15 @@
 """The Opentrons OT-2 on tray A as the CubXL's liquid station for the copper corrosion screen (#303): before a night
-it makes up one of the CubXL's electrolyte stocks, and after the night it dilutes each ICP-MS tube 10x in dilute nitric
-acid and makes a matrix-matched standard, so tray A's two machines read as one corrosion station.
+it makes up the CubXL's 0.1 mg/L sulfide stock in seawater, so tray A's two machines read as one corrosion station.
 
     xvfb-run --server-num=82 python3 ot2_corrosion.py   # -> out/instruments/ot2_corrosion_prep.{gif,png,json}, out/mp4/
     PREVIEW=1 xvfb-run --server-num=82 python3 ot2_corrosion.py     # the end of each action only, a contact sheet
+
+Round 15 (PR #318): no acid on this deck. Sterling, 2026-11-20: "an OT-2 probably doesn't have great compatibility
+with many of the solvents that would be required for ICP-MS and ICP-OES. And it would be very risky to try to put
+high-hazard chemicals on a tray." Round 14 moved the ICP-MS work to a station on the floor (icpms.py, notes/icpms.md),
+but this clip still diluted the tubes here: 100 uL of each into 900 uL of 2 % HNO3 from a reservoir trough, and a
+matrix-matched standard. Both are gone, with the acid trough, the blank matrix, the standard and the tube block's nine
+tube seats; the station's acid-rated dilutor makes the dilution and the standards in its own hood.
 
 What it does, and where each number comes from (DAL = digital-alloy-lab alloy-corrosion/copper/protocol.md at
 aeda51a, PR #180's head):
@@ -11,22 +17,19 @@ aeda51a, PR #180's head):
   and two sulfide stocks, 10 and 0.1 mg/L S, fresh each night, "the 0.1 mg/L stock from the 10 mg/L one, not from
   solid" (DAL section 3). Here the OT-2 makes that 1:100 dilution: 1980 uL of seawater (P300: 6 x 300 + 180 uL) and
   then 20 uL of the 10 mg/L stock (P20), sulfide last, 2.0 mL in a deep well, a night's worth (the CubXL draws at most
-  150 uL of it a well). DAL keeps the sulfide stocks deaerated with little headspace; an open deep well and a 20 mL deck
-  vial holding 2 mL don't, which is the open question this step leaves.
-* The tubes. Each corrosion well on the CubXL ends as one pre-weighed 0.5 mL PP tube: the well's 150 uL plus one
-  150 uL DI rinse, then 20 uL of 1 M trace-metal HNO3, 320 uL (DAL section 4, steps 11-12). A night is eight wells plus
-  the stock blank: nine tubes.
-* The dilution. "ICP-MS with a collision cell, after a 10x dilution in dilute HNO3" (DAL section 6): here 100 uL of the
-  tube into 900 uL of 2 % HNO3, 1.0 mL in a 2 mL deep well, which leaves 220 uL in the tube for a re-run.
-* The standard. 10 uL of a 1 mg/L multi-element standard (Cu, Ni, Fe, Mn, Al) into 990 uL of blank matrix (seawater
-  diluted as the samples are, in 2 % HNO3): 10 ug/L, matrix-matched. This one is our example of what digital-wetlab
-  PR #83's direction 5 asks the OT-2 for ("the electrolyte matrix ... the matrix-matched ICP-OES dilutions",
-  grants/ot2-new-directions/README.md at aff0623, section 5); DAL's protocol names no standards.
+  150 uL of it a well). This is digital-wetlab PR #83's direction 5 for the OT-2, "the electrolyte matrix"
+  (grants/ot2-new-directions/README.md at aff0623, section 5); its other half, "the matrix-matched ICP-OES dilutions",
+  is the station's now. DAL keeps the sulfide stocks deaerated with little headspace; an open deep well and a 20 mL
+  deck vial holding 2 mL don't, which is the open question this step leaves.
+* The tubes don't come here. Each corrosion well on the CubXL ends as one pre-weighed 0.5 mL PP tube: the well's
+  150 uL, one 150 uL DI rinse and 20 uL of 1 M trace-metal HNO3, which the CubXL adds itself at once, from a capped
+  vial (DAL section 4, steps 11-12): 320 uL at 62 mM. DAL section 9: "Only 1 M trace-metal HNO3 goes on the deck, in a
+  capped vial. Dilute it from the concentrated acid in the fume hood only", and "Label them, cap them in the morning,
+  and store them for ICP." The capped tubes go to the ICP-MS station (notes/icpms.md).
 * The pipettes are the two in the OT-2's STEP: a P300 single (30-300 uL, Opentrons 300 uL tips) on the right mount
-  for the seawater, the diluent, the sample and the mixing; a P20 single (1-20 uL, 20 uL tips) on the left for the
-  20 and 10 uL.
-* Every liquid is drawn at the height its volume gives in its own vessel, so the 10 uL and the 1.5 mm the acid trough
-  drops are to scale too. The panel at the top right reads the volumes out as they change.
+  for the seawater; a P20 single (1-20 uL, 20 uL tips) on the left for the 20 uL of sulfide.
+* Every liquid is drawn at the height its volume gives in its own vessel, so the 3.4 mm the seawater trough drops is
+  to scale too. The panel at the top right reads the volumes out as they change.
 
 The OT-2 is Opentrons' reference STEP split into the pieces that move exactly as PR #320 does it
 (instruments_round2.py at 5a39245): OT2_SOLIDS, OT2, the _ot2_* helpers, grow, trace and half are copied from there,
@@ -51,19 +54,12 @@ KEY = "ot2_corrosion_prep"          # longform.py reads out/mp4/instruments/<KEY
 NAME = f"instruments/{KEY}"
 
 # name: (r, g, b, opacity, specular), merged into tour.MATS
-MATERIALS = {
-    "oc_diluent": (0.55, 0.76, 0.96, 0.80, 0.6),        # 2 % HNO3, the samples' diluent
-    "oc_diluent_cut": (0.42, 0.66, 0.92, 1.0, 0.4),
-    "oc_blank": (0.50, 0.80, 0.78, 0.85, 0.5),          # the matrix-matched blank
-    "oc_blank_cut": (0.38, 0.70, 0.68, 1.0, 0.4),
-    "oc_sample": (0.18, 0.58, 0.60, 0.85, 0.5),         # a tube from the CubXL: seawater, metal, HNO3
-    "oc_sample_cut": (0.14, 0.50, 0.52, 1.0, 0.4),
-    "oc_std": (0.95, 0.55, 0.15, 0.90, 0.5),            # the 1 mg/L multi-element standard
+MATERIALS = {   # round 15: the acid diluent, the blank matrix, the samples and the standard went with the dilution
     "oc_asw": (0.66, 0.84, 0.93, 0.80, 0.6),            # seawater, ASTM D1141 (and the 0.1 mg/L S made in it)
     "oc_asw_cut": (0.54, 0.76, 0.88, 1.0, 0.4),
     "oc_sulf": (0.92, 0.82, 0.42, 0.90, 0.5),           # the 10 mg/L sulfide stock
     "oc_tip": (0.90, 0.91, 0.88, 0.62, 0.4),            # a polypropylene pipette tip
-    "oc_tube": (0.92, 0.92, 0.88, 0.55, 0.4),           # a 0.5 mL PP tube, cut
+    "oc_tube": (0.92, 0.92, 0.88, 0.55, 0.4),           # the stock's 1.5 mL PP tube
 }
 
 
@@ -176,18 +172,15 @@ def _ot2_pipette(solid, name: str) -> list:
 TIP300 = dict(total=64.49, length=59.3, top_d=7.3)          # labware.tiprack("300ul")
 TIP20 = dict(total=64.69, length=39.2, top_d=5.6)           # labware.tiprack("20ul")
 COLLAR = 9.0                                                # labware.tiprack's collar above the rack's deck
-# The tube block, printed, on an SBS footprint (ours): the night's 0.5 mL PP tubes on DAL's 2 x 8 rack pitch (12 mm
-# in x, 18 mm between rows; plot_deck_layout.py TUBE_X, TUBE_Y), tubes 1-8 (the eight wells) in the front row, tube 9
-# (the stock blank) behind, and two 1.5 mL tubes: the 10 mg/L sulfide stock and the ICP-MS standard. The block is cut
-# through the front row, so tube 1 shows.
-BLOCK = dict(H=28.0, dx=12.0, dy=18.0, hole=8.4, hole_std=11.0, std_x=30.0, sulf_x=4.0)
-TUBE05 = dict(L=30.5, rim_z=29.0, rim_r=4.6, floor=0.8, r0=0.7, cone_z=13.0, r1=3.0, r_top=3.25, ul=320.0)
+# The stock block, printed, on an SBS footprint (ours): one seat for a 1.5 mL tube, the 10 mg/L sulfide stock, at its
+# middle. Round 15: its nine 0.5 mL seats (the night's ICP-MS tubes, for the dilution) and the standard's seat are gone.
+BLOCK = dict(H=28.0, hole_std=11.0)
 # NEST 12-well reservoir, 15 mL (360102; Opentrons nest_12_reservoir_15ml): 127.76 x 85.48 x 31.4, troughs 8.2 x 71.2
-# at a 9 mm pitch, 26.85 deep, A1 14.38 from the left. Trough 1: 2 % HNO3; trough 2: seawater (ASTM D1141 without
-# the heavy metals, DAL protocol section 3); trough 3: the blank matrix.
-RES = dict(H=31.4, w=8.2, l=71.2, depth=26.85, a1x=14.38, pitch=9.0, ml=12.0, ml3=10.0)
-TUBE15_UL = 1000.0                                         # in each 1.5 mL tube
-WELL_UL = dict(asw=1980.0, sulf=20.0, diluent=900.0, sample=100.0, mix=250.0, blank=990.0, std=10.0)
+# at a 9 mm pitch, 26.85 deep, A1 14.38 from the left. Trough 1: seawater (ASTM D1141 without the heavy metals, DAL
+# protocol section 3); the rest empty (round 15: the 2 % HNO3 and the blank matrix went with the dilution).
+RES = dict(H=31.4, w=8.2, l=71.2, depth=26.85, a1x=14.38, pitch=9.0, ml=12.0)
+TUBE15_UL = 1000.0                                         # in the 1.5 mL tube
+WELL_UL = dict(asw=1980.0, sulf=20.0)
 
 
 def _revolve(pts, x=0.0, y=0.0, z=0.0) -> cq.Workplane:
@@ -205,36 +198,6 @@ def _frustum_h(v_ul: float, r0: float, slope: float) -> float:
     return (lo + hi) / 2
 
 
-def _tube05_level(v_ul: float) -> float:
-    """Height above the tube's outer bottom of v_ul in a 0.5 mL tube (TUBE05: a cone, then a near-cylinder)."""
-    t = TUBE05
-    hc = t["cone_z"] - t["floor"]
-    slope = (t["r1"] - t["r0"]) / hc
-    vc = math.pi * hc / 3 * (t["r0"] ** 2 + t["r0"] * t["r1"] + t["r1"] ** 2)
-    if v_ul <= vc:
-        return t["floor"] + _frustum_h(v_ul, t["r0"], slope)
-    return t["cone_z"] + (v_ul - vc) / (math.pi * t["r1"] ** 2)
-
-
-def _tube05(x, y, z):
-    """A 0.5 mL PP tube standing at (x, y, z): its wall, open at the top."""
-    t = TUBE05
-    outer = _revolve([(0, 0), (1.5, 0), (3.6, t["cone_z"]), (3.95, t["rim_z"]), (t["rim_r"], t["rim_z"]),
-                      (t["rim_r"], t["L"]), (0, t["L"])], x, y, z)
-    inner = _revolve([(0, t["floor"]), (t["r0"], t["floor"]), (t["r1"], t["cone_z"]), (t["r_top"], t["L"] + 1),
-                      (0, t["L"] + 1)], x, y, z)
-    return outer.cut(inner)
-
-
-def _tube05_liquid(x, y, z, v_ul):
-    """(the cone of liquid, a cylinder on it up to v_ul's level, its height) in a 0.5 mL tube at (x, y, z)."""
-    t = TUBE05
-    r0, r1 = t["r0"] - 0.03, t["r1"] - 0.03
-    cone = _revolve([(0, t["floor"] + 0.05), (r0, t["floor"] + 0.05), (r1, t["cone_z"]), (0, t["cone_z"])], x, y, z)
-    h = _tube05_level(v_ul) - t["cone_z"]
-    return cone, cyl(2 * r1, h, x=x, y=y, z=z + t["cone_z"]), h
-
-
 def _tube15_liquid(x, y, z, v_ul):
     """v_ul in an open 1.5 mL tube (labware.microtube: its bore 1.8 -> 4.35 mm in radius over 1-18.9, then ~4.42)."""
     vc = math.pi * 17.85 / 3 * (1.75 ** 2 + 1.75 * 4.30 + 4.30 ** 2)
@@ -243,18 +206,10 @@ def _tube15_liquid(x, y, z, v_ul):
 
 
 def _block(cx, cy, z):
-    """The printed tube block: nine 0.5 mL tube holes, and two for 1.5 mL tubes (the sulfide stock, the standard)."""
+    """The printed stock block: one seat, for the 10 mg/L sulfide stock's 1.5 mL tube. -> (the block, the seat's x, y)"""
     import labware
-    b = BLOCK
-    blk = rbox(labware.SBS_W, labware.SBS_D, b["H"], labware.SBS_R, x=cx, y=cy, z=z)
-    holes = [(cx - 3.5 * b["dx"] + b["dx"] * k, cy - b["dy"] / 2) for k in range(8)] + \
-        [(cx - 3.5 * b["dx"], cy + b["dy"] / 2)]
-    for hx, hy in holes:
-        blk = blk.cut(cyl(b["hole"], b["H"], x=hx, y=hy, z=z + 1.0))
-    big = [(cx + b["sulf_x"], cy + b["dy"] / 2), (cx + b["std_x"], cy + b["dy"] / 2)]
-    for hx, hy in big:
-        blk = blk.cut(cyl(b["hole_std"], b["H"], x=hx, y=hy, z=z + 1.0))
-    return blk, holes, big
+    blk = rbox(labware.SBS_W, labware.SBS_D, BLOCK["H"], labware.SBS_R, x=cx, y=cy, z=z)
+    return blk.cut(cyl(BLOCK["hole_std"], BLOCK["H"], x=cx, y=cy, z=z + 1.0)), (cx, cy)
 
 
 def _reservoir(cx, cy, z):
@@ -284,13 +239,11 @@ def _scale_z(z0: float):
     return [[0.0] * 4, [0.0] * 4, [0.0, 0.0, 1.0, -z0]]
 
 
-P300_TIPS = {"tipA": (0, "A1"), "tipB": (1, "B1"), "tipC": (2, "C1")}     # rows of column 1, Opentrons' pick order
-P20_TIPS = {"tipP": (0, "A1"), "tipQ": (1, "B1")}
+P300_TIPS = {"tipA": (0, "A1")}                    # row of column 1 (Opentrons' pick order starts at A1)
+P20_TIPS = {"tipP": (0, "A1")}
 TIP_LIQ = {   # piece: (its tip, uL, material)
-    "tlA": ("tipA", 300.0, "oc_asw"), "tlA2": ("tipA", 180.0, "oc_asw"), "tlB": ("tipB", 300.0, "oc_diluent"),
-    "tlC1": ("tipC", 100.0, "oc_sample"), "tlC2": ("tipC", 250.0, "oc_diluent"), "tlP": ("tipP", 20.0, "oc_sulf"),
-    "tlQ": ("tipQ", 10.0, "oc_std")}
-LEVELS = ("h6", "h1", "h12", "t1", "res1", "res2")     # liquids that rise and fall, and hide while their vessel is empty
+    "tlA": ("tipA", 300.0, "oc_asw"), "tlA2": ("tipA", 180.0, "oc_asw"), "tlP": ("tipP", 20.0, "oc_sulf")}
+LEVELS = ("h6", "res1")     # liquids that rise and fall, and hide while their vessel is empty
 
 
 def ot2_corrosion() -> Instrument:
@@ -302,15 +255,14 @@ def ot2_corrosion() -> Instrument:
     ox, oy, oz = p["nozzle"]
     lx, ly, lz = P20["nozzle"]
     inst = Instrument(
-        KEY, "Electrolyte and ICP-MS sample prep for the CubXL's corrosion screen", "Opentrons OT-2",
+        KEY, "The sulfide stock for the CubXL's corrosion screen", "Opentrons OT-2",
         (624.3, 567.4, 662.0),
         "Opentrons' reference STEP (github.com/Opentrons/ot2), split as PR #320 does it; deck slots from Opentrons' "
-        "ot2_standard.json; the stocks, tubes and volumes from DAL alloy-corrosion/copper/protocol.md at aeda51a "
-        "(sections 3, 4 and 6); the role from digital-wetlab PR #83, direction 5",
-        props=(*P300_TIPS, *P20_TIPS, *(f"{k}_xy" for k in (*P300_TIPS, *P20_TIPS)), *TIP_LIQ, *LEVELS, "night",
-               "before", *(q for q, _, _, _ in ROWS), "qphase"))
+        "ot2_standard.json; the stocks and volumes from DAL alloy-corrosion/copper/protocol.md at aeda51a "
+        "(sections 3, 4 and 9); the role from digital-wetlab PR #83, direction 5",
+        props=(*P300_TIPS, *P20_TIPS, *(f"{k}_xy" for k in (*P300_TIPS, *P20_TIPS)), *TIP_LIQ, *LEVELS,
+               *(q for q, _, _ in ROWS)))
     body, frame, panels = _piece(inst, "body"), _piece(inst, "frame"), _piece(inst, "panels")
-    night, before = _piece(inst, "night"), _piece(inst, "before")       # what is on the deck only after / before
     # ---- the frame solid, split (PR #320): the X beam (gantry), the fixed trash (a bin cut into its block), the rest
     beam, rest = _ot2_split(S(OT2_SOLIDS["frame"]), p["beam"])
     trash, rest = _ot2_split(rest, p["trash"])
@@ -356,60 +308,38 @@ def ot2_corrosion() -> Instrument:
             _piece(inst, f"{name}_xy")                         # no parts: carries its tip in x and y
             tip_xy[name] = _ot2_well(slot, 14.38, 11.24, tips[name][0], 0)
             tip_z0[name] = top - length
-    # the tube block in slot 2, cut through its front row; the night's tubes appear after the night
+    # the stock block in slot 2: the 10 mg/L sulfide stock, an open 1.5 mL tube (its lid left off)
     s2x, s2y = _ot2_slot(2)
-    blk, holes, ((sfx, sfy), (stx, sty)) = _block(s2x + labware.SBS_W / 2, s2y + labware.SBS_D / 2, dz)
-    cut_y = holes[0][1]
-    body.add("tube block", half(blk, cut_y), "pla_white")
-    tz = dz + 1.0                                              # the tubes' outer bottoms, on the holes' floors
-    for i, (hx, hy) in enumerate(holes):
-        front = i < 8
-        shell_ = _tube05(hx, hy, tz)
-        night.add(f"tube {i + 1}", half(shell_, cut_y) if front else shell_, "oc_tube")
-        cone, cylp, h320 = _tube05_liquid(hx, hy, tz, TUBE05["ul"])
-        if front:
-            cone, cylp = half(cone, cut_y), half(cylp, cut_y)
-        night.add(f"tube {i + 1} liquid cone", cone, "oc_sample_cut" if front else "oc_sample")
-        if i == 0:
-            _piece(inst, "t1").add("tube 1 liquid", cylp, "oc_sample_cut")
-        else:
-            night.add(f"tube {i + 1} liquid", cylp, "oc_sample_cut" if front else "oc_sample")
-    t1x, t1y = holes[0]
-    h220 = _tube05_level(TUBE05["ul"] - WELL_UL["sample"]) - TUBE05["cone_z"]
-    mt = labware.microtube().parts[0].shape                    # an open 1.5 mL tube, its lid left off
-    before.add("sulfide stock tube", mt.moved(cq.Location(cq.Vector(sfx, sfy, tz))), "oc_tube")
-    before.add("10 mg/L sulfide stock", _tube15_liquid(sfx, sfy, tz, TUBE15_UL), "oc_sulf")
-    night.add("standard's tube", mt.moved(cq.Location(cq.Vector(stx, sty, tz))), "oc_tube")
-    night.add("1 mg/L standard", _tube15_liquid(stx, sty, tz, TUBE15_UL), "oc_std")
-    # the 2 mL deep-well plate in slot 3, cut through row H: H6 the sulfide working stock, H1 sample 1, H12 a standard
+    blk, (sfx, sfy) = _block(s2x + labware.SBS_W / 2, s2y + labware.SBS_D / 2, dz)
+    body.add("stock block", blk, "pla_white")
+    tz = dz + 1.0                                              # the tube's outer bottom, on its seat's floor
+    mt = labware.microtube().parts[0].shape
+    body.add("sulfide stock tube", mt.moved(cq.Location(cq.Vector(sfx, sfy, tz))), "oc_tube")
+    body.add("10 mg/L sulfide stock", _tube15_liquid(sfx, sfy, tz, TUBE15_UL), "oc_sulf")
+    # the 2 mL deep-well plate in slot 3, cut through row H: H6 takes the 0.1 mg/L S working stock
     deep = labware.PLATES["96_deep"]
-    wx = {c: _ot2_well(3, deep["a1x"], deep["a1y"], 7, c - 1) for c in (1, 6, 12)}
+    wx6 = _ot2_well(3, deep["a1x"], deep["a1y"], 7, 5)
+    wx1 = _ot2_well(3, deep["a1x"], deep["a1y"], 7, 0)
     plate = _ot2_seat(labware.plate("96_deep"), 3)
-    body.add("deep-well plate", half(cq.Workplane().add(plate.parts[0].shape), wx[1][1]), "polystyrene")
+    body.add("deep-well plate", half(cq.Workplane().add(plate.parts[0].shape), wx6[1]), "polystyrene")
     w_bot = dz + deep["H"] - deep["depth"]
     w_area = (deep["well"] - 0.1) ** 2
     lvl = lambda ul: ul / w_area                                # noqa: E731  height of ul in a deep well
     wl = deep["well"] / 2 - 0.05
-    ref = {"h6": 2000.0, "h1": 1000.0, "h12": 1000.0}
-    for key, col, mat, what in (("h6", 6, "oc_asw_cut", "0.1 mg/L S"), ("h1", 1, "oc_diluent_cut", "sample 1, 10x"),
-                                ("h12", 12, "oc_blank_cut", "standard")):
-        x, y = wx[col]
-        _piece(inst, key).add(f"H{col}: {what}", half(box(x - wl, y - wl, w_bot, x + wl, y + wl,
-                                                          w_bot + lvl(ref[key])), y), mat)
-    # the reservoir in slot 5
+    ref = {"h6": 2000.0}
+    x6, y6 = wx6
+    _piece(inst, "h6").add("H6: 0.1 mg/L S", half(box(x6 - wl, y6 - wl, w_bot, x6 + wl, y6 + wl,
+                                                      w_bot + lvl(ref["h6"])), y6), "oc_asw_cut")
+    # the reservoir in slot 5: seawater in trough 1, the other troughs empty
     s5x, s5y = _ot2_slot(5)
     res, troughs, r_bot = _reservoir(s5x + labware.SBS_W / 2, s5y + labware.SBS_D / 2, dz)
     body.add("12-well reservoir", res, "polypropylene")
     r_area = (RES["w"] - 0.1) * (RES["l"] - 0.1)
     r_h = RES["ml"] * 1000.0 / r_area
-
-    def trough(i, h):
-        x, y = troughs[i]
-        return box(x - RES["w"] / 2 + 0.05, y - RES["l"] / 2 + 0.05, r_bot + 0.05, x + RES["w"] / 2 - 0.05,
-                   y + RES["l"] / 2 - 0.05, r_bot + h)
-    _piece(inst, "res1").add("2% HNO3", trough(0, r_h), "oc_diluent")
-    _piece(inst, "res2").add("seawater", trough(1, r_h), "oc_asw")
-    night.add("blank matrix", trough(2, RES["ml3"] * 1000.0 / r_area), "oc_blank")
+    sea = troughs[0]
+    _piece(inst, "res1").add("seawater", box(sea[0] - RES["w"] / 2 + 0.05, sea[1] - RES["l"] / 2 + 0.05, r_bot + 0.05,
+                                             sea[0] + RES["w"] / 2 - 0.05, sea[1] + RES["l"] / 2 - 0.05, r_bot + r_h),
+                             "oc_asw")
     # liquid in the tips, each modelled full in its tip in the rack: a cone from the tip's end up the bore
     slope = {300: (TIP300["top_d"] / 2 - 1.7) / (TIP300["length"] - COLLAR - 2.0),
              20: (TIP20["top_d"] / 2 - 1.7) / (TIP20["length"] - COLLAR - 2.0)}
@@ -444,32 +374,28 @@ def ot2_corrosion() -> Instrument:
     def fall(tip, jx):                               # a tip pushed off over the trash, landing on the bin's floor
         x, y = tip_xy[tip]
         return {tip: (tcx - x + jx, tcy - y - 4.0, bin_floor + 0.4 - tip_z0[tip])}
-    hide, full, shown0 = (1.0, -1.0), (0.0, 0.0), (0.0, -0.999)
+    # hidden: sunk out of sight and flattened, not to zero (round 15: a zero scale is a singular matrix, which stopped
+    # ARM_AUDIT's movers check, collide.Movers, on the first frame)
+    hide, full, shown0 = (1.0, -0.999), (0.0, 0.0), (0.0, -0.999)
 
     def level(key, ul):                              # a level channel: (hidden, stretch)
         if ul <= 0:
             return hide
         if key in ref:
             return (0.0, lvl(ul) / lvl(ref[key]) - 1.0)
-        if key == "t1":
-            return (0.0, (_tube05_level(ul) - TUBE05["cone_z"]) / h320 - 1.0)
-        return (0.0, ul / r_area / r_h - 1.0)        # a reservoir trough
+        return (0.0, ul / r_area / r_h - 1.0)        # the seawater trough
 
-    res = {0: troughs[0], 1: troughs[1]}
     asp_res = r_bot + 2.0 + o300                     # the P300's nozzle with its tip end 2 mm off the trough's floor
     dsp_top = dz + deep["H"] - 3.0 + o300            # tip end 3 mm into the well: dispensing from above the liquid
-    in_well = w_bot + 2.0 + o300                     # tip end 2 mm off the well's floor
-    asp_t1 = tz + TUBE05["floor"] + 1.5 + o300       # 1.5 mm off the tube's floor
     asp_15 = tz + 1.0 + 2.0 + o20                    # 2 mm off a 1.5 mL tube's floor
-    vol = dict(h6=0.0, h1=0.0, h12=WELL_UL["blank"], t1=TUBE05["ul"], res1=RES["ml"] * 1000.0,
-               res2=RES["ml"] * 1000.0)
+    vol = dict(h6=0.0, res1=RES["ml"] * 1000.0)
 
     def xfer(tip, tl, src_key, src_xy, z_src, dst_key, dst_xy, z_dst, ul, f=1.0):
         """One P300 transfer from travel height and back: down, draw, up, across, down, dispense, up."""
         vol[src_key] -= ul
         first = vol[dst_key] <= 0
         vol[dst_key] += ul
-        q = {"h6": "qh6", "h1": "qh1", "res1": "qres1", "res2": "qres2", "t1": "qt1"}
+        q = {"h6": "qh6", "res1": "qres1"}
         return [(0.16 * f, a3(tip, src_xy, zt)), (0.10 * f, a3(tip, src_xy, z_src)), (0.003, {tl: shown0}),
                 (0.14 * f, {tl: full, "q300": ul, q[src_key]: vol[src_key], src_key: level(src_key, vol[src_key])}),
                 (0.08 * f, a3(tip, src_xy, zt)), (0.15 * f, a3(tip, dst_xy, zt)), (0.07 * f, a3(tip, dst_xy, z_dst)),
@@ -479,23 +405,14 @@ def ot2_corrosion() -> Instrument:
     asw = []
     for k in range(1, 8):                                       # 6 x 300 + 180 = 1980 uL
         ul = 300.0 if k < 7 else 180.0
-        asw += xfer("tipA", "tlA" if k < 7 else "tlA2", "res2", res[1], asp_res, "h6", wx[6], dsp_top, ul, f=0.6)
-    dil = [xfer("tipB", "tlB", "res1", res[0], asp_res, "h1", wx[1], dsp_top, 300.0, f=1.0 if k == 0 else 0.65)
-           for k in range(3)]
-    mix = []
-    for _ in range(3):
-        mix += [(0.003, dict(tlC2=shown0)),
-                (0.14, dict(tlC2=full, q300=WELL_UL["mix"], qh1=1000.0 - WELL_UL["mix"],
-                            h1=level("h1", 1000.0 - WELL_UL["mix"]))),
-                (0.14, dict(tlC2=shown0, q300=0.0, qh1=1000.0, h1=level("h1", 1000.0))), (0.003, dict(tlC2=hide))]
+        asw += xfer("tipA", "tlA" if k < 7 else "tlA2", "res1", sea, asp_res, "h6", wx6, dsp_top, ul, f=0.6)
     sulf_in = w_bot + lvl(WELL_UL["asw"]) - 3.0 + o20          # the P20's tip end 3 mm under H6's surface
-    std_in = w_bot + lvl(WELL_UL["blank"]) - 3.0 + o20
     script = [
-        ("The OT-2 beside the CubXL on tray A makes the corrosion screen's liquids. Its door, windows and frame "
-         "fade: a P300 on the right mount, a P20 on the left.", 2.4,
+        ("The OT-2 beside the CubXL on tray A makes the CubXL's sulfide stock in seawater. Its door, windows and "
+         "frame fade: a P300 on the right mount, a P20 on the left.", 2.4,
          {"~panels": (0.0, 1.0), "~frame": (0.0, 0.55), "~cover": (0.0, 0.8)}, [(1.0, {})]),
         ("Before a night: the CubXL's 0.1 mg/L sulfide stock, made from its 10 mg/L stock, not from solid (DAL "
-         "protocol §3). The P300 takes a tip and puts 300 µL of seawater (ASTM D1141) from trough 2 into deep well H6.",
+         "protocol §3). The P300 takes a tip and puts 300 µL of seawater (ASTM D1141) from trough 1 into deep well H6.",
          4.6, {}, [(0.62, {"head": head(*tip_xy["tipA"], zt)}), (0.38, {"head": pick["tipA"]}),
                    (0.12, a3("tipA", tip_xy["tipA"], zt))] + asw[:11]),
         ("Six more transfers, five of 300 µL and one of 180: 1980 µL, all from above the liquid. The tip goes into "
@@ -506,51 +423,18 @@ def ot2_corrosion() -> Instrument:
          [(0.10, {"head": (*head(tcx, tcy, zt)[:2], 0.0)}), (0.14, {"head": head20(*tip_xy["tipP"]), "p20": zt - lz}),
           (0.08, {"p20": pick["tipP"][2]}), (0.07, a2("tipP", tip_xy["tipP"], zt)), (0.12, a2("tipP", (sfx, sfy), zt)),
           (0.08, a2("tipP", (sfx, sfy), asp_15)), (0.003, dict(tlP=shown0)), (0.08, dict(tlP=full, q20=20.0)),
-          (0.06, a2("tipP", (sfx, sfy), zt)), (0.14, a2("tipP", wx[6], zt)), (0.07, a2("tipP", wx[6], sulf_in)),
+          (0.06, a2("tipP", (sfx, sfy), zt)), (0.14, a2("tipP", wx6, zt)), (0.07, a2("tipP", wx6, sulf_in)),
           (0.08, dict(tlP=shown0, q20=0.0, qh6=2000.0, h6=level("h6", 2000.0))), (0.003, dict(tlP=hide)),
-          (0.06, a2("tipP", wx[6], zt)), (0.20, a2("tipP", (tcx, tcy), zt)), (0.003, {}),
+          (0.06, a2("tipP", wx6, zt)), (0.20, a2("tipP", (tcx, tcy), zt)), (0.003, {}),
           (0.18, fall("tipP", 24.0))]),
-        ("After the night: H6's stock has gone to the CubXL's vial, and the night's nine 0.5 mL tubes are in slot 2, "
-         "320 µL each: a well's 150 µL, a 150 µL DI rinse and 20 µL of 1 M HNO3 (DAL protocol §4).", 3.6,
-         {"night": (0.0, 1.0), "before": (1.0, 0.0)},
-         [(0.30, {"head": (0.0, 0.0, 0.0), "p20": 0.0}), (0.003, dict(h6=hide, qh6=0.0, t1=level("t1", 320.0),
-                                                                      res1=level("res1", 12000.0), qphase=1.0,
-                                                                      h12=level("h12", WELL_UL["blank"]),
-                                                                      res2=hide)),
-          (0.40, {}), (0.62 * 0.5, {"head": head(*tip_xy["tipB"], zt)}), (0.38 * 0.5, {"head": pick["tipB"]})]),
-        ("A fresh tip draws 300 µL of 2% HNO3 from trough 1 and dispenses it into deep well H1 from above the liquid, "
-         "so it touches nothing but the acid.", 4.6, {}, [(0.12, a3("tipB", tip_xy["tipB"], zt))] + dil[0]),
-        ("Twice more: 900 µL in H1. The same tip would give each of the nine samples' wells its 900 µL.", 3.8, {},
-         dil[1] + dil[2]),
-        ("That tip goes into the trash, and the P300 takes a fresh one for the sample.", 3.4, {},
-         [(0.32, a3("tipB", (tcx, tcy), zt)), (0.003, {}), (0.25, fall("tipB", -8.0)),
-          (0.28, {"head": head(*tip_xy["tipC"], zt)}), (0.15, {"head": pick["tipC"]})]),
-        ("100 µL of tube 1 into H1's 900 µL: 1.0 mL, the 10x dilution in dilute HNO3 that DAL's protocol asks for "
-         "before ICP-MS (§6). 220 µL stay in the tube for a re-run.", 4.8, {},
-         [(0.10, a3("tipC", tip_xy["tipC"], zt)), (0.16, a3("tipC", (t1x, t1y), zt)),
-          (0.12, a3("tipC", (t1x, t1y), asp_t1)), (0.003, dict(tlC1=shown0)),
-          (0.12, dict(tlC1=full, q300=WELL_UL["sample"], qt1=220.0, t1=level("t1", 220.0))),
-          (0.08, a3("tipC", (t1x, t1y), zt)), (0.16, a3("tipC", wx[1], zt)), (0.10, a3("tipC", wx[1], in_well)),
-          (0.12, dict(tlC1=shown0, q300=0.0, qh1=1000.0, h1=level("h1", 1000.0))), (0.003, dict(tlC1=hide))]),
-        ("It mixes in the well: three times 250 µL up and back.", 2.8, {}, mix),
-        ("The tip goes into the trash. Tubes 2 to 9 get the same, a fresh tip each.", 2.6, {},
-         [(0.20, a3("tipC", wx[1], zt)), (0.45, a3("tipC", (tcx, tcy), zt)), (0.003, {}),
-          (0.35, fall("tipC", 8.0))]),
-        ("A matrix-matched standard (our example; DAL names none): the P20 adds 10 µL of a 1 mg/L Cu, Ni, Fe, Mn, Al "
-         "standard to 990 µL of blank matrix in H12 (seawater diluted as the samples are): 10 µg/L.", 5.6, {},
-         [(0.10, {"head": (*head(tcx, tcy, zt)[:2], 0.0)}), (0.16, {"head": head20(*tip_xy["tipQ"]), "p20": zt - lz}),
-          (0.08, {"p20": pick["tipQ"][2]}), (0.07, a2("tipQ", tip_xy["tipQ"], zt)), (0.14, a2("tipQ", (stx, sty), zt)),
-          (0.08, a2("tipQ", (stx, sty), asp_15)), (0.003, dict(tlQ=shown0)), (0.08, dict(tlQ=full, q20=10.0)),
-          (0.06, a2("tipQ", (stx, sty), zt)), (0.14, a2("tipQ", wx[12], zt)), (0.06, a2("tipQ", wx[12], std_in)),
-          (0.08, dict(tlQ=shown0, q20=0.0, qh12=1000.0, h12=level("h12", 1000.0))), (0.003, dict(tlQ=hide))]),
-        ("Its tip goes into the trash and the head parks. The plate goes to the ICP-MS: a collision cell, Cu, Ni, Fe "
-         "and Mn in every sample, Al on NAB.", 3.4, {},
-         [(0.08, a2("tipQ", wx[12], zt)), (0.36, a2("tipQ", (tcx, tcy), zt)), (0.003, {}),
-          (0.30, fall("tipQ", 0.0)), (0.30, {"head": (0.0, 0.0, 0.0), "p20": 0.0})]),
+        # round 15 (PR #318, Sterling 2026-11-20: acids off the trays): the ICP-MS dilution and standard that followed
+        # here moved to the floor's ICP-MS station (icpms.py); the clip ends with where the tubes go instead
+        ("The head parks. No acid on this deck: the CubXL adds 20 µL of 1 M HNO3 to each of its tubes itself, and "
+         "the capped tubes go to the ICP-MS station on the floor, whose dilutor in a metal-free fume hood makes the "
+         "10x dilution.", 6.0, {}, [(0.35, {"head": (0.0, 0.0, 0.0), "p20": 0.0}), (0.65, {})]),
     ]
-    state = dict(head=(0.0, 0.0, 0.0), p20=0.0, qphase=0.0, q300=0.0, q20=0.0, qh6=0.0, qt1=TUBE05["ul"], qh1=0.0,
-                 qh12=WELL_UL["blank"], qres1=RES["ml"] * 1000.0, qres2=RES["ml"] * 1000.0,
-                 h6=hide, h1=hide, h12=hide, t1=hide, res1=hide, res2=level("res2", RES["ml"] * 1000.0),
+    state = dict(head=(0.0, 0.0, 0.0), p20=0.0, q300=0.0, q20=0.0, qh6=0.0, qres1=RES["ml"] * 1000.0,
+                 h6=hide, res1=level("res1", RES["ml"] * 1000.0),
                  **{t: (0.0, 0.0, 0.0) for t in (*P300_TIPS, *P20_TIPS)}, **{k: hide for k in TIP_LIQ})
     states, taus = [], []
     for _, _, _, segs in script:
@@ -572,10 +456,9 @@ def ot2_corrosion() -> Instrument:
         **{f"{t}_xy": ((lambda tt: lambda s: s[tt][:2])(t), (0, 1), 2) for t in tips},
         **{t: ((lambda tt: lambda s: (s[tt][2],))(t), (2,), 0) for t in tips},
         **{k: (sv(k), (0, 2), 1) for k in (*TIP_LIQ, *LEVELS)},
-        **{k: (sc1(k), (0,), 1) for k in (*(q for q, _, _, _ in ROWS), "qphase")},
+        **{q: (sc1(q), (0,), 1) for q, _, _ in ROWS},
     }
-    z0s = {**{k: tip_z0[t] + 0.3 for k, (t, _, _) in TIP_LIQ.items()}, "h6": w_bot, "h1": w_bot, "h12": w_bot,
-           "t1": tz + TUBE05["cone_z"], "res1": r_bot + 0.05, "res2": r_bot + 0.05}
+    z0s = {**{k: tip_z0[t] + 0.3 for k, (t, _, _) in TIP_LIQ.items()}, "h6": w_bot, "res1": r_bot + 0.05}
     parents = {"carriage": "gantry", "pipette": "carriage", "p20": "carriage", **{t: f"{t}_xy" for t in tips},
                **{k: t for k, (t, _, _) in TIP_LIQ.items()}}
     ends = {}
@@ -593,43 +476,33 @@ def ot2_corrosion() -> Instrument:
             j = Joint("follow", path=path, jac=(_move(0), ZERO, ZERO))
         inst.joints[name] = j
     inst.joints["cover"] = Joint("slide", vec=(0.0, 0.0, 0.0), parent="carriage")
-    inst.joints["night"] = Joint("fade", v0=0.0)
-    inst.joints["before"] = Joint("fade", v0=1.0)
     for i, (cap, secs, extra, _) in enumerate(script):
         tg = {k: (ends[k][i - 1] if i else 0.0, ends[k][i]) for k in channels}
         tg.update(extra)
         inst.actions.append((cap, secs, tg))
 
-    # ---- labels, camera
-    h1x, h1y = wx[1]
-    blk_lbl = ("tube block, cut through\nits front row", (t1x, t1y + 4.0, tz + 30.0), (0.14, 0.62))
-    tubes_lbl = ("the night's nine ICP-MS tubes,\n0.5 mL, 320 µL each", (t1x, t1y + 4.0, tz + 30.0), (0.14, 0.62))
-    plate_lbl = ("2 mL deep-well plate,\ncut through row H", (h1x + 30.0, h1y + 4.0, dz + deep["H"]), (0.86, 0.60))
-    asw_lbl = ("trough 2: seawater", (res[1][0], res[1][1] + 20.0, r_bot + r_h), (0.16, 0.40))
-    acid_lbl = ("trough 1: 2% HNO3", (res[0][0], res[0][1] + 20.0, r_bot + r_h), (0.16, 0.40))
-    h6_lbl = ("deep well H6", (wx[6][0], wx[6][1] + 4.0, w_bot + 25.0), (0.84, 0.62))
-    h1_lbl = ("deep well H1", (h1x, h1y + 4.0, w_bot + 15.0), (0.84, 0.62))
+    # ---- labels, camera (what is ours is marked so; the OT-2, its pipettes, tips, plate and reservoir are bought)
+    blk_lbl = ("stock block (ours):\n10 mg/L S, 1.5 mL tube", (sfx, sfy, tz + 40.0), (0.16, 0.62))
+    plate_lbl = ("2 mL deep-well plate,\ncut through row H", (wx1[0] + 30.0, wx1[1] + 4.0, dz + deep["H"]), (0.86, 0.60))
+    asw_lbl = ("trough 1: seawater", (sea[0], sea[1] + 20.0, r_bot + r_h), (0.16, 0.40))
+    h6_lbl = ("deep well H6", (x6, y6 + 4.0, w_bot + 25.0), (0.84, 0.62))
     trash_lbl = ("fixed trash", (tcx - 50.0, tcy - 70.0, ttop), (0.80, 0.42))
     inst.labels = [("P300, right mount", (ox, oy - 25.0, 360.0), (0.78, 0.40)),
                    ("P20, left mount", (lx, ly - 25.0, 350.0), (0.20, 0.30)), blk_lbl, plate_lbl]
     inst.step_labels = {
         1: [asw_lbl, h6_lbl], 2: [asw_lbl, h6_lbl, trash_lbl],
         3: [("10 mg/L S stock", (sfx, sfy, tz + 40.0), (0.20, 0.62)), h6_lbl],
-        4: [tubes_lbl, ("300 µL tips", (tip_xy["tipB"][0] + 40.0, tip_xy["tipB"][1] - 30.0, top300), (0.12, 0.36))],
-        5: [acid_lbl, h1_lbl], 6: [acid_lbl, h1_lbl], 7: [trash_lbl],
-        8: [("tube 1", (t1x, t1y + 2.0, tz + 18.0), (0.14, 0.62)), h1_lbl], 9: [h1_lbl], 10: [trash_lbl],
-        11: [("1 mg/L standard", (stx, sty, tz + 40.0), (0.20, 0.62)),
-             ("deep well H12:\n990 µL of blank matrix", (wx[12][0], wx[12][1] + 4.0, w_bot + 15.0), (0.84, 0.62))],
-        12: [trash_lbl, plate_lbl],
+        4: [("deep well H6: 2.0 mL\nat 0.1 mg/L S, for the CubXL", (x6, y6 + 4.0, w_bot + 25.0), (0.84, 0.62)),
+            ("NEST 12-well reservoir:\nseawater only, no acid", (sea[0], sea[1] + 20.0, r_bot + r_h), (0.16, 0.40)),
+            blk_lbl],
     }
-    mid_res = lambda r, w: ((r[0] + w[0]) / 2, (r[1] + w[1]) / 2, dz + 30.0)   # noqa: E731
-    inst.zoom = {1: (mid_res(res[1], wx[6]), 620.0), 3: ((0.0, -100.0, dz + 30.0), 800.0), 4: "out",
-                 5: (mid_res(res[0], wx[1]), 560.0), 8: (((t1x + h1x) / 2, (t1y + h1y) / 2, dz + 25.0), 480.0),
-                 9: ((h1x, h1y, w_bot + 20.0), 300.0), 10: "out", 11: ((20.0, -120.0, dz + 30.0), 760.0), 12: "out"}
+    mid = lambda r, w: ((r[0] + w[0]) / 2, (r[1] + w[1]) / 2, dz + 30.0)   # noqa: E731
+    inst.zoom = {1: (mid(sea, wx6), 620.0), 3: ((0.0, -100.0, dz + 30.0), 800.0), 4: "out"}
     inst.cam = (0.75, -1.6, 1.25)
     inst.notes = ["Opentrons' reference STEP; the head split out of it by bounding box as in PR #320",
                   "P300 single (right) and P20 single (left), the STEP's own; tips from Opentrons' labware sizes",
-                  "stocks and volumes from DAL alloy-corrosion/copper/protocol.md at aeda51a; the standard is ours"]
+                  "stocks and volumes from DAL alloy-corrosion/copper/protocol.md at aeda51a; round 15: no acid on the "
+                  "deck, the ICP-MS dilution is the floor station's (icpms.py)"]
     return inst
 
 
@@ -639,22 +512,19 @@ def _gv(sc, key) -> float:
     return 0.0 if m is None else float(m[0, 3])
 
 
-ROWS = (("q300", "P300 tip", "{:.0f} µL", None), ("q20", "P20 tip", "{:.0f} µL", None),
-        ("qres2", "seawater, trough 2", "{:.2f} mL", 0), ("qh6", "H6: 0.1 mg/L S", "{:.0f} µL", 0),
-        ("qt1", "tube 1", "{:.0f} µL", 1), ("qh1", "deep well H1", "{:.0f} µL", 1),
-        ("qh12", "deep well H12", "{:.0f} µL", 1), ("qres1", "2% HNO3, trough 1", "{:.2f} mL", 1))
+ROWS = (("q300", "P300 tip", "{:.0f} µL"), ("q20", "P20 tip", "{:.0f} µL"),
+        ("qres1", "seawater, trough 1", "{:.2f} mL"), ("qh6", "H6: 0.1 mg/L S", "{:.0f} µL"))
 
 
 def draw_volumes(sc, img, s):
-    """The volumes, live, at the top right: the two tips, then the vessels of the step in hand."""
+    """The volumes, live, at the top right: the two tips, the seawater and H6."""
     from PIL import ImageDraw
     from scene import font
     k = f"{KEY}:"
     if k + "q300" not in sc.gmat:
         return
-    phase = 1 if _gv(sc, k + "qphase") > 0.5 else 0
-    rows = [r for r in ROWS if r[3] is None or r[3] == phase]
-    vals = {c: _gv(sc, k + c) / (1000.0 if "mL" in fmt else 1.0) for c, _, fmt, _ in rows}
+    rows = ROWS
+    vals = {c: _gv(sc, k + c) / (1000.0 if "mL" in fmt else 1.0) for c, _, fmt in rows}
     prev = getattr(sc, "_oc_prev", {}).get(img.size)
     sc.__dict__.setdefault("_oc_prev", {})[img.size] = dict(vals)
     W, H = img.size
@@ -666,7 +536,7 @@ def draw_volumes(sc, img, s):
     d.rounded_rectangle((x0, y0, x1, y0 + 30 * s + lh * len(rows)), 6 * s, fill=(255, 255, 255, 232),
                         outline=(150, 156, 164, 255))
     d.text((x0 + 10 * s, y0 + 6 * s), "Volumes, drawn to scale", font=fh, fill=(20, 20, 24))
-    for i, (c, name, fmt, _) in enumerate(rows):
+    for i, (c, name, fmt) in enumerate(rows):
         y = y0 + 27 * s + i * lh
         moving = prev is not None and c in prev and abs(vals[c] - prev[c]) > 1e-6
         col = (200, 80, 20) if moving else (40, 42, 48)
@@ -695,7 +565,25 @@ def _install_plot():
     S.Scene.overlay = overlay
 
 
+def _install_fluids():
+    """The liquids are not obstacles for ARM_AUDIT's movers check (collide.py skips sc.fluids), as in the chapters: a
+    tip dips into the seawater and H6, and each tip's liquid is drawn inside it (round 15)."""
+    import scene as S
+    if getattr(S.Scene.step, "_ot2_fluids", False):
+        return
+    orig = S.Scene.step
+
+    def step(self, *a, **kw):
+        if self.name == NAME:
+            wet = {f"{KEY}:{k}" for k in (*TIP_LIQ, *LEVELS)}
+            self.fluids = set(getattr(self, "fluids", set())) | {n for n, g in self.group_of.items() if g in wet}
+        return orig(self, *a, **kw)
+    step._ot2_fluids = True
+    S.Scene.step = step
+
+
 _install_plot()
+_install_fluids()
 REGISTRY = {KEY: ot2_corrosion}
 
 if __name__ == "__main__":

@@ -3,19 +3,28 @@
     python3 longform.py plan       # the parts in order, their sources and lengths; nothing is encoded
     python3 longform.py            # -> out/mp4/vertical_lab_longform.mp4, out/longform.json, out/longform_sheet.png
     python3 longform.py tts        # the narration (narration.json) spoken by Kokoro, cached in /tmp/longform_tts
-    python3 longform.py upload     # public (LONGFORM_PRIVACY), the chapter timestamps in the description; recorded
-                                   # in out/youtube.json
+    python3 longform.py audit      # the checks chapter's table, out/collisions/<LONGFORM_AUDIT_TAG>_table.png
+    python3 longform.py upload     # public (LONGFORM_PRIVACY), subscribers notified (LONGFORM_NOTIFY), the chapter
+                                   # timestamps in the description; recorded in out/youtube.json
 
 Every part is a clip that renders on its own, from its own script, with its own GIF, MP4 and JSON. This file only
 puts them in order, draws a title card before each chapter, draws a caption band on the stills (the figures and the
-contact sheets) and a REAL FOOTAGE badge on the one piece of real video, and writes the chapter list. Every part is
-re-encoded once to 1920 x 1080 at 30 fps before the join (round 12; 1280 x 720 at 15 fps before), so clips rendered at
-6, 10 or 15 fps keep their length. The clips come from out/hd/ (``VIZ3D_HD=1 VIZ3D_SIZE=1920x1080``); one that isn't
-there yet is taken from out/mp4/ at 720p, scaled up, and flagged in out/longform.json.
+contact sheets), a REAL FOOTAGE badge on the one piece of real video and a badge on another project's own render, and
+writes the chapter list. Every part is re-encoded once to LONGFORM_SIZE at 30 fps before the join, so clips drawn at
+8, 10, 12, 15 or 30 fps keep their length. Round 15 (Sterling, 2026-11-23: "re-render everything in a self-consistent
+and cohesive way ... render at a higher res (max fps for 720p)"): 1280 x 720, the 3-D drawn at up to 30 fps. A clip is
+taken from out/<LONGFORM_HD_DIR>/ (r15, this pass's renders: ``VIZ3D_HD=1 VIZ3D_HD_DIR=r15``) and, if it isn't there or
+is still being written, from out/mp4/, flagged in out/longform.json as an earlier render.
 
 Round 12 adds a narration: narration.json, one line per entry, each anchored to a chapter's card, a still, or a clip's
-sub-step (its index in the clip's JSON, checked against the label), spoken by Kokoro (open weights, run on the runner)
-and mixed into one track, with out/longform_narration.srt beside it.
+sub-step (its index in the clip's JSON, checked against the label, or a phrase of its caption), or a time into a clip
+that has no sub-steps ("at"), spoken by Kokoro (open weights, run on the runner) and mixed into one track, with
+out/longform_narration.srt beside it.
+
+Round 15 adds the merged PRs' work: the cups machined (#373) at the start of chapter 1, the base cameras (#374) and the
+security cameras considered (#370) in the services chapter, a safety chapter (#379), the CubXL's P300 and its well's
+evaporation (#372), names (#376) and colour coding (#377) with the stations, and the floor cleaning (#369) and the waste
+(#371) in a chapter of their own; and powder-doser's own render of its newest doser (PR #185, v10) in chapter 1.
 
 A clip that isn't there is left out with a warning, so the join always runs on whatever is rendered.
 """
@@ -38,14 +47,15 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
 MP4 = OUT / "mp4"
 NAME = "vertical_lab_longform"
-SIZE = tuple(int(v) for v in os.environ.get("LONGFORM_SIZE", "1920x1080").split("x"))
+# round 15: 1280 x 720 (round 12-14: 1920 x 1080), Sterling: "render at a higher res (max fps for 720p)"
+SIZE = tuple(int(v) for v in os.environ.get("LONGFORM_SIZE", "1280x720").split("x"))
 FPS = int(os.environ.get("LONGFORM_FPS", "30"))
 K = SIZE[1] / 720              # the pixel sizes below were chosen at 1280 x 720
-# round 12's 1080p renders; a clip not there falls back to out/mp4/ (720p, scaled up). Round 15: LONGFORM_HD_DIR names
-# the folder of this pass's renders (VIZ3D_HD_DIR), e.g. r15 for the 720p pass drawn at up to 30 fps
-HD = OUT / os.environ.get("LONGFORM_HD_DIR", "hd")
+# this pass's renders; a clip not there falls back to out/mp4/. Round 15: LONGFORM_HD_DIR names the folder of the pass
+# (VIZ3D_HD_DIR), r15 for the 720p pass drawn at up to 30 fps (round 12's 1080p pass was out/hd/)
+HD = OUT / os.environ.get("LONGFORM_HD_DIR", "r15")
 CARD_S = 6.0
-AUDIT_TAG = os.environ.get("LONGFORM_AUDIT_TAG", "round13")   # out/collisions/<tag>_table.png, _summary.json
+AUDIT_TAG = os.environ.get("LONGFORM_AUDIT_TAG", "round15")   # out/collisions/<tag>_table.png, _summary.json
 # every part is encoded with the same settings, so the join is a stream copy
 X264 = ["-c:v", "libx264", "-preset", os.environ.get("LONGFORM_PRESET", "veryfast"), "-crf", "18", "-pix_fmt", "yuv420p",
         "-profile:v", "high", "-g", str(2 * FPS), "-video_track_timescale", "15360"]
@@ -81,71 +91,117 @@ BOTTLENECK = "cc31ddc"
 
 # ===================================================================================================== the chapters
 # Each chapter: a key, its title (also the YouTube chapter line), the card's lines, and its parts in order. A part is
-#   ("mp4", rel under out/mp4, label or None)                    a rendered clip, whole
+#   ("mp4", rel under out/mp4, label or None)                    a rendered clip, whole (out/<LONGFORM_HD_DIR>/ first)
 #   ("still", rel under out, seconds, caption, label or None)    a figure, letterboxed, or scrolled if it is tall
 #   ("footage", rel under out, caption, label or None)           real video, with a REAL FOOTAGE badge and a credit
+#   ("ext", rel under out/mp4, badge, caption, label or None)    another project's own render, framed, badged, credited
 # A label starts a YouTube chapter of its own inside the chapter (merged into the next if it would be under 10 s).
 CHAPTERS = [
     dict(key="intro", title="A real VLM, then the plan",
          card=["A Kardex vertical lift module (VLM) holds the lab's equipment on electrified trays, each powered tray "
-               "with its own UPS. A UR12e arm (the UR10e, renamed in 2025) on a MiR250 mobile base works at its opening and at the "
-               "machines too big for a tray.",
+               "with its own UPS. UR12e arms (the UR10e, renamed in 2025) on MiR250 mobile bases, each base with three "
+               "cameras and a Class D extinguisher, work at its openings and at the machines too big for a tray.",
                "Everything after the first clip is a 3-D animation, built from the makers' published figures and "
                "photos and checked for collisions. Real footage, photos and data are badged as such."],
          parts=[("footage", "footage/vlm_real_ck8QJhVqPiY.mp4",
                  "A real VLM in operation, from the sample's perspective (Sterling Baird, youtu.be/ck8QJhVqPiY)",
                  None)]),
+    # round 15: the safety PR's units come in with the utilities (#379), the waste station with the fume hood (#371),
+    # floor-cleaning unit 3 parks on a third charger (#369), and each MiR250 brings its three cameras (#374) and its
+    # Class D unit. The cups' machining cell (#373) and the ICP-MS station (round 14) have no clean spot on this floor
+    # yet (notes/lab_r15.md), so their clips show them on their own
     dict(key="setup", title="The lab set up from scratch",
-         card=["An empty bay: the layout taped out, utilities overhead, two 30 ft (9.15 m) Kardex Shuttle XP 500s going "
-               "up with a 996 mm opening, the floor machines, the arm assembled onto its MiR250, then every tray loaded by "
-               "people: a UPS and stream cameras on each powered one, neither on the sample and powder-jar stores, "
-               "whose short trays the camera over each bay inventories."],
+         card=["An empty warehouse bay: the layout taped out, utilities overhead, two 30 ft (9.15 m) Kardex Shuttle XP "
+               "500s going up with a 996 mm opening, the floor machines, the safety equipment and a waste station under "
+               "the fume hood, the arms assembled onto their MiR250s (a third, floor-cleaning unit on its own "
+               "charger), then every tray "
+               "loaded by people: a UPS and stream cameras on each powered one, none on the sample and powder-jar "
+               "stores, whose short trays the cameras under each bay's roof inventory."],
          parts=[("mp4", "setup_lab.mp4", None),
                 ("still", "tray_plan.png", 14.0, "Every tray from above, each part's own footprint: its UPS with an "
-                 "AirGradient on it, dock plate and cameras where it needs them, nothing closer than 10 mm; and the slot "
-                 "each one takes in the 30 ft Shuttles", "What goes on which tray")]),
+                 "AirGradient, dock plate and cameras where it needs them, nothing closer than 10 mm; and its slot in "
+                 "the 30 ft Shuttles", "What goes on which tray")]),
     dict(key="services", title="Services: UPS, automatic hookups, cabling and cameras",
          card=["Each powered tray carries a UPS sized for it: a Vertiv Liebert lithium unit of 800, 1500 or 3000 VA. In "
                "its slot and again in the picking bay, a floating dock in the side wall mates two Stäubli CombiTac "
-               "frames with the tray's: mains, Ethernet, air, N2 and chilled water. In transit the dock vents the lines "
-               "to 0 bar and lets go, and the tray runs on its UPS.",
-               "Then the cabling, the stream camera unit, and what the two cameras hung from the bay's roof see."],
+               "frames with the tray's: mains, Ethernet, air, N2 and chilled water; in transit the tray runs on its UPS.",
+               "Then the cabling, the stream camera unit, the cameras under each bay's roof and the three on each "
+               "MiR250, and security cameras considered in place of the Pi units (research only)."],
          parts=[("mp4", "vlm_hookups.mp4", "Storage to the bay: the hookups and the UPS"),
                 ("mp4", "vlm_coupling.mp4", "The coupling, part by part: Stäubli CombiTac on a floating dock"),
                 ("mp4", "vlm_services.mp4", "The docks in every slot"),
                 ("still", "ups_lineup.png", 12.0, "Three real UPSs, sized tray by tray from each tray's own loads: Vertiv "
                  "Liebert PSI5-800, GXT5LI-1500 and GXT5LI-3000, lithium (notes/ups.md)", "A real UPS for each tray"),
-                ("still", "dock_lift_clearance.png", 10.0, "Do the docks reach into the lift's path? Clearances, "
-                 "docks in and out", "The docks against the lift"),
                 ("mp4", "vlm_cabling.mp4", "Cabling"),
                 ("mp4", "instruments/stream_cam.mp4", "The stream camera unit: height, pan, tilt"),
-                ("mp4", "bay_camera.mp4", "The cameras over the bay, and what each sees")]),
+                ("mp4", "bay_camera.mp4", "The cameras under the bay's roof, and what each sees"),
+                # round 15: PR #374 (Sterling, 2026-11-20: "add two or three cameras to the mobile manipulator")
+                ("mp4", "base_cameras.mp4", "Three cameras on each MiR250"),
+                # round 15: PR #370, research only (Sterling: security cameras pulled by a Pi, as aurora-cloud-infra does)
+                ("still", "security_cameras_bay.png", 12.0, "Considered, research only: security cameras in place of the "
+                 "Pi units, hung under the bay's assumed roof (PR #370, notes/security_cameras.md). The video keeps "
+                 "the Pi units", "Considered: security cameras instead")]),
+    # Round 15: PR #379 (Sterling, 2026-11-20: "Class D fire extinguishers at each station ... mounted at all times to
+    # the MiR250"; 2026-11-22, of the building's extinguishers, showers and O2 monitors: "Do these"). Right after the
+    # services: every clip from here on has the units on the floor and on the MiR250s
+    dict(key="safety", title="Safety: Class D extinguishers, showers and oxygen monitors",
+         card=["Burning metal powder needs a Class D agent, not water or CO2. An Amerex B570, 30 lb of Super D, stands "
+               "within 4 m of every station that handles powder, one rides on each MiR250, and 150 lb wheeled units "
+               "stand at the rePowder and the EOS.",
+               "The building's ordinary extinguishers are kept apart and signed differently, a shower and eyewash "
+               "stands at each fume hood, and an oxygen monitor wherever argon or nitrogen is used (PR #379)."],
+         parts=[("mp4", "safety.mp4", None),
+                ("still", "safety_plan.png", 11.0, "Class D on the floor: seven B570s on posts, two 150 lb 680Rs, two "
+                 "pails, one B570 on each MiR250. The longest walk from a powder station to a fixed unit is 4.0 m "
+                 "(NFPA 10: 75 ft)", "Where the Class D units go"),
+                ("still", "safety_other_assets.png", 11.0, "The building's ABC units on the racking, 4.3 m or more from "
+                 "any Class D unit and signed differently; a shower and eyewash at each hood; O2 monitors "
+                 "(notes/safety.md)", "Ordinary extinguishers, showers and O2 monitors")]),
     dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL, and the ICP-MS beside the VLM",
-         card=["The OT-2 makes up the CubXL's electrolyte (digital-wetlab PR #83). The CubXL runs DAL's copper corrosion "
-               "screen spot by spot (DAL PR #180), with the volumes a real pipette moves; its magnet holds one cap at a "
-               "time, so a second cap waits on an empty vial. The multi-doser doses atomized powder for it by weight.",
-               "The wells' samples go to an ICP-MS station on the floor, its acids kept in a fume hood (round 14); the "
-               "OT-2's clip still shows the old dilution on the tray."],
-         parts=[("mp4", "instruments/ot2_corrosion_prep.mp4", "The OT-2: electrolyte and ICP dilutions"),
+         card=["The OT-2 makes up the CubXL's sulfide stock in seawater (digital-wetlab PR #83). The CubXL runs DAL's "
+               "copper corrosion screen spot by spot (DAL PR #180) with its P20 and, proposed, a P300 on a lift of its "
+               "own (PR #372); its magnet holds one cap at a time, so a second cap waits on an empty vial. The "
+               "multi-doser doses atomized powder for it by weight.",
+               "No acid on the OT-2's deck (round 15): the CubXL acidifies its own tubes, and the capped tubes go to an "
+               "ICP-MS station beside the lab, whose dilutor makes the tenfold dilution in its own fume hood. Its place "
+               "on the floor plan is still open (round 14's spot is the Meltio cell's clearance)."],
+         # round 15: the OT-2's clip no longer dilutes the ICP-MS tubes (ot2_corrosion.py: no acid on its deck)
+         parts=[("mp4", "instruments/ot2_corrosion_prep.mp4", "The OT-2: the CubXL's sulfide stock"),
                 ("mp4", "instruments/cubxl_corrosion.mp4", "The CubXL's corrosion screen"),
+                # round 15: PR #372 (Sterling's three CubXL questions, 2026-11-20): evaporation and sulfide loss
+                ("still", "cubxl_evap.png", 11.0, "The CubXL's well, first-order estimates: 1-3 % of its water a spot, "
+                 "but most of the sulfide escapes as H2S unless the well is mixed or sealed (PR #372, "
+                 "notes/cubxl_pipettes.md)", "The well: evaporation and sulfide loss"),
                 # round 14 (D): the ICP-MS station on the floor, its acids in a fume hood (icpms.py, notes/icpms.md)
                 ("mp4", "icpms.mp4", "An ICP-MS station, its acids in a fume hood"),
                 ("mp4", "vlm_workflow.mp4", "Atomized powder dosed for the CubXL")]),
-    dict(key="alloy1", title="Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum",
-         card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
-               "is dosed by weight on the A&D HR-202i under the multi-doser's dose point (chain carousel v5, no funnel), "
-               "and its vented plug pressed "
-               "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load. The die is "
-               "cleaned between presses, and every cup weighed again."],
+    dict(key="alloy1", title="Alloy route 1/7: the charge cups, machined, dosed, weighed and pressed under vacuum",
+         card=["The atomizer melts the lab's own charge cups (#222). A lathe cell (its spot on the floor still to find) turns each cup and its "
+               "plug from 5N Al or oxygen-free Cu bar, washes them in IPA and dries them under vacuum (PR #373). Each "
+               "cup is dosed by weight on the A&D HR-202i under the multi-doser, and its vented plug pressed fully home "
+               "under vacuum in a Specac Atlas Autotouch. The die is cleaned between presses, and every cup weighed "
+               "again."],
          parts=[("mp4", "dag/route_dag_ch1.mp4", "The route as a function network (DAL's ONR YIP DAG)"),
                 ("still", "dal_workflow_table.png", 14.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
                  "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
+                # round 15: PR #373 (Sterling, 2026-11-20: "automate machining of the high-purity cups and plugs ...
+                # a cleaning and drying step (IPA for example)"): the cups are made before they are charged
+                ("mp4", "machining_cell.mp4", "Machining the cups and plugs: a lathe, an IPA wash, a vacuum dryer"),
+                ("still", "machining_sim.png", 10.0, "The cell simulated part by part (SimPy, 5 seeds x 28 days): about "
+                 "114 pairs a day with a pedestal arm against the 67 needed, and a MiR250 unit instead "
+                 "(notes/machining.md)",
+                 None),
                 ("mp4", "alloy_charge.mp4", "The charge cups"),
                 # round 14 (D): run B's dose post and draft shield (doser_shield.py) in place of round 10's "can the cup
                 # come closer?" section, which the new station answers
-                ("still", "doser_shield_section.png", 14.0, "The fall shortened (round 14): a dose post on the pan lifts "
-                 "the cup to 45 mm under the exit, inside a clear draft shield (both ours), so none of the fall is in "
-                 "open air; it was 153 mm (notes/multidoser.md)", "A shorter fall: a dose post and a draft shield"),
+                ("still", "doser_shield_section.png", 14.0, "The fall shortened (round 14): a dose post lifts the cup to "
+                 "45 mm under the exit, in a clear draft shield (both ours); it was 153 mm, mostly in open air "
+                 "(notes/multidoser.md)", "A shorter fall: a dose post and a draft shield"),
+                # round 15: powder-doser PR #185's newest design (v10, 2026-11-19) in its own CAD render, fetched as the
+                # doser's latest result (out/mp4/ext/credits.json); this lab's clips still use v5 with the dose post
+                ("ext", "ext/doser_drop_v10.mp4", "POWDER-DOSER'S OWN CAD RENDER", "of its newest design, v10 (PR "
+                 "#185): the beaker 18 mm under the auger's exit. Not yet in this lab's animation, which uses v5 and "
+                 "the dose post (a 45 mm fall)", None),
                 ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
     dict(key="alloy2", title="Alloy route 2/7: melt and atomize in the rePowder",
          card=["Both MiR250 + UR12e units go to the AMAZEMET rePowder, each with a 131 kg ballast plate low in its base, "
@@ -206,14 +262,21 @@ CHAPTERS = [
     # Round 8: the XRD, Mastersizer, XRF and SEM work in chapter 4, the furnace, wire EDM and Instrons in chapter 5, the
     # mounting press, PX500 and Carvera in chapter 6, the SEM, VHX, HM-220, iMicro and PIP in chapter 7, the sieve shaker
     # in chapter 3. Their stand-alone tour clips are left out (Sterling, of the XRD: "why isn't a tray coming and then the
-    # robot is putting something in there"); this chapter keeps the stations no chapter uses.
+    # robot is putting something in there"); this chapter keeps the stations no chapter uses. Round 15: the names (#376)
+    # and the colour code (#377) the whole lab would use, after the gallery
     dict(key="stations", title="The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping",
-         card=["Every instrument model at a glance, then the stations the alloy route doesn't pass through: a "
-               "horizontal tensile tester for small bars, a glovebox on a tray and one on the floor, fume hoods (no HF), "
-               "the sample store, the powder-jar store, and a packaging station that labels and seals powder for "
-               "shipping."],
+         card=["Every instrument model at a glance, a name for each station and a colour for each powder family, then "
+               "the stations the alloy route doesn't pass through: a horizontal tensile tester for small bars, a "
+               "glovebox on a tray and one on the floor, fume hoods (no HF), the sample store, the powder-jar store, "
+               "and a packaging station that labels and seals powder for shipping."],
          parts=[("still", "instruments_gallery.png", 9.0, "Every instrument model: size, and on a tray or beside "
                  "the VLM", "Every instrument model"),
+                ("still", "naming/floor_names.png", 11.0, "A call name for each station, a stone whose own property is "
+                 "its job (fluorite for the XRF, flint for the wire EDM); the Shuttles are Provo's peaks, timp and nebo "
+                 "(PR #376, a proposal)", "A name for everything: stones and peaks"),
+                ("still", "colour/bench.png", 11.0, "Colour only where a person decides which tool touches which powder: "
+                 "blue for the Al family, orange for Cu, each with a word, checked for colour-blind readers (PR #377)",
+                 "Colour coding: blue for Al, orange for Cu"),
                 ("mp4", "instruments/tensile_h.mp4", "A tensile tester on its side: zwickiLine Z5.0 TN"),
                 ("mp4", "instruments/glovebox_tray.mp4", "A glovebox on a tray"),
                 ("mp4", "instruments/glovebox.mp4", "The floor glovebox"),
@@ -251,12 +314,10 @@ CHAPTERS = [
                  "before, the model after refitting", "Fitted to footage of the real machines"),
                 ("still", "interference_sheet.png", 11.0, "MuJoCo interference check: what was left over after "
                  "the fixes", "MuJoCo interference check"),
-                ("still", "collisions/vlm_workflow_before_after.png", 9.0, "The arm before and after the collision "
-                 "check: straight joint moves through the MiR and the holder, then planned round them",
-                 "Arm collisions, checked and planned round"),
                 ("still", "collisions/round11_sheet.png", 12.0, "Round 11's stricter check, clip by clip: frames in "
                  "collision under the old rules and the new, before and after the fixes", "The stricter check, round 11"),
-                ("still", f"collisions/{AUDIT_TAG}_table.png", 14.0, "This video's own check: every clip checked "
+                # round 15: this pass's own table (`python3 longform.py audit` once the renders are in), scrolled
+                ("still", f"collisions/{AUDIT_TAG}_table.png", 18.0, "This video's own check: every clip checked "
                  "frame by frame as it was rendered, at the rate it is drawn", "This video, checked frame by frame")]),
     # Round 10: Sterling (2026-11-07), "maintenance over long-term and how that gets handled in workflows".
     dict(key="upkeep", title="Maintenance over the long term, inside the workflow",
@@ -269,6 +330,22 @@ CHAPTERS = [
                 ("still", "upkeep_year.png", 14.0, "A year of maintenance booked into the lab's schedule: hours by "
                  "who does it, and each station's availability (a model; notes/upkeep.md says what is assumed)",
                  "A year of maintenance, booked")]),
+    # Round 15: PRs #369 (Sterling, 2026-11-20: automatic floor cleaning; 2026-11-22: "show animated visualizations of
+    # the processes here, including the human-in-the-loop interactions ... a full pass across the facility") and #371
+    # (2026-11-20: "Where does each waste go, how do we get pickups ..."). After the upkeep, the lab's other housekeeping
+    dict(key="floor", title="Keeping the floor clean, and the waste",
+         card=["Metal powder on the floor is a fire hazard, and no cleaning robot on the market is rated for it. One "
+               "option, explored and not decided: a third MiR250 + UR12e, unit 3, bonds itself to a floor stud, "
+               "squeegees with the wand of an explosion-proof Nilfisk on wall power and checks the floor's colour. A "
+               "visible spill stays a person's job (PR #369).",
+               "Then the waste: where each stream goes, BYU's pickups, and how much at one alloy a day and at ten "
+               "(PR #371, a model)."],
+         parts=[("mp4", "floor_clean_people.mp4", "Unit 3, and a person for a visible spill"),
+                ("mp4", "floor_pass.mp4", "A night's pass across the whole floor, from above"),
+                ("still", "waste_streams.png", 14.0, "Every waste stream, a year, at one fully tested alloy a day and at "
+                 "ten: modelled, not weighed (PR #371, notes/waste.md)", "The waste, stream by stream"),
+                ("still", "waste_station_still.png", 9.0, "The waste station (ours): the fume hood's base as vented "
+                 "solvent and acid cabinets, and an intake tray for the capped bottles the arm brings", None)]),
     # Round 12: PR #332 (Sterling, 2026-11-08: "how can we get that up to 10/day?"), a figure at its pinned commit
     dict(key="bottlenecks", title="From one alloy a day to ten: the bottlenecks",
          card=["The year model tests about one alloy a day: a person changes the atomizer's crucible on weekdays, and that "
@@ -288,7 +365,8 @@ CHAPTERS = [
 OUTRO = ["Code, notes and every source: github.com/vertical-cloud-lab/byu-vcl, PR #318 (folder vertical-lab/). "
          "The narration is a synthetic voice (Kokoro, an open text-to-speech model).",
          "Sizes are the makers' published figures where they exist. The docks, fixtures, cells, the press's die and "
-         "the camera mounts are our designs at assumed sizes, and each notes file says which numbers are assumed.",
+         "the camera and extinguisher mounts are our designs at assumed sizes, and each notes file says which numbers "
+         "are assumed. The doser's v10 clip is powder-doser's own render.",
          "Vertical Cloud Lab @ BYU, byu-vcl #303"]
 
 
@@ -435,6 +513,50 @@ def badge_png(text: str, caption: str, path: Path):
     im.save(path)
 
 
+BAND = 86                      # the caption band under a still or another project's render, px at 720p
+
+
+def ext_lines(d: ImageDraw.ImageDraw, badge: str, caption: str) -> tuple[int, list[str], list[str]]:
+    """The badge's width, and the caption's words on the first line (after the badge) and the rest (full width)."""
+    tw = int(d.textlength(badge, font=font(19 * K, bold=True)) + 22 * K)
+    fc = font(25 * K)
+    first, words = "", caption.split()
+    while words and d.textlength(f"{first} {words[0]}".strip(), font=fc) <= SIZE[0] - int(72 * K) - tw:
+        first = f"{first} {words.pop(0)}".strip()
+    return tw, [first], wrap(d, " ".join(words), fc, SIZE[0] - int(60 * K))
+
+
+def ext_png(badge: str, caption: str, path: Path):
+    """Round 15: another project's own render (powder-doser's CAD of its v10 doser) keeps its own titles and captions,
+    so it is framed above a caption band like the stills', whose first words are a blue badge saying whose render it
+    is. Transparent above the band."""
+    band = int(BAND * K)
+    im = Image.new("RGBA", SIZE, (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    y0 = SIZE[1] - band
+    d.rectangle((0, y0, SIZE[0], SIZE[1]), fill=(255, 255, 255, 255))
+    d.line((0, y0, SIZE[0], y0), fill=BLUE, width=max(2, int(3 * K)))
+    tw, first, rest = ext_lines(d, badge, caption)
+    d.rounded_rectangle((int(30 * K), y0 + int(12 * K), int(30 * K) + tw, y0 + int(41 * K)), radius=int(7 * K),
+                        fill=BLUE + (255,))
+    d.text((int(41 * K), y0 + int(16 * K)), badge, font=font(19 * K, bold=True), fill="white")
+    fc = font(25 * K)
+    d.text((int(42 * K) + tw, y0 + int(12 * K)), first[0], font=fc, fill=INK)
+    for k, ln in enumerate(rest[:1]):
+        d.text((int(30 * K), y0 + int(46 * K)), ln, font=fc, fill=INK)
+    im.save(path)
+
+
+def caption_fits(r: dict) -> bool:
+    """Whether a part's caption fits its band's two lines (still_frames, badge_png and ext_png cut the rest)."""
+    d = ImageDraw.Draw(Image.new("RGB", (8, 8)))
+    if r["kind"] == "ext":
+        return len(ext_lines(d, r["badge"], r["caption"])[2]) <= 1
+    if r["kind"] in ("still", "footage"):
+        return len(wrap(d, r["caption"], font(25 * K), SIZE[0] - int(60 * K))) <= 2
+    return True
+
+
 CACHE = Path(tempfile.gettempdir()) / "longform_parts"     # normalised parts, keyed by their source's bytes
 
 
@@ -457,9 +579,14 @@ def cached(key_parts: list, make, dst: Path):
     dst.write_bytes(hit.read_bytes())
 
 
-def normalise(src: Path, dst: Path, overlay: Path | None = None):
+def normalise(src: Path, dst: Path, overlay: Path | None = None, band: bool = False):
+    """`src` scaled to fit SIZE (or, `band`, the area over a caption band, as a still is), at FPS, with `overlay`."""
     vf = (f"scale={SIZE[0]}:{SIZE[1]}:force_original_aspect_ratio=decrease:flags=lanczos,"
           f"pad={SIZE[0]}:{SIZE[1]}:(ow-iw)/2:(oh-ih)/2:color=white,fps={FPS},setsar=1")
+    if band:
+        h = SIZE[1] - int(BAND * K)
+        vf = (f"scale={SIZE[0]}:{h}:force_original_aspect_ratio=decrease:flags=lanczos,"
+              f"pad={SIZE[0]}:{SIZE[1]}:(ow-iw)/2:({h}-ih)/2:color=0xF6F7F9,fps={FPS},setsar=1")
     if overlay is None:
         args = ["-i", src, "-vf", vf]
     else:
@@ -474,7 +601,7 @@ def warm(skip=()):
     tmp = Path(tempfile.mkdtemp(prefix="longform_warm_"))
     n = 0
     for i, r in enumerate(plan()):
-        if r.get("missing") or r["kind"] not in ("mp4", "footage"):
+        if r.get("missing") or r["kind"] not in ("mp4", "footage", "ext"):
             continue
         if any(k in str(r.get("git") or r["src"]) for k in skip):
             continue
@@ -483,6 +610,10 @@ def warm(skip=()):
             ov = tmp / f"badge{i:03d}.png"
             badge_png("REAL FOOTAGE", r["caption"], ov)
             cached([r["src"], ov, SIZE, FPS, "footage"], lambda d, r=r, ov=ov: normalise(r["src"], d, ov), out)
+        elif r["kind"] == "ext":
+            ov = tmp / f"ext{i:03d}.png"
+            ext_png(r["badge"], r["caption"], ov)
+            cached([r["src"], ov, SIZE, FPS, "ext"], lambda d, r=r, ov=ov: normalise(r["src"], d, ov, band=True), out)
         else:
             cached([r["src"], SIZE, FPS, "mp4"], lambda d, r=r: normalise(r["src"], d), out)
         out.unlink()
@@ -499,8 +630,9 @@ def warm(skip=()):
 # takes a person or is still open. notes/dal_workflow.md has the long form with sources.
 DAL_STEPS = [   # (step, station in this design, status, what inside it is still by hand, in progress or open)
     ("Pick a composition", "software: Bayesian optimization over a CALPHAD-screened space", "auto", ""),
-    ("Weigh the charge", "multi-doser + 0.1 mg balance, vacuum press, tray B (ch. 1)", "auto",
-     "in progress: machining the cups and plugs (a separate PR); by hand until then"),
+    # round 15: the cups and plugs machined, washed and dried in a cell of their own (PR #373, merged)
+    ("Weigh the charge", "lathe cell for the cups; multi-doser + balance, vacuum press (ch. 1)", "auto",
+     "open: the lathe's trial cuts and quotes (PR #373)"),
     ("Coat the crucible (BN)", "scraped and sprayed by the arm in a fume hood (turnaround)", "auto", ""),
     ("Atomize", "rePowder: loaded, opened, rebuilt by two arms (ch. 2, turnaround)", "auto",
      "by hand: booster swaps, argon cylinders; the arm presses the HMI until AMAZEMET opens an interface"),
@@ -521,7 +653,7 @@ DAL_STEPS = [   # (step, station in this design, status, what inside it is still
      "in progress: impedance (a potentiostat requested); the ICP-MS station"),
     ("Long-term monitoring", "stream cameras only", "none",
      "open: repeat imaging of stored samples (the OpenFlexure array was dropped)"),
-    ("Records", "cameras on every powered tray and over each bay; MongoDB", "auto", ""),
+    ("Records", "cameras on every powered tray, in each bay and on each MiR250; MongoDB", "auto", ""),
 ]
 TAGS = {"by hand:": (170, 60, 30), "in progress:": (190, 120, 0), "open:": (110, 114, 120)}
 STATUS = {"auto": ("AUTOMATED HERE", (30, 120, 60)), "progress": ("IN PROGRESS", (190, 120, 0)),
@@ -635,6 +767,7 @@ SAY = {
     "UR12e": "U R twelve E", "UR10e": "U R ten E", "HNO3": "nitric acid", "HCl": "hydrochloric acid",
     "PTFE": "P T F E", "AirGradient": "Air Gradient",
     "aluminium": "aluminum",             # the voice is American (af_heart, en-us): the text keeps the repo's spelling
+    "PTZ": "P T Z",                      # round 15: pan-tilt-zoom, said as letters
 }
 IPA = {   # espeak's own reading in the comment
     "MiR": "mˈiːɹ", "MiRs": "mˈiːɹz",    # Sterling: said "meer". espeak's "meer" (mˈɪɹ) came back as "mirror" before
@@ -645,6 +778,10 @@ IPA = {   # espeak's own reading in the comment
     "depowdered": "dˌiːpˈaʊdɚd",         # espeak: dᵻpˈaʊdɚd, heard back as "de-powered"
     "Instron": "ˈɪnstɹɑːn",              # espeak: ɪnstɹˈɑːn
     "Stäubli": "ʃtˈɔɪbli",               # espeak: stˈɛʌbli
+    # round 15 (the merged PRs' names, ready for any line that says them)
+    "CombiTac": "kˈɑːmbitˌæk",           # espeak: kəmbˈaɪ tˈæk, "kum-BYE tack"
+    "Haas": "hˈɑːs",                     # espeak: hˈɑːz; Haas Automation says "hahss"
+    "IPA": "ˌaɪpˌiːˈeɪ",                 # isopropyl alcohol; espeak says it as a word, and "I P A" ends in the article
 }
 _TOK = None
 
@@ -720,18 +857,27 @@ def _norm(s: str) -> str:
     return " ".join(out)
 
 
-def narration_check(models=("base.en", "small.en")) -> list[dict]:
+def narration_check(models=("base.en", "small.en"), new_since: str | None = None) -> list[dict]:
     """Every line spoken, then transcribed back by faster-whisper (two model sizes) and compared word by word with
     the spoken form (out/narration/check.json): the word error rate, each difference, and the words the recognizer
     was least sure of. A respelling or a phoneme fix goes in SAY or IPA. Also writes out/narration/lines.ogg, every
-    line in order with a second between, to listen to."""
+    line in order with a second between, to listen to. Round 15: `new_since`, a commit, checks only the lines whose
+    text or phonemes differ from narration.json there, into check_new.json and lines_new.ogg."""
     import jiwer
     import soundfile as sf
     from faster_whisper import WhisperModel
     from scipy.signal import resample_poly
     lines = json.loads(NARRATION.read_text())
+    tag = ""
+    if new_since:
+        old = json.loads(subprocess.run(["git", "show", f"{new_since}:./narration.json"], capture_output=True,
+                                        text=True, cwd=HERE, check=True).stdout)
+        before = {phonemes(x["text"]) for x in old}
+        lines = [x for x in lines if phonemes(x["text"]) not in before]
+        tag = "_new"
     paths = tts(lines)
-    asr = {m: WhisperModel(m, device="cpu", compute_type="int8") for m in models}
+    threads = int(os.environ.get("OMP_NUM_THREADS", "0") or 0)       # round 15: 1 beside the renders
+    asr = {m: WhisperModel(m, device="cpu", compute_type="int8", cpu_threads=threads) for m in models}
     rows, audio = [], []
     for i, (ln, p) in enumerate(zip(lines, paths)):
         y, sr = sf.read(str(p), dtype="float32")
@@ -755,23 +901,54 @@ def narration_check(models=("base.en", "small.en")) -> list[dict]:
               "".join(f"  [{m}: {d}]" for m in asr for d in row[m]["diffs"][:3]), flush=True)
     dst = OUT / "narration"
     dst.mkdir(parents=True, exist_ok=True)
-    (dst / "check.json").write_text(json.dumps(dict(
+    (dst / f"check{tag}.json").write_text(json.dumps(dict(
         voice=f"Kokoro v1.0 {VOICE}, speed {SPEED}", recognizers=[f"faster-whisper {m}" for m in models],
         say=SAY, ipa=IPA, lines=rows), indent=1, ensure_ascii=False) + "\n")
     wav = Path(tempfile.gettempdir()) / "narration_lines.wav"
     sf.write(str(wav), np.concatenate(audio), SR)
-    run("ffmpeg", "-y", "-loglevel", "error", "-i", wav, "-c:a", "libopus", "-b:a", "32k", dst / "lines.ogg")
+    run("ffmpeg", "-y", "-loglevel", "error", "-i", wav, "-c:a", "libopus", "-b:a", "32k", dst / f"lines{tag}.ogg")
     return rows
 
 
 def clip_meta(src: str) -> dict | None:
-    """The sub-steps of a clip as built: out/clean/<rel>.json beside a 1080p render in out/hd/, else out/<rel>.json."""
-    rel = src.split("out/hd/", 1)[1] if "out/hd/" in src else src.split("out/mp4/", 1)[-1]
-    stem = rel[:-4] if rel.endswith(".mp4") else rel
-    for p in ((OUT / "clean" / f"{stem}.json") if "out/hd/" in src else None, OUT / f"{stem}.json"):
-        if p is not None and p.exists():
-            return json.loads(p.read_text())
+    """The sub-steps of a clip as built: out/clean/<rel>.json beside a render in this pass's folder (out/<HD_DIR>/, or
+    round 12's out/hd/: a VIZ3D_HD=1 scene writes its JSON to out/clean/), else out/<rel>.json; the first of them that
+    has sub-steps (round 15: out/safety.json is the safety PR's report, its clip's sub-steps are in out/clean/)."""
+    p = Path(src) if Path(src).is_absolute() else HERE / src
+    rel, hd = Path(p.name), False
+    for base, is_hd in ((HD, True), (OUT / "hd", True), (MP4, False)):
+        try:
+            rel, hd = p.relative_to(base), is_hd
+            break
+        except ValueError:
+            continue
+    stem = str(rel.with_suffix(""))
+    clean, plain = OUT / "clean" / f"{stem}.json", OUT / f"{stem}.json"
+    for c in ((clean, plain) if hd else (plain, clean)):
+        if c.exists():
+            m = json.loads(c.read_text())
+            if isinstance(m, dict) and m.get("substeps"):
+                return m
     return None
+
+
+_PROBE: dict = {}
+
+
+def probe(path: Path) -> tuple[int, int, float]:
+    """A video's width, height and frame rate as encoded (the rate a clip was drawn at: scene.py encodes every frame)."""
+    key = str(path)
+    if key not in _PROBE:
+        r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                            "stream=width,height,r_frame_rate", "-of", "csv=p=0", str(path)], capture_output=True,
+                           text=True)
+        try:
+            w, h, rate = r.stdout.strip().splitlines()[0].split(",")[:3]
+            num, den = (rate.split("/") + ["1"])[:2]
+            _PROBE[key] = (int(w), int(h), float(num) / float(den or 1))
+        except (ValueError, IndexError, ZeroDivisionError):
+            _PROBE[key] = (0, 0, 0.0)
+    return _PROBE[key]
 
 
 def narration_times(meta: dict) -> list[dict]:
@@ -789,6 +966,10 @@ def narration_times(meta: dict) -> list[dict]:
             r = next((r for r in parts if r["chapter"] == ch and r["kind"] == "still"
                       and (r.get("src") or "").endswith(part)), None)
             t = None if r is None else r["start_s"]
+        elif part.endswith(".mp4"):                     # round 15: footage or another project's render, by its file
+            r = next((r for r in parts if r["chapter"] == ch and r["kind"] in ("footage", "ext")
+                      and (r.get("src") or "").endswith(part)), None)
+            t = None if r is None else r["start_s"] + min(float(ln.get("at", 0.0)), max(0.0, r["seconds"] - 2.0))
         else:
             r = next((r for r in parts if r["chapter"] == ch and r["kind"] == "mp4"
                       and (r.get("src") or "").endswith(f"/{part}.mp4")), None)
@@ -812,6 +993,10 @@ def narration_times(meta: dict) -> list[dict]:
                 if cm and i is not None and i < len(subs):
                     t = r["start_s"] + subs[i]["start_frame"] / float(cm.get("fps", FPS))
                     t = min(t, r["start_s"] + r["seconds"] - 2.0)
+                # round 15: "at", seconds into the clip, for a clip with no sub-steps (the 2-D floor_pass and floor_day,
+                # base_cameras joined from two renders) or as the fallback when its sub-step can't be found
+                if t is None and ln.get("at") is not None:
+                    t = r["start_s"] + min(float(ln["at"]), max(0.0, r["seconds"] - 2.0))
         if t is None:
             print(f"  narration: no anchor for {ch}/{part}, line left out: {ln['text'][:60]}", flush=True)
             continue
@@ -856,13 +1041,19 @@ def narration_track(meta: dict, total: float, wav: Path) -> list[dict]:
 # ===================================================================================================== the audit table
 
 
+# round 15: a clip joined from separately audited renders is checked as the sum of their audits
+AUDIT_PARTS = {"base_cameras": ["base_cameras_vlm", "base_cameras_atomizer"]}
+TWO_D = {"floor_pass", "floor_day"}        # 2-D animations (floor_pass.py, floor_day.py): no scene to check
+
+
 def audit_rows() -> list[dict]:
     """Every 3-D clip in the plan with its collision audit (out/collisions/<clip>.json): frames checked, frames with
-    an arm in collision, frames with anything moving in collision, and whether the clip and its audit are this
-    round's 1080p render or an earlier render reused."""
-    # this round's audits: the reports that differ from the last commit before this round's renders (ROUND12_BASE),
-    # or didn't exist then (file times can't tell: merges and checkouts touch them)
-    base = os.environ.get("ROUND_BASE", os.environ.get("ROUND12_BASE", "8bc05dd"))   # round 13 started on 8bc05dd
+    an arm in collision, frames with anything moving in collision, the clip's size and the rate it was drawn at, and
+    whether the clip and its audit are this pass's render or an earlier render reused."""
+    # this round's audits: the reports that differ from the last commit before this round's renders (ROUND_BASE), or
+    # didn't exist then (file times can't tell: merges and checkouts touch them). Round 15 started its renders on
+    # ea5d9d5, after merging PRs #369-#379
+    base = os.environ.get("ROUND_BASE", os.environ.get("ROUND12_BASE", "ea5d9d5"))
     st = subprocess.run(["git", "diff", "--name-only", base, "--", "out/collisions"], capture_output=True, text=True,
                         cwd=HERE).stdout.split()
     st += subprocess.run(["git", "ls-files", "--others", "--exclude-standard", "out/collisions"], capture_output=True,
@@ -871,7 +1062,7 @@ def audit_rows() -> list[dict]:
                str(Path(x).relative_to("vertical-lab/out/collisions")) if x.startswith("vertical-lab/out/collisions/")
                else Path(x).name for x in st}
     rows, seen = [], set()
-    for r in plan():
+    for r in plan(quiet=True):
         if r["kind"] != "mp4" or r.get("missing") or "/dag/" in str(r["src"]):
             continue
         srcp = Path(str(r["src"]))
@@ -882,19 +1073,26 @@ def audit_rows() -> list[dict]:
             except ValueError:
                 rel = Path(srcp.stem)
         name = srcp.stem
-        if name in seen:
+        if name in seen or name in TWO_D:
             continue
         seen.add(name)
-        a = OUT / "collisions" / f"{rel}.json"
-        rep = json.loads(a.read_text()) if a.exists() else None
-        fresh = a.exists() and str(rel) + ".json" in changed
+        reps, fresh = [], True
+        for part in AUDIT_PARTS.get(name, [str(rel)]):
+            a = OUT / "collisions" / f"{part}.json"
+            reps.append(json.loads(a.read_text()) if a.exists() else None)
+            fresh = fresh and a.exists() and f"{part}.json" in changed
+        have = [x for x in reps if x]
+
+        def total(key, alt=None):
+            vals = [x.get(key, x.get(alt) if alt else None) for x in have]
+            return None if not have or any(v is None for v in vals) else sum(vals)
+        w, h, rate = probe(srcp)
         cm = clip_meta(str(r["src"])) or {}
-        rows.append(dict(clip=name, chapter=r["chapter"], hd=not r.get("upscaled"), seconds=round(r["seconds"], 1),
-                         drawn_fps=cm.get("fps"),
-                         audit_this_round=fresh, fps=(rep or {}).get("fps"),
-                         frames_checked=(rep or {}).get("frames_checked"),
-                         arm_frames=(rep or {}).get("frames_with_collisions"),
-                         all_frames=(rep or {}).get("frames_with_collisions_all", (rep or {}).get("frames_with_collisions"))))
+        rows.append(dict(clip=name, chapter=r["chapter"], this_pass=not r.get("earlier"), seconds=round(r["seconds"], 1),
+                         height=h, drawn_fps=round(rate) if rate else cm.get("fps"),
+                         audit_this_round=bool(have) and fresh, fps=have[0].get("fps") if have else None,
+                         frames_checked=total("frames_checked"), arm_frames=total("frames_with_collisions"),
+                         all_frames=total("frames_with_collisions_all", "frames_with_collisions")))
     return rows
 
 
@@ -907,8 +1105,11 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
     "vlm_workflow": "by design: the holder grips its vial (round 11)",
     "cubxl_corrosion": "the work itself: the pipette tip into its well",
     "ded": "the work itself: the melt pool's glow on the part",
-    "fumehood": "the drawn airflow's arrows crossing", "fumehood_tray": "the drawn airflow's arrows crossing",
-    "glovebox_tray": "the tipper's powder pour drawn through the jar",
+    # round 15 (the orchestrator): the tour clips' remaining "movers" frames are drawn effects, not contacts
+    "fumehood": "by design: the drawn airflow's arrows overlapping each other",
+    "fumehood_tray": "by design: the drawn airflow's arrows overlapping each other",
+    "glovebox_tray": "by design: the powder stream drawn inside the jar as it pours",
+    "safety": "the units in a studio, no arm moving: nothing to check",
     "atom_vacuum": "the crevice tool 1.5 mm into its station for one frame (8/10)",
     "alloy_print": "a fingertip on the sieving cell's frame by the funnel",
     "vlm_hookups": "the bay's dock head coming out through the bay's side wall, drawn without its opening",
@@ -922,11 +1123,11 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
 
 
 def audit_table(path: Path):
-    """audit_rows() as one table, 1920 wide (scrolled if tall), and out/collisions/<AUDIT_TAG>_summary.json."""
+    """audit_rows() as one table, 1920 wide (scrolled if tall), and <AUDIT_TAG>_summary.json beside it."""
     rows = audit_rows()
     for r in rows:
         r["note"] = AUDIT_NOTES.get(r["clip"], "")
-    (OUT / "collisions" / f"{AUDIT_TAG}_summary.json").write_text(json.dumps(rows, indent=1) + "\n")
+    path.with_name(f"{AUDIT_TAG}_summary.json").write_text(json.dumps(rows, indent=1) + "\n")
     W, row_h = 1920, 36
     H = 150 + row_h * len(rows) + 70
     im = Image.new("RGB", (W, H), (246, 247, 249))
@@ -947,9 +1148,10 @@ def audit_table(path: Path):
         if i % 2 == 0:
             d.rectangle((30, yy - 3, W - 30, yy + row_h - 3), fill=(235, 238, 244))
         d.text((40, yy), r["clip"], font=fb, fill=INK)
-        fps = f", {r['drawn_fps']} fps" if r.get("drawn_fps") else ""
-        d.text((440, yy), f"1080p{fps}" if r["hd"] else f"720p{fps}, scaled up", font=fb,
-               fill=INK if r["hd"] else (170, 60, 30))
+        # round 15: the clip's own height and the rate it was drawn at (720p30, 720p15), as the file has them
+        size = f"{r['height']}p{r['drawn_fps'] or ''}" if r.get("height") else "-"
+        d.text((440, yy), size + ("" if r["this_pass"] else ", earlier"), font=fb,
+               fill=INK if r["this_pass"] else GREY)
         fc = r["frames_checked"]
         d.text((760, yy), "-" if fc is None else f"{fc}" + ("" if r["audit_this_round"] else " (earlier)"), font=fb,
                fill=INK if r["audit_this_round"] else GREY)
@@ -961,14 +1163,15 @@ def audit_table(path: Path):
         while note and d.textlength(note, font=fn) > W - 1420 - 40:
             note = note[:-2].rstrip() + "…"
         d.text((1420, yy + 2), note, font=fn, fill=INK)
-    d.text((40, H - 50), "Frames checked: every frame as shown. A frame counts once however many parts touch. "
-           "\"Anything moving\" adds trays, doors, MiRs, tables and people to the arms.", font=font(20), fill=GREY)
+    d.text((40, H - 50), "Rendered: height and frames a second as drawn; earlier: a render from before this pass. "
+           "Frames checked: every frame as shown, once however many parts touch. \"Anything moving\" adds trays, "
+           "doors, MiRs, tables and people.", font=font(20), fill=GREY)
     im.save(path, optimize=True)
     return rows
 
 
 # ===================================================================================================== the plan
-def plan() -> list[dict]:
+def plan(quiet: bool = False) -> list[dict]:
     """[{chapter, kind, src, seconds, label, missing}] for every part, cards included, in order."""
     if not (OUT / "dal_workflow_table.png").exists():
         dal_table(OUT / "dal_workflow_table.png")
@@ -985,10 +1188,22 @@ def plan() -> list[dict]:
                 # its re-render is still writing out/mp4/a.mp4)
                 ovr = dict(kv.split("=", 1) for kv in os.environ.get("LONGFORM_SRC", "").split(",") if "=" in kv)
                 hd = HD / part[1]
-                src = Path(ovr[part[1]]) if part[1] in ovr else hd if hd.exists() else MP4 / part[1]
+                # round 15: a render of this pass that ffprobe can't read yet (still being written, or killed) is
+                # passed over for the earlier one in out/mp4/
+                hd_s = duration(hd) if hd.exists() and part[1] not in ovr else 0.0
+                if hd.exists() and not hd_s and part[1] not in ovr and not quiet:
+                    print(f"  {hd.relative_to(OUT)}: not readable yet (still rendering?), out/mp4/ instead", flush=True)
+                src = Path(ovr[part[1]]) if part[1] in ovr else hd if hd_s else MP4 / part[1]
+                secs = hd_s if src == hd else duration(src) if src.exists() else 0
+                earlier = src.exists() and src != hd and part[1] not in ovr
+                rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=secs, label=part[2],
+                                 missing=not src.exists() or not secs, earlier=earlier,
+                                 upscaled=src.exists() and 0 < probe(src)[1] < SIZE[1],
+                                 was_s=duration(MP4 / part[1]) if src == hd and (MP4 / part[1]).exists() else None))
+            elif kind == "ext":                         # round 15: another project's own render, out/mp4/ext/
+                src = MP4 / part[1]
                 rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=duration(src) if src.exists() else 0,
-                                 label=part[2], missing=not src.exists(), upscaled=src.exists() and src != hd
-                                 and part[1] not in ovr))
+                                 badge=part[2], caption=part[3], label=part[4], missing=not src.exists()))
             elif kind == "still":
                 src = OUT / part[1]
                 rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=part[2], caption=part[3],
@@ -1029,10 +1244,22 @@ def show_plan(rows):
         src = r.get("src")
         rel = r.get("git") or (src.relative_to(OUT) if src else "")
         flag = "  MISSING" if r.get("missing") else ""
-        print(f"{stamp(t):>6} {r['seconds']:6.1f} s  {r['kind']:7s} {r['chapter']:9s} {rel}{flag}")
+        if r["kind"] == "mp4" and not r.get("missing"):    # round 15: the clip's own size and rate, and whose pass
+            w, h, rate = probe(src)
+            flag += f"  {h}p{rate:.0f}" + ("  earlier render" if r.get("earlier") else "")
+            if r.get("was_s") and r["seconds"] < 0.5 * r["was_s"]:     # a render still writing reads as a short clip
+                flag += f"  SHORT: out/mp4/'s is {r['was_s']:.1f} s; still rendering?"
+        if r.get("caption") and not caption_fits(r):
+            flag += "  CAPTION CUT (over two lines)"
+        print(f"{stamp(t):>6} {r['seconds']:6.1f} s  {r['kind']:7s} {r['chapter']:11s} {rel}{flag}")
         if not r.get("missing"):
             t += r["seconds"]
     print(f"total {stamp(t)} ({t:.0f} s)")
+    miss = [str(r.get("git") or r["src"].relative_to(OUT)) for r in rows if r.get("missing")]
+    if miss:
+        print(f"missing ({len(miss)}): " + ", ".join(miss))
+    early = [str(r["src"].relative_to(MP4)) for r in rows if r["kind"] == "mp4" and r.get("earlier")]
+    print(f"not in out/{HD.name}/ yet ({len(early)}, taken from out/mp4/): " + ", ".join(early))
     for t0, name in chapters_from(rows):
         print(f"  {stamp(t0)} {name}")
 
@@ -1065,12 +1292,18 @@ def build():
             ov = tmp / f"badge{i:03d}.png"
             badge_png("REAL FOOTAGE", r["caption"], ov)
             cached([r["src"], ov, SIZE, FPS, "footage"], lambda d, r=r, ov=ov: normalise(r["src"], d, ov), out)
+        elif r["kind"] == "ext":
+            ov = tmp / f"ext{i:03d}.png"
+            ext_png(r["badge"], r["caption"], ov)
+            cached([r["src"], ov, SIZE, FPS, "ext"], lambda d, r=r, ov=ov: normalise(r["src"], d, ov, band=True), out)
         else:
             cached([r["src"], SIZE, FPS, "mp4"], lambda d, r=r: normalise(r["src"], d), out)
         d = duration(out)
         src = r.get("git") or (str(r["src"].relative_to(HERE)) if r.get("src") else None)
+        # round 15: an earlier render (out/mp4/, not this pass's out/<HD_DIR>/) and one smaller than the video, flagged
         record.append(dict(chapter=r["chapter"], kind=r["kind"], start_s=round(t, 2), seconds=round(d, 2),
-                           src=src, label=r.get("label"), **({"upscaled_from_720p": True} if r.get("upscaled") else {})))
+                           src=src, label=r.get("label"), **({"earlier_render": True} if r.get("earlier") else {}),
+                           **({"upscaled": True} if r.get("upscaled") else {})))
         t += d
         parts.append(out)
         print(f"{stamp(t):>6}  {r['kind']:7s} {src or ''}", flush=True)
@@ -1156,45 +1389,49 @@ def sheet(record, dst: Path, tmp: Path):
 
 
 # ===================================================================================================== YouTube
+# round 15: the round in the title, as round 13's upload had it, so it is told apart from the earlier uploads
 TITLE = os.environ.get("LONGFORM_TITLE",
-                       "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)")
+                       "The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 15)")
 PRIVACY = os.environ.get("LONGFORM_PRIVACY", "public")     # Sterling, 2026-11-20: "upload that to YouTube as public"
+# round 15: Sterling, 2026-11-23: "upload to YouTube (notify subscribers this time)"; round 12 went up without
+NOTIFY = os.environ.get("LONGFORM_NOTIFY", "1") not in ("0", "", "false", "no")
 
 
 def description(meta: dict, commit: str) -> str:
-    up = [p for p in meta["parts"] if p.get("upscaled_from_720p")]
-    head = ("A design study of an automated alloy lab at BYU's Vertical Cloud Lab, in one video: two Kardex Shuttle XP "
-            "500 vertical lift modules holding the instruments on powered trays, each tray with its own UPS and a "
-            "Stäubli CombiTac coupling that docks in its slot and at the opening; two UR12e arms (the UR10e, renamed in 2025) on MiR250 mobile "
-            "bases; the alloy route from charge cups through atomizing, sieving, printing, cutting, heat treatment and "
-            "tensile tests to sample prep and characterization; the atomizer's turnaround automated; maintenance "
-            "booked into the schedule; and what it would take to go from one alloy a day to ten.\n\n"
-            "It is a 3-D animation, not footage of a working lab: built from makers' published sizes and photos, "
-            "with our own designs where nothing exists yet, and every arm move checked for collisions frame by frame. "
-            "Real footage, photos and data are badged as such; everything else on screen is computed or illustrative. "
-            "The narration is a synthetic voice (Kokoro, an open text-to-speech model).\n\n"
+    """The YouTube description: what the video is, what is new, the sources, and every chapter's timestamp. Round 15:
+    shorter text, since 66 chapter lines take 3.1 kB of YouTube's 5,000 bytes; the budget leaves room only for the
+    "Requested in" link (about 100 bytes) that youtube/yt_service.py appends."""
+    early = [p for p in meta["parts"] if p.get("earlier_render")]
+    head = ("A design study of an automated alloy lab at BYU's Vertical Cloud Lab: two Kardex vertical lift modules hold "
+            "the instruments on powered trays, and UR12e arms (the UR10e, renamed in 2025) on MiR250 mobile bases work "
+            "at their openings and at the floor machines. The alloy route runs from machining the charge cups through "
+            "atomizing, printing, testing and characterization; then safety, upkeep, the floor and the waste, and the "
+            "way from one alloy a day to ten.\n\n"
+            "New in this version: the cups machined, washed and vacuum-dried; Class D extinguishers at every powder "
+            "station and on each MiR250; three cameras on each base; the CubXL's P300 and its well's sulfide loss; a "
+            "floor-cleaning robot explored; the waste; names and colour coding (PRs #369-#374, #376, #377, #379).\n\n"
+            "A 3-D animation, not footage of a working lab: makers' published sizes and photos, our own designs where "
+            "nothing exists yet, every arm move checked for collisions. Real footage, photos and data are badged; the "
+            "voice is synthetic (Kokoro).\n\n"
             f"Code, notes and sources: https://github.com/{REPO}/tree/{commit}/vertical-lab\n"
             f"PR: {PR}\n\n")
-    if up:
-        head += (f"{len(up)} of the clips are earlier 720p renders from the same code, scaled up; the rest were "
-                 "rendered at 1920 x 1080 for this video.\n\n")
-    rates = sorted({int(m["fps"]) for p in meta["parts"] if p["kind"] == "mp4" and "/dag/" not in str(p["src"])
-                    for m in [clip_meta(str(p["src"])) or {}] if m.get("fps")})
+    rates = sorted({round(probe(HERE / p["src"])[2]) for p in meta["parts"] if p["kind"] == "mp4"
+                    and "/dag/" not in str(p["src"]) and Path(HERE / p["src"]).exists()} - {0})
     if rates:
-        head += (f"The 3-D is drawn at {rates[0]}" + (f"-{rates[-1]}" if rates[-1] != rates[0] else "") +
-                 " frames a second and encoded at 30.\n\n")
+        head += (f"{meta['size'][0]} x {meta['size'][1]}, the 3-D drawn at {rates[0]}" +
+                 (f"-{rates[-1]}" if rates[-1] != rates[0] else "") + " frames a second" +
+                 (f"; {len(early)} clips are earlier renders" if early else "") + ".\n\n")
     chap = "Chapters\n" + "".join(f"{c['stamp']} {c['title']}\n" for c in meta["youtube_chapters"])
-    tail = ("\nThe real VLM at the start: Sterling Baird, \"Vertical Lift Module in operation - from the sample's "
-            "perspective\", https://www.youtube.com/watch?v=ck8QJhVqPiY . The atomizer footage in chapter 2 is the "
-            "lab's own (DAL #159, #219).\n\nAssumed, not published: the docks, the fixtures and cells, the press's "
-            "die, the camera mounts and several electrical ratings; each notes file in vertical-lab/notes says "
-            "which numbers are which.")
+    tail = ("\nThe real VLM: Sterling Baird, https://youtu.be/ck8QJhVqPiY . The atomizer footage is the lab's own (DAL "
+            "#159, #219); the doser drop is powder-doser's own CAD render (PR #185, v10). Each notes file says which "
+            "numbers are assumed.")
+    budget = 4850                                     # 5000 is YouTube's limit; the triggering link is appended
     s = head + chap + tail
-    while len(s.encode()) > 4600 and tail:            # 5000 is YouTube's limit; the triggering link is appended
+    while len(s.encode()) > budget and tail:
         tail = tail[: max(0, len(tail) - 200)]
         s = head + chap + tail
     cut = 70
-    while len(s.encode()) > 4600 and cut > 24:        # still long: shorten the chapter titles, keep every timestamp
+    while len(s.encode()) > budget and cut > 24:      # still long: shorten the chapter titles, keep every timestamp
         chap = "Chapters\n" + "".join(f"{c['stamp']} {c['title'][:cut]}\n" for c in meta["youtube_chapters"])
         s = head + chap + tail
         cut -= 6
@@ -1228,7 +1465,8 @@ def upload(meta: dict) -> str:
                         "categoryId": "28", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
             "status": {"privacyStatus": PRIVACY, "selfDeclaredMadeForKids": False, "embeddable": True}}
     media = MediaFileUpload(str(dst), mimetype="video/mp4", chunksize=16 << 20, resumable=True)
-    req = yt.videos().insert(part="snippet,status", body=body, media_body=media, notifySubscribers=False)
+    print(f"uploading {dst.name}: {PRIVACY}, subscribers {'notified' if NOTIFY else 'not notified'}", flush=True)
+    req = yt.videos().insert(part="snippet,status", body=body, media_body=media, notifySubscribers=NOTIFY)
     resp = None
     while resp is None:
         status, resp = req.next_chunk()
@@ -1238,7 +1476,7 @@ def upload(meta: dict) -> str:
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     rec["videos"].setdefault(f"{NAME}.mp4", []).append(dict(id=vid, sha256=digest, bytes=dst.stat().st_size,
                                                              commit=commit, uploaded=now, title=TITLE[:100],
-                                                             privacy=PRIVACY))
+                                                             privacy=PRIVACY, notified_subscribers=NOTIFY))
     Y.save_record(rec)
     (OUT / "longform_youtube.txt").write_text(desc + "\n")
     print(f"https://www.youtube.com/watch?v={vid}")
@@ -1282,7 +1520,9 @@ if __name__ == "__main__":
         for r in audit_table(OUT / "collisions" / f"{AUDIT_TAG}_table.png"):
             print(r)
     elif args and args[0] == "narration-check":       # speak every line and hear it back (faster-whisper)
-        narration_check()
+        # round 15: narration-check [--models base.en,small.en] [--new <commit>]: only the lines changed since <commit>
+        opt = dict(zip(args[1::2], args[2::2]))
+        narration_check(tuple(opt.get("--models", "base.en,small.en").split(",")), opt.get("--new"))
     elif args and args[0] == "tts":                   # speak the narration into the cache ahead of the build
         print(len(tts(json.loads(NARRATION.read_text()))), "lines in", TTS_DIR)
     elif args and args[0] == "warm":                  # normalise the clips into the cache ahead of the build

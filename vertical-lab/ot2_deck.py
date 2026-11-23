@@ -1,4 +1,4 @@
-"""The OT-2's deck as tray A carries it in the lab scenes (#303, PR #318, round 14).
+"""The OT-2's deck as tray A carries it in the lab scenes (#303, PR #318, rounds 14 and 15).
 
 Sterling, PR #318, 2026-11-20, of round 12's video: "The OT-2 is empty". Every scene that builds the lab
 (animate.Lab, so the set-up movie, the services, hookups and bay-camera clips, the chapters' VLMs) drew Opentrons'
@@ -7,13 +7,17 @@ clip's labware on the deck, at rest and without its moves, in the STEP's own fra
 OT-2's group with the same placement as the machine:
 
 * slot 1: Opentrons 300 uL tips (the P300's, on the right mount), a full rack;
-* slot 2: the printed tube block (ours) with the night's nine 0.5 mL PP tubes and two 1.5 mL tubes: the 10 mg/L
-  sulfide stock and the 1 mg/L ICP-MS standard;
-* slot 3: a 96-well 2 mL deep-well plate, where the OT-2 makes the 0.1 mg/L sulfide working stock and the 10x
-  dilutions;
+* slot 2: the printed stock block (ours) with one open 1.5 mL tube, the 10 mg/L sulfide stock;
+* slot 3: a 96-well 2 mL deep-well plate, where the OT-2 makes the 0.1 mg/L sulfide working stock in seawater;
 * slot 4: Opentrons 20 uL tips (the P20's, on the left mount);
-* slot 5: a NEST 12-well 15 mL reservoir: 2 % HNO3, seawater (ASTM D1141 without the heavy metals) and the blank
-  matrix, at the volumes the clip starts with (12, 12 and 10 mL).
+* slot 5: a NEST 12-well 15 mL reservoir, seawater (ASTM D1141 without the heavy metals) in trough 1, at the 12 mL the
+  clip starts with; the other troughs empty.
+
+Round 15 (PR #318, Sterling 2026-11-20: "it would be very risky to try to put high-hazard chemicals on a tray"): no
+acid on this deck. Round 14's deck still had the clip's ICP-MS dilution on it (a trough of 2 % HNO3, the blank matrix,
+the nine tubes and a 1 mg/L standard); that dilution is the floor ICP-MS station's now (icpms.py, notes/icpms.md), so
+they are gone. The only acid on tray A is DAL's: the CubXL's capped 20 mL vial of 1 M HNO3 (about 6 %, not the
+concentrated 15 M), 20 uL a tube (notes/cubxl_corrosion.md, round 15).
 
 Slots 6-11 stay free and 12 is the fixed trash, as in ot2_corrosion.py. Where each piece and volume comes from is in
 that module's docstring (DAL alloy-corrosion/copper/protocol.md at aeda51a; digital-wetlab PR #83, direction 5). The
@@ -45,27 +49,22 @@ def _shapes() -> list:
         out.append((f"{kind} tip rack (slot {slot})", rack.parts[0].shape, "pp_black"))
         out.append((f"{kind} tips", rack.parts[1].shape, "oc_tip"))
     s2x, s2y = OC._ot2_slot(2)
-    blk, holes, ((sfx, sfy), (stx, sty)) = OC._block(s2x + labware.SBS_W / 2, s2y + labware.SBS_D / 2, dz)
-    out.append(("tube block (slot 2)", blk, "pla_white"))
+    blk, (sfx, sfy) = OC._block(s2x + labware.SBS_W / 2, s2y + labware.SBS_D / 2, dz)
+    out.append(("stock block (slot 2)", blk, "pla_white"))
     tz = dz + 1.0
-    tubes = [OC._tube05(hx, hy, tz) for hx, hy in holes]
-    out.append(("0.5 mL tubes", cq.Workplane().add([t.val() for t in tubes]), "oc_tube"))
     mt = labware.microtube().parts[0].shape
-    out.append(("1.5 mL tubes", cq.Workplane().add([mt.moved(cq.Location(cq.Vector(x, y, tz)))
-                                                    for x, y in ((sfx, sfy), (stx, sty))]), "oc_tube"))
+    out.append(("1.5 mL tube", mt.moved(cq.Location(cq.Vector(sfx, sfy, tz))), "oc_tube"))
     out.append(("10 mg/L sulfide stock", OC._tube15_liquid(sfx, sfy, tz, OC.TUBE15_UL), "oc_sulf"))
-    out.append(("1 mg/L standard", OC._tube15_liquid(stx, sty, tz, OC.TUBE15_UL), "oc_std"))
     out.append(("deep-well plate (slot 3)", OC._ot2_seat(labware.plate("96_deep"), 3).parts[0].shape, "polystyrene"))
     s5x, s5y = OC._ot2_slot(5)
     res, troughs, r_bot = OC._reservoir(s5x + labware.SBS_W / 2, s5y + labware.SBS_D / 2, dz)
     out.append(("12-well reservoir (slot 5)", res, "polypropylene"))
     r = OC.RES
     area = (r["w"] - 0.1) * (r["l"] - 0.1)
-    for i, (ml, mat) in enumerate(((r["ml"], "oc_diluent"), (r["ml"], "oc_asw"), (r["ml3"], "oc_blank"))):
-        x, y = troughs[i]
-        h = ml * 1000.0 / area
-        out.append((f"trough {i + 1}", cq.Workplane().box(r["w"] - 0.1, r["l"] - 0.1, h, centered=(True, True, False))
-                    .translate((x, y, r_bot + 0.05)), mat))
+    x, y = troughs[0]                                  # round 15: seawater only; no 2 % HNO3, no blank matrix
+    out.append(("trough 1: seawater", cq.Workplane().box(r["w"] - 0.1, r["l"] - 0.1, r["ml"] * 1000.0 / area,
+                                                         centered=(True, True, False)).translate((x, y, r_bot + 0.05)),
+                "oc_asw"))
     return out
 
 
