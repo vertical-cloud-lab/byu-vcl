@@ -137,7 +137,9 @@ def waiters() -> list[tuple[str, int, float]]:
                 continue
         except (OSError, ValueError, AttributeError):
             need = MEM_PER_WEIGHT
-        eff = 0 if time.time() - ts > PROMOTE_S else prio
+        # round 15: --low (prio 2) is the orchestrator's bulk queue of final renders: it waits behind every other
+        # waiter, and a long wait never promotes it, so the helpers' fix audits never queue behind a dozen renders
+        eff = 0 if (prio == 1 and time.time() - ts > PROMOTE_S) else prio
         live.append((eff, ts, t.name, need))
     live.sort()
     return [(n, need, ts) for _, ts, n, need in live]
@@ -261,6 +263,8 @@ def slot(argv: list[str]) -> int:
             mem = int(argv.pop(0))
         elif a == "--quick":
             prio = 0
+        elif a == "--low":
+            prio = 2
         elif a == "--label":
             label = argv.pop(0)
         elif a == "--rcfile":

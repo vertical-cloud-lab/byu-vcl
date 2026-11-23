@@ -302,10 +302,10 @@ def part_atomizer():
 
 # =============================================================================================== join, sheet
 def join():
-    src = [OUT / ("hd" if S.HD else "mp4") / f"base_cameras_{p}.mp4" for p in ("vlm", "atomizer")]
+    src = [OUT / (os.environ.get("VIZ3D_HD_DIR", "hd") if S.HD else "mp4") / f"base_cameras_{p}.mp4" for p in ("vlm", "atomizer")]
     lst = Path("/tmp/base_cameras_concat.txt")
     lst.write_text("".join(f"file '{p}'\n" for p in src))
-    dst = OUT / ("hd" if S.HD else "mp4") / "base_cameras.mp4"
+    dst = OUT / (os.environ.get("VIZ3D_HD_DIR", "hd") if S.HD else "mp4") / "base_cameras.mp4"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-threads", "2", "-f", "concat", "-safe", "0", "-i", str(lst),
                     "-c", "copy", str(dst)], check=True)
     return dst

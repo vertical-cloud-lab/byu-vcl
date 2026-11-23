@@ -49,8 +49,8 @@ OUT_MP4 = HERE / "out" / "mp4" / "dag"
 # 720p cards stay as they are
 HD = bool(os.environ.get("VIZ3D_HD"))
 CLIP_FPS = int(os.environ.get("VIZ3D_FPS", "30")) if HD else 15
-if HD:
-    OUT = OUT_MP4 = HERE / "out" / "hd" / "dag"
+if HD:   # round 15: VIZ3D_HD_DIR (scene.py's switch) names the folder, e.g. r15 for the 720p pass
+    OUT = OUT_MP4 = HERE / "out" / os.environ.get("VIZ3D_HD_DIR", "hd") / "dag"
 SOURCE = ("digital-alloy-lab, onr-yip-figs-oct27-integrate @ b553306, benchmarks/bofn-prelim/dag/network_dag.py",
           "https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/b553306/benchmarks/bofn-prelim/dag/network_dag.py")
 
@@ -65,7 +65,8 @@ RED = "#E00000"
 NODE_FILL, NODE_LINE, EDGE = "#F4F4F4", "#595959", "#404040"
 WHITE = "#FFFFFF"
 
-W, H, DPI = 12.8, 7.2, (150 if HD else 100)   # 1280 x 720, or 1920 x 1080 with VIZ3D_HD
+# 1280 x 720, or 1920 x 1080 with VIZ3D_HD (round 15: VIZ3D_SIZE's height decides, so a 720p pass stays 720p)
+W, H, DPI = 12.8, 7.2, ((int(os.environ.get("VIZ3D_SIZE", "1920x1080").split("x")[1]) / 7.2) if HD else 100)
 COLS = ["I", "C", "A", "L", "T", "O"]
 HEADERS = {"I": "Inputs", "C": "CALPHAD", "A": "Atomize", "L": "Print", "T": "Test", "O": "Objective"}
 COSTS = {"C": "$10", "A": "$1,500", "L": "$2,500", "T": "$200"}      # DAL's COSTS, per call / run / build / bar

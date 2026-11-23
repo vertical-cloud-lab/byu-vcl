@@ -1895,13 +1895,15 @@ def _movie(B):
     # the closed door's see-through window. Now: from the front-right, 1.6 m off, over the MiR's end, and the test is
     # shown as a cutaway: the chamber's back half (r8_test's "chamber_cut") without its front half and door, so the
     # specimen, the grips, the pull rods and the AVE 2 in front are all in plain view and opaque.
-    CAM_GRIP = [tuple(rig_w(ins, (900, -1300, 1300))), tuple(rig_w(ins, (0, -60, 870))), (0, 0, 1)]
+    # round 15: both close-ups from higher up, so their line of sight passes over the dock's target post instead of
+    # through its AprilTag cube (round 13's open item: the cube filled the foreground of the loading and both pulls)
+    CAM_GRIP = [tuple(rig_w(ins, (1000, -1450, 2050))), tuple(rig_w(ins, (0, -60, 900))), (0, 0, 1)]
     # the parked arm stands in front of the frame, so the test is seen from the right, low, past the right column's
     # front face and the arm: the cut face, the specimen, both grips, the pull rods and the AVE 2 beyond them
     # round 11 (after the render): 450 mm higher, looking over the AprilTag cube on the Instron dock's target post,
     # which the set-up moved to 150 mm off the face west of the door (47219fc): from 1150 mm the cube stood 80 mm off
     # the line of sight and hid the specimen and both grips through both pulls
-    CAM_TEST = [tuple(rig_w(ins, (1300, -900, 1600))), tuple(rig_w(ins, (0, 10, 870))), (0, 0, 1)]
+    CAM_TEST = [tuple(rig_w(ins, (1400, -1150, 2250))), tuple(rig_w(ins, (0, 10, 900))), (0, 0, 1)]
     cut_on = {"chamber": (1.0, 0.0), "chamber_cut": (0.0, 1.0), "~chamber_door": (0.0, 1.0 / 0.82)}
     cut_off = {"chamber": (0.0, 1.0), "chamber_cut": (1.0, 0.0), "~chamber_door": (1.0 / 0.82, 0.0)}
     st["cap"] = (f"West along the aisle to the Instron 68FM-100 (shown at {DRIVE_SHOWN:.0f}x). Its 3119-608 chamber "

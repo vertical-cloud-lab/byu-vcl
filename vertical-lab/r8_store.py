@@ -339,8 +339,9 @@ def fumehood() -> Instrument:
         ("A polished Al coupon goes into Weck's reagent (KMnO4 and NaOH in water) for a few seconds: an HF-free tint "
          "etch for Al alloys.", 3.0, inst.actions[2][2]),
         ("Then into the rinse water, while the hood keeps pulling.", 3.0, inst.actions[3][2]),
-        ("Sash down. Nothing here uses HF: ICP-MS goes out to the BYU Spectroscopic Facility's Agilent 8900. 1219 mm "
-         "wide, 2.4 m tall with its base: it stands on the floor.", 2.6, inst.actions[4][2]),
+        # round 15: the lab has its own ICP-MS since round 14 (icpms.py), its acids in a hood of their own
+        ("Sash down. Nothing here uses HF; the ICP-MS station's nitric and hydrochloric acids stay in its own hood. "
+         "1219 mm wide, 2.4 m tall with its base: it stands on the floor.", 2.6, inst.actions[4][2]),
     ]
     inst.labels = [(("Weck's reagent (no HF)",) + tuple(lb[1:])) if lb[0] == "Keller's reagent" else lb
                    for lb in inst.labels]
