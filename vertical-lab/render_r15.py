@@ -43,7 +43,7 @@ JOBS["vacuum_press"] = (["vacuum_press.py"], {}, 2500, 30, ["vacuum_press.mp4"])
 JOBS["dag"] = (["route_dag.py"], {}, 1500, 30, [f"dag/route_dag_ch{i}.mp4" for i in range(1, 8)])
 for k in ATOM:   # atom_crucible.py renders both crucible clips: `out` (taking the furnace apart) and `in` (the rebuild)
     argv = ["atom_crucible.py", k.rsplit("_", 1)[1]] if k.startswith("atom_crucible_") else [f"{k}.py"]
-    JOBS[k] = (argv, {}, 3500, int(os.environ.get("R15_FPS_ATOM", "20")), [f"{k}.mp4"])
+    JOBS[k] = (argv, {}, 3500, int(os.environ.get("R15_FPS_ATOM", "15")), [f"{k}.mp4"])
 FAB = ["metalone", "snowpod", "mprint", "meltio_m450", "form4", "form_wash", "form_cure", "stencil", "lumenpnp"]
 for k in FAB:
     JOBS[f"f_{k}"] = (["fab_tour.py", k], {}, 2000, 30, [f"fabrication/{k}.mp4"])
@@ -91,12 +91,16 @@ def fps_of(name: str) -> int:
 
 def queue(names: list[str]) -> None:
     LOGS.mkdir(exist_ok=True)
+    # --normal: queue at runner_guard's normal priority, ahead of the --low bulk; for light clips that fit in the
+    # memory a whole-lab render leaves, so a core doesn't sit idle while the big ones wait for memory
+    prio = [] if "--normal" in names else ["--low"]
+    names = [n for n in names if n != "--normal"]
     for n in names:
         argv, env, mem, _, _ = JOBS[n]
         e = dict(COMMON, **env, VIZ3D_FPS=str(fps_of(n)))
         if n in AUDITED:
             e["VIZ3D_AUDIT"] = ""
-        cmd = ["python3", "runner_guard.py", "bg", "--log", str(LOGS / f"{n}.log"), "--mem", str(mem), "--label", n, "--low",
+        cmd = ["python3", "runner_guard.py", "bg", "--log", str(LOGS / f"{n}.log"), "--mem", str(mem), "--label", n, *prio,
                "--", "env"] + [f"{k}={v}" for k, v in e.items()] + ["xvfb-run", "-a", "python3"] + argv
         pid = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True).stdout.strip()
         print(f"{n}: pid {pid}, {fps_of(n)} fps, --mem {mem}")
@@ -151,7 +155,9 @@ if __name__ == "__main__":
     elif cmd == "collect":                       # chapter 2's spliced MP4 into out/r15/
         import shutil
         shutil.copy2(OUT / "mp4" / "alloy_atomize.mp4", R15 / "alloy_atomize.mp4")
-        print("alloy_atomize.mp4 ->", R15)
+        # the splice's JSON has the footage in its sub-steps; longform.clip_meta reads out/clean/ first for out/r15/
+        shutil.copy2(OUT / "alloy_atomize.json", OUT / "clean" / "alloy_atomize.json")
+        print("alloy_atomize.mp4 and its spliced JSON ->", R15, "and out/clean/")
     else:
         for n, (argv, env, mem, fps, outs) in JOBS.items():
             print(f"{n:16s} {' '.join(argv):32s} {fps_of(n):3d} fps {mem:5d} MB {env} -> {outs}")

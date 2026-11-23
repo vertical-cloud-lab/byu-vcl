@@ -1888,7 +1888,10 @@ def finish(sc):
     info = sc.save()                                   # the MP4 in RAW, the still and out/alloy_atomize.json
     if sc.auditor is not None:                         # ARM_AUDIT_RENDER=1
         sc.auditor.save()
-    meta = json.loads((OUT / f"{NAME}.json").read_text())
+    # round 15: under VIZ3D_HD (or VIZ3D_CLEAN) scene.save writes the JSON beside its MP4 in out/clean/, so read it
+    # there; reading out/'s was round 14's 1080p meta, and the splice cut a 720p render with 1080p frame sizes
+    src = (scene.OUT / "clean" if (scene.HD or scene.CLEAN) else OUT) / f"{NAME}.json"
+    meta = json.loads(src.read_text())
     meta.update(slots=sc.slots, gif_frames=n_gif, gif_fps=scene.GIF_FPS, gif_size=list(scene.GIF_SIZE))
     if PART:
         meta.update(part=list(PART))

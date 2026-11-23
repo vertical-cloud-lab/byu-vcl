@@ -80,15 +80,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead1_0_0/ded_spoke10",
+      "other_group": "ded:bead1_0_0",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_0_0/ded_spoke10",
-      "other_group": "ded:bead1_0_0",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      }
     ]
@@ -103,15 +103,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_0_0/ded_spoke10",
-      "other_group": "ded:bead1_0_0",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead1_0_0/ded_spoke10",
+      "other_group": "ded:bead1_0_0",
       "depth_mm": 6.0
      },
      {
@@ -156,15 +156,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_0_1/ded_spoke10",
-      "other_group": "ded:bead1_0_1",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead1_0_1/ded_spoke10",
+      "other_group": "ded:bead1_0_1",
       "depth_mm": 6.0
      },
      {
@@ -209,15 +209,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_0_2/ded_spoke10",
-      "other_group": "ded:bead1_0_2",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead1_0_2/ded_spoke10",
+      "other_group": "ded:bead1_0_2",
       "depth_mm": 6.0
      },
      {
@@ -301,15 +301,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_0_3/ded_spoke20",
-      "other_group": "ded:bead2_0_3",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead2_0_3/ded_spoke20",
+      "other_group": "ded:bead2_0_3",
       "depth_mm": 6.0
      }
     ]
@@ -324,15 +324,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_0_0/ded_spoke30",
-      "other_group": "ded:bead3_0_0",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead3_0_0/ded_spoke30",
+      "other_group": "ded:bead3_0_0",
       "depth_mm": 6.0
      }
     ]
@@ -363,15 +363,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_0_2/ded_spoke30",
-      "other_group": "ded:bead3_0_2",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead3_0_2/ded_spoke30",
+      "other_group": "ded:bead3_0_2",
       "depth_mm": 6.0
      }
     ]
@@ -448,15 +448,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_0_1/ded_spoke40",
-      "other_group": "ded:bead4_0_1",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead4_0_1/ded_spoke40",
+      "other_group": "ded:bead4_0_1",
       "depth_mm": 6.0
      }
     ]
@@ -526,15 +526,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_0/ded_spoke50",
-      "other_group": "ded:bead5_0_0",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead5_0_0/ded_spoke50",
+      "other_group": "ded:bead5_0_0",
       "depth_mm": 6.0
      },
      {
@@ -556,15 +556,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_1/ded_spoke50",
-      "other_group": "ded:bead5_0_1",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead5_0_1/ded_spoke50",
+      "other_group": "ded:bead5_0_1",
       "depth_mm": 6.0
      }
     ]
@@ -625,15 +625,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_1_1/ded_spoke00",
-      "other_group": "ded:bead0_1_1",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead0_1_1/ded_spoke00",
+      "other_group": "ded:bead0_1_1",
       "depth_mm": 3.0
      }
     ]
@@ -655,6 +655,13 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
       "other": "ded:bead0_0_1/ded_spoke00",
       "other_group": "ded:bead0_0_1",
       "depth_mm": 3.0
@@ -664,13 +671,6 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead0_1_1/ded_spoke00",
       "other_group": "ded:bead0_1_1",
-      "depth_mm": 3.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
       "depth_mm": 3.0
      }
     ]
@@ -685,13 +685,6 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_1_2/ded_spoke00",
-      "other_group": "ded:bead0_1_2",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
       "other": "ded:bead0_0_3/ded_spoke00",
       "other_group": "ded:bead0_0_3",
       "depth_mm": 6.0
@@ -701,6 +694,13 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead0_0_2/ded_spoke00",
       "other_group": "ded:bead0_0_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
+      "other": "ded:bead0_1_2/ded_spoke00",
+      "other_group": "ded:bead0_1_2",
       "depth_mm": 6.0
      },
      {
@@ -775,8 +775,8 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_0_0/ded_spoke10",
-      "other_group": "ded:bead1_0_0",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      },
      {
@@ -789,8 +789,8 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead1_0_0/ded_spoke10",
+      "other_group": "ded:bead1_0_0",
       "depth_mm": 3.0
      }
     ]
@@ -842,13 +842,6 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_1_2/ded_spoke10",
-      "other_group": "ded:bead1_1_2",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
       "other": "ded:bead1_0_2/ded_spoke10",
       "other_group": "ded:bead1_0_2",
       "depth_mm": 6.0
@@ -856,15 +849,22 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_0_3/ded_spoke10",
-      "other_group": "ded:bead1_0_3",
-      "depth_mm": 3.0
+      "other": "ded:bead1_1_2/ded_spoke10",
+      "other_group": "ded:bead1_1_2",
+      "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
       "other": "ded:load/steel0",
       "other_group": "ded:load",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
+      "other": "ded:bead1_0_3/ded_spoke10",
+      "other_group": "ded:bead1_0_3",
       "depth_mm": 3.0
      }
     ]
@@ -909,15 +909,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_0_0/ded_spoke20",
-      "other_group": "ded:bead2_0_0",
+      "other": "ded:bead2_1_0/ded_spoke20",
+      "other_group": "ded:bead2_1_0",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_1_0/ded_spoke20",
-      "other_group": "ded:bead2_1_0",
+      "other": "ded:bead2_0_0/ded_spoke20",
+      "other_group": "ded:bead2_0_0",
       "depth_mm": 6.0
      },
      {
@@ -953,15 +953,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_0_2/ded_spoke20",
-      "other_group": "ded:bead2_0_2",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead2_0_2/ded_spoke20",
+      "other_group": "ded:bead2_0_2",
       "depth_mm": 3.0
      }
     ]
@@ -1006,15 +1006,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_1_3/ded_spoke20",
-      "other_group": "ded:bead2_1_3",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead2_1_3/ded_spoke20",
+      "other_group": "ded:bead2_1_3",
       "depth_mm": 3.0
      }
     ]
@@ -1029,15 +1029,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_0_0/ded_spoke30",
-      "other_group": "ded:bead3_0_0",
+      "other": "ded:bead3_1_0/ded_spoke30",
+      "other_group": "ded:bead3_1_0",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_1_0/ded_spoke30",
-      "other_group": "ded:bead3_1_0",
+      "other": "ded:bead3_0_0/ded_spoke30",
+      "other_group": "ded:bead3_0_0",
       "depth_mm": 6.0
      },
      {
@@ -1080,15 +1080,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_0_2/ded_spoke30",
-      "other_group": "ded:bead3_0_2",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead3_0_2/ded_spoke30",
+      "other_group": "ded:bead3_0_2",
       "depth_mm": 3.0
      }
     ]
@@ -1156,13 +1156,6 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_1_0/ded_spoke40",
-      "other_group": "ded:bead4_1_0",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
       "other": "ded:bead4_0_0/ded_spoke40",
       "other_group": "ded:bead4_0_0",
       "depth_mm": 6.0
@@ -1170,15 +1163,22 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_0_1/ded_spoke40",
-      "other_group": "ded:bead4_0_1",
-      "depth_mm": 3.0
+      "other": "ded:bead4_1_0/ded_spoke40",
+      "other_group": "ded:bead4_1_0",
+      "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
       "other": "ded:load/steel0",
       "other_group": "ded:load",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
+      "other": "ded:bead4_0_1/ded_spoke40",
+      "other_group": "ded:bead4_0_1",
       "depth_mm": 3.0
      }
     ]
@@ -1253,15 +1253,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_1_3/ded_spoke40",
-      "other_group": "ded:bead4_1_3",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead4_1_3/ded_spoke40",
+      "other_group": "ded:bead4_1_3",
       "depth_mm": 3.0
      }
     ]
@@ -1306,15 +1306,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead5_1_1/ded_spoke50",
+      "other_group": "ded:bead5_1_1",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_1_1/ded_spoke50",
-      "other_group": "ded:bead5_1_1",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      }
     ]
@@ -1336,15 +1336,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_1_2/ded_spoke50",
-      "other_group": "ded:bead5_1_2",
+      "other": "ded:load/steel0",
+      "other_group": "ded:load",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:load/steel0",
-      "other_group": "ded:load",
+      "other": "ded:bead5_1_2/ded_spoke50",
+      "other_group": "ded:bead5_1_2",
       "depth_mm": 3.0
      }
     ]
@@ -1359,15 +1359,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_2/ded_spoke50",
-      "other_group": "ded:bead5_0_2",
+      "other": "ded:bead5_0_3/ded_spoke50",
+      "other_group": "ded:bead5_0_3",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_3/ded_spoke50",
-      "other_group": "ded:bead5_0_3",
+      "other": "ded:bead5_0_2/ded_spoke50",
+      "other_group": "ded:bead5_0_2",
       "depth_mm": 6.0
      },
      {
@@ -1396,15 +1396,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_1_3/ded_spoke50",
-      "other_group": "ded:bead5_1_3",
+      "other": "ded:bead5_0_3/ded_spoke50",
+      "other_group": "ded:bead5_0_3",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_3/ded_spoke50",
-      "other_group": "ded:bead5_0_3",
+      "other": "ded:bead5_1_3/ded_spoke50",
+      "other_group": "ded:bead5_1_3",
       "depth_mm": 6.0
      },
      {
@@ -1449,15 +1449,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_1_0/ded_spoke00",
-      "other_group": "ded:bead0_1_0",
+      "other": "ded:bead0_0_1/ded_spoke00",
+      "other_group": "ded:bead0_0_1",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_0_1/ded_spoke00",
-      "other_group": "ded:bead0_0_1",
+      "other": "ded:bead0_1_0/ded_spoke00",
+      "other_group": "ded:bead0_1_0",
       "depth_mm": 3.0
      },
      {
@@ -1486,13 +1486,6 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_2_1/ded_spoke00",
-      "other_group": "ded:bead0_2_1",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
       "other": "ded:bead0_1_2/ded_spoke00",
       "other_group": "ded:bead0_1_2",
       "depth_mm": 6.0
@@ -1507,15 +1500,22 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_0_1/ded_spoke00",
-      "other_group": "ded:bead0_0_1",
-      "depth_mm": 3.0
+      "other": "ded:bead0_2_1/ded_spoke00",
+      "other_group": "ded:bead0_2_1",
+      "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
       "other": "ded:bead0_0_2/ded_spoke00",
       "other_group": "ded:bead0_0_2",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
+      "other": "ded:bead0_0_1/ded_spoke00",
+      "other_group": "ded:bead0_0_1",
       "depth_mm": 3.0
      }
     ]
@@ -1537,15 +1537,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_2_2/ded_spoke00",
-      "other_group": "ded:bead0_2_2",
+      "other": "ded:bead0_0_2/ded_spoke00",
+      "other_group": "ded:bead0_0_2",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead0_0_2/ded_spoke00",
-      "other_group": "ded:bead0_0_2",
+      "other": "ded:bead0_2_2/ded_spoke00",
+      "other_group": "ded:bead0_2_2",
       "depth_mm": 3.0
      }
     ]
@@ -1629,6 +1629,13 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
+      "other": "ded:bead1_2_1/ded_spoke10",
+      "other_group": "ded:bead1_2_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
       "other": "ded:bead1_1_2/ded_spoke10",
       "other_group": "ded:bead1_1_2",
       "depth_mm": 6.0
@@ -1638,13 +1645,6 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead1_1_1/ded_spoke10",
       "other_group": "ded:bead1_1_1",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
-      "other": "ded:bead1_2_1/ded_spoke10",
-      "other_group": "ded:bead1_2_1",
       "depth_mm": 6.0
      },
      {
@@ -1673,6 +1673,13 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
+      "other": "ded:bead1_2_2/ded_spoke10",
+      "other_group": "ded:bead1_2_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
       "other": "ded:bead1_1_2/ded_spoke10",
       "other_group": "ded:bead1_1_2",
       "depth_mm": 6.0
@@ -1680,9 +1687,9 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead1_2_2/ded_spoke10",
-      "other_group": "ded:bead1_2_2",
-      "depth_mm": 6.0
+      "other": "ded:bead1_1_3/ded_spoke10",
+      "other_group": "ded:bead1_1_3",
+      "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
@@ -1696,13 +1703,6 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead1_0_2/ded_spoke10",
       "other_group": "ded:bead1_0_2",
-      "depth_mm": 3.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
-      "other": "ded:bead1_1_3/ded_spoke10",
-      "other_group": "ded:bead1_1_3",
       "depth_mm": 3.0
      }
     ]
@@ -1784,15 +1784,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_0_0/ded_spoke20",
-      "other_group": "ded:bead2_0_0",
+      "other": "ded:bead2_1_0/ded_spoke20",
+      "other_group": "ded:bead2_1_0",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_1_0/ded_spoke20",
-      "other_group": "ded:bead2_1_0",
+      "other": "ded:bead2_0_0/ded_spoke20",
+      "other_group": "ded:bead2_0_0",
       "depth_mm": 3.0
      }
     ]
@@ -1807,6 +1807,13 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
+      "other": "ded:bead2_2_1/ded_spoke20",
+      "other_group": "ded:bead2_2_1",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
       "other": "ded:bead2_1_1/ded_spoke20",
       "other_group": "ded:bead2_1_1",
       "depth_mm": 6.0
@@ -1814,9 +1821,9 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_2_1/ded_spoke20",
-      "other_group": "ded:bead2_2_1",
-      "depth_mm": 6.0
+      "other": "ded:bead2_0_2/ded_spoke20",
+      "other_group": "ded:bead2_0_2",
+      "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
@@ -1830,13 +1837,6 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead2_0_1/ded_spoke20",
       "other_group": "ded:bead2_0_1",
-      "depth_mm": 3.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
-      "other": "ded:bead2_0_2/ded_spoke20",
-      "other_group": "ded:bead2_0_2",
       "depth_mm": 3.0
      }
     ]
@@ -1888,15 +1888,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_1_2/ded_spoke20",
-      "other_group": "ded:bead2_1_2",
+      "other": "ded:bead2_0_2/ded_spoke20",
+      "other_group": "ded:bead2_0_2",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_0_3/ded_spoke20",
-      "other_group": "ded:bead2_0_3",
+      "other": "ded:bead2_1_2/ded_spoke20",
+      "other_group": "ded:bead2_1_2",
       "depth_mm": 3.0
      },
      {
@@ -1909,8 +1909,8 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_0_2/ded_spoke20",
-      "other_group": "ded:bead2_0_2",
+      "other": "ded:bead2_0_3/ded_spoke20",
+      "other_group": "ded:bead2_0_3",
       "depth_mm": 3.0
      }
     ]
@@ -1925,15 +1925,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_1_3/ded_spoke20",
-      "other_group": "ded:bead2_1_3",
+      "other": "ded:bead2_2_3/ded_spoke20",
+      "other_group": "ded:bead2_2_3",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead2_2_3/ded_spoke20",
-      "other_group": "ded:bead2_2_3",
+      "other": "ded:bead2_1_3/ded_spoke20",
+      "other_group": "ded:bead2_1_3",
       "depth_mm": 6.0
      },
      {
@@ -1978,8 +1978,8 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_2_0/ded_spoke30",
-      "other_group": "ded:bead3_2_0",
+      "other": "ded:bead3_1_0/ded_spoke30",
+      "other_group": "ded:bead3_1_0",
       "depth_mm": 3.0
      },
      {
@@ -1992,15 +1992,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_1_0/ded_spoke30",
-      "other_group": "ded:bead3_1_0",
+      "other": "ded:bead3_0_1/ded_spoke30",
+      "other_group": "ded:bead3_0_1",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_0_1/ded_spoke30",
-      "other_group": "ded:bead3_0_1",
+      "other": "ded:bead3_2_0/ded_spoke30",
+      "other_group": "ded:bead3_2_0",
       "depth_mm": 3.0
      }
     ]
@@ -2015,15 +2015,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_2_1/ded_spoke30",
-      "other_group": "ded:bead3_2_1",
+      "other": "ded:bead3_1_1/ded_spoke30",
+      "other_group": "ded:bead3_1_1",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_1_1/ded_spoke30",
-      "other_group": "ded:bead3_1_1",
+      "other": "ded:bead3_2_1/ded_spoke30",
+      "other_group": "ded:bead3_2_1",
       "depth_mm": 6.0
      },
      {
@@ -2075,13 +2075,6 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_2_2/ded_spoke30",
-      "other_group": "ded:bead3_2_2",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
       "other": "ded:bead3_1_3/ded_spoke30",
       "other_group": "ded:bead3_1_3",
       "depth_mm": 6.0
@@ -2091,6 +2084,13 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead3_1_2/ded_spoke30",
       "other_group": "ded:bead3_1_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
+      "other": "ded:bead3_2_2/ded_spoke30",
+      "other_group": "ded:bead3_2_2",
       "depth_mm": 6.0
      },
      {
@@ -2126,15 +2126,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_0_3/ded_spoke30",
-      "other_group": "ded:bead3_0_3",
+      "other": "ded:bead3_2_3/ded_spoke30",
+      "other_group": "ded:bead3_2_3",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead3_2_3/ded_spoke30",
-      "other_group": "ded:bead3_2_3",
+      "other": "ded:bead3_0_3/ded_spoke30",
+      "other_group": "ded:bead3_0_3",
       "depth_mm": 3.0
      }
     ]
@@ -2165,13 +2165,6 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_1_0/ded_spoke40",
-      "other_group": "ded:bead4_1_0",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
       "other": "ded:bead4_1_1/ded_spoke40",
       "other_group": "ded:bead4_1_1",
       "depth_mm": 6.0
@@ -2181,6 +2174,13 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead4_2_0/ded_spoke40",
       "other_group": "ded:bead4_2_0",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
+      "other": "ded:bead4_1_0/ded_spoke40",
+      "other_group": "ded:bead4_1_0",
       "depth_mm": 6.0
      },
      {
@@ -2239,6 +2239,13 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
+      "other": "ded:bead4_1_2/ded_spoke40",
+      "other_group": "ded:bead4_1_2",
+      "depth_mm": 6.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
       "other": "ded:bead4_1_1/ded_spoke40",
       "other_group": "ded:bead4_1_1",
       "depth_mm": 6.0
@@ -2248,13 +2255,6 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead4_2_1/ded_spoke40",
       "other_group": "ded:bead4_2_1",
-      "depth_mm": 6.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
-      "other": "ded:bead4_1_2/ded_spoke40",
-      "other_group": "ded:bead4_1_2",
       "depth_mm": 6.0
      },
      {
@@ -2320,15 +2320,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_1_3/ded_spoke40",
-      "other_group": "ded:bead4_1_3",
+      "other": "ded:bead4_1_2/ded_spoke40",
+      "other_group": "ded:bead4_1_2",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_1_2/ded_spoke40",
-      "other_group": "ded:bead4_1_2",
+      "other": "ded:bead4_1_3/ded_spoke40",
+      "other_group": "ded:bead4_1_3",
       "depth_mm": 6.0
      },
      {
@@ -2364,15 +2364,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_2_3/ded_spoke40",
-      "other_group": "ded:bead4_2_3",
+      "other": "ded:bead4_0_3/ded_spoke40",
+      "other_group": "ded:bead4_0_3",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead4_0_3/ded_spoke40",
-      "other_group": "ded:bead4_0_3",
+      "other": "ded:bead4_2_3/ded_spoke40",
+      "other_group": "ded:bead4_2_3",
       "depth_mm": 3.0
      }
     ]
@@ -2426,15 +2426,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_1_0/ded_spoke50",
-      "other_group": "ded:bead5_1_0",
+      "other": "ded:bead5_2_0/ded_spoke50",
+      "other_group": "ded:bead5_2_0",
       "depth_mm": 6.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_2_0/ded_spoke50",
-      "other_group": "ded:bead5_2_0",
+      "other": "ded:bead5_1_0/ded_spoke50",
+      "other_group": "ded:bead5_1_0",
       "depth_mm": 6.0
      },
      {
@@ -2507,15 +2507,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_2/ded_spoke50",
-      "other_group": "ded:bead5_0_2",
+      "other": "ded:bead5_0_1/ded_spoke50",
+      "other_group": "ded:bead5_0_1",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_1/ded_spoke50",
-      "other_group": "ded:bead5_0_1",
+      "other": "ded:bead5_0_2/ded_spoke50",
+      "other_group": "ded:bead5_0_2",
       "depth_mm": 3.0
      }
     ]
@@ -2537,15 +2537,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_2/ded_spoke50",
-      "other_group": "ded:bead5_0_2",
+      "other": "ded:bead5_2_2/ded_spoke50",
+      "other_group": "ded:bead5_2_2",
       "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_2_2/ded_spoke50",
-      "other_group": "ded:bead5_2_2",
+      "other": "ded:bead5_0_2/ded_spoke50",
+      "other_group": "ded:bead5_0_2",
       "depth_mm": 3.0
      }
     ]
@@ -2557,6 +2557,13 @@
     "frames": 1,
     "depth_mm": 6.0,
     "pairs": [
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
+      "other": "ded:bead5_2_2/ded_spoke50",
+      "other_group": "ded:bead5_2_2",
+      "depth_mm": 6.0
+     },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
@@ -2574,22 +2581,15 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
-      "other": "ded:bead5_2_2/ded_spoke50",
-      "other_group": "ded:bead5_2_2",
-      "depth_mm": 6.0
+      "other": "ded:bead5_0_3/ded_spoke50",
+      "other_group": "ded:bead5_0_3",
+      "depth_mm": 3.0
      },
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
       "other": "ded:bead5_0_2/ded_spoke50",
       "other_group": "ded:bead5_0_2",
-      "depth_mm": 3.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
-      "other": "ded:bead5_0_3/ded_spoke50",
-      "other_group": "ded:bead5_0_3",
       "depth_mm": 3.0
      }
     ]
@@ -2611,6 +2611,13 @@
      {
       "mover": "ded:glow",
       "body": "ded:glow/glow0",
+      "other": "ded:bead5_2_2/ded_spoke50",
+      "other_group": "ded:bead5_2_2",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "ded:glow",
+      "body": "ded:glow/glow0",
       "other": "ded:bead5_0_3/ded_spoke50",
       "other_group": "ded:bead5_0_3",
       "depth_mm": 3.0
@@ -2620,13 +2627,6 @@
       "body": "ded:glow/glow0",
       "other": "ded:bead5_1_2/ded_spoke50",
       "other_group": "ded:bead5_1_2",
-      "depth_mm": 3.0
-     },
-     {
-      "mover": "ded:glow",
-      "body": "ded:glow/glow0",
-      "other": "ded:bead5_2_2/ded_spoke50",
-      "other_group": "ded:bead5_2_2",
       "depth_mm": 3.0
      }
     ]
@@ -2663,7 +2663,7 @@
    }
   ],
   "fcl_pairs_checked": 1759,
-  "seconds": 2.6,
+  "seconds": 2.5,
   "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
  },
  "frames_with_collisions_all": 108
