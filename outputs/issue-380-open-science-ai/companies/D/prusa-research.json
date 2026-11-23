@@ -120,7 +120,8 @@
     "https://hackaday.com/2025/08/13/josef-prusa-warns-open-hardware-3d-printing-is-dead",
     "https://en.wikipedia.org/wiki/Prusa_Research",
     "https://hackaday.com/2024/11/20/with-core-one-prusas-open-source-hardware-dream-quietly-dies/",
-    "https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/"
+    "https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/",
+    "https://certification.oshwa.org/list.html"
   ],
   "search_tool": "WebSearch + WebFetch (search budget exhausted)",
   "sources": [
@@ -200,10 +201,17 @@
       "publisher": "Dealroom",
       "date": "2026",
       "supports": "notes: no known external funding"
+    },
+    {
+      "url": "https://certification.oshwa.org/list.html",
+      "title": "OSHWA Certification: certified projects list",
+      "publisher": "Open Source Hardware Association",
+      "date": "2026-11-23",
+      "supports": "hardware_extras.oshwa_certifications (list page covers certifications through Dec 2020)"
     }
   ],
   "hardware_extras": {
-    "oshwa_certifications": null,
+    "oshwa_certifications": "1 certification on OSHWA's list page: CZ000002, Original Prusa MINI (2020-11-17). The list page runs only through Dec 2020.",
     "hardware_licenses": [
       "GPLv2/GPLv3 (i3 OpenSCAD design files up to MK3)",
       "CC BY-SA 4.0 (MK52 heated bed)",
@@ -222,6 +230,7 @@
     "funding_total_usd left null: Dealroom lists no known external funding, but no source states explicitly that the company never raised outside capital.",
     "US operations: Prusa USA (Delaware, formerly Printed Solid, renamed July 2026) assembles printers; the US was about 35% of revenue in 2025 per Czech press.",
     "OSHWA certification status not found in searches; recorded as null.",
-    "Mode note: 2025-2026 facts (OCL release date, 2026 layoffs, Prusa USA) come from searches/fetches run in this session."
+    "Mode note: 2025-2026 facts (OCL release date, 2026 layoffs, Prusa USA) come from searches/fetches run in this session.",
+    "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
   ]
 }

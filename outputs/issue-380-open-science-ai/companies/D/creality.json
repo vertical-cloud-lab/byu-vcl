@@ -105,7 +105,8 @@
     "https://api.github.com/repos/CrealityOfficial/K1_Series_Klipper",
     "https://www.creality.com/pages/about-us",
     "https://www.creality.com/pages/about-us",
-    "https://www.creality.com/investor-relations"
+    "https://www.creality.com/investor-relations",
+    "https://certification.oshwa.org/list.html"
   ],
   "search_tool": "WebFetch (search budget exhausted)",
   "sources": [
@@ -164,10 +165,17 @@
       "publisher": "Creality",
       "date": "2026-11",
       "supports": "ownership_status (public; IR sections for global offering and financial reports), Nexbie launch Aug 2025"
+    },
+    {
+      "url": "https://certification.oshwa.org/list.html",
+      "title": "OSHWA Certification: certified projects list",
+      "publisher": "Open Source Hardware Association",
+      "date": "2026-11-23",
+      "supports": "hardware_extras.oshwa_certifications (list page covers certifications through Dec 2020)"
     }
   ],
   "hardware_extras": {
-    "oshwa_certifications": null,
+    "oshwa_certifications": "3 certifications on OSHWA's list page: CN000003, CN000004 and CN000005 (dates not captured). The list page runs only through Dec 2020.",
     "hardware_licenses": [
       "GPL-3.0 (Ender-3 mechanical, PCB and wiring files, 2018)"
     ],
@@ -182,6 +190,7 @@
     "No WebSearch queries could be run for Creality: the session-wide search budget (200 per turn, shared by all agents) was exhausted. Facts come from direct fetches of English/Chinese Wikipedia and GitHub (web and API); none from memory. The 4-search minimum was not met; confidence low.",
     "Hong Kong IPO: Creality's own About page lists 'Officially listed on the HKEX' as its 2026 milestone and the company now has an investor-relations site with 'Global Offering' and 'Financial Reports' sections, so ownership_status is 'public'. Listing date, stock code, proceeds, market cap and pre-IPO funding could not be retrieved; latest_value left null. A follow-up search is needed.",
     "Revenue not found in the sources reached; set to null.",
-    "Ender-3 open-source date taken from the GitHub repository creation date (2018-06-30)."
+    "Ender-3 open-source date taken from the GitHub repository creation date (2018-06-30).",
+    "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
   ]
 }

@@ -1,0 +1,86 @@
+{
+  "name": "Sofar Ocean Technologies (formerly OpenROV)",
+  "slug": "sofar-ocean-openrov",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "ocean sensing: open-source ROV kits (OpenROV), then Spotter buoy network, marine weather and voyage-optimization software",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "David Lang and Eric Stackpole, then a NASA engineering intern, founded OpenROV in 2011 as a garage-built, low-cost open-source underwater robot. It was shown at World Maker Faire in 2011 and was based mostly in Berkeley, CA. In March 2019 it merged with Spoondrift, maker of the Spotter wave buoy, to form Sofar Ocean Technologies. SolarCity co-founder Peter Rive orchestrated the merger.",
+  "founded_year": 2011,
+  "flagship_projects": ["OpenROV DIY kit (v2.3-v2.8)", "Trident underwater drone ($1,700 in 2019)", "Spotter buoy ($4,900 in 2019; 2.5K+ deployed)", "Bristlemouth open marine hardware-interface standard (debuted ~2021)", "Wayfinder voyage optimization", "Sofar Marine Weather"],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "Hardware column. OpenROV started as an open-source hardware project. It published CAD for every DIY-kit version (v2.3-v2.8), electronics schematics, laser-cut DXFs and software, and had builders in over 30 countries. The CAD licence is CC BY-NC-SA 4.0, which is non-commercial and so does not meet the OSHW definition; that makes the initial 3 borderline 2/3. The later Trident ROV has only an interfacing development kit published (MIT); no full design files were found. Sofar's core products (Spotter, Sentrix, Wayfinder, Marine Weather) carry no open-source statements on its website. Sofar has since opened a peripheral layer: Bristlemouth, 'an open standard delivering plug-and-play hardware interfaces for marine applications', with Apache-2.0 firmware. The current level is 1, with only peripheral parts open.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": null, "license": "CC BY-NC-SA 4.0 (OpenROV DIY kit CAD, v2.3-v2.8)", "note": "Non-commercial. 'Some portions of code may be subject to different licensing agreements.' Repo has 212 stars and 116 forks and was last updated Feb 2020. Adoption year not found; CC 4.0 dates from Nov 2013.", "source": "https://github.com/OpenROV/openrov-hardware"},
+    {"year": null, "license": "MIT (openrov-software-arduino; Trident-Development-Kit)", "note": "Other OpenROV software repos (openrov-software 432 stars, cockpit) show no licence on the org page", "source": "https://github.com/OpenROV"},
+    {"year": 2021, "license": "Apache-2.0 (Bristlemouth firmware: bm_protocol, bm_serial, bm_common_messages)", "note": "Year from news links on bristlemouth.org about its debut at OCEANS 2021. The YoYo PCB design repo shows no licence. bm_protocol was updated 2026-11-20.", "source": "https://github.com/bristlemouth"}
+  ],
+  "relicensing_events": [
+    {"year": null, "from": "Open DIY kit (CAD, electronics and software published)", "to": "Trident ready-to-use ROV with only an interfacing development kit (MIT) published", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Inferred from the GitHub org contents; Trident's launch year was not confirmed in the pages fetched", "source": "https://github.com/OpenROV"},
+    {"year": 2019, "from": "OpenROV (open kits plus Trident)", "to": "Sofar Ocean (proprietary Spotter sensor network and data products)", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Merger with Spoondrift plus a $7M Series A. The open OpenROV repos stopped being updated (hardware Feb 2020).", "source": "https://techcrunch.com/2019/03/27/sofar-ocean-technologies/"},
+    {"year": 2021, "from": "Closed Spotter platform interfaces", "to": "Bristlemouth open hardware-interface standard (Apache-2.0 firmware)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Peripheral opening. Partners listed: ONR, NOAA, Oceankind, Schmidt Marine, Builders Vision, Dalio Philanthropies, Ocean Discovery League, Aqualink, Sofar. The page names no governance body.", "source": "https://www.bristlemouth.org/"}
+  ],
+  "funding_total_usd": 8650000,
+  "funding_as_of": "2019-03",
+  "ownership_status": "private_vc",
+  "exit_events": [
+    {"year": 2019, "type": "merger", "value_usd": null, "counterparty": "Spoondrift Technologies", "note": "Formed Sofar Ocean Technologies; CEO Tim Janssen (ex-Spoondrift), chairman Peter Rive, co-founder David Lang (OpenROV)", "source": "https://techcrunch.com/2019/03/27/sofar-ocean-technologies/"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2019: the merger pivoted the company from open, consumer ROVs to a proprietary ocean-data business. Part of the Series A was earmarked for developing safeguards for Trident drones (TechCrunch).",
+    "Customer concentration in government and defence: ONR, US Navy and NOAA appear among its customers and partners (website, 2026).",
+    "Open OpenROV design repos have gone unmaintained since 2019-2022 (hardware last updated 2020-02-27; electronics 2022-08-11)."
+  ],
+  "robustness": "Sofar is a private, VC-backed company that says it runs 'the largest privately-owned ocean sensor network in the world': 2.5K+ Spotters, 1.5M real-time observations a day and 25M+ hours of observations. Its value sits in proprietary sensors, data and routing software sold to shipping fleets and government. The old OpenROV designs remain public (CC BY-NC-SA) but unmaintained. Bristlemouth spreads interoperability across a multi-partner open standard, though the pages fetched name no governance body.",
+  "physical_science_relevance": "Directly relevant to oceanography. Spotter buoys supply wave, weather and subsurface observations used by NOAA and the US Navy, and National Geographic was one of the biggest Trident buyers. Bristlemouth aims at plug-and-play interoperability for marine scientific instruments.",
+  "openness_effect_assessment": "Openness gave OpenROV a global builder community (30+ countries) and early backing ($1.3M from True Ventures and National Geographic). Scale came only after it moved to a ready-to-use ROV and then, through the 2019 merger, to a proprietary sensor-network and data business. Sofar then used openness strategically at the interface layer (Bristlemouth, Apache-2.0 firmware, with ONR, NOAA and philanthropic partners) to grow an ecosystem around its closed core.",
+  "key_takeaway": "Sofar/OpenROV traces the full arc from open-hardware DIY project to closed, VC-backed data company. It began in 2011 with public CAD under a non-commercial CC licence and a community in 30+ countries. The 2019 merger made it a business of Spotter buoys and data software sold to shipping and the Navy. It closed the product and later opened a standard (Bristlemouth) where interoperability serves it, the 'open the interfaces, close the product' pattern. Its CC BY-NC-SA licence also shows a common open-science compromise that does not meet the OSHW definition. Funding after the 2019 $7M Series A, and any valuation, could not be found without search.",
+  "confidence": "low",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/OpenROV",
+    "https://techcrunch.com/2019/03/27/sofar-ocean-technologies/",
+    "https://www.sofarocean.com/",
+    "https://www.bristlemouth.org/",
+    "https://github.com/bristlemouth",
+    "https://github.com/OpenROV",
+    "https://github.com/OpenROV/openrov-hardware",
+    "https://certification.oshwa.org/list.html"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/OpenROV", "title": "OpenROV", "publisher": "Wikipedia", "date": "2026-11-23", "supports": "origin_detail, founded_year (2011), founders, Berkeley base, open-source hardware project, 30+ countries, 2019 merger (citing TechCrunch), kit v2.8 specs"},
+    {"url": "https://techcrunch.com/2019/03/27/sofar-ocean-technologies/", "title": "Sofar Ocean Technologies merges OpenROV and Spoondrift", "publisher": "TechCrunch", "date": "2019-03-27", "supports": "exit_events[0], funding_total_usd ($7M Series A led by Peter Rive with True Ventures and Craft Ventures; OpenROV $1.3M from True Ventures and National Geographic; Spoondrift $350k), leadership, Trident $1,700, Spotter $4,900"},
+    {"url": "https://www.sofarocean.com/", "title": "Sofar Ocean", "publisher": "Sofar Ocean Technologies", "date": "2026-11-23", "supports": "robustness (2.5K+ Spotters, 1.5M observations/day, 25M+ hours), products, customers (ONR, US Navy, NOAA, MOL), still_operating (Nov 2026 posts)"},
+    {"url": "https://www.bristlemouth.org/", "title": "Bristlemouth", "publisher": "Bristlemouth", "date": "2026-11-23", "supports": "relicensing_events[2] (open standard, partners), debut ~2021"},
+    {"url": "https://github.com/bristlemouth", "title": "Bristlemouth on GitHub", "publisher": "GitHub", "date": "2026-11-23", "supports": "license_history[2] (Apache-2.0 firmware repos; YoYo PCB repo with no licence shown)"},
+    {"url": "https://github.com/OpenROV/openrov-hardware", "title": "OpenROV/openrov-hardware", "publisher": "GitHub", "date": "2026-11-23", "supports": "license_history[0] (CC BY-NC-SA 4.0 CAD; 212 stars, 116 forks)"},
+    {"url": "https://github.com/OpenROV", "title": "OpenROV on GitHub", "publisher": "GitHub", "date": "2026-11-23", "supports": "license_history[1], relicensing_events[0], last-updated dates of the open repos"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": "None found on OSHWA's public list page, which runs only through Dec 2020.",
+    "hardware_licenses": ["CC BY-NC-SA 4.0 (OpenROV DIY kit CAD; non-commercial, so not OSHW-definition compliant)", "Bristlemouth YoYo PCB design published on GitHub, licence not shown"],
+    "firmware_software_licenses": ["MIT (openrov-software-arduino, Trident-Development-Kit)", "Apache-2.0 (Bristlemouth firmware: bm_protocol, bm_serial, bm_common_messages)"],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "The WebSearch budget was exhausted before this file was started, so it was built only from WebFetch of known URLs (no web searches).",
+    "funding_total_usd ($8.65M) is a floor as of March 2019: the $7M Series A, plus OpenROV's $1.3M and Spoondrift's $350k raised earlier (TechCrunch). Kickstarter totals (Kickstarter blocks fetches) and any later rounds were not found.",
+    "hq_country US rests on OpenROV's Berkeley base and Sofar's US customers; Sofar's current HQ city is not stated on the pages fetched.",
+    "Failed fetches: sofarocean.com/about (404), sofarocean.com/news (404), techcrunch.com/tag/sofar-ocean (404).",
+    "business_model 'mixed': hardware sales (Spotter) plus data and software subscriptions (Marine Weather, Wayfinder). No revenue split was found."
+  ]
+}

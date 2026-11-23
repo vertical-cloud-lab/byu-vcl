@@ -8,26 +8,77 @@
   "origin": "academic",
   "origin_detail": "Begun in 2005 at the Interaction Design Institute Ivrea (Italy) as a fork of Wiring, Hernando Barragan's 2004 master's-thesis platform. Core team: Massimo Banzi, David Cuartielles, Tom Igoe, Gianluca Martino and David Mellis. The five co-founders formed Arduino LLC in early 2008 to hold the trademarks.",
   "founded_year": 2005,
-  "flagship_projects": ["Arduino UNO (R3, R4)", "Arduino IDE (1.x, 2.x)", "Arduino Cloud", "Arduino Pro (enterprise boards)", "UNO Q with App Lab (2025, Qualcomm Dragonwing QRB2210 + STM32U585)"],
+  "flagship_projects": [
+    "Arduino UNO (R3, R4)",
+    "Arduino IDE (1.x, 2.x)",
+    "Arduino Cloud",
+    "Arduino Pro (enterprise boards)",
+    "UNO Q with App Lab (2025, Qualcomm Dragonwing QRB2210 + STM32U585)"
+  ],
   "openness_initial": 3,
   "openness_current": 3,
   "openness_notes": "Hardware column. From the start the reference board designs were published under CC BY-SA 2.5 and the software under GPL/LGPL (the IDE 1.x source is GPL v2; Wikipedia lists AGPL-3.0 for IDE 2.0). That makes it level 3, not 4. Governance has always been corporate, and the Arduino Foundation announced in 2016 was withdrawn. Two closing episodes are on record. In July 2017, CEO Federico Musto reportedly pulled many open-source licences, schematics and code from the website, until the founders' company BCMI bought Arduino AG. Then, after the October 2025 Qualcomm announcement, the Terms of Service revised on 2025-10-29 added a ban on reverse-engineering the Platform and a perpetual, irrevocable, sub-licensable licence over user content. Arduino says the reverse-engineering restriction covers only its SaaS cloud and that 'anything that was open, stays open'. UNO Q Gerber files were released shortly after launch. The level stays 3, but control is moving to the cloud and services layer and to a chip-vendor parent.",
   "business_model": "hardware_sales",
   "license_history": [
-    {"year": 2005, "license": "CC BY-SA 2.5 (reference hardware designs); GPL/LGPL (software)", "note": "Per arduino.cc's Introduction guide (archived 2017), cited by Wikipedia", "source": "https://en.wikipedia.org/wiki/Arduino"},
-    {"year": null, "license": "AGPL-3.0 (Arduino IDE 2.0)", "note": "From the Wikipedia infobox; release year not confirmed in the pages fetched", "source": "https://en.wikipedia.org/wiki/Arduino"},
-    {"year": 2025, "license": "Terms of Service revision (last revised 2025-10-29)", "note": "Contracting parties are Arduino S.r.l. and, for Premium Services, Arduino LLC. s8.2: no translating, decompiling or reverse-engineering 'the Platform'. s7.1: users grant a non-exclusive, royalty-free, transferable, sub-licensable, perpetual, irrevocable licence over their content. s9.4: Arduino may monitor accounts and use of its AI Products. s3.2: no using the Platform to develop competing services. s8.4: open-source-licensed material is carved out.", "source": "https://www.arduino.cc/en/terms-conditions"}
+    {
+      "year": 2005,
+      "license": "CC BY-SA 2.5 (reference hardware designs); GPL/LGPL (software)",
+      "note": "Per arduino.cc's Introduction guide (archived 2017), cited by Wikipedia",
+      "source": "https://en.wikipedia.org/wiki/Arduino"
+    },
+    {
+      "year": null,
+      "license": "AGPL-3.0 (Arduino IDE 2.0)",
+      "note": "From the Wikipedia infobox; release year not confirmed in the pages fetched",
+      "source": "https://en.wikipedia.org/wiki/Arduino"
+    },
+    {
+      "year": 2025,
+      "license": "Terms of Service revision (last revised 2025-10-29)",
+      "note": "Contracting parties are Arduino S.r.l. and, for Premium Services, Arduino LLC. s8.2: no translating, decompiling or reverse-engineering 'the Platform'. s7.1: users grant a non-exclusive, royalty-free, transferable, sub-licensable, perpetual, irrevocable licence over their content. s9.4: Arduino may monitor accounts and use of its AI Products. s3.2: no using the Platform to develop competing services. s8.4: open-source-licensed material is carved out.",
+      "source": "https://www.arduino.cc/en/terms-conditions"
+    }
   ],
   "relicensing_events": [
-    {"year": 2017, "from": "Open designs (CC BY-SA), schematics and code published on the website", "to": "Many open-source licences, schematics and code reportedly removed from the website", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Under Arduino SRL's CEO Federico Musto, after Wired reported that he had fabricated his academic record. In July 2017 BCMI (Banzi, Cuartielles, Mellis, Igoe) acquired Arduino AG and all the trademarks, and Fabio Violante replaced Musto.", "source": "https://en.wikipedia.org/wiki/Arduino"}
+    {
+      "year": 2017,
+      "from": "Open designs (CC BY-SA), schematics and code published on the website",
+      "to": "Many open-source licences, schematics and code reportedly removed from the website",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Under Arduino SRL's CEO Federico Musto, after Wired reported that he had fabricated his academic record. In July 2017 BCMI (Banzi, Cuartielles, Mellis, Igoe) acquired Arduino AG and all the trademarks, and Fabio Violante replaced Musto.",
+      "source": "https://en.wikipedia.org/wiki/Arduino"
+    }
   ],
   "funding_total_usd": 54000000,
   "funding_as_of": "2023-09",
   "ownership_status": "acquired",
   "exit_events": [
-    {"year": 2016, "type": "merger", "value_usd": null, "counterparty": "Arduino SRL (formerly Smart Projects)", "note": "On 1 Oct 2016 Arduino LLC and Arduino SRL announced a merger into Arduino AG, ending the trademark dispute", "source": "https://blog.arduino.cc/2016/10/01/two-arduinos-become-one-2/"},
-    {"year": 2017, "type": "acquisition", "value_usd": null, "counterparty": "BCMI (company of founders Banzi, Cuartielles, Mellis, Igoe)", "note": "BCMI acquired Arduino AG and all the Arduino trademarks in July 2017", "source": "https://blog.arduino.cc/2017/07/28/a-new-era-for-arduino-begins-today/"},
-    {"year": 2025, "type": "acquisition", "value_usd": null, "counterparty": "Qualcomm Technologies, Inc.", "note": "Announced 2025-10-07; price undisclosed. Arduino is to become an independent subsidiary and keep its multi-vendor chips (ST, Renesas, Microchip, NXP). Arduino's announcement said closing was subject to regulatory approval and customary conditions. No primary source confirming the closing date was found; see notes.", "source": "https://www.cnbc.com/2025/10/07/qualcomm-acquires-italian-hardware-company-arduino-in-robotics-play-.html"}
+    {
+      "year": 2016,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "Arduino SRL (formerly Smart Projects)",
+      "note": "On 1 Oct 2016 Arduino LLC and Arduino SRL announced a merger into Arduino AG, ending the trademark dispute",
+      "source": "https://blog.arduino.cc/2016/10/01/two-arduinos-become-one-2/"
+    },
+    {
+      "year": 2017,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "BCMI (company of founders Banzi, Cuartielles, Mellis, Igoe)",
+      "note": "BCMI acquired Arduino AG and all the Arduino trademarks in July 2017",
+      "source": "https://blog.arduino.cc/2017/07/28/a-new-era-for-arduino-begins-today/"
+    },
+    {
+      "year": 2025,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Qualcomm Technologies, Inc.",
+      "note": "Announced 2025-10-07; price undisclosed. Arduino is to become an independent subsidiary and keep its multi-vendor chips (ST, Renesas, Microchip, NXP). Arduino's announcement said closing was subject to regulatory approval and customary conditions. No primary source confirming the closing date was found; see notes.",
+      "source": "https://www.cnbc.com/2025/10/07/qualcomm-acquires-italian-hardware-company-arduino-in-robotics-play-.html"
+    }
   ],
   "latest_value_usd": null,
   "latest_value_type": null,
@@ -65,25 +116,99 @@
     "https://blog.arduino.cc/2025/11/",
     "https://blog.arduino.cc/2025/11/21/the-arduino-terms-of-service-and-privacy-policy-update-setting-the-record-straight/",
     "https://blog.arduino.cc/2025/11/28/you-ask-we-answer-lets-talk-about-arduino-uno-q-app-lab-and-the-future-of-accessible-ai/",
-    "https://blog.arduino.cc/2025/12/"
+    "https://blog.arduino.cc/2025/12/",
+    "https://certification.oshwa.org/list.html"
   ],
   "search_tool": "WebFetch (search budget exhausted)",
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/Arduino", "title": "Arduino", "publisher": "Wikipedia", "date": "2026-11-23", "supports": "origin_detail, founded_year, licences (CC BY-SA 2.5, GPL/LGPL, AGPL-3.0 IDE 2.0), trademark dispute timeline, 2016 merger, 2017 Musto episode and BCMI buyout, units (300k by 2011, 700k by 2013), 30M IDE users (2020)"},
-    {"url": "https://www.cnbc.com/2025/10/07/qualcomm-acquires-italian-hardware-company-arduino-in-robotics-play-.html", "title": "Qualcomm acquires Italian hardware company Arduino in robotics play", "publisher": "CNBC", "date": "2025-10-07", "supports": "exit_events[2] (announcement, undisclosed price, independent subsidiary, multi-vendor chips), UNO Q ($45-55, QRB2210)"},
-    {"url": "https://blog.arduino.cc/2025/10/07/a-new-chapter-for-arduino-with-qualcomm-uno-q-and-you/", "title": "A new chapter for Arduino - with Qualcomm, UNO Q, and you!", "publisher": "Arduino", "date": "2025-10-07", "supports": "Deal is an agreement subject to regulatory approval and customary closing conditions; UNO Q / App Lab details"},
-    {"url": "https://en.wikipedia.org/wiki/Qualcomm", "title": "Qualcomm", "publisher": "Wikipedia", "date": "2026-11-23", "supports": "Lists Arduino as a Qualcomm subsidiary ('acquired Arduino in October 2025 ... for an undisclosed amount'); used only as secondary evidence of closing"},
-    {"url": "https://www.arduino.cc/en/terms-conditions", "title": "Arduino Terms of Service", "publisher": "Arduino", "date": "2025-10-29", "supports": "license_history[2], risk_events (reverse-engineering ban, perpetual licence over user content, AI monitoring, no-competing-services clause)"},
-    {"url": "https://blog.arduino.cc/2025/11/21/the-arduino-terms-of-service-and-privacy-policy-update-setting-the-record-straight/", "title": "The Arduino Terms of Service and Privacy Policy update: setting the record straight", "publisher": "Arduino", "date": "2025-11-21", "supports": "openness_notes (reverse-engineering limited to SaaS cloud; 'Anything that was open, stays open'; acquisition does not change data handling)"},
-    {"url": "https://blog.arduino.cc/2025/11/28/you-ask-we-answer-lets-talk-about-arduino-uno-q-app-lab-and-the-future-of-accessible-ai/", "title": "You ask, we answer! Let's talk about Arduino UNO Q, App Lab, and the future of accessible AI", "publisher": "Arduino", "date": "2025-11-28", "supports": "UNO Q Gerber files released; continued multi-vendor commitment (ST, Microchip, Renesas)"},
-    {"url": "https://techcrunch.com/2022/06/07/arduino-sets-its-sights-on-enterprise-applications-with-new-funding-round/", "title": "Arduino sets its sights on enterprise applications with new funding round", "publisher": "TechCrunch", "date": "2022-06-07", "supports": "funding_total_usd ($32M Series B: Robert Bosch VC, Renesas, Anzu Partners, Arm)"},
-    {"url": "https://techcrunch.com/2023/09/06/arduino-nabs-22-million-in-fresh-funding-to-support-expansion-into-enterprise/", "title": "Arduino nabs $22 million in fresh funding to support expansion into enterprise", "publisher": "TechCrunch", "date": "2023-09-06", "supports": "funding_total_usd ($22M Series B extension led by CDP Venture Capital and Anzu Partners), funding_as_of"},
-    {"url": "https://techcrunch.com/2023/12/22/arduino-india-manufacturing/", "title": "Arduino exploring India manufacturing to limit counterfeit sales", "publisher": "TechCrunch", "date": "2023-12-22", "supports": "hardware_extras.clone_impacts, risk_events (1 genuine per 5-6 clones; India under 1% of customers), business_model (revenue from original hardware)"}
+    {
+      "url": "https://en.wikipedia.org/wiki/Arduino",
+      "title": "Arduino",
+      "publisher": "Wikipedia",
+      "date": "2026-11-23",
+      "supports": "origin_detail, founded_year, licences (CC BY-SA 2.5, GPL/LGPL, AGPL-3.0 IDE 2.0), trademark dispute timeline, 2016 merger, 2017 Musto episode and BCMI buyout, units (300k by 2011, 700k by 2013), 30M IDE users (2020)"
+    },
+    {
+      "url": "https://www.cnbc.com/2025/10/07/qualcomm-acquires-italian-hardware-company-arduino-in-robotics-play-.html",
+      "title": "Qualcomm acquires Italian hardware company Arduino in robotics play",
+      "publisher": "CNBC",
+      "date": "2025-10-07",
+      "supports": "exit_events[2] (announcement, undisclosed price, independent subsidiary, multi-vendor chips), UNO Q ($45-55, QRB2210)"
+    },
+    {
+      "url": "https://blog.arduino.cc/2025/10/07/a-new-chapter-for-arduino-with-qualcomm-uno-q-and-you/",
+      "title": "A new chapter for Arduino - with Qualcomm, UNO Q, and you!",
+      "publisher": "Arduino",
+      "date": "2025-10-07",
+      "supports": "Deal is an agreement subject to regulatory approval and customary closing conditions; UNO Q / App Lab details"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Qualcomm",
+      "title": "Qualcomm",
+      "publisher": "Wikipedia",
+      "date": "2026-11-23",
+      "supports": "Lists Arduino as a Qualcomm subsidiary ('acquired Arduino in October 2025 ... for an undisclosed amount'); used only as secondary evidence of closing"
+    },
+    {
+      "url": "https://www.arduino.cc/en/terms-conditions",
+      "title": "Arduino Terms of Service",
+      "publisher": "Arduino",
+      "date": "2025-10-29",
+      "supports": "license_history[2], risk_events (reverse-engineering ban, perpetual licence over user content, AI monitoring, no-competing-services clause)"
+    },
+    {
+      "url": "https://blog.arduino.cc/2025/11/21/the-arduino-terms-of-service-and-privacy-policy-update-setting-the-record-straight/",
+      "title": "The Arduino Terms of Service and Privacy Policy update: setting the record straight",
+      "publisher": "Arduino",
+      "date": "2025-11-21",
+      "supports": "openness_notes (reverse-engineering limited to SaaS cloud; 'Anything that was open, stays open'; acquisition does not change data handling)"
+    },
+    {
+      "url": "https://blog.arduino.cc/2025/11/28/you-ask-we-answer-lets-talk-about-arduino-uno-q-app-lab-and-the-future-of-accessible-ai/",
+      "title": "You ask, we answer! Let's talk about Arduino UNO Q, App Lab, and the future of accessible AI",
+      "publisher": "Arduino",
+      "date": "2025-11-28",
+      "supports": "UNO Q Gerber files released; continued multi-vendor commitment (ST, Microchip, Renesas)"
+    },
+    {
+      "url": "https://techcrunch.com/2022/06/07/arduino-sets-its-sights-on-enterprise-applications-with-new-funding-round/",
+      "title": "Arduino sets its sights on enterprise applications with new funding round",
+      "publisher": "TechCrunch",
+      "date": "2022-06-07",
+      "supports": "funding_total_usd ($32M Series B: Robert Bosch VC, Renesas, Anzu Partners, Arm)"
+    },
+    {
+      "url": "https://techcrunch.com/2023/09/06/arduino-nabs-22-million-in-fresh-funding-to-support-expansion-into-enterprise/",
+      "title": "Arduino nabs $22 million in fresh funding to support expansion into enterprise",
+      "publisher": "TechCrunch",
+      "date": "2023-09-06",
+      "supports": "funding_total_usd ($22M Series B extension led by CDP Venture Capital and Anzu Partners), funding_as_of"
+    },
+    {
+      "url": "https://techcrunch.com/2023/12/22/arduino-india-manufacturing/",
+      "title": "Arduino exploring India manufacturing to limit counterfeit sales",
+      "publisher": "TechCrunch",
+      "date": "2023-12-22",
+      "supports": "hardware_extras.clone_impacts, risk_events (1 genuine per 5-6 clones; India under 1% of customers), business_model (revenue from original hardware)"
+    },
+    {
+      "url": "https://certification.oshwa.org/list.html",
+      "title": "OSHWA Certification: certified projects list",
+      "publisher": "Open Source Hardware Association",
+      "date": "2026-11-23",
+      "supports": "hardware_extras.oshwa_certifications (list page covers certifications through Dec 2020)"
+    }
   ],
   "hardware_extras": {
-    "oshwa_certifications": null,
-    "hardware_licenses": ["CC BY-SA 2.5 (reference board designs)", "UNO Q Gerber files published after launch (licence not stated in the source fetched)"],
-    "firmware_software_licenses": ["GPL / LGPL (Arduino software; IDE 1.x source GPL v2)", "AGPL-3.0 (Arduino IDE 2.0, per Wikipedia infobox)"],
+    "oshwa_certifications": "No certifications list Arduino as the responsible organisation on OSHWA's list page (through Dec 2020); 'Arduino' appears only as a keyword. SparkFun certified its own Arduino Pro Mini boards (US000007, US000031; 2016-10-31).",
+    "hardware_licenses": [
+      "CC BY-SA 2.5 (reference board designs)",
+      "UNO Q Gerber files published after launch (licence not stated in the source fetched)"
+    ],
+    "firmware_software_licenses": [
+      "GPL / LGPL (Arduino software; IDE 1.x source GPL v2)",
+      "AGPL-3.0 (Arduino IDE 2.0, per Wikipedia infobox)"
+    ],
     "patents": null,
     "clone_impacts": "About 1 genuine board is sold for every 5-6 clones worldwide, and clones cost under half the price. India, the largest market for IDE downloads (3.2M), is under 1% of customers, which the CEO attributes to fakes. Arduino responded with harder-to-copy designs and planned Indian manufacturing (TechCrunch, 2023-12-22). Clone makers often use '-duino' names to avoid the trademark (Wikipedia)."
   },
@@ -94,6 +219,6 @@
     "funding_total_usd is the sum of the two disclosed rounds: the $32M Series B (Jun 2022) and the $22M extension (Sep 2023). Earlier funding, if any, was not found.",
     "No revenue, employee count or valuation was found. The Qualcomm price was undisclosed.",
     "hq_country IT: the Terms name Arduino S.r.l. as the main contracting entity. Arduino AG (Switzerland) was the 2016 merger vehicle and Arduino LLC is the US entity. The co-founders also include US-based Tom Igoe.",
-    "OSHWA certifications and patents were not checked; no search was available."
+    "Patents were not checked; no search was available."
   ]
 }

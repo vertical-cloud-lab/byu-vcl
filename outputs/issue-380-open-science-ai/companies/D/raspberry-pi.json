@@ -8,26 +8,72 @@
   "origin": "nonprofit",
   "origin_detail": "The Raspberry Pi Foundation, a UK educational charity, was established in autumn 2008 to promote computer science in schools. It launched the $35 Model B on 29 Feb 2012. Its trading subsidiary, Raspberry Pi (Trading) Ltd, was incorporated on 18 Dec 2012 and renamed Raspberry Pi Ltd in 2021. It became part of Raspberry Pi Holdings plc, which listed on the London Stock Exchange in June 2024.",
   "founded_year": 2012,
-  "flagship_projects": ["Raspberry Pi single-board computers (Model B 2012 to Pi 5)", "Compute Modules", "Raspberry Pi Pico (RP2040, 2021; RP2350, 2024)", "Raspberry Pi OS (Debian-based)"],
+  "flagship_projects": [
+    "Raspberry Pi single-board computers (Model B 2012 to Pi 5)",
+    "Compute Modules",
+    "Raspberry Pi Pico (RP2040, 2021; RP2350, 2024)",
+    "Raspberry Pi OS (Debian-based)"
+  ],
   "openness_initial": 1,
   "openness_current": 2,
   "openness_notes": "Hardware column. The single-board-computer designs and the Broadcom SoCs are closed. The official boot firmware is proprietary: its source is not public, but the binary may be freely redistributed. The OS is a Debian-based Linux distribution. At launch (Feb 2012) the VideoCore graphics userland was closed too, so only the peripheral software was open (level 1). Opening came in steps. The VideoCore IV userland driver was released as free software in Oct 2012, and the full graphics documentation and stack followed under BSD-3-Clause in Feb 2014. The microcontroller line opened further: the Pico SDK is BSD-3-Clause, and the RP2350's Hazard3 RISC-V cores are Apache-2.0. The current level is 2 (software and most firmware open, hardware designs closed). This is the 'open software, closed hardware' pattern.",
   "business_model": "hardware_sales",
   "license_history": [
-    {"year": 2012, "license": "Proprietary VideoCore boot firmware (binary freely redistributable, source not public); Debian-based Linux OS", "note": "Model B launch, 29 Feb 2012", "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"},
-    {"year": 2012, "license": "VideoCore IV userland graphics driver released as free software", "note": "October 2012. The claim that it was the first fully open-source ARM SoC driver was disputed.", "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"},
-    {"year": 2014, "license": "BSD-3-Clause (VideoCore IV graphics stack and full graphics-core documentation)", "note": "February 2014", "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"},
-    {"year": 2021, "license": "BSD-3-Clause (Pico SDK)", "note": "The year is the Pico launch. The repository gives the licence but not the date it was adopted.", "source": "https://github.com/raspberrypi/pico-sdk"},
-    {"year": 2024, "license": "Apache-2.0 (Hazard3 RISC-V core, used in the RP2350)", "note": "RP2350 / Pico 2 launched in 2024. The Hazard3 README cites the RP2350 configuration.", "source": "https://github.com/Wren6991/Hazard3"}
+    {
+      "year": 2012,
+      "license": "Proprietary VideoCore boot firmware (binary freely redistributable, source not public); Debian-based Linux OS",
+      "note": "Model B launch, 29 Feb 2012",
+      "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"
+    },
+    {
+      "year": 2012,
+      "license": "VideoCore IV userland graphics driver released as free software",
+      "note": "October 2012. The claim that it was the first fully open-source ARM SoC driver was disputed.",
+      "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"
+    },
+    {
+      "year": 2014,
+      "license": "BSD-3-Clause (VideoCore IV graphics stack and full graphics-core documentation)",
+      "note": "February 2014",
+      "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"
+    },
+    {
+      "year": 2021,
+      "license": "BSD-3-Clause (Pico SDK)",
+      "note": "The year is the Pico launch. The repository gives the licence but not the date it was adopted.",
+      "source": "https://github.com/raspberrypi/pico-sdk"
+    },
+    {
+      "year": 2024,
+      "license": "Apache-2.0 (Hazard3 RISC-V core, used in the RP2350)",
+      "note": "RP2350 / Pico 2 launched in 2024. The Hazard3 README cites the RP2350 configuration.",
+      "source": "https://github.com/Wren6991/Hazard3"
+    }
   ],
   "relicensing_events": [
-    {"year": 2014, "from": "Closed VideoCore IV graphics stack (binary userland until Oct 2012)", "to": "BSD-3-Clause graphics stack plus documentation", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Followed the Oct 2012 free-software userland driver release. The boot firmware remains proprietary.", "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"}
+    {
+      "year": 2014,
+      "from": "Closed VideoCore IV graphics stack (binary userland until Oct 2012)",
+      "to": "BSD-3-Clause graphics stack plus documentation",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Followed the Oct 2012 free-software userland driver release. The boot firmware remains proprietary.",
+      "source": "https://en.wikipedia.org/wiki/Raspberry_Pi"
+    }
   ],
   "funding_total_usd": null,
   "funding_as_of": null,
   "ownership_status": "public",
   "exit_events": [
-    {"year": 2024, "type": "IPO", "value_usd": 689000000, "counterparty": "London Stock Exchange (ticker RPI)", "note": "Listed 11 Jun 2024 at a 280p offer price, valuing the company at about GBP 541.6M. Converted at the 1.2723 USD/GBP implied by CNBC's GBP 166M = $211.2M. The offering raised about GBP 166M ($211.2M) and was made up of 45.9M existing shares sold by the Foundation's subsidiary Raspberry Pi Mid Co, 2.13M from other holders and 11.23M new shares. The shares closed day one up 38% at 388p.", "source": "https://www.cnbc.com/2024/06/11/rasperry-pi-ipo-computing-firm-to-raise-211-million.html"}
+    {
+      "year": 2024,
+      "type": "IPO",
+      "value_usd": 689000000,
+      "counterparty": "London Stock Exchange (ticker RPI)",
+      "note": "Listed 11 Jun 2024 at a 280p offer price, valuing the company at about GBP 541.6M. Converted at the 1.2723 USD/GBP implied by CNBC's GBP 166M = $211.2M. The offering raised about GBP 166M ($211.2M) and was made up of 45.9M existing shares sold by the Foundation's subsidiary Raspberry Pi Mid Co, 2.13M from other holders and 11.23M new shares. The shares closed day one up 38% at 388p.",
+      "source": "https://www.cnbc.com/2024/06/11/rasperry-pi-ipo-computing-firm-to-raise-211-million.html"
+    }
   ],
   "latest_value_usd": 1186000000,
   "latest_value_type": "market_cap",
@@ -61,24 +107,91 @@
     "https://www.x-rates.com/historical/?from=GBP&amount=1&date=2026-10-27",
     "https://stockanalysis.com/quote/lon/RPI/",
     "https://github.com/raspberrypi/pico-sdk",
-    "https://github.com/Wren6991/Hazard3"
+    "https://github.com/Wren6991/Hazard3",
+    "https://certification.oshwa.org/list.html"
   ],
   "search_tool": "WebFetch (search budget exhausted)",
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/Raspberry_Pi_Holdings", "title": "Raspberry Pi Holdings", "publisher": "Wikipedia", "date": "2026-11-23", "supports": "origin_detail, founded_year, Foundation shareholding (77.31% pre-IPO, 49.08% post-IPO), FY2025 revenue $323.2M and net income $21.7M (citing Annual Results 2025), units, 70% industrial share, Broadcom/Sony, 2026 share sales and profit upgrade"},
-    {"url": "https://investors.raspberrypi.com/", "title": "Raspberry Pi Holdings plc investor relations", "publisher": "Raspberry Pi Holdings plc", "date": "2026-11-23", "supports": "revenue_latest_usd ($323.2M FY25), FY25 gross profit $77.8M, units sold 73M+"},
-    {"url": "https://www.cnbc.com/2024/06/11/rasperry-pi-ipo-computing-firm-to-raise-211-million.html", "title": "Raspberry Pi shares pop in London IPO", "publisher": "CNBC", "date": "2024-06-11", "supports": "exit_events[0]: 280p price, GBP 166M ($211.2M) raised, GBP 541.6M valuation, +38% to 388p, share composition, 2023 revenue $265.8M"},
-    {"url": "https://stockanalysis.com/quote/lon/RPI/", "title": "Raspberry Pi Holdings (LON:RPI) stock price and key stats", "publisher": "StockAnalysis", "date": "2026-11-23", "supports": "latest_value_usd (market cap GBP 910.34M, 193.94M shares, 469.4p), employees_latest 144, 52-week range, TTM revenue 335.1M"},
-    {"url": "https://www.x-rates.com/historical/?from=GBP&amount=1&date=2026-10-27", "title": "X-Rates GBP exchange rates", "publisher": "X-Rates", "date": "2026-11-23", "supports": "GBP/USD 1.30277 (live, 2026-11-23 22:16 UTC) used to convert the market cap"},
-    {"url": "https://kalkinemedia.com/uk/stocks/technology/raspberry-pi-lserpi-founder-tops-up-below-the-ftse-100", "title": "Raspberry Pi (LSE:RPI) founder tops up below the FTSE 100", "publisher": "Kalkine Media", "date": "2026-11-02", "supports": "risk_events (memory shortage, debt-funded inventory, margin moderation, June 2026 record high), Eben Upton share purchases"},
-    {"url": "https://en.wikipedia.org/wiki/Raspberry_Pi", "title": "Raspberry Pi", "publisher": "Wikipedia", "date": "2026-11-23", "supports": "license_history (proprietary firmware, Oct 2012 driver, Feb 2014 BSD-3 graphics stack), Model B launch 29 Feb 2012 at $35, units 68M (Mar 2025) and over 75M (Mar 2026)"},
-    {"url": "https://github.com/raspberrypi/pico-sdk", "title": "raspberrypi/pico-sdk", "publisher": "GitHub", "date": "2026-11-23", "supports": "Pico SDK licence BSD-3-Clause"},
-    {"url": "https://github.com/Wren6991/Hazard3", "title": "Wren6991/Hazard3", "publisher": "GitHub", "date": "2026-11-23", "supports": "Hazard3 RISC-V core licence Apache-2.0 and its use in the RP2350"}
+    {
+      "url": "https://en.wikipedia.org/wiki/Raspberry_Pi_Holdings",
+      "title": "Raspberry Pi Holdings",
+      "publisher": "Wikipedia",
+      "date": "2026-11-23",
+      "supports": "origin_detail, founded_year, Foundation shareholding (77.31% pre-IPO, 49.08% post-IPO), FY2025 revenue $323.2M and net income $21.7M (citing Annual Results 2025), units, 70% industrial share, Broadcom/Sony, 2026 share sales and profit upgrade"
+    },
+    {
+      "url": "https://investors.raspberrypi.com/",
+      "title": "Raspberry Pi Holdings plc investor relations",
+      "publisher": "Raspberry Pi Holdings plc",
+      "date": "2026-11-23",
+      "supports": "revenue_latest_usd ($323.2M FY25), FY25 gross profit $77.8M, units sold 73M+"
+    },
+    {
+      "url": "https://www.cnbc.com/2024/06/11/rasperry-pi-ipo-computing-firm-to-raise-211-million.html",
+      "title": "Raspberry Pi shares pop in London IPO",
+      "publisher": "CNBC",
+      "date": "2024-06-11",
+      "supports": "exit_events[0]: 280p price, GBP 166M ($211.2M) raised, GBP 541.6M valuation, +38% to 388p, share composition, 2023 revenue $265.8M"
+    },
+    {
+      "url": "https://stockanalysis.com/quote/lon/RPI/",
+      "title": "Raspberry Pi Holdings (LON:RPI) stock price and key stats",
+      "publisher": "StockAnalysis",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd (market cap GBP 910.34M, 193.94M shares, 469.4p), employees_latest 144, 52-week range, TTM revenue 335.1M"
+    },
+    {
+      "url": "https://www.x-rates.com/historical/?from=GBP&amount=1&date=2026-10-27",
+      "title": "X-Rates GBP exchange rates",
+      "publisher": "X-Rates",
+      "date": "2026-11-23",
+      "supports": "GBP/USD 1.30277 (live, 2026-11-23 22:16 UTC) used to convert the market cap"
+    },
+    {
+      "url": "https://kalkinemedia.com/uk/stocks/technology/raspberry-pi-lserpi-founder-tops-up-below-the-ftse-100",
+      "title": "Raspberry Pi (LSE:RPI) founder tops up below the FTSE 100",
+      "publisher": "Kalkine Media",
+      "date": "2026-11-02",
+      "supports": "risk_events (memory shortage, debt-funded inventory, margin moderation, June 2026 record high), Eben Upton share purchases"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Raspberry_Pi",
+      "title": "Raspberry Pi",
+      "publisher": "Wikipedia",
+      "date": "2026-11-23",
+      "supports": "license_history (proprietary firmware, Oct 2012 driver, Feb 2014 BSD-3 graphics stack), Model B launch 29 Feb 2012 at $35, units 68M (Mar 2025) and over 75M (Mar 2026)"
+    },
+    {
+      "url": "https://github.com/raspberrypi/pico-sdk",
+      "title": "raspberrypi/pico-sdk",
+      "publisher": "GitHub",
+      "date": "2026-11-23",
+      "supports": "Pico SDK licence BSD-3-Clause"
+    },
+    {
+      "url": "https://github.com/Wren6991/Hazard3",
+      "title": "Wren6991/Hazard3",
+      "publisher": "GitHub",
+      "date": "2026-11-23",
+      "supports": "Hazard3 RISC-V core licence Apache-2.0 and its use in the RP2350"
+    },
+    {
+      "url": "https://certification.oshwa.org/list.html",
+      "title": "OSHWA Certification: certified projects list",
+      "publisher": "Open Source Hardware Association",
+      "date": "2026-11-23",
+      "supports": "hardware_extras.oshwa_certifications (list page covers certifications through Dec 2020)"
+    }
   ],
   "hardware_extras": {
-    "oshwa_certifications": null,
+    "oshwa_certifications": "No certifications list Raspberry Pi as the responsible organisation on OSHWA's list page (through Dec 2020); it appears only as a keyword.",
     "hardware_licenses": [],
-    "firmware_software_licenses": ["Proprietary, freely redistributable VideoCore boot firmware", "BSD-3-Clause VideoCore IV graphics stack (2014)", "BSD-3-Clause Pico SDK", "Apache-2.0 Hazard3 RISC-V core (RP2350)"],
+    "firmware_software_licenses": [
+      "Proprietary, freely redistributable VideoCore boot firmware",
+      "BSD-3-Clause VideoCore IV graphics stack (2014)",
+      "BSD-3-Clause Pico SDK",
+      "Apache-2.0 Hazard3 RISC-V core (RP2350)"
+    ],
     "patents": null,
     "clone_impacts": null
   },
@@ -91,6 +204,6 @@
     "employees_latest (144) comes from StockAnalysis only; it could not be checked against the annual report.",
     "Units: 68M by March 2025 and over 75M by March 2026 (Wikipedia); the investor site says 73M+.",
     "Failed or unreadable fetches: investors.raspberrypi.com/reports/11/document (Final results 2025 PDF; binary content unreadable), investors.raspberrypi.com/news (no items rendered), companiesmarketcap.com/raspberry-pi-holdings/marketcap/ (404), google.com/finance/quote/RPI:LON (unsupported device).",
-    "OSHWA certifications, patents and clones were not checked: no search was available, and no fetched page mentioned them."
+    "Patents and clones were not checked: no search was available, and no fetched page mentioned them."
   ]
 }

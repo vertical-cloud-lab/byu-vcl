@@ -87,7 +87,8 @@
     "https://gitlab.com/api/v4/groups/lulzbot3d/projects?per_page=100&include_subgroups=true&order_by=last_activity_at",
     "https://gitlab.com/api/v4/projects/lulzbot3d%2Fprinters%2Ftaz-8?license=true",
     "https://gitlab.com/api/v4/projects/lulzbot3d%2Fprinters%2Flulzbot-mini-3?license=true",
-    "https://www.inc.com/profile/aleph-objects"
+    "https://www.inc.com/profile/aleph-objects",
+    "https://certification.oshwa.org/list.html"
   ],
   "search_tool": "WebFetch (search budget exhausted)",
   "sources": [
@@ -139,10 +140,17 @@
       "publisher": "FAME 3D LLC",
       "date": "2026-11",
       "supports": "openness_notes (free software and open hardware statement)"
+    },
+    {
+      "url": "https://certification.oshwa.org/list.html",
+      "title": "OSHWA Certification: certified projects list",
+      "publisher": "Open Source Hardware Association",
+      "date": "2026-11-23",
+      "supports": "hardware_extras.oshwa_certifications (list page covers certifications through Dec 2020)"
     }
   ],
   "hardware_extras": {
-    "oshwa_certifications": null,
+    "oshwa_certifications": "About 25 unique Aleph Objects/LulzBot certifications on OSHWA's list page (first seen US000005, 2016-10-24; also US000046 FlexyDually Tool Head 2016-10-24, US000053 2016-11-16, US000117 2018-03-06; latest seen US000170, 2019-10-09, the month of the collapse). None seen under FAME 3D through Dec 2020.",
     "hardware_licenses": [
       "GPL-3.0-or-later (Mini 3 printer repository)",
       "Older model files on download.lulzbot.com (licence not shown in the directory listing)"
@@ -160,6 +168,7 @@
     "founded_year 2011 is supported only weakly (lulzbot.com copyright span '2011-2026'); the Wikipedia article reached did not state the founding year.",
     "Revenue: Wikipedia's infobox gives $21 million citing Inc. 5000 but no year, so revenue_latest_usd is null. Employees: 113 before October 2019, about 22 after the layoffs; current FAME 3D headcount unknown.",
     "FAME 3D purchase price undisclosed; no later ownership change found in the sources reached (Wikipedia article flagged as needing update since 2020).",
-    "OSHWA certification status and the date of the FSF RYF certification were not verified."
+    "OSHWA certification status and the date of the FSF RYF certification were not verified.",
+    "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
   ]
 }

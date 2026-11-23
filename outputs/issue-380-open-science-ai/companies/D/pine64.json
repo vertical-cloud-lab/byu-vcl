@@ -85,7 +85,8 @@
     "https://pine64.org/documentation/PinePhone/Further_information/Schematics_and_certifications/",
     "https://pine64.org/blog/",
     "https://pine64.org/2025/08/14/august_2025_short_update/",
-    "https://pine64.org/2026/07/25/pinephone3dfiles_2026/"
+    "https://pine64.org/2026/07/25/pinephone3dfiles_2026/",
+    "https://certification.oshwa.org/list.html"
   ],
   "search_tool": "WebFetch (search budget exhausted)",
   "sources": [
@@ -144,10 +145,17 @@
       "publisher": "Pine64",
       "date": "2026-07-25",
       "supports": "license_history[1], relicensing_events[0], risk_events (no PinePhone 2 for now)"
+    },
+    {
+      "url": "https://certification.oshwa.org/list.html",
+      "title": "OSHWA Certification: certified projects list",
+      "publisher": "Open Source Hardware Association",
+      "date": "2026-11-23",
+      "supports": "hardware_extras.oshwa_certifications (list page covers certifications through Dec 2020)"
     }
   ],
   "hardware_extras": {
-    "oshwa_certifications": null,
+    "oshwa_certifications": "No Pine64 certifications on OSHWA's list page (through Dec 2020).",
     "hardware_licenses": [],
     "firmware_software_licenses": [
       "Community open-source software (mainline Linux, InfiniTime for PineTime, IronOS for Pinecil); individual licences not verified"
@@ -161,6 +169,7 @@
     "openness_initial set to null: whether Pine A64 schematics were published at launch was not verified (the PINE A64 documentation URL tried returned 404).",
     "us_focus false: incorporated in Hong Kong since 2019; founded in Fremont, California; ships from Shenzhen and Hong Kong.",
     "Revenue, headcount and valuation not found; null.",
-    "Failed fetches: pine64.org/2026/07/25/full-pinephone-3d-file-released/ (404; the post's real path is /2026/07/25/pinephone3dfiles_2026/) and pine64.org/documentation/PINE_A64/ (404)."
+    "Failed fetches: pine64.org/2026/07/25/full-pinephone-3d-file-released/ (404; the post's real path is /2026/07/25/pinephone3dfiles_2026/) and pine64.org/documentation/PINE_A64/ (404).",
+    "OSHWA data added by the group D lead from certification.oshwa.org/list.html, fetched 2026-11-23. The list page only covers certifications through Dec 2020, and the counts were tallied by the fetch tool, so they are approximate."
   ]
 }
