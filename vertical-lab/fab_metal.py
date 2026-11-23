@@ -420,7 +420,8 @@ def meltio_m450() -> Instrument:
         acts.append((cap, 1.8, {"head": (prev, f[k - 1]), "table": (prev, f[k - 1]),
                                 "glow": (0.0 if k == 1 else 1.0, 1.0), f"wall{k}": (0.0, 1.0)}))
         prev = f[k - 1]
-    acts.append(("Lasers off; the head lifts. 1400 mm tall, about twice what the VLM's opening takes, so it stands "
+    # round 15: against the 996 mm opening's 856.5 mm (vlm.MAX_GOODS_H), not the standard 727.5 ("about twice")
+    acts.append(("Lasers off; the head lifts. 1400 mm tall, far over the 856.5 mm the VLM's opening takes, so it stands "
                  "beside the VLM.", 2.4, {"glow": (1.0, 0.0), "head": (prev, 1.0), "table": (prev, 1.0),
                                           "~body": (0.8, 0.0), "~door": (0.8, 0.0)}))
     inst.actions = acts
@@ -487,7 +488,8 @@ def snowpod() -> Instrument:
          {"door": (1.0, 0.0), "~body": (0.0, 0.8), "~door": (0.0, 0.8)}),
         *_layer_actions(3, "The recoater spreads 316L powder from the sealed supply cartridge over the plate.",
                         "The fibre laser, a 40 um spot, melts the layer's cross-section."),
-        ("660 mm tall, so it goes through the opening with 67.5 mm to spare. A Kickstarter kit: not shipping yet.",
+        # round 15: the spare is against the 996 mm opening's 856.5 mm (tour.FIT), no longer the standard 727.5
+        ("660 mm tall, so it goes through the opening with 196.5 mm to spare. A Kickstarter kit: not shipping yet.",
          2.4, {"beam": (1.0, 0.0), "~body": (0.8, 0.0), "~door": (0.8, 0.0)}),
     ]
     inst.labels = [("chamber door", (x0 + 20, yb - 10, z1 - 30), (0.18, 0.30)),

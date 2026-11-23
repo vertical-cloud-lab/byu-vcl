@@ -936,7 +936,7 @@ def lineup() -> str:
         D, T, Hh = tower_dims(m)
         lines = [f"{m['maker']} {m['model']}", f"{m['va']} VA / {m['w']} W, {m['topology']}",
                  f"{m['chemistry']}", f"{Hh:.0f} x {T:.0f} x {D:.0f} mm standing, {m['kg']:.1f} kg",
-                 f"trays {', '.join(u['trays'])}"]
+                 f"tray{'s' if len(u['trays']) > 1 else ''} {', '.join(sorted(u['trays']))}"]
         cx = i * cw + 30
         d.rectangle((cx, y0 + 4, cx + 14, y0 + 18), fill=_colours().get(key, INK))
         for j, t in enumerate(lines):

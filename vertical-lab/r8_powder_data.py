@@ -144,7 +144,8 @@ CM = {  # International Tables Vol. C, Table 6.1.1.4: a1 b1 a2 b2 a3 b3 a4 b4 c
     "Si": (6.2915, 2.4386, 3.0353, 32.3337, 1.9891, 0.6785, 1.5410, 81.6937, 1.1407),
 }
 B_ISO = {"Al": 0.85, "Si": 0.46}       # A^2, room temperature (approximate)
-PHASES = {"Al": dict(a=A_AL, rho=2.70, w=0.88), "Si": dict(a=A_SI, rho=2.33, w=0.12)}   # Al-12Si, all Si as Si
+# round 15: the route's own charge, Al-10Si (chapters 1-3 and chapter 4's sample gauge), not Al 4047's Al-12Si
+PHASES = {"Al": dict(a=A_AL, rho=2.70, w=0.90), "Si": dict(a=A_SI, rho=2.33, w=0.10)}   # Al-10Si, all Si as Si
 
 
 def _f(el, s):
@@ -237,9 +238,10 @@ def thick_enough(two_theta=90.0, packing=0.6) -> float:
 XRF_LINES = [(1.254, 0.02, "Mg Ka"), (1.487, 1.00, "Al Ka"), (1.740, 0.62, "Si Ka"), (2.838, 0.10, "Pd La"),
              (3.072, 0.04, ""), (5.899, 0.015, "Mn Ka"), (6.404, 0.11, "Fe Ka"), (7.058, 0.017, ""),
              (8.048, 0.03, "Cu Ka"), (8.639, 0.02, "Zn Ka")]
-AL4047 = [("Si", "11.0-13.0", "12.1"), ("Fe", "0.8 max", "0.21"), ("Cu", "0.30 max", "0.03"),
-          ("Mn", "0.15 max", "0.02"), ("Mg", "0.10 max", "<0.05"), ("Zn", "0.20 max", "0.02"),
-          ("Al", "balance", "87.6")]
+# round 15: against the run's own target, Al-10Si from 5N Al and Si, as chapter 4's sample is (was Al 4047's AA limits)
+AL4047 = [("Si", "10.0", "10.1"), ("Fe", "-", "0.02"), ("Cu", "-", "<0.01"),
+          ("Mn", "-", "<0.01"), ("Mg", "-", "<0.05"), ("Zn", "-", "<0.01"),
+          ("Al", "balance", "89.8")]
 
 
 # ================================================================================================= the panels
@@ -308,7 +310,7 @@ def panel_xrd(peaks, path: Path):
         ax.annotate(f"{p['phase']} {p['hkl']}", (p["two_theta"], min(p["I"], 100) + 2), ha="center", va="bottom",
                     fontsize=8.2, color=INK if p["phase"] == "Al" else "#a8431c", rotation=90 if p["I"] < 60 else 0)
         ax.plot([p["two_theta"]] * 2, [-2, 1.5], color=c, lw=2, clip_on=False)
-    fig.text(0.015, 0.955, "Powder XRD, Al-12Si (Al 4047)", ha="left", va="center", fontsize=12, color=INK,
+    fig.text(0.015, 0.955, "Powder XRD, Al-10Si", ha="left", va="center", fontsize=12, color=INK,
              fontweight="bold")
     sh = height_shift()
     fig.text(0.015, 0.035, f"Al (fcc) a = {A_AL} Å, Si (diamond) a = {A_SI} Å, Cu Kα1 {WL[0]:.4f} Å: Bragg's law, "
@@ -345,16 +347,16 @@ def panel_xrf(path: Path):
     ax.set_title("EDXRF, He, 50 kV (illustrative)", loc="left", fontsize=11.5, color=INK, fontweight="bold")
     tx = fig.add_axes((0.67, 0.27, 0.32, 0.61))
     tx.axis("off")
-    rows = [("", "AA spec", "result*")] + AL4047
+    rows = [("", "target", "result*")] + AL4047
     for i, (el, spec, res) in enumerate(rows):
         yy = 0.97 - i * 0.118
         w = "bold" if i == 0 else "normal"
         tx.text(0.02, yy, el, fontsize=9.2, fontweight=w, color=INK, va="top")
         tx.text(0.20, yy, spec, fontsize=9.2, fontweight=w, color=INK2, va="top")
         tx.text(0.80, yy, res, fontsize=9.2, fontweight=w, color=INK, va="top", ha="right")
-    tx.text(0.02, 0.0, "wt %, Al 4047", fontsize=8.4, color=INK2)
-    fig.text(0.01, 0.06, "*Illustrative: real line energies and the Aluminum Association's 4047 limits; the heights "
-             "and the\nresult column are made up. The S2 PUMA measures loose powder under helium.", fontsize=8.2,
+    tx.text(0.02, 0.0, "wt %, Al-10Si", fontsize=8.4, color=INK2)
+    fig.text(0.01, 0.06, "*Illustrative: real line energies, against the run's own Al-10Si; the heights and the "
+             "\nresult column are made up. The S2 PUMA measures loose powder under helium.", fontsize=8.2,
              color=INK2)
     fig.text(0.985, 0.955, "ILLUSTRATIVE", ha="right", fontsize=9, fontweight="bold", color="white",
              bbox=dict(boxstyle="round,pad=0.3", fc="#8a5a00", ec="none"))

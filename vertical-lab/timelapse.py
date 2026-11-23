@@ -531,12 +531,16 @@ def model(write=True) -> dict:
 
 # ================================================================================================ the movie's clock
 # (video seconds, lab hours from, lab hours to, label, caption). Lab time 0 is Monday 06:00 of the lab's first week.
+_UNIT3 = os.environ.get("VLAB_UNIT3", "1") != "0"     # round 15: setup_lab.build parks floor-cleaning unit 3 too
 PHASES = [
     (2.5, 0.0, 0.0, "Day 1",
      "The lab as set up: two Shuttles with every tray loaded and powered, the floor machines, two MiR250 + UR10e "
-     "units on charge. The clock starts on a Monday at 06:00."),
+     "units on charge" + (" and unit 3, the floor-cleaning option, parked" if _UNIT3 else "") +
+     ". The clock starts on a Monday at 06:00."),
     (30.0, 0.0, 24.0, "1/4  Hour by hour",
-     "Hour by hour, the first day. One person comes in 08:00-16:00: the atomizer's crucible first, then the day's "
+     # round 15: the turnaround chapter gives the crucible to two arms; this year model (PR #332's) still staffs it
+     "Hour by hour, the first day. One person comes in 08:00-16:00: the atomizer's crucible first (still by hand in "
+     "this model), then the day's "
      "upkeep where it is done (a tray held at a Shuttle's opening with the units kept away, a floor machine, a unit "
      "on its charger). The arms run their reference checks between jobs, and keep going with the lights off."),
     (16.0, 24.0, 14 * 24.0, "2/4  Day by day",

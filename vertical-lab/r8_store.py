@@ -272,7 +272,8 @@ def store(key: str) -> Instrument:
         inst.actions = [
             (f"Tray N, the feedstock: {n} labelled jars ({sizes}) in racks of white HDPE, one rack per size.", 3.0, {}),
             ("DAL's elements and master alloys (DAL #146: Al, Si, Mg, Cu, Mn, Cr, Zr, Ti, Fe, Ni, Ce, Sc, Er, Zn, Sn, "
-             "Li as Al-Li), each in clear glass with a black cap; 100 g goes into each atomizer run.", 3.4, {}),
+             "Li as Al-Li), each in clear glass with a black cap: every charge cup's alloying powder comes from here.",
+             3.4, {}),
             ("Tinted for now (legend, top right): the master alloys and the two elements of Al 4047.", 1.8,
              {"jar tint": (0.0, 1.0)}),
             ("The tint is only a highlight, held for a few seconds...", 2.2, {"jar tint": (1.0, 1.0)}),
@@ -281,7 +282,7 @@ def store(key: str) -> Instrument:
             ("Rows stand 21-41 mm apart front to back, room for the gripper's open fingers; the arm takes a jar from "
              "above.", 3.0, {}),
             ("Each rack runs the tray's full width and lifts out whole by its handles. Nothing here draws power: no "
-             "UPS, no cameras. The bay's overhead camera counts the jars whenever the tray is presented.", 2.6, {}),
+             "UPS, no cameras. The bay's two ceiling cameras count the jars whenever the tray is presented.", 2.6, {}),
         ]
         inst.zoom = {1: ((-500.0, -250.0, 60.0), 900.0), 5: ((300.0, -150.0, 60.0), 700.0), 6: "out"}
         br = {b["size"]: b for b in band_rows(key)}      # round 11: on each band's first row, as the rows now stand

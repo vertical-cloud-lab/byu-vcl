@@ -640,8 +640,9 @@ def movie():
            ("sieving cell", tuple(sv_c + (0, 250, 1000)), (0.50, 0.20)),
            ("the rePowder's powder container", tuple(mo.amr.world(CRADLE_SEAT + (0, 0, 260))),
             (0.30, 0.62))]
+    # round 15: chapter 1's run as pressed now (out/alloy_recipe_pressed.json: Si and an AlSi10Mg top-up, 172.3 g)
     cap = "From the atomizer to the printer. The run's powder is in the rePowder's container, on the MiR250: four 5N Al " \
-          "cups with Si, Al-10Si, 157 g charged. Next, the sieving cell beside the rePowder, then the Aconity MIDI."
+          "cups with Si, Al-10Si, 172 g charged. Next, the sieving cell beside the rePowder, then the Aconity MIDI."
     sc.step(f"1/{n}", cap, 2.4, None, hold=1.4, labels=lbl)
 
     # ------------------------------------------------------------------ 1. the cell
@@ -1155,7 +1156,7 @@ def movie():
     seat_now = held_point(sc, "bottle", (0, 0, 58.0))
     cap = "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI " \
           "build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups " \
-          "make 157 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219)."
+          "make 172 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219)."
     status(sc, Arm="filling the supply")
     sc.step(f"4/{n}", cap, 1.4, RB.both(rb.joint_to(Tw=level_y(seat_now - (0, 150, 0), 0.0)), rb.grip_to(0.0)),
             hold=0.05, cam_to=CAM_FILL)
@@ -1283,7 +1284,7 @@ def movie():
     status(sc, Aconity="print done, under powder")
 
     cap = "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR " \
-          "comes back along the line. Chapter 4 checks the sieved powder; chapter 5 takes the plate from here."
+          "comes back along the aisle. Chapter 4 checks the sieved powder; chapter 5 takes the plate from here."
 
     sc.step(f"5/{n}", cap, 1.2, W.ghost(0.0), hold=0.1, cam_to=CAM_ACO)
     status(sc, Arm="UR10e on MiR250, parked", Powder="", Sieve="", Aconity="", Plate="in the Aconity MIDI")

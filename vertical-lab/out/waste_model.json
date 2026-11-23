@@ -790,13 +790,13 @@
   },
   {
    "key": "icp_out",
-   "name": "ICP-MS samples, to the Spectroscopic Facility",
+   "name": "ICP-MS samples, to the ICP-MS station",
    "route": "vendor",
    "per": "nights",
    "amount": 0.009,
    "unit": "L",
    "kg_per_unit": 1.0,
-   "basis": "the OT-2's 10x dilutions, 1.0 mL a tube, 9 a night (ot2_corrosion.md); the facility disposes of them",
+   "basis": "round 15: the CubXL's acidified tubes, diluted tenfold at the in-house ICP-MS station (icpms.py), 1.0 mL a tube, 9 a night; its acid waste is the station's",
    "workflow": "tray A",
    "undecided": false,
    "one_a_day": {

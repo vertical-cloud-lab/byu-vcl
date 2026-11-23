@@ -762,7 +762,7 @@ def fig_bay(choice: dict, cands: dict, res: dict, path: Path) -> Path:
     ax.text(-1040, ROOF_Z + 22, "assumed roof: the opening's clear height, 1829 mm", ha="center", fontsize=8, color=INK)
     ax.text(-1040, F1_Z + 95, "tray F1, stored over the opening (1950 mm)", ha="center", **txt)
     ax.text(FRONT_STRIP[0] - 10, 1000, "front strip: no goods\never pass under it", ha="right", **txt)
-    ax.text(-1631, 1600, "UR10e elbow at its\nhighest near the strip", ha="right", va="bottom", **txt)
+    ax.text(-1631, 1600, "UR12e elbow at its\nhighest near the strip", ha="right", va="bottom", **txt)
     ax.text(SHUTTER_Y + 18, 1350, "shutter", rotation=90, va="center", **txt)
     ax.text(-1650, 1840, "header", ha="right", **txt)
     ax.set_title("The bay in section (cameras 1-2 stand at x = -120 / +120 mm, 3 at +300, 4 at 0)", loc="left",

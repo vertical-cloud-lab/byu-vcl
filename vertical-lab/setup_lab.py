@@ -1463,7 +1463,8 @@ def movie(data, idata):
         for nm in base_names:
             sc.alpha[nm] = min(1.0, u * 4)
         u0.set((x, start[1] + (y - start[1]) * u, hd))
-    sc.step(f"6/{n}", "Two MiR Charge 48V chargers go in, then the first MiR250 rolls onto its charging plate.", 2.0,
+    # round 15: the second half of the same step, so it no longer repeats the chargers (three since unit 3)
+    sc.step(f"6/{n}", "The first MiR250 rolls onto its charging plate.", 2.0,
             roll, hold=0.2, labels=[("MiR250, 800 x 580 x 300 mm", (x, y, 300), (0.20, 0.60))])
     cab_names = u0.part_names("cabinet")
 

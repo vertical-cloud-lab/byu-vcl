@@ -2567,8 +2567,8 @@
    "check_h": 0.0
   },
   "mount_press": {
-   "availability": 0.994,
-   "unplanned_h": 8.6,
+   "availability": 0.9937,
+   "unplanned_h": 11.1,
    "planned_h": 43.8,
    "check_h": 0.0
   },
@@ -2609,15 +2609,15 @@
    "check_h": 13.0
   },
   "open1": {
-   "availability": 0.9564,
+   "availability": 0.9557,
    "unplanned_h": 196.1,
-   "planned_h": 184.2,
+   "planned_h": 190.8,
    "check_h": 0.0
   },
   "open2": {
-   "availability": 0.9768,
+   "availability": 0.9776,
    "unplanned_h": 69.5,
-   "planned_h": 132.8,
+   "planned_h": 126.2,
    "check_h": 0.0
   },
   "unit0": {
@@ -2656,8 +2656,8 @@
    "nanoindenter": 0.9787,
    "pip": 0.998,
    "cubxl_corrosion": 0.9948,
-   "open1": 0.9673,
-   "open2": 0.9843,
+   "open1": 0.9666,
+   "open2": 0.9851,
    "unit0": 0.9846,
    "unit1": 0.9945
   }
@@ -2809,9 +2809,9 @@
     5.25,
     7.25,
     4.5,
-    5.5,
-    6.5,
-    4.5,
+    4.0,
+    4.0,
+    8.5,
     4.5,
     5.5,
     4.0,
@@ -3280,22 +3280,22 @@
   "ups_note": "each transfer is about 6 s on the battery; each tray's own unit: the most energy its maker's runtime table shows it delivering (ups.delivered_wh, out/ups.json). Round 12's units are LiFePO4 (Vertiv: 'up to 10x more discharge cycles' than VRLA, which is rated 200 cycles at 100 % depth of discharge and 1,200 at 30 %, Yuasa NP12-12): these transfers add at most a couple of dozen equivalent full cycles a year, so age and heat set the battery's life (up to 10 years, Vertiv), not the transfers.",
   "units": {
    "unit0": {
-    "transfers": 7113,
-    "hours_off_charger": 4923,
-    "kwh": 1969,
-    "battery_equiv_cycles": 1207,
+    "transfers": 7118,
+    "hours_off_charger": 4927,
+    "kwh": 1971,
+    "battery_equiv_cycles": 1208,
     "battery_years_to_3000": 2.5,
-    "grips": 28452,
+    "grips": 28472,
     "fingertips_years_to_1M": 35.1
    },
    "unit1": {
-    "transfers": 3070,
-    "hours_off_charger": 2500,
-    "kwh": 1000,
-    "battery_equiv_cycles": 613,
+    "transfers": 3065,
+    "hours_off_charger": 2496,
+    "kwh": 998,
+    "battery_equiv_cycles": 612,
     "battery_years_to_3000": 4.9,
-    "grips": 12280,
-    "fingertips_years_to_1M": 81.4
+    "grips": 12260,
+    "fingertips_years_to_1M": 81.6
    }
   },
   "units_note": "assumed: the UR10e's 350 W typical (UR) and the MiR250's drive and computers; MiR250 battery, Li-NMC 47.7 V 34.2 Ah, at least 3,000 cycles (a reseller's spec sheet, robotsoflondon); Robotiq: fingertips at 1 million cycles, overhaul at 2 million (2F-85 manual)",
@@ -3454,9 +3454,9 @@
    "edm_contacts": 2,
    "mir_wheels": 2,
    "it_revalidate_nanoindenter": 2,
-   "ac_filter": 2,
    "xrd_service": 1,
    "it_revalidate_mastersizer": 1,
+   "ac_filter": 2,
    "sv_replace": 2,
    "edm_resin": 1,
    "t_verify_floor": 1,

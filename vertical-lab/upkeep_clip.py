@@ -917,9 +917,10 @@ def movie():
     keep("push")
     person.set(amp=0.0, phase=0.0)
     status(L, Arm="UR10e on MiR250, at Shuttle 2 (working)")
+    # round 15: every powered tray carries its own UPS (round 12), so off its dock it is not "on nothing"
     say("3/3 A person's task", "Kardex's full tray extraction: \"a tray is placed in front of the access opening\". The "
-                               "tray leaves its dock in the bay, so it runs on nothing while it is out (the iMicro shut "
-                               "down first). It rolls out onto the table's rails.")
+                               "tray leaves its dock in the bay, so only its UPS powers it while it is out (the iMicro "
+                               "shut down first). It rolls out onto the table's rails.")
     L.focus = None
     L.where["E"] = None
     status(L, **{"Tray E": "out on the table, off its dock"}, iMicro="shut down for the tip change")

@@ -844,8 +844,9 @@ def clip() -> str:
     def show_post(u):
         for n in names_p:
             sc.alpha[n] = u
-    sc.step("On a post at each station", "Hung from its own hook so its lever is at 826 mm and its hose at "
-            "1047 mm: NFPA 10's 42 in for a unit over 40 lb. CLASS D signs at 60 and 80 in, a keep-clear square.",
+    # round 15: the posts are at the powder stations only; the hose height is out/safety.json's hose_top_mm
+    sc.step("On a post at each powder station", "Hung from its own hook so its lever is at 826 mm and its hose at "
+            "1044 mm: NFPA 10's 42 in for a unit over 40 lb. CLASS D signs at 60 and 80 in, a keep-clear square.",
             4.5, show_post, cam_to=cam_p, hold=1.8)
     # 3. the 811, the strap open, then a B570 set in and strapped
     xb = 3200.0
@@ -885,7 +886,7 @@ def clip() -> str:
             pass
     mir_cam = [(xm - 1900.0, -3300.0, 1800.0), (xm, -200.0, 700.0), (0, 0, 1)]
     sc.step("On every MiR250", "Each MiR250 carries one in an 811 on its cabinet's aisle side, under the arm and over "
-            "its scanners' plane, wherever the robot works. Its turning circle grows 5 mm, to 499 mm.", 4.5, None,
+            "its scanners' plane, wherever the robot works. Its turning radius grows 5 mm, to 499 mm.", 4.5, None,
             cam_to=mir_cam, hold=1.4,
             labels=[("B570 in its 811", (xm, -380.0, 700.0), (0.30, 0.30))])
     mir_unit = [n for n in sc.actors if n.startswith("amr/amr class D ") and any(

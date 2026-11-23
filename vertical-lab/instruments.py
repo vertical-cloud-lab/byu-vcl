@@ -1946,7 +1946,8 @@ def glovebox() -> Instrument:
                                     (xb1 + p["ante_l"] / 2, ay, az - p["ante_d"] / 2 + 41))),
     }
     inst.actions = [
-        ("The automatic antechamber's outer door swings open on the side facing the line, where an arm outside "
+        # round 15: "the line" was the rail-era layout; the floor machines face an aisle
+        ("The automatic antechamber's outer door swings open on the side facing the aisle, where an arm outside "
          "can reach it.", 1.8, {"door": (0.0, 1.0), "load": (0.0, 0.0)}),
         ("A tray with a powder jar and a vial goes in.", 2.0, {"load": (0.0, 1.0)}),
         ("Door shut. The PLC evacuates and refills it three times on its own, then someone at the gloves (or an arm "

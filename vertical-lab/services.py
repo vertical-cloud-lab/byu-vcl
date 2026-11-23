@@ -203,7 +203,7 @@ MATERIALS = {
 }
 MATERIALS.update(CP.MATERIALS)      # the coupling's parts (coupling.py, 2026-11-18)
 MEDIA = [   # (key, label for the leader lines, material, coupling)
-    ("power", "mains: L1, L2, N, PE", "svc_power", "CT-E3-3 and CT-E3-2+PE, O3 mm, 39 A; PE mates first"),
+    ("power", "mains: L1, L2, N, PE", "svc_power", "CT-E3-3 and CT-E3-2+PE, Ø3 mm, 39 A; PE mates first"),
     ("data", "Ethernet, Cat 6A", "svc_data", "CT-10GBIT-RJ45, 10 Gbit/s"),
     ("air", "compressed air", "svc_air", "SCT03, G1/8, shut-off both sides"),
     ("n2", "nitrogen", "svc_n2", "SCT03, G1/8, shut-off both sides"),
@@ -792,12 +792,13 @@ def stream_cam(post_h: float = 600.0, h0: float = 360.0) -> Instrument:
          "front, so the 39 mm lens stays out of its 102-degree picture.", 3.4, {"slider": (0.0, 0.0)}, intro),
         ("Height: the block slides up the post's T-slot and locks on two M5 drop-in T-nuts, as robot-arms' camera "
          "fixtures do.", 2.6, {"slider": (0.0, 1.0)}, slide),
-        ("Pan: the yoke turns on an M6 bolt through the block's arm, 40 degrees each way.", 2.6,
+        # round 15: the range rig_pose allows (+-75, -15..65; units in the lab pan up to 71), not the swing drawn
+        ("Pan: the yoke turns on an M6 bolt through the block's arm, up to 75 degrees each way.", 2.6,
          {"pan": (0.0, -1.0)}, pan),
         ("", 1.8, {"pan": (-1.0, 1.0)}, pan),
-        (f"Tilt: the head turns between the yoke's arms on two thumb knobs, from level to {TILT_MAX:.0f} degrees down, "
-         f"where the lens's front reaches the yoke. Tilted down, the head stands {r['up']:.0f} mm at most over its "
-         "axis.", 2.8, {"pan": (1.0, 0.0), "head": (0.0, 2.0)}, tilt),
+        (f"Tilt: the head turns between the yoke's arms on two thumb knobs, from 15 degrees up to {TILT_MAX:.0f} "
+         f"down, where the lens's front reaches the yoke. Tilted down, the head stands {r['up']:.0f} mm at most "
+         "over its axis.", 2.8, {"pan": (1.0, 0.0), "head": (0.0, 2.0)}, tilt),
         ("Aimed: down and to one side at an instrument's working face. The Wide sees 102 x 67 degrees, the HQ with the "
          "16 mm lens 22 x 17: the detail. One PoE lead carries power and the stream.", 3.0,
          {"slider": (1.0, 0.4), "pan": (0.0, 0.5), "head": (2.0, 1.2)}, intro[4:]),
@@ -1597,8 +1598,8 @@ def movie_services(data, idata):
     dock_lbl = [(f"dock, slot {HOME[t]} (tray {t})", (1330, V.SLOTS[HOME[t]][0] + PLATE_Y, V.SLOTS[HOME[t]][1] + 160),
                  (0.86, 0.14 + 0.07 * i)) for i, t in enumerate(("E", "C", "B", "A", "D", "F"))]
     sc.step(f"1/{n}", "Every service a tray needs goes through one automatic coupling. The plate is on the tray's back "
-            "right corner; each slot a tray uses, and the bay, has a matching dock in its right-hand side wall, fed by "
-            "a riser in the side of the machine.", 3.6, None, hold=1.6, cam_to=CAM_S_WIDE,
+            "right corner; each slot a powered tray uses, and the bay, has a matching dock in its right-hand side "
+            "wall, fed by a riser in the side of the machine.", 3.6, None, hold=1.6, cam_to=CAM_S_WIDE,
             labels=dock_lbl + [("dock in the bay", (1330, V.Y_OPEN + PLATE_Y, V.Z_OPEN + 160), (0.86, 0.60)),
                                ("service risers", (RISER["x"], V.Y_REAR + PLATE_Y + RISER["dy"], 3200), (0.30, 0.16))])
     yc, zs = V.SLOTS[slot]
@@ -1662,7 +1663,7 @@ def movie_services(data, idata):
     cam_lbl = [(f"stream camera on tray {k}", A.tray_world(k, head_point(*c, dz=40.0)),
                 (0.14 if c[0] < 0 else 0.86, 0.30)) for c in TRAY_CAMS[k]]
     sc.step(f"6/{n}", "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and "
-            "looking back, so they keep the room out of the picture.", 2.6, None, hold=1.4, cam_to=CAM_S_CAMS,
+            "looking back, so they keep most of the room out of the picture.", 2.6, None, hold=1.4, cam_to=CAM_S_CAMS,
             labels=cam_lbl)
     # round 11 (Sterling, PR #318, 2026-11-13: "Can't see the overhead camera from the angle. Should change the view
     # angle and temporarily make things opaque again"): round 10 labelled the bay unit at the top edge of this view,
@@ -1782,7 +1783,7 @@ def movie_hookups(data, idata):
     n = 6
     ups_lbl = [(f"UPS, tray {t} ({HOME[t]})", p, (0.08 if i < 3 else 0.92, 0.30 + 0.08 * (i % 3)))
                for i, (t, p) in enumerate(sorted(ups_points().items(), key=lambda kv: -kv[1][2]))]
-    sc.step(f"1/{n}", f"Every tray carries its own UPS, sized for what it must keep alive (tray {k}: "
+    sc.step(f"1/{n}", f"Every powered tray carries its own UPS, sized for what it must keep alive (tray {k}: "
             f"{ups_name(k)}), standing at its back right; its front lights green on mains, amber on battery. In its "
             "slot, a tray is plugged into the machine through one automatic coupling in the slot's right-hand side "
             "wall.", 3.6, None, hold=2.2,
@@ -1892,7 +1893,7 @@ def movie_hookups(data, idata):
             ("contactor closes: back on mains", at_slot(*vp["power"], "open"), (0.88, 0.22)),
             ("valves open: air, N2, water", at_slot(*vp["n2"], "open"), (0.88, 0.32)),
             ("UPS: recharging", (UPS_AT[0] - 80, by + UPS_AT[1], bz + V.T_FLOOR + UPS["h"]), (0.10, 0.24))]
-    sc.step(f"5/{n}", "At the opening the bay's identical dock pushes in: the guide pins find the plate's bushings, "
+    sc.step(f"5/{n}", "At the opening the bay's matching dock pushes in: the guide pins find the plate's bushings, "
             "the contacts and couplings mate, the contactor closes (the UPS recharges) and only then the valves open: "
             "the supplies fill the tray's lines again.", 5.0, engage, hold=2.4, cam_to=CAM_H_BAY, labels=lbl5,
             live=True)
@@ -2091,9 +2092,9 @@ def movie_bay_camera(data, idata):
     L.svc_lines = [("Camera", "back unit, Camera Module 3 Wide"), ("Picture", "102 x 67 deg, 16:9"),
                    ("Arm", "to the vial rack")]
     L.gauges()
-    capb = (f"What the back unit's Wide sees: the whole presented tray from behind, {view['back']['share_of_tray'] * 100:.0f}"
-            " % of its floor, and the arm reaching in. Rendered from the camera's own position and aim, 102 degrees "
-            "across (Raspberry Pi's figures: 102 x 67, 120 diagonal).")
+    capb = (f"What the back unit's Wide sees: nearly the whole presented tray from behind, "
+            f"{view['back']['share_of_tray'] * 100:.0f} % of its floor, and the arm reaching in. Rendered from the "
+            "camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).")
     sc.step(f"3/{n}", capb, 1.8, arm(1, 2), hold=0.1)
     sc.step(f"3/{n}", capb, 0.5, rb.grip_to(A.GRIP_VIAL), hold=0.1)
     rb.grasp("vial")
@@ -2237,10 +2238,12 @@ def movie_cabling(data, idata):
 
     def lb(cam, items_):
         return W.auto(sc, cam, items_)
-    sc.step(f"1/{n}", "Power, network and gases for the whole lab, everything else drawn faint: two cable trays, one "
-            "over each row, the north one round the backs of the two 30 ft Shuttles, with a drop to every station "
-            "ending in a junction box, its sockets, a network port and an AirGradient air monitor. Nothing runs on "
-            "the floor: the arms ride MiR250s and charge at their chargers.", 4.0, None, hold=2.0, cam_to=wide,
+    # round 15: the Class D posts, showers and O2 monitors come in with setup_lab.utilities() and stay solid here
+    sc.step(f"1/{n}", "Power, network and gases for the whole lab, and its safety kit; everything else drawn faint: "
+            "two cable trays, one over each row, the north one round the backs of the two 30 ft Shuttles, with a "
+            "drop to every station ending in a junction box, its sockets, a network port and an AirGradient air "
+            "monitor. Nothing runs on the floor: the arms ride MiR250s and charge at their chargers.", 4.0, None,
+            hold=2.0, cam_to=wide,
             labels=lb(wide, [("north cable tray, 4.3 m", (-5000.0, yn, 4400.0)),
                              ("south cable tray, 3.2 m", (-2000.0, ys, 3300.0)),
                              ("round the Shuttles' backs", (X2 / 2, yv + 250.0, 4400.0))]))
@@ -2271,8 +2274,8 @@ def movie_cabling(data, idata):
     cam_v = [(3900, 7400, 5400), (1815, 1000, 1700), (0, 0, 1)]          # from behind, down into the gap
     sc.step(f"5/{n}", "The Shuttles: each takes 208 V three-phase (#53; a used unit's plate: 8.6 kVA) to a disconnect on "
             "its back. Between them an N2 generator, a compressor and a chiller feed the trays' couplings through each "
-            "Shuttle's right-hand side, where the risers run up to every slot's dock: 208Y/120 V on a 30 A breaker, "
-            "Ethernet, air, N2 and chilled water.", 3.6, None, hold=2.2, cam_to=cam_v,
+            "Shuttle's right-hand side, where the risers run up to each powered tray's dock: 208Y/120 V on a 30 A "
+            "breaker, Ethernet, air, N2 and chilled water.", 3.6, None, hold=2.2, cam_to=cam_v,
             labels=lb(cam_v, [("208 V 3-phase to Shuttle 1", (900.0, yv + 70.0, 2650.0)),
                               ("to Shuttle 2", (X2 + 900.0, yv + 70.0, 2650.0)),
                               ("docks' supply into each side cavity", (X2 / 2, 900.0, 2600.0)),

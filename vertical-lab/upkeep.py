@@ -1163,7 +1163,7 @@ def weekly_people(sim: dict) -> dict:
 
 AVAIL_ROWS = ROUTE + ["open1", "open2", "unit0", "unit1"]
 ROW_NAMES = dict(TL.STATION_NAMES, open1="Shuttle 1 (its opening)", open2="Shuttle 2 (its opening)",
-                 unit0="unit 1 (MiR250 + UR10e)", unit1="unit 2 (MiR250 + UR10e)")
+                 unit0="unit 1 (MiR250 + UR12e)", unit1="unit 2 (MiR250 + UR12e)")
 
 
 def availability(sim: dict) -> dict:

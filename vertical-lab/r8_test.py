@@ -299,7 +299,7 @@ QUENCH = dict(W=240.0, D=200.0, H=210.0, water=170.0, plate_z=216.0, drop=150.0)
 
 def quench_tank() -> I.Instrument:
     q = QUENCH
-    inst = I.Instrument("quench_tank", "Quench tank", "water tank with a lift basket, our design",
+    inst = I.Instrument("quench_tank", "Quench tank", "Water tank with a lift basket (our design)",
                         (q["W"], q["D"], q["H"]),
                         "a stainless tank of water beside the furnace, for the T6's quench, with a basket that drops "
                         "the rack in; size assumed")

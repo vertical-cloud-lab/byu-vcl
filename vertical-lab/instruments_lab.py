@@ -1141,7 +1141,8 @@ def _draw_packaging_insets(sc, img, s):
                     d.rectangle((qx + c * q, qy + r * q, qx + (c + 1) * q - 1, qy + (r + 1) * q - 1),
                                 fill=(10, 10, 12, al))
         tx = qx + _QR.shape[1] * q + 14 * s
-        for i, line in enumerate(["SAMPLE ID  <run ID>-P01", "AlSi10Mg, 15-45 um", "net 212.4 g", "2026-11-03",
+        # round 15: the lab's own LPBF cut, and a sample a run can fill (one four-cup run gives about 26-29 g of it)
+        for i, line in enumerate(["SAMPLE ID  <run ID>-P01", "AlSi10Mg, 20-63 um", "net 25.0 g", "2026-11-03",
                                   "BYU Vertical Cloud Lab"]):
             d.text((tx, qy + i * 17 * s), line, font=fm, fill=(20, 20, 24, al))
         d.text((x0 + 10 * s, y1 - 18 * s), "QR: a placeholder pattern, not a real code. Values are examples.",
@@ -1658,9 +1659,11 @@ def ded() -> Instrument:
     inst.joints = joints
     beads = [k for k in joints if k.startswith("bead")]
     build = {k: (0.0, 1.0) for k in ["head", "glow"] + beads}
+    # round 15: under the 996 mm opening's 856.5 mm it fits by height; its load per area is what keeps it off a tray
+    # (notes/kardex_opening.md: 537 kg/m2, 2.3 x the strong tray's rating)
     inst.actions = [
-        ("The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its base, taller "
-         "than the 727.5 mm a tray takes. Up to six powder hoppers feed one nozzle.", 2.6, {"load": (0.0, 0.0)}),
+        ("The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its base, 2.3 times "
+         "a strong tray's rating per area. Up to six powder hoppers feed one nozzle.", 2.6, {"load": (0.0, 0.0)}),
         ("The door swings open on its left hinge.", 1.6, {"door": (0.0, 1.0)}),
         ("A steel substrate goes from the shelf onto the 175 x 175 mm worktable.", 2.6, {"load": (0.0, 1.0)}),
         ("Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.", 2.8,
@@ -1735,8 +1738,8 @@ def _draw_hip_overlay(sc, img, s):
             ("height", f"{h['H']:.0f} mm", f"{h['h_max']} mm"),
             ("depth", f"{h['D']:.0f} mm", f"{h['tray'][1]:.0f} mm tray"),
             ("mass", f"{h['mass']:.0f} kg", "228 / 360 / 490 kg"),
-            ("services", "Ar, water, air", "power, not in transit"),
-            ("gas", f"{h['p_mpa']:.0f} MPa argon", "none")]
+            ("services", "Ar, water, air", "docked only; UPS in transit"),
+            ("gas", f"{h['p_mpa']:.0f} MPa argon", "no argon")]
     y1 = y0 + (len(rows) * 20 + 66) * s
     d.rounded_rectangle((x0, y0, x1, y1), 6 * s, fill=(255, 255, 255, int(238 * a)), outline=(150, 156, 164, al))
     d.text((x0 + 10 * s, y0 + 6 * s), "On a tray? No.", font=font(15 * s, bold=True), fill=(170, 30, 30, al))
@@ -1821,8 +1824,11 @@ def hip() -> Instrument:
         "table": Joint("slide", vec=(1, 0, 0)),
     }
     n = hip_numbers()
+    # round 15: the envelope drawn is Kardex's published 727.5 mm (HIP["h_max"]); the lab's 996 mm opening is said too,
+    # and a tray's dock gives water and air but no argon, and only in its slot or at the opening (the UPS in transit)
     inst.actions = [
-        ("A Kardex tray, 2450 x 864 mm, and the room above it: 727.5 mm of product height through the opening.", 2.6,
+        ("A Kardex tray, 2450 x 864 mm, and the room above it: Kardex's published 727.5 mm of product height (our "
+         "996 mm opening, about 856.5).", 2.6,
          {"env": (0.0, 1.0), "hip": (0.0, 0.0), "vessel": (0.0, 0.0), "over": (0.0, 0.0), "hipdrop": (0.0, 0.0)}),
         ("The smallest 200 MPa lab HIP with a published size: Kobelco's O2-Dr.HIP, 1315 x 1100 x 1300 mm, 1100 kg.",
          2.8, {"hip": (1.0, 1.0), "hipdrop": (0.0, 1.0)}),
@@ -1830,9 +1836,11 @@ def hip() -> Instrument:
          f"{n['mass_ratio']['strong']} times what a strong tray carries.", 3.0,
          {"over": (0.0, 1.0), "table": (0.0, 1.0)}),
         ("Inside, a vessel in a frame (drawn schematically): argon at 200 MPa, up to 2000 C. A HIP needs argon, "
-         "cooling water and air, and its cooling must not stop. A tray has power only, and not in transit.", 3.8,
+         "cooling water and air, and its cooling must not stop. A tray's dock has no argon, and in transit only its "
+         "UPS runs.", 3.8,
          {"over": (1.0, 0.0), "~hip": (0.0, 1.0), "vessel": (0.0, 1.0)}),
-        ("So no. A HIP stands on the floor with its gas and water, like the wire EDM, and the arm brings it work.", 2.4,
+        ("So no. A HIP would stand on the floor with its gas and water, like the wire EDM, and the arm would bring it "
+         "work (the lab has none yet).", 2.4,
          {"~hip": (1.0, 0.0), "vessel": (1.0, 0.0)}),
     ]
     inst.labels = [("727.5 mm product height", (-iw / 2 + 200, -idp / 2, h["h_max"]), (0.10, 0.22)),

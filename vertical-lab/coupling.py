@@ -1381,7 +1381,7 @@ def movie():
             cam_to=TRAYFACE)
     xf = X_M - 1.0
     lab_t = [("PE: the socket for the long pin", (xf, mid(spanE, "CT-E3-2"), Z_E), (0.04, 0.31)),
-             ("L1, L2, N: O3 mm, 39 A (CT-E3-3)", (xf, mid(spanE, "CT-E3-3"), Z_E + 9.0), (0.04, 0.40)),
+             ("L1, L2, N: Ø3 mm, 39 A (CT-E3-3)", (xf, mid(spanE, "CT-E3-3"), Z_E + 9.0), (0.04, 0.40)),
              ("LMFB pair: monitors the mating", (xf, mid(spanE, "CT-LMFB"), Z_E + 11.0), (0.04, 0.49)),
              ("Ethernet, Cat 6A, 10 Gbit/s", (xf, mid(spanE, "CT-10GBIT"), Z_E + 7.5), (0.70, 0.12)),
              ("air and N2: SCT03, G1/8", (xf, mid(spanF, "CT-E8"), Z_F + 8.0), (0.04, 0.62)),
@@ -1402,7 +1402,7 @@ def movie():
             C.ghost([g], None, 1.0 - u)
     sc.step(f"2/{n}", "", 2.0, swap, hold=0.2, cam_to=DOCKFACE)
     xp = X_M + STROKE
-    lab_d = [("align 4 pin (CT-HME-S/4): O9.8 mm,\n50.2 mm, insulated tip", (xp - 46.0, end_axes("E")[0][0], Z_E),
+    lab_d = [("align 4 pin (CT-HME-S/4): Ø9.8 mm,\n50.2 mm, insulated tip", (xp - 46.0, end_axes("E")[0][0], Z_E),
               (0.04, 0.33)),
              ("PE pin, the longest", (xp - 11.0, mid(spanE, "CT-E3-2"), Z_E), (0.04, 0.45)),
              ("LMFB pins, the shortest", (xp - 6.0, mid(spanE, "CT-LMFB"), Z_E + 11.0), (0.04, 0.56)),

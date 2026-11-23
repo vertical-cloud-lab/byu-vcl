@@ -40,8 +40,9 @@ JOBS["ot2"] = (["ot2_corrosion.py"], {}, 2500, 30, ["instruments/ot2_corrosion_p
 JOBS["coupling"] = (["coupling.py", "movie"], {}, 3000, 30, ["vlm_coupling.mp4"])
 JOBS["vacuum_press"] = (["vacuum_press.py"], {}, 2500, 30, ["vacuum_press.mp4"])
 JOBS["dag"] = (["route_dag.py"], {}, 1500, 30, [f"dag/route_dag_ch{i}.mp4" for i in range(1, 8)])
-for k in ATOM:
-    JOBS[k] = ([f"{k}.py"], {}, 3500, 30, [f"{k}.mp4"])
+for k in ATOM:   # atom_crucible.py renders both crucible clips: `out` (taking the furnace apart) and `in` (the rebuild)
+    argv = ["atom_crucible.py", k.rsplit("_", 1)[1]] if k.startswith("atom_crucible_") else [f"{k}.py"]
+    JOBS[k] = (argv, {}, 3500, int(os.environ.get("R15_FPS_ATOM", "24")), [f"{k}.mp4"])
 FAB = ["metalone", "snowpod", "mprint", "meltio_m450", "form4", "form_wash", "form_cure", "stencil", "lumenpnp"]
 for k in FAB:
     JOBS[f"f_{k}"] = (["fab_tour.py", k], {}, 2000, 30, [f"fabrication/{k}.mp4"])

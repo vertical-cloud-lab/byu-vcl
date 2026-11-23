@@ -713,7 +713,9 @@ def workflow(data, lab=True):
         import warehouse as W
         u0, u1 = L.units[0], L.units[1]
         cap0 = f"An example run in the lab as set up: two Kardex Shuttles with every tray loaded (A-{max(L.tray)}), " \
-               "the floor machines, one MiR250 + UR10e docked at Shuttle 1's opening and the other on its charger. " \
+               "the floor machines, one MiR250 + UR10e docked at Shuttle 1's opening and the other on its charger" + \
+               (" (unit 3, the floor-cleaning option, parked by its own)" if os.environ.get("VLAB_UNIT3", "1") != "0"
+                else "") + ". " \
                f"The multi-doser doses {q['mg']:.0f} mg of an atomized powder and the CubXL adds electrolyte to it, " \
                "DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; " \
                "the metal it gives up tracks its oxide)."

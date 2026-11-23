@@ -327,12 +327,13 @@ def main():
                     ("InssTek MX-Lab (in the lab)", (XD, -380, 1835), (0.10, 0.30))])
 
     # 2. the powder
-    rows = [("one rePowder run, < 63 um", f"{RUN_FINES_G:.0f} g", "DAL #219"),
+    # round 15: one charge, melted over two runs (97 % in the first), as chapter 3's photo of it says
+    rows = [("one charge, < 63 um", f"{RUN_FINES_G:.0f} g", "DAL #219"),
             ("one Aconity MIDI build", f"{MIDI_BUILD_G:.0f} g", "the lab's figure"),
             (f"EOS bed, 400 x 400 x {S8.EOS['Hb']:.0f} mm", f"{EOS_BED_G / 1000:.1f} kg", "estimate")]
     sc.panel = ["Powder, AlSi10Mg"] + [f"{a:<29}{b:>9}   ({c})" for a, b, c in rows] + \
                [f"*= {EOS_BED_G / RUN_FINES_G:.0f} rePowder runs (bulk density {BULK} g/cm3 assumed)"]
-    sc.step(f"2/{n}", "Powder first. The rePowder made 188 g under 63 um in one run; the Aconity MIDI builds on "
+    sc.step(f"2/{n}", "Powder first. The rePowder made 188 g under 63 um from one charge; the Aconity MIDI builds on "
             "about 440 g. A 100 mm build in the EOS's 400 x 400 mm bed takes about 22 kg. So at this scale the "
             "recipe is what the route hands on, and the powder is bought by the 100 kg: EOS sells AlSi10Mg.", 5.5,
             None, hold=2.4, cam_to=CAM_EOS)

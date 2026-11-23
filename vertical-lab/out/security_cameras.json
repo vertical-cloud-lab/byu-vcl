@@ -298,29 +298,29 @@
   },
   "H": {
    "slot": "2R4",
-   "span_mm": 550.0,
-   "tallest_other": "DDM Novastar SPR-45VA",
-   "tallest_other_mm": 519,
+   "span_mm": 625.0,
+   "tallest_other": "AirGradient ONE",
+   "tallest_other_mm": 583,
    "camera_tops_mm": [
     407,
     411
    ],
    "cameras_set_the_slot": false,
-   "highest_top_same_slot_mm": 530.0,
-   "span_if_cameras_below_mm": 550.0
+   "highest_top_same_slot_mm": 605.0,
+   "span_if_cameras_below_mm": 625.0
   },
   "G": {
    "slot": "2F1",
    "span_mm": 725.0,
-   "tallest_other": "Formlabs Form 4",
-   "tallest_other_mm": 557,
+   "tallest_other": "AirGradient ONE",
+   "tallest_other_mm": 583,
    "camera_tops_mm": [
     697,
     699
    ],
    "cameras_set_the_slot": true,
    "highest_top_same_slot_mm": 705.0,
-   "span_if_cameras_below_mm": 600.0
+   "span_if_cameras_below_mm": 625.0
   },
   "I": {
    "slot": "2F2",

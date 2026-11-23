@@ -1225,8 +1225,9 @@ def _movie(B):
            ("tray F: the furnace (Shuttle 1)", (0.0, -1500.0, 2600.0), (0.30, 0.14)),
            ("UR10e on a MiR250", tuple(amr.world((0, 0, 1300))), (0.62, 0.40))]
     st["lbl"], st["cap"] = f"1/{n}", ("The alloy route's chapter 5, in the lab as it was set up: the print comes out of the "
-                                     "Aconity MIDI and is depowdered, the wire EDM across the aisle cuts the four "
-                                     "tensile bars off it, they are heat treated on tray F, then two are pulled in the "
+                                     "Aconity MIDI and is depowdered, the wire EDM across the aisle cuts the six "
+                                     "tensile bars off it (four flat, two vertical), they are heat treated on tray F, "
+                                     "then two are pulled in the "
                                      "Instron 68FM-100, at room temperature and at 200 C.")
     step(3.0, None, hold=1.8, labels=lbl)
 
@@ -1246,9 +1247,11 @@ def _movie(B):
         def lance_at(tip):
             return tilt(np.asarray(tip, float) - l_dir * LANCE_TIP, down=LANCE_DOWN)
         st["lbl"] = f"2/{n}"
-        st["cap"] = ("The print is done: four ASTM E8 subsize tensile bars, 100 mm long and 6 mm thick, printed flat on a "
-                     "170 mm plate from the route's own Al-10Si powder (DAL PR #169's build at Utah), and a handling lug "
-                     "for the gripper. They are still buried in powder; the chamber is drawn see-through.")
+        # round 15: the plate carries round 9's two vertical bars too (zbars=True), so six bars, not "four ... flat"
+        st["cap"] = ("The print is done: six ASTM E8 subsize tensile bars, 100 mm long and 6 mm thick, four printed flat "
+                     "and two vertical on a 170 mm plate from the route's own Al-10Si powder (DAL PR #169's build at "
+                     "Utah), and a handling lug for the gripper. They are still buried in powder; the chamber is drawn "
+                     "see-through.")
         status(sc, Plate="in the build cylinder, under powder")
         step(3.0, W.ghost(1.0), hold=1.2, cam=CAM_ACO,
              labels=[("process chamber", tuple(W.world(M.build_point() + (250, 0, 250))), (0.20, 0.24)),

@@ -367,7 +367,7 @@ def glovebox_tray() -> Instrument:
     inst.actions = [
         ("The arm slides the mini antechamber's outer door open. It slides rather than swings, so it never leaves "
          "the tray's footprint.", 1.8, {"door": (0.0, 1.0), **tv(0.0, 0.0)}),
-        ("In goes the atomizer's catch jar, sealed, on a sled.", 2.2, {**tv(0.0, V("ante"))}),
+        ("In goes a sealed jar of atomized powder, on a sled.", 2.2, {**tv(0.0, V("ante"))}),
         ("Door shut. The PLC pumps the antechamber down and refills it with N2 from the tray's dock line, three "
          "times.", 3.6, {"door": (1.0, 0.0), "needle": (0.0, 1.0)}),
         ("The inner door slides up.", 1.4, {"inner_door": (0.0, 1.0), "~body": (0.0, 0.85), "~inner_door": (0.0, 0.85)}),
@@ -375,7 +375,7 @@ def glovebox_tray() -> Instrument:
         ("The capper unscrews the jar's lid and lifts it clear.", 3.6, {**tv(V("inside"), V("lid_off"))}),
         ("Two arms lift the jar's cradle and tip it: the powder pours into the storage jar on the balance.", 3.6,
          {**tv(V("lid_off"), V("poured")), "stream": (0.0, 1.0), "fill": (0.0, 1.0)}),
-        ("Upright and down again. The capper puts the catch jar's lid back, then screws the storage jar's lid on.",
+        ("Upright and down again. The capper puts the first jar's lid back, then screws the storage jar's lid on.",
          5.2,
          {**tv(V("poured"), V("sealed")), "stream": (1.0, 0.0)}),
         ("Sealed under N2, the jar leaves the same way. Purge-only: no purifier to regenerate inside the VLM. "
@@ -1153,7 +1153,7 @@ def storage() -> Instrument:
     inst.joints["jar tint"] = Joint("fade")
     inst.actions = [
         ("A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall. Nothing here draws power: no UPS, "
-         "no dock, no cameras; the bay's overhead camera sees it whenever it is presented.", 2.6, {}),
+         "no dock, no cameras; the bay's two ceiling cameras see it whenever it is presented.", 2.6, {}),
         ("Charge cups turned from 5N Al (blue rack) and C10100 Cu (orange rack), 48 of each, in the front rows "
          "where a level gripper takes them.", 3.0, {}),
         ("Their plugs, Al and Cu apart; 54 capped 20 mL vials; 112 15 mL ICP-MS tubes.", 3.0, {}),

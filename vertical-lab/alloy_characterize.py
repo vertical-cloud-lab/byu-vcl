@@ -488,7 +488,7 @@ def movie():
     status(L, SEM="venting, door out")
     wait(1.6, sem.move({"drawer": (0.0, 1.0)}), cam=CAM_SEM,
          labels=[("Hitachi TM4000PlusII", tuple(sw((0, 0, 600))), (0.22, 0.20)),
-                 (RC.AZTEC.split(",")[0] + ": EDS analyser", tuple(sw((RC.I.SEM["W"] / 2 + 190, -90, 330))),
+                 (RC.AZTEC.split(",")[0], tuple(sw((RC.I.SEM["W"] / 2 + 190, -90, 330))),
                   (0.78, 0.20))])
     say("SEM", "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> "
                "carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).")

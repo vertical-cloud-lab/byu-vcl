@@ -982,8 +982,9 @@ def movie():
                  "which the silicon drift detector counts.")
     status(XRF="measuring, He")
     step(2.4, RB.both(xrf.move({"beam": (0.0, 1.0)}), clock("S2 PUMA", 0.0, 4.0)), hold=0.2)
-    st["cap"] = ("The spectrum and a composition against Al 4047's limits. ILLUSTRATIVE: the line energies are real, the "
-                 "heights and the numbers are made up for the picture; no XRF of this powder exists yet.")
+    # round 15: the panel (r8_powder_data) is against the run's own Al-10Si now, not Al 4047's limits
+    st["cap"] = ("The spectrum and a composition against the run's Al-10Si target. ILLUSTRATIVE: the line energies are "
+                 "real, the heights and the numbers are made up for the picture; no XRF of this powder exists yet.")
     step(1.2, RB.both(panel("xrf", 0.0, 1.0), clock("S2 PUMA", 4.0, 8.0)), hold=4.0)
     step(1.2, RB.both(panel("xrf", 1.0, 0.0), xrf.move({"beam": (1.0, 0.0), "~lid": (1.0, 0.0), "~body": (1.0, 0.0)}),
                       clock("S2 PUMA", 8.0, 10.0)), hold=0.2)

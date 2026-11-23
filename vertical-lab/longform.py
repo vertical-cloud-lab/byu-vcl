@@ -637,7 +637,7 @@ DAL_STEPS = [   # (step, station in this design, status, what inside it is still
     ("Atomize", "rePowder: loaded, opened, rebuilt by two arms (ch. 2, turnaround)", "auto",
      "by hand: booster swaps, argon cylinders; the arm presses the HMI until AMAZEMET opens an interface"),
     ("Recover and sieve", "explosion-proof vacuum (turnaround); sieving cell with wash (ch. 3)", "auto", ""),
-    ("Store", "753-jar store on trays N and O", "auto", "open: dry storage at about 25 % RH (DAL #131)"),
+    ("Store", "1,506-jar store on trays N, O, P and Q", "auto", "open: dry storage at about 25 % RH (DAL #131)"),
     ("Characterize the powder", "laser diffraction, XRD with its prep, XRF, SEM (ch. 4)", "auto",
      "in progress: composition by ICP-MS, the new hood station (corrosion chapter)"),
     ("Ship powder out", "packaging station: labels, seal, box", "auto", "by hand: the dangerous-goods call for each powder"),

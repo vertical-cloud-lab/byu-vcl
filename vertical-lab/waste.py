@@ -243,8 +243,9 @@ STREAMS = [
       "upkeep: the deionizing resin every 200 h (about 10 L, 12 kg wet; a 20 L ion exchanger is FANUC's option on the "
       "older alpha-0iC) and two paper filters every 600 h (about 4 kg each with sludge); the resin goes back for "
       "regeneration, the filters dried and to EHS", kg_per_unit=1.0, workflow="wire EDM"),
-    S("icp_out", "ICP-MS samples, to the Spectroscopic Facility", "vendor", "nights", 0.009, "L",
-      "the OT-2's 10x dilutions, 1.0 mL a tube, 9 a night (ot2_corrosion.md); the facility disposes of them",
+    S("icp_out", "ICP-MS samples, to the ICP-MS station", "vendor", "nights", 0.009, "L",
+      "round 15: the CubXL's acidified tubes, diluted tenfold at the in-house ICP-MS station (icpms.py), 1.0 mL a "
+      "tube, 9 a night; its acid waste is the station's",
       kg_per_unit=1.0, workflow="tray A"),
 ]
 
