@@ -43,7 +43,7 @@ JOBS["vacuum_press"] = (["vacuum_press.py"], {}, 2500, 30, ["vacuum_press.mp4"])
 JOBS["dag"] = (["route_dag.py"], {}, 1500, 30, [f"dag/route_dag_ch{i}.mp4" for i in range(1, 8)])
 for k in ATOM:   # atom_crucible.py renders both crucible clips: `out` (taking the furnace apart) and `in` (the rebuild)
     argv = ["atom_crucible.py", k.rsplit("_", 1)[1]] if k.startswith("atom_crucible_") else [f"{k}.py"]
-    JOBS[k] = (argv, {}, 3500, int(os.environ.get("R15_FPS_ATOM", "24")), [f"{k}.mp4"])
+    JOBS[k] = (argv, {}, 3500, int(os.environ.get("R15_FPS_ATOM", "20")), [f"{k}.mp4"])
 FAB = ["metalone", "snowpod", "mprint", "meltio_m450", "form4", "form_wash", "form_cure", "stencil", "lumenpnp"]
 for k in FAB:
     JOBS[f"f_{k}"] = (["fab_tour.py", k], {}, 2000, 30, [f"fabrication/{k}.mp4"])
@@ -59,8 +59,10 @@ JOBS.update({
     "icpms": (["icpms.py"], {}, 5500, FPS_HEAVY, ["icpms.mp4"]),
     "ch1": (["alloy_charge.py"], {"VLAB_ONLY_TRAYS": "B"}, 4500, FPS_HEAVY, ["alloy_charge.mp4"]),
     # chapter 2 splices the lab's footage into its render and writes out/mp4/alloy_atomize.mp4 at the render's size;
-    # ARM_AUDIT_RENDER=1 is its own inline audit. `collect` copies the MP4 to out/r15/
-    "ch2": (["alloy_atomize.py"], {"ARM_AUDIT_RENDER": "1"}, 5000, FPS_HEAVY, ["alloy_atomize.mp4"]),
+    # `collect` copies the MP4 to out/r15/. Chapters 1, 2 and 6 were re-planned this round and audited by their
+    # helpers on the final code (strict rules, 10-12 fps: out/collisions/*_r15fix_*), so their renders skip the
+    # inline audit, which costs about as much CPU as the drawing (AUDITED below)
+    "ch2": (["alloy_atomize.py"], {}, 5000, FPS_HEAVY, ["alloy_atomize.mp4"]),
     "ch3": (["alloy_print.py"], {}, 5500, FPS_HEAVY, ["alloy_print.mp4"]),
     "ch4": (["alloy_powder.py"], {"VLAB_ONLY_TRAYS": "DEM"}, 4500, FPS_HEAVY, ["alloy_powder.mp4"]),
     "ch5": (["alloy_workflow.py"], {"VLAB_ONLY_TRAYS": "F"}, 4500, FPS_HEAVY, ["alloy_workflow.mp4"]),
@@ -77,6 +79,12 @@ JOBS.update({
 })
 
 
+# round 15: clips whose helper audited the final code at 10-15 fps; their final render draws without auditing again
+# (chapter 2 was, but chapter 1's carrier re-spacing moved its cups afterwards, so it audits itself again; chapter 1's
+# last fix had no audit yet, so it does too)
+AUDITED = {"ch6", "atom_crucible_out", "atom_crucible_in", "atom_container"}
+
+
 def fps_of(name: str) -> int:
     return int(os.environ.get(f"R15_FPS_{name.upper()}", JOBS[name][3]))
 
@@ -86,6 +94,8 @@ def queue(names: list[str]) -> None:
     for n in names:
         argv, env, mem, _, _ = JOBS[n]
         e = dict(COMMON, **env, VIZ3D_FPS=str(fps_of(n)))
+        if n in AUDITED:
+            e["VIZ3D_AUDIT"] = ""
         cmd = ["python3", "runner_guard.py", "bg", "--log", str(LOGS / f"{n}.log"), "--mem", str(mem), "--label", n, "--low",
                "--", "env"] + [f"{k}={v}" for k, v in e.items()] + ["xvfb-run", "-a", "python3"] + argv
         pid = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True).stdout.strip()

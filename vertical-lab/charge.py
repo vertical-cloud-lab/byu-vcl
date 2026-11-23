@@ -343,8 +343,13 @@ def press():
 
 
 CARRIER_X = -30.0           # the carrier's row of pockets, in its own frame (origin on the cabinet top at
-CARRIER_Y0 = -88.0          # animate.BUFFER_LOCAL): 30 mm further out than the vial's pocket, first pocket at y0
-CARRIER_PITCH = 85.0        # pocket to pocket: the 2F-85's open fingertips (73.7 mm out) clear the next cup
+CARRIER_Y0 = -45.0          # animate.BUFFER_LOCAL): 30 mm further out than the vial's pocket, first pocket at y0
+CARRIER_PITCH = 90.0        # pocket to pocket: the 2F-85's open fingertips (73.7 mm out) clear the next cup
+# Round 15 (#364's base cameras on every MiR250): y0 was -88 and the pitch 85. The left camera's case
+# (props.BASE_CAMS["L"], y -74 to -46, z 845-894) then stood 6.5 mm off the third pocket's cup, level with its rim, and
+# no level grasp could lower a cup into that pocket (the 2F-85's fingertips or its body under the case). The row now
+# straddles the case: the second and third pockets 45 mm either side of it, the open fingertips 7 mm clear of it from
+# the arm's side; the first pocket 43 mm further from the mast. Chapters 2 and 3 draw this carrier too
 
 
 def carrier(n=4, pitch=CARRIER_PITCH):

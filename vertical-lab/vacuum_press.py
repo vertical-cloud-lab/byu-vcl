@@ -463,6 +463,13 @@ def movie():
     model = compaction()
     stroke = model["stroke"]
     set_t = model["set_point_t"]
+    # round 15 (the orchestrator's QA: the clip dosed 9.61 g, chapter 1 doses less): the cup is chapter 1's Al-10Si cup,
+    # its Si and its AlSi10Mg top-up and their green densities (alloy_press.pressed_recipe); the load is still the
+    # bore-tapped-full AlSi10Mg estimate that sets the 3.2 t program (Si is not calibrated)
+    import alloy_press as AP
+    al = AP.pressed_recipe()["runs"]["Al-10Si"]
+    rel0, rel1 = al["rel_density_set"], al["rel_density_flush"]
+    v0, v1 = cavity(PLUG_SET) / 1000, cavity(C.PLUG_HOME_Z) / 1000
     sc = Scene("vacuum_press", "A vacuum press for the charge cups: Specac Atlas Autotouch 15T + our evacuable die")
     parts = press_parts()
     for g in ("fixed", "screen", "vacuum"):
@@ -502,7 +509,7 @@ def movie():
     sc.parent.update(pin="shuttle", cup="pin", powder="cup", plug="cup", punch="shuttle")
 
     st = dict(guard=0.0, y=AXY, s=0.0, e=0.0, x=0.0, punch_up=200.0, cup_up=0.0, plug_up=0.0, mbar=1013.0, load=0.0,
-              loaded=False, cutaway=False, rel=model["rel_density_before"])
+              loaded=False, cutaway=False, rel=rel0)
     h0 = PLUG_SET - C.FLOOR_Z - 0.05
 
     def apply():
@@ -532,7 +539,7 @@ def movie():
         sc.alpha["pin/cut"] = 1.0 if st["cutaway"] else 0.0
         if st["punch_up"] > 150:
             sc.alpha["punch/whole"] = sc.alpha["punch/cut"] = sc.alpha["punch/oring"] = sc.alpha["punch/oring_cut"] = 0.0
-        k = (st["rel"] - model["rel_density_before"]) / (model["rel_density_after"] - model["rel_density_before"])
+        k = (st["rel"] - rel0) / (rel1 - rel0)
         sc.color["powder/col"] = tuple(c * (1 - 0.22 * k) for c in pw_col)
         port = (sc.world("shuttle") @ np.r_[VP["port_local"], 1.0])[:3]
         sc.set_mesh("hose", hose(port))
@@ -540,12 +547,13 @@ def movie():
 
     def gauges():
         g = "open" if st["guard"] > 0.5 else "closed"
-        sc.gauges = [("Press", f"{AT['model'][:27]}, guard {g}"),
+        sc.gauges = [("Press", f"{AT['model'].split(' (')[0]}, guard {g}"),
                      ("Load", f"{st['load']:4.1f} t  {st['load'] * G:5.1f} kN   set point {set_t:.1f} t"),
                      ("Vacuum", f"{st['mbar']:7.1f} mbar (Pirani)" if st["mbar"] >= 1 else f"{st['mbar']:7.2f} mbar"),
                      ("Plug", "not set" if not st["loaded"] or st["plug_up"] > 0.5 else
                       (f"{TRAVEL - st['x']:.1f} mm proud" if TRAVEL - st["x"] > 0.05 else "flush")),
-                     ("Powder", f"{model['mass_g']:.2f} g AlSi10Mg, {100 * st['rel']:.0f} % dense")]
+                     ("Powder", f"{al['alloying_g']:.2f} g Si + {al['top_up_g']:.2f} g AlSi10Mg, "
+                                f"{100 * st['rel']:.0f} % dense")]
 
     def to(**kw):
         start = {k: st[k] for k in kw}
@@ -599,8 +607,9 @@ def movie():
     sc.step(f"2/{n}", cap, 1.6, to(y=Y_OUT), hold=0.3, cam_to=cam_load)
 
     cap = (f"Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch "
-           f"ring on F1 holds its bottom {CATCH:.0f} mm, so it stands in a socket, not on a bare pin. 9.61 g of "
-           f"AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.")
+           f"ring on F1 holds its bottom {CATCH:.0f} mm, so it stands in a socket, not on a bare pin. Chapter 1's "
+           f"Al-10Si cup: {al['alloying_g']:.2f} g of Si, topped up with {al['top_up_g']:.2f} g of AlSi10Mg to where "
+           f"the plug will stand. The pin lowers the cup into F1.")
     st["cutaway"] = True
     ring_lbl = [("catch ring: Ø19.30 on the 19.05 mm cup, 30° lead-in", (AXX - 14, Y_OUT, Z_PISTON + BODY_TOP - 4),
                  (0.10, 0.55)),
@@ -631,11 +640,11 @@ def movie():
     sc.alpha["air"] = 0.0
 
     cap = (f"Start: program P1 pumps up to {set_t:.1f} t. The ram lifts the die {GAP:.0f} mm to the leadscrew, then "
-           f"drives the plug {TRAVEL:.1f} mm to flush. The powder goes from {100 * model['rel_density_before']:.0f} to "
-           f"{100 * model['rel_density_after']:.0f} % dense.")
+           f"drives the plug {TRAVEL:.1f} mm to flush. The powder goes from {100 * rel0:.0f} to {100 * rel1:.0f} % "
+           f"dense.")
     xs = np.array([r["x_mm"] for r in stroke])
     fs = np.array([r["total_slide_kN"] for r in stroke]) / G
-    rels = np.array([r["rel_density"] for r in stroke])
+    rels = np.array([rel0 * v0 / (v1 + (v0 - v1) * (1 - x / TRAVEL)) for x in xs])     # chapter 1's cup
 
     def press_up(u):
         s = VP["ram_flush"] * window(u, 0.0, 0.78)
@@ -650,8 +659,8 @@ def movie():
         apply()
     sc.step(f"7/{n}", cap, 5.5, press_up, hold=0.3)
     cap = (f"It holds {set_t:.1f} t for a minute, topping up as the powder settles. At flush the punch's collar lands "
-           f"on the catch ring, so F1 under it takes the load past flush: {model['powder_t_at_flush']:.1f} t is on the "
-           f"powder.")
+           f"on the catch ring, so F1 under it takes the load past flush: about {model['powder_t_at_flush']:.1f} t is "
+           f"on the powder (AlSi10Mg's estimate for a full bore; Si is not calibrated).")
     sc.step(f"7/{n}", cap, 2.2, None, hold=1.0)
 
     cap = "V1 closes. V2 lets in dry argon, back to 1013 mbar, so the pores fill with argon, not room air."
@@ -667,8 +676,8 @@ def movie():
     sc.step(f"9/{n}", cap, 1.5, to(y=Y_OUT), hold=0.1, cam_to=cam_out)
     sc.step(f"9/{n}", cap, 1.3, to(punch_up=200.0), hold=0.1)
     sc.step(f"9/{n}", cap, 1.6, to(e=VP["eject"]), hold=0.4, labels=ring_lbl[:1])
-    cap = (f"Charged: the plug flush and the powder {100 * model['rel_density_after']:.0f} % dense, pressed under "
-           f"vacuum. Set point {set_t:.1f} t: {model['powder_t_at_flush']:.1f} t on the powder plus #222's 2 t "
+    cap = (f"Charged: the plug flush and the powder {100 * rel1:.0f} % dense, pressed under "
+           f"vacuum. Set point {set_t:.1f} t: about {model['powder_t_at_flush']:.1f} t on the powder plus #222's 2 t "
            f"reserve for the plug's press fit. The cup waits in the catch ring for the arm.")
     st["cutaway"] = False
     apply()

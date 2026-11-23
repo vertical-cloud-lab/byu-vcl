@@ -44,9 +44,13 @@ CX = M.CHUTE_X                          # the container's axis, x (y = 0)
 Z0, Z1 = M.CONT_Z                       # the container body, z 60..262
 ZV1 = M.CVALVE_Z[1]                     # its valve's top flange, 288
 ZC = (M.CLAMP_Z[0] + M.CLAMP_Z[1]) / 2  # the flange clamp's mid-height, 294
-A_LEFT = (-700.0, -350.0, -45.0)        # MiR250 1 front-left of the open door, for the brushing
+A_LEFT = (-700.0, -420.0, -45.0)        # MiR250 1 front-left of the open door, for the brushing; round 15 (PR #318):
+#                                         70 mm further forward, as at y -350 its back corner was 18 mm into the vacuum
+#                                         pump (x -880..-420, y 120..340); 52 mm clear
 A_FRONT = (CX - 320.0, -950.0, 0.0)     # MiR250 1 left of the container, for the valve, clamp and cap (chapter 2's spot)
-B_FRONT = (800.0, -480.0, 90.0)         # MiR250 2 right of the container, with the fork: it comes in from the right
+B_FRONT = (800.0, -600.0, 90.0)         # MiR250 2 right of the container, with the fork: it comes in from the right;
+#                                         round 15 (PR #318): 120 mm further forward, as at y -480 its front end stood
+#                                         70 mm over the rePowder's right base rail and front-right foot; 50 mm clear
 STEEL_KG_CM3 = 7.9e-3                   # stainless, kg/cm3
 FORK_KG = 0.9                           # the fork, aluminium (ours, estimated from its drawn volume below)
 GRIPPER_PAYLOAD = 5.0                   # kg, Robotiq 2F-85 (Robotiq's spec sheet)
@@ -404,7 +408,11 @@ def main():
     cap3 = ("It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop "
             "After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the "
             "stack on the open door.")
-    sc.step("3/6", cap3, 2.4, AB.both(rb.joint_to(Tw=entry), lambda u: AA.set_cut(sc, u, AA.CH_G)), hold=0.05,
+    # round 15 (PR #318): from A_LEFT's new spot (70 mm further forward, off the vacuum pump) the nearest clear branch
+    # at the entry ended the bowl's circle with the forearm on MiR250 1's cabinet: take the branch that is clear down
+    # the whole path (alloy_atomize.path_branch, as chapter 2's tong)
+    q_entry = AA.path_branch(rb, sc, [entry] + cone + bowl, rb.close)
+    sc.step("3/6", cap3, 2.4, AB.both(rb.joint_to(q1=q_entry), lambda u: AA.set_cut(sc, u, AA.CH_G)), hold=0.05,
             cam_to=CAM_IN)
     f_cone = AA.follow(rb, [entry] + cone)
 
@@ -450,7 +458,12 @@ def main():
             "stripper bar across the can's mouth and pulls back: the bar holds the head's orange ferrule, the head "
             "comes off the spigot's spring detent and falls into the can, with this run's powder on it.")
     rows(Arm_1="the used head off", Brush="dusty head: into the waste")
-    sc.step("4/6", cap4, 2.8, AB.both(rb.joint_to(Tw=strip_w(dz=60.0)), lambda u: AA.set_cut(sc, 1.0 - u, AA.CH_G)),
+    # round 15 (PR #318): with the base cameras' mast back on the MiR's back-left corner, the branch picked at the
+    # stripper put wrist 1 into the mast as the shaft pulled back (the r15 render stopped here); take the branch that is
+    # clear through the drop, the pull and the lift (alloy_atomize.path_branch), and the same for the rest below
+    q_strip = AA.path_branch(rb, sc, [strip_w(dz=60.0), strip_w(), strip_w(dx=-BR.STRIP_PULL),
+                                      strip_w(dx=-BR.STRIP_PULL, dz=60.0)], rb.close)
+    sc.step("4/6", cap4, 2.8, AB.both(rb.joint_to(q1=q_strip), lambda u: AA.set_cut(sc, 1.0 - u, AA.CH_G)),
             hold=0.05, cam_to=CAM_STATION,
             labels=[("waste can, bonded to the MiR (ours)", can_lbl, (0.72, 0.70)),
                     ("stripper bar", tuple(L((BR.BAR_X[1], cy_c - 30.0, top + BR.STRIP[2] + 20.0))), (0.70, 0.30))])
@@ -484,7 +497,9 @@ def main():
              "that touched this alloy touches the next, and nothing is washed: an ultrasonic IPA bath would put "
              "reactive fines in a solvent, needs drying, and can't show the bristles' roots are clean.")
     rows(Arm_1="a fresh head on", Brush="headless, to its rest")
-    sc.step("4/6", cap4b, 2.6, rb.joint_to(Tw=rest_w(dx=-BR.PUSH, dz=60.0)), hold=0.05, cam_to=CAM_REST,
+    q_rest = AA.path_branch(rb, sc, [rest_w(dx=-BR.PUSH, dz=60.0), rest_w(dx=-BR.PUSH), rest_w(dx=-BR.PUSH_SHORT),
+                                     T((0, 0, 120)) @ rest_w(dx=-BR.PUSH_SHORT)], rb.close)
+    sc.step("4/6", cap4b, 2.6, rb.joint_to(q1=q_rest), hold=0.05, cam_to=CAM_REST,
             labels=[("next head, in the rest's pocket", tuple(L((360.0, -190.0, zr + 10.0))), (0.66, 0.24))])
     sc.step("4/6", cap4b, 1.0, rb.line_to(rest_w(dx=-BR.PUSH)), hold=0.1)
     sc.step("4/6", cap4b, 1.4, rb.line_to(rest_w(dx=-BR.PUSH_SHORT)), hold=0.3)

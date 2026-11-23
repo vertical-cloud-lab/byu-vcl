@@ -300,7 +300,7 @@ def main():
     def gauges(**kv):
         AB.status(sc, **kv)
 
-    gauges(Vacuum="off", Continuity="not checked", Liner="3 % (from the last session's log)", Timer="",
+    gauges(Vacuum="off", Joints="not checked", Liner="3 % (from the last session's log)", Timer="",
            Bond="MiR250 1 bonded (0.1 ohm); MiR250 2 not parked")
     eye0, at0 = (600, -3200, 2400), (-760, -500, 450)
 
@@ -382,7 +382,7 @@ def main():
                     ("Spring pad, bonded", W2(sp["pad"]), (0.30, 0.82))])
     readings = dict(tool_to_wand="0.04", wand_to_coupling="0.02", coupling_to_cuff="0.03", hose="4.1",
                     body_to_ground="0.2")
-    gauges(Continuity="tool-wand 0.04, wand-coupling 0.02, coupling-cuff 0.03 ohm (each <= 0.1); hose 4.1 ohm "
+    gauges(Joints="tool-wand 0.04, wand-coupling 0.02, coupling-cuff 0.03 ohm (each <= 0.1); hose 4.1 ohm "
                       "(<= 10^4); body-ground 0.2 ohm (< 1)")
     sc.step("5/10 Continuity", "Each joint must read 0.1 ohm or less (the OEM manual, UL 1213 par. 22), or the run "
             "stops. Readings shown are illustrative: the lab's crevice tool read open on 2026-08-19.", 0.6, hold=3.4)
@@ -390,7 +390,7 @@ def main():
     # ============================================================================ 6. equalization touch, vacuum on
     btn = sp["button"] + np.array([0, 0, 1.0])
     Wbtn = AB.WT(T(btn + np.array([0, 0, N.WAND_L + N.tool_reach("crevice")])))
-    gauges(Continuity="passed, logged")
+    gauges(Joints="passed, logged")
     sc.step("6/10 Equalize", "Equalization touch: the tool tip on the bonded ground button beside the pad, away from "
             "the powder (vacuum SOP 3.1).", 1.6, rb.line_to(T((0, 0, 60)) @ tcp_of(Wbtn)), hold=0.1)
     sc.step("6/10 Equalize", "Touch.", 1.2, rb.line_to(T((0, 0, -3)) @ tcp_of(Wbtn)), hold=0.4)

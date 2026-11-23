@@ -533,7 +533,7 @@ def slump(u):
     gauges(Furnace=f"{t:.0f} C, coil on", Top_arm="working dimple", Feed="top HQ on the 2.8 in display")
 
 
-cap = ("The slugs slump and run together into a pool round the sealing rod. The pool's surface is about 20-30 mm over "
+cap = ("The cups slump and run together into a pool round the sealing rod. The pool's surface is about 20-30 mm over "
        "the crucible's datum, where DAL aimed the camera.")
 sc.step("5/6", cap, 5.0, slump, hold=1.2,
         labels=[("melt, seen at 66 deg through the window", tuple(W((0, -10, M.Z_CR + LEVEL_END))), (0.06, 0.70))])

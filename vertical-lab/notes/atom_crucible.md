@@ -33,7 +33,9 @@ Starts from the lab's own plan, `notes/crucible_automation.md`, and the SOPs: DA
 
 - **Arm 1**, UR10e + 2F-85 on MiR250 1 parked in front (`PARK["front"]`): everything from the top.
 - **Arm 2**, UR10e + 2F-85 on MiR250 2 parked at the left by the door, 200 mm further out than `PARK["left"]`
-  (x -960, y -40, yaw 90): the nut, from below, with the nut key through the open door. As the SOP says, two people make this easier (178 SOP, step 3).
+  and, since round 15, 300 mm further forward (x -960, y -340, yaw 90; `MIR2_AT`): the nut, from below, with the nut
+  key through the open door. At y -40 it stood on the rePowder's vacuum pump (model x -880..-420, y 120..340) for both
+  clips; neither the arm audit nor the movers check sees two parts that both stand still. As the SOP says, two people make this easier (178 SOP, step 3).
 - **The machine:** the SEALING ROD key, sent as a PLC input (ours; AMAZEMET would have to allow one). The other way is
   arm 1 pressing the HMI's touch key with a capacitive stylus; we did not draw it.
 - **A person:** drilling a closed nozzle by hand (0.5 or 0.7 mm; SOP 2), and anything the checks below stop on.
@@ -167,6 +169,11 @@ Bench test to set them (before anything goes near the machine):
 
 ### Checked
 
+- **Round 15 (2026-11-23):** MiR250 2 off the vacuum pump (`MIR2_AT` y -40 to -340; it had stood on 210 x 220 mm of
+  it, its Class D unit 46 mm into it too). Parked, it is now 60 mm clear of the pump and of everything else of the
+  rePowder's (FCL, with its Class D unit and base cameras). Strict audit at 10 fps (`ARM_AUDIT=1 VIZ3D_FPS=10
+  ARM_AUDIT_TAG=r15fix_atom`): out **0 of 1027** frames, in **0 of 1352**, movers 0 in both
+  (`out/collisions/atom_crucible_{out,in}_r15fix_atom.json`); arm 2's moves re-planned themselves from the new spot.
 - **Clips** (1280 x 720): `atom_crucible_out` 1176 frames at 10 fps, 117.6 s (second render, 02:28-02:43, rendered and
   audited in one pass); `atom_crucible_in` 2201 frames at 15 fps, 146.7 s.
   MP4s in `out/mp4/`, stills `out/atom_crucible_*_still.png` (the nut spun off; the nut snug), sub-step JSONs in

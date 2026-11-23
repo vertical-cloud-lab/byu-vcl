@@ -55,8 +55,10 @@ ROD_SPIN = 270.0     # the rod taken with the fingers across the lever's line (y
 TURN = R((0, 0, 1), 90.0)   # the tools sit turned 90 deg on what they hold, so at the furnace the 2F-85's fingers
                             # close along y, across the lever (at 70 deg its eye is 63 mm from the axis)
 TURN_OUT, ROD_SPIN_OUT = TURN, ROD_SPIN     # the out clip with the in clip's settings (second render, 02:30)
-MIR2_AT = (-960.0, -40.0, 90.0)   # MiR250 2: 200 mm further left than PARK["left"], so the key's handle (500 mm out)
-                                  # is a comfortable reach and arm 2's wrist stays clear of the open lid (x -375..-152)
+MIR2_AT = (-960.0, -340.0, 90.0)  # MiR250 2: 200 mm further left than PARK["left"], so the key's handle (500 mm out)
+                                  # is a comfortable reach and arm 2's wrist stays clear of the open lid (x -375..-152);
+                                  # round 15 (PR #318, "fix collisions, nonsensical parts"): 300 mm further forward, as at
+                                  # y -40 it stood on the vacuum pump (x -880..-420, y 120..340) for both clips; 60 mm clear
 FT = "FT 300-S"                                       # the wrist sensor on both arms (notes: why)
 GRIP = CT.GRIP_TOOL
 GRIP_TC = CT.gripper_gap_close(3.8) + 0.004           # the 3.8 mm sheath
@@ -413,7 +415,7 @@ def clip_out():
     sc, r1, r2 = rig.sc, rig.r1, rig.r2
     c = Clip(rig)
     c.N = 8
-    c.gauges(Furnace="cold (< 50 C): can be touched", Lid="open (latch: atom_latch)",
+    c.gauges(Furnace="cold (< 50 C): can be touched", Lid="open (its latch: the latch clip)",
              Door="open, clamps off", Stack="out, on its bench")
     sc.cam = list(C_WIDE)
     # 1 ------------------------------------------------------------------------ the thermocouple
@@ -632,7 +634,7 @@ def clip_out():
     # 8 ------------------------------------------------------------------------ bottom ring, tool back
     c.k = 8
     cap = ("Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it "
-           "(the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).")
+           "(the SOP lists it first). The furnace is empty for the explosion-proof vacuum (the vacuum clip).")
     c.stow(r1, "cg", cap, cam=C_MIR1)
     c.fetch(r1, "nt", cap, cam=C_MIR1)
     Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, M.CRUCIBLE_BASE))) @ TURN_OUT)
@@ -684,7 +686,7 @@ def clip_in():
         sc.gmat[g(grp)] = R((0, 0, 1), -180.0) @ T((0.0, 0.0, -M.NUT_Z[0]))
     rig.fix_jaws(1.0)
     rig.tw_jaws(1.0)
-    c.gauges(Furnace="cold, empty, vacuumed", Crucible="BN coated, dry (atom_bn)", Lid="open (latch: atom_latch)",
+    c.gauges(Furnace="cold, empty, vacuumed", Crucible="BN coated, dry (the BN clip)", Lid="open (its latch: the latch clip)",
              Door="open, clamps off; stack out")
     sc.cam = list(C_WIDE)
     # 1 ------------------------------------------------------------------------ the bottom ring

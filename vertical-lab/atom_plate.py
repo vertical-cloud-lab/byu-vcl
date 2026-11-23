@@ -997,7 +997,7 @@ def main():
                "down the empty nozzle (DAL #164, T5 63:28) ...", 1.6, cut, hold=0.0, cam_to=cam_land)
         sc.show(sc.members("laser"), 1.0)
         c.step(L(12), "... its dot lands high on the plate and centred, 7 mm clear of the upper sonotrode (step 17; "
-               "the left camera sees it through the door's sight glass, DAL PR 189).", 1.2, None, hold=1.6,
+               "of the furnace cameras only the front wide sees it, DAL PR 189).", 1.2, None, hold=1.6,
                labels=[("laser dot: 75 mm down the plate\nfrom its hole, 7 mm clear", tuple(AB.W(M.IMPACT)),
                         (0.70, 0.28))])
         sc.show(sc.members("laser"), 0.0)

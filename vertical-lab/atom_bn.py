@@ -329,7 +329,7 @@ def main():
     # ---------------------------------------------------------------------------------- 1. arrive
     up, secs = AB.mir_drive(ma, BENCH_SPOT)
     sc.step("1/10", "MiR 1 brings the used crucible from the rePowder: the holder and nozzle are off, the skull of "
-            "slag and metal is still inside (atom_crucible).", secs, up, cam_to=WIDE, hold=0.6)
+            "slag and metal is still inside (the crucible clips).", secs, up, cam_to=WIDE, hold=0.6)
 
     # ---------------------------------------------------------------------------------- 2. into the chuck
     cru_w = k.cru_world()
@@ -717,7 +717,7 @@ def main():
     k.step("10/10", cap, 1.6, k.anim(flip=1.0))
     k.step("10/10", cap, 0.8, knock(2))
     k.step("10/10", cap, 1.8, k.anim(flip=0.0))
-    AB.caption_rows(sc, Crucible="coated, dry, checked: ready", Next="back into the furnace (atom_crucible)")
+    AB.caption_rows(sc, Crucible="coated, dry, checked: ready", Next="back into the furnace (the crucible clips)")
     k.step("10/10", cap, 2.0, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((BENCH_SPOT[0], -265.0, 1250.0))), LEVEL, 0.0)),
            cam=BENCH, hold=1.5)
     out = AB.finish(sc)

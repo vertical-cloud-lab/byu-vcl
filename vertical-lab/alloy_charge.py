@@ -4,6 +4,13 @@
     PREVIEW=1 xvfb-run -a python3 alloy_charge.py  # the last frame of each sub-step -> /tmp/preview_alloy_charge.png
     ARM_AUDIT=1 xvfb-run -a python3 alloy_charge.py   # no render: every frame collision-checked -> out/collisions/
 
+Round 15 (#303: the chapters in one lab): staged in the whole lab as the set-up movie leaves it, as chapters 2-7 are
+(``setup_lab.build``: both 9150 mm Shuttles, trays A-S with their UPSs, AirGradients and cameras, the bay's roof and
+ceiling cameras, the floor, the safety assets), with MiR250 + UR10e unit 0 (``setup_lab.Unit``) docked at Shuttle 1's
+opening, where round 2's one-Shuttle lab (``animate.Lab``) parked it. Only tray B, the one this chapter presents, is
+loaded (``VLAB_ONLY_TRAYS``, which defaults to B here), and the cladding is opaque, as in chapters 4-7;
+``VLAB_ONLY_TRAYS=all`` loads every tray and draws the cladding see-through.
+
 This replaces round 2's vial (``animate.workflow``: a 20 mL vial dosed, then liquid added in the CubXL). The rePowder
 melts what it is given as **charge cups**: the lab's own (#222, ``charge.py``), turned from high-purity bar, each
 filled with powder by the multi-doser and closed with a vented plug pressed home into its bore. Four go into the
@@ -58,7 +65,9 @@ import charge as C                     # noqa: E402
 import vacuum_press as VPm             # noqa: E402
 import lab                             # noqa: E402
 import props as P                      # noqa: E402
+import setup_lab as SL                 # noqa: E402
 import vlm as V                        # noqa: E402
+import warehouse as W                  # noqa: E402
 from robot import both                 # noqa: E402
 
 sys.path.insert(0, str(lab.HERE / "lab_models"))
@@ -136,15 +145,18 @@ def _model_meshes(parts) -> list[tuple[str, pv.PolyData, tuple, float, float]]:
 
 class Charge:
     """The charge rack, the vacuum press (``alloy_press.VacPress``), the cups and plugs, our pedestal on the doser's
-    balance pan and the MiR's carrier, added to round 2's scene (``A.Lab``); the vial, its rack, its riser and the
-    one-vial holder are hidden. Each cup's bore holds two powder layers (the alloying powder, then the top-up of the
-    cup's own metal), squeezed together when pressed."""
+    balance pan and the MiR's carrier, added to the lab (round 15: ``setup_lab.build``'s; ``A.Lab`` before); the vial,
+    its rack, its riser and the one-vial holder are hidden. Each cup's bore holds two powder layers (the alloying
+    powder, then the top-up of the cup's own metal), squeezed together when pressed. vp: the press setup_lab.build put
+    on tray B (one is made if VLAB_ONLY_TRAYS left tray B out)."""
 
-    def __init__(self, sc: Scene, L: A.Lab):
+    def __init__(self, sc: Scene, L: A.Lab, vp=None):
         self.sc, self.L = sc, L
         rig = L.eq_groups["B"][1]
         self.rig = rig
-        for n in ("vial/glass", f"{L.eq_groups['B'][0]}/rack", f"{L.eq_groups['B'][0]}/vials", "amr/holder"):
+        self.amr = L.amr_group                    # round 15: the docked unit's cabinet (setup_lab.Unit), was "amr"
+        unit = self.amr[:-len("_cab")]
+        for n in ("vial/glass", f"{L.eq_groups['B'][0]}/rack", f"{L.eq_groups['B'][0]}/vials", f"{unit}/holder"):
             sc.alpha[n] = 0.0
             sc.base_alpha[n] = 0.0
         # the rack, on tray B
@@ -153,8 +165,8 @@ class Charge:
         sc.add("crack/rims", rims, C.PRINT, "crack")
         sc.parent["crack"] = "tray_B"
         sc.gmat["crack"] = T((*RACK_AT, V.T_FLOOR))
-        # the vacuum press, its die and the punch's rest
-        self.vp = AP.VacPress(sc, "tray_B", AP.PRESS_AT, V.T_FLOOR)
+        # the vacuum press, its die and the punch's rest. Round 15: setup_lab.build's (its guard put up in build())
+        self.vp = vp if vp is not None else AP.VacPress(sc, "tray_B", AP.PRESS_AT, V.T_FLOOR)
         # round 11: the rest's pocket cut into its post (0.5 mm round the punch's 19.2 mm nose). alloy_press draws the
         # post solid with a rim on top, so the punch on its rest stood with its nose 22 mm inside the plastic, which
         # the stricter audit (collide.depth) reads as 25 mm; the other scenes that draw the press never handle it
@@ -171,7 +183,7 @@ class Charge:
         self.cl = AP.Cleaner(sc, self.vp)
         # the MiR's carrier
         mesh, self.carrier_seats = C.carrier()
-        sc.add("amr/carrier", mesh.translate((*CARRIER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, "amr")
+        sc.add("amr/carrier", mesh.translate((*CARRIER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, self.amr)
         self.carrier_base = np.array([*CARRIER_LOCAL, P.AMR_TOP - 20])
         # cups and plugs, in the rack
         unit, point = C.unit_powder(cut=True), C.drill_point_fill(cut=True)
@@ -252,7 +264,7 @@ class Charge:
         return self.vp.cup_seat_at(VPm.VP["eject"] if eject is None else eject)
 
     def carrier_seat(self, k):
-        return self._w("amr", self.carrier_base + self.carrier_seats[k])
+        return self._w(self.amr, self.carrier_base + self.carrier_seats[k])
 
 
 def stream_points(L: A.Lab, K: Charge, i: int, t: float, on: float) -> np.ndarray:
@@ -269,15 +281,95 @@ def stream_points(L: A.Lab, K: Charge, i: int, t: float, on: float) -> np.ndarra
     return np.c_[top[0] + np.cos(k * 2.3) * 1.6, top[1] + np.sin(k * 2.3) * 1.6, top[2] - (top[2] - bottom) * s ** 2]
 
 
-def movie():
+def build():
+    """Round 15 (#303, round 14's review (D): chapter 1 was still in round 2's one-Shuttle lab): the lab as the set-up
+    movie leaves it (setup_lab.build), as alloy_powder.build stages chapter 4, with unit 0 docked at Shuttle 1's
+    opening (warehouse.dock_pose("vlm") is round 2's AMR_XY, so every pose at tray B is round 14's). -> (scene, lab,
+    unit, the press setup_lab put on tray B or None)."""
+    if "VLAB_ONLY_TRAYS" not in os.environ:    # tray B only unless asked (=all: every tray, the cladding see-through):
+        os.environ["VLAB_ONLY_TRAYS"] = "B"    # round 14's runs gave this chapter 3-4 GB, the whole lab takes 6
+    elif os.environ["VLAB_ONLY_TRAYS"].lower() == "all":
+        del os.environ["VLAB_ONLY_TRAYS"]
     data = lab.meshes()
-    sc = Scene(NAME, TITLE)
+    idata = SL.load_all()
+    sc, L, F, items, rigs, units, util, ulabel, vp = SL.build(data, idata, name=NAME, title=TITLE,
+                                                               highlight=MODULE["Si"])
+    sc.gif = not (scene.PREVIEW or scene.AUDIT)
+    SL.add_bay_cams(sc)
+    u = units[0]
+    u.set(W.dock_pose("vlm"))
+    L.robot = u.robot
+    L.amr_group = f"{u.name}_cab"
+    L.units, L.items, L.floor = units, items, F
+    # VLAB_ONLY_TRAYS=B loads only tray B; the cladding is then opaque, as on a real Kardex (chapters 4-7)
+    L.skin(0.0 if os.environ.get("VLAB_ONLY_TRAYS") else 1.0)(1.0)
+    L.show_gauges = True
+    if vp is not None:                         # setup_lab stores it with its guard down; this chapter starts with it up,
+        vp.st["guard"] = 1.0                   # as round 14's did
+        vp.apply()
+    return sc, L, u, vp
+
+
+def fast_collisions(sc, L, u, trays=("B",), reach=2800.0):
+    """As alloy_powder.fast_collisions: the arm's collision world (collide.World) is tray B and whatever stands within
+    `reach` of the arm's base, which stays at Shuttle 1's dock all chapter; the trays left in their slots are left out.
+    The planner and the audit see the same world. Only this chapter's arm is audited: unit 1 stays on its charger."""
+    import collide as CL
+    keep, drop = set(), set()
+    for k in L.tray:
+        (keep if k in trays else drop).update(CL._subtree(sc, f"tray_{k}"))
+    base = np.array([[u.pose[0] + A.ARM_LOCAL[0], u.pose[1] + A.ARM_LOCAL[1]]])
+    only, known = {}, set(sc.actors)
+
+    def near(name, actor):
+        g = sc.group_of.get(name)
+        if g in drop:
+            return False
+        if g in keep:
+            return True
+        inp = actor.GetMapper().GetInput()
+        if inp is None or inp.GetNumberOfPoints() == 0:
+            return False
+        b = np.array(inp.GetBounds()).reshape(3, 2)
+        c = np.array([[b[0, i], b[1, j], b[2, k]] for i in (0, 1) for j in (0, 1) for k in (0, 1)])
+        w = (sc.world(g) @ np.c_[c, np.ones(8)].T).T[:, :3]
+        lo, hi = w.min(axis=0), w.max(axis=0)
+        d = np.linalg.norm(np.maximum(np.maximum(lo[:2] - base, base - hi[:2]), 0.0), axis=1).min()
+        return d < reach and lo[2] < reach + P.AMR_TOP
+
+    for name, actor in sc.actors.items():
+        if near(name, actor):
+            only[name] = actor
+
+    class FastWorld(CL.World):
+        def refresh(self):
+            full = self.sc.actors
+            if len(full) != len(known):                     # actors added since: keep those near too
+                for name in set(full) - known:
+                    known.add(name)
+                    if near(name, full[name]):
+                        only[name] = full[name]
+            self.sc.actors = only
+            try:
+                CL.World.refresh(self)
+            finally:
+                self.sc.actors = full
+
+    sc._collide_world = FastWorld(sc)
+    sc.robots = [r for r in getattr(sc, "robots", []) if r is u.robot]
+    print(f"collision world: {len(only)} of {len(sc.actors)} actors", flush=True)
+
+
+def movie():
+    sc, L, u, vp = build()
     if os.environ.get("CHARGE_FXAA"):          # FXAA in place of SSAA: about a quarter of the pixel work, for a render
         sc.pl.disable_anti_aliasing()           # on a loaded machine (scene.py's default is SSAA)
         sc.pl.enable_anti_aliasing("fxaa")
-    sc.cam = list(A.CAM_WIDE)
-    L = A.Lab(sc, data, robot=True, highlight=MODULE["Si"])
-    K = Charge(sc, L)
+    # round 15: the 9:22 clip's whole-lab opening view (A.CAM_LAB_OPEN, clear of the south row); from round 2's
+    # CAM_WIDE the second Shuttle filled half the frame
+    sc.cam = list(A.CAM_LAB_OPEN)
+    K = Charge(sc, L, vp)
+    fast_collisions(sc, L, u)
     rb, car = L.robot, L.carousel
     sc.parent["stream"] = K.rig
     sc.frame_hooks.append(lambda sc_: K.cl.hose() if K.cl.at == "held" else None)   # round 14: the wand's hose
@@ -1031,15 +1123,30 @@ def movie():
         if metal == "Al":
             k = sum(1 for s in SLOTS[:i] if s[0] == "Al")
             c = K.carrier_seat(k) + (0, 0, CUP_GRASP)
-            d = aim(c, [(170, 40, GRIP_CUP), (0, 40, GRIP_CUP), (0, 1, GRIP_CUP), (0, 1, OPEN_CUP), (170, 0, OPEN_CUP)],
-                    (0.0, -1.0), only={f"cup{i}", f"plug{i}", "amr"})
-            sc.step(st, cap, 1.6 * f, pre(lvl(c - d * 170 + (0, 0, 40), d), lvl(c + (0, 0, 40), d)), hold=H(0.05),
+            # round 15: #364's left base camera stood by the carrier's third pocket (the row now straddles it:
+            # charge.CARRIER_Y0); with no clear approach the fallback from 170 mm back put the wrist in the Kardex's
+            # bay (1 frame at 6 fps, as on the old lab): shorter approaches, at 5° steps, before any contact is allowed
+            # and, as at the rack, the straight lines in and out clear in one IK branch: the first cup's line in from
+            # beyond the cabinet's end went through the left camera (2 frames at 12 fps)
+            for bc in (170, 120, 90):
+                d = aim(c, [(bc, 40, GRIP_CUP), (0, 40, GRIP_CUP), (0, 1, GRIP_CUP), (0, 1, OPEN_CUP),
+                            (bc, 0, OPEN_CUP)], (0.0, -1.0), step=15 if bc == 170 else 5,
+                        only={f"cup{i}", f"plug{i}", K.amr}, fallback=False,
+                        lines=[((bc, 40), (0, 40), GRIP_CUP, (f"cup{i}", f"plug{i}")),
+                               ((0, 0), (bc, 0), OPEN_CUP, (f"cup{i}", f"plug{i}"))])
+                if d is not None:
+                    break
+            else:
+                bc = 170
+                d = aim(c, [(bc, 40, GRIP_CUP), (0, 40, GRIP_CUP), (0, 1, GRIP_CUP), (0, 1, OPEN_CUP),
+                            (bc, 0, OPEN_CUP)], (0.0, -1.0), only={f"cup{i}", f"plug{i}", K.amr})
+            sc.step(st, cap, 1.6 * f, pre(lvl(c - d * bc + (0, 0, 40), d), lvl(c + (0, 0, 40), d)), hold=H(0.05),
                     cam_to=CAM_AMR if detail else None)
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c + (0, 0, 40), d)), hold=H(0.05))
             sc.step(st, cap, 0.6 * f, rb.line_to(lvl(c, d)), hold=H(0.05))
             sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_CUP), hold=H(0.05))
-            rb.release("amr")
-            sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c - d * 170, d)), hold=H(0.05))
+            rb.release(K.amr)
+            sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c - d * bc, d)), hold=H(0.05))
         else:
             sc.step(st, cap, 1.4 * f, pre(lvl(c_r - d1 * bk + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)),
                     hold=H(0.05), cam_to=CAM_RACK if detail else None)
@@ -1138,7 +1245,9 @@ def movie():
     L.store("B", f"6/{n}", cap, cam=CAM_AMR)
     L.note(0, "Arm", "parked; next: the atomizer")
     sc.step(f"6/{n}", cap, 1.6, None, hold=2.4, still=True,
-            cam_to=cam_near((K.carrier_seat(1) + K.carrier_seat(2)) / 2, (-600.0, -640.0, 340.0), (0.0, 0.0, 25.0)),
+            # round 15: from the arm's side, over the Class D unit: from the back left (round 14) the left base
+            # camera's post and case stood in front of the cups
+            cam_to=cam_near((K.carrier_seat(1) + K.carrier_seat(2)) / 2, (780.0, -330.0, 520.0), (0.0, 0.0, 25.0)),
             labels=[("four charged 5N Al cups, for the rePowder", (K.carrier_seat(1) + K.carrier_seat(2)) / 2 + (0, 0, 90),
                      (0.30, 0.25))])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)

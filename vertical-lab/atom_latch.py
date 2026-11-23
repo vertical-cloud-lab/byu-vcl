@@ -278,7 +278,11 @@ class Work:
 
     def __init__(self, sc, rb, rbB, rows, label=None, press=False):
         self.sc, self.rb, self.rbB, self.rows, self.press = sc, rb, rbB, rows, press
-        self.label = label or (lambda k: f"{k}/9")
+        if label is None:       # round 15 (QA sweep, PR #318): step 6 went in round 14 and step 2 (the press) is only
+            # there with press=True, so the counter skipped 2/9 and 6/9; the steps shown are numbered consecutively
+            order = [1, 2, 3, 4, 5, 7, 8, 9] if press else [1, 3, 4, 5, 7, 8, 9]
+            label = lambda k: f"{order.index(k) + 1}/{len(order)}"     # noqa: E731
+        self.label = label
         self.state = dict(inset=False, deg=0.0, sq=0.0, taut=True)
         orig_overlay = sc.overlay
         st = self.state
@@ -848,7 +852,7 @@ def main():
                f"{s['arm1_lever_open']['tips_at_N']:.0f} N and slide at {s['arm1_lever_open']['slides_at_N']:.0f} N on "
                f"the lever (it needs {F_PEAK:.0f}-{F_STIFF:.0f}); MiR 2, with the lid's {LID_KNOB_N:.0f} N on its knob, "
                f"would tip at {s['arm2_lid']['tips_at_N']:.0f} N. No arm presses on the lid.")
-        sc.step("9/9", cap, 0.5, None, hold=5.0)
+        sc.step(w.label(9), cap, 0.5, None, hold=5.0)
     AB.finish(sc)
     if getattr(sc, "auditor", None) is not None and not AUDIT:
         sc.auditor.save()

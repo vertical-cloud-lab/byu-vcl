@@ -212,6 +212,27 @@ frames** with an arm in collision, movers 0 (out/collisions/atom_container.json)
 across, centred on the falling head's footprint, with 2-3 mm all round, and the stripping line moved 20 mm towards the
 container's cradle to keep the can clear of the pocket's wall.
 
+## Round 15 (2026-11-23): the MiRs off the rePowder, and the stripper past the mast
+
+Sterling on PR #318 (2026-11-23): "Fix collisions, nonsensical parts, etc." Neither the arm audit nor the movers check
+sees two parts that both stand still, so a parked MiR250 inside the machine went unreported; each parked MiR (its
+Class D unit and base cameras included) was checked against the rePowder's meshes with FCL.
+
+- MiR250 1's brushing spot `A_LEFT` is 70 mm further forward, (-700, -420, -45): at y -350 its back corner stood 18 mm
+  into the vacuum pump (model x -880..-420, y 120..340). Now 52 mm clear, 116 mm at the closest as it drives off.
+  From there the nearest clear IK branch at the entry ended the bowl's circle with the forearm on the MiR's cabinet;
+  the entry now takes the branch that is clear down the whole path (`alloy_atomize.path_branch`, as chapter 2's tong).
+- MiR250 2's `B_FRONT` is 120 mm further forward, (800, -600, 90): at y -480 its front end stood 70 mm over the
+  rePowder's right base rail and its front-right foot. Now 50 mm clear. Its arm does nothing in the rendered steps.
+- With the base cameras' mast back on the MiR's back-left corner (props.py, round 15), the branch picked at the
+  stripper put wrist 1 into the mast as the shaft pulled back, and the first 720p render stopped at 4/6 ("end pose in
+  collision"). The stripper and the rest now take the branch that is clear through the drop, the pull and the lift.
+- Audit, strict, 10 fps (`ARM_AUDIT=1 VIZ3D_FPS=10 ARM_AUDIT_TAG=r15fix_atom xvfb-run -a python3 atom_container.py`):
+  **0 of 481** frames with an arm in collision, movers 0 (out/collisions/atom_container_r15fix_atom.json).
+
+The latch clip's counter now numbers the steps it shows consecutively, 1/7 to 7/7. It skipped 2/9 and 6/9: the press
+(step 2) has been off since round 14, and step 6 went then. The tables below keep the procedure's own numbers.
+
 ## Round 13 (2026-11-20): the latch clip at 0 frames in collision
 
 The fix proposed below is made (`atom_latch.py`). The final strict audit at 15 fps: **0 of 1260 checked frames** with an

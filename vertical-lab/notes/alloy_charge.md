@@ -407,3 +407,37 @@ Sterling's notes on round 12's chapter 1 (11:45-17:04 in the public long-form), 
 
 The doser docks and tilts a module whenever a cup is to be on the post, even to weigh it again, because the carriage
 parks right over the post: that costs about 4 s a cup.
+
+## Round 15: in the same lab as the other chapters (PR #318, 2026-11-23)
+
+Round 14's review (D) found this chapter still staged in round 2's one-Shuttle lab (`animate.Lab`: one Shuttle, trays
+A-C, no floor), while chapters 2-7 use `setup_lab.build`'s. It now builds that lab too, as chapter 4 does
+(`alloy_charge.build`): both 9150 mm Kardex Shuttles, the bay's roof and its two ceiling cameras, the floor with its
+stations and safety assets, and MiR250 + UR10e unit 0 (`setup_lab.Unit`, with the Class D unit and #364's three base
+cameras) docked at Shuttle 1's opening. `warehouse.dock_pose("vlm")` is round 2's `AMR_XY` to the millimetre, so every
+pose at tray B is round 14's. Only tray B is loaded (`VLAB_ONLY_TRAYS` defaults to `B` here; `=all` loads every tray
+and draws the cladding see-through), so it comes with its UPS, AirGradient, camera and dock plate, and the cladding is
+opaque, as in chapters 4-7. The arm's collision world is tray B and whatever stands within 2.8 m of the arm's base
+(`fast_collisions`, as chapter 4's); the planner and the audit see the same world.
+
+Unchanged: the sub-steps, their captions and their timing (the narration's anchors), round 14 (B)'s dose post, nest,
+draft shield, die cleaning and re-weigh. setup_lab stores the press with its guard down; `build()` puts it up, as round
+14's chapter began.
+
+What the new lab changed:
+
+| | Why | Done |
+| --- | --- | --- |
+| The third Al cup onto the MiR's carrier: the wrist in the Kardex's bay (1 frame at 6 fps, 3/6) | #364's left base camera stands on the cabinet's -x end at the third pocket's y, its case (y -74 to -46, z 845-894) level with the cups' rims and 6.5 mm off that cup. Every level grasp had a fingertip or the gripper under the case on the way down into the pocket, so no approach was clear, and the fallback (from the front, 170 mm back) put the wrist in the bay. Round 15's audit of the old staging with the cameras had the same frame: there the cameras were in the MiR's own group, which the gripper may touch when it sets a cup down on the MiR, so the case never counted | The carrier's row re-laid to straddle the case (`charge.CARRIER_Y0` -88 -> -45, `CARRIER_PITCH` 85 -> 90; MiR frame y -195, -105, -15, 75 for -238, -153, -68, 17): the second and third pockets 45 mm either side of it, the open fingertips 7 mm clear of it from the arm's side, the first pocket 43 mm further from the mast. Moving the row 25 mm inboard instead (tried first) put the gripper into the arm's mounting plate from the arm's side, so the first cup came round the case from outside the cabinet's end and clipped it (6 mm). Chapters 2 and 3 draw the same carrier (`charge.carrier()`), so their cups and carrier move with it. The carrier approaches also try 120 and 90 mm back, at 5° steps, before any contact is allowed |
+| The opening view | From round 2's `CAM_WIDE` the second Shuttle filled half the frame | `animate.CAM_LAB_OPEN`, the 9:22 clip's opening view |
+| The last still (the cups on the carrier) | From the back left the left base camera's post and case stood in front of the cups | From the arm's side, over the Class D unit |
+
+Audits (`VLAB_ONLY_TRAYS=B ARM_AUDIT=1 xvfb-run -a python3 alloy_charge.py`, round 11's strict rules, arm and movers):
+
+- 6 fps, the new lab before any fix: **1 of 1,466** frames (arm), movers 0: the third Al cup's fallback approach, the
+  wrist in the bay (`out/collisions/alloy_charge_r15fix_ch1.json`).
+- 12 fps, the carrier re-laid: **2 of 2,732** frames (arm), movers **0 of 2,732**; 3,723 frames, 310.2 s, round 14's
+  length to the frame (`out/collisions/alloy_charge_r15fix_ch1_12fps.json`). Both frames are the first Al cup's line in
+  to the carrier from beyond the cabinet's end, a fingertip through the left camera (12 and 25 mm): the carrier's
+  approaches now also need clear straight lines in and out (as the rack's), audited in
+  `out/collisions/alloy_charge_r15fix_ch1_final12.json`.
