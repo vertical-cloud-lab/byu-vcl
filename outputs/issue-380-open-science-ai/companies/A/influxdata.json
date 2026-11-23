@@ -6,51 +6,52 @@
   "subcategory": "time-series database (InfluxDB, Telegraf)",
   "hq_country": "US",
   "origin": "founder_startup",
-  "origin_detail": "Founded in 2012 as Errplane by Paul Dix and Todd Persen, a Y Combinator company. It open-sourced InfluxDB in 2013 and renamed itself InfluxData; based in San Francisco.",
+  "origin_detail": "Founded in 2012 as Errplane, a Y Combinator-backed company; founder and CTO Paul Dix created InfluxDB, which Errplane began developing as open source in late 2013 (first release 2013-09-24). Renamed InfluxData in late 2015. HQ San Francisco; remote-first.",
   "founded_year": 2012,
   "flagship_projects": [
     "InfluxDB",
     "Telegraf",
-    "InfluxDB Cloud"
+    "InfluxDB Cloud",
+    "InfluxDB 3 Core / Enterprise"
   ],
   "openness_initial": 3,
   "openness_current": 2,
-  "openness_notes": "InfluxDB is MIT-licensed. In 2016 clustering was taken out of the open-source build and sold in the proprietary InfluxDB Enterprise (open core). The Rust rewrite, InfluxDB 3 Core, is MIT/Apache-2.0 dual licensed, with paid Enterprise and cloud tiers: level 2.",
+  "openness_notes": "InfluxDB was MIT-licensed. In 2016 InfluxData announced clustering would be sold only as closed-source software (InfluxDB Enterprise): open core (2). InfluxDB 3 Open Source (Core) entered public alpha on 2025-01-13 under MIT/Apache-2.0, with limits (five databases, no compactor) and a proprietary InfluxDB 3 Enterprise. Its CLA lets InfluxData relicense contributions, including closed-source.",
   "business_model": "open_core",
   "license_history": [
     {
       "year": 2013,
       "license": "MIT",
-      "note": "(unverified)",
-      "source": null
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/InfluxDB"
     },
     {
       "year": 2016,
-      "license": "MIT core; clustering moved to proprietary InfluxDB Enterprise",
-      "note": "(unverified)",
-      "source": null
+      "license": "MIT core; clustering only in closed-source InfluxDB Enterprise",
+      "note": "InfluxData blog dated 2016-03-10 (Wikipedia text says May 2016).",
+      "source": "https://en.wikipedia.org/wiki/InfluxDB"
     },
     {
       "year": 2025,
-      "license": "InfluxDB 3 Core under MIT/Apache-2.0",
-      "note": "General availability recalled as early 2025 (unverified)",
-      "source": null
+      "license": "InfluxDB 3 Core under MIT/Apache-2.0; InfluxDB 3 Enterprise proprietary",
+      "note": "Public alpha 2025-01-13.",
+      "source": "https://en.wikipedia.org/wiki/InfluxDB"
     }
   ],
   "relicensing_events": [
     {
       "year": 2016,
       "from": "MIT (clustering in open build)",
-      "to": "proprietary (clustering in Enterprise only)",
+      "to": "Proprietary (clustering only in Enterprise)",
       "direction": "closing",
       "fork": null,
       "fork_backer": null,
-      "outcome_note": "A feature move rather than a licence change; drew community criticism but no major fork known (unverified)",
-      "source": null
+      "outcome_note": "A feature moved out of the open edition, not a licence change; community reaction was mixed (Wikipedia). No major fork found.",
+      "source": "https://en.wikipedia.org/wiki/InfluxDB"
     }
   ],
-  "funding_total_usd": null,
-  "funding_as_of": null,
+  "funding_total_usd": 170100000,
+  "funding_as_of": "2023-02",
   "ownership_status": "private_vc",
   "exit_events": [],
   "latest_value_usd": null,
@@ -62,13 +63,43 @@
   "still_operating": true,
   "end_year": null,
   "us_focus": true,
-  "risk_events": [],
-  "robustness": "Single-vendor, VC-backed; the core stays OSI-licensed, so it is forkable.",
+  "risk_events": [
+    "2016: Clustering removed from open-source InfluxDB, mixed community reaction",
+    "2025: InfluxDB 3 Core shipped with limits that steer larger users to Enterprise"
+  ],
+  "robustness": "Single vendor, with a CLA that permits closed-source relicensing of contributions; the core (InfluxDB 3 Core, Telegraf) remains MIT/Apache and forkable. The company cites 2,600+ enterprise customers and 1.3M+ active InfluxDB instances.",
   "physical_science_relevance": "",
-  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
-  "key_takeaway": "Draft only. InfluxData never moved its core off OSI licences; it closed by moving a key feature (clustering) into a paid edition, a quieter form of closing that avoided a licence fight.",
-  "confidence": "low",
-  "searches": [],
-  "sources": [],
-  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+  "openness_effect_assessment": "InfluxData never moved its core off OSI licences; it monetized by withholding features (clustering in 2016, scale limits in InfluxDB 3 Core). That avoided a licence fight but drew complaints, and its funding grew modestly, from an $8.1M Series A (2014) to a $51M equity Series E (2023), with no disclosed valuation.",
+  "key_takeaway": "InfluxData is 'closing by feature' rather than by licence: the code stays MIT/Apache, but the features enterprises need are paid. It avoided forks, but its modest funding and undisclosed valuation point to a smaller outcome than peers that relicensed or went public.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/InfluxDB",
+    "https://www.influxdata.com/about/",
+    "https://www.influxdata.com/blog/announcement-blog-influxdata-closes-series-e-round/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/InfluxDB",
+      "title": "InfluxDB",
+      "publisher": "Wikipedia",
+      "date": "2026-10-30",
+      "supports": "origin_detail, license_history, relicensing_events, funding rounds"
+    },
+    {
+      "url": "https://www.influxdata.com/about/",
+      "title": "About InfluxData",
+      "publisher": "InfluxData",
+      "date": "2026",
+      "supports": "founded_year (2012), HQ, investors, customers, instances"
+    },
+    {
+      "url": "https://www.influxdata.com/blog/announcement-blog-influxdata-closes-series-e-round/",
+      "title": "InfluxData closes Series E round",
+      "publisher": "InfluxData blog",
+      "date": "2023-02-08",
+      "supports": "funding (Series E $51M equity + $30M debt, led by Princeville Capital and Citi Ventures; 1,900+ commercial customers)"
+    }
+  ],
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. funding_total_usd sums equity rounds on Wikipedia and the company blog: Series A $8.1M (2014), B $16M (2016), C $35M (2018), $60M (2019, SEC Form D), Series E $51M (2023); a $30M debt facility in 2023 is excluded (Wikipedia's table sums to $200.1M by counting it). latest_value_usd, revenue_latest_usd and employees_latest are null: not disclosed in fetched pages."
 }

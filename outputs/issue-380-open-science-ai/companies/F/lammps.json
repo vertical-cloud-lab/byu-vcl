@@ -53,7 +53,7 @@
   "latest_value_date": null,
   "revenue_latest_usd": null,
   "revenue_year": null,
-  "employees_latest": 12,
+  "employees_latest": null,
   "still_operating": true,
   "end_year": null,
   "us_focus": true,
@@ -92,7 +92,7 @@
   ],
   "notes": [
     "founded_year 1995 is approximate: the project history says 'mid-1990s'; 1995 is the date of the canonical J. Comput. Phys. algorithms paper.",
-    "employees_latest = 12 core developers (not all Sandia employees), not a headcount.",
+    "employees_latest left null: the project has 12 core developers at five institutions (see usage_metrics), not employees.",
     "No user count, download total or funding amount found; citation totals for the 1995 and 2022 papers not obtained from an authoritative index.",
     "Exascale Computing Project involvement appears in Sandia publication titles but funding amounts were not confirmed."
   ],

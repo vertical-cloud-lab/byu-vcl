@@ -1,0 +1,58 @@
+{
+  "name": "Allen Institute for AI (Ai2)",
+  "slug": "ai2",
+  "group": "C",
+  "category": "ai_lab",
+  "subcategory": "non-profit AI research; fully open LLMs (OLMo), open training data (Dolma), Semantic Scholar",
+  "hq_country": "US",
+  "origin": "nonprofit",
+  "origin_detail": "Founded 2014 in Seattle by Microsoft co-founder Paul Allen as a 501(c)(3) non-profit (office in Tel Aviv). Oren Etzioni led research from Sept 2013 and was CEO until 2022-09-30; Ali Farhadi became CEO on 2023-07-31, and on 2026-03-10 Ai2 announced he would step down, with Peter Clark again interim CEO.",
+  "founded_year": 2014,
+  "flagship_projects": ["OLMo / Olmo 3 (fully open LLMs)", "OLMoE", "Dolma datasets", "Tülu post-training recipes", "Semantic Scholar", "OMAI (open multimodal AI for science)"],
+  "openness_initial": 3,
+  "openness_current": 4,
+  "openness_notes": "Initial 3: a research non-profit publishing open-source tools (AllenNLP) and a free academic search engine (Semantic Scholar, Nov 2015). Current 4 (fully open science infrastructure): the OLMo line releases weights, training code, intermediate checkpoints, logs and training data (OLMo 1, Feb 2024, with the 3-trillion-token Dolma corpus; Olmo 3, Nov 2025, under Apache-2.0, 'releasing all code, checkpoints, and associated training details'). Ai2 calls it 'fully open' and argues 'the entire model flow – not just its endpoint – should be accessible and customizable'.",
+  "business_model": "grants",
+  "license_history": [
+    {"year": 2024, "license": "Open weights, code, intermediate checkpoints, logs and data (OLMo 1; Dolma)", "note": "February 2024 release of 1B and 7B models, described as 'the most open state-of-the-art model available'.", "source": "https://en.wikipedia.org/wiki/Allen_Institute_for_AI"},
+    {"year": 2024, "license": "Open (OLMoE, Sept 2024; OLMo 2, Nov 2024; 32B in March 2025)", "note": "Weights released with training data, code, logs and intermediate checkpoints.", "source": "https://en.wikipedia.org/wiki/Allen_Institute_for_AI"},
+    {"year": 2025, "license": "Apache-2.0 (Olmo 3 / 3.1; Dolma 3 data, OLMo-core and open-instruct code)", "note": "Olmo 3 (Nov 2025) in Base, Think, Instruct and RL-Zero variants at 7B and 32B; Olmo 3.1 32B update Dec 2025.", "source": "https://huggingface.co/allenai/Olmo-3-1125-32B"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": "Endowment and annual budget from the Allen estate not disclosed on the pages fetched; Aug 2025 OMAI award: NSF $75M + NVIDIA $77M = $152M",
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Dependence on a single founder's estate for core funding (amount not disclosed in the pages fetched)",
+    "Leadership turnover: CEO changes in 2022, 2023 and March 2026 (Farhadi stepping down; interim CEO Peter Clark)",
+    "Competes for compute with far richer labs; OMAI's $152M public-private award (Aug 2025) is small next to commercial lab budgets"
+  ],
+  "robustness": "Mission-locked non-profit with an open-release policy, so its outputs (weights, data, code under Apache-2.0) remain usable whatever happens to the institute. Financial robustness depends on the Allen estate and grants; the 2025 NSF/NVIDIA OMAI award adds federal backing for science-focused open models.",
+  "physical_science_relevance": "High. The NSF/NVIDIA OMAI project (Aug 2025) is to build 'open-source, multimodal large language models trained on scientific data and literature' for the US research community; Semantic Scholar is a standard literature tool; fully open training data and checkpoints make OLMo usable for reproducible science.",
+  "openness_effect_assessment": "Full openness made Ai2 the reference point for reproducible LLM research (OLMo releases include data, checkpoints and logs that closed or open-weights-only labs do not publish). It attracted public money (NSF's $75M share of OMAI) explicitly because the models will be fully open for science. The trade-off is scale: as a grant-funded non-profit it cannot match the compute of commercial labs, so its models trail the frontier.",
+  "key_takeaway": "Ai2 is the 'fully open' benchmark in the study: weights, data, code, checkpoints and logs released under Apache-2.0 by a non-profit with no product to protect. It shows what open science in AI looks like when the licence and the data are both open, and that governments (NSF) will fund it for scientific use. Its weakness is money, not openness, so its relevance depends on continued philanthropic and public funding rather than market value.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Allen_Institute_for_AI",
+    "https://allenai.org/olmo",
+    "https://huggingface.co/allenai/Olmo-3-1125-32B",
+    "https://www.nsf.gov/news/nsf-nvidia-partnership-enables-ai2-develop-fully-open-ai"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Allen_Institute_for_AI", "title": "Allen Institute for AI", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, license_history[0], license_history[1], risk_events[1], openness_initial (Semantic Scholar, AllenNLP)"},
+    {"url": "https://allenai.org/olmo", "title": "Olmo", "publisher": "Ai2", "date": null, "supports": "openness_notes (quotes), license_history[2]"},
+    {"url": "https://huggingface.co/allenai/Olmo-3-1125-32B", "title": "allenai/Olmo-3-1125-32B model card", "publisher": "Hugging Face / Ai2", "date": "2025-11", "supports": "license_history[2] (Apache-2.0; code, checkpoints, training details)"},
+    {"url": "https://www.nsf.gov/news/nsf-nvidia-partnership-enables-ai2-develop-fully-open-ai", "title": "NSF and NVIDIA partnership enables Ai2 to develop fully open AI models", "publisher": "U.S. National Science Foundation", "date": "2025-08-14", "supports": "funding_as_of, physical_science_relevance, risk_events[2]"}
+  ]
+}

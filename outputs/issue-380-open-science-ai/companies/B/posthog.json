@@ -1,0 +1,62 @@
+{
+  "name": "PostHog, Inc.",
+  "slug": "posthog",
+  "group": "B",
+  "category": "software",
+  "subcategory": "product analytics / all-in-one product platform",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 23 Jan 2020 by James Hawkins and Tim Glaser after about six pivots; Y Combinator Winter 2020; launched as open-source product analytics on Hacker News in Feb 2020; YC lists San Francisco, team is remote",
+  "founded_year": 2020,
+  "flagship_projects": ["PostHog (MIT core)", "posthog-foss (fully free version)", "PostHog Cloud", "PostHog AI"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core: the repository is MIT 'except for the ee directory', which has its own proprietary licence; a separate posthog-foss repository is purged of all proprietary code. In Feb 2023 PostHog dropped paid self-hosted deployments and went cloud-first with a free tier, so monetization is now mainly SaaS. When the ee directory was introduced was not verified (if the Feb 2020 launch was fully MIT, the initial level would be 3).",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2026, "license": "MIT except ee/ directory (proprietary); posthog-foss fully FOSS", "note": "Current repository statement", "source": "https://github.com/PostHog/posthog"},
+    {"year": 2023, "license": "Unchanged; paid self-hosted deployment discontinued (Feb 2023)", "note": "Business-model shift to cloud and a free tier, not a licence change", "source": "https://posthog.com/handbook/story"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 194000000,
+  "funding_as_of": "2025-10",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 1400000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2025-10",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 200,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Feb 2023: dropped paid self-hosted product to focus on cloud (lost on-prem revenue)",
+    "Mar 2023: lost a large customer whose source of truth moved to its data warehouse; responded by building its own warehouse",
+    "Jul 2024: price cuts of up to 80% on its two most popular products",
+    "Competes with closed incumbents (e.g. Amplitude, Mixpanel) and expanding into many product categories at once"
+  ],
+  "robustness": "Lean and financially disciplined: cash-flow positive by Dec 2024, revenue quadrupled in 2023 and reached the low tens of millions of ARR by Oct 2024; headcount grew from ~80 (Dec 2024) to ~200 (early 2026). The MIT core and posthog-foss let users self-host without the company.",
+  "physical_science_relevance": "Low; product analytics for software. Self-hostable analytics can matter for research platforms with data-residency constraints.",
+  "openness_effect_assessment": "Open-source launch produced fast early traction (300+ deployments in days, 1,500+ GitHub stars in two weeks) and a developer-led funnel. PostHog then moved monetization to the cloud while keeping an MIT core, and reached cash-flow positivity and a $1.4B valuation (Oct 2025) without relicensing, suggesting openness worked as acquisition channel rather than as revenue source.",
+  "key_takeaway": "PostHog is a capital-efficient open-core startup: about $194M raised, profitable on cash flow, and valued at ~$1.4B (Oct 2025) within six years, with an MIT core and a fully FOSS mirror. It shows that clear separation of open and proprietary code (ee/ directory, posthog-foss) can avoid licence controversy while the business shifts to SaaS.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/PostHog/posthog",
+    "https://posthog.com/about",
+    "https://www.ycombinator.com/companies/posthog",
+    "https://posthog.com/handbook/story"
+  ],
+  "sources": [
+    {"url": "https://posthog.com/handbook/story", "title": "PostHog company story", "publisher": "PostHog", "date": "2026", "supports": "founded_year, origin_detail, funding ($3.025M seed 2020; $9M Series A Dec 2020, GV; $15M Series B Jun 2021, YC; $70M Series D Jun 2025 at ~$920M, Stripe; $75M Series E Oct 2025 at ~$1.4B, Peak XV; ~$194M total), revenue growth, profitability, employees_latest (~200 early 2026), risk_events"},
+    {"url": "https://github.com/PostHog/posthog", "title": "PostHog/posthog", "publisher": "GitHub", "date": "2026-11", "supports": "license_history[0], openness_notes (MIT except ee, posthog-foss), 41k stars"},
+    {"url": "https://www.ycombinator.com/companies/posthog", "title": "PostHog (Y Combinator profile)", "publisher": "Y Combinator", "date": null, "supports": "origin_detail (founders, W20, San Francisco)"}
+  ],
+  "notes": [
+    "revenue_latest_usd null: only 'low tens of millions of ARR' (Oct 2024) disclosed.",
+    "No 2026 funding round found in fetched pages; latest valuation is the Oct 2025 Series E.",
+    "posthog.com/about rendered only navigation; Wikipedia 'PostHog' returned 404."
+  ]
+}

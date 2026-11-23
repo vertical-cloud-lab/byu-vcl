@@ -1,0 +1,83 @@
+{
+  "name": "OpenBCI",
+  "slug": "openbci",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "open-source biosensing / brain-computer interface (EEG) hardware",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Joel Murphy and Conor Russomanno created OpenBCI, an 'open-source brain-computer interface platform', after a successful Kickstarter campaign in late 2013. It is headquartered in Brooklyn, NY.",
+  "founded_year": 2013,
+  "flagship_projects": ["Cyton 32-bit board (TI ADS1299)", "Ganglion 4-channel board (2015 Kickstarter)", "Ultracortex 3D-printable EEG headset (Mark IV)", "OpenBCI GUI", "Galea multimodal headset (unveiled late 2020; beta pre-orders Aug 2024)"],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Hardware column. Initial level 3: the original boards and headset were published as open hardware. Four OpenBCI products were OSHWA-certified in Sept 2017, the Ultracortex headset files are GPL-3.0, and the GUI and Cyton library are MIT. Current level 2 is an inference, flagged low confidence. The newest flagship, Galea (EEG, EMG, EDA, PPG and eye-tracking; CES 2023 Innovation Awards), has no public design repository among the OpenBCI GitHub organisation's 17 public repos (10 visible). Galea's own site returned 403. The Ganglion hardware-design repo shows no licence and was last updated Dec 2023. The older boards remain open, which fits 'older models open, new ones closed'.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2017, "license": "OSHWA certification of 4 products (US000078-US000081)", "note": "Certified 2017-09-15 and 2017-09-18", "source": "https://certification.oshwa.org/list.html"},
+    {"year": null, "license": "GPL-3.0 (Ultracortex 3D-printable headset files, Mark 1 to Mark IV)", "note": "Repo has 412 stars and 150 forks", "source": "https://raw.githubusercontent.com/OpenBCI/Ultracortex/master/LICENSE.md"},
+    {"year": null, "license": "MIT (OpenBCI GUI)", "note": "Repo has 986 stars and 330 forks", "source": "https://github.com/OpenBCI/OpenBCI_GUI"},
+    {"year": null, "license": "MIT (OpenBCI_Cyton_Library firmware library); Ganglion_Hardware_Design_Files published with no licence shown", "note": "Cyton library updated 2025-07-28; Ganglion hardware repo updated 2023-12-19", "source": "https://github.com/OpenBCI"}
+  ],
+  "relicensing_events": [
+    {"year": 2020, "from": "Open hardware product line (Cyton/Ganglion/Ultracortex design files public; OSHWA-certified)", "to": "Galea premium headset with no public design files found", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Inferred, not verified: no Galea repository among the visible OpenBCI GitHub repos, and galea.co returned 403. The older boards remain open.", "source": "https://github.com/OpenBCI"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Ganglion price rose from $99 (Kickstarter) to $249.99 and then to $499.00 (Wikipedia).",
+    "The 8-bit board (ATmega328P) was deprecated.",
+    "Wikipedia flags the OpenBCI article for notability, noting that its claims lack independent sources.",
+    "2020-2024: the company moved up-market to Galea, a premium multimodal headset partly aimed at XR and defence (Unity Aerospace & Defense award). Beta pre-orders opened Aug 2024."
+  ],
+  "robustness": "OpenBCI is a small private company. The older boards and headset are openly licensed and OSHWA-certified: Ultracortex is GPL-3.0 (412 stars, 150 forks) and the GUI is MIT (986 stars, 330 forks), so research labs can keep replicating and maintaining them without the company. The newer Galea line appears to depend on the company. Funding and finances are not public. Activity continued into 2025 (Cyton library updated 2025-07-28).",
+  "physical_science_relevance": "OpenBCI hardware is low-cost research-grade EEG/EMG used in neuroscience and BCI research. OpenBCI keeps a list of peer-reviewed publications that used its products (docs.openbci.com links to openbci.com/citations).",
+  "openness_effect_assessment": "Kickstarter funding, open designs and OSHWA certification built OpenBCI a research and maker community that publishes peer-reviewed work on its hardware. The company then moved up-market with Galea, which won CES 2023 Innovation Awards and appears not to be open. That suggests openness served as the entry and community strategy while the higher-value product is kept closed, like the Prusa and MakerBot pattern but without an acquisition. No financial data were found to measure the effect.",
+  "key_takeaway": "OpenBCI is the open-science hardware archetype: a crowdfunded (2013) Brooklyn startup whose open EEG boards and GPL-licensed 3D-printable headset made research-grade biosensing affordable. It has stayed small and private, and its recent focus is a premium, apparently closed multimodal headset (Galea) for XR and defence-adjacent markets. Openness created the research user base. Whether it also funds the company could not be determined, because no funding or revenue figures were reachable without search.",
+  "confidence": "low",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/OpenBCI",
+    "https://github.com/OpenBCI",
+    "https://github.com/OpenBCI/Ultracortex",
+    "https://raw.githubusercontent.com/OpenBCI/Ultracortex/master/LICENSE.md",
+    "https://github.com/OpenBCI/OpenBCI_GUI",
+    "https://docs.openbci.com/",
+    "https://certification.oshwa.org/list.html"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/OpenBCI", "title": "OpenBCI", "publisher": "Wikipedia", "date": "2026-02-12", "supports": "origin_detail, founded_year (Kickstarter late 2013), Brooklyn HQ, products, Ganglion price history, Galea (late 2020, CES 2023 awards, Aug 2024 beta pre-orders), notability warning"},
+    {"url": "https://certification.oshwa.org/list.html", "title": "OSHWA Certification: certified projects list", "publisher": "Open Source Hardware Association", "date": "2026-11-23", "supports": "hardware_extras.oshwa_certifications (US000078-US000081, Sept 2017)"},
+    {"url": "https://raw.githubusercontent.com/OpenBCI/Ultracortex/master/LICENSE.md", "title": "Ultracortex LICENSE.md", "publisher": "GitHub (OpenBCI)", "date": "2026-11-23", "supports": "GPL-3.0 headset licence"},
+    {"url": "https://github.com/OpenBCI/Ultracortex", "title": "OpenBCI/Ultracortex", "publisher": "GitHub", "date": "2026-11-23", "supports": "Mark 1 to Mark IV files; 412 stars, 150 forks"},
+    {"url": "https://github.com/OpenBCI/OpenBCI_GUI", "title": "OpenBCI/OpenBCI_GUI", "publisher": "GitHub", "date": "2026-11-23", "supports": "MIT licence; 986 stars, 330 forks"},
+    {"url": "https://github.com/OpenBCI", "title": "OpenBCI on GitHub", "publisher": "GitHub", "date": "2026-11-23", "supports": "17 public repos; Ganglion hardware files (no licence shown, updated 2023-12-19); Cyton library MIT (updated 2025-07-28); no visible Galea repo"},
+    {"url": "https://docs.openbci.com/", "title": "OpenBCI Documentation", "publisher": "OpenBCI", "date": "2026-11-23", "supports": "physical_science_relevance (collection of peer-reviewed research using OpenBCI products)"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": "4 certifications on OSHWA's list page: US000078, US000079 and US000080 (2017-09-15) and US000081 (2017-09-18). The list page runs only through Dec 2020.",
+    "hardware_licenses": ["GPL-3.0 (Ultracortex headset design files)", "Ganglion hardware design files published on GitHub with no licence shown"],
+    "firmware_software_licenses": ["MIT (OpenBCI GUI)", "MIT (OpenBCI_Cyton_Library)"],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "The WebSearch budget was exhausted before this file was started, so it was built only from WebFetch of known URLs (no web searches).",
+    "openness_current 2 and the 2020 'closing' event are inferred from the absence of public Galea design files (galea.co and openbci.com returned 403), not from a statement by OpenBCI. Treat them as low confidence.",
+    "Funding (including Kickstarter totals), ownership type, revenue, employees and valuation were not found. Kickstarter returned 403 and techcrunch.com/tag/openbci returned 404. ownership_status is null because VC-backed versus bootstrapped could not be confirmed.",
+    "still_operating true rests on the Aug 2024 Galea pre-orders, the Jul 2025 GitHub activity and the Feb 2026 Wikipedia edit; 2026 company news was not verified.",
+    "founded_year 2013 is the Kickstarter year; the incorporation date was not found."
+  ]
+}

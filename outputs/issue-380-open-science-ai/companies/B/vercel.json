@@ -1,0 +1,116 @@
+{
+  "name": "Vercel Inc. (formerly ZEIT)",
+  "slug": "vercel",
+  "group": "B",
+  "category": "software",
+  "subcategory": "frontend cloud / web hosting (Next.js) and AI app tooling (v0, AI SDK)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2015 in San Francisco by Guillermo Rauch (CEO) as ZEIT; Rauch created the Next.js framework; renamed Vercel in Apr 2020",
+  "founded_year": 2015,
+  "flagship_projects": [
+    "Next.js (MIT)",
+    "Turborepo",
+    "AI SDK",
+    "v0",
+    "Nuxt/Nitro (via NuxtLabs)",
+    "Better Auth"
+  ],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core: Next.js (MIT, 143.6k GitHub stars), Turborepo, AI SDK and acquired projects (Nuxt, Better Auth, Tremor) are permissively licensed, while the hosting platform and v0 are proprietary SaaS. Vercel's 2025 'Open SDK strategy' committed to permissive licences, and acquisitions were announced with promises to keep licences and governance unchanged.",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2026,
+      "license": "MIT (Next.js)",
+      "note": "Current repository licence",
+      "source": "https://github.com/vercel/next.js"
+    },
+    {
+      "year": 2025,
+      "license": "Permissive licences for SDKs; acquired NuxtLabs keeps 'same license, roadmap, and open governance'",
+      "note": "Open SDK strategy post (3 Sep 2025); NuxtLabs (8 Jul 2025)",
+      "source": "https://vercel.com/blog"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2025,
+      "from": "Tremor (commercial components)",
+      "to": "Free and open source",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Vercel acquired Tremor (Jan 2025) and made its components free and open source",
+      "source": "https://vercel.com/blog"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 9300000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2025-09-30",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 550,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Mar 2025: critical Next.js middleware authorization bypass (CVE-2025-29927)",
+    "Sep 2025: CEO's selfie with Benjamin Netanyahu prompted a developer boycott and migrations (e.g. to Netlify)",
+    "Oct 2025: service disruption (20 Oct) and Dec 2025 React2Shell exploits (CVE-2025-55182) affecting React/Next.js apps",
+    "19 Apr 2026: breach of internal systems via a compromised third-party AI tool (Context.ai); non-sensitive environment variables exposed",
+    "Platform lock-in criticism: Next.js is open but some features are optimized for Vercel hosting (not quantified in fetched pages)"
+  ],
+  "robustness": "Next.js is one of the most-used web frameworks and is MIT-licensed, so it could be forked or self-hosted; Vercel hosts ~1.9% of websites (W3Techs). The company is a fast-growing VC-backed platform (550 staff in 2025; valuation up from $3.25B in May 2024 to $9.3B in Sep 2025) but has had several security incidents and remains single-vendor steward of Next.js.",
+  "physical_science_relevance": "Low directly; used to build lab and project web front ends and AI demo apps.",
+  "openness_effect_assessment": "Vercel used an MIT-licensed framework (Next.js) as a distribution channel for a proprietary hosting platform, then added AI products (v0, AI SDK); the strategy nearly tripled its valuation in 16 months. Its acquisitions of open-source projects (Nuxt, Better Auth, Tremor) were paired with explicit pledges to keep them open, showing openness used as a growth and trust tool rather than restricted.",
+  "key_takeaway": "Vercel is the 'framework-as-funnel' model: give away the dominant React framework, sell the managed cloud that runs it best, and ride the AI app wave ($9.3B, Sep 2025). Openness here strengthened market value; the main risks are security incidents and reputation, not licensing.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Vercel",
+    "https://vercel.com/blog",
+    "https://github.com/vercel/next.js",
+    "https://vercel.com/blog/series-f"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Vercel",
+      "title": "Vercel",
+      "publisher": "Wikipedia",
+      "date": "2026-11-12",
+      "supports": "founded_year, origin_detail, funding ($102M Series C Jun 2021; $250M Series E May 2024 at $3.25B; $300M Series F Sep 2025 at $9.3B co-led by Accel and GIC), employees_latest (550, 2025), acquisitions, risk_events (boycott, Apr 2026 breach), robustness (1.9% of websites)"
+    },
+    {
+      "url": "https://vercel.com/blog",
+      "title": "Vercel blog",
+      "publisher": "Vercel",
+      "date": "2026",
+      "supports": "latest_value_usd (Series F post, 2025-09-30), license_history[1], relicensing_events[0], risk_events (CVE-2025-29927, Oct 2025 disruption, React2Shell)"
+    },
+    {
+      "url": "https://github.com/vercel/next.js",
+      "title": "vercel/next.js",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[0], openness_notes (143.6k stars)"
+    },
+    {
+      "url": "https://vercel.com/blog/series-f",
+      "title": "Vercel Series F",
+      "publisher": "Vercel",
+      "date": "2025-09-30",
+      "supports": "latest_value_usd ($300M at $9.3B, Accel and GIC co-led; ~$300M tender offer); robustness (Next.js 500M+ downloads in 12 months; AI SDK >3M weekly downloads)"
+    }
+  ],
+  "notes": [
+    "funding_total_usd null: Wikipedia lists rounds but no total; disclosed rounds include $102M (2021), $250M (2024) and $300M (2025).",
+    "revenue null: no ARR/revenue in fetched pages.",
+    "Platform lock-in risk is a general characterization, not sourced to a fetched page."
+  ]
+}

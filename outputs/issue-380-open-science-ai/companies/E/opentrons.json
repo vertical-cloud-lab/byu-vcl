@@ -99,6 +99,15 @@
     "OT-One open hardware design files Opentrons CC BY-SA OSHWA",
     "Opentrons OT-2 self-driving laboratory materials chemistry nanoparticle synthesis"
   ],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Opentrons",
+    "https://opentrons.com/archives/news/opentrons-announces-40m-series-e-round-to-standardize-ai-driven-science-on-its-robots",
+    "https://forgeglobal.com/opentrons_stock/",
+    "https://www.vsnewsnetwork.com/newsroom/opentrons-promotes-james-atwood-to-chief-executive-officer",
+    "https://www.reveliolabs.com/companies/opentrons-labworks/employees",
+    "https://github.com/Opentrons/otone_hardware",
+    "https://github.com/Opentrons/opentrons"
+  ],
   "sources": [
     {
       "url": "https://opentrons.com/archives/news/press-release-opentrons-announces-200-million-series-c-round-led-by-softbank",

@@ -8,24 +8,63 @@
   "origin": "corporate",
   "origin_detail": "Spun out of LinkedIn: Jay Kreps, Neha Narkhede and Jun Rao created Apache Kafka at LinkedIn (open-sourced 2011) and founded Confluent in Mountain View in September 2014, announced in November 2014 with $6.9M from Benchmark, Data Collective and LinkedIn itself. Founders kept getting support requests from Kafka users.",
   "founded_year": 2014,
-  "flagship_projects": ["Apache Kafka (ASF project)", "Confluent Platform", "Confluent Cloud", "ksqlDB", "Schema Registry"],
+  "flagship_projects": [
+    "Apache Kafka (ASF project)",
+    "Confluent Platform",
+    "Confluent Cloud",
+    "ksqlDB",
+    "Schema Registry"
+  ],
   "openness_initial": 3,
   "openness_current": 2,
   "openness_notes": "Kafka itself is an Apache Software Foundation project (Apache-2.0, foundation-governed), and Confluent's early platform add-ons were Apache-2.0. The company then sold proprietary enterprise tooling and Confluent Cloud (open core). From Confluent Platform 5.1 (December 2018), Schema Registry, REST Proxy, KSQL/ksqlDB and some connectors moved to the source-available Confluent Community License; Kafka stayed Apache-2.0. Current level 2: OSI core it does not solely control, with non-OSI and proprietary layers on top.",
   "business_model": "open_core",
   "license_history": [
-    {"year": 2014, "license": "Apache-2.0 (Kafka at ASF; Confluent platform components)", "note": "Company said it would stay '100 percent open source' while planning some proprietary tools.", "source": "https://www.hpcwire.com/bigdatawire/2014/11/10/linkedin-spinoff-confluent-extend-kafka/"},
-    {"year": 2018, "license": "Confluent Community License (Schema Registry, REST Proxy, KSQL, some connectors); Kafka unchanged Apache-2.0", "note": "Applies to Confluent Platform 5.1+; prevents offering these components as a competing SaaS.", "source": "https://www.confluent.io/blog/license-changes-confluent-platform/"}
+    {
+      "year": 2014,
+      "license": "Apache-2.0 (Kafka at ASF; Confluent platform components)",
+      "note": "Company said it would stay '100 percent open source' while planning some proprietary tools.",
+      "source": "https://www.hpcwire.com/bigdatawire/2014/11/10/linkedin-spinoff-confluent-extend-kafka/"
+    },
+    {
+      "year": 2018,
+      "license": "Confluent Community License (Schema Registry, REST Proxy, KSQL, some connectors); Kafka unchanged Apache-2.0",
+      "note": "Applies to Confluent Platform 5.1+; prevents offering these components as a competing SaaS.",
+      "source": "https://www.confluent.io/blog/license-changes-confluent-platform/"
+    }
   ],
   "relicensing_events": [
-    {"year": 2018, "from": "Apache-2.0 (Confluent components)", "to": "Confluent Community License", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Narrow change: the core engine (Kafka) stayed under ASF governance, so cloud providers could keep offering managed Apache Kafka. No significant fork of the relicensed components was found.", "source": "https://www.confluent.io/confluent-community-license-faq/"}
+    {
+      "year": 2018,
+      "from": "Apache-2.0 (Confluent components)",
+      "to": "Confluent Community License",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Narrow change: the core engine (Kafka) stayed under ASF governance, so cloud providers could keep offering managed Apache Kafka. No significant fork of the relicensed components was found.",
+      "source": "https://www.confluent.io/confluent-community-license-faq/"
+    }
   ],
   "funding_total_usd": 455900000,
   "funding_as_of": "2020-04",
   "ownership_status": "acquired",
   "exit_events": [
-    {"year": 2021, "type": "IPO", "value_usd": 12000000000, "counterparty": "Nasdaq: CFLT", "note": "Priced 2021-06-23 at $36 (range $29-33), 23M shares, $828M raised; trading began 2021-06-24. Diluted valuation 'close to $12 billion' (Benzinga); last private valuation ~$4.5B (Series E, $250M, April 2020, led by Coatue).", "source": "https://www.bloomberg.com/news/articles/2021-06-23/software-maker-confluent-raise-828-million-in-above-range-ipo"},
-    {"year": 2026, "type": "acquisition", "value_usd": 11000000000, "counterparty": "IBM", "note": "Announced 2025-12-08 at $31/share cash (34% premium to the prior close of $23.14), enterprise value ~$11B; closed 2026-03-17. IBM's 10-Q shows $11,268M cash paid for Confluent common stock.", "source": "https://newsroom.ibm.com/2026-03-17-ibm-completes-acquisition-of-confluent,-making-real-time-data-the-engine-of-enterprise-ai-and-agents"}
+    {
+      "year": 2021,
+      "type": "IPO",
+      "value_usd": 12000000000,
+      "counterparty": "Nasdaq: CFLT",
+      "note": "Priced 2021-06-23 at $36 (range $29-33), 23M shares, $828M raised; trading began 2021-06-24. Diluted valuation 'close to $12 billion' (Benzinga); last private valuation ~$4.5B (Series E, $250M, April 2020, led by Coatue).",
+      "source": "https://www.bloomberg.com/news/articles/2021-06-23/software-maker-confluent-raise-828-million-in-above-range-ipo"
+    },
+    {
+      "year": 2026,
+      "type": "acquisition",
+      "value_usd": 11000000000,
+      "counterparty": "IBM",
+      "note": "Announced 2025-12-08 at $31/share cash (34% premium to the prior close of $23.14), enterprise value ~$11B; closed 2026-03-17. IBM's 10-Q shows $11,268M cash paid for Confluent common stock.",
+      "source": "https://newsroom.ibm.com/2026-03-17-ibm-completes-acquisition-of-confluent,-making-real-time-data-the-engine-of-enterprise-ai-and-agents"
+    }
   ],
   "latest_value_usd": 11000000000,
   "latest_value_type": "acquisition_price",
@@ -56,22 +95,113 @@
     "Confluent total funding raised before IPO $455 million Series E April 2020 Coatue $4.5 billion employees 2025",
     "Confluent CFLT number of employees December 31 2025 stockanalysis"
   ],
+  "search_tool": "WebSearch (standard/extended)",
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/Confluent", "title": "Confluent", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail"},
-    {"url": "https://fortune.com/2014/11/06/linkedin-kafka-confluent/", "title": "LinkedIn Kafka creators launch Confluent", "publisher": "Fortune", "date": "2014-11-06", "supports": "origin_detail ($6.9M from Benchmark, Data Collective, LinkedIn)"},
-    {"url": "https://www.hpcwire.com/bigdatawire/2014/11/10/linkedin-spinoff-confluent-extend-kafka/", "title": "LinkedIn spinoff Confluent to extend Kafka", "publisher": "BigDATAwire / HPCwire", "date": "2014-11-10", "supports": "license_history[0]"},
-    {"url": "https://www.confluent.io/blog/license-changes-confluent-platform/", "title": "License Changes for Confluent Platform", "publisher": "Confluent", "date": "2018-12", "supports": "license_history[1]"},
-    {"url": "https://www.confluent.io/confluent-community-license-faq/", "title": "Confluent Community License FAQ", "publisher": "Confluent", "date": null, "supports": "relicensing_events[0]"},
-    {"url": "https://news.crunchbase.com/news/confluent-ipo-here-are-the-biggest-winners", "title": "Confluent IPO: here are the biggest winners", "publisher": "Crunchbase News", "date": "2021-06", "supports": "funding_total_usd ($455.9M; CB Insights agrees)"},
-    {"url": "https://www.bloomberg.com/news/articles/2021-06-23/software-maker-confluent-raise-828-million-in-above-range-ipo", "title": "Software Maker Confluent Raises $828 Million in Above-Range IPO", "publisher": "Bloomberg", "date": "2021-06-23", "supports": "exit_events[0]"},
-    {"url": "https://www.benzinga.com/news/21/06/21699165/confluent-raised-828m-in-upsized-ipo-at-36share-trading-begins-today", "title": "Confluent raised $828M in upsized IPO at $36/share", "publisher": "Benzinga", "date": "2021-06-24", "supports": "exit_events[0].value_usd (~$12B diluted)"},
-    {"url": "https://newsroom.ibm.com/2025-12-08-ibm-to-acquire-confluent-to-create-smart-data-platform-for-enterprise-generative-ai", "title": "IBM to Acquire Confluent to Create Smart Data Platform for Enterprise Generative AI", "publisher": "IBM", "date": "2025-12-08", "supports": "exit_events[1]"},
-    {"url": "https://www.cnbc.com/2025/12/08/ibm-confluent-deal-data.html", "title": "Confluent stock soars 29% as IBM announces $11 billion acquisition deal", "publisher": "CNBC", "date": "2025-12-08", "supports": "exit_events[1] (premium, prior close)"},
-    {"url": "https://newsroom.ibm.com/2026-03-17-ibm-completes-acquisition-of-confluent,-making-real-time-data-the-engine-of-enterprise-ai-and-agents", "title": "IBM Completes Acquisition of Confluent", "publisher": "IBM", "date": "2026-03-17", "supports": "exit_events[1], latest_value_usd, robustness (6,500+ enterprises)"},
-    {"url": "https://www.sec.gov/Archives/edgar/data/0000051143/000005114326000038/ibm-20260331.htm", "title": "IBM Form 10-Q Q1 2026", "publisher": "SEC EDGAR", "date": "2026-04", "supports": "exit_events[1].note ($11,268M cash paid)"},
-    {"url": "https://www.sec.gov/Archives/edgar/data/1699838/000169983826000006/cflt-20251231.htm", "title": "Confluent Form 10-K FY2025", "publisher": "SEC EDGAR", "date": "2026-02-11", "supports": "revenue_latest_usd, robustness"},
-    {"url": "https://www.businesswire.com/news/home/20260210008002/en/Confluent-Announces-Fourth-Quarter-and-Fiscal-Year-2025-Financial-Results", "title": "Confluent Announces Fourth Quarter and Fiscal Year 2025 Financial Results", "publisher": "Business Wire", "date": "2026-02-10", "supports": "revenue_latest_usd, risk_events[1]"},
-    {"url": "https://www.macrotrends.net/stocks/charts/CFLT/confluent/number-of-employees", "title": "Confluent: Number of Employees 2021-2025", "publisher": "Macrotrends", "date": "2025", "supports": "employees_latest"}
+    {
+      "url": "https://en.wikipedia.org/wiki/Confluent",
+      "title": "Confluent",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail"
+    },
+    {
+      "url": "https://fortune.com/2014/11/06/linkedin-kafka-confluent/",
+      "title": "LinkedIn Kafka creators launch Confluent",
+      "publisher": "Fortune",
+      "date": "2014-11-06",
+      "supports": "origin_detail ($6.9M from Benchmark, Data Collective, LinkedIn)"
+    },
+    {
+      "url": "https://www.hpcwire.com/bigdatawire/2014/11/10/linkedin-spinoff-confluent-extend-kafka/",
+      "title": "LinkedIn spinoff Confluent to extend Kafka",
+      "publisher": "BigDATAwire / HPCwire",
+      "date": "2014-11-10",
+      "supports": "license_history[0]"
+    },
+    {
+      "url": "https://www.confluent.io/blog/license-changes-confluent-platform/",
+      "title": "License Changes for Confluent Platform",
+      "publisher": "Confluent",
+      "date": "2018-12",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://www.confluent.io/confluent-community-license-faq/",
+      "title": "Confluent Community License FAQ",
+      "publisher": "Confluent",
+      "date": null,
+      "supports": "relicensing_events[0]"
+    },
+    {
+      "url": "https://news.crunchbase.com/news/confluent-ipo-here-are-the-biggest-winners",
+      "title": "Confluent IPO: here are the biggest winners",
+      "publisher": "Crunchbase News",
+      "date": "2021-06",
+      "supports": "funding_total_usd ($455.9M; CB Insights agrees)"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2021-06-23/software-maker-confluent-raise-828-million-in-above-range-ipo",
+      "title": "Software Maker Confluent Raises $828 Million in Above-Range IPO",
+      "publisher": "Bloomberg",
+      "date": "2021-06-23",
+      "supports": "exit_events[0]"
+    },
+    {
+      "url": "https://www.benzinga.com/news/21/06/21699165/confluent-raised-828m-in-upsized-ipo-at-36share-trading-begins-today",
+      "title": "Confluent raised $828M in upsized IPO at $36/share",
+      "publisher": "Benzinga",
+      "date": "2021-06-24",
+      "supports": "exit_events[0].value_usd (~$12B diluted)"
+    },
+    {
+      "url": "https://newsroom.ibm.com/2025-12-08-ibm-to-acquire-confluent-to-create-smart-data-platform-for-enterprise-generative-ai",
+      "title": "IBM to Acquire Confluent to Create Smart Data Platform for Enterprise Generative AI",
+      "publisher": "IBM",
+      "date": "2025-12-08",
+      "supports": "exit_events[1]"
+    },
+    {
+      "url": "https://www.cnbc.com/2025/12/08/ibm-confluent-deal-data.html",
+      "title": "Confluent stock soars 29% as IBM announces $11 billion acquisition deal",
+      "publisher": "CNBC",
+      "date": "2025-12-08",
+      "supports": "exit_events[1] (premium, prior close)"
+    },
+    {
+      "url": "https://newsroom.ibm.com/2026-03-17-ibm-completes-acquisition-of-confluent,-making-real-time-data-the-engine-of-enterprise-ai-and-agents",
+      "title": "IBM Completes Acquisition of Confluent",
+      "publisher": "IBM",
+      "date": "2026-03-17",
+      "supports": "exit_events[1], latest_value_usd, robustness (6,500+ enterprises)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0000051143/000005114326000038/ibm-20260331.htm",
+      "title": "IBM Form 10-Q Q1 2026",
+      "publisher": "SEC EDGAR",
+      "date": "2026-04",
+      "supports": "exit_events[1].note ($11,268M cash paid)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1699838/000169983826000006/cflt-20251231.htm",
+      "title": "Confluent Form 10-K FY2025",
+      "publisher": "SEC EDGAR",
+      "date": "2026-02-11",
+      "supports": "revenue_latest_usd, robustness"
+    },
+    {
+      "url": "https://www.businesswire.com/news/home/20260210008002/en/Confluent-Announces-Fourth-Quarter-and-Fiscal-Year-2025-Financial-Results",
+      "title": "Confluent Announces Fourth Quarter and Fiscal Year 2025 Financial Results",
+      "publisher": "Business Wire",
+      "date": "2026-02-10",
+      "supports": "revenue_latest_usd, risk_events[1]"
+    },
+    {
+      "url": "https://www.macrotrends.net/stocks/charts/CFLT/confluent/number-of-employees",
+      "title": "Confluent: Number of Employees 2021-2025",
+      "publisher": "Macrotrends",
+      "date": "2025",
+      "supports": "employees_latest"
+    }
   ],
   "notes": "employees_latest (3,241 for 2025) is from Macrotrends; StockAnalysis gives 3,060 at end-2024 and Revelio estimates run higher (3,414-3,834). Origin coded 'corporate' because the technology and founders came out of LinkedIn, which also invested; it could equally be read as founder_startup."
 }

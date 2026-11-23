@@ -1,0 +1,69 @@
+{
+  "name": "Orbital Industries (formerly Orbital Materials)",
+  "slug": "orbital-materials",
+  "group": "E",
+  "category": "ai_lab",
+  "subcategory": "AI materials discovery -> 'AI Industrial' (CurieOS platform, data-centre cooling hardware)",
+  "hq_country": "GB",
+  "origin": null,
+  "origin_detail": "London-datelined company (BASF ECMS release, 5 Aug 2026), formerly Orbital Materials. orbitalmaterials.com now 301-redirects to orbitalindustries.com and the GitHub organization is still 'orbital-materials'. Backers shown on its site: Plural, NVentures (NVIDIA), Radical Ventures, Compound, Fly Ventures. Founders and founding year were not confirmed in fetched sources.",
+  "founded_year": null,
+  "flagship_projects": ["Orb universal interatomic potentials: v1 (Sep 2024), v2 (Oct 2024), v3 (Apr 2025), OrbMol (Aug 2025), OrbMol-v2 (May 2026); Apache-2.0", "CurieOS agentic AI platform for science and engineering (11 Aug 2026)", "Orbital IT two-phase direct-to-chip GPU cooling (PFAS-free fluid)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Its foundation models are open. orb-models (code and weights) is Apache-2.0 on GitHub (~630 stars, ~94 forks), with no commercial-use restrictions stated. OrbMol was trained on Open Molecules 2025 (OMol25, '100M+ high-accuracy DFT calculations') and OrbMol-v2 on OMol25 + OPoly26. The commercial products (CurieOS platform, cooling hardware, licensed discovery for BASF) are proprietary, and the company's boilerplate says every product is invented with its 'proprietary AI platform'. Open core: level 2.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2024, "license": "Orb models (code + weights) Apache-2.0", "note": "Orb v1 Sep 2024", "source": "https://github.com/orbital-materials/orb-models"},
+    {"year": 2026, "license": "CurieOS proprietary (licensed to BASF ECMS); Orb models still Apache-2.0", "note": "OrbMol-v2 May 2026; CurieOS Aug 2026", "source": "https://www.orbitalindustries.com/news/press/basf-ecms-ai-materials-discovery-platform"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "By Nov 2026: renamed Orbital Industries and repositioned from materials discovery to an 'AI Industrial' building physical products (rename date not found)",
+    "Aug 2026: launched CurieOS; first product built with it is GPU cooling hardware (Orbital IT), i.e. a pivot toward data-centre infrastructure",
+    "5 Aug 2026: BASF Environmental Catalyst and Metal Solutions licensed CurieOS for automotive-emissions catalyst discovery (terms undisclosed)"
+  ],
+  "robustness": "The open Orb models are widely forked and Apache-licensed, so they would outlive the company. The business itself is a VC-backed, single-company proprietary platform that has pivoted toward data-centre hardware. Funding size and runway are unknown.",
+  "physical_science_relevance": "Very high. Its open universal interatomic potentials (Orb, OrbMol) are used for atomistic simulation of crystals, molecules and polymers. It does catalyst discovery for automotive emissions (BASF ECMS) and invented a PFAS-free heat-transfer material for GPU cooling.",
+  "openness_effect_assessment": "Orbital is this group's clearest example of an AI-for-materials startup releasing permissive open weights. Its models were trained partly on open public datasets (OMol25), and the releases built scientific credibility and adoption (~630 stars, ~94 forks). Monetization moved to proprietary layers (CurieOS licences, cooling hardware): an open-model, closed-product split. The 2026 pivot to data-centre cooling shows the open models alone were not the business.",
+  "key_takeaway": "Orbital (Materials, now Industries) shows that an AI-for-materials startup can stay genuinely open at the model layer: Apache-2.0 Orb potentials trained on open DFT datasets such as OMol25. It still has to find revenue in closed products, here an agentic R&D platform licensed to BASF and PFAS-free GPU cooling for AI data centres. Openness bought reputation and community, not revenue, and the company's rebrand to an 'AI Industrial' signals where it expects the money.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from orbitalindustries.com and GitHub pages listed in fetched_urls.",
+    "Founders, founding year, funding amounts and valuation not stated on any fetched page, so all are null. Wikipedia has no Orbital Materials article (404).",
+    "Training data for Orb-v2/v3 not specified on GitHub (an 'omat' model name suggests OMat-style data, which is not confirmed).",
+    "Slug kept as 'orbital-materials' to match the requested organization name."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.orbitalmaterials.com/ (301 to orbitalindustries.com)",
+    "https://www.orbitalindustries.com/",
+    "https://www.orbitalindustries.com/about",
+    "https://www.orbitalindustries.com/news",
+    "https://www.orbitalindustries.com/news/announcements/introducing-curieos",
+    "https://www.orbitalindustries.com/news/press/basf-ecms-ai-materials-discovery-platform",
+    "https://github.com/orbital-materials",
+    "https://github.com/orbital-materials/orb-models"
+  ],
+  "sources": [
+    {"url": "https://github.com/orbital-materials/orb-models", "title": "orbital-materials/orb-models", "publisher": "GitHub", "date": "2026-11", "supports": "openness_initial, openness_current, license_history[0], flagship_projects (model dates), robustness"},
+    {"url": "https://www.orbitalindustries.com/news/press/basf-ecms-ai-materials-discovery-platform", "title": "BASF ECMS to license Orbital's CurieOS AI platform", "publisher": "Orbital Industries", "date": "2026-08-05", "supports": "hq_country (London dateline), risk_events[2], license_history[1], openness_notes (proprietary platform)"},
+    {"url": "https://www.orbitalindustries.com/news/announcements/introducing-curieos", "title": "Introducing CurieOS: From the Atoms Up", "publisher": "Orbital Industries", "date": "2026-08-11", "supports": "risk_events[1], flagship_projects"},
+    {"url": "https://www.orbitalindustries.com/about", "title": "Orbital Industries: About", "publisher": "Orbital Industries", "date": "2026-11", "supports": "origin_detail (investors), subcategory"},
+    {"url": "https://www.orbitalindustries.com/", "title": "Orbital Industries home page", "publisher": "Orbital Industries", "date": "2026-11", "supports": "risk_events[0], subcategory"}
+  ]
+}

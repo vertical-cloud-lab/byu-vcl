@@ -1,0 +1,68 @@
+{
+  "name": "Supabase, Inc.",
+  "slug": "supabase",
+  "group": "B",
+  "category": "software",
+  "subcategory": "Postgres development platform / backend-as-a-service",
+  "hq_country": "SG",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2020 by Paul Copplestone (CEO) and Ant Wilson (CTO); Y Combinator Summer 2020; YC lists Singapore as location; the company is fully remote with staff in 50+ countries",
+  "founded_year": 2020,
+  "flagship_projects": ["Supabase (Apache-2.0)", "Supabase Studio", "Multigres", "OrioleDB", "Turso/libSQL (acquiring, 2026)"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "The platform is Apache-2.0 and self-hostable, built by assembling existing MIT/Apache tools around Postgres and open-sourcing whatever it builds itself; revenue comes mainly from the managed hosted platform. That fits level 3 (substantially the whole product OSI-licensed, money from hosting). No relicensing found.",
+  "business_model": "saas",
+  "license_history": [
+    {"year": 2026, "license": "Apache-2.0 (supabase/supabase)", "note": "Uses MIT/Apache-licensed tools where they exist; builds and open-sources the rest", "source": "https://github.com/supabase/supabase"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 1000000000,
+  "funding_as_of": "2026",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 10000000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2026-06-04",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Growth tied to AI coding tools: >60% of new databases launched through an AI tool (Jun 2026), so demand depends on the 'vibe-coding' boom",
+    "Very rapid valuation rise ($5B pre-money Oct 2025 to $10B pre-money Jun 2026) raises expectations",
+    "Oct 2026: acquiring Turso (SQLite/libSQL) to serve agent-created databases; integration risk"
+  ],
+  "robustness": "Robust open stack: Apache-2.0 and self-hostable on standard Postgres, with 115k GitHub stars, ~10M registered developers and over one million databases launched per week (2026). Well capitalized ($1B raised). Single-vendor stewardship, but users can leave because the core is plain Postgres.",
+  "physical_science_relevance": "Moderate: used by research groups and lab-automation projects as a quick Postgres backend with auth and realtime APIs for instrument data and dashboards.",
+  "openness_effect_assessment": "A fully open, self-hostable product on a standard database removed lock-in fears and made Supabase the default backend for AI app builders; it doubled its developer base in eight months and its valuation in eight months (2025-2026) without any licence restriction. Openness appears to have accelerated adoption at no visible cost to monetization of hosting.",
+  "key_takeaway": "Supabase is the clearest AI-era counterexample to relicensing: a level-3, Apache-2.0 company that grew from founding (2020) to a $10B pre-money valuation (Jun 2026) by being the open, Postgres-based backend that AI coding tools default to. Its risk is concentration on the AI app boom, not openness.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://supabase.com/blog",
+    "https://supabase.com/blog/supabase-is-acquiring-turso",
+    "https://supabase.com/blog/supabase-series-e",
+    "https://supabase.com/blog/supabase-series-f",
+    "https://supabase.com/company",
+    "https://github.com/supabase/supabase",
+    "https://www.ycombinator.com/companies/supabase"
+  ],
+  "sources": [
+    {"url": "https://www.ycombinator.com/companies/supabase", "title": "Supabase (Y Combinator profile)", "publisher": "Y Combinator", "date": null, "supports": "founded_year, origin_detail (founders, S20, Singapore, remote)"},
+    {"url": "https://github.com/supabase/supabase", "title": "supabase/supabase", "publisher": "GitHub", "date": "2026-11", "supports": "license_history[0], openness_notes, robustness (115k stars)"},
+    {"url": "https://supabase.com/company", "title": "Supabase company page", "publisher": "Supabase", "date": "2026", "supports": "funding_total_usd ($1B raised), investors, robustness (10M+ developers)"},
+    {"url": "https://supabase.com/blog/supabase-series-e", "title": "Supabase Series E", "publisher": "Supabase", "date": "2025-10-03", "supports": "risk_events ($100M at $5B pre-money, Accel and Peak XV)"},
+    {"url": "https://supabase.com/blog/supabase-series-f", "title": "Supabase Series F", "publisher": "Supabase", "date": "2026-06-04", "supports": "latest_value_usd ($500M at $10B pre-money, GIC lead), risk_events (60% of DBs via AI tools), robustness (~10M developers)"},
+    {"url": "https://supabase.com/blog/supabase-is-acquiring-turso", "title": "Supabase is acquiring Turso", "publisher": "Supabase", "date": "2026-10-02", "supports": "risk_events (Turso), robustness (1M+ databases per week)"}
+  ],
+  "notes": [
+    "latest_value_usd is the stated $10B pre-money valuation of the Jun 2026 Series F ($500M); post-money would be about $10.5B (derived, not stated).",
+    "employees_latest null: YC lists a team size of 120 (date unknown, likely stale); Supabase only says staff are in 50+ countries.",
+    "revenue null: no ARR disclosed in fetched pages.",
+    "hq_country SG follows the YC profile; the company is fully remote with mostly US investors, so us_focus is kept true.",
+    "Failed fetches: https://en.wikipedia.org/wiki/Supabase (404), https://supabase.com/blog/supabase-series-d (404)."
+  ]
+}

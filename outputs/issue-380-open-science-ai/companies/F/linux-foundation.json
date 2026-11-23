@@ -1,0 +1,152 @@
+{
+  "name": "The Linux Foundation",
+  "slug": "linux-foundation",
+  "group": "F",
+  "category": "foundation",
+  "subcategory": "'foundation of foundations' hosting open-source projects (501(c)(6) trade association)",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Formed in 2007 by the merger of two industry consortia founded in 2000, Open Source Development Labs (OSDL) and the Free Standards Group, to support Linux. Now an umbrella for sub-foundations (CNCF, PyTorch Foundation, OpenSSF, LF AI & Data, LF Energy, Agentic AI Foundation and others), with a separate 501(c)(3) arm, LF Charities.",
+  "founded_year": 2007,
+  "flagship_projects": [
+    "Linux kernel (stewardship)",
+    "Cloud Native Computing Foundation (Kubernetes)",
+    "PyTorch Foundation",
+    "Agentic AI Foundation (MCP, goose, AGENTS.md)",
+    "OpenSSF",
+    "LF AI & Data",
+    "Jupyter Foundation (via LF Charities)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Neutral host for OSI-licensed projects with their own governance; funded by corporate membership. Note its legal form: a 501(c)(6) business league 'created for the improvement of business conditions', so donations are not tax-deductible (LF Charities is the 501(c)(3) arm).",
+  "business_model": "mixed",
+  "license_history": [],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": 220730594,
+  "latest_value_type": "annual revenue, IRS Form 990, fiscal year ending Dec 2024 (expenses $204,369,300; net assets $144.6M)",
+  "latest_value_date": "2024-12",
+  "revenue_latest_usd": 220730594,
+  "revenue_year": 2024,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Dependence on corporate membership and events; priorities are set by member companies (business-league status).",
+    "Rapid expansion into AI governance: Agentic AI Foundation (9 Dec 2025), React Foundation intent (7 Oct 2025, from Meta), Tokenomics Foundation (4 Aug 2026), Jupyter Foundation (19 Nov 2024)."
+  ],
+  "robustness": "Very high: revenue grew from $177.1M (2022) to $196.0M (2023) to $220.7M (2024) with surpluses each year; more than 1,000 corporate members and more than 1,000 hosted projects (per Wikipedia, 2025). Projects are legally separated into sub-foundations.",
+  "physical_science_relevance": "Indirect but growing: hosts the PyTorch Foundation (the dominant AI framework used in scientific ML), LF Energy, and, through LF Charities, Project Jupyter. Its agentic-AI standards (MCP) are already used to connect AI agents to lab and data tools.",
+  "openness_effect_assessment": "The Linux Foundation shows open source monetised collectively: companies pay for neutral governance of shared code, which has made it the default home when AI firms open up standards (Anthropic's MCP, OpenAI's AGENTS.md, Block's goose in Dec 2025). Openness here strengthens member companies' ecosystems; it is not a public-science funding model.",
+  "key_takeaway": "With $221M revenue (2024), the Linux Foundation dwarfs the science-relevant open foundations in this group (NumFOCUS $8.4M in 2024; the ASF $2.2M in FY2025; the RCSB PDB's federal award is about $49M over five years). In 2024-2026 it absorbed AI-era projects (PyTorch, Jupyter, MCP), so corporate-funded foundations, not science agencies, increasingly govern the open tools that AI-for-science depends on.",
+  "usage_metrics": [
+    {
+      "metric": "annual revenue FY2023 (USD)",
+      "value": 196026148,
+      "date": "2023-12",
+      "source": "https://projects.propublica.org/nonprofits/organizations/460503801"
+    },
+    {
+      "metric": "annual revenue FY2022 (USD)",
+      "value": 177124787,
+      "date": "2022-12",
+      "source": "https://projects.propublica.org/nonprofits/organizations/460503801"
+    },
+    {
+      "metric": "executive director compensation FY2024 (USD)",
+      "value": 952166,
+      "date": "2024-12",
+      "source": "https://projects.propublica.org/nonprofits/organizations/460503801"
+    },
+    {
+      "metric": "MCP published servers at AAIF launch",
+      "value": 10000,
+      "date": "2025-12-09",
+      "source": "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation"
+    },
+    {
+      "metric": "projects adopting AGENTS.md at AAIF launch",
+      "value": 60000,
+      "date": "2025-12-09",
+      "source": "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation"
+    },
+    {
+      "metric": "Agentic AI Foundation platinum members (AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, OpenAI)",
+      "value": 8,
+      "date": "2025-12-09",
+      "source": "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation"
+    }
+  ],
+  "funding_sources": [
+    "Corporate memberships (platinum tier $500,000/yr)",
+    "Events and training",
+    "Project-directed funding through sub-foundations"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Wikipedia's Linux Foundation article carries a notice about possible LLM-generated text; facts used from it (members, project counts, Neo4j, Open Model Initiative) are secondary. The employee figure there (~150) was not used.",
+    "2025-2026 dates for AAIF, React Foundation and Tokenomics Foundation are confirmed from the LF press releases. The 2026 Open Model Initiative under LF AI & Data appears only on Wikipedia and is not counted.",
+    "The 2025 annual report page did not expose figures in fetched text; FY2025 Form 990 not yet on ProPublica."
+  ],
+  "confidence": "high",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Linux_Foundation",
+    "https://projects.propublica.org/nonprofits/organizations/460503801",
+    "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation",
+    "https://www.linuxfoundation.org/resources/publications/linux-foundation-annual-report-2025",
+    "https://www.linuxfoundation.org/press/linux-foundation-announces-intent-to-launch-the-react-foundation",
+    "https://www.linuxfoundation.org/press/linux-foundation-launches-the-tokenomics-foundation-to-define-the-economics-and-roi-of-ai-value",
+    "https://projects.propublica.org/nonprofits/organizations/454547709 (NumFOCUS, for comparison)",
+    "https://projects.propublica.org/nonprofits/organizations/470825376 (ASF, for comparison)"
+  ],
+  "sources": [
+    {
+      "url": "https://projects.propublica.org/nonprofits/organizations/460503801",
+      "title": "The Linux Foundation - Nonprofit Explorer (Form 990 data)",
+      "publisher": "ProPublica",
+      "date": null,
+      "supports": "latest_value_usd, revenue, usage_metrics[0-2], 501(c)(6) status"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Linux_Foundation",
+      "title": "Linux Foundation",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, sub-foundations, robustness (members, projects), membership fees"
+    },
+    {
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation",
+      "title": "Linux Foundation Announces the Formation of the Agentic AI Foundation",
+      "publisher": "Linux Foundation",
+      "date": "2025-12-09",
+      "supports": "risk_events[1], usage_metrics[3-5]"
+    },
+    {
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-intent-to-launch-the-react-foundation",
+      "title": "Linux Foundation Announces Intent to Launch the React Foundation",
+      "publisher": "Linux Foundation",
+      "date": "2025-10-07",
+      "supports": "risk_events[1]"
+    },
+    {
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-launches-the-tokenomics-foundation-to-define-the-economics-and-roi-of-ai-value",
+      "title": "Linux Foundation Launches the Tokenomics Foundation",
+      "publisher": "Linux Foundation",
+      "date": "2026-08-04",
+      "supports": "risk_events[1]"
+    },
+    {
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-formation-of-the-jupyter-foundation",
+      "title": "Linux Foundation Announces Formation of the Jupyter Foundation",
+      "publisher": "Linux Foundation",
+      "date": "2024-11-19",
+      "supports": "risk_events[1], flagship_projects"
+    }
+  ]
+}

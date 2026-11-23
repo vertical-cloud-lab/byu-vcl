@@ -1,30 +1,47 @@
-# Group B summary: commercial open-source platforms and developer/data tooling (PARTIAL)
+# Group B summary
 
-**Status: 6 of 23 organizations researched.** The session's shared web-search budget ran out after 36 searches. Still to do: Anaconda, Astronomer, Prefect, Dagster Labs, dbt Labs, Airbyte, Hugging Face, Posit, Automattic, Mozilla Corporation, NGINX, Puppet, MuleSoft, Pivotal/SpringSource, Vercel, Supabase, PostHog.
+Six files use WebSearch, 17 use WebFetch. Origin: F = founder startup, C = community, A = academic, S = corporate spin-out, N = non-profit.
 
 | Name | Openness | Origin | Founded | Outcome | Latest value (date) |
 | --- | --- | --- | --- | --- | --- |
-| Red Hat | 3→3 | Founder startup | 1993 | IPO 1999; IBM 2019 | $34B acquisition (2019-07) |
-| SUSE (DE) | 2→3 | Founder startup | 1992 | 5 sales + 2021 IPO | EUR 2.72B take-private (2023-08) |
-| Canonical (UK) | 3→3 | Founder-funded | 2004 | Independent | None; $345M revenue (2025) |
-| GitLab | 3→2 | Community project | 2011 | IPO 2021 | $7.19B market cap (2026-11-23) |
-| GitHub | 1→1 | Founder startup | 2008 | Microsoft 2018 | $7.5B acquisition (2018-10) |
-| Databricks | 2→2 | Academic (Berkeley AMPLab) | 2013 | Private, VC | $190B private valuation (2026-08-13) |
+| Red Hat | 3→3 | F | 1993 | IPO 1999; IBM | $34B acq. (2019-07) |
+| SUSE (DE) | 2→3 | F | 1992 | PE-owned | EUR 2.72B take-private (2023-08) |
+| Canonical (UK) | 3→3 | F | 2004 | Independent | None |
+| GitLab | 3→2 | C | 2011 | Public | $7.19B cap (2026-11-23) |
+| GitHub | 1→1 | F | 2008 | Microsoft | $7.5B acq. (2018-10) |
+| Databricks | 2→2 | A | 2013 | Private | $190B (2026-08-13) |
+| Anaconda | 2→2 | F | 2012 | Private | $1.5B (2025-07) |
+| Astronomer | 2→2 | F | 2018 | Private | ~$1B, reported (2025-07) |
+| Prefect | 2→2 | F | n/a | Private | None |
+| Dagster Labs | 2→2 | F | 2018 | Prefect | Undisclosed (2026-07) |
+| dbt Labs | 2→2 | F | 2016 | Fivetran | $4.2B (2022-02) |
+| Airbyte | 3→1 | F | 2020 | Private | $1.5B (2021-12) |
+| Hugging Face | 0→2 | F | 2016 | Nvidia, pending | $12.93B acq. (2026-09-03) |
+| Posit (PBC) | 2→2 | F | 2009 | Independent | None |
+| Automattic | 3→3 | C | 2005 | Private | $7.5B (2021) |
+| Mozilla Corp. | 4→4 | N | 2005 | Foundation-owned | None |
+| NGINX | 3→2 | C | 2011 | F5 | $670M acq. (2019-03) |
+| Puppet | 3→2 | F | 2005 | Perforce | Undisclosed (2022) |
+| MuleSoft | 2→1 | C | 2006 | IPO 2017; Salesforce | $6.5B acq. (2018-05) |
+| Pivotal/SpringSource | 2→2 | S | 2004 | VMware, Broadcom | >$3B cap (2018-04-20) |
+| Vercel | 2→2 | F | 2015 | Private | $9.3B (2025-09-30) |
+| Supabase | 3→3 | F | 2020 | Private | $10B pre-money (2026-06-04) |
+| PostHog | 2→2 | F | 2020 | Private | $1.4B (2025-10) |
 
-## Observations (six cases only)
+## Observations
 
-1. **The most open firms lasted longest.** The three level-3 Linux vendors are 22–34 years old and still operating. SUSE survived six ownership changes because customers relied on GPL code, not on its owner.
+1. **Value went to open projects plus a paid service.** Top values are level 2–3 hosting/SaaS firms riding AI: Databricks ($190B), Hugging Face ($12.93B), Supabase ($10B), Vercel ($9.3B). Pure subscription peaked at Red Hat ($34B).
 
-2. **Openness earned adoption more easily than value.** Ubuntu is everywhere, but Canonical needed years of its founder's money and reached $345M revenue (2025). SUSE was taken private at EUR 16/share, half its EUR 30 IPO price. The biggest values went to firms with a proprietary service on an open core (Databricks, $190B) or a closed platform (GitHub, $7.5B in 2018).
+2. **Closing came through access, not licences.** Red Hat, Anaconda, Puppet and MuleSoft restricted access; only Airbyte relicensed (MIT to ELv2). Closings mostly followed ownership changes and brought forks (Rocky/Alma, OpenVox, freenginx), without reported revenue collapse.
 
-3. **Nobody here moved to a non-OSI licence.** "Closing" took the form of access limits or a paid tier: Red Hat ended CentOS Linux (2020) and restricted RHEL sources (2023), and GitLab added a proprietary Enterprise Edition (2013). Red Hat's moves led to forks (Rocky, AlmaLinux) and a rival group (OpenELA), but its sources show no revenue harm: growth was 10–16% in 2025.
+3. **Challengers opened code to win share.** SUSE, Canonical, Databricks, Vercel; Hugging Face rose from a closed chatbot (0→2).
 
-4. **Challengers used opening to compete.** SUSE opened YaST (2004) and funded an open RHEL fork (2023). Canonical opened Launchpad (2009). Databricks opened Delta Lake (2019, fully 2022) and Unity Catalog (2024) in its fight with Snowflake.
+4. **The most open firms lasted longest.** The 20+-year survivors are level 3–4. Projects outlived their companies: Spring, Dagster, nginx, Puppet (as OpenVox).
 
-5. **The academic spin-out stands out.** Databricks gave Spark to the Apache Software Foundation in its founding year and sells a managed cloud service. Its value rose from $62B (Dec 2024) to $190B (Aug 2026) on >$7B run-rate revenue. AI demand, not openness alone, explains that rise.
+5. **Origins.** Foundation-held projects (Spark, Airflow) still produced valuable vendors; the corporate spin-out (Pivotal) was reabsorbed within six years.
 
-6. **The code is more robust than the companies.** GPL or foundation-held code (Spark at the ASF, Delta Lake at the Linux Foundation) would outlive its vendor. Independence is the fragile part: GitHub was folded into Microsoft's CoreAI in 2025, and Red Hat's back office moves into IBM in 2026.
+6. **Informal governance is its own risk.** Automattic's WP Engine fight brought an injunction, layoffs and a 2026 board crisis. Mozilla still depends on Google for 86% of revenue.
 
-7. **Public open-core firms have been volatile.** GitLab reached $955M revenue (FY2026) and positive free cash flow, but trades at $7.2B, below its ~$11B IPO value, and is still GAAP-unprofitable.
+7. **Big tech is absorbing the infrastructure.** GitHub into Microsoft, Hugging Face to Nvidia, Spring to Broadcom.
 
-8. **AI shifts who captures the value of open code.** GitHub, a closed platform, makes money from open-source activity (180M+ developers) through Copilot, which drove more than 40% of its 2024 revenue growth.
+8. **Science users pay for closing.** Anaconda's 2024 back-billing demands hit universities, and Puppet's restrictions moved NC State to OpenVox.

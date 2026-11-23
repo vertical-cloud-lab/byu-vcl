@@ -1,0 +1,63 @@
+{
+  "name": "Atinary Technologies",
+  "slug": "atinary",
+  "group": "E",
+  "category": "sci_software",
+  "subcategory": "no-code AI/ML experiment-optimization platform (SDLabs) and 'Self-Driving Labs(R)'",
+  "hq_country": "CH",
+  "origin": "founder_startup",
+  "origin_detail": "Co-founded by Dr Hermann Tribukait (CEO, economist) and Dr Loïc Roch (CTO, chemist with AI/ML for materials discovery expertise), who have worked together on AI-driven R&D since 2017 and say they coined the trademarked term 'Self-Driving Labs(R)'. US entity Atinary Technologies Inc.; Self-Driving Lab in Boston opened in 2026; new Biopôle office (Jan 2026). Swiss base inferred from site references (Biopôle office, Swiss BioTools podcast, Innovaud logo, SwissCAT+ project); HQ is not explicitly stated.",
+  "founded_year": null,
+  "flagship_projects": ["SDLabs platform (code-free ML optimizers, analytics, visualization)", "Self-Driving Labs(R) (Boston, 2026)", "Integrations with Chemspeed, ABB Robotics, Agilent, Mettler Toledo, AWS, Bruker SciY"],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "SDLabs is proprietary SaaS and 'Self-Driving Labs' is a registered trademark. No open-source releases are mentioned on atinary.com. Optimizers associated with the founders' academic circles (e.g. Phoenics, Gryffin, Olympus) are not mentioned or claimed by the company, so they are not credited here.",
+  "business_model": "saas",
+  "license_history": [
+    {"year": null, "license": "Proprietary SaaS", "note": "No open releases found", "source": "https://atinary.com/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2026: opened a Self-Driving Labs facility in Boston (Feb-Mar 2026, approx.)",
+    "Jun 2026: named a World Economic Forum Technology Pioneer; Jul 2026: Gartner Hype Cycle sample vendor",
+    "Aug 2026 (approx.): Bruker strategic collaboration integrating SDLabs with Chemspeed automation, Bruker instruments and SciY software",
+    "Oct 2026: ISPE RAYA award with ABB Robotics (Physical AI)"
+  ],
+  "robustness": "A small private software vendor whose position increasingly rests on integration with large closed hardware ecosystems (Bruker/Chemspeed, ABB, Mettler Toledo, Agilent). That brings distribution but also dependence. Funding and headcount are undisclosed; the team spans 13 nationalities.",
+  "physical_science_relevance": "High. Use cases include perovskite solar cells (MIT Buonassisi lab; Solaronix pilot), catalysis (ETH), process chemistry (Snapdragon Chemistry), materials discovery (SwissCAT+), pharma (Takeda) and flavours and ingredients (dsm-firmenich).",
+  "openness_effect_assessment": "Atinary commercialized the self-driving-lab optimization layer as closed, no-code SaaS and trademarked the field's name. It differentiates through usability and integrations with closed instrument makers rather than openness. Its 2026 tie-up with Bruker and Chemspeed points to an emerging closed, vendor-integrated SDL stack. No evidence was found of open releases or of openness affecting its growth.",
+  "key_takeaway": "Atinary is the closed 'SDL brain' vendor. Its founders have worked on AI-driven R&D since 2017, coined and trademarked 'Self-Driving Labs', and sell no-code optimization SaaS that plugs into Chemspeed, Bruker, ABB and others. Its 2026 Boston lab and Bruker collaboration show lab-automation incumbents assembling proprietary end-to-end SDL stacks. That contrasts with the open-source optimizers and orchestration tools common in academic SDLs, which Atinary does not contribute to.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from atinary.com pages listed in fetched_urls.",
+    "hq_country 'CH' is inferred, not stated, from Biopôle office, Swiss BioTools podcast, Innovaud logo and SwissCAT+ references; the footer names a US entity (Atinary Technologies Inc.).",
+    "Founding year and funding not stated on fetched pages (team active since 2017).",
+    "News items on atinary.com carry no dates; months are approximate, inferred from image upload paths.",
+    "The closing remark about open-source academic SDL tools is general context, not a sourced claim about Atinary."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://atinary.com/",
+    "https://atinary.com/about-us/",
+    "https://atinary.com/news/"
+  ],
+  "sources": [
+    {"url": "https://atinary.com/about-us/", "title": "Atinary: About us", "publisher": "Atinary Technologies", "date": "2026", "supports": "origin_detail (founders, since 2017, 13 nationalities)"},
+    {"url": "https://atinary.com/", "title": "Atinary home page", "publisher": "Atinary Technologies", "date": "2026-11", "supports": "flagship_projects, openness_notes, physical_science_relevance, robustness (partners)"},
+    {"url": "https://atinary.com/news/", "title": "Atinary news", "publisher": "Atinary Technologies", "date": "2026", "supports": "risk_events[0-3], origin_detail (Boston, Biopôle)"}
+  ]
+}

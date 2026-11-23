@@ -1,0 +1,62 @@
+{
+  "name": "Posit PBC (formerly RStudio, PBC)",
+  "slug": "posit",
+  "group": "B",
+  "category": "sci_software",
+  "subcategory": "data-science IDEs and publishing tools (R and Python)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2009 in Boston as RStudio by J. J. Allaire (creator of ColdFusion); restructured as a Delaware public benefit corporation in Jan 2020 (Certified B Corp, B Lab score 86.1 in 2019); renamed Posit in Jul 2022 to signal a focus beyond R",
+  "founded_year": 2009,
+  "flagship_projects": ["RStudio IDE (AGPLv3)", "Positron IDE", "tidyverse", "Shiny", "Quarto", "ggplot2", "Posit Workbench/Connect/Package Manager (commercial)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core with an unusually large open share: the RStudio IDE is AGPLv3 and Posit leads 350+ open-source projects (tidyverse, Shiny, Quarto, tidymodels), spending ~35% of engineering on open source (Dec 2024); revenue comes from proprietary professional products (Workbench, Connect, Package Manager, Cloud) bought by 10,000+ customers. Governance remains company-led, but the PBC charter legally commits it to community benefit.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2011, "license": "AGPL-3.0 (RStudio IDE)", "note": "Year of first IDE release not confirmed in fetched pages; licence is current per repository", "source": "https://github.com/rstudio/rstudio"},
+    {"year": 2020, "license": "Unchanged; company became a public benefit corporation", "note": "PBC conversion announced Jan 2020, governance rather than licence change", "source": "https://en.wikipedia.org/wiki/Posit_PBC"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Dependence on the R ecosystem; Jul 2022 rename to Posit to broaden into Python",
+    "Dec 2023: laid off Yihui Xie, creator of knitr and R Markdown",
+    "Jun 2024: launched a new IDE (Positron) alongside RStudio, a costly platform transition"
+  ],
+  "robustness": "Highly robust as a steward of scientific open source: 17 years of operation, PBC and B Corp status (score 92.5 at 2023 renewal), joined the Open Source Pledge (Dec 2024), gave >$3.3M to outside-led projects, and its packages are on CRAN under OSI licences. Privately held with only a minority VC stake (General Catalyst), so it is not under exit pressure; financials are undisclosed.",
+  "physical_science_relevance": "High: RStudio, the tidyverse, Shiny and Quarto are standard tools for statistics, reproducible analysis and publishing in academic science; Public Package Manager serves 74M+ downloads/month (Q2 2026).",
+  "openness_effect_assessment": "Posit's heavy open-source investment made R's modern ecosystem (tidyverse, Shiny, RStudio) the default in academic data analysis and built the funnel for 10,000+ paying professional customers. Locking in its mission via a PBC charter (2020) reduced the risk of the relicensing or rent-seeking seen at VC-pressured peers; no licence tightening has occurred.",
+  "key_takeaway": "Posit is the model of a mission-locked open-core company: a founder-led firm that converted to a public benefit corporation, spends about a third of engineering on open source, and sells enterprise deployment tools. It trades fast growth and a big valuation for longevity and community trust, which suits science users.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Posit_PBC",
+    "https://posit.co/about/",
+    "https://posit.co/about/pbc-report/",
+    "https://github.com/rstudio/rstudio"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Posit_PBC", "title": "Posit PBC", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, PBC (Jan 2020), rename (Jul 2022), General Catalyst minority stake, risk_events (Yihui Xie layoff, Positron launch)"},
+    {"url": "https://posit.co/about/", "title": "About Posit", "publisher": "Posit", "date": "2026", "supports": "HQ, PBC/B Corp status, product split open source vs commercial"},
+    {"url": "https://posit.co/about/pbc-report/", "title": "2026 Benefit Corporation Annual Report", "publisher": "Posit", "date": "2026-07-08", "supports": "openness_notes (35% engineering on OSS, 350+ projects, 10,000+ customers), robustness (B Lab scores, Open Source Pledge, $3.3M given), physical_science_relevance (74M downloads/month)"},
+    {"url": "https://github.com/rstudio/rstudio", "title": "rstudio/rstudio", "publisher": "GitHub", "date": "2026-11", "supports": "license_history[0] (AGPLv3)"}
+  ],
+  "notes": [
+    "funding_total_usd, revenue, employees and valuation null: not disclosed in fetched pages (Posit says it strives for financial independence; General Catalyst holds a minority stake of undisclosed size).",
+    "license_history[0] year 2011 is approximate for the IDE's first public release and is not confirmed by a fetched page; the AGPLv3 licence is confirmed.",
+    "ownership_status private_vc reflects the General Catalyst minority stake; the company is otherwise described as privately held and founder-led."
+  ]
+}

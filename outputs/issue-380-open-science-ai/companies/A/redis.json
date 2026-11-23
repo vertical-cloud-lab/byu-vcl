@@ -8,22 +8,78 @@
   "origin": "founder_startup",
   "origin_detail": "Redis itself was created by Salvatore Sanfilippo (antirez) in 2009 to scale his LLOOGG analytics service, sponsored by VMware (2010-13) and Pivotal (2013-15). The company was founded in Israel in 2011 as Garantia Data by Ofer Bengal and Yiftach Shoolman to sell Redis-based database services; it renamed itself Redis Labs in 2014, hired antirez in July 2015 to become the project's official sponsor, and became 'Redis' in August 2021. Israeli-founded, California-based (offices in San Francisco, Austin, London, Tel Aviv per CB Insights).",
   "founded_year": 2011,
-  "flagship_projects": ["Redis (Redis Open Source / Community Edition)", "Redis Enterprise / Redis Cloud", "Redis modules (RediSearch, RedisJSON, etc.)"],
+  "flagship_projects": [
+    "Redis (Redis Open Source / Community Edition)",
+    "Redis Enterprise / Redis Cloud",
+    "Redis modules (RediSearch, RedisJSON, etc.)"
+  ],
   "openness_initial": 2,
   "openness_current": 2,
   "openness_notes": "The company never owned a fully open product line: core Redis was BSD-3-Clause, while Redis Enterprise was proprietary and its modules moved from AGPL to Apache+Commons Clause (2018) to RSAL (2019). From Redis 7.4 (March 2024) the core went to RSALv2/SSPLv1 (level 1). Redis 8 (May 2025) added AGPLv3 as an option, restoring an OSI licence for the core alongside proprietary Redis Enterprise/Cloud (level 2).",
   "business_model": "open_core",
   "license_history": [
-    {"year": 2009, "license": "BSD-3-Clause (core)", "note": "Core stayed BSD through Redis 7.2.x, including during the 2018-19 module changes.", "source": "https://redis.io/blog/redis-license-bsd-will-remain-bsd/"},
-    {"year": 2018, "license": "Apache-2.0 + Commons Clause (selected modules)", "note": "RediSearch, RedisGraph, ReJSON, ReBloom, Redis-ML moved from AGPL; aimed at cloud managed services.", "source": "https://www.theregister.com/2018/08/23/redis_database_license_change/"},
-    {"year": 2019, "license": "Redis Source Available License (modules)", "note": "Replaced Commons Clause in Feb 2019.", "source": "https://techcrunch.com/2019/02/21/redis-labs-changes-its-open-source-license-again/"},
-    {"year": 2024, "license": "RSALv2 or SSPLv1 (core, from 7.4)", "note": "Announced 2024-03-20; earlier versions remain BSD.", "source": "https://www.infoq.com/news/2024/03/redis-license-open-source/"},
-    {"year": 2025, "license": "AGPLv3 or RSALv2 or SSPLv1 (core, from Redis 8)", "note": "Redis 8 GA 2025-05-01.", "source": "https://www.theregister.com/2025/05/01/redis_returns_to_open_source/"}
+    {
+      "year": 2009,
+      "license": "BSD-3-Clause (core)",
+      "note": "Core stayed BSD through Redis 7.2.x, including during the 2018-19 module changes.",
+      "source": "https://redis.io/blog/redis-license-bsd-will-remain-bsd/"
+    },
+    {
+      "year": 2018,
+      "license": "Apache-2.0 + Commons Clause (selected modules)",
+      "note": "RediSearch, RedisGraph, ReJSON, ReBloom, Redis-ML moved from AGPL; aimed at cloud managed services.",
+      "source": "https://www.theregister.com/2018/08/23/redis_database_license_change/"
+    },
+    {
+      "year": 2019,
+      "license": "Redis Source Available License (modules)",
+      "note": "Replaced Commons Clause in Feb 2019.",
+      "source": "https://techcrunch.com/2019/02/21/redis-labs-changes-its-open-source-license-again/"
+    },
+    {
+      "year": 2024,
+      "license": "RSALv2 or SSPLv1 (core, from 7.4)",
+      "note": "Announced 2024-03-20; earlier versions remain BSD.",
+      "source": "https://www.infoq.com/news/2024/03/redis-license-open-source/"
+    },
+    {
+      "year": 2025,
+      "license": "AGPLv3 or RSALv2 or SSPLv1 (core, from Redis 8)",
+      "note": "Redis 8 GA 2025-05-01.",
+      "source": "https://www.theregister.com/2025/05/01/redis_returns_to_open_source/"
+    }
   ],
   "relicensing_events": [
-    {"year": 2018, "from": "AGPL (modules)", "to": "Apache-2.0 + Commons Clause, then RSAL (2019)", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Core unaffected; criticism from the open-source community.", "source": "https://www.theregister.com/2019/02/22/redis_labs_changes_license_funding_60m/"},
-    {"year": 2024, "from": "BSD-3-Clause (core)", "to": "RSALv2 / SSPLv1", "direction": "closing", "fork": "Valkey (from Redis 7.2.4, BSD-3-Clause), announced 2024-03-28 under the Linux Foundation", "fork_backer": "AWS, Google Cloud, Oracle, Ericsson, Snap (Linux Foundation governance)", "outcome_note": "AWS now recommends Valkey as the default ElastiCache engine and shipped Valkey 9.0 (May 2026) and 9.1 (June 2026). Redis's CEO said SSPL mainly 'applies to Amazon and Google'.", "source": "https://finance.yahoo.com/news/why-aws-google-oracle-backing-163006996.html"},
-    {"year": 2025, "from": "RSALv2 / SSPLv1", "to": "AGPLv3 added as an option", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Followed antirez's return to Redis in November 2024. Commentators said the damage looked long-lasting: 'Once you've migrated to a fork, there's no business case to migrate back'.", "source": "https://www.infoq.com/news/2025/05/redis-agpl-license"}
+    {
+      "year": 2018,
+      "from": "AGPL (modules)",
+      "to": "Apache-2.0 + Commons Clause, then RSAL (2019)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Core unaffected; criticism from the open-source community.",
+      "source": "https://www.theregister.com/2019/02/22/redis_labs_changes_license_funding_60m/"
+    },
+    {
+      "year": 2024,
+      "from": "BSD-3-Clause (core)",
+      "to": "RSALv2 / SSPLv1",
+      "direction": "closing",
+      "fork": "Valkey (from Redis 7.2.4, BSD-3-Clause), announced 2024-03-28 under the Linux Foundation",
+      "fork_backer": "AWS, Google Cloud, Oracle, Ericsson, Snap (Linux Foundation governance)",
+      "outcome_note": "AWS now recommends Valkey as the default ElastiCache engine and shipped Valkey 9.0 (May 2026) and 9.1 (June 2026). Redis's CEO said SSPL mainly 'applies to Amazon and Google'.",
+      "source": "https://finance.yahoo.com/news/why-aws-google-oracle-backing-163006996.html"
+    },
+    {
+      "year": 2025,
+      "from": "RSALv2 / SSPLv1",
+      "to": "AGPLv3 added as an option",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Followed antirez's return to Redis in November 2024. Commentators said the damage looked long-lasting: 'Once you've migrated to a fork, there's no business case to migrate back'.",
+      "source": "https://www.infoq.com/news/2025/05/redis-agpl-license"
+    }
   ],
   "funding_total_usd": 347000000,
   "funding_as_of": "2021-04",
@@ -60,26 +116,141 @@
     "Redis acquires Decodable 2025 Redis company headquarters Mountain View employees Rowan Trollope CEO",
     "Valkey adoption 2025 2026 AWS ElastiCache Valkey Linux distributions replace Redis Fedora Debian"
   ],
+  "search_tool": "WebSearch (standard/extended)",
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/Redis_(company)", "title": "Redis (company)", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year"},
-    {"url": "https://valkey.io/topics/history/", "title": "Documentation: History", "publisher": "Valkey project", "date": null, "supports": "origin_detail (Garantia Data, rename to Redis Labs 2014)"},
-    {"url": "https://redis.io/press/redis-creator-salvatore-sanfilippo-antirez-joins-redis-labs/", "title": "Redis creator Salvatore Sanfilippo (antirez) joins Redis Labs", "publisher": "Redis", "date": "2015-07-15", "supports": "origin_detail"},
-    {"url": "https://redis.io/press/redis-labs-becomes-simply-redis/", "title": "Redis Labs becomes simply Redis", "publisher": "Redis", "date": "2021-08-11", "supports": "origin_detail"},
-    {"url": "https://redis.io/blog/redis-license-bsd-will-remain-bsd/", "title": "Redis license BSD will remain BSD", "publisher": "Redis", "date": "2018", "supports": "license_history[0]"},
-    {"url": "https://www.theregister.com/2018/08/23/redis_database_license_change/", "title": "Redis database license change", "publisher": "The Register", "date": "2018-08-23", "supports": "license_history[1]"},
-    {"url": "https://techcrunch.com/2019/02/21/redis-labs-changes-its-open-source-license-again/", "title": "Redis Labs changes its open-source license — again", "publisher": "TechCrunch", "date": "2019-02-21", "supports": "license_history[2]"},
-    {"url": "https://www.theregister.com/2019/02/22/redis_labs_changes_license_funding_60m/", "title": "Redis kills Modules' Commons Clause licensing", "publisher": "The Register", "date": "2019-02-22", "supports": "relicensing_events[0]"},
-    {"url": "https://www.infoq.com/news/2024/03/redis-license-open-source/", "title": "Redis license change", "publisher": "InfoQ", "date": "2024-03", "supports": "license_history[3]"},
-    {"url": "https://finance.yahoo.com/news/why-aws-google-oracle-backing-163006996.html", "title": "Why AWS, Google and Oracle are backing the Valkey Redis fork", "publisher": "TechCrunch (via Yahoo Finance)", "date": "2024-03", "supports": "relicensing_events[1]"},
-    {"url": "https://www.theregister.com/2025/05/01/redis_returns_to_open_source/", "title": "Redis 'returns' to open source with AGPL license", "publisher": "The Register", "date": "2025-05-01", "supports": "license_history[4], relicensing_events[1-2]"},
-    {"url": "https://www.infoq.com/news/2025/05/redis-agpl-license", "title": "Redis AGPL license", "publisher": "InfoQ", "date": "2025-05", "supports": "relicensing_events[2] (antirez rejoined Nov 2024)"},
-    {"url": "https://aws.amazon.com/about-aws/whats-new/2026/05/valkey-amazon-elasticache/", "title": "Announcing Valkey 9.0 for Amazon ElastiCache", "publisher": "AWS", "date": "2026-05-05", "supports": "risk_events[2]"},
-    {"url": "https://aws.amazon.com/blogs/database/valkey-turns-two/", "title": "Valkey turns two", "publisher": "AWS Database Blog", "date": "2026", "supports": "relicensing_events[1].outcome_note"},
-    {"url": "https://redis.io/press/redis-labs-110-million-series-g-led-by-tiger-global/", "title": "Redis Labs $110 million Series G led by Tiger Global", "publisher": "Redis", "date": "2021-04-07", "supports": "latest_value_usd"},
-    {"url": "https://www.storagenewsletter.com/2021/04/12/redis-labs-raises-110-million-in-series-g-total-at-347-million/", "title": "Redis Labs Raises $110 Million in Series G, Total at $347 Million", "publisher": "StorageNewsletter (citing Reuters)", "date": "2021-04-12", "supports": "funding_total_usd"},
-    {"url": "https://www.hpcwire.com/bigdatawire/this-just-in/redis-passes-300m-in-annualized-recurring-revenue/", "title": "Redis Passes $300M in Annualized Recurring Revenue", "publisher": "BigDATAwire", "date": "2026-01", "supports": "revenue_latest_usd (ARR, not GAAP revenue)"},
-    {"url": "https://quantlogix.ai/private-company/redis", "title": "Redis Valuation 2026", "publisher": "QuantLogix", "date": "2026", "supports": "risk_events[4] (secondary estimate ~$1.3B; no S-1)"},
-    {"url": "https://www.globenewswire.com/news-release/2025/09/04/3144606/0/en/Redis-to-Acquire-Real-Time-Data-Platform-Decodable-Expands-Redis-for-AI-to-Deliver-Context-and-Memory-for-AI-Agents-and-Agentic-Systems.html", "title": "Redis to Acquire Real Time Data Platform Decodable", "publisher": "GlobeNewswire (Redis press release)", "date": "2025-09-04", "supports": "robustness"}
+    {
+      "url": "https://en.wikipedia.org/wiki/Redis_(company)",
+      "title": "Redis (company)",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year"
+    },
+    {
+      "url": "https://valkey.io/topics/history/",
+      "title": "Documentation: History",
+      "publisher": "Valkey project",
+      "date": null,
+      "supports": "origin_detail (Garantia Data, rename to Redis Labs 2014)"
+    },
+    {
+      "url": "https://redis.io/press/redis-creator-salvatore-sanfilippo-antirez-joins-redis-labs/",
+      "title": "Redis creator Salvatore Sanfilippo (antirez) joins Redis Labs",
+      "publisher": "Redis",
+      "date": "2015-07-15",
+      "supports": "origin_detail"
+    },
+    {
+      "url": "https://redis.io/press/redis-labs-becomes-simply-redis/",
+      "title": "Redis Labs becomes simply Redis",
+      "publisher": "Redis",
+      "date": "2021-08-11",
+      "supports": "origin_detail"
+    },
+    {
+      "url": "https://redis.io/blog/redis-license-bsd-will-remain-bsd/",
+      "title": "Redis license BSD will remain BSD",
+      "publisher": "Redis",
+      "date": "2018",
+      "supports": "license_history[0]"
+    },
+    {
+      "url": "https://www.theregister.com/2018/08/23/redis_database_license_change/",
+      "title": "Redis database license change",
+      "publisher": "The Register",
+      "date": "2018-08-23",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://techcrunch.com/2019/02/21/redis-labs-changes-its-open-source-license-again/",
+      "title": "Redis Labs changes its open-source license — again",
+      "publisher": "TechCrunch",
+      "date": "2019-02-21",
+      "supports": "license_history[2]"
+    },
+    {
+      "url": "https://www.theregister.com/2019/02/22/redis_labs_changes_license_funding_60m/",
+      "title": "Redis kills Modules' Commons Clause licensing",
+      "publisher": "The Register",
+      "date": "2019-02-22",
+      "supports": "relicensing_events[0]"
+    },
+    {
+      "url": "https://www.infoq.com/news/2024/03/redis-license-open-source/",
+      "title": "Redis license change",
+      "publisher": "InfoQ",
+      "date": "2024-03",
+      "supports": "license_history[3]"
+    },
+    {
+      "url": "https://finance.yahoo.com/news/why-aws-google-oracle-backing-163006996.html",
+      "title": "Why AWS, Google and Oracle are backing the Valkey Redis fork",
+      "publisher": "TechCrunch (via Yahoo Finance)",
+      "date": "2024-03",
+      "supports": "relicensing_events[1]"
+    },
+    {
+      "url": "https://www.theregister.com/2025/05/01/redis_returns_to_open_source/",
+      "title": "Redis 'returns' to open source with AGPL license",
+      "publisher": "The Register",
+      "date": "2025-05-01",
+      "supports": "license_history[4], relicensing_events[1-2]"
+    },
+    {
+      "url": "https://www.infoq.com/news/2025/05/redis-agpl-license",
+      "title": "Redis AGPL license",
+      "publisher": "InfoQ",
+      "date": "2025-05",
+      "supports": "relicensing_events[2] (antirez rejoined Nov 2024)"
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/05/valkey-amazon-elasticache/",
+      "title": "Announcing Valkey 9.0 for Amazon ElastiCache",
+      "publisher": "AWS",
+      "date": "2026-05-05",
+      "supports": "risk_events[2]"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/database/valkey-turns-two/",
+      "title": "Valkey turns two",
+      "publisher": "AWS Database Blog",
+      "date": "2026",
+      "supports": "relicensing_events[1].outcome_note"
+    },
+    {
+      "url": "https://redis.io/press/redis-labs-110-million-series-g-led-by-tiger-global/",
+      "title": "Redis Labs $110 million Series G led by Tiger Global",
+      "publisher": "Redis",
+      "date": "2021-04-07",
+      "supports": "latest_value_usd"
+    },
+    {
+      "url": "https://www.storagenewsletter.com/2021/04/12/redis-labs-raises-110-million-in-series-g-total-at-347-million/",
+      "title": "Redis Labs Raises $110 Million in Series G, Total at $347 Million",
+      "publisher": "StorageNewsletter (citing Reuters)",
+      "date": "2021-04-12",
+      "supports": "funding_total_usd"
+    },
+    {
+      "url": "https://www.hpcwire.com/bigdatawire/this-just-in/redis-passes-300m-in-annualized-recurring-revenue/",
+      "title": "Redis Passes $300M in Annualized Recurring Revenue",
+      "publisher": "BigDATAwire",
+      "date": "2026-01",
+      "supports": "revenue_latest_usd (ARR, not GAAP revenue)"
+    },
+    {
+      "url": "https://quantlogix.ai/private-company/redis",
+      "title": "Redis Valuation 2026",
+      "publisher": "QuantLogix",
+      "date": "2026",
+      "supports": "risk_events[4] (secondary estimate ~$1.3B; no S-1)"
+    },
+    {
+      "url": "https://www.globenewswire.com/news-release/2025/09/04/3144606/0/en/Redis-to-Acquire-Real-Time-Data-Platform-Decodable-Expands-Redis-for-AI-to-Deliver-Context-and-Memory-for-AI-Agents-and-Agentic-Systems.html",
+      "title": "Redis to Acquire Real Time Data Platform Decodable",
+      "publisher": "GlobeNewswire (Redis press release)",
+      "date": "2025-09-04",
+      "supports": "robustness"
+    }
   ],
   "notes": "revenue_latest_usd is ARR (>$300M announced Jan 2026; Sacra estimated $297M ARR at end-2025), not GAAP revenue, which is undisclosed. employees_latest is null: the only figure found (501 by Oct 2024, getlatka.com) is low quality and was not used."
 }

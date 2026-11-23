@@ -1,0 +1,77 @@
+{
+  "name": "Seeed Technology Co., Ltd. (Seeed Studio)",
+  "slug": "seeed-studio",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "open-source hardware modules and dev boards (XIAO), edge-AI devices (reCamera), PCB/PCBA manufacturing (Seeed Fusion)",
+  "hq_country": "CN",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in Shenzhen in 2008 (Nanfang Daily, quoted on Seeed's about page). It describes itself as 'an early mover dedicated to incubating open-source hardware'. It opened Chaihuo Makerspace, Shenzhen's first maker space, in 2011 and launched Maker Faire Shenzhen in 2012. The founder is not named on the pages fetched.",
+  "founded_year": 2008,
+  "flagship_projects": ["XIAO microcontroller boards", "reCamera open-source AI cameras", "Seeed Fusion PCB/PCBA service", "Chaihuo Makerspace (2011)", "Maker Faire Shenzhen (2012)"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Hardware column; borderline 2/3 and low confidence. Seeed calls itself 'a leading open-source hardware provider', and The Economist (quoted on the about page) says it 'specialises in open-source hardware'. Current flagship boards publish schematics and full KiCad projects. For example, the XIAO ESP32-C3 has a schematic PDF, KiCad project, footprints, DXF and a 3D model, but no licence is stated for those files. The reCamera 2002 hardware repo (schematics, KiCad, mechanical) is Apache-2.0, while the reCamera Pro's editable sources are withheld until 'an approved hardware release'. Wiki documentation is CC BY-SA 4.0 and code is MIT. No Seeed OSHWA certifications appear on OSHWA's 2016-2020 list. The initial level of 3 is inferred from its self-description as an early open-hardware mover; no 2008-era licence record was found. No discrete closing or opening event was found, so initial and current are kept equal.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": null, "license": "CC BY-SA 4.0 (wiki documentation, tutorials, images)", "note": "The License page does not address hardware design files directly", "source": "https://wiki.seeedstudio.com/License/"},
+    {"year": null, "license": "MIT (software and code examples, unless otherwise specified)", "note": "", "source": "https://wiki.seeedstudio.com/License/"},
+    {"year": null, "license": "Apache-2.0 (reCamera 2002 family hardware: schematics, KiCad sources, mechanical files)", "note": "reCamera Pro editable sources withheld until an approved hardware release", "source": "https://github.com/Seeed-Studio/OSHW-reCamera-Series"},
+    {"year": null, "license": "No licence stated (XIAO ESP32-C3 schematic PDF and KiCad project published)", "note": "Page footer: 'Copyright 2026 Seeed Studio, Inc.'", "source": "https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Export dependence: about 95% of customers are overseas (Nanfang Daily, quoted on the about page), which exposes Seeed to trade policy. No specific tariff event was verified.",
+    "No patents on original technology (Nippon, quoted on the about page), so the designs can be freely copied and improved by competitors.",
+    "Partial openness on new products: the reCamera Pro's editable PCB and mechanical sources are withheld until an approved hardware release."
+  ],
+  "robustness": "Seeed has operated for 18 years (2008-2026) and was still publishing product news in November 2026. It earns money from its own modules and boards and from manufacturing services (Seeed Fusion PCB/PCBA). It also anchors community infrastructure: Chaihuo Makerspace and Maker Faire Shenzhen, which has had over 500,000 cumulative participants. It maintains 513 public GitHub repositories. Its main advantage is Shenzhen manufacturing and supply-chain scale rather than IP.",
+  "physical_science_relevance": "Its low-cost sensor modules, XIAO microcontrollers and edge-AI cameras (reCamera, with KiCad sources) are used for environmental monitoring and lab prototyping. The published KiCad projects let researchers adapt the boards.",
+  "openness_effect_assessment": "Seeed built a Shenzhen business around open hardware and maker infrastructure and sells mostly overseas (about 95% of customers). It publishes schematics and KiCad projects, takes no patents, and relies on manufacturing scale as its advantage. Its openness is more pragmatic than that of its US peers: design files are often posted without an explicit licence, and it has no OSHWA certifications in the 2016-2020 list. The newest product (reCamera Pro) has its sources withheld at launch. With no financials found, the effect of openness on its growth can't be quantified.",
+  "key_takeaway": "Seeed is the Shenzhen counterpart to Adafruit and SparkFun: an open-hardware-first company that also sells manufacturing services and runs maker community infrastructure. It has lasted 18 years. Its competitive edge comes from Shenzhen supply-chain scale rather than design exclusivity or patents, so open design files cost it little. Its openness is real but informal: files are published, licences are often missing, and it holds no OSHWA certifications. The pages reachable without search gave no funding, revenue or valuation figures, so its size relative to its US peers is unknown here.",
+  "confidence": "low",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.seeedstudio.com/about-us/",
+    "https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/",
+    "https://github.com/Seeed-Studio",
+    "https://github.com/Seeed-Studio/OSHW-reCamera-Series",
+    "https://wiki.seeedstudio.com/License/",
+    "https://certification.oshwa.org/list.html"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {"url": "https://www.seeedstudio.com/about-us/", "title": "About Seeed Studio", "publisher": "Seeed Technology Co., Ltd.", "date": "2026-11-23", "supports": "founded_year (2008, Shenzhen), self-description as open-source hardware provider, 95% overseas customers, no-patents quote (Nippon), Chaihuo Makerspace 2011, Maker Faire Shenzhen 2012 and 500,000+ participants, still operating (Nov 2026 posts)"},
+    {"url": "https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/", "title": "Getting Started with Seeed Studio XIAO ESP32C3", "publisher": "Seeed Studio Wiki", "date": "2026-11-23", "supports": "license_history[3] (schematic and KiCad project published, no licence stated)"},
+    {"url": "https://github.com/Seeed-Studio/OSHW-reCamera-Series", "title": "Seeed-Studio/OSHW-reCamera-Series", "publisher": "GitHub", "date": "2026-11-23", "supports": "license_history[2] (Apache-2.0 hardware repo; reCamera Pro sources withheld)"},
+    {"url": "https://wiki.seeedstudio.com/License/", "title": "License", "publisher": "Seeed Studio Wiki", "date": "2026-11-23", "supports": "license_history[0-1] (CC BY-SA 4.0 docs, MIT code)"},
+    {"url": "https://github.com/Seeed-Studio", "title": "Seeed Studio on GitHub", "publisher": "GitHub", "date": "2026-11-23", "supports": "robustness (513 public repositories; 'open source is in our DNA')"},
+    {"url": "https://certification.oshwa.org/list.html", "title": "OSHWA Certification: certified projects list", "publisher": "Open Source Hardware Association", "date": "2026-11-23", "supports": "hardware_extras.oshwa_certifications (no Seeed entries found, list through Dec 2020)"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": "None found on OSHWA's public list page, which runs only through December 2020.",
+    "hardware_licenses": ["Apache-2.0 (reCamera 2002 family hardware repo)", "XIAO boards: schematic PDF and KiCad project published without a stated licence"],
+    "firmware_software_licenses": ["MIT (software and code examples)", "CC BY-SA 4.0 (wiki documentation)"],
+    "patents": "Per a Nippon article quoted on Seeed's about page, Seeed does not protect its original technology with patents, so others may freely copy and improve it.",
+    "clone_impacts": null
+  },
+  "notes": [
+    "The WebSearch budget was exhausted before this file was started, so it was built only from WebFetch of known URLs (no web searches).",
+    "Funding, ownership type, revenue, employees and valuation were not found. English Wikipedia has no Seeed Studio company article (en: 'Seeed' is a German band; Seeed_Studio and Seeed_Technology return 404), zh.wikipedia (矽递科技, Seeed_Studio) returned 404, and the Seeed news center returned 403. ownership_status is null because VC-backed versus bootstrapped could not be confirmed.",
+    "The founder is not named on the pages fetched.",
+    "Confidence is low: the openness level rests on self-description plus two product pages, and there are no financials."
+  ]
+}

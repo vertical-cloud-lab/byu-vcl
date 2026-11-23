@@ -6,53 +6,46 @@
   "subcategory": "containers / developer tooling",
   "hq_country": "US",
   "origin": "founder_startup",
-  "origin_detail": "Started in 2008 as dotCloud, a platform-as-a-service founded by Solomon Hykes and colleagues in Paris that later went through Y Combinator and moved to San Francisco. It open-sourced its internal container tool as Docker in March 2013 and renamed itself Docker, Inc. that year.",
+  "origin_detail": "Founded as dotCloud in 2008 in Paris by Kamel Founadi, Solomon Hykes and Sebastien Pahl; incorporated in the US in 2010; renamed Docker, Inc. on 2013-10-29. HQ Palo Alto, California.",
   "founded_year": 2008,
   "flagship_projects": [
     "Docker Engine / Moby",
     "Docker Desktop",
     "Docker Hub",
-    "containerd (donated to CNCF)",
-    "runc (donated to OCI)"
+    "BuildKit"
   ],
   "openness_initial": 3,
   "openness_current": 2,
-  "openness_notes": "Docker Engine was Apache-2.0 and became the Moby project (2017); runc went to the Open Container Initiative and containerd to CNCF, so the runtime core is foundation-governed. Docker Desktop is proprietary and since August 2021 requires a paid subscription for larger companies; Docker Hub is a SaaS. Level 2.",
+  "openness_notes": "The engine's open-source upstream, Moby, is Apache-2.0, and Docker contributes to CNCF projects such as containerd and runc. Docker Desktop is proprietary: since 2021-08-31 larger businesses (250+ employees or $10M+ revenue) need a paid subscription. Revenue comes from Desktop/Hub subscriptions on top of an open engine: level 2. The 2013 open-sourcing date and original licence were not stated in fetched pages.",
   "business_model": "open_core",
   "license_history": [
     {
-      "year": 2013,
-      "license": "Apache-2.0 (Docker Engine)",
-      "note": "(unverified)",
-      "source": null
-    },
-    {
-      "year": 2017,
-      "license": "Apache-2.0 (Moby upstream)",
-      "note": "(unverified)",
-      "source": null
+      "year": null,
+      "license": "Apache-2.0 (Moby / Docker Engine components)",
+      "note": "Moby described as the open-source components Docker and the community built for the Docker Project.",
+      "source": "https://github.com/moby/moby"
     },
     {
       "year": 2021,
-      "license": "Docker Desktop: paid subscription required for larger companies",
-      "note": "August 2021 (unverified)",
-      "source": null
+      "license": "Docker Desktop: paid Pro/Team/Business subscription for larger businesses",
+      "note": "Free for fewer than 250 employees AND less than $10M revenue; grace period to 2022-01-31; from $5 to $21 per user per month (2021 prices, since revised).",
+      "source": "https://www.docker.com/press-release/docker-updates-product-subscriptions/"
     }
   ],
   "relicensing_events": [
     {
       "year": 2021,
-      "from": "free Docker Desktop",
-      "to": "paid subscription for larger companies",
+      "from": "Docker Desktop free for all users",
+      "to": "Paid subscription for larger businesses",
       "direction": "closing",
       "fork": null,
       "fork_backer": null,
-      "outcome_note": "Pushed some users to alternatives such as Podman Desktop and Rancher Desktop (unverified)",
-      "source": null
+      "outcome_note": "Followed by a $105M Series C (March 2022) citing more than 4x year-on-year ARR growth and 56,000 paying customers.",
+      "source": "https://www.docker.com/blog/docker-raises-series-c-build-share-run/"
     }
   ],
-  "funding_total_usd": null,
-  "funding_as_of": null,
+  "funding_total_usd": 341800000,
+  "funding_as_of": "2022-03",
   "ownership_status": "private_vc",
   "exit_events": [
     {
@@ -60,8 +53,8 @@
       "type": "acquisition",
       "value_usd": null,
       "counterparty": "Mirantis",
-      "note": "Mirantis bought the Docker Enterprise business in November 2019; Docker, Inc. restructured around developer tools (unverified; value deliberately null)",
-      "source": null
+      "note": "Mirantis bought the Docker Enterprise platform business, its team and 'hundreds of enterprise customers' on 2019-11-13; terms confidential. Docker, Inc. restructured with a $35M recapitalisation.",
+      "source": "https://www.mirantis.com/company/press-center/company-news/mirantis-acquires-docker-enterprise/"
     }
   ],
   "latest_value_usd": null,
@@ -74,15 +67,59 @@
   "end_year": null,
   "us_focus": true,
   "risk_events": [
-    "2019: Enterprise unit sold to Mirantis and company restructured after failing to monetize containers at scale (unverified)",
-    "2021: Desktop licence change for larger companies (unverified)"
+    "2019-11: Enterprise business sold to Mirantis; restructuring and $35M recapitalisation",
+    "2021-08-31: Docker Desktop subscription requirement for larger businesses",
+    "2025-02: CEO change (Don Johnson succeeded Scott Johnston)"
   ],
-  "robustness": "The container runtime and image formats are governed by OCI and CNCF, so the technology does not depend on Docker, Inc.; the company's paid products (Desktop, Hub) are proprietary.",
+  "robustness": "The runtime pieces live in Moby (Apache-2.0) and CNCF projects (containerd, runc), so containers do not depend on Docker, Inc. The company depends on proprietary Desktop and Hub subscriptions: 56,000 paying customers and 16M monthly active users in March 2022. It acquired MCP Defender (AI-agent security) in September 2025 (Wikipedia citing Docker blog).",
   "physical_science_relevance": "",
-  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
-  "key_takeaway": "Draft only. Docker's open-source project won its market so completely, and gave key pieces to foundations (OCI, CNCF), that the company struggled to capture the value: Kubernetes and the clouds monetized containers, Docker sold its enterprise unit in 2019 and rebuilt around paid developer subscriptions. Valuation and revenue need sourcing.",
-  "confidence": "low",
-  "searches": [],
-  "sources": [],
-  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+  "openness_effect_assessment": "Open-sourcing Docker made the company a unicorn by April 2015, but it could not monetize the runtime and sold its enterprise unit in 2019. It recovered by charging larger companies for the proprietary Desktop app from 2021, which coincided with more than 4x ARR growth: the money came from closing developer tooling, not the open core.",
+  "key_takeaway": "Docker is the case of an open project that won its market so completely that the company struggled to capture the value: Kubernetes and the clouds monetized containers, Docker sold its enterprise unit in 2019, and then rebuilt around paid Desktop subscriptions for large companies. Value capture came from a proprietary client, not from relicensing the engine.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Docker,_Inc.",
+    "https://www.docker.com/blog/docker-raises-series-c-build-share-run/",
+    "https://www.docker.com/press-release/docker-updates-product-subscriptions/",
+    "https://www.mirantis.com/company/press-center/company-news/mirantis-acquires-docker-enterprise/",
+    "https://github.com/moby/moby"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Docker,_Inc.",
+      "title": "Docker, Inc.",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail, funding rounds, unicorn valuation April 2015, CEO history, 2025 events"
+    },
+    {
+      "url": "https://www.docker.com/blog/docker-raises-series-c-build-share-run/",
+      "title": "Docker raises Series C",
+      "publisher": "Docker blog",
+      "date": "2022-03-31",
+      "supports": "relicensing_events[0].outcome_note, robustness ($105M led by Bain Capital Ventures; >4x ARR growth; 56,000 paying customers)"
+    },
+    {
+      "url": "https://www.docker.com/press-release/docker-updates-product-subscriptions/",
+      "title": "Docker updates product subscriptions",
+      "publisher": "Docker press release",
+      "date": "2021-08-31",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://www.mirantis.com/company/press-center/company-news/mirantis-acquires-docker-enterprise/",
+      "title": "Mirantis acquires Docker Enterprise",
+      "publisher": "Mirantis press release",
+      "date": "2019-11-13",
+      "supports": "exit_events[0]"
+    },
+    {
+      "url": "https://github.com/moby/moby",
+      "title": "moby/moby",
+      "publisher": "GitHub",
+      "date": "2026",
+      "supports": "license_history[0] (Apache-2.0)"
+    }
+  ],
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. funding_total_usd sums rounds listed on Wikipedia: $0.8M seed (2011), $10M A (2011), $15M B (2014), $40M C (2014), $95M D (2015, valuation over $1B), $18M (2015), $35M recap (2019), $23M (2021), $105M C (2022). latest_value_usd is null: the 2022 valuation was not stated in fetched pages, and the 2015 'over $1 billion' predates the 2019 restructuring. revenue_latest_usd and employees_latest are null."
 }

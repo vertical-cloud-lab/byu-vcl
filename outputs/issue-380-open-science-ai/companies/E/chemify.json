@@ -1,0 +1,66 @@
+{
+  "name": "Chemify Ltd",
+  "slug": "chemify",
+  "group": "E",
+  "category": "physical_science",
+  "subcategory": "chemputation: programmable robotic chemical synthesis + AI ('hyperscaler for chemistry')",
+  "hq_country": "GB",
+  "origin": "academic",
+  "origin_detail": "University of Glasgow spin-out founded by Lee Cronin, Regius Professor of Chemistry at Glasgow, to commercialize his lab's Chemputer, the XDL chemical programming language and the ChemPU literature database. Locations: Glasgow and San Francisco.",
+  "founded_year": 2022,
+  "flagship_projects": ["Chemputation / Chemputer", "XDL (chemical description language, from the Cronin lab)", "Genesis Agentic Chemputation Engine", "Chemifarm chemputation facility, Maryhill, Glasgow (opened 2025)", "Curie reactor systems"],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "The company's Genesis engine, Chemifarm and Curie reactors are proprietary; customers buy 'threads of chempute'. The academic precursor work is public: the Cronin group's GitHub (croningp) hosts ChemputerSoftware (code accompanying the Chemputer Science paper, ~111 stars) and ChemputerAntiviralXDL, but no licence is shown on the org page. Chemify itself has made no open-source releases on its site. Scored 0 for the company; the open academic lineage is noted.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2022, "license": "Proprietary (company)", "note": "Academic Chemputer/XDL code on GitHub predates it; licence not shown", "source": "https://github.com/croningp"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 93000000,
+  "funding_as_of": "2025-10",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2 Aug 2023: $43M Series A (BBC reported GBP 33M)",
+    "20 Jun 2025: opened what it calls the world's first chemputation facility (the Chemifarm)",
+    "21 Oct 2025: oversubscribed Series B of more than $50M",
+    "12 Feb 2026: strategic investment from Zeon Corporation (amount undisclosed)",
+    "16 Sep 2026: GBP 22M in grants from Scottish Enterprise and the UK Government"
+  ],
+  "robustness": "Supported by equity investors, a Japanese chemicals strategic investor (Zeon) and substantial UK public grants, with pharma collaborations (Dewpoint, Sanacor) and TB/malaria discovery grants. It depends on a founder-scientist's paradigm and a single proprietary facility; the academic code base offers partial continuity.",
+  "physical_science_relevance": "Very high. Chemify does programmable synthesis of molecules and materials at a dedicated robotic facility. It began as academic digital chemistry (Chemputer, XDL) and now applies it to drug leads and materials with chemical-industry partners such as Zeon.",
+  "openness_effect_assessment": "Chemify is an academic open-science lineage commercialized as a closed platform. The Cronin lab published Chemputer software and XDL procedures alongside papers, which built the scientific case and community recognition. The company sells proprietary capacity, partly funded by public money (GBP 22M in grants). Fetched sources do not show whether the academic openness helped the company commercially.",
+  "key_takeaway": "Chemify is the academic-spinout version of the AI-plus-automation chemistry company: a decade of Glasgow research on programmable chemistry (Chemputer, XDL, partly public on GitHub) has become a proprietary 'hyperscaler for chemistry'. By late 2026 it had at least $93M in equity plus GBP 22M of UK public grants, and a Chemifarm facility opened in 2025. Public and academic investment created the paradigm; the commercial asset is closed.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from chemify.io, Wikipedia (Leroy Cronin) and GitHub pages listed in fetched_urls.",
+    "founded_year conflict: chemify.io timeline says 2022; Wikipedia's Leroy Cronin article says Chemify launched in 2019 as a spin-off. The company's own date is used.",
+    "funding_total_usd = $43M Series A + >$50M Series B (lower bound; excludes Zeon's undisclosed strategic investment and GBP 22M grants).",
+    "Licences of the croningp ChemputerSoftware/XDL repositories not shown on the GitHub org page.",
+    "Maryhill Chemifarm opening year (2025) is from chemify.io; the news page dates the first chemputation facility to 20 Jun 2025."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.chemify.io/",
+    "https://www.chemify.io/news",
+    "https://en.wikipedia.org/wiki/Leroy_Cronin",
+    "https://github.com/croningp"
+  ],
+  "sources": [
+    {"url": "https://www.chemify.io/news", "title": "Chemify news", "publisher": "Chemify", "date": "2026-10-22", "supports": "funding_total_usd, risk_events[0-4], origin_detail (Glasgow spin-out per Tech EU), robustness"},
+    {"url": "https://www.chemify.io/", "title": "Chemify home page", "publisher": "Chemify", "date": "2026-11", "supports": "founded_year, flagship_projects, openness_notes, subcategory"},
+    {"url": "https://en.wikipedia.org/wiki/Leroy_Cronin", "title": "Leroy Cronin", "publisher": "Wikipedia", "date": "2026", "supports": "origin_detail (Regius Professor), notes (2019 launch, GBP 33M 2023)"},
+    {"url": "https://github.com/croningp", "title": "croningp (Cronin Group) GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes, license_history[0]"}
+  ]
+}

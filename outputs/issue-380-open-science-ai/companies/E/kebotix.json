@@ -1,0 +1,63 @@
+{
+  "name": "Kebotix, Inc.",
+  "slug": "kebotix",
+  "group": "E",
+  "category": "ai_lab",
+  "subcategory": "AI + robotic self-driving lab for materials and chemicals discovery",
+  "hq_country": "US",
+  "origin": null,
+  "origin_detail": "Cambridge, MA company (501 Massachusetts Ave.) offering an AI platform and closed-loop 'predict-produce-prove' self-driving lab for materials and chemicals. Investors shown on its site: Embark Ventures, One Way Ventures, Taihill Venture, Flybridge, WorldQuant Ventures, ArcTern Ventures, Novo Holdings, Baidu Ventures, SIT Capital, Propagator Ventures. A Harvard spin-out origin and founders are not confirmed in fetched sources; CEO Jill Becker and CSO Semion Saikin are named in a news headline.",
+  "founded_year": null,
+  "flagship_projects": ["Kebotix AI platform", "Closed-loop self-driving lab (predict-produce-prove)"],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "No open-source code, data, models or hardware designs found on kebotix.com. The platform and lab are proprietary.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": null, "license": "Proprietary", "note": "No open releases found", "source": "https://www.kebotix.com/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": null,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2019-2020 recognition: C&EN Top 10 chemistry start-ups to watch (2019), WEF Technology Pioneer (2020), MIT Technology Review 'AI-discovered molecules' key player",
+    "Partnerships listed: Bayer, bp, Johnson Matthey, Mitsubishi Chemical, Valqua (3-year deal, ~Mar 2022), University of Toronto (OLEDs), SCM, Northeastern Roux Institute; EPA safe-pigments project; industry partner in a $15M NSF institute",
+    "Dormancy signal: the news page's latest dated item is ~Mar 2022 (Valqua); only the footer shows (c) 2026, and no later news, funding or hiring evidence was found"
+  ],
+  "robustness": "Unclear and likely weak. A small VC-backed proprietary platform with no visible activity since 2022, and nothing open that could outlive it. Whether it shut down, was acquired or is dormant could not be determined without web search.",
+  "physical_science_relevance": "Very high. It was one of the first commercial 'self-driving labs' for materials and chemicals, working on OLED materials, safe pigments (EPA), crop protection (Bayer), toxicity (Mitsubishi Chemical) and digital materials strategy (Johnson Matthey, bp).",
+  "openness_effect_assessment": "Kebotix commercialized the self-driving-lab concept as a closed platform and partnership business. It released nothing open, so its methods left no public trace for the SDL community to build on. Its apparent stall after 2022, before the 2025 AI-for-science funding boom, suggests the closed model did not by itself secure capital or survival for an early mover.",
+  "key_takeaway": "Kebotix was an early (c. 2017-2022) closed AI-plus-robotics materials-discovery startup with strong recognition (C&EN, WEF, MIT Tech Review) and blue-chip partners, but its public activity stops around 2022. Whether it 'shut down' is unconfirmed: the website is live with a 2026 copyright but has no news after ~Mar 2022. It is a cautionary early mover that predates the 2025-2026 funding wave and left no open artifacts.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from kebotix.com pages listed in fetched_urls.",
+    "Founding year, founders, Harvard origin and funding totals not confirmed: Wikipedia has no Kebotix article (404), the C&EN 2019 list returned HTTP 406, and MIT Technology Review only lists Kebotix as a key player.",
+    "still_operating and ownership_status set to null: no closure, acquisition or recent-activity evidence found either way.",
+    "kebotix.com/about returned 404; /about-us lists only HQ, mission and investor logos."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.kebotix.com/",
+    "https://www.kebotix.com/news",
+    "https://www.kebotix.com/about-us",
+    "https://www.technologyreview.com/technology/ai-discovered-molecules/"
+  ],
+  "sources": [
+    {"url": "https://www.kebotix.com/", "title": "Kebotix home page", "publisher": "Kebotix", "date": "2026-11 (fetched)", "supports": "subcategory, flagship_projects, openness_notes, risk_events[0], physical_science_relevance"},
+    {"url": "https://www.kebotix.com/news", "title": "Kebotix news", "publisher": "Kebotix", "date": "2022-03 (latest dated item)", "supports": "risk_events[1], risk_events[2], origin_detail (CEO/CSO named)"},
+    {"url": "https://www.kebotix.com/about-us", "title": "Kebotix: About us", "publisher": "Kebotix", "date": "2026-11 (fetched)", "supports": "origin_detail (HQ, investors)"},
+    {"url": "https://www.technologyreview.com/technology/ai-discovered-molecules/", "title": "AI-discovered molecules (10 Breakthrough Technologies)", "publisher": "MIT Technology Review", "date": "2020", "supports": "risk_events[0]"}
+  ]
+}

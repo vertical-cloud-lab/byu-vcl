@@ -114,6 +114,7 @@
   "openness_effect_assessment": "Microsoft's move from hostility (2001) to open-sourcing .NET (2014), VS Code (2015) and buying GitHub (2018) coincided with its pivot to the Azure cloud, where hosting open-source and Linux workloads was the business. Opening the developer layer won developer mindshare without giving up the proprietary cloud and productivity services that earn the money; by FY2026 Azure alone passed $100B. In AI it pairs a closed frontier partner (OpenAI) with MIT-licensed small models and tooling.",
   "key_takeaway": "Microsoft is the canonical convert: once its revenue moved from selling Windows licences to renting cloud capacity, open source changed from threat to on-ramp, and it open-sourced its developer stack and bought the platform where open source lives. Its openness is real at the tool and small-model layer and absent at the money-making core, an open-core strategy run at the scale of a $3.6T company. For the study it shows that a firm's stance on openness tracks where its profits come from, not ideology.",
   "confidence": "medium",
+  "search_tool": "WebSearch (standard and extended modes)",
   "searches": [
     "Ballmer \"Linux is a cancer\" 2001 Chicago Sun-Times; Nadella \"Microsoft loves Linux\" 2014",
     "Microsoft open sources .NET Core MIT license November 2014 .NET Foundation; Visual Studio Code open source MIT 2015",

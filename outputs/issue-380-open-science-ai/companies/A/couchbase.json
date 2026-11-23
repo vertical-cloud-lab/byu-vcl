@@ -6,50 +6,68 @@
   "subcategory": "NoSQL document database",
   "hq_country": "US",
   "origin": "founder_startup",
-  "origin_detail": "Formed in 2011 by merging Membase Inc. (formerly NorthScale, built around memcached) with CouchOne, the company of Apache CouchDB creator Damien Katz; based in Santa Clara, California.",
+  "origin_detail": "Created in February 2011 by merging Membase, Inc. (founded 2009 as NorthScale by memcached leaders James Phillips, Steve Yen and Dustin Sallings) with CouchOne (founded 2009 as Relaxed in Berkeley, whose people had major roles in Apache CouchDB). Wikipedia lists the HQ as San Jose, California (the page is internally inconsistent).",
   "founded_year": 2011,
   "flagship_projects": [
     "Couchbase Server",
     "Couchbase Capella (DBaaS)",
-    "Couchbase Mobile / Couchbase Lite"
+    "Couchbase Mobile / Couchbase Lite",
+    "Couchbase Edge Server"
   ],
   "openness_initial": 2,
-  "openness_current": null,
-  "openness_notes": "Open core: Community Edition source historically Apache-2.0, with a proprietary Enterprise Edition and the Capella cloud. A move of Couchbase Server source to BSL 1.1 around 2021 is recalled but not verified; if confirmed, the current level is 1. Current level left null until checked.",
+  "openness_current": 1,
+  "openness_notes": "Couchbase Server shipped as an Apache-2.0 Community Edition (without recent bug fixes) alongside a commercial Enterprise Edition, i.e. open core (2). On 2021-03-26 Couchbase announced it was adopting the Business Source License 1.1; Wikipedia now lists BSL 1.1 and calls the software source-available, so the current level is 1. Which versions moved and whether older code stays Apache-2.0 was not confirmed.",
   "business_model": "open_core",
   "license_history": [
     {
-      "year": 2011,
-      "license": "Apache-2.0 (Community Edition source); proprietary Enterprise Edition",
-      "note": "(unverified)",
-      "source": null
+      "year": 2010,
+      "license": "Apache-2.0 (Community Edition) + commercial Enterprise Edition",
+      "note": "First release August 2010 (as Membase).",
+      "source": "https://en.wikipedia.org/wiki/Couchbase_Server"
+    },
+    {
+      "year": 2021,
+      "license": "Business Source License 1.1",
+      "note": "'Couchbase Adopts BSL License', Couchbase blog, 2021-03-26, cited by Wikipedia (the blog itself returned HTTP 403).",
+      "source": "https://en.wikipedia.org/wiki/Couchbase_Server"
     }
   ],
-  "relicensing_events": [],
+  "relicensing_events": [
+    {
+      "year": 2021,
+      "from": "Apache-2.0",
+      "to": "BSL 1.1",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Came four months before the IPO. No fork appears in the fetched sources.",
+      "source": "https://en.wikipedia.org/wiki/Couchbase_Server"
+    }
+  ],
   "funding_total_usd": null,
   "funding_as_of": null,
-  "ownership_status": null,
+  "ownership_status": "private_pe",
   "exit_events": [
     {
       "year": 2021,
       "type": "IPO",
       "value_usd": null,
       "counterparty": "Nasdaq: BASE",
-      "note": "IPO in July 2021 (unverified; value deliberately null)",
-      "source": null
+      "note": "Listed 2021-07-21 (Wikipedia). Priced at $24.00; 9,589,999 shares including the fully exercised over-allotment; ~$230M gross proceeds (Baird deal card). IPO valuation not confirmed.",
+      "source": "https://www.rwbaird.com/transactions/investment-banking/dealcard/5825/"
     },
     {
       "year": 2025,
       "type": "take_private",
-      "value_usd": null,
+      "value_usd": 1500000000,
       "counterparty": "Haveli Investments",
-      "note": "Take-private agreement recalled from around June 2025; terms and completion need a search (post-mid-2025) (unverified; value deliberately null)",
-      "source": null
+      "note": "Definitive agreement 2025-06-20 at $24.50/share cash, a 29% premium to the 2025-06-18 close and 67% to the 2025-03-27 close; Haveli already owned 9.6%. Completed 2025-09-24; stock delisted from Nasdaq; Matt Cain stayed as CEO.",
+      "source": "https://www.prnewswire.com/news-releases/haveli-investments-completes-acquisition-of-couchbase-302565846.html"
     }
   ],
-  "latest_value_usd": null,
-  "latest_value_type": null,
-  "latest_value_date": null,
+  "latest_value_usd": 1500000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2025-09-24",
   "revenue_latest_usd": null,
   "revenue_year": null,
   "employees_latest": null,
@@ -57,14 +75,60 @@
   "end_year": null,
   "us_focus": true,
   "risk_events": [
-    "Post-IPO share-price weakness ahead of a reported 2025 take-private agreement (unverified)"
+    "2016-03: $30M down round (WSJ, cited by Wikipedia)",
+    "2021-03: Adopted BSL 1.1",
+    "2025-03-27: Share price low enough that the later $24.50 offer was a 67% premium",
+    "2025-09-24: Delisted after the Haveli take-private"
   ],
-  "robustness": "Single-vendor product with no foundation and no known fork. Apache CouchDB (ASF-governed) shares only history.",
+  "robustness": "Single vendor with no foundation and no known fork; owned by private equity (Haveli) since September 2025. Apache CouchDB, an ASF project, shares only history with it.",
   "physical_science_relevance": "",
-  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
-  "key_takeaway": "Draft only. Couchbase looks like the private-equity counterpart to IBM's strategic purchases of HashiCorp and Confluent: a small public open-core database company that reportedly agreed a take-private in 2025. Verify the deal, its value and its completion before use.",
-  "confidence": "low",
-  "searches": [],
-  "sources": [],
-  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file. ownership_status is null because the reported 2025 take-private could not be confirmed. Queries attempted but refused by the budget: 'Couchbase formed 2011 merger NorthScale Membase CouchOne Damien Katz CouchDB history founded'; 'Couchbase Server Business Source License BSL 1.1 2021 license change Apache 2.0 community edition'; 'Couchbase IPO July 2021 Nasdaq BASE priced $24 valuation total funding raised'; 'Haveli Investments acquires Couchbase $1.5 billion take private $24.50 per share completed 2025'; 'Couchbase fiscal 2025 revenue $209 million employees 10-K January 31 2025'."
+  "openness_effect_assessment": "An Apache-licensed open core carried Couchbase to a 2021 Nasdaq IPO at $24 a share, but it switched to BSL just before listing and never re-rated: private equity bought it in 2025 for $24.50 a share (~$1.5B), almost exactly the IPO price. The closing triggered no fork, probably because no large third party was reselling it, but it also bought no visible valuation gain.",
+  "key_takeaway": "Couchbase is the private-equity version of the consolidation that IBM drove with HashiCorp and Confluent: a smaller open-core database that moved to BSL in 2021, stayed flat in public markets, and was taken private by Haveli Investments for about $1.5B in September 2025, at roughly its IPO price.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Couchbase,_Inc.",
+    "https://en.wikipedia.org/wiki/Couchbase_Server",
+    "https://www.rwbaird.com/transactions/investment-banking/dealcard/5825/",
+    "https://siliconangle.com/2025/06/22/couchbase-agrees-acquired-private-equity-firm-haveli-1-5b/",
+    "https://www.prnewswire.com/news-releases/haveli-investments-completes-acquisition-of-couchbase-302565846.html"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Couchbase,_Inc.",
+      "title": "Couchbase, Inc.",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "origin_detail, founded_year, exit_events, risk_events[0], CEO"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Couchbase_Server",
+      "title": "Couchbase Server",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "license_history, relicensing_events (cites Couchbase blog 2021-03-26)"
+    },
+    {
+      "url": "https://www.rwbaird.com/transactions/investment-banking/dealcard/5825/",
+      "title": "Couchbase IPO deal card",
+      "publisher": "Robert W. Baird & Co.",
+      "date": "2021",
+      "supports": "exit_events[0] ($24.00, ~$230M)"
+    },
+    {
+      "url": "https://siliconangle.com/2025/06/22/couchbase-agrees-acquired-private-equity-firm-haveli-1-5b/",
+      "title": "Couchbase agrees to be acquired by private equity firm Haveli for $1.5B",
+      "publisher": "SiliconANGLE",
+      "date": "2025-06-22",
+      "supports": "exit_events[1] (premiums, 9.6% stake)"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/haveli-investments-completes-acquisition-of-couchbase-302565846.html",
+      "title": "Haveli Investments Completes Acquisition of Couchbase",
+      "publisher": "PR Newswire (Haveli/Couchbase press release)",
+      "date": "2025-09-24",
+      "supports": "exit_events[1], latest_value_usd"
+    }
+  ],
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. funding_total_usd is null: Wikipedia lists rounds from 2009-2016 summing to about $146M but omits later pre-IPO rounds. revenue_latest_usd and employees_latest are null: the investor-relations site now redirects and SEC EDGAR returned 503. Couchbase blog (couchbase.com/blog/couchbase-adopts-bsl-license/) returned 403."
 }

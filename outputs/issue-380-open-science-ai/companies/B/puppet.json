@@ -1,0 +1,129 @@
+{
+  "name": "Puppet, Inc. (formerly Puppet Labs; owned by Perforce)",
+  "slug": "puppet",
+  "group": "B",
+  "category": "software",
+  "subcategory": "infrastructure configuration management / DevOps automation",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2005 in Portland, Oregon, by Luke Kanies around his open-source Puppet configuration tool; acquired by Perforce Software in 2022",
+  "founded_year": 2005,
+  "flagship_projects": [
+    "Puppet (open source)",
+    "Puppet Enterprise",
+    "Distelli (acquired 2017)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Puppet began as a GPLv2 open-source tool sold with services; from v2.7.0 it moved to Apache-2.0 while Puppet Enterprise became the proprietary paid product (open core). In early 2025 Perforce moved official binaries/packages to a private repository under an EULA (free only up to 25 nodes for non-commercial/dev use) and slowed public source commits; the source stays Apache-2.0, so the rating is 2, but practical openness fell sharply and the community forked it (OpenVox).",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2005,
+      "license": "GPL-2.0",
+      "note": "Free version under GPLv2 until version 2.7.0",
+      "source": "https://en.wikipedia.org/wiki/Puppet_(software)"
+    },
+    {
+      "year": 2011,
+      "license": "Apache-2.0 (open source) + proprietary Puppet Enterprise",
+      "note": "Switch at v2.7.0; year approximate (Wikipedia gives no year)",
+      "source": "https://en.wikipedia.org/wiki/Puppet_(software)"
+    },
+    {
+      "year": 2025,
+      "license": "Apache-2.0 source; official binaries in a private repository under EULA; >25 nodes requires commercial licence",
+      "note": "Announced by Perforce in Nov 2024, effective early 2025",
+      "source": "https://devclass.com/2024/12/18/community-plans-to-fork-puppet-unhappy-with-perforce-changes-to-open-source-project/"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2011,
+      "from": "GPL-2.0",
+      "to": "Apache-2.0 (more permissive)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Permissive relicence alongside the launch of proprietary Puppet Enterprise; year approximate",
+      "source": "https://en.wikipedia.org/wiki/Puppet_(software)"
+    },
+    {
+      "year": 2025,
+      "from": "Public Apache-2.0 binaries and frequent public commits",
+      "to": "EULA-gated official binaries (25-node limit) and slowed public commits",
+      "direction": "closing",
+      "fork": "OpenVox",
+      "fork_backer": "Vox Pupuli community (Puppet module maintainers); Perforce refused use of the Puppet name",
+      "outcome_note": "Not a change to the source licence. Community declared 'Perforce is forking Puppet'; universities such as NC State announced a move to OpenVox in Jul 2025",
+      "source": "https://devclass.com/2024/12/18/community-plans-to-fork-puppet-unhappy-with-perforce-changes-to-open-source-project/"
+    }
+  ],
+  "funding_total_usd": 150000000,
+  "funding_as_of": "2018-06",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2022,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Perforce Software",
+      "note": "Announced Apr 2022, closed May 2022; price undisclosed; Perforce then laid off ~15% of Puppet's Portland workforce",
+      "source": "https://en.wikipedia.org/wiki/Puppet_(software)"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Competition from agentless and cloud-native tools reduced Puppet's market position before its sale (not quantified in fetched pages)",
+    "2022: sold to Perforce (a PE-backed consolidator) for an undisclosed price; ~15% layoffs in Portland",
+    "Nov 2024/early 2025: binaries moved behind an EULA with a 25-node limit; last open-source Puppet release 8.10 (22 Oct 2024); community fork OpenVox (Vox Pupuli, first release 21 Jan 2025); institutions migrating (e.g. NC State, Aug 2025)"
+  ],
+  "robustness": "The Apache-2.0 code base survives via the OpenVox fork, which keeps a fully open build. The company is now a product line inside Perforce, with no independent valuation, revenue or headcount disclosed, and community goodwill was damaged by the 2025 restrictions.",
+  "physical_science_relevance": "Puppet has been widely used to manage HPC clusters and university research computing fleets (e.g. NC State's move to OpenVox), so the 2025 restrictions directly affected research IT.",
+  "openness_effect_assessment": "Openness built Puppet's early dominance in configuration management and raised $150M, but the open-core model did not deliver an IPO-scale outcome; after a quiet sale to Perforce, the new owner restricted the community distribution, and the community forked. The closing protected Perforce's licence revenue at the cost of the user base's trust.",
+  "key_takeaway": "Puppet follows the post-acquisition closing pattern: a once-leading open-source DevOps tool, bought by a consolidator, then restricted (EULA-gated binaries, 25-node limit) in 2025, prompting a community fork (OpenVox) that research institutions adopted. Ownership change, not the founders, drove the closing.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Puppet_(software)",
+    "https://devclass.com/2024/12/18/community-plans-to-fork-puppet-unhappy-with-perforce-changes-to-open-source-project/",
+    "https://linux.ncsu.edu/news/2025/07/puppet-to-openvox-transition/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Puppet_(software)",
+      "title": "Puppet (software)",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail, license_history[0-1], funding_total_usd ($150M after $42M Cisco-led round, Jun 2018), exit_events[0], risk_events (layoffs, OpenVox), physical_science_relevance (NC State)"
+    },
+    {
+      "url": "https://devclass.com/2024/12/18/community-plans-to-fork-puppet-unhappy-with-perforce-changes-to-open-source-project/",
+      "title": "Community plans to fork Puppet, unhappy with Perforce changes to open source project",
+      "publisher": "DevClass",
+      "date": "2024-12-18",
+      "supports": "license_history[2], relicensing_events[1] (EULA, 25 nodes, slowed commits, fork organizers, name refused)"
+    },
+    {
+      "url": "https://linux.ncsu.edu/news/2025/07/puppet-to-openvox-transition/",
+      "title": "Puppet to OpenVox transition",
+      "publisher": "NC State University",
+      "date": "2025-07-22",
+      "supports": "relicensing_events[1] outcome (last open-source Puppet release 8.10 on 22 Oct 2024; OpenVox led by Vox Pupuli, first release 21 Jan 2025; NC State switch 5 Aug 2025; Puppet Core subscription judged unaffordable)"
+    }
+  ],
+  "notes": [
+    "Perforce acquisition price undisclosed; latest_value null.",
+    "The GPL-to-Apache switch year (2011) is approximate: Wikipedia gives only the version (2.7.0).",
+    "revenue/employees null: not in fetched pages.",
+    "The first risk_event is a general characterization without a fetched quantitative source."
+  ]
+}

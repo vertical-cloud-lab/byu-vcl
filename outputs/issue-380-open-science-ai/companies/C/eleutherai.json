@@ -1,0 +1,119 @@
+{
+  "name": "EleutherAI (EleutherAI Institute)",
+  "slug": "eleutherai",
+  "group": "C",
+  "category": "ai_lab",
+  "subcategory": "grassroots, then non-profit, open AI research: open LLMs (GPT-Neo/J/NeoX, Pythia), datasets (The Pile, Common Pile), evaluation tools",
+  "hq_country": null,
+  "origin": "community",
+  "origin_detail": "Began as a Discord server on 2020-07-07 (first called 'LibreAI') founded by Connor Leahy, Leo Gao and Sid Black to build open alternatives to GPT-3; formally incorporated as the EleutherAI Institute, a non-profit research institute, in early 2023, run by Stella Biderman, Curtis Huebner and Shivanshu Purohit. Works with hundreds of volunteer researchers. Headquarters/jurisdiction of the institute not confirmed from a fetched page (hq_country and us_focus left null).",
+  "founded_year": 2020,
+  "flagship_projects": [
+    "The Pile",
+    "GPT-Neo / GPT-J-6B / GPT-NeoX-20B",
+    "Pythia (Apache-2.0, 154 checkpoints per model)",
+    "Common Pile v0.1 and Comma v0.1 models",
+    "LM Evaluation Harness"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Level 4 throughout: open models, datasets and tools developed by an open volunteer community, later a non-profit ('EleutherAI is a non-profit AI research lab'; 'embrace[s] an open and collaborative research model'). Models are under OSI licences (GPT-J-6B Apache-2.0; Pythia Apache-2.0 with 154 intermediate checkpoints per model for research on model behaviour). Its main weakness was data provenance: The Pile (2020-12-31, 886 GB) contained copyrighted material, which the Common Pile v0.1 (June 2025, 8 TB from 30 sources) replaces with public-domain and openly licensed text only.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2020,
+      "license": "The Pile dataset (886 GB)",
+      "note": "Released 2020-12-31; later scrutinised for copyrighted books and YouTube subtitles.",
+      "source": "https://en.wikipedia.org/wiki/EleutherAI"
+    },
+    {
+      "year": 2021,
+      "license": "Apache-2.0 (GPT-J-6B)",
+      "note": "GPT-Neo models released March 2021; GPT-J-6B June 2021 (the article gives conflicting dates); GPT-NeoX-20B 2022-02-10.",
+      "source": "https://en.wikipedia.org/wiki/EleutherAI"
+    },
+    {
+      "year": null,
+      "license": "Apache-2.0 (Pythia suite)",
+      "note": "154 intermediate checkpoints per model hosted as Hugging Face branches; release year not shown on the card fetched.",
+      "source": "https://huggingface.co/EleutherAI/pythia-12b"
+    },
+    {
+      "year": 2025,
+      "license": "Public-domain and openly licensed text (Common Pile v0.1); Comma v0.1 7B models",
+      "note": "Paper submitted 2025-06-05: 8 TB from 30 sources, with dataset code, training mixture and checkpoints for Comma v0.1-1T and -2T.",
+      "source": "https://arxiv.org/abs/2506.05209"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2025,
+      "from": "Training data of mixed provenance including copyrighted works (The Pile)",
+      "to": "Only works whose licences permit AI training (Common Pile v0.1)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "A data-provenance rather than code-licence change: it makes the whole training pipeline legally reusable and answers the 2024 criticism of The Pile.",
+      "source": "https://arxiv.org/abs/2506.05209"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": "Donors and sponsors include Google TPU Research Cloud, Open Philanthropy, Mozilla Foundation, Omidyar Network, Stability AI, Lambda Labs and Nat Friedman; early compute from CoreWeave and SpellML (amounts not disclosed on pages fetched)",
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": null,
+  "risk_events": [
+    "The Pile 'has come under scrutiny for containing copyrighted material' (books and video subtitles); a July 2024 Proof News/Wired investigation found subtitles from over 170,000 YouTube videos, drawing accusations of theft",
+    "Dependence on donated compute and sponsor funding, including from AI companies such as Stability AI, which itself went through a 2023-24 cash crisis (see stability-ai.json)"
+  ],
+  "robustness": "Low cost base (volunteers plus a small institute staff) and fully open outputs, so its models, datasets and evaluation tools persist regardless of the organisation's fortunes. Financially fragile in principle, being dependent on philanthropic and corporate sponsors and donated compute.",
+  "physical_science_relevance": "Its open checkpoints (Pythia) and openly licensed training data (Common Pile) are the substrate for reproducible research on how language models learn, relevant to any lab that needs auditable models; no physical-science-specific programme in the pages fetched.",
+  "openness_effect_assessment": "EleutherAI showed in 2020-2022 that a volunteer community could replicate GPT-3-class research openly (GPT-J, GPT-NeoX-20B), and The Pile became a standard training corpus that seeded much of the open-model ecosystem. Openness of data also exposed it to the copyright backlash, which it answered by building the Common Pile from openly licensed text only. Its influence comes through others' models and research rather than through any market value of its own.",
+  "key_takeaway": "EleutherAI is the community-origin case: openness was its entire reason for existing, and it converted into a non-profit institute rather than a company. It shows that open AI science can be produced at low cost by volunteers with donated compute, that open data carries legal risk that full transparency makes visible, and that the fix is better-licensed data rather than closing. For the study, it is a pure public-goods producer whose value appears in downstream adoption, not in a valuation.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/EleutherAI",
+    "https://www.eleuther.ai/about",
+    "https://arxiv.org/abs/2506.05209",
+    "https://huggingface.co/EleutherAI/pythia-12b"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/EleutherAI",
+      "title": "EleutherAI",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, license_history[0], license_history[1], funding_as_of (CoreWeave, SpellML, Google TRC), risk_events[0]"
+    },
+    {
+      "url": "https://www.eleuther.ai/about",
+      "title": "About EleutherAI",
+      "publisher": "EleutherAI",
+      "date": null,
+      "supports": "openness_notes (quotes), funding_as_of (sponsor list)"
+    },
+    {
+      "url": "https://huggingface.co/EleutherAI/pythia-12b",
+      "title": "EleutherAI/pythia-12b model card",
+      "publisher": "Hugging Face / EleutherAI",
+      "date": null,
+      "supports": "license_history[2]"
+    },
+    {
+      "url": "https://arxiv.org/abs/2506.05209",
+      "title": "The Common Pile v0.1: An 8TB Dataset of Public Domain and Openly Licensed Text",
+      "publisher": "arXiv",
+      "date": "2025-06-05",
+      "supports": "license_history[3], relicensing_events[0]"
+    }
+  ]
+}

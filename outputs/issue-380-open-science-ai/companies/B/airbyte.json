@@ -8,20 +8,64 @@
   "origin": "founder_startup",
   "origin_detail": "Founded Jan 2020 in San Francisco by Michel Tricot (CEO) and John Lafleur (COO), French founders in Y Combinator's Winter 2020 batch; pivoted from a marketing-data product during COVID-19; first open-source release late 2020",
   "founded_year": 2020,
-  "flagship_projects": ["Airbyte (platform)", "Airbyte connectors (550+)", "PyAirbyte", "Airbyte Cloud", "Airbyte Enterprise"],
+  "flagship_projects": [
+    "Airbyte (platform)",
+    "Airbyte connectors (550+)",
+    "PyAirbyte",
+    "Airbyte Cloud",
+    "Airbyte Enterprise"
+  ],
   "openness_initial": 3,
   "openness_current": 1,
   "openness_notes": "Launched fully MIT-licensed (2020). In Sep 2021 the core platform moved to the Elastic License v2 (source-available, not OSI); connectors stayed MIT. In Jun 2023 ELv2 was extended to some API, database and warehouse source connectors. The self-hosted version remains free to use; Cloud and Enterprise (extra security features) are the business. Rated 1 because the core is ELv2.",
   "business_model": "open_core",
   "license_history": [
-    {"year": 2020, "license": "MIT", "note": "Initial open-source release", "source": "https://research.contrary.com/company/airbyte"},
-    {"year": 2021, "license": "Core platform ELv2; connectors MIT", "note": "Sep 2021", "source": "https://research.contrary.com/company/airbyte"},
-    {"year": 2023, "license": "ELv2 extended to some source connectors", "note": "Jun 2023", "source": "https://research.contrary.com/company/airbyte"},
-    {"year": 2026, "license": "Mixed MIT / ELv2 (README badges)", "note": "README points to a licences FAQ", "source": "https://github.com/airbytehq/airbyte"}
+    {
+      "year": 2020,
+      "license": "MIT",
+      "note": "Initial open-source release",
+      "source": "https://research.contrary.com/company/airbyte"
+    },
+    {
+      "year": 2021,
+      "license": "Core platform ELv2; connectors MIT",
+      "note": "Sep 2021",
+      "source": "https://research.contrary.com/company/airbyte"
+    },
+    {
+      "year": 2023,
+      "license": "ELv2 extended to some source connectors",
+      "note": "Jun 2023",
+      "source": "https://research.contrary.com/company/airbyte"
+    },
+    {
+      "year": 2026,
+      "license": "Mixed MIT / ELv2 (README badges)",
+      "note": "README points to a licences FAQ",
+      "source": "https://github.com/airbytehq/airbyte"
+    }
   ],
   "relicensing_events": [
-    {"year": 2021, "from": "MIT", "to": "Elastic License v2 (core platform)", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Made to stop cloud providers reselling the platform; done months before a $150M Series B at a $1.5B valuation (Dec 2021); no significant fork found", "source": "https://research.contrary.com/company/airbyte"},
-    {"year": 2023, "from": "MIT (some connectors)", "to": "Elastic License v2", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Extended the source-available licence to selected API, database and warehouse source connectors", "source": "https://research.contrary.com/company/airbyte"}
+    {
+      "year": 2021,
+      "from": "MIT",
+      "to": "Elastic License v2 (core platform)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Made to stop cloud providers reselling the platform; done months before a $150M Series B at a $1.5B valuation (Dec 2021); no significant fork found",
+      "source": "https://research.contrary.com/company/airbyte"
+    },
+    {
+      "year": 2023,
+      "from": "MIT (some connectors)",
+      "to": "Elastic License v2",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Extended the source-available licence to selected API, database and warehouse source connectors",
+      "source": "https://research.contrary.com/company/airbyte"
+    }
   ],
   "funding_total_usd": 181400000,
   "funding_as_of": "2025-04",
@@ -51,13 +95,45 @@
   "fetched_urls": [
     "https://en.wikipedia.org/wiki/Airbyte",
     "https://github.com/airbytehq/airbyte",
-    "https://research.contrary.com/company/airbyte"
+    "https://research.contrary.com/company/airbyte",
+    "https://techcrunch.com/2021/05/25/airbyte-announces-26m-series-a-for-open-source-data-connector-platform/"
   ],
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/Airbyte", "title": "Airbyte", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, funding rounds, latest_value_usd ($1.5B Dec 2021), Grouparoo acquisition (Apr 2022), Airbyte 1.0 (Sep 2024) and 2.0 (Sep 2025)"},
-    {"url": "https://research.contrary.com/company/airbyte", "title": "Airbyte business breakdown", "publisher": "Contrary Research", "date": "2025-04-03", "supports": "license_history, relicensing_events, funding_total_usd ($181.4M), employees_latest (140), robustness, risk_events (competitor valuations)"},
-    {"url": "https://github.com/airbytehq/airbyte", "title": "airbytehq/airbyte", "publisher": "GitHub", "date": "2026-11", "supports": "license_history[3], robustness (22.4k stars), openness_notes (Cloud/Enterprise)"},
-    {"url": "https://blocksandfiles.com/2021/12/20/airbyte-two-french-guys-open-source-etl-startup-goes-from-zero-to-unicorn-in-2-years/", "title": "Airbyte goes from zero to unicorn in 2 years", "publisher": "Blocks and Files", "date": "2021-12-20", "supports": "latest_value_usd (cited by Wikipedia; not fetched directly)"}
+    {
+      "url": "https://en.wikipedia.org/wiki/Airbyte",
+      "title": "Airbyte",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail, funding rounds, latest_value_usd ($1.5B Dec 2021), Grouparoo acquisition (Apr 2022), Airbyte 1.0 (Sep 2024) and 2.0 (Sep 2025)"
+    },
+    {
+      "url": "https://research.contrary.com/company/airbyte",
+      "title": "Airbyte business breakdown",
+      "publisher": "Contrary Research",
+      "date": "2025-04-03",
+      "supports": "license_history, relicensing_events, funding_total_usd ($181.4M), employees_latest (140), robustness, risk_events (competitor valuations)"
+    },
+    {
+      "url": "https://github.com/airbytehq/airbyte",
+      "title": "airbytehq/airbyte",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[3], robustness (22.4k stars), openness_notes (Cloud/Enterprise)"
+    },
+    {
+      "url": "https://blocksandfiles.com/2021/12/20/airbyte-two-french-guys-open-source-etl-startup-goes-from-zero-to-unicorn-in-2-years/",
+      "title": "Airbyte goes from zero to unicorn in 2 years",
+      "publisher": "Blocks and Files",
+      "date": "2021-12-20",
+      "supports": "latest_value_usd (cited by Wikipedia; not fetched directly)"
+    },
+    {
+      "url": "https://techcrunch.com/2021/05/25/airbyte-announces-26m-series-a-for-open-source-data-connector-platform/",
+      "title": "Airbyte announces $26M Series A for open-source data connector platform",
+      "publisher": "TechCrunch",
+      "date": "2021-05-25",
+      "supports": "funding (Series A $26M, Benchmark; >$31M raised in 2021); early community (1,200 members, 500 active users, 14 employees); plan to charge for hosted version"
+    }
   ],
   "notes": [
     "funding_total_usd from Contrary Research (header $181.4M; another section says $181.2M): $5.2M seed (Mar 2021, Accel), $26M Series A (May 2021, Benchmark), $150M Series B (Dec 2021, Altimeter and Coatue).",

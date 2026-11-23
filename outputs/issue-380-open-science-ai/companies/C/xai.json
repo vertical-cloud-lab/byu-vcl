@@ -8,24 +8,61 @@
   "origin": "founder_startup",
   "origin_detail": "Incorporated 2023-03-09 by Elon Musk and announced 2023-07-12. Merged with X Corp. in an all-stock deal on 2025-03-28 to form X.AI Holdings, then acquired by SpaceX in an all-stock deal that closed 2026-02-02.",
   "founded_year": 2023,
-  "flagship_projects": ["Grok (closed frontier models)", "Grok-1 open weights (Apache-2.0)", "Grok 2 open weights (Grok 2 Community License)"],
+  "flagship_projects": [
+    "Grok (closed frontier models)",
+    "Grok-1 open weights (Apache-2.0)",
+    "Grok 2 open weights (Grok 2 Community License)"
+  ],
   "openness_initial": 1,
   "openness_current": 1,
   "openness_notes": "Scored as lagged open weights of superseded models while the frontier stays closed (only peripheral parts open). 2024-03-17: Grok-1 (314B) code and weights released under Apache-2.0, an OSI licence. Later, the Grok 2 weights were published on Hugging Face under the custom Grok 2 Community License (last updated 2025-11-04): commercial use only within xAI's acceptable-use guardrails, no use of the materials to 'train, create, or improve any foundational, large language, or general-purpose AI models', and mandatory 'Powered by xAI' attribution. No Grok 3 or later weights appear on xAI's Hugging Face page as of Nov 2026. The initial Grok 2 release date (reported as Aug 2025) was not confirmed from a fetched page.",
   "business_model": "mixed",
   "license_history": [
-    {"year": 2024, "license": "Apache-2.0 (Grok-1 code and weights, 314B)", "note": "Released 2024-03-17; 'The code and associated Grok-1 weights in this release are licensed under the Apache 2.0 license.'", "source": "https://github.com/xai-org/grok-1"},
-    {"year": 2025, "license": "Grok 2 Community License Agreement (custom, non-OSI)", "note": "Weights of 'a model trained and used at xAI in 2024'; Hugging Face repo updated 2025-11-05; licence last updated 2025-11-04.", "source": "https://huggingface.co/xai-org/grok-2/blob/main/LICENSE"}
+    {
+      "year": 2024,
+      "license": "Apache-2.0 (Grok-1 code and weights, 314B)",
+      "note": "Released 2024-03-17; 'The code and associated Grok-1 weights in this release are licensed under the Apache 2.0 license.'",
+      "source": "https://github.com/xai-org/grok-1"
+    },
+    {
+      "year": 2025,
+      "license": "Grok 2 Community License Agreement (custom, non-OSI)",
+      "note": "Weights of 'a model trained and used at xAI in 2024'; Hugging Face repo updated 2025-11-05; licence last updated 2025-11-04.",
+      "source": "https://huggingface.co/xai-org/grok-2/blob/main/LICENSE"
+    }
   ],
   "relicensing_events": [
-    {"year": 2025, "from": "Apache-2.0 for released weights (Grok-1)", "to": "Restrictive Grok 2 Community License (no training of other models, attribution, AUP guardrails)", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Each open release is older than the frontier and the licence became more restrictive between releases.", "source": "https://huggingface.co/xai-org/grok-2"}
+    {
+      "year": 2025,
+      "from": "Apache-2.0 for released weights (Grok-1)",
+      "to": "Restrictive Grok 2 Community License (no training of other models, attribution, AUP guardrails)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Each open release is older than the frontier and the licence became more restrictive between releases.",
+      "source": "https://huggingface.co/xai-org/grok-2"
+    }
   ],
   "funding_total_usd": 17000000000,
   "funding_as_of": "2025-06 (sum of rounds on Wikipedia: $6B Series B May 2024, $6B Series C Dec 2024, $5B equity June 2025; excludes $5B debt and any earlier or undisclosed rounds)",
   "ownership_status": "acquired",
   "exit_events": [
-    {"year": 2025, "type": "merger", "value_usd": 80000000000, "counterparty": "X Corp.", "note": "Announced 2025-03-28; all-stock; xAI valued at $80B and X at $33B ($45B less $12B debt); combined as X.AI Holdings Corp.", "source": "https://en.wikipedia.org/wiki/XAI_(company)"},
-    {"year": 2026, "type": "acquisition", "value_usd": 250000000000, "counterparty": "SpaceX", "note": "Closed 2026-02-02; all-stock; SpaceX valued at $1T and xAI at $250B ($1.25T combined). SpaceX later bought Cursor ($60B, closed 2026-08-14) and went public in June 2026 at a reported $1.77T.", "source": "https://en.wikipedia.org/wiki/XAI_(company)"}
+    {
+      "year": 2025,
+      "type": "merger",
+      "value_usd": 80000000000,
+      "counterparty": "X Corp.",
+      "note": "Announced 2025-03-28; all-stock; xAI valued at $80B and X at $33B ($45B less $12B debt); combined as X.AI Holdings Corp.",
+      "source": "https://en.wikipedia.org/wiki/XAI_(company)"
+    },
+    {
+      "year": 2026,
+      "type": "acquisition",
+      "value_usd": 250000000000,
+      "counterparty": "SpaceX",
+      "note": "Closed 2026-02-02; all-stock; SpaceX valued at $1T and xAI at $250B ($1.25T combined). SpaceX later bought Cursor ($60B, closed 2026-08-14) and went public in June 2026 at a reported $1.77T.",
+      "source": "https://en.wikipedia.org/wiki/XAI_(company)"
+    }
   ],
   "latest_value_usd": 250000000000,
   "latest_value_type": "acquisition_price",
@@ -44,7 +81,7 @@
   "robustness": "Financially backed by Musk's companies rather than independent: valuations rose from $24B (May 2024) to $50B (Dec 2024), $80B (X merger, Mar 2025) and $250B at the SpaceX acquisition (Feb 2026), with $3.2B 2025 revenue and a $6.4B operating loss. Grok-1 weights under Apache-2.0 are permanently reusable; Grok 2's licence is not OSI and bars using it to improve other foundation models.",
   "physical_science_relevance": "",
   "openness_effect_assessment": "xAI used open-weights releases mainly for signalling, publishing models only after they were superseded, while competing with closed frontier models. The releases had little visible ecosystem effect compared with Llama, DeepSeek or Qwen, and the licence got more restrictive over time. Its value creation came from capital and integration with X and SpaceX, not from openness.",
-  "key_takeaway": "xAI is the 'open-washing' contrast case: rhetorically pro-open (Musk has criticised OpenAI for abandoning openness) but in practice closed at the frontier, releasing older weights under a licence that blocks the most valuable reuse (training other models). Its trajectory from 2023 founding to a $250B acquisition price shows that a frontier lab's market value can be built almost entirely without openness. For the study, it shows why the licence of an open-weights release matters as much as the release itself.",
+  "key_takeaway": "xAI is the 'open-washing' contrast case: its founder sued OpenAI over abandoning its non-profit founding mission (Musk v. Altman, lost May 2026; see openai.json), yet xAI is closed at the frontier, releasing older weights under a licence that blocks the most valuable reuse (training other models). Its trajectory from 2023 founding to a $250B acquisition price shows that a frontier lab's market value can be built almost entirely without openness. For the study, it shows why the licence of an open-weights release matters as much as the release itself.",
   "confidence": "medium",
   "search_tool": "WebFetch (search budget exhausted)",
   "fetched_urls": [
@@ -52,13 +89,51 @@
     "https://huggingface.co/xai-org/grok-2",
     "https://github.com/xai-org/grok-1",
     "https://huggingface.co/xai-org/grok-2/blob/main/LICENSE",
-    "https://huggingface.co/xai-org"
+    "https://huggingface.co/xai-org",
+    "https://en.wikipedia.org/wiki/OpenAI (shared with openai.json)"
   ],
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/XAI_(company)", "title": "xAI (company)", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, funding_total_usd, exit_events[0], exit_events[1], latest_value_usd, revenue_latest_usd, employees_latest (1,200+ incl. 900+ hourly AI tutors), risk_events[0], license_history[0] (date)"},
-    {"url": "https://github.com/xai-org/grok-1", "title": "xai-org/grok-1", "publisher": "GitHub (xAI)", "date": "2024-03-17", "supports": "license_history[0]"},
-    {"url": "https://huggingface.co/xai-org/grok-2", "title": "xai-org/grok-2 model card", "publisher": "Hugging Face / xAI", "date": "2025-11-05", "supports": "license_history[1], relicensing_events[0]"},
-    {"url": "https://huggingface.co/xai-org/grok-2/blob/main/LICENSE", "title": "Grok 2 Community License Agreement", "publisher": "xAI", "date": "2025-11-04", "supports": "license_history[1], openness_notes"},
-    {"url": "https://huggingface.co/xai-org", "title": "xai-org organization page", "publisher": "Hugging Face", "date": "2026-11", "supports": "openness_notes (no Grok 3+ weights)"}
+    {
+      "url": "https://en.wikipedia.org/wiki/XAI_(company)",
+      "title": "xAI (company)",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail, funding_total_usd, exit_events[0], exit_events[1], latest_value_usd, revenue_latest_usd, employees_latest (1,200+ incl. 900+ hourly AI tutors), risk_events[0], license_history[0] (date)"
+    },
+    {
+      "url": "https://github.com/xai-org/grok-1",
+      "title": "xai-org/grok-1",
+      "publisher": "GitHub (xAI)",
+      "date": "2024-03-17",
+      "supports": "license_history[0]"
+    },
+    {
+      "url": "https://huggingface.co/xai-org/grok-2",
+      "title": "xai-org/grok-2 model card",
+      "publisher": "Hugging Face / xAI",
+      "date": "2025-11-05",
+      "supports": "license_history[1], relicensing_events[0]"
+    },
+    {
+      "url": "https://huggingface.co/xai-org/grok-2/blob/main/LICENSE",
+      "title": "Grok 2 Community License Agreement",
+      "publisher": "xAI",
+      "date": "2025-11-04",
+      "supports": "license_history[1], openness_notes"
+    },
+    {
+      "url": "https://huggingface.co/xai-org",
+      "title": "xai-org organization page",
+      "publisher": "Hugging Face",
+      "date": "2026-11",
+      "supports": "openness_notes (no Grok 3+ weights)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/OpenAI",
+      "title": "OpenAI",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "key_takeaway (Musk v. Altman outcome)"
+    }
   ]
 }

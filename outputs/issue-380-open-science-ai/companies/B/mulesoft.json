@@ -1,0 +1,136 @@
+{
+  "name": "MuleSoft, LLC (formerly MuleSource; owned by Salesforce)",
+  "slug": "mulesoft",
+  "group": "B",
+  "category": "software",
+  "subcategory": "integration platform / API management (iPaaS)",
+  "hq_country": "US",
+  "origin": "community",
+  "origin_detail": "Ross Mason started the open-source Mule ESB project in 2003; he and Dave Rosenberg founded the company in 2006 (briefly Azechi, Inc., then MuleSource LLC, renamed MuleSoft in 2009), headquartered in San Francisco",
+  "founded_year": 2006,
+  "flagship_projects": [
+    "Mule runtime (Community Edition, archived 2026)",
+    "Mule Enterprise Edition",
+    "Anypoint Platform"
+  ],
+  "openness_initial": 2,
+  "openness_current": 1,
+  "openness_notes": "Began as an open-source ESB (Mule Community Edition) with a paid Enterprise Edition (open core). The business shifted to the proprietary Anypoint Platform, and on 18 Sep 2026 the Mule Community Edition repository was archived (read-only) under Salesforce. Rated 1 now: the live product is proprietary and only legacy/peripheral code is public. The CE licence (commonly reported as CPAL) was not confirmed in fetched pages.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2003,
+      "license": "Open source (Mule ESB Community Edition; licence not confirmed in fetched pages)",
+      "note": "Project started by Ross Mason",
+      "source": "https://en.wikipedia.org/wiki/MuleSoft"
+    },
+    {
+      "year": 2026,
+      "license": "Mule Community Edition repository archived (read-only)",
+      "note": "Archived by owner on 18 Sep 2026",
+      "source": "https://github.com/mulesoft/mule"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2026,
+      "from": "Maintained open-source Community Edition",
+      "to": "Archived community repository; proprietary Anypoint/Enterprise only",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "End of maintenance rather than a relicence; repository has 688 forks but no major community fork identified",
+      "source": "https://github.com/mulesoft/mule"
+    }
+  ],
+  "funding_total_usd": 259000000,
+  "funding_as_of": "2017",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2017,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "NYSE (MULE)",
+      "note": "Priced 16 Mar 2017 at $17 (above $14-16 range), 13M shares (~$221M gross); first-day close $24.75 (+45%); 2016 revenue $188M (+70%), net loss $50M",
+      "source": "https://www.cnbc.com/2017/03/17/mulesoft-soars-44-at-ipo.html"
+    },
+    {
+      "year": 2018,
+      "type": "acquisition",
+      "value_usd": 6500000000,
+      "counterparty": "Salesforce",
+      "note": "Agreed Mar 2018, completed May 2018; cash-and-stock deal reported at ~$6.5B",
+      "source": "https://en.wikipedia.org/wiki/MuleSoft"
+    }
+  ],
+  "latest_value_usd": 6500000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2018-05",
+  "revenue_latest_usd": 296460000,
+  "revenue_year": 2017,
+  "employees_latest": 1188,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Loss-making at IPO and in 2017 (net loss $80M on $296M revenue)",
+    "Absorbed into Salesforce (2018); independent brand continues inside Salesforce",
+    "18 Sep 2026: Mule Community Edition repository archived (read-only), ending the open-source line"
+  ],
+  "robustness": "Commercially robust as a Salesforce product line (1,400+ employees and 1,600+ customers by Aug 2019). The open-source heritage is now weak: the community edition is archived, so users of the free runtime have no maintained upstream unless a fork emerges.",
+  "physical_science_relevance": "Low; enterprise application integration.",
+  "openness_effect_assessment": "Open-source Mule built early developer adoption and credibility in a market dominated by proprietary ESBs, but growth to a $6.5B exit came from the proprietary Anypoint Platform. Openness was a go-to-market phase rather than the long-term model, and under Salesforce the open edition was eventually archived.",
+  "key_takeaway": "MuleSoft is the 'open-source on-ramp' case: a community project (2003) became open core, then a proprietary platform that IPO'd (2017) and sold to Salesforce for $6.5B (2018). The open edition was archived in 2026, illustrating how openness can fade once a big-company parent controls the product.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/MuleSoft",
+    "https://github.com/mulesoft/mule",
+    "https://www.cnbc.com/2017/03/17/mulesoft-soars-44-at-ipo.html",
+    "https://techcrunch.com/2017/02/17/app-platform-company-mulesoft-files-for-ipo/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/MuleSoft",
+      "title": "MuleSoft",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail, funding_total_usd ($259M, seven rounds), exit_events[1], revenue_latest_usd and employees_latest (2017 10-K data), Aug 2019 staff/customers"
+    },
+    {
+      "url": "https://www.cnbc.com/2017/03/17/mulesoft-soars-44-at-ipo.html",
+      "title": "MuleSoft soars 44% at IPO",
+      "publisher": "CNBC",
+      "date": "2017-03-17",
+      "supports": "exit_events[0]"
+    },
+    {
+      "url": "https://github.com/mulesoft/mule",
+      "title": "mulesoft/mule (Mule Community Edition)",
+      "publisher": "GitHub",
+      "date": "2026-09-18",
+      "supports": "license_history[1], relicensing_events[0]"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1374684/000137468418000006/mule10-k12312017.htm",
+      "title": "MuleSoft Form 10-K for 2017",
+      "publisher": "MuleSoft / SEC",
+      "date": "2018",
+      "supports": "revenue_latest_usd, employees_latest (cited by Wikipedia; not fetched directly)"
+    },
+    {
+      "url": "https://techcrunch.com/2017/02/17/app-platform-company-mulesoft-files-for-ipo/",
+      "title": "App platform company MuleSoft files for IPO",
+      "publisher": "TechCrunch",
+      "date": "2017-02-17",
+      "supports": "funding_total_usd ($259M pre-IPO at a $1.5B private valuation); revenue 2014-2016 ($57.6M, $110.3M, $187.7M)"
+    }
+  ],
+  "notes": [
+    "IPO market valuation not stated in fetched pages; exit_events[0].value_usd null (gross proceeds ~$221M = 13M x $17, CNBC-based calculation).",
+    "Community Edition licence (reported elsewhere as CPAL-1.0) not confirmed: the repository page did not display LICENSE.txt contents.",
+    "revenue and employees are 2017 (last standalone year).",
+    "Pre-IPO private valuation was $1.5B on $259M raised (TechCrunch, Feb 2017)."
+  ]
+}

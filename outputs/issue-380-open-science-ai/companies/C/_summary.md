@@ -1,44 +1,44 @@
-# Group C (Big Tech and AI labs): partial summary
+# Group C (Big Tech and AI labs): summary
 
-**Status: 3 of 18 organizations done (2026-11-23).** The shared WebSearch budget for this turn
-(200 calls across all agents) ran out after 32 successful searches by this agent. Two more
-queries were refused, so nothing was taken from memory to fill the gaps. The other 15 files
-still need a follow-up run: Amazon/AWS, IBM, Oracle, NVIDIA, Apple, OpenAI, Anthropic, Google
-DeepMind (science), Mistral AI, DeepSeek, xAI, Ai2, EleutherAI, Stability AI and Alibaba Qwen.
+Sources: WebSearch for Meta, Alphabet, Microsoft (32 searches); WebFetch for the rest (105 reads).
+Openness covers AI and developer platforms, 0–4 (`../SCHEMA.md`).
 
-Openness is scored on each company's AI and developer-platform strategy (0–4 scale, `../SCHEMA.md`).
-
-| Name | Openness initial→current | Origin | Founded | Latest value (date) | Key open/closed moves |
+| Name | Openness | Origin | Founded | Latest value (date) | Key open/closed moves |
 | --- | --- | --- | --- | --- | --- |
-| [Meta](meta.json) | 3→1 | founder_startup | 2004 | $1.43T market cap (2026-11-20) | React BSD+Patents→MIT (2017); PyTorch to the Linux Foundation (2022); Llama 1 non-commercial (Feb 2023), then Llama 2–4 community licences (700M-MAU cap); React Foundation (2025–26); closed Muse Spark with a paid API (Apr 2026) |
-| [Alphabet/Google](alphabet-google.json) | 3→2 | founder_startup (Stanford roots) | 1998 | $3.26T market cap (2026-11-20) | Kubernetes to the CNCF and TensorFlow under Apache-2.0 (2015); Gemma under custom terms (2024), then Gemma 4 under Apache-2.0 (Apr 2026); Gemini closed; AOSP developed in-house (2025) with source drops twice a year (2026); Android developer verification (announced Aug 2025) |
-| [Microsoft](microsoft.json) | 0→2 | founder_startup | 1975 | $3.60T market cap (2026-11-22) | "Linux is a cancer" (2001); .NET Core under MIT (2014); VS Code under MIT (2015); GitHub bought for $7.5B (2018); Phi-4 weights under MIT (Jan 2025); Copilot Chat extension under MIT (Jun 2025) |
+| [Meta](meta.json) | 3→1 | startup | 2004 | $1.43T (2026-11-20) | PyTorch to LF '22; Llama licences; closed Muse Spark '26 |
+| [Alphabet](alphabet-google.json) | 3→2 | startup | 1998 | $3.26T (2026-11-20) | Kubernetes to CNCF; Gemma Apache '26; AOSP tightened |
+| [Microsoft](microsoft.json) | 0→2 | startup | 1975 | $3.60T (2026-11-22) | .NET MIT '14; GitHub '18; Phi-4 MIT '25 |
+| [Amazon](amazon-aws.json) | 1→2 | startup | 1994 | $2.76T (2026-11-23) | OpenSearch, Valkey forks to LF |
+| [IBM](ibm.json) | 0→2 | corporate | 1911 | $220B (2026-11-23) | Bought Red Hat, HashiCorp, Confluent |
+| [Oracle](oracle.json) | 0→1 | startup | 1977 | $354B (2026-11-23) | Closed OpenSolaris '10; forks followed |
+| [NVIDIA](nvidia.json) | 0→1 | startup | 1993 | $3.99T (2026-11-23) | CUDA closed; Nemotron open |
+| [Apple](apple.json) | 0→1 | startup | 1976 | $5.07T (2026-11-23) | Swift Apache '15; OpenELM non-OSI '24 |
+| [OpenAI](openai.json) | 3→1 | nonprofit | 2015 | $852B private (2026-04) | GPT-2 withheld '19; gpt-oss Apache '25 |
+| [Anthropic](anthropic.json) | 0→1 | startup | 2021 | $1.17T (2026-11-23) | Claude closed; MCP to LF '25; IPO '26 |
+| [DeepMind science](google-deepmind-science.json) | 4→2 | startup | 2010 | in Alphabet | AlphaFold 2 open '21; AF3 restricted '24 |
+| [Mistral](mistral-ai.json) | 3→2 | startup | 2023 | €21–25B (2026-09) | Apache, partly closed '24, reopened '25 |
+| [DeepSeek](deepseek.json) | 1→3 | corporate | 2023 | $70B pre-money (2026-10) | MIT from R1 '25 |
+| [xAI](xai.json) | 1→1 | startup | 2023 | $250B (2026-02) | Grok-1 Apache '24; restrictive Grok 2 '25 |
+| [Ai2](ai2.json) | 3→4 | nonprofit | 2014 | n/a | Fully open OLMo '24; Olmo 3 '25 |
+| [EleutherAI](eleutherai.json) | 4→4 | community | 2020 | n/a | The Pile '20; Common Pile '25 |
+| [Stability AI](stability-ai.json) | 1→1 | startup | 2019 | undisclosed | OpenRAIL '22; paid above $1M revenue |
+| [Alibaba Qwen](alibaba-qwen.json) | 1→2 | startup | 1999 | $214B (2026-11-23) | Apache Qwen3 '25; Max closed |
 
-## Observations (from the three completed files)
+## Observations
 
-1. **Commoditize your complement.** Meta earns from ads, so giving away PyTorch, React and
-   Llama weights cost it little and undercut rivals that sell model access. Google made the
-   mobile OS (Android) and the cloud orchestration layer (Kubernetes) free, which widened the
-   market for its paid services. Microsoft opened its developer stack once its revenue moved to
-   renting cloud capacity; Azure passed $100B in FY2026.
-2. **Governance decides what survives a change of strategy.** Projects handed to foundations
-   stayed open through every strategy shift: Kubernetes (CNCF, 2015), .NET (.NET Foundation,
-   2014), PyTorch (Linux Foundation, 2022) and React (React Foundation, 2025–26). The lines each
-   vendor still controls are the ones that tightened: Meta's frontier models and Android's
-   development process.
-3. **Open weights were a tactic.** Llama reached 1B downloads by March 2025 and 1.2B by April
-   2025. Even so, Meta put its frontier model behind a paid API in April 2026, after reports
-   that DeepSeek R1 had built on Llama's architecture fed doubts inside Meta Superintelligence
-   Labs.
-4. **Small models are converging on OSI licences while frontier models stay closed.** Phi-4
-   moved from a research licence to MIT (Jan 2025) and Gemma from custom terms to Apache-2.0
-   (Apr 2026). Gemini, Muse Spark and the OpenAI models behind Copilot remain closed.
-5. **A licence is not the same as openness.** Android is still Apache-2.0, but in-house
-   development, source drops twice a year and mandatory developer verification for sideloaded
-   apps (enforced from Sept 2026 in four countries, globally in 2027) hand control back to
-   Google.
-6. **Value comes from closed services.** All three companies are worth $1.4–3.6T, and their
-   profits come from proprietary ads, search and cloud. Openness sits in the layers that do not
-   earn money directly but feed users and developers into the layers that do.
-
-Observations on DeepSeek, MCP and AlphaFold will follow with those files.
+1. **Commoditize the complement.** Meta's ads pay for free PyTorch and Llama, Google gave away
+   Android and Kubernetes, and NVIDIA opens models that run on its GPUs while CUDA stays closed.
+2. **Open weights moved markets.** DeepSeek's MIT-licensed R1 preceded Nvidia losing ~$600B in a
+   day (2025-01-27). OpenAI then released Apache-2.0 gpt-oss.
+3. **Meta changed course.** Llama reached 1.2B downloads, but Meta's frontier model went closed
+   (Muse Spark, April 2026). Qwen added a revenue cap to its largest open model.
+4. **Mid-sized models converged on OSI licences** (Phi-4, Qwen3, Mistral 3, DeepSeek, Gemma 4).
+5. **Closed labs open standards.** Anthropic gave MCP to a Linux Foundation fund; Claude
+   stayed closed.
+6. **Governance decides durability.** Projects held by foundations (Kubernetes, PyTorch, OpenSearch,
+   Valkey, MCP) survived strategy shifts, while Llama and AOSP were tightened.
+7. **AI for science.** The fully open AlphaFold 2 won a Nobel. The restricted AlphaFold 3 spawned
+   open clones, with value moving to Isomorphic Labs. Ai2's fully open OLMo drew $152M from NSF
+   and NVIDIA.
+8. **Value comes from closed cores** (Apple, NVIDIA, Microsoft). Stability AI, built on open
+   weights, nearly failed.

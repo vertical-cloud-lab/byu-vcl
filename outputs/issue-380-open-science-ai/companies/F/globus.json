@@ -1,0 +1,68 @@
+{
+  "name": "Globus (University of Chicago)",
+  "slug": "globus",
+  "group": "F",
+  "category": "open_infrastructure",
+  "subcategory": "research data transfer, sharing and automation service (nonprofit SaaS)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Grew from the open-source Globus Toolkit (GridFTP and related grid software) developed by Ian Foster's team; the Globus team's 2005 GridFTP paper won the SC25 Test of Time Award. The current hosted service (site copyright from 2010) is 'developed and operated as a not-for-profit service by the University of Chicago' and works closely with Argonne National Laboratory facilities. The old toolkit lives on as the community Grid Community Toolkit, 'based on a fork of the Globus Toolkit'.",
+  "founded_year": 2010,
+  "flagship_projects": ["Globus transfer and sharing service", "Globus Connect Server / Personal", "Globus Flows and Compute (automation)", "Globus SDK for Python (Apache-2.0)"],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "The original Globus Toolkit was open source (its community fork, GCT, is Apache-2.0). The current product is a hosted service: free basic transfers for users at non-profit research institutions, paid organisational subscriptions for advanced features; client SDKs are Apache-2.0. Scored 1 (only peripheral SDKs/clients open).",
+  "business_model": "saas",
+  "license_history": [
+    {"year": null, "license": "Globus Toolkit: open source (community fork GCT is Apache-2.0)", "note": "Toolkit end-of-support date not confirmed on fetched pages", "source": "https://github.com/gridcf/gct"},
+    {"year": 2010, "license": "Hosted freemium service; open-source SDK (Apache-2.0)", "note": "Year from globus.org copyright line", "source": "https://www.globus.org/what-we-do"}
+  ],
+  "relicensing_events": [
+    {"year": null, "from": "Open-source Globus Toolkit", "to": "Hosted subscription service", "direction": "closing", "fork": "Grid Community Toolkit (GCT)", "fork_backer": "Grid Community Forum (GridCF)", "outcome_note": "Grid users kept GridFTP/GSI/MyProxy via the community fork while Globus moved to a sustainable SaaS model.", "source": "https://github.com/gridcf/gct"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Abandoning the self-hosted open toolkit for a hosted service pushed parts of the grid community to maintain their own fork (GCT).",
+    "27 May 2026: Globus began offering free Standard subscriptions to non-profits with annual research budgets under $4 million, shifting more of the cost onto larger subscribers."
+  ],
+  "robustness": "Run by a university as non-profit infrastructure with a subscription base, Internet2 NET+ membership (Jan 2025) and deep integration with DOE facilities (Argonne's APS and ALCF, NERSC's Perlmutter, OLCF's Frontier). Single operator, closed service: users depend on UChicago's continued operation.",
+  "physical_science_relevance": "The standard tool for moving large instrument and simulation data between US national labs, light sources and universities; used for near-real-time X-ray (XPCS) data flows from Argonne's upgraded APS to supercomputers (Jan 2026) and alongside Argonne's AI inference service for science (May 2026).",
+  "openness_effect_assessment": "Globus moved from open software to a freemium hosted service to become financially sustainable, a rare example of academic infrastructure deliberately 'closing' the product while keeping access free for most researchers. The move worked at scale (1 exabyte and 150,000+ users by 2020) but left the open code to a community fork.",
+  "key_takeaway": "Globus is the freemium counter-model in open science infrastructure: a university-operated service that charges institutions for advanced features while keeping basic transfers free for non-profit researchers. It shows that 'open science' infrastructure can be sustained by subscriptions rather than grants, at the cost of open-source control.",
+  "usage_metrics": [
+    {"metric": "cumulative data transferred (bytes, 1 exabyte milestone)", "value": 1000000000000000000, "date": "2020-10-07", "source": "https://www.globus.org/news"},
+    {"metric": "registered users", "value": 150000, "date": "2020-10-07", "source": "https://www.globus.org/news"},
+    {"metric": "files transferred", "value": 120000000000, "date": "2020-10-07", "source": "https://www.globus.org/news"}
+  ],
+  "funding_sources": ["Institutional subscriptions (Starter, Standard, High Assurance, BAA, connectors)", "University of Chicago", "Federal research funding for development (agencies not named on fetched pages)"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Subscription prices are not published on globus.org/subscriptions; Wikipedia pages for Globus/Globus Toolkit returned 404.",
+    "Current (April 2026) usage statistics are only in an image on globus.org/what-we-do and could not be read; usage figures are from Oct 2020.",
+    "The Globus Toolkit's 1990s origin at Argonne and USC ISI and its 2018 end of support are commonly reported but were not confirmed on fetched pages, so they are not used as dated facts.",
+    "Revenue and staff counts not found (operated inside the University of Chicago)."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://en.wikipedia.org/wiki/Globus_Toolkit (404)", "https://www.globus.org/about (404)", "https://www.globus.org/", "https://en.wikipedia.org/wiki/Globus_(software) (404)", "https://www.globus.org/subscriptions", "https://www.globus.org/what-we-do", "https://www.globus.org/news", "https://github.com/gridcf/gct", "https://github.com/globus/globus-sdk-python"],
+  "sources": [
+    {"url": "https://www.globus.org/what-we-do", "title": "What We Do", "publisher": "Globus, University of Chicago", "date": null, "supports": "origin_detail (UChicago non-profit service), business_model, founded_year (copyright 2010)"},
+    {"url": "https://www.globus.org/subscriptions", "title": "Subscriptions", "publisher": "Globus", "date": null, "supports": "openness_notes (tiers, free use for non-profits)"},
+    {"url": "https://www.globus.org/news", "title": "Globus News", "publisher": "Globus", "date": "2026-06-01", "supports": "usage_metrics (2020), risk_events[1] (27 May 2026), robustness (Internet2 NET+ Jan 2025), physical_science_relevance (APS, ALCF), SC25 Test of Time"},
+    {"url": "https://www.globus.org/", "title": "Globus home page", "publisher": "Globus", "date": null, "supports": "non-profit service operated by UChicago; free Standard subscription announcement"},
+    {"url": "https://github.com/gridcf/gct", "title": "Grid Community Toolkit", "publisher": "GridCF / GitHub", "date": null, "supports": "license_history[0], relicensing_events (fork)"},
+    {"url": "https://github.com/globus/globus-sdk-python", "title": "globus-sdk-python", "publisher": "GitHub", "date": null, "supports": "openness_notes (SDK Apache-2.0)"}
+  ]
+}

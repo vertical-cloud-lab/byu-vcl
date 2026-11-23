@@ -6,7 +6,7 @@
   "subcategory": "Hadoop / big-data platform; hybrid data cloud",
   "hq_country": "US",
   "origin": "founder_startup",
-  "origin_detail": "Founded in 2008 by Christophe Bisciglia (Google), Amr Awadallah (Yahoo), Jeff Hammerbacher (Facebook) and Mike Olson; Hadoop co-creator Doug Cutting joined in 2009. Rival Hortonworks was spun out of Yahoo's Hadoop team in 2011 with Benchmark backing and sold a fully open-source distribution. The two merged in January 2019.",
+  "origin_detail": "Formed 2008-06-27 in Burlingame, California by Christophe Bisciglia, Amr Awadallah, Jeff Hammerbacher and Mike Olson; Hadoop co-creator Doug Cutting joined in 2009. Rival Hortonworks was spun out of Yahoo's Hadoop team in June 2011 with $23M from Yahoo and Benchmark, built its products on open-source Apache projects, and merged with Cloudera in January 2019. HQ Santa Clara, California.",
   "founded_year": 2008,
   "flagship_projects": [
     "CDH / Cloudera Data Platform (CDP)",
@@ -14,75 +14,81 @@
     "Apache Hadoop ecosystem (ASF projects)"
   ],
   "openness_initial": 2,
-  "openness_current": 3,
-  "openness_notes": "Cloudera's CDH bundled Apache-licensed ASF projects with proprietary management software (open core, 2), while Hortonworks was fully open source (3). After the merger Cloudera pledged in 2019 to release all its software under open-source licences, but moved binaries behind a subscription. Current level 3 reflects that pledge; status under private-equity ownership since 2021 is unverified.",
+  "openness_current": 2,
+  "openness_notes": "Cloudera distributed Apache Software Foundation projects (Hadoop, Hive, Spark and others) with its own management software; Hortonworks built on open-source projects. After the merger, new releases became subscription-only from November 2019, and from 2021-01-31 all Cloudera software, including legacy CDH and HDP, requires a paid subscription to access. Coded open core (2). A 2019 pledge to release all components under open-source licences is recalled but was not confirmed in fetched pages; if it holds, the code would rate 3 with gated binaries.",
   "business_model": "open_core",
   "license_history": [
     {
       "year": 2008,
-      "license": "Apache-2.0 (ASF components) + proprietary Cloudera Manager/Enterprise",
-      "note": "(unverified)",
-      "source": null
+      "license": "Apache-2.0 ASF components + Cloudera management software",
+      "note": "Licensing of Cloudera's own management tools not confirmed in fetched pages.",
+      "source": "https://en.wikipedia.org/wiki/Cloudera"
     },
     {
       "year": 2019,
-      "license": "All components to be open source; binaries subscription-only",
-      "note": "(unverified)",
-      "source": null
+      "license": "New releases subscription-only (from November 2019)",
+      "note": "Access, not licence, change.",
+      "source": "https://www.cloudera.com/downloads/paywall-expansion.html"
+    },
+    {
+      "year": 2021,
+      "license": "All Cloudera software (incl. legacy CDH, HDP, HDF) requires a valid subscription from 2021-01-31",
+      "note": "Expired subscriptions lose patches; clusters keep running.",
+      "source": "https://www.cloudera.com/downloads/paywall-expansion.html"
     }
   ],
   "relicensing_events": [
     {
       "year": 2019,
-      "from": "proprietary management components",
-      "to": "open-source licences (announced)",
-      "direction": "opening",
+      "from": "Freely downloadable binaries (CDH, HDP)",
+      "to": "Subscription-only binaries (fully from 2021-01-31)",
+      "direction": "closing",
       "fork": null,
       "fork_backer": null,
-      "outcome_note": "Opening of code paired with restricted binary access; followed the Hortonworks merger (unverified)",
-      "source": null
+      "outcome_note": "Distribution was closed rather than the licence; the underlying projects stay at the ASF.",
+      "source": "https://www.cloudera.com/downloads/paywall-expansion.html"
     }
   ],
-  "funding_total_usd": null,
-  "funding_as_of": null,
+  "funding_total_usd": 970000000,
+  "funding_as_of": "2014",
   "ownership_status": "private_pe",
   "exit_events": [
     {
       "year": 2014,
       "type": "IPO",
       "value_usd": null,
-      "counterparty": "Hortonworks, Nasdaq: HDP",
-      "note": "Hortonworks IPO, December 2014 (unverified; value deliberately null)",
-      "source": null
+      "counterparty": "Hortonworks (Nasdaq)",
+      "note": "Hortonworks went public in 2014 (Wikipedia category); terms not confirmed.",
+      "source": "https://en.wikipedia.org/wiki/Hortonworks"
     },
     {
       "year": 2017,
       "type": "IPO",
       "value_usd": null,
-      "counterparty": "Cloudera, NYSE: CLDR",
-      "note": "Cloudera IPO, April 2017 (unverified; value deliberately null)",
-      "source": null
+      "counterparty": "NYSE: CLDR",
+      "note": "Cloudera IPO 2017-04-28; price and valuation not confirmed in fetched pages.",
+      "source": "https://en.wikipedia.org/wiki/Cloudera"
     },
     {
       "year": 2019,
       "type": "merger",
       "value_usd": null,
-      "counterparty": "Cloudera + Hortonworks",
-      "note": "Merger completed January 2019 (unverified; value deliberately null)",
-      "source": null
+      "counterparty": "Hortonworks",
+      "note": "All-stock merger of equals announced October 2018 (CNBC), completed January 2019.",
+      "source": "https://en.wikipedia.org/wiki/Cloudera"
     },
     {
       "year": 2021,
       "type": "take_private",
-      "value_usd": null,
+      "value_usd": 5300000000,
       "counterparty": "KKR and Clayton, Dubilier & Rice",
-      "note": "Take-private completed in 2021 (unverified; value deliberately null)",
-      "source": null
+      "note": "Announced about 2021-06-01 (WSJ); all-cash deal of about $5.3B completed October 2021. Per-share price not confirmed.",
+      "source": "https://en.wikipedia.org/wiki/Cloudera"
     }
   ],
-  "latest_value_usd": null,
-  "latest_value_type": null,
-  "latest_value_date": null,
+  "latest_value_usd": 5300000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2021-10",
   "revenue_latest_usd": null,
   "revenue_year": null,
   "employees_latest": null,
@@ -90,15 +96,44 @@
   "end_year": null,
   "us_focus": true,
   "risk_events": [
-    "Hadoop market decline as public clouds took over data workloads (unverified)",
-    "2019: CEO departure and sharp share drop after the merger (unverified)"
+    "2019-06: CEO Tom Reilly and co-founder Mike Olson left after the merger",
+    "2019-2021: Binaries moved behind a subscription paywall",
+    "2023-10: $240M patent jury verdict for StreamScale",
+    "2026-10: Settlement with the US government over PERM (green card) irregularities, per Wikipedia citing Newsweek (unverified)"
   ],
-  "robustness": "The core technologies are ASF-governed (Hadoop, Hive, Spark and others), so the code survives independent of the company; the company is PE-owned.",
+  "robustness": "The Hadoop-ecosystem projects are ASF-governed, so the technology does not depend on Cloudera. The company is PE-owned since 2021 and buys AI tooling (Verta, June 2024).",
   "physical_science_relevance": "",
-  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
-  "key_takeaway": "Draft only. Cloudera and Hortonworks are the open-core vs fully-open natural experiment of the Hadoop era: both went public, neither thrived alone once public clouds absorbed the market, they merged, the merged company opened its code but restricted binaries, and private equity took it private. The ASF projects outlived both companies' independence.",
-  "confidence": "low",
-  "searches": [],
-  "sources": [],
-  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+  "openness_effect_assessment": "Both an open-core firm (Cloudera) and a more fully open one (Hortonworks) reached public markets (2017 and 2014), but neither sustained independent growth: they merged in 2019, gated binaries behind subscriptions, and sold to private equity for about $5.3B in 2021, not far above the roughly $4.1B implied by Intel's 2014 investment. Openness built the ecosystem but did not secure either company's independence.",
+  "key_takeaway": "Cloudera and Hortonworks are the Hadoop era's natural experiment in degrees of openness. Both IPO'd, neither thrived alone, they merged, the combined firm closed distribution rather than the licence, and private equity took it private in 2021. The Apache projects outlived both companies' independence.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Cloudera",
+    "https://en.wikipedia.org/wiki/Hortonworks",
+    "https://www.cloudera.com/downloads/paywall-expansion.html"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Cloudera",
+      "title": "Cloudera",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail, funding rounds (incl. Intel $740M for 18% at $4.1B, 2014), IPO date, merger, take-private, risk_events"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Hortonworks",
+      "title": "Hortonworks",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail (Hortonworks), exit_events[0], ~1,110 employees in 2017"
+    },
+    {
+      "url": "https://www.cloudera.com/downloads/paywall-expansion.html",
+      "title": "Cloudera paywall expansion",
+      "publisher": "Cloudera",
+      "date": null,
+      "supports": "license_history[1-2], relicensing_events[0]"
+    }
+  ],
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. funding_total_usd (~$970M) sums the rounds on Wikipedia, dominated by Intel's $740M for an 18% stake in 2014; Cloudera repurchased those shares for $314M in December 2020. revenue_latest_usd and employees_latest are null (not in fetched pages). The Oct 2026 PERM settlement is from Wikipedia citing Newsweek and was not checked."
 }

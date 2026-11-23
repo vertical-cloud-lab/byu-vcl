@@ -8,25 +8,71 @@
   "origin": "founder_startup",
   "origin_detail": "Shay Banon wrote Compass (2004) and released Elasticsearch, a rewrite, as Apache-2.0 open source in February 2010. He co-founded the company with Steven Schuurman, Uri Boness and Simon Willnauer in Amsterdam in 2012. Dutch N.V. with major US operations (San Francisco/Mountain View) and an NYSE listing (ESTC), so it is US-relevant despite the Dutch domicile.",
   "founded_year": 2012,
-  "flagship_projects": ["Elasticsearch", "Kibana", "Logstash", "Beats", "Elastic Cloud"],
+  "flagship_projects": [
+    "Elasticsearch",
+    "Kibana",
+    "Logstash",
+    "Beats",
+    "Elastic Cloud"
+  ],
   "openness_initial": 3,
   "openness_current": 2,
   "openness_notes": "Elasticsearch and Kibana were Apache-2.0 from 2010; the company later sold proprietary features (X-Pack) and Elastic Cloud (open core). In early 2021 (from 7.11) the free code moved to a dual SSPL / Elastic License 2.0 choice, which is not OSI-approved (level 1). On 2024-08-29 Elastic added AGPL-3.0 as a third option, so the free code is OSI open source again while paid features stay proprietary: current level 2.",
   "business_model": "open_core",
   "license_history": [
-    {"year": 2010, "license": "Apache-2.0", "note": "First Elasticsearch release, February 2010.", "source": "https://en.wikipedia.org/wiki/Elasticsearch"},
-    {"year": 2021, "license": "SSPL-1.0 or Elastic License 2.0 (dual)", "note": "Announced January 2021; applied from release 7.11.", "source": "https://www.techrepublic.com/article/opensearch-aws-rolls-out-its-open-source-elasticsearch-fork/"},
-    {"year": 2024, "license": "AGPL-3.0 or SSPL-1.0 or ELv2 (triple)", "note": "Announced 2024-08-29, in place before 8.16 GA; existing SSPL/ELv2 users unaffected.", "source": "https://www.businesswire.com/news/home/20240829537786/en/Elastic-Announces-Open-Source-License-for-Elasticsearch-and-Kibana-Source-Code"}
+    {
+      "year": 2010,
+      "license": "Apache-2.0",
+      "note": "First Elasticsearch release, February 2010.",
+      "source": "https://en.wikipedia.org/wiki/Elasticsearch"
+    },
+    {
+      "year": 2021,
+      "license": "SSPL-1.0 or Elastic License 2.0 (dual)",
+      "note": "Announced January 2021; applied from release 7.11.",
+      "source": "https://www.techrepublic.com/article/opensearch-aws-rolls-out-its-open-source-elasticsearch-fork/"
+    },
+    {
+      "year": 2024,
+      "license": "AGPL-3.0 or SSPL-1.0 or ELv2 (triple)",
+      "note": "Announced 2024-08-29, in place before 8.16 GA; existing SSPL/ELv2 users unaffected.",
+      "source": "https://www.businesswire.com/news/home/20240829537786/en/Elastic-Announces-Open-Source-License-for-Elasticsearch-and-Kibana-Source-Code"
+    }
   ],
   "relicensing_events": [
-    {"year": 2021, "from": "Apache-2.0", "to": "SSPL-1.0 / ELv2", "direction": "closing", "fork": "OpenSearch (and OpenSearch Dashboards), forked from Elasticsearch/Kibana 7.10.2, first released April 2021", "fork_backer": "AWS; transferred on 2024-09-16 to the OpenSearch Software Foundation (Linux Foundation) with premier members AWS, SAP, Uber and general members incl. Aiven, Atlassian, Canonical, DigitalOcean, NetApp Instaclustr", "outcome_note": "AWS announced the fork about a week after Elastic's change. By the foundation's one-year mark (Aug 2025) OpenSearch reported downloads up 78% year-on-year, past 1 billion in total.", "source": "https://www.linuxfoundation.org/press/linux-foundation-announces-opensearch-software-foundation-to-foster-open-collaboration-in-search-and-analytics"},
-    {"year": 2024, "from": "SSPL-1.0 / ELv2", "to": "AGPL-3.0 added as an option", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Partial reversal: OSI-approved licence restored for the free tier. Commentators (The New Stack, OpenUK via ITPro) questioned whether trust would return and asked whether OpenSearch's success proved that forking works.", "source": "https://thenewstack.io/whats-behind-elastics-unexpected-return-to-open-source/"}
+    {
+      "year": 2021,
+      "from": "Apache-2.0",
+      "to": "SSPL-1.0 / ELv2",
+      "direction": "closing",
+      "fork": "OpenSearch (and OpenSearch Dashboards), forked from Elasticsearch/Kibana 7.10.2, first released April 2021",
+      "fork_backer": "AWS; transferred on 2024-09-16 to the OpenSearch Software Foundation (Linux Foundation) with premier members AWS, SAP, Uber and general members incl. Aiven, Atlassian, Canonical, DigitalOcean, NetApp Instaclustr",
+      "outcome_note": "AWS announced the fork about a week after Elastic's change. By the foundation's one-year mark (Aug 2025) OpenSearch reported downloads up 78% year-on-year, past 1 billion in total.",
+      "source": "https://www.linuxfoundation.org/press/linux-foundation-announces-opensearch-software-foundation-to-foster-open-collaboration-in-search-and-analytics"
+    },
+    {
+      "year": 2024,
+      "from": "SSPL-1.0 / ELv2",
+      "to": "AGPL-3.0 added as an option",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Partial reversal: OSI-approved licence restored for the free tier. Commentators (The New Stack, OpenUK via ITPro) questioned whether trust would return and asked whether OpenSearch's success proved that forking works.",
+      "source": "https://thenewstack.io/whats-behind-elastics-unexpected-return-to-open-source/"
+    }
   ],
   "funding_total_usd": 104000000,
   "funding_as_of": "2014-06",
   "ownership_status": "public",
   "exit_events": [
-    {"year": 2018, "type": "IPO", "value_usd": 4900000000, "counterparty": "NYSE: ESTC", "note": "Priced 2018-10-04 at $36 (above a raised $33-35 range; original $26-29), 7M shares, $252M raised; closed day one at $70, a market cap of almost $4.9B. Banon: 'we didn't really IPO to raise money'.", "source": "https://fortune.com/2018/10/06/elastic-search-ipo-valuation/"}
+    {
+      "year": 2018,
+      "type": "IPO",
+      "value_usd": 4900000000,
+      "counterparty": "NYSE: ESTC",
+      "note": "Priced 2018-10-04 at $36 (above a raised $33-35 range; original $26-29), 7M shares, $252M raised; closed day one at $70, a market cap of almost $4.9B. Banon: 'we didn't really IPO to raise money'.",
+      "source": "https://fortune.com/2018/10/06/elastic-search-ipo-valuation/"
+    }
   ],
   "latest_value_usd": 10200000000,
   "latest_value_type": "market_cap",
@@ -58,24 +104,127 @@
     "OpenSearch Software Foundation launched Linux Foundation September 2024 AWS transfers OpenSearch members",
     "Elasticsearch BV venture funding total $104 million Benchmark Index Ventures Series C NEA 2014"
   ],
+  "search_tool": "WebSearch (standard/extended)",
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/Elastic_NV", "title": "Elastic NV", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, hq_country"},
-    {"url": "https://en.wikipedia.org/wiki/Elasticsearch", "title": "Elasticsearch", "publisher": "Wikipedia", "date": null, "supports": "license_history[0], origin_detail (Compass 2004, release Feb 2010)"},
-    {"url": "https://www.techrepublic.com/article/opensearch-aws-rolls-out-its-open-source-elasticsearch-fork/", "title": "OpenSearch: AWS rolls out its open source Elasticsearch fork", "publisher": "TechRepublic", "date": "2021-04", "supports": "license_history[1], relicensing_events[0]"},
-    {"url": "https://aws.amazon.com/blogs/opensource/stepping-up-for-a-truly-open-source-elasticsearch", "title": "Stepping up for a truly open source Elasticsearch", "publisher": "AWS Open Source Blog", "date": "2021-01-21", "supports": "relicensing_events[0]"},
-    {"url": "https://www.businesswire.com/news/home/20240829537786/en/Elastic-Announces-Open-Source-License-for-Elasticsearch-and-Kibana-Source-Code", "title": "Elastic Announces Open Source License for Elasticsearch and Kibana Source Code", "publisher": "Business Wire (Elastic press release)", "date": "2024-08-29", "supports": "license_history[2], relicensing_events[1]"},
-    {"url": "https://thenewstack.io/whats-behind-elastics-unexpected-return-to-open-source/", "title": "What's behind Elastic's unexpected return to open source", "publisher": "The New Stack", "date": "2024-08", "supports": "relicensing_events[1].outcome_note"},
-    {"url": "https://www.itpro.com/software/open-source/elastic-returns-to-open-source-but-can-it-regain-the-communitys-trust-some-industry-players-arent-holding-their-breath", "title": "Elastic returns to open source, but can it regain the community's trust?", "publisher": "ITPro", "date": "2024-08", "supports": "relicensing_events[1].outcome_note"},
-    {"url": "https://www.linuxfoundation.org/press/linux-foundation-announces-opensearch-software-foundation-to-foster-open-collaboration-in-search-and-analytics", "title": "Linux Foundation Announces OpenSearch Software Foundation", "publisher": "Linux Foundation", "date": "2024-09-16", "supports": "relicensing_events[0].fork_backer"},
-    {"url": "https://www.linuxfoundation.org/press/opensearch-software-foundation-marks-1-year-anniversary-with-community-growth-agentic-ai-and-hybrid-search-enhancements", "title": "OpenSearch Software Foundation Marks 1-Year Anniversary", "publisher": "Linux Foundation", "date": "2025-08", "supports": "relicensing_events[0].outcome_note"},
-    {"url": "https://www.elastic.co/blog/elasticsearch-raises-70m-series-c-nea", "title": "Elasticsearch Raises $70M in Series C from NEA", "publisher": "Elastic", "date": "2014-06-05", "supports": "funding_total_usd ($104M over three rounds)"},
-    {"url": "https://fortune.com/2014/06/06/latest-funding-round-values-elasticsearch-at-700-million/", "title": "Latest funding round values Elasticsearch at $700 million", "publisher": "Fortune", "date": "2014-06-06", "supports": "funding_total_usd cross-check"},
-    {"url": "https://www.elastic.co/about/press/elastic-announces-pricing-of-initial-public-offering", "title": "Elastic announces pricing of initial public offering", "publisher": "Elastic", "date": "2018-10-04", "supports": "exit_events[0]"},
-    {"url": "https://fortune.com/2018/10/06/elastic-search-ipo-valuation/", "title": "Elastic IPO valuation", "publisher": "Fortune", "date": "2018-10-06", "supports": "exit_events[0].value_usd"},
-    {"url": "https://ir.elastic.co/News--Events/news/news-details/2026/Elastic-Reports-Fourth-Quarter-and-Fiscal-2026-Financial-Results/default.aspx", "title": "Elastic Reports Fourth Quarter and Fiscal 2026 Financial Results", "publisher": "Elastic (also SEC 8-K)", "date": "2026-05", "supports": "revenue_latest_usd, robustness"},
-    {"url": "https://www.sec.gov/Archives/edgar/data/0001707753/000170775326000067/a27q2erex991.htm", "title": "Elastic Q2 fiscal 2027 results (8-K exhibit 99.1)", "publisher": "SEC EDGAR", "date": "2026-11-19", "supports": "robustness (Q2 FY27 revenue $496M)"},
-    {"url": "https://pitchbook.com/profiles/company/55574-02", "title": "Elastic Overview", "publisher": "PitchBook", "date": "2026-10-30", "supports": "latest_value_usd (Fox Business showed $10.47B on 2026-10-23)"},
-    {"url": "https://www.fool.com/quote/nyse/elastic-n-v/estc/", "title": "Elastic N.V. (ESTC) quote", "publisher": "The Motley Fool", "date": "2026", "supports": "employees_latest (4,019; Investing.com agrees; Yahoo lists 3,921)"}
+    {
+      "url": "https://en.wikipedia.org/wiki/Elastic_NV",
+      "title": "Elastic NV",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, hq_country"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Elasticsearch",
+      "title": "Elasticsearch",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "license_history[0], origin_detail (Compass 2004, release Feb 2010)"
+    },
+    {
+      "url": "https://www.techrepublic.com/article/opensearch-aws-rolls-out-its-open-source-elasticsearch-fork/",
+      "title": "OpenSearch: AWS rolls out its open source Elasticsearch fork",
+      "publisher": "TechRepublic",
+      "date": "2021-04",
+      "supports": "license_history[1], relicensing_events[0]"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/opensource/stepping-up-for-a-truly-open-source-elasticsearch",
+      "title": "Stepping up for a truly open source Elasticsearch",
+      "publisher": "AWS Open Source Blog",
+      "date": "2021-01-21",
+      "supports": "relicensing_events[0]"
+    },
+    {
+      "url": "https://www.businesswire.com/news/home/20240829537786/en/Elastic-Announces-Open-Source-License-for-Elasticsearch-and-Kibana-Source-Code",
+      "title": "Elastic Announces Open Source License for Elasticsearch and Kibana Source Code",
+      "publisher": "Business Wire (Elastic press release)",
+      "date": "2024-08-29",
+      "supports": "license_history[2], relicensing_events[1]"
+    },
+    {
+      "url": "https://thenewstack.io/whats-behind-elastics-unexpected-return-to-open-source/",
+      "title": "What's behind Elastic's unexpected return to open source",
+      "publisher": "The New Stack",
+      "date": "2024-08",
+      "supports": "relicensing_events[1].outcome_note"
+    },
+    {
+      "url": "https://www.itpro.com/software/open-source/elastic-returns-to-open-source-but-can-it-regain-the-communitys-trust-some-industry-players-arent-holding-their-breath",
+      "title": "Elastic returns to open source, but can it regain the community's trust?",
+      "publisher": "ITPro",
+      "date": "2024-08",
+      "supports": "relicensing_events[1].outcome_note"
+    },
+    {
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-opensearch-software-foundation-to-foster-open-collaboration-in-search-and-analytics",
+      "title": "Linux Foundation Announces OpenSearch Software Foundation",
+      "publisher": "Linux Foundation",
+      "date": "2024-09-16",
+      "supports": "relicensing_events[0].fork_backer"
+    },
+    {
+      "url": "https://www.linuxfoundation.org/press/opensearch-software-foundation-marks-1-year-anniversary-with-community-growth-agentic-ai-and-hybrid-search-enhancements",
+      "title": "OpenSearch Software Foundation Marks 1-Year Anniversary",
+      "publisher": "Linux Foundation",
+      "date": "2025-08",
+      "supports": "relicensing_events[0].outcome_note"
+    },
+    {
+      "url": "https://www.elastic.co/blog/elasticsearch-raises-70m-series-c-nea",
+      "title": "Elasticsearch Raises $70M in Series C from NEA",
+      "publisher": "Elastic",
+      "date": "2014-06-05",
+      "supports": "funding_total_usd ($104M over three rounds)"
+    },
+    {
+      "url": "https://fortune.com/2014/06/06/latest-funding-round-values-elasticsearch-at-700-million/",
+      "title": "Latest funding round values Elasticsearch at $700 million",
+      "publisher": "Fortune",
+      "date": "2014-06-06",
+      "supports": "funding_total_usd cross-check"
+    },
+    {
+      "url": "https://www.elastic.co/about/press/elastic-announces-pricing-of-initial-public-offering",
+      "title": "Elastic announces pricing of initial public offering",
+      "publisher": "Elastic",
+      "date": "2018-10-04",
+      "supports": "exit_events[0]"
+    },
+    {
+      "url": "https://fortune.com/2018/10/06/elastic-search-ipo-valuation/",
+      "title": "Elastic IPO valuation",
+      "publisher": "Fortune",
+      "date": "2018-10-06",
+      "supports": "exit_events[0].value_usd"
+    },
+    {
+      "url": "https://ir.elastic.co/News--Events/news/news-details/2026/Elastic-Reports-Fourth-Quarter-and-Fiscal-2026-Financial-Results/default.aspx",
+      "title": "Elastic Reports Fourth Quarter and Fiscal 2026 Financial Results",
+      "publisher": "Elastic (also SEC 8-K)",
+      "date": "2026-05",
+      "supports": "revenue_latest_usd, robustness"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001707753/000170775326000067/a27q2erex991.htm",
+      "title": "Elastic Q2 fiscal 2027 results (8-K exhibit 99.1)",
+      "publisher": "SEC EDGAR",
+      "date": "2026-11-19",
+      "supports": "robustness (Q2 FY27 revenue $496M)"
+    },
+    {
+      "url": "https://pitchbook.com/profiles/company/55574-02",
+      "title": "Elastic Overview",
+      "publisher": "PitchBook",
+      "date": "2026-10-30",
+      "supports": "latest_value_usd (Fox Business showed $10.47B on 2026-10-23)"
+    },
+    {
+      "url": "https://www.fool.com/quote/nyse/elastic-n-v/estc/",
+      "title": "Elastic N.V. (ESTC) quote",
+      "publisher": "The Motley Fool",
+      "date": "2026",
+      "supports": "employees_latest (4,019; Investing.com agrees; Yahoo lists 3,921)"
+    }
   ],
   "notes": "latest_value_usd is the most recent figure found (PitchBook, 2026-10-30); no November 2026 market cap was found, and the stock moved after Q2 FY2027 results on 2026-11-19. revenue_latest_usd is fiscal 2026 (year ended 2026-04-30). employees_latest is from aggregators, not read from the 10-K. hq_country is NL (Elastic N.V. is Dutch; Wikipedia lists Amsterdam with operational offices in San Francisco; MarketScreener lists Mountain View). The 2021 SSPL/ELv2 change is dated to January 2021 by every source; the exact announcement day was not confirmed."
 }

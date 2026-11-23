@@ -1,0 +1,187 @@
+{
+  "name": "DOE CODE (DOE Office of Scientific and Technical Information) and national-lab software release policy",
+  "slug": "doe-code",
+  "group": "F",
+  "category": "open_infrastructure",
+  "subcategory": "federal software registry, repository and DOI service for DOE-funded code",
+  "hq_country": "US",
+  "origin": "government",
+  "origin_detail": "Built by DOE's Office of Scientific and Technical Information (OSTI): announced as an 'open source, social coding platform' in Nov 2016 and launched 1 Nov 2017. DOE national labs, facilities and contractors must announce qualifying software (useful beyond its site, stable and documented, cleared by sensitivity and export-control review) through DOE CODE, which also maintains DOE's inventory under the Federal Source Code Policy (OMB M-16-21) for Code.gov.",
+  "founded_year": 2017,
+  "flagship_projects": [
+    "DOE CODE registry and search",
+    "DOE CODE GitLab repository service (2023)",
+    "DOI assignment for tagged releases (2020)",
+    "DOE code.json inventory for Code.gov"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "The platform was 'initially developed as an open source project' and its metadata are public, but it is a government registry that also lists closed-source software and, since Sep 2022, limited-availability software. In DOE's code.json inventory, 93.6% of releases are open source.",
+  "business_model": "grants",
+  "license_history": [],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "government",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Inventory staleness: DOE's public code.json was last updated 28 Apr 2025, and the DOE CODE news page has no items after Oct 2023.",
+    "Release volume fell after 2022: records created per year were 1,051 (2020), 859 (2021), 839 (2022), 446 (2023) and 588 (2024).",
+    "Open release depends on per-lab sensitivity and export-control review; closed or limited-availability software is also registered."
+  ],
+  "robustness": "Federal mandate (labs are required to announce software), DOIs for tagged releases, archived repositories updated daily, and a GitLab service for controlled collaboration. Depends on OSTI appropriations and on labs complying.",
+  "physical_science_relevance": "The official channel through which national-lab physical-science software (for example Sandia's Trilinos packages such as Teuchos, the first record in the inventory, and LLNL, LANL and ORNL simulation codes) is announced, archived and cited; a measurable proxy for government open-source output.",
+  "openness_effect_assessment": "Policy has made open source the default outcome for DOE software that is released: 5,505 of 5,879 inventoried releases (93.6%) are open source, mostly under permissive licences (BSD-3-Clause 1,929, MIT 1,137, Apache-2.0 378). The registry measures release volume, not use or maintenance, and annual additions roughly halved between 2020-2022 and 2023-2024.",
+  "key_takeaway": "DOE CODE quantifies the US government's open-source science output: about 5,900 inventoried releases since 2017, led by LLNL (826), PNNL (721), Sandia (698) and LBNL (641), 94% of them open source and mostly permissively licensed. It shows national labs default to openness once code is released, but its own data also show a recent slowdown and a stale public inventory.",
+  "usage_metrics": [
+    {
+      "metric": "software releases in DOE code.json inventory",
+      "value": 5879,
+      "date": "2025-04-28",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "of which open source (usageType openSource)",
+      "value": 5505,
+      "date": "2025-04-28",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "of which exempt by law",
+      "value": 374,
+      "date": "2025-04-28",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2017",
+      "value": 713,
+      "date": "2017",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2018",
+      "value": 754,
+      "date": "2018",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2019",
+      "value": 472,
+      "date": "2019",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2020",
+      "value": 1051,
+      "date": "2020",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2021",
+      "value": 859,
+      "date": "2021",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2022",
+      "value": 839,
+      "date": "2022",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2023",
+      "value": 446,
+      "date": "2023",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2024",
+      "value": 588,
+      "date": "2024",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "records created in 2025 (to 28 Apr)",
+      "value": 157,
+      "date": "2025-04-28",
+      "source": "https://www.energy.gov/code.json"
+    },
+    {
+      "metric": "releases by lab: LLNL 826, PNNL 721, SNL 698, LBNL 641, OSTI 633, LANL 502, NREL 478, ORNL 408, SLAC 264, ANL 245, INL 176",
+      "value": null,
+      "date": "2025-04-28",
+      "source": "https://www.energy.gov/code.json"
+    }
+  ],
+  "funding_sources": [
+    "DOE appropriations (OSTI)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Counts were computed locally from the full DOE code.json file (7.5 MB) downloaded with curl from energy.gov, because WebFetch could read only its first 100,000 characters. 'Created' dates are metadata-record creation dates (2017 includes records migrated at launch), not original software release dates.",
+    "'OSTI' as organisation (633 records) likely reflects legacy records; not interpreted further.",
+    "DOE CODE pages show no record totals; the SHARE IT Act and DOE O 241.1C are not mentioned on fetched pages, so they are not claimed.",
+    "OSTI budget and staffing for DOE CODE not found."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://www.osti.gov/doecode/",
+    "https://www.osti.gov/doecode/about",
+    "https://www.osti.gov/doecode/policy",
+    "https://www.osti.gov/doecode/news",
+    "https://www.osti.gov/doecode/search",
+    "https://www.osti.gov/doecode/FAQs",
+    "https://www.osti.gov/doecode/search?page=1&sort=",
+    "https://www.osti.gov/doecode/api/docs/ (404)",
+    "https://www.osti.gov/doecode/api/search?rows=1 (404)",
+    "https://en.wikipedia.org/wiki/Office_of_Scientific_and_Technical_Information",
+    "https://www.energy.gov/code.json (WebFetch partial; full file via curl)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.osti.gov/doecode/policy",
+      "title": "DOE CODE Software Policy",
+      "publisher": "DOE OSTI",
+      "date": null,
+      "supports": "origin_detail (announcement requirement, M-16-21 inventory), openness_notes"
+    },
+    {
+      "url": "https://www.osti.gov/doecode/news",
+      "title": "DOE CODE News",
+      "publisher": "DOE OSTI",
+      "date": "2023-10-12",
+      "supports": "founded_year (launch 1 Nov 2017), flagship_projects (DOIs 2020, GitLab 2023), limited availability (Sep 2022), risk_events[0]"
+    },
+    {
+      "url": "https://www.osti.gov/doecode/FAQs",
+      "title": "DOE CODE FAQs",
+      "publisher": "DOE OSTI",
+      "date": null,
+      "supports": "openness_notes (platform open source), lab requirements, supported licences"
+    },
+    {
+      "url": "https://www.osti.gov/doecode/about",
+      "title": "About DOE CODE",
+      "publisher": "DOE OSTI",
+      "date": null,
+      "supports": "purpose"
+    },
+    {
+      "url": "https://www.energy.gov/code.json",
+      "title": "DOE code.json (Federal Source Code Policy inventory)",
+      "publisher": "US Department of Energy",
+      "date": "2025-04-28",
+      "supports": "usage_metrics, openness_effect_assessment, key_takeaway, risk_events[0-1]"
+    }
+  ]
+}

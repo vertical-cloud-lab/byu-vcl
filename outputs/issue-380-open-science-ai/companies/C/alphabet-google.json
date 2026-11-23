@@ -8,29 +8,104 @@
   "origin": "founder_startup",
   "origin_detail": "Google was started by Stanford PhD students Larry Page and Sergey Brin and incorporated in 1998; Alphabet became the holding company in 2015. The academic roots (PageRank research at Stanford) are strong, but the company was a venture-backed startup.",
   "founded_year": 1998,
-  "flagship_projects": ["Android / AOSP", "Chromium", "Kubernetes", "TensorFlow", "Gemma open-weights models", "Gemini (closed)"],
+  "flagship_projects": [
+    "Android / AOSP",
+    "Chromium",
+    "Kubernetes",
+    "TensorFlow",
+    "Gemma open-weights models",
+    "Gemini (closed)"
+  ],
   "openness_initial": 3,
   "openness_current": 2,
   "openness_notes": "Scored on the AI and developer-platform strategy; search and ads were always proprietary. Initial 3: the deep-learning era opened with TensorFlow under Apache-2.0 (Nov 2015), and Kubernetes was handed to the CNCF at 1.0 (July 2015). Current 2 (open core): the frontier Gemini models and the services that earn the money are closed; Gemma open weights were under the custom Gemma Terms of Use (Feb 2024 onward: flow-down use restrictions, Google may restrict usage 'remotely or otherwise'), which would be level 1, until Gemma 4 moved to Apache-2.0 on 2026-04-02. Android remains Apache-licensed at its base, but Google moved AOSP development in-house (2025), cut public source drops to twice a year (2026) and is requiring developer verification for apps on certified devices, including sideloaded ones (enforcement from Sept 2026 in four countries, global in 2027).",
   "business_model": "proprietary",
   "license_history": [
-    {"year": 2015, "license": "Apache-2.0 (Kubernetes), governance donated to CNCF / Linux Foundation", "note": "Kubernetes 1.0 and the CNCF were announced together on 2015-07-21, with Docker, IBM, VMware, Intel, Cisco, CoreOS, Red Hat and others.", "source": "https://techcrunch.com/2015/07/21/as-kubernetes-hits-1-0-google-donates-technology-to-newly-formed-cloud-native-computing-foundation-with-ibm-intel-twitter-and-others/amp/"},
-    {"year": 2015, "license": "Apache-2.0 (TensorFlow)", "note": "Open-sourced 2015-11-09 (single-machine version first).", "source": "https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/"},
-    {"year": 2024, "license": "Gemma Terms of Use (custom, not OSI)", "note": "First Gemma open-weights models; terms dated 2024-02-21 incorporate a Prohibited Use Policy that must flow down to all derivatives, and reserve Google's right to restrict usage remotely.", "source": "https://ai.google.dev/gemma/terms-archive/terms_02_21_24"},
-    {"year": 2026, "license": "Apache-2.0 (Gemma 4)", "note": "Gemma 4 released 2026-04-02 under Apache-2.0; earlier Gemma versions stay under the Gemma Terms of Use. Training data not disclosed.", "source": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/"},
-    {"year": 2026, "license": "Apache-2.0 (AOSP), but public source only twice a year", "note": "From 2026 AOSP source is published only with the Q2 major and Q4 minor releases, nearly a year after Google stopped real-time public commits.", "source": "https://www.androidauthority.com/aosp-source-code-schedule-3630018/"}
+    {
+      "year": 2015,
+      "license": "Apache-2.0 (Kubernetes), governance donated to CNCF / Linux Foundation",
+      "note": "Kubernetes 1.0 and the CNCF were announced together on 2015-07-21, with Docker, IBM, VMware, Intel, Cisco, CoreOS, Red Hat and others.",
+      "source": "https://techcrunch.com/2015/07/21/as-kubernetes-hits-1-0-google-donates-technology-to-newly-formed-cloud-native-computing-foundation-with-ibm-intel-twitter-and-others/amp/"
+    },
+    {
+      "year": 2015,
+      "license": "Apache-2.0 (TensorFlow)",
+      "note": "Open-sourced 2015-11-09 (single-machine version first).",
+      "source": "https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/"
+    },
+    {
+      "year": 2024,
+      "license": "Gemma Terms of Use (custom, not OSI)",
+      "note": "First Gemma open-weights models; terms dated 2024-02-21 incorporate a Prohibited Use Policy that must flow down to all derivatives, and reserve Google's right to restrict usage remotely.",
+      "source": "https://ai.google.dev/gemma/terms-archive/terms_02_21_24"
+    },
+    {
+      "year": 2026,
+      "license": "Apache-2.0 (Gemma 4)",
+      "note": "Gemma 4 released 2026-04-02 under Apache-2.0; earlier Gemma versions stay under the Gemma Terms of Use. Training data not disclosed.",
+      "source": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/"
+    },
+    {
+      "year": 2026,
+      "license": "Apache-2.0 (AOSP), but public source only twice a year",
+      "note": "From 2026 AOSP source is published only with the Q2 major and Q4 minor releases, nearly a year after Google stopped real-time public commits.",
+      "source": "https://www.androidauthority.com/aosp-source-code-schedule-3630018/"
+    }
   ],
   "relicensing_events": [
-    {"year": 2015, "from": "Google-controlled Kubernetes", "to": "CNCF (Linux Foundation) governance, Apache-2.0", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Governance donation at 1.0; Kubernetes became the multi-vendor standard for container orchestration across all major clouds.", "source": "https://cloudplatform.googleblog.com/2015/07/Kubernetes-V1-Released.html"},
-    {"year": 2025, "from": "AOSP developed in public branches", "to": "AOSP developed internally, published as periodic source drops (twice a year from 2026)", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Licence unchanged; transparency and timeliness reduced. Custom-ROM developers are hit hardest; Pixel users unaffected.", "source": "https://www.heise.de/en/news/Android-Google-halves-release-cycle-for-AOSP-source-code-11132493.html"},
-    {"year": 2025, "from": "Any app installable on certified Android devices", "to": "Developer verification required for all apps, including sideloaded ones", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Announced 2025-08-25; enforcement in Brazil, Indonesia, Singapore and Thailand from 2026-09-30, global in 2027; an 'advanced' flow still allows unverified apps. Opposed by the Keep Android Open campaign.", "source": "https://9to5google.com/2025/08/25/android-apps-developer-verification/"},
-    {"year": 2026, "from": "Gemma Terms of Use", "to": "Apache-2.0 (Gemma 4)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Moved Google's open-weights line onto an OSI licence, matching Qwen, Mistral and gpt-oss, while Gemini stays closed.", "source": "https://en.wikipedia.org/wiki/Gemma_(language_model)"}
+    {
+      "year": 2015,
+      "from": "Google-controlled Kubernetes",
+      "to": "CNCF (Linux Foundation) governance, Apache-2.0",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Governance donation at 1.0; Kubernetes became the multi-vendor standard for container orchestration across all major clouds.",
+      "source": "https://cloudplatform.googleblog.com/2015/07/Kubernetes-V1-Released.html"
+    },
+    {
+      "year": 2025,
+      "from": "AOSP developed in public branches",
+      "to": "AOSP developed internally, published as periodic source drops (twice a year from 2026)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Licence unchanged; transparency and timeliness reduced. Custom-ROM developers are hit hardest; Pixel users unaffected.",
+      "source": "https://www.heise.de/en/news/Android-Google-halves-release-cycle-for-AOSP-source-code-11132493.html"
+    },
+    {
+      "year": 2025,
+      "from": "Any app installable on certified Android devices",
+      "to": "Developer verification required for all apps, including sideloaded ones",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Announced 2025-08-25; enforcement in Brazil, Indonesia, Singapore and Thailand from 2026-09-30, global in 2027; an 'advanced' flow still allows unverified apps. Opposed by the Keep Android Open campaign.",
+      "source": "https://9to5google.com/2025/08/25/android-apps-developer-verification/"
+    },
+    {
+      "year": 2026,
+      "from": "Gemma Terms of Use",
+      "to": "Apache-2.0 (Gemma 4)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Moved Google's open-weights line onto an OSI licence, matching Qwen, Mistral and gpt-oss, while Gemini stays closed.",
+      "source": "https://en.wikipedia.org/wiki/Gemma_(language_model)"
+    }
   ],
   "funding_total_usd": null,
   "funding_as_of": null,
   "ownership_status": "public",
   "exit_events": [
-    {"year": 2004, "type": "IPO", "value_usd": 23000000000, "counterparty": "NASDAQ: GOOG", "note": "Dutch-auction IPO priced at $85 (cut from an initial $108-135 range); trading began 2004-08-19 and rose about 18% on day one; ~$23B valuation at the offer price.", "source": "https://fortune.com/2015/08/19/google-public-ipo-11-years/"}
+    {
+      "year": 2004,
+      "type": "IPO",
+      "value_usd": 23000000000,
+      "counterparty": "NASDAQ: GOOG",
+      "note": "Dutch-auction IPO priced at $85 (cut from an initial $108-135 range); trading began 2004-08-19 and rose about 18% on day one; ~$23B valuation at the offer price.",
+      "source": "https://fortune.com/2015/08/19/google-public-ipo-11-years/"
+    }
   ],
   "latest_value_usd": 3260000000000,
   "latest_value_type": "market_cap",
@@ -52,6 +127,7 @@
   "openness_effect_assessment": "Google uses openness where it commoditizes a complement: Android made the mobile OS free so Google's services reach every handset, and donating Kubernetes standardised the cloud layer where Google trailed AWS. The same company keeps its profit centres (search, ads, Gemini) closed and has been tightening control of Android in 2025-2026. In open models it went from restrictive custom terms (2024) to Apache-2.0 (2026) as competition from Chinese and European open-weights models on permissive licences grew.",
   "key_takeaway": "Alphabet is a selective opener: it open-sources platforms and infrastructure that widen the market for its paid services, and hands some (Kubernetes) to neutral foundations, but holds the frontier AI and the distribution chokepoints itself. Android shows that an open-source licence alone does not guarantee openness: the code is still Apache-2.0, yet in-house development, sparse source drops and developer verification have moved real control back to Google. Gemma's 2026 move to Apache-2.0 suggests the open-weights tier has become a competitive commodity in which restrictive custom licences no longer pay.",
   "confidence": "high",
+  "search_tool": "WebSearch (standard and extended modes)",
   "searches": [
     "Alphabet market cap November 2026",
     "Gemma 4 license Apache 2.0 Google open model 2026 Gemma terms of use change",
@@ -64,23 +140,131 @@
     "Gemma open models launched February 2024 Gemma Terms of Use prohibited use policy not open source"
   ],
   "sources": [
-    {"url": "https://stockanalysis.com/stocks/googl/market-cap/", "title": "Alphabet (GOOGL) Market Cap", "publisher": "StockAnalysis", "date": "2026-11-20", "supports": "latest_value_usd, risk_events[3]"},
-    {"url": "https://companiesmarketcap.com/alphabet-google/marketcap/", "title": "Alphabet (Google) Market capitalization", "publisher": "CompaniesMarketCap", "date": "2026-11-22", "supports": "latest_value_usd (cross-check, $3.245T)"},
-    {"url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/Alphabet-GOOG-_AR_2025_WO2_TRD_WR.pdf", "title": "Alphabet Annual Report 2025", "publisher": "Alphabet", "date": "2026-04", "supports": "revenue_latest_usd, employees_latest, robustness, founded_year"},
-    {"url": "https://www.sec.gov/Archives/edgar/data/0001652044/000130817926000344/goog014907-ars.pdf", "title": "Alphabet Form ARS FY2025", "publisher": "SEC", "date": "2026", "supports": "revenue_latest_usd, robustness (operating cash flow)"},
-    {"url": "https://fortune.com/2015/08/19/google-public-ipo-11-years/", "title": "Google went public 11 years ago", "publisher": "Fortune", "date": "2015-08-19", "supports": "exit_events[0]"},
-    {"url": "https://money.cnn.com/2004/08/18/technology/googleipo/index.htm", "title": "Google IPO priced at $85", "publisher": "CNN Money", "date": "2004-08-18", "supports": "exit_events[0]"},
-    {"url": "https://techcrunch.com/2015/07/21/as-kubernetes-hits-1-0-google-donates-technology-to-newly-formed-cloud-native-computing-foundation-with-ibm-intel-twitter-and-others/amp/", "title": "As Kubernetes Hits 1.0, Google Donates Technology To Newly Formed Cloud Native Computing Foundation", "publisher": "TechCrunch", "date": "2015-07-21", "supports": "license_history[0], relicensing_events[0]"},
-    {"url": "https://cloudplatform.googleblog.com/2015/07/Kubernetes-V1-Released.html", "title": "Kubernetes V1 Released", "publisher": "Google Cloud Platform Blog", "date": "2015-07-21", "supports": "relicensing_events[0]"},
-    {"url": "https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/", "title": "TensorFlow - Google's latest machine learning system, open sourced for everyone", "publisher": "Google Research", "date": "2015-11-09", "supports": "license_history[1]"},
-    {"url": "https://ai.google.dev/gemma/terms-archive/terms_02_21_24", "title": "Gemma Terms of Use (archived 2024-02-21)", "publisher": "Google", "date": "2024-02-21", "supports": "license_history[2], openness_notes"},
-    {"url": "https://ai.google.dev/gemma/terms", "title": "Gemma Terms of Use (current; points to separate Gemma 4 licence)", "publisher": "Google", "date": "2026-04-01", "supports": "license_history[3]"},
-    {"url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/", "title": "Gemma 4: Byte for byte, the most capable open models", "publisher": "Google", "date": "2026-04-02", "supports": "license_history[3], relicensing_events[3]"},
-    {"url": "https://en.wikipedia.org/wiki/Gemma_(language_model)", "title": "Gemma (language model)", "publisher": "Wikipedia", "date": null, "supports": "relicensing_events[3]"},
-    {"url": "https://www.androidauthority.com/aosp-source-code-schedule-3630018/", "title": "Google will now only release Android source code twice a year", "publisher": "Android Authority", "date": "2025-12", "supports": "license_history[4], relicensing_events[1]"},
-    {"url": "https://www.heise.de/en/news/Android-Google-halves-release-cycle-for-AOSP-source-code-11132493.html", "title": "Android: Google halves release cycle for AOSP source code", "publisher": "heise", "date": "2025-12", "supports": "relicensing_events[1]"},
-    {"url": "https://9to5google.com/2025/08/25/android-apps-developer-verification/", "title": "Google will require developer verification to install Android apps, including sideloading", "publisher": "9to5Google", "date": "2025-08-25", "supports": "relicensing_events[2], risk_events[2]"},
-    {"url": "https://www.androidauthority.com/android-sideloading-changes-timeline-3679204/", "title": "Google details when Android's new sideloading changes will start affecting users", "publisher": "Android Authority", "date": "2026", "supports": "relicensing_events[2] (timeline)"},
-    {"url": "https://en.wikipedia.org/wiki/Keep_Android_Open", "title": "Keep Android Open", "publisher": "Wikipedia", "date": null, "supports": "risk_events[2]"}
+    {
+      "url": "https://stockanalysis.com/stocks/googl/market-cap/",
+      "title": "Alphabet (GOOGL) Market Cap",
+      "publisher": "StockAnalysis",
+      "date": "2026-11-20",
+      "supports": "latest_value_usd, risk_events[3]"
+    },
+    {
+      "url": "https://companiesmarketcap.com/alphabet-google/marketcap/",
+      "title": "Alphabet (Google) Market capitalization",
+      "publisher": "CompaniesMarketCap",
+      "date": "2026-11-22",
+      "supports": "latest_value_usd (cross-check, $3.245T)"
+    },
+    {
+      "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/Alphabet-GOOG-_AR_2025_WO2_TRD_WR.pdf",
+      "title": "Alphabet Annual Report 2025",
+      "publisher": "Alphabet",
+      "date": "2026-04",
+      "supports": "revenue_latest_usd, employees_latest, robustness, founded_year"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001652044/000130817926000344/goog014907-ars.pdf",
+      "title": "Alphabet Form ARS FY2025",
+      "publisher": "SEC",
+      "date": "2026",
+      "supports": "revenue_latest_usd, robustness (operating cash flow)"
+    },
+    {
+      "url": "https://fortune.com/2015/08/19/google-public-ipo-11-years/",
+      "title": "Google went public 11 years ago",
+      "publisher": "Fortune",
+      "date": "2015-08-19",
+      "supports": "exit_events[0]"
+    },
+    {
+      "url": "https://money.cnn.com/2004/08/18/technology/googleipo/index.htm",
+      "title": "Google IPO priced at $85",
+      "publisher": "CNN Money",
+      "date": "2004-08-18",
+      "supports": "exit_events[0]"
+    },
+    {
+      "url": "https://techcrunch.com/2015/07/21/as-kubernetes-hits-1-0-google-donates-technology-to-newly-formed-cloud-native-computing-foundation-with-ibm-intel-twitter-and-others/amp/",
+      "title": "As Kubernetes Hits 1.0, Google Donates Technology To Newly Formed Cloud Native Computing Foundation",
+      "publisher": "TechCrunch",
+      "date": "2015-07-21",
+      "supports": "license_history[0], relicensing_events[0]"
+    },
+    {
+      "url": "https://cloudplatform.googleblog.com/2015/07/Kubernetes-V1-Released.html",
+      "title": "Kubernetes V1 Released",
+      "publisher": "Google Cloud Platform Blog",
+      "date": "2015-07-21",
+      "supports": "relicensing_events[0]"
+    },
+    {
+      "url": "https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/",
+      "title": "TensorFlow - Google's latest machine learning system, open sourced for everyone",
+      "publisher": "Google Research",
+      "date": "2015-11-09",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://ai.google.dev/gemma/terms-archive/terms_02_21_24",
+      "title": "Gemma Terms of Use (archived 2024-02-21)",
+      "publisher": "Google",
+      "date": "2024-02-21",
+      "supports": "license_history[2], openness_notes"
+    },
+    {
+      "url": "https://ai.google.dev/gemma/terms",
+      "title": "Gemma Terms of Use (current; points to separate Gemma 4 licence)",
+      "publisher": "Google",
+      "date": "2026-04-01",
+      "supports": "license_history[3]"
+    },
+    {
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
+      "title": "Gemma 4: Byte for byte, the most capable open models",
+      "publisher": "Google",
+      "date": "2026-04-02",
+      "supports": "license_history[3], relicensing_events[3]"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Gemma_(language_model)",
+      "title": "Gemma (language model)",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "relicensing_events[3]"
+    },
+    {
+      "url": "https://www.androidauthority.com/aosp-source-code-schedule-3630018/",
+      "title": "Google will now only release Android source code twice a year",
+      "publisher": "Android Authority",
+      "date": "2025-12",
+      "supports": "license_history[4], relicensing_events[1]"
+    },
+    {
+      "url": "https://www.heise.de/en/news/Android-Google-halves-release-cycle-for-AOSP-source-code-11132493.html",
+      "title": "Android: Google halves release cycle for AOSP source code",
+      "publisher": "heise",
+      "date": "2025-12",
+      "supports": "relicensing_events[1]"
+    },
+    {
+      "url": "https://9to5google.com/2025/08/25/android-apps-developer-verification/",
+      "title": "Google will require developer verification to install Android apps, including sideloading",
+      "publisher": "9to5Google",
+      "date": "2025-08-25",
+      "supports": "relicensing_events[2], risk_events[2]"
+    },
+    {
+      "url": "https://www.androidauthority.com/android-sideloading-changes-timeline-3679204/",
+      "title": "Google details when Android's new sideloading changes will start affecting users",
+      "publisher": "Android Authority",
+      "date": "2026",
+      "supports": "relicensing_events[2] (timeline)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Keep_Android_Open",
+      "title": "Keep Android Open",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "risk_events[2]"
+    }
   ]
 }

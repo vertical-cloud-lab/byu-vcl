@@ -1,0 +1,146 @@
+{
+  "name": "Alibaba Group Holding Ltd (Qwen / Tongyi Qianwen)",
+  "slug": "alibaba-qwen",
+  "group": "C",
+  "category": "big_tech",
+  "subcategory": "e-commerce and cloud (Alibaba Cloud); Qwen open-weights and proprietary LLMs (non-US comparator)",
+  "hq_country": "CN",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1999-06-28 by Jack Ma and 17 friends and students in his Hangzhou apartment as a B2B marketplace. The Qwen ('Tongyi Qianwen') model family launched in beta in April 2023 on an architecture based on Meta's Llama.",
+  "founded_year": 1999,
+  "flagship_projects": [
+    "Qwen open-weights models (Qwen3, Qwen3.6, Qwen3.8-27B)",
+    "Qwen-Max / Plus proprietary models",
+    "Alibaba Cloud",
+    "Wan video models"
+  ],
+  "openness_initial": 1,
+  "openness_current": 2,
+  "openness_notes": "Scored on the AI strategy. Initial 1: the first open weights (Qwen-7B, Aug 2023; 14B and 72B) were under the custom Tongyi Qianwen License, under which commercial users had to apply via a form. Current 2 (open core): mid-sized models moved to Apache-2.0 (most of Qwen2, June 2024, and Qwen2.5, Sept 2024; all of Qwen3, 2025-04-28; Qwen3.6, Apr 2026; Qwen3.8-27B, Aug 2026). The flagships stay proprietary (Qwen3-Max Sept 2025, Qwen3.5-Plus, Qwen3.7-Max/Plus), and the largest open model, Qwen3.8-2.4T (2026-08-12), requires providers earning over $50M within 12 months to obtain a commercial licence. Qwen4-Max (2026-11-16) licence listed as TBD.",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2023,
+      "license": "Tongyi Qianwen License Agreement (Qwen-7B/14B/72B); Tongyi Qianwen Research licence (1.8B)",
+      "note": "Qwen-7B Aug 2023; 'If you have requirements for commercial use, please fill out the form to apply.'",
+      "source": "https://huggingface.co/Qwen/Qwen-7B"
+    },
+    {
+      "year": 2024,
+      "license": "Apache-2.0 for most Qwen2/Qwen2.5 sizes; Tongyi Qianwen/Qwen licence for 72B; research licence for Qwen2.5-3B",
+      "note": "Qwen2 June 2024, Qwen2.5 Sept 2024; QwQ-32B-Preview (Nov 2024) Apache-2.0, weights only.",
+      "source": "https://en.wikipedia.org/wiki/Qwen"
+    },
+    {
+      "year": 2025,
+      "license": "Apache-2.0 (entire Qwen3 family, incl. Qwen3-235B-A22B)",
+      "note": "Released 2025-04-28; Qwen3-Max (Sept 2025, >1T parameters) proprietary via API.",
+      "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B"
+    },
+    {
+      "year": 2026,
+      "license": "Apache-2.0 (Qwen3.6, Apr 2026; Qwen3.8-27B, Aug 2026); revenue-threshold licence (Qwen3.8-2.4T-A95B, 2026-08-12); proprietary (Qwen3.5-Plus, Qwen3.6-Plus, Qwen3.7-Max/Plus)",
+      "note": "Qwen3.5 (Feb 2026) open weights, licence not stated; Qwen4-Max (2026-11-16) licence TBD.",
+      "source": "https://en.wikipedia.org/wiki/Qwen"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "Tongyi Qianwen License (apply for commercial use)",
+      "to": "Apache-2.0 for most sizes (all Qwen3 models from April 2025)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Drove mass adoption: over 200,000 Qwen variants on Hugging Face; by Sept 2024 more than 100 open models with over 40M downloads.",
+      "source": "https://en.wikipedia.org/wiki/Qwen"
+    },
+    {
+      "year": 2026,
+      "from": "Apache-2.0 for open releases",
+      "to": "Revenue-threshold licence for the largest open model (Qwen3.8-2.4T: commercial licence needed above $50M revenue)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Partial re-tightening at the top end while mid-sized models stay Apache-2.0.",
+      "source": "https://en.wikipedia.org/wiki/Qwen"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {
+      "year": 2014,
+      "type": "IPO",
+      "value_usd": 231000000000,
+      "counterparty": "NYSE: BABA",
+      "note": "Priced 2014-09-18 at $68 and listed 2014-09-19, raising $25B, then the largest IPO in world history; $231B market value.",
+      "source": "https://en.wikipedia.org/wiki/Alibaba_Group"
+    }
+  ],
+  "latest_value_usd": 213860000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 148730000000,
+  "revenue_year": 2025,
+  "employees_latest": 124320,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "June 2026: the US added Alibaba to its 'Chinese military companies' list; Alibaba sued to be removed",
+    "Market cap down 42% over the year to 2026-11-23 (StockAnalysis)",
+    "Geopolitical limits on Western enterprise adoption of Chinese models despite permissive licences"
+  ],
+  "robustness": "Large, profitable incumbent (FY2025 revenue CN¥996.35B / US$148.73B; 124,320 employees). Qwen's Apache-2.0 releases are permanently reusable and widely forked (200,000+ variants), so the ecosystem is robust to Alibaba's later licence choices; the company itself faces US regulatory pressure.",
+  "physical_science_relevance": "Qwen's Apache-2.0 licences and range of sizes make it a frequent base for fine-tunes (200,000+ variants on Hugging Face), including DeepSeek-R1's distilled reasoning models (DeepSeek-R1-Distill-Qwen); no Alibaba science programme in the pages fetched.",
+  "openness_effect_assessment": "Moving from a custom licence to Apache-2.0 made Qwen a heavily forked open-weights family (over 200,000 variants on Hugging Face), giving a Chinese firm global developer reach that its proprietary products could not get. Alibaba keeps its best models closed and has begun adding revenue thresholds to its largest open release, so openness is the distribution layer for Alibaba Cloud rather than the product.",
+  "key_takeaway": "Alibaba's Qwen is the non-US mirror of Meta's Llama strategy, but with a more permissive licence: Apache-2.0 open weights for most sizes made Qwen a widely used base model in the open ecosystem (200,000+ variants), while frontier 'Max' models and cloud services earn the money. Its 2026 revenue-threshold licence for the largest model shows the same drift as US firms toward restricting the top tier. For the study, Qwen shows that permissive licensing can win global adoption even under geopolitical headwinds, though not market-value gains (shares fell 42% in a year).",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Qwen",
+    "https://stockanalysis.com/stocks/baba/market-cap/",
+    "https://en.wikipedia.org/wiki/Alibaba_Group",
+    "https://huggingface.co/Qwen/Qwen-7B",
+    "https://huggingface.co/Qwen/Qwen3-235B-A22B"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Alibaba_Group",
+      "title": "Alibaba Group",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, exit_events[0], revenue_latest_usd, employees_latest, risk_events[0], license_history[1] (QwQ)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Qwen",
+      "title": "Qwen",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail (Llama-based), license_history[1], license_history[3], relicensing_events[0], relicensing_events[1], openness_notes"
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen-7B",
+      "title": "Qwen/Qwen-7B model card",
+      "publisher": "Hugging Face / Alibaba Qwen",
+      "date": "2023-09-28",
+      "supports": "license_history[0]"
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-235B-A22B",
+      "title": "Qwen/Qwen3-235B-A22B model card",
+      "publisher": "Hugging Face / Alibaba Qwen",
+      "date": "2025-04",
+      "supports": "license_history[2]"
+    },
+    {
+      "url": "https://stockanalysis.com/stocks/baba/market-cap/",
+      "title": "Alibaba (BABA) Market Cap",
+      "publisher": "StockAnalysis",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd ($213.86B at $86.04 close; -42.01% over one year), risk_events[1]"
+    }
+  ]
+}

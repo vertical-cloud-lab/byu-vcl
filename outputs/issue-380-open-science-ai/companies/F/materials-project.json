@@ -51,8 +51,8 @@
     "Licence fragmentation after the GNoME contribution: a non-commercial subset now sits beside CC BY 4.0 data, and direct lakehouse access bypasses the API's licence controls."
   ],
   "robustness": "Data mirrored on the AWS Open Data Registry and the platform migrated to cloud (MongoDB, AWS, Datadog) with a reported 99.98% uptime. Core codes (pymatgen) are open source and widely reused. Stewardship is still concentrated in one lab and one federal sponsor.",
-  "physical_science_relevance": "The most-cited computed materials database: >200,000 inorganic materials and >577,000 molecules. Its relaxation trajectories (MPtrj) are the standard training set for universal machine-learned interatomic potentials and the Matbench Discovery benchmark. Google DeepMind used it to train initial GNoME models; Microsoft used it for MatterGen.",
-  "openness_effect_assessment": "Open, free, CC BY data turned a single-lab DFT effort into shared infrastructure: users grew from >20,000 (2016) to ~120,000 (early 2020) to >650,000 (Jan 2026), and the platform has >32,000 citations. Openness also made it default AI training data for industry labs (DeepMind, Microsoft, Toyota Research Institute), which in turn contributed data back (DeepMind ~400,000 compounds) but under more restrictive terms.",
+  "physical_science_relevance": "The most-cited computed materials database: >200,000 inorganic materials and >577,000 molecules. Its relaxation trajectories (MPtrj) are the standard training set for universal machine-learned interatomic potentials and the Matbench Discovery benchmark. Google DeepMind used it to train initial GNoME models; Microsoft used it for MatterGen. Its DFT calculations are run with the proprietary VASP code.",
+  "openness_effect_assessment": "Open, free, CC BY data turned a single-lab DFT effort into shared infrastructure: users grew from >20,000 (2016) to ~120,000 (early 2020) to >650,000 (Jan 2026), and the platform has >32,000 citations. Openness also made it default AI training data for industry labs (DeepMind, Microsoft, Toyota Research Institute), which in turn contributed data back (DeepMind ~400,000 compounds); the GNoME dataset on MP is restricted to non-commercial use.",
   "key_takeaway": "The Materials Project is the clearest physical-science case of government-funded open data becoming AI training infrastructure: a DOE lab project with no revenue model now underpins commercial materials-AI efforts at Google DeepMind and Microsoft. Its value is enormous in usage terms but invisible financially (no published budget), and its main risks are federal-funding dependence and creeping licence fragmentation when industry contributes data on its own terms.",
   "usage_metrics": [
     {
@@ -164,6 +164,13 @@
       "publisher": "Wikipedia",
       "date": null,
       "supports": "notes (600,000 users 2025 cross-check)"
+    },
+    {
+      "url": "https://docs.materialsproject.org/methodology/materials-methodology/calculation-details",
+      "title": "Calculation details (Materials methodology)",
+      "publisher": "Materials Project documentation",
+      "date": null,
+      "supports": "physical_science_relevance (VASP as the DFT engine)"
     }
   ]
 }

@@ -1,0 +1,119 @@
+{
+  "name": "Automattic Inc.",
+  "slug": "automattic",
+  "group": "B",
+  "category": "software",
+  "subcategory": "web publishing (WordPress.com, WooCommerce, Jetpack, Tumblr)",
+  "hq_country": "US",
+  "origin": "community",
+  "origin_detail": "Founded 2005 by Matt Mullenweg, who co-founded the WordPress open-source project in 2003, to monetize WordPress; distributed/remote company based in San Francisco",
+  "founded_year": 2005,
+  "flagship_projects": [
+    "WordPress (GPL, via WordPress.org)",
+    "WordPress.com",
+    "WooCommerce",
+    "Jetpack",
+    "Tumblr",
+    "Gravatar",
+    "Pocket Casts",
+    "Day One",
+    "Beeper"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "WordPress and Automattic's main plugins (WooCommerce, Jetpack) are GPL; the business is hosting (WordPress.com), commerce and services, plus some proprietary apps (Tumblr, Day One). WordPress trademarks were transferred to the WordPress Foundation in 2010, but the 2024 WP Engine dispute showed that WordPress.org infrastructure is effectively controlled by Mullenweg personally, so governance is not neutral (not level 4).",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2005,
+      "license": "GPL (WordPress, co-founded 2003)",
+      "note": "Automattic founded to monetize WordPress",
+      "source": "https://en.wikipedia.org/wiki/Automattic"
+    },
+    {
+      "year": 2010,
+      "license": "GPL unchanged; source code and trademarks transferred to the WordPress Foundation",
+      "note": "Governance/trademark step, not a licence change",
+      "source": "https://en.wikipedia.org/wiki/Automattic"
+    },
+    {
+      "year": 2024,
+      "license": "ACF plugin forked as 'Secure Custom Fields' (GPL) on WordPress.org",
+      "note": "12 Oct 2024: WP Engine's Advanced Custom Fields replaced in the directory using the same slug, so users were switched on update",
+      "source": "https://en.wikipedia.org/wiki/WP_Engine"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 600000000,
+  "funding_as_of": "2019",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 7500000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2021",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 1479,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Sep 2024: Mullenweg called WP Engine 'a cancer to WordPress', demanded trademark royalties, and WordPress.org banned WP Engine (25 Sep 2024)",
+    "2 Oct 2024: WP Engine sued Automattic and Mullenweg (extortion, abuse of power, Computer Fraud and Abuse Act claims)",
+    "Oct 2024: 159 employees (8.4%) took a severance offer for disagreeing with Mullenweg's stance",
+    "12 Oct 2024: ACF plugin taken over/forked as Secure Custom Fields",
+    "10 Dec 2024: preliminary injunction ordered Automattic and Mullenweg to restore WP Engine's access to WordPress.org",
+    "Feb 2025: class action by a WP Engine customer against Automattic and Mullenweg",
+    "2 Apr 2025: 16% layoff (281 positions)",
+    "9-12 Sep 2026: board placed Mullenweg on paid leave and named CFO Mark Davies interim CEO; Mullenweg regained control within ~33 hours; co-founding CEO Toni Schneider reportedly left the board"
+  ],
+  "robustness": "WordPress itself is very robust (GPL, huge ecosystem, Foundation-held trademarks), and could be forked if the steward misbehaves. Automattic as a company has shown governance fragility: founder-centric control of WordPress.org, a costly trademark war, staff departures, a 16% layoff and a failed 2026 board attempt to remove its CEO. No priced round since the 2021 $7.5B valuation was found.",
+  "physical_science_relevance": "Low directly; WordPress powers many lab, department and project websites.",
+  "openness_effect_assessment": "GPL licensing made WordPress the dominant web CMS and let a whole hosting industry (including WP Engine, backed by Silver Lake since 2018) profit from it, which Automattic came to view as free-riding. Its attempt to extract royalties via trademark and control of WordPress.org infrastructure, instead of relicensing, triggered lawsuits, an injunction, community distrust and internal turmoil, showing that informal control of 'open' infrastructure is itself a risk.",
+  "key_takeaway": "Automattic shows that a fully GPL product with weak neutral governance can turn a free-rider complaint into a governance crisis: the code stayed open, but the steward used trademarks and the plugin directory as leverage, leading to litigation (2024-2025) and a 2026 boardroom fight. Openness built a $7.5B (2021) company; personal control of the commons put it at risk.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Automattic",
+    "https://en.wikipedia.org/wiki/WP_Engine",
+    "https://techcrunch.com/2026/09/12/automattic-confirms-mullenweg-has-returned-as-ceo-after-attempted-ouster-by-board/",
+    "https://techcrunch.com/2025/04/02/wordpress-maker-automattic-lays-off-16-of-staff/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Automattic",
+      "title": "Automattic",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail, license_history[0-1], funding ($160M 2014; $300M Series D 2019 at $3B led by Salesforce Ventures; >$600M total by 2019; $7.5B valuation 2021), employees_latest (1,479, 2025), acquisitions (Tumblr ~$3M 2019, WooCommerce 2015), risk_events (Apr 2025 layoff, Sep 2026 CEO episode)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/WP_Engine",
+      "title": "WP Engine",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "risk_events (dispute timeline, lawsuit, ACF takeover, injunction, class action), license_history[2], Silver Lake $250M stake (2018)"
+    },
+    {
+      "url": "https://techcrunch.com/2026/09/12/automattic-confirms-mullenweg-has-returned-as-ceo-after-attempted-ouster-by-board/",
+      "title": "Automattic confirms Mullenweg has returned as CEO after attempted ouster by board",
+      "publisher": "TechCrunch",
+      "date": "2026-09-12",
+      "supports": "risk_events (Sep 2026 leave and return)"
+    },
+    {
+      "url": "https://techcrunch.com/2025/04/02/wordpress-maker-automattic-lays-off-16-of-staff/",
+      "title": "WordPress maker Automattic lays off 16% of staff",
+      "publisher": "TechCrunch",
+      "date": "2025-04-02",
+      "supports": "risk_events (16% layoff, ~281 people; 1,744 employees listed before the cuts)"
+    }
+  ],
+  "notes": [
+    "funding_total_usd is 'more than $600M' as of the 2019 Series D; the 2021 round that set the $7.5B valuation (reported elsewhere as $288M) was not confirmed in fetched pages and is not included.",
+    "revenue null: not in fetched pages.",
+    "WP Engine litigation outcomes after Feb 2025 (any trial, ruling or settlement) were not found in fetched pages and are left out; status unconfirmed.",
+    "Failed fetch: https://en.wikipedia.org/wiki/WP_Engine_v._Automattic (404).",
+    "Automattic's website listed 1,744 employees before the Apr 2025 cut (TechCrunch); Wikipedia's 1,479 (2025) is consistent with the post-cut level."
+  ]
+}

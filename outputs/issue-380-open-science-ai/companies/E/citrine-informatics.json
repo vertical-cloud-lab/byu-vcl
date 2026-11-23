@@ -1,0 +1,66 @@
+{
+  "name": "Citrine Informatics, Inc.",
+  "slug": "citrine-informatics",
+  "group": "E",
+  "category": "sci_software",
+  "subcategory": "materials informatics SaaS (AI for materials and chemicals R&D)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2013 by Greg Mulholland (CEO) and Bryce Meredig, both Stanford Graduate School of Business graduates, to combine materials data infrastructure with AI. HQ Redwood City, CA; Pittsburgh office (2017), Tokyo office (2020).",
+  "founded_year": 2013,
+  "flagship_projects": ["Citrine Platform (public launch Aug 2020)", "Catalyst natural-language assistant (Oct 2023; relaunched with Apex Jul 2026)", "Apex ('Industrial Super Intelligence', 2026)", "GEMD materials data model (Apache-2.0)", "lolo random-forest library (Apache-2.0)", "citrine-python SDK (Apache-2.0)"],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "The platform is proprietary enterprise SaaS. Peripheral pieces are open under Apache-2.0 on GitHub: citrine-python (SDK), gemd-python (GEMD data model), lolo (random-forest ML library, ~53 stars) and dft-input-gen. The older python-citrination-client and public_search repositories are archived. Level 1: SDKs, data model and a library are open; the product is closed. A first-hand description of the former Citrination data service was not available in fetched sources.",
+  "business_model": "saas",
+  "license_history": [
+    {"year": null, "license": "Apache-2.0 for SDKs/clients (python-citrination-client, now archived)", "note": "Year not confirmed", "source": "https://github.com/CitrineInformatics"},
+    {"year": 2020, "license": "Proprietary Citrine Platform; Apache-2.0 citrine-python, gemd-python, lolo", "note": "Platform public launch 4 Aug 2020", "source": "https://citrine.io/media-type/press-releases/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 51600000,
+  "funding_as_of": "2023-01",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Small rounds by 2025-2026 standards: $7.6M (Jun 2017), $8M convertible note (Apr 2018), $20M Series B (Oct 2019), strategic investments from Universal Materials Incubator (Dec 2020) and Evonik Venture Capital (Mar 2022, amounts undisclosed), $16M Series C (Jan 2023)",
+    "No announced equity round since Jan 2023 through Nov 2026; non-dilutive awards (DOE $3.1M 2022, ARPA-E $0.3M 2024, DARPA INTACT 2025, BioMADE 2026)",
+    "2026: repositioned around generative AI (Apex, 'Industrial Super Intelligence') as better-funded AI-for-materials entrants arrived"
+  ],
+  "robustness": "A long-lived (13 years) independent SaaS with blue-chip chemical and materials customers (LyondellBasell, Eastman, Evonik, Huntsman, Arkema, Saint-Gobain, TotalEnergies, Syensqo and others) and government-funded projects. Capital-light compared with 2025 entrants. The platform is proprietary, but the open GEMD data model and Apache SDKs reduce lock-in.",
+  "physical_science_relevance": "Very high. AI for materials and chemicals formulation: polymers and urethanes (LANXESS), glass (AGC), batteries (Morrow, Sion Power), CO2-based polymers (Econic), coatings (Dorfner, Perstorp), nuclear-waste storage materials (DOE), fusion (ARPA-E), bio-produced cement (BioMADE) and mineral processing (ANZAPLAN).",
+  "openness_effect_assessment": "Citrine's revenue comes from closed enterprise SaaS for chemical companies whose private, sparse datasets they will not share. Its open pieces (GEMD data model, lolo, SDKs) lower integration costs and support academic credibility but were never the business. The archived Citrination-era client repositories suggest the company's open public-data face has receded as enterprise SaaS grew.",
+  "key_takeaway": "Citrine is the incumbent US materials-informatics startup, founded in 2013. It shows the slow, capital-light path: about $52M or more in announced rounds over a decade, real industrial customers and grants, and peripheral open tooling (Apache-2.0 SDK, data model, ML library) around a closed SaaS core. By 2025-2026 it was dwarfed in funding by closed AI-for-materials newcomers (Periodic Labs' $300M seed, CuspAI's >$650M), and responded by rebranding around 'industrial superintelligence' rather than opening up.",
+  "confidence": "medium",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from citrine.io and GitHub pages listed in fetched_urls.",
+    "funding_total_usd = $7.6M + $8M + $20M + $16M announced since 2017 (my arithmetic). It is a lower bound that excludes pre-2017 seed money (the press-release page links older posts) and undisclosed strategic investments.",
+    "Valuation, revenue and headcount not disclosed in fetched sources.",
+    "Wikipedia has no Citrine Informatics article (404); citrine.io/about-us returned 404."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://citrine.io/",
+    "https://citrine.io/company/",
+    "https://citrine.io/media-type/press-releases/",
+    "https://github.com/CitrineInformatics",
+    "https://github.com/CitrineInformatics/lolo"
+  ],
+  "sources": [
+    {"url": "https://citrine.io/company/", "title": "Citrine Informatics: Company", "publisher": "Citrine Informatics", "date": "2026-11", "supports": "founded_year, origin_detail, robustness (investors), awards"},
+    {"url": "https://citrine.io/media-type/press-releases/", "title": "Citrine press releases", "publisher": "Citrine Informatics", "date": "2026-09-02", "supports": "funding_total_usd, risk_events[0], risk_events[1], flagship_projects, physical_science_relevance"},
+    {"url": "https://citrine.io/", "title": "Citrine Informatics home page", "publisher": "Citrine Informatics", "date": "2026-11", "supports": "flagship_projects (Apex), robustness (customers), risk_events[2]"},
+    {"url": "https://github.com/CitrineInformatics", "title": "CitrineInformatics GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes, license_history[0]"},
+    {"url": "https://github.com/CitrineInformatics/lolo", "title": "CitrineInformatics/lolo", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes"}
+  ]
+}

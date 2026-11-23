@@ -1,0 +1,60 @@
+{
+  "name": "Benchling, Inc.",
+  "slug": "benchling",
+  "group": "E",
+  "category": "sci_software",
+  "subcategory": "cloud R&D informatics SaaS (ELN, molecular biology, registry, LIMS) for biotech",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2012 by MIT students Sajith Wickramasekara (CEO), Ashu Singhal (President) and Cory Li; Y Combinator summer 2012 batch. HQ SoMa, San Francisco; offices in Boston, Zurich (EMEA HQ, 2021) and Belfast (via 2022 Overwatch Research acquisition).",
+  "founded_year": 2012,
+  "flagship_projects": ["Benchling R&D Cloud (notebook, molecular biology, registry, inventory, workflows)", "Free academic edition"],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Fully proprietary multi-tenant SaaS. Wikipedia says 'much of its software is offered free of charge for academic use', which is gratis, not open source. Its public GitHub organization holds only API integration and app examples under MIT (e.g. integration-examples, ~38 stars) and forks of third-party tools. The licence of the benchling-sdk package could not be confirmed (PyPI page failed to load). Level 0, the closed SaaS comparator.",
+  "business_model": "saas",
+  "license_history": [
+    {"year": 2012, "license": "Proprietary SaaS (free tier for academics)", "note": "", "source": "https://en.wikipedia.org/wiki/Benchling"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 406000000,
+  "funding_as_of": "2021-11",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 6100000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2021-11",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 810,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Rounds: Series A $7M (2016), B $14.5M (2018), C $34.5M (2019), D $50M (2020), E $200M (2021), F $100M (2021) at $6.1B (Bloomberg, 18 Nov 2021)",
+    "Nov 2021: filed Form S-1 with the SEC per Wikipedia; no IPO completed as of 2026",
+    "No post-2021 valuation, tender or down round found in fetched sources (WebSearch budget exhausted before this company was searched)"
+  ],
+  "robustness": "A large installed base: as of 2025, more than 200,000 scientists, 1,300+ companies and 7,500+ academic institutions (Wikipedia). Lock-in is high because data and workflows live in a proprietary cloud. There is no open-source fallback if the vendor changes terms. It remains a private company with ~810 employees (2026).",
+  "physical_science_relevance": "Low. Benchling is built for biology and biotech R&D. For physical-science SDLs it matters mainly as the dominant closed lab-data layer that automation and AI vendors integrate with through its API, and as the commercial comparator for open ELN and LIMS tools.",
+  "openness_effect_assessment": "Benchling got the network effects open source usually provides by giving its closed product away free to academics (7,500+ institutions), so trained users carried it into industry: free but closed. It reached a $6.1B valuation in 2021 with no open-source component. That shows a closed SaaS can win the academic-to-industry funnel when the free tier is generous.",
+  "key_takeaway": "Benchling is the closed-SaaS benchmark for lab software. It is founder-led (MIT/YC 2012), raised about $406M, was valued at $6.1B at the 2021 peak and has about 810 employees. It has never open-sourced its product, and its free academic tier did the community-building job that open source does for others. The lack of any public valuation, IPO or reported down round since 2021 makes its current value unknown. Fetched sources could not confirm 2023-2026 restructuring.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from Wikipedia (last edited 31 Oct 2026) and GitHub, listed in fetched_urls.",
+    "funding_total_usd = sum of Series A-F as listed on Wikipedia (my arithmetic); excludes seed/YC money.",
+    "latest_value_usd is the Nov 2021 Series F valuation; any later secondary/tender valuations are unknown.",
+    "Revenue: Wikipedia cites an estimate of >$200M ARR (Silicon Valley Investclub), which is unverified, so revenue_latest_usd is null.",
+    "benchling.com/press, /newsroom and /about returned 404; pypi.org/project/benchling-sdk did not render."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Benchling",
+    "https://github.com/benchling"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Benchling", "title": "Benchling", "publisher": "Wikipedia (citing Bloomberg 2021-11-18 for valuation)", "date": "2026-10-31", "supports": "founded_year, origin_detail, funding_total_usd, latest_value_usd, employees_latest, risk_events[0], risk_events[1], robustness, openness_notes (free academic use)"},
+    {"url": "https://github.com/benchling", "title": "Benchling GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes"}
+  ]
+}

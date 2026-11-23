@@ -1,0 +1,109 @@
+{
+  "name": "Stability AI Ltd",
+  "slug": "stability-ai",
+  "group": "C",
+  "category": "ai_lab",
+  "subcategory": "generative image, video, audio and 3D models (Stable Diffusion family)",
+  "hq_country": "GB",
+  "origin": "founder_startup",
+  "origin_detail": "UK-based company founded in 2019 by Emad Mostaque and Cyrus Hodes, headquartered in London. Released Stable Diffusion, a 'source and weights available' text-to-image model, in August 2022, and became the poster child of open generative AI before falling into financial difficulty.",
+  "founded_year": 2019,
+  "flagship_projects": [
+    "Stable Diffusion 1.x/2.x",
+    "SDXL / SDXL Turbo",
+    "Stable Diffusion 3.5",
+    "Stable Video Diffusion",
+    "Stable Audio"
+  ],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "Level 1 throughout, under the scale's RAIL/non-commercial rule. Stable Diffusion v1 was released under CreativeML OpenRAIL-M, a responsible-AI licence with use-based restrictions (not OSI). Current models (SD 3.5 suite, SDXL Turbo, Stable Audio 3.0, Stable Fast 3D) are under the Stability AI Community License: free for 'researchers, developers, small businesses, and creators with less than $1M in annual revenue', with an Enterprise licence required above $1M. Weights stay downloadable, but commercial scale use is paid. Any intermediate non-commercial licensing (2023) was not confirmed from a fetched page.",
+  "business_model": "dual_license",
+  "license_history": [
+    {
+      "year": 2022,
+      "license": "CreativeML OpenRAIL-M (Stable Diffusion v1.x)",
+      "note": "Released August 2022; 'The CreativeML OpenRAIL M license is an Open RAIL M license' with misuse restrictions.",
+      "source": "https://huggingface.co/CompVis/stable-diffusion-v1-4"
+    },
+    {
+      "year": null,
+      "license": "Stability AI Community License (free below $1M annual revenue; Enterprise licence above)",
+      "note": "Covers SD 3.5 suite, SDXL Turbo, Stable Audio 3.0 and Stable Fast 3D; adoption date not shown on the licence page fetched. Confirmed on the SD 3.5 Large model card (licence tag stabilityai-ai-community).",
+      "source": "https://stability.ai/license"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": null,
+      "from": "CreativeML OpenRAIL-M (free commercial use subject to use restrictions)",
+      "to": "Stability AI Community License (paid Enterprise licence above $1M revenue)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "A monetisation move; the licence covers models from SD 3.5 onward, but its exact adoption date relative to the 2023-24 cash crisis was not confirmed from a fetched page. Former Stability researchers in Freiburg left and founded Black Forest Labs (2024), a competing image-model company.",
+      "source": "https://stability.ai/license"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": "2026 (rounds on pages fetched: $101M at a $1B valuation, Oct 2022; June 2024 round from Greycroft, Coatue, Lightspeed and others, reportedly $80M; $76M Series B in 2026 from UMG, Sony Music, Warner Music, EA, AMD Ventures and Pacific Alliance Ventures; total not computed)",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 170,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2023: financial problems caused employees to leave (Freiburg office), and some went on to found Black Forest Labs in 2024",
+    "2024-03-23: founder Emad Mostaque stepped down as CEO; 2024-06-25: Prem Akkaraju (ex-Weta Digital) became CEO with Sean Parker as executive chairman and a new investor round (reportedly $80M)",
+    "Litigation: Andersen et al. artists' suit (Jan 2023, ongoing in 2026); co-founder Cyrus Hodes' fraud suit (July 2023, allegations); Getty Images UK case won by Stability (High Court, Nov 2025); Getty US case allowed to proceed (April 2026)",
+    "Last disclosed valuation was $1B (Oct 2022); valuations of the 2024 and 2026 rounds were not disclosed on the pages fetched"
+  ],
+  "robustness": "Fragile: a small company (170 staff in 2024) that survived a 2023-24 cash crisis through a leadership change and new money from strategic media investors (record labels, EA) in 2026. Its earlier open weights remain widely used and cannot be withdrawn, so the ecosystem it seeded (fine-tunes, tools) is more robust than the company.",
+  "physical_science_relevance": "Limited; diffusion-model techniques popularised by Stable Diffusion are now used in scientific generative modelling (molecules, materials), but Stability has no science programme in the pages fetched.",
+  "openness_effect_assessment": "Openness made Stable Diffusion the most widely adopted image model and Stability briefly a $1B unicorn (Oct 2022), but freely downloadable weights generated little revenue while training costs and copyright lawsuits mounted. The company moved to a revenue-threshold licence and a strategic-investor model; meanwhile its own staff spun out a competitor (Black Forest Labs). Open weights created a huge ecosystem that the company itself could not monetise.",
+  "key_takeaway": "Stability AI is the cautionary case: open weights won adoption and mindshare almost overnight, but without a paid product or a deep-pocketed parent, openness turned into cost and legal exposure, followed by a cash crisis, a founder exit and a tighter licence. For the study, it shows that open model releases are sustainable for companies that monetise something else (Meta, NVIDIA, cloud providers) or are funded as public goods (Ai2, EleutherAI), and precarious for startups whose only asset is the model.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Stability_AI",
+    "https://stability.ai/license",
+    "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+    "https://huggingface.co/stabilityai/stable-diffusion-3.5-large"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Stability_AI",
+      "title": "Stability AI",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, funding_as_of, employees_latest, risk_events[0-3], relicensing_events[0] (Black Forest Labs)"
+    },
+    {
+      "url": "https://stability.ai/license",
+      "title": "Stability AI License",
+      "publisher": "Stability AI",
+      "date": null,
+      "supports": "license_history[1], relicensing_events[0], openness_notes"
+    },
+    {
+      "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+      "title": "CompVis/stable-diffusion-v1-4 model card",
+      "publisher": "Hugging Face / CompVis",
+      "date": "2022-08",
+      "supports": "license_history[0]"
+    },
+    {
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large",
+      "title": "stabilityai/stable-diffusion-3.5-large model card",
+      "publisher": "Hugging Face / Stability AI",
+      "date": null,
+      "supports": "license_history[1] (Stability Community License; free for 'organizations or individuals with less than $1M in total annual revenue')"
+    }
+  ]
+}

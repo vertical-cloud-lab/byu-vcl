@@ -8,20 +8,59 @@
   "origin": "corporate",
   "origin_detail": "Spun off on 2023-07-17 from the AI research unit of High-Flyer, a Chinese quantitative hedge fund (unit announced 2023-04-14). Founder and CEO Liang Wenfeng held a 78% stake through two holding companies as of July 2026; the company was owned and funded by High-Flyer until its first external round in 2026.",
   "founded_year": 2023,
-  "flagship_projects": ["DeepSeek-R1", "DeepSeek-V3 / V3.1 / V3.2", "DeepSeek-V4 (Pro, Flash) and V4.1-Flash", "DeepSeek chatbot app"],
+  "flagship_projects": [
+    "DeepSeek-R1",
+    "DeepSeek-V3 / V3.1 / V3.2",
+    "DeepSeek-V4 (Pro, Flash) and V4.1-Flash",
+    "DeepSeek chatbot app"
+  ],
   "openness_initial": 1,
   "openness_current": 3,
   "openness_notes": "Initial 1: early weights (DeepSeek-Coder, Nov 2023; DeepSeek-V3, Dec 2024) came under DeepSeek's own model licence, with code under MIT. Current 3: from R1 (2025-01-20) the weights themselves are MIT, explicitly allowing commercial use, modification and distillation; V3.1 (2025-08-21), V3.2 (2025-12-01) and V4-Pro (April 2026) are also MIT. Training data are not released, so this is open weights under an OSI licence rather than fully open science. The hosted chatbot and API are proprietary services.",
   "business_model": "api",
   "license_history": [
-    {"year": 2023, "license": "DeepSeek model licence (custom) for weights; MIT for code", "note": "DeepSeek-Coder (2023-11-02) under DeepSeek's own licence.", "source": "https://en.wikipedia.org/wiki/DeepSeek"},
-    {"year": 2024, "license": "DeepSeek Model License (weights); MIT (code)", "note": "DeepSeek-V3 (Dec 2024): 'The use of DeepSeek-V3 Base/Chat models is subject to the Model License'; commercial use supported.", "source": "https://github.com/deepseek-ai/DeepSeek-V3"},
-    {"year": 2025, "license": "MIT (code and weights, DeepSeek-R1)", "note": "Released 2025-01-20 (paper 2025-01-22); permits commercial use and 'distillation for training other LLMs'. Distilled Qwen/Llama variants keep their base licences.", "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"},
-    {"year": 2025, "license": "MIT (DeepSeek-V3.2)", "note": "V3.1 (2025-08-21) and V3.2 (2025-12-01) under MIT.", "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"},
-    {"year": 2026, "license": "MIT (DeepSeek-V4-Pro)", "note": "V4 preview 2026-04-24 (paper 'Apr 26'); V4-Flash full release 2026-07-31, V4-Pro 2026-08-13; V4.1-Flash 2026-09-10. Licence confirmed for V4-Pro.", "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"}
+    {
+      "year": 2023,
+      "license": "DeepSeek model licence (custom) for weights; MIT for code",
+      "note": "DeepSeek-Coder (2023-11-02) under DeepSeek's own licence.",
+      "source": "https://en.wikipedia.org/wiki/DeepSeek"
+    },
+    {
+      "year": 2024,
+      "license": "DeepSeek Model License (weights); MIT (code)",
+      "note": "DeepSeek-V3 (Dec 2024): 'The use of DeepSeek-V3 Base/Chat models is subject to the Model License'; commercial use supported.",
+      "source": "https://github.com/deepseek-ai/DeepSeek-V3"
+    },
+    {
+      "year": 2025,
+      "license": "MIT (code and weights, DeepSeek-R1)",
+      "note": "Released 2025-01-20 (paper 2025-01-22); permits commercial use and 'distillation for training other LLMs'. Distilled Qwen/Llama variants keep their base licences.",
+      "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+    },
+    {
+      "year": 2025,
+      "license": "MIT (DeepSeek-V3.2)",
+      "note": "V3.1 (2025-08-21) and V3.2 (2025-12-01) under MIT.",
+      "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"
+    },
+    {
+      "year": 2026,
+      "license": "MIT (DeepSeek-V4-Pro)",
+      "note": "V4 preview 2026-04-24 (paper 'Apr 26'); V4-Flash full release 2026-07-31, V4-Pro 2026-08-13; V4.1-Flash 2026-09-10. Licence confirmed for V4-Pro.",
+      "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+    }
   ],
   "relicensing_events": [
-    {"year": 2025, "from": "Custom DeepSeek Model License (weights)", "to": "MIT (weights and code), from R1 onward", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Combined with low cost, the MIT release triggered the January 2025 market shock and made DeepSeek weights a base for widespread fine-tuning and distillation.", "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"}
+    {
+      "year": 2025,
+      "from": "Custom DeepSeek Model License (weights)",
+      "to": "MIT (weights and code), from R1 onward",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Combined with low cost, the MIT release triggered the January 2025 market shock and made DeepSeek weights a base for widespread fine-tuning and distillation.",
+      "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+    }
   ],
   "funding_total_usd": 7000000000,
   "funding_as_of": "2026-05 (Series A only; the Oct 2026 round's amount is not confirmed: a headline says the round doubled to 100bn yuan)",
@@ -45,7 +84,7 @@
   "robustness": "Small (396 employees, 2026) but now well capitalised: a $7B Series A at a $52B post-money valuation (May 2026, per the FT) and a further round at a $70B pre-money valuation completed in October 2026 (SCMP, The Standard). Because every major model since R1 is MIT-licensed, its work survives independently of the company; dependence on a founder-controlled hedge fund and Chinese regulation are the main risks.",
   "physical_science_relevance": "MIT-licensed reasoning models that can be run locally are usable for scientific and lab-automation tasks without data leaving the lab; DeepSeek has no dedicated science programme in the pages fetched.",
   "openness_effect_assessment": "Openness was DeepSeek's route to global relevance: MIT-licensed weights at frontier quality and low cost made R1 the most-downloaded app in the US within a week and wiped about $600B off Nvidia in a day. Openness did not prevent commercial value. Within 18 months the company raised $7B at $52B and then a round at a $70B pre-money valuation, and it keeps releasing V4-class models under MIT. It also triggered strategic responses: US government-device bans and, per CNBC reporting, part of Meta's retreat from open frontier weights.",
-  "key_takeaway": "DeepSeek is the strongest evidence in this group that open weights can shift market structure: an MIT-licensed model from a 2023 hedge-fund spin-off moved hundreds of billions in market value, forced US labs to answer (OpenAI's gpt-oss, Meta's rethink) and still produced a $52-70B private valuation. Its openness is about weights and licence, not data, and its biggest risks are geopolitical rather than commercial. For the study, it shows that a permissive licence can be a competitive weapon for a challenger rather than a give-away.",
+  "key_takeaway": "DeepSeek is the strongest evidence in this group that open weights can shift market structure: an MIT-licensed model from a 2023 hedge-fund spin-off moved hundreds of billions in market value, prompted Sam Altman to say OpenAI needed 'a different open source strategy' (Jan 2025), before its Apache-2.0 gpt-oss release (Aug 2025), and fed Meta's rethink and still produced a $52-70B private valuation. Its openness is about weights and licence, not data, and its biggest risks are geopolitical rather than commercial. For the study, it shows that a permissive licence can be a competitive weapon for a challenger rather than a give-away.",
   "confidence": "medium",
   "search_tool": "WebFetch (search budget exhausted)",
   "fetched_urls": [
@@ -55,15 +94,65 @@
     "https://github.com/deepseek-ai/DeepSeek-V3",
     "https://huggingface.co/deepseek-ai/DeepSeek-V3.2",
     "https://huggingface.co/deepseek-ai",
-    "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+    "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+    "https://techcrunch.com/2025/01/31/sam-altman-believes-openai-has-been-on-the-wrong-side-of-history-concerning-open-source/ (shared with openai.json)"
   ],
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/DeepSeek", "title": "DeepSeek", "publisher": "Wikipedia (citing FT 2026-07-14, SCMP 2026-07-15, The Standard, Bloomberg 2026-07-14, Revelio Labs)", "date": null, "supports": "origin_detail, founded_year, license_history[0], license_history[3], license_history[4] (dates), funding_total_usd, latest_value_usd, employees_latest, risk_events[1], risk_events[3], robustness"},
-    {"url": "https://github.com/deepseek-ai/DeepSeek-V3", "title": "deepseek-ai/DeepSeek-V3", "publisher": "GitHub (DeepSeek)", "date": "2024-12", "supports": "license_history[1]"},
-    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-R1", "title": "deepseek-ai/DeepSeek-R1 model card", "publisher": "Hugging Face / DeepSeek", "date": "2025-01-22", "supports": "license_history[2], relicensing_events[0]"},
-    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2", "title": "deepseek-ai/DeepSeek-V3.2 model card", "publisher": "Hugging Face / DeepSeek", "date": "2025-12-01", "supports": "license_history[3]"},
-    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro", "title": "deepseek-ai/DeepSeek-V4-Pro model card", "publisher": "Hugging Face / DeepSeek", "date": "2026-04", "supports": "license_history[4], openness_current"},
-    {"url": "https://huggingface.co/deepseek-ai", "title": "deepseek-ai organization page", "publisher": "Hugging Face", "date": "2026-11", "supports": "license_history[4] (V4/V4.1 model list and dates)"},
-    {"url": "https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html", "title": "Nvidia sheds almost $600 billion in market cap, biggest one-day loss in U.S. history", "publisher": "CNBC", "date": "2025-01-27", "supports": "risk_events[0], openness_effect_assessment"}
+    {
+      "url": "https://en.wikipedia.org/wiki/DeepSeek",
+      "title": "DeepSeek",
+      "publisher": "Wikipedia (citing FT 2026-07-14, SCMP 2026-07-15, The Standard, Bloomberg 2026-07-14, Revelio Labs)",
+      "date": null,
+      "supports": "origin_detail, founded_year, license_history[0], license_history[3], license_history[4] (dates), funding_total_usd, latest_value_usd, employees_latest, risk_events[1], risk_events[3], robustness"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3",
+      "title": "deepseek-ai/DeepSeek-V3",
+      "publisher": "GitHub (DeepSeek)",
+      "date": "2024-12",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+      "title": "deepseek-ai/DeepSeek-R1 model card",
+      "publisher": "Hugging Face / DeepSeek",
+      "date": "2025-01-22",
+      "supports": "license_history[2], relicensing_events[0]"
+    },
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2",
+      "title": "deepseek-ai/DeepSeek-V3.2 model card",
+      "publisher": "Hugging Face / DeepSeek",
+      "date": "2025-12-01",
+      "supports": "license_history[3]"
+    },
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+      "title": "deepseek-ai/DeepSeek-V4-Pro model card",
+      "publisher": "Hugging Face / DeepSeek",
+      "date": "2026-04",
+      "supports": "license_history[4], openness_current"
+    },
+    {
+      "url": "https://huggingface.co/deepseek-ai",
+      "title": "deepseek-ai organization page",
+      "publisher": "Hugging Face",
+      "date": "2026-11",
+      "supports": "license_history[4] (V4/V4.1 model list and dates)"
+    },
+    {
+      "url": "https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html",
+      "title": "Nvidia sheds almost $600 billion in market cap, biggest one-day loss in U.S. history",
+      "publisher": "CNBC",
+      "date": "2025-01-27",
+      "supports": "risk_events[0], openness_effect_assessment"
+    },
+    {
+      "url": "https://techcrunch.com/2025/01/31/sam-altman-believes-openai-has-been-on-the-wrong-side-of-history-concerning-open-source/",
+      "title": "Sam Altman believes OpenAI has been on the wrong side of history concerning open source",
+      "publisher": "TechCrunch",
+      "date": "2025-01-31",
+      "supports": "key_takeaway"
+    }
   ]
 }

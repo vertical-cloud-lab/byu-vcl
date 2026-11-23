@@ -1,72 +1,73 @@
 {
-  "name": "MariaDB (MariaDB Corporation / MariaDB plc and the MariaDB Foundation)",
+  "name": "MariaDB (MariaDB plc / MariaDB Corporation and the MariaDB Foundation)",
   "slug": "mariadb",
   "group": "A",
   "category": "software",
   "subcategory": "relational database (MySQL fork)",
-  "hq_country": "FI",
+  "hq_country": "US",
   "origin": "founder_startup",
-  "origin_detail": "MySQL co-founder Michael 'Monty' Widenius forked MySQL as MariaDB at his company Monty Program Ab in 2009, as Oracle moved to acquire Sun. The nonprofit MariaDB Foundation followed in 2012. SkySQL Ab (2010, ex-MySQL AB staff) merged with Monty Program in 2013 and became MariaDB Corporation in 2014. Finnish origin; the later listed parent, MariaDB plc, had its main office in California.",
+  "origin_detail": "Forked from MySQL in 2009 (first release 5.1.38 on 2009-10-29) by Michael 'Monty' Widenius and other original MySQL developers, who feared Oracle's acquisition of Sun, MySQL's owner since 2008, would restrict MySQL. The company began in 2010 as SkySQL Corporation Ab (founders incl. Patrik Backman, Kaj Arnö and Widenius), merged with Monty Program Ab on 2013-04-23 and became MariaDB Corporation Ab on 2014-10-01. The nonprofit MariaDB Foundation (incorporated in Delaware) was announced in December 2012. Finnish roots; Wikipedia lists HQ as Silicon Valley and Dublin, Ireland.",
   "founded_year": 2009,
   "flagship_projects": [
     "MariaDB Server",
     "MaxScale",
-    "SkySQL (DBaaS)"
+    "MariaDB Cloud / SkySQL",
+    "Galera Cluster"
   ],
   "openness_initial": 3,
   "openness_current": 2,
-  "openness_notes": "MariaDB Server is GPLv2 and is stewarded together with the nonprofit MariaDB Foundation (project-level governance approaching 4). The company created the Business Source License (CockroachDB's 2019 relicence explicitly adopted 'MariaDB's Business Source License (BSL) 1.1') and used it for MaxScale; it also sells proprietary enterprise tooling and cloud. Company level: open core (2).",
+  "openness_notes": "MariaDB Server is GPLv2 (connectors LGPLv2.1) and the Foundation states it 'will remain Free and Open Source Software licensed under GPLv2'; with a nonprofit foundation the server project itself approaches level 4. The company authored the Business Source License (MaxScale 2.0.0-2.0.4 under BSL 1.0, later BSL 1.1) and sells enterprise tooling and cloud, so the company is open core (2).",
   "business_model": "open_core",
   "license_history": [
     {
       "year": 2009,
-      "license": "GPLv2 (MariaDB Server)",
-      "note": "(unverified)",
-      "source": null
+      "license": "GPLv2 (server); LGPLv2.1 (client connectors)",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/MariaDB"
     },
     {
-      "year": 2016,
-      "license": "BSL for MaxScale",
-      "note": "Year recalled as 2016 (unverified)",
-      "source": null
+      "year": null,
+      "license": "Business Source License 1.0 (MaxScale 2.0.0-2.0.4), then BSL 1.1",
+      "note": "Converts after at most four years to GPLv2-or-later; designed so other vendors can adopt it. Year of MaxScale 2.0 not confirmed in fetched pages.",
+      "source": "https://mariadb.com/bsl-faq-mariadb/"
     }
   ],
   "relicensing_events": [
     {
-      "year": 2016,
-      "from": "GPLv2 (MaxScale)",
-      "to": "Business Source License",
+      "year": null,
+      "from": "open source (prior MaxScale licence not confirmed)",
+      "to": "Business Source License (MaxScale 2.x)",
       "direction": "closing",
       "fork": null,
       "fork_backer": null,
-      "outcome_note": "First use of the BSL, later adopted by CockroachDB (2019), HashiCorp (2023) and Lightbend (2022) (unverified)",
-      "source": null
+      "outcome_note": "MariaDB created the BSL template that spread through this group: CockroachDB adopted 'MariaDB's Business Source License (BSL) 1.1' in 2019, Lightbend used BSL 1.1 for Akka in 2022 and HashiCorp BSL 1.1 in 2023.",
+      "source": "https://mariadb.com/bsl-faq-mariadb/"
     }
   ],
-  "funding_total_usd": null,
-  "funding_as_of": null,
+  "funding_total_usd": 123000000,
+  "funding_as_of": "2022",
   "ownership_status": "private_pe",
   "exit_events": [
     {
       "year": 2022,
       "type": "merger",
       "value_usd": null,
-      "counterparty": "Angel Pond Holdings (SPAC); listed as MariaDB plc on the NYSE",
-      "note": "December 2022 SPAC listing (unverified; value deliberately null)",
-      "source": null
+      "counterparty": "Angel Pond Holdings Corp. (SPAC); NYSE: MRDB",
+      "note": "Announced February 2022, completed December 2022; renamed MariaDB plc. The share price then 'declined sharply'. Listing valuation not confirmed.",
+      "source": "https://en.wikipedia.org/wiki/MariaDB"
     },
     {
       "year": 2024,
       "type": "take_private",
-      "value_usd": null,
+      "value_usd": 37000000,
       "counterparty": "K1 Investment Management",
-      "note": "Taken private in 2024 after the shares collapsed (unverified; value deliberately null)",
-      "source": null
+      "note": "Tender offer for 100% of shares completed 2024-09-10; ~$37M per Wikipedia (the press release gives no value); Rohit de Souza became CEO; ~700 active customers.",
+      "source": "https://www.prnewswire.com/news-releases/k1-acquires-mariadb-a-leading-database-software-company-and-appoints-new-ceo-302243508.html"
     }
   ],
-  "latest_value_usd": null,
-  "latest_value_type": null,
-  "latest_value_date": null,
+  "latest_value_usd": 37000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2024-09-10",
   "revenue_latest_usd": null,
   "revenue_year": null,
   "employees_latest": null,
@@ -74,14 +75,66 @@
   "end_year": null,
   "us_focus": true,
   "risk_events": [
-    "Shares collapsed after the 2022 SPAC listing; layoffs and financing strain preceded the 2024 take-private (unverified)"
+    "2022-12: SPAC listing, followed by a sharp share-price decline",
+    "2023-10: SkySQL cloud service discontinued and staff laid off",
+    "2024-09: Taken private by K1 for about $37M"
   ],
-  "robustness": "The server is GPL with a nonprofit foundation, so the code survives independent of the company. The commercial entity has been restructured repeatedly (SkySQL spin-out, SPAC, take-private).",
+  "robustness": "The code is robust independent of the company: GPLv2 server and a nonprofit foundation, which in 2025 signed an MoU recognising MariaDB plc as primary code contributor for 2022-2024. The company has been fragile (SPAC, collapse, ~$37M take-private) and under K1 is rebuilding by acquisition: Codership/Galera (May 2025), SkySQL back (announced 2025-08-26) and GridGain (March 2026, per Wikipedia).",
   "physical_science_relevance": "",
-  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
-  "key_takeaway": "Draft only. MariaDB exists because MySQL changed hands: it is a founder-led fork to keep the code under community control. Its commercial vehicle struggled (SPAC listing, then a PE take-private), while the GPL server and its foundation persist, separating the robustness of the code from that of the company. It also authored the BSL used in the later relicensing wave.",
-  "confidence": "low",
-  "searches": [],
-  "sources": [],
-  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file. The BSL attribution is supported by a source gathered in this session for Cockroach Labs: https://www.cockroachlabs.com/blog/oss-relicensing-cockroachdb/ . ownership_status reflects the pre-mid-2025 state."
+  "openness_effect_assessment": "MariaDB shows openness protecting the code but not the company. The GPL and the foundation let the community route around Oracle's control of MySQL, and MariaDB Server remains widely used. The commercial vehicle raised about $123M, listed by SPAC at the 2022 peak and sold for about $37M two years later.",
+  "key_takeaway": "MariaDB exists because MySQL changed hands: it is a founder-led fork to keep the code under community control, backed by a nonprofit foundation. Its company struggled (SPAC listing, then a roughly $37M private-equity take-private) while the GPL server persists, separating the robustness of the code from that of the company. It also wrote the Business Source License used across the later relicensing wave.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/MariaDB",
+    "https://en.wikipedia.org/wiki/MariaDB_plc",
+    "https://mariadb.com/bsl-faq-mariadb/",
+    "https://www.prnewswire.com/news-releases/k1-acquires-mariadb-a-leading-database-software-company-and-appoints-new-ceo-302243508.html",
+    "https://mariadb.com/newsroom/press-releases/mariadb-accelerates-cloud-deployments-adds-agentic-ai-and-serverless-capability-with-acquisition-of-skysql/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/MariaDB",
+      "title": "MariaDB",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "origin_detail, license_history[0], Foundation, funding (~$123M), SPAC, take-private value (~$37M), 2025-2026 events"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/MariaDB_plc",
+      "title": "MariaDB plc",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "SkySQL founders, HQ (Silicon Valley and Dublin), funding detail (Intel $20M 2013, Alibaba $27M 2017, EIB loan)"
+    },
+    {
+      "url": "https://mariadb.com/bsl-faq-mariadb/",
+      "title": "BSL FAQ (MariaDB)",
+      "publisher": "MariaDB",
+      "date": null,
+      "supports": "license_history[1], relicensing_events[0]"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/k1-acquires-mariadb-a-leading-database-software-company-and-appoints-new-ceo-302243508.html",
+      "title": "K1 Acquires MariaDB, a Leading Database Software Company, and Appoints New CEO",
+      "publisher": "PR Newswire (K1 press release)",
+      "date": "2024-09-10",
+      "supports": "exit_events[1], customers"
+    },
+    {
+      "url": "https://mariadb.com/newsroom/press-releases/mariadb-accelerates-cloud-deployments-adds-agentic-ai-and-serverless-capability-with-acquisition-of-skysql/",
+      "title": "MariaDB ... acquisition of SkySQL",
+      "publisher": "MariaDB press release",
+      "date": "2025-08-26",
+      "supports": "robustness (SkySQL reacquired; spun out 2023)"
+    },
+    {
+      "url": "https://www.cockroachlabs.com/blog/oss-relicensing-cockroachdb/",
+      "title": "Why we're relicensing CockroachDB",
+      "publisher": "Cockroach Labs (found via WebSearch in this session; see cockroach-labs.json)",
+      "date": "2019-06",
+      "supports": "relicensing_events[0].outcome_note (BSL attribution to MariaDB)"
+    }
+  ],
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. founded_year 2009 is the fork; the company dates from 2010 (SkySQL). hq_country is coded US for the listed Silicon Valley HQ, though the firm also lists Dublin and has Finnish roots. funding_total_usd covers Series A-C (2012-2022); a Series D targeting $104M accompanied the listing. revenue_latest_usd and employees_latest are null (not in fetched pages). The 2025-02 Foundation leadership changes, Codership (2025-05) and GridGain (2026-03) come from Wikipedia only."
 }

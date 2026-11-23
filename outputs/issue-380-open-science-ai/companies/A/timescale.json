@@ -1,12 +1,12 @@
 {
-  "name": "Tiger Data (formerly Timescale, Inc.)",
+  "name": "Tiger Data (Timescale, Inc. d/b/a Tiger Data)",
   "slug": "timescale",
   "group": "A",
   "category": "software",
-  "subcategory": "time-series database (PostgreSQL extension)",
+  "subcategory": "time-series and analytics database (PostgreSQL extension)",
   "hq_country": "US",
   "origin": "founder_startup",
-  "origin_detail": "Founded in New York around 2015 by Ajay Kulkarni and Michael Freedman (a Princeton computer science professor), first as an IoT data platform (iobeam). It released TimescaleDB, a PostgreSQL extension, in 2017. The task brief records the later rename to Tiger Data; its date was not verified.",
+  "origin_detail": "Started in 2015 by Ajay Kulkarni (CEO) and Mike Freedman (CTO) building an IoT platform; they built TimescaleDB as a PostgreSQL extension for their own IoT data needs and launched it about 2017. Renamed TigerData/Tiger Data on 2025-06-17; legal name Timescale, Inc., d/b/a Tiger Data. HQ not confirmed in fetched pages.",
   "founded_year": 2015,
   "flagship_projects": [
     "TimescaleDB",
@@ -14,41 +14,41 @@
   ],
   "openness_initial": 3,
   "openness_current": 2,
-  "openness_notes": "TimescaleDB launched under Apache-2.0. From late 2018 its advanced features were placed under the source-available Timescale License (TSL), which bars offering them as a hosted service, while the core stayed Apache-2.0: open core (2). Built on PostgreSQL, a community-governed project.",
+  "openness_notes": "TimescaleDB core is Apache-2.0; additional 'community' features are under the source-available Timescale License, which restricts offering them as a hosted service: open core (2). The launch-era licence (Apache-2.0 only) and the date the Timescale License was introduced were not confirmed in fetched pages.",
   "business_model": "open_core",
   "license_history": [
     {
       "year": 2017,
       "license": "Apache-2.0",
-      "note": "(unverified)",
-      "source": null
+      "note": "Launch about 2017 ('five years ago' in a Feb 2022 company post); launch licence not confirmed directly.",
+      "source": "https://www.tigerdata.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/"
     },
     {
-      "year": 2018,
-      "license": "Apache-2.0 core + Timescale License (TSL) for advanced features",
-      "note": "(unverified)",
-      "source": null
+      "year": null,
+      "license": "Apache-2.0 core + source-available Timescale License for community features",
+      "note": "Licence page dated 2020-09-24 cited by Wikipedia.",
+      "source": "https://en.wikipedia.org/wiki/TimescaleDB"
     }
   ],
   "relicensing_events": [
     {
-      "year": 2018,
-      "from": "Apache-2.0 (advanced features)",
-      "to": "Timescale License (source-available)",
+      "year": null,
+      "from": "Apache-2.0",
+      "to": "Timescale License (source-available) for community features",
       "direction": "closing",
       "fork": null,
       "fork_backer": null,
-      "outcome_note": "Partial: the core stayed Apache-2.0; aimed at managed-Postgres resale; no significant fork known (unverified)",
-      "source": null
+      "outcome_note": "Partial: the core stayed Apache-2.0. Year not confirmed in fetched pages. No fork found.",
+      "source": "https://en.wikipedia.org/wiki/TimescaleDB"
     }
   ],
-  "funding_total_usd": null,
-  "funding_as_of": null,
+  "funding_total_usd": 180000000,
+  "funding_as_of": "2022-02",
   "ownership_status": "private_vc",
   "exit_events": [],
-  "latest_value_usd": null,
-  "latest_value_type": null,
-  "latest_value_date": null,
+  "latest_value_usd": 1000000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2022-02-22",
   "revenue_latest_usd": null,
   "revenue_year": null,
   "employees_latest": null,
@@ -56,12 +56,39 @@
   "end_year": null,
   "us_focus": true,
   "risk_events": [],
-  "robustness": "Depends on PostgreSQL, a foundation-like community project, which lowers lock-in; the company itself is single-vendor and VC-backed.",
+  "robustness": "Built on PostgreSQL, a community-governed database, which lowers lock-in; the Apache-2.0 core is forkable. VC-backed single vendor; the company reports 2,000+ customer companies and 3 million databases (current about page).",
   "physical_science_relevance": "",
-  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
-  "key_takeaway": "Draft only. Timescale built on PostgreSQL rather than its own engine, tying itself to a community-governed core, and split its licence in 2018 to target cloud resale without closing the core. Funding, valuation and the Tiger Data rebrand date need sourcing.",
-  "confidence": "low",
-  "searches": [],
-  "sources": [],
-  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+  "openness_effect_assessment": "Building on PostgreSQL, keeping an Apache-2.0 core and restricting only selected features let Timescale reach 500+ paying customers, 20x revenue growth over two years and a valuation over $1B by February 2022 (company figures), with no fork or licence backlash found.",
+  "key_takeaway": "Tiger Data shows the 'extension' strategy: build on a community-governed open project (PostgreSQL), keep the core OSI-licensed, and restrict only cloud resale of add-ons. It avoided the fork dynamics of Elastic and Redis and reached unicorn status in 2022, then rebranded as Tiger Data in June 2025; no newer valuation was confirmed.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://www.tigerdata.com/about",
+    "https://www.tigerdata.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/",
+    "https://en.wikipedia.org/wiki/TimescaleDB"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tigerdata.com/about",
+      "title": "About Tiger Data",
+      "publisher": "Tiger Data",
+      "date": "2026",
+      "supports": "founded_year, founders, funding_total_usd ($180M), customers, legal name"
+    },
+    {
+      "url": "https://www.tigerdata.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/",
+      "title": "Year of the Tiger: $110 million to build the future of data",
+      "publisher": "Timescale / Tiger Data blog",
+      "date": "2022-02-22",
+      "supports": "latest_value_usd (over $1B), Series C $110M led by Tiger Global, funding 'over $180 million', 100+ employees, 500+ paying customers"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/TimescaleDB",
+      "title": "TimescaleDB",
+      "publisher": "Wikipedia",
+      "date": "2026-09",
+      "supports": "license_history[1], rename date 2025-06-17 (cites company press release)"
+    }
+  ],
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. latest_value_usd is a lower bound ('over $1 billion', Series C, February 2022). employees_latest is null (100+ in February 2022 is stale). revenue_latest_usd is null. The rename date comes from Wikipedia citing a June 2025 press release."
 }

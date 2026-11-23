@@ -1,0 +1,143 @@
+{
+  "name": "Pivotal Software, Inc. and SpringSource (Interface21)",
+  "slug": "pivotal-springsource",
+  "group": "B",
+  "category": "software",
+  "subcategory": "enterprise Java framework (Spring) and cloud application platform (Cloud Foundry)",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Two linked entities. SpringSource: founded 2004 by Rod Johnson (creator of the open-source Spring Framework) as Interface21, renamed SpringSource 2007 (founder startup); bought by VMware in 2009. Pivotal: a 2012/Apr 2013 corporate spin-out of EMC and VMware (EMC majority-owned) that took over Spring, Cloud Foundry, Greenplum and Pivotal Labs, with GE investing $105M for 10%; reacquired by VMware in Dec 2019; part of Broadcom since Nov 2023",
+  "founded_year": 2004,
+  "flagship_projects": [
+    "Spring Framework / Spring Boot",
+    "Cloud Foundry",
+    "Greenplum",
+    "RabbitMQ",
+    "Groovy/Grails (sponsored until 2015)",
+    "Pivotal Cloud Foundry (commercial)",
+    "Pivotal Labs"
+  ],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core throughout: Spring is an open-source framework (Apache-2.0, not confirmed in fetched pages) monetized via commercial servers, support and tooling (rebranded vFabric under VMware). Pivotal sold a commercial distribution of the open-source Cloud Foundry PaaS plus Spring support and Labs consulting. Under VMware/Broadcom the projects remain open but are steered by a single large vendor.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2004,
+      "license": "Open-source Spring Framework (licence not stated in fetched pages)",
+      "note": "Interface21 founded around it",
+      "source": "https://en.wikipedia.org/wiki/SpringSource"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2009,
+      "type": "acquisition",
+      "value_usd": 420000000,
+      "counterparty": "VMware",
+      "note": "SpringSource bought Aug 2009; kept as a division; products rebranded vFabric",
+      "source": "https://en.wikipedia.org/wiki/SpringSource"
+    },
+    {
+      "year": 2013,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "Pivotal Software (EMC/VMware joint venture with GE)",
+      "note": "Spring and other VMware application products moved to Pivotal, Apr 2013",
+      "source": "https://en.wikipedia.org/wiki/SpringSource"
+    },
+    {
+      "year": 2018,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "NYSE",
+      "note": "Pivotal debuted 20 Apr 2018 at $15/share (midpoint), raised $555M, first-day close $15.73 (+5%); market cap >$3B",
+      "source": "https://en.wikipedia.org/wiki/Pivotal_Software"
+    },
+    {
+      "year": 2019,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "VMware",
+      "note": "Definitive agreement 22 Aug 2019, completed 30 Dec 2019; folded into VMware Tanzu (Pivotal Labs renamed VMware Tanzu Labs Jan 2021); deal value not confirmed in fetched pages",
+      "source": "https://en.wikipedia.org/wiki/Pivotal_Software"
+    },
+    {
+      "year": 2023,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Broadcom (via VMware)",
+      "note": "Pivotal/Tanzu and Spring became part of Broadcom from Nov 2023",
+      "source": "https://en.wikipedia.org/wiki/Pivotal_Software"
+    }
+  ],
+  "latest_value_usd": 3000000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2018-04-20",
+  "revenue_latest_usd": 509400000,
+  "revenue_year": 2017,
+  "employees_latest": 2971,
+  "still_operating": false,
+  "end_year": 2019,
+  "us_focus": true,
+  "risk_events": [
+    "Pivotal never profitable as a public company: 2017 net loss $163.5M on $509.4M revenue (S-1)",
+    "Controlled by Dell/EMC (80.8% with Michael Dell at IPO), so minority shareholders had little say when VMware (also Dell-controlled) bought it back within 20 months",
+    "Mar 2015: Pivotal ended sponsorship of Groovy/Grails",
+    "Since Nov 2023 Spring's corporate steward is Broadcom, known for cutting costs at acquired software units"
+  ],
+  "robustness": "The open-source projects are highly robust: Spring remains the dominant enterprise Java framework and Cloud Foundry moved to a foundation (not confirmed in fetched pages). The companies were not: SpringSource lasted five years independently, and Pivotal about six (2013-2019), ending as a business unit passed from VMware to Broadcom.",
+  "physical_science_relevance": "Low directly; Spring underpins many institutional and laboratory information systems written in Java.",
+  "openness_effect_assessment": "Spring's openness made it the default enterprise Java framework, creating a large support and tooling market, but the value accrued mainly to corporate owners (VMware, EMC/Dell, Broadcom) through acquisitions at modest prices ($420M in 2009). Pivotal's open-core platform strategy reached $509M revenue but never profitability, and its brief public life ended in reabsorption.",
+  "key_takeaway": "Pivotal/SpringSource shows a corporate spin-out built from open-source assets: strong open projects (Spring, Cloud Foundry) did not make a durable standalone company, and the corporate parent reabsorbed it. Openness made the software outlive every owner change, from Interface21 to Broadcom.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Pivotal_Software",
+    "https://en.wikipedia.org/wiki/SpringSource",
+    "https://www.cnbc.com/2018/03/23/pivotal-software-ipo-s-1-prospectus-filing.html",
+    "https://techcrunch.com/2018/04/20/pivotal-software-closes-up-5-following-ipo-raised-555-million/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Pivotal_Software",
+      "title": "Pivotal Software",
+      "publisher": "Wikipedia",
+      "date": "2026-11-17",
+      "supports": "origin_detail (spin-out, GE $105M), funding events ($253M 2016 round, $400M debt conversion), exit_events[2-4], employees_latest (2,971 in 1Q 2020), revenue_latest_usd"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/SpringSource",
+      "title": "Spring (company), formerly SpringSource",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail, exit_events[0-1], acquisitions (Covalent, G2One, Hyperic, Cloud Foundry), Groovy/Grails sponsorship end"
+    },
+    {
+      "url": "https://www.cnbc.com/2018/03/23/pivotal-software-ipo-s-1-prospectus-filing.html",
+      "title": "Pivotal Software files for IPO",
+      "publisher": "CNBC",
+      "date": "2018-03-23",
+      "supports": "revenue_latest_usd ($509.4M), risk_events (net loss $163.5M, Dell/EMC 80.8%), 2,518 employees at S-1"
+    },
+    {
+      "url": "https://techcrunch.com/2018/04/20/pivotal-software-closes-up-5-following-ipo-raised-555-million/",
+      "title": "Pivotal Software closes up 5% following IPO that raised $555 million",
+      "publisher": "TechCrunch",
+      "date": "2018-04-20",
+      "supports": "exit_events[2] ($15 IPO, $555M raised, first-day close $15.73, market cap >$3B)"
+    }
+  ],
+  "notes": [
+    "founded_year 2004 = SpringSource/Interface21; Pivotal itself was formed 2012-2013.",
+    "still_operating false / end_year 2019 refers to Pivotal as an independent company; Spring continues inside Broadcom (VMware Tanzu).",
+    "VMware's 2019 purchase price for Pivotal (reported elsewhere as ~$2.7B) not confirmed: the VMware release URL redirected and the TechCrunch URL returned 404.",
+    "funding_total_usd null: Pivotal's capital came mostly from corporate parents ($105M GE 2013, $253M round 2016, $400M EMC debt conversion); SpringSource's VC funding not found.",
+    "Spring Framework and Cloud Foundry licences/foundation status not confirmed in fetched pages.",
+    "latest_value_usd is the IPO-day market cap ('exceeded $3 billion', TechCrunch 2018-04-20), the last firm value; VMware's 2019 purchase price was not confirmed."
+  ]
+}

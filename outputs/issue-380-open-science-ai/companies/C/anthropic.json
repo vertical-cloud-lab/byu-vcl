@@ -1,0 +1,214 @@
+{
+  "name": "Anthropic, PBC",
+  "slug": "anthropic",
+  "group": "C",
+  "category": "ai_lab",
+  "subcategory": "frontier LLMs (Claude, closed weights); open standards and tools (Model Context Protocol, interpretability tooling)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Incorporated January 2021 by seven former OpenAI employees including Dario Amodei (CEO, formerly OpenAI's VP of Research) and Daniela Amodei (president). Structured as a public benefit corporation; a Long-Term Benefit Trust holds Class T shares that let it elect a majority of the board. Listed on Nasdaq (ANT) on 2026-11-19.",
+  "founded_year": 2021,
+  "flagship_projects": [
+    "Claude models (proprietary)",
+    "Model Context Protocol (open standard; donated to the Agentic AI Foundation, Dec 2025)",
+    "Circuit-tracing / attribution-graph interpretability tools (open-sourced May 2025)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "Initial 0: closed-weight frontier models from the start (Claude licence: proprietary; Anthropic has only committed to preserve the weights of retired models). Current 1 (only peripheral parts open): Claude remains closed, but Anthropic open-sourced the Model Context Protocol (2024-11-25) and donated it to the Agentic AI Foundation, a Linux Foundation directed fund co-founded with Block and OpenAI (2025-12-09); MCP itself is now a level-4, foundation-governed standard adopted by OpenAI (March 2025) and Google DeepMind. It also open-sourced its circuit-tracing interpretability method (2025-05-29). The licences of MCP and the circuit-tracing code were not named on the pages fetched.",
+  "business_model": "api",
+  "license_history": [
+    {
+      "year": 2021,
+      "license": "Proprietary (Claude models)",
+      "note": "Weights never published per the pages fetched; Anthropic committed to preserve retired models' weights.",
+      "source": "https://en.wikipedia.org/wiki/Claude_(language_model)"
+    },
+    {
+      "year": 2024,
+      "license": "Open standard / open-source project (Model Context Protocol)",
+      "note": "2024-11-25: 'Today, we're open-sourcing the Model Context Protocol (MCP)'.",
+      "source": "https://www.anthropic.com/news/model-context-protocol"
+    },
+    {
+      "year": 2025,
+      "license": "Open-sourced interpretability method (circuit tracing / attribution graphs)",
+      "note": "2025-05-29: 'we're open-sourcing the method so that anyone can build on our research'.",
+      "source": "https://www.anthropic.com/research/open-source-circuit-tracing"
+    },
+    {
+      "year": 2025,
+      "license": "MCP governance moved to the Agentic AI Foundation (Linux Foundation directed fund)",
+      "note": "2025-12-09, co-founded by Anthropic, Block and OpenAI.",
+      "source": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2025,
+      "from": "Anthropic-led MCP project",
+      "to": "Agentic AI Foundation (Linux Foundation) governance",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Neutral governance for a protocol already adopted by OpenAI (March 2025; ChatGPT apps Sept 2025) and Google DeepMind, turning a vendor's integration layer into an industry standard.",
+      "source": "https://en.wikipedia.org/wiki/Model_Context_Protocol"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": "2026-11 (rounds include $124M 2021; $580M 2022; Amazon $8B 2023-24; Google $500M + $1.5B + $1B; Series E $3.5B at $61.5B, Mar 2025; Series F $13B at $183B, Sept 2025; $10B term sheet at $350B, Dec 2025; Series G $30B at $380B, Feb 2026; $65B at $965B, May 2026; $26B private placement alongside the Nov 2026 IPO; total not computed)",
+  "ownership_status": "public",
+  "exit_events": [
+    {
+      "year": 2026,
+      "type": "IPO",
+      "value_usd": 1100000000000,
+      "counterparty": "Nasdaq: ANT",
+      "note": "Priced 2026-11-18 at $83/share (Wikipedia); trading began 2026-11-19, opened at $111.50 and closed at $97; StockAnalysis gives a $1.10T market cap at pricing. A concurrent $26B private placement was raised.",
+      "source": "https://stockanalysis.com/stocks/ant/market-cap/"
+    }
+  ],
+  "latest_value_usd": 1170000000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 4585000000,
+  "revenue_year": 2025,
+  "employees_latest": 5300,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Bartz v. Anthropic (filed Aug 2024, pirated books): $1.5B settlement agreed Sept 2025 and approved July 2026, the largest known US copyright settlement",
+    "Net losses of about $42.0B (2025) and $80.7B (H1 2026), mostly paper losses on convertible bonds per Wikipedia; H1 2026 revenue $16.3B",
+    "March 2026: the Claude Code CLI source code leaked (per Wikipedia)",
+    "April 2022: $500M of a $580M round came from FTX"
+  ],
+  "robustness": "Now a listed company (market cap $1.17T on 2026-11-23, share price $87.64) with very fast revenue growth ($4.6B in 2025, $16.3B in H1 2026) and 5,300 staff, backed by Amazon and Google. Governance is mission-locked by PBC status and the Long-Term Benefit Trust's board-election rights. Its open contributions are robust in a different way: MCP now sits in a Linux Foundation fund co-founded with competitors, so it no longer depends on Anthropic.",
+  "physical_science_relevance": "Anthropic frames 'increasing the rate of scientific progress' as core to its public-benefit mission (Claude for Life Sciences, Oct 2025). MCP gives labs a vendor-neutral interface for connecting models to external data and tools (an inference about applicability, not a sourced deployment count).",
+  "openness_effect_assessment": "Anthropic shows that a closed-weights lab can still shape the open ecosystem: by open-sourcing MCP and then handing it to a neutral foundation, it made its integration approach the industry standard (adopted by OpenAI and Google DeepMind) at little cost to its proprietary model business. Keeping weights closed has not limited its market value: valuations went from $61.5B (Mar 2025) to $380B (Feb 2026) to a $1.17T market cap after its Nov 2026 IPO.",
+  "key_takeaway": "Anthropic is the 'closed model, open standards' strategy: it keeps the frontier models proprietary on safety and commercial grounds while open-sourcing the interfaces (MCP) and the science of understanding models (interpretability tools), then putting the most important of these under neutral governance. That combination earned it the network effects of a standard without the competitive exposure of open weights. For the study, it shows that openness at the protocol layer can be strategically decisive even for a lab that releases no model weights.",
+  "confidence": "medium",
+  "open_language_quotes": [
+    {
+      "quote": "Today, we're open-sourcing the Model Context Protocol (MCP), a new standard for connecting AI assistants…",
+      "url": "https://www.anthropic.com/news/model-context-protocol",
+      "date": "2024-11-25",
+      "theme": "open source / open standards (sentence truncated)"
+    },
+    {
+      "quote": "We're committed to building MCP as a collaborative, open-source project and ecosystem",
+      "url": "https://www.anthropic.com/news/model-context-protocol",
+      "date": "2024-11-25",
+      "theme": "open source"
+    },
+    {
+      "quote": "Today, we're open-sourcing the method so that anyone can build on our research.",
+      "url": "https://www.anthropic.com/research/open-source-circuit-tracing",
+      "date": "2025-05-29",
+      "theme": "open science (interpretability)"
+    },
+    {
+      "quote": "Open-source software is essential for building a secure and innovative ecosystem for agentic AI.",
+      "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation",
+      "date": "2025-12-09",
+      "theme": "open source / neutral governance"
+    },
+    {
+      "quote": "Increasing the rate of scientific progress is a core part of Anthropic's public benefit mission.",
+      "url": "https://www.anthropic.com/news/claude-for-life-sciences",
+      "date": "2025-10-20",
+      "theme": "scientific discovery"
+    },
+    {
+      "quote": "compress the progress that human biologists would have achieved over the next 50-100 years into 5-10 years",
+      "url": "https://www.darioamodei.com/essay/machines-of-loving-grace",
+      "date": "2024-10",
+      "theme": "scientific discovery (CEO essay)"
+    }
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Anthropic",
+    "https://www.anthropic.com/news/model-context-protocol",
+    "https://en.wikipedia.org/wiki/Model_Context_Protocol",
+    "https://www.anthropic.com/research/open-source-circuit-tracing",
+    "https://www.darioamodei.com/essay/machines-of-loving-grace",
+    "https://stockanalysis.com/stocks/ant/market-cap/",
+    "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation",
+    "https://www.anthropic.com/news/claude-for-life-sciences",
+    "https://www.anthropic.com/company",
+    "https://en.wikipedia.org/wiki/Claude_(language_model)"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Anthropic",
+      "title": "Anthropic",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, funding_as_of, exit_events[0] (IPO price, first-day trading), revenue_latest_usd, employees_latest, risk_events[0], risk_events[1], risk_events[3]"
+    },
+    {
+      "url": "https://www.anthropic.com/company",
+      "title": "Company",
+      "publisher": "Anthropic",
+      "date": null,
+      "supports": "origin_detail (PBC, Long-Term Benefit Trust)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Claude_(language_model)",
+      "title": "Claude (language model)",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "license_history[0], openness_notes, risk_events[2]"
+    },
+    {
+      "url": "https://www.anthropic.com/news/model-context-protocol",
+      "title": "Introducing the Model Context Protocol",
+      "publisher": "Anthropic",
+      "date": "2024-11-25",
+      "supports": "license_history[1], open_language_quotes[0], open_language_quotes[1]"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Model_Context_Protocol",
+      "title": "Model Context Protocol",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "relicensing_events[0], openness_notes (adoption)"
+    },
+    {
+      "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation",
+      "title": "Donating the Model Context Protocol and establishing the Agentic AI Foundation",
+      "publisher": "Anthropic",
+      "date": "2025-12-09",
+      "supports": "license_history[3], open_language_quotes[3]"
+    },
+    {
+      "url": "https://www.anthropic.com/research/open-source-circuit-tracing",
+      "title": "Open-sourcing circuit tracing tools",
+      "publisher": "Anthropic",
+      "date": "2025-05-29",
+      "supports": "license_history[2], open_language_quotes[2]"
+    },
+    {
+      "url": "https://www.anthropic.com/news/claude-for-life-sciences",
+      "title": "Claude for Life Sciences",
+      "publisher": "Anthropic",
+      "date": "2025-10-20",
+      "supports": "physical_science_relevance, open_language_quotes[4]"
+    },
+    {
+      "url": "https://www.darioamodei.com/essay/machines-of-loving-grace",
+      "title": "Machines of Loving Grace",
+      "publisher": "Dario Amodei (CEO), personal site",
+      "date": "2024-10",
+      "supports": "open_language_quotes[5]"
+    },
+    {
+      "url": "https://stockanalysis.com/stocks/ant/market-cap/",
+      "title": "Anthropic, PBC (ANT) Market Cap",
+      "publisher": "StockAnalysis",
+      "date": "2026-11-23",
+      "supports": "latest_value_usd ($1.17T at $87.64 close), exit_events[0] ($1.10T at pricing, IPO 2026-11-19)"
+    }
+  ]
+}

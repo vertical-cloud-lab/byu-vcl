@@ -6,47 +6,37 @@
   "subcategory": "relational database (MySQL)",
   "hq_country": "SE",
   "origin": "founder_startup",
-  "origin_detail": "MySQL AB was founded in Sweden in 1995 by David Axmark, Allan Larsson and Michael 'Monty' Widenius. Sun Microsystems bought it in 2008, and Oracle acquired Sun, and with it MySQL, in 2010.",
+  "origin_detail": "MySQL AB was founded in 1995 by Michael Widenius, David Axmark and Allan Larsson; Mårten Mickos became CEO in 2001. Dual HQ in Uppsala, Sweden and Cupertino, California, with about 400 staff in 25 countries, ~70% remote. Sun Microsystems bought it in 2008; Oracle bought Sun in 2010.",
   "founded_year": 1995,
   "flagship_projects": [
-    "MySQL Server"
+    "MySQL Server",
+    "MySQL Enterprise"
   ],
   "openness_initial": 3,
   "openness_current": 2,
-  "openness_notes": "MySQL moved to the GPL in 2000 and was sold under dual licensing (GPL, or a commercial licence for embedding), so the whole product was OSI-licensed (3). Under Oracle the Community Edition remains GPLv2, but MySQL Enterprise Edition adds proprietary features and Oracle's cloud service is proprietary: open core (2). Single-vendor governance throughout.",
+  "openness_notes": "MySQL AB sold MySQL under dual licensing: GPL at no charge, or a commercial licence for uses the GPL did not allow (e.g. embedding in closed products), plus support, training and the MySQL Enterprise subscription (Feb 2005). The whole product was OSI-licensed (3). Under Oracle, MySQL Community Server stays GPL while MySQL Enterprise Server adds proprietary plugins on the same codebase: open core (2). Single-vendor governance throughout.",
   "business_model": "dual_license",
   "license_history": [
     {
-      "year": 1995,
-      "license": "MySQL's own licence (free for most uses)",
-      "note": "(unverified)",
-      "source": null
+      "year": null,
+      "license": "GPL + commercial licence (dual licensing)",
+      "note": "Date MySQL moved to the GPL not given in fetched pages.",
+      "source": "https://en.wikipedia.org/wiki/MySQL_AB"
     },
     {
-      "year": 2000,
-      "license": "GPLv2 + commercial licence (dual licensing)",
-      "note": "(unverified)",
-      "source": null
+      "year": 2005,
+      "license": "MySQL Enterprise subscription added",
+      "note": "Announced February 2005.",
+      "source": "https://en.wikipedia.org/wiki/MySQL_AB"
     },
     {
       "year": 2010,
-      "license": "Oracle era: GPLv2 Community Edition + proprietary Enterprise Edition",
-      "note": "(unverified)",
-      "source": null
+      "license": "Oracle era: Community Server GPLv2; Enterprise Server with proprietary plugins",
+      "note": "Cloud service: Oracle MySQL HeatWave.",
+      "source": "https://en.wikipedia.org/wiki/MySQL"
     }
   ],
-  "relicensing_events": [
-    {
-      "year": 2000,
-      "from": "MySQL's own licence",
-      "to": "GPLv2 (dual licensing)",
-      "direction": "opening",
-      "fork": null,
-      "fork_backer": null,
-      "outcome_note": "Move to the GPL underpinned the LAMP-era adoption (unverified)",
-      "source": null
-    }
-  ],
+  "relicensing_events": [],
   "funding_total_usd": null,
   "funding_as_of": null,
   "ownership_status": "acquired",
@@ -54,38 +44,66 @@
     {
       "year": 2008,
       "type": "acquisition",
-      "value_usd": null,
+      "value_usd": 1000000000,
       "counterparty": "Sun Microsystems",
-      "note": "Announced January 2008, reported at about $1B (unverified; value deliberately null)",
-      "source": null
+      "note": "Announced 2008-01-16, completed 2008-02-26; about $1B.",
+      "source": "https://en.wikipedia.org/wiki/MySQL_AB"
     },
     {
       "year": 2010,
       "type": "acquisition",
-      "value_usd": null,
+      "value_usd": 7400000000,
       "counterparty": "Oracle Corporation (via its purchase of Sun)",
-      "note": "Oracle completed its purchase of Sun in January 2010, reported at about $7.4B for all of Sun (unverified; value deliberately null)",
-      "source": null
+      "note": "Announced 2009-04-20 at $9.50/share cash; about $7.4B (net $5.6B per text, $5.4B per infobox). US approval 2009-08-20; EU in-depth probe focused on MySQL from 2009-09-03; unconditional EU approval 2010-01-21; completed 2010-01-27.",
+      "source": "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation"
     }
   ],
-  "latest_value_usd": null,
-  "latest_value_type": null,
-  "latest_value_date": null,
+  "latest_value_usd": 1000000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2008-02-26",
   "revenue_latest_usd": null,
   "revenue_year": null,
-  "employees_latest": null,
+  "employees_latest": 400,
   "still_operating": false,
   "end_year": 2008,
   "us_focus": true,
   "risk_events": [
-    "2009-2010: Antitrust review of Oracle-Sun centred partly on MySQL; Monty Widenius forked MariaDB in 2009 (unverified)"
+    "2009-2010: EU in-depth review of Oracle-Sun centred on Oracle controlling MySQL; Widenius's 'Save MySQL!' petition",
+    "Forks: MariaDB (2009, active), Drizzle (discontinued), Percona Server, WebScaleSQL (2014, Facebook/Google/LinkedIn/Twitter, abandoned)"
   ],
-  "robustness": "The GPL code base was forkable (MariaDB, Percona Server) and was forked, but the trademark and main development are controlled by Oracle, with no foundation.",
+  "robustness": "The GPL code was forkable and was forked repeatedly, but MySQL's trademark and main development stay with Oracle, a single vendor with no foundation. Oracle still ships it: MySQL 9.7 LTS (April 2026) and calendar versioning from July 2026.",
   "physical_science_relevance": "",
-  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
-  "key_takeaway": "Draft only. MySQL is the founding case for this group: a dual-licensed open-source company that sold for about $1B in 2008 and passed to Oracle with Sun in 2010. A change of owner, not of licence, triggered the community fork (MariaDB), whose company later invented the BSL used in the relicensing wave.",
-  "confidence": "low",
-  "searches": [],
-  "sources": [],
-  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file. still_operating=false and end_year=2008 refer to MySQL AB as an independent company; MySQL itself continues under Oracle. us_focus is true because Sun and Oracle are US companies."
+  "openness_effect_assessment": "GPL dual licensing made MySQL a default database while still letting MySQL AB charge embedders, and supported a roughly $1B sale to Sun in 2008. The risk event was a change of owner, not of licence: Oracle, a direct competitor, inherited MySQL with Sun, prompting an EU in-depth review and the MariaDB fork.",
+  "key_takeaway": "MySQL is the founding case for this group: a dual-licensed open-source company that sold for about $1B in 2008, then passed to Oracle with Sun in 2010. Ownership change, not relicensing, drove the community fork (MariaDB), whose company later wrote the BSL used in the relicensing wave.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/MySQL_AB",
+    "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation",
+    "https://en.wikipedia.org/wiki/MySQL"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/MySQL_AB",
+      "title": "MySQL AB",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, business model, funding (2001, 2003 Benchmark-led, Feb 2006 $18.5M led by IVP), exit_events[0], employees_latest"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation",
+      "title": "Acquisition of Sun Microsystems by Oracle Corporation",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "exit_events[1], risk_events[0]"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/MySQL",
+      "title": "MySQL",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "license_history[2], forks, Oracle-era releases"
+    }
+  ],
+  "notes": "Researched with WebFetch on known URLs only, because the shared WebSearch budget for this turn was exhausted; no searches were run for this organization. Every value below comes from a page listed in fetched_urls; facts that no fetched page confirmed are null or explicitly marked unconfirmed. still_operating=false and end_year=2008 refer to MySQL AB as an independent company; MySQL continues under Oracle. us_focus is true because Sun and Oracle are US companies and MySQL AB had a Cupertino HQ. funding_total_usd is null because early round sizes are not given; latest_value_usd is MySQL AB's 2008 sale price; the $7.4B Oracle deal covered all of Sun. employees_latest (400) is Wikipedia's figure for MySQL AB around the acquisition."
 }

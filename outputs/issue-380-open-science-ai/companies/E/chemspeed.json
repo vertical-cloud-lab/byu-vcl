@@ -1,0 +1,69 @@
+{
+  "name": "Chemspeed Technologies AG",
+  "slug": "chemspeed",
+  "group": "E",
+  "category": "hardware",
+  "subcategory": "automated synthesis, formulation and gravimetric powder-dosing workstations for chemistry and materials labs",
+  "hq_country": "CH",
+  "origin": null,
+  "origin_detail": "Swiss lab-automation company (HQ in Switzerland per its website). It says it has supported R&D and QC labs 'for over 25 years', so it was founded around 2001 or earlier; the exact year and founders were not confirmed. Bruker completed its acquisition of Chemspeed during 2024 and the company now brands itself 'Chemspeed (part of Bruker)'.",
+  "founded_year": null,
+  "flagship_projects": ["FLEX ISYNTH automated synthesis workstation", "CRYSTAL POWDERDOSE gravimetric solid dispensing", "FLEX AUTOPLANT automated sampling", "FLEX EP eluent preparation", "Integrations with Atinary SDLabs and Bruker SciY software"],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Closed hardware designs, firmware and control software. The website mentions an 'intuitive software suite' and 'vendor-agnostic' solutions but no open APIs, open-source software or published designs. Openness is limited to integration partnerships (e.g. Atinary's SDLabs optimizer and Bruker instruments).",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": null, "license": "Proprietary hardware and software", "note": "No open releases found", "source": "https://www.chemspeed.com/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2024, "type": "acquisition", "value_usd": null, "counterparty": "Bruker Corporation (NASDAQ: BRKR)", "note": "Bruker FY2024 10-K: 'we completed our acquisition of Spectral Instruments Imaging and Chemspeed Technologies AG' during 2024; the deal 'provides us entry into lab automation and digitalization'; reported in the BSI BioSpin segment. Price, stake and exact date not found in the portions read.", "source": "https://www.sec.gov/Archives/edgar/data/1109354/000095017025030897/brkr-20241231.htm"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2024: acquired by Bruker (terms not disclosed in the 10-K sections read). Bruker acquired 28 businesses in 2022-2024",
+    "Aug 2026 (approx.): Bruker announced a strategic collaboration with Atinary integrating SDLabs with Chemspeed automation, Bruker instruments and SciY software"
+  ],
+  "robustness": "Now backed by a large public instrument maker (Bruker revenue ~$2.96B in 2023), which reduces financial risk. All designs and software are proprietary, so users depend on Bruker's product roadmap. An active application pipeline in 2026 (349 news items on its site) signals continued investment.",
+  "physical_science_relevance": "Very high. Chemspeed platforms are standard hardware in chemistry and materials SDLs. Its 2026 application news covers a self-driving lab that finds homogeneous catalysts, single-atom-catalyst libraries, rare-earth MOF crystallization mapping, North Carolina State University's academic SDL ecosystem, polymer-solvation vision models and AI-planned chemistry for b12 Foundry.",
+  "openness_effect_assessment": "Chemspeed built a durable niche over 25 years with fully closed hardware and software, growing through integrations and application science rather than openness. Its 2024 sale to Bruker as Bruker's 'entry into lab automation and digitalization' shows that incumbents value closed lab-automation hardware as a strategic asset. No evidence suggests closedness held back its adoption in academic SDLs.",
+  "key_takeaway": "Chemspeed is the closed-hardware counterpart to Opentrons. It is a long-lived Swiss maker of solid- and liquid-handling synthesis robots, widely used in chemistry and materials SDLs, never open, and absorbed by Bruker in 2024. Its exit was a quiet strategic acquisition, not venture hype. It now anchors a closed Bruker-Chemspeed-Atinary SDL stack (Aug 2026 collaboration), illustrating consolidation of lab automation into incumbents' proprietary ecosystems.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from chemspeed.com, Bruker's 10-K on SEC EDGAR, Wikipedia and atinary.com pages listed in fetched_urls.",
+    "Acquisition month, price and percentage acquired not found; Bruker's FY2023 10-K excerpt read did not mention Chemspeed and the FY2024 10-K financial-statement notes were not reached.",
+    "Founding year and founders not confirmed ('over 25 years' per website).",
+    "Bruker revenue figure ($2.96B, 2023) from Wikipedia's Bruker infobox.",
+    "Wikipedia has no Chemspeed article (404); chemspeed.com/about-us, /company and /news/page/12 returned 404."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.chemspeed.com/",
+    "https://www.chemspeed.com/news/",
+    "https://en.wikipedia.org/wiki/Bruker",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=BRKR&type=10-K&dateb=&owner=include&count=10",
+    "https://www.sec.gov/Archives/edgar/data/1109354/000095017025030897/brkr-20241231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1109354/000095017024023038/brkr-20231231.htm",
+    "https://atinary.com/news/"
+  ],
+  "sources": [
+    {"url": "https://www.sec.gov/Archives/edgar/data/1109354/000095017025030897/brkr-20241231.htm", "title": "Bruker Corporation Form 10-K for fiscal year 2024", "publisher": "SEC EDGAR", "date": "2025-03-03", "supports": "exit_events[0], ownership_status, risk_events[0]"},
+    {"url": "https://www.chemspeed.com/", "title": "Chemspeed home page ('part of Bruker')", "publisher": "Chemspeed", "date": "2026-11", "supports": "origin_detail, flagship_projects, openness_notes"},
+    {"url": "https://www.chemspeed.com/news/", "title": "Chemspeed news", "publisher": "Chemspeed", "date": "2026-11-10", "supports": "physical_science_relevance, robustness"},
+    {"url": "https://atinary.com/news/", "title": "Bruker Announces Strategic Collaboration with Atinary Technologies to Advance Self-Driving Laboratories (listed)", "publisher": "Atinary", "date": "2026-08", "supports": "risk_events[1], flagship_projects"},
+    {"url": "https://en.wikipedia.org/wiki/Bruker", "title": "Bruker", "publisher": "Wikipedia", "date": "2026", "supports": "robustness (Bruker revenue)"}
+  ]
+}

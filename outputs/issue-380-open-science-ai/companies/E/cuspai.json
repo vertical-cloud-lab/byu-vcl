@@ -1,0 +1,58 @@
+{
+  "name": "CuspAI (Cusp AI Limited)",
+  "slug": "cuspai",
+  "group": "E",
+  "category": "ai_lab",
+  "subcategory": "AI materials-discovery platform ('AI Materials Foundry') for semiconductors, energy and chemicals",
+  "hq_country": "GB",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2024 by Dr Chad Edwards (CEO) and Prof. Max Welling (CTO). Registered office 20 Station Road, Cambridge, UK; also operates in London, Amsterdam, Berlin, Tokyo, Singapore and the United States.",
+  "founded_year": 2024,
+  "flagship_projects": ["CuspAI materials-discovery platform", "AI Materials Foundry (industrial, lab and data-provider ecosystem)"],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "No open-source code, model weights or datasets attributed to CuspAI on its website. Its ecosystem leans on partners: Meta (FAIR), whose testimonial highlights Meta's 'open source frontier models for materials science research', and licensed data providers CCDC, ICSD and Wiley (peer-reviewed literature). The platform is proprietary.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2024, "license": "Proprietary", "note": "No open releases found", "source": "https://www.cusp.ai/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 650000000,
+  "funding_as_of": "2026-11",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Raised 'over $650M' within about two years of founding (investors named on site: Kleiner Perkins, NEA, Temasek, NVentures, Bezos Expeditions, Samsung, Hyundai Motor Group; logos also include Lightspeed, AMD, Lux Capital, Giant Ventures, Basis Set, Touring Capital)",
+    "No disclosed revenue or validated material breakthroughs in fetched sources; round-by-round amounts and valuation not stated"
+  ],
+  "robustness": "Very well capitalized with strategic corporate investors (Samsung, Hyundai, AMD, NVIDIA) and about 30 industrial partners (Applied Materials, Lam Research, Tokyo Electron, Samsung, Kioxia, Oxford PV, Hyundai, Kemira, Fujifilm and others). But everything rests on one proprietary platform, with no open artifacts that would outlive it.",
+  "physical_science_relevance": "Very high. It targets materials for semiconductors (Applied Materials, Lam, TEL, imec, Kioxia), photovoltaics (Oxford PV), batteries and automotive (Hyundai) and chemicals (Kemira). Lab partners include A*STAR, imec, DIFFER, DTU and the University of Cambridge, and data partners are the crystallographic databases CCDC and ICSD.",
+  "openness_effect_assessment": "CuspAI is closed. Its advantage is assembled access to curated, licensed structural data (CCDC, ICSD), publisher literature (Wiley), partner labs and frontier models from open-leaning partners such as Meta, not its own open releases. It shows that some 2025-2026 AI-for-materials capital is flowing to proprietary 'foundry' models that aggregate others' data rather than publish their own.",
+  "key_takeaway": "CuspAI, Cambridge UK, founded 2024 by Chad Edwards and Max Welling, had raised over $650M by late 2026, among the largest sums in AI for materials. It has released nothing open, and its edge is a partner ecosystem combining licensed crystallographic databases, Wiley literature, semiconductor and chemicals companies and Meta's open models. It is the archetype of consuming open and licensed scientific data while keeping outputs proprietary.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from the cusp.ai home page (read in three chunks) listed in fetched_urls.",
+    "funding_total_usd = 'over $650M' per cusp.ai (lower bound; individual rounds, dates and valuation not given on the page).",
+    "UK-headquartered, so us_focus is false, though it lists US operations.",
+    "cusp.ai/news returned 404."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.cusp.ai/",
+    "https://www.cusp.ai/ (offset 100000)",
+    "https://www.cusp.ai/ (offset 200000)"
+  ],
+  "sources": [
+    {"url": "https://www.cusp.ai/", "title": "CuspAI home page", "publisher": "CuspAI", "date": "2026-11 (fetched; privacy notice updated 2026-06-15)", "supports": "founded_year, origin_detail, funding_total_usd, risk_events[0], robustness, physical_science_relevance, openness_notes"}
+  ]
+}

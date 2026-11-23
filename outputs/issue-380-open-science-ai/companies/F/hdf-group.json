@@ -1,0 +1,131 @@
+{
+  "name": "The HDF Group",
+  "slug": "hdf-group",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "scientific data format and library (HDF4, HDF5, HSDS)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "HDF began in 1987 in the Graphics Foundations Task Force at NCSA, University of Illinois Urbana-Champaign, supported by NSF grants in 1990 and 1992; NASA chose HDF as the standard format for its Earth Observing System. The HDF Group was created in 2006 as a 501(c)(3) nonprofit (tax exemption August 2006; Champaign, IL) to continue HDF5 development and long-term access to HDF data.",
+  "founded_year": 2006,
+  "flagship_projects": [
+    "HDF5",
+    "HDF4",
+    "HSDS (cloud-native HDF5 service, 1.0.0 Sep 2026)",
+    "HDFView"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Libraries and tools under a liberal BSD-like licence; developed and governed by the nonprofit itself (17 staff) rather than a multi-stakeholder community, so scored 3.",
+  "business_model": "support_services",
+  "license_history": [
+    {
+      "year": null,
+      "license": "BSD-like",
+      "note": "Date of current licence terms not found",
+      "source": "https://en.wikipedia.org/wiki/Hierarchical_Data_Format"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": 3045316,
+  "latest_value_type": "annual revenue, IRS Form 990, fiscal year ending Dec 2025 (92.6% program services, 0.4% contributions)",
+  "latest_value_date": "2025-12",
+  "revenue_latest_usd": 3045316,
+  "revenue_year": 2025,
+  "employees_latest": 17,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Revenue has fallen from about $4.6-4.7M a year (2016-2020) to $2.5M (2024) and $3.0M (2025), with deficits in 2024 and 2025; net assets dropped from $2.45M (2023) to $1.62M (2025).",
+    "Almost no donation income (contributions $13,149 in 2025) despite HDF5 being embedded in NASA, netCDF-4 and many scientific workflows."
+  ],
+  "robustness": "HDF5 is deeply embedded (NASA EOS data, netCDF-4 is built on HDF5) and openly licensed, so the format would survive the organisation; but the canonical library is maintained by a small staff funded mostly by service contracts.",
+  "physical_science_relevance": "A core storage format for simulation and instrument data in physics, climate, earth observation and materials science (including synchrotron and microscopy data), and increasingly used for AI/ML data pipelines (the group sells 'HDF5 for AI/ML' services).",
+  "openness_effect_assessment": "Opening HDF and spinning it out of NCSA created a durable de facto standard, but the nonprofit captures little of the value: 2025 revenue was $3.0M, 93% from paid services, and shrinking. It is a clear case of critical open infrastructure whose users rarely pay for the maintainer.",
+  "key_takeaway": "The HDF Group shows the 'services nonprofit' model for academic-origin open infrastructure: 20 years independent of NCSA, but revenue has drifted down to about $3M and 17 staff while HDF5 underpins petabytes of science and AI training data. Longevity is real, but financial robustness is thin.",
+  "usage_metrics": [
+    {
+      "metric": "annual revenue FY2020 (USD)",
+      "value": 4718326,
+      "date": "2020-12",
+      "source": "https://projects.propublica.org/nonprofits/organizations/680600605"
+    },
+    {
+      "metric": "annual revenue FY2024 (USD)",
+      "value": 2505875,
+      "date": "2024-12",
+      "source": "https://projects.propublica.org/nonprofits/organizations/680600605"
+    },
+    {
+      "metric": "staff (excluding board)",
+      "value": 17,
+      "date": "2026-11",
+      "source": "https://www.hdfgroup.org/about-us/the-hdf-group-staff/"
+    }
+  ],
+  "funding_sources": [
+    "Program services: priority support, training, consulting, data conversion, HDF5 cloud, HDF5 for AI/ML (92.6% of 2025 revenue)",
+    "Investment income (7.0%)",
+    "Donations via PayPal and GitHub Sponsors (0.4%)",
+    "Historic NSF grants (1990, 1992) and NASA EOS adoption"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "The EIN was located with ProPublica Nonprofit Explorer's own organisation lookup (a registry query, not a web search engine).",
+    "Specific current government contracts (NASA, DOE) not stated on fetched pages; not claimed.",
+    "2026 news headlines on hdfgroup.org (HSDS 1.0.0 on 17 Sep 2026; security/privacy audit findings on 2 Sep 2026; HDFView 3.5.0 on 21 Oct 2026) were read only as titles.",
+    "The 2006 spin-out from NCSA is recorded in origin_detail, not exit_events, because none of the schema's exit types fits a spin-out."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://www.hdfgroup.org/about-us/",
+    "https://en.wikipedia.org/wiki/Hierarchical_Data_Format",
+    "https://www.hdfgroup.org/about-us/donate-to-the-hdf-group/",
+    "https://www.hdfgroup.org/about-us/the-hdf-group-staff/",
+    "https://projects.propublica.org/nonprofits/search?q=%22HDF+Group%22",
+    "https://projects.propublica.org/nonprofits/organizations/680600605"
+  ],
+  "sources": [
+    {
+      "url": "https://projects.propublica.org/nonprofits/organizations/680600605",
+      "title": "The Hdf Group - Nonprofit Explorer (Form 990 data)",
+      "publisher": "ProPublica",
+      "date": null,
+      "supports": "latest_value_usd, revenue, revenue breakdown, risk_events, usage_metrics[0-1], 2006 tax exemption"
+    },
+    {
+      "url": "https://www.hdfgroup.org/about-us/",
+      "title": "About Us",
+      "publisher": "The HDF Group",
+      "date": null,
+      "supports": "origin_detail (1987 NCSA, created 2006), services, 2026 headlines"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Hierarchical_Data_Format",
+      "title": "Hierarchical Data Format",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "NSF grants, NASA EOS, netCDF-4, licence, R&D 100 (2002)"
+    },
+    {
+      "url": "https://www.hdfgroup.org/about-us/the-hdf-group-staff/",
+      "title": "Our Board and Staff",
+      "publisher": "The HDF Group",
+      "date": null,
+      "supports": "employees_latest"
+    },
+    {
+      "url": "https://www.hdfgroup.org/about-us/donate-to-the-hdf-group/",
+      "title": "Donate to The HDF Group",
+      "publisher": "The HDF Group",
+      "date": null,
+      "supports": "funding_sources (donation channels)"
+    }
+  ]
+}

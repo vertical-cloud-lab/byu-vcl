@@ -1,0 +1,98 @@
+{
+  "name": "Mozilla Corporation",
+  "slug": "mozilla-corporation",
+  "group": "B",
+  "category": "software",
+  "subcategory": "web browser (Firefox) and consumer privacy products",
+  "hq_country": "US",
+  "origin": "nonprofit",
+  "origin_detail": "Established 3 Aug 2005 as a wholly owned, taxable, for-profit subsidiary of the non-profit Mozilla Foundation to handle revenue-generating operations; the Mozilla open-source project itself was started by Netscape Communications (corporate origin); HQ San Francisco",
+  "founded_year": 2005,
+  "flagship_projects": [
+    "Firefox",
+    "Thunderbird (historical)",
+    "Gecko/SpiderMonkey",
+    "Mozilla Public License",
+    "Mozilla.ai (subsidiary)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Firefox and Gecko are released under the OSI-approved Mozilla Public License, developed in the open, and the company is owned by a non-profit foundation with a public-benefit mission, so it rates 4 (OSI + non-profit/community governance). Commercial dependence on Google search royalties is the main constraint on independence, not licensing.",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2005,
+      "license": "Mozilla Public License (OSI)",
+      "note": "Inherited from the Netscape-started Mozilla project; detailed NPL/MPL 1.1/MPL 2.0 history not covered in fetched pages",
+      "source": "https://en.wikipedia.org/wiki/Mozilla_Corporation"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 680000000,
+  "revenue_year": 2024,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Extreme revenue concentration: Google supplied 86% ($585M) of 2024 revenue ($680M) via the Firefox default-search deal",
+    "US v. Google: DOJ-proposed remedies (2024) threatened default-search payments; Sep 2025 ruling barred exclusive deals for six years but allowed non-exclusive payments; Aug 2026 US authorities asked the appeals court to overturn that allowance",
+    "Layoffs: ~70 (Jan 2020), ~250 (Aug 2020), ~60 (Feb 2024, ~5%); Mozilla Foundation cut ~30% (Nov 2024)",
+    "May 2025: shut down Pocket (acquired 2017) and Fakespot (acquired 2023) as unsustainable",
+    "CEO churn: Baker stepped down Feb 2024; interim Laura Chambers; Anthony Enzor-DeMeo CEO from Dec 2025 with an 'AI browser' strategy"
+  ],
+  "robustness": "Two decades of continuous operation and an endowment-like cash position (2024 revenue $680M vs expenses $588M), protected by non-profit ownership from acquisition. But it is financially fragile in a specific way: one counterparty (Google) and one court case determine most of its income, and its diversification attempts (Pocket, Fakespot) have been shut down.",
+  "physical_science_relevance": "Low directly; Firefox and the MPL are part of the open web stack used in research. Mozilla's open-licence model (MPL) is a template for weak-copyleft licensing of scientific code.",
+  "openness_effect_assessment": "Full openness plus non-profit governance made Mozilla durable and trusted, and let Firefox break Internet Explorer's dominance, but did not produce an independent business model: 81-95% of revenue has come from Google search royalties for most of its history. The openness is secure; the money is not.",
+  "key_takeaway": "Mozilla is the archetype of maximum openness (level 4) with a non-profit parent: it cannot be bought or relicensed, and it has lasted 20+ years, yet its survival depends on payments from a dominant rival and on antitrust remedies. Openness guaranteed the mission's robustness but not financial independence.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Mozilla_Corporation",
+    "https://blog.mozilla.org/en/mozilla/leadership/mozillas-next-chapter-anthony-enzor-demeo-new-ceo/",
+    "https://fortune.com/2024/02/08/mozilla-firefox-ceo-laura-chambers-mitchell-baker-leadership-transition/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Mozilla_Corporation",
+      "title": "Mozilla Corporation",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail, revenue table (2024 $680M, 86% Google), layoffs, CEO history, US v. Google remedy (Sep 2025) and appeal (Aug 2026), Pocket/Fakespot shutdowns"
+    },
+    {
+      "url": "https://stateof.mozilla.org/pdf/Mozilla%20Fdn%202024%20-%20AuditedFinancials.pdf",
+      "title": "Mozilla Foundation 2024 audited financial statements",
+      "publisher": "Mozilla Foundation",
+      "date": "2025",
+      "supports": "revenue_latest_usd (cited by Wikipedia; not fetched directly)"
+    },
+    {
+      "url": "https://blog.mozilla.org/en/mozilla/leadership/mozillas-next-chapter-anthony-enzor-demeo-new-ceo/",
+      "title": "Mozilla's next chapter: Anthony Enzor-DeMeo, new CEO",
+      "publisher": "Mozilla",
+      "date": "2025-12-16",
+      "supports": "risk_events (CEO change, AI-browser strategy, revenue diversification goal)"
+    },
+    {
+      "url": "https://fortune.com/2024/02/08/mozilla-firefox-ceo-laura-chambers-mitchell-baker-leadership-transition/",
+      "title": "Mozilla CEO Mitchell Baker steps down; Laura Chambers interim",
+      "publisher": "Fortune",
+      "date": "2024-02-08",
+      "supports": "risk_events (CEO change); robustness (Firefox share fell from >30% to low single digits; majority of revenue from Google)"
+    }
+  ],
+  "notes": [
+    "revenue_latest_usd is for Mozilla Foundation and subsidiaries (consolidated), 2024, per audited financials cited by Wikipedia; 2019's $829M included a $338M Verizon/Yahoo settlement.",
+    "employees_latest null: ~750 in 2020 is the latest firm figure in fetched pages; later layoffs make it outdated.",
+    "funding/valuation null: non-profit-owned; no external equity.",
+    "Wikipedia flags parts of its 'Notable events' section as possibly LLM-written; key 2025-2026 claims were cross-checked only for the CEO change (Mozilla blog)."
+  ]
+}

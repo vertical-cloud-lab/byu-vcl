@@ -1,0 +1,72 @@
+{
+  "name": "SparkFun Electronics",
+  "slug": "sparkfun",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "maker electronics: open-source development and breakout boards, kits, education",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 2003 by Nathan Seidle, then a junior at the University of Colorado Boulder, in a Boulder college apartment. Its first products were Olimex printed circuit boards. It is now headquartered in Niwot, Colorado, in an 80,000 sq ft building.",
+  "founded_year": 2003,
+  "flagship_projects": ["Microcontroller development boards and breakout boards (400+ open-source kits and boards made in-house)", "SparkFun Education (from 2009-2011)", "Autonomous Vehicle Competition (2008-2018)"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Hardware column. SparkFun releases the products it designs as open-source hardware, with schematics, EAGLE files and datasheets on each product page. Its about page says 'Our products and resources carry no patents, so anyone can use, modify and even sell them.' It helped draft the first open-source hardware definition at the October 2010 Open Source Hardware summit and holds about 264 OSHWA certifications (2016-2020). It is level 3, not 4, because it is a private company with corporate governance. The pages fetched did not name the licence for design files. Product images are CC BY-NC-SA 3.0. No closing event was found.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2010, "license": "Open-source hardware: schematics and EAGLE files published for its own products (licence not named in the pages fetched)", "note": "SparkFun helped draft the first OSHW definition at the Oct 2010 Open Source Hardware summit", "source": "https://en.wikipedia.org/wiki/SparkFun_Electronics"},
+    {"year": null, "license": "CC BY-NC-SA 3.0 (product images)", "note": "Images only, not design files", "source": "https://en.wikipedia.org/wiki/SparkFun_Electronics"},
+    {"year": 2016, "license": "OSHWA certification (first SparkFun UID seen: US000002, 2016-10-31)", "note": "About 264 SparkFun certifications on OSHWA's list page, which only runs to Dec 2020", "source": "https://certification.oshwa.org/list.html"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 140,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2009-10-16: SPARC International sent a cease-and-desist over the SparkFun name and domain. The two signed a trademark coexistence agreement on 2010-04-02.",
+    "2014-03-07: US Customs seized a shipment of multimeters whose yellow jackets resembled Fluke's trade dress. SparkFun had them destroyed, and Fluke later sent genuine units as goodwill.",
+    "2016: founder Nathan Seidle stepped down as CEO and Glenn Samala took over.",
+    "No-patent policy: by design there is no IP barrier to copying the products."
+  ],
+  "robustness": "SparkFun has operated for 23 years (2003-2026) as a privately held company and makes 400+ open designs in-house. Its value lies in manufacturing, curation, documentation and education rather than IP, since it holds no patents. Every design is published and many are OSHWA-certified, so the hardware could outlive the company. Funding history and finances are not public.",
+  "physical_science_relevance": "SparkFun breakout and development boards (sensors, GNSS, motor drivers) are common building blocks in low-cost scientific instruments, and the published schematics allow them to be adapted for lab use.",
+  "openness_effect_assessment": "SparkFun shows that open hardware plus no patents is compatible with long-term operation. It has run for 23 years with about 140-150 staff (2015-2018) while publishing everything, and it holds the second-largest OSHWA portfolio in this group (about 264 by 2020). Like Adafruit it stayed mid-sized and private. Value comes from in-house manufacturing, curation and education, not exclusivity. Its recorded legal disputes are about trademark and trade dress (SPARC, Fluke), not about copying of its designs.",
+  "key_takeaway": "SparkFun is the long-lived, mid-sized open-hardware manufacturer. It was founded by a student in 2003 and still operates from Colorado, publishing schematics and EAGLE files for 400+ in-house designs, with an explicit no-patents policy and an early role in writing the OSHW definition. No valuation, funding or revenue is public, and no recent headcount was found beyond about 140 in 2018. It supports the pattern that open hardware firms can be durable but stay small and private. The trademark and trade-dress disputes (SPARC 2009-2010, Fluke 2014) show that brand, not design IP, is where open-hardware firms meet legal risk.",
+  "confidence": "medium",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/SparkFun_Electronics",
+    "https://www.sparkfun.com/about_sparkfun",
+    "https://certification.oshwa.org/list.html"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/SparkFun_Electronics", "title": "SparkFun Electronics", "publisher": "Wikipedia", "date": "2026-11-23", "supports": "origin_detail, founded_year, privately held, CEO change (2016), 150+ employees (2015), OSHW definition role (2010), schematics/EAGLE files per product, product-image licence, SPARC and Fluke disputes"},
+    {"url": "https://www.sparkfun.com/about_sparkfun", "title": "About SparkFun", "publisher": "SparkFun Electronics", "date": "2026-11-23", "supports": "no-patents statement, 400+ open-source kits and boards made in-house, about 140 employees (Jan 2018), Niwot HQ, 80,000 sq ft building"},
+    {"url": "https://certification.oshwa.org/list.html", "title": "OSHWA Certification: certified projects list", "publisher": "Open Source Hardware Association", "date": "2026-11-23", "supports": "hardware_extras.oshwa_certifications (about 264 SparkFun entries, US000002 2016-10-31 to US000916 2020-12-17)"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": "About 264 SparkFun Electronics certifications on OSHWA's public list page (first seen US000002, 2016-10-31; latest seen US000916, 2020-12-17; 33 in the first page segment and 231 in the last). The list page only runs to Dec 2020, so later certifications are not counted. Counts were tallied by the fetch tool and may be off by a few.",
+    "hardware_licenses": ["Open-source hardware with schematics and EAGLE files per product (specific licence not named in the pages fetched)", "CC BY-NC-SA 3.0 (product images only)"],
+    "firmware_software_licenses": [],
+    "patents": "Explicit no-patents policy: 'Our products and resources carry no patents, so anyone can use, modify and even sell them' (about page).",
+    "clone_impacts": null
+  },
+  "notes": [
+    "The WebSearch budget was exhausted before this file was started, so it was built only from WebFetch of known URLs (no web searches).",
+    "ownership_status is null. Wikipedia says 'privately held', but no fetched source says whether SparkFun ever took outside investment, so bootstrapped versus investor-backed is unconfirmed. funding_total_usd is null for the same reason.",
+    "employees_latest 140 is the Jan 2018 figure from the about page (Wikipedia: 150+ in 2015). No later headcount was found.",
+    "No revenue figure was found.",
+    "Failed fetches: news.sparkfun.com (403), github.com/sparkfun/SparkFun_RedBoard_Qwiic (404), en.wikipedia.org/wiki/Nathan_Seidle (404). 2024-2026 events are therefore unverified; the company website was live on 2026-11-23."
+  ]
+}

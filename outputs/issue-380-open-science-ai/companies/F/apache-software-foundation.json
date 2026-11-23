@@ -1,0 +1,63 @@
+{
+  "name": "The Apache Software Foundation (ASF)",
+  "slug": "apache-software-foundation",
+  "group": "F",
+  "category": "foundation",
+  "subcategory": "volunteer-run open-source software foundation (501(c)(3))",
+  "hq_country": "US",
+  "origin": "community",
+  "origin_detail": "Grew out of the 'Apache Group' of developers who extended the NCSA HTTPd web server; the ASF was incorporated on 25 March 1999 (effective 1 June 1999) in Delaware and received 501(c)(3) exemption in January 2001.",
+  "founded_year": 1999,
+  "flagship_projects": ["Apache HTTP Server", "Apache Spark", "Apache Arrow", "Apache Parquet", "Apache Kafka", "Apache Subversion"],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "All projects under the permissive Apache License with meritocratic, volunteer, foundation-level governance (members elect the board).",
+  "business_model": "donations",
+  "license_history": [],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "foundation",
+  "exit_events": [],
+  "latest_value_usd": 2220257,
+  "latest_value_type": "annual revenue, IRS Form 990, fiscal year ending April 2025 (expenses $2,334,727)",
+  "latest_value_date": "2025-04",
+  "revenue_latest_usd": 2220257,
+  "revenue_year": 2025,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "FY2025 (to April 2025) deficit: revenue $2.22M vs expenses $2.33M; net assets $4.21M.",
+    "A very small budget relative to the project portfolio (290+ projects, 10,200+ committers) means the ASF relies on volunteers and employer-paid contributors rather than funding developers itself."
+  ],
+  "robustness": "Extremely durable governance model (27 years) with 1,190+ members and 10,200+ committers; projects are maintained largely by contributors paid by their employers, so the foundation's small budget is not a single point of failure. Still adding top-level projects (Auron, Reqsign, ResilientDB announced 14 Oct 2026).",
+  "physical_science_relevance": "Supplies the data layer for large-scale science and AI pipelines (Spark, Arrow, Parquet, Kafka) rather than domain physics codes.",
+  "openness_effect_assessment": "The ASF shows that neutral, volunteer governance can steward hundreds of critical projects on about $2M a year, because value creation is distributed to employers of contributors. The same lean model means it cannot fund maintenance directly, unlike the much richer Linux Foundation.",
+  "key_takeaway": "The ASF is the low-budget, high-legitimacy end of open governance: roughly $2.2M a year in revenue supports 290+ projects, about one-hundredth of the Linux Foundation's $221M. For science it is a reminder that foundation budgets measure overhead, not the value of what they steward.",
+  "usage_metrics": [
+    {"metric": "open-source projects", "value": 290, "date": "2026-11", "source": "https://www.apache.org/"},
+    {"metric": "committers", "value": 10200, "date": "2026-11", "source": "https://www.apache.org/"},
+    {"metric": "members", "value": 1190, "date": "2026-11", "source": "https://www.apache.org/"},
+    {"metric": "software releases", "value": 1300, "date": "2026-11", "source": "https://www.apache.org/"},
+    {"metric": "annual revenue FY2024 (to April 2024, USD)", "value": 2452180, "date": "2024-04", "source": "https://projects.propublica.org/nonprofits/organizations/470825376"}
+  ],
+  "funding_sources": ["Corporate sponsorships and individual donations"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "apache.org shows an 'Introducing The ASF's New Logo' banner and Wikipedia labels the logo '(2025)', but no dated announcement was fetched, so the rebrand date is unconfirmed and not recorded as an event.",
+    "Headline counts on apache.org are '290+', '10200+', '1190+', '1300+' (lower bounds).",
+    "Paid staff count not found. The httpd origin date (Wikipedia text gives Feb 1993 for the Apache Group) was not cross-checked and is omitted.",
+    "Flagship projects listed are well-known ASF top-level projects; their status was not individually re-verified on fetched pages."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://projects.propublica.org/nonprofits/organizations/470825376", "https://en.wikipedia.org/wiki/The_Apache_Software_Foundation", "https://www.apache.org/", "https://news.apache.org/"],
+  "sources": [
+    {"url": "https://projects.propublica.org/nonprofits/organizations/470825376", "title": "Apache Software Foundation - Nonprofit Explorer (Form 990 data)", "publisher": "ProPublica", "date": null, "supports": "latest_value_usd, revenue, risk_events[0], 501(c)(3) since Jan 2001, usage_metrics[4]"},
+    {"url": "https://en.wikipedia.org/wiki/The_Apache_Software_Foundation", "title": "The Apache Software Foundation", "publisher": "Wikipedia", "date": null, "supports": "founded_year (incorporation 25 Mar 1999), origin_detail"},
+    {"url": "https://www.apache.org/", "title": "The Apache Software Foundation", "publisher": "ASF", "date": null, "supports": "usage_metrics[0-3], notes (new logo banner)"},
+    {"url": "https://news.apache.org/", "title": "ASF News", "publisher": "ASF", "date": "2026-11-17", "supports": "robustness (new top-level projects 14 Oct 2026)"}
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "OpenAI (OpenAI Foundation; OpenAI Group PBC)",
+  "slug": "openai",
+  "group": "C",
+  "category": "ai_lab",
+  "subcategory": "frontier LLMs (GPT), ChatGPT and API; occasional open-weights releases (GPT-2, gpt-oss)",
+  "hq_country": "US",
+  "origin": "nonprofit",
+  "origin_detail": "Founded December 2015 as the non-profit OpenAI, Inc. by Elon Musk, Sam Altman, Ilya Sutskever, Greg Brockman and others; $1B was pledged but only $133M had been received by 2021. In 2019 it added a 'capped' for-profit arm (100x cap). On 2025-10-28 it recapitalised: the non-profit became the OpenAI Foundation, which controls the for-profit OpenAI Group PBC.",
+  "founded_year": 2015,
+  "flagship_projects": ["ChatGPT", "GPT model family (closed)", "GPT-2 (staged open release 2019)", "gpt-oss-120b / gpt-oss-20b (Apache-2.0, 2025)", "OpenAI for Science"],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "Initial 3: a non-profit research lab that promised researchers would 'publish their work, whether as papers, blog posts, or code' and share patents. The 2018-era Charter already expected 'safety and security concerns will reduce our traditional publishing'. GPT-2 was withheld in Feb 2019 and released in stages through Nov 2019, and later frontier models (GPT-3 onward) were API-only. Current 1: the frontier is closed; gpt-oss (2025-08-05) put two capable open-weight models under Apache-2.0, an OSI licence, but these are peripheral to a business built on closed models and subscriptions.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2015, "license": "Open publication pledge (papers, blog posts, code; patents shared)", "note": "Introducing OpenAI, 2015-12-11.", "source": "https://openai.com/index/introducing-openai/"},
+    {"year": 2019, "license": "Withheld (GPT-2 full model); smaller model released for researchers", "note": "2019-02-14: 'we are not releasing the trained model'; staged release ended with the 1.5B model on 2019-11-05.", "source": "https://openai.com/index/better-language-models/"},
+    {"year": 2025, "license": "Apache-2.0 (gpt-oss-120b, gpt-oss-20b weights)", "note": "2025-08-05: 'two state-of-the-art open-weight language models', 'Available under the flexible Apache 2.0 license'.", "source": "https://openai.com/index/introducing-gpt-oss/"}
+  ],
+  "relicensing_events": [
+    {"year": 2019, "from": "Default open publication of research and code", "to": "Staged/withheld release of GPT-2; later models API-only", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Justified by misuse concerns ('malicious applications'); the 1.5B GPT-2 was released on 2019-11-05, but from GPT-3 on the frontier stayed closed.", "source": "https://openai.com/index/better-language-models/"},
+    {"year": 2025, "from": "No open-weights LLM since GPT-2", "to": "gpt-oss-120b and gpt-oss-20b under Apache-2.0", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Followed Altman's Jan 2025 remark, after DeepSeek, that OpenAI needed to 'figure out a different open source strategy'; framed as US-built open models that 'expand democratic AI rails'.", "source": "https://openai.com/index/introducing-gpt-oss/"},
+    {"year": 2025, "from": "Non-profit-controlled capped-profit LLC", "to": "OpenAI Foundation (26% stake, ~$130B, plus warrant) controlling OpenAI Group PBC; Microsoft ~27%", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Governance/ownership change announced 2025-10-28; Musk's suit seeking to reverse it lost in May 2026 on the statute of limitations.", "source": "https://openai.com/our-structure/"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": "2026-04 (rounds include $6.6B Oct 2024 at $157B; $40B Apr 2025 at $300B post; $10B employee sale Oct 2025 at $500B; $110B Feb 2026 at $730B, extended to $122B committed at $852B post-money; total not computed)",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 852000000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2026-04",
+  "revenue_latest_usd": 13100000000,
+  "revenue_year": 2025,
+  "employees_latest": 4500,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2025: net loss of about $9B on $13.1B revenue (estimate in Wikipedia infobox)",
+    "Musk v. Altman: Musk sued over the departure from the non-profit mission, amended in April 2026 to seek reversal of the restructuring, and lost in May 2026 (jury found he sued after the three-year statute of limitations)",
+    "2026-06-08: confirmed an IPO filing with the SEC; in September Altman said the IPO was delayed until 2027",
+    "Ownership split after recapitalisation: the Foundation's stake is 26% (infobox gives 22.5% after later rounds), so the non-profit's control rests on special voting rights rather than majority equity"
+  ],
+  "robustness": "Very well funded ($852B post-money valuation in early 2026; $122B committed in its latest round) but loss-making, and dependent on continued capital and compute deals. The non-profit Foundation controls the PBC board through special voting rights. Its open contributions are few but durable: GPT-2 and gpt-oss weights under permissive terms cannot be withdrawn.",
+  "physical_science_relevance": "OpenAI for Science ('Accelerating scientific discovery') targets mathematics, physics, biology and chemistry; gpt-oss models can be run locally in labs under Apache-2.0.",
+  "openness_effect_assessment": "OpenAI's founding openness attracted talent and legitimacy, but the decisive commercial step was closing the frontier: from GPT-3 onward API-only access underpinned the ChatGPT business ($13.1B revenue in 2025) and a valuation climb from $157B (Oct 2024) to $852B (2026). Competitive pressure from open models (DeepSeek, Jan 2025) pushed it back to a limited open-weights release (gpt-oss, Aug 2025) without opening its frontier. Its restructuring into a PBC drew litigation that failed but kept the openness-versus-mission question public.",
+  "key_takeaway": "OpenAI is the archetype of an organisation founded on openness that became closed as its models became valuable. Its name and 2015 pledge to publish code now sit beside an $852B closed-model business, and its one major re-opening (gpt-oss under Apache-2.0) was a response to open-weights competitors rather than a return to its founding model. For the study, it is the clearest example of openness used to launch, then traded for control once capital needs rose, with governance (a non-profit holding special voting rights) kept as the remaining link to the original mission.",
+  "confidence": "medium",
+  "open_language_quotes": [
+    {"quote": "Researchers will be strongly encouraged to publish their work, whether as papers, blog posts, or code", "url": "https://openai.com/index/introducing-openai/", "date": "2015-12-11", "theme": "open science / open source"},
+    {"quote": "we expect that safety and security concerns will reduce our traditional publishing in the future,", "url": "https://openai.com/charter/", "date": null, "theme": "open science (retreat); Charter page shows no date"},
+    {"quote": "Due to our concerns about malicious applications of the technology, we are not releasing the trained model.", "url": "https://openai.com/index/better-language-models/", "date": "2019-02-14", "theme": "open weights (withheld)"},
+    {"quote": "We're releasing gpt-oss-120b and gpt-oss-20b—two state-of-the-art open-weight language models", "url": "https://openai.com/index/introducing-gpt-oss/", "date": "2025-08-05", "theme": "open weights"},
+    {"quote": "Broad access to these capable open-weights models created in the US helps expand democratic AI rails.", "url": "https://openai.com/index/introducing-gpt-oss/", "date": "2025-08-05", "theme": "open weights (geopolitical framing)"},
+    {"quote": "Accelerating scientific discovery", "url": "https://openai.com/science/", "date": null, "theme": "scientific discovery (page heading; models help researchers 'explore new ideas, connect evidence, analyze data')"}
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/OpenAI",
+    "https://openai.com/index/introducing-openai/",
+    "https://openai.com/charter/",
+    "https://openai.com/index/better-language-models/",
+    "https://openai.com/index/introducing-gpt-oss/",
+    "https://openai.com/our-structure/",
+    "https://openai.com/science/",
+    "https://openai.com/index/gpt-2-1-5b-release/",
+    "https://techcrunch.com/2025/01/31/sam-altman-believes-openai-has-been-on-the-wrong-side-of-history-concerning-open-source/"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/OpenAI", "title": "OpenAI", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, funding_as_of, latest_value_usd (lead says March 2026, body April 2026), revenue_latest_usd, employees_latest, risk_events[0-3]"},
+    {"url": "https://openai.com/index/introducing-openai/", "title": "Introducing OpenAI", "publisher": "OpenAI", "date": "2015-12-11", "supports": "license_history[0], openness_initial, open_language_quotes[0]"},
+    {"url": "https://openai.com/charter/", "title": "OpenAI Charter", "publisher": "OpenAI", "date": null, "supports": "openness_notes, open_language_quotes[1]"},
+    {"url": "https://openai.com/index/better-language-models/", "title": "Better language models and their implications", "publisher": "OpenAI", "date": "2019-02-14", "supports": "license_history[1], relicensing_events[0], open_language_quotes[2]"},
+    {"url": "https://openai.com/index/gpt-2-1-5b-release/", "title": "GPT-2: 1.5B release", "publisher": "OpenAI", "date": "2019-11-05", "supports": "license_history[1], relicensing_events[0]"},
+    {"url": "https://openai.com/index/introducing-gpt-oss/", "title": "Introducing gpt-oss", "publisher": "OpenAI", "date": "2025-08-05", "supports": "license_history[2], relicensing_events[1], open_language_quotes[3], open_language_quotes[4]"},
+    {"url": "https://techcrunch.com/2025/01/31/sam-altman-believes-openai-has-been-on-the-wrong-side-of-history-concerning-open-source/", "title": "Sam Altman believes OpenAI has been on the wrong side of history concerning open source", "publisher": "TechCrunch", "date": "2025-01-31", "supports": "relicensing_events[1]"},
+    {"url": "https://openai.com/our-structure/", "title": "Our structure", "publisher": "OpenAI", "date": "2025-10-28", "supports": "relicensing_events[2], robustness"},
+    {"url": "https://openai.com/science/", "title": "OpenAI for Science", "publisher": "OpenAI", "date": null, "supports": "physical_science_relevance, open_language_quotes[5]"}
+  ]
+}

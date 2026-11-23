@@ -1,0 +1,70 @@
+{
+  "name": "Google DeepMind, AI for Science (AlphaFold) and Isomorphic Labs",
+  "slug": "google-deepmind-science",
+  "group": "C",
+  "category": "ai_lab",
+  "subcategory": "AI for science: protein structure (AlphaFold), materials (GNoME), genomics (AlphaGenome); drug-discovery spin-out Isomorphic Labs",
+  "hq_country": "GB",
+  "origin": "founder_startup",
+  "origin_detail": "DeepMind was founded 2010-11-15 in London by Demis Hassabis, Shane Legg and Mustafa Suleyman, acquired by Google (confirmed 2014-01-26) and merged with Google Brain in April 2023 to form Google DeepMind (c. 6,000 staff in 2025). Isomorphic Labs was incorporated 2021-02-24 and announced 2021-11-04 as an Alphabet spin-off led by Hassabis. London-based, but owned by the US-listed Alphabet.",
+  "founded_year": 2010,
+  "flagship_projects": ["AlphaFold 2 (code Apache-2.0, parameters CC BY 4.0)", "AlphaFold Protein Structure Database (with EMBL-EBI, CC-BY-4.0)", "AlphaFold 3 (restricted weights)", "GNoME (materials)", "AlphaGenome", "Isomorphic Labs IsoDDE (proprietary)"],
+  "openness_initial": 4,
+  "openness_current": 2,
+  "openness_notes": "Initial 4: AlphaFold 2 was published with open-source software alongside the Nature paper (2021-07-15). Its code is Apache-2.0, the parameters are CC BY 4.0, and the AlphaFold DB with EMBL-EBI (launched 2021-07-22, now over 200 million predictions) is CC-BY-4.0 'for academic and commercial use', a fully open science infrastructure. Current 2: AlphaFold 3 (2024-05-08, co-developed with Isomorphic Labs) launched only as a free non-commercial server. Code and weights followed for non-commercial use on request (Nov 2024) and publicly in Feb 2025, still non-commercial. The AF3 code is now Apache-2.0 per its GitHub page (date of change not confirmed), but the weights remain under the AlphaFold 3 Model Parameters Terms of Use ('only use ... if received directly from Google'), and commercial use goes through Google Cloud. Isomorphic's newer models (IsoDDE, Feb 2026) are proprietary. Whether the AF2 parameters were first under a non-commercial licence was not confirmed from a fetched page.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2021, "license": "Apache-2.0 (AlphaFold 2 code); CC BY 4.0 (parameters)", "note": "Nature paper with open-source software 2021-07-15; current README states both licences.", "source": "https://github.com/google-deepmind/alphafold"},
+    {"year": 2021, "license": "CC-BY-4.0 (AlphaFold Protein Structure Database)", "note": "Launched 2021-07-22 with EMBL-EBI (365,000+ proteins), about 200M added July 2022; 214M by 2024; site now cites over 200M/260M predictions.", "source": "https://alphafold.ebi.ac.uk/"},
+    {"year": 2024, "license": "AlphaFold Server only (non-commercial research)", "note": "AlphaFold 3 announced 2024-05-08 with Isomorphic Labs; free server access for non-commercial research.", "source": "https://en.wikipedia.org/wiki/AlphaFold"},
+    {"year": 2024, "license": "Non-commercial code and weights on request (AlphaFold 3)", "note": "November 2024 to the scientific community on request; publicly available February 2025, still non-commercial.", "source": "https://en.wikipedia.org/wiki/AlphaFold"},
+    {"year": null, "license": "Apache-2.0 (AlphaFold 3 code); AlphaFold 3 Model Parameters Terms of Use (weights)", "note": "Current GitHub state as fetched 2026-11-23; commercial use via Google Cloud; date of code relicensing not confirmed.", "source": "https://github.com/google-deepmind/alphafold3"},
+    {"year": 2026, "license": "Proprietary (Isomorphic Labs IsoDDE drug-design engine)", "note": "Feb 2026 technical report claims it doubled AlphaFold 3's performance on a protein-ligand generalisation benchmark.", "source": "https://en.wikipedia.org/wiki/Isomorphic_Labs"}
+  ],
+  "relicensing_events": [
+    {"year": 2024, "from": "Fully open AlphaFold 2 (Apache-2.0 code, CC BY 4.0 parameters, CC-BY database)", "to": "AlphaFold 3 via server only, then non-commercial weights obtainable only from Google", "direction": "closing", "fork": "Open reimplementations: Protenix (ByteDance, Apache-2.0), OpenFold-3 (AlQuraishi lab, MIT), Boltz-1/2 (MIT)", "fork_backer": "ByteDance; academic consortia", "outcome_note": "Coincided with commercialisation through Isomorphic Labs (co-developer). The community answered with permissively licensed AF3-class clones.", "source": "https://en.wikipedia.org/wiki/AlphaFold"},
+    {"year": 2025, "from": "AlphaFold 3 weights on request only", "to": "AF3 publicly available for non-commercial use (Feb 2025); code later Apache-2.0", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Partial re-opening: code permissive, weights still non-commercial and Google-distributed.", "source": "https://github.com/google-deepmind/alphafold3"}
+  ],
+  "funding_total_usd": 7700000000,
+  "funding_as_of": "2026-11 (Isomorphic Labs external rounds only: $600M Apr 2025, $2.1B May 2026, $5B Series C Nov 2026; DeepMind itself is funded by Alphabet)",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2014, "type": "acquisition", "value_usd": null, "counterparty": "Google", "note": "Google confirmed the acquisition on 2014-01-26 for a price 'reportedly ranging between $400 million and $650 million'.", "source": "https://en.wikipedia.org/wiki/Google_DeepMind"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 6000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2024: AlphaFold 3 withheld at launch (server-only), then non-commercial weights; open clones (Protenix, OpenFold-3, Boltz) emerged under permissive licences",
+    "GNoME materials-discovery claims (Nov 2023) drew criticism that it did not make 'a useful, practical contribution to the experimental materials scientists'",
+    "Isomorphic Labs: raised $7.7B in 2025-26 (no valuation disclosed) but as of Nov 2026 its pipeline 'remained in preclinical development'"
+  ],
+  "robustness": "Backed by Alphabet (see alphabet-google.json, $3.26T) and, for Isomorphic, by $7.7B of outside capital plus pharma deals (Eli Lilly and Novartis in Jan 2024, reported as worth nearly $3B combined; Johnson & Johnson in Jan 2026). The AlphaFold DB is co-run with EMBL-EBI under CC-BY-4.0, so the most-used asset is institutionally anchored outside Google.",
+  "physical_science_relevance": "Central. AlphaFold won half of the 2024 Nobel Prize in Chemistry (Hassabis and Jumper) and its database underpins structural biology. GNoME targets inorganic materials discovery, AlphaGenome predicts the effects of DNA sequences on gene regulation (AlphaGenome Atlas, Sept 2026), and Isomorphic Labs applies these models to drug design.",
+  "openness_effect_assessment": "Openness turned AlphaFold 2 into infrastructure: free code, parameters and a CC-BY database of over 200 million structures made it the default tool in structural biology and set up a Nobel Prize within three years. When AlphaFold 3 was restricted to protect the commercial value captured by Isomorphic Labs, the community rebuilt it under MIT/Apache licences within about two years, and Google partially re-opened (Apache-2.0 code). Commercial value is now being pursued privately: Isomorphic has raised $7.7B with no drug yet in human trials.",
+  "key_takeaway": "AlphaFold is the cleanest natural experiment in the study: the fully open version (AF2 plus the EMBL-EBI database) produced enormous scientific impact and prestige, while the restricted successor (AF3) mainly spurred open clones and a well-funded proprietary spin-out. For physical-science labs, it shows that open science infrastructure gets adopted fastest when data and weights are under CC-BY/Apache terms and co-hosted by a public institution, and that a corporate owner will close the next generation once a commercial route (drug discovery) appears.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/AlphaFold",
+    "https://github.com/google-deepmind/alphafold3",
+    "https://github.com/google-deepmind/alphafold",
+    "https://en.wikipedia.org/wiki/Isomorphic_Labs",
+    "https://alphafold.ebi.ac.uk/",
+    "https://en.wikipedia.org/wiki/Google_DeepMind"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Google_DeepMind", "title": "Google DeepMind", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, exit_events[0], employees_latest, risk_events[1], physical_science_relevance (GNoME, AlphaGenome)"},
+    {"url": "https://en.wikipedia.org/wiki/AlphaFold", "title": "AlphaFold", "publisher": "Wikipedia", "date": null, "supports": "openness_notes, license_history[1], license_history[2], license_history[3], relicensing_events[0], physical_science_relevance (Nobel)"},
+    {"url": "https://github.com/google-deepmind/alphafold", "title": "google-deepmind/alphafold", "publisher": "GitHub (Google DeepMind)", "date": null, "supports": "license_history[0]"},
+    {"url": "https://github.com/google-deepmind/alphafold3", "title": "google-deepmind/alphafold3", "publisher": "GitHub (Google DeepMind)", "date": null, "supports": "license_history[4], relicensing_events[1]"},
+    {"url": "https://alphafold.ebi.ac.uk/", "title": "AlphaFold Protein Structure Database", "publisher": "EMBL-EBI / Google DeepMind", "date": null, "supports": "license_history[1], robustness"},
+    {"url": "https://en.wikipedia.org/wiki/Isomorphic_Labs", "title": "Isomorphic Labs", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, funding_total_usd, license_history[5], risk_events[2], robustness"}
+  ]
+}

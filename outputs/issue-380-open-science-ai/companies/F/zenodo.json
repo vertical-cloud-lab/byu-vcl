@@ -1,0 +1,65 @@
+{
+  "name": "Zenodo (CERN / OpenAIRE)",
+  "slug": "zenodo",
+  "group": "F",
+  "category": "open_infrastructure",
+  "subcategory": "general-purpose open research repository (data, software, papers) with DOIs",
+  "hq_country": "CH",
+  "origin": "government",
+  "origin_detail": "Launched on 8 May 2013, commissioned by the EU-funded OpenAIRE project to support the European Commission's open-data policy, as successor to the OpenAIRE Orphan Records Repository; operated by CERN (an intergovernmental laboratory) on its data-centre infrastructure and built on the open-source Invenio/InvenioRDM platform.",
+  "founded_year": 2013,
+  "flagship_projects": ["Zenodo repository", "InvenioRDM", "GitHub-Zenodo integration (DOIs for software releases)"],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Free deposit and access for researchers of every country and discipline, open-source platform (InvenioRDM), all metadata CC0 with open APIs; content licences chosen by depositors. Public-institution operator rather than a membership foundation, scored 4 as fully open science infrastructure.",
+  "business_model": "grants",
+  "license_history": [
+    {"year": null, "license": "Metadata CC0; deposits under depositor-chosen licences; platform InvenioRDM (open source)", "note": "", "source": "https://about.zenodo.org/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "government",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Spam and abuse: since at least Nov 2025 Zenodo de-ranks records and communities from accounts that are not manually verified (institutional affiliation and email expected), and such records may not be indexed by external search engines; users without affiliations complained in early 2026 (GitHub issue #2604).",
+    "Runs as a 'marginal activity' on CERN infrastructure with EC project funding, so it has no independent revenue."
+  ],
+  "robustness": "Files sit in CERN's EOS storage with two replicas per file on different servers plus daily incremental backups to a Ceph cluster at a separate site ~3.5 km away. Retention is 'for the lifetime of the repository', tied to CERN, whose experimental programme is defined for 20+ years.",
+  "physical_science_relevance": "Default DOI-minting archive for physics and materials datasets, simulation outputs and software releases (via GitHub integration), born at the world's largest particle-physics lab; widely used for supplementary data and ML datasets.",
+  "openness_effect_assessment": "Free, no-requirements deposit made Zenodo a default home for 'long-tail' research outputs: it crossed 1 petabyte in 2021 with 15 million yearly visits and 55 million unique downloads. Openness also invites spam, which has led to verification-based de-ranking that disadvantages unaffiliated researchers.",
+  "key_takeaway": "Zenodo shows the 'public lab as host' model: an EU-commissioned, CERN-operated repository that is free to use because it rides on CERN's physics infrastructure and EC grants. Its July 2026 AI notice states that uploaded files are not used to train AI models, a deliberate contrast with how other open archives have become AI training data.",
+  "usage_metrics": [
+    {"metric": "hosted data (petabytes)", "value": 1, "date": "2021-12", "source": "https://en.wikipedia.org/wiki/Zenodo"},
+    {"metric": "yearly visits", "value": 15000000, "date": "2021", "source": "https://en.wikipedia.org/wiki/Zenodo"},
+    {"metric": "unique downloads of open items", "value": 55000000, "date": "2021", "source": "https://en.wikipedia.org/wiki/Zenodo"},
+    {"metric": "per-record file limit (GB)", "value": 50, "date": "2026-11", "source": "https://about.zenodo.org/policies/"}
+  ],
+  "funding_sources": ["European Commission via OpenAIRE projects (FP7, Horizon 2020, Horizon Europe)", "CERN (infrastructure, 'marginal activity')", "Donations via the CERN & Society Foundation"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "No current record count, user count or budget found on fetched pages; usage figures are from 2021.",
+    "AI usage notice v1.0 (last revised 31 Jul 2026): uploaded files are not used to train AI models; spam and keyword classifiers are trained only on published metadata, run inside the CERN Data Centre with open-source models, and humans keep final responsibility.",
+    "The de-ranking policy is documented through a user GitHub issue quoting Zenodo support (response dated 20 Nov 2025), not a formal policy page."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://en.wikipedia.org/wiki/Zenodo", "https://about.zenodo.org/", "https://about.zenodo.org/infrastructure/", "https://about.zenodo.org/policies/", "https://github.com/zenodo/zenodo/issues/2604", "https://about.zenodo.org/ai-usage-notice/"],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Zenodo", "title": "Zenodo", "publisher": "Wikipedia", "date": null, "supports": "founded_year (8 May 2013), origin_detail, usage_metrics[0-2]"},
+    {"url": "https://about.zenodo.org/", "title": "About Zenodo", "publisher": "Zenodo / CERN", "date": null, "supports": "origin_detail (OpenAIRE, EC open-data policy), license_history, funders"},
+    {"url": "https://about.zenodo.org/infrastructure/", "title": "Infrastructure", "publisher": "Zenodo / CERN", "date": null, "supports": "funding_sources, robustness, risk_events[1]"},
+    {"url": "https://about.zenodo.org/policies/", "title": "Policies", "publisher": "Zenodo / CERN", "date": null, "supports": "robustness (retention), usage_metrics[3]"},
+    {"url": "https://github.com/zenodo/zenodo/issues/2604", "title": "Search exclusion bug applied despite official institutional email and research", "publisher": "GitHub (zenodo/zenodo)", "date": "2026-03-13", "supports": "risk_events[0]"},
+    {"url": "https://about.zenodo.org/ai-usage-notice/", "title": "AI usage notice", "publisher": "Zenodo / CERN", "date": "2026-07-31", "supports": "key_takeaway, notes (AI notice)"}
+  ]
+}

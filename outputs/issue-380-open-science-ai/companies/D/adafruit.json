@@ -1,0 +1,75 @@
+{
+  "name": "Adafruit Industries, LLC",
+  "slug": "adafruit",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "maker electronics: open-source boards, sensors, kits, CircuitPython, tutorials and retail",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 2005 by Limor 'Ladyada' Fried, who began selling electronics kits from her website while an MIT student. She then set the company up in New York City, and it moved from Manhattan to Industry City, Brooklyn, in 2024.",
+  "founded_year": 2005,
+  "flagship_projects": ["Feather board family (2015)", "CircuitPython (2017, MIT-licensed fork of MicroPython)", "NeoPixel", "Circuit Playground / Circuit Playground Express (2016/2017)", "Adafruit Learning System tutorials (nearly 3,000 by 2024)"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Hardware column. Adafruit publishes the design files for its own boards: EAGLE schematics and layouts on GitHub under Creative Commons Attribution/Share-Alike, for example the Feather M0 Basic Proto repo. Its software (CircuitPython and its libraries) is MIT-licensed. It holds about 413 OSHWA certifications from 2017 to 2020, the most of any organization in group D. It is level 3, not 4, because it is a privately owned company: Adafruit, not a community, governs CircuitPython and the product line. No closing event was found.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": null, "license": "CC BY-SA (Creative Commons Attribution/Share-Alike) for PCB design files (EAGLE .sch/.brd on GitHub)", "note": "Example: Adafruit-Feather-M0-Basic-Proto-PCB. The README gives no version and the year of adoption was not found.", "source": "https://github.com/adafruit/Adafruit-Feather-M0-Basic-Proto-PCB"},
+    {"year": 2017, "license": "MIT (CircuitPython)", "note": "CircuitPython introduced Jan 2017 as a fork of MicroPython; repo shows MIT, 4.6k stars and 1.4k forks", "source": "https://github.com/adafruit/circuitpython"},
+    {"year": 2017, "license": "OSHWA certification (first Adafruit UID seen: US000067, 2017-06-27)", "note": "About 413 Adafruit certifications on OSHWA's list page, which only runs to Dec 2020", "source": "https://certification.oshwa.org/list.html"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 0,
+  "funding_as_of": "2026-11",
+  "ownership_status": "private_bootstrapped",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 45000000,
+  "revenue_year": 2016,
+  "employees_latest": 105,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2020: kept operating through COVID-19 as an essential manufacturing business (about page).",
+    "2024: moved from Manhattan to Industry City, Brooklyn (42K sq ft, per a reference title on Wikipedia).",
+    "Key-person concentration: the company is founder-owned ('100% woman owned'), and no succession arrangement was found."
+  ],
+  "robustness": "The company has operated for 21 years (2005-2026) with no outside investors on record, so there was no exit pressure. It earns money both as a manufacturer of its own open designs and as a retailer and distributor of third-party boards such as the Raspberry Pi. The open designs (CC BY-SA) and MIT-licensed CircuitPython (4.6k stars, 1.4k forks) can survive without the company. Founder ownership is the main concentration risk.",
+  "physical_science_relevance": "Adafruit's sensor breakout boards, Feather microcontrollers and CircuitPython drivers (the community has contributed libraries for 488+ sensors and drivers) are widely used for low-cost lab sensing and data logging. Its tutorials lower the barrier for scientists building their own instruments.",
+  "openness_effect_assessment": "Adafruit pairs fully published designs with a large education and media operation: nearly 3,000 tutorials, and a YouTube channel at 450k subscribers (Jan 2025). It grew without outside capital to $22M revenue in 2013, $33M in 2014 and about $45M in 2016. Openness worked as marketing and community-building: the company captures value through retail, tutorials and brand rather than design exclusivity. No quantified clone losses were found, unlike Arduino.",
+  "key_takeaway": "Adafruit is the bootstrapped open-hardware model. It is founder-owned, has taken no funding on record, and has operated for 21 years in New York. It publishes CC BY-SA design files and holds more OSHWA certifications (about 413 by 2020) than any other firm studied here. Its scale is modest: the last disclosed revenue was about $45M in 2016, with about 105 staff. It shows open hardware can be durable and profitable without venture capital, by selling convenience, curation and education around designs anyone may copy. The trade-off is that it stays small and private, with no recorded valuation.",
+  "confidence": "medium",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Adafruit_Industries",
+    "https://www.adafruit.com/about",
+    "https://certification.oshwa.org/list.html",
+    "https://github.com/adafruit/circuitpython",
+    "https://github.com/adafruit/Adafruit-Feather-M0-Basic-Proto-PCB"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Adafruit_Industries", "title": "Adafruit Industries", "publisher": "Wikipedia", "date": "2026-11-23", "supports": "origin_detail, founded_year, revenue ($22M 2013, $33M 2014, ~$45M 2016), employees_latest (105, 2016), CircuitPython history, Industry City move, 'without a dime of funding' (Business Insider headline cited)"},
+    {"url": "https://www.adafruit.com/about", "title": "About Adafruit", "publisher": "Adafruit Industries", "date": "2026-11-23", "supports": "ownership_status ('100% woman owned manufacturing company'), 'over 100+ employees', 2020 essential-business operation, 2024 Industry City move, Feather 100+ products"},
+    {"url": "https://certification.oshwa.org/list.html", "title": "OSHWA Certification: certified projects list", "publisher": "Open Source Hardware Association", "date": "2026-11-23", "supports": "hardware_extras.oshwa_certifications (about 413 Adafruit entries, US000067 2017-06-27 to US000730 2020-11-30)"},
+    {"url": "https://github.com/adafruit/circuitpython", "title": "adafruit/circuitpython", "publisher": "GitHub", "date": "2026-11-23", "supports": "MIT licence, 4.6k stars, 1.4k forks"},
+    {"url": "https://github.com/adafruit/Adafruit-Feather-M0-Basic-Proto-PCB", "title": "adafruit/Adafruit-Feather-M0-Basic-Proto-PCB", "publisher": "GitHub", "date": "2026-11-23", "supports": "Hardware licence: Creative Commons Attribution/Share-Alike; EAGLE design files published"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": "About 413 Adafruit Industries certifications on OSHWA's public list page (first seen US000067, 2017-06-27; most were certified in April-May 2020; latest seen US000730, 2020-11-30). The list page only runs to Dec 2020, so later certifications are not counted. Counts were tallied by the fetch tool across three page segments (63 + 321 + 29) and may be off by a few.",
+    "hardware_licenses": ["CC BY-SA (Creative Commons Attribution/Share-Alike) for EAGLE PCB design files"],
+    "firmware_software_licenses": ["MIT (CircuitPython and its libraries)"],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "The WebSearch budget was exhausted before this file was started, so it was built only from WebFetch of known URLs (no web searches).",
+    "funding_total_usd 0 rests on the about page's '100% woman owned' statement (2026) and on a Business Insider headline cited by Wikipedia saying the business was built 'without a dime of funding'. The article itself was not fetched.",
+    "revenue_latest_usd and employees_latest are 2016 figures (Wikipedia infobox). The about page now says 'over 100+ employees'. No revenue after 2016 was found.",
+    "Patents and clone impacts: no information found in the pages fetched.",
+    "2025-2026 events (e.g. tariffs) were not checked: no search was available, and the pages fetched did not cover them."
+  ]
+}

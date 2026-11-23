@@ -8,24 +8,65 @@
   "origin": "founder_startup",
   "origin_detail": "Founded in 2012 (San Francisco) by University of Washington classmates Mitchell Hashimoto and Armon Dadgar. Hashimoto had built Vagrant in his dorm room from 2010 and was already working on Packer; the pair had collaborated on UW research projects (the Seattle project, Cockpit).",
   "founded_year": 2012,
-  "flagship_projects": ["Terraform", "Vault", "Consul", "Nomad", "Packer", "Vagrant", "HCP (HashiCorp Cloud Platform)"],
+  "flagship_projects": [
+    "Terraform",
+    "Vault",
+    "Consul",
+    "Nomad",
+    "Packer",
+    "Vagrant",
+    "HCP (HashiCorp Cloud Platform)"
+  ],
   "openness_initial": 2,
   "openness_current": 1,
   "openness_notes": "Tools were released under OSI licences (MPL-2.0; Vagrant MIT) while revenue came from proprietary enterprise editions and the HCP cloud, so the company was open core (2). In August 2023 all core products moved to the Business Source License 1.1 (source-available, non-OSI), so current level 1; unchanged under IBM ownership.",
   "business_model": "open_core",
   "license_history": [
-    {"year": 2012, "license": "MPL-2.0 (most tools); MIT (Vagrant)", "note": "Enterprise editions proprietary.", "source": "https://en.wikipedia.org/wiki/HashiCorp"},
-    {"year": 2023, "license": "Business Source License 1.1", "note": "August 2023, for Terraform, Vault and other core products; Terraform 1.5.7 was the last MPL release.", "source": "https://thenewstack.io/hashicorp-abandons-open-source-for-business-source-license/"}
+    {
+      "year": 2012,
+      "license": "MPL-2.0 (most tools); MIT (Vagrant)",
+      "note": "Enterprise editions proprietary.",
+      "source": "https://en.wikipedia.org/wiki/HashiCorp"
+    },
+    {
+      "year": 2023,
+      "license": "Business Source License 1.1",
+      "note": "August 2023, for Terraform, Vault and other core products; Terraform 1.5.7 was the last MPL release.",
+      "source": "https://thenewstack.io/hashicorp-abandons-open-source-for-business-source-license/"
+    }
   ],
   "relicensing_events": [
-    {"year": 2023, "from": "MPL-2.0", "to": "BSL 1.1", "direction": "closing", "fork": "OpenTofu (Terraform fork from 1.5.7, accepted by the Linux Foundation 2023-09-20; CNCF Sandbox 2025-04-23) and OpenBao (Vault fork, started 2023-11-09 under LF Edge)", "fork_backer": "OpenTofu: Spacelift, Harness, Gruntwork, env0, Scalr (founding sponsors); OpenBao: led by IBM developers via LF Edge", "outcome_note": "OpenTofu passed 10M downloads by October 2026 and is a CNCF Sandbox project; adopters cited include Allianz and ExpressVPN. Commentators found no clear evidence the fork hurt HashiCorp's business. IBM, whose engineers led the OpenBao fork, then bought HashiCorp and kept the BSL.", "source": "https://www.techtarget.com/searchitoperations/news/366610212/OpenTofu-OpenBao-reach-milestones-post-HashiCorp-BSL"}
+    {
+      "year": 2023,
+      "from": "MPL-2.0",
+      "to": "BSL 1.1",
+      "direction": "closing",
+      "fork": "OpenTofu (Terraform fork from 1.5.7, accepted by the Linux Foundation 2023-09-20; CNCF Sandbox 2025-04-23) and OpenBao (Vault fork, started 2023-11-09 under LF Edge)",
+      "fork_backer": "OpenTofu: Spacelift, Harness, Gruntwork, env0, Scalr (founding sponsors); OpenBao: led by IBM developers via LF Edge",
+      "outcome_note": "OpenTofu passed 10M downloads by October 2026 and is a CNCF Sandbox project; adopters cited include Allianz and ExpressVPN. Commentators found no clear evidence the fork hurt HashiCorp's business. IBM, whose engineers led the OpenBao fork, then bought HashiCorp and kept the BSL.",
+      "source": "https://www.techtarget.com/searchitoperations/news/366610212/OpenTofu-OpenBao-reach-milestones-post-HashiCorp-BSL"
+    }
   ],
   "funding_total_usd": 349760000,
   "funding_as_of": "2020-03",
   "ownership_status": "acquired",
   "exit_events": [
-    {"year": 2021, "type": "IPO", "value_usd": 14000000000, "counterparty": "Nasdaq: HCP", "note": "Priced 2021-12-08 at $80 (range $68-72), 15.3M shares, ~$1.22B gross proceeds; ~$14B market value on outstanding shares, ~$16B fully diluted. Last private round: $175M Series E at $5.1B (March 2020).", "source": "https://www.bloomberg.com/news/articles/2021-12-09/hashicorp-is-said-to-price-ipo-above-range-at-80-a-share"},
-    {"year": 2025, "type": "acquisition", "value_usd": 6400000000, "counterparty": "IBM", "note": "Announced April 2024; closed 2025-02-27 at $35/share cash (enterprise value $6.4B) after UK CMA and US FTC clearance; runs as a division of IBM Software, not Red Hat. Price was well under half the IPO-day value.", "source": "https://newsroom.ibm.com/2025-02-27-ibm-completes-acquisition-of-hashicorp,-creates-comprehensive,-end-to-end-hybrid-cloud-platform"}
+    {
+      "year": 2021,
+      "type": "IPO",
+      "value_usd": 14000000000,
+      "counterparty": "Nasdaq: HCP",
+      "note": "Priced 2021-12-08 at $80 (range $68-72), 15.3M shares, ~$1.22B gross proceeds; ~$14B market value on outstanding shares, ~$16B fully diluted. Last private round: $175M Series E at $5.1B (March 2020).",
+      "source": "https://www.bloomberg.com/news/articles/2021-12-09/hashicorp-is-said-to-price-ipo-above-range-at-80-a-share"
+    },
+    {
+      "year": 2025,
+      "type": "acquisition",
+      "value_usd": 6400000000,
+      "counterparty": "IBM",
+      "note": "Announced April 2024; closed 2025-02-27 at $35/share cash (enterprise value $6.4B) after UK CMA and US FTC clearance; runs as a division of IBM Software, not Red Hat. Price was well under half the IPO-day value.",
+      "source": "https://newsroom.ibm.com/2025-02-27-ibm-completes-acquisition-of-hashicorp,-creates-comprehensive,-end-to-end-hybrid-cloud-platform"
+    }
   ],
   "latest_value_usd": 6400000000,
   "latest_value_type": "acquisition_price",
@@ -58,24 +99,127 @@
     "HashiCorp raises $175 million Series E March 2020 $5.1 billion valuation brings total funding to",
     "HashiCorp number of employees January 31 2024 human capital approximately"
   ],
+  "search_tool": "WebSearch (standard/extended)",
   "sources": [
-    {"url": "https://en.wikipedia.org/wiki/HashiCorp", "title": "HashiCorp", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, license_history[0]"},
-    {"url": "https://www.hashicorp.com/en/resources/what-is-the-hashicorp-origin-story", "title": "What is the HashiCorp origin story?", "publisher": "HashiCorp", "date": null, "supports": "origin_detail"},
-    {"url": "https://thenewstack.io/hashicorp-abandons-open-source-for-business-source-license/", "title": "HashiCorp abandons open source for Business Source License", "publisher": "The New Stack", "date": "2023-08", "supports": "license_history[1]"},
-    {"url": "https://thenewstack.io/linux-foundation-joins-opentf-to-fork-for-terraform-into-opentofu/", "title": "Linux Foundation joins OpenTF to fork Terraform into OpenTofu", "publisher": "The New Stack", "date": "2023-09-20", "supports": "relicensing_events[0]"},
-    {"url": "https://www.theregister.com/2023/12/08/hashicorp_openbao_fork/", "title": "HashiCorp Vault fork OpenBao", "publisher": "The Register", "date": "2023-12-08", "supports": "relicensing_events[0] (OpenBao)"},
-    {"url": "https://www.techtarget.com/searchitoperations/news/366610212/OpenTofu-OpenBao-reach-milestones-post-HashiCorp-BSL", "title": "OpenTofu, OpenBao reach milestones post-HashiCorp BSL", "publisher": "TechTarget", "date": "2024", "supports": "relicensing_events[0].outcome_note"},
-    {"url": "https://thenewstack.io/opentofu-joins-cncf-new-home-for-open-source-iac-project/", "title": "OpenTofu joins CNCF", "publisher": "The New Stack", "date": "2025-04", "supports": "relicensing_events[0] (CNCF Sandbox 2025-04-23)"},
-    {"url": "https://www.cncf.io/blog/2026/10/02/kubecon-cloudnativecon-north-america-2026-join-the-cloud-native-community-at-opentofu-day/", "title": "KubeCon + CloudNativeCon North America 2026: OpenTofu Day", "publisher": "CNCF", "date": "2026-10-02", "supports": "relicensing_events[0].outcome_note (>10M downloads)"},
-    {"url": "https://www.globenewswire.com/news-release/2020/03/16/2001541/0/en/HashiCorp-Raises-175-Million-in-%20%20Series-E-Funding-to-Support-Multi-Cloud-Transformation-for-Global-Enterprises.html", "title": "HashiCorp Raises $175 Million in Series E Funding", "publisher": "GlobeNewswire (HashiCorp press release)", "date": "2020-03-16", "supports": "exit_events[0].note (Series E at $5.1B)"},
-    {"url": "https://forgeglobal.com/hashicorp_ipo", "title": "HashiCorp IPO", "publisher": "Forge Global", "date": null, "supports": "funding_total_usd ($349.76M; third-party aggregator)"},
-    {"url": "https://www.bloomberg.com/news/articles/2021-12-09/hashicorp-is-said-to-price-ipo-above-range-at-80-a-share", "title": "Software Firm HashiCorp Tops IPO Goal to Raise $1.2 Billion", "publisher": "Bloomberg", "date": "2021-12-08", "supports": "exit_events[0]"},
-    {"url": "https://www.sec.gov/Archives/edgar/data/1720671/000119312521355378/d199913dex991.htm", "title": "HashiCorp closing of IPO (8-K exhibit 99.1)", "publisher": "SEC EDGAR", "date": "2021-12", "supports": "exit_events[0] (~$1.22B gross)"},
-    {"url": "https://newsroom.ibm.com/2025-02-27-ibm-completes-acquisition-of-hashicorp,-creates-comprehensive,-end-to-end-hybrid-cloud-platform", "title": "IBM Completes Acquisition of HashiCorp", "publisher": "IBM", "date": "2025-02-27", "supports": "exit_events[1], latest_value_usd"},
-    {"url": "https://www.sec.gov/Archives/edgar/data/1720671/000162828024012350/hcp-20240131.htm", "title": "HashiCorp Form 10-K FY2024", "publisher": "SEC EDGAR", "date": "2024-03", "supports": "revenue_latest_usd ($583.137M, FY ended 2024-01-31)"},
-    {"url": "https://stockanalysis.com/stocks/hcp/employees/", "title": "HashiCorp employees", "publisher": "StockAnalysis", "date": "2024-01-31", "supports": "employees_latest (2,200; Google Finance agrees)"},
-    {"url": "https://scalr.com/learning-center/hcp-terraform-free-tier-is-being-discontinued-what-you-need-to-know", "title": "HCP Terraform Free Tier in 2026: What Survived the EOL", "publisher": "Scalr", "date": "2026-11", "supports": "risk_events[3]"},
-    {"url": "https://www.techtarget.com/news/infrastructure-anchors-new-ibm-agentic-security-stack/873130/", "title": "Infrastructure anchors new IBM agentic security stack", "publisher": "TechTarget", "date": "2026-10", "supports": "robustness"}
+    {
+      "url": "https://en.wikipedia.org/wiki/HashiCorp",
+      "title": "HashiCorp",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, license_history[0]"
+    },
+    {
+      "url": "https://www.hashicorp.com/en/resources/what-is-the-hashicorp-origin-story",
+      "title": "What is the HashiCorp origin story?",
+      "publisher": "HashiCorp",
+      "date": null,
+      "supports": "origin_detail"
+    },
+    {
+      "url": "https://thenewstack.io/hashicorp-abandons-open-source-for-business-source-license/",
+      "title": "HashiCorp abandons open source for Business Source License",
+      "publisher": "The New Stack",
+      "date": "2023-08",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://thenewstack.io/linux-foundation-joins-opentf-to-fork-for-terraform-into-opentofu/",
+      "title": "Linux Foundation joins OpenTF to fork Terraform into OpenTofu",
+      "publisher": "The New Stack",
+      "date": "2023-09-20",
+      "supports": "relicensing_events[0]"
+    },
+    {
+      "url": "https://www.theregister.com/2023/12/08/hashicorp_openbao_fork/",
+      "title": "HashiCorp Vault fork OpenBao",
+      "publisher": "The Register",
+      "date": "2023-12-08",
+      "supports": "relicensing_events[0] (OpenBao)"
+    },
+    {
+      "url": "https://www.techtarget.com/searchitoperations/news/366610212/OpenTofu-OpenBao-reach-milestones-post-HashiCorp-BSL",
+      "title": "OpenTofu, OpenBao reach milestones post-HashiCorp BSL",
+      "publisher": "TechTarget",
+      "date": "2024",
+      "supports": "relicensing_events[0].outcome_note"
+    },
+    {
+      "url": "https://thenewstack.io/opentofu-joins-cncf-new-home-for-open-source-iac-project/",
+      "title": "OpenTofu joins CNCF",
+      "publisher": "The New Stack",
+      "date": "2025-04",
+      "supports": "relicensing_events[0] (CNCF Sandbox 2025-04-23)"
+    },
+    {
+      "url": "https://www.cncf.io/blog/2026/10/02/kubecon-cloudnativecon-north-america-2026-join-the-cloud-native-community-at-opentofu-day/",
+      "title": "KubeCon + CloudNativeCon North America 2026: OpenTofu Day",
+      "publisher": "CNCF",
+      "date": "2026-10-02",
+      "supports": "relicensing_events[0].outcome_note (>10M downloads)"
+    },
+    {
+      "url": "https://www.globenewswire.com/news-release/2020/03/16/2001541/0/en/HashiCorp-Raises-175-Million-in-%20%20Series-E-Funding-to-Support-Multi-Cloud-Transformation-for-Global-Enterprises.html",
+      "title": "HashiCorp Raises $175 Million in Series E Funding",
+      "publisher": "GlobeNewswire (HashiCorp press release)",
+      "date": "2020-03-16",
+      "supports": "exit_events[0].note (Series E at $5.1B)"
+    },
+    {
+      "url": "https://forgeglobal.com/hashicorp_ipo",
+      "title": "HashiCorp IPO",
+      "publisher": "Forge Global",
+      "date": null,
+      "supports": "funding_total_usd ($349.76M; third-party aggregator)"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2021-12-09/hashicorp-is-said-to-price-ipo-above-range-at-80-a-share",
+      "title": "Software Firm HashiCorp Tops IPO Goal to Raise $1.2 Billion",
+      "publisher": "Bloomberg",
+      "date": "2021-12-08",
+      "supports": "exit_events[0]"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1720671/000119312521355378/d199913dex991.htm",
+      "title": "HashiCorp closing of IPO (8-K exhibit 99.1)",
+      "publisher": "SEC EDGAR",
+      "date": "2021-12",
+      "supports": "exit_events[0] (~$1.22B gross)"
+    },
+    {
+      "url": "https://newsroom.ibm.com/2025-02-27-ibm-completes-acquisition-of-hashicorp,-creates-comprehensive,-end-to-end-hybrid-cloud-platform",
+      "title": "IBM Completes Acquisition of HashiCorp",
+      "publisher": "IBM",
+      "date": "2025-02-27",
+      "supports": "exit_events[1], latest_value_usd"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1720671/000162828024012350/hcp-20240131.htm",
+      "title": "HashiCorp Form 10-K FY2024",
+      "publisher": "SEC EDGAR",
+      "date": "2024-03",
+      "supports": "revenue_latest_usd ($583.137M, FY ended 2024-01-31)"
+    },
+    {
+      "url": "https://stockanalysis.com/stocks/hcp/employees/",
+      "title": "HashiCorp employees",
+      "publisher": "StockAnalysis",
+      "date": "2024-01-31",
+      "supports": "employees_latest (2,200; Google Finance agrees)"
+    },
+    {
+      "url": "https://scalr.com/learning-center/hcp-terraform-free-tier-is-being-discontinued-what-you-need-to-know",
+      "title": "HCP Terraform Free Tier in 2026: What Survived the EOL",
+      "publisher": "Scalr",
+      "date": "2026-11",
+      "supports": "risk_events[3]"
+    },
+    {
+      "url": "https://www.techtarget.com/news/infrastructure-anchors-new-ibm-agentic-security-stack/873130/",
+      "title": "Infrastructure anchors new IBM agentic security stack",
+      "publisher": "TechTarget",
+      "date": "2026-10",
+      "supports": "robustness"
+    }
   ],
   "notes": "funding_total_usd is a third-party aggregate (Forge Global, $349.76M) not confirmed by the company. revenue_latest_usd is fiscal 2024 (year ended 2024-01-31), the last full year reported before IBM closed the deal. employees_latest is from aggregators citing SEC filings; Revelio Labs gives 2,479 for 2024."
 }

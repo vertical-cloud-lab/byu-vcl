@@ -1,0 +1,42 @@
+org,date,url,title,words,open_source,open_weights,open_science,safety_risk,science,physical_sci,bio_health,geopolitics,proprietary_closed
+Anthropic,2023-03,https://www.anthropic.com/news/core-views-on-ai-safety,Anthropic's core views on AI safety \ Anthropic,6936,0,0,0,114,14,2,1,2,0
+Anthropic,2024-11,https://www.anthropic.com/news/model-context-protocol,Introducing the Model Context Protocol \ Anthropic,754,5,0,2,0,0,0,0,0,0
+Anthropic,2023-09,https://www.anthropic.com/news/anthropics-responsible-scaling-policy,Introducing Anthropic's Responsible Scaling Policy \ Anthropic,995,0,0,0,41,0,1,1,1,0
+Anthropic,2024-10,https://www.anthropic.com/news/the-case-for-targeted-regulation,The case for targeted regulation \ Anthropic,2725,1,2,0,67,5,2,4,2,2
+Anthropic,2024-10,https://www.darioamodei.com/essay/machines-of-loving-grace,Dario Amodei — Machines of Loving Grace,15060,0,0,0,16,41,35,127,16,0
+Anthropic,2025-01,https://www.darioamodei.com/post/on-deepseek-and-export-controls,Dario Amodei — On DeepSeek and Export Controls,3616,0,0,0,0,2,0,1,86,0
+Anthropic,2025-04,https://www.darioamodei.com/post/the-urgency-of-interpretability,Dario Amodei — The Urgency of Interpretability,4822,0,1,1,20,5,2,6,11,0
+Anthropic,2025-03,https://www.anthropic.com/news/anthropic-s-recommendations-ostp-u-s-ai-action-plan,Recommendations to OSTP for the US AI Action Plan \ Anthropic,695,0,0,0,1,2,3,1,6,0
+Anthropic,2025-05,https://www.anthropic.com/news/ai-for-science-program,Introducing Anthropic's AI for Science Program \ Anthropic,381,0,0,0,0,19,1,6,0,0
+Anthropic,2025-10,https://www.anthropic.com/news/claude-for-life-sciences,Claude for Life Sciences \ Anthropic,2018,0,0,0,0,41,2,28,0,0
+Anthropic,2025-05,https://www.anthropic.com/research/open-source-circuit-tracing,Open-sourcing circuit-tracing tools \ Anthropic,499,3,1,0,0,1,0,0,0,0
+Anthropic,2021,https://www.anthropic.com/company,Company \ Anthropic,994,0,0,0,10,2,0,0,0,0
+OpenAI,2015-12,https://openai.com/index/introducing-openai/,Introducing OpenAI | OpenAI,980,0,0,0,2,1,0,0,0,0
+OpenAI,2018-04,https://openai.com/charter/,OpenAI Charter | OpenAI,687,0,0,0,8,0,0,0,0,0
+OpenAI,2019-02,https://openai.com/index/better-language-models/,Better language models and their implications | OpenAI,6463,1,0,0,14,6,14,3,3,0
+OpenAI,2024-03,https://openai.com/index/openai-elon-musk/,OpenAI and Elon Musk | OpenAI,2390,1,0,0,5,2,0,0,0,0
+OpenAI,2025-08,https://openai.com/index/introducing-gpt-oss/,Introducing gpt-oss | OpenAI,3584,2,24,0,18,0,3,5,2,4
+OpenAI,2025-03,https://openai.com/global-affairs/openai-proposals-for-the-us-ai-action-plan/,OpenAI’s proposals for the U.S. AI Action Plan | OpenAI,892,0,0,0,2,1,0,0,5,0
+OpenAI,2024-12,https://openai.com/index/why-our-structure-must-evolve-to-advance-our-mission/,Why OpenAI’s structure must evolve to advance our mission | OpenAI,1516,1,0,0,5,1,5,0,0,0
+OpenAI,2025-05,https://openai.com/index/evolving-our-structure/,Evolving OpenAI’s structure | OpenAI,1598,1,0,0,5,4,1,1,1,0
+OpenAI,2025-02,https://blog.samaltman.com/three-observations,Three Observations - Sam Altman,1459,0,0,0,2,4,0,1,1,0
+OpenAI,2025-06,https://blog.samaltman.com/the-gentle-singularity,The Gentle Singularity - Sam Altman,1917,0,0,0,1,6,2,2,0,0
+OpenAI,2025-08,https://openai.com/open-models/,Open models by OpenAI | OpenAI,787,1,6,0,8,0,0,0,0,0
+Meta,2024-07,https://about.fb.com/news/2024/07/open-source-ai-is-the-path-forward/,Open Source AI is the Path Forward,2675,32,1,0,9,5,0,2,4,11
+Meta,2025-07,https://www.meta.com/superintelligence/,Personal Superintelligence,631,1,0,0,2,3,0,0,0,0
+GoogleDeepMind,2024-05,https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/,Google DeepMind and Isomorphic Labs introduce AlphaFold 3 AI model,1792,0,0,0,4,19,6,53,0,0
+GoogleDeepMind,2024-02,https://blog.google/technology/developers/gemma-open-models/,Gemma: Google introduces new state-of-the-art open models,1112,0,6,0,4,0,0,0,1,0
+DeepSeek,2025-01,https://api-docs.deepseek.com/news/news250120,DeepSeek-R1 Release | DeepSeek API Docs,399,4,0,1,1,0,0,0,33,0
+xAI,2024-03,https://x.ai/news/grok-os,Open Release of Grok-1 | SpaceXSI,304,0,0,0,1,0,0,0,0,0
+USGov,2025-11,https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/,Launching the Genesis Mission – The White House,2259,0,0,0,2,42,9,0,3,1
+USGov,2024-07,https://www.ntia.gov/issues/artificial-intelligence/open-model-weights-report,Dual-Use Foundation Models with Widely Available Model Weights Report | National Telecommunications and Information Admi,1384,0,2,0,28,1,1,0,1,2
+Anthropic,2026-07,https://www.anthropic.com/news/position-open-weights-models,Our position on open-weights models \ Anthropic,1640,1,19,0,20,0,2,8,17,2
+Anthropic,2026-08,https://www.anthropic.com/news/model-hardware-standard-research-preview,Previewing the Model Hardware Standard \ Anthropic,2147,4,0,0,7,10,25,6,0,0
+Anthropic,2026-06,https://www.anthropic.com/news/claude-science-ai-workbench,"Claude Science, an AI workbench for scientists \ Anthropic",1732,0,1,0,1,62,6,12,0,2
+Anthropic,2026,https://www.anthropic.com/news/expanding-support-for-scientists,Expanding our support for scientists \ Anthropic,522,0,0,0,1,18,3,7,0,0
+Anthropic,2025-12,https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation,Donating MCP to the Agentic AI Foundation \ Anthropic,687,5,0,3,0,0,0,0,0,0
+Anthropic,2026-10,https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation,Donating Agent Skills to the Agentic AI Foundation \ Anthropic,487,1,0,2,0,0,0,0,0,0
+Anthropic,2025-07,https://www.anthropic.com/news/thoughts-on-america-s-ai-action-plan,Thoughts on America’s AI Action Plan \ Anthropic,1407,0,0,0,15,1,2,2,14,0
+OpenAI,2026,https://openai.com/science/,AI for Scientific Research and Discovery | OpenAI,885,0,0,0,2,23,6,8,0,0
+OpenAI,2026-11,https://openai.com/index/our-new-blog-for-science/,Our new blog for science | OpenAI,853,0,0,0,2,25,5,4,0,0
+Anthropic,2026-08,https://www.modelhardwarestandard.com/,Model Hardware Standard,136,2,0,0,1,4,0,0,0,0

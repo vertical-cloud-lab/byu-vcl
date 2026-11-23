@@ -1,0 +1,66 @@
+{
+  "name": "Radical AI, Inc.",
+  "slug": "radical-ai",
+  "group": "E",
+  "category": "ai_lab",
+  "subcategory": "AI + self-driving lab for materials (alloys, aerospace, hydrogen purification)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "New York company publicly announced 10 Jan 2025; founder Joseph F. Krause is described as New York-based. A Fast Company piece (May 2026) refers to its Manhattan self-driving lab. Founders' academic backgrounds were not confirmed in fetched sources.",
+  "founded_year": null,
+  "flagship_projects": ["Materials Flywheel (proprietary AI + self-driving lab)", "Self-driving lab with automated sample prep built with Makino (TIME Best Inventions 2026)", "TorchSim (open-source PyTorch atomistic simulation engine, MIT)", "LitXBench (benchmark for extracting experiments from literature, Apr 2026)"],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "TorchSim, open-sourced 4 Apr 2025 under MIT (GitHub Radical-AI/torch-sim, ~510 stars, ~114 forks), is a batched, GPU-native MD and relaxation engine for machine-learned potentials. The company calls it 'only one layer of our transformational Materials Flywheel' and hopes it will 'spark a broader materials simulation effort'. It also publishes benchmarks (LitXBench, a multimodal experimental-data benchmark) and research posts. The lab, models, data and discovered materials are proprietary; the business is selling materials. Level 1: peripheral tooling open, core closed.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2025, "license": "TorchSim under MIT; platform proprietary", "note": "Released 4 Apr 2025", "source": "https://github.com/Radical-AI/torch-sim"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 55000000,
+  "funding_as_of": "2025-07",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "18 Jul 2025: $55M 'Series Seed+' (investors and valuation not stated)",
+    "25 Aug 2025: US Air Force contract; 20 Dec 2025: MoU with the US Department of Energy",
+    "2026: Purdue Applied Research Institute torch test reported ~125x better environmental survivability than aerospace alloy C103; Sandia hydrogen-purification partnership (29 Sep 2026); Wiley partnership (26 Oct 2026); TIME Best Inventions 2026"
+  ],
+  "robustness": "Early-stage ($55M), with government (Air Force, DOE, Sandia) and industrial (Makino, Wiley) partners diversifying support. The core lab and data are proprietary, but its open TorchSim engine already has outside forks, so that layer would survive the company.",
+  "physical_science_relevance": "Very high. It runs autonomous alloy and materials discovery (a Latent Space article, Jun 2026, reports 1,200 alloys in six months), works on refractory and aerospace materials, hydrogen-purification materials (Sandia) and semiconductor and energy materials, and does automated microstructure analysis.",
+  "openness_effect_assessment": "Radical AI uses selective openness as an ecosystem play: it open-sourced a simulation layer (TorchSim, MIT) and benchmarks within months of launch to attract the ML-potentials community and recruits. It keeps the self-driving lab, models and data closed because it plans to sell materials. The open layer has gained modest traction (~510 stars, ~114 forks); there is no evidence yet on business impact.",
+  "key_takeaway": "Radical AI is the 2025 New York entrant pairing a proprietary alloy-discovery self-driving lab with an open-source simulation engine. It illustrates the dominant 2025-2026 pattern among AI-for-materials startups: open the commodity tooling (TorchSim), close the data and the discovered materials. Its funding ($55M seed+) is modest next to Periodic Labs and Lila, but government contracts give it a defense-materials niche.",
+  "confidence": "low",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from radical-ai.com and GitHub pages listed in fetched_urls.",
+    "founded_year unknown (public announcement 10 Jan 2025 via X).",
+    "Investors and valuation for the $55M round not stated on the company page; total funding may include undisclosed earlier money.",
+    "The TorchSim GitHub page lists a 'TorchSim' organization while the URL is under Radical-AI; the announcement links the Radical-AI repo.",
+    "The Latent Space and Fast Company articles are cited only as listed on radical-ai.com/news; they were not fetched."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.radical-ai.com/",
+    "https://www.radical-ai.com/news",
+    "https://www.radical-ai.com/news/series-seed",
+    "https://www.radical-ai.com/news/introducing-torchsim",
+    "https://github.com/Radical-AI/torch-sim"
+  ],
+  "sources": [
+    {"url": "https://www.radical-ai.com/news/series-seed", "title": "Radical AI announces $55M in new funding", "publisher": "Radical AI", "date": "2025-07-18", "supports": "funding_total_usd, risk_events[0]"},
+    {"url": "https://www.radical-ai.com/news/introducing-torchsim", "title": "Introducing TorchSim", "publisher": "Radical AI", "date": "2025-04-04", "supports": "openness_notes, license_history[0]"},
+    {"url": "https://github.com/Radical-AI/torch-sim", "title": "Radical-AI/torch-sim", "publisher": "GitHub", "date": "2026-11", "supports": "openness_current (MIT, stars/forks)"},
+    {"url": "https://www.radical-ai.com/news", "title": "Radical AI news", "publisher": "Radical AI", "date": "2026-10-26", "supports": "origin_detail, risk_events[1], risk_events[2], physical_science_relevance, flagship_projects"},
+    {"url": "https://www.radical-ai.com/", "title": "Radical AI home page", "publisher": "Radical AI", "date": "2026-11", "supports": "flagship_projects (Makino), risk_events[2]"}
+  ]
+}

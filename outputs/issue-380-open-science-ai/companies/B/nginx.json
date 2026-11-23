@@ -1,0 +1,114 @@
+{
+  "name": "NGINX, Inc. (acquired by F5)",
+  "slug": "nginx",
+  "group": "B",
+  "category": "software",
+  "subcategory": "web server / reverse proxy / load balancer",
+  "hq_country": "US",
+  "origin": "community",
+  "origin_detail": "nginx was a personal open-source project by Russian developer Igor Sysoev (development from 2002, first public release 4 Oct 2004) written while he worked at Rambler; Nginx, Inc. was founded in Jul 2011 by Sysoev and Maxim Konovalov (US company per SEC Form D, with a Moscow engineering office)",
+  "founded_year": 2011,
+  "flagship_projects": [
+    "nginx (BSD-2-Clause)",
+    "NGINX Plus (proprietary)",
+    "NGINX Unit (archived Oct 2025)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "The nginx web server has always been BSD-2-Clause. Nginx, Inc. began by selling support for it, then launched the proprietary NGINX Plus subscription in Aug 2013, making the business open core. Under F5 the open-source server remains BSD but governance is single-vendor; core developers left to create forks (Angie 2022, freenginx 2024).",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2004,
+      "license": "BSD-2-Clause (nginx)",
+      "note": "First public release 4 Oct 2004",
+      "source": "https://en.wikipedia.org/wiki/Nginx"
+    },
+    {
+      "year": 2013,
+      "license": "NGINX Plus under proprietary F5/NGINX EULA",
+      "note": "Paid subscription launched Aug 2013",
+      "source": "https://en.wikipedia.org/wiki/Nginx"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2013,
+      "from": "Open-source nginx with commercial support",
+      "to": "Open core (proprietary NGINX Plus tier)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "No relicensing of the BSD server; the proprietary tier funded growth to a $670M exit",
+      "source": "https://en.wikipedia.org/wiki/Nginx"
+    }
+  ],
+  "funding_total_usd": 76000000,
+  "funding_as_of": "2018",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2019,
+      "type": "acquisition",
+      "value_usd": 670000000,
+      "counterparty": "F5 Networks",
+      "note": "Announced 11 Mar 2019; NGINX then ran ~375M websites and had ~1,500 paying customers",
+      "source": "https://techcrunch.com/2019/03/11/f5-acquires-nginx-for-670m-to-move-into-open-source-multi-cloud-services/"
+    }
+  ],
+  "latest_value_usd": 670000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2019-03",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Dec 2019: Moscow office raided and founders detained over Rambler's claim that it owned nginx because Sysoev wrote it while employed there; Sberbank (46.5% owner of Rambler) moved to end the criminal case on 16 Dec 2019",
+    "18 Jan 2022: Igor Sysoev stepped back from NGINX and F5",
+    "Late 2022: Angie fork by former nginx developers",
+    "Feb 2024: core developer Maxim Dounin forked freenginx, criticizing F5's interference with development",
+    "Oct 2025: NGINX Unit archived and unmaintained (latest release 1.34.2, Feb 2025)"
+  ],
+  "robustness": "The software is extremely robust: BSD-licensed, the most-used web server (33.8% of websites per W3Techs, Apr 2025), with active forks (Angie, freenginx) that could carry it on. The company is now a product line inside F5, and corporate ownership has driven key developers out and led to at least one project (Unit) being abandoned.",
+  "physical_science_relevance": "nginx fronts many scientific web services, data portals and JupyterHub deployments; its permissive licence lets research infrastructure embed it freely.",
+  "openness_effect_assessment": "A permissive licence made nginx ubiquitous, but the company captured only a small part of that value (about $76M raised, a $670M exit) via the proprietary Plus tier. After acquisition, single-vendor control of a community-born project prompted forks by core developers, showing that permissive licensing protects users but not the original maintainers' influence.",
+  "key_takeaway": "NGINX shows the 'ubiquitous but under-monetized' pattern: the most-used web server earned its company a modest exit, and corporate stewardship under F5 led core developers to fork (freenginx, Angie). Openness made the code robust against both the Rambler ownership claim and F5's priorities, but not the company's independence.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Nginx",
+    "https://unit.nginx.org/",
+    "https://techcrunch.com/2019/03/11/f5-acquires-nginx-for-670m-to-move-into-open-source-multi-cloud-services/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Nginx",
+      "title": "Nginx",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, license_history, funding rounds ($3M 2011, $10M 2013, $20M 2014, $43M 2018), exit_events[0], risk_events (raid, Sysoev exit, forks), robustness (market share)"
+    },
+    {
+      "url": "https://techcrunch.com/2019/03/11/f5-acquires-nginx-for-670m-to-move-into-open-source-multi-cloud-services/",
+      "title": "F5 acquires NGINX for $670M",
+      "publisher": "TechCrunch",
+      "date": "2019-03-11",
+      "supports": "exit_events[0] (confirmed $670M); ~375M websites and ~1,500 paying customers at acquisition; last round $43M Series C (Goldman Sachs)"
+    },
+    {
+      "url": "https://unit.nginx.org/",
+      "title": "NGINX Unit",
+      "publisher": "NGINX/F5",
+      "date": "2026-11",
+      "supports": "risk_events (Unit archived as of Oct 2025)"
+    }
+  ],
+  "notes": [
+    "funding_total_usd 76M is my sum of the four rounds listed on Wikipedia ($3M Oct 2011, $10M Series B Oct 2013, $20M Series B1 Dec 2014, $43M Series C Jun 2018); Wikipedia does not state a total.",
+    "Wikipedia also reports that Wiz and Xint disclosed several unauthenticated RCE vulnerabilities in nginx on 18 Nov 2026 (fixed in 1.31.9/1.30.7). The CVE numbers look unusual and were not verified, so this is left out of risk_events.",
+    "revenue/employees null: not in fetched pages (NGINX is reported inside F5's software segment)."
+  ]
+}
