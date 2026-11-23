@@ -1,0 +1,101 @@
+{
+  "name": "Thermo-Calc Software AB",
+  "slug": "thermo-calc",
+  "group": "G",
+  "category": "sci_software",
+  "subcategory": "closed CALPHAD computational thermodynamics and kinetics (Thermo-Calc, DICTRA, TC-PRISMA, AM Module, databases)",
+  "hq_country": "SE",
+  "origin": "academic",
+  "origin_detail": "Development began in 1977 in Mats Hillert's physical metallurgy department at KTH Royal Institute of Technology, Stockholm. Three of his graduate students, Bo Sundman, Bo Jansson and John Ågren, started the work, and the first version was completed in 1981. In 1993 the seven researchers who had built it donated their individual rights to a foundation, Stiftelsen för Tillämpad Termodynamik (STT), to keep the IP in one entity. Thermo-Calc Software AB was formed in 1997 because commercial activity did not fit the institute's academic mission. STT remains the majority owner. HQ in Solna (Stockholm), with subsidiaries in the USA (McMurray, PA), Korea, Brazil, China and India.",
+  "founded_year": 1997,
+  "flagship_projects": [
+    "Thermo-Calc (first version 1981; Thermo-Calc platform 2013)",
+    "Diffusion Module DICTRA (1994)",
+    "Precipitation Module TC-PRISMA (2011)",
+    "TC-Python SDK (2018)",
+    "Additive Manufacturing Module (2023)",
+    "40+ thermodynamic, kinetic and property databases",
+    "Thermo-Calc Solutions engineering services (2025)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Proprietary software and databases sold as licences. The AM Module needs a Thermo-Calc licence, a module licence and a supported database. Programmatic access is through proprietary SDKs (TC-Python, TC-Toolbox for MATLAB, TQ-Interface), which are interfaces to closed code, not open source. No terms were found for the 1981-1997 academic distribution from KTH, so openness_initial = 0 rests on the absence of any public source release. The TDB database file format it popularised is the main open interface: the open pycalphad reads 'Thermo-Calc TDB' files.",
+  "business_model": "proprietary",
+  "license_history": [
+    {
+      "year": 1997,
+      "license": "Proprietary (commercial licences plus maintenance and support subscriptions)",
+      "note": "Company formed in 1997 to carry the commercial activity; maintenance-and-support subscribers were surveyed in 2025.",
+      "source": "https://thermocalc.com/about-us/our-history/"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_bootstrapped",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "1993: IP consolidated in the STT foundation after the seven developers donated their individual rights, the founding governance fix for multi-author academic code",
+    "1997: commercialised as a company because commercial activity did not fit KTH's academic mission",
+    "2025: launched Thermo-Calc Solutions, an engineering-services division, diversifying beyond licences",
+    "2025 customer survey: 21% of respondents already used an LLM or AI assistant for Thermo-Calc work, and the company says it is 'exploring how to integrate ML and AI tools into our CALPHAD framework'",
+    "Open alternatives read its file format: pycalphad (MIT) and OpenCalphad (GPL inferred). OpenCalphad's first version was co-written by a Bo Sundman, the name of one of Thermo-Calc's three original developers"
+  ],
+  "robustness": "Nearly 50 years of continuous development. A foundation (STT) is the majority owner rather than VC or PE. 2,000+ customer organisations in 60+ countries, 50,000+ journal citations, and twice-yearly releases (2026a, 2026b). Users cannot fork or audit the code or the commercial databases, so continuity depends on one firm. The open TDB format and the open CALPHAD codes are partial hedges.",
+  "physical_science_relevance": "Thermo-Calc is the default CALPHAD tool for alloy design in metallurgy, the Digital Alloy Lab's field. Its Additive Manufacturing Module (2023) models powder-bed fusion with a laser or electron-beam heat source (Gaussian, core-ring or top-hat): melt-pool behaviour, solidification and evaporation-driven composition change across tracks and layers. It produces printability maps for keyholing, lack of fusion and balling, with alloy properties from an extended Scheil calculator, and it couples to DICTRA, TC-PRISMA and a CET model for microstructure. An Al database is among those the AM module supports. TC-Python exposes most AM-module functions, so it can be scripted inside high-throughput or self-driving alloy-design loops for LPBF aluminium alloys. Every node in such a loop needs a paid licence, though, and results rest on closed databases.",
+  "openness_effect_assessment": "Thermo-Calc is a closed academic spin-off that has lasted. The code moved from a KTH research group into a foundation-owned company and stayed closed, funded by licences and maintenance, and it became the reference CALPHAD tool (50,000+ citations, 2,000+ customer organisations). Staying closed did not stop open alternatives: pycalphad and OpenCalphad do the core equilibrium calculations and read the TDB format. Our assessment is that the vendor's moat is its assessed databases and integrated kinetics and AM modules, which the open projects found here do not offer.",
+  "key_takeaway": "Thermo-Calc is the closed incumbent that defines the CALPHAD workflow an LPBF alloy lab uses. A KTH research code became a foundation-owned company in 1997, and it sells licences, databases and now services, with a scriptable but proprietary Python API. Its longevity (development since 1977) and steady releases show that a closed academic spin-off can be durable without venture capital. For a lab that wants to work openly, the practical split is to use Thermo-Calc for the commercial databases and the AM module, and to publish assessments as TDB files and workflows in pycalphad, so others can reproduce the work without a licence.",
+  "hardware_extras": null,
+  "usage_metrics": [
+    {"metric": "customer organisations", "value": 2000, "date": "2026-11", "source": "https://thermocalc.com/about-us/"},
+    {"metric": "countries with customers", "value": 60, "date": "2026-11", "source": "https://thermocalc.com/about-us/"},
+    {"metric": "journal citations", "value": 50000, "date": "2026-11", "source": "https://thermocalc.com/about-us/"}
+  ],
+  "funding_sources": [
+    "Software licences and maintenance-and-support subscriptions",
+    "Engineering services (Thermo-Calc Solutions, from 2025)",
+    "Project funding such as Sweden's WISE programme (Li-ion batteries, Nov 2025; amount not given)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Wikipedia has no English article on Thermo-Calc (https://en.wikipedia.org/wiki/Thermo-Calc returned 404), so this entry rests on the company's own pages.",
+    "No fetched page gives revenue, employee count or Swedish organisation number, and none mentions outside investors or an acquisition. STT is described as majority owner; other owners are not disclosed. ownership_status 'private_bootstrapped' reflects foundation majority ownership with no known outside capital.",
+    "The history page lists 'QuesTek Europe' as formed in 2016 to offer custom-designed materials; its ownership was not detailed.",
+    "The Bo Sundman in OpenCalphad's history is assumed to be the same person as Thermo-Calc's co-originator. The two pages give the same name, but neither links them explicitly.",
+    "The 2025 survey did not report its number of respondents."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://thermocalc.com/about-us/",
+    "https://thermocalc.com/about-us/our-history/",
+    "https://thermocalc.com/products/add-on-modules/additive-manufacturing-module/",
+    "https://thermocalc.com/news-events/",
+    "https://thermocalc.com/news/",
+    "https://thermocalc.com/news/customer-satisfaction-survey-results-2025/",
+    "https://thermocalc.com/contact-us/",
+    "https://pycalphad.org/",
+    "https://www.opencalphad.com/"
+  ],
+  "sources": [
+    {"url": "https://thermocalc.com/about-us/", "title": "About Us", "publisher": "Thermo-Calc Software", "date": "2026-11", "supports": "founded_year, hq, usage_metrics (2,000+ organisations, 60+ countries, 50,000+ citations), flagship_projects, funding_sources (Thermo-Calc Solutions 2025)"},
+    {"url": "https://thermocalc.com/about-us/our-history/", "title": "Our History", "publisher": "Thermo-Calc Software", "date": "2026-11", "supports": "origin_detail (KTH, Hillert, Sundman, Jansson, Ågren; 1977, 1981, 1993 STT, 1997), ownership (STT majority owner), product timeline, risk_events[0-2]"},
+    {"url": "https://thermocalc.com/products/add-on-modules/additive-manufacturing-module/", "title": "Additive Manufacturing Module", "publisher": "Thermo-Calc Software", "date": "2026-11", "supports": "physical_science_relevance (PBF-LB/EBM modelling, printability maps, extended Scheil, TC-Python access), openness_notes (licence requirements)"},
+    {"url": "https://thermocalc.com/news/", "title": "News", "publisher": "Thermo-Calc Software", "date": "2026-11-05", "supports": "robustness (2026a/2026b releases), funding_sources (WISE funding Nov 2025)"},
+    {"url": "https://thermocalc.com/news-events/", "title": "News and Events", "publisher": "Thermo-Calc Software", "date": "2026-11", "supports": "robustness (two releases a year)"},
+    {"url": "https://thermocalc.com/news/customer-satisfaction-survey-results-2025/", "title": "Customer Satisfaction Survey Results 2025: Insights on AI/ML and Thermo-Calc Integration", "publisher": "Thermo-Calc Software", "date": "2025-08-19", "supports": "risk_events[3] (21% use LLMs; exploring ML/AI integration), physical_science_relevance"},
+    {"url": "https://thermocalc.com/contact-us/", "title": "Contact Us", "publisher": "Thermo-Calc Software", "date": "2026-11", "supports": "origin_detail (Solna HQ; subsidiaries in USA, Korea, Brazil, China, India)"},
+    {"url": "https://pycalphad.org/", "title": "pycalphad documentation", "publisher": "PyCalphad Development Team", "date": "2026-11", "supports": "openness_notes (pycalphad reads Thermo-Calc TDB files), risk_events[4]"},
+    {"url": "https://www.opencalphad.com/", "title": "OpenCalphad", "publisher": "OpenCalphad", "date": "2025-03", "supports": "risk_events[4] (first OC version by Bo Sundman, Ursula Kattner, Mauro Palumbo, 2013)"}
+  ]
+}

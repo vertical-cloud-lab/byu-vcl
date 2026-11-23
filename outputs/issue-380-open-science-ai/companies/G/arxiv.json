@@ -1,0 +1,102 @@
+{
+  "name": "arXiv",
+  "slug": "arxiv",
+  "group": "G",
+  "category": "open_infrastructure",
+  "subcategory": "preprint server (physics, mathematics, computer science and five other areas); independent nonprofit since 1 July 2026",
+  "hq_country": "US",
+  "origin": "government",
+  "origin_detail": "Started on 14 Aug 1991 by Paul Ginsparg at Los Alamos National Laboratory as the LANL preprint archive for physics. It moved with Ginsparg to Cornell University in 2001 and was renamed arxiv.org, and Cornell University Library took administrative and financial responsibility in September 2011. A membership funding model began in 2010. arXiv separated from Cornell as an independent nonprofit on 1 July 2026, with Penelope Lewis appointed inaugural CEO and an independent board (announced 30 July 2026).",
+  "founded_year": 1991,
+  "flagship_projects": [
+    "arXiv.org preprint server (3M+ articles in eight subject areas)",
+    "arXiv API and bulk data access",
+    "arXiv-CE technology modernisation and cloud migration (database moved to the cloud on 28 Oct 2026)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Free to read and free to submit. Governance is nonprofit, with Editorial, Institutions and Science advisory councils, and since 2026 an independent board. Papers carry author-chosen licences (public domain, CC BY-SA 4.0, CC BY-NC-SA 4.0, publisher or author copyright with distribution rights), and for most papers arXiv holds only a non-exclusive, irrevocable licence to distribute, so not all content is openly licensed for reuse. Code is public on GitHub (e.g. arxiv-browse), although GitHub reports its licence as NOASSERTION. Scored 4 as fully open science infrastructure. Access has narrowed for submitters (endorsement since 2004; 2025-26 CS review-paper restriction, bans and rate limits), but not for readers.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": null, "license": "Author-selected per paper: arXiv non-exclusive distribution licence, CC BY-SA 4.0, CC BY-NC-SA 4.0, public domain, or publisher/author copyright", "note": "arXiv holds a non-exclusive, irrevocable licence to distribute most papers", "source": "https://en.wikipedia.org/wiki/ArXiv"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 6408113,
+  "revenue_year": 2025,
+  "employees_latest": 28,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "FY2025 (to 30 Jun 2025): expenses $6.71M against revenue $6.41M, a $297k deficit covered from operating reserves. The FY2026 budget plans $8.85M of expenses and a $465k deficit.",
+    "Volume shock: submissions rose from 244,031 (2024) to 284,486 (2025), +16.6%. Sept 2026 set a record of 40,363, double Sept 2024 (20,569), and cs.AI grew more than sixfold in two years.",
+    "31 Oct 2025: stopped accepting CS review and position papers not vetted by a journal or conference, citing AI-generated submissions. May 2026: one-year submission bans for unchecked LLM output.",
+    "1 Oct 2026: stopgap limit of two submissions per submitter per calendar month. Sept 2026 submissions generated almost 9,000 support tickets.",
+    "1 Jul 2026: separated from Cornell, whose in-kind contribution (administration, HR, IT, facilities) was budgeted at $1.89M, or 22% of FY2026 revenue. Our assessment: the new nonprofit must replace that support.",
+    "23 Sep 2026: $17.2M in multiyear (three to five year) commitments from Simons Foundation International, XTX Markets and Siegel Family Endowment"
+  ],
+  "robustness": "35 years of operation through two changes of host (LANL to Cornell in 2001, Cornell to independence in 2026). Revenue is diversified: 278 members, whose fees were 56% of FY2025 gifts and member contributions, plus Simons, Schmidt Sciences, NASA and NSF sponsored funding and new multiyear philanthropy. The operation is lean, with 28 staff and a budget under $9M, but it ran deficits in FY2025 and FY2026 and must now cover overheads Cornell used to absorb. Content is mirrored and bulk-downloadable, and its submission rules are tightening under AI-driven volume.",
+  "physical_science_relevance": "arXiv began as a physics server, and physics was still 30% of 2025 submissions (CS 46%, math 15%). Condensed-matter and materials preprints, including ML-for-materials and self-driving-lab work, often appear there first. For an LPBF alloy lab it is the default free venue for fast, citable dissemination, and its CC licence options let authors make text reusable. Its 2025-26 struggle with AI-generated submissions shows the costs AI imposes on open science infrastructure.",
+  "openness_effect_assessment": "Free reading and submission made arXiv the default preprint venue for physics, math and CS. It holds 2.9M+ papers, has served 6 billion downloads and reaches 5M+ monthly active users, on a budget of about $6.7M (FY2025) with 28 staff. Openness combined with AI has become a strain: submissions doubled in two years, mostly in CS, forcing quality gates, rate limits and bans that make the server less open to new authors. Independence from Cornell, backed by $17.2M from three philanthropies, aims at a sturdier funding base, but it removes the university's in-kind subsidy.",
+  "key_takeaway": "arXiv is the long-lived success of open, nonprofit science infrastructure: in 35 years it went from a national-lab physics archive to an independent nonprofit running on a budget under $9M. Its 2025-26 history shows a new risk to openness in the age of AI. Generative tools inflate submission volume faster than moderation can scale, so 'free to submit' now comes with rate limits and quality gates. Its robustness model is diversified support from member libraries, Simons, Schmidt Sciences, NASA, NSF, XTX and Siegel, rather than one patron.",
+  "hardware_extras": null,
+  "usage_metrics": [
+    {"metric": "total papers hosted", "value": 2900000, "date": "2025-12", "source": "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf"},
+    {"metric": "submissions in year", "value": 284486, "date": "2025", "source": "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf"},
+    {"metric": "total downloads", "value": 6000000000, "date": "2025", "source": "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf"},
+    {"metric": "monthly active users", "value": 5000000, "date": "2025", "source": "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf"},
+    {"metric": "member institutions", "value": 278, "date": "2025", "source": "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf"},
+    {"metric": "physics share of submissions (%)", "value": 30, "date": "2025", "source": "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf"},
+    {"metric": "submissions in a month (record)", "value": 40363, "date": "2026-09", "source": "https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/"}
+  ],
+  "funding_sources": [
+    "Simons Foundation / Simons Foundation International (operating gifts; three-year technology-migration gift)",
+    "Member institutions: 278 libraries and consortia; fees were 56% of FY2025 gifts and member contributions",
+    "Cornell University in-kind support (until July 2026)",
+    "Sponsored funding via NASA, NSF, Schmidt Sciences and Simons Foundation",
+    "XTX Markets and Siegel Family Endowment (2026 multiyear commitments)",
+    "Individual donors"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "revenue_latest_usd is FY2025 actual total revenue ($6,408,113, fiscal year ending 30 June 2025), which includes $819,246 of Cornell in-kind support. Of the rest, $1.66M was gifts and member contributions, $3.67M sponsored funding and $0.25M other income.",
+    "The FY2025 and FY2026 budget figures were read from the PDFs with pdftotext after WebFetch saved the binaries.",
+    "The individual amounts within the $17.2M of 2026 commitments were not disclosed.",
+    "The historical budget of about $826k a year (2013-2017) is from Wikipedia, citing Cornell's 2012 business-model PDF (not fetched)."
+  ],
+  "confidence": "high",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/ArXiv",
+    "https://info.arxiv.org/about/index.html",
+    "https://info.arxiv.org/about/reports/index.html",
+    "https://info.arxiv.org/about/reports/FY26_Budget_Public.pdf",
+    "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf",
+    "https://blog.arxiv.org/2026/06/30/arxivs-next-chapter/",
+    "https://blog.arxiv.org/",
+    "https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/",
+    "https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/",
+    "https://api.github.com/repos/arXiv/arxiv-browse"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/ArXiv", "title": "arXiv", "publisher": "Wikipedia", "date": "2026-11", "supports": "origin_detail (1991 LANL, 2001 Cornell, 2011 CUL, 2010 membership), license_history, risk_events[2] (Oct 2025 CS policy; May 2026 bans), CEO Penelope Lewis"},
+    {"url": "https://info.arxiv.org/about/index.html", "title": "About arXiv", "publisher": "arXiv", "date": "2026-11", "supports": "ownership_status (independent nonprofit 2026), openness_notes (board, CEO, advisory councils), flagship_projects (3M+ articles, eight areas)"},
+    {"url": "https://info.arxiv.org/about/reports/FY26_Budget_Public.pdf", "title": "arXiv Budget 2025-2026", "publisher": "arXiv", "date": "2025", "supports": "revenue_latest_usd, risk_events[0], risk_events[4] (Cornell in-kind $1,885,348 of $8,384,371 FY26 revenue)"},
+    {"url": "https://info.arxiv.org/about/reports/2025_arXiv_annual_report.pdf", "title": "arXiv Annual Report 2025", "publisher": "arXiv", "date": "2026", "supports": "employees_latest (28 staff), usage_metrics (2.9M papers, 284,486 submissions, 6B downloads, 5M+ MAU, 278 members, subject shares), risk_events[1] (244,031 in 2024), funding_sources (56% membership)"},
+    {"url": "https://blog.arxiv.org/2026/06/30/arxivs-next-chapter/", "title": "arXiv's Next Chapter", "publisher": "arXiv", "date": "2026-06-30", "supports": "origin_detail (spin-out from Cornell effective 1 July 2026), openness_notes (free to read and submit)"},
+    {"url": "https://blog.arxiv.org/", "title": "arXiv blog", "publisher": "arXiv", "date": "2026-11-06", "supports": "flagship_projects (database cloud migration 28 Oct 2026), origin_detail (CEO and board post 30 July 2026)"},
+    {"url": "https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/", "title": "arXiv receives Multiyear Philanthropic Commitments to Support Its Launch as an Independent Nonprofit", "publisher": "arXiv", "date": "2026-09-23", "supports": "risk_events[5] ($17.2M; Simons Foundation International, XTX Markets, Siegel Family Endowment)"},
+    {"url": "https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/", "title": "Fair Moderation, Equitable Access, and AI: arXiv's Updated Rate Limit Policy", "publisher": "arXiv", "date": "2026-10-01", "supports": "risk_events[1] (Sept 2016/2024/2026 submissions; cs.AI 6x), risk_events[3], usage_metrics (record month)"},
+    {"url": "https://api.github.com/repos/arXiv/arxiv-browse", "title": "GitHub API: arXiv/arxiv-browse", "publisher": "GitHub", "date": "2026-11-23", "supports": "openness_notes (public code; licence NOASSERTION)"},
+    {"url": "https://blog.arxiv.org/2025/10/31/attention-authors-updated-practice-for-review-articles-and-position-papers-in-arxiv-cs-category/", "title": "Attention Authors: Updated Practice for Review Articles and Position Papers in arXiv CS Category", "publisher": "arXiv", "date": "2025-10-31", "supports": "risk_events[2] (cited by en.wikipedia.org/wiki/ArXiv, not fetched)"},
+    {"url": "https://www.researchinformation.info/news/arxiv-imposes-one-year-ban-for-unchecked-ai-generated-content/", "title": "arXiv imposes one-year ban for unchecked AI-generated content", "publisher": "Research Information", "date": "2026-05-18", "supports": "risk_events[2] (cited by en.wikipedia.org/wiki/ArXiv, not fetched)"}
+  ]
+}

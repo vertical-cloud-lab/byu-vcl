@@ -1,0 +1,84 @@
+{
+  "name": "pycalphad (PyCalphad Development Team)",
+  "slug": "pycalphad",
+  "group": "G",
+  "category": "sci_software",
+  "subcategory": "open-source CALPHAD computational thermodynamics library in Python",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Developed by Richard Otis under a NASA Space Technology Research Fellowship (NSTRF grant NNX14AL43H), supervised by Prof. Zi-Kui Liu in the Department of Materials Science and Engineering at Pennsylvania State University. The GitHub repository was created on 2014-01-15, and the first PyPI release with files (0.1.1) followed on 2015-04-09. It is described in Otis & Liu, Journal of Open Research Software 5(1), 2017 (DOI 10.5334/jors.140). It is maintained by the 'PyCalphad Development Team', and the PyPI metadata lists Richard Otis and Brandon Bocklund.",
+  "founded_year": 2014,
+  "flagship_projects": [
+    "pycalphad Python library (MIT)",
+    "Readers for Thermo-Calc TDB and ChemSage DAT database files",
+    "Journal of Open Research Software paper (2017)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "MIT licence per the README and the PyPI metadata (GitHub's licence detector reports NOASSERTION). The whole library is open and developed in public on GitHub by an academic 'PyCalphad Development Team'. No foundation or formal open-governance body was found, so it scores 3 rather than 4. It reads Thermo-Calc TDB and ChemSage DAT files, so it interoperates with the commercial ecosystem's file formats.",
+  "business_model": "grants",
+  "license_history": [
+    {"year": 2014, "license": "MIT", "note": "README: 'PyCalphad is licensed under the MIT License'; PyPI info.license = MIT", "source": "https://github.com/pycalphad/pycalphad"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Bus factor: two maintainers, richardotis (1,314 commits) and bocklund (215), wrote about three-quarters of the repository's 2,070 commits. The next human contributor has 8 (GitHub contributors API, Nov 2026).",
+    "The only funding acknowledged on fetched pages is a NASA graduate-research fellowship (NNX14AL43H). No current institutional or sustained funding was found.",
+    "Still pre-1.0 after about 12 years: the latest stable release on PyPI is 0.12.0 (requires Python >=3.11), with active development continuing (last push 2026-11-22)."
+  ],
+  "robustness": "MIT-licensed code, 145 forks and a citable software paper mean the library cannot be withdrawn. Its practical continuity, though, depends on two maintainers and on volunteer or academic time. It has no foundation, company or recurring funding visible. Its value also depends on openly published thermodynamic assessments (TDB files), because commercial vendor databases are not part of it.",
+  "physical_science_relevance": "pycalphad is an open CALPHAD engine for phase-equilibrium and phase-diagram calculations in multicomponent alloys, including Al systems (the documentation shows Al-Fe and Al-Ni examples). As an MIT-licensed Python library it can run inside automated alloy-design and self-driving-lab loops at any scale without per-seat licences, and it reads Thermo-Calc TDB files, so openly published assessments can be reused. For LPBF aluminium alloy development it can compute equilibrium phase fractions and phase diagrams from open TDBs. It offers no equivalent of Thermo-Calc's process-level Additive Manufacturing Module, and it does not include commercial databases.",
+  "openness_effect_assessment": "MIT licensing and a citable software paper made pycalphad the open reference implementation of CALPHAD in Python: 433 stars, 145 forks and about 50,000 PyPI downloads a month (Nov 2026), which is large for a niche metallurgy code. Openness let it be embedded freely in scripts and ML pipelines. Development is still concentrated in two people, and it has not displaced Thermo-Calc, whose value lies in assessed databases and integrated modules.",
+  "key_takeaway": "pycalphad is the open counterpart to Thermo-Calc. Born of a NASA fellowship and MIT-licensed, it does the core CALPHAD equilibrium calculations in Python and reads the incumbent's TDB format. It shows how an open tool can cheaply win scripting and automation use, while the closed vendor keeps the high-value data. Its fragility is people, not licence: two maintainers wrote about three-quarters of the commits, and no sustained funding is visible.",
+  "hardware_extras": null,
+  "usage_metrics": [
+    {"metric": "GitHub stars", "value": 433, "date": "2026-11", "source": "https://api.github.com/repos/pycalphad/pycalphad"},
+    {"metric": "GitHub forks", "value": 145, "date": "2026-11", "source": "https://api.github.com/repos/pycalphad/pycalphad"},
+    {"metric": "PyPI downloads, last month", "value": 49971, "date": "2026-11", "source": "https://pypistats.org/api/packages/pycalphad/recent"},
+    {"metric": "commits (default branch)", "value": 2070, "date": "2026-11", "source": "https://github.com/pycalphad/pycalphad"}
+  ],
+  "funding_sources": [
+    "NASA Space Technology Research Fellowship grant NNX14AL43H (Penn State)",
+    "Academic and volunteer time of the PyCalphad Development Team"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "No Wikipedia article was used; the entry rests on the project's own pages, GitHub and PyPI.",
+    "Current affiliations of the maintainers were not confirmed on fetched pages.",
+    "Related open CALPHAD tools (e.g. ESPEI for parameter assessment, scheil for solidification) are not covered here because their pages were not fetched.",
+    "The PyPI JSON was read only up to 100,000 characters, so the upload date of 0.12.0 was not captured."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://github.com/pycalphad/pycalphad",
+    "https://api.github.com/repos/pycalphad/pycalphad",
+    "https://api.github.com/repos/pycalphad/pycalphad/contributors?per_page=8",
+    "https://pycalphad.org/",
+    "https://pypi.org/pypi/pycalphad/json",
+    "https://pypistats.org/api/packages/pycalphad/recent"
+  ],
+  "sources": [
+    {"url": "https://github.com/pycalphad/pycalphad", "title": "pycalphad/pycalphad", "publisher": "GitHub", "date": "2026-11", "supports": "license_history (MIT), origin_detail (NASA NSTRF NNX14AL43H, Penn State, Zi-Kui Liu), usage_metrics (2,070 commits)"},
+    {"url": "https://api.github.com/repos/pycalphad/pycalphad", "title": "GitHub API: pycalphad/pycalphad", "publisher": "GitHub", "date": "2026-11-23", "supports": "founded_year (created 2014-01-15), usage_metrics (433 stars, 145 forks), risk_events[2] (last push)"},
+    {"url": "https://api.github.com/repos/pycalphad/pycalphad/contributors?per_page=8", "title": "GitHub API: pycalphad contributors", "publisher": "GitHub", "date": "2026-11-23", "supports": "risk_events[0]"},
+    {"url": "https://pycalphad.org/", "title": "pycalphad documentation", "publisher": "PyCalphad Development Team", "date": "2026-11", "supports": "flagship_projects (TDB/DAT readers), physical_science_relevance (Al-Fe, Al-Ni examples), origin_detail"},
+    {"url": "https://pypi.org/pypi/pycalphad/json", "title": "PyPI JSON: pycalphad", "publisher": "PyPI", "date": "2026-11", "supports": "license_history (MIT), origin_detail (first release 0.1.1, 2015-04-09; Otis and Bocklund), risk_events[2] (0.12.0, Python >=3.11)"},
+    {"url": "https://pypistats.org/api/packages/pycalphad/recent", "title": "pypistats: pycalphad recent downloads", "publisher": "pypistats.org", "date": "2026-11-23", "supports": "usage_metrics (49,971 downloads last month)"},
+    {"url": "https://doi.org/10.5334/jors.140", "title": "pycalphad: CALPHAD-based Computational Thermodynamics in Python", "publisher": "Journal of Open Research Software", "date": "2017", "supports": "origin_detail (citation) (cited by github.com/pycalphad/pycalphad, not fetched)"}
+  ]
+}

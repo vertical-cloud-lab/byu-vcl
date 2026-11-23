@@ -1,0 +1,103 @@
+{
+  "name": "Center for Open Science (COS) / OSF",
+  "slug": "center-for-open-science",
+  "group": "G",
+  "category": "open_infrastructure",
+  "subcategory": "nonprofit research-transparency organisation; OSF (Open Science Framework) platform, OSF Registries and OSF Preprints",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Founded in January 2013 in Charlottesville, Virginia, by Brian Nosek and Jeffrey Spies; UVA Today covered the launch. The Laura and John Arnold Foundation was lead funder, giving $2.53M in 2013. The OSF platform was created in 2012. COS began with the Reproducibility Project: Psychology, then a cancer-biology replication project run with Science Exchange. Its IRS 501(c)(3) ruling came in 2014.",
+  "founded_year": 2013,
+  "flagship_projects": [
+    "OSF, the Open Science Framework (Apache-2.0)",
+    "OSF Registries (preregistration)",
+    "OSF Preprints (2017) and community preprint servers PsyArXiv, SocArXiv and engrXiv (2016)",
+    "Reproducibility Project: Psychology (published 2015)",
+    "Reproducibility Project: Cancer Biology",
+    "TOP Guidelines; Registered Revisions trial (2026)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "A nonprofit with a free-to-use platform and Apache-2.0 code (CenterForOpenScience/osf.io, 732 stars, 365 forks). It scores 4 as fully open science infrastructure under nonprofit governance. The 2026 narrowing cuts scope, not licence openness: no new projects from 16 Nov 2026, all projects read-only from 19 Feb 2027, and private projects to be removed later with 12 months' notice. Public content stays readable, and links and DOIs resolve indefinitely.",
+  "business_model": "grants",
+  "license_history": [
+    {"year": 2013, "license": "Apache-2.0 (osf.io platform code)", "note": "Repository created 2013-05-21", "source": "https://api.github.com/repos/CenterForOpenScience/osf.io"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 68955835,
+  "funding_as_of": "2024",
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 10217166,
+  "revenue_year": 2024,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Funder concentration: the Laura and John Arnold Foundation (Arnold Ventures from 2019) was the largest listed sponsor in every year 2013-2019, at $1.87M-$6.21M a year (peak $6.21M in 2017)",
+    "An NSF mid-scale infrastructure proposal, submitted several times, was not funded. COS says it would have covered the OSF resource gap for five years.",
+    "11 Aug 2026: COS announced it would narrow OSF. Keeping the full platform would need $4-5M a year, about half of COS's operating budget, and earned revenue (mostly several dozen institutional members) covers only 10-20%.",
+    "16 Nov 2026: no new OSF projects or components. 19 Feb 2027: all public and private projects become read-only. Private projects will be removed at a later date, with 12 months' notice.",
+    "Costs of free openness: 63% of projects (>650,000) were never made public, almost 200,000 users used OSF only for private storage, and spam prevention took more resources than expected",
+    "$450,000 committed to a continuity fund for public OSF content, with an expanded Internet Archive partnership planned"
+  ],
+  "robustness": "COS is financially stable as an organisation: 2024 revenue was $10.2M, expenses $8.8M and net assets $13.4M, up from $4.6M in 2023. It has SOC 2 accreditation (2023) and a Platinum transparency rating. The platform itself proved fragile: about 95% of 2024 revenue was contributions and grants, and when large infrastructure grants did not come, COS cut OSF back to registrations, preprints and linking. The Apache-2.0 code can be self-hosted or forked, and public content is protected by a continuity fund and Internet Archive copies, but the hosted service's scope depends on grant income.",
+  "physical_science_relevance": "OSF is used most in psychology and the social sciences (its origin) but is multidisciplinary. Among its community preprint servers is engrXiv for engineering (2016). For physical-science labs its main lesson is about infrastructure risk: a free, grant-funded service holding 29 million shared files is ending new file storage, and COS points users to Zenodo (CERN). In our assessment, OSF Registries (preregistration), which continues, suits self-driving-lab campaigns that want to fix their objectives and analysis plans before running.",
+  "openness_effect_assessment": "Being free, open-source and nonprofit, OSF grew in 14 years to more than 1 million users, almost 300,000 registrations, about 400,000 public projects and 29 million shared files, and COS's replication projects reshaped norms in psychology. But openness at zero price created costs without revenue. Private storage and spam absorbed resources, earned revenue stayed at 10-20%, and after the NSF bid failed COS cut OSF back. Open licensing protected the code (Apache-2.0) but not the hosted service.",
+  "key_takeaway": "COS shows the funding ceiling of philanthropy-built open infrastructure. About $69M of contributions and grants (2013-2024, Form 990s), with the Arnold Foundation the largest listed sponsor every year to 2019, built the best-known open-science platform. Yet in 2026 OSF stopped accepting new projects because COS could not raise $4-5M a year to run it. Its response is instructive: keep the unique, low-cost functions (preregistration, preprints, linking), hand storage to CERN-backed Zenodo and others, and fund the continuity of public records. A lab relying on any single free open-science service should keep its own copies, with DOIs on durable repositories.",
+  "hardware_extras": null,
+  "usage_metrics": [
+    {"metric": "registered users", "value": 1000000, "date": "2026-08", "source": "https://www.cos.io/blog/osf-changes-a-note-to-users"},
+    {"metric": "registrations (preregistrations)", "value": 300000, "date": "2026-08", "source": "https://www.cos.io/blog/osf-changes-a-note-to-users"},
+    {"metric": "public projects", "value": 400000, "date": "2026-08", "source": "https://www.cos.io/blog/osf-changes-a-note-to-users"},
+    {"metric": "preprints", "value": 150000, "date": "2026-08", "source": "https://www.cos.io/blog/osf-changes-a-note-to-users"},
+    {"metric": "shared files", "value": 29000000, "date": "2026-08", "source": "https://www.cos.io/blog/osf-changes-a-note-to-users"},
+    {"metric": "osf.io GitHub stars", "value": 732, "date": "2026-11", "source": "https://api.github.com/repos/CenterForOpenScience/osf.io"}
+  ],
+  "funding_sources": [
+    "Laura and John Arnold Foundation / Arnold Ventures (largest listed sponsor 2013-2019)",
+    "DARPA (SCORE, NGS2; $2.59M + $0.53M in 2019)",
+    "John Templeton Foundation, Templeton World Charity Foundation, Templeton Religion Trust",
+    "Alfred P. Sloan Foundation (with IMLS), NIH/National Institute on Aging, NSF, James S. McDonnell Foundation, Gates Foundation, Hewlett Foundation (smaller amounts)",
+    "Institutional OSF memberships (earned revenue, 10-20% of OSF needs)",
+    "Fast Grants (2020, COVID-19 preprints)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "funding_total_usd is the sum of 'contributions/grants' on COS's Form 990s for 2013-2024 as summarised by ProPublica Nonprofit Explorer (EIN 46-1496217). It is a cumulative grant total, not equity funding.",
+    "The 2024 jump in net assets (from $4.64M to $13.35M) suggests a large multi-year grant recognised in 2024; the funder was not identified on fetched pages.",
+    "Wikipedia dates the OSF announcement to September 2026 (citing Nature, d41586-026-02598-y, which was behind a login redirect). COS's own posts date it to 11 Aug 2026; the COS dates are used.",
+    "Employee count was not found on fetched pages.",
+    "COS's 2026 posts give two figures for earned revenue: 10-20% of OSF's needs (11 Aug) and about 10% (14 Aug)."
+  ],
+  "confidence": "high",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Center_for_Open_Science",
+    "https://www.cos.io/about/our-sponsors",
+    "https://www.cos.io/about/finances",
+    "https://projects.propublica.org/nonprofits/organizations/461496217",
+    "https://www.cos.io/blog",
+    "https://www.cos.io/blog/osf-changes-a-note-to-users",
+    "https://www.cos.io/blog/osfs-next-chapter-building-for-impact-and-long-term-resilience",
+    "https://www.cos.io/osf-changes",
+    "https://api.github.com/repos/CenterForOpenScience/osf.io"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Center_for_Open_Science", "title": "Center for Open Science", "publisher": "Wikipedia", "date": "2026-11", "supports": "founded_year, origin_detail (Nosek, Spies, Jan 2013, Charlottesville), flagship_projects (preprint servers 2016-2017), funding_sources (Fast Grants 2020)"},
+    {"url": "https://www.cos.io/about/our-sponsors", "title": "Our Sponsors", "publisher": "Center for Open Science", "date": "2019", "supports": "risk_events[0], funding_sources (amounts by sponsor 2013-2019), notes (EIN 46-1496217)"},
+    {"url": "https://projects.propublica.org/nonprofits/organizations/461496217", "title": "Center For Open Science - Nonprofit Explorer", "publisher": "ProPublica", "date": "2026-11", "supports": "funding_total_usd (sum of contributions/grants 2013-2024), revenue_latest_usd ($10,217,166, 2024), robustness (expenses, net assets)"},
+    {"url": "https://www.cos.io/about/finances", "title": "Finances", "publisher": "Center for Open Science", "date": "2026-11", "supports": "robustness (aligning expenses with revenue; reserves; SOC 2 in 2023; Platinum transparency)"},
+    {"url": "https://www.cos.io/blog/osf-changes-a-note-to-users", "title": "OSF Changes: A Note to Users", "publisher": "Center for Open Science", "date": "2026-08-11", "supports": "risk_events[1,2,4], usage_metrics (users, registrations, public projects, preprints, files)"},
+    {"url": "https://www.cos.io/blog/osfs-next-chapter-building-for-impact-and-long-term-resilience", "title": "OSF's Next Chapter: Building for Impact and Long-Term Resilience", "publisher": "Center for Open Science", "date": "2026-08-14", "supports": "risk_events[2] ($4-5M/yr = about half of the operating budget; earned revenue ~10%), risk_events[5] ($450k continuity fund; Internet Archive)"},
+    {"url": "https://www.cos.io/osf-changes", "title": "OSF Changes", "publisher": "Center for Open Science", "date": "2026-11", "supports": "risk_events[3] (16 Nov 2026; 19 Feb 2027; 12 months' notice), openness_notes, physical_science_relevance (Zenodo named)"},
+    {"url": "https://www.cos.io/blog", "title": "COS Blog", "publisher": "Center for Open Science", "date": "2026-11-13", "supports": "flagship_projects (Registered Revisions 2026), notes (post dates)"},
+    {"url": "https://api.github.com/repos/CenterForOpenScience/osf.io", "title": "GitHub API: CenterForOpenScience/osf.io", "publisher": "GitHub", "date": "2026-11-23", "supports": "license_history (Apache-2.0, created 2013-05-21), usage_metrics (732 stars), openness_notes (365 forks)"},
+    {"url": "https://doi.org/10.1038/d41586-026-02598-y", "title": "Popular open-science platform to stop hosting data and code amid funding concerns", "publisher": "Nature", "date": "2026-09", "supports": "notes (cited by en.wikipedia.org/wiki/Center_for_Open_Science, not fetched)"}
+  ]
+}

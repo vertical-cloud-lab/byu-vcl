@@ -78,7 +78,7 @@ below links to a file in this folder, and each file names its sources.
 | Case studies | 121 organizations in six groups: commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 904 cited sources | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
 | Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. 89 + 8 + 24 searches, plus 41 primary documents fetched | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
 | Datasets | Epoch AI "Data on AI Models" (3,730 models, CC-BY); OpenAlex works grouped by US institution type × year × open access; Yahoo Finance weekly prices | [`data/`](data/) |
-| Language | Term rates per 1,000 words in 41 documents from Anthropic, OpenAI, Meta, Google DeepMind, DeepSeek, xAI and US policy | [`language/`](language/) |
+| Language | Term rates per 1,000 words in 57 documents from Anthropic (26), OpenAI (22), Meta, Google DeepMind, DeepSeek, xAI and US policy (3), all fetched through the Pi | [`language/`](language/) |
 | Video | 20 animated matplotlib scenes, Kokoro-82M narration (Apache-2.0, offline), joined with ffmpeg | [`video/`](video/), [`scripts/build_video.py`](scripts/build_video.py) |
 
 **A limit, stated plainly.** The WebSearch tool allows 200 searches per session, shared by every agent,
@@ -134,7 +134,7 @@ where a 2025–26 fact couldn't be confirmed.
 - The 29 commercial OSS companies in groups A and B with a known value over $100M sum to about
   **$375B**, at dates from 2008 to 2026. That is about $185B without Databricks.
 - The 13 of them valued in 2025–26 sum to about **$286B**.
-- Venture investment in COSS runs at about **$9B a year** across about 250 deals (LF/Serena/COSSA 2025).
+- Venture investment in COSS has averaged about **$9B a year** since 2019, across about 250 deals a year. 2024 alone saw 211 deals totalling **$26.4B**, driven by AI (LF/Serena/COSSA 2025).
 - Set that against the **$8.8T** demand-side value of the open code firms use: the companies capture
   a few percent of it at most.
 
@@ -207,6 +207,19 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
   - Private equity bought Cloudera, MariaDB (about $37M) and Couchbase.
 
 ![Licence changes](figures/relicense.png)
+
+**When do companies close up?** ([`data/closing_moves_vs_ipo_acquisition.csv`](data/closing_moves_vs_ipo_acquisition.csv))
+- **After listing.** Among the listed commercial open-source firms, closing moves came soon after the IPO:
+  - MongoDB (+1 year), HashiCorp (+2), Elastic (+3), Cloudera (+5);
+  - Couchbase in its IPO year;
+  - Confluent (3 years before) and GitLab (open core, 8 years before) were the exceptions.
+- **After a change of owner.** 10 of 15 closing moves by organizations that were later acquired came in or
+  after the year of the acquisition or take-private:
+  - Red Hat's CentOS change (2020) and its RHEL-source change (2023) came after IBM.
+  - Puppet's after Perforce; MuleSoft archiving its Community Edition after Salesforce; Arduino's new
+    terms after Qualcomm (2025).
+- **Listings and owners are the moments to watch.** Their shareholders want the open project to earn
+  money, and closing moves follow.
 
 **Robustness: a fork needs a motivated backer.**
 - Hyperscalers backed OpenSearch and Valkey, ecosystem vendors backed OpenTofu, and ASF volunteers
@@ -351,8 +364,10 @@ Source: [groups E and F](companies/E/_summary.md) and [F summary](companies/F/_s
 ![Quotes](figures/quotes.png)
 
 - **Anthropic:**
-  - Writes about safety and risk 6.5 times and about science 4.7 times per 1,000 words, against 1.1
-    for open terms (20 documents, 48k words).
+  - Writes about safety and risk 5.9 times and about science 6.5 times per 1,000 words, against 1.1
+    for open terms (26 documents, 57k words). OpenAI: 3.1, 8.6 and 1.0 (22 documents, 38k words).
+    The video's bar chart used an earlier 41-document corpus, with Anthropic at 6.5, 4.7 and 1.1;
+    `figures/language.png` is the updated version.
   - The pivot is recent and toward science and the physical world: Claude for Life Sciences (2025-10),
     Claude Science (2026-06) and the Model Hardware Standard (2026-08), which aims to let AI agents
     operate lab instruments.
@@ -368,6 +383,25 @@ Source: [groups E and F](companies/E/_summary.md) and [F summary](companies/F/_s
     Charter), to gpt-oss under Apache-2.0 (2025).
   - The 2026 materials pitch "OpenAI for Science" but with gated science models (GPT-Rosalind for
     "qualified research organizations").
+- **Over time** ([`figures/language_time.png`](figures/language_time.png),
+  [`data/language_by_year.csv`](data/language_by_year.csv); corpus of 26 Anthropic and 22 OpenAI documents):
+  - Science and physical-science terms rose from about 2–3 per 1,000 words (2015–23) to about 21
+    (Anthropic) and 27 (OpenAI) in 2026.
+  - Anthropic's safety terms fell from 18.5 to 3.2 per 1,000 words.
+  - OpenAI's "open" terms spiked only in 2025 (gpt-oss, 3.1 per 1,000) and fell to about 0 in its 2026
+    science posts.
+  - The 2025–26 documents were chosen *because* they are the labs' science and openness posts, so this
+    shows emphasis in what they publish on these topics, not a random sample.
+- **National labs and the Genesis Mission:**
+  - Anthropic partnered with DOE in December 2025 "to affect the work being done at all 17 of America's
+    national laboratories". In October 2026 it described 10,000 free and discounted Claude seats for
+    academic scientists and the Model Hardware Standard preview.
+  - OpenAI committed "$4 million in Codex access to approximately 2,000 Genesis researchers" and "$3 million
+    in API support".
+  - OpenAI's life-science model, GPT-Rosalind, is available only "for qualified customers through our
+    trusted access program". Its Life Sciences plugin is free.
+  - DOE's November 2026 "Achieving AI-Driven Autonomous Laboratories" places the national labs at the core
+    of self-driving labs.
 - **Contrast:**
   - Meta's 2024 manifesto mentions open source about 12 times per 1,000 words, and its two documents together average 10. In 2025 it said it would
     be "careful about what we choose to open source", and in April 2026 it shipped Muse Spark closed.
@@ -492,6 +526,21 @@ with 125 quotes, each checked by script against the captured text. The index is
   openness never comes up.
 
 ## US focus
+
+![US GitHub activity](figures/innovationgraph_us.png)
+
+- **US open-source developers** on GitHub grew from **9.8M (2020 Q1) to 35.1M (2026 Q2)**. The US share of
+  the world total fell from 18.6% to 14.7% as other economies grew faster.
+- **Licences US developers push to:**
+  - Permissive licences (MIT, Apache-2.0, BSD and similar) rose from 64% to **68%** of pushers.
+  - Copyleft (GPL, AGPL, LGPL, MPL and similar) held at about 15%.
+  - Unrecognised or no licence fell from 21% to 17%.
+  - MIT alone accounts for about half of all licensed pushes.
+  - Source: GitHub Innovation Graph, CC0
+    ([`data/innovationgraph_us_license_family_share.csv`](data/innovationgraph_us_license_family_share.csv),
+    [`data/innovationgraph_us_developers.csv`](data/innovationgraph_us_developers.csv)).
+- The relicensing fights covered here involve a handful of vendor-controlled projects. The base of US open
+  source drifted *toward* permissive licences over the same years.
 
 - 87 of the 121 organizations are US-headquartered.
 - The OpenAlex and Epoch charts use US-affiliated works and models only, apart from the compute-gap

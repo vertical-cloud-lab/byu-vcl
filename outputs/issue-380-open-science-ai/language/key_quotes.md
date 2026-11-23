@@ -38,3 +38,13 @@ organization in [`term_rates_by_org.csv`](term_rates_by_org.csv). Full page text
 | 2025-01-20 | "Distilled from DeepSeek-R1, 6 small models fully open-sourced ... Pushing the boundaries of open AI!" | [DeepSeek-R1 release](https://api-docs.deepseek.com/news/news250120) |
 | 2024-07 | "...current evidence is not sufficient to definitively determine either that restrictions on such open weight models are warranted, or that restrictions will never be appropriate in the future." | [NTIA, open model weights report](https://www.ntia.gov/issues/artificial-intelligence/open-model-weights-report) |
 | 2025-11 | "...a national effort to accelerate the application of AI for transformative scientific discovery focused on pressing national challenges." | [Launching the Genesis Mission](https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/) |
+
+## Added later in the run: science, national labs and access (fetched 2026-11-23)
+
+| Date | Quote | Source |
+| --- | --- | --- |
+| 2025-12 | "Our partnership focuses on three domains—American energy dominance, the biological and life sciences, and scientific productivity—and has the potential to affect the work being done at all 17 of America's national laboratories." | [Anthropic: Working with the US Department of Energy](https://www.anthropic.com/news/genesis-mission-partnership) |
+| 2026-10 | "...opened 10,000 free and discounted Claude seats for academic scientists." | [Anthropic: Building on our commitment to American scientific discovery](https://www.anthropic.com/news/genesis-mission-commitment) |
+| 2026 | "Provide $4 million in Codex access to approximately 2,000 Genesis researchers at National Laboratories and universities..." / "Commit $3 million in API support to two large-scale scientific campaigns..." | [OpenAI: Advancing the next era of national science](https://openai.com/index/advancing-the-next-era-of-national-science/) |
+| 2026 | "GPT‑Rosalind is available in ChatGPT, Codex, and the API for qualified customers through our trusted access program." / "...a freely accessible Life Sciences research plugin for Codex..." | [OpenAI: Introducing GPT-Rosalind](https://openai.com/index/introducing-gpt-rosalind/) |
+| 2026-11 | "DOE's user facilities and long-standing National laboratories have the infrastructure, capabilities, and expertise to serve as the nucleus for innovation with this type of high throughput discovery." | [DOE: Achieving AI-Driven Autonomous Laboratories](https://www.energy.gov/undersecretaryforscience/genesis-mission/achieving-ai-driven-autonomous-laboratories) |

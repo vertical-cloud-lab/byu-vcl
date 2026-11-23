@@ -1,0 +1,82 @@
+{
+  "name": "OpenCalphad",
+  "slug": "opencalphad",
+  "group": "G",
+  "category": "sci_software",
+  "subcategory": "free/open-source CALPHAD thermodynamic software (Fortran) with an application software interface (OCASI)",
+  "hq_country": "DE",
+  "origin": "academic",
+  "origin_detail": "Initiated by Suzana G. Fries as part of the Sapiens project at ICAMS (Ruhr University Bochum, Germany). The first software version was developed by Bo Sundman, Ursula Kattner and Mauro Palumbo and released in March 2013. It now describes itself as an informal international collaboration of scientists and researchers. Thermo-Calc's history page names a Bo Sundman as one of the three KTH graduate students who started Thermo-Calc in 1977.",
+  "founded_year": 2013,
+  "flagship_projects": [
+    "OpenCalphad (OC) command-line software for multicomponent equilibria, property and phase diagrams",
+    "OCASI application software interface",
+    "OpenMP-parallel equilibrium calculations",
+    "Free databases offered via opencalphad.com"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Source code is public on GitHub (sundmanbo/opencalphad). The development version is 'normally updated a few times each month', and a stable version is downloadable from the website. The repository ships a GNU-GPL-v3.pdf, but GitHub detects no licence and neither the README nor the website states one, so GPL-3.0 is inferred, not confirmed. Governance is an informal collaboration around one maintainer's personal repository, so it scores 3, not 4.",
+  "business_model": "grants",
+  "license_history": [
+    {"year": 2013, "license": "GPL-3.0 (inferred from GNU-GPL-v3.pdf in the repository; not stated in README)", "note": "GitHub API licence field is null", "source": "https://github.com/sundmanbo/opencalphad"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "The code lives in a personal repository (github.com/sundmanbo) with one lead developer, so the bus factor is high. The website reads 'Last updated Mars 2025', but the repository was still being pushed on 2026-11-20.",
+    "Licence ambiguity: GitHub detects no licence, and GPL-3 is inferred from a PDF in the repository.",
+    "No current funding is named. The project began under ICAMS's Sapiens project, and no later grants appear on fetched pages."
+  ],
+  "robustness": "Open source with 86 forks, so the code survives any one person. It depends on a small group of senior CALPHAD scientists for development and on volunteer goodwill (a community Gitter room and a third-party Windows GUI, 'OpenCalphad CAE'). There is no institution, foundation or revenue behind it.",
+  "physical_science_relevance": "OpenCalphad is a free CALPHAD code for multicomponent equilibria, property and phase diagrams and thermodynamic database development. It offers OpenMP parallelism and an application interface (OCASI) for coupling to other simulation software, and it states a particular interest in descriptions of the pure elements from 0 K. For LPBF aluminium alloy work it is an alternative equilibrium engine to Thermo-Calc when open databases are used, but it has no AM-specific module. Our assessment is that its Fortran command-line interface fits Python-based self-driving-lab pipelines less directly than pycalphad does.",
+  "openness_effect_assessment": "OpenCalphad shows expertise from the closed incumbent's own lineage flowing back into an open project: its first version was co-written by a developer whose name matches one of Thermo-Calc's co-originators. Openness gave it a steady following (253 stars, 86 forks) and 13 years of activity. Without institutional backing it remains a small, single-maintainer effort, and there is no evidence that it has taken users from the commercial tools.",
+  "key_takeaway": "OpenCalphad is the 'scientists' open CALPHAD': a GPL-style Fortran code started at a German materials institute in 2013, co-written by Thermo-Calc-generation CALPHAD veterans, and kept alive by an informal international collaboration. It proves an open, independent CALPHAD engine is feasible. Like pycalphad it lacks open assessed databases and AM process models, and it relies on one maintainer's repository, so it complements rather than replaces commercial tools for an LPBF alloy lab.",
+  "hardware_extras": null,
+  "usage_metrics": [
+    {"metric": "GitHub stars", "value": 253, "date": "2026-11", "source": "https://api.github.com/repos/sundmanbo/opencalphad"},
+    {"metric": "GitHub forks", "value": 86, "date": "2026-11", "source": "https://api.github.com/repos/sundmanbo/opencalphad"},
+    {"metric": "commits", "value": 502, "date": "2026-11", "source": "https://github.com/sundmanbo/opencalphad"}
+  ],
+  "funding_sources": [
+    "ICAMS Sapiens project, Ruhr University Bochum (initiation)",
+    "Volunteer/academic time of collaborating scientists"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "The descriptive paper (Sundman et al., 'OpenCalphad - a free thermodynamic software', Integrating Materials and Manufacturing Innovation, 2015, DOI 10.1186/s40192-014-0029-1) could not be fetched: Springer redirected to a login. Its licence statement and funding acknowledgements were therefore not read.",
+    "The GitHub repository was created on 2014-07-23. The first release, March 2013, comes from opencalphad.com and is used as founded_year; initiation under the Sapiens project may be earlier.",
+    "hq_country 'DE' reflects initiation at ICAMS; the project is an international collaboration without a legal entity.",
+    "The developers' affiliations were not given on fetched pages."
+  ],
+  "confidence": "low",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://www.opencalphad.com/",
+    "https://github.com/sundmanbo/opencalphad",
+    "https://api.github.com/repos/sundmanbo/opencalphad",
+    "https://raw.githubusercontent.com/sundmanbo/opencalphad/master/README.md",
+    "https://thermocalc.com/about-us/our-history/"
+  ],
+  "sources": [
+    {"url": "https://www.opencalphad.com/", "title": "OpenCalphad", "publisher": "OpenCalphad", "date": "2025-03", "supports": "origin_detail (Fries, ICAMS Sapiens; Sundman, Kattner, Palumbo; March 2013), founded_year, flagship_projects, physical_science_relevance (goals), risk_events[0]"},
+    {"url": "https://github.com/sundmanbo/opencalphad", "title": "sundmanbo/opencalphad", "publisher": "GitHub", "date": "2026-11", "supports": "license_history (GNU-GPL-v3.pdf in repo), openness_notes, usage_metrics (502 commits), flagship_projects (OCASI, OpenMP)"},
+    {"url": "https://api.github.com/repos/sundmanbo/opencalphad", "title": "GitHub API: sundmanbo/opencalphad", "publisher": "GitHub", "date": "2026-11-23", "supports": "usage_metrics (253 stars, 86 forks), notes (created 2014-07-23; licence null), risk_events[0] (pushed 2026-11-20)"},
+    {"url": "https://raw.githubusercontent.com/sundmanbo/opencalphad/master/README.md", "title": "OpenCalphad README", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes (development version updated a few times a month; no licence statement)"},
+    {"url": "https://thermocalc.com/about-us/our-history/", "title": "Our History", "publisher": "Thermo-Calc Software", "date": "2026-11", "supports": "origin_detail (Bo Sundman among Thermo-Calc's originators)"},
+    {"url": "https://doi.org/10.1186/s40192-014-0029-1", "title": "OpenCalphad - a free thermodynamic software", "publisher": "Integrating Materials and Manufacturing Innovation (Springer)", "date": "2015", "supports": "notes (not fetched: login redirect)"}
+  ]
+}
