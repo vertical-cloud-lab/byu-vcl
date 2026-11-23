@@ -1,0 +1,42 @@
+[
+ {
+  "scene": "p2_title",
+  "text": "Part two. After the first video, we kept digging: twenty-two more organizations, a second verification pass, and new data on the open-science commons, on how the AI labs talk, and on our own lab. Here is what it adds."
+ },
+ {
+  "scene": "p2_time",
+  "text": "First, openness as a function of time. Rebuilding each organization's licensing history year by year, commercial open-source software and hardware started out the most open in the mid-2000s and have declined steadily since. Big Tech and the AI labs moved the other way, opening up through the 2010s before dipping in 2026. Today every sector sits near the middle of our scale: open core, or mixed. The split between young and old firms holds up statistically: companies founded since 2000 became less open than incumbents by about two-thirds of a point, with a ninety-five percent confidence interval that excludes zero."
+ },
+ {
+  "scene": "p2_pdb",
+  "text": "Second, the open-science commons. The Protein Data Bank had released about a hundred and seventy-three thousand structures by 2020, the year AlphaFold 2 won the CASP14 competition, and it has grown past two hundred and sixty thousand. Decades of open, publicly funded data were the precondition for that breakthrough."
+ },
+ {
+  "scene": "p2_commons",
+  "text": "But the commons is under strain. arXiv's submissions grew seventeen percent in 2025, and monthly submissions doubled between September 2024 and September 2026 as AI-assisted papers surged. It separated from Cornell this July and ran a deficit, before receiving a seventeen-million-dollar multiyear gift. The Center for Open Science is narrowing its Open Science Framework, because keeping it whole would cost four to five million dollars a year, about half its budget, and new projects stopped last week. And Meta shut down Papers with Code in 2025. The services that AI draws on are among the least funded."
+ },
+ {
+  "scene": "p2_language",
+  "text": "Third, language. With forty-eight primary documents from the two labs, the shift is clear. Writing about science and the physical world rose roughly tenfold, from before 2024 to 2026, while Anthropic's talk of safety fell. OpenAI's open-source language spiked only in 2025, with gpt-oss. Both now court the national laboratories through the Department of Energy's Genesis Mission, with free or discounted access rather than open weights."
+ },
+ {
+  "scene": "p2_igraph",
+  "text": "Fourth, the base of U.S. open source keeps growing, and getting more permissive. U.S. developers on GitHub rose from about ten million in 2020 to thirty-five million this year, and permissive licenses like MIT and Apache grew from sixty-four to sixty-eight percent of what they push to. The relicensing fights are about a handful of vendor-controlled projects, not the commons as a whole."
+ },
+ {
+  "scene": "p2_am",
+  "text": "Fifth, the instruments our lab buys are closed, and their makers are fragile. All thirteen additive-manufacturing and lab-automation makers we added score zero or one on our openness scale. And the 2021 wave of SPAC listings went bust. Desktop Metal went public at up to two and a half billion dollars and filed for bankruptcy in 2025. Markforged debuted at two point one billion and sold for forty-two and a half million."
+ },
+ {
+  "scene": "p2_dal",
+  "text": "Finally, a closer audit of DAL and pull request 318. Of roughly twenty instruments on the alloy route, only four have interfaces the lab can program today: the arms, the mobile robots, the OT-2 and the CubXL. The atomizer has no API, so the lab plans to read its settings with a camera. The proposal drafts disagree on whether alloy compositions will be published or protected, and the data-sharing promise lags the funder's rule of release at publication. The audit recommends MIT for code, CERN's permissive hardware license for designs, CC BY for data in Zenodo and the Materials Data Facility, one open driver per instrument, and asking vendors for API rights before buying."
+ },
+ {
+  "scene": "p2_takeaways",
+  "text": "So, what Part 2 adds. Every sector is converging on open core. Young, venture-backed firms close up while public infrastructure stays open. The commons that trained the AI needs funding of its own. The AI labs court science with access, not open weights. And for our lab, the highest-leverage move is to own, and open, the driver and data layer between closed instruments and AI."
+ },
+ {
+  "scene": "p2_end",
+  "text": "Data, code and every source for both parts are on GitHub, in the BYU Vertical Cloud Lab repository, issue three eighty."
+ }
+]

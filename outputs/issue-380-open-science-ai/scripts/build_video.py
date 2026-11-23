@@ -2,11 +2,13 @@
 """Render every scene at its narration length, mux narration, and join into one MP4 with chapters.
 Usage: python build_video.py [--render] [--mux] [--join]  (default: all three)"""
 import json, subprocess, sys, os, concurrent.futures as cf
-N = json.load(open("video/narration.json")); D = json.load(open("video/durations.json"))
+NARR = os.environ.get("NARR", "video/narration.json"); DURF = os.environ.get("DURF", "video/durations.json"); OUTMP4 = os.environ.get("OUTMP4", "video/open_science_value_ai.mp4"); CHAP = os.environ.get("CHAP", "video/chapters.txt")
+N = json.load(open(NARR)); D = json.load(open(DURF))
 MOD = {}
 for m, names in [("scenes_data", ["coss_vc", "oss_value", "open_science_value", "epoch_sector", "openalex", "compute_gap", "language"]),
                  ("scenes_companies", ["kinds", "values", "relicense", "lanes_software", "lanes_hardware", "lanes_science", "lanes_ai", "ai_values", "stocks"]),
-                 ("scenes_cards", ["title", "quotes", "dal", "takeaways", "end", "gh_threads"])]:
+                 ("scenes_cards", ["title", "quotes", "dal", "takeaways", "end", "gh_threads"]),
+                 ("scenes_part2", ["p2_title", "p2_time", "p2_pdb", "p2_commons", "p2_language", "p2_igraph", "p2_am", "p2_dal", "p2_takeaways", "p2_end"])]:
     for n in names: MOD[n] = m
 LEAD, TAIL = 0.5, 1.0
 steps = set(a.strip("-") for a in sys.argv[1:]) or {"render", "mux", "join"}
@@ -30,10 +32,10 @@ if "mux" in steps:
                "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-ac", "2", "-t", str(d), f"video/av/{s}.mp4"]
         r = subprocess.run(cmd, capture_output=True, text=True); print("mux", s, "ok" if r.returncode == 0 else r.stderr[-300:], flush=True)
 if "join" in steps:
-    with open("video/av/list.txt", "w") as f:
+    with open("video/av/list.txt", "w") as f:  # noqa
         for x in N: f.write(f"file '{x['scene']}.mp4'\n")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "video/av/list.txt", "-c", "copy", "-movflags", "+faststart",
-                    "video/open_science_value_ai.mp4"], check=True)
+                    OUTMP4], check=True)
     t = 0; chapters = []
     titles = {"title": "Intro", "oss_value": "What open-source software is worth", "open_science_value": "Open science: PDB, genome, open hardware",
               "values": "Where the money went in commercial open source", "relicense": "Licences move both ways", "lanes_software": "Openness over time: software",
@@ -41,8 +43,11 @@ if "join" in steps:
               "ai_values": "Frontier AI: value sits with closed weights", "lanes_ai": "Big Tech and AI labs over time", "epoch_sector": "Who releases model weights",
               "compute_gap": "The compute gap", "openalex": "Open-access papers by sector", "language": "How the labs talk about open",
               "quotes": "In their own words", "gh_threads": "Our own GitHub threads", "dal": "DAL and the vertical cloud lab (#318)",
-              "takeaways": "Takeaways", "end": "Data and sources", "coss_vc": "Venture data: open vs closed startups", "kinds": "Who opens, who closes"}
+              "takeaways": "Takeaways", "end": "Data and sources", "coss_vc": "Venture data: open vs closed startups", "kinds": "Who opens, who closes",
+              "p2_title": "Intro", "p2_time": "Openness over time, by sector", "p2_pdb": "Fifty years of open data: the PDB", "p2_commons": "The open-science commons under strain",
+              "p2_language": "From open to science: how the labs talk", "p2_igraph": "US open source: growth and licences", "p2_am": "Closed instruments, fragile makers",
+              "p2_dal": "A closer audit of DAL and #318", "p2_takeaways": "What Part 2 adds", "p2_end": "Data and sources"}
     for x in N:
         m, sec = divmod(int(t), 60); chapters.append(f"{m}:{sec:02d} {titles.get(x['scene'], x['scene'])}"); t += vdur(x["scene"])
-    open("video/chapters.txt", "w").write("\n".join(chapters) + "\n")
+    open(CHAP, "w").write("\n".join(chapters) + "\n")
     print("total seconds", round(t, 1)); print("\n".join(chapters))

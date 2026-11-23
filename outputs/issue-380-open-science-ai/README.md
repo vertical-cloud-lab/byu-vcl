@@ -34,9 +34,16 @@ below links to a file in this folder, and each file names its sources.
    - A fork followed when a closed project had other resellers: OpenSearch, OpenTofu, Valkey.
    - Two closers later added AGPL back (Elastic in 2024, Redis in 2025).
    - **Foundations, not companies, keep openness durable.**
+   - **Who closes:**
+     - Companies founded since 2000 became less open over their lives, while incumbents opened the
+       layers they don't sell. The difference is −0.67 on the 0–4 scale (95% CI −1.04 to −0.31).
+     - Government, academic and foundation infrastructure almost never closed: 1 of 18.
+     - By 2026 every sector averages about 2, "open core / mixed"
+       ([openness over time](figures/openness_by_year_sector.png)).
 4. **In hardware, openness pays in cost and longevity, not in valuation.** Open standards are the
    exception (RISC-V, Open Compute).
-   - Adafruit, SparkFun and Prusa have lasted for decades, but they stay small and private.
+   - Adafruit and SparkFun have lasted about two decades and Prusa 14 years, but they stay small and
+     private.
    - The large values went to firms that are closed or closing: Formlabs, SiFive, Raspberry Pi's
      closed silicon and Bambu Lab.
    - MakerBot closed its designs, sold for $403M, and saw that goodwill written off within three years.
@@ -45,7 +52,8 @@ below links to a file in this folder, and each file names its sources.
    - The PDB (1971), LAMMPS, Quantum ESPRESSO, the Materials Project and Jupyter are all open.
    - Ansys sold for $35B, while OpenFOAM's maintainers run on about €250k a year.
    - VASP's June 2026 rules bar AI training on its source.
-   - The AI-for-science startups of 2025–26 raised about $9.3B, nearly all of it for closed work.
+   - The AI-for-science startups of 2025–26 raised about $9B, nearly all of it for closed work, often
+     trained on open public data.
 6. **AI has "open papers, closed weights".**
    - Industry's US articles are now more often open access than academia's: 76% vs. 72% in 2024
      ([OpenAlex](data/openalex_us_oa_by_sector.csv)).
@@ -67,7 +75,17 @@ below links to a file in this folder, and each file names its sources.
    - The Acceleration Consortium's lab bought rather than sold, and its most common complaint was closed
      vendor equipment ([digest](gh-mining/commercialization_digest.md)).
 9. **DAL and #318 already follow the pattern the evidence favours: open orchestration on closed
-   instruments.** The open decisions are which data and drivers to publish, and when.
+   instruments.**
+   - The open decisions are which data and drivers to publish, and when.
+   - The proposal drafts still disagree on whether alloy compositions will be published or protected.
+   - Only about 4 of 20 instruments have interfaces the lab can program today
+     ([audit](dal/dal_openness_audit.md)).
+10. **The open-science commons that fed AI is under strain.**
+   - arXiv left Cornell in July 2026 and ran a deficit while monthly submissions doubled (September 2024
+     → September 2026).
+   - OSF stopped new projects on 2026-11-16 for lack of $4–5M a year.
+   - Meta shut Papers with Code in 2025.
+   - AI labs now court science with access programmes (seats, credits) rather than open weights.
 
 ## Method
 
@@ -76,7 +94,7 @@ below links to a file in this folder, and each file names its sources.
 | Edison Scientific | 9 jobs: 4 `LITERATURE_HIGH`, 4 `LITERATURE` and 1 `PRECEDENT`. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
 | GitHub mining | `gh api` (REST and GraphQL) over **every** issue, PR, conversation comment, inline review comment, review body, discussion, discussion comment and reply in `AccelerationConsortium/ac-dev-lab` and `sparks-baird/self-driving-lab-demo`: 4,928 records in 816 threads. 118 threads were coded for commercialization, and quotes and numbers were checked against the corpus by script | [`gh-mining/`](gh-mining/) |
 | Case studies | 143 organizations: 121 in six groups at the video snapshot, then 1 more hardware file and group G (21: additive manufacturing, lab automation, open-science infrastructure). The six groups are commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 1,096 cited sources (904 at the video snapshot) | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
-| Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. 89 + 8 + 24 searches, plus 41 primary documents fetched | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
+| Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. **145 searches** (89 curated, 18 to find primary documents, 36 to verify claims, plus 2 tests), **74 page fetches** (57 primary documents from AI labs and US policy, 15 community and blog pages, 2 report pages) and **6 YouTube transcript sessions**, in which the mouse opened "Show transcript" | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
 | Datasets | Epoch AI "Data on AI Models" (3,730 models, CC-BY); OpenAlex works grouped by US institution type × year × open access; Yahoo Finance weekly prices | [`data/`](data/) |
 | Language | Term rates per 1,000 words in 57 documents from Anthropic (26), OpenAI (22), Meta, Google DeepMind, DeepSeek, xAI and US policy (3), all fetched through the Pi | [`language/`](language/) |
 | Video | 20 animated matplotlib scenes, Kokoro-82M narration (Apache-2.0, offline), joined with ffmpeg | [`video/`](video/), [`scripts/build_video.py`](scripts/build_video.py) |
@@ -85,7 +103,7 @@ below links to a file in this folder, and each file names its sources.
 and they were used up about 15 minutes in. The limit notice asks agents not to get around it through a
 browser or proxy, so the case-study agents finished with **WebFetch on known primary and reference
 pages** (Wikipedia, company newsrooms, SEC filings, foundation pages). Each file says which tool it
-used. That leaves 202 recorded web searches and 578 recorded page fetches across the case files.
+used. That leaves 202 recorded web searches and 772 recorded page fetches across the 143 case files, including group G and verification pass 2.
 Searching through the Pi was limited to the curated batches the issue asked for, plus verification of
 the claims used in the video. Files built from fetches alone are marked `confidence: low` or `medium`
 where a 2025–26 fact couldn't be confirmed.
@@ -99,7 +117,9 @@ where a 2025–26 fact couldn't be confirmed.
 - These are four different measurements, not four competing estimates of one quantity
   ([Edison: OSS value](edison/oss_economic_value_answer.md)):
   - supply-side cost of $4.15B
-  - demand-side value of $8.8T
+  - demand-side value of $8.8T. Firms would spend 3.5× more on software without OSS, and **96% of that
+    demand-side value is created by only 5% of OSS developers** (abstract checked against the HBS page
+    through the Pi)
   - US investment of $36.2B (BEA WP2022-10) to $38.4B (Robbins et al. 2021) in 2019, with a real
     capital stock above $118B
   - EU impact of €65–95B on about €1B of investment (Blind et al. 2021)

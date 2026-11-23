@@ -23,6 +23,10 @@ search batches ([`pi-browser/queries_batch3_verify.tsv`](pi-browser/queries_batc
 | Mistral valued at about €21B, or about $24B (Sep 2026) | companies/C/mistral-ai.json (null) | Pi: reports of a €3B Series D led by Samsung at over €21B | Confirmed as a range; left null in the case file |
 | VASP's June 2026 guidelines forbid feeding its source to public AI models or training on it | companies/F/vasp.json | Primary: vasp.at/info/post (2026-07-20) | Primary source only |
 | SDL-demo kit: $80 list price, $15.57 fee, $51.19 hardware, $6 labour, $2.24 stated profit | gh-mining digest | Re-read from the source comment (discussion #124, 2023-05-04). The stated items sum to $75, and the chart shows the unitemized $5 | Confirmed, with the arithmetic gap noted |
+| Open-source software: $4.15B supply-side, $8.8T demand-side value; firms would spend 3.5× more; 96% of the demand-side value comes from 5% of OSS developers | Edison oss_economic_value | Primary: HBS working-paper page (Hoffmann, Nagle & Zhou 2024), fetched through the Pi on 2026-11-23 | Confirmed |
+| Commercial open-source startups: median exit $1.3B vs $171M (IPO) and $482M vs $34M (M&A); 1.6× / 1.23× valuation at Series A / B; 12% exited; $26.4B across 211 deals in 2024 | LF/Serena/COSSA 2025 report | Primary: report PDF (doi:10.70828/REYQ7474), text extracted with pdftotext | Confirmed (co-authored by a VC that backs open source) |
+| arXiv left Cornell on 2026-07-01; FY2025 deficit of $297k; record of 40,363 submissions in Sept 2026 | companies/G/arxiv.json | Primary: arXiv blog posts and FY26 budget PDF (cited in the file) | Primary sources |
+| OSF narrowing: $4–5M a year needed; new projects stopped on 2026-11-16 | companies/G/center-for-open-science.json | Primary: COS blog (2026-08-11, 2026-08-14) and cos.io/osf-changes | Primary sources |
 | Epoch, OpenAlex and price numbers | data/*.csv | Recomputed from the raw downloads by the scripts in `scripts/` | Reproducible |
 
 Not used in the video because they couldn't be verified well enough: Creality's 2026 Hong Kong

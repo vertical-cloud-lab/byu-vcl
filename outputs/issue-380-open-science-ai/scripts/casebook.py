@@ -62,5 +62,16 @@ for g, title in GROUPS.items():
             out += ["<details><summary>Sources (" + str(len(src)) + ")</summary>", ""]
             out += [f"- [{(s.get('title') or s['url'])[:110]}]({s['url']})" + (f" ({s.get('publisher')}, {s.get('date')})" if s.get("publisher") or s.get("date") else "") for s in src]
             out += ["", "</details>", ""]
+# table of contents (GitHub heading anchors)
+import re as _re
+def anchor(h):
+    a = h.strip().lower(); a = _re.sub(r"[^\w\- ]", "", a); return a.replace(" ", "-")
+toc = ["## Contents", ""]
+for line in out:
+    if line.startswith("## ") and not line.startswith("## Contents"):
+        toc.append(f"- [{line[3:]}](#{anchor(line[3:])})")
+    elif line.startswith("### "):
+        toc.append(f"  - [{line[4:]}](#{anchor(line[4:])})")
+out = out[:4] + toc + [""] + out[4:]
 open("companies/CASEBOOK.md", "w").write("\n".join(out))
 print("casebook lines", len(out), "chars", sum(len(x) for x in out))
