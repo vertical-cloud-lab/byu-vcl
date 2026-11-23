@@ -1,0 +1,164 @@
+{
+  "name": "OpenFOAM (OpenFOAM Foundation / CFD Direct; OpenCFD Ltd under ESI Group and Keysight)",
+  "slug": "openfoam",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "computational fluid dynamics (CFD) toolkit",
+  "hq_country": "GB",
+  "origin": "academic",
+  "origin_detail": "FOAM was developed in C++ by Henry Weller and Hrvoje Jasak (roots in David Gosman's group at Imperial College London; the early-1990s date is uncited on Wikipedia) and sold commercially by Nabla Ltd. After Nabla folded, Weller, Chris Greenshields and Mattijs Janssens founded OpenCFD Ltd, which released the code under the GPL as OpenFOAM on 10 Dec 2004. Copyright moved to the OpenFOAM Foundation in 2011 (England, company limited by guarantee since 2014); OpenCFD kept the trademark and passed to SGI (2011), ESI Group (2012) and, via Keysight's 2023 control of ESI, to Keysight.",
+  "founded_year": 2004,
+  "flagship_projects": [
+    "OpenFOAM (openfoam.org, v14, Jul 2026)",
+    "OpenFOAM (openfoam.com, v2606, Jun 2026)",
+    "foam-extend (Wikki fork)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 4,
+  "openness_notes": "FOAM was a commercial product (Nabla Ltd) before the 2004 GPL release. Today both main lines are GPL; the openfoam.org line's copyright is held by the non-profit OpenFOAM Foundation Ltd (scored 4), while the openfoam.com line is developed by OpenCFD (Keysight/ESI) with a 2018 governance steering committee including Volkswagen, General Motors and FM Global (closer to 3). The name 'OpenFOAM' is an OpenCFD trademark (since 2007).",
+  "business_model": "support_services",
+  "license_history": [
+    {
+      "year": 2004,
+      "license": "GPL (OpenFOAM)",
+      "note": "Released 10 Dec 2004; earlier FOAM was proprietary",
+      "source": "https://en.wikipedia.org/wiki/OpenFOAM"
+    },
+    {
+      "year": 2011,
+      "license": "GPL; copyright transferred to OpenFOAM Foundation",
+      "note": "5 Aug 2011 to OpenFOAM Foundation Inc. (Delaware); re-incorporated in England 25 Apr 2014",
+      "source": "https://en.wikipedia.org/wiki/OpenFOAM"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2004,
+      "from": "Proprietary FOAM (Nabla Ltd)",
+      "to": "GPL (OpenFOAM)",
+      "direction": "opening",
+      "fork": "openfoam-extend / foam-extend",
+      "fork_backer": "Wikki Ltd (Hrvoje Jasak)",
+      "outcome_note": "Became the leading open-source CFD toolkit; later split into openfoam.org (CFD Direct, from 2015) and openfoam.com (OpenCFD, date-versioned from 2016) lines plus foam-extend.",
+      "source": "https://en.wikipedia.org/wiki/OpenFOAM"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "foundation",
+  "exit_events": [
+    {
+      "year": 2011,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Silicon Graphics International (SGI)",
+      "note": "SGI acquired OpenCFD on 8 Aug 2011, days after copyright moved to the Foundation",
+      "source": "https://en.wikipedia.org/wiki/OpenFOAM"
+    },
+    {
+      "year": 2012,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "ESI Group",
+      "note": "ESI acquired OpenCFD (and the OpenFOAM trademark) from SGI, announced 12 Sep 2012",
+      "source": "https://en.wikipedia.org/wiki/ESI_Group"
+    },
+    {
+      "year": 2023,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Keysight Technologies",
+      "note": "Keysight completed purchase of a 50.6% controlling block of ESI Group at EUR 155 per share on 3 Nov 2023, bringing OpenCFD under Keysight; total value not stated in release",
+      "source": "https://www.keysight.com/us/en/about/newsroom/news-releases/2023/1103-pr23-005-keysight-completes-the-acquisition-of-a-controllin.html"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 5,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2015-2016 split: Weller and Greenshields left OpenCFD to form CFD Direct (Mar 2015); two parallel 'OpenFOAM' release lines plus foam-extend now coexist.",
+    "Copyright (Foundation) and trademark (OpenCFD, now Keysight-controlled) are held by different parties.",
+    "Nov 2025: the Foundation called its EUR 250k/yr maintenance funding 'inadequate' and set a 2026 target of EUR 500k; CFD Direct, which maintains openfoam.org, is 'a company of 5 people'.",
+    "Sep 2024: ESI's CEO resigned as a director of OpenFOAM Foundation Ltd."
+  ],
+  "robustness": "Code is GPL and has been forked repeatedly, so it cannot be closed; but each main line depends on a small team (CFD Direct: 5 people) funded by maintenance plans (EUR 5,000 / 25,000 / 100,000 per year tiers). The corporate parent of OpenCFD changed three times (SGI, ESI, Keysight) without the code disappearing.",
+  "physical_science_relevance": "The leading open-source CFD code, used across academic fluid mechanics, combustion, multiphase flow and industrial engineering; the main open alternative to Ansys Fluent and other commercial CFD.",
+  "openness_effect_assessment": "Opening FOAM in 2004 gave it a user base the Foundation says broadly matches major proprietary CFD packages 'despite having only a small fraction of their resources'. Openness also made it acquirable piecemeal (SGI, ESI, Keysight bought the company and trademark, not the code) and led to fragmentation into competing lines, while maintenance remains chronically underfunded.",
+  "key_takeaway": "OpenFOAM is the open CFD comparator to Ansys: comparable reach, but its maintainers run on about EUR 250k a year while Ansys sold for $35B. GPL licensing protected the code through three changes of corporate owner and a developer split, but did not solve sustainability; the Foundation's own 2025 appeal says funding must double.",
+  "usage_metrics": [
+    {
+      "metric": "annual maintenance funding from supporting organisations (EUR)",
+      "value": 250000,
+      "date": "2025-11",
+      "source": "https://openfoam.org/news/funding-2026/"
+    },
+    {
+      "metric": "2026 maintenance funding target (EUR)",
+      "value": 500000,
+      "date": "2025-11",
+      "source": "https://openfoam.org/news/funding-2026/"
+    }
+  ],
+  "funding_sources": [
+    "Industrial maintenance plans (Silver EUR 5k, Gold EUR 25k, Platinum EUR 100k per year)",
+    "OpenCFD/Keysight commercial services (openfoam.com line)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls. Facts come from direct fetches of Wikipedia (OpenFOAM, ESI Group), openfoam.org and Keysight's press release.",
+    "employees_latest = 5 is CFD Direct (openfoam.org maintainer), not OpenCFD. ESI Group had ~1,000 employees and EUR 130M revenue (2022) per Wikipedia.",
+    "Funding figures are in EUR and were not converted; latest_value_usd left null.",
+    "Acquisition prices for SGI (2011) and ESI (2012) purchases of OpenCFD not found."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/OpenFOAM",
+    "https://en.wikipedia.org/wiki/ESI_Group",
+    "https://openfoam.org/maintenance/",
+    "https://www.keysight.com/us/en/about/newsroom/news-releases/2023/1103-pr23-005-keysight-completes-the-acquisition-of-a-controllin.html",
+    "https://openfoam.org/news/funding-2026/"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/OpenFOAM",
+      "title": "OpenFOAM",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, license_history, relicensing_events, exit_events[0], risk_events[0,3], flagship versions"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/ESI_Group",
+      "title": "ESI Group",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "exit_events[1-2], notes (ESI revenue, employees)"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/about/newsroom/news-releases/2023/1103-pr23-005-keysight-completes-the-acquisition-of-a-controllin.html",
+      "title": "Keysight completes the acquisition of a controlling block of ESI Group",
+      "publisher": "Keysight Technologies",
+      "date": "2023-11-03",
+      "supports": "exit_events[2]"
+    },
+    {
+      "url": "https://openfoam.org/maintenance/",
+      "title": "OpenFOAM Maintenance",
+      "publisher": "OpenFOAM Foundation",
+      "date": null,
+      "supports": "funding_sources (plan tiers), openness_effect_assessment quote"
+    },
+    {
+      "url": "https://openfoam.org/news/funding-2026/",
+      "title": "Funding OpenFOAM 2026",
+      "publisher": "OpenFOAM Foundation",
+      "date": "2025-11-13",
+      "supports": "usage_metrics, employees_latest, risk_events[2]"
+    }
+  ]
+}

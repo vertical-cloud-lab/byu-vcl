@@ -1,0 +1,203 @@
+{
+  "name": "Strateos, Inc. (formerly Transcriptic)",
+  "slug": "strateos",
+  "group": "E",
+  "category": "physical_science",
+  "subcategory": "cloud lab (robotic remote lab for drug discovery), later private-lab software (LodeStar/SmartLab)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Transcriptic founded 2012 in Menlo Park by Max Hodak (Y Combinator; seed led by Google Ventures and FF Angel). In June 2019 Transcriptic combined with 3Scan (3D tissue imaging) to form Strateos under CEO Mark Fischer-Colbrie.",
+  "founded_year": 2012,
+  "flagship_projects": [
+    "Transcriptic / Strateos Robotic Cloud Lab",
+    "Autoprotocol (open protocol standard, BSD-licensed Python library)",
+    "Lilly-Strateos remote-controlled lab, San Diego (2020)",
+    "SmartLab / LodeStar lab-control software"
+  ],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "The cloud lab, scheduling and control software were always proprietary. Transcriptic did publish Autoprotocol as an open standard for encoding protocols; its Python library (autoprotocol-python) and utilities are BSD-licensed on GitHub (CLA required). The company's own 'transcriptic' client says direct analysis and submission of Autoprotocol is restricted and requires contacting sales. That makes it a peripheral SDK/standard open around a closed service: level 1. The licence text of the Autoprotocol specification itself was not found.",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2015,
+      "license": "Autoprotocol spec + autoprotocol-python (BSD); cloud lab proprietary",
+      "note": "IEEE Spectrum describes Autoprotocol as released open source after Transcriptic developed it as a data standard; year approximate (not confirmed)",
+      "source": "https://github.com/autoprotocol/autoprotocol-python/blob/master/CONTRIBUTING.rst"
+    },
+    {
+      "year": 2021,
+      "license": "SmartLab software platform proprietary",
+      "note": "Launched 13 Jul 2021",
+      "source": "https://www.businesswire.com/news/home/20210713005442/en/Strateos-Launches-its-SmartLab-Software-Platform-to-Power-the-Digital-Transformation-of-Life-Science-Research-Laboratories"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [
+    {
+      "year": 2019,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "3Scan",
+      "note": "Transcriptic and 3Scan combined to form Strateos (June 2019)",
+      "source": "https://www.globenewswire.com/news-release/2019/06/03/1863485/0/en/strateos-combines-transcriptic-and-3Scan-to-become-Premier-Drug-Discovery-Technology-Partner-for-the-Pharmaceutical-Industry.html"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": null,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2012-2016: raised ~$27M as Transcriptic (seed $1.2M 2012; $8.5M 2015; $13.4M 2016, Data Collective)",
+    "Jun 2019: merged with 3Scan to form Strateos",
+    "Jan 2020: Eli Lilly and Strateos launched an 11,500 sq ft remote-controlled robotic lab in San Diego (>100 instruments, 5M-compound store)",
+    "Jun 2021: closed a $56M Series B (Lilly among investors)",
+    "18 Apr 2023: 'strategic shift' away from hosted cloud lab toward designing and deploying customers' own on-site private cloud labs on its LodeStar software, plus a staffing reorganization",
+    "2023-2026: website appears unmaintained (footer (c) 2022, last news item Feb 2023, contains spam text); aggregators conflict (Craft 'Active'; PitchBook 'acquired by Daiichi'; another directory says acquired by Multiply Labs Dec 2023). Neither acquisition is confirmed by a primary source; a targeted search found no Multiply Labs release mentioning Strateos."
+  ],
+  "robustness": "Fragile. Hosted cloud-lab capacity depended on a single pharma partner (Lilly's San Diego lab) and the company retreated from hosted labs in 2023. Its one open asset, Autoprotocol, is a BSD library and standard that can outlive the company but saw limited outside adoption (Emerald's SLL and others did not adopt it). After 2023 the company appears dormant or absorbed, with no primary-source confirmation either way.",
+  "physical_science_relevance": "Moderate. The focus was biology and drug discovery (small-molecule screening, medicinal chemistry, imaging), but Transcriptic/Strateos was, with Emerald, one of the two pioneering US commercial cloud labs. Its trajectory is the main failure case for the hosted cloud-lab model that materials self-driving-lab efforts (and NSF's programmable cloud lab network) are now revisiting.",
+  "openness_effect_assessment": "Transcriptic tried to seed an ecosystem with an open protocol standard (Autoprotocol, BSD) while keeping the lab and execution proprietary. The standard did not become an industry lingua franca, and the company still had to restrict Autoprotocol submission to paying customers. The 2023 retreat to private on-site labs points to unit-economics and demand problems with centralized hosted labs, not to openness, as the decisive factor.",
+  "key_takeaway": "Strateos (ex-Transcriptic) is the cautionary tale among US cloud labs. Over a decade it raised roughly $80M+ in announced rounds, won Eli Lilly as an anchor partner, and opened only a peripheral protocol standard. In April 2023 it abandoned the hosted cloud-lab model for on-site private-lab consulting, and since then its web presence has gone stale and its ownership is unconfirmed. Its open Autoprotocol library outlived the business model but never achieved network effects, which suggests an open interface standard alone cannot rescue a capital-intensive, closed, centralized lab service.",
+  "confidence": "low",
+  "notes": [
+    "Status unresolved: no primary source found confirming shutdown, acquisition by Multiply Labs (claimed Dec 2023 by directories; one aggregator cites a 10 May 2023 Business Wire headline that could not be verified) or acquisition by Daiichi (PitchBook listing; PitchBook page returned 403). ownership_status and still_operating therefore set to null.",
+    "funding_total_usd set to null: aggregator totals conflict (Tracxn ~$72.6M; PitchBook ~$108M). Announced rounds sum to ~$83M (Transcriptic ~$27M through 2016 per VentureBeat + $56M Series B 2021), excluding 3Scan's pre-merger funding.",
+    "No valuation found from a credible source (Getlatka's '$19.9M valuation, 2021' is an unverified aggregator estimate).",
+    "Employees: Tracxn reports 27 (date unclear), EasyLeadz 44 (Feb 2025); both unverified.",
+    "The shared WebSearch budget for this session was exhausted while researching this company. Two planned queries were NOT run: 'Daiichi Sankyo Strateos acquisition cloud lab' and 'Strateos Series B $56 million 2021 investors Eli Lilly total funding'. The Outsourcing-Pharma article on the 2023 shift returned HTTP 410."
+  ],
+  "search_tool": "WebSearch (+ WebFetch of cited pages); budget exhausted after 8 queries",
+  "searches": [
+    "Strateos shuts down cloud lab 2023",
+    "Transcriptic founded 2012 Max Hodak funding raised",
+    "Strateos Transcriptic 3Scan merger 2019 Eli Lilly remote lab",
+    "Autoprotocol open source standard Transcriptic license GitHub",
+    "Strateos 2024 2025 company status closed acquired Menlo Park",
+    "Multiply Labs acquires Strateos",
+    "Strateos strategic shift on-site cloud labs April 2023 Business Wire reorganization",
+    "\"Multiply Labs\" \"Strateos\" acquisition press release robotics drug discovery 2023"
+  ],
+  "sources": [
+    {
+      "url": "https://techcrunch.com/2012/12/13/biotech-startup-transcriptic-receives-1-2m-in-seed-funding-led-by-google-ventures-and-ff-angel/",
+      "title": "Biotech Startup Transcriptic Receives $1.2M In Seed Funding Led By Google Ventures And FF Angel",
+      "publisher": "TechCrunch",
+      "date": "2012-12-13",
+      "supports": "origin_detail, risk_events[0]"
+    },
+    {
+      "url": "https://www.fiercebiotech.com/deals/transcriptic-snags-8-5m-to-add-capabilities-at-robot-run-lab",
+      "title": "Transcriptic snags $8.5M to add capabilities at robot-run lab",
+      "publisher": "Fierce Biotech",
+      "date": "2015-02",
+      "supports": "risk_events[0]"
+    },
+    {
+      "url": "https://venturebeat.com/business/transcriptic-raises-13-4-million-to-grow-its-cloud-platform-for-automated-scientific-research",
+      "title": "Transcriptic raises $13.4 million to grow its cloud platform for automated scientific research",
+      "publisher": "VentureBeat",
+      "date": "2016-11-18",
+      "supports": "risk_events[0], notes (~$27M total)"
+    },
+    {
+      "url": "https://www.globenewswire.com/news-release/2019/06/03/1863485/0/en/strateos-combines-transcriptic-and-3Scan-to-become-Premier-Drug-Discovery-Technology-Partner-for-the-Pharmaceutical-Industry.html",
+      "title": "Strateos combines Transcriptic and 3Scan to become Premier Drug Discovery Technology Partner",
+      "publisher": "GlobeNewswire (Strateos)",
+      "date": "2019-06-03",
+      "supports": "exit_events[0], origin_detail"
+    },
+    {
+      "url": "https://investor.lilly.com/node/42406",
+      "title": "Eli Lilly and Company in Collaboration with Strateos, Inc. Launch Remote-Controlled Robotic Cloud Lab",
+      "publisher": "Eli Lilly (press release)",
+      "date": "2020-01-09",
+      "supports": "risk_events[2]"
+    },
+    {
+      "url": "https://www.businesswire.com/news/home/20210608005436/en/Strateos-Closes-56-Million-Series-B-Financing-to-Accelerate-the-Roll-Out-of-its-SmartLab-of-the-Future-Platform/",
+      "title": "Strateos Closes $56 Million Series B Financing",
+      "publisher": "Business Wire (Strateos)",
+      "date": "2021-06-08",
+      "supports": "risk_events[3]"
+    },
+    {
+      "url": "https://globalventuring.com/corporate/strateos-straightens-out-series-b/?format=md",
+      "title": "Strateos straightens out series B funding",
+      "publisher": "Global Venturing",
+      "date": "2021-06",
+      "supports": "risk_events[3] (Lilly participation, $56.1M)"
+    },
+    {
+      "url": "https://www.businesswire.com/news/home/20210713005442/en/Strateos-Launches-its-SmartLab-Software-Platform-to-Power-the-Digital-Transformation-of-Life-Science-Research-Laboratories",
+      "title": "Strateos Launches its SmartLab Software Platform",
+      "publisher": "Business Wire (Strateos)",
+      "date": "2021-07-13",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://businesswire.com/news/home/20230418006219/en/Strateos-Announces-Strategic-Shift-to-Focus-on-Customer-Demand-for-On-Site-Cloud-Labs",
+      "title": "Strateos Announces Strategic Shift to Focus on Customer Demand for On-Site Cloud Labs",
+      "publisher": "Business Wire (Strateos)",
+      "date": "2023-04-18",
+      "supports": "risk_events[4]"
+    },
+    {
+      "url": "https://strateos.com/",
+      "title": "Strateos home page",
+      "publisher": "Strateos",
+      "date": "2026-11 (fetched)",
+      "supports": "risk_events[5] (stale site, (c) 2022, last news Feb 2023)"
+    },
+    {
+      "url": "https://craft.co/strateos",
+      "title": "Strateos Company Profile",
+      "publisher": "Craft",
+      "date": "2026",
+      "supports": "notes (status 'Active')"
+    },
+    {
+      "url": "https://pitchbook.com/profiles/company/267931-27",
+      "title": "Strateos 2026 Company Profile: Valuation, Investors, Acquisition",
+      "publisher": "PitchBook",
+      "date": "2026",
+      "supports": "notes (listed as acquired by Daiichi; unverified)"
+    },
+    {
+      "url": "https://tracxn.com/d/companies/strateos/__IYxtSq-BDqwxtCrewYjhgrOxrVT-qT1lP8Ufxr5S3iE",
+      "title": "Strateos - 2026 Company Profile",
+      "publisher": "Tracxn",
+      "date": "2026",
+      "supports": "notes (funding ~$72.6M, 27 employees)"
+    },
+    {
+      "url": "https://github.com/autoprotocol/autoprotocol-python/blob/master/CONTRIBUTING.rst",
+      "title": "autoprotocol-python CONTRIBUTING",
+      "publisher": "GitHub",
+      "date": "n.d.",
+      "supports": "openness_notes (BSD, CLA)"
+    },
+    {
+      "url": "https://github.com/strateos/transcriptic/blob/v7.0.0/README.md",
+      "title": "strateos/transcriptic README",
+      "publisher": "GitHub",
+      "date": "n.d.",
+      "supports": "openness_notes (Autoprotocol submission restricted)"
+    },
+    {
+      "url": "https://spectrum.ieee.org/software-startups-aim-to-automate-bio-labs",
+      "title": "Software startups aim to automate bio labs",
+      "publisher": "IEEE Spectrum",
+      "date": "n.d.",
+      "supports": "license_history[0]"
+    }
+  ]
+}

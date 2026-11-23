@@ -1,0 +1,49 @@
+repo,number,title,n,hits,core,first
+sparks-baird/self-driving-lab-demo,124,Packaging as a commercial kit,8,244,34,2022-11-04T07:23:32Z
+sparks-baird/self-driving-lab-demo,91,What does access restriction look like for a scaled up cloud-accessible lab?,4,43,8,2022-10-07T16:43:49Z
+AccelerationConsortium/ac-dev-lab,475,Add comprehensive objective lens BOM for OpenFlexure Delta Stage Microscope with used market options,3,45,7,2025-10-10T20:35:08Z
+sparks-baird/self-driving-lab-demo,127,How to differentiate between which hardware the experiment was run on?,3,16,7,2022-11-21T20:44:20Z
+AccelerationConsortium/ac-dev-lab,17,Automated turntable housing and electronics,3,9,6,2025-01-16T06:13:41Z
+AccelerationConsortium/ac-dev-lab,289,Add bill of materials for equipment monitoring setup,4,40,6,2025-05-30T23:48:20Z
+AccelerationConsortium/ac-dev-lab,339,Provide guidance for M8 splitter search due to tool limitations,3,21,3,2025-06-18T16:42:43Z
+AccelerationConsortium/ac-dev-lab,140,"Build a low-cost, open-source tensile or compression tester",2,7,3,2025-07-04T18:39:21Z
+sparks-baird/self-driving-lab-demo,8,"Which microcontroller/computer to use? RPi, Arduino, which model",2,16,3,2022-08-13T02:23:30Z
+sparks-baird/self-driving-lab-demo,83,"prepaid, long-expiry hotspot",1,24,3,2023-03-02T14:08:07Z
+sparks-baird/self-driving-lab-demo,89,Liquid based color matching demo,2,41,3,2022-10-06T23:48:21Z
+sparks-baird/self-driving-lab-demo,153,Solid powder demo (e.g. color-matching),1,30,3,2023-03-04T21:32:04Z
+sparks-baird/self-driving-lab-demo,232,Robot chocolatier (RoboChocolatier) as a materials science teaching demo for autonomous science,1,19,3,2024-01-15T22:16:35Z
+sparks-baird/self-driving-lab-demo,92,Low-cost automated powder dispensers,2,13,3,2022-10-08T17:17:18Z
+sparks-baird/self-driving-lab-demo,71,Linking to a materials tuning demo,2,6,3,2022-09-17T02:48:17Z
+sparks-baird/self-driving-lab-demo,59,"Which microcontroller/computer to use? RPi, Arduino, which model",2,16,3,2022-08-13T02:23:30Z
+AccelerationConsortium/ac-dev-lab,490,Document unit operations and workflows on homepage,1,5,2,2025-11-03T21:11:43Z
+AccelerationConsortium/ac-dev-lab,489,Refine unit ops and workflows on homepage,1,4,2,2025-11-03T21:11:32Z
+AccelerationConsortium/ac-dev-lab,15,Design and print automated turntable vial rack,1,3,2,2024-08-30T16:01:52Z
+AccelerationConsortium/ac-dev-lab,362,"Branin single-objective competition MWE, launch, and sharing",1,3,2,2025-07-26T01:46:01Z
+AccelerationConsortium/ac-dev-lab,445,Networking in training lab at NRC,1,5,2,2025-09-05T17:54:42Z
+AccelerationConsortium/ac-dev-lab,340,"Set up 12 more equipment monitoring cameras (i.e., have them in stock)",1,41,2,2025-11-15T06:25:57Z
+sparks-baird/self-driving-lab-demo,6,RGB LEDs vs. having 10+ monochromatic light sources,1,9,2,2022-07-03T05:24:04Z
+sparks-baird/self-driving-lab-demo,88,classroom demos with standalone network access,1,3,2,2023-03-03T05:55:33Z
+sparks-baird/self-driving-lab-demo,52,RGB LEDs vs. having 10+ monochromatic light sources,1,9,2,2022-07-03T05:24:04Z
+AccelerationConsortium/ac-dev-lab,521,Linear rail stabilization,1,8,1,2025-11-18T22:39:59Z
+AccelerationConsortium/ac-dev-lab,374,Purchase and test UPS for vertical lift module,1,4,1,2025-07-04T16:23:06Z
+AccelerationConsortium/ac-dev-lab,297,[WIP] Fix bill of materials for picam,1,5,1,2025-05-31T15:22:32Z
+AccelerationConsortium/ac-dev-lab,296,Fix bill of materials for picam,1,5,1,2025-05-31T15:22:29Z
+AccelerationConsortium/ac-dev-lab,286,Fix suggest edit button links for documentation pages that include external files,1,6,1,2025-05-30T02:51:46Z
+AccelerationConsortium/ac-dev-lab,227,VS Code remote ssh for OpenFlexure microscope,1,5,1,2025-04-12T06:00:52Z
+AccelerationConsortium/ac-dev-lab,72,Launch code upon startup / boot for RPi SBCs,1,4,1,2024-10-04T16:34:17Z
+AccelerationConsortium/ac-dev-lab,60,Wireless charging for microcontroller,1,4,1,2024-10-01T21:17:20Z
+AccelerationConsortium/ac-dev-lab,158,Custom toolhead camera for Bambu Lab A1 Mini,1,11,1,2025-01-23T16:53:31Z
+AccelerationConsortium/ac-dev-lab,150,Set up Opentrons Flex and test pressure sensor,1,4,1,2025-01-24T05:08:51Z
+AccelerationConsortium/ac-dev-lab,26,"OT2 arrived, requires setup to point of remote access color matching",1,4,1,2025-03-31T16:16:07Z
+AccelerationConsortium/ac-dev-lab,328,PiCamera 2 mount and electrical setup for UR3e,1,4,1,2025-08-26T14:28:42Z
+AccelerationConsortium/ac-dev-lab,473,birefringence with openflexure microscope,1,5,1,2025-10-11T11:29:20Z
+AccelerationConsortium/ac-dev-lab,495,Seperate physical button press mechanism for EVAC AIR on/off,1,8,1,2025-11-12T21:31:52Z
+AccelerationConsortium/ac-dev-lab,500,Install sliding shelving,1,36,1,2025-11-13T04:38:02Z
+AccelerationConsortium/ac-dev-lab,506,Place isolation platform underneath the SEM,1,10,1,2025-11-15T06:54:52Z
+AccelerationConsortium/ac-dev-lab,507,Equipment monitoring camera for Seifrid group,1,12,1,2025-12-04T18:56:51Z
+AccelerationConsortium/ac-dev-lab,539,"Move resolution/rotation/frame rate/timestamp config to my_secrets.py, remove CLI code",1,4,1,2026-05-08T21:54:33Z
+AccelerationConsortium/ac-dev-lab,127,"Issues addressed, working temperature sensor code",1,4,1,2025-03-12T12:58:17Z
+sparks-baird/self-driving-lab-demo,62,Exploring the creation of a network of cloud-based experiments,1,4,1,2023-04-20T20:30:14Z
+sparks-baird/self-driving-lab-demo,234,Free-tier servers,1,6,1,2024-01-19T16:37:43Z
+sparks-baird/self-driving-lab-demo,223,pH optimization of chemicals,1,9,1,2023-08-18T19:20:41Z
+sparks-baird/self-driving-lab-demo,85,science-as-a-service model for demos,1,4,1,2022-11-19T03:19:25Z

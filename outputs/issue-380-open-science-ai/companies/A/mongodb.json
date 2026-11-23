@@ -1,0 +1,79 @@
+{
+  "name": "MongoDB, Inc. (formerly 10gen)",
+  "slug": "mongodb",
+  "group": "A",
+  "category": "software",
+  "subcategory": "database (document / NoSQL)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2007 in New York City as 10gen by DoubleClick alumni Dwight Merriman, Kevin P. Ryan and Eliot Horowitz. It first aimed at a platform-as-a-service, scrapped it to focus on the database, released MongoDB as open source in February 2009 and renamed itself MongoDB Inc. on 2013-08-27.",
+  "founded_year": 2007,
+  "flagship_projects": ["MongoDB server", "MongoDB Atlas (DBaaS)"],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "Server was AGPL-3.0 (drivers Apache-2.0) from the 2009 release; the company later added proprietary enterprise features and the Atlas cloud service (open core). Versions released after 2018-10-16 are under the Server Side Public License v1, which is not OSI-approved; versions released before that remain AGPL. Drivers stay Apache-licensed, so the current level is 1 (source-available core).",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2009, "license": "AGPL-3.0 (server); Apache-2.0 (drivers)", "note": "Open-source release February 2009.", "source": "https://en.wikipedia.org/wiki/MongoDB_Inc."},
+    {"year": 2018, "license": "SSPL v1 (server)", "note": "Upstream swapped AGPL-3.0 for SSPL v1 on 2018-10-15/16; earlier versions remain AGPL.", "source": "https://www.mongodb.com/legal/licensing/server-side-public-license/faq"}
+  ],
+  "relicensing_events": [
+    {"year": 2018, "from": "AGPL-3.0", "to": "SSPL v1", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "No direct community fork of the server gained traction. Debian (Dec 2018, package removed from unstable Feb 2020), Fedora and RHEL 8 (Jan 2019) dropped MongoDB as non-free. Compatibility alternatives grew instead: AWS DocumentDB (proprietary API-compatible service), FerretDB, and Microsoft's MIT-licensed Postgres-based DocumentDB, which joined the Linux Foundation on 2025-08-25 with AWS, Google, Cockroach Labs, Snowflake and Yugabyte backing.", "source": "https://fedoraproject.org/wiki/Changes/MongoDB_Removal"}
+  ],
+  "funding_total_usd": 311000000,
+  "funding_as_of": "2017",
+  "ownership_status": "public",
+  "exit_events": [
+    {"year": 2017, "type": "IPO", "value_usd": 1200000000, "counterparty": "NASDAQ: MDB", "note": "Priced 2017-10-18 at $24 (above a raised $20-22 range), 8.0M shares, raising $192M; opened at $33 and closed at $32.07 on 2017-10-19. Valuation estimates at pricing: ~$1.2B (Fortune), $1.17B basic, ~$1.39B fully diluted (Axios); below the ~$1.6B-1.7B last private valuation.", "source": "https://fortune.com/2017/10/19/mongodb-has-strong-debut-in-latest-tech-ipo/"}
+  ],
+  "latest_value_usd": 23030000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-20",
+  "revenue_latest_usd": 2460000000,
+  "revenue_year": 2026,
+  "employees_latest": 5636,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2018-10: SSPL relicense; Debian, Fedora and RHEL 8 dropped MongoDB; SSPL never became OSI-approved",
+    "2019 onward: hyperscaler API-compatible substitutes (AWS DocumentDB, later Microsoft's open DocumentDB at the Linux Foundation, Aug 2025)",
+    "2025-05: MongoDB began patent litigation against FerretDB, an open MongoDB-compatible project (reported by InfoQ, Nov 2026)",
+    "2025-11: Founder-era CEO Dev Ittycheria retired; Cloudflare's CJ Desai became CEO",
+    "2026-09-28: Desai stepped down effective immediately to join Meta; Ittycheria returned as interim CEO while a search runs"
+  ],
+  "robustness": "Single-vendor control, no foundation. Revenue is now mostly Atlas/subscription ($2.39B of $2.46B in FY2026) and the company is cash-generative ($505M operating cash flow FY2026), but leadership has been unstable in 2025-2026. The wire protocol is now reimplemented by open, foundation-hosted alternatives (DocumentDB at the Linux Foundation), which reduces customer lock-in and MongoDB's moat.",
+  "physical_science_relevance": "Widely used as a schemaless store for lab and sensor data; this lab's own digital-wetlab uses MongoDB Atlas.",
+  "openness_effect_assessment": "AGPL openness drove early developer adoption that the company converted into one of the largest open-source-origin IPOs of 2017. Closing to SSPL in 2018 did not stall growth: revenue rose to $2.46B in FY2026 and the market cap sits around $23B, because Atlas (its own hosting) became the main revenue line. The costs were reputational and ecosystem-level: distributions dropped it, and hyperscalers responded with compatible substitutes that in 2025 moved into a neutral Linux Foundation project.",
+  "key_takeaway": "MongoDB is the clearest case of an open-source-origin company that closed its license and still kept growing: SSPL protected its managed-service business from cloud resale, and the market rewarded it with roughly a 20x rise from its IPO valuation. But closing the license did not remove competition, it moved it to the API layer, where the hyperscalers now back an MIT-licensed, foundation-governed alternative. For an openness study, MongoDB shows that a strong first-party cloud product, not the license, is what captures value, while openness mainly bought the early adoption.",
+  "confidence": "high",
+  "searches": [
+    "MongoDB 10gen founded 2007 Dwight Merriman Eliot Horowitz Kevin Ryan DoubleClick history",
+    "MongoDB Server Side Public License October 2018 relicense AGPL Debian Fedora drop",
+    "MongoDB IPO October 2017 priced shares valuation total venture funding raised",
+    "MongoDB fiscal 2026 full year revenue results employees",
+    "MongoDB stock market cap November 2026",
+    "MongoDB 10-K fiscal 2026 full-time employees number January 31 2026",
+    "MongoDB CEO Dev Ittycheria steps down CJ Desai new CEO 2025",
+    "MongoDB 2026 news layoffs FerretDB DocumentDB Linux Foundation competition SSPL"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/MongoDB_Inc.", "title": "MongoDB Inc.", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, license_history[0]"},
+    {"url": "https://www.mongodb.com/legal/licensing/server-side-public-license/faq", "title": "Server Side Public License FAQ", "publisher": "MongoDB", "date": null, "supports": "license_history[1], openness_notes"},
+    {"url": "https://lists.debian.org/debian-legal/2018/12/msg00017.html", "title": "Bug#915537: MongoDB SSPL v1 license and the DFSG", "publisher": "Debian", "date": "2018-12", "supports": "relicensing_events[0], risk_events[0]"},
+    {"url": "https://fedoraproject.org/wiki/Changes/MongoDB_Removal", "title": "Changes/MongoDB Removal", "publisher": "Fedora Project", "date": null, "supports": "relicensing_events[0]"},
+    {"url": "https://www.theregister.com/2019/01/17/red_hat_mongodb/", "title": "Red Hat drops MongoDB over licensing", "publisher": "The Register", "date": "2019-01-17", "supports": "risk_events[0]"},
+    {"url": "https://fortune.com/2017/10/19/mongodb-has-strong-debut-in-latest-tech-ipo/", "title": "MongoDB has strong debut in latest tech IPO", "publisher": "Fortune", "date": "2017-10-19", "supports": "exit_events[0]"},
+    {"url": "https://www.mongodb.com/company/newsroom/press-releases/mongodb-inc-announces-pricing-of-initial-public-offering", "title": "MongoDB, Inc. announces pricing of initial public offering", "publisher": "MongoDB", "date": "2017-10-18", "supports": "exit_events[0]"},
+    {"url": "https://www.axios.com/2017/12/15/mongodb-prices-ipo-above-range-1513306304", "title": "MongoDB prices IPO above range", "publisher": "Axios", "date": "2017-10-18", "supports": "exit_events[0], funding_total_usd (~$300M cross-check)"},
+    {"url": "https://www.itpro.com/databases/29232/mongodb-finally-files-to-go-public", "title": "MongoDB shares close 34% higher in its IPO", "publisher": "ITPro (citing WSJ)", "date": "2017-10-20", "supports": "funding_total_usd"},
+    {"url": "https://investors.mongodb.com/news-releases/news-release-details/mongodb-inc-announces-fourth-quarter-fiscal-2026-financial", "title": "MongoDB, Inc. Announces Fourth Quarter and Full Year Fiscal 2026 Financial Results", "publisher": "MongoDB (press release, also SEC 8-K)", "date": "2026-03-02", "supports": "revenue_latest_usd, robustness"},
+    {"url": "https://stockanalysis.com/stocks/mdb/employees/", "title": "MongoDB employees", "publisher": "StockAnalysis (from SEC filings)", "date": "2026", "supports": "employees_latest (cross-checked with bullfincher.io)"},
+    {"url": "https://www.macrotrends.net/stocks/charts/MDB/mongodb/market-cap", "title": "MongoDB Market Cap 2018-2026", "publisher": "Macrotrends", "date": "2026-11-20", "supports": "latest_value_usd (Public.com showed $24.06B on 2026-11-17)"},
+    {"url": "https://www.nasdaq.com/articles/mongodb-ceo-dev-ittycheria-step-down-chirantan-desai-succeed", "title": "MongoDB CEO Dev Ittycheria to step down, Chirantan Desai to succeed", "publisher": "Nasdaq", "date": "2025-11", "supports": "risk_events[3]"},
+    {"url": "https://www.constellationr.com/insights/news/mongodbs-ittycheria-back-ceo-fold", "title": "MongoDB's Ittycheria back in CEO fold", "publisher": "Constellation Research", "date": "2026-09", "supports": "risk_events[4]"},
+    {"url": "https://www.theregister.com/2025/08/25/linux_foundation_says_yes_to/", "title": "Linux Foundation says yes to NoSQL via DocumentDB", "publisher": "The Register", "date": "2025-08-25", "supports": "relicensing_events[0].outcome_note, risk_events[1]"},
+    {"url": "https://infoq.com/news/2026/11/mongodb-compatible-documentdb", "title": "MongoDB-compatible DocumentDB", "publisher": "InfoQ", "date": "2026-11", "supports": "risk_events[2]"}
+  ],
+  "notes": "revenue_latest_usd is fiscal 2026 (year ended 2026-01-31). employees_latest (5,636 at 2026-01-31) is from StockAnalysis and Bullfincher citing SEC filings, not read from the 10-K directly. Market cap sources disagreed in mid-November 2026 ($23.0B-$25.4B); the Macrotrends end-of-day figure for 2026-11-20 is used. funding_total_usd is the WSJ figure via ITPro; Axios gave ~$300M. The FerretDB litigation is described as a patent suit begun May 2025 in InfoQ coverage; details were not checked against court records."
+}

@@ -1,0 +1,69 @@
+{
+  "name": "Pine64 (Pine Store Limited)",
+  "slug": "pine64",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "community-oriented ARM/RISC-V single-board computers, laptops, phones and wearables",
+  "hq_country": "HK",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in October 2015 in Fremont, California as Pine Microsystems Inc. by TL Lim (CEO, earlier behind PopBox and Popcorn Hour media players) and Johnson Jeng; launched with a December 2015 Kickstarter for the Pine A64 board that raised over $1.7M. Pine Store Limited was incorporated in Hong Kong in December 2019 and Pine Microsystems Inc. was dissolved in January 2020.",
+  "founded_year": 2015,
+  "flagship_projects": ["Pine A64", "ROCKPro64 / Quartz64", "Pinebook / Pinebook Pro", "PinePhone / PinePhone Pro", "PineTime", "Pinecil", "Star64 / Ox64 (RISC-V)", "PineNote", "PineVoice (2026)"],
+  "openness_initial": null,
+  "openness_current": 2,
+  "openness_notes": "Hardware column. Pine64 sells low-cost hardware and relies on community-run, open-source software (mainline Linux and many PinePhone OS projects; InfiniTime on the PineTime; IronOS on the Pinecil), and describes letting 'FOSS principles guide our business'. For hardware it publishes schematic PDFs, component placement drawings, component lists and certification documents (e.g. PinePhone mainboard v1.1-v1.2b), but no PCB/Gerber layouts, and no open hardware licence is stated (only '(c) 2026 PINE64'). In July 2026 it released the full 3D file of the PinePhone and PinePhone Pro (licence not verified). Open software plus viewable but unlicensed, incomplete hardware documentation = level 2. Level at the first product (2016) was not verified.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2020, "license": "Schematic PDFs and placement drawings published without an open hardware licence (PinePhone v1.1 'Braveheart' onward)", "note": "Year is the PinePhone Braveheart release (Feb 2020); publication date of the PDFs not verified. Footer copyright notice only; no CERN-OHL/CC licence found.", "source": "https://pine64.org/documentation/PinePhone/Further_information/Schematics_and_certifications/"},
+    {"year": 2026, "license": "Full 3D file for PinePhone and PinePhone Pro released (licence not verified)", "note": "News item 'Full PinePhone 3D File Released', 2026-07-25.", "source": "https://pine64.org/"}
+  ],
+  "relicensing_events": [
+    {"year": 2026, "from": "Schematic PDFs only", "to": "Schematics plus full 3D (mechanical) files for PinePhone and PinePhone Pro", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Licence terms of the 3D release not verified.", "source": "https://pine64.org/"}
+  ],
+  "funding_total_usd": 1700000,
+  "funding_as_of": "2015-12",
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2016: Pine A64 Kickstarter deliveries overshadowed by delays and shipping problems",
+    "2019-2020: corporate base moved from Fremont, California (Pine Microsystems Inc., dissolved Jan 2020) to Hong Kong (Pine Store Ltd); orders governed by Malaysian law as of late 2020",
+    "Ongoing: software support depends on volunteer community projects rather than the company",
+    "2026: PineTime revision needed to replace an end-of-life display part"
+  ],
+  "robustness": "Hardware is made and sold only by Pine64, but most software is community-maintained open source that would outlive the company, and published schematics help repair and porting. Small, low-margin business with no disclosed outside investment; still shipping new products in 2026 (PineVoice speaker, PineTime Pro samples).",
+  "physical_science_relevance": "Low-cost ARM and RISC-V boards (Star64, Ox64) and the open-firmware Pinecil soldering iron are usable in lab automation, teaching and instrument prototyping.",
+  "openness_effect_assessment": "Pine64 outsourced most software development to an open-source community (17 OS releases for the PinePhone per Wikipedia), which let a small company sell Linux phones, laptops and watches it could not have supported alone. Its hardware openness is partial (schematic PDFs, no layouts, no open licence), and the dependence on volunteers is also its main weakness. It remains operating and launching products in 2026 on Kickstarter-scale initial funding.",
+  "key_takeaway": "Pine64 is the 'community supplies the software, company supplies cheap hardware' model: openness lives mostly in community-maintained software, while hardware is documented (schematics, now 3D files) but not openly licensed. Founded in California and moved to Hong Kong in 2019-2020, it has survived a decade on crowdfunding and sales rather than VC, at small scale.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Pine64", "title": "Pine64", "publisher": "Wikipedia", "date": "2026-11", "supports": "founded_year, founders, Fremont/Hong Kong entities, Kickstarter $1.7M, products and dates, PineVoice June 2026, 17 PinePhone OS releases"},
+    {"url": "https://pine64.org/", "title": "PINE64", "publisher": "Pine64", "date": "2026-11", "supports": "FOSS self-description, 2026-05-18 update, 2026-07-25 full PinePhone 3D file release, current product list"},
+    {"url": "https://pine64.org/documentation/PinePhone/Further_information/Schematics_and_certifications/", "title": "PinePhone: Schematics and certifications", "publisher": "Pine64", "date": "2026-11", "supports": "openness_notes, license_history[0] (schematic PDFs, no PCB/Gerber, no licence)"},
+    {"url": "https://pine64.org/documentation/PinePhone/", "title": "PinePhone documentation", "publisher": "Pine64", "date": "2026-11", "supports": "Beta Edition March 2021"},
+    {"url": "https://techcrunch.com/2016/01/21/the-pine-a64-is-a-15-pc-with-endless-possibilities/", "title": "The Pine A64 is a $15 PC with endless possibilities", "publisher": "TechCrunch", "date": "2016-01-21", "supports": "Kickstarter (cited via Wikipedia, not fetched)"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [],
+    "firmware_software_licenses": ["Community open-source software (mainline Linux, InfiniTime for PineTime, IronOS for Pinecil); individual licences not verified"],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "SEARCH BUDGET EXHAUSTED: no WebSearch queries could be run for this org because the turn's shared 200-search budget was used up. Data come from direct fetches of Wikipedia and pine64.org, not from memory. The 4-search requirement is not met, and controversies reported elsewhere (e.g. community disputes, PinePhone Pro status) could not be checked, hence confidence 'low'.",
+    "funding_total_usd is the December 2015 Kickstarter (reward-based pre-sales, 'over US$1.7 million'); no equity investment found. ownership_status set to null because no source states whether the company is bootstrapped.",
+    "openness_initial set to null: whether Pine A64 schematics were published at launch was not verified (the PINE A64 documentation URL tried returned 404).",
+    "us_focus false: incorporated in Hong Kong since 2019; founded in Fremont, California; ships from Shenzhen and Hong Kong.",
+    "Revenue, headcount and valuation not found; null."
+  ]
+}

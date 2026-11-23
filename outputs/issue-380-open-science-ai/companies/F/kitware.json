@@ -1,0 +1,57 @@
+{
+  "name": "Kitware, Inc.",
+  "slug": "kitware",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "open-source scientific visualization, imaging and build tooling; R&D services",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 1998 in New York (first office Clifton Park) by Will Schroeder, Ken Martin, Lisa Avila, Charles Law and Bill Hoffman to support the Visualization Toolkit (VTK), which Schroeder, Martin and Bill Lorensen created in 1993.",
+  "founded_year": 1998,
+  "flagship_projects": ["VTK", "ParaView", "CMake", "ITK", "3D Slicer", "Tomviz", "trame", "MONAI (contributor)"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Core products are under permissive licences (CMake BSD-3-Clause, ParaView 3-clause BSD); the company sells custom development, support and training on top ('innovation, not software, is our primary product'). Projects are Kitware-stewarded rather than foundation-governed, so scored 3.",
+  "business_model": "support_services",
+  "license_history": [
+    {"year": 2000, "license": "BSD-3-Clause (CMake, ParaView)", "note": "CMake first released 2000; ParaView started 2000", "source": "https://en.wikipedia.org/wiki/CMake"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": 39000000,
+  "latest_value_type": "annual consolidated revenue, stated as 'more than $39 million' (year not given on the page)",
+  "latest_value_date": "2026-11",
+  "revenue_latest_usd": 39000000,
+  "revenue_year": null,
+  "employees_latest": 200,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Business depends heavily on government R&D contracts (defense, intelligence, energy, health agencies are named customer sectors); no specific 2025-2026 event was confirmed."
+  ],
+  "robustness": "Independent and private for 28 years; permissive licences and very wide adoption (CMake is used by KDE, Blender, Netflix, the ATLAS experiment and others) mean the projects would outlive the company. Offices in several US states and Lyon, France.",
+  "physical_science_relevance": "VTK and ParaView are the standard open visualization stack for large simulations at DOE labs: ParaView began in 2000 as a Kitware-Los Alamos collaboration funded by the DOE ASCI Views program, with Sandia joining in 2005. Tomviz serves electron tomography.",
+  "openness_effect_assessment": "Openness is the business model: permissively licensed tools created demand for Kitware's paid customisation, and government-funded development (DOE for ParaView, National Library of Medicine for CMake/ITK, Army SBIRs) seeded products that became de facto standards. Growth has been steady but modest (~200 staff, >$39M revenue) compared with closed simulation vendors.",
+  "key_takeaway": "Kitware is the best US example of a services company sustaining open scientific infrastructure for decades without VC, an exit or relicensing: government R&D contracts paid to build open tools, and the tools' ubiquity sells more contracts. The model is durable but caps growth at services scale.",
+  "usage_metrics": [],
+  "funding_sources": ["DOE (ASCI Views, ParaView origin)", "US National Library of Medicine (CMake/ITK)", "US Army Research Laboratory SBIR (web visualization, later ParaView Enterprise)", "Commercial and government R&D contracts, support and training"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Revenue '>$39 million' and '>200 employees' come from kitware.com/about without a year; Wikipedia gives 195 employees (2024).",
+    "Ownership not stated by either source (Wikipedia: 'Private'); ownership_status left null.",
+    "Wikipedia does not mention GE Research as VTK's origin, so it is not claimed here."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://en.wikipedia.org/wiki/Kitware", "https://www.kitware.com/about/", "https://en.wikipedia.org/wiki/ParaView", "https://en.wikipedia.org/wiki/CMake"],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Kitware", "title": "Kitware", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, offices, notes (195 employees 2024)"},
+    {"url": "https://www.kitware.com/about/", "title": "About Kitware", "publisher": "Kitware", "date": null, "supports": "latest_value_usd, revenue_latest_usd, employees_latest, business model, flagship_projects"},
+    {"url": "https://en.wikipedia.org/wiki/ParaView", "title": "ParaView", "publisher": "Wikipedia", "date": null, "supports": "physical_science_relevance (2000, LANL, DOE ASCI Views; Sandia 2005), funding_sources (Army SBIR), licence"},
+    {"url": "https://en.wikipedia.org/wiki/CMake", "title": "CMake", "publisher": "Wikipedia", "date": null, "supports": "license_history, funding_sources (NLM), robustness (adopters)"}
+  ]
+}

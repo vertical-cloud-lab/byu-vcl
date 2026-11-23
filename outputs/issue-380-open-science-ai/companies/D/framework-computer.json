@@ -1,0 +1,75 @@
+{
+  "name": "Framework Computer Inc.",
+  "slug": "framework-computer",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "repairable, modular laptops and desktops",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in San Francisco in January 2020 by Nirav Patel (founder and CEO) to sell repairable, upgradeable laptops; first Framework Laptop (13) fulfilled July 2021.",
+  "founded_year": 2020,
+  "flagship_projects": ["Framework Laptop 13 (and 13 Pro, 2026)", "Framework Laptop 16", "Framework Laptop 12", "Framework Desktop", "Expansion Cards"],
+  "openness_initial": 1,
+  "openness_current": 2,
+  "openness_notes": "Hardware column. At launch (2021) only peripheral interfaces were open to developers via the Expansion Card Developer Program (level 1; exact release date of the reference designs not verified). In January 2022 Framework open-sourced its embedded-controller firmware (BSD-3-Clause, based on Chrome EC) and in April 2022 published mainboard documentation and CAD. Today its GitHub repositories carry chassis CAD (STEP) under CC BY 4.0, 2D drawings, connector pinouts, partial schematics, expansion card, expansion bay and input-module reference designs, and EC firmware for all models; the UEFI firmware (InsydeH2O) remains proprietary and full mainboard schematics and PCB layouts are not published. Open firmware plus open module interfaces with closed core boards = level 2.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2022, "license": "BSD-3-Clause (embedded controller firmware, fork of chromium-ec)", "note": "Open-sourced 2022-01-21.", "source": "https://frame.work/blog/open-sourcing-our-firmware"},
+    {"year": 2022, "license": "Mainboard documentation and CAD published (licence then not verified)", "note": "April 2022 'Mainboard Availability and Open Source Release'.", "source": "https://frame.work/blog/mainboard-availability-and-open-source-release"},
+    {"year": 2026, "license": "CC BY 4.0 (Framework Laptop 13 repository: chassis CAD, drawings, pinouts)", "note": "README: 'Framework Laptop 13 (c) 2026 by Framework Computer Inc is licensed under CC BY 4.0'.", "source": "https://github.com/FrameworkComputer/Framework-Laptop-13"},
+    {"year": 2026, "license": "Proprietary UEFI firmware (InsydeH2O); coreboot only on the Chromebook edition", "note": "Per Wikipedia.", "source": "https://en.wikipedia.org/wiki/Framework_Computer"}
+  ],
+  "relicensing_events": [
+    {"year": 2022, "from": "Proprietary EC firmware; only expansion-card developer resources open", "to": "EC firmware under BSD-3-Clause; mainboard documentation and CAD published", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Enabled community firmware work and third-party reuse of mainboards (e.g. printable cases), while UEFI stayed closed.", "source": "https://frame.work/blog/open-sourcing-our-firmware"}
+  ],
+  "funding_total_usd": 45225000,
+  "funding_as_of": "2024-04",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2021-2022: early AMD shipments delayed by electrical and firmware issues",
+    "2024: Ars Technica reported Framework had fallen short on timely BIOS and firmware updates (company acknowledged; progress noted June 2025)",
+    "2025-10: controversy over sponsoring politically polarising software projects",
+    "2026: Laptop 13 Pro shipping slipped from late June to late July over manufacturing issues",
+    "2026-08: notified all customers of a data breach at a third party"
+  ],
+  "robustness": "Relies on contract manufacturing and closed UEFI firmware from Insyde, so long-term support depends on the company, but published CAD, pinouts and the open EC firmware let owners and third parties repair, reuse and extend hardware independently. Small VC base (about $45M disclosed) for a multi-product hardware maker.",
+  "physical_science_relevance": "Repairable, documented mainboards can be reused as embedded lab computers (Framework publishes printable cases for bare mainboards); open EC firmware and Linux-first support (Laptop 13 Pro shipped Ubuntu-first in 2026) suit research users.",
+  "openness_effect_assessment": "Framework uses openness of interfaces and documentation (CC BY 4.0 CAD, open EC firmware, expansion-card reference designs) as a product feature for repairability and a third-party module ecosystem, while keeping core board designs and BIOS closed. It has grown from one laptop to four product lines in five years on modest funding (about $45M disclosed), but openness has not removed the firmware-maintenance burden that drew its main criticism in 2024.",
+  "key_takeaway": "Framework is a US example of partial, interface-level openness as a business strategy: publish the module interfaces, CAD and EC firmware so customers and third parties can repair and extend the machine, but keep the mainboard design and BIOS proprietary. It sits at level 2 and shows that 'open where it builds an ecosystem, closed where it protects the core' can sustain a VC-backed hardware startup through 2026, with firmware update cadence as the main weakness.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Framework_Computer", "title": "Framework Computer", "publisher": "Wikipedia", "date": "2026-11", "supports": "founded_year, origin_detail, products and dates, funding rounds, criticism, 2025-2026 events, proprietary UEFI"},
+    {"url": "https://frame.work/blog/open-sourcing-our-firmware", "title": "Open Sourcing our Firmware", "publisher": "Framework Computer (Nirav Patel)", "date": "2022-01-21", "supports": "license_history[0], relicensing_events[0]"},
+    {"url": "https://frame.work/blog/frameworks-series-a-1-and-community-participation", "title": "Framework's Series A-1 and community participation", "publisher": "Framework Computer (Nirav Patel)", "date": "2024-04-23", "supports": "funding_total_usd ($17M Series A-1 plus $1M community round, Spark Capital lead)"},
+    {"url": "https://frame.work/blog/frameworks-series-a-and-the-years-ahead", "title": "Framework's Series A and the years ahead", "publisher": "Framework Computer", "date": "2022-01", "supports": "funding_total_usd ($18M Series A, Spark Capital) - cited via Wikipedia, not fetched"},
+    {"url": "https://techcrunch.com/2024/04/23/frameworks-repairability-philosophy-is-set-to-expand-beyond-the-laptop/", "title": "Framework's repairability philosophy is set to expand beyond the laptop", "publisher": "TechCrunch", "date": "2024-04-23", "supports": "Series A-1 (second source, cited via Wikipedia, not fetched)"},
+    {"url": "https://github.com/FrameworkComputer/Framework-Laptop-13", "title": "FrameworkComputer/Framework-Laptop-13", "publisher": "GitHub", "date": "2026-11", "supports": "license_history (CC BY 4.0), openness_notes (STEP CAD, drawings, pinouts)"},
+    {"url": "https://github.com/FrameworkComputer", "title": "Framework Computer GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "openness_notes (113 public repos; ExpansionCards, EmbeddedController, Laptop 16/12/Desktop docs, partial schematics; MIT/BSD-3/GPL repos)"},
+    {"url": "https://techcrunch.com/2026/08/07/computer-maker-framework-notifies-all-customers-of-a-data-breach/", "title": "Computer maker Framework notifies all customers of a data breach", "publisher": "TechCrunch", "date": "2026-08-07", "supports": "risk_events (2026 data breach) - cited via Wikipedia, not fetched"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": ["CC BY 4.0 (Framework Laptop 13 chassis CAD, drawings and pinouts)", "Expansion card, expansion bay and input-module reference designs published on GitHub (licences not individually verified)"],
+    "firmware_software_licenses": ["BSD-3-Clause (EC firmware; framework-system tools)", "MIT (inputmodule-rs)", "GPL-2.0 (coreboot fork)", "Proprietary InsydeH2O UEFI"],
+    "patents": null,
+    "clone_impacts": "None documented in the sources fetched; open module interfaces have instead produced third-party expansion cards and community modules."
+  },
+  "notes": [
+    "SEARCH BUDGET EXHAUSTED: no WebSearch queries could be run for this org because the turn's shared 200-search budget was used up. Data come from direct fetches of Wikipedia, Framework's own blog and its GitHub repositories, not from memory. The 4-search requirement is not met.",
+    "funding_total_usd = $9M seed (2021) + $225k from Linus Sebastian (Sept 2021) + $18M Series A (Jan 2022) + $17M Series A-1 + $1M accredited-investor community round (Apr 2024) = $45.225M. The community round was a Rule 506(c) offering ($10k minimum, accredited investors), not crowdfunding. No 2025-2026 round was found in the fetched pages; this may be incomplete.",
+    "Valuation, revenue and headcount not found; null.",
+    "openness_initial = 1 is uncertain: the date when expansion-card reference designs were first published was not verified; the January 2022 firmware post refers to the Expansion Card Developer Program and early community cards.",
+    "Several sources (Framework Series A blog, TechCrunch 2022/2024/2026) are cited as listed in Wikipedia's references and were not fetched directly."
+  ]
+}

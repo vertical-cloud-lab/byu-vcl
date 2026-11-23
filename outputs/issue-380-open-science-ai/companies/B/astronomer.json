@@ -1,0 +1,69 @@
+{
+  "name": "Astronomer, Inc.",
+  "slug": "astronomer",
+  "group": "B",
+  "category": "software",
+  "subcategory": "data orchestration (managed Apache Airflow)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Commercial company around Apache Airflow, which Maxime Beauchemin created at Airbnb in Oct 2014 (corporate origin, open source from the start, Apache Incubator Mar 2016, top-level ASF project Jan 2019). Astronomer gives 2018 as its founding year; hubs in Cincinnati, New York, San Francisco and San Jose; HQ moved to New York City in Feb 2024",
+  "founded_year": 2018,
+  "flagship_projects": ["Apache Airflow (contributor; ASF-governed)", "Astro (managed Airflow SaaS)", "Astro Observe", "Astro Private Cloud", "OpenLineage (via Datakin)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Airflow itself is Apache-2.0 under neutral ASF governance (a level-4 project), but Astronomer's revenue product, Astro, is a proprietary managed service. Astronomer engineers were 16 of the top 25 all-time Airflow contributors (2022), so the company steers but does not own the project; competing managed Airflow services exist from Google, AWS and Microsoft.",
+  "business_model": "saas",
+  "license_history": [
+    {"year": 2015, "license": "Apache-2.0 (Airflow 1.0.0, 3 Jun 2015, Airbnb)", "note": "Open source from the beginning", "source": "https://en.wikipedia.org/wiki/Apache_Airflow"},
+    {"year": 2019, "license": "Apache-2.0, ASF top-level project", "note": "Incubator Mar 2016; TLP Jan 2019", "source": "https://en.wikipedia.org/wiki/Apache_Airflow"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 1000000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2025-07",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 250,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Competes with free/managed Airflow from hyperscalers (Google Cloud Composer, AWS MWAA, Microsoft Azure) on a project it does not control",
+    "Jul 2025: CEO Andy Byron and chief people officer Kristin Cabot were filmed on a Coldplay concert 'kiss cam' (16 Jul 2025); the viral video led to leave, an investigation and both resigning the following week",
+    "CEO churn: Joe Otto (2022), Andy Byron (by 2025), co-founder Pete DeJoy (listed as CEO by Aug 2025)",
+    "Not yet profitable: May 2025 release cites a 'two-year path to profitability'"
+  ],
+  "robustness": "The core technology is robust: Airflow is ASF-governed, used by 80,000+ organizations with 324M downloads in 2024 (30M/month), and supported by multiple clouds, so it does not depend on Astronomer. Astronomer itself is a mid-sized VC-backed vendor (700+ enterprise customers, Astro ARR growth 140-150% in its last fiscal year as of May 2025) whose moat is operational expertise and contributor influence rather than code ownership.",
+  "physical_science_relevance": "Airflow is used to orchestrate scientific data pipelines (e.g. ETL for instrument and simulation data); managed Airflow lowers the ops burden for research data teams.",
+  "openness_effect_assessment": "Because Airflow was donated to the ASF before Astronomer scaled, the company could never relicense it; it instead competes on a proprietary managed service and on contributor influence, while hyperscalers offer the same open project as a service. Growth has nevertheless been strong (Series C $213M in 2022, Series D $93M in 2025, ARR growth >100%), suggesting neutral governance did not prevent a viable vendor.",
+  "key_takeaway": "Astronomer is the archetype of a founder startup commercializing a corporate-donated, foundation-governed project (Airbnb to ASF): it cannot capture the project via licensing, so it sells hosting and expertise against hyperscaler competition. Its 2025 crisis was reputational (a CEO scandal), not licence-related, and the company survived it.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Apache_Airflow",
+    "https://www.astronomer.io/press/",
+    "https://www.astronomer.io/press-releases/astronomer-secures-93-million-series-d-funding/",
+    "https://siliconangle.com/2025/05/01/astronomer-nabs-93m-data-pipeline-platform/",
+    "https://en.wikipedia.org/wiki/Andy_Byron",
+    "https://www.astronomer.io/press-releases/astronomer-raises-213-million-series-c-acquires-datakin/"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Apache_Airflow", "title": "Apache Airflow", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, license_history"},
+    {"url": "https://www.astronomer.io/press/", "title": "Astronomer press releases", "publisher": "Astronomer", "date": "2026", "supports": "origin_detail (HQ move to NYC Feb 2024), risk_events (Pete DeJoy CEO by Aug 2025), executive hires 2026"},
+    {"url": "https://www.astronomer.io/press-releases/astronomer-raises-213-million-series-c-acquires-datakin/", "title": "Astronomer raises $213 million Series C, acquires Datakin", "publisher": "Astronomer", "date": "2022-03-23", "supports": "founded_year (2018), employees_latest (>250), openness_notes (16 of top 25 contributors), risk_events (Joe Otto CEO)"},
+    {"url": "https://www.astronomer.io/press-releases/astronomer-secures-93-million-series-d-funding/", "title": "Astronomer secures $93 million Series D funding", "publisher": "Astronomer", "date": "2025-05-01", "supports": "robustness (700+ customers, 80K orgs, 324M downloads in 2024), risk_events (path to profitability, Andy Byron CEO)"},
+    {"url": "https://siliconangle.com/2025/05/01/astronomer-nabs-93m-data-pipeline-platform/", "title": "Astronomer nabs $93M for its data pipeline platform", "publisher": "SiliconANGLE", "date": "2025-05-01", "supports": "robustness (Astro ARR +140%)"},
+    {"url": "https://en.wikipedia.org/wiki/Andy_Byron", "title": "Impact of the Music of the Spheres World Tour (Andy Byron redirect)", "publisher": "Wikipedia", "date": null, "supports": "risk_events (Jul 2025 incident and resignations), latest_value_usd ('worth $1 billion')"}
+  ],
+  "notes": [
+    "latest_value_usd $1B: Astronomer is described as 'worth $1 billion' in Wikipedia's account of the Jul 2025 incident; neither the Series C (2022) nor the Series D (2025) release discloses a valuation. Low confidence.",
+    "funding_total_usd null: disclosed rounds include $213M Series C (Mar 2022, Insight Partners) and $93M Series D (May 2025, Bain Capital Ventures), i.e. at least $306M; earlier rounds were not confirmed in fetched pages.",
+    "revenue null: only growth rates disclosed (>200% H1 2023; Astro ARR +140-150% in the year to May 2025; EMEA ARR +122% in Mar 2026).",
+    "employees_latest is '>250' as of Mar 2022; no later figure found.",
+    "Failed fetches: Wikipedia 'Astronomer_(company)' (404), astronomer.io/company (404), Wired article on the new CEO (blocked)."
+  ]
+}

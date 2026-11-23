@@ -1,0 +1,209 @@
+{
+  "name": "RCSB Protein Data Bank and the Worldwide Protein Data Bank (wwPDB)",
+  "slug": "rcsb-pdb-wwpdb",
+  "group": "F",
+  "category": "open_infrastructure",
+  "subcategory": "macromolecular structure archive (experimental 3D structures)",
+  "hq_country": "US",
+  "origin": "government",
+  "origin_detail": "Set up in 1971 at Brookhaven National Laboratory by crystallographer Walter Hamilton after the Cold Spring Harbor meeting, in partnership with Olga Kennard's Cambridge Crystallographic Data Centre; launched with seven structures. Brookhaven ran it until 1998/1999, when management passed by federal competition to the RCSB consortium (Rutgers, UC San Diego/SDSC, NIST). The wwPDB was formed in 2003 (RCSB PDB, PDBe, PDBj) to run a single global archive.",
+  "founded_year": 1971,
+  "flagship_projects": [
+    "PDB archive",
+    "RCSB.org",
+    "PDBx/mmCIF data standard",
+    "OneDep deposition system (wwPDB)",
+    "PDB-101 education portal"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Open archive since its 1971 announcement as an international collaboration; in 2003 the wwPDB partners agreed on a single global archive with freely and publicly available data. In August 2021 the wwPDB replaced its historical data-access licence with CC0 1.0, explicitly including commercial users; RCSB software is MIT or Apache-2.0. Access terms of the 1970s tape-distribution era were not checked.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2003,
+      "license": "wwPDB agreement: single global archive, data freely and publicly available",
+      "note": "Historical wwPDB data-access licence (text not reviewed)",
+      "source": "https://rcsb.org/pages/about-us/history"
+    },
+    {
+      "year": 2021,
+      "license": "CC0 1.0 Universal for archival data files (PDB, EMDB, BMRB)",
+      "note": "Same access as before; commercial users explicitly included",
+      "source": "https://www.wwpdb.org/about/usage-policies"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2021,
+      "from": "wwPDB historical data-access licence",
+      "to": "CC0 1.0",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Standardised on a Creative Commons public-domain dedication to meet FAIR objectives; access was already free.",
+      "source": "https://pdbj.org/news/wwpdb-cc0-10"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "government",
+  "exit_events": [],
+  "latest_value_usd": 49400000,
+  "latest_value_type": "multi-year federal award for RCSB PDB core operations, 2024 to 2028 (not annual; prior 2019-2023 period was $34.3M). RCSB separately estimates archive replacement cost at >$27B.",
+  "latest_value_date": "2025-01",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "1998 federal re-competition moved US management from Brookhaven to the RCSB consortium; the archive survived the hand-off.",
+    "Funding depends on five-year federal awards (NSF DBI-2321666, DOE DE-SC0019749, NIH NCI/NIAID/NIGMS).",
+    "Archive-format transition: switch to PDBx/mmCIF and extended PDB IDs as four-character IDs run out.",
+    "Traffic now includes bot and AI-agent load (>6.7 billion requests in 2025)."
+  ],
+  "robustness": "Very high. The archive is held jointly by wwPDB data centres in the US, Europe and Asia, released under CC0, redistributed by 520 external resources, and served through AWS Open Data (s3.rcsb.org). It has outlived its original host lab and a change of US management.",
+  "physical_science_relevance": "Structural biology, chemistry and biophysics. About 82% of X-ray structures released in 2025 came from US labs that used DOE synchrotron or XFEL facilities, so it is also the main public output channel for DOE light sources. PDB structures were the training set for AlphaFold2, RoseTTAFold and OpenFold.",
+  "openness_effect_assessment": "Open, community-mandated deposition built a 55-year, curated, uniform archive (247,287 structures at 1 Jan 2026) that later became the training set for AlphaFold2. The 2024 Chemistry Nobel laureates credited the open PDB as essential. Openness also yields heavy reuse (4.7 billion downloads across wwPDB in 2025) and many redistributors, which in turn makes the archive hard to lose.",
+  "key_takeaway": "The PDB is the strongest evidence that long-lived, government-founded open scientific data pays off on timescales no market would fund: a 1971 national-lab archive costing roughly $10M a year in US federal support became the substrate for a Nobel-winning AI system 50 years later. Its robustness comes from international replication and a public-domain licence, not from any single institution.",
+  "usage_metrics": [
+    {
+      "metric": "structures in archive",
+      "value": 247287,
+      "date": "2026-01-01",
+      "source": "https://cdn.rcsb.org/rcsb-pdb/general_information/news_publications/annual_reports/annual_report_year_2025.pdf"
+    },
+    {
+      "metric": "new structures released in 2025 (record)",
+      "value": 17588,
+      "date": "2025",
+      "source": "https://cdn.rcsb.org/rcsb-pdb/general_information/news_publications/annual_reports/annual_report_year_2025.pdf"
+    },
+    {
+      "metric": "data file downloads across wwPDB in 2025",
+      "value": 4700000000,
+      "date": "2025",
+      "source": "https://cdn.rcsb.org/rcsb-pdb/general_information/news_publications/annual_reports/annual_report_year_2025.pdf"
+    },
+    {
+      "metric": "unique clients of RCSB.org in 2025 (5.6M in 2024)",
+      "value": 6300000,
+      "date": "2025",
+      "source": "https://cdn.rcsb.org/rcsb-pdb/general_information/news_publications/annual_reports/annual_report_year_2025.pdf"
+    },
+    {
+      "metric": "computed structure models (AlphaFold DB, ModelArchive) served on RCSB.org",
+      "value": 1068577,
+      "date": "2025",
+      "source": "https://cdn.rcsb.org/rcsb-pdb/general_information/news_publications/annual_reports/annual_report_year_2025.pdf"
+    },
+    {
+      "metric": "estimated archive replacement cost (USD)",
+      "value": 27000000000,
+      "date": null,
+      "source": "https://rcsb.org/pages/about-us/index"
+    }
+  ],
+  "funding_sources": [
+    "NSF (DBI-2321666)",
+    "DOE (DE-SC0019749)",
+    "NIH: NCI, NIAID, NIGMS",
+    "AWS Open Data sponsorship (in-kind)"
+  ],
+  "notes": [
+    "Cumulative funding since 1971 not found; known US awards: $10M/5 yr (1998), up to $31.5M/5 yr (2008 NSF solicitation), $34.3M (2019-2023), $49.4M (2024-2028).",
+    "Third-party grant databases list NSF award 2321666 at $25.0M or $22.0M (NSF share only); the Rutgers $49.4M is all agencies combined.",
+    "Staff count not found. European and Japanese wwPDB partners (PDBe, PDBj) are funded separately and not included."
+  ],
+  "confidence": "high",
+  "search_tool": "WebSearch",
+  "searches": [
+    "Protein Data Bank founded 1971 Brookhaven history wwPDB 2003",
+    "RCSB PDB funding NSF NIH DOE cooperative agreement amount",
+    "AlphaFold trained on Protein Data Bank structures Nobel Prize 2024 PDB role",
+    "RCSB PDB 2025 2026 number of structures users downloads annual report",
+    "wwPDB data CC0 public domain policy PDB archive license",
+    "PDB archive replacement cost estimated billion dollars RCSB Burley"
+  ],
+  "sources": [
+    {
+      "url": "https://rcsb.org/pages/about-us/history",
+      "title": "PDB History",
+      "publisher": "RCSB PDB",
+      "date": null,
+      "supports": "founded_year, origin_detail, license_history[0]"
+    },
+    {
+      "url": "https://journals.iucr.org/a/issues/2008/01/00/sc5004/",
+      "title": "The Protein Data Bank: a historical perspective (Berman)",
+      "publisher": "Acta Crystallographica A",
+      "date": "2008-01",
+      "supports": "origin_detail (Hamilton, Kennard, Brookhaven)"
+    },
+    {
+      "url": "https://www.rutgers.edu/news/protein-data-bank-thrives-its-funding-renewed-increased-levels",
+      "title": "As the Protein Data Bank Thrives, Its Funding Is Renewed at Increased Levels",
+      "publisher": "Rutgers University",
+      "date": "2025-01-14",
+      "supports": "latest_value_usd ($49.4M through 2028), $34.3M 2019-2023, AlphaFold2 training set, Nobel quote"
+    },
+    {
+      "url": "https://rcsb.org/pages/press/press_19981001",
+      "title": "Rutgers, UC San Diego and NIST win grant to manage Protein Data Bank",
+      "publisher": "RCSB PDB",
+      "date": "1998-10-01",
+      "supports": "risk_events[0], notes ($10M 1998 award)"
+    },
+    {
+      "url": "https://www.nsf.gov/funding/opportunities/pdb-mgmt-protein-data-bank-management/503139/nsf08-507/solicitation",
+      "title": "Protein Data Bank Management (NSF 08-507)",
+      "publisher": "NSF",
+      "date": "2008",
+      "supports": "notes ($31.5M/5 yr)"
+    },
+    {
+      "url": "https://cdn.rcsb.org/rcsb-pdb/general_information/news_publications/annual_reports/annual_report_year_2025.pdf",
+      "title": "RCSB PDB 2025 Annual Report",
+      "publisher": "RCSB PDB",
+      "date": "2026",
+      "supports": "usage_metrics, funding_sources (award numbers), physical_science_relevance (82% DOE light sources), risk_events[2-3], robustness (520 resources, AWS)"
+    },
+    {
+      "url": "https://www.wwpdb.org/about/usage-policies",
+      "title": "Usage Policy",
+      "publisher": "wwPDB",
+      "date": null,
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://pdbj.org/news/wwpdb-cc0-10",
+      "title": "PDB adopts a standard Creative Commons open source license",
+      "publisher": "PDBj / wwPDB",
+      "date": "2021-08",
+      "supports": "relicensing_events[0]"
+    },
+    {
+      "url": "https://www.embl.org/news/science-technology/alphafold-wins-nobel-prize-chemistry-2024/",
+      "title": "AlphaFold wins Nobel Prize in Chemistry 2024",
+      "publisher": "EMBL",
+      "date": "2024-10-09",
+      "supports": "openness_effect_assessment (trained on decades of shared data)"
+    },
+    {
+      "url": "https://rcsb.org/pages/about-us/index",
+      "title": "About RCSB PDB",
+      "publisher": "RCSB PDB",
+      "date": null,
+      "supports": "usage_metrics (replacement cost >$27B)"
+    },
+    {
+      "url": "https://bioinformatics.rcsb.org/pages/about-us/economic-impact",
+      "title": "Impact: Economic Analysis",
+      "publisher": "RCSB PDB",
+      "date": null,
+      "supports": "replacement-cost methodology (~$100,000 per structure; >$20B at ~200,000 structures)"
+    }
+  ]
+}

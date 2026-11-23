@@ -1,0 +1,159 @@
+{
+  "name": "LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator), Sandia National Laboratories",
+  "slug": "lammps",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "classical molecular dynamics code",
+  "hq_country": "US",
+  "origin": "government",
+  "origin_detail": "Began in the mid-1990s under a CRADA between two DOE labs (Sandia and LLNL) and three companies (Cray, Bristol-Myers Squibb, DuPont); coding led by Steve Plimpton at Sandia. Fortran LAMMPS 99 and LAMMPS 2001 followed; the C++ rewrite was first released as open source on 1 September 2004.",
+  "founded_year": 1995,
+  "flagship_projects": [
+    "LAMMPS",
+    "LAMMPS-GUI",
+    "KOKKOS and GPU acceleration packages",
+    "ML-IAP / ML-SNAP machine-learned potential interfaces"
+  ],
+  "openness_initial": 1,
+  "openness_current": 3,
+  "openness_notes": "A 2025 case study by the developers says LAMMPS 99 was 'available under a no-cost license, but was not open source'; the LAMMPS 99 documentation, by contrast, described it as GPL, so the initial level is uncertain. Since the 2004 C++ release LAMMPS is GPLv2. Development is led by a Sandia-anchored team (12 core developers at five US and European institutions in 2025) rather than a foundation, so it scores 3.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 1999,
+      "license": "No-cost licence, not open source (per 2025 developer paper; contested)",
+      "note": "LAMMPS 99 docs say GPL; sources conflict",
+      "source": "https://arxiv.org/html/2505.06877v1"
+    },
+    {
+      "year": 2004,
+      "license": "GPLv2",
+      "note": "C++ rewrite first released as open source, 1 Sep 2004",
+      "source": "https://www.lammps.org/about/history/"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2004,
+      "from": "No-cost non-open licence (LAMMPS 99/2001, contested)",
+      "to": "GPLv2",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Code grew from ~50,000 lines in 2004 to >1.32 million lines and 430+ contributors by May 2025.",
+      "source": "https://arxiv.org/html/2505.06877v1"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "government",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 12,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "No long-term-support releases 'due to limited workforce and funding' (developers, 2025).",
+    "Expected leadership transition as senior developers retire; maintenance earns little academic credit.",
+    "Testing infrastructure partly depends on a Temple University cluster that could become unavailable."
+  ],
+  "robustness": "GPLv2 code on GitHub with 430+ contributors and 92 optional packages; core team spread over five institutions; packaged by Linux distributions. Active cadence (stable release 30 Sep 2026, feature release 13 Nov 2026, ~7,400 commits between stable releases). Core funding still flows mainly from DOE through Sandia.",
+  "physical_science_relevance": "One of the standard open classical MD engines for materials science, chemistry and soft matter; the main host for running machine-learned interatomic potentials at scale on DOE supercomputers. R&D 100 award 2018.",
+  "openness_effect_assessment": "Opening the code under the GPL in 2004 turned a lab-internal CRADA code into a community platform: hundreds of outside contributors added physics packages, and the code grew ~25-fold in size. The trade-off is maintenance strain: the developers report that features are rewarded but upkeep is not, and that funding does not cover long-term-support releases.",
+  "key_takeaway": "LAMMPS shows a national-lab code outliving the industrial CRADA that created it by opening up: 30 years on it is a GPL community platform and a default MD engine for ML potentials, with no revenue model. Its fragility is people, not licence: a small DOE-funded core team carries maintenance for a very large user base.",
+  "usage_metrics": [
+    {
+      "metric": "contributors",
+      "value": 430,
+      "date": "2025-05",
+      "source": "https://arxiv.org/html/2505.06877v1"
+    },
+    {
+      "metric": "lines of code",
+      "value": 1320000,
+      "date": "2025-05",
+      "source": "https://arxiv.org/html/2505.06877v1"
+    },
+    {
+      "metric": "core developers",
+      "value": 12,
+      "date": "2025",
+      "source": "https://arxiv.org/html/2505.06877v1"
+    }
+  ],
+  "funding_sources": [
+    "DOE (mostly, via Sandia and LANL)",
+    "Original 1990s CRADA partners: Cray, Bristol-Myers Squibb, DuPont, LLNL"
+  ],
+  "notes": [
+    "founded_year 1995 is approximate: the project history says 'mid-1990s'; 1995 is the date of the canonical J. Comput. Phys. algorithms paper.",
+    "employees_latest = 12 core developers (not all Sandia employees), not a headcount.",
+    "No user count, download total or funding amount found; citation totals for the 1995 and 2022 papers not obtained from an authoritative index.",
+    "Exascale Computing Project involvement appears in Sandia publication titles but funding amounts were not confirmed."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebSearch",
+  "searches": [
+    "LAMMPS history Sandia 1995 CRADA Cray open source GPL 2004 Plimpton",
+    "LAMMPS citations number of users downloads 2022 paper Thompson Computer Physics Communications",
+    "LAMMPS funding DOE Exascale Computing Project Sandia R&D 100 award",
+    "LAMMPS 2025 2026 new stable release machine learning interatomic potentials Kokkos",
+    "Plimpton 1995 \"Fast parallel algorithms for short-range molecular dynamics\" citations most cited"
+  ],
+  "sources": [
+    {
+      "url": "https://www.lammps.org/about/history/",
+      "title": "LAMMPS history",
+      "publisher": "LAMMPS / Sandia",
+      "date": null,
+      "supports": "origin_detail, license_history[1], founded_year (mid-1990s)"
+    },
+    {
+      "url": "https://arxiv.org/html/2505.06877v1",
+      "title": "LAMMPS: A Case Study For Applying Modern Software Engineering to an Established Research Software Package",
+      "publisher": "arXiv",
+      "date": "2025-05",
+      "supports": "license_history[0], usage_metrics, risk_events, funding_sources"
+    },
+    {
+      "url": "https://sandia.gov/ccr/publications/details/lammps-a-flexible-simulation-tool-for-particle-based-materials-modeling-at-2022-02-01",
+      "title": "LAMMPS - a flexible simulation tool for particle-based materials modeling (Comput. Phys. Commun. 271, 108171)",
+      "publisher": "Sandia / Elsevier",
+      "date": "2022-02-01",
+      "supports": "physical_science_relevance, ~50,000 lines in 2004"
+    },
+    {
+      "url": "https://www.lammps.org/about/rd100/",
+      "title": "R&D 100 Award for LAMMPS",
+      "publisher": "LAMMPS",
+      "date": "2018",
+      "supports": "physical_science_relevance (R&D 100)"
+    },
+    {
+      "url": "https://www.lammps.org/news/2026-09-30-stable-release/",
+      "title": "New stable release: 30 September 2026 and LAMMPS-GUI v3.1.1",
+      "publisher": "LAMMPS",
+      "date": "2026-09-30",
+      "supports": "robustness (release cadence)"
+    },
+    {
+      "url": "https://matsci.org/t/new-lammps-stable-release-30-september-2026-and-lammps-gui-3-1-1-posted/67528",
+      "title": "New LAMMPS stable release 30 September 2026",
+      "publisher": "MatSci Community Discourse",
+      "date": "2026-09-30",
+      "supports": "robustness (~7,400 commits)"
+    },
+    {
+      "url": "https://www.lammps.org/download/",
+      "title": "Download LAMMPS",
+      "publisher": "LAMMPS",
+      "date": null,
+      "supports": "robustness (feature release 13 Nov 2026)"
+    }
+  ]
+}

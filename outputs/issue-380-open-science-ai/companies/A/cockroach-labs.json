@@ -1,0 +1,72 @@
+{
+  "name": "Cockroach Labs, Inc.",
+  "slug": "cockroach-labs",
+  "group": "A",
+  "category": "software",
+  "subcategory": "distributed SQL database (CockroachDB)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in New York by ex-Google engineers Spencer Kimball and Peter Mattis (Google File System team; earlier co-authors of GIMP at UC Berkeley) and Ben Darnell (Google Reader). CockroachDB began as an open-source project inspired by Google Spanner; after VC interest the company was incorporated in February 2015. CockroachDB 1.0 shipped May 2017.",
+  "founded_year": 2015,
+  "flagship_projects": ["CockroachDB", "CockroachDB Cloud"],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "CockroachDB started as Apache-2.0 open source; enterprise features later went under the source-available Cockroach Community License (open core, 2). From v19.2 (2019) the core moved to BSL 1.1 (converting to Apache-2.0 after three years). From v24.3 (2024-11-18) the free Core edition was retired and all self-hosted use falls under a single proprietary 'CockroachDB Software License', with free use only for individuals, students, academics and firms under $10M revenue. Source remains visible, so level 1 (arguably near 0).",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2015, "license": "Apache-2.0", "note": "Open-source project before and at incorporation.", "source": "https://en.wikipedia.org/wiki/CockroachDB"},
+    {"year": 2019, "license": "BSL 1.1 (core, from v19.2; converts to Apache-2.0 after 3 years) + Cockroach Community License (enterprise features)", "note": "v19.1.x stayed Apache-2.0; only restriction was offering CockroachDB as a service without an enterprise licence.", "source": "https://www.cockroachlabs.com/blog/oss-relicensing-cockroachdb/"},
+    {"year": 2024, "license": "CockroachDB Software License (single Enterprise licence; free tier for <$10M revenue)", "note": "Announced 2024-08-15, effective with v24.3 on 2024-11-18; self-hosted only, cloud unchanged; government entities do not qualify for free use.", "source": "https://www.cockroachlabs.com/blog/enterprise-license-announcement/"}
+  ],
+  "relicensing_events": [
+    {"year": 2019, "from": "Apache-2.0", "to": "BSL 1.1", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Framed as protection against AWS-style hosted resale. No significant community fork; Apache-2.0 competitors (YugabyteDB, TiDB) used it in marketing.", "source": "https://www.devclass.com/ai-ml/2019/06/05/cockroachdb-shelters-from-aws-extermination-under-business-software-license/1631670"},
+    {"year": 2024, "from": "BSL 1.1 (Core) + CCL (Enterprise)", "to": "CockroachDB Software License (single proprietary enterprise licence)", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Ended the free Core edition to make larger companies pay; covered by The Register as 'abandoning open core'. No fork reported.", "source": "https://www.theregister.com/2024/08/19/cockroachdb_abandons_open_core/"}
+  ],
+  "funding_total_usd": 633000000,
+  "funding_as_of": "2021-12",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 5000000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2021-12-16",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2019: BSL relicense",
+    "2023-10: Layoff of ~75 staff (TrueUp tracker)",
+    "2024-11-18: Free Core edition retired; single proprietary licence",
+    "2026-09-02: Reported reduction of ~50 staff (~6.8%), listed as an unconfirmed rumor on Blind's tracker",
+    "No IPO or new priced round since the 2021 $5B valuation (no S-1 as of mid-2026)"
+  ],
+  "robustness": "Single-vendor, VC-backed, private since 2015; no foundation and no fork, so customers depend on Cockroach Labs. Funding of $633M gives runway, but the $5B valuation is from the 2021 peak and has not been re-priced publicly. PostgreSQL wire compatibility gives customers some portability.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Apache licensing and the Spanner pedigree drew early developer interest and large venture rounds (to a $5B valuation in 2021). The company then closed in two steps, BSL in 2019 and a single proprietary licence in 2024, without provoking a fork, likely because its user base was smaller and hyperscalers already had their own distributed SQL services. Closing is aimed at monetizing large self-hosted users; there is no public evidence yet whether it raised revenue.",
+  "key_takeaway": "Cockroach Labs shows that a database company can move from Apache to nearly proprietary with little community backlash when the project lacks a large independent contributor base or a hyperscaler with motive to fork. The cost is that it now competes as a proprietary vendor against Apache-licensed rivals (YugabyteDB, TiDB) and Postgres itself, with no public exit and a valuation last set at the 2021 peak.",
+  "confidence": "medium",
+  "searches": [
+    "Cockroach Labs founded 2015 Spencer Kimball Peter Mattis Ben Darnell Google Spanner CockroachDB origin",
+    "CockroachDB Business Source License June 2019 license change Apache 2.0",
+    "CockroachDB August 2024 retires Core free version enterprise license only CockroachDB Software License November 2024",
+    "Cockroach Labs Series F $278 million $5 billion valuation total funding raised",
+    "Cockroach Labs 2026 revenue ARR employees layoffs IPO news"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/CockroachDB", "title": "CockroachDB", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, license_history[0]"},
+    {"url": "https://techcrunch.com/2021/07/15/cockroachdb-ec1-origin/", "title": "CockroachDB origin story (EC-1)", "publisher": "TechCrunch", "date": "2021-07-15", "supports": "origin_detail (incorporated Feb 2015)"},
+    {"url": "https://www.cockroachlabs.com/blog/oss-relicensing-cockroachdb/", "title": "Why we're relicensing CockroachDB", "publisher": "Cockroach Labs", "date": "2019-06", "supports": "license_history[1]"},
+    {"url": "https://www.devclass.com/ai-ml/2019/06/05/cockroachdb-shelters-from-aws-extermination-under-business-software-license/1631670", "title": "CockroachDB shelters from AWS extermination under Business Source License", "publisher": "DevClass", "date": "2019-06-05", "supports": "relicensing_events[0]"},
+    {"url": "https://www.cockroachlabs.com/blog/enterprise-license-announcement/", "title": "Enterprise license announcement", "publisher": "Cockroach Labs", "date": "2024-08-15", "supports": "license_history[2]"},
+    {"url": "https://techcrunch.com/2024/08/15/cockroach-labs-shakes-up-its-licensing-to-force-bigger-companies-to-pay", "title": "Cockroach Labs shakes up its licensing to force bigger companies to pay", "publisher": "TechCrunch", "date": "2024-08-15", "supports": "license_history[2], relicensing_events[1]"},
+    {"url": "https://www.theregister.com/2024/08/19/cockroachdb_abandons_open_core/", "title": "CockroachDB scuttles away from open source Core offering", "publisher": "The Register", "date": "2024-08-19", "supports": "relicensing_events[1]"},
+    {"url": "https://www.cockroachlabs.com/news/press-release-series-f-funding", "title": "Cockroach Labs Raises $278M in Series F Funding", "publisher": "Cockroach Labs", "date": "2021-12-16", "supports": "funding_total_usd ($633M), latest_value_usd"},
+    {"url": "https://www.cnbc.com/2021/12/16/software-start-up-cockroach-labs-doubles-valuation-in-latest-funding.html", "title": "Software start-up Cockroach Labs doubles valuation in latest funding", "publisher": "CNBC", "date": "2021-12-16", "supports": "latest_value_usd cross-check (Series E Jan 2021 at $2B)"},
+    {"url": "https://www.trueup.io/co/cockroach-labs", "title": "Cockroach Labs Company Profile", "publisher": "TrueUp", "date": "2026", "supports": "risk_events[1]"},
+    {"url": "https://www.teamblind.com/layoffs/company/cockroach-labs", "title": "Cockroach Labs Layoffs — Layoff Tracker", "publisher": "Blind", "date": "2026-09", "supports": "risk_events[3] (rumor, unconfirmed)"},
+    {"url": "https://blog.mexc.com/finance/cockroach-labs-ipo-2026-valuation-competitors-how-to-invest/", "title": "Cockroach Labs IPO 2026", "publisher": "MEXC blog", "date": "2026", "supports": "risk_events[4] (no S-1)"}
+  ],
+  "notes": "revenue_latest_usd is null: only aggregator estimates exist (RocketReach/ZoomInfo ~$145.8M for 2026; Owler $25-100M; Dealroom $100-500M). employees_latest is null: aggregators range from ~500 (TrueUp) to 694 (RocketReach). Some bios date the project to 2014; incorporation was February 2015."
+}

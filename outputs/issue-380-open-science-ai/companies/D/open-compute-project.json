@@ -1,0 +1,76 @@
+{
+  "name": "Open Compute Project Foundation",
+  "slug": "open-compute-project",
+  "group": "D",
+  "category": "foundation",
+  "subcategory": "open data-centre hardware specifications consortium",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Began in 2009 as Facebook's internal 'Project Freedom' to design the hardware for its first own data centre in Prineville, Oregon. Facebook announced OCP on 2011-04-07, publishing specifications and mechanical CAD for its servers, racks, power and building; the OCP Foundation, a Delaware 501(c)(6) nonprofit, was formed the same year with founding participants including Intel, Rackspace, Fidelity/Goldman Sachs and Andy Bechtolsheim (accounts of the founding list differ).",
+  "founded_year": 2011,
+  "flagship_projects": ["Open Rack (V3.1 base spec as of 2026)", "OCP server designs (Windmill, Winterfell, Leopard and later)", "OCP NIC 3.0", "OCP Accelerator Module (OAM)", "Wedge switches and FBOSS", "SONiC (linked project)"],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Hardware column applied to what the foundation stewards: shared specifications and design packages. At launch Facebook published specifications and mechanical CAD files for servers, power supplies, racks, battery backup and the building, described as free open hardware, and a multi-company foundation was set up the same year, so the designs were open with consortium governance from the start (4). Today contributions are made under the OCP CLA or the Open Web Foundation CLA and specifications are licensed under OWFa 1.0 or the OCP Hardware License (permissive or reciprocal/copyleft variant), governed by a foundation of 400+ member companies (4). Caveats: the board is mostly large-company seats (Meta chairs; Arm, Microsoft, AMD, Google, Intel, NVIDIA, plus one individual), the licence varies per contribution, and the 'OCP-recognized' market includes vendor products built to open specs whose own design files are not necessarily published.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2011, "license": "Specifications and mechanical CAD released free on the web (no licence named in the launch announcement)", "note": "Facebook Prineville server, rack, power and building designs.", "source": "https://about.fb.com/news/2011/04/facebook-launches-open-compute-project/"},
+    {"year": 2015, "license": "OCP IP policy: contributions under OCP CLA or OWF CLA; Specification License = OCP Hardware License (permissive or reciprocal) or OWFa 1.0", "note": "Year is the policy document's date; many earlier contributions (e.g. Open Rack, Open CloudServer) were already under OWFa 1.0 per OCP's wiki.", "source": "https://opencompute.org/documents/ocp-ip-rights-management-policy"},
+    {"year": 2021, "license": "Modified OWF CLA 1.0 (as of 2021-08-16)", "note": "Offered alongside the OCP CLA in the 2023 specification templates; authors pick one.", "source": "https://opencompute.org/documents/modified-owf-cla-10-as-of-august-16-2021"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "foundation",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2015-2018: BladeRoom Group sued Facebook and Emerson alleging its prefabricated data-centre trade secrets were disclosed through OCP; settled confidentially mid-trial in April 2018",
+    "Governance concentration: the 2026 board is seven large-company seats plus one individual, with Meta in the chair",
+    "2024-2026: AI rack power densities (92 kW+ High Power Rack, Open Rack V3 power updates) push specs to evolve quickly, raising the cost of keeping open specs current"
+  ],
+  "robustness": "High. A member-funded nonprofit with 400+ member companies (Feb 2025) and many independent suppliers building to shared specs, so no single vendor's failure ends the designs; but agenda-setting depends on a handful of hyperscalers (Meta, Microsoft, Google) whose needs drive which specs are contributed.",
+  "physical_science_relevance": "OCP racks, servers and accelerator modules are the hardware substrate for hyperscale and AI computing, which increasingly hosts scientific simulation and ML workloads; open rack and power specifications let research computing centres buy commodity, multi-vendor gear.",
+  "openness_effect_assessment": "Publishing Facebook's in-house designs created a multi-vendor market: OCP hardware sales were reported above $1.2B in 2017, Omdia estimated $16.1B in 2020 and $21.7B in 2021, and an OCP-commissioned IDC study (Oct 2026) put spending on OCP-recognized equipment at about $154B in 2025 heading toward $892B by 2030. Openness here served buyers: hyperscalers shared designs to commoditise suppliers and cut costs (Facebook claimed 24% lower build cost and 38% better energy efficiency at Prineville). The open licences did not stop trade-secret litigation from a third party (BladeRoom, 2015-2018).",
+  "key_takeaway": "OCP is the buyer-led model of open hardware: the largest customers publish designs so that many manufacturers compete to build them, and a foundation keeps the specs neutral. It shows open hardware can reach a market measured in hundreds of billions of dollars of spending when demand is concentrated in a few giant buyers, while the value accrues to those buyers and to vendors rather than to any open-hardware company. Market figures are forecasts commissioned by OCP itself and measure spending on 'OCP-recognized' equipment, not OCP revenue.",
+  "confidence": "medium",
+  "searches": [
+    "Open Compute Project founded 2011 Facebook Prineville data center open hardware foundation history",
+    "Open Compute Project specification licence OWFa CLA hardware license contributions \"OCP Accepted\" \"OCP Inspired\"",
+    "Omdia OCP market forecast billion OCP-recognized equipment sales"
+  ],
+  "sources": [
+    {"url": "https://about.fb.com/news/2011/04/facebook-launches-open-compute-project/", "title": "Facebook Launches Open Compute Project", "publisher": "Meta (Facebook) Newsroom", "date": "2011-04-07", "supports": "founded_year, origin_detail, license_history[0], efficiency and cost claims"},
+    {"url": "https://en.wikipedia.org/wiki/Open_Compute_Project", "title": "Open Compute Project", "publisher": "Wikipedia", "date": "2026-11", "supports": "Project Freedom origin, 501(c)(6) Delaware, board composition 2026, 400+ members (Feb 2025), BladeRoom litigation, Open Rack V3.1"},
+    {"url": "https://www.opencompute.org/index.php/blog/a-10-year-reflection-on-the-open-compute-project", "title": "A 10 Year Reflection on the Open Compute Project", "publisher": "Open Compute Project", "date": "2021", "supports": "founding companies list"},
+    {"url": "https://opencompute.org/documents/ocp-ip-rights-management-policy", "title": "OCP IP Rights Management Policy", "publisher": "Open Compute Project", "date": "2015", "supports": "license_history[1]"},
+    {"url": "https://www.opencompute.org/participate/legal-documents/", "title": "Legal Documents", "publisher": "Open Compute Project", "date": "2026", "supports": "license_history (OCP CLA, OWF CLA, OCP Hardware License)"},
+    {"url": "https://opencompute.org/documents/ocphl-r-copyleft-v10", "title": "OCP Hardware License - Reciprocal (copyleft) v1.0", "publisher": "Open Compute Project", "date": null, "supports": "hardware_extras.hardware_licenses"},
+    {"url": "https://www.networkworld.com/article/965446/what-is-the-open-compute-project.html", "title": "What is the Open Compute Project?", "publisher": "Network World", "date": null, "supports": "openness_effect_assessment (sales over $1.2B in 2017)"},
+    {"url": "https://datacenterknowledge.com/hardware/open-compute-project-hardware-sales-hit-46b-2025", "title": "Open Compute Project Hardware Sales to Hit $46B by 2025", "publisher": "Data Center Knowledge (Omdia study)", "date": "2021", "supports": "openness_effect_assessment (2020 $16.1B, 2021 $21.7B)"},
+    {"url": "https://www.opencompute.org/news/idc-raises-2029-forecast-for-ocp-recognized-infrastructure-spending-by-2-7x-to-800-billion/", "title": "IDC Raises 2029 Forecast for OCP-Recognized Infrastructure Spending by 2.7x to $800 Billion", "publisher": "Open Compute Project (IDC study)", "date": "2026-10-13", "supports": "openness_effect_assessment (2025 ~$154B, 2030 ~$892B, 42% CAGR)"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": ["OWFa 1.0 (Open Web Foundation Agreement) for specifications", "OCP Hardware License - permissive", "OCP Hardware License - reciprocal (copyleft) v1.0", "Contribution licences: OCP CLA or modified OWF CLA 1.0"],
+    "firmware_software_licenses": ["OCP Software Contributor License Agreement for software contributions (project licences vary; not individually verified)"],
+    "patents": "Specification licences (OWFa, OCP Hardware License) include contributor patent commitments for implementers; per-contribution details not verified.",
+    "clone_impacts": "Copying is the goal: open specs are meant to be built by many vendors. A third party (BladeRoom) alleged its trade secrets leaked through OCP; settled 2018."
+  },
+  "notes": [
+    "SEARCH BUDGET EXHAUSTED: only 3 WebSearch queries ran for this org. Two more were attempted but not performed because the turn's shared 200-search budget was used up: 'Open Compute Project Foundation Form 990 revenue members number staff' and 'Open Compute Project 2025 2026 news OCP Global Summit members AI open rack Mt Diablo market size' (extended). 2025-2026 facts here come from direct fetches of the OCP news page and Wikipedia, not from memory.",
+    "Foundation revenue, staff and budget not found (Form 990 search blocked); null.",
+    "Market figures are not OCP revenue: Omdia (2021 study) estimated OCP hardware revenue of $16.1B in 2020 and $21.7B in 2021 and projected $46B by 2025; an OCP-commissioned IDC study (2026-10-13) estimated about $154B of spending on OCP-recognized IT equipment in 2025 rising to about $892B in 2030 (about $800B in 2029, 2.7x the prior year's $295B forecast). A December 2025 OCP release gave a different 2025 baseline ($132B), so the series are not directly comparable.",
+    "business_model 'mixed': membership dues and events (summits) are the assumed revenue base of a 501(c)(6) trade association; not verified with financial filings.",
+    "Membership: Wikipedia body text says over 400 member companies as of February 2025; its infobox says '50+ corporations' (outdated).",
+    "Founding partners differ by source: Facebook lists Goldman Sachs, Andy Bechtolsheim, Intel and Rackspace; OCP's 10-year reflection lists Facebook, Intel, Rackspace, Fidelity and Andy Bechtolsheim. The 2011 announcement names AMD, Dell, HP and Intel as co-developers."
+  ]
+}

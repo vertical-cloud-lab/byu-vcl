@@ -1,0 +1,71 @@
+{
+  "name": "Schrödinger, Inc.",
+  "slug": "schrodinger",
+  "group": "E",
+  "category": "sci_software",
+  "subcategory": "physics-based molecular simulation software + drug discovery",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Founded 1990 by Richard A. Friesner and William A. Goddard III. Core codes are exclusively licensed from Columbia University (Master License Agreement, Sept 2024): PS-GVB (in Jaguar), IMPACT (in Glide, PrimeX, QSite, Combiglide), protein-folding code (in Prime), PLOP, WaterMap and RESPA. Columbia keeps the right to let academic and non-profit institutions use the licensed software for non-commercial research and teaching. HQ New York.",
+  "founded_year": 1990,
+  "flagship_projects": ["Schrödinger computational platform (Glide, Jaguar, Prime, WaterMap, free-energy and MD tools)", "LiveDesign", "PyMOL (commercial 'Incentive PyMOL' + BSD-like open-source core)", "Materials Science platform"],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "The simulation platform, LiveDesign and the materials tools are proprietary and sold as licences, with academic licences for education and non-profit research. The only substantial open asset is the open-source core of PyMOL (github.com/schrodinger/pymol-open-source, 'BSD-like license', copyright Schrödinger LLC, ~1.8k stars). The paid product is 'Incentive PyMOL'. The FY2025 10-K lists open academic engines (AMBER, CHARMm, GROMACS, GROMOS, OpenMM, OpenFF) as competitors 'mainly maintained by graduate students and postdoctoral researchers' without commercialization intent. Level 1: only peripheral parts are open.",
+  "business_model": "proprietary",
+  "license_history": [
+    {"year": 1990, "license": "Proprietary commercial software, built on Columbia-licensed codes", "note": "Royalties paid to Columbia under the licence", "source": "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000010/sdgr-20251231.htm"},
+    {"year": null, "license": "PyMOL open-source core under a BSD-like licence (copyright Schrödinger)", "note": "The year Schrödinger took over PyMOL was not confirmed in fetched sources", "source": "https://github.com/schrodinger/pymol-open-source"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {"year": 2020, "type": "IPO", "value_usd": null, "counterparty": "Nasdaq (SDGR)", "note": "IPO 6 Feb 2020 at $17.00/share; proceeds not confirmed in fetched sources", "source": "https://stockanalysis.com/stocks/sdgr/company/"}
+  ],
+  "latest_value_usd": 1830000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 255900000,
+  "revenue_year": 2025,
+  "employees_latest": 850,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Aug 2025: discontinued SGR-2921 (CDC7 inhibitor) after two deaths in AML patients where the drug was considered a contributing factor. Beyond finishing Phase 1 of SGR-1505 and SGR-3515 it 'do[es] not intend to initiate additional clinical trials' on its own and seeks partners (FY2025 10-K)",
+    "FY2025: revenue $255.9M (software $199.5M, +11%), net loss ~$103M",
+    "Market cap: $2.47B (end-2021), $1.33B (end-2022), $2.58B (end-2023), $1.41B (end-2024), $1.32B (end-2025), $1.83B (23 Nov 2026)",
+    "Depends on an exclusive, royalty-bearing Columbia University licence for core codes"
+  ],
+  "robustness": "A public company with recurring software revenue across pharma and materials customers, plus partnerships including a $19.5M Gates Foundation-funded predictive-toxicology initiative (2024). Its key IP comes from a single university licence. Formats and workflows are proprietary, so customers are locked in. Open academic engines (OpenMM, OpenFF, GROMACS) are credible substitutes for parts of the stack, and open-source PyMOL would survive the company.",
+  "physical_science_relevance": "High. The same physics platform is sold to materials customers in OLED displays, aerospace and defence polymers, semiconductors, oil-and-gas catalysis, batteries and consumer goods (FY2025 10-K). Projects include a Gates Ventures battery-simulation agreement (2020, extended 2023) and a Copernic Catalysts collaboration on e-fuel and bulk-chemical catalysts (2023). In 2013 it ran a then-record 156,000-core cloud screen of 205,000 materials molecules (Wikipedia).",
+  "openness_effect_assessment": "Schrödinger has stayed closed for 35 years. Its moat is validated physics (force fields, free-energy methods) built on academic code it licenses exclusively, not open code. Open academic engines did not displace it; its own 10-K treats them as competitors lacking commercialization intent. The open PyMOL core keeps a broad user base and brand funnel for the paid version. No evidence was found that openness or closedness drove its 2025 retreat from wholly-owned clinical trials, which followed clinical safety events.",
+  "key_takeaway": "Schrödinger is the closed, physics-based, academically derived incumbent that AI-for-science entrants are measured against. It is 35 years old, public since 2020, earned $256M revenue in 2025 and sells to materials customers, yet it loses money and was worth about $1.8B in November 2026, below its end-2021 and end-2023 values. In 2025 it pulled back from running its own clinical trials toward software and partnering. That suggests its durable business is selling closed simulation tools, even as open academic engines cover parts of the same stack for free.",
+  "confidence": "medium",
+  "notes": [
+    "No WebSearch queries were run for this organization (shared WebSearch budget exhausted); facts come from direct WebFetch of SEC EDGAR, Wikipedia, GitHub and stockanalysis.com pages listed in fetched_urls.",
+    "funding_total_usd (pre-IPO private funding) and IPO proceeds were not found in fetched sources, so both are null.",
+    "employees_latest = 850 per stockanalysis.com profile (undated, updated Nov 2026); Wikipedia lists 1,015 (undated). The 10-K Human Capital section was not reached.",
+    "Founders' institutions beyond Columbia's licensor role were not confirmed in fetched sources."
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Schr%C3%B6dinger,_Inc.",
+    "https://stockanalysis.com/stocks/sdgr/market-cap/",
+    "https://stockanalysis.com/stocks/sdgr/company/",
+    "https://github.com/schrodinger/pymol-open-source",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=SDGR&type=8-K&dateb=&owner=include&count=40",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1490978&type=10-K&dateb=&owner=include&count=10",
+    "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000010/sdgr-20251231.htm"
+  ],
+  "sources": [
+    {"url": "https://www.sec.gov/Archives/edgar/data/1490978/000149097826000010/sdgr-20251231.htm", "title": "Schrödinger, Inc. Form 10-K for fiscal year 2025", "publisher": "SEC EDGAR", "date": "2026-02-25", "supports": "revenue_latest_usd, risk_events[0], risk_events[1], risk_events[3], origin_detail (Columbia licence), openness_notes (competitors), physical_science_relevance, robustness (Gates $19.5M)"},
+    {"url": "https://en.wikipedia.org/wiki/Schr%C3%B6dinger,_Inc.", "title": "Schrödinger, Inc.", "publisher": "Wikipedia", "date": "2026", "supports": "founded_year, origin_detail (founders), flagship_projects, risk_events[1] (net loss), physical_science_relevance (2013 cloud screen)"},
+    {"url": "https://stockanalysis.com/stocks/sdgr/market-cap/", "title": "Schrödinger (SDGR) Market Cap", "publisher": "StockAnalysis.com", "date": "2026-11-23", "supports": "latest_value_usd, risk_events[2]"},
+    {"url": "https://stockanalysis.com/stocks/sdgr/company/", "title": "Schrödinger (SDGR) Company Profile", "publisher": "StockAnalysis.com", "date": "2026-11", "supports": "exit_events[0], employees_latest"},
+    {"url": "https://github.com/schrodinger/pymol-open-source", "title": "schrodinger/pymol-open-source", "publisher": "GitHub", "date": "2026-11", "supports": "openness_current, license_history[1]"}
+  ]
+}

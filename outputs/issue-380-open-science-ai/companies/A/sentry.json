@@ -1,0 +1,83 @@
+{
+  "name": "Sentry (Functional Software, Inc.)",
+  "slug": "sentry",
+  "group": "A",
+  "category": "software",
+  "subcategory": "application error monitoring / observability",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "David Cramer started Sentry around 2008 as an open-source Django error-logging project; he and Chris Jennings founded Functional Software, Inc. in San Francisco around 2012 to sell hosted Sentry.",
+  "founded_year": 2012,
+  "flagship_projects": [
+    "Sentry",
+    "sentry.io (SaaS)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "Sentry was BSD-3-Clause, with revenue mainly from its hosted SaaS. In 2019 it moved to BSL 1.1 (converting to Apache-2.0 after three years). In 2023 it wrote the Functional Source License (FSL), which converts to Apache-2.0 or MIT after two years. It now promotes 'Fair Source' and funds maintainers through the Open Source Pledge. Source-available and non-OSI today: level 1.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2008,
+      "license": "BSD-3-Clause",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2019,
+      "license": "BSL 1.1 (3-year change date to Apache-2.0)",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2023,
+      "license": "Functional Source License (2-year change date to Apache-2.0/MIT)",
+      "note": "(unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2019,
+      "from": "BSD-3-Clause",
+      "to": "BSL 1.1",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "No significant fork known; the product is mostly consumed as SaaS (unverified)",
+      "source": null
+    },
+    {
+      "year": 2023,
+      "from": "BSL 1.1",
+      "to": "FSL",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Shorter delay before code becomes open source; still non-OSI (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [],
+  "robustness": "Single-vendor. Delayed-open licences guarantee that code older than two years becomes Apache/MIT, so an eventual open fork path exists by design.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. Sentry authored the 'fair source' model: source-available now, open source after a delay. It suggests a SaaS-first company can close its licence with little community fracture when most users consume the hosted service.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+}

@@ -1,0 +1,87 @@
+{
+  "name": "MariaDB (MariaDB Corporation / MariaDB plc and the MariaDB Foundation)",
+  "slug": "mariadb",
+  "group": "A",
+  "category": "software",
+  "subcategory": "relational database (MySQL fork)",
+  "hq_country": "FI",
+  "origin": "founder_startup",
+  "origin_detail": "MySQL co-founder Michael 'Monty' Widenius forked MySQL as MariaDB at his company Monty Program Ab in 2009, as Oracle moved to acquire Sun. The nonprofit MariaDB Foundation followed in 2012. SkySQL Ab (2010, ex-MySQL AB staff) merged with Monty Program in 2013 and became MariaDB Corporation in 2014. Finnish origin; the later listed parent, MariaDB plc, had its main office in California.",
+  "founded_year": 2009,
+  "flagship_projects": [
+    "MariaDB Server",
+    "MaxScale",
+    "SkySQL (DBaaS)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "MariaDB Server is GPLv2 and is stewarded together with the nonprofit MariaDB Foundation (project-level governance approaching 4). The company created the Business Source License (CockroachDB's 2019 relicence explicitly adopted 'MariaDB's Business Source License (BSL) 1.1') and used it for MaxScale; it also sells proprietary enterprise tooling and cloud. Company level: open core (2).",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2009,
+      "license": "GPLv2 (MariaDB Server)",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2016,
+      "license": "BSL for MaxScale",
+      "note": "Year recalled as 2016 (unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2016,
+      "from": "GPLv2 (MaxScale)",
+      "to": "Business Source License",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "First use of the BSL, later adopted by CockroachDB (2019), HashiCorp (2023) and Lightbend (2022) (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_pe",
+  "exit_events": [
+    {
+      "year": 2022,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "Angel Pond Holdings (SPAC); listed as MariaDB plc on the NYSE",
+      "note": "December 2022 SPAC listing (unverified; value deliberately null)",
+      "source": null
+    },
+    {
+      "year": 2024,
+      "type": "take_private",
+      "value_usd": null,
+      "counterparty": "K1 Investment Management",
+      "note": "Taken private in 2024 after the shares collapsed (unverified; value deliberately null)",
+      "source": null
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Shares collapsed after the 2022 SPAC listing; layoffs and financing strain preceded the 2024 take-private (unverified)"
+  ],
+  "robustness": "The server is GPL with a nonprofit foundation, so the code survives independent of the company. The commercial entity has been restructured repeatedly (SkySQL spin-out, SPAC, take-private).",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. MariaDB exists because MySQL changed hands: it is a founder-led fork to keep the code under community control. Its commercial vehicle struggled (SPAC listing, then a PE take-private), while the GPL server and its foundation persist, separating the robustness of the code from that of the company. It also authored the BSL used in the later relicensing wave.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file. The BSL attribution is supported by a source gathered in this session for Cockroach Labs: https://www.cockroachlabs.com/blog/oss-relicensing-cockroachdb/ . ownership_status reflects the pre-mid-2025 state."
+}

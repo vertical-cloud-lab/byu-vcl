@@ -1,0 +1,60 @@
+{
+  "name": "Enthought, Inc.",
+  "slug": "enthought",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "scientific Python software, consulting and R&D AI services",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 2001 in Austin, Texas, by Eric Jones (still CEO) and Travis Vaught. Known for early development and maintenance of the SciPy library and for founding the SciPy conference; produced the Enthought Python Distribution (EPD), later Enthought Canopy (launched April 2013).",
+  "founded_year": 2001,
+  "flagship_projects": ["SciPy (early development)", "SciPy conference", "Enthought Tool Suite (Traits, TraitsUI, Mayavi, Chaco, Envisage)", "EPD / Enthought Canopy"],
+  "openness_initial": 2,
+  "openness_current": 1,
+  "openness_notes": "Early model: BSD-licensed libraries (SciPy contributions, Enthought Tool Suite) plus a Python distribution offered free and under a commercial licence, with consulting and training (scored 2). Today the website sells bespoke software, data systems and AI for enterprise R&D clients; the open-source Tool Suite is peripheral to that business (scored 1). Both scores are judgements from the sources, not stated by them.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": null, "license": "BSD-style for most published code (Enthought Tool Suite)", "note": "", "source": "https://en.wikipedia.org/wiki/Enthought"},
+    {"year": 2013, "license": "Enthought Canopy: free tier and commercial licence", "note": "Successor to EPD; not mentioned on the current website", "source": "https://en.wikipedia.org/wiki/Enthought"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Pivot away from the Python-distribution business (Canopy/EPD no longer featured) toward custom AI and digital-transformation services for industrial R&D."
+  ],
+  "robustness": "25 years in business as a private services firm. The open libraries it seeded (SciPy) now live in community projects independent of Enthought, so their survival does not depend on the company.",
+  "physical_science_relevance": "Helped create the scientific Python stack (SciPy) used throughout physical science; now sells AI, surrogate modelling, Bayesian optimisation and 'Materials by Design' services to materials, chemicals, semiconductor and energy R&D organisations, including a 2025 R&D Innovation Summit in Tokyo.",
+  "openness_effect_assessment": "Open-source work built Enthought's reputation and seeded SciPy and its conference, but the company did not capture the scientific-Python distribution market it pioneered and has moved to closed, client-specific AI services. The open commons it helped start outlived its own open product line.",
+  "key_takeaway": "Enthought is a case of an open-science-software pioneer that monetised through services and distributions, then pivoted to proprietary AI consulting for materials and chemistry R&D. It illustrates that seeding open infrastructure (SciPy) creates large public value that the originating company need not capture.",
+  "usage_metrics": [
+    {"metric": "scientific applications and tools developed (self-reported)", "value": 500, "date": null, "source": "https://www.enthought.com/company/"},
+    {"metric": "scientists and engineers upskilled (self-reported)", "value": 10000, "date": null, "source": "https://www.enthought.com/company/"}
+  ],
+  "funding_sources": ["Consulting, custom software and training revenue", "Historic commercial distribution licences (EPD/Canopy)"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Revenue, employees and ownership not found on Wikipedia or enthought.com.",
+    "2025-2026 items on enthought.com (agentic-AI survey 'The Ambition Gap ... in 2026', appointment of Toshio Mii as chairman for Japan, 2025 R&D Innovation Summit in Tokyo) are undated on the page and treated as unconfirmed for dating purposes.",
+    "enthought.com also claims credit for scikit-learn and wxPython; these self-reported claims were not verified and are not used."
+  ],
+  "confidence": "low",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://en.wikipedia.org/wiki/Enthought", "https://www.enthought.com/about/ (404)", "https://www.enthought.com/company/", "https://www.enthought.com/"],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Enthought", "title": "Enthought", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, license_history, flagship_projects"},
+    {"url": "https://www.enthought.com/company/", "title": "Company", "publisher": "Enthought", "date": null, "supports": "SciPy conference, CEO, usage_metrics, 25 years"},
+    {"url": "https://www.enthought.com/", "title": "Enthought home page", "publisher": "Enthought", "date": null, "supports": "current services and AI offerings, target industries, risk_events[0], physical_science_relevance"}
+  ]
+}

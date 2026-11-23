@@ -1,0 +1,104 @@
+{
+  "name": "Cloudera, Inc. (including Hortonworks)",
+  "slug": "cloudera",
+  "group": "A",
+  "category": "software",
+  "subcategory": "Hadoop / big-data platform; hybrid data cloud",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 2008 by Christophe Bisciglia (Google), Amr Awadallah (Yahoo), Jeff Hammerbacher (Facebook) and Mike Olson; Hadoop co-creator Doug Cutting joined in 2009. Rival Hortonworks was spun out of Yahoo's Hadoop team in 2011 with Benchmark backing and sold a fully open-source distribution. The two merged in January 2019.",
+  "founded_year": 2008,
+  "flagship_projects": [
+    "CDH / Cloudera Data Platform (CDP)",
+    "Hortonworks Data Platform (HDP)",
+    "Apache Hadoop ecosystem (ASF projects)"
+  ],
+  "openness_initial": 2,
+  "openness_current": 3,
+  "openness_notes": "Cloudera's CDH bundled Apache-licensed ASF projects with proprietary management software (open core, 2), while Hortonworks was fully open source (3). After the merger Cloudera pledged in 2019 to release all its software under open-source licences, but moved binaries behind a subscription. Current level 3 reflects that pledge; status under private-equity ownership since 2021 is unverified.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2008,
+      "license": "Apache-2.0 (ASF components) + proprietary Cloudera Manager/Enterprise",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2019,
+      "license": "All components to be open source; binaries subscription-only",
+      "note": "(unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2019,
+      "from": "proprietary management components",
+      "to": "open-source licences (announced)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Opening of code paired with restricted binary access; followed the Hortonworks merger (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_pe",
+  "exit_events": [
+    {
+      "year": 2014,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "Hortonworks, Nasdaq: HDP",
+      "note": "Hortonworks IPO, December 2014 (unverified; value deliberately null)",
+      "source": null
+    },
+    {
+      "year": 2017,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "Cloudera, NYSE: CLDR",
+      "note": "Cloudera IPO, April 2017 (unverified; value deliberately null)",
+      "source": null
+    },
+    {
+      "year": 2019,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "Cloudera + Hortonworks",
+      "note": "Merger completed January 2019 (unverified; value deliberately null)",
+      "source": null
+    },
+    {
+      "year": 2021,
+      "type": "take_private",
+      "value_usd": null,
+      "counterparty": "KKR and Clayton, Dubilier & Rice",
+      "note": "Take-private completed in 2021 (unverified; value deliberately null)",
+      "source": null
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Hadoop market decline as public clouds took over data workloads (unverified)",
+    "2019: CEO departure and sharp share drop after the merger (unverified)"
+  ],
+  "robustness": "The core technologies are ASF-governed (Hadoop, Hive, Spark and others), so the code survives independent of the company; the company is PE-owned.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. Cloudera and Hortonworks are the open-core vs fully-open natural experiment of the Hadoop era: both went public, neither thrived alone once public clouds absorbed the market, they merged, the merged company opened its code but restricted binaries, and private equity took it private. The ASF projects outlived both companies' independence.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+}

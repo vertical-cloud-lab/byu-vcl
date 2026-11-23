@@ -1,0 +1,187 @@
+{
+  "name": "Creality (Shenzhen Creality 3D Technology Co., Ltd.)",
+  "slug": "creality",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "consumer FFF and resin 3D printers, scanners and laser engravers",
+  "hq_country": "CN",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2014 in Shenzhen by Chen Chun (Jack Chen), Ao Danjun, Liu Huilin and Tang Jingke, who met at a 3D-printing exhibition; became a volume maker of low-cost printers (CR-10 in 2016, Ender-3 in 2018).",
+  "founded_year": 2014,
+  "flagship_projects": [
+    "CR-10",
+    "Ender-3 family",
+    "K1 / K1 Max / K1C",
+    "K2 Plus / K2 Pro",
+    "Creality Print",
+    "Creality Cloud"
+  ],
+  "openness_initial": 0,
+  "openness_current": 2,
+  "openness_notes": "Initial 0: early printers ran Marlin-derived firmware whose source Creality did not publish; Wikipedia records GPL violations from 2018 continuing to at least 2022. In 2018 Creality published the Ender-3 as 'a fully Open Source 3D printer' (GitHub repo created 2018-06-30, GPL-3.0, with firmware, mechanical, PCB and wiring folders), a one-model opening. For the Klipper-based K1 series (released April 2023) the firmware source appeared on 2023-08-24 (GPL-3.0); K2-series and Hi firmware sources are also published (GPL-3.0), and the Creality Print slicer is AGPL-3.0. No hardware design repository was found for K1/K2 printers, so current = 2 (firmware/software open, newer hardware designs closed, older Ender-3 open).",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2018,
+      "license": "GPL-3.0 (Ender-3 firmware, mechanical, PCB and wiring files)",
+      "note": "Repository created 2018-06-30; about 2.0k stars, 667 forks",
+      "source": "https://api.github.com/repos/Creality3DPrinting/Ender-3"
+    },
+    {
+      "year": 2023,
+      "license": "GPL-3.0 (K1-series Klipper firmware source)",
+      "note": "Repository created 2023-08-24, about four months after the K1 launch",
+      "source": "https://api.github.com/repos/CrealityOfficial/K1_Series_Klipper"
+    },
+    {
+      "year": 2026,
+      "license": "GPL-3.0 (K2-series and Hi Klipper firmware); AGPL-3.0 (Creality Print slicer)",
+      "note": "As listed on the CrealityOfficial GitHub organisation, Nov 2026",
+      "source": "https://github.com/CrealityOfficial"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2018,
+      "from": "unpublished Marlin-derived firmware and closed designs",
+      "to": "Ender-3 published under GPL-3.0 (design and firmware)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "The Ender-3 became one of the most-forked open printer designs on GitHub (667 forks); GPL compliance problems on other models continued until at least 2022.",
+      "source": "https://api.github.com/repos/Creality3DPrinting/Ender-3"
+    },
+    {
+      "year": 2023,
+      "from": "closed K1 firmware at launch (April 2023)",
+      "to": "K1 Klipper firmware source published (GPL-3.0)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Firmware-only opening; hardware designs of K1/K2 not published in the sources reached.",
+      "source": "https://api.github.com/repos/CrealityOfficial/K1_Series_Klipper"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {
+      "year": 2026,
+      "type": "IPO",
+      "value_usd": null,
+      "counterparty": "Hong Kong Stock Exchange (HKEX)",
+      "note": "Creality's own milestone timeline lists 'Officially listed on the HKEX' under 2026; listing date, stock code, proceeds and market cap were not retrievable (investor-relations sections are script-rendered and the search budget was exhausted).",
+      "source": "https://www.creality.com/pages/about-us"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 907,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2018-2022: documented GPL violations involving Marlin firmware and other GPL software",
+    "2022-03-25: Artec 3D sued Creality in the US District Court (E.D.N.Y.) alleging copying of Artec Studio code; described as pending",
+    "Competitive pressure from Bambu Lab's closed, integrated printers prompted Creality's K1/K2 lines (2023-2025)",
+    "2026: listed on the Hong Kong Stock Exchange (per company milestone page), adding public-market disclosure and pressure"
+  ],
+  "robustness": "Very large volume (4.4 million printers shipped 2020-2024 per Wikipedia; the company says more than 6 million shipped to over 140 countries) and a broad, fast-refreshing product line (K2, Hi, SPARKX, K3 in 2025-2026); listed on HKEX in 2026. Openness is mainly at the firmware level, driven partly by GPL obligations and community pressure.",
+  "physical_science_relevance": "The open, GPL Ender-3 is a common low-cost base for lab and teaching modifications (e.g. custom tool heads, bioprinter conversions), helped by its published design and firmware.",
+  "openness_effect_assessment": "Publishing the Ender-3 under GPL-3.0 in 2018 coincided with it becoming a mass-market, heavily modded printer (about 2k stars and 667 forks on GitHub), and the open ecosystem helped Creality's volume strategy. Creality's openness has been partly reactive: firmware sources for later models appeared after launch amid GPL-compliance criticism, and newer hardware designs stay closed.",
+  "key_takeaway": "Creality is the volume-oriented Chinese counterpart to Prusa's story: it began closed and GPL-noncompliant, opened one hit design (Ender-3, 2018) and later its Klipper firmware, and used that openness to fuel a huge modding community while keeping newer hardware proprietary, reaching a Hong Kong listing in 2026. Openness here worked as a marketing and ecosystem tool for a low-cost manufacturer rather than as a core principle.",
+  "confidence": "low",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Creality",
+    "https://github.com/Creality3DPrinting/Ender-3",
+    "https://zh.wikipedia.org/wiki/创想三维",
+    "https://github.com/CrealityOfficial",
+    "https://api.github.com/repos/Creality3DPrinting/Ender-3",
+    "https://api.github.com/repos/CrealityOfficial/K1_Series_Klipper",
+    "https://www.creality.com/pages/about-us",
+    "https://www.creality.com/pages/about-us",
+    "https://www.creality.com/investor-relations"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Creality",
+      "title": "Creality",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "founded_year, founders, products by year, 4.4M printers shipped 2020-2024, Creality Cloud users, GPL violations 2018-2022, Artec lawsuit"
+    },
+    {
+      "url": "https://zh.wikipedia.org/wiki/创想三维",
+      "title": "创想三维 (Creality)",
+      "publisher": "Wikipedia (Chinese)",
+      "date": "2026-11",
+      "supports": "employees_latest (907, 2024)"
+    },
+    {
+      "url": "https://api.github.com/repos/Creality3DPrinting/Ender-3",
+      "title": "Creality3DPrinting/Ender-3 repository metadata",
+      "publisher": "GitHub",
+      "date": "2026-11-19",
+      "supports": "license_history[0], relicensing_events[0]"
+    },
+    {
+      "url": "https://github.com/Creality3DPrinting/Ender-3",
+      "title": "Creality3DPrinting/Ender-3",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "contents (firmware, mechanical, PCB, wiring folders)"
+    },
+    {
+      "url": "https://api.github.com/repos/CrealityOfficial/K1_Series_Klipper",
+      "title": "CrealityOfficial/K1_Series_Klipper repository metadata",
+      "publisher": "GitHub",
+      "date": "2025-12-13",
+      "supports": "license_history[1], relicensing_events[1]"
+    },
+    {
+      "url": "https://github.com/CrealityOfficial",
+      "title": "CrealityOfficial GitHub organisation",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[2], openness_current"
+    },
+    {
+      "url": "https://www.creality.com/pages/about-us",
+      "title": "About Creality (milestones)",
+      "publisher": "Creality",
+      "date": "2026-11",
+      "supports": "exit_events[0] (HKEX listing, 2026), shipment milestones (1M+ by 2020; 6M+ to 140+ countries)"
+    },
+    {
+      "url": "https://www.creality.com/investor-relations",
+      "title": "Creality investor relations",
+      "publisher": "Creality",
+      "date": "2026-11",
+      "supports": "ownership_status (public; IR sections for global offering and financial reports), Nexbie launch Aug 2025"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "GPL-3.0 (Ender-3 mechanical, PCB and wiring files, 2018)"
+    ],
+    "firmware_software_licenses": [
+      "GPL-3.0 (Ender-3 Marlin, K1/K2/Hi Klipper)",
+      "AGPL-3.0 (Creality Print)"
+    ],
+    "patents": null,
+    "clone_impacts": "Creality is more often the accused copier than the victim: GPL violations (2018-2022) and the 2022 Artec code-copying suit. Its open Ender-3 is widely modified and re-used."
+  },
+  "notes": [
+    "No WebSearch queries could be run for Creality: the session-wide search budget (200 per turn, shared by all agents) was exhausted. Facts come from direct fetches of English/Chinese Wikipedia and GitHub (web and API); none from memory. The 4-search minimum was not met; confidence low.",
+    "Hong Kong IPO: Creality's own About page lists 'Officially listed on the HKEX' as its 2026 milestone and the company now has an investor-relations site with 'Global Offering' and 'Financial Reports' sections, so ownership_status is 'public'. Listing date, stock code, proceeds, market cap and pre-IPO funding could not be retrieved; latest_value left null. A follow-up search is needed.",
+    "Revenue not found in the sources reached; set to null.",
+    "Ender-3 open-source date taken from the GitHub repository creation date (2018-06-30)."
+  ]
+}

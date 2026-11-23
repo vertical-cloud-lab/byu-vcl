@@ -1,0 +1,143 @@
+{
+  "name": "Quantum ESPRESSO (Quantum ESPRESSO Foundation)",
+  "slug": "quantum-espresso",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "plane-wave density-functional theory (DFT) suite",
+  "hq_country": "IT",
+  "origin": "academic",
+  "origin_detail": "Started in 2002 by merging three density-functional packages (PWscf among them) as an open initiative of the CNR-IOM DEMOCRITOS National Simulation Center in Trieste and partners (SISSA, ICTP and others). Since about 2011 the copyright is held by the Quantum ESPRESSO Foundation, a UK-registered non-profit company (no. 7542385).",
+  "founded_year": 2002,
+  "flagship_projects": [
+    "pw.x (PWscf)",
+    "ph.x (density-functional perturbation theory)",
+    "cp.x (Car-Parrinello)",
+    "GPU-accelerated QE"
+  ],
+  "openness_initial": 3,
+  "openness_current": 4,
+  "openness_notes": "GPL since the start (2002) and conceived as an integrated 'distribution'. Copyright is now held by a non-profit foundation whose members include SISSA, ICTP, EPFL, the Oden Institute (UT Austin), the University of North Texas and CINECA, so it is scored 4 (OSI licence plus neutral foundation governance).",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2002,
+      "license": "GNU GPL",
+      "note": "Open source since inception",
+      "source": "https://arxiv.org/pdf/2104.10502"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "foundation",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Core development is financed through successive, time-limited EU Centre of Excellence grants (MaX: H2020 824143; EuroHPC 101093374, EUR 8.5M total across several codes).",
+    "Small coordinating team (the user guide names two coordinators, Paolo Giannozzi and Pietro Delugas) supported by MaX and CINECA."
+  ],
+  "robustness": "GPL code with foundation-held copyright and multi-institution membership in Europe and the US; installed as standard on major HPC centres (NERSC, LUMI, OSC) with NVIDIA and AMD GPU builds. Stable release 7.5 (19 Aug 2025).",
+  "physical_science_relevance": "One of the two or three most widely used DFT codes in condensed-matter physics and materials science; the open alternative to VASP for plane-wave pseudopotential calculations, and a common engine for high-throughput workflows (e.g. AiiDA, Materials Cloud) and ML training-set generation.",
+  "openness_effect_assessment": "Open licensing from the start let a national-centre code become a community 'distribution' with contributors across Europe and the US, and the 2009 reference paper has roughly 28,000 Scopus citations. The cost of openness is that it earns no licence revenue, so development is paced by EU grant cycles rather than sales, unlike its closed competitor VASP.",
+  "key_takeaway": "Quantum ESPRESSO is the open, foundation-governed counterpart to VASP: comparable scientific reach (tens of thousands of citations) funded by European public research money and a non-profit that holds the copyright. It is a non-US comparator showing that the open model in DFT depends on public HPC programmes such as MaX/EuroHPC rather than on licence sales.",
+  "usage_metrics": [
+    {
+      "metric": "Scopus citations of the 2009 J. Phys.: Condens. Matter reference paper (snapshot date unknown)",
+      "value": 28000,
+      "date": null,
+      "source": "https://iris.cnr.it/handle/20.500.14243/14531"
+    }
+  ],
+  "funding_sources": [
+    "EU Horizon 2020 / EuroHPC Joint Undertaking via the MaX Centre of Excellence",
+    "CNR (Italy) and CINECA (in-kind computing and staff)",
+    "Member institutions of the Quantum ESPRESSO Foundation"
+  ],
+  "notes": [
+    "Foundation founding date: governing document dated 15 March 2011 with UK company number 7542385; exact incorporation date not confirmed.",
+    "No QE-specific budget found; MaX phase-3 budget (EUR 8,496,390, of which EUR 4,248,200 EU) covers several codes and is not attributed to QE alone.",
+    "Non-US comparator (Italy/UK); included for contrast with VASP."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebSearch",
+  "searches": [
+    "Quantum ESPRESSO history 2002 PWscf SISSA DEMOCRITOS GPL origin",
+    "Quantum ESPRESSO Foundation established funding MaX Centre of Excellence EuroHPC",
+    "Quantum ESPRESSO citations Giannozzi 2009 paper most cited users worldwide",
+    "Quantum ESPRESSO 2025 2026 release v7.5 news GPU",
+    "\"Quantum ESPRESSO Foundation\" founded company limited by guarantee UK 2013 members"
+  ],
+  "sources": [
+    {
+      "url": "https://arxiv.org/pdf/2104.10502",
+      "title": "Quantum ESPRESSO toward the exascale (Giannozzi et al.)",
+      "publisher": "arXiv / J. Chem. Phys.",
+      "date": "2021-04",
+      "supports": "founded_year, origin_detail, license_history[0]"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Quantum_ESPRESSO",
+      "title": "Quantum ESPRESSO",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail (CNR-IOM DEMOCRITOS), robustness (7.5 on 19 Aug 2025)"
+    },
+    {
+      "url": "https://quantum-espresso.org/Doc/user_guide/node3.html",
+      "title": "User guide: contacts",
+      "publisher": "Quantum ESPRESSO",
+      "date": null,
+      "supports": "risk_events[1], funding_sources"
+    },
+    {
+      "url": "https://foundation.quantum-espresso.org/pdf/QEF_corporate_rules.pdf",
+      "title": "QEF corporate rules",
+      "publisher": "Quantum ESPRESSO Foundation",
+      "date": "2011-03-15",
+      "supports": "origin_detail (company no. 7542385), notes"
+    },
+    {
+      "url": "https://foundation.quantum-espresso.org/",
+      "title": "Quantum ESPRESSO Foundation",
+      "publisher": "Quantum ESPRESSO Foundation",
+      "date": null,
+      "supports": "openness_notes (members; copyright holding)"
+    },
+    {
+      "url": "https://eurohpc-ju.europa.eu/participate/our-projects/max-materials-design-exascale_en",
+      "title": "MaX - Materials design at the Exascale",
+      "publisher": "EuroHPC Joint Undertaking",
+      "date": null,
+      "supports": "risk_events[0], notes (EUR 8.5M budget)"
+    },
+    {
+      "url": "https://cordis.europa.eu/article/id/421532-european-hpc-centre-of-excellence-at-the-heart-of-new-materials-discovery",
+      "title": "European HPC Centre of Excellence at the heart of new materials discovery",
+      "publisher": "CORDIS, European Commission",
+      "date": null,
+      "supports": "funding_sources (H2020 824143)"
+    },
+    {
+      "url": "https://iris.cnr.it/handle/20.500.14243/14531",
+      "title": "QUANTUM ESPRESSO: a modular and open-source software project (repository record)",
+      "publisher": "CNR IRIS",
+      "date": null,
+      "supports": "usage_metrics (~28,000 Scopus citations)"
+    },
+    {
+      "url": "https://docs.nersc.gov/applications/quantum-espresso/",
+      "title": "Quantum ESPRESSO - NERSC Documentation",
+      "publisher": "NERSC",
+      "date": null,
+      "supports": "robustness"
+    }
+  ]
+}

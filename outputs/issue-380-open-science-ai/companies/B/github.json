@@ -1,0 +1,76 @@
+{
+  "name": "GitHub, Inc.",
+  "slug": "github",
+  "group": "B",
+  "category": "software",
+  "subcategory": "code hosting / developer platform / AI coding (Copilot)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2008 in San Francisco by Chris Wanstrath, PJ Hyett and Tom Preston-Werner (with Scott Chacon); ran without outside funding and profitably until a 2012 Series A",
+  "founded_year": 2008,
+  "flagship_projects": ["GitHub.com", "GitHub Enterprise", "GitHub Copilot", "Electron (originally Atom Shell)", "Atom (sunset 2022)", "libgit2", "Linguist"],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "The platform itself (GitHub.com, GitHub Enterprise Server, Copilot service) is proprietary; GitHub's openness is as host and steward of other people's open source. It has open-sourced peripheral tools (Electron, Atom, libgit2, Linguist, gh CLI, Desktop). Rated 1 (only peripheral clients/tools open) throughout.",
+  "business_model": "saas",
+  "license_history": [
+    {"year": 2008, "license": "Proprietary SaaS; free hosting for public open-source repos", "note": "Paid private repos funded the company", "source": "https://www.wikipedia.org/wiki/GitHub"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 350000000,
+  "funding_as_of": "2015",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2018, "type": "acquisition", "value_usd": 7500000000, "counterparty": "Microsoft", "note": "Closed 25 Oct 2018 as a $7.5B stock transaction (incl. $1.3B cash for vested equity awards and escrow); goodwill $5.44B; Nat Friedman became CEO", "source": "https://www.sec.gov/Archives/edgar/data/789019/000156459019001392/msft-10q_20181231.htm"}
+  ],
+  "latest_value_usd": 7500000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2018-10",
+  "revenue_latest_usd": 2000000000,
+  "revenue_year": 2024,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Jun 2018: Microsoft acquisition news triggered lock-in fears; GitLab reported >100,000 repositories imported within days (#movingtogitlab), though GitHub's user growth continued",
+    "Jun 2022: GitHub announced the sunset of its open-source Atom editor (archived 15 Dec 2022) to focus on Microsoft's VS Code and Codespaces",
+    "Aug 2025: CEO Thomas Dohmke announced departure (left end-2025); Microsoft did not replace the CEO role and folded GitHub into its CoreAI division, ending largely independent operation"
+  ],
+  "robustness": "Network-effect monopoly for open-source hosting (180M+ developers and 630M projects per Octoverse 2025) backed by Microsoft; revenue run rate $2B in mid-2024 with Copilot driving >40% of growth. As a closed, single-vendor platform it is a structural dependency for the open-source ecosystem: the code is portable (git) but issues, CI, social graph and package registries are not.",
+  "physical_science_relevance": "The default host for scientific code, data-analysis notebooks and open-hardware designs; Zenodo-GitHub integration makes it a de facto archive pipeline for citable research software.",
+  "openness_effect_assessment": "GitHub captured value from openness without being open itself: free hosting for public repos created the network effects that made paid private/enterprise hosting and later Copilot (trained largely on public code) valuable. The $7.5B exit and $2B run rate came from intermediating open-source collaboration, while its closed platform has drawn lock-in criticism rather than forks.",
+  "key_takeaway": "GitHub is the clearest case of a closed platform built on top of the open-source commons: openness in the ecosystem, not in the product, generated its value, and AI (Copilot) became its growth engine after acquisition. Its 2025 absorption into Microsoft CoreAI shows the commons' central infrastructure is now controlled by a big-tech AI strategy.",
+  "confidence": "high",
+  "searches": [
+    "GitHub founded 2008 Wanstrath Hyett Preston-Werner bootstrapped first funding Andreessen Horowitz $100 million 2012 Sequoia 2015 $250 million",
+    "Microsoft completes acquisition of GitHub $7.5 billion stock October 2018",
+    "GitHub CEO Thomas Dohmke steps down August 2025 GitHub joins Microsoft CoreAI no longer independent",
+    "GitHub annual revenue run rate $2 billion Copilot 2024 2025 developers 150 million employees",
+    "GitHub Octoverse 2025 180 million developers; GitHub migrating to Azure 2026 outages",
+    "GitLab imports surge after Microsoft GitHub acquisition June 2018 #movingtogitlab",
+    "GitHub sunsetting Atom editor December 15 2022 archived"
+  ],
+  "sources": [
+    {"url": "https://www.wikipedia.org/wiki/GitHub", "title": "GitHub", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, license_history[0]"},
+    {"url": "https://nira.com/github-history/", "title": "How GitHub Democratized Coding, Built a $2 Billion Business, and Found a New Home at Microsoft", "publisher": "Nira", "date": null, "supports": "origin_detail (profitable, no funding until 2012), funding_total_usd"},
+    {"url": "https://fortune.com/2015/07/29/github-raises-250-million-in-new-funding-now-valued-at-2-billion/", "title": "GitHub raises $250 million in new funding, now valued at $2 billion", "publisher": "Fortune", "date": "2015-07-29", "supports": "funding_total_usd (Series B $250M at ~$2B)"},
+    {"url": "https://www.cbinsights.com/company/github/financials", "title": "GitHub total raised", "publisher": "CB Insights", "date": null, "supports": "funding_total_usd (2012 Series A ~$100M)"},
+    {"url": "https://www.sec.gov/Archives/edgar/data/789019/000156459019001392/msft-10q_20181231.htm", "title": "Microsoft Form 10-Q (quarter ended 31 Dec 2018)", "publisher": "Microsoft / SEC", "date": "2019-01-30", "supports": "exit_events[0], latest_value_usd"},
+    {"url": "https://siliconangle.com/?p=457517", "title": "Microsoft completes GitHub acquisition", "publisher": "SiliconANGLE", "date": "2018-10-26", "supports": "exit_events[0]"},
+    {"url": "https://www.axios.com/2025/08/11/github-ceo-dohmke-step-down", "title": "Exclusive: GitHub CEO to step down", "publisher": "Axios", "date": "2025-08-11", "supports": "risk_events (CEO departure, no replacement)"},
+    {"url": "https://www.geekwire.com/2025/github-will-join-microsofts-coreai-group-with-departure-of-ceo-thomas-dohmke/", "title": "GitHub will join Microsoft's CoreAI division with departure of CEO Thomas Dohmke", "publisher": "GeekWire", "date": "2025-08-11", "supports": "risk_events (CoreAI integration)"},
+    {"url": "https://techcrunch.com/2025/08/11/github-ceo-to-step-down/", "title": "GitHub CEO to step down", "publisher": "TechCrunch", "date": "2025-08-11", "supports": "risk_events"},
+    {"url": "https://www.ciodive.com/news/github-copilot-subscriber-count-revenue-growth/706201/", "title": "GitHub Copilot subscriber count, revenue growth", "publisher": "CIO Dive", "date": "2024-07", "supports": "revenue_latest_usd ($2B run rate), robustness"},
+    {"url": "https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/", "title": "Octoverse: A new developer joins GitHub every second as AI leads TypeScript to #1", "publisher": "GitHub", "date": "2025-10-28", "supports": "robustness (180M+ developers, 630M projects)"},
+    {"url": "https://about.gitlab.com/2018/06/03/movingtogitlab/", "title": "#movingtogitlab", "publisher": "GitLab", "date": "2018-06-03", "supports": "risk_events (2018 migration)"},
+    {"url": "https://news.softpedia.com/news/gitlab-says-it-imported-100-000-repositories-after-microsoft-s-github-takeover-521433.shtml", "title": "GitLab says it imported 100,000 repositories after Microsoft's GitHub takeover", "publisher": "Softpedia", "date": "2018-06", "supports": "risk_events (2018 migration count)"},
+    {"url": "https://github.blog/2022-06-08-sunsetting-atom/", "title": "Sunsetting Atom", "publisher": "GitHub", "date": "2022-06-08", "supports": "risk_events (Atom sunset)"}
+  ],
+  "notes": [
+    "revenue_latest_usd is an annual revenue run rate ($2B) stated by Satya Nadella on Microsoft's FY2024 Q4 call (Jul 2024), not audited revenue; Microsoft does not report GitHub revenue separately.",
+    "funding_total_usd ~$350M = ~$100M Series A (2012, Andreessen Horowitz) + $250M Series B (2015, Sequoia-led at ~$2B valuation); secondary sources disagree slightly on the Series A ($99.5M vs $100M).",
+    "employees_latest null: no reliable current headcount found.",
+    "No GitHub-specific relicensing. Electron, which grew out of Atom, outlived the editor and underlies VS Code and Slack (per Atom sunset coverage)."
+  ]
+}

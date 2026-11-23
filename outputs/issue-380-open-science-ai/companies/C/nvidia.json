@@ -1,0 +1,69 @@
+{
+  "name": "NVIDIA Corporation",
+  "slug": "nvidia",
+  "group": "C",
+  "category": "big_tech",
+  "subcategory": "GPUs and accelerated computing; CUDA software platform; Nemotron open models",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1993-04-05 in Sunnyvale, California, by Jensen Huang, Chris Malachowsky and Curtis Priem; IPO 1999-01-22. CUDA, created in 2004 and released in 2007, turned its graphics chips into general-purpose accelerators.",
+  "founded_year": 1993,
+  "flagship_projects": ["CUDA (proprietary)", "GPU drivers (open kernel modules since 2022)", "Nemotron open models", "Slurm (via SchedMD, acquired Dec 2025)", "Earth-2"],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "Scored on the AI and developer-platform strategy. Initial 0: proprietary drivers and CUDA ('Whereas Nvidia's CUDA is closed-source, Intel's OneAPI and AMD's ROCm are open source'). Current 1: the core moat (CUDA and user-mode drivers: CUDA, OpenGL, Vulkan) stays closed, while peripheral layers have opened: Linux GPU kernel modules under dual GPL/MIT (May 2022, default from R560 in 2024, required for Grace Hopper and Blackwell), and a large open-model programme (Nemotron) that publishes weights, training data and recipes. The model licence is the non-OSI NVIDIA Open Model License (confirmed for Llama-3.1-Nemotron-Ultra, April 2025; not confirmed from a fetched page for Nemotron 3). Rising toward 2 if Nemotron data and recipes stay open.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2007, "license": "Proprietary (CUDA)", "note": "Released 2007-02-16; CUDA-enabled GPUs are only available from NVIDIA.", "source": "https://en.wikipedia.org/wiki/CUDA"},
+    {"year": 2022, "license": "Dual GPL/MIT (Linux GPU kernel modules)", "note": "Announced 2022-05-19 with R515; production-ready for Turing/Ampere data-center GPUs; user-mode components stay closed.", "source": "https://developer.nvidia.com/blog/nvidia-releases-open-source-gpu-kernel-modules/"},
+    {"year": 2024, "license": "Open kernel modules become the default (R560)", "note": "Post dated 2024-07-17; open modules required for Grace Hopper and Blackwell.", "source": "https://developer.nvidia.com/blog/nvidia-transitions-fully-towards-open-source-gpu-kernel-modules/"},
+    {"year": 2025, "license": "NVIDIA Open Model License (Llama-3.1-Nemotron-Ultra-253B-v1)", "note": "Released 2025-04-07; Nemotron 3 family (Nano ~30B, Super 100B, Ultra 500B) followed 2025-12-15; NVIDIA describes Nemotron as 'open models with open weights, training data, and recipes'.", "source": "https://en.wikipedia.org/wiki/Nvidia"}
+  ],
+  "relicensing_events": [
+    {"year": 2022, "from": "Proprietary Linux kernel driver modules", "to": "Dual GPL/MIT open kernel modules (default from R560, 2024)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Opened the kernel interface while keeping CUDA and user-space drivers closed.", "source": "https://developer.nvidia.com/blog/nvidia-releases-open-source-gpu-kernel-modules/"},
+    {"year": 2025, "from": "Few open models", "to": "Large open-weights programme with open data and recipes (Nemotron 3, Dec 2025)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Weights, training data and technical reports published; licence non-OSI. Strategically, open models drive demand for NVIDIA hardware.", "source": "https://developer.nvidia.com/nemotron"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {"year": 1999, "type": "IPO", "value_usd": null, "counterparty": "NASDAQ: NVDA", "note": "IPO 1999-01-22; offer valuation not confirmed from a fetched page.", "source": "https://en.wikipedia.org/wiki/Nvidia"}
+  ],
+  "latest_value_usd": 3990000000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 215900000000,
+  "revenue_year": 2026,
+  "employees_latest": 42000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2025-01: lost about $600B of market value in one day (the largest one-day loss for a US company) after DeepSeek showed a cheaper path to frontier-class models",
+    "CUDA lock-in invites compatibility layers (HIP, ZLUDA, SCALE) and open rivals (ROCm, oneAPI); ZLUDA was not released officially by AMD or Intel for lack of a business case",
+    "2025-12: acquired SchedMD, maker of the open-source Slurm workload manager; NVIDIA stated Slurm would remain open-source and vendor-neutral",
+    "Market cap down 8.3% over the year to 2026-11-23 (StockAnalysis)"
+  ],
+  "robustness": "Dominant and highly profitable (FY2026 revenue $215.9B with ~42,000 employees). Its moat is a closed software platform (CUDA) on top of its hardware; opening the kernel modules and releasing open models with data strengthens the ecosystem around its chips without opening that moat. Single-vendor control of CUDA is the main structural risk for its customers, not for NVIDIA.",
+  "physical_science_relevance": "CUDA underpins most GPU-accelerated simulation, molecular dynamics and scientific ML; Earth-2 (open-sourced weather/climate platform, Jan 2026) and Slurm (the standard HPC scheduler) tie NVIDIA directly to physical-science computing.",
+  "openness_effect_assessment": "Closed CUDA has been the most valuable lock-in in computing: open alternatives (OpenCL, ROCm) exist but CUDA-enabled hardware comes only from NVIDIA. NVIDIA opens what sells more GPUs: kernel modules for data-center Linux, Slurm stewardship, and fully documented open models (Nemotron) that customers train and serve on its hardware. Open models elsewhere cut both ways: DeepSeek's efficient open weights briefly wiped about $600B off its value in January 2025, yet its market cap stood near $4T in November 2026.",
+  "key_takeaway": "NVIDIA is the complement that profits whenever models are open: the more labs and companies train and run open-weights models, the more GPUs they buy, so NVIDIA now funds one of the most transparent open-model programmes (weights, data, recipes) while keeping CUDA closed. Its openness is therefore strategic and layered: open at the edges and in models, closed at the software platform that locks in its hardware. For the study, NVIDIA shows that a closed platform can coexist with, and benefit from, open science built on top of it.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/CUDA",
+    "https://developer.nvidia.com/blog/nvidia-releases-open-source-gpu-kernel-modules/",
+    "https://developer.nvidia.com/blog/nvidia-transitions-fully-towards-open-source-gpu-kernel-modules/",
+    "https://en.wikipedia.org/wiki/Nvidia",
+    "https://stockanalysis.com/stocks/nvda/market-cap/",
+    "https://developer.nvidia.com/nemotron"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Nvidia", "title": "Nvidia", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, exit_events[0], revenue_latest_usd, employees_latest, license_history[3], risk_events[0], risk_events[2], physical_science_relevance (Earth-2)"},
+    {"url": "https://en.wikipedia.org/wiki/CUDA", "title": "CUDA", "publisher": "Wikipedia", "date": null, "supports": "license_history[0], openness_notes, risk_events[1]"},
+    {"url": "https://developer.nvidia.com/blog/nvidia-releases-open-source-gpu-kernel-modules/", "title": "NVIDIA Releases Open-Source GPU Kernel Modules", "publisher": "NVIDIA Technical Blog", "date": "2022-05-19", "supports": "license_history[1], relicensing_events[0]"},
+    {"url": "https://developer.nvidia.com/blog/nvidia-transitions-fully-towards-open-source-gpu-kernel-modules/", "title": "NVIDIA Transitions Fully Towards Open-Source GPU Kernel Modules", "publisher": "NVIDIA Technical Blog", "date": "2024-07-17", "supports": "license_history[2]"},
+    {"url": "https://developer.nvidia.com/nemotron", "title": "NVIDIA Nemotron", "publisher": "NVIDIA", "date": null, "supports": "relicensing_events[1], openness_notes"},
+    {"url": "https://stockanalysis.com/stocks/nvda/market-cap/", "title": "NVIDIA (NVDA) Market Cap", "publisher": "StockAnalysis", "date": "2026-11-23", "supports": "latest_value_usd ($3.99T at $165.05 close), risk_events[3]"}
+  ]
+}

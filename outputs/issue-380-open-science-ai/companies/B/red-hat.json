@@ -1,0 +1,85 @@
+{
+  "name": "Red Hat, Inc.",
+  "slug": "red-hat",
+  "group": "B",
+  "category": "software",
+  "subcategory": "enterprise Linux / hybrid cloud platform",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Bob Young's ACC Corporation (Connecticut, 1993; Red Hat gives 26 Mar 1993 as its founding date) merged with Marc Ewing's Red Hat Linux distribution (North Carolina, 1994) to form Red Hat Software in 1995; HQ Raleigh, NC",
+  "founded_year": 1993,
+  "flagship_projects": ["Red Hat Enterprise Linux (RHEL)", "Fedora", "CentOS Stream", "OpenShift", "Ansible"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Products are GPL/OSI-licensed and sold as subscriptions (support, certification, updates). Licences never changed, but access narrowed: Dec 2020 CentOS Linux (free 1:1 RHEL rebuild) was ended in favour of CentOS Stream; Jun 2023 CentOS Stream became the sole public source for RHEL-related code and RHEL sources went to the customer portal only. Still level 3, but the trend is toward limiting free downstream rebuilds.",
+  "business_model": "support_services",
+  "license_history": [
+    {"year": 1994, "license": "GPL and other OSI licences (Red Hat Linux distribution)", "note": "Ewing's distribution, sold on CD with support", "source": "https://en.wikipedia.org/wiki/Marc_Ewing"},
+    {"year": 2014, "license": "CentOS (GPL rebuild of RHEL) joins Red Hat", "note": "CentOS announced official joining with Red Hat in Jan 2014 under a new governing board", "source": "https://www.wikipedia.com/wiki/CentOS"},
+    {"year": 2023, "license": "GPL unchanged; RHEL source distribution restricted", "note": "CentOS Stream made sole public repository for RHEL-related source; customers get sources via Customer Portal", "source": "https://www.theregister.com/2023/06/23/red_hat_centos_move/"}
+  ],
+  "relicensing_events": [
+    {"year": 2020, "from": "CentOS Linux (free downstream 1:1 RHEL rebuild)", "to": "CentOS Stream (upstream of RHEL)", "direction": "closing", "fork": "Rocky Linux; AlmaLinux", "fork_backer": "Rocky Linux founded by CentOS co-founder Gregory Kurtzer (CIQ); AlmaLinux by CloudLinux", "outcome_note": "Not a licence change. Announced 8 Dec 2020 that CentOS Linux 8 would end at end of 2021; community response overwhelmingly negative; rebuild forks launched within weeks", "source": "https://blog.centos.org/2020/12/future-is-centos-stream/"},
+    {"year": 2023, "from": "RHEL sources published publicly (git.centos.org)", "to": "CentOS Stream as sole public source; RHEL sources only to subscribers", "direction": "closing", "fork": "OpenELA (Open Enterprise Linux Association)", "fork_backer": "Oracle, SUSE, CIQ (Aug 2023)", "outcome_note": "Not a licence change (GPL). Rocky Linux turned to UBI images and cloud instances for sources; AlmaLinux dropped 1:1 bug-for-bug goal for ABI compatibility; OpenELA formed as a 501(c)(6) to publish sources", "source": "https://www.networkworld.com/article/3705428/openela-group-pushes-for-bug-compatibility-with-rhel.html"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 1999, "type": "IPO", "value_usd": null, "counterparty": "NASDAQ", "note": "IPO 11 Aug 1999; at the time the eighth-biggest first-day gain in Wall Street history", "source": "https://redhat.com/en/blog/25-things-you-should-know-about-red-hat-0"},
+    {"year": 2019, "type": "acquisition", "value_usd": 34000000000, "counterparty": "IBM", "note": "Closed 9 Jul 2019 at $190/share cash (~63% premium); announced Oct 2018; IBM's largest deal; Red Hat kept as a distinct unit in Raleigh", "source": "https://www.ibm.com/investor/news/ibm-completes-acquisition-of-red-hat"}
+  ],
+  "latest_value_usd": 34000000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2019-07",
+  "revenue_latest_usd": 3400000000,
+  "revenue_year": 2019,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Dec 2020: CentOS Linux discontinued in favour of CentOS Stream; user backlash; Rocky Linux and AlmaLinux forks",
+    "Jun 2023: RHEL public sources restricted to CentOS Stream; Oracle, SUSE and CIQ formed OpenELA (Aug 2023)",
+    "2023: ~4% workforce cut (~800 people)",
+    "Sep 2025: Red Hat legal, HR, finance and accounting functions to move into IBM from 2026 (engineering kept separate for now)",
+    "Q4 2025: Red Hat (IBM Hybrid Cloud) growth slowed to 10% from 16% (Q2) and 14% (Q3); US federal shutdown cited",
+    "Apr 2026: reports (weakly sourced) of Red Hat closing its China engineering team and moving work to India"
+  ],
+  "robustness": "Highly robust commercially: survived the dot-com bust as a public company, then became IBM's core software growth engine (exit run-rate ~$7.5B ARR at end-2025 per IBM's Q4 2025 call; OpenShift ARR ~$1.9B, >30% growth). Code is GPL and upstream-first (Fedora, CentOS Stream, kernel), so the software would outlive the firm; but the RHEL brand, certification ecosystem and build pipeline are single-vendor, now increasingly absorbed into IBM.",
+  "physical_science_relevance": "RHEL and its rebuilds (formerly CentOS, now Rocky/AlmaLinux) are the default OS of many HPC clusters and national-lab systems; the CentOS changes forced scientific computing sites to migrate.",
+  "openness_effect_assessment": "Openness was the product: a fully GPL distribution monetized through subscriptions scaled to ~$3.4B revenue (FY2019) and a $34B exit, the largest open-source acquisition. The same openness let free 1:1 rebuilds (CentOS, then Rocky/Alma) capture users who would not pay; Red Hat's 2020 and 2023 restrictions reduced that leakage without changing licences, at the cost of community trust, competitor coalitions (OpenELA) and forks, with no visible revenue damage (Red Hat growth stayed at 10-16% in 2025).",
+  "key_takeaway": "Red Hat is the canonical proof that a pure open-source (level 3) business can reach large scale, longevity (30+ years) and a top-tier exit. Its later history shows the main risk of that model is not competitors closing the code but downstream clones freely reusing it; Red Hat's answer was to restrict distribution channels rather than relicense, keeping OSI licences while tightening control, and post-acquisition integration into IBM is now the main threat to its independent culture.",
+  "confidence": "high",
+  "searches": [
+    "Red Hat history founded 1993 Marc Ewing Bob Young IPO August 1999",
+    "IBM closes acquisition of Red Hat $34 billion July 2019 $190 per share",
+    "Red Hat RHEL source code restriction CentOS Stream June 2023 AlmaLinux Rocky Linux OpenELA",
+    "Red Hat revenue 2025 IBM annual report Red Hat growth employees",
+    "Red Hat 2026 layoffs employees headcount IBM integration news",
+    "Red Hat acquires CentOS 2014 CentOS Linux 8 end of life December 2020 CentOS Stream shift"
+  ],
+  "sources": [
+    {"url": "https://redhat.com/en/blog/25-things-you-should-know-about-red-hat-0", "title": "25 things you should know about Red Hat", "publisher": "Red Hat", "date": "2018-03-26", "supports": "founded_year, exit_events[0]"},
+    {"url": "https://www.redhat.com/en/about/brand/standards/history", "title": "Our history", "publisher": "Red Hat", "date": null, "supports": "origin_detail (Red Hat Software formed 1995)"},
+    {"url": "https://en.wikipedia.org/wiki/Marc_Ewing", "title": "Marc Ewing", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, license_history[0]"},
+    {"url": "https://www.ibm.com/investor/news/ibm-completes-acquisition-of-red-hat", "title": "IBM Completes Acquisition of Red Hat", "publisher": "IBM", "date": "2019-07-09", "supports": "exit_events[1], latest_value_usd"},
+    {"url": "https://www.cnbc.com/2019/07/09/ibm-closes-its-34-billion-acquisition-of-red-hat.html", "title": "IBM closes its $34 billion acquisition of Red Hat", "publisher": "CNBC", "date": "2019-07-09", "supports": "exit_events[1], revenue_latest_usd (FY2019 $3.4B, +15%)"},
+    {"url": "https://fortune.com/2019/07/09/ibm-red-hat-deal-close/", "title": "IBM closes Red Hat deal", "publisher": "Fortune", "date": "2019-07-09", "supports": "exit_events[1] premium"},
+    {"url": "https://blog.centos.org/2020/12/future-is-centos-stream/", "title": "CentOS Project shifts focus to CentOS Stream", "publisher": "CentOS Project", "date": "2020-12-08", "supports": "relicensing_events[0]"},
+    {"url": "https://www.wikipedia.com/wiki/CentOS", "title": "CentOS", "publisher": "Wikipedia", "date": null, "supports": "license_history[1], relicensing_events[0] forks"},
+    {"url": "https://www.theregister.com/2023/06/23/red_hat_centos_move/", "title": "Red Hat CentOS move", "publisher": "The Register", "date": "2023-06-23", "supports": "relicensing_events[1], license_history[2]"},
+    {"url": "https://lwn.net/Articles/935918", "title": "AlmaLinux's response to Red Hat's policy change", "publisher": "LWN", "date": "2023-06", "supports": "relicensing_events[1] outcome"},
+    {"url": "https://www.networkworld.com/article/3705428/openela-group-pushes-for-bug-compatibility-with-rhel.html", "title": "OpenELA group pushes for bug compatibility with RHEL", "publisher": "Network World", "date": "2023-08", "supports": "relicensing_events[1] fork/fork_backer"},
+    {"url": "https://www.theregister.com/2025/09/08/red_hatters_to_be_big/", "title": "Red Hatters to be Big and Blue whether they like it or not", "publisher": "The Register", "date": "2025-09-08", "supports": "risk_events (G&A moving to IBM 2026; 2023 4% cut)"},
+    {"url": "https://newsroom.ibm.com/2026-01-28-IBM-RELEASES-FOURTH-QUARTER-RESULTS", "title": "IBM Releases Fourth-Quarter Results", "publisher": "IBM", "date": "2026-01-28", "supports": "risk_events (Hybrid Cloud (Red Hat) +10% Q4 2025)"},
+    {"url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/ibm-ibm-q4-2025-earnings-call-transcript/", "title": "IBM Q4 2025 earnings call transcript", "publisher": "The Motley Fool", "date": "2026-01-28", "supports": "robustness ($7.5B Red Hat ARR run rate; OpenShift ARR $1.9B)"},
+    {"url": "https://www.refolk.ai/blog/red-hat-april-2026-cuts-openshift-sourcing-pool", "title": "Red Hat's April 2026 Cuts", "publisher": "Refolk (blog)", "date": "2026-04", "supports": "risk_events (2026 China team, weakly sourced)"}
+  ],
+  "notes": [
+    "funding_total_usd null: pre-IPO venture funding (1998 investors reportedly included Intel and Netscape) not verified in this pass.",
+    "IPO proceeds not verified; exit_events[0].value_usd left null.",
+    "revenue_latest_usd is Red Hat's last standalone fiscal year (FY ended Feb 2019). IBM does not report Red Hat revenue separately; IBM's Q4 2025 call cited a ~$7.5B annualized run rate.",
+    "employees_latest null: a secondary 2025 summary put Red Hat at 'over 19,000' employees, not confirmed by a primary source."
+  ]
+}

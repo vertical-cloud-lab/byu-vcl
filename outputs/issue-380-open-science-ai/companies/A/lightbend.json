@@ -1,0 +1,68 @@
+{
+  "name": "Lightbend, Inc. (formerly Typesafe; Akka)",
+  "slug": "lightbend",
+  "group": "A",
+  "category": "software",
+  "subcategory": "JVM reactive frameworks (Akka, Scala tooling, Play)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Founded in 2011 as Typesafe by Martin Odersky (creator of Scala at EPFL), Jonas Bonér (creator of Akka) and Paul Phillips to commercialize the Scala, Akka and Play stack; renamed Lightbend in 2016 and later rebranded around Akka (date unverified). Coded 'academic' because Scala came out of EPFL.",
+  "founded_year": 2011,
+  "flagship_projects": [
+    "Akka",
+    "Scala (EPFL-led)",
+    "Play Framework"
+  ],
+  "openness_initial": 3,
+  "openness_current": 1,
+  "openness_notes": "Scala, Akka and Play were Apache-2.0 and revenue came from subscriptions and support (3). In 2022 Akka moved to BSL 1.1 (converting to Apache-2.0 after three years), with fees for larger commercial users: level 1 for the flagship. Scala remains open under EPFL and Scala Center stewardship.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2011,
+      "license": "Apache-2.0 (Akka, Play; Scala BSD-style then Apache-2.0)",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2022,
+      "license": "BSL 1.1 for Akka",
+      "note": "September 2022 (unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2022,
+      "from": "Apache-2.0",
+      "to": "BSL 1.1 (Akka)",
+      "direction": "closing",
+      "fork": "Apache Pekko (fork of Akka 2.6.x)",
+      "fork_backer": "Apache Software Foundation (community-led)",
+      "outcome_note": "Pekko entered the Apache Incubator soon after the change (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [],
+  "robustness": "Akka is single-vendor under BSL, but the Apache-licensed lineage continues as Apache Pekko under ASF governance.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. Akka is the small-scale version of the HashiCorp story: a 2022 BSL switch quickly produced a foundation-governed fork (Apache Pekko), showing that even mid-sized ecosystems now fork into foundations.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+}

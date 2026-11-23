@@ -1,0 +1,239 @@
+{
+  "name": "MakerBot Industries, LLC",
+  "slug": "makerbot",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "desktop FFF 3D printers (now UltiMaker's education brand)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded January 2009 in Brooklyn, NY by Bre Pettis, Adam Mayer and Zach 'Hoeken' Smith (a founding member of the RepRap Research Foundation) to build on the RepRap project; first product the Cupcake CNC (2009) used the RepRap motherboard Smith designed; Smith and Pettis had launched Thingiverse in 2008.",
+  "founded_year": 2009,
+  "flagship_projects": [
+    "Cupcake CNC",
+    "Thing-O-Matic",
+    "Replicator / Replicator 2",
+    "Thingiverse",
+    "Method",
+    "Sketch"
+  ],
+  "openness_initial": 3,
+  "openness_current": 0,
+  "openness_notes": "Initial 3: Cupcake CNC and Thing-O-Matic were RepRap-derived and their build source files were posted on Thingiverse so anyone could make one; governance was corporate, so not 4. The Replicator 2 (Sept 2012) and its MakerWare software were closed, nine months before the Stratasys deal; products stayed closed under Stratasys and UltiMaker. Current 0: Method/Sketch printers, firmware and MakerBot slicing software are proprietary; Thingiverse is a content-sharing site, not open hardware. The specific licence of the early design files could not be verified (search budget exhausted).",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2009,
+      "license": "Open-source design files (RepRap-derived), posted on Thingiverse",
+      "note": "Exact licence (GPL vs CC) not verified in this session",
+      "source": "https://en.wikipedia.org/wiki/MakerBot"
+    },
+    {
+      "year": 2012,
+      "license": "Proprietary (Replicator 2 hardware and MakerWare software)",
+      "note": "Confirmed closed by MakerBot support per Josef Prusa; Pettis: 'as open as we possibly can while building a sustainable business'",
+      "source": "https://makezine.com/2012/09/22/makerbots-mixed-messages-about-open-source-their-future"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2012,
+      "from": "open-source RepRap-derived designs (Cupcake, Thing-O-Matic)",
+      "to": "closed hardware and software (Replicator 2, MakerWare)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Community backlash ('Occupy Thingiverse'); commentators linked it to the TangiBot clone Kickstarter a month earlier. Closing preceded the June 2013 Stratasys acquisition, and products stayed closed afterwards.",
+      "source": "https://hackaday.com/2012/09/20/makerbot-occupy-thingiverse-and-the-reality-of-selling-open-hardware"
+    }
+  ],
+  "funding_total_usd": 13000000,
+  "funding_as_of": "2011",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2013,
+      "type": "acquisition",
+      "value_usd": 403000000,
+      "counterparty": "Stratasys Ltd.",
+      "note": "All-stock merger announced 2013-06-19, valued at Stratasys' $84.60 close; plus earn-outs of up to 2.38M shares (initially worth up to $201M) through 2014",
+      "source": "https://www.sec.gov/Archives/edgar/data/0001517396/000110465913050451/a13-15347_1ex99d1.htm"
+    },
+    {
+      "year": 2022,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "Ultimaker B.V. (NPM Capital)",
+      "note": "Completed 2022-08-31; combined company named UltiMaker; NPM Capital 53.5%, Stratasys 46.5%; $62.4M new funding planned ($15.4M NPM + $47M Stratasys)",
+      "source": "https://investors.stratasys.com/news-events/press-releases/detail/793/stratasys-completes-merger-of-makerbot-with-ultimaker"
+    }
+  ],
+  "latest_value_usd": 403000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2013-06",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2012: Replicator 2 closed; RepRap community backlash and 'Occupy Thingiverse'",
+    "2012: TangiBot Kickstarter clone of the open Replicator cited as a trigger for closing",
+    "2015: Smart Extruder clogging problems; two rounds of layoffs and declining revenue (Fortune)",
+    "2015-07: securities class action against Stratasys over MakerBot disclosures (dismissed with prejudice by July 2016)",
+    "2015: Stratasys goodwill impairment of $150.4M on MakerBot in Q1; no MakerBot goodwill left by 2015-12-31",
+    "2016-04: MakerBot laid off its manufacturing workforce and outsourced printer production to China",
+    "2022: merged into Ultimaker; MakerBot now UltiMaker's education brand",
+    "Method X software support ends 2027-06 under UltiMaker's end-of-life policy (May 2026)"
+  ],
+  "robustness": "No longer independent: a brand inside privately held UltiMaker (NPM Capital majority, Stratasys minority). Closed products depend on UltiMaker for software and cloud support (published end-of-support dates). Thingiverse, the community asset it built while open, is the most durable legacy.",
+  "physical_science_relevance": "Early open MakerBots and Thingiverse helped spread desktop 3D printing into university labs and makerspaces; the current brand targets K-12 education (MakerBot Nebula learning platform).",
+  "openness_effect_assessment": "Open RepRap-derived designs and Thingiverse gave MakerBot a large community and rapid sales (22k printers by 2013), turning about $13M of venture money into a $403M stock exit four years after founding. Closing in 2012 alienated RepRap developers, and it did not protect the business: after the acquisition the closed 5th-generation line and Smart Extruder failures led to layoffs, a lawsuit and Stratasys writing off all MakerBot goodwill by the end of 2015.",
+  "key_takeaway": "MakerBot is the canonical 'open, then closed, then absorbed' arc: openness and community created the brand and the exit value, and closing (just before the Stratasys deal) traded community goodwill for proprietary control that did not prevent rapid value destruction. Within seven years of the $403M deal it was folded into Ultimaker as a minority-owned brand.",
+  "confidence": "medium",
+  "searches": [
+    "Stratasys acquires MakerBot 2013 $403 million stock deal earnouts",
+    "MakerBot Replicator 2 closed source 2012 Zachary Smith \"open hardware\" Bre Pettis controversy",
+    "MakerBot founded 2009 Bre Pettis Adam Mayer Zach Smith Cupcake CNC RepRap Thingiverse open source",
+    "MakerBot Stratasys impairment layoffs 2015 Smart Extruder class action",
+    "MakerBot brand 2025 2026 UltiMaker news Sketch Method discontinued layoffs",
+    "Ultimaker MakerBot merger 2022 Stratasys 46.5% stake NPM Capital $62.4 million cash closed",
+    "MakerBot $10 million Series A Foundry Group 2011 funding total",
+    "Stratasys 2015 goodwill impairment charge MakerBot reporting unit billion"
+  ],
+  "fetched_urls": [],
+  "search_tool": "WebSearch",
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001517396/000110465913050451/a13-15347_1ex99d1.htm",
+      "title": "Stratasys Form 6-K exhibit: Stratasys to acquire MakerBot",
+      "publisher": "Stratasys / SEC EDGAR",
+      "date": "2013-06-19",
+      "supports": "exit_events[0], latest_value_usd"
+    },
+    {
+      "url": "https://www.engadget.com/2013-06-19-stratasys-to-acquire-3d-printing-company-makerbot.html",
+      "title": "Stratasys to acquire 3D printing company MakerBot for $403 million in stock",
+      "publisher": "Engadget",
+      "date": "2013-06-19",
+      "supports": "exit_events[0] (second source)"
+    },
+    {
+      "url": "https://fortune.com/2013/06/20/vcs-print-big-return-on-makerbot-sale",
+      "title": "VCs print big return on MakerBot sale",
+      "publisher": "Fortune",
+      "date": "2013-06-20",
+      "supports": "funding_total_usd ($13M at $48M valuation)"
+    },
+    {
+      "url": "https://techcrunch.com/2011/08/23/makerbot-takes-10-million-in-funding-from-foundry-group-angels",
+      "title": "MakerBot Takes $10 Million In Funding From Foundry Group, Angels",
+      "publisher": "TechCrunch",
+      "date": "2011-08-23",
+      "supports": "notes (announced $10M round, investors)"
+    },
+    {
+      "url": "https://makezine.com/2012/09/22/makerbots-mixed-messages-about-open-source-their-future",
+      "title": "MakerBot's Mixed Messages About Open Source, Their Future",
+      "publisher": "Make:",
+      "date": "2012-09-22",
+      "supports": "license_history[1], relicensing_events[0]"
+    },
+    {
+      "url": "https://hackaday.com/2012/09/20/makerbot-occupy-thingiverse-and-the-reality-of-selling-open-hardware",
+      "title": "MakerBot, Occupy Thingiverse, and the reality of selling open hardware",
+      "publisher": "Hackaday",
+      "date": "2012-09-20",
+      "supports": "relicensing_events[0], risk_events[0-1]"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/MakerBot",
+      "title": "MakerBot",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, license_history[0], exit_events[1]"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0001517396/000120677416005045/stratasys_20f.htm",
+      "title": "Stratasys Ltd. Form 20-F for fiscal 2015",
+      "publisher": "SEC EDGAR",
+      "date": "2016-03",
+      "supports": "risk_events[4] (goodwill impairments; no MakerBot goodwill remaining)"
+    },
+    {
+      "url": "https://fortune.com/2016/01/04/makerbot-replaces-smart-extruder/",
+      "title": "MakerBot Replaces Crucial - and Flawed - 3D Printer Part",
+      "publisher": "Fortune",
+      "date": "2016-01-04",
+      "supports": "risk_events[2]"
+    },
+    {
+      "url": "https://hackaday.com/2016/07/09/3d-printering-makerbots-class-action-suit-dismissed",
+      "title": "3D Printering: MakerBot's class action suit dismissed",
+      "publisher": "Hackaday",
+      "date": "2016-07-09",
+      "supports": "risk_events[3]"
+    },
+    {
+      "url": "https://hackaday.com/2016/04/28/the-makerbot-obituary",
+      "title": "The MakerBot Obituary",
+      "publisher": "Hackaday",
+      "date": "2016-04-28",
+      "supports": "risk_events[5]"
+    },
+    {
+      "url": "https://investors.stratasys.com/news-events/press-releases/detail/793/stratasys-completes-merger-of-makerbot-with-ultimaker",
+      "title": "Stratasys Completes Merger of MakerBot With Ultimaker",
+      "publisher": "Stratasys",
+      "date": "2022-08-31",
+      "supports": "exit_events[1]"
+    },
+    {
+      "url": "https://techcrunch.com/2022/05/12/makerbot-and-ultimaker-are-merging/",
+      "title": "MakerBot and Ultimaker are merging",
+      "publisher": "TechCrunch",
+      "date": "2022-05-12",
+      "supports": "exit_events[1] (announcement terms)"
+    },
+    {
+      "url": "https://support.ultimaker.com/s/article/1667412437656",
+      "title": "Product end of life policy and process",
+      "publisher": "UltiMaker",
+      "date": "2026-05-26",
+      "supports": "risk_events[7]"
+    },
+    {
+      "url": "https://www.makerbot.com/stories/makerbot-nebula-ai-powered-differentiated-learning-platform-for-education/",
+      "title": "MakerBot Nebula launches as an AI-powered differentiated learning platform for education",
+      "publisher": "MakerBot / UltiMaker",
+      "date": "2026",
+      "supports": "physical_science_relevance, still_operating (education brand)"
+    },
+    {
+      "url": "https://thenextweb.com/news/3d-printing-company-makerbot-acquired-by-stratasys-for-403m-in-stock-after-selling-22k-3d-printers",
+      "title": "3D printing company MakerBot acquired by Stratasys for $403M in stock after selling 22k 3D printers",
+      "publisher": "The Next Web",
+      "date": "2013-06-19",
+      "supports": "openness_effect_assessment (22k printers sold)"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Early RepRap-derived designs published openly on Thingiverse (exact licence not verified)",
+      "Proprietary from Replicator 2 (2012)"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary MakerWare / MakerBot Print from 2012 (earlier open firmware licence not verified)"
+    ],
+    "patents": null,
+    "clone_impacts": "The TangiBot Kickstarter (2012), a cheaper copy of the open Replicator, was widely cited as a trigger for closing the Replicator 2, though some commentators argued the move had been planned for months."
+  },
+  "notes": [
+    "funding_total_usd: Fortune (2013) reports the 2011 round ended at $13M at a $48M valuation; it was announced as $10M (TechCrunch 2011), led by Foundry Group with Bezos Expeditions, True Ventures and RRE. No crowdfunding included.",
+    "latest_value is the 2013 acquisition price; no value for MakerBot was disclosed in the 2022 merger. A MarketScreener item describing a $187.3M transaction conflicts with the Stratasys description of a merger and was not used.",
+    "MakerBot Industries continues as UltiMaker's education brand (Sketch, Method lines), so still_operating is true for the brand, not as an independent company.",
+    "Revenue and employee counts for MakerBot alone are not published after 2013; set to null.",
+    "Two follow-up searches (2014 MakerBot patent-application controversy; licence of Cupcake/Thing-O-Matic files) were blocked because the session-wide WebSearch budget was exhausted, so patents and early licence remain null/unverified."
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "name": "Ansys, Inc. (now part of Synopsys)",
+  "slug": "ansys",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "engineering simulation (FEA, CFD, electromagnetics)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 1970 as Swanson Analysis Systems, Inc. by John Swanson in Canonsburg, Pennsylvania, after Westinghouse Astronuclear Laboratory declined his idea; Westinghouse became the first user. Swanson sold his majority interest to TA Associates in 1994; renamed Ansys in 1995; NASDAQ IPO 1996; acquired by Synopsys in July 2025.",
+  "founded_year": 1970,
+  "flagship_projects": [
+    "Ansys Mechanical",
+    "Ansys Fluent",
+    "Ansys HFSS",
+    "Ansys LS-DYNA"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Proprietary commercial simulation software throughout its history.",
+  "business_model": "proprietary",
+  "license_history": [
+    {
+      "year": 1970,
+      "license": "Proprietary",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/Ansys"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 1994,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "TA Associates",
+      "note": "Founder sold majority interest to the venture/private-equity firm; value not found",
+      "source": "https://en.wikipedia.org/wiki/Ansys"
+    },
+    {
+      "year": 1996,
+      "type": "IPO",
+      "value_usd": 46000000,
+      "counterparty": "NASDAQ (ANSS)",
+      "note": "Value is approximate amount raised, not market cap",
+      "source": "https://en.wikipedia.org/wiki/Ansys"
+    },
+    {
+      "year": 2025,
+      "type": "acquisition",
+      "value_usd": 35000000000,
+      "counterparty": "Synopsys",
+      "note": "Announced 16 Jan 2024 ($197 cash + 0.3450 SNPS shares per Ansys share; ~$35B enterprise value at 21 Dec 2023 prices); completed 17 Jul 2025",
+      "source": "https://ansys.synopsys.com/news-center/press-releases/1-16-24-synopsys-acquires-ansys"
+    }
+  ],
+  "latest_value_usd": 35000000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2025-07",
+  "revenue_latest_usd": 2540000000,
+  "revenue_year": 2024,
+  "employees_latest": 6500,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "28 May 2025: FTC consent order required divestiture of Ansys PowerArtist (plus Synopsys optical and photonic tools) to Keysight as a condition of the merger; EU, UK and China reviews also required.",
+    "Nov 2025: reports that Synopsys would cut about 10% of its workforce and close sites in post-acquisition restructuring, largely in fiscal 2026.",
+    "Absorption into a chip-design (EDA) company: first joint product was 'multiphysics fusion' EDA software (Mar 2026), signalling a shift of focus toward semiconductor and AI-chip design."
+  ],
+  "robustness": "Commercially very robust (55 years, $2.54B revenue in 2024) but entirely vendor-controlled; product direction now set by Synopsys's EDA strategy. Users have no fork rights; open alternatives exist only for parts of the portfolio (e.g. OpenFOAM for CFD).",
+  "physical_science_relevance": "Dominant commercial engineering-simulation suite for structural, fluid, thermal and electromagnetic physics used across aerospace, energy, automotive and semiconductor engineering.",
+  "openness_effect_assessment": "Ansys never opened its core products; value accrued to shareholders through an IPO and a ~$35B sale rather than to a commons. Closed licensing produced a high-revenue, high-valuation business, but the community has no recourse if the acquirer reprioritises products, which the FTC divestitures and post-merger restructuring illustrate.",
+  "key_takeaway": "Ansys is the high-water mark for closed physical-science software value: a 1970 founder startup that became a $35B acquisition. Its trajectory (VC buyout, IPO, strategic sale to an EDA firm) is the commercial template against which open simulation infrastructure such as OpenFOAM and LAMMPS can be compared: far more capital captured, but control concentrated in a single owner.",
+  "usage_metrics": [],
+  "funding_sources": [
+    "TA Associates (1994 majority stake)",
+    "Public equity markets (1996 to 2025)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls. Facts come from direct fetches of Wikipedia, the Ansys/Synopsys press releases and the FTC press release.",
+    "Revenue and employee figures are for 2024, from Wikipedia's infobox (based on Ansys filings), not independently re-checked against the 10-K.",
+    "Customer/user counts not found."
+  ],
+  "confidence": "high",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Ansys",
+    "https://en.wikipedia.org/wiki/Synopsys",
+    "https://news.synopsys.com/2025-07-17-Synopsys-Completes-Acquisition-of-Ansys",
+    "https://www.ftc.gov/news-events/news/press-releases/2025/05/ftc-require-synopsys-ansys-divest-assets-proceed-merger",
+    "https://ansys.synopsys.com/news-center/press-releases/1-16-24-synopsys-acquires-ansys"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Ansys",
+      "title": "Ansys",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, exit_events[0-1], revenue_latest_usd, employees_latest"
+    },
+    {
+      "url": "https://ansys.synopsys.com/news-center/press-releases/1-16-24-synopsys-acquires-ansys",
+      "title": "Synopsys to Acquire Ansys",
+      "publisher": "Ansys / Synopsys",
+      "date": "2024-01-16",
+      "supports": "exit_events[2], latest_value_usd"
+    },
+    {
+      "url": "https://news.synopsys.com/2025-07-17-Synopsys-Completes-Acquisition-of-Ansys",
+      "title": "Synopsys Completes Acquisition of Ansys",
+      "publisher": "Synopsys",
+      "date": "2025-07-17",
+      "supports": "exit_events[2] (completion), latest_value_date"
+    },
+    {
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2025/05/ftc-require-synopsys-ansys-divest-assets-proceed-merger",
+      "title": "FTC to require Synopsys, Ansys to divest assets to proceed with merger",
+      "publisher": "US Federal Trade Commission",
+      "date": "2025-05-28",
+      "supports": "risk_events[0]"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Synopsys",
+      "title": "Synopsys",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "risk_events[1-2] (WSJ layoffs report, Reuters multiphysics fusion)"
+    }
+  ]
+}

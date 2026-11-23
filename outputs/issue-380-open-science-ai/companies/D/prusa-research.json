@@ -1,0 +1,227 @@
+{
+  "name": "Prusa Research a.s.",
+  "slug": "prusa-research",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "desktop FFF 3D printers",
+  "hq_country": "CZ",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in Prague in 2012 by Josef Prusa, a RepRap core developer whose Prusa Mendel / Prusa i3 RepRap designs the company first sold as kits; grew from a one-person start-up to 1,000+ staff without disclosed outside funding.",
+  "founded_year": 2012,
+  "flagship_projects": [
+    "Original Prusa i3 (MK2/MK3/MK4)",
+    "CORE One / CORE One L",
+    "PrusaSlicer",
+    "Printables",
+    "Prusament"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Initial 3: i3 designs up to the MK3 were published as GPL OpenSCAD code, firmware GPL, slicer AGPL (no complete BOM ever published, so not 4; governance is corporate). From the MK4 (2023) printable parts were released only as STLs and the Nextruder/xBuddy board design files withheld; schematics published but PCB manufacturing layouts withheld 'to avoid untested clone boards'. CORE One/CORE One L frame CAD released Dec 2025 under Prusa's own Open Community License (OCL), which forbids selling machines or commercial remixes without a separate agreement, so it is source-available rather than open hardware. Firmware stays GPL and PrusaSlicer AGPL-3.0. Current = 2 (software/firmware open, current hardware designs only under a non-open licence, older models open).",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2012,
+      "license": "GPL (v2/v3) OpenSCAD design files for Prusa i3 family",
+      "note": "i3 designs up to the MK3 released as GPL OpenSCAD; STL/G-code downloads marked GPLv3",
+      "source": "https://hackaday.com/2024/11/20/with-core-one-prusas-open-source-hardware-dream-quietly-dies/"
+    },
+    {
+      "year": 2012,
+      "license": "GPL (printer firmware)",
+      "note": "Prusa states its printer firmware is licensed under GPL (repeated Dec 2025)",
+      "source": "https://blog.prusa3d.com/core-one-cad-files-release-under-the-new-open-community-license-ocl_127290"
+    },
+    {
+      "year": 2016,
+      "license": "AGPL-3.0 (PrusaSlicer, fork of Slic3r)",
+      "note": "Year is approximate for the Slic3r Prusa Edition fork; licence per Wikipedia",
+      "source": "https://en.wikipedia.org/wiki/Prusa_Research"
+    },
+    {
+      "year": 2018,
+      "license": "CC BY-SA 4.0 (MK52 magnetic heated bed)",
+      "note": "Year approximate (MK3-era bed); licence per Hackaday",
+      "source": "https://hackaday.com/2024/11/20/with-core-one-prusas-open-source-hardware-dream-quietly-dies/"
+    },
+    {
+      "year": 2023,
+      "license": "STL-only printable parts; electronics/Nextruder CAD withheld (MK4)",
+      "note": "Schematics later published; PCB manufacturing data not released",
+      "source": "https://www.prusa3d.com/page/open-source-at-prusa-research_236812/"
+    },
+    {
+      "year": 2025,
+      "license": "Open Community License (OCL) for CORE One / CORE One L CAD (STEP + Fusion)",
+      "note": "Released 2025-12-19; modification, sharing, own production and spare parts allowed; selling machines or commercial remixes requires a separate agreement",
+      "source": "https://blog.prusa3d.com/core-one-cad-files-release-under-the-new-open-community-license-ocl_127290"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2023,
+      "from": "GPL design files (i3 up to MK3)",
+      "to": "STL-only printable parts, withheld electronics and Nextruder design files (MK4)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Preceded by Josef Prusa's 2023-03-29 post 'The state of open-source in 3D printing in 2023' complaining of 1:1 clones, stripped attribution and patents on open work, and calling for a new licence.",
+      "source": "https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/"
+    },
+    {
+      "year": 2025,
+      "from": "withheld CORE One CAD",
+      "to": "Open Community License (non-commercial-sale, source-available)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Partial re-opening under a licence that is not open hardware by the OSHW definition; maker-community reaction was mixed to negative (Make:, All3DP).",
+      "source": "https://blog.prusa3d.com/core-one-cad-files-release-under-the-new-open-community-license-ocl_127290"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_bootstrapped",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 157000000,
+  "revenue_year": 2024,
+  "employees_latest": 1144,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2023-03: Prusa blog cites 1:1 commercial clones, stripped copyright headers and local patents filed on open-source work",
+    "2023: MK4 launched with design files withheld (STL only); PCB layouts withheld to avoid clone boards",
+    "2024-11: CORE One announced as closed hardware; Hackaday: 'Prusa's open source hardware dream quietly dies'",
+    "2025-08: Josef Prusa post 'open hardware desktop 3D printing is dead' blames below-cost Chinese printers and state-reimbursed Chinese patent filings",
+    "2026-03: first-ever layoffs, about 70 non-production roles of about 1,144, as sales targets were missed",
+    "Competitive pressure from closed Bambu Lab, whose Bambu Studio slicer derives from Prusa's open PrusaSlicer"
+  ],
+  "robustness": "Founder-controlled and bootstrapped (no disclosed outside funding), profitable but thin 2024 net margin (CZK 47.3M net on CZK 3.65B revenue); vertically integrated (Prusament filament, Printables community site) with a Delaware factory (Prusa USA, formerly Printed Solid, renamed July 2026) serving a market that is about 35% of revenue. Its open software (PrusaSlicer) is widely forked, so that part would outlive the company.",
+  "physical_science_relevance": "RepRap-lineage open FFF printers are a standard tool for fabricating custom labware and open scientific hardware; GPL-era i3 designs remain reusable by labs, while OCL designs allow lab use and spare parts but not commercial resale.",
+  "openness_effect_assessment": "Open GPL designs and the RepRap community gave Prusa fast, cheap brand growth from a one-person start-up to roughly CZK 3.65B revenue (2024) with no disclosed outside capital. From 2023 the company progressively withheld hardware files, citing 1:1 clones and Chinese patent filings, yet Hackaday notes the feared Prusa clones are hard to find; the bigger competitive threat became closed, subsidised Chinese printers (Bambu Lab) that reused Prusa's open slicer. Closing did not prevent slowing sales and the first layoffs in 2026, suggesting price competition rather than cloning was the binding constraint.",
+  "key_takeaway": "Prusa is the clearest case of an open-hardware pioneer retreating to 'open software, source-available hardware': it kept firmware (GPL) and slicer (AGPL) open but moved its newest printers' CAD to a custom non-commercial Open Community License. Openness built the brand and community cheaply, but it did not protect against well-funded closed competitors, and the protective licence came after market share had already shifted.",
+  "confidence": "medium",
+  "searches": [
+    "Josef Prusa 2023 blog \"open hardware\" dead clones patents state of open source 3D printing",
+    "Prusa Core One open source files licence \"Open Community License\" OCL",
+    "Prusa Research revenue employees founded 2012 Josef Prusa bootstrapped",
+    "Prusa i3 MK3 GPL CC-BY-SA design files clones Chinese copies Prusa",
+    "Prusa Research 2025 2026 news revenue Core One L, open source, US factory",
+    "Prusa Research propouštění 2026 tržby Lupa.cz USA třetina tržeb",
+    "Czech National Bank average annual exchange rate 2024 USD CZK",
+    "Prusa \"Original Prusa\" MK4 source files xBuddy electronics schematics released GitHub licence"
+  ],
+  "fetched_urls": [
+    "https://blog.prusa3d.com/core-one-cad-files-release-under-the-new-open-community-license-ocl_127290",
+    "https://hackaday.com/2025/08/13/josef-prusa-warns-open-hardware-3d-printing-is-dead",
+    "https://en.wikipedia.org/wiki/Prusa_Research",
+    "https://hackaday.com/2024/11/20/with-core-one-prusas-open-source-hardware-dream-quietly-dies/",
+    "https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/"
+  ],
+  "search_tool": "WebSearch + WebFetch (search budget exhausted)",
+  "sources": [
+    {
+      "url": "https://blog.prusa3d.com/the-state-of-open-source-in-3d-printing-in-2023_76659/",
+      "title": "The state of open-source in 3D printing in 2023",
+      "publisher": "Prusa Research blog (Josef Prusa)",
+      "date": "2023-03-29",
+      "supports": "relicensing_events[0], risk_events[0], hardware_extras.patents, hardware_extras.clone_impacts"
+    },
+    {
+      "url": "https://blog.prusa3d.com/core-one-cad-files-release-under-the-new-open-community-license-ocl_127290",
+      "title": "Open-sourcing CORE One CAD files under the new Open Community License (OCL)",
+      "publisher": "Prusa Research blog",
+      "date": "2025-12-19",
+      "supports": "license_history[1], license_history[5], relicensing_events[1], openness_current"
+    },
+    {
+      "url": "https://hackaday.com/2024/11/20/with-core-one-prusas-open-source-hardware-dream-quietly-dies/",
+      "title": "With Core One, Prusa's Open Source Hardware Dream Quietly Dies",
+      "publisher": "Hackaday",
+      "date": "2024-11-20",
+      "supports": "openness_initial, license_history[0], license_history[3], risk_events[1-2], clone_impacts"
+    },
+    {
+      "url": "https://hackaday.com/2025/08/13/josef-prusa-warns-open-hardware-3d-printing-is-dead",
+      "title": "Josef Prusa Warns Open Hardware 3D Printing Is Dead",
+      "publisher": "Hackaday",
+      "date": "2025-08-13",
+      "supports": "risk_events[3]"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Prusa_Research",
+      "title": "Prusa Research",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "founded_year, revenue (CZK 3.65B, 2024), net income, employees 2024, PrusaSlicer AGPL-3.0, Prusa USA"
+    },
+    {
+      "url": "https://www.cnews.cz/clanky/prusa-poprve-propousti-ceskemu-vyrobci-3d-tiskaren-se-nedari-plnit-prodejni-cile/",
+      "title": "Průša poprvé propouští. Českému výrobci 3D tiskáren se nedaří plnit prodejní cíle",
+      "publisher": "Cnews.cz",
+      "date": "2026-03",
+      "supports": "risk_events[4], employees_latest (1,144 before cuts), 2024 revenue corroboration"
+    },
+    {
+      "url": "https://www.e15.cz/byznys/prusa-poprve-propoustel-tym-rostl-rychleji-nez-byznys-vysvetluje-1431496",
+      "title": "Průša poprvé propouštěl. Tým rostl rychleji než byznys, vysvětluje",
+      "publisher": "E15",
+      "date": "2026-03",
+      "supports": "risk_events[4], revenue corroboration"
+    },
+    {
+      "url": "https://www.tomshardware.com/3d-printing/delawares-printed-solid-rebrands-to-prusa-usa",
+      "title": "Delaware's Printed Solid rebrands to Prusa USA",
+      "publisher": "Tom's Hardware",
+      "date": "2026-07",
+      "supports": "robustness (US factory), notes (US share)"
+    },
+    {
+      "url": "https://www.prusa3d.com/page/open-source-at-prusa-research_236812/",
+      "title": "Open source at Prusa Research",
+      "publisher": "Prusa Research",
+      "date": "2026",
+      "supports": "license_history[4] (schematics released, manufacturing data withheld)"
+    },
+    {
+      "url": "https://www.focus-economics.com/country-indicator/czech-republic/exchange-rate-eur/",
+      "title": "Czech Republic exchange rate (CZK per USD, annual average)",
+      "publisher": "FocusEconomics",
+      "date": "2025",
+      "supports": "CZK to USD conversion rate 23.23 (2024 average)"
+    },
+    {
+      "url": "https://app.dealroom.co/companies/prusa_research",
+      "title": "Prusa Research company profile",
+      "publisher": "Dealroom",
+      "date": "2026",
+      "supports": "notes: no known external funding"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "GPLv2/GPLv3 (i3 OpenSCAD design files up to MK3)",
+      "CC BY-SA 4.0 (MK52 heated bed)",
+      "Open Community License, OCL (CORE One / CORE One L CAD, Dec 2025; non-commercial-sale, not OSHW-compliant)"
+    ],
+    "firmware_software_licenses": [
+      "GPL (printer firmware, Prusa-Firmware and Prusa-Firmware-Buddy)",
+      "AGPL-3.0 (PrusaSlicer, from Slic3r)"
+    ],
+    "patents": "In March 2023 Josef Prusa wrote that Prusa would 'never consider patenting' its open-source contributions, while complaining of others patenting open work; the Aug 2025 post cites rapid growth of Chinese 3D-printing patent filings (Espacenet chart). No Prusa patent filings were verified in these searches.",
+    "clone_impacts": "Prusa cites 1:1 commercial clones and withholds PCB layouts to avoid untested clone boards; Hackaday (2024) disputes how many Prusa clones exist. The larger documented reuse is software: PrusaSlicer forked into Bambu Studio and others."
+  },
+  "notes": [
+    "Revenue: CZK 3.65 billion for 2024 (Wikipedia infobox, corroborated by e15.cz/cnews.cz). Converted at the 2024 average of about 23.23 CZK per USD (FocusEconomics/Macrobond) = about USD 157M. vtm.zive.cz reports about CZK 4 billion turnover for 2025 and Forbes.cz about 10% growth; not used because annual accounts were not seen.",
+    "Employees: about 1,144 before about 70 non-production roles were cut in March 2026 (Czech press); Wikipedia lists 1,000 for 2024.",
+    "funding_total_usd left null: Dealroom lists no known external funding, but no source states explicitly that the company never raised outside capital.",
+    "US operations: Prusa USA (Delaware, formerly Printed Solid, renamed July 2026) assembles printers; the US was about 35% of revenue in 2025 per Czech press.",
+    "OSHWA certification status not found in searches; recorded as null.",
+    "Mode note: 2025-2026 facts (OCL release date, 2026 layoffs, Prusa USA) come from searches/fetches run in this session."
+  ]
+}

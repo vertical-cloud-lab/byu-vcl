@@ -1,0 +1,71 @@
+{
+  "name": "International Business Machines Corporation (IBM)",
+  "slug": "ibm",
+  "group": "C",
+  "category": "big_tech",
+  "subcategory": "enterprise software, hybrid cloud, consulting, mainframes; acquirer of open-source companies (Red Hat, HashiCorp, Confluent); Granite open models",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Formed 1911-06-16 as the Computing-Tabulating-Recording Company (CTR) in Endicott, New York, when Charles Ranlett Flint amalgamated four companies; renamed International Business Machines on 1924-02-14.",
+  "founded_year": 1911,
+  "flagship_projects": ["Red Hat Enterprise Linux / OpenShift (via Red Hat)", "Terraform / Vault (via HashiCorp)", "Confluent (Apache Kafka)", "Granite open models", "Eclipse (donated)"],
+  "openness_initial": 0,
+  "openness_current": 2,
+  "openness_notes": "Scored on the AI and developer-platform strategy; the level is a judgement. Initial 0: a proprietary hardware and software vendor for most of the 20th century. IBM began supporting Linux in 1998 and donated Eclipse (worth about $40M). Current 2 (open core): Red Hat sells subscriptions to open-source software, and Granite models are Apache-2.0 with signed releases and a top Stanford transparency-index rating. But HashiCorp's products have been under the non-OSI Business Source License since Aug 2023, before IBM bought them, and much of IBM's revenue (software, mainframes, consulting) is proprietary. Whether IBM changed HashiCorp's licence after the 2025 close was not confirmed from a fetched page.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 1998, "license": "Linux / open-source support begins", "note": "IBM 'began supporting Linux in 1998'; its Linux Technology Center has over 300 kernel developers; it donated Eclipse (about $40M of software) and released ICU and Apache Derby.", "source": "https://en.wikipedia.org/wiki/IBM"},
+    {"year": 2019, "license": "Red Hat portfolio (open-source subscriptions)", "note": "Red Hat acquisition, announced Oct 2018 for $34B and completed July 2019, IBM's largest ever.", "source": "https://en.wikipedia.org/wiki/IBM"},
+    {"year": 2024, "license": "Apache-2.0 (Granite code models, then Granite 3.0 in Oct 2024)", "note": "Granite code models open-sourced on Hugging Face about a year after watsonx (May 2023); Granite 3.0 introduced Oct 2024.", "source": "https://www.ibm.com/granite"},
+    {"year": 2025, "license": "HashiCorp portfolio (BUSL-1.1 since Aug 2023)", "note": "Deal announced 2024-04-24 for $6.4B and closed 2025-02-27.", "source": "https://en.wikipedia.org/wiki/HashiCorp"},
+    {"year": 2026, "license": "Confluent (commercialises Apache Kafka)", "note": "Announced 2025-12-08 at an $11B valuation; completed 2026-03-17.", "source": "https://en.wikipedia.org/wiki/Confluent,_Inc."}
+  ],
+  "relicensing_events": [
+    {"year": 2023, "from": "MPL-2.0 (Terraform and other HashiCorp products)", "to": "Business Source License 1.1", "direction": "closing", "fork": "OpenTofu (initially OpenTF, renamed Sept 2023)", "fork_backer": "Linux Foundation", "outcome_note": "The relicensing came before IBM's ownership; IBM then bought HashiCorp ($6.4B, closed 2025-02-27) with the BUSL licence in place, while the MPL fork OpenTofu continues under the Linux Foundation (release 1.13.9 on 2026-11-05).", "source": "https://en.wikipedia.org/wiki/OpenTofu"},
+    {"year": 2024, "from": "Proprietary watsonx foundation models", "to": "Granite models open-sourced under Apache-2.0", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "IBM positions Granite on transparency ('top rating in the Stanford Foundation Model Transparency Index') and ISO-certified AI management.", "source": "https://www.ibm.com/granite"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": 220210000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 67540000000,
+  "revenue_year": 2025,
+  "employees_latest": 264300,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2019-07: Red Hat acquisition ($34B), IBM's largest, tying IBM's growth to an open-source business",
+    "2023-08: HashiCorp relicensed Terraform to BUSL and the community forked OpenTofu under the Linux Foundation; IBM bought HashiCorp anyway ($6.4B, closed 2025-02-27)",
+    "2025-12-08: agreed to buy Confluent at an $11B valuation; completed 2026-03-17",
+    "Market cap down about 20.8% over the year to 2026-11-23 (StockAnalysis)"
+  ],
+  "robustness": "A 115-year-old company with $67.5B revenue (2025) and 264,300 employees. Its open-source exposure is now very large (Red Hat, HashiCorp, Confluent), which spreads risk across established communities (Linux, Kubernetes, Kafka). The ownership of the HashiCorp tools is a weak point: the community fork OpenTofu sits in a neutral foundation, so customers have a ready exit if IBM's licensing displeases them.",
+  "physical_science_relevance": "IBM has long-standing research in materials and chemistry (e.g. AI for materials discovery) and quantum computing; Granite's Apache-2.0 licence makes it usable in lab tooling without licence friction.",
+  "openness_effect_assessment": "IBM turned openness into an acquisition strategy: rather than build open communities, it has bought three open-source-origin companies for about $51B combined ($34B, $6.4B and an ~$11B valuation). Red Hat gave IBM a durable subscription business. HashiCorp shows the limit of buying a company that had already closed its licence: the community value had partly moved to OpenTofu. In AI, IBM chose Apache-2.0 Granite models plus transparency claims, a different bet from the closed frontier labs.",
+  "key_takeaway": "IBM is the open-source acquirer: having been a proprietary vendor for most of its history, it now buys the companies that monetise open communities (Linux, Terraform, Kafka) and releases its own AI models under Apache-2.0. The market has not rewarded the strategy as richly as the AI-centric giants (about $220B market cap, down ~21% in a year). For the study, IBM shows that openness can be bought as a revenue stream, and that licence closures made before an acquisition (HashiCorp) carry their forks along with them.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/IBM",
+    "https://en.wikipedia.org/wiki/HashiCorp",
+    "https://en.wikipedia.org/wiki/Confluent,_Inc.",
+    "https://en.wikipedia.org/wiki/OpenTofu",
+    "https://stockanalysis.com/stocks/ibm/market-cap/",
+    "https://companiesmarketcap.com/ibm/marketcap/",
+    "https://newsroom.ibm.com/2019-07-09-IBM-Closes-Landmark-Acquisition-of-Red-Hat-for-34-Billion-Defines-Open-Hybrid-Cloud-Future (HTTP 404)",
+    "https://www.ibm.com/granite"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/IBM", "title": "IBM", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, revenue_latest_usd, employees_latest, license_history[0], license_history[1], license_history[2] (timing)"},
+    {"url": "https://en.wikipedia.org/wiki/HashiCorp", "title": "HashiCorp", "publisher": "Wikipedia", "date": null, "supports": "license_history[3], risk_events[1]"},
+    {"url": "https://en.wikipedia.org/wiki/OpenTofu", "title": "OpenTofu", "publisher": "Wikipedia", "date": null, "supports": "relicensing_events[0]"},
+    {"url": "https://en.wikipedia.org/wiki/Confluent,_Inc.", "title": "Confluent, Inc.", "publisher": "Wikipedia", "date": null, "supports": "license_history[4], risk_events[2]"},
+    {"url": "https://www.ibm.com/granite", "title": "IBM Granite", "publisher": "IBM", "date": "2026-04-29", "supports": "license_history[2], relicensing_events[1], openness_notes"},
+    {"url": "https://stockanalysis.com/stocks/ibm/market-cap/", "title": "IBM Market Cap", "publisher": "StockAnalysis", "date": "2026-11-23", "supports": "latest_value_usd ($220.21B at $233.00 close), risk_events[3]"},
+    {"url": "https://companiesmarketcap.com/ibm/marketcap/", "title": "IBM Market capitalization", "publisher": "CompaniesMarketCap", "date": "2026-11", "supports": "latest_value_usd (cross-check $220.21B; earlier end-of-day ~$212B)"}
+  ]
+}

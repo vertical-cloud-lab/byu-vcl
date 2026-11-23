@@ -1,0 +1,70 @@
+{
+  "name": "Grafana Labs (formerly Raintank)",
+  "slug": "grafana-labs",
+  "group": "A",
+  "category": "software",
+  "subcategory": "observability (Grafana, Loki, Mimir, Tempo)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Torkel Ödegaard created Grafana in 2013 as a dashboard project derived from Kibana 3. Raj Dutt's New York startup Raintank (2014) built its business on Grafana, brought Ödegaard in as a co-founder and renamed itself Grafana Labs.",
+  "founded_year": 2014,
+  "flagship_projects": [
+    "Grafana",
+    "Loki",
+    "Mimir",
+    "Tempo",
+    "Grafana Cloud"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Grafana began as Apache-2.0. In 2021 Grafana, Loki and Tempo moved to AGPL-3.0, which is still OSI-approved, while some agents and libraries stayed Apache-2.0. Revenue comes from Grafana Cloud and proprietary Grafana Enterprise features, so the current level is open core (2).",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2013,
+      "license": "Apache-2.0",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2021,
+      "license": "AGPL-3.0 (Grafana, Loki, Tempo)",
+      "note": "April 2021 (unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2021,
+      "from": "Apache-2.0",
+      "to": "AGPL-3.0",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Copyleft tightening that stayed within OSI licences, aimed at hosted resale; no significant fork known (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [],
+  "robustness": "Single-vendor, VC-backed, but the projects remain OSI-licensed (AGPL), so a fork stays legally possible.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. Grafana Labs is the main counter-example to SSPL/BSL relicensing in this group: it tightened to AGPL in 2021, kept the open-source label, and kept raising venture money at rising valuations. Valuation, funding and revenue need sourcing.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+}

@@ -1,0 +1,86 @@
+{
+  "name": "SUSE S.A.",
+  "slug": "suse",
+  "group": "B",
+  "category": "software",
+  "subcategory": "enterprise Linux / Kubernetes (Rancher)",
+  "hq_country": "DE",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2 Sep 1992 in Nuremberg, Germany (Wikipedia infobox says Fuerth) by four founders as a Linux services/distribution company; holding company SUSE S.A. is registered in Luxembourg",
+  "founded_year": 1992,
+  "flagship_projects": ["SUSE Linux Enterprise", "openSUSE", "YaST", "Rancher", "NeuVector"],
+  "openness_initial": 2,
+  "openness_current": 3,
+  "openness_notes": "Early SuSE Linux shipped GPL software but its key differentiator, the YaST installer/admin tool, was under a non-free licence that barred redistribution (to v9.0). Novell released YaST under the GPL in 2004 (SUSE 9.1). Today the whole portfolio is OSI-licensed and sold as subscriptions; in 2023 SUSE also funded an open RHEL-compatible fork via OpenELA.",
+  "business_model": "support_services",
+  "license_history": [
+    {"year": 1992, "license": "GPL Linux distribution plus non-free YaST tool", "note": "YaST redistribution prohibited until v9.0", "source": "https://lists.opensuse.org/archives/list/users@lists.opensuse.org/thread/5BKE4U3H5PZMK6AJJOCMTG7AXI7NZJ2U"},
+    {"year": 2004, "license": "GPL (YaST)", "note": "Novell announced at BrainShare, 22 Mar 2004; effective with SUSE 9.1", "source": "https://www.eweek.com/servers/novell-makes-system-management-move-with-yast/"},
+    {"year": 2023, "license": "OpenELA RHEL-compatible sources (GPL)", "note": "SUSE pledged >$10M to fork RHEL, then co-founded OpenELA with Oracle and CIQ (10 Aug 2023)", "source": "https://techcrunch.com/2023/08/10/oracle-suse-and-ciq-launch-the-open-enterprise-linux-association-amid-red-hat-controversy"}
+  ],
+  "relicensing_events": [
+    {"year": 2004, "from": "Proprietary YaST licence", "to": "GPL", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Opened SUSE's main differentiator after the Novell acquisition to attract outside developers; made YaST portable to other distributions", "source": "https://www.eweek.com/servers/novell-makes-system-management-move-with-yast/"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_pe",
+  "exit_events": [
+    {"year": 2004, "type": "acquisition", "value_usd": 210000000, "counterparty": "Novell", "note": "Agreed Nov 2003, closed early 2004", "source": "https://en.wikipedia.org/wiki/SUSE_S.A."},
+    {"year": 2011, "type": "acquisition", "value_usd": 2200000000, "counterparty": "The Attachmate Group", "note": "Attachmate bought all of Novell for $2.2B (closed 27 Apr 2011); SUSE became a standalone unit; Attachmate merged into Micro Focus in 2014", "source": "https://en.wikipedia.org/wiki/SUSE_S.A."},
+    {"year": 2018, "type": "acquisition", "value_usd": 2535000000, "counterparty": "EQT VIII (from Micro Focus)", "note": "Enterprise value $2.535B, announced 2 Jul 2018; closing date not verified in this pass", "source": "https://eqtgroup.com/news/2018/eqt-to-acquire-leading-open-source-software-provider-suse"},
+    {"year": 2021, "type": "IPO", "value_usd": null, "counterparty": "Frankfurt Stock Exchange", "note": "Priced at EUR 30/share in May 2021; market cap EUR 5.05B; ~EUR 1.1B of shares offered", "source": "https://www.euronews.com/next/2021/05/05/us-suse-ipo"},
+    {"year": 2023, "type": "take_private", "value_usd": null, "counterparty": "EQT (Marcel LUX III SARL)", "note": "EUR 16.00/share offer (Aug 2023), ~67% premium to last close but about half the IPO price; Reuters valued it at EUR 2.72B (Dow Jones EUR 2.83B incl. dividend); delisted", "source": "https://www.theregister.com/2023/08/18/suse_delisting/"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2023-08",
+  "revenue_latest_usd": 778500000,
+  "revenue_year": 2025,
+  "employees_latest": 1900,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Six ownership changes in 20 years (Novell 2004, Attachmate 2011, Micro Focus 2014, EQT 2019, Frankfurt IPO 2021, EQT take-private 2023)",
+    "2023: taken private at EUR 16/share, about half its EUR 30 IPO price two years earlier",
+    "Mar 2026: Reuters reported EQT exploring a sale (hired Arma Partners) at $4-6B",
+    "Nov 2026: ~10% job cuts (~190 people); CEO Dirk-Peter van Leeuwen cited AI and automation"
+  ],
+  "robustness": "Commercially durable but financially passive: 34 years of continuous operation despite repeated sale between conglomerates and PE funds. All code is GPL/OSI and openSUSE is community-built, so the technology does not depend on SUSE's owner; revenue (~$780M FY2025) is a fraction of Red Hat's, and it returned to profit in FY2025.",
+  "physical_science_relevance": "SUSE Linux Enterprise is common on HPC and supercomputer systems (e.g. HPE/Cray platforms) used in physical-science research.",
+  "openness_effect_assessment": "SUSE opened its main proprietary differentiator (YaST) in 2004 without visible harm and today runs a fully open subscription model, but it never reached Red Hat's scale or pricing power; its value has swung with owners (EV $2.5B in 2018, EUR 5B at IPO, EUR 2.7B at take-private). In 2023 it used openness offensively, funding an open RHEL-compatible fork (OpenELA) when Red Hat restricted sources.",
+  "key_takeaway": "SUSE shows that a fully open-source vendor can survive 30+ years and many owners because customers and the community depend on the code, not the cap table; but being the second open vendor in a market tends to yield modest growth, PE ownership, and periodic cost-cutting rather than a large standalone valuation.",
+  "confidence": "medium",
+  "searches": [
+    "SUSE founded 1992 Nuremberg history Novell acquired SUSE 2003 $210 million Attachmate 2011",
+    "EQT acquires SUSE from Micro Focus 2018 $2.535 billion completed March 2019",
+    "SUSE IPO Frankfurt May 2021 valuation EQT take private delisting 2023 offer price",
+    "SUSE 2025 2026 revenue employees CEO news EQT sale",
+    "SUSE fork RHEL July 2023 $10 million investment compatible distribution OpenELA",
+    "Novell releases YaST under GPL 2004 SUSE open source YaST license"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/SUSE_S.A.", "title": "SUSE S.A.", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, exit_events[0], exit_events[1]"},
+    {"url": "https://www.eweek.com/servers/the-origins-1992/", "title": "SUSE Linux Marks 25 Milestones in 20 Years: The Origins 1992", "publisher": "eWeek", "date": "2012", "supports": "founded_year"},
+    {"url": "https://lists.opensuse.org/archives/list/users@lists.opensuse.org/thread/5BKE4U3H5PZMK6AJJOCMTG7AXI7NZJ2U", "title": "SuSE 9.1 and YaST License", "publisher": "openSUSE mailing list", "date": "2004", "supports": "license_history[0]"},
+    {"url": "https://www.eweek.com/servers/novell-makes-system-management-move-with-yast/", "title": "Novell Makes System Management Move With YaST", "publisher": "eWeek", "date": "2004-03-22", "supports": "relicensing_events[0], license_history[1]"},
+    {"url": "https://eqtgroup.com/news/2018/eqt-to-acquire-leading-open-source-software-provider-suse", "title": "EQT to acquire leading open source software provider SUSE", "publisher": "EQT", "date": "2018-07-02", "supports": "exit_events[2]"},
+    {"url": "https://www.euronews.com/next/2021/05/05/us-suse-ipo", "title": "SUSE IPO", "publisher": "Euronews/Reuters", "date": "2021-05-05", "supports": "exit_events[3]"},
+    {"url": "https://www.unquote.com/dach/official-record/3023900/eqts-suse-lists-in-eur5bn-ipo", "title": "EQT's SUSE lists in EUR 5bn IPO", "publisher": "Unquote", "date": "2021-05", "supports": "exit_events[3] market cap"},
+    {"url": "https://www.theregister.com/2023/08/18/suse_delisting/", "title": "SUSE delisting", "publisher": "The Register", "date": "2023-08-18", "supports": "exit_events[4]"},
+    {"url": "https://suse.com/news/EQT-announces-voluntary-public-purchase-offer-and-intention-to-delist-SUSE", "title": "EQT Private Equity Announces Voluntary Public Purchase Offer and Intention to Delist SUSE", "publisher": "SUSE", "date": "2023-08-17", "supports": "exit_events[4] offer price"},
+    {"url": "https://news.bloomberglaw.com/mergers-and-acquisitions/suse-soars-after-eqt-agrees-take-private-at-2-7-billion-value", "title": "SUSE Soars After EQT Agrees Take Private at EUR 2.7 Billion Value", "publisher": "Bloomberg Law", "date": "2023-08-17", "supports": "exit_events[4] value"},
+    {"url": "https://techcrunch.com/2023/08/10/oracle-suse-and-ciq-launch-the-open-enterprise-linux-association-amid-red-hat-controversy", "title": "Oracle, SUSE and CIQ launch the Open Enterprise Linux Association", "publisher": "TechCrunch", "date": "2023-08-10", "supports": "license_history[2]"},
+    {"url": "https://sdtimes.com/linux/suse-ciq-and-oracle-form-open-enterprise-linux-association/", "title": "Suse, CIQ, and Oracle form Open Enterprise Linux Association", "publisher": "SD Times", "date": "2023-08", "supports": "license_history[2] ($10M fork pledge)"},
+    {"url": "https://fossforce.com/2026/03/from-novell-to-6-billion-behind-reuters-latest-suse-sale-report/", "title": "From Novell to $6 Billion: Behind Reuters' Latest SUSE Sale Report", "publisher": "FOSS Force", "date": "2026-03", "supports": "risk_events (sale exploration), revenue_latest_usd"},
+    {"url": "https://www.marketscreener.com/news/reports-eqt-explores-sale-of-suse-a-could-be-valued-at-6-billion-reuters-ce7e5fdede8af623", "title": "Reports: EQT explores sale of SUSE, could be valued at $6 billion (Reuters)", "publisher": "MarketScreener/Reuters", "date": "2026-03", "supports": "risk_events, notes (valuation range)"},
+    {"url": "https://thenextweb.com/news/suse-job-cuts-10-percent-ai-automation", "title": "SUSE to cut about 10% of jobs as CEO cites AI, The Register reports", "publisher": "The Next Web", "date": "2026-11", "supports": "employees_latest, risk_events (Nov 2026 cuts)"}
+  ],
+  "notes": [
+    "latest_value_usd null: last firm transaction is the 2023 take-private, valued in euros (EUR 2.72B per Reuters, EUR 2.83B per Dow Jones); no USD figure was taken from a source. Reuters (Mar 2026) reported a possible sale at $4-6B; that is a deal-talk estimate, not a valuation.",
+    "revenue_latest_usd: FY ended 31 Oct 2025, $778.5M (EUR 716.2M), net profit $50.4M, per FOSS Force summary of Reuters/filings; Reuters-based coverage also says ~$800M revenue, EBITDA >$250M.",
+    "employees_latest: TNW citing EQT says 'more than 1,900' before the Nov 2026 cut (~190); MarketScreener lists 1,863; Paperjam says >2,500.",
+    "hq_country DE: operational HQ Nuremberg; legal seat Luxembourg. us_focus false (included as Red Hat's main open-source peer).",
+    "funding_total_usd null: SUSE's pre-1992-2003 private funding not found; EQT 2018 deal closing date (reported as 2019) not verified."
+  ]
+}

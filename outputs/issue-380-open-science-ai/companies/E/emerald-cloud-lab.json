@@ -1,0 +1,217 @@
+{
+  "name": "Emerald Cloud Lab, Inc.",
+  "slug": "emerald-cloud-lab",
+  "group": "E",
+  "category": "physical_science",
+  "subcategory": "cloud lab (remotely programmed, centralized automated wet lab as a subscription service)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2010 as Emerald Therapeutics (antivirals) by Carnegie Mellon alumni D.J. Kleinbaum and Brian Frezza; built internal automation, launched it as the Emerald Cloud Lab service in 2014 (Founders Fund, Max Levchin); ECL and Emerald Therapeutics became separate companies in 2016. Facility moved from South San Francisco to Austin, TX in 2023.",
+  "founded_year": 2010,
+  "flagship_projects": [
+    "Emerald Cloud Lab facility (Austin, TX)",
+    "Symbolic Lab Language (SLL)",
+    "ECL Command Center",
+    "Carnegie Mellon University Cloud Lab (built and initially operated on ECL's platform)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "The facility, operations software (Engine, Command Center) and data platform are proprietary subscription services. In Aug 2023 ECL made its Symbolic Lab Language 'open source for research use'; the release names no licence and no public repository was found (github.com/emeraldcloudlab returns 404), so it is scored as restricted (level 1). In 2026 SLL was 'contributed to the Test Bed under an open-source license' (licence unnamed) for the NSF GEMSTONE programmable-cloud-lab node, whose AMBER standard, models and training data are promised under open licences (that is the NSF project's openness, not ECL's).",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2014,
+      "license": "Proprietary (SLL, Command Center, Engine, facility)",
+      "note": "Cloud lab launched as a closed service",
+      "source": "https://en.wikipedia.org/wiki/Emerald_Cloud_Lab"
+    },
+    {
+      "year": 2023,
+      "license": "SLL 'open source for research use' (licence not named)",
+      "note": "Press release 22 Aug 2023; >600,000 experiments run in SLL, >230 instrument types",
+      "source": "https://www.prnewswire.com/news-releases/emerald-cloud-lab-makes-programming-language-for-conducting-remote-scientific-experiments-open-source-301906218.html"
+    },
+    {
+      "year": 2026,
+      "license": "SLL contributed to the NSF PCL testbed (GEMSTONE) under an unnamed open-source licence",
+      "note": "GEMSTONE kickoff at ECL Austin, 25-26 Aug 2026",
+      "source": "http://gemstoneproject.org/"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2023,
+      "from": "Proprietary SLL",
+      "to": "SLL open source for research use (licence unnamed)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Framed by Frezza as making it easier for the scientific community to adopt highly automated cloud labs; SLL later became the experiment language of the NSF-funded GEMSTONE node (2026). No evidence found of community forks or outside contributions.",
+      "source": "https://www.prnewswire.com/news-releases/emerald-cloud-lab-makes-programming-language-for-conducting-remote-scientific-experiments-open-source-301906218.html"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Feb 2023: announced relocation of the facility from South San Francisco to a 700%-larger site in Austin, TX (move completed ~Jul 2023)",
+    "Apr 2023: WARN notice for 30 layoffs at the South San Francisco HQ (reported via LeadIQ); anonymous Glassdoor reviews describe overhiring, two rounds of layoffs and a costly move (unverified)",
+    "CMU Cloud Lab ($40M, announced Aug 2021 for summer 2022) slipped; reported open in spring 2024 (single source)",
+    "Customer lock-in to a proprietary language and single centralized facility; public list price for a basic startup plan ~$30,020/month (Oct 2026)"
+  ],
+  "robustness": "A single private operator of a closed, centralized facility, with no disclosed valuation or recent funding. Customer protocols are written in ECL's SLL, so lock-in is high. Some redundancy comes from the CMU Cloud Lab, a university-owned second site on ECL's platform with 130+ instrument types and 24/7 operation, and from SLL being released for research use. Anchor public partnerships (CMU, NSF GEMSTONE $20M grant to a Stanford-led team, with ECL as host lab) diversify revenue.",
+  "physical_science_relevance": "High. ECL offers 230+ (2023) to 740+ (2026, per GEMSTONE) programmable instrument types for chemistry and life-science experiments, and the CMU Cloud Lab explicitly serves chemical, life and materials science research. ECL is the starting site of the NSF programmable cloud laboratory testbed (GEMSTONE, kickoff Aug 2026), making it de facto national infrastructure for remote physical experiments even though the platform is closed.",
+  "openness_effect_assessment": "The closed, vertically integrated model (proprietary language, operators and facility) let ECL sell lab capacity as a subscription, but adoption required scientists to learn a proprietary language. ECL's 2023 'open source for research use' release of SLL was explicitly aimed at lowering that barrier. SLL then became the language of the NSF GEMSTONE testbed (2026), which suggests that partial opening helped win public-infrastructure roles. There is no evidence yet of an outside developer community.",
+  "key_takeaway": "Emerald Cloud Lab is the surviving US closed cloud lab. It sells subscription access to a centralized robotic facility and has opened only its programming layer, for research use under an unnamed licence. Its biggest strategic wins, the $40M Carnegie Mellon university cloud lab and the NSF GEMSTONE node, came through academic partners that asked for open standards and data. So the open parts of the ECL ecosystem are increasingly paid for by universities and NSF, while the facility, scheduling software and operations stay proprietary.",
+  "confidence": "medium",
+  "notes": [
+    "funding_total_usd set to null: aggregators disagree widely: CB Insights $13.5M (stale, through 2014), Seedtable $41.6M, Craft $49.4M, PitchBook $152M, Caplight $181.25M. The company has not announced a total.",
+    "No valuation has been disclosed by any source found.",
+    "Revenue unknown (LeadIQ's $50-100M estimate is unverified). Employee count unknown; aggregators vary widely.",
+    "CMU Cloud Lab opening date (spring 2024) rests on one Zenodo record; CMU's 2021 release targeted summer 2022.",
+    "Search results for 'Emerald AI' (an unrelated data-centre power company, $1.05B valuation 2026) were excluded."
+  ],
+  "search_tool": "WebSearch (+ WebFetch of cited pages)",
+  "searches": [
+    "Emerald Cloud Lab funding raised investors valuation",
+    "Carnegie Mellon University Cloud Lab Emerald Cloud Lab partnership opened",
+    "Emerald Cloud Lab news 2025 2026",
+    "Emerald Cloud Lab founded 2010 Brian Frezza D.J. Kleinbaum Symbolic Lab Language",
+    "Emerald Cloud Lab Symbolic Lab Language open source research use announcement",
+    "Emerald Cloud Lab Austin Texas move layoffs Frezza",
+    "CMU Cloud Lab Emerald 2025 operations GEMSTONE NSF programmable cloud laboratory",
+    "\"Emerald Cloud Lab\" Series B 2024 funding Founders Fund a16z",
+    "Symbolic Lab Language GitHub repository license Emerald Cloud Lab SLL source code"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cmu.edu/chemistry/news-events/2021/0830_cloud-lab-partnership.html",
+      "title": "Carnegie Mellon to build world's first university cloud lab in partnership with Emerald Cloud Lab",
+      "publisher": "Carnegie Mellon University",
+      "date": "2021-08-30",
+      "supports": "risk_events[2] ($40M, summer 2022 target), origin_detail (founders are CMU alumni)"
+    },
+    {
+      "url": "https://www.technologynetworks.com/informatics/blog/building-the-worlds-first-university-cloud-lab-354479",
+      "title": "Building the World's First University Cloud Lab",
+      "publisher": "Technology Networks",
+      "date": "2021",
+      "supports": "robustness (CMU owns building/instruments/IP; ECL licenses software)"
+    },
+    {
+      "url": "https://zenodo.org/records/13207482",
+      "title": "Record stating CMU Cloud Lab opened Spring 2024",
+      "publisher": "Zenodo",
+      "date": "2024-08-03",
+      "supports": "risk_events[2] (opening date, single source)"
+    },
+    {
+      "url": "https://cloudlab.cmu.edu/",
+      "title": "CMU Cloud Lab",
+      "publisher": "Carnegie Mellon University",
+      "date": "2026",
+      "supports": "physical_science_relevance, robustness (130+ instrument types, 24/7)"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/emerald-cloud-lab-makes-programming-language-for-conducting-remote-scientific-experiments-open-source-301906218.html",
+      "title": "Emerald Cloud Lab Makes Programming Language for Conducting Remote Scientific Experiments Open Source",
+      "publisher": "PR Newswire (ECL)",
+      "date": "2023-08-22",
+      "supports": "openness_current, license_history[1], relicensing_events[0]"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/emerald-cloud-lab-to-relocate-state-of-the-art-facility-from-south-san-francisco-to-austin-301758704.html",
+      "title": "Emerald Cloud Lab to Relocate State of the Art Facility from South San Francisco to Austin",
+      "publisher": "PR Newswire (ECL)",
+      "date": "2023-02",
+      "supports": "risk_events[0], origin_detail"
+    },
+    {
+      "url": "http://gemstoneproject.org/",
+      "title": "GEMSTONE: Building America's AI infrastructure for programmable cloud laboratories",
+      "publisher": "GEMSTONE project (NSF Award 2607573)",
+      "date": "2026",
+      "supports": "license_history[2], physical_science_relevance (740+ instruments), openness_notes"
+    },
+    {
+      "url": "https://news.stanford.edu/stories/2026/08/ai-cloud-laboratories-research-award",
+      "title": "Researchers awarded grant for AI-guided research facilities",
+      "publisher": "Stanford News",
+      "date": "2026-08",
+      "supports": "robustness ($20M NSF grant, ECL partner)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Emerald_Cloud_Lab",
+      "title": "Emerald Cloud Lab",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, license_history[0]"
+    },
+    {
+      "url": "https://www.biocentury.com/article/275492",
+      "title": "Emerald Therapeutics closes $6M series B, launches Emerald Cloud Lab",
+      "publisher": "BioCentury",
+      "date": "2014",
+      "supports": "origin_detail (Founders Fund, Levchin)"
+    },
+    {
+      "url": "https://www.fiercebiotech.com/biotech/emerald-therapeutics-completes-latest-financing-brings-total-to-13-5mm-launches-emerald",
+      "title": "Emerald Therapeutics completes latest financing, brings total to $13.5MM, launches Emerald Cloud Lab",
+      "publisher": "Fierce Biotech",
+      "date": "2014",
+      "supports": "notes (early funding total)"
+    },
+    {
+      "url": "https://pitchbook.com/profiles/company/61618-24",
+      "title": "Emerald Cloud Lab company profile",
+      "publisher": "PitchBook",
+      "date": "2026",
+      "supports": "notes ($152M raised)"
+    },
+    {
+      "url": "https://www.caplight.com/company/emerald-cloud-lab",
+      "title": "Emerald Cloud Lab",
+      "publisher": "Caplight",
+      "date": "2024",
+      "supports": "notes ($181.25M raised)"
+    },
+    {
+      "url": "https://craft.co/emerald-therapeutics",
+      "title": "Emerald Therapeutics",
+      "publisher": "Craft",
+      "date": "2026",
+      "supports": "notes ($49.4M raised)"
+    },
+    {
+      "url": "https://leadiq.com/c/emerald-cloud-lab/5a1d840c24000024005e8b3d",
+      "title": "Emerald Cloud Lab Company Overview",
+      "publisher": "LeadIQ",
+      "date": "2026",
+      "supports": "risk_events[1] (WARN notice, 30 layoffs)"
+    },
+    {
+      "url": "https://www.glassdoor.com/Reviews/Emerald-Cloud-Lab-Reviews-E2088635.htm",
+      "title": "Emerald Cloud Lab Reviews",
+      "publisher": "Glassdoor",
+      "date": "2026",
+      "supports": "risk_events[1] (anonymous)"
+    },
+    {
+      "url": "https://www.biology.digital/products/emerald-cloud-lab",
+      "title": "Emerald Cloud Lab Review: Features & Alternatives (2026)",
+      "publisher": "biology.digital",
+      "date": "2026-10",
+      "supports": "risk_events[3] (pricing)"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "name": "Oracle Corporation",
+  "slug": "oracle",
+  "group": "C",
+  "category": "big_tech",
+  "subcategory": "database, enterprise applications and cloud infrastructure (OCI); steward of Java/OpenJDK and MySQL via the Sun acquisition",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1977-06-16 in Santa Clara, California, as Software Development Laboratories by Larry Ellison, Bob Miner and Ed Oates; IPO 1986-03-12. Acquired Sun Microsystems (and with it Java, MySQL, OpenSolaris, OpenOffice.org) in January 2010.",
+  "founded_year": 1977,
+  "flagship_projects": ["Oracle Database (proprietary)", "Oracle Cloud Infrastructure", "Java / OpenJDK (from Sun)", "MySQL (GPL, from Sun)", "OpenSolaris (closed 2010)"],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "openness_notes": "Scored on the AI and developer-platform strategy; the level is a judgement. Initial 0: proprietary database company. Current 1: Oracle's money-makers (Database, applications, OCI) are proprietary, and in AI it hosts others' models (Cohere, Llama, Grok 3) and big OpenAI infrastructure contracts rather than releasing its own. It still maintains open projects inherited from Sun (MySQL under the GPL, the Open Java Development Kit), but it closed OpenSolaris (2010), handed OpenOffice.org to Apache (2011) after a community fork, and lost Hudson to the Jenkins fork (2011). Oracle's 2019/2023 Java SE licence changes are often cited but were not confirmed from a fetched page, so they are not scored.",
+  "business_model": "proprietary",
+  "license_history": [
+    {"year": 2010, "license": "Sun portfolio acquired (Java/OpenJDK, MySQL under GPL, OpenSolaris under mostly CDDL, OpenOffice.org)", "note": "Announced 2009-04-20 at $9.50/share; completed 2010-01-27; $7.4B value ($5.6B net offer per body text).", "source": "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation"},
+    {"year": 2010, "license": "Proprietary (Solaris 11 Express replaces OpenSolaris)", "note": "Internal memo leaked 2010-08-13 ending the OpenSolaris binary distribution; final build 134b published 2010-11-12; Solaris 11 Express followed 2010-11-15.", "source": "https://en.wikipedia.org/wiki/OpenSolaris"},
+    {"year": 2011, "license": "OpenOffice.org trademarks and code donated to the Apache Software Foundation", "note": "June 2011, after The Document Foundation forked LibreOffice.", "source": "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation"}
+  ],
+  "relicensing_events": [
+    {"year": 2010, "from": "OpenSolaris (mostly CDDL, OSI-approved; some proprietary parts)", "to": "Proprietary Oracle Solaris; in-house development, source only after binary releases", "direction": "closing", "fork": "illumos (2010); OpenIndiana (launched 2010-09-14)", "fork_backer": "Former Sun engineers, Nexenta; illumos Foundation", "outcome_note": "The OpenSolaris Governing Board disbanded; independent development continues in the illumos fork.", "source": "https://en.wikipedia.org/wiki/OpenSolaris"},
+    {"year": 2011, "from": "Hudson (Sun/Oracle-hosted CI server)", "to": "Community renamed the project Jenkins (vote 2011-01-29); Oracle kept Hudson", "direction": "closing", "fork": "Jenkins", "fork_backer": "Hudson community", "outcome_note": "Triggered by Oracle's trademark claim on 'Hudson' (applied Dec 2010); the two continued as independent projects.", "source": "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation"},
+    {"year": 2011, "from": "OpenOffice.org under Oracle", "to": "Apache OpenOffice under the Apache Software Foundation", "direction": "opening", "fork": "LibreOffice (The Document Foundation)", "fork_backer": "Former OpenOffice.org community members", "outcome_note": "Governance handed to a foundation only after the community had already forked.", "source": "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {"year": 1986, "type": "IPO", "value_usd": null, "counterparty": "NASDAQ (now NYSE: ORCL)", "note": "IPO 1986-03-12; offer valuation not confirmed from a fetched page.", "source": "https://en.wikipedia.org/wiki/Oracle_Corporation"}
+  ],
+  "latest_value_usd": 354420000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 67360000000,
+  "revenue_year": 2026,
+  "employees_latest": 141000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2009-2011: community forks after the Sun deal: MariaDB (MySQL), LibreOffice (OpenOffice.org), Jenkins (Hudson), illumos/OpenIndiana (OpenSolaris); Java creator James Gosling resigned April 2010",
+    "2010-08-13: Oracle sued Google over Java APIs; the Supreme Court ruled 6-2 on 2021-04-05 that Google's copying 'constituted a fair use'",
+    "2025-01: Stargate joint venture with OpenAI, SoftBank and MGX ($500B planned over four years); 2025-09: $300B five-year, 4.5 GW contract with OpenAI, concentrating risk in one AI customer",
+    "Market cap down 44.7% over the year to 2026-11-23 (StockAnalysis), with large daily swings (CompaniesMarketCap end-of-day ~$306-315B just before)"
+  ],
+  "robustness": "Profitable incumbent (FY2026 revenue $67.36B, up 17%; ~141,000 employees), but its 2025-2026 growth story is tied to AI-infrastructure contracts with OpenAI, and the stock fell ~45% in a year. The open projects it inherited proved robust because communities could fork them: MariaDB, LibreOffice, Jenkins and illumos all outlived or rivalled Oracle's own stewardship.",
+  "physical_science_relevance": "Java and MySQL are widespread in laboratory information systems and research data management.",
+  "openness_effect_assessment": "Oracle's record is the textbook case of an acquirer reducing the openness it bought. Closing OpenSolaris and asserting control over Hudson and OpenOffice.org drove developers to forks that kept the open versions alive outside Oracle. Its attempt to enforce copyright on the Java APIs failed at the Supreme Court (2021), which protected API reimplementation, a result that matters for open compatible clones generally. The business stayed proprietary and profitable, but Oracle has no open AI model strategy and gained no community goodwill from the Sun assets.",
+  "key_takeaway": "Oracle shows what happens when a proprietary-minded owner acquires open-source assets: the communities fork and the lasting value walks out (MariaDB, LibreOffice, Jenkins, illumos), while the owner keeps the trademarks and a smaller share of the ecosystem. Its AI strategy is pure infrastructure for closed labs, which has made it a leveraged bet on OpenAI rather than a participant in open AI. For the study, Oracle is the clearest closing case among the incumbents, and the forks are the evidence that open licences protect users against a hostile steward.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation",
+    "https://en.wikipedia.org/wiki/OpenSolaris",
+    "https://en.wikipedia.org/wiki/Oracle_Corporation",
+    "https://stockanalysis.com/stocks/orcl/market-cap/",
+    "https://en.wikipedia.org/wiki/Google_LLC_v._Oracle_America,_Inc.",
+    "https://companiesmarketcap.com/oracle/marketcap/",
+    "https://stockanalysis.com/stocks/orcl/revenue/"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Oracle_Corporation", "title": "Oracle Corporation", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, exit_events[0], employees_latest, openness_notes (AI partners), risk_events[2]"},
+    {"url": "https://en.wikipedia.org/wiki/Acquisition_of_Sun_Microsystems_by_Oracle_Corporation", "title": "Acquisition of Sun Microsystems by Oracle Corporation", "publisher": "Wikipedia", "date": null, "supports": "license_history[0], license_history[2], relicensing_events[1], relicensing_events[2], risk_events[0]"},
+    {"url": "https://en.wikipedia.org/wiki/OpenSolaris", "title": "OpenSolaris", "publisher": "Wikipedia", "date": null, "supports": "license_history[1], relicensing_events[0]"},
+    {"url": "https://en.wikipedia.org/wiki/Google_LLC_v._Oracle_America,_Inc.", "title": "Google LLC v. Oracle America, Inc.", "publisher": "Wikipedia", "date": null, "supports": "risk_events[1]"},
+    {"url": "https://stockanalysis.com/stocks/orcl/market-cap/", "title": "Oracle (ORCL) Market Cap", "publisher": "StockAnalysis", "date": "2026-11-23", "supports": "latest_value_usd ($354.42B at $113.68 close; -44.70% over one year)"},
+    {"url": "https://companiesmarketcap.com/oracle/marketcap/", "title": "Oracle Market capitalization", "publisher": "CompaniesMarketCap", "date": "2026-11", "supports": "latest_value_usd (cross-check $354.42B headline; end-of-day 2026-11-22 $305.91B Nasdaq / $315.48B CMC)"},
+    {"url": "https://stockanalysis.com/stocks/orcl/revenue/", "title": "Oracle Revenue", "publisher": "StockAnalysis", "date": "2026", "supports": "revenue_latest_usd (FY ending 2026-05-31: $67.36B; FY2025 $57.40B)"}
+  ]
+}

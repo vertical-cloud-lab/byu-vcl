@@ -1,0 +1,154 @@
+{
+  "name": "Gaussian, Inc.",
+  "slug": "gaussian",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "quantum chemistry (electronic structure) software",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Gaussian 70 was released in 1970 by John Pople's group at Carnegie Mellon University and distributed through the Quantum Chemistry Program Exchange (QCPE). It was later licensed out of Carnegie Mellon, and since 1987 has been developed and licensed by Gaussian, Inc. Current version Gaussian 16 (2017).",
+  "founded_year": 1987,
+  "flagship_projects": [
+    "Gaussian 16",
+    "GaussView 6",
+    "TCP Linda (parallel execution)"
+  ],
+  "openness_initial": 1,
+  "openness_current": 0,
+  "openness_notes": "Initial score reflects academic distribution of Gaussian 70 through QCPE before commercial licensing (QCPE terms not reviewed; low confidence). Today it is proprietary: licensees can buy source or binary licences, but the licence bars researchers who develop competing software from using it, and source is not public.",
+  "business_model": "proprietary",
+  "license_history": [
+    {
+      "year": 1970,
+      "license": "Distributed via the Quantum Chemistry Program Exchange (QCPE)",
+      "note": "Academic program-exchange distribution; terms not reviewed",
+      "source": "https://en.wikipedia.org/wiki/Gaussian_(software)"
+    },
+    {
+      "year": 1987,
+      "license": "Proprietary licences from Gaussian, Inc. (source or binary), with clauses excluding competing developers",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/Gaussian_(software)"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 1987,
+      "from": "Academic QCPE distribution / Carnegie Mellon licensing",
+      "to": "Proprietary Gaussian, Inc. licence",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Commercialisation sustained development for decades; open competitors (e.g. GAMESS, NWChem, Psi4) and commercial rivals (Q-Chem, ORCA licensing) grew alongside it.",
+      "source": "https://en.wikipedia.org/wiki/Gaussian_(software)"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "'Banned by Gaussian' controversy: the licence bars researchers who develop competing software; an anonymous site, bannedbygaussian.org, listed scientists and institutions it said were barred.",
+    "2000: in a WATOC referendum, 23 of 28 executive board members opposed such restrictive licences.",
+    "2004: Nature news coverage of the bans (Nature 429, 231). Gaussian's president Michael Frisch called the claim that whole universities are refused 'an outright lie' and said only the competing group is excluded (response page last updated 27 Feb 2014).",
+    "No major new version since Gaussian 16 (2017) was found."
+  ],
+  "robustness": "Single private vendor controls the code; users cannot fork it, and competitors' groups can be excluded. Long commercial continuity (since 1987) and a large installed base in chemistry, but scientific reproducibility depends on licence access.",
+  "physical_science_relevance": "One of the most widely used quantum-chemistry packages in chemistry and molecular materials science; the commercial reference for molecular DFT and ab initio methods.",
+  "openness_effect_assessment": "Closing the code in 1987 created a durable licence business, but the exclusion of competing developers made Gaussian a long-running symbol of how closed scientific software can restrict benchmarking and critique, prompting a WATOC protest and Nature coverage. No source found quantifies whether the restrictions shifted users to other codes.",
+  "key_takeaway": "Gaussian shows the sharpest governance risk of closed scientific software: the vendor can decide who may use, test and compare its code, and did so against competing method developers. It is long-lived and commercially stable at modest academic prices ($2,500 to $6,000 per US academic licence), but its licence terms, not its science, are what the community remembers.",
+  "usage_metrics": [
+    {
+      "metric": "US academic Gaussian 16 site licence, source code, new (USD)",
+      "value": 6000,
+      "date": "2023-01-11",
+      "source": "https://gaussian.com/wp-content/uploads/dl/us_acad.pdf"
+    },
+    {
+      "metric": "US academic Gaussian 16 single machine type licence (USD)",
+      "value": 2500,
+      "date": "2023-01-11",
+      "source": "https://gaussian.com/wp-content/uploads/dl/us_acad.pdf"
+    },
+    {
+      "metric": "US commercial Gaussian 16 site licence, source code, new (USD)",
+      "value": 35000,
+      "date": "2023-01-11",
+      "source": "https://gaussian.com/wp-content/uploads/dl/us_com.pdf"
+    },
+    {
+      "metric": "US commercial Gaussian 16 single computer licence (USD)",
+      "value": 15000,
+      "date": "2023-01-11",
+      "source": "https://gaussian.com/wp-content/uploads/dl/us_com.pdf"
+    }
+  ],
+  "funding_sources": [
+    "Licence sales (academic, commercial, US government price lists)"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls. Facts come from direct fetches of the pages listed in sources (Wikipedia, gaussian.com pricing PDFs, Gaussian's response page).",
+    "Revenue, employees and ownership not found; Gaussian, Inc. is a private US company.",
+    "Price sheets are dated 11 January 2023 (PDF creation date and pricing page 'last updated'); current prices may differ.",
+    "The Nature 2004 article (doi:10.1038/429231a) and C&EN 1999 article are cited via Wikipedia; their full text was paywalled."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Gaussian_(software)",
+    "https://gaussian.com/pricing/",
+    "https://gaussian.com/wp-content/uploads/dl/us_acad.pdf",
+    "https://gaussian.com/wp-content/uploads/dl/us_com.pdf",
+    "https://gaussian.com/silly/",
+    "https://gaussian.com/about/ (no relevant content)",
+    "https://www.nature.com/articles/429231a (login redirect; not read)",
+    "http://www.ch.ic.ac.uk/watoc/resolution.html (404)",
+    "https://pubs.acs.org/doi/10.1021/cen-v077n036.p027 (403)"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Gaussian_(software)",
+      "title": "Gaussian (software)",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, license_history, relicensing_events, risk_events[0-1]"
+    },
+    {
+      "url": "https://gaussian.com/pricing/",
+      "title": "Pricing",
+      "publisher": "Gaussian, Inc.",
+      "date": "2023-01-11",
+      "supports": "usage_metrics (price sheets)"
+    },
+    {
+      "url": "https://gaussian.com/wp-content/uploads/dl/us_acad.pdf",
+      "title": "Gaussian 16 price list, US academic customers",
+      "publisher": "Gaussian, Inc.",
+      "date": "2023-01-11",
+      "supports": "usage_metrics[0-1]"
+    },
+    {
+      "url": "https://gaussian.com/wp-content/uploads/dl/us_com.pdf",
+      "title": "Gaussian 16 price list, US commercial customers",
+      "publisher": "Gaussian, Inc.",
+      "date": "2023-01-11",
+      "supports": "usage_metrics[2-3]"
+    },
+    {
+      "url": "https://gaussian.com/silly/",
+      "title": "Response to 'Banned by Gaussian' (Michael Frisch)",
+      "publisher": "Gaussian, Inc.",
+      "date": "2014-02-27",
+      "supports": "risk_events[2]"
+    }
+  ]
+}

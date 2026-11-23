@@ -1,0 +1,69 @@
+{
+  "name": "Anaconda, Inc.",
+  "slug": "anaconda",
+  "group": "B",
+  "category": "sci_software",
+  "subcategory": "Python/R data-science distribution and package repository; enterprise AI platform",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2012 in Austin, Texas, as Continuum Analytics by Travis Oliphant (creator of NumPy, SciPy contributor) and Peter Wang, out of the scientific-Python community; early DARPA funding (2013); renamed Anaconda in 2017",
+  "founded_year": 2012,
+  "flagship_projects": ["Anaconda Distribution", "conda", "Anaconda repository (defaults channel)", "Numba", "Bokeh", "PythonAnywhere", "Metaflow (via Outerbounds)", "Kilo Code"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "The underlying tools (conda, Numba, Bokeh and the packaged libraries) are OSI-licensed, but the distribution itself is 'freemium': the individual edition is freeware and the curated repository is governed by terms of service. Since 2020 organizations with 200+ employees must buy a commercial licence to use Anaconda's repository, and by 2023-2024 the academic/non-profit exemption was dropped (teaching use still exempt). Enterprise tiers are proprietary SaaS. Level 2 throughout, with a clear restricting trend.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2012, "license": "OSI-licensed tools (conda BSD-3, Numba, Bokeh) plus free Anaconda distribution", "note": "Continuum Analytics era", "source": "https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)"},
+    {"year": 2020, "license": "Terms of service: fee for 'heavy commercial use' of the repository (Apr 2020), defined as orgs with >200 employees (Oct 2020)", "note": "Packages keep their own licences; the restriction is on Anaconda's repository/service", "source": "https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/"},
+    {"year": 2024, "license": "Terms of service (Mar 2024): government and non-profit entities with >200 employees or contractors must pay; teaching exempt", "note": "Academic/non-profit exclusion had been dropped by May 2023 without apparent notice", "source": "https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/"}
+  ],
+  "relicensing_events": [
+    {"year": 2020, "from": "Free repository/distribution use for all", "to": "Paid commercial licence required for organizations >200 people (extended to non-profits/academia by 2023-2024)", "direction": "closing", "fork": "conda-forge (community channel) and Miniforge are the usual alternatives", "fork_backer": "Community (conda-forge); not verified in fetched pages", "outcome_note": "Not an OSI licence change but a terms-of-service paywall. In 2024 Anaconda sent legal demands to academic and non-profit institutions threatening back-billing; Mass General Brigham removed Anaconda from its HPC cluster's general repositories", "source": "https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/"}
+  ],
+  "funding_total_usd": 204000000,
+  "funding_as_of": "2025",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 1500000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2025-07",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 300,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2020-2024 terms-of-service changes turned a de facto free scientific tool into a licensed product for large organizations, including universities and non-profits",
+    "2024: legal demands to academic institutions threatening back-billing; HPC sites removed Anaconda from shared repositories",
+    "Aug 2024: Anaconda sued Intel for copyright infringement over use of its software on an expired licence",
+    "Leadership turnover: CEO Barry Libert replaced by David DeSanto (ex-GitLab CPO) in Oct 2025; new CFO Aug 2026",
+    "2026 pivot to enterprise AI via three acquisitions in four months (Outerbounds Apr 2026, Kilo Code Jul 2026, Enkrypt AI Aug 2026)"
+  ],
+  "robustness": "The tools Anaconda popularized are robust independently of the company: conda is open source and the community-run conda-forge channel and Miniforge installer provide a licence-free path. The company itself is mid-sized (~300 staff in 2024) and VC-funded at a $1.5B valuation, with heavy user reach (40-50M users; 1.2M organizations) but low conversion of that reach into revenue (revenue undisclosed).",
+  "physical_science_relevance": "Very high: Anaconda/conda is a default way to install the scientific Python stack on lab machines and HPC clusters; its 2020-2024 licensing changes directly forced universities and research hospitals to audit, pay or migrate to conda-forge.",
+  "openness_effect_assessment": "Free distribution of open scientific Python made Anaconda ubiquitous (2M users in 2015 to 40-50M by 2024-2026) but left little to sell; the company responded by gating its repository service behind a commercial licence and then enforcing it against academia. That generated revenue pressure on institutions and reputational damage, while the community-run conda-forge provided an exit, limiting Anaconda's leverage.",
+  "key_takeaway": "Anaconda is a cautionary case for scientific software: a company built on community open-source (NumPy/SciPy lineage) monetized by restricting access to the convenience layer (repository and installer) rather than the code, which shifted costs onto universities. Its 2025 raise at $1.5B and 2026 AI acquisitions show investors now value it as an enterprise AI platform rather than as a science tool.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)",
+    "https://www.anaconda.com/press",
+    "https://www.anaconda.com/press/anaconda-names-new-chief-executive-officer",
+    "https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)", "title": "Anaconda (Python distribution)", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, funding rounds ($24M 2015, $30M 2021, >$150M Series C Jul 2025 at ~$1.5B citing Reuters), latest_value_usd, employees_latest (~300 in 2024), user counts, acquisitions, CEO succession"},
+    {"url": "https://www.anaconda.com/press", "title": "Anaconda press releases", "publisher": "Anaconda", "date": "2026-11", "supports": "risk_events (2026 acquisitions: Outerbounds 2026-04-29, Kilo Code 2026-07-15, Enkrypt AI 2026-08-04; CFO 2026-08-26)"},
+    {"url": "https://www.anaconda.com/press/anaconda-names-new-chief-executive-officer", "title": "Anaconda Names David DeSanto as Chief Executive Officer", "publisher": "Anaconda", "date": "2025-10-16", "supports": "risk_events (CEO change), $150M Series C, 1.2M organizations, 95% of Fortune 500"},
+    {"url": "https://www.theregister.com/2024/08/08/anaconda_puts_the_squeeze_on/", "title": "Anaconda puts the squeeze on data scientists now deemed to be terms-of-service violators", "publisher": "The Register", "date": "2024-08-08", "supports": "license_history[1-2], relicensing_events[0], risk_events (enforcement, Intel lawsuit), robustness (40M users)"}
+  ],
+  "notes": [
+    "funding_total_usd 204M is the sum of disclosed rounds ($24M Series A 2015, $30M 2021, $150M Series C 2025); DARPA's 2013 funding amount and any other rounds are not included. No company-stated total found.",
+    "latest_value $1.5B: Wikipedia citing Reuters (31 Jul 2025); the Reuters page itself could not be fetched. The Anaconda press release confirms the $150M Series C but gives no valuation.",
+    "revenue_latest_usd null: not disclosed in fetched pages.",
+    "conda-forge/Miniforge as alternatives are well known but were not confirmed in the fetched pages (fork_backer flagged).",
+    "Failed fetches: https://en.wikipedia.org/wiki/Anaconda,_Inc. (404), https://www.anaconda.com/press?page=2 (404), Reuters (blocked)."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "name": "OpenFlexure Microscope (OpenFlexure Project)",
+  "slug": "openflexure",
+  "group": "F",
+  "category": "hardware",
+  "subcategory": "open-source 3D-printed motorised optical microscope",
+  "hq_country": "GB",
+  "origin": "academic",
+  "origin_detail": "The one-piece 3D-printed flexure stage was published in 2016 (Sharkey, Foo, Kabla, Baumberg, Bowman); the full microscope was presented in a 2020 Biomedical Optics Express paper (Collins et al.). The project began mainly at the Universities of Bath and Cambridge; its core development team is now at the University of Glasgow.",
+  "founded_year": 2016,
+  "flagship_projects": ["OpenFlexure Microscope (v6 published; v7.0.0-alpha1 shown)", "OpenFlexure flexure stage", "OpenFlexure server software"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Hardware under CERN-OHL-S-2.0, server software under GPL-3.0, documentation and website under CC BY-SA 4.0. Designs are fully open; scored 3 rather than 4 because governance is a university-led core team (forum and code of conduct, no foundation) and no OSHWA certification was found.",
+  "business_model": "grants",
+  "license_history": [
+    {"year": null, "license": "CERN-OHL-S-2.0 (hardware), GPL-3.0 (software), CC BY-SA 4.0 (docs)", "note": "Adoption dates of each licence not found", "source": "https://en.wikipedia.org/wiki/OpenFlexure_Microscope"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Medical use: the project is not a legal manufacturer and a design cannot itself be certified; in-vitro-diagnostic certification must be pursued by individual manufacturers with ISO 13485/14971 systems (work under way with Bongo Tech & Research Labs, Tanzania; no certification confirmed).",
+    "Funding is a sequence of UK research grants and prizes, not a revenue stream for the core team."
+  ],
+  "robustness": "Fully open designs with 12 independent vendors on four continents, so production does not depend on the university team. Built and used in more than 50 countries; more than 100 units were produced locally in Tanzania and Kenya by 2020.",
+  "physical_science_relevance": "Low-cost automated optical microscopy for labs and education; a reference design for open lab instrumentation and for automated/AI microscopy (e.g. EPSRC-funded malaria-diagnostics work).",
+  "openness_effect_assessment": "Openness turned an academic flexure-stage design into a globally manufactured instrument: twelve independent vendors (including IO Rodeo in the US and TauLab and LabCrafter in the UK) sell kits or assembled units, and local production in Tanzania and Kenya followed. Openness also shifts regulatory burden to manufacturers, so clinical use waits on vendor-level certification.",
+  "key_takeaway": "OpenFlexure is the clearest open-hardware example in this group: grant-funded academic design, commercialised by independent small vendors rather than a spin-out, with reach (50+ countries) far beyond what the university team could manufacture. Its limit is that open designs do not carry medical certification, which still needs a liable manufacturer.",
+  "usage_metrics": [
+    {"metric": "countries where built and used", "value": 50, "date": null, "source": "https://en.wikipedia.org/wiki/OpenFlexure_Microscope"},
+    {"metric": "microscopes produced in Tanzania and Kenya by 2020", "value": 100, "date": "2020", "source": "https://en.wikipedia.org/wiki/OpenFlexure_Microscope"},
+    {"metric": "listed independent vendors", "value": 12, "date": "2026-11", "source": "https://openflexure.org/about/vendors"}
+  ],
+  "funding_sources": ["UKRI (EP/T029064/1)", "EPSRC (EP/P029426/1, EP/R013969/1 with NIHR, EP/R011443/1)", "Royal Society (URF\\R1\\180153, RGF\\EA\\181034, PEF\\R3\\3026)", "MRC Confidence in Concept", "GCRF, NLNet Foundation, GIZ", "CAP Foundation 2023 Global Pathology Development Award", "MIT Solve 2024", "Johnson & Johnson Foundation Health Equity Innovation Award 2024"],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "Commercial distributors (from openflexure.org/about/vendors, maintained via the Open Science Shop): FIELDWORKERS (Japan), Africa Open Science Hardware (Ghana), Bongo Tech & Research Labs (Tanzania), MBOALAB (Cameroon), LabCrafter (UK), TauLab (UK), PKI Utveckling (Sweden), Pin29 (Argentina), IoWLabs (Chile), IO Rodeo (USA), PSL3D (France), Prisma Science (Brazil). The site states buyers purchase from these manufacturers, not from OpenFlexure.",
+    "Grant amounts not listed on the funding page; funding_total_usd null.",
+    "ownership_status 'nonprofit' denotes a university-hosted academic project."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": ["https://openflexure.org/projects/microscope/", "https://en.wikipedia.org/wiki/OpenFlexure_Microscope", "https://openflexure.org/about/vendors", "https://openflexure.org/about/medical-devices", "https://openflexure.org/about/", "https://openflexure.org/about/funding"],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/OpenFlexure_Microscope", "title": "OpenFlexure Microscope", "publisher": "Wikipedia", "date": null, "supports": "origin_detail, founded_year, license_history, usage_metrics[0-1]"},
+    {"url": "https://openflexure.org/projects/microscope/", "title": "OpenFlexure Microscope", "publisher": "OpenFlexure Project", "date": null, "supports": "flagship_projects (v6, v7.0.0-alpha1), CC BY-SA site licence"},
+    {"url": "https://openflexure.org/about/", "title": "About the project", "publisher": "OpenFlexure Project", "date": null, "supports": "origin_detail (Bath, Cambridge, Glasgow), collaborators"},
+    {"url": "https://openflexure.org/about/vendors", "title": "Vendors", "publisher": "OpenFlexure Project / Open Science Shop", "date": null, "supports": "robustness, usage_metrics[2], notes (distributor list)"},
+    {"url": "https://openflexure.org/about/medical-devices", "title": "Regulatory compliance and medical use", "publisher": "OpenFlexure Project", "date": null, "supports": "risk_events[0]"},
+    {"url": "https://openflexure.org/about/funding", "title": "Funding", "publisher": "OpenFlexure Project", "date": null, "supports": "funding_sources"}
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "Oxide Computer Company",
+  "slug": "oxide-computer",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "rack-scale on-premises cloud computers",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Started in 2019 by Bryan Cantrill, Steve Tuck and Jess Frazelle (announced 2019-12-02) with Eclipse Ventures as lead investor, to co-design rack-scale hardware and software for on-premises cloud, crediting open firmware and the Open Compute Project as what made the company feasible.",
+  "founded_year": 2019,
+  "flagship_projects": ["Oxide Cloud Computer (rack)", "Hubris (microcontroller OS)", "Humility (debugger)", "Omicron (control plane)", "Dropshot", "Propolis (hypervisor)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Hardware column. Oxide publishes its firmware and software stack: Hubris (service-processor OS, MPL-2.0), the Omicron control plane (MPL-2.0) and hundreds of other public repositories (434 on GitHub as of 2026-11), plus public RFDs. Its own board designs are not published: no PCB, schematic or CAD repositories were found, and Hubris notes that Gemini bring-up documentation lives in an internal repository. Open firmware and software with closed hardware designs is level 2, unchanged since the first product shipped in 2023.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2021, "license": "MPL-2.0 (Hubris service-processor OS)", "note": "Year approximate: Hubris was proposed in Oxide RFD 41; the date of its public release was not verified.", "source": "https://github.com/oxidecomputer/hubris"},
+    {"year": 2023, "license": "MPL-2.0 (Omicron control plane); Apache-2.0 for some libraries (e.g. typify)", "note": "Year is when the Cloud Computer shipped; repository creation dates not verified.", "source": "https://github.com/oxidecomputer"},
+    {"year": 2023, "license": "Proprietary (board and rack hardware designs not published)", "note": "No hardware design repositories found among 434 public repositories.", "source": "https://github.com/oxidecomputer"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 834000000,
+  "funding_as_of": "2026-10",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2019-2023: about four years of development before first product; $89M raised before the Series B",
+    "2025-2026: demand exceeding supply and a large order backlog required large inventory financing (Series C $200M, Series D $445M plus debt facilities)",
+    "Hardware designs and supply chain are proprietary and single-vendor, so customers depend on Oxide's survival for hardware even though the software is open"
+  ],
+  "robustness": "Software and firmware are public under MPL-2.0, so customers could in principle maintain the stack, but the hardware is proprietary and made only by Oxide. Financially stronger in 2026: it reported paying income tax for the first time on operating profit and raised $645M in 2026 from existing investors plus Atreides and AMD.",
+  "physical_science_relevance": "Sells on-premises cloud racks to government and national-lab customers (Lawrence Livermore National Laboratory announcement, Nov 2024; Carahsoft public-sector partnership, Sep 2026); relevant to research computing that cannot use public cloud.",
+  "openness_effect_assessment": "Oxide treats open firmware and software as a transparency and trust feature: its Series B post says prospective customers often examined the source code itself, and the founders credit open firmware and OCP for making the company feasible. Openness did not extend to the hardware designs, which remain the proprietary product. Funding grew from $89M before mid-2025 to about $834M by October 2026, so open firmware has not hindered fundraising.",
+  "key_takeaway": "Oxide is the 'open firmware, closed boards' pattern at rack scale: everything from the service-processor OS to the control plane is MPL-2.0 on GitHub, but revenue comes from selling proprietary integrated racks. It is a US example of a long, capital-heavy hardware build-out (four years to first product) that by 2026 reported taxable profit and backlog-driven fundraising, and it builds directly on the Open Compute Project's open rack ideas.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://bcantrill.dtrace.org/2019/12/02/the-soul-of-a-new-computer-company/", "title": "The Soul of a New Computer Company", "publisher": "Bryan Cantrill (founder blog)", "date": "2019-12-02", "supports": "founded_year, origin_detail, founders, Eclipse lead investor, OCP and open firmware motivation"},
+    {"url": "https://oxide.computer/blog/our-100m-series-b", "title": "Our $100M Series B", "publisher": "Oxide Computer Company", "date": "2025-07-30", "supports": "funding_total_usd ($89M before Series B; $100M Series B led by USIT), source-code transparency"},
+    {"url": "https://oxide.computer/blog/our-200m-series-c", "title": "Our $200M Series C", "publisher": "Oxide Computer Company", "date": "2026-02-05", "supports": "funding_total_usd ($200M Series C from existing investors)"},
+    {"url": "https://oxide.computer/blog/our-445m-series-d", "title": "Our $445M Series D", "publisher": "Oxide Computer Company", "date": "2026-10-09", "supports": "funding_total_usd ($445M Series D led by Eclipse, with Atreides and AMD), income tax paid, backlog"},
+    {"url": "https://oxide.computer/blog", "title": "Oxide blog index", "publisher": "Oxide Computer Company", "date": "2026-11-16", "supports": "risk_events and physical_science_relevance (LLNL 2024-11-18, Carahsoft 2026-09-24, Micron second-generation rack 2026-11-16)"},
+    {"url": "https://github.com/oxidecomputer/hubris", "title": "oxidecomputer/hubris", "publisher": "GitHub", "date": "2026-11", "supports": "license_history (MPL-2.0), internal hardware docs"},
+    {"url": "https://github.com/oxidecomputer", "title": "Oxide Computer Company GitHub organization", "publisher": "GitHub", "date": "2026-11", "supports": "434 public repositories, Omicron MPL-2.0, no hardware design repos found"},
+    {"url": "https://oxide.computer/blog/cosmo-sp", "title": "A disappearing Service Processor", "publisher": "Oxide Computer Company", "date": "2025-12-11", "supports": "openness_notes (Hubris on the service processor, transparency as a value)"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [],
+    "firmware_software_licenses": ["MPL-2.0 (Hubris, Omicron)", "Apache-2.0 (some libraries, e.g. typify)"],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "SEARCH BUDGET EXHAUSTED: no WebSearch queries could be run for this org because the turn's shared 200-search budget was used up before it was reached. Everything here comes from direct fetches of Oxide's own blog posts, its founder's blog and GitHub (primary sources), not from memory. The 4-search requirement is not met; key numbers are not corroborated by a second, independent source.",
+    "funding_total_usd = $89M raised before the Series B (per Oxide) + $100M Series B (2025-07) + $200M Series C (2026-02) + $445M Series D (2026-10) = $834M equity; excludes undisclosed debt facilities. No crowdfunding.",
+    "Valuation not disclosed in Oxide's posts; latest_value null.",
+    "Revenue and headcount not disclosed. The Series D post says Oxide paid income tax for the first time in spring 2026 because operations generated taxable income.",
+    "Wikipedia pages at /wiki/Oxide_Computer_Company and /wiki/Oxide_Computer returned 404.",
+    "City of headquarters not verified from a fetched source (hq_country US per the task framing and US public-sector partnerships).",
+    "Year of Hubris's public release not verified; first Cloud Computer shipment year (2023) is inferred from the 2023-10-26 'The Cloud Computer' post title in the blog index, not verified in the post itself."
+  ]
+}

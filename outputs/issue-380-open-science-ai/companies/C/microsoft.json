@@ -1,0 +1,262 @@
+{
+  "name": "Microsoft Corporation",
+  "slug": "microsoft",
+  "group": "C",
+  "category": "big_tech",
+  "subcategory": "software / cloud (Azure, Microsoft 365); developer platforms (.NET, VS Code, TypeScript, GitHub); AI (OpenAI partnership, Phi open models)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 1975 by Bill Gates and Paul Allen. Built on proprietary licensing (MS-DOS, Windows, Office); under Steve Ballmer it treated Linux and the GPL as a threat, then from 2014 under Satya Nadella re-oriented around Azure and open-source developer tools.",
+  "founded_year": 1975,
+  "flagship_projects": [
+    ".NET (MIT, .NET Foundation)",
+    "Visual Studio Code",
+    "TypeScript",
+    "GitHub (acquired 2018)",
+    "Phi small open-weights models",
+    "GitHub Copilot (Chat extension MIT since 2025)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 2,
+  "openness_notes": "Scored on the AI and developer-platform strategy. Initial 0: proprietary platforms; in 2001 Ballmer called Linux 'a cancer that attaches itself in an intellectual property sense to everything it touches'. Current 2 (open core): the developer layer is largely OSI-licensed (.NET Core MIT with a patent promise from 2014-11-12, under the .NET Foundation formed at Build 2014; VS Code source MIT since Nov 2015; Copilot Chat extension MIT since 2025-06-30; Phi-4 weights MIT since 2025-01-08), but revenue comes from proprietary cloud and productivity services, the Copilot inline-completion extension and backend models stay closed, and its frontier AI comes from the closed OpenAI partnership. TypeScript is a flagship open project, but its licence history was not verified here because the search budget ran out.",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2001,
+      "license": "Proprietary (stance)",
+      "note": "Ballmer's 'Linux is a cancer' remark (aimed at the GPL's reach); in 2016 he said the Linux threat was 'in the rearview mirror' and praised SQL Server on Linux.",
+      "source": "https://www.theregister.com/2016/03/11/ballmer_linux_non_apology/"
+    },
+    {
+      "year": 2014,
+      "license": "MIT + patent promise (.NET Core)",
+      "note": "Announced 2014-11-12: runtime and framework libraries open source and cross-platform, contributed to the .NET Foundation (announced at Build 2014).",
+      "source": "https://devblogs.microsoft.com/dotnet/net-core-is-open-source"
+    },
+    {
+      "year": 2015,
+      "license": "MIT (Visual Studio Code source)",
+      "note": "Open-sourced at Connect(); 2015 in November 2015 (date from a single aggregator report).",
+      "source": "https://developers.slashdot.org/story/15/11/18/1629212/microsoft-open-sources-visual-studio-code"
+    },
+    {
+      "year": 2024,
+      "license": "Microsoft Research License (Phi-4 on Azure AI Foundry)",
+      "note": "Phi-4 first offered in December 2024 on Azure AI Foundry under a research licence agreement.",
+      "source": "https://venturebeat.com/ai/microsoft-makes-powerful-phi-4-model-fully-open-source-on-hugging-face"
+    },
+    {
+      "year": 2025,
+      "license": "MIT (Phi-4 weights; Phi-4-reasoning)",
+      "note": "Phi-4 weights on Hugging Face 2025-01-08 under MIT; Phi-4-reasoning (report 2025-04-30) also MIT.",
+      "source": "https://huggingface.co/microsoft/Phi-4-reasoning"
+    },
+    {
+      "year": 2025,
+      "license": "MIT (GitHub Copilot Chat extension for VS Code)",
+      "note": "Announced at Build 2025 (2025-05-19), code public 2025-06-30 at microsoft/vscode-copilot-chat; inline-completion extension and backend models remain closed.",
+      "source": "https://code.visualstudio.com/blogs/2025/06/30/openSourceAIEditorFirstMilestone"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2014,
+      "from": "Proprietary .NET Framework",
+      "to": "MIT-licensed, cross-platform .NET Core under the .NET Foundation",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "The emblematic step of the Nadella-era turn toward open source and Linux, aligned with Azure's need to host Linux workloads.",
+      "source": "https://www.infoq.com/news/2014/11/opensource-NET"
+    },
+    {
+      "year": 2025,
+      "from": "Phi-4 under a research licence on Azure only",
+      "to": "Phi-4 weights under MIT on Hugging Face",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Small-model line released under an OSI licence; Microsoft's frontier AI remains closed (OpenAI models).",
+      "source": "https://the-decoder.com/microsoft-releases-full-phi-4-model-with-weights-under-mit-license/"
+    },
+    {
+      "year": 2025,
+      "from": "Closed GitHub Copilot Chat extension",
+      "to": "MIT-licensed Copilot Chat extension, being folded into VS Code core",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Presented as making VS Code an 'open source AI editor'; partial, since completions and models stay proprietary.",
+      "source": "https://visualstudiomagazine.com/articles/2025/06/30/vs-code-goes-transparent-as-open-source-ai-editor.aspx"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": 3598000000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-22",
+  "revenue_latest_usd": 331839000000,
+  "revenue_year": 2026,
+  "employees_latest": 223000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2001: Ballmer's 'Linux is a cancer' remark crystallised developer distrust that the later open-source turn had to overcome",
+    "2018-10-25: acquired GitHub in a $7.5B stock transaction (including $1.3B cash for vested GitHub equity awards and an indemnity escrow), putting the main hub of open-source development under one vendor; new CEO Nat Friedman pledged GitHub would operate independently in response to developer concerns",
+    "AI dependence on a closed partner: FY2026 net income included $4.963B of net gains from its OpenAI investment",
+    "FY2026: total headcount fell ~5,000 to ~223,000, the first annual decline in a decade (R&D down ~4,000 from the 2024 peak)"
+  ],
+  "robustness": "Highly diversified and profitable (FY2026 revenue $331.8B, net income $133.7B; Azure passed $100B). .NET sits in a foundation and VS Code, TypeScript and Phi are under permissive licences, so they can be forked, but Microsoft controls their roadmaps; the official VS Code builds and Copilot services are proprietary. Owning GitHub gives Microsoft a central position in the open-source supply chain.",
+  "physical_science_relevance": "GitHub hosts most open research software; VS Code and Python tooling are standard in scientific computing; Phi models are small enough to run locally for lab use.",
+  "openness_effect_assessment": "Microsoft's move from hostility (2001) to open-sourcing .NET (2014), VS Code (2015) and buying GitHub (2018) coincided with its pivot to the Azure cloud, where hosting open-source and Linux workloads was the business. Opening the developer layer won developer mindshare without giving up the proprietary cloud and productivity services that earn the money; by FY2026 Azure alone passed $100B. In AI it pairs a closed frontier partner (OpenAI) with MIT-licensed small models and tooling.",
+  "key_takeaway": "Microsoft is the canonical convert: once its revenue moved from selling Windows licences to renting cloud capacity, open source changed from threat to on-ramp, and it open-sourced its developer stack and bought the platform where open source lives. Its openness is real at the tool and small-model layer and absent at the money-making core, an open-core strategy run at the scale of a $3.6T company. For the study it shows that a firm's stance on openness tracks where its profits come from, not ideology.",
+  "confidence": "medium",
+  "searches": [
+    "Ballmer \"Linux is a cancer\" 2001 Chicago Sun-Times; Nadella \"Microsoft loves Linux\" 2014",
+    "Microsoft open sources .NET Core MIT license November 2014 .NET Foundation; Visual Studio Code open source MIT 2015",
+    "Microsoft completes GitHub acquisition $7.5 billion stock October 2018",
+    "Microsoft market cap November 2026",
+    "Microsoft Phi-4 open weights MIT license Hugging Face Phi-4-reasoning 2025",
+    "Microsoft fiscal year 2026 revenue full year results employees June 30 2026",
+    "Microsoft open sources GitHub Copilot Chat VS Code MIT and Windows Subsystem for Linux Build 2025",
+    "Microsoft number of employees as of June 30 2026 10-K full-time headcount"
+  ],
+  "sources": [
+    {
+      "url": "https://www.theregister.com/2016/03/11/ballmer_linux_non_apology/",
+      "title": "Ballmer's Linux non-apology",
+      "publisher": "The Register",
+      "date": "2016-03-11",
+      "supports": "openness_notes, license_history[0]"
+    },
+    {
+      "url": "https://www.informationweek.com/software/ballmer-linux-no-longer-a-cancer--/d/d-id/1324661",
+      "title": "Ballmer: Linux No Longer A Cancer",
+      "publisher": "InformationWeek",
+      "date": "2016-03",
+      "supports": "license_history[0]"
+    },
+    {
+      "url": "https://devblogs.microsoft.com/dotnet/net-core-is-open-source",
+      "title": ".NET Core is Open Source",
+      "publisher": "Microsoft .NET Blog",
+      "date": "2014-11-12",
+      "supports": "license_history[1]"
+    },
+    {
+      "url": "https://www.infoq.com/news/2014/11/opensource-NET",
+      "title": "Microsoft open sources .NET",
+      "publisher": "InfoQ",
+      "date": "2014-11",
+      "supports": "relicensing_events[0]"
+    },
+    {
+      "url": "https://developers.slashdot.org/story/15/11/18/1629212/microsoft-open-sources-visual-studio-code",
+      "title": "Microsoft Open-Sources Visual Studio Code",
+      "publisher": "Slashdot",
+      "date": "2015-11-18",
+      "supports": "license_history[2]"
+    },
+    {
+      "url": "https://techcrunch.com/2018/10/26/microsoft-closes-its-7-5b-purchase-of-code-sharing-platform-github/",
+      "title": "Microsoft closes its $7.5B purchase of code-sharing platform GitHub",
+      "publisher": "TechCrunch",
+      "date": "2018-10-26",
+      "supports": "risk_events[1]"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000156459019001392/msft-10q_20181231.htm",
+      "title": "Microsoft Form 10-Q for the quarter ended 2018-12-31",
+      "publisher": "SEC",
+      "date": "2019-01",
+      "supports": "risk_events[1] (deal terms, closing 2018-10-25)"
+    },
+    {
+      "url": "https://venturebeat.com/ai/microsoft-makes-powerful-phi-4-model-fully-open-source-on-hugging-face",
+      "title": "Microsoft makes powerful Phi-4 model fully open-source on Hugging Face",
+      "publisher": "VentureBeat",
+      "date": "2025-01-08",
+      "supports": "license_history[3], license_history[4]"
+    },
+    {
+      "url": "https://the-decoder.com/microsoft-releases-full-phi-4-model-with-weights-under-mit-license/",
+      "title": "Microsoft releases full Phi-4 model with weights under MIT license",
+      "publisher": "The Decoder",
+      "date": "2025-01",
+      "supports": "relicensing_events[1]"
+    },
+    {
+      "url": "https://huggingface.co/microsoft/Phi-4-reasoning",
+      "title": "microsoft/Phi-4-reasoning model card",
+      "publisher": "Hugging Face / Microsoft",
+      "date": "2025-04-30",
+      "supports": "license_history[4]"
+    },
+    {
+      "url": "https://code.visualstudio.com/blogs/2025/06/30/openSourceAIEditorFirstMilestone",
+      "title": "Open Source AI Editor: First Milestone",
+      "publisher": "Visual Studio Code blog (Microsoft)",
+      "date": "2025-06-30",
+      "supports": "license_history[5]"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/microsoft-open-sources-vs-code-copilot-chat-extension-on-github/",
+      "title": "Microsoft open-sources VS Code Copilot Chat extension on GitHub",
+      "publisher": "BleepingComputer",
+      "date": "2025-06",
+      "supports": "license_history[5] (closed parts)"
+    },
+    {
+      "url": "https://visualstudiomagazine.com/articles/2025/06/30/vs-code-goes-transparent-as-open-source-ai-editor.aspx",
+      "title": "VS Code Goes Transparent as Open-Source AI Editor",
+      "publisher": "Visual Studio Magazine",
+      "date": "2025-06-30",
+      "supports": "relicensing_events[2]"
+    },
+    {
+      "url": "https://companiesmarketcap.com/microsoft/marketcap/",
+      "title": "Microsoft (MSFT) Market capitalization",
+      "publisher": "CompaniesMarketCap",
+      "date": "2026-11-22",
+      "supports": "latest_value_usd (same page also showed $3.701T as a live reading; Macrotrends $3.89T on 2026-11-13)"
+    },
+    {
+      "url": "https://www.macrotrends.net/stocks/charts/MSFT/microsoft/market-cap",
+      "title": "Microsoft Market Cap 2012-2026",
+      "publisher": "Macrotrends",
+      "date": "2026-11-13",
+      "supports": "latest_value_usd (cross-check)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0000789019/000119312526323660/msft-20260630.htm",
+      "title": "Microsoft Form 10-K for fiscal year ended 2026-06-30",
+      "publisher": "SEC",
+      "date": "2026-07",
+      "supports": "revenue_latest_usd, robustness, risk_events[2], founded_year"
+    },
+    {
+      "url": "https://www.microsoft.com/investor/reports/ar26/index.html",
+      "title": "Microsoft 2026 Annual Report",
+      "publisher": "Microsoft",
+      "date": "2026",
+      "supports": "revenue_latest_usd, robustness (Azure > $100B)"
+    },
+    {
+      "url": "https://www.geekwire.com/2026/microsoft-product-rd-jobs-decline-for-second-straight-year-new-filing-shows/",
+      "title": "Microsoft R&D jobs drop for second straight year as total headcount falls for first time in a decade",
+      "publisher": "GeekWire",
+      "date": "2026-07",
+      "supports": "employees_latest, risk_events[3]"
+    },
+    {
+      "url": "https://fourweekmba.com/microsoft-employees-number/",
+      "title": "Microsoft Employees by Year: 223,000 in 2026 (10-K)",
+      "publisher": "FourWeekMBA",
+      "date": "2026",
+      "supports": "employees_latest (cross-check)"
+    }
+  ]
+}

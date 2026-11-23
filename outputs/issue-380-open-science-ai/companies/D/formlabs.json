@@ -1,0 +1,100 @@
+{
+  "name": "Formlabs Inc.",
+  "slug": "formlabs",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "professional SLA/SLS 3D printers and materials (closed comparator)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Founded September 2011 in Somerville, Massachusetts by Maxim Lobovsky, Natan Linder and David Cranor, who met as students at the MIT Media Lab; launched the Form 1 desktop stereolithography printer with a record $2.95M Kickstarter in October 2012.",
+  "founded_year": 2011,
+  "flagship_projects": [
+    "Form 1/2/3/4 SLA printers",
+    "Form 4L",
+    "Fuse 1 / Fuse X1 SLS",
+    "Form Studio 1",
+    "PreForm software"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Closed designs, firmware and print-preparation software (PreForm) from the start. Openness is limited to interfaces: third-party resins via 'Open Mode' (Form 2) and 'Open Material Mode' (Form Studio 1), and a developer platform for customising materials and workflows announced with the Form 4L (Oct 2024). These are open interfaces, not published design files or open-source code, so the score stays 0.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2012,
+      "license": "Proprietary (hardware, firmware, PreForm)",
+      "note": "No open-source releases found in the sources reached",
+      "source": "https://en.wikipedia.org/wiki/Formlabs"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 249000000,
+  "funding_as_of": "2021",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 2000000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2021-05",
+  "revenue_latest_usd": 250000000,
+  "revenue_year": 2025,
+  "employees_latest": 750,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2012-11: sued by 3D Systems over stereolithography patents used in the Form 1; settled and dismissed in 2014",
+    "2021: last disclosed priced round (SoftBank Vision Fund 2, $2B valuation); no newer valuation disclosed",
+    "2026-10: launched $699 Form Studio 1, moving down-market into price competition with Asian resin printer makers"
+  ],
+  "robustness": "Diversified professional portfolio (SLA, SLS, materials, post-processing) with leading share of professional-class shipments (38% in 2025 per CONTEXT, via Wikipedia) and 55% of SLS printers sold worldwide in 2025; venture-backed with a 2021 $2B valuation but no IPO; acquired Micronics (2024) to extend SLS. Customers depend on a single vendor for firmware and software.",
+  "physical_science_relevance": "SLA/SLS printers are widely used for lab prototyping, microfluidics, dental and medical devices and custom labware; biocompatible resins (Form 4B/4BL) serve biomedical research.",
+  "openness_effect_assessment": "Formlabs shows a closed, venture-funded hardware company from an academic lab reaching unicorn valuation ($2B, 2021) and about $250M revenue (2025) without open designs. Its main openness-related exposure was the reverse: incumbent 3D Systems' patent suit in 2012, which it settled. Its later 'open material' and developer-platform moves open interfaces to grow its ecosystem while keeping designs proprietary.",
+  "key_takeaway": "Formlabs is the US closed comparator that scaled: an MIT Media Lab spin-out with about $249M in disclosed venture rounds, a $2B 2021 valuation, about $250M 2025 revenue and 750 staff, larger than every open desktop-printer maker in this group. It suggests that in professional additive manufacturing, proprietary integration of printer, materials and software captured more value than open designs did, with selective interface openness used as a growth tool.",
+  "confidence": "medium",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Formlabs",
+    "https://formlabs.com/company/press/"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Formlabs",
+      "title": "Formlabs",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "founded_year, origin_detail, Kickstarter $2.95M, funding rounds (Series A $19M 2013; Series B $35M 2016; Series C $30M 2018; $15M NEA 2018; Series E $150M 2021 at $2B), revenue $250M (2025), employees 750 (2026), 3D Systems suit, product dates, 2025 market shares, Open Mode/Open Material Mode"
+    },
+    {
+      "url": "https://formlabs.com/company/press/",
+      "title": "Formlabs press releases",
+      "publisher": "Formlabs",
+      "date": "2026-11",
+      "supports": "Micronics acquisition (2024-07-11), Form 4 (2024-04-17), Form 4L and developer platform (2024-10-15), Fuse X1 (2026-06-09), Form Studio 1 (2026-10-14), board changes (2026)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Stratasys",
+      "title": "Stratasys",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "context: incumbent patent litigation against newer printer makers (Bambu Lab, 2024)"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary (firmware, PreForm)"
+    ],
+    "patents": "Defendant in 3D Systems' 2012 stereolithography patent suit, settled 2014 (terms not given in the source reached). Formlabs' own patent portfolio was not verified.",
+    "clone_impacts": null
+  },
+  "notes": [
+    "No WebSearch queries could be run for Formlabs: the session-wide search budget (200 per turn, shared by all agents) was exhausted. Facts come from direct fetches of Wikipedia and the Formlabs press page (primary); 2025-2026 facts come from those fetches, not memory. The 4-search minimum was not met.",
+    "funding_total_usd = sum of the equity rounds listed on Wikipedia (19 + 35 + 30 + 15 + 150 = $249M); Wikipedia does not mention a Series D, so the total may be incomplete. The $2.95M Kickstarter (pre-sales crowdfunding) is excluded.",
+    "Revenue $250M (2025) and 750 employees (2026) are from the Wikipedia infobox only; not corroborated by a second source in this session.",
+    "Layoffs and IPO plans were not covered by the sources reached."
+  ]
+}

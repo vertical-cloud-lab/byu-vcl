@@ -1,0 +1,81 @@
+{
+  "name": "Amazon.com, Inc. (Amazon Web Services)",
+  "slug": "amazon-aws",
+  "group": "C",
+  "category": "big_tech",
+  "subcategory": "e-commerce and cloud (AWS); large consumer of open-source software, maintainer of forks (OpenSearch, Valkey) and of Firecracker",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 1994-07-05 in Bellevue, Washington, by Jeff Bezos; public since May 1997. Amazon.com Web Services opened to developers in July 2002, and AWS began selling cloud infrastructure with S3 in March 2006.",
+  "founded_year": 1994,
+  "flagship_projects": ["Amazon Web Services", "Firecracker microVM", "OpenSearch (fork of Elasticsearch)", "Valkey (fork of Redis, backer)", "Amazon Nova models (via Bedrock)"],
+  "openness_initial": 1,
+  "openness_current": 2,
+  "openness_notes": "Scored on the AI and developer-platform strategy; the level is a judgement. Initial 1: AWS sold proprietary managed services built on open-source software, and open-source vendors accused it of taking value without proportional contribution. Current 2 (open core / SaaS): AWS now open-sources core infrastructure (Firecracker, Apache-2.0, powers Lambda and Fargate) and leads or backs foundation-governed forks (OpenSearch at the Linux Foundation's OpenSearch Software Foundation since Sept 2024; Valkey, a Linux Foundation project since March 2024). The money still comes from proprietary managed services, and its own Nova models are offered as a service through Bedrock (no weights release found in the pages fetched).",
+  "business_model": "saas",
+  "license_history": [
+    {"year": 2021, "license": "Apache-2.0 (OpenSearch, fork of Elasticsearch/Kibana 7.10)", "note": "Forked after Elastic moved new versions off Apache-2.0 (Jan 2021); OpenSearch released 2021-04-12; no CLA.", "source": "https://en.wikipedia.org/wiki/OpenSearch_(software)"},
+    {"year": 2024, "license": "BSD-3-Clause (Valkey, fork of Redis 7.2.4, Linux Foundation project)", "note": "Announced 2024-03-28 after Redis moved its core off BSD; supporters include Alibaba Cloud, AWS, Ericsson, Google Cloud, Heroku, Oracle, Percona and Verizon.", "source": "https://en.wikipedia.org/wiki/Valkey"},
+    {"year": 2024, "license": "Apache-2.0 (OpenSearch), ownership transferred to the OpenSearch Software Foundation", "note": "Announced 2024-09-16 with premier members AWS, SAP and Uber; >700M downloads at the time.", "source": "https://en.wikipedia.org/wiki/OpenSearch_(software)"},
+    {"year": null, "license": "Apache-2.0 (Firecracker)", "note": "Developed at AWS for Lambda and Fargate; README: 'Firecracker is open sourced under Apache version 2.0'. Release year not confirmed from a fetched page (AWS launch blog would not render).", "source": "https://github.com/firecracker-microvm/firecracker"}
+  ],
+  "relicensing_events": [
+    {"year": 2021, "from": "Elasticsearch/Kibana under Apache-2.0 (Elastic)", "to": "SSPL / Elastic License (Elastic); AWS fork OpenSearch stays Apache-2.0", "direction": "closing", "fork": "OpenSearch", "fork_backer": "AWS (later the OpenSearch Software Foundation with SAP and Uber)", "outcome_note": "Elastic blamed AWS directly ('AWS's behavior has forced us to take this step', 2021-01-19). OpenSearch moved to a Linux Foundation-hosted foundation in Sept 2024; in Sept 2024 Elastic added AGPLv3 alongside SSPL.", "source": "https://www.elastic.co/blog/why-license-change-aws"},
+    {"year": 2024, "from": "Redis under BSD (Redis Ltd.)", "to": "Dual source-available licences incl. SSPL (Redis Ltd.); fork Valkey stays BSD", "direction": "closing", "fork": "Valkey", "fork_backer": "AWS, Google Cloud, Oracle, Alibaba Cloud, Ericsson and others (Linux Foundation)", "outcome_note": "Redis CEO later wrote the change achieved its goal ('AWS and Google now maintain their own fork') but 'hurt our relationship with the Redis community'; Redis 8 added OSI-approved AGPLv3 on 2025-05-01.", "source": "https://redis.io/blog/agplv3/"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {"year": 1997, "type": "IPO", "value_usd": null, "counterparty": "NASDAQ: AMZN", "note": "Went public May 1997; offer price and valuation not confirmed from a fetched page.", "source": "https://en.wikipedia.org/wiki/Amazon_(company)"}
+  ],
+  "latest_value_usd": 2760000000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 716920000000,
+  "revenue_year": 2025,
+  "employees_latest": 1576000,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2021-01: Elastic relicensed Elasticsearch, explicitly blaming AWS; AWS answered with the OpenSearch fork",
+    "2024-03: Redis left BSD; AWS, Google and others backed the Valkey fork at the Linux Foundation",
+    "2025-05-01: Redis returned to an OSI licence (AGPLv3), with its CEO framing hyperscalers as reaping profits 'without proportional contributions back to the projects that they exploit'",
+    "The critique of cloud providers profiting from open source is often labelled 'strip-mining' in 2019 press coverage (NYT, Dec 2019); that article could not be fetched, so the label is unverified here"
+  ],
+  "robustness": "Extremely large and diversified (FY2025 revenue $716.9B; AWS $128.7B with $45.6B operating income). Its open-source exposure is hedged: when upstream vendors closed their licences, AWS kept its managed services running on permissively licensed forks and moved those forks into Linux Foundation governance, which spreads maintenance across companies and lowers single-vendor risk on both sides.",
+  "physical_science_relevance": "AWS is a major host for scientific computing and open research datasets; Firecracker-style microVMs underpin serverless pipelines used in research workflows.",
+  "openness_effect_assessment": "Openness by others was AWS's input: it built managed services on Elasticsearch, Redis and similar projects, which prompted the source-available relicensing wave (Elastic 2021, Redis 2024). AWS's response was to fork and put the forks under neutral foundations (OpenSearch Software Foundation, Valkey), which preserved its services and drew other clouds in as co-maintainers. The vendors that closed partly reversed: Elastic added AGPL in 2024 and Redis in 2025.",
+  "key_takeaway": "Amazon is the counterweight in the open-source economy: the cloud host whose resale of open projects triggered the move to source-available licences, and which then turned into a foundation-backed open-source sponsor to keep those projects permissive. Its own differentiating assets (AWS services, Nova models) remain proprietary. For the study, AWS shows that a deep-pocketed host can neutralise a single vendor's relicensing by forking into a foundation, so the vendor's closing yields less protection than intended.",
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/OpenSearch_(software)",
+    "https://en.wikipedia.org/wiki/Valkey",
+    "https://en.wikipedia.org/wiki/Amazon_Web_Services",
+    "https://stockanalysis.com/stocks/amzn/market-cap/",
+    "https://aws.amazon.com/blogs/aws/firecracker-lightweight-virtualization-for-serverless-computing/ (did not render)",
+    "https://stockanalysis.com/stocks/amzn/employees/",
+    "https://github.com/firecracker-microvm/firecracker",
+    "https://www.nytimes.com/2019/12/15/technology/amazon-aws-cloud-competition.html (fetch blocked)",
+    "https://redis.io/blog/agplv3/",
+    "https://stockanalysis.com/stocks/amzn/revenue/",
+    "https://www.elastic.co/blog/why-license-change-aws",
+    "https://en.wikipedia.org/wiki/Amazon_(company)",
+    "https://companiesmarketcap.com/amazon/marketcap/"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Amazon_(company)", "title": "Amazon (company)", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, exit_events[0], revenue_latest_usd (cross-check), employees_latest (cross-check)"},
+    {"url": "https://en.wikipedia.org/wiki/Amazon_Web_Services", "title": "Amazon Web Services", "publisher": "Wikipedia", "date": null, "supports": "origin_detail (2002/2006), robustness (AWS 2025 revenue $128.7B, operating income $45.6B), openness_notes (Nova via Bedrock, Dec 2024)"},
+    {"url": "https://en.wikipedia.org/wiki/OpenSearch_(software)", "title": "OpenSearch (software)", "publisher": "Wikipedia", "date": null, "supports": "license_history[0], license_history[2], relicensing_events[0]"},
+    {"url": "https://en.wikipedia.org/wiki/Valkey", "title": "Valkey", "publisher": "Wikipedia", "date": null, "supports": "license_history[1], relicensing_events[1]"},
+    {"url": "https://github.com/firecracker-microvm/firecracker", "title": "firecracker-microvm/firecracker README", "publisher": "GitHub (AWS)", "date": null, "supports": "license_history[3], openness_notes"},
+    {"url": "https://www.elastic.co/blog/why-license-change-aws", "title": "Amazon: NOT OK - why we had to change Elastic licensing", "publisher": "Elastic (Shay Banon)", "date": "2021-01-19", "supports": "relicensing_events[0], risk_events[0]"},
+    {"url": "https://redis.io/blog/agplv3/", "title": "Redis is now available under the AGPLv3 open source license", "publisher": "Redis (Rowan Trollope)", "date": "2025-05-01", "supports": "relicensing_events[1], risk_events[2]"},
+    {"url": "https://stockanalysis.com/stocks/amzn/market-cap/", "title": "Amazon (AMZN) Market Cap", "publisher": "StockAnalysis", "date": "2026-11-23", "supports": "latest_value_usd ($2.76T at $255.39 close; +17.05% over one year)"},
+    {"url": "https://companiesmarketcap.com/amazon/marketcap/", "title": "Amazon Market capitalization", "publisher": "CompaniesMarketCap", "date": "2026-11", "supports": "latest_value_usd (cross-check: $2.761T; earlier end-of-day ~$2.668T)"},
+    {"url": "https://stockanalysis.com/stocks/amzn/revenue/", "title": "Amazon Revenue", "publisher": "StockAnalysis", "date": "2026", "supports": "revenue_latest_usd ($716.92B FY2025; $637.96B FY2024)"},
+    {"url": "https://stockanalysis.com/stocks/amzn/employees/", "title": "Amazon Employees", "publisher": "StockAnalysis", "date": "2025-12-31", "supports": "employees_latest"}
+  ]
+}

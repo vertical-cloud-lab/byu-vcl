@@ -1,0 +1,88 @@
+{
+  "name": "Docker, Inc. (formerly dotCloud)",
+  "slug": "docker",
+  "group": "A",
+  "category": "software",
+  "subcategory": "containers / developer tooling",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Started in 2008 as dotCloud, a platform-as-a-service founded by Solomon Hykes and colleagues in Paris that later went through Y Combinator and moved to San Francisco. It open-sourced its internal container tool as Docker in March 2013 and renamed itself Docker, Inc. that year.",
+  "founded_year": 2008,
+  "flagship_projects": [
+    "Docker Engine / Moby",
+    "Docker Desktop",
+    "Docker Hub",
+    "containerd (donated to CNCF)",
+    "runc (donated to OCI)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Docker Engine was Apache-2.0 and became the Moby project (2017); runc went to the Open Container Initiative and containerd to CNCF, so the runtime core is foundation-governed. Docker Desktop is proprietary and since August 2021 requires a paid subscription for larger companies; Docker Hub is a SaaS. Level 2.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2013,
+      "license": "Apache-2.0 (Docker Engine)",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2017,
+      "license": "Apache-2.0 (Moby upstream)",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2021,
+      "license": "Docker Desktop: paid subscription required for larger companies",
+      "note": "August 2021 (unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2021,
+      "from": "free Docker Desktop",
+      "to": "paid subscription for larger companies",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Pushed some users to alternatives such as Podman Desktop and Rancher Desktop (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [
+    {
+      "year": 2019,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Mirantis",
+      "note": "Mirantis bought the Docker Enterprise business in November 2019; Docker, Inc. restructured around developer tools (unverified; value deliberately null)",
+      "source": null
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2019: Enterprise unit sold to Mirantis and company restructured after failing to monetize containers at scale (unverified)",
+    "2021: Desktop licence change for larger companies (unverified)"
+  ],
+  "robustness": "The container runtime and image formats are governed by OCI and CNCF, so the technology does not depend on Docker, Inc.; the company's paid products (Desktop, Hub) are proprietary.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. Docker's open-source project won its market so completely, and gave key pieces to foundations (OCI, CNCF), that the company struggled to capture the value: Kubernetes and the clouds monetized containers, Docker sold its enterprise unit in 2019 and rebuilt around paid developer subscriptions. Valuation and revenue need sourcing.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+}

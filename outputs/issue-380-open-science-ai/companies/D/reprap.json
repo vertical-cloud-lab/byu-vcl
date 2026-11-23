@@ -1,0 +1,107 @@
+{
+  "name": "RepRap project",
+  "slug": "reprap",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "self-replicating open-source FFF 3D printer project",
+  "hq_country": "GB",
+  "origin": "academic",
+  "origin_detail": "Started in 2005 by Adrian Bowyer, a Senior Lecturer in mechanical engineering at the University of Bath, with funding from the UK Engineering and Physical Sciences Research Council (EPSRC); grew into a worldwide community of hundreds of collaborators coordinated through reprap.org.",
+  "founded_year": 2005,
+  "flagship_projects": [
+    "Darwin (2008)",
+    "Mendel (2009)",
+    "Huxley (2010)",
+    "Rostock delta (2012)",
+    "Prusa i3 (community variant)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "All designs produced by the project are released under the GNU GPL; reprap.org is an editable community wiki (content GFDL) with a historical core team (Bowyer, Ed Sells, Vik Olliver and others) rather than a company. This is the reference case for level 4 (fully open designs plus community governance). No relicensing has occurred.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2005,
+      "license": "GNU GPL (all project designs)",
+      "note": "Wiki text under GNU FDL",
+      "source": "https://en.wikipedia.org/wiki/RepRap"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2012: MakerBot, the best-known RepRap spin-off, closed its Replicator 2 designs",
+    "2016-01-15: RepRapPro Ltd (RepRap Professional, the UK commercial arm) ceased trading, citing market congestion; RepRapPro China continued",
+    "2023-2025: commercial descendants (Prusa) retreat from open hardware citing clones and Chinese patents"
+  ],
+  "robustness": "No single owner or company to fail: GPL designs and a community wiki mean the knowledge persists regardless of any firm. Activity has shifted to descendant community projects (Wikipedia describes Voron 2.4, 2020, as a resurgence of the RepRap approach) and to firmware projects such as Marlin and Klipper. The reprap.org main page was last edited 2025-10-15.",
+  "physical_science_relevance": "Seeded low-cost desktop fabrication in research labs; reprap.org cites a study finding a RepRap an economically attractive investment for the average US household, and the open-labware movement builds on RepRap-class printers.",
+  "openness_effect_assessment": "Releasing everything under the GPL with community governance made RepRap, by reprap.org's own account (citing a 2013 survey), the origin of the great majority of 3D printers made in the world, including the founding designs of MakerBot, Prusa Research and Ultimaker. Openness maximised diffusion but captured little value for the project itself: its one commercial arm, RepRapPro, closed in 2016, and the value accrued to companies built on its designs.",
+  "key_takeaway": "RepRap is the open-hardware 'commons' baseline: an academic, grant-funded, GPL project with community governance that created an industry (MakerBot, Prusa, Ultimaker, LulzBot all descend from it) while capturing almost none of the money. It shows the time pattern clearly: enormous early diffusion, then commercial descendants closing up as markets matured, with the commons surviving as knowledge rather than as an organization.",
+  "confidence": "low",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/RepRap",
+    "https://reprap.org/wiki/RepRap"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/RepRap",
+      "title": "RepRap",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "founded_year, origin_detail (Bowyer, Bath, EPSRC), GPL licence, machine timeline, core team, RepRapPro closure 2016-01-15, Voron resurgence"
+    },
+    {
+      "url": "https://reprap.org/wiki/RepRap",
+      "title": "RepRap (main page)",
+      "publisher": "reprap.org",
+      "date": "2025-10-15",
+      "supports": "community governance (editable wiki, GFDL), 'origin of the great majority of 3D printers' (2013 survey), US household economics study, Bowyer MBE 2019"
+    },
+    {
+      "url": "https://hackaday.com/2012/09/20/makerbot-occupy-thingiverse-and-the-reality-of-selling-open-hardware",
+      "title": "MakerBot, Occupy Thingiverse, and the reality of selling open hardware",
+      "publisher": "Hackaday",
+      "date": "2012-09-20",
+      "supports": "risk_events[0]"
+    },
+    {
+      "url": "https://hackaday.com/2025/08/13/josef-prusa-warns-open-hardware-3d-printing-is-dead",
+      "title": "Josef Prusa Warns Open Hardware 3D Printing Is Dead",
+      "publisher": "Hackaday",
+      "date": "2025-08-13",
+      "supports": "risk_events[2]"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "GNU GPL (all RepRap designs)"
+    ],
+    "firmware_software_licenses": [
+      "GPL (RepRap host software and firmware lineage, e.g. Marlin)"
+    ],
+    "patents": "None by the project (GPL commons). Prusa's 2023 post notes others filing local patents on open-source 3D-printing developments.",
+    "clone_impacts": "Copying is the design intent ('self-replicating'); commercial derivatives (MakerBot, Prusa, Ultimaker, LulzBot, and many Chinese i3-style kits) are the project's main impact."
+  },
+  "notes": [
+    "No WebSearch queries could be run for RepRap: the session-wide search budget (200 per turn, shared by all agents) was exhausted. Facts come from direct fetches of Wikipedia and reprap.org plus Hackaday articles found in earlier Prusa/MakerBot searches. The 4-search minimum was not met; confidence low.",
+    "ownership_status 'nonprofit' and business_model 'grants' are closest-fit enums: RepRap is an unincorporated academic/community project (EPSRC-funded at the start), not a registered nonprofit or foundation.",
+    "EPSRC grant amounts were not found; funding_total_usd null.",
+    "'Firmware lineage, e.g. Marlin' is descriptive context; individual firmware licences were not checked in this session beyond the Marlin fork (GPL-3.0) seen on the LulzBot GitHub page."
+  ]
+}

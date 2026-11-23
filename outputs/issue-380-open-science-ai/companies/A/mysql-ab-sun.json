@@ -1,0 +1,91 @@
+{
+  "name": "MySQL AB and Sun Microsystems (MySQL's path to Oracle)",
+  "slug": "mysql-ab-sun",
+  "group": "A",
+  "category": "software",
+  "subcategory": "relational database (MySQL)",
+  "hq_country": "SE",
+  "origin": "founder_startup",
+  "origin_detail": "MySQL AB was founded in Sweden in 1995 by David Axmark, Allan Larsson and Michael 'Monty' Widenius. Sun Microsystems bought it in 2008, and Oracle acquired Sun, and with it MySQL, in 2010.",
+  "founded_year": 1995,
+  "flagship_projects": [
+    "MySQL Server"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "MySQL moved to the GPL in 2000 and was sold under dual licensing (GPL, or a commercial licence for embedding), so the whole product was OSI-licensed (3). Under Oracle the Community Edition remains GPLv2, but MySQL Enterprise Edition adds proprietary features and Oracle's cloud service is proprietary: open core (2). Single-vendor governance throughout.",
+  "business_model": "dual_license",
+  "license_history": [
+    {
+      "year": 1995,
+      "license": "MySQL's own licence (free for most uses)",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2000,
+      "license": "GPLv2 + commercial licence (dual licensing)",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2010,
+      "license": "Oracle era: GPLv2 Community Edition + proprietary Enterprise Edition",
+      "note": "(unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2000,
+      "from": "MySQL's own licence",
+      "to": "GPLv2 (dual licensing)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Move to the GPL underpinned the LAMP-era adoption (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2008,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Sun Microsystems",
+      "note": "Announced January 2008, reported at about $1B (unverified; value deliberately null)",
+      "source": null
+    },
+    {
+      "year": 2010,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Oracle Corporation (via its purchase of Sun)",
+      "note": "Oracle completed its purchase of Sun in January 2010, reported at about $7.4B for all of Sun (unverified; value deliberately null)",
+      "source": null
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": false,
+  "end_year": 2008,
+  "us_focus": true,
+  "risk_events": [
+    "2009-2010: Antitrust review of Oracle-Sun centred partly on MySQL; Monty Widenius forked MariaDB in 2009 (unverified)"
+  ],
+  "robustness": "The GPL code base was forkable (MariaDB, Percona Server) and was forked, but the trademark and main development are controlled by Oracle, with no foundation.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. MySQL is the founding case for this group: a dual-licensed open-source company that sold for about $1B in 2008 and passed to Oracle with Sun in 2010. A change of owner, not of licence, triggered the community fork (MariaDB), whose company later invented the BSL used in the relicensing wave.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file. still_operating=false and end_year=2008 refer to MySQL AB as an independent company; MySQL itself continues under Oracle. us_focus is true because Sun and Oracle are US companies."
+}

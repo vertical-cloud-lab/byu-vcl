@@ -1,0 +1,193 @@
+{
+  "name": "UltiMaker (Ultimaker B.V.)",
+  "slug": "ultimaker",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "desktop and professional FFF 3D printers; Cura slicer",
+  "hq_country": "NL",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2011 by Martijn Elserman, Erik de Bruijn and Siert Wijnia, who met building the RepRap Darwin in workshops at ProtoSpace Utrecht and designed their own laser-cut plywood printer; Cura became the lead software after its developer joined. Merged with MakerBot in 2022 to form UltiMaker.",
+  "founded_year": 2011,
+  "flagship_projects": [
+    "Ultimaker Original",
+    "Ultimaker 2",
+    "Ultimaker S-series",
+    "Factor 4",
+    "UltiMaker Cura",
+    "MakerBot Method / Sketch"
+  ],
+  "openness_initial": 2,
+  "openness_current": 1,
+  "openness_notes": "Initial 2: the Ultimaker Original (March 2011) design was published under Creative Commons BY-NC, and the Ultimaker 2 BOM and parts under CC BY-NC 3.0; these files were public but under a non-commercial licence, which is not an open hardware licence, so not 3. Current 1: the open piece is the slicer, UltiMaker Cura (LGPL-3.0, about 7.1k GitHub stars); no published design files were found for the Ultimaker 3/S-series/Factor printers or the MakerBot Method/Sketch lines (not exhaustively verified because the search budget ran out). The Ultimaker2 GitHub repository was archived (read-only) on 2026-11-14.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2011,
+      "license": "CC BY-NC (Ultimaker Original design)",
+      "note": "Non-commercial; per Wikipedia",
+      "source": "https://en.wikipedia.org/wiki/Ultimaker"
+    },
+    {
+      "year": 2013,
+      "license": "CC BY-NC 3.0 (Ultimaker 2 BOM and parts, GitHub)",
+      "note": "Repository archived by owner on 2026-11-14",
+      "source": "https://github.com/Ultimaker/Ultimaker2"
+    },
+    {
+      "year": 2026,
+      "license": "LGPL-3.0 (UltiMaker Cura slicer)",
+      "note": "Licence as shown on the GitHub repository in Nov 2026; Cura had about 1 million users in Sept 2017",
+      "source": "https://github.com/Ultimaker/Cura"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": null,
+      "from": "published CC BY-NC printer designs (Original, Ultimaker 2)",
+      "to": "no published design files for later printers (Ultimaker 3 / S-series / Factor)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Year not verified; inferred only from the absence of published files for later models in the sources reached. Cura stayed open throughout.",
+      "source": "https://en.wikipedia.org/wiki/Ultimaker"
+    }
+  ],
+  "funding_total_usd": 62400000,
+  "funding_as_of": "2022",
+  "ownership_status": "private_pe",
+  "exit_events": [
+    {
+      "year": 2022,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "MakerBot (Stratasys)",
+      "note": "Effective 2022-08-31; combined company named Ultimaker/UltiMaker; NPM Capital 53.5%, Stratasys 46.5% (announced as 54.4/45.6); $62.4M new investment ($15.4M NPM, $47M Stratasys); co-led initially by CEOs Nadav Goshen and Jurgen von Hollen",
+      "source": "https://investors.stratasys.com/news-events/press-releases/detail/793/stratasys-completes-merger-of-makerbot-with-ultimaker"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 400,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2022: merger with MakerBot under private-equity majority owner NPM Capital; Stratasys minority",
+    "Published end-of-support dates for older printers' software (e.g. Replicator+ support ended 2026-01-01; Method X 2027-06-01)",
+    "2026-11-14: Ultimaker2 open-design GitHub repository archived (read-only)"
+  ],
+  "robustness": "Privately held with deep-pocketed owners (NPM Capital, part of SHV; Stratasys), and pivoting toward industrial, defense (Factor 4 Plus, May 2026; exclusive Americas distributor for Tectonic-3D materials, April 2026) and education (MakerBot). Cura is LGPL-licensed and widely forked, so the most-used part of its ecosystem would survive the company.",
+  "physical_science_relevance": "Cura is one of the most widely used open slicers (1.4 million jobs a week in 2020 per Wikipedia) and is used across academic labs; 2026 activity includes medical (wound-care MOU with Bioactivx) and materials work.",
+  "openness_effect_assessment": "Ultimaker started from the RepRap/fablab community and published its first two printers' designs, though only under non-commercial CC BY-NC terms. Its most successful open asset is software: making Cura open (now LGPL-3.0) made it a de facto standard slicer with about 1 million users by 2017, which supported printer sales even as later printer designs were not published. Openness in software, not hardware, appears to be what gave UltiMaker durable reach.",
+  "key_takeaway": "UltiMaker is the 'open slicer, closed printers' pattern from the European side: its RepRap-community origins and non-commercially licensed early designs gave way to proprietary professional printers, while LGPL Cura became the ecosystem anchor. Consolidation (the 2022 MakerBot merger under NPM Capital) rather than openness determined its corporate path.",
+  "confidence": "low",
+  "searches": [
+    "Ultimaker MakerBot merger 2022 Stratasys 46.5% stake NPM Capital $62.4 million cash closed",
+    "MakerBot brand 2025 2026 UltiMaker news Sketch Method discontinued layoffs"
+  ],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/UltiMaker",
+    "https://github.com/Ultimaker/Cura",
+    "https://en.wikipedia.org/wiki/Ultimaker",
+    "https://github.com/Ultimaker/Ultimaker2",
+    "https://investors.stratasys.com/news-events/press-releases/detail/793/stratasys-completes-merger-of-makerbot-with-ultimaker",
+    "https://raw.githubusercontent.com/Ultimaker/Ultimaker2/master/LICENSE",
+    "https://techcrunch.com/2022/05/12/makerbot-and-ultimaker-are-merging/"
+  ],
+  "search_tool": "WebSearch + WebFetch (search budget exhausted)",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Ultimaker",
+      "title": "Ultimaker",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, license_history[0], employees_latest (about 400, 2019), Cura users"
+    },
+    {
+      "url": "https://github.com/Ultimaker/Cura",
+      "title": "Ultimaker/Cura repository",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[2] (LGPL-3.0), stars"
+    },
+    {
+      "url": "https://github.com/Ultimaker/Ultimaker2",
+      "title": "Ultimaker2 repository (BOM and parts for UM2)",
+      "publisher": "GitHub",
+      "date": "2026-11-14",
+      "supports": "license_history[1], risk_events[2] (archived)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Ultimaker/Ultimaker2/master/LICENSE",
+      "title": "Ultimaker2 LICENSE",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[1] (CC-by-NC 3.0)"
+    },
+    {
+      "url": "https://investors.stratasys.com/news-events/press-releases/detail/793/stratasys-completes-merger-of-makerbot-with-ultimaker",
+      "title": "Stratasys Completes Merger of MakerBot With Ultimaker",
+      "publisher": "Stratasys",
+      "date": "2022-09-13",
+      "supports": "exit_events[0] (53.5/46.5 split, effective 2022-08-31)"
+    },
+    {
+      "url": "https://techcrunch.com/2022/05/12/makerbot-and-ultimaker-are-merging/",
+      "title": "MakerBot and Ultimaker are merging",
+      "publisher": "TechCrunch",
+      "date": "2022-05-12",
+      "supports": "funding_total_usd ($62.4M), exit_events[0] (co-CEOs, announced split)"
+    },
+    {
+      "url": "https://support.ultimaker.com/s/article/1667412437656",
+      "title": "Product end of life policy and process",
+      "publisher": "UltiMaker",
+      "date": "2026-05-26",
+      "supports": "risk_events[1]"
+    },
+    {
+      "url": "https://ultimaker.com/learn/ultimaker-unveils-factor-4-plus/",
+      "title": "UltiMaker Unveils Factor 4 Plus Built for Continuous Industrial and Defense Production",
+      "publisher": "UltiMaker",
+      "date": "2026-05-21",
+      "supports": "robustness (industrial/defense pivot)"
+    },
+    {
+      "url": "https://ultimaker.com/learn/ultimaker-announced-as-exclusive-distributorship-for-tectonic-3d/",
+      "title": "UltiMaker Announced as Exclusive Distributorship for Tectonic-3D",
+      "publisher": "UltiMaker",
+      "date": "2026-04-14",
+      "supports": "robustness"
+    },
+    {
+      "url": "https://3dprint.com/333478/3d-printing-news-briefs-9-26-2026/",
+      "title": "3D Printing News Briefs, September 26, 2026",
+      "publisher": "3DPrint.com",
+      "date": "2026-09-26",
+      "supports": "physical_science_relevance (Bioactivx MOU)"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "CC BY-NC (Ultimaker Original, 2011)",
+      "CC BY-NC 3.0 (Ultimaker 2 BOM/parts on GitHub)"
+    ],
+    "firmware_software_licenses": [
+      "LGPL-3.0 (UltiMaker Cura)"
+    ],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "Session WebSearch budget (shared across agents) was exhausted after 2 UltiMaker-relevant searches (both also listed in makerbot.json); the remaining facts come from direct fetches of Wikipedia, GitHub, Stratasys and TechCrunch pages listed in sources. The 4-search minimum was therefore not met; confidence set to low.",
+    "funding_total_usd counts only the disclosed $62.4M injected at the 2022 merger; any earlier investment by NPM Capital or others was not verified.",
+    "employees_latest (about 400) is a 2019 figure for Ultimaker before the merger; current combined headcount not found.",
+    "No revenue or valuation for UltiMaker has been disclosed in the sources reached.",
+    "us_focus false: Dutch HQ (Utrecht); significant US presence through MakerBot (New York) and US industrial/defense distribution.",
+    "Openness of Ultimaker 3/S-series/Factor design files, firmware licences and any OSHWA certifications were not verified."
+  ]
+}

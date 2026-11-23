@@ -1,0 +1,134 @@
+{
+  "name": "VASP Software GmbH (Vienna Ab initio Simulation Package)",
+  "slug": "vasp",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "plane-wave density-functional theory (DFT) code",
+  "hq_country": "AT",
+  "origin": "academic",
+  "origin_detail": "Based on Mike Payne's MIT code (also the root of CASTEP), brought to the University of Vienna by Jurgen Hafner in July 1989; the main program was written by Jurgen Furthmuller (from 1993) and Georg Kresse, who still leads development. Licences were historically agreements with the University of Vienna; VASP Software GmbH in Vienna is now the copyright holder and licensor, with Materials Design Inc. as exclusive distributor to commercial users.",
+  "founded_year": 1989,
+  "flagship_projects": [
+    "VASP",
+    "PAW pseudopotential (PP) database",
+    "VASP machine-learned force fields (MLFF)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Proprietary. Source code is delivered to licensed research groups through the VASP Portal but is confidential under the licence agreement and never public. Licences go to one named research group at one site (not departments or individuals), for non-profit research only; a VASP.5.4.4 group licence capped named users at six. In June 2026 the company issued AI-tool guidelines forbidding licensees from feeding VASP source or the PP database to public/consumer AI models or using the code to train AI models or build a VASP equivalent.",
+  "business_model": "proprietary",
+  "license_history": [
+    {
+      "year": null,
+      "license": "Proprietary group licence (University of Vienna, later VASP Software GmbH); commercial via Materials Design Inc.",
+      "note": "Perpetual for the purchased release; upgrades require renewal",
+      "source": "https://vasp.at/info/faq/purchase_vasp/"
+    },
+    {
+      "year": 2026,
+      "license": "Same licence; AI-use guidelines added (no ingestion of source by public AI models; no training on VASP code)",
+      "note": "16 Jun 2026 guidance under the existing agreement",
+      "source": "https://vasp.at/info/post/"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2026: licence enforcement tightened; HPC centres report a switch from group-based checks to personal licence-key validation (VASP 6.6.1 already; 6.5.1 from 1 Oct 2026).",
+    "16 Jun 2026: guidelines restrict AI coding tools on VASP source, reflecting the risk that LLMs could clone the code.",
+    "Jul 2026: serious force bug in VASP 6.6.0 (spin-polarized meta-GGA) required an urgent 6.6.1 patch; groups whose licence did not cover 6.6.1 had to apply a patch file."
+  ],
+  "robustness": "Commercially self-sustaining for ~35 years with a single development centre in Vienna (Kresse group). Users cannot fork or redistribute; continuity depends on the company and its licence terms. Open alternatives (Quantum ESPRESSO, ABINIT) exist but VASP results and PAW datasets underpin much published and database work.",
+  "physical_science_relevance": "A dominant DFT code in materials science; most large computed-materials databases (including the Materials Project) were generated with VASP, so open data downstream rests on a closed upstream engine.",
+  "openness_effect_assessment": "Staying closed lets VASP fund a dedicated developer team from licence fees rather than grants, and it remains a reference code with more than 1,400 licensed research groups. The cost is restricted reproducibility and reuse: groups cannot share the code, and in 2026 the vendor moved to prevent AI tools from ingesting it. Its outputs nonetheless flow into open databases such as the Materials Project.",
+  "key_takeaway": "VASP is the clearest closed counterpoint in physical-science software: an academic code that commercialised through group licences, kept source confidential, and in 2026 explicitly barred AI training on its code. It shows that closed scientific software can be long-lived and high-impact, while open data built on its outputs (Materials Project) ended up becoming the AI training resource.",
+  "usage_metrics": [
+    {
+      "metric": "licensed research groups in academia and industry (uncited Wikipedia claim)",
+      "value": 1400,
+      "date": null,
+      "source": "https://en.wikipedia.org/wiki/Vienna_Ab_initio_Simulation_Package"
+    },
+    {
+      "metric": "academic licence fee for VASP 5.2 in one published public contract (EUR, described as strongly discounted)",
+      "value": 4000,
+      "date": null,
+      "source": "https://smlouvy.gov.cz/smlouva/soubor/34203099/SML5200002124.pdf"
+    }
+  ],
+  "funding_sources": [
+    "Licence fees (academic and commercial)",
+    "Commercial distribution through Materials Design Inc."
+  ],
+  "notes": [
+    "No current list price is published; academic pricing is by quote (licensing@vasp.at) and depends on number of users and renewal status.",
+    "The 1,400-group figure is uncited on Wikipedia; no company-reported licence count found.",
+    "Incorporation year and ownership of VASP Software GmbH not found; founded_year 1989 is the year the code base reached Vienna.",
+    "Revenue and employee counts not found (private Austrian GmbH).",
+    "A fifth search (company founding year) was not performed because the shared web-search budget for this turn was exhausted."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebSearch",
+  "searches": [
+    "VASP Software GmbH founded Vienna Hafner Kresse licence history",
+    "VASP academic license price euros cost per research group",
+    "VASP number of licenses research groups worldwide users citations",
+    "VASP Software GmbH 2025 2026 news VASP 6.5 machine learning force field license"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Vienna_Ab_initio_Simulation_Package",
+      "title": "Vienna Ab initio Simulation Package",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, founded_year, usage_metrics[0]"
+    },
+    {
+      "url": "https://vasp.at/info/faq/purchase_vasp/",
+      "title": "VASP licenses are available for both academic and commercial use",
+      "publisher": "VASP Software GmbH",
+      "date": null,
+      "supports": "license_history[0], origin_detail (Materials Design Inc.)"
+    },
+    {
+      "url": "https://vasp.at/info/faq/who_can_license/",
+      "title": "To whom are VASP licenses given?",
+      "publisher": "VASP Software GmbH",
+      "date": null,
+      "supports": "openness_notes (group licences)"
+    },
+    {
+      "url": "https://smlouvy.gov.cz/smlouva/soubor/34203099/SML5200002124.pdf",
+      "title": "VASP licence agreement, University of Vienna and University of West Bohemia (Czech contract registry)",
+      "publisher": "Czech Register of Contracts",
+      "date": null,
+      "supports": "usage_metrics[1] (EUR 4,000 for VASP 5.2), non-profit-only terms"
+    },
+    {
+      "url": "https://vasp.at/info/post/",
+      "title": "News (VASP.6.6.0, AI-tool guidelines, VASP.6.6.1, VASP AI Expert job)",
+      "publisher": "VASP Software GmbH",
+      "date": "2026-07-20",
+      "supports": "license_history[1], risk_events[1-2], openness_notes"
+    },
+    {
+      "url": "https://www.hpc.lsu.edu/documentation/available-software/vasp/",
+      "title": "VASP - High Performance Computing",
+      "publisher": "LSU HPC",
+      "date": null,
+      "supports": "risk_events[0] (personal licence validation from 1 Oct 2026)"
+    }
+  ]
+}

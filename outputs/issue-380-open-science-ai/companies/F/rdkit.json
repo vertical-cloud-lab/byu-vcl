@@ -1,0 +1,148 @@
+{
+  "name": "RDKit",
+  "slug": "rdkit",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "open-source cheminformatics and molecular machine-learning toolkit",
+  "hq_country": null,
+  "origin": null,
+  "origin_detail": "Developed by Greg Landrum with contributions from the RDKit open-source community; first released in 2006 (SourceForge project registered 16 Feb 2006, described as 'cheminformatics and machine-learning software written in C++ and Python'). Commercial support is provided by T5 Informatics GmbH. The commonly told pre-2006 history (development at Rational Discovery LLC, later Novartis support) was not confirmed in the fetched sources.",
+  "founded_year": 2006,
+  "flagship_projects": [
+    "RDKit (C++/Python toolkit)",
+    "RDKit PostgreSQL cartridge",
+    "RDKit User Group Meetings"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "BSD-3-Clause ('business-friendly BSD license') since release. Stewarded by its lead developer and community without a foundation, so scored 3; commercial support comes from T5 Informatics rather than an open-core product.",
+  "business_model": "support_services",
+  "license_history": [
+    {
+      "year": 2006,
+      "license": "BSD (3-clause)",
+      "note": "",
+      "source": "https://github.com/rdkit/rdkit"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Key-person concentration: copyright line reads 'Greg Landrum and other RDKit contributors' and the project depends heavily on its lead developer; no foundation or named funder was found on the fetched pages."
+  ],
+  "robustness": "Active quarterly release cadence (2026.09.1 on 3 Oct and 2026.09.2 on 5 Nov 2026), 8,788 commits, 3.7k GitHub stars and 1.1k forks; permissive licence means anyone can fork. Very heavy downstream use (~6.9 million PyPI downloads a month) makes it critical infrastructure with thin formal support.",
+  "physical_science_relevance": "The default open cheminformatics toolkit for molecular featurisation, SMILES/graph handling and descriptor generation in chemistry and drug-discovery machine learning; widely embedded in AI pipelines for molecules.",
+  "openness_effect_assessment": "A permissive licence let RDKit become the standard molecular toolkit in open and commercial ML pipelines, reflected in millions of monthly downloads. The cost is that a very widely used dependency rests on a small core team and a services company, with no visible institutional funding.",
+  "key_takeaway": "RDKit is the open-source chemistry analogue of the scientific Python stack: free, permissive, and woven into nearly every molecular-ML workflow, with usage (millions of downloads per month) far outrunning its visible funding. It is a prime example of AI-era value accruing on top of thinly resourced open infrastructure.",
+  "usage_metrics": [
+    {
+      "metric": "PyPI downloads, last month",
+      "value": 6880014,
+      "date": "2026-11",
+      "source": "https://pypistats.org/packages/rdkit"
+    },
+    {
+      "metric": "PyPI downloads, last week",
+      "value": 1650053,
+      "date": "2026-11",
+      "source": "https://pypistats.org/packages/rdkit"
+    },
+    {
+      "metric": "GitHub stars",
+      "value": 3700,
+      "date": "2026-11",
+      "source": "https://github.com/rdkit/rdkit"
+    },
+    {
+      "metric": "GitHub forks",
+      "value": 1100,
+      "date": "2026-11",
+      "source": "https://github.com/rdkit/rdkit"
+    }
+  ],
+  "funding_sources": [
+    "Commercial support and services via T5 Informatics GmbH",
+    "Volunteer and employer-supported community contributions"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls.",
+    "PyPI figures were read on 2026-11-23 from pypistats.org (no reference date shown on the page). They exclude conda-forge downloads.",
+    "No information found on grants (e.g. CZI EOSS) or employer support (e.g. Novartis); not claimed.",
+    "origin and hq_country left null: the fetched sources confirm neither the pre-2006 corporate origin nor the support company's country."
+  ],
+  "confidence": "low",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/RDKit",
+    "https://www.rdkit.org/",
+    "https://www.rdkit.org/docs/Overview.html",
+    "https://pypistats.org/packages/rdkit",
+    "https://github.com/rdkit/rdkit",
+    "https://github.com/rdkit/rdkit/releases",
+    "https://sourceforge.net/projects/rdkit/",
+    "https://www.t5informatics.com/ (TLS error)"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/RDKit",
+      "title": "RDKit",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail (Landrum), founded_year (2006 release), licence"
+    },
+    {
+      "url": "https://www.rdkit.org/",
+      "title": "RDKit: Open-Source Cheminformatics Software",
+      "publisher": "RDKit",
+      "date": null,
+      "supports": "T5 Informatics commercial support, user group meetings 2012-2022"
+    },
+    {
+      "url": "https://www.rdkit.org/docs/Overview.html",
+      "title": "An overview of the RDKit",
+      "publisher": "RDKit",
+      "date": null,
+      "supports": "openness_notes (BSD), risk_events (copyright line)"
+    },
+    {
+      "url": "https://github.com/rdkit/rdkit",
+      "title": "rdkit/rdkit",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "license_history, usage_metrics (stars, forks), robustness (commits)"
+    },
+    {
+      "url": "https://github.com/rdkit/rdkit/releases",
+      "title": "Releases",
+      "publisher": "GitHub",
+      "date": "2026-11-05",
+      "supports": "robustness (release cadence)"
+    },
+    {
+      "url": "https://pypistats.org/packages/rdkit",
+      "title": "rdkit download stats",
+      "publisher": "PyPI Stats",
+      "date": null,
+      "supports": "usage_metrics (downloads)"
+    },
+    {
+      "url": "https://sourceforge.net/projects/rdkit/",
+      "title": "RDKit on SourceForge",
+      "publisher": "SourceForge",
+      "date": "2006-02-16",
+      "supports": "origin_detail (registration date, description)"
+    }
+  ]
+}

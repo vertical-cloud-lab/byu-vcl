@@ -1,0 +1,82 @@
+{
+  "name": "GitLab Inc.",
+  "slug": "gitlab",
+  "group": "B",
+  "category": "software",
+  "subcategory": "DevOps / DevSecOps platform",
+  "hq_country": "US",
+  "origin": "community",
+  "origin_detail": "Started as an open-source project by Dmitriy Zaporozhets (with Valery Sizov) in Kharkiv, Ukraine, in Oct 2011; Sytse Sijbrandij joined to build a business: GitLab B.V. (Netherlands) 2013, GitLab Inc. 2014, Y Combinator W15; all-remote, incorporated in the US",
+  "founded_year": 2011,
+  "flagship_projects": ["GitLab (Community Edition / Enterprise Edition)", "GitLab.com", "GitLab Duo"],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Began as a fully MIT-licensed project (2011-2013). Since the Enterprise Edition split (GitLab 6.0, Aug 2013) it is explicitly open core: Community Edition is MIT, while EE features are under the proprietary 'GitLab EE licence' (source-available, not open source); SaaS (GitLab.com) and paid tiers are the business. All JavaScript is MIT and GitLab says most EE code is open source.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2011, "license": "MIT (Expat)", "note": "Original project, completely free and open source", "source": "https://lab.nexedi.com/kirr/gitlab-ce/-/commit/a16d894b21fb11d33c648048e6bb7a2f1d04e3ab"},
+    {"year": 2013, "license": "CE: MIT; EE: initially MIT but not published, later the proprietary GitLab EE licence", "note": "GitLab 6.0 introduced Enterprise Edition on 22 Aug 2013", "source": "https://about.gitlab.com/releases/2013/08/22/introducing-gitlab-6-0-enterprise-edition/"},
+    {"year": 2026, "license": "CE: MIT; EE: GitLab Enterprise Edition licence (source-available)", "note": "Current docs; GitLab describes itself as open-core with source-available proprietary code", "source": "https://docs.gitlab.com/development/licensing/"}
+  ],
+  "relicensing_events": [
+    {"year": 2013, "from": "MIT (whole product)", "to": "Open core: MIT CE + proprietary-licensed EE", "direction": "closing", "fork": null, "fork_backer": null, "outcome_note": "Not a relicense of existing code but the creation of a closed tier; no significant fork. The company grew to ~$1B ARR under this model", "source": "https://about.gitlab.com/releases/2013/08/22/introducing-gitlab-6-0-enterprise-edition/"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [
+    {"year": 2021, "type": "IPO", "value_usd": 11000000000, "counterparty": "Nasdaq (GTLB)", "note": "Priced 13 Oct 2021 at $77 (above $66-69 range), ~$801M gross proceeds; ~$11B valuation at IPO price; opened at $94.25 (~$13.5B per Bloomberg)", "source": "https://about.gitlab.com/press/releases/2021-10-13-gitlab-announces-pricing-of-initial-public-offering/"}
+  ],
+  "latest_value_usd": 7190000000,
+  "latest_value_type": "market_cap",
+  "latest_value_date": "2026-11-23",
+  "revenue_latest_usd": 955200000,
+  "revenue_year": 2026,
+  "employees_latest": 2582,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Still GAAP loss-making: FY2026 GAAP operating margin -7% (non-GAAP +17%; $220M adjusted free cash flow)",
+    "Stock well below IPO price: ~$45 on 23 Nov 2026 vs $77 IPO; 52-week range $18.73-$58.01",
+    "Growth deceleration: FY2027 guidance 15-17% after 26% in FY2026",
+    "Founder-CEO transition: Bill Staples is CEO (Sijbrandij remains a director and sold shares in Nov 2026)",
+    "Direct competition from Microsoft-owned GitHub, which bundles AI coding tools"
+  ],
+  "robustness": "Public company, crossed $1B ARR in FY2026 with positive free cash flow and a $400M buyback authorisation. The MIT-licensed CE means self-hosters and forks could continue without the company, but the product's development is single-vendor (no foundation) and EE features remain proprietary.",
+  "physical_science_relevance": "Self-hosted GitLab CE is widely used by universities, national labs and research groups that need on-premise code hosting and CI (e.g. for data-sensitive or air-gapped research).",
+  "openness_effect_assessment": "Openness drove adoption: a free MIT self-hosted alternative to GitHub won universities and enterprises, and open core converted that base into ~$955M revenue (FY2026). The 2013 move to a proprietary enterprise tier caused no damaging fork because the open core stayed genuinely useful. But open core has not protected valuation: the company trades at ~$7.2B, below its ~$11B IPO value, as AI-native competition rises.",
+  "key_takeaway": "GitLab is a successful example of a community open-source project turned into a public open-core company. It moved from fully open (level 3) to open core (level 2) early and transparently, avoided licence controversies like those of database vendors, and reached ~$1B ARR, yet still competes mainly against a closed, Microsoft-backed rival and remains GAAP-unprofitable.",
+  "confidence": "high",
+  "searches": [
+    "GitLab history founded 2011 Dmitriy Zaporozhets Sytse Sijbrandij 2014 company Y Combinator open core MIT license",
+    "GitLab IPO October 2021 Nasdaq GTLB priced $77 valuation total venture funding raised",
+    "GitLab fiscal 2026 full year revenue results March 2026 employees market cap",
+    "GitLab stock market cap November 2026 GTLB shares news",
+    "GitLab Community Edition MIT license Enterprise Edition source-available proprietary open core stewardship",
+    "GitLab 10-K fiscal 2026 number of team members employees Bill Staples CEO Sijbrandij stepped down"
+  ],
+  "sources": [
+    {"url": "https://handbook.gitlab.com/handbook/company/history", "title": "History of GitLab", "publisher": "GitLab", "date": null, "supports": "origin_detail, founded_year"},
+    {"url": "https://about.gitlab.com/blog/a-special-farewell-from-gitlab-dmitriy-zaporozhets/", "title": "A special farewell from GitLab's Dmitriy Zaporozhets", "publisher": "GitLab", "date": "2021-11-10", "supports": "founded_year (Oct 2011)"},
+    {"url": "https://about.gitlab.com/blog/letter-from-shareholders", "title": "Letter from shareholders", "publisher": "GitLab", "date": "2014-10-08", "supports": "origin_detail (GitLab B.V. 2013)"},
+    {"url": "https://www.ycombinator.com/companies/gitlab", "title": "GitLab", "publisher": "Y Combinator", "date": null, "supports": "origin_detail (YC W15)"},
+    {"url": "https://about.gitlab.com/releases/2013/08/22/introducing-gitlab-6-0-enterprise-edition/", "title": "Introducing GitLab 6.0 Enterprise Edition", "publisher": "GitLab", "date": "2013-08-22", "supports": "relicensing_events[0], license_history[1]"},
+    {"url": "https://docs.gitlab.com/development/licensing/", "title": "GitLab Licensing and Compatibility", "publisher": "GitLab", "date": null, "supports": "license_history[2], openness_notes"},
+    {"url": "https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/product-and-solution-marketing/tiers/", "title": "GitLab tiers", "publisher": "GitLab", "date": null, "supports": "openness_notes (open-core, source-available)"},
+    {"url": "https://about.gitlab.com/press/releases/2021-10-13-gitlab-announces-pricing-of-initial-public-offering/", "title": "GitLab Announces Pricing of Initial Public Offering", "publisher": "GitLab", "date": "2021-10-13", "supports": "exit_events[0]"},
+    {"url": "https://www.bloomberg.com/news/articles/2021-10-14/gitlab-exceeds-ipo-target-price-to-raise-801-million", "title": "GitLab Exceeds IPO Target Price to Raise $801 Million", "publisher": "Bloomberg", "date": "2021-10-14", "supports": "exit_events[0] proceeds, valuation"},
+    {"url": "https://ir.gitlab.com/news/news-details/2026/GitLab-Reports-Fourth-Quarter-and-Full-Year-Fiscal-Year-2026-Financial-Results-Board-of-Directors-Authorizes-400-million-for-Share-Repurchase-Program/default.aspx", "title": "GitLab Reports Fourth Quarter and Full Year Fiscal Year 2026 Financial Results", "publisher": "GitLab", "date": "2026-03-03", "supports": "revenue_latest_usd, risk_events (margins, guidance), robustness"},
+    {"url": "https://res.cloudinary.com/about-gitlab-com/image/upload/v1783451395/bpjtji8h54dcrv6atsju.pdf", "title": "GitLab FY26 data table", "publisher": "GitLab", "date": "2026", "supports": "employees_latest (2,582 at 31 Jan 2026)"},
+    {"url": "https://s204.q4cdn.com/984476563/files/doc_financials/2026/q4/GTLB-USQ_Transcript_2026-03-03.pdf", "title": "GitLab Q4 FY2026 earnings call transcript", "publisher": "GitLab", "date": "2026-03-03", "supports": "risk_events (Bill Staples CEO)"},
+    {"url": "https://www.cnn.com/markets/stocks/GTLB", "title": "GTLB Stock Quote", "publisher": "CNN", "date": "2026-11-23", "supports": "latest_value_usd ($7.19B)"},
+    {"url": "https://www.marketbeat.com/instant-alerts/analyst-gitlab-nasdaq-gtlb-given-hold-rating-at-td-cowen-2026-11-23/", "title": "GitLab Given Hold Rating at TD Cowen", "publisher": "MarketBeat", "date": "2026-11-23", "supports": "risk_events (price $44.99, 52-week range); notes ($7.49B market cap)"},
+    {"url": "https://defenseworld.net/2026/11/23/alphagrep-uk-ltd-acquires-new-holdings-in-gitlab-inc-gtlb.html", "title": "AlphaGrep UK Ltd Acquires New Holdings in GitLab Inc.", "publisher": "Defense World", "date": "2026-11-23", "supports": "latest_value_usd, risk_events (Sijbrandij share sale)"}
+  ],
+  "notes": [
+    "latest_value_usd: market cap $7.19B (CNN, Defense World) to $7.49B (MarketBeat) on 23 Nov 2026.",
+    "revenue_year 2026 = fiscal year ended 31 Jan 2026.",
+    "funding_total_usd null: pre-IPO venture total not found in a primary source; Seedtable lists $1.2B 'total raised', which likely includes IPO proceeds and is unverified.",
+    "origin set to 'community' because the product began as a volunteer open-source project before a company existed."
+  ]
+}

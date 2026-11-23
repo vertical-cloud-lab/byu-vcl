@@ -1,0 +1,97 @@
+{
+  "name": "COMSOL (COMSOL AB / COMSOL Group)",
+  "slug": "comsol",
+  "group": "F",
+  "category": "sci_software",
+  "subcategory": "multiphysics finite-element simulation",
+  "hq_country": "SE",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 1986 in Stockholm, Sweden, by Svante Littmarck and Farhad Saeidi. First product FEMLAB (1998) was a finite-element package built on MATLAB; it became standalone in 2003 and was renamed COMSOL Multiphysics in 2005.",
+  "founded_year": 1986,
+  "flagship_projects": [
+    "COMSOL Multiphysics",
+    "COMSOL Server / Compiler (simulation apps)",
+    "add-on physics modules"
+  ],
+  "openness_initial": 0,
+  "openness_current": 0,
+  "openness_notes": "Proprietary software under an end-user licence agreement throughout.",
+  "business_model": "proprietary",
+  "license_history": [
+    {
+      "year": 1998,
+      "license": "Proprietary EULA (FEMLAB, later COMSOL Multiphysics)",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/COMSOL_Multiphysics"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 700,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "No public financial disclosure found; continuity rests on founder-led private ownership (founders still CEO of COMSOL Group and president of COMSOL AB)."
+  ],
+  "robustness": "Founder-led for ~40 years with 700+ staff and 16 offices plus distributors; no forks possible. Version 6.4 (listed as stable 18 Nov 2025) added an NVIDIA cuDSS GPU solver, LLM-assisted simulation (chatbot connecting to GPT-5, Gemini, DeepSeek and other OpenAI-API-compatible models) and DNN surrogate-model tools.",
+  "physical_science_relevance": "Widely used in academic and industrial physics and engineering for coupled electromagnetics, heat transfer, structural mechanics, acoustics, chemical engineering and electrochemistry (e.g. battery modelling).",
+  "openness_effect_assessment": "COMSOL shows closed physics software can stay independent: unlike Ansys it has not been acquired or gone public. Its AI strategy is to plug external LLMs into a closed product rather than to open data or code.",
+  "key_takeaway": "COMSOL is the private, founder-controlled closed comparator: 40 years old, 700+ employees and still independent, but opaque (no revenue disclosed). For the study it represents closed software whose longevity comes from steady licence sales rather than an exit, with AI added as a feature on top of proprietary solvers.",
+  "usage_metrics": [],
+  "funding_sources": [
+    "Licence sales"
+  ],
+  "notes": [
+    "No web searches were run for this entry (shared WebSearch budget exhausted); see fetched_urls. Facts come from direct fetches of Wikipedia and comsol.com.",
+    "Revenue not found: COMSOL publishes no financials and Wikipedia gives none. Swedish registry filings (COMSOL AB) were not retrieved.",
+    "Ownership: Wikipedia lists it as a private company without naming owners; ownership_status left null rather than assuming founder ownership.",
+    "Release date of 6.4 is from Wikipedia's infobox; the COMSOL release page itself gives no date."
+  ],
+  "confidence": "medium",
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/COMSOL_Multiphysics",
+    "https://en.wikipedia.org/wiki/COMSOL",
+    "https://www.comsol.com/company",
+    "https://www.comsol.com/release/6.4"
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/COMSOL_Multiphysics",
+      "title": "COMSOL Multiphysics",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "origin_detail, license_history, robustness (6.4 on 18 Nov 2025)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/COMSOL",
+      "title": "COMSOL",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, founders, private company"
+    },
+    {
+      "url": "https://www.comsol.com/company",
+      "title": "About COMSOL",
+      "publisher": "COMSOL",
+      "date": null,
+      "supports": "employees_latest (700+), 16 offices, FEMLAB and 2005 renaming"
+    },
+    {
+      "url": "https://www.comsol.com/release/6.4",
+      "title": "COMSOL Multiphysics 6.4 release highlights",
+      "publisher": "COMSOL",
+      "date": null,
+      "supports": "robustness (GPU cuDSS, LLM chatbot, surrogate models)"
+    }
+  ]
+}

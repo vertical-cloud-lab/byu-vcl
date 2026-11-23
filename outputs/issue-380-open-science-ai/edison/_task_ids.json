@@ -1,0 +1,56 @@
+{
+  "oss_economic_value": {
+    "task_id": "9860680f-c8e9-4c60-bd29-85ff623bb7df",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "What is the estimated economic value of open-source software (OSS)? Summarize quantitative estimates from peer-reviewed and working-paper studies, including supply-side vs demand-side valuations (e.g., Hoffmann, Nagle & Zhou 2024 'The Value of Open Source Software'), measures of OSS investment in national accounts (e.g., Robbins, Korkmaz et al. with the US BEA/NSF; Greenstein & Nagle 'Digital dark matter'), EU estimates (Blind et al. 2021 for the European Commission), and effects of OSS on productivity, entrepreneurship and venture capital (e.g., Wright, Nagle & Greenstein). Report the numbers, years, methods, and US-specific figures, and note disagreements and limitations.",
+    "submitted_utc": "2026-11-23T21:51:13.051776Z"
+  },
+  "open_science_roi": {
+    "task_id": "0df61210-68c1-439f-8457-5da1cc0f6c9e",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "What is the measured economic and scientific return of open science, open data and open research infrastructure, especially in the physical and life sciences? Include quantitative studies of the Protein Data Bank (and its role in enabling AlphaFold), the Human Genome Project (e.g., Battelle economic impact estimates and critiques), the 2008 Landsat open data policy, EMBL-EBI impact studies, the Materials Project and other open materials databases, effects of open access on citations and downstream innovation/patents, and how openly available scientific data has been used to train AI models. Give numbers, dates and methods, and note critiques.",
+    "submitted_utc": "2026-11-23T21:51:14.180556Z"
+  },
+  "open_hardware_economics": {
+    "task_id": "0d82b186-f8e8-4e5a-98f7-271aeabfdaea",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "What does the research literature show about the economics and commercialization of open-source hardware, especially scientific and laboratory hardware? Include studies on cost savings and return on investment of open-source scientific hardware (e.g., Joshua Pearce's work), business models and survival of open hardware companies (e.g., Arduino, Prusa Research, MakerBot, LulzBot/Aleph Objects, Adafruit, SparkFun, Opentrons), open hardware licensing (CERN OHL), OSHWA certification trends, and comparisons with open-source software commercialization. Give quantitative results where available.",
+    "submitted_utc": "2026-11-23T21:51:15.140808Z"
+  },
+  "oss_business_outcomes": {
+    "task_id": "bf905c2f-e872-41af-b446-3891b9357a4b",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What empirical evidence exists on outcomes of commercial open-source software companies (open core, SaaS, dual licensing) compared with proprietary software companies: valuation, revenue growth, IPO/acquisition outcomes and survival? What are the effects of license changes from open source to source-available licenses (e.g., MongoDB SSPL 2018, Elastic 2021, HashiCorp BSL 2023, Redis 2024) and of the resulting community forks (OpenSearch, OpenTofu, Valkey)? Include academic studies of firm participation in open source (e.g., Lerner & Tirole; Fosfuri, Giarratana & Luzzi; Nagle on firm productivity) and studies of forks and community response.",
+    "submitted_utc": "2026-11-23T21:51:15.929976Z"
+  },
+  "open_weights_ai_impact": {
+    "task_id": "087616f4-7cf4-4a7e-bdda-a156a18f669b",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "What do studies show about the economic and scientific impact of open-weight or open-source AI models compared with closed models? Include evidence on usage shares, cost and price differences, consumer surplus estimates (e.g., Nagle & Yue on the latent role of open models), innovation and diffusion effects, risk assessments (e.g., the 2024 NTIA report on dual-use foundation models with widely available model weights), and trends in model openness by sector (academia, industry, government) and by country over time (e.g., Epoch AI data, Stanford AI Index).",
+    "submitted_utc": "2026-11-23T21:51:16.881054Z"
+  },
+  "sector_openness_trends": {
+    "task_id": "e75bd8ec-c2a5-44b2-a111-ade67493f348",
+    "job": "job-futurehouse-paperqa3",
+    "query": "How has the openness of research outputs (open access publications, code release, data sharing, model weights) changed over time across academia, government and national laboratories, and industry, particularly in the United States? Include evidence on industry's growing share of AI research (e.g., Ahmed, Wahed & Thompson 2023 in Science), the decline of corporate basic research publication (e.g., Arora, Belenzon & Patacconi), national laboratory software release practices, and US federal open-science policy (2013 OSTP Holdren memo, 2022 OSTP Nelson memo, NIH 2023 data management and sharing policy).",
+    "submitted_utc": "2026-11-23T21:51:17.939923Z"
+  },
+  "open_sdl_lab_automation": {
+    "task_id": "8b4d5f2b-5210-4feb-9f88-6d34a2f1caaa",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What is the state of open-source self-driving laboratories and open laboratory automation for chemistry and materials science? Include low-cost or open-source self-driving lab platforms (e.g., Baird & Sparks 'What is a minimal working example for a self-driving laboratory?', Opentrons OT-2 based systems, Jubilee, PyLabRobot, OpenFlexure), cost comparisons with commercial automation, evidence on adoption and reproducibility, the business landscape of cloud labs and AI-for-science startups, and arguments for and against open-sourcing self-driving lab hardware and software.",
+    "submitted_utc": "2026-11-23T21:51:18.528668Z"
+  },
+  "physsci_software_sustainability": {
+    "task_id": "9ce56918-727a-4f6a-a5f7-d5a9744f162c",
+    "job": "job-futurehouse-paperqa3",
+    "query": "How have open-source scientific software packages in the physical sciences (e.g., LAMMPS, Quantum ESPRESSO, OpenFOAM, GROMACS, RDKit, pymatgen, ASE) been funded, sustained and commercialized compared with proprietary packages (e.g., VASP, Gaussian, ANSYS, COMSOL, Schrodinger)? Include evidence on usage and citations, funding sources, business models (support, consulting, dual licensing), and sustainability or failure cases.",
+    "submitted_utc": "2026-11-23T21:51:19.282189Z"
+  },
+  "precedent_open_data_to_ai": {
+    "task_id": "30dc87f2-d318-4874-bc07-1401af9b190f",
+    "job": "job-futurehouse-paperqa3-precedent",
+    "query": "Has anyone quantified, in dollar terms or as a share of value created, how much open scientific data and open-source software contributed to AI-for-science breakthroughs such as AlphaFold (trained on the Protein Data Bank) or machine-learning materials discovery (trained on the Materials Project, OQMD or AFLOW)?",
+    "submitted_utc": "2026-11-23T21:51:20.067061Z"
+  }
+}

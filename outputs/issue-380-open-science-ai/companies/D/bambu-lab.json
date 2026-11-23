@@ -1,0 +1,140 @@
+{
+  "name": "Bambu Lab (Shenzhen Tuozhu Technology)",
+  "slug": "bambu-lab",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "consumer/prosumer FFF 3D printers (closed comparator)",
+  "hq_country": "CN",
+  "origin": "founder_startup",
+  "origin_detail": "Founded August 2020 in Shenzhen by four engineers led by Ye Tao, former head of DJI's consumer drone department; launched with the X1 Kickstarter (2022); offices in Shanghai and Austin, Texas.",
+  "founded_year": 2020,
+  "flagship_projects": [
+    "X1 / X1 Carbon",
+    "P1P / P1S / P2S",
+    "A1 / A1 mini",
+    "H2D / H2S / H2C",
+    "AMS multi-material system",
+    "Bambu Studio",
+    "MakerWorld"
+  ],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "Hardware designs and printer firmware are proprietary. The only open component is the slicer, Bambu Studio, licensed AGPL-3.0 because it is based on Prusa's PrusaSlicer (itself from Slic3r); its networking plugin is 'based on non-free libraries'. In January 2025 Bambu announced firmware with an authorization/authentication layer that gated third-party control of its printers behind its own software (Bambu Connect), a practical closing of interfaces rather than a licence change. Level 1 throughout; the date of the first public Bambu Studio source release was not verified.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2022,
+      "license": "AGPL-3.0 (Bambu Studio slicer, based on PrusaSlicer)",
+      "note": "Year approximate (slicer shipped with the 2022 X1); networking plugin proprietary",
+      "source": "https://github.com/bambulab/BambuStudio"
+    },
+    {
+      "year": 2022,
+      "license": "Proprietary (printer hardware and firmware)",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/Bambu_Lab"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2025,
+      "from": "printers controllable over LAN/cloud by third-party tools",
+      "to": "firmware authorization/authentication architecture routing control through Bambu software (Bambu Connect)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Users feared cloud authorization for LAN printing and restrictions on third-party slicers; Bambu edited the original post and called concerns misinformation; Louis Rossmann criticised unannounced terms-of-service changes. Whether the change was later reversed was not established in the sources reached.",
+      "source": "https://en.wikipedia.org/wiki/Bambu_Lab"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2023-08: Bambu Cloud outage caused some printers to print uncontrollably or stop working",
+    "2024-08: Stratasys sued Bambu Lab for patent infringement",
+    "2025-01: firmware authorization controversy over third-party software access and terms-of-service changes",
+    "2025: security vulnerability found in the printers' cloud connection"
+  ],
+  "robustness": "Fast-growing and product-prolific (H2D, H2S, H2C in 2025; X2D, A2L, R1 laser and H3C in 2026) with a first flagship retail store in Shenzhen (Sept 2025), but customers depend on a single vendor's cloud and firmware; the 2023 cloud outage and 2025 vulnerability show that dependence. Patent litigation from Stratasys is an open exposure.",
+  "physical_science_relevance": "Widely adopted fast multi-material printers are now common in labs, but closed firmware and cloud-gated control make them harder to integrate into automated, audited lab workflows than open printers.",
+  "openness_effect_assessment": "Bambu Lab grew from a 2020 founding to market leadership while keeping hardware and firmware closed; its only open asset is an AGPL slicer it inherited from Prusa's open PrusaSlicer. Its success, which Josef Prusa blamed in 2025 for making open desktop hardware unviable, suggests that in this market closed, vertically integrated, venture-backed design and pricing beat openness, with openness benefiting Bambu as a free input rather than a strategy.",
+  "key_takeaway": "Bambu Lab is the closed comparator that won: a DJI-alumni, VC-backed (IDG Capital) Shenzhen firm that reused open slicer code, kept printers and firmware proprietary, and in January 2025 tightened control further with authorization firmware, accepting a community backlash. Its rise is the main competitive force behind open pioneers' retreat (Prusa) and shows the 'open software, closed hardware' pattern at its most commercially effective.",
+  "confidence": "low",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Bambu_Lab",
+    "https://blog.bambulab.com/firmware-update-introducing-new-authorization-and-authentication-architecture/",
+    "https://github.com/bambulab/BambuStudio",
+    "https://blog.bambulab.com/",
+    "https://en.wikipedia.org/wiki/Stratasys"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Bambu_Lab",
+      "title": "Bambu Lab",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "founded_year, origin_detail, products and dates, IDG Capital funding, Kickstarter HK$55M (about US$7.02M), 2023 outage, 2025 authorization controversy, 2025 vulnerability, Sept 2025 store"
+    },
+    {
+      "url": "https://github.com/bambulab/BambuStudio",
+      "title": "bambulab/BambuStudio",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[0] (AGPL-3.0, based on PrusaSlicer; non-free networking plugin)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Stratasys",
+      "title": "Stratasys",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "risk_events[1] (August 2024 patent suit)"
+    },
+    {
+      "url": "https://hackaday.com/2025/08/13/josef-prusa-warns-open-hardware-3d-printing-is-dead",
+      "title": "Josef Prusa Warns Open Hardware 3D Printing Is Dead",
+      "publisher": "Hackaday",
+      "date": "2025-08-13",
+      "supports": "openness_effect_assessment (Chinese below-cost printers and subsidised patents)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Prusa_Research",
+      "title": "Prusa Research",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "openness_effect_assessment (Prusa software used by competitor Bambu Lab)"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "Proprietary"
+    ],
+    "firmware_software_licenses": [
+      "Proprietary printer firmware",
+      "AGPL-3.0 (Bambu Studio)",
+      "Proprietary networking plugin"
+    ],
+    "patents": "Defendant in Stratasys patent-infringement suit filed August 2024 (court, patent count and status not verified). Bambu's own patent portfolio not verified; Prusa (2025) cites rapid growth in Chinese 3D-printing patent filings without naming Bambu.",
+    "clone_impacts": "Not a clone victim in the sources reached; it is the main beneficiary of open slicer code (PrusaSlicer). Community fork OrcaSlicer exists but was not verified in this session."
+  },
+  "notes": [
+    "No WebSearch queries could be run for Bambu Lab: the session-wide search budget (200 per turn, shared by all agents) was exhausted. 2025-2026 facts come from direct fetches of the Wikipedia article (Nov 2026) and GitHub, not memory; Wikipedia itself flags parts of the authorization-controversy section as needing independent sources. The 4-search minimum was not met; confidence low.",
+    "Funding: IDG Capital was revealed in 2023 as a partial funder (amount undisclosed). The 2022 X1 Kickstarter raised HK$55M (about US$7.02M per Wikipedia), which is pre-sales crowdfunding; funding_total_usd left null because equity amounts are undisclosed.",
+    "Revenue: Wikipedia cites an EqualOcean article titled about annual revenue 'nearing CNY 1.5 billion' without a year; not recorded.",
+    "us_focus false: headquartered in Shenzhen; US office in Austin, Texas.",
+    "The Bambu blog URL for the January 2025 authorization post returned 404 when fetched; date taken as January 2025 from Wikipedia."
+  ]
+}

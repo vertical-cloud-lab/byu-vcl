@@ -1,0 +1,73 @@
+{
+  "name": "System76, Inc.",
+  "slug": "system76",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "Linux computers, open firmware and open-hardware peripherals",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in Denver, Colorado in 2005 by Carl Richell (CEO) and Erik Fetzer (who had registered the domain in 2003) to be a high-quality OEM for GNU/Linux; the first computers shipped with Ubuntu 5.10. Since 2018 it designs and builds Thelio desktops in its own Denver factory; laptops are largely based on ODM designs.",
+  "founded_year": 2005,
+  "flagship_projects": ["Pop!_OS", "COSMIC desktop (Rust)", "System76 Open Firmware (coreboot + EDK2 + open EC)", "Thelio desktops and Thelio Io board", "Launch keyboard"],
+  "openness_initial": 1,
+  "openness_current": 2,
+  "openness_notes": "Hardware column. In 2005 System76 sold computers with a preinstalled open-source OS (Ubuntu) while hardware and firmware were closed: only peripheral parts open (1). It has opened progressively: Pop!_OS (2017), its own desktop environment COSMIC (GPL-3.0-or-later), an open firmware distribution built on coreboot, EDK2 and its own EC firmware, and fully open designs for some in-house hardware: the Launch keyboard (CC-BY-SA-4.0 chassis, GPLv3 KiCad PCB, GPLv2 QMK firmware, OSHWA US001062) and the Thelio Io board (GPL-3.0 KiCad). Its laptops, the bulk of the range, are not open designs. Overall: open firmware/software with mostly closed hardware designs (2), with individual products at level 3.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {"year": 2017, "license": "GPL family (Pop!_OS, Ubuntu-based distribution)", "note": "Announced June 2017; per-package licences vary.", "source": "https://en.wikipedia.org/wiki/System76"},
+    {"year": 2018, "license": "GPL-3.0 (Thelio Io board KiCad design)", "note": "Year is Thelio's launch with Denver manufacturing; publication date of the hardware repository not verified.", "source": "https://github.com/system76/thelio-io-hardware"},
+    {"year": 2021, "license": "CC-BY-SA-4.0 (Launch chassis), GPL-3.0 (Launch PCB), GPL-2.0 (QMK-based firmware); OSHWA US001062", "note": "Launch released May 2021.", "source": "https://github.com/system76/launch"},
+    {"year": 2024, "license": "GPL-3.0-or-later (COSMIC desktop)", "note": "First alpha August 2024; default desktop in Pop!_OS 24.04 LTS (2025-12-11).", "source": "https://en.wikipedia.org/wiki/COSMIC_(desktop_environment)"}
+  ],
+  "relicensing_events": [
+    {"year": 2018, "from": "Resold/ODM hardware with closed designs", "to": "In-house Thelio desktop with open (GPL-3.0) Thelio Io board design", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Accompanied by moving desktop manufacturing to a Denver factory.", "source": "https://github.com/system76/thelio-io-hardware"},
+    {"year": 2021, "from": "No fully open-hardware product", "to": "Launch keyboard: OSHWA-certified open hardware (US001062)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Mechanical, electrical, firmware and configurator all published.", "source": "https://github.com/system76/launch"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": null,
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Laptops depend on ODM (Clevo-type) designs, limiting how open the main product line can be; an in-house 'Virgo' laptop was announced in April 2023",
+    "2021-2025: multi-year rewrite of its desktop environment (COSMIC) in Rust; Pop!_OS 24.04 shipped only in December 2025 with COSMIC as default"
+  ],
+  "robustness": "Over 20 years of continuous operation as a privately held niche OEM. Its software (Pop!_OS, COSMIC) and firmware are open and could be maintained by others; open-hardware products (Launch, Thelio Io) are fully reproducible, but most laptops rely on closed ODM designs and supply.",
+  "physical_science_relevance": "Linux workstations and open-firmware laptops are common in research computing; Pop!_OS has been positioned for 'developers, makers, and computer science professionals'.",
+  "openness_effect_assessment": "System76's openness grew over time rather than shrinking: from reselling Linux PCs (2005) to its own OS (2017), open firmware, an in-house desktop with an open board (2018) and an OSHWA-certified keyboard (2021). Openness is its brand differentiator in a niche Linux market, and it has kept the company independent for two decades, but there is no public evidence that it produced large scale; revenue and headcount are not disclosed.",
+  "key_takeaway": "System76 is a long-lived US example of an open-software-first hardware company that opened progressively, ending up with open OS, open firmware and some fully open hardware (Launch, OSHWA US001062), while its laptops remain closed ODM designs. Its longevity (since 2005) without disclosed outside funding contrasts with VC-backed peers, though its ownership and finances are not public.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/System76", "title": "System76", "publisher": "Wikipedia", "date": "2026-09-23", "supports": "founded_year, founders, HQ, Thelio Denver manufacturing 2018, Launch May 2021, Pop!_OS 2017, Virgo 2023, private company"},
+    {"url": "https://carlrichell.com/post/2611107120/how-system76-began", "title": "How System76 began", "publisher": "Carl Richell (founder blog)", "date": null, "supports": "origin_detail (2005 founding, Ubuntu 5.10, mission)"},
+    {"url": "https://system76.com/about", "title": "About System76", "publisher": "System76", "date": "2026-11", "supports": "Denver factory, open-source mission"},
+    {"url": "https://github.com/system76/launch", "title": "system76/launch", "publisher": "GitHub", "date": "2026-11", "supports": "license_history (CC-BY-SA-4.0, GPLv3, GPLv2), OSHWA US001062"},
+    {"url": "https://github.com/system76/thelio-io-hardware", "title": "system76/thelio-io-hardware", "publisher": "GitHub", "date": "2026-11", "supports": "license_history (GPL-3.0 KiCad Thelio Io)"},
+    {"url": "https://github.com/system76/firmware-open", "title": "system76/firmware-open", "publisher": "GitHub", "date": "2026-11", "supports": "open firmware distribution (coreboot, EDK2, EC)"},
+    {"url": "https://en.wikipedia.org/wiki/COSMIC_(desktop_environment)", "title": "COSMIC (desktop environment)", "publisher": "Wikipedia", "date": "2026-11", "supports": "COSMIC licence, alpha/beta dates, Pop!_OS 24.04 date, version 1.11.0 (2026-10-20)"},
+    {"url": "https://coloradosun.com/2018/11/21/why-a-computer-maker-moved-manufacturing-to-denver-despite-ongoing-trade-war-with-china/", "title": "Why a computer maker moved manufacturing to Denver despite ongoing trade war with China", "publisher": "Colorado Sun", "date": "2018-11-21", "supports": "Denver manufacturing (cited via Wikipedia, not fetched)"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": "Launch keyboard: OSHWA UID US001062 (per repository README)",
+    "hardware_licenses": ["CC-BY-SA-4.0 (Launch chassis)", "GPL-3.0 (Launch PCB; Thelio Io KiCad design)"],
+    "firmware_software_licenses": ["GPL-2.0 (QMK-based keyboard firmware)", "GPL-3.0-or-later (COSMIC)", "coreboot/EDK2-based open firmware (repository licence files not read)"],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "SEARCH BUDGET EXHAUSTED: no WebSearch queries could be run for this org because the turn's shared 200-search budget was used up. Data come from direct fetches of Wikipedia, the founder's blog, System76's site and GitHub, not from memory. The 4-search requirement is not met.",
+    "ownership_status set to null: Wikipedia lists System76 as 'Private', and neither the founder's account nor the About page mentions outside investors, but no source states whether it is bootstrapped, so 'private_bootstrapped' is not asserted.",
+    "Funding, revenue, valuation and headcount are not public in the sources fetched; null.",
+    "Which models run System76 Open Firmware, and which proprietary blobs (Intel ME/FSP) remain, were not verified; Wikipedia says its firmware partly disables the Intel Management Engine.",
+    "The Thelio Io repository is the 'version 2' master repo; the hardware submodule is GPL-3.0. Thelio chassis design licensing was not checked."
+  ]
+}

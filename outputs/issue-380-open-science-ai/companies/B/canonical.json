@@ -1,0 +1,73 @@
+{
+  "name": "Canonical Group Limited",
+  "slug": "canonical",
+  "group": "B",
+  "category": "software",
+  "subcategory": "Linux distribution (Ubuntu) / support subscriptions",
+  "hq_country": "GB",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 5 Mar 2004 by South African entrepreneur Mark Shuttleworth (originally registered as M R S Virtual Development Ltd, Isle of Man); funded by Shuttleworth personally; HQ London. First Ubuntu release (4.10) on 20 Oct 2004",
+  "founded_year": 2004,
+  "flagship_projects": ["Ubuntu", "Launchpad", "Snap/Snapcraft", "MAAS", "Juju", "LXD"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Ubuntu has always been free and OSI-licensed; Canonical sells support, security maintenance (Ubuntu Pro) and services. Its own developer infrastructure has been partly proprietary: Launchpad was closed until July 2009 (then AGPLv3), and the Snap Store backend remains proprietary (client open), which drew criticism and Linux Mint's 2020 block of snaps.",
+  "business_model": "support_services",
+  "license_history": [
+    {"year": 2004, "license": "GPL and other OSI licences (Ubuntu)", "note": "Ubuntu 4.10 Warty Warthog, 20 Oct 2004; six-month release cadence", "source": "https://en.wikipedia.org/wiki/Canonical_(company)"},
+    {"year": 2009, "license": "AGPL-3.0-only (Launchpad)", "note": "Launchpad source released 21 Jul 2009 after a 2008 OSCON pledge", "source": "https://ubuntu.com/blog/canonical-releases-source-code-for-launchpad"},
+    {"year": 2020, "license": "Snap client GPL; Snap Store backend proprietary", "note": "Single, Canonical-run store; Linux Mint blocked APT-installed snaps (Jun 2020)", "source": "https://lwn.net/Articles/825005"}
+  ],
+  "relicensing_events": [
+    {"year": 2009, "from": "Proprietary (Launchpad hosted service)", "to": "AGPL-3.0", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Answered community criticism that Ubuntu's development depended on closed infrastructure", "source": "https://ubuntu.com/blog/canonical-releases-source-code-for-launchpad"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_bootstrapped",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 345000000,
+  "revenue_year": 2025,
+  "employees_latest": 1342,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Years of losses funded by the founder before reaching profitability (net profit $18.1M in 2024, $22.8M in 2025)",
+    "Founder dependence: Shuttleworth owns at least 75% (Companies House); he stepped down as CEO in 2010 and returned in 2017",
+    "Proprietary Snap Store backend: community distrust; Linux Mint blocked snaps via APT in 2020; reports of malware in the Snap Store",
+    "IPO repeatedly discussed but deferred; Oct 2025 Shuttleworth said there is no need to go public yet"
+  ],
+  "robustness": "Ubuntu is the most widely used Linux distribution in cloud and developer settings and its code is entirely OSI-licensed (and derived from Debian), so it would survive Canonical. The company itself is founder-controlled with no outside investors, which shields it from VC pressure but concentrates key-person risk; revenue has grown steadily ($205M 2022 to $345M 2025) at ~89% gross margin.",
+  "physical_science_relevance": "Ubuntu is a default OS for lab workstations, robotics (ROS targets Ubuntu), Raspberry Pi/edge devices and many scientific and AI software stacks.",
+  "openness_effect_assessment": "Giving away a polished, fully open distribution made Ubuntu the dominant developer/cloud Linux, but monetisation was slow: Canonical took over a decade of founder subsidy to become profitable and remains roughly a tenth of Red Hat's scale. Where Canonical kept components closed (Launchpad until 2009, the Snap Store backend), it generated lasting community friction and downstream defections rather than measurable revenue.",
+  "key_takeaway": "Canonical shows that fully open software can win enormous adoption (Ubuntu) while capturing comparatively little revenue; independence was possible only because a wealthy founder absorbed years of losses. It is now a profitable, growing, founder-owned firm (~$345M revenue 2025) with no market valuation, illustrating a 'patient capital' path that VC-backed open-source firms rarely get.",
+  "confidence": "medium",
+  "searches": [
+    "Canonical Ltd founded 2004 Mark Shuttleworth Ubuntu first release Isle of Man London self-funded",
+    "Canonical revenue 2024 2025 annual accounts Companies House employees profit Ubuntu",
+    "Canonical IPO plans 2026 Shuttleworth valuation Ubuntu",
+    "Canonical Ubuntu controversy Snap Store proprietary backend Amazon search lens privacy Mir Unity abandoned",
+    "Canonical Launchpad open sourced AGPL July 2009; Shuttleworth ends Unity 8 convergence Mir April 2017 layoffs"
+  ],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Canonical_(company)", "title": "Canonical (company)", "publisher": "Wikipedia", "date": null, "supports": "founded_year, origin_detail, license_history[0], risk_events (CEO 2010/2017)"},
+    {"url": "https://ubuntu.com/about", "title": "The story of Ubuntu", "publisher": "Canonical", "date": null, "supports": "origin_detail"},
+    {"url": "https://ubuntu.com/blog/canonical-releases-source-code-for-launchpad", "title": "Canonical releases source code for Launchpad", "publisher": "Canonical", "date": "2009-07-21", "supports": "relicensing_events[0], license_history[1]"},
+    {"url": "https://ebb.org/bkuhn/blog/2009/01/15/launchpad-agplv3.html", "title": "Launchpad's License Will Be AGPLv3", "publisher": "Bradley Kuhn", "date": "2009-01-15", "supports": "license_history[1]"},
+    {"url": "https://lwn.net/Articles/825005", "title": "Linux Mint drops Ubuntu Snap packages", "publisher": "LWN", "date": "2020-06", "supports": "license_history[2], risk_events"},
+    {"url": "https://hackaday.com/2020/06/24/whats-the-deal-with-snap-packages", "title": "What's the deal with Snap packages", "publisher": "Hackaday", "date": "2020-06-24", "supports": "openness_notes (proprietary store backend)"},
+    {"url": "https://www.phoronix.com/news/Ubuntu-Canonical-Did-345M-2025", "title": "Ubuntu Linux Maker Canonical Achieved $345M USD In Revenue For 2025", "publisher": "Phoronix", "date": "2026", "supports": "revenue_latest_usd, employees_latest, risk_events (profit)"},
+    {"url": "https://www.phoronix.com/news/Canonical-2024-Annual-Report", "title": "Ubuntu Maker Canonical Generated Nearly $300M In Revenue Last Year", "publisher": "Phoronix", "date": "2025", "supports": "robustness (2022-2024 revenue)"},
+    {"url": "https://www.billionaires.africa/2025/10/31/south-african-billionaire-mark-shuttleworth-rules-out-canonical-ipo/", "title": "Billionaire Mark Shuttleworth rules out Canonical IPO", "publisher": "Billionaires.Africa", "date": "2025-10-31", "supports": "risk_events (IPO deferred)"}
+  ],
+  "notes": [
+    "funding_total_usd null: no external venture funding found; the company has been funded by Mark Shuttleworth (amount undisclosed). Shuttleworth and Canonical also endowed the Ubuntu Foundation with $10M in 2005.",
+    "latest_value null: no funding round, filing or transaction. Blog estimates of $1.5-2B are unofficial and excluded.",
+    "employees_latest 1,342 is Canonical's reported global team at end 2025; average headcount in the consolidated UK accounts was 607 (many staff are remote contractors/employees of other entities).",
+    "Unity 8/Mir abandonment (2017) not verified in this pass, so not listed as a risk event.",
+    "hq_country GB, us_focus false; included as a major open-source platform peer."
+  ]
+}

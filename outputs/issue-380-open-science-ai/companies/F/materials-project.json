@@ -1,0 +1,169 @@
+{
+  "name": "The Materials Project (Lawrence Berkeley National Laboratory)",
+  "slug": "materials-project",
+  "group": "F",
+  "category": "open_infrastructure",
+  "subcategory": "computed materials-property database (DFT) and open-source tools",
+  "hq_country": "US",
+  "origin": "government",
+  "origin_detail": "Started at DOE's Lawrence Berkeley National Laboratory; Kristin Persson used Berkeley Lab LDRD seed funds in 2009 and the project launched publicly in 2011 with DOE Office of Science support. Co-founded and directed by Persson.",
+  "founded_year": 2011,
+  "flagship_projects": [
+    "Materials Project database and Materials API (mp-api)",
+    "pymatgen",
+    "MPContribs",
+    "MPtrj relaxation-trajectory data (used by CHGNet, MACE-MP-0, M3GNet)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Free registration; downloaded content offered under CC BY 4.0 (legacy terms page) and tools are open source. Since the Google DeepMind GNoME contribution, a subset of records (batch_id gnome_r2scan_statics) is access-controlled and limited to non-commercial use, so the database is no longer uniformly under one licence. Governance is a DOE-funded lab project, not a neutral foundation; scored 4 as fully open data/science infrastructure for the core.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": null,
+      "license": "CC BY 4.0 for downloaded content",
+      "note": "Year the CC BY 4.0 terms were adopted not found.",
+      "source": "https://legacy.materialsproject.org/terms"
+    },
+    {
+      "year": null,
+      "license": "GNoME r2SCAN subset: separate non-commercial terms, opt-in",
+      "note": "Applies to part of the tasks, summary and materials endpoints; date of introduction not found.",
+      "source": "https://docs.materialsproject.org/materials-project-data-lakehouse/access-controlled-data"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "government",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Single-sponsor dependence: funded by the DOE Office of Science (BES; also JCESR support); no annual budget is published.",
+    "Licence fragmentation after the GNoME contribution: a non-commercial subset now sits beside CC BY 4.0 data, and direct lakehouse access bypasses the API's licence controls."
+  ],
+  "robustness": "Data mirrored on the AWS Open Data Registry and the platform migrated to cloud (MongoDB, AWS, Datadog) with a reported 99.98% uptime. Core codes (pymatgen) are open source and widely reused. Stewardship is still concentrated in one lab and one federal sponsor.",
+  "physical_science_relevance": "The most-cited computed materials database: >200,000 inorganic materials and >577,000 molecules. Its relaxation trajectories (MPtrj) are the standard training set for universal machine-learned interatomic potentials and the Matbench Discovery benchmark. Google DeepMind used it to train initial GNoME models; Microsoft used it for MatterGen.",
+  "openness_effect_assessment": "Open, free, CC BY data turned a single-lab DFT effort into shared infrastructure: users grew from >20,000 (2016) to ~120,000 (early 2020) to >650,000 (Jan 2026), and the platform has >32,000 citations. Openness also made it default AI training data for industry labs (DeepMind, Microsoft, Toyota Research Institute), which in turn contributed data back (DeepMind ~400,000 compounds) but under more restrictive terms.",
+  "key_takeaway": "The Materials Project is the clearest physical-science case of government-funded open data becoming AI training infrastructure: a DOE lab project with no revenue model now underpins commercial materials-AI efforts at Google DeepMind and Microsoft. Its value is enormous in usage terms but invisible financially (no published budget), and its main risks are federal-funding dependence and creeping licence fragmentation when industry contributes data on its own terms.",
+  "usage_metrics": [
+    {
+      "metric": "registered users",
+      "value": 650000,
+      "date": "2026-01",
+      "source": "https://www.newswise.com/articles/accelerating-discovery-how-the-materials-project-is-helping-to-usher-in-the-ai-revolution-for-materials-science"
+    },
+    {
+      "metric": "citations",
+      "value": 32000,
+      "date": "2026-01",
+      "source": "https://www.newswise.com/articles/accelerating-discovery-how-the-materials-project-is-helping-to-usher-in-the-ai-revolution-for-materials-science"
+    },
+    {
+      "metric": "data delivered to users over prior two years (TB)",
+      "value": 465,
+      "date": "2026-01",
+      "source": "https://www.newswise.com/articles/accelerating-discovery-how-the-materials-project-is-helping-to-usher-in-the-ai-revolution-for-materials-science"
+    },
+    {
+      "metric": "registered users",
+      "value": 20000,
+      "date": "2016-06",
+      "source": "https://newscenter.lbl.gov/2016/06/08/massive-trove-battery-molecule-data-released-public/"
+    }
+  ],
+  "funding_sources": [
+    "DOE Office of Science, Basic Energy Sciences",
+    "Joint Center for Energy Storage Research (JCESR, DOE)",
+    "Berkeley Lab LDRD seed funding (2009)",
+    "NERSC computing allocations (DOE)"
+  ],
+  "notes": [
+    "No annual budget or cumulative funding total found; DOE Computational Materials Sciences awards that involve MP are multi-institution and not broken out by project.",
+    "A NIST page cites >140,000 registered users and Wikipedia gives 600,000 (2025); both predate the Jan 2026 Berkeley Lab figure of 650,000.",
+    "Employee count not published (staff are LBNL and UC Berkeley researchers)."
+  ],
+  "confidence": "high",
+  "search_tool": "WebSearch",
+  "searches": [
+    "Materials Project LBNL number of registered users",
+    "Materials Project funding DOE Basic Energy Sciences founded 2011 Kristin Persson",
+    "Materials Project data license CC BY 4.0 API terms of use",
+    "Materials Project 2025 machine learning GNoME training data MPtrj",
+    "\"Materials Project\" citations 32,000 Berkeley Lab 650,000 users AI-ready data",
+    "Materials Project annual budget million dollars DOE Office of Science award"
+  ],
+  "sources": [
+    {
+      "url": "https://newscenter.lbl.gov/2026/01/13/accelerating-discovery-how-the-materials-project-is-helping-to-usher-in-the-ai-revolution-for-materials-science/",
+      "title": "Accelerating Discovery: How the Materials Project Is Helping to Usher in the AI Revolution for Materials Science",
+      "publisher": "Berkeley Lab News Center",
+      "date": "2026-01-13",
+      "supports": "founded_year, usage_metrics, physical_science_relevance, funding_sources, robustness"
+    },
+    {
+      "url": "https://www.newswise.com/articles/accelerating-discovery-how-the-materials-project-is-helping-to-usher-in-the-ai-revolution-for-materials-science",
+      "title": "Accelerating Discovery (mirror of LBNL release, full text read)",
+      "publisher": "Newswise",
+      "date": "2026-01-13",
+      "supports": "usage_metrics (650,000 users, 32,000 citations, 465 TB), DeepMind ~400,000 compounds, Microsoft MatterGen, TRI, 99.98% uptime"
+    },
+    {
+      "url": "https://newscenter.lbl.gov/2016/06/08/massive-trove-battery-molecule-data-released-public/",
+      "title": "Materials Project Releases Massive Trove of Battery and Molecule Data",
+      "publisher": "Berkeley Lab News Center",
+      "date": "2016-06-08",
+      "supports": "usage_metrics (20,000 users in 2016)"
+    },
+    {
+      "url": "https://kavli.berkeley.edu/node/1181",
+      "title": "Q&A With Materials Project Director Kristin Persson",
+      "publisher": "Kavli ENSI, UC Berkeley",
+      "date": null,
+      "supports": "origin_detail (2009 LDRD seed)"
+    },
+    {
+      "url": "https://legacy.materialsproject.org/terms",
+      "title": "Terms of Use (legacy site)",
+      "publisher": "Materials Project",
+      "date": null,
+      "supports": "license_history[0] CC BY 4.0"
+    },
+    {
+      "url": "https://docs.materialsproject.org/materials-project-data-lakehouse/access-controlled-data",
+      "title": "Access-controlled data",
+      "publisher": "Materials Project documentation",
+      "date": null,
+      "supports": "license_history[1], openness_notes, risk_events[1]"
+    },
+    {
+      "url": "https://registry.opendata.aws/materials-project/",
+      "title": "Materials Project Data",
+      "publisher": "Registry of Open Data on AWS",
+      "date": null,
+      "supports": "robustness"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2308.14920",
+      "title": "Matbench Discovery: a framework to evaluate machine learning crystal stability predictions",
+      "publisher": "arXiv / Nature Machine Intelligence",
+      "date": "2023-08-28",
+      "supports": "physical_science_relevance (MPtrj as training set)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Materials_Project",
+      "title": "Materials Project",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "notes (600,000 users 2025 cross-check)"
+    }
+  ]
+}

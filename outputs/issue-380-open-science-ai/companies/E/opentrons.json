@@ -1,0 +1,244 @@
+{
+  "name": "Opentrons Labworks, Inc.",
+  "slug": "opentrons",
+  "group": "E",
+  "category": "hardware",
+  "subcategory": "lab automation / low-cost liquid-handling robots",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2014 in Brooklyn by Will Canine, Chiu Chau and Nicholas Wagner, who met through the DIYbio listserv / Genspace community lab; HAXLR8TR (Shenzhen) hardware accelerator, Kickstarter late 2014 ($126k from 237 backers), Y Combinator W16. HQ now Long Island City, NY.",
+  "founded_year": 2014,
+  "flagship_projects": [
+    "OT-One (2015, open hardware)",
+    "OT-2 (2018)",
+    "Opentrons Flex (2023)",
+    "Opentrons App + Python Protocol API (Apache-2.0 monorepo)",
+    "Protocol Library / Protocol Designer"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "OT-One (2015, $2,000) shipped with hardware files on GitHub (Opentrons/otone_hardware: laser-cut DXF, STL, BOM spreadsheets) under Apache-2.0; Wikipedia notes editable source CAD was not released. From the OT-2 (2018) onward hardware is proprietary (only coarse enclosure CAD), while the robot software, app, robot-server, Python Protocol API and labware definitions remain Apache-2.0 on GitHub (opentrons monorepo, ~540 stars / ~220 forks). The 2024 EULA says only 'certain components' are Apache-2.0. The 2026 Series E release markets 'open, API-driven' robots but never claims open-source hardware. Net: open software + closed hardware = level 2 on the hardware scale.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2015,
+      "license": "Apache-2.0 (OT-One hardware files: DXF/STL/BOM; plus software)",
+      "note": "Repository describes 'independent construction of the opensource OT.One lab automation platform'",
+      "source": "https://github.com/Opentrons/otone_hardware"
+    },
+    {
+      "year": 2018,
+      "license": "Proprietary hardware (OT-2); software Apache-2.0",
+      "note": "Only coarse enclosure CAD released for OT-2; Wikipedia statement carries a citation-needed tag",
+      "source": "https://en.wikipedia.org/wiki/Opentrons"
+    },
+    {
+      "year": 2023,
+      "license": "Proprietary hardware (Flex); software Apache-2.0 (opentrons monorepo)",
+      "note": "Contributions accepted under Apache-2.0 per CONTRIBUTING.md",
+      "source": "https://github.com/Opentrons/opentrons"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2018,
+      "from": "Open hardware files (OT-One, Apache-2.0) + open software",
+      "to": "Proprietary hardware (OT-2) + open software",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Not a licence change on existing files but a closing of new product designs; no community fork of the robot emerged, though OT-One models live on in hobby projects (e.g. pipettin-bot on GitLab). The OT-2 became Opentrons' volume product.",
+      "source": "https://en.wikipedia.org/wiki/Opentrons"
+    }
+  ],
+  "funding_total_usd": 206070000,
+  "funding_as_of": "2026-10",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 170220000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2026-10",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 229,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2018: OT-2 launched as closed hardware; open-hardware status lost (software stayed Apache-2.0)",
+    "Sep 2021: $200M Series C led by SoftBank Vision Fund 2 at ~$1.8B (Bloomberg), up from ~$90M in 2020, on COVID-testing growth",
+    "Dec 31 2022: Pandemic Response Lab (subsidiary ReOpen Diagnostics, NYC COVID testing) wound down, all ~185 jobs eliminated (Bloomberg)",
+    "2022-2025: headcount drifted from ~276 to ~223 (Revelio Labs); anonymous Glassdoor reviews describe repeated layoffs incl. the PRL division (unverified)",
+    "Jul 2025 (announced 30 Jan 2026): CEO changed from co-founder Jon Brennan-Badal to James Atwood (ex-PerkinElmer/MOBILion, GM of robotics unit since Apr 2023)",
+    "20 Nov 2025: Series D/D-1 (~$20M, BroadOak, SOSV) at ~$162M post-money per Forge, roughly 91% below the 2021 valuation (my arithmetic)",
+    "29 Oct 2026: $40M Series E led by Avego with BroadOak, SoftBank and Khosla, repositioned as 'AI-native' lab automation; Forge estimates ~$170M post-money"
+  ],
+  "robustness": "Single-vendor company with no foundation, but the whole control stack (app, robot server, Python API, labware schema) is Apache-2.0 on GitHub, so protocols and integrations could outlive the firm. Current hardware designs are proprietary, so the community could not build or repair OT-2/Flex robots independently. Large installed base (>11,000 robots in >80 countries, 14 of top-15 biopharmas, every top-20 US research university per the 2026 release) and survival through a ~91% valuation reset suggest a durable niche.",
+  "physical_science_relevance": "Built for life-science liquid handling, but the OT-2 is one of the most common low-cost liquid handlers in academic materials/chemistry automation: e.g. precursor preparation for high-throughput sonochemical synthesis (RSC Digital Discovery 2023), CdSe nanocrystal synthesis paired with the Jubilee platform (MRS 2024), and Turkevich gold-nanoparticle teaching protocols (LAPSE 2026). Limited to pipettable liquids (no powders/solids). The requesting lab (BYU VCL) itself runs an OT-2 in its color-mixing SDL.",
+  "openness_effect_assessment": "Openness was the founding go-to-market: a $2,000 open-hardware OT-One crowdfunded from the DIYbio/academic community built the brand ('the PC of biotech labs', TechCrunch 2016) and a user-written protocol ecosystem. Opentrons then closed the hardware with the OT-2 (2018) while keeping the software open, which preserved scriptability and SDL integration without handing designs to cloners; no fork of the robot emerged. The 2021 peak ($1.8B) and the 2022-2025 collapse (~$162M) were driven by COVID testing and its end, not by the openness choice.",
+  "key_takeaway": "Opentrons is the canonical open-hardware lab-automation test case, and its arc is 'open to enter, close the hardware to scale': the open OT-One won early users cheaply, but revenue came from a closed-hardware OT-2/Flex whose open Apache-2.0 API is the remaining open asset and the reason it dominates academic self-driving-lab builds. Its valuation fell about 91% from the 2021 SoftBank round to the 2025 Series D, a COVID boom-and-bust rather than a verdict on openness. In 2026 it repositioned as 'open, AI-native' infrastructure connecting AI to the wet lab, marketing 'open' as API access rather than open designs.",
+  "confidence": "medium",
+  "notes": [
+    "funding_total_usd = Forge Global sum of preferred-stock issuances from Certificates of Incorporation (through the Oct 2026 Series E). CB Insights lists $260.2M total equity funding; announced round sizes (e.g. $200M Series C) exceed Forge's share-issuance totals (~$117M for Series C), possibly because part of the round was secondary. Treat as a range of roughly $206M-$300M.",
+    "latest_value_usd is Forge's estimated Series E post-money from charter filings, not a company-disclosed valuation; the company did not disclose a valuation.",
+    "Series D amount differs by source ($15.6M+$4.5M per Forge; $20.1M per Multiples.vc/Form D, from a $56.6M offering).",
+    "employees_latest is a Revelio Labs estimate (June 2026); Wikipedia lists 328 (2023); other trackers give 194-214 for 2026.",
+    "Revenue is not disclosed."
+  ],
+  "search_tool": "WebSearch (+ WebFetch of cited pages)",
+  "searches": [
+    "Opentrons $200 million Series C 2021 valuation SoftBank",
+    "Opentrons layoffs 2025 2026",
+    "Opentrons open source hardware license GitHub OT-2 Apache",
+    "Opentrons Labworks founded 2014 Will Canine Kickstarter",
+    "Opentrons CEO acquisition news 2026",
+    "Opentrons Series D funding round",
+    "Opentrons James Atwood CEO appointed Brennan-Badal",
+    "Opentrons down round valuation 2025 Series D BroadOak",
+    "Opentrons Pandemic Response Lab shut down layoffs 2023",
+    "OT-One open hardware design files Opentrons CC BY-SA OSHWA",
+    "Opentrons OT-2 self-driving laboratory materials chemistry nanoparticle synthesis"
+  ],
+  "sources": [
+    {
+      "url": "https://opentrons.com/archives/news/press-release-opentrons-announces-200-million-series-c-round-led-by-softbank",
+      "title": "Opentrons Announces $200 Million Series C Round Led by SoftBank Vision Fund 2",
+      "publisher": "Opentrons (press release)",
+      "date": "2021-09-23",
+      "supports": "risk_events[1]"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2021-09-23/softbank-invests-in-robotics-company-behind-nyc-covid-testing",
+      "title": "SoftBank Invests in Robotics Company Behind NYC Covid Testing",
+      "publisher": "Bloomberg",
+      "date": "2021-09-23",
+      "supports": "risk_events[1] ($1.8B valuation, ~$90M prior)"
+    },
+    {
+      "url": "https://sosv.com/sosv-hax-alum-opentrons-raises-200-million-reaching-1-8-billion-valuation/",
+      "title": "SOSV HAX alum Opentrons raises $200 million, reaching $1.8 billion valuation",
+      "publisher": "SOSV",
+      "date": "2021-09",
+      "supports": "risk_events[1] (second source for $1.8B)"
+    },
+    {
+      "url": "https://forgeglobal.com/opentrons_stock/",
+      "title": "Buy and Sell Opentrons Stock, $170.22M Valuation",
+      "publisher": "Forge Global",
+      "date": "2026-10-31",
+      "supports": "funding_total_usd, latest_value_usd, risk_events[5], risk_events[6]"
+    },
+    {
+      "url": "https://opentrons.com/archives/news/opentrons-announces-40m-series-e-round-to-standardize-ai-driven-science-on-its-robots",
+      "title": "Opentrons Announces $40M Series E Round to Standardize AI-Driven Science on Its Robots",
+      "publisher": "Opentrons (press release)",
+      "date": "2026-10-29",
+      "supports": "risk_events[6], robustness (11,000 robots, 80 countries)"
+    },
+    {
+      "url": "https://www.vsnewsnetwork.com/newsroom/opentrons-promotes-james-atwood-to-chief-executive-officer",
+      "title": "Opentrons Promotes James Atwood to Chief Executive Officer",
+      "publisher": "VS News Network (press release)",
+      "date": "2026-01-30",
+      "supports": "risk_events[4]"
+    },
+    {
+      "url": "https://multiples.vc/private-comps/opentrons",
+      "title": "Opentrons Valuation, Funding & Investors",
+      "publisher": "Multiples.vc",
+      "date": "2026",
+      "supports": "notes (Series D $20.1M of $56.6M offering)"
+    },
+    {
+      "url": "https://www.cbinsights.com/company/opentrons/financials",
+      "title": "Opentrons financials",
+      "publisher": "CB Insights",
+      "date": "2026",
+      "supports": "notes ($260.2M total equity funding)"
+    },
+    {
+      "url": "https://www.bnnbloomberg.ca/nyc-s-pandemic-response-lab-to-close-as-covid-testing-plummets-1.1855210",
+      "title": "NYC's Pandemic Response Lab to close as Covid testing plummets",
+      "publisher": "Bloomberg (via BNN)",
+      "date": "2022-12",
+      "supports": "risk_events[2]"
+    },
+    {
+      "url": "https://www.reveliolabs.com/companies/opentrons-labworks/employees",
+      "title": "Opentrons Labworks Number of Employees 2026",
+      "publisher": "Revelio Labs",
+      "date": "2026-08",
+      "supports": "employees_latest, risk_events[3]"
+    },
+    {
+      "url": "https://www.glassdoor.com/Reviews/Opentrons-Reviews-E1641047.htm",
+      "title": "Opentrons Reviews",
+      "publisher": "Glassdoor",
+      "date": "2026",
+      "supports": "risk_events[3] (anonymous, unverified)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Opentrons",
+      "title": "Opentrons",
+      "publisher": "Wikipedia",
+      "date": "2026",
+      "supports": "founded_year, origin_detail, openness_notes, license_history[1]"
+    },
+    {
+      "url": "https://technical.ly/uncategorized/opentrons-will-canine-funding-round",
+      "title": "Opentrons Will Canine funding round",
+      "publisher": "Technical.ly",
+      "date": "2016",
+      "supports": "origin_detail (Kickstarter $126k, 237 backers)"
+    },
+    {
+      "url": "https://techcrunch.com/2016/02/01/opentrons-aims-to-be-the-pc-of-biotech-labs",
+      "title": "Opentrons aims to be the PC of biotech labs",
+      "publisher": "TechCrunch",
+      "date": "2016-02-01",
+      "supports": "openness_effect_assessment"
+    },
+    {
+      "url": "https://github.com/Opentrons/otone_hardware",
+      "title": "Opentrons/otone_hardware",
+      "publisher": "GitHub",
+      "date": "2015",
+      "supports": "openness_initial, license_history[0]"
+    },
+    {
+      "url": "https://github.com/Opentrons/opentrons",
+      "title": "Opentrons/opentrons monorepo",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "openness_current, license_history[2], robustness"
+    },
+    {
+      "url": "https://opentrons.com/wp-content/uploads/2024/07/Opentrons-EULA-20240710.pdf",
+      "title": "Opentrons EULA 20240710",
+      "publisher": "Opentrons",
+      "date": "2024-07-10",
+      "supports": "openness_notes"
+    },
+    {
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2023/dd/d3dd00033h",
+      "title": "Digital Discovery article using OT-2 for high-throughput sonochemical synthesis",
+      "publisher": "RSC Digital Discovery",
+      "date": "2023",
+      "supports": "physical_science_relevance"
+    },
+    {
+      "url": "https://mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-mrs-spring-meeting/2024-mrs-spring-meeting-4009431",
+      "title": "MRS Spring 2024 presentation: OT-2 + Jubilee CdSe nanocrystal synthesis",
+      "publisher": "Materials Research Society",
+      "date": "2024-04",
+      "supports": "physical_science_relevance"
+    },
+    {
+      "url": "https://www.cei.washington.edu/recruiting-robots-for-materials-discovery/",
+      "title": "Recruiting robots for materials discovery",
+      "publisher": "UW Clean Energy Institute",
+      "date": "2024",
+      "supports": "physical_science_relevance (OT-2 ~ $13k, liquids only)"
+    }
+  ]
+}

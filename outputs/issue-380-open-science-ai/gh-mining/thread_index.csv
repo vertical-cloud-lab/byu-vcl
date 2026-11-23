@@ -1,0 +1,817 @@
+repo,kind,number,title,items,core,kw,first,url
+ac-dev-lab,disc,2,Welcome to ac-training-lab Discussions!,3,0,1,2024-02-09T16:11:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/2
+ac-dev-lab,disc,3,Potential workflows for the AC Training Lab,1,0,0,2024-02-09T16:17:05Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/3
+ac-dev-lab,disc,101,Running training lab demos - general strategies,1,0,1,2024-11-01T17:35:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/101
+ac-dev-lab,disc,183,git / GitHub development with Raspberry Pi's and other devices,13,0,7,2025-03-11T15:45:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/183
+ac-dev-lab,disc,232,Gavel and Gather Town instructions and setup,1,0,0,2025-04-30T03:07:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/232
+ac-dev-lab,disc,256,Vision based sensor readouts,1,0,0,2025-05-22T15:42:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/256
+ac-dev-lab,disc,497,Lab layout design,3,0,0,2025-11-09T03:06:04Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/497
+ac-dev-lab,disc,555,AI4Instruments: a proposal for AI participation in instrument design and experimental use,2,1,1,2026-10-16T03:29:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/discussions/555
+ac-dev-lab,iss,1,Stepper motor troubleshooting for automated turntable,2,0,1,2024-02-09T14:51:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/1
+ac-dev-lab,iss,4,Consider using (or converting to) namespaces as packages evolve,1,0,0,2024-02-13T15:43:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/4
+ac-dev-lab,iss,5,Add documentation for setting up new IoLT devices including documentation and demo,1,0,0,2024-08-22T03:27:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/5
+ac-dev-lab,iss,6,Add documentation for setting up new IoLT devices,1,0,0,2024-08-22T03:32:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/6
+ac-dev-lab,iss,7,Switch to Sphinx book theme,1,0,0,2024-08-22T03:33:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/7
+ac-dev-lab,iss,8,Consider using Gather Town for virtual showcase of training lab,2,0,0,2024-08-23T01:07:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/8
+ac-dev-lab,iss,9,Add YouTube playlist(s) embeds to index page,1,0,0,2024-08-23T03:38:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/9
+ac-dev-lab,iss,10,Consider using GitHub issues and projects,1,0,0,2024-08-23T03:40:27Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/10
+ac-dev-lab,iss,11,Equipment monitoring using Pi Zero 2 W cameras,73,7,10,2024-08-29T21:15:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/11
+ac-dev-lab,iss,12,OpenMV camera,1,0,0,2024-08-29T21:24:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/12
+ac-dev-lab,iss,13,Environment monitoring - temperature / humidity / pressure / gas sensor,17,0,1,2024-08-29T21:29:49Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/13
+ac-dev-lab,iss,14,Magnetometer demo,1,0,0,2024-08-29T21:32:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/14
+ac-dev-lab,iss,15,Design and print automated turntable vial rack,130,3,12,2024-08-30T16:01:52Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/15
+ac-dev-lab,iss,16,Bi-weekly meetings within Gather Town training lab,1,0,0,2024-08-30T16:35:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/16
+ac-dev-lab,iss,17,Automated turntable housing and electronics,11,8,14,2024-08-30T16:43:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/17
+ac-dev-lab,iss,18,Documentation / links / instructions for MyCobot 280 demos by Yang Cao,14,1,1,2024-08-30T17:42:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/18
+ac-dev-lab,iss,19,Digital Pipette 3D FIles,1,0,0,2024-09-03T21:10:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/19
+ac-dev-lab,iss,20,RS232 control of digital scale,58,0,4,2024-09-03T21:20:53Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/20
+ac-dev-lab,iss,21,Solder Pico W's onto picowbell,2,0,0,2024-09-05T20:16:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/21
+ac-dev-lab,iss,22,How many connections can the Nokia gateway sustain?,2,0,1,2024-09-05T20:49:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/22
+ac-dev-lab,iss,23,Microparticles need to be cast on a slide,1,0,0,2024-09-09T16:11:08Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/23
+ac-dev-lab,iss,24,Fan control needs new credentials,1,0,0,2024-09-09T16:36:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/24
+ac-dev-lab,iss,25,Check if we can do Mac address filtering on the Nokia Wifi,4,0,5,2024-09-09T16:38:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/25
+ac-dev-lab,iss,26,"OT2 arrived, requires setup to point of remote access color matching",27,1,19,2024-09-09T17:58:57Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/26
+ac-dev-lab,iss,27,Calibrate distances on microscopes with calibration slides,1,0,0,2024-09-09T19:00:57Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/27
+ac-dev-lab,iss,28,Choose and setup a few biology slides,1,0,0,2024-09-09T19:06:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/28
+ac-dev-lab,iss,29,"doc and script updates, mv to _scripts",1,0,0,2024-09-09T21:23:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/29
+ac-dev-lab,iss,30,Update setup_iolt_devices.md with details,1,0,0,2024-09-09T22:02:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/30
+ac-dev-lab,iss,31,QR codes need to be printed for each demo,2,0,0,2024-09-11T22:26:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/31
+ac-dev-lab,iss,32,"""AC Training Lab"" labels need to be affixed to various equipment (esp. keyboard/mice/etc.)",1,0,0,2024-09-12T16:08:31Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/32
+ac-dev-lab,iss,33,"AC-labeled bags or boxes for light-mixing demos, preferably with QR code to microcourses website",2,1,2,2024-09-12T18:24:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/33
+ac-dev-lab,iss,34,Implement powder dispenser Bluetooth control via Pico W,26,0,3,2024-09-12T18:40:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/34
+ac-dev-lab,iss,35,Implement status topics on the devices,7,0,0,2024-09-13T14:23:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/35
+ac-dev-lab,iss,36,"Add MWE for MyCobot 280 python control to `src` directory, connect to MQTT, and set up streamlit",11,0,0,2024-09-14T00:55:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/36
+ac-dev-lab,iss,37,"Add device code for openflexure microscope (MQTT, etc.)",1,0,0,2024-09-16T15:18:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/37
+ac-dev-lab,iss,38,Update setup_iolt_devices.md with better structure and examples,1,0,0,2024-09-16T15:50:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/38
+ac-dev-lab,iss,39,Update setup_iolt_devices.md with iolt definition,1,0,0,2024-09-16T16:09:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/39
+ac-dev-lab,iss,40,Fan control web app not communicating,4,0,0,2024-09-16T16:20:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/40
+ac-dev-lab,iss,41,robust ntptime,1,0,0,2024-09-16T16:56:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/41
+ac-dev-lab,iss,42,Update setup_iolt_devices.md with iolt definition,1,0,0,2024-09-16T16:58:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/42
+ac-dev-lab,iss,43,precommit,1,0,0,2024-09-16T16:59:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/43
+ac-dev-lab,iss,44,Update setup_iolt_devices.md with link to gather town,1,0,0,2024-09-16T20:28:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/44
+ac-dev-lab,iss,45,Update setup_iolt_devices.md remove link to space,1,0,0,2024-09-16T20:35:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/45
+ac-dev-lab,iss,46,Update setup_iolt_devices.md with https:// in invite link,1,0,0,2024-09-17T18:39:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/46
+ac-dev-lab,iss,47,2nd NOKIA needs to be set up and brought to formlabs,2,0,0,2024-09-17T21:42:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/47
+ac-dev-lab,iss,48,3D printed holder for liquid-mixing demo,1,0,0,2024-09-18T10:15:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/48
+ac-dev-lab,iss,49,Formlabs resin pumping system for form auto,1,0,0,2024-09-19T20:26:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/49
+ac-dev-lab,iss,50,Chi.Bio peristaltic pumps and reactor,4,0,0,2024-09-20T12:05:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/50
+ac-dev-lab,iss,51,Pioreactor MQTT and streamlit,19,2,2,2024-09-20T12:12:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/51
+ac-dev-lab,iss,52,added server and client files for cobot mqtt control,26,1,1,2024-09-20T22:43:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/52
+ac-dev-lab,iss,54,Update setup_iolt_devices.md with new office space,1,0,0,2024-09-23T20:40:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/54
+ac-dev-lab,iss,55,Openflexure,1,0,0,2024-09-24T21:30:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/55
+ac-dev-lab,iss,56,Sorting out issues with MyCobot reliability,19,1,6,2024-09-25T16:14:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/56
+ac-dev-lab,iss,57,gather town png and additional examples/clarification,1,0,0,2024-09-25T16:52:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/57
+ac-dev-lab,iss,58,Openflexure microscope livestream cuts out periodically,5,0,0,2024-09-25T18:43:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/58
+ac-dev-lab,iss,59,Update setup_iolt_devices.md with hfs/vscode video,1,0,0,2024-09-25T18:56:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/59
+ac-dev-lab,iss,60,Wireless charging for microcontroller,39,2,68,2024-09-27T13:15:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/60
+ac-dev-lab,iss,61,Update setup_iolt_devices.md with github issues instructions,1,0,0,2024-09-27T16:52:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/61
+ac-dev-lab,iss,63,Tester code for temperature/humidity/pressure sensor (currently working),13,0,0,2024-09-30T16:12:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/63
+ac-dev-lab,iss,64,Tool design for locating the color sensor package to the charging port on OT-2 deck,47,0,15,2024-10-01T18:32:09Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/64
+ac-dev-lab,iss,65,Clarification on hf vs. gh repo content,1,0,0,2024-10-02T02:53:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/65
+ac-dev-lab,iss,66,Update setup_iolt_devices.md remove wip,1,0,0,2024-10-02T03:16:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/66
+ac-dev-lab,iss,67,Update setup_iolt_devices.md pr instructions,1,0,0,2024-10-02T03:22:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/67
+ac-dev-lab,iss,68,Update setup_iolt_devices.md with PR example,1,0,0,2024-10-02T03:26:46Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/68
+ac-dev-lab,iss,69,Upload of on reactor python file,19,2,3,2024-10-03T04:22:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/69
+ac-dev-lab,iss,70,Set up QL810WC label printer automation with AprilTags,27,0,0,2024-10-04T12:47:04Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/70
+ac-dev-lab,iss,71,"Implement ""click on image to move"" within microscope demo app",1,0,0,2024-10-04T13:50:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/71
+ac-dev-lab,iss,72,Launch code upon startup / boot for RPi SBCs,16,16,22,2024-10-04T16:34:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/72
+ac-dev-lab,iss,73,"""Use custom broker"" checkbox and form within hf streamlit apps",9,0,0,2024-10-04T16:57:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/73
+ac-dev-lab,iss,74,Set up second MyCobot 280,12,0,1,2024-10-09T19:13:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/74
+ac-dev-lab,iss,75,Format and install BambuLab SD card,1,0,2,2024-10-10T15:51:53Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/75
+ac-dev-lab,iss,76,Safety Concerns: Granting Access to PioReactor Feature on Hugging Face Space,6,0,7,2024-10-10T23:39:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/76
+ac-dev-lab,iss,77,"API access for demo equipment (e.g., cobot, microscope) - moving from streamlit to gradio",17,0,0,2024-10-12T12:36:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/77
+ac-dev-lab,iss,78,Light-mixing demo is offline,2,0,0,2024-10-15T19:57:28Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/78
+ac-dev-lab,iss,79,Prefect flow based on GitHub file for OT2,6,0,1,2024-10-16T04:05:46Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/79
+ac-dev-lab,iss,80,Equipment monitoring for Opentrons OT-2 (camera stream to YouTube),17,0,19,2024-10-16T04:06:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/80
+ac-dev-lab,iss,81,OpenFlexure Microscope communication reliability (unresponsive on Hugging Face),18,0,0,2024-10-17T14:45:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/81
+ac-dev-lab,iss,82,Test out KP401 programmatic control,10,0,1,2024-10-17T20:52:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/82
+ac-dev-lab,iss,83,Issue with HDMI monitors and Raspberry Pi,4,0,0,2024-10-18T16:07:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/83
+ac-dev-lab,iss,84,Chemical compatibility test: Formlab resins vs. KOHaq,21,2,2,2024-10-21T18:17:11Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/84
+ac-dev-lab,iss,87,Test out AS7341 sensor in liquid color matching ,10,0,3,2024-10-23T15:36:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/87
+ac-dev-lab,iss,89,Update setup_iolt_devices.md with pixelit instructions,1,0,0,2024-10-24T17:49:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/89
+ac-dev-lab,iss,90,Update setup_iolt_devices.md,1,0,0,2024-10-24T17:51:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/90
+ac-dev-lab,iss,91,Create Oct28 demo loop.py,3,0,0,2024-10-24T18:55:57Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/91
+ac-dev-lab,iss,92,Sprites for gather town in prep for ac symposium demo,1,0,0,2024-10-24T20:08:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/92
+ac-dev-lab,iss,93,sprite docs,1,0,0,2024-10-24T20:16:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/93
+ac-dev-lab,iss,94,Update setup_iolt_devices.md fix image,1,0,0,2024-10-24T20:19:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/94
+ac-dev-lab,iss,95,docs and src scripts openflexure rs232,1,0,0,2024-10-24T20:21:11Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/95
+ac-dev-lab,iss,96,Form 3L + Resin Pumping System issues,6,0,1,2024-10-25T22:31:39Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/96
+ac-dev-lab,iss,97,PioReactor Dosing cycle media does not work,2,0,0,2024-10-27T17:54:09Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/97
+ac-dev-lab,iss,98,ML for electrolysis life cycle testing,15,1,6,2024-10-30T19:52:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/98
+ac-dev-lab,iss,99,Front left corner of Bambu lab printer leading to print failures ,6,0,12,2024-10-30T20:02:54Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/99
+ac-dev-lab,iss,100,Convert root PEM cert to DER format,1,0,0,2024-10-30T21:28:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/100
+ac-dev-lab,iss,102,Update setup_iolt_devices.md - clarify device code location,1,0,0,2024-11-07T15:24:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/102
+ac-dev-lab,iss,103,Adding images of OT-2 color matching demo,4,0,0,2024-11-07T15:41:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/103
+ac-dev-lab,iss,105,Update setup_iolt_devices.md with custom objects instructions,1,0,0,2024-11-07T19:35:57Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/105
+ac-dev-lab,iss,106,Update index.md with ready for electrolysis,1,0,0,2024-11-08T15:30:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/106
+ac-dev-lab,iss,107,Form Auto seeming to not record auto-release videos anymore,5,0,0,2024-11-08T16:26:57Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/107
+ac-dev-lab,iss,108,Adding images of OT-2 color matching demo,1,0,0,2024-11-08T17:39:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/108
+ac-dev-lab,iss,109,Setting up Prefect on the OT-2,35,0,23,2024-11-08T17:51:08Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/109
+ac-dev-lab,iss,110,upload files used for gather town,1,0,0,2024-11-09T15:49:11Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/110
+ac-dev-lab,iss,111,fixed errors with refactor,4,0,0,2024-11-09T18:24:34Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/111
+ac-dev-lab,iss,112,Create main.py,1,0,0,2024-11-11T04:17:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/112
+ac-dev-lab,iss,113,Autotrickler v4 - custom RS232 control with A&D scale,14,0,0,2024-11-12T14:07:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/113
+ac-dev-lab,iss,114,Add OT-2 color matching demo code,2,0,0,2024-11-12T16:53:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/114
+ac-dev-lab,iss,115,Acetonitrile chemical compatibility with Formlabs resin,2,0,0,2024-11-13T16:52:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/115
+ac-dev-lab,iss,116,Add scale images for documentation,1,0,0,2024-11-13T19:55:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/116
+ac-dev-lab,iss,117,Set up second pioreactor,13,1,2,2024-11-14T00:29:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/117
+ac-dev-lab,iss,118,Adafruit PiCowbell Camera Breakout (for Pico W),3,1,7,2024-11-16T03:21:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/118
+ac-dev-lab,iss,119,Documentation of the wireless color sensor,4,0,1,2024-11-18T17:18:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/119
+ac-dev-lab,iss,120,Cobot gradio usage notebook and device page,8,0,0,2024-11-21T06:40:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/120
+ac-dev-lab,iss,121,API info for workflow colab notebooks,3,0,0,2024-11-21T20:50:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/121
+ac-dev-lab,iss,122,Update setup_iolt_devices.md with prompt message instructions,1,0,0,2024-11-21T21:21:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/122
+ac-dev-lab,iss,123,Automated vial capper/decapper RS485 Python API implementation,24,2,5,2024-11-23T17:21:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/123
+ac-dev-lab,iss,125,trying to figure out a nice mwe for the light-mixer,1,0,0,2024-12-06T19:52:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/125
+ac-dev-lab,iss,126,Working Temperature sensor with .gitignore issues fixed. ,1,0,0,2024-12-08T15:54:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/126
+ac-dev-lab,iss,127,"Issues addressed, working temperature sensor code",15,1,4,2024-12-08T16:00:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/127
+ac-dev-lab,iss,128,Consider voice-controlled robotic arms (mycobot),1,0,0,2024-12-12T23:28:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/128
+ac-dev-lab,iss,129,Update index.md with note instead of warning,1,0,0,2024-12-20T02:21:50Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/129
+ac-dev-lab,iss,130,"Implement long-term/permanent ""always connected"" setups",10,0,0,2025-01-06T10:23:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/130
+ac-dev-lab,iss,132,SEM custom open/close with linear actuator,80,2,7,2025-01-07T03:31:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/132
+ac-dev-lab,iss,133,"SEM API demo, jupyter notebook, and MQTT integration",5,0,2,2025-01-07T03:34:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/133
+ac-dev-lab,iss,134,SEM automated sample/stub exchange with arm,2,0,0,2025-01-07T03:36:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/134
+ac-dev-lab,iss,135,Mettler Toledo powder doser setup and Python API,1,0,0,2025-01-07T03:41:37Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/135
+ac-dev-lab,iss,136,"Rodeostat setup, Python API, and programmatic access",1,0,0,2025-01-07T03:44:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/136
+ac-dev-lab,iss,137,SquidStat Solo Python API testing and remote access,2,0,1,2025-01-07T14:00:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/137
+ac-dev-lab,iss,138,Digital Pipette / Science Jubilee integration,1,0,0,2025-01-07T14:07:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/138
+ac-dev-lab,iss,139,"Microfluidics pressure regulator, testing and using a WiFi enabled device",3,1,1,2025-01-07T14:11:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/139
+ac-dev-lab,iss,140,"Build a low-cost, open-source tensile or compression tester",13,14,29,2025-01-07T14:13:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/140
+ac-dev-lab,iss,141,Autonomous battery slurry optimization system,31,0,15,2025-01-08T04:03:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/141
+ac-dev-lab,iss,142,Test out optical microscopy on some dropcast battery slurry samples,17,2,9,2025-01-08T19:10:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/142
+ac-dev-lab,iss,143,Create press-fit insert or similar with fake tip for picking up wellplates with OT-2 pipette,7,0,3,2025-01-08T19:58:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/143
+ac-dev-lab,iss,144,Set up high quality image capture for bambu lab prints with camera toolhead,9,0,12,2025-01-10T19:00:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/144
+ac-dev-lab,iss,145,Integrate takasago pinch valve with pioreactor,19,0,1,2025-01-10T21:48:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/145
+ac-dev-lab,iss,146,Adjust the digital pipette design to accommodate the syringes we have,1,0,0,2025-01-11T00:16:57Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/146
+ac-dev-lab,iss,147,Set up remote Python control on A1 mini,48,0,107,2025-01-11T16:55:34Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/147
+ac-dev-lab,iss,148,Position feedback from linear actuator ,12,0,4,2025-01-14T02:08:39Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/148
+ac-dev-lab,iss,149,Set up A1 mini,6,0,3,2025-01-14T02:46:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/149
+ac-dev-lab,iss,150,Set up Opentrons Flex and test pressure sensor,17,1,58,2025-01-15T20:51:46Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/150
+ac-dev-lab,iss,151,Maximizing compressive strength of a 3D printed resin lattice,31,0,0,2025-01-16T15:29:04Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/151
+ac-dev-lab,iss,152,OT-2 liquid color matching for MSE403H1 practical,44,0,6,2025-01-16T22:07:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/152
+ac-dev-lab,iss,153,cobot api change,1,0,0,2025-01-16T22:36:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/153
+ac-dev-lab,iss,154,Relay support for pioreactor (Pinch Valve),1,0,0,2025-01-17T02:42:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/154
+ac-dev-lab,iss,155,Deleting Starter tier HiveMQ cluster,1,0,0,2025-01-17T22:25:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/155
+ac-dev-lab,iss,156,Design experimental workflow settings and find optimal parameter ranges with A1 mini and grid of squares/logos etc.,43,0,15,2025-01-20T16:16:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/156
+ac-dev-lab,iss,157,Dehumidifier for powder dispensing,8,0,0,2025-01-20T18:52:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/157
+ac-dev-lab,iss,158,Custom toolhead camera for Bambu Lab A1 Mini,62,2,83,2025-01-20T22:21:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/158
+ac-dev-lab,iss,159,Image transfer for A1-mini tool head camera,23,0,1,2025-01-21T17:19:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/159
+ac-dev-lab,iss,160,Integration of Bambu 3D Printer with colab & hugging face,34,0,49,2025-01-21T18:18:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/160
+ac-dev-lab,iss,161,"Equipment monitoring camera for A1 mini livestream (standalone, separate from toolhead camera)",115,2,23,2025-01-21T19:26:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/161
+ac-dev-lab,iss,162,Rename notebooks/Pioreactor_Example_Workflow.ipynb to src/ac_training…,2,0,0,2025-01-22T16:26:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/162
+ac-dev-lab,iss,163,Create class_demo.ipynb,1,0,0,2025-01-22T17:10:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/163
+ac-dev-lab,iss,164,Implement optimization algortihm operating with changing measured boundary conditions (-> recycling),3,0,8,2025-01-22T20:08:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/164
+ac-dev-lab,iss,165,add a1 mini drawing from drawio and random contributing doc text,1,0,0,2025-01-23T18:24:50Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/165
+ac-dev-lab,iss,166,venv* ignore,1,0,0,2025-01-23T18:59:05Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/166
+ac-dev-lab,iss,167,drawio fig,1,0,0,2025-01-23T19:01:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/167
+ac-dev-lab,iss,168,A1 Mini 3D printer - Self-driving Lab for MSE403H1 practical,18,0,12,2025-01-23T20:38:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/168
+ac-dev-lab,iss,169,Add files via upload,1,0,0,2025-01-24T02:01:27Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/169
+ac-dev-lab,iss,170,add file for OT-2 MQTT,28,0,2,2025-01-24T02:20:39Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/170
+ac-dev-lab,iss,171,Camera-to-client for A1 cam,3,0,0,2025-01-24T17:20:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/171
+ac-dev-lab,iss,172,Inventory Database Table,7,0,4,2025-01-24T21:03:52Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/172
+ac-dev-lab,iss,173,Improve Open Flexure Microscope imaging,3,0,2,2025-01-27T00:20:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/173
+ac-dev-lab,iss,174,Automating Pioreactor workflow to create a continous experiment,12,1,10,2025-01-27T05:04:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/174
+ac-dev-lab,iss,175,Bambu X1E 0.4 nozzle clogging,2,0,3,2025-01-29T21:09:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/175
+ac-dev-lab,iss,176,Potential of using AS7341 to measure NIR absorption for MSE403H1 Multi Objective practical,4,0,0,2025-02-19T21:53:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/176
+ac-dev-lab,iss,177,A1 mini monitor,1,0,0,2025-02-20T23:11:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/177
+ac-dev-lab,iss,178,A1 cam updates,19,0,0,2025-02-28T23:54:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/178
+ac-dev-lab,iss,179,A1 mini database integration,2,0,0,2025-03-04T00:15:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/179
+ac-dev-lab,iss,180,Add files via upload,4,0,2,2025-03-04T18:01:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/180
+ac-dev-lab,iss,181,SDL0 bimanual robot project,3,0,0,2025-03-07T20:02:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/181
+ac-dev-lab,iss,182,Add files via upload,1,0,1,2025-03-10T16:54:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/182
+ac-dev-lab,iss,184,Install Tailscale on A1 Mini devices,8,0,1,2025-03-11T16:42:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/184
+ac-dev-lab,iss,185,Drawio,1,0,0,2025-03-13T01:29:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/185
+ac-dev-lab,iss,186,gcode update,1,0,0,2025-03-13T15:34:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/186
+ac-dev-lab,iss,187,GCode updates,2,0,0,2025-03-14T13:53:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/187
+ac-dev-lab,iss,188,Ventilation/ air purifier for A1 mini,1,0,0,2025-03-15T19:13:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/188
+ac-dev-lab,iss,189,pre-commit and pre-commit fixes/mods,1,0,0,2025-03-18T23:30:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/189
+ac-dev-lab,iss,190,A1 cam updates,1,0,0,2025-03-19T01:02:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/190
+ac-dev-lab,iss,191,A1 cam updates readme instructions,1,0,0,2025-03-19T01:36:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/191
+ac-dev-lab,iss,192,A1-cam readme edits and device.py logging,1,0,0,2025-03-19T02:47:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/192
+ac-dev-lab,iss,193,A1-cam minor readme updates,1,0,0,2025-03-19T03:00:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/193
+ac-dev-lab,iss,194,Update README.md for clarity on system requirements and installation steps,1,0,0,2025-03-19T14:06:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/194
+ac-dev-lab,iss,195,Stream refactor,1,0,0,2025-03-19T14:56:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/195
+ac-dev-lab,iss,196,"Stream dummy package, readme, remove preview line",1,0,0,2025-03-19T17:27:34Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/196
+ac-dev-lab,iss,197,Update README.md to clarify script verification process and adjust re…,1,0,0,2025-03-19T23:01:59Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/197
+ac-dev-lab,iss,198,Stream device.py debugging,1,0,0,2025-03-19T23:17:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/198
+ac-dev-lab,iss,199,overhaul of device.py for streaming,1,0,0,2025-03-20T02:36:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/199
+ac-dev-lab,iss,200,Update README.md with correct title,1,0,0,2025-03-20T02:38:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/200
+ac-dev-lab,iss,201,Delete src/ac_training_lab/picam/start_stream.sh,1,0,0,2025-03-20T02:39:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/201
+ac-dev-lab,iss,202,YouTube Live Streaming API - minimal working example,29,0,4,2025-03-20T12:20:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/202
+ac-dev-lab,iss,203,add more temperature modify command in  modify_gcode_template,1,0,0,2025-03-20T16:12:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/203
+ac-dev-lab,iss,204,Add FFmpeg to dependencies,2,0,0,2025-03-21T18:49:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/204
+ac-dev-lab,iss,205,Rename src/ac_training_lab/bambu_a1_mini/receive.py to src/ac_trainin…,1,0,2,2025-03-21T19:52:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/205
+ac-dev-lab,iss,206,Rename src/ac_training_lab/bambu_a1_mini/test.py to src/ac_training_l…,1,0,2,2025-03-21T19:53:27Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/206
+ac-dev-lab,iss,207,Update README.md ffmpeg,1,0,0,2025-03-21T20:00:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/207
+ac-dev-lab,iss,208,Update README.md (minor edit),1,0,0,2025-03-21T20:00:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/208
+ac-dev-lab,iss,209,Squidstat,1,0,0,2025-03-27T00:07:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/209
+ac-dev-lab,iss,210,readme update (restart behavior for a1-cam and picam),1,0,0,2025-03-27T00:12:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/210
+ac-dev-lab,iss,211,lisiparoi files,1,0,0,2025-03-27T12:58:37Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/211
+ac-dev-lab,iss,212,Download self-owned YouTube videos,3,0,0,2025-03-27T16:47:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/212
+ac-dev-lab,iss,213,Adding clock/timestamp overlay to camera feed,17,1,2,2025-03-27T16:53:54Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/213
+ac-dev-lab,iss,214,Expand Opentrons OT-2 Working Volume,2,0,6,2025-03-31T12:58:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/214
+ac-dev-lab,iss,215,Update README.md,1,0,0,2025-04-01T14:42:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/215
+ac-dev-lab,iss,216,vertical lift module - vibration testing,16,1,6,2025-04-02T15:25:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/216
+ac-dev-lab,iss,217,Update device.py picam with while True and try except,2,0,0,2025-04-03T14:27:34Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/217
+ac-dev-lab,iss,218,Update README.md add sudo crontab,1,0,0,2025-04-04T21:49:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/218
+ac-dev-lab,iss,219,Update README.md add sudo crontab,1,0,0,2025-04-04T21:49:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/219
+ac-dev-lab,iss,220,Overhaul of device documentation for surfacing on website,1,0,0,2025-04-05T02:57:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/220
+ac-dev-lab,iss,221,device doc readme's,1,0,0,2025-04-05T03:40:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/221
+ac-dev-lab,iss,222,Add related issue link to README for Pico W AutoTrickler Scale,1,0,0,2025-04-05T03:48:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/222
+ac-dev-lab,iss,223,Post-processing videos (still frame removal and speedup),40,0,2,2025-04-08T22:30:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/223
+ac-dev-lab,iss,224,Create reproducer for Prefect not working with Hugging Face Spaces + Gradio,5,0,3,2025-04-09T18:20:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/224
+ac-dev-lab,iss,225,Add WiFi configuration guide and related images for Pioreactor,1,0,0,2025-04-10T15:18:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/225
+ac-dev-lab,iss,226,Pioreactor HTTP and requirements.txt,1,0,0,2025-04-12T05:04:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/226
+ac-dev-lab,iss,227,VS Code remote ssh for OpenFlexure microscope,1,1,5,2025-04-12T06:00:52Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/227
+ac-dev-lab,iss,228,"Packing mycobot280, pioreactor, and OpenFlexure transmission v7",2,0,0,2025-04-12T06:17:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/228
+ac-dev-lab,iss,229,Create AprilTag minimal working example with dedicated hardware setup with corresponding Colab,34,1,4,2025-04-17T03:46:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/229
+ac-dev-lab,iss,230,Standalone notebook with an image pre-supplied for AprilTag recognition,15,0,2,2025-04-17T04:00:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/230
+ac-dev-lab,iss,231,Prototyping the 8-hr auto-restart mechanism and stream restoration,46,1,3,2025-04-28T16:21:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/231
+ac-dev-lab,iss,233,Update ci.yml python 3.9 and 3.12 (3.8 end of life),1,0,0,2025-05-01T00:31:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/233
+ac-dev-lab,iss,234,Added ability to download yt videos,8,0,6,2025-05-01T15:47:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/234
+ac-dev-lab,iss,235,Update precommit,6,0,0,2025-05-01T16:31:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/235
+ac-dev-lab,iss,236,Install equipment monitoring camera to catalyst SDL,1,0,0,2025-05-02T00:43:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/236
+ac-dev-lab,iss,237,"Update certificate for light mixing demo, fan controller, and wireless color sensor",8,0,0,2025-05-02T00:50:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/237
+ac-dev-lab,iss,238,Add file that's running on the wireless color sensor tool,3,0,0,2025-05-02T17:58:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/238
+ac-dev-lab,iss,239,Set up flex pi zero 2w overhead camera,1,0,0,2025-05-05T15:52:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/239
+ac-dev-lab,iss,240,Install 50 uL Opentrons flex pipette,8,0,8,2025-05-07T13:56:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/240
+ac-dev-lab,iss,241,Update device.py with lambda,2,0,0,2025-05-07T14:19:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/241
+ac-dev-lab,iss,242,Privacy-status,2,0,0,2025-05-08T21:11:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/242
+ac-dev-lab,iss,243,Set up and install equipment monitoring cameras to SDL5,4,0,1,2025-05-08T21:48:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/243
+ac-dev-lab,iss,244,Minimal working example for API credits purchased via Stripe,1,0,1,2025-05-09T16:07:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/244
+ac-dev-lab,iss,245,camera flip toggle,1,0,0,2025-05-09T20:32:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/245
+ac-dev-lab,iss,246,camera flip,1,0,0,2025-05-09T20:42:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/246
+ac-dev-lab,iss,247,small clarification,1,0,0,2025-05-09T20:48:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/247
+ac-dev-lab,iss,248,Set up OT-2 simulators on fresh Raspberry Pi 3B+'s,5,0,13,2025-05-09T21:50:05Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/248
+ac-dev-lab,iss,249,update device.py for cam_name workflow_name,1,0,0,2025-05-11T02:16:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/249
+ac-dev-lab,iss,250,Create Prefect MWE between two colab notebooks,47,1,29,2025-05-13T15:42:46Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/250
+ac-dev-lab,iss,251,One equipment monitoring camera for SDL4,5,0,0,2025-05-13T18:59:39Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/251
+ac-dev-lab,iss,252,Update README.md,1,0,0,2025-05-14T14:03:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/252
+ac-dev-lab,iss,253,apriltag placeholder readme,1,0,0,2025-05-14T18:26:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/253
+ac-dev-lab,iss,254,Explore and reproduce MADSci,9,0,0,2025-05-21T23:19:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/254
+ac-dev-lab,iss,255,Apriltag demo,11,0,0,2025-05-22T01:57:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/255
+ac-dev-lab,iss,257,MWE for windows single board computer,16,0,4,2025-05-22T16:00:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/257
+ac-dev-lab,iss,258,Zimaboard guide,8,1,4,2025-05-22T18:59:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/258
+ac-dev-lab,iss,259,Explore and reproduce ALabOS,28,0,0,2025-05-24T01:04:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/259
+ac-dev-lab,iss,260,Explore and reproduce various lab orchestration platforms,5,0,0,2025-05-24T01:09:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/260
+ac-dev-lab,iss,261,Update README.md with main branch and slight rewording,1,0,0,2025-05-25T02:41:54Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/261
+ac-dev-lab,iss,262,Optimization benchmarking competitions on Kaggle,84,1,15,2025-05-26T18:30:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/262
+ac-dev-lab,iss,263,Explore and reproduce Bluesky,7,0,0,2025-05-27T03:51:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/263
+ac-dev-lab,iss,264,Split the flip picam parameter and logic into vflip and hflip,1,0,0,2025-05-27T12:16:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/264
+ac-dev-lab,iss,265,Split picam CAMERA_FLIP parameter into CAMERA_VFLIP and CAMERA_HFLIP,6,0,0,2025-05-27T12:18:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/265
+ac-dev-lab,iss,266,Create copilot-setup-steps.yml,1,0,0,2025-05-27T17:47:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/266
+ac-dev-lab,iss,267,Fix pre-commit issues across repository,1,0,0,2025-05-27T17:51:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/267
+ac-dev-lab,iss,268,Fix pre-commit issues across repository,1,0,0,2025-05-27T17:51:59Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/268
+ac-dev-lab,iss,269,AprilTag presentation recording ,12,0,0,2025-05-28T04:46:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/269
+ac-dev-lab,iss,270,Prepare equipment for dedicated AprilTag hardware demo,48,2,5,2025-05-28T15:39:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/270
+ac-dev-lab,iss,271,Set up CI/CD with Chalice for AWS Lambda functions,13,0,5,2025-05-28T16:05:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/271
+ac-dev-lab,iss,272,Refinements to standalone AprilTag demo notebook,10,0,3,2025-05-28T18:02:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/272
+ac-dev-lab,iss,273,Dedicated hardware demo for PLCs,1,0,0,2025-05-29T15:09:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/273
+ac-dev-lab,iss,274,Add bill of materials for equipment monitoring setup,2,0,0,2025-05-29T15:54:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/274
+ac-dev-lab,iss,275,Fix docs so that edit source works for autogenerated docs,1,0,0,2025-05-29T16:24:28Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/275
+ac-dev-lab,iss,276,Fix edit source links for autogenerated device documentation,9,0,0,2025-05-29T16:24:31Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/276
+ac-dev-lab,iss,277,Update README.md with rpi os lite link,1,0,0,2025-05-29T16:27:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/277
+ac-dev-lab,iss,278,Create separate device page for wpa2-enterprise setup on a raspberry pi,1,0,0,2025-05-29T16:38:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/278
+ac-dev-lab,iss,279,Add comprehensive WPA2-Enterprise WiFi setup documentation for Raspberry Pi devices,20,0,6,2025-05-29T16:38:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/279
+ac-dev-lab,iss,281,Update README.md note about using nano,1,0,0,2025-05-29T21:26:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/281
+ac-dev-lab,iss,282,Update picam readme with notes about setting up aws lambda function (or workaround),10,0,0,2025-05-29T21:33:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/282
+ac-dev-lab,iss,283,Update README.md separate out sudo apt update,1,0,0,2025-05-29T21:53:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/283
+ac-dev-lab,iss,284,Update README.md,1,0,0,2025-05-29T21:59:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/284
+ac-dev-lab,iss,285,Fix suggest edit button link,1,0,0,2025-05-30T02:51:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/285
+ac-dev-lab,iss,286,Fix suggest edit button links for documentation pages that include external files,15,4,10,2025-05-30T02:51:46Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/286
+ac-dev-lab,iss,287,Order ultrasonic horn,1,0,1,2025-05-30T15:18:31Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/287
+ac-dev-lab,iss,288,Install uptimed on all tailscale RPi devices,2,0,0,2025-05-30T16:28:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/288
+ac-dev-lab,iss,289,Add bill of materials for equipment monitoring setup,64,8,80,2025-05-30T17:06:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/289
+ac-dev-lab,iss,290,`WORKFLOW_NAME` for AWS Lambda function for streaming can't be identical,7,0,0,2025-05-30T17:12:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/290
+ac-dev-lab,iss,291,Update README.md mention username as ac,1,0,0,2025-05-30T17:16:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/291
+ac-dev-lab,iss,292,"3mf, f3d, stl files for picam mount v2 - https://a360.co/4kbOj6e",1,0,0,2025-05-30T19:12:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/292
+ac-dev-lab,iss,293,Update copilot-setup-steps.yml initialize precommit but don't install…,1,0,0,2025-05-31T00:33:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/293
+ac-dev-lab,iss,294,Update copilot-setup-steps.yml add prefect mintlify,1,0,0,2025-05-31T00:48:28Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/294
+ac-dev-lab,iss,295,"Expose sync_send_angles, etc. for MyCobot 280 Pi",2,0,0,2025-05-31T13:33:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/295
+ac-dev-lab,iss,296,Fix bill of materials for picam,1,1,5,2025-05-31T15:22:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/296
+ac-dev-lab,iss,297,[WIP] Fix bill of materials for picam,16,4,16,2025-05-31T15:22:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/297
+ac-dev-lab,iss,298,Unlisted videos on public playlist are accessible via playlist,4,0,0,2025-06-02T16:21:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/298
+ac-dev-lab,iss,299,Update README.md with link to ac-hardware-streams,1,0,0,2025-06-02T19:32:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/299
+ac-dev-lab,iss,300,Document / reproduce SDL3's usage of Blockly,2,0,0,2025-06-03T14:11:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/300
+ac-dev-lab,iss,301,Camera for SDL2,2,0,0,2025-06-03T14:16:28Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/301
+ac-dev-lab,iss,302,Camera for SDL3,3,0,1,2025-06-03T14:19:49Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/302
+ac-dev-lab,iss,303,Work with Daniel to set up SDL7 cameras,2,0,0,2025-06-03T14:23:09Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/303
+ac-dev-lab,iss,304,Fix AprilTag PDF printing black pixels due to transparent background,1,0,0,2025-06-03T15:19:59Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/304
+ac-dev-lab,iss,305,WPA2-Enterprise not supported for MyCobot 280 Pi via `sudo nmtui`,1,0,0,2025-06-03T17:03:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/305
+ac-dev-lab,iss,306,Update README.md update costs to avoid poor markdown formatting,1,0,1,2025-06-03T17:06:37Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/306
+ac-dev-lab,iss,307,MyCobot mods and fixes,1,0,0,2025-06-03T17:27:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/307
+ac-dev-lab,iss,308,add release servos command,1,0,0,2025-06-03T18:01:04Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/308
+ac-dev-lab,iss,309,"refactor control commands to accept speed parameter for gripper, angles, and coords",1,0,0,2025-06-03T18:09:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/309
+ac-dev-lab,iss,310,Apriltag demo fix,2,0,0,2025-06-03T20:58:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/310
+ac-dev-lab,iss,311,Update README.md,2,0,0,2025-06-03T22:03:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/311
+ac-dev-lab,iss,312,Update README.md add linebreak,1,0,0,2025-06-04T01:50:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/312
+ac-dev-lab,iss,313,Connect our Hugging Face spaces repos to GitHub,1,0,0,2025-06-04T02:01:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/313
+ac-dev-lab,iss,314,Kaggle setup,6,0,0,2025-06-05T17:24:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/314
+ac-dev-lab,iss,315,Update device.py,1,0,0,2025-06-06T15:35:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/315
+ac-dev-lab,iss,316,Prepare default SD card for monitoring RPi zero2w and clone to new device,2,0,2,2025-06-06T19:39:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/316
+ac-dev-lab,iss,317,Explore and reproduce IvoryOS,7,0,0,2025-06-11T03:40:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/317
+ac-dev-lab,iss,318,Add WORKFLOW_NAME uniqueness documentation to picam secrets example,2,0,0,2025-06-11T03:45:27Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/318
+ac-dev-lab,iss,319,"Create, record, and embed AprilTag presentation",5,0,0,2025-06-11T05:48:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/319
+ac-dev-lab,iss,320,Create Ax tutorial with Prefect and MongoDB integration,3,0,0,2025-06-12T11:16:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/320
+ac-dev-lab,iss,321,Explore and reproduce ChemOS 2.0,3,0,0,2025-06-12T14:19:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/321
+ac-dev-lab,iss,322,Devices dropdown on homepage broke (no entries underneath),1,0,0,2025-06-12T17:54:04Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/322
+ac-dev-lab,iss,323,[WIP] Devices dropdown on homepage broke (no entries underneath),5,1,1,2025-06-12T17:54:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/323
+ac-dev-lab,iss,324,Create Zero 2W-based temperature/pressure/humidity/gas sensor minimal working example,10,0,16,2025-06-12T19:06:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/324
+ac-dev-lab,iss,325,Explore and reproduce n8n,13,0,0,2025-06-12T19:36:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/325
+ac-dev-lab,iss,326,Support SDL1 and SDL4 for hardware-themed Accelerate workshop,2,0,0,2025-06-12T20:06:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/326
+ac-dev-lab,iss,327,Implement AprilTag setup for SDL2,1,0,0,2025-06-13T15:06:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/327
+ac-dev-lab,iss,328,PiCamera 2 mount and electrical setup for UR3e,22,2,21,2025-06-13T15:24:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/328
+ac-dev-lab,iss,329,Fixturing AprilTags to the various pieces of equipment / samples,14,0,1,2025-06-13T15:24:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/329
+ac-dev-lab,iss,330,Integrate AprilTag detection code with the UR3e Python control,5,0,0,2025-06-13T15:32:52Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/330
+ac-dev-lab,iss,331,Documentation for hardware setup,1,0,0,2025-06-13T15:42:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/331
+ac-dev-lab,iss,332,Create setup_hitl_bo.md,1,0,0,2025-06-13T17:19:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/332
+ac-dev-lab,iss,333,"Support SDL5 on micelle drug delivery project, human-in-the-loop BO",2,0,0,2025-06-13T21:22:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/333
+ac-dev-lab,iss,334,Record workflow videos for micelle drug delivery,1,0,0,2025-06-13T21:22:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/334
+ac-dev-lab,iss,335,"Compare default vs. SAASBO runtimes (ideally both single- and multi-objective, and with vs. without GPU)",6,0,15,2025-06-13T21:24:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/335
+ac-dev-lab,iss,336,Potential redesign of vial holders,12,0,0,2025-06-16T15:04:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/336
+ac-dev-lab,iss,337,Update cobot server to latest MyCobot class,4,0,0,2025-06-17T00:58:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/337
+ac-dev-lab,iss,338,"Find M8, 8-position splitter (1M/2F) online",1,0,4,2025-06-18T13:08:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/338
+ac-dev-lab,iss,339,Provide guidance for M8 splitter search due to tool limitations,15,3,59,2025-06-18T13:08:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/339
+ac-dev-lab,iss,340,"Set up 12 more equipment monitoring cameras (i.e., have them in stock)",19,2,44,2025-06-20T18:19:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/340
+ac-dev-lab,iss,341,Explore using playwright to automate the download of new videos,2,0,0,2025-06-20T18:29:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/341
+ac-dev-lab,iss,342,Update README.md or zero 2wh,1,0,0,2025-06-20T19:28:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/342
+ac-dev-lab,iss,343,Add Playwright-based YouTube video downloader with Google authentication,66,1,6,2025-06-20T21:36:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/343
+ac-dev-lab,iss,344,Create Ax tutorial with Prefect integration for human-in-the-loop Bayesian optimization,25,0,1,2025-06-21T01:13:37Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/344
+ac-dev-lab,iss,345,Implement pyotp,1,0,0,2025-06-22T01:40:59Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/345
+ac-dev-lab,iss,346,Implement pyotp functionality for YouTube video downloading with 2FA support,3,0,0,2025-06-22T01:41:04Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/346
+ac-dev-lab,iss,347,Cobot class fix,3,0,0,2025-06-23T20:36:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/347
+ac-dev-lab,iss,348,implement an xarm simulator,1,0,0,2025-06-23T21:15:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/348
+ac-dev-lab,iss,349,"OT-2 color matching, Pico W sensor reading timeout",1,0,0,2025-06-27T15:08:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/349
+ac-dev-lab,iss,350,Solder pins onto zero 2w,1,0,0,2025-07-02T15:41:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/350
+ac-dev-lab,iss,351,Set up T16-P electronic controls,6,1,5,2025-07-02T15:43:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/351
+ac-dev-lab,iss,352,Mechanical design of T16-P crush plate setup,32,0,13,2025-07-02T15:45:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/352
+ac-dev-lab,iss,353,"Flashing RPi os lite onto zero 2W, software setup, and current sensor",10,0,4,2025-07-02T15:46:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/353
+ac-dev-lab,iss,354,Support Owen on SDL4 north robotics station,1,0,0,2025-07-03T20:05:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/354
+ac-dev-lab,iss,355,Separating out conda environments,1,0,0,2025-07-03T20:05:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/355
+ac-dev-lab,iss,356,Prefect integration / decoration for SDL4 North cytation station,1,0,0,2025-07-03T20:06:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/356
+ac-dev-lab,iss,357,Set up north cytation computer on tailscale,4,0,0,2025-07-03T20:08:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/357
+ac-dev-lab,iss,358,Code review of BO implementation for pipette calibration workflow,2,0,0,2025-07-03T20:09:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/358
+ac-dev-lab,iss,359,Systemd autostart for north cytation,1,0,0,2025-07-03T20:09:50Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/359
+ac-dev-lab,iss,360,Run through of GitHub copilot workflows in vs code,1,0,0,2025-07-04T04:43:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/360
+ac-dev-lab,iss,361,Leaderboard metric for multi-objective optimization,3,0,2,2025-07-04T14:14:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/361
+ac-dev-lab,iss,362,"Branin single-objective competition MWE, launch, and sharing",20,3,5,2025-07-04T14:21:50Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/362
+ac-dev-lab,iss,363,Branin multi-objective (branin_moo) benchmarking competition MWE,6,0,0,2025-07-04T14:25:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/363
+ac-dev-lab,iss,364,Multi-fidelity Branin (branin_fidelity) optimization competition MWE,4,0,6,2025-07-04T14:28:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/364
+ac-dev-lab,iss,365,Noisy evaluations and in-sample predictions optimization competition MWE,3,0,0,2025-07-04T14:33:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/365
+ac-dev-lab,iss,366,"Setting up IoLT devices page is duplicated, and RPi wifi setup is under devices, but should be at the top-level above devices",1,0,0,2025-07-04T15:46:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/366
+ac-dev-lab,iss,367,Fix documentation structure: move WiFi setup to top-level and eliminate duplication,3,0,1,2025-07-04T15:46:05Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/367
+ac-dev-lab,iss,368,Update README.md zero 2wh link,1,0,0,2025-07-04T15:48:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/368
+ac-dev-lab,iss,369,Create copilot-instructions.md,1,0,0,2025-07-04T16:13:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/369
+ac-dev-lab,iss,370,Integration of Vertical Lift Module at NRC,3,0,0,2025-07-04T16:14:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/370
+ac-dev-lab,iss,371,Meeting with Johnstone Equipment / Nick and ItemPath to test/prototype programmatic control,2,0,0,2025-07-04T16:16:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/371
+ac-dev-lab,iss,372,Create digital asset of vertical lift module,8,0,3,2025-07-04T16:17:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/372
+ac-dev-lab,iss,373,"Bring test tray to NRC and add AprilTag, begin prototyping sample transfer workflows",4,0,1,2025-07-04T16:18:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/373
+ac-dev-lab,iss,374,Purchase and test UPS for vertical lift module,6,1,11,2025-07-04T16:23:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/374
+ac-dev-lab,iss,375,Update README.md with microsd card reader,1,0,0,2025-07-04T16:53:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/375
+ac-dev-lab,iss,376,Set up tailscale on Windows 10 running on Zima Board,5,0,0,2025-07-04T19:40:39Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/376
+ac-dev-lab,iss,377,Add Tailscale setup section to index.md,1,0,0,2025-07-04T21:38:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/377
+ac-dev-lab,iss,378,Update tailscale-setup.md with tailscale link,1,0,0,2025-07-04T21:47:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/378
+ac-dev-lab,iss,379,Add network setup note for devices running full OS and update references in README files,1,0,0,2025-07-04T22:07:27Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/379
+ac-dev-lab,iss,380,Update README.md digikey cart,1,0,1,2025-07-04T22:17:46Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/380
+ac-dev-lab,iss,381,HiTL BO tutorial - Integrate BO with MongoDB instead of relying solely on a locally stored `save_to_json_file`,1,0,0,2025-07-07T16:58:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/381
+ac-dev-lab,iss,382,BO / Prefect HiTL slack integration tutorial,4,0,0,2025-07-07T16:59:16Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/382
+ac-dev-lab,iss,383,Integrating MongoDB MVP,37,0,0,2025-07-07T21:48:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/383
+ac-dev-lab,iss,384,Ax submission for vanilla BO competition,22,0,0,2025-07-08T18:24:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/384
+ac-dev-lab,iss,385,Create BoTorch submission for vanilla BO competition ,6,0,0,2025-07-08T18:24:50Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/385
+ac-dev-lab,iss,386,Create BayBE submission for vanilla BO competition,3,0,0,2025-07-08T18:25:16Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/386
+ac-dev-lab,iss,387,Create BoFire submission for vanilla BO competition,4,0,0,2025-07-08T18:25:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/387
+ac-dev-lab,iss,388,Support Harry on SDL4 polymer mechanical optimization workflow,2,0,0,2025-07-08T19:16:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/388
+ac-dev-lab,iss,389,SDL4 polymer mechanical optimization - tailscale device setup,1,0,0,2025-07-08T19:17:08Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/389
+ac-dev-lab,iss,390,Support Nipun on SDL4 electrochemistry workflows,1,0,0,2025-07-08T19:24:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/390
+ac-dev-lab,iss,391,SDL4 electrochemistry tailscale setup,3,0,0,2025-07-08T19:25:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/391
+ac-dev-lab,iss,392,SDL4 polymer mechanical optimization - prefect cloud setup,2,0,0,2025-07-08T19:35:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/392
+ac-dev-lab,iss,393,Add notice about camera calibration,1,0,0,2025-07-09T11:03:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/393
+ac-dev-lab,iss,394,Enhance instructions for using checkerboard images in apriltag_demo.ipynb,2,0,2,2025-07-09T12:13:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/394
+ac-dev-lab,iss,395,Update documentation in apriltag_demo.ipynb for clarity on image usage and camera calibration instructions,2,0,0,2025-07-09T12:29:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/395
+ac-dev-lab,iss,396,Fix wording around need to take own calibration images,1,0,0,2025-07-09T12:51:16Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/396
+ac-dev-lab,iss,397,include direct link in case iframe doesn't render (which it doesn't on colab),2,0,0,2025-07-09T13:11:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/397
+ac-dev-lab,iss,398,Update tailscale-setup.md windows setup instructions,4,0,0,2025-07-09T14:04:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/398
+ac-dev-lab,iss,399,"Enhance cobot connection stability with retry logic for angle and coordinate queries, and add connection reset after gripper operations.",3,0,0,2025-07-09T14:27:37Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/399
+ac-dev-lab,iss,400,MyCobot 280 Pi unreliability with device.py MQTT communication - gripper control breaks query coords,1,1,1,2025-07-09T14:27:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/400
+ac-dev-lab,iss,401,Change default value of tag_size for consistency,1,0,0,2025-07-09T15:26:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/401
+ac-dev-lab,iss,402,sync send angles options for cobot,3,0,0,2025-07-09T15:33:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/402
+ac-dev-lab,iss,403,Set up pipettin bot,25,0,0,2025-07-09T17:46:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/403
+ac-dev-lab,iss,404,Enhance gripper and movement control functions for backward compatibility and improved parameter handling,5,0,0,2025-07-09T21:27:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/404
+ac-dev-lab,iss,405,Update the output of the notebook,1,0,0,2025-07-10T01:29:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/405
+ac-dev-lab,iss,406,Explore and reproduce Node-RED,7,0,0,2025-07-10T02:34:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/406
+ac-dev-lab,iss,407,Update the output of the notebook,3,0,0,2025-07-10T02:36:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/407
+ac-dev-lab,iss,408,Explore and reproduce Prefect,2,0,0,2025-07-10T17:29:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/408
+ac-dev-lab,iss,409,Explore and reproduce Blockly,3,0,0,2025-07-11T00:50:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/409
+ac-dev-lab,iss,410,Run a comprehensive search looking for workflow equivalents of blockly,2,0,0,2025-07-11T01:17:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/410
+ac-dev-lab,iss,411,[WIP] Run a comprehensive search looking for workflow equivalents of blockly,12,1,6,2025-07-11T01:17:31Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/411
+ac-dev-lab,iss,412,Rename .github/workflows/copilot-instructions.md to .github/copilot-i…,2,0,0,2025-07-11T02:14:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/412
+ac-dev-lab,iss,413,Provide feedback on the copilot custom instructions,2,0,0,2025-07-11T02:31:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/413
+ac-dev-lab,iss,414,Provide comprehensive feedback on copilot custom instructions,2,0,1,2025-07-11T02:31:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/414
+ac-dev-lab,iss,415,"How would a renaming of the repository from ""ac-training-lab"" to ""ac-dev-lab"" affect structure and links?",1,0,1,2025-07-11T17:03:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/415
+ac-dev-lab,iss,416,"Repository Renaming Impact Analysis: ""ac-training-lab"" to ""ac-dev-lab""",6,0,2,2025-07-11T17:03:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/416
+ac-dev-lab,iss,417,Update README.md add note directive,3,0,7,2025-07-11T18:56:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/417
+ac-dev-lab,iss,418,Update tailscale-setup.md to clarify remote desktop and SSH instructions for Windows,2,0,0,2025-07-14T19:34:34Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/418
+ac-dev-lab,iss,419,Support SDL3,1,0,0,2025-07-17T01:28:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/419
+ac-dev-lab,iss,420,Set up SDL3 devices with tailscale,2,0,0,2025-07-17T01:29:53Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/420
+ac-dev-lab,iss,421,"""Command center"" setup",3,1,1,2025-07-17T14:14:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/421
+ac-dev-lab,iss,422,Update README.md with fix for 8-hr restart instead of 24 hr,3,0,0,2025-07-18T03:37:38Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/422
+ac-dev-lab,iss,423,Update README.md with comment fix,2,0,0,2025-07-18T03:42:10Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/423
+ac-dev-lab,iss,424,Create Prefect MWE between two notebooks,29,0,0,2025-07-18T08:02:37Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/424
+ac-dev-lab,iss,425,Update setup_iolt_devices.md gather town invite link,2,0,0,2025-07-22T20:26:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/425
+ac-dev-lab,iss,426,Tie together terminology and concepts across various orchestration-related platforms,2,0,0,2025-07-22T20:55:59Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/426
+ac-dev-lab,iss,427,Outline the MWE liquid color matching demo as a workflow,1,0,0,2025-07-22T21:16:09Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/427
+ac-dev-lab,iss,428,Create hill-climbing submission for vanilla BO competition,2,0,0,2025-07-25T15:52:06Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/428
+ac-dev-lab,iss,429,Create genetic algorithm submission for vanilla BO competition,2,0,0,2025-07-25T15:52:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/429
+ac-dev-lab,iss,430,Support SDL2 with liquid-liquid extraction workflow,2,0,0,2025-07-25T17:00:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/430
+ac-dev-lab,iss,431,CrabNet hyperparameter optimization benchmark competition(s),19,0,4,2025-07-29T16:57:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/431
+ac-dev-lab,iss,432,Update my_secrets_example.py with note about character limit,3,0,0,2025-08-06T12:06:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/432
+ac-dev-lab,iss,433,Update README.md with new power supply links,2,0,2,2025-08-06T12:38:08Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/433
+ac-dev-lab,iss,434,"Add ""restock"" maintenance Prefect step for OT2 color matching demo",3,0,0,2025-08-08T20:33:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/434
+ac-dev-lab,iss,435,Add instructions for OT-2 python script autostart,2,0,1,2025-08-12T17:04:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/435
+ac-dev-lab,iss,436,Update README.md add images,5,0,0,2025-08-18T18:02:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/436
+ac-dev-lab,iss,437,Update README.md with images (fix stretching),4,0,0,2025-08-18T18:52:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/437
+ac-dev-lab,iss,438,Explore and reproduce SiLA2,5,0,0,2025-08-19T16:26:11Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/438
+ac-dev-lab,iss,439,Procure WiFi dongle for SEM,8,0,0,2025-08-19T22:04:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/439
+ac-dev-lab,iss,440,"Sweep of AC labs, installing tailscale, updating hostnames and credentials, etc.",2,0,0,2025-08-21T20:03:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/440
+ac-dev-lab,iss,441,Internet connectivity / uptime tracking across AC,2,0,0,2025-08-22T14:22:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/441
+ac-dev-lab,iss,442,Add comprehensive internet connectivity and uptime tracking documentation,3,1,3,2025-08-22T14:24:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/442
+ac-dev-lab,iss,443,Update copilot-instructions.md per some recent edits in https://gist.…,3,0,0,2025-08-22T14:25:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/443
+ac-dev-lab,iss,444,Add project files to new clean branch,1,0,0,2025-08-26T13:45:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/444
+ac-dev-lab,iss,445,Networking in training lab at NRC,35,6,15,2025-08-26T17:07:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/445
+ac-dev-lab,iss,446,pH unit testing (MT InLab 710),2,0,0,2025-08-28T16:27:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/446
+ac-dev-lab,iss,447,pH probe testing,4,0,1,2025-08-28T16:27:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/447
+ac-dev-lab,iss,448,pH probe testing (atlas scientific),8,1,3,2025-08-28T16:31:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/448
+ac-dev-lab,iss,449,Incorporate Prefect tutorial into ac-training-lab website,1,0,0,2025-08-28T17:13:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/449
+ac-dev-lab,iss,450,Add concise Prefect workflow orchestration section to IoLT device setup documentation,13,0,1,2025-08-28T17:13:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/450
+ac-dev-lab,iss,451,Test samples for atomizer and metal 3D printer,3,1,3,2025-09-04T15:48:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/451
+ac-dev-lab,iss,452,"Update docs very briefly, concisely, and surgically to clarify setting wlan to appropriate country (e.g., US for United States, CA for Canada, DE for germany)",1,0,0,2025-09-17T19:16:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/452
+ac-dev-lab,iss,453,Add WLAN country troubleshooting to Raspberry Pi WiFi setup docs,2,0,0,2025-09-17T19:16:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/453
+ac-dev-lab,iss,454,Wiring and programming SEM Actuator Setup,1,0,0,2025-09-18T16:12:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/454
+ac-dev-lab,iss,455,Setting up wiring and programming of SEM open/close,27,0,2,2025-09-18T16:14:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/455
+ac-dev-lab,iss,456,BO / Prefect HiTL Slack integration tutorial,104,0,0,2025-09-18T17:28:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/456
+ac-dev-lab,iss,457,PiCam for SEM,13,0,0,2025-09-18T20:53:49Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/457
+ac-dev-lab,iss,458,Measure / Acquire Floorplan of Lab for Equipment Placement Planning,5,0,0,2025-09-23T13:59:25Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/458
+ac-dev-lab,iss,459,Add ultra-minimal MQTT orchestration solution for OT-2 devices with official Sparkplug B support,65,2,464,2025-09-24T04:06:39Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/459
+ac-dev-lab,iss,460,mechanical design attaching to handle with tie rod,31,0,5,2025-09-25T17:06:52Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/460
+ac-dev-lab,iss,461,[WIP] mechanical design attaching to handle with tie rod,9,0,10,2025-09-25T17:15:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/461
+ac-dev-lab,iss,462,Issue on page /tailscale-setup.html,1,0,0,2025-09-25T19:41:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/462
+ac-dev-lab,iss,463,Add initial device access options to Tailscale setup documentation,5,0,7,2025-09-25T19:41:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/463
+ac-dev-lab,iss,464,Flesh out my_secrets instructions for picam,1,0,0,2025-09-26T16:32:07Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/464
+ac-dev-lab,iss,465,Flesh out my_secrets instructions for picam with comprehensive setup guide,4,0,0,2025-09-26T16:32:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/465
+ac-dev-lab,iss,466,network setup docs snippet - swap order and minor wording clarifications,3,0,0,2025-09-26T16:35:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/466
+ac-dev-lab,iss,467,Record a video to disk of the openflexure microscope,3,1,1,2025-09-26T17:48:15Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/467
+ac-dev-lab,iss,468,Add screen recording script for OpenFlexure microscope vibration testing,16,0,0,2025-09-26T17:48:21Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/468
+ac-dev-lab,iss,469,Private browser note/warning and positioning of windows instructions,1,0,0,2025-10-02T14:44:37Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/469
+ac-dev-lab,iss,470,Add warning directive for private browser note and reorganize Tailscale setup sections,5,0,3,2025-10-02T14:44:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/470
+ac-dev-lab,iss,471,Larger system feasibility,6,1,1,2025-10-02T16:09:49Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/471
+ac-dev-lab,iss,472,chat history with mechanical design automation,1,0,0,2025-10-07T16:55:49Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/472
+ac-dev-lab,iss,473,birefringence with openflexure microscope,4,1,5,2025-10-08T19:29:54Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/473
+ac-dev-lab,iss,474,Use your MCP tools to find an appropriate objective lens,2,1,1,2025-10-10T20:35:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/474
+ac-dev-lab,iss,475,Add comprehensive objective lens BOM for OpenFlexure Delta Stage Microscope with used market options,6,10,48,2025-10-10T20:35:08Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/475
+ac-dev-lab,iss,476,Revise development and communication guidelines,3,0,0,2025-10-15T02:12:04Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/476
+ac-dev-lab,iss,477,Add note for Tailscale unattended mode,3,0,0,2025-10-17T16:02:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/477
+ac-dev-lab,iss,478,Enhance README with hardware setup details,6,0,0,2025-10-17T16:18:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/478
+ac-dev-lab,iss,479,Modify SSH examples in tailscale-setup.md,2,0,0,2025-10-17T16:28:50Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/479
+ac-dev-lab,iss,480,Update Tailscale setup instructions for Raspberry Pi,5,0,0,2025-10-17T16:34:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/480
+ac-dev-lab,iss,481,Implement dynamic camera command selection in start_stream function,4,0,0,2025-10-17T17:19:52Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/481
+ac-dev-lab,iss,482,Find an analog clock for me,7,0,0,2025-10-22T02:35:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/482
+ac-dev-lab,iss,483,Add analog clock overlay module for time-lapse videos,6,1,12,2025-10-22T02:35:09Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/483
+ac-dev-lab,iss,484,"Programming Homing, Sample Pickup, Sample Dropoff, and Button Press Path on MyCobot 280 Pi for SEM Automation",16,0,5,2025-10-22T14:26:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/484
+ac-dev-lab,iss,485,Switch to picamera2 and add timestamp overlay,6,0,0,2025-10-23T23:11:53Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/485
+ac-dev-lab,iss,486,MyCobot 280 Pi SEM automation: MQTT-controlled sample handling paths,1,0,2,2025-10-29T15:58:36Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/486
+ac-dev-lab,iss,487,Add inventory tracking and restock maintenance for OT-2 color mixing,1,0,1,2025-11-03T18:11:16Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/487
+ac-dev-lab,iss,488,Add real Blockly installation with npm and custom OT-2 blocks,15,0,0,2025-11-03T18:47:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/488
+ac-dev-lab,iss,489,Refine unit ops and workflows on homepage,1,2,4,2025-11-03T21:11:32Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/489
+ac-dev-lab,iss,490,Document unit operations and workflows on homepage,7,2,6,2025-11-03T21:11:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/490
+ac-dev-lab,iss,491,Heavy duty slide out tray shelving for NRC lab,18,1,2,2025-11-04T22:11:29Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/491
+ac-dev-lab,iss,492,Linear rail,4,0,0,2025-11-04T22:12:44Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/492
+ac-dev-lab,iss,493,Generate CAD model of rollout shelving,2,0,2,2025-11-05T17:07:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/493
+ac-dev-lab,iss,494,Lifting column integration,7,0,0,2025-11-06T12:16:39Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/494
+ac-dev-lab,iss,495,Seperate physical button press mechanism for EVAC AIR on/off,19,2,21,2025-11-06T16:10:53Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/495
+ac-dev-lab,iss,496,Additional equipment monitoring cameras for SDL3,4,0,0,2025-11-06T20:54:40Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/496
+ac-dev-lab,iss,498,STLs and STEP files for lab,1,0,0,2025-11-10T18:36:31Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/498
+ac-dev-lab,iss,499,Lab layout and casework,1,0,1,2025-11-10T20:50:03Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/499
+ac-dev-lab,iss,500,Install sliding shelving,20,3,46,2025-11-10T20:51:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/500
+ac-dev-lab,iss,501,Existing lab casework,4,0,0,2025-11-11T00:01:26Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/501
+ac-dev-lab,iss,502,Timelapse of lab setup,2,0,0,2025-11-11T00:48:57Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/502
+ac-dev-lab,iss,503,Add frosting / privacy film to windows,9,0,2,2025-11-11T01:00:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/503
+ac-dev-lab,iss,504,Add window frosting product documentation for laboratory privacy,1,0,11,2025-11-11T01:03:54Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/504
+ac-dev-lab,iss,505,xarm / lift / rail adapters,11,0,2,2025-11-12T06:11:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/505
+ac-dev-lab,iss,506,Place isolation platform underneath the SEM,8,1,11,2025-11-12T23:23:30Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/506
+ac-dev-lab,iss,507,Equipment monitoring camera for Seifrid group,2,1,12,2025-11-13T01:43:41Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/507
+ac-dev-lab,iss,508,Flexible powering of the arm/lift combo on the rail,9,0,1,2025-11-13T03:32:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/508
+ac-dev-lab,iss,510,Update Tailscale setup instructions for clarity,2,0,0,2025-11-13T21:56:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/510
+ac-dev-lab,iss,511,Update SSH command example in tailscale-setup.md,3,0,6,2025-11-13T21:59:54Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/511
+ac-dev-lab,iss,512,Clarify SSH access methods in setup guide,4,0,13,2025-11-13T22:40:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/512
+ac-dev-lab,iss,513,Enhance README with troubleshooting guidance,4,0,0,2025-11-13T23:42:22Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/513
+ac-dev-lab,iss,514,HiveMQ showing Connect failed: AMQJSC0001E Connect timed out error when attempting to connect host.,5,0,0,2025-11-14T15:56:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/514
+ac-dev-lab,iss,515,Issue on page /tailscale-setup.html troubleshooting vs code remote ssh with tailscale,1,0,0,2025-11-15T03:24:18Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/515
+ac-dev-lab,iss,516,Add VS Code Remote SSH troubleshooting guide for Tailscale connections,1,0,0,2025-11-15T03:24:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/516
+ac-dev-lab,iss,517,Update troubleshooting section in README.md,3,0,0,2025-11-15T05:27:33Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/517
+ac-dev-lab,iss,518,NRC 208.1 AprilTags,13,0,0,2025-11-18T01:24:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/518
+ac-dev-lab,iss,519,Programmatic control of Zaber linear rail,2,0,0,2025-11-18T20:43:05Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/519
+ac-dev-lab,iss,520,Add Zaber linear rail module with Prefect workflow support,15,0,2,2025-11-18T20:45:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/520
+ac-dev-lab,iss,521,Linear rail stabilization,11,1,8,2025-11-18T22:39:59Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/521
+ac-dev-lab,iss,522,Slide out shelving assembly (cabinet),13,0,2,2025-11-18T23:38:19Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/522
+ac-dev-lab,iss,523,XArm5 integration into rail/lift/arm combo,2,0,0,2025-11-19T22:20:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/523
+ac-dev-lab,iss,524,Initial testing of xarm5,15,0,4,2025-11-19T22:22:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/524
+ac-dev-lab,iss,525,Add minimal xArm5 starter example for Raspberry Pi 5,3,1,2,2025-11-19T22:23:23Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/525
+ac-dev-lab,iss,526,Troubleshoot and fix form auto issue,7,0,0,2025-11-20T01:48:01Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/526
+ac-dev-lab,iss,527,Camera mount for xarm gripper,4,0,0,2025-11-20T19:18:27Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/527
+ac-dev-lab,iss,528,Issue on page /devices/a1_cam.html - add AWS / boto3 / MQTT setup instructions,1,0,0,2025-11-21T00:30:54Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/528
+ac-dev-lab,iss,529,"Add AWS S3 and MQTT setup documentation for A1 Mini camera with automated setup tools, validation, and authentication",49,0,4,2025-11-21T00:31:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/529
+ac-dev-lab,iss,530,Xarm5 camera setup,4,0,0,2025-11-21T04:46:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/530
+ac-dev-lab,iss,531,prefect version of a1 cam meant for xarm cam,8,0,0,2025-11-25T03:02:51Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/531
+ac-dev-lab,iss,532,Find and Obtain SEM API Modules,8,0,1,2025-11-25T15:37:47Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/532
+ac-dev-lab,iss,533,Append 4 characters to original Nokia ssid,1,0,0,2025-11-26T04:33:20Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/533
+ac-dev-lab,iss,534,Rename AC Training Lab to AC Dev Lab in documentation,5,0,0,2025-11-26T07:43:56Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/534
+ac-dev-lab,iss,535,Change documentation links to AC Dev Lab,2,0,0,2025-11-26T07:51:00Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/535
+ac-dev-lab,iss,536,Add Brother QL-810W label printer automation with AprilTags,1,0,0,2025-11-27T10:58:45Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/536
+ac-dev-lab,iss,537,mobile equipment monitoring,2,0,0,2025-11-27T18:45:43Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/537
+ac-dev-lab,iss,538,add resolution argument,5,0,0,2025-11-27T21:31:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/538
+ac-dev-lab,iss,539,"Move resolution/rotation/frame rate/timestamp config to my_secrets.py, remove CLI code",32,2,7,2025-11-27T22:43:09Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/539
+ac-dev-lab,iss,540,xArm Camera Hand-eye calibration,4,0,0,2025-11-27T23:43:48Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/540
+ac-dev-lab,iss,541,Add AprilTag detection and hand-eye calibration system for A1 Mini camera,1,1,1,2025-11-28T02:37:50Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/541
+ac-dev-lab,iss,542,Apriltag_calibration,16,0,2,2025-11-28T02:37:55Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/542
+ac-dev-lab,iss,543,Remove fallbacks and add explicit tag family parameter in AprilTag detection,3,0,0,2025-11-28T02:53:42Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/543
+ac-dev-lab,iss,544,SEM maintenance parts location,1,0,0,2025-11-29T10:09:02Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/544
+ac-dev-lab,iss,545,Return extra/wrong ULine parts to ULine Milton,3,0,0,2025-12-04T16:12:59Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/545
+ac-dev-lab,iss,546,Identify and order shelving for formlabs printers,8,0,23,2025-12-04T16:34:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/546
+ac-dev-lab,iss,547,Waste disposal in training lab,9,0,7,2025-12-04T17:11:35Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/547
+ac-dev-lab,iss,548,Install tailscale on SEM,6,0,0,2025-12-04T19:26:46Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/548
+ac-dev-lab,iss,549,Label Sliding Shelves using Label Print,2,0,0,2025-12-15T16:31:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/549
+ac-dev-lab,iss,550,Update contact email for contributions in index.md,2,0,0,2026-01-27T14:56:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/550
+ac-dev-lab,iss,551,Contact email,3,0,0,2026-01-27T15:16:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/551
+ac-dev-lab,iss,552,Winter 2026 MSE403H1 Practical OT2 Liquid colour matching demo,45,1,8,2026-02-05T20:33:12Z,https://github.com/AccelerationConsortium/ac-dev-lab/issues/552
+ac-dev-lab,iss,553,Document OT-2 / Hugging Face / MongoDB data flow for LCM demo,13,0,7,2026-06-19T16:34:17Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/553
+ac-dev-lab,iss,554,Repair <REDACTED> scrub damage and document intentionally public credentials,6,0,0,2026-09-18T16:30:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/554
+ac-dev-lab,iss,556,Bump certifi from 2025.7.14 to 2026.10.18 in /src/ac_training_lab/video_editing,2,0,0,2026-11-23T16:19:24Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/556
+ac-dev-lab,iss,557,Bump httplib2 from 0.22.0 to 0.32.0 in /src/ac_training_lab/video_editing,1,0,2,2026-11-23T16:19:58Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/557
+ac-dev-lab,iss,558,Bump urllib3 from 2.5.0 to 2.8.0 in /src/ac_training_lab/video_editing,2,0,5,2026-11-23T16:20:13Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/558
+ac-dev-lab,iss,559,Bump pyasn1 from 0.6.1 to 0.6.5 in /src/ac_training_lab/video_editing,2,0,0,2026-11-23T16:22:14Z,https://github.com/AccelerationConsortium/ac-dev-lab/pull/559
+self-driving-lab-demo,disc,51,Welcome to self-driving-lab-demo Discussions!,3,0,2,2022-09-10T18:22:50Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/51
+self-driving-lab-demo,disc,52,RGB LEDs vs. having 10+ monochromatic light sources,12,2,32,2022-07-02T23:10:51Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/52
+self-driving-lab-demo,disc,53,Alternative demo ideas,11,1,2,2022-07-10T04:08:34Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/53
+self-driving-lab-demo,disc,54,Pyserial general resources,1,0,0,2022-09-10T06:27:09Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/54
+self-driving-lab-demo,disc,55,Asynchronous MQTT and general MQTT resources,1,0,0,2022-09-10T05:08:02Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/55
+self-driving-lab-demo,disc,56,Potential for non-linear correlations between parameters?,9,0,8,2022-07-03T05:52:52Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/56
+self-driving-lab-demo,disc,57,Suggestions for optimization algorithms to test,6,1,1,2022-08-22T20:24:26Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/57
+self-driving-lab-demo,disc,58,Suggestions for assessing performance,8,0,0,2022-08-22T19:52:55Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/58
+self-driving-lab-demo,disc,59,"Which microcontroller/computer to use? RPi, Arduino, which model",4,3,20,2022-07-03T05:23:27Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/59
+self-driving-lab-demo,disc,60,Prior work,1,0,1,2022-07-03T05:59:00Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/60
+self-driving-lab-demo,disc,62,Exploring the creation of a network of cloud-based experiments,3,1,4,2022-09-10T18:35:34Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/62
+self-driving-lab-demo,disc,64,Experimental workflow orchestration (exploring Bluesky),6,0,0,2022-09-10T18:49:03Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/64
+self-driving-lab-demo,disc,71,Linking to a materials tuning demo,6,4,9,2022-09-17T00:05:01Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/71
+self-driving-lab-demo,disc,77,Roadmap for demo extensions,2,0,5,2022-09-21T05:36:40Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/77
+self-driving-lab-demo,disc,83,"prepaid, long-expiry hotspot",9,4,32,2022-10-04T22:46:58Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/83
+self-driving-lab-demo,disc,84,How can data be securely transferred?,3,0,0,2022-10-04T22:44:24Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/84
+self-driving-lab-demo,disc,85,science-as-a-service model for demos,2,1,6,2022-10-04T22:07:16Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/85
+self-driving-lab-demo,disc,88,classroom demos with standalone network access,3,2,16,2022-10-06T06:40:14Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/88
+self-driving-lab-demo,disc,89,Liquid based color matching demo,10,4,52,2022-10-06T23:48:21Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/89
+self-driving-lab-demo,disc,91,What does access restriction look like for a scaled up cloud-accessible lab?,9,8,49,2022-10-07T16:43:49Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/91
+self-driving-lab-demo,disc,92,Low-cost automated powder dispensers,6,3,17,2022-10-08T17:17:18Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/92
+self-driving-lab-demo,disc,98,Considerations for performing software updates to hardware when in-use,2,0,0,2022-10-13T19:39:13Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/98
+self-driving-lab-demo,disc,100,Robust software principles for device and client code,6,0,0,2022-10-13T22:38:05Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/100
+self-driving-lab-demo,disc,111,v0.5.3,1,0,0,2022-10-22T05:58:12Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/111
+self-driving-lab-demo,disc,113,Sculpting wire alternatives,2,0,8,2022-10-22T08:22:23Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/113
+self-driving-lab-demo,disc,117,Persistent and accessible storage of data,2,1,1,2022-10-29T17:48:47Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/117
+self-driving-lab-demo,disc,118,"Scheduler example for running simulations via external systems (AWS, Slurm, etc.)",5,0,1,2022-10-29T17:59:59Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/118
+self-driving-lab-demo,disc,122,Best practices for backup data logging,1,0,1,2022-11-03T03:48:32Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/122
+self-driving-lab-demo,disc,124,Packaging as a commercial kit,8,34,244,2022-11-04T07:23:32Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/124
+self-driving-lab-demo,disc,126,Need/potential for custom PCBs,1,0,6,2022-11-06T05:00:44Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/126
+self-driving-lab-demo,disc,127,How to differentiate between which hardware the experiment was run on?,14,7,26,2022-11-06T05:51:07Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/127
+self-driving-lab-demo,disc,153,Solid powder demo (e.g. color-matching),4,3,30,2022-12-22T06:56:29Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/153
+self-driving-lab-demo,disc,172,"Devices that monitor resources (flowmeters, liquid level gauges, mass balances)",4,0,6,2023-01-12T23:18:28Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/172
+self-driving-lab-demo,disc,186,Homework problems and educational outcomes,3,0,2,2023-03-08T05:31:01Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/186
+self-driving-lab-demo,disc,195,Maximizing lab storage space for equipment,3,0,0,2023-05-06T16:55:49Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/195
+self-driving-lab-demo,disc,223,pH optimization of chemicals,1,1,9,2023-08-18T19:20:41Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/223
+self-driving-lab-demo,disc,226,"Encrypting micropython credentials (e.g., WiFi, API keys)",3,0,3,2023-09-12T09:15:51Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/226
+self-driving-lab-demo,disc,228,Cookie optimization,1,0,0,2023-09-27T14:42:10Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/228
+self-driving-lab-demo,disc,229,Potential gentle introduction tutorials,1,0,0,2023-09-30T22:36:30Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/229
+self-driving-lab-demo,disc,232,Robot chocolatier (RoboChocolatier) as a materials science teaching demo for autonomous science,1,3,19,2024-01-15T22:16:35Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/232
+self-driving-lab-demo,disc,233,Workflow orchestration - what goes where?,2,2,2,2024-01-17T05:46:51Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/233
+self-driving-lab-demo,disc,234,Free-tier servers,1,1,6,2024-01-19T16:37:43Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/234
+self-driving-lab-demo,disc,236,Human-inspired vs. hardware-centric vs. human-in-the-loop design approaches,1,0,0,2024-01-25T17:32:07Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/236
+self-driving-lab-demo,disc,237,With what granularity should HiveMQ credentials be assigned?,1,0,0,2024-01-26T14:35:15Z,https://github.com/sparks-baird/self-driving-lab-demo/discussions/237
+self-driving-lab-demo,iss,1,filling in template,1,0,0,2022-07-02T21:42:09Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/1
+self-driving-lab-demo,iss,2,no windows or macos gh actions,1,0,0,2022-07-02T21:45:33Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/2
+self-driving-lab-demo,iss,3,add link to adafruit forum,1,0,1,2022-07-02T21:46:55Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/3
+self-driving-lab-demo,iss,4,"contributing docs, readme bill of materials and forum post links",1,0,0,2022-07-02T22:05:03Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/4
+self-driving-lab-demo,iss,5,mention benchmarks as a core component,1,0,0,2022-07-02T22:08:13Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/5
+self-driving-lab-demo,iss,6,RGB LEDs vs. having 10+ monochromatic light sources,10,2,32,2022-07-02T23:10:51Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/6
+self-driving-lab-demo,iss,7,add todo in README,1,0,0,2022-07-03T05:19:20Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/7
+self-driving-lab-demo,iss,8,"Which microcontroller/computer to use? RPi, Arduino, which model",4,3,20,2022-07-03T05:23:27Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/8
+self-driving-lab-demo,iss,9,Potential for non-linear correlations between parameters?,8,0,8,2022-07-03T05:52:52Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/9
+self-driving-lab-demo,iss,10,Prior work,1,0,1,2022-07-03T05:59:00Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/10
+self-driving-lab-demo,iss,11,add hackaday project link,1,0,0,2022-07-09T00:06:13Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/11
+self-driving-lab-demo,iss,12,change benchmarking to prototyping in README,1,0,0,2022-07-09T18:30:42Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/12
+self-driving-lab-demo,iss,13,Alternative demo ideas,4,0,2,2022-07-10T04:08:34Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/13
+self-driving-lab-demo,iss,14,add links to other BOMs (RPi Zero 2 W),1,0,0,2022-07-10T04:47:47Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/14
+self-driving-lab-demo,iss,15,add links to RPi setup and Blinkt! test,1,0,0,2022-07-31T05:56:53Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/15
+self-driving-lab-demo,iss,16,Mounting prototyping images,1,0,0,2022-08-18T01:33:10Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/16
+self-driving-lab-demo,iss,17,Possibility for multi-fidelity example by controlling integration time,3,0,0,2022-08-18T19:49:09Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/17
+self-driving-lab-demo,iss,18,"dotstar artifacts, especially rgb spectrum files, and SensorSimulator",2,0,0,2022-08-20T02:19:15Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/18
+self-driving-lab-demo,iss,19,sensor simulator notebook,1,0,0,2022-08-20T06:38:09Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/19
+self-driving-lab-demo,iss,20,add sequential ordering to notebooks (i.e. a story),1,0,0,2022-08-20T22:34:47Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/20
+self-driving-lab-demo,iss,21,include static images for online GitHub viewing,3,0,0,2022-08-21T03:38:55Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/21
+self-driving-lab-demo,iss,22,Suggestions for assessing performance,8,0,0,2022-08-22T19:52:55Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/22
+self-driving-lab-demo,iss,23,Suggestions for optimization algorithms to test,5,1,1,2022-08-22T20:24:26Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/23
+self-driving-lab-demo,iss,24,pico-w circuit python scripts,3,0,0,2022-08-24T05:56:18Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/24
+self-driving-lab-demo,iss,25,RGB + brightness has a degenerate dimension,2,0,0,2022-08-25T22:14:38Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/25
+self-driving-lab-demo,iss,26,Create self_driving_optics_demo-rev1.pdf,2,0,0,2022-08-26T21:49:11Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/26
+self-driving-lab-demo,iss,27,micropython,3,0,0,2022-08-28T02:46:18Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/27
+self-driving-lab-demo,iss,28,micropython and circuitpython sdl-demo files,3,0,0,2022-08-28T02:50:20Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/28
+self-driving-lab-demo,iss,29,adafruit_io and cleaning up the dependencies (no longer depending on circuitpython),3,0,3,2022-08-28T03:05:22Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/29
+self-driving-lab-demo,iss,30,add teaching figures to sensor simulator notebook,3,0,0,2022-08-30T19:53:34Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/30
+self-driving-lab-demo,iss,31,"GIFs of grid, random, and Bayesian",4,0,0,2022-08-30T19:55:00Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/31
+self-driving-lab-demo,iss,32,pico-w code for adafruit-io and micropython,3,0,3,2022-08-30T19:57:48Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/32
+self-driving-lab-demo,iss,33,[Pico W micropython] Bayesian optimization from scratch,5,0,0,2022-09-02T18:39:31Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/33
+self-driving-lab-demo,iss,34,blinkt,5,0,0,2022-09-09T13:22:08Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/34
+self-driving-lab-demo,iss,35,neopixel files,1,0,0,2022-09-09T13:22:32Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/35
+self-driving-lab-demo,iss,36,nonwireless scripts,1,0,0,2022-09-09T13:22:54Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/36
+self-driving-lab-demo,iss,37,public mqtt,1,0,0,2022-09-09T18:21:39Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/37
+self-driving-lab-demo,iss,38,implement heartbeat to avoid disconnection,3,0,0,2022-09-10T04:13:17Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/38
+self-driving-lab-demo,iss,39,use mqtt by default,3,0,0,2022-09-10T04:25:25Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/39
+self-driving-lab-demo,iss,40,Create 4.0-paho-mqtt-colab-sdl-demo.ipynb,1,0,0,2022-09-10T04:37:03Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/40
+self-driving-lab-demo,iss,41,colab badge,1,0,0,2022-09-10T04:40:56Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/41
+self-driving-lab-demo,iss,42,return sensor data dictionary,1,0,0,2022-09-10T04:45:23Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/42
+self-driving-lab-demo,iss,43,Unique ID for RPi Pico,1,0,0,2022-09-10T05:00:45Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/43
+self-driving-lab-demo,iss,44,Display Pico ID on an external (Pico) display,1,0,1,2022-09-10T05:06:37Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/44
+self-driving-lab-demo,iss,45,Asynchronous MQTT and general MQTT resources,1,0,0,2022-09-10T05:08:02Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/45
+self-driving-lab-demo,iss,46,Create 4.1-paho-mqtt-colab-sdl-demo-search.ipynb,3,0,0,2022-09-10T05:32:58Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/46
+self-driving-lab-demo,iss,47,commentary on additional notebooks,3,0,0,2022-09-10T06:00:07Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/47
+self-driving-lab-demo,iss,48,nonwireless observation function,3,0,0,2022-09-10T06:01:23Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/48
+self-driving-lab-demo,iss,49,Need to double check that MQTT heartbeat avoiding timeout works OK,2,0,0,2022-09-10T06:12:32Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/49
+self-driving-lab-demo,iss,50,Pyserial general resources,1,0,0,2022-09-10T06:27:09Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/50
+self-driving-lab-demo,iss,65,paho mqtt notebook for public demo,3,0,0,2022-09-11T03:57:06Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/65
+self-driving-lab-demo,iss,66,critical feedback in markdown comments,3,0,0,2022-09-11T05:32:01Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/66
+self-driving-lab-demo,iss,67,"implement session ID to allow for multiple, concurrent users",3,0,0,2022-09-12T09:29:38Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/67
+self-driving-lab-demo,iss,68,add static images (example outputs),3,0,0,2022-09-12T10:12:28Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/68
+self-driving-lab-demo,iss,69,fixup frechet dist - should be using wavelengths,3,0,0,2022-09-12T17:03:30Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/69
+self-driving-lab-demo,iss,70,Update 4.2-paho-mqtt-colab-sdl-demo-test.ipynb,3,0,0,2022-09-12T19:14:03Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/70
+self-driving-lab-demo,iss,72,Workaround for timeout,1,0,0,2022-09-19T17:13:47Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/72
+self-driving-lab-demo,iss,73,secrets.py: invalid syntax for integer with base 10,1,0,0,2022-09-21T01:09:29Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/73
+self-driving-lab-demo,iss,74,Resetting raspberry Pi after firmware installation,1,0,0,2022-09-21T01:11:07Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/74
+self-driving-lab-demo,iss,75,Issue connecting to AS7341,1,0,0,2022-09-21T01:14:46Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/75
+self-driving-lab-demo,iss,76,Issues connecting to WiFi,1,0,1,2022-09-21T01:29:52Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/76
+self-driving-lab-demo,iss,78,Observe sensor data still hanging if MQTT isn't working,2,0,0,2022-10-04T15:49:29Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/78
+self-driving-lab-demo,iss,79,github actions cron for sending and receiving data to the publicly accessible test demo,3,0,0,2022-10-04T22:03:42Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/79
+self-driving-lab-demo,iss,80,science-as-a-service model for demos,1,0,2,2022-10-04T22:07:16Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/80
+self-driving-lab-demo,iss,81,How can data be securely transferred?,2,0,0,2022-10-04T22:44:24Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/81
+self-driving-lab-demo,iss,82,"prepaid, long-expiry hotspot",3,0,3,2022-10-04T22:46:58Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/82
+self-driving-lab-demo,iss,86,"red value mismatch, but only because of rounding",2,0,0,2022-10-05T03:09:13Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/86
+self-driving-lab-demo,iss,90,trying to get a camera to work,3,0,0,2022-10-07T03:14:56Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/90
+self-driving-lab-demo,iss,93,Having trouble getting the ArduCam SPI (MP2) camera to work,5,0,7,2022-10-08T17:39:00Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/93
+self-driving-lab-demo,iss,94,access model example(s),4,0,0,2022-10-09T02:21:04Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/94
+self-driving-lab-demo,iss,95,write backup data to SD card slot if present,1,0,1,2022-10-10T17:01:47Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/95
+self-driving-lab-demo,iss,96,buzzer chimes for when an experiment starts or ends,1,0,0,2022-10-10T17:10:56Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/96
+self-driving-lab-demo,iss,97,"astep, atime, and gain kwargs",1,0,0,2022-10-13T19:35:31Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/97
+self-driving-lab-demo,iss,99,A bad MQTT payload can throw an unrecoverable exception in main.py,1,0,0,2022-10-13T19:51:44Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/99
+self-driving-lab-demo,iss,101,making host and client software robust to user inputs (avoid device lock),3,0,0,2022-10-14T00:30:41Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/101
+self-driving-lab-demo,iss,102,add beep during experiment as a sign of life,1,0,0,2022-10-14T01:24:55Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/102
+self-driving-lab-demo,iss,103,"fixup search convenience functions, separate tests into different files",3,0,0,2022-10-14T13:24:43Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/103
+self-driving-lab-demo,iss,104,"Non-fidelity, fidelity, and other parameters aren't distinguished very well from each other",1,0,0,2022-10-14T16:57:13Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/104
+self-driving-lab-demo,iss,105,multi-objective optimization tutorial,3,0,0,2022-10-14T18:36:32Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/105
+self-driving-lab-demo,iss,106,error vs. cost tradeoffs,2,0,2,2022-10-15T05:01:26Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/106
+self-driving-lab-demo,iss,107,plotting of moo vs. scalar,3,0,0,2022-10-15T15:51:10Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/107
+self-driving-lab-demo,iss,108,add note about next notebook,3,0,0,2022-10-16T05:39:52Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/108
+self-driving-lab-demo,iss,109,multi-fidelity notebook tutorials,2,0,0,2022-10-16T05:42:04Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/109
+self-driving-lab-demo,iss,110,cls-labs-liquid,5,0,0,2022-10-19T01:16:27Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/110
+self-driving-lab-demo,iss,112,build images,1,0,0,2022-10-22T06:27:55Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/112
+self-driving-lab-demo,iss,114,Update 6.2.1-multi-fidelity-continuous.ipynb,4,0,0,2022-10-22T20:00:59Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/114
+self-driving-lab-demo,iss,115,Throw a better error than Queue.Empty when timing out,1,0,1,2022-10-22T20:09:02Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/115
+self-driving-lab-demo,iss,116,don't pass session_id as client_id to avoid parallel experiment issues,4,0,0,2022-10-22T23:18:54Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/116
+self-driving-lab-demo,iss,120,Wire gauges,3,0,1,2022-11-01T21:50:33Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/120
+self-driving-lab-demo,iss,121,Feature Request: surrogate models of the objectives,3,0,0,2022-11-02T15:49:35Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/121
+self-driving-lab-demo,iss,123,.vscode folder including pico-w-go stubs,1,0,0,2022-11-04T05:25:06Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/123
+self-driving-lab-demo,iss,128,sd card write and MongoDB logging,3,0,0,2022-11-11T02:33:24Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/128
+self-driving-lab-demo,iss,129,Pico not being recognized by SparksOne computer,1,0,1,2022-11-12T04:15:38Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/129
+self-driving-lab-demo,iss,130,escience notebooks,2,0,0,2022-11-12T20:00:14Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/130
+self-driving-lab-demo,iss,131,implement a cron with a dummy communication check (not running a real experiment),1,0,0,2022-11-19T23:02:27Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/131
+self-driving-lab-demo,iss,132,pydantic minimal working example for experiment input validation (and some serverless options),3,0,0,2022-11-22T00:15:27Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/132
+self-driving-lab-demo,iss,133,public-private key for hardware validation,6,0,0,2022-11-22T03:13:32Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/133
+self-driving-lab-demo,iss,134,Auto-try reconnection to WiFi network,2,0,0,2022-12-02T02:33:28Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/134
+self-driving-lab-demo,iss,135,Send notification email if cron job fails or if Pico W errors out at any point in the main loop,2,1,1,2022-12-02T02:34:11Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/135
+self-driving-lab-demo,iss,136,testing out rsa cipher,2,0,0,2022-12-04T03:55:13Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/136
+self-driving-lab-demo,iss,137,CLSLabs:Liquid WIP functionality,2,0,0,2022-12-04T03:59:05Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/137
+self-driving-lab-demo,iss,138,Implement WPA Enterprise example,2,0,0,2022-12-04T05:49:21Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/138
+self-driving-lab-demo,iss,139,update liquid API,1,0,0,2022-12-07T05:46:37Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/139
+self-driving-lab-demo,iss,140,"splice out and bring APIs into conformity (light, liquid, and template)",3,0,0,2022-12-07T06:25:23Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/140
+self-driving-lab-demo,iss,141,white LED and STAR protocols draft,1,0,0,2022-12-08T08:18:57Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/141
+self-driving-lab-demo,iss,142,mongodb notebooks and star protocols items,2,0,0,2022-12-08T08:21:06Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/142
+self-driving-lab-demo,iss,143,figures,1,0,0,2022-12-10T00:31:07Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/143
+self-driving-lab-demo,iss,144,tests failing due to tox update (GitHub actions),2,0,0,2022-12-11T01:42:55Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/144
+self-driving-lab-demo,iss,145,generating the hackathon dataset,2,0,0,2022-12-11T02:40:36Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/145
+self-driving-lab-demo,iss,146,Ensure that main public-facing tutorial can run to completion,2,0,0,2022-12-11T06:17:21Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/146
+self-driving-lab-demo,iss,147,save sdl_demo.zip from public_mqtt_sdl_demo automatically via GitHub actions release,2,0,0,2022-12-11T06:35:47Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/147
+self-driving-lab-demo,iss,148,DeprecationWarning: ssl.PROTOCOL_TLS is deprecated,1,0,0,2022-12-11T06:53:15Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/148
+self-driving-lab-demo,iss,149,Heteroskedastic GP example,1,0,0,2022-12-12T16:42:20Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/149
+self-driving-lab-demo,iss,150,hivemq implementation,2,0,0,2022-12-16T20:59:11Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/150
+self-driving-lab-demo,iss,151,"add note to public demo, main.py logfile, and fixup search",2,0,0,2022-12-20T17:08:57Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/151
+self-driving-lab-demo,iss,152,update hivemq instructions to include certificate,2,0,0,2022-12-20T23:21:40Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/152
+self-driving-lab-demo,iss,154,Consider moving MongoDB logging to the client,1,0,0,2022-12-23T03:16:56Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/154
+self-driving-lab-demo,iss,155,Enable requesting a dummy experiment from the device,1,0,0,2022-12-27T06:44:13Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/155
+self-driving-lab-demo,iss,156,Tracking resource-dependent conditions,1,0,0,2022-12-27T06:48:57Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/156
+self-driving-lab-demo,iss,157,MongoDB logging stopped working on the device after some time,3,0,0,2022-12-27T07:15:33Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/157
+self-driving-lab-demo,iss,158,"notebooks, scripts, figures, device, and client code",2,0,0,2022-12-30T07:48:52Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/158
+self-driving-lab-demo,iss,159,Ax example with SQLAlchemy,1,0,0,2023-01-03T22:05:05Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/159
+self-driving-lab-demo,iss,160,fixup main liquid for robustness,3,0,0,2023-01-05T22:14:26Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/160
+self-driving-lab-demo,iss,161,use of reset() increases robustness but obscures debugging,2,0,0,2023-01-05T22:27:50Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/161
+self-driving-lab-demo,iss,162,non-obvious pinouts / connections should be made available via a printed QR code,1,0,0,2023-01-05T23:28:23Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/162
+self-driving-lab-demo,iss,163,"deps, record prerinse_background_data, and sleep for 1 s in-between sensor measurements",3,0,0,2023-01-06T03:12:46Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/163
+self-driving-lab-demo,iss,164,Install on MacOS Ventura with Apple Silicon,4,0,0,2023-01-07T00:16:25Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/164
+self-driving-lab-demo,iss,165,remove blinkt and adafruit-circuitpython-as7341,2,0,2,2023-01-07T01:02:01Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/165
+self-driving-lab-demo,iss,166,Check environment.yml file during unit tests,1,0,0,2023-01-07T01:16:05Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/166
+self-driving-lab-demo,iss,167,4.2-paho-mqtt-colab-sdl-demo-test.ipynb error?,3,0,0,2023-01-07T17:43:36Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/167
+self-driving-lab-demo,iss,168,bayes-liquid notebook and star protocols preprint,2,0,0,2023-01-07T18:01:08Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/168
+self-driving-lab-demo,iss,169,Warning about metric fitting during `ax_bayesian_optimization` that indicates unnecessary work,2,0,0,2023-01-07T18:23:36Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/169
+self-driving-lab-demo,iss,170,4.2-paho-mqtt-colab-sdl-demo-test,2,0,0,2023-01-07T21:32:20Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/170
+self-driving-lab-demo,iss,171,Installing blinkt on MacOS,3,0,0,2023-01-09T23:22:14Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/171
+self-driving-lab-demo,iss,173,Updates to README,1,0,1,2023-02-10T04:13:20Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/173
+self-driving-lab-demo,iss,174,strikethrough blinkt tutorials,2,0,0,2023-02-16T15:34:30Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/174
+self-driving-lab-demo,iss,175,"moving folders to ""extra"" and updating liquid reports",1,0,0,2023-02-16T15:35:46Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/175
+self-driving-lab-demo,iss,176,extra notebooks,1,0,0,2023-02-18T05:13:20Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/176
+self-driving-lab-demo,iss,177,rename files,2,0,0,2023-02-18T17:15:55Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/177
+self-driving-lab-demo,iss,178,liquid color-matching demo ends up siphoning due to lack of tubing seal within peristaltic pump,1,0,0,2023-02-21T22:37:21Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/178
+self-driving-lab-demo,iss,179,update notebooks,2,0,0,2023-02-23T04:34:28Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/179
+self-driving-lab-demo,iss,180,Update cls-labs-liquid-hardwarex.docx,2,0,0,2023-02-27T23:43:47Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/180
+self-driving-lab-demo,iss,181,add users,2,0,0,2023-02-28T06:01:25Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/181
+self-driving-lab-demo,iss,182,additional info for users,2,0,0,2023-03-01T06:05:53Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/182
+self-driving-lab-demo,iss,183,documentation improvements,1,0,0,2023-03-07T05:41:48Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/183
+self-driving-lab-demo,iss,184,"response to reviewers, star protocols figures, and fixes to 4.2 notebook",2,0,0,2023-03-07T06:05:27Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/184
+self-driving-lab-demo,iss,185,resubmission touchups and figures,2,0,0,2023-03-07T07:03:30Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/185
+self-driving-lab-demo,iss,187,get_paho_client to avoid extraneous connections,1,0,0,2023-03-09T23:33:15Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/187
+self-driving-lab-demo,iss,188,Getting error messages when running 'main.py',2,0,0,2023-03-24T23:26:02Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/188
+self-driving-lab-demo,iss,189,`logged_to_mongodb == True` but in actuality failed on host side,1,0,0,2023-03-27T20:38:06Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/189
+self-driving-lab-demo,iss,190,BioTech Rebuikd for spectroscopic Infra-structure,5,0,0,2023-03-30T21:18:28Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/190
+self-driving-lab-demo,iss,191,timeout=timeout,1,0,0,2023-04-05T06:53:18Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/191
+self-driving-lab-demo,iss,192,Update 4.0-paho-mqtt-colab-sdl-demo.ipynb,2,0,0,2023-04-05T06:56:24Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/192
+self-driving-lab-demo,iss,193,"Support for nonwireless (i.e., hardwired) control of demo",1,0,0,2023-04-22T17:23:13Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/193
+self-driving-lab-demo,iss,194,Pico W setup with Ubuntu ,5,2,4,2023-05-04T19:52:16Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/194
+self-driving-lab-demo,iss,196,Light was left on (very bright) unexpectedly,1,0,0,2023-05-31T18:56:18Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/196
+self-driving-lab-demo,iss,197,"Remove duplicate, old instructions from README",1,0,0,2023-06-10T03:20:39Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/197
+self-driving-lab-demo,iss,198,include notebook tutorials in sphinx docs and various star protocols manuscript updates,2,0,0,2023-06-14T06:48:07Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/198
+self-driving-lab-demo,iss,199,Incorrect figure showing up on readthedocs for 4.2 tutorial notebook,3,0,0,2023-06-14T22:57:54Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/199
+self-driving-lab-demo,iss,200,doc fixes,2,0,0,2023-06-16T14:33:03Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/200
+self-driving-lab-demo,iss,201,Add experiment runtime as part of the recorded data,1,0,0,2023-06-17T07:23:41Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/201
+self-driving-lab-demo,iss,202,trim readme,1,0,0,2023-06-17T07:35:05Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/202
+self-driving-lab-demo,iss,203,mongodb notebook and clslab liquid annotated image,1,0,0,2023-06-17T07:45:23Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/203
+self-driving-lab-demo,iss,204,Update visual BOM for CLSLab:Liquid,1,0,0,2023-06-17T08:11:26Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/204
+self-driving-lab-demo,iss,205,"Better titles for gallery notebooks, and fix list of gallery notebooks",1,0,0,2023-06-17T08:34:35Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/205
+self-driving-lab-demo,iss,206,"RTD build failing, LaTeX out of memory",3,1,2,2023-06-17T08:54:49Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/206
+self-driving-lab-demo,iss,207,move a bunch of figures to subdirectories and try higher python version,1,0,0,2023-06-17T09:02:43Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/207
+self-driving-lab-demo,iss,208,switch to new format for readthedocs configuration file,1,0,0,2023-06-17T09:14:11Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/208
+self-driving-lab-demo,iss,209,Edit on GitHub link goes to placeholder file instead of actual content,1,0,0,2023-06-17T09:51:01Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/209
+self-driving-lab-demo,iss,210,notebook updates,2,0,0,2023-06-18T05:57:03Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/210
+self-driving-lab-demo,iss,211,add basic usage,2,0,0,2023-06-21T00:51:42Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/211
+self-driving-lab-demo,iss,212,fixup title and rerun doe comparison,2,0,0,2023-06-21T02:29:25Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/212
+self-driving-lab-demo,iss,213,change markdown syntax to html for image,1,0,0,2023-06-21T05:57:38Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/213
+self-driving-lab-demo,iss,214,notebook gallery fixes,2,0,0,2023-06-21T08:09:08Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/214
+self-driving-lab-demo,iss,215,add subsection titles to tutorial page,2,0,0,2023-06-21T08:17:57Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/215
+self-driving-lab-demo,iss,216,"Occasionally, ""test bad payload values"" test functions fail",1,0,0,2023-06-24T03:35:03Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/216
+self-driving-lab-demo,iss,217,PAPER: Matter (?) article for using CLSLabs-Light as a teaching and prototyping demo,1,0,1,2023-07-12T13:52:27Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/217
+self-driving-lab-demo,iss,218,Some notebooks taking a really long time to load,1,0,0,2023-07-13T02:51:30Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/218
+self-driving-lab-demo,iss,219,Fix incorrect link for Open in Colab for public-facing tutorial on tutorials page,1,0,0,2023-07-14T18:58:25Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/219
+self-driving-lab-demo,iss,220,Support Bluetooth,1,0,0,2023-07-20T01:03:06Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/220
+self-driving-lab-demo,iss,221,Rename `mongodb` kwarg to `log_to_mongodb`,1,0,0,2023-08-08T13:35:01Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/221
+self-driving-lab-demo,iss,222,release the liquid files as well,2,0,0,2023-08-17T01:17:40Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/222
+self-driving-lab-demo,iss,224,nbsphinx puts toctree in front of thumbnails,1,0,0,2023-08-25T20:23:35Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/224
+self-driving-lab-demo,iss,225,Add status badge for public demo,2,0,0,2023-09-09T23:42:11Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/225
+self-driving-lab-demo,iss,227,"Public test demo neopixel no longer lighting up, needs replacement and better unit tests",2,0,0,2023-09-22T20:35:03Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/227
+self-driving-lab-demo,iss,230,add ability to specify target_inputs directly,2,0,0,2024-01-05T17:16:20Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/230
+self-driving-lab-demo,iss,231,use Colab form fields for target RGB,2,0,0,2024-01-05T21:44:00Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/231
+self-driving-lab-demo,iss,235,Display SSID when connecting to WiFi,1,0,0,2024-01-24T22:17:58Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/235
+self-driving-lab-demo,iss,238,Update observe.py,1,0,0,2024-02-12T13:55:30Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/238
+self-driving-lab-demo,iss,239,paho mqtt v2.0.0,1,0,0,2024-02-12T14:40:03Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/239
+self-driving-lab-demo,iss,240,notebook gif/images,2,0,0,2024-02-13T17:10:15Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/240
+self-driving-lab-demo,iss,241,add property for also getting clr and nir,2,0,0,2024-03-26T03:19:01Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/241
+self-driving-lab-demo,iss,242,try-except for root_mean_squared_error,1,0,0,2024-05-17T15:37:53Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/242
+self-driving-lab-demo,iss,243,Confusion on the Light Demo,2,0,0,2024-05-29T18:39:52Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/243
+self-driving-lab-demo,iss,244,ussl to ssl,2,0,0,2024-06-05T20:25:38Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/244
+self-driving-lab-demo,iss,245,Certificate verification issue,7,0,2,2024-07-01T11:27:04Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/245
+self-driving-lab-demo,iss,246,add more useful error message for hivemq fail,2,0,0,2024-07-04T16:57:36Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/246
+self-driving-lab-demo,iss,247,Command topic should be exposed in 4.2 colab notebook,1,0,0,2024-07-27T19:55:44Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/247
+self-driving-lab-demo,iss,248,update expired certificate,3,0,0,2024-09-12T16:31:18Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/248
+self-driving-lab-demo,iss,249,"Public test demo is disconnecting after ~1-2 days, even after power cycling",2,0,0,2024-09-12T18:58:04Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/249
+self-driving-lab-demo,iss,250,Create temperatureSensorTest.py,3,0,1,2024-09-25T01:56:36Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/250
+self-driving-lab-demo,iss,251,use watchdog timer instead of reset,1,0,0,2024-09-25T21:10:57Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/251
+self-driving-lab-demo,iss,252,[1.1 Run the Demo] Cannot get SDL demo test to run successfully,14,0,2,2024-10-15T16:49:12Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/252
+self-driving-lab-demo,iss,253,HiveMQ certificate seems to keep expiring periodically,5,0,0,2024-10-17T16:46:10Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/253
+self-driving-lab-demo,iss,254,Tests keep failing even though HF space and colab notebook are fine,2,0,0,2024-10-31T12:00:08Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/254
+self-driving-lab-demo,iss,255,"""Monster Blood"" CLSLab: Liquid Motor does not respond to Pi",9,0,0,2024-11-01T22:57:08Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/255
+self-driving-lab-demo,iss,256,Autograder not working,3,0,0,2024-11-12T20:27:56Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/256
+self-driving-lab-demo,iss,257,Add LED control to as7341 sensor wrapper class,3,0,0,2024-12-06T18:13:53Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/257
+self-driving-lab-demo,iss,258,Consider how RPi Zero 2W could be integrated,1,0,0,2025-01-06T10:03:51Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/258
+self-driving-lab-demo,iss,259,Figure out why second call in public test fails (the fidelity call),1,0,0,2025-02-28T17:38:07Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/259
+self-driving-lab-demo,iss,260,"In mqtt_as.py, not sure if I should be passing `port` number into the config",1,0,0,2025-03-02T00:13:33Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/260
+self-driving-lab-demo,iss,261,Atlas Data API and HTTPS Endpoints Deprecation,4,0,0,2025-03-21T09:53:58Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/261
+self-driving-lab-demo,iss,262,MQTT QoS tag in main.py,2,0,0,2025-03-21T10:08:49Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/262
+self-driving-lab-demo,iss,263,import error on main.py -> umqtt/simple.py,12,0,0,2025-04-01T00:04:01Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/263
+self-driving-lab-demo,iss,264,Update setup.cfg with ax < 0.5,2,0,0,2025-05-16T00:04:02Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/264
+self-driving-lab-demo,iss,265,Updating Ax Version,3,1,1,2025-06-04T13:04:48Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/265
+self-driving-lab-demo,iss,266,Update ax-platform to support versions >= 0.5 for baybe compatibility,11,0,0,2025-06-04T16:55:38Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/266
+self-driving-lab-demo,iss,267,Update environment.yml with ax-platform < 1,2,0,0,2025-06-05T17:28:04Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/267
+self-driving-lab-demo,iss,268,Make ax-platform an optional dependency and incorporate into environment.yml instead,2,0,0,2025-06-05T17:30:03Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/268
+self-driving-lab-demo,iss,269,Make ax-platform an optional dependency and incorporate into environment.yml,7,0,0,2025-06-05T17:30:08Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/269
+self-driving-lab-demo,iss,270,Consider using https://github.com/matchms/matchms for comparison of spectra,1,0,0,2025-06-11T12:45:55Z,https://github.com/sparks-baird/self-driving-lab-demo/issues/270
+self-driving-lab-demo,iss,271,"Update ci.yml Python 3.9, 3.12",2,0,0,2025-06-28T17:30:29Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/271
+self-driving-lab-demo,iss,272,replace with root certificate,2,0,0,2025-11-17T16:58:07Z,https://github.com/sparks-baird/self-driving-lab-demo/pull/272

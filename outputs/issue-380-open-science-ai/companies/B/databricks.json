@@ -1,0 +1,83 @@
+{
+  "name": "Databricks, Inc.",
+  "slug": "databricks",
+  "group": "B",
+  "category": "software",
+  "subcategory": "data lakehouse / data + AI platform",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Founded 2013 in San Francisco by seven UC Berkeley AMPLab researchers (incl. Ali Ghodsi, Matei Zaharia, Ion Stoica, Reynold Xin, Patrick Wendell, Andy Konwinski, Scott Shenker) who created Apache Spark (open-sourced ~2010, donated to the Apache Software Foundation in 2013); first round led by Andreessen Horowitz",
+  "founded_year": 2013,
+  "flagship_projects": ["Apache Spark", "Delta Lake", "MLflow", "Unity Catalog", "Databricks Data Intelligence Platform (SaaS)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Open core around foundation-governed projects: Spark is an Apache Software Foundation project (Apache-2.0); Delta Lake (Apache-2.0) went to the Linux Foundation in Oct 2019; MLflow and Unity Catalog are open source. The revenue product, the managed Databricks platform and runtime, is proprietary SaaS. Databricks has moved toward more openness over time (all Delta Lake features open-sourced in 2022; Unity Catalog open-sourced 2024).",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2013, "license": "Apache-2.0 (Apache Spark, ASF governance)", "note": "Spark donated to the ASF the year Databricks was founded", "source": "https://www.databricks.com/company/newsroom/press-kit"},
+    {"year": 2019, "license": "Apache-2.0 (Delta Lake)", "note": "Announced open source at Spark+AI Summit 2019; hosted by the Linux Foundation from Oct 2019; some Delta features remained proprietary in Databricks' platform", "source": "https://techcrunch.com/2019/10/15/databricks-brings-its-delta-lake-open-source-project-to-the-linux-foundation"},
+    {"year": 2022, "license": "Apache-2.0 (all Delta Lake APIs)", "note": "Delta Lake 2.0: all features contributed to the Linux Foundation project", "source": "https://www.databricks.com/blog/2022/06/30/open-sourcing-all-of-delta-lake.html"},
+    {"year": 2024, "license": "Apache-2.0 (Unity Catalog)", "note": "Open-sourcing announced 12 Jun 2024 at Data + AI Summit", "source": "https://www.hpcwire.com/bigdatawire/bigdatawire/2024/06/12/databricks-to-open-source-unity-catalog/"}
+  ],
+  "relicensing_events": [
+    {"year": 2019, "from": "Proprietary (internal Databricks Delta)", "to": "Apache-2.0, Linux Foundation", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Turned an internal proprietary table format into a foundation-hosted open standard to compete with Apache Iceberg/Hudi", "source": "https://databricks.com/blog/2019/10/16/delta-lake-now-hosted-by-the-linux-foundation-to-become-the-open-standard-for-data-lakes.html"},
+    {"year": 2022, "from": "Partially proprietary Delta Lake features", "to": "Apache-2.0 (all Delta APIs)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Responded to competitor claims that Delta was effectively proprietary", "source": "https://www.databricks.com/blog/2022/06/30/open-sourcing-all-of-delta-lake.html"},
+    {"year": 2024, "from": "Proprietary Unity Catalog", "to": "Apache-2.0 Unity Catalog OSS", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Announced the same week as the Tabular (Apache Iceberg creators) acquisition, amid a format/catalog war with Snowflake", "source": "https://www.hpcwire.com/bigdatawire/bigdatawire/2024/06/12/databricks-to-open-source-unity-catalog/"}
+  ],
+  "funding_total_usd": 25200000000,
+  "funding_as_of": "2026",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 190000000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2026-08-13",
+  "revenue_latest_usd": 7000000000,
+  "revenue_year": 2026,
+  "employees_latest": 12300,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Table-format and catalog war with Snowflake and Apache Iceberg; Databricks bought Tabular (Iceberg creators) in Jun 2024 (reported ~$1B)",
+    "Very high valuation multiple (~27x run-rate revenue at $190B) and dependence on AI spending",
+    "IPO repeatedly deferred; Ghodsi reportedly ruled out a 2026 IPO, 2027 possible",
+    "Nov 2026: WSJ reported early talks for a new raise at ~$225B (unconfirmed)"
+  ],
+  "robustness": "Core technologies (Spark at the ASF, Delta Lake at the Linux Foundation, MLflow, Unity Catalog) are foundation-hosted or OSI-licensed and widely used by competitors, so they would survive the company. The company itself is the largest private software firm in this group: >$7B revenue run-rate growing >80% (mid-2026), >1,000 customers above $1M run-rate, and very deep private capital.",
+  "physical_science_relevance": "Spark and Databricks are used for large-scale scientific data processing (genomics, climate, high-energy physics pipelines) and ML on experimental data; MLflow is widely used for experiment tracking in research ML.",
+  "openness_effect_assessment": "Academic open source (Spark) created a huge user base and talent pipeline that Databricks monetized via a proprietary managed platform. Unlike database vendors that moved to restrictive licences, Databricks repeatedly opened more (Delta 2019/2022, Unity Catalog 2024), using open, foundation-governed standards as a competitive weapon against Snowflake; its valuation rose from $62B (Dec 2024) to $190B (Aug 2026) during this period.",
+  "key_takeaway": "Databricks is the strongest case for the academic-spin-out, foundation-governed open-core model: the founders gave Spark to the ASF, kept the commercial value in a managed cloud service, and became the most valuable company in this group (~$190B, Aug 2026) without ever relicensing to a restrictive licence. AI demand, not the open-source projects alone, explains the 2025-2026 valuation surge.",
+  "confidence": "medium",
+  "searches": [
+    "Databricks founded 2013 UC Berkeley AMPLab Apache Spark founders Ghodsi Zaharia Stoica Spark donated Apache Software Foundation",
+    "Databricks latest funding round valuation 2026",
+    "Databricks revenue run-rate 2026 employees IPO plans Ghodsi",
+    "Databricks Delta Lake open sourced Linux Foundation 2019 Unity Catalog open source 2024 Tabular acquisition $1 billion",
+    "Databricks total funding raised to date employees 2026 Series L $134 billion December 2025",
+    "Databricks open sources Delta Lake April 2019 Apache 2.0 Linux Foundation October 2019 proprietary Delta features"
+  ],
+  "sources": [
+    {"url": "https://www.databricks.com/company/newsroom/press-kit", "title": "Databricks press kit", "publisher": "Databricks", "date": null, "supports": "founded_year, origin_detail"},
+    {"url": "https://bigeye.com/blog/a-brief-history-of-databricks", "title": "A brief history of Databricks", "publisher": "Bigeye", "date": null, "supports": "origin_detail (founders, Spark history)"},
+    {"url": "https://www.cnbc.com/2026/08/13/databricks-funding-round-190-billion-valuation.html", "title": "Databricks wraps $5 billion funding round at $190 billion valuation", "publisher": "CNBC", "date": "2026-08-13", "supports": "latest_value_usd, latest_value_date"},
+    {"url": "https://www.databricks.com/company/newsroom/press-releases/databricks-raising-strategic-round-funding-188-billion-valuation", "title": "Databricks is Raising a Strategic Round of Funding at a $188 Billion Valuation", "publisher": "Databricks", "date": "2026-07", "supports": "latest_value_usd (announcement)"},
+    {"url": "https://www.databricks.com/company/newsroom/press-releases/databricks-grows-80-yoy-surpasses-7b-revenue-run-rate-scales", "title": "Databricks Grows >80% YoY, Surpasses $7B Revenue Run-Rate", "publisher": "Databricks", "date": "2026", "supports": "revenue_latest_usd, robustness"},
+    {"url": "https://techfundingnews.com/ipo-bound-databricks-reportedly-eyes-175b-valuation-after-hitting-5-4b-revenue-run-rate/", "title": "IPO-bound Databricks reportedly eyes $175B valuation after hitting $5.4B revenue run rate", "publisher": "Tech Funding News", "date": "2026-02", "supports": "notes (earlier run-rate)"},
+    {"url": "https://www.allied.vc/articles/databricks-ipo-expectations-key-dates-valuation-risks", "title": "Databricks IPO 2026-2027", "publisher": "Allied Venture Partners", "date": "2026", "supports": "risk_events (IPO timing)"},
+    {"url": "https://tracxn.com/d/companies/databricks/__h71WlGEvmuefCzSdZogxaGihmuCYu0rBKj3hkmJQF7M/funding-and-investors", "title": "Databricks funding rounds and investors", "publisher": "Tracxn", "date": "2026", "supports": "funding_total_usd"},
+    {"url": "https://sacra.com/c/databricks/", "title": "Databricks revenue, valuation & funding", "publisher": "Sacra", "date": "2026", "supports": "notes (funding range)"},
+    {"url": "https://getlatka.com/companies/databricks", "title": "Databricks revenue 2026", "publisher": "Getlatka", "date": "2026", "supports": "employees_latest (12.3K, Sep 2025)"},
+    {"url": "https://techcrunch.com/2019/10/15/databricks-brings-its-delta-lake-open-source-project-to-the-linux-foundation", "title": "Databricks brings its Delta Lake project to the Linux Foundation", "publisher": "TechCrunch", "date": "2019-10-15", "supports": "license_history[1], relicensing_events[0]"},
+    {"url": "https://databricks.com/blog/2019/10/16/delta-lake-now-hosted-by-the-linux-foundation-to-become-the-open-standard-for-data-lakes.html", "title": "Delta Lake now hosted by the Linux Foundation", "publisher": "Databricks", "date": "2019-10-16", "supports": "relicensing_events[0]"},
+    {"url": "https://www.databricks.com/blog/2022/06/30/open-sourcing-all-of-delta-lake.html", "title": "Open Sourcing All of Delta Lake", "publisher": "Databricks", "date": "2022-06-30", "supports": "license_history[2], relicensing_events[1]"},
+    {"url": "https://www.hpcwire.com/bigdatawire/bigdatawire/2024/06/12/databricks-to-open-source-unity-catalog/", "title": "Databricks to open source Unity Catalog", "publisher": "BigDATAwire", "date": "2024-06-12", "supports": "license_history[3], relicensing_events[2]"},
+    {"url": "https://www.theregister.com/2024/06/05/databricks_buys_tabular_for_1b/", "title": "Databricks buys Tabular for $1B", "publisher": "The Register", "date": "2024-06-05", "supports": "risk_events (Tabular)"}
+  ],
+  "notes": [
+    "latest_value: $190B post-money from the $5B round closed 13 Aug 2026 (led by Coatue). Prior rounds: $134B (Series L, dated Dec 2025 by Tracxn, Feb 2026 by others). WSJ reported on 20 Nov 2026 early talks at ~$225B; not closed.",
+    "revenue_latest_usd is an annualized revenue run-rate (>$7B, company-stated mid-2026), not audited annual revenue; earlier run-rates: $4.8B (Dec 2025), $5.4B (Feb 2026).",
+    "funding_total_usd: estimates range $13B-$25.2B depending on whether debt and the latest rounds are counted; $25.2B (Tracxn, 15 rounds) used, Sacra says ~$15B primary equity. Treat as approximate.",
+    "employees_latest 12,300 (Sep 2025) is from an aggregator (Getlatka); no company-stated 2026 headcount found.",
+    "Tabular price (~$1B) is from The Register headline; not stated by Databricks."
+  ]
+}

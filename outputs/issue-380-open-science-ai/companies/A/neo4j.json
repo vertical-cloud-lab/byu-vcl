@@ -1,0 +1,70 @@
+{
+  "name": "Neo4j, Inc. (formerly Neo Technology)",
+  "slug": "neo4j",
+  "group": "A",
+  "category": "software",
+  "subcategory": "graph database",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 2007 in Malmö, Sweden, as Neo Technology by Emil Eifrem, Johan Svensson and Peter Neubauer; later headquartered in San Mateo, California, and renamed Neo4j, Inc.",
+  "founded_year": 2007,
+  "flagship_projects": [
+    "Neo4j",
+    "Neo4j AuraDB (cloud)",
+    "Cypher / openCypher"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Community Edition was GPLv3 and Enterprise Edition AGPLv3 (with commercial licences on the side), so the whole product was OSI-licensed (dual licensing, 3). In 2018 Neo4j added the Commons Clause to the Enterprise AGPL and then stopped publishing Enterprise source, making Enterprise proprietary; Community stays GPLv3. Level 2.",
+  "business_model": "dual_license",
+  "license_history": [
+    {
+      "year": 2007,
+      "license": "GPLv3 (Community) / AGPLv3 (Enterprise) + commercial licences",
+      "note": "(unverified)",
+      "source": null
+    },
+    {
+      "year": 2018,
+      "license": "Enterprise: AGPLv3 + Commons Clause, then proprietary",
+      "note": "(unverified)",
+      "source": null
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2018,
+      "from": "AGPLv3 (Enterprise)",
+      "to": "AGPLv3 + Commons Clause, then proprietary",
+      "direction": "closing",
+      "fork": "ONgDB (Open Native Graph Database)",
+      "fork_backer": "GraphFoundation / PureThink / iGov",
+      "outcome_note": "Neo4j sued over the fork's removal of the Commons Clause and prevailed in US federal court; ONgDB development stopped (unverified)",
+      "source": null
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2018: Enterprise Edition closed; litigation against the ONgDB fork's backers (unverified)"
+  ],
+  "robustness": "Single-vendor control of Enterprise; Community Edition stays GPLv3. The query language was opened as openCypher and fed into the ISO GQL standard, which spreads the standard beyond the vendor.",
+  "physical_science_relevance": "",
+  "openness_effect_assessment": "Not assessed: no sourced research was possible in this session.",
+  "key_takeaway": "Draft only. Neo4j fought a fork of its relicensed code in court rather than in the market and won, the opposite of OpenSearch or Valkey, where hyperscaler backers made forks durable. Funding, valuation and revenue need sourcing.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [],
+  "notes": "NOT RESEARCHED IN THIS SESSION: the web-search budget shared by all agents in this turn (200 calls) ran out before this organization was reached, so no searches were run and no sources were consulted. Text fields are drafted from model training knowledge of events before mid-2025 and are UNVERIFIED; every monetary, valuation, funding, revenue and headcount field is deliberately null, and anything after mid-2025 is unknown. Re-research with at least 4 searches before using this file."
+}

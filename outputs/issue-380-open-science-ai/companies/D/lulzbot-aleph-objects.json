@@ -1,0 +1,165 @@
+{
+  "name": "LulzBot (Aleph Objects, Inc.; since 2019 FAME 3D LLC)",
+  "slug": "lulzbot-aleph-objects",
+  "group": "D",
+  "category": "hardware",
+  "subcategory": "desktop FFF 3D printers (free/libre hardware)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Aleph Objects, Inc. of Loveland, Colorado (led by CEO/CTO Jeff Moe) built the LulzBot line as fully free/libre RepRap-derived hardware and software; after an October 2019 cash crisis its assets and the LulzBot brand were bought by Fargo Additive Manufacturing Equipment 3D (FAME 3D) and moved to Fargo, North Dakota.",
+  "founded_year": 2011,
+  "flagship_projects": [
+    "LulzBot AO-100",
+    "LulzBot TAZ 4/5/6",
+    "LulzBot Mini / Mini 2 / Mini 3",
+    "TAZ Workhorse",
+    "TAZ Pro",
+    "TAZ 8",
+    "Cura LulzBot Edition"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Aleph Objects positioned LulzBot as fully free/libre hardware and software; the TAZ 6 received the FSF 'Respects Your Freedom' certification. Design files for older models (AO-100/101, Mini, TAZ, SideKick, Budaschnozzle, even Prusa Mendel) remain on download.lulzbot.com. Under FAME 3D the company still describes itself as 'Committed to Free Software and Open Source Hardware' and keeps public GitLab repositories for current printers and tool heads (Mini 3 repo licensed GPL-3.0-or-later, last activity 2026-07-07; TAZ 8 repo public since 2025-05, no licence file detected); firmware is a GPL-3.0 Marlin fork and the slicer Cura LE is LGPL/AGPL. Scored 3, not 4, because governance is corporate and repository contents (CAD/PCB/BOM completeness) were not inspected.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2011,
+      "license": "Free/libre hardware and software (RepRap-derived; FSF RYF certification later awarded to the TAZ 6)",
+      "note": "Certification date not stated in the source reached",
+      "source": "https://en.wikipedia.org/wiki/Aleph_Objects"
+    },
+    {
+      "year": 2022,
+      "license": "GPL-3.0-or-later (LulzBot Mini 3 printer source repository)",
+      "note": "Repo created 2022-07-08, active 2026-07",
+      "source": "https://gitlab.com/api/v4/projects/lulzbot3d%2Fprinters%2Flulzbot-mini-3?license=true"
+    },
+    {
+      "year": 2026,
+      "license": "GPL-3.0 (Marlin firmware fork); LGPL-3.0 (CuraLE, UraniumLE); AGPL-3.0 (CuraEngineLE, KlipperScreen fork)",
+      "note": "As shown on the lulzbot3d GitHub organisation, Nov 2026",
+      "source": "https://github.com/lulzbot3d"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2019,
+      "type": "acquisition",
+      "value_usd": null,
+      "counterparty": "Fargo Additive Manufacturing Equipment 3D, LLC (FAME 3D)",
+      "note": "November 2019 purchase of Aleph Objects' assets and the LulzBot brand after the October 2019 cash-flow collapse; terms not disclosed; operations moved to Fargo, ND",
+      "source": "https://en.wikipedia.org/wiki/Aleph_Objects"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2019-10: cash-flow problems; Aleph Objects laid off 91 of its 113 employees",
+    "2019-11: assets and LulzBot brand sold to FAME 3D; operations moved from Loveland, CO to Fargo, ND"
+  ],
+  "robustness": "The brand survived its original company's collapse because the designs, firmware and documentation were openly published and could be carried on by a buyer; under FAME 3D it still ships current printers (TAZ 8, Workhorse 2, Mini 3, SideKick, TAZ Pro) and maintains public source repositories. Scale is small and financials are private.",
+  "physical_science_relevance": "Fully documented, freely licensed printers (with FSF certification) suit labs that need auditable, modifiable equipment and long-term repairability.",
+  "openness_effect_assessment": "Maximal openness gave LulzBot strong reviews and a loyal following but did not protect it from cash-flow failure in 2019, when it laid off about 80% of staff amid a desktop-printer market being undercut on price. Openness did make the assets easy to transfer: FAME 3D bought the brand and continued the open line, so the product outlived the company.",
+  "key_takeaway": "LulzBot is the purest test of fully free hardware as a business: it reached Inc. 5000-scale revenue but collapsed in 2019 for ordinary cash-flow reasons, and its open designs then let a regional manufacturer (FAME 3D) revive the line, which still publishes GPL source for current printers in 2026. Openness neither caused nor prevented the failure; it made the product line resilient to the company's death.",
+  "confidence": "low",
+  "searches": [],
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Aleph_Objects",
+    "https://en.wikipedia.org/wiki/LulzBot",
+    "https://lulzbot.com/",
+    "https://ryf.fsf.org/",
+    "https://lulzbot.com/press",
+    "https://github.com/lulzbot3d",
+    "https://gitlab.com/lulzbot3d",
+    "https://ohai.lulzbot.com/",
+    "https://download.lulzbot.com/",
+    "https://gitlab.com/api/v4/groups/lulzbot3d/projects?per_page=100&include_subgroups=true&order_by=last_activity_at",
+    "https://gitlab.com/api/v4/projects/lulzbot3d%2Fprinters%2Ftaz-8?license=true",
+    "https://gitlab.com/api/v4/projects/lulzbot3d%2Fprinters%2Flulzbot-mini-3?license=true",
+    "https://www.inc.com/profile/aleph-objects"
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Aleph_Objects",
+      "title": "Aleph Objects",
+      "publisher": "Wikipedia",
+      "date": "2026-11",
+      "supports": "origin_detail, products, FSF RYF (TAZ 6), 2019 layoffs (91 of 113), FAME 3D acquisition, $21M Inc. 5000 revenue (undated)"
+    },
+    {
+      "url": "https://lulzbot.com/",
+      "title": "LulzBot home page",
+      "publisher": "FAME 3D LLC",
+      "date": "2026-11",
+      "supports": "still_operating, current models, ownership (trademark of FAME 3D), open-source commitment"
+    },
+    {
+      "url": "https://github.com/lulzbot3d",
+      "title": "lulzbot3d GitHub organisation",
+      "publisher": "GitHub",
+      "date": "2026-11",
+      "supports": "license_history[2]"
+    },
+    {
+      "url": "https://gitlab.com/api/v4/groups/lulzbot3d/projects?per_page=100&include_subgroups=true&order_by=last_activity_at",
+      "title": "lulzbot3d GitLab group projects (API)",
+      "publisher": "GitLab",
+      "date": "2026-11",
+      "supports": "openness_current (public repos for TAZ 8, Mini 3, Workhorse, TAZ Pro, tool heads)"
+    },
+    {
+      "url": "https://gitlab.com/api/v4/projects/lulzbot3d%2Fprinters%2Flulzbot-mini-3?license=true",
+      "title": "LulzBot Mini 3 project (API)",
+      "publisher": "GitLab",
+      "date": "2026-07-07",
+      "supports": "license_history[1] (GPL-3.0-or-later)"
+    },
+    {
+      "url": "https://download.lulzbot.com/",
+      "title": "LulzBot download server",
+      "publisher": "FAME 3D LLC",
+      "date": "2026-11",
+      "supports": "openness_notes (older model files; directories dated 2012-2025)"
+    },
+    {
+      "url": "https://ohai.lulzbot.com/",
+      "title": "LulzBot OHAI assembly instructions",
+      "publisher": "FAME 3D LLC",
+      "date": "2026-11",
+      "supports": "openness_notes (free software and open hardware statement)"
+    }
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": [
+      "GPL-3.0-or-later (Mini 3 printer repository)",
+      "Older model files on download.lulzbot.com (licence not shown in the directory listing)"
+    ],
+    "firmware_software_licenses": [
+      "GPL-3.0 (LulzBot Marlin fork)",
+      "LGPL-3.0 (CuraLE, UraniumLE)",
+      "AGPL-3.0 (CuraEngineLE)"
+    ],
+    "patents": null,
+    "clone_impacts": null
+  },
+  "notes": [
+    "No WebSearch queries could be run for this organization: the session-wide search budget (200 per turn, shared by all agents) was exhausted. All facts come from direct fetches of Wikipedia, lulzbot.com, GitHub and GitLab pages listed in sources. The 4-search minimum was not met; confidence low.",
+    "founded_year 2011 is supported only weakly (lulzbot.com copyright span '2011-2026'); the Wikipedia article reached did not state the founding year.",
+    "Revenue: Wikipedia's infobox gives $21 million citing Inc. 5000 but no year, so revenue_latest_usd is null. Employees: 113 before October 2019, about 22 after the layoffs; current FAME 3D headcount unknown.",
+    "FAME 3D purchase price undisclosed; no later ownership change found in the sources reached (Wikipedia article flagged as needing update since 2020).",
+    "OSHWA certification status and the date of the FSF RYF certification were not verified."
+  ]
+}

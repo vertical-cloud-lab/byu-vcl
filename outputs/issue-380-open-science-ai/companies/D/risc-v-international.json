@@ -1,0 +1,82 @@
+{
+  "name": "RISC-V International (formerly RISC-V Foundation)",
+  "slug": "risc-v-international",
+  "group": "D",
+  "category": "foundation",
+  "subcategory": "open instruction-set architecture standards body",
+  "hq_country": "CH",
+  "origin": "academic",
+  "origin_detail": "The RISC-V ISA began at UC Berkeley in 2010 (Krste Asanovic, David Patterson and students). The RISC-V Foundation was set up in 2015 as a Delaware non-stock corporation; members voted in 2019 to move it, and it reincorporated in Switzerland as the RISC-V International Association in March 2020, citing the risk of government restrictions on an open standard.",
+  "founded_year": 2015,
+  "flagship_projects": ["RISC-V unprivileged and privileged ISA specifications", "RVA/RVB profiles", "RISC-V Server Platform Specification"],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "openness_notes": "Hardware column applied to what the organisation stewards: the ISA specifications. They are published under CC BY 4.0, described by RISC-V International as royalty-free, and developed by member working groups under a nonprofit board, so the standard itself is fully open with community (member) governance (4) from the Foundation's start to today. Caveats: governance weight scales with paid membership tier (dues up to $250k a year for Board plus TSC seats), and the open ISA does not make implementations open; most commercial cores are proprietary. Wikipedia says the original 2011 encoding was published 'all rights reserved' before the text moved to Creative Commons, so the pre-Foundation academic phase was briefly less open.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2011, "license": "ISA text initially all rights reserved (Berkeley technical report)", "note": "Per Wikipedia; RISC-V International describes the encoding as effectively public domain. Accounts differ.", "source": "https://en.wikipedia.org/wiki/RISC-V"},
+    {"year": 2015, "license": "CC BY 4.0 (ISA specification documents), royalty-free ISA", "note": "Current ratified manuals and profiles carry CC BY 4.0, copyright RISC-V International.", "source": "https://docs.riscv.org/reference/rvb23/v1.0/copyright.html"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "foundation",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 8584520,
+  "revenue_year": 2024,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "2019-2020: moved incorporation from Delaware to Switzerland over fears of US trade restrictions on an open standard",
+    "2023-11: eighteen US lawmakers urged export controls on RISC-V technology to limit Chinese use",
+    "2024-04: US Commerce Department said it was reviewing risks of China's RISC-V use; no formal restriction on the standard found in these searches",
+    "2026: approved as an ISO/IEC JTC1 PAS submitter, opening a route to an ISO standard (not yet ratified per searches)"
+  ],
+  "robustness": "High. A member-governed nonprofit owns the standard, specifications are CC BY 4.0, there are thousands of member organisations, and many competing implementers (SiFive, Andes, Alibaba T-Head, Nvidia, Western Digital, Google, and open cores such as Rocket and CVA6), so no single company's failure endangers the ISA. Main exposure is geopolitical: export-control pressure and fragmentation through proprietary extensions.",
+  "physical_science_relevance": "A royalty-free ISA lets universities and labs tape out custom processors and instrument controllers without licence fees; open cores are widely used in research FPGAs and accelerators.",
+  "openness_effect_assessment": "Opening the ISA under a neutral foundation turned a Berkeley teaching and research project into a standard with roughly 4,100-4,500 member organisations by 2024 and commercial backers from SiFive to Nvidia. Neutral governance mattered enough that members moved the body to Switzerland in 2020 to protect openness from US trade policy. Openness also made RISC-V the target of US export-control debates (2023-2024) precisely because Chinese firms can adopt it freely.",
+  "key_takeaway": "RISC-V International shows the 'open standard, closed products' division of labour in hardware: a lean nonprofit (about $8.6M revenue in 2024) maintains a fully open, royalty-free specification while companies compete with proprietary implementations on top. It is the most robust governance form in this group, and its main risks are geopolitical rather than commercial.",
+  "confidence": "high",
+  "searches": [
+    "RISC-V Foundation founded 2015 nonprofit moved to Switzerland RISC-V International 2020",
+    "RISC-V ISA specification licence Creative Commons CC BY 4.0 royalty free",
+    "RISC-V International membership number of members countries 2024",
+    "RISC-V International annual report revenue membership dues Form 990 budget",
+    "RISC-V International 2025 2026 news ISO JTC1 standard export controls China members CEO",
+    "US lawmakers RISC-V China export controls 2023 Commerce Department review open standard"
+  ],
+  "sources": [
+    {"url": "https://riscv.org/about/", "title": "About RISC-V International", "publisher": "RISC-V International", "date": "2026", "supports": "origin_detail, royalty-free ISA, Swiss incorporation"},
+    {"url": "https://www.theregister.com/2019/11/26/riscv_foundation_switzerland/", "title": "(descriptive; exact headline not retrieved) RISC-V Foundation board votes to move from Delaware to Switzerland", "publisher": "The Register", "date": "2019-11-26", "supports": "risk_events (Switzerland move), Delaware origin"},
+    {"url": "https://ca.news.yahoo.com/u-based-chip-tech-group-110604224.html", "title": "U.S.-based chip-tech group moving to Switzerland over trade curb fears", "publisher": "Reuters (via Yahoo)", "date": "2019-11-25", "supports": "risk_events (Switzerland move)"},
+    {"url": "https://docs.riscv.org/reference/rvb23/v1.0/copyright.html", "title": "(descriptive) RVB23 profile: copyright and licence page", "publisher": "RISC-V International", "date": "2024", "supports": "license_history (CC BY 4.0)"},
+    {"url": "https://en.wikipedia.org/wiki/RISC-V", "title": "RISC-V", "publisher": "Wikipedia", "date": "2026-11", "supports": "license_history (2011 all rights reserved), Berkeley origin 2010"},
+    {"url": "https://projects.propublica.org/nonprofits/organizations/981550155", "title": "RISC-V International Association Verein - Nonprofit Explorer", "publisher": "ProPublica (IRS Form 990 data)", "date": "2026", "supports": "revenue_latest_usd (2024: $8,584,520; expenses $7,610,343)"},
+    {"url": "https://riscv.org/blog/risc-v-2024-a-year-of-global-growth-and-innovation/", "title": "RISC-V 2024: A Year of Global Growth and Innovation", "publisher": "RISC-V International", "date": "2024-12", "supports": "membership (more than 4,120 members)"},
+    {"url": "https://riscv.org/ecosystem-news/2024/11/interview-with-calista-redmond", "title": "Interview with Calista Redmond", "publisher": "RISC-V International", "date": "2024-11", "supports": "membership (over 4,500 members, 70+ countries)"},
+    {"url": "https://www.bloomberg.com/news/articles/2023-11-02/lawmakers-urge-export-controls-on-a-new-chip-design-technology", "title": "US Lawmakers Urge Export Controls on a New Chip Design Technology", "publisher": "Bloomberg", "date": "2023-11-02", "supports": "risk_events (2023 export-control push)"},
+    {"url": "https://www.tomshardware.com/tech-industry/us-investigates-chinas-access-to-risc-v-open-source-instruction-set-may-become-new-site-of-us-china-chip-war", "title": "US investigates China's access to RISC-V", "publisher": "Tom's Hardware", "date": "2024-04", "supports": "risk_events (Commerce review)"},
+    {"url": "https://armdevices.net/2026/03/20/risc-v-ceo-interview-on-iso-standardization-ai-matrix-extensions-automotive-and-edge-compute/", "title": "RISC-V CEO Interview on ISO Standardization, AI Matrix Extensions, Automotive and Edge Compute", "publisher": "ARMdevices.net", "date": "2026-03-20", "supports": "risk_events (ISO PAS submitter status), CEO Andrea Gallo"},
+    {"url": "https://www.digitimes.com/news/a20260603VL217/risc-v-ceo-software-mips-computex-2026.html", "title": "RISC-V will be 'default ISA of choice' for all new chip designs, architecture's CEO predicts", "publisher": "DigiTimes", "date": "2026-06-03", "supports": "2026 status, CEO"}
+  ],
+  "hardware_extras": {
+    "oshwa_certifications": null,
+    "hardware_licenses": ["CC BY 4.0 (ISA specification documents)", "Royalty-free use of the ratified ISA (per RISC-V International)"],
+    "firmware_software_licenses": [],
+    "patents": null,
+    "clone_impacts": "Not applicable in the usual sense: any party may implement the ISA. The flip side is fragmentation risk from custom extensions and the US-China dispute over free Chinese adoption (2023-2024)."
+  },
+  "notes": [
+    "Revenue is from IRS Form 990 data on ProPublica for the Swiss Verein (EIN 98-1550155), fiscal year ending December. Prior years: 2023 $7.96M, 2022 $7.92M, 2021 $5.42M. Revenue is mostly membership dues and events; no breakdown was found.",
+    "business_model set to 'mixed' (membership dues tiered by company size, up to $250k a year, plus events); no schema enum fits membership dues exactly.",
+    "Membership figures vary by source in 2024: more than 4,100 to over 4,500 members, in 52 or 70+ countries. Not stored as a number because the schema has no field for it.",
+    "employees_latest not found; null.",
+    "us_focus is false because the body has been incorporated in Switzerland since 2020; it originated at UC Berkeley and was a Delaware corporation 2015-2020.",
+    "Andrea Gallo is described as CEO in 2026 coverage; Calista Redmond led it through at least late 2024. Exact handover date not verified."
+  ]
+}
