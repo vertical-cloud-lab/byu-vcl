@@ -3616,7 +3616,7 @@ founded 2013 · CH · origin: government · openness 4→4 · government · conf
 
 </details>
 
-## G. Additive manufacturing, lab-automation incumbents and open-science publishing infrastructure (added after the video) (20)
+## G. Additive manufacturing, lab-automation incumbents and open-science publishing infrastructure (added after the video) (21)
 
 ### 3D Systems Corporation
 
@@ -3996,6 +3996,40 @@ founded 2013 · DE · origin: academic · openness 3→3 · confidence: low · t
 - [OpenCalphad README](https://raw.githubusercontent.com/sundmanbo/opencalphad/master/README.md) (GitHub, 2026-11)
 - [Our History](https://thermocalc.com/about-us/our-history/) (Thermo-Calc Software, 2026-11)
 - [OpenCalphad - a free thermodynamic software](https://doi.org/10.1186/s40192-014-0029-1) (Integrating Materials and Manufacturing Innovation (Springer), 2015)
+
+</details>
+
+### OurResearch (legal name Impactstory; now operating as OpenAlex)
+
+founded 2011 · US · origin: nonprofit · openness 4→4 · nonprofit · funding $9.5M · revenue $4.3M (2025) · confidence: medium · tool: WebFetch (search budget exhausted)
+
+*Computed:* age 15 yrs · 0 closing / 0 opening moves
+
+**What openness did.** CC0 data and open code let OpenAlex replace MAG at launch and win institutional adopters that a proprietary index at its price could not: Sorbonne dropped Scopus for it (Dec 2023), the Leiden Ranking adopted it (2024) and the French ministry backs it. Openness did not pay for itself, though. The nonprofit ran deficits, had negative net assets in FY2024 and relied on grants for 56% of FY2025 revenue. It now charges for API convenience while keeping the data CC0, an 'open data, paid service' model.
+
+**Takeaway.** OurResearch shows a small nonprofit building core open-science infrastructure on a few million dollars a year (FY2025 revenue $4.3M, 56% of it grants) by selling services around CC0 data. Its finances were fragile, with negative net assets in FY2024, until large grants such as Arcadia's $7.5M arrived, and it now prices heavy API use. For a lab, OpenAlex is the open literature database that this very project uses, and its CC0 snapshot protects users from any later pricing change.
+
+**Risk events.** FY2020-FY2021: no grant income. Revenue of $0.74M-$1.15M came entirely from program services (Unsub/Unpaywall), and net assets fell to $182k (FY2021).; Dec 2021: Microsoft Academic Graph retired. OurResearch launched OpenAlex as its open replacement in January 2022.; FY2024: net assets negative (-$126,729) despite $3.55M revenue. They recovered to $1.17M in FY2025.; Mar 2024: $7.5M Arcadia Fund grant to establish OpenAlex as an open alternative to commercial products. The French Ministry of Higher Education and Research pledged support in 2024.; Top-paid officer per Form 990 summaries changed from co-founder Jason Priem (CEO, FY2022) to a CTO (FY2023-24) and a COO, Kyle Demes (FY2025). The founders' current roles were not confirmed.; 2025-26: usage-based API pricing for OpenAlex ('$1 a day free', prepaid usage, annual plans)
+
+**Robustness.** CC0 data and a downloadable whole-database snapshot mean OpenAlex's content survives the organisation, since anyone can re-host it (e.g. SemOpenAlex's 26 billion RDF triples). The organisation itself is small and was fragile: net assets were negative in FY2024 and grants were 56% of FY2025 revenue. Funding is now more diversified (Arcadia, Schmidt Sciences, Wellcome-funded work, the French ministry, California Digital Library, plus paid tiers) and it is hiring (Nov 2026).
+
+**Physical-science relevance.** OpenAlex is the open replacement for Microsoft Academic Graph and an alternative to Scopus and Web of Science for bibliometrics. This study's own scripts (scripts/openalex_trends.py) use the OpenAlex API to measure open-access shares of US Physical Sciences, Materials Science and Chemistry output by institution type. For materials and self-driving-lab research it supplies CC0 metadata for literature mining and for assembling paper corpora. Unpaywall's open-access locations let a lab find legal full texts. In 2026 OpenAlex added software as a work type (Schmidt Sciences grant), which helps credit lab code.
+
+<details><summary>Sources (13)</summary>
+
+- [OurResearch](https://en.wikipedia.org/wiki/OurResearch) (Wikipedia, 2026-11)
+- [OpenAlex](https://en.wikipedia.org/wiki/OpenAlex) (Wikipedia, 2026-11)
+- [Impactstory - Nonprofit Explorer](https://projects.propublica.org/nonprofits/organizations/461599252) (ProPublica, 2026-11)
+- [OpenAlex: The open catalog to the global research system](https://openalex.org/) (OpenAlex, 2026-11)
+- [About OpenAlex](https://openalex.org/about) (OpenAlex, 2026-11)
+- [OpenAlex pricing](https://openalex.org/pricing) (OpenAlex, 2026-11)
+- [OpenAlex blog (served from blog.ourresearch.org)](https://blog.ourresearch.org/) (OpenAlex, 2026-11-23)
+- [OpenAlex blog, page 2](https://blog.openalex.org/page/2/) (OpenAlex, 2026)
+- [OpenAlex help: Access](https://help.openalex.org/access/) (OpenAlex, 2026-11)
+- [GitHub API: ourresearch organisation](https://api.github.com/orgs/ourresearch) (GitHub, 2026-11-23)
+- [GitHub API: ourresearch/openalex-guts](https://api.github.com/repos/ourresearch/openalex-guts) (GitHub, 2026-11-23)
+- [Funding: OurResearch Receives $7.5 Million Grant From Arcadia to Establish OpenAlex](https://www.infodocket.com/2024/03/14/funding-ourresearch-receives-7-5-million-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science/) (Library Journal infoDOCKET, 2024-03-14)
+- [ImpactStory awarded $300k NSF grant!](http://blog.impactstory.org/2013/09/27/impactstory-awarded-300k-nsf-grant/) (Impactstory blog, 2013-09-27)
 
 </details>
 

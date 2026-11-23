@@ -75,7 +75,7 @@ below links to a file in this folder, and each file names its sources.
 | --- | --- | --- |
 | Edison Scientific | 9 jobs: 4 `LITERATURE_HIGH`, 4 `LITERATURE` and 1 `PRECEDENT`. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
 | GitHub mining | `gh api` (REST and GraphQL) over **every** issue, PR, conversation comment, inline review comment, review body, discussion, discussion comment and reply in `AccelerationConsortium/ac-dev-lab` and `sparks-baird/self-driving-lab-demo`: 4,928 records in 816 threads. 118 threads were coded for commercialization, and quotes and numbers were checked against the corpus by script | [`gh-mining/`](gh-mining/) |
-| Case studies | 121 organizations in six groups: commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 904 cited sources | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
+| Case studies | 143 organizations: 121 in six groups at the video snapshot, then 1 more hardware file and group G (21: additive manufacturing, lab automation, open-science infrastructure). The six groups are commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 1,096 cited sources (904 at the video snapshot) | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
 | Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. 89 + 8 + 24 searches, plus 41 primary documents fetched | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
 | Datasets | Epoch AI "Data on AI Models" (3,730 models, CC-BY); OpenAlex works grouped by US institution type × year × open access; Yahoo Finance weekly prices | [`data/`](data/) |
 | Language | Term rates per 1,000 words in 57 documents from Anthropic (26), OpenAI (22), Meta, Google DeepMind, DeepSeek, xAI and US policy (3), all fetched through the Pi | [`language/`](language/) |
@@ -324,6 +324,45 @@ Source: [groups E and F](companies/E/_summary.md) and [F summary](companies/F/_s
   source. New records fell from 839–1,051 a year (2020–22) to 446–588 (2023–24)
   ([F summary](companies/F/_summary.md)).
 
+### 5b. Open-science infrastructure under AI-era strain, and the AM and instrument makers DAL buys from (group G)
+
+Group G is 21 organizations added after the video: [`companies/G/`](companies/G/),
+[summary](companies/G/_summary.md), and the [casebook](companies/CASEBOOK.md) section G.
+
+![PDB growth](figures/pdb_growth.png)
+
+- **Open data accumulated over decades, then trained the AI.**
+  - The PDB released 172,801 structures by 2020, the year AlphaFold 2 won CASP14.
+  - It now holds 263,567. It releases about 15–18k a year, and 17,599 in 2025
+    ([`data/pdb_released_per_year.csv`](data/pdb_released_per_year.csv), RCSB Search API).
+- **The open-science commons is strained by AI-era volume and thin funding:**
+  - **arXiv** separated from Cornell on 2026-07-01. It must now replace Cornell's in-kind support,
+    budgeted at $1.89M (22% of FY2026 revenue), and it ran a $297k deficit in FY2025 on about $6.7M of
+    expenses with 28 staff.
+    - Submissions rose 16.6% in 2025. September 2026 set a record (40,363, double September 2024), and
+      cs.AI grew more than sixfold in two years.
+    - It now limits submissions and bans unchecked LLM output.
+    - In 2026-09 it received a $17.2M multiyear investment from foundations and XTX Markets.
+  - **The Center for Open Science** announced on 2026-08-11 that it would narrow OSF: keeping the full
+    platform would need $4–5M a year, about half its budget, and earned revenue covers only 10–20%. New
+    OSF projects stopped on 2026-11-16, and projects go read-only on 2027-02-19.
+  - **Papers with Code**, a free resource inside Meta AI, was redirected to Hugging Face in 2025. A
+    community archive survives on Hugging Face because the data dumps were CC BY-SA.
+  - These are the services AI labs and AI-for-science startups draw on. **Who pays for the commons** is
+    the open question of the AI era.
+- **Instrument and AM makers are closed.**
+  - All 13 instrument and AM makers in group G score 0, except Universal Robots/MiR at 1 for its
+    open-source ROS 2 driver.
+  - Openness reaches them from outside: PyLabRobot drives Hamilton and Tecan robots, and pycalphad and
+    OpenCalphad read Thermo-Calc database files.
+- **AM's 2021 SPAC boom busted:**
+  - Desktop Metal listed at up to $2.5B and filed Chapter 11 in 2025.
+  - Markforged went from about $2.1B to a $42.5M sale.
+  - A creditor took 95% of Velo3D.
+  - Family-owned EOS stayed independent.
+  - For DAL, vendor longevity is a real procurement risk, which is one more reason to own the driver
+    layer.
+
 ### 6. Academia vs. government and national labs vs. industry, over time (US)
 
 ![Epoch sectors](figures/epoch_sector.png)
@@ -542,7 +581,7 @@ with 125 quotes, each checked by script against the captured text. The index is
 - The relicensing fights covered here involve a handful of vendor-controlled projects. The base of US open
   source drifted *toward* permissive licences over the same years.
 
-- 87 of the 121 organizations are US-headquartered.
+- 100 of the 143 organizations are US-headquartered (87 of 121 at the video snapshot).
 - The OpenAlex and Epoch charts use US-affiliated works and models only, apart from the compute-gap
   chart, which covers all countries.
 - The non-US organizations are there as comparators: SUSE, Canonical, Prusa, Arduino, Mistral,
@@ -552,7 +591,7 @@ with 125 quotes, each checked by script against the captured text. The index is
 
 - The case files are a **convenience sample of notable organizations**, not a census, and their values
   date from 2008 to 2026.
-- About 75 of the 121 files rest on WebFetch alone, as noted above.
+- 114 of the 143 files rest on WebFetch alone, as noted above.
 - A second verification pass ([`companies/VERIFICATION_PASS2.md`](companies/VERIFICATION_PASS2.md)) checked
   161 facts in 38 low- and medium-confidence files:
   - 99 were confirmed on an independent page, 16 values were corrected or filled, and 46 remain
@@ -573,12 +612,12 @@ with 125 quotes, each checked by script against the captured text. The index is
 - `edison/`: 9 Edison tasks, each with an answer, references and the full verbose task JSON.
 - `gh-mining/`: the thread index, relevant and coded threads, and the commercialization digest. The raw
   dump is re-creatable with `scripts/gh_dump.py`.
-- `companies/`: 121 case JSON files, a summary per group, `companies_master.csv` and `events.csv`.
+- `companies/`: 143 case JSON files in groups A–G, a summary per group, `companies_master.csv` and `events.csv`.
 - `data/`: the Epoch, OpenAlex, price and openness-outcome tables.
 - `language/`: the URL list, term counts and key quotes.
 - `pi-browser/`: query lists and the full search log.
 - `figures/`, `video/`: final frames, scenes, narration, audio and the final MP4.
-- `companies/CASEBOOK.md`: all 121 organizations, one by one, with each one's assessment, timeline and sources.
+- `companies/CASEBOOK.md`: all 143 organizations, one by one, with each one's assessment, timeline, computed metrics and sources.
 - `voices/`: the digest of YouTube, Reddit, Hacker News, blog and forum content. `dal/`: the openness audit
   of DAL and #318.
 - `VERIFICATION.md` and `companies/VERIFICATION_PASS2.md`: the verification logs.
