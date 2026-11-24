@@ -250,3 +250,25 @@ Small multiples, one sector per panel, with the other five in gray. Six lines ca
 `figures/gh_timeline.png`
 
 ![Commercialization activity by quarter in the two repos](figures/gh_timeline.png)
+
+## Part 4 frames (corrections)
+
+### Do VC-era firms close up? Corrected
+`figures/p4_kinds.png`
+
+![Do VC-era firms close up? Corrected](figures/p4_kinds.png)
+
+### Science splits into closed firms and open infrastructure
+`figures/p4_six.png`
+
+![Science splits into closed firms and open infrastructure](figures/p4_six.png)
+
+### Licence changes per organization-year
+`figures/p4_rates.png`
+
+![Licence changes per organization-year](figures/p4_rates.png)
+
+### Smaller corrections
+`figures/p4_other.png`
+
+![Smaller corrections](figures/p4_other.png)

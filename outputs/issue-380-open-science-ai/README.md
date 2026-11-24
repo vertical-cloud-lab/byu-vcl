@@ -12,6 +12,10 @@ below links to a file in this folder, and each file names its sources.
   MP4: [`video/open_science_value_ai_part2.mp4`](video/open_science_value_ai_part2.mp4). Chapters: [`video/chapters_part2.txt`](video/chapters_part2.txt).
 - **Part 3, fork robustness, AI-era open-source startups, AI-for-science model licences, the academic path and agent authorship:** [youtube.com/watch?v=8P7iqUaVHyE](https://www.youtube.com/watch?v=8P7iqUaVHyE), 3:40.
   MP4: [`video/open_science_value_ai_part3.mp4`](video/open_science_value_ai_part3.mp4). Chapters: [`video/chapters_part3.txt`](video/chapters_part3.txt).
+- **Part 4, corrections after the independent review:** [youtube.com/watch?v=pnY_xZ9uv5U](https://www.youtube.com/watch?v=pnY_xZ9uv5U), 2:18.
+  It covers the corrected founding-era result, science splitting into closed firms and open infrastructure, licence changes per
+  organization-year and the smaller fixes ([resolution log](REVIEW_FINDINGS.md#resolution-2026-11-24)).
+  MP4: [`video/open_science_value_ai_part4.mp4`](video/open_science_value_ai_part4.mp4). Chapters: [`video/chapters_part4.txt`](video/chapters_part4.txt).
 
 **Two-page brief:** [`FINDINGS_BRIEF.md`](FINDINGS_BRIEF.md). **Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has eight evidence-linked actions. **All figures:** [`FIGURES.md`](FIGURES.md). **Video sources and later updates, chapter by chapter:** [`VIDEO_NOTES.md`](VIDEO_NOTES.md). **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md).
 

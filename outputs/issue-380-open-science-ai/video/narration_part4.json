@@ -1,0 +1,26 @@
+[
+ {
+  "scene": "p4_title",
+  "text": "Part four. After the first three videos, an independent reviewer checked our numbers against our own files and found thirty-nine problems. All of them are now fixed in the written report. Here are the corrections that change the story."
+ },
+ {
+  "scene": "p4_kinds",
+  "text": "The biggest one. Earlier, we said companies founded in the venture era close up, while older firms do not. That comparison counted open infrastructure, like the Protein Data Bank and LAMMPS, as older companies. Grouped properly, the raw gap is minus zero point six one on our four-point scale. But venture-era firms started far more open, at one point eight against zero point seven. Adjusted for where each firm started, the gap shrinks to minus zero point zero nine, and its confidence interval spans zero. So the real pattern is convergence to the middle. Firms that start open tend to close, and firms that start closed open the parts they don't sell."
+ },
+ {
+  "scene": "p4_six",
+  "text": "Second, we said every sector ends up near two, open core. That holds for commercial open source, big tech, and hardware. Science does not converge. It splits. Lab automation and AI-for-science firms average about zero point six, while scientific software and infrastructure sits near two point seven."
+ },
+ {
+  "scene": "p4_rates",
+  "text": "Third, licence changes really did rise after twenty twenty, and not only because the sample grew. Per hundred organization-years, they went from three point four to eight point two. Closing and opening moves both rose. Firms founded before twenty ten show the same jump."
+ },
+ {
+  "scene": "p4_other",
+  "text": "Some smaller fixes. All eight forks we checked survive, but most closing moves drew no fork at all. The AI-era startups haven't relicensed yet, but they are young. The science-model scores are indicative only. The eighty-seven percent saving for open hardware is material cost. And the Protein Data Bank's five and a half billion dollars a year is research time spent with it, not net benefit."
+ },
+ {
+  "scene": "p4_end",
+  "text": "Every correction and its evidence is in the repository. The videos are snapshots. The written report is the current version."
+ }
+]

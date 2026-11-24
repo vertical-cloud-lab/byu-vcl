@@ -1,6 +1,6 @@
 # Video notes: sources for every chapter, and changes after upload
 
-Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtube.com/watch?v=uujMO9R1tMc · Part 3: https://www.youtube.com/watch?v=8P7iqUaVHyE
+Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtube.com/watch?v=uujMO9R1tMc · Part 3: https://www.youtube.com/watch?v=8P7iqUaVHyE · Part 4 (corrections): https://www.youtube.com/watch?v=pnY_xZ9uv5U
 
 ## Part 1
 
@@ -231,3 +231,35 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 **Sources:** —
 
 > All data, code and sources for the three parts are on GitHub, in the BYU Vertical Cloud Lab repository, issue three eighty.
+
+## Part 4 (corrections, [youtube.com/watch?v=pnY_xZ9uv5U](https://www.youtube.com/watch?v=pnY_xZ9uv5U))
+
+### 0:00 Intro
+**Sources:** [`REVIEW_FINDINGS.md`](REVIEW_FINDINGS.md#resolution-2026-11-24)
+
+> Part four. After the first three videos, an independent reviewer checked our numbers against our own files and found thirty-nine problems. All of them are now fixed in the written report. Here are the corrections that change the story.
+
+### 0:16 Do VC-era firms close up? (corrected)
+**Sources:** [`data/kinds_corrected.csv`](data/kinds_corrected.csv), [`scripts/kinds_corrected.py`](scripts/kinds_corrected.py)
+
+> The biggest one. Earlier, we said companies founded in the venture era close up, while older firms do not. That comparison counted open infrastructure, like the Protein Data Bank and LAMMPS, as older companies. Grouped properly, the raw gap is minus zero point six one on our four-point scale. But venture-era firms started far more open, at one point eight against zero point seven. Adjusted for where each firm started, the gap shrinks to minus zero point zero nine, and its confidence interval spans zero. So the real pattern is convergence to the middle. Firms that start open tend to close, and firms that start closed open the parts they don't sell.
+
+### 0:59 Science splits: closed firms, open infrastructure
+**Sources:** [`data/openness_by_year_six_sectors.csv`](data/openness_by_year_six_sectors.csv), [`scripts/openness_by_year_six.py`](scripts/openness_by_year_six.py)
+
+> Second, we said every sector ends up near two, open core. That holds for commercial open source, big tech, and hardware. Science does not converge. It splits. Lab automation and AI-for-science firms average about zero point six, while scientific software and infrastructure sits near two point seven.
+
+### 1:22 Licence changes per organization-year
+**Sources:** [`data/licence_events_per_org_year.csv`](data/licence_events_per_org_year.csv), [`scripts/licence_rate_per_org_year.py`](scripts/licence_rate_per_org_year.py)
+
+> Third, licence changes really did rise after twenty twenty, and not only because the sample grew. Per hundred organization-years, they went from three point four to eight point two. Closing and opening moves both rose. Firms founded before twenty ten show the same jump.
+
+### 1:41 Smaller corrections
+**Sources:** [`data/fork_vs_original.csv`](data/fork_vs_original.csv), [`companies/J/_summary.md`](companies/J/_summary.md), [`companies/I/_summary.md`](companies/I/_summary.md), [Edison: open hardware](edison/open_hardware_economics_answer.md), [`data/pdb_released_per_year.csv`](data/pdb_released_per_year.csv)
+
+> Some smaller fixes. All eight forks we checked survive, but most closing moves drew no fork at all. The AI-era startups haven't relicensed yet, but they are young. The science-model scores are indicative only. The eighty-seven percent saving for open hardware is material cost. And the Protein Data Bank's five and a half billion dollars a year is research time spent with it, not net benefit.
+
+### 2:07 Where to find the current version
+**Sources:** —
+
+> Every correction and its evidence is in the repository. The videos are snapshots. The written report is the current version.
