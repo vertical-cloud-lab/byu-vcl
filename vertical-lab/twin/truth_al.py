@@ -178,7 +178,7 @@ class AlTruth:
         vol = comp.get("Mg", 0) + comp.get("Zn", 0) + comp.get("Li", 0)
         p_lof = 0.12 / (1 + math.exp(-(mp["lof"] - 1.0) / 0.12))
         p_kh = 0.04 / (1 + math.exp(-(mp["kh"] * (1 + 0.03 * vol) - 1.0) / 0.12))
-        p_gas = 0.001 + 2.0 * lot["oxygen_ppm"] * 1e-6 + 0.004 * lot["satellite_frac"]
+        p_gas = 0.0005 + 0.8 * lot["oxygen_ppm"] * 1e-6 + 0.002 * lot["satellite_frac"]
         psi = 1 - math.exp(-th["nucleant_wt"] / 0.25)
         csi = 1.3 * th["kou_index_K"] * (1 - self.kappa * 0.85 * psi) * (1 - 0.15 * (proc["T0_C"] - 25) / 175)
         crack = 2.0 / (1 + math.exp(-(csi - 280.0) / 60.0))       # crack density, mm per mm^2
