@@ -1,0 +1,113 @@
+{
+ "config": {
+  "printer_settings_id": "Bambu Lab A1 mini 0.4 nozzle",
+  "print_settings_id": "0.20mm Standard @BBL A1M",
+  "filament_settings_id": "\"Bambu PLA Basic @BBL A1M\"",
+  "nozzle_diameter": "0.4",
+  "layer_height": "0.2",
+  "initial_layer_print_height": "0.2",
+  "wall_loops": "3",
+  "sparse_infill_density": "20%",
+  "sparse_infill_pattern": "grid",
+  "brim_type": "no_brim",
+  "enable_support": "0",
+  "curr_bed_type": "Textured PEI Plate",
+  "elefant_foot_compensation": "0",
+  "xy_contour_compensation": "0",
+  "xy_hole_compensation": "0",
+  "enable_circle_compensation": "0",
+  "outer_wall_line_width": "0.42",
+  "nozzle_temperature": "220",
+  "nozzle_temperature_initial_layer": "220",
+  "textured_plate_temp": "65",
+  "textured_plate_temp_initial_layer": "65",
+  "top_shell_layers": "5",
+  "bottom_shell_layers": "3",
+  "enable_prime_tower": "0",
+  "timelapse_type": "0",
+  "filament_type": "PLA",
+  "filament_colour": "#00AE42",
+  "enable_arc_fitting": "1",
+  "skirt_loops": "0"
+ },
+ "per_key": {
+  "T row 1": {
+   "pill (key z -3)": [
+    10.4,
+    24.791
+   ],
+   "nub, key z +0.4": [
+    7.518,
+    6.799
+   ],
+   "nub, key z +1.0": [
+    7.524,
+    6.799
+   ],
+   "nub, key z +1.4": [
+    7.523,
+    6.797
+   ]
+  },
+  "T row 2": {
+   "pill (key z -3)": [
+    10.4,
+    24.791
+   ],
+   "nub, key z +0.4": [
+    7.517,
+    6.798
+   ],
+   "nub, key z +1.0": [
+    7.521,
+    6.8
+   ],
+   "nub, key z +1.4": [
+    7.521,
+    6.796
+   ]
+  },
+  "V row 1": {
+   "pill (key z -3)": [
+    10.4,
+    24.791
+   ],
+   "nub, key z +0.4": [
+    7.564,
+    6.847
+   ],
+   "nub, key z +1.0": [
+    7.564,
+    6.849
+   ],
+   "nub, key z +1.4": [
+    7.563,
+    6.849
+   ]
+  },
+  "V row 2": {
+   "pill (key z -3)": [
+    10.4,
+    24.791
+   ],
+   "nub, key z +0.4": [
+    7.564,
+    6.848
+   ],
+   "nub, key z +1.0": [
+    7.566,
+    6.85
+   ],
+   "nub, key z +1.4": [
+    7.567,
+    6.849
+   ]
+  }
+ },
+ "tops": {
+  "T row 2": 16.8,
+  "V row 2": 17.0,
+  "V row 1": 17.0,
+  "T row 1": 16.8
+ }
+}

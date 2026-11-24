@@ -1,0 +1,54 @@
+printer_settings_id = Bambu Lab A1 mini 0.4 nozzle
+print_settings_id = 0.20mm Standard @BBL A1M
+filament_settings_id = "Bambu PLA Basic @BBL A1M"
+nozzle_diameter = 0.4
+layer_height = 0.2
+initial_layer_print_height = 0.2
+wall_loops = 3
+sparse_infill_density = 20%
+sparse_infill_pattern = grid
+brim_type = no_brim
+enable_support = 0
+curr_bed_type = Textured PEI Plate
+elefant_foot_compensation = 0
+xy_contour_compensation = 0
+xy_hole_compensation = 0
+enable_circle_compensation = 0
+outer_wall_line_width = 0.42
+nozzle_temperature = 220
+nozzle_temperature_initial_layer = 220
+textured_plate_temp = 65
+textured_plate_temp_initial_layer = 65
+top_shell_layers = 5
+bottom_shell_layers = 3
+enable_prime_tower = 0
+timelapse_type = 0
+filament_type = PLA
+filament_colour = #00AE42
+enable_arc_fitting = 1
+skirt_loops = 0
+tools ['T0', 'T1000', 'T255']
+heat commands ['M104 S0', 'M104 S140', 'M104 S170', 'M104 S180', 'M104 S220', 'M109 S100 H170', 'M109 S140', 'M109 S170', 'M109 S180', 'M109 S200', 'M109 S220', 'M140 S0', 'M140 S65', 'M190 S65']
+extrusion extents X 73.46..106.54  Y 59.81..120.19
+pill (key z -3): layer z 12.0
+   T row 1: x 74.01..83.99  y 59.81..84.18  -> 10.400 x 24.791 (incl. 0.42 line width)
+   T row 2: x 74.01..83.99  y 95.81..120.18  -> 10.400 x 24.791 (incl. 0.42 line width)
+   V row 1: x 96.01..105.99  y 59.81..84.18  -> 10.400 x 24.791 (incl. 0.42 line width)
+   V row 2: x 96.01..105.99  y 95.81..120.18  -> 10.400 x 24.791 (incl. 0.42 line width)
+nub, key z +0.4: layer z 15.4
+   T row 1: x 75.45..82.55  y 68.03..74.41  -> 7.518 x 6.799 (incl. 0.42 line width)
+   T row 2: x 75.45..82.55  y 104.03..110.41  -> 7.517 x 6.798 (incl. 0.42 line width)
+   V row 1: x 97.43..104.57  y 68.01..74.44  -> 7.564 x 6.847 (incl. 0.42 line width)
+   V row 2: x 97.43..104.57  y 104.01..110.44  -> 7.564 x 6.848 (incl. 0.42 line width)
+nub, key z +1.0: layer z 16.0
+   T row 1: x 75.45..82.55  y 68.03..74.41  -> 7.524 x 6.799 (incl. 0.42 line width)
+   T row 2: x 75.45..82.55  y 104.03..110.41  -> 7.521 x 6.800 (incl. 0.42 line width)
+   V row 1: x 97.43..104.57  y 68.01..74.44  -> 7.564 x 6.849 (incl. 0.42 line width)
+   V row 2: x 97.43..104.57  y 104.01..110.44  -> 7.566 x 6.850 (incl. 0.42 line width)
+nub, key z +1.4: layer z 16.4
+   T row 1: x 75.45..82.55  y 68.03..74.41  -> 7.523 x 6.797 (incl. 0.42 line width)
+   T row 2: x 75.45..82.55  y 104.03..110.41  -> 7.521 x 6.796 (incl. 0.42 line width)
+   V row 1: x 97.43..104.57  y 68.01..74.44  -> 7.563 x 6.849 (incl. 0.42 line width)
+   V row 2: x 97.43..104.57  y 104.01..110.44  -> 7.567 x 6.849 (incl. 0.42 line width)
+top outer-wall layer per key: {'T row 1': 16.8, 'T row 2': 16.8, 'V row 1': 17.0, 'V row 2': 17.0}
+max layer z 17.0
