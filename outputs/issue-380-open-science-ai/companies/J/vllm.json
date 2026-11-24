@@ -1,0 +1,81 @@
+{
+  "name": "vLLM project and Inferact, Inc.",
+  "slug": "vllm",
+  "group": "J",
+  "category": "open_infrastructure",
+  "subcategory": "LLM inference and serving engine; commercial steward Inferact (founded 2026)",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Created at UC Berkeley's Sky Computing Lab (started 2022 by Zhuohan Li, Woosuk Kwon and Simon Mo, per TechCrunch); repository created 2023-02-09; Apache-2.0 added 2023-05-15; announced 2023-06-20 with the PagedAttention algorithm (authors incl. Kwon, Li, Joey Gonzalez, Hao Zhang, Ion Stoica). Contributed by UC Berkeley to the PyTorch Foundation in May 2025. In Jan 2026 the core maintainers (Simon Mo, Woosuk Kwon, Kaichao You, Roger Wang, Joseph Gonzalez, Ion Stoica and others) founded Inferact, raising $150M at an $800M valuation.",
+  "founded_year": 2023,
+  "flagship_projects": ["vLLM", "PagedAttention", "Inferact Platform (proprietary, 2026)"],
+  "openness_initial": 3,
+  "openness_current": 4,
+  "openness_notes": "Scored on the project, which this file covers. Initial 3: an Apache-2.0 academic project, whole product open, led by one Berkeley lab with no formal neutral governance. Current 4: still Apache-2.0 and a PyTorch Foundation-hosted project (Linux Foundation) since May 2025, 'governed and administered under the PyTorch Foundation's neutral and transparent governance model'. Inferact, the maintainers' company, sells a proprietary platform (own-cloud or Inferact Cloud) on top; scored alone it would be 2 (open core). Inferact says vLLM 'stays open source and community governed'.",
+  "business_model": "mixed",
+  "license_history": [
+    {"year": 2023, "license": "Apache-2.0", "note": "LICENSE added 2023-05-15 ('Add Apache-2.0 license', Woosuk Kwon), five weeks before the public launch (2023-06-20); the only commit ever to touch LICENSE", "source": "https://api.github.com/repos/vllm-project/vllm/commits?path=LICENSE"},
+    {"year": 2025, "license": "Apache-2.0, PyTorch Foundation-hosted", "note": "Contributed by UC Berkeley; one of the first projects under the PyTorch Foundation's umbrella expansion; 46,500+ stars and 1,000+ contributors at the time", "source": "https://pytorch.org/blog/pytorch-foundation-welcomes-vllm/"},
+    {"year": 2026, "license": "Apache-2.0 (vLLM) + proprietary Inferact Platform", "note": "Inferact launched Jan 2026; GitHub API reports Apache-2.0, 97,423 stars, 25,190 forks (Nov 2026)", "source": "https://inferact.ai/"}
+  ],
+  "relicensing_events": [
+    {"year": 2025, "from": "Apache-2.0, UC Berkeley lab-led project", "to": "Apache-2.0, PyTorch Foundation-hosted project", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Governance change only; the licence was unchanged. Followed by Ray (Oct 2025), giving the PyTorch Foundation the training, inference and distributed-execution layers. Eight months later the maintainers formed a VC-backed company, but the project stayed under foundation governance.", "source": "https://pytorch.org/blog/pytorch-foundation-welcomes-vllm/"}
+  ],
+  "funding_total_usd": 150000000,
+  "funding_as_of": "2026-01",
+  "ownership_status": "foundation",
+  "exit_events": [],
+  "latest_value_usd": 800000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2026-01",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Nov 2024: maintainers said there was 'no plan to transition it into a stand-alone company'; by Jan 2026 they had founded Inferact with $150M, so much of the core team now works for one VC-backed firm whose roadmap it leads",
+    "Commercial contributors consolidated: Neural Magic, 'a leading contributor', was acquired by Red Hat (completed 2025-01-13) and folded into Red Hat AI",
+    "Before the company, GPU-heavy CI was funded by sponsors: a $100,000 Sequoia open-source fellowship (2024), an a16z open-source AI grant and compute donated by AWS, Nvidia and others"
+  ],
+  "robustness": "Very high. Apache-2.0, foundation-governed, with 2,000+ contributors (Jan 2026), 97K stars and 25K forks (Nov 2026), and several independent commercial stewards: Red Hat via Neural Magic, Inferact, and hardware vendors integrating via plugins (AMD, Google TPU, Intel, AWS Neuron). No single company's failure would end the project.",
+  "physical_science_relevance": "The de facto open engine for self-hosting open-weight LLMs, which labs use to run models locally for agents, literature mining or lab automation without sending data to a closed API.",
+  "openness_effect_assessment": "Releasing vLLM openly from Berkeley made it the default open inference engine quickly. Within weeks it served more than half of LMSYS Chatbot Arena traffic, and it had 46.5K stars by May 2025 and 97K by Nov 2026. Openness drew grants, compute donations and an acquirer of a key contributor (Red Hat), and only then a $150M round at $800M for the maintainers' own company. Capital followed the project, and foundation governance came before the company rather than after it.",
+  "key_takeaway": "vLLM is the AI-era version of the academic open-infrastructure path. A Berkeley lab released it under Apache-2.0 (2023), gave it to a neutral foundation (PyTorch Foundation, May 2025), and only then did its maintainers commercialize, launching Inferact in Jan 2026 with $150M at an $800M valuation. Putting governance in a foundation before the money arrived is the opposite order from the 2018-2024 database firms, which held their projects and later relicensed them.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://vllm.ai/blog/2023-06-20-vllm", "title": "vLLM: Easy, Fast, and Cheap LLM Serving with PagedAttention", "publisher": "vLLM / UC Berkeley", "date": "2023-06-20", "supports": "origin_detail (authors, Berkeley), founded_year, openness_effect_assessment (24x vs HF Transformers, Chatbot Arena adoption)"},
+    {"url": "https://api.github.com/repos/vllm-project/vllm", "title": "vllm-project/vllm repository metadata", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[2] (Apache-2.0, 97,423 stars, 25,190 forks), origin_detail (created 2023-02-09)"},
+    {"url": "https://api.github.com/repos/vllm-project/vllm/commits?path=LICENSE", "title": "Commits touching vllm-project/vllm LICENSE", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[0] (single commit, Apache-2.0, 2023-05-15)"},
+    {"url": "https://pytorch.org/blog/pytorch-foundation-welcomes-vllm/", "title": "PyTorch Foundation Welcomes vLLM as a Hosted Project", "publisher": "PyTorch Foundation", "date": "2025-05-06", "supports": "license_history[1], relicensing_events[0], openness_current (neutral governance), robustness (46.5K stars, 1,000+ contributors)"},
+    {"url": "https://techcrunch.com/2024/11/10/open-source-projects-draw-equity-free-funding-from-corporates-startups-and-even-vcs/", "title": "Open source projects draw equity-free funding from corporates, startups, and even VCs", "publisher": "TechCrunch", "date": "2024-11-10", "supports": "origin_detail (Sky Computing Lab, 2022, founders), risk_events (no company plan; Sequoia $100K, a16z grant, AWS/Nvidia compute)"},
+    {"url": "https://inferact.ai/news/introducing-inferact-building-the-future-of-ai-inference", "title": "Introducing Inferact: Building the Future of AI Inference", "publisher": "Inferact", "date": "2026-01", "supports": "funding_total_usd ($150M), latest_value_usd ($800M), origin_detail (founders), investors (a16z and Lightspeed lead), robustness (2,000+ contributors)"},
+    {"url": "https://inferact.ai/", "title": "Inferact", "publisher": "Inferact", "date": "2026-11-24", "supports": "business_model (proprietary Inferact Platform, own-compute or Inferact Cloud), openness_notes ('stays open source and community governed')"},
+    {"url": "https://inferact.ai/news", "title": "Inferact news", "publisher": "Inferact", "date": "2026-11-24", "supports": "notes (partnerships with Google TPU, AMD, Moonshot, MiniMax, Tencent; 7 trillion tokens a day, Nov 2026)"},
+    {"url": "https://www.redhat.com/en/about/press-releases/red-hat-completes-acquisition-neural-magic-fuel-optimized-generative-ai-innovation-across-hybrid-cloud", "title": "Red Hat Completes Acquisition of Neural Magic", "publisher": "Red Hat", "date": "2025-01-13", "supports": "risk_events (Neural Magic, leading vLLM contributor, acquired)"}
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/VLLM (redirects to Transformer (deep learning); no vLLM content)",
+    "https://api.github.com/repos/vllm-project/vllm",
+    "https://api.github.com/repos/vllm-project/vllm/commits?path=LICENSE",
+    "https://blog.vllm.ai/2023/06/20/vllm.html (301 to vllm.ai)",
+    "https://vllm.ai/blog/2023-06-20-vllm",
+    "https://pytorch.org/blog/pytorch-foundation-welcomes-vllm/",
+    "https://inferact.ai/",
+    "https://inferact.ai/news",
+    "https://inferact.ai/news/introducing-inferact-building-the-future-of-ai-inference",
+    "https://techcrunch.com/tag/vllm/",
+    "https://techcrunch.com/2024/11/10/open-source-projects-draw-equity-free-funding-from-corporates-startups-and-even-vcs/",
+    "https://www.redhat.com/en/about/press-releases/red-hat-completes-acquisition-neural-magic-fuel-optimized-generative-ai-innovation-across-hybrid-cloud"
+  ],
+  "notes": [
+    "This file covers the project and its main company. ownership_status 'foundation' describes vLLM. funding_total_usd and latest_value_usd describe Inferact ($150M, $800M valuation, Jan 2026, per Inferact's own announcement); the round type was not stated. Other investors: Sequoia, Altimeter, Redpoint, ZhenFund, The House Fund, Striker, Laude Ventures, Databricks Ventures, GC&H and the UC Berkeley Chancellor's Fund.",
+    "Inferact's HQ and exact founding date were not stated on fetched pages. hq_country 'US' reflects the project's Berkeley origin.",
+    "Inferact's homepage claims (464 tok/s, #1 on Artificial Analysis, 7 trillion tokens a day) are company claims, not verified.",
+    "Red Hat's Neural Magic deal terms were not stated in the fetched release; Red Hat sells a vLLM distribution as part of Red Hat AI.",
+    "Ray (Anyscale) joined vLLM and PyTorch in the PyTorch Foundation in Oct 2025; see J/anyscale.json."
+  ]
+}

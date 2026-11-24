@@ -1,0 +1,76 @@
+{
+  "name": "ggml.ai (llama.cpp, ggml)",
+  "slug": "ggml-llama-cpp",
+  "group": "J",
+  "category": "software",
+  "subcategory": "on-device LLM inference library (C/C++) and GGUF model format",
+  "hq_country": null,
+  "origin": "community",
+  "origin_detail": "Georgi Gerganov began the GGML tensor library in late September 2022 (inspired by Fabrice Bellard's LibNC; repo created 2022-09-18) and llama.cpp in March 2023 (first release 2023-03-10) as a dependency-free C/C++ implementation of Llama inference. He founded the company ggml.ai in 2023 'to support the development of ggml', with pre-seed funding from Nat Friedman and Daniel Gross. On 2026-02-20 the ggml.ai team joined Hugging Face.",
+  "founded_year": 2023,
+  "flagship_projects": ["llama.cpp", "ggml (tensor library)", "GGUF model file format", "whisper.cpp"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Initial 3: ggml and llama.cpp were MIT from the start (llama.cpp LICENSE added 2023-03-12). ggml.ai said 'In the future we may choose to develop extensions that are licensed for commercial use', but no proprietary product was found. Current 3: still MIT; the three LICENSE commits only add the licence and later update copyright notices and links (2024-04-09, 2026-02-02). Hugging Face says the project 'will continue to be 100% open-source and community driven'. Not 4, because there is no neutral foundation: the project is led by the ggml.ai team, now inside Hugging Face.",
+  "business_model": null,
+  "license_history": [
+    {"year": 2022, "license": "MIT (ggml)", "note": "Repo created 2022-09-18", "source": "https://api.github.com/repos/ggml-org/ggml"},
+    {"year": 2023, "license": "MIT (llama.cpp)", "note": "Repo created 2023-03-10; LICENSE added 2023-03-12 ('Add LICENSE (#21)')", "source": "https://api.github.com/repos/ggml-org/llama.cpp/commits?path=LICENSE"},
+    {"year": 2023, "license": "MIT (ggml.ai company statement)", "note": "'The library and related projects are freely available under the MIT license'; possible future commercially licensed extensions were mentioned but none were found", "source": "https://ggml.ai"},
+    {"year": 2026, "license": "MIT (unchanged after joining Hugging Face)", "note": "2026-02-02 LICENSE commit only updated copyright years and links; HF post of 2026-02-20 promises the project stays 100% open source and community driven", "source": "https://huggingface.co/blog/ggml-joins-hf"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2026, "type": "acquisition", "value_usd": null, "counterparty": "Hugging Face", "note": "Announced 2026-02-20 as 'GGML and llama.cpp join HF'; ggml.ai's own site says 'The company was acquired by Hugging Face in 2026'. Terms undisclosed. Gerganov's team keeps full-time focus on llama.cpp and autonomy over technical direction; HF supplies long-term resources. Core contributors Xuan-Son Nguyen and Aleksander Grygier already worked at HF.", "source": "https://huggingface.co/blog/ggml-joins-hf"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": null,
+  "risk_events": [
+    "2026-02-20: ggml.ai team absorbed by Hugging Face, ending independence of the main open local-inference stack",
+    "Hugging Face itself agreed in Sep 2026 to be acquired by NVIDIA (see B/hugging-face.json), which would place llama.cpp's maintainers inside the dominant GPU vendor once that deal closes",
+    "Downstream products depend on it: Ollama relied on llama.cpp for model support and still uses the GGML tensor library after building its own engine (2025-05-15)"
+  ],
+  "robustness": "MIT licence, ~136K GitHub stars and ~26K forks for llama.cpp (Nov 2026), plus many downstream users, make it easy to fork. Leadership and core maintainers are now Hugging Face employees, and there is no foundation; the project reached a 1.0.0 release on 2026-11-13.",
+  "physical_science_relevance": "Runs LLMs (llama.cpp) and Whisper speech recognition (whisper.cpp) on laptops, phones and edge devices without a GPU server, enabling offline or on-instrument AI in labs; its GGUF format packs weights and metadata in one file with 1.58- to 8-bit quantisation.",
+  "openness_effect_assessment": "A permissively licensed side project became core infrastructure for local AI within three years (llama.cpp ~136K stars; Ollama and others build on GGML) without any revenue model. Its value was realised by joining Hugging Face (2026-02-20), which pledged to keep it MIT and community driven. Openness created adoption and influence, not a standalone business.",
+  "key_takeaway": "ggml.ai is the purest 'open project, no business' case in this group: a tiny angel-funded team (Nat Friedman, Daniel Gross) wrote the MIT code that most local LLM tools stand on, never relicensed or monetised it, and was folded into Hugging Face in February 2026, and through Hugging Face's pending sale potentially into NVIDIA.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://en.wikipedia.org/wiki/Llama.cpp", "title": "llama.cpp", "publisher": "Wikipedia", "date": null, "supports": "origin_detail (GGML Sep 2022, llama.cpp Mar 2023, first release 2023-03-10), MIT licence, GGUF (2023-08-22), ggml.ai joined HF 2026-02-20, 1.0.0 release 2026-11-13"},
+    {"url": "https://ggml.ai", "title": "ggml.ai", "publisher": "ggml.ai", "date": null, "supports": "founded_year (2023), founder, pre-seed investors, MIT statement, 'acquired by Hugging Face in 2026'"},
+    {"url": "https://huggingface.co/blog/ggml-joins-hf", "title": "GGML and llama.cpp join HF to ensure the long-term progress of Local AI", "publisher": "Hugging Face", "date": "2026-02-20", "supports": "exit_events[0], license_history[3], governance commitments"},
+    {"url": "https://api.github.com/repos/ggml-org/llama.cpp", "title": "ggml-org/llama.cpp repository metadata", "publisher": "GitHub API", "date": "2026-11-24", "supports": "MIT, created 2023-03-10, ~136K stars, ~26K forks"},
+    {"url": "https://api.github.com/repos/ggml-org/llama.cpp/commits?path=LICENSE", "title": "Commits touching llama.cpp LICENSE", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[1], relicensing_events (none)"},
+    {"url": "https://api.github.com/repos/ggml-org/ggml", "title": "ggml-org/ggml repository metadata", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[0] (MIT, created 2022-09-18)"},
+    {"url": "https://ollama.com/blog/multimodal-models", "title": "Ollama's new engine for multimodal models", "publisher": "Ollama", "date": "2025-05-15", "supports": "risk_events (downstream dependence on llama.cpp/GGML)"}
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Llama.cpp",
+    "https://ggml.ai",
+    "https://huggingface.co/blog/ggml-joins-hf",
+    "https://api.github.com/repos/ggml-org/llama.cpp",
+    "https://api.github.com/repos/ggml-org/llama.cpp/commits?path=LICENSE",
+    "https://api.github.com/repos/ggml-org/ggml",
+    "https://en.wikipedia.org/wiki/Georgi_Gerganov (wrong person: a basketball player)",
+    "https://ollama.com/blog/multimodal-models"
+  ],
+  "notes": [
+    "business_model is null: no revenue product was found. ggml.ai was funded by pre-seed investment (amount undisclosed) and is now funded as part of Hugging Face.",
+    "hq_country and us_focus are null: the fetched pages do not state where ggml.ai was based.",
+    "Acquisition wording differs: Hugging Face's post says the team is 'joining' HF with no terms; ggml.ai's own site says it 'was acquired by Hugging Face in 2026'. ownership_status is set to acquired on the latter.",
+    "The NVIDIA-Hugging Face deal (announced 2026-09-03, $12.93B, expected to close H1 2027) is taken from this dataset's B/hugging-face.json, not re-fetched here.",
+    "Wikipedia gives >109K stars in May 2026; the GitHub API showed ~136K on 2026-11-24."
+  ]
+}

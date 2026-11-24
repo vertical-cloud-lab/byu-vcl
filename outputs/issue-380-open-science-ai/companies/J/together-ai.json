@@ -1,0 +1,185 @@
+{
+  "name": "Together Computer, Inc. (Together AI)",
+  "slug": "together-ai",
+  "group": "J",
+  "category": "software",
+  "subcategory": "AI cloud: open-model inference API, fine-tuning/post-training and GPU clusters",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Co-founded in 2022 (the founders 'first got together last year', per the May 2023 seed post) by CEO Vipul Ved Prakash with co-founders the post names only as 'Chris, Percy, Ce'. Tri Dao, creator of FlashAttention, joined as Chief Scientist. Early identity: open-source generative models and datasets (GPT-JT, OpenChatKit, RedPajama) plus a cloud platform, which launched in June 2023. Legal entity Together Computer, Inc. (Delaware), San Francisco.",
+  "founded_year": 2022,
+  "flagship_projects": [
+    "Together AI inference API (serverless and dedicated endpoints for open models)",
+    "Together GPU Clusters",
+    "Together Post-Training / fine-tuning",
+    "RedPajama datasets",
+    "FlashAttention (via Chief Scientist Tri Dao)",
+    "OpenChatKit, GPT-JT"
+  ],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Initial 2 (open core): the seed-stage company's mission was 'open-source generative AI models' plus a cloud platform; it released RedPajama (Apache-2.0 code, 30T-token RedPajama-V2 dataset), GPT-JT and OpenChatKit and published research under open licences, while the inference/fine-tuning platform (launched June 2023) was proprietary. Current 2, drifting toward 1: no licence was ever restricted and the company still campaigns for open-weight models ('the frontier is open'; Series C 'to accelerate the shift to open-source AI'), but by 2026 the business is a proprietary AI cloud (Together Compiler, polymorphic inference, 500+ MW of compute commitments) serving mostly third-party open-weight models (DeepSeek, Kimi, GLM, MiniMax); its own open releases are now research by-products. FlashAttention itself is BSD-3-Clause in Tri Dao's Dao-AILab repository, not a Together product.",
+  "business_model": "api",
+  "license_history": [
+    {
+      "year": 2022,
+      "license": "BSD-3-Clause (FlashAttention, Dao-AILab)",
+      "note": "Repository created 2022-05-19 by Tri Dao before he joined Together as Chief Scientist (2023); Together promotes it as part of its research",
+      "source": "https://api.github.com/repos/Dao-AILab/flash-attention"
+    },
+    {
+      "year": 2023,
+      "license": "Apache-2.0 (RedPajama-Data code); open datasets and models (GPT-JT, OpenChatKit)",
+      "note": "RedPajama-Data repository created 2023-04-14; RedPajama-V2 (30T tokens) downloaded 1.2M times in the month before 2023-11-29",
+      "source": "https://api.github.com/repos/togethercomputer/RedPajama-Data"
+    },
+    {
+      "year": 2023,
+      "license": "Proprietary Together platform (inference, fine-tuning API)",
+      "note": "Platform launched June 2023; Inference API with 100+ open models by Nov 2023",
+      "source": "https://www.together.ai/blog/series-a"
+    },
+    {
+      "year": 2026,
+      "license": "Proprietary AI cloud (Together Compiler, GPU Clusters, Post-Training)",
+      "note": "Product announcements through 2026 are proprietary infrastructure features",
+      "source": "https://www.together.ai/about"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 1333500000,
+  "funding_as_of": "2026-07",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": 3300000000,
+  "latest_value_type": "private_valuation",
+  "latest_value_date": "2025-02-20",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Capital intensity: a 36,000-GPU NVIDIA GB200 NVL72 cluster co-built with Hypertec (2025) and commitments for 500+ MW of compute in the 2026 Series C, to be capitalized by the new investors",
+    "2026-11-21: disclosed that an unauthorized party accessed stored prompt samples from its serverless inference service (June-July 2026) after an AI coding agent committed a credential to a public GitHub repository; review of exposure ongoing",
+    "Depends on third parties' open-weight models (DeepSeek, Kimi, GLM, MiniMax, Qwen) staying competitive with closed frontier models"
+  ],
+  "robustness": "Well capitalized (about $1.33B raised, including $800M in Jul 2026) with thousands of customers (Cursor, Cognition, Decagon, ElevenLabs, Suno), but its moat is infrastructure and systems research, not an open project others depend on. Its open artefacts (RedPajama, FlashAttention) would outlive it; the cloud business competes with hyperscalers and GPU neoclouds.",
+  "physical_science_relevance": "Co-developed the Evo biology model with the Arc Institute (2024) and the StripedHyena/Mamba architectures behind it. RedPajama is open training data. Hosts open models that labs can use through an API without running their own GPUs.",
+  "openness_effect_assessment": "Openness was Together's founding brand and recruiting tool: research artefacts such as RedPajama-V2 (1.2M downloads in a month) and FlashAttention (Stanford open-source software award) gave it credibility with developers (45,000 registered developers by Mar 2024, 450,000 by Feb 2025). The money came from proprietary hosting of open models; valuation rose to $3.3B (Feb 2025) and the company raised $800M more in Jul 2026. Openness here works as a market thesis (open models need a neutral cloud) more than as a licence on the company's own product.",
+  "key_takeaway": "Together AI shows the most common AI-era pattern in this group: advocate open models, publish research openly, and sell proprietary compute. It never relicensed anything; instead the product moved from 'open models + cloud' (2023) to a capital-intensive GPU cloud with 500+ MW of commitments (2026), so its fortunes depend on open-weight models staying good, not on its own code being open.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {
+      "url": "https://www.together.ai/blog/seed-funding",
+      "title": "Together's $20M seed funding to build open-source AI and cloud platform",
+      "publisher": "Together AI",
+      "date": "2023-05-15",
+      "supports": "founded_year (2022, implied), origin_detail (Vipul Ved Prakash; 'Chris, Percy, Ce'), openness_initial (mission), notes ($20M seed led by Lux)"
+    },
+    {
+      "url": "https://www.together.ai/blog/series-a",
+      "title": "Our $102.5M Series A",
+      "publisher": "Together AI",
+      "date": "2023-11-29",
+      "supports": "notes (Series A, Kleiner Perkins), license_history[2] (platform launched June 2023), openness_effect_assessment (RedPajama-V2 1.2M downloads)"
+    },
+    {
+      "url": "https://www.together.ai/blog/series-a2",
+      "title": "Announcing $106M round led by Salesforce Ventures",
+      "publisher": "Together AI",
+      "date": "2024-03-13",
+      "supports": "notes ($106M), openness_effect_assessment (45,000 developers), physical_science_relevance (Evo with Arc Institute)"
+    },
+    {
+      "url": "https://www.together.ai/blog/together-ai-announcing-305m-series-b",
+      "title": "Together AI Announces $305M Series B",
+      "publisher": "Together AI",
+      "date": "2025-02-20",
+      "supports": "latest_value_usd ($3.3B), notes (General Catalyst, Prosperity7), risk_events (36K GB200 cluster), openness_effect_assessment (450,000 developers), openness_effect_assessment (FlashAttention Stanford open-source software award, related-article headline)"
+    },
+    {
+      "url": "https://www.together.ai/blog/announcing-our-series-c",
+      "title": "Announcing our $800M Series C to accelerate the shift to open-source AI",
+      "publisher": "Together AI",
+      "date": "2026-07-01",
+      "supports": "funding_total_usd (Series C $800M), risk_events (500+ MW), robustness (customers), openness_notes"
+    },
+    {
+      "url": "https://www.together.ai/blog/codesandbox-acquisition-together-code-interpreter",
+      "title": "Together AI acquires CodeSandbox",
+      "publisher": "Together AI",
+      "date": "2024-12-12",
+      "supports": "notes (acquisition, terms undisclosed)"
+    },
+    {
+      "url": "https://www.together.ai/blog/together-ai-acquires-refuel-ai",
+      "title": "Together AI acquires Refuel.ai",
+      "publisher": "Together AI",
+      "date": "2025-05-15",
+      "supports": "notes (acquisition, terms undisclosed)"
+    },
+    {
+      "url": "https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026",
+      "title": "Security event: Prompt leakage for requests in June and July of 2026",
+      "publisher": "Together AI",
+      "date": "2026-11-21",
+      "supports": "risk_events (prompt leakage)"
+    },
+    {
+      "url": "https://www.together.ai/about",
+      "title": "About Together AI",
+      "publisher": "Together AI",
+      "date": "2026-11-24",
+      "supports": "license_history[3] (2026 proprietary products), subcategory ('AI Native Cloud')"
+    },
+    {
+      "url": "https://www.together.ai/terms-of-service",
+      "title": "Terms of Service",
+      "publisher": "Together AI",
+      "date": "2026-11-24",
+      "supports": "name (Together Computer, Inc.), hq_country (San Francisco)"
+    },
+    {
+      "url": "https://api.github.com/repos/togethercomputer/RedPajama-Data",
+      "title": "togethercomputer/RedPajama-Data repository metadata",
+      "publisher": "GitHub API",
+      "date": "2026-11-24",
+      "supports": "license_history[1] (Apache-2.0, created 2023-04-14)"
+    },
+    {
+      "url": "https://api.github.com/repos/Dao-AILab/flash-attention",
+      "title": "Dao-AILab/flash-attention repository metadata",
+      "publisher": "GitHub API",
+      "date": "2026-11-24",
+      "supports": "license_history[0] (BSD-3-Clause, created 2022-05-19)"
+    }
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Together_AI (404)",
+    "https://www.together.ai/about",
+    "https://www.together.ai/blog",
+    "https://www.together.ai/blog/together-ai-announcing-305m-series-b",
+    "https://www.together.ai/blog/announcing-our-series-c",
+    "https://www.together.ai/blog/seed-funding",
+    "https://www.together.ai/blog/series-a",
+    "https://www.together.ai/blog/series-a2",
+    "https://www.together.ai/blog/codesandbox-acquisition-together-code-interpreter",
+    "https://www.together.ai/blog/together-ai-acquires-refuel-ai",
+    "https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026",
+    "https://www.together.ai/terms-of-service",
+    "https://api.github.com/repos/togethercomputer/RedPajama-Data",
+    "https://api.github.com/repos/Dao-AILab/flash-attention",
+    "https://techcrunch.com/tag/together-ai/ (404)"
+  ],
+  "notes": [
+    "Rounds: $20M seed led by Lux Capital (2023-05-15); $102.5M Series A led by Kleiner Perkins with NVIDIA and Emergence (2023-11-29); $106M led by Salesforce Ventures (2024-03-13); $305M Series B led by General Catalyst, co-led by Prosperity7, at $3.3B (2025-02-20); $800M Series C (2026-07-01; Aramco Ventures, NVIDIA, Vista Equity, General Catalyst and others; no lead named). Sum $1,333.5M.",
+    "The Series C post states no valuation, so latest_value_usd is the Feb 2025 $3.3B figure (from the Series B post's image alt text and the Series C sidebar).",
+    "Co-founders other than Prakash appear only by first name on the fetched seed post; they are commonly identified as Stanford's Chris Re and Percy Liang and ETH Zurich's Ce Zhang, but that was not confirmed on a fetched page, so origin is founder_startup rather than academic.",
+    "Acquisitions made: CodeSandbox (Amsterdam, 4.5M monthly developers; 2024-12-12) and Refuel.ai (data-cleaning LLMs; 2025-05-15); terms undisclosed for both.",
+    "Revenue: Feb 2025 post cites 6x ARR growth but no figure; employees not stated on fetched pages."
+  ]
+}

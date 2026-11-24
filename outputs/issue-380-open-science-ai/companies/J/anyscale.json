@@ -1,0 +1,89 @@
+{
+  "name": "Anyscale, Inc.",
+  "slug": "anyscale",
+  "group": "J",
+  "category": "software",
+  "subcategory": "distributed AI compute (Ray) and managed Ray platform",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Founded 2019 in San Francisco by the UC Berkeley team that built Ray: Robert Nishihara, Philipp Moritz and Ion Stoica (co-founder of Databricks and Conviva), with Berkeley professor Michael I. Jordan in the founding team. Anyscale's about page says Ray was developed at Berkeley's RISELab in 2016-2017; the ray-project repository's initial commit is dated 2016-02-07. Launched with a $20.6M Series A led by a16z (2019-12-17).",
+  "founded_year": 2019,
+  "flagship_projects": ["Ray (Ray Core, Ray Data, Ray Train, Ray Serve, RLlib)", "Anyscale Platform (managed Ray)", "Anyscale Runtime", "KubeRay Connect"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Initial 2 (open core): at founding Ray was already Apache-2.0 (since 2016-11-02) and Anyscale planned 'tools and a runtime platform for Ray' as its paid product (TechCrunch, 2019-12-17). Current 2: Ray stays Apache-2.0 and since 2025-10-22 is a PyTorch Foundation-hosted project (Linux Foundation), which would be level 4 for the project alone. But the company's revenue product, the managed Anyscale platform and Ray-compatible Anyscale Runtime, is proprietary, so the company scores 2, as group B scored Databricks with Spark at the ASF. Licence never restricted.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2016, "license": "BSD, then Apache-2.0 (Ray)", "note": "Pre-company: LICENSE switched to BSD on 2016-06-06 and to Apache-2.0 on 2016-11-02 (commit 'Change license to Apache 2', Robert Nishihara); a lateral move between permissive licences during early development, not counted as a relicensing event", "source": "https://api.github.com/repos/ray-project/ray/commits?path=LICENSE"},
+    {"year": 2019, "license": "Apache-2.0 (Ray) + proprietary Anyscale runtime platform (planned)", "note": "Company launched to build commercial tools and a runtime platform on the free framework", "source": "https://techcrunch.com/2019/12/17/anyscale-ray-project-distributed-computing-a16z/"},
+    {"year": 2025, "license": "Apache-2.0 (Ray), PyTorch Foundation-hosted", "note": "Ray contributed by Anyscale to the PyTorch Foundation, announced 2025-10-22 at PyTorch Conference", "source": "https://pytorch.org/blog/pytorch-foundation-welcomes-ray-to-deliver-a-unified-open-source-ai-compute-stack/"},
+    {"year": 2026, "license": "Apache-2.0 (Ray); proprietary Anyscale Platform/Runtime", "note": "GitHub API reports Apache-2.0 for ray-project/ray (44,369 stars, Nov 2026)", "source": "https://api.github.com/repos/ray-project/ray"}
+  ],
+  "relicensing_events": [
+    {"year": 2025, "from": "Apache-2.0, Anyscale-led project", "to": "Apache-2.0, PyTorch Foundation (Linux Foundation) hosted project", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Governance change only; the licence was unchanged. Anyscale said the move reinforced 'open governance and long-term sustainability'. It came nine months before Anyscale agreed to sell itself to Nscale, and the Nscale release says Ray 'remains open source and community governed'.", "source": "https://pytorch.org/blog/pytorch-foundation-welcomes-ray-to-deliver-a-unified-open-source-ai-compute-stack/"}
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [
+    {"year": 2026, "type": "acquisition", "value_usd": 1650000000, "counterparty": "Nscale", "note": "Definitive agreement announced 2026-07-30 by Nscale, a British AI 'neocloud' (GPUs, data centres, power) last valued at $14.6B (Mar 2026). Financial terms not disclosed by the companies; $1.65B reported by Bloomberg from an anonymous source (via TechCrunch). Expected to close in H2 2026, subject to regulatory approval; closing not confirmed on fetched pages (Anyscale's about page still says 'Anyscale to Join Nscale' on 2026-11-24). About 200 staff join Nscale; Anyscale keeps its brand.", "source": "https://www.anyscale.com/press/nscale-acquires-anyscale-enhancing-its-full-stack-ai-cloud-platform"}
+  ],
+  "latest_value_usd": 1650000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2026-07-30",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 200,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2026-07-30: agreed sale to GPU cloud Nscale (UK; investors include Nvidia); the main commercial steward of Ray becomes part of a compute vendor",
+    "Reported price ($1.65B) only modestly above the $1.38B valuation of the 2022 Series C, four years later",
+    "Co-founder no longer CEO by 2026: Keerti Melkote is named Anyscale CEO in the Nscale release (date of change not confirmed on fetched pages)"
+  ],
+  "robustness": "High for the project, lower for the company. Ray is Apache-2.0 and foundation-governed (PyTorch Foundation since Oct 2025), had 237M downloads and 39K+ stars at donation (44.4K stars, Nov 2026), and is used by firms such as Uber, so it would outlive Anyscale's absorption into Nscale. Nscale says it will join the PyTorch Foundation. The company's own value lies in a proprietary managed runtime that now depends on its new parent's strategy.",
+  "physical_science_relevance": "Ray is general-purpose Python distributed computing (data processing, training, hyperparameter tuning, RL, serving) usable for parallel simulation and ML on experimental data; no specific physical-science deployments were confirmed on fetched pages.",
+  "openness_effect_assessment": "Ray's permissive licence and Berkeley origin produced wide adoption (early users included Intel, Amazon, Microsoft and Ant Financial in 2019; 237M downloads by 2025), which Anyscale monetized through a proprietary managed runtime. Anyscale never restricted Ray's licence; it moved Ray into a neutral foundation (Oct 2025) and then agreed to sell to a GPU cloud (Jul 2026) at a reported $1.65B, against a $1.38B valuation in 2022. Openness built the user base but did not on its own yield a large independent software business.",
+  "key_takeaway": "Anyscale repeats the Databricks recipe (Berkeley project, open licence, managed service), but in the AI era the exit came from an infrastructure owner rather than an IPO. Nscale (UK GPU cloud) agreed to buy it on 2026-07-30 for a reported $1.65B. Donating Ray to the PyTorch Foundation first meant the open project, not the company, carries the community's investment forward.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://www.anyscale.com/about", "title": "About Anyscale", "publisher": "Anyscale", "date": "2026-11-24", "supports": "founded_year (2019), origin_detail (Ray developed at UC Berkeley RISELab 2016-2017), HQ San Francisco, investors (a16z, NEA, Addition, Intel Capital), exit_events[0] ('Anyscale to Join Nscale' banner)"},
+    {"url": "https://techcrunch.com/2019/12/17/anyscale-ray-project-distributed-computing-a16z/", "title": "Anyscale, from the creators of the Ray-distributed computing project, launches with $20.6M led by a16z", "publisher": "TechCrunch", "date": "2019-12-17", "supports": "origin_detail (founders), license_history[1] (planned runtime platform), notes (Series A $20.6M, early adopters)"},
+    {"url": "https://techcrunch.com/2020/10/21/anyscale-adds-40m-to-bring-its-ray-based-distributed-computing-tech-to-the-enterprise-masses/", "title": "Anyscale adds $40M to bring its Ray-based distributed computing tech to the enterprise masses", "publisher": "TechCrunch", "date": "2020-10-21", "supports": "notes (Series B $40M; headline only, via TechCrunch tag page)"},
+    {"url": "https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack/", "title": "Nscale buys Anyscale as it seeks to own more of the AI compute stack", "publisher": "TechCrunch", "date": "2026-07-30", "supports": "exit_events[0] value_usd ($1.65B per Bloomberg), latest_value_usd, notes ($1.38B 2022 Series C valuation), employees_latest (~200), Nscale $14.6B valuation"},
+    {"url": "https://www.anyscale.com/press/nscale-acquires-anyscale-enhancing-its-full-stack-ai-cloud-platform", "title": "Nscale Acquires Anyscale, Enhancing its Full-Stack AI Cloud Platform", "publisher": "Anyscale / Nscale", "date": "2026-07-30", "supports": "exit_events[0] (definitive agreement, undisclosed terms, H2 2026 close, ~200 staff, Ray stays open and community governed, Nscale joins PyTorch Foundation), risk_events (Keerti Melkote CEO)"},
+    {"url": "https://pytorch.org/blog/pytorch-foundation-welcomes-ray-to-deliver-a-unified-open-source-ai-compute-stack/", "title": "PyTorch Foundation Welcomes Ray to Deliver a Unified Open Source AI Compute Stack", "publisher": "PyTorch Foundation", "date": "2025-10-22", "supports": "license_history[2], relicensing_events[0], robustness (237M downloads, 39K+ stars, Uber)"},
+    {"url": "https://api.github.com/repos/ray-project/ray", "title": "ray-project/ray repository metadata", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[3] (Apache-2.0, 44,369 stars, created 2016-10-25)"},
+    {"url": "https://api.github.com/repos/ray-project/ray/commits?path=LICENSE", "title": "Commits touching ray-project/ray LICENSE", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[0] (initial commit 2016-02-07; BSD 2016-06-06; Apache-2.0 2016-11-02)"}
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Anyscale (404)",
+    "https://en.wikipedia.org/wiki/Ray_(software) (404)",
+    "https://en.wikipedia.org/wiki/Ion_Stoica",
+    "https://api.github.com/repos/ray-project/ray",
+    "https://api.github.com/repos/ray-project/ray/commits?path=LICENSE",
+    "https://www.anyscale.com/about",
+    "https://www.anyscale.com/",
+    "https://www.anyscale.com/blog",
+    "https://www.anyscale.com/press",
+    "https://www.anyscale.com/press/nscale-acquires-anyscale-enhancing-its-full-stack-ai-cloud-platform",
+    "https://www.anyscale.com/product/platform/rayturbo",
+    "https://pytorch.org/blog/pytorch-foundation-welcomes-ray-to-deliver-a-unified-open-source-ai-compute-stack/",
+    "https://techcrunch.com/tag/anyscale/",
+    "https://techcrunch.com/2019/12/17/anyscale-ray-project-distributed-computing-a16z/",
+    "https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack/",
+    "https://www.nscale.com/",
+    "https://www.nscale.com/press-releases (404)",
+    "https://rise.cs.berkeley.edu/projects/ray/ (TLS certificate error)"
+  ],
+  "notes": [
+    "Confirmed rounds: $20.6M Series A led by a16z (2019-12-17; NEA, Intel Capital, Ant Financial, Amplify, 11.2 Capital, The House Fund) and $40M (2020-10-21, headline only). A 2022 Series C at a $1.38B valuation is stated by TechCrunch (2026); its amount and the company's total funding were not confirmed on fetched pages, so funding_total_usd is null.",
+    "latest_value_usd is the Bloomberg-reported acquisition price via TechCrunch, not a company-disclosed figure. ownership_status is kept private_vc because closing was not confirmed (same convention as B/hugging-face.json).",
+    "The 2016 BSD to Apache-2.0 switch predates the company and stays between permissive licences, so it is recorded in license_history only.",
+    "RayTurbo (Anyscale's optimized runtime) could not be confirmed on the fetched product page; the page describes a 'fully managed, Ray-compatible' Anyscale Runtime.",
+    "Wikipedia's Ion Stoica article confirms he co-founded Anyscale with other original Ray developers but gives no year."
+  ]
+}

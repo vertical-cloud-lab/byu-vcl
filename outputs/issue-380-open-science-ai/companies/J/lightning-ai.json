@@ -1,0 +1,170 @@
+{
+  "name": "Lightning AI (formerly Grid.ai)",
+  "slug": "lightning-ai",
+  "group": "J",
+  "category": "software",
+  "subcategory": "ML training framework (PyTorch Lightning), AI development platform and, since 2026, GPU cloud",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "PyTorch Lightning began as William Falcon's research tool (started 2015 as a Columbia undergraduate; developed from 2018 at NYU's CILVR lab and Facebook AI Research during his PhD) and was open-sourced in 2019 (first release 2019-05-31). Falcon and Luis Capelo founded Grid.ai in 2019; it rebranded as Lightning AI on 2022-06-16 with a $40M Series B. In Jan 2026 it merged with GPU cloud Voltage Park (founded 2023, backed by the Navigation Fund) and kept the Lightning AI name.",
+  "founded_year": 2019,
+  "flagship_projects": [
+    "PyTorch Lightning",
+    "Lightning Fabric",
+    "TorchMetrics",
+    "LitGPT",
+    "LitServe",
+    "Thunder",
+    "Lightning AI Studio (proprietary)",
+    "GPU cloud (ex-Voltage Park)"
+  ],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Initial 2 (open core): PyTorch Lightning has been Apache-2.0 since its first LICENSE file (2019-08-05), and Grid.ai's revenue was to come from 'fully managed products' (TechCrunch, 2022). Current 2: the libraries (PyTorch Lightning, Fabric, TorchMetrics, LitGPT, LitServe, Thunder) remain Apache-2.0, never relicensed (the only substantive LICENSE edit, 2020-02-09, filled in the copyright line). The paid products, AI Studio (2023) and since 2026 an owned GPU cloud (36,000+ GPUs), are proprietary. After the Voltage Park merger the open code is a developer funnel for compute, so it trends toward 1, but the open libraries are still substantial.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2019,
+      "license": "Apache-2.0 (PyTorch Lightning)",
+      "note": "Repository created 2019-03-31; LICENSE added 2019-08-05 by William Falcon; first release 2019-05-31; adopted by the NeurIPS 2019 Reproducibility Challenge as a standard for PyTorch code",
+      "source": "https://api.github.com/repos/Lightning-AI/pytorch-lightning/commits?path=LICENSE"
+    },
+    {
+      "year": 2020,
+      "license": "Apache-2.0",
+      "note": "Commit bfbb4a6 (2020-02-09) only replaced the template copyright line with 'Copyright 2018-2020 William Falcon'; licence type unchanged",
+      "source": "https://api.github.com/repos/Lightning-AI/pytorch-lightning/commits/bfbb4a6"
+    },
+    {
+      "year": 2023,
+      "license": "Apache-2.0 libraries + proprietary Lightning AI Studio",
+      "note": "Browser-based cloud platform launched 2023; pay-as-you-go with a free tier of 22 GPU hours/month (Nov 2024)",
+      "source": "https://techcrunch.com/2024/11/21/lightning-ai-looks-to-make-managing-ai-a-piece-of-cake/"
+    },
+    {
+      "year": 2026,
+      "license": "Apache-2.0 libraries + proprietary AI Studio and GPU cloud",
+      "note": "GitHub API reports Apache-2.0 for Lightning-AI/pytorch-lightning (31,463 stars, Nov 2026)",
+      "source": "https://api.github.com/repos/Lightning-AI/pytorch-lightning"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 108000000,
+  "funding_as_of": "2026",
+  "ownership_status": "private_vc",
+  "exit_events": [
+    {
+      "year": 2026,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "Voltage Park",
+      "note": "Merger completed and announced Jan 2026; the combined company operates as Lightning AI with William Falcon as CEO, Voltage Park's Ozan Kaya as President and Saurabh Giri as CPTO; 36,000+ owned GPUs (H100, B200, GB300). Structure, terms and valuation not disclosed.",
+      "source": "https://www.voltagepark.com/blog/lightning-ai-voltage-park-merger-to-create-the-first-cloud-built-for-ai"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": 500000000,
+  "revenue_year": 2026,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Slow software monetization: in Nov 2024, with $103M raised, the CEO projected only $10-20M ARR by end-2025",
+    "Jan 2026 merger turned a dev-tools company into a capital-intensive GPU owner-operator (36,000+ GPUs), exposed to GPU pricing and utilization",
+    "PyTorch Lightning is maintained by the company, not a foundation, so the project depends on Lightning AI's priorities"
+  ],
+  "robustness": "The libraries are Apache-2.0 with broad use (470M+ downloads cited by the company; 20M downloads and ~10,000 companies in production in 2022), so they could be forked and maintained by others. Governance is company-controlled. The company is now underpinned by owned compute and reports more than $500M ARR after the merger.",
+  "physical_science_relevance": "PyTorch Lightning is widely used in academic ML research and was adopted as a reproducibility standard by NeurIPS 2019; it and Lightning Studios serve research groups training models on scientific data.",
+  "openness_effect_assessment": "Openness made PyTorch Lightning a research standard (NeurIPS 2019 reproducibility challenge, 20M downloads by 2022, 470M+ by 2026), but selling tools on top of it grew slowly. About $103M was raised by Nov 2024, against a projected $10-20M ARR by end-2025. Scale came only from merging with a GPU owner: the combined company reports ARR rising from $18M (2024) to over $500M. The open framework is the funnel; compute is the business.",
+  "key_takeaway": "Lightning AI shows that in the AI era an open-source training framework with a large research following did not support a large software business by itself. The company never relicensed; it reached scale by merging with GPU cloud Voltage Park (Jan 2026), which turned it into a compute provider with an open-source front end.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/PyTorch_Lightning",
+      "title": "PyTorch Lightning",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "license_history[0] (first release 2019-05-31, Apache-2.0, NeurIPS 2019 reproducibility standard)"
+    },
+    {
+      "url": "https://api.github.com/repos/Lightning-AI/pytorch-lightning",
+      "title": "Lightning-AI/pytorch-lightning repository metadata",
+      "publisher": "GitHub API",
+      "date": "2026-11-24",
+      "supports": "license_history[3] (Apache-2.0, 31,463 stars, created 2019-03-31)"
+    },
+    {
+      "url": "https://api.github.com/repos/Lightning-AI/pytorch-lightning/commits?path=LICENSE",
+      "title": "Commits touching pytorch-lightning LICENSE",
+      "publisher": "GitHub API",
+      "date": "2026-11-24",
+      "supports": "license_history[0] (LICENSE created 2019-08-05)"
+    },
+    {
+      "url": "https://api.github.com/repos/Lightning-AI/pytorch-lightning/commits/bfbb4a6",
+      "title": "Commit bfbb4a6 'update license (#809)'",
+      "publisher": "GitHub API",
+      "date": "2020-02-09",
+      "supports": "license_history[1] (copyright line only)"
+    },
+    {
+      "url": "https://techcrunch.com/2022/06/16/grid-ai-rebrands-as-lightning-ai-raises-40m-to-build-ai-dev-tools/",
+      "title": "Grid.ai rebrands as Lightning AI, raises $40M to expand its AI dev tools",
+      "publisher": "TechCrunch",
+      "date": "2022-06-16",
+      "supports": "origin_detail (Falcon, Capelo, 2019, Columbia/NYU/FAIR), openness_initial (managed products), robustness (20M downloads, 10,000 companies), notes ($40M Series B led by Coatue; 60 staff)"
+    },
+    {
+      "url": "https://techcrunch.com/2024/11/21/lightning-ai-looks-to-make-managing-ai-a-piece-of-cake/",
+      "title": "Lightning looks to make managing AI a piece of cake",
+      "publisher": "TechCrunch",
+      "date": "2024-11-21",
+      "supports": "risk_events ($103M raised, $10-20M ARR projection), license_history[2] (AI Studios pricing), notes ($50M round; ~50 staff; 230,000 developers)"
+    },
+    {
+      "url": "https://lightning.ai/about",
+      "title": "About Lightning AI",
+      "publisher": "Lightning AI",
+      "date": "2026-11-24",
+      "supports": "funding_total_usd ($108M), origin_detail (2015 Columbia, 2019 open-sourced), robustness (470M+ downloads), exit_events[0] ('now one company'), notes (investors)"
+    },
+    {
+      "url": "https://www.voltagepark.com/blog/lightning-ai-voltage-park-merger-to-create-the-first-cloud-built-for-ai",
+      "title": "Lightning AI and Voltage Park merger announcement (title from URL slug)",
+      "publisher": "Voltage Park / Lightning AI",
+      "date": "2026-01",
+      "supports": "exit_events[0], revenue_latest_usd (>$500M ARR; $18M in 2024), leadership"
+    },
+    {
+      "url": "https://www.voltagepark.com/",
+      "title": "Voltage Park",
+      "publisher": "Voltage Park",
+      "date": "2026-11-24",
+      "supports": "exit_events[0] ('Voltage Park has merged with Lightning AI'; 36,000 GPUs)"
+    }
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/PyTorch_Lightning",
+    "https://en.wikipedia.org/wiki/Lightning_AI (404)",
+    "https://api.github.com/repos/Lightning-AI/pytorch-lightning",
+    "https://api.github.com/repos/Lightning-AI/pytorch-lightning/commits?path=LICENSE",
+    "https://api.github.com/repos/Lightning-AI/pytorch-lightning/commits/bfbb4a6",
+    "https://lightning.ai/about",
+    "https://www.voltagepark.com/",
+    "https://www.voltagepark.com/blog/lightning-ai-voltage-park-merger-to-create-the-first-cloud-built-for-ai",
+    "https://techcrunch.com/tag/lightning-ai/",
+    "https://techcrunch.com/2022/06/16/grid-ai-rebrands-as-lightning-ai-raises-40m-to-build-ai-dev-tools/",
+    "https://techcrunch.com/2024/11/21/lightning-ai-looks-to-make-managing-ai-a-piece-of-cake/"
+  ],
+  "notes": [
+    "Confirmed rounds: $40M Series B led by Coatue (2022-06-16; Index, Bain, Mantis VC, First Minute) and $50M (Nov 2024; Cisco Investments, J.P. Morgan, Nvidia, K5 Global), bringing the total to $103M per TechCrunch. The 2026 about page says $108M. An earlier Series A (reported elsewhere as $18.6M) was not confirmed on fetched pages. No valuation was found for any round or for the merger.",
+    "revenue_latest_usd is annualized recurring revenue (>$500M) stated in the merger announcement, apparently for the combined company; it is not audited revenue.",
+    "employees_latest left null: the last confirmed figure is ~50 (Nov 2024, before the merger).",
+    "Voltage Park was described as founded in 2023 and backed by the Navigation Fund; the merged company's ownership split was not disclosed."
+  ]
+}

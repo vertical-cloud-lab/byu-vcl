@@ -1,0 +1,145 @@
+{
+  "name": "Qdrant (Qdrant Solutions GmbH)",
+  "slug": "qdrant",
+  "group": "J",
+  "category": "software",
+  "subcategory": "vector database / vector search engine",
+  "hq_country": "DE",
+  "origin": "founder_startup",
+  "origin_detail": "Rust vector search engine whose GitHub repo dates from May 2020; company founded out of Berlin in 2021 by Andre Zayarni (CEO) and Andrey Vasnetsov (CTO); managed cloud launched early 2023",
+  "founded_year": 2021,
+  "flagship_projects": [
+    "Qdrant vector search engine (Rust, Apache-2.0)",
+    "Qdrant Managed Cloud",
+    "Qdrant Hybrid Cloud",
+    "Qdrant Private Cloud",
+    "Qdrant Edge (beta)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Initial 3, current 3. The whole engine has been Apache-2.0 since the LICENSE file was created on 2021-04-07; the only later LICENSE commit (2026-08-31) added Qdrant Solutions GmbH as copyright holder and did not change the licence. No enterprise edition of the engine was found: paid tiers differ by managed-service and operations features (HA, backups, SLAs, enterprise SSO, private VPC links), and the managed-cloud service around Managed/Hybrid/Private Cloud is sold separately from the open engine (its source status was not checked). So substantially the whole product is OSI-licensed and money comes from hosting (level 3). Unlike MongoDB, Elastic, Redis and HashiCorp (2018-2024), Qdrant has not relicensed.",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2020,
+      "license": "Public repo (qdrant/qdrant)",
+      "note": "Repo created 2020-05-30",
+      "source": "https://api.github.com/repos/qdrant/qdrant"
+    },
+    {
+      "year": 2021,
+      "license": "Apache-2.0",
+      "note": "LICENSE file created 2021-04-07; unchanged through Nov 2026 except the copyright-holder line added 2026-08-31",
+      "source": "https://api.github.com/repos/qdrant/qdrant/commits?path=LICENSE&per_page=100"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 87700000,
+  "funding_as_of": "2026-03",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 100,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "No licence change through Nov 2026: the Apache-2.0 engine can be hosted by anyone, including hyperscalers, so the managed cloud must compete on operations rather than exclusivity"
+  ],
+  "robustness": "Permissively licensed Rust engine with broad adoption (over 250 million package downloads and 29,000+ GitHub stars by Mar 2026; 35,680 stars Nov 2026), so the code would outlive the company, but development and governance are controlled by one VC-backed firm with no foundation.",
+  "physical_science_relevance": "General retrieval infrastructure for RAG and similarity search over embeddings (documents, images, and in principle molecular or materials embeddings); no science-specific deployments were confirmed on fetched pages beyond customers such as Roche.",
+  "openness_effect_assessment": "Staying fully Apache-2.0 has not stopped Qdrant from raising successively larger rounds ($7.5M seed 2023, $28M Series A 2024, $50M Series B 2026) or winning enterprise customers (Canva, HubSpot, Roche, Bosch), with the open engine acting as the funnel (5M+ downloads at the Series A, 250M+ by the Series B) for paid managed, hybrid and private cloud. There is no sign yet of the defensive relicensing that earlier database vendors adopted once cloud providers competed with them.",
+  "key_takeaway": "Qdrant is a clean AI-era example of permissive open source as a startup strategy: a Berlin vector database that has stayed Apache-2.0 since 2021, makes money from hosted and private-cloud deployments, and had raised about $88M by March 2026 without disclosing a valuation. Whether it keeps the licence once hyperscalers offer it as a service, the trigger for the 2018-2024 relicensing wave, is the open question.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {
+      "url": "https://techcrunch.com/2023/04/19/qdrant-an-open-source-vector-database-startup-wants-to-help-ai-developers-leverage-unstructured-data/",
+      "title": "Qdrant, an open source vector database startup, wants to help AI developers leverage unstructured data",
+      "publisher": "TechCrunch",
+      "date": "2023-04-19",
+      "supports": "founded_year (2021), hq_country (Berlin), seed $7.5M and pre-seed EUR 2M (~$2.2M), managed cloud launch, enterprise plans"
+    },
+    {
+      "url": "https://qdrant.tech/blog/seed-round/",
+      "title": "Qdrant seed round announcement",
+      "publisher": "Qdrant",
+      "date": "2023-04-19",
+      "supports": "seed $7.5M led by Unusual Ventures"
+    },
+    {
+      "url": "https://qdrant.tech/blog/series-a-funding-round/",
+      "title": "Qdrant Series A",
+      "publisher": "Qdrant",
+      "date": "2024-01-23",
+      "supports": "Series A $28M led by Spark Capital; 5M+ downloads"
+    },
+    {
+      "url": "https://qdrant.tech/blog/series-b-announcement/",
+      "title": "Qdrant Series B",
+      "publisher": "Qdrant",
+      "date": "2026-03-12",
+      "supports": "Series B $50M led by AVP; downloads, stars, customers, product lines"
+    },
+    {
+      "url": "https://qdrant.tech/about-us/",
+      "title": "About Qdrant",
+      "publisher": "Qdrant",
+      "date": "2026-11-24",
+      "supports": "founders, employees_latest (100+), investors, flagship_projects"
+    },
+    {
+      "url": "https://qdrant.tech/pricing/",
+      "title": "Qdrant pricing",
+      "publisher": "Qdrant",
+      "date": "2026-11-24",
+      "supports": "business_model (free tier, usage-based standard, premium, hybrid and private cloud), openness_notes"
+    },
+    {
+      "url": "https://api.github.com/repos/qdrant/qdrant",
+      "title": "qdrant/qdrant repository metadata",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[0] (created 2020-05-30), Apache-2.0, stars"
+    },
+    {
+      "url": "https://api.github.com/repos/qdrant/qdrant/commits?path=LICENSE&per_page=100",
+      "title": "qdrant/qdrant LICENSE commit history",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[1], relicensing_events (none)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Vector_database",
+      "title": "Vector database",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "licence (Apache License 2.0) in implementations table"
+    }
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Qdrant (redirected to Vector database article)",
+    "https://en.wikipedia.org/wiki/Vector_database",
+    "https://api.github.com/repos/qdrant/qdrant",
+    "https://api.github.com/repos/qdrant/qdrant/commits?path=LICENSE&per_page=100",
+    "https://qdrant.tech/about-us/",
+    "https://qdrant.tech/blog/",
+    "https://qdrant.tech/press/ (404)",
+    "https://qdrant.tech/blog/seed-round/",
+    "https://qdrant.tech/blog/series-a-funding-round/",
+    "https://qdrant.tech/blog/series-b-announcement/",
+    "https://qdrant.tech/pricing/",
+    "https://techcrunch.com/2023/04/19/qdrant-an-open-source-vector-database-startup-wants-to-help-ai-developers-leverage-unstructured-data/"
+  ],
+  "notes": [
+    "funding_total_usd is the sum of disclosed rounds: pre-seed EUR 2M (~$2.2M, 2022, per TechCrunch) + seed $7.5M (2023-04-19) + Series A $28M (2024-01-23) + Series B $50M (2026-03-12) = ~$87.7M. No valuation was disclosed on fetched pages.",
+    "employees_latest is '100+ experts across 20+ countries' (about page, 2026).",
+    "Whether any Hybrid/Private Cloud components (e.g. Kubernetes operator) are proprietary was not checked in detail; the pricing page lists managed-service and operations features (enterprise SSO, private VPC links, SLAs) as paid.",
+    "Founding: TechCrunch says 2021; the GitHub repo predates the company (2020-05-30)."
+  ]
+}

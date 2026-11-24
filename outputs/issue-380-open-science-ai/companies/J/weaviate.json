@@ -1,0 +1,187 @@
+{
+  "name": "Weaviate B.V.",
+  "slug": "weaviate",
+  "group": "J",
+  "category": "software",
+  "subcategory": "vector database",
+  "hq_country": "NL",
+  "origin": "founder_startup",
+  "origin_detail": "Open-source project on GitHub since March 2016 (BSD-3-Clause from April 2016); company founded in 2019 in Amsterdam by Bob van Luijt (CEO) and Etienne Dilocker, first as SeMI Technologies B.V. and renamed Weaviate B.V. (LICENSE updated Jan 2023); remote-first with offices in the US and Australia",
+  "founded_year": 2019,
+  "flagship_projects": [
+    "Weaviate vector database (Community Edition, BSD-3-Clause)",
+    "Weaviate Enterprise Edition (licence key)",
+    "Weaviate Cloud (Shared and Dedicated)",
+    "Query Agent"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "openness_notes": "Initial 3: from April 2016 to August 2026 the entire repository was BSD-3-Clause and revenue came from Weaviate Cloud and support. Current 2 (open core): on 2026-08-26 Weaviate added a proprietary 'Weaviate License' (copyright Weaviate BV, all rights reserved, enterprise licence required) for code under the repo's wl/ directory, enabled by a licence key; BSD-3 still covers everything else, and the Community Edition remains free with no time limits or usage caps. Between Sep and Nov 2026 existing features were moved into wl/ and gated (namespaces, shard self-recovery, deduplicated backups, DB-user expiry, the rebalance planner). The source stays visible on GitHub but is not OSI-licensed.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2016,
+      "license": "BSD-3-Clause",
+      "note": "LICENSE added 2016-04-05 ('Copyright (c) 2016, Weaviate'); repo created 2016-03-30",
+      "source": "https://raw.githubusercontent.com/weaviate/weaviate/d675956e19af7dd2b71168d0c6f36fe5f083954f/LICENSE"
+    },
+    {
+      "year": 2020,
+      "license": "BSD-3-Clause",
+      "note": "v1.0.0 LICENSE: 'Copyright (c) 2020, SeMI Technologies B.V.'; contributor licence agreement (CLA v2) added 2020-07-09",
+      "source": "https://raw.githubusercontent.com/weaviate/weaviate/v1.0.0/LICENSE"
+    },
+    {
+      "year": 2023,
+      "license": "BSD-3-Clause",
+      "note": "Company name in LICENSE updated 2023-01-18 (SeMI Technologies to Weaviate)",
+      "source": "https://api.github.com/repos/weaviate/weaviate/commits?path=LICENSE&per_page=100"
+    },
+    {
+      "year": 2026,
+      "license": "BSD-3-Clause outside wl/; proprietary Weaviate License (enterprise, licence key) for wl/",
+      "note": "Added 2026-08-26 (commit 8677d32); text replaced 'per legal' 2026-09-30 (e0cc80c); licence key LICENSE_KEY/LICENSE_KEY_FILE since 2026-09-15",
+      "source": "https://raw.githubusercontent.com/weaviate/weaviate/main/LICENSE"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2026,
+      "from": "BSD-3-Clause (whole repository)",
+      "to": "BSD-3-Clause core + proprietary Weaviate License for enterprise features in wl/",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Partial closing, GitLab-style open core rather than an SSPL/BSL relicense of the whole database: existing code was moved into wl/ and gated (namespaces 2026-09-28, self-recovery orchestrator 2026-09-29, deduplicated backups 2026-09-30/10-01, rebalance planner 2026-11-23 'to gate behind enterprise'). Earlier releases remain BSD-3; no fork found as of 2026-11-24.",
+      "source": "https://api.github.com/repos/weaviate/weaviate/commits?path=wl&per_page=100"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 90,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Aug-Nov 2026: shift to open core; existing features moved behind a licence key in a proprietary wl/ directory",
+    "Oct 2026: GraphQL API deprecation announced (2026-10-22), a breaking change for existing users",
+    "Sep-Oct 2026: security releases, including a high-severity fix for Google modules (2026-09-17)"
+  ],
+  "robustness": "The BSD-3 core and all pre-August-2026 releases remain forkable, and the project has 16,958 GitHub stars (Nov 2026) and 2M+ downloads (Apr 2023), but governance is single-vendor with a contributor licence agreement, and new operational features now land in the proprietary wl/ directory.",
+  "physical_science_relevance": "General retrieval infrastructure (vector and hybrid search for RAG and agents); no science-specific deployments were confirmed on fetched pages.",
+  "openness_effect_assessment": "A permissive BSD-3 database gave Weaviate early adoption (2M+ downloads by the Apr 2023 Series B) and investor interest ($50M led by Index Ventures). Seven years after incorporation, alongside its Weaviate Cloud service, it moved to open core in 2026, gating operational features for self-managed deployments behind an enterprise licence rather than relicensing the database itself; the effect on community or revenue is not yet observable.",
+  "key_takeaway": "Weaviate shows the AI-era version of the database 'closing' pattern in a milder form: instead of an SSPL- or BSL-style relicense of the whole product (MongoDB, Elastic, HashiCorp), it kept the core BSD-3 and in Aug-Nov 2026 carved out a proprietary enterprise directory, moving existing features into it. Permissive licensing helped it grow; monetizing self-hosted users still pushed it toward open core.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {
+      "url": "https://www.prnewswire.com/news-releases/weaviate-raises-50-million-series-b-funding-to-meet-soaring-demand-for-ai-native-vector-database-technology-301803296.html",
+      "title": "Weaviate raises $50 million Series B funding to meet soaring demand for AI-native vector database technology",
+      "publisher": "PR Newswire / Weaviate",
+      "date": "2023-04-21",
+      "supports": "founded_year (2019), founders, hq_country (Amsterdam), Series B $50M (Index Ventures, Battery; NEA, Cortical, Zetta, ING), Series A early 2022, 2M+ downloads"
+    },
+    {
+      "url": "https://weaviate.io/company/about-us",
+      "title": "About Weaviate",
+      "publisher": "Weaviate",
+      "date": "2026-11-24",
+      "supports": "employees_latest (90+), investors, remote-first, products"
+    },
+    {
+      "url": "https://weaviate.io/enterprise-edition",
+      "title": "Weaviate Enterprise Edition",
+      "publisher": "Weaviate",
+      "date": "2026-11-24",
+      "supports": "business_model (licence key, subscription, enterprise features, Community Edition free under BSD-3, Weaviate Cloud includes Enterprise Edition)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/weaviate/weaviate/main/LICENSE",
+      "title": "weaviate/weaviate LICENSE (main)",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[3], openness_notes"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/weaviate/weaviate/main/wl/LICENSE-WEAVIATE",
+      "title": "Weaviate License Agreement (wl/)",
+      "publisher": "GitHub",
+      "date": "2026-08-26",
+      "supports": "license_history[3] (all rights reserved, enterprise licence, licence key)"
+    },
+    {
+      "url": "https://api.github.com/repos/weaviate/weaviate/commits?path=LICENSE&per_page=100",
+      "title": "weaviate/weaviate LICENSE commit history",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[0..3] dates"
+    },
+    {
+      "url": "https://api.github.com/repos/weaviate/weaviate/commits?path=wl&per_page=100",
+      "title": "weaviate/weaviate wl/ commit history",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "relicensing_events[0] (features moved into wl/ Sep-Nov 2026)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/weaviate/weaviate/d675956e19af7dd2b71168d0c6f36fe5f083954f/LICENSE",
+      "title": "weaviate/weaviate LICENSE (2016-04-05)",
+      "publisher": "GitHub",
+      "date": "2016-04-05",
+      "supports": "license_history[0] (BSD-3-Clause)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/weaviate/weaviate/v1.0.0/LICENSE",
+      "title": "weaviate/weaviate LICENSE at v1.0.0",
+      "publisher": "GitHub",
+      "date": "2020",
+      "supports": "license_history[1] (SeMI Technologies B.V.)"
+    },
+    {
+      "url": "https://api.github.com/repos/weaviate/weaviate",
+      "title": "weaviate/weaviate repository metadata",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "repo created 2016-03-30, stars (16,958)"
+    },
+    {
+      "url": "https://weaviate.io/blog",
+      "title": "Weaviate blog",
+      "publisher": "Weaviate",
+      "date": "2026-11",
+      "supports": "risk_events (GraphQL deprecation 2026-10-22, security releases 2026-09-17 and 2026-10-14), still_operating"
+    }
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Weaviate (404)",
+    "https://en.wikipedia.org/wiki/Vector_database",
+    "https://api.github.com/repos/weaviate/weaviate",
+    "https://raw.githubusercontent.com/weaviate/weaviate/main/LICENSE",
+    "https://raw.githubusercontent.com/weaviate/weaviate/main/wl/LICENSE-WEAVIATE",
+    "https://api.github.com/repos/weaviate/weaviate/commits?path=LICENSE&per_page=100",
+    "https://api.github.com/repos/weaviate/weaviate/commits?path=LICENSE&per_page=10",
+    "https://api.github.com/repos/weaviate/weaviate/commits?path=wl&per_page=100",
+    "https://github.com/weaviate/weaviate/tree/main/wl",
+    "https://raw.githubusercontent.com/weaviate/weaviate/d675956e19af7dd2b71168d0c6f36fe5f083954f/LICENSE",
+    "https://raw.githubusercontent.com/weaviate/weaviate/v1.0.0/LICENSE",
+    "https://weaviate.io/enterprise-edition",
+    "https://weaviate.io/company/about-us",
+    "https://weaviate.io/blog",
+    "https://www.prnewswire.com/news-releases/weaviate-raises-50-million-series-b-funding-to-meet-soaring-demand-for-ai-native-vector-database-technology-301803296.html"
+  ],
+  "notes": [
+    "funding_total_usd left null: the $50M Series B (2023-04-21) is confirmed, but the early-2022 Series A amount was not stated on fetched pages, so the total is at least $50M. No valuation disclosed on fetched pages.",
+    "employees_latest is '90+' (about page, Nov 2026).",
+    "The wl/ directory holds backupdedupe, dbusers, namespaces, rebalance and selfrecovery. Some of these features may have been developed in 2026 rather than previously released under BSD-3; commit messages show at least namespacing prefixing, the self-recovery orchestrator, dedupe backup planning and the RebalancePlanner were moved there from elsewhere in the repo.",
+    "GitHub API reports licence NOASSERTION because of the dual LICENSE structure.",
+    "Commits adding the licence switch (2026-08-26) carry a 'Co-Authored-By: Claude Opus 5' trailer; noted only as provenance."
+  ]
+}

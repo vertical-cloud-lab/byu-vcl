@@ -1,0 +1,73 @@
+{
+  "name": "Unsloth AI",
+  "slug": "unsloth",
+  "group": "J",
+  "category": "software",
+  "subcategory": "LLM fine-tuning and reinforcement-learning library, local training UI",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2023 by Daniel Han (formerly at NVIDIA, where he sped up algorithms such as t-SNE; maintainer of Hyperlearn; known for reporting and fixing 20+ bugs in open LLMs such as Gemma, Llama, Mistral and Phi) and Michael Han; GitHub repo created 2023-11-29; Y Combinator Summer 2024; San Francisco.",
+  "founded_year": 2023,
+  "flagship_projects": ["Unsloth (fine-tuning/RL library, Apache-2.0)", "Unsloth Studio (local training and inference UI, AGPL-3.0, 2026)", "Unsloth-optimised model uploads (GGUF and quantised weights)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Initial 2: the core library was Apache-2.0 from the first commit (2023-11-29), but by March 2024 the README advertised a closed 'Unsloth Pro' ('Open source trains 5x faster - see Unsloth Pro for up to 30x faster training!'), whose benchmark previews had 'code stripped out', linked to a pricing page. That is open core. Current 2 (low confidence): the core is still Apache-2.0, and the Studio UI added in March 2026 is AGPL-3.0 (OSI-approved copyleft); the 2026 README no longer mentions Pro, but the pricing page returned 403, so whether a proprietary tier still exists is unconfirmed. It would be 3 if there is none.",
+  "business_model": "open_core",
+  "license_history": [
+    {"year": 2023, "license": "Apache-2.0", "note": "Initial commit 2023-11-29", "source": "https://api.github.com/repos/unslothai/unsloth/commits?path=LICENSE"},
+    {"year": 2024, "license": "Apache-2.0 open source plus proprietary Unsloth Pro / Max", "note": "README at commit 74f7968 (2024-03-27) benchmarks 'Unsloth Open Source' against paid Unsloth Pro and Max, linking to unsloth.ai/pricing", "source": "https://github.com/unslothai/unsloth/blob/74f7968/README.md"},
+    {"year": 2026, "license": "Dual: Apache-2.0 core + AGPL-3.0 optional components (Unsloth Studio UI)", "note": "LICENSE files changed with 'Studio (#4237)' on 2026-03-12; README: 'The core Unsloth package remains licensed under Apache 2.0' while 'certain optional components, such as the Unsloth Studio UI are licensed under the open-source license AGPL-3.0'", "source": "https://github.com/unslothai/unsloth"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 12,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Very small team (12 per the YC profile) maintaining a project with ~80K GitHub stars",
+    "Monetisation not visible in 2026: the Pro tier advertised in 2024 is absent from the current README and the pricing page could not be fetched",
+    "New 2026 code (Studio UI) released under AGPL-3.0 copyleft, which deters proprietary reuse; core stays Apache-2.0"
+  ],
+  "robustness": "Apache-2.0 core with ~7.5K forks could outlive the company; NVIDIA promotes it (NVIDIA blog tutorials, Oct and Dec 2025). Control is single-company with no foundation.",
+  "physical_science_relevance": "Cuts the hardware needed to fine-tune open models on domain data (claims about 30x faster training with 90% less memory), so a lab with one GPU can adapt LLMs to scientific text or tasks.",
+  "openness_effect_assessment": "Open-sourcing a fast fine-tuning library built a large following for a tiny team (~80K stars; YC profile claims over 10 million monthly model downloads). The closed Pro version advertised in 2024 has faded from view, and new code in 2026 was released under AGPL rather than a source-available licence. No revenue or funding figures were found, so the commercial effect of openness cannot be assessed.",
+  "key_takeaway": "Unsloth is the small-team, kernel-optimisation case: a YC S24 startup whose Apache-2.0 library became a default way to fine-tune open models, with NVIDIA's backing in tutorials. It started as open core with a closed Pro tier, and in 2026 chose OSI copyleft (AGPL-3.0) for its new desktop UI rather than a non-OSI licence.",
+  "confidence": "low",
+  "searches": [],
+  "sources": [
+    {"url": "https://api.github.com/repos/unslothai/unsloth", "title": "unslothai/unsloth repository metadata", "publisher": "GitHub API", "date": "2026-11-24", "supports": "Apache-2.0 (primary SPDX), created 2023-11-29, ~80K stars, ~7.5K forks"},
+    {"url": "https://api.github.com/repos/unslothai/unsloth/commits?path=LICENSE", "title": "Commits touching LICENSE", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[0], license_history[2] (Studio licence change 2026-03-12)"},
+    {"url": "https://github.com/unslothai/unsloth", "title": "Unsloth README (current)", "publisher": "GitHub", "date": "2026-11-24", "supports": "license_history[2] (dual Apache-2.0 / AGPL-3.0), no Pro tier mentioned"},
+    {"url": "https://github.com/unslothai/unsloth/blob/74f7968/README.md", "title": "Unsloth README at commit 74f7968", "publisher": "GitHub", "date": "2024-03-27", "supports": "license_history[1], openness_initial (closed Unsloth Pro/Max)"},
+    {"url": "https://www.ycombinator.com/companies/unsloth-ai", "title": "Unsloth AI: Y Combinator profile", "publisher": "Y Combinator", "date": null, "supports": "founded_year, founders, YC S24, San Francisco, employees_latest (12), 10M+ monthly downloads claim, NVIDIA blog links"},
+    {"url": "https://unsloth.ai/docs", "title": "Unsloth documentation", "publisher": "Unsloth", "date": null, "supports": "still_operating (Studio described as browser-based UI)"}
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://api.github.com/repos/unslothai/unsloth",
+    "https://api.github.com/repos/unslothai/unsloth/commits?path=LICENSE",
+    "https://github.com/unslothai/unsloth",
+    "https://github.com/unslothai/unsloth/blob/74f7968/README.md",
+    "https://www.ycombinator.com/companies/unsloth-ai",
+    "https://unsloth.ai/pricing (403)",
+    "https://unsloth.ai/ (403)",
+    "https://docs.unsloth.ai/ (301 to unsloth.ai/docs)",
+    "https://unsloth.ai/docs",
+    "https://web.archive.org/web/2026/https://unsloth.ai/pricing (fetch tool blocked)"
+  ],
+  "notes": [
+    "Funding and valuation unknown: no fetched page states any round beyond YC participation (S24), so funding_total_usd is null.",
+    "employees_latest (12) is the YC profile's team size, undated.",
+    "The AGPL-3.0 Studio component is new code, not a relicensing of existing code, so relicensing_events is empty; the LICENSE commit history shows a 'Studio (#4237)' commit, a revert and a restore on 2026-03-12.",
+    "The 'over 10 million monthly model downloads' and '30x faster, 90% less memory' figures are the company's own claims on the YC page."
+  ]
+}

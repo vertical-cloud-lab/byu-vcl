@@ -1,0 +1,78 @@
+{
+  "name": "Replicate, Inc.",
+  "slug": "replicate",
+  "group": "J",
+  "category": "software",
+  "subcategory": "hosted inference API for open ML models (model catalogue plus serverless GPUs)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded 2019 in San Francisco by Ben Firshman (led open-source product work at Docker, creator of Docker Compose) and Andreas Jansson (built research tools and ML infrastructure at Spotify, PhD in ML for music); Y Combinator Winter 2020. Its open-source Cog tool (repo created 2021-02-26) packages models as standard containers, and the hosted API bills only for the time code runs.",
+  "founded_year": 2019,
+  "flagship_projects": ["Replicate hosted model API", "Cog (Apache-2.0 model container format)"],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "openness_notes": "Initial 2 and current 2: Cog, the open model-packaging format and in-container prediction server that every model on Replicate uses, is Apache-2.0; the hosting platform (scheduling, GPU fleet, billing, API) is proprietary and is the whole business. Its catalogue is mostly other people's open models. Borderline 1, as with GitHub (host of others' open source, peripheral tools open). Unchanged by the Cloudflare deal: Cloudflare said it would use Cog for custom models on Workers AI. No relicensing.",
+  "business_model": "api",
+  "license_history": [
+    {"year": 2021, "license": "Apache-2.0 (Cog)", "note": "replicate/cog repo created 2021-02-26", "source": "https://api.github.com/repos/replicate/cog"},
+    {"year": 2023, "license": "Proprietary hosted API, usage-based", "note": "'We only bill you for how long your code is running'; prices cut in half 2023-08-16", "source": "https://techcrunch.com/2023/02/21/replicate-wants-to-take-the-pain-out-of-running-and-hosting-ml-models/"},
+    {"year": 2025, "license": "Apache-2.0 (Cog) retained under Cloudflare", "note": "Cloudflare: 'We'll leverage Replicate's expertise with Cog'; the 50,000+ model catalogue to come to Workers AI", "source": "https://blog.cloudflare.com/replicate-joins-cloudflare/"}
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 57800000,
+  "funding_as_of": "2023-12",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2025, "type": "acquisition", "value_usd": null, "counterparty": "Cloudflare", "note": "Announced 2025-11-17 ('Replicate is joining Cloudflare'); price undisclosed. Replicate continues as a distinct brand and its API is unchanged. Wikipedia says Cloudflare 'had agreed to acquire Replicate' and the YC profile lists Replicate as Acquired; the closing date is not stated on fetched pages.", "source": "https://blog.cloudflare.com/replicate-joins-cloudflare/"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 36,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2024-05-23: 'Shared network vulnerability disclosure' published on Replicate's blog",
+    "A GPU-hosting business built on others' open models, exposed to compute costs and to model owners moving elsewhere; ended independence by joining Cloudflare (Nov 2025)"
+  ],
+  "robustness": "Cog is Apache-2.0 (~9.5K stars) and most hosted models are open weights, so users can move to other hosts. The platform is proprietary and now owned by Cloudflare, which promised continuity of the brand and API.",
+  "physical_science_relevance": "Gives researchers API access to open image, video, speech and language models without managing GPUs, and Cog's reproducible containers help make ML models portable across machines.",
+  "openness_effect_assessment": "Replicate built a business on others' open models: 2 million sign-ups and 30,000 paying customers by December 2023 ('Open-source is open for business'), using its own open Cog format as the on-ramp. The openness of the models, not of the platform, created the market, and the company exited to Cloudflare (announced 2025-11-17) at an undisclosed price.",
+  "key_takeaway": "Replicate is the hosted-service model for open AI: Docker veterans made open models callable by API and charged for compute time, raised $57.8M (a16z-led Series A and B), and were bought by a network and cloud firm, Cloudflare, which keeps Cog open and folds the catalogue of 50,000+ models into Workers AI.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://www.ycombinator.com/companies/replicate", "title": "Replicate: Y Combinator profile", "publisher": "Y Combinator", "date": null, "supports": "founded_year (2019), YC W20, San Francisco, founders and backgrounds, employees_latest (36), status Acquired"},
+    {"url": "https://techcrunch.com/2023/02/21/replicate-wants-to-take-the-pain-out-of-running-and-hosting-ml-models/", "title": "Replicate wants to take the pain out of running and hosting ML models", "publisher": "TechCrunch", "date": "2023-02-21", "supports": "$17.8M total incl. $12.5M Series A led by Andreessen Horowitz, usage-based billing, Cog"},
+    {"url": "https://replicate.com/blog/series-b", "title": "Businesses are building on open-source AI", "publisher": "Replicate", "date": "2023-12-05", "supports": "$40M Series B led by a16z (NVentures, Heavybit, Sequoia, YC), 2M sign-ups, 30K paying customers"},
+    {"url": "https://blog.cloudflare.com/replicate-joins-cloudflare/", "title": "Replicate is joining Cloudflare", "publisher": "Cloudflare", "date": "2025-11-17", "supports": "exit_events[0], license_history[2], 50,000+ models"},
+    {"url": "https://replicate.com/blog/replicate-cloudflare", "title": "Replicate is joining Cloudflare", "publisher": "Replicate", "date": "2025-11-17", "supports": "exit_events[0] (distinct brand, API unchanged)"},
+    {"url": "https://en.wikipedia.org/wiki/Cloudflare", "title": "Cloudflare", "publisher": "Wikipedia", "date": null, "supports": "exit_events[0] ('agreed to acquire', November 2025; no price)"},
+    {"url": "https://api.github.com/repos/replicate/cog", "title": "replicate/cog repository metadata", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[0]"},
+    {"url": "https://replicate.com/blog", "title": "Replicate blog index", "publisher": "Replicate", "date": "2026-11-03", "supports": "still_operating, risk_events (2024-05-23 disclosure), price cut 2023-08-16"}
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Replicate_(company) (404)",
+    "https://www.ycombinator.com/companies/replicate",
+    "https://techcrunch.com/2023/02/21/replicate-wants-to-take-the-pain-out-of-running-and-hosting-ml-models/",
+    "https://replicate.com/blog/series-b",
+    "https://www.forbes.com/sites/rashishrivastava/2023/12/05/replicate-raises-40-million-for-its-library-of-open-source-ai-models/ (403)",
+    "https://blog.cloudflare.com/replicate-joins-cloudflare/",
+    "https://replicate.com/blog/replicate-cloudflare",
+    "https://www.cloudflare.com/press-releases/2025/cloudflare-to-acquire-replicate/ (404)",
+    "https://en.wikipedia.org/wiki/Cloudflare",
+    "https://api.github.com/repos/replicate/cog",
+    "https://api.github.com/repos/replicate/keepsake (404)",
+    "https://replicate.com/blog"
+  ],
+  "notes": [
+    "funding_total_usd 57.8M = $17.8M by Feb 2023 (seed plus $12.5M Series A led by a16z; TechCrunch) + $40M Series B (2023-12-05, a16z). No later round found.",
+    "Valuation: the Forbes article on the Series B returned 403, so no valuation is recorded; Cloudflare did not disclose a price.",
+    "The deal is announced as 'joining' by both companies; Wikipedia calls it an agreement to acquire and YC lists the company as Acquired. Closing date not confirmed. Replicate's blog kept publishing model guides into Nov 2026 under its own brand.",
+    "employees_latest (36) is the YC profile's undated team size."
+  ]
+}

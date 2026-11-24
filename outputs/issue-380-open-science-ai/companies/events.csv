@@ -208,3 +208,17 @@ openfold,OpenFold and OpenFold3,I,relicense,2022,Code-only reimplementation -> C
 openfold,OpenFold and OpenFold3,I,relicense,2025,"AlphaFold 3 restricted (server only, then non-commercial weights) -> OpenFold3-preview under Apache-2.0",opening,OpenFold3,,https://github.com/aqlaboratory/openfold-3
 rfdiffusion-rosettafold,RoseTTAFold and RFdiffusion family (Baker lab),I,relicense,2023,Non-commercial Rosetta-DL weights (RoseTTAFold) -> BSD-licensed weights (RFdiffusion; text clarified 2023-10-03),opening,,,https://github.com/RosettaCommons/RFdiffusion/commits/main/LICENSE
 sevennet,SevenNet (Scalable EquiVariance-Enabled Neural Network),I,relicense,2025,GPL-3.0 (copyleft) -> MIT (permissive),opening,,,https://github.com/MDIL-SNU/SevenNet/commits/main/LICENSE
+anyscale,"Anyscale, Inc.",J,relicense,2025,"Apache-2.0, Anyscale-led project -> Apache-2.0, PyTorch Foundation (Linux Foundation) hosted project",opening,,,https://pytorch.org/blog/pytorch-foundation-welcomes-ray-to-deliver-a-unified-open-source-ai-compute-stack/
+anyscale,"Anyscale, Inc.",J,acquisition,2026,Nscale,,,1650000000.0,https://www.anyscale.com/press/nscale-acquires-anyscale-enhancing-its-full-stack-ai-cloud-platform
+chroma,Chroma,J,relicense,2026,Proprietary (code in Chroma's private repos) -> Apache-2.0 (chroma-core/chroma),opening,,,https://www.trychroma.com/blog/chroma-joins-replit
+chroma,Chroma,J,acquisition,2026,Replit,,,,https://www.trychroma.com/blog/chroma-joins-replit
+ggml-llama-cpp,"ggml.ai (llama.cpp, ggml)",J,acquisition,2026,Hugging Face,,,,https://huggingface.co/blog/ggml-joins-hf
+lightning-ai,Lightning AI (formerly Grid.ai),J,merger,2026,Voltage Park,,,,https://www.voltagepark.com/blog/lightning-ai-voltage-park-merger-to-create-the-first-cloud-built-for-ai
+modular,Modular Inc.,J,relicense,2024,Proprietary Mojo -> Apache-2.0 with LLVM exceptions (standard library only),opening,,,https://en.wikipedia.org/wiki/Mojo_(programming_language)
+modular,Modular Inc.,J,relicense,2026,Proprietary Mojo compiler -> Apache-2.0 with LLVM exceptions (compiler and tooling),opening,,,https://www.modular.com/blog/mojo-open-source
+modular,Modular Inc.,J,relicense,2026,"Binary MAX under a licence with device-usage restrictions -> Source-available MAX License (commercial use free, no royalties; non-OSI)",opening,,,https://www.modular.com/blog/max-license
+modular,Modular Inc.,J,acquisition,2026,Qualcomm,,,3900000000.0,https://en.wikipedia.org/wiki/Qualcomm
+replicate,"Replicate, Inc.",J,acquisition,2025,Cloudflare,,,,https://blog.cloudflare.com/replicate-joins-cloudflare/
+vllm,"vLLM project and Inferact, Inc.",J,relicense,2025,"Apache-2.0, UC Berkeley lab-led project -> Apache-2.0, PyTorch Foundation-hosted project",opening,,,https://pytorch.org/blog/pytorch-foundation-welcomes-vllm/
+weaviate,Weaviate B.V.,J,relicense,2026,BSD-3-Clause (whole repository) -> BSD-3-Clause core + proprietary Weaviate License for enterprise features in wl/,closing,,,https://api.github.com/repos/weaviate/weaviate/commits?path=wl&per_page=100
+weights-and-biases,"Weights & Biases, Inc.",J,acquisition,2025,CoreWeave,,,1700000000.0,https://wf.coreweave.com/newsroom

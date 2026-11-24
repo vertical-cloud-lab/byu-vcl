@@ -1,0 +1,216 @@
+{
+  "name": "Modular Inc.",
+  "slug": "modular",
+  "group": "J",
+  "category": "software",
+  "subcategory": "AI compiler, programming language (Mojo) and inference platform (MAX, Modular Cloud)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Founded in 2022 by Chris Lattner (creator of LLVM and Swift) and Tim Davis, who met at Google; Silicon Valley HQ with offices in San Francisco, Los Altos, Boston and Edinburgh. Acquired by Qualcomm in July 2026.",
+  "founded_year": 2022,
+  "flagship_projects": [
+    "Mojo (language, compiler, standard library)",
+    "MAX (inference framework: graph compiler, runtime, kernels)",
+    "Modular Cloud (hosted inference)"
+  ],
+  "openness_initial": 0,
+  "openness_current": 2,
+  "openness_notes": "Initial 0: Mojo first appeared in May 2023 only as a hosted playground and MAX shipped as binaries, with no public source. Opened in stages: Mojo standard library in March 2024 (Apache-2.0 with LLVM exceptions); MAX's kernel library, Python APIs and models were Apache-2.0 before Oct 2026; the Mojo compiler and tooling went Apache-2.0 on 2026-08-18; on 2026-10-22 the rest of MAX (graph compiler, runtime, hardware backends) became source-available under a custom MAX License that is not OSI (no publishing modified source except contribution forks; no using MAX as AI input to reimplement it; a branding rule for hosted services). Current 2 (open core): the language and much of the stack are OSI-licensed, MAX's core is source-available, and revenue comes from the hosted Modular Cloud and enterprise deployments.",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2023,
+      "license": "Proprietary (Mojo hosted playground; MAX binaries)",
+      "note": "First publicly testable Mojo in May 2023 via an online playground",
+      "source": "https://en.wikipedia.org/wiki/Mojo_(programming_language)"
+    },
+    {
+      "year": 2024,
+      "license": "Apache-2.0 with LLVM exceptions (Mojo standard library)",
+      "note": "Standard library open-sourced March 2024; compiler stayed closed",
+      "source": "https://en.wikipedia.org/wiki/Mojo_(programming_language)"
+    },
+    {
+      "year": 2026,
+      "license": "Apache-2.0 with LLVM exceptions (Mojo compiler and tooling)",
+      "note": "Open-sourced 2026-08-18 at ModCon, one week after Mojo 1.0 (2026-08-11); external compiler contributions opened with Mojo 1.1 / Modular 26.6 (2026-09-17)",
+      "source": "https://www.modular.com/blog/mojo-open-source"
+    },
+    {
+      "year": 2026,
+      "license": "MAX License (source-available, non-OSI) for MAX internals and binaries; Apache-2.0 kept for kernels, Python APIs, models",
+      "note": "2026-10-22 (Modular 26.7); licence text last modified 2026-10-21; previous MAX licence had device-usage restrictions, now removed",
+      "source": "https://www.modular.com/blog/max-license"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "Proprietary Mojo",
+      "to": "Apache-2.0 with LLVM exceptions (standard library only)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Partial opening; compiler remained closed for another 2.5 years",
+      "source": "https://en.wikipedia.org/wiki/Mojo_(programming_language)"
+    },
+    {
+      "year": 2026,
+      "from": "Proprietary Mojo compiler",
+      "to": "Apache-2.0 with LLVM exceptions (compiler and tooling)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Announced 2026-08-18, three weeks after Qualcomm completed its acquisition (2026-07-29); the whole Mojo language is now OSI-licensed",
+      "source": "https://www.modular.com/blog/mojo-open-source"
+    },
+    {
+      "year": 2026,
+      "from": "Binary MAX under a licence with device-usage restrictions",
+      "to": "Source-available MAX License (commercial use free, no royalties; non-OSI)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Opened source visibility but kept restrictions on redistributing modified source and on AI reimplementation, so MAX's core is level 1, not OSI open source",
+      "source": "https://www.modular.com/blog/max-license"
+    }
+  ],
+  "funding_total_usd": 380000000,
+  "funding_as_of": "2025-09",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2026,
+      "type": "acquisition",
+      "value_usd": 3900000000,
+      "counterparty": "Qualcomm",
+      "note": "Completion announced 2026-07-29 ('Qualcomm Completes Acquisition of Modular'); price $3.9B per Wikipedia's Qualcomm article; Modular's pages state no price. Qualcomm said Mojo, MAX and Modular Cloud continue as products and brands and that the open, heterogeneous-hardware approach continues.",
+      "source": "https://en.wikipedia.org/wiki/Qualcomm"
+    }
+  ],
+  "latest_value_usd": 3900000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2026-07",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 130,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Jul 2026: acquired by chip maker Qualcomm; Modular says it will keep targeting NVIDIA, AMD and other silicon, but no binding hardware-neutrality commitment was found",
+    "Mar 2026: Modular dropped the goal of making Mojo a Python superset (forum post 16 Mar 2026)",
+    "Oct 2026: MAX's core is source-available only; the licence bars publishing modified source and using MAX as AI input to build a reimplementation"
+  ],
+  "robustness": "Mojo (compiler and standard library) is now Apache-2.0, so the language could survive or be forked without Modular; MAX's graph compiler and runtime are visible but not forkable under the MAX License. There is no foundation: governance sits with Modular, now a Qualcomm subsidiary.",
+  "physical_science_relevance": "Mojo targets high-performance GPU and CPU kernels from Python-like code; an Oak Ridge National Laboratory study presented at SC25 found Mojo's GPU kernels broadly competitive with CUDA and HIP for memory-bound workloads, relevant to scientific computing.",
+  "openness_effect_assessment": "Modular built most of its value while closed: its valuation reached $1.6B in Sep 2025 ('almost triple' the previous round) with Mojo's compiler and MAX's core proprietary. It opened step by step (2024 stdlib, Aug 2026 compiler, Oct 2026 source-available MAX), the reverse of the 2018-2024 database relicensing wave, as its revenue moved to hosted inference (Modular Cloud) and after a hardware company bought it. Open-sourcing the compiler after the sale suggests openness became a tool for ecosystem adoption across chips rather than a source of direct revenue.",
+  "key_takeaway": "Modular is an AI-era case of 'closed first, open later': a language and inference stack built under proprietary licences that a chip maker (Qualcomm) bought for a reported $3.9B in July 2026, after which the Mojo compiler went Apache-2.0 and MAX became source-available. The money comes from hosted inference and the strategic value of a cross-hardware software layer, not from the licence; MAX still stops short of OSI open source.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {
+      "url": "https://www.modular.com/blog/modular-raises-250m-to-scale-ais-unified-compute-layer",
+      "title": "Modular raises $250M to scale AI's unified compute layer",
+      "publisher": "Modular",
+      "date": "2025-09-24",
+      "supports": "founded_year (2022), funding_total_usd ($380M, three rounds), $1.6B valuation, employees_latest (>130), investors"
+    },
+    {
+      "url": "https://www.modular.com/company/about",
+      "title": "About Modular",
+      "publisher": "Modular",
+      "date": "2026-11-24",
+      "supports": "origin_detail (founders, HQ, offices), exit_events[0] (acquired by Qualcomm July 2026), business_model"
+    },
+    {
+      "url": "https://www.modular.com/blog/qualcomm-completes-acquisition-of-modular",
+      "title": "Qualcomm Completes Acquisition of Modular",
+      "publisher": "Modular / Qualcomm",
+      "date": "2026-07-29",
+      "supports": "exit_events[0] (completion date, product continuity, openness statement)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Qualcomm",
+      "title": "Qualcomm",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "exit_events[0] value ($3.9B), latest_value_usd"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Mojo_(programming_language)",
+      "title": "Mojo (programming language)",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "license_history[0..1], relicensing_events[0], risk_events[1], physical_science_relevance (ORNL SC25 study), Mojo 1.0 date"
+    },
+    {
+      "url": "https://www.modular.com/blog/mojo-open-source",
+      "title": "Mojo is now open source!",
+      "publisher": "Modular",
+      "date": "2026-08-18",
+      "supports": "license_history[2], relicensing_events[1]"
+    },
+    {
+      "url": "https://www.modular.com/blog/modcon-announcements",
+      "title": "ModCon 2026: Open source, open cloud, open silicon",
+      "publisher": "Modular",
+      "date": "2026-08-18",
+      "supports": "relicensing_events[2] (device-usage restrictions removed), business_model (Modular Cloud pricing)"
+    },
+    {
+      "url": "https://www.modular.com/blog/max-license",
+      "title": "MAX is now source available and open to everyone",
+      "publisher": "Modular",
+      "date": "2026-10-22",
+      "supports": "license_history[3], relicensing_events[2], risk_events[2]"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/modular/modular/main/Licenses/MAX_LICENSE",
+      "title": "MAX License",
+      "publisher": "Modular (GitHub)",
+      "date": "2026-10-21",
+      "supports": "license_history[3] (terms), risk_events[2]"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/modular/modular/main/LICENSE",
+      "title": "modular/modular LICENSE",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[2..3] (Apache-2.0 with LLVM exceptions plus MAX License split)"
+    },
+    {
+      "url": "https://www.modular.com/blog/modular-and-qualcomm-same-code-new-silicon",
+      "title": "Modular and Qualcomm: Same code, new silicon",
+      "publisher": "Modular",
+      "date": "2026-08-18",
+      "supports": "risk_events[0] (no binding neutrality pledge)"
+    }
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Modular_Inc. (returned Mojo article content)",
+    "https://en.wikipedia.org/wiki/Mojo_(programming_language)",
+    "https://en.wikipedia.org/wiki/Qualcomm",
+    "https://api.github.com/repos/modular/modular",
+    "https://api.github.com/repos/modular/modular/commits?path=LICENSE&per_page=100",
+    "https://raw.githubusercontent.com/modular/modular/main/LICENSE",
+    "https://raw.githubusercontent.com/modular/modular/main/Licenses/MAX_LICENSE",
+    "https://www.modular.com/blog",
+    "https://www.modular.com/blog/we-raised-100m-to-fix-ai-infrastructure-for-the-worlds-developers (404)",
+    "https://www.modular.com/blog/modular-raises-250m-to-scale-ais-unified-compute-layer",
+    "https://www.modular.com/blog/modular-and-qualcomm-same-code-new-silicon",
+    "https://www.modular.com/blog/mojo-open-source",
+    "https://www.modular.com/blog/max-license",
+    "https://www.modular.com/blog/modcon-announcements",
+    "https://www.modular.com/blog/qualcomm-completes-acquisition-of-modular",
+    "https://www.modular.com/company/about"
+  ],
+  "notes": [
+    "Acquisition price $3.9B comes only from one sentence in Wikipedia's Qualcomm article (citation not visible in the fetched text); Modular and Qualcomm pages fetched state no price. The original announcement date of the deal was not found; completion was announced 2026-07-29.",
+    "Funding: $250M third round on 2025-09-24 at $1.6B, led by Thomas Tull's US Innovative Technology fund with DFJ Growth, GV, General Catalyst and Greylock; $380M total across three rounds, so the first two rounds sum to ~$130M (individual amounts not confirmed on fetched pages; the 2023 $100M post URL returned 404).",
+    "employees_latest is '>130' (Sep 2025). Revenue not disclosed.",
+    "GitHub repo modular/modular created 2023-04-28; API reports licence NOASSERTION because of the dual Apache-2.0-with-LLVM-exceptions / MAX License split (files split 2026-10-22).",
+    "Modular Cloud previously served OpenRouter traffic as 'ModelRun'; pricing is pay-per-token shared endpoints and per-minute dedicated GPUs (ModCon post)."
+  ]
+}

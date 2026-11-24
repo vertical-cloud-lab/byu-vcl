@@ -1,0 +1,187 @@
+{
+  "name": "Weights & Biases, Inc.",
+  "slug": "weights-and-biases",
+  "group": "J",
+  "category": "software",
+  "subcategory": "ML experiment tracking / MLOps and LLMOps platform",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Co-founded in 2017 in San Francisco by Lukas Biewald, Chris Van Pelt and Shawn Lewis; Biewald had earlier co-founded CrowdFlower/Figure Eight (2007), which Appen bought in 2019 for up to $300M",
+  "founded_year": 2017,
+  "flagship_projects": [
+    "W&B Models (experiment tracking, sweeps, artifacts, registry)",
+    "wandb Python SDK/client (MIT)",
+    "W&B Weave (Apache-2.0)",
+    "W&B Server (self-managed, licensed)"
+  ],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "openness_notes": "Initial 1, current 1. Only the client side is open: the wandb SDK repo has been public since 2017-03-24 and carries an MIT LICENSE file (added 2021-04-22), and the Weave LLM toolkit is Apache-2.0 (repo created 2023-06-07). The product people pay for, the tracking server and UI, is proprietary: it is sold as multi-tenant SaaS, dedicated cloud, or a self-managed W&B Server distributed as the wandb/local Docker image, where production features (external MySQL, cloud storage, SSO) need a licence from W&B. That is 'only peripheral SDKs/clients open' (level 1). No relicensing in either direction was found.",
+  "business_model": "saas",
+  "license_history": [
+    {
+      "year": 2017,
+      "license": "Public client SDK repo (wandb/wandb)",
+      "note": "Repo created 2017-03-24; LICENSE file (MIT) only added 2021-04-22, so the earlier formal licence is not confirmed from fetched pages",
+      "source": "https://api.github.com/repos/wandb/wandb"
+    },
+    {
+      "year": 2020,
+      "license": "W&B Server: proprietary Docker image (wandb/local); deployment repo MIT",
+      "note": "wandb/server repo (created 2020-10-08) holds deployment docs; a free licence from the Deployer works for testing, a licence from W&B unlocks production features",
+      "source": "https://raw.githubusercontent.com/wandb/server/main/README.md"
+    },
+    {
+      "year": 2021,
+      "license": "MIT (wandb SDK)",
+      "note": "LICENSE file created 2021-04-22 ('Create LICENSE (#2099)'), unchanged since",
+      "source": "https://api.github.com/repos/wandb/wandb/commits?path=LICENSE&per_page=100"
+    },
+    {
+      "year": 2023,
+      "license": "Apache-2.0 (W&B Weave)",
+      "note": "New LLM application toolkit, repo created 2023-06-07",
+      "source": "https://api.github.com/repos/wandb/weave"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": 250000000,
+  "funding_as_of": "2023-08",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {
+      "year": 2025,
+      "type": "acquisition",
+      "value_usd": 1700000000,
+      "counterparty": "CoreWeave",
+      "note": "Announced early March 2025 (reported 5 Mar 2025), weeks before CoreWeave's 28 Mar 2025 Nasdaq IPO; CoreWeave headline price ~$1.7B; Wikipedia gives closing on 5 May 2025. CoreWeave pledged continued interoperability with any infrastructure provider and model.",
+      "source": "https://wf.coreweave.com/newsroom"
+    }
+  ],
+  "latest_value_usd": 1700000000,
+  "latest_value_type": "acquisition_price",
+  "latest_value_date": "2025-03",
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": 200,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2025: acquired by GPU cloud CoreWeave (~$1.7B), raising vendor-neutrality questions for a tool used across all clouds; CoreWeave stated a commitment to interoperability",
+    "2025-2026: product folded into CoreWeave (docs moved to docs.coreweave.com, login via id.coreweave.com, blog at forge.coreweave.com; multi-tenant SaaS documented as 'Forge')"
+  ],
+  "robustness": "The open MIT client is embedded in more than 20,000 open-source repositories (2023), but the server, data store and UI are proprietary and now owned by CoreWeave, so users depend on one vendor's roadmap. Exports and the open SDK lower lock-in somewhat; there is no foundation or community governance.",
+  "physical_science_relevance": "Widely used to track ML experiments in research; TechCrunch (2023) reported it cited in hundreds of academic papers, and it is common in ML-for-science training runs (e.g., model training for materials and biology).",
+  "openness_effect_assessment": "A free, MIT-licensed client that plugged into every training script gave W&B a developer-led funnel (about 700,000 users, more than 1,000 of them paying, by Aug 2023, with OpenAI, Anthropic, Cohere and Hugging Face as users) while the monetized server stayed closed. Openness was a distribution tactic, not the product: the company never opened the server and still reached a $1.25B valuation (2023) and a ~$1.7B sale (2025).",
+  "key_takeaway": "Weights & Biases shows the AI-era 'open client, closed service' model: an MIT SDK spread through the ML community, but the value captured was in the proprietary hosted platform, which a GPU cloud (CoreWeave) bought for ~$1.7B in 2025 to move up the stack from compute to developer tools. It is an exit for a mostly closed product, not evidence that an open-source licence itself was the business.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Lukas_Biewald",
+      "title": "Lukas Biewald",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "founded_year, origin_detail (co-founders, Figure Eight/Appen), exit_events[0] ($1.7B, closing 5 May 2025)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/CoreWeave",
+      "title": "CoreWeave",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "exit_events[0] (announcement reported 5 Mar 2025, ~$1.7B; CoreWeave IPO 28 Mar 2025)"
+    },
+    {
+      "url": "https://wf.coreweave.com/newsroom",
+      "title": "CoreWeave newsroom",
+      "publisher": "CoreWeave",
+      "date": null,
+      "supports": "exit_events[0] value ('acquiring ... Weights & Biases for ~$1.7B'), completion headline"
+    },
+    {
+      "url": "https://www.coreweave.com/blog/coreweave-completes-acquisition-of-weights-biases",
+      "title": "CoreWeave Acquires Weights & Biases",
+      "publisher": "CoreWeave",
+      "date": null,
+      "supports": "exit_events[0] note (announced early March; interoperability commitment)"
+    },
+    {
+      "url": "https://techcrunch.com/2023/08/09/weights-biases-who-counts-openai-as-a-customer-lands-50m/",
+      "title": "Weights & Biases, which counts OpenAI as a customer, lands $50M",
+      "publisher": "TechCrunch",
+      "date": "2023-08-09",
+      "supports": "funding_total_usd ($250M), valuation $1.25B, employees_latest (>200), hq, users, customers, physical_science_relevance"
+    },
+    {
+      "url": "https://api.github.com/repos/wandb/wandb",
+      "title": "wandb/wandb repository metadata",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[0], license_history[2] (MIT)"
+    },
+    {
+      "url": "https://api.github.com/repos/wandb/wandb/commits?path=LICENSE&per_page=100",
+      "title": "wandb/wandb LICENSE commit history",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[2] (LICENSE created 2021-04-22)"
+    },
+    {
+      "url": "https://api.github.com/repos/wandb/weave",
+      "title": "wandb/weave repository metadata",
+      "publisher": "GitHub",
+      "date": "2026-11-24",
+      "supports": "license_history[3] (Apache-2.0)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/wandb/server/main/README.md",
+      "title": "W&B Server README",
+      "publisher": "GitHub / Weights & Biases",
+      "date": "2026-11-24",
+      "supports": "license_history[1], openness_notes (licence needed for production features)"
+    },
+    {
+      "url": "https://docs.coreweave.com/guides/hosting/",
+      "title": "W&B deployment options",
+      "publisher": "CoreWeave (W&B docs)",
+      "date": "2026-11-24",
+      "supports": "business_model (Forge SaaS, Dedicated Cloud, Self-Managed), risk_events[1]"
+    },
+    {
+      "url": "https://wandb.ai/site/company/",
+      "title": "Weights & Biases company page",
+      "publisher": "Weights & Biases",
+      "date": "2026-11-24",
+      "supports": "still_operating, risk_events[1] (CoreWeave integration)"
+    }
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://en.wikipedia.org/wiki/Weights_%26_Biases (404)",
+    "https://en.wikipedia.org/wiki/Weights_and_Biases (404)",
+    "https://en.wikipedia.org/wiki/Lukas_Biewald",
+    "https://en.wikipedia.org/wiki/CoreWeave",
+    "https://www.coreweave.com/news",
+    "https://wf.coreweave.com/newsroom",
+    "https://www.coreweave.com/news/coreweave-completes-acquisition-of-weights-biases (404)",
+    "https://www.coreweave.com/blog/coreweave-completes-acquisition-of-weights-biases",
+    "https://techcrunch.com/2023/08/22/weights-biases-raises-50m/ (404)",
+    "https://techcrunch.com/2023/08/09/weights-biases-who-counts-openai-as-a-customer-lands-50m/",
+    "https://api.github.com/repos/wandb/wandb",
+    "https://api.github.com/repos/wandb/wandb/commits?path=LICENSE&per_page=100",
+    "https://api.github.com/repos/wandb/weave",
+    "https://api.github.com/repos/wandb/server",
+    "https://raw.githubusercontent.com/wandb/server/main/README.md",
+    "https://docs.wandb.ai/guides/hosting/ (301 to docs.coreweave.com)",
+    "https://docs.coreweave.com/guides/hosting/",
+    "https://wandb.ai/site/company/"
+  ],
+  "notes": [
+    "Prior private valuation: $1.25B in the $50M strategic round of Aug 2023 (Nat Friedman, Daniel Gross, plus Coatue, Insight, Felicis, Bond, Bloomberg Beta, Sapphire); earlier Series C ~$135M (year and valuation not stated in the fetched article).",
+    "Acquisition price ~$1.7B is CoreWeave's own newsroom headline and The Information's report (28 Apr 2025, cited by Wikipedia, not fetched); exact consideration and the cash/stock split were not confirmed. latest_value_date uses the March 2025 announcement; Wikipedia gives closing on 2025-05-05.",
+    "employees_latest is '>200' as of Aug 2023 (TechCrunch); no post-acquisition headcount found. No revenue figure found on fetched pages.",
+    "Whether the 2017-2021 SDK carried a licence before the MIT LICENSE file was added is not confirmed; scored 1 throughout because the server was never open.",
+    "W&B Server's source code is not public as far as fetched pages show; wandb/server (MIT) contains deployment docs for the wandb/local image."
+  ]
+}

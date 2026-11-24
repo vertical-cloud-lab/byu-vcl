@@ -96,9 +96,9 @@ below links to a file in this folder, and each file names its sources.
 
 | Stream | What was done | Output |
 | --- | --- | --- |
-| Edison Scientific | 13 jobs: 4 `LITERATURE_HIGH`, 8 `LITERATURE` and 1 `PRECEDENT`. The first 9 were submitted at 21:51; 4 gap-filling jobs (open materials data, lab-automation markets, industry publishing norms, sustaining open infrastructure) were submitted at 23:55. All were synthesized in [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md), which covers the first 9. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
+| Edison Scientific | 15 jobs: 4 `LITERATURE_HIGH`, 10 `LITERATURE` and 1 `PRECEDENT`. The first 9 were submitted at 21:51; 4 gap-filling jobs (open materials data, lab-automation markets, industry publishing norms, sustaining open infrastructure) were submitted at 23:55, and 2 more (academic tech transfer vs. open release; commercializing academic open hardware) at 00:33. [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md) covers the first 13. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
 | GitHub mining | `gh api` (REST and GraphQL) over **every** issue, PR, conversation comment, inline review comment, review body, discussion, discussion comment and reply in `AccelerationConsortium/ac-dev-lab` and `sparks-baird/self-driving-lab-demo`: 4,928 records in 816 threads. 118 threads were coded for commercialization, and quotes and numbers were checked against the corpus by script | [`gh-mining/`](gh-mining/) |
-| Case studies | 143 organizations: 121 in six groups at the video snapshot, then 1 more hardware file and group G (21: additive manufacturing, lab automation, open-science infrastructure). The six groups are commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 1,096 cited sources (904 at the video snapshot) | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
+| Case studies | **179 case files**: 143 organizations in groups A–G (121 at the video snapshot, then 1 more hardware file and group G: 21 in additive manufacturing, lab automation and open-science infrastructure), plus 19 AI-for-science model and dataset releases (group I) and 17 AI-era open-source startups (group J). The six groups are commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 1,354 cited sources (904 at the video snapshot) | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
 | Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. **145 searches** (89 curated, 18 to find primary documents, 36 to verify claims, plus 2 tests), **74 page fetches** (57 primary documents from AI labs and US policy, 15 community and blog pages, 2 report pages) and **6 YouTube transcript sessions**, in which the mouse opened "Show transcript" | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
 | Datasets | Epoch AI "Data on AI Models" (3,730 models, CC-BY); OpenAlex works grouped by US institution type × year × open access; Yahoo Finance weekly prices | [`data/`](data/) |
 | Language | Term rates per 1,000 words in 57 documents from Anthropic (26), OpenAI (22), Meta, Google DeepMind, DeepSeek, xAI and US policy (3), all fetched through the Pi | [`language/`](language/) |
@@ -108,7 +108,7 @@ below links to a file in this folder, and each file names its sources.
 and they were used up about 15 minutes in. The limit notice asks agents not to get around it through a
 browser or proxy, so the case-study agents finished with **WebFetch on known primary and reference
 pages** (Wikipedia, company newsrooms, SEC filings, foundation pages). Each file says which tool it
-used. That leaves 202 recorded web searches and 772 recorded page fetches across the 143 case files, including group G and verification pass 2.
+used. That leaves 202 recorded web searches and 1,099 recorded page fetches across the 179 case files, including groups G, I and J and verification pass 2.
 Searching through the Pi was limited to the curated batches the issue asked for, plus verification of
 the claims used in the video. Files built from fetches alone are marked `confidence: low` or `medium`
 where a 2025–26 fact couldn't be confirmed.
@@ -341,6 +341,27 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
     back to AGPL in 2025), the foundation-hosted fork became the more active project.
 
 ![Software lanes](figures/lanes_software.png)
+
+### 2b. AI-era open-source startups did not relicense (group J)
+
+There are 17 files in [`companies/J/`](companies/J/) ([summary](companies/J/_summary.md)): Anyscale/Ray,
+vLLM and Inferact, LangChain, LlamaIndex, Ollama, ggml.ai/llama.cpp, Together AI, Weights & Biases, Modular,
+Replicate, Unsloth, Nous Research, Lightning AI, Pydantic, Chroma, Qdrant and Weaviate.
+- **No SSPL or BSL relicensing in this cohort.** Six of seven licence or governance events were openings;
+  the one closing is Weaviate's partial carve-out in 2026.
+  - Mean openness held at **2.29**. The 2010s database cohort in group A fell from **2.72 to 1.67**.
+- **The business is still a closed hosted or enterprise layer on open code.** LangChain, LlamaIndex and
+  Pydantic each moved from 3 to 2 by adding closed services, not by relicensing.
+- **Exits are acquisitions by compute and chip companies, not IPOs.** There were seven in 2025–26:
+  - CoreWeave bought Weights & Biases for about $1.7B.
+  - Nscale bought Anyscale for a reported $1.65B (not confirmed closed).
+  - Voltage Park merged with Lightning.
+  - Qualcomm bought Modular (the price appears only on Wikipedia).
+  - Cloudflare bought Replicate, Hugging Face bought ggml.ai, and Replit bought Chroma.
+- **Berkeley origins again, plus foundations.** vLLM and Ray joined the PyTorch Foundation in 2025, before
+  vLLM's maintainers launched Inferact ($150M at $800M) and before Anyscale's sale.
+- **Lesson from the 2018–24 relicensing wave:** this cohort stays permissive and puts foundations in early.
+  The money is in hosted layers and in being acquired by whoever sells the compute.
 
 ### 3. Public markets
 
@@ -788,6 +809,29 @@ DAL `e7a01b3` and #318 `75c0ed0`) covers six things:
    - The SDL-demo kit's $2.24 margin and LulzBot's collapse both point to services rather than units:
      cloud access, training, setup, and "commercialization-as-a-service" partners such as GroupGets.
 
+### 9a. Academic paths: tech transfer vs. open release, and commercializing open lab hardware (Edison round 3)
+
+Sources: [`edison/academic_techtransfer_open_source_answer.md`](edison/academic_techtransfer_open_source_answer.md)
+and [`edison/academic_osh_commercialization_answer.md`](edison/academic_osh_commercialization_answer.md).
+- **Who owns the code decides what's possible.**
+  - At contractor-operated (GOCO) national labs such as LLNL, the contractor can hold copyright and
+    release under OSS licences. LLNL recommends a permissive licence with an explicit patent grant.
+  - At government-operated (GOGO) labs, code written by federal employees generally has no domestic
+    copyright (17 U.S.C. §105), which limits normal OSS licensing.
+  - Universities route open release through technology-transfer offices, now often with Open Source
+    Program Offices advising.
+- **Licensing rarely pays for itself.** US university licensing income exceeded **$2.94B in 2018** (AUTM),
+  yet most TTOs don't cover their operating costs.
+  - At Stanford, inventor-founded startups licensed about 20% of marketed inventions, but every
+    invention earning more than $10M of net income was in that group.
+- **The documented open-hardware path is "publish the design, sell what publication doesn't supply":**
+  - manufactured and tested instruments, kits, specialist components, integration, training and support.
+  - Examples: OpenFlexure Industries, Tanzania's Bongo Tech sayansiScope, Opentrons, Foldscope, Sci-Bots
+    (DropBot) and CERN's open-hardware licensing to firms.
+- **The same review literature records Sterling's own CLSLab:Light kits:** two successful GroupGets
+  crowdfunding rounds totalling **39 kits** at an $80 list price, matching
+  [our GitHub digest](gh-mining/commercialization_digest.md).
+
 ### 9b. This lab's own open record is now written mostly by AI agents
 
 The same `gh api` dump of **this** repository (vertical-cloud-lab/byu-vcl, to 2026-11-24; script
@@ -888,12 +932,12 @@ with 125 quotes, each checked by script against the captured text. The index is
 - `edison/`: 9 Edison tasks, each with an answer, references and the full verbose task JSON.
 - `gh-mining/`: the thread index, relevant and coded threads, and the commercialization digest. The raw
   dump is re-creatable with `scripts/gh_dump.py`.
-- `companies/`: 143 case JSON files in groups A–G, a summary per group, `companies_master.csv` and `events.csv`.
+- `companies/`: 179 case JSON files in groups A–J (no H), a summary per group, `companies_master.csv`, `events.csv`, `CALIBRATION.md` and `VERIFICATION_PASS2.md`.
 - `data/`: the Epoch, OpenAlex, price and openness-outcome tables.
 - `language/`: the URL list, term counts and key quotes.
 - `pi-browser/`: query lists and the full search log.
 - `figures/`, `video/`: final frames, scenes, narration, audio and the final MP4.
-- `companies/CASEBOOK.md`: all 143 organizations, one by one, with each one's assessment, timeline, computed metrics and sources.
+- `companies/CASEBOOK.md`: all 179 case files, one by one, with each one's assessment, timeline, computed metrics and sources.
 - `voices/`: the digest of YouTube, Reddit, Hacker News, blog and forum content. `dal/`: the openness audit
   of DAL and #318.
 - `VERIFICATION.md` and `companies/VERIFICATION_PASS2.md`: the verification logs.

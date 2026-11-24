@@ -1,0 +1,86 @@
+{
+  "name": "Chroma",
+  "slug": "chroma",
+  "group": "J",
+  "category": "software",
+  "subcategory": "open-source vector / search database for AI (embeddings, retrieval, agent context)",
+  "hq_country": "US",
+  "origin": "founder_startup",
+  "origin_detail": "Begun in 2022 by Jeff Huber (CEO) and co-founder Anton, initially on active learning for training data, with a May 2022 pre-seed led by Anthony Goldbloom (AIX Ventures) with James Cham (Bloomberg Beta) and Nat Friedman and Daniel Gross (AI Grant); pivoted to an embeddings database after ChatGPT; ChromaDB first released in October 2022 (repo created 2022-10-05); HQ San Francisco",
+  "founded_year": 2022,
+  "flagship_projects": ["ChromaDB (Apache-2.0)", "Chroma Cloud (managed distributed Chroma, 2025-2026)", "Foundation (context product for organisations)"],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "openness_notes": "Initial 3: ChromaDB has been Apache-2.0 since its first commit (2022-10-05) and the company sold nothing until its hosted service. Between Chroma Cloud's GA (2025-08-18) and Oct 2026 the business was a usage-priced managed service plus paid BYOC deployments, with some code kept in private repos, i.e. close to open core (2) in that period. Current 3: at the Replit deal (2026-10-23) Chroma committed additional code from its private repos to the Apache-2.0 repository, wound down Chroma Cloud (writes off 2026-12-07, reads off 2026-12-22) and stopped BYOC, leaving the product as Apache-2.0 code that Replit says it will keep contributing to. No foundation or neutral governance, so not 4. The licence never changed.",
+  "business_model": "saas",
+  "license_history": [
+    {"year": 2022, "license": "Apache-2.0 (ChromaDB)", "note": "Single LICENSE commit, 'Initial commit' 2022-10-05; no later licence-type change", "source": "https://api.github.com/repos/chroma-core/chroma/commits?path=LICENSE"},
+    {"year": 2025, "license": "Apache-2.0 engine + proprietary managed service (Chroma Cloud)", "note": "Chroma Cloud GA 2025-08-18, 'a cloud-native, distributed implementation of Chroma', usage-based pricing; BYOC offered with a fixed minimum cost", "source": "https://www.trychroma.com/changelog/introducing-chroma-cloud"},
+    {"year": 2026, "license": "Apache-2.0 (incl. code moved from private repos)", "note": "Announced with the Replit agreement, 2026-10-23", "source": "https://www.trychroma.com/blog/chroma-joins-replit"}
+  ],
+  "relicensing_events": [
+    {"year": 2026, "from": "Proprietary (code in Chroma's private repos)", "to": "Apache-2.0 (chroma-core/chroma)", "direction": "opening", "fork": null, "fork_backer": null, "outcome_note": "Done as Chroma agreed to join Replit and shut Chroma Cloud, to give open-source users 'the strongest continuity story'; the exact components opened were not listed on the fetched pages", "source": "https://www.trychroma.com/blog/chroma-joins-replit"}
+  ],
+  "funding_total_usd": 18000000,
+  "funding_as_of": "2023-04-07",
+  "ownership_status": "acquired",
+  "exit_events": [
+    {"year": 2026, "type": "acquisition", "value_usd": null, "counterparty": "Replit", "note": "2026-10-23: Chroma 'has signed a definitive agreement to join Replit'; terms undisclosed. Replit's Amjad Masad (a seed investor) and Michele Catasta were early Chroma investors. Chroma Cloud is being wound down within 60 days; work on ChromaDB and Foundation continues at Replit", "source": "https://www.trychroma.com/blog/chroma-joins-replit"}
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Hosted business arrived late and was short-lived: Chroma Cloud GA 2025-08-18, wind-down announced 2026-10-23 (writes disabled 2026-12-07, reads 2026-12-22), so Cloud customers (case studies: Factory, Propel, Mintlify) must migrate",
+    "BYOC (bring-your-own-cloud) deployments discontinued, Oct 2026",
+    "Independent database vendor absorbed by an application company (Replit) on undisclosed terms; future stewardship of the Apache-2.0 project depends on Replit"
+  ],
+  "robustness": "Apache-2.0 code, ~29.7k GitHub stars and 2.6k forks (Nov 2026), about 6M downloads a month (Oct 2026; the homepage cites 11-15M), used in over 90k open-source codebases; previously private code was released under Apache-2.0 at the Replit deal, so users can self-host. No foundation or neutral governance; the hosted service ends 2026-12-22.",
+  "physical_science_relevance": "An embedded, local-first vector store usable for retrieval over papers, lab notebooks or instrument documentation without running a server; Apache-2.0 permits academic and commercial use, and the project survives the Cloud shutdown.",
+  "openness_effect_assessment": "Openness made Chroma a default RAG vector store almost immediately (35k Python downloads in its first five weeks, ~30k stars, 90k dependent codebases) and attracted an $18M seed in Apr 2023. Adoption did not become a durable hosted business: Chroma Cloud reached GA only in Aug 2025 and was wound down 14 months later when the company joined Replit. Under that pressure Chroma did not relicense; at exit it opened previously private code.",
+  "key_takeaway": "Chroma is the cautionary case for an AI-era open-source database: permissive from day one, massive developer adoption, but no disclosed revenue, no funding after the 2023 seed and an undisclosed-terms exit to Replit (an early investor) in Oct 2026, with its cloud shut down. Unlike the 2018-2024 database relicensing wave (MongoDB, Elastic, Redis), the end-game was an acqui-hire plus opening more code, not a restrictive licence.",
+  "confidence": "medium",
+  "searches": [],
+  "sources": [
+    {"url": "https://www.trychroma.com/company/seed", "title": "Seed Round", "publisher": "Chroma", "date": "2023-04-07", "supports": "funding_total_usd ($18M seed led by Astasia Myers, Quiet Capital; investors incl. Amjad Masad), origin_detail (May 2022 pre-seed, founders Jeff and Anton), openness_effect_assessment (35k downloads in first month), planned hosted product"},
+    {"url": "https://en.wikipedia.org/wiki/Chroma_(vector_database)", "title": "Chroma (vector database)", "publisher": "Wikipedia", "date": null, "supports": "hq_country (San Francisco), licence Apache-2.0, release 2022-10-22, ~$18M seed April 2023"},
+    {"url": "https://api.github.com/repos/chroma-core/chroma", "title": "chroma-core/chroma repository metadata", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history (Apache-2.0), created 2022-10-05, robustness (29,737 stars, 2,615 forks)"},
+    {"url": "https://api.github.com/repos/chroma-core/chroma/commits?path=LICENSE", "title": "Commits touching LICENSE", "publisher": "GitHub API", "date": "2026-11-24", "supports": "license_history[0] (one commit, no licence change)"},
+    {"url": "https://www.trychroma.com/changelog/introducing-chroma-cloud", "title": "Introducing Chroma Cloud", "publisher": "Chroma", "date": "2025-08-18", "supports": "license_history[1], business_model (usage-based managed service)"},
+    {"url": "https://www.trychroma.com/engineering/distributed-chroma-byoc", "title": "Distributed Chroma: Bring Your Own Cloud", "publisher": "Chroma", "date": "2026-02-09", "supports": "openness_notes and risk_events (paid BYOC with fixed minimum; 'no longer offers BYOC' update, Oct 2026)"},
+    {"url": "https://www.trychroma.com/blog/chroma-joins-replit", "title": "Chroma is joining Replit", "publisher": "Chroma", "date": "2026-10-23", "supports": "exit_events[0], relicensing_events[0], license_history[2], origin_detail (2022 start, active learning, pivot), robustness (~6M downloads/month, ~30k stars)"},
+    {"url": "https://www.trychroma.com/cloud-wind-down", "title": "Chroma Cloud wind-down", "publisher": "Chroma", "date": "2026-10-23", "supports": "risk_events (writes disabled 2026-12-07, reads disabled 2026-12-22), openness_notes (open-source ChromaDB remains Apache-2.0)"},
+    {"url": "https://www.trychroma.com/", "title": "Chroma homepage", "publisher": "Chroma", "date": "2026-11-24", "supports": "robustness (Apache-2.0 statement; 11-15M monthly downloads; 90k dependent codebases), business_model (usage-based Cloud, Pro and Enterprise support)"},
+    {"url": "https://www.trychroma.com/updates", "title": "Chroma updates index", "publisher": "Chroma", "date": "2026-11-24", "supports": "risk_events (Cloud customer case studies), notes (only one funding post)"}
+  ],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://api.github.com/repos/chroma-core/chroma",
+    "https://api.github.com/repos/chroma-core/chroma/commits?path=LICENSE",
+    "https://www.trychroma.com/",
+    "https://www.trychroma.com/blog/chroma-joins-replit",
+    "https://www.trychroma.com/cloud-wind-down",
+    "https://www.trychroma.com/blog (307 redirect to a backend logout URL; not followed)",
+    "https://www.trychroma.com/about (login page, no content)",
+    "https://www.trychroma.com/updates",
+    "https://www.trychroma.com/company/seed",
+    "https://www.trychroma.com/changelog/introducing-chroma-cloud",
+    "https://www.trychroma.com/engineering/distributed-chroma-byoc",
+    "https://en.wikipedia.org/wiki/Chroma_(vector_database)",
+    "https://techcrunch.com/2023/04/06/chroma-the-ai-native-open-source-embeddings-database-raises-18m/ (404)"
+  ],
+  "notes": [
+    "funding_total_usd counts only the $18M seed (2023-04-07); the May 2022 pre-seed amount was not disclosed, so this is a lower bound. No later round appears in Chroma's updates index.",
+    "Seed date: the seed post is dated 2023-04-07 (Wikipedia: April 2023); the updates index lists it as 2023-03-07.",
+    "ownership_status 'acquired' reflects the signed definitive agreement of 2026-10-23; the post says 'join Replit' and does not use the word acquisition, and closing was not confirmed on fetched pages.",
+    "still_operating true because the Apache-2.0 project and team continue at Replit; the Chroma Cloud business ends 2026-12-22.",
+    "Co-founder Anton's surname is not on fetched pages; the seed post names 'Jeff and Anton'.",
+    "Valuation, revenue and headcount were not found on fetched pages."
+  ]
+}
