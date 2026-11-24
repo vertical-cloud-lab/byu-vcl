@@ -39,3 +39,8 @@ search batches ([`pi-browser/queries_batch3_verify.tsv`](pi-browser/queries_batc
 Not used in the video because they couldn't be verified well enough: Creality's 2026 Hong Kong
 listing, Stability AI's valuation, the date EvolutionaryScale joined Biohub, and whether Strateos and
 Kebotix still operate.
+
+
+## Random spot-audit of case-file citations
+
+See [`companies/SPOT_AUDIT.md`](companies/SPOT_AUDIT.md). Of 30 randomly sampled citations, 23 fully supported their field: 76.7%, Wilson 95% CI 59.1–88.2%. The other 7 were partially supported, and none were unsupported. The strict-reading rate is 60%.

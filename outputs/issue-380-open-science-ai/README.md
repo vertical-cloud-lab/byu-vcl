@@ -941,6 +941,13 @@ with 125 quotes, each checked by script against the captured text. The index is
     closed.
   - The video was rendered before this pass, but none of its narrated numbers changed.
 - Headline 2025–26 claims were checked against independent sources ([`VERIFICATION.md`](VERIFICATION.md)).
+- **Citation support** ([`companies/SPOT_AUDIT.md`](companies/SPOT_AUDIT.md)). In a random spot-audit of 30
+  case-file citations (seed 380, out of 750 field-level citations), **23 fully supported their claim**:
+  76.7%, Wilson 95% CI 59–88%.
+  - The other 7 were partial: totals summed across rounds, a value taken from a different page than the
+    one cited, or a label the page doesn't state. None were unsupported or unreachable.
+  - Treat individual case-file numbers as good but not audited. The headline numbers used in the videos
+    and the short answer were re-checked separately ([`VERIFICATION.md`](VERIFICATION.md)).
 - **Openness-score reliability** ([`companies/CALIBRATION.md`](companies/CALIBRATION.md)). An independent re-scoring
   of all 143 files from their evidence fields agreed closely with the originals: 93–96% exact,
   quadratic-weighted κ 0.97–0.99.
