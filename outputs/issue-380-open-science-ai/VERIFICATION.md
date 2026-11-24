@@ -33,6 +33,7 @@ search batches ([`pi-browser/queries_batch3_verify.tsv`](pi-browser/queries_batc
 | $4.3B a year potential from letting federal labs copyright and license software | not in the case files | Primary: NIST GCR 21-028 PDF | Confirmed |
 | AI-for-science code licences (group I): AlphaFold 3 code Apache-2.0; Chai-1 Apache-2.0; Boltz MIT; MatterGen and MatterSim MIT; Orb Apache-2.0; SevenNet MIT; OpenFold Apache-2.0; Evo 2 Apache-2.0; MatGL BSD-3 | companies/I/*.json | GitHub API licence detection on each repo, 2026-11-24 | Confirmed (code only; the AlphaFold 3 weights stay gated and non-commercial) |
 | ESM is MIT again under Biohub (2026-05-27) | companies/I (esm) | GitHub API reports Biohub/esm as NOASSERTION (custom or multiple licence text) | Unconfirmed by the detector; check the LICENSE file |
+| Market caps in the case files (MongoDB, Elastic, GitLab, Raspberry Pi, Schrödinger, Recursion, Stratasys, 3D Systems, Tecan, Kardex, Anthropic) | companies/*.json | Yahoo Finance fast_info, 2026-11-24 ([`data/market_cap_crosscheck.csv`](data/market_cap_crosscheck.csv)) | Consistent. Differences come from dates or currency, for example Elastic $10.2B (Oct 30) vs $8.6B now and MongoDB $23.0B vs $25.2B; Raspberry Pi, Tecan and Kardex are quoted in GBp and CHF |
 | Epoch, OpenAlex and price numbers | data/*.csv | Recomputed from the raw downloads by the scripts in `scripts/` | Reproducible |
 
 Not used in the video because they couldn't be verified well enough: Creality's 2026 Hong Kong
