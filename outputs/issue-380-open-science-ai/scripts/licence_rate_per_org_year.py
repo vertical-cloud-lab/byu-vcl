@@ -52,3 +52,26 @@ for b in ["closed start (0)", "mixed start (1-2)", "open start (3-4)"]:
     print(rows2[-1])
 with open("data/licence_events_by_start_openness.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows2[0])); w.writeheader(); w.writerows(rows2)
+
+
+# --- By sector and decade (groups A-F; group G files record no dated licence events): how often each sector opens and closes ---
+MG = [r for r in csv.DictReader(open("companies/companies_master.csv")) if r["group"] in "ABCDEF"]
+EG = [r for r in csv.DictReader(open("companies/events.csv"))
+      if r["group"] in "ABCDEF" and r["direction"] in ("closing", "opening") and r["year"].strip()]
+fy = {r["slug"]: int(float(r["founded_year"])) for r in MG if r["founded_year"]}
+ey = {r["slug"]: (int(float(r["end_year"])) if r["end_year"] else 2026) for r in MG}
+SECT = {"A": "Commercial OSS software", "B": "Commercial OSS software", "C": "Big Tech & AI labs", "D": "Hardware",
+        "E": "Lab automation & AI-for-science firms", "F": "Science software & infrastructure", "G": "AM, lab instruments & publishing"}
+rows3 = []
+for sect in dict.fromkeys(SECT[r["group"]] for r in MG):
+    slugs = {r["slug"] for r in MG if SECT[r["group"]] == sect}
+    for w, (a, b) in {"2000-09": (2000, 2009), "2010-19": (2010, 2019), "2020-26": (2020, 2026)}.items():
+        ex = sum(max(0, min(b, ey[s]) - max(a, fy[s]) + 1) for s in slugs if s in fy)
+        n = {d: sum(1 for e in EG if e["slug"] in slugs and a <= int(float(e["year"])) <= b and e["direction"] == d)
+             for d in ("closing", "opening")}
+        rows3.append(dict(sector=sect, window=w, n_orgs=len(slugs), org_years=ex, closing=n["closing"], opening=n["opening"],
+                          closing_per_100_org_years=round(100 * n["closing"] / ex, 2) if ex else None,
+                          opening_per_100_org_years=round(100 * n["opening"] / ex, 2) if ex else None))
+with open("data/licence_events_by_sector_decade.csv", "w", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(rows3[0])); w.writeheader(); w.writerows(rows3)
+for r_ in rows3: print(r_)

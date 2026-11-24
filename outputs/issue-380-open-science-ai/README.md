@@ -353,6 +353,28 @@ animated version in [`video/extras/openness_by_year_sector.mp4`](video/extras/op
 
 ![Openness over time in six sectors](figures/openness_by_year_six_sectors.png)
 
+**How often each sector changes its licences** (closing / opening moves per 100 organization-years, groups A–F;
+[`data/licence_events_by_sector_decade.csv`](data/licence_events_by_sector_decade.csv)):
+
+| Sector (organizations) | 2000–09 | 2010–19 | 2020–26 |
+| --- | --- | --- | --- |
+| Commercial OSS software (41) | 0.0 / 2.7 | 3.5 / 0.7 | 5.6 / 2.3 |
+| Big Tech & AI labs (18) | 0.0 / 0.0 | 2.7 / 4.5 | 10.3 / 13.8 |
+| Hardware (22) | 0.0 / 0.0 | 1.9 / 1.9 | 2.6 / 3.9 |
+| Lab automation & AI-for-science firms (18) | 0.0 / 0.0 | 1.4 / 1.4 | 0.0 / 4.7 |
+| Science software & infrastructure (23) | 0.0 / 1.8 | 0.0 / 0.0 | 0.0 / 0.6 |
+
+- Commercial OSS closes most steadily: 3.5, then 5.6 closing moves per 100 organization-years since 2010. Openings
+  recovered to 2.3 in 2020–26, as Elastic and Redis added AGPL.
+- Big Tech and AI labs became the most active in both directions in 2020–26 (10.3 closing, 13.8 opening): open-weight
+  releases alongside closed frontier models.
+- Hardware changes slowly in both directions.
+- Lab-automation and AI-for-science firms rarely change, and in 2020–26 they only opened things (tools and models
+  around closed cores).
+- Science software and infrastructure made no dated closing move after 2000. Gaussian's (1987) predates the
+  table, and Globus's is undated.
+- The counts are small: each cell rests on 0–16 events. Group G's files record no dated licence events, so G is left out.
+
 | Sector | n | Mean change in openness (now − founding) | Share that closed down | Share that opened up | Acquired or taken private |
 | --- | --- | --- | --- | --- | --- |
 | Commercial OSS software | 41 | **−0.54** | 49% | 5% | 37% |

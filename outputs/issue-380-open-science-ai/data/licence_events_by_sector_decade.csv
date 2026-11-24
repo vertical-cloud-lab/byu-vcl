@@ -1,0 +1,16 @@
+sector,window,n_orgs,org_years,closing,opening,closing_per_100_org_years,opening_per_100_org_years
+Commercial OSS software,2000-09,41,75,0,2,0.0,2.67
+Commercial OSS software,2010-19,41,285,10,2,3.51,0.7
+Commercial OSS software,2020-26,41,266,15,6,5.64,2.26
+Big Tech & AI labs,2000-09,18,86,0,0,0.0,0.0
+Big Tech & AI labs,2010-19,18,112,3,5,2.68,4.46
+Big Tech & AI labs,2020-26,18,116,12,16,10.34,13.79
+Hardware,2000-09,22,30,0,0,0.0,0.0
+Hardware,2010-19,22,160,3,3,1.88,1.88
+Hardware,2020-26,22,154,4,6,2.6,3.9
+Lab automation & AI-for-science firms,2000-09,18,20,0,0,0.0,0.0
+Lab automation & AI-for-science firms,2010-19,18,70,1,1,1.43,1.43
+Lab automation & AI-for-science firms,2020-26,18,85,0,4,0.0,4.71
+Science software & infrastructure,2000-09,23,114,0,2,0.0,1.75
+Science software & infrastructure,2010-19,23,188,0,0,0.0,0.0
+Science software & infrastructure,2020-26,23,159,0,1,0.0,0.63
