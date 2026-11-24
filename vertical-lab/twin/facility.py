@@ -18,6 +18,9 @@ Two facility scenarios, both shared by the two campaigns:
   (``timelapse.STEPS``, notes/timelapse.md). The Mines X2 stays outside (2 kg builds and repair coupons on thick
   plate need more laser than an MX-Lab).
 
+Bookings are made when an action is bought, so a later booking may fill an earlier gap; the atomizer's changeover is
+charged when a booking switches campaign from the previous booking made, an approximation of the previous run in time.
+
 Rates for outside services that the proposals keep private (Mines) or don't give (Utah MX-Lab, Valimet, Ames) are
 assumed and marked so; breakdown rates are assumed (upkeep.py's own are for the vertical lab and are mostly assumed
 too).

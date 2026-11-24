@@ -97,7 +97,7 @@ class AlTruth:
         r = self.thermo(comp)
         e = lambda s: math.exp(rng.normal(0, s))
         return dict(liquidus_C=r["T_liquidus_C"] + rng.normal(0, 4.0), freezing_range_K=r["freezing_range_K"] * e(0.05),
-                    kou_K=1.3 * r["kou_index_K"] * e(0.08), Q_K=r["Q_K"] * e(0.05),
+                    kou_K=r["kou_index_K"] * e(0.08), Q_K=r["Q_K"] * e(0.05),
                     eutectic_liquid=r["liquid_at_first_eutectic"])
 
     def sim_am(self, comp: dict, proc: dict, rng) -> dict:

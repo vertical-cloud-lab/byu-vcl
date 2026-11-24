@@ -5,14 +5,16 @@ DAL's own BOFN/pKGFN implementations (benchmarks/bofn-prelim/bofn_alloy.py) can 
 * ``Random``: a random design (composition and process) through the whole chain, one after another: the
   "pre-registered random baseline" FLAIME's acceleration factor is measured against.
 * ``Tiered``: the funnel both proposals argue against. Screen many compositions with the open CALPHAD node, keep the
-  ones it calls printable and sound, rank them by a metallurgist's strength proxy, then make and test them in order,
-  tuning the process on each powder.
+  ones it calls printable and sound and, for FLAIME, inside the mineral gates (free to compute from the composition),
+  rank them by a metallurgist's strength proxy, then make and test them in order.
 * ``CostAware``: a function-network surrogate with partial evaluation, in the spirit of BOFN with powder reuse (the
-  most robust policy in DAL's prelim): Gaussian processes per measured node (printability from composition + process
-  + simulator outputs; strength and ductility, or corrosion, from composition), and each decision buys the action
-  with the highest expected improvement per dollar among: simulate new compositions, make a powder, print or deposit
-  an existing powder at new settings, test an existing part. It pays for the cheap simulators on every candidate
-  before it buys powder.
+  most robust policy in DAL's prelim). It simulates every candidate with the cheap CALPHAD node first, then buys the
+  next powder by expected improvement per dollar: a Gaussian process from composition and simulator outputs to the
+  utility it measures (before four tests, the same physics proxy and screen as ``Tiered``, softened, as its prior),
+  divided by what that candidate would cost to find out, its own charge priced at the day's market plus the steps
+  after it. Downstream it reuses each powder for nine process settings, tests only the sound parts, and carries the
+  best settings to the next powder.
+* ``TieredTC`` and ``CostAwareTC``: the same with Thermo-Calc as the simulator node ($10 a call instead of $1).
 """
 from __future__ import annotations
 
@@ -191,6 +193,7 @@ class Tiered(Base):
     name = "tiered"
     N_SCREEN = 256
     KEEP = 24
+    sim_kind = "sim_open"           # "sim_tc": screen with Thermo-Calc instead ($10 a call)
 
     def __init__(self, key, seed=0):
         super().__init__(key, seed)
@@ -207,8 +210,13 @@ class Tiered(Base):
         ni, al = comp.get("Ni", 0), comp.get("Al", 0)
         return 14 * al + 2.6 * ni + 6 * comp.get("Mn", 0) - 3 * ni - 200 * out.get("beta_900", 0)
 
-    def passes(self, out):
+    def passes(self, out, comp=None):
         if self.al:
+            # FLAIME's mineral gates are free to compute from the composition, so the screen applies them too
+            if comp is not None:
+                b = usgs.mineral_burden(comp)
+                if b["mbs_lin"] > 0.174 or b["cmdri_log"] > 1.5 * _ref_cmdri():
+                    return False
             return 1.3 * out["kou_K"] < 250 and out["liquidus_C"] < 900
         return out["liquidus_C"] <= 1250 and out["freezing_range_K"] < 110 and out["beta_900"] < 0.3
 
@@ -217,16 +225,15 @@ class Tiered(Base):
         if not self.screened:
             self.screened = True
             self.cands = self.space.sample(self.N_SCREEN, seed=int(self.rng.integers(1 << 30)))
-            return [dict(kind="sim_open", design=d) for d in self.cands[:n]] + \
-                [dict(kind="sim_open", design=d) for d in self.cands[n:]][:0]
+            return [dict(kind=self.sim_kind, design=d) for d in self.cands[:n]]
         done = {s["design"] for s in v["sims"]}
         if len(v["sims"]) < self.N_SCREEN and not self.shortlist:
             pend = [d for d in self.cands if True][len(v["sims"]):len(v["sims"]) + n]
             if v["inflight"] < v["wip"]:
-                return [dict(kind="sim_open", design=d) for d in pend]
+                return [dict(kind=self.sim_kind, design=d) for d in pend]
         if not self.shortlist and len(v["sims"]) >= self.N_SCREEN - v["wip"]:
             ok = [(self.proxy(v["designs"][s["design"]], s["out"]), s["design"]) for s in v["sims"]
-                  if self.passes(s["out"])]
+                  if s["kind"] == self.sim_kind and self.passes(s["out"], v["designs"][s["design"]])]
             ok.sort(reverse=True)
             self.shortlist = [did for _, did in ok[:self.KEEP]] or [s["design"] for s in v["sims"][:self.KEEP]]
         self.advance(v, n)
@@ -244,6 +251,7 @@ class CostAware(Base):
     """GP surrogates per measured node; expected improvement per dollar over the next actions."""
     name = "cost_aware"
     N_CAND = 400
+    sim_kind = "sim_open"
 
     def __init__(self, key, seed=0):
         super().__init__(key, seed)
@@ -290,7 +298,7 @@ class CostAware(Base):
         cache = self.__dict__.setdefault("_sf", {})
         if did in cache:
             return cache[did]
-        s = [x for x in v["sims"] if x["design"] == did and x["kind"] == "sim_open"]
+        s = [x for x in v["sims"] if x["design"] == did and x["kind"] == self.sim_kind]
         if not s:
             return None
         o = s[-1]["out"]
@@ -314,8 +322,8 @@ class CostAware(Base):
             if len(self.cands) < 64:
                 new = self.space.sample(64, seed=int(self.rng.integers(1 << 30)))
                 self.cands += new
-                return acts + [dict(kind="sim_open", design=d) for d in new[: n - len(acts)]]
-        simmed = {s["design"]: s for s in v["sims"] if s["kind"] == "sim_open"}
+                return acts + [dict(kind=self.sim_kind, design=d) for d in new[: n - len(acts)]]
+        simmed = {s["design"]: s for s in v["sims"] if s["kind"] == self.sim_kind}
         keyset = getattr(self, "_keyset", set())
         for i in simmed:
             keyset.add(self._key(v["design_inputs"][i]))
@@ -325,7 +333,7 @@ class CostAware(Base):
             take = unsim[: max(1, (n - len(acts)) // 2)]
             for d in take:
                 self.simmed_pending.add(id(d))
-            acts += [dict(kind="sim_open", design=d) for d in take]
+            acts += [dict(kind=self.sim_kind, design=d) for d in take]
         # 2. choose the next powder by EI per dollar over simulated candidates
         obs = self.observed(v)
         best = max([u for _, u in obs], default=0.0)
@@ -333,7 +341,7 @@ class CostAware(Base):
         if not cand:
             more = self.space.sample(32, seed=int(self.rng.integers(1 << 30)))
             self.cands += more
-            return (acts + [dict(kind="sim_open", design=d) for d in more])[:n]
+            return (acts + [dict(kind=self.sim_kind, design=d) for d in more])[:n]
         Xc = np.array([np.concatenate([self.feat(v["designs"][i]), self.screen_feature(v, i)]) for i in cand])
         if len(obs) >= 4:
             Xo = np.array([np.concatenate([self.feat(v["designs"][i]), self.screen_feature(v, i)
@@ -351,10 +359,13 @@ class CostAware(Base):
         else:
             # before four tests: the metallurgist's proxy as the prior, the screen as a soft preference, and noise
             pr = np.array([self.proxy(v["designs"][i], simmed[i]["out"]) for i in cand])
-            ok = np.array([1.0 if self.passes(simmed[i]["out"]) else 0.0 for i in cand])
+            ok = np.array([1.0 if self.passes(simmed[i]["out"], v["designs"][i]) else 0.0 for i in cand])
             pr = (pr - pr.mean()) / (pr.std() + 1e-9)
             ei = np.exp(pr) * (0.3 + ok) * (0.5 + self.rng.random(len(cand)))
-        cost = v["estimate"](dict(kind="powder", runs=1 if self.al else 3)) + (1000 if self.al else 2500)
+        # what it would cost to find out, per candidate: its own charge at today's prices plus the steps after it
+        runs = 2 if self.al else 3
+        cost = np.array([v["estimate"](dict(kind="powder", runs=runs, design=v["design_inputs"][i]))
+                         for i in cand]) + (1000 if self.al else 2500)
         order = np.argsort(-ei / cost)
         for j in order:
             if len(acts) >= n:
@@ -403,4 +414,19 @@ class CostAware(Base):
 
 CostAware.proxy = Tiered.proxy
 CostAware.passes = Tiered.passes
-POLICIES = {"random": Random, "tiered": Tiered, "cost_aware": CostAware}
+
+
+class TieredTC(Tiered):
+    """Tiered, screening with Thermo-Calc (TCAL/TCCU) instead of the open databases."""
+    name = "tiered_tc"
+    sim_kind = "sim_tc"
+
+
+class CostAwareTC(CostAware):
+    """Cost-aware, with Thermo-Calc as its simulator node."""
+    name = "cost_aware_tc"
+    sim_kind = "sim_tc"
+
+
+POLICIES = {"random": Random, "tiered": Tiered, "cost_aware": CostAware, "tiered_tc": TieredTC,
+            "cost_aware_tc": CostAwareTC}

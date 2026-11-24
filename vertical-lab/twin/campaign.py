@@ -198,10 +198,11 @@ class Campaign:
         if "usd" in A.get(k, {}):
             return A[k]["usd"]
         fees = {s: self.fac.res[s].st.fee_usd for s in self.fac.res}
+        feed = self._feed_cost(action) if k == "powder" else 0.0
         if self.key == "flaime_al":
             if k == "powder":
                 n = action.get("runs", 1)
-                return n * (20 + 6.3 + 120 + 37.5) + 15 + (35 if action.get("icp") else 0) + 40
+                return n * (20 + 6.3 + 120 + 37.5) + 15 + (35 if action.get("icp") else 0) + 40 + feed
             if k == "print":
                 return fees["utah_midi"] + 80 + 90 + 45
             if k == "test":
@@ -211,7 +212,7 @@ class Campaign:
         else:
             if k == "powder":
                 n = action.get("runs", 1)
-                return n * (60 + 14.4 + 600 + 120 + 75) + 15 + 40
+                return n * (60 + 14.4 + 350 + 120 + 75) + 15 + 40 + feed
             if k == "nsl":
                 return fees["nsl"]
             if k in ("preplaced", "small_ded"):
@@ -226,7 +227,20 @@ class Campaign:
                 return 30 + 140
         return 0.0
 
+    def _feed_cost(self, action) -> float:
+        """The charge's own feedstock at today's market price (what the lab would pay for the metal in it; MOQs and
+        spares aside). Scandium at about $235/g makes a Sc-bearing charge several times dearer."""
+        d = action.get("design")
+        if d is None:
+            return 0.0
+        comp = self.space.composition({e: d.get(e, 0.0) for e in self.space.elements})
+        kg = (AL_CHARGE_KG if self.key == "flaime_al" else CU_CHARGE_KG) * action.get("runs", 1)
+        day = getattr(self, "now_h", 0.0) / H
+        return sum(q * self.market.price(supply.ITEMS[it], day)
+                   for it, q in supply.charge_bill(self.key, comp, kg).items())
+
     def submit(self, action: dict, now_h: float) -> bool:
+        self.now_h = now_h
         if self.estimate(action) > self.budget_left:
             self.refused += 1
             return False
@@ -629,6 +643,7 @@ class Campaign:
 
     # ---------------------------------------------------------------------------------------- what the policy sees
     def view(self, now_h):
+        self.now_h = now_h
         return dict(key=self.key, now_h=now_h, budget_left=self.budget_left, spent=self.spent, space=self.space,
                     designs={i: d["composition"] for i, d in self.designs.items()},
                     design_inputs={i: d["design"] for i, d in self.designs.items()},

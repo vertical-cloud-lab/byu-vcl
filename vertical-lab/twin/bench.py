@@ -40,6 +40,8 @@ EXPERIMENTS = {
                 for i in (False, True) for s in range(10)],
     "kappa": [dict(facility="proposed", scenario="historical", policy=p, seed=s, kappa=k, isolated=False)
               for k in (0.0, 0.5, 1.0) for p in ("tiered", "cost_aware") for s in range(10)],
+    "calphad": [dict(facility="proposed", scenario="historical", policy=p, seed=s, kappa=1.0, isolated=False)
+                for p in ("tiered_tc", "cost_aware_tc") for s in range(20)],
 }
 
 
@@ -170,12 +172,51 @@ def summary():
     return out
 
 
+LABELS = {"random": "random, full chain", "tiered": "tiered (open CALPHAD)", "cost_aware": "cost-aware (open CALPHAD)",
+          "tiered_tc": "tiered (Thermo-Calc)", "cost_aware_tc": "cost-aware (Thermo-Calc)"}
+
+
+def markdown(S=None) -> str:
+    """The summary as markdown tables, one per experiment (for notes/twin.md)."""
+    S = S or json.loads((OUT / "bench_summary.json").read_text())
+    out = []
+    for name, groups in S.items():
+        out.append(f"**{name}**\n")
+        out.append("| setting | n | FLAIME best (± SE) | hit 0.6 | $ to 0.6 | days to 0.6 | discoveries | ONR best (± SE) "
+                   "| hit 0.45 | $ to 0.45 | days to 0.45 |")
+        out.append("|---|---|---|---|---|---|---|---|---|---|---|")
+        for key, g in groups.items():
+            kv = dict(x.split("=", 1) for x in key.split("|"))
+            lab = LABELS.get(kv["policy"], kv["policy"])
+            extra = []
+            if name in ("supply",):
+                extra.append(kv["scenario"])
+            if name == "facility":
+                extra.append(kv["facility"])
+            if name == "sharing":
+                extra.append("a lab each" if kv["isolated"] == "True" else "one shared lab")
+            if name == "kappa":
+                extra.append("kappa " + kv["kappa"])
+            lab = ", ".join(extra + [lab])
+            f, c = g["flaime_al"], g["onr_cu"]
+            k = lambda v: "-" if v is None else f"${v / 1000:.0f}k"
+            d = lambda v: "-" if v is None else f"{v:.0f}"
+            out.append(f"| {lab} | {g['n']} | {f['best_mean']:.2f} ± {f['best_se']:.2f} | {f['hit_frac']:.0%} | "
+                       f"{k(f['spend_to_target_median'])} | {d(f['days_to_target_median'])} | {f['discoveries_mean']:.1f} | "
+                       f"{c['best_mean']:.2f} ± {c['best_se']:.2f} | {c['hit_frac']:.0%} | "
+                       f"{k(c['spend_to_target_median'])} | {d(c['days_to_target_median'])} |")
+        out.append("")
+    return "\n".join(out)
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "one"
     if cmd == "run":
         run(sys.argv[2:] or list(EXPERIMENTS), workers=int(os.environ.get("TWIN_WORKERS", "3")))
     elif cmd == "summary":
         print(json.dumps(summary(), indent=1)[:4000])
+    elif cmd == "markdown":
+        print(markdown(summary()))
     else:
         r = run_one(dict(facility="proposed", scenario="historical", policy="cost_aware", seed=0, kappa=1.0,
                          isolated=False))

@@ -68,7 +68,7 @@ def best_vs(rows_by_policy, col, xlabel, xs, fname, title):
 def dots(groups, labels, fname, title, value="best_mean", err="best_se", xlabel="best alloy demonstrated"):
     """groups: {row label: {policy: summary-group}}; one panel per campaign, rows = scenarios."""
     plt = _style()
-    fig, axes = plt.subplots(1, 2, figsize=(11, 0.55 * len(labels) + 1.6), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(12, 0.55 * len(labels) + 1.9), constrained_layout=True)
     for ax, camp in zip(axes, CAMP):
         for i, lab in enumerate(labels):
             pols = groups[lab]
@@ -88,7 +88,10 @@ def dots(groups, labels, fname, title, value="best_mean", err="best_se", xlabel=
         ax.grid(axis="y", visible=False)
     handles = [plt.Line2D([], [], marker="o", linestyle="", color=POL[p][0], markersize=8, label=POL[p][1])
                for p in next(iter(groups.values()))]
-    axes[1].legend(handles=handles, loc="lower right", fontsize=9)
+    for ax in axes:
+        lo, hi = ax.get_xlim()
+        ax.set_xlim(lo, hi + 0.12 * (hi - lo))
+    fig.legend(handles=handles, loc="upper right", ncol=len(handles), fontsize=9, bbox_to_anchor=(1.0, 1.0))
     fig.suptitle(title, x=0.01, ha="left", fontsize=11, color=INK2)
     fig.savefig(OUT / fname, dpi=150)
     plt.close(fig)
@@ -103,16 +106,23 @@ def market(fname="twin_market.png", seed=3):
     fig, axes = plt.subplots(1, 4, figsize=(13, 3.6), constrained_layout=True, sharey=True)
     days = np.arange(0, 366)
     for ax, (c, nm) in zip(axes, coms):
-        for sc, col in zip(names, cols):
+        # the scenarios share one random draw (common random numbers), so they coincide except where they differ;
+        # 'historical' is drawn last, dashed, so it shows where the others sit on it
+        order = [1, 0, 2, 3, 4]
+        for i in order[1:] + order[:1]:
+            sc, col = names[i], cols[i]
             m = supply.Market(sc, seed, 400)
             y = [m.index(c, d) for d in days]
-            ax.plot(days, y, color=col, linewidth=2, label=sc.replace("_", " "))
-            ax.annotate(sc.replace("_", " "), (days[-1], y[-1]), xytext=(3, 0), textcoords="offset points",
-                        va="center", fontsize=7.5, color=INK2)
+            ax.plot(days, y, color=col, linewidth=1.6 if sc == "historical" else 2.2,
+                    linestyle="--" if sc == "historical" else "-", label=sc.replace("_", " "), zorder=3 if sc == "historical" else 2)
         ax.set_title(nm, loc="left")
         ax.set_xlabel("day")
-        ax.set_xlim(0, 460)
+        ax.set_xlim(0, 365)
     axes[0].set_ylabel("price index (day 0 = 1)")
+    h, l = axes[0].get_legend_handles_labels()
+    k = {lab: hh for hh, lab in zip(h, l)}
+    axes[3].legend([k[n.replace("_", " ")] for n in names], [n.replace("_", " ") for n in names], fontsize=8.5,
+                   loc="upper right")
     fig.suptitle(f"One draw of each market scenario (seed {seed}); volatility from USGS MCS 2026, 2021-2025",
                  x=0.01, ha="left", fontsize=11, color=INK2)
     fig.savefig(OUT / fname, dpi=150)
@@ -139,7 +149,7 @@ def validation(fname="twin_validation.png"):
     ax.plot(lim, lim, color=INK2, linewidth=1, linestyle="--")
     ax.set_xlabel("Kou index, pycalphad Scheil on mc_al (K)")
     ax.set_ylabel("Kou index, the twin's fast model x 1.3 (K)")
-    ax.set_title("Al: crack index, fast model vs pycalphad", loc="left")
+    ax.set_title("Al crack index: fast model vs pycalphad", loc="left", fontsize=10)
     ax = axes[1]
     X, Y = thermo._cu_rows()
     from scipy.interpolate import RBFInterpolator
@@ -155,21 +165,28 @@ def validation(fname="twin_validation.png"):
     rm = float(np.sqrt(np.mean((P[:, 0] - Y[te, 0]) ** 2)))
     ax.set_xlabel("liquidus, pycalphad on mc_ni (degC)")
     ax.set_ylabel("liquidus, emulator (degC)")
-    ax.set_title(f"Cu: emulator on {n} held-out compositions (RMSE {rm:.0f} degC)", loc="left")
+    ax.set_title(f"Cu liquidus: emulator, {n} held out (RMSE {rm:.0f} degC)", loc="left", fontsize=10)
     ax = axes[2]
     els = ["Si", "Mg", "Cu", "Fe", "Mn", "Ni", "Cr", "Ti", "Zr", "Sc", "Zn", "Ce", "Li", "Sn", "Er"]
     t_ = [thermo.AL_TRUTH[e][0] for e in els]
     o_ = [thermo._open_params().get(e, (np.nan,))[0] for e in els]
     xi = np.arange(len(els))
-    ax.bar(xi - 0.2, t_, 0.38, color="#2a78d6", label="assessed diagrams (truth)")
-    ax.bar(xi + 0.2, o_, 0.38, color="#eb6834", label="pycalphad, open databases")
+    floor = 1e-3
+    ax.bar(xi - 0.2, np.maximum(t_, floor), 0.38, color="#2a78d6", label="assessed diagrams (truth)")
+    ax.bar(xi + 0.2, np.maximum(np.nan_to_num(o_, nan=floor), floor), 0.38, color="#eb6834",
+           label="pycalphad, open databases")
+    for i, v in enumerate(o_):
+        if not np.isfinite(v):
+            ax.annotate("none", (xi[i] + 0.2, floor), xytext=(0, 3), textcoords="offset points", ha="center",
+                        fontsize=7, color=INK2, rotation=90)
     ax.set_yscale("log")
+    ax.set_ylim(floor, 30)
     ax.axhline(1.0, color=INK2, linewidth=1, linestyle="--")
     ax.set_xticks(xi)
     ax.set_xticklabels(els, fontsize=8.5)
     ax.set_ylabel("partition coefficient k at the Al corner")
-    ax.set_title("Where the open databases go wrong (Zr, Sc, Ni; no Er)", loc="left")
-    ax.legend(fontsize=8.5, loc="lower left")
+    ax.set_title("k at the Al corner: off for Zr, Sc, Ni", loc="left", fontsize=10)
+    ax.legend(fontsize=8.5, loc="upper left")
     fig.savefig(OUT / fname, dpi=150)
     plt.close(fig)
 

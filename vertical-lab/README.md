@@ -9,6 +9,16 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## A digital twin of the manufacturing network, for synthetic benchmarks (`twin/`, 2026-11-24)
+
+Not an animation: an optimization function for benchmarking campaigns on this lab (DAL #276). FLAIME's aluminium
+campaign and the ONR YIP's copper campaign run at the same time, each with its own search space, function network,
+ground truth, objectives, budget and policy, sharing one atomizer, the partners and one market whose prices drift and
+jump. The physics and data are pycalphad on open databases, USGS Mineral Commodity Summaries 2026 and DAL's 2026
+procurement record. It is staged here only because the run that built it could push nowhere else; it is
+self-contained in [`twin/`](twin/README.md), [`notes/twin.md`](notes/twin.md) and `out/twin/`, ready to move to its
+own PR.
+
 ## Round 15: everything brought together, one lab in every clip, re-rendered at 720p (2026-11-23)
 
 Sterling on #318 (2026-11-23): "pull in the latest results from all the other relevant PRs (use gh api to retrieve
