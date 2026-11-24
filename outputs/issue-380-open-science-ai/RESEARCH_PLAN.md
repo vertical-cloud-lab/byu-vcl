@@ -65,7 +65,7 @@ of each section follows it.
 | --- | --- | --- |
 | A. Edison | about 8 queries | 15 jobs (literature, high-effort literature and precedent), all fetched with trajectories; [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md) |
 | A. GitHub mining | every issue, PR, discussion and comment in two repos | 4,928 records in 816 threads, 118 coded for commercialization; [`gh-mining/`](gh-mining/) |
-| B. Pi browser | headed Chromium through the Pi, mouse automation | 150 searches, 84 page fetches, 7 YouTube transcript sessions for 6 videos; [`pi-browser/`](pi-browser/), [`voices/`](voices/) |
+| B. Pi browser | headed Chromium through the Pi, mouse automation | 150 searches, 84 page fetches, 10 YouTube transcript sessions for 9 videos; [`pi-browser/`](pi-browser/), [`voices/`](voices/) |
 | C. Case studies | about 80 organizations | 179 case files in groups A–J with 1,354 cited sources, calibration, a spot audit and verification passes; [`companies/`](companies/) |
 | C. Market numbers | OSS value, investment, IPO cohort, acquisitions | README §1–3, [`data/`](data/) |
 | D. Trends | Epoch AI, OpenAlex, software vs. hardware vs. science over time | README §2, §5–6; plus the GitHub Innovation Graph, PDB, DOE code.json and OpenAlex topic counts |
