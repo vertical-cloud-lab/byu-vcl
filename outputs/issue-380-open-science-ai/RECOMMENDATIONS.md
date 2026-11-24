@@ -82,8 +82,8 @@ leverage per unit of effort.
 - Keep vendor manuals out of public repos.
 
 **Why:**
-- Desktop Metal (debuted at up to $2.5B) went bankrupt and Markforged (debuted at $2.1B) sold for
-  $42.5M. A closed instrument with an orphaned SDK is a stranded asset.
+- Desktop Metal (debuted at up to $2.5B) went bankrupt and Markforged (debuted at $2.1B) was taken private for about
+  $116M in 2025, and its main business was resold for $42.5M in 2026. A closed instrument with an orphaned SDK is a stranded asset.
 - `ac-dev-lab` #532 shows vendor API documentation that couldn't be published.
 
 ## 6. Put a little back into the commons the lab relies on

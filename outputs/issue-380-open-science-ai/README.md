@@ -663,7 +663,7 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
     OpenCalphad read Thermo-Calc database files.
 - **AM's 2021 SPAC boom busted:**
   - Desktop Metal listed at up to $2.5B and filed Chapter 11 in 2025.
-  - Markforged went from about $2.1B to a $42.5M sale.
+  - Markforged went from about $2.1B (2021) to a $116M take-private (2025), and its main business was resold for $42.5M (2026).
   - A creditor took 95% of Velo3D.
   - Family-owned EOS stayed independent.
   - For DAL, vendor longevity is a real procurement risk, which is one more reason to own the driver
