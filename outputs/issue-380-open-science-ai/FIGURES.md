@@ -94,6 +94,11 @@ Every figure in this study, with what it shows. Each `video/scenes/*.mp4` animat
 
 ![US open-access share by institution type (OpenAlex)](figures/openalex.png)
 
+### Organizations converge toward the middle (after the independent review)
+`figures/convergence_by_start_openness.png` ([script](scripts/convergence_figure.py))
+
+![Organizations converge toward the middle](figures/convergence_by_start_openness.png)
+
 ### Openness over time in six sectors (after the independent review)
 `figures/openness_by_year_six_sectors.png` ([script](scripts/openness_by_year_six.py), [CSV](data/openness_by_year_six_sectors.csv), [animation](video/extras/openness_by_year_six_sectors.mp4))
 

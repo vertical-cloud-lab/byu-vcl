@@ -333,6 +333,9 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
     - US-headquartered organizations only (89 of 122) show the same pattern: closed starters opened 3.9 times and
       closed 1.4, while open starters closed 3.7 times and opened 1.5
       ([`data/licence_events_by_start_openness_us.csv`](data/licence_events_by_start_openness_us.csv)).
+
+![Organizations converge toward the middle](figures/convergence_by_start_openness.png)
+
   - The public-infrastructure rise of +0.29 rests largely on OpenFOAM's 0→4.
 - **US-only, the gap widens** (first, uncorrected classification; see the correction above):
   - VC-era −0.46 (47% made a closing move, n = 59);
