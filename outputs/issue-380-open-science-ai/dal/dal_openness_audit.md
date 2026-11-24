@@ -219,3 +219,26 @@ pattern of open orchestration on closed instruments. The workarounds show its co
   (`#318:notes/dal_workflow.md:55`) have no export plan.
 - **Open data will feed closed AI,** as the Materials Project fed GNoME (`study:companies/F/materials-project.json`).
   CC BY allows that; the open question is attribution.
+
+## 8. Evidence added after the independent review (2026-11-24)
+
+Later analyses and transcripts bear directly on DAL and #318:
+
+- **Where the lab sits.** Organizations converge toward the middle. Open starters closed 3.3 times per 100
+  organization-years, and government, academic and foundation infrastructure almost never closed (1 of 24)
+  (`study:data/licence_events_by_start_openness.csv`, `study:data/kinds_corrected.csv`). A university lab that
+  publishes under MIT and CERN-OHL-P is in the stable group, so long as its tools don't end up inside a company that
+  later needs to close them.
+- **The driver layer is the right place to be open.** PyLabRobot's creator describes drivers that "bypass all OEM
+  software", mostly reverse-engineered because protocols are undocumented, and says shared drivers have seeded new
+  companies. An Uppsala lab left a vendor-installed system because "we also became very dependent on on the vendors to
+  solve problems", and built its own on GitHub (`study:voices/voices_digest.md`, Y9 and Y10). Both fit
+  recommendation 1 of the playbook (an MCP-style driver per instrument).
+- **Plan for the time it costs.** The same Uppsala talk is candid that building takes longer than buying, and suits
+  academic labs better than companies. Budget engineering time for the driver layer in the proposal.
+- **Licences to avoid.** Adafruit's founder stopped using non-commercial licences because they didn't stop closed
+  derivatives (Y13). The Business Source License's own author calls it "not an open source license" (Y8), so it would
+  not meet the FOA's open-source expectation. MIT, Apache-2.0 and CERN-OHL-P remain the right defaults.
+- **Speed over exclusivity for hardware.** SparkFun's founder reports copies within 12 weeks, and argues that a fast
+  release cycle protects a hardware business better than patents (Y7). That supports publishing DAL's fixtures and
+  tray stations openly rather than patenting them.

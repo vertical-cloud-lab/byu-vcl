@@ -21,6 +21,8 @@ leverage per unit of effort.
 - Shared drivers are what other labs reuse. PyLabRobot spread by driving Hamilton and Tecan robots.
 - Anthropic and OpenAI now market AI that operates lab instruments (MHS, Claude Science, GPT-Rosalind).
   Whoever owns the driver layer decides how open AI-run labs are.
+- PyLabRobot's drivers "bypass all OEM software", and an Uppsala lab left a vendor system for its own GitHub-based
+  automation for the same reasons ([voices digest](voices/voices_digest.md), Y9 and Y10).
 
 ## 2. Put the code where it can outlive the lab
 
@@ -36,6 +38,9 @@ leverage per unit of effort.
   changes of owner and strategy, while vendor-held projects were relicensed or archived (Redis, Elastic,
   HashiCorp, Mule CE, Llama).
 - 10 of 15 closing moves by organizations later acquired came at or after the acquisition.
+- Avoid non-commercial and source-available licences: Adafruit's founder dropped non-commercial licences because
+  they didn't stop closed derivatives, and the BSL's own author calls it "not an open source license"
+  ([voices digest](voices/voices_digest.md), Y8 and Y13).
 
 ## 3. Release data on the funder's clock, and decide the IP question once
 
