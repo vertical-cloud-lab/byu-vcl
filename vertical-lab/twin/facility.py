@@ -127,6 +127,16 @@ def facility(kind: str = "proposed") -> dict:
             st[s.key] = Station(**s.__dict__)
     elif kind != "proposed":
         raise ValueError(kind)
+    # private rates the lab holds (e.g. a partner's posted external rates kept out of public text), git-ignored:
+    # data/private/rates.json = {"mines_x2": {"fee_usd": ...}, ...}
+    import json
+    from pathlib import Path
+    p = Path(__file__).resolve().parent / "data" / "private" / "rates.json"
+    if p.exists():
+        for k, v in json.loads(p.read_text()).items():
+            if k in st:
+                for f, x in v.items():
+                    setattr(st[k], f, x)
     return st
 
 

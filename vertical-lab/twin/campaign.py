@@ -642,6 +642,7 @@ class Twin:
     def __init__(self, specs: dict, policies: dict, scenario="historical", facility="proposed", seed=0,
                  horizon_days=365, isolated=False):
         self.h = horizon_days * H
+        supply.load_private()
         self.market = supply.Market(scenario, seed, int(horizon_days) + 400)
         shared = fac.Facility(facility, seed, self.h + 2000 * H)
         self.campaigns = {}

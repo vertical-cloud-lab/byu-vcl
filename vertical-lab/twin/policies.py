@@ -287,10 +287,17 @@ class CostAware(Base):
         return rows
 
     def screen_feature(self, v, did):
+        cache = self.__dict__.setdefault("_sf", {})
+        if did in cache:
+            return cache[did]
         s = [x for x in v["sims"] if x["design"] == did and x["kind"] == "sim_open"]
         if not s:
             return None
         o = s[-1]["out"]
+        cache[did] = self._sf_from(o)
+        return cache[did]
+
+    def _sf_from(self, o):
         if self.al:
             return np.array([min(1.3 * o["kou_K"] / 500, 2), (o["liquidus_C"] - 600) / 300])
         return np.array([o["freezing_range_K"] / 200, o["beta_900"], (o["liquidus_C"] - 1000) / 300])
@@ -333,15 +340,20 @@ class CostAware(Base):
                                            if self.screen_feature(v, i) is not None else np.zeros(Xc.shape[1] - len(self.space.elements))])
                            for i, _ in obs])
             yo = np.array([u for _, u in obs])
-            g = self._gp(Xo, yo)
+            # refit only when a new test result has come back (same data, same fit: random_state is fixed)
+            if getattr(self, "_gp_n", -1) != len(obs):
+                self._gp_fit, self._gp_n = self._gp(Xo, yo), len(obs)
+            g = self._gp_fit
             mu, sd = g.predict(Xc, return_std=True)
             z = (mu - best) / np.maximum(sd, 1e-6)
             from scipy.stats import norm
             ei = (mu - best) * norm.cdf(z) + sd * norm.pdf(z)
         else:
-            # before any test: prefer what the screen calls sound, at random among those
-            sf = np.array([self.screen_feature(v, i)[0] for i in cand])
-            ei = np.exp(-np.maximum(sf - 0.4, 0) * 4) * self.rng.random(len(cand))
+            # before four tests: the metallurgist's proxy as the prior, the screen as a soft preference, and noise
+            pr = np.array([self.proxy(v["designs"][i], simmed[i]["out"]) for i in cand])
+            ok = np.array([1.0 if self.passes(simmed[i]["out"]) else 0.0 for i in cand])
+            pr = (pr - pr.mean()) / (pr.std() + 1e-9)
+            ei = np.exp(pr) * (0.3 + ok) * (0.5 + self.rng.random(len(cand)))
         cost = v["estimate"](dict(kind="powder", runs=1 if self.al else 3)) + (1000 if self.al else 2500)
         order = np.argsort(-ei / cost)
         for j in order:
@@ -389,4 +401,6 @@ class CostAware(Base):
         return dict(kind="print", lot=lid, params=params, bars_at=0)
 
 
+CostAware.proxy = Tiered.proxy
+CostAware.passes = Tiered.passes
 POLICIES = {"random": Random, "tiered": Tiered, "cost_aware": CostAware}
