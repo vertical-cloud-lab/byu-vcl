@@ -328,6 +328,9 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
     - mixed starters (n = 37) were balanced, opening 2.7 and closing 2.3;
     - open starters (n = 59) closed 3.3 times and opened 1.8.
     - Part of this is mechanical: a firm at 0 has little left to close, and one at 4 has nothing left to open.
+    - US-headquartered organizations only (89 of 122) show the same pattern: closed starters opened 3.9 times and
+      closed 1.4, while open starters closed 3.7 times and opened 1.5
+      ([`data/licence_events_by_start_openness_us.csv`](data/licence_events_by_start_openness_us.csv)).
   - The public-infrastructure rise of +0.29 rests largely on OpenFOAM's 0→4.
 - **US-only, the gap widens** (first, uncorrected classification; see the correction above):
   - VC-era −0.46 (47% made a closing move, n = 59);
