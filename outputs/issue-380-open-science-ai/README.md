@@ -38,6 +38,9 @@ below links to a file in this folder, and each file names its sources.
    - Dated licence or access changes in the case files nearly doubled after 2020:
      - 2010–19: 16 closing moves, 11 opening.
      - 2020–26: 31 closing, 30 opening.
+     - These are the counts at the video snapshot. After verification pass 2, A–F gives 17/11 and 31/33.
+     - Adding the AI-for-science models (I) and AI-era startups (J), 2020–26 becomes **36 closing vs.
+       50 opening**. The AI era tilts toward opening.
    - A fork followed when a closed project had other resellers: OpenSearch, OpenTofu, Valkey.
    - Two closers later added AGPL back (Elastic in 2024, Redis in 2025).
    - **Foundations, not companies, keep openness durable.**
