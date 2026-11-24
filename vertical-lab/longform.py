@@ -1121,6 +1121,15 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
     "packaging": "the labeller's arm on the bag as it labels it",
     "upkeep_clip": "one frame of a moving part touching, under 3 mm",
     "atom_vacuum": "the crevice tool 3 mm into its station, the brush 0.3 mm, one frame each",
+    # round 15
+    "alloy_charge": "a fingertip 12 mm into the left base camera's case, setting a cup in the carrier",
+    "alloy_atomize": "checker artifact: the held cup's cutaway half against its own whole copy, as the tong lowers it",
+    "ot2_corrosion_prep": "the nozzle seated in its tip at pick-up (the tips are drawn solid)",
+    "cubxl_corrosion": "the nozzle seated in its tip at pick-up (the tips are drawn solid)",
+    "alloy_workflow": "the plate 3 mm into the depowdering box's rotor; a bar 6 mm into its trough",
+    "setup_lab": "rigging: machines set down over their drops; the UR control box through the Class D unit into its "
+                 "cabinet",
+    "meltio_m450": "the work itself: the deposition on the wall",
 }
 
 
@@ -1128,7 +1137,8 @@ def audit_table(path: Path):
     """audit_rows() as one table, 1920 wide (scrolled if tall), and <AUDIT_TAG>_summary.json beside it."""
     rows = audit_rows()
     for r in rows:
-        r["note"] = AUDIT_NOTES.get(r["clip"], "")
+        # round 15: a note only where frames remain (the notes of fixed clips were stale)
+        r["note"] = AUDIT_NOTES.get(r["clip"], "") if (r.get("all_frames") or r.get("arm_frames")) else ""
     path.with_name(f"{AUDIT_TAG}_summary.json").write_text(json.dumps(rows, indent=1) + "\n")
     W, row_h = 1920, 36
     H = 150 + row_h * len(rows) + 70
@@ -1420,9 +1430,13 @@ def description(meta: dict, commit: str) -> str:
     rates = sorted({round(probe(HERE / p["src"])[2]) for p in meta["parts"] if p["kind"] == "mp4"
                     and "/dag/" not in str(p["src"]) and Path(HERE / p["src"]).exists()} - {0})
     if rates:
-        head += (f"{meta['size'][0]} x {meta['size'][1]}, the 3-D drawn at {rates[0]}" +
-                 (f"-{rates[-1]}" if rates[-1] != rates[0] else "") + " frames a second" +
-                 (f"; {len(early)} clips are earlier renders" if early else "") + ".\n\n")
+        # round 15: say which clips were drawn when; the services and safety clips were copied into out/r15/ from
+        # their round-14 and #379 renders, so the count of "earlier" parts alone undercounts them
+        head += (f"{meta['size'][0]} x {meta['size'][1]} at 30 fps, the 3-D drawn at {rates[0]}" +
+                 (f"-{rates[-1]}" if rates[-1] != rates[0] else "") + " frames a second: the chapters, the "
+                 "turnaround and the whole-lab clips at 15, the instrument clips at 30. Kept from earlier renders: "
+                 "the services, safety, base-camera, floor-cleaning and scale-up clips and most of the fabrication "
+                 "tour.\n\n")
     chap = "Chapters\n" + "".join(f"{c['stamp']} {c['title']}\n" for c in meta["youtube_chapters"])
     tail = ("\nThe real VLM: Sterling Baird, https://youtu.be/ck8QJhVqPiY . The atomizer footage is the lab's own (DAL "
             "#159, #219); the doser drop is powder-doser's own CAD render (PR #185, v10). Each notes file says which "

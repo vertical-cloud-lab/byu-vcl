@@ -3,8 +3,8 @@
  "fps": 15,
  "n_frames": 2278,
  "size": [
-  1920,
-  1080
+  1280,
+  720
  ],
  "substeps": [
   {
@@ -1329,7 +1329,7 @@
   },
   {
    "label": "12/12",
-   "caption": "... its dot lands high on the plate and centred, 7 mm clear of the upper sonotrode (step 17; the left camera sees it through the door's sight glass, DAL PR 189).",
+   "caption": "... its dot lands high on the plate and centred, 7 mm clear of the upper sonotrode (step 17; of the furnace cameras only the front wide sees it, DAL PR 189).",
    "start_frame": 1994,
    "end_frame": 2024
   },

@@ -1,10 +1,10 @@
 {
  "name": "atom_container",
  "fps": 15,
- "n_frames": 936,
+ "n_frames": 935,
  "size": [
-  1920,
-  1080
+  1280,
+  720
  ],
  "substeps": [
   {
@@ -131,55 +131,55 @@
    "label": "5/6",
    "caption": "MiR250 1 drives round to the container.",
    "start_frame": 606,
-   "end_frame": 682
+   "end_frame": 681
   },
   {
    "label": "6/6",
    "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
-   "start_frame": 683,
-   "end_frame": 716
+   "start_frame": 682,
+   "end_frame": 715
   },
   {
    "label": "6/6",
    "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
-   "start_frame": 717,
-   "end_frame": 729
+   "start_frame": 716,
+   "end_frame": 728
   },
   {
    "label": "6/6",
    "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
-   "start_frame": 730,
-   "end_frame": 736
+   "start_frame": 729,
+   "end_frame": 735
   },
   {
    "label": "6/6",
    "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
-   "start_frame": 737,
-   "end_frame": 765
+   "start_frame": 736,
+   "end_frame": 764
   },
   {
    "label": "6/6",
    "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
-   "start_frame": 766,
-   "end_frame": 772
+   "start_frame": 765,
+   "end_frame": 771
   },
   {
    "label": "6/6",
    "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
-   "start_frame": 773,
-   "end_frame": 783
+   "start_frame": 772,
+   "end_frame": 782
   },
   {
    "label": "6/6",
    "caption": "Arm 1 stands back.",
-   "start_frame": 784,
-   "end_frame": 807
+   "start_frame": 783,
+   "end_frame": 806
   },
   {
    "label": "6/6",
    "caption": "Next, not animated yet: arm 2 holds the weight from below with a fork (ours; the 2F-85 opens to 85 mm, the container is 130 mm across), arm 1 opens the clamp, the container goes onto MiR250 1, capped, and a clean one with a fresh splash disc goes on. It weighs about 4.2 kg empty (the model's stainless) plus 0.14-1.6 kg of powder: under the UR10e's 12.5 kg, near or over the 2F-85's 5 kg.",
-   "start_frame": 808,
-   "end_frame": 935
+   "start_frame": 807,
+   "end_frame": 934
   }
  ]
 }

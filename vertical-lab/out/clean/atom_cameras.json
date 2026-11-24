@@ -3,8 +3,8 @@
  "fps": 15,
  "n_frames": 1581,
  "size": [
-  1920,
-  1080
+  1280,
+  720
  ],
  "substeps": [
   {
@@ -165,7 +165,7 @@
   },
   {
    "label": "5/6",
-   "caption": "The slugs slump and run together into a pool round the sealing rod. The pool's surface is about 20-30 mm over the crucible's datum, where DAL aimed the camera.",
+   "caption": "The cups slump and run together into a pool round the sealing rod. The pool's surface is about 20-30 mm over the crucible's datum, where DAL aimed the camera.",
    "start_frame": 1272,
    "end_frame": 1364
   },
