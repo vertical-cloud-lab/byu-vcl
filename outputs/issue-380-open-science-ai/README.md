@@ -954,6 +954,35 @@ with 125 quotes, each checked by script against the captured text. The index is
 - The language analysis counts words; it doesn't read meaning. The Meta and DeepMind corpora are two
   documents each.
 
+## Reproduce
+
+Run everything from `outputs/issue-380-open-science-ai/`:
+
+```bash
+# GitHub corpora (REST + GraphQL, including discussion replies hidden behind "load more")
+python3 scripts/gh_dump.py AccelerationConsortium/ac-dev-lab /tmp/ghdump/ac-dev-lab
+python3 scripts/gh_dump.py sparks-baird/self-driving-lab-demo /tmp/ghdump/self-driving-lab-demo
+python3 scripts/gh_corpus.py
+# Public datasets
+python3 scripts/epoch_openness.py; python3 scripts/openalex_trends.py; python3 scripts/openalex_analyze.py
+python3 scripts/market_prices.py; python3 scripts/innovation_graph.py; python3 scripts/pdb_growth.py
+python3 scripts/doe_code.py /path/to/energy.gov/code.json; python3 scripts/openalex_physsci_topics.py
+# Case files -> tables, casebook, robustness
+python3 scripts/companies_aggregate.py; python3 scripts/casebook.py; python3 scripts/openness_outcomes.py
+python3 scripts/robustness_checks.py; python3 scripts/openness_by_year.py; python3 scripts/fork_robustness.py
+# Pi browser (headed Chrome on :99, traffic via the CubXL Pi; rig.sh from byu-vcl PR 234)
+python3 scripts/pi_search.py --engine ddg "query"; python3 scripts/pi_search.py --fetch URL
+python3 scripts/pi_youtube_transcript.py VIDEO_ID out.json
+# Language analysis
+python3 scripts/language_analysis.py; python3 scripts/language_time.py
+# Videos (Kokoro TTS in a Python 3.12 venv; matplotlib scenes; ffmpeg)
+python scripts/tts_narration.py                     # NARR / DURF env vars select part 2 or 3
+python3 scripts/build_video.py                      # --render / --mux / --join; NARR, DURF, OUTMP4, CHAP env vars
+python3 scripts/youtube_upload.py video/open_science_value_ai.mp4   # --part2 / --part3; notifySubscribers=False
+# Edison (Python 3.12 venv with edison-client)
+python scripts/edison_fetch.py
+```
+
 ## Files
 
 - `edison/`: 9 Edison tasks, each with an answer, references and the full verbose task JSON.
