@@ -22,13 +22,15 @@ below links to a file in this folder, and each file names its sources.
      **$8.8T** to replace it themselves (Hoffmann, Nagle & Zhou 2024).
    - US investment in open source was **$36–38B in 2019** (BEA/NSF methods).
    - The Protein Data Bank costs about **$6.9M a year** to run. Its users spend an estimated
-     **$5.5B a year** of research time with it, and its structures trained AlphaFold.
+     **$5.5B a year** of research time with it. That is use value (time spent), not net benefit; the
+     conservative R&D return is $1.1B a year. Its structures trained AlphaFold.
    - Open scientific hardware's material cost averages **87% below** the commercial price, excluding
      labour, and a comparator existed for about 45 of the 119 designs
      ([Edison answers](edison/)).
 2. **The value goes to whoever runs the service, owns the data or sells the hardware around the open core.**
-   - The largest commercial open-source values are open core plus a hosted service: Databricks
-     ($190B), the NVIDIA–Hugging Face deal ($12.9B) and Confluent ($11B).
+   - Most of the largest commercial open-source values are open core plus a hosted service: Databricks
+     ($190B), the NVIDIA–Hugging Face deal ($12.9B) and Confluent ($11B). Red Hat's subscription model,
+     at #2, is the exception.
    - Red Hat's pure subscription business sold for $34B.
    - MongoDB is worth about $23B under the restrictive SSPL licence ([case files](companies/)).
    - Venture data agrees. In 800+ VC-backed open-source startups matched to closed-source peers, median
@@ -62,8 +64,9 @@ below links to a file in this folder, and each file names its sources.
    exception (RISC-V, Open Compute).
    - Adafruit and SparkFun have lasted about two decades and Prusa 14 years, but they stay small and
      private.
-   - The large values went to firms that are closed or closing: Formlabs, SiFive, Raspberry Pi's
-     closed silicon and Bambu Lab.
+   - The large known values went to firms with mostly closed products: Formlabs ($2B), SiFive ($3.65B,
+     open RTL archived in 2021) and Raspberry Pi ($1.19B, closed silicon). Bambu Lab, closed and dominant
+     in desktop printers, has no disclosed valuation.
    - MakerBot closed its designs, sold for $403M, and saw that goodwill written off within three years.
 5. **In the physical sciences, open infrastructure is long-lived and feeds AI, but closed codes and
    startups capture the money.**
@@ -124,7 +127,7 @@ below links to a file in this folder, and each file names its sources.
 | Edison Scientific | 15 jobs: 4 `LITERATURE_HIGH`, 10 `LITERATURE` and 1 `PRECEDENT`. The first 9 were submitted at 21:51; 4 gap-filling jobs (open materials data, lab-automation markets, industry publishing norms, sustaining open infrastructure) were submitted at 23:55, and 2 more (academic tech transfer vs. open release; commercializing academic open hardware) at 00:33. [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md) covers all 15. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
 | GitHub mining | `gh api` (REST and GraphQL) over **every** issue, PR, conversation comment, inline review comment, review body, discussion, discussion comment and reply in `AccelerationConsortium/ac-dev-lab` and `sparks-baird/self-driving-lab-demo`: 4,928 records in 816 threads. 118 threads were coded for commercialization, and quotes and numbers were checked against the corpus by script | [`gh-mining/`](gh-mining/) |
 | Case studies | **179 case files**: 143 organizations in groups A–G (121 at the video snapshot, then 1 more hardware file and group G: 21 in additive manufacturing, lab automation and open-science infrastructure), plus 19 AI-for-science model and dataset releases (group I) and 17 AI-era open-source startups (group J). The six groups are commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 1,354 cited sources (904 at the video snapshot) | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
-| Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. **145 searches** (89 curated, 18 to find primary documents, 36 to verify claims, plus 2 tests), **74 page fetches** (57 primary documents from AI labs and US policy, 15 community and blog pages, 2 report pages) and **6 YouTube transcript sessions**, in which the mouse opened "Show transcript" | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
+| Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. **150 searches** (89 curated, 18 to find primary documents, 36 to verify claims, 5 for physical-science voices, plus 2 tests), **84 page fetches** (57 primary documents from AI labs and US policy, 19 community, blog and news pages, and 8 study and report pages; ScienceDirect's bot check blocked one, and two PDFs returned no text) and **6 YouTube transcript sessions** (5 captured), in which the mouse opened "Show transcript" | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
 | Datasets | Epoch AI "Data on AI Models" (3,730 models, CC-BY); OpenAlex works grouped by US institution type × year × open access; Yahoo Finance weekly prices | [`data/`](data/) |
 | Language | Term rates per 1,000 words in 57 documents from Anthropic (26), OpenAI (22), Meta, Google DeepMind, DeepSeek, xAI and US policy (3), all fetched through the Pi | [`language/`](language/) |
 | Video | 20 animated matplotlib scenes, Kokoro-82M narration (Apache-2.0, offline), joined with ffmpeg | [`video/`](video/), [`scripts/build_video.py`](scripts/build_video.py) |
@@ -158,7 +161,8 @@ where a 2025–26 fact couldn't be confirmed.
     through the Pi)
   - US investment of $36.2B (BEA WP2022-10) to $38.4B (Robbins et al. 2021) in 2019, with a real
     capital stock above $118B
-  - EU impact of €65–95B on about €1B of investment (Blind et al. 2021)
+  - EU impact of €65–95B, alongside about €1B of personnel investment (Blind et al. 2021). The source warns
+    these aren't directly comparable as a return ratio
 - GDP would be about 2.2% lower if no country contributed to OSS (Blind & Schubert 2023).
 - A 1% rise in a country's GitHub commits goes with 0.2–0.4% more new IT ventures and 0.4–0.8% more
   venture funding (Wright, Nagle & Greenstein).
@@ -179,13 +183,14 @@ where a 2025–26 fact couldn't be confirmed.
   affected genes by about 20–30% (Williams 2013).
 - **Open access pays off downstream.** After the 2008 NIH Public Access Mandate, patents cited
   NIH-funded research **12–27% more often** (Bryan & Ozcan 2021, difference-in-differences; via
-  [Edison](edison/open_science_roi_answer.md)). That is causal evidence that open papers feed industrial
-  innovation.
+  [Edison](edison/open_science_roi_answer.md)). That is causal evidence, from one biomedical setting, that open
+  papers feed industrial innovation.
 
 ![Policy timeline](figures/policy_timeline.png)
 
-US open access rose from about 25% to 72% of articles between 2000 and 2023, through the NIH mandate
-(2008), the Holdren (2013) and Nelson (2022) memos and the NIH data-sharing policy (2023). The small
+US open access rose from about 25% to 72% of articles between 2000 and 2023, alongside the NIH mandate
+(2008), the Holdren (2013) and Nelson (2022) memos and the NIH data-sharing policy (2023). The series is
+smooth, with no visible break at the policy dates, so the chart doesn't show policy causing the rise. The small
 dip in 2024–25 is probably indexing lag in OA status.
 - **Materials:** the NIST Materials Genome Initiative analysis estimates $123–270B a year of
   *potential* US benefit from better materials-innovation infrastructure.
@@ -200,7 +205,7 @@ dip in 2024–25 is probably indexing lag in OA status.
 - The 29 commercial OSS companies in groups A and B with a known value over $100M sum to about
   **$375B**, at dates from 2008 to 2026. That is about $185B without Databricks.
 - The 13 of them valued in 2025–26 sum to about **$286B**.
-- Venture investment in COSS has averaged about **$9B a year** since 2019, across about 250 deals a year. 2024 alone saw 211 deals totalling **$26.4B**, driven by AI (LF/Serena/COSSA 2025).
+- Venture investment in COSS has averaged about **$9B a year** since 2019, across about 250 deals a year. 2024 alone saw 211 deals totalling **$26.4B**, but 78% of that was two rounds the report counts as COSS: xAI ($11.1B) and Databricks ($9.5B). This study scores xAI as restricted (LF/Serena/COSSA 2025).
 - Set that against the **$8.8T** demand-side value of the open code firms use: the companies capture
   a few percent of it at most.
 - Commercial market-research estimates of an "open-source services market" (about $39B in 2025, as
@@ -221,7 +226,9 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 > **Snapshot note.** The tables in this section and the video use the 121-organization snapshot taken at
 > about 23:00 UTC. After that, one more hardware file arrived (A–F now has 122), group G added 21
 > AM, lab-automation and open-science-infrastructure organizations, and verification pass 2 corrected 16
-> values. Recomputed on A–F, the shifts are small and the direction is unchanged:
+> values. Recomputed on A–F, most shifts are small. Rows with closed-at-founding firms change more once
+> group G's closed instrument makers are included (see the CSVs), and the corrected founding-era analysis
+> is further down:
 > - VC-era: −0.37, with 49% making a closing move;
 > - long-standing: +0.48;
 > - public infrastructure: +0.28 and 6%.
@@ -524,7 +531,8 @@ Source: [groups E and F](companies/E/_summary.md) and [F summary](companies/F/_s
   - Only Orbital (Apache-2.0 models) and Radical AI (MIT TorchSim) release OSI-licensed artifacts,
     and neither is their main product.
   - Edison's sources put disclosed AI-for-materials funding from Sep 2025 to Jul 2026 at
-    $1.98–2.29B, with 86–88% going to Periodic, CuspAI and Lila.
+    $1.98–2.29B, with 86–88% going to Periodic, CuspAI and Lila. This is one preprint's tally, it includes
+    unconfirmed rounds, and it exceeds the three firms' lifetime totals in our case files (about $1.5B).
 - **Self-driving labs took off; open-hardware publishing grew more slowly** ([`figures/physsci_topics.png`](figures/physsci_topics.png),
   [`data/openalex_physsci_topics.csv`](data/openalex_physsci_topics.csv), OpenAlex title/abstract matches):
   - Self-driving and autonomous-lab papers went from 18 (2020) to 131 (2024) and 383 (2025). 67% of the
@@ -606,13 +614,14 @@ Each one records the licence history of the code, the weights and the training d
 - **Licences move toward open more often than away:** 11 opening changes vs. 7 closing ones. Examples:
   - AlphaFold 2's weights went from CC BY-NC to CC BY (2022).
   - Chai-1 went from non-commercial to Apache-2.0 (2024-11-27).
-  - ESM went from MIT (Meta) to non-commercial (EvolutionaryScale) and back to MIT (2026-05-27, Biohub).
+  - ESM went from MIT (Meta) to non-commercial (EvolutionaryScale) and reportedly back to MIT (2026-05-27,
+    Biohub). GitHub's licence detector didn't confirm the change.
   - AlphaFold 3 launched server-only (2024-05-08). Its code came out under CC BY-NC-SA (2024-11-11) and
     then Apache-2.0 (2026-06-09), but the weights are still gated and non-commercial.
 - **Two caveats:**
   - Boltz added proprietary models after announcing a $110M Series A (2026-11-18).
   - Newer MACE models carry a non-commercial academic licence.
-- **Most are trained on public data:** 14 of the 17 models with known training data used public datasets
+- **Most are trained on public data:** 14 of the 17 models (15 with known training data) used public datasets
   such as the PDB, the Materials Project, Alexandria and OMat24.
   - Meta's FAIR Chemistry datasets are CC BY 4.0, but its model weights use custom, gated licences.
 
@@ -659,7 +668,7 @@ These are four gap-filling literature reviews submitted at 23:55 and fetched at 
 - **Papers:**
   - The open-access share of US articles rose from 25% (2000) to about 71–72% (2024–25).
   - Government (81%) and national-lab "facility" institutions (81%) are the most open.
-  - Industry overtook academia overall (76% vs. 71%) and in AI (87% vs. 81%), but still trails in the
+  - In 2025, industry overtook academia overall (76% vs. 71%; 76% vs. 72% in 2024) and in AI (87% vs. 81%), but still trails in the
     physical sciences (71% vs. 73%) and materials (60% vs. 65%) ([CSV](data/openalex_us_oa_by_sector.csv)).
 - **Models:**
   - Academia's open-weight share (2-year pooled) went from 21% (2018–19) to 81% (2024–25).
@@ -896,8 +905,8 @@ and [`edison/academic_osh_commercialization_answer.md`](edison/academic_osh_comm
   - Examples: OpenFlexure Industries, Tanzania's Bongo Tech sayansiScope, Opentrons, Foldscope, Sci-Bots
     (DropBot) and CERN's open-hardware licensing to firms.
 - **The same review literature records Sterling's own CLSLab:Light kits:** two successful GroupGets
-  crowdfunding rounds totalling **39 kits** at an $80 list price, matching
-  [our GitHub digest](gh-mining/commercialization_digest.md).
+  crowdfunding rounds totalling **39 kits** at an $80 list price. That is consistent with the two rounds in
+  [our GitHub digest](gh-mining/commercialization_digest.md), which records no unit counts.
 
 ### 9b. AI agents now write most of this lab's open record, by volume
 
@@ -931,8 +940,8 @@ with 125 quotes, each checked by script against the captured text. The index is
   - A 2026 r/startups thread gives the same advice.
 - **Forks succeed on trust and backing, not licence text.**
   - Valkey, backed by the hyperscalers, spread fast.
-  - OpenTofu lags Terraform, about 77× fewer searches (r/Terraform), because the BSL change never touched
-    internal users.
+  - OpenTofu lags Terraform: about 77× fewer searches according to an r/Terraform thread, which offers the
+    view that the BSL change never touched internal users. The fork data show 846 vs. 1,369 commits a year.
 - **Open hardware is narrowing to repair rights and software.**
   - Prusa's Open Community License bars resale, and some Prusa forum members now call open source a
     liability (alongside its 2026 layoffs thread).
@@ -1033,7 +1042,7 @@ python scripts/edison_fetch.py
 
 ## Files
 
-- `edison/`: 9 Edison tasks, each with an answer, references and the full verbose task JSON.
+- `edison/`: 15 Edison tasks, each with an answer, references and the full verbose task JSON, plus `SYNTHESIS.md`.
 - `gh-mining/`: the thread index, relevant and coded threads, and the commercialization digest. The raw
   dump is re-creatable with `scripts/gh_dump.py`.
 - `companies/`: 179 case JSON files in groups A–J (no H), a summary per group, `companies_master.csv`, `events.csv`, `CALIBRATION.md` and `VERIFICATION_PASS2.md`.
