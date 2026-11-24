@@ -20,8 +20,8 @@ UTC−7).
   [`stir_trace.json`](run/stir_trace.json)). Deck frames were taken every 2 s alongside by
   [`deck_snaps.py`](deck_snaps.py), as on 11-19.
 - **Code:** byu-vcl `87e97d5`, and CubOS `496819c` + the four earlier patches +
-  [`stirrer-approach-1`](../../patches/stirrer-approach-1.patch). The Uno has the same stirrer
-  firmware as on 11-05.
+  [`stirrer-approach-1`](../../patches/stirrer-approach-1.patch). The Uno's stirrer firmware
+  (`30`/`31`) answered as on 11-19.
 
 ## Before anything moved
 
@@ -44,9 +44,9 @@ UTC−7).
 ## The runs
 
 The firmware reports `rpm` as 30 × the Hall falling edges in the last 2 s, so one edge in a window
-reads as 30 rpm. When a 2 s window has no edge, it pauses the fan 0.75 s and kicks it at full
-power for 0.5 s. After five such windows in a row it stops the fan and sets `stalled`, about 12 s
-after the start.
+reads as 30 rpm. It starts every run with a 0.5 s kick at full power, then runs at duty 0.30. When
+a 2 s window has no edge, it pauses the fan 0.75 s and kicks it again. If the window after five
+such kicks is still empty, about 12 s after the start, it stops the fan and sets `stalled`.
 
 | # | `30` sent | how | rpm, s | near the module (deck camera) | Hall `rpm` | ended |
 |---:|---|---|---|---|---|---|
@@ -55,7 +55,7 @@ after the start.
 | 3 | 23:11:06.61 | Uno | 600, 15 | nobody | **0** | stall, 12.1 s |
 | 4 | 23:11:25.84 | Uno | 600, 15 | nobody | **0** | stall, 12.1 s |
 | 5 | 23:11:45.07 | Uno | 600, 15 | nobody | **0** | stall, 12.2 s |
-| 6 | 23:12:04.32 | Uno | 300, 20 | someone moves the second holder (23:12:00), then **lifts vial 1 out** (~23:12:11 to ~23:12:22) and puts a finger in the empty collar twice | one edge in the window ending 12.1 s, else 0 | its timer |
+| 6 | 23:12:04.32 | Uno | 300, 20 | someone moves the second holder (23:12:00), then **lifts vial 1 out** (~23:12:11 to ~23:12:22) and puts a finger in the empty collar twice | one edge in the 2 s up to 23:12:16.5, else 0 | its timer |
 | 7 | 23:12:28.61 | Uno | 900, 20 | vial 1 back in; fingers by vial 1, probably under the clear deck | first edges by 4.0 s; 180 → 870 rpm at duty 0.68 | its timer |
 | 8 | 23:12:52.90 | Uno | 1200, 20 | the same | 330 rpm by 2.0 s; 990 at duty 0.82, then 1080 as it stopped | its timer |
 | 9 | 23:18:56.04 | **CubOS** `stir` | 600, 20 | nobody at the start; fingers by vial 1 at 23:19:08, seen through the clear deck or reflected in it | 150 rpm by 2.0 s; **600–630 from 14 s, at duty 0.54–0.55** | its timer |
@@ -77,7 +77,7 @@ stood at the front of the machine; their reflection is in the deck. No hand was 
 **CubOS:** 5/5 steps, rc 0, 70.5 s. The stage 1 checks and all four gates passed, with no alarms
 and no USB kernel lines. Teardown sent `30,0`. As on 11-19, the CubOS side worked as designed.
 
-**Kernel:** no USB or over-current lines during any of the runs.
+**Kernel:** no USB or over-current lines from 23:05 to 23:36, so none during any of the runs.
 
 ## What it says
 
@@ -88,7 +88,7 @@ and no USB kernel lines. Teardown sent `30,0`. As on 11-19, the CubOS side worke
    on the 4.6 mm spacer.
 2. **Even with vial 1 out, it barely moved.** From about 23:12:11 to 23:12:22, the vial was out
    of the collar during three or four kicks, and the Uno counted one edge. On 11-04, with the
-   compact holder and no vial, the same fan started on the first kick every time
+   compact holder and no vial, the same fan started on the first kick at both 300 and 1200 rpm
    ([`stirrer_spin_20261104`](../stirrer_spin_20261104/README.md)). So something besides the
    bar seems to be holding the drive. The vial was only out for about 11 s, with fingers in the
    collar, so this needs repeating: see the checks below.
@@ -110,16 +110,18 @@ and no USB kernel lines. Teardown sent `30,0`. As on 11-19, the CubOS side worke
 1. **With vial 1 out, turn the drive by hand from below.** It should spin freely and coast to a
    stop. If it catches or stops dead, something rubs. It could be the magnet carrier on the
    frame's Ø20.6 bore or on the deck's underside (drawn with a 1.1 mm gap), or the fan's blades
-   on its housing. The housing twists if the two fan screws, on one diagonal, are tight and
+   on its housing. The housing can twist if the two fan screws, on one diagonal, are tight and
    the two loose 0.5 mm washers aren't under the other two corners.
 2. **Are any screws near the magnets steel?** The two clamp screws and the two fan screws are
    20–23 mm from the axis. [BOM item 12](../../../hardware/vial-stirrer-cubxl/BOM.md) asks for
    stainless or brass. Magnets near steel give a detent that the fan has to break from rest.
 3. **Then a hands-off stir with vial 1 out** (about a minute). If it starts on the first kick
    and holds 300–600 rpm at about duty 0.3, as on 11-04, the drive is free and the bar's pull is
-   what is left. If it doesn't, the cause is in the drive itself.
+   what is left. If it doesn't, the cause is in the drive itself. This was offered on the PR from
+   23:25 to 23:36, but vial 1 stayed in the collar, so it wasn't run.
 
-**On the firmware side, two changes would help this module, whatever the cause:**
+**On the firmware side, two changes would make starts more robust.** Neither frees a drive that
+full-power kicks can't turn, as in 1–5 and 12–14.
 
 - **A higher start duty.** Start at about 0.45 instead of 0.30, or use a longer kick (1 s
   instead of 0.5 s).
@@ -129,7 +131,8 @@ and no USB kernel lines. Teardown sent `30,0`. As on 11-19, the CubOS side worke
   the duty to 0.26 and the fan stopped. Starting from the measured speed, or skipping the reset
   while edges are still coming in, avoids that.
 
-Neither change is made here; both are in `cubos/firmware/panda-arduino-stirrer.patch`.
+Neither is made here. Both would go in `cubos/firmware/panda-arduino-stirrer.patch`
+(`STIR_DC_START`, `STIR_KICK_MS` and `setStirrer()`).
 
 ## The CubOS files are not updated for the under-deck module
 
@@ -147,7 +150,7 @@ on the deck but the 17 mm collar. **Teach vial 1 again before any protocol moves
 - New in `~/cubxl_runs/`: `stir_under_deck_20261124/` (the copies of `stir_trial.py` and
   `deck_snaps.py`, the logs, a camera 1 still, and 259 deck frames in `frames_ud/`,
   `frames_cubos/` and `frames_rest600/`); `stir_only_check_20261124/` and its `.console`.
-- `~/cubxl_runs/HOLD` was set at 23:09:02 and removed at the end.
+- `~/cubxl_runs/HOLD` was set at 23:09:02 and removed at 23:36:10.
 - Nothing else. `~/CubOS` was not touched.
 
 `*.log` files are committed as `*.log.txt`, because the repo ignores `*.log`.
