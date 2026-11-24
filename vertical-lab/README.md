@@ -9,6 +9,157 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Round 15: everything brought together, one lab in every clip, re-rendered at 720p (2026-11-23)
+
+Sterling on #318 (2026-11-23): "pull in the latest results from all the other relevant PRs (use gh api to retrieve
+latest comments as well) and re-render everything in a self-consistent and cohesive way. Fix collisions, nonsensical
+parts, etc. You might have to render multiple times because of that. In a final pass, render at a higher res (max fps
+for 720p) and upload to YouTube (notify subscribers this time)."
+
+**The video:** [The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 15)](https://www.youtube.com/watch?v=79FL6mTFSsI), **public, subscribers notified**, 1:28:55, 67 chapters, 1280 x 720 at 30 fps, narrated (75 lines, 13.6 min, Kokoro). `out/longform.json` lists every part and its source; round 13's unlisted video ([ySiuvP9C190](https://www.youtube.com/watch?v=ySiuvP9C190)) and round 12's public one ([G6_1FtXHmKI](https://www.youtube.com/watch?v=G6_1FtXHmKI)) are superseded.
+
+### What was pulled in
+
+Merged into this branch, with each PR's latest comments read first (`gh api`):
+
+| PR | What it adds | In the video |
+| --- | --- | --- |
+| #379 | Class D extinguishers (Amerex B570, 811 bracket, 680R, Super D pails) at every powder station and on every MiR250; the building's ABC units, eyewash/showers, O2 monitors | every lab scene; a *Safety* chapter |
+| #377 | colour coding: blue for Al, orange for Cu, everything else by standard; a priced BoM | a still in the stations chapter |
+| #376 | equipment names: stones for stations, mountains for the Shuttles (`timp`, `nebo`) | a still in the stations chapter |
+| #374 | three cameras on each MiR250: a 1.8 m mast and two end posts | on every MiR250 in every clip; its clip in services |
+| #373 | machining the cups and plugs: a Haas ST-10 cell, IPA wash, vacuum dryer, a SimPy model | its clip and the simulation in chapter 1 |
+| #372 | the CubXL's pipettes: a P300 on its own lift beside the P20; evaporation and sulfide loss | the CubXL clip, a still |
+| #371 | waste streams, BYU's pickups, a waste station | the station under the fume hood; stills |
+| #370 | security cameras instead of the Pi units (research) | a still in services |
+| #369 | floor cleaning: a third MiR250 with an explosion-proof vacuum | unit 3 on its own charger in every lab scene; its clips |
+
+Not merged: #320, #321, #328 and #332 are 400-800 commits behind this branch, and the long-form already shows their
+figures at pinned commits; #331 is vendor documents; #329 the org GIF. **powder-doser #185** has moved from the v5
+carousel these clips use (353dae7) to v10 (c72c5bc, 2026-11-19: the station inside the loop, the beaker's rim 18 mm
+under the exit; powder-doser keeps v7 as its main version). Its own CAD render of v10's drop is in chapter 1
+(`out/mp4/ext/`, credited); re-modelling chapter 1's station on v10 is open.
+
+### One lab in every clip
+
+- **Every whole-lab clip builds on `setup_lab.build`.** Chapter 1 did not: it was still staged in round 2's
+  one-Shuttle lab with trays A-C (`animate.Lab`). It now stands in the shared lab like chapters 2-7, with unit 0
+  docked where round 2's was, so its poses at tray B hold ([`notes/alloy_charge.md`](notes/alloy_charge.md)).
+- **On the floor:** the waste station on the ducted fume hood's base (#371) and floor-cleaning unit 3 parked on a
+  third charger (#369), each behind a flag (`VLAB_WASTE`, `VLAB_UNIT3`); the safety PR's Class D units, ordinary
+  extinguishers, eyewash/showers and O2 monitors (#379). The rePowder's dock now reads the sieving cell's target post:
+  its own stood where MiR250 1 parks for the latch since round 14 ([`notes/lab_r15.md`](notes/lab_r15.md)).
+- **Not on the floor plan yet:** the ICP-MS station (round 14's spot at the south row's east end is the Meltio cell's
+  clear strip and the wire EDM's only pivot spot) and the cups' machining cell (its spot is unit 3's charger bay).
+  Their clips show them on their own, and the cards say so; `notes/lab_r15.md` has a proposal for each.
+- **On every MiR250:** its Class D unit and #364's three cameras. Chapters 2 and 6 had opted out of the cameras; both
+  are re-planned with them aboard ([`notes/alloy_atomize.md`](notes/alloy_atomize.md),
+  [`notes/alloy_prep.md`](notes/alloy_prep.md)), and so are the moves in chapter 1, the turnaround clips and the
+  ICP-MS clip that touched them.
+- **Tray A without concentrated acid** (Sterling, 2026-11-20: "it would be very risky to try to put high-hazard
+  chemicals on a tray"): the OT-2 makes only the CubXL's sulfide stock; the CubXL's 20 µL of 1 M HNO3 per tube, from
+  a capped vial, is the only acid on the tray; the ICP-MS station takes the CubXL's own rack of 0.5 mL tubes and
+  dilutes them in its hood ([`notes/cubxl_corrosion.md`](notes/cubxl_corrosion.md), [`notes/icpms.md`](notes/icpms.md)).
+- **The turnaround's MiR250s off the rePowder's vacuum pump:** MiR250 2 stood on 215 x 215 mm of the pump for both
+  crucible clips, and the container clip parked one unit's corner in it and the other's end over the base rail
+  ([`notes/atom_crucible.md`](notes/atom_crucible.md)). The floor's ground plates follow the clips' parking spots.
+- **What the clips say:** a sweep of every caption, label, title and card against the lab as it is now. Stale text
+  was fixed in 19 files: the room above a tray (856.5 mm, not 727.5), the bay's two ceiling cameras, the stream
+  camera's real pan and tilt limits, chapter 1's 172.3 g run carried into chapters 2 and 3 and the scale-up, six
+  bars in chapter 5, Al-10Si in chapter 4's XRD and XRF, the 1,506-jar store, powered trays in the services clips,
+  the fume hood no longer sending ICP-MS out, UR12e and the in-house ICP-MS in the upkeep, security-camera and waste
+  figures. The turnaround clips no longer show module names, and their step counters run in order. The coupling's
+  and the services clips' letting-go order now agree (contactor, then valves).
+- **Dropped:** the vacuum press's separate close-up (it set the plug at the press, drew one powder layer and no
+  cleaning; chapter 1 shows the press's whole cycle).
+
+### The final pass: 1280 x 720, drawn at up to 30 fps
+
+- **1280 x 720, encoded at 30 fps.** Each clip is drawn at:
+  - **30 fps:** the 13 instrument clips, the OT-2 and CubXL clips, the coupling close-up, the route diagrams, and
+    the two fabrication clips whose captions changed (the SnowPod, the Meltio M450);
+  - **20 fps:** the BN clip; **15 fps:** the other seven turnaround clips, all seven chapters, the set-up movie, the
+    9:22 clip, the ICP-MS station, the machining cell, the maintenance clip and the finale.
+- **Why not 30 for the chapters:** a whole-lab frame at 720p costs about 0.5-0.7 CPU-s with its inline audit, and
+  only two whole-lab scenes fit in the runner's 16 GB at once (the set-up movie peaked at 6.7 GB, the 9:22 clip at
+  7.7 GB; the watchdog stopped one render that pushed memory to 547 MB). At 30 fps the 3-D chapters alone would have
+  needed about seven hours of the 4-core runner. `render_r15.py` queued everything longest-first at `runner_guard`'s
+  new `--low` priority, so the helpers' fix audits always went first.
+- **Kept from earlier renders** (no CPU left for them beside the whole-lab renders), scaled to 720p:
+  - the four services clips (round 14 A's 1080p at 12 fps);
+  - the safety clip (#379's 1080p at 15 fps), the base-camera clip (#374's 1080p at 10 fps), and the floor-cleaning
+    clip (#369's 720p at 10 fps);
+  - the scale-up (round 12's 720p at 6 fps);
+  - seven of the nine fabrication clips (round 13's 720p at 15 fps).
+
+  These predate this round's floor (unit 3, the waste station, the MiR250s' cameras and extinguishers) and the
+  caption fixes in them.
+
+### Collisions, each clip's own audit
+
+Every clip drawn this round checked its own frames as it rendered (round 11's strict rules: an arm, its gripper or
+what it holds may touch where it takes or sets a part only up to 1.5 mm deep; everything else that moves is checked
+too), at the rate it is drawn. Four clips were audited by their helpers on the final code instead (chapter 6 at 10 fps,
+the crucible and container clips at 10, the ICP-MS at 15), then drawn without a second audit. Frames with something
+in collision, of the frames checked:
+
+| Clip | fps | Checked | Arm | Anything moving | What is left |
+| --- | --- | --- | --- | --- | --- |
+| Ch. 1, the charge (restaged) | 15 | 3,435 | 4 | 4 | a fingertip 12 mm into the left base camera's case, setting a cup in the carrier |
+| Ch. 2, atomize | 15 | 3,391 | 76 | 76 | the held cup against its own cutaway copy (the same cup drawn whole and halved), not a contact |
+| Ch. 3, sieve and print | 15 | 3,410 | 0 | 0 | rendered twice: the first pass had 27 frames of the forearm in its own MiR250's Class D hose while taking the container; the moves were re-picked with `alloy_atomize.path_branch` |
+| Ch. 4, the powder checked | 15 | 2,625 | 0 | 0 | |
+| Ch. 5, depowder, cut, test | 15 | 5,249 | 2 | 3 | the plate 3 mm into the depowdering rotor; a bar 6 mm into its trough |
+| Ch. 6, sample prep | 15 | 3,565 | 0 | 2 | the work itself (the holder into the alumina) |
+| Ch. 7, characterize | 15 | 3,198 | 0 | 0 | |
+| The set-up movie | 15 | 1,418 | 0 | 60 | rigging: floor machines set down over their drops, the MiR onto its charger, and the UR control box going into its cabinet through the Class D unit now hung on that side (new) |
+| The 9:22 clip | 15 | 1,440 | 0 | 0 | |
+| ICP-MS station | 15 | 1,332 | 0 | 0 | |
+| Machining cell | 15 | 2,169 | 0 | 0 | |
+| Maintenance | 15 | 1,513 | 0 | 0 | |
+| The eight turnaround clips | 15-20 | 10-15 fps each | 0 | 0 | |
+| CubXL / OT-2 | 30 | 2,874 / 702 | 0 | 28 / 3 | a nozzle seated in a tip at pick-up (tips drawn solid) |
+| Coupling close-up | 30 | 1,455 | 0 | 0 | |
+| Instrument clips | 30 | | 0 | 0-108 | their own effects and work: airflow arrows, the powder stream, the DED's melt pool, the HIP drawn through a tray |
+
+`out/collisions/round15_table.png` (the checks chapter's last still) and `out/collisions/round15_summary.json` have
+every clip.
+
+### Still open after round 15
+
+- **Re-render on this round's lab** the clips kept from earlier renders: the four services clips, the safety,
+  base-camera, floor-cleaning and scale-up clips, and seven of the nine fabrication clips:
+  `python3 render_r15.py queue svc_services svc_hookups svc_baycam svc_cabling safety basecams_vlm basecams_atom
+  floorclean scaleup f_metalone f_mprint f_form4 f_form_wash f_form_cure f_stencil f_lumenpnp`, then
+  `VIZ3D_HD=1 VIZ3D_HD_DIR=r15 python3 base_cameras.py join` and `python3 render_r15.py fabjoin`. Whole-lab scenes
+  need 6-7.7 GB each, so run at most two at once.
+- **The floor plan:** a place for the ICP-MS station and one for the machining cell (`notes/lab_r15.md` proposes the
+  north row's west end with a 200 mm setback, or a room of its own, for the ICP-MS).
+- **The doser:** chapter 1's station is still powder-doser's v5 with our dose post and draft shield; v10 (#185) puts
+  the beaker 18 mm under the exit with no post.
+- **Chapter 2's container** still comes off by its valve's lever, a stand-in for the turnaround's fork and clamp.
+- **The set-up movie:** the UR control box slides into its cabinet through the Class D unit; #379 moved the cabinet's
+  door to the front end, but the movie still slides the box in from the side.
+- **The 9:22 clip** still has the CubXL's P20 make ten 20 µL transfers where #372's P300 would make one.
+- **Drawing faults found and not fixed:** the 0.5 mL tubes are drawn almost closed at the rim (`r9_cubxl.py`,
+  `instruments_lab.py`); `maintenance_access.png` still says UR10e (`maintenance.py` no longer runs against
+  `services.py`'s constants).
+- **YouTube:** rounds 7-13's long-forms are superseded; round 12's is public. A `@claude-youtube` run can remove or
+  unlist them.
+
+### Running it (round 15)
+
+```bash
+python3 runner_guard.py watch &                          # memory log and watchdog
+python3 render_r15.py list                               # every 3-D clip of the long-form: script, fps, memory
+python3 render_r15.py queue ch1 ch2 ...                  # each through runner_guard --low (helpers' audits go first)
+python3 render_r15.py check                              # out/r15/: frames, fps, each clip's audit
+python3 render_r15.py collect; python3 render_r15.py fabjoin
+VIZ3D_HD=1 VIZ3D_HD_DIR=r15 python3 base_cameras.py join
+python3 longform.py audit; python3 longform.py           # 1280 x 720 at 30 fps from out/r15/ (the defaults)
+python3 longform.py upload                               # public, subscribers notified (LONGFORM_NOTIFY)
+```
+
 ## Safety assets: Class D extinguishers at the powder stations and on every MiR250 (2026-11-20)
 
 Sterling, PR #318: "create a new PR focused on assets for safety. Class D fire extinguishers at each station, etc.

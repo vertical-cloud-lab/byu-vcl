@@ -895,6 +895,16 @@
     "uploaded": "2026-11-20T18:13:39Z",
     "title": "The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 13)",
     "privacy": "unlisted"
+   },
+   {
+    "id": "79FL6mTFSsI",
+    "sha256": "1d27440ab3d85321e9f9656083608eb4443284336aaf616bcf8893c4c128dba9",
+    "bytes": 706548556,
+    "commit": "4f9ec11",
+    "uploaded": "2026-11-24T01:38:32Z",
+    "title": "The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 15)",
+    "privacy": "public",
+    "notified_subscribers": true
    }
   ],
   "vlm_assembly.mp4": [
