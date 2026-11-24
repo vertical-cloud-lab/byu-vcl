@@ -179,7 +179,7 @@ dip in 2024–25 is probably indexing lag in OA status.
 ![Where the money went](figures/values.png)
 
 **Openness and outcomes across the 121 case files.** This is a convenience sample of notable
-organizations, so survivorship bias applies. Source: [`data/openness_outcomes_by_open0.csv`](data/).
+organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.py` at the 23:00 UTC snapshot. [`data/openness_outcomes_by_open0.csv`](data/openness_outcomes_by_open0.csv) now holds the recomputed values for all 143 organizations in A–G, which differ slightly.
 
 | Openness at founding | n | Median age (years) | Later made a closing move | Later made an opening move | Acquired or taken private | Median latest value |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -779,10 +779,10 @@ DAL `e7a01b3` and #318 `75c0ed0`) covers six things:
    - The `ac-dev-lab` digest shows that missing APIs and documentation, not licence fees, are the real
      cost. Budget for driver work and ask vendors for API rights before buying.
 4. **Make the IP decision on data, not code.**
-   - Companies in the case files that closed code after an ownership change lost community without
-     gaining revenue.
-   - The AI-for-science startups protect *data and compositions*, not methods. DAL's plan of an open
-     platform plus a selective review of compositions fits that pattern.
+   - In the case files, closing moves after an ownership change set off forks (Rocky/Alma, OpenVox,
+     freenginx). No revenue collapse was reported, but no revenue gain from closing was shown either.
+   - The AI-for-science startups protect *data and compositions*, not methods. DAL's drafts already keep the
+     platform open. What remains is to settle the composition question (see above).
    - Publishing negative and failed runs is a cheap way to add open-science value.
 5. **Don't count on kit sales.**
    - The SDL-demo kit's $2.24 margin and LulzBot's collapse both point to services rather than units:
