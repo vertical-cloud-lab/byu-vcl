@@ -1,0 +1,144 @@
+group,slug,orig_initial,orig_current,rescored_initial,rescored_current,note
+A,cloudera,2,2,2,2,"ASF projects plus proprietary management software; 2019-21 change gated binaries behind subscription, not the licence, so still open core."
+A,cockroach-labs,3,1,3,1,Whole product Apache-2.0 at launch; now single proprietary licence with source still visible (source-available).
+A,confluent,3,2,3,2,Platform components and Kafka all Apache-2.0 at founding; now Apache Kafka core plus Confluent Community License and proprietary cloud.
+A,couchbase,2,1,2,1,Apache Community Edition plus commercial Enterprise Edition from start; BSL 1.1 since 2021.
+A,docker,3,2,3,2,Docker/Moby released fully Apache-2.0; now open engine with paid proprietary Desktop/Hub subscriptions.
+A,elastic,3,2,3,2,Fully Apache-2.0 at start; SSPL/ELv2 2021 then AGPL option 2024 restores OSI core with proprietary paid features.
+A,grafana-labs,3,2,3,2,Apache-2.0 at start; AGPL core now with Grafana Cloud and enterprise features as the business.
+A,hashicorp,2,1,2,1,MPL tools with proprietary enterprise editions; BSL 1.1 since 2023.
+A,influxdata,3,2,3,2,"InfluxDB fully MIT at first; clustering closed 2016, InfluxDB 3 Core open with proprietary Enterprise."
+A,kong,2,2,2,2,Apache-2.0 gateway with paid Enterprise/Konnect throughout; no relicensing.
+A,lightbend,3,1,3,1,Akka/Play/Scala all OSI-licensed with subscription support at start; Akka on BSL 1.1 since 2022.
+A,mariadb,3,2,3,2,"GPL server with services revenue at start; company now sells BSL MaxScale, enterprise tooling and cloud around the GPL server."
+A,mongodb,3,1,3,1,AGPL server plus Apache drivers at release; SSPL since 2018.
+A,mysql-ab-sun,3,2,3,2,Whole product GPL with dual licensing and support; under Oracle the GPL Community edition sits beside proprietary Enterprise plugins.
+A,neo4j,3,2,3,2,"Community GPLv3 and Enterprise AGPL dual-licensed; Enterprise closed in 2018, Community still GPLv3."
+A,redis,2,2,2,2,BSD core with proprietary Redis Enterprise from the start; AGPL option in Redis 8 restores OSI core beside proprietary cloud.
+A,sentry,3,1,3,1,"BSD-3 product with hosted SaaS revenue; BSL then FSL, both non-OSI."
+A,timescale,3,2,3,2,"Launched Apache-2.0 only; Timescale License added for community features, Apache core remains."
+B,airbyte,3,1,3,1,"Launched fully MIT; core platform ELv2 since 2021, connectors mixed MIT/ELv2."
+B,anaconda,2,2,2,2,"OSI tools (conda, Numba, Bokeh) with freeware distribution and proprietary enterprise tiers; ToS paywall restricts access, not licences."
+B,astronomer,2,2,2,2,"Airflow is ASF-governed, but Astronomer's business is a proprietary managed service around it: open core."
+B,automattic,3,3,3,3,"WordPress, WooCommerce, Jetpack GPL; money from hosting and services; foundation trademarks but founder-controlled governance, so not 4."
+B,canonical,3,3,3,3,Ubuntu fully OSI-licensed with support/Pro subscriptions; closed Snap Store backend is peripheral infrastructure.
+B,dagster-labs,2,2,2,2,Apache-2.0 Dagster with proprietary hosted Dagster+ as the business.
+B,databricks,2,2,2,2,"Spark/Delta/MLflow open and foundation-hosted, but revenue product is proprietary managed platform."
+B,dbt-labs,2,2,2,2,Apache-2.0 dbt Core with proprietary dbt Cloud; both engines Apache-2.0 in 2026.
+B,github,1,1,0,1,"Founded as proprietary SaaS; later open-sourced only peripheral tools (Electron, Atom, Linguist, CLI) while platform stays closed."
+B,gitlab,3,2,3,2,Fully MIT 2011-2013; CE MIT plus source-available proprietary EE and SaaS since.
+B,hugging-face,0,2,0,2,"Began as closed chatbot app; now OSI libraries and many open models, but proprietary Hub/compute SaaS is the business."
+B,mozilla-corporation,4,4,4,4,"MPL software developed in the open, owned by a non-profit foundation."
+B,mulesoft,2,1,2,1,"Open-source Mule CE plus paid EE; CE archived 2026, live product proprietary Anypoint with only legacy code public."
+B,nginx,3,2,3,2,"BSD nginx with support-only revenue until 2013; proprietary NGINX Plus tier since, server still BSD."
+B,pivotal-springsource,2,2,2,2,"Open-source Spring/Cloud Foundry monetized with commercial servers, distributions, support: open core throughout."
+B,posit,2,2,2,2,AGPL IDE and many OSI packages; revenue from proprietary Workbench/Connect/Package Manager.
+B,posthog,2,2,2,2,MIT core with proprietary ee/ directory and cloud; fully-MIT launch not verified.
+B,prefect,2,2,2,2,Apache-2.0 framework with proprietary Prefect Cloud as the business.
+B,puppet,3,2,3,2,"GPL tool sold with services at start; Apache core plus proprietary Enterprise, binaries now EULA-gated but source still Apache."
+B,red-hat,3,3,3,3,Fully GPL/OSI products sold as subscriptions; single-vendor governance; access narrowed without relicensing.
+B,supabase,3,3,3,3,Whole platform Apache-2.0 and self-hostable; revenue from managed hosting.
+B,suse,2,3,2,3,GPL distro with proprietary YaST differentiator until 2004; whole portfolio now OSI-licensed subscriptions.
+B,vercel,2,2,2,2,MIT Next.js and SDKs as funnel; proprietary hosting platform and v0 are the business.
+C,ai2,3,4,3,4,"Non-profit releasing OSI tools plus free but closed Semantic Scholar; OLMo now fully open weights, data, code: open science infrastructure."
+C,alibaba-qwen,1,2,1,2,First Qwen weights under custom licence; most open models now Apache-2.0 while flagship Max models stay proprietary.
+C,alphabet-google,3,2,2,2,"Open platforms (TensorFlow, Kubernetes, Android) beside proprietary money-making services; Gemma 4 Apache but Gemini closed, Android tightening."
+C,amazon-aws,1,2,0,1,"Proprietary managed services on others' open source; now Firecracker and foundation forks open, but AWS services and Nova closed."
+C,anthropic,0,1,0,1,Closed-weight models from start; only peripheral MCP and interpretability tools open.
+C,apple,0,1,0,1,"Closed hardware/software; only peripheral Darwin, Swift, WebKit, MLX open, OpenELM non-OSI."
+C,deepseek,1,3,1,3,"Early weights under custom DeepSeek model licence; from R1 weights and code MIT, money from hosted API."
+C,eleutherai,4,4,4,4,"Volunteer community then non-profit; Apache-licensed models, open datasets and tools throughout."
+C,google-deepmind-science,4,2,4,1,"AF2 code Apache, weights CC BY, CC-BY database with EMBL-EBI; AF3 weights non-commercial and Isomorphic models proprietary."
+C,ibm,0,2,0,2,Proprietary vendor originally; now Red Hat open subscriptions and Apache Granite beside BSL HashiCorp and proprietary software.
+C,meta,3,1,2,1,"Permissive React/PyTorch beside closed ad business; frameworks handed to foundations, but own models now non-OSI Llama or closed Muse."
+C,microsoft,0,2,0,2,"Proprietary platforms originally; now MIT .NET, VS Code, Phi beside proprietary cloud and Copilot backend."
+C,mistral-ai,3,2,3,2,First models Apache-2.0 only; now Apache Mistral 3/Small 4 beside proprietary premier models and API: open core.
+C,nvidia,0,1,0,1,"Closed CUDA and drivers; now open kernel modules and Nemotron weights under non-OSI licence, CUDA still closed."
+C,openai,3,1,3,1,"Non-profit pledging open papers and code; frontier closed since GPT-3, gpt-oss Apache weights peripheral to closed business."
+C,oracle,0,1,0,1,Proprietary database vendor; keeps inherited GPL MySQL/OpenJDK but money-makers proprietary and no open AI models.
+C,stability-ai,1,1,1,1,"OpenRAIL-M weights at launch, now Community License with paid tier above $1M revenue; both non-OSI."
+C,xai,1,1,1,1,"Frontier Grok closed; only lagged weights released, Apache Grok-1 then restrictive Grok 2 licence."
+D,adafruit,3,3,3,3,"CC BY-SA board design files, MIT software, hundreds of OSHWA certifications; company-governed, so not 4."
+D,arduino,3,3,3,3,"Reference designs CC BY-SA and GPL/LGPL software from start; designs still published, corporate governance, ToS tightening only on cloud."
+D,bambu-lab,1,1,1,1,Proprietary hardware and firmware; only open part is AGPL slicer inherited from PrusaSlicer.
+D,creality,0,2,0,2,"Unpublished GPL-violating firmware early; now GPL firmware and AGPL slicer, old Ender-3 open, newer hardware designs closed."
+D,formlabs,0,0,0,0,"Closed designs, firmware and PreForm; open-material modes are interfaces, not published designs or code."
+D,framework-computer,1,2,1,2,"Expansion-card interfaces only at launch; now open EC firmware and chassis CAD, mainboard PCB and UEFI closed."
+D,lulzbot-aleph-objects,3,3,3,3,"Free/libre designs and GPL firmware throughout, FSF RYF; corporate governance, so 3 not 4."
+D,makerbot,3,0,3,0,"RepRap-derived designs published on Thingiverse; since Replicator 2 hardware, firmware, software proprietary."
+D,open-compute-project,4,4,4,4,Open specifications and CAD under multi-company foundation governance from launch: open foundation.
+D,openbci,3,2,3,2,"OSHWA-certified boards, GPL headset, MIT GUI; newest Galea headset has no public designs, older models open."
+D,oxide-computer,2,2,2,2,MPL firmware and software stack published; board and rack designs proprietary.
+D,pine64,,2,2,2,"Community open software; schematic PDFs without open licence, no PCB layouts."
+D,prusa-research,3,2,3,2,"GPL i3 designs, GPL firmware, AGPL slicer; newest designs withheld or under non-commercial OCL, software still open."
+D,raspberry-pi,1,2,1,2,"Closed boards, SoC and firmware with only OS open at launch; graphics stack, Pico SDK, Hazard3 core opened, boards still closed."
+D,reprap,4,4,4,4,All designs GPL with community wiki governance: reference level-4 case.
+D,risc-v-international,4,4,4,4,CC BY royalty-free ISA specs governed by member-run nonprofit foundation since 2015.
+D,seeed-studio,3,3,2,2,Schematics and KiCad projects published but mostly without a licence; newest reCamera Pro withheld; fails 'open licence' test for 3.
+D,sifive,3,2,3,2,"First Freedom platforms released as Apache RTL; now proprietary licensed cores, older RTL archived but open."
+D,sofar-ocean-openrov,3,1,2,1,"OpenROV CAD published under non-commercial CC BY-NC-SA with open software; now closed products, only Bristlemouth interface firmware open."
+D,sparkfun,3,3,3,3,"Schematics and EAGLE files for in-house boards, no patents, ~264 OSHWA certifications; private company governance."
+D,system76,1,2,1,2,"Resold Ubuntu PCs with closed hardware/firmware; now open OS and firmware, a few OSHWA products, laptops closed."
+D,ultimaker,2,1,2,1,"First printers published only under non-commercial CC BY-NC; later printers closed, only LGPL Cura slicer open."
+E,atinary,0,0,0,0,"Proprietary SaaS optimizer, trademarked 'Self-Driving Labs'; no open releases."
+E,benchling,0,0,0,0,"Closed multi-tenant SaaS, free academic tier is gratis not open; only trivial MIT integration examples."
+E,chemify,0,0,0,0,"Company platform, engine and reactors proprietary; open academic Chemputer code belongs to the lab, not the company."
+E,chemspeed,0,0,0,0,"Closed hardware, firmware and control software; openness limited to integration partnerships."
+E,citrine-informatics,1,1,1,1,"Proprietary SaaS platform with peripheral Apache-2.0 SDK, GEMD data model and lolo library."
+E,cuspai,0,0,0,0,"Proprietary platform; no code, weights or datasets released."
+E,emerald-cloud-lab,0,1,0,1,"Closed facility, language and software at launch; SLL now released for research use under unnamed licence, rest proprietary."
+E,evolutionaryscale,1,2,1,2,"ESM3-open weights under non-commercial community licence at launch; ESM3-open and ESM C now MIT, largest model API-only."
+E,isomorphic-labs,0,1,0,1,"No releases at founding; AF3 code Apache but weights non-commercial, IsoDDE proprietary."
+E,kebotix,0,0,0,0,Proprietary platform and lab; nothing released.
+E,lila-sciences,0,0,0,0,"Proprietary instruments, models and data; preprints only."
+E,opentrons,3,2,3,2,"OT-One fabrication files, BOM and software Apache-2.0; OT-2/Flex hardware proprietary with Apache software and API."
+E,orbital-materials,2,2,2,2,"Orb potentials code and weights Apache-2.0; CurieOS platform, cooling hardware and licensed discovery proprietary."
+E,periodic-labs,0,0,0,0,"No code, weights or data released; closed proprietary-data model."
+E,radical-ai,1,1,1,1,"Proprietary lab, models and data; only peripheral TorchSim (MIT) and benchmarks open."
+E,recursion,0,1,0,1,"Proprietary platform and data at founding; later small, mostly non-commercial dataset and model releases around closed core."
+E,schrodinger,0,1,0,1,Proprietary licensed software since 1990; open PyMOL core added later is the only peripheral open asset.
+E,strateos,1,1,1,1,Proprietary cloud lab with BSD Autoprotocol library/standard as peripheral open SDK.
+F,ansys,0,0,0,0,Proprietary commercial simulation software throughout.
+F,apache-software-foundation,4,4,4,4,"Permissive Apache-licensed projects under volunteer, member-elected foundation governance."
+F,comsol,0,0,0,0,Proprietary EULA software throughout.
+F,doe-code,3,3,4,4,"Government registry built as open source with public metadata, overwhelmingly open releases: government open infrastructure."
+F,enthought,2,1,2,1,BSD libraries plus free/commercial Python distribution and consulting; now proprietary client AI services with peripheral open Tool Suite.
+F,gaussian,1,0,1,0,"Source distributed via academic QCPE exchange (non-OSI); since 1987 proprietary licences, source not public, competitors barred."
+F,globus,3,1,3,1,Grant-funded open-source Globus Toolkit; now closed hosted freemium service with only Apache SDK/clients open.
+F,hdf-group,3,3,4,4,"BSD-like HDF5 libraries stewarded by a non-profit as open science data infrastructure, services-funded."
+F,jubilee,3,3,3,3,"CC BY designs, OSHWA-certified, MIT software; led by one university lab without formal community governance."
+F,kitware,3,3,3,3,"BSD-licensed VTK/ParaView/CMake with services revenue; company-stewarded, not foundation-governed."
+F,lammps,1,3,1,4,Developers say LAMMPS 99 was no-cost but not open source; GPL since 2004 with multi-institution government-lab team: open science infrastructure.
+F,linux-foundation,4,4,4,4,Neutral foundation hosting OSI-licensed projects with their own governance.
+F,materials-project,4,4,4,4,CC BY data and open-source tools from DOE lab: government open data infrastructure; GNoME subset restricted.
+F,numfocus,4,4,4,4,Neutral non-profit fiscal sponsor for OSI-licensed scientific projects.
+F,openflexure,3,3,3,3,"CERN-OHL-S hardware, GPL software, CC BY-SA docs; university core team rather than community governance."
+F,openfoam,0,4,3,4,GPL release in 2004 by OpenCFD with services revenue; since 2011 non-profit OpenFOAM Foundation holds copyright of the .org line.
+F,project-jupyter,3,4,3,4,BSD researcher-led project at start; now council-governed with vendor-neutral Jupyter Foundation under Linux Foundation.
+F,pylabrobot,3,3,3,3,MIT throughout; community project with vendor supporters but no foundation or formal governance.
+F,quantum-espresso,3,4,4,4,GPL from inception as multi-group 'distribution'; copyright now held by multi-institution non-profit foundation.
+F,rcsb-pdb-wwpdb,4,4,4,4,"Government-founded open international archive; data free since start, CC0 since 2021."
+F,rdkit,3,3,3,3,"BSD since release; stewarded by lead developer and community, support via a services firm, no foundation."
+F,vasp,0,0,0,0,"Proprietary group licences; source confidential to licensees, never public."
+F,zenodo,4,4,4,4,CERN-operated public repository on open-source InvenioRDM with CC0 metadata: public open infrastructure.
+G,3d-systems,0,0,0,0,"Closed, patent-based hardware and software; enforced patents against entrants."
+G,aconity3d,0,0,0,0,Proprietary machines and control software; open parameter/data access is not published designs or OSI code.
+G,arxiv,4,4,4,4,"Free-to-read-and-submit preprint infrastructure, government lab origin, now independent non-profit with advisory councils."
+G,automata,0,0,0,0,Proprietary hardware and software; 'open' means API/SDK access with no licence.
+G,carbon,0,0,0,0,"Proprietary printers, software and patented resins."
+G,center-for-open-science,4,4,4,4,"Non-profit, Apache-2.0 OSF platform, free open science infrastructure; 2026 scope cuts do not change licence or governance."
+G,desktop-metal,0,0,0,0,"Proprietary printers, firmware, software and large patent portfolio; 'open platform' means settings only."
+G,digital-science-figshare,1,1,1,1,Closed Figshare platform hosting CC BY/CC0 content with documented API; Overleaf open core but rest proprietary SaaS.
+G,eos,0,0,0,0,"Closed designs, firmware, software and validated parameter sets; APIs are interfaces only."
+G,hamilton-company,0,0,0,0,"Proprietary instruments, firmware and software; open STAR driver built by outsiders."
+G,kardex,0,0,0,0,"Proprietary machines, controls and software; no open releases."
+G,markforged,0,0,0,0,"Proprietary printers, materials and cloud software; patent-based strategy."
+G,opencalphad,3,3,3,3,"Public GPL-3.0 (inferred) source; single-maintainer informal collaboration, no formal governance."
+G,ourresearch,4,4,4,4,"Non-profit with open-source code from start; CC0 OpenAlex data, MIT code, advisory board: open data infrastructure."
+G,papers-with-code,3,3,3,3,"CC BY-SA data dumps and Apache/MIT tooling, but closed site code under a single corporate owner; licence unchanged at shutdown."
+G,pycalphad,3,3,3,3,"Whole library MIT, academic development team, no foundation or formal governance."
+G,stratasys,0,0,0,0,"Proprietary printers, firmware, software and patents; 'Open' tier is a paid materials licence."
+G,tecan,0,0,0,0,"Proprietary instruments, firmware and control software; openness only via third-party drivers."
+G,thermo-calc,0,0,0,0,"Proprietary software, databases and SDKs; TDB format is an interface, not open code."
+G,universal-robots-mir,0,1,0,1,"Closed arm, controller and software at launch; now a peripheral BSD-3 ROS 2 driver."
+G,velo3d,0,0,0,0,"Proprietary printers, software, process and patents; no open designs or parameters."

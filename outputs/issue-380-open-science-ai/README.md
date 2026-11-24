@@ -788,6 +788,15 @@ with 125 quotes, each checked by script against the captured text. The index is
     closed.
   - The video was rendered before this pass, but none of its narrated numbers changed.
 - Headline 2025–26 claims were checked against independent sources ([`VERIFICATION.md`](VERIFICATION.md)).
+- **Openness-score reliability** ([`companies/CALIBRATION.md`](companies/CALIBRATION.md)). An independent re-scoring
+  of all 143 files from their evidence fields agreed closely with the originals: 93–96% exact,
+  quadratic-weighted κ 0.97–0.99.
+  - The check is leaky. 118 of the 143 files restate their score in their own notes, so this overstates
+    reliability.
+  - Systematic tilts: group C scored Big Tech higher, group F was stricter about level 4, and group D was
+    lenient on hardware designs with no licence or a non-commercial one.
+  - Only one score differed by 2 or more: OpenFOAM's initial level, which depends on whether "initial"
+    means the code before 2004.
 - Epoch's database is curated, not exhaustive, and the 2026 rows are incomplete.
 - OpenAlex's "is OA" includes green and bronze access, and ROR institution types are imperfect.
   National labs mostly appear as "facility".
