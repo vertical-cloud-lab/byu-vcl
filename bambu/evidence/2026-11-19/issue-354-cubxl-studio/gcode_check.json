@@ -1,0 +1,64 @@
+{
+ "slicer": "BambuStudio 02.08.02.61 GUI",
+ "header": {
+  "model printing time": "4h 16m 20s; total estimated time: 4h 21m 38s",
+  "total estimated time": "4h 21m 38s",
+  "total layer number": "175",
+  "total filament weight [g]": "134.68",
+  "total filament length [mm]": "44438.64"
+ },
+ "config": {
+  "print_settings_id": "0.20mm Standard @BBL H2D",
+  "printer_settings_id": "Bambu Lab H2D 0.4 nozzle",
+  "filament_settings_id": "\"Bambu PLA Basic @BBL H2D\"",
+  "layer_height": "0.2",
+  "initial_layer_print_height": "0.2",
+  "wall_loops": "3",
+  "sparse_infill_density": "20%",
+  "sparse_infill_pattern": "grid",
+  "brim_type": "no_brim",
+  "curr_bed_type": "Textured PEI Plate",
+  "elefant_foot_compensation": "0.15",
+  "enable_support": "0",
+  "support_type": "tree(auto)",
+  "nozzle_diameter": "0.4,0.4",
+  "nozzle_volume_type": "Standard,TPU High Flow",
+  "filament_map": "1",
+  "physical_extruder_map": "1,0",
+  "enable_prime_tower": "0",
+  "timelapse_type": "0"
+ },
+ "feature_counts": {
+  "Custom": 2,
+  "Support": 85,
+  "Inner wall": 1493,
+  "Outer wall": 1576,
+  "Gap infill": 3629,
+  "Bottom surface": 10,
+  "Internal solid infill": 1195,
+  "Overhang wall": 27,
+  "Sparse infill": 2575,
+  "Floating vertical shell": 143,
+  "Bridge": 30,
+  "Top surface": 66
+ },
+ "tool_commands": [
+  "T1001",
+  "T0",
+  "T0",
+  "T65535",
+  "T65279"
+ ],
+ "hotend_heat_commands_with_T": [
+  "M104 S220 T1",
+  "M104 S0 T0",
+  "M104 S0 T1"
+ ],
+ "objects": [
+  "vial_rack_9x20mL_v2.stl x1",
+  "deck_clip_key_v2.stl x4",
+  "magnet_bar_v2_on_side.stl x1 (tree supports, threshold 35 deg)"
+ ],
+ "nozzle_check": "Studio: left 0.4 Standard, right 0.6 TPU High Flow (Switch diameter prompt). Custom filament grouping: filament 1 on Left. physical_extruder_map 1,0 maps Studio's left (logical 0) to physical extruder 1; start G-code heats only T1 (M104 S220 T1) and prints with filament T0 only.",
+ "first_try": "0.12mm Fine @BBL H2D, same settings: 11h28m, 138.33 g, 291 layers; rejected for time"
+}

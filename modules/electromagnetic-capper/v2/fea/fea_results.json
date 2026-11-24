@@ -1,0 +1,45 @@
+{
+ "E_MPa": 2600.0,
+ "nu": 0.35,
+ "key": {
+  "RF": [
+   -5.545243,
+   -2.928522e-14,
+   1.484854e-13
+  ],
+  "vm_max": 233.15123631589435,
+  "vm_max_at": [
+   5.75,
+   3.0,
+   -10.57
+  ],
+  "vm_p995": 19.51963360073886,
+  "e1_max": 0.07529388597219458,
+  "e1_max_at": [
+   5.75,
+   3.71,
+   -10.45
+  ],
+  "e1_p995": 0.0052288838503225426,
+  "s1_max": 248.6034181762256,
+  "s1_max_at": [
+   5.75,
+   3.71,
+   -10.45
+  ],
+  "u_max": 1.0725612122739197,
+  "n_nodes": 189824,
+  "n_elems": 127744,
+  "n_fixed": 94391,
+  "n_load": 15,
+  "deflection_mm": 0.7500000000000003
+ },
+ "key_v2_1_latch_t1.3_deflect_0.75mm": {
+  "F_per_arm_N": 5.55,
+  "root_peak_strain_pct": 1.35,
+  "root_peak_stress_MPa": 39.5,
+  "arm_tip_inward_mm": 1.07,
+  "min_gap_arm_top_to_chamfer_deflected_mm": 0.535
+ },
+ "key_v2_as_printed_note": "v2 key (printed on the H2D 2026-11-19): arm tops at z=-7.75, 0.45 mm (horizontal) below the 45-degree chamfer. FEA has no contact; with the arm tip moving 1.07 mm inward the arm top would overlap the chamfer by ~0.6 mm, so those arms jam after 0.45 mm of travel and must twist to pass a 10.0 mm slot. Fixed in v2_1 (arm_top -8.9)."
+}
