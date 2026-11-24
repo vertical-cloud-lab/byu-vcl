@@ -7,6 +7,8 @@ plate that chapter 4 ([`alloy_workflow.py`](../alloy_workflow.py)) takes out.
 [tipper](../out/alloy_print_tipper.png). 303.5 s at 1280 × 720 and 6 fps (round 11, below); the GIF is 512 × 288 at
 1.5 fps.
 
+**Round 15 (2026-11-24):** the final pass's render audited 27 frames (15 fps) of the forearm in the MiR's Class D unit (the safety PR's, on the cabinet's -y side, its stowed hose 340 mm over the cabinet top) as the arm went in to the container's handle and back down to its cup in step 2; both sequences now take the IK branch that follows them clear (`alloy_atomize.path_branch`): 0 arm and 0 movers frames up to the container's return in an audit stopped there (6 fps); the re-render's own audit checks the whole chapter.
+
 ### Round 11 (2026-11-14): the stricter audit
 
 Sterling, on the round-10 long-form: "There are probably other collisions and interferences that I didn't catch from

@@ -721,8 +721,14 @@ def movie():
     cap = "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about " \
           "26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes " \
           "through in about four passes; one is shown."
-    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=level_y(g_hold - (0, 140, -40), 90.0)), rb.grip_to(0.0)),
-            hold=0.05, cam_to=CAM_SV)
+    # round 15: the MiR250 now carries the safety PR's Class D unit on its -y side (props.mir250), its stowed hose 340 mm
+    # over the cabinet top, under the handle's side: in the IK branch nearest the stack the forearm went through it as
+    # the gripper went in to the handle and down to the cup again (27 frames of the final render, 15 fps). The arm now
+    # takes the branch that follows each sequence clear (alloy_atomize.path_branch, as the turnaround's)
+    from alloy_atomize import path_branch
+    q_take = path_branch(rb, sc, [level_y(g_hold - (0, 140, -40), 90.0), level_y(g_hold, 90.0),
+                                  level_y(g_hold + (0, 0, 120), 90.0)], 0.0)
+    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(q1=q_take), rb.grip_to(0.0)), hold=0.05, cam_to=CAM_SV)
     sc.step(f"2/{n}", cap, 0.9, rb.line_to(level_y(g_hold, 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_HANDLE), hold=0.05)
     rb.grasp("pcont")
@@ -765,7 +771,9 @@ def movie():
     status(sc, Arm="the container back on the MiR", Powder="on the No. 60")
     sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(p_up, 90.0 + th1)), hold=0.02)
     sc.step(f"2/{n}", cap, 0.6, rb.line_to(level_y(p_up, 90.0)), hold=0.05)
-    sc.step(f"2/{n}", cap, 1.6, rb.joint_to(Tw=level_y(g_back + (0, 0, 120), 90.0)), hold=0.05)
+    q_back = path_branch(rb, sc, [level_y(g_back + (0, 0, 120), 90.0), level_y(g_back, 90.0),
+                                  level_y(g_back - (0, 130, -30), 90.0)], GRIP_HANDLE)
+    sc.step(f"2/{n}", cap, 1.6, rb.joint_to(q1=q_back), hold=0.05)
     sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(g_back, 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
     rb.release("amr")
