@@ -11,16 +11,26 @@ all operating and conducting experiments independently and asynchronously. This 
 Higgsfield later for refinement, so look into that and keep it in mind. Probably max 2 minutes for the video."*
 And, on the cancelled run: *"carry that all out in a new PR"*.
 
+**Where this lives.** Sterling asked for its own PR, but the run that made it was started on #318. The action's
+push wrapper (since 2026-11-23) lets a session push only to the branch it started on. So this folder rode on #318's
+branch while it was made, and was taken off it again in the next commit, leaving #318's diff unchanged.
+
+To open its PR, start a run on an issue, where a run gets a branch of its own. It should check out
+`vertical-lab/facility/` from the commit this README is linked at, onto a branch from #318's head, and open a PR
+stacked on #318. Nothing outside this folder changed.
+
 **Watch:** VIDEO_LINK. The files are in `out/`:
 
 | File | What it is |
 |---|---|
-| `out/facility.mp4` | The captioned cut, ending on the budget card |
-| `out/facility_clean.mp4` | The same shots with no text, for Higgsfield |
+| `out/facility.mp4` | The captioned cut, 2:00, ending on the budget card (37.8 MB) |
+| `out/facility_clean.mp4` | The same shots with no text. Not committed: it is the clips' frames without their handles, and `join` writes it from the renders |
 | `out/higgsfield/` | Each shot as clips of at most 10 s, with handles. Each clip has its first and last frames as PNGs. `shotlist.md` gives a prompt for each clip. |
 | `out/facility_plan.png` | The plan, seen from above |
 | `out/facility_sheet.png` | One frame from each shot |
 | `out/budget.md`, `out/budget.json` | What the $200M buys |
+
+![](out/facility_reveal.gif)
 
 ![](out/facility_sheet.png)
 
@@ -235,7 +245,9 @@ python3 facility/facility.py join                               # the cuts, clip
 VIZ3D_SIZE=1920x1080 xvfb-run -a python3 facility/facility.py planview          # out/facility_plan.png
 ```
 
-On the 4-core runner a 1080p frame takes 0.3-1.1 s. The two parts fit side by side in memory: about 3 GB each.
+Test stills take 0.3-1.1 s a frame at 1080p. The film itself is supersampled (`VIZ3D_AA=ssaa`, as the Higgsfield
+research advises against aliasing shimmer). On the 4-core runner its two parts ran side by side at about 1.5-2.5 s a
+frame each, in about 40 minutes, at about 3 GB of memory each.
 
 ## What is ours, and what is open
 

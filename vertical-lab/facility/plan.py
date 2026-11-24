@@ -87,7 +87,7 @@ def budget() -> dict:
     add(f"Tray instruments for {math.ceil(c['shuttle'] / 2)} of them", math.ceil(c["shuttle"] / 2), "tray_instruments")
     add(f"{c['repowder']} AMAZEMET rePowder ultrasonic atomizers", c["repowder"], "repowder")
     add(f"{c['sieve_cell']} sieving and wash cells", c["sieve_cell"], "sieve_cell")
-    add(f"{c['gas_atomizer']} VIGA-class gas atomizers", c["gas_atomizer"], "gas_atomizer")
+    add(f"{c['gas_atomizer']} gas atomizers, HERMIGA 100/10 class", c["gas_atomizer"], "gas_atomizer")
     add(f"{c['aconity']} Aconity MIDI laser powder-bed printers", c["aconity"], "aconity")
     add(f"{c['eos_m400']} EOS M 400-4 large-format printers", c["eos_m400"], "eos_m400")
     add(f"{c['instron_floor']} Instron 68FM-100 frames with furnaces, 1 68SC-2",
@@ -112,8 +112,8 @@ def budget() -> dict:
     rows.append(dict(what="Design, permits, commissioning and contingency", n=1, usd_m=round(rest, 1),
                      low_m=None, high_m=None, source=f"what is left of $200M: {100 * rest / (TOTAL / 1e6):.0f} %",
                      kind="remainder"))
-    note = ("Unit costs are midpoints of the ranges in plan.py, most of them estimates (README.md); the counts are "
-            "what the film draws.")
+    note = ("Unit costs: midpoints of ranges, from public procurement records where found, estimates otherwise "
+            "(facility/costs_and_sizes.md). Counts: what the film draws.")
     return dict(rows=rows, subtotal_m=round(sub, 1), total_m=round(TOTAL / 1e6, 1), remainder_pct=round(100 * rest / 200, 1),
                 low_m=round(sum(r["low_m"] for r in rows if r["low_m"] is not None), 1),
                 high_m=round(sum(r["high_m"] for r in rows if r["high_m"] is not None), 1), counts=c,

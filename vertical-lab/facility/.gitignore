@@ -5,3 +5,6 @@ out/stills/
 out/clean/
 out/hd/
 __pycache__/
+
+# the clean full cut: the same frames as out/higgsfield/ without their handles (38 MB)
+out/facility_clean.mp4

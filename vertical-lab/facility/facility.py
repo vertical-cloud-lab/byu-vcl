@@ -59,13 +59,14 @@ SHOTS = [
     dict(key="s1_pilot", part="a", secs=12.0, speed=1.0, label="1 · the pilot cell",
          caption="Where it starts: PR #318's vertical lab, its rePowder, sieving cell and two Kardex Shuttles (here "
                  "35 ft tall) along one aisle, a MiR250 + UR12e at a Shuttle's opening.",
-         cam=[(0.0, (-6200, -6900, 2300), (-2600, -1500, 1250)), (1.0, (2600, -6600, 2200), (2400, -1400, 1500))],
+         cam=[(0.0, (-6600, -5100, 2600), (-3300, -1500, 1200)), (1.0, (2000, -5000, 2500), (2300, -1400, 1500))],
          va=56.0),
     dict(key="s2_reveal", part="a", secs=16.0, speed=1.0, label="2 · scaled up",
          caption="The same way of working, repeated: 34 Shuttles, 33 ultrasonic atomizers, 4 gas atomizers, 41 "
                  "Aconity MIDIs and 28 mobile manipulators, each station on its own clock.",
-         cam=[(0.0, (2600, -6600, 2200), (2400, -1400, 1500)), (0.30, (-6000, -24000, 11000), (12000, 3000, 1500)),
-              (1.0, (-22000, -54000, 45000), (44000, 13000, 0))], va=44.0),
+         cam=[(0.0, (2000, -5000, 2500), (2300, -1400, 1500)), (0.22, (800, -7500, 9500), (7000, 1500, 1500)),
+              (0.55, (-8000, -26000, 20000), (20000, 6000, 1000)), (1.0, (-22000, -54000, 45000), (44000, 13000, 0))],
+         va=44.0),
     dict(key="s3_vlm_hall", part="a", secs=12.0, speed=1.0, label="3 · the VLM hall",
          caption="32 more Shuttles along the pilot cell's aisle, 16 a side. A tray comes to a Shuttle's opening when "
                  "its MiR250 docks there, and on its own for the bay cameras' inventory pass.",
@@ -289,9 +290,12 @@ FLOOR_C, GROUND_C, WALL_C, CAP_C, LINE_C = (0.80, 0.80, 0.78), (0.47, 0.48, 0.47
     (0.36, 0.38, 0.41), (0.95, 0.78, 0.12)
 NEAR_M = {"unit": 16000.0, "shuttle35": 30000.0, "pilot": 42000.0, "tray": 14000.0, "gas_atomizer": 40000.0}
 NEAR_DEFAULT = 22000.0
+# the pilot cell's two units: unit 0 between the two Shuttles' openings (its target posts stand outside that stretch),
+# unit 1 docked at the rePowder (setup_lab.DOCK_Y: 298 mm further out than the row, the machine standing proud of it).
+# A unit there drives in along the aisle and turns into a dock; a straight run along a dock line would go through the
+# AprilTag posts standing beyond each docked MiR (warehouse.target_xy), so unit 1 stays where it is.
 PILOT_UNITS = [dict(y=-1932.0, heading=0.0, docks=[(0.0, "shuttle", "p_s1"), (3630.0, "shuttle", "p_s2")]),
-               dict(y=-5868.0, heading=180.0, docks=[(-4300.0, "floor", None), (1500.0, "floor", None),
-                                                    (3900.0, "floor", None), (6600.0, "floor", None)])]
+               dict(y=-2230.0, heading=0.0, docks=[(-3487.0, "floor", None)])]
 
 
 def _box(x0, y0, z0, x1, y1, z1):
@@ -809,12 +813,12 @@ def planview():
     for p in [F.pilot] + list(F.placed.values()) + list(F.tray_of.values()) + F.gas + F.units:
         p.set_lod("near")
     B = LY.BUILDING
-    cx, cy = (B["x0"] + B["x1"]) / 2 - 4000, (B["y0"] + B["y1"]) / 2
+    cx, cy = (B["x0"] + B["x1"]) / 2 - 7000, (B["y0"] + B["y1"]) / 2
     sc.cam = [(cx, cy, 200000.0), (cx, cy, 0.0), (0, 1, 0)]
     F.set(60.0, sc.cam[0])
     sc.pl.camera.SetParallelProjection(True)
     W, H = sc.size
-    sc.pl.camera.SetParallelScale(0.5 * max((B["y1"] - B["y0"] + 8000), (B["x1"] - B["x0"] + 16000) * H / W))
+    sc.pl.camera.SetParallelScale(0.5 * max((B["y1"] - B["y0"] + 8000), (B["x1"] - B["x0"] + 26000) * H / W))
     sc._clip_n = 0
     img = Image.fromarray(sc.render_base()).convert("RGB")
     d = ImageDraw.Draw(img, "RGBA")
@@ -826,7 +830,7 @@ def planview():
     halls = [("pilot cell (PR #318's lab)", 0, -12500), ("VLM hall: 32 Shuttles, 35 ft", 46000, -11800),
              ("atomization: 32 rePowders", 37000, 24600), ("print: 40 MIDIs, 4 EOS M 400-4", 78000, 24600),
              ("gas atomization: 4 plants", 1000, 39500), ("test: Instrons, wire EDMs", 38000, 39700),
-             ("DED, Meltio, hoods, gloveboxes", 78000, 39700), ("argon and nitrogen", -21500, 7000)]
+             ("DED, Meltio, hoods, gloveboxes", 78000, 39700), ("argon, nitrogen", -21500, 28500)]
     for text, x, y in halls:
         px, py = to_px(x, y)
         f = scene.font(24 * s_, bold=True)
@@ -850,6 +854,7 @@ def planview():
 
 # ================================================================================================= the cuts
 CLIP_MAX = 9.0               # s of a shot per Higgsfield clip, so a clip with its two handles stays within 10 s
+THREADS = os.environ.get("FFMPEG_THREADS", "4")
 
 
 def _ff(args, threads=2):
@@ -912,8 +917,9 @@ def join():
             args += ["-loop", "1", "-framerate", str(fps), "-t", str(CARD_SECS), "-i", str(card)]
             ranges.append((len(files), 0, int(CARD_SECS * fps) - 1))
         graph = _segment_filter(range(len(ranges)), ranges, size, fps)
-        _ff([*args, "-filter_complex", graph, "-map", "[out]", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
-             "-pix_fmt", "yuv420p", "-r", str(fps), "-threads", "2", "-movflags", "+faststart", str(OUT / out_name)])
+        _ff([*args, "-filter_complex", graph, "-map", "[out]", "-c:v", "libx264", "-preset", "medium", "-crf", "21",
+             "-pix_fmt", "yuv420p", "-r", str(fps), "-threads", THREADS, "-movflags", "+faststart",
+             str(OUT / out_name)])
         print(f"{out_name}: {(OUT / out_name).stat().st_size / 1e6:.1f} MB", flush=True)
     # --- the Higgsfield clips
     hdir = OUT / "higgsfield"
@@ -933,8 +939,8 @@ def join():
             name = f"{n_shot:02d}_{k}" + (f"_{j + 1}" if pieces > 1 else "")
             mp4 = hdir / f"{name}.mp4"
             _ff(["-i", str(src), "-vf", f"trim=start_frame={fa}:end_frame={fb + 1},setpts=PTS-STARTPTS",
-                 "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-pix_fmt", "yuv420p", "-r", str(fps), "-an",
-                 "-threads", "2", "-movflags", "+faststart", str(mp4)])
+                 "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(fps), "-an",
+                 "-threads", THREADS, "-movflags", "+faststart", str(mp4)])
             for which, fr in (("first", 0), ("last", fb - fa)):
                 png = hdir / f"{name}_{which}.png"
                 _ff(["-i", str(mp4), "-vf", f"select=eq(n\\,{fr})", "-vframes", "1", str(png)])
@@ -975,48 +981,55 @@ def join():
         src, _t, st, _f, _s = pm["s2_reveal"]
         a, b = st["core"]
         pal = Path("/tmp/fac_pal.png")
-        vf = f"trim=start_frame={a}:end_frame={b + 1},setpts=PTS-STARTPTS,fps=8,scale=640:-1:flags=lanczos"
-        _ff(["-i", str(src), "-vf", f"{vf},palettegen=max_colors=128", str(pal)])
-        _ff(["-i", str(src), "-i", str(pal), "-lavfi", f"{vf}[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=4",
+        vf = f"trim=start_frame={a}:end_frame={b + 1},setpts=PTS-STARTPTS,fps=6,scale=560:-1:flags=lanczos"
+        _ff(["-i", str(src), "-vf", f"{vf},palettegen=max_colors=96", str(pal)])
+        _ff(["-i", str(src), "-i", str(pal), "-lavfi", f"{vf}[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=3",
              str(OUT / "facility_reveal.gif")])
     print("join: done", flush=True)
 
 
-NEGATIVE = ("keep every machine, robot and storage tower where it is, the same size and the same count; keep the camera "
-            "path and its speed; no people, no text, no logos, no new objects, no extra robots; no fire, smoke or "
-            "sparks except the orange glow in the gas atomizers' view-ports")
+LEAD = ("Restyle this 3D render as photoreal footage of an automated metal-powder materials lab in a new high-bay "
+        "steel-frame industrial hall.")
+LOCK = ("Keep every object's position, size, count and motion, and the camera path, framing and timing, exactly as in "
+        "the source.")
+LIGHT_IN = "Cool-white LED high-bay light, polished light-grey concrete floor with yellow aisle lines."
+LIGHT_UP = "Seen from above with the roof cut away like an architect's section; soft overcast daylight."
+TAIL = "No people, no text, no new objects."
 
-LOOK = ("photoreal industrial laboratory, a new high-bay advanced-manufacturing facility, polished light-grey concrete "
-        "floor with yellow aisle lines, soft even daylight from skylights, clean and uncluttered, cinematic, 24 fps")
-
+# what each object in the shot becomes, in generic words (brand names invite fake logos: higgsfield.md)
 SUBJECT = {
-    "s1_pilot": "two tall light-grey automated vertical storage towers (vertical lift modules) with a lit picking "
-                "opening at waist height, a small mobile robot with a robot arm working at an opening, compact "
-                "white and blue metal-powder machines and grey test frames along one aisle",
-    "s2_reveal": "the camera rises and pulls back from one aisle to reveal a whole factory floor from above, its "
-                 "roof cut away: two long rows of tall light-grey storage towers, rows of compact atomizers, rows of "
-                 "black metal 3-D printers, four steel platforms with tall white process vessels, bulk gas tanks "
-                 "outside",
-    "s3_vlm_hall": "a long aisle between two rows of tall light-grey automated storage towers, small mobile robots with "
-                   "robot arms docked at their lit openings, trays sliding out of the towers",
-    "s4_height": "looking up at a row of tall light-grey automated storage towers, 10 m high, from the floor of the "
-                 "aisle, a mobile robot passing",
-    "s5_atomize": "rows of compact white-and-blue metal-powder atomizers with small sieving stations beside them, "
-                  "mobile robots with arms docked at them, green and blue stack lights",
-    "s6_gas": "a steel platform with yellow handrails and stairs carrying a white vacuum melting chamber, a tall "
-              "white atomization tower under it, a cyclone and a filter, racks of gas cylinders, orange glow in the "
-              "view-ports; three more such plants behind it",
-    "s7_print": "rows of black enclosed metal 3-D printers along two aisles, larger white industrial printers at "
-                "the end, mobile robots with arms docked at some of them",
-    "s8_test": "an aisle with a row of tall universal testing machines on one side and wire EDM machines on the "
-               "other, then compact laser deposition machines, robotic repair cells and fume hoods",
-    "s9_site": "an aerial view of the whole factory, its roof cut away, every machine running, mobile robots moving "
-               "fast along the aisles (time-lapse)",
+    "s1_pilot": "The tall light-grey towers are 10.7 m automated vertical-lift storage modules with a lit access opening "
+                "at waist height; the small wheeled cart with a six-axis arm is an autonomous mobile robot working at an "
+                "opening; the blue cabinet with a small glass chamber is a benchtop ultrasonic powder atomizer and the grey "
+                "enclosure beside it a sieving station; the steel platform with stairs behind is a gas atomizer.",
+    "s2_reveal": "The camera rises and pulls back from one aisle to show the whole hall: two long rows of tall grey "
+                 "vertical-lift storage modules, rows of benchtop powder atomizers with sieving stations, rows of black "
+                 "enclosed metal 3D printers, four steel platforms carrying white process vessels (gas atomizers), and "
+                 "bulk gas tanks outside the west wall.",
+    "s3_vlm_hall": "A long aisle between two rows of tall light-grey vertical-lift storage modules; small autonomous "
+                   "mobile robots with six-axis arms dock at their lit openings while trays slide out.",
+    "s4_height": "Looking up from the aisle floor at a row of 10.7 m light-grey vertical-lift storage modules under a "
+                 "steel roof with LED high-bay lights.",
+    "s5_atomize": "From above: rows of blue benchtop ultrasonic powder atomizers, each with a grey sieving station "
+                  "beside it, small mobile robots with arms docked at some of them, small stack lights on the machines.",
+    "s6_gas": "A pilot-scale gas atomizer: a steel deck with yellow handrails and stairs, a horizontal white vacuum "
+              "melting chamber on it with two orange-glowing view-ports, a white atomization tower and a cyclone under "
+              "the deck, a rack of green gas cylinders; three more of the same plant behind it.",
+    "s7_print": "From above: rows of black enclosed metal powder-bed 3D printers along two aisles, four larger white "
+                "industrial metal printers at the end, mobile robots with arms docked at some of them.",
+    "s8_test": "An aisle with a row of black universal tensile-testing machines on one side and white wire-EDM machines "
+               "on the other, then compact laser deposition machines, robot repair cells and fume hoods; mobile robots "
+               "with arms at some of them.",
+    "s9_site": "An aerial orbit over the whole factory, every machine running, mobile robots moving quickly along the "
+               "aisles (time-lapse).",
 }
+NEGATIVE = ("people, text, captions, logos, new or extra machines or robots, machines changing size, shape or count, "
+            "fire, smoke or sparks (only the orange glow in the gas atomizers' view-ports), camera shake")
 
 
 def prompt(shot) -> str:
-    return f"{LOOK}. {SUBJECT.get(shot['key'], '')}."
+    up = shot["key"] in ("s2_reveal", "s9_site")
+    return " ".join([LEAD, SUBJECT.get(shot["key"], ""), LOCK, LIGHT_UP if up else LIGHT_IN, TAIL])
 
 
 def camera_words(shot, u0, u1) -> str:
@@ -1033,8 +1046,9 @@ def camera_words(shot, u0, u1) -> str:
             words.append(f"dolly {h / 1000:.0f} m")
         if abs(d[2]) > 500:
             words.append(f"{'rising' if d[2] > 0 else 'descending'} {abs(d[2]) / 1000:.0f} m")
-    words.append(f"eye {e0[2] / 1000:.1f} m to {e1[2] / 1000:.1f} m above the floor, {shot['va']:.0f} deg field of view, "
-                 "eased in and out, no cuts")
+    z0, z1 = f"{e0[2] / 1000:.1f}", f"{e1[2] / 1000:.1f}"
+    eye = f"eye at {z0} m" if z0 == z1 else f"eye {z0} m to {z1} m"
+    words.append(f"{eye} above the floor, {shot['va']:.0f} deg field of view, eased in and out, no cuts")
     if shot["speed"] != 1:
         words.append(f"the machines at {shot['speed']:.0f}x speed")
     return "; ".join(words)
@@ -1064,6 +1078,66 @@ def budget_card(path, size):
     img.save(path)
 
 
+def upload(commit: str):
+    """The captioned cut to the lab's channel: unlisted (a draft for Higgsfield), subscribers not notified; recorded in
+    out/youtube.json with the file's sha256."""
+    import datetime as dt
+    import hashlib
+    sys.path.insert(0, str(LAB.parent))
+    from googleapiclient.http import MediaFileUpload
+    from youtube.yt_service import get_youtube_service, with_triggering_link
+    import plan
+    path = OUT / f"{NAME}.mp4"
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    rec_path = OUT / "youtube.json"
+    rec = json.loads(rec_path.read_text()) if rec_path.exists() else {"videos": []}
+    for v in rec["videos"]:
+        if v["sha256"] == digest:
+            print(f"already up: https://www.youtube.com/watch?v={v['id']}")
+            return v["id"]
+    c = LY.counts()
+    b = plan.budget()
+    base = f"https://github.com/vertical-cloud-lab/byu-vcl/blob/{commit}/vertical-lab/facility"
+    lines = [
+        "PR #318's vertical lab (a Kardex vertical lift module lab with mobile manipulators), then the same way of "
+        f"working scaled to a $200M facility: {c['shuttle']} Kardex Shuttles 35 ft tall, {c['repowder']} ultrasonic "
+        f"atomizers, {c['gas_atomizer']} gas atomizers, {c['aconity']} Aconity MIDI printers, {c['eos_m400']} EOS M "
+        f"400-4s and {c['units']} MiR250 + UR12e mobile manipulators, every station on its own clock.",
+        "",
+        "A 3-D render (VTK), a draft to be refined in Higgsfield. The layout, the clocks and most unit costs are a plan, "
+        f"not a quote: ${b['total_m']:.0f}M with {b['remainder_pct']:.0f} % left for design, permits and contingency.",
+        "",
+    ]
+    t = 0.0
+    for sh in SHOTS:
+        lines.append(f"{int(t // 60)}:{int(t % 60):02d} {sh['label'].split(' · ', 1)[-1].capitalize()}")
+        t += sh["secs"]
+    lines.append(f"{int(t // 60)}:{int(t % 60):02d} The budget")
+    lines += ["", f"Notes, sources and the budget: {base}/README.md",
+              f"Clean per-shot clips for Higgsfield: {base}/out/higgsfield/shotlist.md"]
+    desc = with_triggering_link("\n".join(lines))
+    title = "The vertical lab, scaled to a $200M facility (3-D render, draft for Higgsfield)"
+    yt = get_youtube_service("upload")
+    body = {"snippet": {"title": title, "description": desc, "categoryId": "28", "defaultLanguage": "en",
+                        "tags": ["vertical cloud lab", "Kardex", "vertical lift module", "lab automation",
+                                 "self-driving lab", "metal additive manufacturing", "atomization", "BYU"]},
+            "status": {"privacyStatus": "unlisted", "selfDeclaredMadeForKids": False, "embeddable": True}}
+    media = MediaFileUpload(str(path), mimetype="video/mp4", chunksize=16 << 20, resumable=True)
+    req = yt.videos().insert(part="snippet,status", body=body, media_body=media, notifySubscribers=False)
+    resp = None
+    while resp is None:
+        status, resp = req.next_chunk()
+        if status:
+            print(f"uploaded {status.progress():.0%}", flush=True)
+    vid = resp["id"]
+    rec["videos"].append(dict(id=vid, sha256=digest, bytes=path.stat().st_size, commit=commit, title=title,
+                              privacy="unlisted", notified_subscribers=False,
+                              uploaded=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")))
+    rec_path.write_text(json.dumps(rec, indent=1) + "\n")
+    print(f"https://www.youtube.com/watch?v={vid}")
+    return vid
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "stills"
     if cmd == "stills":
@@ -1074,5 +1148,7 @@ if __name__ == "__main__":
         join()
     elif cmd == "planview":
         planview()
+    elif cmd == "upload":
+        upload(sys.argv[2])
     else:
         raise SystemExit(f"unknown command {cmd}")

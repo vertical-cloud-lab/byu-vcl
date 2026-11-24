@@ -45,7 +45,7 @@
    "kind": "estimate"
   },
   {
-   "what": "4 VIGA-class gas atomizers",
+   "what": "4 gas atomizers, HERMIGA 100/10 class",
    "n": 4,
    "unit_low": 1000000.0,
    "unit_high": 2000000.0,
@@ -188,5 +188,5 @@
  },
  "area_m2": 6655,
  "area_ft2": 71634,
- "note": "Unit costs are midpoints of the ranges in plan.py, most of them estimates (README.md); the counts are what the film draws."
+ "note": "Unit costs: midpoints of ranges, from public procurement records where found, estimates otherwise (facility/costs_and_sizes.md). Counts: what the film draws."
 }
