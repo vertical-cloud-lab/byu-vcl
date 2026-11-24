@@ -17,7 +17,7 @@ below links to a file in this folder, and each file names its sources.
   organization-year and the smaller fixes ([resolution log](REVIEW_FINDINGS.md#resolution-2026-11-24)).
   MP4: [`video/open_science_value_ai_part4.mp4`](video/open_science_value_ai_part4.mp4). Chapters: [`video/chapters_part4.txt`](video/chapters_part4.txt).
 
-**Two-page brief:** [`FINDINGS_BRIEF.md`](FINDINGS_BRIEF.md). **Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has eight evidence-linked actions. **All figures:** [`FIGURES.md`](FIGURES.md). **Video sources and later updates, chapter by chapter:** [`VIDEO_NOTES.md`](VIDEO_NOTES.md). **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md).
+**Two-page brief:** [`FINDINGS_BRIEF.md`](FINDINGS_BRIEF.md). **Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has eight evidence-linked actions. **All figures:** [`FIGURES.md`](FIGURES.md). **Video sources and later updates, chapter by chapter:** [`VIDEO_NOTES.md`](VIDEO_NOTES.md). **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md). **The plan made before starting, and what became of it:** [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md).
 
 ## Short answer
 
