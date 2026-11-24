@@ -1,10 +1,10 @@
 # The value of open science in the age of AI (issue #380)
 
-This is a six-hour research run (2026-11-23, 21:45–03:30 UTC) for
+This is a six-hour research run (2026-11-23 21:45 to 2026-11-24 03:20 UTC) for
 [vertical-cloud-lab/byu-vcl#380](https://github.com/vertical-cloud-lab/byu-vcl/issues/380). Every number
 below links to a file in this folder, and each file names its sources.
 
-**Videos** (both public, uploaded with `notifySubscribers=False`, and marked as containing synthetic media because the narration is TTS):
+**Videos** (all four public, uploaded with `notifySubscribers=False`, and marked as containing synthetic media because the narration is TTS):
 - **Part 1, the main study:** [youtube.com/watch?v=Aakq7PNsFpE](https://www.youtube.com/watch?v=Aakq7PNsFpE), 11:41, 22 chapters.
   MP4: [`video/open_science_value_ai.mp4`](video/open_science_value_ai.mp4). Chapters: [`video/chapters.txt`](video/chapters.txt).
 - **Part 2, findings that arrived after Part 1:** [youtube.com/watch?v=uujMO9R1tMc](https://www.youtube.com/watch?v=uujMO9R1tMc), 4:53.
