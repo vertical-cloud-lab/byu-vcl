@@ -519,13 +519,19 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
   [open weights](edison/open_weights_ai_impact_answer.md)):
   - Industry's share of the largest models went from 11% (2010) to 96% (2021) (Ahmed, Wahed & Thompson).
   - Code-plus-data sharing at top AI conferences went from 11% (2014) to 64% (2024).
-  - Open models hold under 30% of the inference market although they are about 87% cheaper.
+  - Open models hold under 30% of the inference market (Edison's reading of Demirer et al.), yet the published
+    NBER abstract finds them **about 90% cheaper** than comparable closed models of the same intelligence (Demirer,
+    Fradkin, Tadelis & Peng, NBER w34608, Dec 2025; abstract read through the Pi).
   - Nagle & Yue (2025, "The Latent Role of Open Models in the AI Economy") estimate that fully
     switching to open models would cut average prices by more than 70% and save about $24.8B a year
     (range $20–48B). This is latent consumer surplus, not captured revenue (Pi search, Google Scholar
     snippet).
   - The Chatbot Arena gap between open and closed fell from 8.0% to 1.7% (Jan 2024 → Feb 2025).
-  - **92% of the foundation models adopted in science papers since 2019 were open-weight.**
+  - **92% of the foundation models adopted in science papers since 2019 were open-weight.** Trišović et al.
+    (arXiv 2511.21739, v2 Oct 2026; abstract read through the Pi) add that science is *falling behind the
+    frontier*. In 2015 the mean model adopted in science was 5.4× larger than the mean model built; by 2024
+    the mean model built was 6.9× larger than the one adopted. Papers using larger models land in
+    higher-impact journals. Openness helps science adopt AI, but closed frontier models stay out of reach.
 - **National labs' own software** ([`figures/doe_code_by_year.png`](figures/doe_code_by_year.png),
   [`data/doe_code_by_year.csv`](data/doe_code_by_year.csv), [`data/doe_code_by_lab.csv`](data/doe_code_by_lab.csv)):
   - DOE's code.json inventory lists 5,879 releases, **93.6% of them open source**. The other 374 are
@@ -539,6 +545,11 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
   - The inventory's own SLOC-based estimate for unique open repositories is about 335M labor hours. It is
     indicative only, but it suggests the national labs' open code is worth tens of billions of dollars at
     replacement cost.
+- **Copyright on government software:** US federal employees' works can't be copyrighted, so
+  government-operated labs can't license custom software the way contractor-run labs can. A NIST-commissioned
+  study (Leech & Scott, NIST GCR 21-028, 2021; PDF read in full) estimates that allowing copyright, and so
+  licensing, would add about **$4.3B a year** in induced productivity. This is the other side of the public-domain
+  default: openness maximizes diffusion, while licensing would pay for upkeep.
 - **Policy:**
   - OSTP's Holdren (2013) and Nelson (2022) memos; NIH's public-access policy, accelerated to
     2025-07-01.

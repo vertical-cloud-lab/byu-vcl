@@ -27,6 +27,10 @@ search batches ([`pi-browser/queries_batch3_verify.tsv`](pi-browser/queries_batc
 | Commercial open-source startups: median exit $1.3B vs $171M (IPO) and $482M vs $34M (M&A); 1.6× / 1.23× valuation at Series A / B; 12% exited; $26.4B across 211 deals in 2024 | LF/Serena/COSSA 2025 report | Primary: report PDF (doi:10.70828/REYQ7474), text extracted with pdftotext | Confirmed (co-authored by a VC that backs open source) |
 | arXiv left Cornell on 2026-07-01; FY2025 deficit of $297k; record of 40,363 submissions in Sept 2026 | companies/G/arxiv.json | Primary: arXiv blog posts and FY26 budget PDF (cited in the file) | Primary sources |
 | OSF narrowing: $4–5M a year needed; new projects stopped on 2026-11-16 | companies/G/center-for-open-science.json | Primary: COS blog (2026-08-11, 2026-08-14) and cos.io/osf-changes | Primary sources |
+| PDB: $6.9M a year to run vs $5.5B a year of use value, about 800× | Edison open_science_roi | Primary: RCSB 'Economic Impacts of the PDB' PDF (doi:10.2210/rcsb_pdb/pdb-econ-imp-2017), text extracted | Confirmed |
+| Open LLMs are much cheaper than comparable closed ones | Edison (87%) | Primary: NBER w34608 abstract, which says **90%** cheaper | Corrected to about 90% |
+| Open-weight models dominate foundation-model use in science; science lags the frontier (6.9× in 2024) | Edison (92%) | Primary: arXiv 2511.21739 abstract (v2, 2026-10) | Confirmed qualitatively; the 92% comes from the paper body as reported by Edison |
+| $4.3B a year potential from letting federal labs copyright and license software | not in the case files | Primary: NIST GCR 21-028 PDF | Confirmed |
 | Epoch, OpenAlex and price numbers | data/*.csv | Recomputed from the raw downloads by the scripts in `scripts/` | Reproducible |
 
 Not used in the video because they couldn't be verified well enough: Creality's 2026 Hong Kong
