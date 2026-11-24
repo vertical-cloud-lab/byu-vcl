@@ -1,0 +1,70 @@
+{
+ "issue": "https://github.com/vertical-cloud-lab/byu-vcl/issues/354",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/issues/354#issuecomment-7117452075 (benwhitney5463, 2026-11-23T23:52:17Z): check the triangle holes in the original tip rack and vial holder because the 0.05mm interference fit deck keys we just printed don't fit ... If that is the case, scale the interference down accordingly and print 4 deck keys (2 for the original vial holder and 2 for the tiprack). the best fit in the deck itself is the key with the 3 dots (0.1mm clearance).",
+ "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/45292476824",
+ "tracking_comment": "https://github.com/vertical-cloud-lab/byu-vcl/issues/354#issuecomment-7117502966",
+ "route": "Bambu Studio 02.08.02.61 GUI on the runner (bambu/studio/setup_runner.sh), logged in with password + authenticator code (no e-mailed code), sent through Bambu's cloud",
+ "printer": "Tinkerbell (Bambu Lab A1 mini)",
+ "plate": "Textured PEI",
+ "nozzle": {"diameter": "0.4 mm stainless steel, Standard flow (used)", "source": "Studio Device page > Printer Parts, 2026-11-24T00:00:24Z"},
+ "filament": "Bambu PLA Basic profile, blue PLA on the external spool",
+ "not_used": "Thumbelina (the other A1 mini): Device page showed 'Part Studio 2 - AOR tester, Downloading (100%)' with the bed at 64/65 C at 23:59 UTC, as reported on #354 since 2026-11-19 18:40 UTC",
+ "design": {
+  "measured": "modules/electromagnetic-capper/v2/cad/pocket_fit_output.txt (check_pocket_fit.py, Cubware @ 0d9e2db, sha256 checked)",
+  "tip_rack_pocket": "TipRack.stl: A 6.70, B 7.43, R3.133 + r1.000, 2.0 deep (0.15 mm smaller in A than the stir module's, 0.1 shallower)",
+  "vial_holder_pocket": "9VialHolder.step (= PANDA-BEAR 9VialHolder20mL_TightFit): A 6.85, B 7.57, R3.1 + r1.1, 2.1 deep (same as the stir module's)",
+  "T_key": "nub = tip rack pocket + 0.05 a side: A 6.80, B 7.53, 1.8 tall (0.2 under the pocket roof)",
+  "V_key": "nub = vial holder pocket, line to line: A 6.85, B 7.57, 2.0 tall (0.05 a side less than the 2026-11-20 key that didn't fit)",
+  "body": "the 2026-11-20 3-dot key (deck_clip_key_v2_1_tri_w10.4_c0.1: 10.4 x 24.8 mm pill, 0.1 mm clearance in the 10.5 mm slot) unchanged below z = -0.6, checked section by section; 3 dimples at the -y end, engraved T or V at the +y end"
+ },
+ "objects": {
+  "deck_clip_key_v2_1_tri_w10.4_tiprack.stl": 2,
+  "deck_clip_key_v2_1_tri_w10.4_vialholder.stl": 2
+ },
+ "source_files": "modules/electromagnetic-capper/v2/stl/print_oriented/pocket_fit/ on claude/issue-354-20261123-2355 @ ba2cc23",
+ "layout": "one STL with 4 bodies from scripts/combine_plate.py: T keys in the left column (-x), V keys in the right (+x), 2 rows 36 mm apart in y, 22 mm between columns; Studio centred it on the plate. The engraved T or V on each key's top face also identifies it.",
+ "slice": {
+  "preset": "0.20mm Standard @BBL A1M",
+  "printer_preset": "Bambu Lab A1 mini 0.4 nozzle (after Sync info)",
+  "filament_preset": "Bambu PLA Basic @BBL A1M",
+  "changed_in_gui": {"wall_loops": "2 -> 3", "sparse_infill_density": "15% -> 20% (grid)", "brim_type": "auto -> no_brim"},
+  "left_as_bambu_has_them": "supports off; elephant-foot, contour, hole and circle compensation 0/off; arc fitting on",
+  "temperatures": "nozzle 220 C, textured PEI 65 C",
+  "estimate": "31m56s (model 25m1s, prepare 5m58s + 56s)",
+  "layers": 85,
+  "max_z_mm": 17.0,
+  "filament": "10.59 g, 3.49 m",
+  "plate_1_gcode_md5": "b2e0d1d9248f4849d36b54fed6e66ba7",
+  "checked_from_gcode": "outer-wall extents incl. arcs + 0.42 mm line width (gcode_check.txt): pills 10.400 x 24.791 on all 4; T nubs A 6.80, B 7.52, top at z 16.8; V nubs A 6.85, B 7.56, top at z 17.0"
+ },
+ "send_options": {"job": "pocket_fit_keys_2T_2V", "timelapse": "off", "auto_bed_leveling": "on", "flow_dynamics_calibration": "on", "filament_mapping": "PLA -> external spool"},
+ "plate_rule_2026_10_23": {
+  "frame_1": {"utc": "2026-11-23T23:59:51Z", "file": "20261123T235951Z_tinkerbell_camera_studio.jpg", "read": "clear; bright; only the faint flat 2 x 2 first-layer outlines that were also in the 2026-11-20 frame", "posted": "2026-11-24T00:01:21Z"},
+  "hold": {"from": "2026-11-24T00:01:21Z", "until": "2026-11-24T00:35:29Z", "new_comments": "none (thread polled at 00:05:44, 00:21:35, 00:25:27, 00:31:39, 00:33:13, 00:34:18, 00:35:25)"},
+  "frame_2_right_before_send": {"utc": "2026-11-24T00:34:44Z", "file": "20261124T003444Z_tinkerbell_camera_presend.jpg", "read": "unchanged (mean absolute difference 1.1% whole frame, 2.2% plate region)"},
+  "last_thread_poll": "2026-11-24T00:35:25Z, no new comments"
+ },
+ "send_utc": "2026-11-24T00:35:29Z",
+ "started": {"utc": "2026-11-24T00:36:17Z", "state": "Heatbed preheating, layer 0/85, nozzle 102/170 C, bed 33/65 C, estimated finish 01:07 UTC", "files": ["20261124T003617Z_tinkerbell_camera_started.jpg", "20261124T003617Z_tinkerbell_job_panel_started.png"]},
+ "layer_1": "2026-11-24T00:42:40Z (about 7 min of start-up: heating, bed levelling, flow calibration)",
+ "finished": {
+  "utc": "about 2026-11-24T01:07:10Z: layer 85/85 at 01:07:03, targets set to 0 by 01:07:14",
+  "minutes_after_send": 31.7,
+  "studio_estimate": "31m56s",
+  "hms_or_dialogs": "none seen",
+  "frame": "frames/20261124T010859Z_finished_4_keys.jpg (Device page, room corners blurred): all 4 keys standing, the engraved T and V legible"
+ },
+ "watch": {
+  "tool": "bambu/studio/watch_studio.py from PR 234's branch, WATCH_LAYOUT=a1mini BED_TARGET=65, 10 s samples, frames every 2 min then 5 min",
+  "log": "watch_monitor.jsonl (169 samples, 00:37:41Z-01:08:53Z)",
+  "exits": "10 (time budget) at 00:49:40 and 01:02:01, then 20 at 01:08:53, a false alarm: OCR read the cooling bed (about 65 C) as 657 C after the job had finished. The bed target column read 64 or 165 throughout, the OCR quirk noted in the runbook.",
+  "rate": "layer 1 at 00:42:40, 16 at 00:47:49, 37 at 00:55:12, 63 at 01:00:22, 85 at 01:07:03"
+ },
+ "recording": {
+  "file": "recording/issue354_pocket_fit_keys_A1mini_2026-11-23.mp4 (3.8 min, 7.0 MB) with recording/issue354_pocket_fit_keys_A1mini_2026-11-23_chapters.txt",
+  "raw": "x11grab 15 fps, 2026-11-23 23:58:51Z (after the login and the Synchronise prompt) to 2026-11-24 01:09:50Z; raw segments not committed",
+  "cut": "recording/cut_plan.json via cut_recording.py: 23:59:00-00:01:00 at 2x, 00:31:25-00:36:30 at 3x, 00:36:30-01:09:00 at 30x; the camera pane's upper corners blurred whenever it was live",
+  "youtube": "not uploaded: a print run has no YouTube token"
+ },
+ "signed_out": "2026-11-24T01:09:44Z from Studio's account menu; Studio then closed (01:10) and ~/.config/BambuStudio deleted"
+}

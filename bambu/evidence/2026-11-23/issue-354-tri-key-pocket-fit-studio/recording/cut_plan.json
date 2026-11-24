@@ -1,0 +1,10 @@
+{
+ "note": "Cut with bambu/studio/cut_recording.py (PR 234's branch @49677cf, with at() taught full ISO times because this session crosses midnight UTC) from 5 min x11grab segments recorded 2026-11-23 23:58:51 to 2026-11-24 01:09:50 UTC. The recorder started after the login and the Synchronise prompt, so neither is in it; the home page, whose sidebar shows the account's name, is on screen only until 23:58:58 and again from 01:09:20, both outside every part. 00:01:00-00:31:25 (pocket measurement and CAD, off screen, Studio idle) is dropped.",
+ "day": "2026-11-23",
+ "parts": [
+  {"from": "2026-11-23T23:59:00", "to": "2026-11-24T00:01:00", "speed": 2, "label": "Device page: Thumbelina auto-selected (still stuck), Tinkerbell picked, live camera, plate read, 0.4 mm nozzle, HMS empty"},
+  {"from": "2026-11-24T00:31:25", "to": "2026-11-24T00:36:30", "speed": 3, "label": "Prepare: sync to the A1 mini, import 2 T + 2 V keys, 3 walls / 20% / no brim, slice; pre-Send frame; Send at 00:35:29"},
+  {"from": "2026-11-24T00:36:30", "to": "2026-11-24T01:09:00", "speed": 30, "label": "Printing on Tinkerbell, 85 layers, to the finished keys"}
+ ],
+ "blur": [["2026-11-23T23:59:20", "2026-11-24T00:01:00"], ["2026-11-24T00:34:20", "2026-11-24T00:35:05"], ["2026-11-24T00:35:29", "2026-11-24T01:09:00"]]
+}

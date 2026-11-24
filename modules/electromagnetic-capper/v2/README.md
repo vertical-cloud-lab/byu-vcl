@@ -245,6 +245,45 @@ for the checks and `python cad/render_width_sweep.py` for the figure. Set the sw
 `slot_w_meas` and `sweep_clear` in `build.py`. The v2_1 and v2_1_tri keys still rebuild byte for
 byte.
 
+## Pocket fit (2026-11-23)
+
+The 3-dot key (10.4 mm pill) fit the deck best, but its 0.05 mm triangle nub wouldn't go into the
+original tip rack or the original 9-vial holder ([#354](https://github.com/vertical-cloud-lab/byu-vcl/issues/354#issuecomment-7117452075)).
+[`cad/check_pocket_fit.py`](cad/check_pocket_fit.py) measures the pockets in Cubware's own files,
+fetched at a pinned commit and checked by sha256 ([output](cad/pocket_fit_output.txt)):
+
+| Pocket (mm) | A | B | Depth | The 11-20 nub (A 6.95), a side |
+|---|---|---|---|---|
+| Tip rack, `TipRack.stl` (also TipRack20uL: same below the tip plate) | 6.70 | 7.43 | 2.0 | +0.125 |
+| 9-vial holder, `9VialHolder.step` (= PANDA-BEAR's TightFit) | 6.85 | 7.57 | 2.1 | +0.05 |
+| Stir module base | 6.85 | 7.57 | 2.1 | +0.05 |
+
+The tip rack's pockets are 0.15 mm smaller and 0.1 mm shallower. The vial holder's are the same as
+the stir module's in the CAD, so a misfit there comes from how it was printed (or from glue left by
+Cubware's glued-in key), which a measurement of the printed part would settle.
+
+`python cad/build.py . pocket_fit` builds the 3-dot key with two nubs. Below its top face, each is
+the 3-dot key unchanged:
+
+| Key | File (`stl/print_oriented/pocket_fit/`) | Nub A / B, height | Fit a side in its pocket |
+|---|---|---|---|
+| **T** | `deck_clip_key_v2_1_tri_w10.4_tiprack.stl` | 6.80 / 7.53, 1.8 | +0.05, the stir module's press |
+| **V** | `deck_clip_key_v2_1_tri_w10.4_vialholder.stl` | 6.85 / 7.57, 2.0 | 0, line to line |
+
+The letter is engraved at the +y end of the top face, in place of the single press dimple. The
+3 dimples at the -y end still mark the 10.4 mm pill. Two of each were printed on Tinkerbell (A1 mini,
+blue PLA) on 2026-11-23 ([record](../../../bambu/evidence/2026-11-23/issue-354-tri-key-pocket-fit-studio/print.json)).
+
+![](img/pocket_fit.png)
+
+**If they don't fit:**
+- **T or V too tight:** a few strokes of a file or sandpaper on the nub's flats, or press it in with
+  a clamp. Then rebuild with a smaller nub: the corner radius in `pf_tiprack` / `pf_vialholder`,
+  0.025 mm per step (0.05 mm on A and B).
+- **Too loose:** a drop of CA in the pocket, as Cubware's README does with its own key (A 6.65,
+  0.1 mm a side under the vial holder's pocket).
+- Calipers across a pocket from a corner to the opposite flat (A) give the printed size directly.
+
 ## magnet_bar_v2
 
 ![](img/magnet_bar.png)
