@@ -1,0 +1,5 @@
+scope,window,n_orgs,org_years,closing,opening,closing_per_100_org_years,opening_per_100_org_years
+all A-F,2010-19,122,815,17,11,2.09,1.35
+all A-F,2020-26,122,780,31,33,3.97,4.23
+founded before 2010,2010-19,49,480,7,7,1.46,1.46
+founded before 2010,2020-26,49,329,13,12,3.95,3.65

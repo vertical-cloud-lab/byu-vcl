@@ -120,3 +120,28 @@ Every category in the brief turned up at least one issue:
   - 114 of 143 WebFetch-only; 202 searches, 1,099 fetches, 1,354 sources.
   - Pass 2: 161 = 99 + 16 + 46.
   - Spot audit 23/30 = 76.7%, Wilson 59.1–88.2% (recomputed); calibration 93.0% / 95.8% exact, κ 0.97 / 0.99, 118 of 143.
+
+## Resolution (2026-11-24)
+
+What changed in response to each row. "Fixed" means the wording or number now matches the evidence column. Commits `8d19e6a` and `ce0130a` and the commit after them hold the changes.
+
+| Rows | Status | What changed |
+| --- | --- | --- |
+| 1 | Fixed | New six-sector small-multiples figure ([`figures/openness_by_year_six_sectors.png`](figures/openness_by_year_six_sectors.png), [CSV](data/openness_by_year_six_sectors.csv)): lab-automation and AI-for-science firms 0.57, science software and infrastructure 2.70, AM, instrument and publishing firms 1.11, the rest about 2. Short answer 3, §2 and the brief say science splits. The four-sector figure stays as the video version. |
+| 2, 16, 17, 20–22, 28, 38 | Fixed | Fork, exit, recommendation, byu-vcl authorship and scope wording as suggested. |
+| 3 | Fixed | Age caveat plus an equal-age comparison: by age 4, 3 of 17 group A firms had made a closing move, against 0 of 17 in J. |
+| 4 | Fixed | [`scripts/kinds_corrected.py`](scripts/kinds_corrected.py) classifies infrastructure first: raw gap −0.61 (95% CI −0.97 to −0.24), adjusted for starting openness −0.09 (−0.45 to +0.28). Short answer, §2, the brief and VIDEO_NOTES say the videos overstate this. |
+| 5–7, 34 | Fixed | Group-A listing count, sector-decline wording, the snapshot note and the Big Tech "dip" attribution (dropped; within noise). |
+| 8 | Fixed | Origins described as stable; the rises are attributed to OpenFOAM and LAMMPS. |
+| 9, 13 | Fixed | The "indicative" caveat for group I and the document-selection caveat for the language trend are in the short answer and the brief. Group I was not re-scored. |
+| 10, 32, 37 | Fixed | 87% is a material-cost saving for about 45 designs with a comparator; the PDB's $5.5B is use value (conservative return about 160×); the EU figures are not a return ratio. |
+| 11, 12 | Fixed | Definitions, unrestricted shares, the 2024 crossover and the 2026 year-to-date label. |
+| 14 | Fixed | Figure retitled: open-hardware papers held flat until 2025. |
+| 15 | Fixed | Rates per organization-year ([`data/licence_events_per_org_year.csv`](data/licence_events_per_org_year.csv)): 3.4 → 8.2 changes per 100 organization-years in A–F, and 2.9 → 7.6 for organizations founded before 2010. The rise holds. |
+| 18, 19, 23–27, 31, 36, 39 | Fixed | Prusa revenue, the acquisition-timing wording, and the short-answer and §5/§9/§10 wording. |
+| 29 | Fixed | The $26.4B is 78% xAI and Databricks; the 34% is significant only at 80% confidence. |
+| 30 | Fixed | Survival differences called negligible; the sector mix behind the revenue noted. |
+| 33 | Fixed | Years labelled (2024 vs. 2025), 1/13 for 2025, the stock statistics explained, NREL added, "16 values changed (10 filled)". |
+| 35 | Fixed | 150 searches, 84 fetches, 15 Edison tasks, 7 transcript sessions for 6 videos (the empty capture was made again on 2026-11-24). |
+
+The videos are snapshots and were not re-rendered. [`VIDEO_NOTES.md`](VIDEO_NOTES.md) lists what they overstate.

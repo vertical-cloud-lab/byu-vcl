@@ -35,10 +35,12 @@ below links to a file in this folder, and each file names its sources.
    - MongoDB is worth about $23B under the restrictive SSPL licence ([case files](companies/)).
    - Venture data agrees. In 800+ VC-backed open-source startups matched to closed-source peers, median
      exit valuations were **$1.3B vs. $171M at IPO** and **$482M vs. $34M in M&A**. The open-source
-     startups also raised at 1.6× the Series A valuation and moved about 20–34% faster between rounds
-     (LF/Serena/COSSA 2025). Serena backs open source, and only 12% of these startups have exited.
+     startups also raised at 1.6× the Series A valuation and reached Series A 20% faster (34% faster to
+     Series B, significant only at the report's 80% confidence level) (LF/Serena/COSSA 2025). Serena backs open source, and only 12% of these startups have exited.
 3. **Licences are now strategic levers, and they move both ways.**
-   - Dated licence or access changes in the case files nearly doubled after 2020:
+   - Dated licence or access changes in the case files more than doubled after 2020, also per
+     organization-year: 3.4 → 8.2 per 100 in A–F, and 2.9 → 7.6 for organizations founded before 2010
+     ([rates](data/licence_events_per_org_year.csv)). Recent changes are also better documented online:
      - 2010–19: 16 closing moves, 11 opening.
      - 2020–26: 31 closing, 30 opening.
      - These are the counts at the video snapshot. After verification pass 2, A–F gives 17/11 and 31/33.
@@ -56,10 +58,10 @@ below links to a file in this folder, and each file names its sources.
        after an independent review). The videos' "VC-era firms close up" result is mostly this starting-level
        effect.
      - Government, academic and foundation infrastructure almost never closed: 1 of 24 (A–G).
-     - Commercial OSS, hardware, physical science and Big Tech/AI each average about 2 ("open core / mixed")
-       by 2026 ([openness over time](figures/openness_by_year_sector.png)). AM and instrument makers stay
-       near 1. The physical-science average mixes closed companies (about 0.75) with open infrastructure
-       (about 2.7).
+     - By 2026 commercial OSS, Big Tech/AI and hardware each average about 2. Science splits: lab-automation
+       and AI-for-science firms average 0.57 and science software and infrastructure 2.70, with AM, instrument
+       and publishing firms at 1.11 ([openness over time](figures/openness_by_year_six_sectors.png)). A mean
+       near 2 doesn't make most organizations "open core / mixed": in science the scores are bimodal.
 4. **In hardware, openness pays in cost and longevity, not in valuation.** Open standards are the
    exception (RISC-V, Open Compute).
    - Adafruit and SparkFun have lasted about two decades and Prusa 14 years, but they stay small and
@@ -127,7 +129,7 @@ below links to a file in this folder, and each file names its sources.
 | Edison Scientific | 15 jobs: 4 `LITERATURE_HIGH`, 10 `LITERATURE` and 1 `PRECEDENT`. The first 9 were submitted at 21:51; 4 gap-filling jobs (open materials data, lab-automation markets, industry publishing norms, sustaining open infrastructure) were submitted at 23:55, and 2 more (academic tech transfer vs. open release; commercializing academic open hardware) at 00:33. [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md) covers all 15. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
 | GitHub mining | `gh api` (REST and GraphQL) over **every** issue, PR, conversation comment, inline review comment, review body, discussion, discussion comment and reply in `AccelerationConsortium/ac-dev-lab` and `sparks-baird/self-driving-lab-demo`: 4,928 records in 816 threads. 118 threads were coded for commercialization, and quotes and numbers were checked against the corpus by script | [`gh-mining/`](gh-mining/) |
 | Case studies | **179 case files**: 143 organizations in groups A–G (121 at the video snapshot, then 1 more hardware file and group G: 21 in additive manufacturing, lab automation and open-science infrastructure), plus 19 AI-for-science model and dataset releases (group I) and 17 AI-era open-source startups (group J). The six groups are commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 1,354 cited sources (904 at the video snapshot) | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
-| Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. **150 searches** (89 curated, 18 to find primary documents, 36 to verify claims, 5 for physical-science voices, plus 2 tests), **84 page fetches** (57 primary documents from AI labs and US policy, 19 community, blog and news pages, and 8 study and report pages; ScienceDirect's bot check blocked one, and two PDFs returned no text) and **6 YouTube transcript sessions** (5 captured), in which the mouse opened "Show transcript" | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
+| Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. **150 searches** (89 curated, 18 to find primary documents, 36 to verify claims, 5 for physical-science voices, plus 2 tests), **84 page fetches** (57 primary documents from AI labs and US policy, 19 community, blog and news pages, and 8 study and report pages; ScienceDirect's bot check blocked one, and two PDFs returned no text) and **7 YouTube transcript sessions** for 6 videos (one empty capture was made again on 2026-11-24), in which the mouse opened "Show transcript" | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
 | Datasets | Epoch AI "Data on AI Models" (3,730 models, CC-BY); OpenAlex works grouped by US institution type × year × open access; Yahoo Finance weekly prices | [`data/`](data/) |
 | Language | Term rates per 1,000 words in 57 documents from Anthropic (26), OpenAI (22), Meta, Google DeepMind, DeepSeek, xAI and US policy (3), all fetched through the Pi | [`language/`](language/) |
 | Video | 20 animated matplotlib scenes, Kokoro-82M narration (Apache-2.0, offline), joined with ffmpeg | [`video/`](video/), [`scripts/build_video.py`](scripts/build_video.py) |
@@ -194,8 +196,9 @@ smooth, with no visible break at the policy dates, so the chart doesn't show pol
 dip in 2024–25 is probably indexing lag in OA status.
 - **Materials:** the NIST Materials Genome Initiative analysis estimates $123–270B a year of
   *potential* US benefit from better materials-innovation infrastructure.
-- **Open scientific hardware** costs 87% less on average than the commercial equivalent, rising to 94%
-  for Arduino plus 3D-printed builds (Pearce 2020, 119 designs). Single syringe pumps save $153–1,402
+- **Open scientific hardware** has an 87% lower material cost on average than the commercial equivalent,
+  rising to 94% for Arduino plus 3D-printed builds (Pearce 2020: 119 designs, about 45 with a commercial
+  comparator; labour excluded). Single syringe pumps save $153–1,402
   each. OSHWA certifications grew from 977 to 1,601 between August 2020 and July 2021
   ([Edison: open hardware](edison/open_hardware_economics_answer.md)).
 
@@ -268,10 +271,14 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 | Corporate spin-out | 10 | 1.50 → 2.00 | 20% |
 | Community | 7 | 3.29 → 2.86 | 43% |
 
-- **Size and survival:** the fully open organizations are much smaller by staff and revenue, and the most
-  likely to still be operating. The big revenue sits in the mixed, open-core middle.
-- **Origins:** academic and government origins drift *toward* openness, while founder startups drift away
-  from it. This matches the VC-era vs. incumbent result below.
+- **Size and survival:** the fully open organizations are much smaller by staff and revenue. Survival barely
+  differs (98% of open, 96% of mixed and 93% of closed organizations still operate: one or two
+  organizations, in a sample of survivors). The big
+  revenue sits in the mixed, open-core middle, partly because Big Tech is scored 1–2.
+- **Origins:** academic and government origins look stable, not drifting toward openness. Their small rises
+  rest on OpenFOAM (0 → 4, a score the calibration revised to 3 → 4) and LAMMPS (1 → 3); without those two
+  the change is about zero. Founder startups drift away from openness mostly because they start more open
+  (see the correction below).
 
 **Capital efficiency: latest value ÷ total funding raised** (where both are known;
 [`data/value_to_funding_by_sector.csv`](data/value_to_funding_by_sector.csv)):
@@ -320,14 +327,19 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 animated version in [`video/extras/openness_by_year_sector.mp4`](video/extras/openness_by_year_sector.mp4)):
 - Commercial OSS and hardware started out the most open, at about 2.8 in the mid-2000s, and have
   declined steadily, to 1.97 and 2.18 by 2026.
-- Big Tech and AI labs rose from about 0.2 (1995) to about 2.0 (2017–2025), then dipped to 1.83 in
-  2026 (Meta's closed Muse Spark, Qwen's revenue cap).
+- Big Tech and AI labs rose from about 0.2 (1995) to between 1.8 and 2.0 since 2017 (1.83 in 2026). The
+  year-to-year moves are within noise.
 - Physical science rose to about 2.1 by 2007 and has drifted down as closed AI-for-science entrants
   arrive.
-- **By 2026 commercial OSS, hardware, physical science and Big Tech/AI all sit near 2, "open core / mixed"**:
-  firms that started open closed up, and firms that started closed opened the layers they don't sell.
-  - Group G (AM and instrument makers, plus open-science infrastructure) sits at 1.11 and isn't plotted.
-  - The yearly means also shift as new firms enter, and the early points rest on few organizations.
+- **By 2026 commercial OSS, hardware and Big Tech/AI average about 2. Science doesn't: it splits into
+  closed firms and open infrastructure** (six-sector version below, added after the review).
+  - Lab-automation and AI-for-science firms (group E) average 0.57, science software and infrastructure
+    (group F) 2.70, and AM, instrument and publishing firms (group G) 1.11
+    ([CSV](data/openness_by_year_six_sectors.csv)).
+  - The yearly means also shift as new firms enter, and the early points rest on few organizations. For
+    change within firms, use the founding-vs-now tables.
+
+![Openness over time in six sectors](figures/openness_by_year_six_sectors.png)
 
 | Sector | n | Mean change in openness (now − founding) | Share that closed down | Share that opened up | Acquired or taken private |
 | --- | --- | --- | --- | --- | --- |
@@ -344,7 +356,8 @@ software, PitchBook, 2018–2024 cohorts; conversion rates from the 2015–17 se
 - median exit valuations of **$1.3B vs. $171M at IPO** and **$482M vs. $34M in M&A**;
 - pre-money valuations **1.6×** at Series A and **1.23×** at Series B;
 - rounds **1.45×** larger at Seed and **1.33×** at Series A;
-- seed-to-Series-A conversion **91% higher**, and **20% / 34% faster** to Series A / B;
+- seed-to-Series-A conversion **91% higher**, and **20% / 34% faster** to Series A / B (the 34% significant
+  only at the report's 80% confidence level);
 - **12%** of COSS companies reached M&A or IPO;
 - **65%** of COSS companies are US-based, vs. 33% of the software industry.
 
@@ -432,7 +445,8 @@ Replicate, Unsloth, Nous Research, Lightning AI, Pydantic, Chroma, Qdrant and We
   - Cloudflare bought Replicate, Hugging Face bought ggml.ai, and Replit bought Chroma.
 - **Berkeley origins again, plus foundations.** vLLM and Ray joined the PyTorch Foundation in 2025, before
   vLLM's maintainers launched Inferact ($150M at $800M) and before Anyscale's sale.
-- **Lesson from the 2018–24 relicensing wave:** so far this cohort stays permissive and puts foundations in early. The firms are young (median founding 2022), while group A firms first closed at a median age of about 10, so *right-censoring* applies. Check again in five years.
+- **Lesson from the 2018–24 relicensing wave:** so far this cohort stays permissive and puts foundations in early. The firms are young (median founding 2022), while group A firms first closed at a median age of about 10, so *right-censoring* applies. At equal age the gap is small: by age 4, 3 of 17 group A firms had made a
+  closing move, against 0 of 17 in J. Check again in five years.
   The money is in hosted layers and in being acquired by whoever sells the compute.
 
 ### 3. Public markets
@@ -445,6 +459,10 @@ Replicate, Unsloth, Nous Research, Lightning AI, Pydantic, Chroma, Qdrant and We
 | Elastic (2018) | 1.16× | 1.9% |
 | GitLab (2021) | 0.38× | −17.2% |
 | Closed peers, median of 8 (2015–2020 listings) | 6.0× (4.3× at year 5, 5.0× at year 7) | median 22% (range 2–41%) |
+
+The chart and the table use different statistics. The chart's closed-peer line is the median growth of $1
+at each year since listing, drawn while at least 4 peers have that much history; it ends at $4.94. The table
+takes each peer's own multiple up to 2026-11-23, then the median (6.0×).
 
 **Did markets punish closing moves?** Return in excess of QQQ after each announcement
 ([`data/relicense_event_study.csv`](data/relicense_event_study.csv), daily prices):
@@ -673,8 +691,8 @@ These are four gap-filling literature reviews submitted at 23:55 and fetched at 
 - **Models:**
   - Academia's open-weight share (2-year pooled) went from 21% (2018–19) to 81% (2024–25).
   - Industry: 44% → 40%. Industry–academia collaborations: 77%.
-  - The largest open-weight training run in 2025 used about 1/12 the compute of the largest closed
-    run, and about 1/50 in 2026 to date ([CSV](data/epoch_max_compute_open_vs_closed.csv)).
+  - The largest open-weight training run in 2025 used about 1/13 the compute of the largest closed
+    run (12.8×), and about 1/50 in 2026 to date ([CSV](data/epoch_max_compute_open_vs_closed.csv)).
 - **Context from the literature** ([Edison: sector trends](edison/sector_openness_trends_answer.md),
   [open weights](edison/open_weights_ai_impact_answer.md)):
   - Industry's share of the largest models went from 11% (2010) to 96% (2021) (Ahmed, Wahed & Thompson).
@@ -697,7 +715,7 @@ These are four gap-filling literature reviews submitted at 23:55 and fetched at 
   - DOE's code.json inventory lists 5,879 releases, **93.6% of them open source**. The other 374 are
     "exempt by law".
   - The top labs are LLNL (826 releases, 100% open), PNNL (721, 74%), Sandia (698, 96%), LBNL (641, 89%),
-    LANL (502, 99%) and ORNL (408, 99.5%).
+    LANL (502, 99%), NREL (478) and ORNL (408, 99.5%).
   - Licences are mostly permissive: BSD-3-Clause 1,928, MIT 1,137, Apache-2.0 378, GPL-3.0 252.
   - Inventory records created per year fell from 1,051 (2020) to 446–588 (2023–24). The inventory was
     last updated in April 2025 and its dates are record-creation dates, so read this as a slowdown in
@@ -927,9 +945,9 @@ raises the stakes on verification, which is why this study logs its checks in
 
 An [addendum](voices/voices_addendum_physsci.md) covers AI for science: the backlash over AlphaFold 3's withheld code, its non-commercial weights, the open clones (Boltz, Chai-1, Protenix) and Nature's 2026 feature on self-driving labs.
 
-Everything here was pulled through the Pi's browser, including five YouTube transcripts opened by
+Everything here was pulled through the Pi's browser, including six YouTube transcripts opened by
 mouse-clicking "Show transcript". [`voices/voices_digest.md`](voices/voices_digest.md) covers 21 sources
-with 125 quotes, each checked by script against the captured text. The index is
+with 138 quotes, each checked by script against the captured text. The index is
 [`voices/voices_index.csv`](voices/voices_index.csv).
 - **Business models (talks):**
   - Frank Nagle (HBS / Linux Foundation): firms that contribute get about twice the value of those that
@@ -937,6 +955,9 @@ with 125 quotes, each checked by script against the captured text. The index is
   - Sid Sijbrandij (GitLab): GitLab tried donations, consulting and support before open core, which runs at
     about 90% gross margin.
   - Mike Olson (Cloudera): services-only firms starve their product.
+  - Travis Oliphant, who wrote NumPy while a BYU professor (2001–07) and later co-founded Anaconda: "not an
+    open source zealot". His objection was to published code that needs proprietary software to run, and he
+    says paying the people who write widely used code is still unsolved.
   - A 2026 r/startups thread gives the same advice.
 - **Forks succeed on trust and backing, not licence text.**
   - Valkey, backed by the hyperscalers, spread fast.
@@ -982,8 +1003,8 @@ with 125 quotes, each checked by script against the captured text. The index is
 - 114 of the 143 files rest on WebFetch alone, as noted above.
 - A second verification pass ([`companies/VERIFICATION_PASS2.md`](companies/VERIFICATION_PASS2.md)) checked
   161 facts in 38 low- and medium-confidence files:
-  - 99 were confirmed on an independent page, 16 values were corrected or filled, and 46 remain
-    unconfirmed.
+  - 99 were confirmed on an independent page, 16 values were changed (10 empty fields filled, 3 values and
+    3 sentences corrected), and 46 remain unconfirmed.
   - Unconfirmed examples: Lila's $550M, dbt Labs' $4.2B, and whether the Qualcomm–Arduino deal has
     closed.
   - The video was rendered before this pass, but none of its narrated numbers changed.

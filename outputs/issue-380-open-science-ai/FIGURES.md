@@ -92,7 +92,14 @@ Every figure in this study, with what it shows. Each `video/scenes/*.mp4` animat
 
 ![US open-access share by institution type (OpenAlex)](figures/openalex.png)
 
-### Openness as a function of time, by sector (report version)
+### Openness over time in six sectors (after the independent review)
+`figures/openness_by_year_six_sectors.png` ([script](scripts/openness_by_year_six.py), [CSV](data/openness_by_year_six_sectors.csv), [animation](video/extras/openness_by_year_six_sectors.mp4))
+
+![Openness over time in six sectors](figures/openness_by_year_six_sectors.png)
+
+Small multiples, one sector per panel, with the other five in gray. Six lines can't share one colour scale safely, and the four-sector version below averaged closed AI-for-science firms with open science infrastructure.
+
+### Openness as a function of time, by sector (report version, four sectors)
 `figures/openness_by_year_sector.png`
 
 ![Openness as a function of time, by sector (report version)](figures/openness_by_year_sector.png)

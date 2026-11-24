@@ -140,7 +140,7 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 
 > First, openness as a function of time. Rebuilding each organization's licensing history year by year, commercial open-source software and hardware started out the most open in the mid-2000s and have declined steadily since. Big Tech and the AI labs moved the other way, opening up through the 2010s before dipping in 2026. Today every sector sits near the middle of our scale: open core, or mixed. The split between young and old firms holds up statistically: companies founded since 2000 became less open than incumbents by about two-thirds of a point, with a ninety-five percent confidence interval that excludes zero.
 
-**Correction:** the narration's 'two-thirds of a point … interval that excludes zero' used a misclassified grouping. Corrected and adjusted for starting openness, the founding-era gap is −0.09 (95% CI −0.45 to +0.28). Also, group G (AM and instrument makers) sits near 1.1 and isn't plotted.
+**Correction:** the narration's 'two-thirds of a point … interval that excludes zero' used a misclassified grouping. Corrected and adjusted for starting openness, the founding-era gap is −0.09 (95% CI −0.45 to +0.28). Also, group G (AM and instrument makers) sits near 1.1 and isn't plotted, and the physical-science line averages closed lab-automation and AI-for-science firms (0.57 in 2026) with open science infrastructure (2.70). The six-sector version is figures/openness_by_year_six_sectors.png.
 
 ### 0:57 Fifty years of open data: the PDB
 **Sources:** data/pdb_released_per_year.csv

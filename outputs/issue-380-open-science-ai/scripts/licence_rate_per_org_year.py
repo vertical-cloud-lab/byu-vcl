@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Licence and access changes per organization-year, 2010-19 vs. 2020-26 (groups A-F).
+
+Answers REVIEW_FINDINGS.md row 15: the raw counts compare a 10-year window with a 7-year one, and many
+organizations in the sample didn't exist before 2015. Exposure is each organization's years operating inside
+the window (founding year to end year, or 2026). Undated events are dropped. Also restricted to organizations
+founded before 2010. Writes data/licence_events_per_org_year.csv."""
+import csv
+
+M = [r for r in csv.DictReader(open("companies/companies_master.csv")) if r["group"] in "ABCDEF"]
+events = [r for r in csv.DictReader(open("companies/events.csv"))
+          if r["group"] in "ABCDEF" and r["direction"] in ("closing", "opening") and r["year"].strip()]
+founded = {r["slug"]: int(float(r["founded_year"])) for r in M if r["founded_year"]}
+ended = {r["slug"]: (int(float(r["end_year"])) if r["end_year"] else 2026) for r in M}
+windows = {"2010-19": (2010, 2019), "2020-26": (2020, 2026)}
+
+
+def exposure(slugs, a, b):
+    return sum(max(0, min(b, ended[s]) - max(a, founded[s]) + 1) for s in slugs if s in founded)
+
+
+out = []
+for scope, keep in [("all A-F", lambda s: True), ("founded before 2010", lambda s: founded.get(s, 9999) < 2010)]:
+    slugs = {r["slug"] for r in M if keep(r["slug"])}
+    for w, (a, b) in windows.items():
+        ex = exposure(slugs, a, b)
+        n = {d: sum(1 for e in events if e["slug"] in slugs and a <= int(float(e["year"])) <= b and e["direction"] == d)
+             for d in ("closing", "opening")}
+        out.append(dict(scope=scope, window=w, n_orgs=len(slugs), org_years=ex, closing=n["closing"], opening=n["opening"],
+                        closing_per_100_org_years=round(100 * n["closing"] / ex, 2),
+                        opening_per_100_org_years=round(100 * n["opening"] / ex, 2)))
+        print(out[-1])
+with open("data/licence_events_per_org_year.csv", "w", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(out[0])); w.writeheader(); w.writerows(out)
