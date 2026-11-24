@@ -1012,8 +1012,14 @@ with 138 quotes, each checked by script against the captured text. The index is
   - 99 were confirmed on an independent page, 16 values were changed (10 empty fields filled, 3 values and
     3 sentences corrected), and 46 remain unconfirmed.
   - Unconfirmed examples: Lila's $550M, dbt Labs' $4.2B, and whether the Qualcomm–Arduino deal has
-    closed.
+    closed. Pass 3 has since confirmed dbt Labs' $4.2B and that Arduino is now part of Qualcomm, though not the
+    closing date.
   - The video was rendered before this pass, but none of its narrated numbers changed.
+- A third pass ([`companies/VERIFICATION_PASS3.md`](companies/VERIFICATION_PASS3.md), [CSV](data/verification_pass3.csv)) retried the 46
+  unconfirmed facts, again with fetches only:
+  - 14 were confirmed, 2 were contradicted and 30 remain unconfirmed.
+  - The two contradictions are recorded but not applied, because applying them would shift figures that were already final. Atinary's
+    openness would rise from 0 to 1 (seven public repositories, mostly MIT or Apache-2.0, around a proprietary platform), and Orbital Materials' founding year (empty) would be 2022.
 - Headline 2025–26 claims were checked against independent sources ([`VERIFICATION.md`](VERIFICATION.md)).
 - **Citation support** ([`companies/SPOT_AUDIT.md`](companies/SPOT_AUDIT.md)). In a random spot-audit of 30
   case-file citations (seed 380, out of 750 field-level citations), **23 fully supported their claim**:
@@ -1082,7 +1088,7 @@ python scripts/edison_fetch.py
 - `companies/CASEBOOK.md`: all 179 case files, one by one, with each one's assessment, timeline, computed metrics and sources.
 - `voices/`: the digest of YouTube, Reddit, Hacker News, blog and forum content. `dal/`: the openness audit
   of DAL and #318.
-- `VERIFICATION.md` and `companies/VERIFICATION_PASS2.md`: the verification logs. `companies/SPOT_AUDIT.md`: a 30-citation spot audit.
+- `VERIFICATION.md`, `companies/VERIFICATION_PASS2.md` and `companies/VERIFICATION_PASS3.md`: the verification logs. `companies/SPOT_AUDIT.md`: a 30-citation spot audit.
 - `REVIEW_FINDINGS.md`: the independent review (39 issues) and how each was resolved. `VIDEO_NOTES.md`: sources for every video chapter and the corrections made after upload.
 - `FINDINGS_BRIEF.md`, `RECOMMENDATIONS.md`, `FIGURES.md`: the two-page brief, the playbook and the figure index. `dal/suggested_proposal_language.md`: draft proposal text on openness, data and IP.
 - `scripts/`: everything used, including `pi_browse.py`/`pi_search.py`, the scene renderers and
