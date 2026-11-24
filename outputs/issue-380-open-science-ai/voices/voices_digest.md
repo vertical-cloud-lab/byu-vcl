@@ -4,7 +4,7 @@ Prepared for [vertical-cloud-lab/byu-vcl#380](https://github.com/vertical-cloud-
 
 ## (a) Method note
 
-Everything below was captured on 2026-11-23 through the lab Raspberry Pi's headed browser (a residential IP): the visible text of 15 pages (6 Reddit threads, 3 Hacker News threads, 5 blog or research pages and 1 forum thread) and the transcripts of 13 YouTube videos, opened by clicking *Show transcript*. One capture came back empty and was made again the same way on 2026-11-24 (Y6). Y7–Y13 were captured on 2026-11-24 from results of the earlier YouTube searches; no new searches were run. Quotes are verbatim from that capture: YouTube auto-captions keep their transcription errors, timestamps link to the caption segment where a quote starts, and Reddit pages showed only their first ~25 comments, so comment tallies are approximate. Reddit, HN and forum comments are opinions, not evidence; numbers that appear in them, or in vendor blogs, are reported as claims and were not checked independently.
+Everything below was captured on 2026-11-23 through the lab Raspberry Pi's headed browser (a residential IP): the visible text of 17 pages (8 Reddit threads, two of them captured on 2026-11-24, 3 Hacker News threads, 5 blog or research pages and 1 forum thread) and the transcripts of 13 YouTube videos, opened by clicking *Show transcript*. One capture came back empty and was made again the same way on 2026-11-24 (Y6). Y7–Y13 were captured on 2026-11-24 from results of the earlier YouTube searches; no new searches were run. Quotes are verbatim from that capture: YouTube auto-captions keep their transcription errors, timestamps link to the caption segment where a quote starts, and Reddit pages showed only their first ~25 comments, so comment tallies are approximate. Reddit, HN and forum comments are opinions, not evidence; numbers that appear in them, or in vendor blogs, are reported as claims and were not checked independently.
 
 ## (b) Source-by-source digest
 
@@ -212,6 +212,28 @@ Everything below was captured on 2026-11-23 through the lab Raspberry Pi's heade
 
 - **Balance:** 25 visible comments. About 10 explain the valuation as a bet on future recurring revenue, about 12 are skeptical or cynical, 1 is bullish and 2 are tangents or empty.
 
+#### R7. OpenTrons or Tecan? (r/biotech)
+
+- **Link:** https://www.reddit.com/r/biotech/comments/10jc9w6/opentrons_or_tecan/ · **Type:** Reddit discussion (captured 2026-11-24 from an earlier search result; first page of comments only) · **Date:** about 2022 (shown as "4y ago")
+
+1. **The question:** a lab with an idle Tecan EVO asks whether to sell it for one or two Opentrons, since "I've heard that it costs around $10k to get a person educated from Tecan itself".
+2. **Open isn't the same as easy.** "The Opentrons still requires programming." (a commenter, who also points to the PyLabRobot forum: "It's the only lab automation forum on the entire internet as far as I'm aware."). Another prefers the open API: "it's easy to pick up the Python API within about a day, and you can extend its capabilities further. I just don't like being reliant on tech support."
+3. **Industry voices favour the closed incumbent.** "I’d only recommend Opentrons to academics right now." and "the accuracy and precision of the Opentrons isn’t very good" (a high-volume commenter). An Agilent field engineer: "I LOVE the open-source hardware movement, so I really want them to be successful.", but says build quality is "you get what you pay for".
+4. **A vendor's framing of the trade-off** (a Tecan sales employee, disclosed): "OpenTrons is definitely the cheaper option, but with the cost cutting you end up having to do a lot of the learning, training, and testing all on your own."
+5. **Skills, not hardware, are the bottleneck.** "it pains me to see one collecting dust because nobody knows how to run it" (a commenter whose company runs 10 robots).
+
+- **Balance (first page):** opinions split; academics and API users lean Opentrons, industry users lean Tecan. These are opinions, not evidence.
+
+#### R8. Building your own software tools for the lab (r/labrats)
+
+- **Link:** https://www.reddit.com/r/labrats/comments/1y2z5zh/building_your_own_software_tools_for_the_lab/ · **Type:** Reddit discussion (captured 2026-11-24 from an earlier search result) · **Date:** ~2026-11-23 (shown as "1d ago")
+
+1. **The premise:** "Lab-related software is notoriously complex, poorly made, a bad fit to your use case, limited, expensive, or all of these at the same time", and the poster says AI assistants (Claude) now let lab staff build their own tools.
+2. **A caution on the source:** one commenter says of the poster, "Their account seems to be used with the primary purpose of promoting ai tools." Treat the framing as promotional.
+3. **Vendors still gate access.** "What brand reactor lets you touch their propietary software?" The answer: Eppendorf's, but "You need to get keys from them to be able to make the dashboard".
+4. **Some want the results shared openly:** "build the deterministic tools your lab needs with AI, publish them and share them in github." Others ask "can sombody make FOSS graphpad prism already?", and one says "Graphpad’s continual price gouging is disgusting".
+5. **AI as an enabler of open science software:** "I have a 3 years grant to build a fully integrated open source software for multi-omics facility. No chance to achieve it without claude ;)"
+
 ### Hacker News threads
 
 #### H1. Valkey Is Rapidly Overtaking Redis (HN, linking a devops.com article)
@@ -358,6 +380,8 @@ Everything below was captured on 2026-11-23 through the lab Raspberry Pi's heade
 | R4 | "Anthropic wants to ban open source models" (r/OS_AI) | reddit | pro | Anthropic seen as using regulation to protect margins; a few dispute the premise. |
 | R5 | Open-source startup revenue (r/startups) | reddit | pro | Open for trust; charge for hosting, operations and team features; AGPL plus an early CLA. |
 | R6 | Anthropic's $1.3T IPO (r/NoStupidQuestions) | reddit | n/a | Valuation read as a bet on lasting dominance; mostly skeptical. |
+| R7 | OpenTrons or Tecan? (r/biotech) | reddit | mixed | Open API valued by academics; industry prefers Tecan's support; training, not hardware, is the bottleneck. |
+| R8 | Building your own lab software (r/labrats) | reddit | pro | Labs build tools with AI around closed vendor software; some urge publishing them on GitHub (poster may be promotional). |
 | H1 | Valkey overtaking Redis (HN, 2024) | hn | pro | Trust broke and forks win when contributors and clouds move; a few defend Redis's dilemma. |
 | H2 | Anthropic's war on open source AI (HN, 2026) | hn | pro | Mostly complaints about an AI-written post; substantive comments see the safety case as control. |
 | H3 | OpenTF is now OpenTofu (HN, 2023) | hn | pro | Fork welcomed under the Linux Foundation, with doubts that its backing goes beyond rivals; much talk of the name. |
