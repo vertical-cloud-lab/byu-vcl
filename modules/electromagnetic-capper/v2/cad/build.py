@@ -40,7 +40,19 @@ width: 10.0, 10.2, 10.4 and 10.5 mm wide, all still 24.8 mm long.
             the latch arms, barbs and everything below the pill are v2_1's, as is the top. Told
             apart by 1-4 dimples at the -y end of the top face (1 = 0.5 mm clearance ... 4 = 0).
 
-Run:  python build.py [outdir] [rack,key,bar,rack_tri,key_tri,sweep]     (needs cadquery)
+Pocket fit (2026-11-23, @benwhitney5463 on #354): the 0.05 mm triangle-nub keys printed on
+2026-11-20 don't go into the original tip rack or the original 9-vial holder. Measured from
+Cubware's own files, the tip rack's pockets are 0.15 mm smaller (A) than the stir module's,
+and only 2.0 mm deep; the vial holder's are the same size as the stir module's.
+
+  pocket_fit  the 3-dot key (10.4 mm pill, 0.1 mm clearance in the deck) with the nub sized
+              to each part's pocket. "T", for the tip rack: the tip rack's pocket grown by
+              0.05 mm all round (A 6.80, B 7.53), 1.8 mm tall. "V", for the vial holder: its
+              pocket exactly (A 6.85, B 7.57), so 0.05 mm a side less than the key that
+              didn't fit, 2.0 mm tall. The letter is engraved at the +y end of the top face,
+              in place of the single dimple that marked the 0.05 mm nub.
+
+Run:  python build.py [outdir] [rack,key,bar,rack_tri,key_tri,sweep,pocket_fit]     (needs cadquery)
 All dimensions in mm.  Rack frame: z=0 is the rack bottom (deck top), vial 1 at
 (0,0), vials along -y.  Key frame: z=0 is the deck top.  Bar frame: y=0 is the
 backboard's front face, z=0 the bar's top.
@@ -98,6 +110,14 @@ P = dict(
     slot_w_meas=10.5,       # deck slot width: the printed 9.8 mm pill + the 0.7 mm clearance Ben measured
     sweep_clear=(0.5, 0.3, 0.1, 0.0),   # clearance in width (total, not per side): pills 10.0, 10.2, 10.4, 10.5
     sweep_mark_y=-8.8,      # 1-4 dimples, Ø1.2 x 0.4 mm, at the -y (arm root) end of the top face
+    # ---- pocket fit (2026-11-23): the 3-dot key with nubs sized to the original parts' pockets,
+    # measured from Cubware @ 0d9e2db (cad/check_pocket_fit.py). Each nub is (circumradius of the
+    # sharp triangle, corner radius it is grown by, height). ----
+    pf_clear=0.1,           # the 3-dot key: 10.4 mm pill, 0.1 mm clearance in the 10.5 mm slot (Ben, 2026-11-20)
+    pf_tiprack=(3.133, 1.05, 1.8),   # TipRack.stl pocket R3.133 + r1.000 (A 6.70, B 7.43), 2.0 deep: +0.05 a side, 0.2 under the roof
+    pf_vialholder=(3.1, 1.1, 2.0),   # 9VialHolder.step pocket R3.1 + r1.1 (A 6.85, B 7.57), 2.1 deep: line to line
+    pf_letter_y=8.3,        # engraved letter centre, +y end of the top face
+    pf_letter_h=3.6, pf_letter_stroke=0.8, pf_letter_depth=0.6,
     # ---- bar ----
     bar_w=13.0, bar_t=10.0, bar_len=135.0,
     prong_t=2.7, prong_h=5.6, prong_len=6.4, hook_drop=3.2, hook_t=3.0, prong_pitch=20.0, prong_top=8.0,
@@ -168,11 +188,11 @@ def cup_cuts_and_adds(p):
                 .edges("|Z").fillet(0.3))
     return cut, adds
 
-def tri_prism(r, z0, z1, cx=0.0, cy=0.0, p=P):
+def tri_prism(r, z0, z1, cx=0.0, cy=0.0, p=P, t=None):
     """Cubware's rounded triangle (vial_stirrer.fs mkNub): a sharp equilateral triangle of
-    circumradius tri_r, one corner toward -y, grown all round by r (straight flats, R = r
-    corners), extruded from z0 to z1 at (cx, cy)."""
-    t = p["tri_r"]
+    circumradius t (default tri_r), one corner toward -y, grown all round by r (straight flats,
+    R = r corners), extruded from z0 to z1 at (cx, cy)."""
+    t = p["tri_r"] if t is None else t
     pts = [(cx, cy - t), (cx + t * math.sqrt(3) / 2, cy + t / 2), (cx - t * math.sqrt(3) / 2, cy + t / 2)]
     return cq.Workplane("XY").workplane(offset=z0).polyline(pts).close().offset2D(r, "arc").extrude(z1 - z0)
 
@@ -217,11 +237,27 @@ def build_rack(p=P, pocket="stem"):
             body = body.cut(tri_prism(p["tri_pocket_r"], -0.01, p["tri_pocket_depth"], 0.0, ky, p))
     return body
 
-def build_key(p=P, top="stem", pill_w=None, marks=0):
+def letter_profile(ch, cx, cy, p=P):
+    """Outline of an engraved "T" or "V" (strokes pf_letter_stroke wide, pf_letter_h tall), its top
+    toward +y, centred on (cx, cy)."""
+    h, s = p["pf_letter_h"], p["pf_letter_stroke"]
+    a = h / 2
+    if ch == "T":
+        pts = [(-a, a), (a, a), (a, a - s), (s / 2, a - s), (s / 2, -a), (-s / 2, -a), (-s / 2, a - s), (-a, a - s)]
+    elif ch == "V":
+        # two strokes meeting at the bottom; the inner notch sits a stroke's height above the tip
+        pts = [(-a, a), (-a + s, a), (0, -a + 1.15 * s), (a - s, a), (a, a), (s / 2, -a), (-s / 2, -a)]
+    else:
+        raise ValueError(ch)
+    return [(cx + x, cy + y) for x, y in pts]
+
+def build_key(p=P, top="stem", pill_w=None, marks=0, nub=None, letter=None):
     """top="stem": the 6 x 12 x 5 mm crush-rib stem (v2_1).  top="tri": Cubware's triangular nub at
     the stir module's 0.05 mm press, with its dimple (key_tri).  Everything below z = 0 is the same.
     pill_w (width sweep): widen the rigid locating pill to this width, same length; nothing else
-    changes.  marks: that many dimples at the -y end of the top face, to tell sweep keys apart."""
+    changes.  marks: that many dimples at the -y end of the top face, to tell sweep keys apart.
+    nub (pocket fit): (circumradius, corner radius, height) of the triangle nub, in place of the
+    stir module's; letter: engrave this letter at the +y end in place of the press dimples."""
     w, l = p["pill_w"], p["pill_l"]
     hx = w / 2
     # rigid locating pill z in [rigid_bottom, 0]
@@ -289,9 +325,18 @@ def build_key(p=P, top="stem", pill_w=None, marks=0):
     if top == "tri":
         # Cubware's nub, grown by nub_press over the pocket, with a lead-in round its top
         # (vial_stirrer.fs makeKey; the stir module's deck_key.stl)
-        nub = (tri_prism(p["tri_pocket_r"] + p["nub_press"], -0.01, p["nub_h"], 0.0, 0.0, p)
-               .faces(">Z").edges().chamfer(p["nub_lead"]))
-        key = key.union(nub)
+        if nub is None:
+            nub_t, nub_r, nub_h = p["tri_r"], p["tri_pocket_r"] + p["nub_press"], p["nub_h"]
+        else:
+            nub_t, nub_r, nub_h = nub
+        nub_solid = (tri_prism(nub_r, -0.01, nub_h, 0.0, 0.0, p, t=nub_t)
+                     .faces(">Z").edges().chamfer(p["nub_lead"]))
+        key = key.union(nub_solid)
+        if letter is not None:
+            # pocket fit: an engraved letter says which part's pocket the nub was sized for
+            cut = (cq.Workplane("XY").polyline(letter_profile(letter, 0.0, p["pf_letter_y"], p)).close()
+                   .extrude(p["pf_letter_depth"] + 0.5).translate((0, 0, -p["pf_letter_depth"])))
+            return key.cut(cut)
         # dimples, Ø1.2 x 0.4 mm, at the end away from the nub's point: one per 0.05 mm of press
         n = int(round(p["nub_press"] / p["mark_step"]))
         for k in range(n):
@@ -374,6 +419,15 @@ def sweep_keys(p=P):
             out.append((f"{stem}_w{pw:.1f}_c{c:.1f}", build_key(p, top=top, pill_w=pw, marks=i + 1)))
     return out
 
+def pocket_fit_keys(p=P):
+    """(name, key) for the pocket fit: the 3-dot key (pf_clear in the measured slot, so 3 dimples at
+    the -y end, as in the sweep) with a nub per original part, and its letter at the +y end."""
+    i = list(p["sweep_clear"]).index(p["pf_clear"])
+    pw = round(p["slot_w_meas"] - p["pf_clear"], 3)
+    return [(f"deck_clip_key_v2_1_tri_w{pw:.1f}_{part}",
+             build_key(p, top="tri", pill_w=pw, marks=i + 1, nub=p[f"pf_{part}"], letter=letter))
+            for part, letter in (("tiprack", "T"), ("vialholder", "V"))]
+
 def describe(nm, o):
     bb = o.val().BoundingBox()
     print(nm, "valid", o.val().isValid(), "solids", len(o.solids().vals()), "bbox", [round(v, 2) for v in (bb.xmin, bb.ymin, bb.zmin, bb.xmax, bb.ymax, bb.zmax)], "vol", round(o.val().Volume(), 1))
@@ -381,21 +435,22 @@ def describe(nm, o):
 
 if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-    which = sys.argv[2].split(",") if len(sys.argv) > 2 else ["rack", "key", "bar", "rack_tri", "key_tri", "sweep"]
+    which = sys.argv[2].split(",") if len(sys.argv) > 2 else ["rack", "key", "bar", "rack_tri", "key_tri", "sweep", "pocket_fit"]
     builders = {"rack": (build_rack, "vial_rack_9x20mL_v2"),
                 "key": (build_key, "deck_clip_key_v2_1"),
                 "bar": (build_bar, "magnet_bar_v2"),
                 "rack_tri": (lambda: build_rack(pocket="tri"), "vial_rack_9x20mL_v2_tri"),
                 "key_tri": (lambda: build_key(top="tri"), "deck_clip_key_v2_1_tri")}
     for nm in which:
-        if nm == "sweep":
-            # as drawn in step/ and stl/width_sweep/, and moved to the bed (as drawn, top up) in
-            # stl/print_oriented/width_sweep/
-            po = os.path.join(out, "stl", "print_oriented", "width_sweep")
+        if nm in ("sweep", "pocket_fit"):
+            # as drawn in step/ and stl/<sub>/, and moved to the bed (as drawn, top up) in
+            # stl/print_oriented/<sub>/
+            sub = "width_sweep" if nm == "sweep" else "pocket_fit"
+            po = os.path.join(out, "stl", "print_oriented", sub)
             os.makedirs(po, exist_ok=True)
-            for fname, o in sweep_keys():
+            for fname, o in (sweep_keys() if nm == "sweep" else pocket_fit_keys()):
                 bb = describe(fname, o)
-                export(o, fname, out, "width_sweep")
+                export(o, fname, out, sub)
                 cq.exporters.export(o.translate((-bb.xmin, -bb.ymin, -bb.zmin)), os.path.join(po, fname + ".stl"),
                                     tolerance=0.01, angularTolerance=0.1)
             continue

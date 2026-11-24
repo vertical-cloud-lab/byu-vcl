@@ -74,6 +74,21 @@
   0.0
  ],
  "sweep_mark_y": -8.8,
+ "pf_clear": 0.1,
+ "pf_tiprack": [
+  3.133,
+  1.05,
+  1.8
+ ],
+ "pf_vialholder": [
+  3.1,
+  1.1,
+  2.0
+ ],
+ "pf_letter_y": 8.3,
+ "pf_letter_h": 3.6,
+ "pf_letter_stroke": 0.8,
+ "pf_letter_depth": 0.6,
  "bar_w": 13.0,
  "bar_t": 10.0,
  "bar_len": 135.0,

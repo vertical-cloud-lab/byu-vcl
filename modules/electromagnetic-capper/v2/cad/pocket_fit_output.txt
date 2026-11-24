@@ -1,0 +1,46 @@
+Triangle key pockets and nubs, measured from the meshes (mm)
+A = corner to the opposite flat, B = across two corners parallel to a flat; R, r = the sharp
+triangle's circumradius and the corner radius it is grown by. Sections at z = 1.0 unless noted.
+Cubware files at Ursa-Laboratories/Cubware@0d9e2db, sha256 checked.
+
+Pockets (depth = roof of the hole above the part's bottom face):
+  tip rack, TipRack.stl @ (10.1, 35.6)           A  6.700  B  7.427  R 3.132  r 1.001  corners [-151, -31, 89]  depth 2.00  (mouth A 6.700)
+  tip rack, TipRack.stl @ (10.1, 125.6)          A  6.700  B  7.427  R 3.133  r 1.000  corners [-151, -31, 89]  depth 2.00  (mouth A 6.700)
+  9-vial holder, 9VialHolder.step @ (0.0, -225.8) A  6.850  B  7.569  R 3.100  r 1.100  corners [-90, 30, 150]  depth 2.10  (mouth A 6.850)
+  9-vial holder, 9VialHolder.step @ (0.0, -0.8)  A  6.850  B  7.569  R 3.100  r 1.100  corners [-90, 30, 150]  depth 2.10  (mouth A 6.850)
+  stir module, base.stl @ (-12.5, -0.8)          A  6.850  B  7.566  R 3.087  r 1.110  corners [-90, 30, 150]  depth 2.10  (mouth A 6.850)
+  stir module, base.stl @ (12.5, -0.8)           A  6.850  B  7.566  R 3.087  r 1.110  corners [-90, 30, 150]  depth 2.10  (mouth A 6.850)
+  v2 tri rack (not printed) @ (0.0, -225.8)      A  6.850  B  7.569  R 3.097  r 1.102  corners [-90, 30, 150]  depth 2.10  (mouth A 6.850)
+  v2 tri rack (not printed) @ (0.0, -0.8)        A  6.850  B  7.569  R 3.097  r 1.102  corners [-90, 30, 150]  depth 2.10  (mouth A 6.850)
+  The 9-vial holder in Cubware is byte for byte PANDA-BEAR's 9VialHolder20mL_TightFit.step (same size), so
+  check_tri_fit.py's measurement of that file (A 6.850, B 7.569, 2.1 deep) is the same part.
+
+Nubs (height = top of the nub above the key's top face):
+  Cubware's 9VialHolder-key (glued, per README)  A  6.650  B  7.369  R 3.100  r 1.000  corners [-90, 30, 150]  height 2.00
+  stir module deck_key.stl (0.05 press, PETG)    A  6.950  B  7.666  R 3.086  r 1.160  corners [-90, 30, 150]  height 2.00
+  3-dot key of 11-20, w10.4_c0.1 (didn't fit)    A  6.950  B  7.669  R 3.097  r 1.152  corners [-90, 30, 150]  height 2.00
+  NEW deck_clip_key_v2_1_tri_w10.4_tiprack       A  6.800  B  7.526  R 3.130  r 1.052  corners [-90, 30, 150]  height 1.80  (A 6.313 at the lead-in's top)
+  NEW deck_clip_key_v2_1_tri_w10.4_vialholder    A  6.850  B  7.569  R 3.097  r 1.102  corners [-90, 30, 150]  height 2.00  (A 6.366 at the lead-in's top)
+
+Fit, each side (+ = interference, - = clearance), A and B:
+  key                                                     tip rack           9-vial holder             stir module
+  Cubware 9VialHolder-key (glued)                  -0.025 -0.029           -0.100 -0.100           -0.100 -0.098  
+  stir module deck_key (PETG, best fit)            +0.125 +0.120           +0.050 +0.048           +0.050 +0.050  
+  3-dot key of 11-20 (didn't fit)                  +0.125 +0.121           +0.050 +0.050           +0.050 +0.051  
+  NEW tiprack key (T)                              +0.050 +0.049           -0.025 -0.022           -0.025 -0.020  
+  NEW vialholder key (V)                           +0.075 +0.071           +0.000 -0.000           -0.000 +0.001  
+  tip rack: nub 1.80 tall in a 2.00 deep pocket, 0.20 mm under its roof
+  9-vial holder: nub 2.00 tall in a 2.10 deep pocket, 0.10 mm under its roof
+
+Each new key pressed home in its own part's pocket (key top face on the part's underside;
+the key turned to the pocket's corner direction and centred on it):
+  tip rack: skipped, the part's mesh is not a closed volume (Cubware's TipRack.stl is open); the sections above are the check
+  9-vial holder: key turned 0 deg; overlap 0.00 mm^3 at z 0.00..1.70, spread round the 23.0 mm pocket wall: 0.000 mm thick
+
+Below the engraved letter (z < -0.6), each new key against the 11-20 3-dot key (sections every 0.25 mm):
+  deck_clip_key_v2_1_tri_w10.4_tiprack: largest difference in section area (mm^2) or outline extent (mm), z -14.9 to -0.65: 0.0000
+    top-face marks at z = -0.3: 4 recesses, centres (-2.2, -8.8), (+2.2, -8.8), (+0.0, -8.8), (+0.0, +8.7)
+    volume 2925.1 mm^3 (11-20 key 2938.1); watertight True
+  deck_clip_key_v2_1_tri_w10.4_vialholder: largest difference in section area (mm^2) or outline extent (mm), z -14.9 to -0.65: 0.0000
+    top-face marks at z = -0.3: 4 recesses, centres (-2.2, -8.8), (+2.2, -8.8), (+0.0, -8.8), (+0.0, +8.5)
+    volume 2933.1 mm^3 (11-20 key 2938.1); watertight True
