@@ -93,6 +93,14 @@ below links to a file in this folder, and each file names its sources.
    - OSF stopped new projects on 2026-11-16 for lack of $4–5M a year.
    - Meta shut Papers with Code in 2025.
    - AI labs now court science with access programmes (seats, credits) rather than open weights.
+11. **The code survives even when companies close it, and the AI-era cohort has kept it open.**
+   - Every fork after a closing move is alive. Valkey, Pekko, OpenVox and LibreOffice now out-commit
+     their originals ([forks](data/fork_vs_original.csv)).
+   - 17 AI-era open-source startups (Ray, vLLM, LangChain, Ollama, llama.cpp and others) never moved to
+     SSPL or BSL. They were sold to compute and chip companies (CoreWeave, Nscale, Qualcomm,
+     Cloudflare) ([group J](companies/J/_summary.md)).
+   - AI-for-science model releases are more open than frontier LLMs (2.8 vs. 1.6 on the 0–4 scale)
+     ([group I](companies/I/_summary.md)).
 
 ## Method
 
