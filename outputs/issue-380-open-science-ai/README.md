@@ -11,7 +11,7 @@ below links to a file in this folder, and each file names its sources.
   It covers openness over time, the open-science commons, how the labs' language changed, the US licence mix, AM makers and the DAL audit.
   MP4: [`video/open_science_value_ai_part2.mp4`](video/open_science_value_ai_part2.mp4). Chapters: [`video/chapters_part2.txt`](video/chapters_part2.txt).
 
-**Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has seven evidence-linked actions. **All figures:** [`FIGURES.md`](FIGURES.md). **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md).
+**Two-page brief:** [`FINDINGS_BRIEF.md`](FINDINGS_BRIEF.md). **Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has seven evidence-linked actions. **All figures:** [`FIGURES.md`](FIGURES.md). **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md).
 
 ## Short answer
 
@@ -172,6 +172,9 @@ dip in 2024–25 is probably indexing lag in OA status.
 - Venture investment in COSS has averaged about **$9B a year** since 2019, across about 250 deals a year. 2024 alone saw 211 deals totalling **$26.4B**, driven by AI (LF/Serena/COSSA 2025).
 - Set that against the **$8.8T** demand-side value of the open code firms use: the companies capture
   a few percent of it at most.
+- Commercial market-research estimates of an "open-source services market" (about $39B in 2025, as
+  quoted by aggregators such as Gitnux; seen in Pi search results) are widely cited but unaudited, so we
+  don't use them.
 
 ![Where the money went](figures/values.png)
 
