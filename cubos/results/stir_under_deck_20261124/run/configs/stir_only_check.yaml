@@ -1,0 +1,38 @@
+# stir_only_check.yaml -- the CubOS `stir` command on the real stirrer, with no
+# labware moves. CubXL; gantry cub_xl_ben_3_instrument_stirrer.yaml, deck
+# stir_module_trial_stirrer.yaml. Needs cubos/patches/stirrer-approach-1.patch.
+#
+# Run on 2026-11-17 (PR #348) while the deck's vial 1 position was unconfirmed:
+# the head only homes (it is parked at the homed corner already), so nothing
+# goes near a vial, and the stirrer is driven through CubOS's protocol engine
+# in each of the command's three forms:
+#
+#   1 timed and blocking: 600 rpm for 20 s; the step returns when the
+#     firmware's own timer has stopped it (CubOS polls `31` once a second)
+#   2 timed, no wait: 600 rpm with a 60 s firmware limit; the protocol goes on
+#   3 a 15 s pause while it stirs (in stir_transfer_5x.yaml, the vial 2 work)
+#   4 rpm 0: stopped by the protocol, well inside the 60 s limit
+#
+# The run's teardown also stops every stirrer (disconnect_instruments).
+
+protocol:
+  - home:
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 20
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 600
+      seconds: 60
+      wait: false
+
+  - pause:
+      seconds: 15
+      reason: stirring in the background, as during the vial 2 steps
+
+  - stir:
+      instrument: stirrer_1
+      rpm: 0

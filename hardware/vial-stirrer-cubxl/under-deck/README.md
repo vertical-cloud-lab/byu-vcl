@@ -10,7 +10,10 @@ clearance for the stir module."*
 **Status: a mock-up, printed once.** Two frames and two collars were printed in PLA on the H2D on
 2026-11-20 ([record](../print/2026-11-20-h2d-under-deck/README.md)). The frames were printed
 without their 0.5 mm pads, so they need four 0.5 mm M3 washers (see [the parts](#the-parts)).
-Nothing has been assembled or measured yet. The magnet numbers come from the same model as
+**First stir test, 2026-11-24** ([record](../../../cubos/results/stir_under_deck_20261124/README.md)):
+once turning, it held 600 rpm through CubOS and reached 870–1080 rpm, but hands-off it started
+from rest only once in nine tries, and barely moved with the vial out. The record lists what to
+check on the drive. The magnet numbers come from the same model as
 [`../analysis/coupling_vs_height.py`](../analysis/coupling_vs_height.py), calibrated on the same
 observations. The first version, at commit `c549ed6`, reached into the far half of each slot. Its
 collar and frame were 71 and 72 mm long, so two of them needed two rows (90 mm) in Y.

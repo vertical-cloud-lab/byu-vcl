@@ -1,0 +1,59 @@
+23:17:28Z  == stir_only_check_20261124: cub_xl_ben_3_instrument_stirrer.yaml | stir_module_trial_stirrer.yaml | stir_only_check.yaml
+23:17:28Z  -- 1. checks
+23:17:28Z  byu-vcl 87e97d5 | CubOS 496819c + 5 patch(es): grbl-prompt-status-polling.patch, p20-gen2-plunger-constants.patch, pipette-connect-tolerate-failed-home-main.patch, stirrer-approach-1.patch, tipped-hover-clamp-main.patch
+23:17:28Z  Pi up 2 weeks, 6 days, 38 minutes, throttled=0x0
+23:17:28Z  ports: gantry /dev/ttyUSB0 -> /dev/ttyUSB0, vial_capper_decapper /dev/ttyACM0 -> /dev/ttyACM0, pipette /dev/ttyACM0 -> /dev/ttyACM0, stirrer_1 /dev/ttyACM0 -> /dev/ttyACM0 (none held open)
+23:17:28Z  protocol: 5 steps, step 0 = home
+23:17:31Z  GRBL: <Alarm|WPos:364.000,281.000,125.000|FS:0,0|WCO:-364.000,-281.000,-125.000> | $20=1 $21=1 travel [364.0, 281.0, 125.0] G54 [-364.0, -281.0, -125.0] | feed F3000 vs max [5000.0, 5000.0, 5000.0]
+23:17:31Z  Arduino:
+23:17:35Z                 connect          dt=  3.766s  ok
+23:17:35Z    23:17:35.740 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+23:17:35Z    23:17:35.747 cap sensor       dt=  0.004s  OK:{"value1":0}
+23:17:35Z    23:17:35.751 EMAG_OFF         dt=  0.004s  OK:{"msg":"Electromagnet off"}
+23:17:35Z    23:17:35.756 STIR_STATUS      dt=  0.012s  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:17:35Z  -- 2. gates
+23:17:36Z  gate validate         PASS  (0.5 s)  Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ign
+23:17:51Z  gate mock             PASS  (15.6 s)  Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ign
+23:18:07Z  gate shadow           PASS  (15.6 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+23:18:23Z  gate shadow_tipstuck  PASS  (15.6 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+23:18:23Z  -- 3. run
+23:18:23Z  RUN start 23:18:23Z (16:18:23 MST lab)
+23:19:33Z  RUN end   23:19:33Z (16:19:33 MST lab), 70.5 s, rc=0
+23:19:33Z  -- 4. post-run
+23:19:33Z  post-run Arduino:
+23:19:37Z                 connect          dt=  3.768s  ok
+23:19:37Z    23:19:37.238 EMAG_OFF         dt=  0.005s  OK:{"msg":"Electromagnet off"}
+23:19:37Z    23:19:37.243 cap sensor       dt=  0.004s  OK:{"value1":0}
+23:19:37Z    23:19:37.247 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+23:19:37Z  -- 5. summary
+# stir_only_check_20261124
+
+✅ **5/5 steps, protocol complete**
+
+- **When:** 2026-11-24 23:18:23Z → 23:19:33Z (16:18:23 MST–16:19:33 MST lab), **70 s** wall, run process start to end; steps themselves 43 s
+- **Code:** byu-vcl `87e97d5` · CubOS `496819c` + `grbl-prompt-status-polling`, `p20-gen2-plunger-constants`, `pipette-connect-tolerate-failed-home-main`, `stirrer-approach-1`, `tipped-hover-clamp-main`
+- **GRBL:** travel [364.0, 281.0, 125.0], G54 [-364.0, -281.0, -125.0], `$20=1` `$21=1`, feed F3000
+- **G-code:** 0 `G01` in 0 s (median None s, shortest None s), F ; `$H` [7.9] s
+- **Kernel:** 0 USB line(s) during the run
+
+| step | command | s |
+|---:|---|---:|
+| 0 | home | 7.9 |
+| 1 | stir | 20.3 |
+| 2 | stir | 0.0 |
+| 3 | pause | 15.0 |
+| 4 | stir | 0.0 |
+
+| plunger (UTC) | command | args | s | reply |
+|---|---|---|---:|---|
+| 23:18:32 | STATUS |  | 0.01 | `OK:{"homed":0,"pos":0.00,"max_vol":20.00}` |
+| 23:18:45 | HOME |  | 12.68 | `OK:{"msg":"Pipette homed"}` |
+| 23:18:48 | MOVE_TO | 28.0, 0.0 | 2.56 | `OK:{"msg":"Pipette moved","v":[28.00]}` |
+
+| stir | started (UTC) | at step | stopped by | s | `31` reads | rpm max | rpm median, last 10 reads | stalled |
+|---:|---|---|---|---:|---:|---:|---:|---|
+| 1 | 23:18:56.041 | 1 stir | firmware (its timer) | 20.2 | 21 | 630 | 600 | no |
+| 2 | 23:19:16.293 | 2 stir | step 4 stir | 15.0 | 14 | 630 | 210 | no |
+
+Files: `runner.log` (everything), `checks.json`, `gate_*.log`, `run_hardware.log`, `step_trace.json`, `plunger_trace.json`, `stir_trace.json`, `gantry_*.log`, `tic_*`, `arduino_*.log`, `frames/`.
+
