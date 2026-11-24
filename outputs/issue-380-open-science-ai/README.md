@@ -114,6 +114,12 @@ below links to a file in this folder, and each file names its sources.
 | Language | Term rates per 1,000 words in 57 documents from Anthropic (26), OpenAI (22), Meta, Google DeepMind, DeepSeek, xAI and US policy (3), all fetched through the Pi | [`language/`](language/) |
 | Video | 20 animated matplotlib scenes, Kokoro-82M narration (Apache-2.0, offline), joined with ffmpeg | [`video/`](video/), [`scripts/build_video.py`](scripts/build_video.py) |
 
+**The Pi browser at work.** These are screenshots from the headed Chrome whose traffic exits through the
+CubXL Pi ([`pi-browser/screenshots/`](pi-browser/screenshots/)). On the left, the YouTube transcript panel
+that mouse automation opened. On the right, a Hacker News search typed key by key.
+
+<img src="pi-browser/screenshots/pi_youtube_show_transcript.jpg" width="49%"> <img src="pi-browser/screenshots/pi_hn_search.jpg" width="49%">
+
 **A limit, stated plainly.** The WebSearch tool allows 200 searches per session, shared by every agent,
 and they were used up about 15 minutes in. The limit notice asks agents not to get around it through a
 browser or proxy, so the case-study agents finished with **WebFetch on known primary and reference
