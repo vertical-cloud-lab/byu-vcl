@@ -142,6 +142,6 @@ What changed in response to each row. "Fixed" means the wording or number now ma
 | 29 | Fixed | The $26.4B is 78% xAI and Databricks; the 34% is significant only at 80% confidence. |
 | 30 | Fixed | Survival differences called negligible; the sector mix behind the revenue noted. |
 | 33 | Fixed | Years labelled (2024 vs. 2025), 1/13 for 2025, the stock statistics explained, NREL added, "16 values changed (10 filled)". |
-| 35 | Fixed | 150 searches, 84 fetches, 15 Edison tasks, 7 transcript sessions for 6 videos (the empty capture was made again on 2026-11-24). |
+| 35 | Fixed | 150 searches, 84 fetches, 15 Edison tasks. Transcripts: the empty capture was made again on 2026-11-24, and seven more talks were captured from earlier search results, so the count is now 14 sessions for 13 videos. |
 
 The videos are snapshots and were not re-rendered. [`VIDEO_NOTES.md`](VIDEO_NOTES.md) lists what they overstate.
