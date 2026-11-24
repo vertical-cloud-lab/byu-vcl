@@ -822,6 +822,8 @@ DAL `e7a01b3` and #318 `75c0ed0`) covers six things:
   - One MIT, MCP-style driver per instrument.
   - API rights in procurement.
 
+**Draft proposal language.** [`dal/suggested_proposal_language.md`](dal/suggested_proposal_language.md) has paragraphs on software sharing, data management, data-sharing limits, IP for compositions and partner roles. Together they would settle the inconsistencies the audit found.
+
 **What the evidence says to do**
 1. **Keep open the layers others build on.**
    - Instrument drivers, the digital-thread schema and campaign data are what turned the PDB and the
