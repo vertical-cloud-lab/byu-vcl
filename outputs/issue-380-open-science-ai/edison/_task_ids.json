@@ -76,5 +76,17 @@
     "job": "job-futurehouse-paperqa3",
     "query": "What does the literature say about the funding and sustainability of open scholarly and scientific infrastructure (arXiv, the Protein Data Bank, Zenodo, OSF, OpenAlex, community open-source scientific software)? Include costs, funding models (grants, memberships, consortia, endowments), documented failures or service reductions, and proposals for sustaining such infrastructure as AI increases its use.",
     "submitted_utc": "2026-11-23T23:55:31.651581+00:00"
+  },
+  "academic_techtransfer_open_source": {
+    "task_id": "f400134c-1783-4d33-b18a-ff249ab5192a",
+    "job": "job-futurehouse-paperqa3",
+    "query": "How do US universities and national laboratories handle open-source release versus patenting and licensing of research software and hardware? Include evidence on technology-transfer office policies and the Bayh-Dole Act tension, university Open Source Program Offices (OSPOs), licensing income versus open release (e.g., AUTM data), DOE national laboratory software release and copyright rules, and measured outcomes such as adoption, spinouts and revenue.",
+    "submitted_utc": "2026-11-24T00:33:33.047575+00:00"
+  },
+  "academic_osh_commercialization": {
+    "task_id": "93d6577f-0214-40d3-a52f-b2519acc103b",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What pathways and outcomes have been documented for commercializing open-source scientific hardware and laboratory automation that originated in academia (for example OpenFlexure, Opentrons, open-source self-driving lab platforms, open pipetting robots, open microscopes)? Include spinout companies, kit sellers and distributors, service models, crowdfunding, licensing (CERN-OHL, CC BY-SA), revenue or sales figures, and reported barriers such as certification, support, liability and cloning.",
+    "submitted_utc": "2026-11-24T00:33:34.052868+00:00"
   }
 }

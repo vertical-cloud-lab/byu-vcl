@@ -788,6 +788,20 @@ DAL `e7a01b3` and #318 `75c0ed0`) covers six things:
    - The SDL-demo kit's $2.24 margin and LulzBot's collapse both point to services rather than units:
      cloud access, training, setup, and "commercialization-as-a-service" partners such as GroupGets.
 
+### 9b. This lab's own open record is now written mostly by AI agents
+
+The same `gh api` dump of **this** repository (vertical-cloud-lab/byu-vcl, to 2026-11-24; script
+`scripts/gh_dump.py`, table [`data/byu_vcl_authorship_by_month.csv`](data/byu_vcl_authorship_by_month.csv)) contains:
+- 317 issues and PRs, 3,731 conversation comments, and review and discussion posts;
+- humans wrote **2,909** records and Claude wrote **1,004**;
+- by volume, Claude wrote **6.4M characters against humans' 1.4M**, about 4.7× as much;
+- Copilot wrote 154 records, mostly in June 2026.
+
+In the AI era, an open lab's public record (decisions, BOMs, analyses, videos like these) is increasingly
+produced by agents in the open, with humans steering. That makes openness cheaper to practice. It also
+raises the stakes on verification, which is why this study logs its checks in
+[`VERIFICATION.md`](VERIFICATION.md).
+
 ### 10. YouTube, Reddit, Hacker News, blogs and forums
 
 An [addendum](voices/voices_addendum_physsci.md) covers AI for science: the backlash over AlphaFold 3's withheld code, its non-commercial weights, the open clones (Boltz, Chai-1, Protenix) and Nature's 2026 feature on self-driving labs.
