@@ -353,6 +353,15 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
 | GitLab (2021) | 0.38× | −17.2% |
 | Closed peers, median of 8 (2015–2020 listings) | 6.0× (4.3× at year 5, 5.0× at year 7) | median 22% (range 2–41%) |
 
+**Did markets punish closing moves?** Return in excess of QQQ after each announcement
+([`data/relicense_event_study.csv`](data/relicense_event_study.csv), daily prices):
+- MongoDB → SSPL (2018-10-16): +5.2% over 5 days, +10.6% over 20 days.
+- Elastic → SSPL/ELv2 (2021-01-14): +10.8% over 5 days, +4.1% over 20 days.
+- Elastic adding AGPL back (2024-08-29): −27% over 5 days. This is confounded: Elastic reported
+  quarterly results the same day.
+
+Investors did not punish the closing moves, and with three events this is anecdote, not proof.
+
 Open-source origin is neither a premium nor a proven penalty. Individual execution dominates, and
 three of the six open-source listings left the market through buyouts.
 
