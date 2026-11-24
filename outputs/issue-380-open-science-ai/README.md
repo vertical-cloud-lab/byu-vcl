@@ -263,6 +263,9 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 - **The VC-era vs. incumbent difference is not noise.** Across all 143 files, mean openness change for
   companies founded since 2000 minus that for companies founded before 2000 is −0.67, with a 95%
   bootstrap CI of −1.04 to −0.31.
+  - With the independent re-scored openness values from the calibration check, the difference is
+    **−0.71 (95% CI −1.11 to −0.35)**. Re-scored public infrastructure barely moves (+0.05). The
+    result doesn't depend on who assigned the scores.
 - **US-only, the gap widens:**
   - VC-era −0.46 (47% made a closing move, n = 59);
   - long-standing +0.47 (n = 19);
