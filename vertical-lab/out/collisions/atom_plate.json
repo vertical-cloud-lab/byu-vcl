@@ -8,7 +8,7 @@
  "depth_limit_mm": 1.5,
  "hits_allowed_before_but_too_deep": 0,
  "fps": 15,
- "arm_seconds": 28.5,
+ "arm_seconds": 35.8,
  "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
  "movers": {
   "frames_checked": 2146,
