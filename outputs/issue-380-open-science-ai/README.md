@@ -1078,10 +1078,12 @@ python scripts/edison_fetch.py
 - `data/`: the Epoch, OpenAlex, price and openness-outcome tables.
 - `language/`: the URL list, term counts and key quotes.
 - `pi-browser/`: query lists and the full search log.
-- `figures/`, `video/`: final frames, scenes, narration, audio and the final MP4.
+- `figures/`, `video/`: final frames, narration, chapters and the four MP4s (audio and per-scene clips are re-creatable with `scripts/build_video.py`).
 - `companies/CASEBOOK.md`: all 179 case files, one by one, with each one's assessment, timeline, computed metrics and sources.
 - `voices/`: the digest of YouTube, Reddit, Hacker News, blog and forum content. `dal/`: the openness audit
   of DAL and #318.
-- `VERIFICATION.md` and `companies/VERIFICATION_PASS2.md`: the verification logs.
+- `VERIFICATION.md` and `companies/VERIFICATION_PASS2.md`: the verification logs. `companies/SPOT_AUDIT.md`: a 30-citation spot audit.
+- `REVIEW_FINDINGS.md`: the independent review (39 issues) and how each was resolved. `VIDEO_NOTES.md`: sources for every video chapter and the corrections made after upload.
+- `FINDINGS_BRIEF.md`, `RECOMMENDATIONS.md`, `FIGURES.md`: the two-page brief, the playbook and the figure index. `dal/suggested_proposal_language.md`: draft proposal text on openness, data and IP.
 - `scripts/`: everything used, including `pi_browse.py`/`pi_search.py`, the scene renderers and
   `build_video.py`.
