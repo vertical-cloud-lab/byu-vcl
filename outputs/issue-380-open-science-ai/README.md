@@ -242,6 +242,8 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 
 ![Who opens, who closes](figures/kinds.png)
 
+*This figure and the table below use the first classification; see the correction under "Robustness checks" below ([`data/kinds_corrected.csv`](data/kinds_corrected.csv)).*
+
 | Kind of organization | n | Mean openness at founding → today | Change | Made a closing move | Made an opening move |
 | --- | --- | --- | --- | --- | --- |
 | Companies founded since 2000 (mostly venture-backed) | 71 | 1.86 → 1.52 | **−0.34** | 48% | 30% |

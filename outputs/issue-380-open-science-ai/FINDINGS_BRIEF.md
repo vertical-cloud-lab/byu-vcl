@@ -23,7 +23,7 @@ This two-page version of [`README.md`](README.md) gives every number with its so
 6. **7× and 14×.** Median IPO and M&A exit values for VC-backed open-source startups vs. matched closed
    peers ($1.3B vs. $171M; $482M vs. $34M). The source is the LF/Serena/COSSA 2025 report, co-written by
    a VC that backs open source.
-7. **16 → 31 closing moves, 11 → 30 opening moves.** Licence changes in the 2010s vs. 2020–26 (video snapshot, groups A–F). With the AI-for-science models and AI-era startups added, 2020–26 is 36 closing vs. 50 opening. All
+7. **16 → 31 closing moves, 11 → 30 opening moves.** Licence changes in the 2010s vs. 2020–26 (video snapshot, groups A–F). Per organization-year the rate still more than doubled, from 3.4 to 8.2 per 100 ([rates](data/licence_events_per_org_year.csv)). With the AI-for-science models and AI-era startups added, 2020–26 is 36 closing vs. 50 opening. All
    eight well-known forks checked are alive (most closing moves drew no fork). Valkey, Pekko, OpenVox and
    LibreOffice now out-commit the originals ([fork data](data/fork_vs_original.csv)).
 8. **−0.61 raw, but −0.09 adjusted (95% CI −0.45 to +0.28).** Companies founded since 2000 became less

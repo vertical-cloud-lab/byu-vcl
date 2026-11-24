@@ -108,7 +108,7 @@ leverage per unit of effort.
 - The open records of `ac-dev-lab` and the SDL demo (4,928 GitHub records), plus byu-vcl's own issues and
   the #318 videos, are what made this study possible.
 - Government, academic and foundation infrastructure is the one category that almost never closed (1 of
-  18 made a closing move).
+  24 made a closing move, in groups A–G).
 - That is the category a university lab belongs to.
 
 ## 8. Use the university's own machinery on purpose

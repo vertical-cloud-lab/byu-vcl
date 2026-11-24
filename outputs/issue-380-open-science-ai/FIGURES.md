@@ -52,6 +52,8 @@ Every figure in this study, with what it shows. Each `video/scenes/*.mp4` animat
 
 ![Who opens, who closes: VC-era firms vs incumbents vs public infrastructure](figures/kinds.png)
 
+**Correction (independent review, 2026-11-24):** this figure uses the first classification, which counted pre-2000 open infrastructure (PDB, LAMMPS, ASF, arXiv) among the incumbents. With infrastructure classified first, the founding-era gap is −0.61 raw and −0.09 (95% CI −0.45 to +0.28) adjusted for starting openness ([`data/kinds_corrected.csv`](data/kinds_corrected.csv)). It is mostly convergence to the middle.
+
 ### Openness lanes: Big Tech and AI labs
 `figures/lanes_ai.png`
 
