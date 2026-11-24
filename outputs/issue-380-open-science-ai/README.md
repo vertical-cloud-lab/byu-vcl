@@ -240,6 +240,23 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 - **Origins:** academic and government origins drift *toward* openness, while founder startups drift away
   from it. This matches the VC-era vs. incumbent result below.
 
+**Capital efficiency: latest value ÷ total funding raised** (where both are known;
+[`data/value_to_funding_by_sector.csv`](data/value_to_funding_by_sector.csv)):
+
+| Sector | n | Median value ÷ funding | Median funding |
+| --- | --- | --- | --- |
+| Commercial OSS (A, B) | 22 | **9.4×** | $350M |
+| AI-era OSS startups (J) | 6 | 6.7× | $315M |
+| Hardware (D) | 3 | 8.0× | $249M |
+| Physical-science companies (E) | 4 | **3.2×** | $478M |
+| AM makers (G) | 1 | 0.3× (Markforged) | $137M |
+
+- Commercial open source has turned funding into value at about three times the rate of the
+  physical-science startups in the sample.
+- The hardware and science samples are tiny, so treat this as directional.
+- The physical-science firms with known values are mostly closed (Lila, CuspAI, Benchling), plus
+  Opentrons (0.8×).
+
 **Robustness checks** ([`scripts/robustness_checks.py`](scripts/robustness_checks.py),
 [`data/robustness_kinds_by_scope.csv`](data/robustness_kinds_by_scope.csv),
 [`data/robustness_openness_vs_value.csv`](data/robustness_openness_vs_value.csv)):
