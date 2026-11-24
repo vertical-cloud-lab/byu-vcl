@@ -1045,9 +1045,11 @@ python3 scripts/gh_corpus.py
 python3 scripts/epoch_openness.py; python3 scripts/openalex_trends.py; python3 scripts/openalex_analyze.py
 python3 scripts/market_prices.py; python3 scripts/innovation_graph.py; python3 scripts/pdb_growth.py
 python3 scripts/doe_code.py /path/to/energy.gov/code.json; python3 scripts/openalex_physsci_topics.py
+python3 scripts/pdb_figure.py; python3 scripts/physsci_topics_figure.py
 # Case files -> tables, casebook, robustness
 python3 scripts/companies_aggregate.py; python3 scripts/casebook.py; python3 scripts/openness_outcomes.py
 python3 scripts/robustness_checks.py; python3 scripts/openness_by_year.py; python3 scripts/fork_robustness.py
+python3 scripts/kinds_corrected.py; python3 scripts/openness_by_year_six.py; python3 scripts/licence_rate_per_org_year.py
 # Pi browser (headed Chrome on :99, traffic via the CubXL Pi; rig.sh from byu-vcl PR 234)
 python3 scripts/pi_search.py --engine ddg "query"; python3 scripts/pi_search.py --fetch URL
 python3 scripts/pi_youtube_transcript.py VIDEO_ID out.json
