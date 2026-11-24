@@ -42,14 +42,21 @@ EXPERIMENTS = {
               for k in (0.0, 0.5, 1.0) for p in ("tiered", "cost_aware") for s in range(10)],
     "calphad": [dict(facility="proposed", scenario="historical", policy=p, seed=s, kappa=1.0, isolated=False)
                 for p in ("tiered_tc", "cost_aware_tc") for s in range(20)],
+    # the proposals' scale-up: a gas-atomized lot of the first good alloy, and (FLAIME) an E8 plate from it
+    "scaleup": [dict(facility="proposed", scenario="historical", policy="cost_aware_scaleup", seed=s, kappa=1.0,
+                     isolated=False) for s in range(20)],
+    # the ONR proposal's H4: choosing new experiments while others are pending, against one at a time
+    "wip": [dict(facility="proposed", scenario="historical", policy="cost_aware", seed=s, kappa=1.0, isolated=False,
+                 wip=w) for w in ((1, 1), (6, 3), (24, 8)) for s in range(10)],
 }
 
 
 def run_one(cfg: dict) -> dict:
     from twin import campaign as C, policies as P
     t0 = time.time()
-    specs = {"flaime_al": C.Spec("flaime_al", BUDGET["flaime_al"], WIP["flaime_al"], cfg["seed"], cfg["kappa"]),
-             "onr_cu": C.Spec("onr_cu", BUDGET["onr_cu"], WIP["onr_cu"], cfg["seed"], 1.0)}
+    wip = cfg.get("wip") or (WIP["flaime_al"], WIP["onr_cu"])
+    specs = {"flaime_al": C.Spec("flaime_al", BUDGET["flaime_al"], wip[0], cfg["seed"], cfg["kappa"]),
+             "onr_cu": C.Spec("onr_cu", BUDGET["onr_cu"], wip[1], cfg["seed"], 1.0)}
     pols = {k: P.POLICIES[cfg["policy"]](k, cfg["seed"]) for k in specs}
     tw = C.Twin(specs, pols, scenario=cfg["scenario"], facility=cfg["facility"], seed=cfg["seed"],
                 horizon_days=HORIZON_DAYS, isolated=cfg["isolated"])
@@ -67,10 +74,39 @@ def run_one(cfg: dict) -> dict:
             order_cost=round(sum(x.cost for x in c.stores.orders), 2),
             wait_days=round(float(np.mean([x.arrival_day - x.placed_day for x in c.stores.orders
                                            if x.placed_day >= 0] or [0.0])), 2),
-            best_alloy=_best(o["demonstrated"]))
+            best_alloy=_best(o["demonstrated"]),
+            vectors=_vectors(k, o["demonstrated"]))
     res["utilization"] = out["utilization"]["shared"]
     res["market_events"] = out["market_events"]
     return res
+
+
+def _vectors(camp, dem):
+    """Each demonstrated alloy's objective desirabilities (the multi-objective view; 0 if infeasible)."""
+    from twin.campaign import _desir
+    out = []
+    ref_c = 0.02897
+    for d in dem:
+        if camp == "flaime_al":
+            v = [_desir(d["ys"], 150, 400), _desir(d["el"], 2, 15), _desir(1.5 * ref_c - d["cmdri"], 0, 1.5 * ref_c)]
+        else:
+            v = [_desir(d["ys"], 100, 400), _desir(d["el"], 5, 35), _desir(3 * 6.65 - d["rate"], 0, 2.5 * 6.65),
+                 _desir(30 - d["ni"], 0, 30)]
+        out.append([round(x, 4) for x in v] + [1 if d["feasible"] else 0, round(d["t_h"] / 24, 2)])
+    return out
+
+
+def hypervolume(vecs, n=20000, seed=0):
+    """Monte Carlo hypervolume of the feasible desirability vectors, in the unit cube (reference point 0)."""
+    pts = np.array([v[:-2] for v in vecs if v[-2] == 1], float)
+    if len(pts) == 0:
+        return 0.0
+    rng = np.random.default_rng(seed)
+    u = rng.random((n, pts.shape[1]))
+    dom = np.zeros(n, bool)
+    for p in pts:
+        dom |= np.all(u <= p, axis=1)
+    return float(dom.mean())
 
 
 def _best(dem):
@@ -141,6 +177,8 @@ def summary():
         for r in rows:
             c = r["cfg"]
             key = "|".join(f"{k}={c[k]}" for k in ("facility", "scenario", "policy", "kappa", "isolated"))
+            if c.get("wip"):
+                key += f"|wip={c['wip'][0]}/{c['wip'][1]}"
             groups.setdefault(key, []).append(r)
         g_out = {}
         for key, rs in groups.items():
@@ -163,7 +201,9 @@ def summary():
                     order_cost_mean=float(np.mean([r["campaigns"][camp]["order_cost"] for r in rs])),
                     wait_days_mean=float(np.mean([r["campaigns"][camp]["wait_days"] for r in rs])),
                     backorders_mean=float(np.mean([r["campaigns"][camp]["backorders"] for r in rs])),
-                    lots_mean=float(np.mean([r["campaigns"][camp]["n_lots"] for r in rs])))
+                    lots_mean=float(np.mean([r["campaigns"][camp]["n_lots"] for r in rs])),
+                    hv_mean=float(np.mean([hypervolume(r["campaigns"][camp].get("vectors", [])) for r in rs]))
+                    if all("vectors" in r["campaigns"][camp] for r in rs) else None)
             g["seconds_mean"] = float(np.mean([r["seconds"] for r in rs]))
             g_out[key] = g
         out[name] = g_out
@@ -173,6 +213,7 @@ def summary():
 
 
 LABELS = {"random": "random, full chain", "tiered": "tiered (open CALPHAD)", "cost_aware": "cost-aware (open CALPHAD)",
+          "cost_aware_scaleup": "cost-aware + gas atomization and E8 plate",
           "tiered_tc": "tiered (Thermo-Calc)", "cost_aware_tc": "cost-aware (Thermo-Calc)"}
 
 
@@ -197,6 +238,8 @@ def markdown(S=None) -> str:
                 extra.append("a lab each" if kv["isolated"] == "True" else "one shared lab")
             if name == "kappa":
                 extra.append("kappa " + kv["kappa"])
+            if name == "wip":
+                extra.append("in flight at once: " + kv["wip"] + " (FLAIME/ONR)")
             lab = ", ".join(extra + [lab])
             f, c = g["flaime_al"], g["onr_cu"]
             k = lambda v: "-" if v is None else f"${v / 1000:.0f}k"

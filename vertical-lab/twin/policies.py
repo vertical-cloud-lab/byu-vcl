@@ -428,5 +428,30 @@ class CostAwareTC(CostAware):
     sim_kind = "sim_tc"
 
 
+class CostAwareScaleUp(CostAware):
+    """Cost-aware, plus the proposals' scale-up: after its first alloy at 0.6 or better (by its own measurements),
+    it buys one gas-atomized lot of it (FLAIME: Valimet, 50 kg; ONR: Ames) and, for FLAIME, a full plate of ASTM E8
+    bars from that lot (gate G3's replicates)."""
+    name = "cost_aware_scaleup"
+
+    def propose(self, v, n):
+        acts = []
+        if not getattr(self, "_gas_bought", False):
+            obs = self.observed(v)
+            good = [d for d, u in obs if u >= 0.6]
+            if good:
+                self._gas_bought = True
+                d = v["design_inputs"][good[0]]
+                acts.append(dict(kind="gas_atomize", design=with_proc(d, self.best_proc(v))))
+        if self.al:
+            for lid, L in v["lots"].items():
+                if L.get("gas") and not L.get("_promoted") and L["remaining_g"] >= 440:
+                    L["_promoted"] = True
+                    acts.append(dict(kind="promote", lot=lid, params=self.best_proc(v)))
+        if len(acts) >= n:
+            return acts[:n]
+        return acts + super().propose(v, n - len(acts))
+
+
 POLICIES = {"random": Random, "tiered": Tiered, "cost_aware": CostAware, "tiered_tc": TieredTC,
-            "cost_aware_tc": CostAwareTC}
+            "cost_aware_tc": CostAwareTC, "cost_aware_scaleup": CostAwareScaleUp}

@@ -184,7 +184,7 @@ Curves are best-so-far against days and against money, per campaign; targets are
 
 ## First results
 
-320 twin-years, each with both campaigns running from day 0 on one clock (`python3 -m twin.bench run`; every run is
+370 twin-years, each with both campaigns running from day 0 on one clock (`python3 -m twin.bench run`; every run is
 in `out/twin/runs/*.jsonl`, the summary in `out/twin/bench_summary.json`). "Best" is the true utility of the best
 alloy demonstrated in the year (0-1), mean ± SE over seeds; "hit" is the share of seeds that reached 0.6 (FLAIME) or
 0.45 (ONR), with the median money and days it took them. These are runs of a synthetic truth: they say how the
@@ -251,6 +251,20 @@ policies, the market and the facility interact in this model, not what the real 
 | tiered (Thermo-Calc) | 20 | 0.42 ± 0.06 | 45% | $31k | 114 | 2.1 | 0.52 ± 0.05 | 70% | $49k | 278 |
 | cost-aware (Thermo-Calc) | 20 | 0.70 ± 0.01 | 90% | $41k | 109 | 4.2 | 0.53 ± 0.05 | 75% | $44k | 274 |
 
+**scaleup**
+
+| setting | n | FLAIME best (± SE) | hit 0.6 | $ to 0.6 | days to 0.6 | discoveries | ONR best (± SE) | hit 0.45 | $ to 0.45 | days to 0.45 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| cost-aware + gas atomization and E8 plate | 20 | 0.64 ± 0.03 | 70% | $42k | 113 | 3.0 | 0.54 ± 0.05 | 75% | $42k | 265 |
+
+**wip**
+
+| setting | n | FLAIME best (± SE) | hit 0.6 | $ to 0.6 | days to 0.6 | discoveries | ONR best (± SE) | hit 0.45 | $ to 0.45 | days to 0.45 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| in flight at once: 1/1 (FLAIME/ONR), cost-aware (open CALPHAD) | 10 | 0.07 ± 0.07 | 10% | $3k | 166 | 0.1 | 0.08 ± 0.05 | 0% | - | - |
+| in flight at once: 6/3 (FLAIME/ONR), cost-aware (open CALPHAD) | 10 | 0.47 ± 0.10 | 60% | $15k | 144 | 0.9 | 0.35 ± 0.08 | 50% | $18k | 275 |
+| in flight at once: 24/8 (FLAIME/ONR), cost-aware (open CALPHAD) | 10 | 0.64 ± 0.03 | 50% | $43k | 114 | 2.3 | 0.56 ± 0.07 | 90% | $42k | 266 |
+
 What the runs say, in this model:
 
 1. **FLAIME: choosing the step beats the funnel, and the funnel loses on what the screen cannot see.** The
@@ -285,12 +299,26 @@ What the runs say, in this model:
    0.63 to 0.70 ± 0.01, 90 % of seeds reach 0.6 against 60 %, and discoveries from 2.5 to 4.2 a year; the funnel
    gains nothing (0.42; its screen still cannot see nucleants), and copper gains nothing measurable in a year. The
    TC node here is the truth plus a small error: on BYU's HPC the same experiment can be run with the real one.
+8. **Working around pending results is what makes a year enough (the ONR proposal's H4).** With one action in
+   flight at a time, neither campaign gets anything through in a year (FLAIME 0.07, copper 0.08); with 6 and 3 in
+   flight, 0.47 and 0.35; with 24 and 8, 0.64 and 0.56. More in flight spends faster ($43k against $15k to FLAIME's
+   target) and gets there sooner (114 against 144 days): a money-for-time trade, not the equal-spend comparison H4
+   specifies, which needs a policy that holds spend fixed.
+9. **The multi-objective view agrees.** The hypervolume of each campaign's demonstrated alloys (in desirability
+   space, `bench.hypervolume`) ranks the policies the same way: FLAIME 0.32 cost-aware, 0.15 tiered, 0.06 random;
+   copper 0.16, 0.17, 0.05.
+10. **The scale-up path fits in the year.** A cost-aware variant that buys a gas-atomized lot of its first alloy
+    at 0.6 (Valimet, 50 kg, about $8.5k with melting stock; Ames for copper, about $5.9k) and, for FLAIME, a full
+    plate of ASTM E8 bars from it did so in 13 of 20 FLAIME runs and 11 of 20 copper runs, and ended the year where
+    the plain policy did (0.64 and 0.54).
 
 ![market scenarios](../out/twin/twin_supply.png)
 
 ![facility](../out/twin/twin_facility.png)
 
 ![nucleant gap](../out/twin/twin_kappa.png)
+
+![work in flight](../out/twin/twin_wip.png)
 
 ## What is assumed, and what to check
 
@@ -304,8 +332,7 @@ What the runs say, in this model:
 * **Breakdown rates** are assumed; AMAZEMET spares come from Poland (DAL: parts "in stock" with nobody to ship them).
 * **The open-node errors are real** (found on this runner); the TC-Python and AM-Module nodes are the truth plus a
   small error until they run on BYU's HPC (`calphad.ThermoCalcBackend` has the calls).
-* **Not modelled yet**: Valimet and Ames gas atomization as actions (the stations exist), XCT, hardness and
-  microscopy as separate nodes, the partner validation network, repair-coupon galvanic tests as their own score,
+* **Not modelled yet**: XCT, hardness and microscopy as separate nodes, the partner validation network, repair-coupon galvanic tests as their own score,
   people as a resource (shifts only), and the elevated-temperature objective in the utility.
 
 ## Plugging in another optimizer

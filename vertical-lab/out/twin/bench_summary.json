@@ -14,7 +14,8 @@
     "order_cost_mean": 56461.440500000004,
     "wait_days_mean": 39.308,
     "backorders_mean": 12.8,
-    "lots_mean": 95.7
+    "lots_mean": 95.7,
+    "hv_mean": 0.059594999999999995
    },
    "onr_cu": {
     "best_mean": 0.27082077270182936,
@@ -28,9 +29,10 @@
     "order_cost_mean": 48283.38050000001,
     "wait_days_mean": 41.321999999999996,
     "backorders_mean": 3.15,
-    "lots_mean": 9.95
+    "lots_mean": 9.95,
+    "hv_mean": 0.0505275
    },
-   "seconds_mean": 1.7455000000000003
+   "seconds_mean": 1.9505
   },
   "facility=proposed|scenario=historical|policy=tiered|kappa=1.0|isolated=False": {
    "n": 20,
@@ -46,7 +48,8 @@
     "order_cost_mean": 35529.0,
     "wait_days_mean": 40.956999999999994,
     "backorders_mean": 8.75,
-    "lots_mean": 95.9
+    "lots_mean": 95.9,
+    "hv_mean": 0.15267750000000002
    },
    "onr_cu": {
     "best_mean": 0.5489256946579477,
@@ -60,9 +63,10 @@
     "order_cost_mean": 44794.876,
     "wait_days_mean": 40.614,
     "backorders_mean": 2.5,
-    "lots_mean": 11.05
+    "lots_mean": 11.05,
+    "hv_mean": 0.16465000000000002
    },
-   "seconds_mean": 1.1795
+   "seconds_mean": 1.161
   },
   "facility=proposed|scenario=historical|policy=cost_aware|kappa=1.0|isolated=False": {
    "n": 20,
@@ -78,7 +82,8 @@
     "order_cost_mean": 57865.14899999999,
     "wait_days_mean": 39.684000000000005,
     "backorders_mean": 13.95,
-    "lots_mean": 96.7
+    "lots_mean": 96.7,
+    "hv_mean": 0.32244749999999994
    },
    "onr_cu": {
     "best_mean": 0.5473391947099444,
@@ -92,9 +97,10 @@
     "order_cost_mean": 45227.069,
     "wait_days_mean": 40.928,
     "backorders_mean": 2.25,
-    "lots_mean": 11.9
+    "lots_mean": 11.9,
+    "hv_mean": 0.16043
    },
-   "seconds_mean": 23.542000000000005
+   "seconds_mean": 25.189500000000002
   }
  },
  "supply": {
@@ -112,7 +118,8 @@
     "order_cost_mean": 56471.699,
     "wait_days_mean": 39.733,
     "backorders_mean": 13.5,
-    "lots_mean": 94.2
+    "lots_mean": 94.2,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.3185198558427132,
@@ -126,7 +133,8 @@
     "order_cost_mean": 49416.568,
     "wait_days_mean": 40.551,
     "backorders_mean": 2.6,
-    "lots_mean": 10.3
+    "lots_mean": 10.3,
+    "hv_mean": null
    },
    "seconds_mean": 2.258
   },
@@ -144,7 +152,8 @@
     "order_cost_mean": 56702.417,
     "wait_days_mean": 39.525,
     "backorders_mean": 12.7,
-    "lots_mean": 94.9
+    "lots_mean": 94.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5642058947197703,
@@ -158,7 +167,8 @@
     "order_cost_mean": 45554.371999999996,
     "wait_days_mean": 40.393,
     "backorders_mean": 2.5,
-    "lots_mean": 11.9
+    "lots_mean": 11.9,
+    "hv_mean": null
    },
    "seconds_mean": 24.807000000000002
   },
@@ -176,7 +186,8 @@
     "order_cost_mean": 56169.791999999994,
     "wait_days_mean": 39.735,
     "backorders_mean": 13.6,
-    "lots_mean": 94.1
+    "lots_mean": 94.1,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.3185198558427132,
@@ -190,7 +201,8 @@
     "order_cost_mean": 49271.353,
     "wait_days_mean": 40.47800000000001,
     "backorders_mean": 2.6,
-    "lots_mean": 10.3
+    "lots_mean": 10.3,
+    "hv_mean": null
    },
    "seconds_mean": 2.101
   },
@@ -208,7 +220,8 @@
     "order_cost_mean": 56231.73700000001,
     "wait_days_mean": 39.927,
     "backorders_mean": 13.1,
-    "lots_mean": 93.9
+    "lots_mean": 93.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5642058947197703,
@@ -222,7 +235,8 @@
     "order_cost_mean": 45735.266,
     "wait_days_mean": 40.465999999999994,
     "backorders_mean": 2.8,
-    "lots_mean": 12.0
+    "lots_mean": 12.0,
+    "hv_mean": null
    },
    "seconds_mean": 25.394000000000002
   },
@@ -240,7 +254,8 @@
     "order_cost_mean": 59823.295,
     "wait_days_mean": 50.093,
     "backorders_mean": 11.8,
-    "lots_mean": 77.5
+    "lots_mean": 77.5,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.10134293837407915,
@@ -254,7 +269,8 @@
     "order_cost_mean": 52410.55700000001,
     "wait_days_mean": 51.836,
     "backorders_mean": 2.1,
-    "lots_mean": 9.3
+    "lots_mean": 9.3,
+    "hv_mean": null
    },
    "seconds_mean": 1.862
   },
@@ -272,7 +288,8 @@
     "order_cost_mean": 61358.04299999999,
     "wait_days_mean": 48.973,
     "backorders_mean": 12.0,
-    "lots_mean": 78.3
+    "lots_mean": 78.3,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.2477973103267992,
@@ -286,7 +303,8 @@
     "order_cost_mean": 49135.40699999999,
     "wait_days_mean": 53.286,
     "backorders_mean": 2.7,
-    "lots_mean": 9.9
+    "lots_mean": 9.9,
+    "hv_mean": null
    },
    "seconds_mean": 12.302999999999999
   },
@@ -304,7 +322,8 @@
     "order_cost_mean": 43974.831000000006,
     "wait_days_mean": 67.85299999999998,
     "backorders_mean": 20.2,
-    "lots_mean": 61.9
+    "lots_mean": 61.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.1919175993077162,
@@ -318,7 +337,8 @@
     "order_cost_mean": 44725.48100000001,
     "wait_days_mean": 60.577,
     "backorders_mean": 5.5,
-    "lots_mean": 8.3
+    "lots_mean": 8.3,
+    "hv_mean": null
    },
    "seconds_mean": 0.89
   },
@@ -336,7 +356,8 @@
     "order_cost_mean": 42690.291999999994,
     "wait_days_mean": 65.861,
     "backorders_mean": 19.9,
-    "lots_mean": 58.8
+    "lots_mean": 58.8,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.2208236553687195,
@@ -350,7 +371,8 @@
     "order_cost_mean": 39181.97900000001,
     "wait_days_mean": 58.51299999999999,
     "backorders_mean": 5.8,
-    "lots_mean": 10.0
+    "lots_mean": 10.0,
+    "hv_mean": null
    },
    "seconds_mean": 12.215
   },
@@ -368,7 +390,8 @@
     "order_cost_mean": 56558.384,
     "wait_days_mean": 39.594,
     "backorders_mean": 13.5,
-    "lots_mean": 94.0
+    "lots_mean": 94.0,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.24866223318193886,
@@ -382,7 +405,8 @@
     "order_cost_mean": 49616.752,
     "wait_days_mean": 40.538,
     "backorders_mean": 2.6,
-    "lots_mean": 10.3
+    "lots_mean": 10.3,
+    "hv_mean": null
    },
    "seconds_mean": 2.076
   },
@@ -400,7 +424,8 @@
     "order_cost_mean": 56430.32899999999,
     "wait_days_mean": 39.952999999999996,
     "backorders_mean": 12.8,
-    "lots_mean": 93.8
+    "lots_mean": 93.8,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5642058947197703,
@@ -414,7 +439,8 @@
     "order_cost_mean": 45473.621,
     "wait_days_mean": 40.346999999999994,
     "backorders_mean": 2.6,
-    "lots_mean": 12.0
+    "lots_mean": 12.0,
+    "hv_mean": null
    },
    "seconds_mean": 22.462
   }
@@ -434,7 +460,8 @@
     "order_cost_mean": 56169.791999999994,
     "wait_days_mean": 39.735,
     "backorders_mean": 13.6,
-    "lots_mean": 94.1
+    "lots_mean": 94.1,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.3185198558427132,
@@ -448,7 +475,8 @@
     "order_cost_mean": 49271.353,
     "wait_days_mean": 40.47800000000001,
     "backorders_mean": 2.6,
-    "lots_mean": 10.3
+    "lots_mean": 10.3,
+    "hv_mean": null
    },
    "seconds_mean": 3.1760000000000006
   },
@@ -466,7 +494,8 @@
     "order_cost_mean": 56231.73700000001,
     "wait_days_mean": 39.927,
     "backorders_mean": 13.1,
-    "lots_mean": 93.9
+    "lots_mean": 93.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5642058947197703,
@@ -480,7 +509,8 @@
     "order_cost_mean": 45735.266,
     "wait_days_mean": 40.465999999999994,
     "backorders_mean": 2.8,
-    "lots_mean": 12.0
+    "lots_mean": 12.0,
+    "hv_mean": null
    },
    "seconds_mean": 25.709999999999997
   },
@@ -498,7 +528,8 @@
     "order_cost_mean": 68417.30899999998,
     "wait_days_mean": 34.845,
     "backorders_mean": 14.4,
-    "lots_mean": 104.4
+    "lots_mean": 104.4,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.28228359816171467,
@@ -512,7 +543,8 @@
     "order_cost_mean": 53362.224,
     "wait_days_mean": 40.849000000000004,
     "backorders_mean": 2.4,
-    "lots_mean": 12.0
+    "lots_mean": 12.0,
+    "hv_mean": null
    },
    "seconds_mean": 2.29
   },
@@ -530,7 +562,8 @@
     "order_cost_mean": 68351.231,
     "wait_days_mean": 32.234,
     "backorders_mean": 12.9,
-    "lots_mean": 102.0
+    "lots_mean": 102.0,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.6521105264501073,
@@ -544,7 +577,8 @@
     "order_cost_mean": 51606.68400000001,
     "wait_days_mean": 41.931000000000004,
     "backorders_mean": 2.8,
-    "lots_mean": 13.5
+    "lots_mean": 13.5,
+    "hv_mean": null
    },
    "seconds_mean": 35.49900000000001
   }
@@ -564,7 +598,8 @@
     "order_cost_mean": 56231.73700000001,
     "wait_days_mean": 39.927,
     "backorders_mean": 13.1,
-    "lots_mean": 93.9
+    "lots_mean": 93.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5642058947197703,
@@ -578,7 +613,8 @@
     "order_cost_mean": 45735.266,
     "wait_days_mean": 40.465999999999994,
     "backorders_mean": 2.8,
-    "lots_mean": 12.0
+    "lots_mean": 12.0,
+    "hv_mean": null
    },
    "seconds_mean": 27.418
   },
@@ -596,7 +632,8 @@
     "order_cost_mean": 54575.402,
     "wait_days_mean": 38.931999999999995,
     "backorders_mean": 14.0,
-    "lots_mean": 90.9
+    "lots_mean": 90.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.6186265889772591,
@@ -610,7 +647,8 @@
     "order_cost_mean": 46130.045,
     "wait_days_mean": 41.275999999999996,
     "backorders_mean": 2.7,
-    "lots_mean": 12.0
+    "lots_mean": 12.0,
+    "hv_mean": null
    },
    "seconds_mean": 24.034
   }
@@ -630,7 +668,8 @@
     "order_cost_mean": 34305.558,
     "wait_days_mean": 42.024,
     "backorders_mean": 9.0,
-    "lots_mean": 92.1
+    "lots_mean": 92.1,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.6048817329757971,
@@ -644,7 +683,8 @@
     "order_cost_mean": 45813.087,
     "wait_days_mean": 41.089999999999996,
     "backorders_mean": 3.5,
-    "lots_mean": 11.5
+    "lots_mean": 11.5,
+    "hv_mean": null
    },
    "seconds_mean": 2.844
   },
@@ -662,7 +702,8 @@
     "order_cost_mean": 56992.487,
     "wait_days_mean": 40.63199999999999,
     "backorders_mean": 14.2,
-    "lots_mean": 94.9
+    "lots_mean": 94.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5295516103259494,
@@ -676,7 +717,8 @@
     "order_cost_mean": 45634.588,
     "wait_days_mean": 41.018,
     "backorders_mean": 3.3,
-    "lots_mean": 12.2
+    "lots_mean": 12.2,
+    "hv_mean": null
    },
    "seconds_mean": 17.574
   },
@@ -694,7 +736,8 @@
     "order_cost_mean": 34286.971,
     "wait_days_mean": 42.032000000000004,
     "backorders_mean": 9.6,
-    "lots_mean": 91.7
+    "lots_mean": 91.7,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.6048817329757971,
@@ -708,7 +751,8 @@
     "order_cost_mean": 45488.046,
     "wait_days_mean": 40.717,
     "backorders_mean": 2.9,
-    "lots_mean": 11.5
+    "lots_mean": 11.5,
+    "hv_mean": null
    },
    "seconds_mean": 1.634
   },
@@ -726,7 +770,8 @@
     "order_cost_mean": 57214.831000000006,
     "wait_days_mean": 40.094,
     "backorders_mean": 13.6,
-    "lots_mean": 91.1
+    "lots_mean": 91.1,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5120589566576734,
@@ -740,7 +785,8 @@
     "order_cost_mean": 45700.024000000005,
     "wait_days_mean": 40.312000000000005,
     "backorders_mean": 2.4,
-    "lots_mean": 12.3
+    "lots_mean": 12.3,
+    "hv_mean": null
    },
    "seconds_mean": 18.711000000000002
   },
@@ -758,7 +804,8 @@
     "order_cost_mean": 34286.971,
     "wait_days_mean": 42.032000000000004,
     "backorders_mean": 9.6,
-    "lots_mean": 91.7
+    "lots_mean": 91.7,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.6048817329757971,
@@ -772,7 +819,8 @@
     "order_cost_mean": 45488.046,
     "wait_days_mean": 40.717,
     "backorders_mean": 2.9,
-    "lots_mean": 11.5
+    "lots_mean": 11.5,
+    "hv_mean": null
    },
    "seconds_mean": 1.9610000000000003
   },
@@ -790,7 +838,8 @@
     "order_cost_mean": 56231.73700000001,
     "wait_days_mean": 39.927,
     "backorders_mean": 13.1,
-    "lots_mean": 93.9
+    "lots_mean": 93.9,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5642058947197703,
@@ -804,7 +853,8 @@
     "order_cost_mean": 45735.266,
     "wait_days_mean": 40.465999999999994,
     "backorders_mean": 2.8,
-    "lots_mean": 12.0
+    "lots_mean": 12.0,
+    "hv_mean": null
    },
    "seconds_mean": 22.403000000000002
   }
@@ -824,7 +874,8 @@
     "order_cost_mean": 33663.441,
     "wait_days_mean": 38.47749999999999,
     "backorders_mean": 7.7,
-    "lots_mean": 87.25
+    "lots_mean": 87.25,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.5231894367438628,
@@ -838,7 +889,8 @@
     "order_cost_mean": 46780.444,
     "wait_days_mean": 40.3215,
     "backorders_mean": 2.05,
-    "lots_mean": 11.9
+    "lots_mean": 11.9,
+    "hv_mean": null
    },
    "seconds_mean": 2.3905
   },
@@ -856,7 +908,8 @@
     "order_cost_mean": 54110.51599999999,
     "wait_days_mean": 38.075,
     "backorders_mean": 11.0,
-    "lots_mean": 89.15
+    "lots_mean": 89.15,
+    "hv_mean": null
    },
    "onr_cu": {
     "best_mean": 0.525436188034458,
@@ -870,9 +923,150 @@
     "order_cost_mean": 46853.5265,
     "wait_days_mean": 42.05650000000001,
     "backorders_mean": 2.2,
-    "lots_mean": 12.7
+    "lots_mean": 12.7,
+    "hv_mean": null
    },
    "seconds_mean": 29.28499999999999
+  }
+ },
+ "scaleup": {
+  "facility=proposed|scenario=historical|policy=cost_aware_scaleup|kappa=1.0|isolated=False": {
+   "n": 20,
+   "flaime_al": {
+    "best_mean": 0.6354900991784806,
+    "best_se": 0.03092410832554754,
+    "hit_frac": 0.7,
+    "spend_to_target_median": 42383.565,
+    "days_to_target_median": 113.056,
+    "demonstrated_mean": 26.95,
+    "discoveries_mean": 3.0,
+    "spent_mean": 110029.3315,
+    "order_cost_mean": 55159.4335,
+    "wait_days_mean": 39.687,
+    "backorders_mean": 12.25,
+    "lots_mean": 93.3,
+    "hv_mean": 0.34551249999999994
+   },
+   "onr_cu": {
+    "best_mean": 0.5378065980046264,
+    "best_se": 0.04925746427651554,
+    "hit_frac": 0.75,
+    "spend_to_target_median": 41629.29,
+    "days_to_target_median": 264.698,
+    "demonstrated_mean": 3.2,
+    "discoveries_mean": 0.15,
+    "spent_mean": 55999.8215,
+    "order_cost_mean": 42478.028,
+    "wait_days_mean": 41.371500000000005,
+    "backorders_mean": 2.15,
+    "lots_mean": 11.65,
+    "hv_mean": 0.16202500000000003
+   },
+   "seconds_mean": 22.512499999999996
+  }
+ },
+ "wip": {
+  "facility=proposed|scenario=historical|policy=cost_aware|kappa=1.0|isolated=False|wip=1/1": {
+   "n": 10,
+   "flaime_al": {
+    "best_mean": 0.07078807844248282,
+    "best_se": 0.0707880784424828,
+    "hit_frac": 0.1,
+    "spend_to_target_median": 3262.4,
+    "days_to_target_median": 165.556,
+    "demonstrated_mean": 1.7,
+    "discoveries_mean": 0.1,
+    "spent_mean": 6044.478999999999,
+    "order_cost_mean": 3395.656,
+    "wait_days_mean": 37.229,
+    "backorders_mean": 2.4,
+    "lots_mean": 6.3,
+    "hv_mean": 0.034725
+   },
+   "onr_cu": {
+    "best_mean": 0.07840156643276046,
+    "best_se": 0.052280723276652695,
+    "hit_frac": 0.0,
+    "spend_to_target_median": null,
+    "days_to_target_median": null,
+    "demonstrated_mean": 0.5,
+    "discoveries_mean": 0.0,
+    "spent_mean": 7882.089,
+    "order_cost_mean": 6254.366,
+    "wait_days_mean": 41.971,
+    "backorders_mean": 0.4,
+    "lots_mean": 1.7,
+    "hv_mean": 0.004685
+   },
+   "seconds_mean": 1.577
+  },
+  "facility=proposed|scenario=historical|policy=cost_aware|kappa=1.0|isolated=False|wip=6/3": {
+   "n": 10,
+   "flaime_al": {
+    "best_mean": 0.4710482847550974,
+    "best_se": 0.10376300862819587,
+    "hit_frac": 0.6,
+    "spend_to_target_median": 15380.785,
+    "days_to_target_median": 143.556,
+    "demonstrated_mean": 7.0,
+    "discoveries_mean": 0.9,
+    "spent_mean": 25886.897000000004,
+    "order_cost_mean": 14885.681,
+    "wait_days_mean": 41.719,
+    "backorders_mean": 5.7,
+    "lots_mean": 26.4,
+    "hv_mean": 0.21456499999999998
+   },
+   "onr_cu": {
+    "best_mean": 0.3482654399753305,
+    "best_se": 0.08075838948287511,
+    "hit_frac": 0.5,
+    "spend_to_target_median": 18216.53,
+    "days_to_target_median": 275.309,
+    "demonstrated_mean": 1.5,
+    "discoveries_mean": 0.1,
+    "spent_mean": 24269.881,
+    "order_cost_mean": 19944.662,
+    "wait_days_mean": 42.037,
+    "backorders_mean": 1.7,
+    "lots_mean": 4.8,
+    "hv_mean": 0.053369999999999994
+   },
+   "seconds_mean": 2.804
+  },
+  "facility=proposed|scenario=historical|policy=cost_aware|kappa=1.0|isolated=False|wip=24/8": {
+   "n": 10,
+   "flaime_al": {
+    "best_mean": 0.642834626099104,
+    "best_se": 0.031845598159058255,
+    "hit_frac": 0.5,
+    "spend_to_target_median": 43265.26,
+    "days_to_target_median": 113.556,
+    "demonstrated_mean": 28.7,
+    "discoveries_mean": 2.3,
+    "spent_mean": 107613.74399999999,
+    "order_cost_mean": 56231.73700000001,
+    "wait_days_mean": 39.927,
+    "backorders_mean": 13.1,
+    "lots_mean": 93.9,
+    "hv_mean": 0.32182
+   },
+   "onr_cu": {
+    "best_mean": 0.5642058947197703,
+    "best_se": 0.0667573422198462,
+    "hit_frac": 0.9,
+    "spend_to_target_median": 41543.21,
+    "days_to_target_median": 266.465,
+    "demonstrated_mean": 3.5,
+    "discoveries_mean": 0.2,
+    "spent_mean": 56368.876000000004,
+    "order_cost_mean": 45735.266,
+    "wait_days_mean": 40.465999999999994,
+    "backorders_mean": 2.8,
+    "lots_mean": 12.0,
+    "hv_mean": 0.16719
+   },
+   "seconds_mean": 22.612000000000002
   }
  }
 }

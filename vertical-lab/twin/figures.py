@@ -295,6 +295,15 @@ def main():
                                                     for p in ("cost_aware", "tiered")}
         dots(groups, list(groups), "twin_kappa.png",
              "FLAIME: how much the CALPHAD screen misses (kappa) and which policy it hurts (mean and SE, 10 seeds)")
+    if "wip" in S:
+        groups = {}
+        for w, lab in (("1/1", "one at a time"), ("6/3", "6 and 3 in flight"), ("24/8", "24 and 8 in flight")):
+            k = f"facility=proposed|scenario=historical|policy=cost_aware|kappa=1.0|isolated=False|wip={w}"
+            if k in S["wip"]:
+                groups[lab] = {"cost_aware": S["wip"][k]}
+        if groups:
+            dots(groups, list(groups), "twin_wip.png",
+                 "The ONR proposal's H4: working around pending results (FLAIME/ONR actions in flight; 10 seeds)")
     market()
     validation()
     networks()

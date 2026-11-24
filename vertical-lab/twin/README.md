@@ -22,7 +22,7 @@ python3 -m venv /tmp/twinenv && /tmp/twinenv/bin/pip install numpy scipy scikit-
 cd vertical-lab
 /tmp/twinenv/bin/python -m pytest -q twin/tests                 # 17 checks, ~7 s
 /tmp/twinenv/bin/python -m twin.bench one                       # one twin-year, both campaigns, printed
-/tmp/twinenv/bin/python -m twin.bench run main supply facility sharing kappa   # ~20-30 min on 4 cores
+TWIN_WORKERS=4 /tmp/twinenv/bin/python -m twin.bench run    # every experiment, 370 twin-years, ~20 min on 4 cores
 /tmp/twinenv/bin/python -m twin.figures                         # out/twin/*.png and bench_summary.json
 ```
 
@@ -53,9 +53,10 @@ out   = twin.run()        # per campaign: best-so-far curve (days, $, utility), 
 ```
 
 Actions are dicts. FLAIME: `sim_open | sim_tc | sim_am` (`design`), `powder` (`design`, `runs`, `icp`), `print`
-(`lot`, up to 9 `params`, `bars_at`), `test` (`build`, `hot`), `promote` (`lot`, `params`). ONR: `sim_open | sim_tc |
-sim_heat`, `powder` (`into` tops up an earlier lot), `nsl`, `preplaced | small_ded` (`lot`, up to 4 `params`),
-`large_ded` (`lot`, `params`), `tensile | screen | immersion` (`deposit`). A design is a composition in wt% plus the
+(`lot`, up to 9 `params`, `bars_at`), `test` (`build`, `hot`), `promote` (`lot`, `params`), `gas_atomize` (`design`:
+Valimet, 50 kg). ONR: `sim_open | sim_tc | sim_heat`, `powder` (`into` tops up an earlier lot), `nsl`, `preplaced |
+small_ded` (`lot`, up to 4 `params`), `large_ded` (`lot`, `params`), `tensile | screen | immersion` (`deposit`),
+`gas_atomize` (`design`: Ames). A design is a composition in wt% plus the
 process settings of `spaces.AL` / `spaces.CU`; `space.encode`/`decode` map it to and from [0, 1]^d.
 
 DAL's BOFN and pKGFN (`benchmarks/bofn-prelim/bofn_alloy.py`) plug in as a policy: their stages map onto these actions

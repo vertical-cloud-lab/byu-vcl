@@ -71,6 +71,7 @@ ACTIONS = {
         "print": dict(note="a 55 mm-kit build: up to 9 cubes plus miniature tensile blanks, ~30 g of powder"),
         "test": dict(note="EDM, heat treatment, 3 miniature bars; optionally 250 degC"),
         "promote": dict(note="a full 170 mm plate of ASTM E8 sub-size bars (440 g), EDM, heat treatment, 3 bars"),
+        "gas_atomize": dict(note="Valimet gas atomization, >= 50 kg (FLAIME's scale-up; about $8k a run)"),
     },
     "onr_cu": {
         "sim_open": dict(steps=[("hpc", 0.05)], usd=1.0, note="pycalphad, MatCalc mc_ni (emulated)"),
@@ -84,6 +85,7 @@ ACTIONS = {
         "tensile": dict(note="3 sub-size bars machined and pulled"),
         "screen": dict(note="CubXL: OCP, LPR, EIS, cyclic polarization, and ICP-MS of the electrolyte"),
         "immersion": dict(note="30 days in vials on the gantry deck, sectioned for selective attack"),
+        "gas_atomize": dict(note="Ames National Laboratory gas atomization, one run a year (a purchased service)"),
     },
 }
 AL_CHARGE_KG, CU_CHARGE_KG = 0.30, 0.80
@@ -199,6 +201,9 @@ class Campaign:
             return A[k]["usd"]
         fees = {s: self.fac.res[s].st.fee_usd for s in self.fac.res}
         feed = self._feed_cost(action) if k == "powder" else 0.0
+        if k == "gas_atomize":
+            st = "valimet" if self.key == "flaime_al" else "ames"
+            return self.fac.res[st].st.fee_usd + self._gas_feed(action)
         if self.key == "flaime_al":
             if k == "powder":
                 n = action.get("runs", 1)
@@ -361,6 +366,44 @@ class Campaign:
             meas["icp"] = {e: v * math.exp(self.rng.normal(0, 0.02)) for e, v in true_comp.items()
                            if e != self.space.balance}
         self._emit(t_r, dict(type="lot", id=lot_id, design=did, measured=meas, proc=proc, into=a.get("into")))
+        return True
+
+    GAS_KG = {"flaime_al": 50.0, "onr_cu": 25.0}
+
+    def _gas_feed(self, action) -> float:
+        """Melting stock for a gas-atomization run at commodity prices x 3 (ingot and master alloys, not 5N rod)."""
+        d = action.get("design") or {}
+        comp = self.space.composition({e: d.get(e, 0.0) for e in self.space.elements})
+        kg = self.GAS_KG[self.key]
+        return sum(kg * w / 100.0 * 3.0 * (usgs.price(el) or 20.0) for el, w in comp.items())
+
+    def _do_gas_atomize(self, a, now_h):
+        """A powder maker's lot of the design: hot enough to dissolve everything, inert, finer and rounder than the
+        ultrasonic atomizer's (FLAIME: Valimet, >= 50 kg; ONR: Ames, 25 kg assumed)."""
+        did = self.design_id(a["design"])
+        comp = self.designs[did]["composition"]
+        al = self.key == "flaime_al"
+        st = "valimet" if al else "ames"
+        t_r, usd = self._route([(st, 8.0)], now_h, "gas_atomize")
+        self.charge(now_h, usd + self._gas_feed(a), "gas_atomize (fee and melting stock)")
+        true = dict(comp)
+        for el, f in (("Mg", 0.03), ("Zn", 0.05), ("Li", 0.08), ("Mn", 0.02)):
+            if true.get(el, 0) > 0:
+                true[el] *= 1 - f
+        bal = self.space.balance
+        true[bal] = 100.0 - sum(v for k, v in true.items() if k != bal)
+        from twin.physics import lognorm_frac
+        d50 = (35.0 if al else 60.0) * math.exp(self.rng.normal(0, 0.05))
+        cut = lognorm_frac(d50, 1.8, *((20.0, 63.0) if al else (45.0, 150.0)))
+        kg = self.GAS_KG[self.key]
+        lot_id = next(self.ids)
+        self._lot_truth[lot_id] = dict(composition=true, oxygen_ppm=900.0 if al else 300.0, satellite_frac=0.03,
+                                       carbon_ppm=20.0, runs=[])
+        meas = dict(runs=1, failed_runs=0, cut_g=kg * 1000 * 0.95 * cut, d50_um=d50, cut_frac=cut,
+                    oxygen_ppm=(900.0 if al else 300.0) * math.exp(self.rng.normal(0, 0.1)),
+                    eds={e: v * math.exp(self.rng.normal(0, 0.03)) for e, v in true.items() if e != bal})
+        proc = {v.name: a["design"].get(v.name) for v in spaces.ATOMIZER}
+        self._emit(t_r, dict(type="lot", id=lot_id, design=did, measured=meas, proc=proc, gas=True))
         return True
 
     # ---------------------------------------------------------------------------------------- FLAIME: print, test
@@ -617,7 +660,7 @@ class Campaign:
                 L.pop("nsl", None)                    # a blended lot needs certifying again
             else:
                 self.lots[p["id"]] = dict(id=p["id"], design=p["design"], measured=m, remaining_g=m["cut_g"],
-                                          proc=p["proc"], t=t_h)
+                                          proc=p["proc"], t=t_h, gas=bool(p.get("gas")))
         elif typ == "nsl":
             self.lots[p["lot"]]["nsl"] = p["measured"]
         elif typ == "build":
