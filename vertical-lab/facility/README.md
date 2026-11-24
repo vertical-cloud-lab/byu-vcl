@@ -19,7 +19,7 @@ To open its PR, start a run on an issue, where a run gets a branch of its own. I
 `vertical-lab/facility/` from the commit this README is linked at, onto a branch from #318's head, and open a PR
 stacked on #318. Nothing outside this folder changed.
 
-**Watch:** VIDEO_LINK. The files are in `out/`:
+**Watch:** [the film on YouTube](https://www.youtube.com/watch?v=jTdoFmL5oy8) (unlisted, 2:00, 1080p at 24 fps, silent; subscribers not notified). The files are in `out/`:
 
 | File | What it is |
 |---|---|
