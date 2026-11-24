@@ -133,7 +133,7 @@ What changed in response to each row. "Fixed" means the wording or number now ma
 | 4 | Fixed | [`scripts/kinds_corrected.py`](scripts/kinds_corrected.py) classifies infrastructure first: raw gap −0.61 (95% CI −0.97 to −0.24), adjusted for starting openness −0.09 (−0.45 to +0.28). Short answer, §2, the brief and VIDEO_NOTES say the videos overstate this. |
 | 5–7, 34 | Fixed | Group-A listing count, sector-decline wording, the snapshot note and the Big Tech "dip" attribution (dropped; within noise). |
 | 8 | Fixed | Origins described as stable; the rises are attributed to OpenFOAM and LAMMPS. |
-| 9, 13 | Fixed | The "indicative" caveat for group I and the document-selection caveat for the language trend are in the short answer and the brief. Group I was not re-scored. |
+| 9, 13 | Fixed | The "indicative" caveat for group I and the document-selection caveat for the language trend are in the short answer and the brief. Group I was not fully re-scored. A sensitivity check caps every release at 3, the strictest reading of the company rubric, and still gives 2.4 vs. 1.6. |
 | 10, 32, 37 | Fixed | 87% is a material-cost saving for about 45 designs with a comparator; the PDB's $5.5B is use value (conservative return about 160×); the EU figures are not a return ratio. |
 | 11, 12 | Fixed | Definitions, unrestricted shares, the 2024 crossover and the 2026 year-to-date label. |
 | 14 | Fixed | Figure retitled: open-hardware papers held flat until 2025. |

@@ -38,7 +38,7 @@ This two-page version of [`README.md`](README.md) gives every number with its so
 10. **76% vs. 72%.** In 2024 US industry papers were more often open access than academic ones overall,
     but not in the physical sciences (OpenAlex). The pattern is open papers and closed weights.
 11. **2.8 vs. 1.6.** AI-for-science model releases average 2.8 on the 0–4 openness scale, against 1.6 for
-    frontier-LLM companies. That is indicative only, because releases and companies are scored differently. 14 of 17 trained on public data
+    frontier-LLM companies. That is indicative only, because releases and companies are scored differently. Capping every release at 3, the strictest reading of the company rubric, still gives 2.4. 14 of 17 trained on public data
     ([group I](companies/I/_summary.md)).
 12. **$2.24 a kit.** That was the stated profit on the $80 SDL-demo kit sold through GroupGets. The
     institutional lab bought equipment rather than selling any, and closed vendor equipment was its most

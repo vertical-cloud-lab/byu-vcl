@@ -129,7 +129,9 @@ below links to a file in this folder, and each file names its sources.
      ([group J](companies/J/_summary.md)).
    - AI-for-science model releases score higher than the frontier-LLM companies (2.8 vs. 1.6). This is
      indicative only, because releases and whole companies are scored on different rubric readings
-     ([group I](companies/I/_summary.md)).
+     ([group I](companies/I/_summary.md)). A sensitivity check caps every release at 3, the strictest reading of
+     the company rubric, where 4 needs neutral governance. That still gives 2.4, and capping only the two company-controlled releases
+     (AlphaFold 2 with its database, MatterGen) gives 2.7.
 
 ## Method
 
