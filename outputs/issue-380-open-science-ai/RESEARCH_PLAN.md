@@ -73,7 +73,7 @@ of each section follows it.
 | F. DAL and #318 | analysis in open-source terms | [`dal/dal_openness_audit.md`](dal/dal_openness_audit.md) and [`dal/suggested_proposal_language.md`](dal/suggested_proposal_language.md) |
 | G. Video | animated, narrated, public without notifying subscribers | four videos (11:41, 4:53, 3:40 and a 2:18 corrections video) |
 | H. Write-up | `research/open-science-ai/` | written to `outputs/issue-380-open-science-ai/` instead, with a brief, a playbook, a figure index and video notes |
-| Backlog | deep dives, more Pi searches, second-source checks, sensitivity analyses | groups G, I and J; verification passes 2 and 3; an independent review (39 issues, all resolved); robustness, fork and event-study analyses |
+| Backlog | deep dives, more Pi searches, second-source checks, sensitivity analyses | groups G, I and J; verification passes 2 and 3; an independent review (39 issues, all resolved); robustness, fork and event-study analyses; licence-change rates per organization-year by era, starting openness, and sector and decade; a corrections video (Part 4) |
 
 One planned item changed: the WebSearch budget ran out about 15 minutes in, so the case-study agents used fetches of
 known pages rather than "several hundred searches"; see README, Method.

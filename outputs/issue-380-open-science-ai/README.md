@@ -55,7 +55,12 @@ below links to a file in this folder, and each file names its sources.
    - **Foundations, not companies, keep openness durable.**
    - **Who closes:**
      - Openness regresses toward the middle. Organizations that started open tended to close; those
-       that started closed opened the layers they don't sell.
+       that started closed opened the layers they don't sell. Per 100 organization-years, closed starters
+       opened 3.8 times and closed 1.0, while open starters closed 3.3 times and opened 1.8
+       ([rates](data/licence_events_by_start_openness.csv); partly mechanical, since a firm at 0 has little left to close).
+     - By sector, commercial OSS closes most steadily, Big Tech and AI labs were the most active in both directions
+       in 2020–26, and science software and infrastructure made no dated closing move after 2000
+       ([by sector and decade](data/licence_events_by_sector_decade.csv)).
      - Companies founded since 2000 lost 0.61 points of openness relative to pre-2000 companies (95% CI
        −0.97 to −0.24). **After adjusting for where each started, the founding-era gap nearly vanishes:
        −0.09 (95% CI −0.45 to +0.28)** ([`data/kinds_corrected.csv`](data/kinds_corrected.csv); corrected
