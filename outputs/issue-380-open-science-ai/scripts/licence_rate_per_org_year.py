@@ -32,3 +32,23 @@ for scope, keep in [("all A-F", lambda s: True), ("founded before 2010", lambda 
         print(out[-1])
 with open("data/licence_events_per_org_year.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(out[0])); w.writeheader(); w.writerows(out)
+
+
+# --- By starting openness (2000-26): does each kind of starter move toward the middle? ---
+def band(x):
+    return "closed start (0)" if x == 0 else ("mixed start (1-2)" if x <= 2 else "open start (3-4)")
+
+
+init = {r["slug"]: float(r["openness_initial"]) for r in M if r["openness_initial"]}
+rows2 = []
+for b in ["closed start (0)", "mixed start (1-2)", "open start (3-4)"]:
+    slugs = {s for s, v in init.items() if band(v) == b}
+    ex = exposure(slugs, 2000, 2026)
+    n = {d: sum(1 for e in events if e["slug"] in slugs and 2000 <= int(float(e["year"])) <= 2026 and e["direction"] == d)
+         for d in ("closing", "opening")}
+    rows2.append(dict(start=b, n_orgs=len(slugs), org_years=ex, closing=n["closing"], opening=n["opening"],
+                      closing_per_100_org_years=round(100 * n["closing"] / ex, 2),
+                      opening_per_100_org_years=round(100 * n["opening"] / ex, 2)))
+    print(rows2[-1])
+with open("data/licence_events_by_start_openness.csv", "w", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(rows2[0])); w.writeheader(); w.writerows(rows2)

@@ -28,7 +28,7 @@ This two-page version of [`README.md`](README.md) gives every number with its so
    LibreOffice now out-commit the originals ([fork data](data/fork_vs_original.csv)).
 8. **−0.61 raw, but −0.09 adjusted (95% CI −0.45 to +0.28).** Companies founded since 2000 became less
    open than pre-2000 companies, but almost all of that gap comes from where they started: open starters
-   close and closed starters open, which is convergence to the middle. This was corrected after an
+   close and closed starters open, which is convergence to the middle (per 100 organization-years, closed starters opened 3.8 times and closed 1.0; open starters closed 3.3 and opened 1.8). This was corrected after an
    independent review; the videos' "VC-era firms close up" is overstated. Government, academic and
    foundation infrastructure almost never closed: 1 of 24 ([corrected analysis](data/kinds_corrected.csv)).
 9. **21% → 81% vs. ~40%.** Academia's open-weight share of US AI models (2018–19 → 2024–25), against

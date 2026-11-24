@@ -317,6 +317,12 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
   - VC-era companies started more open (1.80 vs. 0.68), so they had more room to fall. Pre-2000 companies
     started closed and had room to open.
   - The robust finding is convergence toward the middle, not that venture backing causes closing.
+  - Event rates show the same thing directly (groups A–F, 2000–26, per 100 organization-years;
+    [`data/licence_events_by_start_openness.csv`](data/licence_events_by_start_openness.csv)):
+    - closed starters (n = 25) opened 3.8 times and closed 1.0;
+    - mixed starters (n = 37) were balanced, opening 2.7 and closing 2.3;
+    - open starters (n = 59) closed 3.3 times and opened 1.8.
+    - Part of this is mechanical: a firm at 0 has little left to close, and one at 4 has nothing left to open.
   - The public-infrastructure rise of +0.29 rests largely on OpenFOAM's 0→4.
 - **US-only, the gap widens** (first, uncorrected classification; see the correction above):
   - VC-era −0.46 (47% made a closing move, n = 59);
