@@ -1,0 +1,91 @@
+{
+  "name": "Orb models (Orbital Materials)",
+  "slug": "orb",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "universal interatomic potentials (materials and molecules)",
+  "hq_country": "GB",
+  "origin": "corporate",
+  "origin_detail": "Orbital Materials (now Orbital Industries), a VC-backed startup whose commercial products (CurieOS platform, licensed discovery) are proprietary (see E/orbital-materials.json).",
+  "founded_year": 2024,
+  "flagship_projects": [
+    "Orb-v1 (Sep 2024)",
+    "Orb-v2 (Oct 2024)",
+    "Orb-v3 (Apr 2025)",
+    "OrbMol (Aug 2025)",
+    "OrbMol-v2 (May 2026)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 3,
+  "licences": {
+    "code": "Apache-2.0",
+    "weights": "Apache-2.0 ('Orb models are licensed under the Apache License, Version 2.0')",
+    "data": "trained on public datasets (OMol25 confirmed for OrbMol); no own training data release found"
+  },
+  "openness_notes": "Code and weights Apache-2.0 since Orb-v1 (Sep 2024). OrbMol was 'Trained on the Open Molecules 2025 (OMol25) dataset' and OrbMol-v2 on OMol25 + OPoly26. Training data for v1-v3 are not named on the fetched page (the checkpoint name orb-v3-conservative-inf-omat suggests OMat24). Models trained on Meta's CC BY 4.0 datasets carry Apache-2.0, unlike Meta's own custom-licensed UMA or Cambridge's ASL MACE-OMAT-0. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 3 (permissive code and weights; the company's platform is proprietary).",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2024,
+      "license": "Apache-2.0 (code and weights)",
+      "note": "No changes found through OrbMol-v2 (May 2026).",
+      "source": "https://github.com/orbital-materials/orb-models"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [],
+  "robustness": "Apache-2.0 weights; trained on public data, so retraining is possible in principle.",
+  "physical_science_relevance": "Fast universal MLIPs for materials and molecular simulation; used commercially for cooling and carbon-capture materials (company).",
+  "training_data": [
+    {
+      "name": "OMol25",
+      "access": "open, CC BY 4.0",
+      "note": "OrbMol; OrbMol-v2 adds OPoly26.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "v1-v3 training data",
+      "access": null,
+      "note": "Not named on fetched page; likely MPtrj/Alexandria/OMat24.",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "630 / 94",
+      "date": "2026-11-23",
+      "source": "https://github.com/orbital-materials/orb-models"
+    }
+  ],
+  "openness_effect_assessment": "A startup used Apache-2.0 models trained on public data as visibility and recruiting assets, while selling proprietary discovery services. The permissive weights make Orb the commercially usable option on OMat24/OMol25 data.",
+  "key_takeaway": "Startups in materials AI tend to open the model and close the application, the reverse of the protein startups (Chai, Boltz) that open older models and close the newest.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/orbital-materials/orb-models"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/orbital-materials/orb-models",
+      "title": "orbital-materials/orb-models",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "licence, versions, release dates, training data, usage_metrics"
+    }
+  ]
+}

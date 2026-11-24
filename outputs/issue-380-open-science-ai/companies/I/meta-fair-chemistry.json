@@ -1,0 +1,217 @@
+{
+  "name": "Meta FAIR Chemistry: Open Catalyst, OMat24, OMol25 and UMA",
+  "slug": "meta-fair-chemistry",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "open DFT datasets and universal interatomic potentials (catalysis, materials, molecules, MOFs)",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Meta Fundamental AI Research (FAIR) Chemistry team; the Open Catalyst Project was 'a collaborative research effort' of FAIR and Carnegie Mellon University's Department of Chemical Engineering. OMol25 electronic-structure data are hosted at Argonne National Laboratory via Globus.",
+  "founded_year": 2020,
+  "flagship_projects": [
+    "OC20 (2020) and OC22",
+    "ODAC (direct air capture MOFs)",
+    "OMat24 (2024-10)",
+    "OMol25 (2025-05)",
+    "OMC25",
+    "UMA universal model (released 2025-05-13)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "licences": {
+    "code": "MIT (fairchem)",
+    "weights": "custom: OMat24 License (2024-10-23) and FAIR Chemistry License v1 (2025-05-14; commercial use allowed, acceptable-use policy, gated)",
+    "data": "CC BY 4.0 (OMat24, OMol25; OMol25 repo gated and geo-restricted)"
+  },
+  "openness_notes": "Code MIT. Datasets: OC20 (1,281,040 DFT relaxations, about 264.89M single points) and baselines 'provided as open resources' (2020; dataset licence not stated on fetched pages); OMat24 CC BY 4.0 (100.8M training structures plus 10.4M sAlex); OMol25 CC BY 4.0 (over 100M DFT calculations at wB97M-V/def2-TZVPD, about 83M unique systems, 'billions of CPU core-hours'). Checkpoints moved to custom licences. The OMat24 eqV2/eSEN checkpoints use the 'OMat24 License' (2024-10-23, FAIR Acceptable Use Policy, gated). UMA uses the 'FAIR Chemistry License v1' (2025-05-14), which allows 'commercial and non-commercial use' but adds an acceptable-use policy (no military, weapons or critical-infrastructure uses), indemnity and gating (legal name, date of birth, organisation). The OMol25 HF repo is unavailable in 'comprehensively sanctioned jurisdictions, and in China, Russia, and Belarus'. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Initial 3 (open data, code and baselines); current 2 (fully open data and code; custom, gated weights).",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2020,
+      "license": "MIT code; OC20 data and baselines 'open resources' (data licence not confirmed)",
+      "note": "arXiv 2020-10-20.",
+      "source": "https://arxiv.org/abs/2010.09990"
+    },
+    {
+      "year": 2024,
+      "license": "OMat24 dataset CC BY 4.0; OMat24 checkpoints under custom 'OMat24 License' (gated)",
+      "note": "Licence last updated 2024-10-23.",
+      "source": "https://huggingface.co/facebook/OMAT24"
+    },
+    {
+      "year": 2025,
+      "license": "OMol25 dataset CC BY 4.0 (gated, geo-restricted); UMA under FAIR Chemistry License v1 (gated)",
+      "note": "'FairchemV2 UMA release 051325'; licence dated 2025-05-14.",
+      "source": "https://huggingface.co/facebook/UMA"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "MIT-licensed code and openly provided baselines (OC20 era)",
+      "to": "Custom, gated checkpoint licence (OMat24 License)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Applies to weights only; the datasets stayed CC BY 4.0. OC20-era checkpoint licences were not confirmed.",
+      "source": "https://huggingface.co/facebook/OMAT24"
+    },
+    {
+      "year": 2025,
+      "from": "OMat24 License",
+      "to": "FAIR Chemistry License v1 (commercial use allowed, acceptable-use policy, gated; OMol25 repo blocked in China, Russia, Belarus)",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Permissive on commercial use but not an OSI licence: the Llama-style pattern applied to chemistry. Third parties retrained OSI-licensed models on the CC BY data (Orb, MACE, SevenNet).",
+      "source": "https://huggingface.co/facebook/UMA"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Custom licence and gating on weights; geographic restrictions",
+    "Open Catalyst Project described in the past tense ('was a collaborative research effort')"
+  ],
+  "robustness": "CC BY 4.0 datasets let others train independent models (Orb, MACE, SevenNet were trained on OMat24/OMol25), so the ecosystem does not depend on Meta's checkpoints.",
+  "physical_science_relevance": "Catalysis, inorganic materials, molecular chemistry and MOFs for carbon capture; OMol25 is among the largest open quantum-chemistry datasets, hosted with a DOE lab (Argonne).",
+  "training_data": [
+    {
+      "name": "OC20, OC22, ODAC23, OMat24, OMol25, OMC25",
+      "access": "open (CC BY 4.0 confirmed for OMat24 and OMol25)",
+      "note": "UMA is trained on 'five open-science simulation datasets from the FAIR Chemistry team'.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "MPtrj, sAlexandria",
+      "access": "open",
+      "note": "Used with OMat24 for the OAM checkpoints.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks (fairchem)",
+      "value": "2.4k / 532",
+      "date": "2026-11-23",
+      "source": "https://github.com/facebookresearch/fairchem"
+    },
+    {
+      "metric": "HF likes (UMA)",
+      "value": 671,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/facebook/UMA"
+    },
+    {
+      "metric": "HF downloads last month (UMA)",
+      "value": 249,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/facebook/UMA"
+    },
+    {
+      "metric": "HF downloads last month (OMat24 dataset)",
+      "value": 530,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/datasets/facebook/OMat24"
+    },
+    {
+      "metric": "HF likes (OMat24 models)",
+      "value": 132,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/facebook/OMAT24"
+    }
+  ],
+  "openness_effect_assessment": "Meta's CC BY datasets became the shared training substrate of the field: OMat24 and OMol25 underpin Orb, MACE, SevenNet and UMA itself. Meta kept partial control by putting custom, gated licences on its own weights.",
+  "key_takeaway": "Meta is the most generous corporate data publisher in materials and chemistry (hundreds of millions of DFT calculations, CC BY 4.0). It uses Llama-style custom licences for the models. Data openness, not weight openness, has had the larger spillover.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/facebookresearch/fairchem",
+    "https://github.com/facebookresearch/fairchem/releases",
+    "https://arxiv.org/abs/2010.09990",
+    "https://opencatalystproject.org/ (301)",
+    "https://facebookresearch.github.io/fairchem/open-catalyst-project/",
+    "https://huggingface.co/datasets/facebook/OMat24",
+    "https://huggingface.co/facebook/OMAT24",
+    "https://huggingface.co/facebook/OMol25",
+    "https://arxiv.org/abs/2505.08762",
+    "https://huggingface.co/facebook/UMA"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/facebookresearch/fairchem",
+      "title": "facebookresearch/fairchem",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT code, gated UMA access, usage_metrics"
+    },
+    {
+      "url": "https://github.com/facebookresearch/fairchem/releases",
+      "title": "fairchem releases",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "UMA release 051325, UMA 1.0 deprecation, UMA-nitro"
+    },
+    {
+      "url": "https://arxiv.org/abs/2010.09990",
+      "title": "The Open Catalyst 2020 (OC20) Dataset and Community Challenges",
+      "publisher": "arXiv",
+      "date": "2020-10-20",
+      "supports": "OC20 size and date"
+    },
+    {
+      "url": "https://facebookresearch.github.io/fairchem/open-catalyst-project/",
+      "title": "Open Catalyst Project",
+      "publisher": "FAIR Chemistry docs",
+      "date": null,
+      "supports": "partners (FAIR, CMU), past-tense status"
+    },
+    {
+      "url": "https://huggingface.co/datasets/facebook/OMat24",
+      "title": "facebook/OMat24 (dataset)",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "CC BY 4.0, size, downloads"
+    },
+    {
+      "url": "https://huggingface.co/facebook/OMAT24",
+      "title": "facebook/OMAT24 (models)",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "OMat24 License (2024-10-23), gating, checkpoints"
+    },
+    {
+      "url": "https://huggingface.co/facebook/OMol25",
+      "title": "facebook/OMol25",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "CC BY 4.0 data, FAIR Chemistry License for checkpoints, gating, geo-restriction, Argonne hosting"
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.08762",
+      "title": "The Open Molecules 2025 (OMol25) Dataset, Evaluations, and Models",
+      "publisher": "arXiv",
+      "date": "2025-05-13",
+      "supports": "size, level of theory, compute"
+    },
+    {
+      "url": "https://huggingface.co/facebook/UMA",
+      "title": "facebook/UMA",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "FAIR Chemistry License v1 terms, gating, training data, versions, usage"
+    }
+  ]
+}

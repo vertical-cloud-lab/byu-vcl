@@ -1,0 +1,140 @@
+{
+  "name": "SevenNet (Scalable EquiVariance-Enabled Neural Network)",
+  "slug": "sevennet",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "universal interatomic potentials with parallel MD",
+  "hq_country": "KR",
+  "origin": "academic",
+  "origin_detail": "MDIL-SNU GitHub organisation (Seungwu Han is a co-author on the cited papers). The Seoul National University affiliation is implied by the org name but not stated on fetched pages.",
+  "founded_year": 2023,
+  "flagship_projects": [
+    "SevenNet-0 (build 2024-07-11, MPtrj)",
+    "SevenNet-l3i5",
+    "SevenNet-omat",
+    "SevenNet-MF-ompa",
+    "SevenNet-Omni (15 open datasets)",
+    "SevenNet-Nano"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "licences": {
+    "code": "GPL-3.0 (2023-06-28) -> MIT (2025-06-20)",
+    "weights": "distributed via repo/figshare; separate licence not stated",
+    "data": "trained on open datasets (MPtrj, sAlex, OMat24; Omni on 15 open ab initio datasets)"
+  },
+  "openness_notes": "The LICENSE created on 2023-06-28 was GPL-3.0; commit 44ab70f, 'license to mit', switched it to MIT on 2025-06-20 (a further edit on 2026-04-07 has an unclear message). Pretrained models: SevenNet-0 and l3i5 (MPtrj), omat (OMat24), MF-ompa (MPtrj, sAlex, OMat24; figshare download), Omni ('15 open ab initio datasets'), Nano (distilled from Omni). The docs give no weights licence. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 4 throughout (GPL-3.0 is OSI-approved; training data public); the 2025 change made it permissive.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2023,
+      "license": "GPL-3.0",
+      "note": "'Create LICENSE' 2023-06-28.",
+      "source": "https://raw.githubusercontent.com/MDIL-SNU/SevenNet/68ff563/LICENSE"
+    },
+    {
+      "year": 2025,
+      "license": "MIT",
+      "note": "'license to mit' 2025-06-20.",
+      "source": "https://github.com/MDIL-SNU/SevenNet/commits/main/LICENSE"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2025,
+      "from": "GPL-3.0 (copyleft)",
+      "to": "MIT (permissive)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Removes copyleft obligations for commercial integrators; the opposite direction to MACE's later ASL models.",
+      "source": "https://github.com/MDIL-SNU/SevenNet/commits/main/LICENSE"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [],
+  "robustness": "Permissive code since 2025; models trained on public data.",
+  "physical_science_relevance": "Large-scale parallel MD with universal potentials (multi-fidelity training across DFT levels).",
+  "training_data": [
+    {
+      "name": "MPtrj",
+      "access": "open",
+      "note": "SevenNet-0, l3i5.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "OMat24, sAlex",
+      "access": "open, CC BY 4.0 (OMat24)",
+      "note": "omat, MF-ompa.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "15 open ab initio datasets",
+      "access": "open",
+      "note": "SevenNet-Omni; task names suggest OMol25, MatPES, SPICE (not confirmed).",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "281 / 61",
+      "date": "2026-11-23",
+      "source": "https://github.com/MDIL-SNU/SevenNet"
+    }
+  ],
+  "openness_effect_assessment": "A Korean academic group moved from copyleft to permissive licensing to widen reuse, which shows licence direction in academic MLIPs is mixed (SevenNet opened while MACE partly closed).",
+  "key_takeaway": "Academic MLIP licences are converging on permissive terms, but not uniformly. Check the licence of each checkpoint, not only the code.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/MDIL-SNU/SevenNet",
+    "https://github.com/MDIL-SNU/SevenNet/commits/main/LICENSE",
+    "https://raw.githubusercontent.com/MDIL-SNU/SevenNet/68ff563/LICENSE",
+    "https://raw.githubusercontent.com/MDIL-SNU/SevenNet/main/README.md",
+    "https://sevennet.readthedocs.io/en/latest/user_guide/pretrained.html"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/MDIL-SNU/SevenNet/commits/main/LICENSE",
+      "title": "SevenNet LICENSE commits",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "license_history, relicensing_events[0]"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/MDIL-SNU/SevenNet/68ff563/LICENSE",
+      "title": "SevenNet LICENSE at 68ff563",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "GPL-3.0 initial licence"
+    },
+    {
+      "url": "https://github.com/MDIL-SNU/SevenNet",
+      "title": "MDIL-SNU/SevenNet",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "current MIT, models, usage_metrics"
+    },
+    {
+      "url": "https://sevennet.readthedocs.io/en/latest/user_guide/pretrained.html",
+      "title": "SevenNet pretrained models",
+      "publisher": "SevenNet docs",
+      "date": null,
+      "supports": "training data per model"
+    }
+  ]
+}

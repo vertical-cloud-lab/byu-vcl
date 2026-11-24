@@ -1,0 +1,111 @@
+{
+  "name": "MatterSim (Microsoft Research)",
+  "slug": "mattersim",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "universal machine-learned interatomic potential",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Microsoft Research AI for Science (arXiv:2405.04967, 22 authors led by Han Yang). Built on the M3GNet architecture.",
+  "founded_year": 2024,
+  "flagship_projects": [
+    "MatterSim-v1.0.0-1M (880K parameters)",
+    "MatterSim-v1.0.0-5M (4.5M parameters)",
+    "Advanced versions in Azure Quantum Elements"
+  ],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "licences": {
+    "code": "MIT",
+    "weights": "MIT for the 1M and 5M checkpoints; 'more advanced' versions only in Azure Quantum Elements",
+    "data": "training data (3M / 6M structures from the MatterSim workflows) not stated as released"
+  },
+  "openness_notes": "Code MIT; the model card lists MIT for the released checkpoints (1M, 5M; both M3GNet-based). The README: 'More advanced and fully-supported pretrained versions of MatterSim, and additional materials capabilities are available in Azure Quantum Elements.' The training data came from the paper's active-learning first-principles workflows (0-5000 K, up to 1000 GPa; PBE); the fetched pages do not say they were released. First public release v1.0.0-rc1, 28 Nov (2024 inferred from a LICENSE.txt commit dated 2024-11-19); preprint 2024-05-08. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 2 (open core).",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2024,
+      "license": "MIT (code and 1M/5M checkpoints)",
+      "note": "v1.0.0-rc1 28 Nov (year inferred).",
+      "source": "https://github.com/microsoft/mattersim/releases?page=3"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Best versions tied to a commercial cloud product"
+  ],
+  "robustness": "Small open checkpoints are forkable; no training data to retrain them.",
+  "physical_science_relevance": "Atomistic simulation across elements, temperatures and pressures; model card warns of low accuracy for organic polymers.",
+  "training_data": [
+    {
+      "name": "MatterSim active-learning DFT set (PBE)",
+      "access": "not released (not stated on fetched pages)",
+      "note": "Training Data Size 3M (1M model) and 6M (5M model); MPtrj and Alexandria are used as test sets.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "612 / 105",
+      "date": "2026-11-23",
+      "source": "https://github.com/microsoft/mattersim"
+    }
+  ],
+  "openness_effect_assessment": "Open small checkpoints serve as a funnel to Azure Quantum Elements. Its 612 stars are well below the fully open MatterGen from the same lab (1.9k).",
+  "key_takeaway": "Within one corporate lab, the model that sits next to a cloud product (MatterSim) is open core, while the one that does not (MatterGen) is fully open.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/microsoft/mattersim",
+    "https://github.com/microsoft/mattersim/blob/main/MODEL_CARD.md",
+    "https://github.com/microsoft/mattersim/commits/main/LICENSE.txt",
+    "https://github.com/microsoft/mattersim/releases",
+    "https://github.com/microsoft/mattersim/releases?page=3",
+    "https://arxiv.org/abs/2405.04967"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/microsoft/mattersim",
+      "title": "microsoft/mattersim",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT, checkpoints, Azure Quantum Elements statement, usage_metrics"
+    },
+    {
+      "url": "https://github.com/microsoft/mattersim/blob/main/MODEL_CARD.md",
+      "title": "MatterSim model card",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "weights licence, sizes, training data size, limitations"
+    },
+    {
+      "url": "https://github.com/microsoft/mattersim/releases?page=3",
+      "title": "MatterSim releases (page 3)",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "first public release v1.0.0-rc1"
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.04967",
+      "title": "MatterSim: A Deep Learning Atomistic Model Across Elements, Temperatures and Pressures",
+      "publisher": "arXiv",
+      "date": "2024-05-08",
+      "supports": "preprint date, training regime"
+    }
+  ]
+}

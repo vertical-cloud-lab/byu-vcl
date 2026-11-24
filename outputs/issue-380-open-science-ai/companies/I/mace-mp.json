@@ -1,0 +1,161 @@
+{
+  "name": "MACE foundation models (MACE-MP-0 and successors)",
+  "slug": "mace-mp",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "universal machine-learned interatomic potentials",
+  "hq_country": "GB",
+  "origin": "academic",
+  "origin_detail": "MACE code by Ilyes Batatia, Gregor Simm, David Kovacs and 'the group of Gabor Csanyi, and friends' (ACEsuit). The MACE-MP-0 paper has 88 authors. The Cambridge affiliation is widely reported but not stated on fetched pages.",
+  "founded_year": 2023,
+  "flagship_projects": [
+    "MACE-MP-0 (arXiv 2023-12-29)",
+    "MACE-MPA-0",
+    "MACE-OMAT-0",
+    "MACE-MATPES-PBE/r2SCAN-0",
+    "MACE-OMOL-0",
+    "MACE-MH-0/1",
+    "MACE-OFF23 (organic, ASL)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 2,
+  "licences": {
+    "code": "MIT",
+    "weights": "MIT (MP-0 family, MPA-0); Academic Software License, non-commercial (OMAT-0, MATPES-0, OMOL-0, MH-0/1, MDP, OFF23)",
+    "data": "trained on open datasets (MPtrj, sAlex, OMat24, MATPES, OMol25, SPICE)"
+  },
+  "openness_notes": "Code MIT. MACE-MP-0 (a, b, b2, b3) and MPA-0 (MPtrj + sAlex) weights are MIT. Newer foundation models (OMAT-0, MATPES-PBE-0, MATPES-r2SCAN-0, OMOL-0, MH-0/1 and MDP) are under the ASL, which is 'for academic non-commercial use only', reciprocal, and directs commercial users to 'obtain a commercial use license'. MACE-OFF23 is also ASL. The training data are all public; OMat24 and OMol25 are CC BY 4.0, so the ASL is the developers' choice and not inherited (Orb trains Apache-2.0 models on the same data). Release dates of the ASL models are not shown; they need MACE v0.3.10 to v0.3.16. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Initial 4 (MIT code and weights, open MPtrj data); current 2 (the newest flagship models are non-commercial).",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2023,
+      "license": "MIT (code; MACE-MP-0 weights)",
+      "note": "arXiv:2401.00096 submitted 2023-12-29.",
+      "source": "https://github.com/ACEsuit/mace-foundations"
+    },
+    {
+      "year": null,
+      "license": "MIT (MACE-MPA-0)",
+      "note": "Requires MACE >= v0.3.10.",
+      "source": "https://github.com/ACEsuit/mace-foundations"
+    },
+    {
+      "year": null,
+      "license": "Academic Software License (OMAT-0, MATPES-0, OMOL-0, MH-0/1, MDP)",
+      "note": "Require MACE v0.3.10-v0.3.16; dates not shown.",
+      "source": "https://github.com/ACEsuit/mace-foundations"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": null,
+      "from": "MIT-licensed foundation models (MP-0, MPA-0)",
+      "to": "Academic Software License (non-commercial) for later foundation models",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Older MIT models stay available. Commercial users must buy a licence or use rival open models trained on the same CC BY data. Year not confirmed (after OMat24, Oct 2024).",
+      "source": "https://github.com/ACEsuit/mace-foundations"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Non-commercial licence on newest models limits industrial uptake"
+  ],
+  "robustness": "MIT code and MIT MP-0/MPA-0 weights remain; training data public, so anyone can retrain.",
+  "physical_science_relevance": "Universal atomistic simulation across the periodic table; a widely used academic MLIP family.",
+  "training_data": [
+    {
+      "name": "MPtrj",
+      "access": "open (Materials Project trajectories)",
+      "note": "MP-0 family.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "sAlex (Alexandria subset)",
+      "access": "open",
+      "note": "MPA-0.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "OMat24, OMol25, OC20",
+      "access": "open, CC BY 4.0 (OMat24, OMol25)",
+      "note": "OMAT-0, OMOL-0, MH-0/1.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "MATPES (PBE, r2SCAN), SPICE",
+      "access": "open",
+      "note": "MATPES-0; MDP (SPICE-alpha).",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks (mace)",
+      "value": "1.4k / 522",
+      "date": "2026-11-23",
+      "source": "https://github.com/ACEsuit/mace"
+    },
+    {
+      "metric": "GitHub stars / forks (mace-foundations)",
+      "value": "327 / 32",
+      "date": "2026-11-23",
+      "source": "https://github.com/ACEsuit/mace-foundations"
+    }
+  ],
+  "openness_effect_assessment": "The MIT MACE-MP-0 helped establish universal MLIPs as open tools: 1.4k stars and an 88-author validation paper. Moving later models to a non-commercial licence follows the open-core pattern seen in startups, though here the motive is presumably institutional licensing income (not confirmed).",
+  "key_takeaway": "Academic does not always mean permissive. The same group publishes MIT and non-commercial models. Licence choice for models trained on CC BY data is unconstrained, so it reflects the developer's commercialisation strategy.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/ACEsuit/mace",
+    "https://github.com/ACEsuit/mace-foundations",
+    "https://arxiv.org/abs/2401.00096",
+    "https://github.com/gabor1/ASL",
+    "https://raw.githubusercontent.com/gabor1/ASL/main/ASL.md"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/ACEsuit/mace-foundations",
+      "title": "ACEsuit/mace-foundations",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "model list, training data and licences"
+    },
+    {
+      "url": "https://github.com/ACEsuit/mace",
+      "title": "ACEsuit/mace",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT code, MACE-OFF ASL, developers, usage_metrics"
+    },
+    {
+      "url": "https://arxiv.org/abs/2401.00096",
+      "title": "A foundation model for atomistic materials chemistry",
+      "publisher": "arXiv",
+      "date": null,
+      "supports": "first submission 2023-12-29, 88 authors"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/gabor1/ASL/main/ASL.md",
+      "title": "Academic Software License",
+      "publisher": "GitHub (gabor1/ASL)",
+      "date": null,
+      "supports": "ASL terms (non-commercial, reciprocal)"
+    }
+  ]
+}

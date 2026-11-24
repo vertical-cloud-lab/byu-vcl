@@ -1,0 +1,119 @@
+{
+  "name": "MatterGen (Microsoft Research)",
+  "slug": "mattergen",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "generative model for inorganic crystal design",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Microsoft Research AI for Science; Nature 2025 (DOI 10.1038/s41586-025-08628-5); preprint arXiv:2312.03687 (2023-12-06).",
+  "founded_year": 2025,
+  "flagship_projects": [
+    "MatterGen (code and checkpoints 2025-01-15)",
+    "Alex-MP-20 / MP-20 training sets",
+    "TaCr2O6 experimental validation data"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "licences": {
+    "code": "MIT",
+    "weights": "MIT (Hugging Face)",
+    "data": "training sets released in repo data-release; sources MP and Alexandria are CC BY 4.0"
+  },
+  "openness_notes": "Code MIT ('MatterGen initial' LICENSE commit 2025-01-15); weights MIT on Hugging Face; training data 'MP-20 and Alex-MP-20' (about 600k structures from MP v2022.10.28 and Alexandria, both CC BY 4.0) released in the repo's data-release folder. That folder also holds XPS, XRD and nanoindentation data for the experimentally made TaCr2O6. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 4 (code, weights and training data open).",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2025,
+      "license": "MIT (code and weights)",
+      "note": "Initial public commit 2025-01-15, about 13 months after the preprint.",
+      "source": "https://github.com/microsoft/mattergen/commits/main/LICENSE"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [],
+  "robustness": "Fully forkable: MIT code and weights plus CC BY-derived training data.",
+  "physical_science_relevance": "Inverse design of inorganic materials with property conditioning, with a synthesised validation compound.",
+  "training_data": [
+    {
+      "name": "Materials Project (v2022.10.28)",
+      "access": "open, CC BY 4.0",
+      "note": "Structures with up to 20 atoms and energy above hull < 0.1 eV/atom.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "Alexandria",
+      "access": "open, CC BY 4.0",
+      "note": "Combined with MP as Alex-MP-20.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "1.9k / 363",
+      "date": "2026-11-23",
+      "source": "https://github.com/microsoft/mattergen"
+    },
+    {
+      "metric": "HF likes",
+      "value": 58,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/microsoft/mattergen"
+    }
+  ],
+  "openness_effect_assessment": "Microsoft released MatterGen fully open, unlike DeepMind's GNoME. Its 1.9k stars put it among the most-starred generative materials models, but code and weights came about 13 months after the preprint.",
+  "key_takeaway": "A corporate lab can release a physical-science model fully open (MIT code and weights, open training data) when the business (Azure) does not depend on the model. Compare the same lab's MatterSim, whose best versions are reserved for Azure.",
+  "confidence": "high",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/microsoft/mattergen",
+    "https://github.com/microsoft/mattergen/commits/main/LICENSE",
+    "https://huggingface.co/microsoft/mattergen",
+    "https://arxiv.org/abs/2312.03687"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/microsoft/mattergen",
+      "title": "microsoft/mattergen",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT code, data-release, Nature citation, usage_metrics"
+    },
+    {
+      "url": "https://github.com/microsoft/mattergen/commits/main/LICENSE",
+      "title": "MatterGen LICENSE commits",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "initial release date 2025-01-15"
+    },
+    {
+      "url": "https://huggingface.co/microsoft/mattergen",
+      "title": "microsoft/mattergen",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "weights MIT, training data and licences, likes"
+    },
+    {
+      "url": "https://arxiv.org/abs/2312.03687",
+      "title": "MatterGen: a generative model for inorganic materials design",
+      "publisher": "arXiv",
+      "date": null,
+      "supports": "preprint date 2023-12-06"
+    }
+  ]
+}

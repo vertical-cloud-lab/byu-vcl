@@ -1,0 +1,130 @@
+{
+  "name": "GNoME (Graph Networks for Materials Exploration)",
+  "slug": "gnome",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "crystal stability prediction and materials discovery",
+  "hq_country": "GB",
+  "origin": "corporate",
+  "origin_detail": "Google DeepMind; predicted structures contributed to the Materials Project (Lawrence Berkeley National Laboratory).",
+  "founded_year": 2023,
+  "flagship_projects": [
+    "GNoME dataset (381,000 stable materials, expanded Aug 2024 to >520,000)",
+    "GNoME model definitions (JAX NequIP)"
+  ],
+  "openness_initial": 1,
+  "openness_current": 1,
+  "licences": {
+    "code": "Apache-2.0 (Colab notebooks, model definitions)",
+    "weights": "trained weights not released (not mentioned on GitHub or blog)",
+    "data": "CC BY-NC 4.0; Materials Project copy access-controlled, non-commercial opt-in"
+  },
+  "openness_notes": "Blog (2023-11-29): 2.2 million new crystals predicted, 380,000 most stable; DeepMind 'will contribute' them to the Materials Project. GitHub: code ('Colab notebooks and associated code') Apache-2.0, with JAX NequIP model definitions and 'basic configuration parameters' but no trained weights mentioned. Data CC BY-NC 4.0: 381,000 stable materials, expanded in August 2024 to >520,000 within 1 meV/atom of the hull. In the Materials Project the GNoME records (batch gnome_r2scan_statics) are access-controlled under a separate 'GNoME Database License and Terms of Use', non-commercial and opt-in. The model was 'trained on a snapshot of Materials Project from 2018' (CC BY 4.0). Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 1: no weights and non-commercial data.",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2023,
+      "license": "Apache-2.0 code; CC BY-NC 4.0 data; no weights",
+      "note": "Blog 2023-11-29.",
+      "source": "https://github.com/google-deepmind/materials_discovery"
+    },
+    {
+      "year": 2024,
+      "license": "CC BY-NC 4.0 (dataset expanded to >520,000 materials)",
+      "note": "August 2024 expansion.",
+      "source": "https://github.com/google-deepmind/materials_discovery"
+    },
+    {
+      "year": null,
+      "license": "Materials Project: GNoME subset access-controlled, non-commercial opt-in",
+      "note": "Date not stated.",
+      "source": "https://docs.materialsproject.org/materials-project-data-lakehouse/access-controlled-data"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": null,
+      "from": "Materials Project content offered under CC BY 4.0",
+      "to": "Materials Project with a non-commercial, access-controlled GNoME subset",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "A model trained on open CC BY public data contributed its outputs back under non-commercial terms, so the public database is no longer under one licence (see F/materials-project.json). Date not confirmed.",
+      "source": "https://docs.materialsproject.org/materials-project-data-lakehouse/access-controlled-data"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Non-commercial data inside a public DOE database",
+    "No weights, so predictions cannot be reproduced or extended independently"
+  ],
+  "robustness": "Data are mirrored in the Materials Project, but under non-commercial terms; the model itself stays with Google.",
+  "physical_science_relevance": "Inorganic materials discovery: external researchers 'independently synthesized 736' GNoME-predicted materials, and Berkeley Lab's A-Lab synthesised more than 41 new materials using GNoME stability insights.",
+  "training_data": [
+    {
+      "name": "Materials Project (2018 snapshot)",
+      "access": "open, CC BY 4.0",
+      "note": "Plus active-learning DFT calculations by DeepMind.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "1.3k / 196",
+      "date": "2026-11-23",
+      "source": "https://github.com/google-deepmind/materials_discovery"
+    },
+    {
+      "metric": "Predicted materials independently synthesised",
+      "value": 736,
+      "date": "2023-11-29",
+      "source": "https://deepmind.google/discover/blog/millions-of-new-materials-discovered-with-deep-learning/"
+    }
+  ],
+  "openness_effect_assessment": "GNoME's predictions spread through the Materials Project, but the non-commercial terms and missing weights limit reuse. Unlike AF2, it did not become a tool others run. The open MLIP ecosystem (MACE, CHGNet, Orb, UMA) instead grew from public data.",
+  "key_takeaway": "GNoME is the materials-science counterpart of AlphaFold 3's restriction: corporate model, public training data (Materials Project), non-commercial outputs, no weights. It also imported a non-commercial carve-out into a public database.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/google-deepmind/materials_discovery",
+    "https://deepmind.google/discover/blog/millions-of-new-materials-discovered-with-deep-learning/",
+    "https://docs.materialsproject.org/materials-project-data-lakehouse/access-controlled-data"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/google-deepmind/materials_discovery",
+      "title": "google-deepmind/materials_discovery",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "licences, dataset sizes, training data, usage_metrics"
+    },
+    {
+      "url": "https://deepmind.google/discover/blog/millions-of-new-materials-discovered-with-deep-learning/",
+      "title": "Millions of new materials discovered with deep learning",
+      "publisher": "Google DeepMind",
+      "date": "2023-11-29",
+      "supports": "release date, counts, contribution to MP, validation"
+    },
+    {
+      "url": "https://docs.materialsproject.org/materials-project-data-lakehouse/access-controlled-data",
+      "title": "Access-controlled data",
+      "publisher": "Materials Project docs",
+      "date": null,
+      "supports": "GNoME subset terms (relicensing_events[0])"
+    }
+  ]
+}

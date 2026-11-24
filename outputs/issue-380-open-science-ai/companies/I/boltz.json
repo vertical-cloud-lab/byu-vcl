@@ -1,0 +1,194 @@
+{
+  "name": "Boltz-1 and Boltz-2 (Boltz PBC)",
+  "slug": "boltz",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "open AF3-class biomolecular structure and binding-affinity models",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Released from the GitHub repo jwohlwend/boltz (Jeremy Wohlwend and co-authors); commercialised by 'Boltz PBC' (boltz.com). The academic (MIT) origin is widely reported but was not confirmed on fetched pages.",
+  "founded_year": 2024,
+  "flagship_projects": [
+    "Boltz-1 (bioRxiv 2024-11-19)",
+    "Boltz-2 (bioRxiv 2025-06-14)",
+    "BoltzGen (open)",
+    "BoltzProt-1 and BoltzMol-1 (proprietary, Boltz Lab)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 2,
+  "licences": {
+    "code": "MIT",
+    "weights": "MIT (Boltz-1, Boltz-2); BoltzProt-1 and BoltzMol-1 proprietary",
+    "data": "Boltz-1 processed PDB and OpenFold distillation data downloadable (licence not stated)"
+  },
+  "openness_notes": "README: 'Our model and code are released under MIT License, and can be freely used for both academic and commercial purposes.' The Boltz-1 training guide provides pre-processed RCSB PDB structures, PDB MSAs (ColabFold) and 'the OpenFold self-distillation set' for download (about 250 GB, licence not stated); Boltz-2 training code is 'coming soon'. As of 2026-11-23, boltz.com labels Boltz-2 and BoltzGen open-source but BoltzProt-1 and BoltzMol-1 proprietary, running on Boltz Lab (cloud, dedicated or on-premises). Initial 4 (MIT code and weights with reproducible training data); current 2 (open core: open older models, proprietary newest models and platform).",
+  "business_model": "open_core",
+  "license_history": [
+    {
+      "year": 2024,
+      "license": "MIT (Boltz-1 code and weights)",
+      "note": "bioRxiv 2024.11.19 identifier.",
+      "source": "https://github.com/jwohlwend/boltz"
+    },
+    {
+      "year": 2025,
+      "license": "MIT (Boltz-2 code and weights)",
+      "note": "bioRxiv 2025.06.14 identifier; HF boltz-community/boltz-2 tagged MIT.",
+      "source": "https://huggingface.co/boltz-community/boltz-2"
+    },
+    {
+      "year": null,
+      "license": "Proprietary BoltzProt-1 and BoltzMol-1 on Boltz Lab",
+      "note": "Shown on boltz.com 2026-11-23; launch date not confirmed.",
+      "source": "https://boltz.com/"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "AlphaFold 3 server only",
+      "to": "Boltz-1 MIT (code, weights, training data pipeline)",
+      "direction": "opening",
+      "fork": "Boltz-1",
+      "fork_backer": "academic authors, later Boltz PBC",
+      "outcome_note": "An open AF3-class model released about six months after AF3's restricted launch.",
+      "source": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    {
+      "year": null,
+      "from": "All models MIT",
+      "to": "Open core: newest models (BoltzProt-1, BoltzMol-1) proprietary",
+      "direction": "closing",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Coincides with company formation and a $110M Series A (announced 2026-11-18). Existing MIT releases remain open.",
+      "source": "https://boltz.com/"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": "2026-11-18: $110M Series A announced (investors not named; earlier rounds not confirmed)",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Shift to proprietary models after a VC round; Boltz-2 training code still 'coming soon'"
+  ],
+  "robustness": "MIT-licensed Boltz-1/2 weights and Boltz-1 training data can be forked regardless of the company's future choices.",
+  "physical_science_relevance": "Protein-ligand structure and affinity prediction for medicinal chemistry; used by 'top 20 pharma' per the company.",
+  "training_data": [
+    {
+      "name": "RCSB PDB (mmCIF)",
+      "access": "open",
+      "note": "Pre-processed structures provided for Boltz-1 training.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "OpenFold self-distillation set",
+      "access": "downloadable (licence not stated)",
+      "note": "Pre-processed structures and MSAs.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "PDB MSAs computed with ColabFold",
+      "access": "downloadable",
+      "note": "Boltz-1.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "Boltz-2 affinity data",
+      "access": null,
+      "note": "Not confirmed from fetched pages.",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "4.3k / 925",
+      "date": "2026-11-23",
+      "source": "https://github.com/jwohlwend/boltz"
+    },
+    {
+      "metric": "Downloads (company claim)",
+      "value": "more than 5 million",
+      "date": "2026-11-23",
+      "source": "https://boltz.com/"
+    },
+    {
+      "metric": "Scientists using Boltz (company claim)",
+      "value": "more than 100,000",
+      "date": "2026-11-23",
+      "source": "https://boltz.com/"
+    },
+    {
+      "metric": "Companies using Boltz (company claim)",
+      "value": "more than 1,000",
+      "date": "2026-11-23",
+      "source": "https://boltz.com/"
+    },
+    {
+      "metric": "HF likes (boltz-2)",
+      "value": 19,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/boltz-community/boltz-2"
+    }
+  ],
+  "openness_effect_assessment": "An MIT licence for an AF3-class model gave Boltz fast adoption (5M+ downloads and 1,000+ companies by its own count) and positioned it as the default open alternative to AF3. That user base preceded a $110M Series A and a turn to proprietary successor models, the open-core pattern familiar from software.",
+  "key_takeaway": "Boltz shows the lifecycle of an open clone: an academic MIT release fills the gap left by a restricted corporate model, wins users, becomes a company and then closes its newest models. Labs should pin MIT versions and keep the training data, which remain usable whatever the company does.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/jwohlwend/boltz",
+    "https://raw.githubusercontent.com/jwohlwend/boltz/main/docs/training.md",
+    "https://boltz.bio/ (301 to boltz.com)",
+    "https://boltz.com/",
+    "https://huggingface.co/boltz-community/boltz-2",
+    "https://en.wikipedia.org/wiki/AlphaFold"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/jwohlwend/boltz",
+      "title": "jwohlwend/boltz",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT licence, preprint identifiers, usage_metrics"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/jwohlwend/boltz/main/docs/training.md",
+      "title": "Boltz training guide",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "training_data"
+    },
+    {
+      "url": "https://boltz.com/",
+      "title": "Boltz homepage",
+      "publisher": "Boltz PBC",
+      "date": null,
+      "supports": "proprietary models, Boltz Lab, Series A, usage claims"
+    },
+    {
+      "url": "https://huggingface.co/boltz-community/boltz-2",
+      "title": "boltz-community/boltz-2",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "MIT tag, likes"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/AlphaFold",
+      "title": "AlphaFold",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "Boltz-1/2 listed among AF3 clones (MIT)"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "name": "Evo 2 (Arc Institute)",
+  "slug": "evo2",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "genomic (DNA) foundation model across all domains of life",
+  "hq_country": "US",
+  "origin": "nonprofit",
+  "origin_detail": "Arc Institute (non-profit research institute); NVIDIA provides NIM hosting, a hosted API and a BioNeMo fine-tuning tutorial; pretrained with the Savanna framework.",
+  "founded_year": 2025,
+  "flagship_projects": [
+    "Evo 2 (40B and smaller checkpoints)",
+    "OpenGenome2 dataset"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "licences": {
+    "code": "Apache-2.0",
+    "weights": "Apache-2.0 (Hugging Face)",
+    "data": "OpenGenome2 Apache-2.0 (Hugging Face)"
+  },
+  "openness_notes": "Code Apache-2.0 (GitHub); evo2_40b weights Apache-2.0 (Hugging Face); training data OpenGenome2 Apache-2.0 on Hugging Face (8.8 trillion base pairs, 5.52 TB, from GTDB v220, IMG/PR, MGD, IMG/VR, NCBI, Ensembl, EPDnew, RNAcentral, Rfam and organelles). bioRxiv 2025-02-18; Nature 2026 (DOI 10.1038/s41586-026-10176-5). A biosafety exclusion of eukaryotic viral genomes is often reported but was not confirmed on fetched pages. Score 4: code, weights and training data all permissively licensed, from a non-profit.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2025,
+      "license": "Apache-2.0 (code, weights, OpenGenome2)",
+      "note": "No licence changes found.",
+      "source": "https://huggingface.co/arcinstitute/evo2_40b"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [],
+  "robustness": "Everything needed to retrain is public under Apache-2.0; NVIDIA hosting adds a commercial access path but no lock-in.",
+  "physical_science_relevance": "Biology and biochemistry (genome design and variant-effect prediction); a full-stack open model at frontier scale (40B).",
+  "training_data": [
+    {
+      "name": "OpenGenome2",
+      "access": "open, Apache-2.0, Hugging Face",
+      "note": "8.8 trillion base pairs across prokaryotes, eukaryotes, metagenomes, viruses (IMG/VR), RNA and organelles.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "4.3k / 576",
+      "date": "2026-11-23",
+      "source": "https://github.com/ArcInstitute/evo2"
+    },
+    {
+      "metric": "HF downloads last month (evo2_40b)",
+      "value": 8037,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/arcinstitute/evo2_40b"
+    },
+    {
+      "metric": "HF likes (evo2_40b)",
+      "value": 109,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/arcinstitute/evo2_40b"
+    },
+    {
+      "metric": "HF downloads last month (OpenGenome2 dataset)",
+      "value": 12161,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/datasets/arcinstitute/opengenome2"
+    }
+  ],
+  "openness_effect_assessment": "Releasing the training data along with the weights made Evo 2 reproducible, and the dataset is downloaded more than the flagship model (12k vs 8k a month). Corporate partners (NVIDIA) monetise hosting rather than the model.",
+  "key_takeaway": "The fullest release in the group: a non-profit published a 40B frontier-scale model with its training data under Apache-2.0. Non-profit, philanthropically funded labs are the most reliable source of fully open AI for science.",
+  "confidence": "high",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/ArcInstitute/evo2",
+    "https://huggingface.co/arcinstitute/evo2_40b",
+    "https://huggingface.co/datasets/arcinstitute/opengenome2"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/ArcInstitute/evo2",
+      "title": "ArcInstitute/evo2",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "code licence, training framework, Nature publication, usage_metrics"
+    },
+    {
+      "url": "https://huggingface.co/arcinstitute/evo2_40b",
+      "title": "arcinstitute/evo2_40b",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "weights licence, downloads, bioRxiv date"
+    },
+    {
+      "url": "https://huggingface.co/datasets/arcinstitute/opengenome2",
+      "title": "arcinstitute/opengenome2",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "training data licence, size, sources, downloads"
+    }
+  ]
+}

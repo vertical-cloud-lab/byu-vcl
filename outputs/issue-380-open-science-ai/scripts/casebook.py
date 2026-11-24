@@ -6,7 +6,8 @@ import json, glob, re, os
 GROUPS = {"A": "Commercial open source: data infrastructure and the relicensing cases", "B": "Commercial open source: platforms, developer and data/ML tools",
           "C": "Big Tech and AI labs", "D": "Hardware: open-hardware makers and closed comparators",
           "E": "Physical science: lab automation, cloud labs and AI-for-science companies", "F": "Physical science: scientific software and open-science infrastructure",
-          "G": "Additive manufacturing, lab-automation incumbents and open-science publishing infrastructure (added after the video)"}
+          "G": "Additive manufacturing, lab-automation incumbents and open-science publishing infrastructure (added after the video)",
+          "I": "AI-for-science models and datasets (licence histories; added after the videos)"}
 def money(v):
     try: v = float(v)
     except Exception: return None

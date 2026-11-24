@@ -1,0 +1,120 @@
+{
+  "name": "M3GNet and MatGL (Materials Graph Library)",
+  "slug": "m3gnet-matgl",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "universal graph interatomic potential and property models",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "M3GNet by Chen and Ong (Nature Computational Science 2022) in the materialsvirtuallab GitHub org; MatGL, its PyTorch reimplementation, began as 'a collaboration between the Materialyze.AI and Intel Labs' and now sits in the materialyzeai org. University affiliations were not confirmed on fetched pages.",
+  "founded_year": 2022,
+  "flagship_projects": [
+    "M3GNet (TensorFlow, 2022; archived 2025-04-09)",
+    "MatGL (v0.1.0 2023-02-16; v3.0.0 May 2026)",
+    "M3GNet-MP-2021.2.8-PES",
+    "MatPES-trained models"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "licences": {
+    "code": "BSD-3-Clause (m3gnet and matgl)",
+    "weights": "distributed with the repos (no separate licence stated)",
+    "data": "MPF.2021.2.8 on figshare; MatPES"
+  },
+  "openness_notes": "Both repos are BSD-3-Clause. M3GNet's universal potential was trained on Materials Project relaxations (MPF.2021.2.8, figshare DOI 10.6084/m9.figshare.19470599). The TensorFlow repo was archived on 2025-04-09 ('Users are recommended to use matgl instead'). MatGL v0.1.0 (2023-02-16) reimplemented M3GNet and MEGNet; v3.0.0 (May 2026) dropped the DGL backend for PyTorch Geometric. Microsoft's MatterSim checkpoints are 'based on the M3GNet architecture'. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 4.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2022,
+      "license": "BSD-3-Clause (M3GNet, TensorFlow)",
+      "note": "Nat Comput Sci 2, 718-728 (2022).",
+      "source": "https://github.com/materialsvirtuallab/m3gnet"
+    },
+    {
+      "year": 2023,
+      "license": "BSD-3-Clause (MatGL)",
+      "note": "v0.1.0 2023-02-16.",
+      "source": "https://github.com/materialyzeai/matgl"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Framework churn: TensorFlow repo archived (2025), DGL backend dropped (2026)"
+  ],
+  "robustness": "BSD code, public training data, and a corporate derivative (MatterSim) that shows the architecture's reuse.",
+  "physical_science_relevance": "Universal potentials and property prediction across the periodic table; early demonstration that one MLIP can cover 89 elements.",
+  "training_data": [
+    {
+      "name": "MPF.2021.2.8 (Materials Project relaxation trajectories)",
+      "access": "open (figshare)",
+      "note": "M3GNet universal potential.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "MatPES",
+      "access": "open",
+      "note": "Newer MatGL models; details not confirmed on fetched page.",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks (matgl)",
+      "value": "579 / 123",
+      "date": "2026-11-23",
+      "source": "https://github.com/materialyzeai/matgl"
+    },
+    {
+      "metric": "GitHub stars / forks (m3gnet, archived)",
+      "value": "332 / 76",
+      "date": "2026-11-23",
+      "source": "https://github.com/materialsvirtuallab/m3gnet"
+    }
+  ],
+  "openness_effect_assessment": "Permissive licensing let a corporate lab (Microsoft MatterSim) build directly on the architecture, and let an industrial partner (Intel Labs) co-develop the PyTorch port. The cost of openness here is maintenance: two framework migrations in four years.",
+  "key_takeaway": "Open academic architectures become the substrate for corporate models. Durability depends on continued maintenance more than on the licence.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/materialsvirtuallab/m3gnet",
+    "https://github.com/materialyzeai/matgl",
+    "https://github.com/microsoft/mattersim"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/materialsvirtuallab/m3gnet",
+      "title": "materialsvirtuallab/m3gnet",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "BSD-3, archive date, training data, paper"
+    },
+    {
+      "url": "https://github.com/materialyzeai/matgl",
+      "title": "materialyzeai/matgl",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "BSD-3, history, versions, usage_metrics"
+    },
+    {
+      "url": "https://github.com/microsoft/mattersim",
+      "title": "microsoft/mattersim",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MatterSim based on M3GNet architecture"
+    }
+  ]
+}

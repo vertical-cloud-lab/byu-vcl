@@ -3,6 +3,7 @@
 Writes data/openness_outcomes_*.csv and prints markdown tables."""
 import pandas as pd, numpy as np
 m = pd.read_csv("companies/companies_master.csv")
+m = m[m.group.isin(list("ABCDEFG"))]  # organizations only; group I = AI-for-science models
 m["sector"] = m.group.map({"A": "Software (commercial OSS)", "B": "Software (commercial OSS)", "C": "Big Tech & AI labs", "D": "Hardware",
                            "E": "Physical science: labs & AI-for-science", "F": "Physical science: software & infrastructure"})
 m["open0"] = pd.cut(m.openness_initial, [-0.5, 0.5, 2.5, 4.5], labels=["closed (0)", "mixed (1-2)", "open (3-4)"])

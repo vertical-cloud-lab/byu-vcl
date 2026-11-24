@@ -1,0 +1,200 @@
+{
+  "name": "RoseTTAFold and RFdiffusion family (Baker lab)",
+  "slug": "rfdiffusion-rosettafold",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "protein structure prediction and generative protein design",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Institute for Protein Design, University of Washington (David Baker's lab; Baker shared the 2024 Nobel Prize in Chemistry 'for computational protein design'). Code is published under the RosettaCommons and baker-laboratory GitHub organisations.",
+  "founded_year": 2021,
+  "flagship_projects": [
+    "RoseTTAFold (2021)",
+    "RFdiffusion (initial commit 2023-03-30)",
+    "RoseTTAFold All-Atom (2024)",
+    "Foundry: RFdiffusion3, RosettaFold3, ProteinMPNN, LigandMPNN (2025)"
+  ],
+  "openness_initial": 1,
+  "openness_current": 3,
+  "licences": {
+    "code": "MIT (RoseTTAFold); BSD (RFdiffusion, RFAA); BSD 3-Clause (Foundry)",
+    "weights": "RoseTTAFold: non-commercial Rosetta-DL licence; RFdiffusion, RFAA, Foundry: BSD (licence text states it covers weights)",
+    "data": "training data not described on fetched pages"
+  },
+  "openness_notes": "RoseTTAFold (2021): 'the code is licensed under the MIT License', but trained weights and data are 'made available for non-commercial use only under the terms of the Rosetta-DL Software license'. The RFdiffusion LICENSE (BSD, 2023-03-30) did not mention weights at first; after the 2023-10-03 update it says it 'covers both the source code and model weights'. RoseTTAFold All-Atom (BSD, 2024) and Foundry (BSD 3-Clause, 2025: RFD3, RF3, MPNN models) carry the same weights clause. RFdiffusion 'builds directly on the architecture and trained parameters of RoseTTAFold'. Training data are not described on fetched pages. Initial 1 (non-commercial weights); current 3 (BSD code and weights for the active models; training data not released).",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2021,
+      "license": "MIT code; Rosetta-DL non-commercial weights (RoseTTAFold)",
+      "note": "RF2t weights added 2021-11-02.",
+      "source": "https://github.com/RosettaCommons/RoseTTAFold"
+    },
+    {
+      "year": 2023,
+      "license": "BSD (RFdiffusion code; weights not mentioned)",
+      "note": "Initial commit 2023-03-30.",
+      "source": "https://raw.githubusercontent.com/RosettaCommons/RFdiffusion/4c62149/LICENSE"
+    },
+    {
+      "year": 2023,
+      "license": "BSD covering code and weights (RFdiffusion)",
+      "note": "LICENSE updated 2023-10-03.",
+      "source": "https://github.com/RosettaCommons/RFdiffusion/commits/main/LICENSE"
+    },
+    {
+      "year": 2024,
+      "license": "BSD covering code and weights (RoseTTAFold All-Atom)",
+      "note": "Copyright 2024 University of Washington.",
+      "source": "https://raw.githubusercontent.com/baker-laboratory/RoseTTAFold-All-Atom/HEAD/LICENSE"
+    },
+    {
+      "year": 2025,
+      "license": "BSD 3-Clause covering code and weights (Foundry: RFD3, RF3, MPNNs)",
+      "note": "Copyright 2025 Institute for Protein Design.",
+      "source": "https://raw.githubusercontent.com/RosettaCommons/foundry/HEAD/LICENSE.md"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2023,
+      "from": "Non-commercial Rosetta-DL weights (RoseTTAFold)",
+      "to": "BSD-licensed weights (RFdiffusion; text clarified 2023-10-03)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Every later model (RFAA 2024, Foundry 2025) shipped BSD weights. The original RoseTTAFold weights stay non-commercial.",
+      "source": "https://github.com/RosettaCommons/RFdiffusion/commits/main/LICENSE"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Original RoseTTAFold weights remain non-commercial",
+    "Model generations move between repositories (RoseTTAFold, RFdiffusion, RFAA, Foundry)"
+  ],
+  "robustness": "Permissive BSD weights for current models; university copyright; several repositories with hundreds of forks.",
+  "physical_science_relevance": "De novo protein and binder design and protein-nucleic acid design (RFD3NA), feeding wet-lab protein engineering.",
+  "training_data": [
+    {
+      "name": "Training data",
+      "access": null,
+      "note": "Not described on fetched pages; RFdiffusion builds on RoseTTAFold's trained parameters; RoseTTAFold inputs use UniRef30, BFD and pdb100 templates.",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks (RFdiffusion)",
+      "value": "3.1k / 657",
+      "date": "2026-11-23",
+      "source": "https://github.com/RosettaCommons/RFdiffusion"
+    },
+    {
+      "metric": "GitHub stars / forks (RoseTTAFold)",
+      "value": "2.3k / 459",
+      "date": "2026-11-23",
+      "source": "https://github.com/RosettaCommons/RoseTTAFold"
+    },
+    {
+      "metric": "GitHub stars / forks (RoseTTAFold All-Atom)",
+      "value": "825 / 145",
+      "date": "2026-11-23",
+      "source": "https://github.com/baker-laboratory/RoseTTAFold-All-Atom"
+    },
+    {
+      "metric": "GitHub stars / forks (Foundry)",
+      "value": "1.1k / 205",
+      "date": "2026-11-23",
+      "source": "https://github.com/RosettaCommons/foundry"
+    }
+  ],
+  "openness_effect_assessment": "The Baker lab opened up over time, while DeepMind (AF2 to AF3) closed. Weights went from non-commercial (2021) to BSD (2023 onward), and its design tools are among the most forked in the field.",
+  "key_takeaway": "An academic lab chose permissive weight licences for its generative design models, the opposite trajectory to the corporate lab. That made RFdiffusion and the MPNN models the open default for protein design.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/RosettaCommons/RoseTTAFold",
+    "https://github.com/RosettaCommons/RFdiffusion",
+    "https://github.com/RosettaCommons/RFdiffusion/commits/main/LICENSE",
+    "https://raw.githubusercontent.com/RosettaCommons/RFdiffusion/4c62149/LICENSE",
+    "https://raw.githubusercontent.com/RosettaCommons/RFdiffusion/HEAD/LICENSE",
+    "https://github.com/baker-laboratory/RoseTTAFold-All-Atom",
+    "https://raw.githubusercontent.com/baker-laboratory/RoseTTAFold-All-Atom/HEAD/LICENSE",
+    "https://github.com/RosettaCommons/foundry",
+    "https://raw.githubusercontent.com/RosettaCommons/foundry/main/LICENSE.md (404)",
+    "https://raw.githubusercontent.com/RosettaCommons/foundry/HEAD/LICENSE.md",
+    "https://en.wikipedia.org/wiki/RoseTTAFold (404)",
+    "https://en.wikipedia.org/wiki/AlphaFold"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/RosettaCommons/RoseTTAFold",
+      "title": "RosettaCommons/RoseTTAFold",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT code, Rosetta-DL non-commercial weights, usage_metrics"
+    },
+    {
+      "url": "https://github.com/RosettaCommons/RFdiffusion/commits/main/LICENSE",
+      "title": "RFdiffusion LICENSE commits",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "2023-03-30 initial, 2023-10-03 update"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RosettaCommons/RFdiffusion/4c62149/LICENSE",
+      "title": "RFdiffusion LICENSE at initial commit",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "initial BSD text silent on weights"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RosettaCommons/RFdiffusion/HEAD/LICENSE",
+      "title": "RFdiffusion LICENSE (current)",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "BSD covers code and weights"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/baker-laboratory/RoseTTAFold-All-Atom/HEAD/LICENSE",
+      "title": "RoseTTAFold-All-Atom LICENSE",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "BSD covers weights (2024)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RosettaCommons/foundry/HEAD/LICENSE.md",
+      "title": "Foundry LICENSE.md",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "BSD 3-Clause covers weights (2025)"
+    },
+    {
+      "url": "https://github.com/RosettaCommons/foundry",
+      "title": "RosettaCommons/foundry",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "Foundry models, usage_metrics"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/AlphaFold",
+      "title": "AlphaFold",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "2024 Nobel Prize (Baker)"
+    }
+  ]
+}

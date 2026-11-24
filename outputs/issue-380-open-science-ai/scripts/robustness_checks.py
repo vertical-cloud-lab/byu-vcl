@@ -4,6 +4,7 @@ openness and log value overall and within sectors; bootstrap CI for the VC-era v
 import pandas as pd, numpy as np
 from scipy.stats import spearmanr
 m = pd.read_csv("companies/companies_master.csv")
+m = m[m.group.isin(list("ABCDEFG"))]  # organizations only; group I = AI-for-science models
 m["delta"] = m.openness_current - m.openness_initial
 us = m.hq_country.astype(str).str.contains("US|United States", regex=True)
 def kind(r):

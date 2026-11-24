@@ -1,0 +1,138 @@
+{
+  "name": "Matbench and Matbench Discovery (materials ML benchmarks)",
+  "slug": "matbench",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "open benchmarks and leaderboards for materials property prediction and ML interatomic potentials",
+  "hq_country": "US",
+  "origin": "government",
+  "origin_detail": "Matbench is 'hosted and maintained by the Materials Project' (DOE Lawrence Berkeley National Laboratory; GitHub link points to hackingmaterials/matbench); Dunn, Wang, Ganose, Dopp and Jain, npj Computational Materials 6, 138 (2020). Matbench Discovery: Riebesell, Goodall, Benner et al., Nature Machine Intelligence 7, 836-847 (2025).",
+  "founded_year": 2020,
+  "flagship_projects": [
+    "Matbench v0.1 (13 tasks)",
+    "Matbench Discovery leaderboard (stability, geometry optimisation, phonons, thermal conductivity, MD, diatomics)"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "licences": {
+    "code": "MIT (matbench; matbench-discovery)",
+    "weights": "n/a (benchmark)",
+    "data": "benchmark data downloadable; licence not stated on fetched pages"
+  },
+  "openness_notes": "Both repositories are MIT-licensed public leaderboards; Matbench lists 37 algorithms and 213 task submissions across 13 tasks (mp_ tasks from Materials Project data, expt_ tasks from experimental data, judging by task names). The fetched pages do not state a data licence. Polaris (polarishub.io), the drug-discovery counterpart, has an Apache-2.0 client and recommended benchmarks from a cross-industry collaboration (Recursion, AstraZeneca, Pfizer, Merck, Novartis, Bayer, Valence Labs and others); no separate file. Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 4 as open science infrastructure under public-lab stewardship.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2020,
+      "license": "MIT (Matbench)",
+      "note": "npj Comput Mater 2020.",
+      "source": "https://github.com/materialsproject/matbench"
+    },
+    {
+      "year": 2025,
+      "license": "MIT (Matbench Discovery)",
+      "note": "Nature Machine Intelligence 2025.",
+      "source": "https://github.com/janosh/matbench-discovery"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "government",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [],
+  "robustness": "MIT code; hosted by a DOE user facility project; community submissions.",
+  "physical_science_relevance": "Shared yardsticks that let open and closed models (MACE, CHGNet, Orb, UMA, MatterSim) be compared on the same crystal-stability tasks.",
+  "training_data": [
+    {
+      "name": "Materials Project and experimental datasets (Matbench); WBM test set (Matbench Discovery)",
+      "access": "downloadable",
+      "note": "Sources inferred from task names; licences not stated.",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "Matbench leaderboard size",
+      "value": "37 algorithms, 213 task submissions",
+      "date": "2026-11-23",
+      "source": "https://matbench.materialsproject.org/"
+    },
+    {
+      "metric": "GitHub stars / forks (matbench)",
+      "value": "227 / 72",
+      "date": "2026-11-23",
+      "source": "https://github.com/materialsproject/matbench"
+    },
+    {
+      "metric": "GitHub stars / forks (matbench-discovery)",
+      "value": "259 / 82",
+      "date": "2026-11-23",
+      "source": "https://github.com/janosh/matbench-discovery"
+    },
+    {
+      "metric": "GitHub stars / forks (polaris client)",
+      "value": "146 / 14",
+      "date": "2026-11-23",
+      "source": "https://github.com/polaris-hub/polaris"
+    }
+  ],
+  "openness_effect_assessment": "Open leaderboards produce comparable numbers and so drive competition among universal MLIPs. Their legitimacy depends on staying neutral and open, which a public lab is well placed to provide.",
+  "key_takeaway": "Benchmarks are a cheap, high-leverage public good: small MIT repos at a DOE project anchor how the whole field reports progress.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/materialsproject/matbench",
+    "https://matbench.materialsproject.org/",
+    "https://github.com/janosh/matbench-discovery",
+    "https://github.com/polaris-hub/polaris",
+    "https://polarishub.io/"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/materialsproject/matbench",
+      "title": "materialsproject/matbench",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT, 13 tasks, paper, usage_metrics"
+    },
+    {
+      "url": "https://matbench.materialsproject.org/",
+      "title": "Matbench",
+      "publisher": "Materials Project",
+      "date": null,
+      "supports": "maintainer, leaderboard size"
+    },
+    {
+      "url": "https://github.com/janosh/matbench-discovery",
+      "title": "janosh/matbench-discovery",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT, scope, NMI 2025, usage_metrics"
+    },
+    {
+      "url": "https://github.com/polaris-hub/polaris",
+      "title": "polaris-hub/polaris",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "Polaris client Apache-2.0, usage"
+    },
+    {
+      "url": "https://polarishub.io/",
+      "title": "Polaris Hub",
+      "publisher": "Polaris",
+      "date": null,
+      "supports": "cross-industry collaboration, featured datasets"
+    }
+  ]
+}

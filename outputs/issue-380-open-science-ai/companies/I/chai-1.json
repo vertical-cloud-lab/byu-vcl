@@ -1,0 +1,145 @@
+{
+  "name": "Chai-1 (Chai Discovery)",
+  "slug": "chai-1",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "AF3-class biomolecular structure prediction",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Chai Discovery, a venture-backed startup; the launch post names OpenAI, Thrive Capital, Dimension, Conviction, Neo, Lachy Groom and Amplify Partners among its backers.",
+  "founded_year": 2024,
+  "flagship_projects": [
+    "Chai-1 (v0.0.1 2024-09-09)",
+    "Chai-1r (restraints, v0.3.0)",
+    "Chai-2 (antibody design; 2025 technical report)"
+  ],
+  "openness_initial": 1,
+  "openness_current": 2,
+  "licences": {
+    "code": "Chai Discovery Community License (non-commercial) -> Apache-2.0 (2024-11-27)",
+    "weights": "same as code",
+    "data": "training data not stated on fetched pages"
+  },
+  "openness_notes": "v0.0.1 ('Initial release of Chai-1', 09 Sep [2024]) shipped under the 'Chai Discovery Community License Agreement'. It granted rights 'SOLELY FOR NON-COMMERCIAL PURPOSES' to the 'Chai-1 Model software code and model weights', gave commercial entities no rights, barred offering it as a service, and had an acceptable-use policy restricting use of outputs to train other protein models. The web interface was free 'including for commercial applications such as drug discovery'. v0.4.0 (27 Nov [2024]), titled 'Apache 2.0 license (commercial use)', changed code and weights to Apache-2.0. The successor Chai-2 is only cited in the chai-lab repo, and the homepage presents it through pharma partnerships (Novartis, Pfizer, Eli Lilly, argenx) with no open release found. Initial 1; current 2 (open older model, unreleased flagship).",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2024,
+      "license": "Chai Discovery Community License Agreement (non-commercial; code and weights)",
+      "note": "v0.0.1, 2024-09-09.",
+      "source": "https://raw.githubusercontent.com/chaidiscovery/chai-lab/v0.0.1/LICENSE.md"
+    },
+    {
+      "year": 2024,
+      "license": "Apache-2.0 (code and weights)",
+      "note": "v0.4.0/v0.4.1 'Apache 2.0 license (commercial use)', 27 Nov; LICENSE moved 2024-11-27.",
+      "source": "https://github.com/chaidiscovery/chai-lab/releases"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "Chai Discovery Community License (non-commercial)",
+      "to": "Apache-2.0",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Opened 11 weeks after launch and about a week after the MIT-licensed Boltz-1 preprint (2024-11-19). Causation not established.",
+      "source": "https://github.com/chaidiscovery/chai-lab/releases"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": "Homepage (2026-11) announces $400M of new funding (Series C); date and investors not confirmed",
+  "ownership_status": "private_vc",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Successor model (Chai-2) offered through partnerships rather than released"
+  ],
+  "robustness": "Apache-2.0 Chai-1 code and weights can be forked; future models are at the company's discretion.",
+  "physical_science_relevance": "Protein, ligand and nucleic-acid complex prediction for drug discovery.",
+  "training_data": [
+    {
+      "name": "Training data",
+      "access": null,
+      "note": "Not described in the README; templates are downloaded from RCSB at inference time.",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "about 2.0k / 302",
+      "date": "2026-11-23",
+      "source": "https://github.com/chaidiscovery/chai-lab"
+    }
+  ],
+  "openness_effect_assessment": "Chai-1 started with a non-commercial licence and switched to Apache-2.0 within three months, as MIT-licensed rivals appeared. The company then kept its next-generation antibody model for partnerships, and per its homepage it raised a $400M Series C.",
+  "key_takeaway": "A startup used an open (eventually Apache-2.0) model as a calling card while keeping its frontier model closed, a typical AI-startup open-core pattern.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/chaidiscovery/chai-lab",
+    "https://github.com/chaidiscovery/chai-lab/commits/main/LICENSE",
+    "https://github.com/chaidiscovery/chai-lab/releases",
+    "https://github.com/chaidiscovery/chai-lab/releases?page=2",
+    "https://raw.githubusercontent.com/chaidiscovery/chai-lab/v0.0.1/README.md",
+    "https://raw.githubusercontent.com/chaidiscovery/chai-lab/v0.0.1/LICENSE.md",
+    "https://www.chaidiscovery.com/blog/introducing-chai-1",
+    "https://www.chaidiscovery.com/blog/introducing-chai-2 (404)",
+    "https://www.chaidiscovery.com/"
+  ],
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/chaidiscovery/chai-lab/v0.0.1/LICENSE.md",
+      "title": "Chai Discovery Community License Agreement (v0.0.1)",
+      "publisher": "GitHub (Chai Discovery)",
+      "date": null,
+      "supports": "license_history[0], openness_initial"
+    },
+    {
+      "url": "https://github.com/chaidiscovery/chai-lab/releases",
+      "title": "chai-lab releases (page 1)",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "license_history[1], relicensing_events[0]"
+    },
+    {
+      "url": "https://github.com/chaidiscovery/chai-lab/releases?page=2",
+      "title": "chai-lab releases (page 2)",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "v0.0.1 initial release 09 Sep"
+    },
+    {
+      "url": "https://www.chaidiscovery.com/blog/introducing-chai-1",
+      "title": "Introducing Chai-1",
+      "publisher": "Chai Discovery",
+      "date": "2024-09-09",
+      "supports": "free web interface incl. commercial use; backers; current Apache-2.0 wording"
+    },
+    {
+      "url": "https://github.com/chaidiscovery/chai-lab",
+      "title": "chaidiscovery/chai-lab",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "Apache-2.0 for code and weights, Chai-2 citation, usage_metrics"
+    },
+    {
+      "url": "https://www.chaidiscovery.com/",
+      "title": "Chai Discovery homepage",
+      "publisher": "Chai Discovery",
+      "date": null,
+      "supports": "Chai-2 partnerships, $400M funding"
+    }
+  ]
+}

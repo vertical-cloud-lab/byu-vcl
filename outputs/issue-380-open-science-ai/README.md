@@ -96,7 +96,7 @@ below links to a file in this folder, and each file names its sources.
 
 | Stream | What was done | Output |
 | --- | --- | --- |
-| Edison Scientific | 9 jobs: 4 `LITERATURE_HIGH`, 4 `LITERATURE` and 1 `PRECEDENT`. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
+| Edison Scientific | 13 jobs: 4 `LITERATURE_HIGH`, 8 `LITERATURE` and 1 `PRECEDENT`. The first 9 were submitted at 21:51; 4 gap-filling jobs (open materials data, lab-automation markets, industry publishing norms, sustaining open infrastructure) were submitted at 23:55. All were synthesized in [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md), which covers the first 9. Topics: the value of OSS, the return on open science and open data, the economics of open hardware, commercial OSS outcomes and relicensing, open-weight AI, openness trends by sector, open self-driving labs, sustainability of physical-science software, and open data's role in AI breakthroughs | [`edison/`](edison/): answers, references and full task JSON |
 | GitHub mining | `gh api` (REST and GraphQL) over **every** issue, PR, conversation comment, inline review comment, review body, discussion, discussion comment and reply in `AccelerationConsortium/ac-dev-lab` and `sparks-baird/self-driving-lab-demo`: 4,928 records in 816 threads. 118 threads were coded for commercialization, and quotes and numbers were checked against the corpus by script | [`gh-mining/`](gh-mining/) |
 | Case studies | 143 organizations: 121 in six groups at the video snapshot, then 1 more hardware file and group G (21: additive manufacturing, lab automation, open-science infrastructure). The six groups are commercial OSS data infrastructure; platforms and tools; Big Tech and AI labs; hardware; lab automation and AI-for-science; physical-science software and infrastructure. One JSON per organization on a fixed [schema](companies/SCHEMA.md) with a 0–4 openness rubric. 1,096 cited sources (904 at the video snapshot) | [`companies/`](companies/), [`companies_master.csv`](companies/companies_master.csv), [`events.csv`](companies/events.csv) |
 | Searching through the Pi | Headed Chrome on the runner's virtual display, with its traffic tunnelled through the CubXL Pi (exit network: BYU, AS6510). Every search moved the mouse, clicked the search box and typed: Google, Bing, DuckDuckGo, Brave, YouTube, Reddit, Hacker News. **145 searches** (89 curated, 18 to find primary documents, 36 to verify claims, plus 2 tests), **74 page fetches** (57 primary documents from AI labs and US policy, 15 community and blog pages, 2 report pages) and **6 YouTube transcript sessions**, in which the mouse opened "Show transcript" | [`pi-browser/search_log.jsonl`](pi-browser/search_log.jsonl), [`scripts/pi_search.py`](scripts/pi_search.py) |
@@ -497,6 +497,59 @@ Group G is 21 organizations added after the video: [`companies/G/`](companies/G/
   - Family-owned EOS stayed independent.
   - For DAL, vendor longevity is a real procurement risk, which is one more reason to own the driver
     layer.
+
+### 5c. AI-for-science models: more open than frontier LLMs (group I)
+
+There are 19 model and dataset files in [`companies/I/`](companies/I/) ([summary](companies/I/_summary.md)).
+Each one records the licence history of the code, the weights and the training data separately.
+- **Openness:** AI-for-science releases average **2.8** on the 0–4 scale, against **1.6** for the
+  frontier-LLM companies in group C. Academic, non-profit and government developers average 3.4;
+  corporate developers average 2.3.
+- **Licences move toward open more often than away:** 11 opening changes vs. 7 closing ones. Examples:
+  - AlphaFold 2's weights went from CC BY-NC to CC BY (2022).
+  - Chai-1 went from non-commercial to Apache-2.0 (2024-11-27).
+  - ESM went from MIT (Meta) to non-commercial (EvolutionaryScale) and back to MIT (2026-05-27, Biohub).
+  - AlphaFold 3 launched server-only (2024-05-08). Its code came out under CC BY-NC-SA (2024-11-11) and
+    then Apache-2.0 (2026-06-09), but the weights are still gated and non-commercial.
+- **Two caveats:**
+  - Boltz added proprietary models after announcing a $110M Series A (2026-11-18).
+  - Newer MACE models carry a non-commercial academic licence.
+- **Most are trained on public data:** 14 of the 17 models with known training data used public datasets
+  such as the PDB, the Materials Project, Alexandria and OMat24.
+  - Meta's FAIR Chemistry datasets are CC BY 4.0, but its model weights use custom, gated licences.
+
+### 5d. Edison round 2: open materials data, lab-automation markets, publishing norms, sustaining the commons
+
+These are four gap-filling literature reviews submitted at 23:55 and fetched at 00:30
+([`edison/`](edison/)):
+- **Open materials databases** ([answer](edison/materials_open_data_value_answer.md)):
+  - The Materials Project has 178,627 materials, more than 600,000 registered users and more than 145,000
+    data DOIs.
+  - OQMD has over 1M compounds, AFLOW over 3.5M entries, NOMAD over 13M entries and Alexandria 5.8M
+    structures. OMat24 has over 110M DFT calculations.
+  - Licensing has to be checked per data object.
+  - No study puts a dollar value on these databases' contribution to ML discovery. That gap is consistent
+    with the precedent search.
+- **Lab-automation markets** ([answer](edison/lab_automation_business_answer.md)):
+  - The global market for clinical total-lab-automation systems was $5.57–6.1B in 2023. That is clinical
+    automation, not research SDLs.
+  - Open-source liquid handlers such as FINDUS cost under $400 to build, with pipetting error below 0.3%.
+  - Independent, audited SDL market numbers barely exist.
+- **Industry publishing norms** ([answer](edison/industry_publication_norms_answer.md)):
+  - Industry-only papers among the 100 most-cited AI papers fell from 19 (2022) to 7 (2023), per the
+    AI Index 2025.
+  - The 2025 Foundation Model Transparency Index scored *training-data properties* at an average of 15%,
+    and eight companies scored zero.
+  - At conferences, code-plus-data sharing still rose from 11% to 64% (2014–2024).
+  - By 2026, disclosure is "layered and lab-specific": papers, cards, evaluations, API access and
+    weights are released separately, to different audiences.
+- **Sustaining the commons** ([answer](edison/open_infrastructure_sustainability_answer.md)):
+  - Budgeted costs are small. US RCSB PDB operations were about $7.5M (2023), OSF's organization budget
+    was about $7M (2019), and OpenAlex had a $7.5M five-year grant (2024).
+  - A modeled Zenodo-like platform costs CHF 11M for CHF 2.8B of benefit (2028–2057).
+  - Failures happen when funding stops: Tranche and Peptidome closed with partial data loss after NIH
+    support ended, and NIAID didn't renew VEuPathDB in 2024.
+  - AI raises both the value of these collections and their machine-traffic costs.
 
 ### 6. Academia vs. government and national labs vs. industry, over time (US)
 

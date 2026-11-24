@@ -1,0 +1,146 @@
+{
+  "name": "NVIDIA BioNeMo Framework and ALCHEMI Toolkit-Ops",
+  "slug": "nvidia-bionemo-alchemi",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "GPU frameworks, recipes and accelerated checkpoints for biology (BioNeMo) and atomistic chemistry (ALCHEMI)",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "NVIDIA. BioNeMo is 'the development platform for AI-driven biology and drug discovery': open models, libraries, datasets and NIM microservices. ALCHEMI Toolkit-Ops offers GPU primitives for atomistic simulation.",
+  "founded_year": 2024,
+  "flagship_projects": [
+    "BioNeMo Framework (Apache-2.0)",
+    "BioNeMo NIM microservices",
+    "ALCHEMI Toolkit-Ops (Apache-2.0)",
+    "Accelerated checkpoints on Hugging Face (e.g. ESM-2 3B)"
+  ],
+  "openness_initial": 2,
+  "openness_current": 2,
+  "licences": {
+    "code": "Apache-2.0 (BioNeMo Framework; ALCHEMI Toolkit-Ops)",
+    "weights": "upstream licences, e.g. nvidia/esm2_t36_3B_UR50D MIT",
+    "data": "uses public data (UniRef, OpenGenome2); NIM licensing not confirmed"
+  },
+  "openness_notes": "BioNeMo Framework code is Apache-2.0 (LICENSE/license.txt, first committed 2024-08-07: 'Adding license, and contributing guidelines'). Checkpoints are 'available at huggingface.co/nvidia' under upstream terms; the ESM-2 3B conversion is MIT, trained on UniRef50/90. ALCHEMI Toolkit-Ops (neighbour lists, MD integrators, FIRE2/L-BFGS, DFT-D3 and Ewald/PME kernels in warp-lang with PyTorch and JAX bindings) is Apache-2.0. The fetched pages do not state the licensing of NIM microservices, and BioNeMo history before 2024 was not confirmed. Scored 2 (open framework tied to NVIDIA hardware and the proprietary CUDA stack, see C/nvidia.json, sold alongside NIM microservices); confidence low.",
+  "business_model": "hardware_sales",
+  "license_history": [
+    {
+      "year": 2024,
+      "license": "Apache-2.0 (BioNeMo Framework)",
+      "note": "Licence file first committed 2024-08-07; earlier history not visible.",
+      "source": "https://github.com/NVIDIA/bionemo-framework/commits/main/LICENSE/license.txt"
+    },
+    {
+      "year": null,
+      "license": "Apache-2.0 (ALCHEMI Toolkit-Ops)",
+      "note": "Release date not stated.",
+      "source": "https://github.com/NVIDIA/nvalchemi-toolkit-ops"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "Open code optimised for one vendor's GPUs; the commercial layer (NIM) is not documented on fetched pages"
+  ],
+  "robustness": "Apache-2.0 code can be forked, but performance depends on NVIDIA hardware and libraries.",
+  "physical_science_relevance": "Accelerates training and inference of open biology models (ESM-2, Geneformer, AMPLIFY, Evo 2 recipes) and atomistic simulation kernels for MLIPs.",
+  "training_data": [
+    {
+      "name": "UniRef50/90 (ESM-2 checkpoints); OpenGenome2 (Llama recipe)",
+      "access": "open",
+      "note": "Framework hosts recipes and checkpoints for models trained on public data.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks (bionemo-framework)",
+      "value": "877 / 193",
+      "date": "2026-11-23",
+      "source": "https://github.com/NVIDIA/bionemo-framework"
+    },
+    {
+      "metric": "GitHub stars / forks (nvalchemi-toolkit-ops)",
+      "value": "255 / 42",
+      "date": "2026-11-23",
+      "source": "https://github.com/NVIDIA/nvalchemi-toolkit-ops"
+    },
+    {
+      "metric": "HF downloads last month (nvidia/esm2_t36_3B_UR50D)",
+      "value": 308,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/nvidia/esm2_t36_3B_UR50D"
+    }
+  ],
+  "openness_effect_assessment": "NVIDIA open-sources the software layer for physical-science AI to sell compute. The frameworks are permissive, but adoption is modest (under 1k stars) next to the academic models they accelerate.",
+  "key_takeaway": "The hardware vendor's open science is complementary-goods strategy: Apache-2.0 frameworks and accelerated versions of other people's open models, with value captured in GPUs and enterprise services.",
+  "confidence": "low",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/NVIDIA/bionemo-framework",
+    "https://raw.githubusercontent.com/NVIDIA/bionemo-framework/main/LICENSE/license.txt",
+    "https://github.com/NVIDIA/bionemo-framework/commits/main/LICENSE/license.txt",
+    "https://github.com/NVIDIA/bionemo-framework/releases?page=3",
+    "https://raw.githubusercontent.com/NVIDIA/bionemo-framework/main/README.md",
+    "https://www.nvidia.com/en-us/clara/bionemo/",
+    "https://huggingface.co/nvidia/esm2_t36_3B_UR50D",
+    "https://github.com/NVIDIA/nvalchemi-toolkit-ops"
+  ],
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/NVIDIA/bionemo-framework/main/LICENSE/license.txt",
+      "title": "BioNeMo LICENSE/license.txt",
+      "publisher": "GitHub (NVIDIA)",
+      "date": null,
+      "supports": "Apache-2.0"
+    },
+    {
+      "url": "https://github.com/NVIDIA/bionemo-framework/commits/main/LICENSE/license.txt",
+      "title": "BioNeMo licence commit history",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "license_history[0] (2024-08-07)"
+    },
+    {
+      "url": "https://github.com/NVIDIA/bionemo-framework",
+      "title": "NVIDIA/bionemo-framework",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "supported models, usage_metrics"
+    },
+    {
+      "url": "https://www.nvidia.com/en-us/clara/bionemo/",
+      "title": "NVIDIA BioNeMo",
+      "publisher": "NVIDIA",
+      "date": null,
+      "supports": "platform description (open models, libraries, datasets, NIM)"
+    },
+    {
+      "url": "https://huggingface.co/nvidia/esm2_t36_3B_UR50D",
+      "title": "nvidia/esm2_t36_3B_UR50D",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "checkpoint licence MIT, downloads"
+    },
+    {
+      "url": "https://github.com/NVIDIA/nvalchemi-toolkit-ops",
+      "title": "NVIDIA/nvalchemi-toolkit-ops",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "ALCHEMI licence, contents, usage_metrics"
+    }
+  ]
+}

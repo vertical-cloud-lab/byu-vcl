@@ -1,0 +1,169 @@
+{
+  "name": "OpenFold and OpenFold3",
+  "slug": "openfold",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "open, trainable reproductions of AlphaFold 2 and AlphaFold 3",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "AlQuraishi Lab at Columbia University and the OpenFold consortium ('OpenFold3-preview was developed by the AlQuraishi Lab at Columbia University and the OpenFold consortium'). Consortium membership was not confirmed from fetched pages.",
+  "founded_year": 2021,
+  "flagship_projects": [
+    "OpenFold (AF2 reproduction; v0.1.0 18 Nov 2021, inferred year)",
+    "OpenProteinSet training database",
+    "OpenFold3-preview (AF3 reproduction, 2025)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 4,
+  "licences": {
+    "code": "Apache-2.0 (OpenFold and OpenFold3)",
+    "weights": "released with v1.0.0 (22 Jun 2022, inferred year); licence of OpenFold's own weights not stated on fetched pages",
+    "data": "OpenProteinSet CC BY 4.0 (AWS Registry of Open Data); OpenFold3 full training data provided"
+  },
+  "openness_notes": "Code Apache-2.0. v0.1.0 ('The initial release of OpenFold') was code only. v1.0.0 came 'at the time of the release of our original model parameters and training database'. Release years are inferred from the order and from v1.0.1 matching the 2022-11-20 bioRxiv manuscript. The training database, OpenProteinSet (MSAs for 140,000 unique PDB chains and 16M UniClust30 clusters), is CC BY 4.0 on AWS Open Data. OpenFold3-preview is Apache-2.0 'for academic and commercial use', aims at 'a bitwise reproduction of DeepMind's AlphaFold3', and ships its full training data, including a 13M-sequence MGnify-based distillation set. Wikipedia lists OpenFold-3 as MIT; the GitHub licence (Apache-2.0) is used here. Initial 3 (open code, no own weights yet); current 4 (code, weights and training data open, under a consortium).",
+  "business_model": null,
+  "license_history": [
+    {
+      "year": 2021,
+      "license": "Apache-2.0 (code)",
+      "note": "v0.1.0, 18 Nov (year inferred).",
+      "source": "https://github.com/aqlaboratory/openfold/releases"
+    },
+    {
+      "year": 2022,
+      "license": "Model parameters plus OpenProteinSet (CC BY 4.0)",
+      "note": "v1.0.0, 22 Jun (year inferred); dataset licence from AWS registry.",
+      "source": "https://registry.opendata.aws/openfold/"
+    },
+    {
+      "year": 2025,
+      "license": "OpenFold3-preview: Apache-2.0 code, training data provided",
+      "note": "Cited as v0.4.2 (2025); OpenBind-0 parameters ship with 0.5.0+ (June 2025 training cutoff).",
+      "source": "https://github.com/aqlaboratory/openfold-3"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2022,
+      "from": "Code-only reimplementation",
+      "to": "Code plus trained weights plus training database",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Supplied what DeepMind's AF2 release lacked: a trainable pipeline and an open training set.",
+      "source": "https://github.com/aqlaboratory/openfold/releases"
+    },
+    {
+      "year": 2025,
+      "from": "AlphaFold 3 restricted (server only, then non-commercial weights)",
+      "to": "OpenFold3-preview under Apache-2.0",
+      "direction": "opening",
+      "fork": "OpenFold3",
+      "fork_backer": "OpenFold consortium",
+      "outcome_note": "An open clone after a restricted release.",
+      "source": "https://github.com/aqlaboratory/openfold-3"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "OpenFold3 is a 'preview'; its weight licence was not stated on the fetched page"
+  ],
+  "robustness": "Permissive code and CC BY training data on AWS Open Data allow independent retraining; consortium rather than single-vendor control.",
+  "physical_science_relevance": "Protein and complex structure prediction; the open training set lets labs retrain or fine-tune on their own data.",
+  "training_data": [
+    {
+      "name": "OpenProteinSet",
+      "access": "open, CC BY 4.0, AWS Registry of Open Data (s3://openfold/)",
+      "note": "MSAs and template hits for 140,000 unique PDB chains and 16,000,000 UniClust30 clusters.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "PDB",
+      "access": "open",
+      "note": "Source of the training chains.",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "OpenFold3 training data incl. 13M-sequence MGnify-based distillation set",
+      "access": "provided (access via project portal)",
+      "note": "Per openfold-3 README.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks (openfold)",
+      "value": "3.5k / 703",
+      "date": "2026-11-23",
+      "source": "https://github.com/aqlaboratory/openfold"
+    },
+    {
+      "metric": "GitHub stars / forks (openfold-3)",
+      "value": "929 / 192",
+      "date": "2026-11-23",
+      "source": "https://github.com/aqlaboratory/openfold-3"
+    }
+  ],
+  "openness_effect_assessment": "OpenFold turned AF2 from a usable tool into a reproducible one, publishing the training set (OpenProteinSet) that DeepMind did not. It then repeated the move for AF3. Its role is infrastructure for academic and pharma users rather than a product.",
+  "key_takeaway": "Academic and consortium reproductions are how restricted corporate models become open science. OpenFold shows that the training data (MSAs) and the training code, not only the weights, are the scarce public goods.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/aqlaboratory/openfold",
+    "https://github.com/aqlaboratory/openfold/releases",
+    "https://raw.githubusercontent.com/aqlaboratory/openfold/main/README.md",
+    "https://github.com/aqlaboratory/openfold-3",
+    "https://registry.opendata.aws/openfold/",
+    "https://en.wikipedia.org/wiki/AlphaFold"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/aqlaboratory/openfold",
+      "title": "aqlaboratory/openfold",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "code licence, DeepMind parameters licence history, usage_metrics"
+    },
+    {
+      "url": "https://github.com/aqlaboratory/openfold/releases",
+      "title": "OpenFold releases",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "release history (v0.1.0, v1.0.0, v1.0.1, v2.x)"
+    },
+    {
+      "url": "https://github.com/aqlaboratory/openfold-3",
+      "title": "aqlaboratory/openfold-3",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "OpenFold3 licence, developers, training data, usage_metrics"
+    },
+    {
+      "url": "https://registry.opendata.aws/openfold/",
+      "title": "OpenProteinSet",
+      "publisher": "AWS Registry of Open Data",
+      "date": null,
+      "supports": "training_data[0] licence and size"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/AlphaFold",
+      "title": "AlphaFold",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "OpenFold-3 listed as MIT (conflict noted)"
+    }
+  ]
+}

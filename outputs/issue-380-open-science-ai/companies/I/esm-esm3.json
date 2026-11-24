@@ -1,0 +1,245 @@
+{
+  "name": "ESM protein language models (Meta FAIR, then EvolutionaryScale, now Biohub)",
+  "slug": "esm-esm3",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "protein language models, structure prediction and generative protein design",
+  "hq_country": "US",
+  "origin": "corporate",
+  "origin_detail": "Built by Meta's FAIR Protein Team (ESM-1 to ESM-2/ESMFold, 2019-2022). The team spun out as EvolutionaryScale (public benefit company; ESM3 2024-06-25, ESM C 2024-12), which is now part of the non-profit Chan Zuckerberg Biohub (per E/evolutionaryscale.json). The repos now sit under the Biohub GitHub organisation, and Meta's repo was archived as Biohub/esm-archive on 2026-11-20.",
+  "founded_year": 2019,
+  "flagship_projects": [
+    "ESM-1b (Dec 2020)",
+    "ESM-2 (Aug 2022)",
+    "ESMFold and ESM Metagenomic Atlas (Nov 2022)",
+    "ESM3 (2024-06-25; 98B API, 1.4B open)",
+    "ESM C (Dec 2024)",
+    "ESMFold2 (2026-05)"
+  ],
+  "openness_initial": 3,
+  "openness_current": 2,
+  "licences": {
+    "code": "MIT (Meta, 2019-2022) -> EvolutionaryScale terms (2024) -> MIT (2026-05-27, copyright Chan Zuckerberg Biohub)",
+    "weights": "MIT (Meta ESM-2) -> ESM3 Community / Cambrian Non-Commercial (ESM3-open, ESM C 600M), Cambrian Open (ESM C 300M) -> MIT (2026); 98B ESM3 not released",
+    "data": "ESM Atlas CC BY 4.0; trained on UniRef (public)"
+  },
+  "openness_notes": "Meta era: source MIT; the ESM Metagenomic Atlas (617 million predicted structures, Nov 2022, about 150M more in Mar 2023) is CC BY 4.0 'for academic and commercial use'. ESM-2 weights are MIT on Hugging Face; the Meta repo does not state a separate weights licence. EvolutionaryScale era: ESM3 (2024-06-25) was trained with over 1e24 FLOPs at 98B parameters, but only a 1.4B open model was released. Per the 2025-01-16 LICENSE.md, ESM3-open and ESM C 600M were under the Cambrian Non-Commercial License (based on the original ESM3 Community License), and ESM C 300M under the more permissive Cambrian Open License. The commercial route was a paid API. The only later change to LICENSE.md (2026-05-27) replaced these terms with MIT, copyright Chan Zuckerberg Biohub (2026). Initial 3 (MIT code and weights, public training data); trough 1 (2024); current 2 (open small models, the 98B ESM3 not released).",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2020,
+      "license": "MIT (Meta ESM code; ESM-1b weights added Dec 2020)",
+      "note": "Rives et al. 2019 preprint.",
+      "source": "https://github.com/facebookresearch/esm"
+    },
+    {
+      "year": 2022,
+      "license": "MIT (ESM-2, ESMFold); CC BY 4.0 (ESM Metagenomic Atlas)",
+      "note": "ESM-2 Aug 2022; ESMFold and Atlas Nov 2022.",
+      "source": "https://github.com/facebookresearch/esm"
+    },
+    {
+      "year": 2024,
+      "license": "ESM3 Community License (non-commercial) for ESM3-open; 98B via API",
+      "note": "Launch 2024-06-25 (initial LICENSE.md commit).",
+      "source": "https://github.com/evolutionaryscale/esm/commits/main/LICENSE.md"
+    },
+    {
+      "year": 2024,
+      "license": "Cambrian Open (ESM C 300M); Cambrian Non-Commercial (ESM C 600M, ESM3-open)",
+      "note": "ESM C release commit 2024-12-04; file state 2025-01-16.",
+      "source": "https://raw.githubusercontent.com/evolutionaryscale/esm/1b3e080/LICENSE.md"
+    },
+    {
+      "year": 2026,
+      "license": "MIT (copyright Chan Zuckerberg Biohub, Inc.)",
+      "note": "Only LICENSE.md change after 2025-01-16 is commit c94ed8d, 2026-05-27.",
+      "source": "https://raw.githubusercontent.com/evolutionaryscale/esm/main/LICENSE.md"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "MIT (Meta ESM-2)",
+      "to": "Non-commercial ESM3 Community License; frontier 98B model API-only",
+      "direction": "closing",
+      "fork": "EvolutionaryScale (team spin-out)",
+      "fork_backer": "Venture investors (see E/evolutionaryscale.json)",
+      "outcome_note": "The same team's next generation became restricted once it was inside a VC-backed company.",
+      "source": "https://raw.githubusercontent.com/evolutionaryscale/esm/1b3e080/LICENSE.md"
+    },
+    {
+      "year": 2024,
+      "from": "Non-commercial only",
+      "to": "ESM C 300M under the permissive Cambrian Open License",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Partial: 600M stayed non-commercial and 6B API-only.",
+      "source": "https://raw.githubusercontent.com/evolutionaryscale/esm/1b3e080/LICENSE.md"
+    },
+    {
+      "year": 2026,
+      "from": "Cambrian Open / Non-Commercial licences",
+      "to": "MIT",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "On 2026-05-27, after the company became part of non-profit Biohub; Meta's ESM repo was archived under Biohub on 2026-11-20.",
+      "source": "https://raw.githubusercontent.com/evolutionaryscale/esm/main/LICENSE.md"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "nonprofit",
+  "exit_events": [
+    {
+      "year": 2026,
+      "type": "merger",
+      "value_usd": null,
+      "counterparty": "Chan Zuckerberg Biohub",
+      "note": "EvolutionaryScale 'now part of Biohub'; repos and HF models moved to Biohub; exact date not confirmed.",
+      "source": "https://github.com/evolutionaryscale/esm"
+    }
+  ],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [
+    "2024 closing at spin-out; frontier ESM3 98B still not released as weights",
+    "Ownership moved three times (Meta, EvolutionaryScale, Biohub)"
+  ],
+  "robustness": "MIT weights for ESM-2/ESMFold and now ESM3-open/ESM C; Atlas CC BY 4.0; stewardship by a philanthropic non-profit since 2026.",
+  "physical_science_relevance": "Protein engineering and design; ESM3's esmGFP is a new fluorescent protein 58% similar to the closest natural one (estimated as 'over 500 million years' of evolution).",
+  "training_data": [
+    {
+      "name": "UniRef50 (UR50/D 2021_04), UniRef90",
+      "access": "open (UniProt)",
+      "note": "ESM-2/ESMFold (UR50; ESM-2 also sampled UR90); ESM-1v (UR90/S 2020_03); ESM-1b (UR50/S 2018_03).",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "ESM3 training set",
+      "access": null,
+      "note": "'billions of proteins' plus 'hundreds of millions of synthetic data points'; sources not named on fetched pages.",
+      "confirmed_from_fetched_page": false
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "HF downloads last month (esm2_t33_650M_UR50D, now under biohub)",
+      "value": 3021003,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/facebook/esm2_t33_650M_UR50D"
+    },
+    {
+      "metric": "HF finetunes / Spaces (esm2_t33_650M)",
+      "value": "39 / 100",
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/facebook/esm2_t33_650M_UR50D"
+    },
+    {
+      "metric": "HF downloads last month (esm3-sm-open-v1)",
+      "value": 2268,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/EvolutionaryScale/esm3-sm-open-v1"
+    },
+    {
+      "metric": "HF likes (esm3-sm-open-v1)",
+      "value": 347,
+      "date": "2026-11-23",
+      "source": "https://huggingface.co/EvolutionaryScale/esm3-sm-open-v1"
+    },
+    {
+      "metric": "GitHub stars / forks (Meta repo, now Biohub/esm-archive)",
+      "value": "4.2k / 825",
+      "date": "2026-11-23",
+      "source": "https://github.com/facebookresearch/esm"
+    },
+    {
+      "metric": "GitHub stars / forks (evolutionaryscale/esm)",
+      "value": "3.0k / 408",
+      "date": "2026-11-23",
+      "source": "https://github.com/evolutionaryscale/esm"
+    }
+  ],
+  "openness_effect_assessment": "Meta's MIT-licensed ESM-2 is among the most-used science models (3.0M HF downloads a month for one size). The restricted ESM3-open drew about 2.3k a month. When the team left Meta for a VC-backed company, the licence closed (non-commercial, API for the frontier model); after it joined a non-profit, the open models returned to MIT.",
+  "key_takeaway": "Openness tracked the owner's incentives: open at Meta, restricted at a VC-backed startup, open again under a philanthropic non-profit. Download counts show how much more the permissive models were used.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/facebookresearch/esm",
+    "https://github.com/evolutionaryscale/esm",
+    "https://github.com/evolutionaryscale/esm/commits/main/LICENSE.md",
+    "https://raw.githubusercontent.com/evolutionaryscale/esm/1b3e080/LICENSE.md",
+    "https://raw.githubusercontent.com/evolutionaryscale/esm/main/LICENSE.md",
+    "https://www.evolutionaryscale.ai/blog/esm3-release",
+    "https://huggingface.co/facebook/esm2_t33_650M_UR50D",
+    "https://huggingface.co/EvolutionaryScale/esm3-sm-open-v1"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/facebookresearch/esm",
+      "title": "facebookresearch/esm (now Biohub/esm-archive)",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "Meta-era licences, release dates, training data, Atlas licence, archive date, usage_metrics"
+    },
+    {
+      "url": "https://github.com/evolutionaryscale/esm/commits/main/LICENSE.md",
+      "title": "evolutionaryscale/esm LICENSE.md commits",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "licence change dates (2024-06-25, 2024-12-04, 2025-01-16, 2026-05-27)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/evolutionaryscale/esm/1b3e080/LICENSE.md",
+      "title": "LICENSE.md at 1b3e080 (2025-01-16)",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "Cambrian licences"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/evolutionaryscale/esm/main/LICENSE.md",
+      "title": "LICENSE.md (current)",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "MIT, copyright Chan Zuckerberg Biohub 2026"
+    },
+    {
+      "url": "https://www.evolutionaryscale.ai/blog/esm3-release",
+      "title": "ESM3 release",
+      "publisher": "EvolutionaryScale",
+      "date": "2024-06-25",
+      "supports": "release date, 98B / 1.4B, compute, esmGFP"
+    },
+    {
+      "url": "https://huggingface.co/facebook/esm2_t33_650M_UR50D",
+      "title": "esm2_t33_650M_UR50D",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "MIT, downloads"
+    },
+    {
+      "url": "https://huggingface.co/EvolutionaryScale/esm3-sm-open-v1",
+      "title": "esm3-sm-open-v1",
+      "publisher": "Hugging Face",
+      "date": null,
+      "supports": "MIT, downloads, likes"
+    },
+    {
+      "url": "https://github.com/evolutionaryscale/esm",
+      "title": "evolutionaryscale/esm",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "Biohub org, MIT, usage_metrics"
+    }
+  ]
+}

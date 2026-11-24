@@ -1,0 +1,198 @@
+{
+  "name": "AlphaFold 2 and the AlphaFold Protein Structure Database",
+  "slug": "alphafold2-afdb",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "protein structure prediction model and open structure database",
+  "hq_country": "GB",
+  "origin": "corporate",
+  "origin_detail": "Google DeepMind (London; an Alphabet subsidiary). The AlphaFold Protein Structure Database (AFDB) was 'Developed by Google DeepMind and EMBL-EBI' and is served by EMBL-EBI.",
+  "founded_year": 2021,
+  "flagship_projects": [
+    "AlphaFold 2 (initial release 2021-07-15; v2.3.0 parameters dated 2022-12-06)",
+    "AlphaFold-Multimer (v2.1.0 2022-01-19, v2.2.0 2022-03-02 weights)",
+    "AlphaFold Protein Structure Database (launched 2021-07-22)"
+  ],
+  "openness_initial": 1,
+  "openness_current": 4,
+  "licences": {
+    "code": "Apache-2.0 (since 2021-07-15)",
+    "weights": "CC BY-NC 4.0 (2021) -> CC BY 4.0 (January 2022)",
+    "data": "AFDB CC BY 4.0; trained on public PDB (CC0 since 2021) and sequence databases"
+  },
+  "openness_notes": "Code Apache-2.0 from the first commit ('Initial release of AlphaFold', 2021-07-15); the Nature paper the same day says 'Source code for the AlphaFold model, trained weights and inference script are available under an open-source license'. The parameters were originally CC BY-NC 4.0 and became CC BY 4.0 'as of January 2022' (OpenFold README). The AFDB is CC BY 4.0, 'available for academic and commercial use', with over 200 million (elsewhere on the site 'over 260 million') predictions. All training inputs were public: PDB structures released up to 2018-04-30, UniRef90, BFD (mirror CC BY-SA 4.0), Uniclust30 and MGnify (mirror CC0). The code statement covers the model, weights and inference script; no training pipeline is mentioned, a gap the OpenFold reproduction later filled. Scoring rule for group I: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Initial 1 for the non-commercial parameters; current 4 for Apache code, CC BY weights, and outputs as a CC BY database co-run with EMBL-EBI.",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2021,
+      "license": "Apache-2.0 (code)",
+      "note": "LICENSE commit 'Initial release of AlphaFold' 2021-07-15; the file shows no later licence change.",
+      "source": "https://github.com/google-deepmind/alphafold/commits/main/LICENSE"
+    },
+    {
+      "year": 2021,
+      "license": "CC BY-NC 4.0 (model parameters)",
+      "note": "Original parameter licence, described as 'more restrictive' by OpenFold.",
+      "source": "https://raw.githubusercontent.com/aqlaboratory/openfold/main/README.md"
+    },
+    {
+      "year": 2021,
+      "license": "CC BY 4.0 (AlphaFold Protein Structure Database)",
+      "note": "Launched 2021-07-22 with EMBL-EBI (over 365,000 proteins); about 200M added 2022-07-28; 214M entries in 2024.",
+      "source": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    {
+      "year": 2022,
+      "license": "CC BY 4.0 (model parameters)",
+      "note": "Replaced CC BY-NC 4.0 'as of January 2022'; current README states CC BY 4.0.",
+      "source": "https://raw.githubusercontent.com/aqlaboratory/openfold/main/README.md"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2022,
+      "from": "CC BY-NC 4.0 parameters",
+      "to": "CC BY 4.0 parameters",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Commercial use of the AF2 weights allowed about six months after release. Code was already Apache-2.0 and the AFDB CC BY 4.0.",
+      "source": "https://raw.githubusercontent.com/aqlaboratory/openfold/main/README.md"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Successor AlphaFold 3 was restricted at launch (see alphafold3.json)",
+    "AFDB still uses AlphaFold 2 models as of 2026 (Wikipedia), so the open database lags the restricted model"
+  ],
+  "robustness": "Code (Apache-2.0) and weights (CC BY 4.0) can be mirrored freely; the AFDB is served by EMBL-EBI under CC BY 4.0; an independent Apache-2.0 reproduction (OpenFold) exists.",
+  "physical_science_relevance": "Structural biology and chemistry: half of the 2024 Nobel Prize in Chemistry went to Hassabis and Jumper 'for protein structure prediction' (Wikipedia).",
+  "training_data": [
+    {
+      "name": "Protein Data Bank (PDB)",
+      "access": "open; wwPDB data CC0 since Aug 2021 (see F/rcsb-pdb-wwpdb.json)",
+      "note": "Training structures released up to 2018-04-30; PDB copy downloaded 2019-08-28 (Nature data availability).",
+      "confirmed_from_fetched_page": true
+    },
+    {
+      "name": "UniRef90 v2020_01, BFD, Uniclust30 v2018_08, MGnify v2018_12",
+      "access": "open; mirrors: BFD CC BY-SA 4.0, UniRef30 CC BY-SA 4.0, MGnify CC0",
+      "note": "MSA inputs; Uniclust30 also used to build a distillation set (Nature).",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "Nature paper citations (AF2)",
+      "value": "51k",
+      "date": "2026-11-23",
+      "source": "https://www.nature.com/articles/s41586-021-03819-2"
+    },
+    {
+      "metric": "Nature paper accesses",
+      "value": "3.32m",
+      "date": "2026-11-23",
+      "source": "https://www.nature.com/articles/s41586-021-03819-2"
+    },
+    {
+      "metric": "Altmetric score",
+      "value": 4416,
+      "date": "2026-11-23",
+      "source": "https://www.nature.com/articles/s41586-021-03819-2"
+    },
+    {
+      "metric": "Citations (Wikipedia)",
+      "value": "nearly 43,000",
+      "date": "2025-11",
+      "source": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    {
+      "metric": "GitHub stars / forks",
+      "value": "14.9k / 3.0k",
+      "date": "2026-11-23",
+      "source": "https://github.com/google-deepmind/alphafold"
+    },
+    {
+      "metric": "AFDB predictions",
+      "value": "over 200 million (also stated as over 260 million)",
+      "date": "2026-11-23",
+      "source": "https://alphafold.ebi.ac.uk/"
+    },
+    {
+      "metric": "Share of 2023 protein-structure papers in Cell, Nature and Science citing AF2",
+      "value": "over 40%",
+      "date": null,
+      "source": "https://en.wikipedia.org/wiki/AlphaFold"
+    }
+  ],
+  "openness_effect_assessment": "AF2 became the default tool in structural biology within months: 51k citations and 3.32m accesses for the paper, and a CC BY database of 200M+ structures. The only restriction at launch, non-commercial parameters, was lifted after about six months. Its openness also enabled the trainable reproduction (OpenFold) and the AF3-class clones that followed.",
+  "key_takeaway": "The reference case for open AI-for-science: a corporate lab released permissive code, weights (after a six-month non-commercial phase) and a public-institution-hosted database built from public PDB data. It produced field-wide adoption and a Nobel Prize. The same lab then restricted its successor (AlphaFold 3).",
+  "confidence": "high",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/google-deepmind/alphafold",
+    "https://github.com/google-deepmind/alphafold/commits/main/LICENSE",
+    "https://www.nature.com/articles/s41586-021-03819-2 (via ?error=cookies_not_supported)",
+    "https://alphafold.ebi.ac.uk/",
+    "https://en.wikipedia.org/wiki/AlphaFold",
+    "https://raw.githubusercontent.com/aqlaboratory/openfold/main/README.md",
+    "https://github.com/aqlaboratory/openfold"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/google-deepmind/alphafold",
+      "title": "google-deepmind/alphafold",
+      "publisher": "GitHub (Google DeepMind)",
+      "date": null,
+      "supports": "licences (code Apache-2.0, parameters CC BY 4.0), database mirror licences, version history, usage_metrics"
+    },
+    {
+      "url": "https://github.com/google-deepmind/alphafold/commits/main/LICENSE",
+      "title": "Commit history of LICENSE",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "license_history[0] (2021-07-15)"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-021-03819-2",
+      "title": "Highly accurate protein structure prediction with AlphaFold",
+      "publisher": "Nature",
+      "date": "2021-07-15",
+      "supports": "publication date, code availability, training_data, usage_metrics (citations, accesses, Altmetric)"
+    },
+    {
+      "url": "https://alphafold.ebi.ac.uk/",
+      "title": "AlphaFold Protein Structure Database",
+      "publisher": "EMBL-EBI / Google DeepMind",
+      "date": null,
+      "supports": "AFDB licence, size, operators"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/AlphaFold",
+      "title": "AlphaFold",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "AFDB launch and growth, Nobel Prize, citation counts, 40% statement"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/aqlaboratory/openfold/main/README.md",
+      "title": "OpenFold README",
+      "publisher": "GitHub (AlQuraishi lab)",
+      "date": null,
+      "supports": "parameters CC BY-NC 4.0 -> CC BY 4.0 as of January 2022 (relicensing_events[0])"
+    }
+  ]
+}

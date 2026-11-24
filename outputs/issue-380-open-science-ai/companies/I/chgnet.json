@@ -1,0 +1,92 @@
+{
+  "name": "CHGNet (Crystal Hamiltonian Graph Neural Network)",
+  "slug": "chgnet",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "charge-informed universal interatomic potential",
+  "hq_country": "US",
+  "origin": "academic",
+  "origin_detail": "Ceder group (CederGroupHub); copyright 2023 The Regents of the University of California, through Lawrence Berkeley National Laboratory (subject to DOE approvals). Deng et al., Nature Machine Intelligence 2023.",
+  "founded_year": 2023,
+  "flagship_projects": [
+    "CHGNet 0.2.0 (NMI paper)",
+    "CHGNet 0.3.0 (default weights, 2023-10-22)",
+    "r2SCAN transfer-learned model",
+    "MPtrj dataset"
+  ],
+  "openness_initial": 4,
+  "openness_current": 4,
+  "licences": {
+    "code": "BSD-style (UC Regents / LBNL; licence not named in text)",
+    "weights": "shipped in the same repository",
+    "data": "MPtrj (1.5M structures) on figshare under Materials Project terms"
+  },
+  "openness_notes": "LICENSE: a three-clause BSD-style text, 'Copyright (c) 2023, The Regents' (LBNL, DOE), with no commercial-use restriction. Pretrained weights (0.3.0 released 2023-10-22; 0.2.0 kept for the paper; r2SCAN variant) ship with the package. Training data: the Materials Project trajectory dataset MPtrj ('more than 1.5 Million structures from 146k compounds'), hosted on figshare; use implies agreeing to MP terms of use. MPtrj became a standard training set for later MLIPs (MACE-MP-0, SevenNet-0, OMat24 OAM checkpoints). Group I scoring: 0 = no weights; 1 = weights only under non-commercial or gated custom terms; 2 = open code/weights with the flagship model, weights or training data closed (open core); 3 = code and weights under OSI-type or CC BY licences; 4 = 3 plus openly downloadable training data, or outputs published as an open database stewarded by a public institution. Score 4.",
+  "business_model": "grants",
+  "license_history": [
+    {
+      "year": 2023,
+      "license": "BSD-style (UC Regents/LBNL) code and weights; MPtrj on figshare",
+      "note": "No changes found.",
+      "source": "https://raw.githubusercontent.com/CederGroupHub/chgnet/main/LICENSE"
+    }
+  ],
+  "relicensing_events": [],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "government",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": true,
+  "risk_events": [],
+  "robustness": "Permissive code, public weights and public training data; DOE-lab copyright.",
+  "physical_science_relevance": "Battery and inorganic materials simulation with magnetic-moment (charge) information.",
+  "training_data": [
+    {
+      "name": "MPtrj (Materials Project trajectories)",
+      "access": "open (figshare; Materials Project terms)",
+      "note": "1.5M+ structures from 146k compounds.",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "GitHub stars / forks",
+      "value": "414 / 105",
+      "date": "2026-11-23",
+      "source": "https://github.com/CederGroupHub/chgnet"
+    }
+  ],
+  "openness_effect_assessment": "CHGNet's most durable contribution may be its training set: MPtrj became the common benchmark training data used by MACE-MP-0, SevenNet-0 and Meta's OAM checkpoints.",
+  "key_takeaway": "A DOE-lab academic model, fully open in code, weights and data. Publishing the training set multiplied its impact beyond the model itself.",
+  "confidence": "medium",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/CederGroupHub/chgnet",
+    "https://raw.githubusercontent.com/CederGroupHub/chgnet/main/LICENSE"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/CederGroupHub/chgnet",
+      "title": "CederGroupHub/chgnet",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "versions, MPtrj, paper, usage_metrics"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/CederGroupHub/chgnet/main/LICENSE",
+      "title": "CHGNet LICENSE",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "licence terms and copyright holder"
+    }
+  ]
+}

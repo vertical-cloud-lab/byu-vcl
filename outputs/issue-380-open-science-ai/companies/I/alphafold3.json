@@ -1,0 +1,191 @@
+{
+  "name": "AlphaFold 3",
+  "slug": "alphafold3",
+  "group": "I",
+  "category": "ai_for_science_model",
+  "subcategory": "biomolecular complex structure prediction (proteins, nucleic acids, ligands, ions, modifications)",
+  "hq_country": "GB",
+  "origin": "corporate",
+  "origin_detail": "Google DeepMind with Isomorphic Labs (Alphabet's drug-discovery spin-off); announced 2024-05-08.",
+  "founded_year": 2024,
+  "flagship_projects": [
+    "AlphaFold 3",
+    "AlphaFold Server (non-commercial)",
+    "SynthID Bio-structure and AF3-LA weight variants"
+  ],
+  "openness_initial": 0,
+  "openness_current": 1,
+  "licences": {
+    "code": "none (2024-05) -> CC BY-NC-SA 4.0 (2024-11-11) -> Apache-2.0 (2026-06-09)",
+    "weights": "AlphaFold 3 Model Parameters Terms of Use: only from Google, non-commercial organisations only, no sharing, no training of similar models on outputs",
+    "data": "trained on public PDB (cutoff 2021-09-30)"
+  },
+  "openness_notes": "At publication (Nature, 2024-05-08) the code statement read 'Code is not provided'. The model was available only as a non-commercial server 'with restrictions on allowed ligands and covalent modifications', with pseudocode in the supplement. Code followed on 2024-11-11 under CC BY-NC-SA 4.0, with weights on request under terms last modified 2024-11-09. Those terms limit access to non-commercial organisations, forbid commercial activities 'including research' for companies, forbid sharing the parameters, and forbid using output 'to train machine learning models' for similar structure prediction. Wikipedia says the model became publicly available, still non-commercial, in February 2025. On 2026-06-09 the code moved to Apache-2.0 ('Change the code license from CC BY-NC-SA 4.0 to Apache 2.0'), but the weights terms did not change, and commercial use goes through Google Cloud. Training data: public PDB. Initial 0 (no code or weights); current 1 (weights gated and non-commercial, which is the binding constraint).",
+  "business_model": "mixed",
+  "license_history": [
+    {
+      "year": 2024,
+      "license": "AlphaFold Server only (non-commercial); 'Code is not provided'",
+      "note": "Nature publication 2024-05-08; addendum 2024-11-27.",
+      "source": "https://www.nature.com/articles/s41586-024-07487-w"
+    },
+    {
+      "year": 2024,
+      "license": "Code CC BY-NC-SA 4.0; weights by request under AlphaFold 3 Model Parameters Terms of Use",
+      "note": "'Initial release of AlphaFold 3' commit 2024-11-11; terms last modified 2024-11-09.",
+      "source": "https://github.com/google-deepmind/alphafold3/commits/main/LICENSE"
+    },
+    {
+      "year": 2025,
+      "license": "Weights publicly available for non-commercial use",
+      "note": "February 2025 per Wikipedia; not confirmed elsewhere.",
+      "source": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    {
+      "year": 2026,
+      "license": "Code Apache-2.0; weights terms unchanged",
+      "note": "Commit 7b197fe, 2026-06-09.",
+      "source": "https://github.com/google-deepmind/alphafold3/commits/main/LICENSE"
+    }
+  ],
+  "relicensing_events": [
+    {
+      "year": 2024,
+      "from": "AlphaFold 2 model: Apache-2.0 code, CC BY 4.0 weights",
+      "to": "AlphaFold 3: server only, no code",
+      "direction": "closing",
+      "fork": "Open AF3-class models: Boltz-1/2 (MIT), Chai-1 (Apache-2.0 from 2024-11-27), OpenFold3 (Apache-2.0 per GitHub; MIT per Wikipedia), Protenix (Apache 2.0, per Wikipedia)",
+      "fork_backer": "Academic groups, OpenFold consortium, startups (Boltz PBC, Chai Discovery), ByteDance",
+      "outcome_note": "Restriction coincided with commercialisation through co-developer Isomorphic Labs. Permissive clones appeared within about six months.",
+      "source": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    {
+      "year": 2024,
+      "from": "Server only",
+      "to": "Code CC BY-NC-SA 4.0 plus non-commercial weights on request",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Released six months after the paper, on 2024-11-11.",
+      "source": "https://github.com/google-deepmind/alphafold3/commits/main/LICENSE"
+    },
+    {
+      "year": 2026,
+      "from": "Code CC BY-NC-SA 4.0",
+      "to": "Code Apache-2.0 (weights still restricted)",
+      "direction": "opening",
+      "fork": null,
+      "fork_backer": null,
+      "outcome_note": "Partial: permissive code is of limited use without the weights, which stay non-commercial and Google-distributed.",
+      "source": "https://github.com/google-deepmind/alphafold3/commits/main/LICENSE"
+    }
+  ],
+  "funding_total_usd": null,
+  "funding_as_of": null,
+  "ownership_status": "public",
+  "exit_events": [],
+  "latest_value_usd": null,
+  "latest_value_type": null,
+  "latest_value_date": null,
+  "revenue_latest_usd": null,
+  "revenue_year": null,
+  "employees_latest": null,
+  "still_operating": true,
+  "end_year": null,
+  "us_focus": false,
+  "risk_events": [
+    "Server-only launch drew a wave of open clones (see relicensing_events[0])",
+    "Weights cannot be redistributed, so continued access depends on Google"
+  ],
+  "robustness": "Single-vendor control of the weights, but functionally comparable open models exist under MIT/Apache licences (Boltz, Chai-1, OpenFold3).",
+  "physical_science_relevance": "Protein-ligand and nucleic-acid complex prediction for chemistry and drug design.",
+  "training_data": [
+    {
+      "name": "Protein Data Bank (PDB)",
+      "access": "open (PDB mirror listed as CC0 1.0 in the AF3 repo)",
+      "note": "No training structures released after 2021-09-30; PDB downloaded 2023-01-12 (Nature).",
+      "confirmed_from_fetched_page": true
+    }
+  ],
+  "usage_metrics": [
+    {
+      "metric": "Nature paper citations",
+      "value": "20k",
+      "date": "2026-11-23",
+      "source": "https://www.nature.com/articles/s41586-024-07487-w"
+    },
+    {
+      "metric": "Nature paper accesses",
+      "value": "1.65m",
+      "date": "2026-11-23",
+      "source": "https://www.nature.com/articles/s41586-024-07487-w"
+    },
+    {
+      "metric": "Altmetric score",
+      "value": 2367,
+      "date": "2026-11-23",
+      "source": "https://www.nature.com/articles/s41586-024-07487-w"
+    },
+    {
+      "metric": "Citations (Wikipedia)",
+      "value": "more than 9,000",
+      "date": "2025-11",
+      "source": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    {
+      "metric": "GitHub stars / forks",
+      "value": "8.8k / 1.4k",
+      "date": "2026-11-23",
+      "source": "https://github.com/google-deepmind/alphafold3"
+    }
+  ],
+  "openness_effect_assessment": "Restricting AF3 did not stop it being cited (20k citations). It did hand the open ecosystem to others: within about six months at least four AF3-class models appeared under MIT or Apache terms, two of them from VC-backed startups. Google partly reversed course, with code in Nov 2024 and Apache-2.0 code in Jun 2026, but kept the weights gated.",
+  "key_takeaway": "AlphaFold 3 is the clearest closing event in AI for science. A corporate owner with a commercial route (Isomorphic Labs) withheld code and weights, and the community answered with permissive clones. Over two years Google re-opened the code in stages but never the weights. Labs relying on AF3 should prefer an MIT/Apache clone wherever commercial use or redistribution matters.",
+  "confidence": "high",
+  "searches": [],
+  "search_tool": "WebFetch (search budget exhausted)",
+  "fetched_urls": [
+    "https://github.com/google-deepmind/alphafold3",
+    "https://github.com/google-deepmind/alphafold3/commits/main/LICENSE",
+    "https://raw.githubusercontent.com/google-deepmind/alphafold3/main/WEIGHTS_TERMS_OF_USE.md",
+    "https://www.nature.com/articles/s41586-024-07487-w (via idp.nature.com redirect)",
+    "https://en.wikipedia.org/wiki/AlphaFold"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/google-deepmind/alphafold3",
+      "title": "google-deepmind/alphafold3",
+      "publisher": "GitHub (Google DeepMind)",
+      "date": null,
+      "supports": "current code licence, weights access, usage_metrics"
+    },
+    {
+      "url": "https://github.com/google-deepmind/alphafold3/commits/main/LICENSE",
+      "title": "Commit history of LICENSE",
+      "publisher": "GitHub",
+      "date": null,
+      "supports": "license_history[1], license_history[3], relicensing_events[1-2] (2024-11-11, 2026-06-09)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google-deepmind/alphafold3/main/WEIGHTS_TERMS_OF_USE.md",
+      "title": "AlphaFold 3 Model Parameters Terms of Use",
+      "publisher": "GitHub (Google DeepMind)",
+      "date": null,
+      "supports": "weights terms (last modified 2024-11-09)"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-024-07487-w",
+      "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+      "publisher": "Nature",
+      "date": "2024-05-08",
+      "supports": "'Code is not provided', server restrictions, training cutoffs, usage_metrics"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/AlphaFold",
+      "title": "AlphaFold",
+      "publisher": "Wikipedia",
+      "date": null,
+      "supports": "Feb 2025 public availability, open clones (Protenix, OpenFold-3, Boltz), citation count"
+    }
+  ]
+}
