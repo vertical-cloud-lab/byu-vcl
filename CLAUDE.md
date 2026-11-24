@@ -15,9 +15,10 @@ workaround of the action:
 
 1. Commit the work on a local branch (base it on `main`, or on this PR's branch
    for a stacked PR).
-2. `bash scripts/push_new_branch.sh claude/<slug>`. It only creates new
-   `claude/*` branches: it refuses any other name and any branch that already
-   exists, and never overwrites.
+2. `bash <(git show origin/main:scripts/push_new_branch.sh) claude/<slug>`.
+   This runs main's copy, which older PR branches don't have and a PR can't
+   change. It only creates new `claude/*` branches: it refuses any other name
+   and any branch that already exists, and never overwrites.
 3. `gh pr create --head claude/<slug> --base <main or this PR's branch>`, and
    link the new PR in your comment.
 
