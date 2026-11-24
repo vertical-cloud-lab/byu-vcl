@@ -41,6 +41,19 @@ This two-page version of [`README.md`](README.md) gives every number with its so
     institutional lab bought equipment rather than selling any, and closed vendor equipment was its most
     frequent complaint ([digest](gh-mining/commercialization_digest.md)).
 
+## Added late in the run (Part 3)
+
+- **Forks always survived closing moves.** Valkey, Pekko, OpenVox and LibreOffice now out-commit the
+  originals ([fork data](data/fork_vs_original.csv)).
+- **AI-era open-source startups (17) never moved to SSPL or BSL.** Their mean openness held at 2.29,
+  while the 2010s database cohort fell from 2.72 to 1.67. The exits were sales to compute and chip
+  companies, with no IPOs ([group J](companies/J/_summary.md)).
+- **Academic path:** US university licensing earned $2.94B in 2018, yet most tech-transfer offices
+  don't break even. Open hardware succeeds by "publishing the design and selling what publication doesn't
+  supply". The review literature records CLSLab:Light's 39 kits
+  ([Edison](edison/academic_osh_commercialization_answer.md)).
+- **Agents write our record:** in byu-vcl, Claude wrote 6.4M characters against humans' 1.4M.
+
 ## Five patterns
 
 - **Openness creates value; the service, the data and the hardware capture it.** Every sector is

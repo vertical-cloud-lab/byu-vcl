@@ -1,4 +1,4 @@
-# What this means for the Vertical Cloud Lab: a playbook from the evidence
+# What this means for the Vertical Cloud Lab: a playbook from the evidence (8 actions)
 
 These recommendations follow from the findings in [`README.md`](README.md), the
 [DAL/#318 audit](dal/dal_openness_audit.md), the [GitHub digest](gh-mining/commercialization_digest.md)
@@ -109,3 +109,23 @@ leverage per unit of effort.
 - Government, academic and foundation infrastructure is the one category that almost never closed (1 of
   18 made a closing move).
 - That is the category a university lab belongs to.
+
+## 8. Use the university's own machinery on purpose
+
+**Do:**
+- Before the first external user, agree with BYU's technology-transfer office which outputs are released
+  openly by default: drivers, schemas, digital twin, BOMs and data. Agree which, if any, go through
+  disclosure and patent review (for example, a target-meeting alloy composition with a named licensee).
+- If BYU has an Open Source Program Office or equivalent, register the lab's repos with it.
+- For hardware, follow the documented path: publish the design under CERN-OHL-P, and sell or partner on
+  what publication doesn't supply (built and tested units, kits, training, integration).
+
+**Why:**
+- US university licensing income topped $2.94B in 2018, yet most technology-transfer offices don't cover
+  their costs. The big wins came through inventor-founded startups.
+- OpenFlexure, Opentrons, Foldscope and CERN's open hardware commercialized through manufacturing and
+  service, not exclusive rights. The review literature already counts this lab's CLSLab:Light kits
+  (39 units through GroupGets) as an example
+  ([Edison](edison/academic_osh_commercialization_answer.md)).
+- AI-era open-source tools (group J) kept permissive licences and still sold for $1–4B to compute
+  companies. Openness did not block the exit.
