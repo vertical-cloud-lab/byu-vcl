@@ -78,6 +78,31 @@ Z_PLATE0, Z_PLATE1 = -DECK_T - (C["Z_RECESS"] - C["Z_WALL"]), -DECK_T   # frame 
 # cub_xl_ben_3_instrument_stirrer.yaml: offset_x 55, offset_y 11). While the capper works a vial the
 # pipette hangs here; while the pipette works one, the capper hangs at minus this.
 PIPETTE_FROM_CAPPER = (55.0, 11.0)
+Z_FAN1_D = C["Z_FAN1"] + DZ        # the fan's top face (and the hub's), deck frame
+
+# v2 of the frame (2026-11-24), asked for by @benwhitney5463 on PR #348 after the first under-deck module ran.
+# The outline, the bosses, the fan screws and the clamp are v1's, so the collars printed on 2026-11-20 still fit.
+#   1. The Hall sensor's lead slot (v1: 2.0 x 2.6 mm) becomes a hole the whole sensor passes through, so the
+#      sensor can be soldered to the board first and pushed up through the frame afterwards.
+#   2. The cable leaves through the base's -X wall: that is the compact base as changed on 2026-11-04
+#      (compact/build_compact.py), which no print had until now. Nothing in this file changes for it.
+#   3. A wider bore round the magnet carrier (v1: 0.8 mm a side). On 2026-11-24 the carrier caught on the
+#      bore's wall. Each 0.5 mm the sensor moves out costs it 3-4 mT, so the bore is as wide as the sensor
+#      allows: the sensor's top edge stays flush with the new wall, and the sensor sits 0.83 mm lower, with its
+#      element at the magnets' mid-height, which wins back about 1.5 mT (hall_v2_check below).
+# The v2 frame has no pads: four 0.5 mm M3 washers go on the fan's corners, as built on 2026-11-20.
+US1881 = (3.05, 4.06, 1.52)        # TO-92UA body: top edge to lead edge, width, thickness (field_check.py)
+V2 = {
+    "BORE_D": 22.0,                # carrier bore, through the plate (v1: CAR_D + 1.6 = 20.6)
+    "HALL_FACE_Z": 21.40,          # the sensor's marked face (down), stirrer frame; v1 22.23
+    "HALL_STOP_R": 14.10,          # the step its lead edge sits against: its top edge is then 0.05 behind the bore wall
+    "HALL_W": 4.30,                # pocket width, as v1
+    "GROOVE_W": 3.6,               # lead groove (v1 2.6): the three leads span 2.97 mm at the body
+    "GROOVE_STEP": 0.4,            # the groove's floor is this far above the pocket's, so the body can't slide outward
+    "HOLE_X": (-22.9, -19.6),      # through hole: from the base's -X inner wall face to just over the fan's -X edge
+    "HOLE_W": 5.2,                 # ... and this wide in Y (v1 slot: x -22.6 to -20.6, 2.6 wide)
+    "HOLE_R": 0.8,                 # its corner radius
+}
 
 
 def pill(cx, cy, w, l, z0, z1):
@@ -124,30 +149,51 @@ def collar():
     return body
 
 
-def frame():
-    """Today's compact holder's flange without the cup or the floor, with corner pads, two bosses,
-    two fan-screw counterbores and two inserts."""
+def frame(version: int = 1):
+    """Today's compact holder's flange without the cup or the floor, with two bosses, two fan-screw
+    counterbores and two inserts. Version 1 (printed 2026-11-20) has corner pads, a 0.8 mm bore and a lead
+    slot; version 2 (2026-11-24) has no pads, a 1.5 mm bore and a hole the Hall sensor passes through."""
     z0, z1 = Z_PLATE0, Z_PLATE1
     body = rbox(CELL_W, CELL_D, z0, z1, 5.0)
-    blades = cyl(0, 0, z0 - PAD_T - 1, z0 + 1, C["FAN_BORE"] / 2 + 1.0)                   # keep the pads off the blades
-    for sx, sy in itertools.product((-1, 1), repeat=2):
-        corner = box(min(sx * 13.0, sx * 19.6), min(sy * 13.0, sy * 19.6), z0 - PAD_T, max(sx * 13.0, sx * 19.6),
-                     max(sy * 13.0, sy * 19.6), z0 + 0.01)
-        body = body.union(corner.cut(blades))
+    if version == 1:
+        blades = cyl(0, 0, z0 - PAD_T - 1, z0 + 1, C["FAN_BORE"] / 2 + 1.0)               # keep the pads off the blades
+        for sx, sy in itertools.product((-1, 1), repeat=2):
+            corner = box(min(sx * 13.0, sx * 19.6), min(sy * 13.0, sy * 19.6), z0 - PAD_T, max(sx * 13.0, sx * 19.6),
+                         max(sy * 13.0, sy * 19.6), z0 + 0.01)
+            body = body.union(corner.cut(blades))
     for x, y in CLAMP:
         body = body.union(half_pill(x, math.copysign(1, y), KEY_W, z1 - 0.01, z1 + BOSS_H))
-    cuts = [cyl(0, 0, z0 - 1, z1 + 1, C["CAR_D"] / 2 + 0.8),                                  # carrier bore
-            box(-13.4, -2.15, z1 - 1.7, -10.2, 2.15, z1 + 1),                                  # Hall pocket, -X
-            box(-21.0, -1.3, z1 - 1.2, -13.0, 1.3, z1 + 1),                                    # its leads' groove
-            box(-22.6, -1.3, z0 - 1, -20.6, 1.3, z1 + 1)]                                      # and down past the fan
+    if version == 1:
+        cuts = [cyl(0, 0, z0 - 1, z1 + 1, C["CAR_D"] / 2 + 0.8),                              # carrier bore
+                box(-13.4, -2.15, z1 - 1.7, -10.2, 2.15, z1 + 1),                              # Hall pocket, -X
+                box(-21.0, -1.3, z1 - 1.2, -13.0, 1.3, z1 + 1),                                # its leads' groove
+                box(-22.6, -1.3, z0 - 1, -20.6, 1.3, z1 + 1)]                                  # and down past the fan
+    else:
+        face = V2["HALL_FACE_Z"] + DZ
+        hx0, hx1 = V2["HOLE_X"]
+        cuts = [cyl(0, 0, z0 - 1, z1 + 1, V2["BORE_D"] / 2),                                  # carrier bore
+                box(-V2["HALL_STOP_R"], -V2["HALL_W"] / 2, face, -V2["BORE_D"] / 2 + 1.0, V2["HALL_W"] / 2, z1 + 1),
+                box(hx1 - 0.5, -V2["GROOVE_W"] / 2, face + V2["GROOVE_STEP"], -V2["HALL_STOP_R"] + 0.01,
+                    V2["GROOVE_W"] / 2, z1 + 1),                                               # lead groove
+                rbox(hx1 - hx0, V2["HOLE_W"], z0 - 1, z1 + 1, V2["HOLE_R"]).translate(((hx0 + hx1) / 2, 0, 0))]
+    pad = PAD_T if version == 1 else 0.0
     for x, y in FAN_SCREWS:
-        cuts.append(cyl(x, y, z0 - PAD_T - 1, z1 + 1, 1.7))                                    # M3 x 16
+        cuts.append(cyl(x, y, z0 - pad - 1, z1 + 1, 1.7))                                       # M3 x 16
         cuts.append(cyl(x, y, z1 - CBORE_DEPTH, z1 + 1, CBORE_D / 2))                          # head counterbores
     for x, y in CLAMP:
         cuts.append(cyl(x, y, z1 + BOSS_H - 6.5, z1 + BOSS_H + 1, C["INSERT_HOLE"] / 2))       # M3 x 5.7 inserts
     for c in cuts:
         body = body.cut(c)
     return body
+
+
+def hall_body(version: int = 1):
+    """The US1881's body where it sits, flat, marked face down, top edge toward the axis (deck frame)."""
+    L, W, T = US1881
+    if version == 1:
+        return box(-13.35, -W / 2, 22.23 + DZ, -10.3, W / 2, 22.23 + DZ + T)
+    x1 = -V2["HALL_STOP_R"]
+    return box(x1, -W / 2, V2["HALL_FACE_Z"] + DZ, x1 + L, W / 2, V2["HALL_FACE_Z"] + DZ + T)
 
 
 def base():
@@ -279,11 +325,94 @@ def export_all():
     stl_dir, step_dir = ROOT / "stl" / "under-deck", ROOT / "step" / "under-deck"
     stl_dir.mkdir(parents=True, exist_ok=True)
     step_dir.mkdir(parents=True, exist_ok=True)
-    parts = {"collar": collar(), "frame": frame()}
+    parts = {"collar": collar(), "frame": frame(), "frame_v2": frame(2)}
     for name, wp in parts.items():
         cq.exporters.export(wp, str(stl_dir / f"{name}.stl"), tolerance=0.02, angularTolerance=0.15)
         cq.exporters.export(wp, str(step_dir / f"{name}.step"))
     return parts
+
+
+def hall_v2_check(out=print):
+    """The Hall element's smaller peak over a turn, v1 against v2, with the bar following (four guessed cores) and
+    without, mT: the model and calibration of ../analysis/field_check.py, the bar under a 9 mm deck."""
+    sys.path.insert(0, str(ROOT / "analysis"))
+    from field_check import FLOOR_IN, hall_peak
+    zbar = FLOOR_IN + 3.0 + (10.185 - 2.385)            # the 15 x 6 mm bar's axis, vial on the deck (coupling_through_deck.py)
+    cores = [(0.5, 3, 10), (0.8, 3, 12), (0.6, 4, 12), (1.0, 4, 12)]
+    rows = {}
+    for name, edge, face in (("v1", 10.30, 22.23), ("v2", V2["HALL_STOP_R"] - US1881[0], V2["HALL_FACE_Z"])):
+        worst_bar, worst_alone = math.inf, math.inf
+        for din, dz in ((1.40, 0.425), (1.58, 0.46)):    # where Melexis puts the element, by plant
+            x, z = -(edge + din), face + dz
+            worst_bar = min(worst_bar, *(hall_peak(x, z, (c[0], c[1], c[2], zbar)) for c in cores))
+            worst_alone = min(worst_alone, hall_peak(x, z))
+        rows[name] = (edge, face, worst_bar, worst_alone)
+        out(f"  {name}: top edge at r {edge:5.2f}, marked face at z {face:5.2f} (stirrer frame): "
+            f"{worst_bar:4.1f} mT with the bar, {worst_alone:4.1f} without (the US1881 trips by 9.5)")
+    return rows
+
+
+def v2_checks(out=print):
+    """What v2 changes, read back off the CadQuery solids. Returns the number of failed checks."""
+    f1, f2 = frame(1).val(), frame(2).val()
+    bad = 0
+
+    def check(what, value, need, unit="mm"):
+        nonlocal bad
+        ok = value >= need - 1e-6
+        bad += not ok
+        out(f"  {'ok ' if ok else 'BAD'} {what:70s} {value:7.2f} {unit}   (need >= {need:g})")
+
+    for name, s in (("v1", f1), ("v2", f2)):
+        bb = s.BoundingBox()
+        out(f"frame {name}: valid {s.isValid()}, {s.Volume():8.1f} mm3, x {bb.xmin:.2f}..{bb.xmax:.2f}, "
+            f"y {bb.ymin:.2f}..{bb.ymax:.2f}, z {bb.zmin:.2f}..{bb.zmax:.2f}")
+    out("")
+    out("1. The bore round the magnet carrier (Ø%g x %g mm, on the fan's hub)" % (C["CAR_D"], C["CAR_T"]))
+    carrier = cyl(0, 0, Z_FAN1_D, Z_FAN1_D + C["CAR_T"], C["CAR_D"] / 2).val()
+    for name, s in (("v1", f1), ("v2", f2)):
+        out(f"  {name}: bore Ø{(C['CAR_D'] + 1.6) if name == 'v1' else V2['BORE_D']:g}, carrier to the frame "
+            f"{carrier.distance(s):.2f} mm all round")
+    check("v2: carrier to the frame, a side", carrier.distance(f2), 1.5)
+    out("")
+    out("2. The Hall sensor (US1881, %g x %g x %g mm)" % US1881)
+    for name, v, s in (("v1", 1, f1), ("v2", 2, f2)):
+        hb = hall_body(v).val()
+        bb = hb.BoundingBox()
+        r_min = min(math.hypot(x, y) for x in (bb.xmin, bb.xmax) for y in (bb.ymin, bb.ymax))
+        out(f"  {name}: body x {bb.xmin:.2f}..{bb.xmax:.2f}, z {bb.zmin:.2f}..{bb.zmax:.2f}; overlap with the frame "
+            f"{hb.intersect(s).Volume():.3f} mm3; to the carrier {hb.distance(carrier):.2f} mm; nearest corner r {r_min:.2f}")
+    hb2 = hall_body(2).val()
+    check("v2: sensor body overlapping the frame (must be 0), as -overlap", -hb2.intersect(f2).Volume(), 0.0, "mm3")
+    check("v2: sensor's top edge behind the bore wall, at y = 0", (V2["HALL_STOP_R"] - US1881[0]) - V2["BORE_D"] / 2, 0.0)
+    check("v2: sensor to the carrier", hb2.distance(carrier), 1.5)
+    hx0, hx1 = V2["HOLE_X"]
+    L, W, T = US1881
+    out(f"  v2 hole: x {hx0:g} to {hx1:g}, y +-{V2['HOLE_W'] / 2:g}, through the plate ({hx1 - hx0:.1f} x {V2['HOLE_W']:.1f} mm, R{V2['HOLE_R']:g})")
+    check("v2 hole: room round the body going through edge first, across its thickness (a side)", (hx1 - hx0 - T) / 2, 0.5)
+    check("v2 hole: ... and across its width (a side)", (V2["HOLE_W"] - W) / 2, 0.4)
+    check("v2 hole: even face first, across its length (a side)", (hx1 - hx0 - L) / 2, 0.1)
+    fan_x, wall_x = -20.0, -(CELL_W / 2 - 1.6)
+    check("below it: the gap between the fan's -X side and the base's -X wall", fan_x - wall_x, T + 0.8)
+    check("v2: the hole's outer edge against the base's inner wall face (0 = flush)", wall_x - hx0 + 1e-9, 0.0)
+    face = V2["HALL_FACE_Z"] + DZ
+    check("v2: plastic under the sensor's pocket", face - Z_PLATE0, 1.2)
+    check("v2: plastic under the lead groove", face + V2["GROOVE_STEP"] - Z_PLATE0, 1.2)
+    check("v2: step that stops the body sliding out along the groove", V2["GROOVE_STEP"], 0.4)
+    check("v2: groove width over the leads' 2.97 mm span", V2["GROOVE_W"] - 2.97, 0.4)
+    check("v2: frame wall outside the hole", hx0 + CELL_W / 2, 1.5)
+    check("v2: sensor's top face below the deck's underside", Z_PLATE1 - (face + T), 0.5)
+    out("")
+    out("3. The Hall signal (model of ../analysis/field_check.py, bar under a 9 mm deck)")
+    rows = hall_v2_check(out)
+    check("v2: worst case, with the bar", rows["v2"][2], 11.0, "mT")
+    out("")
+    out("4. Neighbours: v2's outline, bosses and screws are v1's, so the side-by-side check holds; frame to frame:")
+    for name, (dx, dy) in {"X, +50": (PITCH_X, 0), "Y, +45": (0, PITCH_Y), "diagonal": (PITCH_X, PITCH_Y)}.items():
+        d = f2.distance(f2.moved(cq.Location(cq.Vector(dx, dy, 0))))
+        check(f"v2 frame to a v2 neighbour, {name}", d, 0.9)
+    out(f"\n{bad} check(s) failed")
+    return bad
 
 
 if __name__ == "__main__":
@@ -302,6 +431,12 @@ if __name__ == "__main__":
     out(f"stirrer frame -> deck frame: z + {DZ:.2f}; the compact base hangs to z {DZ:.2f}, "
         f"{-DZ - DECK_T:.2f} mm under the deck's underside")
     out(f"magnet faces z {22.645 + DZ:.3f}; deck underside z {-DECK_T}; vial's outside bottom z 0: gap {-(22.645 + DZ):.3f} mm")
+    if "--v2" in sys.argv:
+        out("")
+        lines.clear()
+        bad = v2_checks(out)
+        (HERE / "v2_check_output.txt").write_text("\n".join(lines) + "\n")
+        sys.exit(bad)
     if "--check" in sys.argv:
         out("\nScrews and inserts")
         bad = 0

@@ -7,16 +7,115 @@ on the deck, held by a holder that isn't under it. On 2026-11-20: *"can you chan
 for the stirrers to sit side by side? There is nothing under the deck right now, and there plenty of
 clearance for the stir module."*
 
-**Status: a mock-up, printed once.** Two frames and two collars were printed in PLA on the H2D on
-2026-11-20 ([record](../print/2026-11-20-h2d-under-deck/README.md)). The frames were printed
-without their 0.5 mm pads, so they need four 0.5 mm M3 washers (see [the parts](#the-parts)).
+**Status: built once, and a v2 frame is drawn.** Two frames and two collars were printed in PLA on
+the H2D on 2026-11-20 ([record](../print/2026-11-20-h2d-under-deck/README.md)). The frames were
+printed without their 0.5 mm pads, so they need four 0.5 mm M3 washers (see [the parts](#the-parts)).
 **First stir test, 2026-11-24** ([record](../../../cubos/results/stir_under_deck_20261124/README.md)):
 once turning, it held 600 rpm through CubOS and reached 870–1080 rpm, but hands-off it started
 from rest only once in nine tries, and barely moved with the vial out. The record lists what to
-check on the drive. The magnet numbers come from the same model as
+check on the drive. For the next modules, the frame has a
+[v2](#v2-of-the-frame-2026-11-24-the-hall-sensors-hole-the-cable-a-wider-bore), not printed yet.
+The magnet numbers come from the same model as
 [`../analysis/coupling_vs_height.py`](../analysis/coupling_vs_height.py), calibrated on the same
 observations. The first version, at commit `c549ed6`, reached into the far half of each slot. Its
 collar and frame were 71 and 72 mm long, so two of them needed two rows (90 mm) in Y.
+
+## v2 of the frame (2026-11-24): the Hall sensor's hole, the cable, a wider bore
+
+Asked for by @benwhitney5463 on [PR #348](https://github.com/vertical-cloud-lab/byu-vcl/pull/348)
+after the first module ran under the deck (*"The under-the-deck module generally works a lot
+better!"*):
+
+1. The Hall sensor's holder in the top needs a bigger hole, so that the whole sensor can be pushed
+   through it. The sensor can then be soldered to the board without the top in the way.
+2. The gap for the cable to the Uno needs to be on the other side of the case (already discussed):
+   the modules will be lined up along Y, and the cable gets in the way.
+3. The circle in the top needs to be wider. In the first stirs on 2026-11-24, the plate holding the
+   magnets caught on the top's wall, because the wires pushed together under the fan stressed it.
+
+The top is the frame. Its outline, bosses, fan screws and clamp are v1's, so **the collars printed
+on 2026-11-20 fit it**, and the side-by-side checks above still hold. Only the frame changes:
+[`frame_v2.step`](../step/under-deck/frame_v2.step) and [`frame_v2.stl`](../stl/under-deck/frame_v2.stl),
+built by `build_under_deck.py` and checked by its `--v2` option
+([`v2_check_output.txt`](v2_check_output.txt), 0 failed).
+
+![v1 against v2: the frame from above and in section through the Hall sensor, and the cable of a column of modules](../img/under_deck_v2.png)
+
+| | v1 (printed 2026-11-20) | v2 |
+|---|---|---|
+| Hall sensor's way through the frame | lead slot, 2.0 × 2.6 mm | **hole, 3.3 × 5.2 mm**, R0.8 corners |
+| Bore round the Ø19 magnet carrier | Ø20.6: 0.8 mm a side | **Ø22.0: 1.5 mm a side** |
+| Hall sensor's top edge | r 10.30, at the bore's wall | r 11.05, 0.05 mm behind the wall, 1.55 mm from the carrier |
+| Hall sensor's marked face (down), stirrer z | 22.23 | 21.40: 0.83 mm lower, so its element is at the magnets' mid-height |
+| Hall signal, worst case: bar following / magnets alone | 15.7 / 18.3 mT | 11.9 / 14.0 mT. The US1881 trips by 9.5 |
+| Lead groove | 2.6 mm wide | 3.6 mm wide. Its floor is 0.4 mm above the pocket's, so the body can't slide out along it |
+| Under the frame | 0.5 mm pads, cut off for the 11-20 print | flat: four 0.5 mm M3 washers on the fan's corners, as built |
+| Printing | fan face down, bosses up, with the pads cut off first ([`frame_no_pads.stl`](../print/2026-11-20-h2d-under-deck/frame_no_pads.stl)) | the same way up, as drawn: no supports, nothing to cut off |
+
+### 1. The Hall sensor goes through the frame
+
+The US1881 is 4.06 × 1.52 mm in section, edge first, with its leads trailing. The hole leaves
+0.57 mm a side across its width and 0.89 mm across its thickness, so the 26 AWG extensions and
+their heat-shrunk joints go through too. The hole runs from the base's −X inner wall face
+(x −22.9) to 0.4 mm over the fan's −X side (x −19.6). Below it is the 2.9 mm gap between the fan
+and that wall, where the leads already ran in v1. So the sensor, soldered to the board, comes up
+that gap and straight through the hole.
+
+### 2. The cable leaves through −X: print the 2026-11-04 base
+
+Nothing in the frame changes for this. It is the base's notch, and the base in the CAD has had it
+in the −X wall since 2026-11-04 ([compact README](../compact/README.md#the-2026-11-04-changes),
+asked for by Ben on PR #269). But no base has been printed since: **both compact bases printed so
+far, on 10-28 and 10-30, have the notch in the −Y wall.** In a column along Y, that wall faces the
+next module 1 mm away (right-hand panel above). They also have the board stop, and their cable
+runs about 40 mm under the fan to column A, as a 2 × 2 bundle in the 3.5 mm there. That may be the
+"wires pushed together below the fan" of point 3. The 11-04 base takes the cable's cores from the
+notch straight into column A, 7 mm at most, and the Hall leads come down the same −X end. Use
+[`base_compact.stl`](../stl/compact/base_compact.stl) (or its STEP) for every new module.
+
+### 3. The wider bore, and why not wider
+
+The sensor sits beside the carrier, so a wider bore moves it out, and the field it sees falls by
+3–4 mT for every 0.5 mm. The sensor's top edge stays flush with the bore's wall, and it sits lower
+than in v1 to win back about 1.5 mT. Worst case, over the four guessed bar cores and the element's
+two positions in the package (model of [`../analysis/field_check.py`](../analysis/field_check.py)):
+
+| bore | carrier to the wall, a side | Hall signal, worst case |
+|---|---:|---:|
+| Ø20.6 (v1, sensor as in v1) | 0.8 mm | 15.7 mT |
+| Ø21.6 | 1.3 mm | 13.6 mT |
+| **Ø22.0 (v2)** | **1.5 mm** | **11.9 mT** |
+| Ø22.5 | 1.75 mm | 10.7 mT |
+| Ø23.0 | 2.0 mm | 9.4 mT: under the US1881's worst-case trip point |
+| Ø24.0 | 2.5 mm | 7.3 mT |
+
+Ø22 nearly doubles the clearance and keeps 1.25× the worst-case trip point. More room would need
+another part, neither of them drawn:
+- **A Ø18 carrier**, not Ø19: the same Ø22 bore then gives 2.0 mm a side with the same signal. The
+  magnet pockets reach r 8.23, so that leaves 0.77 mm of plastic outside them.
+- **A more sensitive latch** than the US1881.
+
+### Building v2
+
+The order changes, because the sensor goes on the board first:
+
+1. **On the bench, base open:** the board, the MOSFET, the cable in through the −X notch, the fan's
+   leads, and the Hall sensor on its 60 mm leads, soldered to B6, B5 and B3
+   ([BUILD.md stage 5](../BUILD.md#5-wire-the-electronics)). Stagger the joints 10 mm or more from
+   the sensor's body, so that they end up in the hole or below it.
+2. **Carrier on the hub, fan on its posts**, rotor side up. Bring the Hall leads up the 2.9 mm gap
+   between the fan's −X side and the −X wall, with the sensor hanging out above.
+3. **Four 0.5 mm M3 washers** on the fan's corners.
+4. **Frame on, bosses up.** Feed the sensor up through the hole, body first, and lower the frame
+   onto the washers.
+5. **Sensor into its pocket:** marked face down (toward the fan), top edge toward the carrier, its
+   lead edge against the step, leads in the groove. Its top edge must not stand inside the bore. A
+   dab of glue holds it.
+6. **Two M3 × 16 fan screws**, snug only. Turn the fan through a vent with a toothpick: the carrier
+   touches nothing.
+7. **Under the deck**, as before: the collar from the top and two M3 × 12 clamp screws.
+
+**Not done:** v2 isn't printed or test-fitted, and its Hall numbers are the model's, not measured.
 
 ![Six modules on the slot grid, from above, to scale](../img/under_deck_side_by_side_plan.png)
 
@@ -214,11 +313,13 @@ bound, with the water held still).
 ```bash
 pip install cadquery magpylib trimesh shapely networkx matplotlib pyvista    # PIP_TIMEOUT=600 PIP_RETRIES=2
 python under-deck/build_under_deck.py --check                      # stl/under-deck/, step/under-deck/, side_by_side_check_output.txt
+python under-deck/build_under_deck.py --v2                         # the same files, then v2's checks: v2_check_output.txt
 python under-deck/coupling_through_deck.py > under-deck/coupling_through_deck_output.txt
 python under-deck/neighbour_field.py > under-deck/neighbour_field_output.txt
 python under-deck/render_under_deck.py section                     # img/under_deck_section.png
 python under-deck/render_under_deck.py plan                        # img/under_deck_side_by_side_plan.png
 xvfb-run -a python under-deck/render_under_deck.py views           # img/under_deck_views.png
+python under-deck/render_v2.py                                     # img/under_deck_v2.png
 ```
 
 Run from `hardware/vial-stirrer-cubxl`.
