@@ -89,7 +89,9 @@ def log(path: Path, msg: str):
 
 QUEUE = SLOT_DIR / "queue"
 PROMOTE_S = 20 * 60          # a normal job waiting longer than this goes ahead of quick ones that came later
-BACKFILL_S = 15 * 60         # a job ahead that has waited this long without fitting stops others going past it
+# a job ahead that has waited this long without fitting stops others going past it; round 15: VLAB_BACKFILL_S, since
+# a queue of whole-lab renders that can only run two at a time otherwise leaves the other slots idle
+BACKFILL_S = int(os.environ.get("VLAB_BACKFILL_S", str(15 * 60)))
 
 
 CAPS_FILE = SLOT_DIR / "caps.json"   # round 11: {"auditb": 1, ...}, at most that many slots per stream

@@ -661,15 +661,15 @@
    "tensile_h": 0.9969,
    "instron_floor": 0.9947,
    "cnc": 0.9985,
-   "mount_press": 0.994,
+   "mount_press": 0.9937,
    "polisher": 0.9946,
    "vhx": 0.9989,
    "hardness": 0.9901,
    "nanoindenter": 0.9727,
    "pip": 0.998,
    "cubxl_corrosion": 0.9948,
-   "open1": 0.9564,
-   "open2": 0.9768,
+   "open1": 0.9557,
+   "open2": 0.9776,
    "unit0": 0.9537,
    "unit1": 0.953
   },
@@ -683,7 +683,7 @@
  },
  "first_alloy_fully_tested_h": 16.2,
  "latency_atomized_to_tested_h": {
-  "median": 14.6,
+  "median": 14.5,
   "max": 190.5
  },
  "utilization_after_ramp": {
