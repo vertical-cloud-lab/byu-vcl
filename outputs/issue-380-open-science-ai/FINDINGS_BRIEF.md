@@ -2,7 +2,7 @@
 
 This two-page version of [`README.md`](README.md) gives every number with its source file.
 
-**Videos:** [Part 1](https://www.youtube.com/watch?v=Aakq7PNsFpE) (11:41) and [Part 2](https://www.youtube.com/watch?v=uujMO9R1tMc) (4:53). **Playbook:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md).
+**Videos:** [Part 1](https://www.youtube.com/watch?v=Aakq7PNsFpE) (11:41), [Part 2](https://www.youtube.com/watch?v=uujMO9R1tMc) (4:53) and [Part 3](https://www.youtube.com/watch?v=8P7iqUaVHyE) (3:40). **Playbook:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md).
 
 ## Twelve numbers
 

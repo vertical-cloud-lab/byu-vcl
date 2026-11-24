@@ -196,3 +196,48 @@ Every figure in this study, with what it shows. Each `video/scenes/*.mp4` animat
 `figures/values.png`
 
 ![Commercial open-source values by current openness](figures/values.png)
+
+### Part 3 title card
+`figures/p3_title.png`
+
+![Part 3 title card](figures/p3_title.png)
+
+### Forks vs originals: commits in the last 12 months
+`figures/p3_forks.png`
+
+![Forks vs originals: commits in the last 12 months](figures/p3_forks.png)
+
+### AI-era open-source startups vs 2010s databases; exits 2025–26
+`figures/p3_aiera.png`
+
+![AI-era open-source startups vs 2010s databases; exits 2025–26](figures/p3_aiera.png)
+
+### AI-for-science model licences over time (group I)
+`figures/p3_models.png`
+
+![AI-for-science model licences over time (group I)](figures/p3_models.png)
+
+### The academic path: tech transfer vs open release
+`figures/p3_academic.png`
+
+![The academic path: tech transfer vs open release](figures/p3_academic.png)
+
+### Characters written per month in byu-vcl, by author type
+`figures/p3_agents.png`
+
+![Characters written per month in byu-vcl, by author type](figures/p3_agents.png)
+
+### Part 3 takeaways
+`figures/p3_takeaways.png`
+
+![Part 3 takeaways](figures/p3_takeaways.png)
+
+### Part 3 end card
+`figures/p3_end.png`
+
+![Part 3 end card](figures/p3_end.png)
+
+### Commercialization activity by quarter in the two repos
+`figures/gh_timeline.png`
+
+![Commercialization activity by quarter in the two repos](figures/gh_timeline.png)

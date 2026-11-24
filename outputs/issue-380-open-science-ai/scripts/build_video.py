@@ -8,6 +8,7 @@ MOD = {}
 for m, names in [("scenes_data", ["coss_vc", "oss_value", "open_science_value", "epoch_sector", "openalex", "compute_gap", "language"]),
                  ("scenes_companies", ["kinds", "values", "relicense", "lanes_software", "lanes_hardware", "lanes_science", "lanes_ai", "ai_values", "stocks"]),
                  ("scenes_cards", ["title", "quotes", "dal", "takeaways", "end", "gh_threads"]),
+                 ("scenes_part3", ["p3_title", "p3_forks", "p3_aiera", "p3_models", "p3_academic", "p3_agents", "p3_takeaways", "p3_end"]),
                  ("scenes_part2", ["p2_title", "p2_time", "p2_pdb", "p2_commons", "p2_language", "p2_igraph", "p2_am", "p2_dal", "p2_takeaways", "p2_end"])]:
     for n in names: MOD[n] = m
 LEAD, TAIL = 0.5, 1.0
@@ -46,7 +47,9 @@ if "join" in steps:
               "takeaways": "Takeaways", "end": "Data and sources", "coss_vc": "Venture data: open vs closed startups", "kinds": "Who opens, who closes",
               "p2_title": "Intro", "p2_time": "Openness over time, by sector", "p2_pdb": "Fifty years of open data: the PDB", "p2_commons": "The open-science commons under strain",
               "p2_language": "From open to science: how the labs talk", "p2_igraph": "US open source: growth and licences", "p2_am": "Closed instruments, fragile makers",
-              "p2_dal": "A closer audit of DAL and #318", "p2_takeaways": "What Part 2 adds", "p2_end": "Data and sources"}
+              "p2_dal": "A closer audit of DAL and #318", "p2_takeaways": "What Part 2 adds", "p2_end": "Data and sources",
+              "p3_title": "Intro", "p3_forks": "Do forks survive closing moves?", "p3_aiera": "AI-era open-source startups", "p3_models": "AI-for-science models: licences over time",
+              "p3_academic": "The academic path", "p3_agents": "Agents write our open record", "p3_takeaways": "What Part 3 adds", "p3_end": "Data and sources"}
     for x in N:
         m, sec = divmod(int(t), 60); chapters.append(f"{m}:{sec:02d} {titles.get(x['scene'], x['scene'])}"); t += vdur(x["scene"])
     open(CHAP, "w").write("\n".join(chapters) + "\n")

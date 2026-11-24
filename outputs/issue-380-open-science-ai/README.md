@@ -10,6 +10,8 @@ below links to a file in this folder, and each file names its sources.
 - **Part 2, findings that arrived after Part 1:** [youtube.com/watch?v=uujMO9R1tMc](https://www.youtube.com/watch?v=uujMO9R1tMc), 4:53.
   It covers openness over time, the open-science commons, how the labs' language changed, the US licence mix, AM makers and the DAL audit.
   MP4: [`video/open_science_value_ai_part2.mp4`](video/open_science_value_ai_part2.mp4). Chapters: [`video/chapters_part2.txt`](video/chapters_part2.txt).
+- **Part 3, fork robustness, AI-era open-source startups, AI-for-science model licences, the academic path and agent authorship:** [youtube.com/watch?v=8P7iqUaVHyE](https://www.youtube.com/watch?v=8P7iqUaVHyE), 3:40.
+  MP4: [`video/open_science_value_ai_part3.mp4`](video/open_science_value_ai_part3.mp4). Chapters: [`video/chapters_part3.txt`](video/chapters_part3.txt).
 
 **Two-page brief:** [`FINDINGS_BRIEF.md`](FINDINGS_BRIEF.md). **Playbook for the lab:** [`RECOMMENDATIONS.md`](RECOMMENDATIONS.md) has seven evidence-linked actions. **All figures:** [`FIGURES.md`](FIGURES.md). **Literature synthesis:** [`edison/SYNTHESIS.md`](edison/SYNTHESIS.md). **Verification:** [`VERIFICATION.md`](VERIFICATION.md).
 

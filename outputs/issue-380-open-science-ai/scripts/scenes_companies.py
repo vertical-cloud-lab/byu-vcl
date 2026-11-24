@@ -10,7 +10,12 @@ from matplotlib.patches import Patch
 OUT = "video/scenes"; FIG = "figures"
 M = pd.read_csv("companies/companies_master.csv"); E = pd.read_csv("companies/events.csv")
 SHORT = {}
-PREFIX = {"Pivotal": "Pivotal / SpringSource", "RCSB Protein Data Bank": "Protein Data Bank (RCSB)", "LAMMPS": "LAMMPS (Sandia)",
+PREFIX = {"AlphaFold 2": "AlphaFold 2 / AFDB", "AlphaFold 3": "AlphaFold 3", "Boltz": "Boltz-1/2", "Chai-1": "Chai-1", "CHGNet": "CHGNet",
+          "ESM protein": "ESM models", "Evo 2": "Evo 2 (Arc)", "GNoME": "GNoME (DeepMind)", "M3GNet": "M3GNet / MatGL", "MACE": "MACE models",
+          "Matbench": "Matbench (Discovery)", "MatterGen": "MatterGen (Microsoft)", "MatterSim": "MatterSim (Microsoft)", "Meta FAIR Chemistry": "Meta FAIR Chemistry",
+          "NVIDIA BioNeMo": "NVIDIA BioNeMo/ALCHEMI", "OpenFold": "OpenFold / OpenFold3", "Orb models": "Orb (Orbital)", "RoseTTAFold": "RoseTTAFold / RFdiffusion",
+          "SevenNet": "SevenNet",
+          "Pivotal": "Pivotal / SpringSource", "RCSB Protein Data Bank": "Protein Data Bank (RCSB)", "LAMMPS": "LAMMPS (Sandia)",
           "DOE CODE": "DOE CODE (national labs)", "The Apache Software": "Apache Software Fdn.", "MySQL AB": "MySQL AB", "Google DeepMind": "DeepMind (science)",
           "International Business": "IBM", "Alibaba": "Alibaba (Qwen)", "Allen Institute": "Ai2", "Raspberry Pi": "Raspberry Pi", "Open Compute": "Open Compute Project",
           "RISC-V": "RISC-V International", "Tiger Data": "Timescale / Tiger Data", "The Materials Project": "Materials Project", "The Linux Foundation": "Linux Foundation",

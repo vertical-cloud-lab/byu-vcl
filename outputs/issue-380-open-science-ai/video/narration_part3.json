@@ -1,0 +1,34 @@
+[
+ {
+  "scene": "p3_title",
+  "text": "Part three. In the last hours of this research run we added thirty-six more case files, six more literature reviews, and data straight from GitHub. Here is what they add."
+ },
+ {
+  "scene": "p3_forks",
+  "text": "First, do forks survive when a company closes its license? We counted commits over the past year for eight originals and their open forks. Every fork is alive. Where the vendor kept investing in public, like Elastic and HashiCorp, the original stayed far more active. Where the vendor's public effort faded, or it reversed course, the fork took over: Valkey now out-commits Redis, Apache Pekko out-commits Akka six to one, OpenVox carries Puppet's community, and LibreOffice dwarfs OpenOffice."
+ },
+ {
+  "scene": "p3_aiera",
+  "text": "Second, open source in the AI era. Seventeen AI-infrastructure startups, from Ray and vLLM to LangChain, Ollama and llama.cpp, did something the database companies of the 2010s did not: none of them switched to an SSPL or BSL license. Their average openness held steady, while the earlier cohort fell by a full point. They make money from hosted and enterprise layers, and their exits were mostly acquisitions by companies that sell compute or chips, CoreWeave, Nscale, Qualcomm and Cloudflare, plus Hugging Face and Replit. There were no IPOs."
+ },
+ {
+  "scene": "p3_models",
+  "text": "Third, AI models for science. Across nineteen releases, from AlphaFold to MatterGen and Meta's open materials datasets, openness averages about 2.8 on our scale, well above the frontier language-model companies. License changes ran eleven toward open and seven toward closed. When AlphaFold 3 launched without code, open re-implementations like Boltz and Chai-1 followed within months, and AlphaFold 3's code is now under Apache 2.0, though its weights remain gated."
+ },
+ {
+  "scene": "p3_academic",
+  "text": "Fourth, the academic path. Who owns the code decides what a lab can release: contractor-run national labs can open-source under their own copyright, while code written by federal employees has no domestic copyright at all. University licensing brought in nearly three billion dollars in 2018, yet most technology-transfer offices don't cover their costs. For open lab hardware, the documented path is to publish the design and sell what publication does not supply: built and tested instruments, kits, training and support. The review literature even records Sterling Baird's light-mixing demo kit: thirty-nine units sold through two group buys."
+ },
+ {
+  "scene": "p3_agents",
+  "text": "Finally, a look in the mirror. In this lab's own repository, Claude now writes most of the public record: about six point four million characters, against one point four million from people. Agents make working in the open cheaper than ever, which makes verification, and clear human direction, more important than ever."
+ },
+ {
+  "scene": "p3_takeaways",
+  "text": "So, five more lessons. Forks always survived, and won when vendors stopped investing in public. AI-era open-source tools stayed permissive and sold hosted layers to the compute industry. AI-for-science models are more open than frontier chatbots, and restrictions spark open clones. Academic labs should publish designs and data openly, and earn from what publication can't supply. And with agents writing the record, openness is cheap, but checking it is essential."
+ },
+ {
+  "scene": "p3_end",
+  "text": "All data, code and sources for the three parts are on GitHub, in the BYU Vertical Cloud Lab repository, issue three eighty."
+ }
+]
