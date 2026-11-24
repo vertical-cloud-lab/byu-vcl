@@ -1,0 +1,9 @@
+scores,kind,n,start,now,change,closing_share
+original,bootstrapped company,3,3.0,2.67,-0.33,0.33
+original,company founded 2000+ (VC era),90,1.8,1.51,-0.29,0.4
+original,company founded before 2000,25,0.68,1.0,0.32,0.32
+original,public/nonprofit infrastructure,24,3.38,3.67,0.29,0.04
+rescored,bootstrapped company,3,3.0,2.67,-0.33,0.33
+rescored,company founded 2000+ (VC era),91,1.76,1.49,-0.26,0.4
+rescored,company founded before 2000,25,0.6,0.96,0.36,0.32
+rescored,public/nonprofit infrastructure,24,3.62,3.79,0.17,0.04

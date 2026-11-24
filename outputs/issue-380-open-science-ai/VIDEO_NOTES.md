@@ -19,6 +19,8 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 
 > Open science follows the same pattern. The Protein Data Bank costs about seven million dollars a year to run, while researchers spend an estimated five and a half billion dollars of time using it every year. It also supplied the training data for AlphaFold. When Celera restricted access to part of the human genome, later research and diagnostics on those genes fell by twenty to thirty percent. And open scientific hardware costs, on average, eighty-seven percent less than the commercial equivalent.
 
+**Clarification:** the 87% saving for open scientific hardware is material cost only (no labour), with commercial comparators for about 45 of the 119 designs. The PDB's 800× compares operating cost with use value (researcher time), not net benefit.
+
 ### 1:33 Where the money went in commercial open source
 **Sources:** companies/A, companies/B; companies_master.csv
 
@@ -42,6 +44,8 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 > Across all hundred and twenty-one case files, the direction of travel depends on who you are. Companies founded since 2000, mostly venture-backed, started moderately open and became less open on average, and nearly half made at least one closing move. Firms founded before 2000 moved the other way, opening the parts they don't sell. Government, academic and foundation infrastructure started the most open and stayed there: only one of eighteen ever made a closing move.
 
 **Update after upload:** Recomputed after the video on 143 organizations, with independent rescoring: the VC-era minus incumbent difference is −0.67 to −0.71, and both 95% CIs exclude zero.
+
+**Correction (independent review, 2026-11-24):** this chapter overstates the effect. The 'founded before 2000' group wrongly included open infrastructure (LAMMPS among others). With infrastructure classified first, the raw gap is −0.61. Adjusted for starting openness it is −0.09 (95% CI −0.45 to +0.28). The robust pattern is convergence to the middle (open starters close, closed starters open), not that venture-backed firms close up. Infrastructure: 1 of 24 made a closing move. See data/kinds_corrected.csv.
 
 ### 4:09 Openness over time: software
 **Sources:** companies/A, B
@@ -136,6 +140,8 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 
 > First, openness as a function of time. Rebuilding each organization's licensing history year by year, commercial open-source software and hardware started out the most open in the mid-2000s and have declined steadily since. Big Tech and the AI labs moved the other way, opening up through the 2010s before dipping in 2026. Today every sector sits near the middle of our scale: open core, or mixed. The split between young and old firms holds up statistically: companies founded since 2000 became less open than incumbents by about two-thirds of a point, with a ninety-five percent confidence interval that excludes zero.
 
+**Correction:** the narration's 'two-thirds of a point … interval that excludes zero' used a misclassified grouping. Corrected and adjusted for starting openness, the founding-era gap is −0.09 (95% CI −0.45 to +0.28). Also, group G (AM and instrument makers) sits near 1.1 and isn't plotted.
+
 ### 0:57 Fifty years of open data: the PDB
 **Sources:** data/pdb_released_per_year.csv
 
@@ -171,6 +177,8 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 
 > So, what Part 2 adds. Every sector is converging on open core. Young, venture-backed firms close up while public infrastructure stays open. The commons that trained the AI needs funding of its own. The AI labs court science with access, not open weights. And for our lab, the highest-leverage move is to own, and open, the driver and data layer between closed instruments and AI.
 
+**Correction:** takeaway 2 ('Young, VC-backed firms close up … CI excludes zero') is overstated, for the same reason (see the 0:16 note).
+
 ### 4:42 Data and sources
 **Sources:** —
 
@@ -188,10 +196,14 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 
 > First, do forks survive when a company closes its license? We counted commits over the past year for eight originals and their open forks. Every fork is alive. Where the vendor kept investing in public, like Elastic and HashiCorp, the original stayed far more active. Where the vendor's public effort faded, or it reversed course, the fork took over: Valkey now out-commits Redis, Apache Pekko out-commits Akka six to one, OpenVox carries Puppet's community, and LibreOffice dwarfs OpenOffice.
 
+**Clarification:** 'Every fork is alive' refers to the eight well-known forks checked. Most closing moves in the case files drew no fork, and Neo4j stopped one in court.
+
 ### 0:43 AI-era open-source startups
 **Sources:** companies/A, companies/J
 
 > Second, open source in the AI era. Seventeen AI-infrastructure startups, from Ray and vLLM to LangChain, Ollama and llama.cpp, did something the database companies of the 2010s did not: none of them switched to an SSPL or BSL license. Their average openness held steady, while the earlier cohort fell by a full point. They make money from hosted and enterprise layers, and their exits were mostly acquisitions by companies that sell compute or chips, CoreWeave, Nscale, Qualcomm and Cloudflare, plus Hugging Face and Replit. There were no IPOs.
+
+**Clarification:** this holds *so far*. These firms are young (median founding 2022), while 2010s database firms first closed at a median age of about 10.
 
 ### 1:22 AI-for-science models: licences over time
 **Sources:** companies/I
@@ -212,6 +224,8 @@ Part 1: https://www.youtube.com/watch?v=Aakq7PNsFpE · Part 2: https://www.youtu
 **Sources:** —
 
 > So, five more lessons. Forks always survived, and won when vendors stopped investing in public. AI-era open-source tools stayed permissive and sold hosted layers to the compute industry. AI-for-science models are more open than frontier chatbots, and restrictions spark open clones. Academic labs should publish designs and data openly, and earn from what publication can't supply. And with agents writing the record, openness is cheap, but checking it is essential.
+
+**Clarification:** 'Forks always survived' means the eight checked. 'Stayed permissive' means so far, for young firms.
 
 ### 3:29 Data and sources
 **Sources:** —

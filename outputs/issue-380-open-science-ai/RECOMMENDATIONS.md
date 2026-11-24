@@ -65,8 +65,8 @@ leverage per unit of effort.
 - LulzBot (fully open hardware) collapsed in 2019. Open-hardware firms that last (Adafruit, SparkFun,
   Prusa) are bootstrapped, and Prusa is now restricting resale.
 - In software, value goes to open core plus a hosted service: Databricks, Confluent, MongoDB Atlas.
-- Venture data shows open-source startups raising faster and at higher valuations when the business is a
-  service on top of the open project.
+- Venture data shows open-source startups raising faster and at higher valuations than matched closed
+  peers. The report doesn't split by business model.
 
 ## 5. Ask for API rights before buying, and treat vendor longevity as a risk
 
@@ -105,7 +105,8 @@ leverage per unit of effort.
   vendor-confidential documents).
 
 **Why:**
-- The lab's own record, 4,928 GitHub records and the #318 videos, is what made this study possible.
+- The open records of `ac-dev-lab` and the SDL demo (4,928 GitHub records), plus byu-vcl's own issues and
+  the #318 videos, are what made this study possible.
 - Government, academic and foundation infrastructure is the one category that almost never closed (1 of
   18 made a closing move).
 - That is the category a university lab belongs to.
@@ -123,9 +124,11 @@ leverage per unit of effort.
 **Why:**
 - US university licensing income topped $2.94B in 2018, yet most technology-transfer offices don't cover
   their costs. The big wins came through inventor-founded startups.
-- OpenFlexure, Opentrons, Foldscope and CERN's open hardware commercialized through manufacturing and
-  service, not exclusive rights. The review literature already counts this lab's CLSLab:Light kits
+- OpenFlexure, Foldscope and CERN's open hardware commercialized through manufacturing and service, not
+  exclusive rights. Opentrons started open, then closed its hardware with the OT-2 and kept the software
+  open. The review literature already counts this lab's CLSLab:Light kits
   (39 units through GroupGets) as an example
   ([Edison](edison/academic_osh_commercialization_answer.md)).
-- AI-era open-source tools (group J) kept permissive licences and still sold for $1–4B to compute
-  companies. Openness did not block the exit.
+- AI-era open-source tools (group J) have kept open licences so far, and several had exits to compute
+  companies in 2025–26. The large deals (W&B, Modular) are not clean permissive cases, so this shows
+  only that openness didn't prevent an exit.

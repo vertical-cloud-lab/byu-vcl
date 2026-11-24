@@ -23,7 +23,8 @@ below links to a file in this folder, and each file names its sources.
    - US investment in open source was **$36–38B in 2019** (BEA/NSF methods).
    - The Protein Data Bank costs about **$6.9M a year** to run. Its users spend an estimated
      **$5.5B a year** of research time with it, and its structures trained AlphaFold.
-   - Open scientific hardware costs on average **87% less** than the commercial equivalent
+   - Open scientific hardware's material cost averages **87% below** the commercial price, excluding
+     labour, and a comparator existed for about 45 of the 119 designs
      ([Edison answers](edison/)).
 2. **The value goes to whoever runs the service, owns the data or sells the hardware around the open core.**
    - The largest commercial open-source values are open core plus a hosted service: Databricks
@@ -45,11 +46,18 @@ below links to a file in this folder, and each file names its sources.
    - Two closers later added AGPL back (Elastic in 2024, Redis in 2025).
    - **Foundations, not companies, keep openness durable.**
    - **Who closes:**
-     - Companies founded since 2000 became less open over their lives, while incumbents opened the
-       layers they don't sell. The difference is −0.67 on the 0–4 scale (95% CI −1.04 to −0.31).
-     - Government, academic and foundation infrastructure almost never closed: 1 of 18.
-     - By 2026 every sector averages about 2, "open core / mixed"
-       ([openness over time](figures/openness_by_year_sector.png)).
+     - Openness regresses toward the middle. Organizations that started open tended to close; those
+       that started closed opened the layers they don't sell.
+     - Companies founded since 2000 lost 0.61 points of openness relative to pre-2000 companies (95% CI
+       −0.97 to −0.24). **After adjusting for where each started, the founding-era gap nearly vanishes:
+       −0.09 (95% CI −0.45 to +0.28)** ([`data/kinds_corrected.csv`](data/kinds_corrected.csv); corrected
+       after an independent review). The videos' "VC-era firms close up" result is mostly this starting-level
+       effect.
+     - Government, academic and foundation infrastructure almost never closed: 1 of 24 (A–G).
+     - Commercial OSS, hardware, physical science and Big Tech/AI each average about 2 ("open core / mixed")
+       by 2026 ([openness over time](figures/openness_by_year_sector.png)). AM and instrument makers stay
+       near 1. The physical-science average mixes closed companies (about 0.75) with open infrastructure
+       (about 2.7).
 4. **In hardware, openness pays in cost and longevity, not in valuation.** Open standards are the
    exception (RISC-V, Open Compute).
    - Adafruit and SparkFun have lasted about two decades and Prusa 14 years, but they stay small and
@@ -68,8 +76,10 @@ below links to a file in this folder, and each file names its sources.
    - Industry's US articles are now more often open access than academia's: 76% vs. 72% in 2024
      ([OpenAlex](data/openalex_us_oa_by_sector.csv)).
    - Academia's open-weight share rose from about 21% (2018–19) to about 81% (2024–25), while industry's
-     stayed near 40% ([Epoch AI](data/epoch_openness_by_year_sector.csv)).
-   - The largest closed training run is now about 50× the largest open one (2026 to date).
+     stayed near 40% ([Epoch AI](data/epoch_openness_by_year_sector.csv)). That counts restricted and
+     non-commercial weights as open; for unrestricted weights, US industry's share *halved*, from 33% to 16%.
+   - The largest closed training run is about 50× the largest open one in 2026 to date. A single yearly
+     maximum is volatile: in 2024 the largest open run was bigger, and 2026 is incomplete.
    - In science papers, 92% of the foundation models adopted since 2019 were open-weight
      (Trisovic et al., via [Edison](edison/open_weights_ai_impact_answer.md)).
 7. **Anthropic and OpenAI now talk about science far more than about openness.**
@@ -97,12 +107,14 @@ below links to a file in this folder, and each file names its sources.
    - Meta shut Papers with Code in 2025.
    - AI labs now court science with access programmes (seats, credits) rather than open weights.
 11. **The code survives even when companies close it, and the AI-era cohort has kept it open.**
-   - Every fork after a closing move is alive. Valkey, Pekko, OpenVox and LibreOffice now out-commit
+   - All eight well-known forks we checked are alive, and most closing moves drew no fork at all; Neo4j stopped one in court. Valkey, Pekko, OpenVox and LibreOffice now out-commit
      their originals ([forks](data/fork_vs_original.csv)).
    - 17 AI-era open-source startups (Ray, vLLM, LangChain, Ollama, llama.cpp and others) never moved to
-     SSPL or BSL. They were sold to compute and chip companies (CoreWeave, Nscale, Qualcomm,
-     Cloudflare) ([group J](companies/J/_summary.md)).
-   - AI-for-science model releases are more open than frontier LLMs (2.8 vs. 1.6 on the 0–4 scale)
+     SSPL or BSL *so far*; they are young. 7 of the 17 had exits or agreed deals in 2025–26, mostly with
+     compute and chip companies (CoreWeave, Nscale, Qualcomm, Cloudflare), plus Hugging Face and Replit
+     ([group J](companies/J/_summary.md)).
+   - AI-for-science model releases score higher than the frontier-LLM companies (2.8 vs. 1.6). This is
+     indicative only, because releases and whole companies are scored on different rubric readings
      ([group I](companies/I/_summary.md)).
 
 ## Method
@@ -226,6 +238,11 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 | Companies founded before 2000 (incumbents) | 20 | 1.30 → 1.80 | **+0.50** | 40% | 50% |
 | Government, academic and foundation infrastructure | 18 | 3.33 → 3.61 | **+0.28** | 6% | 11% |
 
+> **Superseded.** This snapshot table (and the video chapter built on it) put pre-2000 open infrastructure among
+> the "companies founded before 2000" and didn't adjust for starting openness. The corrected analysis is in
+> [`data/kinds_corrected.csv`](data/kinds_corrected.csv): raw gap −0.61, adjusted −0.09 (95% CI −0.45 to +0.28).
+> The robustness section below has the details.
+
 **Size, origins and risk across groups A–G (143 organizations).** Sources:
 [`data/size_risk_by_openness.csv`](data/size_risk_by_openness.csv) and
 [`data/origins_summary.csv`](data/origins_summary.csv).
@@ -269,13 +286,19 @@ organizations, so survivorship bias applies. Source: `scripts/openness_outcomes.
 **Robustness checks** ([`scripts/robustness_checks.py`](scripts/robustness_checks.py),
 [`data/robustness_kinds_by_scope.csv`](data/robustness_kinds_by_scope.csv),
 [`data/robustness_openness_vs_value.csv`](data/robustness_openness_vs_value.csv)):
-- **The VC-era vs. incumbent difference is not noise.** Across all 143 files, mean openness change for
-  companies founded since 2000 minus that for companies founded before 2000 is −0.67, with a 95%
-  bootstrap CI of −1.04 to −0.31.
-  - With the independent re-scored openness values from the calibration check, the difference is
-    **−0.71 (95% CI −1.11 to −0.35)**. Re-scored public infrastructure barely moves (+0.05). The
-    result doesn't depend on who assigned the scores.
-- **US-only, the gap widens:**
+- **Correction after independent review:** the VC-era vs. incumbent difference is mostly a starting-level
+  effect.
+  - The first version mixed pre-2000 open infrastructure (PDB, LAMMPS, ASF, arXiv) into the "incumbents"
+    and reported −0.67 (95% CI −1.04 to −0.31).
+  - With infrastructure classified first ([`scripts/kinds_corrected.py`](scripts/kinds_corrected.py)), the
+    raw gap is −0.61 (95% CI −0.97 to −0.24), and −0.62 with the independently re-scored values.
+  - **Adjusted for starting openness (an OLS model of change on era plus starting score), it is −0.09
+    (95% CI −0.45 to +0.28)**, and −0.08 re-scored.
+  - VC-era companies started more open (1.80 vs. 0.68), so they had more room to fall. Pre-2000 companies
+    started closed and had room to open.
+  - The robust finding is convergence toward the middle, not that venture backing causes closing.
+  - The public-infrastructure rise of +0.29 rests largely on OpenFOAM's 0→4.
+- **US-only, the gap widens** (first, uncorrected classification; see the correction above):
   - VC-era −0.46 (47% made a closing move, n = 59);
   - long-standing +0.47 (n = 19);
   - US public infrastructure 0.00 (8%, n = 13).
@@ -294,8 +317,10 @@ animated version in [`video/extras/openness_by_year_sector.mp4`](video/extras/op
   2026 (Meta's closed Muse Spark, Qwen's revenue cap).
 - Physical science rose to about 2.1 by 2007 and has drifted down as closed AI-for-science entrants
   arrive.
-- **By 2026 every sector sits near 2, "open core / mixed"**: firms that started open closed up, and firms
-  that started closed opened the layers they don't sell.
+- **By 2026 commercial OSS, hardware, physical science and Big Tech/AI all sit near 2, "open core / mixed"**:
+  firms that started open closed up, and firms that started closed opened the layers they don't sell.
+  - Group G (AM and instrument makers, plus open-science infrastructure) sits at 1.11 and isn't plotted.
+  - The yearly means also shift as new firms enter, and the early points rest on few organizations.
 
 | Sector | n | Mean change in openness (now − founding) | Share that closed down | Share that opened up | Acquired or taken private |
 | --- | --- | --- | --- | --- | --- |
@@ -327,10 +352,10 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
   closing move.
 - Incumbents that start closed tend to open the layers they don't sell: Microsoft's .NET and VS Code,
   Google's Kubernetes, NVIDIA's open models.
-- Commercial OSS is the only sector that, on average, became less open, and it is also the sector most
+- Commercial OSS became less open on average than any other sector (hardware also declined, by −0.10 at the snapshot and −0.19 now), and it is also the sector most
   often bought: by IBM, private equity and NVIDIA ([group A summary](companies/A/_summary.md),
   [group B](companies/B/_summary.md)).
-- Of the eight open-core firms that listed, only MongoDB and Elastic are still independent:
+- Of the eight group-A firms that listed, only MongoDB and Elastic are still independent (GitLab, in group B, is too):
   - IBM bought HashiCorp for under half its IPO value and Confluent near its IPO value.
   - Private equity bought Cloudera, MariaDB (about $37M) and Couchbase.
 
@@ -346,8 +371,9 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
   - Red Hat's CentOS change (2020) and its RHEL-source change (2023) came after IBM.
   - Puppet's after Perforce; MuleSoft archiving its Community Edition after Salesforce; Arduino's new
     terms after Qualcomm (2025).
-- **Listings and owners are the moments to watch.** Their shareholders want the open project to earn
-  money, and closing moves follow.
+- **Listings and changes of owner coincide with many closing moves.** With 15 events and no base rate,
+  this is a pattern to watch, not a causal estimate: firms acquired early spend most of their observed
+  life after the acquisition.
 
 **Robustness: a fork needs a motivated backer.**
 - Hyperscalers backed OpenSearch and Valkey, ecosystem vendors backed OpenTofu, and ASF volunteers
@@ -372,7 +398,7 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
 | Elasticsearch → OpenSearch (2021, Linux Foundation) | **15,524** (79k) | 1,463 (14k) | Original, about 10× |
 | Kibana → OpenSearch Dashboards (2021) | **23,659** (21k) | 908 (2k) | Original, about 26× |
 
-- **Every fork is alive and maintained.** The code survived each closing move.
+- **All eight forks checked are alive and maintained.** They were chosen because they are well known, and most closing moves in the case files drew no fork; Neo4j stopped a redistribution in court.
 - **Whether the fork *overtakes* depends on what the vendor does next.**
   - Vendors that kept investing heavily in public development under their new licence (Elastic,
     HashiCorp) kept the main line.
@@ -381,7 +407,7 @@ the [cossreport.com](https://cossreport.com/) 2026 edition exists but wasn't rea
 
 ![Software lanes](figures/lanes_software.png)
 
-### 2b. AI-era open-source startups did not relicense (group J)
+### 2b. AI-era open-source startups have not relicensed, so far (group J)
 
 There are 17 files in [`companies/J/`](companies/J/) ([summary](companies/J/_summary.md)): Anyscale/Ray,
 vLLM and Inferact, LangChain, LlamaIndex, Ollama, ggml.ai/llama.cpp, Together AI, Weights & Biases, Modular,
@@ -399,7 +425,7 @@ Replicate, Unsloth, Nous Research, Lightning AI, Pydantic, Chroma, Qdrant and We
   - Cloudflare bought Replicate, Hugging Face bought ggml.ai, and Replit bought Chroma.
 - **Berkeley origins again, plus foundations.** vLLM and Ray joined the PyTorch Foundation in 2025, before
   vLLM's maintainers launched Inferact ($150M at $800M) and before Anyscale's sale.
-- **Lesson from the 2018–24 relicensing wave:** this cohort stays permissive and puts foundations in early.
+- **Lesson from the 2018–24 relicensing wave:** so far this cohort stays permissive and puts foundations in early. The firms are young (median founding 2022), while group A firms first closed at a median age of about 10, so *right-censoring* applies. Check again in five years.
   The money is in hosted layers and in being acquired by whoever sells the compute.
 
 ### 3. Public markets
@@ -434,8 +460,8 @@ Source: [group D summary](companies/D/_summary.md) and [Edison: open hardware](e
 - **Revenue and size:**
   - Adafruit: $45M revenue in 2016.
   - SparkFun: about 140 staff, with revenue growing from $0.85M (2005) to about $7M (2008).
-  - Prusa: about CZK 6.6B (roughly $280M) combined revenue across five companies in 2024, and about
-    1,100 staff.
+  - Prusa: about $157M revenue in 2024 (CZK 3.65B; case file). Edison's CZK 6.6B is the sum across five
+    companies before intra-group eliminations. About 1,100 staff.
   - None of the three has outside funding or an exit.
 - **Clones:**
   - Arduino sells about one genuine board for every 5–6 clones.
@@ -499,14 +525,14 @@ Source: [groups E and F](companies/E/_summary.md) and [F summary](companies/F/_s
     and neither is their main product.
   - Edison's sources put disclosed AI-for-materials funding from Sep 2025 to Jul 2026 at
     $1.98–2.29B, with 86–88% going to Periodic, CuspAI and Lila.
-- **Self-driving labs took off while open-hardware publishing plateaued** ([`figures/physsci_topics.png`](figures/physsci_topics.png),
+- **Self-driving labs took off; open-hardware publishing grew more slowly** ([`figures/physsci_topics.png`](figures/physsci_topics.png),
   [`data/openalex_physsci_topics.csv`](data/openalex_physsci_topics.csv), OpenAlex title/abstract matches):
   - Self-driving and autonomous-lab papers went from 18 (2020) to 131 (2024) and 383 (2025). 67% of the
     2025 papers are open access.
   - The US-affiliated share of SDL papers fell from about two thirds (2020) to 28% (2025) as other
     countries ramped up.
-  - Open-source-hardware papers rose from 37 (2010) to about 300 a year by 2020, then flattened (276–381
-    in 2024–25).
+  - Open-source-hardware papers rose from 37 (2010) to about 300 a year by 2020, held near 300 until
+    2024 (276), then jumped to a record 381 in 2025. The 2025 counts may still be incomplete.
   - HardwareX has published a steady 111–115 articles a year since 2023.
 
   ![SDL and open hardware papers](figures/physsci_topics.png)
@@ -873,14 +899,15 @@ and [`edison/academic_osh_commercialization_answer.md`](edison/academic_osh_comm
   crowdfunding rounds totalling **39 kits** at an $80 list price, matching
   [our GitHub digest](gh-mining/commercialization_digest.md).
 
-### 9b. This lab's own open record is now written mostly by AI agents
+### 9b. AI agents now write most of this lab's open record, by volume
 
 The same `gh api` dump of **this** repository (vertical-cloud-lab/byu-vcl, to 2026-11-24; script
 `scripts/gh_dump.py`, table [`data/byu_vcl_authorship_by_month.csv`](data/byu_vcl_authorship_by_month.csv)) contains:
 - 317 issues and PRs, 3,731 conversation comments, and review and discussion posts;
 - humans wrote **2,909** records and Claude wrote **1,004**;
 - by volume, Claude wrote **6.4M characters against humans' 1.4M**, about 4.7× as much;
-- Copilot wrote 154 records, mostly in June 2026.
+- Copilot wrote 154 records, spread from February to June 2026.
+- By record count, humans still wrote 71% (2,909 of 4,113). The agents write the long records.
 
 In the AI era, an open lab's public record (decisions, BOMs, analyses, videos like these) is increasingly
 produced by agents in the open, with humans steering. That makes openness cheaper to practice. It also
