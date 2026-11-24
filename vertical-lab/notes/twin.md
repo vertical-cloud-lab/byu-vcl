@@ -326,7 +326,8 @@ What the runs say, in this model:
   reference alloys above. The hidden random field is a few percent. Absolute values matter less than the ordering
   they give.
 * **Prices and lead times** are DAL's 2026 experience, aggregated; AMAZEMET's consumables (plates, nozzles,
-  crucibles) are assumed ($350, $120, $450). Mines' and Utah MX-Lab's per-session fees are assumed (~$800, $500);
+  crucibles) are assumed ($350, $120, $450). Mines' and Utah MX-Lab's per-session fees are assumed ($600 and $300; DAL's own benchmark allows $500 for Utah,
+  and Mines' posted rates stay in DAL's private budget);
   private rates override them locally.
 * **Budgets** per year are ours ($120k, $60k), as are the policies' work-in-progress caps (24, 8).
 * **Breakdown rates** are assumed; AMAZEMET spares come from Poland (DAL: parts "in stock" with nobody to ship them).
