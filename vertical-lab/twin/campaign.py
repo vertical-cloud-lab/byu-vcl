@@ -50,6 +50,7 @@ from dataclasses import dataclass, field
 import numpy as np
 
 from twin import facility as fac
+from twin import instruments as INS
 from twin import spaces, supply, truth_al, truth_cu, usgs
 
 H = 24.0
@@ -113,6 +114,9 @@ class Spec:
     seed: int = 0
     kappa: float = 1.0            # FLAIME: the nucleant effect the CALPHAD nodes miss; ONR: retained beta' scale
     prestock: bool = True         # base metal, argon and plates on hand at day 0 (bought before the campaign)
+    crucible_cm3: int = 225       # round 2: the rePowder's standard crucible, or the 400 cm3 upgrade (DAL #219)
+    reuse: bool = True            # round 2: unfused LPBF powder and DED overspray are sieved and put back in the lot
+    fidelity: str = "fast"        # round 2: instrument simulators' fidelity (twin/instruments/__init__.py)
 
 
 class Campaign:
@@ -136,6 +140,10 @@ class Campaign:
         self.demonstrated = []                    # scoring: (t_h, spent, utility, design id, details)
         self.events_out = []                      # (t_result, payload) produced by submit()
         self.refused = 0
+        self.fidelity = spec.fidelity
+        self.vertical = facility.kind == "vertical_lab"
+        self.reuse_log = []                       # (t_h, lot, grams back)
+        self.results_log = []                     # every result as it came back: (t_h, type, design, node)
         if spec.prestock:
             for k, q in PRESTOCK[spec.key].items():
                 self.stores.orders.append(supply.Order(k, q, 0.0, -1.0, -1.0, False, spec.key))
@@ -161,9 +169,10 @@ class Campaign:
         return i
 
     # ---------------------------------------------------------------------------------------- scheduling helpers
-    def _route(self, steps, ready_h, what, changeover=False):
+    def _route(self, steps, ready_h, what, changeover=False, tag=None):
         """Book steps one after another; returns (end of last step's result, money for station fees)."""
         t, usd = ready_h, 0.0
+        tag = dict(tag or {}, what=what)
         res_t = t
         for st, hours in steps:
             if hours <= 0 and st not in ("nsl",):
@@ -175,7 +184,7 @@ class Campaign:
             while left > 1e-9:
                 h = min(left, chunk)
                 s, e, r, c = self.fac.run_step(st, t, h, self.key, what,
-                                               CHANGEOVER_H if (changeover and st == "atomizer") else 0.0)
+                                               CHANGEOVER_H if (changeover and st == "atomizer") else 0.0, tag)
                 if first:
                     usd += self.market.service_price(c, s / H)
                 else:
@@ -184,6 +193,48 @@ class Campaign:
                 left -= h
                 t, res_t = e, r
         return max(res_t, t), usd
+
+    def _m(self, name, sample, **kw):
+        """One instrument's measurement of a sample (twin/instruments)."""
+        return INS.measure(name, sample, self.key, self.rng, self.fidelity, **kw)
+
+    def _psample(self, part, did, hot=False):
+        """A part as the instruments see it: the truth's part plus what the campaign knows it is meant to be."""
+        smp = dict(part, campaign=self.key, design=self.designs[did]["composition"])
+        smp["strength"] = self.truth.strength(part)
+        if self.key == "flaime_al":
+            if hot:
+                smp["strength_hot"] = self.truth.strength(part, 250.0)
+        else:
+            smp["corrosion"] = self.truth.corrosion(part)
+        return smp
+
+    def _lsample(self, lot_id, did):
+        lt = self._lot_truth[lot_id]
+        good = [r for r in lt.get("runs", []) if not r.get("failed")]
+        smp = dict(lt, campaign=self.key, design=self.designs[did]["composition"])
+        if good:
+            w = np.array([max(r["usable_frac"] * r["cut_frac"], 1e-9) for r in good])
+            w = w / w.sum()
+            for k in ("d50_um", "cut_frac", "fines_frac", "gsd", "true_superheat_K"):
+                if all(k in r for r in good):
+                    smp[k] = float(sum(wi * r[k] for wi, r in zip(w, good)))
+        return smp
+
+    def charge_plan(self, a) -> tuple:
+        """(crucible cm3, kg of metal per run, atomizer hours per run, extra consumables per run, added failure risk).
+        twin/instruments/atomize_yield.charge_plan when it exists; else scaled from the 225 cm3 charge."""
+        cm3 = int(a.get("crucible_cm3") or self.spec.crucible_cm3)
+        al = self.key == "flaime_al"
+        try:
+            from twin.instruments import atomize_yield as AY
+            pl = AY.charge_plan(self.key, cm3)
+            return cm3, pl["charge_g"] / 1000.0, float(pl.get("run_h", 2.5)), dict(pl.get("consumables") or {}), \
+                float(pl.get("p_fail_add", 0.0))
+        except Exception:
+            base = AL_CHARGE_KG if al else CU_CHARGE_KG
+            f = cm3 / 225.0
+            return cm3, base * f, 2.5 + 0.6 * (f - 1.0), {}, 0.0
 
     def _materials(self, bill, now_h):
         cost, ready_d, placed = self.stores.ensure(bill, now_h / H)
@@ -204,10 +255,17 @@ class Campaign:
         if k == "gas_atomize":
             st = "valimet" if self.key == "flaime_al" else "ames"
             return self.fac.res[st].st.fee_usd + self._gas_feed(action)
+        if k == "section":
+            return 30.0 + fees.get("prep", 0) + self.fac.res["byu_sem"].st.rate_usd_h * 1.0 + fees.get("xrd", 0) \
+                + self.fac.res["xrd"].st.rate_usd_h * 0.75
+        if k == "pip":
+            return 10.0 + fees.get("pip", 0) + fees.get("prep", 0)
         if self.key == "flaime_al":
             if k == "powder":
                 n = action.get("runs", 1)
-                return n * (20 + 6.3 + 120 + 37.5) + 15 + (35 if action.get("icp") else 0) + 40 + feed
+                f = int(action.get("crucible_cm3") or self.spec.crucible_cm3) / 225.0
+                return n * (20 * f + 6.3 + 120 + 37.5 * (1.0 + 0.6 * (f - 1))) + 15 + (35 if action.get("icp") else 0) \
+                    + 40 + feed
             if k == "print":
                 return fees["utah_midi"] + 80 + 90 + 45
             if k == "test":
@@ -217,13 +275,14 @@ class Campaign:
         else:
             if k == "powder":
                 n = action.get("runs", 1)
-                return n * (60 + 14.4 + 350 + 120 + 75) + 15 + 40 + feed
+                f = int(action.get("crucible_cm3") or self.spec.crucible_cm3) / 225.0
+                return n * (60 * f + 14.4 + 350 + 120 + 75 * (1.0 + 0.6 * (f - 1))) + 15 + 40 + feed
             if k == "nsl":
                 return fees["nsl"]
             if k in ("preplaced", "small_ded"):
                 return fees["utah_mxlab"] + 40 + (60 if k == "small_ded" else 30) + 40
             if k == "large_ded":
-                return fees["mines_x2"] + 150 + 60
+                return (fees["utah_mxlab"] + 80 + 60) if self.vertical else (fees["mines_x2"] + 150 + 60)
             if k == "tensile":
                 return 120
             if k == "screen":
@@ -239,7 +298,7 @@ class Campaign:
         if d is None:
             return 0.0
         comp = self.space.composition({e: d.get(e, 0.0) for e in self.space.elements})
-        kg = (AL_CHARGE_KG if self.key == "flaime_al" else CU_CHARGE_KG) * action.get("runs", 1)
+        kg = self.charge_plan(action)[1] * action.get("runs", 1)
         day = getattr(self, "now_h", 0.0) / H
         return sum(q * self.market.price(supply.ITEMS[it], day)
                    for it, q in supply.charge_bill(self.key, comp, kg).items())
@@ -308,36 +367,54 @@ class Campaign:
 
     # ---------------------------------------------------------------------------------------- powder
     def _do_powder(self, a, now_h):
+        """Charge cups machined, dosed and pressed; n atomizer runs (225 or 400 cm3 crucible); sieved; then the lot
+        is weighed (mass balance), sized by laser diffraction, imaged and analysed (SEM/EDS), and on request
+        characterised by XRD (``xrd``), XRF (``xrf``) and ICP-MS (``icp``)."""
         did = self.design_id(a["design"])
         comp = self.designs[did]["composition"]
         proc = {v.name: a["design"][v.name] for v in spaces.ATOMIZER}
         n = int(a.get("runs", 1))
         al = self.key == "flaime_al"
-        kg = AL_CHARGE_KG if al else CU_CHARGE_KG
+        cm3, kg, run_h, extra, p_add = self.charge_plan(a)
         bill = supply.charge_bill(self.key, comp, kg * n)
-        cons = AL_RUN_CONSUMABLES if al else CU_RUN_CONSUMABLES
+        cons = dict(AL_RUN_CONSUMABLES if al else CU_RUN_CONSUMABLES)
+        for k, q in extra.items():
+            if k in supply.ITEMS:
+                cons[k] = q
         for k, q in cons.items():
             if k == "bn_spray" and al:
                 continue
-            bill[k] = bill.get(k, 0.0) + q * n
+            if k in supply.ITEMS:
+                bill[k] = bill.get(k, 0.0) + q * n
         ready = self._materials(bill, now_h)
-        steps = [("shop", (2.5 if al else 1.0) * n), ("doser", 1.0 * n)]
+        tag = dict(design=did, node="powder")
+        cups_h = (2.5 if al else 1.0) * n * (kg / (AL_CHARGE_KG if al else CU_CHARGE_KG))
+        steps = [("shop", cups_h), ("doser", 1.0 * n)]
         t = ready
         usd = 0.0
         runs = []
         TL = self.believed_liquidus(did)
-        t_r, u = self._route(steps, t, "charge")
+        t_r, u = self._route(steps, t, "charge", tag=tag)
         usd += u
         t = t_r
         for i in range(n):
-            t_r, u = self._route([("atomizer", 2.5)], t, "atomize", changeover=True)
+            t_r, u = self._route([("atomizer", run_h)], t, "atomize", changeover=True, tag=tag)
             usd += u
             t = t_r
-            runs.append(self.truth.atomize(comp, proc, TL, self.rng))
+            r = self.truth.atomize(comp, proc, TL, self.rng)
+            if p_add > 0 and not r["failed"] and self.rng.random() < p_add:
+                r = dict(r, failed=True, usable_frac=0.0)
+            r["charge_g"] = kg * 1000.0
+            r["crucible_cm3"] = cm3
+            runs.append(r)
         steps2 = [("sieve", 0.75), ("psd", 0.25), ("byu_sem", 0.5)]
+        if a.get("xrd"):
+            steps2.append(("xrd", 0.75))
+        if a.get("xrf"):
+            steps2.append(("xrf", 0.5))
         if a.get("icp"):
             steps2.append(("byu_icpms", 0.1))
-        t_r, u = self._route(steps2, t, "powder QC")
+        t_r, u = self._route(steps2, t, "powder QC", tag=tag)
         usd += u
         self.charge(now_h, usd, "powder stations")
         good = [r for r in runs if not r["failed"]]
@@ -355,16 +432,26 @@ class Campaign:
             true_comp, d50, ox, sat, carbon = dict(comp), float("nan"), float("nan"), float("nan"), 0.0
         lot_id = next(self.ids)
         self._lot_truth[lot_id] = dict(composition=true_comp, oxygen_ppm=ox, satellite_frac=sat, carbon_ppm=carbon,
-                                       runs=runs)
-        meas = dict(runs=n, failed_runs=n - len(good), cut_g=cut_g,
-                    d50_um=d50 * math.exp(self.rng.normal(0, 0.05)) if good else None,
-                    cut_frac=(float(np.mean([r["cut_frac"] for r in good])) + self.rng.normal(0, 0.03)) if good else None,
-                    oxygen_ppm=ox * math.exp(self.rng.normal(0, 0.1)) if good else None,
-                    eds={e: v * math.exp(self.rng.normal(0, 0.08)) for e, v in true_comp.items()
-                         if e != self.space.balance} if good else None)
-        if a.get("icp") and good:
-            meas["icp"] = {e: v * math.exp(self.rng.normal(0, 0.02)) for e, v in true_comp.items()
-                           if e != self.space.balance}
+                                       runs=runs, reuse=0.0, crucible_cm3=cm3)
+        meas = dict(runs=n, failed_runs=n - len(good), cut_g=cut_g, crucible_cm3=cm3)
+        smp = self._lsample(lot_id, did)
+        y = self._m("yield", smp)
+        meas["yield"] = y
+        if good:
+            meas["cut_g"] = float(max(y.get("cut_g", cut_g), 0.0))
+            psd = self._m("psd", smp)
+            sem = self._m("sem_powder", smp)
+            eds = self._m("eds", smp)
+            meas.update(psd=psd, sem=sem, d50_um=psd.get("d50_um"), cut_frac=psd.get("cut_frac"),
+                        oxygen_ppm=ox * math.exp(self.rng.normal(0, 0.1)), eds=eds.get("comp"), eds_lod=eds.get("lod"))
+            if a.get("xrd"):
+                meas["xrd"] = self._m("xrd_powder", smp)
+            if a.get("xrf"):
+                meas["xrf"] = self._m("xrf", smp).get("comp")
+            if a.get("icp"):
+                meas["icp"] = self._m("icpms", smp).get("comp")
+        else:
+            meas.update(d50_um=None, cut_frac=None, oxygen_ppm=None, eds=None)
         self._emit(t_r, dict(type="lot", id=lot_id, design=did, measured=meas, proc=proc, into=a.get("into")))
         return True
 
@@ -413,16 +500,44 @@ class Campaign:
             raise KeyError(lot_id)
         return L
 
+    PRINT_FILL_G, PRINT_FUSED_G = 30.0, 12.0          # a 55 mm kit: about 30 g spread (DAL #138); 9 cubes + blanks fused (assumed)
+    E8_FILL_G, E8_FUSED_G = 440.0, 70.0               # a 170 mm E8 plate (assumed fused share)
+
+    def _return_powder(self, lot_id, spread_g, fused_g, proc, mode="lpbf", catchment=None):
+        """Powder reuse: what comes back to the lot after a build (sieved unfused powder) or a deposit (overspray),
+        and the state of what comes back. twin/instruments/reuse.py when it exists; else a plain model."""
+        if not self.spec.reuse:
+            return 0.0, None
+        lt = self._lot_truth[lot_id]
+        try:
+            from twin.instruments import reuse as RU
+            if mode == "lpbf":
+                g, st = RU.after_build(lt, spread_g, fused_g, proc, self.rng)
+            else:
+                g, st = RU.after_ded(lt, spread_g, catchment, proc, self.rng)
+            return float(max(g, 0.0)), st
+        except Exception:
+            if mode == "lpbf":
+                g = 0.88 * max(spread_g - fused_g, 0.0)
+                st = dict(lt, oxygen_ppm=lt["oxygen_ppm"] + 60.0, satellite_frac=min(lt["satellite_frac"] + 0.01, 0.6),
+                          reuse=lt.get("reuse", 0.0) + 1.0)
+            else:
+                g = 0.55 * max(spread_g * (1.0 - (catchment or 0.6)), 0.0)
+                st = dict(lt, oxygen_ppm=lt["oxygen_ppm"] + 150.0, satellite_frac=min(lt["satellite_frac"] + 0.03, 0.6),
+                          reuse=lt.get("reuse", 0.0) + 1.0)
+            return g, st
+
     def _do_print(self, a, now_h):
         L = self._lot(a["lot"])
-        need = 30.0                       # a 55 mm reduction kit takes about 30 g (DAL #138)
+        need = self.PRINT_FILL_G          # a 55 mm reduction kit takes about 30 g (DAL #138)
         if L["remaining_g"] < need:
             return False
         L["remaining_g"] -= need
         params = a["params"][:9]
         ready = self._materials({"build_plate": 1.0, "argon": 1.0 if self.fac.kind == "vertical_lab" else 0.0},
                                 now_h)
-        t_r, usd = self._route([("utah_midi", 5.0), ("density", 0.5), ("byu_sem", 1.0)], ready, "print")
+        tag = dict(design=L["design"], node="print", lot=a["lot"])
+        t_r, usd = self._route([("utah_midi", 5.0), ("density", 0.5), ("byu_sem", 1.0)], ready, "print", tag=tag)
         self.charge(now_h, usd, "print")
         lt = self._lot_truth[a["lot"]]
         lot = dict(lt, composition=lt["composition"])
@@ -430,13 +545,82 @@ class Campaign:
         parts, meas = [], []
         for p in params:
             part = self.truth.build(lot, p, self.rng)
+            part["reuse"] = lt.get("reuse", 0.0)
             parts.append(part)
             cd = part["crack_density"] * math.exp(self.rng.normal(0, 0.2))
-            meas.append(dict(rel_density=float(np.clip(part["rel_density"] + self.rng.normal(0, 0.002), 0, 1)),
-                             crack_density=cd if cd > 0.02 else 0.0, params=p))
+            dens = self._m("density", self._psample(part, L["design"]))
+            meas.append(dict(rel_density=float(dens["rel_density"]), crack_density=cd if cd > 0.02 else 0.0, params=p))
+        back, st = self._return_powder(a["lot"], need, self.PRINT_FUSED_G, params[0])
         self._part_truth[bid] = dict(parts=parts, lot=a["lot"], bars_at=int(a.get("bars_at", 0)))
         self._emit(t_r, dict(type="build", id=bid, lot=a["lot"], design=L["design"], measured=meas,
-                             bars_at=int(a.get("bars_at", 0))))
+                             bars_at=int(a.get("bars_at", 0)), returned_g=back, returned_state=st))
+        return True
+
+    def _do_section(self, a, now_h):
+        """Cut, mount and polish one part (a cube of a build, or a block of a deposit), then SEM (BSE) and EBSD on the
+        section and a Vickers row; XRD on the section on request (always for copper, for beta')."""
+        al = self.key == "flaime_al"
+        if al:
+            B = self.builds.get(a.get("build"))
+            if B is None or B.get("_sectioned"):
+                return False
+            B["_sectioned"] = True
+            pt = self._part_truth[a["build"]]
+            i = int(a.get("cube", pt["bars_at"]))
+            part, did = pt["parts"][min(i, len(pt["parts"]) - 1)], B["design"]
+            key = ("build", a["build"])
+        else:
+            D = self.deposits.get(a.get("deposit"))
+            if D is None or D.get("_sectioned"):
+                return False
+            D["_sectioned"] = True
+            pt = self._part_truth[a["deposit"]]
+            i = int(a.get("block", 0))
+            part, did = pt["parts"][min(i, len(pt["parts"]) - 1)], D["design"]
+            key = ("deposit", a["deposit"])
+        steps = [("prep", 1.5), ("byu_sem", 1.0), ("hardness", 0.25)]
+        if a.get("xrd") or not al:
+            steps.append(("xrd", 0.75))
+        tag = dict(design=did, node="section")
+        t_r, usd = self._route(steps, now_h, "section", tag=tag)
+        self.charge(now_h, usd + 30.0, "section (mount, polish, SEM, EBSD, HV)")
+        smp = self._psample(part, did)
+        meas = dict(sem=self._m("sem_section", smp), ebsd=self._m("ebsd", smp), vickers=self._m("vickers", smp),
+                    index=i)
+        if a.get("xrd") or not al:
+            meas["xrd"] = self._m("xrd_part", smp)
+        self._emit(t_r, dict(type="section", key=key, design=did, measured=meas))
+        return True
+
+    def _do_pip(self, a, now_h):
+        """Profilometry-based indentation plastometry on one part: heat-treated first (aluminium, the same treatment
+        as the tensile bars), polished flat, indented and profiled. A stress-strain curve without machining bars."""
+        al = self.key == "flaime_al"
+        if al:
+            B = self.builds.get(a.get("build"))
+            if B is None or B.get("_pip"):
+                return False
+            B["_pip"] = True
+            pt = self._part_truth[a["build"]]
+            i = int(a.get("cube", pt["bars_at"]))
+            key = ("build", a["build"])
+            did = B["design"]
+            steps = [("furnace", 3.0), ("prep", 0.5), ("pip", 0.5)]
+        else:
+            D = self.deposits.get(a.get("deposit"))
+            if D is None or D.get("_pip"):
+                return False
+            D["_pip"] = True
+            pt = self._part_truth[a["deposit"]]
+            i = int(a.get("block", 0))
+            key = ("deposit", a["deposit"])
+            did = D["design"]
+            steps = [("prep", 0.5), ("pip", 0.5)]
+        part = pt["parts"][min(i, len(pt["parts"]) - 1)]
+        t_r, usd = self._route(steps, now_h, "pip", tag=dict(design=did, node="pip"))
+        self.charge(now_h, usd + 10.0, "pip")
+        meas = dict(self._m("pip", self._psample(part, did)), index=i)
+        self._emit(t_r, dict(type="pip", key=key, design=did, measured=meas))
         return True
 
     def _al_score(self, part, s, hot=None):
@@ -461,17 +645,18 @@ class Campaign:
         steps = [("edm", 0.75), ("furnace", 3.0), ("shop", 1.0), ("tensile", 0.6)]
         if a.get("hot"):
             steps.append(("tensile_hot", 1.5))
-        t_r, usd = self._route(steps, now_h, "test")
+        t_r, usd = self._route(steps, now_h, "test", tag=dict(design=B["design"], node="test"))
         self.charge(now_h, usd + 120.0, "test (3 specimens machined)")
         pt = self._part_truth[a["build"]]
         part = pt["parts"][pt["bars_at"]]
         s = self.truth.strength(part)
         hot = self.truth.strength(part, 250.0) if a.get("hot") else None
-        meas = dict(ys_MPa=s["ys_MPa"] * math.exp(self.rng.normal(0, 0.04 / math.sqrt(3))),
-                    uts_MPa=s["uts_MPa"] * math.exp(self.rng.normal(0, 0.03 / math.sqrt(3))),
-                    el_pct=s["el_pct"] * math.exp(self.rng.normal(0, 0.12 / math.sqrt(3))))
+        smp = self._psample(part, B["design"], hot=bool(a.get("hot")))
+        m = self._m("tensile", smp)
+        meas = dict(ys_MPa=m["ys_MPa"], uts_MPa=m["uts_MPa"], el_pct=m["el_pct"], n_bars=m.get("n_bars", 3))
         if hot:
-            meas["hot_ys_MPa"] = hot["ys_MPa"] * math.exp(self.rng.normal(0, 0.05 / math.sqrt(3)))
+            mh = self._m("tensile_hot", smp)
+            meas["hot_ys_MPa"] = mh["ys_MPa"]
         u, det = self._al_score(part, s, hot)
         self._emit(t_r, dict(type="test", build=a["build"], design=B["design"], measured=meas,
                              params=B["measured"][pt["bars_at"]]["params"], score=(u, det)))
@@ -479,25 +664,28 @@ class Campaign:
 
     def _do_promote(self, a, now_h):
         L = self._lot(a["lot"])
-        if L["remaining_g"] < 440.0:
+        if L["remaining_g"] < self.E8_FILL_G:
             return False
-        L["remaining_g"] -= 440.0
+        L["remaining_g"] -= self.E8_FILL_G
         ready = self._materials({"build_plate": 1.0, "argon": 1.0}, now_h)
         t_r, usd = self._route([("utah_midi", 8.0), ("edm", 1.0), ("furnace", 3.0), ("shop", 1.5),
-                                ("tensile", 0.6), ("tensile_hot", 1.5)], ready, "promote")
+                                ("tensile", 0.6), ("tensile_hot", 1.5)], ready, "promote",
+                               tag=dict(design=L["design"], node="test", lot=a["lot"]))
         self.charge(now_h, usd + self.fac.res["utah_midi"].st.fee_usd * 0.5 + 120.0, "promote (E8 plate)")
         lot = self._lot_truth[a["lot"]]
         part = self.truth.build(lot, a["params"], self.rng)
         s = self.truth.strength(part)
         hot = self.truth.strength(part, 250.0)
-        meas = dict(ys_MPa=s["ys_MPa"] * math.exp(self.rng.normal(0, 0.03 / math.sqrt(3))),
-                    el_pct=s["el_pct"] * math.exp(self.rng.normal(0, 0.10 / math.sqrt(3))),
-                    hot_ys_MPa=hot["ys_MPa"] * math.exp(self.rng.normal(0, 0.04)),
-                    rel_density=float(np.clip(part["rel_density"] + self.rng.normal(0, 0.002), 0, 1)))
+        smp = self._psample(part, L["design"], hot=True)
+        m, mh = self._m("tensile", smp), self._m("tensile_hot", smp)
+        dens = self._m("density", smp)
+        meas = dict(ys_MPa=m["ys_MPa"], el_pct=m["el_pct"], uts_MPa=m["uts_MPa"], hot_ys_MPa=mh["ys_MPa"],
+                    rel_density=float(dens["rel_density"]))
         u, det = self._al_score(part, s, hot)
         det["e8"] = True
+        back, st = self._return_powder(a["lot"], self.E8_FILL_G, self.E8_FUSED_G, a["params"])
         self._emit(t_r, dict(type="test", build=None, design=L["design"], measured=meas, params=a["params"],
-                             score=(u, det), e8=True))
+                             score=(u, det), e8=True, lot=a["lot"], returned_g=back, returned_state=st))
         return True
 
     # ---------------------------------------------------------------------------------------- ONR: DED and tests
@@ -520,7 +708,11 @@ class Campaign:
         return self._ded(a, now_h, "blown_small", 450.0, [("utah_mxlab", 4.0), ("byu_sem", 2.0)], 0.0)
 
     def _do_large_ded(self, a, now_h):
+        """Blocks for bars and coupons. In the proposals: 2 kg at Mines (an NSL certificate first). In the vertical
+        lab: 1 kg on the in-house MX-Lab, an eight-hour plate (bottleneck.py), certified by its own ICP-MS."""
         L = self._lot(a["lot"])
+        if self.vertical:
+            return self._ded(a, now_h, "blown_large", 1000.0, [("utah_mxlab", 8.0), ("byu_sem", 1.0)], 1.0)
         if not L.get("nsl"):
             return False
         return self._ded(a, now_h, "blown_large", 2000.0, [("mines_x2", 5.0), ("byu_sem", 2.0)], 1.0)
@@ -531,7 +723,8 @@ class Campaign:
             return False
         L["remaining_g"] -= grams
         ready = self._materials({"ded_substrate": substrates} if substrates else {}, now_h)
-        t_r, usd = self._route(steps, ready, mode)
+        node = {"preplaced": "ded_small", "blown_small": "ded_small", "blown_large": "ded_large"}[mode]
+        t_r, usd = self._route(steps, ready, mode, tag=dict(design=L["design"], node=node, lot=a["lot"]))
         self.charge(now_h, usd, mode)
         lot = self._lot_truth[a["lot"]]
         params = a["params"] if isinstance(a["params"], list) else [a["params"]]
@@ -541,10 +734,11 @@ class Campaign:
         parts, meas = [], []
         for p in params:
             part = self.truth.deposit(lot, p, mode, self.rng, substrate=nab if mode != "blown_small" else None)
+            part["reuse"] = lot.get("reuse", 0.0)
             parts.append(part)
             cd = part["crack_density"] * math.exp(self.rng.normal(0, 0.25))
-            m = dict(rel_density=float(np.clip(part["rel_density"] + self.rng.normal(0, 0.003), 0, 1)),
-                     crack_density=cd if cd > 0.02 else 0.0,
+            dens = self._m("density", self._psample(part, did))
+            m = dict(rel_density=float(dens["rel_density"]), crack_density=cd if cd > 0.02 else 0.0,
                      dilution=part["dilution"] * math.exp(self.rng.normal(0, 0.1)), params=p)
             if mode != "preplaced":
                 m.update(beta_prime=float(np.clip(part["beta_prime"] + self.rng.normal(0, 0.03), 0, 1)),
@@ -553,9 +747,13 @@ class Campaign:
             if part["fusion_ok"] is not None:
                 m["fusion_ok"] = part["fusion_ok"] if self.rng.random() > 0.05 else (not part["fusion_ok"])
             meas.append(m)
+        catch = float(np.mean([pp["catchment"] for pp in parts])) if parts else 0.6
+        back, st = self._return_powder(a["lot"], grams, None, params[0], mode="ded", catchment=catch) \
+            if mode != "preplaced" else (0.0, None)
         dep = next(self.ids)
         self._part_truth[dep] = dict(parts=parts, lot=a["lot"], mode=mode)
-        self._emit(t_r, dict(type="deposit", id=dep, lot=a["lot"], design=did, mode=mode, measured=meas))
+        self._emit(t_r, dict(type="deposit", id=dep, lot=a["lot"], design=did, mode=mode, measured=meas,
+                             returned_g=back, returned_state=st))
         return True
 
     def _dep(self, dep_id):
@@ -596,25 +794,24 @@ class Campaign:
         if D["mode"] == "preplaced" or "tensile" in D:
             return False
         D["tensile"] = "pending"
-        t_r, usd = self._route([("shop", 1.0), ("tensile", 0.6)], now_h, "tensile")
+        t_r, usd = self._route([("shop", 1.0), ("tensile", 0.6)], now_h, "tensile",
+                               tag=dict(design=D["design"], node="tensile"))
         self.charge(now_h, usd + 120.0, "tensile (3 specimens machined)")
-        s = self.truth.strength(part)
-        meas = dict(ys_MPa=s["ys_MPa"] * math.exp(self.rng.normal(0, 0.04 / math.sqrt(3))),
-                    el_pct=s["el_pct"] * math.exp(self.rng.normal(0, 0.12 / math.sqrt(3))),
-                    uts_MPa=s["uts_MPa"] * math.exp(self.rng.normal(0, 0.03 / math.sqrt(3))))
+        m = self._m("tensile", self._psample(part, D["design"]))
+        meas = dict(ys_MPa=m["ys_MPa"], el_pct=m["el_pct"], uts_MPa=m["uts_MPa"], n_bars=m.get("n_bars", 3))
         self._emit(t_r, dict(type="cu_test", what="tensile", deposit=a["deposit"], design=D["design"],
                              measured=meas))
         return True
 
     def _do_screen(self, a, now_h):
         D, part = self._dep(a["deposit"])
-        if D["mode"] == "preplaced":
+        if D["mode"] == "preplaced" or D.get("_screened"):
             return False
-        t_r, usd = self._route([("cubxl", 1.2), ("byu_icpms", 0.1)], now_h, "screen")
+        D["_screened"] = True
+        t_r, usd = self._route([("cubxl", 1.2), ("byu_icpms", 0.1)], now_h, "screen",
+                               tag=dict(design=D["design"], node="screen"))
         self.charge(now_h, usd, "corrosion screen")
-        c = self.truth.corrosion(part)
-        meas = dict(early_rate_um_yr=c["early_rate_um_yr"] * math.exp(self.rng.normal(0, 0.3)),
-                    Eb_mV=c["Eb_mV"] + self.rng.normal(0, 30))
+        meas = self._m("corrosion_screen", self._psample(part, D["design"]))
         self._emit(t_r, dict(type="cu_test", what="screen", deposit=a["deposit"], design=D["design"],
                              measured=meas))
         return True
@@ -624,20 +821,34 @@ class Campaign:
         if D["mode"] != "blown_large" or "immersion" in D:
             return False
         D["immersion"] = "pending"
-        t_r, usd = self._route([("immersion", 720.0), ("byu_sem", 1.0), ("byu_icpms", 0.4)], now_h, "immersion")
+        t_r, usd = self._route([("immersion", 720.0), ("byu_sem", 1.0), ("byu_icpms", 0.4)], now_h, "immersion",
+                               tag=dict(design=D["design"], node="immersion"))
         self.charge(now_h, usd + 105.0, "immersion (4 ICP-MS draws)")
-        c = self.truth.corrosion(part)
-        r30 = c["rate_um_yr"] * (1 + 1.5 * math.exp(-30 / c["film_days"]))
-        meas = dict(rate30_um_yr=r30 * math.exp(self.rng.normal(0, 0.12)),
-                    attack_um=max(c["attack_um"] * math.exp(self.rng.normal(0, 0.25)) + self.rng.normal(0, 0.5), 0.0))
+        meas = self._m("immersion", self._psample(part, D["design"]))
         self._emit(t_r, dict(type="cu_test", what="immersion", deposit=a["deposit"], design=D["design"],
                              measured=meas))
         return True
 
     # ---------------------------------------------------------------------------------------- results come back
+    def _return_to_lot(self, lot_id, grams, state, t_h):
+        """Blend returned powder (sieved unfused powder or overspray) into what is left of its lot, by mass."""
+        if not grams or lot_id not in self.lots or state is None:
+            return
+        L, lt = self.lots[lot_id], self._lot_truth[lot_id]
+        wa, wb = max(L["remaining_g"], 1e-9), float(grams)
+        for k in ("oxygen_ppm", "satellite_frac", "carbon_ppm", "reuse"):
+            if k in state:
+                lt[k] = (lt.get(k, 0.0) * wa + state[k] * wb) / (wa + wb)
+        L["remaining_g"] += wb
+        L["returned_g"] = L.get("returned_g", 0.0) + wb
+        self.reuse_log.append((t_h, lot_id, wb))
+
     def release(self, t_h, p):
         self.inflight -= 1
         typ = p["type"]
+        self.results_log.append((t_h, typ, p.get("design"), p.get("what") or typ))
+        if p.get("returned_g"):
+            self._return_to_lot(p.get("lot"), p["returned_g"], p.get("returned_state"), t_h)
         if typ == "sim":
             self.sims.append(dict(kind=p["kind"], design=p["design"], proc=p["proc"], out=p["out"], t=t_h))
         elif typ == "lot":
@@ -663,6 +874,11 @@ class Campaign:
                                           proc=p["proc"], t=t_h, gas=bool(p.get("gas")))
         elif typ == "nsl":
             self.lots[p["lot"]]["nsl"] = p["measured"]
+        elif typ in ("section", "pip"):
+            kind, i = p["key"]
+            tgt = self.builds if kind == "build" else self.deposits
+            if i in tgt:
+                tgt[i][typ] = p["measured"]
         elif typ == "build":
             self.builds[p["id"]] = dict(id=p["id"], lot=p["lot"], design=p["design"], measured=p["measured"],
                                         bars_at=p["bars_at"], t=t_h)
@@ -698,8 +914,11 @@ class Twin:
     """Both campaigns on one clock. ``policies``: {campaign key: policy}; ``specs``: {campaign key: Spec}."""
 
     def __init__(self, specs: dict, policies: dict, scenario="historical", facility="proposed", seed=0,
-                 horizon_days=365, isolated=False):
+                 horizon_days=365, isolated=False, external=None):
+        """``external``: a callable given each Facility before the campaigns start; it may book outside users' jobs
+        (``fac.res[station].book(t, hours, "external", "user job")``), which then take their slots (twin/cloud.py)."""
         self.h = horizon_days * H
+        self.horizon_days = horizon_days
         supply.load_private()
         self.market = supply.Market(scenario, seed, int(horizon_days) + 400)
         shared = fac.Facility(facility, seed, self.h + 2000 * H)
@@ -708,6 +927,9 @@ class Twin:
             f = fac.Facility(facility, seed, self.h + 2000 * H) if isolated else shared
             self.campaigns[k] = Campaign(sp, policies[k], self.market, f, self.h)
         self.facilities = {k: c.fac for k, c in self.campaigns.items()}
+        if external is not None:
+            for f in {id(f): f for f in self.facilities.values()}.values():
+                external(f)
         self.seq = itertools.count()
 
     def run(self, verbose=False):
@@ -738,6 +960,41 @@ class Twin:
                 heapq.heappush(q, (t + H, next(self.seq), k, None))
         return self.summary()
 
+    def event_log(self, meta=None) -> dict:
+        """Every booking (station, hours, campaign, design, network node), every design, every result and the
+        best-so-far curves: what the video and twin/cloud.py read (schema in notes/twin.md, round 2)."""
+        facs = {id(f): f for f in self.facilities.values()}
+        stations, events = {}, []
+        for f in facs.values():
+            for k, r in f.res.items():
+                if not r.jobs:
+                    continue
+                st = r.st
+                stations[k] = dict(name=st.name, units=st.units, hours=st.hours, external=st.external)
+                for j in r.jobs:
+                    t0, t1, camp, what = j[:4]
+                    tag = (j[4] if len(j) > 4 else None) or {}
+                    events.append(dict(t0_h=round(t0, 3), t1_h=round(t1, 3), station=k, campaign=camp, what=what,
+                                       design=tag.get("design"), node=tag.get("node")))
+        events.sort(key=lambda e: e["t0_h"])
+        designs = {k: {str(i): {e: round(v, 3) for e, v in d["composition"].items()} for i, d in c.designs.items()}
+                   for k, c in self.campaigns.items()}
+        results = []
+        for k, c in self.campaigns.items():
+            best = 0.0
+            for d in sorted(c.demonstrated, key=lambda d: d["t_h"]):
+                best = max(best, d["u"])
+                results.append(dict(t_h=round(d["t_h"], 3), campaign=k, type="demonstrated", design=d["design"],
+                                    u_true=round(d["u"], 4), best_true=round(best, 4), spent=round(d["spent"], 2),
+                                    ys=d.get("ys"), el=d.get("el"), discovery=d.get("discovery")))
+            for (t, typ, des, node) in c.results_log:
+                results.append(dict(t_h=round(t, 3), campaign=k, type=typ, design=des, node=node))
+        results.sort(key=lambda r: r["t_h"])
+        summ = self.summary()
+        curves = {k: [[round(a, 3), round(b, 2), round(u, 4)] for a, b, u in summ[k]["curve"]] for k in self.campaigns}
+        return dict(meta=dict(meta or {}, horizon_days=self.horizon_days), stations=stations, events=events,
+                    designs=designs, results=results, curves=curves)
+
     def summary(self):
         out = {}
         for k, c in self.campaigns.items():
@@ -751,7 +1008,10 @@ class Twin:
                           n_designs=len(c.designs), n_lots=len(c.lots), n_sims=len(c.sims),
                           n_builds=len(c.builds) + len(c.deposits), refused=c.refused,
                           orders=len(c.stores.orders), backorders=sum(1 for o in c.stores.orders if o.backordered),
-                          spend_by=_spend_by(c.ledger), demonstrated=c.demonstrated)
+                          spend_by=_spend_by(c.ledger), demonstrated=c.demonstrated,
+                          returned_g=round(sum(g for _, _, g in c.reuse_log), 1),
+                          n_results={t: sum(1 for r in c.results_log if r[1] == t) for t in
+                                     sorted({r[1] for r in c.results_log})})
         out["utilization"] = {k: f.utilization(self.h) for k, f in
                               ({"shared": next(iter(self.facilities.values()))}.items())}
         out["market_events"] = self.market.events

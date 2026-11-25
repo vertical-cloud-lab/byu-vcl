@@ -187,7 +187,8 @@ class AlTruth:
         d = psi * 1.5 + (1 - psi) * 25.0 / (1 + max(th["Q_K"], 0) / 30.0)
         return dict(composition=comp, porosity=porosity, rel_density=1 - porosity, crack_density=crack,
                     crack_free=crack < 0.05, csi_K=csi, equiaxed=psi, cell_um=lam, grain_um=d, melt_pool=mp,
-                    thermo=th)
+                    thermo=th, pores=dict(lof=p_lof, keyhole=p_kh, gas=p_gas, crack=0.004 * crack),
+                    oxygen_ppm=lot["oxygen_ppm"], satellite_frac=lot["satellite_frac"], proc=dict(proc))
 
     def strength(self, part: dict, temp_C: float = 25.0) -> dict:
         """Yield, tensile strength and elongation after the alloy family's standard heat treatment."""

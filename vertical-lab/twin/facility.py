@@ -95,6 +95,16 @@ PROPOSED = [
     _st("cubxl", "CubXL corrosion screen (OCP, LPR, EIS, CP)", 1, "24/7", attended_h=0.25,
         source="DAL PR 117 Task 2; 67 min a spot with EIS (timelapse.py)"),
     _st("immersion", "30-day immersion vials on the gantry deck", 24, "24/7"),
+    # round 2: the characterization a conventional lab books at core facilities (BYU) or sends out
+    _st("xrd", "BYU XRD lab (powder diffractometer, core facility)", 1, "day", rate_usd_h=30.0, turnaround_days=1.0,
+        source="assumed core-facility rate; XRD prep and scan about 0.75 h"),
+    _st("xrf", "XRF (core facility)", 1, "day", rate_usd_h=30.0, turnaround_days=1.0, source="assumed"),
+    _st("prep", "Metallography (section, mount, polish; by hand)", 2, "day", source="DAL SOPs (PR 258); manual"),
+    _st("hardness", "Micro-Vickers (by hand)", 1, "day"),
+    _st("nanoindent", "Nanoindenter (core facility)", 1, "day", rate_usd_h=50.0, turnaround_days=2.0,
+        source="assumed core-facility rate"),
+    _st("pip", "Plastometrex PIP testing service (outside)", 1, "day", fee_usd=250.0, external=True,
+        booking_days=5.0, turnaround_days=7.0, source="Plastometrex offers PIP testing as a service; fee assumed"),
     _st("valimet", "Valimet gas atomization (>= 50 kg)", 1, "day", fee_usd=8000.0, external=True,
         booking_days=30.0, turnaround_days=21.0, per_period=(1, 30),
         source="FLAIME DAG: ~$8k a run; 6 scale-up runs"),
@@ -120,6 +130,15 @@ VERTICAL = [
     _st("psd", "Mastersizer + XRF (in house)", 1, "24/7"),
     _st("doser", "Doser + vacuum press, tray B (in house)", 1, "24/7"),
     _st("shop", "Machining cell (PR 373) and shop", 2, "24/7"),
+    # round 2: the trays' characterization, in house and round the clock (PR 318 chapters 4, 6 and 7)
+    _st("xrd", "Rigaku MiniFlex with its prep station, tray D (in house)", 1, "24/7", fee_usd=2.0,
+        source="chapter 4: back-loaded zero-background holder; 0.75 h prep and scan"),
+    _st("xrf", "Bruker S2 PUMA, tray F (in house)", 1, "24/7", fee_usd=2.0, source="chapter 4"),
+    _st("prep", "Sectioning, MX400 hot mounting, PX500 polishing (in house)", 1, "24/7", fee_usd=8.0,
+        source="chapter 6; pre-loaded discs changed by the arm; consumables assumed"),
+    _st("hardness", "Mitutoyo HM-220 micro-Vickers, tray L (in house)", 1, "24/7", source="chapter 7"),
+    _st("nanoindent", "KLA iMicro, tray E (in house)", 1, "24/7", source="chapter 7"),
+    _st("pip", "Plastometrex PLX-Benchtop, tray E (in house)", 1, "24/7", fee_usd=5.0, source="chapter 7"),
 ]
 
 
@@ -226,7 +245,7 @@ class Resource:
                     return ts
         return t
 
-    def book(self, t, dur, campaign: str, what: str, changeover_h: float = 0.0) -> tuple[float, float]:
+    def book(self, t, dur, campaign: str, what: str, changeover_h: float = 0.0, tag=None) -> tuple[float, float]:
         """Earliest booking of `dur` hours at or after t. Returns (start, end)."""
         st = self.st
         att = dur if st.attended_h is None else min(st.attended_h, dur)
@@ -252,7 +271,7 @@ class Resource:
             for ln in self.lines:
                 if ln.fits(t, d):
                     ln.add(t, t + d)
-                    self.jobs.append((t, t + d, campaign, what))
+                    self.jobs.append((t, t + d, campaign, what, tag))
                     self.busy_h += d
                     if st.per_period:
                         self.period_starts.append(t)
@@ -269,14 +288,15 @@ class Facility:
         self.res = {k: Resource(s, rng, horizon_h) for k, s in facility(kind).items()}
         self.rng = np.random.default_rng(40_000 + seed)
 
-    def run_step(self, station: str, ready: float, dur: float, campaign: str, what: str, changeover_h=0.0):
-        """Book a step; returns (start, end, result_time, cost)."""
+    def run_step(self, station: str, ready: float, dur: float, campaign: str, what: str, changeover_h=0.0, tag=None):
+        """Book a step; returns (start, end, result_time, cost). ``tag`` (design, node, ...) goes into the job record
+        so the event log can say which experiment a booking served."""
         r = self.res[station]
         st = r.st
         t0 = ready
         if st.external and st.booking_days:
             t0 = ready + st.booking_days * H_DAY * math.exp(self.rng.normal(0, 0.35))
-        s, e = r.book(t0, dur, campaign, what, changeover_h)
+        s, e = r.book(t0, dur, campaign, what, changeover_h, tag)
         lag = st.turnaround_days * H_DAY * math.exp(self.rng.normal(0, 0.4)) if st.turnaround_days else 0.0
         cost = st.fee_usd + st.rate_usd_h * dur
         return s, e, e + lag, cost

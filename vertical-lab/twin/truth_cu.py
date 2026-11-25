@@ -173,7 +173,8 @@ class CuTruth:
         return dict(mode=mode, composition=comp, thermo=th, porosity=porosity, rel_density=1 - porosity,
                     crack_density=crack, crack_free=crack < 0.05, beta_prime=beta_p, dilution=dil, grain_um=d,
                     catchment=mp["catch"], energy_ratio=r, cooling_K_s=mp["cool"], fusion_ok=fusion_ok,
-                    temper=MODES[mode]["temper"])
+                    temper=MODES[mode]["temper"], pores=dict(lof=lof, keyhole=kh, gas=gas),
+                    oxygen_ppm=lot["oxygen_ppm"], carbon_ppm=lot.get("carbon_ppm", 0.0), proc=dict(proc))
 
     def strength(self, part):
         c, th = part["composition"], part["thermo"]
