@@ -47,23 +47,30 @@ EXPERIMENTS = {
     # a conventional lab: the proposals' partners and BYU's core facilities, day shifts, order-as-needed, three
     # years at three years' money
     "conventional": [_cfg(p, s, facility="proposed", stock="lean", days=1095, years_budget=3.0, events=(s == 0))
-                     for p in ("random", "sobol", "heuristic", "tiered", "gpbo", "bofn") for s in range(8)],
+                     for p in ("random", "sobol", "heuristic", "tiered", "gpbo", "bofn") for s in range(12)],
     # after the default runs: SAAS priors (MAP; BOFN with SAAS nodes; fully Bayesian SAASBO with NUTS)
-    "saas": [_cfg(p, s) for p in ("saasmap", "bofn_saas", "saasbo") for s in range(10)],
+    "saas": [_cfg(p, s) for p in ("saasmap", "bofn_saas", "saasbo") for s in range(12)],
     # the vertical lab ordering each charge's metal as it goes (as DAL does now) instead of keeping stock
-    "stock": [_cfg(p, s, stock="lean") for p in ("heuristic", "bofn") for s in range(6)],
+    "stock": [_cfg(p, s, stock="lean") for p in ("heuristic", "bofn") for s in range(12)],
     # the 400 cm3 crucible against the 225 cm3 one, and powder reuse off
-    "crucible": [_cfg(p, s, crucible=400) for p in ("heuristic", "bofn", "bofn_blend") for s in range(6)],
-    "reuse": [_cfg(p, s, reuse=False) for p in ("heuristic", "bofn") for s in range(6)],
+    "crucible": [_cfg(p, s, crucible=400) for p in ("heuristic", "bofn", "bofn_blend") for s in range(12)],
+    "reuse": [_cfg(p, s, reuse=False) for p in ("heuristic", "bofn") for s in range(12)],
     # the simulators at 'lite' fidelity (small raw data and the real analysis) against 'fast' (emulated errors)
     "lite": [_cfg(p, s, fidelity="lite") for p in ("heuristic", "bofn") for s in range(3)],
     # copper: the same campaign on a truth with an effect the CALPHAD screen cannot see (gamma-2 above
     # Al = 8.2 + Ni/2), to test whether the tiered funnel's tie with BOFN is the truth being too kind to it
-    "cu_hidden": [_cfg(p, s, cu_hidden=1.0) for p in ("heuristic", "tiered", "cost_aware", "gpbo", "bofn_blend")
-                  for s in range(8)],
+    "cu_hidden": [_cfg(p, s, cu_hidden=1.0) for p in ("random", "heuristic", "tiered", "cost_aware", "gpbo", "bofn",
+                                                      "bofn_blend") for s in range(12)],
+    # the campaign trace (twin/trace.py, out/twin2/trace/README.md): BOFN, standard BO and random from one common seed
+    # set (DAL #275), 12 seeds each; seed 0 of each writes a full trace with the optimizer's state
+    "seeded": [_cfg(p, s, seeding="dal275", trace=(s == 0), events=(s == 0)) for p in ("bofn", "gpbo", "random")
+               for s in range(12)],
+    # the same on the conventional lab (DAL's own lab and the proposals' partners), one traced year of BOFN
+    "seeded_conventional": [_cfg("bofn", 0, facility="proposed", stock="lean", seeding="dal275", trace=True,
+                                 events=True)],
     # copper: what separates the policies when money is not the limit
     "cu": [_cfg(p, s, cu_budget=180_000.0) for p in ("heuristic", "tiered", "gpbo", "bofn", "bofn_blend")
-           for s in range(6)],
+           for s in range(12)],
 }
 
 
@@ -79,10 +86,11 @@ def run_one(cfg: dict) -> dict:
     specs = {k: C.Spec(k, bud[k], WIP[k], cfg["seed"], 1.0, crucible_cm3=cfg.get("crucible", 225),
                        reuse=cfg.get("reuse", True), stock=cfg.get("stock", "stocked"), cu_hidden=cfg.get("cu_hidden", 0.0),
                        fidelity=cfg.get("fidelity", "fast")) for k in bud}
-    pols = {k: P2.make(cfg["policy"], k, cfg["seed"], cfg.get("crucible") if cfg.get("crucible") != 225 else None)
+    pols = {k: P2.make(cfg["policy"], k, cfg["seed"], cfg.get("crucible") if cfg.get("crucible") != 225 else None,
+                       seeding=cfg.get("seeding"))
             for k in specs}
     tw = C.Twin(specs, pols, scenario=cfg.get("scenario", "historical"), facility=cfg["facility"], seed=cfg["seed"],
-                horizon_days=cfg.get("days", 365))
+                horizon_days=cfg.get("days", 365), trace=bool(cfg.get("trace")))
     s = tw.run()
     out = dict(cfg=cfg, seconds=round(time.time() - t0, 1), gp=dict(STATS), campaigns={})
     from twin import spaces as SP
@@ -119,6 +127,26 @@ def run_one(cfg: dict) -> dict:
         log = tw.event_log(meta=dict(cfg=cfg, run_id=rid))
         (EVENTS / f"{rid}.json").write_text(json.dumps(log))
         out["events_file"] = f"out/twin2/events/{rid}.json"
+    if cfg.get("trace"):
+        from twin import trace as TR
+        rid = run_id(cfg)
+        seeds = {}
+        if cfg.get("seeding"):
+            from twin import seeding as SD
+            for k, pol in pols.items():
+                camp = tw.campaigns[k]
+                rows = []
+                for (lab, comp), d in zip(SD.seeds(cfg["seeding"], k), pol.common_seeds or []):
+                    key = tuple(sorted({e: round(d.get(e, 0.0), 3) for e in camp.space.elements}.items()))
+                    did = next((i for i, x in camp.designs.items() if x["key"] == key), None)
+                    rows.append(dict(label=lab, asked_wt_pct=comp,
+                                     run_wt_pct={e: round(d[e], 3) for e in camp.space.elements if d.get(e, 0) > 0},
+                                     process={v.name: round(d[v.name], 3) for v in camp.space.process}, design=did))
+                seeds[k] = rows
+        T = TR.build(tw, cfg, rid, seeds)
+        TR.OUT.mkdir(parents=True, exist_ok=True)
+        (TR.OUT / f"{rid}.json").write_text(json.dumps(_jsonable(T)))
+        out["trace_file"] = f"out/twin2/trace/{rid}.json"
     return out
 
 
@@ -134,7 +162,7 @@ def _safe(cfg):
 def run_id(cfg):
     parts = [cfg["facility"], cfg["policy"], f"s{cfg['seed']}"]
     for k, dflt in (("stock", "stocked"), ("crucible", 225), ("reuse", True), ("cu_budget", None),
-                    ("fidelity", "fast"), ("cu_hidden", 0.0)):
+                    ("fidelity", "fast"), ("cu_hidden", 0.0), ("seeding", None)):
         if cfg.get(k, dflt) != dflt:
             parts.append(f"{k}-{cfg[k]}")
     return "_".join(str(p) for p in parts)
@@ -155,9 +183,14 @@ def _jsonable(x):
 
 
 def run(names, workers=3):
+    """Every run of the named experiments in one process pool (so the pool never idles on one experiment's tail),
+    in the order the experiments are named, the slow policies first within each; each result is appended to its
+    experiment's file as soon as it finishes."""
+    from concurrent.futures import as_completed
     RUNS.mkdir(parents=True, exist_ok=True)
-    for name in names:
-        cfgs = EXPERIMENTS[name]
+    slow = {"saasbo": 0, "bofn_blend": 1, "bofn_saas": 1, "bofn": 2, "gpbo": 3, "saasmap": 3, "cost_aware": 4}
+    todo = []
+    for rank, name in enumerate(names):
         path = RUNS / f"{name}.jsonl"
         done = set()
         if path.exists():
@@ -166,24 +199,26 @@ def run(names, workers=3):
                     done.add(run_id(json.loads(line)["cfg"]))
                 except Exception:
                     pass
-        todo = [c for c in cfgs if run_id(c) not in done]
-        # the slow policies first, so the pool doesn't end on one long job
-        slow = {"saasbo": 0, "bofn_blend": 1, "bofn_saas": 1, "bofn": 2, "gpbo": 3, "saasmap": 3, "cost_aware": 4}
-        todo.sort(key=lambda c: (slow.get(c["policy"], 9), c["seed"]))
-        t0 = time.time()
-        print(f"{name}: {len(todo)} runs ({len(done)} already done)", flush=True)
-        with ProcessPoolExecutor(workers) as ex, path.open("a") as fh:
-            for res in ex.map(_safe, todo):
-                c = res["cfg"]
-                if "error" in res:
-                    (RUNS / f"{name}.errors.jsonl").open("a").write(json.dumps(_jsonable(res)) + "\n")
-                    print(f"  {run_id(c)}: ERROR {res['error'].splitlines()[-1]}", flush=True)
-                    continue
+        mine = [c for c in EXPERIMENTS[name] if run_id(c) not in done]
+        print(f"{name}: {len(mine)} runs ({len(done)} already done)", flush=True)
+        todo += [(rank, name, c) for c in mine]
+    todo.sort(key=lambda t: (t[0], slow.get(t[2]["policy"], 9), t[2]["seed"]))
+    t0 = time.time()
+    with ProcessPoolExecutor(workers) as ex:
+        futs = {ex.submit(_safe, c): (name, c) for _, name, c in todo}
+        for fut in as_completed(futs):
+            name, c = futs[fut]
+            res = fut.result()
+            if "error" in res:
+                with (RUNS / f"{name}.errors.jsonl").open("a") as fh:
+                    fh.write(json.dumps(_jsonable(res)) + "\n")
+                print(f"  {name} {run_id(c)}: ERROR {res['error'].splitlines()[-1]}", flush=True)
+                continue
+            with (RUNS / f"{name}.jsonl").open("a") as fh:
                 fh.write(json.dumps(_jsonable(res)) + "\n")
-                fh.flush()
-                print(f"  {run_id(c)}: FLAIME {res['campaigns']['flaime_al']['best']:.3f} "
-                      f"ONR {res['campaigns']['onr_cu']['best']:.3f} ({res['seconds']} s; "
-                      f"{time.time() - t0:.0f} s in)", flush=True)
+            print(f"  {name} {run_id(c)}: FLAIME {res['campaigns']['flaime_al']['best_new']:.3f} "
+                  f"ONR {res['campaigns']['onr_cu']['best_new']:.3f} ({res['seconds']} s; "
+                  f"{time.time() - t0:.0f} s in)", flush=True)
 
 
 def load(name):
@@ -240,7 +275,7 @@ def summary():
                                   days=[h[0] if h else None for h in hits], usd=[h[1] if h else None for h in hits],
                                   n=[h[2] + 1 if h else None for h in hits])
                 g["campaigns"][camp] = dict(
-                    best_mean=float(np.mean(best)), best_se=float(np.std(best) / max(np.sqrt(len(best)), 1)),
+                    best_mean=float(np.mean(best)), best_se=float(np.std(best, ddof=1) / np.sqrt(len(best))) if len(best) > 1 else 0.0,
                     hit_frac=tt["T1"]["hit_frac"], targets=tt,
                     best_incl_refs=float(np.mean([r["campaigns"][camp]["best"] for r in rs])),
                     spent_mean=float(np.mean([r["campaigns"][camp]["spent"] for r in rs])),

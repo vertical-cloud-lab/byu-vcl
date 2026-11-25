@@ -426,7 +426,8 @@ class Campaign:
             if k in supply.ITEMS:
                 bill[k] = bill.get(k, 0.0) + q * n
         ready = self._materials(bill, now_h)
-        tag = dict(design=did, node="powder")
+        lot_id = next(self.ids)                   # drawn here so the bookings can name the lot (same id as before)
+        tag = dict(design=did, node="powder", sample=f"L{lot_id}")
         cups_h = (2.5 if al else 1.0) * n * (kg / (AL_CHARGE_KG if al else CU_CHARGE_KG))
         steps = [("shop", cups_h), ("doser", 1.0 * n)]
         t = ready
@@ -437,7 +438,7 @@ class Campaign:
         usd += u
         t = t_r
         for i in range(n):
-            t_r, u = self._route([("atomizer", run_h)], t, "atomize", changeover=True, tag=tag)
+            t_r, u = self._route([("atomizer", run_h)], t, "atomize", changeover=True, tag=dict(tag, run=i))
             usd += u
             t = t_r
             r = self.truth.atomize(comp, proc, TL, self.rng)
@@ -469,7 +470,6 @@ class Campaign:
             carbon = float(sum(w * r.get("carbon_ppm", 0) for w, r in zip(wts, good)))
         else:
             true_comp, d50, ox, sat, carbon = dict(comp), float("nan"), float("nan"), float("nan"), 0.0
-        lot_id = next(self.ids)
         self._lot_truth[lot_id] = dict(composition=true_comp, oxygen_ppm=ox, satellite_frac=sat, carbon_ppm=carbon,
                                        runs=runs, reuse=0.0, crucible_cm3=cm3)
         meas = dict(runs=n, failed_runs=n - len(good), cut_g=cut_g, crucible_cm3=cm3)
@@ -575,12 +575,12 @@ class Campaign:
         params = a["params"][:9]
         ready = self._materials({"build_plate": 1.0, "argon": 1.0 if self.fac.kind == "vertical_lab" else 0.0},
                                 now_h)
-        tag = dict(design=L["design"], node="print", lot=a["lot"])
+        bid = next(self.ids)                      # drawn here so the bookings can name the build (same id as before)
+        tag = dict(design=L["design"], node="print", lot=a["lot"], sample=f"B{bid}")
         t_r, usd = self._route([("utah_midi", 5.0), ("density", 0.5), ("byu_sem", 1.0)], ready, "print", tag=tag)
         self.charge(now_h, usd, "print")
         lt = self._lot_truth[a["lot"]]
         lot = dict(lt, composition=lt["composition"])
-        bid = next(self.ids)
         parts, meas = [], []
         for p in params:
             part = self.truth.build(lot, p, self.rng)
@@ -618,7 +618,7 @@ class Campaign:
         steps = [("prep", 1.5), ("byu_sem", 1.0), ("hardness", 0.25)]
         if a.get("xrd") or not al:
             steps.append(("xrd", 0.75))
-        tag = dict(design=did, node="section")
+        tag = dict(design=did, node="section", sample=("B" if al else "D") + str(key[1]))
         t_r, usd = self._route(steps, now_h, "section", tag=tag)
         self.charge(now_h, usd + 30.0, "section (mount, polish, SEM, EBSD, HV)")
         smp = self._psample(part, did)
@@ -654,7 +654,8 @@ class Campaign:
             did = D["design"]
             steps = [("prep", 0.5), ("pip", 0.5)]
         part = pt["parts"][min(i, len(pt["parts"]) - 1)]
-        t_r, usd = self._route(steps, now_h, "pip", tag=dict(design=did, node="pip"))
+        t_r, usd = self._route(steps, now_h, "pip", tag=dict(design=did, node="pip",
+                                                             sample=("B" if al else "D") + str(key[1])))
         self.charge(now_h, usd + 10.0, "pip")
         meas = dict(self._m("pip", self._psample(part, did)), index=i)
         self._emit(t_r, dict(type="pip", key=key, design=did, measured=meas))
@@ -682,7 +683,7 @@ class Campaign:
         steps = [("edm", 0.75), ("furnace", 3.0), ("shop", 1.0), ("tensile", 0.6)]
         if a.get("hot"):
             steps.append(("tensile_hot", 1.5))
-        t_r, usd = self._route(steps, now_h, "test", tag=dict(design=B["design"], node="test"))
+        t_r, usd = self._route(steps, now_h, "test", tag=dict(design=B["design"], node="test", sample=f"B{a['build']}"))
         self.charge(now_h, usd + 120.0, "test (3 specimens machined)")
         pt = self._part_truth[a["build"]]
         part = pt["parts"][pt["bars_at"]]
@@ -707,7 +708,7 @@ class Campaign:
         ready = self._materials({"build_plate": 1.0, "argon": 1.0}, now_h)
         t_r, usd = self._route([("utah_midi", 8.0), ("edm", 1.0), ("furnace", 3.0), ("shop", 1.5),
                                 ("tensile", 0.6), ("tensile_hot", 1.5)], ready, "promote",
-                               tag=dict(design=L["design"], node="test", lot=a["lot"]))
+                               tag=dict(design=L["design"], node="test", lot=a["lot"], sample=f"E8-L{a['lot']}"))
         self.charge(now_h, usd + self.fac.res["utah_midi"].st.fee_usd * 0.5 + 120.0, "promote (E8 plate)")
         lot = self._lot_truth[a["lot"]]
         part = self.truth.build(lot, a["params"], self.rng)
@@ -728,7 +729,8 @@ class Campaign:
     # ---------------------------------------------------------------------------------------- ONR: DED and tests
     def _do_nsl(self, a, now_h):
         L = self._lot(a["lot"])
-        t_r, usd = self._route([("nsl", 0.01)], now_h, "nsl")
+        t_r, usd = self._route([("nsl", 0.01)], now_h, "nsl", tag=dict(design=L["design"], node="nsl",
+                                                                        sample=f"L{a['lot']}"))
         self.charge(now_h, usd, "NSL certification")
         lt = self._lot_truth[a["lot"]]
         meas = dict(oxygen_ppm=lt["oxygen_ppm"] * math.exp(self.rng.normal(0, 0.05)),
@@ -762,7 +764,8 @@ class Campaign:
                 bill[it] = bill.get(it, 0.0) + kg * w / 100.0
         bill["ded_substrate"] = 0.25
         ready = self._materials(bill, now_h)
-        tag = dict(design=did, node="ded_small", blend=True)
+        dep = next(self.ids)                      # drawn here so the bookings can name the deposit (same id as before)
+        tag = dict(design=did, node="ded_small", blend=True, sample=f"D{dep}")
         t_r, usd = self._route([("doser", 0.5), ("utah_mxlab", 3.0), ("byu_sem", 1.0)], ready, "blend_ded", tag=tag)
         self.charge(now_h, usd + 25.0, "blend_ded")
         params = a["params"] if isinstance(a["params"], list) else [a["params"]]
@@ -776,7 +779,6 @@ class Campaign:
                              beta_prime=float(np.clip(part["beta_prime"] + self.rng.normal(0, 0.03), 0, 1)),
                              catchment=part["catchment"] * math.exp(self.rng.normal(0, 0.05)),
                              grain_um=part["grain_um"] * math.exp(self.rng.normal(0, 0.1))))
-        dep = next(self.ids)
         self._part_truth[dep] = dict(parts=parts, lot=None, mode="blend")
         self._emit(t_r, dict(type="deposit", id=dep, lot=None, design=did, mode="blend", measured=meas))
         return True
@@ -798,7 +800,9 @@ class Campaign:
         L["remaining_g"] -= grams
         ready = self._materials({"ded_substrate": substrates} if substrates else {}, now_h)
         node = {"preplaced": "ded_small", "blown_small": "ded_small", "blown_large": "ded_large"}[mode]
-        t_r, usd = self._route(steps, ready, mode, tag=dict(design=L["design"], node=node, lot=a["lot"]))
+        dep = next(self.ids)                      # drawn here so the bookings can name the deposit (same id as before)
+        t_r, usd = self._route(steps, ready, mode, tag=dict(design=L["design"], node=node, lot=a["lot"],
+                                                            sample=f"D{dep}"))
         self.charge(now_h, usd, mode)
         lot = self._lot_truth[a["lot"]]
         params = a["params"] if isinstance(a["params"], list) else [a["params"]]
@@ -821,7 +825,6 @@ class Campaign:
         catch = float(np.mean([pp["catchment"] for pp in parts])) if parts else 0.6
         back, st = self._return_powder(a["lot"], grams, None, params[0], mode="ded", catchment=catch) \
             if mode != "preplaced" else (0.0, None)
-        dep = next(self.ids)
         self._part_truth[dep] = dict(parts=parts, lot=a["lot"], mode=mode)
         self._emit(t_r, dict(type="deposit", id=dep, lot=a["lot"], design=did, mode=mode, measured=meas,
                              returned_g=back, returned_state=st))
@@ -866,7 +869,7 @@ class Campaign:
             return False
         D["tensile"] = "pending"
         t_r, usd = self._route([("shop", 1.0), ("tensile", 0.6)], now_h, "tensile",
-                               tag=dict(design=D["design"], node="tensile"))
+                               tag=dict(design=D["design"], node="tensile", sample=f"D{a['deposit']}"))
         self.charge(now_h, usd + 120.0, "tensile (3 specimens machined)")
         m = self._m("tensile", self._psample(part, D["design"]))
         meas = dict(ys_MPa=m["ys_MPa"], el_pct=m["el_pct"], uts_MPa=m["uts_MPa"], n_bars=m.get("n_bars", 3))
@@ -883,7 +886,7 @@ class Campaign:
             return False
         D["_screened"] = True
         t_r, usd = self._route([("cubxl", 1.2), ("byu_icpms", 0.1)], now_h, "screen",
-                               tag=dict(design=D["design"], node="screen"))
+                               tag=dict(design=D["design"], node="screen", sample=f"D{a['deposit']}"))
         self.charge(now_h, usd, "corrosion screen")
         meas = self._m("corrosion_screen", self._psample(part, D["design"]))
         self._emit(t_r, dict(type="cu_test", what="screen", deposit=a["deposit"], design=D["design"],
@@ -896,7 +899,7 @@ class Campaign:
             return False
         D["immersion"] = "pending"
         t_r, usd = self._route([("immersion", 720.0), ("byu_sem", 1.0), ("byu_icpms", 0.4)], now_h, "immersion",
-                               tag=dict(design=D["design"], node="immersion"))
+                               tag=dict(design=D["design"], node="immersion", sample=f"D{a['deposit']}"))
         self.charge(now_h, usd + 105.0, "immersion (4 ICP-MS draws)")
         meas = self._m("immersion", self._psample(part, D["design"]))
         self._emit(t_r, dict(type="cu_test", what="immersion", deposit=a["deposit"], design=D["design"],
@@ -990,7 +993,7 @@ class Twin:
     """Both campaigns on one clock. ``policies``: {campaign key: policy}; ``specs``: {campaign key: Spec}."""
 
     def __init__(self, specs: dict, policies: dict, scenario="historical", facility="proposed", seed=0,
-                 horizon_days=365, isolated=False, external=None):
+                 horizon_days=365, isolated=False, external=None, trace=False):
         """``external``: a callable given each Facility before the campaigns start; it may book outside users' jobs
         (``fac.res[station].book(t, hours, "external", "user job")``), which then take their slots (twin/cloud.py)."""
         self.h = horizon_days * H
@@ -1007,6 +1010,9 @@ class Twin:
             for f in {id(f): f for f in self.facilities.values()}.values():
                 external(f)
         self.seq = itertools.count()
+        # trace=True: every iteration's proposals as the optimizer scored them (twin/trace.py writes the trace file)
+        self.trace = [] if trace else None
+        self._iters = {k: 0 for k in self.campaigns}
 
     def run(self, verbose=False):
         """The event loop. A campaign is asked for actions whenever one of its results comes back, and once a day
@@ -1025,9 +1031,20 @@ class Twin:
                 c.release(t, p)
             free = c.spec.wip - c.inflight
             if free > 0 and c.budget_left > 0:
-                acts = c.policy.propose(c.view(t), free) or []
+                v = c.view(t)
+                acts = c.policy.propose(v, free) or []
+                rec = None
+                if self.trace is not None and acts[:free]:
+                    self._iters[k] += 1
+                    rec = dict(it=self._iters[k], t_h=round(t, 3), campaign=k, n_free=free,
+                               spent=round(c.spent, 2), proposals=[])
                 for a in acts[:free]:
-                    c.submit(a, t)
+                    ok = c.submit(a, t)
+                    if rec is not None:
+                        rec["proposals"].append(_trace_action(c, a, ok))
+                if rec is not None:
+                    rec["best_obs"] = _best_obs(c.policy, v)
+                    self.trace.append(rec)
                 for tr, pay in c.events_out:
                     heapq.heappush(q, (tr, next(self.seq), k, pay))
                 c.events_out = []
@@ -1050,8 +1067,12 @@ class Twin:
                 for j in r.jobs:
                     t0, t1, camp, what = j[:4]
                     tag = (j[4] if len(j) > 4 else None) or {}
-                    events.append(dict(t0_h=round(t0, 3), t1_h=round(t1, 3), station=k, campaign=camp, what=what,
-                                       design=tag.get("design"), node=tag.get("node")))
+                    ev = dict(t0_h=round(t0, 3), t1_h=round(t1, 3), station=k, campaign=camp, what=what,
+                              design=tag.get("design"), node=tag.get("node"))
+                    for kk in ("sample", "run", "lot", "blend"):      # round 2: which part, which atomizer run
+                        if tag.get(kk) is not None:
+                            ev[kk] = tag[kk]
+                    events.append(ev)
         events.sort(key=lambda e: e["t0_h"])
         designs = {k: {str(i): {e: round(v, 3) for e, v in d["composition"].items()} for i, d in c.designs.items()}
                    for k, c in self.campaigns.items()}
@@ -1092,6 +1113,43 @@ class Twin:
                               ({"shared": next(iter(self.facilities.values()))}.items())}
         out["market_events"] = self.market.events
         return out
+
+
+def _trace_action(c, a, ok):
+    """One proposed action as the trace records it: what it is, the point, and what the policy scored it at. Reads the
+    action with dict.get (a deferred action marks its part decided when its 'kind' is read through []); a design id is
+    looked up only for an accepted action, whose design already has one, so no id is drawn that a run without the
+    trace wouldn't draw."""
+    g = lambda kk, d=None: dict.get(a, kk, d)
+    kind = g("kind")
+    rec = dict(kind=kind, accepted=bool(ok), acq=g("_acq"), acq_kind=g("_acq_kind"))
+    for kk in ("ei", "mu", "sd", "cost", "best_obs"):
+        x = g("_" + kk)
+        if x is not None:
+            rec[kk] = round(float(x), 6)
+    d = g("design")
+    if isinstance(d, dict):
+        rec["x"] = {kk: round(float(vv), 4) for kk, vv in d.items()}
+        if ok:
+            rec["design"] = c.design_id(d)
+    for kk in ("lot", "build", "deposit", "cube", "block", "runs", "into", "crucible_cm3", "hot"):
+        if g(kk) is not None:
+            rec[kk] = g(kk)
+    prm = g("params")
+    if prm is not None:
+        prm = prm if isinstance(prm, list) else [prm]
+        rec["params"] = [{kk: round(float(vv), 3) for kk, vv in p.items()} for p in prm[:9] if isinstance(p, dict)]
+    return rec
+
+
+def _best_obs(policy, v):
+    """The incumbent the policy can see: the best measured utility of a fully tested alloy (None before the first)."""
+    from twin.opt.policies2 import Base2
+    try:
+        rows = Base2.observed(policy, v)
+    except Exception:
+        return None
+    return round(max(u for _, u in rows), 4) if rows else None
 
 
 def _spend_by(ledger):

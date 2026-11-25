@@ -49,6 +49,16 @@ REF_ALLOYS = {
 }
 
 
+def _ann(a, kind, acq=None, **kw):
+    """Note on an action what the policy scored it at (``_acq``) and why (``_acq_kind``), plus any model numbers. The
+    campaign ignores these keys; ``Twin(trace=True)`` records them per iteration (twin/trace.py)."""
+    a["_acq_kind"] = kind
+    a["_acq"] = None if acq is None else float(acq)
+    for k, x in kw.items():
+        a["_" + k] = None if x is None else float(x)
+    return a
+
+
 def logit(p):
     p = np.clip(np.asarray(p, float), 0.5, 0.99995)
     return np.log(p / (1 - p))
@@ -98,6 +108,7 @@ class Base2(P1.Base):
         self.crucible = crucible
         self.seed = seed
         self.gen = np.random.default_rng(seed * 7 + (3 if self.al else 5))
+        self.common_seeds = None       # make(..., seeding=...): the same seed designs for every policy (DAL #275)
 
     # ---------------------------------------------------------------- actions
     def runs_for(self, v):
@@ -226,12 +237,17 @@ class Base2(P1.Base):
     def reference_seeds(self):
         """The reference alloys with the default process settings: every model-based policy starts from them, as
         a lab would (the heuristic does too; Sobol and random don't)."""
+        if self.common_seeds is not None:
+            return [dict(d) for d in self.common_seeds]
         out = []
         for r in REF_ALLOYS[self.key]:
             d = {e: r.get(e, 0.0) for e in self.space.elements}
             d.update(self.proc0)
             out.append(self.space.repair(d))
         return out
+
+    def seed_label(self):
+        return "seed: common set (DAL #275)" if self.common_seeds is not None else "seed: reference alloy"
 
     def sound_parents(self, v, k=4):
         """Designs whose parts came out sound, strongest first (by tensile, else PIP, else density)."""
@@ -375,19 +391,23 @@ class GPBO(Base2):
         if len(acts) >= n:
             return acts[:n]
         if self.init is None:
-            self.init = self.reference_seeds() + self.space.sample(self.N_INIT - len(REF_ALLOYS[self.key]),
-                                                                   seed=2000 + self.seed, kind="sobol")
+            seeds = self.reference_seeds()
+            more = [] if self.common_seeds is not None else \
+                self.space.sample(self.N_INIT - len(REF_ALLOYS[self.key]), seed=2000 + self.seed, kind="sobol")
+            self.init = seeds + more
+            self._init_kinds = [self.seed_label()] * len(seeds) + ["initial design (Sobol)"] * len(more)
         if not self.can_start_new(v):
             return acts[:n]
         obs = self.observed(v)
         while len(acts) < n and self.init:
-            acts.append(self.powder_action(self.init.pop(0), v=v))
+            acts.append(_ann(self.powder_action(self.init.pop(0), v=v), self._init_kinds.pop(0)))
         if len(acts) >= n:
             return acts[:n]
         if len(obs) < 4:
             # nothing to learn from yet: more space-filling designs while the first ones go through the chain
             more = self.space.sample(n - len(acts), seed=int(self.gen.integers(1 << 30)), kind="sobol")
-            return acts + [self.powder_action(d, v=v) for d in more]
+            return acts + [_ann(self.powder_action(d, v=v), "space-filling while the first results come back (Sobol)")
+                           for d in more]
         X = np.array([self.space.encode(v["design_inputs"][d]) for d, _ in obs])
         y = np.array([u for _, u in obs])
         self.node.fit(X, y)
@@ -408,9 +428,11 @@ class GPBO(Base2):
             else:
                 s2 = score
             j = int(np.argmax(s2))
+            acq_j = float(s2[j])
             picked.append(j)
             score[j] = -1
-            acts.append(self.powder_action(cands[j], v=v))
+            acts.append(_ann(self.powder_action(cands[j], v=v), "EI per $ (one GP, design to measured utility)",
+                             acq_j, ei=ei[j], mu=mu[j], sd=sd[j], cost=cost[j], best_obs=best))
         return acts[:n]
 
 
@@ -757,9 +779,10 @@ class BOFN(Base2):
             return acts[:n]
         if not hasattr(self, "seeds"):
             self.seeds = self.reference_seeds()
-            sims = [dict(kind=self.sim_kind, design=d) for d in self.seeds]
+            sims = [_ann(dict(kind=self.sim_kind, design=d), "seed: open-CALPHAD node for each seed")
+                    for d in self.seeds]
             self._sims_req = len(sims)
-            self.todo += [self.powder_action(d, v=v) for d in self.seeds]
+            self.todo += [_ann(self.powder_action(d, v=v), self.seed_label()) for d in self.seeds]
             acts = (acts + sims)[:n]
             return acts + self.take(n - len(acts))
         self.fit(v)
@@ -777,7 +800,8 @@ class BOFN(Base2):
         in_flight = getattr(self, "_sims_req", 0) - len(simmed)
         if len(free) < 48 and in_flight < 24 and new_ok:
             pool = self.pool(v, 48, 48)
-            sim_acts = [dict(kind=self.sim_kind, design=d) for d in pool[:self.N_POOL_SIM]]
+            sim_acts = [_ann(dict(kind=self.sim_kind, design=d), "keep the simulated pool topped up (open CALPHAD, $1)")
+                        for d in pool[:self.N_POOL_SIM]]
         new = self.new_options(v, best, free) if new_ok else []
         options += new
         options.sort(key=lambda o: -o[0])
@@ -795,9 +819,14 @@ class BOFN(Base2):
                 self.started.add(act.pop("_did"))
             elif act.get("_lot") is not None:
                 L = v["lots"][act.pop("_lot")]
+                n_todo = len(self.todo)
                 self.go_large(v, L, act.pop("_lid"))
+                for a2 in self.todo[n_todo:]:
+                    _ann(a2, act.get("_acq_kind", "go large"), sc)
                 acts += self.take(max(n - len(acts), 0))
                 continue
+            if "_acq_kind" in act:
+                act["_acq"] = float(sc)
             acts.append(act)
         if len(acts) < n:
             self.advance2(v)
@@ -838,9 +867,12 @@ class BOFN(Base2):
         else:
             score = np.maximum(u - best, 0).mean(axis=0) / cost
         out = []
+        why = "prior: the metallurgist's proxy and the CALPHAD screen (network not ready)" if u is None else \
+            "EI per $ through the function network (64 MC samples)"
         for j in np.argsort(-score)[:16]:
             d = free[j]
             a = self.powder_action(self.atomizer_settings(v, d, dict(v["design_inputs"][d])), v=v)
+            _ann(a, why, float(score[j]), cost=cost[j])
             a["_did"] = d
             out.append((float(score[j]), a, _feat_comp(self.space, v["designs"][d])))
         return out
@@ -867,7 +899,9 @@ class BOFN(Base2):
                 if float(u.mean()) >= 0.9 * best and best > 0:
                     sc = max(sc, 1e-3)
             B["_decided_score"] = sc
-            out.append((sc, _Decide(B, dict(kind="test", build=bid)), None))
+            why = "fixed: learn the PIP-to-tensile link first" if (u is None or n_tests < 6) else \
+                "EI per $ of machining and pulling bars (network)"
+            out.append((sc, _Decide(B, dict(kind="test", build=bid, _acq_kind=why)), None))
         return out
 
     def datasets_cache_n(self, k, v):
@@ -899,7 +933,10 @@ class BOFN(Base2):
                 sc = float(np.maximum(u - best, 0).mean()) / cost
                 if float(u.mean()) >= 0.9 * best and best > 0:
                     sc = max(sc, 1e-3)
-            out.append((sc, _GoLarge(L, lid), None))
+            gl = _GoLarge(L, lid)
+            gl["_acq_kind"] = "fixed: learn the deposit-to-tensile link first" if (u is None or n_large < 4) else \
+                "EI per $ of atomizing more and depositing 1 kg (network)"
+            out.append((sc, gl, None))
         return out
 
 
@@ -935,7 +972,41 @@ POLICIES2 = {"sobol": Sobol, "heuristic": Heuristic, "gpbo": GPBO, "saasbo": SAA
              "bofn": BOFN, "bofn_saas": BOFNSAAS}
 
 
-def make(name, key, seed, crucible=None):
+class SeededRandom(P1.Random):
+    """Round 1's random policy (every design through the whole chain), started from a common seed set."""
+    name = "random"
+
+    def __init__(self, key, seed=0, crucible=None):
+        super().__init__(key, seed)
+        self.common_seeds = None
+
+    def propose(self, v, n):
+        self.advance(v, n)
+        acts = self.take(n)
+        if not hasattr(self, "_seed_q"):
+            self._seed_q = [dict(d) for d in (self.common_seeds or [])]
+        while len(acts) < n and self._seed_q:
+            acts.append(_ann(self.powder_action(self._seed_q.pop(0)), "seed: common set (DAL #275)"))
+        while len(acts) < n:
+            acts.append(_ann(self.powder_action(self.new_design()), "random design"))
+        return acts[:n]
+
+
+def make(name, key, seed, crucible=None, seeding=None):
+    """A policy by name. ``seeding``: a named common seed set (twin/seeding.py) every policy starts from, so that no
+    policy's lead is only a warm start (DAL #275); None keeps each policy's own start (the main benchmark)."""
+    if seeding:
+        from twin import seeding as SD
+        if name == "random":
+            pol = SeededRandom(key, seed, crucible)
+        elif name in POLICIES2:
+            pol = POLICIES2[name](key, seed, crucible)
+        else:
+            raise ValueError(f"seeding {seeding!r} is not wired for policy {name!r}")
+        sp = pol.space
+        pol.common_seeds = [sp.repair({**{e: 0.0 for e in sp.elements}, **comp, **pol.proc0})
+                            for _, comp in SD.seeds(seeding, key)]
+        return pol
     if name in POLICIES2:
         return POLICIES2[name](key, seed, crucible)
     return P1.POLICIES[name](key, seed)
@@ -1016,7 +1087,8 @@ class BOFNBlend(BOFN):
             self._fid = 1.0
             params = self._settings_design(v, did, 4, 0.15)
             self._fid = 0.0
-            b = dict(kind="blend_ded", design=dict(v["design_inputs"][did]), params=params, _did=did)
+            b = dict(kind="blend_ded", design=dict(v["design_inputs"][did]), params=params, _did=did,
+                     _acq_kind=a.get("_acq_kind", "") + "; as a blended-powder screen (x3: a tenth of the cost)")
             out.append((sc * 3.0, b, x))          # a blend screen costs about a tenth of an atomized trial
         return out
 
@@ -1038,7 +1110,8 @@ class BOFNBlend(BOFN):
             for sc, act, _ in sorted(self.promote_options(v, best), key=lambda o: -o[0]):
                 if len(acts) >= n or sc <= 1e-9:
                     break
-                acts.append(act.take())
+                acts.append(_ann(act.take(), "promote a screened blend: EI per $ (network)" if sc < 1.0 else
+                                 "prior: promote the best-looking blend (no atomized results yet)", sc))
         for a in acts:
             if a.get("kind") == "blend_ded":
                 self.blend_state[a.pop("_did")] = "blending"
