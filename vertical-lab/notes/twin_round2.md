@@ -312,7 +312,7 @@ at b1ba843, PR 206), [#265](https://github.com/vertical-cloud-lab/digital-alloy-
 8. Strategy code: [`twin/opt/policies2.py`](../twin/opt/policies2.py) and [`twin/policies.py`](../twin/policies.py).
 9. Figures: [`out/twin2/fig/`](../out/twin2/fig/).
 
-The results draft this section grew from was staged by Sterling on Nov 25 (written from this branch at e3667f8). Every
+The results draft this section grew from was staged for this PR on Nov 25 (written from this branch at e3667f8). Every
 number in it was checked against the tables and run logs above. One was wrong: plain BOFN on copper ended the year
 with no new alloy above zero in 5 of its 12 runs, not 6. The standard errors are now the sample standard deviation
 (n − 1), which raises five of them by 0.01.
