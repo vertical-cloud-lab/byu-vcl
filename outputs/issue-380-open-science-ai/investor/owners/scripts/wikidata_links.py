@@ -29,16 +29,21 @@ def qid(s):
     return s.str.replace("http://www.wikidata.org/entity/", "", regex=False)
 
 
-usernames = sparql("SELECT ?item ?gh WHERE { ?item wdt:P2037 ?gh . }")
-usernames["item"] = qid(usernames["item"])
-usernames.to_csv("data/wikidata_github_usernames.csv", index=False)
+import os, sys
+if "--reuse" in sys.argv and os.path.exists("data/wikidata_repo_links.csv"):
+    usernames = pd.read_csv("data/wikidata_github_usernames.csv", dtype=str)
+    repos = pd.read_csv("data/wikidata_repo_links.csv", dtype=str).fillna({"dev": ""})
+else:
+    usernames = sparql("SELECT ?item ?gh WHERE { ?item wdt:P2037 ?gh . }")
+    usernames["item"] = qid(usernames["item"])
+    usernames.to_csv("data/wikidata_github_usernames.csv", index=False)
 
-repos = sparql("""SELECT ?item ?repo ?dev WHERE { ?item wdt:P1324 ?repo .
-  FILTER(STRSTARTS(STR(?repo), "https://github.com/")) OPTIONAL { ?item wdt:P178 ?dev } }""")
-repos["item"] = qid(repos["item"]); repos["dev"] = qid(repos["dev"].fillna(""))
-repos["full_name"] = (repos["repo"].str.replace("https://github.com/", "", regex=False)
-                      .str.replace(r"\.git$", "", regex=True).str.strip("/").str.split("/").str[:2].str.join("/"))
-repos.to_csv("data/wikidata_repo_links.csv", index=False)
+    repos = sparql("""SELECT ?item ?repo ?dev WHERE { ?item wdt:P1324 ?repo .
+      FILTER(STRSTARTS(STR(?repo), "https://github.com/")) OPTIONAL { ?item wdt:P178 ?dev } }""")
+    repos["item"] = qid(repos["item"]); repos["dev"] = qid(repos["dev"].fillna(""))
+    repos["full_name"] = (repos["repo"].str.replace("https://github.com/", "", regex=False)
+                          .str.replace(r"\.git$", "", regex=True).str.strip("/").str.split("/").str[:2].str.join("/"))
+    repos.to_csv("data/wikidata_repo_links.csv", index=False)
 
 a = pd.read_csv("data/repos_frame_a.csv"); b = pd.read_csv("data/repos_frame_b.csv")
 o = pd.read_csv("data/owners_github.csv")
@@ -46,41 +51,51 @@ logins = set(o.owner.str.lower())
 names = set(pd.concat([a.full_name, b.full_name]).str.lower())
 u = usernames[usernames.gh.str.lower().isin(logins)]
 r = repos[repos.full_name.str.lower().isin(names)]
-ents = sorted(set(u.item) | set(r.item) | set(x for x in r.dev if x))
+ents = sorted(set(u.item) | set(x for x in r.dev if x))  # owners, and developers of linked software
 print("matched usernames", len(u), "repo links", len(r), "entities", len(ents))
 
-rows = []
-for i in range(0, len(ents), 150):
-    vals = " ".join(f"wd:{e}" for e in ents[i:i + 150])
-    q = f"""SELECT ?e ?eLabel
-      (GROUP_CONCAT(DISTINCT ?typeLabel; separator="|") AS ?types)
-      (SAMPLE(?countryLabel) AS ?country) (MIN(?inception) AS ?inception) (MIN(?dissolved) AS ?dissolved)
-      (GROUP_CONCAT(DISTINCT ?exLabel; separator="|") AS ?exchanges) (GROUP_CONCAT(DISTINCT ?ticker; separator="|") AS ?tickers)
-      (GROUP_CONCAT(DISTINCT ?ownerLabel; separator="|") AS ?owned_by) (GROUP_CONCAT(DISTINCT ?parentLabel; separator="|") AS ?parent)
-      (GROUP_CONCAT(DISTINCT ?devLabel; separator="|") AS ?developer)
-      (SAMPLE(?site) AS ?website) (MAX(?emp) AS ?employees)
-    WHERE {{ VALUES ?e {{ {vals} }}
-      OPTIONAL {{ ?e wdt:P31 ?type . }} OPTIONAL {{ ?e wdt:P17 ?country . }}
-      OPTIONAL {{ ?e wdt:P571 ?inception . }} OPTIONAL {{ ?e wdt:P576 ?dissolved . }}
-      OPTIONAL {{ ?e p:P414 ?st . ?st ps:P414 ?ex . OPTIONAL {{ ?st pq:P249 ?ticker . }} }}
-      OPTIONAL {{ ?e wdt:P127 ?owner . }} OPTIONAL {{ ?e wdt:P749 ?parent . }} OPTIONAL {{ ?e wdt:P178 ?dev . }}
-      OPTIONAL {{ ?e wdt:P856 ?site . }} OPTIONAL {{ ?e wdt:P1128 ?emp . }}
-      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en".
-        ?e rdfs:label ?eLabel . ?type rdfs:label ?typeLabel . ?country rdfs:label ?countryLabel .
-        ?ex rdfs:label ?exLabel . ?owner rdfs:label ?ownerLabel . ?parent rdfs:label ?parentLabel .
-        ?dev rdfs:label ?devLabel . }} }}
-    GROUP BY ?e ?eLabel"""
-    d = sparql(q)
-    rows.append(d)
-    time.sleep(1)
-    print("entities", i + len(d), flush=True)
-ent = pd.concat(rows)
-ent["e"] = qid(ent["e"])
+# One small query per property, then aggregate here: a single query with every OPTIONAL multiplies rows and times out.
+PROPS = {"types": "wdt:P31", "country": "wdt:P17", "inception": "wdt:P571", "dissolved": "wdt:P576",
+         "exchanges": "wdt:P414", "owned_by": "wdt:P127", "parent": "wdt:P749", "website": "wdt:P856",
+         "employees": "wdt:P1128", "developer": "wdt:P178"}
+LITERAL = {"inception", "dissolved", "website", "employees"}
+ent = pd.DataFrame({"item": ents})
+for col, prop in PROPS.items():
+    parts = []
+    for i in range(0, len(ents), 200):
+        vals = " ".join(f"wd:{e}" for e in ents[i:i + 200])
+        if col in LITERAL:
+            q = f"SELECT ?e ?v WHERE {{ VALUES ?e {{ {vals} }} ?e {prop} ?v . }}"
+        else:
+            q = f"""SELECT ?e ?v WHERE {{ VALUES ?e {{ {vals} }} ?e {prop} ?x .
+              ?x rdfs:label ?v . FILTER(LANG(?v) = "en") }}"""
+        parts.append(sparql(q)); time.sleep(0.5)
+    d = pd.concat(parts)
+    if len(d):
+        d["e"] = qid(d["e"])
+        ent = ent.merge(d.groupby("e")["v"].apply(lambda s: "|".join(sorted(set(map(str, s))))).rename(col),
+                        left_on="item", right_index=True, how="left")
+    print(col, len(d), flush=True)
+tick = []
+for i in range(0, len(ents), 200):
+    vals = " ".join(f"wd:{e}" for e in ents[i:i + 200])
+    tick.append(sparql(f"SELECT ?e ?t WHERE {{ VALUES ?e {{ {vals} }} ?e p:P414 ?st . ?st pq:P249 ?t . }}"))
+tick = pd.concat(tick)
+if len(tick):
+    tick["e"] = qid(tick["e"])
+    ent = ent.merge(tick.groupby("e")["t"].apply(lambda s: "|".join(sorted(set(s)))).rename("tickers"),
+                    left_on="item", right_index=True, how="left")
+lab = []
+for i in range(0, len(ents), 200):
+    vals = " ".join(f"wd:{e}" for e in ents[i:i + 200])
+    lab.append(sparql(f'SELECT ?e ?l WHERE {{ VALUES ?e {{ {vals} }} ?e rdfs:label ?l . FILTER(LANG(?l) = "en") }}'))
+lab = pd.concat(lab); lab["e"] = qid(lab["e"])
+ent = ent.merge(lab.drop_duplicates("e").rename(columns={"e": "item", "l": "label"}), on="item", how="left")
 
 # latest total revenue (P2139) with its point in time and unit
 rev = []
-for i in range(0, len(ents), 150):
-    vals = " ".join(f"wd:{e}" for e in ents[i:i + 150])
+for i in range(0, len(ents), 200):
+    vals = " ".join(f"wd:{e}" for e in ents[i:i + 200])
     d = sparql(f"""SELECT ?e ?amount ?unitLabel ?when WHERE {{ VALUES ?e {{ {vals} }}
       ?e p:P2139 ?st . ?st psv:P2139 ?v . ?v wikibase:quantityAmount ?amount ; wikibase:quantityUnit ?unit .
       OPTIONAL {{ ?st pq:P585 ?when . }}
@@ -92,6 +107,6 @@ if len(rev):
     rev["e"] = qid(rev["e"])
     rev = rev.sort_values("when").groupby("e").tail(1).rename(
         columns={"amount": "revenue", "unitLabel": "revenue_unit", "when": "revenue_date"})
-    ent = ent.merge(rev, on="e", how="left")
-ent.rename(columns={"e": "item", "eLabel": "label"}).to_csv("data/wikidata_entities.csv", index=False)
+    ent = ent.merge(rev.rename(columns={"e": "item"}), on="item", how="left")
+ent.to_csv("data/wikidata_entities.csv", index=False)
 print("done", len(ent))
