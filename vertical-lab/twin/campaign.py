@@ -282,6 +282,8 @@ class Campaign:
                 + self.fac.res["xrd"].st.rate_usd_h * 0.75
         if k == "pip":
             return 10.0 + fees.get("pip", 0) + fees.get("prep", 0)
+        if k == "blend_ded":
+            return 25.0 + fees.get("utah_mxlab", 0) + 0.3 * 300.0 + 40.0
         if self.key == "flaime_al":
             if k == "powder":
                 n = action.get("runs", 1)
@@ -728,6 +730,45 @@ class Campaign:
 
     def _do_small_ded(self, a, now_h):
         return self._ded(a, now_h, "blown_small", 450.0, [("utah_mxlab", 4.0), ("byu_sem", 2.0)], 0.0)
+
+    BLEND_ITEMS = {"Cu": "cu_shot", "Ni": "al_ni20", "Al": "al_shot", "Fe": "fe_powder", "Mn": "mn_flake",
+                   "Cr": "cr_powder", "Si": "si_lump_cu", "Nb": "nb_powder", "Ti": "ti_sponge"}
+
+    def _do_blend_ded(self, a, now_h):
+        """Copper, round 2: up to 4 blocks deposited from elemental powders blended to the design (300 g; the powder
+        doser weighs the blend) on the MX-Lab: a screen before paying to atomize. No atomizer, no plate or nozzle."""
+        if self.key != "onr_cu":
+            return False
+        did = self.design_id(a["design"])
+        comp = self.designs[did]["composition"]
+        kg = 0.3
+        bill = {}
+        for el, w in comp.items():
+            it = self.BLEND_ITEMS.get(el)
+            if it and w > 0:
+                bill[it] = bill.get(it, 0.0) + kg * w / 100.0
+        bill["ded_substrate"] = 0.25
+        ready = self._materials(bill, now_h)
+        tag = dict(design=did, node="ded_small", blend=True)
+        t_r, usd = self._route([("doser", 0.5), ("utah_mxlab", 3.0), ("byu_sem", 1.0)], ready, "blend_ded", tag=tag)
+        self.charge(now_h, usd + 25.0, "blend_ded")
+        params = a["params"] if isinstance(a["params"], list) else [a["params"]]
+        parts, meas = [], []
+        for p in params[:4]:
+            part = self.truth.blend_deposit(comp, p, self.rng)
+            part["reuse"] = 0.0
+            parts.append(part)
+            cd = part["crack_density"] * math.exp(self.rng.normal(0, 0.25))
+            dens = self._m("density", self._psample(part, did))
+            meas.append(dict(rel_density=float(dens["rel_density"]), crack_density=cd if cd > 0.02 else 0.0,
+                             dilution=part["dilution"] * math.exp(self.rng.normal(0, 0.1)), params=p,
+                             beta_prime=float(np.clip(part["beta_prime"] + self.rng.normal(0, 0.03), 0, 1)),
+                             catchment=part["catchment"] * math.exp(self.rng.normal(0, 0.05)),
+                             grain_um=part["grain_um"] * math.exp(self.rng.normal(0, 0.1))))
+        dep = next(self.ids)
+        self._part_truth[dep] = dict(parts=parts, lot=None, mode="blend")
+        self._emit(t_r, dict(type="deposit", id=dep, lot=None, design=did, mode="blend", measured=meas))
+        return True
 
     def _do_large_ded(self, a, now_h):
         """Blocks for bars and coupons. In the proposals: 2 kg at Mines (an NSL certificate first). In the vertical

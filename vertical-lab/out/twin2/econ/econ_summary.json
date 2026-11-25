@@ -1,0 +1,4446 @@
+{
+ "generated_utc": "2026-11-25 05:45 UTC",
+ "inputs": {
+  "runs": [
+   "out/twin/runs/facility.jsonl",
+   "out/twin/runs/main.jsonl"
+  ],
+  "groups": {
+   "proposed|random|historical|": 30,
+   "proposed|cost_aware|historical|": 30,
+   "vertical_lab|random|historical|": 10,
+   "vertical_lab|cost_aware|historical|": 10,
+   "proposed|tiered|historical|": 20
+  },
+  "events": 14,
+  "validate": "/home/runner/work/byu-vcl/byu-vcl/vertical-lab/out/twin2/econ/validate.json",
+  "utilization_logs": 4
+ },
+ "targets": {
+  "values": {
+   "flaime_al": 0.4232,
+   "onr_cu": 0.5559
+  },
+  "src": "out/twin2/oracle.json sota_utility (flaime_al: AlSi10Mg, onr_cu: C95800 NAB)"
+ },
+ "facilities": {
+  "vertical_lab": {
+   "capex": 5397699.0,
+   "area_m2": 356.1,
+   "annual": {
+    "capex": 599906.9571428571,
+    "service": 358783.97,
+    "utilities": 103204.86480000001,
+    "labour": 122151.375,
+    "consumables": 0.0,
+    "outside_fees": 0.0,
+    "total": 1184047.1669428572
+   },
+   "annual_no_capex": {
+    "capex": 0.0,
+    "service": 358783.97,
+    "utilities": 103204.86480000001,
+    "labour": 122151.375,
+    "consumables": 0.0,
+    "outside_fees": 0.0,
+    "total": 584140.2098
+   },
+   "staff": [
+    {
+     "role": "technician",
+     "fte": 1.0,
+     "why": "one person on the weekday day shift: the atomizer's crucible and upkeep (upkeep.py: 31 h a week of tasks after the ramp, 13 of them the crucible)",
+     "annual": 86454.0
+    },
+    {
+     "role": "research_engineer",
+     "fte": 0.25,
+     "why": "robot programs, recovery and repairs (assumed)",
+     "annual": 35697.375
+    }
+   ],
+   "n_items": 34
+  },
+  "conventional": {
+   "capex": 543000.0,
+   "area_m2": 50.5,
+   "annual": {
+    "capex": 63761.0,
+    "service": 33870.0,
+    "utilities": 15194.0504,
+    "labour": 8645.4,
+    "consumables": 0.0,
+    "outside_fees": 0.0,
+    "total": 121470.4504
+   },
+   "annual_no_capex": {
+    "capex": 0.0,
+    "service": 33870.0,
+    "utilities": 15194.0504,
+    "labour": 8645.4,
+    "consumables": 0.0,
+    "outside_fees": 0.0,
+    "total": 57709.4504
+   },
+   "staff": [
+    {
+     "role": "technician",
+     "fte": 0.1,
+     "why": "upkeep of the lab's own atomizer, glovebox and furnace (assumed)",
+     "annual": 8645.4
+    }
+   ],
+   "n_items": 8
+  }
+ },
+ "rates": {
+  "kwh_usd": {
+   "value": 0.104,
+   "src": "EIA Electric Power Monthly table 5.6.B, Utah commercial, Jan-Sep 2026: 10.40 c/kWh (https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_b)"
+  },
+  "space_om_usd_m2_yr": {
+   "value": 215.0,
+   "src": "assumed $20/ft2/yr: EAB (Gordian 2025 data) puts a research lab's 50-year cost of ownership at $2.3M per 1,000 ft2, $46/ft2/yr, of which the building's own depreciation (below) is about $21 (https://eab.com/wp-content/uploads/2025/09/PDF-EAB-Research-True-Costs-of-Space-IG.pdf)"
+  },
+  "space_capex_usd_m2_yr": {
+   "value": 222.0,
+   "src": "the $200M plan's high-bay building at $700-1,100/ft2 (published comps in facility/costs_and_sizes.md (aa41d0d)), $825/ft2 over BYU's 40-year building life (https://finserve.byu.edu/asset-capitalization-procedures)"
+  }
+ },
+ "people": {
+  "grad_student": {
+   "annual": 40436.0,
+   "hours": 1500.0,
+   "src": "BYU Chemistry PhD stipend 2026-27 $31,500 (https://gradprogram.chem.byu.edu/graduate-program/frequently-asked-questions) plus two semesters of graduate tuition, $4,468 each for Latter-day Saint students (https://catalog.byu.edu/policy/tuition-and-fees); BYU charges no fringe on student wages (Sponsored Programs Handbook); 1,500 research hours a year assumed",
+   "hourly": 26.96
+  },
+  "technician": {
+   "annual": 86454.0,
+   "hours": 1800.0,
+   "src": "BLS OEWS May 2025, engineering technologists (17-3029), Provo-Orem-Lehi, mean $64,040 (series OEUM003934000000017302904), plus 35 % fringe (assumed)",
+   "hourly": 48.03
+  },
+  "research_engineer": {
+   "annual": 142789.5,
+   "hours": 1800.0,
+   "src": "BLS OEWS May 2025, mechanical engineers (17-2141), Provo-Orem-Lehi, mean $105,770 (series OEUM003934000000017214104), plus 35 % fringe (assumed)",
+   "hourly": 79.33
+  },
+  "staff_scientist": {
+   "annual": 135175.5,
+   "hours": 1800.0,
+   "src": "BLS OEWS May 2025, materials engineers (17-2131), Utah, mean $100,130 (series OEUS490000000000017213104), plus 35 % fringe (assumed)",
+   "hourly": 75.1
+  }
+ },
+ "equipment": {
+  "vertical_lab": [
+   {
+    "key": "shuttle",
+    "name": "Kardex Shuttle XP 500, 9.15 m (30 ft), 2450 x 864 mm trays",
+    "qty": 2,
+    "price_each": 210000.0,
+    "kind": "list",
+    "src": "https://www.kardex.com/en-us/blog/how-much-does-a-vertical-lift-module-cost ($6-8k per vertical foot); federal orders for 4.85-5.85 m XP 500s $103-108k (2018-19) in facility/costs_and_sizes.md (aa41d0d)",
+    "life_yr": 15,
+    "service_frac": 0.03,
+    "kw": 6.8,
+    "area_m2": 17.0
+   },
+   {
+    "key": "units",
+    "name": "MiR250 + UR12e + Robotiq 2F-85 mobile manipulator, with cabinet, cameras, Class D unit, integration",
+    "qty": 2,
+    "price_each": 140000.0,
+    "kind": "list",
+    "src": "MiR250 $59-65k (US distributors, 2026), UR12e about $45k (Vention list), 2F-85 $5-6k, plus ours: facility/costs_and_sizes.md (aa41d0d) and the $200M plan's $120-160k",
+    "life_yr": 7,
+    "service_frac": 0.05,
+    "kw": 0.35,
+    "area_m2": 2.4
+   },
+   {
+    "key": "floor_unit",
+    "name": "Third MiR250 unit for the floor, with a Nilfisk CFM 118EXP explosion-proof vacuum (notes/floor_cleaning.md)",
+    "qty": 1,
+    "price_each": 155000.0,
+    "kind": "estimate",
+    "src": "estimate: a unit as above plus an explosion-proof vacuum and hose reel",
+    "life_yr": 7,
+    "service_frac": 0.05,
+    "kw": 0.6,
+    "area_m2": 1.2
+   },
+   {
+    "key": "glovebox",
+    "name": "Inert PureLab HE glovebox with purifier, O2 and dew-point sensors",
+    "qty": 1,
+    "price_each": 55000.0,
+    "kind": "procurement",
+    "src": "National Archives, Inert PureLab HE 1250 with extension, stand, installation and training, $54,848 (2023) https://www.usaspending.gov/award/CONT_AWD_88310323P00054_8800_-NONE-_-NONE-",
+    "life_yr": 10,
+    "service_frac": 0.04,
+    "kw": 1.2,
+    "area_m2": 2.0
+   },
+   {
+    "key": "hoods",
+    "name": "Ducted 6 ft fume hoods, installed",
+    "qty": 2,
+    "price_each": 35000.0,
+    "kind": "estimate",
+    "src": "estimate: $8-57k for a 6 ft hood before installation (https://www.onepointesolutions.com/blog/how-much-does-a-fume-hood-cost/)",
+    "life_yr": 20,
+    "service_frac": 0.02,
+    "kw": 0.3,
+    "area_m2": 3.0
+   },
+   {
+    "key": "ups",
+    "name": "UPSs on the powered trays (six PSI5-800, five GXT5LI-1500, one GXT5LI-3000; notes/ups.md)",
+    "qty": 1,
+    "price_each": 22000.0,
+    "kind": "estimate",
+    "src": "GXT5LI-1500 $2,707 at CDW (notes/ups.md); the rest estimated",
+    "life_yr": 8,
+    "service_frac": 0.02,
+    "kw": 0.25,
+    "area_m2": 0.0
+   },
+   {
+    "key": "couplings",
+    "name": "CombiTac docks and tray plates on 12 powered trays and 2 bays (notes/coupling.md)",
+    "qty": 14,
+    "price_each": 4000.0,
+    "kind": "estimate",
+    "src": "estimate",
+    "life_yr": 10,
+    "service_frac": 0.02,
+    "kw": 0.0,
+    "area_m2": 0.0
+   },
+   {
+    "key": "cameras",
+    "name": "Tray, bay and security cameras with their Pi 5s and switches (notes/security_cameras.md, notes/base_cameras.md)",
+    "qty": 1,
+    "price_each": 18900.0,
+    "kind": "list",
+    "src": "notes/security_cameras.md ($17,300 NDAA-compliant) + notes/base_cameras.md (two bases, $1,600)",
+    "life_yr": 5,
+    "service_frac": 0.0,
+    "kw": 0.6,
+    "area_m2": 0.0
+   },
+   {
+    "key": "services",
+    "name": "Fit-out: argon and N2 lines, a Parker Balston N2 generator, chillers, power distribution, dust collection and explosion protection, network and data store",
+    "qty": 1,
+    "price_each": 450000.0,
+    "kind": "estimate",
+    "src": "estimate (the $200M plan prices the same services at $8-14M for 34 Shuttles, facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 20,
+    "service_frac": 0.02,
+    "kw": 4.0,
+    "area_m2": 0.0
+   },
+   {
+    "key": "repowder",
+    "name": "AMAZEMET rePowder ultrasonic atomizer, with its optimizer and chiller",
+    "qty": 1,
+    "price_each": 350000.0,
+    "kind": "procurement",
+    "src": "NASA MSFC $286,720 (2023) https://www.usaspending.gov/award/CONT_AWD_80MSFC24PA004_8000_-NONE-_-NONE- ; NIST $321,595 (2024); Hochschule Aalen EUR 407,700 (2025) (facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 10.0,
+    "service_frac": 0.08,
+    "kw": 12.0,
+    "area_m2": 2.5
+   },
+   {
+    "key": "midi",
+    "name": "Aconity3D AconityMIDI+ laser powder-bed fusion",
+    "qty": 1,
+    "price_each": 700000.0,
+    "kind": "procurement",
+    "src": "EU awards EUR 350-456k (2019-22), Forschungszentrum Juelich EUR 675,390 (2026) https://ted.europa.eu/en/notice/-/detail/689139-2026 (facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 10.0,
+    "area_m2": 3.0
+   },
+   {
+    "key": "mxlab",
+    "name": "InssTek MX-Lab blown-powder DED",
+    "qty": 1,
+    "price_each": 300000.0,
+    "kind": "procurement",
+    "src": "InssTek awards: CNRS EUR 200,000 (2024) https://ted.europa.eu/en/notice/-/detail/137843-2024 , Wuppertal 'Mini-DED' EUR 241,550 (2025) https://ted.europa.eu/en/notice/-/detail/76406-2025 , Chalmers SEK 3.6M (2024) https://ted.europa.eu/en/notice/-/detail/564443-2024 ; plus shipping and installation (estimate)",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 4.4,
+    "area_m2": 2.5
+   },
+   {
+    "key": "edm",
+    "name": "FANUC ROBOCUT wire EDM",
+    "qty": 1,
+    "price_each": 230000.0,
+    "kind": "procurement",
+    "src": "NASA FANUC C600iC-ADV $220,362 (2026) https://www.usaspending.gov/award/CONT_AWD_80NSSC27P0128_8000_-NONE-_-NONE- ; $200-302k awards 2020-26 (facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 10.0,
+    "service_frac": 0.05,
+    "kw": 7.5,
+    "area_m2": 5.0
+   },
+   {
+    "key": "instron",
+    "name": "Instron 68FM-100 floor frame with grips and extensometer",
+    "qty": 1,
+    "price_each": 175000.0,
+    "kind": "procurement",
+    "src": "USAF $145,607 (2022), NASA $161,830 (2023), Navy $207,865 (2024) https://www.usaspending.gov/award/CONT_AWD_80NSSC23PA554_8000_-NONE-_-NONE- (facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 10.0,
+    "service_frac": 0.06,
+    "kw": 3.0,
+    "area_m2": 1.5
+   },
+   {
+    "key": "chamber",
+    "name": "Instron 3119-608 environmental chamber (to 600 C)",
+    "qty": 1,
+    "price_each": 50000.0,
+    "kind": "estimate",
+    "src": "estimate: $40-60k in the $200M plan",
+    "life_yr": 10.0,
+    "service_frac": 0.05,
+    "kw": 3.0,
+    "area_m2": 0.0
+   },
+   {
+    "key": "zwick",
+    "name": "ZwickRoell zwickiLine Z5.0 TN with testControl II",
+    "qty": 1,
+    "price_each": 35000.0,
+    "kind": "assumed",
+    "src": "assumed: no public price or award found (quote only)",
+    "life_yr": 10.0,
+    "service_frac": 0.05,
+    "kw": 0.5,
+    "area_m2": 0.0
+   },
+   {
+    "key": "machining",
+    "name": "Machining cell (PR 373): lathe, pedestal UR10e, wash and accumulator (notes/machining.md)",
+    "qty": 1,
+    "price_each": 275000.0,
+    "kind": "estimate",
+    "src": "notes/machining.md: capital about $230-320k",
+    "life_yr": 10.0,
+    "service_frac": 0.05,
+    "kw": 5.0,
+    "area_m2": 6.0
+   },
+   {
+    "key": "icpms",
+    "name": "Agilent 7850 ICP-MS with SPS 4, chiller, trace-metals hood, hot block and dilutor (notes/icpms.md)",
+    "qty": 1,
+    "price_each": 260000.0,
+    "kind": "list",
+    "src": "7850 $160-220k (LabX 2026 buyer's guide, notes/icpms.md); SPS 4 $12,305 list (Agilent quote in a 2017 West Virginia bid file); hood, dilutor and hot block estimated at $50k",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 4.5,
+    "area_m2": 3.0
+   },
+   {
+    "key": "sieve_cell",
+    "name": "Sieve cell: Retsch AS 200, tipper, wash module, downdraft enclosure",
+    "qty": 1,
+    "price_each": 60000.0,
+    "kind": "estimate",
+    "src": "AS 200 about $6.7k each with sieves (USAF, three for $19,968, 2022) https://www.usaspending.gov/award/CONT_AWD_FA860122P0079_9700_-NONE-_-NONE- ; the rest estimated ($40-80k in the $200M plan)",
+    "life_yr": 10.0,
+    "service_frac": 0.04,
+    "kw": 1.0,
+    "area_m2": 2.0
+   },
+   {
+    "key": "furnaces",
+    "name": "Nabertherm NAT 15/65 forced-convection furnaces (tray F)",
+    "qty": 2,
+    "price_each": 20000.0,
+    "kind": "estimate",
+    "src": "estimate; a Carbolite chamber furnace cost NASA $23,521 (2022) https://www.usaspending.gov/award/CONT_AWD_80NSSC22PB945_8000_-NONE-_-NONE-",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 2.8,
+    "area_m2": 0.0
+   },
+   {
+    "key": "sem",
+    "name": "Hitachi TM4000PlusII benchtop SEM",
+    "qty": 1,
+    "price_each": 100000.0,
+    "kind": "procurement",
+    "src": "USDA-ARS $98,900 with set-up and training (2021) https://www.usaspending.gov/award/CONT_AWD_12905B21P0255_12H2_-NONE-_-NONE- (facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 0.7,
+    "area_m2": 0.0
+   },
+   {
+    "key": "eds",
+    "name": "Oxford Instruments AZtecOne EDS for the TM4000",
+    "qty": 1,
+    "price_each": 55000.0,
+    "kind": "procurement",
+    "src": "Oxford EDS detector: USGS $49,995 (2025) https://www.usaspending.gov/award/CONT_AWD_140G0325P0065_1434_-NONE-_-NONE- ; USAF $57,990 (2021)",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 0.4,
+    "area_m2": 0.0
+   },
+   {
+    "key": "ebsd",
+    "name": "EBSD detector on the SEM (assumed in the lab's plan)",
+    "qty": 1,
+    "price_each": 120000.0,
+    "kind": "procurement",
+    "src": "Oxford Symmetry S2: Army $87,430 (2021) https://www.usaspending.gov/award/CONT_AWD_W31P4Q21P0012_9700_-NONE-_-NONE- ; an Oxford EBSD added to AZtec $156,400 (2021)",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 0.2,
+    "area_m2": 0.0
+   },
+   {
+    "key": "xrd",
+    "name": "Rigaku MiniFlex 600-C benchtop XRD with prep station",
+    "qty": 1,
+    "price_each": 105000.0,
+    "kind": "procurement",
+    "src": "NASA $99,465 (2023), USDA-ARS $99,444 (2024), EPA $119,968 (2020) https://www.usaspending.gov/award/CONT_AWD_80NSSC23PB731_8000_-NONE-_-NONE- (facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 1.8,
+    "area_m2": 0.0
+   },
+   {
+    "key": "xrf",
+    "name": "Bruker S2 PUMA Series 2 EDXRF with XY autochanger",
+    "qty": 1,
+    "price_each": 120000.0,
+    "kind": "procurement",
+    "src": "Univ. Copenhagen S2 PUMA EUR 115,000 (2019) https://ted.europa.eu/en/notice/-/detail/308367-2019 ; benchtop EDXRF: Rigaku NEX CG $93,565 (2020), Malvern Epsilon 4 $144,163 (2022)",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 0.9,
+    "area_m2": 0.0
+   },
+   {
+    "key": "mastersizer",
+    "name": "Malvern Mastersizer 3000 with Aero S",
+    "qty": 1,
+    "price_each": 110000.0,
+    "kind": "procurement",
+    "src": "Mastersizer 3000 awards $68-140k (2021-26), e.g. DLA $107,798 (2023) https://www.usaspending.gov/award/CONT_AWD_SPE8EL23F16XT_9700_SPE8EJ21D0020_9700 ; none names the Aero S",
+    "life_yr": 10.0,
+    "service_frac": 0.08,
+    "kw": 1.55,
+    "area_m2": 0.0
+   },
+   {
+    "key": "hardness",
+    "name": "Mitutoyo HM-220 micro-Vickers with AVPAK",
+    "qty": 1,
+    "price_each": 70000.0,
+    "kind": "list",
+    "src": "HM-220 Type B $58,385 list, PC not included (https://penntoolco.com/mitutoyo-pc-driven-micro-vickers-hardness-tester-hm-220-type-b-64aab325p); Type D's automation and the PC estimated",
+    "life_yr": 10.0,
+    "service_frac": 0.05,
+    "kw": 0.24,
+    "area_m2": 0.0
+   },
+   {
+    "key": "nanoindenter",
+    "name": "KLA iMicro nanoindenter",
+    "qty": 1,
+    "price_each": 250000.0,
+    "kind": "procurement",
+    "src": "Navy, iMicro with iQwave2, $248,751 (2025) https://www.usaspending.gov/award/CONT_AWD_N0017325P0430_9700_-NONE-_-NONE-",
+    "life_yr": 10.0,
+    "service_frac": 0.1,
+    "kw": 0.3,
+    "area_m2": 0.0
+   },
+   {
+    "key": "pip",
+    "name": "Plastometrex PLX-Benchtop (indentation plastometry)",
+    "qty": 1,
+    "price_each": 130000.0,
+    "kind": "procurement",
+    "src": "NASA $127,500 (2025) https://www.usaspending.gov/award/CONT_AWD_80NSSC25PB546_8000_-NONE-_-NONE- ; Navy $160,187 (2025)",
+    "life_yr": 10.0,
+    "service_frac": 0.08,
+    "kw": 0.2,
+    "area_m2": 0.0
+   },
+   {
+    "key": "vhx",
+    "name": "Keyence VHX-7000 with VHX-S750E stand and EA-300 LIBS head",
+    "qty": 1,
+    "price_each": 190000.0,
+    "kind": "procurement",
+    "src": "VHX-7000 $67-118k (federal awards 2020-23, e.g. USDA $118,385 https://www.usaspending.gov/award/CONT_AWD_12405B23F0240_12H2_GS07F5934R_4730 ); an EA-300-class LIBS head added to a VHX-7000 at Warsaw, PLN 385,012 (about $95k, 2025) https://ted.europa.eu/en/notice/-/detail/68926-2025",
+    "life_yr": 10.0,
+    "service_frac": 0.05,
+    "kw": 0.56,
+    "area_m2": 0.0
+   },
+   {
+    "key": "polish",
+    "name": "LECO PX500 grinder/polisher, MX400 mounting press, sectioning saw",
+    "qty": 1,
+    "price_each": 55000.0,
+    "kind": "procurement",
+    "src": "PX500A2 $22,904 (Navy 2021) https://www.usaspending.gov/award/CONT_AWD_N0016421PJ124_9700_-NONE-_-NONE- ; a mounting press $15.9-22.6k (Buehler SimpliMet 4000, DLA 2024; Struers, Army 2025); the saw estimated",
+    "life_yr": 10.0,
+    "service_frac": 0.05,
+    "kw": 1.9,
+    "area_m2": 0.0
+   },
+   {
+    "key": "carvera",
+    "name": "Makera Carvera desktop CNC (tray M)",
+    "qty": 1,
+    "price_each": 5799.0,
+    "kind": "list",
+    "src": "list $5,799 (https://www.makera.com/products/carvera.json)",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 0.4,
+    "area_m2": 0.0
+   },
+   {
+    "key": "cubxl",
+    "name": "CubXL gantry, NuVant EZstat Pro potentiostat, Opentrons OT-2 with P20 and P300, vials",
+    "qty": 1,
+    "price_each": 35000.0,
+    "kind": "estimate",
+    "src": "estimate: OT-2 GEN2 P300 $2,950 (opentrons.com, notes/cubxl_pipettes.md); a Gamry Interface 1010E cost the Navy $29,505 (2021); the EZstat Pro is quote only",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 0.6,
+    "area_m2": 0.0
+   },
+   {
+    "key": "doser",
+    "name": "Multi-doser carousel, A&D HR-202i balance, Specac Atlas Autotouch 15T with vacuum dies and an Edwards RV3 pump",
+    "qty": 1,
+    "price_each": 50000.0,
+    "kind": "estimate",
+    "src": "notes/multidoser.md (BoM $2,362); the Autotouch about EUR 37,660 at VWR (search snippet); pump and balance estimated",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 1.0,
+    "area_m2": 0.0
+   }
+  ],
+  "conventional": [
+   {
+    "key": "repowder",
+    "name": "AMAZEMET rePowder ultrasonic atomizer, with its optimizer and chiller (the lab's own)",
+    "qty": 1,
+    "price_each": 350000.0,
+    "kind": "procurement",
+    "src": "NASA MSFC $286,720 (2023) https://www.usaspending.gov/award/CONT_AWD_80MSFC24PA004_8000_-NONE-_-NONE- ; NIST $321,595 (2024); Hochschule Aalen EUR 407,700 (2025) (facility/costs_and_sizes.md (aa41d0d))",
+    "life_yr": 10.0,
+    "service_frac": 0.08,
+    "kw": 12.0,
+    "area_m2": 2.5
+   },
+   {
+    "key": "sieve",
+    "name": "Retsch AS 200 sieve shaker and a set of sieves",
+    "qty": 1,
+    "price_each": 8000.0,
+    "kind": "procurement",
+    "src": "USAF, three AS 200 with sieves for $19,968 (2022) https://www.usaspending.gov/award/CONT_AWD_FA860122P0079_9700_-NONE-_-NONE-",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 0.1,
+    "area_m2": 0.5
+   },
+   {
+    "key": "doser",
+    "name": "Powder doser, balance and a manual hydraulic press with vacuum die",
+    "qty": 1,
+    "price_each": 18000.0,
+    "kind": "estimate",
+    "src": "estimate",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 0.5,
+    "area_m2": 1.0
+   },
+   {
+    "key": "furnace",
+    "name": "Box furnace (about 1,200 C) and a forced-convection ageing oven",
+    "qty": 1,
+    "price_each": 30000.0,
+    "kind": "estimate",
+    "src": "estimate; a Carbolite chamber furnace cost NASA $23,521 (2022)",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 3.0,
+    "area_m2": 1.0
+   },
+   {
+    "key": "cubxl",
+    "name": "CubXL gantry, EZstat Pro potentiostat, OT-2 and immersion vials (DAL's own)",
+    "qty": 1,
+    "price_each": 35000.0,
+    "kind": "estimate",
+    "src": "estimate (as the vertical lab's)",
+    "life_yr": 10.0,
+    "service_frac": 0.03,
+    "kw": 0.6,
+    "area_m2": 1.5
+   },
+   {
+    "key": "density",
+    "name": "Density balance kit and a stereo microscope",
+    "qty": 1,
+    "price_each": 12000.0,
+    "kind": "estimate",
+    "src": "estimate",
+    "life_yr": 10.0,
+    "service_frac": 0.02,
+    "kw": 0.1,
+    "area_m2": 0.5
+   },
+   {
+    "key": "glovebox",
+    "name": "Glovebox with purifier",
+    "qty": 1,
+    "price_each": 55000.0,
+    "kind": "procurement",
+    "src": "as the vertical lab's (Inert PureLab HE, $54,848)",
+    "life_yr": 10,
+    "service_frac": 0.04,
+    "kw": 1.2,
+    "area_m2": 2.0
+   },
+   {
+    "key": "hood",
+    "name": "Ducted fume hood",
+    "qty": 1,
+    "price_each": 35000.0,
+    "kind": "estimate",
+    "src": "estimate",
+    "life_yr": 20,
+    "service_frac": 0.02,
+    "kw": 0.3,
+    "area_m2": 1.5
+   }
+  ]
+ },
+ "cost_per_experiment": {
+  "unit": "demonstrated alloy",
+  "conventional": "proposed|cost_aware|historical|",
+  "vertical": "vertical_lab|cost_aware|historical|",
+  "cases": {
+   "both": {
+    "conventional, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 1089.0675241157555,
+      "utilities": 488.5546752411575,
+      "labour": 2786.7794839128264,
+      "consumables": 3302.8021329046096,
+      "outside_fees": 1940.9731296891755
+     },
+     "n": 933,
+     "runs": 30,
+     "per_total": 9608.176945863524
+    },
+    "conventional, with capex": {
+     "per": {
+      "capex": 2050.192926045016,
+      "service": 1089.0675241157555,
+      "utilities": 488.5546752411575,
+      "labour": 2786.7794839128264,
+      "consumables": 3302.8021329046096,
+      "outside_fees": 1940.9731296891755
+     },
+     "n": 933,
+     "runs": 30,
+     "per_total": 11658.36987190854
+    },
+    "vertical lab, campaigns only, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 8286.003926096999,
+      "utilities": 2383.4841755196308,
+      "labour": 2828.020719014626,
+      "consumables": 3204.8860046189375,
+      "outside_fees": 105.31030023094688
+     },
+     "n": 433,
+     "runs": 10,
+     "per_total": 16807.70512548114
+    },
+    "vertical lab, campaigns only, with capex": {
+     "per": {
+      "capex": 13854.66413724843,
+      "service": 8286.003926096999,
+      "utilities": 2383.4841755196308,
+      "labour": 2828.020719014626,
+      "consumables": 3204.8860046189375,
+      "outside_fees": 105.31030023094688
+     },
+     "n": 433,
+     "runs": 10,
+     "per_total": 30662.369262729568
+    },
+    "vertical lab, 60% utilized, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 783.9583744003039,
+      "utilities": 241.25344323483162,
+      "labour": 274.82507748908614,
+      "consumables": 3204.8860046189375,
+      "outside_fees": 105.31030023094688
+     },
+     "n": 433,
+     "runs": 10,
+     "per_total": 4610.233199974105
+    },
+    "vertical lab, 60% utilized, with capex": {
+     "per": {
+      "capex": 1303.3023635918921,
+      "service": 783.9583744003039,
+      "utilities": 241.25344323483162,
+      "labour": 274.82507748908614,
+      "consumables": 3204.8860046189375,
+      "outside_fees": 105.31030023094688
+     },
+     "n": 433,
+     "runs": 10,
+     "per_total": 5913.535563565998
+    }
+   },
+   "flaime_al": {
+    "conventional, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 1053.5001564528243,
+      "utilities": 457.9824986329168,
+      "labour": 2712.137424499383,
+      "consumables": 2071.8317469879516,
+      "outside_fees": 1798.947951807229
+     },
+     "n": 830,
+     "runs": 30,
+     "per_total": 8094.399778380305
+    },
+    "conventional, with capex": {
+     "per": {
+      "capex": 1913.0623587892096,
+      "service": 1053.5001564528243,
+      "utilities": 457.9824986329168,
+      "labour": 2712.137424499383,
+      "consumables": 2071.8317469879516,
+      "outside_fees": 1798.947951807229
+     },
+     "n": 830,
+     "runs": 30,
+     "per_total": 10007.462137169514
+    },
+    "vertical lab, campaigns only, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 6475.7735152987925,
+      "utilities": 1938.5759671540509,
+      "labour": 2259.8533736274026,
+      "consumables": 2161.3681329923274,
+      "outside_fees": 3.649616368286445
+     },
+     "n": 391,
+     "runs": 10,
+     "per_total": 12839.22060544086
+    },
+    "vertical lab, campaigns only, with capex": {
+     "per": {
+      "capex": 11231.182856931859,
+      "service": 6475.7735152987925,
+      "utilities": 1938.5759671540509,
+      "labour": 2259.8533736274026,
+      "consumables": 2161.3681329923274,
+      "outside_fees": 3.649616368286445
+     },
+     "n": 391,
+     "runs": 10,
+     "per_total": 24070.40346237272
+    },
+    "vertical lab, 60% utilized, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 770.8164949208457,
+      "utilities": 237.67951089323947,
+      "labour": 263.57851314073497,
+      "consumables": 2161.3681329923274,
+      "outside_fees": 3.649616368286445
+     },
+     "n": 391,
+     "runs": 10,
+     "per_total": 3437.092268315434
+    },
+    "vertical lab, 60% utilized, with capex": {
+     "per": {
+      "capex": 1282.865134825564,
+      "service": 770.8164949208457,
+      "utilities": 237.67951089323947,
+      "labour": 263.57851314073497,
+      "consumables": 2161.3681329923274,
+      "outside_fees": 3.649616368286445
+     },
+     "n": 391,
+     "runs": 10,
+     "per_total": 4719.9574031409975
+    }
+   },
+   "onr_cu": {
+    "conventional, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 1375.6783509141346,
+      "utilities": 734.9129915988254,
+      "labour": 3388.264040351249,
+      "consumables": 13222.27223300971,
+      "outside_fees": 3085.44786407767
+     },
+     "n": 103,
+     "runs": 30,
+     "per_total": 21806.57547995159
+    },
+    "conventional, with capex": {
+     "per": {
+      "capex": 3155.225652475302,
+      "service": 1375.6783509141346,
+      "utilities": 734.9129915988254,
+      "labour": 3388.264040351249,
+      "consumables": 13222.27223300971,
+      "outside_fees": 3085.44786407767
+     },
+     "n": 103,
+     "runs": 30,
+     "per_total": 24961.801132426892
+    },
+    "vertical lab, campaigns only, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 25138.387036146956,
+      "utilities": 6525.367734351574,
+      "labour": 8117.388148690926,
+      "consumables": 12919.540476190476,
+      "outside_fees": 1051.7228571428573
+     },
+     "n": 42,
+     "runs": 10,
+     "per_total": 53752.406252522786
+    },
+    "vertical lab, campaigns only, with capex": {
+     "per": {
+      "capex": 38278.02558019558,
+      "service": 25138.387036146956,
+      "utilities": 6525.367734351574,
+      "labour": 8117.388148690926,
+      "consumables": 12919.540476190476,
+      "outside_fees": 1051.7228571428573
+     },
+     "n": 42,
+     "runs": 10,
+     "per_total": 92030.43183271836
+    },
+    "vertical lab, 60% utilized, no capex": {
+     "per": {
+      "capex": 0.0,
+      "service": 906.3030143162124,
+      "utilities": 274.525051462511,
+      "labour": 379.5252360654029,
+      "consumables": 12919.540476190476,
+      "outside_fees": 1051.7228571428573
+     },
+     "n": 42,
+     "runs": 10,
+     "per_total": 15531.61663517746
+    },
+    "vertical lab, 60% utilized, with capex": {
+     "per": {
+      "capex": 1493.5632313927078,
+      "service": 906.3030143162124,
+      "utilities": 274.525051462511,
+      "labour": 379.5252360654029,
+      "consumables": 12919.540476190476,
+      "outside_fees": 1051.7228571428573
+     },
+     "n": 42,
+     "runs": 10,
+     "per_total": 17025.179866570168
+    }
+   }
+  }
+ },
+ "utilization": {
+  "n_logs": 4,
+  "stations": {
+   "atomizer": {
+    "util": 0.3727,
+    "hours": "day6",
+    "units": 1,
+    "available_h": 2086,
+    "busy_h": 777.4,
+    "by_campaign": {
+     "flaime_al": 551.7,
+     "onr_cu": 225.7
+    },
+    "idle_h": 1308
+   },
+   "byu_icpms": {
+    "util": 0.0024,
+    "hours": "day",
+    "units": 1,
+    "available_h": 2346,
+    "busy_h": 5.7,
+    "by_campaign": {
+     "onr_cu": 5.7
+    },
+    "idle_h": 2341
+   },
+   "byu_sem": {
+    "util": 0.0188,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 164.5,
+    "by_campaign": {
+     "flaime_al": 96.6,
+     "onr_cu": 67.9
+    },
+    "idle_h": 8596
+   },
+   "cubxl": {
+    "util": 0.0016,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 14.4,
+    "by_campaign": {
+     "onr_cu": 14.4
+    },
+    "idle_h": 8746
+   },
+   "density": {
+    "util": 0.0023,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 20.1,
+    "by_campaign": {
+     "flaime_al": 20.1
+    },
+    "idle_h": 8740
+   },
+   "doser": {
+    "util": 0.0331,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 289.8,
+    "by_campaign": {
+     "flaime_al": 228.0,
+     "onr_cu": 61.8
+    },
+    "idle_h": 8470
+   },
+   "edm": {
+    "util": 0.0021,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 18.6,
+    "by_campaign": {
+     "flaime_al": 18.6
+    },
+    "idle_h": 8741
+   },
+   "furnace": {
+    "util": 0.0042,
+    "hours": "24/7",
+    "units": 2,
+    "available_h": 17520,
+    "busy_h": 74.2,
+    "by_campaign": {
+     "flaime_al": 74.2
+    },
+    "idle_h": 17446
+   },
+   "hardness": {
+    "util": 0.0,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 0.0,
+    "by_campaign": {},
+    "idle_h": 8760
+   },
+   "immersion": {
+    "util": 0.0386,
+    "hours": "24/7",
+    "units": 24,
+    "available_h": 210240,
+    "busy_h": 8110.7,
+    "by_campaign": {
+     "onr_cu": 8110.7
+    },
+    "idle_h": 202129
+   },
+   "nanoindent": {
+    "util": 0.0,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 0.0,
+    "by_campaign": {},
+    "idle_h": 8760
+   },
+   "pip": {
+    "util": 0.0,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 0.0,
+    "by_campaign": {},
+    "idle_h": 8760
+   },
+   "prep": {
+    "util": 0.0,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 0.0,
+    "by_campaign": {},
+    "idle_h": 8760
+   },
+   "psd": {
+    "util": 0.0038,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 33.2,
+    "by_campaign": {
+     "flaime_al": 28.2,
+     "onr_cu": 5.1
+    },
+    "idle_h": 8727
+   },
+   "shop": {
+    "util": 0.0274,
+    "hours": "24/7",
+    "units": 2,
+    "available_h": 17520,
+    "busy_h": 480.4,
+    "by_campaign": {
+     "flaime_al": 381.9,
+     "onr_cu": 98.5
+    },
+    "idle_h": 17040
+   },
+   "sieve": {
+    "util": 0.0114,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 99.8,
+    "by_campaign": {
+     "flaime_al": 84.6,
+     "onr_cu": 15.2
+    },
+    "idle_h": 8660
+   },
+   "tensile": {
+    "util": 0.0013,
+    "hours": "24/7",
+    "units": 2,
+    "available_h": 17520,
+    "busy_h": 22.0,
+    "by_campaign": {
+     "flaime_al": 14.8,
+     "onr_cu": 7.2
+    },
+    "idle_h": 17498
+   },
+   "tensile_hot": {
+    "util": 0.0,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 0.0,
+    "by_campaign": {},
+    "idle_h": 8760
+   },
+   "utah_midi": {
+    "util": 0.023,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 201.2,
+    "by_campaign": {
+     "flaime_al": 201.2
+    },
+    "idle_h": 8559
+   },
+   "utah_mxlab": {
+    "util": 0.0188,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 165.0,
+    "by_campaign": {
+     "onr_cu": 165.0
+    },
+    "idle_h": 8595
+   },
+   "xrd": {
+    "util": 0.0,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 0.0,
+    "by_campaign": {},
+    "idle_h": 8760
+   },
+   "xrf": {
+    "util": 0.0,
+    "hours": "24/7",
+    "units": 1,
+    "available_h": 8760,
+    "busy_h": 0.0,
+    "by_campaign": {},
+    "idle_h": 8760
+   }
+  },
+  "capex_weighted_mean": 0.04396194186236138
+ },
+ "outside_work": {
+  "demand_sensitivity": [
+   {
+    "h_week": 5.0,
+    "jobs": 6759.368987493987,
+    "revenue": 789865.9448124098,
+    "net": 628029.7481373557,
+    "net_share_of_depreciation": 1.046878587853752,
+    "net_share_of_fixed": 0.530409400631305
+   },
+   {
+    "h_week": 10.0,
+    "jobs": 13518.737974987975,
+    "revenue": 1579731.8896248196,
+    "net": 1256059.4962747113,
+    "net_share_of_depreciation": 2.093757175707504,
+    "net_share_of_fixed": 1.06081880126261
+   },
+   {
+    "h_week": 20.0,
+    "jobs": 26983.20878160173,
+    "revenue": 3078063.0266883103,
+    "net": 2442116.380365494,
+    "net_share_of_depreciation": 4.070825235960629,
+    "net_share_of_fixed": 2.062516129886025
+   },
+   {
+    "h_week": 40.0,
+    "jobs": 47044.66116255411,
+    "revenue": 5411647.166688311,
+    "net": 4301454.216901208,
+    "net_share_of_depreciation": 7.170202255008844,
+    "net_share_of_fixed": 3.6328402592333546
+   }
+  ],
+  "cap": 0.6,
+  "demand_h_week": 20.0,
+  "demand_src": "assumed: 20 h a week of outside bookings per instrument, a busy core-facility instrument",
+  "handling": "assumed: reception, mounting, data and invoicing, a technician's quarter hour a job",
+  "robots": {
+   "scale": 1.0,
+   "need_h": 14362.602545194806,
+   "available_h": 15570.7125,
+   "campaign_h": 197.2875,
+   "limited": false
+  },
+  "capacity": {
+   "stations": {
+    "atomizer": {
+     "jobs_per_yr": 86,
+     "ext_h": 474,
+     "revenue_per_yr": 129277,
+     "net_per_yr": 111175,
+     "util_after": 0.6,
+     "jobs": [
+      "Ultrasonic atomization of a user's feedstock (a run and a full clean)"
+     ]
+    },
+    "byu_icpms": {
+     "jobs_per_yr": 14022,
+     "ext_h": 1402,
+     "revenue_per_yr": 1261941,
+     "net_per_yr": 967383,
+     "util_after": 0.6,
+     "jobs": [
+      "ICP-MS sample"
+     ]
+    },
+    "byu_sem": {
+     "jobs_per_yr": 3394,
+     "ext_h": 5092,
+     "revenue_per_yr": 426413,
+     "net_per_yr": 343014,
+     "util_after": 0.6,
+     "jobs": [
+      "SEM/EDS session",
+      "EBSD map"
+     ]
+    },
+    "cubxl": {
+     "jobs_per_yr": 4368,
+     "ext_h": 5242,
+     "revenue_per_yr": 262080,
+     "net_per_yr": 183423,
+     "util_after": 0.6,
+     "jobs": [
+      "Corrosion screen (OCP, LPR, EIS, CP)"
+     ]
+    },
+    "edm": {
+     "jobs_per_yr": 5237,
+     "ext_h": 5237,
+     "revenue_per_yr": 785616,
+     "net_per_yr": 644166,
+     "util_after": 0.6,
+     "jobs": [
+      "Wire-EDM cutting (a plate of specimens)"
+     ]
+    },
+    "furnace": {
+     "jobs_per_yr": 2609,
+     "ext_h": 10438,
+     "revenue_per_yr": 76191,
+     "net_per_yr": 37239,
+     "util_after": 0.6,
+     "jobs": [
+      "Heat treatment (a furnace run)"
+     ]
+    },
+    "hardness": {
+     "jobs_per_yr": 10512,
+     "ext_h": 5256,
+     "revenue_per_yr": 149339,
+     "net_per_yr": 8182,
+     "util_after": 0.6,
+     "jobs": [
+      "Micro-Vickers hardness map"
+     ]
+    },
+    "nanoindent": {
+     "jobs_per_yr": 5256,
+     "ext_h": 5256,
+     "revenue_per_yr": 404712,
+     "net_per_yr": 301129,
+     "util_after": 0.6,
+     "jobs": [
+      "Nanoindentation map"
+     ]
+    },
+    "pip": {
+     "jobs_per_yr": 10512,
+     "ext_h": 5256,
+     "revenue_per_yr": 2628000,
+     "net_per_yr": 2238977,
+     "util_after": 0.6,
+     "jobs": [
+      "PIP test (stress-strain curve by indentation)"
+     ]
+    },
+    "psd": {
+     "jobs_per_yr": 10446,
+     "ext_h": 5223,
+     "revenue_per_yr": 255915,
+     "net_per_yr": 104899,
+     "util_after": 0.6,
+     "jobs": [
+      "Laser-diffraction PSD (dry)"
+     ]
+    },
+    "tensile": {
+     "jobs_per_yr": 17483,
+     "ext_h": 10490,
+     "revenue_per_yr": 3356784,
+     "net_per_yr": 2811175,
+     "util_after": 0.6,
+     "jobs": [
+      "Tensile test, 3 sub-size bars"
+     ]
+    },
+    "tensile_hot": {
+     "jobs_per_yr": 3504,
+     "ext_h": 5256,
+     "revenue_per_yr": 1345536,
+     "net_per_yr": 1168908,
+     "util_after": 0.6,
+     "jobs": [
+      "Elevated-temperature tensile test"
+     ]
+    },
+    "utah_midi": {
+     "jobs_per_yr": 632,
+     "ext_h": 5055,
+     "revenue_per_yr": 758212,
+     "net_per_yr": 674804,
+     "util_after": 0.6,
+     "jobs": [
+      "LPBF build on the MIDI (user powder)"
+     ]
+    },
+    "utah_mxlab": {
+     "jobs_per_yr": 1273,
+     "ext_h": 5091,
+     "revenue_per_yr": 651648,
+     "net_per_yr": 571201,
+     "util_after": 0.6,
+     "jobs": [
+      "DED session (half a day)"
+     ]
+    },
+    "xrd": {
+     "jobs_per_yr": 7008,
+     "ext_h": 5256,
+     "revenue_per_yr": 341640,
+     "net_per_yr": 223327,
+     "util_after": 0.6,
+     "jobs": [
+      "Powder XRD scan"
+     ]
+    },
+    "xrf": {
+     "jobs_per_yr": 10512,
+     "ext_h": 5256,
+     "revenue_per_yr": 331864,
+     "net_per_yr": 172455,
+     "util_after": 0.6,
+     "jobs": [
+      "XRF sample"
+     ]
+    }
+   },
+   "revenue": 13165168.854588311,
+   "net": 10561459.395799154,
+   "depreciation": 599906.9571428571,
+   "fixed": 1184047.1669428572,
+   "share_of_depreciation": 21.945351187939735,
+   "net_share_of_depreciation": 17.605162384013045,
+   "share_of_fixed": 11.11878751298399,
+   "net_share_of_fixed": 8.919796179292625,
+   "capex": 5397699.0,
+   "jobs": 106854.30848398269
+  },
+  "demand_limited": {
+   "stations": {
+    "atomizer": {
+     "jobs_per_yr": 86,
+     "ext_h": 474,
+     "revenue_per_yr": 129277,
+     "net_per_yr": 111175,
+     "util_after": 0.6,
+     "jobs": [
+      "Ultrasonic atomization of a user's feedstock (a run and a full clean)"
+     ]
+    },
+    "byu_icpms": {
+     "jobs_per_yr": 10429,
+     "ext_h": 1043,
+     "revenue_per_yr": 938571,
+     "net_per_yr": 719493,
+     "util_after": 0.447,
+     "jobs": [
+      "ICP-MS sample"
+     ]
+    },
+    "byu_sem": {
+     "jobs_per_yr": 695,
+     "ext_h": 1043,
+     "revenue_per_yr": 87339,
+     "net_per_yr": 70257,
+     "util_after": 0.138,
+     "jobs": [
+      "SEM/EDS session",
+      "EBSD map"
+     ]
+    },
+    "cubxl": {
+     "jobs_per_yr": 869,
+     "ext_h": 1043,
+     "revenue_per_yr": 52143,
+     "net_per_yr": 36493,
+     "util_after": 0.121,
+     "jobs": [
+      "Corrosion screen (OCP, LPR, EIS, CP)"
+     ]
+    },
+    "edm": {
+     "jobs_per_yr": 1043,
+     "ext_h": 1043,
+     "revenue_per_yr": 156429,
+     "net_per_yr": 128264,
+     "util_after": 0.121,
+     "jobs": [
+      "Wire-EDM cutting (a plate of specimens)"
+     ]
+    },
+    "furnace": {
+     "jobs_per_yr": 261,
+     "ext_h": 1043,
+     "revenue_per_yr": 7612,
+     "net_per_yr": 3721,
+     "util_after": 0.064,
+     "jobs": [
+      "Heat treatment (a furnace run)"
+     ]
+    },
+    "hardness": {
+     "jobs_per_yr": 2086,
+     "ext_h": 1043,
+     "revenue_per_yr": 29631,
+     "net_per_yr": 1623,
+     "util_after": 0.119,
+     "jobs": [
+      "Micro-Vickers hardness map"
+     ]
+    },
+    "nanoindent": {
+     "jobs_per_yr": 1043,
+     "ext_h": 1043,
+     "revenue_per_yr": 80300,
+     "net_per_yr": 59748,
+     "util_after": 0.119,
+     "jobs": [
+      "Nanoindentation map"
+     ]
+    },
+    "pip": {
+     "jobs_per_yr": 2086,
+     "ext_h": 1043,
+     "revenue_per_yr": 521429,
+     "net_per_yr": 444242,
+     "util_after": 0.119,
+     "jobs": [
+      "PIP test (stress-strain curve by indentation)"
+     ]
+    },
+    "psd": {
+     "jobs_per_yr": 2086,
+     "ext_h": 1043,
+     "revenue_per_yr": 51100,
+     "net_per_yr": 20946,
+     "util_after": 0.123,
+     "jobs": [
+      "Laser-diffraction PSD (dry)"
+     ]
+    },
+    "tensile": {
+     "jobs_per_yr": 1738,
+     "ext_h": 1043,
+     "revenue_per_yr": 333714,
+     "net_per_yr": 279473,
+     "util_after": 0.061,
+     "jobs": [
+      "Tensile test, 3 sub-size bars"
+     ]
+    },
+    "tensile_hot": {
+     "jobs_per_yr": 695,
+     "ext_h": 1043,
+     "revenue_per_yr": 266971,
+     "net_per_yr": 231926,
+     "util_after": 0.119,
+     "jobs": [
+      "Elevated-temperature tensile test"
+     ]
+    },
+    "utah_midi": {
+     "jobs_per_yr": 130,
+     "ext_h": 1043,
+     "revenue_per_yr": 156429,
+     "net_per_yr": 139220,
+     "util_after": 0.142,
+     "jobs": [
+      "LPBF build on the MIDI (user powder)"
+     ]
+    },
+    "utah_mxlab": {
+     "jobs_per_yr": 261,
+     "ext_h": 1043,
+     "revenue_per_yr": 133486,
+     "net_per_yr": 117007,
+     "util_after": 0.138,
+     "jobs": [
+      "DED session (half a day)"
+     ]
+    },
+    "xrd": {
+     "jobs_per_yr": 1390,
+     "ext_h": 1043,
+     "revenue_per_yr": 67786,
+     "net_per_yr": 44311,
+     "util_after": 0.119,
+     "jobs": [
+      "Powder XRD scan"
+     ]
+    },
+    "xrf": {
+     "jobs_per_yr": 2086,
+     "ext_h": 1043,
+     "revenue_per_yr": 65846,
+     "net_per_yr": 34217,
+     "util_after": 0.119,
+     "jobs": [
+      "XRF sample"
+     ]
+    }
+   },
+   "revenue": 3078063.0266883103,
+   "net": 2442116.380365494,
+   "depreciation": 599906.9571428571,
+   "fixed": 1184047.1669428572,
+   "share_of_depreciation": 5.130900700582015,
+   "net_share_of_depreciation": 4.070825235960629,
+   "share_of_fixed": 2.599611833568839,
+   "net_share_of_fixed": 2.062516129886025,
+   "capex": 5397699.0,
+   "jobs": 26983.20878160173
+  },
+  "demand_limited_industry": {
+   "revenue": 5517713.144480517,
+   "net": 4637801.486378481,
+   "depreciation": 599906.9571428571,
+   "fixed": 1184047.1669428572,
+   "share_of_depreciation": 9.197614861410203,
+   "net_share_of_depreciation": 7.730867980706,
+   "share_of_fixed": 4.660045054393349,
+   "net_share_of_fixed": 3.916906028628084,
+   "capex": 5397699.0,
+   "jobs": 26983.20878160173
+  },
+  "catalogue": [
+   {
+    "key": "sem_eds",
+    "name": "SEM/EDS session",
+    "station": "byu_sem",
+    "h": 1.0,
+    "cv": 0.5,
+    "rate": 85.0,
+    "industry": 175.0,
+    "src": "off-campus academic: Utah EMSAL FEG SEM $69.30/h (https://www.nanofab.utah.edu/documents/2025/12/emsal-rates-1-1-2026.pdf/), BYU EM non-BYU users $105/h (https://microscopy.byu.edu/services); industry: Clemson SU9000 $175/h (https://media.clemson.edu/finance/controller/rates/2627/Electron_Microscope_FY2627.pdf), Utah $90, UW $200 + $50 EDS (https://www.moles.washington.edu/facilities/molecular-analysis-facility/rates)"
+   },
+   {
+    "key": "ebsd",
+    "name": "EBSD map",
+    "station": "byu_sem",
+    "h": 2.0,
+    "cv": 0.5,
+    "rate": 165.0,
+    "industry": 600.0,
+    "src": "Clemson EBSD $82.50/h external non-profit, $600 a sample industry (https://media.clemson.edu/finance/controller/rates/2627/Electron_Microscope_FY2627.pdf)"
+   },
+   {
+    "key": "xrd",
+    "name": "Powder XRD scan",
+    "station": "xrd",
+    "h": 0.75,
+    "cv": 0.3,
+    "rate": 48.75,
+    "industry": 142.5,
+    "src": "per hour: Utah D8 $64.68 off-campus, $84 industry (https://www.nanofab.utah.edu/documents/2025/12/emsal-rates-1-1-2026.pdf/); Cornell D8 $193 industry (https://www.ccmr.cornell.edu/sites/default/files/2026-06/FY27%20Cornell%20facility%20fees.pdf and https://www.ccmr.cornell.edu/sites/default/files/2026-06/FY27%20External%20Industry%20or%20for-profit%20fees.pdf); UW $64 / $200 (https://www.moles.washington.edu/facilities/molecular-analysis-facility/rates); 0.75 h a scan (the twin)"
+   },
+   {
+    "key": "psd",
+    "name": "Laser-diffraction PSD (dry)",
+    "station": "psd",
+    "h": 0.5,
+    "cv": 0.3,
+    "rate": 24.5,
+    "industry": 56.5,
+    "src": "NUANCE Mastersizer 3000 $49/h (universities and non-profits), $113/h for-profit (https://nuance.northwestern.edu/documents/rates/2027-rates/nuance-user-rates-fy27-keck-ii-nu.pdf (and -fp.pdf)); 0.5 h a sample assumed"
+   },
+   {
+    "key": "xrf",
+    "name": "XRF sample",
+    "station": "xrf",
+    "h": 0.5,
+    "cv": 0.3,
+    "rate": 31.57,
+    "industry": 41.0,
+    "src": "Utah micro-XRF $63.14/h off-campus, $82/h industry (https://www.nanofab.utah.edu/documents/2025/12/emsal-rates-1-1-2026.pdf/)"
+   },
+   {
+    "key": "pip",
+    "name": "PIP test (stress-strain curve by indentation)",
+    "station": "pip",
+    "h": 0.5,
+    "cv": 0.3,
+    "rate": 250.0,
+    "industry": 400.0,
+    "src": "assumed: the twin's PIP service fee, $250 (twin/facility.py); no published rate found"
+   },
+   {
+    "key": "tensile",
+    "name": "Tensile test, 3 sub-size bars",
+    "station": "tensile",
+    "h": 0.6,
+    "cv": 0.3,
+    "rate": 192.0,
+    "industry": 288.0,
+    "src": "Western Michigan, ASTM E8 metals $64 a test (https://wmich.edu/construction-research/priceoverview/tensionpricing); industry 1.5x assumed"
+   },
+   {
+    "key": "tensile_hot",
+    "name": "Elevated-temperature tensile test",
+    "station": "tensile_hot",
+    "h": 1.5,
+    "cv": 0.3,
+    "rate": 384.0,
+    "industry": 576.0,
+    "src": "assumed: twice a room-temperature test"
+   },
+   {
+    "key": "hardness",
+    "name": "Micro-Vickers hardness map",
+    "station": "hardness",
+    "h": 0.5,
+    "cv": 0.3,
+    "rate": 14.2065,
+    "industry": 25.75,
+    "src": "Cornell microhardness $6 + $6.45/h internal, $15.50 + $20.50/h industry (https://www.ccmr.cornell.edu/sites/default/files/2026-06/FY27%20Cornell%20facility%20fees.pdf and https://www.ccmr.cornell.edu/sites/default/files/2026-06/FY27%20External%20Industry%20or%20for-profit%20fees.pdf); external academic as Utah's 1.54x internal"
+   },
+   {
+    "key": "nano",
+    "name": "Nanoindentation map",
+    "station": "nanoindent",
+    "h": 1.0,
+    "cv": 0.4,
+    "rate": 77.0,
+    "industry": 134.0,
+    "src": "Utah Hysitron $77/h off-campus, $100 industry (https://www.nanofab.utah.edu/documents/2025/12/emsal-rates-1-1-2026.pdf/); UMass $168 industry (https://www.umass.edu/ials/core-facility-rates)"
+   },
+   {
+    "key": "corrosion",
+    "name": "Corrosion screen (OCP, LPR, EIS, CP)",
+    "station": "cubxl",
+    "h": 1.2,
+    "cv": 0.2,
+    "rate": 60.0,
+    "industry": 300.0,
+    "src": "Univ. of Alaska Anchorage corrosion lab $50/h for sponsored research, $250/h external (https://uaa.alaska.edu/academics/college-of-engineering/facilities/aic-lab/aic-pricing.cshtml)"
+   },
+   {
+    "key": "icpms",
+    "name": "ICP-MS sample",
+    "station": "byu_icpms",
+    "h": 0.1,
+    "cv": 0.3,
+    "rate": 90.0,
+    "industry": 153.0,
+    "src": "midpoints: UMass $37 other academic, $122 external (https://www.umass.edu/ials/core-facility-rates); Utah Earth Core 25-45 elements $142 other academic, $184 commercial (https://earth.utah.edu/research_facilities/earth-core-facility/icp-ms.php); BYU's internal $35 (notes/twin.md)"
+   },
+   {
+    "key": "atomize",
+    "name": "Ultrasonic atomization of a user's feedstock (a run and a full clean)",
+    "station": "atomizer",
+    "h": 5.5,
+    "cv": 0.2,
+    "rate": 1500.0,
+    "industry": 2500.0,
+    "src": "DAL's prelim benchmark charges $1,500 an atomization (notes/twin.md); industry assumed; 2.5 h a run plus a full material change, 2-4 h (AMAZEMET, twin/campaign.py)"
+   },
+   {
+    "key": "lpbf",
+    "name": "LPBF build on the MIDI (user powder)",
+    "station": "utah_midi",
+    "h": 8.0,
+    "cv": 0.5,
+    "rate": 1200.0,
+    "industry": 2560.0,
+    "src": "per hour: Utah's MIDI $120 (FLAIME, twin/facility.py), CMU EOS M290 $230 internal, $320 corporate (https://engineering.cmu.edu/mfi/facilities/equipment-details/eos-m-290.html); 8 h a build"
+   },
+   {
+    "key": "ded",
+    "name": "DED session (half a day)",
+    "station": "utah_mxlab",
+    "h": 4.0,
+    "cv": 0.3,
+    "rate": 512.0,
+    "industry": 1004.0,
+    "src": "CMU TruLaser Cell 3000 LMD $128/h internal, $251/h corporate (https://engineering.cmu.edu/next/facilities/equipment-details/trumpf-trulaser-cell-3000.html)"
+   },
+   {
+    "key": "heat",
+    "name": "Heat treatment (a furnace run)",
+    "station": "furnace",
+    "h": 4.0,
+    "cv": 0.3,
+    "rate": 29.198400000000003,
+    "industry": 45.4,
+    "src": "Cornell furnaces $6 + $3.24/h internal, $13 + $8.10/h industry (https://www.ccmr.cornell.edu/sites/default/files/2026-06/FY27%20Cornell%20facility%20fees.pdf and https://www.ccmr.cornell.edu/sites/default/files/2026-06/FY27%20External%20Industry%20or%20for-profit%20fees.pdf)"
+   },
+   {
+    "key": "edm",
+    "name": "Wire-EDM cutting (a plate of specimens)",
+    "station": "edm",
+    "h": 1.0,
+    "cv": 0.5,
+    "rate": 150.0,
+    "industry": 250.0,
+    "src": "assumed: the twin's Provo EDM fee, $150 a job (twin/facility.py)"
+   }
+  ]
+ },
+ "depreciation_vs_utilization": {
+  "vertical_lab|flaime_al": {
+   "utilization": [
+    0.0,
+    0.001,
+    0.001,
+    0.002,
+    0.002,
+    0.002,
+    0.003,
+    0.004,
+    0.005,
+    0.006,
+    0.008,
+    0.01,
+    0.012,
+    0.016,
+    0.02,
+    0.025,
+    0.031,
+    0.039,
+    0.049,
+    0.061,
+    0.077,
+    0.097,
+    0.121,
+    0.153,
+    0.192,
+    0.241,
+    0.303,
+    0.381,
+    0.479,
+    0.601,
+    0.756,
+    0.95
+   ],
+   "per_experiment": [
+    11231.2,
+    11217.8,
+    11196.1,
+    11161.9,
+    11093.5,
+    10956.7,
+    10797.5,
+    10610.9,
+    10216.0,
+    9793.2,
+    9445.4,
+    9152.4,
+    8903.9,
+    8665.5,
+    8448.4,
+    8097.4,
+    7657.3,
+    7252.7,
+    6421.6,
+    5422.9,
+    4613.0,
+    3965.7,
+    3447.0,
+    3029.7,
+    2692.2,
+    2417.0,
+    2189.9,
+    1998.3,
+    1657.7,
+    1279.3,
+    980.8,
+    746.1
+   ],
+   "campaigns_alone": 11231.182856931859
+  },
+  "proposed|flaime_al": {
+   "utilization": [
+    0.0,
+    0.001,
+    0.001,
+    0.002,
+    0.002,
+    0.002,
+    0.003,
+    0.004,
+    0.005,
+    0.006,
+    0.008,
+    0.01,
+    0.012,
+    0.016,
+    0.02,
+    0.025,
+    0.031,
+    0.039,
+    0.049,
+    0.061,
+    0.077,
+    0.097,
+    0.121,
+    0.153,
+    0.192,
+    0.241,
+    0.303,
+    0.381,
+    0.479,
+    0.601,
+    0.756,
+    0.95
+   ],
+   "per_experiment": [
+    1913.1,
+    1913.1,
+    1913.1,
+    1913.1,
+    1913.1,
+    1912.9,
+    1910.2,
+    1900.3,
+    1888.1,
+    1870.1,
+    1846.8,
+    1823.7,
+    1804.3,
+    1785.3,
+    1768.0,
+    1754.3,
+    1743.4,
+    1734.3,
+    1723.2,
+    1711.2,
+    1701.4,
+    1693.6,
+    1684.5,
+    1667.5,
+    1649.6,
+    1635.3,
+    1624.0,
+    1557.2,
+    1314.7,
+    1046.1,
+    832.3,
+    662.3
+   ],
+   "campaigns_alone": 1913.0623587892096
+  },
+  "vertical_lab|onr_cu": {
+   "utilization": [
+    0.0,
+    0.001,
+    0.001,
+    0.002,
+    0.002,
+    0.002,
+    0.003,
+    0.004,
+    0.005,
+    0.006,
+    0.008,
+    0.01,
+    0.012,
+    0.016,
+    0.02,
+    0.025,
+    0.031,
+    0.039,
+    0.049,
+    0.061,
+    0.077,
+    0.097,
+    0.121,
+    0.153,
+    0.192,
+    0.241,
+    0.303,
+    0.381,
+    0.479,
+    0.601,
+    0.756,
+    0.95
+   ],
+   "per_experiment": [
+    38278.0,
+    35351.5,
+    33349.0,
+    31357.4,
+    29732.3,
+    28419.7,
+    27371.9,
+    26527.7,
+    25655.9,
+    23819.1,
+    20830.0,
+    18143.2,
+    15989.6,
+    14216.1,
+    12677.5,
+    10942.5,
+    9284.3,
+    7936.7,
+    6731.2,
+    5731.3,
+    4932.8,
+    4293.7,
+    3780.7,
+    3366.8,
+    3030.6,
+    2754.8,
+    2525.2,
+    2328.6,
+    1930.1,
+    1489.4,
+    1141.7,
+    868.5
+   ],
+   "campaigns_alone": 38278.02558019558
+  },
+  "proposed|onr_cu": {
+   "utilization": [
+    0.0,
+    0.001,
+    0.001,
+    0.002,
+    0.002,
+    0.002,
+    0.003,
+    0.004,
+    0.005,
+    0.006,
+    0.008,
+    0.01,
+    0.012,
+    0.016,
+    0.02,
+    0.025,
+    0.031,
+    0.039,
+    0.049,
+    0.061,
+    0.077,
+    0.097,
+    0.121,
+    0.153,
+    0.192,
+    0.241,
+    0.303,
+    0.381,
+    0.479,
+    0.601,
+    0.756,
+    0.95
+   ],
+   "per_experiment": [
+    3155.2,
+    2444.6,
+    2325.8,
+    2231.3,
+    2156.1,
+    2096.3,
+    2048.6,
+    2010.8,
+    1980.6,
+    1956.6,
+    1935.0,
+    1916.5,
+    1894.5,
+    1868.1,
+    1839.3,
+    1814.9,
+    1795.4,
+    1779.5,
+    1762.7,
+    1746.3,
+    1733.1,
+    1722.6,
+    1711.0,
+    1691.9,
+    1672.6,
+    1657.2,
+    1645.0,
+    1570.8,
+    1322.6,
+    1052.4,
+    837.4,
+    666.3
+   ],
+   "campaigns_alone": 3155.225652475302
+  }
+ },
+ "slowdown": {
+  "kingman": {
+   "flaime_al": {
+    "levels": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.25,
+     0.3,
+     0.35,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6,
+     0.65,
+     0.7,
+     0.75,
+     0.8,
+     0.85,
+     0.9
+    ],
+    "factor": [
+     1.0012,
+     1.003,
+     1.0051,
+     1.0074,
+     1.0101,
+     1.0131,
+     1.017,
+     1.043,
+     1.1029,
+     1.1755,
+     1.2627,
+     1.3701,
+     1.5065,
+     1.6866,
+     1.9367,
+     2.3095,
+     2.9281,
+     4.1614
+    ]
+   },
+   "onr_cu": {
+    "levels": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.25,
+     0.3,
+     0.35,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6,
+     0.65,
+     0.7,
+     0.75,
+     0.8,
+     0.85,
+     0.9
+    ],
+    "factor": [
+     1.0005,
+     1.0014,
+     1.0023,
+     1.0034,
+     1.0046,
+     1.006,
+     1.0079,
+     1.0161,
+     1.0339,
+     1.0557,
+     1.0819,
+     1.1142,
+     1.1553,
+     1.2095,
+     1.2848,
+     1.397,
+     1.5833,
+     1.9547
+    ]
+   }
+  },
+  "validated": {
+   "seeds": 4,
+   "levels": [
+    0.0,
+    0.25,
+    0.5,
+    0.7,
+    0.85
+   ],
+   "runs": 20,
+   "hook": "twin",
+   "flaime_al": {
+    "cycle": [
+     1.0,
+     0.9735090641326274,
+     1.0566325509459977,
+     1.4018363143222266,
+     2.2156274096401773
+    ],
+    "days_to_target": [
+     1.0,
+     1.000827787871295,
+     1.0197809049764026,
+     1.246508777776583,
+     1.4490587944398454
+    ],
+    "kingman": [
+     1.0,
+     1.0067753105751434,
+     1.0828622647027726,
+     1.270492591349109,
+     1.727468453142716
+    ],
+    "best_mean": [
+     0.6981329057039594,
+     0.6914322460255152,
+     0.7077943557532388,
+     0.6748847363356646,
+     0.676917355046073
+    ],
+    "n_demonstrated_mean": [
+     42.75,
+     41.0,
+     38.5,
+     32.25,
+     26.25
+    ],
+    "hit_frac": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     0.75
+    ],
+    "throughput_ratio": [
+     1.0,
+     0.9590643274853801,
+     0.9005847953216374,
+     0.7543859649122807,
+     0.6140350877192983
+    ]
+   },
+   "onr_cu": {
+    "cycle": [
+     1.0,
+     1.0861461864611959,
+     1.0197337125300052,
+     1.1061340772961155,
+     1.5516022765397102
+    ],
+    "days_to_target": [
+     1.0,
+     0.9289521586931154,
+     0.9577736289381563,
+     1.0647887981330222,
+     1.1701890315052508
+    ],
+    "kingman": [
+     1.0,
+     1.0019442735582735,
+     1.0399556113682835,
+     1.1361234359050365,
+     1.3696880382039074
+    ],
+    "best_mean": [
+     0.6733875592135671,
+     0.6732577178469116,
+     0.6343084987141978,
+     0.6329769501202694,
+     0.6009563798849031
+    ],
+    "n_demonstrated_mean": [
+     6.0,
+     5.5,
+     5.5,
+     6.0,
+     4.5
+    ],
+    "hit_frac": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "throughput_ratio": [
+     1.0,
+     0.9166666666666666,
+     0.9166666666666666,
+     1.0,
+     0.75
+    ]
+   }
+  }
+ },
+ "acceleration": {
+  "tiered on the partners -> cost_aware in the vertical lab": {
+   "flaime_al": {
+    "target": 0.4232,
+    "n_ref": 20,
+    "n_new": 10,
+    "compare": {
+     "target": 0.4232,
+     "ref": "conventional lab (tiered)",
+     "new": "vertical lab (cost_aware)",
+     "days": {
+      "af": 1.8990304960824347,
+      "lo": 1.1649007785517769,
+      "hi": "inf",
+      "median_ref": 177.66,
+      "median_new": 93.553,
+      "x": "days",
+      "target": 0.4232,
+      "hit_ref": 0.65,
+      "hit_new": 1.0,
+      "n_ref": 20,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "experiments": {
+      "af": 0.5882352941176471,
+      "lo": 0.2222222222222222,
+      "hi": 8.285714285714286,
+      "median_ref": 5.0,
+      "median_new": 8.5,
+      "x": "experiments",
+      "target": 0.4232,
+      "hit_ref": 0.65,
+      "hit_new": 1.0,
+      "n_ref": 20,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "cost": {
+      "cash": {
+       "ratio": 0.973466340958092,
+       "lo": 0.0,
+       "hi": 1.3815657436085647,
+       "median_ref": 27898.15,
+       "median_new": 27157.91,
+       "bounded": false,
+       "hit_ref": 0.65,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "operating": {
+       "ratio": 1.6919523903608535,
+       "lo": 0.5330585563159816,
+       "hi": 2.574925998476817,
+       "median_ref": 79894.08276776358,
+       "median_new": 135176.98431460548,
+       "bounded": false,
+       "hit_ref": 0.65,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full": {
+       "ratio": 2.3304063407343367,
+       "lo": 0.0,
+       "hi": 3.5875088199506635,
+       "median_ref": 106561.06589499195,
+       "median_new": 248330.58363709872,
+       "bounded": false,
+       "hit_ref": 0.65,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full at 60% utilization": {
+       "ratio": 0.5039617716705642,
+       "lo": 0.0,
+       "hi": 0.7811579611506732,
+       "median_ref": 106561.06589499195,
+       "median_new": 53702.70355954388,
+       "bounded": false,
+       "hit_ref": 0.65,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      }
+     }
+    },
+    "headline": "FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) 1.9x faster (95% CI 1.2-unbounded) (reached in 100% of 10 seeds against 65% of 20); at 169% of the operating cost (95% CI 53%-257%); at 233% of the full cost (95% CI 0%-359%); at 50% of the full at 60% utilization cost (95% CI 0%-78%); reference: the conventional lab (tiered).",
+    "af_vs_target": [
+     {
+      "target": 0.2,
+      "af": 1.6824687610231635,
+      "lo": 1.0697774432856684,
+      "hi": 3.0289365727043758,
+      "hit_ref": 0.75,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.25,
+      "af": 1.8990304960824347,
+      "lo": 1.102521061136125,
+      "hi": 3.828878608755247,
+      "hit_ref": 0.7,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.3,
+      "af": 1.8990304960824347,
+      "lo": 1.102521061136125,
+      "hi": 3.828878608755247,
+      "hit_ref": 0.7,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.35,
+      "af": 1.8990304960824347,
+      "lo": 1.102521061136125,
+      "hi": 3.828878608755247,
+      "hit_ref": 0.7,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.4,
+      "af": 1.8990304960824347,
+      "lo": 1.102521061136125,
+      "hi": "inf",
+      "hit_ref": 0.65,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.45,
+      "af": 2.0261883638151637,
+      "lo": 1.2220908146077485,
+      "hi": "inf",
+      "hit_ref": 0.6,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.5,
+      "af": "inf",
+      "lo": 1.410242626240906,
+      "hi": "inf",
+      "hit_ref": 0.45,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.55,
+      "af": "inf",
+      "lo": 1.3574125759317026,
+      "hi": "inf",
+      "hit_ref": 0.4,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.6,
+      "af": "inf",
+      "lo": 1.098096121781232,
+      "hi": "inf",
+      "hit_ref": 0.4,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.65,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.15,
+      "hit_new": 0.8
+     },
+     {
+      "target": 0.7,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.05,
+      "hit_new": 0.6
+     },
+     {
+      "target": 0.75,
+      "af": null,
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.05,
+      "hit_new": 0.2
+     }
+    ],
+    "ef_vs_days": [
+     {
+      "days": 30,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 45,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 60,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 75,
+      "ef": 5.74524886877828,
+      "lo": 0.0,
+      "hi": "inf"
+     },
+     {
+      "days": 90,
+      "ef": 3.4879028810806196,
+      "lo": 0.0,
+      "hi": "inf"
+     },
+     {
+      "days": 105,
+      "ef": 4.558576931792431,
+      "lo": 1.680978120978121,
+      "hi": 21.78914027149321
+     },
+     {
+      "days": 120,
+      "ef": 2.914982886165397,
+      "lo": 1.5397870824245823,
+      "hi": 7.711606096131302
+     },
+     {
+      "days": 135,
+      "ef": 2.8353111743542927,
+      "lo": 1.4890471317894207,
+      "hi": 7.480950756283408
+     },
+     {
+      "days": 150,
+      "ef": 2.147670670963961,
+      "lo": 1.1969795819741453,
+      "hi": 4.322214037672314
+     },
+     {
+      "days": 165,
+      "ef": 2.0846225407435477,
+      "lo": 1.257355656777053,
+      "hi": 3.7404447921323194
+     },
+     {
+      "days": 180,
+      "ef": 1.9548470240084004,
+      "lo": 1.1969134120279399,
+      "hi": 3.504700270579374
+     },
+     {
+      "days": 195,
+      "ef": 2.071848484399757,
+      "lo": 1.4704747835364604,
+      "hi": 3.4211099020674647
+     },
+     {
+      "days": 210,
+      "ef": 1.9288107087222044,
+      "lo": 1.4160090890311918,
+      "hi": 2.88116368846261
+     },
+     {
+      "days": 225,
+      "ef": 1.9288107087222044,
+      "lo": 1.4160090890311918,
+      "hi": 2.88116368846261
+     },
+     {
+      "days": 240,
+      "ef": 1.9288107087222044,
+      "lo": 1.4160090890311918,
+      "hi": 2.88116368846261
+     },
+     {
+      "days": 255,
+      "ef": 1.9294172789809618,
+      "lo": 1.4169179921503823,
+      "hi": 2.88203924065746
+     },
+     {
+      "days": 270,
+      "ef": 1.9294172789809618,
+      "lo": 1.4169179921503823,
+      "hi": 2.88203924065746
+     },
+     {
+      "days": 285,
+      "ef": 1.8385045845046366,
+      "lo": 1.3798398140847408,
+      "hi": 2.645632892363199
+     },
+     {
+      "days": 300,
+      "ef": 1.8385045845046366,
+      "lo": 1.3798398140847408,
+      "hi": 2.645632892363199
+     },
+     {
+      "days": 315,
+      "ef": 1.8385045845046366,
+      "lo": 1.3798398140847408,
+      "hi": 2.645632892363199
+     },
+     {
+      "days": 330,
+      "ef": 1.8385045845046366,
+      "lo": 1.3798398140847408,
+      "hi": 2.645632892363199
+     },
+     {
+      "days": 345,
+      "ef": 1.8499592780390404,
+      "lo": 1.3888621022179364,
+      "hi": 2.6674400030426346
+     },
+     {
+      "days": 360,
+      "ef": 1.7066786237987324,
+      "lo": 1.3246810298724117,
+      "hi": 2.3631630436584916
+     }
+    ]
+   },
+   "onr_cu": {
+    "target": 0.5559,
+    "n_ref": 20,
+    "n_new": 10,
+    "compare": {
+     "target": 0.5559,
+     "ref": "conventional lab (tiered)",
+     "new": "vertical lab (cost_aware)",
+     "days": {
+      "af": 1.2828090898455307,
+      "lo": 0.9058940698358376,
+      "hi": "inf",
+      "median_ref": 317.984,
+      "median_new": 247.881,
+      "x": "days",
+      "target": 0.5559,
+      "hit_ref": 0.55,
+      "hit_new": 0.9,
+      "n_ref": 20,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "experiments": {
+      "af": 1.5,
+      "lo": 0.5,
+      "hi": "inf",
+      "median_ref": 3.0,
+      "median_new": 2.0,
+      "x": "experiments",
+      "target": 0.5559,
+      "hit_ref": 0.55,
+      "hit_new": 0.9,
+      "n_ref": 20,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "cost": {
+      "cash": {
+       "ratio": 0.9418852194686441,
+       "lo": 0.0,
+       "hi": 1.2242635358109912,
+       "median_ref": 49025.91,
+       "median_new": 46176.78,
+       "bounded": false,
+       "hit_ref": 0.55,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "operating": {
+       "ratio": 2.6154612950028815,
+       "lo": 0.0,
+       "hi": 3.3373838310118384,
+       "median_ref": 62714.65497775062,
+       "median_new": 164027.75272376655,
+       "bounded": false,
+       "hit_ref": 0.55,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full": {
+       "ratio": 3.851911828821704,
+       "lo": 0.0,
+       "hi": 4.975262057756588,
+       "median_ref": 71204.35257892095,
+       "median_new": 274272.8879623368,
+       "bounded": false,
+       "hit_ref": 0.55,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full at 60% utilization": {
+       "ratio": 0.7942831779757689,
+       "lo": 0.0,
+       "hi": 0.9666219822241137,
+       "median_ref": 71204.35257892095,
+       "median_new": 56556.419452092465,
+       "bounded": false,
+       "hit_ref": 0.55,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      }
+     }
+    },
+    "headline": "ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) 1.3x faster (95% CI 0.91-unbounded) (reached in 90% of 10 seeds against 55% of 20); at 262% of the operating cost (95% CI 0%-334%); at 385% of the full cost (95% CI 0%-498%); at 79% of the full at 60% utilization cost (95% CI 0%-97%); reference: the conventional lab (tiered).",
+    "af_vs_target": [
+     {
+      "target": 0.2,
+      "af": 1.106007688635393,
+      "lo": 0.8737067706911917,
+      "hi": 1.4651499470911777,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.25,
+      "af": 1.106007688635393,
+      "lo": 0.8737067706911917,
+      "hi": 1.4651499470911777,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.3,
+      "af": 1.1171595601229514,
+      "lo": 0.9309490630281576,
+      "hi": 1.5043483569482137,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.35,
+      "af": 1.0906530115802493,
+      "lo": 0.8818332432919144,
+      "hi": 1.2697926983078969,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.4,
+      "af": 1.0018251121918245,
+      "lo": 0.8030727458722526,
+      "hi": 1.2056725162592512,
+      "hit_ref": 0.85,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.45,
+      "af": 1.026490414405618,
+      "lo": 0.8642651651612736,
+      "hi": 1.266436794498019,
+      "hit_ref": 0.85,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.5,
+      "af": 1.0877741972630084,
+      "lo": 0.8788515706073234,
+      "hi": 1.35539446391836,
+      "hit_ref": 0.75,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.55,
+      "af": 1.2199805551857545,
+      "lo": 0.9058940698358376,
+      "hi": "inf",
+      "hit_ref": 0.6,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.6,
+      "af": 1.1743780653548426,
+      "lo": 0.9058940698358376,
+      "hi": "inf",
+      "hit_ref": 0.55,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.65,
+      "af": 1.0475679059118086,
+      "lo": 0.0,
+      "hi": "inf",
+      "hit_ref": 0.55,
+      "hit_new": 0.7
+     },
+     {
+      "target": 0.7,
+      "af": null,
+      "lo": 0.0,
+      "hi": "inf",
+      "hit_ref": 0.3,
+      "hit_new": 0.1
+     },
+     {
+      "target": 0.75,
+      "af": null,
+      "lo": null,
+      "hi": null,
+      "hit_ref": 0.0,
+      "hit_new": 0.0
+     }
+    ],
+    "ef_vs_days": [
+     {
+      "days": 30,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 45,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 60,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 75,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 90,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 105,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 120,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 135,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 150,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 165,
+      "ef": 3.053988002666074,
+      "lo": 0.0,
+      "hi": "inf"
+     },
+     {
+      "days": 180,
+      "ef": 4.592757165074428,
+      "lo": 0.0,
+      "hi": "inf"
+     },
+     {
+      "days": 195,
+      "ef": 1.8867219141379528,
+      "lo": 0.0,
+      "hi": "inf"
+     },
+     {
+      "days": 210,
+      "ef": 1.6150194677049443,
+      "lo": 0.0,
+      "hi": 10.604130052724079
+     },
+     {
+      "days": 225,
+      "ef": 1.3149780692230861,
+      "lo": 0.0,
+      "hi": 6.886205718191137
+     },
+     {
+      "days": 240,
+      "ef": 1.555994611585092,
+      "lo": 0.5068421338057448,
+      "hi": 5.307064131117583
+     },
+     {
+      "days": 255,
+      "ef": 1.8472225492735534,
+      "lo": 0.8678554400686567,
+      "hi": 4.052105831533478
+     },
+     {
+      "days": 270,
+      "ef": 1.3395375840989039,
+      "lo": 0.6629876075941642,
+      "hi": 2.976085153442079
+     },
+     {
+      "days": 285,
+      "ef": 1.1870665209972628,
+      "lo": 0.8291034391359088,
+      "hi": 1.7521435105508785
+     },
+     {
+      "days": 300,
+      "ef": 1.1544687327061431,
+      "lo": 0.814249092074343,
+      "hi": 1.706656637833772
+     },
+     {
+      "days": 315,
+      "ef": 1.2755842148174033,
+      "lo": 1.0028064267171823,
+      "hi": 1.7307444607352798
+     },
+     {
+      "days": 330,
+      "ef": 1.1489731569068031,
+      "lo": 0.9597387697467128,
+      "hi": 1.4190635528155298
+     },
+     {
+      "days": 345,
+      "ef": 1.1417833645752935,
+      "lo": 0.9544284243048405,
+      "hi": 1.4008143392649404
+     },
+     {
+      "days": 360,
+      "ef": 1.1984231999117876,
+      "lo": 1.0354898964170487,
+      "hi": 1.4707915886821536
+     }
+    ]
+   }
+  },
+  "random on the partners -> cost_aware in the vertical lab": {
+   "flaime_al": {
+    "target": 0.4232,
+    "n_ref": 30,
+    "n_new": 10,
+    "compare": {
+     "target": 0.4232,
+     "ref": "conventional lab (random)",
+     "new": "vertical lab (cost_aware)",
+     "days": {
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "median_ref": "inf",
+      "median_new": 93.553,
+      "x": "days",
+      "target": 0.4232,
+      "hit_ref": 0.13333333333333333,
+      "hit_new": 1.0,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": true,
+      "af_bound": 3.901531752054985,
+      "bound_kind": "lower",
+      "median_ref_bound": 365.0,
+      "median_new_bound": null
+     },
+     "experiments": {
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "median_ref": "inf",
+      "median_new": 8.5,
+      "x": "experiments",
+      "target": 0.4232,
+      "hit_ref": 0.13333333333333333,
+      "hit_new": 1.0,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": true,
+      "af_bound": 6.117647058823529,
+      "bound_kind": "lower",
+      "median_ref_bound": 52.0,
+      "median_new_bound": null
+     },
+     "cost": {
+      "cash": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "median_ref": "inf",
+       "median_new": 27157.91,
+       "bounded": true,
+       "hit_ref": 0.13333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": 0.2265781809110712,
+       "bound_kind": "upper",
+       "median_ref_bound": 119861.1,
+       "median_new_bound": null
+      },
+      "operating": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "median_ref": "inf",
+       "median_new": 135176.98431460548,
+       "bounded": true,
+       "hit_ref": 0.13333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": 0.5538844209915166,
+       "bound_kind": "upper",
+       "median_ref_bound": 244052.6925682856,
+       "median_new_bound": null
+      },
+      "full": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "median_ref": "inf",
+       "median_new": 248330.58363709872,
+       "bounded": true,
+       "hit_ref": 0.13333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": 0.8328872848204116,
+       "bound_kind": "upper",
+       "median_ref_bound": 298156.2909687643,
+       "median_new_bound": null
+      },
+      "full at 60% utilization": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "median_ref": "inf",
+       "median_new": 53702.70355954388,
+       "bounded": true,
+       "hit_ref": 0.13333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": 0.18011594987667032,
+       "bound_kind": "upper",
+       "median_ref_bound": 298156.2909687643,
+       "median_new_bound": null
+      }
+     }
+    },
+    "headline": "FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) at least 3.9x faster: the conventional lab (random) reached it in fewer than half its seeds within the horizon (reached in 100% of 10 seeds against 13% of 30); at most 55% of the operating cost; at most 83% of the full cost; at most 18% of the full at 60% utilization cost; reference: the conventional lab (random).",
+    "af_vs_target": [
+     {
+      "target": 0.2,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.2,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.25,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.2,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.3,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.2,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.35,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.2,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.4,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.2,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.45,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.13333333333333333,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.5,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.13333333333333333,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.55,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.06666666666666667,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.6,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.06666666666666667,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.65,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.06666666666666667,
+      "hit_new": 0.8
+     },
+     {
+      "target": 0.7,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.06666666666666667,
+      "hit_new": 0.6
+     },
+     {
+      "target": 0.75,
+      "af": null,
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.03333333333333333,
+      "hit_new": 0.2
+     }
+    ],
+    "ef_vs_days": [
+     {
+      "days": 30,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 45,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 60,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 75,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 90,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 105,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 120,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 135,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 150,
+      "ef": 21.79529536143782,
+      "lo": 6.287696577243294,
+      "hi": "inf"
+     },
+     {
+      "days": 165,
+      "ef": 13.945908567038032,
+      "lo": 4.955243949289282,
+      "hi": "inf"
+     },
+     {
+      "days": 180,
+      "ef": 14.160737610449482,
+      "lo": 4.955243949289282,
+      "hi": "inf"
+     },
+     {
+      "days": 195,
+      "ef": 16.12531694199001,
+      "lo": 6.359238084293389,
+      "hi": "inf"
+     },
+     {
+      "days": 210,
+      "ef": 11.572066607851786,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 225,
+      "ef": 11.572066607851786,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 240,
+      "ef": 11.572066607851786,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 255,
+      "ef": 11.575705778561975,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 270,
+      "ef": 11.575705778561975,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 285,
+      "ef": 11.575705778561975,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 300,
+      "ef": 11.575705778561975,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 315,
+      "ef": 11.575705778561975,
+      "lo": 5.155627383146891,
+      "hi": "inf"
+     },
+     {
+      "days": 330,
+      "ef": 7.894742779783392,
+      "lo": 4.16163080670417,
+      "hi": 26.38192150125545
+     },
+     {
+      "days": 345,
+      "ef": 6.224071891573364,
+      "lo": 3.375480477442849,
+      "hi": 16.435113330772186
+     },
+     {
+      "days": 360,
+      "ef": 6.224071891573364,
+      "lo": 3.375480477442849,
+      "hi": 16.435113330772186
+     }
+    ]
+   },
+   "onr_cu": {
+    "target": 0.5559,
+    "n_ref": 30,
+    "n_new": 10,
+    "compare": {
+     "target": 0.5559,
+     "ref": "conventional lab (random)",
+     "new": "vertical lab (cost_aware)",
+     "days": {
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "median_ref": "inf",
+      "median_new": 247.881,
+      "x": "days",
+      "target": 0.5559,
+      "hit_ref": 0.23333333333333334,
+      "hit_new": 0.9,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": true,
+      "af_bound": 1.4724807468099612,
+      "bound_kind": "lower",
+      "median_ref_bound": 365.0,
+      "median_new_bound": null
+     },
+     "experiments": {
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "median_ref": "inf",
+      "median_new": 2.0,
+      "x": "experiments",
+      "target": 0.5559,
+      "hit_ref": 0.23333333333333334,
+      "hit_new": 0.9,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": true,
+      "af_bound": 2.0,
+      "bound_kind": "lower",
+      "median_ref_bound": 4.0,
+      "median_new_bound": null
+     },
+     "cost": {
+      "cash": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 0.8040085267829252,
+       "median_ref": "inf",
+       "median_new": 46176.78,
+       "bounded": true,
+       "hit_ref": 0.23333333333333334,
+       "hit_new": 0.9,
+       "ratio_bound": 0.7694398760278937,
+       "bound_kind": "upper",
+       "median_ref_bound": 60013.5,
+       "median_new_bound": null
+      },
+      "operating": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 2.5705700237084868,
+       "median_ref": "inf",
+       "median_new": 164027.75272376655,
+       "bounded": true,
+       "hit_ref": 0.23333333333333334,
+       "hit_new": 0.9,
+       "ratio_bound": 2.092697337916574,
+       "bound_kind": "upper",
+       "median_ref_bound": 78381.02039498344,
+       "median_new_bound": null
+      },
+      "full": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 3.6654154284388034,
+       "median_ref": "inf",
+       "median_new": 274272.8879623368,
+       "bounded": true,
+       "hit_ref": 0.23333333333333334,
+       "hit_new": 0.9,
+       "ratio_bound": 3.0708273462152995,
+       "bound_kind": "upper",
+       "median_ref_bound": 89315.6329027647,
+       "median_new_bound": null
+      },
+      "full at 60% utilization": {
+       "ratio": 0.0,
+       "lo": 0.0,
+       "hi": 0.6702206942973201,
+       "median_ref": "inf",
+       "median_new": 56556.419452092465,
+       "bounded": true,
+       "hit_ref": 0.23333333333333334,
+       "hit_new": 0.9,
+       "ratio_bound": 0.6332197132126217,
+       "bound_kind": "upper",
+       "median_ref_bound": 89315.6329027647,
+       "median_new_bound": null
+      }
+     }
+    },
+    "headline": "ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) at least 1.5x faster: the conventional lab (random) reached it in fewer than half its seeds within the horizon (reached in 90% of 10 seeds against 23% of 30); at most 209% of the operating cost; at most 307% of the full cost; at most 63% of the full at 60% utilization cost; reference: the conventional lab (random).",
+    "af_vs_target": [
+     {
+      "target": 0.2,
+      "af": 1.4130798931296433,
+      "lo": 1.041132002027213,
+      "hi": "inf",
+      "hit_ref": 0.6,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.25,
+      "af": 1.4682445957603627,
+      "lo": 1.1937629349229653,
+      "hi": "inf",
+      "hit_ref": 0.5333333333333333,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.3,
+      "af": 1.4682445957603627,
+      "lo": 1.1937629349229653,
+      "hi": "inf",
+      "hit_ref": 0.5333333333333333,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.35,
+      "af": "inf",
+      "lo": 1.2627696740500631,
+      "hi": "inf",
+      "hit_ref": 0.4,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.4,
+      "af": "inf",
+      "lo": 1.1517355338181743,
+      "hi": "inf",
+      "hit_ref": 0.4,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.45,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.3,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.5,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.23333333333333334,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.55,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.23333333333333334,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.6,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.2,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.65,
+      "af": "inf",
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.13333333333333333,
+      "hit_new": 0.7
+     },
+     {
+      "target": 0.7,
+      "af": null,
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.0,
+      "hit_new": 0.1
+     },
+     {
+      "target": 0.75,
+      "af": null,
+      "lo": null,
+      "hi": null,
+      "hit_ref": 0.0,
+      "hit_new": 0.0
+     }
+    ],
+    "ef_vs_days": [
+     {
+      "days": 30,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 45,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 60,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 75,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 90,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 105,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 120,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 135,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 150,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 165,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 180,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 195,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 210,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 225,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 240,
+      "ef": 13.716924700914849,
+      "lo": 2.7167839549612944,
+      "hi": "inf"
+     },
+     {
+      "days": 255,
+      "ef": 6.051686895700473,
+      "lo": 2.4435291308500475,
+      "hi": 32.10960591133005
+     },
+     {
+      "days": 270,
+      "ef": 2.7113297541418,
+      "lo": 1.2643244062797205,
+      "hi": 5.705374106577399
+     },
+     {
+      "days": 285,
+      "ef": 2.9266388233157805,
+      "lo": 1.6468895353359367,
+      "hi": 5.834998388656138
+     },
+     {
+      "days": 300,
+      "ef": 3.030506627928092,
+      "lo": 1.7144551959366778,
+      "hi": 5.964806149732621
+     },
+     {
+      "days": 315,
+      "ef": 3.645965740572605,
+      "lo": 2.3191684100418417,
+      "hi": 7.0267976775346135
+     },
+     {
+      "days": 330,
+      "ef": 3.150398052837078,
+      "lo": 2.1255723086511495,
+      "hi": 5.207607759183353
+     },
+     {
+      "days": 345,
+      "ef": 2.587091401207579,
+      "lo": 1.8371658309349315,
+      "hi": 4.0190215675960035
+     },
+     {
+      "days": 360,
+      "ef": 2.274352744224979,
+      "lo": 1.700768877150918,
+      "hi": 3.2862699660680303
+     }
+    ]
+   }
+  },
+  "cost_aware on the partners -> cost_aware in the vertical lab": {
+   "flaime_al": {
+    "target": 0.4232,
+    "n_ref": 30,
+    "n_new": 10,
+    "compare": {
+     "target": 0.4232,
+     "ref": "conventional lab (cost_aware)",
+     "new": "vertical lab (cost_aware)",
+     "days": {
+      "af": 1.1496798606137697,
+      "lo": 0.7715200100403182,
+      "hi": 1.4514858695347732,
+      "median_ref": 107.556,
+      "median_new": 93.553,
+      "x": "days",
+      "target": 0.4232,
+      "hit_ref": 0.9333333333333333,
+      "hit_new": 1.0,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "experiments": {
+      "af": 0.7058823529411765,
+      "lo": 0.35294117647058826,
+      "hi": 2.4,
+      "median_ref": 6.0,
+      "median_new": 8.5,
+      "x": "experiments",
+      "target": 0.4232,
+      "hit_ref": 0.9333333333333333,
+      "hit_new": 1.0,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "cost": {
+      "cash": {
+       "ratio": 0.680334952969104,
+       "lo": 0.545754293003434,
+       "hi": 0.9185870272536765,
+       "median_ref": 39918.44,
+       "median_new": 27157.91,
+       "bounded": false,
+       "hit_ref": 0.9333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "operating": {
+       "ratio": 1.7503666752733071,
+       "lo": 1.4440407387030243,
+       "hi": 2.5940214951905216,
+       "median_ref": 77227.8095922379,
+       "median_new": 135176.98431460548,
+       "bounded": false,
+       "hit_ref": 0.9333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full": {
+       "ratio": 2.6704967089488743,
+       "lo": 2.2032851175841164,
+       "hi": 3.969601798900378,
+       "median_ref": 92990.40991323421,
+       "median_new": 248330.58363709872,
+       "bounded": false,
+       "hit_ref": 0.9333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full at 60% utilization": {
+       "ratio": 0.5775079775393163,
+       "lo": 0.4608595998539003,
+       "hi": 0.8369463108088931,
+       "median_ref": 92990.40991323421,
+       "median_new": 53702.70355954388,
+       "bounded": false,
+       "hit_ref": 0.9333333333333333,
+       "hit_new": 1.0,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      }
+     }
+    },
+    "headline": "FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) 1.1x faster (95% CI 0.77-1.5) (reached in 100% of 10 seeds against 93% of 30); at 175% of the operating cost (95% CI 144%-259%); at 267% of the full cost (95% CI 220%-397%); at 58% of the full at 60% utilization cost (95% CI 46%-84%); reference: the conventional lab (cost_aware).",
+    "af_vs_target": [
+     {
+      "target": 0.2,
+      "af": 1.1817472448772355,
+      "lo": 0.7864045852116728,
+      "hi": 1.4523709983619928,
+      "hit_ref": 1.0,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.25,
+      "af": 1.1496798606137697,
+      "lo": 0.7848434108527131,
+      "hi": 1.4376952525929545,
+      "hit_ref": 0.9666666666666667,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.3,
+      "af": 1.1496798606137697,
+      "lo": 0.7848434108527131,
+      "hi": 1.4376952525929545,
+      "hit_ref": 0.9666666666666667,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.35,
+      "af": 1.1496798606137697,
+      "lo": 0.7848434108527131,
+      "hi": 1.4376952525929545,
+      "hit_ref": 0.9666666666666667,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.4,
+      "af": 1.1496798606137697,
+      "lo": 0.7848434108527131,
+      "hi": 1.4376952525929545,
+      "hit_ref": 0.9333333333333333,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.45,
+      "af": 1.1496798606137697,
+      "lo": 0.7848434108527131,
+      "hi": 1.4376952525929545,
+      "hit_ref": 0.9333333333333333,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.5,
+      "af": 1.213814629140701,
+      "lo": 0.7883545528508917,
+      "hi": 1.4866030000822261,
+      "hit_ref": 0.8666666666666667,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.55,
+      "af": 1.2352783983410474,
+      "lo": 0.7503610322382603,
+      "hi": 1.5510437072689767,
+      "hit_ref": 0.8666666666666667,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.6,
+      "af": 1.8731567828258042,
+      "lo": 0.8262109193992423,
+      "hi": "inf",
+      "hit_ref": 0.5666666666666667,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.65,
+      "af": 1.2875490968961694,
+      "lo": 0.7922198424713441,
+      "hi": "inf",
+      "hit_ref": 0.5,
+      "hit_new": 0.8
+     },
+     {
+      "target": 0.7,
+      "af": "inf",
+      "lo": 1.1826623376623377,
+      "hi": "inf",
+      "hit_ref": 0.3333333333333333,
+      "hit_new": 0.6
+     },
+     {
+      "target": 0.75,
+      "af": null,
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.2,
+      "hit_new": 0.2
+     }
+    ],
+    "ef_vs_days": [
+     {
+      "days": 30,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 45,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 60,
+      "ef": 1.1949390815370196,
+      "lo": 0.0,
+      "hi": "inf"
+     },
+     {
+      "days": 75,
+      "ef": 0.7654943729903537,
+      "lo": 0.0,
+      "hi": 2.5401568920433317
+     },
+     {
+      "days": 90,
+      "ef": 0.9026771885832291,
+      "lo": 0.0,
+      "hi": 2.13027466937945
+     },
+     {
+      "days": 105,
+      "ef": 1.354406517201912,
+      "lo": 0.59859025997803,
+      "hi": 2.6624792932081722
+     },
+     {
+      "days": 120,
+      "ef": 1.2929518834428435,
+      "lo": 0.8164310354811757,
+      "hi": 1.9967855534171404
+     },
+     {
+      "days": 135,
+      "ef": 1.0438547357183805,
+      "lo": 0.6906597419459547,
+      "hi": 1.4422705314009663
+     },
+     {
+      "days": 150,
+      "ef": 1.0839275738556076,
+      "lo": 0.7001701802521446,
+      "hi": 1.5039019349321172
+     },
+     {
+      "days": 165,
+      "ef": 1.1446210893405557,
+      "lo": 0.7939832755455842,
+      "hi": 1.4917628852813685
+     },
+     {
+      "days": 180,
+      "ef": 1.0687829460511131,
+      "lo": 0.7628646573354696,
+      "hi": 1.3529715061058345
+     },
+     {
+      "days": 195,
+      "ef": 1.122190793448794,
+      "lo": 1.0179247434435574,
+      "hi": 1.2690248621177556
+     },
+     {
+      "days": 210,
+      "ef": 1.122190793448794,
+      "lo": 1.0179247434435574,
+      "hi": 1.2690248621177556
+     },
+     {
+      "days": 225,
+      "ef": 1.1206029345806368,
+      "lo": 1.016559542486968,
+      "hi": 1.265152431125313
+     },
+     {
+      "days": 240,
+      "ef": 1.1206029345806368,
+      "lo": 1.016559542486968,
+      "hi": 1.265152431125313
+     },
+     {
+      "days": 255,
+      "ef": 1.120955340552316,
+      "lo": 1.016559542486968,
+      "hi": 1.2659124276707836
+     },
+     {
+      "days": 270,
+      "ef": 1.120955340552316,
+      "lo": 1.016559542486968,
+      "hi": 1.2659124276707836
+     },
+     {
+      "days": 285,
+      "ef": 1.120955340552316,
+      "lo": 1.016559542486968,
+      "hi": 1.2659124276707836
+     },
+     {
+      "days": 300,
+      "ef": 1.120955340552316,
+      "lo": 1.016559542486968,
+      "hi": 1.2659124276707836
+     },
+     {
+      "days": 315,
+      "ef": 1.1065623023402906,
+      "lo": 1.016495922854692,
+      "hi": 1.222152082302561
+     },
+     {
+      "days": 330,
+      "ef": 1.1055134281200631,
+      "lo": 1.0157709733239337,
+      "hi": 1.2215268659516056
+     },
+     {
+      "days": 345,
+      "ef": 1.112401263823065,
+      "lo": 1.0160450997398092,
+      "hi": 1.227877789046653
+     },
+     {
+      "days": 360,
+      "ef": 1.112401263823065,
+      "lo": 1.0160450997398092,
+      "hi": 1.227877789046653
+     }
+    ]
+   },
+   "onr_cu": {
+    "target": 0.5559,
+    "n_ref": 30,
+    "n_new": 10,
+    "compare": {
+     "target": 0.5559,
+     "ref": "conventional lab (cost_aware)",
+     "new": "vertical lab (cost_aware)",
+     "days": {
+      "af": 1.241676449586697,
+      "lo": 0.9573133593375407,
+      "hi": "inf",
+      "median_ref": 307.788,
+      "median_new": 247.881,
+      "x": "days",
+      "target": 0.5559,
+      "hit_ref": 0.6333333333333333,
+      "hit_new": 0.9,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "experiments": {
+      "af": 1.5,
+      "lo": 0.6666666666666666,
+      "hi": 2.0,
+      "median_ref": 3.0,
+      "median_new": 2.0,
+      "x": "experiments",
+      "target": 0.5559,
+      "hit_ref": 0.6333333333333333,
+      "hit_new": 0.9,
+      "n_ref": 30,
+      "n_new": 10,
+      "bounded": false,
+      "af_bound": null,
+      "bound_kind": null,
+      "median_ref_bound": null,
+      "median_new_bound": null
+     },
+     "cost": {
+      "cash": {
+       "ratio": 1.0077487270229053,
+       "lo": 0.0,
+       "hi": 1.2558965486236657,
+       "median_ref": 45821.72,
+       "median_new": 46176.78,
+       "bounded": false,
+       "hit_ref": 0.6333333333333333,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "operating": {
+       "ratio": 2.7104331531121755,
+       "lo": 0.0,
+       "hi": 3.3799422260206415,
+       "median_ref": 60517.17325528818,
+       "median_new": 164027.75272376655,
+       "bounded": false,
+       "hit_ref": 0.6333333333333333,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full": {
+       "ratio": 3.952747419074462,
+       "lo": 0.0,
+       "hi": 4.917288563752364,
+       "median_ref": 69387.91146603493,
+       "median_new": 274272.8879623368,
+       "bounded": false,
+       "hit_ref": 0.6333333333333333,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      },
+      "full at 60% utilization": {
+       "ratio": 0.8150759729924509,
+       "lo": 0.0,
+       "hi": 0.991926273303558,
+       "median_ref": 69387.91146603493,
+       "median_new": 56556.419452092465,
+       "bounded": false,
+       "hit_ref": 0.6333333333333333,
+       "hit_new": 0.9,
+       "ratio_bound": null,
+       "bound_kind": null,
+       "median_ref_bound": null,
+       "median_new_bound": null
+      }
+     }
+    },
+    "headline": "ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) 1.2x faster (95% CI 0.96-unbounded) (reached in 90% of 10 seeds against 63% of 30); at 271% of the operating cost (95% CI 0%-338%); at 395% of the full cost (95% CI 0%-492%); at 82% of the full at 60% utilization cost (95% CI 0%-99%); reference: the conventional lab (cost_aware).",
+    "af_vs_target": [
+     {
+      "target": 0.2,
+      "af": 1.1158781208908097,
+      "lo": 0.9393253594757416,
+      "hi": 1.5032100335910634,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.25,
+      "af": 1.1158781208908097,
+      "lo": 0.9393253594757416,
+      "hi": 1.5032100335910634,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.3,
+      "af": 1.1158781208908097,
+      "lo": 0.9393253594757416,
+      "hi": 1.5032100335910634,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.35,
+      "af": 1.089401976716851,
+      "lo": 0.9297795137852181,
+      "hi": 1.27967593292945,
+      "hit_ref": 0.9,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.4,
+      "af": 1.0006759674784533,
+      "lo": 0.8435487314805077,
+      "hi": 1.2590005073130466,
+      "hit_ref": 0.8666666666666667,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.45,
+      "af": 1.0839701823234502,
+      "lo": 0.8491798681287863,
+      "hi": 1.3486067503924648,
+      "hit_ref": 0.8333333333333334,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.5,
+      "af": 1.0675913046498153,
+      "lo": 0.910849225811384,
+      "hi": 1.2787796166308933,
+      "hit_ref": 0.7333333333333333,
+      "hit_new": 1.0
+     },
+     {
+      "target": 0.55,
+      "af": 1.241676449586697,
+      "lo": 0.9416841145858231,
+      "hi": 1.4079255771922818,
+      "hit_ref": 0.6666666666666666,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.6,
+      "af": 1.1367222123736929,
+      "lo": 0.9620912879474213,
+      "hi": "inf",
+      "hit_ref": 0.6333333333333333,
+      "hit_new": 0.9
+     },
+     {
+      "target": 0.65,
+      "af": "inf",
+      "lo": 0.9327308614126605,
+      "hi": "inf",
+      "hit_ref": 0.43333333333333335,
+      "hit_new": 0.7
+     },
+     {
+      "target": 0.7,
+      "af": null,
+      "lo": "inf",
+      "hi": "inf",
+      "hit_ref": 0.13333333333333333,
+      "hit_new": 0.1
+     },
+     {
+      "target": 0.75,
+      "af": null,
+      "lo": null,
+      "hi": null,
+      "hit_ref": 0.03333333333333333,
+      "hit_new": 0.0
+     }
+    ],
+    "ef_vs_days": [
+     {
+      "days": 30,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 45,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 60,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 75,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 90,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 105,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 120,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 135,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 150,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 165,
+      "ef": "inf",
+      "lo": "inf",
+      "hi": "inf"
+     },
+     {
+      "days": 180,
+      "ef": 6.975928008998875,
+      "lo": 0.0,
+      "hi": "inf"
+     },
+     {
+      "days": 195,
+      "ef": 10.21822272215973,
+      "lo": 1.1686164229471316,
+      "hi": "inf"
+     },
+     {
+      "days": 210,
+      "ef": 2.7976593778872805,
+      "lo": 0.3350209609803289,
+      "hi": "inf"
+     },
+     {
+      "days": 225,
+      "ef": 2.2310639552018863,
+      "lo": 0.31995688327687094,
+      "hi": 12.592081218274114
+     },
+     {
+      "days": 240,
+      "ef": 2.7637091914501437,
+      "lo": 0.8704372893743147,
+      "hi": 9.26000485083677
+     },
+     {
+      "days": 255,
+      "ef": 4.171032575945553,
+      "lo": 1.6799928874136854,
+      "hi": 12.696211644020517
+     },
+     {
+      "days": 270,
+      "ef": 1.336388415672913,
+      "lo": 0.6599720223820945,
+      "hi": 2.306290861542932
+     },
+     {
+      "days": 285,
+      "ef": 1.5973592635010134,
+      "lo": 1.0099232912400042,
+      "hi": 2.6203424510015076
+     },
+     {
+      "days": 300,
+      "ef": 1.1030241165584702,
+      "lo": 0.7538640215534413,
+      "hi": 1.5032860656580438
+     },
+     {
+      "days": 315,
+      "ef": 1.1730434669713337,
+      "lo": 0.9638304763961308,
+      "hi": 1.438785541727951
+     },
+     {
+      "days": 330,
+      "ef": 1.2099280743664313,
+      "lo": 1.0137178450858257,
+      "hi": 1.4741535035262094
+     },
+     {
+      "days": 345,
+      "ef": 1.1782476768443013,
+      "lo": 0.9938074943663741,
+      "hi": 1.41956366126171
+     },
+     {
+      "days": 360,
+      "ef": 1.1793148347971814,
+      "lo": 1.0476361695553245,
+      "hi": 1.4023359840954273
+     }
+    ]
+   }
+  }
+ },
+ "headline": [
+  "FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) 1.9x faster (95% CI 1.2-unbounded) (reached in 100% of 10 seeds against 65% of 20); at 169% of the operating cost (95% CI 53%-257%); at 233% of the full cost (95% CI 0%-359%); at 50% of the full at 60% utilization cost (95% CI 0%-78%); reference: the conventional lab (tiered).",
+  "ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) 1.3x faster (95% CI 0.91-unbounded) (reached in 90% of 10 seeds against 55% of 20); at 262% of the operating cost (95% CI 0%-334%); at 385% of the full cost (95% CI 0%-498%); at 79% of the full at 60% utilization cost (95% CI 0%-97%); reference: the conventional lab (tiered).",
+  "FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) at least 3.9x faster: the conventional lab (random) reached it in fewer than half its seeds within the horizon (reached in 100% of 10 seeds against 13% of 30); at most 55% of the operating cost; at most 83% of the full cost; at most 18% of the full at 60% utilization cost; reference: the conventional lab (random).",
+  "ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) at least 1.5x faster: the conventional lab (random) reached it in fewer than half its seeds within the horizon (reached in 90% of 10 seeds against 23% of 30); at most 209% of the operating cost; at most 307% of the full cost; at most 63% of the full at 60% utilization cost; reference: the conventional lab (random).",
+  "FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) 1.1x faster (95% CI 0.77-1.5) (reached in 100% of 10 seeds against 93% of 30); at 175% of the operating cost (95% CI 144%-259%); at 267% of the full cost (95% CI 220%-397%); at 58% of the full at 60% utilization cost (95% CI 46%-84%); reference: the conventional lab (cost_aware).",
+  "ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) 1.2x faster (95% CI 0.96-unbounded) (reached in 90% of 10 seeds against 63% of 30); at 271% of the operating cost (95% CI 0%-338%); at 395% of the full cost (95% CI 0%-492%); at 82% of the full at 60% utilization cost (95% CI 0%-99%); reference: the conventional lab (cost_aware)."
+ ],
+ "value_per_capex_dollar": {
+  "note": "a year's demonstrated alloys valued at what the conventional lab pays for one (its full cost per alloy), plus outside users' net revenue, over the vertical lab's capex",
+  "experiments_per_yr": 43.3,
+  "value_of_an_experiment": 11658.36987190854,
+  "without_outside": 0.09352270577771005,
+  "with_outside_demand_limited": 0.5459592681657747,
+  "with_outside_capacity": 2.050182274197356
+ },
+ "assumptions": [
+  "Prices: procurement records and list prices where cited in econ.py's tables; estimates and assumptions marked so (zwickiLine, MX-Lab installation, fit-out, couplings, the CubXL bundle, hoods).",
+  "Depreciation straight-line over 5-20 years (BYU capitalizes equipment over 3-10 years, buildings over 40); service contracts 2-10 % of the price a year (8-15 % for full service on analytical instruments).",
+  "Labour: the conventional lab's hands-on hours per booking (econ.HANDS_ON, assumed) at a BYU PhD student's stipend and tuition over 1,500 research hours; the vertical lab's one day-shift technician (upkeep.py) and a quarter of a research engineer, at BLS Provo-Orem means plus an assumed 35 % fringe. Design and analysis time is excluded from both.",
+  "The conventional lab's in-house stations that the twin leaves free (Instron frames, hardness, metallography) carry no charge; BYU's internal core-facility rates are subsidised (BYU EM: operating cost about $300/h).",
+  "Outside work: catalogue rates from published user-facility rate sheets; demand is not modelled beyond a cap and an assumed 20 h a week per instrument; handling 0.25 h of a technician and 10 % consumables a job."
+ ],
+ "key_numbers": {
+  "capex_vertical": 5397699.0,
+  "capex_conventional": 543000.0,
+  "fixed_per_year_vertical": 1184047.1669428572,
+  "fixed_per_year_conventional": 121470.4504,
+  "cost_per_alloy|both|conventional, no capex": 9608.176945863524,
+  "cost_per_alloy|both|conventional, with capex": 11658.36987190854,
+  "cost_per_alloy|both|vertical lab, campaigns only, no capex": 16807.70512548114,
+  "cost_per_alloy|both|vertical lab, campaigns only, with capex": 30662.369262729568,
+  "cost_per_alloy|both|vertical lab, 60% utilized, no capex": 4610.233199974105,
+  "cost_per_alloy|both|vertical lab, 60% utilized, with capex": 5913.535563565998,
+  "cost_per_alloy|flaime_al|conventional, no capex": 8094.399778380305,
+  "cost_per_alloy|flaime_al|conventional, with capex": 10007.462137169514,
+  "cost_per_alloy|flaime_al|vertical lab, campaigns only, no capex": 12839.22060544086,
+  "cost_per_alloy|flaime_al|vertical lab, campaigns only, with capex": 24070.40346237272,
+  "cost_per_alloy|flaime_al|vertical lab, 60% utilized, no capex": 3437.092268315434,
+  "cost_per_alloy|flaime_al|vertical lab, 60% utilized, with capex": 4719.9574031409975,
+  "cost_per_alloy|onr_cu|conventional, no capex": 21806.57547995159,
+  "cost_per_alloy|onr_cu|conventional, with capex": 24961.801132426892,
+  "cost_per_alloy|onr_cu|vertical lab, campaigns only, no capex": 53752.406252522786,
+  "cost_per_alloy|onr_cu|vertical lab, campaigns only, with capex": 92030.43183271836,
+  "cost_per_alloy|onr_cu|vertical lab, 60% utilized, no capex": 15531.61663517746,
+  "cost_per_alloy|onr_cu|vertical lab, 60% utilized, with capex": 17025.179866570168,
+  "capex_weighted_utilization_campaigns": 0.04396194186236138,
+  "atomizer_utilization_campaigns": 0.3727,
+  "outside_capacity_jobs_per_yr": 106854.30848398269,
+  "outside_capacity_revenue_per_yr": 13165168.854588311,
+  "outside_capacity_net_per_yr": 10561459.395799154,
+  "outside_capacity_net_x_depreciation": 17.605162384013045,
+  "outside_capacity_net_x_fixed": 8.919796179292625,
+  "outside_demand_limited_jobs_per_yr": 26983.20878160173,
+  "outside_demand_limited_revenue_per_yr": 3078063.0266883103,
+  "outside_demand_limited_net_per_yr": 2442116.380365494,
+  "outside_demand_limited_net_x_depreciation": 4.070825235960629,
+  "outside_demand_limited_net_x_fixed": 2.062516129886025,
+  "outside_cap": 0.6,
+  "outside_demand_h_week": 20.0,
+  "value_per_capex_dollar_without_outside": 0.09352270577771005,
+  "value_per_capex_dollar_with_outside_demand_limited": 0.5459592681657747,
+  "slowdown|flaime_al|0|twin_cycle": 1.0,
+  "slowdown|flaime_al|0|twin_days_to_target": 1.0,
+  "slowdown|flaime_al|0|kingman": 1.0,
+  "slowdown|flaime_al|0.25|twin_cycle": 0.9735090641326274,
+  "slowdown|flaime_al|0.25|twin_days_to_target": 1.000827787871295,
+  "slowdown|flaime_al|0.25|kingman": 1.0067753105751434,
+  "slowdown|flaime_al|0.5|twin_cycle": 1.0566325509459977,
+  "slowdown|flaime_al|0.5|twin_days_to_target": 1.0197809049764026,
+  "slowdown|flaime_al|0.5|kingman": 1.0828622647027726,
+  "slowdown|flaime_al|0.7|twin_cycle": 1.4018363143222266,
+  "slowdown|flaime_al|0.7|twin_days_to_target": 1.246508777776583,
+  "slowdown|flaime_al|0.7|kingman": 1.270492591349109,
+  "slowdown|flaime_al|0.85|twin_cycle": 2.2156274096401773,
+  "slowdown|flaime_al|0.85|twin_days_to_target": 1.4490587944398454,
+  "slowdown|flaime_al|0.85|kingman": 1.727468453142716,
+  "slowdown|onr_cu|0|twin_cycle": 1.0,
+  "slowdown|onr_cu|0|twin_days_to_target": 1.0,
+  "slowdown|onr_cu|0|kingman": 1.0,
+  "slowdown|onr_cu|0.25|twin_cycle": 1.0861461864611959,
+  "slowdown|onr_cu|0.25|twin_days_to_target": 0.9289521586931154,
+  "slowdown|onr_cu|0.25|kingman": 1.0019442735582735,
+  "slowdown|onr_cu|0.5|twin_cycle": 1.0197337125300052,
+  "slowdown|onr_cu|0.5|twin_days_to_target": 0.9577736289381563,
+  "slowdown|onr_cu|0.5|kingman": 1.0399556113682835,
+  "slowdown|onr_cu|0.7|twin_cycle": 1.1061340772961155,
+  "slowdown|onr_cu|0.7|twin_days_to_target": 1.0647887981330222,
+  "slowdown|onr_cu|0.7|kingman": 1.1361234359050365,
+  "slowdown|onr_cu|0.85|twin_cycle": 1.5516022765397102,
+  "slowdown|onr_cu|0.85|twin_days_to_target": 1.1701890315052508,
+  "slowdown|onr_cu|0.85|kingman": 1.3696880382039074,
+  "af_days|tiered on the partners -> cost_aware in the vertical lab|flaime_al": 1.8990304960824347,
+  "af_days_kind|tiered on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "af_days_ci|tiered on the partners -> cost_aware in the vertical lab|flaime_al": [
+   1.1649007785517769,
+   "inf"
+  ],
+  "cost_ratio|cash|tiered on the partners -> cost_aware in the vertical lab|flaime_al": 0.973466340958092,
+  "cost_ratio_kind|cash|tiered on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "cost_ratio|operating|tiered on the partners -> cost_aware in the vertical lab|flaime_al": 1.6919523903608535,
+  "cost_ratio_kind|operating|tiered on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "cost_ratio|full|tiered on the partners -> cost_aware in the vertical lab|flaime_al": 2.3304063407343367,
+  "cost_ratio_kind|full|tiered on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "cost_ratio|full at 60% utilization|tiered on the partners -> cost_aware in the vertical lab|flaime_al": 0.5039617716705642,
+  "cost_ratio_kind|full at 60% utilization|tiered on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "af_days|tiered on the partners -> cost_aware in the vertical lab|onr_cu": 1.2828090898455307,
+  "af_days_kind|tiered on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "af_days_ci|tiered on the partners -> cost_aware in the vertical lab|onr_cu": [
+   0.9058940698358376,
+   "inf"
+  ],
+  "cost_ratio|cash|tiered on the partners -> cost_aware in the vertical lab|onr_cu": 0.9418852194686441,
+  "cost_ratio_kind|cash|tiered on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "cost_ratio|operating|tiered on the partners -> cost_aware in the vertical lab|onr_cu": 2.6154612950028815,
+  "cost_ratio_kind|operating|tiered on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "cost_ratio|full|tiered on the partners -> cost_aware in the vertical lab|onr_cu": 3.851911828821704,
+  "cost_ratio_kind|full|tiered on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "cost_ratio|full at 60% utilization|tiered on the partners -> cost_aware in the vertical lab|onr_cu": 0.7942831779757689,
+  "cost_ratio_kind|full at 60% utilization|tiered on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "af_days|random on the partners -> cost_aware in the vertical lab|flaime_al": 3.901531752054985,
+  "af_days_kind|random on the partners -> cost_aware in the vertical lab|flaime_al": "lower",
+  "af_days_ci|random on the partners -> cost_aware in the vertical lab|flaime_al": [
+   "inf",
+   "inf"
+  ],
+  "cost_ratio|cash|random on the partners -> cost_aware in the vertical lab|flaime_al": 0.2265781809110712,
+  "cost_ratio_kind|cash|random on the partners -> cost_aware in the vertical lab|flaime_al": "upper",
+  "cost_ratio|operating|random on the partners -> cost_aware in the vertical lab|flaime_al": 0.5538844209915166,
+  "cost_ratio_kind|operating|random on the partners -> cost_aware in the vertical lab|flaime_al": "upper",
+  "cost_ratio|full|random on the partners -> cost_aware in the vertical lab|flaime_al": 0.8328872848204116,
+  "cost_ratio_kind|full|random on the partners -> cost_aware in the vertical lab|flaime_al": "upper",
+  "cost_ratio|full at 60% utilization|random on the partners -> cost_aware in the vertical lab|flaime_al": 0.18011594987667032,
+  "cost_ratio_kind|full at 60% utilization|random on the partners -> cost_aware in the vertical lab|flaime_al": "upper",
+  "af_days|random on the partners -> cost_aware in the vertical lab|onr_cu": 1.4724807468099612,
+  "af_days_kind|random on the partners -> cost_aware in the vertical lab|onr_cu": "lower",
+  "af_days_ci|random on the partners -> cost_aware in the vertical lab|onr_cu": [
+   "inf",
+   "inf"
+  ],
+  "cost_ratio|cash|random on the partners -> cost_aware in the vertical lab|onr_cu": 0.7694398760278937,
+  "cost_ratio_kind|cash|random on the partners -> cost_aware in the vertical lab|onr_cu": "upper",
+  "cost_ratio|operating|random on the partners -> cost_aware in the vertical lab|onr_cu": 2.092697337916574,
+  "cost_ratio_kind|operating|random on the partners -> cost_aware in the vertical lab|onr_cu": "upper",
+  "cost_ratio|full|random on the partners -> cost_aware in the vertical lab|onr_cu": 3.0708273462152995,
+  "cost_ratio_kind|full|random on the partners -> cost_aware in the vertical lab|onr_cu": "upper",
+  "cost_ratio|full at 60% utilization|random on the partners -> cost_aware in the vertical lab|onr_cu": 0.6332197132126217,
+  "cost_ratio_kind|full at 60% utilization|random on the partners -> cost_aware in the vertical lab|onr_cu": "upper",
+  "af_days|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": 1.1496798606137697,
+  "af_days_kind|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "af_days_ci|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": [
+   0.7715200100403182,
+   1.4514858695347732
+  ],
+  "cost_ratio|cash|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": 0.680334952969104,
+  "cost_ratio_kind|cash|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "cost_ratio|operating|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": 1.7503666752733071,
+  "cost_ratio_kind|operating|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "cost_ratio|full|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": 2.6704967089488743,
+  "cost_ratio_kind|full|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "cost_ratio|full at 60% utilization|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": 0.5775079775393163,
+  "cost_ratio_kind|full at 60% utilization|cost_aware on the partners -> cost_aware in the vertical lab|flaime_al": "estimate",
+  "af_days|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": 1.241676449586697,
+  "af_days_kind|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "af_days_ci|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": [
+   0.9573133593375407,
+   "inf"
+  ],
+  "cost_ratio|cash|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": 1.0077487270229053,
+  "cost_ratio_kind|cash|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "cost_ratio|operating|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": 2.7104331531121755,
+  "cost_ratio_kind|operating|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "cost_ratio|full|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": 3.952747419074462,
+  "cost_ratio_kind|full|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": "estimate",
+  "cost_ratio|full at 60% utilization|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": 0.8150759729924509,
+  "cost_ratio_kind|full at 60% utilization|cost_aware on the partners -> cost_aware in the vertical lab|onr_cu": "estimate"
+ }
+}

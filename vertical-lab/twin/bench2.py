@@ -23,7 +23,7 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE.parent / "out" / "twin2"
+OUT = Path(os.environ.get("TWIN_OUT", HERE.parent / "out" / "twin2"))
 RUNS = OUT / "runs"
 EVENTS = OUT / "events"
 BUDGET = {"flaime_al": 120_000.0, "onr_cu": 60_000.0}
@@ -41,21 +41,22 @@ def _cfg(policy, seed, facility="vertical_lab", stock="stocked", days=365, years
 EXPERIMENTS = {
     # development: every policy, two seeds, stand-in instruments (TWIN_INSTRUMENTS=stub)
     "dev": [_cfg(p, s, events=(s == 0)) for p in MAIN_POL for s in range(2)],
-    # the vertical lab, stocked, every instrument: each policy for a year
-    "main": [_cfg(p, s, events=(s == 0)) for p in MAIN_POL for s in range(10)],
-    # a conventional lab: the proposals' partners and BYU's core facilities, day shifts, order-as-needed, three years
+    # the vertical lab, stocked, every instrument: each policy for a year (default GP surrogates)
+    "main": [_cfg(p, s, events=(s == 0)) for p in MAIN_POL + ("bofn_blend",) for s in range(12)],
+    # a conventional lab: the proposals' partners and BYU's core facilities, day shifts, order-as-needed, three
+    # years at three years' money
     "conventional": [_cfg(p, s, facility="proposed", stock="lean", days=1095, years_budget=3.0, events=(s == 0))
                      for p in ("random", "sobol", "heuristic", "tiered", "gpbo", "bofn") for s in range(8)],
+    # after the default runs: SAAS priors (MAP; BOFN with SAAS nodes; fully Bayesian SAASBO with NUTS)
+    "saas": [_cfg(p, s) for p in ("saasmap", "bofn_saas", "saasbo") for s in range(10)],
     # the vertical lab ordering each charge's metal as it goes (as DAL does now) instead of keeping stock
     "stock": [_cfg(p, s, stock="lean") for p in ("heuristic", "bofn") for s in range(6)],
     # the 400 cm3 crucible against the 225 cm3 one, and powder reuse off
-    "crucible": [_cfg(p, s, crucible=400) for p in ("heuristic", "bofn") for s in range(6)],
+    "crucible": [_cfg(p, s, crucible=400) for p in ("heuristic", "bofn", "bofn_blend") for s in range(6)],
     "reuse": [_cfg(p, s, reuse=False) for p in ("heuristic", "bofn") for s in range(6)],
-    # copper: why the policies tie, and what separates them (more money; a larger crucible)
-    "cu": [_cfg(p, s, cu_budget=180_000.0) for p in ("heuristic", "tiered", "gpbo", "bofn") for s in range(6)],
-    # high-dimensional surrogates: SAAS at its MAP point (cheap), BOFN with SAAS nodes, and fully Bayesian SAASBO
-    "saas": [_cfg(p, s) for p in ("saasmap", "bofn_saas") for s in range(8)] +
-            [_cfg("saasbo", s) for s in range(3)],
+    # copper: what separates the policies when money is not the limit
+    "cu": [_cfg(p, s, cu_budget=180_000.0) for p in ("heuristic", "tiered", "gpbo", "bofn", "bofn_blend")
+           for s in range(6)],
 }
 
 

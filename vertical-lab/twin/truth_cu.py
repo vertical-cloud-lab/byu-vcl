@@ -176,6 +176,43 @@ class CuTruth:
                     temper=MODES[mode]["temper"], pores=dict(lof=lof, keyhole=kh, gas=gas),
                     oxygen_ppm=lot["oxygen_ppm"], carbon_ppm=lot.get("carbon_ppm", 0.0), proc=dict(proc))
 
+    # round 2: blended elemental powders alloyed in the melt pool (the MX-Lab's hoppers; bottleneck.py's DED front
+    # end). How readily each addition dissolves in a copper melt pool, 0 (at once) to 1 (barely), assumed: Fe and Cr
+    # have miscibility gaps or slow dissolution in liquid Cu, Nb and Ti are refractory, Ni and Mn dissolve fast,
+    # Al and Si melt.
+    BLEND_K = dict(Ni=0.25, Al=0.0, Fe=1.0, Mn=0.08, Cr=1.0, Si=0.1, Nb=1.0, Ti=0.5)
+    BLEND_TM = dict(Ni=1455.0, Al=660.0, Fe=1538.0, Mn=1246.0, Cr=1907.0, Si=1414.0, Nb=2477.0, Ti=1668.0)
+
+    def blend_deposit(self, comp, proc, rng, oxygen_ppm=900.0):
+        """Blocks deposited from a blend of elemental powders mixed to the design's composition. The pool alloys
+        most of it; what does not dissolve stays as particles and composition swings (``inhomogeneity``), which
+        add porosity, lower ductility and set up galvanic couples in seawater. Thermal history as blown_small."""
+        lot = dict(composition=dict(comp), oxygen_ppm=oxygen_ppm, satellite_frac=0.0, carbon_ppm=40.0)
+        part = self.deposit(lot, proc, "blown_small", rng)
+        mp = self.melt_pool(comp, proc, "blown_small")
+        T_pool = self.thermo(comp)["liquidus_C"] + float(np.clip(150.0 * (mp["ratio"] - 1.0), 0.0, 600.0))
+        und, inh = {}, 0.0
+        for el, w in comp.items():
+            if el == "Cu" or w <= 0:
+                continue
+            k = self.BLEND_K.get(el, 0.3)
+            f = k / (1.0 + math.exp((T_pool - self.BLEND_TM.get(el, 1400.0) + 150.0) / 120.0))
+            f = float(np.clip(f + rng.normal(0, 0.03), 0.0, 1.0))
+            und[el] = w * f
+            inh += (w / 100.0) * f + 0.002 * w * k
+        achieved = {e: (w - und.get(e, 0.0)) if e != "Cu" else w for e, w in part["composition"].items()}
+        achieved["Cu"] = 100.0 - sum(v for e, v in achieved.items() if e != "Cu")
+        th = self.thermo(achieved)
+        part.update(composition=achieved, thermo=th, blend=True, inhomogeneity=inh, undissolved=und,
+                    beta_prime=float(np.clip(th["beta_900"] * _retain(mp["cool"]) * (1 - MODES["blown_small"]["temper"])
+                                             * self.kappa_beta * (1 + rng.normal(0, 0.1)), 0, 1)))
+        part["porosity"] = min(part["porosity"] + 0.006 + 0.05 * inh, 0.4)
+        part["rel_density"] = 1 - part["porosity"]
+        part["pores"] = dict(part.get("pores", {}), gas=part.get("pores", {}).get("gas", 0) + 0.006 + 0.05 * inh)
+        part["crack_density"] = part["crack_density"] * (1 + 2 * inh)
+        part["crack_free"] = part["crack_density"] < 0.05
+        return part
+
     def strength(self, part):
         c, th = part["composition"], part["thermo"]
         fe_ss = min(c.get("Fe", 0), 2.3 + 0.3 * c.get("Al", 0))
@@ -190,6 +227,8 @@ class CuTruth:
             * math.exp(-3 * max(c.get("Fe", 0) - fe_ss, 0))
         ys_m = ys * (1 - 1.5 * por) * (1 - 0.4 * crack_frac)
         el_m = max(el * (1 - 6 * por) * (1 - 0.9 * crack_frac), 0.3)
+        if part.get("blend"):                      # undissolved particles: crack starters
+            el_m = max(el_m * math.exp(-4.0 * part.get("inhomogeneity", 0.0)), 0.3)
         return dict(ys_MPa=ys_m, uts_MPa=ys_m * (1.3 + 0.9 * el_m / (el_m + 20)), el_pct=el_m, ys_sound_MPa=ys)
 
     def corrosion(self, part):
@@ -206,6 +245,12 @@ class CuTruth:
         attack = 2.5 * (al / 9.2) ** 2 * (1 + 5 * th["kappa_700"]) + 45 * part["beta_prime"] ** 1.1
         early = 35.0 / (1 + ni / 25) * g_al ** 0.5 * (1 + 2 * part["beta_prime"])
         eb = 50 + 8 * ni + 15 * al - 300 * part["beta_prime"]
+        if part.get("blend"):                      # composition swings: local galvanic couples
+            inh = part.get("inhomogeneity", 0.0)
+            rate *= 1 + 3 * inh
+            early *= 1 + 4 * inh
+            attack += 20 * inh
+            eb -= 400 * inh
         return dict(rate_um_yr=rate, attack_um=attack, early_rate_um_yr=early, Eb_mV=eb,
                     film_days=12 * (1.5 if fe_ss < 0.5 else 1.0))
 

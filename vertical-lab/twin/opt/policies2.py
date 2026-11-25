@@ -135,7 +135,8 @@ class Base2(P1.Base):
                     B["skip"] = True
                     continue
                 if self.uses_network:
-                    acts.append(dict(kind="pip", build=bid, cube=B["bars_at"]))
+                    acts += [dict(kind="pip", build=bid, cube=B["bars_at"]),
+                             dict(kind="section", build=bid, cube=B["bars_at"])]
                     B["_await_pip"] = True
                 else:
                     acts.append(dict(kind="test", build=bid))
@@ -155,6 +156,8 @@ class Base2(P1.Base):
                     acts.append(dict(kind="large_ded", lot=lid, params=L["_best_params"]))
                     L["_stage"] = "large"
             for did, D in v["deposits"].items():
+                if D["lot"] is None:                    # a blended-powder screen (BOFNBlend handles those)
+                    continue
                 L = v["lots"][D["lot"]]
                 if D["mode"] == "blown_small" and not D.get("_seen"):
                     D["_seen"] = True
@@ -437,6 +440,7 @@ class BOFN(Base2):
         if self.al:
             self.nodes = {"atomize": [Node("gp", 8, seed=seed)],
                           "print": [Node(k, 24, max_n=400, seed=seed), Node(k, 24, max_n=400, seed=seed)],
+                          "section": [Node(k, 6, seed=seed), Node(k, 6, seed=seed)],
                           "pip": [Node(k, 6, seed=seed) for _ in range(3)],
                           "test": [Node("gp", 4, seed=seed) for _ in range(2)]}
         else:
@@ -530,18 +534,22 @@ class BOFN(Base2):
                 for m in B["measured"]:
                     x = np.concatenate([comp, sf, self.proc_vec(dict(v["design_inputs"][did], **m["params"])), pf])
                     add("print", x, [float(logit(m["rel_density"])), math.log10(m["crack_density"] + 0.01)])
-                pm = B.get("pip")
-                if isinstance(pm, dict):
-                    mb = B["measured"][pm.get("index", B["bars_at"])]
-                    po = [float(logit(mb["rel_density"])), math.log10(mb["crack_density"] + 0.01)]
-                    add("pip", np.concatenate([comp, po]), [pm["ys_MPa"] / 400, pm["uts_MPa"] / 500, pm["ue_pct"] / 20])
+                pm, sc = B.get("pip"), B.get("section")
+                mb = B["measured"][B["bars_at"]]
+                po = [float(logit(mb["rel_density"])), math.log10(mb["crack_density"] + 0.01)]
+                so = self.section_out(B)
+                if so is not None:
+                    add("section", np.concatenate([comp, po]), so)
+                if isinstance(pm, dict) and so is not None:
+                    add("pip", np.concatenate([comp, po, so]), [pm["ys_MPa"] / 400, pm["uts_MPa"] / 500,
+                                                                pm["ue_pct"] / 20])
             for t in v["tests"]:
                 B = v["builds"].get(t["build"]) if t["build"] else None
-                if B is None or not isinstance(B.get("pip"), dict):
+                if B is None or not isinstance(B.get("pip"), dict) or self.section_out(B) is None:
                     continue
                 pm, mb = B["pip"], B["measured"][B["bars_at"]]
                 x = [pm["ys_MPa"] / 400, pm["uts_MPa"] / 500, pm["ue_pct"] / 20, float(logit(mb["rel_density"])),
-                     math.log10(mb["crack_density"] + 0.01)]
+                     math.log10(mb["crack_density"] + 0.01)] + self.section_out(B)
                 add("test", x, [t["measured"]["ys_MPa"] / 400, math.log(max(t["measured"]["el_pct"], 0.2))])
         else:
             small = {}
@@ -551,42 +559,57 @@ class BOFN(Base2):
                 sf = self.sim_of(v, did)
                 if sf is None:
                     continue
-                if Dd["mode"] == "blown_small":
-                    pf = self.powder_feat(v, Dd["lot"])
+                if Dd["mode"] in ("blown_small", "blend"):
+                    fl = 1.0 if Dd["mode"] == "blend" else 0.0
+                    pf = self.powder_feat(v, Dd["lot"]) if Dd["lot"] is not None else np.array([0.9])
                     for m in Dd["measured"]:
-                        x = np.concatenate([comp, sf, self.proc_vec(dict(v["design_inputs"][did], **m["params"])), pf])
+                        x = np.concatenate([comp, sf, self.proc_vec(dict(v["design_inputs"][did], **m["params"])), pf,
+                                            [fl]])
                         add("ded", x, [float(logit(m["rel_density"])), math.log10(m["crack_density"] + 0.01),
                                        m.get("beta_prime", 0.0)])
                     i = Dd["measured"].index(max(Dd["measured"], key=lambda m: m["rel_density"]))
-                    blk = Dd["measured"][v["lots"][Dd["lot"]].get("_best_block", i)] \
-                        if v["lots"][Dd["lot"]].get("_small") == did_ else Dd["measured"][i]
+                    bb = Dd.get("_best_block")
+                    if bb is None and Dd["lot"] is not None and v["lots"][Dd["lot"]].get("_small") == did_:
+                        bb = v["lots"][Dd["lot"]].get("_best_block")
+                    blk = Dd["measured"][bb if bb is not None else i]
                     do = [float(logit(blk["rel_density"])), math.log10(blk["crack_density"] + 0.01),
                           blk.get("beta_prime", 0.0)]
-                    rec = dict(do=do, comp=comp)
+                    rec = dict(do=do, comp=comp, fl=fl)
                     if isinstance(Dd.get("pip"), dict):
                         pm = Dd["pip"]
                         rec["pip"] = [pm["ys_MPa"] / 400, pm["uts_MPa"] / 600, pm["ue_pct"] / 30]
-                        add("pip", np.concatenate([comp, do]), rec["pip"])
+                        add("pip", np.concatenate([comp, do, [fl]]), rec["pip"])
                     if isinstance(Dd.get("screen"), dict):
                         sm = Dd["screen"]
                         rec["screen"] = [math.log(max(sm["early_rate_um_yr"], 0.05)), sm.get("Eb_mV", 0.0) / 500]
-                        add("screen", np.concatenate([comp, do]), rec["screen"])
-                    small[did] = rec
+                        add("screen", np.concatenate([comp, do, [fl]]), rec["screen"])
+                    small.setdefault(did, []).append(rec)
             for did_, Dd in v["deposits"].items():
                 did = Dd["design"]
                 if Dd["mode"] != "blown_large" or did not in small:
                     continue
-                rec = small[did]
                 comp = v["designs"][did]
-                if isinstance(Dd.get("tensile"), dict) and "pip" in rec:
-                    add("tensile", np.array(rec["pip"] + rec["do"]),
-                        [Dd["tensile"]["ys_MPa"] / 400, math.log(max(Dd["tensile"]["el_pct"], 0.3))])
-                if isinstance(Dd.get("immersion"), dict) and "screen" in rec:
-                    x = np.array(rec["screen"] + [rec["do"][2], comp.get("Ni", 0) / 30, comp.get("Fe", 0) / 4.5,
-                                                  comp.get("Al", 0) / 9.5])
-                    im = Dd["immersion"]
-                    add("immersion", x, [math.log(max(im["rate30_um_yr"], 0.05)), math.log(im["attack_um"] + 0.5)])
+                for rec in small[did]:
+                    if isinstance(Dd.get("tensile"), dict) and "pip" in rec:
+                        add("tensile", np.array(rec["pip"] + rec["do"] + [rec["fl"]]),
+                            [Dd["tensile"]["ys_MPa"] / 400, math.log(max(Dd["tensile"]["el_pct"], 0.3))])
+                    if isinstance(Dd.get("immersion"), dict) and "screen" in rec:
+                        x = np.array(rec["screen"] + [rec["do"][2], comp.get("Ni", 0) / 30, comp.get("Fe", 0) / 4.5,
+                                                      comp.get("Al", 0) / 9.5, rec["fl"]])
+                        im = Dd["immersion"]
+                        add("immersion", x, [math.log(max(im["rate30_um_yr"], 0.05)), math.log(im["attack_um"] + 0.5)])
         return D
+
+    @staticmethod
+    def section_out(B):
+        """EBSD on the polished section: log grain size and equiaxed share (the nucleants' signature)."""
+        sc = B.get("section")
+        if not isinstance(sc, dict):
+            return None
+        e = sc.get("ebsd") or {}
+        if e.get("grain_um") is None:
+            return None
+        return [math.log(max(e["grain_um"], 0.3)), float(e.get("equiaxed_frac", 0.0))]
 
     def fit(self, v):
         D = self.datasets(v)
@@ -607,8 +630,9 @@ class BOFN(Base2):
     def _samp(self, k, X, S):
         return [nd.sample(X, S, self.gen) for nd in self.nodes[k]]
 
-    def utility_samples_al(self, comps, X_print, S, fixed_print=None, fixed_pip=None):
-        """Utility draws (S, M) for candidates. fixed_print: (M, 2) measured print outputs; fixed_pip: (M, 3)."""
+    def utility_samples_al(self, comps, X_print, S, fixed_print=None, fixed_pip=None, fixed_section=None):
+        """Utility draws (S, M) for candidates. fixed_print: (M, 2) measured print outputs; fixed_pip: (M, 3);
+        fixed_section: (M, 2)."""
         M = len(comps)
         cf = np.array([al_cfactor(c) for c in comps])
         compf = np.array([_feat_comp(self.space, c) for c in comps])
@@ -618,25 +642,32 @@ class BOFN(Base2):
             y1 = np.broadcast_to(fixed_print[:, 0], (S, M))
             y2 = np.broadcast_to(fixed_print[:, 1], (S, M))
         dens, crack = sigm(y1), 10 ** y2 - 0.01
+        CF = np.broadcast_to(compf, (S, M, compf.shape[1]))
+        if fixed_section is None:
+            if not self.ready("section"):
+                return None
+            g1, g2 = self._samp("section", np.concatenate([CF, y1[..., None], y2[..., None]], axis=2), S)
+        else:
+            g1, g2 = (np.broadcast_to(fixed_section[:, i], (S, M)) for i in range(2))
         if fixed_pip is None:
             if self.ready("pip"):
-                Xp = np.concatenate([np.broadcast_to(compf, (S, M, compf.shape[1])), y1[..., None], y2[..., None]],
-                                    axis=2)
+                Xp = np.concatenate([CF, y1[..., None], y2[..., None], g1[..., None], g2[..., None]], axis=2)
                 p1, p2, p3 = self._samp("pip", Xp, S)
             else:
                 return None
         else:
             p1, p2, p3 = (np.broadcast_to(fixed_pip[:, i], (S, M)) for i in range(3))
         if self.ready("test"):
-            Xt = np.stack([p1, p2, p3, y1, y2], axis=2)
+            Xt = np.stack([p1, p2, p3, y1, y2, g1, g2], axis=2)
             t1, t2 = self._samp("test", Xt, S)
             ys, el = t1 * 400, np.exp(t2)
         else:                                       # before tensile data: read the PIP curve as the test
             ys, el = p1 * 400, np.maximum(p3 * 20 * 1.3, 0.2)
         return al_u(ys, el, cf[None, :], dens, crack)
 
-    def utility_samples_cu(self, comps, X_ded, S, fixed_ded=None, fixed_pip=None, fixed_screen=None):
+    def utility_samples_cu(self, comps, X_ded, S, fixed_ded=None, fixed_pip=None, fixed_screen=None, fid=0.0):
         M = len(comps)
+        FL = np.full((S, M, 1), float(fid))
         compf = np.array([_feat_comp(self.space, c) for c in comps])
         ni = np.array([c.get("Ni", 0.0) for c in comps])
         if fixed_ded is None:
@@ -645,7 +676,7 @@ class BOFN(Base2):
             d1, d2, d3 = (np.broadcast_to(fixed_ded[:, i], (S, M)) for i in range(3))
         dens, crack = sigm(d1), 10 ** d2 - 0.01
         Xn = np.concatenate([np.broadcast_to(compf, (S, M, compf.shape[1])), d1[..., None], d2[..., None],
-                             d3[..., None]], axis=2)
+                             d3[..., None], FL], axis=2)
         if fixed_pip is None:
             if not self.ready("pip"):
                 return None
@@ -659,15 +690,15 @@ class BOFN(Base2):
         else:
             s1, s2 = (np.broadcast_to(fixed_screen[:, i], (S, M)) for i in range(2))
         if self.ready("tensile"):
-            t1, t2 = self._samp("tensile", np.stack([p1, p2, p3, d1, d2, d3], axis=2), S)
+            t1, t2 = self._samp("tensile", np.concatenate([np.stack([p1, p2, p3, d1, d2, d3], axis=2), FL], axis=2), S)
             ys, el = t1 * 400, np.exp(t2)
         else:
             ys, el = p1 * 400, np.maximum(p3 * 30 * 1.2, 0.3)
         if self.ready("immersion"):
             fe = np.array([c.get("Fe", 0.0) / 4.5 for c in comps])
             al = np.array([c.get("Al", 0.0) / 9.5 for c in comps])
-            Xi = np.stack([s1, s2, d3, np.broadcast_to(ni / 30, (S, M)), np.broadcast_to(fe, (S, M)),
-                           np.broadcast_to(al, (S, M))], axis=2)
+            Xi = np.concatenate([np.stack([s1, s2, d3, np.broadcast_to(ni / 30, (S, M)), np.broadcast_to(fe, (S, M)),
+                                           np.broadcast_to(al, (S, M))], axis=2), FL], axis=2)
             i1, _ = self._samp("immersion", Xi, S)
             rate = np.exp(i1)
         else:
@@ -690,7 +721,8 @@ class BOFN(Base2):
             return None
         comp = _feat_comp(self.space, v["designs"][did])
         pf = self.powder_feat(v, lot)
-        X = np.array([np.concatenate([comp, sf, self.proc_vec(dict(v["design_inputs"][did], **p)), pf])
+        extra = [] if self.al else [[getattr(self, "_fid", 0.0)]]
+        X = np.array([np.concatenate([comp, sf, self.proc_vec(dict(v["design_inputs"][did], **p)), pf] + extra)
                       for p in params_list])
         (m1, s1), (m2, s2) = self.nodes[node][0].predict(X), self.nodes[node][1].predict(X)
         dens_t = float(logit(0.995 if self.al else 0.99))
@@ -785,8 +817,10 @@ class BOFN(Base2):
         for d in free:
             dsg = dict(v["design_inputs"][d], **{k: bp[k] for k in bp if k not in ("superheat_K", "pour_mbar",
                                                                                     "amplitude")})
-            X.append(np.concatenate([_feat_comp(self.space, v["designs"][d]), self.sim_of(v, d), self.proc_vec(dsg),
-                                     self.powder_feat(v)]))
+            row = [_feat_comp(self.space, v["designs"][d]), self.sim_of(v, d), self.proc_vec(dsg), self.powder_feat(v)]
+            if not self.al:
+                row.append([0.0])
+            X.append(np.concatenate(row))
         X = np.array(X)
         node = "print" if self.al else "ded"
         u = None
@@ -816,13 +850,15 @@ class BOFN(Base2):
         out = []
         cost = 340.0
         for bid, B in v["builds"].items():
-            if not B.get("_await_pip") or not isinstance(B.get("pip"), dict) or B.get("_decided"):
+            if not B.get("_await_pip") or not isinstance(B.get("pip"), dict) or B.get("_decided") \
+                    or self.section_out(B) is None:
                 continue
             pm, mb = B["pip"], B["measured"][B["bars_at"]]
             comp = v["designs"][B["design"]]
             fp = np.array([[float(logit(mb["rel_density"])), math.log10(mb["crack_density"] + 0.01)]])
             fpip = np.array([[pm["ys_MPa"] / 400, pm["uts_MPa"] / 500, pm["ue_pct"] / 20]])
-            u = self.utility_samples_al([comp], None, self.S, fixed_print=fp, fixed_pip=fpip)
+            fsec = np.array([self.section_out(B)])
+            u = self.utility_samples_al([comp], None, self.S, fixed_print=fp, fixed_pip=fpip, fixed_section=fsec)
             n_tests = len(self.datasets_cache_n("test", v))
             if u is None or n_tests < 6:
                 sc = 1.0                                  # learn the PIP-to-tensile link first
@@ -853,7 +889,7 @@ class BOFN(Base2):
             pm, sm = Dd["pip"], Dd["screen"]
             fp = np.array([[pm["ys_MPa"] / 400, pm["uts_MPa"] / 600, pm["ue_pct"] / 30]])
             fs = np.array([[math.log(max(sm["early_rate_um_yr"], 0.05)), sm.get("Eb_mV", 0.0) / 500]])
-            u = self.utility_samples_cu([comp], None, self.S, fixed_ded=fd, fixed_pip=fp, fixed_screen=fs)
+            u = self.utility_samples_cu([comp], None, self.S, fixed_ded=fd, fixed_pip=fp, fixed_screen=fs, fid=0.0)
             n_large = self._fitted_at.get("tensile", 0)
             runs = max(int(math.ceil((v.get("large_g", 2000) - L["remaining_g"]) / self.cut_per_run(L) * 1.15)), 0)
             cost = 450.0 + runs * 700.0
@@ -903,3 +939,124 @@ def make(name, key, seed, crucible=None):
     if name in POLICIES2:
         return POLICIES2[name](key, seed, crucible)
     return P1.POLICIES[name](key, seed)
+
+
+class BOFNBlend(BOFN):
+    """Copper: BOFN that screens each new composition as a blended-powder DED block (no atomizer: about $250 with
+    PIP and the CubXL screen), and atomizes only the compositions whose screened network posterior is worth it,
+    straight to the 1 kg deposit for bars and immersion. The network's DED, PIP and screen nodes take a fidelity
+    flag (blend or atomized), so the blend's bias is learned, not assumed. FLAIME runs plain BOFN."""
+    name = "bofn_blend"
+
+    def __init__(self, key, seed=0, crucible=None):
+        super().__init__(key, seed, crucible)
+        self.blend_state = {}            # design id -> 'blending' | 'screening' | 'promoted' | 'dropped'
+        self.blend_dep = {}              # design id -> blend deposit id
+
+    def advance2(self, v):
+        if self.al:
+            return super().advance2(v)
+        # an atomized lot of a promoted composition goes straight to the 1 kg deposit (no small deposit first)
+        for lid, L in v["lots"].items():
+            if self.blend_state.get(L["design"]) == "promoted" and L.get("_stage", "new") == "new":
+                D = v["deposits"][self.blend_dep[L["design"]]]
+                L["_best_params"], L["_small"] = D["_best_params"], None
+                self.go_large(v, L, lid)
+        acts = super().advance2(v)
+        for did_, D in v["deposits"].items():
+            if D["mode"] != "blend" or D.get("_seen"):
+                continue
+            D["_seen"] = True
+            ok = [(i, m) for i, m in enumerate(D["measured"]) if m["rel_density"] >= 0.96 and m["crack_density"] < 0.3]
+            if not ok:
+                self.blend_state[D["design"]] = "dropped"
+                continue
+            i, best = max(ok, key=lambda im: im[1]["rel_density"] - im[1].get("beta_prime", 0) * 0.05)
+            D["_best_block"], D["_best_params"] = i, best["params"]
+            self.blend_state[D["design"]] = "screening"
+            self.blend_dep[D["design"]] = did_
+            acts += [dict(kind="pip", deposit=did_, block=i), dict(kind="screen", deposit=did_, block=i)]
+        return acts
+
+    def promote_options(self, v, best):
+        out = []
+        for did, st in self.blend_state.items():
+            if st != "screening":
+                continue
+            D = v["deposits"].get(self.blend_dep.get(did))
+            if D is None or not isinstance(D.get("pip"), dict) or not isinstance(D.get("screen"), dict):
+                continue
+            comp = v["designs"][did]
+            blk = D["measured"][D["_best_block"]]
+            fd = np.array([[float(logit(blk["rel_density"])), math.log10(blk["crack_density"] + 0.01),
+                            blk.get("beta_prime", 0.0)]])
+            pm, sm = D["pip"], D["screen"]
+            fp = np.array([[pm["ys_MPa"] / 400, pm["uts_MPa"] / 600, pm["ue_pct"] / 30]])
+            fs = np.array([[math.log(max(sm["early_rate_um_yr"], 0.05)), sm.get("Eb_mV", 0.0) / 500]])
+            u = self.utility_samples_cu([comp], None, self.S, fixed_ded=fd, fixed_pip=fp, fixed_screen=fs, fid=1.0)
+            cost = self.cost_new(v, v["design_inputs"][did])
+            if u is None or self._fitted_at.get("tensile", 0) < 4:
+                # no atomized results to calibrate the blend against yet: promote the best-looking blends
+                est = float(cu_u(pm["ys_MPa"], pm["ue_pct"] * 1.2, 0.6 * sm["early_rate_um_yr"], comp.get("Ni", 0),
+                                 sigm(fd[0, 0]), 10 ** fd[0, 1] - 0.01))
+                sc = 1.0 + est if est >= max(0.3, 0.8 * best) else est * 1e-6
+            else:
+                sc = float(np.maximum(u - best, 0).mean()) / cost
+            out.append((sc, _Promote(self, did, v), None))
+        return out
+
+    def new_options(self, v, best, free):
+        if self.al:
+            return super().new_options(v, best, free)
+        free = [d for d in free if d not in self.blend_state]
+        opts = super().new_options(v, best, free)
+        out = []
+        for sc, a, x in opts:
+            did = a.pop("_did")
+            self._fid = 1.0
+            params = self._settings_design(v, did, 4, 0.15)
+            self._fid = 0.0
+            b = dict(kind="blend_ded", design=dict(v["design_inputs"][did]), params=params, _did=did)
+            out.append((sc * 3.0, b, x))          # a blend screen costs about a tenth of an atomized trial
+        return out
+
+    def _settings_design(self, v, did, n_out, scale):
+        base = self.best_proc_design(v)
+        trial = [base] + [P1.perturb(self.space, base, self.gen, 0.25) for _ in range(63)]
+        ps = self.p_sound(v, did, trial, None)
+        if ps is not None:
+            base = trial[int(np.argmax(ps))]
+        return [base] + [P1.perturb(self.space, base, self.gen, scale) for _ in range(n_out - 1)]
+
+    def propose(self, v, n):
+        if self.al:
+            return super().propose(v, n)
+        acts = super().propose(v, n)
+        # promotions compete with the rest only for slots left over
+        if len(acts) < n and self.can_start_new(v):
+            best = self.best_obs(v)
+            for sc, act, _ in sorted(self.promote_options(v, best), key=lambda o: -o[0]):
+                if len(acts) >= n or sc <= 1e-9:
+                    break
+                acts.append(act.take())
+        for a in acts:
+            if a.get("kind") == "blend_ded":
+                self.blend_state[a.pop("_did")] = "blending"
+        return acts
+
+
+class _Promote:
+    def __init__(self, pol, did, v):
+        self.pol, self.did, self.v = pol, did, v
+
+    def take(self):
+        pol, v, did = self.pol, self.v, self.did
+        pol.blend_state[did] = "promoted"
+        cpr = 430.0 * (1.75 if (pol.crucible or v.get("crucible_cm3", 225)) >= 400 else 1.0)
+        runs = int(math.ceil(v.get("large_g", 1000.0) * 1.15 / cpr))
+        d = pol.atomizer_settings(v, did, dict(v["design_inputs"][did]))
+        pol.started.add(did)
+        return pol.powder_action(d, runs=runs, v=v)
+
+
+POLICIES2["bofn_blend"] = BOFNBlend
