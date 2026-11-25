@@ -28,8 +28,8 @@ env:
   # so it is off by default.
   RETRY_ON_ANY_FAILURE: "false"
   # Seats "Pick a seat from the token pool" may use, each a secret named
-  # CLAUDE_TOKEN_<NAME>; runs rotate across them by run number. Empty means
-  # every CLAUDE_TOKEN_* secret this repo can see.
+  # CLAUDE_TOKEN_<NAME>; runs rotate across them by run number. A new seat
+  # needs its name here AND a TOK_<NAME> line in both pick steps below.
   CLAUDE_TOKEN_POOL: "STERLING MONGOOSE ELEPHANT DOLPHIN GOSHAWK"
   # Seats tried before the rest of the pool, in this order. Empty: none.
   CLAUDE_TOKEN_PREFERRED: ""
@@ -278,8 +278,8 @@ jobs:
           echo "fallback_model=$fallback" >> "$GITHUB_OUTPUT"
           echo "primary_args=$primary_args" >> "$GITHUB_OUTPUT"
 
-      # Seat pool (load balancing). Every org secret named CLAUDE_TOKEN_<NAME>
-      # is one Team seat's `claude setup-token`. Seats in CLAUDE_TOKEN_PREFERRED
+      # Seat pool (load balancing). Each seat named in CLAUDE_TOKEN_POOL is a
+      # secret CLAUDE_TOKEN_<NAME> holding one Team seat's `claude setup-token`. Seats in CLAUDE_TOKEN_PREFERRED
       # are tried first, then the rest, rotated by run number so concurrent
       # runs start on different seats. Each candidate gets a one-word probe on
       # this run's model, and a seat that answers with an error (usage limit,
@@ -288,16 +288,22 @@ jobs:
       - name: Pick a seat from the token pool
         id: pick
         env:
-          ALL_SECRETS: ${{ toJSON(secrets) }}
+          # Only the pool's own tokens, named one by one (GitHub flags workflows
+          # that pass toJSON(secrets) to a step as possibly malicious).
+          TOK_STERLING: ${{ secrets.CLAUDE_TOKEN_STERLING }}
+          TOK_MONGOOSE: ${{ secrets.CLAUDE_TOKEN_MONGOOSE }}
+          TOK_ELEPHANT: ${{ secrets.CLAUDE_TOKEN_ELEPHANT }}
+          TOK_DOLPHIN: ${{ secrets.CLAUDE_TOKEN_DOLPHIN }}
+          TOK_GOSHAWK: ${{ secrets.CLAUDE_TOKEN_GOSHAWK }}
           MODEL: ${{ steps.select.outputs.model }}
           SKIP_SEATS: ""
         run: |
           cat > "$RUNNER_TEMP/pick_seat.py" <<'PY'
           import json, os, re, subprocess, tempfile
 
-          secrets = json.loads(os.environ.get("ALL_SECRETS") or "{}")
-          seats = sorted(k[len("CLAUDE_TOKEN_"):] for k, v in secrets.items()
-                         if k.startswith("CLAUDE_TOKEN_") and v)
+          secrets = {"CLAUDE_TOKEN_" + k[4:]: v for k, v in os.environ.items()
+                     if k.startswith("TOK_") and v}
+          seats = sorted(k[len("CLAUDE_TOKEN_"):] for k in secrets)
           allow = os.environ.get("CLAUDE_TOKEN_POOL", "").split()
           if allow:
               missing = [x for x in allow if x not in seats]
@@ -313,7 +319,7 @@ jobs:
           order = [x for x in preferred + rest if x not in skip]
           model = os.environ.get("MODEL") or "opus"
           base = {k: v for k, v in os.environ.items()
-                  if k != "ALL_SECRETS" and not k.startswith(("ANTHROPIC_", "CLAUDE_CODE_OAUTH"))}
+                  if not k.startswith(("TOK_", "ANTHROPIC_", "CLAUDE_CODE_OAUTH"))}
 
           print(f"{len(seats)} seats in the pool; probing on {model} in this order: {' '.join(order) or '(none)'}")
           chosen, tried = "", []
@@ -545,7 +551,13 @@ jobs:
         id: pick2
         if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
         env:
-          ALL_SECRETS: ${{ toJSON(secrets) }}
+          # Only the pool's own tokens, named one by one (GitHub flags workflows
+          # that pass toJSON(secrets) to a step as possibly malicious).
+          TOK_STERLING: ${{ secrets.CLAUDE_TOKEN_STERLING }}
+          TOK_MONGOOSE: ${{ secrets.CLAUDE_TOKEN_MONGOOSE }}
+          TOK_ELEPHANT: ${{ secrets.CLAUDE_TOKEN_ELEPHANT }}
+          TOK_DOLPHIN: ${{ secrets.CLAUDE_TOKEN_DOLPHIN }}
+          TOK_GOSHAWK: ${{ secrets.CLAUDE_TOKEN_GOSHAWK }}
           MODEL: ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }}
           SKIP_SEATS: ${{ steps.pick.outputs.tried }}
         run: python3 "$RUNNER_TEMP/pick_seat.py"
