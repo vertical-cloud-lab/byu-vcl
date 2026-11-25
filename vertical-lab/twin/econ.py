@@ -905,7 +905,7 @@ def variant(cfg: dict) -> str:
     """What sets a run apart besides facility, policy and scenario (bench2's run_id suffixes)."""
     parts = []
     for k, dflt in (("stock", "stocked"), ("crucible", 225), ("reuse", True), ("cu_budget", None), ("kappa", 1.0),
-                    ("isolated", False), ("wip", None)):
+                    ("isolated", False), ("wip", None), ("fidelity", "fast"), ("cu_hidden", 0.0), ("seeding", None)):
         if cfg.get(k, dflt) != dflt:
             parts.append(f"{k}-{cfg[k]}")
     return "_".join(parts)
@@ -1048,7 +1048,10 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     if runs_paths is None:
-        r2 = sorted(glob.glob(str(ROOT / "out" / "twin2" / "runs" / "*.jsonl")))
+        # round 2's experiments, without the development runs (stand-in instruments, TWIN_INSTRUMENTS=stub, which
+        # their configs don't record)
+        r2 = sorted(p for p in glob.glob(str(ROOT / "out" / "twin2" / "runs" / "*.jsonl"))
+                    if Path(p).stem != "dev" and not Path(p).stem.endswith(".errors"))
         g2 = group_runs(load_runs(r2))
         facs = {k[0] for k, v in g2.items() if len(v) >= 2}
         runs_paths = r2 if {"proposed", "vertical_lab"} <= facs else \
@@ -1103,7 +1106,8 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
     # the comparisons: the conventional lab with each policy against the vertical lab with BOFN (or the best stand-in
     # present), both on their defining settings (the vertical lab stocked; the conventional lab as bench2 runs it)
     pols_v = sorted({k[1] for k in G if k[0] == "vertical_lab" and k[3] == ""})
-    new_pol = next((p for p in ("bofn", "bofn_saas", "cost_aware") if p in pols_v), pols_v[0] if pols_v else None)
+    new_pol = next((p for p in ("bofn_blend", "bofn", "bofn_saas", "cost_aware") if p in pols_v),
+                   pols_v[0] if pols_v else None)
     vert_key = ("vertical_lab", new_pol, "historical", "") if new_pol else None
 
     def conv(pol):
@@ -1128,7 +1132,7 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
                                area_m2=i["area_m2"]) for i in tabs[f]["items"]] for f in ("vertical_lab", "conventional")}
 
     # ---- cost per experiment
-    conv_key = conv(new_pol) or next((conv(p) for p in ("heuristic", "tiered", "random") if conv(p)), None)
+    conv_key = conv(new_pol) or next((conv(p) for p in ("bofn", "heuristic", "tiered", "random") if conv(p)), None)
     if vert_key not in G:
         vert_key = None
     cpe = {}

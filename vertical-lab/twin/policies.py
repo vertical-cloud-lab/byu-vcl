@@ -248,6 +248,35 @@ class Tiered(Base):
         return acts[:n]
 
 
+class TieredMis(Tiered):
+    """Tiered screening with a mis-specified proxy (round 2's copper investigation). The plain funnel's copper proxy
+    reads the truth's own solid-solution coefficients (14 MPa per wt% Al, 2.6 Ni, 6 Mn: truth_cu.CuTruth.strength),
+    which no real screen would know. Here each strengthening coefficient of the proxy, aluminium and copper alike, is
+    off by its own lognormal factor (sigma 0.4: a factor of 1.5 at one sigma), drawn per seed from a separate stream,
+    so the 256 screened designs are the same as the plain funnel's for the same seed and only the ranking moves."""
+    name = "tiered_mis"
+    SIGMA = 0.4
+    KEYS = ("Al", "Ni", "Mn", "Mg", "Cu", "Zn", "Si", "Cr", "Li", "Fe", "Ti", "Zr", "Sc", "Er", "Ce", "Sn",
+            "ppt_Sc", "ppt_Zr")
+
+    def __init__(self, key, seed=0):
+        super().__init__(key, seed)
+        r = np.random.default_rng(91_000 + seed)
+        self.f = {k: float(np.exp(r.normal(0.0, self.SIGMA))) for k in self.KEYS}
+
+    def proxy(self, comp, out):
+        f = self.f
+        if self.al:
+            ss = sum(dict(Mg=18, Cu=12, Zn=4, Si=8, Mn=32, Cr=25, Li=12, Fe=20, Ni=10, Ti=15, Zr=15, Sc=20, Er=10,
+                          Ce=5, Sn=2).get(e, 0) * f.get(e, 1.0) * w ** 0.75 for e, w in comp.items() if e != "Al")
+            ppt = 300 * f["ppt_Sc"] * math.sqrt(comp.get("Sc", 0)) + 120 * f["ppt_Zr"] * math.sqrt(comp.get("Zr", 0))
+            b = usgs.mineral_burden(comp)["cmdri_log"]
+            return ss + ppt - 3000 * b
+        ni, al = comp.get("Ni", 0), comp.get("Al", 0)
+        return (14 * f["Al"] * al + 2.6 * f["Ni"] * ni + 6 * f["Mn"] * comp.get("Mn", 0) - 3 * ni
+                - 200 * out.get("beta_900", 0))
+
+
 class CostAware(Base):
     """GP surrogates per measured node; expected improvement per dollar over the next actions."""
     name = "cost_aware"
@@ -454,5 +483,5 @@ class CostAwareScaleUp(CostAware):
         return acts + super().propose(v, n - len(acts))
 
 
-POLICIES = {"random": Random, "tiered": Tiered, "cost_aware": CostAware, "tiered_tc": TieredTC,
+POLICIES = {"random": Random, "tiered": Tiered, "tiered_mis": TieredMis, "cost_aware": CostAware, "tiered_tc": TieredTC,
             "cost_aware_tc": CostAwareTC, "cost_aware_scaleup": CostAwareScaleUp}

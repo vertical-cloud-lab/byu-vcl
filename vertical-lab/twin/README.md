@@ -77,6 +77,8 @@ cheaper the vertical lab finds alloys. The write-up and results are in [`../note
 | The truth without a lab: state-of-the-art targets, the landscape, how well the screens rank | `oracle.py` | |
 | The benchmark, its summary and figures | `bench2.py`, `figures2.py` | |
 | Capex, cost per alloy with and without capital, utilization, outside (cloud user facility) work, acceleration factors | `econ.py`, `cloud.py`, `accel.py` | `notes/twin_econ.md` |
+| The campaign trace: every booking with its sample, its node in DAL #211's network and its outcome (DAL #274's ledger), every sample, the optimizer's state at each iteration, the literature steps (DAL's own Edison answers); DAL #275's common seed set | `trace.py`, `seeding.py` | `../out/twin2/trace/README.md` |
+| DAL's own lab on DAL #256's schedule (facility `dal256`) | `facility.py` (`DAL256`) | `../out/twin2/trace/README.md` |
 | The campaign video | `video/` | `notes/twin_video.md` |
 
 ```bash
@@ -84,7 +86,8 @@ cd vertical-lab
 /tmp/venv/bin/pip install numpy scipy scikit-learn matplotlib pillow pycalphad scheil pytest "botorch[fully_bayesian]"
 /tmp/venv/bin/python -m pytest -q twin/tests                      # round 1 + instruments + economics
 /tmp/venv/bin/python -m twin.oracle                               # out/twin2/oracle.json (targets)
-TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run main conventional saas stock crucible reuse cu
+TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run main cu_hidden conventional stock crucible reuse
+TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run seeded seeded_dal256 saas   # traces: out/twin2/trace/
 /tmp/venv/bin/python -m twin.figures2                             # out/twin2/fig/
 /tmp/venv/bin/python -m twin.econ all                             # out/twin2/econ/
 /tmp/venv/bin/python -m twin.instruments.gallery_micro; /tmp/venv/bin/python -m twin.instruments.gallery_mech

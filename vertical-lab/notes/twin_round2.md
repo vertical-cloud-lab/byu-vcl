@@ -70,6 +70,21 @@ the wrong side of the 99.5 % gate each way) is the real difficulty of telling 99
 * **Booking tags and an event log**: every booking records the design and the network node it served
   (`Twin.event_log`), which is what the video and the utilization study read.
 * **External load**: `Twin(..., external=callable)` lets outside users' jobs take slots before the campaigns run.
+* **DAL's own lab on DAL #256's schedule** (facility `dal256`, `twin/facility.py` `DAL256`): the conventional lab's
+  stations on #256's calendar and step times: one atomizer run a day Mon-Thu with copper on Fridays, a run plus about
+  3 h to cool, clean and rebuild, a Thursday SEM session and a Wednesday polishing batch, tensile and corrosion on
+  Thursdays, two-day Utah LPBF sessions on alternate weeks with parts back a week later. The times #256 doesn't give
+  keep the twin's own; `out/twin2/trace/README.md` lists both.
+* **The campaign trace** (`twin/trace.py`, schema in `out/twin2/trace/README.md`): every booking with its sample, its
+  node in DAL #211's network and its outcome in DAL #274's ledger (`COMPLETED`, `FAILED`, `ABANDONED`,
+  `EARLY_STOPPED`, `STALE`, `NOT_AS_PLANNED`, `DOWN`), every sample, every measurement, the optimizer's state at every
+  iteration (what it proposed, the acquisition value, its incumbent and the hidden best so far), and the literature
+  steps a campaign would run, each pointing at an Edison answer already in DAL (no new queries). A traced run gives
+  the same results as an untraced one.
+* **A common seed set** (`twin/seeding.py`, DAL #275): the seeded runs start every policy from the same seven
+  aluminium seeds (D1 and D2 baselines, the B30 and B15 dosing checks, the S1 and S2 literature picks, the S3 IMSE
+  pick) and five copper seeds built the same way (#275 plans aluminium only), so that no policy's lead is a warm
+  start.
 
 ## 3. The policies
 
@@ -83,7 +98,10 @@ All are `propose(view, n_free)` on the twin (`twin/opt/policies2.py`, BoTorch 0.
 * **GP-BO**: a GP (BoTorch's `SingleTaskGP`) from the whole design (d = 23 for FLAIME, 14 for copper) to the measured
   utility, expected improvement per dollar over a pool of Sobol points and local moves, the reference alloys as its
   first designs. **SAASBO**: the same with the sparse axis-aligned subspace prior, fully Bayesian (NUTS, 128 warm-up,
-  128 samples thinned to 16) and at its MAP point.
+  128 samples thinned to 16) and at its MAP point. A NUTS fit took 25-170 s at 30-140 points on the runner, so a fresh
+  chain at every new result would have cost about 33 CPU-hours for 12 seeds: SAASBO runs a fresh chain each time its
+  data have grown by 4 points and by half (at 3, 7, 11, 17, 26, 39, 59, 89, 134, ... points), and in between rebuilds
+  the model on the new data with the last chain's hyperparameter samples, as the MAP GPs reuse theirs.
 * **BOFN**: a GP per node of the function network, each node's inputs its parents' measured outputs plus the design
   variables acting on it; the utility computed through MC samples of the network; expected improvement per dollar for
   new designs and for every next step of a part already made. FLAIME: atomize → print → EBSD section → PIP → tensile.

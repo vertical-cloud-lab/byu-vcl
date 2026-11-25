@@ -547,10 +547,11 @@ def literature_events(camps, its) -> list:
                 if L.get("result") == "build":
                     ts = [B["t"] for B in c.builds.values()]
                 t = min(ts) if ts else None
-            elif L["when"] == "first_promotion":
+            elif L["when"] == "first_promotion":          # the first part sent on to bars or a 1 kg deposit
                 ts = [it["t_h"] for it in its if it["campaign"] == k and
-                      any("promote" in (p.get("acq_kind") or "") or "bars" in (p.get("acq_kind") or "") or
-                          "1 kg" in (p.get("acq_kind") or "") for p in it["proposals"] if p.get("accepted"))]
+                      any(p.get("kind") in ("test", "large_ded", "promote") or
+                          any(w in (p.get("acq_kind") or "") for w in ("promote", "bars", "1 kg"))
+                          for p in it["proposals"] if p.get("accepted"))]
                 t = min(ts) if ts else None
             if t is None:
                 continue

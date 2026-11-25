@@ -61,6 +61,10 @@ EXPERIMENTS = {
     # Al = 8.2 + Ni/2), to test whether the tiered funnel's tie with BOFN is the truth being too kind to it
     "cu_hidden": [_cfg(p, s, cu_hidden=1.0) for p in ("random", "heuristic", "tiered", "cost_aware", "gpbo", "bofn",
                                                       "bofn_blend") for s in range(12)],
+    # copper: the tiered funnel with a mis-specified proxy (each strengthening coefficient off by a lognormal factor,
+    # sigma 0.4), on the plain truth and with the hidden gamma-2 effect: does tiered's copper lead rest on its proxy
+    # reading the truth's own coefficients?
+    "cu_proxy": [_cfg("tiered_mis", s, cu_hidden=h) for h in (0.0, 1.0) for s in range(12)],
     # the campaign trace (twin/trace.py, out/twin2/trace/README.md): BOFN, standard BO and random from one common seed
     # set (DAL #275), 12 seeds each; seed 0 of each writes a full trace with the optimizer's state
     "seeded": [_cfg(p, s, seeding="dal275", trace=(s == 0), events=(s == 0)) for p in ("bofn", "gpbo", "random")
