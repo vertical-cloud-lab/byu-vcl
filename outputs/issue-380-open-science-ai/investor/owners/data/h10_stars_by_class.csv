@@ -1,0 +1,9 @@
+cls,owners,repos,stars,share_of_stars,share_of_repos
+core,52,69,177684,0.1879,0.0495
+complement,92,122,108466,0.1147,0.0876
+nonprofit,19,23,23578,0.0249,0.0165
+academic,280,384,125587,0.1328,0.2757
+government,30,41,24775,0.0262,0.0294
+community,183,205,229110,0.2422,0.1472
+individual,482,548,256620,0.2713,0.3934
+unknown,1,1,25,0.0,0.0007

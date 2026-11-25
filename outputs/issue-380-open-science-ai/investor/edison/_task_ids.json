@@ -148,5 +148,19 @@
   "files": [],
   "data_entries": [],
   "submitted_utc": "2026-11-25T22:00:45.094291+00:00"
+ },
+ "inv_owner_class_audit": {
+  "task_id": "a881386a-ac1a-461a-a6d1-493965779dd3",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "You are auditing a classification step in a pre-registered study of who owns popular open-source software. audit_sample.csv lists 120 GitHub organization accounts (60 drawn at random from the 300 with the most stars, 60 from the rest), with each account's name, website, e-mail domain, location, creation year, description and top repositories. classify_rules.md gives the classes (core, complement, nonprofit, academic, government, community, unknown) and the tie-breakers. Classify every account independently by those rules, checking the organization's website or repository where you are unsure. Do not use any financial outcome (funding, valuation, revenue, acquisition price, shutdown) to decide a class. Output a CSV named owner_class_audit.csv with columns owner, cls, entity, parent, basis (at most 15 words), judgment (1 if a judgment call), source_url, one row per input account in input order, and report the counts by class and the accounts you found hardest to classify, with reasons.",
+  "files": [
+   "audit_sample.csv",
+   "classify_rules.md"
+  ],
+  "data_entries": [
+   "data_entry:a1b8f9f4-1db9-4757-ba7a-eea0bb82320d",
+   "data_entry:b74f3988-b691-4c61-913b-cde7ef2295c2"
+  ],
+  "submitted_utc": "2026-11-25T22:23:23.696930+00:00"
  }
 }

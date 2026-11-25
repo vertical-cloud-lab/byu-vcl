@@ -37,7 +37,10 @@ def main():
         except Exception as e:  # noqa: BLE001
             rows.append({"entity": t.entity, "ticker": t.ticker, "error": str(e)[:100]}); continue
         r = {"entity": t.entity, "ticker": t.ticker, **{k: info.get(k) for k in FIELDS}}
-        q, f = fx(info.get("currency")), fx(info.get("financialCurrency") or info.get("currency"))
+        cur = info.get("currency")
+        # Yahoo quotes London prices in pence (GBp) but reports marketCap in pounds, so use the major unit for it
+        cap_cur = {"GBp": "GBP", "ILA": "ILS", "ZAc": "ZAR"}.get(cur, cur)
+        q, f = fx(cap_cur), fx(info.get("financialCurrency") or cap_cur)
         r["market_cap_usd"] = r["marketCap"] * q if r.get("marketCap") and q else None
         r["revenue_usd"] = r["totalRevenue"] * f if r.get("totalRevenue") and f else None
         r["fcf_usd"] = r["freeCashflow"] * f if r.get("freeCashflow") and f else None

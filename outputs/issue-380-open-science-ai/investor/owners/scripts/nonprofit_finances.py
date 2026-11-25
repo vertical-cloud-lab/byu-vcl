@@ -14,7 +14,8 @@ import pandas as pd, requests
 
 import json, collections
 _m = collections.defaultdict(list)  # BLS series CUUR0000SA0, saved by hand from the public API to data/cpi_u_bls.json
-for _x in json.load(open("data/cpi_u_bls.json"))["Results"]["series"][0]["data"]:
+for _x in [x for f in ("data/cpi_u_bls.json", "data/cpi_u_bls_2009_2017.json")
+           for x in json.load(open(f))["Results"]["series"][0]["data"]]:
     if _x["period"].startswith("M") and _x["period"] != "M13" and _x["value"] != "-":
         _m[int(_x["year"])].append(float(_x["value"]))
 CPI_U = {y: sum(v) / len(v) for y, v in _m.items()}  # annual averages; 2025 lacks October (shutdown), 2026 is partial

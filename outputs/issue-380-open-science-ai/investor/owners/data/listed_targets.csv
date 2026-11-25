@@ -1,0 +1,49 @@
+entity,ticker,role
+Microsoft,MSFT,complement parent
+Alphabet,GOOGL,complement parent
+Alibaba Group,BABA,complement parent
+Meta Platforms,META,complement parent
+Airbnb,ABNB,complement parent
+Baidu,BIDU,complement parent
+Cloudflare,NET,complement parent
+Tencent,0700.HK,complement parent
+Apple,AAPL,complement parent
+Broadcom,AVGO,complement parent
+Bilibili,BILI,complement parent
+Shopify,SHOP,complement parent
+IBM,IBM,complement parent
+NVIDIA,NVDA,complement parent
+Coinbase,COIN,complement parent
+"Block, Inc.",XYZ,complement parent
+Amazon,AMZN,complement parent
+Rapid7,RPD,complement parent
+JD.com,JD,complement parent
+Atlassian,TEAM,complement parent
+Adobe,ADBE,complement parent
+Hancom,030520.KQ,complement parent
+Deezer,DEEZR.PA,complement parent
+DigitalOcean,DOCN,complement parent
+Trip.com Group,TCOM,complement parent
+CoStar Group,CSGP,complement parent
+Uber,UBER,complement parent
+Netflix,NFLX,complement parent
+Oracle,ORCL,complement parent
+Datadog,DDOG,complement parent
+ZOZO,3092.T,complement parent
+AstraZeneca,AZN,complement parent
+Intel,INTC,complement parent
+EPAM Systems,EPAM,complement parent
+BioNTech,BNTX,complement parent
+Oxford Nanopore Technologies,ONT.L,complement parent
+Nexon,3659.T,complement parent
+Recursion Pharmaceuticals,RXRX,complement parent
+Illumina,ILMN,complement parent
+Dassault Systemes,DSY.PA,complement parent
+"Schrödinger, Inc.",SDGR,complement parent
+BASF,BAS.DE,complement parent
+Fujitsu,6702.T,complement parent
+Rigetti Computing,RGTI,complement parent
+Sea Limited,SE,complement parent
+OMRON,6645.T,complement parent
+Novonesis,NSIS-B.CO,complement parent
+Merck KGaA,MRK.DE,complement parent
