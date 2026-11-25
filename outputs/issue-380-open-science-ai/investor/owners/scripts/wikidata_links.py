@@ -9,7 +9,7 @@ organization, website, employees and latest total revenue.
 Writes data/wikidata_github_usernames.csv, data/wikidata_repo_links.csv and data/wikidata_entities.csv.
 Run from owners/ after harvest_github.py.
 """
-import time
+import re, time
 import pandas as pd, requests
 
 UA = {"User-Agent": "open-source-owner-study/0.1 (research script)", "Accept": "text/csv"}
@@ -21,6 +21,7 @@ def sparql(q):
         if r.status_code == 200:
             from io import StringIO
             return pd.read_csv(StringIO(r.text), dtype=str)
+        print("wikidata HTTP", r.status_code, r.text[:120].replace("\n", " "), flush=True)
         time.sleep(10 * (attempt + 1))
     r.raise_for_status()
 
@@ -51,7 +52,7 @@ logins = set(o.owner.str.lower())
 names = set(pd.concat([a.full_name, b.full_name]).str.lower())
 u = usernames[usernames.gh.str.lower().isin(logins)]
 r = repos[repos.full_name.str.lower().isin(names)]
-ents = sorted(set(u.item) | set(x for x in r.dev if x))  # owners, and developers of linked software
+ents = sorted(x for x in set(u.item) | set(r.dev) if re.fullmatch(r"Q\d+", str(x)))  # owners and developers of linked software; drops 'unknown value' blank nodes
 print("matched usernames", len(u), "repo links", len(r), "entities", len(ents))
 
 # One small query per property, then aggregate here: a single query with every OPTIONAL multiplies rows and times out.

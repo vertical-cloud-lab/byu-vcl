@@ -37,14 +37,15 @@ def norm(s):
 
 def find_ciks(name):
     """CIKs of Form D issuers whose normalized name equals the normalized target."""
-    out = {}
-    r = get("https://efts.sec.gov/LATEST/search-index", params={"q": f'"{name}"', "forms": "D"})
-    if r.status_code != 200:
-        return out
-    for h in r.json().get("hits", {}).get("hits", []):
+    out, hits = {}, []
+    for q in dict.fromkeys([f'"{name}"', f'"{norm(name)}"']):  # punctuation in the quoted name can block a match
+        r = get("https://efts.sec.gov/LATEST/search-index", params={"q": q, "forms": "D"})
+        if r.status_code == 200:
+            hits += r.json().get("hits", {}).get("hits", [])
+    for h in hits:
         src = h["_source"]
         for cik, disp in zip(src.get("ciks", []), src.get("display_names", [])):
-            ent = re.sub(r"\s*\(CIK \d+\)\s*$", "", disp)
+            ent = re.sub(r"\s*\([^)]*\)", "", disp).strip()  # drops "(TICKER)" and "(CIK n)"
             if norm(ent) == norm(name):
                 out[cik.lstrip("0")] = ent
     return out
