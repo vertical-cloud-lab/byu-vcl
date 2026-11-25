@@ -94,6 +94,17 @@ AL_RUN_CONSUMABLES = {"argon": 0.07, "cc_plate": 1 / 5, "graphite_crucible": 1 /
 CU_RUN_CONSUMABLES = {"argon": 0.16, "cc_plate": 1.0, "bn_nozzle": 1.0, "graphite_crucible": 1 / 6,
                       "bn_spray": 1 / 300}
 CHANGEOVER_H = 3.0
+# round 2: the standing inventory of a stocked lab (Spec.stock = 'stocked'), assumed: about a month's use at the
+# vertical lab's pace of consumables and of every feedstock but Sc and Er (kg, or each)
+STOCKED = {
+    "flaime_al": {"al_bar_hp": 20.0, "si_lump": 1.0, "mg_turnings": 2.3, "cu_shot": 0.45, "zn_shot": 0.3,
+                  "al_mn20": 0.3, "al_cr20": 0.2, "al_zr10": 0.2, "al_ti10": 0.1, "al_fe10": 0.25, "al_ni20": 0.1,
+                  "al_ce20": 0.2, "sn_shot": 0.1, "li_metal": 1.0, "argon": 10.0, "cc_plate": 6.0,
+                  "graphite_crucible": 3.0, "build_plate": 20.0, "bn_spray": 2.0},
+    "onr_cu": {"cu_ofe_bar": 30.0, "ni_pellet": 3.0, "al_shot": 0.45, "fe_powder": 0.5, "mn_flake": 0.5,
+               "cr_powder": 0.2, "si_lump_cu": 0.25, "nb_powder": 0.2, "ti_sponge": 0.1, "argon": 10.0,
+               "cc_plate": 12.0, "bn_nozzle": 12.0, "graphite_crucible": 3.0, "bn_spray": 2.0, "ded_substrate": 5.0},
+}
 # on hand at day 0 (sunk, not charged): what DAL has bought by November 2026 (its procurement threads: McMaster 6063
 # rod, the ESPI order of Mn, Cr, Zn, Sn, Mg pieces, Sc, Er and Ti, Si on hand, the 630 bronze rod, argon, plates);
 # everything else is ordered when a charge first needs it
@@ -117,6 +128,8 @@ class Spec:
     crucible_cm3: int = 225       # round 2: the rePowder's standard crucible, or the 400 cm3 upgrade (DAL #219)
     reuse: bool = True            # round 2: unfused LPBF powder and DED overspray are sieved and put back in the lot
     fidelity: str = "fast"        # round 2: instrument simulators' fidelity (twin/instruments/__init__.py)
+    stock: str = "lean"           # round 2: 'lean' (order each charge's metal when it is needed, as DAL does now) or
+                                  # 'stocked' (a standing inventory bought at day 0 and charged, reordered 4x)
 
 
 class Campaign:
@@ -147,6 +160,15 @@ class Campaign:
         if spec.prestock:
             for k, q in PRESTOCK[spec.key].items():
                 self.stores.orders.append(supply.Order(k, q, 0.0, -1.0, -1.0, False, spec.key))
+        self.spare = 1.5
+        if spec.stock == "stocked":
+            # a lab running round the clock keeps what it uses every week on the shelf (assumed quantities); bought
+            # at day 0 at the day's prices and charged to the campaign; Sc and Er stay order-on-demand
+            self.spare = 4.0
+            for k, q in STOCKED[spec.key].items():
+                price = market.price(supply.ITEMS[k], 0.0) * q
+                self.stores.orders.append(supply.Order(k, q, price, 0.0, 0.0, False, spec.key))
+                self.charge(0.0, price, f"order {k} {q:.3g} (standing stock)")
 
     # ---------------------------------------------------------------------------------------- money and design
     def charge(self, t, usd, what):
@@ -237,7 +259,7 @@ class Campaign:
             return cm3, base * f, 2.5 + 0.6 * (f - 1.0), {}, 0.0
 
     def _materials(self, bill, now_h):
-        cost, ready_d, placed = self.stores.ensure(bill, now_h / H)
+        cost, ready_d, placed = self.stores.ensure(bill, now_h / H, spare=self.spare)
         for o in placed:
             self.charge(now_h, o.cost, f"order {o.item} {o.qty:.3g}")
         self.stores.consume(bill)
@@ -805,6 +827,9 @@ class Campaign:
 
     def _do_screen(self, a, now_h):
         D, part = self._dep(a["deposit"])
+        if a.get("block") is not None:
+            ps = self._part_truth[a["deposit"]]["parts"]
+            part = ps[min(int(a["block"]), len(ps) - 1)]
         if D["mode"] == "preplaced" or D.get("_screened"):
             return False
         D["_screened"] = True
@@ -907,7 +932,9 @@ class Campaign:
                     designs={i: d["composition"] for i, d in self.designs.items()},
                     design_inputs={i: d["design"] for i, d in self.designs.items()},
                     sims=self.sims, lots=self.lots, builds=self.builds, tests=self.tests, deposits=self.deposits,
-                    corr=self.corr, inflight=self.inflight, wip=self.spec.wip, estimate=self.estimate)
+                    corr=self.corr, inflight=self.inflight, wip=self.spec.wip, estimate=self.estimate,
+                    vertical=self.vertical, large_g=1000.0 if self.vertical else 2000.0,
+                    crucible_cm3=self.spec.crucible_cm3)
 
 
 class Twin:

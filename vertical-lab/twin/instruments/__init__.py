@@ -64,6 +64,10 @@ def implementation(name: str):
     if name in _cache:
         return _cache[name]
     mod, fn, _ = INSTRUMENTS[name]
+    import os
+    if os.environ.get("TWIN_INSTRUMENTS") == "stub":        # development: the plain stand-ins only
+        _cache[name] = ((lambda s, c, r, fidelity="fast", _n=name, **kw: _stub(_n, s, c, r)), "stub")
+        return _cache[name]
     try:
         f = getattr(importlib.import_module(f"twin.instruments.{mod}"), fn)
         src = mod

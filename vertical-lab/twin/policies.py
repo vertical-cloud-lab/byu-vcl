@@ -116,10 +116,11 @@ class Base:
                 if st == "new" and L["remaining_g"] >= 450:
                     acts.append(dict(kind="small_ded", lot=lid, params=self.ded_params(v, lid)))
                     L["_stage"] = "small"
-                elif st == "small_done" and L["remaining_g"] >= 2000 and not L.get("nsl") and not L.get("_nsl"):
+                elif st == "small_done" and L["remaining_g"] >= v.get("large_g", 2000) and not L.get("nsl") \
+                        and not L.get("_nsl") and not v.get("vertical"):
                     acts.append(dict(kind="nsl", lot=lid))
                     L["_nsl"] = True
-                elif st == "small_done" and L.get("nsl") and L["remaining_g"] >= 2000:
+                elif st == "small_done" and (L.get("nsl") or v.get("vertical")) and L["remaining_g"] >= v.get("large_g", 2000):
                     acts.append(dict(kind="large_ded", lot=lid, params=L["_best_params"]))
                     L["_stage"] = "large"
             for did, D in v["deposits"].items():
@@ -134,8 +135,8 @@ class Base:
                                    - (1 if m["crack_density"] > 0.05 else 0))
                         L["_best_params"] = best["params"]
                         L["_stage"] = "small_done"
-                        if L["remaining_g"] < 2000:
-                            runs = int(math.ceil((2000 - L["remaining_g"]) / 450.0)) + 1
+                        if L["remaining_g"] < v.get("large_g", 2000):
+                            runs = int(math.ceil((v.get("large_g", 2000) - L["remaining_g"]) / 450.0)) + 1
                             acts.append(dict(kind="powder", design=v["design_inputs"][L["design"]], runs=runs,
                                              into=D["lot"]))
                     else:

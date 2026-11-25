@@ -1,0 +1,160 @@
+{
+ "flaime_al": {
+  "references": {
+   "AlSi10Mg": {
+    "utility": 0.4232,
+    "ys": 305.16,
+    "el": 6.607,
+    "cmdri": 0.029,
+    "mbs": 0.105,
+    "feasible": true,
+    "discovery": true,
+    "rel_density": 0.995,
+    "crack_free": true,
+    "hot_ys": null
+   },
+   "Al-Mn-Cr-Zr": {
+    "utility": 0.0,
+    "ys": 325.12,
+    "el": 11.277,
+    "cmdri": 0.007,
+    "mbs": 0.033,
+    "feasible": false,
+    "discovery": false,
+    "rel_density": 0.993,
+    "crack_free": true,
+    "hot_ys": null
+   },
+   "Al-Zr": {
+    "utility": 0.4194,
+    "ys": 168.966,
+    "el": 16.141,
+    "cmdri": 0.001,
+    "mbs": 0.011,
+    "feasible": true,
+    "discovery": false,
+    "rel_density": 0.996,
+    "crack_free": true,
+    "hot_ys": null
+   },
+   "Scalmalloy": {
+    "utility": 0.0,
+    "ys": 446.288,
+    "el": 6.689,
+    "cmdri": 0.028,
+    "mbs": 1.685,
+    "feasible": false,
+    "discovery": false,
+    "rel_density": 0.995,
+    "crack_free": true,
+    "hot_ys": null
+   }
+  },
+  "sota": "AlSi10Mg",
+  "sota_utility": 0.4232,
+  "random_default_process": {
+   "n": 3000,
+   "frac_positive": 0.08933333333333333,
+   "q50": 0.0,
+   "q90": 0.0,
+   "q99": 0.6956698389745769,
+   "max": 0.8113909098660157,
+   "frac_above_sota": 0.072
+  },
+  "best_found": {
+   "utility": 0.8554,
+   "composition": {
+    "Mn": 0.572,
+    "Zr": 0.479,
+    "Mg": 0.185,
+    "Fe": 0.386,
+    "Li": 2.0,
+    "Al": 96.378
+   },
+   "details": {
+    "ys": 338.263,
+    "el": 14.275,
+    "cmdri": 0.005,
+    "mbs": 0.03,
+    "feasible": true,
+    "discovery": true,
+    "rel_density": 0.995,
+    "crack_free": true,
+    "hot_ys": null
+   }
+  },
+  "screen": {
+   "spearman_proxy_vs_utility_among_feasible": 0.5133548653034389,
+   "screen_pass_frac": 0.2966666666666667,
+   "precision_of_screen": 0.25617977528089886,
+   "base_rate": 0.088
+  }
+ },
+ "onr_cu": {
+  "references": {
+   "C71500 70-30 Cu-Ni": {
+    "utility": 0.0,
+    "ys": 153.079,
+    "el": 21.882,
+    "rate": 10.095,
+    "attack": 0.003,
+    "ni": 30.0,
+    "feasible": false
+   },
+   "C70600 90-10 Cu-Ni": {
+    "utility": 0.4271,
+    "ys": 124.214,
+    "el": 37.645,
+    "rate": 9.67,
+    "attack": 0.0,
+    "ni": 10.0,
+    "feasible": true
+   },
+   "C95800 NAB": {
+    "utility": 0.5559,
+    "ys": 437.918,
+    "el": 11.736,
+    "rate": 11.634,
+    "attack": 15.533,
+    "ni": 4.5,
+    "feasible": true
+   }
+  },
+  "sota": "C95800 NAB",
+  "sota_utility": 0.5559,
+  "random_default_process": {
+   "n": 3000,
+   "frac_positive": 0.07466666666666667,
+   "q50": 0.0,
+   "q90": 0.0,
+   "q99": 0.5133084373076644,
+   "max": 0.6517659991698029,
+   "frac_above_sota": 0.004666666666666667
+  },
+  "best_found": {
+   "utility": 0.7575,
+   "composition": {
+    "Ni": 8.366,
+    "Al": 6.123,
+    "Fe": 1.523,
+    "Mn": 1.889,
+    "Ti": 0.288,
+    "Cu": 81.81
+   },
+   "details": {
+    "ys": 342.912,
+    "el": 25.786,
+    "rate": 6.42,
+    "attack": 1.833,
+    "ni": 8.366,
+    "feasible": true
+   }
+  },
+  "screen": {
+   "spearman_proxy_vs_utility_among_feasible": 0.007202263568550115,
+   "screen_pass_frac": 0.6046666666666667,
+   "precision_of_screen": 0.11576626240352811,
+   "base_rate": 0.072
+  }
+ }
+}
