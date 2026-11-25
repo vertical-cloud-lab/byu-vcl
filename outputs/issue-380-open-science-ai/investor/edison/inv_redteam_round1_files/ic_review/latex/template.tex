@@ -1,0 +1,238 @@
+% =====================================================================
+%  EDISON SCIENTIFIC REPORT TEMPLATE
+% =====================================================================
+%  Edison LaTeX report template with the house style baked in.
+%
+%  MARKERS (greppable):
+%    [REPLACE]  placeholder content to swap out (delete the tag when done)
+%    [KEEP]     house style; change only deliberately and stay consistent
+%
+%  SIBLING FILES (must be in the working dir):
+%    arxiv.sty                 -- style file; don't edit
+%    edison-logo.pdf           -- logo; regenerate from edison-logo.svg
+%    references.bib            -- your bibliography; replace its entries
+%
+%  COMPILE:  tectonic main.tex      (or: pdflatex -> bibtex -> pdflatex x2)
+%
+%  STRUCTURE (fixed order): cover -> Executive Summary -> [table of contents,
+%    long reports only] -> body -> Edison Platform Data Sources -> References.
+%    The non-body sections are unnumbered.
+% =====================================================================
+
+\documentclass{article}
+
+% #####################################################################
+% ##  HOUSE STYLE [KEEP] -- the only place the look is defined.       ##
+% #####################################################################
+
+% ---- base layout: margins, fonts, running header --------------------
+\usepackage{arxiv}
+
+% ---- packages -------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}  % \FloatBarrier
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{needspace}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[colorlinks=true,linkcolor=blue!70!black,%
+  citecolor=green!50!black,urlcolor=blue!80!black]{hyperref}  % load before biblatex
+\usepackage{microtype}
+\usepackage{etoolbox}  % \pretocmd for the header hooks below
+\usepackage{lipsum}
+
+% Numbered [N] citations, in order of first appearance.
+% For author-year instead, use style=authoryear.
+\usepackage[backend=bibtex,style=numeric-comp,sorting=none,%
+  maxbibnames=6,minbibnames=6,natbib=true,%
+  doi=true,url=false,eprint=false,isbn=false]{biblatex}
+% @online is a URL-only source. The global url=false would hide that link.
+\ExecuteBibliographyOptions[online]{url=true}
+\addbibresource{references.bib}
+
+% ---- color palette: the ONLY colors. Don't define new ones. ----------
+% callout box fills
+\definecolor{takeawayblue}{RGB}{235,245,255}
+\definecolor{takeawayborder}{RGB}{66,133,244}
+\definecolor{metricbg}{RGB}{240,248,255}
+\definecolor{metricborder}{RGB}{70,130,180}
+\definecolor{warningbg}{RGB}{255,243,230}
+\definecolor{warningborder}{RGB}{230,126,34}
+% table colors - don't go too crazy with these
+\definecolor{tierone}{RGB}{220,237,200}
+\definecolor{tiertwo}{RGB}{255,243,205}
+\definecolor{tierthree}{RGB}{255,225,225}
+
+% ---- callout boxes: takeaway (findings), warningbox (caveats),
+%      metricbox (a single headline number). Shared geometry in the
+%      style; each box only sets what differs. ------------------------
+\mdfdefinestyle{edisonbox}{
+  linewidth=1.5pt,innertopmargin=8pt,innerbottommargin=8pt,
+  innerleftmargin=10pt,innerrightmargin=10pt,skipabove=10pt,skipbelow=10pt}
+\newmdenv[style=edisonbox,backgroundcolor=takeawayblue,linecolor=takeawayborder]{takeaway}
+\newmdenv[style=edisonbox,backgroundcolor=warningbg,linecolor=warningborder]{warningbox}
+\newmdenv[style=edisonbox,backgroundcolor=metricbg,linecolor=metricborder,linewidth=2pt,
+  innertopmargin=12pt,innerbottommargin=12pt,innerleftmargin=14pt,
+  innerrightmargin=14pt,skipabove=12pt,skipbelow=12pt]{metricbox}
+
+% ---- captions, paragraph spacing, float fractions --------------------
+\captionsetup{font=small,labelfont={bf,small},textfont={small},skip=8pt}
+\setlength{\parskip}{0.8ex plus 0.2ex minus 0.1ex}
+\renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.1}\renewcommand{\floatpagefraction}{0.8}
+
+% ---- float / header discipline: flush floats and keep headers with
+%      their following content -----------------------------------------
+\pretocmd{\section}{\FloatBarrier\needspace{4\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{6\baselineskip}}{}{}
+
+% ---- Edison trajectory links. Build the URL in Python with chat_url(uuid)
+%      and pass it in -- never hardcode platform URLs. short = uuid[:8].
+%        \edtraj{url}{short}                   inline cite (prose / captions)
+%        \trajectory{desc}{type}{url}{short}   one Data Sources table row
+%        \trajgroup{label}                     a labeled group of those rows
+\newcommand{\edtraj}[2]{\href{#1}{Edison: \texttt{#2}}}
+\newcommand{\trajectory}[4]{#1 & #2 & \href{#3}{\texttt{#4}}\\}
+\newcommand{\trajgroup}[1]{\midrule\multicolumn{3}{l}{\textit{#1}}\\}
+
+% #####################################################################
+% ##  REPORT CONTENT -- fill in below.                               ##
+% #####################################################################
+
+% ---- CITATIONS (both render clickable) -------------------------------
+%   Literature   \citep{key}  numbered [N]; entry in references.bib, DOI auto-links.
+%                Put the cite right after the claim it supports.
+%   Trajectory   in a run_cell:  url = chat_url(uuid)  (never hardcode platform
+%                URLs), then \edtraj{url}{short} inline -- in prose or table/
+%                figure captions, not only figures -- and add a \trajectory row
+%                to the Data Sources table. short = uuid[:8].
+% ----------------------------------------------------------------------
+
+\renewcommand{\headeright}{Edison Scientific} % [KEEP]
+
+% ---- Cover values: set these; the cover page reads them. Don't edit the cover.
+\renewcommand{\shorttitle}{Short Title for Running Header} % [REPLACE]
+\newcommand{\reporttitle}{Report Title Here} % [REPLACE]
+\newcommand{\reportsubtitle}{Descriptive subtitle stating scope and deliverable} % [REPLACE]
+\newcommand{\reportclient}{Client Name} % [REPLACE]
+\newcommand{\reportdate}{Month Year} % [REPLACE]
+
+\begin{document}
+
+% ---- Cover Page ----
+\begin{titlepage}
+\centering
+\vspace*{1.5cm}
+\includegraphics[width=3cm]{edison-logo} % [KEEP]
+\vspace{1.5cm}
+
+{\Huge\bfseries \reporttitle} % [KEEP]
+\vspace{1.5cm}
+
+{\Large \reportsubtitle} % [KEEP]
+\vspace{3cm}
+
+{\large Prepared for \textbf{\reportclient}} % [KEEP]
+\vspace{1.5cm}
+
+{\large Edison Scientific -- \reportdate} % [KEEP]
+\vspace{1cm}
+
+{\large\itshape Confidential} % [KEEP]
+\vfill
+\end{titlepage}
+
+% ---- Executive Summary ----
+\clearpage
+\section*{Executive Summary}
+\addcontentsline{toc}{section}{Executive Summary}
+
+\lipsum[1-2]  % [REPLACE]
+
+% ---- Table of contents ----
+% Include a ToC ONLY for long reports (>= 10 pages). Short reports omit it.
+% Decide from the FINAL compiled page count, not a guess; uncomment the two
+% lines below if the report runs >= 10 pages.
+% \clearpage
+% \tableofcontents
+
+% ---- Body (replace with your sections) ----
+\clearpage
+\section{First Body Section}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit~\citep{altan2017b7h3}. Sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua~\edtraj{URL}{00000000}.
+
+% tier-colored comparison table; rows ordered Tier 1 -> 3, midrule between tiers.
+\begin{table}[!htbp]
+\centering\small
+\caption{One-line caption describing the comparison.} % [REPLACE]
+\label{tab:summary}
+\begin{tabular}{p{4cm}rl}
+\toprule
+\textbf{Item} & \textbf{Score} & \textbf{Tier} \\
+\midrule
+\rowcolor{tierone}  Item A & 4.15 & T1 \\
+\midrule
+\rowcolor{tiertwo}  Item B & 3.88 & T2 \\
+\midrule
+\rowcolor{tierthree} Item C & 2.80 & T3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\FloatBarrier
+
+% figure with an Edison trajectory link in the caption (uncomment to use):
+% \begin{figure}[!htbp]
+% \centering
+% \includegraphics[width=0.8\textwidth]{figures/your_figure.png}
+% \caption{Caption.~\edtraj{URL}{shortcode}}
+% \label{fig:example}
+% \end{figure}
+
+\subsection{A Subsection}
+\begin{takeaway}\textbf{Takeaway.} \lipsum[1][1-2]\end{takeaway}
+\begin{warningbox}\textbf{Caveat.} \lipsum[2][1-2]\end{warningbox}
+\begin{metricbox}\textbf{Headline number.} \lipsum[3][1]\end{metricbox}
+
+% ---- Edison Platform Data Sources ----
+\clearpage
+\section*{Edison Platform Data Sources}
+\addcontentsline{toc}{section}{Edison Platform Data Sources}
+
+All analyses in this report were conducted via the Edison Scientific
+Platform. Each trajectory below links to the full agent execution trace.
+
+% [REPLACE] rows: url = chat_url(uuid); \trajectory{desc}{type}{url}{short}; group with \trajgroup{label}.
+\small
+\begin{longtable}{@{}p{4.5cm}p{2cm}p{8.5cm}@{}}
+\toprule
+\textbf{Analysis} & \textbf{Type} & \textbf{Trajectory} \\
+\endhead
+\trajgroup{Group label}
+\trajectory{What this analysis found}{Literature}{URL}{00000000}
+\trajectory{Another analysis}{Analysis}{URL}{11111111}
+\bottomrule
+\end{longtable}
+
+% ---- References ----
+\clearpage
+\addcontentsline{toc}{section}{References}
+\printbibliography
+
+\end{document}

@@ -1,0 +1,6 @@
+vintage,cohort,n,median_excess_qqq,median_multiple,companies
+2014-18,closed,10,-0.016171665869009533,2.8934375047683716,"New Relic, MobileIron, Apigee, Atlassian, Nutanix, Apptio, Alteryx, Appian, Domo, SolarWinds"
+2014-18,open_source,7,-0.06886846141830838,2.278611077202691,"Hortonworks, Talend, MuleSoft, Cloudera, MongoDB, Pivotal, Elastic"
+2019-20,closed,11,-0.02868390251417008,1.3148148148148149,"PagerDuty, Fastly, Dynatrace, Cloudflare, Datadog, Snowflake, Sumo Logic, Unity Software, Palantir, Datto, Jamf"
+2021-22,closed,4,-0.10893885155827882,1.2183749310163916,"DigitalOcean, AvePoint, Informatica, Backblaze"
+2021-22,open_source,7,-0.29157752251048863,0.5333333333333333,"Confluent, SUSE, Kaltura, Couchbase, GitLab, HashiCorp, MariaDB"

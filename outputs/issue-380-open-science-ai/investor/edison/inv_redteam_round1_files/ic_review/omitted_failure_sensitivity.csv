@@ -1,0 +1,13 @@
+score_basis,open_group,observed_n,observed_failures,target_failure_rate,additional_unrecorded_failures_needed
+openness_current,False,51,1,0.1,5
+openness_current,False,51,1,0.25,16
+openness_current,False,51,1,0.5,49
+openness_current,True,67,1,0.1,7
+openness_current,True,67,1,0.25,21
+openness_current,True,67,1,0.5,65
+openness_initial,False,50,1,0.1,5
+openness_initial,False,50,1,0.25,16
+openness_initial,False,50,1,0.5,48
+openness_initial,True,68,1,0.1,7
+openness_initial,True,68,1,0.25,22
+openness_initial,True,68,1,0.5,66

@@ -92,11 +92,30 @@ def summarize(df, label):
                          "median_multiple_offer": lo, "median_cagr_offer": hi}
     return o
 
-main = R[R.cohort.isin(["open_source", "closed"]) & ~R.company.isin(["Instructure (2015 listing)", "Instructure (2021 listing)", "ForgeRock"])]
-S = [summarize(main.assign(cohort=main.cohort.where(main.company != "JFrog", "closed")), "pre-registered, JFrog as closed")]
-S.append(summarize(main.assign(cohort=main.cohort.where(main.company != "JFrog", "open_source")), "JFrog as open source"))
-sens = R.copy(); sens["cohort"] = sens.cohort.replace({"open_source_sensitivity": "open_source"})
-S.append(summarize(sens.assign(cohort=sens.cohort.where(sens.company != "JFrog", "closed")), "plus Instructure x2 and ForgeRock"))
+def relabel(df, jfrog=None, extras=False):
+    d = df.copy()
+    if extras:
+        d["cohort"] = d.cohort.replace({"open_source_sensitivity": "open_source", "closed_sensitivity": "closed"})
+    d = d[d.cohort.isin(["open_source", "closed"])]
+    if jfrog is None:
+        d = d[d.company != "JFrog"]
+    else:
+        d.loc[d.company == "JFrog", "cohort"] = jfrog
+    return d
+
+S = [summarize(relabel(R), "pre-registered: 14 open-source vs 25 closed (JFrog excluded)"),
+     summarize(relabel(R, jfrog="open_source"), "JFrog counted as open source"),
+     summarize(relabel(R, jfrog="closed"), "JFrog counted as closed"),
+     summarize(relabel(R, extras=True), "plus companies found after pre-registration (Instructure x2, ForgeRock, Tenable; UiPath, C3.ai, Amplitude)")]
+# Hortonworks held through Cloudera's $16 buyout (1.305 x $16 = $20.88 on 2021-10-08) instead of valued at the merger close
+H = R.copy(); i = H.company == "Hortonworks"
+yrs = (pd.Timestamp("2021-10-08") - pd.Timestamp("2014-12-12")).days / 365.25
+q = bench("QQQ", pd.Timestamp("2014-12-12"), pd.Timestamp("2021-10-08")); g = bench("IGV", pd.Timestamp("2014-12-12"), pd.Timestamp("2021-10-08"))
+m = 20.88 / 16; mf = 20.88 / 26.38
+H.loc[i, ["years", "multiple_from_offer", "cagr_from_offer", "cagr_from_first_close", "qqq_multiple", "qqq_cagr", "igv_cagr"]] = [yrs, m, m ** (1 / yrs) - 1, mf ** (1 / yrs) - 1, q, q ** (1 / yrs) - 1, g ** (1 / yrs) - 1]
+H["excess_vs_qqq_offer"] = H.cagr_from_offer - H.qqq_cagr; H["excess_vs_qqq_first"] = H.cagr_from_first_close - H.qqq_cagr
+H["excess_vs_igv_offer"] = H.cagr_from_offer - H.igv_cagr; H["beat_qqq_offer"] = H.multiple_from_offer > H.qqq_multiple; H["lost_money_offer"] = H.multiple_from_offer < 1
+S.append(summarize(relabel(H), "Hortonworks held through Cloudera's 2021 buyout"))
 pd.concat(S).to_csv("data/h1_summary.csv", index=False)
 pd.set_option("display.width", 250)
 print(R[["cohort", "company", "status", "years", "multiple_from_offer", "cagr_from_offer", "qqq_cagr", "excess_vs_qqq_offer", "excess_vs_qqq_first"]].round(3).sort_values(["cohort", "excess_vs_qqq_offer"]).to_string())
