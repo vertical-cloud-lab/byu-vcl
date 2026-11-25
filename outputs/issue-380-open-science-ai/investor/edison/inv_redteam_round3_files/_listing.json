@@ -1,0 +1,316 @@
+{
+ "data": [
+  {
+   "id": 31422347,
+   "data_storage_id": "9acdba45-9805-4f9b-be49-2832cdb1dae1",
+   "operation": "create",
+   "actor_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T02:30:17.407842Z",
+   "data_storage": {
+    "name": "964eae07-c97f-4d77-8d9a-5f021306caf8.ipynb",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "7d6c7f8aa412",
+    "parent_id": null,
+    "dataset_id": "c94939d6-226b-4fd3-afce-6b2153ebeae9",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "9acdba45-9805-4f9b-be49-2832cdb1dae1",
+    "path": "7d6c7f8aa412",
+    "created_at": "2026-11-25T02:30:17.318740Z",
+    "modified_at": "2026-11-25T02:30:19.203193Z",
+    "tags": null,
+    "file_path": "/workspace/notebooks/964eae07-c97f-4d77-8d9a-5f021306caf8.ipynb",
+    "metadata": {
+     "trajectory_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "8f93dad9-7cc7-4a40-95b1-34dafaf82fd7",
+       "filename": "h1_permutation.csv"
+      },
+      {
+       "entry_id": "77a213a9-6994-4f29-a7c8-f815a3c83476",
+       "filename": "h1_returns.csv"
+      },
+      {
+       "entry_id": "b8b13b2d-3791-45cb-9a05-a1832f2ec0b8",
+       "filename": "cohort_listings_verified.csv"
+      },
+      {
+       "entry_id": "ce928126-512d-429b-ab18-5c46975fd6da",
+       "filename": "h1_summary.csv"
+      },
+      {
+       "entry_id": "d89cd929-1a3c-49d4-b101-f091843a9d06",
+       "filename": "INVESTOR_MEMO.md"
+      },
+      {
+       "entry_id": "9a27a1ed-0698-4cba-bc5d-fae8f13b43e2",
+       "filename": "BIAS_AUDIT.md"
+      },
+      {
+       "entry_id": "0e3dfdc4-606c-4b4f-bb17-4a530343baf2",
+       "filename": "round2_review.md"
+      },
+      {
+       "entry_id": "fe582530-7158-41c4-8e97-b523423744e7",
+       "filename": "round2_framing_edits.csv"
+      },
+      {
+       "entry_id": "e3b3efe6-f9df-45ed-80cd-dbf36e6fa3dc",
+       "filename": "fundamentals_summary.csv"
+      }
+     ],
+     "size": 248227
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31422345,
+   "data_storage_id": "b999019f-a1b3-49e4-a7c6-205a681eab28",
+   "operation": "create",
+   "actor_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T02:30:16.919095Z",
+   "data_storage": {
+    "name": "memo_assessment.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "73e2f70d9dc1",
+    "parent_id": null,
+    "dataset_id": "4f730ab8-61e6-4cbc-879c-2f00b5af5a79",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "b999019f-a1b3-49e4-a7c6-205a681eab28",
+    "path": "73e2f70d9dc1",
+    "created_at": "2026-11-25T02:30:16.895007Z",
+    "modified_at": "2026-11-25T02:30:17.106216Z",
+    "tags": null,
+    "file_path": "/workspace/assessment/memo_assessment.md",
+    "metadata": {
+     "trajectory_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "8f93dad9-7cc7-4a40-95b1-34dafaf82fd7",
+       "filename": "h1_permutation.csv"
+      },
+      {
+       "entry_id": "77a213a9-6994-4f29-a7c8-f815a3c83476",
+       "filename": "h1_returns.csv"
+      },
+      {
+       "entry_id": "b8b13b2d-3791-45cb-9a05-a1832f2ec0b8",
+       "filename": "cohort_listings_verified.csv"
+      },
+      {
+       "entry_id": "ce928126-512d-429b-ab18-5c46975fd6da",
+       "filename": "h1_summary.csv"
+      },
+      {
+       "entry_id": "d89cd929-1a3c-49d4-b101-f091843a9d06",
+       "filename": "INVESTOR_MEMO.md"
+      },
+      {
+       "entry_id": "9a27a1ed-0698-4cba-bc5d-fae8f13b43e2",
+       "filename": "BIAS_AUDIT.md"
+      },
+      {
+       "entry_id": "0e3dfdc4-606c-4b4f-bb17-4a530343baf2",
+       "filename": "round2_review.md"
+      },
+      {
+       "entry_id": "fe582530-7158-41c4-8e97-b523423744e7",
+       "filename": "round2_framing_edits.csv"
+      },
+      {
+       "entry_id": "e3b3efe6-f9df-45ed-80cd-dbf36e6fa3dc",
+       "filename": "fundamentals_summary.csv"
+      }
+     ],
+     "size": 5098
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31422343,
+   "data_storage_id": "48c62b7c-da48-4b3f-ba4e-3c6db838b3aa",
+   "operation": "create",
+   "actor_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T02:30:16.548842Z",
+   "data_storage": {
+    "name": "numerical_checks.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "9c9179bd2e3c",
+    "parent_id": null,
+    "dataset_id": "5dfe217e-6a18-4ec1-8bfc-86f340d81355",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "48c62b7c-da48-4b3f-ba4e-3c6db838b3aa",
+    "path": "9c9179bd2e3c",
+    "created_at": "2026-11-25T02:30:16.512145Z",
+    "modified_at": "2026-11-25T02:30:16.721252Z",
+    "tags": null,
+    "file_path": "/workspace/assessment/numerical_checks.json",
+    "metadata": {
+     "trajectory_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "8f93dad9-7cc7-4a40-95b1-34dafaf82fd7",
+       "filename": "h1_permutation.csv"
+      },
+      {
+       "entry_id": "77a213a9-6994-4f29-a7c8-f815a3c83476",
+       "filename": "h1_returns.csv"
+      },
+      {
+       "entry_id": "b8b13b2d-3791-45cb-9a05-a1832f2ec0b8",
+       "filename": "cohort_listings_verified.csv"
+      },
+      {
+       "entry_id": "ce928126-512d-429b-ab18-5c46975fd6da",
+       "filename": "h1_summary.csv"
+      },
+      {
+       "entry_id": "d89cd929-1a3c-49d4-b101-f091843a9d06",
+       "filename": "INVESTOR_MEMO.md"
+      },
+      {
+       "entry_id": "9a27a1ed-0698-4cba-bc5d-fae8f13b43e2",
+       "filename": "BIAS_AUDIT.md"
+      },
+      {
+       "entry_id": "0e3dfdc4-606c-4b4f-bb17-4a530343baf2",
+       "filename": "round2_review.md"
+      },
+      {
+       "entry_id": "fe582530-7158-41c4-8e97-b523423744e7",
+       "filename": "round2_framing_edits.csv"
+      },
+      {
+       "entry_id": "e3b3efe6-f9df-45ed-80cd-dbf36e6fa3dc",
+       "filename": "fundamentals_summary.csv"
+      }
+     ],
+     "size": 6356
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31422339,
+   "data_storage_id": "438b585f-130c-49cd-939e-1bed7397d96f",
+   "operation": "create",
+   "actor_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T02:30:14.476507Z",
+   "data_storage": {
+    "name": "964eae07-c97f-4d77-8d9a-5f021306caf8_memory_heron_c0_20261125T022751501341.jsonl",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "efe5b9fab9b2",
+    "parent_id": null,
+    "dataset_id": "f9698355-0297-47db-ad5d-3d32af1e5d34",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "438b585f-130c-49cd-939e-1bed7397d96f",
+    "path": "efe5b9fab9b2",
+    "created_at": "2026-11-25T02:30:14.386899Z",
+    "modified_at": "2026-11-25T02:30:16.322473Z",
+    "tags": null,
+    "file_path": "/workspace/memory/964eae07-c97f-4d77-8d9a-5f021306caf8_memory_heron_c0_20261125T022751501341.jsonl",
+    "metadata": {
+     "trajectory_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "8f93dad9-7cc7-4a40-95b1-34dafaf82fd7",
+       "filename": "h1_permutation.csv"
+      },
+      {
+       "entry_id": "77a213a9-6994-4f29-a7c8-f815a3c83476",
+       "filename": "h1_returns.csv"
+      },
+      {
+       "entry_id": "b8b13b2d-3791-45cb-9a05-a1832f2ec0b8",
+       "filename": "cohort_listings_verified.csv"
+      },
+      {
+       "entry_id": "ce928126-512d-429b-ab18-5c46975fd6da",
+       "filename": "h1_summary.csv"
+      },
+      {
+       "entry_id": "d89cd929-1a3c-49d4-b101-f091843a9d06",
+       "filename": "INVESTOR_MEMO.md"
+      },
+      {
+       "entry_id": "9a27a1ed-0698-4cba-bc5d-fae8f13b43e2",
+       "filename": "BIAS_AUDIT.md"
+      },
+      {
+       "entry_id": "0e3dfdc4-606c-4b4f-bb17-4a530343baf2",
+       "filename": "round2_review.md"
+      },
+      {
+       "entry_id": "fe582530-7158-41c4-8e97-b523423744e7",
+       "filename": "round2_framing_edits.csv"
+      },
+      {
+       "entry_id": "e3b3efe6-f9df-45ed-80cd-dbf36e6fa3dc",
+       "filename": "fundamentals_summary.csv"
+      }
+     ],
+     "size": 170065
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  }
+ ]
+}

@@ -1,0 +1,202 @@
+{
+  "primary_checks": [
+    {
+      "cohort": "open_origin_excluding_JFrog",
+      "n": 14,
+      "median_relative_wealth_QQQ": 0.5206362200743091,
+      "median_annualized_excess_QQQ_pp": -17.082748826263582,
+      "nominal_loss_count": 7,
+      "first_close_nonmissing": 14
+    },
+    {
+      "cohort": "closed",
+      "n": 25,
+      "median_relative_wealth_QQQ": 0.8361437843011431,
+      "median_annualized_excess_QQQ_pp": -2.868390251417,
+      "nominal_loss_count": 9,
+      "first_close_nonmissing": 25
+    }
+  ],
+  "permutation_tests": [
+    {
+      "set": "pre-registered (JFrog excluded)",
+      "measure": "excess_vs_qqq_offer",
+      "n_open": 14,
+      "n_closed": 25,
+      "median_diff": -0.1421435857484658,
+      "perm_p_two_sided": 0.1027
+    },
+    {
+      "set": "pre-registered (JFrog excluded)",
+      "measure": "excess_vs_qqq_first",
+      "n_open": 14,
+      "n_closed": 25,
+      "median_diff": -0.1448914423595805,
+      "perm_p_two_sided": 0.08628
+    },
+    {
+      "set": "pre-registered (JFrog excluded)",
+      "measure": "excess_vs_igv_offer",
+      "n_open": 14,
+      "n_closed": 25,
+      "median_diff": -0.1437988703146945,
+      "perm_p_two_sided": 0.03454
+    },
+    {
+      "set": "pre-registered (JFrog excluded)",
+      "measure": "pme",
+      "n_open": 14,
+      "n_closed": 25,
+      "median_diff": -0.315507564226834,
+      "perm_p_two_sided": 0.19754
+    },
+    {
+      "set": "JFrog counted as open source",
+      "measure": "excess_vs_qqq_offer",
+      "n_open": 15,
+      "n_closed": 25,
+      "median_diff": -0.1311400491578868,
+      "perm_p_two_sided": 0.20838
+    },
+    {
+      "set": "JFrog counted as open source",
+      "measure": "excess_vs_qqq_first",
+      "n_open": 15,
+      "n_closed": 25,
+      "median_diff": -0.1192848554718034,
+      "perm_p_two_sided": 0.18826
+    },
+    {
+      "set": "JFrog counted as open source",
+      "measure": "excess_vs_igv_offer",
+      "n_open": 15,
+      "n_closed": 25,
+      "median_diff": -0.1136875489939833,
+      "perm_p_two_sided": 0.11398
+    },
+    {
+      "set": "JFrog counted as open source",
+      "measure": "pme",
+      "n_open": 15,
+      "n_closed": 25,
+      "median_diff": -0.2806799532110975,
+      "perm_p_two_sided": 0.32864
+    }
+  ],
+  "fundamentals": [
+    {
+      "variant": "JFrog excluded (H1 definition)",
+      "metric": "revenue growth (latest quarter, y/y)",
+      "median_open_source": 0.192,
+      "median_closed": 0.255,
+      "n_open_source": 4,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog excluded (H1 definition)",
+      "metric": "gross margin",
+      "median_open_source": 0.74153503,
+      "median_closed": 0.75697,
+      "n_open_source": 4,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog excluded (H1 definition)",
+      "metric": "operating margin",
+      "median_open_source": -0.00111,
+      "median_closed": 0.058135,
+      "n_open_source": 4,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog excluded (H1 definition)",
+      "metric": "free-cash-flow margin",
+      "median_open_source": 0.2383296483615255,
+      "median_closed": 0.252157021229077,
+      "n_open_source": 4,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog excluded (H1 definition)",
+      "metric": "EV / revenue",
+      "median_open_source": 5.068,
+      "median_closed": 6.2325,
+      "n_open_source": 4,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog counted as open source",
+      "metric": "revenue growth (latest quarter, y/y)",
+      "median_open_source": 0.213,
+      "median_closed": 0.255,
+      "n_open_source": 5,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR FROG",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog counted as open source",
+      "metric": "gross margin",
+      "median_open_source": 0.75619006,
+      "median_closed": 0.75697,
+      "n_open_source": 5,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR FROG",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog counted as open source",
+      "metric": "operating margin",
+      "median_open_source": -0.00468,
+      "median_closed": 0.058135,
+      "n_open_source": 5,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR FROG",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog counted as open source",
+      "metric": "free-cash-flow margin",
+      "median_open_source": 0.2658482642157814,
+      "median_closed": 0.252157021229077,
+      "n_open_source": 5,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR FROG",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    },
+    {
+      "variant": "JFrog counted as open source",
+      "metric": "EV / revenue",
+      "median_open_source": 5.951,
+      "median_closed": 6.2325,
+      "n_open_source": 5,
+      "n_closed": 14,
+      "open_source_tickers": "MDB ESTC GTLB KLTR FROG",
+      "closed_tickers": "TEAM NTNX APPN PD FSLY DT NET DDOG SNOW U PLTR DOCN AVPT BLZE"
+    }
+  ],
+  "year_adjusted_log_relative_wealth": {
+    "formula": "log(multiple_from_offer / qqq_multiple) ~ is_open + C(listing_year)",
+    "n": 39,
+    "ratio": 1.165301262835925,
+    "HC3_normal_95_CI": [
+      0.5385997012868747,
+      2.521217575729266
+    ],
+    "HC3_small_sample_t_95_CI": [
+      0.5208166815457692,
+      2.6073032628999364
+    ]
+  },
+  "scope": "Supplied local files only; no fresh external-source validation."
+}

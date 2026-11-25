@@ -4,10 +4,11 @@ Sterling asked for a less-biased pass at the first round, written from the chair
 invest, with Edison as an independent check. This memo is that pass. The first round asked what open science is
 *worth*. This one asks what someone who pays for it *gets back*, and what could go wrong.
 
-Edison was used twice. It red-teamed the first round from its raw files, and then red-teamed a draft of this memo.
-The second review concluded that the draft had **overcorrected toward a negative view**, especially for
-physical-science ventures. This version applies that review. The [last section](#edisons-review-of-this-memo) lists
-what changed.
+Besides answering nine neutral literature questions, Edison red-teamed the first round from its raw files and then
+reviewed two drafts of this memo. The first review of the memo found that it had **overcorrected toward a negative
+view**, especially for physical-science ventures. After revision, a second check judged the memo "largely corrected"
+and found it "has not tipped toward favouring openness". Its one-line takeaway for an investor: ***underwrite the
+business, not the openness label.*** The [last section](#edisons-review-of-this-memo) lists what changed.
 
 **Start with:** the [bottom line](#bottom-line) and the [ranked concerns](#the-concerns-ranked). The supporting
 files are the [pre-registration](PREREGISTRATION.md) (committed before any new data, in
@@ -30,8 +31,9 @@ investor:
   - None of these rules out a business, but each has to be answered in diligence. Edison, reading the first round's
     files from an investment committee's chair, wrote: *"I would not approve an investment on the case
     presented."* It added that it would consider milestone-funded diligence.
-- **A public-market investor in open-source software companies** has not been rewarded for open-source origin as
-  such. I identified 14 listings from 2014–22 of companies whose core product began as open source. A dollar
+- **A public-market investor in open-source software companies** finds lower unadjusted median returns for
+  open-source-origin companies in this selected sample. The sample doesn't identify the return attributable to
+  open-source origin. I identified 14 listings from 2014–22 of companies whose core product began as open source. A dollar
   invested at their offer prices became a median of 0.52 of what the same dollar in QQQ became, against 0.84 for 25
   closed infrastructure-software peers.
   - The gap is consistent across measures, but its statistical support is weak and depends on the measure:
@@ -43,7 +45,8 @@ investor:
   returns, but so are quality, reproducibility, uptake and maintenance. Award terms can protect patentable
   information and protected data while still requiring access. What to check is what each award actually requires.
 
-The strongest case for openness is selective. Open what brings users in and makes results credible: drivers,
+Selective disclosure is one possible strategy. The right scope of openness depends on adoption benefits,
+complementary assets and financing needs. One version is to open what brings users in and makes results credible: drivers,
 methods, interfaces, benchmarks. Decide deliberately what to file on, embargo or keep as know-how before
 publishing: compositions, process windows, operating know-how, and data that gives an edge for a while. Openness
 and value capture are not opposites. Which way a choice works depends on which asset is released, and when.
@@ -67,7 +70,7 @@ premium exists.
 
 | # | Concern | What the data show | Verdict |
 | --- | --- | --- | --- |
-| H1 | Open-source origin doesn't earn public investors a premium | **Median value of $1 at the offer price, relative to $1 in QQQ over the same window: 0.52 (14 open-source-origin listings) vs. 0.84 (25 closed).**<br>• The median annualized return relative to QQQ was −17.1 points for the open-source listings and −2.9 for the closed ones. The gap is −14.2 points (bootstrap 95% CI −25.1 to +2.2; permutation p = 0.10).<br>• Measured from the first-day close (all 39 listings, after Edison sourced the two missing closes): −14.5 points (bootstrap CI −24.4 to −0.7; permutation p = 0.09).<br>• Against IGV: −14.4 points (p = 0.03).<br>• 7 of the 14 open-source listings lost money from the offer price, against 9 of 25 closed ones.<br>• With listing-year controls (log relative wealth): ratio 1.17, 95% CI 0.54–2.4 | **The unadjusted gap is negative on every measure, with weak and measure-dependent support.** It isn't robust to listing year, and it isn't causal. The data don't support an open-source premium, and they don't establish a penalty |
+| H1 | Open-source origin doesn't earn public investors a premium | **Median value of $1 at the offer price, relative to $1 in QQQ over the same window: 0.52 (14 open-source-origin listings) vs. 0.84 (25 closed).**<br>• The median annualized return relative to QQQ was −17.1 points for the open-source listings and −2.9 for the closed ones. The gap is −14.2 points (bootstrap 95% CI −25.1 to +2.2; permutation p = 0.10).<br>• Measured from the first-day close (all 39 listings, after Edison sourced the two missing closes): −14.5 points (bootstrap CI −24.4 to −0.7; permutation p = 0.09).<br>• Against IGV: −14.4 points (p = 0.03).<br>• 7 of the 14 open-source listings lost money from the offer price, against 9 of 25 closed ones.<br>• With listing-year controls (log relative wealth): ratio 1.17, 95% CI 0.54–2.4. That interval is a 5,000-resample bootstrap of a listing-year fixed-effects regression ([`scripts/h1_vintage.py`](scripts/h1_vintage.py), [`data/h1_pme.csv`](data/h1_pme.csv)). Edison's HC3-robust and small-sample t intervals give 0.54–2.52 and 0.52–2.61 | **The unadjusted gap is negative on every measure, with weak and measure-dependent support.** It isn't robust to listing year, and it isn't causal. The data don't support an open-source premium, and they don't establish a penalty |
 | H2 | Openness doesn't raise value captured per dollar raised | First-round case files: Spearman ρ −0.04 (95% CI −0.39 to 0.31), n = 37. Edison's two reanalyses of the same files agree: median value/funding of 7.5× for open-core-or-more-open firms vs. 11.5× for closed or restricted ones, ratio 0.66 (95% CI 0.35–1.30) | **Inconclusive.** Only 37 of 179 rows are usable, almost none of them failures, and the values are private marks rather than returns |
 | H3 | Open hardware doesn't reach venture scale | The test was whether an open-hardware company has *ever* reached $1B or more.<br>• Edison's precedent search found one candidate: Opentrons, reported at about $1.8B as a private company. Whether its main products were open hardware when it was valued that way is disputed: OT-2 hardware files are published, but a 2025 dissertation calls the OT-2 "not fully open source".<br>• The largest clearly documented exit is MakerBot's, $403M (2013), after it had closed its designs. | **Unresolved.** There is one disputed precedent and no clean one. Opentrons' later down round doesn't refute "ever", but no open-hardware exit of $1B or more was found |
 | H4 | AI weakens the open-source funnel and lowers the cost of copying | • Tailwind: usage at a record, docs traffic −40%, revenue −80%, 75% of engineers laid off (January 2026).<br>• Stack Overflow questions are down 99% since November 2022, though its revenue still rose 12% in its 2026 fiscal year.<br>• Cloudflare re-implemented 94% of the Next.js API in a week for about $1,100 of AI tokens.<br>• **But** GitHub contributions rose 13%, Supabase reached a $10B pre-money valuation, and AI companies bought open-source teams | **Mixed.** It is a real risk for businesses that monetize human attention, such as docs, community and support funnels. Others gained. The net effect depends on the business model |
@@ -145,7 +148,8 @@ estimates. Each concern is something to check, not a verdict.
 ### 3. Does disclosure before filing give up patents the business needs?
 
 - **The concern.** In materials, chemistry and devices, patents can act as financing instruments. Enabling
-  disclosure before filing removes novelty for the claims it covers.
+  disclosure before filing can prevent patent protection for the claims it covers, depending on jurisdiction and
+  the exceptions that apply.
 - **Evidence for.**
   - A first patent grant raises a startup's chance of venture funding by 47%, five-year employment growth by 55%
     and sales growth by 80% (Farre-Mensa, Hegde & Ljungqvist 2020).
@@ -415,8 +419,8 @@ neither proves nor disproves compliance. One written rule would serve both the f
 is filed before it is published, embargo periods, and which layers are open.
 
 **The SDL-demo kit is a teaching and outreach product, not a venture.** Its stated $2.24 margin, or $7.24 by its
-own cost table, and 39 kits sold put it far from paying for an engineer. Grants and partners such as GroupGets are
-the right money for it. Edison's caveat stands: one kit's margin doesn't show that services beat hardware, because
+own cost table, and 39 kits sold put it far from paying for an engineer. Its reported sales and margins don't establish a venture-scale business. Grants, partnerships and commercial
+financing should be weighed against a credible plan to scale. Edison's caveat stands: one kit's margin doesn't show that services beat hardware, because
 bespoke integration services can have worse economics.
 
 ## Edison's review of this memo
@@ -458,6 +462,11 @@ evidence.
 - Added the alloy-specific concerns, the DOE open-access study, Stack Overflow's rising revenue and NIH's rising
   grant dollars.
 
+**A third, short check** ([answer](edison/inv_redteam_round3_answer.md)) found the revision "largely corrected, but
+still mildly negative", and found it had not tipped toward favouring openness. It verified every number it sampled
+against the data files. I applied its four remaining wording edits and documented the method behind the
+listing-year interval, which it could not reproduce from the files it was given.
+
 **Where I kept my view:** the ten concerns and their ranking for persona A. Edison's own first review ranked value
 leakage, paying demand and the discovery-to-product gap at the top for an alloy spin-out, as this memo does.
 
@@ -490,7 +499,7 @@ leakage, paying demand and the discovery-to-product gap at the top for an alloy 
 | --- | --- |
 | [`PREREGISTRATION.md`](PREREGISTRATION.md) | Hypotheses and tests, committed before the data |
 | [`BIAS_AUDIT.md`](BIAS_AUDIT.md) | Where the first round leaned toward openness |
-| [`edison/`](edison/) | Ten Edison jobs: answers, references and full trajectories. The two red-team reviews' files are in `inv_redteam_round1_files/` and `inv_redteam_round2_files/` |
+| [`edison/`](edison/) | Twelve Edison jobs: answers, references and full trajectories. Nine neutral questions; a red team of the first round (`inv_redteam_round1_files/`); two reviews of this memo (`inv_redteam_round2_files/`, `inv_redteam_round3_files/`) |
 | [`evidence/ai_and_funding_evidence.md`](evidence/ai_and_funding_evidence.md) | Dated, sourced 2025–26 evidence on AI and open source, US science funding and relicensing |
 | [`data/cohort_listings_verified.csv`](data/cohort_listings_verified.csv) | Offer prices, deal terms, first-day closes and sources for 43 listings |
 | `data/h1_*.csv`, `data/h2_*.csv`, `data/fundamentals_*.csv`, `data/us_science_funding.csv`, `data/stackoverflow_monthly_questions.csv` | Results and inputs |
