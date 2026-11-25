@@ -1,0 +1,18 @@
+agency,measure,fy,value,unit,status,source
+NSF,appropriation,2024,9.06,USD bn,enacted,https://nsf-gov-resources.nsf.gov/files/FY-2027-NSF-Budget-Request-to-Congress.pdf
+NSF,appropriation,2025,8.826,USD bn,full-year CR (available),https://nsf-gov-resources.nsf.gov/files/FY-2027-NSF-Budget-Request-to-Congress.pdf
+NSF,appropriation,2026,8.75,USD bn,enacted,https://www.aip.org/fyi/congress-set-to-finalize-science-budgets-rejecting-trump-cuts
+NSF,request,2026,3.903,USD bn,President's request,https://nsf-gov-resources.nsf.gov/files/FY-2027-NSF-Budget-Request-to-Congress.pdf
+NIH,appropriation,2024,47.32,USD bn,derived: FY2025 program level 47.035 is -0.6% on FY2024,https://www.everycrsreport.com/files/2026-05-18_R43341_6d77dd2bbd94600af3f1daf86e55b0efd27b39a1.pdf
+NIH,appropriation,2025,47.035,USD bn,enacted program level,https://www.everycrsreport.com/files/2026-05-18_R43341_6d77dd2bbd94600af3f1daf86e55b0efd27b39a1.pdf
+NIH,appropriation,2026,47.493,USD bn,enacted program level,https://www.everycrsreport.com/files/2026-05-18_R43341_6d77dd2bbd94600af3f1daf86e55b0efd27b39a1.pdf
+NIH,request,2026,27.915,USD bn,President's request,https://www.everycrsreport.com/files/2026-05-18_R43341_6d77dd2bbd94600af3f1daf86e55b0efd27b39a1.pdf
+DOE Office of Science,appropriation,2024,8.24,USD bn,enacted,https://www.aip.org/fyi/the-week-of-jan-5-2026
+DOE Office of Science,appropriation,2025,8.24,USD bn,enacted (unconfirmed; consistent with AIP's +1.9% for FY2026),https://www.aip.org/fyi/the-week-of-jan-5-2026
+DOE Office of Science,appropriation,2026,8.4,USD bn,enacted ($8.25B base + $150M repurposed),https://www.aip.org/fyi/the-week-of-jan-5-2026
+DOE Office of Science,request,2026,7.092,USD bn,President's request (unconfirmed),https://www.aip.org/fyi/the-week-of-jan-5-2026
+NSF,awards,2024,10937,awards,all awards (Grant Witness),https://www.aip.org/fyi/the-week-of-october-5-2026
+NSF,awards,2025,8647,awards,all awards (Grant Witness),https://www.aip.org/fyi/the-week-of-october-5-2026
+NSF,awards,2026,6218,awards,all awards (Grant Witness),https://www.aip.org/fyi/the-week-of-october-5-2026
+NIH,awards,2024,10265,competing research project grants,NIH Extramural Nexus,https://www.grants.nih.gov/news-events/nih-extramural-nexus-news/2026/03/fiscal-year-2025-by-the-numbers-extramural-grant-investments-in-research
+NIH,awards,2025,8161,competing research project grants,NIH Extramural Nexus,https://www.grants.nih.gov/news-events/nih-extramural-nexus-news/2026/03/fiscal-year-2025-by-the-numbers-extramural-grant-investments-in-research

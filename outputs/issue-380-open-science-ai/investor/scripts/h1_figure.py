@@ -34,11 +34,11 @@ ax.set_xlim(0.025, 14); ax.set_xticks([0.05, 0.1, 0.25, 0.5, 1, 2, 4, 8]); ax.se
 ax.set_yticks([0, 1]); ax.set_ylim(-0.6, 1.62); ax.grid(axis="y", visible=False)
 ax.set_yticklabels([f"Closed source\n(n = {(R.cohort == 'closed').sum()})", f"Open-source origin\n(n = {(R.cohort == 'open_source').sum()})"])
 ax.set_xlabel("Value of \\$1 invested at the offer price, relative to \\$1 in QQQ over the same window (log scale)")
-ax.set_title("Infrastructure-software listings 2014–22: open-source origin earned no premium")
+ax.set_title("Software listings 2014–22: open-source origin earned no premium")
 leg = [Line2D([0], [0], marker="o", color="none", markerfacecolor=INK2, markeredgecolor=INK2, markersize=8, label="still listed (to 2026-11-24)"),
        Line2D([0], [0], marker="o", color="none", markerfacecolor=SURFACE, markeredgecolor=INK2, markeredgewidth=2, markersize=8, label="bought out or merged (deal value)")]
 ax.legend(handles=leg, loc="upper left", fontsize=9)
-fig.text(0.01, -0.03, "Open-source cohort pre-registered; closed cohort chosen by category rule. Medians differ (0.52 vs 0.84), but with listing-year "
+fig.text(0.01, -0.03, "Open-source cohort pre-registered; closed cohort = infrastructure software chosen by category rule. Medians differ (0.52 vs 0.84), but with listing-year "
          "controls the gap is not significant (ratio 1.17, 95% CI 0.54–2.4).\nSeven of the 14 open-source listings came in 2021–22. "
          "Sources: deal terms and offer prices in data/cohort_listings_verified.csv; prices from Yahoo Finance.", fontsize=8, color=INK2)
 fig.savefig("figures/h1_listing_returns.png"); print("saved")

@@ -20,9 +20,9 @@ considers:
   designs. The customers who most want open tools are the ones with the least money. Edison, reading the first
   round's files from an investment committee's chair, wrote: *"I would not approve an investment on the case
   presented."*
-- **A public-market investor in open-source software companies** has seen no premium. Every 2014–22 listing of an
-  open-source-origin infrastructure company, failures and buyouts included, returned a median of 0.52 of what QQQ
-  returned over the same window, against 0.84 for closed peers. That gap is mostly the timing of the listings:
+- **A public-market investor in open-source software companies** has seen no premium. The 14 companies listed in 2014–22 whose
+  core product began as open source returned a median of 0.52 of what QQQ returned over the same window, failures
+  and buyouts included, against 0.84 for 25 closed infrastructure-software peers. That gap is mostly the timing of the listings:
   with listing-year controls it disappears. So the evidence shows **no premium and no proven penalty**.
 - **A public funder** (DOE's Genesis Mission, ONR, NSF) wants the opposite of what the venture investor wants.
   Openness is the point. The funder's worry is that the lab isn't open *enough*: none of DAL's datasets has a DOI
@@ -63,6 +63,8 @@ Details: H1 in [`data/h1_summary.csv`](data/h1_summary.csv), [`data/h1_pme.csv`]
 [evidence file](evidence/ai_and_funding_evidence.md).
 
 ![What public investors earned](figures/h1_listing_returns.png)
+
+![Two shocks: flat science money with fewer awards, and AI emptying the attention funnel](figures/two_shocks.png)
 
 ## The concerns, ranked
 
@@ -273,8 +275,8 @@ An unbiased memo has to give the other side its best case.
 - **At scale, open-source companies look like everyone else.** Their margins and valuation multiples match closed
   peers. Openness isn't a structural margin penalty once there is a hosted product.
 - **Openness is distribution, and AI agents are a new distribution channel.** Supabase's growth comes from agents
-  choosing an open default. Opentrons' open API made it the default robot in academic self-driving-lab builds, even
-  after its hardware closed.
+  choosing an open default. By the first round's account, Opentrons' open API made it the default robot in academic self-driving-lab
+  builds, even after its hardware closed.
 - **For a public funder, openness is the return.** The PDB costs about $6.9M a year and supports research worth far
   more (first round). NIH's open-access mandate raised patent citations to its research by 12–27%.
 - **Open source threatens closed incumbents.** An event study found proprietary software stocks fell on the day of
