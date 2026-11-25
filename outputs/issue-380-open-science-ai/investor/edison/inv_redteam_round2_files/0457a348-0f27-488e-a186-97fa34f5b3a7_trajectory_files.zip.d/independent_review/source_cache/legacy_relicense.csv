@@ -1,0 +1,7 @@
+event,ticker,date,horizon_days,stock_return,qqq_return,excess
+MongoDB → SSPL,MDB,2018-10-16,5,0.061,0.01,0.052
+MongoDB → SSPL,MDB,2018-10-16,20,0.072,-0.034,0.106
+Elastic → SSPL/ELv2,ESTC,2021-01-14,5,0.141,0.033,0.108
+Elastic → SSPL/ELv2,ESTC,2021-01-14,20,0.1,0.059,0.041
+Elastic adds AGPL,ESTC,2024-08-29,5,-0.296,-0.022,-0.274
+Elastic adds AGPL,ESTC,2024-08-29,20,-0.247,0.04,-0.287

@@ -1,0 +1,313 @@
+The Value of Open Source Software by Manuel Hoffmann, Frank Nagle, Yanuo Zhou :: SSRN
+
+[logo![](https://cdn.ssrn.com/ssrn-header-widget/static/media/ssrn.11589acb53bc518aa22929bf19add113.svg "width=100% | height=48")](https://www.ssrn.com "SSRN Homepage")
+
+* Product & Services
+* [Subscribe](https://www.ssrn.com/index.cfm/en/subscribe/ "Subscribe")
+* [Submit a paper](https://hq.ssrn.com/submission.cfm "Submit a paper")
+* [Browse](https://papers.ssrn.com/sol3/DisplayJournalBrowse.cfm "Browse")
+* [Blog](https://blog.ssrn.com/ "Blog")
+* [Contact](https://www.ssrn.com/index.cfm/en/contactus/ "Contact")
+
+[Create Account](https://hq.ssrn.com/login/pubsigninjoin.cfm "Create Account")[Sign In](https://hq.ssrn.com/login/pubsigninjoin.cfm "Sign In")
+
+[![link to Harvard Business School: Strategy Unit Working Paper Series homepage](https://papers.ssrn.com/sol3/journalcovers/254669_43863.gif)](https://papers.ssrn.com/sol3/JelJour_Results.cfm?form_name=journalBrowse&journal_id=254669 "link to Harvard Business School: Strategy Unit Working Paper Series homepage")
+
+[![PDF icon](https://static.ssrn.com/cfincludes/img/icons/icon-adobe-pdf.svg "PDF icon")Download This Paper](https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=4693148&mirid=1)
+
+[Open PDF in Browser](https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=4693148&mirid=1&type=2)
+
+[Add Paper to My Library](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4693148#)
+
+Permalink
+
+Using these links will ensure access to this page indefinitely
+
+[Copy URL](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4693148# "Copy Permalink URL")
+
+[Copy DOI](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4693148# "Copy DOI URL")
+
+# The Value of Open Source Software
+
+[Harvard Business School Strategy Unit Working Paper No. 24-038](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4693148#)
+
+42 Pages Posted: 16 Jan 2024
+
+[See all articles by Manuel Hoffmann](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6426337 "View other papers by this author")
+
+## [Manuel Hoffmann](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6426337 "View other papers by this author")
+
+Harvard Business School
+
+## [Frank Nagle](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=2047070 "View other papers by this author")
+
+Massachusetts Institute of Technology (MIT); Microsoft Corporation - Microsoft AI Economy Institute
+
+## [Yanuo Zhou](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6426340 "View other papers by this author")
+
+University of Toronto
+
+Date Written: January 1, 2024
+
+### Abstract
+
+The value of a non-pecuniary (free) product is inherently difficult to assess. A pervasive example is open source software (OSS), a global public good that plays a vital role in the economy and is foundational for most technology we use today. However, it is difficult to measure the value of OSS due to its non-pecuniary nature and lack of centralized usage tracking. Therefore, OSS remains largely unaccounted for in economic measures. Although prior studies have estimated the supply side costs to recreate this software, a lack of data has hampered estimating the much larger demand-side (usage) value created by OSS. Therefore, to understand the complete economic and social value of widely-used OSS, we leverage unique global data from two complementary sources capturing OSS usage by millions of global firms. We first estimate the supply-side value by calculating the cost to recreate the most widely used OSS once. We then calculate the demand side value based on a replacement value for each firm that uses the software and would need to build it internally if OSS did not exist. We estimate the supply-side value of widely-used OSS is $4.15 billion, but that the demand-side value is much larger at $8.8 trillion. We find that firms would need to spend 3.5 times more on software than they currently do if OSS did not exist. The top six programming languages in our sample comprise 84% of the demand-side value of OSS. Further, 96% of the demand-side value is created by only 5% of OSS developers.
+
+**License Information**
+
+The copyright holder has granted SSRN a [license](https://www.ssrn.com/index.cfm/en/terms-of-use/).
+All rights reserved. No reuse allowed without permission.
+
+**Suggested Citation:** [Suggested Citation](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4693148#)
+
+Hoffmann, Manuel and Nagle, Frank and Zhou, Yanuo, The Value of Open Source Software (January 1, 2024). Harvard Business School Strategy Unit Working Paper No. 24-038, Available at SSRN: <https://ssrn.com/abstract=4693148> or [http://dx.doi.org/10.2139/ssrn.4693148](https://dx.doi.org/10.2139/ssrn.4693148)
+
+### [Manuel Hoffmann](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6426337)
+
+#### Harvard Business School ( email )
+
+### [Frank Nagle (Contact Author)](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=2047070)
+
+#### Massachusetts Institute of Technology (MIT) ( email )
+
+77 Massachusetts Avenue  
+50 Memorial Drive  
+Cambridge, MA 02139-4307  
+United States
+
+#### Microsoft Corporation - Microsoft AI Economy Institute
+
+### [Yanuo Zhou](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6426340)
+
+#### University of Toronto ( email )
+
+105 St George Street  
+Toronto, Ontario M5S 3G8  
+Canada
+
+[![PDF icon](https://static.ssrn.com/cfincludes/img/icons/icon-adobe-pdf.svg "PDF icon")Download This Paper](https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=4693148&mirid=1)
+
+[Open PDF in Browser](https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=4693148&mirid=1&type=2)
+
+### 50 References
+
+1. D A Almeida, G C Murphy, G Wilson, M Hoye
+
+    Do software developers understand open source licenses?
+
+    th International Conference on Program Comprehension (ICPC) , volume 25 , p. 1 \- 11 Posted: 2017-05
+
+2. M Andreessen
+
+    Why Software Is Eating The World Posted: 2011-05-01
+
+3. Aristotle
+
+    Politics. Book , volume 2 Posted: 1981
+
+4. K Blind, M Böhm, P Grzegorzewska, A Katz, S Muto, S Pätsch, T Schubert
+
+    The impact of Open Source Software and Hardware on technological independence, competitiveness and innovation in the EU economy Posted: 2021
+
+### 48 Citations
+
+1. Alfred Hermida, Felix M. Simon
+
+    AI in the Newsroom: Lessons from the Adoption of The Globe and Mail's Sophi
+
+    Journalism Practice , volume 19 , issue 10 , p. 2323 Posted: 2025
+
+    [Crossref](https://doi.org/10.1080/17512786.2025.2471781 "View article via Crossref")
+
+2. Mauricio Henriquez-Schott, Michael Zabala, Sean Gallagher, Susan Kotowski, Michael Jorgensen, Kermit Davis, Ivan Nail-Ulloa
+
+    ErgoTools: Software Platform Integrating Fatigue Failure-Based Risk Assessment Tools for Ergonomics Evaluation in Salmon Processing
+
+    Ergonomics in Design: The Quarterly of Human Factors Applications Posted: 2025
+
+    [Crossref](https://doi.org/10.1177/10648046251408207 "View article via Crossref")
+
+3. Deepa Iyer, Kalle Lyytinen, William Robinson
+
+    The Uncertainty Challenge: To Centralize or Decentralize Requirements Engineering Decision-Making in Open Source Software Development?
+
+    ACM Transactions on Management Information Systems , volume 17 , issue 1 , p. 1 Posted: 2026
+
+    [Crossref](https://doi.org/10.1145/3766893 "View article via Crossref")
+
+4. Simone Daniotti, Johannes Wachs, Xiangnan Feng, Frank Neffke
+
+    Who is using AI to code? Global diffusion and impact of generative AI
+
+    Science , volume 391 , issue 6787 , p. 831 Posted: 2026
+
+    [Crossref](https://doi.org/10.1126/science.adz9311 "View article via Crossref")
+
+## Would you like to hear more from SSRN?
+
+[Follow us on LinkedIn](https://www.linkedin.com/company/social-science-electronic-publishing/)
+
+## Paper statistics
+
+Downloads
+
+7,413
+
+Abstract Views
+
+47,724
+
+[48 Citations](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4693148#paper-citations-widget "Jump to the citations for this paper.")
+
+[50 References](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4693148#paper-references-widget "Jump to the references for this paper.")
+
+PlumX Metrics
+
+## Related Alerts
+
+* [Harvard Business School: Strategy Unit Working Paper Series](https://papers.ssrn.com/sol3/JELJOUR_Results.cfm?form_name=journalBrowse&journal_id=254669)
+
+    Follow
+
+    #### Harvard Business School: Strategy Unit Working Paper Series
+
+    Subscribe to this free journal for more curated articles on this topic
+
+    FOLLOWERS
+
+    6,863
+
+    PAPERS
+
+    259
+
+* [Economics of Networks](https://papers.ssrn.com/sol3/JELJOUR_Results.cfm?form_name=journalBrowse&journal_id=1475417)
+
+    Follow
+
+    #### Economics of Networks
+
+    Subscribe to this free journal for more curated articles on this topic
+
+    FOLLOWERS
+
+    2,713
+
+    PAPERS
+
+    16,452
+
+    This Journal is curated by:
+
+    **Nicholas Economides** at Leonard N. Stern School of Business - Department of Economics
+
+* [Organizations & Markets: Formal & Informal Structures](https://papers.ssrn.com/sol3/JELJOUR_Results.cfm?form_name=journalBrowse&journal_id=2543967)
+
+    Follow
+
+    #### Organizations & Markets: Formal & Informal Structures
+
+    Subscribe to this fee journal for more curated articles on this topic
+
+    FOLLOWERS
+
+    672
+
+    PAPERS
+
+    11,275
+
+* [Sources of Innovation](https://papers.ssrn.com/sol3/JELJOUR_Results.cfm?form_name=journalBrowse&journal_id=2011220)
+
+    Follow
+
+    #### Sources of Innovation
+
+    Subscribe to this fee journal for more curated articles on this topic
+
+    FOLLOWERS
+
+    269
+
+    PAPERS
+
+    4,135
+
+* [Change Management Strategy](https://papers.ssrn.com/sol3/JELJOUR_Results.cfm?form_name=journalBrowse&journal_id=1358763)
+
+    Follow
+
+    #### Change Management Strategy
+
+    Subscribe to this fee journal for more curated articles on this topic
+
+    FOLLOWERS
+
+    238
+
+    PAPERS
+
+    3,223
+
+* [Information Policy, Ethics, Access & Use](https://papers.ssrn.com/sol3/JELJOUR_Results.cfm?form_name=journalBrowse&journal_id=3507039)
+
+    Follow
+
+    #### Information Policy, Ethics, Access & Use
+
+    Subscribe to this fee journal for more curated articles on this topic
+
+    FOLLOWERS
+
+    81
+
+    PAPERS
+
+    4,619
+
+* [Frontiers in Information Systems Research & Applications](https://papers.ssrn.com/sol3/JELJOUR_Results.cfm?form_name=journalBrowse&journal_id=4621663)
+
+    Follow
+
+    #### Frontiers in Information Systems Research & Applications
+
+    Subscribe to this fee journal for more curated articles on this topic
+
+    FOLLOWERS
+
+    19
+
+    PAPERS
+
+    2,939
+
+[Submit a Paper](https://hq.ssrn.com/submission.cfm)
+
+[Section 508 Text Only Pages](https://www.ssrn.com/index.cfm/en/section-508/ "Section 508 Text Only Pages")
+
+#### SSRN Quick Links
+
+* [SSRN Solutions](https://www.elsevier.com/solutions/ssrn "SSRN Solutions")
+* [Research Paper Series](https://www.ssrn.com/index.cfm/en/rps/ "Research Paper Series")
+* [Conference Papers](https://www.ssrn.com/index.cfm/en/conferences/ "Conference Papers")
+* [Partners in Publishing](https://papers.ssrn.com/sol3/DisplayPipPublishers.cfm "Partners in Publishing")
+* [Jobs & Announcements](https://www.ssrn.com/index.cfm/en/Announcements-Jobs/ "Jobs & Announcements")
+* [Special Topic Hubs](https://www.ssrn.com/index.cfm/en/special-topic-hubs/ "Jobs & Announcements")
+
+#### About SSRN
+
+* [Announcements](https://www.ssrn.com/index.cfm/en/recent-announcements/ "Announcements")
+* [Contact us](https://www.ssrn.com/index.cfm/en/contactus/ "Contact us")
+* [FAQs](https://service.elsevier.com/app/home/supporthub/ssrn/ "FAQs")
+
+[Copyright](https://www.ssrn.com/index.cfm/en/dmca-notice-policy/ "Copyright") [Terms and Conditions](https://www.ssrn.com/index.cfm/en/terms-of-use/ "Terms and Conditions") [Privacy Policy](https://www.elsevier.com/legal/privacy-policy "Privacy Policy")
+
+All content on this site: Copyright © 2026 Elsevier Inc., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies to help provide and enhance our service and tailor content.
+
+To learn more, visit
+.    This page was processed by ssrn-lucee-linux-57498f985d-xxrtf in  0.056 seconds
+
+[![](https://papers.ssrn.com/sol3/header/pixel.gif "width=1 | height=1")](https://papers.ssrn.com/sol3/updateInformationLog.cfm?process=true)
+

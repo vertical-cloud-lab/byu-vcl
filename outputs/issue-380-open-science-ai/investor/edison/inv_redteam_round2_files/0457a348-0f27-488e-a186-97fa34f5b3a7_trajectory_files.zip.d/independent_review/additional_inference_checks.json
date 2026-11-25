@@ -1,0 +1,20 @@
+{
+  "complete_first_day_median_permutation_p": 0.06776,
+  "complete_first_day_mann_whitney_p": 0.09229233903407319,
+  "seed": 20261125,
+  "bootstrap_resamples_primary": 50000,
+  "bootstrap_resamples_h2": 10000,
+  "first_day_source_overrides": [
+    {
+      "company": "New Relic",
+      "first_day_close": 33.99,
+      "source_key": "newrelic2014close"
+    },
+    {
+      "company": "SUSE",
+      "first_day_close": 30.0,
+      "source_key": "suse2021close"
+    }
+  ],
+  "independent_live_endpoint_max_abs_difference": 8.54492185453637e-06
+}

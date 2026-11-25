@@ -1,0 +1,162 @@
+Preparing Your Data Management and Sharing Plan - Funding at NSF | NSF - U.S. National Science Foundation 
+
+![](https://www.nsf.gov/themes/custom/nsf_theme/plugins/uswds/dist/img/us_flag_small.png)
+
+An official website of the United States government
+
+Here's how you know
+
+![](https://www.nsf.gov/themes/custom/nsf_theme/plugins/uswds/dist/img/icon-dot-gov.svg)
+
+**Official websites use .gov**  
+A **.gov** website belongs to an official government organization in the United States.
+
+![](https://www.nsf.gov/themes/custom/nsf_theme/plugins/uswds/dist/img/icon-https.svg)
+
+**Secure .gov websites use HTTPS.**  
+A **lock** ()
+or **https://** means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
+
+[![NSF - U.S. National Science Foundation - Home](https://www.nsf.gov/themes/custom/nsf_theme/components/molecules/logo/logo-desktop.png) ![](https://www.nsf.gov/themes/custom/nsf_theme/components/molecules/logo/logo-wordmark.svg)](https://www.nsf.gov/)
+
+* 
+* 
+* 
+* 
+* 
+*
+
+1. [Home](https://www.nsf.gov/)
+2. [Funding at NSF](https://www.nsf.gov/funding)
+3. Preparing Your Data Management and Sharing Plan
+
+# Preparing Your Data Management and Sharing Plan
+
+## [Funding at NSF](https://www.nsf.gov/funding)
+
+* 
+* + [Overview](https://www.nsf.gov/funding/preparing-proposal)
+  + [Proposal Budget](https://www.nsf.gov/funding/proposal-budget)
+  + [Senior/Key Personnel Documents](https://www.nsf.gov/funding/senior-personnel-documents)
+  + [Data Management and Sharing Plan](https://www.nsf.gov/funding/data-management-plan)
+  + [Research Involving Live Vertebrate Animals](https://www.nsf.gov/funding/research-involving-vertebrate-animals)
+  + [Research Involving Human Subjects](https://www.nsf.gov/funding/research-involving-human-subjects)
+* [Submitting Your Proposal](https://www.nsf.gov/funding/submitting-proposal)
+* [How We Make Funding Decisions](https://www.nsf.gov/funding/merit-review)
+* 
+*
+
+The two-page data management and sharing plan is a required part of a proposal to the U.S. National Science Foundation. It describes how a proposal will follow NSF policy on managing, disseminating and sharing research results.
+
+This page provides an overview of requirements for the data management and sharing plan. See the [Proposal and Award Policies and Procedures Guide (PAPPG) XI.D.4](https://www.nsf.gov/policies/pappg/24-1/ch-11-other-post-award-requirements#ch11D4) for full guidance and for NSF's data sharing policy.
+
+## On this page
+
+1. [NSF's data sharing policy](https://www.nsf.gov/funding/data-management-plan#nsfs-data-sharing-policy-1c8)
+2. [General guidance](https://www.nsf.gov/funding/data-management-plan#general-guidance-59a)
+3. [Directorate and/or division guidance](https://www.nsf.gov/funding/data-management-plan#directorate-andor-division-guidance-6d6)
+4. [Questions?](https://www.nsf.gov/funding/data-management-plan#questions-2f9)
+
+## NSF's data sharing policy
+
+NSF-funded investigators are expected to share with other researchers, at no more than incremental cost and within a reasonable time, the primary data, samples, physical collections and other supporting materials created or gathered in the course of work under NSF awards.
+
+## General guidance
+
+General guidelines for data management and sharing plans are explained in [PAPPG II.D.2(ii)](https://www.nsf.gov/policies/pappg/24-1/ch-2-proposal-preparation#ch2D2i-ii) and [Policy Notice NSF 26-202](https://www.nsf.gov/policies/document/pappg24-1-supplement-2 "Policy Notice: Implementation of Policy Changes to Proposal and Award Policies and Procedures Guide (PAPPG) 24-1, Supplement 2").
+
+Content that may be included under the general guidelines is as follows:
+
+* The types of data, samples, physical collections, software, curriculum materials and other materials to be produced in the course of the project.
+* The standards to be used for data and metadata format and content. In cases where existing standards are absent or deemed inadequate, this should be documented along with any proposed solutions or remedies.
+* Policies for data access and sharing, including provisions for appropriate protection of privacy, confidentiality, security, intellectual property or other rights or requirements.
+* Policies and provisions for data reuse, redistribution and the production of derivatives.
+* Plans for archiving data, samples and other research products, and for preserving access to them.
+
+If your proposed project will not produce data, you must include a document justifying this in place of the data management and sharing plan.
+
+## Directorate and/or division guidance
+
+Links to data management requirements and plans relevant to specific NSF directorates, offices, divisions or programs are provided below. If guidance specific to a directorate, division or program is not provided, follow the general requirements detailed in [PAPPG II.D.2(ii)](https://www.nsf.gov/policies/pappg/23-1/ch-2-proposal-preparation#2D2i-ii) and [Policy Notice NSF 26-202](https://www.nsf.gov/policies/document/pappg24-1-supplement-2 "Policy Notice: Implementation of Policy Changes to Proposal and Award Policies and Procedures Guide (PAPPG) 24-1, Supplement 2"):
+
+* [Biological Sciences (BIO)](https://www.nsf.gov/bio/data-management-plans "NSF BIO Data Management and Sharing Plan Guidance")
+* [Engineering (ENG)](https://www.nsf.gov/eng/data-management-sharing-plans "ENG Data Management and Sharing Plan Guidance")
+* [Geosciences (GEO)](https://www.nsf.gov/geo/data-management-sharing-plans "GEO Data Management and Sharing Plan Resources")
+* [Mathematical and Physical Sciences (MPS)](https://www.nsf.gov/mps/data-management-sharing-plan "NSF MPS Data Management and Sharing Plan Requirements")
+* [Office of Polar Programs (OPP)](https://www.nsf.gov/funding/information/dcl-office-polar-programs-data-code-sample-management-policy "Office of Polar Programs Data, Code, and Sample Management Policy")
+* [Social, Behavioral and Economic Sciences (SBE)](https://www.nsf.gov/sbe/data-management "Data Management and Sharing Plan Guidance")
+* [STEM Education (EDU)](https://www.nsf.gov/edu/data-management-plans "STEM Education Data Management and Sharing Plan Guidance for Proposals and Awards")
+
+#### Program-specific guidance:
+
+* [Designing Materials to Revolutionize and Engineer our Future (DMREF)](https://www.nsf.gov/mps/dmref-data-management-sharing-plans "DMREF Data Management and Sharing Plan Guidance")
+
+## Questions?
+
+Individual program officers can offer additional information, especially for program solicitations with specific guidance. You may also consult the [**Public Access FAQ**](https://www.nsf.gov/pubs/2018/nsf18041/nsf18041.jsp).
+
+[Top](https://www.nsf.gov/funding/data-management-plan#)
+
+* Publication date:  April 14, 2023
+* Last updated:  June 2, 2026
+
+[![NSF - U.S. National Science Foundation - Home](https://www.nsf.gov/themes/custom/nsf_theme/components/molecules/logo/logo-desktop.png) ![](https://www.nsf.gov/themes/custom/nsf_theme/components/molecules/logo/logo-wordmark--white.svg)](https://www.nsf.gov/)
+
+Randolph Building  
+401 Dulany Street  
+Alexandria, VA 22314
+
+[(703) 292-5111](tel:(703)292-5111)
+
+[Sign up for email updates](https://service.govdelivery.com/accounts/USNSF/subscriber/new?qsp=823)
+
+* [![Facebook](https://www.nsf.gov/libraries/nsf_iconset/facebook-icon_square_32x32.png)](https://www.facebook.com/US.NSF)
+* [![X (formerly known as Twitter)](https://www.nsf.gov/libraries/nsf_iconset/x-twitter-icon_square_32x32.png)](https://x.com/NSF "X (formerly known as Twitter)")
+* [![Instagram](https://www.nsf.gov/libraries/nsf_iconset/instagram-icon_square_32x32.png)](https://www.instagram.com/nsfgov)
+* [![YouTube](https://www.nsf.gov/libraries/nsf_iconset/youtube-icon_square_32x32.png)](https://www.youtube.com/user/VideosatNSF)
+* [![LinkedIn](https://www.nsf.gov/libraries/nsf_iconset/linkedin-icon_square_32x32.png)](https://www.linkedin.com/company/national-science-foundation)
+* [![RSS](https://www.nsf.gov/libraries/nsf_iconset/nsfrss-icon_square_32x32.png)](https://nsf.gov/rss)
+
+## Footer
+
+* ### About Us
+
+    + [About NSF](https://www.nsf.gov/about)
+    + [Careers](https://www.nsf.gov/careers)
+    + [Our Directorates & Offices](https://www.nsf.gov/about/directorates-offices)
+    + [National Science Board](https://www.nsf.gov/nsb)
+    + [Contact Us](https://www.nsf.gov/about/contact-us)
+* ### What's New
+
+    + [News & Announcements](https://www.nsf.gov/news)
+    + [Events](https://www.nsf.gov/events)
+    + [Science Matters Blog](https://www.nsf.gov/science-matters)
+* ### Information For
+
+    + [Funding Seekers](https://www.nsf.gov/funding)
+    + [NSF Awardees](https://www.nsf.gov/awards)
+    + [Congress](https://www.nsf.gov/about/congress)
+    + [Media](https://www.nsf.gov/news/media-toolkits)
+    + [Educators](https://www.nsf.gov/focus-areas/education#educational-resources)
+    + [Panelists](https://www.nsf.gov/about/meetings)
+* ### Resources
+
+    + [Documents & Reports](https://www.nsf.gov/documents-reports)
+    + [Budget, Performance & Financial Reporting](https://www.nsf.gov/about/budget)
+    + [Public Access](https://www.nsf.gov/public-access)
+    + [Stopping Harassment](https://www.nsf.gov/stopping-harassment)
+    + [Research Security](https://www.nsf.gov/research-security)
+    + [Scientific Integrity](https://www.nsf.gov/policies/scientific-integrity)
+    + [Research.gov](https://www.research.gov/research-web/)
+
+## Required Policy Links
+
+* [Vulnerability disclosure](https://www.nsf.gov/policies/digital/vulnerability-disclosure)
+* [Inspector General](https://oig.nsf.gov/home/)
+* [Privacy](https://www.nsf.gov/policies/privacy)
+* [FOIA](https://www.nsf.gov/policies/foia)
+* [No FEAR Act](https://www.nsf.gov/od/ocr/no-fear-act)
+* [USA.gov](https://www.usa.gov/)
+* [Accessibility](https://www.nsf.gov/policies/accessibility)
+* [Plain language](https://www.nsf.gov/policies/nsf_plain_language.jsp)
+

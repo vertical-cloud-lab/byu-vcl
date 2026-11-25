@@ -27,7 +27,8 @@ which way did the framing lean? An independent check of the same files by Edison
    whose public investors lost money or broke even: MariaDB, HashiCorp, SUSE, Couchbase, Cloudera and
    Hortonworks. Nor does it mention Docker, whose software became an industry standard and whose company was
    recapitalized. Picking cases by outcome flatters whatever strategy the winners used. H1 in
-   [`INVESTOR_MEMO.md`](INVESTOR_MEMO.md) replaces the examples with every listing in a defined window.
+   [`INVESTOR_MEMO.md`](INVESTOR_MEMO.md) replaces the examples with a rule-based set of listings from a defined
+   window.
 
 3. **"Venture data agrees" rests on an interested source, and one of its numbers cuts the other way.** The
    7× and 14× exit medians come from a report co-written by a venture firm that invests in open source, a
@@ -50,8 +51,8 @@ which way did the framing lean? An independent check of the same files by Edison
 6. **"Sell services around the open core" borrowed evidence from a different business.** Recommendation 4
    supports services with Databricks, Confluent and MongoDB Atlas, which are hosted software with software
    margins. Lab services, such as cloud-lab time, setup and integration, are a different business. Their
-   track record in the case files is Strateos closing its hosted cloud lab in 2023, after about $80M or more
-   in funding, and Emerald Cloud Lab, whose biggest win was a $40M cloud lab built for Carnegie Mellon.
+   track record in the case files is Strateos moving from hosted access to on-site cloud labs in 2023, after about
+   $80M or more in funding, and Emerald Cloud Lab, whose biggest win was a $40M cloud lab built for Carnegie Mellon.
 
 7. **The dataset couldn't answer the investor's question, and that went unsaid.** The 179 case files were
    built to describe openness. Only 37 for-profit organizations have both a funding total and a value, almost
@@ -66,8 +67,8 @@ which way did the framing lean? An independent check of the same files by Edison
 - **Entry price and time.** Multiples on capital, internal rates of return and holding periods, not latest
   valuations. Private marks are not realized returns.
 - **The customer's budget.** Open lab tools sell mostly to academic labs. US academic research is 55%
-  federally funded ($64.6B of $117.7B in FY2024, NSF HERD), and federal science funding was cut and disrupted
-  in 2025–26 (see the memo's H5).
+  federally funded ($64.6B of $117.7B in FY2024, NSF HERD). Federal science funding was disrupted in 2025–26:
+  appropriations held roughly flat, but award counts fell sharply (see the memo's H5).
 - **Who else profits.** Open data and open models feed the largest firms first: the PDB trained AlphaFold, and
   Isomorphic Labs commercializes its successor, whose weights are not open for commercial use. The first round recorded this as a fact about the commons; for an
   investor it is the central risk.
@@ -84,3 +85,9 @@ The audit is one-sided by design, so for balance:
   open hardware "pays in cost and longevity, not in valuation", and that the SDL-demo kit made $2.24 a kit.
 - It disclosed the venture report's conflict of interest and the 12% exit rate.
 - It corrected its own overstatements after review, in a public fourth video.
+
+## A check on this audit
+
+An audit written to find one-sided framing can itself be one-sided. Edison's second review found that the
+investor memo built on this audit had, in its first draft, overcorrected toward a negative view. The memo's
+[last section](INVESTOR_MEMO.md#edisons-review-of-this-memo) lists what was changed.

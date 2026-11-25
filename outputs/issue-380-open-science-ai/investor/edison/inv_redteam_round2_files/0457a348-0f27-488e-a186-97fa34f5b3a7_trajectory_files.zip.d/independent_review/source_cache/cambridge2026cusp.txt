@@ -1,0 +1,96 @@
+Cusp AI - Cambridge Climate Innovation Ecosystem
+
+Cusp AI - Cambridge Climate Innovation Ecosystem
+
+[![University of Cambridge](https://climateinnovation.impactmap.cam.ac.uk/wp-content/uploads/2025/10/cam-logo-300x62.avif "width=300 | height=62")](https://www.cam.ac.uk)
+
+[Back to ecosystem](https://climateinnovation.impactmap.cam.ac.uk/)
+
+[Back to case studies](https://climateinnovation.impactmap.cam.ac.uk/companies/)
+
+# Cusp AI
+
+![](https://climateinnovation.impactmap.cam.ac.uk/wp-content/uploads/2026/10/Semiconductors-1-5-600x300.png "width=600 | height=300")
+
+![](https://climateinnovation.impactmap.cam.ac.uk/wp-content/uploads/2025/10/materials-and-chemicals.svg "width=24 | height=24")
+
+---
+
+> There’s truly something special about the Cambridge ecosystem: the density of world-class technical talent is extraordinary, and I strongly believe that category-defining tech can be built right here. We’re expanding fast globally while staying rooted in Cambridge.
+> 
+> ***Dr. Chad Edwards**  
+> Co-Founder and CEO, CuspAI*
+
+Cusp AI is defining the next era of materials science, building an AI search engine for materials discovery that unlocks the breakthrough materials needed for the energy transition, clean technologies, and future technologies such as new superconductors.
+
+Founded in Cambridge in 2024 by Dr Chad Edwards and Professor Max Welling, Cusp AI combines generative AI with physics-based simulation to transform how materials are discovered. Its platform can design, test, and optimise new molecular structures in silico, reducing discovery timelines from years to months.
+
+New materials underpin advances in clean energy, carbon capture, water treatment and semiconductor technology, yet traditional materials research is slow, expensive and often relies on trial and error. Without materials that don’t yet exist, industrial progress risks stalling. Cusp AI addresses this bottleneck by enabling scientists to explore vast chemical design spaces at unprecedented speed and scale.
+
+Cusp AI’s platform has already demonstrated real-world impact. In partnership with Finnish chemicals company Kemira, Cusp AI designed materials for removing ‘forever chemicals’ or PFAS from water. Over six months, it screened a search space of approximately 300 trillion potential molecular structures and identified 20 priority candidates for laboratory testing and validation, significantly accelerating the discovery process. This is the first commercial partnership to apply generative AI end-to-end to the design of new materials for PFAS remediation.
+
+Powering the platform is MIRA, Cusp AI’s proprietary generative discovery engine which integrates agentic AI, material generation, simulation, synthesis mapping and physical characterisation into a single workflow. MIRA also drives the AI Materials Foundry, a global coalition launched in 2026 with more than 45 academic and industry partners, including the University of Cambridge’s Department of Materials Science and Metallurgy, Nvidia, Meta and Samsung.
+
+Having raised over $650 million since its founding, including a $450m Series B round in July 2026, Cusp AI has become one of Cambridge’s fastest-growing deep tech companies, reaching unicorn status. By shortening the path from discovery to deployment, Cusp AI is helping unlock breakthrough materials needed to accelerate global decarbonisation, strengthen energy security, and power the next generation of sustainable technologies.
+
+![](https://climateinnovation.impactmap.cam.ac.uk/wp-content/uploads/2026/10/cusp.ai-logo-black_transparentbackground-1024x230-png.webp "width=1024 | height=230")
+
+Published:
+
+October 2026
+
+## CuspAI data
+
+Industry sector
+:   Materials and chemicals
+
+Technology type
+:   Software
+
+Website
+:   [www.cusp.ai](https://www.cusp.ai)
+
+[Back to case studies](https://climateinnovation.impactmap.cam.ac.uk/companies/)
+
+[![University of Cambridge](https://climateinnovation.impactmap.cam.ac.uk/wp-content/uploads/2025/10/cam-logo-300x62.avif "width=300 | height=62")](https://www.cam.ac.uk) 
+
+© 2026 Climate Innovation | University of Cambridge
+
+* [Contact the University](https://www.cam.ac.uk/about-the-university/contact-the-university)
+* [Accessibility statement](https://www.cam.ac.uk/about-this-site/accessibility)
+* [Freedom of information](https://www.information-compliance.admin.cam.ac.uk/foi)
+* [Privacy policy and cookies](https://www.cam.ac.uk/about-this-site/privacy-policy)
+* [Statement on Modern Slavery](https://www.governanceandcompliance.admin.cam.ac.uk/governance-and-strategy/anti-slavery-and-anti-trafficking)
+* [Terms and conditions](https://www.cam.ac.uk/about-this-site/terms-and-conditions)
+* [University A-Z](https://www.cam.ac.uk/university-a-z)
+
+### [Study at Cambridge](https://www.cam.ac.uk/study-at-cambridge?ucam-ref=global-footer)
+
+* [Undergraduate](http://www.study.cam.ac.uk/undergraduate/)
+* [Postgraduate](http://www.graduate.study.cam.ac.uk/)
+* [Continuing education](http://www.ice.cam.ac.uk/)
+* [Executive and professional education](http://www.epe.admin.cam.ac.uk/)
+* [Courses in education](http://www.educ.cam.ac.uk/)
+
+### [About the University](https://www.cam.ac.uk/about-the-university?ucam-ref=global-footer)
+
+* [How the University and Colleges work](https://www.cam.ac.uk/about-the-university/how-the-university-and-colleges-work)
+* [Give to Cambridge](https://www.philanthropy.cam.ac.uk/give-now)
+* [Jobs](http://www.jobs.cam.ac.uk/)
+* [Maps](http://map.cam.ac.uk)
+* [Visiting the University](https://www.cam.ac.uk/about-the-university/visiting-the-university)
+* [Cambridge University Press & Assessment](https://www.cambridge.org/)
+
+### [Research at Cambridge](https://www.cam.ac.uk/research?ucam-ref=global-footer)
+
+* [Research News](https://www.cam.ac.uk/research/news)
+* [About research at Cambridge](https://www.cam.ac.uk/research/research-at-cambridge)
+* [Public engagement](https://www.cam.ac.uk/public-engagement)
+* [Spotlight on…](https://www.cam.ac.uk/research/spotlights-on)
+
+Produced by
+
+[![Cambridge Zero](https://climateinnovation.impactmap.cam.ac.uk/wp-content/uploads/2025/10/cambridge-zero-logo-black.svg "width=365 | height=83")](https://www.zero.cam.ac.uk) 
+
+With special thanks to Giuliana Duron
+

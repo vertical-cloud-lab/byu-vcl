@@ -71,6 +71,12 @@ def boot_diff(x, y, n=10000):
     d = [np.median(rng.choice(x, len(x))) - np.median(rng.choice(y, len(y))) for _ in range(n)]
     return np.percentile(d, [2.5, 97.5])
 
+def perm_p(x, y, n=20000):
+    x, y = np.asarray(x), np.asarray(y); obs = np.median(x) - np.median(y); z = np.concatenate([x, y]); k = 0
+    for _ in range(n):
+        rng.shuffle(z); k += abs(np.median(z[:len(x)]) - np.median(z[len(x):])) >= abs(obs)
+    return k / n
+
 def summarize(df, label):
     out = []
     for coh, g in df.groupby("cohort"):
@@ -89,8 +95,11 @@ def summarize(df, label):
         lo, hi = boot_diff(x, y)
         o.loc[len(o)] = {"set": label, "cohort": f"difference ({col}), open minus closed",
                          "n": f"{len(x)} vs {len(y)}", "median_excess_qqq_offer": np.median(x) - np.median(y),
-                         "median_multiple_offer": lo, "median_cagr_offer": hi}
-    return o
+                         "median_multiple_offer": lo, "median_cagr_offer": hi, "share_beat_qqq": perm_p(x, y)}
+    o = o.astype(object)
+    o.loc[o.cohort.astype(str).str.startswith("difference"), ["median_multiple_offer", "median_cagr_offer", "share_beat_qqq"]] = \
+        o.loc[o.cohort.astype(str).str.startswith("difference"), ["median_multiple_offer", "median_cagr_offer", "share_beat_qqq"]].values
+    return o.rename(columns={})
 
 def relabel(df, jfrog=None, extras=False):
     d = df.copy()

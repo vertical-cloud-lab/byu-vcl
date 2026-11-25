@@ -1,0 +1,2732 @@
+The impact of open access mandates on scientific research and technological development in the U.S.: iScience 
+
+[Skip to Main Content](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#page-body-id "Skip to Main Content") [Skip to Main Menu](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mega-menu-nav "Skip to Main Menu")
+
+ADVERTISEMENT
+
+SCROLL TO CONTINUE WITH CONTENT
+
+| Property             | Value |
+| -------------------- | ----- |
+| Status               |       |
+| Version              |       |
+| Ad File              |       |
+| Disable Ads Flag     |       |
+| Environment          |       |
+| Moat Init            |       |
+| Moat Ready           |       |
+| Contextual Ready     |       |
+| Contextual URL       |       |
+| Contextual Initial Segments |       |
+| Contextual Used Segments |       |
+| AdUnit               |       |
+| SubAdUnit            |       |
+| Custom Targeting     |       |
+| Ad Events            |       |
+| Invalid Ad Sizes     |       |
+
+![Advertisement](https://www.cell.com/templates/jsp/_style2/_marlin/images/bg_adHoriz.gif)
+
+[![Cell Press logo](https://www.cell.com/pb-assets/ux3/logos/cell/cellpress_rebrand_logo-1744813564367.svg)](https://www.cell.com/ "Visit Cell.com")
+
+[![iScience](https://www.cell.com/pb-assets/ux3/logos/cell/iScience_NOICON-1758042151587.svg)](https://www.cell.com/iscience/home "iScience")
+
+* [Submit](https://www.editorialmanager.com/iscience "Submit")
+* + [Log in](https://www.cell.com/action/idLogin?type=login&redirectUri=https%3A%2F%2Fwww.cell.com%2Fiscience%2Ffulltext%2FS2589-0042%2823%2901817-5 "Log in to Cell.com")
+  + [Get Institutional Access](https://www.cell.com/action/idLogin?type=institution&redirectUri=https%3A%2F%2Fwww.cell.com%2Fiscience%2Ffulltext%2FS2589-0042%2823%2901817-5 "Institutional access")
+* [Register](https://www.cell.com/action/idLogin?type=registration&redirectUri=https%3A%2F%2Fwww.cell.com%2Fiscience%2Ffulltext%2FS2589-0042%2823%2901817-5 "Register a username and password for free")
+* + [Submit](https://www.editorialmanager.com/iscience "Submit")
+  + [Log in](https://www.cell.com/action/idLogin?type=login&redirectUri=https%3A%2F%2Fwww.cell.com%2Fiscience%2Ffulltext%2FS2589-0042%2823%2901817-5 "Log in to Cell.com")
+  + [Get Institutional Access](https://www.cell.com/action/idLogin?type=institution&redirectUri=https%3A%2F%2Fwww.cell.com%2Fiscience%2Ffulltext%2FS2589-0042%2823%2901817-5 "Institutional access")
+  + [Register](https://www.cell.com/action/idLogin?type=registration&redirectUri=https%3A%2F%2Fwww.cell.com%2Fiscience%2Ffulltext%2FS2589-0042%2823%2901817-5 "Register a username and password for free")
+
+Access provided by
+
+[Skip menu](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#searchText)
+
+* + [![Cover Image - iScience, Volume 29, Issue 11](https://www.cell.com/cms/asset/atypon:cms:attachment:img:d64e6:rev:1795169492910-3039:pii:S2589004226X20090/cover.tif.jpg)](https://www.cell.com/issue/S2589-0042(26)X2009-0)
+  + #### Read
+
+      - [Just accepted](https://www.cell.com/iscience/newarticles)
+      - [Latest content](https://www.cell.com/iscience/latest-content)
+      - [Current issue](https://www.cell.com/iscience/current)
+      - [Archive](https://www.cell.com/iscience/archive)
+      - [Publication alerts](https://www.cell.com/action/showPreferences?menuTab=Alerts)
+      - [Sneak Peek - preprints](https://www.cell.com/sneakpeek)
+      - [Collections](https://www.cell.com/iscience/collections)
+      - [Backstories collection](https://www.cell.com/iscience/collections/backstories)
+      - [Special issuesExternal Link](https://www.sciencedirect.com/journal/iscience/special-issues)
+  + #### About
+
+      - [About the journal](https://www.cell.com/iscience/information-for-authors#about)
+      - [Editorial and advisory board](https://www.cell.com/iscience/editorial-advisory-board)
+      - [Aims and scope](https://www.cell.com/iscience/aims)
+      - [Contact](https://www.cell.com/iscience/contact)
+      - [Editors and staff](https://www.cell.com/iscience/editors-and-staff)
+      - [Ethics](https://www.cell.com/editorial-ethics)
+      - [Permissions](https://www.cell.com/information-for-authors/permissions)
+      - [Reviewer instructions](https://www.cell.com/reviewers)
+  + #### Connect
+
+      - [BlueskyExternal Link](https://bsky.app/profile/cp-iscience.bsky.social)
+      - [LinkedInExternal Link](https://www.linkedin.com/company/iscience-cellpress)
+      - [Meet the editorsExternal Link](https://info.cell.com/iscience-meet-the-editorial-team)
+      - [X (formerly Twitter)External Link](https://twitter.com/iscience_cp)
+* + #### Life & medical sciences
+
+      - [Cell](https://www.cell.com/cell/home)
+      - [Cancer Cell](https://www.cell.com/cancer-cell/home)
+      - [Cell Chemical Biology](https://www.cell.com/cell-chemical-biology)
+      - [Cell Genomics](https://www.cell.com/cell-genomics/home)
+      - [Cell Host & Microbe](https://www.cell.com/cell-host-microbe/home)
+      - [Cell Metabolism](https://www.cell.com/cell-metabolism/home)
+      - [Cell Reports](https://www.cell.com/cell-reports/home)
+      - [Cell Reports Medicine](https://www.cell.com/cell-reports-medicine/home)
+      - [Cell Stem Cell](https://www.cell.com/cell-stem-cell/home)
+      - [Cell Systems](https://www.cell.com/cell-systems/home)
+      - [Current Biology](https://www.cell.com/current-biology/home)
+      - [Developmental Cell](https://www.cell.com/developmental-cell/home)
+      - [Immunity](https://www.cell.com/immunity/home)
+      - [Med](https://www.cell.com/med/home)
+      - [Molecular Cell](https://www.cell.com/molecular-cell/home)
+      - [Neuron](https://www.cell.com/neuron/home)
+      - [Structure](https://www.cell.com/structure/home)
+      - [American Journal of Human Genetics (*partner*)](https://www.cell.com/ajhg/home)
+      - [Biophysical Journal (*partner*)](https://www.cell.com/biophysj/home)
+      - [Biophysical Reports (*partner*)](https://www.cell.com/biophysreports/home)
+      - [Human Genetics and Genomics Advances (*partner*)](https://www.cell.com/hgg-advances/home)
+      - [Molecular Plant (*partner*)](https://www.cell.com/molecular-plant/home)
+      - [Molecular Therapy (*partner*)](https://www.cell.com/molecular-therapy-family/molecular-therapy/home)
+      - [Molecular Therapy Advances (*partner*)](https://www.cell.com/molecular-therapy-family/advances/home)
+      - [Molecular Therapy Nucleic Acids (*partner*)](https://www.cell.com/molecular-therapy-family/nucleic-acids/home)
+      - [Molecular Therapy Oncology (*partner*)](https://www.cell.com/molecular-therapy-family/oncology/home)
+      - [Plant Communications (*partner*)](https://www.cell.com/plant-communications/home)
+      - [Stem Cell Reports (*partner*)](https://www.cell.com/stem-cell-reports/home)
+      - [Trends in Biochemical Sciences](https://www.cell.com/trends/biochemical-sciences/home)
+      - [Trends in Cancer](https://www.cell.com/trends/cancer/home)
+      - [Trends in Cell Biology](https://www.cell.com/trends/cell-biology/home)
+      - [Trends in Ecology & Evolution](https://www.cell.com/trends/ecology-evolution/home)
+      - [Trends in Endocrinology & Metabolism](https://www.cell.com/trends/endocrinology-metabolism/home)
+      - [Trends in Genetics](https://www.cell.com/trends/genetics/home)
+      - [Trends in Immunology](https://www.cell.com/trends/immunology/home)
+      - [Trends in Microbiology](https://www.cell.com/trends/microbiology/home)
+      - [Trends in Molecular Medicine](https://www.cell.com/trends/molecular-medicine/home)
+      - [Trends in Neurosciences](https://www.cell.com/trends/neurosciences/home)
+      - [Trends in Parasitology](https://www.cell.com/trends/parasitology/home)
+      - [Trends in Pharmacological Sciences](https://www.cell.com/trends/pharmacological-sciences/home)
+      - [Trends in Plant Science](https://www.cell.com/trends/plant-science/home)
+  + #### Physical sciences & engineering
+
+      - [Cell Biomaterials](https://www.cell.com/cell-biomaterials/home)
+      - [Cell Reports Physical Science](https://www.cell.com/cell-reports-physical-science/home)
+      - [Chem](https://www.cell.com/chem/home)
+      - [Chem Catalysis](https://www.cell.com/chem-catalysis/home)
+      - [Chem Circularity](https://www.cell.com/chem-circularity/home)
+      - [Device](https://www.cell.com/device/home)
+      - [Joule](https://www.cell.com/joule/home)
+      - [Matter](https://www.cell.com/matter/home)
+      - [Matter & Light](https://www.cell.com/matter-light/home)
+      - [Newton](https://www.cell.com/newton/home)
+      - [Trends in Chemistry](https://www.cell.com/trends/chemistry/home)
+  + #### Multidisciplinary
+
+      - [Cell Press Blue](https://www.cell.com/cell-press-blue/home)
+      - [Cell Reports Methods](https://www.cell.com/cell-reports-methods/home)
+      - [Cell Reports Sustainability](https://www.cell.com/cell-reports-sustainability/home)
+      - [Heliyon](https://www.cell.com/heliyon/home)
+      - [iScience](https://www.cell.com/iscience/home)
+      - [One Earth](https://www.cell.com/one-earth/home)
+      - [Patterns](https://www.cell.com/patterns/home)
+      - [STAR Protocols](https://www.cell.com/star-protocols/home)
+      - [Nexus (*partner*)](https://www.cell.com/nexus/home)
+      - [The Innovation (*partner*)](https://www.cell.com/the-innovation/home)
+      - [Trends in Biotechnology](https://www.cell.com/trends/biotechnology/home)
+      - [Trends in Cognitive Sciences](https://www.cell.com/trends/cognitive-sciences/home)
+      - [Trends Open](https://www.cell.com/trends-open/home)
+* + #### Authors
+
+      - [Calls for papers](https://www.cell.com/iscience/special-issues/call-for-papers)
+      - [Submit articleExternal Link](https://www.editorialmanager.com/iscience?__hstc=25856994.ec926a23796769f2728faf9e88e7593d.1688646351535.1694964961648.1694967204894.102&__hssc=25856994.1.1694967204894&__hsfp=671759818)
+      - [Information for authors](https://www.cell.com/iscience/information-for-authors)
+      - [Open access](https://www.cell.com/open-access)
+      - [Why submit?](https://www.cell.com/iscience/why-submit)
+  + #### Reviewers
+
+      - [Information for reviewers](https://www.cell.com/reviewers)
+* + - [Newsroom](https://www.cell.com/newsroom)
+    - [Events](https://www.cell.com/events)
+    - [Cell Press Symposia](https://www.cell.com/symposia)
+    - [Webinars](https://www.cell.com/webinars)
+    - [Consortia Hub](https://www.cell.com/consortia)
+    - [In the news](https://www.cell.com/cp/collections-in-the-news)
+* + #### Cell Press
+
+      - [About Cell Press](https://www.cell.com/about)
+      - [Contact us](https://www.cell.com/contact)
+      - [Help & supportExternal Link](https://www.elsevier.support/cell-press)
+      - [Open access at Cell Press](https://www.cell.com/open-access)
+      - [Inclusion](https://www.cell.com/inclusion)
+      - [50th anniversary](https://www.cell.com/cell-press-50)
+  + #### Hubs
+
+      - [Biotechnology and bioengineering](https://www.cell.com/biotechnology-bioengineering)
+      - [Chemistry](https://www.cell.com/cell-press-chemistry)
+      - [Clinical and translational](https://www.cell.com/clinical-translational)
+      - [COVID-19](https://www.cell.com/covid-19)
+      - [Ebola](https://www.cell.com/action/doSearch?type=quicksearch&text1=ebola+OR+ebolavirus+OR+Bundibugyo&field1=AbstractTitleKeywordFilterField)
+      - [Fundamental biology](https://www.cell.com/fundamental-biology)
+      - [Sustainability](https://www.cell.com/sustainability)
+  + #### Careers
+
+      - [Cell Press careersExternal Link](https://relx.wd3.myworkdayjobs.com/en-US/ElsevierJobs)
+
+Article[Volume 26, Issue 10](https://www.cell.com/iscience/issue?pii=S2589-0042(23)X0010-8)107740October 20, 2023Open access
+
+# The impact of open access mandates on scientific research and technological development in the U.S.
+
+[Benedict Probst](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+Benedict Probst
+
+Correspondence
+
+Corresponding author
+
+[Send email to bprobst@ethz.ch](mailto:bprobst@ethz.ch)
+
+Footnotes
+
+5
+
+Lead contact
+
+Affiliations
+
+Group for Sustainability and Technology, Department of Management, Technology, and Economics, ETH Zurich
+
+Centre for Environment, Energy, and Natural Resource Governance, Department of Land Economy, University of Cambridge
+
+[Search for articles by this author](https://www.cell.com/authored-by/Probst/Benedict)
+
+1,3,5 [Send email to bprobst@ethz.ch](mailto:bprobst@ethz.ch) ∙ [Paul M. Lohmann](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+Paul M. Lohmann
+
+Affiliations
+
+El-Erian Institute of Behavioural Economics and Policy, Judge Business School, University of Cambridge, UK
+
+Centre for Environment, Energy, and Natural Resource Governance, Department of Land Economy, University of Cambridge
+
+[Search for articles by this author](https://www.cell.com/authored-by/Lohmann/Paul+M)
+
+2,3 ∙ [Andreas Kontoleon](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+Andreas Kontoleon
+
+Affiliations
+
+Centre for Environment, Energy, and Natural Resource Governance, Department of Land Economy, University of Cambridge
+
+[Search for articles by this author](https://www.cell.com/authored-by/Kontoleon/Andreas)
+
+3 ∙ [Laura Díaz Anadón](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+Laura Díaz Anadón
+
+Affiliations
+
+Centre for Environment, Energy, and Natural Resource Governance, Department of Land Economy, University of Cambridge
+
+Harvard Kennedy School, Harvard University, United States
+
+[Search for articles by this author](https://www.cell.com/authored-by/Anad%C3%B3n/Laura+D%C3%ADaz)
+
+3,4
+
+**Affiliations & Notes**
+
+1Group for Sustainability and Technology, Department of Management, Technology, and Economics, ETH Zurich
+
+2El-Erian Institute of Behavioural Economics and Policy, Judge Business School, University of Cambridge, UK
+
+3Centre for Environment, Energy, and Natural Resource Governance, Department of Land Economy, University of Cambridge
+
+4Harvard Kennedy School, Harvard University, United States
+
+5
+
+Lead contact
+
+**Article Info**
+
+Publication History:
+
+Received April 26, 2023; Revised August 7, 2023; Accepted August 24, 2023; Published online August 25, 2023
+
+DOI: [10.1016/j.isci.2023.107740 External Link](https://doi.org/10.1016/j.isci.2023.107740)Also available on [ScienceDirect External Link](https://www.sciencedirect.com/science/article/pii/S2589004223018175)
+
+Copyright: © 2023 The Authors.
+
+User License: [Creative Commons Attribution (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/) | [Elsevier's open access license policy](https://www.elsevier.com/open-access)
+
+Published: August 26, 2023
+
+**Linked Articles (0)**
+
+[![Cover Image - iScience, Volume 26, Issue 10](https://www.cell.com/cms/asset/622f8329-bde2-403f-a73e-56804876b131/cov200h.gif)](https://www.cell.com/iscience/issue?pii=S2589-0042(23)X0010-8)
+
+[Download PDFDownload PDF](https://www.cell.com/action/showPdf?pii=S2589-0042%2823%2901817-5 "Standard PDF (opens in a new tab)")
+
+Outline
+
+* [Highlights](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#author-highlights-abstract)
+* [Summary](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#author-abstract)
+* [Graphical abstract](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#graphical-abstract)
+* [Subject areas](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#keywords)
+* [Introduction](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-1)
+* [Results](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-2)
+* [Discussion](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-3)
+* [STAR★Methods](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-4)
+* [Acknowledgments](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#acknowledgments)
+* [Supplemental information (1)](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#supplementary-material)
+* [Data and code availability](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#data-availability)
+* [References](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#references)
+* [Article metrics](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#core-collateral-metrics)
+* [Related Articles](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#core-collateral-relatedArticles)
+
+#### Share
+
+Share on
+
+* Email
+* X
+* Facebook
+* LinkedIn
+* Sina Weibo
+* Mendeley
+* bluesky
+
+[Add to my reading list](https://www.cell.com/personalize/addFavoritePublication?doi=10.1016/j.isci.2023.107740)
+
+More
+
+* [Download PDFDownload PDF](https://www.cell.com/action/showPdf?pii=S2589-0042%2823%2901817-5 "Standard PDF (opens in a new tab)")
+* [Cite](https://www.cell.com/action/showCitFormats?doi=10.1016%2Fj.isci.2023.107740&pii=S2589-0042%2823%2901817-5 "Cite")
+* #### Share
+
+    Share on
+
+    + Email
+    + X
+    + Facebook
+    + LinkedIn
+    + Sina Weibo
+    + Mendeley
+    + Bluesky
+
+    [Add to my reading list](https://www.cell.com/personalize/addFavoritePublication?doi=10.1016/j.isci.2023.107740)
+
+* [Set Alert](https://www.cell.com/action/addCitationAlert?doi=10.1016%2Fj.isci.2023.107740 "Set Alert")
+* [Get Rights](https://s100.copyright.com/AppDispatchServlet?publisherName=ELS&contentID=S2589004223018175&orderBeanReset=true&orderSource=Phoenix "Get Rights")
+* [Reprints](https://www.contentednet.com/salesforce-form/?pii=S2589004223018175&issn=25890042&source=jbs "Reprints")
+
+[Previous article](https://www.cell.com/iscience/fulltext/S2589-0042(23)01837-0)[Next article](https://www.cell.com/iscience/fulltext/S2589-0042(23)01789-3)
+
+* [Highlights](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#author-highlights-abstract)
+* [Summary](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#author-abstract)
+* [Graphical abstract](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#graphical-abstract)
+* [Subject areas](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#keywords)
+* [Introduction](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-1)
+* [Results](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-2)
+* [Discussion](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-3)
+* [STAR★Methods](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-4)
+* [Acknowledgments](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#acknowledgments)
+* [Supplemental information (1)](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#supplementary-material)
+* [Data and code availability](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#data-availability)
+* [References](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#references)
+* [Article metrics](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#core-collateral-metrics)
+* [Related Articles](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#core-collateral-relatedArticles)
+
+## Highlights
+
+•
+
+We examine the impact of the U.S. Department of Energy’s open-access mandate
+
+•
+
+Scientific articles subject to the mandate were utilized on average 42% more in patents
+
+•
+
+Articles subject to the mandate were not cited more frequently by other academic papers
+
+•
+
+Small firms were the primary beneficiaries of the increased knowledge diffusion
+
+## Summary
+
+Getting to a net-zero emissions economy requires faster development and diffusion of novel clean energy technologies. We exploit a rare natural experiment to study the impact of an open-access mandate on the diffusion of scientific research into patented technologies. From 2014 onwards, the U.S. Department of Energy (DOE) required its 17 National Laboratories (NLs) to publish all peer-reviewed scientific articles without a paywall. Using data from more than 300,000 scientific publications between 2012 and 2018, we show that scientific articles subject to the mandate were used on average 42% more in patents, despite embargo periods of up to 12 months. We also show that articles subject to the mandate were not cited more frequently by other academic articles. Our findings suggest that the mandate primarily contributed to technological development but has not led to additional academic research. Lastly, we show that small firms were the primary beneficiaries of the increased diffusion of scientific knowledge.
+
+## Graphical abstract
+
+[![Graphical abstract undfig1](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/5dd6a2c7-b80d-4628-989c-813c2a2f8b2a/main.assets/fx1.jpg "width=375 | height=375")](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/6019e569-43ff-434c-b166-5b694a95314d/main.assets/fx1_lrg.jpg "View full size image in a new tab")
+
+## Subject areas
+
+1. [Social sciences](https://www.cell.com/action/doSearch?AllField="Social+sciences"&ISSN=2589-0042)
+2. [Research methodology social science](https://www.cell.com/action/doSearch?AllField="Research+methodology+social+science"&ISSN=2589-0042)
+
+## Introduction
+
+Achieving net-zero emissions by the second half of this century as envisaged by the Paris Agreement[1](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+1\.
+
+Viñuales, J.E.
+
+**The Paris Climate Agreement: an initial examination**
+
+*SSRN Journal.* 2015; **9**:1-16
+
+[Crossref](https://doi.org/10.2139/ssrn.2704670)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Paris+Climate+Agreement%3A+an+initial+examination&author=J.E.+Vi%C3%B1uales&publication_year=2015&pages=1-16&doi=10.2139%2Fssrn.2704670)
+
+requires—among other things—faster development and diffusion of novel clean energy technologies.[2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+2\.
+
+Bosetti, V. ∙ Carraro, C. ∙ Duval, R. ...
+
+**The Role of R&D and Technology Diffusion in Climate Change Mitigation: New Perspectives Using the WITCH Model**
+
+*Energy.* 2009; **664**:1-41
+
+[Crossref](https://doi.org/10.1787/227114657270)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Role+of+R%26D+and+Technology+Diffusion+in+Climate+Change+Mitigation%3A+New+Perspectives+Using+the+WITCH+Model&author=V.+Bosetti&author=C.+Carraro&author=R.+Duval&author=A.+Sgobbi&author=M.+Tavoni&publication_year=2009&pages=1-41&doi=10.1787%2F227114657270)
+
+One of the factors that could shape the impact of scientific research on technological development is the extent to which inventors globally have knowledge about and access to those publications. As the predominant model of scientific publishing continues to rely on a subscription-based system, inventors without access to major journals paid by their universities, laboratories, or companies may have difficulties accessing scientific publications.[3](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+3\.
+
+Tennant, J.P. ∙ Waldner, F. ∙ Jacques, D.C. ...
+
+**The academic, economic and societal impacts of Open Access: An evidence-based review**
+
+*F1000Res.* 2016; **5**:632-655
+
+[Crossref](https://doi.org/10.12688/f1000research.8460.1)
+
+[Scopus (425)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_3_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84969720119)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/27158456/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+academic%2C+economic+and+societal+impacts+of+Open+Access%3A+An+evidence-based+review&author=J.P.+Tennant&author=F.+Waldner&author=D.C.+Jacques&author=P.+Masuzzo&author=L.B.+Collister&author=C.H.J.+Hartgerink&publication_year=2016&pages=632-655&doi=10.12688%2Ff1000research.8460.1&pmid=27158456)
+
+While the number of open access (OA) journals, publications in paywalled journals published as OA (so-called “hybrid OA”), and articles made available in repositories (so-called “green OA”) has increased substantially over the last decade, the most highly cited academic journals maintain a subscription-based model of publishing.[4](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+4\.
+
+Piwowar, H. ∙ Priem, J. ∙ Larivière, V. ...
+
+**The state of OA: a large-scale analysis of the prevalence and impact of Open Access articles**
+
+*PeerJ.* 2018; **6**:e4375
+
+[Crossref](https://doi.org/10.7717/peerj.4375)
+
+[Scopus (754)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_4_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85042002667)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/29456894/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+state+of+OA%3A+a+large-scale+analysis+of+the+prevalence+and+impact+of+Open+Access+articles&author=H.+Piwowar&author=J.+Priem&author=V.+Larivi%C3%A8re&author=J.P.+Alperin&author=L.+Matthias&author=B.+Norlander&author=A.+Farley&author=J.+West&author=S.+Haustein&publication_year=2018&pages=e4375&doi=10.7717%2Fpeerj.4375&pmid=29456894)
+
+For inventors, the importance of accessing scientific literature has grown over time as scientific research is playing an increasingly critical role in shaping technological progress. The share of U.S. patents reliant on federally funded science has increased steadily over the last century, with nearly one-third of patented inventions in the United States (U.S.) citing federally funded science since the 2000s. In the U.S., federal agencies play a key role in funding and conducting scientific research like the federal executive departments (e.g., defense, health, and human services), the National Science Foundation, and NASA.[5](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+5\.
+
+Moretti, E. ∙ Steinwender, C. ∙ Reenen, J.
+
+**The Intellectual Spoils of War? Defense R&D, Productivity and International Spillovers**
+
+*National Bureau of Economic Research.* 2019; 1-76
+
+[Crossref](https://doi.org/10.3386/W26483)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Intellectual+Spoils+of+War%3F+Defense+R%26D%2C+Productivity+and+International+Spillovers&author=E.+Moretti&author=C.+Steinwender&author=J.+Reenen&publication_year=2019&pages=1-76&doi=10.3386%2FW26483)
+
+In the energy domain, the Department of Energy (DOE) plays a key role in driving scientific and technological progress. For instance, the DOE directly supported around 4% of all U.S. inventions in 2017.[6](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+6\.
+
+Fleming, L. ∙ Greene, H. ∙ Li, G. ...
+
+**Government-funded research increasingly fuels innovation**
+
+*Science.* 2019; **364**:1139-1141
+
+[Crossref](https://doi.org/10.1126/SCIENCE.AAW2373/SUPPL_FILE/AAW2373_FLEMING_SM.PDF)
+
+[Scopus (0)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_6_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85068187201)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/31221848/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Government-funded+research+increasingly+fuels+innovation&author=L.+Fleming&author=H.+Greene&author=G.+Li&author=M.+Marx&author=D.+Yao&publication_year=2019&pages=1139-1141&doi=10.1126%2FSCIENCE.AAW2373%2FSUPPL_FILE%2FAAW2373_FLEMING_SM.PDF&pmid=31221848)
+
+The DOE’s National Labs (NLs) are considered the “crown jewels” of innovation and form a critical part of the U.S. energy innovation sphere. Yet, reviews of the NL’s performance have highlighted several areas of weak organizational design, specifically on accelerating the outward diffusion of scientific advances to industry.[7](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+7\.
+
+Anadón, L.D. ∙ Chan, G. ∙ Bin-Nun, A.Y. ...
+
+**The pressing energy innovation challenge of the US National Laboratories**
+
+*Nat. Energy.* 2016; **1**, 16117
+
+[Crossref](https://doi.org/10.1038/nenergy.2016.117)
+
+[Scopus (26)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_7_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85019609739)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+pressing+energy+innovation+challenge+of+the+US+National+Laboratories&author=L.D.+Anad%C3%B3n&author=G.+Chan&author=A.Y.+Bin-Nun&author=V.+Narayanamurti&publication_year=2016&doi=10.1038%2Fnenergy.2016.117)
+
+Over the past five years, several universities and other public research institutions ranging from the University of California to the Max Planck Institute have voiced increasing discontent with the subscription-based system adopted by most academic journals. Reasons for this resistance include perceptions of unfair pricing and the assertion that the results of publicly funded science should be available to the public.[8](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+8\.
+
+UKRI
+
+**Economic Implications and Benefits Assessment of an Updated UKRI Open Access Policy for Peer Reviewed Research Articles**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Economic+Implications+and+Benefits+Assessment+of+an+Updated+UKRI+Open+Access+Policy+for+Peer+Reviewed+Research+Articles&author=&publication_year=2020)
+
+The most wide-ranging OA initiative unveiled in 2018 is dubbed “Plan-S”, which requires scientists receiving funding from European and other research organizations controlling EUR 33 billion in annual funding to make their research directly available upon publication from 2021 onward, at least in a repository.[9](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+9\.
+
+Else, H.
+
+**Radical open-access plan could spell end to journal subscriptions**
+
+*Nature.* 2018; **561**:17-18
+
+[Crossref](https://doi.org/10.1038/d41586-018-06178-7)
+
+[Scopus (100)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_9_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85056266586)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/30181639/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Radical+open-access+plan+could+spell+end+to+journal+subscriptions&author=H.+Else&publication_year=2018&pages=17-18&doi=10.1038%2Fd41586-018-06178-7&pmid=30181639)
+
+,[10](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+10\.
+
+Plan, S.
+
+**Accelerating Open Access cOAlition S**
+
+2021
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Accelerating+Open+Access+cOAlition+S&author=S.+Plan&publication_year=2021)
+
+Recently, the U.S. has followed suit—based on guidance by the White House Office of Science and Technology Policy[11](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+11\.
+
+The White House
+
+**OSTP Issues Guidance to Make Federally Funded Research Freely Available without Delay**
+
+Press Release, 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=OSTP+Issues+Guidance+to+Make+Federally+Funded+Research+Freely+Available+without+Delay&author=&publication_year=2022)
+
+—by announcing that government-funded science needs to be freely available upon publication from 2026 onwards.[12](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+12\.
+
+Tollefson, J. ∙ Van Noorden, R.
+
+**US government reveals big changes to open-access policy**
+
+*Nature.* 2022; **609**:234-235
+
+[Crossref](https://doi.org/10.1038/d41586-022-02351-1)
+
+[Scopus (14)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_12_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85137745865)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/36028770/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=US+government+reveals+big+changes+to+open-access+policy&author=J.+Tollefson&author=R.+Van+Noorden&publication_year=2022&pages=234-235&doi=10.1038%2Fd41586-022-02351-1&pmid=36028770)
+
+As scientific journals provide a central diffusion pathway of scientific knowledge to firms,[13](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+13\.
+
+Agrawal, A. ∙ Henderson, R.
+
+**Putting Patents in Context: Exploring Knowledge Transfer from MIT**
+
+*Manage. Sci.* 2002; **48**:44-60
+
+[Crossref](https://doi.org/10.1287/mnsc.48.1.44.14279)
+
+[Scopus (694)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_13_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-0036224131)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Putting+Patents+in+Context%3A+Exploring+Knowledge+Transfer+from+MIT&author=A.+Agrawal&author=R.+Henderson&publication_year=2002&pages=44-60&doi=10.1287%2Fmnsc.48.1.44.14279)
+
+,[14](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+14\.
+
+Agrawal, A.
+
+**Importing Scientific Inventions: Direct Interaction, Geography, and Economic Performance**
+
+2000
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Importing+Scientific+Inventions%3A+Direct+Interaction%2C+Geography%2C+and+Economic+Performance&author=A.+Agrawal&publication_year=2000)
+
+,[15](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+15\.
+
+Houghton, J. ∙ Swan, A. ∙ Brown, S.
+
+**Access to Research and Technical Information in Denmark**
+
+2011
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+to+Research+and+Technical+Information+in+Denmark&author=J.+Houghton&author=A.+Swan&author=S.+Brown&publication_year=2011)
+
+,[16](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+16\.
+
+Cohen, W. ∙ Florida, R. ∙ Randazzese, L. ...
+
+**Industry and the academy: Uneasy partners in the cause of technological advance**
+
+Noll, R. (Editor)
+
+**Challenges to the Research University**
+
+Brookings Institution, 1998
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Industry+and+the+academy%3A+Uneasy+partners+in+the+cause+of+technological+advance&author=W.+Cohen&author=R.+Florida&author=L.+Randazzese&author=J.+Walsh&publication_year=1998)
+
+understanding the effect of journal access on technological development is critical. Yet, the relationship between the degree of accessibility of a scientific publication and its subsequent impact on technological applications—in other words, commercial and wider economic impact—proxied by patents is, however, unclear (except for Bryan and Ozcan (2021) who study the effect of OA on inventions in the biomedical sector). Understanding the commercialization of energy R&D is particularly important as the research needs to ultimately be applied and further developed by companies (in contrast to military R&D where the government is both the producer and “purchaser” of novel technologies).
+
+We exploit a rare natural experiment to study the impact of the increased availability of scientific research on the diffusion of scientific knowledge into patented technologies. The U.S. DOE mandated that all scientific, peer-reviewed articles resulting from its 17 NLs must be made available without a paywall within a year if published on or after the 1st of October 2014.
+
+The mandate allows us to study three interrelated questions. First, we analyze how NL researchers changed their publication strategy based on the mandate. If researchers choose to deposit accepted manuscripts in free repositories, many journals impose an embargo period, which is the time lag before it can be made publicly available in a repository. In our sample, 11 out of 16 paywalled journals had embargo periods of at least 6 months, thereby increasing access hurdles to the diffusion of research. If researchers pay for gold open access, this could divert funds away from key research activities as open access fees of 10,000 USD per article are not unusual.
+
+Second, we analyze whether treated articles (i.e., those emanating from the NLs subject to the OA mandate) were used more in other scientific articles and patented technologies. We investigate whether articles subject to the mandate were cited more by other academic research and patents (we use the latter as a proxy for technological development). Lastly, we investigate whether the mandate primarily helped those firms with historically low access to scientific research (e.g., small firms).
+
+Exploring whether small firms are affected by the mandate is critical for several reasons. Research scientists at universities or large, R&D-intensive firms typically have a greater awareness, access, and ability to effectively exploit scientific knowledge originating outside of their direct research vicinity. In contrast, non-academic professionals and small-and-medium-sized enterprises (SMEs) are more likely to struggle with effective knowledge exploitation. Ware and Monkman[17](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+17\.
+
+Ware, M. ∙ Monkman, M.
+
+**Access by UK Small and Medium-Sized Enterprises to Professional and Academic Information**
+
+2009
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+by+UK+Small+and+Medium-Sized+Enterprises+to+Professional+and+Academic+Information&author=M.+Ware&author=M.+Monkman&publication_year=2009)
+
+found that half of surveyed small businesses had difficulty accessing academic research useful to their business. Houghton et al.[15](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+15\.
+
+Houghton, J. ∙ Swan, A. ∙ Brown, S.
+
+**Access to Research and Technical Information in Denmark**
+
+2011
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+to+Research+and+Technical+Information+in+Denmark&author=J.+Houghton&author=A.+Swan&author=S.+Brown&publication_year=2011)
+
+showed that 68% of Danish firms reported access difficulties to scientific research. Galasso and Schankerman[18](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+18\.
+
+Galasso, A. ∙ Schankerman, M.
+
+**Patents and cumulative innovation: Causal evidence from the courts**
+
+*Q. J. Econ.* 2015; **130**:317-369
+
+[Crossref](https://doi.org/10.1093/qje/qju029)
+
+[Scopus (209)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_18_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84924678313)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Patents+and+cumulative+innovation%3A+Causal+evidence+from+the+courts&author=A.+Galasso&author=M.+Schankerman&publication_year=2015&pages=317-369&doi=10.1093%2Fqje%2Fqju029)
+
+found that particularly small firms benefit from patent invalidation from large firms. Lastly, Doblinger et al.[19](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+19\.
+
+Doblinger, C. ∙ Surana, K. ∙ Anadon, L.D.
+
+**Governments as partners : The role of alliances in U . S . cleantech startup innovation**
+
+*Res. Policy.* 2019; **48**:1458-1475
+
+[Crossref](https://doi.org/10.1016/j.respol.2019.02.006)
+
+[Scopus (133)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_19_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85062461559)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Governments+as+partners+%3A+The+role+of+alliances+in+U+.+S+.+cleantech+startup+innovation&author=C.+Doblinger&author=K.+Surana&author=L.D.+Anadon&publication_year=2019&pages=1458-1475&doi=10.1016%2Fj.respol.2019.02.006)
+
+showed that small firms are more resource-constrained than larger firms and therefore benefit substantially from joint development with government partners in terms of patent production. Therefore, research shows that access, internal capabilities, and external support shape the ability of firms to exploit relevant scientific knowledge.[20](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+20\.
+
+Huber, F. ∙ Wainwright, T. ∙ Rentocchini, F.
+
+**Open data for open innovation: managing absorptive capacity in SMEs**
+
+*R&D Management.* 2020; **50**:31-46
+
+[Crossref](https://doi.org/10.1111/RADM.12347)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Open+data+for+open+innovation%3A+managing+absorptive+capacity+in+SMEs&author=F.+Huber&author=T.+Wainwright&author=F.+Rentocchini&publication_year=2020&pages=31-46&doi=10.1111%2FRADM.12347)
+
+To explore the effect of this mandate, we first build a unique dataset of more than 300,000 scientific articles from the top 20 journals (in terms of the number of DOE-funded publications) in which DOE-funded research has appeared according to the DOE’s own PAGES database. We then check for each article whether it is available without a paywall[21](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+21\.
+
+Unpaywall
+
+**Unpaywall**
+
+<https://unpaywall.org/>
+
+Date: 2019
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Unpaywall&author=&publication_year=2019)
+
+and whether and how often it got cited by patents. Finally, we use difference-in-difference(s) econometric modeling in line with the literature[22](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+22\.
+
+Bryan, K.A. ∙ Ozcan, Y.
+
+**The impact of open access mandates on invention**
+
+*Rev. Econ. Stat.* 2021; **103**:954-967
+
+[Crossref](https://doi.org/10.1162/rest_a_00926)
+
+[Scopus (16)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_22_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85120953334)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+impact+of+open+access+mandates+on+invention&author=K.A.+Bryan&author=Y.+Ozcan&publication_year=2021&pages=954-967&doi=10.1162%2Frest_a_00926)
+
+,[23](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+23\.
+
+Furman, J.L. ∙ Stern, S.
+
+**Climbing atop the shoulders of giants: The impact of institutions on cumulative research**
+
+*Am. Econ. Rev.* 2011; **101**:1933-1963
+
+[Crossref](https://doi.org/10.1257/aer.101.5.1933)
+
+[Scopus (178)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_23_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84860390523)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Climbing+atop+the+shoulders+of+giants%3A+The+impact+of+institutions+on+cumulative+research&author=J.L.+Furman&author=S.+Stern&publication_year=2011&pages=1933-1963&doi=10.1257%2Faer.101.5.1933)
+
+to explore the impact of the exogenous change to OA availability of NL articles on scientific research and patented inventions.
+
+### Case selection: The DOE public access plan
+
+The public sector in the U.S. plays a distinct role in advancing innovation, particularly through different ways of funding research and development (R&D) activities.[5](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+5\.
+
+Moretti, E. ∙ Steinwender, C. ∙ Reenen, J.
+
+**The Intellectual Spoils of War? Defense R&D, Productivity and International Spillovers**
+
+*National Bureau of Economic Research.* 2019; 1-76
+
+[Crossref](https://doi.org/10.3386/W26483)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Intellectual+Spoils+of+War%3F+Defense+R%26D%2C+Productivity+and+International+Spillovers&author=E.+Moretti&author=C.+Steinwender&author=J.+Reenen&publication_year=2019&pages=1-76&doi=10.3386%2FW26483)
+
+,[24](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+24\.
+
+Anadón, L.D.
+
+**Missions-oriented RD&D institutions in energy between 2000 and 2010: A comparative analysis of China, the United Kingdom, and the United States**
+
+*Res. Policy.* 2012; **41**:1742-1756
+
+[Crossref](https://doi.org/10.1016/j.respol.2012.02.015)
+
+[Scopus (90)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_24_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84870253255)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Missions-oriented+RD%26D+institutions+in+energy+between+2000+and+2010%3A+A+comparative+analysis+of+China%2C+the+United+Kingdom%2C+and+the+United+States&author=L.D.+Anad%C3%B3n&publication_year=2012&pages=1742-1756&doi=10.1016%2Fj.respol.2012.02.015)
+
+In 2010, 31% of total R&D expenditures in the U.S. were funded by federal agencies, which has fallen to 19% in 2020.[25](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+25\.
+
+National Center for Science and Engineering Statistics
+
+**U.S. R&D expenditures, by performing sector and source of funds: 2010–20**
+
+<https://ncses.nsf.gov/pubs/nsf22330>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=U.S.+R%26D+expenditures%2C+by+performing+sector+and+source+of+funds%3A+2010%E2%80%9320&author=&publication_year=2022)
+
+Yet, of overall government-funded R&D, one-third is conducted by federal agencies in its federally funded research centers (FFRDCs). Among the FFRCDs are 16 of the 17 NLs, commonly called “the Labs”. The NLs span the geography of the U.S. and are active in areas including nuclear weapons, fundamental research, and applied energy research ([Figure 1](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig1)). These received around 19 USD billion in funding in 2021[26](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+26\.
+
+DOE
+
+Department of Energy FY 2022 Congressional Budget Request, 2021
+
+[Google Scholar](https://scholar.google.com/scholar?q=DOE2021Department+of+Energy+FY+2022+Congressional+Budget+Request)
+
+and are considered the “crown jewels” of innovation and form a critical part of the energy innovation sphere of the U.S.[7](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+7\.
+
+Anadón, L.D. ∙ Chan, G. ∙ Bin-Nun, A.Y. ...
+
+**The pressing energy innovation challenge of the US National Laboratories**
+
+*Nat. Energy.* 2016; **1**, 16117
+
+[Crossref](https://doi.org/10.1038/nenergy.2016.117)
+
+[Scopus (26)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_7_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85019609739)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+pressing+energy+innovation+challenge+of+the+US+National+Laboratories&author=L.D.+Anad%C3%B3n&author=G.+Chan&author=A.Y.+Bin-Nun&author=V.+Narayanamurti&publication_year=2016&doi=10.1038%2Fnenergy.2016.117)
+
+[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/da39232c-2d03-48cf-a023-7d7a162109cc/main.assets/gr1.jpg "width=750 | height=568")](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/14023bfa-856d-4e24-bc02-8f1f70500984/main.assets/gr1_lrg.jpg "View full size image in a new tab")
+
+*Figure 1 *Location and sub-groups of U.S. National Laboratories*
+
+*NNSA stands for National Nuclear Security Agency. Source:* DOE.[27](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+27\.
+
+DOE
+
+**DOE National Laboratories**
+
+2022
+
+<https://www.energy.gov/doe-national-laboratories>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DOE+National+Laboratories&author=&publication_year=2022)*
+
+Reviews of the NL’s performance have highlighted several areas of weak organizational design, specifically on technology transfer. Most troubling is the declining engagement with the private sector, which ultimately must adopt, develop, and deploy the energy technologies invented with public R&D. Anadon et al.[7](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+7\.
+
+Anadón, L.D. ∙ Chan, G. ∙ Bin-Nun, A.Y. ...
+
+**The pressing energy innovation challenge of the US National Laboratories**
+
+*Nat. Energy.* 2016; **1**, 16117
+
+[Crossref](https://doi.org/10.1038/nenergy.2016.117)
+
+[Scopus (26)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_7_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85019609739)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+pressing+energy+innovation+challenge+of+the+US+National+Laboratories&author=L.D.+Anad%C3%B3n&author=G.+Chan&author=A.Y.+Bin-Nun&author=V.+Narayanamurti&publication_year=2016&doi=10.1038%2Fnenergy.2016.117)
+
+document a range of declining technology transfer outcomes over the last two decades, such as NL invention disclosures and patent grants.
+
+A potential avenue to increase the uptake of scientific advances in the private sector is to lower access costs. The DOE’s OA mandate is part of a larger plan by the U.S. federal government to increase access to federally funded science. In 2013, the White House Office of Science and Technology Policy published a memo that government-funded science should be freely accessible.[28](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+28\.
+
+Lawrence Berkeley National Laboratory
+
+**DOE Open Access Policy: What is it?**
+
+<https://it.lbl.gov/service/publications/what-is-the-does-policy/>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DOE+Open+Access+Policy%3A+What+is+it%3F&author=&publication_year=2022)
+
+In 2014, the DOE (2014) followed with its own “Public Access Plan”.[29](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+29\.
+
+DOE
+
+**Public Access Plan**
+
+2014
+
+<https://www.energy.gov/sites/prod/files/2014/08/f18/DOE_Public_Access%20Plan_FINAL.pdf>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Public+Access+Plan&author=&publication_year=2014)
+
+In detailed guidance online, the DOE (2022; p.20[30](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+30\.
+
+DOE
+
+**FAQs | DOE PAGES**
+
+<https://www.osti.gov/pages/faqs>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=FAQs+%7C+DOE+PAGES&author=&publication_year=2022)
+
+) explains that: “For publications emanating from DOE national laboratories and other DOE facilities, DOE requires public access to any scholarly publication published on or after October 1, 2014” and “free, public access to the full text is enabled through DOE PAGES and [OSTI.GOV](https://OSTI.GOV) within 12 months after publication in a journal.”
+
+In addition, it stated that “The OA version may be a copy of the published version of the paper if the journal permits it, a link to permanent OA version at a journal or other repository, or the author’s final peer-reviewed manuscript”.[28](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+28\.
+
+Lawrence Berkeley National Laboratory
+
+**DOE Open Access Policy: What is it?**
+
+<https://it.lbl.gov/service/publications/what-is-the-does-policy/>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DOE+Open+Access+Policy%3A+What+is+it%3F&author=&publication_year=2022)
+
+The OA policy applied to all publications from the Labs from October 2014 onwards, whereas for DOE-funded science outside the Labs, the requirements were only added to grantees for awards after October 2014. Hence, the identification is cleaner for NLs than for all grantees since there could be a substantial lag between the award of a grant and the resulting publications. It is this exogenous mandate that we exploit to address possible selection bias by researchers, who may pay for their best research to be available without a paywall.
+
+## Results
+
+This section provides an overview of our main results, placebo tests, and robustness checks performed in our analysis. We first discuss the changes to the publishing strategy of scientists caused by the mandate. Next, we highlight changes to the uptake of scientific knowledge by patent holders as a proxy for technological applications of the increased diffusion of science from the NLs. Lastly, we investigate who benefited primarily from the increased openness of NL studies.
+
+### Changes in NL researchers’ publication strategy
+
+We analyze to what extent the likelihood of different OA types changed through the OA mandate ([Figure 2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig2) see caption for a description of different OA types). If the OA mandate primarily increased green forms of OA, then this could create a substantial additional lag between the publication of the article and its availability in a free repository. We estimate a multinomial logit model of [Equation 2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fd2) where the dependent variable is the categorical variable capturing the choice between bronze, green, hybrid, and gold forms of OA (with “closed” serving as the base category) to explore which OA types became more likely within the journals we analyzed (relative to our control group, which was unaffected by the mandate). The mandate primarily increased the likelihood of OA in the green category by 10.8% points, significant at the 1% level. Yet, we also find that the bronze category increased substantially (4.7% points), which are articles that are free to read on publishers’ websites but without a clearly identifiable license, which does not allow re-use of the article.[8](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+8\.
+
+UKRI
+
+**Economic Implications and Benefits Assessment of an Updated UKRI Open Access Policy for Peer Reviewed Research Articles**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Economic+Implications+and+Benefits+Assessment+of+an+Updated+UKRI+Open+Access+Policy+for+Peer+Reviewed+Research+Articles&author=&publication_year=2020)
+
+In contrast, the likelihood that researchers paid for OA in the paywalled journal marginally increased by 1.1% points, significant at the 10% level. Lastly, there was no significant change in articles published in gold OA journals covered by our analysis.
+
+[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/f5e82f15-966e-408d-a54f-de3224d2e0be/main.assets/gr2.jpg "width=367 | height=226")](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/370ce81a-5d97-4282-beb7-16bfc864a159/main.assets/gr2_lrg.jpg "View full size image in a new tab")
+
+*Figure 2 *Change in the likelihood of National Laboratory researchers publishing* via *different open-access routes after the mandate*
+
+Notes: Marginal effects estimates based on multinomial logit estimates of [Equation 2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fd2) where the choice alternatives are defined as gold, hybrid, bronze, and green OA, relative to the “closed” category, which is constrained to zero. Gold OA are those journals that offer immediate access to published content, hybrid OA are open-access articles in paywalled journals for which the author paid an article processing charge. Bronze OA are articles that are free to read on the publishers’ website but without an identifiable license, which limits re-use. Lastly, green OA are paywalled articles, for which an accepted version has been deposited in a free and open repository. The full regression output is presented in [Table S2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1). Error bars indicate 95% confidence intervals. Unit of analysis is the article level (N = 352,721).*
+
+### Changes in the use of National Laboratory research in scientific papers and patents
+
+Overall, we find a strong and significant effect of the mandate on the use of NL research in patents. We differentiate between the location where the patent cites the scientific article, namely the front and body of the patent. Front citations are more likely to be added by patent lawyers, whereas body citations are more likely to be added by the inventors themselves. Body citations are typically seen as a better metric to measure knowledge diffusion as the inventor is more likely to be aware of the cited knowledge (see [data](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-4-3-1) section for in-depth discussion).
+
+The number of citations received from the body of patents increased on average by 42% in the post-October 2014 period and is significant at the 1% level. Citations from the front of the patent increased but were not significant at the 5% level. In contrast, NL scientific literature was not cited more on the front of patents. Lastly, the mandate did not affect academic citations. We expected to see at least some positive effect on academic citations as indicated by a sizable body of literature investigating the “citation advantage” of OA publications.
+
+A synthesis of the main regression results and the placebo test can be found in [Figure 3](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig3). Overall, we find sizable and statistically significant evidence that the OA mandate was responsible for the increased uptake of peer-reviewed academic studies in patents. While the placebo tests trend in the same direction, they are not statistically different from zero, whereas our main results are statistically significant at the 1% level. We perform a range of additional robustness checks reported in the appendix ([Tables S3–S6](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1), [S10](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1), and [S11](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1)).
+
+[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/88bf2ad0-b375-4a01-94bf-fabda2d3d34d/main.assets/gr3.jpg "width=367 | height=267")](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/fff02831-ffab-4786-a863-981e6bef0a5a/main.assets/gr3_lrg.jpg "View full size image in a new tab")
+
+*Figure 3 *Results visualization from main results and placebo tests*
+
+Notes: Main results and placebo analysis. The top panel presents the treatment effect estimates (in % change) for the sample of academic articles published in journals that do not routinely make their articles free to read (N = 271,753). The bottom panel presents the treatment effect estimates from our placebo analysis using the sample of academic articles published in journals that routinely make their articles OA (N = 80,968). For ease of interpretation, treatment effects are displayed in % change, based on Poisson pseudo maximum likelihood estimates of [Equation 2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fd2), controlling for month-by-year fixed effects and the number of academic citations. The % change is calculated as \[𝑒𝛿𝐷⁢𝐷−1×100]. Error bars represent 95% confidence intervals. The unit of analysis is the article level (N = 352,721).*
+
+### Beneficiaries of increased openness of NL science
+
+Lastly, we analyze who mainly benefited from the use of the greater openness of NL research. To proxy the firm size of the filing patent, we divide the patentees based on their patent portfolio size. As there are some patentees with large portfolio sizes, we use the median to divide the firms into “large” and “small” patentees. This approach is in line with the literature[18](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+18\.
+
+Galasso, A. ∙ Schankerman, M.
+
+**Patents and cumulative innovation: Causal evidence from the courts**
+
+*Q. J. Econ.* 2015; **130**:317-369
+
+[Crossref](https://doi.org/10.1093/qje/qju029)
+
+[Scopus (209)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_18_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84924678313)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Patents+and+cumulative+innovation%3A+Causal+evidence+from+the+courts&author=A.+Galasso&author=M.+Schankerman&publication_year=2015&pages=317-369&doi=10.1093%2Fqje%2Fqju029)
+
+and allows us to investigate who started citing more NL research after the mandate came into force. We find strong and significant evidence that patentees with small patent portfolios cited NL research 49% more relative to a credible control group, whereas the effect on large patentees is statistically indistinguishable from zero ([Figure 4](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig4)).
+
+[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/e6de4482-e908-404e-aa0f-37275c0109cb/main.assets/gr4.jpg "width=367 | height=195")](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/845d0918-12f0-43a8-bc0a-d7f993f46ac1/main.assets/gr4_lrg.jpg "View full size image in a new tab")
+
+*Figure 4 *Percentage increase in body-only patent citations by assignee size*
+
+Notes: Treatment effect estimates (in % change) for the sample of academic articles published in journals that do not routinely make their articles free-to-read (N = 271,753), split into two sub-groups corresponding to above median and below median assignee size. For ease of interpretation, treatment effects are displayed in % change, based on Poisson pseudo maximum likelihood estimates of [Equation 2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fd2), controlling for month-by-year fixed effects and the number of academic citations. The % change is calculated as \[𝑒𝛿𝐷⁢𝐷−1×100]. Error bars represent 95% confidence intervals. The full regression output can be found in [Table S7](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1).*
+
+## Discussion
+
+Policymakers have enacted mandates that reflect the importance of free and public access to government-funded research and its role in technological innovation.[12](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+12\.
+
+Tollefson, J. ∙ Van Noorden, R.
+
+**US government reveals big changes to open-access policy**
+
+*Nature.* 2022; **609**:234-235
+
+[Crossref](https://doi.org/10.1038/d41586-022-02351-1)
+
+[Scopus (14)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_12_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85137745865)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/36028770/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=US+government+reveals+big+changes+to+open-access+policy&author=J.+Tollefson&author=R.+Van+Noorden&publication_year=2022&pages=234-235&doi=10.1038%2Fd41586-022-02351-1&pmid=36028770)
+
+,[31](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+31\.
+
+Siegel, D. ∙ Bogers, M.L. ∙ Jennings, P.D. ...
+
+**Technology transfer from national/federal labs and public research institutes : Managerial and policy implications**
+
+*Res. Policy.* 2023; **52**, 104646
+
+[Crossref](https://doi.org/10.1016/j.respol.2022.104646)
+
+[Scopus (40)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_31_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85139013091)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Technology+transfer+from+national%2Ffederal+labs+and+public+research+institutes+%3A+Managerial+and+policy+implications&author=D.+Siegel&author=M.L.+Bogers&author=P.D.+Jennings&author=L.+Xue&publication_year=2023&doi=10.1016%2Fj.respol.2022.104646)
+
+,[32](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+32\.
+
+Choi, H. ∙ Yoon, H. ∙ Siegel, D. ...
+
+**Assessing differences between university and federal laboratory postdoctoral scientists in technology transfer**
+
+*Res. Policy.* 2022; **51**, 104456
+
+[Crossref](https://doi.org/10.1016/j.respol.2021.104456)
+
+[Scopus (19)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_32_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85121433015)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Assessing+differences+between+university+and+federal+laboratory+postdoctoral+scientists+in+technology+transfer&author=H.+Choi&author=H.+Yoon&author=D.+Siegel&author=D.A.+Waldman&author=M.S.+Mitchell&publication_year=2022&doi=10.1016%2Fj.respol.2021.104456)
+
+Here, we investigate the impact of an OA mandate applying to the “crown jewels” of energy innovation in the U.S., namely the DOE National Labs.[7](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+7\.
+
+Anadón, L.D. ∙ Chan, G. ∙ Bin-Nun, A.Y. ...
+
+**The pressing energy innovation challenge of the US National Laboratories**
+
+*Nat. Energy.* 2016; **1**, 16117
+
+[Crossref](https://doi.org/10.1038/nenergy.2016.117)
+
+[Scopus (26)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_7_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85019609739)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+pressing+energy+innovation+challenge+of+the+US+National+Laboratories&author=L.D.+Anad%C3%B3n&author=G.+Chan&author=A.Y.+Bin-Nun&author=V.+Narayanamurti&publication_year=2016&doi=10.1038%2Fnenergy.2016.117)
+
+Our study sheds light on how an exogenous policy change to publishing rules affected the diffusion of scientific knowledge by studying the outward diffusion of scientific research from the NLs.[13](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+13\.
+
+Agrawal, A. ∙ Henderson, R.
+
+**Putting Patents in Context: Exploring Knowledge Transfer from MIT**
+
+*Manage. Sci.* 2002; **48**:44-60
+
+[Crossref](https://doi.org/10.1287/mnsc.48.1.44.14279)
+
+[Scopus (694)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_13_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-0036224131)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Putting+Patents+in+Context%3A+Exploring+Knowledge+Transfer+from+MIT&author=A.+Agrawal&author=R.+Henderson&publication_year=2002&pages=44-60&doi=10.1287%2Fmnsc.48.1.44.14279)
+
+While we focus on one specific case, we believe that it has the potential to illustrate mechanisms of knowledge diffusion that generalize beyond our context. For instance, National labs and publicly funded science play a key role across different energy innovation ecosystems.[33](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+33\.
+
+Meckling, J. ∙ Galeazzi, C. ∙ Shears, E. ...
+
+**Energy innovation funding and institutions in major economies**
+
+*Nat. Energy.* 2022; **7**:876-885
+
+[Crossref](https://doi.org/10.1038/s41560-022-01117-3)
+
+[Scopus (33)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_33_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85137868299)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Energy+innovation+funding+and+institutions+in+major+economies&author=J.+Meckling&author=C.+Galeazzi&author=E.+Shears&author=T.+Xu&author=L.D.+Anadon&publication_year=2022&pages=876-885&doi=10.1038%2Fs41560-022-01117-3)
+
+Several countries have national labs, such as the European Commission Joint Research Center (JRC), the Korea Institute of Energy Research (KIER), and the Australian Commonwealth Scientific and Industrial Research Organization, among others.
+
+Research from other fields also supports our findings. Bryan and Ozcan[22](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+22\.
+
+Bryan, K.A. ∙ Ozcan, Y.
+
+**The impact of open access mandates on invention**
+
+*Rev. Econ. Stat.* 2021; **103**:954-967
+
+[Crossref](https://doi.org/10.1162/rest_a_00926)
+
+[Scopus (16)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_22_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85120953334)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+impact+of+open+access+mandates+on+invention&author=K.A.+Bryan&author=Y.+Ozcan&publication_year=2021&pages=954-967&doi=10.1162%2Frest_a_00926)
+
+study the impact of an open-access mandate in the biomedical field. They show that the National Institute of Health open access mandate led to an increase in follow-on citations from patents by 12–27%, in line with our results. Lastly, a large literature from economics and innovation research indicates that access barriers limit the diffusion of knowledge (e.g., see Keller[34](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+34\.
+
+Keller, W.
+
+**International Technology Diffusion**
+
+*J. Econ. Lit.* 2004; **42**:752-782
+
+[Crossref](https://doi.org/10.1257/0022051042177685)
+
+[Scopus (1265)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_34_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-8744256392)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=International+Technology+Diffusion&author=W.+Keller&publication_year=2004&pages=752-782&doi=10.1257%2F0022051042177685)
+
+for an excellent overview). These literature streams highlight the fundamental principles that removing barriers to access increases the diffusion of knowledge.
+
+We make three key contributions. First, we investigate how the mandate has affected the publication strategies of NL researchers, which is important to understand as it affects the time lag with which inventors can access scientific research emanating from the Labs. Second, we explore how the change to publication rules affected other scientific research and downstream inventions, which is critical as the NLs have struggled to increase the outward diffusion of scientific research.[7](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+7\.
+
+Anadón, L.D. ∙ Chan, G. ∙ Bin-Nun, A.Y. ...
+
+**The pressing energy innovation challenge of the US National Laboratories**
+
+*Nat. Energy.* 2016; **1**, 16117
+
+[Crossref](https://doi.org/10.1038/nenergy.2016.117)
+
+[Scopus (26)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_7_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85019609739)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+pressing+energy+innovation+challenge+of+the+US+National+Laboratories&author=L.D.+Anad%C3%B3n&author=G.+Chan&author=A.Y.+Bin-Nun&author=V.+Narayanamurti&publication_year=2016&doi=10.1038%2Fnenergy.2016.117)
+
+Third, we study who benefited most from the OA mandate, shedding light on potential distributional effects. We discuss each of these contributions in turn. Lastly, we examine the limitations of our study and discuss avenues for future research.
+
+### Changes in publication strategy
+
+Understanding how scholars change their publishing strategies due to an OA mandate is important in several ways: First, if they opt for costly hybrid OA, this may divert research funds away from the core research to pay for publishing fees.[8](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+8\.
+
+UKRI
+
+**Economic Implications and Benefits Assessment of an Updated UKRI Open Access Policy for Peer Reviewed Research Articles**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Economic+Implications+and+Benefits+Assessment+of+an+Updated+UKRI+Open+Access+Policy+for+Peer+Reviewed+Research+Articles&author=&publication_year=2020)
+
+Second, if authors opt for free, green OA, research may have lower visibility and higher access barriers due to embargo periods.[35](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+35\.
+
+Elsevier
+
+**Journal Embargo Finder FAQ**
+
+Elsevier Embargo Finder, 2019
+
+<https://www.elsevier.com/about/open-science/open-access/journal-embargo-finder>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Journal+Embargo+Finder+FAQ&author=&publication_year=2019)
+
+,[36](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+36\.
+
+Ottaviani, J.
+
+**The post-embargo open access citation advantage: It exists (probably), its modest (usually), and the rich get richer (of course)**
+
+*PLoS One.* 2016; **11**:e01596144
+
+[Crossref](https://doi.org/10.1371/journal.pone.0159614)
+
+[Scopus (60)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_36_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84984664343)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+post-embargo+open+access+citation+advantage%3A+It+exists+%28probably%29%2C+its+modest+%28usually%29%2C+and+the+rich+get+richer+%28of+course%29&author=J.+Ottaviani&publication_year=2016&pages=e01596144&doi=10.1371%2Fjournal.pone.0159614)
+
+Lastly, if they increasingly opt for gold OA, this might signal a more fundamental shift in the publishing strategy of scholars, indicating a move toward full models of OA.
+
+Our results indicate that NL researchers have primarily responded to the mandate by self-archiving their articles (green OA), which has important implications for our results and the impact of the policy itself. Hybrid and gold OA allow for immediate, free, and public access to research articles, yet depositing accepted articles in repositories (green OA) commonly comes with the requirement of an embargo period of several months to over one year.[35](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+35\.
+
+Elsevier
+
+**Journal Embargo Finder FAQ**
+
+Elsevier Embargo Finder, 2019
+
+<https://www.elsevier.com/about/open-science/open-access/journal-embargo-finder>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Journal+Embargo+Finder+FAQ&author=&publication_year=2019)
+
+,[36](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+36\.
+
+Ottaviani, J.
+
+**The post-embargo open access citation advantage: It exists (probably), its modest (usually), and the rich get richer (of course)**
+
+*PLoS One.* 2016; **11**:e01596144
+
+[Crossref](https://doi.org/10.1371/journal.pone.0159614)
+
+[Scopus (60)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_36_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84984664343)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+post-embargo+open+access+citation+advantage%3A+It+exists+%28probably%29%2C+its+modest+%28usually%29%2C+and+the+rich+get+richer+%28of+course%29&author=J.+Ottaviani&publication_year=2016&pages=e01596144&doi=10.1371%2Fjournal.pone.0159614)
+
+Publishers claim that the embargo period is critical, otherwise, libraries and research institutions might decide to cancel their journal subscriptions, leading to a substantial loss of revenue.[8](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+8\.
+
+UKRI
+
+**Economic Implications and Benefits Assessment of an Updated UKRI Open Access Policy for Peer Reviewed Research Articles**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Economic+Implications+and+Benefits+Assessment+of+an+Updated+UKRI+Open+Access+Policy+for+Peer+Reviewed+Research+Articles&author=&publication_year=2020)
+
+Researchers subject to the OA mandate must make the article free to read within one year of publication, but many journals preclude authors to deposit accepted manuscripts in repositories upon publication in a journal.
+
+Our estimates of the NL mandate’s impact on downstream inventions should therefore be seen as the likely lower bound as impacts would likely even be higher if articles were free to read upon publication. We also observe imperfect compliance with the mandate, suggesting that our estimated impacts could even be larger in the case of full compliance (around 10% of NL authors do not comply with the mandate in our study period).
+
+Lastly, we also document an increase in Bronze OA, which are articles that have no clearly identifiable license but are free to read on the publishers’ website. While these articles can be accessed without cost, the lack of a clear license means that they cannot be re-used.[8](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+8\.
+
+UKRI
+
+**Economic Implications and Benefits Assessment of an Updated UKRI Open Access Policy for Peer Reviewed Research Articles**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Economic+Implications+and+Benefits+Assessment+of+an+Updated+UKRI+Open+Access+Policy+for+Peer+Reviewed+Research+Articles&author=&publication_year=2020)
+
+In addition, for Bronze OA the rights remain with the publishers, making it unclear whether OA is granted temporarily or permanently, which could lead to unstable diffusion through this OA pathway.[4](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+4\.
+
+Piwowar, H. ∙ Priem, J. ∙ Larivière, V. ...
+
+**The state of OA: a large-scale analysis of the prevalence and impact of Open Access articles**
+
+*PeerJ.* 2018; **6**:e4375
+
+[Crossref](https://doi.org/10.7717/peerj.4375)
+
+[Scopus (754)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_4_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85042002667)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/29456894/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+state+of+OA%3A+a+large-scale+analysis+of+the+prevalence+and+impact+of+Open+Access+articles&author=H.+Piwowar&author=J.+Priem&author=V.+Larivi%C3%A8re&author=J.P.+Alperin&author=L.+Matthias&author=B.+Norlander&author=A.+Farley&author=J.+West&author=S.+Haustein&publication_year=2018&pages=e4375&doi=10.7717%2Fpeerj.4375&pmid=29456894)
+
+,[37](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+37\.
+
+Brock, J.
+
+**‘Bronze’ open access supersedes green and gold | News | Nature Index. Nature Index**
+
+<https://www.nature.com/nature-index/news-blog/bronze-open-access-supersedes-green-and-gold>
+
+Date: 2018
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=%E2%80%98Bronze%E2%80%99+open+access+supersedes+green+and+gold+%7C+News+%7C+Nature+Index.+Nature+Index&author=J.+Brock&publication_year=2018)
+
+Our results hold important implications for policymakers. First, the exact policy design significantly influences the diffusion of scientific knowledge. Given that scholars strive to minimize the cost of complying with the mandate, the imposed embargo periods further delay public access to scientific publications. Therefore, the U.S. government’s decision to require immediate public access to federally funded publications from 2026 onwards is a critical step toward ensuring timely access.[12](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+12\.
+
+Tollefson, J. ∙ Van Noorden, R.
+
+**US government reveals big changes to open-access policy**
+
+*Nature.* 2022; **609**:234-235
+
+[Crossref](https://doi.org/10.1038/d41586-022-02351-1)
+
+[Scopus (14)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_12_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85137745865)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/36028770/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=US+government+reveals+big+changes+to+open-access+policy&author=J.+Tollefson&author=R.+Van+Noorden&publication_year=2022&pages=234-235&doi=10.1038%2Fd41586-022-02351-1&pmid=36028770)
+
+Second, compliance enforcement is another key component in increasing the diffusion of scientific knowledge. We found that approximately 10% of researchers do not comply with the mandate. Thus, policymakers should prioritize clear communication of the requirements and consider implementing penalties for non-compliance. Lastly, the rise in articles published under a bronze license—which are free to read but lack a clearly identifiable license—signals a need for policymakers to collaborate more closely with publishers to ensure clear licensing of scientific articles.
+
+### Outward diffusion of NL scientific knowledge into academic research and patented inventions
+
+Scientific knowledge entails both tacit and explicit knowledge and various diffusion channels, which makes it difficult to investigate. In our study, we leverage a range of recent advances in data availability by Marx and Fuegi[38](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+38\.
+
+Marx, M. ∙ Fuegi, A.
+
+**Reliance on science by inventors: Hybrid extraction of in-text patent-to-article citations**
+
+*J. Econ. Manag. Strategy.* 2022; **31**:369-392
+
+[Crossref](https://doi.org/10.1111/jems.12455)
+
+[Scopus (39)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_38_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85115319534)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Reliance+on+science+by+inventors%3A+Hybrid+extraction+of+in-text+patent-to-article+citations&author=M.+Marx&author=A.+Fuegi&publication_year=2022&pages=369-392&doi=10.1111%2Fjems.12455)
+
+,[39](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+39\.
+
+Marx, M. ∙ Fuegi, A.
+
+**Reliance on science: Worldwide front-page patent citations to scientific articles**
+
+*Strateg. Manag. J.* 2020; **41**:1572-1594
+
+[Crossref](https://doi.org/10.1002/smj.3145)
+
+[Scopus (112)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_39_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85083447725)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Reliance+on+science%3A+Worldwide+front-page+patent+citations+to+scientific+articles&author=M.+Marx&author=A.+Fuegi&publication_year=2020&pages=1572-1594&doi=10.1002%2Fsmj.3145)
+
+which standardize and report the connections between patents and scientific publications on a large scale. Combining bibliometric, patent, and open-access data on a large scale, we demonstrate the causal effect of the policy on academic research and downstream inventions.
+
+Our results indicate that the OA mandate is most useful in spurring additional technical inventions but not additional scientific research (as proxied by additional citations from research articles). Our results suggest that at least on average researchers do not struggle to access scientific research, though there might be inequities that our results do not fully reflect (e.g., researchers from low-income countries and other potentially disadvantaged groups). The application of NL research in patented inventions is particularly important for the NLs as they have historically struggled with increasing the outflow of knowledge to more applied domains.[7](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+7\.
+
+Anadón, L.D. ∙ Chan, G. ∙ Bin-Nun, A.Y. ...
+
+**The pressing energy innovation challenge of the US National Laboratories**
+
+*Nat. Energy.* 2016; **1**, 16117
+
+[Crossref](https://doi.org/10.1038/nenergy.2016.117)
+
+[Scopus (26)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_7_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85019609739)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+pressing+energy+innovation+challenge+of+the+US+National+Laboratories&author=L.D.+Anad%C3%B3n&author=G.+Chan&author=A.Y.+Bin-Nun&author=V.+Narayanamurti&publication_year=2016&doi=10.1038%2Fnenergy.2016.117)
+
+While there is a range of important diffusion channels apart from scientific publications,[40](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+40\.
+
+Clayton, P. ∙ Lanahan, L. ∙ Nelson, A.
+
+**Dissecting diffusion: Tracing the plurality of factors that shape knowledge diffusion**
+
+*Res. Policy.* 2022; **51**, 104389
+
+[Crossref](https://doi.org/10.1016/j.respol.2021.104389)
+
+[Scopus (13)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_40_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85118256200)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Dissecting+diffusion%3A+Tracing+the+plurality+of+factors+that+shape+knowledge+diffusion&author=P.+Clayton&author=L.+Lanahan&author=A.+Nelson&publication_year=2022&doi=10.1016%2Fj.respol.2021.104389)
+
+increasing the diffusion of scientific knowledge—via scientific papers—through open-access mandates appears to be an effective strategy to increase outward diffusion.
+
+### Beneficiaries of the increased scientific knowledge diffusion
+
+Lastly, we find that particularly small firms (those with below-median patent portfolios) benefited from the OA mandate. After the mandate, small firms cite NL research around 50% more (compared to articles that were not subject to the mandate). This change indicates that particularly smaller firms are adversely affected by the journals’ paywalls. Several survey-based studies indicate access barriers, but we are the first study to demonstrate the effect of an OA mandate on downstream patented inventions by smaller firms. We, therefore, make an important extension to the work of Galasso and Schankerman (2015) who show that patent invalidation particularly helps small firms. Yet, we document that this also holds for the diffusion of scientific knowledge, which tends to be further removed from the actual application than the patent-to-patent citations that Galasso and Schankerman (2015) draw on for their analysis.
+
+SMEs play an integral role in driving economic development in Europe and the U.S. but appear to be particularly affected by difficult access to scientific publications.[15](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+15\.
+
+Houghton, J. ∙ Swan, A. ∙ Brown, S.
+
+**Access to Research and Technical Information in Denmark**
+
+2011
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+to+Research+and+Technical+Information+in+Denmark&author=J.+Houghton&author=A.+Swan&author=S.+Brown&publication_year=2011)
+
+In the U.S. SMEs contribute 44% of U.S. economic activity, though their share has declined over time.[41](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+41\.
+
+SBA
+
+**Small Businesses Generate 44 Percent of U.S. Economic Activity – SBA’s Office of Advocacy**
+
+2019
+
+<https://advocacy.sba.gov/2019/01/30/small-businesses-generate-44-percent-of-u-s-economic-activity/>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Small+Businesses+Generate+44+Percent+of+U.S.+Economic+Activity%C2%A0%E2%80%93+SBA%E2%80%99s+Office+of+Advocacy&author=&publication_year=2019)
+
+Similarly, Europe’s economy is underpinned by 25 million SMEs employing around 100 million people and contributing more than half of Europe’s GDP.[42](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+42\.
+
+European Commission
+
+**An SME Strategy for a Sustainable and Digital Europe**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=An+SME+Strategy+for+a+Sustainable+and+Digital+Europe&author=&publication_year=2020)
+
+While an OA mandate may not seem to be an SME promotion policy, it is important to stress that these appear to be the key beneficiaries, though more work needs to be done to explore the exact mechanisms behind the increased uptake and the use of patents in this subgroup.[20](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+20\.
+
+Huber, F. ∙ Wainwright, T. ∙ Rentocchini, F.
+
+**Open data for open innovation: managing absorptive capacity in SMEs**
+
+*R&D Management.* 2020; **50**:31-46
+
+[Crossref](https://doi.org/10.1111/RADM.12347)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Open+data+for+open+innovation%3A+managing+absorptive+capacity+in+SMEs&author=F.+Huber&author=T.+Wainwright&author=F.+Rentocchini&publication_year=2020&pages=31-46&doi=10.1111%2FRADM.12347)
+
+,[43](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+43\.
+
+de Rassenfosse, G.
+
+**How SMEs exploit their intellectual property assets: Evidence from survey data**
+
+*Small Bus. Econ.* 2012; **39**:437-452
+
+[Crossref](https://doi.org/10.1007/S11187-010-9313-4/TABLES/6)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=How+SMEs+exploit+their+intellectual+property+assets%3A+Evidence+from+survey+data&author=G.+de+Rassenfosse&publication_year=2012&pages=437-452&doi=10.1007%2FS11187-010-9313-4%2FTABLES%2F6)
+
+While we do not show this empirically, high-growth start-ups are likely not the main beneficiaries, as they are often spun out from universities,[44](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+44\.
+
+Bryan, K. ∙ Guzman, J.
+
+**Entrepreneurial Migration**
+
+*SSRN J.* 2021;
+
+26483
+
+[Crossref](https://doi.org/10.2139/ssrn.3914010)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Entrepreneurial+Migration&author=K.+Bryan&author=J.+Guzman&publication_year=2021&doi=10.2139%2Fssrn.3914010)
+
+which should give them easier access to academic publications. In contrast, SMEs are likely further removed from the academy.[15](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+15\.
+
+Houghton, J. ∙ Swan, A. ∙ Brown, S.
+
+**Access to Research and Technical Information in Denmark**
+
+2011
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+to+Research+and+Technical+Information+in+Denmark&author=J.+Houghton&author=A.+Swan&author=S.+Brown&publication_year=2011)
+
+### Future research
+
+Our work can be extended in several ways. First, it would be critical to investigate more closely how OA mandates impact other forms of knowledge diffusion.[13](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+13\.
+
+Agrawal, A. ∙ Henderson, R.
+
+**Putting Patents in Context: Exploring Knowledge Transfer from MIT**
+
+*Manage. Sci.* 2002; **48**:44-60
+
+[Crossref](https://doi.org/10.1287/mnsc.48.1.44.14279)
+
+[Scopus (694)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_13_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-0036224131)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Putting+Patents+in+Context%3A+Exploring+Knowledge+Transfer+from+MIT&author=A.+Agrawal&author=R.+Henderson&publication_year=2002&pages=44-60&doi=10.1287%2Fmnsc.48.1.44.14279)
+
+While the OA mandate primarily affected the ways peer-reviewed scientific publications are stored and used, the mandate may have led to the additional transfer of tacit knowledge due to subsequent academic consulting, co-supervision of students, or other science-industry spillovers.[45](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+45\.
+
+Azoulay, P. ∙ Graff Zivin, J.S. ∙ Sampat, B.N.
+
+**The Diffusion of Scientific Knowledge across Time and Space**
+
+**The Rate and Direction of Inventive Activity Revisited**
+
+University of Chicago Press, 2012; 107-155
+
+[Crossref](https://doi.org/10.7208/chicago/9780226473062.003.0006)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Diffusion+of+Scientific+Knowledge+across+Time+and+Space&author=P.+Azoulay&author=J.S.+Graff+Zivin&author=B.N.+Sampat&publication_year=2012&pages=107-155&doi=10.7208%2Fchicago%2F9780226473062.003.0006)
+
+Understanding these complementary knowledge transfers is critical[40](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+40\.
+
+Clayton, P. ∙ Lanahan, L. ∙ Nelson, A.
+
+**Dissecting diffusion: Tracing the plurality of factors that shape knowledge diffusion**
+
+*Res. Policy.* 2022; **51**, 104389
+
+[Crossref](https://doi.org/10.1016/j.respol.2021.104389)
+
+[Scopus (13)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_40_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85118256200)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Dissecting+diffusion%3A+Tracing+the+plurality+of+factors+that+shape+knowledge+diffusion&author=P.+Clayton&author=L.+Lanahan&author=A.+Nelson&publication_year=2022&doi=10.1016%2Fj.respol.2021.104389)
+
+but difficult to study. Similarly, while paywalls typically only cover the peer-reviewed article, the DOE also encourages researchers to deposit their data for further use. Analyzing to what extent data in repositories is re-used and sparks novel research and technological applications, may be another fruitful avenue to pursue.[20](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+20\.
+
+Huber, F. ∙ Wainwright, T. ∙ Rentocchini, F.
+
+**Open data for open innovation: managing absorptive capacity in SMEs**
+
+*R&D Management.* 2020; **50**:31-46
+
+[Crossref](https://doi.org/10.1111/RADM.12347)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Open+data+for+open+innovation%3A+managing+absorptive+capacity+in+SMEs&author=F.+Huber&author=T.+Wainwright&author=F.+Rentocchini&publication_year=2020&pages=31-46&doi=10.1111%2FRADM.12347)
+
+While we show that the mandate primarily affected patented inventions by small firms, studying whether academics from low- and middle-income countries benefited from the mandate, leading to spillovers outside of the U.S. would be an important addition to the literature.[34](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+34\.
+
+Keller, W.
+
+**International Technology Diffusion**
+
+*J. Econ. Lit.* 2004; **42**:752-782
+
+[Crossref](https://doi.org/10.1257/0022051042177685)
+
+[Scopus (1265)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_34_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-8744256392)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=International+Technology+Diffusion&author=W.+Keller&publication_year=2004&pages=752-782&doi=10.1257%2F0022051042177685)
+
+Understanding where and how the beneficiaries are located, how they use the knowledge, and what economic consequences it has, is important to understand. Estimating the increased return to R&D due to greater knowledge spillovers would be another interesting research avenue.[8](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+8\.
+
+UKRI
+
+**Economic Implications and Benefits Assessment of an Updated UKRI Open Access Policy for Peer Reviewed Research Articles**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Economic+Implications+and+Benefits+Assessment+of+an+Updated+UKRI+Open+Access+Policy+for+Peer+Reviewed+Research+Articles&author=&publication_year=2020)
+
+Lastly, investigating whether the patents were eventually commercialized would be a further step toward understanding the full effect of the policy. Recent advances in virtual patent marking papers could be a promising research avenue.[46](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+46\.
+
+de Rassenfosse, G. ∙ Mages, A. ∙ Shultz, C. ...
+
+**Notice failure revisited: Evidence on the use of virtual patent marking**
+
+*Nber working.* 2018;
+
+paper:1–21, working paper number: 24288 <https://www.nber.org/papers/w24288>
+
+[Crossref](https://doi.org/10.3386/W24288)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Notice+failure+revisited%3A+Evidence+on+the+use+of+virtual+patent+marking&author=G.+de+Rassenfosse&author=A.+Mages&author=C.+Shultz&author=P.+Wadsworth&author=R.+Waldron&author=J.J.+Barnett&author=E.+Brant&author=D.+Claeys&author=J.+Karshtedt&author=A.+Kesan&publication_year=2018&doi=10.3386%2FW24288)
+
+### Limitations of study
+
+Our work draws on one diffusion channel of scientific research, namely, scientific publications. Yet, there are many ways that scientific knowledge can diffuse, including co-supervision of students between industry and academia, licensing, and consulting.[13](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+13\.
+
+Agrawal, A. ∙ Henderson, R.
+
+**Putting Patents in Context: Exploring Knowledge Transfer from MIT**
+
+*Manage. Sci.* 2002; **48**:44-60
+
+[Crossref](https://doi.org/10.1287/mnsc.48.1.44.14279)
+
+[Scopus (694)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_13_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-0036224131)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Putting+Patents+in+Context%3A+Exploring+Knowledge+Transfer+from+MIT&author=A.+Agrawal&author=R.+Henderson&publication_year=2002&pages=44-60&doi=10.1287%2Fmnsc.48.1.44.14279)
+
+,[14](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+14\.
+
+Agrawal, A.
+
+**Importing Scientific Inventions: Direct Interaction, Geography, and Economic Performance**
+
+2000
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Importing+Scientific+Inventions%3A+Direct+Interaction%2C+Geography%2C+and+Economic+Performance&author=A.+Agrawal&publication_year=2000)
+
+,[16](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+16\.
+
+Cohen, W. ∙ Florida, R. ∙ Randazzese, L. ...
+
+**Industry and the academy: Uneasy partners in the cause of technological advance**
+
+Noll, R. (Editor)
+
+**Challenges to the Research University**
+
+Brookings Institution, 1998
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Industry+and+the+academy%3A+Uneasy+partners+in+the+cause+of+technological+advance&author=W.+Cohen&author=R.+Florida&author=L.+Randazzese&author=J.+Walsh&publication_year=1998)
+
+Hence, our work covers only one potential pathway for diffusion, yet one that is commonly seen among the most important diffusion channels.[15](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+15\.
+
+Houghton, J. ∙ Swan, A. ∙ Brown, S.
+
+**Access to Research and Technical Information in Denmark**
+
+2011
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+to+Research+and+Technical+Information+in+Denmark&author=J.+Houghton&author=A.+Swan&author=S.+Brown&publication_year=2011)
+
+In addition, as is commonly challenging in innovation research, we can only follow the “paper trail”, meaning that patents offer a standardized, well-documented data source for studying the diffusion of scientific knowledge into more practical applications. Yet, while patents are widely used in the innovation literature, they come with certain limitations.[47](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+47\.
+
+Probst, B. ∙ Touboul, S. ∙ Glachant, M. ...
+
+**Global trends in the invention and diffusion of climate change mitigation technologies**
+
+*Nat. Energy.* 2021; **6**:1077-1086
+
+[Crossref](https://doi.org/10.1038/s41560-021-00931-5)
+
+[Scopus (66)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_47_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85119685331)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Global+trends+in+the+invention+and+diffusion+of+climate+change+mitigation+technologies&author=B.+Probst&author=S.+Touboul&author=M.+Glachant&author=A.+Dechezlepr%C3%AAtre&publication_year=2021&pages=1077-1086&doi=10.1038%2Fs41560-021-00931-5)
+
+Not all inventions are patented, and some firms may choose to protect their inventions by secrecy and lead times, rather than by patents.[13](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+13\.
+
+Agrawal, A. ∙ Henderson, R.
+
+**Putting Patents in Context: Exploring Knowledge Transfer from MIT**
+
+*Manage. Sci.* 2002; **48**:44-60
+
+[Crossref](https://doi.org/10.1287/mnsc.48.1.44.14279)
+
+[Scopus (694)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_13_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-0036224131)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Putting+Patents+in+Context%3A+Exploring+Knowledge+Transfer+from+MIT&author=A.+Agrawal&author=R.+Henderson&publication_year=2002&pages=44-60&doi=10.1287%2Fmnsc.48.1.44.14279)
+
+While our results indicate that smaller firms benefited most strongly from the NL mandate, more work in this regard is needed, particularly in understanding how small firms find, understand, and use knowledge emanating from research facilities.[20](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+20\.
+
+Huber, F. ∙ Wainwright, T. ∙ Rentocchini, F.
+
+**Open data for open innovation: managing absorptive capacity in SMEs**
+
+*R&D Management.* 2020; **50**:31-46
+
+[Crossref](https://doi.org/10.1111/RADM.12347)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Open+data+for+open+innovation%3A+managing+absorptive+capacity+in+SMEs&author=F.+Huber&author=T.+Wainwright&author=F.+Rentocchini&publication_year=2020&pages=31-46&doi=10.1111%2FRADM.12347)
+
+## STAR★Methods
+
+### Key resources table
+
+| REAGENT or RESOURCE  | SOURCE               | IDENTIFIER           |
+| -------------------- | -------------------- | -------------------- |
+| **Software and algorithms** |                      |                      |
+| Stata 17             | Stata                | <https://www.stata.com/stata-news/news36-2/> |
+| DRDID                | Rios Avilla et al. 2022 | <https://friosavila.github.io/playingwithstata/main_drdid.html> |
+
+** [Open table in a new tab](https://www.cell.com/action/showFullTableHTML?isHtml=true&tableId=undtbl1&pii=S2589-0042%2823%2901817-5)*
+
+### Resource availability
+
+#### Lead contact
+
+Further information requests should be directed to the lead contact Benedict Probst ([bprobst@ethz.ch](mailto:bprobst@ethz.ch)).
+
+#### Materials availability
+
+This study did not use or generate reagents.
+
+### Method details
+
+#### Data
+
+The data compilation process is shown in [Figure S3](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1) and contains five steps. We first compiled a list of the top 20 journals that DOE-funded research has appeared in the past according to the PAGES database (a full list can be found in [Table S8](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1)). In a second step, we downloaded all articles from the Dimensions.AI database that appeared in these journals between 2012 and 2018, which gives us at least three years before and after the mandate (352,721 articles). For each of the scientific articles, we check whether at least one author is associated with one of the Labs and therefore was subject to the OA mandate. Third, we used the 'reliance on science’ database to check whether articles are cited by a patent or not.[38](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+38\.
+
+Marx, M. ∙ Fuegi, A.
+
+**Reliance on science by inventors: Hybrid extraction of in-text patent-to-article citations**
+
+*J. Econ. Manag. Strategy.* 2022; **31**:369-392
+
+[Crossref](https://doi.org/10.1111/jems.12455)
+
+[Scopus (39)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_38_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85115319534)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Reliance+on+science+by+inventors%3A+Hybrid+extraction+of+in-text+patent-to-article+citations&author=M.+Marx&author=A.+Fuegi&publication_year=2022&pages=369-392&doi=10.1111%2Fjems.12455)
+
+,[39](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+39\.
+
+Marx, M. ∙ Fuegi, A.
+
+**Reliance on science: Worldwide front-page patent citations to scientific articles**
+
+*Strateg. Manag. J.* 2020; **41**:1572-1594
+
+[Crossref](https://doi.org/10.1002/smj.3145)
+
+[Scopus (112)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_39_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85083447725)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Reliance+on+science%3A+Worldwide+front-page+patent+citations+to+scientific+articles&author=M.+Marx&author=A.+Fuegi&publication_year=2020&pages=1572-1594&doi=10.1002%2Fsmj.3145)
+
+The database differentiates between patent citations to academic articles that stem from the body or the front of the patent. Citations from the body of the patent are considered to be a better proxy for knowledge diffusion as these citations are commonly added by inventors rather than patent lawyers. Fourth, we used the Unpaywall (2019)[21](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+21\.
+
+Unpaywall
+
+**Unpaywall**
+
+<https://unpaywall.org/>
+
+Date: 2019
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Unpaywall&author=&publication_year=2019)
+
+API to check for each article (via its digital object identifier) whether the article is available without a paywall. Unpaywall is a comprehensive database for the OA status and is widely used in the literature (Else, 2018b; Unpaywall, 2019). Fifth, we scraped Google Patents to determine the size of the patent assignees’ portfolio (of patents that cite scientific research). Our final dataset contains 352,721 scientific articles published between 2012 and 2018. The descriptive statistics of the dataset can be found in [Table S9](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1).
+
+Inventors can cite scientific literature in two parts of the patent, namely the ‘front’ of the patent and the ‘body’ of the patent. The latter is also called in-text citations in the literature. Several studies[22](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+22\.
+
+Bryan, K.A. ∙ Ozcan, Y.
+
+**The impact of open access mandates on invention**
+
+*Rev. Econ. Stat.* 2021; **103**:954-967
+
+[Crossref](https://doi.org/10.1162/rest_a_00926)
+
+[Scopus (16)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_22_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85120953334)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+impact+of+open+access+mandates+on+invention&author=K.A.+Bryan&author=Y.+Ozcan&publication_year=2021&pages=954-967&doi=10.1162%2Frest_a_00926)
+
+,[48](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+48\.
+
+Bryan, K.A. ∙ Ozcan, Y. ∙ Sampat, B.
+
+**In-text patent citations: A user’s guide**
+
+*Res. Policy.* 2020; **49**, 103946
+
+[Crossref](https://doi.org/10.1016/J.RESPOL.2020.103946)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=In-text+patent+citations%3A+A+user%E2%80%99s+guide&author=K.A.+Bryan&author=Y.+Ozcan&author=B.+Sampat&publication_year=2020&doi=10.1016%2FJ.RESPOL.2020.103946)
+
+indicate that citations from the body of the patent may better reflect true knowledge flows between scientific research and patented technologies as these citations are more commonly added by inventors rather than patent examiners. The inventor may be unaware of citations to the academic literature added by patent examiners and that citation therefore would not constitute the true state of the inventors’ knowledge when filing the patent. Bryan and Ozcan (2021) therefore use body citations to track the diffusion between peer-reviewed scientific articles and patented inventions but do not test whether citations from the front of the patents also become more likely because of OA mandates. To test for differences in the effect of these different types of citations, we include both in our empirical analysis.
+
+### Quantification and statistical analysis
+
+To estimate the causal effect of the NL mandate on patent citations we use a difference-in-differences (DID) model for two main reasons. First, to address selection bias, which is a key concern in causal inference. In our case, researchers could pay to make their best articles published open access. This self-selection can confound the estimates of the mandate’s effect. A DID-model controls for time-invariant confounders that simultaneously influence the selection into open access and the outcome. Second, to tackle time-varying confounders. Before and after the implementation of the policy, there might be concurrent changes in the wider political, technical, and funding landscape. By comparing changes in the treatment group (subject to the mandate) to a credible control group (not subject to the mandate, but otherwise affected by the same broader changes), the DID model can isolate the causal effect of the policy by addressing these time-varying confounders.
+
+As a baseline specification, we estimate a canonical DID model with a binary treatment indicator and a binary post-treatment indicator. The unit of analysis is at the individual article level, denoted by the subscript 𝑖*:*
+
+𝑌𝑖=𝜌⁢𝑁⁢𝐿+𝛾⁢𝑃⁢𝑜⁢𝑠⁢𝑡⁢𝑂⁢𝑐⁢𝑡⁢14+𝛿𝐷⁢𝐷⁢(𝑁⁢𝐿×𝑃⁢𝑜⁢𝑠⁢𝑡⁢𝑂⁢𝑐⁢𝑡⁢14)+𝜀𝑖
+
+(Equation 1)
+
+where 𝑌𝑖 is the dependent variable capturing the number of article-level patent citations (emanating from the body or front of the patent), or the number of academic citations. 𝑁⁢𝐿 is the treatment indicator identifying articles that were published by authors affiliated with the National Labs. 𝑃⁢𝑜⁢𝑠⁢𝑡⁢𝑂⁢𝑐⁢𝑡⁢14 is the post-treatment indicator identifying articles that were published on or after 1st October 2014, the date from which NL articles had to be published OA. The DID estimator (𝛿𝐷⁢𝐷) is obtained from the interaction of both main effects (𝑁⁢𝐿×𝑃⁢𝑜⁢𝑠⁢𝑡⁢𝑂⁢𝑐⁢𝑡⁢14) and provides an unbiased estimate of the effect of the NL OA mandate on the dependent variables (Note that the DID estimator captures the effect of the NL OA mandate on patent citations, not the effect of OA per-se. The estimate thus reflects the incremental effect of increasing the share of OA articles published by NLs by 30 percentage points (from 60% to 90%) compared to the control group that saw little change in the share of OA articles.).
+
+To probe the robustness of our baseline specification, we estimate a generalized DID model, which additionally captures general trends in patent citations over time using a set of temporal fixed effects. Moreover, we include relevant article-level control variables:
+
+𝑌𝑖=𝜌⁢𝑁⁢𝐿+𝛿𝐷⁢𝐷⁢(𝑁⁢𝐿×𝑃⁢𝑜⁢𝑠⁢𝑡⁢𝑂⁢𝑐⁢𝑡⁢14)+𝜆𝑡+𝑋𝑖+𝜀𝑖
+
+(Equation 2)
+
+where 𝑌𝑖 is the dependent variable capturing the article-level citations (body, front and academic) (The article-level citations refers to whether the citation to the scientific article emanates from the body of the patent, the body of the patent, or a scientific article (see [data](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-4-3-1) section for detailed description).). For our analysis of OA type (Hypothesis 1), 𝑌𝑖 is a categorical outcome variable that captures four OA publishing alternatives (hybrid, green, bronze and gold) relative to ‘closed’ articles (the base category). 𝜆𝑡 are month-by-year fixed effects which account for temporal trends common to both NL and non-NL articles, and 𝑋𝑖 represents a vector of article-level control variables including the number of authors and the number of academic citations (inverse hyperbolic sine transformed, which is a common alternative to log-transformation in the presence of 0-values), a measure of article quality, as well as the journal in which the article was published (using a set of journal dummies). The journal fixed effects capture all journal-specific unobserved characteristics (e.g., Journal quality, readership and reach).
+
+We estimate [Equations 1](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fd1) and [2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fd2) using Poisson Pseudo Maximum Likelihood under the assumption that the OA mandate caused a multiplicative increase in total patent citations (i.e., following a 0-inflated Poisson distribution). Importantly, the generalized DID model provides unbiased estimates of the treatment effect in settings where there is a single treatment period (i.e., no staggered implementation of the treatment) (See Baker et al. (2022)[49](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+49\.
+
+Baker, A.C. ∙ Larcker, D.F. ∙ Wang, C.C.
+
+**How much should we trust staggered difference-in-differences estimates?**
+
+*J. Financ. Econ.* 2022; **144**:370-395
+
+[Crossref](https://doi.org/10.1016/J.JFINECO.2022.01.004)
+
+[Scopus (0)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_49_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85124651167)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=How+much+should+we+trust+staggered+difference-in-differences+estimates%3F&author=A.C.+Baker&author=D.F.+Larcker&author=C.C.+Wang&publication_year=2022&pages=370-395&doi=10.1016%2FJ.JFINECO.2022.01.004)
+
+for details.). DID models are sensitive to the parallel trends assumption. In support of parallel trends, we find no significant pre-mandate differences in the number of body patent citations between treatment and control groups, aggregated over six-month periods (see [Figure S1](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1)). Moreover, we use the approach developed in Rambachan and Roth (2023)[50](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+50\.
+
+Rambachan, A. ∙ Roth, J.
+
+**A More Credible Approach to Parallel Trends**
+
+*Rev. Econ. Stud.* 2023; **664**:1745303
+
+[Crossref](https://doi.org/10.1093/restud/rdad018)
+
+[Scopus (349)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_50_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85172660545)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=A+More+Credible+Approach+to+Parallel+Trends&author=A.+Rambachan&author=J.+Roth&publication_year=2023&pages=1745303&doi=10.1093%2Frestud%2Frdad018)
+
+to show that our results are robust to violations in the parallel trends assumption of up to 5% (see [Figure S2](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1)). Finally, we use the doubly robust difference-in-differences estimator (DRDID)[51](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+51\.
+
+Rios-Avila, F. ∙ Sant’Anna, P. ∙ Naqvi, S.A.A.
+
+**DRDID: Stata module for the estimation of doubly robust difference-in-difference models**
+
+<https://friosavila.github.io/playingwithstata/main_drdid.html>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DRDID%3A+Stata+module+for+the+estimation+of+doubly+robust+difference-in-difference+models&author=F.+Rios-Avila&author=P.+Sant%E2%80%99Anna&author=S.A.A.+Naqvi&publication_year=2022)
+
+to test the robustness of our main results. The doubly robust estimator combines both a regression adjustment approach and an augmented inverse-probability weighting approach, which produces consistent and robust estimates even if either the outcome regression model or the propensity score model are misspecified.[51](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#)
+
+51\.
+
+Rios-Avila, F. ∙ Sant’Anna, P. ∙ Naqvi, S.A.A.
+
+**DRDID: Stata module for the estimation of doubly robust difference-in-difference models**
+
+<https://friosavila.github.io/playingwithstata/main_drdid.html>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DRDID%3A+Stata+module+for+the+estimation+of+doubly+robust+difference-in-difference+models&author=F.+Rios-Avila&author=P.+Sant%E2%80%99Anna&author=S.A.A.+Naqvi&publication_year=2022)
+
+A key hypothesis underpinning our study is that the OA mandate effectively increased the OA likelihood of studies emanating from NLs but not from studies coming from non-NLs. As [Figure S4](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1) shows, the OA likelihood of studies between NL and non-NL research groups was very similar before the mandate, oscillating between 50% and 60%. After the introduction of the mandate, the OA likelihood increased to around 90% for NLs, whereas non-NLs saw only slight increases relative to the baseline of around 60%. Overall, the mandate increased the OA likelihood relative to the baseline by 30%-points. As our study investigates only this marginal change in the OA availability (and not the difference between fully closed vs. fully open), the true empirical effect of OA articles could be up to three times as large (if one assumes linear scaling of effects).
+
+All models are estimated using Stata 17. Full regression outputs can be found in the Appendix, which accompany the visualizations presented in the manuscript. We estimate the DRDID using the user-written Stata package ‘drdid’ (Rios-Avila et al., 2022). Results are presented in [Table S11](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#mmc1). Please note that the outcome regression model is estimated by ordinary least squares (OLS) and coefficient estimates thus differ in magnitude from our main analysis outcomes obtained from Poisson Pseudo Maximum Likelihood estimation. In the figures, error bars indicate the 95% confidence intervals. Significance levels indicated by ∗∗∗ (1%), ∗∗ (5%) and ∗ (10%).
+
+## Acknowledgments
+
+We thank Matt Marx for support with the Reliance on Science dataset and Jonas Mark for research assistance.
+
+### Author contributions
+
+B.P., P.L., A.K., and L.D.A. were responsible for developing the research idea. B.P. collected the data. P.L. and B.P. did the empirical analysis. B.P., P.L., A.K., and L.D.A. were responsible for interpreting the outputs from the empirical analysis. B.P. wrote the manuscript with support from P.L., and B.P., P.L., A.K., and L.D.A. edited the final draft.
+
+### Declaration of interests
+
+The authors declare no competing interests.
+
+## Supplemental information (1)
+
+[PDF (539.34 KB)](https://www.cell.com/cms/10.1016/j.isci.2023.107740/attachment/07547311-2fe0-4b78-ad09-e8ba8cee0a71/mmc1.pdf)
+
+Document S1. Figures S1–S4 and Tables S1–S11
+
+## Data and code availability
+
+•
+
+The data are available upon request from the lead author.
+
+•
+
+The code is available upon request from the lead author.
+
+•
+
+Any additional information required to reanalyze the data reported in this paper is available from the [lead contact](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#sec-4-2-1) upon request.
+
+## References
+
+[1\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref1 "View in article")
+
+Viñuales, J.E.
+
+**The Paris Climate Agreement: an initial examination**
+
+*SSRN Journal.* 2015; **9**:1-16
+
+[Crossref](https://doi.org/10.2139/ssrn.2704670)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Paris+Climate+Agreement%3A+an+initial+examination&author=J.E.+Vi%C3%B1uales&publication_year=2015&pages=1-16&doi=10.2139%2Fssrn.2704670)
+
+[2\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref2 "View in article")
+
+Bosetti, V. ∙ Carraro, C. ∙ Duval, R. ...
+
+**The Role of R&D and Technology Diffusion in Climate Change Mitigation: New Perspectives Using the WITCH Model**
+
+*Energy.* 2009; **664**:1-41
+
+[Crossref](https://doi.org/10.1787/227114657270)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Role+of+R%26D+and+Technology+Diffusion+in+Climate+Change+Mitigation%3A+New+Perspectives+Using+the+WITCH+Model&author=V.+Bosetti&author=C.+Carraro&author=R.+Duval&author=A.+Sgobbi&author=M.+Tavoni&publication_year=2009&pages=1-41&doi=10.1787%2F227114657270)
+
+[3\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref3 "View in article")
+
+Tennant, J.P. ∙ Waldner, F. ∙ Jacques, D.C. ...
+
+**The academic, economic and societal impacts of Open Access: An evidence-based review**
+
+*F1000Res.* 2016; **5**:632-655
+
+[Crossref](https://doi.org/10.12688/f1000research.8460.1)
+
+[Scopus (425)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_3_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84969720119)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/27158456/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+academic%2C+economic+and+societal+impacts+of+Open+Access%3A+An+evidence-based+review&author=J.P.+Tennant&author=F.+Waldner&author=D.C.+Jacques&author=P.+Masuzzo&author=L.B.+Collister&author=C.H.J.+Hartgerink&publication_year=2016&pages=632-655&doi=10.12688%2Ff1000research.8460.1&pmid=27158456)
+
+[4\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref44-1 "View in article")
+
+Piwowar, H. ∙ Priem, J. ∙ Larivière, V. ...
+
+**The state of OA: a large-scale analysis of the prevalence and impact of Open Access articles**
+
+*PeerJ.* 2018; **6**:e4375
+
+[Crossref](https://doi.org/10.7717/peerj.4375)
+
+[Scopus (754)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_4_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85042002667)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/29456894/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+state+of+OA%3A+a+large-scale+analysis+of+the+prevalence+and+impact+of+Open+Access+articles&author=H.+Piwowar&author=J.+Priem&author=V.+Larivi%C3%A8re&author=J.P.+Alperin&author=L.+Matthias&author=B.+Norlander&author=A.+Farley&author=J.+West&author=S.+Haustein&publication_year=2018&pages=e4375&doi=10.7717%2Fpeerj.4375&pmid=29456894)
+
+[5\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref5-1 "View in article")
+
+Moretti, E. ∙ Steinwender, C. ∙ Reenen, J.
+
+**The Intellectual Spoils of War? Defense R&D, Productivity and International Spillovers**
+
+*National Bureau of Economic Research.* 2019; 1-76
+
+[Crossref](https://doi.org/10.3386/W26483)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Intellectual+Spoils+of+War%3F+Defense+R%26D%2C+Productivity+and+International+Spillovers&author=E.+Moretti&author=C.+Steinwender&author=J.+Reenen&publication_year=2019&pages=1-76&doi=10.3386%2FW26483)
+
+[6\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref6 "View in article")
+
+Fleming, L. ∙ Greene, H. ∙ Li, G. ...
+
+**Government-funded research increasingly fuels innovation**
+
+*Science.* 2019; **364**:1139-1141
+
+[Crossref](https://doi.org/10.1126/SCIENCE.AAW2373/SUPPL_FILE/AAW2373_FLEMING_SM.PDF)
+
+[Scopus (0)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_6_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85068187201)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/31221848/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Government-funded+research+increasingly+fuels+innovation&author=L.+Fleming&author=H.+Greene&author=G.+Li&author=M.+Marx&author=D.+Yao&publication_year=2019&pages=1139-1141&doi=10.1126%2FSCIENCE.AAW2373%2FSUPPL_FILE%2FAAW2373_FLEMING_SM.PDF&pmid=31221848)
+
+[7\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref7-1 "View in article")
+
+Anadón, L.D. ∙ Chan, G. ∙ Bin-Nun, A.Y. ...
+
+**The pressing energy innovation challenge of the US National Laboratories**
+
+*Nat. Energy.* 2016; **1**, 16117
+
+[Crossref](https://doi.org/10.1038/nenergy.2016.117)
+
+[Scopus (26)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_7_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85019609739)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+pressing+energy+innovation+challenge+of+the+US+National+Laboratories&author=L.D.+Anad%C3%B3n&author=G.+Chan&author=A.Y.+Bin-Nun&author=V.+Narayanamurti&publication_year=2016&doi=10.1038%2Fnenergy.2016.117)
+
+[8\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref8-1 "View in article")
+
+UKRI
+
+**Economic Implications and Benefits Assessment of an Updated UKRI Open Access Policy for Peer Reviewed Research Articles**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Economic+Implications+and+Benefits+Assessment+of+an+Updated+UKRI+Open+Access+Policy+for+Peer+Reviewed+Research+Articles&author=&publication_year=2020)
+
+[9\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref9 "View in article")
+
+Else, H.
+
+**Radical open-access plan could spell end to journal subscriptions**
+
+*Nature.* 2018; **561**:17-18
+
+[Crossref](https://doi.org/10.1038/d41586-018-06178-7)
+
+[Scopus (100)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_9_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85056266586)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/30181639/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Radical+open-access+plan+could+spell+end+to+journal+subscriptions&author=H.+Else&publication_year=2018&pages=17-18&doi=10.1038%2Fd41586-018-06178-7&pmid=30181639)
+
+[10\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref10 "View in article")
+
+Plan, S.
+
+**Accelerating Open Access cOAlition S**
+
+2021
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Accelerating+Open+Access+cOAlition+S&author=S.+Plan&publication_year=2021)
+
+[11\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref11 "View in article")
+
+The White House
+
+**OSTP Issues Guidance to Make Federally Funded Research Freely Available without Delay**
+
+Press Release, 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=OSTP+Issues+Guidance+to+Make+Federally+Funded+Research+Freely+Available+without+Delay&author=&publication_year=2022)
+
+[12\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref12-1 "View in article")
+
+Tollefson, J. ∙ Van Noorden, R.
+
+**US government reveals big changes to open-access policy**
+
+*Nature.* 2022; **609**:234-235
+
+[Crossref](https://doi.org/10.1038/d41586-022-02351-1)
+
+[Scopus (14)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_12_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85137745865)
+
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/36028770/)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=US+government+reveals+big+changes+to+open-access+policy&author=J.+Tollefson&author=R.+Van+Noorden&publication_year=2022&pages=234-235&doi=10.1038%2Fd41586-022-02351-1&pmid=36028770)
+
+[13\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref13-1 "View in article")
+
+Agrawal, A. ∙ Henderson, R.
+
+**Putting Patents in Context: Exploring Knowledge Transfer from MIT**
+
+*Manage. Sci.* 2002; **48**:44-60
+
+[Crossref](https://doi.org/10.1287/mnsc.48.1.44.14279)
+
+[Scopus (694)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_13_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-0036224131)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Putting+Patents+in+Context%3A+Exploring+Knowledge+Transfer+from+MIT&author=A.+Agrawal&author=R.+Henderson&publication_year=2002&pages=44-60&doi=10.1287%2Fmnsc.48.1.44.14279)
+
+[14\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref14-1 "View in article")
+
+Agrawal, A.
+
+**Importing Scientific Inventions: Direct Interaction, Geography, and Economic Performance**
+
+2000
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Importing+Scientific+Inventions%3A+Direct+Interaction%2C+Geography%2C+and+Economic+Performance&author=A.+Agrawal&publication_year=2000)
+
+[15\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref15-1 "View in article")
+
+Houghton, J. ∙ Swan, A. ∙ Brown, S.
+
+**Access to Research and Technical Information in Denmark**
+
+2011
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+to+Research+and+Technical+Information+in+Denmark&author=J.+Houghton&author=A.+Swan&author=S.+Brown&publication_year=2011)
+
+[16\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref16-1 "View in article")
+
+Cohen, W. ∙ Florida, R. ∙ Randazzese, L. ...
+
+**Industry and the academy: Uneasy partners in the cause of technological advance**
+
+Noll, R. (Editor)
+
+**Challenges to the Research University**
+
+Brookings Institution, 1998
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Industry+and+the+academy%3A+Uneasy+partners+in+the+cause+of+technological+advance&author=W.+Cohen&author=R.+Florida&author=L.+Randazzese&author=J.+Walsh&publication_year=1998)
+
+[17\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref18 "View in article")
+
+Ware, M. ∙ Monkman, M.
+
+**Access by UK Small and Medium-Sized Enterprises to Professional and Academic Information**
+
+2009
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Access+by+UK+Small+and+Medium-Sized+Enterprises+to+Professional+and+Academic+Information&author=M.+Ware&author=M.+Monkman&publication_year=2009)
+
+[18\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref19-1 "View in article")
+
+Galasso, A. ∙ Schankerman, M.
+
+**Patents and cumulative innovation: Causal evidence from the courts**
+
+*Q. J. Econ.* 2015; **130**:317-369
+
+[Crossref](https://doi.org/10.1093/qje/qju029)
+
+[Scopus (209)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_18_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84924678313)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Patents+and+cumulative+innovation%3A+Causal+evidence+from+the+courts&author=A.+Galasso&author=M.+Schankerman&publication_year=2015&pages=317-369&doi=10.1093%2Fqje%2Fqju029)
+
+[19\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref20 "View in article")
+
+Doblinger, C. ∙ Surana, K. ∙ Anadon, L.D.
+
+**Governments as partners : The role of alliances in U . S . cleantech startup innovation**
+
+*Res. Policy.* 2019; **48**:1458-1475
+
+[Crossref](https://doi.org/10.1016/j.respol.2019.02.006)
+
+[Scopus (133)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_19_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85062461559)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Governments+as+partners+%3A+The+role+of+alliances+in+U+.+S+.+cleantech+startup+innovation&author=C.+Doblinger&author=K.+Surana&author=L.D.+Anadon&publication_year=2019&pages=1458-1475&doi=10.1016%2Fj.respol.2019.02.006)
+
+[20\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref21-1 "View in article")
+
+Huber, F. ∙ Wainwright, T. ∙ Rentocchini, F.
+
+**Open data for open innovation: managing absorptive capacity in SMEs**
+
+*R&D Management.* 2020; **50**:31-46
+
+[Crossref](https://doi.org/10.1111/RADM.12347)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Open+data+for+open+innovation%3A+managing+absorptive+capacity+in+SMEs&author=F.+Huber&author=T.+Wainwright&author=F.+Rentocchini&publication_year=2020&pages=31-46&doi=10.1111%2FRADM.12347)
+
+[21\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref47-1 "View in article")
+
+Unpaywall
+
+**Unpaywall**
+
+<https://unpaywall.org/>
+
+Date: 2019
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Unpaywall&author=&publication_year=2019)
+
+[22\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref17-1 "View in article")
+
+Bryan, K.A. ∙ Ozcan, Y.
+
+**The impact of open access mandates on invention**
+
+*Rev. Econ. Stat.* 2021; **103**:954-967
+
+[Crossref](https://doi.org/10.1162/rest_a_00926)
+
+[Scopus (16)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_22_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85120953334)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+impact+of+open+access+mandates+on+invention&author=K.A.+Bryan&author=Y.+Ozcan&publication_year=2021&pages=954-967&doi=10.1162%2Frest_a_00926)
+
+[23\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref22 "View in article")
+
+Furman, J.L. ∙ Stern, S.
+
+**Climbing atop the shoulders of giants: The impact of institutions on cumulative research**
+
+*Am. Econ. Rev.* 2011; **101**:1933-1963
+
+[Crossref](https://doi.org/10.1257/aer.101.5.1933)
+
+[Scopus (178)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_23_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84860390523)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Climbing+atop+the+shoulders+of+giants%3A+The+impact+of+institutions+on+cumulative+research&author=J.L.+Furman&author=S.+Stern&publication_year=2011&pages=1933-1963&doi=10.1257%2Faer.101.5.1933)
+
+[24\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref23 "View in article")
+
+Anadón, L.D.
+
+**Missions-oriented RD&D institutions in energy between 2000 and 2010: A comparative analysis of China, the United Kingdom, and the United States**
+
+*Res. Policy.* 2012; **41**:1742-1756
+
+[Crossref](https://doi.org/10.1016/j.respol.2012.02.015)
+
+[Scopus (90)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_24_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84870253255)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Missions-oriented+RD%26D+institutions+in+energy+between+2000+and+2010%3A+A+comparative+analysis+of+China%2C+the+United+Kingdom%2C+and+the+United+States&author=L.D.+Anad%C3%B3n&publication_year=2012&pages=1742-1756&doi=10.1016%2Fj.respol.2012.02.015)
+
+[25\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref24 "View in article")
+
+National Center for Science and Engineering Statistics
+
+**U.S. R&D expenditures, by performing sector and source of funds: 2010–20**
+
+<https://ncses.nsf.gov/pubs/nsf22330>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=U.S.+R%26D+expenditures%2C+by+performing+sector+and+source+of+funds%3A+2010%E2%80%9320&author=&publication_year=2022)
+
+[26\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref25 "View in article")
+
+DOE
+
+Department of Energy FY 2022 Congressional Budget Request, 2021
+
+[Google Scholar](https://scholar.google.com/scholar?q=DOE2021Department+of+Energy+FY+2022+Congressional+Budget+Request)
+
+[27\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig1 "View in article")
+
+DOE
+
+**DOE National Laboratories**
+
+2022
+
+<https://www.energy.gov/doe-national-laboratories>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DOE+National+Laboratories&author=&publication_year=2022)
+
+[28\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref26-1 "View in article")
+
+Lawrence Berkeley National Laboratory
+
+**DOE Open Access Policy: What is it?**
+
+<https://it.lbl.gov/service/publications/what-is-the-does-policy/>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DOE+Open+Access+Policy%3A+What+is+it%3F&author=&publication_year=2022)
+
+[29\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref27 "View in article")
+
+DOE
+
+**Public Access Plan**
+
+2014
+
+<https://www.energy.gov/sites/prod/files/2014/08/f18/DOE_Public_Access%20Plan_FINAL.pdf>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Public+Access+Plan&author=&publication_year=2014)
+
+[30\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref28 "View in article")
+
+DOE
+
+**FAQs | DOE PAGES**
+
+<https://www.osti.gov/pages/faqs>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=FAQs+%7C+DOE+PAGES&author=&publication_year=2022)
+
+[31\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref29 "View in article")
+
+Siegel, D. ∙ Bogers, M.L. ∙ Jennings, P.D. ...
+
+**Technology transfer from national/federal labs and public research institutes : Managerial and policy implications**
+
+*Res. Policy.* 2023; **52**, 104646
+
+[Crossref](https://doi.org/10.1016/j.respol.2022.104646)
+
+[Scopus (40)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_31_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85139013091)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Technology+transfer+from+national%2Ffederal+labs+and+public+research+institutes+%3A+Managerial+and+policy+implications&author=D.+Siegel&author=M.L.+Bogers&author=P.D.+Jennings&author=L.+Xue&publication_year=2023&doi=10.1016%2Fj.respol.2022.104646)
+
+[32\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref30 "View in article")
+
+Choi, H. ∙ Yoon, H. ∙ Siegel, D. ...
+
+**Assessing differences between university and federal laboratory postdoctoral scientists in technology transfer**
+
+*Res. Policy.* 2022; **51**, 104456
+
+[Crossref](https://doi.org/10.1016/j.respol.2021.104456)
+
+[Scopus (19)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_32_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85121433015)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Assessing+differences+between+university+and+federal+laboratory+postdoctoral+scientists+in+technology+transfer&author=H.+Choi&author=H.+Yoon&author=D.+Siegel&author=D.A.+Waldman&author=M.S.+Mitchell&publication_year=2022&doi=10.1016%2Fj.respol.2021.104456)
+
+[33\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref31 "View in article")
+
+Meckling, J. ∙ Galeazzi, C. ∙ Shears, E. ...
+
+**Energy innovation funding and institutions in major economies**
+
+*Nat. Energy.* 2022; **7**:876-885
+
+[Crossref](https://doi.org/10.1038/s41560-022-01117-3)
+
+[Scopus (33)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_33_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85137868299)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Energy+innovation+funding+and+institutions+in+major+economies&author=J.+Meckling&author=C.+Galeazzi&author=E.+Shears&author=T.+Xu&author=L.D.+Anadon&publication_year=2022&pages=876-885&doi=10.1038%2Fs41560-022-01117-3)
+
+[34\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref32-1 "View in article")
+
+Keller, W.
+
+**International Technology Diffusion**
+
+*J. Econ. Lit.* 2004; **42**:752-782
+
+[Crossref](https://doi.org/10.1257/0022051042177685)
+
+[Scopus (1265)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_34_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-8744256392)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=International+Technology+Diffusion&author=W.+Keller&publication_year=2004&pages=752-782&doi=10.1257%2F0022051042177685)
+
+[35\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref33-1 "View in article")
+
+Elsevier
+
+**Journal Embargo Finder FAQ**
+
+Elsevier Embargo Finder, 2019
+
+<https://www.elsevier.com/about/open-science/open-access/journal-embargo-finder>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Journal+Embargo+Finder+FAQ&author=&publication_year=2019)
+
+[36\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref34-1 "View in article")
+
+Ottaviani, J.
+
+**The post-embargo open access citation advantage: It exists (probably), its modest (usually), and the rich get richer (of course)**
+
+*PLoS One.* 2016; **11**:e01596144
+
+[Crossref](https://doi.org/10.1371/journal.pone.0159614)
+
+[Scopus (60)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_36_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-84984664343)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+post-embargo+open+access+citation+advantage%3A+It+exists+%28probably%29%2C+its+modest+%28usually%29%2C+and+the+rich+get+richer+%28of+course%29&author=J.+Ottaviani&publication_year=2016&pages=e01596144&doi=10.1371%2Fjournal.pone.0159614)
+
+[37\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref35 "View in article")
+
+Brock, J.
+
+**‘Bronze’ open access supersedes green and gold | News | Nature Index. Nature Index**
+
+<https://www.nature.com/nature-index/news-blog/bronze-open-access-supersedes-green-and-gold>
+
+Date: 2018
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=%E2%80%98Bronze%E2%80%99+open+access+supersedes+green+and+gold+%7C+News+%7C+Nature+Index.+Nature+Index&author=J.+Brock&publication_year=2018)
+
+[38\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref36-1 "View in article")
+
+Marx, M. ∙ Fuegi, A.
+
+**Reliance on science by inventors: Hybrid extraction of in-text patent-to-article citations**
+
+*J. Econ. Manag. Strategy.* 2022; **31**:369-392
+
+[Crossref](https://doi.org/10.1111/jems.12455)
+
+[Scopus (39)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_38_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85115319534)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Reliance+on+science+by+inventors%3A+Hybrid+extraction+of+in-text+patent-to-article+citations&author=M.+Marx&author=A.+Fuegi&publication_year=2022&pages=369-392&doi=10.1111%2Fjems.12455)
+
+[39\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref37-1 "View in article")
+
+Marx, M. ∙ Fuegi, A.
+
+**Reliance on science: Worldwide front-page patent citations to scientific articles**
+
+*Strateg. Manag. J.* 2020; **41**:1572-1594
+
+[Crossref](https://doi.org/10.1002/smj.3145)
+
+[Scopus (112)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_39_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85083447725)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Reliance+on+science%3A+Worldwide+front-page+patent+citations+to+scientific+articles&author=M.+Marx&author=A.+Fuegi&publication_year=2020&pages=1572-1594&doi=10.1002%2Fsmj.3145)
+
+[40\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref38-1 "View in article")
+
+Clayton, P. ∙ Lanahan, L. ∙ Nelson, A.
+
+**Dissecting diffusion: Tracing the plurality of factors that shape knowledge diffusion**
+
+*Res. Policy.* 2022; **51**, 104389
+
+[Crossref](https://doi.org/10.1016/j.respol.2021.104389)
+
+[Scopus (13)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_40_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85118256200)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Dissecting+diffusion%3A+Tracing+the+plurality+of+factors+that+shape+knowledge+diffusion&author=P.+Clayton&author=L.+Lanahan&author=A.+Nelson&publication_year=2022&doi=10.1016%2Fj.respol.2021.104389)
+
+[41\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref39 "View in article")
+
+SBA
+
+**Small Businesses Generate 44 Percent of U.S. Economic Activity – SBA’s Office of Advocacy**
+
+2019
+
+<https://advocacy.sba.gov/2019/01/30/small-businesses-generate-44-percent-of-u-s-economic-activity/>
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Small+Businesses+Generate+44+Percent+of+U.S.+Economic+Activity%C2%A0%E2%80%93+SBA%E2%80%99s+Office+of+Advocacy&author=&publication_year=2019)
+
+[42\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref40 "View in article")
+
+European Commission
+
+**An SME Strategy for a Sustainable and Digital Europe**
+
+2020
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=An+SME+Strategy+for+a+Sustainable+and+Digital+Europe&author=&publication_year=2020)
+
+[43\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref41 "View in article")
+
+de Rassenfosse, G.
+
+**How SMEs exploit their intellectual property assets: Evidence from survey data**
+
+*Small Bus. Econ.* 2012; **39**:437-452
+
+[Crossref](https://doi.org/10.1007/S11187-010-9313-4/TABLES/6)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=How+SMEs+exploit+their+intellectual+property+assets%3A+Evidence+from+survey+data&author=G.+de+Rassenfosse&publication_year=2012&pages=437-452&doi=10.1007%2FS11187-010-9313-4%2FTABLES%2F6)
+
+[44\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref42 "View in article")
+
+Bryan, K. ∙ Guzman, J.
+
+**Entrepreneurial Migration**
+
+*SSRN J.* 2021;
+
+26483
+
+[Crossref](https://doi.org/10.2139/ssrn.3914010)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Entrepreneurial+Migration&author=K.+Bryan&author=J.+Guzman&publication_year=2021&doi=10.2139%2Fssrn.3914010)
+
+[45\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref43 "View in article")
+
+Azoulay, P. ∙ Graff Zivin, J.S. ∙ Sampat, B.N.
+
+**The Diffusion of Scientific Knowledge across Time and Space**
+
+**The Rate and Direction of Inventive Activity Revisited**
+
+University of Chicago Press, 2012; 107-155
+
+[Crossref](https://doi.org/10.7208/chicago/9780226473062.003.0006)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=The+Diffusion+of+Scientific+Knowledge+across+Time+and+Space&author=P.+Azoulay&author=J.S.+Graff+Zivin&author=B.N.+Sampat&publication_year=2012&pages=107-155&doi=10.7208%2Fchicago%2F9780226473062.003.0006)
+
+[46\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref4 "View in article")
+
+de Rassenfosse, G. ∙ Mages, A. ∙ Shultz, C. ...
+
+**Notice failure revisited: Evidence on the use of virtual patent marking**
+
+*Nber working.* 2018;
+
+paper:1–21, working paper number: 24288 <https://www.nber.org/papers/w24288>
+
+[Crossref](https://doi.org/10.3386/W24288)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Notice+failure+revisited%3A+Evidence+on+the+use+of+virtual+patent+marking&author=G.+de+Rassenfosse&author=A.+Mages&author=C.+Shultz&author=P.+Wadsworth&author=R.+Waldron&author=J.J.+Barnett&author=E.+Brant&author=D.+Claeys&author=J.+Karshtedt&author=A.+Kesan&publication_year=2018&doi=10.3386%2FW24288)
+
+[47\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref45 "View in article")
+
+Probst, B. ∙ Touboul, S. ∙ Glachant, M. ...
+
+**Global trends in the invention and diffusion of climate change mitigation technologies**
+
+*Nat. Energy.* 2021; **6**:1077-1086
+
+[Crossref](https://doi.org/10.1038/s41560-021-00931-5)
+
+[Scopus (66)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_47_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85119685331)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=Global+trends+in+the+invention+and+diffusion+of+climate+change+mitigation+technologies&author=B.+Probst&author=S.+Touboul&author=M.+Glachant&author=A.+Dechezlepr%C3%AAtre&publication_year=2021&pages=1077-1086&doi=10.1038%2Fs41560-021-00931-5)
+
+[48\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref48 "View in article")
+
+Bryan, K.A. ∙ Ozcan, Y. ∙ Sampat, B.
+
+**In-text patent citations: A user’s guide**
+
+*Res. Policy.* 2020; **49**, 103946
+
+[Crossref](https://doi.org/10.1016/J.RESPOL.2020.103946)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=In-text+patent+citations%3A+A+user%E2%80%99s+guide&author=K.A.+Bryan&author=Y.+Ozcan&author=B.+Sampat&publication_year=2020&doi=10.1016%2FJ.RESPOL.2020.103946)
+
+[49\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref51 "View in article")
+
+Baker, A.C. ∙ Larcker, D.F. ∙ Wang, C.C.
+
+**How much should we trust staggered difference-in-differences estimates?**
+
+*J. Financ. Econ.* 2022; **144**:370-395
+
+[Crossref](https://doi.org/10.1016/J.JFINECO.2022.01.004)
+
+[Scopus (0)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_49_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85124651167)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=How+much+should+we+trust+staggered+difference-in-differences+estimates%3F&author=A.C.+Baker&author=D.F.+Larcker&author=C.C.+Wang&publication_year=2022&pages=370-395&doi=10.1016%2FJ.JFINECO.2022.01.004)
+
+[50\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref49 "View in article")
+
+Rambachan, A. ∙ Roth, J.
+
+**A More Credible Approach to Parallel Trends**
+
+*Rev. Econ. Stud.* 2023; **664**:1745303
+
+[Crossref](https://doi.org/10.1093/restud/rdad018)
+
+[Scopus (349)](https://www.cell.com/servlet/linkout?suffix=e_1_5_1_2_50_2&dbid=137438953472&doi=10.1016%2Fj.isci.2023.107740&key=2-s2.0-85172660545)
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=A+More+Credible+Approach+to+Parallel+Trends&author=A.+Rambachan&author=J.+Roth&publication_year=2023&pages=1745303&doi=10.1093%2Frestud%2Frdad018)
+
+[51\.](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#body-ref-sref50-1 "View in article")
+
+Rios-Avila, F. ∙ Sant’Anna, P. ∙ Naqvi, S.A.A.
+
+**DRDID: Stata module for the estimation of doubly robust difference-in-difference models**
+
+<https://friosavila.github.io/playingwithstata/main_drdid.html>
+
+Date: 2022
+
+[Google Scholar](https://scholar.google.com/scholar_lookup?title=DRDID%3A+Stata+module+for+the+estimation+of+doubly+robust+difference-in-difference+models&author=F.+Rios-Avila&author=P.+Sant%E2%80%99Anna&author=S.A.A.+Naqvi&publication_year=2022)
+
+## Figures (4)
+
+[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/da39232c-2d03-48cf-a023-7d7a162109cc/main.assets/gr1.jpg)](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig1)[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/f5e82f15-966e-408d-a54f-de3224d2e0be/main.assets/gr2.jpg)](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig2)[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/88bf2ad0-b375-4a01-94bf-fabda2d3d34d/main.assets/gr3.jpg)](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig3)[![](https://www.cell.com/cms/10.1016/j.isci.2023.107740/asset/e6de4482-e908-404e-aa0f-37275c0109cb/main.assets/gr4.jpg)](https://www.cell.com/iscience/fulltext/S2589-0042(23)01817-5#fig4)
+
+## Article metrics
+
+* 16
+
+    Citations
+
+* 25
+
+    Captures
+
+* 2
+
+    Mentions
+
+![Plum X logo](https://www.cell.com/products/marlin/releasedAssets/images/plumx-logo.png)
+
+[View details opens in a new tab](https://plu.mx/plum/a/?doi=10.1016/j.isci.2023.107740&theme=plum-jbs-theme&hideUsage=true)
+
+## Supplemental information (1)
+
+[PDF (539.34 KB)](https://www.cell.com/cms/10.1016/j.isci.2023.107740/attachment/07547311-2fe0-4b78-ad09-e8ba8cee0a71/mmc1.pdf)
+
+Document S1. Figures S1–S4 and Tables S1–S11
+
+## Related Articles
+
+[![Send your pre-submission inquiry](https://no-cache.hubspot.com/cta/default/519224/e8053dae-be17-414b-8da9-a3d69c7bd6b0.png)](https://cta-redirect.hubspot.com/cta/redirect/519224/e8053dae-be17-414b-8da9-a3d69c7bd6b0)
+
+![Advertisement](https://www.cell.com/templates/jsp/_style2/_marlin/images/bg_adVert.gif)
+
+![Advertisement](https://www.cell.com/templates/jsp/_style2/_marlin/images/bg_adHoriz.gif)
+
+## Life & medical sciences journals
+
+* [Cell](https://www.cell.com/cell/home)
+* [Cancer Cell](https://www.cell.com/cancer-cell/home)
+* [Cell Chemical Biology](https://www.cell.com/cell-chemical-biology)
+* [Cell Genomics](https://www.cell.com/cell-genomics/home)
+* [Cell Host & Microbe](https://www.cell.com/cell-host-microbe/home)
+* [Cell Metabolism](https://www.cell.com/cell-metabolism/home)
+* [Cell Reports](https://www.cell.com/cell-reports/home)
+* [Cell Reports Medicine](https://www.cell.com/cell-reports-medicine/home)
+* [Cell Stem Cell](https://www.cell.com/cell-stem-cell/home)
+* [Cell Systems](https://www.cell.com/cell-systems/home)
+* [Current Biology](https://www.cell.com/current-biology/home)
+* [Developmental Cell](https://www.cell.com/developmental-cell/home)
+* [Immunity](https://www.cell.com/immunity/home)
+* [Med](https://www.cell.com/med/home)
+* [Molecular Cell](https://www.cell.com/molecular-cell/home)
+* [Neuron](https://www.cell.com/neuron/home)
+* [Structure](https://www.cell.com/structure/home)
+* [American Journal of Human Genetics (*partner*)](https://www.cell.com/ajhg/home)
+* [Biophysical Journal (*partner*)](https://www.cell.com/biophysj/home)
+* [Biophysical Reports (*partner*)](https://www.cell.com/biophysreports/home)
+* [Human Genetics and Genomics Advances (*partner*)](https://www.cell.com/hgg-advances/home)
+* [Molecular Plant (*partner*)](https://www.cell.com/molecular-plant/home)
+* [Molecular Therapy (*partner*)](https://www.cell.com/molecular-therapy-family/molecular-therapy/home)
+* [Molecular Therapy Advances (*partner*)](https://www.cell.com/molecular-therapy-family/advances/home)
+* [Molecular Therapy Nucleic Acids (*partner*)](https://www.cell.com/molecular-therapy-family/nucleic-acids/home)
+* [Molecular Therapy Oncology (*partner*)](https://www.cell.com/molecular-therapy-family/oncology/home)
+* [Plant Communications (*partner*)](https://www.cell.com/plant-communications/home)
+* [Stem Cell Reports (*partner*)](https://www.cell.com/stem-cell-reports/home)
+* [Trends in Biochemical Sciences](https://www.cell.com/trends/biochemical-sciences/home)
+* 
+* [Trends in Cancer](https://www.cell.com/trends/cancer/home)
+* [Trends in Cell Biology](https://www.cell.com/trends/cell-biology/home)
+* [Trends in Ecology & Evolution](https://www.cell.com/trends/ecology-evolution/home)
+* [Trends in Endocrinology & Metabolism](https://www.cell.com/trends/endocrinology-metabolism/home)
+* [Trends in Genetics](https://www.cell.com/trends/genetics/home)
+* [Trends in Immunology](https://www.cell.com/trends/immunology/home)
+* [Trends in Microbiology](https://www.cell.com/trends/microbiology/home)
+* [Trends in Molecular Medicine](https://www.cell.com/trends/molecular-medicine/home)
+* [Trends in Neurosciences](https://www.cell.com/trends/neurosciences/home)
+* [Trends in Parasitology](https://www.cell.com/trends/parasitology/home)
+* [Trends in Pharmacological Sciences](https://www.cell.com/trends/pharmacological-sciences/home)
+* [Trends in Plant Science](https://www.cell.com/trends/plant-science/home)
+
+## Physical sciences & engineering journals
+
+* [Cell Biomaterials](https://www.cell.com/cell-biomaterials/home)
+* [Cell Reports Physical Science](https://www.cell.com/cell-reports-physical-science/home)
+* [Chem](https://www.cell.com/chem/home)
+* [Chem Catalysis](https://www.cell.com/chem-catalysis/home)
+* [Chem Circularity](https://www.cell.com/chem-circularity/home)
+* [Device](https://www.cell.com/device/home)
+* [Joule](https://www.cell.com/joule/home)
+* [Matter](https://www.cell.com/matter/home)
+* [Matter & Light](https://www.cell.com/matter-light/home)
+* [Newton](https://www.cell.com/newton/home)
+* [Trends in Chemistry](https://www.cell.com/trends/chemistry/home)
+
+## Multidisciplinary journals
+
+* [Cell Press Blue](https://www.cell.com/cell-press-blue/home)
+* [Cell Reports Methods](https://www.cell.com/cell-reports-methods/home)
+* [Cell Reports Sustainability](https://www.cell.com/cell-reports-sustainability/home)
+* [Heliyon](https://www.cell.com/heliyon/home)
+* [iScience](https://www.cell.com/iscience/home)
+* [One Earth](https://www.cell.com/one-earth/home)
+* [Patterns](https://www.cell.com/patterns/home)
+* [STAR Protocols](https://www.cell.com/star-protocols/home)
+* [Nexus (*partner*)](https://www.cell.com/nexus/home)
+* [The Innovation (*partner*)](https://www.cell.com/the-innovation/home)
+* [Trends in Biotechnology](https://www.cell.com/trends/biotechnology/home)
+* [Trends in Cognitive Sciences](https://www.cell.com/trends/cognitive-sciences/home)
+* [Trends Open](https://www.cell.com/trends-open/home)
+
+## Authors
+
+* [Submit article](https://www.cell.com/submit-to-cell-press)
+* [Multi-Journal Submission](https://www.cell.com/multi-journal-submission)
+* [STAR Methods](https://www.cell.com/information-for-authors/star-authors-guide)
+* [Sneak Peek – Preprints](https://www.cell.com/sneakpeek)
+*
+
+## Reviewers
+
+* [Information for reviewers](https://www.cell.com/reviewers)
+*
+
+## News & events
+
+* [Newsroom](https://www.cell.com/newsroom)
+* [Events](https://www.cell.com/events)
+* [Cell Press Symposia](https://www.cell.com/symposia)
+* [Consortia Hub](https://www.cell.com/consortia)
+* [Webinars](https://www.cell.com/webinars)
+*
+
+## About
+
+* [About Cell Press](https://www.cell.com/about)
+* [Open access](https://www.cell.com/open-access)
+* [COVID Hub](https://www.cell.com/covid-19)
+* [Sustainability hub](https://www.cell.com/sustainability)
+* [Inclusion](https://www.cell.com/inclusion)
+*
+
+## Careers
+
+* [Cell Press Careers](https://relx.wd3.myworkdayjobs.com/en-US/ElsevierJobs)
+
+## Access
+
+* [Subscribe](https://www.cell.com/subscribe)
+* [Claim](https://www.cell.com/activate)
+* [Read-It-Now](https://www.cell.com/read-it-now)
+* [Recommend to Librarian](http://info.cell.com/request-access-to-cell-press-content)
+* [Publication Alerts](https://www.cell.com/action/showPreferences?menuTab=Alerts)
+
+## Collections
+
+* [Best of Cell Press](https://www.cell.com/bestof)
+* [Cell Press Reviews](https://www.cell.com/reviews)
+
+## Information
+
+* [For Librarians](https://www.elsevier.com/products/sciencedirect/journals/direct-subscription-journals)
+
+---
+
+**The content on this site is intended for healthcare professionals and researchers across all fields of science.**
+
+---
+
+All content on this site: Copyright © 2026 Elsevier Inc., its licensors, and contributors.   
+All rights are reserved, including those for text and data mining, AI training, and similar technologies.   
+For all open access content, the relevant licensing terms apply.
+
+[Privacy Policy](https://www.elsevier.com/legal/privacy-policy) [Terms & Conditions](https://www.elsevier.com/legal/elsevier-website-terms-and-conditions) [Accessibility](https://www.cell.com/accessibility) [Help & Support](https://www.elsevier.support/cell-press) [Contact](https://www.cell.com/contact) [Responsible AI](https://www.elsevier.com/about/responsible-ai)
+
+[![RELX](https://www.cell.com/pb/assets/raw/Health%20Advance/images/relx-1554393210983.png)](https://www.relx.com)
+
