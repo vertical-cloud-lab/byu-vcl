@@ -1,0 +1,83 @@
+{
+ "note": "Related prompts and comments in vertical-cloud-lab/digital-alloy-lab (DAL), each with a 5-7 word label. Hand-picked: Sterling's DAL prompts that fed the vertical-lab build-up or asked for the same kind of 3-D work, then the DAL threads the visualization drew on. fetch.py checks each link and adds its author and date.",
+ "groups": [
+  {
+   "title": "Sterling's DAL prompts that fed the vertical lab or asked for the same 3-D work",
+   "links": [
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/152#issuecomment-6353386742", "label": "Charge-cup machining as annotated 3-D GIFs"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/152#issuecomment-6353386951", "label": "Slower animations, and fix the lid intersection"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/147#issuecomment-6353380981", "label": "Plate position: laser fixture and viewport camera"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159#issuecomment-6353393208", "label": "Measure the ultrasonic stack for the model"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/117#issuecomment-6238882124", "label": "Use the CubXL for ONR electrochemistry"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/189#issuecomment-6355106779", "label": "Re-render the camera CAD, with assembly animation"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175#issuecomment-6356758620", "label": "Sieving animation critique: collisions, no pour"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/212", "label": "ONR figure from the 3-D atomizer sequence"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180#issuecomment-6461768945", "label": "Keyframe reel of the copper corrosion screen"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180#issuecomment-6464142493", "label": "Add EIS to the corrosion animation"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/219#issuecomment-6485744205", "label": "Copper run review: BN, ultrasonics, Edison"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/185#issuecomment-6613618101", "label": "Automation-friendly glovebox designed for the VLM"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/243#issuecomment-6753119249", "label": "Map the M2 pilot as 3-D animation"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180#issuecomment-6753391753", "label": "Animate building the CubXL corrosion rig"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/250", "label": "Wire and shot instead of machined cups"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/266#issuecomment-6960904649", "label": "Desktop LPBF laid out horizontally, as #318"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/243#issuecomment-6987397501", "label": "Animate printing, sectioning, prep and imaging"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/126#issuecomment-7022886893", "label": "Where to mount the Class D unit"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/266#issuecomment-7050992244", "label": "Align the UR12e checks with PR 318"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/276", "label": "Digital twin of the FLAIME manufacturing network"}
+   ]
+  },
+  {
+   "title": "The proposals and plans the lab is built for",
+   "links": [
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/9", "label": "NSF EAGER idea: a vertical cloud lab"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/10", "label": "EAGER reframed as a print-farm testbed"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/117", "label": "ONR YIP proposal: copper alloys by DED"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/tree/consolidation-2", "label": "Genesis Mission FLAIME proposal: aluminium alloys", "author": "sgbaird", "date": "2026-11-13T22:17:51Z"}
+   ]
+  },
+  {
+   "title": "The atomizer: runs, footage, cameras and crucible",
+   "links": [
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/152", "label": "High-purity Al rod, cups and plugs"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/157", "label": "Atomized powder lots and their SEM images"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159", "label": "Al runs for repeatability, with lot photos"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/162", "label": "Sourcing high-purity copper and copper alloys"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/219", "label": "Copper run, and the 400 cm³ crucible"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/220", "label": "Copper run plan in a BN-coated crucible"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/189", "label": "rePowder viewport and melt-stream camera units"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/173", "label": "Atomizer installation and training videos, compiled"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/178", "label": "Consolidated atomizer SOP, equipment and waste"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/216", "label": "Stream-camera view and the atomizer render sequence"}
+   ]
+  },
+  {
+   "title": "Charge cups, pressing, sieving and powder checks",
+   "links": [
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/140", "label": "Vacuum hydraulic press to avoid explosions"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/172", "label": "Charge design checked, every size stock"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/179", "label": "Preparing the Al charge cups and plugs"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175", "label": "Sieve order: No. 60 and 20–63 µm"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/234", "label": "Standard practice for cleaning the sieves"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/225", "label": "NAB powder size and shape from SEM"}
+   ]
+  },
+  {
+   "title": "The CubXL corrosion station on tray A",
+   "links": [
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180", "label": "Corroding our own alloys on the CubXL"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180#issuecomment-6464147350", "label": "The CubXL copper deck the tray follows"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/264", "label": "Building and troubleshooting the CubXL corrosion setup"}
+   ]
+  },
+  {
+   "title": "Safety, enclosures and the room",
+   "links": [
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/126", "label": "Class D extinguishers for metal powders"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/130", "label": "Gloveboxes: options and a supplier's advice"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/185", "label": "Glovebox procurement research for powder handling"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/150", "label": "AirGradient monitor for the powder enclosure"},
+    {"url": "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/186", "label": "Nilfisk explosion-proof vacuum accessories and SOP"}
+   ]
+  }
+ ]
+}
