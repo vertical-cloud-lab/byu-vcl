@@ -319,7 +319,7 @@ def curve_of(c: dict) -> list:
 
 
 def facility_key(f: str) -> str:
-    return "conventional" if f in ("proposed", "conventional") else "vertical_lab"
+    return "conventional" if f in ("proposed", "conventional", "dal256") else "vertical_lab"
 
 
 def items(facility: str) -> list[Item]:

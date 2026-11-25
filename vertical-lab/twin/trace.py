@@ -116,8 +116,72 @@ def step_of(campaign, node, station, what):
 
 # ------------------------------------------------------------------------------------------------- literature steps
 # Where a campaign would run a literature search, and the Edison result already posted in DAL that answers it (no new
-# query is sent). Filled from DAL's Edison artifacts; see the README for each one's question and link.
-LITERATURE: dict = {}
+# query is sent, so the step takes no lab time). Each is keyed by the decision it informs and fires at its trigger:
+# "start" (day 0, before the first proposal), "first_new_element" (the first accepted design with one of ``elements``),
+# "first_result" (the first ``result``: build, test, screen or immersion) or "first_promotion" (the first part sent on
+# to the dear step). From DAL's committed Edison answers (paths at their commits).
+_D = "https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/"
+LITERATURE: dict = {
+    "flaime_al": {
+        "the design box: each element's cap": dict(
+            when="start", question="Conservative and non-conservative wt% bounds for Al plus 15 solutes in an LPBF "
+                                   "BOFN space", dal211="p1",
+            edison=_D + "115a99ab2c6dbca50ff94b63738014847e7b5d9d/edison-trajectories/element-bounds/"
+                        "01_simultaneous_all_bounds.md"),
+        "the seed set: how many seeds, which kinds": dict(
+            when="start", question="Critically review a seeding plan (baselines, agent picks, space-filling) for a "
+                                   "BOFN LPBF aluminium campaign (DAL #275 q1)",
+            edison=_D + "ce394072f58aaedbbd72c688cbf597ac09cb6303/bofn-seeding/edison/q1-seeding-strategy/answer.md"),
+        "the seed alloys: crack-free Sc-free baselines and data for each node": dict(
+            when="start", question="Which crack-free Sc-free or Sc-lean LPBF Al alloys should be seeds, and which "
+                                   "datasets can seed each BOFN stage (DAL #275 q2)",
+            edison=_D + "ce394072f58aaedbbd72c688cbf597ac09cb6303/bofn-seeding/edison/q2-seed-alloys-and-data/"
+                        "answer.md"),
+        "the charge: powder in 6063 cups for the rePOWDER": dict(
+            when="start", question="Critically check a powder-in-6063-cup charge design for the AMAZEMET rePOWDER "
+                                   "(crucible, Si dissolution, vent, BN, oxygen pickup) (DAL #222)", dal211="p2",
+            edison=_D + "14d236c258fa11284420a054c2192d83feb57149/outputs/issue-222-edison-doublecheck/"
+                        "literature_answer.md"),
+        "the mineral-lean target": dict(
+            when="start", question="Is FLAIME's mineral-lean discovery-yield KPI realistic and well defined?",
+            edison=_D + "535d3dda4cd244e770ffdfe4d505a30437fb277e/edison-trajectories/"
+                        "edison-kpi1-discovery_yield-review.md"),
+        "a nucleant against hot cracking (Zr, Sc, Er, Ti)": dict(
+            when="first_new_element", elements=["Zr", "Sc", "Er", "Ti"],
+            question="Quantitative LPBF solidification-cracking data for Al alloys, the widest crack-free windows and "
+                     "the most effective grain refiners (TiB2, TiC, ZrH2, Sc/Zr)", dal211="p1",
+            edison=_D + "535d3dda4cd244e770ffdfe4d505a30437fb277e/edison-trajectories/pareto-am-al-alloys/"
+                        "batch3_process_property.md"),
+        "the print's process window": dict(
+            when="first_result", result="build",
+            question="LPBF parameter windows (power, speed, hatch, layer, VED) giving > 99.5 % density for AlSi10Mg, "
+                     "Scalmalloy, Al-Cu and Al-Zn-Mg-Cu",
+            edison=_D + "535d3dda4cd244e770ffdfe4d505a30437fb277e/edison-trajectories/pareto-am-al-alloys/"
+                        "batch3_process_property.md"),
+        "powder reuse: how many builds a lot can serve": dict(
+            when="first_result", result="build",
+            question="Required LPBF aluminium powder characteristics and the quantitative effects of powder reuse",
+            edison=_D + "535d3dda4cd244e770ffdfe4d505a30437fb277e/edison-trajectories/pareto-am-al-alloys/"
+                        "batch3_process_property.md"),
+        "the strength-ductility bar for bars": dict(
+            when="first_promotion",
+            question="Ranking of AM aluminium alloy systems by simultaneous strength and ductility", dal211="t1",
+            edison=_D + "535d3dda4cd244e770ffdfe4d505a30437fb277e/edison-trajectories/pareto-am-al-alloys/"
+                        "batch1_core_mechanical.md"),
+    },
+    "onr_cu": {
+        "the design box: the Cu-Ni and NAB palette and its bounds": dict(
+            when="start", question="Which elements and wt% bounds should the copper DED palette (Cu-Ni and NAB "
+                                   "families) use, with multi-element constraints?", dal211="p1",
+            edison=_D + "d1ca727fb37fa044cbcf78c420e17aa1ac827bc5/edison-trajectories/cu-ded-elements-2026-10/"
+                        "phase1/joint-shortlist.md"),
+        "the atomizer's temperature limit for copper": dict(
+            when="start", question="What is the AMAZEMET rePOWDER induction module's real maximum temperature, and "
+                                   "which alloys can it atomize?", dal211="p3",
+            edison=_D + "535d3dda4cd244e770ffdfe4d505a30437fb277e/edison-trajectories/"
+                        "ultrasonic-atomization-temperature-assessment.md"),
+    },
+}
 
 
 # ------------------------------------------------------------------------------------------------------ outcomes
@@ -317,8 +381,11 @@ def build(tw, cfg: dict, run_id: str, seeds: dict | None = None) -> dict:
         elif e["what"] == "print" and e["station"] == "utah_midi" and sid in samples:
             S = samples[sid]
             outcome = "ABANDONED" if S["status"] == "ABANDONED" else "COMPLETED"
-            detail = f"{S['sound_cubes']} of {S['cubes']} cubes sound" + (f"; {S['detail']}" if outcome == "ABANDONED"
-                                                                         else "")
+            if "sound_cubes" in S:
+                detail = f"{S['sound_cubes']} of {S['cubes']} cubes sound" + (
+                    f"; {S['detail']}" if outcome == "ABANDONED" else "")
+            else:                                # printed, but its cubes were not measured by the horizon
+                detail = S.get("detail")
         elif e["what"] in ("blend_ded", "blown_small", "blown_large") and e["station"] == "utah_mxlab" and sid in samples:
             S = samples[sid]
             outcome = "ABANDONED" if S["status"] == "ABANDONED" else "COMPLETED"

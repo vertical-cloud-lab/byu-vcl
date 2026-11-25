@@ -62,7 +62,7 @@ def step_at(curves, xs, col):
 
 def band(ax, xs, Y, color, label, ls="-", lw=2.0, end_label=True):
     m = np.nanmean(Y, 0)
-    se = np.nanstd(Y, 0) / max(math.sqrt(len(Y)), 1)
+    se = np.nanstd(Y, 0, ddof=1) / math.sqrt(len(Y)) if len(Y) > 1 else np.zeros(Y.shape[1])
     ax.fill_between(xs, m - se, m + se, color=color, alpha=0.12, lw=0)
     ax.plot(xs, m, color=color, lw=lw, ls=ls, label=label)
     if end_label:
@@ -89,7 +89,17 @@ def _groups(S, exp):
     return S["experiments"].get(exp, {})
 
 
-def best_vs(S, col, fname, xlabel, xmax_by_camp, exp="main", pols=None, log=False):
+def _find(E, policy, facility="vertical_lab"):
+    """The group of an experiment with this policy and facility (group keys carry the run's options, e.g.
+    proposed_bofn_stock-lean)."""
+    for g in E.values():
+        if g["policy"] == policy and g["facility"] == facility:
+            return g
+    return None
+
+
+def best_vs(S, col, fname, xlabel, xmax_by_camp, exp="main", pols=None, log=False, title=None,
+            facility="vertical_lab"):
     plt = _style()
     E = _groups(S, exp)
     fig, axs = plt.subplots(1, 2, figsize=(12.5, 4.6))
@@ -99,7 +109,7 @@ def best_vs(S, col, fname, xlabel, xmax_by_camp, exp="main", pols=None, log=Fals
         for key, _, colr in POL:
             if pols and key not in pols:
                 continue
-            g = E.get(f"vertical_lab_{key}")
+            g = _find(E, key, facility)
             if not g:
                 continue
             Y = step_at(g["campaigns"][camp]["curves"], xs, col)
@@ -119,7 +129,7 @@ def best_vs(S, col, fname, xlabel, xmax_by_camp, exp="main", pols=None, log=Fals
             ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f"${v / 1000:.0f}k"))
     h, l = axs[0].get_legend_handles_labels()
     fig.legend(h, l, loc="lower center", ncol=4, fontsize=8.5)
-    fig.suptitle("The vertical lab, one year, both campaigns at once: each policy's best new alloy "
+    fig.suptitle(title or "The vertical lab, one year, both campaigns at once: each policy's best new alloy "
                  "(mean ± SE over seeds)", x=0.01, ha="left", fontsize=11, color=INK)
     fig.tight_layout(rect=(0, 0.1, 1, 1))
     FIG.mkdir(parents=True, exist_ok=True)
@@ -135,7 +145,7 @@ def vertical_vs_conventional(S, fname="twin2_vertical_vs_conventional.png"):
     for ax, camp in zip(axs, ("flaime_al", "onr_cu")):
         for key in ("bofn", "heuristic", "sobol", "tiered"):
             for fac, E, ls in (("vertical_lab", main, "-"), ("proposed", conv, "--")):
-                g = E.get(f"{fac}_{key}")
+                g = _find(E, key, fac)
                 if not g:
                     continue
                 Y = step_at(g["campaigns"][camp]["curves"], xs, 0)
@@ -228,6 +238,79 @@ def dots(S, items, fname, title):
     plt.close(fig)
 
 
+def seeded(S, fname="twin2_seeded_best_vs_days.png"):
+    """Best new alloy so far against simulated days for BOFN, standard BO (GP-BO) and random, every policy from DAL
+    #275's common seed set: the vertical lab (top) and DAL's own lab on DAL #256's schedule (bottom)."""
+    plt = _style()
+    rows = [("seeded", "vertical_lab", "the vertical lab (PR 318), stocked"),
+            ("seeded_dal256", "dal256", "DAL's lab on DAL #256's schedule, ordering as it goes")]
+    rows = [r for r in rows if r[0] in S["experiments"]]
+    if not rows:
+        return
+    fig, axs = plt.subplots(len(rows), 2, figsize=(12.5, 4.3 * len(rows)), squeeze=False)
+    xs = np.linspace(0, 365, 366)
+    for i, (exp, fac, lab) in enumerate(rows):
+        E = _groups(S, exp)
+        for j, camp in enumerate(("flaime_al", "onr_cu")):
+            ax = axs[i][j]
+            for key in ("bofn", "gpbo", "random"):
+                g = _find(E, key, fac)
+                if not g:
+                    continue
+                Y = step_at(g["campaigns"][camp]["curves"], xs, 0)
+                band(ax, xs, Y, COL[key], f"{LAB[key]} (n={g['n']})")
+            ax.axhline(S["targets"]["T1"][camp], color=INK2, lw=1, ls=":")
+            ax.text(0.99, S["targets"]["T1"][camp], "state of the art ", va="bottom", ha="right", fontsize=8,
+                    color=INK2, transform=ax.get_yaxis_transform(), bbox=dict(fc="white", ec="none", alpha=0.8, pad=1))
+            end_labels(ax)
+            ax.set_title(f"{CAMP[camp]}: {lab}", loc="left", fontsize=9.5)
+            ax.set_xlabel("simulated days from the start")
+            ax.set_ylabel("best new alloy so far (true utility)")
+            ax.set_ylim(0, 0.9)
+            ax.set_xlim(0, 380)
+    h, l = axs[0][0].get_legend_handles_labels()
+    fig.legend(h, [x.split(" (n=")[0] for x in l], loc="lower center", ncol=3, fontsize=9)
+    fig.suptitle("Every policy from DAL #275's common seed set: best new alloy so far against simulated days "
+                 "(mean ± SE over seeds)", x=0.01, ha="left", fontsize=11)
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.savefig(FIG / fname)
+    plt.close(fig)
+
+
+def cu_hidden(S, fname="twin2_cu_hidden.png"):
+    """Copper with and without the effect the CALPHAD screen cannot see: each policy's best new alloy, mean ± SE."""
+    plt = _style()
+    if "cu_hidden" not in S["experiments"]:
+        return
+    main, hid = _groups(S, "main"), _groups(S, "cu_hidden")
+    pols = [k for k, _, _ in POL if _find(hid, k)]
+    fig, axs = plt.subplots(1, 2, figsize=(12.5, 0.5 * len(pols) + 1.8), sharey=True)
+    for ax, camp in zip(axs, ("onr_cu", "flaime_al")):
+        for i, k in enumerate(pols):
+            for E, mk, dy, lab in ((main, "o", -0.15, "as run"), (hid, "s", 0.15, "hidden gamma-2")):
+                g = _find(E, k)
+                if not g:
+                    continue
+                c = g["campaigns"][camp]
+                ax.errorbar(c["best_mean"], i + dy, xerr=c["best_se"], fmt=mk, color=COL[k], ms=6, capsize=3,
+                            lw=1.4, mfc=COL[k] if mk == "s" else "white")
+                ax.text(c["best_mean"] + c["best_se"] + 0.01, i + dy, f"{c['best_mean']:.2f}", va="center",
+                        fontsize=7.5, color=INK)
+        ax.axvline(S["targets"]["T1"][camp], color=INK2, lw=1, ls=":")
+        ax.set_xlim(0, 1.0)
+        ax.set_title(CAMP[camp] + (": the test" if camp == "onr_cu" else ": unchanged truth, shares the lab"),
+                     loc="left")
+        ax.set_xlabel("best new alloy in the year (true utility), mean ± SE")
+    axs[0].set_yticks(range(len(pols)))
+    axs[0].set_yticklabels([LAB[k] for k in pols], fontsize=8.5)
+    axs[0].invert_yaxis()
+    fig.suptitle("Copper with an effect the CALPHAD screen cannot see (gamma-2 above Al = 8.2 + Ni/2): open circles "
+                 "as run, filled squares with the effect", x=0.01, ha="left", fontsize=10.5)
+    fig.tight_layout()
+    fig.savefig(FIG / fname)
+    plt.close(fig)
+
+
 def table(S) -> str:
     out = []
     for exp, E in S["experiments"].items():
@@ -261,6 +344,8 @@ def main():
     if "conventional" in S["experiments"]:
         vertical_vs_conventional(S)
         time_to_target(S)
+    cu_hidden(S)
+    seeded(S)
     items = []
     for k in ("bofn", "bofn_blend", "heuristic", "gpbo"):
         items.append((f"{LAB[k]}: as run", "main", f"vertical_lab_{k}"))
