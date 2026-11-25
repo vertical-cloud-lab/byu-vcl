@@ -57,5 +57,20 @@
    "fundamentals_snapshot.csv"
   ],
   "query": "The attached INVESTOR_MEMO.md was written by an AI agent (Claude) as a deliberately less-biased investor's view, after an earlier round of research for a university lab that favours open science. The memo comes with its pre-registration (PREREGISTRATION.md), an audit of the earlier round's bias (BIAS_AUDIT.md), the evidence it relies on (ai_and_funding_evidence.md) and its data: offer prices and deal terms for 43 company listings with sources (cohort_listings_verified.csv), computed returns (h1_returns.csv, h1_summary.csv, h1_pme_by_company.csv) and a fundamentals snapshot (fundamentals_snapshot.csv). Act as an independent reviewer for an investment committee. (1) Say whether the memo now overcorrects toward a negative view of open-source and open-science investments, or still leans toward openness. Quote the specific sentences that are framed unfairly in either direction and suggest neutral wording. (2) Independently recompute the H1 comparison from the raw listing data: the value of $1 at the offer price at exit or today, relative to QQQ over the same window, for the open-source-origin and closed cohorts, with and without listing-year controls and sensitivity cases. Check the cohort rules for selection bias, including companies that may be misclassified or missing, and say whether the memo's conclusion ('no premium and no proven penalty') holds. (3) Check every number the memo states against the attached data and evidence, and list each error or unsupported claim. (4) Name the most important investor concerns the memo misses or underweights, especially for a university spin-out in autonomous alloy discovery, and any important evidence in favour of openness it leaves out. Be direct and specific."
+ },
+ "inv_redteam_round3": {
+  "job": "ANALYSIS",
+  "files": [
+   "INVESTOR_MEMO.md",
+   "BIAS_AUDIT.md",
+   "round2_review.md",
+   "round2_framing_edits.csv",
+   "h1_returns.csv",
+   "h1_summary.csv",
+   "h1_permutation.csv",
+   "fundamentals_summary.csv",
+   "cohort_listings_verified.csv"
+  ],
+  "query": "INVESTOR_MEMO.md is a revised investor memo on the risks of investing in open-source and open-science ventures, written by an AI agent (Claude) for a university lab that favours open science. Its previous draft was reviewed by an independent analyst (round2_review.md, with suggested wording edits in round2_framing_edits.csv), who found that the draft had overcorrected toward a negative view. The revision says it applied that review. Please give a short, direct assessment (under 900 words, no long report needed): (1) Is the revised memo now balanced, or does it still lean negative, or has it tipped toward favouring openness? Quote up to five remaining sentences that are unfair in either direction, with neutral replacements. (2) Were the round-2 corrections applied correctly? Check a sample of the numbers in the memo against h1_returns.csv, h1_summary.csv, h1_permutation.csv, fundamentals_summary.csv and cohort_listings_verified.csv, and list any remaining numerical errors. (3) In two or three sentences, what is the single most important thing an investor should take from this memo?"
  }
 }

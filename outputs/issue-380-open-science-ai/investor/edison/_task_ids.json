@@ -112,5 +112,33 @@
    "data_entry:5411f5d0-fe50-439b-b27d-d288b3e39213"
   ],
   "submitted_utc": "2026-11-25T01:33:06.181733+00:00"
+ },
+ "inv_redteam_round3": {
+  "task_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "INVESTOR_MEMO.md is a revised investor memo on the risks of investing in open-source and open-science ventures, written by an AI agent (Claude) for a university lab that favours open science. Its previous draft was reviewed by an independent analyst (round2_review.md, with suggested wording edits in round2_framing_edits.csv), who found that the draft had overcorrected toward a negative view. The revision says it applied that review. Please give a short, direct assessment (under 900 words, no long report needed): (1) Is the revised memo now balanced, or does it still lean negative, or has it tipped toward favouring openness? Quote up to five remaining sentences that are unfair in either direction, with neutral replacements. (2) Were the round-2 corrections applied correctly? Check a sample of the numbers in the memo against h1_returns.csv, h1_summary.csv, h1_permutation.csv, fundamentals_summary.csv and cohort_listings_verified.csv, and list any remaining numerical errors. (3) In two or three sentences, what is the single most important thing an investor should take from this memo?",
+  "files": [
+   "INVESTOR_MEMO.md",
+   "BIAS_AUDIT.md",
+   "round2_review.md",
+   "round2_framing_edits.csv",
+   "h1_returns.csv",
+   "h1_summary.csv",
+   "h1_permutation.csv",
+   "fundamentals_summary.csv",
+   "cohort_listings_verified.csv"
+  ],
+  "data_entries": [
+   "data_entry:d89cd929-1a3c-49d4-b101-f091843a9d06",
+   "data_entry:9a27a1ed-0698-4cba-bc5d-fae8f13b43e2",
+   "data_entry:0e3dfdc4-606c-4b4f-bb17-4a530343baf2",
+   "data_entry:fe582530-7158-41c4-8e97-b523423744e7",
+   "data_entry:77a213a9-6994-4f29-a7c8-f815a3c83476",
+   "data_entry:ce928126-512d-429b-ab18-5c46975fd6da",
+   "data_entry:8f93dad9-7cc7-4a40-95b1-34dafaf82fd7",
+   "data_entry:e3b3efe6-f9df-45ed-80cd-dbf36e6fa3dc",
+   "data_entry:b8b13b2d-3791-45cb-9a05-a1832f2ec0b8"
+  ],
+  "submitted_utc": "2026-11-25T02:27:42.405736+00:00"
  }
 }
