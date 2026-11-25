@@ -311,6 +311,41 @@ def cu_hidden(S, fname="twin2_cu_hidden.png"):
     plt.close(fig)
 
 
+def trace_weekly(fname="twin2_trace_weekly.png"):
+    """Atomizer runs a week in BOFN's traced year on each lab, against DAL #256's floor of three."""
+    plt = _style()
+    tdir = bench2.OUT / "trace"
+    rows = [(f, lab) for f, lab in (("vertical_lab_bofn_s0_seeding-dal275.json", "the vertical lab (PR 318)"),
+                                    ("dal256_bofn_s0_stock-lean_seeding-dal275.json",
+                                     "DAL's lab on DAL #256's schedule")) if (tdir / f).exists()]
+    if not rows:
+        return
+    fig, axs = plt.subplots(len(rows), 1, figsize=(12.5, 2.6 * len(rows) + 0.6), squeeze=False)
+    for ax, (f, lab) in zip(axs[:, 0], rows):
+        T = json.loads((tdir / f).read_text())
+        W = T["weekly"]["atomizer_runs"]
+        n = len(W["flaime_al"])
+        x = np.arange(n)
+        a, c = np.array(W["flaime_al"]), np.array(W["onr_cu"])
+        ax.bar(x, a, color=COL["bofn"], width=0.8, label="FLAIME (Al) runs")
+        ax.bar(x, c, bottom=a, color="#f47230", width=0.8, label="ONR (Cu) runs")
+        ax.axhline(3, color=INK2, lw=1, ls="--")
+        ax.text(n - 0.5, 3.15, "DAL #256: at least 3 a week", ha="right", va="bottom", fontsize=8, color=INK2,
+                bbox=dict(fc="white", ec="none", alpha=0.85, pad=1))
+        ax.set_ylim(0, max(6.0, float((a + c).max()) + 2.2))
+        below = len(T["weekly"]["weeks_below_3"])
+        ax.set_title(f"{lab}: {int(a.sum() + c.sum())} atomizer runs in the year; {below} of {n} weeks below 3",
+                     loc="left", fontsize=10)
+        ax.set_xlim(-0.8, n - 0.2)
+        ax.set_ylabel("runs that week")
+        ax.grid(False, axis="x")
+    axs[-1, 0].set_xlabel("week of the simulated year (BOFN, seed 0, DAL #275's common seeds)")
+    axs[0, 0].legend(loc="upper left", fontsize=8, ncol=2)
+    fig.tight_layout()
+    fig.savefig(FIG / fname)
+    plt.close(fig)
+
+
 def table(S) -> str:
     out = []
     for exp, E in S["experiments"].items():
@@ -346,6 +381,7 @@ def main():
         time_to_target(S)
     cu_hidden(S)
     seeded(S)
+    trace_weekly()
     items = []
     for k in ("bofn", "bofn_blend", "heuristic", "gpbo"):
         items.append((f"{LAB[k]}: as run", "main", f"vertical_lab_{k}"))
