@@ -77,6 +77,9 @@ EXPERIMENTS = {
     # copper: what separates the policies when money is not the limit
     "cu": [_cfg(p, s, cu_budget=180_000.0) for p in ("heuristic", "tiered", "gpbo", "bofn", "bofn_blend")
            for s in range(12)],
+    # the same for the two copper leaders only: does BOFN with blend screening catch the funnel with three times the
+    # copper money (more tested alloys to learn from)?
+    "cu_money": [_cfg(p, s, cu_budget=180_000.0) for p in ("tiered", "bofn_blend") for s in range(12)],
 }
 
 

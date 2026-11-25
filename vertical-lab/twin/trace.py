@@ -180,6 +180,41 @@ LITERATURE: dict = {
                                    "which alloys can it atomize?", dal211="p3",
             edison=_D + "535d3dda4cd244e770ffdfe4d505a30437fb277e/edison-trajectories/"
                         "ultrasonic-atomization-temperature-assessment.md"),
+        "a risk check before atomizing a Cu-Ni charge": dict(
+            when="start", question="Risk check before ultrasonically atomizing 1.1 kg of Cu-30Ni on the rePOWDER "
+                                   "induction module: thermal window, BN stopper and crucible, coated plate",
+            dal211="p3",
+            edison=_D + "d9923de20923781bb21bda96bf69514b5212df9f/edison-trajectories/atomizer-cu30ni-run-check/"
+                        "literature_high.md"),
+        "the nickel-lean alloys to beat": dict(
+            when="start", question="Which copper alloys with less nickel than 70-30 Cu-Ni come closest to its "
+                                   "seawater performance, with measured rates and critical velocities?",
+            edison=_D + "d1ca727fb37fa044cbcf78c420e17aa1ac827bc5/edison-trajectories/cu-ded-2026-10/batch2/"
+                        "b2-03-nickel-lean-seawater-alloys.md"),
+        "the DED process window for bronzes": dict(
+            when="first_result", result="deposit", dal211="p4",
+            question="What is known about blown-powder laser DED of nickel-aluminium bronze (C95800): process "
+                     "windows, as-deposited phases, properties and seawater corrosion?",
+            edison=_D + "d1ca727fb37fa044cbcf78c420e17aa1ac827bc5/edison-trajectories/cu-ded-2026-10/batch1/"
+                        "b1-02-ded-nab.md"),
+        "retained beta-prime in what is deposited": dict(
+            when="first_result", result="deposit", dal211="p6",
+            question="What composition rules predict retained beta-prime martensite in aluminium bronzes and NAB "
+                     "after fast cooling?",
+            edison=_D + "d1ca727fb37fa044cbcf78c420e17aa1ac827bc5/edison-trajectories/cu-ded-2026-10/batch5/"
+                        "b5-03-martensite-start-al-bronze.md"),
+        "how far to trust the 1-hour screen": dict(
+            when="first_result", result="screen", dal211="t2",
+            question="How well do short electrochemical tests predict long immersion for Cu-Ni and NAB in seawater, "
+                     "and how should a one-hour screen be designed?",
+            edison=_D + "d1ca727fb37fa044cbcf78c420e17aa1ac827bc5/edison-trajectories/cu-ded-2026-10/batch2/"
+                        "b2-05-short-tests-vs-immersion.md"),
+        "reading the 30-day immersion": dict(
+            when="first_result", result="immersion", dal211="t3",
+            question="Measured constants for a Cu-alloy seawater film model: O2-reduction limiting current, icorr "
+                     "decay to 30 days, beta-prime and kappa-III dissolution rates",
+            edison=_D + "c596a6f681d85b29f48843283b98482861d02826/benchmarks/bofn-cu-ded/physics/edison-recovered/"
+                        "cfce38b0-lit-film-model-constants/answer.md"),
     },
 }
 
@@ -546,6 +581,8 @@ def literature_events(camps, its) -> list:
                     ts = [x["t"] for x in c.tests]
                 if L.get("result") == "build":
                     ts = [B["t"] for B in c.builds.values()]
+                if L.get("result") == "deposit":
+                    ts = [D["t"] for D in c.deposits.values()]
                 t = min(ts) if ts else None
             elif L["when"] == "first_promotion":          # the first part sent on to bars or a 1 kg deposit
                 ts = [it["t_h"] for it in its if it["campaign"] == k and

@@ -1346,7 +1346,9 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
         return shared_u[key]
     news = [k for k in (("vertical_lab", p, "historical", "") for p in (new_pol, "heuristic")) if k in G]
     news = list(dict.fromkeys(news))
-    refs = [k for k in (conv(p) for p in ("heuristic", "sobol")) if k]
+    # the references: the conventional lab run the usual ways (a metallurgist's heuristic, a Sobol DoE) and with the
+    # same optimizer (BOFN), so that the lab's share of the acceleration shows apart from the optimizer's
+    refs = [k for k in (conv(p) for p in ("heuristic", "sobol", "bofn")) if k]
     if not refs:
         refs = [k for k in (conv(p) for p in ("tiered", "random", new_pol)) if k]
     comparisons = comparisons or [(rk, nk) for nk in news for rk in refs]
