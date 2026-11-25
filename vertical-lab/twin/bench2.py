@@ -57,6 +57,10 @@ EXPERIMENTS = {
     "reuse": [_cfg(p, s, reuse=False) for p in ("heuristic", "bofn") for s in range(6)],
     # the simulators at 'lite' fidelity (small raw data and the real analysis) against 'fast' (emulated errors)
     "lite": [_cfg(p, s, fidelity="lite") for p in ("heuristic", "bofn") for s in range(3)],
+    # copper: the same campaign on a truth with an effect the CALPHAD screen cannot see (gamma-2 above
+    # Al = 8.2 + Ni/2), to test whether the tiered funnel's tie with BOFN is the truth being too kind to it
+    "cu_hidden": [_cfg(p, s, cu_hidden=1.0) for p in ("heuristic", "tiered", "cost_aware", "gpbo", "bofn_blend")
+                  for s in range(8)],
     # copper: what separates the policies when money is not the limit
     "cu": [_cfg(p, s, cu_budget=180_000.0) for p in ("heuristic", "tiered", "gpbo", "bofn", "bofn_blend")
            for s in range(6)],
@@ -73,7 +77,7 @@ def run_one(cfg: dict) -> dict:
     yb = cfg.get("years_budget", 1.0)
     bud = {"flaime_al": BUDGET["flaime_al"] * yb, "onr_cu": (cfg.get("cu_budget") or BUDGET["onr_cu"]) * yb}
     specs = {k: C.Spec(k, bud[k], WIP[k], cfg["seed"], 1.0, crucible_cm3=cfg.get("crucible", 225),
-                       reuse=cfg.get("reuse", True), stock=cfg.get("stock", "stocked"),
+                       reuse=cfg.get("reuse", True), stock=cfg.get("stock", "stocked"), cu_hidden=cfg.get("cu_hidden", 0.0),
                        fidelity=cfg.get("fidelity", "fast")) for k in bud}
     pols = {k: P2.make(cfg["policy"], k, cfg["seed"], cfg.get("crucible") if cfg.get("crucible") != 225 else None)
             for k in specs}
@@ -130,7 +134,7 @@ def _safe(cfg):
 def run_id(cfg):
     parts = [cfg["facility"], cfg["policy"], f"s{cfg['seed']}"]
     for k, dflt in (("stock", "stocked"), ("crucible", 225), ("reuse", True), ("cu_budget", None),
-                    ("fidelity", "fast")):
+                    ("fidelity", "fast"), ("cu_hidden", 0.0)):
         if cfg.get(k, dflt) != dflt:
             parts.append(f"{k}-{cfg[k]}")
     return "_".join(str(p) for p in parts)

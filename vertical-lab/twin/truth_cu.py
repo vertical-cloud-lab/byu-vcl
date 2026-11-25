@@ -51,8 +51,12 @@ def _vec(comp):
 class CuTruth:
     base = "Cu"
 
-    def __init__(self, seed: int = 0, kappa_beta: float = 1.0):
+    def __init__(self, seed: int = 0, kappa_beta: float = 1.0, gamma2: float = 0.0):
         self.seed, self.kappa_beta = seed, kappa_beta
+        # round 2 (the copper investigation): an effect the CALPHAD nodes don't report. Above about
+        # Al = 8.2 + Ni/2 wt% the bronze keeps gamma-2 (Cu9Al4), which corrodes selectively in seawater and
+        # embrittles it (the Weill-Couly/Meigh rule for NAB). 0: absent (round 1's truth); 1: on.
+        self.gamma2 = gamma2
         self.th, self.open = thermo.CuThermo("truth"), thermo.CuThermo("open")
         self.f_ys = RandomField(seed * 104729 + 1, len(ELEMENTS))
         self.f_el = RandomField(seed * 104729 + 2, len(ELEMENTS))
@@ -229,6 +233,9 @@ class CuTruth:
         el_m = max(el * (1 - 6 * por) * (1 - 0.9 * crack_frac), 0.3)
         if part.get("blend"):                      # undissolved particles: crack starters
             el_m = max(el_m * math.exp(-4.0 * part.get("inhomogeneity", 0.0)), 0.3)
+        g2 = self.gamma2 * max(c.get("Al", 0.0) - (8.2 + 0.5 * c.get("Ni", 0.0)), 0.0)
+        if g2 > 0:
+            el_m = max(el_m * math.exp(-1.2 * g2), 0.3)
         return dict(ys_MPa=ys_m, uts_MPa=ys_m * (1.3 + 0.9 * el_m / (el_m + 20)), el_pct=el_m, ys_sound_MPa=ys)
 
     def corrosion(self, part):
@@ -245,6 +252,11 @@ class CuTruth:
         attack = 2.5 * (al / 9.2) ** 2 * (1 + 5 * th["kappa_700"]) + 45 * part["beta_prime"] ** 1.1
         early = 35.0 / (1 + ni / 25) * g_al ** 0.5 * (1 + 2 * part["beta_prime"])
         eb = 50 + 8 * ni + 15 * al - 300 * part["beta_prime"]
+        g2 = self.gamma2 * max(al - (8.2 + 0.5 * ni), 0.0)
+        if g2 > 0:                                 # gamma-2 corrodes selectively
+            rate *= 1 + 2.5 * g2
+            attack += 25.0 * g2
+            early *= 1 + 1.5 * g2
         if part.get("blend"):                      # composition swings: local galvanic couples
             inh = part.get("inhomogeneity", 0.0)
             rate *= 1 + 3 * inh

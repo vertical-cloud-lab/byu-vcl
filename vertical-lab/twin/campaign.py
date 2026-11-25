@@ -128,6 +128,7 @@ class Spec:
     crucible_cm3: int = 225       # round 2: the rePowder's standard crucible, or the 400 cm3 upgrade (DAL #219)
     reuse: bool = True            # round 2: unfused LPBF powder and DED overspray are sieved and put back in the lot
     fidelity: str = "fast"        # round 2: instrument simulators' fidelity (twin/instruments/__init__.py)
+    cu_hidden: float = 0.0        # round 2: copper's gamma-2 effect the CALPHAD nodes miss (truth_cu.CuTruth.gamma2)
     stock: str = "lean"           # round 2: 'lean' (order each charge's metal when it is needed, as DAL does now) or
                                   # 'stocked' (a standing inventory bought at day 0 and charged, reordered 4x)
 
@@ -137,7 +138,7 @@ class Campaign:
         self.spec, self.key, self.policy = spec, spec.key, policy
         self.space = spaces.SPACES[spec.key]
         self.truth = truth_al.AlTruth(spec.seed, spec.kappa) if spec.key == "flaime_al" else \
-            truth_cu.CuTruth(spec.seed, spec.kappa)
+            truth_cu.CuTruth(spec.seed, spec.kappa, spec.cu_hidden)
         self.rng = np.random.default_rng(spec.seed * 1009 + (1 if spec.key == "flaime_al" else 2))
         self.market, self.fac, self.horizon_h = market, facility, horizon_h
         self.stores = supply.Stores(spec.key, market)

@@ -75,7 +75,7 @@ def proc_grid(key, n, rng):
     return out
 
 
-def main(n_random=3000, n_proc=24, n_refine=40, seed=0):
+def main(n_random=1500, n_proc=24, n_refine=40, seed=0):
     out = {}
     for key in ("flaime_al", "onr_cu"):
         camp = _camp(key, seed)
@@ -91,7 +91,7 @@ def main(n_random=3000, n_proc=24, n_refine=40, seed=0):
         sota_name = max(refs, key=lambda k: refs[k]["utility"])
         # the landscape: random designs at the default process, then the best re-tuned and searched locally
         ds = sp.sample(n_random, seed=7)
-        base = [procs[0]]
+        base = procs[:12]
         us = np.array([true_utility(camp, d, base, np.random.default_rng(3))[0] for d in ds])
         top = np.argsort(-us)[:n_refine]
         best_u, best_d = -1, None
@@ -125,6 +125,13 @@ def main(n_random=3000, n_proc=24, n_refine=40, seed=0):
         from scipy.stats import spearmanr
         rho = float(spearmanr(pr[u15 > 0], u15[u15 > 0]).correlation) if (u15 > 0).sum() > 5 else float("nan")
         prec = float((u15[ok] > 0).mean()) if ok.any() else float("nan")
+        # the funnel's own picks: the top 24 by the proxy among designs the screen passes (what Tiered makes)
+        idx = np.where(ok)[0]
+        top = idx[np.argsort(-pr[idx])[:24]] if len(idx) else idx
+        sota_u = refs[sota_name]["utility"]
+        top_stats = dict(top24_mean_utility=float(u15[top].mean()) if len(top) else float("nan"),
+                         top24_frac_above_sota=float((u15[top] >= sota_u).mean()) if len(top) else float("nan"),
+                         random_mean_utility=float(u15.mean()), random_frac_above_sota=float((u15 >= sota_u).mean()))
         out[key] = dict(
             references=refs, sota=sota_name, sota_utility=refs[sota_name]["utility"],
             random_default_process=dict(n=len(us), frac_positive=float((us > 0).mean()),
@@ -136,7 +143,7 @@ def main(n_random=3000, n_proc=24, n_refine=40, seed=0):
                             details={k: (round(v, 3) if isinstance(v, float) else v) for k, v in best_d[1].items()
                                      if k != "proc"}),
             screen=dict(spearman_proxy_vs_utility_among_feasible=rho, screen_pass_frac=float(ok.mean()),
-                        precision_of_screen=prec, base_rate=float((u15 > 0).mean())))
+                        precision_of_screen=prec, base_rate=float((u15 > 0).mean()), **top_stats))
         print(key, json.dumps({k: out[key][k] for k in ("sota", "sota_utility", "best_found")})[:400], flush=True)
         print("   refs", {k: v["utility"] for k, v in refs.items()}, "random", out[key]["random_default_process"],
               "screen", out[key]["screen"], flush=True)

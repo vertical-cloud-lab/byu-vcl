@@ -53,13 +53,13 @@
   "sota": "AlSi10Mg",
   "sota_utility": 0.4232,
   "random_default_process": {
-   "n": 3000,
-   "frac_positive": 0.08933333333333333,
+   "n": 1500,
+   "frac_positive": 0.12,
    "q50": 0.0,
-   "q90": 0.0,
-   "q99": 0.6956698389745769,
+   "q90": 0.3366147042178961,
+   "q99": 0.7027054431601734,
    "max": 0.8113909098660157,
-   "frac_above_sota": 0.072
+   "frac_above_sota": 0.082
   },
   "best_found": {
    "utility": 0.8554,
@@ -84,10 +84,14 @@
    }
   },
   "screen": {
-   "spearman_proxy_vs_utility_among_feasible": 0.5133548653034389,
+   "spearman_proxy_vs_utility_among_feasible": 0.4557074806835602,
    "screen_pass_frac": 0.2966666666666667,
-   "precision_of_screen": 0.25617977528089886,
-   "base_rate": 0.088
+   "precision_of_screen": 0.3303370786516854,
+   "base_rate": 0.12,
+   "top24_mean_utility": 0.28290248376053656,
+   "top24_frac_above_sota": 0.4166666666666667,
+   "random_mean_utility": 0.060902778311435764,
+   "random_frac_above_sota": 0.082
   }
  },
  "onr_cu": {
@@ -123,38 +127,41 @@
   "sota": "C95800 NAB",
   "sota_utility": 0.5559,
   "random_default_process": {
-   "n": 3000,
-   "frac_positive": 0.07466666666666667,
+   "n": 1500,
+   "frac_positive": 0.23466666666666666,
    "q50": 0.0,
-   "q90": 0.0,
-   "q99": 0.5133084373076644,
-   "max": 0.6517659991698029,
-   "frac_above_sota": 0.004666666666666667
+   "q90": 0.5162121751854949,
+   "q99": 0.6775895465361592,
+   "max": 0.7317896025623818,
+   "frac_above_sota": 0.082
   },
   "best_found": {
-   "utility": 0.7575,
+   "utility": 0.7572,
    "composition": {
-    "Ni": 8.366,
-    "Al": 6.123,
-    "Fe": 1.523,
-    "Mn": 1.889,
-    "Ti": 0.288,
-    "Cu": 81.81
+    "Ni": 6.992,
+    "Al": 7.961,
+    "Fe": 1.586,
+    "Ti": 0.121,
+    "Cu": 83.341
    },
    "details": {
-    "ys": 342.912,
-    "el": 25.786,
-    "rate": 6.42,
-    "attack": 1.833,
-    "ni": 8.366,
+    "ys": 379.364,
+    "el": 23.148,
+    "rate": 7.302,
+    "attack": 3.092,
+    "ni": 6.992,
     "feasible": true
    }
   },
   "screen": {
-   "spearman_proxy_vs_utility_among_feasible": 0.007202263568550115,
+   "spearman_proxy_vs_utility_among_feasible": 0.399030895135711,
    "screen_pass_frac": 0.6046666666666667,
-   "precision_of_screen": 0.11576626240352811,
-   "base_rate": 0.072
+   "precision_of_screen": 0.29768467475192945,
+   "base_rate": 0.23466666666666666,
+   "top24_mean_utility": 0.4552817863910433,
+   "top24_frac_above_sota": 0.3333333333333333,
+   "random_mean_utility": 0.11630301584922506,
+   "random_frac_above_sota": 0.082
   }
  }
 }
