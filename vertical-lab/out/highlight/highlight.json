@@ -1,0 +1,165 @@
+{
+ "name": "vertical_lab_highlight_r15",
+ "seconds": 161.65,
+ "size": [
+  1280,
+  720
+ ],
+ "fps": 30,
+ "built": "2026-11-25T23:35:15Z",
+ "source": {
+  "video": "https://www.youtube.com/watch?v=79FL6mTFSsI",
+  "itag": "232",
+  "note": "round 15's long-form, cut from YouTube's 720p HLS"
+ },
+ "mp4_sha256": "97566ae294c3078b3d38bc3965c14fd658b30197332dfb82a0caaeefc4217f19",
+ "mp4_bytes": 17131845,
+ "parts": [
+  {
+   "part": "title card",
+   "start_s": 0.0,
+   "seconds": 5.0
+  },
+  {
+   "part": "charge",
+   "chapter": "1/7 The charge",
+   "short": "The charge",
+   "start_s": 4.5,
+   "seconds": 20.05,
+   "longform_s": [
+    1139.35,
+    1159.4
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=1139",
+   "caption": "powder-doser's chain carousel v5 · A&D HR-202i balance · Specac Atlas Autotouch 15T vacuum press",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "A 5N Al cup from the rack to the doser's shuttle; module 6 docks, tilts and doses Si onto the balance.",
+   "still": "stills/1_charge.png",
+   "still_longform_s": 1140.8
+  },
+  {
+   "part": "atomize",
+   "chapter": "2/7 Melt and atomize",
+   "short": "Melt and atomize",
+   "start_s": 24.05,
+   "seconds": 16.45,
+   "longform_s": [
+    1682.9,
+    1699.35
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=1682",
+   "caption": "AMAZEMET rePowder ultrasonic atomizer, cut open for the pour",
+   "arm": "arms: two UR12e on MiR250s",
+   "what": "Both arms on the plate's landing stage; the melt pours onto the vibrating plate and atomizes.",
+   "still": "stills/2_atomize.png",
+   "still_longform_s": 1697.5
+  },
+  {
+   "part": "sieve",
+   "chapter": "3/7 Sieve and print",
+   "short": "Sieve and print",
+   "start_s": 40.0,
+   "seconds": 18.8,
+   "longform_s": [
+    2831.0,
+    2849.8
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=2831",
+   "caption": "Retsch AS 200 sieve shaker, in a downdraft enclosure",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The arm clamps the lid; the stack sieves, drawn see-through; each fraction tinted, then grey again.",
+   "still": "stills/3_sieve.png",
+   "still_longform_s": 2845.6
+  },
+  {
+   "part": "powder",
+   "chapter": "4/7 The powder, checked",
+   "short": "The powder, checked",
+   "start_s": 58.3,
+   "seconds": 20.3,
+   "longform_s": [
+    3114.0,
+    3134.3
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=3114",
+   "caption": "Rigaku MiniFlex benchtop powder XRD, its housing drawn see-through",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The arm loads the zero-background holder; the scan; the pattern (computed, not measured).",
+   "still": "stills/4_powder.png",
+   "still_longform_s": 3133.6
+  },
+  {
+   "part": "tensile",
+   "chapter": "5/7 Depowder, cut, heat treat, test",
+   "short": "Depowder, cut, heat treat, test",
+   "start_s": 78.1,
+   "seconds": 20.0,
+   "longform_s": [
+    3575.8,
+    3595.8
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=3575",
+   "caption": "Instron 68FM-100 · 3119-608 environmental chamber · AVE 2 video extensometer",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "A bar into the lower grip, the chamber cut away, the pull (curve illustrative), broken.",
+   "still": "stills/5_tensile.png",
+   "still_longform_s": 3592.5
+  },
+  {
+   "part": "prep",
+   "chapter": "6/7 Sample prep",
+   "short": "Sample prep",
+   "start_s": 97.6,
+   "seconds": 15.85,
+   "longform_s": [
+    3863.9,
+    3879.75
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=3863",
+   "caption": "LECO PX500 grinder-polisher and its magazine of pre-loaded discs",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The arm puts the 320-grit disc on the magnetic platen; the pistons press the mounts down.",
+   "still": "stills/6_prep.png",
+   "still_longform_s": 3869.4
+  },
+  {
+   "part": "characterize",
+   "chapter": "7/7 Characterizing the build",
+   "short": "Characterizing the build",
+   "start_s": 112.95,
+   "seconds": 17.7,
+   "longform_s": [
+    4006.9,
+    4024.6
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=4006",
+   "caption": "Hitachi TM4000PlusII tabletop SEM · Oxford Instruments AZtecOne EDS",
+   "arm": "arm: UR12e on a MiR250",
+   "what": "The conductive mount into the SEM's grounded holder cup; pump-down; a BSE image (illustrative).",
+   "still": "stills/7_characterize.png",
+   "still_longform_s": 4023.6
+  },
+  {
+   "part": "lab",
+   "chapter": "The whole lab at speed: a model year, week by week, then month by month",
+   "short": "The whole lab at speed",
+   "start_s": 130.15,
+   "seconds": 26.0,
+   "longform_s": [
+    5297.6,
+    5323.6
+   ],
+   "longform_link": "https://youtu.be/79FL6mTFSsI?t=5297",
+   "caption": "Two 30 ft Kardex Shuttle XP 500s with 19 trays, the floor machines and two UR12e arms on MiR250s",
+   "arm": "",
+   "what": "The counters run to the first year's totals, then the long-form's own 'first year' card.",
+   "still": "stills/8_lab.png",
+   "still_longform_s": 5312.6
+  },
+  {
+   "part": "end card",
+   "start_s": 155.65,
+   "seconds": 6.0
+  }
+ ]
+}
