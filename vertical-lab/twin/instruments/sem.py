@@ -460,6 +460,35 @@ def _draw_cracks(pm, grain_um, W, H, rng, margin=150.0):
     return out
 
 
+def _crack_vis_fast(pm, grain_um, W, H, rng, margin=150.0):
+    """The same crack population as ``_draw_cracks`` + ``_visible_len`` (same distributions), vectorized for the
+    fast mode: visible trace length and opening of each crack."""
+    cr = pm["cracks"]
+    dens = cr["density_mm_mm2"]
+    if dens <= 1e-5:
+        return np.zeros(0), np.zeros(0)
+    s = math.log(cr["len_gsd"])
+    EL = cr["len_med_um"] * math.exp(s * s / 2)
+    n = rng.poisson(dens * 1e-3 * (W + 2 * margin) * (H + 2 * margin) / EL)
+    if n == 0:
+        return np.zeros(0), np.zeros(0)
+    L = _lognormal(rng, cr["len_med_um"], cr["len_gsd"], n)
+    w = cr["open_um"] * np.exp(0.35 * rng.standard_normal(n))
+    step = max(0.8 * grain_um, 8.0)
+    k = np.maximum(np.ceil(L / step), 1).astype(int)
+    km = int(k.max())
+    mask = np.arange(km)[None, :] < k[:, None]
+    th = -math.pi / 2 + cr.get("tortuosity", 0.25) * rng.standard_normal((n, km))
+    ds = (L / k)[:, None]
+    x0 = rng.uniform(-margin, W + margin, n)[:, None]
+    z0 = rng.uniform(-margin, H + margin, n)[:, None]
+    dx, dz = ds * np.cos(th) * mask, ds * np.sin(th) * mask
+    x, z = x0 + np.cumsum(dx, 1), z0 + np.cumsum(dz, 1)
+    xm, zm = x - dx / 2, z - dz / 2
+    inside = mask & (xm >= 0) & (xm <= W) & (zm >= 0) & (zm <= H)
+    return (ds * inside).sum(1), w
+
+
 def _visible_len(cr, W, H):
     xm, zm = (cr["x"][1:] + cr["x"][:-1]) / 2, (cr["z"][1:] + cr["z"][:-1]) / 2
     seg = np.hypot(np.diff(cr["x"]), np.diff(cr["z"]))
@@ -679,15 +708,16 @@ def _section_fast(pm, campaign, rng):
         area_d, lofs = am[det], lofc[det]
         ecds = 2 * np.sqrt(area_d / math.pi)
     a_pore = float(np.sum(area_d))
-    cracks = _draw_cracks(pm, pm.get("grains", {}).get("d_um", 10.0), W, W, rng)
+    Lv, wv = _crack_vis_fast(pm, pm.get("grains", {}).get("d_um", 10.0), W, W, rng)
     Lm = 0.0
-    for cr in cracks:
-        Lv = _visible_len(cr, W, W)
-        if Lv <= 0:
-            continue
-        v = cr["w"] / px
-        r = 1 / (1 + math.exp(-(math.log(max(v, 1e-3)) - math.log(c["crack_v0"])) / c["crack_w"]))
-        Lm += Lv * r * c["crack_lbias"] * math.exp(c["crack_lsd"] * rng.standard_normal())
+    vis = Lv > 0
+    if vis.any():
+        v = np.maximum(wv[vis] / px, 1e-3)
+        r = 1 / (1 + np.exp(-(np.log(v) - math.log(c["crack_v0"])) / c["crack_w"]))
+        Lm = float(np.sum(Lv[vis] * r * c["crack_lbias"] * np.exp(c["crack_lsd"] * rng.standard_normal(int(vis.sum())))))
+        n_cr = int(np.sum(rng.random(len(r)) < r))
+    else:
+        n_cr = 0
     if c["crack_false_p"] > 0 and rng.random() < c["crack_false_p"]:       # scratches, pore chains read as cracks
         Lm += c.get("crack_fp_um", 30.0) * math.exp(0.3 * rng.standard_normal())
     if Lm < c["crack_min_um"]:
@@ -697,7 +727,7 @@ def _section_fast(pm, campaign, rng):
     return dict(porosity=float(por), pore_dmax_um=float(np.max(ecds)) if len(ecds) else 0.0,
                 crack_density=float(Lm * 1e-3 / (A_um2 * 1e-6)),
                 lof_frac=float(np.sum(area_d[lofs]) / a_pore) if a_pore > 0 else 0.0,
-                n_pores=int(len(ecds)), n_cracks=int(Lm > 0))
+                n_pores=int(len(ecds)), n_cracks=n_cr if Lm > 0 else 0)
 
 
 def measure_section(sample, campaign, rng, fidelity="fast", **kw):

@@ -231,6 +231,20 @@ class Campaign:
             smp["corrosion"] = self.truth.corrosion(part)
         return smp
 
+    def _soundness(self, part, did):
+        """What the lab reports for a fresh part: Archimedes density, and the polished section imaged in the SEM
+        (porosity and cracks by image analysis). Archimedes over-reads parts with surface-connected porosity, a
+        single section can miss sparse pores, so the reported density is the lower of the two."""
+        smp = self._psample(part, did)
+        arch = float(self._m("density", smp)["rel_density"])
+        sem = self._m("sem_section", smp)
+        img = 1.0 - float(sem.get("porosity", 1.0 - arch))
+        cd = sem.get("crack_density")
+        if cd is None:
+            cd = part["crack_density"] * math.exp(self.rng.normal(0, 0.2))
+        return dict(rel_density=min(arch, img), rel_density_archimedes=arch, rel_density_sem=img,
+                    crack_density=float(cd) if cd > 0.02 else 0.0, pore_dmax_um=sem.get("pore_dmax_um"))
+
     def _lsample(self, lot_id, did):
         lt = self._lot_truth[lot_id]
         good = [r for r in lt.get("runs", []) if not r.get("failed")]
@@ -571,9 +585,7 @@ class Campaign:
             part = self.truth.build(lot, p, self.rng)
             part["reuse"] = lt.get("reuse", 0.0)
             parts.append(part)
-            cd = part["crack_density"] * math.exp(self.rng.normal(0, 0.2))
-            dens = self._m("density", self._psample(part, L["design"]))
-            meas.append(dict(rel_density=float(dens["rel_density"]), crack_density=cd if cd > 0.02 else 0.0, params=p))
+            meas.append(dict(self._soundness(part, L["design"]), params=p))
         back, st = self._return_powder(a["lot"], need, self.PRINT_FUSED_G, params[0])
         self._part_truth[bid] = dict(parts=parts, lot=a["lot"], bars_at=int(a.get("bars_at", 0)))
         self._emit(t_r, dict(type="build", id=bid, lot=a["lot"], design=L["design"], measured=meas,
@@ -702,9 +714,9 @@ class Campaign:
         hot = self.truth.strength(part, 250.0)
         smp = self._psample(part, L["design"], hot=True)
         m, mh = self._m("tensile", smp), self._m("tensile_hot", smp)
-        dens = self._m("density", smp)
+        snd = self._soundness(part, L["design"])
         meas = dict(ys_MPa=m["ys_MPa"], el_pct=m["el_pct"], uts_MPa=m["uts_MPa"], hot_ys_MPa=mh["ys_MPa"],
-                    rel_density=float(dens["rel_density"]))
+                    rel_density=snd["rel_density"])
         u, det = self._al_score(part, s, hot)
         det["e8"] = True
         back, st = self._return_powder(a["lot"], self.E8_FILL_G, self.E8_FUSED_G, a["params"])
@@ -758,10 +770,8 @@ class Campaign:
             part = self.truth.blend_deposit(comp, p, self.rng)
             part["reuse"] = 0.0
             parts.append(part)
-            cd = part["crack_density"] * math.exp(self.rng.normal(0, 0.25))
-            dens = self._m("density", self._psample(part, did))
-            meas.append(dict(rel_density=float(dens["rel_density"]), crack_density=cd if cd > 0.02 else 0.0,
-                             dilution=part["dilution"] * math.exp(self.rng.normal(0, 0.1)), params=p,
+            meas.append(dict(self._soundness(part, did), dilution=part["dilution"] * math.exp(self.rng.normal(0, 0.1)),
+                             params=p,
                              beta_prime=float(np.clip(part["beta_prime"] + self.rng.normal(0, 0.03), 0, 1)),
                              catchment=part["catchment"] * math.exp(self.rng.normal(0, 0.05)),
                              grain_um=part["grain_um"] * math.exp(self.rng.normal(0, 0.1))))
@@ -799,10 +809,7 @@ class Campaign:
             part = self.truth.deposit(lot, p, mode, self.rng, substrate=nab if mode != "blown_small" else None)
             part["reuse"] = lot.get("reuse", 0.0)
             parts.append(part)
-            cd = part["crack_density"] * math.exp(self.rng.normal(0, 0.25))
-            dens = self._m("density", self._psample(part, did))
-            m = dict(rel_density=float(dens["rel_density"]), crack_density=cd if cd > 0.02 else 0.0,
-                     dilution=part["dilution"] * math.exp(self.rng.normal(0, 0.1)), params=p)
+            m = dict(self._soundness(part, did), dilution=part["dilution"] * math.exp(self.rng.normal(0, 0.1)), params=p)
             if mode != "preplaced":
                 m.update(beta_prime=float(np.clip(part["beta_prime"] + self.rng.normal(0, 0.03), 0, 1)),
                          catchment=part["catchment"] * math.exp(self.rng.normal(0, 0.05)),

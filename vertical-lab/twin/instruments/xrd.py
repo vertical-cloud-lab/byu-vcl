@@ -746,8 +746,16 @@ def _fast(sample, campaign, rng, kind):
     for nm in cand:
         if nm not in det and nm in fp and rng.random() < fp[nm]["p"]:
             det[nm] = fp[nm]["w"] * math.exp(rng.normal(0, 0.4))
-    tot_ip = sum(det.values())
-    phases = {"FCC-" + base: max(1.0 - tot_ip, 0.0)}
+    bpf = None
+    if kind == "part" and campaign == "onr_cu":
+        bp = pm["beta_prime"]
+        bq = cb.get("beta", dict(b0=0.0, b1=1.0, s0=0.01, s1=0.05))
+        v = bq["b0"] + bq["b1"] * bp + rng.normal(0, bq["s0"] + bq["s1"] * bp)
+        bpf = float(np.clip(v, 0.0, 1.0)) if (bp > 0.002 or v > 0.02) else 0.0
+        det.pop("beta'", None)
+        if bpf > 0:
+            det["beta'"] = bpf                     # the same number as beta_prime_frac, as in the lite chain
+    phases = {"FCC-" + base: max(1.0 - sum(det.values()), 0.0)}
     phases.update(det)
     s = sum(phases.values()) or 1.0
     phases = {k: v / s for k, v in phases.items()}
@@ -756,19 +764,19 @@ def _fast(sample, campaign, rng, kind):
         out["solute_ss_wt"] = solute_from_a(a, campaign, design)
         cr = cb.get("cryst", dict(b=0.0, s=0.25, cap=1000.0))
         c_true = m["cryst_nm"]
-        c = c_true * math.exp(cr["b"] + cr.get("b1", 0.0) * math.log(c_true / 300.0) + rng.normal(0, cr["s"]))
+        bp = pm.get("beta_prime", 0.0)
+        pcap = cr.get("pcap_hi", 0.0) if bp > 0.2 else cr.get("pcap_lo", 0.0)
+        if rng.random() < pcap:
+            c = cr.get("cap", 1000.0)
+        else:
+            c = c_true * math.exp(cr["b"] + cr.get("b1", 0.0) * math.log(c_true / 300.0) + rng.normal(0, cr["s"]))
         out["crystallite_nm"] = float(min(c, cr.get("cap", 1000.0)))
     else:
         st = cb.get("strain", dict(b=0.0, s=0.3, floor=1e-4, p0=0.05))
         e = m["strain"] * math.exp(st["b"] + rng.normal(0, st["s"]))
         out["microstrain"] = float(0.0 if rng.random() < st.get("p0", 0.0) else e)
         if campaign == "onr_cu":
-            bp = pm["beta_prime"]
-            bq = cb.get("beta", dict(b0=0.0, b1=1.0, s0=0.01, s1=0.05))
-            v = bq["b0"] + bq["b1"] * bp + rng.normal(0, bq["s0"] + bq["s1"] * bp)
-            out["beta_prime_frac"] = float(np.clip(v, 0.0, 1.0)) if bp > 0.002 or v > 0.02 else 0.0
-            if "beta'" in phases or out["beta_prime_frac"] > 0:
-                pass
+            out["beta_prime_frac"] = float(phases.get("beta'", 0.0))
     return out
 
 
@@ -821,7 +829,7 @@ def calibrate(n=24, reps=3, seed=0, verbose=True):
                         elif got:
                             fps.setdefault(nm, []).append(got)
                     if kind == "powder" and r.get("crystallite_nm"):
-                        cr_rows.append((m["cryst_nm"], r["crystallite_nm"]))
+                        cr_rows.append((m["cryst_nm"], r["crystallite_nm"], pm.get("beta_prime", 0.0)))
                     if kind == "part" and r.get("microstrain") is not None:
                         st_rows.append((m["strain"], r["microstrain"]))
                     if kind == "part" and camp == "onr_cu":
@@ -852,11 +860,16 @@ def calibrate(n=24, reps=3, seed=0, verbose=True):
                 P["false_pos"][nm] = dict(p=len(got) / max(ncand.get(nm, 1), 1), w=float(np.median(got)))
             if cr_rows:
                 c = np.array(cr_rows)
-                lr = np.log(c[:, 1] / c[:, 0])
-                X = np.stack([np.ones(len(c)), np.log(c[:, 0] / 300.0)], 1)
-                coef = np.linalg.lstsq(X, lr, rcond=None)[0]
+                capped = c[:, 1] >= 999.0
+                hi = c[:, 2] > 0.2
+                unc = ~capped
+                lr = np.log(c[unc, 1] / c[unc, 0])
+                X = np.stack([np.ones(unc.sum()), np.log(c[unc, 0] / 300.0)], 1)
+                coef = np.linalg.lstsq(X, lr, rcond=None)[0] if unc.sum() > 3 else np.zeros(2)
                 res = lr - X @ coef
-                P["cryst"] = dict(b=float(coef[0]), b1=float(coef[1]), s=float(np.std(res)), cap=1000.0)
+                P["cryst"] = dict(b=float(coef[0]), b1=float(coef[1]), s=float(np.std(res)) if len(res) > 2 else 0.3,
+                                  cap=1000.0, pcap_hi=float(capped[hi].mean()) if hi.any() else 0.0,
+                                  pcap_lo=float(capped[~hi].mean()) if (~hi).any() else 0.0)
             if st_rows:
                 s_ = np.array(st_rows)
                 pos = s_[:, 1] > 0
@@ -971,13 +984,15 @@ def thumbnail(path, samples=None):
     ax.patch.set_alpha(0)
     yy = np.sqrt(np.maximum(y - np.percentile(y, 5), 0))
     sel = (x > 25) & (x < 85)
-    ax.fill_between(x[sel], 0, yy[sel], color="#2b6cb0", alpha=0.35, lw=0)
-    ax.plot(x[sel], yy[sel], color="#1a365d", lw=3.2)
+    from matplotlib import patheffects as pe
+    halo = [pe.withStroke(linewidth=8, foreground="white", alpha=0.9)]
+    ax.fill_between(x[sel], 0, yy[sel], color="#90b4e0", alpha=0.55, lw=0)
+    ax.plot(x[sel], yy[sel], color="#1a365d", lw=3.2, path_effects=halo)
     ax.set_ylim(0, yy[sel].max() * 1.08)
     ax.set_xlim(25, 85)
     ax.axis("off")
-    ax.text(0.97, 0.93, "XRD", transform=ax.transAxes, ha="right", va="top", fontsize=40, weight="bold",
-            color="#1a365d")
+    ax.text(0.97, 0.93, "XRD", transform=ax.transAxes, ha="right", va="top", fontsize=64, weight="bold",
+            color="#1a365d", path_effects=halo)
     fig.savefig(Path(path), transparent=True)
     plt.close(fig)
 

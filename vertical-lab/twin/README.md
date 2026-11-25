@@ -63,6 +63,35 @@ DAL's BOFN and pKGFN (`benchmarks/bofn-prelim/bofn_alloy.py`) plug in as a polic
 (CALPHAD → `sim_*`, atomize → `powder`, print → `print`/`small_ded`/`large_ded`, test → `test`/`tensile`/
 `immersion`), and their GP nodes read the measured outputs from `view`.
 
+## Round 2 (2026-11-25): every instrument simulated, real optimizers, economics, a video
+
+Round 1 (above, `notes/twin.md`) built the network, the market and the facility with plain noise on each measured
+number. Round 2 replaces that noise with the instruments themselves and adds what is needed to say how much faster and
+cheaper the vertical lab finds alloys. The write-up and results are in [`../notes/twin_round2.md`](../notes/twin_round2.md).
+
+| Piece | Code | Notes |
+|---|---|---|
+| Instrument simulators: raw data (micrographs, spectra, patterns, curves) and the lab's own analysis, with calibrated fast modes | `instruments/` (`sem eds ebsd xrd xrf icpms micro` and `psd atomize_yield reuse density tensile pip hardness corrosion mech`) | `notes/twin_instruments_micro.md`, `notes/twin_instruments_mech.md` |
+| The vertical lab's instruments as partial evaluations (section with SEM/EBSD/XRD/Vickers, PIP, the CubXL screen), powder reuse, the 225 or 400 cm³ crucible, in-house DED blocks for bars, a stocked inventory, blended-powder DED screening for copper, the event log | `campaign.py`, `facility.py`, `truth_cu.py` | `notes/twin_round2.md` |
+| Policies on BoTorch: Sobol, a metallurgist's heuristic, GP-BO, SAASBO (NUTS and MAP), BOFN with partial evaluations (atomize, print, EBSD section, PIP and tensile nodes; DED, PIP, screen, tensile and immersion for copper), BOFN with blend screening | `opt/` | `notes/twin_round2.md` |
+| The truth without a lab: state-of-the-art targets, the landscape, how well the screens rank | `oracle.py` | |
+| The benchmark, its summary and figures | `bench2.py`, `figures2.py` | |
+| Capex, cost per alloy with and without capital, utilization, outside (cloud user facility) work, acceleration factors | `econ.py`, `cloud.py`, `accel.py` | `notes/twin_econ.md` |
+| The campaign video | `video/` | `notes/twin_video.md` |
+
+```bash
+cd vertical-lab
+/tmp/venv/bin/pip install numpy scipy scikit-learn matplotlib pillow pycalphad scheil pytest "botorch[fully_bayesian]"
+/tmp/venv/bin/python -m pytest -q twin/tests                      # round 1 + instruments + economics
+/tmp/venv/bin/python -m twin.oracle                               # out/twin2/oracle.json (targets)
+TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run main conventional saas stock crucible reuse cu
+/tmp/venv/bin/python -m twin.figures2                             # out/twin2/fig/
+/tmp/venv/bin/python -m twin.econ all                             # out/twin2/econ/
+/tmp/venv/bin/python -m twin.instruments.gallery_micro; /tmp/venv/bin/python -m twin.instruments.gallery_mech
+```
+
+`TWIN_INSTRUMENTS=stub` swaps every simulator for round 1's plain noise (for development).
+
 ## What is real, what is ours
 
 | Layer | Source |

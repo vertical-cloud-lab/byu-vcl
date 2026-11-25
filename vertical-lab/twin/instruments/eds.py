@@ -956,6 +956,8 @@ def thumbnail(path, samples):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib import patheffects as pe
+    halo = [pe.withStroke(linewidth=8, foreground="white", alpha=0.9)]
     lot, part = samples["onr_cu"]["NAB"]
     r = measure(part, "onr_cu", np.random.default_rng(2), fidelity="full")
     E, y = r["raw"]["E_keV"], r["raw"]["counts"]
@@ -964,12 +966,12 @@ def thumbnail(path, samples):
     E2, y2 = E[:n].reshape(-1, k).mean(1), y[:n].reshape(-1, k).sum(1)
     fig = plt.figure(figsize=(5.12, 5.12), dpi=100)
     ax = fig.add_axes([0.06, 0.08, 0.9, 0.86])
-    ax.fill_between(E2, 0, np.sqrt(np.maximum(y2, 0)), color="#e8eef7", lw=0)
-    ax.plot(E2, np.sqrt(np.maximum(y2, 0)), color="#ffffff", lw=3)
+    ax.fill_between(E2, 0, np.sqrt(np.maximum(y2, 0)), color="#9ec5ee", alpha=0.55, lw=0)
+    ax.plot(E2, np.sqrt(np.maximum(y2, 0)), color="#1f4e8c", lw=3.2, path_effects=halo)
     ax.set_xlim(0.2, 10.5)
     ax.set_ylim(0, np.sqrt(y2.max()) * 1.05)
     ax.axis("off")
-    ax.text(0.97, 0.9, "EDS", transform=ax.transAxes, ha="right", va="top", fontsize=64, color="white",
+    ax.text(0.97, 0.9, "EDS", transform=ax.transAxes, ha="right", va="top", fontsize=64, color="#1f4e8c", path_effects=halo,
             fontweight="bold")
     fig.savefig(path, transparent=True)
     plt.close(fig)

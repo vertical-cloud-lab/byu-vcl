@@ -518,18 +518,20 @@ def thumbnail(path, samples):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib import patheffects as pe
+    halo = [pe.withStroke(linewidth=8, foreground="white", alpha=0.9)]
     lot, part = samples["onr_cu"]["NAB"]
     r = measure(lot, "onr_cu", np.random.default_rng(2), fidelity="full")
     E, y, _ = r["raw"]["spectra"]["mid"]
     fig = plt.figure(figsize=(5.12, 5.12), dpi=100)
     ax = fig.add_axes([0.06, 0.08, 0.9, 0.86])
     yy = np.sqrt(np.maximum(y, 0))
-    ax.fill_between(E, 0, yy, color="#fde7c8", lw=0)
-    ax.plot(E, yy, color="white", lw=3)
+    ax.fill_between(E, 0, yy, color="#f6c48b", alpha=0.55, lw=0)
+    ax.plot(E, yy, color="#8a4500", lw=3.2, path_effects=halo)
     ax.set_xlim(3.5, 10.5)
     ax.set_ylim(0, yy.max() * 1.05)
     ax.axis("off")
-    ax.text(0.97, 0.9, "XRF", transform=ax.transAxes, ha="right", va="top", fontsize=64, color="white",
+    ax.text(0.03, 0.9, "XRF", transform=ax.transAxes, ha="left", va="top", fontsize=64, color="#8a4500", path_effects=halo,
             fontweight="bold")
     fig.savefig(path, transparent=True)
     plt.close(fig)

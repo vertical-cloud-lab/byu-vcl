@@ -101,18 +101,26 @@ def test_fast_matches_lite(G, inst, camp, alloy, key, tol):
 
 @pytest.mark.parametrize("inst", list(MICRO))
 def test_timings(G, inst):
-    """CPU time per call: fast < 1 ms, lite < 30 ms (medians, so a loaded runner's stalls do not count)."""
-    for camp, alloy in (("flaime_al", "AlSi10Mg"), ("onr_cu", "NAB")):
-        s = _sample(G, inst, camp, alloy)
-        rng = np.random.default_rng(2)
-        for fid, lim, n in (("fast", 1e-3, 60), ("lite", 30e-3, 8)):
-            measure(inst, s, camp, rng, fidelity=fid)          # warm caches
-            t = []
-            for _ in range(n):
-                t0 = time.process_time()
-                measure(inst, s, camp, rng, fidelity=fid)
-                t.append(time.process_time() - t0)
-            assert np.median(t) < lim, f"{inst} {camp} {fid}: {1e3 * np.median(t):.2f} ms"
+    """Per call, with BLAS on one thread (as in the benchmark's process workers; multi-threaded OpenBLAS spends more
+    on spin-up than these small fits take): fast < 1 ms, lite < 30 ms, medians of wall time."""
+    try:
+        from threadpoolctl import threadpool_limits
+        lim_ctx = threadpool_limits(1)
+    except ImportError:                                      # pragma: no cover
+        import contextlib
+        lim_ctx = contextlib.nullcontext()
+    with lim_ctx:
+        for camp, alloy in (("flaime_al", "AlSi10Mg"), ("onr_cu", "NAB")):
+            s = _sample(G, inst, camp, alloy)
+            rng = np.random.default_rng(2)
+            for fid, lim, n in (("fast", 1e-3, 60), ("lite", 30e-3, 8)):
+                measure(inst, s, camp, rng, fidelity=fid)          # warm caches
+                t = []
+                for _ in range(n):
+                    t0 = time.perf_counter()
+                    measure(inst, s, camp, rng, fidelity=fid)
+                    t.append(time.perf_counter() - t0)
+                assert np.median(t) < lim, f"{inst} {camp} {fid}: {1e3 * np.median(t):.2f} ms"
 
 
 def test_reference_alloys(G):

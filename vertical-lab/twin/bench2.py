@@ -26,6 +26,7 @@ HERE = Path(__file__).resolve().parent
 OUT = Path(os.environ.get("TWIN_OUT", HERE.parent / "out" / "twin2"))
 RUNS = OUT / "runs"
 EVENTS = OUT / "events"
+OUT.mkdir(parents=True, exist_ok=True)
 BUDGET = {"flaime_al": 120_000.0, "onr_cu": 60_000.0}
 WIP = {"flaime_al": 24, "onr_cu": 8}
 
@@ -115,6 +116,15 @@ def run_one(cfg: dict) -> dict:
     return out
 
 
+def _safe(cfg):
+    """One run; an exception is recorded with its traceback instead of stopping the experiment."""
+    try:
+        return run_one(cfg)
+    except Exception:
+        import traceback
+        return dict(cfg=cfg, error=traceback.format_exc()[-3000:])
+
+
 def run_id(cfg):
     parts = [cfg["facility"], cfg["policy"], f"s{cfg['seed']}"]
     for k, dflt in (("stock", "stocked"), ("crucible", 225), ("reuse", True), ("cu_budget", None)):
@@ -151,15 +161,19 @@ def run(names, workers=3):
                     pass
         todo = [c for c in cfgs if run_id(c) not in done]
         # the slow policies first, so the pool doesn't end on one long job
-        slow = {"saasbo": 0, "bofn_saas": 1, "bofn": 2, "gpbo": 3, "saasmap": 3}
+        slow = {"saasbo": 0, "bofn_blend": 1, "bofn_saas": 1, "bofn": 2, "gpbo": 3, "saasmap": 3, "cost_aware": 4}
         todo.sort(key=lambda c: (slow.get(c["policy"], 9), c["seed"]))
         t0 = time.time()
         print(f"{name}: {len(todo)} runs ({len(done)} already done)", flush=True)
         with ProcessPoolExecutor(workers) as ex, path.open("a") as fh:
-            for res in ex.map(run_one, todo):
+            for res in ex.map(_safe, todo):
+                c = res["cfg"]
+                if "error" in res:
+                    (RUNS / f"{name}.errors.jsonl").open("a").write(json.dumps(_jsonable(res)) + "\n")
+                    print(f"  {run_id(c)}: ERROR {res['error'].splitlines()[-1]}", flush=True)
+                    continue
                 fh.write(json.dumps(_jsonable(res)) + "\n")
                 fh.flush()
-                c = res["cfg"]
                 print(f"  {run_id(c)}: FLAIME {res['campaigns']['flaime_al']['best']:.3f} "
                       f"ONR {res['campaigns']['onr_cu']['best']:.3f} ({res['seconds']} s; "
                       f"{time.time() - t0:.0f} s in)", flush=True)
