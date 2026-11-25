@@ -27,6 +27,12 @@ env:
   # allowance. That costs a second full session every time Claude errors out,
   # so it is off by default.
   RETRY_ON_ANY_FAILURE: "false"
+  # Seats "Pick a seat from the token pool" may use, each a secret named
+  # CLAUDE_TOKEN_<NAME>; runs rotate across them by run number. Empty means
+  # every CLAUDE_TOKEN_* secret this repo can see.
+  CLAUDE_TOKEN_POOL: "STERLING MONGOOSE ELEPHANT DOLPHIN GOSHAWK"
+  # Seats tried before the rest of the pool, in this order. Empty: none.
+  CLAUDE_TOKEN_PREFERRED: ""
 
 jobs:
   claude:
@@ -272,6 +278,76 @@ jobs:
           echo "fallback_model=$fallback" >> "$GITHUB_OUTPUT"
           echo "primary_args=$primary_args" >> "$GITHUB_OUTPUT"
 
+      # Seat pool (load balancing). Every org secret named CLAUDE_TOKEN_<NAME>
+      # is one Team seat's `claude setup-token`. Seats in CLAUDE_TOKEN_PREFERRED
+      # are tried first, then the rest, rotated by run number so concurrent
+      # runs start on different seats. Each candidate gets a one-word probe on
+      # this run's model, and a seat that answers with an error (usage limit,
+      # invalid token) is skipped. Only seat names are logged; the values are
+      # masked secrets. If no seat answers, CLAUDE_CODE_OAUTH_TOKEN is used.
+      - name: Pick a seat from the token pool
+        id: pick
+        env:
+          ALL_SECRETS: ${{ toJSON(secrets) }}
+          MODEL: ${{ steps.select.outputs.model }}
+          SKIP_SEATS: ""
+        run: |
+          cat > "$RUNNER_TEMP/pick_seat.py" <<'PY'
+          import json, os, re, subprocess, tempfile
+
+          secrets = json.loads(os.environ.get("ALL_SECRETS") or "{}")
+          seats = sorted(k[len("CLAUDE_TOKEN_"):] for k, v in secrets.items()
+                         if k.startswith("CLAUDE_TOKEN_") and v)
+          allow = os.environ.get("CLAUDE_TOKEN_POOL", "").split()
+          if allow:
+              missing = [x for x in allow if x not in seats]
+              if missing:
+                  print(f"In CLAUDE_TOKEN_POOL but not a secret here: {' '.join(missing)}")
+              seats = [x for x in allow if x in seats]
+          preferred =[x for x in os.environ.get("CLAUDE_TOKEN_PREFERRED", "").split() if x in seats]
+          rest = [x for x in seats if x not in preferred]
+          if rest:
+              k = int(os.environ.get("GITHUB_RUN_NUMBER", "0")) % len(rest)
+              rest = rest[k:] + rest[:k]
+          skip = set(os.environ.get("SKIP_SEATS", "").split())
+          order = [x for x in preferred + rest if x not in skip]
+          model = os.environ.get("MODEL") or "opus"
+          base = {k: v for k, v in os.environ.items()
+                  if k != "ALL_SECRETS" and not k.startswith(("ANTHROPIC_", "CLAUDE_CODE_OAUTH"))}
+
+          print(f"{len(seats)} seats in the pool; probing on {model} in this order: {' '.join(order) or '(none)'}")
+          chosen, tried = "", []
+          for name in order:
+              if len(tried) >= 8:
+                  print("Stopping after 8 probes.")
+                  break
+              tried.append(name)
+              env = dict(base, CLAUDE_CODE_OAUTH_TOKEN=secrets["CLAUDE_TOKEN_" + name],
+                         CLAUDE_CONFIG_DIR=tempfile.mkdtemp())
+              try:
+                  p = subprocess.run(["claude", "-p", "Reply with the single word ok.", "--model", model,
+                                      "--output-format", "json", "--max-turns", "1"],
+                                     env=env, capture_output=True, text=True, timeout=120,
+                                     stdin=subprocess.DEVNULL)
+                  res = json.loads(p.stdout or "{}")
+              except Exception as exc:
+                  print(f"  {name}: probe failed ({type(exc).__name__}), skipping")
+                  continue
+              if res and not res.get("is_error"):
+                  chosen = name
+                  print(f"  {name}: ok")
+                  break
+              msg = re.sub(r"\s+", " ", str(res.get("result") or res.get("errors") or "no result"))[:160]
+              print(f"  {name}: skipped ({msg})")
+
+          print(f"Seat for this attempt: {chosen or '(none answered; using CLAUDE_CODE_OAUTH_TOKEN)'}")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"seat={chosen}\n")
+              fh.write(f"tried={' '.join(tried)}\n")
+          PY
+          command -v claude >/dev/null || npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 || true
+          python3 "$RUNNER_TEMP/pick_seat.py"
+
       - name: Run Claude Code
         id: claude
         # The job decides what to do with a failure in the next steps, so this
@@ -279,7 +355,7 @@ jobs:
         continue-on-error: true
         uses: anthropics/claude-code-action@v1
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_code_oauth_token: ${{ secrets[format('CLAUDE_TOKEN_{0}', steps.pick.outputs.seat)] || secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # claude-code-action v1.0.273+ denies python, pip, node and other code-running
           # commands on PRs whose author lacks write access, and treats every bot as such.
           # Lift that only for PRs the Claude app opened (in-repo branches that only
@@ -330,6 +406,7 @@ jobs:
           EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
           PRIMARY_MODEL_RESOLVED: ${{ steps.select.outputs.model }}
           FALLBACK_MODEL_RESOLVED: ${{ steps.select.outputs.fallback_model }}
+          SEAT: ${{ steps.pick.outputs.seat }}
         run: |
           python3 - <<'PY'
           import json, os, re
@@ -385,19 +462,25 @@ jobs:
           if not messages:
               reason = "no execution file, so the cause is unknown"
 
-          retry = bool(fallback) and (billing or retry_any)
-          if not fallback:
-              reason += "; no fallback model is configured"
+          # A spent allowance belongs to one seat, so with a seat pool the
+          # retry can stay on the same model and move to another seat.
+          seat = os.environ.get("SEAT", "")
+          retry_model = fallback or primary
+          retry = (billing and bool(fallback or seat)) or (retry_any and bool(fallback))
+          if not fallback and not seat:
+              reason += "; no fallback model or seat pool is configured"
           elif retry_any and not billing:
               reason += "; retrying anyway because RETRY_ON_ANY_FAILURE is true"
 
           if billing and retry:
-              note = (f"Out of usage credits for `{primary}`. Retrying with"
-                      f" `{fallback}` in this same job; the retry posts its own"
+              where = f"seat {seat} (`{primary}`)" if seat else f"`{primary}`"
+              how = " on another seat from the pool" if seat else ""
+              note = (f"Out of usage credits on {where}. Retrying with"
+                      f" `{retry_model}`{how} in this same job; the retry posts its own"
                       " progress comment in this thread.")
           elif billing:
-              note = (f"Out of usage credits for `{primary}`, and no different"
-                      " fallback model is configured, so there is no retry.")
+              note = (f"Out of usage credits for `{primary}`, and there is no"
+                      " seat pool or different fallback model, so there is no retry.")
           elif retry:
               note = (f"The `{primary}` attempt failed with something other"
                       f" than a spent allowance. Retrying with `{fallback}` in"
@@ -409,7 +492,7 @@ jobs:
           reason = re.sub(r"\s+", " ", reason).strip()[:300]
           note = re.sub(r"\s+", " ", note).strip()
           print(f"Allowance spent: {billing}")
-          print(f"Retry with {fallback or '(none)'}: {retry}")
+          print(f"Retry with {retry_model if retry else '(none)'}: {retry}")
           print(f"Reason: {reason}")
           print(f"Note: {note or '(none)'}")
 
@@ -457,7 +540,17 @@ jobs:
           gh api -X PATCH "$edit/$comment_id" -f body="$new_body" --jq .id >/dev/null
           echo "Annotated comment $comment_id: $NOTE"
 
-      # Second attempt, on the fallback model. This is a fresh session: it posts
+      # The retry probes only the seats the first pick had not tried yet.
+      - name: Pick another seat for the retry
+        id: pick2
+        if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
+        env:
+          ALL_SECRETS: ${{ toJSON(secrets) }}
+          MODEL: ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }}
+          SKIP_SEATS: ${{ steps.pick.outputs.tried }}
+        run: python3 "$RUNNER_TEMP/pick_seat.py"
+
+      # Second attempt, on another seat (and the fallback model, if one is set). This is a fresh session: it posts
       # its own tracking comment and starts the task from the beginning, so the
       # note below tells it to look at what the first attempt already did.
       - name: Run Claude Code on the fallback model
@@ -465,7 +558,7 @@ jobs:
         if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
         uses: anthropics/claude-code-action@v1
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_code_oauth_token: ${{ secrets[format('CLAUDE_TOKEN_{0}', steps.pick2.outputs.seat)] || secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # claude-code-action v1.0.273+ denies python, pip, node and other code-running
           # commands on PRs whose author lacks write access, and treats every bot as such.
           # Lift that only for PRs the Claude app opened (in-repo branches that only
@@ -505,9 +598,9 @@ jobs:
           # https://github.com/ME-EN-372/me-en-372-machine-design-private/blob/main/docs/claude-yml-model-fallback.md
           branch_prefix: claude/retry-
           prompt: |
-            An earlier attempt at this same task ran on ${{ steps.select.outputs.model }} and stopped when that model's allowance ran out. You are the retry, running on ${{ steps.select.outputs.fallback_model }}. Before you start, check this thread for anything that attempt already posted, and check the claude/ branches left in this checkout (git branch --list 'claude/*') for anything it committed, whether or not it pushed; carry on from there rather than redoing it. Its progress comment is the one above yours that reports an error.
+            An earlier attempt at this same task ran on ${{ steps.select.outputs.model }} and stopped when its allowance ran out. You are the retry, running on ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }} with a different seat. Before you start, check this thread for anything that attempt already posted, and check the claude/ branches left in this checkout (git branch --list 'claude/*') for anything it committed, whether or not it pushed; carry on from there rather than redoing it. Its progress comment is the one above yours that reports an error.
           claude_args: |
-            --model ${{ steps.select.outputs.fallback_model }}
+            --model ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }}
             --effort ${{ steps.select.outputs.effort }}
             --permission-mode bypassPermissions
 
@@ -537,6 +630,6 @@ jobs:
         run: |
           echo "First attempt (${{ steps.select.outputs.model }}) failed: $REASON"
           if [[ "$RETRIED" == "true" ]]; then
-            echo "Retry on ${{ steps.select.outputs.fallback_model }} also failed."
+            echo "Retry on ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }} (seat ${{ steps.pick2.outputs.seat || 'CLAUDE_CODE_OAUTH_TOKEN' }}) also failed."
           fi
           exit 1
