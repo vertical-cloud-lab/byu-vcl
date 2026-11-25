@@ -1,0 +1,195 @@
+{
+ "name": "vertical_lab_highlight",
+ "seconds": 168.87,
+ "size": [
+  1280,
+  720
+ ],
+ "fps": 30,
+ "built": "2026-11-25T22:22:02Z",
+ "mp4": "out/highlight/vertical_lab_highlight.mp4",
+ "sha256": "81b1cc28c72756bd4e1261c70f4dece572359c0c2967bf3b057a1a0197e8c505",
+ "mb": 22.9,
+ "source": {
+  "longform": "https://www.youtube.com/watch?v=79FL6mTFSsI",
+  "itag": "232",
+  "note": "YouTube's 720p H.264 HLS copy of round 15's long-form; round 15's own renders (out/r15/) were not kept"
+ },
+ "shots": [
+  {
+   "n": 1,
+   "key": "charge",
+   "tag": "1/7 Charge",
+   "names": "Multi-doser (chain carousel v5) over an A&D HR-202i · Specac Atlas Autotouch vacuum press",
+   "what": "Tray B at the opening: the arm brings each Al cup to the doser, dosed with Si by weight (shown faster)",
+   "chapter": "Alloy route 1/7: the charge cups, machined, dosed, weighed and pressed under vacuum",
+   "starts_s": 0.0,
+   "longform": [
+    {
+     "t0": 1166.1,
+     "t1": 1183.4,
+     "at": "19:26",
+     "link": "https://youtu.be/79FL6mTFSsI?t=1166",
+     "band_top_px": 643
+    }
+   ],
+   "still": "out/highlight/01_charge.png",
+   "still_longform_s": 1176.0
+  },
+  {
+   "n": 2,
+   "key": "atomize",
+   "tag": "2/7 Atomize",
+   "names": "AMAZEMET rePowder ultrasonic atomizer · both MiR250 + UR12e units steering its plate",
+   "what": "The melt stream sprays off the vibrating plate as powder; the lab's own bronze run beside the model",
+   "chapter": "Alloy route 2/7: melt and atomize in the rePowder",
+   "starts_s": 22.8,
+   "longform": [
+    {
+     "t0": 1693.7,
+     "t1": 1710.3,
+     "at": "28:13",
+     "link": "https://youtu.be/79FL6mTFSsI?t=1693",
+     "band_top_px": 595
+    }
+   ],
+   "still": "out/highlight/02_atomize.png",
+   "still_longform_s": 1702.0
+  },
+  {
+   "n": 3,
+   "key": "sieve_print",
+   "tag": "3/7 Sieve and print",
+   "names": "Retsch AS 200 sieve shaker",
+   "what": "The arm clamps the stack and the shaker sorts the powder; the 20–63 µm cut feeds the Aconity MIDI",
+   "chapter": "Alloy route 3/7: sieve and print",
+   "starts_s": 39.4,
+   "longform": [
+    {
+     "t0": 2830.2,
+     "t1": 2847.4,
+     "at": "47:10",
+     "link": "https://youtu.be/79FL6mTFSsI?t=2830",
+     "band_top_px": 643
+    }
+   ],
+   "still": "out/highlight/03_sieve_print.png",
+   "still_longform_s": 2846.0
+  },
+  {
+   "n": 4,
+   "key": "powder",
+   "tag": "4/7 Powder checks",
+   "names": "Malvern Mastersizer 3000 + Aero S, laser diffraction, in cutaway",
+   "what": "Size distribution: the lab's own Al 4047 powder counted by SEM; the laser result is computed",
+   "chapter": "Alloy route 4/7: the powder, checked",
+   "starts_s": 56.6,
+   "longform": [
+    {
+     "t0": 3194.6,
+     "t1": 3211.9,
+     "at": "53:14",
+     "link": "https://youtu.be/79FL6mTFSsI?t=3194",
+     "band_top_px": 643
+    }
+   ],
+   "still": "out/highlight/04_powder.png",
+   "still_longform_s": 3207.0
+  },
+  {
+   "n": 5,
+   "key": "tensile",
+   "tag": "5/7 Machining and tensile",
+   "names": "Instron 68FM-100 with a 3119-608 environmental chamber",
+   "what": "A heat-treated bar, cut from the build on the wire EDM, pulled at 200 °C (the curve is illustrative)",
+   "chapter": "Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature",
+   "starts_s": 73.9,
+   "longform": [
+    {
+     "t0": 3621.0,
+     "t1": 3638.4,
+     "at": "1:00:21",
+     "link": "https://youtu.be/79FL6mTFSsI?t=3621",
+     "band_top_px": 643
+    }
+   ],
+   "still": "out/highlight/05_tensile.png",
+   "still_longform_s": 3635.0
+  },
+  {
+   "n": 6,
+   "key": "prep",
+   "tag": "6/7 Sample prep",
+   "names": "LECO PX500 grinder/polisher · a magazine of pre-loaded discs (ours)",
+   "what": "The arm sets the 320-grit disc on the magnetic platen; the head's pistons press the mounts down",
+   "chapter": "Alloy route 6/7: sample prep: section, mount, grind and polish",
+   "starts_s": 91.3,
+   "longform": [
+    {
+     "t0": 3862.5,
+     "t1": 3879.75,
+     "at": "1:04:22",
+     "link": "https://youtu.be/79FL6mTFSsI?t=3862",
+     "band_top_px": 643
+    }
+   ],
+   "still": "out/highlight/06_prep.png",
+   "still_longform_s": 3868.0
+  },
+  {
+   "n": 7,
+   "key": "characterize",
+   "tag": "7/7 Characterization",
+   "names": "Hitachi TM4000PlusII SEM · Oxford AZtecOne EDS",
+   "what": "BSE image and EDS maps of the polished section: illustrative; the inset is the lab's own powder",
+   "chapter": "Alloy route 7/7: characterizing the build",
+   "starts_s": 108.55,
+   "longform": [
+    {
+     "t0": 4015.0,
+     "t1": 4032.6,
+     "at": "1:06:55",
+     "link": "https://youtu.be/79FL6mTFSsI?t=4015",
+     "band_top_px": 643
+    }
+   ],
+   "still": "out/highlight/07_characterize.png",
+   "still_longform_s": 4023.0
+  },
+  {
+   "n": 8,
+   "key": "whole_lab",
+   "tag": "The whole lab at speed",
+   "names": "Both Kardex Shuttles, the floor machines and the arms, a year sped up",
+   "what": "From the lab's schedule model, not measurements: alloys atomized, printed and fully tested",
+   "chapter": "The whole lab at speed: an hour, a day, a week, a month",
+   "starts_s": 126.15,
+   "longform": [
+    {
+     "t0": 5288.75,
+     "t1": 5318.45,
+     "at": "1:28:08",
+     "link": "https://youtu.be/79FL6mTFSsI?t=5288",
+     "band_top_px": 619
+    },
+    {
+     "t0": 5319.6,
+     "t1": 5326.6,
+     "at": "1:28:39",
+     "link": "https://youtu.be/79FL6mTFSsI?t=5319",
+     "band_top_px": null
+    }
+   ],
+   "still": "out/highlight/08_whole_lab.png",
+   "still_longform_s": 5316.0
+  }
+ ],
+ "youtube": {
+  "id": "Br2IlDjcysY",
+  "url": "https://www.youtube.com/watch?v=Br2IlDjcysY",
+  "privacy": "unlisted",
+  "title": "The vertical cloud lab in under three minutes: the alloy route, chapter by chapter (3-D, round 15)",
+  "sha256": "81b1cc28c72756bd4e1261c70f4dece572359c0c2967bf3b057a1a0197e8c505",
+  "uploaded": "2026-11-25T22:22:26Z"
+ }
+}
