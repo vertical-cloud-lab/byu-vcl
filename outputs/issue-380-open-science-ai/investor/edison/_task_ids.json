@@ -1,0 +1,88 @@
+{
+ "inv_coss_financial_evidence": {
+  "task_id": "15621a66-fecd-4ed5-a1ee-8d69fe74e577",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "From an equity investor's point of view, what does the empirical evidence show about the financial performance of commercial open-source software (COSS) companies compared with proprietary software companies? Cover revenue growth, gross and operating margins, conversion of free users to paying customers, net revenue retention, valuation multiples, post-IPO stock returns, acquisition prices relative to IPO prices, and venture-capital exit outcomes including failures and shutdowns. Give particular weight to independent academic studies and to evidence that cuts against open source as a business model (free-riding by cloud providers, open-core cannibalization, licence changes and the forks they provoke). Assess the methodology and possible conflicts of interest of industry reports produced by open-source-focused venture firms, foundations or trade groups (for example the 2025 Linux Foundation / Serena / COSSA report on COSS venture outcomes). Report numbers, samples, years and limitations.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:49.343775+00:00"
+ },
+ "inv_open_hardware_risks": {
+  "task_id": "86a0501b-d2db-4b1c-8f38-6456ceba86ef",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "What are the main business and investment risks for companies whose products are open-source hardware, including scientific and laboratory instruments, 3D printers and electronics? Cover cloning and low-cost copies, margin compression, the difficulty of protecting designs (patents, trademarks, licences such as CERN-OHL), liability, certification and regulatory costs, inventory and working capital, small or price-sensitive markets such as academic labs, and access to venture capital. What is the evidence on the financial outcomes of open-hardware firms (for example Arduino, Prusa Research, MakerBot, LulzBot/Aleph Objects, Adafruit, SparkFun, Opentrons, OpenBCI, Open Bionics), and has any reached a venture-scale outcome? Include counterexamples and quantitative data.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:50.156055+00:00"
+ },
+ "inv_disclosure_ip_physsci": {
+  "task_id": "eb22d598-4804-4dc0-9614-8f805bdac2f8",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "How does open disclosure (publishing results, data, designs and code openly and early) affect the ability of science-based startups in the physical sciences and engineering (materials, chemistry, devices, manufacturing) to secure patents, attract venture capital and license technology? Include evidence on how patents affect startup financing and growth (for example Farre-Mensa, Hegde & Ljungqvist 2020; Hsu & Ziedonis 2013), on patent-paper pairs and the disclosure-appropriability trade-off, on novelty bars and grace periods (US 35 U.S.C. 102(b)(1) versus Europe), on university technology transfer under Bayh-Dole, and on cases where openness instead increased follow-on investment or adoption. What risks does an open-by-default policy create for investors in a university spin-out, and how have successful science companies managed them?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:51.291318+00:00"
+ },
+ "inv_lab_automation_outcomes": {
+  "task_id": "dcfc1e4f-1661-470e-8e79-2c855c8e5e04",
+  "job": "job-futurehouse-paperqa3",
+  "query": "What have been the financial outcomes and main failure modes of venture investments in laboratory automation, cloud laboratories, self-driving laboratories and AI-driven materials and chemistry discovery since 2010 (for example Zymergen, Ginkgo Bioworks, Strateos/Transcriptic, Emerald Cloud Lab, Kebotix, Citrine Informatics, Opentrons, Berkeley Lights, Recursion, Chemspeed, Periodic Labs, Lila Sciences)? Cover market size, customer concentration, dependence on academic and government research budgets, sales cycles, capital intensity, technical and reproducibility risk, time to revenue, valuations, down rounds, write-downs and exits. What lessons do investors and analysts draw?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:52.372671+00:00"
+ },
+ "inv_ai_age_open_economics": {
+  "task_id": "e264655a-7c5b-4ed2-8839-e2aaf867d8a0",
+  "job": "job-futurehouse-paperqa3",
+  "query": "How is generative AI changing the economics and risks of open-source software, open data and open science for the organizations that produce them? Include evidence on AI models trained on open code and open scientific data (who captures the value), declines in community Q&A and documentation traffic after ChatGPT (for example studies of Stack Overflow), effects of AI coding assistants on open-source contribution and maintenance, load from AI crawlers on open infrastructure, AI-generated low-quality contributions and bug reports burdening maintainers, and whether AI lowers the cost of copying or re-implementing open products. What do these imply for investors in open-source or open-science businesses?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:53.048550+00:00"
+ },
+ "inv_public_funding_dependence": {
+  "task_id": "c7016e31-eec1-4bd4-a4b8-d3ef663b61e7",
+  "job": "job-futurehouse-paperqa3",
+  "query": "How much do open scientific infrastructure, open-source research software and the academic market for laboratory tools depend on government research funding, and what happens to them when that funding is cut or becomes volatile? Include evidence on maintainer concentration and the bus factor (for example the finding by Hoffmann, Nagle and Zhou 2024 that a small share of developers create most of the value of open-source software), sustainability failures of open research infrastructure, the share of laboratory-equipment and life-science-tools revenue that comes from academic and government customers, and the effects of US federal science budget changes in 2025 and 2026 (NSF, NIH, DOE, caps on indirect costs) on research spending and on companies that sell to academic labs.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:53.951832+00:00"
+ },
+ "inv_precedent_open_hw_unicorn": {
+  "task_id": "9df49b48-062e-4321-81a9-575eed39f1f3",
+  "job": "job-futurehouse-paperqa3-precedent",
+  "query": "Has any company whose main products are open-source hardware (complete design files published under an open-source hardware licence) reached a valuation or an exit of US$1 billion or more?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:55.131511+00:00"
+ },
+ "inv_precedent_open_sdl_business": {
+  "task_id": "77ff8a74-7304-4623-ac46-9bd3b849a8b2",
+  "job": "job-futurehouse-paperqa3-precedent",
+  "query": "Has any company built a profitable or venture-backed business by selling open-source self-driving laboratory or open-source laboratory automation systems (published hardware designs and software) for chemistry or materials science?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:56.060511+00:00"
+ },
+ "inv_redteam_round1": {
+  "task_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "The attached files are a research brief (FINDINGS_BRIEF.md) and recommendations (RECOMMENDATIONS.md) on 'the value of open science in the age of AI', written by an AI agent (Claude) for a university lab that builds open-source self-driving laboratories and favours open science, together with the agent's dataset of 179 organizations (companies_master.csv, scored 0-4 for openness at founding and now under SCHEMA.md, with funding, latest value and ownership status), their dated licence and access events (events.csv), and draft proposal language for the lab's autonomous alloy-discovery lab (suggested_proposal_language.md). Act as a skeptical member of a venture fund's investment committee who is evaluating an open-science or open-source company in the physical sciences, for example a spin-out of that alloy-discovery lab. (1) Identify the claims in the brief and recommendations that are weakest, overstated, or framed in a way that favours openness, and explain why. (2) Using the dataset, test whether openness (now, or at founding) is associated with value captured: compute value-to-funding multiples, acquisition, take-private and shutdown rates, and value distributions by openness level and by sector; quantify survivorship and selection bias where you can; report effect sizes with uncertainty and sample sizes. (3) List the ten most important concerns an investor would have about this kind of investment, ranked by severity, each with the evidence for and against it. (4) State what evidence would change your assessment. Be direct and do not soften conclusions to please the lab.",
+  "files": [
+   "FINDINGS_BRIEF.md",
+   "RECOMMENDATIONS.md",
+   "SCHEMA.md",
+   "companies_master.csv",
+   "events.csv",
+   "suggested_proposal_language.md"
+  ],
+  "data_entries": [
+   "data_entry:859e3557-a969-4e29-aad1-6e556ddadb7b",
+   "data_entry:2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+   "data_entry:ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+   "data_entry:f799f895-0e87-400d-a625-44b7e4685dc0",
+   "data_entry:019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+   "data_entry:c050020b-f742-4dea-b2e7-180ec9af50cf"
+  ],
+  "submitted_utc": "2026-11-25T00:45:58.803660+00:00"
+ }
+}
