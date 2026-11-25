@@ -803,10 +803,12 @@ def measure(sample, campaign, rng, fidelity="fast", **kw):
     q = quantify(sim["E"], sim["counts"], campaign, return_fit=(fidelity == "full"))
     out = dict(comp=q["comp"], lod=q["lod"])
     if fidelity == "full":
-        out["raw"] = dict(E_keV=sim["E"], counts=sim["counts"], expected=sim["expected"], fit=q["fit"],
+        out["raw"] = dict(E_keV=sim["E"], counts=sim["counts"], fit=q["fit"],
                           lines=sim["lines"], real_s=sim["real_s"], live_s=LIVE_S, dead_frac=sim["dead_frac"],
-                          pileup_frac=sim["pileup_frac"], R_in_cps=sim["R_in"], layers_nm=sim["layers_nm"],
-                          true_wt={e: 100 * v for e, v in sim["wf"].items()})
+                          pileup_frac=sim["pileup_frac"], R_in_cps=sim["R_in"])
+        if kw.get("with_truth"):                 # the noise-free spectrum and the true composition: figures only
+            out["raw"].update(expected=sim["expected"], layers_nm=sim["layers_nm"],
+                              true_wt={e: 100 * v for e, v in sim["wf"].items()})
     return out
 
 
@@ -891,7 +893,7 @@ def gallery(outdir, samples):
     show = [("flaime_al", "AlSi10Mg"), ("onr_cu", "NAB")]
     for k, (camp, nm) in enumerate(show):
         lot, part = samples[camp][nm]
-        r = measure(part, camp, np.random.default_rng(1), fidelity="full")
+        r = measure(part, camp, np.random.default_rng(1), fidelity="full", with_truth=True)
         raw = r["raw"]
         ax = fig.add_subplot(gs[k, :])
         E, y = raw["E_keV"], raw["counts"]

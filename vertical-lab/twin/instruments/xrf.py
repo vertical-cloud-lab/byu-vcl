@@ -345,8 +345,9 @@ def measure(sample, campaign, rng, fidelity="fast", **kw):
     comp, lod = quantify(sim["meas"], campaign, sim["kind"])
     out = dict(comp=comp)
     if fidelity == "full":
-        out["raw"] = dict(lod=lod, meas=sim["meas"], conditions=CONDITIONS, spectra=_spectra(sim),
-                          true_wt={e: 100 * v for e, v in sim["wf"].items()}, air_frac=sim["air"])
+        out["raw"] = dict(lod=lod, meas=sim["meas"], conditions=CONDITIONS, spectra=_spectra(sim))
+        if kw.get("with_truth"):                 # figures only
+            out["raw"].update(true_wt={e: 100 * v for e, v in sim["wf"].items()}, air_frac=sim["air"])
     return out
 
 
@@ -470,7 +471,7 @@ def gallery(outdir, samples):
     fig = plt.figure(figsize=(14, 8))
     gs = fig.add_gridspec(2, 3)
     lot, part = samples["onr_cu"]["NAB"]
-    r = measure(lot, "onr_cu", np.random.default_rng(2), fidelity="full")
+    r = measure(lot, "onr_cu", np.random.default_rng(2), fidelity="full", with_truth=True)
     for k, cond in enumerate(CONDITIONS):
         ax = fig.add_subplot(gs[0, k])
         E, y, lines = r["raw"]["spectra"][cond]
@@ -521,7 +522,7 @@ def thumbnail(path, samples):
     from matplotlib import patheffects as pe
     halo = [pe.withStroke(linewidth=8, foreground="white", alpha=0.9)]
     lot, part = samples["onr_cu"]["NAB"]
-    r = measure(lot, "onr_cu", np.random.default_rng(2), fidelity="full")
+    r = measure(lot, "onr_cu", np.random.default_rng(2), fidelity="full", with_truth=True)
     E, y, _ = r["raw"]["spectra"]["mid"]
     fig = plt.figure(figsize=(5.12, 5.12), dpi=100)
     ax = fig.add_axes([0.06, 0.08, 0.9, 0.86])

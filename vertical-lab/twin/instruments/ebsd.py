@@ -692,8 +692,10 @@ def measure(sample, campaign, rng, fidelity="fast", **kw):
             kik["beta'"] = kikuchi_pattern(qf[j, i], "beta'", rng=rng).astype(np.float32)
         out["raw"] = dict(quat=qf.astype(np.float32), ipf=ipf, phase=m["phase"], grains=lab.astype(np.int32),
                           gb=gb, kam=extra["kam"].astype(np.float32), bc=m["bc"].astype(np.float32),
-                          step_um=m["step"], kikuchi=kik, true=_truths(m["pm"]), phase_names={
+                          step_um=m["step"], kikuchi=kik, phase_names={
                               -1: "not indexed", 0: "FCC", 1: "beta'", 2: "kappa (BCC)"})
+        if kw.get("with_truth"):                 # the latent grains/phases, for figure annotations only
+            out["raw"]["true"] = _truths(m["pm"])
     return out
 
 
@@ -826,7 +828,7 @@ def gallery(outdir, samples=None):
     res = {}
     for k, (camp, nm, part) in enumerate(items):
         rng = np.random.default_rng(7 + k)
-        out = measure(part, camp, rng, fidelity="full")
+        out = measure(part, camp, rng, fidelity="full", with_truth=True)
         res[(camp, nm)] = out
         raw = out["raw"]
         al = camp == "flaime_al"

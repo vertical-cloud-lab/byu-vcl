@@ -374,7 +374,7 @@ class Campaign:
             out = self.truth.sim_heat(comp, proc, self.rng) if hasattr(self.truth, "sim_heat") else \
                 self.truth.sim_heatflow(comp, proc, self.rng)
         A = ACTIONS[self.key][kind]
-        t_res, usd = self._route(A["steps"], now_h, kind)
+        t_res, usd = self._route(A["steps"], now_h, kind, tag=dict(design=did, node="sim"))
         self.charge(now_h, A["usd"] + usd, kind)
         self._emit(t_res, dict(type="sim", kind=kind, design=did, proc=proc, out=out))
         return True

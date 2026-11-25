@@ -213,7 +213,8 @@ ROBOT_H = {"default": 0.15, "byu_icpms": 0.02, "psd": 0.1, "utah_midi": 0.5, "ut
 PERSON_JOB_H = {"atomizer": 1.0}       # the crucible needs a person (upkeep.py); extra to HANDLING_H
 CONSUMABLES_FRAC = (0.10, "assumed: consumables 10 % of the price")
 ROBOT_UNITS, ROBOT_AVAIL = 2, 0.9      # two MiR250 + UR12e units, 90 % available (assumed)
-DEMAND_H_WEEK = (20.0, "assumed: 20 h a week of outside bookings per instrument, a busy core-facility instrument")
+DEMAND_H_WEEK = (10.0, "assumed: 10 h a week of outside bookings per instrument, about a quarter of a busy core-"
+                       "facility instrument's week; the sensitivity table runs 5-40")
 
 
 def fill(util: dict, cap: float = 0.6, price: str = "rate", demand_h_week: float | None = None,
@@ -566,12 +567,117 @@ def validate(seeds=4, levels=(0.0, 0.25, 0.5, 0.7, 0.85), facility="vertical_lab
     return out
 
 
+# ------------------------------------------------------------------------------------------------------- round 2
+def _sim2_worker(args):
+    """One bench2 run (the benchmark's own construction, twin.bench2.run_one) with outside jobs booked first through
+    Twin(external=...); its files go to `outdir`, never to the benchmark's out/twin2."""
+    cfg, ext_h, outdir = args
+    from twin import bench2 as B2, campaign as C
+    d = Path(outdir)
+    d.mkdir(parents=True, exist_ok=True)
+    B2.OUT, B2.EVENTS, B2.RUNS = d, d / "events", d / "runs"
+    ext = external_callable(ext_h, float(cfg.get("days", 365)) * 24.0, cfg["seed"]) if ext_h else None
+    orig = C.Twin.__init__
+    if ext is not None:
+        def init(self, *a, **k):
+            k["external"] = ext
+            orig(self, *a, **k)
+        C.Twin.__init__ = init
+    try:
+        row = B2.run_one(dict(cfg, events=True))
+    finally:
+        C.Twin.__init__ = orig
+    ev = json.loads((B2.EVENTS / f"{B2.run_id(cfg)}.json").read_text())
+    row.pop("events_file", None)
+    row["hook"] = "twin"
+    return row, ev
+
+
+def validate2(policies=("bofn", "heuristic"), seeds=4, levels=(0.0, 0.5, 0.7, 0.85), facility="vertical_lab",
+              workers=2, scratch="/tmp/econ_val") -> dict:
+    """The slowdown validation on the round-2 benchmark (twin.bench2): for each policy, `seeds` twin-years with the
+    lab empty, then with outside jobs bringing every station with catalogue jobs to each level; time to T1 (the
+    state of the art, bench2.targets()) on the new-alloy curves, cycle time, throughput, and Kingman's estimate on
+    the empty lab's logs."""
+    from concurrent.futures import ProcessPoolExecutor
+    from twin import accel as AC, bench2 as B2
+    T1 = B2.targets()["T1"]
+    base_cfg = lambda pol, s: dict(policy=pol, seed=s, facility=facility, stock="stocked", days=365,
+                                   years_budget=1.0, crucible=225, reuse=True, scenario="historical")
+    tasks = [(base_cfg(p, s), None, f"{scratch}/{p}_0_s{s}") for p in policies for s in range(seeds)]
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        base = list(ex.map(_sim2_worker, tasks))
+    by = {(t[0]["policy"], 0.0): [] for t in tasks}
+    for t, r in zip(tasks, base):
+        by[(t[0]["policy"], 0.0)].append(r)
+    d = OUT / "events_validate"
+    d.mkdir(parents=True, exist_ok=True)
+    for (row, ev) in base:
+        c = row["cfg"]
+        (d / f"{c['facility']}_{c['policy']}_s{c['seed']}.json").write_text(json.dumps(ev))
+    tasks2 = []
+    for p in policies:
+        U = mean_utilization([ev for _, ev in by[(p, 0.0)]])
+        for lv in levels:
+            if lv <= 0:
+                continue
+            ext_h = {k: max(lv * u["available_h"] - u["busy_h"], 0.0) for k, u in U.items() if BY_STATION.get(k)}
+            for s in range(seeds):
+                tasks2.append((base_cfg(p, s), ext_h, f"{scratch}/{p}_{lv:g}_s{s}", lv))
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        res = list(ex.map(_sim2_worker, [t[:3] for t in tasks2]))
+    for t, r in zip(tasks2, res):
+        by.setdefault((t[0]["policy"], t[3]), []).append(r)
+    out = dict(seeds=seeds, levels=list(levels), facility=facility, runs=len(base) + len(res), hook="twin",
+               engine="twin.bench2 (benchmark snapshot)", targets=T1, policies={})
+    for p in policies:
+        P = dict(campaigns={}, util={})
+        for lv in levels:
+            Ul = mean_utilization([ev for _, ev in by[(p, lv)]])
+            P["util"][str(lv)] = {k: round(v["util"], 4) for k, v in Ul.items()}
+        for camp in ("flaime_al", "onr_cu"):
+            dd = dict(target=T1[camp], days_km=[], days_all=[], best_mean=[], n_dem_mean=[], hit_frac=[],
+                      cycle_days=[], kingman=[])
+            for lv in levels:
+                rows = by[(p, lv)]
+                days, ok = [], []
+                for row, _ in rows:
+                    c = row["campaigns"][camp]
+                    x, h = AC.time_to_target(c.get("curve_new") or c["curve"], T1[camp], "days", 365.0)
+                    days.append(x)
+                    ok.append(h)
+                dd["days_all"].append([round(float(x), 2) if h else None for x, h in zip(days, ok)])
+                dd["days_km"].append(AC.km_median(days, ok))
+                dd["best_mean"].append(float(np.mean([r["campaigns"][camp].get("best_new", r["campaigns"][camp]["best"])
+                                                      for r, _ in rows])))
+                dd["n_dem_mean"].append(float(np.mean([r["campaigns"][camp]["n_demonstrated"] for r, _ in rows])))
+                dd["hit_frac"].append(float(np.mean(ok)))
+                cyc = [cycle_days(ev, camp) for _, ev in rows]
+                dd["cycle_days"].append(float(np.nanmedian(cyc)) if np.isfinite(cyc).any() else None)
+                ks = [slowdown(ev, camp, levels=[lv])["factor"][0] for _, ev in by[(p, 0.0)]]
+                dd["kingman"].append(float(np.nanmean(ks)) if lv > 0 else 1.0)
+            b0, c0, n0 = dd["days_km"][0], dd["cycle_days"][0], dd["n_dem_mean"][0]
+            dd["slowdown_days"] = [(x / b0 if (np.isfinite(x) and b0 and np.isfinite(b0)) else None) for x in dd["days_km"]]
+            dd["slowdown_cycle"] = [(x / c0 if (x is not None and c0) else None) for x in dd["cycle_days"]]
+            dd["throughput_ratio"] = [x / n0 if n0 else None for x in dd["n_dem_mean"]]
+            P["campaigns"][camp] = dd
+        out["policies"][p] = P
+    return out
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "events"
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 4
     if cmd == "events":
         res = make_events(n)
         print(f"{len(res)} event logs in {OUT / 'events'}")
+    elif cmd == "validate2":
+        pols = tuple(sys.argv[3].split(",")) if len(sys.argv) > 3 else ("bofn", "heuristic")
+        v = validate2(pols, n)
+        OUT.mkdir(parents=True, exist_ok=True)
+        (OUT / "validate.json").write_text(json.dumps(v, indent=1, default=float))
+        print(json.dumps({p: {k: dict(cycle=d["slowdown_cycle"], days=d["slowdown_days"], kingman=d["kingman"])
+                              for k, d in P["campaigns"].items()} for p, P in v["policies"].items()}))
     elif cmd == "validate":
         v = validate(n)
         OUT.mkdir(parents=True, exist_ok=True)

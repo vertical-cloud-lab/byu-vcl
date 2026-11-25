@@ -206,39 +206,55 @@ def compare(curves_ref, curves_new, target: float, costs_ref=None, costs_new=Non
     return out
 
 
+BASIS_WORDS = {"cash": "the cash cost (the twin's ledger)",
+               "operating": "the operating cost (no capex)", "full": "the full cost (with capex)",
+               "operating, alone": "the operating cost (no capex) with the campaigns alone",
+               "full, alone": "the full cost (with capex) with the campaigns alone",
+               "operating, shared": "the operating cost with outside users sharing the lab",
+               "full, shared": "the full cost with outside users sharing the lab"}
+
+
 def headline(cmp: dict, campaign_label: str = "", basis_order=("operating", "full", "cash")) -> str:
     """One sentence from compare()'s output, with bounds where the reference (or the new arm) reached the target in
-    fewer than half its seeds."""
+    fewer than half its seeds, and plain words for slower and costlier."""
     d = cmp["days"]
 
     def f(v):
         return "unbounded" if not np.isfinite(v) else (f"{v:.1f}" if v >= 1 else f"{v:.2f}")
 
-    def pct(v):
-        return "unbounded" if not np.isfinite(v) else f"{v:.0%}"
-    hits = (f" (reached in {d['hit_new']:.0%} of {d['n_new']} seeds against {d['hit_ref']:.0%} of {d['n_ref']})")
+    def speed_words(af, lo=None, hi=None):
+        ci = f" (95% CI {f(lo)}-{f(hi)})" if lo is not None else ""
+        if af >= 1:
+            return f"{f(af)}x faster{ci}"
+        return f"{f(1 / af)}x slower (AF {f(af)}{ci})"
+    hits = f" (reached in {d['hit_new']:.0%} of {d['n_new']} seeds against {d['hit_ref']:.0%} of {d['n_ref']})"
     if d["bound_kind"] == "lower":
         speed = (f"at least {f(d['af_bound'])}x faster: the {cmp['ref']} reached it in fewer than half its seeds "
-                 f"within the horizon")
+                 f"within its horizon")
     elif d["bound_kind"] == "upper":
-        speed = f"at most {f(d['af_bound'])}x as fast (it reached the target in fewer than half its seeds)"
-    elif np.isfinite(d["af"]):
-        speed = f"{f(d['af'])}x faster (95% CI {f(d['lo'])}-{f(d['hi'])})"
+        speed = f"at best {f(d['af_bound'])}x as fast: the {cmp['new']} reached it in fewer than half its seeds"
+    elif np.isfinite(d["af"]) and d["af"] > 0:
+        speed = speed_words(d["af"], d["lo"], d["hi"])
     else:
-        speed = "with neither arm reaching it in half its seeds"
-    parts = [f"{campaign_label}in this simulated benchmark, the {cmp['new']} reached the target ({cmp['target']:g}) "
-             f"{speed}{hits}"]
+        speed = "with neither lab reaching it in half its seeds"
+    parts = [f"{campaign_label}in this simulated benchmark, the {cmp['new']} reached alloys matching or beating the "
+             f"state of the art (true utility {cmp['target']:.3g}) {speed}{hits}"]
     for b in basis_order:
         if b not in cmp["cost"]:
             continue
         y = cmp["cost"][b]
+        w = BASIS_WORDS.get(b, f"the {b} cost")
+        r = y.get("ratio_bound") if y.get("bound_kind") else y.get("ratio")
+        if r is None or not np.isfinite(r):
+            continue
+        more = "more" if r > 1 else "less"
         if y.get("bound_kind") == "upper":
-            parts.append(f"at most {pct(y['ratio_bound'])} of the {b} cost")
+            parts.append(f"at most {r:.2f}x {w}")
         elif y.get("bound_kind") == "lower":
-            parts.append(f"at least {pct(y['ratio_bound'])} of the {b} cost")
-        elif np.isfinite(y["ratio"]):
-            parts.append(f"at {pct(y['ratio'])} of the {b} cost (95% CI {pct(y['lo'])}-{pct(y['hi'])})")
-    return "; ".join(parts) + f"; reference: the {cmp['ref']}."
+            parts.append(f"at least {r:.2f}x {w} (costs more)")
+        else:
+            parts.append(f"{r:.2f}x {w}, i.e. costs {more} (95% CI {f(y['lo'])}-{f(y['hi'])})")
+    return "; ".join(parts) + f"; against the {cmp['ref']}."
 
 
 def curves_of(runs, campaign: str) -> list:

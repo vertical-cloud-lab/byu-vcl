@@ -136,7 +136,11 @@ def measure(sample, campaign, rng, fidelity="fast", **kw):
     out, lod, raw = _chain(comp, rec, rng, full=(fidelity == "full"))
     res = dict(comp=out)
     if fidelity == "full":
-        res["raw"] = dict(per_element=raw, lod=lod, expected_recovery=rec)
+        if not kw.get("with_truth"):             # the digest's true recovery and solution content: figures only
+            raw = {e: {k: v for k, v in d.items() if k not in ("recovery", "c_sol_ugL")} for e, d in raw.items()}
+        res["raw"] = dict(per_element=raw, lod=lod)
+        if kw.get("with_truth"):
+            res["raw"]["expected_recovery"] = rec
     return res
 
 
@@ -200,7 +204,7 @@ def gallery(outdir, samples):
     outdir = Path(outdir)
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     lot, part = samples["flaime_al"]["AlSi10Mg"]
-    r = measure(lot, "flaime_al", np.random.default_rng(3), fidelity="full")
+    r = measure(lot, "flaime_al", np.random.default_rng(3), fidelity="full", with_truth=True)
     ax = axes[0]
     for e, d in r["raw"]["per_element"].items():
         if e in ("Si", "Mg", "Fe"):

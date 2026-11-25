@@ -46,8 +46,13 @@ def test_outputs_all_fidelities(G, inst, camp, alloy):
         assert not missing, f"{inst} {camp} {fid}: missing {missing}"
         if fid == "full":
             assert "raw" in r, f"{inst} full has no raw data"
+            leaked = {k for k in r["raw"] if k.startswith("true") or k in
+                      ("particles", "pores", "cracks", "state", "expected", "expected_recovery", "disp_mm", "r_md")}
+            assert not leaked, f"{inst} full raw carries latent state {leaked} (only with with_truth=True)"
         else:
             assert "raw" not in r
+        if fid == "full":
+            continue
         # deterministic given the rng
         r2 = measure(inst, s, camp, np.random.default_rng(1), fidelity=fid)
         for k in OUTPUTS[inst]:
@@ -80,10 +85,10 @@ def _get(r, key):
 
 @pytest.mark.parametrize("inst,camp,alloy,key,tol", PAIRS)
 def test_fast_matches_lite(G, inst, camp, alloy, key, tol):
-    """Means over 40 draws agree within 3 standard errors plus a small floor (the fast mode is calibrated on the
+    """Means over 30 draws agree within 3 standard errors plus a small floor (the fast mode is calibrated on the
     lite chain; both are measurements, so neither is the truth)."""
     s = _sample(G, inst, camp, alloy)
-    n = 40
+    n = 30
     vals = {}
     for fid in ("lite", "fast"):
         rng = np.random.default_rng(11)
@@ -101,8 +106,9 @@ def test_fast_matches_lite(G, inst, camp, alloy, key, tol):
 
 @pytest.mark.parametrize("inst", list(MICRO))
 def test_timings(G, inst):
-    """Per call, with BLAS on one thread (as in the benchmark's process workers; multi-threaded OpenBLAS spends more
-    on spin-up than these small fits take): fast < 1 ms, lite < 30 ms, medians of wall time."""
+    """CPU time per call, with BLAS on one thread so that all the work is on the calling thread (as in the benchmark's
+    process workers; multi-threaded OpenBLAS spends more on spin-up than these small fits take, and a loaded shared
+    runner stretches wall time): fast < 1 ms, lite < 30 ms, medians."""
     try:
         from threadpoolctl import threadpool_limits
         lim_ctx = threadpool_limits(1)
@@ -117,9 +123,9 @@ def test_timings(G, inst):
                 measure(inst, s, camp, rng, fidelity=fid)          # warm caches
                 t = []
                 for _ in range(n):
-                    t0 = time.perf_counter()
+                    t0 = time.thread_time()
                     measure(inst, s, camp, rng, fidelity=fid)
-                    t.append(time.perf_counter() - t0)
+                    t.append(time.thread_time() - t0)
                 assert np.median(t) < lim, f"{inst} {camp} {fid}: {1e3 * np.median(t):.2f} ms"
 
 

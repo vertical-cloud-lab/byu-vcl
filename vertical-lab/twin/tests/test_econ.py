@@ -207,3 +207,26 @@ def test_external_callable_books_jobs_into_a_facility():
     ext = [j for j in fac.res["utah_midi"].jobs if j[2] == "external"]
     assert 80 <= len(ext) <= 140                                  # about 876 h / 8 h jobs
     assert fac.n_external >= len(ext)
+
+
+def test_plain_words_and_headline_say_slower_and_costlier():
+    ref = _curves([50, 60, 70])
+    new = _curves([100, 120, 140])
+    for c in new:                                                  # the new arm spends twice as much
+        c["curve"] = [[d, 2 * usd, u] for d, usd, u in c["curve"]]
+    c = AC.compare(ref, new, 0.8, {"full, alone": ref}, {"full, alone": new}, n_boot=100)
+    h = AC.headline(c, basis_order=("full, alone",))
+    assert "slower" in h and "costs more" in h
+    txt = E.plain_cost(c, ("full, alone",))["full, alone"]
+    assert txt.startswith("the vertical lab costs more: 2.00x")
+
+
+def test_complete_util_adds_unbooked_stations():
+    U = {"atomizer": dict(name="atomizer", units=1, hours="day6", available_h=2086.0, busy_h=100.0, by_campaign={},
+                          jobs={}, util=0.05, idle_h=1986.0)}
+    run = dict(units={"atomizer": 1, "xrd": 1, "mines_x2": 1}, calendar={"atomizer": "day6", "xrd": "24/7",
+                                                                          "mines_x2": "day"},
+               external={"mines_x2": True})
+    V = E.complete_util(U, "vertical_lab", run)
+    assert "xrd" in V and V["xrd"]["busy_h"] == 0.0 and V["xrd"]["available_h"] == pytest.approx(8760.0)
+    assert "mines_x2" not in V

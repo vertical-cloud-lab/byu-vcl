@@ -55,6 +55,8 @@ EXPERIMENTS = {
     # the 400 cm3 crucible against the 225 cm3 one, and powder reuse off
     "crucible": [_cfg(p, s, crucible=400) for p in ("heuristic", "bofn", "bofn_blend") for s in range(6)],
     "reuse": [_cfg(p, s, reuse=False) for p in ("heuristic", "bofn") for s in range(6)],
+    # the simulators at 'lite' fidelity (small raw data and the real analysis) against 'fast' (emulated errors)
+    "lite": [_cfg(p, s, fidelity="lite") for p in ("heuristic", "bofn") for s in range(3)],
     # copper: what separates the policies when money is not the limit
     "cu": [_cfg(p, s, cu_budget=180_000.0) for p in ("heuristic", "tiered", "gpbo", "bofn", "bofn_blend")
            for s in range(6)],
@@ -127,7 +129,8 @@ def _safe(cfg):
 
 def run_id(cfg):
     parts = [cfg["facility"], cfg["policy"], f"s{cfg['seed']}"]
-    for k, dflt in (("stock", "stocked"), ("crucible", 225), ("reuse", True), ("cu_budget", None)):
+    for k, dflt in (("stock", "stocked"), ("crucible", 225), ("reuse", True), ("cu_budget", None),
+                    ("fidelity", "fast")):
         if cfg.get(k, dflt) != dflt:
             parts.append(f"{k}-{cfg[k]}")
     return "_".join(str(p) for p in parts)

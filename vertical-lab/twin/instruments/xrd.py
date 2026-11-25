@@ -289,10 +289,6 @@ def _pv_sum(x, pos, amp, H, eta, cut=10.0):
     return np.bincount(I[ok], prof[ok], minlength=len(x))[:len(x)]
 
 
-def _pv_matrix(x, pos, amp, H, eta, cut=12.0):
-    return _pv_sum(x, pos, amp, H, eta, cut)
-
-
 def phase_pattern(x, phase, a=None, cryst=None, strain=None, r_md=1.0, shift=None):
     """Pattern (counts-per-second scale, no background) of one phase at weight fraction 1."""
     tth, I, hkl = intensities(phase, a=a)
@@ -470,7 +466,7 @@ def _fit_peak(x, y, w, x0, h0):
     A0 = max((ys.max() - np.median(ys)) * h0, 1.0)
     p = np.array([x0, h0, A0, float(np.median(ys[:3])), 0.0])
     lam = 1e-3
-    for _ in range(12):
+    for _ in range(8):
         m = model(p)
         r = (ys - m) * np.sqrt(ws)
         J = np.empty((len(xs), 5))
@@ -486,7 +482,7 @@ def _fit_peak(x, y, w, x0, h0):
             p, lam = p_new, lam * 0.3
         else:
             lam *= 10
-        if np.max(np.abs(step[:2])) < 1e-6:
+        if abs(step[0]) < 2e-4 and abs(step[1]) < 2e-4:
             break
     ok = p[2] > 0 and abs(p[0] - x0) < 3 * h0
     return float(p[0]), float(p[1]), float(p[2]), bool(ok)
@@ -612,7 +608,6 @@ def analyze(x, counts, campaign, kind, design=None, dwell=1.0):
     # 4. Rietveld-lite: whole-pattern NNLS against the candidates (+ the matrix at the refined a, W-H broadening)
     cand = candidates(campaign, design, kind)
     a_use = a_fcc or micro.A0[base]
-    shift = lambda t: np.degrees(-2 * (disp_fit / a_use) * 0 * t)        # displacement absorbed in a_fcc (see notes)
     mat = dict(name="fcc", comp=_matrix_guess(base, design), a=a_use, cryst_nm=min(cryst or 300.0, 600.0),
                strain=strain if strain is not None else 5e-4, density=micro._phase_density("fcc", _matrix_guess(base, design), a_use))
     disp_shift = _disp_shift(disp_fit, a_use)
@@ -692,7 +687,7 @@ def _design(sample, campaign):
 
 
 # ------------------------------------------------------------------------------------------------ entry points
-def _lite_or_full(sample, campaign, rng, fidelity, kind):
+def _lite_or_full(sample, campaign, rng, fidelity, kind, with_truth=False):
     sim = simulate(sample, campaign, rng, fidelity, kind)
     design = _design(sample, campaign)
     an = analyze(sim["x"], sim["counts"], campaign, kind, design, sim["dwell"])
@@ -706,9 +701,10 @@ def _lite_or_full(sample, campaign, rng, fidelity, kind):
             out["beta_prime_frac"] = float(an["phases"].get("beta'", 0.0))
     if fidelity == "full":
         out["raw"] = dict(two_theta=sim["x"], counts=sim["counts"], dwell_s=sim["dwell"], fit=an["fit"],
-                          true_phases={p["name"]: p["wt"] for p in sim["pm"]["phases"]},
-                          true_a=sim["pm"]["matrix"]["a_A"], disp_mm=sim["disp_mm"], r_md=sim["r_md"],
                           crystallite_nm=an["crystallite_nm"], microstrain=an["microstrain"])
+        if with_truth:                           # the latent phases and instrument state: figures only
+            out["raw"].update(true_phases={p["name"]: p["wt"] for p in sim["pm"]["phases"]},
+                              true_a=sim["pm"]["matrix"]["a_A"], disp_mm=sim["disp_mm"], r_md=sim["r_md"])
     return out
 
 
@@ -750,7 +746,12 @@ def _fast(sample, campaign, rng, kind):
     if kind == "part" and campaign == "onr_cu":
         bp = pm["beta_prime"]
         bq = cb.get("beta", dict(b0=0.0, b1=1.0, s0=0.01, s1=0.05))
-        v = bq["b0"] + bq["b1"] * bp + rng.normal(0, bq["s0"] + bq["s1"] * bp)
+        # the persistent per-sample offset is seeded by the sample's composition and beta' (the same every time
+        # this sample is measured); the per-measurement part comes from rng
+        z_s = np.random.default_rng(micro.seed_of(repr((sorted((k, round(v_, 3)) for k, v_ in pm["composition"].items()),
+                                                         round(bp, 4))))).normal()
+        v = bq["b0"] + bq["b1"] * bp + bq.get("b2", 0.0) * bp * pm.get("kappa", 0.0) \
+            + bq.get("between_per_bp", 0.0) * bp * z_s + rng.normal(0, bq["s0"] + bq["s1"] * bp)
         bpf = float(np.clip(v, 0.0, 1.0)) if (bp > 0.002 or v > 0.02) else 0.0
         det.pop("beta'", None)
         if bpf > 0:
@@ -783,13 +784,13 @@ def _fast(sample, campaign, rng, kind):
 def measure_powder(sample, campaign, rng, fidelity="fast", **kw):
     if fidelity == "fast":
         return _fast(sample, campaign, rng, "powder")
-    return _lite_or_full(sample, campaign, rng, fidelity, "powder")
+    return _lite_or_full(sample, campaign, rng, fidelity, "powder", bool(kw.get("with_truth")))
 
 
 def measure_part(sample, campaign, rng, fidelity="fast", **kw):
     if fidelity == "fast":
         return _fast(sample, campaign, rng, "part")
-    return _lite_or_full(sample, campaign, rng, fidelity, "part")
+    return _lite_or_full(sample, campaign, rng, fidelity, "part", bool(kw.get("with_truth")))
 
 
 # ------------------------------------------------------------------------------------------------ calibration
@@ -806,7 +807,7 @@ def calibrate(n=24, reps=3, seed=0, verbose=True):
         for kind, key in (("powder", "xrd_powder"), ("part", "xrd_part")):
             da, ph_rows, cr_rows, st_rows, bp_rows, fps = [], {}, [], [], [], {}
             ncand = {}
-            for lot, part in smp:
+            for i_s, (lot, part) in enumerate(smp):
                 s = lot if kind == "powder" else part
                 pm = micro.phase_model(s, camp, kind)
                 m = pm["phases"][0]
@@ -833,7 +834,7 @@ def calibrate(n=24, reps=3, seed=0, verbose=True):
                     if kind == "part" and r.get("microstrain") is not None:
                         st_rows.append((m["strain"], r["microstrain"]))
                     if kind == "part" and camp == "onr_cu":
-                        bp_rows.append((pm["beta_prime"], r["beta_prime_frac"]))
+                        bp_rows.append((pm["beta_prime"], r["beta_prime_frac"], pm.get("kappa", 0.0), float(i_s)))
             da = np.array(da).reshape(-1, 2)
             # robust line in beta' (a beta'-rich Cu powder pulls the alpha peaks: overlap), constant for Al
             X = np.stack([np.ones(len(da)), da[:, 1]], 1)
@@ -877,13 +878,24 @@ def calibrate(n=24, reps=3, seed=0, verbose=True):
                 P["strain"] = dict(b=float(np.mean(lr)), s=float(np.std(lr)), p0=float(1 - pos.mean()))
             if bp_rows:
                 b = np.array(bp_rows)
-                X = np.stack([np.ones(len(b)), b[:, 0]], 1)
+                # beta' read against the true beta' (and a kappa interaction: kappa lines overlap beta'); the
+                # residual splits into a persistent per-sample part (overlaps, texture: the same every time that
+                # sample is measured) and a per-measurement part (counting, displacement), both growing with beta'
+                X = np.stack([np.ones(len(b)), b[:, 0], b[:, 0] * b[:, 2]], 1)
                 coef = np.linalg.lstsq(X, b[:, 1], rcond=None)[0]
                 res = b[:, 1] - X @ coef
-                ar = np.abs(res)
-                coef2 = np.linalg.lstsq(X, ar * math.sqrt(math.pi / 2), rcond=None)[0]
-                P["beta"] = dict(b0=float(coef[0]), b1=float(coef[1]), s0=float(max(coef2[0], 0.003)),
-                                 s1=float(max(coef2[1], 0.0)))
+                ids = b[:, 3].astype(int)
+                mean_r = np.array([res[ids == k].mean() for k in np.unique(ids)])
+                bp_s = np.array([b[ids == k, 0].mean() for k in np.unique(ids)])
+                within = res - np.array([res[ids == k].mean() for k in ids])
+                n_rep = max(len(res) / max(len(mean_r), 1), 1.0)
+                w_sd = float(np.sqrt(np.sum(within ** 2) / max(len(res) - len(mean_r), 1)))
+                hi = bp_s > 0.05
+                b_sd = float(np.sqrt(max(np.mean(mean_r[hi] ** 2) - w_sd ** 2 / n_rep, 0.0))) if hi.any() else 0.0
+                bp_hi = float(np.mean(bp_s[hi])) if hi.any() else 0.3
+                P["beta"] = dict(b0=float(coef[0]), b1=float(coef[1]), b2=float(coef[2]), s0=0.003,
+                                 s1=float(w_sd / max(float(np.mean(b[b[:, 0] > 0.05, 0])) if (b[:, 0] > 0.05).any() else 0.3, 1e-3)),
+                                 between_per_bp=float(b_sd / max(bp_hi, 1e-3)))
             out[key][base] = P
             if verbose:
                 print(key, base, "a bias %.5f sd %.5f" % (P["a_bias"], P["a_sd"]),
@@ -925,7 +937,7 @@ def gallery(outdir, samples=None):
     for i, (camp, alloy, lot, part) in enumerate(rows):
         kind, s = ("part", part)
         rng = np.random.default_rng(100 + i)
-        r = (measure_part if kind == "part" else measure_powder)(s, camp, rng, fidelity="full")
+        r = (measure_part if kind == "part" else measure_powder)(s, camp, rng, fidelity="full", with_truth=True)
         raw = r["raw"]
         ax = axes[i, 0]
         x, cts, fit = raw["two_theta"], raw["counts"], raw["fit"]

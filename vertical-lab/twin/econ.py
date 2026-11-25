@@ -952,6 +952,77 @@ def mean_breakdown(runs, include_capex=True, utilization=None, campaign=None, un
                 per_total=sum(tot.values()) / n if n else None)
 
 
+def util_from_runs(runs: list, shares: dict | None = None) -> dict:
+    """cloud.utilization's format from round-2 runs' own busy hours (every seed, not only the one with an event log),
+    averaged; each station's hours split between the campaigns by `shares` where given."""
+    rs = [r for r in runs if r.get("busy_h") and r.get("units") and r.get("calendar")]
+    if not rs:
+        return {}
+    out = {}
+    for k in sorted(set().union(*[set(r["busy_h"]) for r in rs])):
+        r0 = rs[0]
+        if (r0.get("external") or {}).get(k) or k == "hpc":
+            continue
+        units, hours = r0["units"].get(k, 1), r0["calendar"].get(k, "24/7")
+        yrs = [horizon_days(r["cfg"]) / 365.0 for r in rs]
+        B = float(np.mean([r["busy_h"].get(k, 0.0) / y for r, y in zip(rs, yrs)]))
+        A = available_hours(hours, units, H_YEAR, k)
+        sh = (shares or {}).get(k) or {}
+        by = {c: B * f for c, f in sh.items()} if sh else {"campaigns": B}
+        out[k] = dict(name=k, units=units, hours=hours, available_h=A, busy_h=B, by_campaign=by,
+                      jobs={c: v / JOB_H.get(k, 1.0) for c, v in by.items()}, util=B / A if A else 0.0,
+                      idle_h=max(A - B, 0.0))
+    return out
+
+
+def complete_util(U: dict, facility: str, run: dict | None = None) -> dict:
+    """Add the in-house stations an event log leaves out (nobody booked them) with no busy hours, so their idle
+    capacity counts as idle; calendars and units from the run (round 2) or twin.facility."""
+    U = dict(U)
+    if run and run.get("units") and run.get("calendar"):
+        info = {k: dict(units=run["units"][k], hours=run["calendar"].get(k, "24/7"),
+                        external=(run.get("external") or {}).get(k, False)) for k in run["units"]}
+    else:
+        try:
+            info = station_info(facility)
+        except Exception:
+            info = {}
+    for k, si in info.items():
+        if k in U or si.get("external") or k == "hpc":
+            continue
+        A = available_hours(si.get("hours", "24/7"), int(si.get("units", 1)), H_YEAR, k)
+        U[k] = dict(name=k, units=si.get("units", 1), hours=si.get("hours", "24/7"), available_h=A, busy_h=0.0,
+                    by_campaign={}, jobs={}, util=0.0, idle_h=A)
+    return U
+
+
+def plain_cost(cmp: dict, bases) -> dict:
+    """Says plainly, per cost basis, whether the new arm costs more or less to reach the target, and whether the
+    95% CI settles it."""
+    out = {}
+    for b in bases:
+        y = cmp["cost"].get(b)
+        if not y:
+            continue
+        r = y.get("ratio_bound") if y.get("bound_kind") else y.get("ratio")
+        if r is None or (isinstance(r, float) and math.isnan(r)):
+            out[b] = "not estimable: neither lab reached the target in half its seeds"
+            continue
+        lo, hi = y.get("lo"), y.get("hi")
+        word = "costs more" if r > 1 else "costs less"
+        if y.get("bound_kind") == "upper":
+            sure = "an upper bound on the ratio (the reference reached the target in fewer than half its seeds)"
+        elif y.get("bound_kind") == "lower":
+            sure = "a lower bound on the ratio (the vertical lab reached the target in fewer than half its seeds)"
+        elif lo is not None and hi is not None and np.isfinite(lo) and np.isfinite(hi) and (lo > 1 or hi < 1):
+            sure = "the 95% CI excludes parity"
+        else:
+            sure = "the 95% CI includes parity"
+        out[b] = f"the vertical lab {word}: {r:.2f}x the conventional lab's {b.split(',')[0]} cost to the target " \
+                 f"({sure})"
+    return out
+
+
 def _style(ax):
     ax.spines[["top", "right"]].set_visible(False)
     for s in ("left", "bottom"):
@@ -964,12 +1035,14 @@ def _style(ax):
 
 
 def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_boot=2000, cap=0.6,
-           demand_h_week=20.0, comparisons=None, targets=None) -> dict:
+           demand_h_week=None, comparisons=None, targets=None) -> dict:
     """Everything the PR and the video quote: figures in out/twin2/econ/*.png and econ_summary.json."""
     import glob
     import time as _t
     import matplotlib
     matplotlib.use("Agg")
+    from twin import cloud as _CL
+    demand_h_week = _CL.DEMAND_H_WEEK[0] if demand_h_week is None else demand_h_week
     import matplotlib.pyplot as plt
     from twin import accel as AC, cloud as CL
     out = Path(out)
@@ -1037,12 +1110,7 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
         ks = [k for k in G if k[0] == "proposed" and k[1] == pol and k[2] == "historical"]
         ks.sort(key=lambda k: (k[3] != "stock-lean", k[3] != "", k[3]))
         return ks[0] if ks else None
-    if comparisons is None:
-        comparisons = []
-        for ref_pol in ("heuristic", "tiered", "random", "sobol", "gpbo", new_pol):
-            rk = conv(ref_pol)
-            if rk and vert_key in G and (rk, vert_key) not in comparisons:
-                comparisons.append((rk, vert_key))
+
     S = dict(generated_utc=_t.strftime("%Y-%m-%d %H:%M UTC", _t.gmtime()),
              inputs=dict(runs=[str(Path(p).relative_to(ROOT)) if str(p).startswith(str(ROOT)) else str(p)
                                for p in runs_paths],
@@ -1115,7 +1183,11 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
         vevs = [ev for k, ev in EVI.items() if k[0] == "vertical_lab"]
     S["inputs"]["utilization_logs"] = len(vevs)
     if vevs:
-        U = CL.mean_utilization(vevs)
+        Ur = util_from_runs(G.get(vert_key, []), shares_of(G[vert_key][0]) if G.get(vert_key) else None) \
+            if vert_key else {}
+        U = complete_util(Ur or CL.mean_utilization(vevs), "vertical_lab", (G.get(vert_key) or [None])[0])
+        S["inputs"]["utilization_from"] = (f"the busy hours of {len(G.get(vert_key, []))} runs" if Ur else
+                                           f"{len(vevs)} event logs")
         F = CL.fill(U, cap)
         Fd = CL.fill(U, cap, demand_h_week=demand_h_week)
         Fi = CL.fill(U, cap, price="industry", demand_h_week=demand_h_week)
@@ -1171,7 +1243,7 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
         ax.set_yticklabels([f"{k} ({U[k]['hours']}, {U[k]['units']}x)" for k in keys], fontsize=8, color=INK2)
         ax.set_xlim(0, 1.12)
         ax.set_xlabel("share of the station's available hours in a year")
-        ax.set_title(f"Vertical lab: what the two campaigns use ({len(vevs)} twin-years' event logs), and the outside "
+        ax.set_title(f"Vertical lab: what the two campaigns use ({S['inputs']['utilization_from']}), and the outside "
                      f"work that fits", fontsize=10, color=INK, loc="left")
         _style(ax)
         ax.grid(False, axis="y")
@@ -1210,71 +1282,103 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
         fig.savefig(out / "econ_depreciation_vs_utilization.png", dpi=150)
         plt.close(fig)
 
-        # slowdown: Kingman against the twin
+        # slowdown: Kingman against the twin (validate.json: one policy (round 1) or several (round 2))
         V = json.loads(Path(validate_path).read_text()) if validate_path and Path(validate_path).exists() else None
-        fig, axs = plt.subplots(1, 2, figsize=(11, 4.6), sharey=True)
+        VP = (V.get("policies") if V and "policies" in V else ({V.get("policy", "cost_aware"): V} if V else {}))
+        fig, axs = plt.subplots(1, 2, figsize=(12, 4.8), sharey=True)
         levels = np.round(np.linspace(0.05, 0.9, 18), 3)
-        S["slowdown"] = dict(kingman={}, validated=V and dict(seeds=V["seeds"], levels=V["levels"], runs=V["runs"],
-                                                               hook=V.get("hook")))
+        S["slowdown"] = dict(kingman={}, validated=(dict(seeds=V["seeds"], levels=V["levels"], runs=V["runs"],
+                                                          hook=V.get("hook"), engine=V.get("engine", "twin.bench"),
+                                                          policies={}) if V else None))
         for ax, camp, title in zip(axs, ("flaime_al", "onr_cu"), ("FLAIME", "ONR")):
             ks = np.nanmean([CL.slowdown(ev, camp, levels=list(levels))["factor"] for ev in vevs], axis=0)
-            ax.plot(levels, ks, color=PAL[0], lw=2, label=f"Kingman (G/G/m) on {len(vevs)} event logs, cycle time")
+            ax.plot(levels, ks, color=INK2, lw=1.5, ls="--",
+                    label=f"Kingman (G/G/m) on the comparison's {len(vevs)} event logs")
             S["slowdown"]["kingman"][camp] = dict(levels=[float(x) for x in levels], factor=[round(float(x), 4) for x in ks])
-            if V:
-                d = V["campaigns"][camp]
+            for j, (pol, P) in enumerate(VP.items()):
+                d = P["campaigns"][camp]
                 lv = np.array(V["levels"], float)
                 sc = np.array([np.nan if x is None else x for x in d["slowdown_cycle"]], float)
                 sd = np.array([np.nan if x is None else x for x in d["slowdown_days"]], float)
-                ax.plot(lv, sc, "o", ms=8, color=PAL[1], label=f"twin: cycle time ({V['seeds']} seeds a level)")
-                ax.plot(lv, sd, "s", ms=8, color=PAL[2], label="twin: days to target (KM median)")
-                ax.plot(lv, d["kingman"], "x", ms=9, mew=2, color=PAL[0],
-                        label="Kingman on the validation's own baseline")
-                S["slowdown"]["validated"][camp] = dict(cycle=d["slowdown_cycle"], days_to_target=d["slowdown_days"],
-                                                        kingman=d["kingman"], best_mean=d["best_mean"],
-                                                        n_demonstrated_mean=d["n_dem_mean"], hit_frac=d["hit_frac"],
-                                                        throughput_ratio=d["throughput_ratio"])
+                col = PAL[j]
+                ax.plot(lv, d["kingman"], "-", lw=2, color=col, label=f"{pol}: Kingman on its own empty-lab runs")
+                ax.plot(lv, sc, "o", ms=8, color=col, label=f"{pol}: twin, cycle time")
+                ax.plot(lv, sd, "s", ms=8, mfc="white", mec=col, mew=1.5, label=f"{pol}: twin, days to target")
+                S["slowdown"]["validated"]["policies"].setdefault(pol, {})[camp] = dict(
+                    cycle=d["slowdown_cycle"], days_to_target=d["slowdown_days"], kingman=d["kingman"],
+                    best_mean=d["best_mean"], n_demonstrated_mean=d["n_dem_mean"], hit_frac=d["hit_frac"],
+                    throughput_ratio=d["throughput_ratio"], cycle_days=d["cycle_days"])
             ax.axhline(1.0, color=INK2, lw=0.8)
             ax.set_title(f"{title}: slowdown as outside work fills the lab", fontsize=10, color=INK, loc="left")
             ax.set_xlabel("utilization the outside work brings each station to")
             _style(ax)
         axs[0].set_ylabel("time relative to the empty lab")
-        axs[0].legend(frameon=False, fontsize=8, loc="upper left")
-        fig.tight_layout()
+        axs[0].legend(frameon=False, fontsize=7.5, loc="upper left")
+        if V:
+            fig.suptitle(f"Outside jobs booked into the twin before the campaigns run: {V['seeds']} seeds a level, "
+                         f"{V['runs']} twin-years ({V.get('engine', 'twin.bench')})", fontsize=9, color=INK2,
+                         x=0.01, ha="left")
+        fig.tight_layout(rect=(0, 0, 1, 0.95))
         fig.savefig(out / "econ_slowdown.png", dpi=150)
         plt.close(fig)
 
-    # ---- acceleration and cost to target
+    # ---- acceleration, cost to target and throughput
     S["acceleration"] = {}
     heads = []
+    shared_u = {}
+
+    def shared_util(key):
+        """Per-station utilization floors with realistic outside demand: the group's own campaign hours plus
+        outside jobs up to `demand_h_week` a week per instrument (and the cap)."""
+        if key in shared_u:
+            return shared_u[key]
+        evs = [e for e in (events_of(r) for r in G.get(key, [])) if e is not None]
+        if not evs:
+            evs = vevs
+        Ur = util_from_runs(G.get(key, []), shares_of(G[key][0]) if G.get(key) else None)
+        Uk = complete_util(Ur or (CL.mean_utilization(evs) if evs else {}), key[0], G.get(key, [None])[0])
+        Fk = CL.stations_of(CL.fill(Uk, cap, demand_h_week=demand_h_week)) if Uk else {}
+        shared_u[key] = {k: v["util_after"] for k, v in Fk.items()}
+        return shared_u[key]
+    news = [k for k in (("vertical_lab", p, "historical", "") for p in (new_pol, "heuristic")) if k in G]
+    news = list(dict.fromkeys(news))
+    refs = [k for k in (conv(p) for p in ("heuristic", "sobol")) if k]
+    if not refs:
+        refs = [k for k in (conv(p) for p in ("tiered", "random", new_pol)) if k]
+    comparisons = comparisons or [(rk, nk) for nk in news for rk in refs]
+    BASES = ("operating, alone", "full, alone", "operating, shared", "full, shared")
     if comparisons:
-        fig, axs = plt.subplots(2, 2, figsize=(11, 8))
+        fig, axs = plt.subplots(2, 2, figsize=(12, 8.4))
         for ci, (rk, nk) in enumerate(comparisons):
-            name = f"{rk[1]} on the partners -> {nk[1]} in the vertical lab"
+            name = f"vertical lab + {nk[1]} vs conventional + {rk[1]}"
             S["acceleration"][name] = {}
+            su = shared_util(nk)
             for col, camp in enumerate(("flaime_al", "onr_cu")):
                 ref, new = AC.curves_of(G[rk], camp), AC.curves_of(G[nk], camp)
-                costs_ref = {b: cost_curves(G[rk], camp, b, events_of=events_of, shares_of=shares_of)
-                             for b in ("cash", "operating", "full")}
-                costs_new = {b: cost_curves(G[nk], camp, b, events_of=events_of, shares_of=shares_of)
-                             for b in ("cash", "operating", "full")}
-                costs_new[f"full at {cap:.0%} utilization"] = cost_curves(G[nk], camp, "full", utilization=cap,
-                                                                         events_of=events_of, shares_of=shares_of)
-                costs_ref[f"full at {cap:.0%} utilization"] = costs_ref["full"]
+                cc = lambda key, basis, u=None: cost_curves(G[key], camp, basis, utilization=u, events_of=events_of,
+                                                            shares_of=shares_of)
+                costs_ref = {"cash": cc(rk, "cash")}
+                costs_new = {"cash": cc(nk, "cash")}
+                for b in ("operating", "full"):
+                    costs_ref[f"{b}, alone"] = costs_ref[f"{b}, shared"] = cc(rk, b)
+                    costs_new[f"{b}, alone"] = cc(nk, b)
+                    costs_new[f"{b}, shared"] = cc(nk, b, su or None)
                 cmp = AC.compare(ref, new, TARGET[camp], costs_ref, costs_new, n_boot=n_boot,
                                  label_ref=f"conventional lab ({rk[1]})", label_new=f"vertical lab ({nk[1]})")
-                hl = AC.headline(cmp, f"{'FLAIME' if camp == 'flaime_al' else 'ONR'}: ",
-                                 basis_order=("operating", "full", f"full at {cap:.0%} utilization"))
+                hl = AC.headline(cmp, f"{'FLAIME' if camp == 'flaime_al' else 'ONR'}: ", basis_order=BASES)
                 heads.append(hl)
                 tg = np.round(np.linspace(0.2, 0.75, 12), 3)
-                afs = [AC.acceleration_factor(ref, new, t, "days", n_boot=500) for t in tg]
+                afs = [AC.acceleration_factor(ref, new, t, "days", n_boot=400) for t in tg]
                 at = np.arange(30, 366, 15)
-                efs = [AC.enhancement_factor(ref, new, a, "days", n_boot=500) for a in at]
+                efs = [AC.enhancement_factor(ref, new, a, "days", n_boot=400) for a in at]
                 S["acceleration"][name][camp] = dict(
-                    target=TARGET[camp], n_ref=len(ref), n_new=len(new), compare=_clean(cmp), headline=hl,
+                    ref="|".join(rk), new="|".join(nk), target=TARGET[camp], n_ref=len(ref), n_new=len(new),
+                    compare=_clean(cmp), headline=hl, shared_utilization=su, plain=plain_cost(cmp, BASES),
                     af_vs_target=[dict(target=float(t), af=a["af"], lo=a["lo"], hi=a["hi"], hit_ref=a["hit_ref"],
-                                       hit_new=a["hit_new"]) for t, a in zip(tg, afs)],
+                                       hit_new=a["hit_new"], af_bound=a.get("af_bound"), bound_kind=a.get("bound_kind"))
+                                  for t, a in zip(tg, afs)],
                     ef_vs_days=[dict(days=int(a), ef=e["ef"], lo=e["lo"], hi=e["hi"]) for a, e in zip(at, efs)])
-                col_c = PAL[ci]
+                col_c = PAL[ci % len(PAL)]
                 top = 60.0
                 af = np.array([a["af"] for a in afs], float)
                 lo = np.array([a["lo"] for a in afs], float)
@@ -1282,17 +1386,19 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
                 fin = np.isfinite(af) & (af > 0)
                 ax = axs[0, col]
                 ax.plot(tg[fin], af[fin], "-o", color=col_c, lw=2, ms=5, label=name)
-                ax.fill_between(tg, np.clip(np.where(np.isfinite(lo), lo, top), 0.3, top),
-                                np.clip(np.where(np.isfinite(hi), hi, top), 0.3, top), color=col_c, alpha=0.12, lw=0)
+                ax.fill_between(tg, np.clip(np.where(np.isfinite(lo), lo, top), 0.1, top),
+                                np.clip(np.where(np.isfinite(hi), hi, top), 0.1, top), color=col_c, alpha=0.10, lw=0)
                 lb = np.array([a["af_bound"] if a.get("bound_kind") == "lower" else np.nan for a in afs], float)
                 ax.plot(tg, lb, "^", ms=8, mfc="white", mec=col_c, mew=1.5)
+                ub = np.array([a["af_bound"] if a.get("bound_kind") == "upper" else np.nan for a in afs], float)
+                ax.plot(tg, ub, "v", ms=8, mfc="white", mec=col_c, mew=1.5)
                 ax.axvline(TARGET[camp], color=INK2, lw=0.8, ls=":")
                 ax.axhline(1.0, color=INK2, lw=0.8)
                 ax.set_yscale("log")
-                ax.set_ylim(0.3, top)
+                ax.set_ylim(0.1, top)
                 ax.set_title(f"{'FLAIME' if camp == 'flaime_al' else 'ONR'}: acceleration factor in days "
-                             f"(triangles: lower bounds)", fontsize=10, color=INK, loc="left")
-                ax.set_xlabel("target (true utility of the best demonstrated alloy)")
+                             f"(triangles: bounds)", fontsize=10, color=INK, loc="left")
+                ax.set_xlabel("target (true utility of the best new alloy demonstrated); dotted: state of the art")
                 ax.set_ylabel("AF = median days, ref / new (log)")
                 _style(ax)
                 ax = axs[1, col]
@@ -1302,11 +1408,11 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
                 ok = np.isfinite(ef) & (ef > 0)
                 ax.plot(at[ok], ef[ok], "-", color=col_c, lw=2, label=name)
                 okb = ok & np.isfinite(elo) & np.isfinite(ehi)
-                ax.fill_between(at[okb], np.clip(elo[okb], 0.3, top), np.clip(ehi[okb], 0.3, top), color=col_c,
-                                alpha=0.12, lw=0)
+                ax.fill_between(at[okb], np.clip(elo[okb], 0.1, top), np.clip(ehi[okb], 0.1, top), color=col_c,
+                                alpha=0.10, lw=0)
                 ax.axhline(1.0, color=INK2, lw=0.8)
                 ax.set_yscale("log")
-                ax.set_ylim(0.3, top)
+                ax.set_ylim(0.1, top)
                 ax.set_title(f"{'FLAIME' if camp == 'flaime_al' else 'ONR'}: enhancement factor (where the reference "
                              f"has a result)", fontsize=10, color=INK, loc="left")
                 ax.set_xlabel("days")
@@ -1319,6 +1425,79 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
         fig.savefig(out / "econ_af_ef.png", dpi=150)
         plt.close(fig)
     S["headline"] = heads
+    S["headline_setup"] = dict(
+        bases={"operating": "cash + labour + service + utilities and space (no capex)",
+               "full": "operating + depreciation (capex)",
+               "alone": "the vertical lab's fixed costs carried by the two campaigns only",
+               "shared": f"outside users take each in-house station's idle hours up to {demand_h_week:g} h a week of "
+                         f"demand (assumed) and {cap:.0%} utilization, paying their share"},
+        conventional_note="the conventional lab is charged alone in both cases; its rented facilities' rates already "
+                          "include their sharing")
+
+    # ---- throughput: demonstrated alloys and measurements a year, per policy and facility
+    MEAS = ("psd", "byu_sem", "xrd", "xrf", "byu_icpms", "density", "tensile", "tensile_hot", "hardness", "nanoindent",
+            "pip", "cubxl", "immersion")
+
+    def _job_h(key):
+        evs = [e for e in (events_of(r) for r in G.get(key, [])) if e is not None]
+        out_h = {}
+        if evs:
+            for s_ in MEAS:
+                d_ = [e["t1_h"] - e["t0_h"] for ev in evs for e in ev["events"] if e["station"] == s_
+                      and e["campaign"] != "external"]
+                if d_:
+                    out_h[s_] = float(np.mean(d_))
+        return out_h
+    thr = {}
+    for key, rs in G.items():
+        if key[2] != "historical" or (key[0] == "vertical_lab" and key[3] != "") or \
+                (key[0] == "proposed" and key != conv(key[1])):
+            continue
+        jh = _job_h(key)
+        rows_ = []
+        for r in rs:
+            yrs = horizon_days(r["cfg"]) / 365.0
+            dem = {c: r["campaigns"][c]["n_demonstrated"] / yrs for c in r["campaigns"]}
+            busy = r.get("busy_h") or {}
+            meas = sum(busy.get(s_, 0.0) / jh.get(s_, JOB_H.get(s_, 1.0)) for s_ in MEAS if s_ != "immersion") / yrs
+            res_ = {c: sum(v for t_, v in (r["campaigns"][c].get("n_results") or {}).items() if t_ != "sim") / yrs
+                    for c in r["campaigns"]}
+            rows_.append((dem, meas if busy else None, res_))
+        thr["|".join(key)] = dict(
+            facility=key[0], policy=key[1], n=len(rs),
+            demonstrated_per_yr={c: float(np.mean([x[0][c] for x in rows_])) for c in rows_[0][0]},
+            demonstrated_per_yr_total=float(np.mean([sum(x[0].values()) for x in rows_])),
+            measurements_per_yr=(float(np.mean([x[1] for x in rows_ if x[1] is not None]))
+                                 if any(x[1] is not None for x in rows_) else None),
+            results_per_yr=float(np.mean([sum(x[2].values()) for x in rows_])))
+    S["throughput"] = thr
+    pols_both = [p for p in ("random", "sobol", "heuristic", "tiered", "cost_aware", "gpbo", "bofn", "bofn_blend")
+                 if any(v["policy"] == p and v["facility"] == "vertical_lab" for v in thr.values())]
+    if pols_both:
+        fig, axs = plt.subplots(1, 2, figsize=(12, 4.6))
+        x = np.arange(len(pols_both))
+        for ax, metric, lab in ((axs[0], "demonstrated_per_yr_total", "alloys demonstrated a year (both campaigns)"),
+                                (axs[1], "measurements_per_yr", "instrument measurements a year")):
+            for j, (fac_, nm) in enumerate((("vertical_lab", "vertical lab"), ("proposed", "conventional lab"))):
+                vals = []
+                for p in pols_both:
+                    v = next((t for t in thr.values() if t["facility"] == fac_ and t["policy"] == p), None)
+                    vals.append(np.nan if (v is None or v.get(metric) is None) else v[metric])
+                ax.bar(x + (j - 0.5) * 0.38, vals, width=0.36, color=PAL[j], label=nm, edgecolor="white")
+                for xx, vv in zip(x + (j - 0.5) * 0.38, vals):
+                    if np.isfinite(vv):
+                        ax.text(xx, vv, f"{vv:,.0f}", ha="center", va="bottom", fontsize=7, color=INK2)
+            ax.set_xticks(x)
+            ax.set_xticklabels(pols_both, fontsize=8, color=INK2)
+            ax.set_title(lab, fontsize=10, color=INK, loc="left")
+            _style(ax)
+            ax.grid(False, axis="x")
+        axs[0].legend(frameon=False, fontsize=8)
+        fig.suptitle("Throughput per policy: the vertical lab (a year, stocked) against the conventional lab (per year "
+                     "of its runs)", fontsize=10, color=INK, x=0.01, ha="left")
+        fig.tight_layout(rect=(0, 0, 1, 0.94))
+        fig.savefig(out / "econ_throughput.png", dpi=150)
+        plt.close(fig)
 
     # ---- value per capex dollar
     if conv_key and vert_key and "outside_work" in S:
@@ -1345,7 +1524,8 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
         "The conventional lab's in-house stations that the twin leaves free (Instron frames, hardness, metallography)"
         " carry no charge; BYU's internal core-facility rates are subsidised (BYU EM: operating cost about $300/h).",
         "Outside work: catalogue rates from published user-facility rate sheets; demand is not modelled beyond a cap "
-        "and an assumed 20 h a week per instrument; handling 0.25 h of a technician and 10 % consumables a job.",
+        f"of {cap:.0%} and an assumed {demand_h_week:g} h a week per instrument; handling 0.25 h of a technician and "
+        "10 % consumables a job.",
     ]
     S["key_numbers"] = key_numbers(_clean(S))
     (out / "econ_summary.json").write_text(json.dumps(_clean(S), indent=1) + "\n")
@@ -1404,22 +1584,32 @@ def key_numbers(S: dict) -> dict:
         K["value_per_capex_dollar_with_outside_demand_limited"] = v["with_outside_demand_limited"]
     V = (S.get("slowdown") or {}).get("validated")
     if V:
-        for camp in ("flaime_al", "onr_cu"):
-            if camp in V:
+        for pol, P in (V.get("policies") or {}).items():
+            for camp, d in P.items():
                 for i, lv in enumerate(V["levels"]):
-                    K[f"slowdown|{camp}|{lv:g}|twin_cycle"] = V[camp]["cycle"][i]
-                    K[f"slowdown|{camp}|{lv:g}|twin_days_to_target"] = V[camp]["days_to_target"][i]
-                    K[f"slowdown|{camp}|{lv:g}|kingman"] = V[camp]["kingman"][i]
+                    K[f"slowdown|{pol}|{camp}|{lv:g}|twin_cycle"] = d["cycle"][i]
+                    K[f"slowdown|{pol}|{camp}|{lv:g}|twin_days_to_target"] = d["days_to_target"][i]
+                    K[f"slowdown|{pol}|{camp}|{lv:g}|kingman"] = d["kingman"][i]
+                    K[f"slowdown|{pol}|{camp}|{lv:g}|demonstrated_ratio"] = d["throughput_ratio"][i]
     for name, cc in (S.get("acceleration") or {}).items():
         for camp, x in cc.items():
             cm = x["compare"]
-            d = cm["days"]
-            K[f"af_days|{name}|{camp}"] = d["af_bound"] if d.get("bound_kind") else d["af"]
-            K[f"af_days_kind|{name}|{camp}"] = d.get("bound_kind") or "estimate"
-            K[f"af_days_ci|{name}|{camp}"] = [d["lo"], d["hi"]]
+            for xk in ("days", "experiments"):
+                d = cm[xk]
+                K[f"af_{xk}|{name}|{camp}"] = d["af_bound"] if d.get("bound_kind") else d["af"]
+                K[f"af_{xk}_kind|{name}|{camp}"] = d.get("bound_kind") or "estimate"
+                K[f"af_{xk}_ci|{name}|{camp}"] = [d["lo"], d["hi"]]
+            K[f"reached|{name}|{camp}"] = dict(new=cm["days"]["hit_new"], ref=cm["days"]["hit_ref"],
+                                               n_new=cm["days"]["n_new"], n_ref=cm["days"]["n_ref"])
             for b, y in cm["cost"].items():
                 K[f"cost_ratio|{b}|{name}|{camp}"] = y["ratio_bound"] if y.get("bound_kind") else y["ratio"]
                 K[f"cost_ratio_kind|{b}|{name}|{camp}"] = y.get("bound_kind") or "estimate"
+                K[f"cost_ratio_ci|{b}|{name}|{camp}"] = [y.get("lo"), y.get("hi")]
+            for b, txt in (x.get("plain") or {}).items():
+                K[f"plain|{b}|{name}|{camp}"] = txt
+    for key, t in (S.get("throughput") or {}).items():
+        K[f"throughput|{key}|demonstrated_per_yr"] = t["demonstrated_per_yr_total"]
+        K[f"throughput|{key}|measurements_per_yr"] = t["measurements_per_yr"]
     return K
 
 
@@ -1452,18 +1642,39 @@ def key_bullets(S: dict) -> list:
                  f"{K['outside_demand_limited_net_x_fixed']:.1f}x all its fixed costs. Filling every station to "
                  f"{cap:.0%} instead (capacity, no demand limit): {K['outside_capacity_jobs_per_yr']:,.0f} jobs, "
                  f"{_m(K['outside_capacity_revenue_per_yr'])}.")
-    sl = [k for k in K if k.startswith("slowdown|flaime_al|") and k.endswith("|twin_cycle")]
-    if sl:
-        lv = [k.split("|")[2] for k in sl if k.split("|")[2] != "0"]
-        f = lambda camp, l, kind: K.get(f"slowdown|{camp}|{l}|{kind}")
+    V = (S.get("slowdown") or {}).get("validated") or {}
+    fx = lambda v: "-" if v is None else f"{v:.2f}"
+    for pol, P in (V.get("policies") or {}).items():
+        lv = [l for l in V["levels"] if l > 0]
+        idx = [V["levels"].index(l) for l in lv]
         for camp, lab in (("flaime_al", "FLAIME"), ("onr_cu", "ONR")):
-            B.append(f"**Slowdown, {lab}.** With outside work bringing each station to " +
-                     ", ".join(f"{float(l):.0%}" for l in lv) + ": cycle time x" +
-                     "/".join(f"{f(camp, l, 'twin_cycle'):.2f}" for l in lv) + " in the twin (Kingman x" +
-                     "/".join(f"{f(camp, l, 'kingman'):.2f}" for l in lv) + "); days to the target x" +
-                     "/".join(f"{f(camp, l, 'twin_days_to_target'):.2f}" for l in lv) + ".")
-    for h in S.get("headline", [])[:2]:
-        B.append("**Headline.** " + h)
+            d = P.get(camp)
+            if not d:
+                continue
+            B.append(f"**Slowdown, {lab}, {pol}.** Outside work bringing each station to " +
+                     ", ".join(f"{l:.0%}" for l in lv) + ": cycle time x" +
+                     "/".join(fx(d["cycle"][i]) for i in idx) + " in the twin (Kingman x" +
+                     "/".join(fx(d["kingman"][i]) for i in idx) + "), days to the state of the art x" +
+                     "/".join(fx(d["days_to_target"][i]) for i in idx) + ", alloys demonstrated x" +
+                     "/".join(fx(d["throughput_ratio"][i]) for i in idx) + ".")
+    for t in (S.get("throughput") or {}).values():
+        pass
+    thr = S.get("throughput") or {}
+    pv = {t["policy"]: t for t in thr.values() if t["facility"] == "vertical_lab"}
+    pc = {t["policy"]: t for t in thr.values() if t["facility"] == "proposed"}
+    common = [p for p in pv if p in pc]
+    if common:
+        B.append("**Throughput** (alloys demonstrated a year, both campaigns; vertical / conventional): " +
+                 "; ".join(f"{p} {pv[p]['demonstrated_per_yr_total']:.0f} / {pc[p]['demonstrated_per_yr_total']:.0f}"
+                           for p in common) + ". Instrument measurements a year: " +
+                 "; ".join(f"{p} {(pv[p]['measurements_per_yr'] or 0):,.0f} / {(pc[p]['measurements_per_yr'] or 0):,.0f}"
+                           for p in common) + ".")
+    for name, cc in (S.get("acceleration") or {}).items():
+        for camp, x in cc.items():
+            B.append("**Headline.** " + x["headline"])
+            for b, txt in (x.get("plain") or {}).items():
+                if b.startswith("full"):
+                    B.append(f"  - {name}, {camp}, {b}: {txt}.")
     return B
 
 
@@ -1525,7 +1736,7 @@ def notes_md(S: dict) -> str:
     if "utilization" in S:
         U = S["utilization"]
         ow = S["outside_work"]
-        L.append(f"### Utilization and outside work\n\nFrom {U['n_logs']} event logs of the vertical lab "
+        L.append(f"### Utilization and outside work\n\nFrom {inp.get('utilization_from', str(U['n_logs']) + ' event logs')} of the vertical lab "
                  f"(capex-weighted mean utilization by the two campaigns: {U['capex_weighted_mean']:.1%}). Outside "
                  f"jobs fill each station's idle hours up to {ow['cap']:.0%} of its available hours (capacity), or "
                  f"up to {ow['demand_h_week']:g} h a week of outside demand per instrument (demand-limited; "
@@ -1565,59 +1776,83 @@ def notes_md(S: dict) -> str:
                      f"an alloy that is {v['without_outside']:.2f} dollars of experiments a year per dollar of capex. "
                      f"With demand-limited outside work it is {v['with_outside_demand_limited']:.2f}, and "
                      f"{v['with_outside_capacity']:.2f} if the capacity sells.\n")
-    if S.get("slowdown"):
-        sd = S["slowdown"]
-        V = sd.get("validated")
+    if S.get("slowdown") and S["slowdown"].get("validated"):
+        V = S["slowdown"]["validated"]
         L.append("### Slowdown\n")
-        if V:
-            L.append(f"Outside jobs booked into the twin's facility before the campaigns run "
-                     f"(`Twin(..., external=...)`, hook: {V.get('hook')}), {V['seeds']} seeds a level, {V['runs']} "
-                     f"twin-years in all, against Kingman's estimate on the same baseline.\n")
-            L.append("| campaign | outside work up to | twin: cycle time | twin: days to target (KM) | Kingman | "
-                     "alloys demonstrated | best |")
-            L.append("|---|---|---|---|---|---|---|")
-            for camp in ("flaime_al", "onr_cu"):
-                d = V.get(camp)
-                if not d:
-                    continue
+        L.append(f"Outside jobs booked into the twin's facility before the campaigns run (`Twin(..., external=...)`, "
+                 f"{V.get('engine', 'twin.bench')}), {V['seeds']} seeds a level, {V['runs']} twin-years in all, against "
+                 f"Kingman's estimate on each policy's own empty-lab runs.\n")
+        L.append("| policy | campaign | outside work up to | twin: cycle time | twin: days to the state of the art (KM) | "
+                 "Kingman | alloys demonstrated | best new alloy |")
+        L.append("|---|---|---|---|---|---|---|---|")
+        f = lambda x: "-" if x is None else f"{x:.2f}x"
+        for pol, P in V.get("policies", {}).items():
+            for camp, d in P.items():
                 for i, lv in enumerate(V["levels"]):
-                    f = lambda x: "-" if x is None else f"{x:.2f}x"
-                    L.append(f"| {camp} | {lv:.0%} | {f(d['cycle'][i])} | {f(d['days_to_target'][i])} | "
+                    L.append(f"| {pol} | {camp} | {lv:.0%} | {f(d['cycle'][i])} | {f(d['days_to_target'][i])} | "
                              f"{f(d['kingman'][i])} | {d['n_demonstrated_mean'][i]:.1f} | {d['best_mean'][i]:.3f} |")
-            L.append("")
+        L.append("")
+    if S.get("throughput"):
+        L.append("### Throughput\n")
+        L.append("| facility | policy | runs | alloys demonstrated a year (FLAIME + ONR) | instrument measurements a year | "
+                 "results a year (no simulations) |")
+        L.append("|---|---|---|---|---|---|")
+        for key, t in sorted(S["throughput"].items(), key=lambda kv: (kv[1]["facility"], kv[1]["policy"])):
+            dm = t["demonstrated_per_yr"]
+            ms = "-" if t["measurements_per_yr"] is None else f"{t['measurements_per_yr']:,.0f}"
+            L.append(f"| {t['facility']} | {t['policy']} | {t['n']} | {t['demonstrated_per_yr_total']:.1f} "
+                     f"({dm.get('flaime_al', 0):.1f} + {dm.get('onr_cu', 0):.1f}) | {ms} | {t['results_per_yr']:,.0f} |")
+        L.append("")
     if S.get("acceleration"):
-        L.append("### Acceleration and cost to target\n")
-        L.append("| comparison | campaign | target | AF in days (95% CI) | AF in experiments | reached (new / ref) | "
-                 "operating cost ratio | full cost ratio | full, outside users at the cap |")
-        L.append("|---|---|---|---|---|---|---|---|---|")
+        L.append("### Acceleration and cost to the state of the art\n")
+        hs = S.get("headline_setup", {})
+        if hs:
+            L.append("Cost bases: " + "; ".join(f"**{k}**: {v}" for k, v in hs.get("bases", {}).items()) +
+                     f". {hs.get('conventional_note', '')}.\n")
+        L.append("| comparison | campaign | target | reached (vertical / conventional) | AF in days (95% CI) | "
+                 "AF in alloys | cost ratio: operating, alone | full, alone | operating, shared | full, shared |")
+        L.append("|---|---|---|---|---|---|---|---|---|---|")
+
+        def af(a):
+            if a.get("bound_kind") == "lower":
+                return f">= {a['af_bound']:.1f}"
+            if a.get("bound_kind") == "upper":
+                return f"<= {a['af_bound']:.2f}"
+            if isinstance(a["af"], str) or a["af"] is None:
+                return str(a["af"])
+            hi = a["hi"] if not isinstance(a["hi"], str) else float("inf")
+            lo = a["lo"] if not isinstance(a["lo"], str) else float("inf")
+            return f"{a['af']:.2f} ({lo:.2f}-{'unbounded' if hi == float('inf') else f'{hi:.2f}'})"
+
+        def cr(cm, b):
+            y = cm["cost"].get(b)
+            if not y:
+                return "-"
+            if y.get("bound_kind") == "upper":
+                return f"<= {y['ratio_bound']:.2f}x"
+            if y.get("bound_kind") == "lower":
+                return f">= {y['ratio_bound']:.2f}x"
+            r = y["ratio"]
+            if r is None or isinstance(r, str):
+                return "-"
+            lo = y["lo"] if not isinstance(y["lo"], str) else float("inf")
+            hi = y["hi"] if not isinstance(y["hi"], str) else float("inf")
+            return f"{r:.2f}x ({lo:.2f}-{'unbounded' if hi == float('inf') else f'{hi:.2f}'})"
         for name, cc in S["acceleration"].items():
             for camp, x in cc.items():
                 cm = x["compare"]
                 d, e = cm["days"], cm["experiments"]
-
-                def af(a):
-                    if a.get("bound_kind") == "lower":
-                        return f">= {a['af_bound']:.1f}"
-                    if a.get("bound_kind") == "upper":
-                        return f"<= {a['af_bound']:.1f}"
-                    if isinstance(a["af"], str):
-                        return a["af"]
-                    hi = a["hi"] if not isinstance(a["hi"], str) else float("inf")
-                    return f"{a['af']:.2f} ({a['lo']:.2f}-{'unbounded' if hi == float('inf') else f'{hi:.2f}'})"
-
-                def cr(b):
-                    y = cm["cost"].get(b)
-                    if not y:
-                        return "-"
-                    if y.get("bound_kind") == "upper":
-                        return f"<= {y['ratio_bound']:.0%}"
-                    if y.get("bound_kind") == "lower":
-                        return f">= {y['ratio_bound']:.0%}"
-                    r = y["ratio"]
-                    return "-" if isinstance(r, str) else f"{r:.0%}"
-                capb = next((b for b in cm["cost"] if b.startswith("full at")), None)
-                L.append(f"| {name} | {camp} | {x['target']:.3f} | {af(d)} | {af(e)} | {d['hit_new']:.0%} / "
-                         f"{d['hit_ref']:.0%} | {cr('operating')} | {cr('full')} | {cr(capb) if capb else '-'} |")
+                L.append(f"| {name} | {camp} | {x['target']:.3f} | {d['hit_new']:.0%} of {d['n_new']} / "
+                         f"{d['hit_ref']:.0%} of {d['n_ref']} | {af(d)} | {af(e)} | " +
+                         " | ".join(cr(cm, b) for b in ("operating, alone", "full, alone", "operating, shared",
+                                                         "full, shared")) + " |")
+        L.append("")
+        L.append("A cost ratio is the vertical lab's median cost to the target over the conventional lab's: above 1x the "
+                 "vertical lab costs more. In plain words:\n")
+        for name, cc in S["acceleration"].items():
+            for camp, x in cc.items():
+                for b, txt in (x.get("plain") or {}).items():
+                    L.append(f"- {name}, {camp}, {b}: {txt}.")
         L.append("")
         L.append("Headlines:\n")
         for h in S.get("headline", []):

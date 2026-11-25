@@ -385,8 +385,9 @@ def measure_powder(sample, campaign, rng, fidelity="fast", **kw):
     img, z = _render_powder(parts, N, px, base, rng)
     res, ext = analyze_powder(img, px, campaign)
     if full:
-        res["raw"] = dict(image=img, height_um=z, px_um=px, fov_um=W, particles=parts, **ext,
-                          state=_powder_state(pop))
+        res["raw"] = dict(image=img, px_um=px, fov_um=W, **ext)
+        if kw.get("with_truth"):                 # the drawn particles and the lot's state: for figures only
+            res["raw"].update(height_um=z, particles=parts, state=_powder_state(pop))
     return res
 
 
@@ -746,8 +747,9 @@ def measure_section(sample, campaign, rng, fidelity="fast", **kw):
     img, cov_p, cov_c = _render_section(pm, pores, cracks, N, px, rng)
     res, ext = analyze_section(img, px)
     if full or kw.get("keep_raw"):
-        res["raw"] = dict(image=img, pore_cov=cov_p, crack_cov=cov_c, px_um=px, fov_um=W, pores=pores,
-                          cracks=cracks, **ext)
+        res["raw"] = dict(image=img, px_um=px, fov_um=W, **ext)
+        if kw.get("with_truth") or kw.get("keep_raw"):   # the drawn pores and cracks: for figures/calibration only
+            res["raw"].update(pore_cov=cov_p, crack_cov=cov_c, pores=pores, cracks=cracks)
     return res
 
 
@@ -977,7 +979,7 @@ def gallery(outdir, samples=None):
     fig, axes = plt.subplots(2, len(items), figsize=(3.6 * len(items), 7.4))
     for k, (camp, alloy, (lot, part)) in enumerate(items):
         rng = np.random.default_rng(100 + k)
-        r = measure_powder(lot, camp, rng, fidelity="full")
+        r = measure_powder(lot, camp, rng, fidelity="full", with_truth=True)
         raw = r["raw"]
         img = raw["image"]
         ax = axes[0, k]
@@ -1010,7 +1012,7 @@ def gallery(outdir, samples=None):
     fig, axes = plt.subplots(2, len(items), figsize=(3.6 * len(items), 7.4))
     for k, (camp, alloy, (lot, part)) in enumerate(items):
         rng = np.random.default_rng(200 + k)
-        r = measure_section(part, camp, rng, fidelity="full")
+        r = measure_section(part, camp, rng, fidelity="full", with_truth=True)
         raw = r["raw"]
         img = raw["image"]
         ax = axes[0, k]

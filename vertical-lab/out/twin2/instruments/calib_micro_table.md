@@ -57,74 +57,74 @@
 | xrf | NAB | comp.Ni | 4.5 | 4.27 ± 0.00745 (40) | 4.23 ± 0.00845 (40) | -22.7 |
 | icpms | AlSi10Mg | comp.Mg | 0.308 | 0.308 ± 0.00233 (40) | 0.307 ± 0.00127 (40) | -1.3 |
 | icpms | AlSi10Mg | comp.Si | 10.0 | 0.898 ± 0.138 (40) | 0.896 ± 0.0788 (40) | -0.1 |
-| icpms | Scalmalloy | comp.Mg | 2.93 | 2.93 ± 0.0218 (40) | 2.92 ± 0.00881 (40) | -0.6 |
-| icpms | Scalmalloy | comp.Sc | 0.7 | 0.631 ± 0.0115 (40) | 0.635 ± 0.00759 (40) | +1.7 |
+| icpms | Scalmalloy | comp.Mg | 2.93 | 2.93 ± 0.0218 (40) | 2.93 ± 0.0108 (40) | +1.2 |
+| icpms | Scalmalloy | comp.Sc | 0.7 | 0.631 ± 0.0115 (40) | 0.63 ± 0.00612 (40) | -0.5 |
 | icpms | Scalmalloy | comp.Zr | 0.3 | 0.2 ± 0.00944 (40) | 0.192 ± 0.00616 (40) | -4.3 |
-| icpms | 7075 | comp.Cr | 0.23 | 0.227 ± 0.00185 (40) | 0.227 ± 0.00112 (40) | -2.1 |
-| icpms | 7075 | comp.Cu | 1.6 | 1.6 ± 0.0105 (40) | 1.6 ± 0.00859 (40) | +0.2 |
-| icpms | 7075 | comp.Mg | 2.2 | 2.2 ± 0.0141 (40) | 2.19 ± 0.00669 (40) | -1.0 |
-| icpms | 7075 | comp.Zn | 4.01 | 4 ± 0.0328 (40) | 4.01 ± 0.0154 (40) | +1.3 |
-| icpms | 70-30 Cu-Ni | comp.Fe | 0.6 | 0.599 ± 0.00475 (40) | 0.598 ± 0.00185 (40) | -1.5 |
+| icpms | 7075 | comp.Cr | 0.23 | 0.227 ± 0.00185 (40) | 0.227 ± 0.00152 (40) | -1.3 |
+| icpms | 7075 | comp.Cu | 1.6 | 1.6 ± 0.0105 (40) | 1.6 ± 0.0063 (40) | -0.6 |
+| icpms | 7075 | comp.Mg | 2.2 | 2.2 ± 0.0141 (40) | 2.2 ± 0.00907 (40) | +0.0 |
+| icpms | 7075 | comp.Zn | 4.01 | 4 ± 0.0328 (40) | 4.01 ± 0.0114 (40) | +0.7 |
+| icpms | 70-30 Cu-Ni | comp.Fe | 0.6 | 0.599 ± 0.00475 (40) | 0.599 ± 0.00227 (40) | +0.2 |
 | icpms | 70-30 Cu-Ni | comp.Mn | 0.525 | 0.525 ± 0.00344 (40) | 0.524 ± 0.00208 (40) | -1.6 |
-| icpms | 70-30 Cu-Ni | comp.Ni | 30.0 | 30.0 ± 0.248 (40) | 30.0 ± 0.135 (40) | +0.9 |
-| icpms | NAB | comp.Al | 9.2 | 9.17 ± 0.0551 (40) | 9.16 ± 0.0348 (40) | -0.9 |
-| icpms | NAB | comp.Fe | 4 | 4 ± 0.0258 (40) | 3.98 ± 0.0178 (40) | -3.9 |
+| icpms | 70-30 Cu-Ni | comp.Ni | 30.0 | 30.0 ± 0.248 (40) | 29.9 ± 0.109 (40) | -1.0 |
+| icpms | NAB | comp.Al | 9.2 | 9.17 ± 0.0551 (40) | 9.17 ± 0.0475 (40) | -0.1 |
+| icpms | NAB | comp.Fe | 4 | 4 ± 0.0258 (40) | 3.98 ± 0.0177 (40) | -3.4 |
 | icpms | NAB | comp.Mn | 1.05 | 1.05 ± 0.00697 (40) | 1.05 ± 0.00481 (40) | -1.4 |
-| icpms | NAB | comp.Ni | 4.5 | 4.49 ± 0.0348 (40) | 4.49 ± 0.0199 (40) | +0.5 |
-| xrd_powder | AlSi10Mg | a_fcc_A | 4.05 | 4.05 ± 1.20e-04 (40) | 4.05 ± 1.22e-04 (40) | -0.6 |
-| xrd_powder | AlSi10Mg | crystallite_nm | – | 634 ± 292 (40) | 666 ± 241 (40) | +0.5 |
-| xrd_powder | AlSi10Mg | phase.FCC-Al | – | 0.916 ± 0.00284 (40) | 0.915 ± 0.00587 (40) | -0.6 |
-| xrd_powder | AlSi10Mg | phase.Si | – | 0.0841 ± 0.00284 (40) | 0.0847 ± 0.00587 (40) | +0.6 |
-| xrd_powder | AlSi10Mg | solute_ss_wt | – | 0.96 ± 0.0848 (40) | 0.972 ± 0.0868 (40) | +0.6 |
-| xrd_powder | Scalmalloy | a_fcc_A | 4.07 | 4.07 ± 1.11e-04 (40) | 4.07 ± 1.07e-04 (40) | -0.2 |
-| xrd_powder | Scalmalloy | crystallite_nm | – | 749 ± 273 (40) | 641 ± 196 (40) | -2.0 |
-| xrd_powder | Scalmalloy | phase.Al3(Sc,Zr) | – | 0.0144 ± 0.00223 (37) | 0.0136 ± 0.00213 (35) | -1.6 |
-| xrd_powder | Scalmalloy | phase.FCC-Al | – | 0.987 ± 0.00435 (40) | 0.988 ± 0.00491 (40) | +1.4 |
-| xrd_powder | Scalmalloy | solute_ss_wt | – | 3.61 ± 0.0252 (40) | 3.61 ± 0.0244 (40) | -0.2 |
-| xrd_powder | 7075 | a_fcc_A | 4.06 | 4.06 ± 1.18e-04 (40) | 4.06 ± 1.07e-04 (40) | -1.7 |
-| xrd_powder | 7075 | crystallite_nm | – | 592 ± 300 (40) | 701 ± 219 (40) | +1.9 |
+| icpms | NAB | comp.Ni | 4.5 | 4.49 ± 0.0348 (40) | 4.48 ± 0.0147 (40) | -0.4 |
+| xrd_powder | AlSi10Mg | a_fcc_A | 4.05 | 4.05 ± 1.20e-04 (40) | 4.05 ± 1.17e-04 (40) | -2.8 |
+| xrd_powder | AlSi10Mg | crystallite_nm | – | 634 ± 292 (40) | 753 ± 254 (40) | +1.9 |
+| xrd_powder | AlSi10Mg | phase.FCC-Al | – | 0.916 ± 0.00284 (40) | 0.915 ± 0.00633 (40) | -0.9 |
+| xrd_powder | AlSi10Mg | phase.Si | – | 0.0841 ± 0.00284 (40) | 0.0851 ± 0.00633 (40) | +0.9 |
+| xrd_powder | AlSi10Mg | solute_ss_wt | – | 0.96 ± 0.0848 (40) | 1.01 ± 0.0831 (40) | +2.8 |
+| xrd_powder | Scalmalloy | a_fcc_A | 4.07 | 4.07 ± 1.11e-04 (40) | 4.07 ± 1.03e-04 (40) | -0.3 |
+| xrd_powder | Scalmalloy | crystallite_nm | – | 749 ± 273 (40) | 752 ± 267 (40) | +0.0 |
+| xrd_powder | Scalmalloy | phase.Al3(Sc,Zr) | – | 0.0144 ± 0.00223 (37) | 0.0133 ± 0.00227 (36) | -2.1 |
+| xrd_powder | Scalmalloy | phase.FCC-Al | – | 0.987 ± 0.00435 (40) | 0.988 ± 0.00452 (40) | +1.4 |
+| xrd_powder | Scalmalloy | solute_ss_wt | – | 3.61 ± 0.0252 (40) | 3.61 ± 0.0235 (40) | -0.3 |
+| xrd_powder | 7075 | a_fcc_A | 4.06 | 4.06 ± 1.18e-04 (40) | 4.06 ± 1.19e-04 (40) | -0.5 |
+| xrd_powder | 7075 | crystallite_nm | – | 592 ± 300 (40) | 705 ± 290 (40) | +1.7 |
 | xrd_powder | 7075 | phase.FCC-Al | – | 1 ± 0 (40) | 1 ± 0 (40) | +nan |
-| xrd_powder | 7075 | solute_ss_wt | – | 8.37 ± 0.163 (40) | 8.31 ± 0.148 (40) | -1.7 |
-| xrd_powder | 70-30 Cu-Ni | a_fcc_A | 3.59 | 3.59 ± 7.32e-05 (40) | 3.59 ± 5.95e-05 (40) | -2.0 |
-| xrd_powder | 70-30 Cu-Ni | crystallite_nm | – | 374 ± 90.6 (40) | 438 ± 166 (40) | +2.1 |
+| xrd_powder | 7075 | solute_ss_wt | – | 8.37 ± 0.163 (40) | 8.35 ± 0.165 (40) | -0.5 |
+| xrd_powder | 70-30 Cu-Ni | a_fcc_A | 3.59 | 3.59 ± 7.32e-05 (40) | 3.59 ± 5.39e-05 (40) | -1.9 |
+| xrd_powder | 70-30 Cu-Ni | crystallite_nm | – | 374 ± 90.7 (40) | 354 ± 97.5 (40) | -1.0 |
 | xrd_powder | 70-30 Cu-Ni | phase.FCC-Cu | – | 1 ± 0 (40) | 1 ± 0 (40) | +nan |
-| xrd_powder | 70-30 Cu-Ni | solute_ss_wt | – | 31.5 ± 0.0894 (40) | 31.5 ± 0.0727 (40) | +2.0 |
-| xrd_powder | NAB | a_fcc_A | 3.64 | 3.64 ± 2.52e-04 (40) | 3.64 ± 7.48e-05 (40) | -0.2 |
-| xrd_powder | NAB | crystallite_nm | – | 1000 ± 0 (40) | 456 ± 226 (40) | -15.2 |
-| xrd_powder | NAB | phase.FCC-Cu | – | 0.359 ± 0.00346 (40) | 0.373 ± 0.0232 (40) | +3.9 |
-| xrd_powder | NAB | phase.beta' | – | 0.641 ± 0.00346 (40) | 0.626 ± 0.0236 (40) | -4.2 |
-| xrd_powder | NAB | phase.kappa_II | – | – ± – (0) | 0.00869 ± 0.00132 (7) | +nan |
-| xrd_powder | NAB | solute_ss_wt | – | 9.13 ± 0.105 (40) | 9.13 ± 0.0312 (40) | -0.3 |
-| sem_section | AlSi10Mg | crack_density | 0.0257 | 0.0181 ± 0.0507 (40) | 0.0236 ± 0.0404 (40) | +0.5 |
-| sem_section | AlSi10Mg | lof_frac | 0.0961 | 0.0324 ± 0.151 (40) | 0.0486 ± 0.174 (40) | +0.4 |
-| sem_section | AlSi10Mg | n_cracks | – | 0.225 ± 0.418 (40) | 0.375 ± 0.484 (40) | +1.5 |
-| sem_section | AlSi10Mg | n_pores | – | 7.65 ± 2.69 (40) | 7.88 ± 2.73 (40) | +0.4 |
-| sem_section | AlSi10Mg | pore_dmax_um | – | 46.0 ± 20.3 (40) | 39.5 ± 18.3 (40) | -1.5 |
-| sem_section | AlSi10Mg | porosity | 0.00436 | 0.00375 ± 0.00273 (40) | 0.00301 ± 0.00207 (40) | -1.4 |
-| sem_section | Scalmalloy | crack_density | 0.0333 | 0.0294 ± 0.0485 (40) | 0.0376 ± 0.0412 (40) | +0.8 |
-| sem_section | Scalmalloy | lof_frac | 0.149 | 0.0708 ± 0.159 (40) | 0.0546 ± 0.155 (40) | -0.5 |
-| sem_section | Scalmalloy | n_cracks | – | 0.525 ± 0.774 (40) | 0.6 ± 0.49 (40) | +0.5 |
-| sem_section | Scalmalloy | n_pores | – | 9 ± 2.92 (40) | 9.9 ± 3.32 (40) | +1.3 |
-| sem_section | Scalmalloy | pore_dmax_um | – | 42.9 ± 12.5 (40) | 46.3 ± 15.1 (40) | +1.1 |
-| sem_section | Scalmalloy | porosity | 0.00548 | 0.00367 ± 0.00185 (40) | 0.00454 ± 0.00269 (40) | +1.7 |
-| sem_section | 7075 | crack_density | 1.88 | 1.26 ± 0.373 (40) | 1.28 ± 0.388 (40) | +0.2 |
-| sem_section | 7075 | lof_frac | 0.062 | 0.0495 ± 0.135 (40) | 0.0379 ± 0.102 (40) | -0.4 |
-| sem_section | 7075 | n_cracks | – | 17.4 ± 5.71 (40) | 1 ± 0 (40) | -18.2 |
-| sem_section | 7075 | n_pores | – | 12.2 ± 3.42 (40) | 12.6 ± 3.57 (40) | +0.6 |
-| sem_section | 7075 | pore_dmax_um | – | 57.6 ± 22.3 (40) | 55.9 ± 17.6 (40) | -0.4 |
-| sem_section | 7075 | porosity | 0.0175 | 0.0155 ± 0.00549 (40) | 0.0145 ± 0.00442 (40) | -0.9 |
-| sem_section | 70-30 Cu-Ni | crack_density | 0.029 | 0.0379 ± 0.0656 (40) | 0.0214 ± 0.0364 (40) | -1.4 |
-| sem_section | 70-30 Cu-Ni | lof_frac | 0.947 | 0.719 ± 0.242 (40) | 0.713 ± 0.238 (40) | -0.1 |
-| sem_section | 70-30 Cu-Ni | n_cracks | – | 0.55 ± 0.835 (40) | 0.325 ± 0.468 (40) | -1.5 |
-| sem_section | 70-30 Cu-Ni | n_pores | – | 13.4 ± 3.58 (40) | 15.2 ± 4.2 (40) | +2.0 |
-| sem_section | 70-30 Cu-Ni | pore_dmax_um | – | 163 ± 58.1 (40) | 152 ± 43.8 (40) | -0.9 |
-| sem_section | 70-30 Cu-Ni | porosity | 0.0561 | 0.0458 ± 0.0289 (40) | 0.0476 ± 0.0296 (40) | +0.3 |
-| sem_section | NAB | crack_density | 0.0131 | 0.0151 ± 0.046 (40) | 0.0144 ± 0.0296 (40) | -0.1 |
-| sem_section | NAB | lof_frac | 0.9 | 0.615 ± 0.322 (40) | 0.715 ± 0.255 (40) | +1.5 |
-| sem_section | NAB | n_cracks | – | 0.15 ± 0.421 (40) | 0.275 ± 0.447 (40) | +1.3 |
-| sem_section | NAB | n_pores | – | 11.4 ± 3.58 (40) | 12.1 ± 3.89 (40) | +0.8 |
-| sem_section | NAB | pore_dmax_um | – | 141 ± 60.4 (40) | 123 ± 42.1 (40) | -1.6 |
-| sem_section | NAB | porosity | 0.0294 | 0.0296 ± 0.0225 (40) | 0.0243 ± 0.0154 (40) | -1.2 |
+| xrd_powder | 70-30 Cu-Ni | solute_ss_wt | – | 31.5 ± 0.0894 (40) | 31.5 ± 0.0658 (40) | +1.9 |
+| xrd_powder | NAB | a_fcc_A | 3.64 | 3.64 ± 2.52e-04 (40) | 3.64 ± 7.49e-05 (40) | +0.4 |
+| xrd_powder | NAB | crystallite_nm | – | 1000 ± 0 (40) | 988 ± 74.3 (40) | -1.0 |
+| xrd_powder | NAB | phase.FCC-Cu | – | 0.359 ± 0.00346 (40) | 0.374 ± 0.0269 (40) | +3.6 |
+| xrd_powder | NAB | phase.beta' | – | 0.641 ± 0.00346 (40) | 0.624 ± 0.0271 (40) | -4.0 |
+| xrd_powder | NAB | phase.kappa_II | – | – ± – (0) | 0.00762 ± 0.0013 (9) | +nan |
+| xrd_powder | NAB | solute_ss_wt | – | 9.13 ± 0.105 (40) | 9.14 ± 0.0313 (40) | +0.4 |
+| sem_section | AlSi10Mg | crack_density | 0.0257 | 0.0181 ± 0.0507 (40) | 0.0437 ± 0.0681 (40) | +1.9 |
+| sem_section | AlSi10Mg | lof_frac | 0.0961 | 0.0324 ± 0.151 (40) | 0.0656 ± 0.197 (40) | +0.8 |
+| sem_section | AlSi10Mg | n_cracks | – | 0.225 ± 0.418 (40) | 0.2 ± 0.4 (40) | -0.3 |
+| sem_section | AlSi10Mg | n_pores | – | 7.65 ± 2.69 (40) | 8.15 ± 2.5 (40) | +0.9 |
+| sem_section | AlSi10Mg | pore_dmax_um | – | 46.0 ± 20.3 (40) | 49.1 ± 25.3 (40) | +0.6 |
+| sem_section | AlSi10Mg | porosity | 0.00436 | 0.00375 ± 0.00273 (40) | 0.00433 ± 0.00392 (40) | +0.8 |
+| sem_section | Scalmalloy | crack_density | 0.0333 | 0.0294 ± 0.0485 (40) | 0.0253 ± 0.0321 (40) | -0.4 |
+| sem_section | Scalmalloy | lof_frac | 0.149 | 0.0708 ± 0.159 (40) | 0.0706 ± 0.193 (40) | -0.0 |
+| sem_section | Scalmalloy | n_cracks | – | 0.525 ± 0.774 (40) | 0.25 ± 0.487 (40) | -1.9 |
+| sem_section | Scalmalloy | n_pores | – | 9 ± 2.92 (40) | 10.2 ± 3.23 (40) | +1.7 |
+| sem_section | Scalmalloy | pore_dmax_um | – | 42.9 ± 12.5 (40) | 47.5 ± 15.6 (40) | +1.4 |
+| sem_section | Scalmalloy | porosity | 0.00548 | 0.00367 ± 0.00185 (40) | 0.00488 ± 0.00258 (40) | +2.4 |
+| sem_section | 7075 | crack_density | 1.88 | 1.26 ± 0.373 (40) | 1.37 ± 0.386 (40) | +1.3 |
+| sem_section | 7075 | lof_frac | 0.062 | 0.0495 ± 0.135 (40) | 0.0566 ± 0.108 (40) | +0.3 |
+| sem_section | 7075 | n_cracks | – | 17.4 ± 5.71 (40) | 10.9 ± 2.84 (40) | -6.5 |
+| sem_section | 7075 | n_pores | – | 12.2 ± 3.42 (40) | 13.7 ± 4.23 (40) | +1.8 |
+| sem_section | 7075 | pore_dmax_um | – | 57.6 ± 22.3 (40) | 53.5 ± 12.9 (40) | -1.0 |
+| sem_section | 7075 | porosity | 0.0175 | 0.0155 ± 0.00549 (40) | 0.016 ± 0.00551 (40) | +0.5 |
+| sem_section | 70-30 Cu-Ni | crack_density | 0.029 | 0.0379 ± 0.0656 (40) | 0.0231 ± 0.0484 (40) | -1.2 |
+| sem_section | 70-30 Cu-Ni | lof_frac | 0.947 | 0.719 ± 0.242 (40) | 0.779 ± 0.156 (40) | +1.3 |
+| sem_section | 70-30 Cu-Ni | n_cracks | – | 0.55 ± 0.835 (40) | 0.2 ± 0.458 (40) | -2.3 |
+| sem_section | 70-30 Cu-Ni | n_pores | – | 13.4 ± 3.58 (40) | 14.6 ± 3.33 (40) | +1.5 |
+| sem_section | 70-30 Cu-Ni | pore_dmax_um | – | 163 ± 58.1 (40) | 164 ± 50.1 (40) | +0.1 |
+| sem_section | 70-30 Cu-Ni | porosity | 0.0561 | 0.0458 ± 0.0289 (40) | 0.0512 ± 0.0271 (40) | +0.9 |
+| sem_section | NAB | crack_density | 0.0131 | 0.0151 ± 0.046 (40) | 0.014 ± 0.0281 (40) | -0.1 |
+| sem_section | NAB | lof_frac | 0.9 | 0.615 ± 0.322 (40) | 0.628 ± 0.312 (40) | +0.2 |
+| sem_section | NAB | n_cracks | – | 0.15 ± 0.421 (40) | 0 ± 0 (40) | -2.3 |
+| sem_section | NAB | n_pores | – | 11.4 ± 3.58 (40) | 12.3 ± 3.23 (40) | +1.1 |
+| sem_section | NAB | pore_dmax_um | – | 141 ± 60.4 (40) | 116 ± 46.5 (40) | -2.1 |
+| sem_section | NAB | porosity | 0.0294 | 0.0296 ± 0.0225 (40) | 0.0234 ± 0.0171 (40) | -1.4 |
 | ebsd | AlSi10Mg | equiaxed_frac | 0 | 0.0942 ± 0.0248 (40) | 0.103 ± 0.0246 (40) | +1.6 |
 | ebsd | AlSi10Mg | grain_um | 8.39 | 9.07 ± 0.543 (40) | 8.78 ± 0.362 (40) | -2.8 |
 | ebsd | AlSi10Mg | indexed_frac | – | 0.933 ± 0.0118 (40) | 0.93 ± 0.0164 (40) | -0.9 |
@@ -152,14 +152,14 @@
 | ebsd | NAB | indexed_frac | – | 0.766 ± 0.0393 (40) | 0.758 ± 0.036 (40) | -0.9 |
 | ebsd | NAB | kam_deg | – | 1.68 ± 0.0246 (40) | 1.67 ± 0.0214 (40) | -1.1 |
 | ebsd | NAB | texture_mrd | – | 2.07 ± 0.543 (40) | 2.08 ± 0.536 (40) | +0.0 |
-| xrd_part | AlSi10Mg | a_fcc_A | 4.05 | 4.05 ± 2.10e-04 (40) | 4.05 ± 1.92e-04 (40) | -0.6 |
-| xrd_part | AlSi10Mg | microstrain | – | 6.19e-04 ± 1.38e-04 (40) | 5.67e-04 ± 1.62e-04 (40) | -1.6 |
+| xrd_part | AlSi10Mg | a_fcc_A | 4.05 | 4.05 ± 2.10e-04 (40) | 4.05 ± 1.93e-04 (40) | -0.6 |
+| xrd_part | AlSi10Mg | microstrain | – | 6.19e-04 ± 1.38e-04 (40) | 5.66e-04 ± 1.62e-04 (40) | -1.6 |
 | xrd_part | AlSi10Mg | phase.FCC-Al | – | 0.927 ± 0.00216 (40) | 0.926 ± 0.00251 (40) | -3.0 |
 | xrd_part | AlSi10Mg | phase.Si | – | 0.0725 ± 0.00216 (40) | 0.0741 ± 0.00251 (40) | +3.0 |
-| xrd_part | Scalmalloy | a_fcc_A | 4.06 | 4.06 ± 2.10e-04 (40) | 4.06 ± 1.65e-04 (40) | +0.8 |
+| xrd_part | Scalmalloy | a_fcc_A | 4.06 | 4.06 ± 2.10e-04 (40) | 4.06 ± 1.66e-04 (40) | +0.8 |
 | xrd_part | Scalmalloy | microstrain | – | 5.16e-04 ± 1.25e-04 (40) | 5.46e-04 ± 1.42e-04 (40) | +1.0 |
-| xrd_part | Scalmalloy | phase.Al3(Sc,Zr) | – | 0.00947 ± 0.00481 (24) | 0.00969 ± 0.00278 (35) | +0.2 |
-| xrd_part | Scalmalloy | phase.FCC-Al | – | 0.994 ± 0.00595 (40) | 0.992 ± 0.00413 (40) | -2.4 |
+| xrd_part | Scalmalloy | phase.Al3(Sc,Zr) | – | 0.00946 ± 0.0048 (24) | 0.00968 ± 0.00279 (35) | +0.2 |
+| xrd_part | Scalmalloy | phase.FCC-Al | – | 0.994 ± 0.00594 (40) | 0.992 ± 0.00413 (40) | -2.4 |
 | xrd_part | 7075 | a_fcc_A | 4.05 | 4.05 ± 1.81e-04 (40) | 4.05 ± 1.86e-04 (40) | -1.3 |
 | xrd_part | 7075 | microstrain | – | 5.61e-04 ± 1.11e-04 (40) | 5.51e-04 ± 1.32e-04 (40) | -0.4 |
 | xrd_part | 7075 | phase.Al2Cu | – | 0.0131 ± 0.00177 (40) | 0.0135 ± 0.0016 (40) | +0.9 |
@@ -167,12 +167,12 @@
 | xrd_part | 7075 | phase.MgZn2 | – | 0.00628 ± 0.00117 (35) | 0.00609 ± 9.14e-04 (40) | -0.8 |
 | xrd_part | 70-30 Cu-Ni | a_fcc_A | 3.59 | 3.59 ± 8.43e-05 (40) | 3.59 ± 1.63e-04 (40) | +0.7 |
 | xrd_part | 70-30 Cu-Ni | beta_prime_frac | 1.39e-04 | 0 ± 0 (40) | 0 ± 0 (40) | +nan |
-| xrd_part | 70-30 Cu-Ni | microstrain | – | 5.55e-04 ± 5.79e-05 (40) | 5.56e-04 ± 7.52e-05 (40) | +0.0 |
+| xrd_part | 70-30 Cu-Ni | microstrain | – | 5.55e-04 ± 5.79e-05 (40) | 5.67e-04 ± 6.86e-05 (40) | +0.8 |
 | xrd_part | 70-30 Cu-Ni | phase.FCC-Cu | – | 1 ± 0 (40) | 1 ± 0 (40) | +nan |
 | xrd_part | NAB | a_fcc_A | 3.65 | 3.65 ± 2.88e-04 (40) | 3.65 ± 1.59e-04 (40) | +1.1 |
-| xrd_part | NAB | beta_prime_frac | 0.306 | 0.294 ± 0.00456 (40) | 0.306 ± 0.0116 (40) | +5.9 |
-| xrd_part | NAB | microstrain | – | 0.00114 ± 1.64e-04 (40) | 0.00101 ± 1.38e-04 (40) | -3.9 |
-| xrd_part | NAB | phase.FCC-Cu | – | 0.644 ± 0.00459 (40) | 0.613 ± 0.0121 (40) | -15.0 |
-| xrd_part | NAB | phase.beta' | – | 0.294 ± 0.00456 (40) | 0.316 ± 0.00716 (40) | +16.5 |
+| xrd_part | NAB | beta_prime_frac | 0.306 | 0.294 ± 0.00456 (40) | 0.293 ± 0.00454 (40) | -0.8 |
+| xrd_part | NAB | microstrain | – | 0.00114 ± 1.65e-04 (40) | 9.90e-04 ± 1.33e-04 (40) | -4.4 |
+| xrd_part | NAB | phase.FCC-Cu | – | 0.644 ± 0.00459 (40) | 0.636 ± 0.00986 (40) | -4.5 |
+| xrd_part | NAB | phase.beta' | – | 0.294 ± 0.00456 (40) | 0.293 ± 0.00454 (40) | -0.8 |
 | xrd_part | NAB | phase.kappa_II | – | 0.0623 ± 0.00216 (40) | 0.0652 ± 0.00357 (40) | +4.3 |
 | xrd_part | NAB | phase.kappa_III | – | – ± – (0) | 0.0135 ± 0.0047 (17) | +nan |
