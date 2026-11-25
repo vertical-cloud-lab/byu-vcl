@@ -7,7 +7,9 @@ with short captions naming each instrument. Upload it unlisted, and commit 8 ful
 as PNGs on the branch."
 
 - The cut: [`out/highlight/vertical_lab_highlight_r15.mp4`](../out/highlight/vertical_lab_highlight_r15.mp4), 2:42,
-  1280 × 720 at 30 fps, silent. Its YouTube link is in [`out/highlight/highlight.json`](../out/highlight/highlight.json).
+  1280 × 720 at 30 fps, silent. On YouTube, unlisted: [lnpVq8JvnJM](https://www.youtube.com/watch?v=lnpVq8JvnJM),
+  with a chapter per shot; the record is in [`out/highlight/highlight.json`](../out/highlight/highlight.json) and the
+  description in [`youtube_description.txt`](../out/highlight/youtube_description.txt).
 - The stills: [`out/highlight/stills/`](../out/highlight/stills/), 1280 × 720 PNGs, one per chapter plus the whole lab;
   [`highlight_sheet.png`](../out/highlight/highlight_sheet.png) puts them side by side.
 - The script: [`highlight.py`](../highlight.py) (`fetch`, `build`, `upload`, and `bandscan` to check the captions).

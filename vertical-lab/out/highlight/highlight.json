@@ -161,5 +161,17 @@
    "start_s": 155.65,
    "seconds": 6.0
   }
+ ],
+ "youtube": [
+  {
+   "id": "lnpVq8JvnJM",
+   "url": "https://www.youtube.com/watch?v=lnpVq8JvnJM",
+   "sha256": "97566ae294c3078b3d38bc3965c14fd658b30197332dfb82a0caaeefc4217f19",
+   "privacy": "unlisted",
+   "title": "Vertical cloud lab: the alloy route in eight shots (round 15 highlights, 3-D)",
+   "notified_subscribers": false,
+   "description_commit": "f90ff956",
+   "uploaded": "2026-11-25T23:35:33Z"
+  }
  ]
 }
