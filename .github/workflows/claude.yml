@@ -27,9 +27,12 @@ env:
   # allowance. That costs a second full session every time Claude errors out,
   # so it is off by default.
   RETRY_ON_ANY_FAILURE: "false"
-  # Seats tried first by "Pick a seat from the token pool" (the Premium ones).
-  # Every other org secret named CLAUDE_TOKEN_<NAME> is in the pool too.
-  CLAUDE_TOKEN_PREFERRED: "MONGOOSE ELEPHANT"
+  # Seats "Pick a seat from the token pool" may use, each a secret named
+  # CLAUDE_TOKEN_<NAME>; runs rotate across them by run number. Empty means
+  # every CLAUDE_TOKEN_* secret this repo can see.
+  CLAUDE_TOKEN_POOL: "STERLING MONGOOSE ELEPHANT DOLPHIN GOSHAWK"
+  # Seats tried before the rest of the pool, in this order. Empty: none.
+  CLAUDE_TOKEN_PREFERRED: ""
 
 jobs:
   claude:
@@ -295,7 +298,13 @@ jobs:
           secrets = json.loads(os.environ.get("ALL_SECRETS") or "{}")
           seats = sorted(k[len("CLAUDE_TOKEN_"):] for k, v in secrets.items()
                          if k.startswith("CLAUDE_TOKEN_") and v)
-          preferred = [x for x in os.environ.get("CLAUDE_TOKEN_PREFERRED", "").split() if x in seats]
+          allow = os.environ.get("CLAUDE_TOKEN_POOL", "").split()
+          if allow:
+              missing = [x for x in allow if x not in seats]
+              if missing:
+                  print(f"In CLAUDE_TOKEN_POOL but not a secret here: {' '.join(missing)}")
+              seats = [x for x in allow if x in seats]
+          preferred =[x for x in os.environ.get("CLAUDE_TOKEN_PREFERRED", "").split() if x in seats]
           rest = [x for x in seats if x not in preferred]
           if rest:
               k = int(os.environ.get("GITHUB_RUN_NUMBER", "0")) % len(rest)
