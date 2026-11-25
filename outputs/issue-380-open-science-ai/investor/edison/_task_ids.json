@@ -84,5 +84,33 @@
    "data_entry:c050020b-f742-4dea-b2e7-180ec9af50cf"
   ],
   "submitted_utc": "2026-11-25T00:45:58.803660+00:00"
+ },
+ "inv_redteam_round2": {
+  "task_id": "0457a348-0f27-488e-a186-97fa34f5b3a7",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "The attached INVESTOR_MEMO.md was written by an AI agent (Claude) as a deliberately less-biased investor's view, after an earlier round of research for a university lab that favours open science. The memo comes with its pre-registration (PREREGISTRATION.md), an audit of the earlier round's bias (BIAS_AUDIT.md), the evidence it relies on (ai_and_funding_evidence.md) and its data: offer prices and deal terms for 43 company listings with sources (cohort_listings_verified.csv), computed returns (h1_returns.csv, h1_summary.csv, h1_pme_by_company.csv) and a fundamentals snapshot (fundamentals_snapshot.csv). Act as an independent reviewer for an investment committee. (1) Say whether the memo now overcorrects toward a negative view of open-source and open-science investments, or still leans toward openness. Quote the specific sentences that are framed unfairly in either direction and suggest neutral wording. (2) Independently recompute the H1 comparison from the raw listing data: the value of $1 at the offer price at exit or today, relative to QQQ over the same window, for the open-source-origin and closed cohorts, with and without listing-year controls and sensitivity cases. Check the cohort rules for selection bias, including companies that may be misclassified or missing, and say whether the memo's conclusion ('no premium and no proven penalty') holds. (3) Check every number the memo states against the attached data and evidence, and list each error or unsupported claim. (4) Name the most important investor concerns the memo misses or underweights, especially for a university spin-out in autonomous alloy discovery, and any important evidence in favour of openness it leaves out. Be direct and specific.",
+  "files": [
+   "INVESTOR_MEMO.md",
+   "BIAS_AUDIT.md",
+   "PREREGISTRATION.md",
+   "ai_and_funding_evidence.md",
+   "h1_returns.csv",
+   "cohort_listings_verified.csv",
+   "h1_summary.csv",
+   "h1_pme_by_company.csv",
+   "fundamentals_snapshot.csv"
+  ],
+  "data_entries": [
+   "data_entry:2b324577-760b-4df5-b6b5-f23883889eb8",
+   "data_entry:474a49e1-f640-439d-9cdc-c84d22e49074",
+   "data_entry:fcfd236c-c17b-4ff9-9c84-c2546b3f7cb0",
+   "data_entry:fd8c72bb-2012-4163-ae93-ab674110e002",
+   "data_entry:fe2fef29-9424-49a6-b16d-8526859be293",
+   "data_entry:988c9232-89ec-4dbb-83a5-3b86e6f79267",
+   "data_entry:8fe77863-1c6c-4f98-a68b-8fab650b1572",
+   "data_entry:1bfd784d-411b-46b9-8530-7a1d0e460a6b",
+   "data_entry:5411f5d0-fe50-439b-b27d-d288b3e39213"
+  ],
+  "submitted_utc": "2026-11-25T01:33:06.181733+00:00"
  }
 }

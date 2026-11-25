@@ -1,0 +1,38 @@
+# Issue #380, round 2: the investor's view
+
+The first round (branch `claude/issue-380-20261123-2145`) asked what open science and open source are worth. This
+round asks what someone paying for them gets back, as a less-biased counterweight, with Edison as an independent
+check. Read [`INVESTOR_MEMO.md`](INVESTOR_MEMO.md) first.
+
+## Reproduce
+
+Run from this folder with a Python 3.12 venv (`edison-client` does not import on 3.14):
+
+```bash
+python3.12 -m venv /tmp/venv && /tmp/venv/bin/pip install edison-client yfinance pandas matplotlib numpy scipy requests
+/tmp/venv/bin/python scripts/edison_submit.py               # submits edison/queries.json jobs not yet in _task_ids.json
+/tmp/venv/bin/python scripts/edison_fetch.py --wait          # saves answers, references and full trajectories
+/tmp/venv/bin/python scripts/edison_files.py inv_redteam_round1 inv_redteam_round2   # files analysis jobs created
+/tmp/venv/bin/python scripts/fetch_prices.py                 # Yahoo prices and fundamentals snapshot
+/tmp/venv/bin/python scripts/build_cohort.py                 # verified deal terms -> data/cohort_listings.csv
+/tmp/venv/bin/python scripts/h1_listing_returns.py           # H1 returns, summaries, sensitivities
+/tmp/venv/bin/python scripts/h1_vintage.py                   # listing-year controls and public-market equivalents
+/tmp/venv/bin/python scripts/h1_figure.py                    # figures/h1_listing_returns.png
+/tmp/venv/bin/python scripts/value_capture_casebook.py       # H2 on the first round's case files
+/tmp/venv/bin/python scripts/fundamentals_summary.py         # survivors' margins and multiples
+```
+
+`fetch_prices.py` also needs Domo's renamed ticker (HUCK) and the four sensitivity tickers, which are saved to
+`data/prices_extra_*.csv`. Yahoo prices change daily, so a re-run after 2026-11-24 moves the still-listed companies.
+
+## Contents
+
+| Path | What it is |
+| --- | --- |
+| `INVESTOR_MEMO.md` | The memo: bottom line, pre-registered results, ten ranked concerns, the case for openness, an investability checklist, DAL and the SDL kit |
+| `PREREGISTRATION.md` | Hypotheses H1–H6 and their tests, committed before any new data |
+| `BIAS_AUDIT.md` | Where the first round's framing leaned toward openness |
+| `edison/` | Every Edison job: `queries.json`, `_task_ids.json`, `<key>_answer.md`, `<key>_references.md`, `<key>_task.json` (full trajectory), and `<key>_files/` for analysis jobs. `uploads/` holds the files the red team received |
+| `evidence/` | Dated, sourced 2025–26 evidence gathered for the memo |
+| `data/` | Verified listing terms, prices, fundamentals and every results table |
+| `scripts/`, `figures/` | Code and charts |

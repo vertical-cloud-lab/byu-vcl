@@ -33,7 +33,29 @@
  },
  "inv_redteam_round1": {
   "job": "ANALYSIS",
-  "files": ["FINDINGS_BRIEF.md", "RECOMMENDATIONS.md", "SCHEMA.md", "companies_master.csv", "events.csv", "suggested_proposal_language.md"],
+  "files": [
+   "FINDINGS_BRIEF.md",
+   "RECOMMENDATIONS.md",
+   "SCHEMA.md",
+   "companies_master.csv",
+   "events.csv",
+   "suggested_proposal_language.md"
+  ],
   "query": "The attached files are a research brief (FINDINGS_BRIEF.md) and recommendations (RECOMMENDATIONS.md) on 'the value of open science in the age of AI', written by an AI agent (Claude) for a university lab that builds open-source self-driving laboratories and favours open science, together with the agent's dataset of 179 organizations (companies_master.csv, scored 0-4 for openness at founding and now under SCHEMA.md, with funding, latest value and ownership status), their dated licence and access events (events.csv), and draft proposal language for the lab's autonomous alloy-discovery lab (suggested_proposal_language.md). Act as a skeptical member of a venture fund's investment committee who is evaluating an open-science or open-source company in the physical sciences, for example a spin-out of that alloy-discovery lab. (1) Identify the claims in the brief and recommendations that are weakest, overstated, or framed in a way that favours openness, and explain why. (2) Using the dataset, test whether openness (now, or at founding) is associated with value captured: compute value-to-funding multiples, acquisition, take-private and shutdown rates, and value distributions by openness level and by sector; quantify survivorship and selection bias where you can; report effect sizes with uncertainty and sample sizes. (3) List the ten most important concerns an investor would have about this kind of investment, ranked by severity, each with the evidence for and against it. (4) State what evidence would change your assessment. Be direct and do not soften conclusions to please the lab."
+ },
+ "inv_redteam_round2": {
+  "job": "ANALYSIS",
+  "files": [
+   "INVESTOR_MEMO.md",
+   "BIAS_AUDIT.md",
+   "PREREGISTRATION.md",
+   "ai_and_funding_evidence.md",
+   "h1_returns.csv",
+   "cohort_listings_verified.csv",
+   "h1_summary.csv",
+   "h1_pme_by_company.csv",
+   "fundamentals_snapshot.csv"
+  ],
+  "query": "The attached INVESTOR_MEMO.md was written by an AI agent (Claude) as a deliberately less-biased investor's view, after an earlier round of research for a university lab that favours open science. The memo comes with its pre-registration (PREREGISTRATION.md), an audit of the earlier round's bias (BIAS_AUDIT.md), the evidence it relies on (ai_and_funding_evidence.md) and its data: offer prices and deal terms for 43 company listings with sources (cohort_listings_verified.csv), computed returns (h1_returns.csv, h1_summary.csv, h1_pme_by_company.csv) and a fundamentals snapshot (fundamentals_snapshot.csv). Act as an independent reviewer for an investment committee. (1) Say whether the memo now overcorrects toward a negative view of open-source and open-science investments, or still leans toward openness. Quote the specific sentences that are framed unfairly in either direction and suggest neutral wording. (2) Independently recompute the H1 comparison from the raw listing data: the value of $1 at the offer price at exit or today, relative to QQQ over the same window, for the open-source-origin and closed cohorts, with and without listing-year controls and sensitivity cases. Check the cohort rules for selection bias, including companies that may be misclassified or missing, and say whether the memo's conclusion ('no premium and no proven penalty') holds. (3) Check every number the memo states against the attached data and evidence, and list each error or unsupported claim. (4) Name the most important investor concerns the memo misses or underweights, especially for a university spin-out in autonomous alloy discovery, and any important evidence in favour of openness it leaves out. Be direct and specific."
  }
 }
