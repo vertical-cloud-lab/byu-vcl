@@ -30,9 +30,12 @@ def _hyper(state: dict) -> dict:
 
 
 class Node:
-    def __init__(self, kind: str = "gp", refit_every: int = 8, max_n: int = 600, nuts=(128, 128, 8), seed=0):
+    def __init__(self, kind: str = "gp", refit_every: int = 8, max_n: int = 600, nuts=(128, 128, 8), seed=0,
+                 nuts_growth: float = 1.5):
         self.kind, self.refit_every, self.max_n, self.nuts, self.seed = kind, refit_every, max_n, nuts, seed
+        self.nuts_growth = nuts_growth
         self.model, self.state, self.n_fit, self.n = None, None, 0, 0
+        self.mcmc = None                 # saas_nuts: the last NUTS run's thinned hyperparameter samples
         self.ymean, self.ystd = 0.0, 1.0
 
     def ready(self) -> bool:
@@ -57,20 +60,38 @@ class Node:
         self.ymean, self.ystd = float(y.mean()), float(y.std() + 1e-6)
         Xt = torch.tensor(X, dtype=DT)
         Yt = torch.tensor(((y - self.ymean) / self.ystd).reshape(-1, 1), dtype=DT)
-        need_fit = self.state is None or len(y) >= self.n_fit + self.refit_every or self.kind == "saas_nuts"
+        need_fit = self.state is None or len(y) >= self.n_fit + self.refit_every
         t0 = time.time()
         if self.kind == "saas_nuts":
+            # NUTS on a geometric schedule: a fresh chain when the data have grown by refit_every points and by the
+            # factor nuts_growth since the last one (n = 3, 7, 11, 17, 26, 39, 59, 89, 134, ... at 4 and 1.5); in
+            # between, the model is rebuilt on the new data with the last chain's hyperparameter samples (the same
+            # reuse the MAP GPs get). A chain at every new point cost 25-170 s at n = 30-140 on the runner, about
+            # 33 CPU-hours for 12 SAASBO seeds.
             from botorch.fit import fit_fully_bayesian_model_nuts
             from botorch.models.fully_bayesian import SaasFullyBayesianSingleTaskGP
-            if not need_fit and self.model is not None:
-                return
             m = SaasFullyBayesianSingleTaskGP(Xt, Yt)
-            w, ns, th = self.nuts
-            fit_fully_bayesian_model_nuts(m, warmup_steps=w, num_samples=ns, thinning=th, disable_progbar=True,
-                                          seed=self.seed + len(y))
-            STATS["nuts"] += 1
-            STATS["nuts_s"] += time.time() - t0
-            self.model, self.n_fit, self.n = m, len(y), len(y)
+            due = self.mcmc is None or len(y) >= max(self.n_fit + self.refit_every,
+                                                     math.ceil(self.n_fit * self.nuts_growth))
+            if due:
+                cap = {}
+                orig = m.load_mcmc_samples
+
+                def _capture(samples, _orig=orig):
+                    cap["s"] = {kk: vv.detach().clone() for kk, vv in samples.items()}
+                    return _orig(samples)
+
+                m.load_mcmc_samples = _capture
+                w, ns, th = self.nuts
+                fit_fully_bayesian_model_nuts(m, warmup_steps=w, num_samples=ns, thinning=th, disable_progbar=True,
+                                              seed=self.seed + len(y))
+                self.mcmc, self.n_fit = cap.get("s"), len(y)
+                STATS["nuts"] += 1
+                STATS["nuts_s"] += time.time() - t0
+            else:
+                m.load_mcmc_samples(self.mcmc)
+                m.eval()
+            self.model, self.n = m, len(y)
             return
         if self.kind == "saas_map":
             from botorch.models.map_saas import get_map_saas_model

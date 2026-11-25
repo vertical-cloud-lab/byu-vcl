@@ -35,9 +35,75 @@ H = 24.0
 
 # --------------------------------------------------------------------------------------------- the workflow network
 # Each booking is (campaign, twin node, station). STEPS gives its step name here and its node in DAL #211's network
-# (ONR YIP Fig. 1, "the full workflow network"); DAL211 lists those nodes. Filled from DAL #211's figure code.
-DAL211: dict = {}
-STEPS: dict = {}
+# (ONR YIP Fig. 1, "the full workflow network": the TikZ in near-term-submissions/onr-yip/onr-yip-technical-proposal-
+# cu-ded.tex L206-L275 at DAL b4d5a89, the head of DAL PR 215). The figure draws the copper/DED workflow only, so an
+# aluminium booking gets the same node where the step is the same one (charge, atomize, microscopy, tensile) and None
+# where the figure has no such step (LPBF builds, Archimedes density, PIP, heat treatment, hot tensile, XRD, XRF,
+# ICP-MS, the blend doser). Where the figure folds a step into a node's time (sieving into "Atomize", EDM and
+# machining into "Tensile") the booking gets that node.
+DAL211_SOURCE = ("https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/b4d5a89/near-term-submissions/onr-yip/"
+                 "onr-yip-technical-proposal-cu-ded.tex#L206-L275")
+DAL211: dict = {
+    "comp": ("composition: Ni, Al, Fe, Mn; Cr, Si, Nb, Ti in Cu-Ni", "input"),
+    "atom": ("atomizer settings", "input"),
+    "dep": ("deposition settings: laser power, travel speed, feed rate", "input"),
+    "p1": ("CALPHAD and heat flow", "model"),
+    "p2": ("Charge", "process"),
+    "p3": ("Atomize", "process"),
+    "p4": ("Small DED, Utah", "process"),
+    "p5": ("Large DED, Mines", "process"),
+    "p6": ("Microscopy", "characterization"),
+    "t1": ("Tensile", "test"),
+    "t2": ("Seawater screen", "test"),
+    "t3": ("Immersion", "test"),
+    "t4": ("Repair coupon", "test"),
+    "feedback": ("each result updates the models, which choose the next step by expected gain per cost", "decision"),
+}
+DAL211_EDGES = [("p1", "p2"), ("p2", "p3"), ("p3", "p4"), ("p4", "p5"), ("p5", "p6"), ("p6", "t1"), ("p6", "t2"),
+                ("p6", "t4"), ("t2", "t3"), ("comp", "p1"), ("comp", "p2"), ("atom", "p3"), ("dep", "p4"),
+                ("dep", "p5"), ("t4", "feedback"), ("feedback", "p1")]
+STEPS: dict = {
+    (None, "sim", "hpc"): ("CALPHAD or heat-flow simulation", "p1"),
+    (None, "powder", "shop"): ("machine the charge cups and plugs", "p2"),
+    (None, "powder", "doser"): ("dose the charge and press the plug", "p2"),
+    (None, "powder", "atomizer"): ("atomize (rePOWDER, ultrasonic)", "p3"),
+    (None, "powder", "sieve"): ("sieve the lot", "p3"),
+    (None, "powder", "psd"): ("powder size and flow", "p3"),
+    (None, "powder", "byu_sem"): ("powder SEM and EDS", "p3"),
+    (None, "powder", "xrd"): ("powder XRD", None),
+    (None, "powder", "xrf"): ("powder XRF", None),
+    (None, "powder", "byu_icpms"): ("powder ICP-MS", None),
+    (None, "nsl", "nsl"): ("outside O, C and composition (NSL Analytical)", "p3"),
+    (None, "print", "utah_midi"): ("LPBF build (Aconity MIDI)", None),
+    (None, "print", "density"): ("Archimedes density of the build's cubes", None),
+    (None, "print", "byu_sem"): ("SEM of a polished cube section", "p6"),
+    (None, "section", "prep"): ("section, mount and polish", "p6"),
+    (None, "section", "byu_sem"): ("SEM, EDS and EBSD of the section", "p6"),
+    (None, "section", "hardness"): ("micro-Vickers row", None),
+    (None, "section", "xrd"): ("XRD of the section (beta-prime)", "p6"),
+    (None, "pip", "furnace"): ("heat treatment before PIP", None),
+    (None, "pip", "prep"): ("PIP surface prep", None),
+    (None, "pip", "pip"): ("PIP (profilometry-based indentation plastometry)", None),
+    (None, "test", "utah_midi"): ("E8 plate build (LPBF)", None),
+    (None, "test", "edm"): ("wire EDM the bars off the plate", "t1"),
+    (None, "test", "furnace"): ("heat treat the bars", "t1"),
+    (None, "test", "shop"): ("machine the tensile bars", "t1"),
+    (None, "test", "tensile"): ("room-temperature tensile", "t1"),
+    (None, "test", "tensile_hot"): ("elevated-temperature tensile", None),
+    (None, "ded_small", "doser"): ("blend elemental powders for a DED screen", None),
+    (None, "ded_small", "utah_mxlab"): ("small DED deposit (MX-Lab)", "p4"),
+    (None, "ded_small", "byu_sem"): ("SEM of the deposit", "p6"),
+    (None, "ded_large", "utah_mxlab"): ("1 kg DED deposit (MX-Lab)", "p5"),
+    (None, "ded_large", "mines_x2"): ("2 kg DED deposit (FormAlloy X2, Mines)", "p5"),
+    (None, "ded_large", "byu_sem"): ("SEM of the large deposit", "p6"),
+    (None, "tensile", "shop"): ("machine bars from the deposit", "t1"),
+    (None, "tensile", "tensile"): ("tensile of the deposit's bars", "t1"),
+    (None, "screen", "cubxl"): ("seawater corrosion screen (CubXL: OCP, LPR, EIS, CP)", "t2"),
+    (None, "screen", "byu_icpms"): ("ICP-MS of the screen's electrolyte", "t2"),
+    (None, "immersion", "immersion"): ("30-day immersion", "t3"),
+    (None, "immersion", "byu_sem"): ("SEM of the immersion coupon", "t3"),
+    (None, "immersion", "byu_icpms"): ("ICP-MS of the immersion solution", "t3"),
+}
 
 
 def step_of(campaign, node, station, what):

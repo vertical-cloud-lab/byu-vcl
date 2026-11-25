@@ -382,7 +382,7 @@ class GPBO(Base2):
 
     def __init__(self, key, seed=0, crucible=None):
         super().__init__(key, seed, crucible)
-        self.node = Node(self.kind, refit_every=4 if self.kind != "saas_nuts" else 1, seed=seed)
+        self.node = Node(self.kind, refit_every=4, seed=seed)
         self.init = None
 
     def propose(self, v, n):
@@ -437,7 +437,8 @@ class GPBO(Base2):
 
 
 class SAASBO(GPBO):
-    """GPBO with the SAAS prior, fully Bayesian (NUTS: 128 warm-up, 128 samples, thinned to 16)."""
+    """GPBO with the SAAS prior, fully Bayesian (NUTS: 128 warm-up, 128 samples, thinned to 16; a fresh chain
+    each time the data grow by 4 points and by half, the last chain's samples reused in between; twin/opt/gp.py)."""
     name = "saasbo"
     kind = "saas_nuts"
 

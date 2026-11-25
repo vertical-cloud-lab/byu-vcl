@@ -65,9 +65,11 @@ EXPERIMENTS = {
     # set (DAL #275), 12 seeds each; seed 0 of each writes a full trace with the optimizer's state
     "seeded": [_cfg(p, s, seeding="dal275", trace=(s == 0), events=(s == 0)) for p in ("bofn", "gpbo", "random")
                for s in range(12)],
-    # the same on the conventional lab (DAL's own lab and the proposals' partners), one traced year of BOFN
-    "seeded_conventional": [_cfg("bofn", 0, facility="proposed", stock="lean", seeding="dal275", trace=True,
-                                 events=True)],
+    # the same on DAL's own lab as DAL #256 schedules it (twin/facility.py DAL256: one atomizer run a day Mon-Thu,
+    # copper on Fridays, weekly SEM and polishing sessions, two-day Utah sessions on alternate weeks), ordering as it
+    # goes; seed 0 of each writes a trace, and BOFN's is out/twin2/trace/campaign_trace.json
+    "seeded_dal256": [_cfg(p, s, facility="dal256", stock="lean", seeding="dal275", trace=(s == 0), events=(s == 0))
+                      for p in ("bofn", "gpbo", "random") for s in range(12)],
     # copper: what separates the policies when money is not the limit
     "cu": [_cfg(p, s, cu_budget=180_000.0) for p in ("heuristic", "tiered", "gpbo", "bofn", "bofn_blend")
            for s in range(12)],

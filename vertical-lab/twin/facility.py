@@ -54,6 +54,9 @@ class Station:
     turnaround_days: float = 0.0     # median lag from the end of the work to the result
     per_period: tuple | None = None  # (jobs, days): an outside facility's cap
     source: str = ""
+    weekdays: tuple | None = None    # weekdays a job may start (0 = Monday); None: any the calendar allows
+    campaign_weekdays: dict | None = None   # per-campaign weekdays (DAL #256: copper runs on Fridays)
+    adjust: dict | None = None       # {what or what@campaign: (scale, add_h)} on a booking's hours (DAL #256's times)
 
 
 def _st(*a, **k):
@@ -142,11 +145,59 @@ VERTICAL = [
 ]
 
 
+# DAL #256's schedule for DAL's own lab (al-campaign-schedule/README.md and tasks.csv at DAL 6ff7717, the plan in
+# DAL #256's comment 7123300072): the proposed facility's stations on #256's calendar and step times. Every #256 time
+# is an estimate ("Nothing in the chain has been timed end to end"); times #256 does not give keep the twin's own and
+# are listed in out/twin2/trace/README.md. The optimizer's Friday batches are not modelled: policies propose whenever
+# a slot frees.
+DAL256 = {
+    # one run a day Mon-Thu at 08:00 (Thursday is #256's flex slot), copper on Fridays ("so the ~1 h clean that follows
+    # each one doesn't eat into an Al week"); a run is 2.5-3.5 h (start-up, loading, three washes, melt, pour), then
+    # ~1 h to cool to 400 C and vent and 1-2 h to collect, weigh, clean and rebuild: the twin's 2.5 h run + 3.0 h
+    # (3.0 + 1 + 1.5), + 4.0 h for copper (the ~1 h full clean). The BN coat (15 min + overnight dry) fits the
+    # one-run-a-day cadence and is not booked.
+    "atomizer": dict(hours="day", starts=(8.0,), sat_starts=None, attended_h=None, weekdays=(0, 1, 2, 3),
+                     campaign_weekdays={"onr_cu": (4,)}, adjust={"atomize": (1.0, 3.0), "atomize@onr_cu": (1.0, 4.0)},
+                     source="DAL #256 (al-campaign-schedule/README.md L76-L101 @ 6ff7717): runs Mon-Thu, Cu Fridays; "
+                            "2.5-3.5 h run, ~1 h cool, 1-2 h turnaround, ~1 h full clean after Cu"),
+    # cups and plugs are machined "ahead, in bulk", off the critical path; dose, pack, press the plug and clean with
+    # IPA, 1-1.5 h the day before
+    "shop": dict(adjust={"charge": (0.0, 0.0)}, source="DAL #256 README L97: cups and plugs ahead, in bulk"),
+    "doser": dict(adjust={"charge": (1.0, 0.25)}, source="DAL #256 README L96: 1-1.5 h the day before"),
+    # sieve two splits within 48 h of the run (1-1.5 h); flowability and Hausner ratio within a week (0.5-1 h)
+    "sieve": dict(adjust={"powder QC": (1.0, 0.5)}, source="DAL #256 README L103: 1-1.5 h within 48 h"),
+    "psd": dict(adjust={"powder QC": (1.0, 0.5)}, source="DAL #256 README L104: flowability, Hausner, 0.5-1 h"),
+    # one SEM session a week, Thursday, for all of the week's powders (4-5 h for 3-4 runs; stubs Tuesday): 1.25 h a
+    # lot; sections and deposits keep the twin's times but wait for Thursday too
+    "byu_sem": dict(weekdays=(3,), adjust={"powder QC": (1.0, 0.75)},
+                    source="DAL #256 README L46-L48, L105: one Thursday session, 4-5 h, 2-3 h a run with stubs"),
+    # one polishing batch a week (Wednesday, PX500), with hardness and density on everything printed that week
+    "prep": dict(weekdays=(2,), source="DAL #256 README L50-L53, L82; tasks.csv L24: one batch a week, Wednesday"),
+    "hardness": dict(weekdays=(2,), source="DAL #256 README L52-L53, L82: Wednesday"),
+    "density": dict(weekdays=(2,), source="DAL #256 README L52-L53, L82: Wednesday"),
+    # tensile or corrosion on Thursdays, daytime only
+    "tensile": dict(weekdays=(3,), source="DAL #256 README L83: tensile or corrosion, Thursday daytime"),
+    "tensile_hot": dict(weekdays=(3,), source="DAL #256 README L339 excludes hot tests by Feb 28; Thursday if run"),
+    "cubxl": dict(hours="day", attended_h=None, weekdays=(3,),
+                  source="DAL #256 README L58-L60, L83: corrosion daytime only (EZstat-Pro on the CubXL), Thursday"),
+    # Utah: an LPBF session is two days (Tue-Wed) on alternate weeks, each composition its own build; parts come back
+    # for removal, heat treatment and prep about a week after each session. DED sessions are one day (Tuesday).
+    "utah_midi": dict(weekdays=(1, 2), per_period=(3, 14), turnaround_days=7.0,
+                      source="DAL #256 tasks.csv L10-L14, L18-L22; README L81: 2-day sessions on alternate weeks, "
+                             "parts back about a week after"),
+    "utah_mxlab": dict(weekdays=(1,), source="DAL #256 tasks.csv L15-L17: one-day DED sessions, Tuesday"),
+}
+
+
 def facility(kind: str = "proposed") -> dict:
     st = {s.key: Station(**s.__dict__) for s in PROPOSED}
     if kind == "vertical_lab":
         for s in VERTICAL:
             st[s.key] = Station(**s.__dict__)
+    elif kind == "dal256":
+        for k, over in DAL256.items():
+            for f, x in over.items():
+                setattr(st[k], f, x)
     elif kind != "proposed":
         raise ValueError(kind)
     # private rates the lab holds (e.g. a partner's posted external rates kept out of public text), git-ignored:
@@ -229,15 +280,30 @@ class Resource:
                 return b
         return None
 
-    def _slot(self, t):
-        """The next allowed start for slot-based machines (the atomizer)."""
+    def _day_ok(self, campaign, dow) -> bool:
+        st = self.st
+        wd = (st.campaign_weekdays or {}).get(campaign, st.weekdays)
+        return wd is None or dow in wd
+
+    def _slot(self, t, campaign=None):
+        """The next allowed start for slot-based machines (the atomizer), on the station's weekdays."""
         st = self.st
         if not st.starts:
-            return next_open(st.hours, t)
+            t2 = next_open(st.hours, t)
+            if st.weekdays is None and not st.campaign_weekdays:
+                return t2
+            for _ in range(60):
+                day = int(t2 // H_DAY)
+                if self._day_ok(campaign, day % 7):
+                    return t2
+                t2 = next_open(st.hours, (day + 1) * H_DAY)
+            return t2
         day = int(t // H_DAY)
         for k in range(60):
             dd = day + k
             dow = dd % 7
+            if not self._day_ok(campaign, dow):
+                continue
             starts = st.starts if dow < 5 else (st.sat_starts if (dow == 5 and st.hours == "day6") else ())
             for s in starts or ():
                 ts = dd * H_DAY + s
@@ -252,7 +318,7 @@ class Resource:
         if st.external and st.booking_days:
             t = max(t, t + 0.0)
         for _ in range(20000):
-            t = self._slot(t)
+            t = self._slot(t, campaign)
             if st.hours != "24/7" and not in_hours(st.hours, t + att - 1e-6):
                 t = next_open(st.hours, math.floor(t / H_DAY + 1) * H_DAY)
                 continue
@@ -300,6 +366,17 @@ class Facility:
         lag = st.turnaround_days * H_DAY * math.exp(self.rng.normal(0, 0.4)) if st.turnaround_days else 0.0
         cost = st.fee_usd + st.rate_usd_h * dur
         return s, e, e + lag, cost
+
+    def adjust(self, station: str, hours: float, what: str, campaign: str) -> float:
+        """A booking's hours on this facility's schedule (DAL #256's step times on ``dal256``; unchanged elsewhere)."""
+        a = self.res[station].st.adjust
+        if not a:
+            return hours
+        for key in (f"{what}@{campaign}", what):
+            if key in a:
+                scale, add = a[key]
+                return hours * scale + add if hours * scale > 0 else 0.0
+        return hours
 
     def utilization(self, t_end: float) -> dict:
         return {k: round(r.busy_h / max(t_end, 1.0) / r.st.units, 4) for k, r in self.res.items() if r.busy_h > 0}

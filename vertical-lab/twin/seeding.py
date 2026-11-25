@@ -1,7 +1,7 @@
 """Common seed sets: the designs every policy starts from, so that a policy's lead is not only a warm start.
 
 DAL #275 ("Initialization trials (seeding data) for BOFN") recommends a three-way mix, about 6-7 seeds rather than
-3 + 3 + 3, and the same seeds for every policy in a benchmark (its Edison q1: otherwise "the AI policy's advantage is
+3 + 3 + 3 (its ledger: D1, D2, B30, B15, S1, S2, S3), and the same seeds for every policy in a benchmark (its Edison q1: otherwise "the AI policy's advantage is
 only a warm start"):
 
 * known baselines (the alloys to beat),
@@ -18,14 +18,18 @@ from __future__ import annotations
 
 import numpy as np
 
-# DAL #275's plan (bofn-seeding/README.md on DAL branch claude/issue-275-20261120-1832): D1 and D2 are the baselines,
-# S1 and S2 the agent's literature picks, S3 the IMSE pick. S2 is over the FLAIME box for Fe (cap 0.5 wt%) and Zr
+# DAL #275's plan (bofn-seeding/README.md L52-L66 and L139-L150, seeds.csv, at DAL ce39407 on branch
+# claude/issue-275-20261120-1832): D1 and D2 are the baselines, B30 and B15 the dosing checks (4047 powder in 6063
+# cups: does the measured Si follow the charge?), S1 and S2 the agent's literature picks, S3 the IMSE pick; seven
+# seeds, with #275's S4 left to the optimizer (its first pick). S2 is over the FLAIME box for Fe (cap 0.5 wt%) and Zr
 # (cap 1.0 wt%), as #275 itself notes ("over the PR #72 caps for both"); the twin projects it onto the box, so it runs
 # as Al-0.5Fe-1.02Mg-1.0Zr.
 DAL275 = {
     "flaime_al": [
         ("D1 baseline: Al-10Si-0.35Mg (the alloy to beat)", {"Si": 10.0, "Mg": 0.35}),
         ("D2 baseline: Al-4.5Mg-0.7Sc-0.3Zr (Scalmalloy-type)", {"Mg": 4.5, "Sc": 0.7, "Zr": 0.3}),
+        ("B30 dosing check: 30 % 4047 powder in 6063 cups, Al-3.9Si-0.5Mg", {"Si": 3.9, "Mg": 0.5}),
+        ("B15 dosing check: 15 % 4047 powder in 6063 cups, Al-2.1Si-0.6Mg", {"Si": 2.1, "Mg": 0.6}),
         ("S1 agent pick: Al-4Mn-0.5Ti-0.5Zr (Mair et al.; Sc-free)", {"Mn": 4.0, "Ti": 0.5, "Zr": 0.5}),
         ("S2 agent pick: Al-1.87Fe-1.02Mg-1.03Zr (Li et al.; projected onto the box)",
          {"Fe": 1.87, "Mg": 1.02, "Zr": 1.03}),

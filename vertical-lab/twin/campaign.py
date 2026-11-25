@@ -198,6 +198,7 @@ class Campaign:
         tag = dict(tag or {}, what=what)
         res_t = t
         for st, hours in steps:
+            hours = self.fac.adjust(st, hours, what, self.key)
             if hours <= 0 and st not in ("nsl",):
                 continue
             cal = self.fac.res[st].st
