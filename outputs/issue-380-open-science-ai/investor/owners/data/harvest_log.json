@@ -1,0 +1,425 @@
+{
+ "started_utc": "2026-11-25T21:48:46.503372+00:00",
+ "finished_utc": "2026-11-25T21:54:09.837031+00:00",
+ "frame_a_rows": 2000,
+ "frame_b_rows": 1548,
+ "owners": 2930,
+ "search_log": [
+  {
+   "q": "stars:>=1000",
+   "page": 1,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 2,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 3,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 4,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 5,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 6,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 7,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 8,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 9,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:>=1000",
+   "page": 10,
+   "status": 200,
+   "total_count": 66767,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 1,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 2,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 3,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 4,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 5,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 6,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 7,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 8,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 9,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..34923",
+   "page": 10,
+   "status": 200,
+   "total_count": 65768,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 1,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 2,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 3,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 4,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 5,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 6,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 7,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 8,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 9,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "stars:1000..22766",
+   "page": 10,
+   "status": 200,
+   "total_count": 64769,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:chemistry stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 637,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:computational-chemistry stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 327,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:cheminformatics stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 343,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:materials-science stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 328,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:materials-informatics stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 93,
+   "incomplete_results": false,
+   "n": 93
+  },
+  {
+   "q": "topic:bioinformatics stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 2898,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:genomics stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 996,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:drug-discovery stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 368,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:molecular-dynamics stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 415,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:quantum-chemistry stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 287,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:protein-structure stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 234,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:lab-automation stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 29,
+   "incomplete_results": false,
+   "n": 29
+  },
+  {
+   "q": "topic:laboratory-automation stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 19,
+   "incomplete_results": false,
+   "n": 19
+  },
+  {
+   "q": "topic:self-driving-lab stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 10,
+   "incomplete_results": false,
+   "n": 10
+  },
+  {
+   "q": "topic:autonomous-experimentation stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 0,
+   "incomplete_results": false,
+   "n": 0
+  },
+  {
+   "q": "topic:open-hardware stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 226,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:open-source-hardware stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 129,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:scientific-computing stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 841,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:physics stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 1421,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:astronomy stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 838,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:neuroscience stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 666,
+   "incomplete_results": false,
+   "n": 100
+  },
+  {
+   "q": "topic:microscopy stars:>=10",
+   "page": 1,
+   "status": 200,
+   "total_count": 225,
+   "incomplete_results": false,
+   "n": 100
+  }
+ ]
+}
