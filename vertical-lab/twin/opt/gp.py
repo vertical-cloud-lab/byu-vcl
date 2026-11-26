@@ -37,6 +37,7 @@ class Node:
         self.model, self.state, self.n_fit, self.n = None, None, 0, 0
         self.mcmc = None                 # saas_nuts: the last NUTS run's thinned hyperparameter samples
         self.ymean, self.ystd = 0.0, 1.0
+        self.growth = 1.0                # round 3: also wait for the data to grow by this factor before a refit
 
     def ready(self) -> bool:
         return self.model is not None
@@ -60,7 +61,7 @@ class Node:
         self.ymean, self.ystd = float(y.mean()), float(y.std() + 1e-6)
         Xt = torch.tensor(X, dtype=DT)
         Yt = torch.tensor(((y - self.ymean) / self.ystd).reshape(-1, 1), dtype=DT)
-        need_fit = self.state is None or len(y) >= self.n_fit + self.refit_every
+        need_fit = self.state is None or len(y) >= max(self.n_fit + self.refit_every, math.ceil(self.n_fit * self.growth))
         t0 = time.time()
         if self.kind == "saas_nuts":
             # NUTS on a geometric schedule: a fresh chain when the data have grown by refit_every points and by the

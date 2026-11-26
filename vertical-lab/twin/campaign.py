@@ -42,6 +42,7 @@ geometric mean of desirabilities (Derringer & Suich 1980) times feasibility:
 """
 from __future__ import annotations
 
+import bisect
 import heapq
 import itertools
 import math
@@ -160,6 +161,7 @@ class Campaign:
         self.results_log = []                     # every result as it came back: (t_h, type, design, node)
         # round 3 (Twin(mode="async")): actions in flight by id, what each one targets, coupons in immersion, stops
         self.async_ = False
+        self.legacy_cu_check = False
         self.pending = {}                         # action id -> dict(kind, key, t)
         self._aids = itertools.count(1)
         self.cancelled = set()                    # action ids whose remaining events are void (a stopped coupon)
@@ -179,6 +181,7 @@ class Campaign:
                 price = market.price(supply.ITEMS[k], 0.0) * q
                 self.stores.orders.append(supply.Order(k, q, price, 0.0, 0.0, False, spec.key))
                 self.charge(0.0, price, f"order {k} {q:.3g} (standing stock)")
+        self.spent0 = self.spent
 
     # ---------------------------------------------------------------------------------------- money and design
     def charge(self, t, usd, what):
@@ -386,7 +389,8 @@ class Campaign:
         cap on work in flight as the throttle on money: 15 % of the budget at day 0, then linearly to all of it at
         75 % of the horizon (front-loaded, so early results can be bought; the rest of the year keeps some)."""
         f = self.PLAN_F0 + (1.0 - self.PLAN_F0) * t_h / (self.PLAN_FULL * self.horizon_h)
-        return self.spec.budget_usd * min(1.0, f)
+        s0 = getattr(self, "spent0", 0.0)           # a stocked lab's day-0 inventory is bought before the plan starts
+        return s0 + (self.spec.budget_usd - s0) * min(1.0, f)
 
     def gate(self, a):
         """(steps before the gating station, the gating station, its hours) for an action, without side effects; None
@@ -419,6 +423,20 @@ class Campaign:
             s0, d0, _ = self.fac.res[s_].find(t, max(hh, 0.01), self.key)
             t = s0 + d0
         return self.fac.queue_wait(st, t, h, self.key) <= self.GATE_W
+
+    def load(self, station: str, t_h: float, window_h: float = 72.0) -> float:
+        """Round 3: the share of a station's unit-hours already booked over the next ``window_h`` (0 to 1): how dear
+        an hour of it is now, for the time-aware acquisitions."""
+        r = self.fac.res.get(station)
+        if r is None:
+            return 0.0
+        a, b, busy = t_h, t_h + window_h, 0.0
+        for ln in r.lines:
+            i = max(bisect.bisect_right(ln.e, a), 0)
+            while i < len(ln.s) and ln.s[i] < b:
+                busy += max(0.0, min(ln.e[i], b) - max(ln.s[i], a))
+                i += 1
+        return busy / (window_h * max(len(r.lines), 1))
 
     def akey(self, a):
         """What an action targets: (kind, (artifact type, id))."""
@@ -1033,6 +1051,12 @@ class Campaign:
         D = self.deposits[dep_id]
         if D["mode"] != "blown_large" or "tensile" not in D or "immersion" not in D or D.get("scored"):
             return None
+        # round 3 fix: both results must be back. Rounds 1 and 2 tested only that both keys exist, so an alloy whose
+        # immersion had started ("pending") was scored when its tensile came back, up to 30 days early (126 of 271
+        # copper alloys in round 2's seed-0 event logs). ``legacy_cu_check`` keeps that behaviour so round 2's
+        # committed results reproduce (twin/bench2.py sets it).
+        if not self.legacy_cu_check and not (isinstance(D["tensile"], dict) and isinstance(D["immersion"], dict)):
+            return None
         D["scored"] = True
         part = self._part_truth[dep_id]["parts"][0]
         s, c = self.truth.strength(part), self.truth.corrosion(part)
@@ -1208,7 +1232,7 @@ class Campaign:
                     imm=({k: dict(t_in=x["t_in"], stopped=x.get("stopped"), final=bool(x.get("final")))
                           for k, x in self._imm.items()} if self.async_ else {}),
                     plan_left=(self.plan(now_h) - self.spent) if self.async_ else self.budget_left,
-                    horizon_h=self.horizon_h)
+                    horizon_h=self.horizon_h, load=self.load)
 
 
 class Twin:
@@ -1244,6 +1268,25 @@ class Twin:
     DT_H = 1.0                   # round 3: decision grid (hours)
     N_ASK = 24                   # round 3: actions a policy may rank per decision
 
+    def _atom_share(self, k, g, window_h=14 * 24.0):
+        """A campaign's share of the atomizer hours booked from two weeks back to two days ahead (0.5 if none)."""
+        r = next(iter(self.facilities.values())).res.get("atomizer")
+        if r is None:
+            return 0.5
+        mine = tot = 0.0
+        for j in reversed(r.jobs):
+            if j[1] < g - window_h:
+                if j[0] < g - window_h - 400:
+                    break
+                continue
+            if j[0] > g + 48.0:
+                continue
+            d = j[1] - j[0]
+            tot += d
+            if j[2] == k:
+                mine += d
+        return mine / tot if tot > 0 else 0.5
+
     def run_async(self, verbose=False):
         """Round 3's event loop. Results come back at their own times. On an hourly grid, each campaign whose results
         came back, or whose lab had a booking end (a station, robot, person or fixture freed up), or which hasn't
@@ -1256,6 +1299,8 @@ class Twin:
                 r.on_commit = lambda e, _ends=ends: heapq.heappush(_ends, e)
         dirty = {k: True for k in self.campaigns}
         last = {k: -1e9 for k in self.campaigns}
+        tot_b = sum(c.spec.budget_usd for c in self.campaigns.values())
+        self._money_share = {k: c.spec.budget_usd / tot_b for k, c in self.campaigns.items()}
         keys = list(self.campaigns)
         g, step = 0.0, 0
         while g <= self.h + 1e-9:
@@ -1271,7 +1316,11 @@ class Twin:
             while ends and ends[0] <= g + 1e-9:
                 heapq.heappop(ends)
                 freed = True
+            # the campaigns share the atomizer: each hour the one further below its share of the atomizer's recent
+            # hours (its share of the money) decides first, the other on ties (alternating)
             order = keys if step % 2 == 0 else keys[::-1]
+            if len(keys) == 2:
+                order = sorted(order, key=lambda k: self._atom_share(k, g) - self._money_share[k])
             for k in order:
                 c = self.campaigns[k]
                 if not (dirty[k] or freed or g - last[k] >= 24.0) or c.budget_left <= 0:
@@ -1284,8 +1333,17 @@ class Twin:
                     self._iters[k] += 1
                     rec = dict(it=self._iters[k], t_h=round(g, 3), campaign=k, n_free=None,
                                spent=round(c.spent, 2), proposals=[])
+                blocked = False
                 for a in acts:
-                    st = c.submit3(a, g)
+                    # money goes to the policy's ranking in order: once an action has to wait for the spending plan,
+                    # nothing ranked below it that costs more than $50 starts in this decision (the plan's room
+                    # builds up for it instead of going to cheaper, lower-ranked work)
+                    if blocked and a.get("kind") != "stop" and c.estimate(a) > 50.0:
+                        st = "plan"
+                        c.status_log["plan_wait"] = c.status_log.get("plan_wait", 0) + 1
+                    else:
+                        st = c.submit3(a, g)
+                        blocked = blocked or st == "plan"
                     ok = st == "ok"
                     cb = getattr(c.policy, "admitted" if ok else "rejected", None)
                     if cb is not None:

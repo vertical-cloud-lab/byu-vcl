@@ -104,6 +104,8 @@ def run_one(cfg: dict) -> dict:
             for k in specs}
     tw = C.Twin(specs, pols, scenario=cfg.get("scenario", "historical"), facility=cfg["facility"], seed=cfg["seed"],
                 horizon_days=cfg.get("days", 365), trace=bool(cfg.get("trace")))
+    for camp in tw.campaigns.values():
+        camp.legacy_cu_check = not os.environ.get("TWIN_FIX_CU_CHECK")    # round 2 as committed (campaign._cu_check)
     s = tw.run()
     out = dict(cfg=cfg, seconds=round(time.time() - t0, 1), gp=dict(STATS), campaigns={})
     from twin import spaces as SP
