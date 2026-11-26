@@ -154,12 +154,12 @@
    "sha256": "80f62ed1607321a925dab587a333b31f91695dabdb19299f4ff8a3a6a96cc2b6"
   },
   "seed1": {
-   "key": "786ce686f6593ff6",
-   "text": "This replay is seed zero of twelve, running time-aware BOFN: the one seed whose event log round three kept. For aluminium it is the median seed: it reaches the halfway target on day 96. For copper it is one of the four seeds that never reach the first target; the median seed gets there on day 221.",
-   "spoken": "This replay is seed zero of twelve, running time-aware B O F N: the one seed whose event log round three kept. For aluminum it is the median seed: it reaches the halfway target on day 96. For copper it is one of the four seeds that never reach the first target; the median seed gets there on day 221.",
-   "phonemes": "ðɪs ɹˈiːpleɪ ɪz sˈiːd zˈiəɹoʊ ʌv twˈɛlv, ɹˈʌnɪŋ tˈaɪmɐwˈɛɹ bˈiː ˈoʊ ˈɛf ˈɛn: ðə wˈʌn sˈiːd hˌuːz ᵻvˈɛnt lˈɔɡ ɹˈaʊnd θɹˈiː kˈɛpt. fɔːɹ ɐlˈuːmɪnəm ɪɾ ɪz ðə mˈiːdiːən sˈiːd: ɪt ɹˈiːtʃᵻz ðə hˈæfweɪ tˈɑːɹɡɪt ˌɔn dˈeɪ nˈaɪnti sˈɪks. fɔːɹ kˈɑːpɚɹ ɪɾ ɪz wˈʌn ʌvðə fˈɔːɹ sˈiːdz ðæt nˈɛvɚ ɹˈiːtʃ ðə fˈɜːst tˈɑːɹɡɪt; ðə mˈiːdiːən sˈiːd ɡˈɛts ðɛɹ ˌɔn dˈeɪ tˈuːhˈʌndɹɪd twˈɛnti wˈʌn.",
-   "seconds": 21.21,
-   "sha256": "d5588497f0a3005046fe3d4db66de06be59a985d54723cfe4a303820d7f31fbc"
+   "key": "9fbce8e28a54bd23",
+   "text": "This replay is seed zero of twelve, running time-aware BOFN: the only seed whose event log was saved. For aluminium it is the median seed: it reaches the halfway target on day 96. For copper it is one of the four seeds that never reach the first target; the median seed gets there on day 221.",
+   "spoken": "This replay is seed zero of twelve, running time-aware B O F N: the only seed whose event log was saved. For aluminum it is the median seed: it reaches the halfway target on day 96. For copper it is one of the four seeds that never reach the first target; the median seed gets there on day 221.",
+   "phonemes": "ðɪs ɹˈiːpleɪ ɪz sˈiːd zˈiəɹoʊ ʌv twˈɛlv, ɹˈʌnɪŋ tˈaɪmɐwˈɛɹ bˈiː ˈoʊ ˈɛf ˈɛn: ðɪ ˈoʊnli sˈiːd hˌuːz ᵻvˈɛnt lˈɔɡ wʌz sˈeɪvd. fɔːɹ ɐlˈuːmɪnəm ɪɾ ɪz ðə mˈiːdiːən sˈiːd: ɪt ɹˈiːtʃᵻz ðə hˈæfweɪ tˈɑːɹɡɪt ˌɔn dˈeɪ nˈaɪnti sˈɪks. fɔːɹ kˈɑːpɚɹ ɪɾ ɪz wˈʌn ʌvðə fˈɔːɹ sˈiːdz ðæt nˈɛvɚ ɹˈiːtʃ ðə fˈɜːst tˈɑːɹɡɪt; ðə mˈiːdiːən sˈiːd ɡˈɛts ðɛɹ ˌɔn dˈeɪ tˈuːhˈʌndɹɪd twˈɛnti wˈʌn.",
+   "seconds": 21.08,
+   "sha256": "8fc1b28d1e4353e59b8ee02f17f2cc7f4b696069fd162167e589ea80e1c1c21e"
   },
   "mid1": {
    "key": "abdfd0c767e21317",

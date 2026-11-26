@@ -221,7 +221,7 @@
    "seg": "replay",
    "mark": "replay.whole_lab",
    "offset": 0.8,
-   "text": "This replay is seed zero of twelve, running time-aware BOFN: the one seed whose event log round three kept. For aluminium it is the median seed: it reaches the halfway target on day 96. For copper it is one of the four seeds that never reach the first target; the median seed gets there on day 221.",
+   "text": "This replay is seed zero of twelve, running time-aware BOFN: the only seed whose event log was saved. For aluminium it is the median seed: it reaches the halfway target on day 96. For copper it is one of the four seeds that never reach the first target; the median seed gets there on day 221.",
    "src": "compose.seed_words3 (the badge): out/twin3/runs/main.jsonl, bofn3, seed 0 among its 12; DAL audit row 9 and section 4 (the replay)",
    "nums": [
     [
