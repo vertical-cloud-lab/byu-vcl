@@ -55,7 +55,41 @@ waits for the room's fit-out. The existing BYU atomizer and DAL's CubXL are on h
   weeks of programming the stations' transfers, assumed), in-house stations are run by people on the day shift (the
   hands-on hours of round 3's conventional lab). After that the robots load them round the clock.
 
-<!-- BUILD -->
+**Build-out across the 12 seeds** (days from the funding to online; median and range):
+
+| In-house station | online: median day (range) |
+|---|---|
+| density and crack check | 136 (123-221) |
+| micro-Vickers | 136 (123-221) |
+| PIP | 136 (123-221) |
+| furnaces | 136 (123-221) |
+| SEM + EDS | 143 (130-228) |
+| Mastersizer | 143 (130-228) |
+| XRD | 143 (130-228) |
+| metallography | 143 (130-228) |
+| sieve cell | 150 (137-235) |
+| nanoindenter | 156 (139-235) |
+| multi-doser | 162 (144-242) |
+| ICP-MS | 163 (146-242) |
+| XRF | 164 (151-249) |
+| tensile frames | 169 (147-242) |
+| hot tensile | 173 (147-242) |
+| wire EDM | 184 (153-274) |
+| Aconity MIDI (LPBF) | 193 (172-270) |
+| machining cell | 213 (161-273) |
+| InssTek MX-Lab (DED) | 260 (197-414) |
+| the cell (robots and Kardex integrated: stations run round the clock) | 231 (207-305) |
+| everything (the waiting plan starts) | 270 (224-414) |
+
+* **The bench instruments come online first,** from day 123-160, once the room is fitted out. The room alone takes
+  about four months, as the atomizer's did.
+* **Then the process stations:** the EDM, then the MIDI (day 193), the machining cell (day 213), and the MX-Lab last
+  (day 260). The waiting plan waits for the last of them.
+* **Capital paid** (both building plans; the external-only plan pays none):
+
+  | day | 0 | 30 | 91 | 182 | 273 | 365 | 547 | 730 |
+  |---|---|---|---|---|---|---|---|---|
+  | $M | 1.31 | 1.33 | 2.75 | 4.78 | 5.00 | 5.01 | 5.01 | 5.01 |
 
 ## 2. Ramp-up: a learning curve from the lab's own atomizer
 
@@ -280,6 +314,69 @@ plan three times round 3's money per year.
   * metal orders once the day-0 stock runs out;
   * the WIP limit, which holds new designs to two weeks of the partners' print capacity.
 * **Later the atomizer binds aluminium**, at 76-80 % of its starts from month 10.
+
+### 5.5 Against round 3, which started with the lab built
+
+Round 3's main benchmark ran the same cheap policies in the finished vertical lab from its day 0, for one year
+(`out/twin3/fig/tables.md`, 12 seeds):
+
+* the heuristic reached aluminium's state of the art at a median of day 24;
+* the funnel reached copper's targets at day 142 and 148.
+
+Round 4 counts from the funding:
+
+| Days from the funding (cheap policies) | Al T1 | Cu T1 | Cu T2 |
+|---|---|---|---|
+| Round 3: the finished lab, from its own day 0 | 24 | 142 | 148 |
+| Round 4: wait for the cell (starts at day 270, median) | 366 | 421 | 430 |
+| Round 4: ramp up in parallel | 57 | 302 | 310 |
+| Round 4: external routes only | 54 | 315 | >730 (5/12) |
+
+* **Building the lab costs the waiting plan 9-11 months on every target.** About 270 days of build-out come first.
+  After its start it is also slower than round 3's finished lab on aluminium: 96 days to the state of the art instead
+  of 24, because every new station and the atomizer go through their learning curves (section 5.9).
+* **Ramping up in parallel recovers most of that on aluminium** (day 57). On copper it recovers about four months of
+  the nine: copper needs a DED route with capacity, and before the in-house MX-Lab it has only Utah's monthly session
+  and Mines' seven a year.
+
+### 5.7 Provenance: someone on site at each partner's first job (`provenance`, 8 seeds)
+
+With `provenance="all"`, someone goes with the first job to each partner:
+* the visit costs $1.5k for a Utah site, $4k for Mines or 3D Powder Tech, and $2.5k for the outside lab;
+* the lab then knows that site's offset to within a quarter of its spread;
+* without a visit it records the nominal settings, and the whole offset goes unseen.
+
+The parallel plan with the cheap policies was run at the stand-in offsets and at twice and three times them, with
+and without visits, paired by seed.
+
+| Offsets (× stand-in) | Al T2: median days saved (visit first / behind) | Cu T1 | Cu T2 | Al best (on − off) | Cu best (on − off) | visits |
+|---|---|---|---|---|---|---|
+| 1 | −2 (0 / 3) | +18 (5 / 3) | −2 (3 / 4) | −0.03 ± 0.01 | +0.01 ± 0.01 | $11.5k |
+| 2 | +12 (2 / 2) | +5 (6 / 2) | +12 (5 / 2) | −0.06 ± 0.06 | −0.01 ± 0.01 | $11.0k |
+| 3 | −99 (1 / 3) | −7 (4 / 4) | +42 (4 / 3) | −0.03 ± 0.06 | +0.02 ± 0.01 | $11.5k |
+
+* **In this model the visits don't measurably pay.** The differences change sign from one offset level to the next,
+  and seed to seed they run from −200 to +280 days. The visit changes what the lab records, and every later
+  decision follows from that.
+  * The one pattern: copper reaches its state of the art first with visits in 4-6 seeds of 8 at every level.
+  * Aluminium finishes 0.03-0.06 lower with them, within error at the larger offsets.
+* **Why so little:**
+  * **The partners carry the work only until the in-house stations arrive.** Aluminium moves in house in month 7,
+    copper's small deposits by month 9, so an offset misleads for months, not years.
+  * **Round 3's cheap policies don't model sites.** A better record changes the settings the heuristic carries
+    forward, not a site term in a model. DAL PR 297's clocked benchmark (DAL #283) also found site terms worth
+    nothing measurable (−2 ± 2 days).
+* **When it would pay:**
+  * **The cost.** $11.5k of visits is about 23 days of the campaigns' discovery money ($180k a year), or 4 days of
+    the vertical lab's fixed costs ($1.18M a year, round 2's).
+  * **Visits pay where they save more than that:**
+    * a partner route that carries the work for a long time: copper's Mines and Utah MX-Lab in the external-only
+      plan;
+    * a policy that fits a site term, so a known offset turns that site's data into usable data for the in-house
+      models;
+    * offsets larger than the process windows. At three times the stand-ins the copper halfway target moved by a
+      median 42 days, but with the sign changing from seed to seed.
+  * **None of these was run.**
 
 <!-- SECOND -->
 
