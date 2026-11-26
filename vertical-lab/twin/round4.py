@@ -260,8 +260,8 @@ PLANS = ("wait", "parallel", "external")
 #      at a time, and not as a production atomizer would;
 #   B. a distributed validation network: the gas lot made into parts and tested at every fabrication site of the plan
 #      at once (aluminium: the in-house MIDI, Utah's MIDI, 3D Powder Tech; copper: the in-house MX-Lab, Utah's MX-Lab,
-#      Mines' X2), each with its own process offset; it passes if the sites' mean true utility is at or above the
-#      state of the art (T1);
+#      Mines' X2), each with its own process offset; it moves on when the first two sites have reported, and passes if
+#      their mean true utility is at or above the state of the art (T1);
 #   C. a full part in an application-specific performance test at an outside laboratory (aluminium: a printed
 #      heat-exchanger or bracket in thermal-mechanical cycling, 6 weeks; copper: a DED repair on a seawater pump or
 #      valve part, 60 days in flowing seawater).
@@ -1158,8 +1158,12 @@ class Twin4(C.Twin):
                     ends.append(t_s)
                     us.append(u_s)
                     stg["sites"][site] = dict(t=round(t_s / H, 2), u=round(u_s, 4))
-                stg["u_network"] = float(np.mean(us)) if us else 0.0
-                stg["step"], stg["t_next"] = "network", max(ends) if ends else g
+                # the network moves on when the first two sites have reported (one, if the plan has only one): the
+                # slowest partner's next session does not hold the alloy up; its result still comes in
+                order = sorted(range(len(ends)), key=lambda i: ends[i])[:min(2, len(ends))]
+                stg["u_network"] = float(np.mean([us[i] for i in order])) if order else 0.0
+                stg["u_network_all"] = float(np.mean(us)) if us else 0.0
+                stg["step"], stg["t_next"] = "network", (max(ends[i] for i in order) if order else g)
                 continue
             if stg["step"] == "network":
                 if stg["u_network"] < T["T1"][k]:
