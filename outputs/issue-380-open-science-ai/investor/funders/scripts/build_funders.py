@@ -138,6 +138,12 @@ def main():
         for r in csv.DictReader(open(fp)):
             fin.setdefault(r.get("owner", ""), r)
     vers = last_versions()
+    dropped = set()
+    vp = os.path.join(D, "verify", "verdicts.csv")
+    if os.path.exists(vp):
+        for r in csv.DictReader(open(vp)):
+            if r["verdict"] == "not_supported":
+                dropped.add((r["key"], r["name"].strip(), r["source"].strip()))
 
     def canon(raw):
         raw = re.sub(r"\s+", " ", raw).strip()
@@ -166,6 +172,9 @@ def main():
         for r in rounds:
             lead = [x for x in r["lead"].split(" | ") if x.strip()]
             oth = [x for x in r["investors"].split(" | ") if x.strip()]
+            drop = [x for x in lead + oth if (k, x.strip(), r["source"].strip()) in dropped]
+            lead = [x for x in lead if x not in drop]
+            oth = [x for x in oth if x not in drop]
             lc = [canon(x) for x in lead]
             oc = [canon(x) for x in oth]
             # a round reported as talks, rumour or unconfirmed keeps its row but names no funders in the counts
@@ -174,7 +183,8 @@ def main():
                                                "source", "source_kind", "note")},
                           "lead_raw": r["lead"], "investors_raw": r["investors"],
                           "lead": " | ".join(c for c, _ in lc), "investors": " | ".join(c for c, _ in oc),
-                          "counted": "no (reported as unconfirmed)" if unconf else "yes"})
+                          "counted": "no (reported as unconfirmed)" if unconf else "yes",
+                          "dropped_after_check": " | ".join(drop)})
             if unconf:
                 continue
             for (c, person), is_lead in [(x, True) for x in lc] + [(x, False) for x in oc]:

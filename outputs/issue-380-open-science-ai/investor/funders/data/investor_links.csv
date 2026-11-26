@@ -65,6 +65,7 @@ AE Industrial Partners HorizonX,0,juliahub,JuliaHub (Julia Computing),U2,Julia l
 AE Ventures,0,juliahub,JuliaHub (Julia Computing),U2,Julia language,1,0,2026,series_b,0,https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0
 AFW Partners,0,tenstorrent,Tenstorrent,U2,"open-source software stack, RISC-V (partial)",1,1,2024,series_d,0,https://betakit.com/ai-chipmaker-tenstorrent-closes-nearly-700-million-usd-series-d-at-2-6-billion-valuation/
 AGF Private Equity,0,talend,Talend,U3,COSS (data integration),2,0,2009,series_c | series_d,0,http://www.techcrunch.com/2009/01/26/more-validation-for-open-source-software-talend-raises-12-million/ | https://techcrunch.com/2010/04/19/talend-funding/
+AI Futures Fund,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 AI Grant,0,u4-reworkd,Reworkd,U4,open-source startup,1,0,2024,seed,0,https://techcrunch.com/2024/07/24/reworkd-paul-graham-nat-friedman-daniel-gross-scrape-ai-agents/
 AI Grant,0,rowan,Rowan (Rowan Scientific),U2,computational chemistry with open-source tools (partial),1,0,2024,pre_seed,0,https://finsmes.com/2024/12/rowan-raises-2-1m-in-pre-seed-funding.html
 AI Seed,0,hopsworks,Hopsworks (Logical Clocks),U3,COSS (feature store),1,0,2018,seed,0,https://www.irishtimes.com/business/technology/irish-co-founded-tech-firm-logical-clocks-raises-1-25m-1.3704213
@@ -184,6 +185,7 @@ Alchemist Accelerator,0,mat3ra,Mat3ra,U1,COSS (GitHub core),1,0,,venture_unspeci
 Aleph,0,u4-svix,Svix,U4,open-source startup,1,0,,venture_unspecified,0,https://www.svix.com/about/
 Alex Atallah,1,mastra-ai,Mastra,U1,COSS (GitHub core),1,0,2025,seed,0,https://mastra.ai/blog/seed-round
 Alex Atallah,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Alex Bouaziz,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Alex Graveley,1,u4-openpipe,OpenPipe,U4,open-source startup,1,0,2024,seed,0,https://siliconangle.com/2024/03/26/openpipe-raises-6-7m-help-developers-fine-tune-lightweight-powerful-llms/
 Alex Pall,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
 Alex Wang,1,huggingface,Hugging Face,U1,COSS (GitHub core),1,0,2021,series_b,0,https://techcrunch.com/2021/03/11/hugging-face-raises-40-million-for-its-natural-language-processing-library/
@@ -258,6 +260,7 @@ Amit Agarwal,1,onyx-dot-app,Onyx,U1,COSS (GitHub core),1,0,2025,seed,0,https://o
 Amjad Masad,1,chroma-core,Chroma,U1,COSS (GitHub core),1,0,2023,seed,0,https://www.trychroma.com/blog/seed
 Amjad Masad,1,u4-livekit,LiveKit,U4,open-source startup,1,0,2024,series_a,0,https://blog.livekit.io/livekit-series-a/
 Amjad Masad,1,mastra-ai,Mastra,U1,COSS (GitHub core),1,0,2025,seed,0,https://mastra.ai/blog/seed-round
+Amjad Masad,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Amjad Masad,1,researchhub,ResearchHub (ResearchHub Technologies),U2,"open science platform, DeSci",1,0,2023,seed,0,https://www.theblock.co/amp/post/234960/scientists-can-earn-crypto-as-brian-armstrong-startup-raises-5-million
 Amjad Masad,1,u4-roboflow,Roboflow,U4,open-source startup,1,0,2024,series_b,0,https://fortune.com/2024/11/19/exclusive-roboflow-vision-ai-startup-raises-40-million-series-b/
 Amnon Shashua,1,ai21,AI21 Labs,U3,open-weight Jamba models (partial),2,1,2022,series_b | series_c,0,https://techcrunch.com/2022/07/12/openai-rival-ai21-labs-raises-64m-to-ramp-up-its-ai-powered-language-services/ | https://techcrunch.com/2023/08/30/generative-ai-startup-ai21-labs-lands-155m-at-a-1-4b-valuation/
@@ -326,6 +329,7 @@ Andrew Miklas,1,u4-evidence,Evidence,U4,open-source startup,1,0,,venture_unspeci
 Andrew Miklas,1,u4-svix,Svix,U4,open-source startup,1,0,,venture_unspecified,0,https://www.svix.com/about/
 Andrew Ng,1,crewAIInc,CrewAI,U1,COSS (GitHub core),1,0,2024,seed,0,https://finance.yahoo.com/news/crewai-launches-multi-agentic-platform-120000686.html
 Andy Bechtolsheim,1,sendmail,"Sendmail, Inc.",U3,COSS (sendmail),1,0,,venture_unspecified,0,https://www.linuxtoday.com/developer/computerworld-emerging-companies-sendmail-inc
+Andy Fitzsimon,1,penpot,Kaleidos (Penpot),U1,COSS (GitHub core),1,0,2022,series_a,0,https://community.penpot.app/t/penpot-our-time-has-come/1563
 Andy Rachleff,1,nicira,Nicira,U3,COSS (Open vSwitch),1,0,2012,angel,0,https://web.archive.org/web/2012/http://allthingsd.com/20120723/vmware-acquires-once-secretive-start-up-nicira-for-1-26-billion/
 Angel Invest,0,topoteretes,Topoteretes (cognee),U1,COSS (GitHub core),1,0,2024,pre_seed,0,https://www.cognee.ai/blog/cognee-news/funding-and-web-site-launch
 Angel Squad,0,trilobio,Trilobio,U2,lab automation; check openness,1,0,2025,venture_unspecified,0,https://www.news-medical.net/news/20250512/Trilobio-raises-248M-to-deliver-whole-lab-automation-for-biologists.aspx
@@ -367,6 +371,7 @@ Aravind Srinivas,1,u4-livekit,LiveKit,U4,open-source startup,1,0,2024,series_a,0
 Aravind Srinivas,1,prime-intellect,Prime Intellect,U3,"open-source decentralised training, open models",1,0,2026,series_a,0,https://techcrunch.com/2026/07/08/prime-intellect-raises-130m-series-a-to-help-enterprises-build-their-own-ai-agents/
 Argon Ventures,0,trilobio,Trilobio,U2,lab automation; check openness,1,0,2025,seed,0,https://www.news-medical.net/news/20250512/Trilobio-raises-248M-to-deliver-whole-lab-automation-for-biologists.aspx
 Ariel Maislos,1,novuhq,Novu,U1,COSS (GitHub core),1,0,2022,seed,0,https://novu.co/blog/seed-funding/
+Arjun Sethi,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 ArkStream,0,linera-io,Linera,U1,COSS (GitHub core),1,0,2023,seed,0,https://www.theblock.co/post/245693/borderless-capital-leads-6-million-seed-round-for-microchain-startup-linera
 Arm,0,arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,2,0,2022,series_b,0,https://blog.arduino.cc/2022/06/07/ready-to-transform-the-enterprise-world-we-are/ | https://blog.arduino.cc/2023/09/06/what-will-we-do-with-an-additional-22m/
 Arm,0,raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,U2,open hardware (partial),1,0,2023,corporate_strategic,0,https://newsroom.arm.com/news/raspberry-pi-investment
@@ -382,7 +387,7 @@ Aspex,0,minimax,MiniMax,U3,open-weight models,1,0,2026,other,0,https://technode.
 Astella,0,u4-botcity,BotCity,U4,open-source startup,1,0,,venture_unspecified,0,https://botcity.dev/about-us
 Aston Motes,1,u4-roboflow,Roboflow,U4,open-source startup,1,0,2021,seed,0,https://techcrunch.com/2021/01/12/roboflow-raises-2-1m-for-its-end-to-end-computer-vision-platform/
 Asymmetric Capital Partners,0,u4-simplex-chat,SimpleX Chat,U4,open-source startup,1,0,2024,pre_seed,0,https://simplex.chat/blog/20240814-simplex-chat-vision-funding-v6-private-routing-new-user-experience.html
-Athos,0,penpot,Kaleidos (Penpot),U1,COSS (GitHub core),3,0,2022,series_a | venture_unspecified,0,https://techcrunch.com/2022/09/27/penpot-inks-8m-as-signups-for-its-open-source-spin-on-figma-jump-5600-after-adobes-20b-acquisition-move/ | https://techcrunch.com/2023/02/02/penpot-the-open-source-platform-for-designers-and-their-coders-draws-up-12m-as-users-jump-to-250k/
+Athos,0,penpot,Kaleidos (Penpot),U1,COSS (GitHub core),4,0,2021,seed | series_a | venture_unspecified,0,https://community.penpot.app/t/penpot-our-time-has-come/1563 | https://techcrunch.com/2022/09/27/penpot-inks-8m-as-signups-for-its-open-source-spin-on-figma-jump-5600-after-adobes-20b-acquisition-move/ | https://techcrunch.com/2023/02/02/penpot-the-open-source-platform-for-designers-and-their-coders-draws-up-12m-as-users-jump-to-250k/
 Atika Capital,0,u4-rescale,Rescale,U4,open-source startup,1,0,2025,series_d,0,https://venturebeat.com/ai/115-million-just-poured-into-this-startup-that-makes-engineering-1000x-faster-and-bezos-altman-and-nvidia-are-all-betting-on-its-success/
 Atlas Venture,0,mosaicml,MosaicML,U3,open-source training tools and MPT models,1,0,2023,venture_unspecified,0,https://techcrunch.com/2023/06/26/databricks-picks-up-mosaicml-an-openai-competitor-for-1-3b/
 Atlassian Ventures,0,docker,Docker Inc.,U1,COSS (GitHub core),1,0,2022,series_c,0,https://www.docker.com/blog/docker-raises-series-c-build-share-run/
@@ -447,6 +452,7 @@ Bain Capital Ventures,0,Lightning-AI,Lightning AI,U1,COSS (GitHub core),2,0,2020
 Bain Capital Ventures,0,pola-rs,Polars B.V.,U1,COSS (GitHub core),1,1,2023,seed,0,https://techcrunch.com/2025/09/29/the-startup-behind-open-source-tool-polars-raises-21m-from-accel/
 Bain Capital Ventures,0,redis,Redis Ltd.,U1,COSS (GitHub core),2,1,2019,series_e | series_f_plus,0,https://redis.io/press/redis-labs-raises-100-million-series-f-financing/ | https://techcrunch.com/2019/02/19/redis-labs-raises-a-60m-series-e-round/
 Bain Capital Ventures,0,unstructured,Unstructured,U3,COSS (document parsing),2,1,2023,seed | series_a,0,https://techcrunch.com/2023/07/19/unstructured-which-offers-tools-to-prep-enterprise-data-for-llms-raises-25m/
+Balaji S. Srinivasan,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Balaji Srinivasan,1,dubinc,Dub Technologies,U1,COSS (GitHub core),1,0,2025,venture_unspecified,0,https://dub.co/about
 Balaji Srinivasan,1,labdao,LabDAO,U2,DeSci open tools,1,0,2023,seed,0,https://247wallst.com/investing/2023/05/23/decentralized-science-project-labdao-raises-3-6m/
 Balaji Srinivasan,1,mastra-ai,Mastra,U1,COSS (GitHub core),1,0,2025,seed,0,https://mastra.ai/blog/seed-round
@@ -493,6 +499,7 @@ Ben Hamner,1,marimo-team,marimo,U1,COSS (GitHub core),1,0,2024,seed,0,https://ma
 Ben Lang,1,Budibase,Budibase,U1,COSS (GitHub core),1,0,2022,seed,0,https://budibase.com/blog/updates/budibase-raises-7m-to-help-every-company-on-the-planet-build-their-own-tools/
 Ben Rosen,1,sendmail,"Sendmail, Inc.",U3,COSS (sendmail),1,0,,venture_unspecified,0,https://www.linuxtoday.com/developer/computerworld-emerging-companies-sendmail-inc
 Ben Sigelman,1,u4-odigos-technologies-inc,Odigos Technologies Inc.,U4,open-source startup,1,0,2024,venture_unspecified,0,https://techcrunch.com/2024/09/09/yc-alum-odigos-aims-to-help-enterprises-find-errors-and-stamp-out-latency-in-their-systems/
+Ben Vinegar,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Benchling,0,boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,1,0,2026,series_a,0,https://boltz.bio/series-a
 Benchmark,0,airbyte,Airbyte,U3,COSS (data integration),2,1,2021,series_a | series_b,0,https://airbyte.com/blog/a-150m-series-b-to-power-the-movement-of-data | https://techcrunch.com/2021/05/25/airbyte-announces-26m-series-a-for-open-source-data-connector-platform/
 Benchmark,0,buoyant,Buoyant,U3,COSS (Linkerd),2,1,2017,series_a | venture_unspecified,0,https://siliconangle.com/2019/03/14/service-mesh-company-bouyant-lands-10m-take-googles-istio/ | https://www.geekwire.com/2017/two-engineers-helped-kill-twitters-fail-whale-land-10-5m-buoyant-thinks-missing-link-microservices/
@@ -515,6 +522,7 @@ Benchmark,0,red-hat,Red Hat,U3,COSS (Linux),3,0,1998,series_b | series_c | ventu
 Benchmark,0,timescale,Tiger Data,U1,COSS (GitHub core),4,1,2018,series_a | series_b | series_c,0,https://blog.timescale.com/blog/40-million-to-help-developers-measure-everything-that-matters/ | https://blog.timescale.com/raised-16m-from-benchmark-nea-to-understand-machines-time-series-data-iot-9eff8213c15c | https://blog.timescale.com/raises-another-15m-for-leading-time-series-sql-database-introduces-enterprise-offering/ | https://www.timescale.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/
 Benchmark,0,zimbra,Zimbra,U3,COSS (email),2,0,2006,series_c | venture_unspecified,0,https://pehub.com/yahoo-buying-zimbra | https://www.linuxtoday.com/developer/red-herring-zimbra-gets-another-14-5m
 Benjamin De Cock,1,vercel,Vercel,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://vercel.com/about
+Berkeley Frontier Fund,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Bertelsmann Asia Investment Fund,0,pingcap,PingCAP,U1,COSS (GitHub core),1,0,2020,series_d,0,https://techcrunch.com/2020/11/16/pingcap-the-open-source-developer-behind-tidb-closes-270-million-series-d/
 Bertelsmann Investment,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
 Bertrand Diard,1,kestra-io,Kestra Technologies,U1,COSS (GitHub core),1,0,2024,seed,0,https://techcrunch.com/2024/09/23/kestra-raises-another-8-million-for-its-open-source-orchestration-platform/
@@ -591,7 +599,7 @@ Boom Capital,0,molecule,Molecule (Molecule AG),U2,"DeSci, IP-NFTs",1,0,2022,seed
 Boost VC,0,researchhub,ResearchHub (ResearchHub Technologies),U2,"open science platform, DeSci",1,0,2023,seed,0,https://www.theblock.co/amp/post/234960/scientists-can-earn-crypto-as-brian-armstrong-startup-raises-5-million
 Borderless Capital,0,linera-io,Linera,U1,COSS (GitHub core),1,1,2023,seed,0,https://www.theblock.co/post/245693/borderless-capital-leads-6-million-seed-round-for-microchain-startup-linera
 Bow Capital,0,bentoml,BentoML,U3,COSS (model serving),1,0,2023,seed,0,https://techcrunch.com/2023/06/26/bentoml-scores-9m-funding-to-expedite-ai-app-development/
-Bow Capital,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://humansignal.com/about/
+Bow Capital,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),2,0,2022,series_a | venture_unspecified,0,https://humansignal.com/about/ | https://techcrunch.com/2022/05/18/2314708/
 BoxGroup,0,molecule,Molecule (Molecule AG),U2,"DeSci, IP-NFTs",1,0,2022,seed,0,https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech
 BoxGroup,0,u4-paradev-formerly-superset,Paradev (formerly Superset),U4,open-source startup,1,0,2026,seed,0,https://paradev.com/blog/superset-is-now-paradev
 BoxGroup,0,u4-pynecone,Pynecone,U4,open-source startup,1,0,2023,seed,0,https://reflex.dev/blog/seed-annoucement/
@@ -642,6 +650,7 @@ CCI Group,0,sakana,Sakana AI,U3,open releases (partial),1,0,2025,series_b,0,http
 CDP Venture Capital,0,arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,1,1,2023,series_b,0,https://blog.arduino.cc/2023/09/06/what-will-we-do-with-an-additional-22m/
 CDP Venture Capital,0,u4-nebuly-ai,Nebuly AI,U4,open-source startup,1,0,2026,series_a,0,https://www.nebuly.com/blog/nebuly-raises-21m-series-a
 CDTI,0,bcn3d,BCN3D Technologies,U2,open-source 3D printers,1,1,2020,venture_unspecified,0,https://www.3dnatives.com/en/bcn3d-raises-2-8-million-240720204/
+CDTI Innvierte,0,penpot,Kaleidos (Penpot),U1,COSS (GitHub core),1,0,2021,seed,0,https://community.penpot.app/t/penpot-our-time-has-come/1563
 CM Ventures,0,u4-activeloop,Activeloop,U4,open-source startup,1,1,2021,seed,0,https://techcrunch.com/2021/11/02/activeloop-snags-5m-seed-to-build-database-for-ai-applications/
 CM-CIC Capital Privé,0,symfony,Symfony SAS,U1,COSS (GitHub core),1,0,2013,venture_unspecified,0,https://techcrunch.com/2013/12/18/sensiolabs-raises-6-9-million-to-implement-its-php-framework-symfony-everywhere/
 CPE Asset Management,0,deepseek-ai,DeepSeek,U1,COSS (GitHub core),1,0,2026,series_b,0,https://www.thestandard.com.hk/finance/article/345350/DeepSeek-doubles-funding-round-to-100bn-yuan-as-valuation-holds-steady
@@ -672,6 +681,7 @@ Caffeinated Capital,0,astral-sh,Astral,U1,COSS (GitHub core),1,0,,venture_unspec
 Caffeinated Capital,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
 Caffeinated Capital,0,vercel,Vercel,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://vercel.com/about
 Cal Henderson,1,earendil-works,Earendil Inc.,U1,COSS (GitHub core),1,0,2026,venture_unspecified,0,https://earendil.com/posts/announcement-reflection/
+CalFund,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Caleb Sima,1,projectdiscovery,ProjectDiscovery,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://projectdiscovery.io/about-us
 California Technology Ventures,0,mariadb,MariaDB,U3,COSS (database),2,0,2013,series_b,0,https://techcrunch.com/2013/10/22/skysql-raises-20m-to-support-open-source-relational-database-mariadb/ | https://techcrunch.com/2017/05/08/open-source-database-developer-mariadb-picks-up-27m-from-the-eib/
 Calvin French-Owen,1,airbyte,Airbyte,U3,COSS (data integration),1,0,2021,seed,0,https://techcrunch.com/2021/03/02/airbyte-raises-5-2m-for-its-open-source-data-integration-platform/
@@ -696,12 +706,14 @@ CapitalG,0,odoo,Odoo SA,U1,COSS (GitHub core),1,1,2024,secondary,0,https://techc
 Capstone Capital,0,hpcaitech,HPC-AI Tech,U1,COSS (GitHub core),1,0,2024,series_a,0,https://company.hpc-ai.com/blog/singapore-startup-hpc-ai-tech-secures-50-million-usd-in-series-a-funding-to-build-the-video-generation-ai-model-and-gpu-platform
 Carol Willing,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
 Carya Venture Partners,0,fishaudio,Fish Audio,U1,COSS (GitHub core),1,0,2026,seed,0,https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/
+Cassidy Williams,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Caterina Fake,1,cloudera,Cloudera,U3,COSS (Hadoop),1,0,2009,series_a,0,https://techcrunch.com/2011/11/07/ignition-accel-greylock-put-40m-in-apache-hadoop-distribution-platform-cloudera/
 Cathay Capital,0,FoundationAgents,DeepWisdom,U1,COSS (GitHub core),1,1,2026,venture_unspecified,0,https://www.cathaycapital.com/are-you-ready-to-start-your-own-company-when-ai-learns-to-collaborate/
 Cathay Innovation,0,entalpic,Entalpic,U2,materials AI with open releases (partial),1,1,2024,seed,0,https://www.cathaycapital.com/entalpic-raises-e8-5-million-to-pioneer-ai-solutions-for-decarbonizing-industrial-chemistry/
 Cavalry Ventures,0,charmbracelet,Charm (Charmbracelet),U1,COSS (GitHub core),1,0,2023,venture_unspecified,0,https://web.archive.org/web/2023/https://charm.sh/blog/the-next-generation/
 Centerview Capital,0,acquia,Acquia,U3,COSS (Drupal),1,1,2015,growth,0,https://techcrunch.com/2015/09/28/online-content-manager-acquia-raises-55-million-for-online-customer-relationships/
 Centralway,0,u4-buttercoin,Buttercoin,U4,open-source startup,1,1,2013,seed,0,https://techcrunch.com/2013/09/18/centralway-fund-buttercoin-seed/
+Chad Hurley,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Chad Hurley,1,nocodb,NocoDB,U1,COSS (GitHub core),1,0,2022,seed,0,https://techcrunch.com/2022/10/11/nocodb-takes-on-airtable-with-open-source-no-code-database-that-works-with-production-data/
 Chalfen Ventures,0,surrealdb,SurrealDB Ltd,U1,COSS (GitHub core),2,0,2025,series_a,0,https://siliconangle.com/2026/02/17/surrealdb-raises-23m-expand-ai-native-multi-model-database/ | https://surrealdb.com/about
 Chan Zuckerberg Initiative,0,nextflow-io,Seqera,U1,COSS (GitHub core),1,0,2021,grant_philanthropic,0,https://techcrunch.com/2021/09/07/seqera-labs-grabs-5-5m-to-help-sequence-covid-19-variants-and-other-complex-data-problems/
@@ -797,6 +809,7 @@ Collab+Currency,0,prime-intellect,Prime Intellect,U3,"open-source decentralised 
 Combination VC,0,topoteretes,Topoteretes (cognee),U1,COSS (GitHub core),1,0,2024,pre_seed,0,https://www.cognee.ai/blog/cognee-news/funding-and-web-site-launch
 Comcast Ventures,0,ai21,AI21 Labs,U3,open-weight Jamba models (partial),1,0,2023,series_c,0,https://techcrunch.com/2023/11/21/generative-ai-startup-ai21-labs-raises-cash-in-the-midst-of-openai-chaos/
 Comcast Ventures,0,neural-magic,Neural Magic,U3,"open-source inference (DeepSparse, vLLM)",1,1,2019,seed,0,https://techcrunch.com/2019/11/06/neural-magic-gets-15m-seed-to-run-machine-learning-models-on-commodity-cpus/
+Comcast Ventures,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Common Metal,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
 Community investors,0,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",1,0,2024,crowdfunding_equity,0,https://frame.work/blog/frameworks-series-a-1-and-community-participation
 Compaq,0,red-hat,Red Hat,U3,COSS (Linux),1,0,1999,corporate_strategic,1,https://en.wikipedia.org/wiki/Red_Hat
@@ -831,6 +844,7 @@ Craft Ventures,0,crewAIInc,CrewAI,U1,COSS (GitHub core),1,0,2024,seed,0,https://
 Craft Ventures,0,fingerprintjs,Fingerprint (FingerprintJS Inc.),U1,COSS (GitHub core),2,1,2021,series_b | venture_unspecified,0,https://fingerprint.com/about-us/ | https://fingerprint.com/blog/series-b/
 Craft Ventures,0,logseq,Logseq Inc.,U1,COSS (GitHub core),1,0,2022,seed,0,https://blog.logseq.com/logseq-raises-4-1m-to-accelerate-growth-of-the-new-world-knowledge-graph/
 Craft Ventures,0,u4-paradedb,ParadeDB,U4,open-source startup,1,1,2025,series_a,0,https://techcrunch.com/2025/07/15/paradedb-takes-on-elasticsearch-as-interest-in-postgres-explodes-amid-ai-boom/
+Craft Ventures,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Craft Ventures,0,u4-roboflow,Roboflow,U4,open-source startup,3,1,2021,seed | series_b | venture_unspecified,0,https://fortune.com/2024/11/19/exclusive-roboflow-vision-ai-startup-raises-40-million-series-b/ | https://roboflow.com/about | https://techcrunch.com/2021/01/12/roboflow-raises-2-1m-for-its-end-to-end-computer-vision-platform/
 Craft Ventures,0,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",1,0,2019,series_a,0,https://techcrunch.com/2019/03/27/sofar-ocean-technologies/
 Craft Ventures,0,sourcegraph,Sourcegraph,U3,"code search, open source until 2023 (partial)",1,1,2020,series_b,0,https://medium.com/craft-ventures/why-we-invested-in-sourcegraph-5ace28317e3d
@@ -895,6 +909,7 @@ Dai-ichi Life Insurance,0,sakana,Sakana AI,U3,open releases (partial),1,0,2024,s
 Dan Bragiel,1,u4-sst,SST,U4,open-source startup,1,0,,angel,0,https://sst.dev/about
 Dan Pinto,1,u4-okteto,Okteto,U4,open-source startup,1,0,2022,series_a,0,https://techcrunch.com/2022/02/24/kubernetes-development-platform-okteto-raises-15m-series-a/
 Dane Knecht,1,u4-herdr,Herdr,U4,open-source startup,1,0,2026,seed,0,https://herdr.dev/blog/herdr-raised-a-seed/
+Dane Knecht,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Dane Knecht,1,supermemoryai,Supermemory,U1,COSS (GitHub core),1,0,2025,seed,0,https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/
 Daniel Gross,1,chroma-core,Chroma,U1,COSS (GitHub core),1,0,2022,pre_seed,0,https://www.trychroma.com/blog/seed
 Daniel Gross,1,evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),1,1,2024,seed,0,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/
@@ -922,6 +937,7 @@ David Baszucki,1,clockworklabs,Clockwork Labs,U1,COSS (GitHub core),1,0,,venture
 David Cramer,1,earendil-works,Earendil Inc.,U1,COSS (GitHub core),1,0,2026,venture_unspecified,0,https://earendil.com/posts/announcement-reflection/
 David Cramer,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
 David Cramer,1,mastra-ai,Mastra,U1,COSS (GitHub core),1,0,2025,seed,0,https://mastra.ai/blog/seed-round
+David Cramer,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 David Cramer,1,pydantic,Pydantic Services,U3,"COSS (Pydantic, Logfire)",1,0,2023,seed,0,https://techcrunch.com/2023/02/16/sequoia-backs-open-source-data-validation-framework-pydantic-to-commercialize-with-cloud-services/
 David Cramer,1,strapi,Strapi,U1,COSS (GitHub core),1,0,2020,series_a,0,https://techcrunch.com/2020/05/20/headless-cms-company-strapi-raises-another-10-million/
 David Cramer,1,supermemoryai,Supermemory,U1,COSS (GitHub core),1,0,2025,seed,0,https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/
@@ -1053,8 +1069,10 @@ Electric Capital,0,anoma,Anoma (Heliax),U1,COSS (GitHub core),2,0,2021,other | t
 Electronic Arts,0,Stability-AI,Stability AI,U1,COSS (GitHub core),2,0,2026,series_b | venture_unspecified,0,https://stability.ai/careers | https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/
 Elefund,0,u4-alpaca,Alpaca,U4,open-source startup,1,0,,venture_unspecified,0,https://techcrunch.com/2023/10/12/stock-trading-api-developer-alpaca-raises-15m-convertible-note-from-sbi-group/
 Elefund,0,Stirling-Tools,Stirling PDF,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://www.stirling.com/about
+Elephant VC,0,ultralytics,Ultralytics,U1,COSS (GitHub core),1,1,2025,series_a,0,https://siliconangle.com/2025/09/17/computer-vision-startup-ultralytics-raises-30m-funding/
 Eli Brown,1,u4-trigger-dev,Trigger.dev,U4,open-source startup,1,0,2023,seed,0,https://trigger.dev/blog/3m-dollar-seed-round
 Eli Collins,1,strapi,Strapi,U1,COSS (GitHub core),2,0,2019,seed | series_a,0,https://techcrunch.com/2019/10/15/headless-cms-company-strapi-raises-4-million/ | https://techcrunch.com/2020/05/20/headless-cms-company-strapi-raises-another-10-million/
+Eliot Horowitz,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Ellen Pao,1,u4-dagger,Dagger,U4,open-source startup,1,0,2022,series_a,0,https://dagger.io/blog/series-a
 Emad Mostaque,1,prime-intellect,Prime Intellect,U3,"open-source decentralised training, open models",1,0,2025,seed,0,https://www.primeintellect.ai/blog/fundraise
 Emergence Capital,0,arcee,Arcee AI,U3,open-weight models,2,2,2024,series_a | series_b,0,https://venturebeat.com/ai/small-language-models-rising-as-arcee-ai-lands-24m-series-a/ | https://www.arcee.ai/blog/arcee-ai-raises-series-b-to-build-the-future-of-american-open-models
@@ -1108,6 +1126,7 @@ European Investment Fund,0,carto,CARTO (CartoDB),U3,open-source geospatial origi
 European Regional Development Fund,0,slint-ui,SixtyFPS GmbH,U1,COSS (GitHub core),1,0,,grant_government,0,https://slint.dev/investors
 European Space Agency,0,lime-micro,Lime Microsystems (LimeSDR),U2,open-source SDR,1,0,2018,grant_government,0,https://www.rtl-sdr.com/limesdr-now-backed-european-space-agency/
 European Union,0,mzmine,mzio GmbH,U1,COSS (GitHub core),1,0,,grant_government,0,https://mzio.io/company/
+Evan You,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Evantic,0,n8n-io,n8n,U1,COSS (GitHub core),1,0,2025,series_c,0,https://blog.n8n.io/series-c/
 Exceptional Capital,0,u4-lastmile-ai,LastMile AI,U4,open-source startup,1,0,2023,seed,0,https://techcrunch.com/2023/09/14/lastmile-ai-closes-10m-seed-round-to-operationalize-ai-models/
 Exceptional Capital,0,payloadcms,Payload,U1,COSS (GitHub core),1,0,2022,seed,0,https://techcrunch.com/2022/11/15/payload-raises-4-7m-for-its-developer-first-headless-cms/
@@ -1340,6 +1359,7 @@ General Catalyst,0,u4-authzed,authzed,U4,open-source startup,1,1,2024,series_a,0
 General Electric,0,springsource-pivotal,SpringSource / Pivotal Software,U3,"COSS (Spring, Cloud Foundry)",2,0,2013,corporate_strategic | venture_unspecified,0,https://techcrunch.com/2013/04/24/ge-puts-105m-into-pivotal-labs-the-new-emc-and-vmware-platform-initiative-but-heres-what-it-is-missing/ | https://www.sec.gov/Archives/edgar/data/1574135/000104746918003019/a2235389z424b4.htm
 Generative Ventures,0,u4-gaia,Gaia,U4,open-source startup,1,0,2024,seed,0,https://siliconangle.com/2024/05/28/gaianet-raises-10m-decentralized-ai-agent-project/
 Genesis crowdfunding backers,0,farmbot,FarmBot,U2,open-source farming robot,1,0,2016,crowdfunding_reward,0,https://farm.bot/pages/series-a
+Gentree Fund,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Geodesic Capital,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",3,0,2017,series_d | series_f_plus,0,https://databricks.com/company/newsroom/press-releases/databricks-raises-1-6-billion-series-h-investment-at-38-billion-valuation | https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
 Geodesic Capital,0,sakana,Sakana AI,U3,open releases (partial),1,0,2025,series_b,0,https://sakana.ai/series-b/
 Geodesic Capital,0,sourcegraph,Sourcegraph,U3,"code search, open source until 2023 (partial)",1,0,2021,series_d,0,https://techcrunch.com/2021/07/13/sourcegraph-raises-125m-series-d-on-2-6b-valuation-for-universal-code-search-tool/
@@ -1362,6 +1382,7 @@ GitHub,0,ToolJet,ToolJet,U1,COSS (GitHub core),1,0,2023,corporate_strategic,0,ht
 GitHub,0,u4-formbricks,formbricks,U4,open-source startup,1,0,2023,accelerator,0,https://formbricks.com/blog/preseed-announcement
 GiveWell,0,u4-our-world-in-data,Our World in Data,U4,open-source startup,1,0,,grant_philanthropic,0,https://ourworldindata.org/funding
 Glade Brook Capital,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2026,series_f_plus,0,https://www.crn.com/news/software/2026/databricks-reports-5-4-billion-revenue-run-rate-as-it-closes-a-7b-investment-round
+Glenn Solomon,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Glilot Capital,0,CopilotKit,CopilotKit,U1,COSS (GitHub core),1,1,2026,series_a,0,https://www.copilotkit.ai/blog/series-a
 Global Brain,0,sakana,Sakana AI,U3,open releases (partial),1,0,2024,series_a,0,https://sakana.ai/series-a/
 Global Brain,0,seldon,Seldon,U3,COSS (ML deployment; BSL since 2024),1,0,2020,series_a,0,https://techcrunch.com/2020/11/17/ai-tool-maker-seldon-raises-7-1m-series-a-from-albionvc-and-cambridge-innovation-capital/
@@ -1389,6 +1410,7 @@ Google,0,ai21,AI21 Labs,U3,open-weight Jamba models (partial),2,1,2023,series_c 
 Google,0,huggingface,Hugging Face,U1,COSS (GitHub core),1,0,2023,series_d,0,https://techcrunch.com/2023/08/24/hugging-face-raises-235m-from-investors-including-salesforce-and-nvidia/
 Google,0,cilium,Isovalent,U1,COSS (GitHub core),2,1,2020,series_a | series_b,0,https://techcrunch.com/2020/11/10/with-29m-in-funding-isovalent-launches-its-cloud-native-networking-and-security-platform-based-on-ebpf-and-cilium/ | https://techcrunch.com/2023/12/21/cisco-to-acquire-cloud-native-networking-and-security-startup-isovalent/
 Google,0,K-Dense-AI,K-Dense,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://www.k-dense.ai/
+Google,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Google,0,sakana,Sakana AI,U3,open releases (partial),1,0,2025,series_b,0,https://sakana.ai/series-b/
 Government of Canada (Sovereign AI Compute Strategy),0,cohere,Cohere,U3,"research weights, non-commercial licence (partial)",1,0,2024,grant_government,0,https://betakit.com/canada-to-invest-up-to-1-6-billion-in-ai-firm-cohere/
 Government of Canada (via Canada Development Investment Corporation),0,cohere,Cohere,U3,"research weights, non-commercial licence (partial)",1,0,2026,series_e,0,https://betakit.com/canada-to-invest-up-to-1-6-billion-in-ai-firm-cohere/
@@ -1542,6 +1564,7 @@ Hustle Fund,0,u4-beam,Beam,U4,open-source startup,1,0,,venture_unspecified,0,htt
 Hyundai Motor Group,0,tenstorrent,Tenstorrent,U2,"open-source software stack, RISC-V (partial)",2,1,2023,convertible_note | series_d,0,https://betakit.com/ai-chipmaker-tenstorrent-closes-nearly-700-million-usd-series-d-at-2-6-billion-valuation/ | https://techcrunch.com/2023/08/04/ai-chip-startup-tenstorrent-lands-100m-investment-from-hyundai-and-samsung/
 IA Ventures,0,coiled,Coiled,U2,Dask company,1,1,2020,seed,0,https://prnewswire.com/news-releases/coiled-announces-5m-seed-funding-to-meet-the-needs-of-modern-data-teams-301139759.html
 IAG,0,arcee,Arcee AI,U3,open-weight models,1,0,2026,series_b,0,https://www.arcee.ai/blog/arcee-ai-raises-series-b-to-build-the-future-of-american-open-models
+IAG Capital Partners,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 IBB Ventures,0,qdrant,Qdrant,U1,COSS (GitHub core),1,0,2023,seed,0,https://techcrunch.com/2023/04/19/qdrant-an-open-source-vector-database-startup-wants-to-help-ai-developers-leverage-unstructured-data/
 IBM,0,huggingface,Hugging Face,U1,COSS (GitHub core),1,0,2023,series_d,0,https://techcrunch.com/2023/08/24/hugging-face-raises-235m-from-investors-including-salesforce-and-nvidia/
 IBM,0,lightbend,Lightbend (Typesafe),U3,"COSS (Scala, Akka)",1,1,2017,corporate_strategic,0,https://siliconangle.com/blog/2017/07/12/lightbend-startup-behind-scala-programming-language-bags-15m/
@@ -1710,6 +1733,7 @@ Jake Lodwick,1,makerbot,MakerBot Industries,U2,"3D printing, open designs until 
 Jake Medwell,1,prime-intellect,Prime Intellect,U3,"open-source decentralised training, open models",1,0,2025,seed,0,https://www.primeintellect.ai/blog/fundraise
 Jake Mintz,1,u4-paradev-formerly-superset,Paradev (formerly Superset),U4,open-source startup,1,0,2026,seed,0,https://paradev.com/blog/superset-is-now-paradev
 Jakob Uszkoreit,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+James Beshara,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 James Beshara,1,u4-mage,Mage,U4,open-source startup,1,0,2021,seed,0,https://techcrunch.com/2021/10/19/mage-aims-to-be-the-stripe-for-ai-raises-6-3m-for-developer-tools-to-build-ai-into-apps/
 James Brodie,1,molecule,Molecule (Molecule AG),U2,"DeSci, IP-NFTs",1,0,2022,seed,0,https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech
 James Cowling,1,u4-tigerbeetle,TigerBeetle,U4,open-source startup,1,0,2023,seed,0,https://tigerbeetle.com/blog/2023-01-30-series-seed-announcement/
@@ -1734,6 +1758,7 @@ Jason Warner,1,withfig,Fig,U1,COSS (GitHub core),1,0,2023,venture_unspecified,0,
 Jason Warner,1,PostHog,PostHog Inc.,U1,COSS (GitHub core),1,0,2020,seed,0,https://posthog.com/blog/15-million-series-b
 Jason Warner,1,u4-raycast,Raycast,U4,open-source startup,1,0,2021,series_a,0,https://techcrunch.com/2021/11/30/developer-productivity-tools-startup-raycast-raises-15m-from-accel-and-coatue/
 Jason Warner,1,u4-svix,Svix,U4,open-source startup,1,0,,venture_unspecified,0,https://www.svix.com/about/
+Javelin Venture Partners,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Jay Jamison,1,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
 Jean-Philippe Bellaiche,1,strapi,Strapi,U1,COSS (GitHub core),1,0,2019,seed,0,https://techcrunch.com/2019/10/15/headless-cms-company-strapi-raises-4-million/
 Jed McCaleb,1,arcadia-science,Arcadia Science,U2,"open-science R&D company, publishes openly",1,0,2023,venture_unspecified,0,https://arcadiascience.substack.com/p/translation-at-arcadia
@@ -1767,12 +1792,14 @@ Jim Young,1,u4-serverless-stack,Serverless Stack,U4,open-source startup,1,0,,ven
 Jingfu Assets,0,labring,Sealos (labring),U1,COSS (GitHub core),1,0,2023,angel,1,https://pitchhub.36kr.com/project/2011596850841345
 Jinhuifeng,0,layabox,Layabox,U1,COSS (GitHub core),1,1,2017,series_a,0,https://news.pedaily.cn/201804/430463.shtml
 Jiten Vaidya,1,SigNoz,SigNoz,U1,COSS (GitHub core),1,0,2023,seed,0,https://techcrunch.com/2023/09/28/open-source-datadog-rival-signoz-lands-on-the-cloud-with-6-5m-investment/
+Job van der Voort,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Joe Lallouz,1,prime-intellect,Prime Intellect,U3,"open-source decentralised training, open models",1,0,2024,seed,0,https://www.theblock.co/news/deals/2024-04-23-coinfund-and-distributed-global-lead-5-5-million-seed-round-for-decentralized-ai-firm-prime-intellect-290476
 Johannes Schickling,1,vitejs,VoidZero,U1,COSS (GitHub core),1,0,2024,seed,0,https://voidzero.dev/posts/announcing-voidzero-inc
 Johannes Schickling,1,tldraw,tldraw Inc.,U1,COSS (GitHub core),1,0,2022,seed,0,https://tldraw.substack.com/p/tiny-little-seed-round
 John Chambers,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2025,series_b,0,https://www.together.ai/blog/together-ai-announcing-305m-series-b
 John Kodumal,1,u4-okteto,Okteto,U4,open-source startup,1,0,2022,series_a,0,https://techcrunch.com/2022/02/24/kubernetes-development-platform-okteto-raises-15m-series-a/
 John Lilly,1,u4-votingworks,VotingWorks,U4,open-source startup,1,0,,angel,0,https://voting.works/about
+John Pham,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 John Riccitiello,1,u4-mage,Mage,U4,open-source startup,1,0,2021,seed,0,https://techcrunch.com/2021/10/19/mage-aims-to-be-the-stripe-for-ai-raises-6-3m-for-developer-tools-to-build-ai-into-apps/
 John Zeratsky,1,u4-ctgt,CTGT,U4,open-source startup,1,0,2024,angel,0,https://techcrunch.com/2024/10/29/ctgt-aims-to-make-ai-models-safer/
 Johnny Boufarhat,1,u4-raycast,Raycast,U4,open-source startup,1,0,2021,series_a,0,https://techcrunch.com/2021/11/30/developer-productivity-tools-startup-raycast-raises-15m-from-accel-and-coatue/
@@ -1800,6 +1827,7 @@ K5 Global,0,Lightning-AI,Lightning AI,U1,COSS (GitHub core),2,0,2024,venture_uns
 K5 Global,0,getsentry,Sentry (Functional Software),U1,COSS (GitHub core),1,0,2022,series_e,0,https://sentry.io/about/press-releases/sentry-raises-90-million-in-series-e-funding-to-expand-and-drive-adoption-of-developer-first-application-monitoring/
 KDDI,0,sakana,Sakana AI,U3,open releases (partial),1,0,2024,series_a,0,https://sakana.ai/series-a/
 KDDI,0,tier-iv,TIER IV,U2,Autoware,1,0,2019,venture_unspecified,0,https://venturebeat.com/2019/07/05/tier-iv-raises-100-million-to-develop-open-source-software-for-driverless-cars/
+KDDI Open Innovation Fund,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 KKR,0,cloudera,Cloudera,U3,COSS (Hadoop),1,1,2021,growth,0,https://techcrunch.com/2021/06/01/cloudera-to-go-private-as-kkr-cdr-grab-it-for-5-3b/
 KKR,0,coder,Coder Technologies,U1,COSS (GitHub core),1,1,2026,series_c,0,https://siliconangle.com/2026/04/01/coder-secures-90m-investment-optimize-development-environments/
 KKR,0,forgerock,ForgeRock,U3,COSS (identity),3,0,2017,series_d | series_e | venture_unspecified,0,https://techcrunch.com/2017/09/05/identity-startup-forgerock-lands-88-million-series-d-investment/ | https://techcrunch.com/2020/04/21/forgerock-nabs-93-5m-for-its-id-management-platform-gears-up-next-for-an-ipo/ | https://www.sec.gov/Archives/edgar/data/1543916/000119312521276125/d127368d424b4.htm
@@ -1875,6 +1903,7 @@ Knight Foundation,0,u4-bluesky,Bluesky,U4,open-source startup,1,0,2025,series_b,
 Knight Foundation,0,carto,CARTO (CartoDB),U3,open-source geospatial origins,1,0,2014,grant_philanthropic,0,https://techcrunch.com/2014/07/08/cartodbs-odyssey-js-is-an-open-source-tool-for-telling-stories-with-interactive-maps/
 Knight Foundation,0,mapbox,Mapbox,U3,open-source mapping origins (relicensed 2020),1,0,2012,grant_philanthropic,0,https://techcrunch.com/2013/10/16/mapbox-closes-10m-series-a-from-foundry-group-to-build-the-future-of-interactive-mobile-maps/
 Koch Disruptive Technologies,0,mesosphere,Mesosphere (D2iQ),U3,"COSS (Mesos, DC/OS)",1,1,2018,series_d,0,https://siliconangle.com/2018/05/07/mesosphere-raises-125m-round-expand-data-center-platform-worldwide/
+Koen Bok,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Koen Bok,1,vitejs,VoidZero,U1,COSS (GitHub core),1,0,2025,series_a,0,https://voidzero.dev/posts/announcing-series-a
 Koji Capital,0,molecule,Molecule (Molecule AG),U2,"DeSci, IP-NFTs",1,0,2022,seed,0,https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech
 Korelya Capital,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
@@ -1943,6 +1972,7 @@ Liquid 2 Ventures,0,u4-paradev-formerly-superset,Paradev (formerly Superset),U4,
 Liquid 2 Ventures,0,u4-sourcebot,Sourcebot,U4,open-source startup,1,0,2025,venture_unspecified,0,https://www.sourcebot.dev/
 Liquid 2 Ventures,0,u4-trigger-dev,Trigger.dev,U4,open-source startup,2,0,2023,seed | series_a,0,https://trigger.dev/blog/3m-dollar-seed-round | https://trigger.dev/blog/series-a
 Lisha Li,1,continuedev,"Continue Dev, Inc.",U1,COSS (GitHub core),1,0,2023,seed,0,https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/
+Liu Jiang,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Liu Jiang,1,tldraw,tldraw Inc.,U1,COSS (GitHub core),1,0,2022,seed,0,https://tldraw.substack.com/p/tiny-little-seed-round
 Lobster Capital,0,u4-sync,sync.,U4,open-source startup,1,0,,venture_unspecified,0,https://sync.so/about
 LocalGlobe,0,medusajs,Medusa,U1,COSS (GitHub core),1,1,2022,seed,0,https://techcrunch.com/2022/07/15/medusa-shopify-open-source-e-commerce-javascript-developers/
@@ -2060,6 +2090,7 @@ Matrix Partners China,0,chaitin,Chaitin Tech,U1,COSS (GitHub core),1,1,2018,seri
 Matrix Partners China,0,logseq,Logseq Inc.,U1,COSS (GitHub core),1,0,2022,seed,0,https://blog.logseq.com/logseq-raises-4-1m-to-accelerate-growth-of-the-new-world-knowledge-graph/
 Matrix Partners China,0,pingcap,PingCAP,U1,COSS (GitHub core),3,0,2017,series_b | series_c | series_d,0,https://pingcap.com/blog/series-c-announcement/ | https://techcrunch.com/2018/09/11/tidb-developer-pingcap-wants-to-expand-in-north-america-after-raising-50m-series-c/ | https://techcrunch.com/2020/11/16/pingcap-the-open-source-developer-behind-tidb-closes-270-million-series-d/
 Matrixport,0,linera-io,Linera,U1,COSS (GitHub core),1,0,2023,seed,0,https://www.theblock.co/post/245693/borderless-capital-leads-6-million-seed-round-for-microchain-startup-linera
+Matt Biilmann,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Matt Biilmann,1,vitejs,VoidZero,U1,COSS (GitHub core),1,0,2024,seed,0,https://voidzero.dev/posts/announcing-voidzero-inc
 Matt Biilmann Christensen,1,strapi,Strapi,U1,COSS (GitHub core),1,0,2022,series_b,0,https://strapi.io/blog/series-b
 Matt Cutts,1,u4-votingworks,VotingWorks,U4,open-source startup,1,0,,angel,0,https://voting.works/about
@@ -2230,12 +2261,14 @@ Nature Publishing Group,0,frontiers,Frontiers Media,U2,open-access publisher,1,0
 Nauta Capital,0,netbirdio,NetBird,U1,COSS (GitHub core),2,1,2024,seed | series_a,0,https://tech.eu/2024/12/03/netbird-raises-4m-for-open-source-cybersecurity-platform/ | https://tech.eu/2026/01/13/netbird-announces-10m-series-a-to-expand-open-source-vpn-alternative/
 Nauta Capital,0,u4-nhost,Nhost,U4,open-source startup,1,1,2021,seed,0,https://venturebeat.com/2021/04/22/nhost-is-an-open-source-firebase-rival-backed-by-githubs-founders/
 Nava Ventures,0,union-ai,Union.ai,U3,COSS (Flyte),1,0,2023,series_a,0,https://techcrunch.com/2023/05/17/union-ai-raises-19-1m-series-a-to-simplify-ai-and-data-workflows-with-flyte/
+Naval Ravikant,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Naval Ravikant,1,chroma-core,Chroma,U1,COSS (GitHub core),1,0,2023,seed,0,https://www.trychroma.com/blog/seed
 Naval Ravikant,1,openbq-org,OpenBB Inc.,U1,COSS (GitHub core),1,0,2022,seed,0,https://techcrunch.com/2024/10/20/joseph-jacks-bets-on-open-source-startups-a-paradox-of-philanthropy-and-capitalism/
 Naval Ravikant,1,spacedriveapp,Spacedrive Technology,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://spacedrive.com/
 Naval Ravikant,1,u4-truefoundry,TrueFoundry,U4,open-source startup,1,0,2022,seed,0,https://techcrunch.com/2022/09/19/meta-alumni-startup-truefoundry-seed-funding-sequoia-surge-machine-learning/
 Naval Ravikant,1,vercel,Vercel,U1,COSS (GitHub core),2,0,2020,series_a | venture_unspecified,0,https://vercel.com/about | https://vercel.com/blog/zeit-is-now-vercel
 Nebius,0,ClickHouse,ClickHouse,U1,COSS (GitHub core),1,0,2025,series_c,0,https://clickhouse.com/blog/clickhouse-raises-350-million-series-c-to-power-analytics-for-ai-era
+Neha Narkhede,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Neo,0,u4-bluesky,Bluesky,U4,open-source startup,1,1,2023,seed,0,https://techcrunch.com/2026/03/19/bluesky-announces-100m-series-b-after-ceo-transition/
 Neo,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,0,2021,series_a,0,https://www.dagster.io/blog/decade-of-data
 Neo,0,u4-mage,Mage,U4,open-source startup,1,0,2021,seed,0,https://techcrunch.com/2021/10/19/mage-aims-to-be-the-stripe-for-ai-raises-6-3m-for-developer-tools-to-build-ai-into-apps/
@@ -2303,6 +2336,7 @@ Nicolas Dessaigne,1,ToolJet,ToolJet,U1,COSS (GitHub core),1,0,2023,venture_unspe
 Nicolas Rosset,1,strapi,Strapi,U1,COSS (GitHub core),1,0,2019,seed,0,https://techcrunch.com/2019/10/15/headless-cms-company-strapi-raises-4-million/
 Nicolas Steegmann,1,nuxt,NuxtLabs,U1,COSS (GitHub core),1,0,2020,seed,0,https://web.archive.org/web/2020/https://nuxtjs.org/blog/seed-round
 Niels Provos,1,u4-votingworks,VotingWorks,U4,open-source startup,1,0,,angel,0,https://voting.works/about
+Nikita Shamgunov,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Nir Gazit,1,u4-trigger-dev,Trigger.dev,U4,open-source startup,1,0,2023,seed,0,https://trigger.dev/blog/3m-dollar-seed-round
 Noa,0,radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),1,0,2025,seed,0,https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research
 Nomad Capital,0,u4-myshell,MyShell,U4,open-source startup,1,0,2024,seed,0,https://siliconangle.com/2024/03/28/myshell-raises-11m-blockchain-based-decentralized-ai-agent-platform/
@@ -2356,6 +2390,7 @@ Octahedron Capital,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,
 Office of Strategic Capital (US Department of War),0,auterion,Auterion,U2,PX4 drones,1,0,2025,debt,0,https://auterion.com/auterion-raises-130-million-series-b-as-their-ai-enabled-software-powering-low-cost-commercial-hardware-at-scale-transforms-warfare/
 Offline Ventures,0,firecrawl,Firecrawl (Sideguide Technologies),U1,COSS (GitHub core),1,0,2026,series_b,0,https://www.firecrawl.dev/blog/introducing-alexandria-series-b
 Okta Ventures,0,daytonaio,Daytona Platforms,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/23/agent-cloud-startup-daytona-hits-1b-valuation-backed-by-firstmark-and-a-whos-who-of-angels/
+Okta Ventures,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Olivier Pomel,1,daytonaio,Daytona Platforms,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/23/agent-cloud-startup-daytona-hits-1b-valuation-backed-by-firstmark-and-a-whos-who-of-angels/
 Olivier Pomel,1,u4-embedchain,Embedchain,U4,open-source startup,1,0,2025,series_a,0,https://techcrunch.com/2025/10/28/mem0-raises-24m-from-yc-peak-xv-and-basis-set-to-build-the-memory-layer-for-ai-apps/
 Olivier Pomel,1,withfig,Fig,U1,COSS (GitHub core),1,0,2023,venture_unspecified,0,https://techcrunch.com/2023/08/29/amazon-fig-command-line-terminal-generative-ai/
@@ -2450,6 +2485,7 @@ Paul Graham,1,u4-reworkd,Reworkd,U4,open-source startup,1,0,2024,seed,0,https://
 Paul Graham,1,simstudioai,Sim,U1,COSS (GitHub core),1,0,2025,series_a,0,https://www.sim.ai/blog/series-a
 Paul Graham,1,u4-tinfoil,Tinfoil,U4,open-source startup,1,0,,venture_unspecified,0,https://tinfoil.sh/company
 Paul Graham,1,u4-votingworks,VotingWorks,U4,open-source startup,1,0,,angel,0,https://voting.works/about
+Paul Klein IV,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Pavilion Capital,0,milvus-io,Zilliz,U1,COSS (GitHub core),2,0,2020,series_b,0,https://techcrunch.com/2020/11/16/zilliz-43-million-series-b/ | https://techcrunch.com/2022/08/24/zilliz-the-startup-behind-the-milvus-open-source-vector-database-for-ai-applications-raises-60m-and-relocates-to-sf/
 PayPal Ventures,0,u4-formance,Formance,U4,open-source startup,1,1,2025,series_a,0,https://techcrunch.com/2025/01/29/formance-raises-21-million-to-build-the-aws-of-fintech-infrastructure/
 Peak Capital Partners,0,saltstack,SaltStack,U3,COSS (automation),1,0,2018,seed,0,https://siliconangle.com/2018/02/16/saltstacks-15-5m-series-funding-round-largest-ever-automation-firm/
@@ -2463,6 +2499,7 @@ Peak XV Partners (formerly Sequoia India),0,vitejs,VoidZero,U1,COSS (GitHub core
 Pear VC,0,KeygraphHQ,Keygraph,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://keygraph.io/about
 Pebblebed,0,gitpod,Gitpod (Ona),U3,COSS (dev environments),1,0,2022,series_a,0,https://siliconangle.com/2022/11/03/open-source-developer-platform-startup-gitpod-raises-15m/
 Pebblebed,0,topoteretes,Topoteretes (cognee),U1,COSS (GitHub core),1,1,2026,seed,0,https://www.cognee.ai/blog/cognee-news/cognee-raises-seven-million-five-hundred-thousand-dollars-seed
+Pedro Castillo,1,penpot,Kaleidos (Penpot),U1,COSS (GitHub core),1,0,2022,series_a,0,https://community.penpot.app/t/penpot-our-time-has-come/1563
 Pegatron,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2026,series_c,0,https://www.together.ai/blog/announcing-our-series-c
 Perplexity Fund,0,simstudioai,Sim,U1,COSS (GitHub core),1,0,2025,series_a,0,https://www.sim.ai/blog/series-a
 Pete Hunt,1,vercel,Vercel,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://vercel.com/about
@@ -2607,7 +2644,7 @@ Redpoint Ventures,0,couchbase,Couchbase,U3,COSS (database),1,1,2009,seed,0,https
 Redpoint Ventures,0,u4-dagger,Dagger,U4,open-source startup,1,1,2022,series_a,0,https://dagger.io/blog/series-a
 Redpoint Ventures,0,dragonflydb,DragonflyDB,U1,COSS (GitHub core),1,0,2023,venture_unspecified,0,https://dragonflydb.io/blog/dragonfly-production-ready
 Redpoint Ventures,0,hashicorp,HashiCorp,U1,COSS (GitHub core),3,0,2016,series_b | series_d | series_e,0,https://techcrunch.com/2016/09/07/hashicorp-raises-24m-series-b-round-for-its-devops-infrastructure-services/ | https://www.cnbc.com/2018/11/01/hashicorp-raises-100-million-at-1point9-billion-valuation.html | https://www.sec.gov/Archives/edgar/data/1720671/000119312521352796/d205906d424b4.htm
-Redpoint Ventures,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://humansignal.com/about/
+Redpoint Ventures,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),2,1,2022,series_a | venture_unspecified,0,https://humansignal.com/about/ | https://techcrunch.com/2022/05/18/2314708/
 Redpoint Ventures,0,u4-livekit,LiveKit,U4,open-source startup,4,1,2021,seed | series_a | series_b | series_c,0,https://blog.livekit.io/livekit-series-a/ | https://blog.livekit.io/livekit-series-c/ | https://blog.livekit.io/livekits-series-b/ | https://en.wikipedia.org/wiki/LiveKit
 Redpoint Ventures,0,mattermost,Mattermost,U1,COSS (GitHub core),2,1,2019,series_a | series_b,0,https://mattermost.com/blog/mattermost-raises-20m-series-a-funding/ | https://venturebeat.com/2019/06/19/mattermost-raises-50-million-to-advance-its-open-source-slack-alternative/
 Redpoint Ventures,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
@@ -2737,6 +2774,7 @@ SV Angel,0,together-ai,Together AI,U3,"open-source AI, open models",3,0,2023,see
 SV Angel,0,vercel,Vercel,U1,COSS (GitHub core),2,0,2021,series_d | venture_unspecified,0,https://vercel.com/about | https://vercel.com/blog/vercel-funding-series-d-and-valuation
 Sabrina Hahn,1,tldraw,tldraw Inc.,U1,COSS (GitHub core),1,0,2022,seed,0,https://tldraw.substack.com/p/tiny-little-seed-round
 Sageview Capital,0,alfresco,Alfresco Software,U3,COSS (content management),1,1,2014,growth,0,https://techcrunch.com/2014/08/21/alfresco-raises-a-fresh-45m-to-fuel-open-source-enterprise-content-management/
+Sahil Lavingia,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Sahil Lavingia,1,vercel,Vercel,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://vercel.com/about
 Sahir Azam,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
 Salesforce Ventures,0,airbyte,Airbyte,U3,COSS (data integration),1,0,2021,series_b,0,https://airbyte.com/blog/a-150m-series-b-to-power-the-movement-of-data
@@ -2760,6 +2798,7 @@ Salience Capital,0,radixark,RadixArk (SGLang),U3,COSS (SGLang),1,0,2026,seed,0,h
 Sam Altman,1,arcadia-science,Arcadia Science,U2,"open-science R&D company, publishes openly",1,0,2023,venture_unspecified,0,https://arcadiascience.substack.com/p/translation-at-arcadia
 Sam Altman,1,u4-rescale,Rescale,U4,open-source startup,1,0,2015,venture_unspecified,0,https://techcrunch.com/2015/07/14/rescale-scores-6-4m-from-a-whos-who-of-silicon-valley-investors/
 Sam Altman,1,u4-roboflow,Roboflow,U4,open-source startup,1,0,2024,series_b,0,https://fortune.com/2024/11/19/exclusive-roboflow-vision-ai-startup-raises-40-million-series-b/
+Sam Lambert,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Samsung,0,ai21,AI21 Labs,U3,open-weight Jamba models (partial),1,1,2023,series_c,0,https://techcrunch.com/2023/08/30/generative-ai-startup-ai21-labs-lands-155m-at-a-1-4b-valuation/
 Samsung,0,u4-activeloop,Activeloop,U4,open-source startup,1,0,2024,series_a,0,https://siliconangle.com/2024/03/26/activeloop-raises-11m-grow-specialized-database-ai-training-inference/
 Samsung,0,arcee,Arcee AI,U3,open-weight models,1,0,2025,growth,0,https://www.arcee.ai/blog/arcee-ai-announces-new-strategic-funding-round
@@ -2819,6 +2858,7 @@ Scott Chacon,1,u4-adap,Adap,U4,open-source startup,1,0,2024,series_a,0,https://f
 Scott Chacon,1,u4-nhost,Nhost,U4,open-source startup,1,0,2021,seed,0,https://venturebeat.com/2021/04/22/nhost-is-an-open-source-firebase-rival-backed-by-githubs-founders/
 Scott Johnston,1,e2b-dev,E2B,U1,COSS (GitHub core),1,0,2025,series_a,0,https://siliconangle.com/2025/07/28/e2b-shares-vision-sandboxed-cloud-environments-every-ai-agent-raising-21m-funding/
 Scott Williamson,1,medusajs,Medusa,U1,COSS (GitHub core),1,0,2022,seed,0,https://techcrunch.com/2022/07/15/medusa-shopify-open-source-e-commerce-javascript-developers/
+Scott Wu,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Script,0,u4-lago,Lago,U4,open-source startup,1,0,2024,series_a,0,https://techcrunch.com/2024/03/14/lago-a-paris-based-open-source-billing-platform-banks-22m/
 Sean Leach,1,projectdiscovery,ProjectDiscovery,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://projectdiscovery.io/about-us
 Sean Parker,1,Stability-AI,Stability AI,U1,COSS (GitHub core),2,0,2024,venture_unspecified,0,https://stability.ai/careers | https://stability.ai/news/stability-ai-secures-significant-new-investment
@@ -2952,6 +2992,7 @@ Sompo Japan Nipponkoa Insurance,0,tier-iv,TIER IV,U2,Autoware,1,1,2019,venture_u
 Sonae IM,0,portainer,Portainer.io,U1,COSS (GitHub core),1,0,2022,venture_unspecified,0,https://www.portainer.io/blog/portainer-io-closes-us6-2-million-funding-round
 Sonae Investment Management,0,weaveworks,Weaveworks,U3,"COSS (Flux, Weave)",1,0,2020,series_c,0,https://web.archive.org/web/2021/https://www.weave.works/blog/announcing-weaveworks-36m-series-c/
 Sonar community buyers,0,linera-io,Linera,U1,COSS (GitHub core),1,0,2026,token_sale,0,https://www.kucoin.com/news/flash/a16z-backed-layer-1-project-linera-shuts-down-after-token-sale-falls-short
+Sony Innovation Fund,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Sony Music Group,0,Stability-AI,Stability AI,U1,COSS (GitHub core),2,0,2026,series_b | venture_unspecified,0,https://stability.ai/careers | https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/
 Sony Semiconductor Solutions,0,raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,U2,open hardware (partial),1,0,2023,corporate_strategic,0,https://sony.mediaroom.com/2023-04-12-Raspberry-Pi-Receives-Strategic-Investment-from-Sony-Semiconductor-Solutions-Corporation
 Sorenson Capital,0,couchbase,Couchbase,U3,COSS (database),1,0,2020,series_f_plus,0,https://techcrunch.com/2020/05/21/couchbase-raises-105m-series-g-funding-round/
@@ -2987,6 +3028,7 @@ Springhill Capital,0,OpenBMB,ModelBest,U1,COSS (GitHub core),1,1,2024,series_a,0
 Sprint,0,mycroft,Mycroft AI,U2,open-source voice assistant,1,0,2016,accelerator,1,https://en.wikipedia.org/wiki/Mycroft_(software)
 Square Peg,0,u4-qodo,Qodo,U4,open-source startup,2,1,2024,series_a | series_b,0,https://techcrunch.com/2024/09/30/qodo-raises-40m-series-a-to-bring-quality-first-code-generation-to-the-enterprise/ | https://techcrunch.com/2026/03/30/qodo-bets-on-code-verification-as-ai-coding-scales-raises-70m/
 Square Peg Capital,0,supabase,Supabase,U1,COSS (GitHub core),1,0,2022,series_b,0,https://supabase.com/blog/supabase-series-b
+SquareOne,0,ultralytics,Ultralytics,U1,COSS (GitHub core),1,0,2025,series_a,0,https://siliconangle.com/2025/09/17/computer-vision-startup-ultralytics-raises-30m-funding/
 Sriram Krishnan,1,logseq,Logseq Inc.,U1,COSS (GitHub core),1,1,2022,seed,0,https://blog.logseq.com/logseq-raises-4-1m-to-accelerate-growth-of-the-new-world-knowledge-graph/
 Standard Capital,0,u4-pynecone,Pynecone,U4,open-source startup,1,1,2026,series_a,0,https://reflex.dev/blog/series-a-announcement/
 Standard Capital,0,reflex-dev,Reflex,U1,COSS (GitHub core),1,1,2026,series_a,0,https://reflex.dev/blog/
@@ -3037,7 +3079,7 @@ Sutter Hill Ventures,0,astronomer,Astronomer,U3,COSS (Airflow),1,0,2022,series_c
 Sutter Hill Ventures,0,foundationdb,FoundationDB,U3,"database, open-sourced after Apple bought it (partial)",2,1,2013,series_a | venture_unspecified,0,https://techcrunch.com/2013/11/12/foundationdb-raises-17m-for-database-similar-to-next-generation-google-technology-used-to-run-adwords/ | https://techcrunch.com/2015/03/24/apple-acquires-durable-database-company-foundationdb/
 Sutter Hill Ventures,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,5,2,2017,growth | series_b | series_c | series_d | series_f_plus,0,https://en.wikipedia.org/wiki/SiFive | https://siliconangle.com/2017/05/08/sifive-raises-8-5m-build-low-cost-custom-chips/ | https://siliconangle.com/2022/03/16/arm-rival-sifive-raises-175m-accelerate-development-alternative-risc-v-chip-architecture/ | https://techcrunch.com/2018/04/02/sifive-gets-50-6m-to-help-companies-get-their-custom-chip-designs-out-the-door/ | https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
 Swedish government,0,neo4j,Neo4j,U3,COSS (graph database),1,0,2009,grant_government,0,https://techcrunch.com/2009/10/27/neo-technology-commercializes-next-generation-graph-based-database/
-Swift Ventures,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://humansignal.com/about/
+Swift Ventures,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),2,0,2022,series_a | venture_unspecified,0,https://humansignal.com/about/ | https://techcrunch.com/2022/05/18/2314708/
 Swift Ventures,0,lancedb,LanceDB,U3,COSS (vector database),2,1,2024,seed | series_a,0,https://lancedb.com/blog/series-a-funding/ | https://techcrunch.com/2024/05/15/lancedb-which-counts-midjourney-as-a-customer-is-building-databases-for-multimodal-ai/
 Synopsys,0,efabless,Efabless,U2,open-source silicon,1,0,2023,series_a,0,https://us.design-reuse.com/news/54987/efabless-series-a-1-funding-globalfoundries-synopsys-new-north-ventures.html
 System.One,0,deepset-ai,deepset,U1,COSS (GitHub core),1,0,2022,series_a,0,https://techcrunch.com/2022/04/28/deepset-raises-14m-to-help-companies-build-nlp-apps/
@@ -3064,6 +3106,7 @@ TQ Ventures,0,u4-saleor,Saleor,U4,open-source startup,1,0,2024,seed,0,https://te
 TQ Ventures,0,saleor,Saleor Commerce,U1,COSS (GitHub core),1,0,2024,seed,0,https://techcrunch.com/2024/02/06/open-source-headless-commerce-builder-saleor-pulls-in-8m-round-led-by-target-global-and-zalando/
 TRGC,0,FuelLabs,Fuel Labs,U1,COSS (GitHub core),1,0,2022,venture_unspecified,0,https://www.theblock.co/post/167763/fuel-labs-scaling-startup-fundraise
 Taiwania Capital,0,luxonis,Luxonis,U2,"OAK cameras, open hardware designs",1,0,2026,series_a,0,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/
+Taiwania Capital,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Talha Tariq,1,projectdiscovery,ProjectDiscovery,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://projectdiscovery.io/about-us
 Talis Capital,0,nextflow-io,Seqera,U1,COSS (GitHub core),3,1,2021,seed | series_a | series_b,0,https://bist.eu/crg-spin-off-seqera-labs-raises-22-million-euros-in-series-a-funding/ | https://seqera.io/blog/seqera-raises-26m-series-b/ | https://techcrunch.com/2021/09/07/seqera-labs-grabs-5-5m-to-help-sequence-covid-19-variants-and-other-complex-data-problems/
 Target Global,0,u4-saleor,Saleor,U4,open-source startup,1,1,2024,seed,0,https://techcrunch.com/2024/02/06/open-source-headless-commerce-builder-saleor-pulls-in-8m-round-led-by-target-global-and-zalando/
@@ -3100,6 +3143,7 @@ The House Fund,0,u4-jitsu,Jitsu,U4,open-source startup,1,0,2020,seed,0,https://t
 The House Fund,0,u4-lantern,Lantern,U4,open-source startup,1,0,,venture_unspecified,0,https://lantern.dev/about
 The LAO,0,molecule,Molecule (Molecule AG),U2,"DeSci, IP-NFTs",1,0,2022,seed,0,https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech
 The Spartan Group,0,u4-shardeum,Shardeum,U4,open-source startup,1,0,2022,seed,0,https://techcrunch.com/2022/08/23/indian-crypto-entrepreneur-blockchain-venture-shardeum-seeks-funds-at-200-million-valuation/
+Theo Browne,1,u4-million,Million,U4,open-source startup,1,0,,angel,0,https://million.dev
 Theodore Browne,1,cline,Cline Bot Inc.,U1,COSS (GitHub core),1,0,2025,seed,0,https://cline.bot/blog/cline-raises-32m-series-a-and-seed-funding-building-the-open-source-ai-coding-agent-that-enterprises-trust
 Theory Ventures,0,lancedb,LanceDB,U3,COSS (vector database),1,1,2025,series_a,0,https://lancedb.com/blog/series-a-funding/
 Theory Ventures,0,ollama,Ollama,U1,COSS (GitHub core),1,1,2026,series_b,0,https://siliconangle.com/2026/07/09/open-source-ai-developer-tool-ollama-raises-65m-grow-platform/
@@ -3147,6 +3191,7 @@ Tobias Lutke,1,logseq,Logseq Inc.,U1,COSS (GitHub core),1,1,2022,seed,0,https://
 Tobias Lutke,1,spacedriveapp,Spacedrive Technology,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://spacedrive.com/
 Tobias Lütke,1,firecrawl,Firecrawl (Sideguide Technologies),U1,COSS (GitHub core),1,0,2025,series_a,0,https://www.firecrawl.dev/blog/firecrawl-v2-series-a-announcement
 Tobias Lütke,1,liquid-ai,Liquid AI,U3,open-weight LFM models (partial),1,0,2023,seed,0,https://techcrunch.com/2023/12/06/liquid-ai-a-new-mit-spinoff-wants-to-build-an-entirely-new-type-of-ai/
+Tod Sacerdoti,1,calcom,"Cal.com, Inc.",U1,COSS (GitHub core),1,0,,seed,0,https://cal.com/blog/series-a-memo
 Tod Sacerdoti,1,dubinc,Dub Technologies,U1,COSS (GitHub core),1,0,2025,venture_unspecified,0,https://dub.co/about
 Together.fund,0,nocodb,NocoDB,U1,COSS (GitHub core),1,0,2022,seed,0,https://techcrunch.com/2022/10/11/nocodb-takes-on-airtable-with-open-source-no-code-database-that-works-with-production-data/
 Tokio Marine Group,0,sakana,Sakana AI,U3,open releases (partial),1,0,2024,series_a,0,https://sakana.ai/series-a/
@@ -3239,6 +3284,7 @@ UC Berkeley Chancellor's Fund,0,inferact,Inferact (vLLM),U3,COSS (vLLM),1,0,2026
 UC Investments,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2021,series_f_plus,0,https://databricks.com/company/newsroom/press-releases/databricks-raises-1-6-billion-series-h-investment-at-38-billion-valuation
 USIT,0,modular,Modular Inc.,U1,COSS (GitHub core),1,1,2025,series_c,0,https://www.modular.com/blog/modular-raises-250m-to-scale-ais-unified-compute-layer
 USIT,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,3,2,2025,series_b | series_c | series_d,0,https://oxide.computer/blog/our-100m-series-b | https://siliconangle.com/2026/02/09/private-cloud-infrastructure-startup-oxide-computer-reportedly-raises-200m-fresh-funding/ | https://siliconangle.com/2026/10/09/oxide-computer-raises-445m-to-step-up-data-center-rack-production/
+Ubiquity Ventures,0,u4-resemble-ai,Resemble AI,U4,open-source startup,1,0,2025,venture_unspecified,0,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
 Udi Manber,1,rethinkdb,RethinkDB,U1,COSS (GitHub core),1,0,2010,seed,0,https://techcrunch.com/2010/04/01/rethinkdb-raises-1-2-million-for-its-database-for-solid-state-drives/
 UiPath,0,h-company,H Company,U3,open-weight agent models (partial),1,0,2024,seed,0,https://techfundingnews.com/french-company-h-raises-220m-to-develop-action-oriented-ai/
 Unbound,0,u4-alpaca,Alpaca,U4,open-source startup,1,0,2025,series_c,0,https://techcrunch.com/2025/04/23/alpaca-a-developer-of-api-brokerage-platform-raises-52m-in-series-c/
@@ -3267,7 +3313,7 @@ University of Oregon,0,m-labs,M-Labs Ltd,U1,COSS (GitHub core),1,0,,other,0,http
 University of Oxford,0,m-labs,M-Labs Ltd,U1,COSS (GitHub core),1,0,,other,0,https://m-labs.hk/artiq/funding/
 University of Wisconsin-Madison,0,m-labs,M-Labs Ltd,U1,COSS (GitHub core),1,0,,other,0,https://m-labs.hk/artiq/funding/
 Unusual Ventures,0,harness,Harness,U1,COSS (GitHub core),1,0,2025,series_e,0,https://siliconangle.com/2025/12/11/harness-raises-240m-lead-ai-powered-devops-beyond-code-editor/
-Unusual Ventures,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),1,0,,venture_unspecified,0,https://humansignal.com/about/
+Unusual Ventures,0,HumanSignal,HumanSignal,U1,COSS (GitHub core),2,0,2022,series_a | venture_unspecified,0,https://humansignal.com/about/ | https://techcrunch.com/2022/05/18/2314708/
 Unusual Ventures,0,qdrant,Qdrant,U1,COSS (GitHub core),3,1,2023,seed | series_a | series_b,0,https://qdrant.tech/blog/series-a-funding-round/ | https://qdrant.tech/blog/series-b-announcement/ | https://techcrunch.com/2023/04/19/qdrant-an-open-source-vector-database-startup-wants-to-help-ai-developers-leverage-unstructured-data/
 Uphonest Capital,0,Pythagora-io,Pythagora,U1,COSS (GitHub core),1,0,2024,seed,0,https://tech.eu/2024/05/14/y-combinator-backed-pythagora-secures-4m-funding-revolutionizing-app-development-with-ai/
 Upload Ventures,0,u4-botcity,BotCity,U4,open-source startup,1,0,,venture_unspecified,0,https://botcity.dev/about-us
@@ -3532,6 +3578,7 @@ Y Combinator,0,meteor,Meteor Software,U1,COSS (GitHub core),1,0,2011,venture_uns
 Y Combinator,0,u4-metorial,Metorial,U4,open-source startup,1,0,2025,accelerator,0,https://www.ycombinator.com/companies/metorial
 Y Combinator,0,u4-metriport,Metriport,U4,open-source startup,3,0,2022,accelerator | seed | series_a,0,https://techcrunch.com/2022/12/21/metriport-funding/ | https://www.metriport.com/blog/metriport-series-a | https://www.ycombinator.com/companies/metriport
 Y Combinator,0,u4-midplane,Midplane,U4,open-source startup,1,0,2022,accelerator,0,https://www.ycombinator.com/companies/midplane
+Y Combinator,0,u4-million,Million,U4,open-source startup,1,0,2024,accelerator,0,https://www.ycombinator.com/companies/million
 Y Combinator,0,mindsdb,MindsDB,U1,COSS (GitHub core),2,0,2020,accelerator | venture_unspecified,0,https://mindshub.ai/about | https://www.ycombinator.com/companies/mindsdb
 Y Combinator,0,Mintplex-Labs,Mintplex Labs,U1,COSS (GitHub core),1,0,2022,accelerator,0,https://www.ycombinator.com/companies/anythingllm
 Y Combinator,0,u4-minusx,MinusX,U4,open-source startup,1,0,2024,accelerator,0,https://www.ycombinator.com/companies/minusx
@@ -3588,6 +3635,7 @@ Y Combinator,0,u4-pynecone,Pynecone,U4,open-source startup,3,0,2023,accelerator 
 Y Combinator,0,u4-pyroscope,Pyroscope,U4,open-source startup,1,0,2021,accelerator,0,https://www.ycombinator.com/companies/pyroscope
 Y Combinator,0,Pythagora-io,Pythagora,U1,COSS (GitHub core),2,0,2024,accelerator | seed,0,https://tech.eu/2024/05/14/y-combinator-backed-pythagora-secures-4m-funding-revolutionizing-app-development-with-ai/ | https://www.ycombinator.com/companies/pythagora
 Y Combinator,0,u4-questdb,QuestDB,U4,open-source startup,2,0,2020,accelerator | seed,0,https://techcrunch.com/2020/07/02/questdb-nabs-2-3m-seed-to-build-open-source-time-series-database/
+Y Combinator,0,u4-quivr,Quivr,U4,open-source startup,1,0,2024,accelerator,0,https://www.ycombinator.com/companies/quivr
 Y Combinator,0,u4-rainbow,Rainbow,U4,open-source startup,1,0,2019,accelerator,0,https://www.ycombinator.com/companies/rainbow
 Y Combinator,0,u4-random-labs,Random Labs,U4,open-source startup,1,0,2024,accelerator,0,https://www.ycombinator.com/companies/random-labs
 Y Combinator,0,u4-raycast,Raycast,U4,open-source startup,2,0,2020,seed | series_b,0,https://techcrunch.com/2020/10/29/developer-productivity-tools-startup-raycast-raises-2-7m-from-accel/ | https://techcrunch.com/2024/09/25/raycast-raises-30m-to-bring-its-mac-productivity-app-to-windows-and-ios/
