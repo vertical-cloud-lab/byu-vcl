@@ -1,6 +1,6 @@
 # Every funder found, by type (issue #380, part 3)
 
-1951 funders of 733 open-source-minded ventures, from [`data/investor_links.csv`](data/investor_links.csv). Each venture links to a page that names the funder in one of its rounds. **Bold** marks a venture where the funder led a round. U1–U4 are the venture groups in [`PROTOCOL.md`](PROTOCOL.md); a funder's type is set by hand in [`data/investor_types.csv`](data/investor_types.csv) (people are typed as angels). Counts are of ventures, not rounds. Read [`FUNDERS.md`](FUNDERS.md) for what the list shows and its limits.
+1951 funders of 733 open-source-minded ventures, from [`data/investor_links.csv`](data/investor_links.csv). Each venture links to a page that names the funder in one of its rounds. **Bold** marks a venture where the funder led a round. U1–U4 are the venture groups in [`PROTOCOL.md`](PROTOCOL.md). Types come from the hand-made table [`data/investor_types.csv`](data/investor_types.csv), which covers every funder with two or more ventures; funders with one venture are typed by rules on their names and were read over once by hand (people are typed as angels). Counts are of ventures, not rounds, and leave out exits, secondary sales and unconfirmed rounds. Read [`FUNDERS.md`](FUNDERS.md) for what the list shows and its limits.
 
 
 ## Venture firms (835)

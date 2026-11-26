@@ -197,6 +197,31 @@ def main():
     if prog:
         with open(os.path.join(D, "programs.csv"), "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=list(prog[0])); w.writeheader(); w.writerows(prog)
+    # U2 by kind of venture (hand-made kinds in data/u2_kinds.csv): how many have named funders, the mix of funder
+    # types, and the funders that recur within the kind
+    kinds = rd(os.path.join(D, "u2_kinds.csv"))
+    if kinds:
+        kmap = {r["key"]: r["kind"] for r in kinds}
+        tmapk = {r["investor"]: r["type"] for r in inv}
+        order_k = list(dict.fromkeys(r["kind"] for r in kinds))
+        krows = []
+        for kd in order_k:
+            keys = {k for k, v in kmap.items() if v == kd}
+            ls = [l for l in links if l["key"] in keys]
+            funded = {l["key"] for l in ls}
+            def share(ts):
+                return f"{100 * sum(1 for l in ls if tmapk.get(l['investor']) in ts) / max(1, len(ls)):.0f}%"
+            cnt = collections.Counter(l["investor"] for l in ls)
+            rec = [f"{n} ({c})" for n, c in cnt.most_common() if c >= 2][:6]
+            krows.append({"kind": kd, "ventures": len(keys), "funded": len(funded), "links": len(ls),
+                          "vc": share({"venture_firm"}), "corp": share({"corporate_venture", "company"}),
+                          "gcc": share({"philanthropy", "government_grant", "crowdfunding", "crypto_fund_or_dao"}),
+                          "angel": share({"angel"}),
+                          "recurring": ", ".join(rec) if rec else "none twice"})
+        open(os.path.join(T, "u2_by_kind.md"), "w").write(md_table(
+            krows, ["kind", "ventures", "funded", "links", "vc", "corp", "gcc", "angel", "recurring"],
+            ["Kind of U2 venture", "Ventures", "With named funders", "Funder–venture links", "Venture firms",
+             "Corporate", "Grants, crowd or crypto", "Angels", "Funders in two or more of them (ventures)"]))
     # type mix by universe, in the same seven groups as figures/funder_mix.png
     GROUPS = [("Venture firm", {"venture_firm"}), ("Corporate or strategic", {"corporate_venture", "company"}),
               ("Accelerator or studio", {"accelerator"}),

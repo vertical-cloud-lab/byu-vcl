@@ -159,6 +159,15 @@ DAL and the SDL kit. Every venture with its funders is in
 
 <!-- TABLE:top_science_hardware.md:35 -->
 
+### U2 by kind of venture
+
+The {{U2.ventures}} U2 ventures, sorted by hand into nine kinds ([`data/u2_kinds.csv`](data/u2_kinds.csv)). Shares are
+of the funder–venture links within each kind. Even within a kind, few funders recur. Lab-automation, instrument and
+lab-software companies, the closest comparables for DAL and the SDL kit, are few here, with few named funders; Opentrons,
+the best known, is in U1 because it came in through GitHub's science topics.
+
+<!-- TABLE:u2_by_kind.md -->
+
 What stands out, reading the venture table rather than the counts:
 
 - **Few repeat backers.** Only {{U2.funders_3plus}} funders backed three or more of the {{U2.ventures}} U2 ventures; most funders
@@ -207,7 +216,8 @@ What stands out, reading the venture table rather than the counts:
 The funders closest to an open physical-science venture are in
 [`data/tables/science_hardware_ventures.md`](data/tables/science_hardware_ventures.md), venture by venture, and in
 the program tables below.
-- To filter, use `data/investor_links.csv` with `universe` = U2 or the ventures' `category` in `data/ventures.csv`.
+- To filter, use `data/investor_links.csv` with `universe` = U2, the kinds in `data/u2_kinds.csv`, or the
+  ventures' `category` in `data/ventures.csv`.
 - Before treating a name as a lead, check three things: what the funder backs now, whether it led or only joined,
   and how long ago.
 - The early-round table above shows who joins, and who leads, open-source companies' rounds up to Series A.
@@ -374,7 +384,7 @@ After the comparison, the audit's high- and medium-confidence rounds were added 
 audited ventures are now covered better than the rest, and the audit's percentages describe the list before that
 merge, not now.
 
-Two sensitivity checks that the protocol asked for:
+Two sensitivity checks, the first set by the protocol and the second asked for by Edison's review:
 
 - **Source quality.** {{sensitivity_db.links_db_only}} of the {{sensitivity_db.links}} U1–U3 funder–venture links
   rest only on databases or Wikipedia. Dropping them leaves {{sensitivity_db.top20_overlap}} of the top 20 in place.
@@ -448,7 +458,8 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
 6. **Program passes.** Six passes listed the programs that fund open source and open science outside equity
    rounds: foundations (twice, the second through the Moore and Sloan grants databases), governments and public
    investors, corporate funds, crypto, accelerators, fellowships and crowdfunding. They also recorded investors
-   that state an open-source thesis, in their own words.
+   that state an open-source thesis, in their own words. A seventh (`p7`) added the programs Edison's review named,
+   each from a page fetched and read for this.
 7. **Merge.** `scripts/build_funders.py` normalises names with a hand-made alias table
    ([`data/investor_aliases.csv`](data/investor_aliases.csv)) and types each funder from a hand-made table
    ([`data/investor_types.csv`](data/investor_types.csv), by the firm's own description; people count as angels).
@@ -492,8 +503,10 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
   - U4 (young startups) was researched lightly by design: for most of it, YC's own page and a quick look at the
     company site.
 - **"None found" means none found.** Of the companies behind the most-starred projects, {{U1.none_found}} have no
-  disclosed outside funding in this data. Some will have raised money that was never announced or that these
-  sources don't reach.
+  disclosed outside funding in this data, and {{U2.none_found}} in U2 and {{U3.none_found}} in U3 have none either.
+  Some will have raised money that was never announced or that these sources don't reach. Edison's audit found
+  funders for several such ventures, so a re-check with web search, which this session could no longer do, would
+  likely add some.
 - **U2, U3 and U4 are not random.** U2 was picked for relevance and U3 for fame. U4 comes from lists kept by an
   accelerator (YC) and an investor (Runa), which both have an interest in the companies on them.
 - **A count is not a return.** Nothing here measures whether these funders made money on open source. Edison found
@@ -522,6 +535,8 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
 | `data/deals.csv` | One row per round as a source reports it: type, date, amount, lead and other investors (as written and normalised), source URL and kind, whether it is counted and why not, and `round_id` |
 | `data/venture_aliases.csv`, `data/out_of_scope.csv`, `data/round_exclusions.csv`, `data/contextual_aliases.csv` | Hand-made corrections after Edison's review: ventures entered twice, ventures out of scope, purchases of control, and one name that means a different firm in one venture |
 | `data/thesis_kinds.csv` | What kind of statement each open-source quote is |
+| `data/u2_kinds.csv` | The kind of each U2 venture (devices, 3D printing, chips, robotics, lab automation and instruments, science software, AI for science, publishing, DeSci), set by hand |
+| `data/verify/` | Hand checks: verdicts on doubtful names, and the random sample of 40 links read in context |
 | `data/science_topic_keys.csv` | The ventures in the open hardware, science and lab tables: U2 plus the U1 companies found through GitHub's science topics |
 | `data/investor_links.csv` | One row per funder–venture pair, with rounds, leads, first year and sources |
 | `data/investors.csv` | One row per funder: type, ventures by group, leads, years, examples, stated open-source thesis |
