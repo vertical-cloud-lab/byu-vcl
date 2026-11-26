@@ -1,0 +1,6 @@
+econ/events/
+econ/events_validate/
+video/*.mp4
+video/frames/
+video/cache/
+video/tmp/
