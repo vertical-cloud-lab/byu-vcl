@@ -43,7 +43,9 @@ and the classes were frozen before any financial figure was looked up
   went to AI companies that bought the team and the tool: Bun to Anthropic, Astral and Promptfoo to OpenAI, and
   Continue to Cursor. That is a new and real exit route, but at undisclosed prices.
 - **For open science specifically (persona A), the private capital is thin.** In the science topics, the companies
-  that sell a project are small: 55 of them, 5 with $10M or more raised. Hugging Face, the largest, is a general AI
+  that sell a project are small: 55 of them, 5 with $10M or more raised. Companies' share of stars is higher in the
+  topics closest to DAL and the SDL kit (chemistry, materials and lab automation: 41%, with universities and
+  governments at 23%), but that is a subset I chose after seeing the data, not a pre-registered test. Hugging Face, the largest, is a general AI
   platform rather than a science company. Opentrons, the one lab-automation company with a reported $1B mark, shows
   that a lab-hardware company can get there. It also shows the frame's limits: its main repository carries none of
   the 22 topic tags, so only a 12-star side repository brought it in.
