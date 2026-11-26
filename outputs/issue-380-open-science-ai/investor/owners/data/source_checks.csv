@@ -50,6 +50,7 @@ VectifyAI,Vectify AI,total_funding_usd,1420000.0,fetch failed,https://www.everyd
 anoma,Anoma (Heliax),last_valuation_usd,260000000.0,fetch failed,https://www.coindesk.com/business/2021/11/17/anoma-foundation-raises-26m-to-simplify-exchanging-cryptocurrencies/
 anoma,Anoma (Heliax),peak_value_usd,260000000.0,fetch failed,https://www.coindesk.com/business/2021/11/17/anoma-foundation-raises-26m-to-simplify-exchanging-cryptocurrencies/
 anoma,Anoma (Heliax),total_funding_usd,51000000.0,fetch failed,https://www.coindesk.com/business/2023/05/31/crypto-infrastructure-firm-anoma-foundation-raises-25m
+anomalyco,Anomaly,total_funding_usd,1000000.0,confirmed,https://sst.dev/blog/serverless-stack-raises-1m-to-make-it-easy-to-build-serverless-apps/
 appsmithorg,Appsmith,total_funding_usd,51500000.0,confirmed,https://www.insightpartners.com/ideas/appsmith-raises-41-million-to-scale-open-source-platform-that-speeds-critical-internal-app-development/
 appwrite,Appwrite,total_funding_usd,37000000.0,fetch failed,https://venturebeat.com/2022/04/05/appwrite-an-open-source-backend-as-a-service-provider-raises-27m/
 astral-sh,Astral,total_funding_usd,4000000.0,not on page,https://www.accel.com/news/our-seed-investment-in-astral-accelerating-python-development
@@ -74,7 +75,7 @@ cline,Cline Bot Inc.,total_funding_usd,32000000.0,confirmed,https://cline.bot/bl
 cockroachdb,Cockroach Labs,last_valuation_usd,5000000000.0,confirmed,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/
 cockroachdb,Cockroach Labs,peak_value_usd,5000000000.0,confirmed,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/
 cockroachdb,Cockroach Labs,total_funding_usd,633000000.0,confirmed,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/
-coder,Coder Technologies,total_funding_usd,85000000.0,confirmed,https://siliconangle.com/?p=661978
+coder,Coder Technologies,total_funding_usd,175000000.0,not on page,https://podcasts.apple.com/us/podcast/robert-whiteley-ceo-of-coder-%2485-million-raised-to/id1619104989?i=1000668339081
 comet-ml,Comet ML,total_funding_usd,70000000.0,confirmed,https://techcrunch.com/2021/11/18/mlops-startup-comet-nabs-50m-series-b-just-six-months-after-raising-its-a/
 conductor-oss,Orkes,total_funding_usd,29300000.0,not on page,https://techcrunch.com/2024/02/21/orkes-raises-20m-series-a/
 continuedev,"Continue Dev, Inc.",total_funding_usd,5100000.0,not on page,https://blog.continue.dev/initial-fundraise/
@@ -89,8 +90,8 @@ daytonaio,Daytona Platforms,last_valuation_usd,1000000000.0,confirmed,https://va
 daytonaio,Daytona Platforms,peak_value_usd,1000000000.0,confirmed,https://valueaddvc.com/pulse/daytona-60m-series-b-1b-valuation-2026
 daytonaio,Daytona Platforms,total_funding_usd,91000000.0,confirmed,https://valueaddvc.com/pulse/daytona-60m-series-b-1b-valuation-2026
 dbeaver,DBeaver Corp,total_funding_usd,6000000.0,confirmed,https://techcrunch.com/2023/04/11/dbeaver-takes-6m-seed-investment-to-build-on-growing-popularity/
-deepseek-ai,DeepSeek,last_valuation_usd,52000000000.0,confirmed,https://www.dealstreetasia.com/?p=489350
-deepseek-ai,DeepSeek,peak_value_usd,52000000000.0,confirmed,https://www.dealstreetasia.com/?p=489350
+deepseek-ai,DeepSeek,last_valuation_usd,92000000000.0,confirmed,https://www.yicaiglobal.com/news/chinas-deepseek-adds-multiple-industrial-financial-investors-in-new-fundraiser/
+deepseek-ai,DeepSeek,peak_value_usd,92000000000.0,confirmed,https://www.yicaiglobal.com/news/chinas-deepseek-adds-multiple-industrial-financial-investors-in-new-fundraiser/
 deepseek-ai,DeepSeek,total_funding_usd,7400000000.0,confirmed,https://siliconangle.com/2026/06/16/chinas-deepseek-reportedly-raises-7-4b-funding-50b-valuation/
 deepset-ai,deepset,total_funding_usd,45600000.0,not on page,https://en.wikipedia.org/wiki/Deepset
 denoland,Deno Land Inc.,total_funding_usd,26000000.0,confirmed,https://techcrunch.com/2026/10/10/cloudflare-acquires-deno-to-improve-its-workers-programming-model/
@@ -107,8 +108,8 @@ firecrawl,Firecrawl (Sideguide Technologies),total_funding_usd,89500000.0,not on
 fishaudio,Fish Audio,total_funding_usd,52000000.0,confirmed,https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/
 frappe,Frappe Technologies,total_funding_usd,1300000.0,confirmed,https://en.wikipedia.org/wiki/ERPNext
 gatsbyjs,Gatsby,total_funding_usd,46800000.0,confirmed,https://techcrunch.com/?p=2478632
-getsentry,Sentry (Functional Software),last_valuation_usd,3000000000.0,confirmed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
-getsentry,Sentry (Functional Software),peak_value_usd,3000000000.0,confirmed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
+getsentry,Sentry (Functional Software),last_valuation_usd,3000000000.0,fetch failed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
+getsentry,Sentry (Functional Software),peak_value_usd,3000000000.0,fetch failed,https://news.crunchbase.com/enterprise/sentry-unicorn-funding-bond-accel
 getsentry,Sentry (Functional Software),total_funding_usd,217000000.0,fetch failed,https://www.businesswire.com/news/home/20220504005222/en
 gitlabhq,GitLab Inc.,peak_value_usd,6000000000.0,confirmed,https://techcrunch.com/2021/01/15/gitlab-raises-195m-in-secondary-funding-on-6b-valuation/
 gitlabhq,GitLab Inc.,total_funding_usd,413500000.0,not on page,https://en.wikipedia.org/wiki/GitLab_Inc.
@@ -173,6 +174,7 @@ mongodb,MongoDB Inc.,total_funding_usd,311000000.0,confirmed,https://www.busines
 n8n-io,n8n,last_valuation_usd,2500000000.0,confirmed,https://blog.n8n.io/series-c/
 n8n-io,n8n,peak_value_usd,2500000000.0,confirmed,https://blog.n8n.io/series-c/
 n8n-io,n8n,total_funding_usd,240000000.0,confirmed,https://blog.n8n.io/series-c/
+nanocoai,NanoCo,total_funding_usd,12000000.0,confirmed,https://www.linkedin.com/posts/nanoclaw-ai_today-were-announcing-nanoco-creators-of-activity-7462949209873235969-gMOs
 neondatabase,Neon,exit_value_usd,1000000000.0,fetch failed,https://www.wsj.com/articles/databricks-to-buy-startup-neon-for-1-billion-fdded971
 neondatabase,Neon,peak_value_usd,1000000000.0,fetch failed,https://www.wsj.com/articles/databricks-to-buy-startup-neon-for-1-billion-fdded971
 neondatabase,Neon,total_funding_usd,130000000.0,confirmed,https://siliconangle.com/2025/05/05/databricks-reportedly-acquire-serverless-database-startup-neon-1b/
@@ -193,7 +195,7 @@ oxc-project,VoidZero,total_funding_usd,17100000.0,not on page,https://voidzero.d
 pathwaycom,Pathway,last_valuation_usd,500000000.0,confirmed,https://pulse2.com/pathway-reaches-500-million-valuation-as-total-seed-funding-hits-30-million/
 pathwaycom,Pathway,peak_value_usd,500000000.0,confirmed,https://pulse2.com/pathway-reaches-500-million-valuation-as-total-seed-funding-hits-30-million/
 pathwaycom,Pathway,total_funding_usd,30000000.0,confirmed,https://pulse2.com/pathway-reaches-500-million-valuation-as-total-seed-funding-hits-30-million/
-penpot,Kaleidos (Penpot),total_funding_usd,20000000.0,confirmed,https://techcrunch.com/2023/02/02/penpot-the-open-source-platform-for-designers-and-their-coders-draws-up-12m-as-users-jump-to-250k
+penpot,Kaleidos (Penpot),total_funding_usd,30540000.0,confirmed,https://nordic9.com/news/kaleidos-raised-69m-in-funding-in-a-series-b/
 pingcap,PingCAP,total_funding_usd,341600000.0,confirmed,https://techcrunch.com/2020/11/16/pingcap-the-open-source-developer-behind-tidb-closes-270-million-series-d
 plotly,Plotly,total_funding_usd,5500000.0,confirmed,https://en.wikipedia.org/wiki/Plotly
 pola-rs,Polars B.V.,total_funding_usd,25000000.0,not on page,https://techcrunch.com/2025/09/29/the-startup-behind-open-source-tool-polars-raises-21m-from-accel/
@@ -219,6 +221,7 @@ run-llama,LlamaIndex,total_funding_usd,27500000.0,confirmed,https://www.llamaind
 saleor,Saleor Commerce,total_funding_usd,10500000.0,not on page,https://techcrunch.com/2021/03/18/saleor/
 serverless,"Serverless, Inc.",total_funding_usd,13000000.0,confirmed,https://techcrunch.com/2018/07/30/serverless-inc-lands-10-m-series-a-to-build-serverless-developers-platform/
 simstudioai,Sim,total_funding_usd,7000000.0,confirmed,https://pulse2.com/sim-ai-7-million-series-a-closed-to-advance-development-of-its-agentic-ai-platform
+sinaptik-ai,Sinaptik (PandasAI),total_funding_usd,1100000.0,confirmed,https://blog.pandas-ai.com/pandasai-raised-a-1-1m-round-led-by-runa-capital/
 spacedriveapp,Spacedrive Technology,total_funding_usd,2000000.0,confirmed,https://spacedrive.com/blog/spacedrive-funding-announcement
 strapi,Strapi,total_funding_usd,45000000.0,confirmed,https://techcrunch.com/2022/06/22/strapi-lands-31m-for-its-headless-cms-platform/
 streamlit,Streamlit,exit_value_usd,800000000.0,confirmed,https://techcrunch.com/2022/03/02/snowflake-acquires-streamlit-for-800m-to-help-customers-build-data-based-apps/

@@ -79,7 +79,7 @@ premium exists.
 | H6 | Open-by-default disclosure makes a physical-science spin-out harder to finance | • Patent *grants* causally help financing. Among first-time patent applicants, a first patent raises the chance of venture funding within three years by 3.0 points (47% over a 6.4% base). For inexperienced founders the effect is about 33 points, but at p = 0.053 (Farre-Mensa, Hegde & Ljungqvist 2020).<br>• The study is about patent grants among applicants. It is not about openness.<br>• Enabling disclosure before filing destroys novelty for the claims it covers. Europe's exceptions are narrow, while the US allows one year for the inventor's own disclosure | **Concern stands for inventions worth patenting.** The standard remedy is to file before publishing. Publishing as such is not the problem |
 | H7 | Most popular open source is paid for by organizations that don't sell it | Of the stars that companies hold on the 2,000 most-starred repositories, **59.5% sit with companies that sell the project in another form** (95% CI 50–68%). The other 40.5% sit with companies that give it away, Microsoft and Alphabet above all, with about 2.2M stars each. Across all owners, companies hold 40% of the stars, personal accounts 30%, community projects 21% and nonprofits 7% | **Weakened, but not robustly.** The share runs from 38% to 68% depending on judgment calls |
 | H8 | Popularity converts poorly into money | Among companies that sell the project: **Spearman ρ between stars and latest disclosed value 0.13 (95% CI −0.18 to 0.44), n = 44.** Against capital raised, 0.07 (n = 168) | **Concern stands** |
-| H9 | Outcomes are worse than the famous examples suggest | **35 of the 339 companies selling a top-2,000 project (10%) ever had a disclosed value of $1B or more;** 27% of those that raised $10M or more did. 32 were acquired: 5 at a disclosed price, all above the capital raised. 6 shut down | **Stands by the pre-registered 25% bar,** although 10% is above typical Series A base rates. Shutdowns are undercounted |
+| H9 | Outcomes are worse than the famous examples suggest | **35 of the 339 companies selling a top-2,000 project (10%) ever had a disclosed value of $1B or more;** 27% of those that raised $10M or more did. 33 were acquired: 5 at a disclosed price, all above the capital raised. 7 shut down | **Stands by the pre-registered 25% bar,** although 10% is above typical Series A base rates. Shutdowns are undercounted |
 | H10 | Open science attracts little private capital | Companies hold 30.3% of the stars in 22 science topics (15–39% across judgment calls). **Only 5 of the 55 companies selling a science-topic project raised $10M or more** | **On the line.** The star share clears the 30% bar by 0.3 points; the capital test fails |
 | H11 | The commons runs on thin, flat budgets | **Median latest revenue of 21 US nonprofits that own popular repos: $2.45M.** 9 of 15 grew in real terms since FY2019, and the Linux Foundation has 60% of the group's $368M. Of 609 community projects, 79 have an Open Collective with money; their median budget is $2,125 a year | **Concern stands** |
 
@@ -104,14 +104,16 @@ H1–H6 worked from companies people chose because they were notable. Part 2 sta
 takes the 2,000 most-starred repositories on GitHub and the top 100 in each of 22 science topics, classifies their
 2,930 owners, and then looks up what the 387 companies that sell an open project raised, were worth and became. It
 draws on press releases, SEC Form D filings, Yahoo, Form 990s and Open Collective, with a source URL for every
-figure. Edison classified a random 120 owners blind and agreed with 112. Full results, data and weak points are in
+figure. Edison classified a random 120 owners blind and agreed with 112. It also re-researched the finances of 40
+random companies blind: same status for 35, the same $1B call wherever both reached one, and one shutdown and one
+acquisition I had missed, now corrected. Full results, data and weak points are in
 [`owners/FINDINGS.md`](owners/FINDINGS.md).
 
 - **Stars don't price a company.** Popularity barely ranks companies by value (ρ = 0.13) and not at all by capital
   raised (ρ = 0.07). Value per star varies more than sevenfold between the quartiles.
 - **The outcomes sit between a venture cohort and the famous examples.** One in ten companies selling a top-2,000
   project reached a disclosed $1B. Among the oldest projects the rate is about one in four, and among those from
-  2020–22 about one in twenty-five. Exits are common but opaque: 5 of 32 acquisitions disclosed a price. Since 2025,
+  2020–22 about one in twenty-five. Exits are common but opaque: 5 of 33 acquisitions disclosed a price. Since 2025,
   AI companies have bought teams with their tools (Bun, Astral, Promptfoo, Continue).
 - **Science is thinly capitalized.** In the science topics, 5 companies that sell a project have raised $10M or
   more. Opentrons is the lab-automation one, with a reported $1.8B mark.
@@ -346,7 +348,7 @@ backed, not what will pay off.
   - Strategic buyers pay for open ecosystems: IBM paid $34B for Red Hat, $6.4B for HashiCorp and $11B for
     Confluent.
   - All five disclosed acquisition prices among companies selling a top-2,000 project exceeded the capital raised
-    ([part 2](owners/FINDINGS.md)). Only 5 of 32 acquisitions disclosed a price.
+    ([part 2](owners/FINDINGS.md)). Only 5 of 33 acquisitions disclosed a price.
 - **Ask in diligence.** Name three plausible acquirers and what each would be buying.
 
 ### Concerns specific to an autonomous alloy spin-out
@@ -537,7 +539,7 @@ leakage, paying demand and the discovery-to-product gap at the top for an alloy 
 | --- | --- |
 | [`PREREGISTRATION.md`](PREREGISTRATION.md) | Hypotheses and tests, committed before the data |
 | [`BIAS_AUDIT.md`](BIAS_AUDIT.md) | Where the first round leaned toward openness |
-| [`edison/`](edison/) | Twelve Edison jobs: answers, references and full trajectories. Nine neutral questions; a red team of the first round (`inv_redteam_round1_files/`); two reviews of this memo (`inv_redteam_round2_files/`, `inv_redteam_round3_files/`) |
+| [`edison/`](edison/) | Twelve Edison jobs: answers, references and full trajectories. Nine neutral questions; a red team of the first round (`inv_redteam_round1_files/`); two reviews of this memo (`inv_redteam_round2_files/`, `inv_redteam_round3_files/`). Part 2 adds three: a literature question on GitHub popularity and financing, and blind audits of the owner classes (`inv_owner_class_audit_files/`) and of the finances (`inv_finance_audit_files/`) |
 | [`evidence/ai_and_funding_evidence.md`](evidence/ai_and_funding_evidence.md) | Dated, sourced 2025–26 evidence on AI and open source, US science funding and relicensing |
 | [`data/cohort_listings_verified.csv`](data/cohort_listings_verified.csv) | Offer prices, deal terms, first-day closes and sources for 43 listings |
 | `data/h1_*.csv`, `data/h2_*.csv`, `data/fundamentals_*.csv`, `data/us_science_funding.csv`, `data/stackoverflow_monthly_questions.csv` | Results and inputs |
