@@ -226,7 +226,7 @@ left, copper right. Dotted line: the best existing alloy on this synthetic truth
 In the main benchmark, tiered screening edged BOFN with the blend screen on copper (0.69 against 0.67) and plain BOFN
 failed (0.33). Round 2's first reading was that the copper truth was too kind to the funnel: nothing in it was hidden
 from the CALPHAD screen, and the funnel's proxy reads the truth's own strengthening coefficients (14 MPa per wt% Al,
-2.6 Ni, 6 Mn; `truth_cu.CuTruth.strength`). Two tests, 12 seeds each, same seeds as the main benchmark:
+2.6 Ni, 6 Mn; `truth_cu.CuTruth.strength`). Three tests, 12 seeds each, same seeds as the main benchmark:
 
 **A hidden effect: γ₂ (`cu_hidden`, 7 policies × 12 seeds).** Above Al = 8.2 + Ni/2 wt%, nickel-aluminium bronze keeps
 γ₂ (Cu₉Al₄), which corrodes selectively in seawater and embrittles it (the Weill-Couly/Meigh rule). The CALPHAD nodes
@@ -240,7 +240,7 @@ oracle's best (Al 8.0, Ni 7.0) are both below the line.
 | Tiered screening | 0.69 ± 0.02 | 0.69 ± 0.02 | 0.00 (identical, seed for seed) |
 | BOFN + blend screen | 0.67 ± 0.01 | 0.55 ± 0.08 | −0.12 ± 0.08 |
 | Round-1 cost-aware model | 0.63 ± 0.02 | 0.63 ± 0.02 | 0.00 (identical) |
-| Heuristic | 0.58 ± 0.02 | 0.58 ± 0.03 (n = 11) | 0.00 (identical) |
+| Heuristic | 0.58 ± 0.02 | 0.58 ± 0.02 | 0.00 (identical) |
 | GP-BO | 0.53 ± 0.06 | 0.53 ± 0.06 | 0.00 (identical) |
 | Random | 0.35 ± 0.08 | 0.35 ± 0.08 | 0.00 (identical) |
 | Plain BOFN | 0.33 ± 0.09 | 0.29 ± 0.09 | −0.04 ± 0.04 |
@@ -294,7 +294,7 @@ at three years' money, so its slower clock has room to show where it gets to. Sa
 | Heuristic | 0.58 ± 0.02 | 0.68 ± 0.01 | 0.60 ± 0.02 | 0.36 ± 0.07 | 0.64 ± 0.01 | 0.58 ± 0.02 |
 | GP-BO | 0.33 ± 0.08 | 0.52 ± 0.08 | 0.46 ± 0.07 | 0.24 ± 0.08 | 0.64 ± 0.02 | 0.53 ± 0.06 |
 | Tiered screening | 0.30 ± 0.09 | 0.34 ± 0.09 | 0.34 ± 0.09 | 0.61 ± 0.04 | 0.71 ± 0.01 | 0.69 ± 0.02 |
-| Random | 0.20 ± 0.09 | 0.39 ± 0.09 | 0.10 ± 0.06 | 0.22 ± 0.07 | 0.62 ± 0.03 | 0.35 ± 0.08 |
+| Random | 0.20 ± 0.09 | 0.39 ± 0.08 | 0.10 ± 0.06 | 0.22 ± 0.07 | 0.62 ± 0.03 | 0.35 ± 0.08 |
 | Sobol | 0.10 ± 0.05 | 0.27 ± 0.07 | 0.10 ± 0.05 | 0.21 ± 0.08 | 0.57 ± 0.02 | 0.45 ± 0.05 |
 
 **Time to the state of the art** (a new alloy at or above the best reference alloy: 0.42 aluminium, 0.56 copper).
@@ -319,8 +319,10 @@ get there, 95 % bootstrap intervals over seeds (`twin/accel.py`; `out/twin2/econ
   the same comparison is 4.5× (1.5-8.8; 153 against 691 days median; 83 % of the vertical lab's seeds got there in the
   year, 75 % of the conventional lab's in three).
 - **On copper, both effects add up.** The conventional lab's copper results take months (Mines sessions, outside
-  turnaround), so every policy there gets to the state of the art late; the vertical lab with blend screening gets
-  there 2.2-3.7× sooner than the conventional lab with any policy.
+  turnaround), so every policy there gets to the state of the art late (median day 334 for the tiered funnel, 490-840
+  for the others); the vertical lab with blend screening gets there 1.5× sooner than the conventional tiered funnel
+  (1.2-2.1; same method, `accel.acceleration_factor`) and 2.2-3.7× sooner than the conventional lab with any other
+  policy.
 - **Three years of the conventional lab beat one year of the vertical lab on the final score** (aluminium BOFN 0.74
   against 0.69; copper tiered 0.71 against 0.69), as three years at three times the money should. The comparison that
   matters is time to a target, above.

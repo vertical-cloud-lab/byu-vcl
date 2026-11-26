@@ -67,6 +67,8 @@ EXPERIMENTS = {
     "cu_proxy": [_cfg("tiered_mis", s, cu_hidden=h) for h in (0.0, 1.0) for s in range(12)],
     # ...and the funnel taken apart: its screen with a random ranking, its proxy with no screen
     "cu_ablation": [_cfg(p, s) for p in ("tiered_screen", "tiered_proxy") for s in range(12)],
+    # copper's closest comparison in the main benchmark, 12 more seeds (24 with main's): tiered against BOFN with blends
+    "cu_seeds": [_cfg(p, s) for p in ("tiered", "bofn_blend") for s in range(12, 24)],
     # the campaign trace (twin/trace.py, out/twin2/trace/README.md): BOFN, standard BO and random from one common seed
     # set (DAL #275), 12 seeds each; seed 0 of each writes a full trace with the optimizer's state
     "seeded": [_cfg(p, s, seeding="dal275", trace=(s == 0), events=(s == 0)) for p in ("bofn", "gpbo", "random")
