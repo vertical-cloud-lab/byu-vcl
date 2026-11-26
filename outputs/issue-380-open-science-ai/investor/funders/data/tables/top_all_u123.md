@@ -14,7 +14,7 @@
 | Lightspeed Venture Partners | venture firm | 16 | 9 | Grafana Labs, Hasura, Inferact, Marqo, Mistral AI, Reflection AI, Serverless, Inc., Stability AI … |
 | SV Angel | venture firm | 16 | 0 | Airbyte, Anomaly, Buoyant, Civilized Discourse Construction Kit, Expo, FoundationDB, Hugging Face, Lightning AI … |
 | Kickstarter backers | crowdfunding | 15 | 0 | Augmented Instruments, Backyard Brains, Fonticons, Inc., George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI, OpenBCI … |
-| Redpoint Ventures | venture firm | 15 | 6 | Couchbase, Mattermost, Solo.io, Sourcegraph, Tiger Data, Zed Industries, ClickHouse, Cockroach Labs … |
+| Redpoint Ventures | venture firm | 15 | 7 | Couchbase, HumanSignal, Mattermost, Solo.io, Sourcegraph, Tiger Data, Zed Industries, ClickHouse … |
 | Bessemer Venture Partners | venture firm | 14 | 8 | Appwrite, Auterion, Boltz PBC, Coiled, Cypress.io, Netdata Inc., Teleport, Voxel51 … |
 | GV | corporate / strategic | 14 | 7 | Buoyant, CoreOS, GitLab Inc., Vercel, Warp, Weaveworks, deepset, Cockroach Labs … |
 | General Catalyst | venture firm | 14 | 7 | Chai Discovery, Gitpod, Ionic, MinIO Inc., Mistral AI, Modular Inc., Together AI, Anaconda, Inc. … |

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Headline numbers quoted in FUNDERS.md, written to data/funders_numbers.json. Run from funders/ after
 build_funders.py and check_sources.py."""
-import collections, csv, json, os
+import collections, csv, json, os, re
 
 D = "data"
 
@@ -59,6 +59,16 @@ def main():
         have = {(l["investor"], l["key"]) for l in L}
         out["portfolio_check"] = {"domain_links": len(dom), "already_in_deals": sum((r["investor"], r["key"]) in have for r in dom)}
     out["thesis_funders"] = [(r["investor"], r["ventures"]) for r in I if r.get("stated_open_source_thesis")]
+    out["n_thesis_funders"] = len(out["thesis_funders"])
+    # counts for funders named in the text (all groups, U1-U4), keyed by a slug
+    named = ["OSS Capital", "Runa Capital", "Open Core Ventures", "Heavybit", "Uncorrelated Ventures", "Boldstart Ventures",
+             "Crane Venture Partners", "Amplify Partners", "Bessemer Venture Partners", "GV", "Y Combinator", "SOSV",
+             "Kickstarter backers", "Khosla Ventures", "True Ventures", "Foundry Group", "Spark Capital", "Eclipse Ventures",
+             "Lux Capital", "Guillermo Rauch", "Clem Delangue", "David Cramer", "Tom Preston-Werner", "Nat Friedman",
+             "Paul Copplestone", "Tristan Handy", "NVIDIA (incl. NVentures)", "Intel Capital", "Accel", "Sequoia Capital",
+             "Andreessen Horowitz"]
+    by = {r["investor"]: r for r in I}
+    out["focus"] = {re.sub(r"[^a-z0-9]+", "_", n.lower()).strip("_"): int(by[n]["ventures"]) if n in by else 0 for n in named}
     ea = rd("edison_audit_comparison.csv")
     if ea:
         ed = sum(int(r["edison"]) for r in ea); ours = sum(int(r["ours"]) for r in ea); both = sum(int(r["both"]) for r in ea)

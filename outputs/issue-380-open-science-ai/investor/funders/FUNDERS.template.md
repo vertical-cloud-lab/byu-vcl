@@ -31,15 +31,20 @@ The scope and counting rules were committed before any funding data was gathered
   - NVIDIA and Intel Capital, then Alphabet's and Microsoft's investment arms and Salesforce Ventures.
   - The firms that lead open-source rounds most often are Andreessen Horowitz, Accel, Insight, NEA, Sequoia,
     Index and Benchmark.
-- **Funds built around open source exist but are small in this count.**
-  - OSS Capital, Runa Capital, Open Core Ventures, Heavybit, Uncorrelated Ventures, Boldstart and Crane each back a
-    handful of the ventures here.
-  - 26 funders in the data state an open-source thesis in their own words. Most of them are large generalists
-    (Andreessen Horowitz, Accel, Sequoia, Index, NEA, Redpoint).
+- **Funds built around open source exist, but most are small in this count.**
+  - OSS Capital is the exception: {{focus.oss_capital}} ventures across all four groups, about as many as Bessemer
+    ({{focus.bessemer_venture_partners}}) or GV ({{focus.gv}}). Uncorrelated Ventures has {{focus.uncorrelated_ventures}}.
+  - Runa Capital ({{focus.runa_capital}}), Heavybit ({{focus.heavybit}}), Boldstart ({{focus.boldstart_ventures}}),
+    Crane ({{focus.crane_venture_partners}}) and Open Core Ventures ({{focus.open_core_ventures}}) back only a handful
+    each.
+  - {{n_thesis_funders}} funders in the data state an open-source thesis in their own words. Most of them are large
+    generalists: Andreessen Horowitz, Accel, Sequoia, Index, NEA and Redpoint.
 - **People are a large share of the funders.** Many of the most frequent angels founded or led open-source
-  companies themselves, and now back the next ones:
-  - Guillermo Rauch (Vercel), Clem Delangue (Hugging Face) and David Cramer (Sentry)
-  - Tom Preston-Werner and Nat Friedman (GitHub), Paul Copplestone (Supabase) and Tristan Handy (dbt Labs)
+  companies themselves, and now back the next ones (ventures here, all groups):
+  - Guillermo Rauch of Vercel ({{focus.guillermo_rauch}}), Clem Delangue of Hugging Face ({{focus.clem_delangue}}) and
+    David Cramer of Sentry ({{focus.david_cramer}})
+  - Tom Preston-Werner ({{focus.tom_preston_werner}}) and Nat Friedman ({{focus.nat_friedman}}) of GitHub, Paul
+    Copplestone of Supabase ({{focus.paul_copplestone}}) and Tristan Handy of dbt Labs ({{focus.tristan_handy}})
 - **Open hardware, open science and lab ventures draw a different mix**: crowdfunding backers, strategic
   corporates, a few hardware-minded venture firms, grants and, for DeSci, crypto funds.
   - Strategic corporates: Bosch, Renesas, Arm, Qualcomm, Sony, Intel and NVIDIA.

@@ -1,6 +1,6 @@
 | Group | Arms found | Ventures | Examples |
 | --- | --- | --- | --- |
-| Alphabet | CapitalG, GV, Google, Gradient Ventures | 36 | AI21 Labs, Buoyant, CTGT, Charm, Cockroach Labs, CoreOS, Databricks, Determined AI, GitLab Inc., Grafana Labs |
+| Alphabet | CapitalG, GV, Google, Gradient Ventures | 37 | AI21 Labs, Buoyant, CTGT, Charm, Cockroach Labs, CoreOS, Databricks, Determined AI, GitLab Inc., Grafana Labs |
 | Intel | Intel Capital | 23 | AI21 Labs, Anyscale, Cloudera, CollabNet, Hugging Face, JBoss, Kaltura, Lightbend, MariaDB, MinIO Inc. |
 | NVIDIA | NVIDIA (incl. NVentures) | 22 | AI21 Labs, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face, Lightning AI, MindsDB, Mistral AI |
 | Microsoft | GitHub, M12, Microsoft | 18 | Arcee AI, Code Ocean, Databricks, Embedchain, Isovalent, Ivy, Mem0, Mermaid Chart, Mesosphere, Neon |

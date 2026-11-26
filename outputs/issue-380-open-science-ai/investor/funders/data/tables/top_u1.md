@@ -9,7 +9,7 @@
 | Nexus Venture Partners | venture firm | 11 | 9 | Fingerprint, Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve, Orkes, TileDB, Inc. … |
 | CRV | venture firm | 10 | 6 | Gatsby, Meilisearch, ProjectDiscovery, Strapi, Tailscale, Vercel, Browserbase, Kong Inc. … |
 | Index Ventures | venture firm | 10 | 6 | ClickHouse, Gatsby, Kong Inc., Lightning AI, Strapi, Temporal Technologies, Cockroach Labs, Elastic N.V. … |
-| Redpoint Ventures | venture firm | 10 | 3 | Mattermost, Tiger Data, Zed Industries, ClickHouse, Cockroach Labs, Coder Technologies, DragonflyDB, HashiCorp … |
+| Redpoint Ventures | venture firm | 10 | 4 | HumanSignal, Mattermost, Tiger Data, Zed Industries, ClickHouse, Cockroach Labs, Coder Technologies, DragonflyDB … |
 | SV Angel | venture firm | 10 | 0 | Anomaly, Civilized Discourse Construction Kit, Expo, Hugging Face, Lightning AI, Mastra, Modular Inc., Payload … |
 | GGV Capital (US arm now Notable Capital) | venture firm | 9 | 5 | Browserbase, HashiCorp, LocalStack, PingCAP, Vercel, Coder Technologies, Kong Inc., Neon … |
 | Lightspeed Venture Partners | venture firm | 9 | 5 | Grafana Labs, Hasura, Serverless, Inc., Stability AI, Temporal Technologies, ClickHouse, Langfuse, ProjectDiscovery … |

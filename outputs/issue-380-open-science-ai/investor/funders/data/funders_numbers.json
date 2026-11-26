@@ -2,18 +2,18 @@
  "U1": {
   "ventures": 387,
   "researched": 387,
-  "with_funding": 219,
-  "none_found": 159,
+  "with_funding": 220,
+  "none_found": 158,
   "bootstrapped_stated": 9,
-  "rounds": 504,
-  "links": 1466,
-  "funders": 895,
-  "funders_1": 697,
+  "rounds": 508,
+  "links": 1484,
+  "funders": 909,
+  "funders_1": 708,
   "funders_3plus": 102,
-  "funders_5plus": 46,
+  "funders_5plus": 47,
   "funders_10plus": 11,
-  "top10_share_of_links": 0.109,
-  "top50_share_of_links": 0.279,
+  "top10_share_of_links": 0.108,
+  "top50_share_of_links": 0.276,
   "top15": [
    [
     "Y Combinator",
@@ -236,22 +236,22 @@
  "U4": {
   "ventures": 402,
   "researched": 398,
-  "with_funding": 299,
-  "none_found": 97,
+  "with_funding": 302,
+  "none_found": 94,
   "bootstrapped_stated": 2,
-  "rounds": 460,
-  "links": 983,
-  "funders": 528,
-  "funders_1": 416,
-  "funders_3plus": 42,
+  "rounds": 464,
+  "links": 1013,
+  "funders": 553,
+  "funders_1": 440,
+  "funders_3plus": 43,
   "funders_5plus": 14,
   "funders_10plus": 2,
-  "top10_share_of_links": 0.32,
-  "top50_share_of_links": 0.451,
+  "top10_share_of_links": 0.313,
+  "top50_share_of_links": 0.441,
   "top15": [
    [
     "Y Combinator",
-    251
+    253
    ],
    [
     "SV Angel",
@@ -314,18 +314,18 @@
  "U1-U3": {
   "ventures": 640,
   "researched": 611,
-  "with_funding": 403,
-  "none_found": 196,
+  "with_funding": 404,
+  "none_found": 195,
   "bootstrapped_stated": 12,
-  "rounds": 1033,
-  "links": 2751,
-  "funders": 1515,
-  "funders_1": 1150,
+  "rounds": 1037,
+  "links": 2769,
+  "funders": 1529,
+  "funders_1": 1161,
   "funders_3plus": 194,
-  "funders_5plus": 86,
+  "funders_5plus": 87,
   "funders_10plus": 32,
   "top10_share_of_links": 0.097,
-  "top50_share_of_links": 0.255,
+  "top50_share_of_links": 0.254,
   "top15": [
    [
     "Y Combinator",
@@ -391,16 +391,16 @@
  },
  "types_all": {
   "accelerator": 16,
-  "venture_firm": 859,
+  "venture_firm": 869,
   "corporate_venture": 157,
   "growth_pe_hedge": 87,
-  "angel": 456,
+  "angel": 474,
   "crowdfunding": 10,
   "public_investor": 26,
   "crypto_fund_or_dao": 38,
   "philanthropy": 13,
   "bank_or_debt": 8,
-  "unclassified": 119,
+  "unclassified": 121,
   "other": 3,
   "government_grant": 30
  },
@@ -450,6 +450,10 @@
    9
   ],
   [
+   "Redpoint Ventures",
+   9
+  ],
+  [
    "GV",
    9
   ],
@@ -460,10 +464,6 @@
   [
    "Tiger Global",
    9
-  ],
-  [
-   "General Catalyst",
-   8
   ]
  ],
  "era_top": {
@@ -620,14 +620,14 @@
  },
  "era_links": {
   "2010-2019": 610,
-  "2020 on": 1857,
+  "2020 on": 1866,
   "before 2010": 84
  },
  "rounds_by_source_kind": {
-  "news": 732,
-  "company": 383,
+  "news": 735,
+  "company": 387,
   "wikipedia": 108,
-  "other": 256,
+  "other": 258,
   "filing": 32,
   "investor": 8,
   "database": 34
@@ -751,6 +751,40 @@
    "1"
   ]
  ],
+ "n_thesis_funders": 26,
+ "focus": {
+  "oss_capital": 14,
+  "runa_capital": 5,
+  "open_core_ventures": 3,
+  "heavybit": 5,
+  "uncorrelated_ventures": 10,
+  "boldstart_ventures": 4,
+  "crane_venture_partners": 4,
+  "amplify_partners": 16,
+  "bessemer_venture_partners": 17,
+  "gv": 16,
+  "y_combinator": 314,
+  "sosv": 3,
+  "kickstarter_backers": 16,
+  "khosla_ventures": 11,
+  "true_ventures": 13,
+  "foundry_group": 4,
+  "spark_capital": 9,
+  "eclipse_ventures": 2,
+  "lux_capital": 11,
+  "guillermo_rauch": 19,
+  "clem_delangue": 9,
+  "david_cramer": 9,
+  "tom_preston_werner": 10,
+  "nat_friedman": 9,
+  "paul_copplestone": 9,
+  "tristan_handy": 5,
+  "nvidia_incl_nventures": 22,
+  "intel_capital": 23,
+  "accel": 35,
+  "sequoia_capital": 29,
+  "andreessen_horowitz": 35
+ },
  "edison_audit": {
   "ventures": 40,
   "edison_names": 296,

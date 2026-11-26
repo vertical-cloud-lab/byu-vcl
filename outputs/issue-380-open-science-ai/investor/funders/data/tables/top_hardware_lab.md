@@ -18,7 +18,7 @@
 | Intel Capital | corporate / strategic | 2 | 0 | SiFive, VA Linux Systems |
 | Khosla Ventures | venture firm | 2 | 2 | GitLab Inc., Opentrons Labworks |
 | NVIDIA (incl. NVentures) | corporate / strategic | 2 | 0 | Radical AI, SiFive |
-| Redpoint Ventures | venture firm | 2 | 0 | HumanSignal, Zimbra |
+| Redpoint Ventures | venture firm | 2 | 1 | HumanSignal, Zimbra |
 | Sequoia Capital | venture firm | 2 | 0 | Sesame, VA Linux Systems |
 | Shenzhen Capital Group | state or sovereign investor | 2 | 1 | ModelBest, Seeed Studio |
 | 1517 Fund | venture firm | 1 | 0 | Trilobio |

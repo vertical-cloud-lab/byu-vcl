@@ -1,6 +1,6 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 312 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, ARC Prize Foundation … |
+| Y Combinator | accelerator / studio | 314 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, ARC Prize Foundation … |
 | Neo | accelerator / studio | 4 | 1 | Bluesky, Dagster Labs, Mage, Warp |
 | Open Core Ventures | accelerator / studio | 3 | 0 | Mermaid Chart, Phaser Studio Inc., Stirling PDF |
 | SOSV | accelerator / studio | 3 | 0 | Crowd Supply, Opentrons Labworks, Particle |

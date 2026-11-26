@@ -1,6 +1,6 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 251 | 1 | Imgix, /dev/fast, 0.security, 280 North, ARC Prize Foundation, Activeloop, Acyclic Labs, Adap … |
+| Y Combinator | accelerator / studio | 253 | 1 | Imgix, /dev/fast, 0.security, 280 North, ARC Prize Foundation, Activeloop, Acyclic Labs, Adap … |
 | SV Angel | venture firm | 10 | 1 | Imgix, Citus Data, Composio, Evidence, KERNEL, OpenCode, PipelineDB, Resend … |
 | Andreessen Horowitz | venture firm | 9 | 5 | Apollo, Civit, GitButler, Resend, Upstash, Flotype, Rivet, Sesame … |
 | Pioneer Fund | venture firm | 9 | 0 | Adap, Airweave, Flower, LiteLLM, Netmaker, Paradev, Sourcebot, Trigger.dev … |
@@ -19,14 +19,14 @@
 | Amplify Partners | venture firm | 4 | 2 | PostgresML, TigerBeetle, ReadySet, authzed |
 | CRV | venture firm | 4 | 2 | Lepton AI, Tipe, Eventual, Pipedream |
 | Calvin French-Owen | person (angel) | 4 | 0 | Raycast, Resend, Roboflow, Shuttle |
+| Craft Ventures | venture firm | 4 | 3 | ComfyUI, ParadeDB, Roboflow, Resemble AI |
 | Mango Capital | venture firm | 4 | 0 | CloudQuery, Infracost, Odigos Technologies Inc., Upstash |
 | Orange Collective | venture firm | 4 | 0 | Airweave, Paradev, Trigger.dev, s2.dev |
 | Rebel Fund | venture firm | 4 | 0 | Atla, Superagent, Trigger.dev, sync. |
+| Amjad Masad | person (angel) | 3 | 0 | LiveKit, Million, Roboflow |
 | Bessemer Venture Partners | venture firm | 3 | 2 | Fern, Herdr, Windmill |
 | Boldstart Ventures | venture firm | 3 | 2 | CloudQuery, Liveblocks, Common Paper |
-| Craft Ventures | venture firm | 3 | 3 | ComfyUI, ParadeDB, Roboflow |
 | Dharmesh Shah | person (angel) | 3 | 0 | Composio, Embedchain, Twenty |
 | General Catalyst | venture firm | 3 | 1 | authzed, CTGT, Reworkd |
 | Greylock Partners | venture firm | 3 | 0 | Builder.io, OpenCode, Serverless Stack |
 | Haystack | venture firm | 3 | 0 | CloudQuery, Okteto, OpenMeter |
-| Khosla Ventures | venture firm | 3 | 1 | Danswer, Citus Data, Enso |

@@ -14,9 +14,9 @@
 | Cisco Investments | corporate / strategic | 7 | 1 | Puppet, Cohere, Isovalent, LangChain, Lightning AI, Mistral AI, MuleSoft |
 | Red Hat | corporate / strategic | 7 | 1 | Jaspersoft, Ansible, CoreOS, Gluster, Mirantis, MongoDB Inc., MySQL AB |
 | Aramco Ventures (incl. Prosperity7) | corporate / strategic | 6 | 4 | Arcee AI, SiFive, Together AI, Zilliz, Cohere, Rescale |
+| Google | corporate / strategic | 6 | 2 | AI21 Labs, Isovalent, Hugging Face, K-Dense, Resemble AI, Sakana AI |
 | Tencent | corporate / strategic | 6 | 2 | Baichuan Intelligence, Moonshot AI, DeepSeek, MiniMax, StepFun, Z.ai |
 | Automattic | corporate / strategic | 5 | 0 | Deno Land Inc., Element, Liquid AI, Riot IM, Twenty |
-| Google | corporate / strategic | 5 | 2 | AI21 Labs, Isovalent, Hugging Face, K-Dense, Sakana AI |
 | Qualcomm Ventures | corporate / strategic | 5 | 2 | 3D Robotics, Particle, Daytona Platforms, Hugging Face, SiFive |
 | SAP Ventures | corporate / strategic | 5 | 1 | Jaspersoft, Alfresco Software, Mirantis, MySQL AB, Zend Technologies |
 | CapitalG | corporate / strategic | 4 | 2 | LangChain, Odoo SA, Databricks, Grafana Labs |
@@ -26,6 +26,7 @@
 | AMD | corporate / strategic | 3 | 1 | Liquid AI, Hugging Face, RadixArk |
 | Atlassian Ventures | corporate / strategic | 3 | 0 | Docker Inc., Liveblocks, Raycast |
 | Citi Ventures | corporate / strategic | 3 | 1 | InfluxData, Docker Inc., Harness |
+| Comcast Ventures | corporate / strategic | 3 | 1 | Neural Magic, AI21 Labs, Resemble AI |
 | Digital Science | corporate / strategic | 3 | 0 | Authorea, Figshare, Overleaf |
 | Microsoft | corporate / strategic | 3 | 0 | Databricks, Mesosphere, SpringSource / Pivotal Software |
 | MongoDB Ventures | corporate / strategic | 3 | 0 | Gitpod, Payload, Unstructured |
@@ -33,7 +34,6 @@
 | VMware | corporate / strategic | 3 | 0 | Puppet, SaltStack, SpringSource / Pivotal Software |
 | Arm | corporate / strategic | 2 | 0 | Arduino, Raspberry Pi Holdings / Raspberry Pi Ltd |
 | Citi | corporate / strategic | 2 | 0 | Reflection AI, Sakana AI |
-| Comcast Ventures | corporate / strategic | 2 | 1 | Neural Magic, AI21 Labs |
 | Fujitsu | corporate / strategic | 2 | 0 | Cohere, Sakana AI |
 | HPE (Hewlett Packard Pathfinder) | corporate / strategic | 2 | 1 | Mesosphere, Pachyderm |
 | KDDI | corporate / strategic | 2 | 0 | Sakana AI, TIER IV |

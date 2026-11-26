@@ -18,6 +18,9 @@
 | AMD | corporate / strategic | 3 | 1 | Liquid AI, Hugging Face, RadixArk |
 | Amazon | corporate / strategic | 3 | 0 | EvolutionaryScale, H Company, Hugging Face |
 | Cisco Investments | corporate / strategic | 3 | 0 | Cohere, Lightning AI, Mistral AI |
+| Comcast Ventures | corporate / strategic | 3 | 1 | Neural Magic, AI21 Labs, Resemble AI |
+| Craft Ventures | venture firm | 3 | 1 | Roboflow, CrewAI, Resemble AI |
+| Google | corporate / strategic | 3 | 1 | AI21 Labs, Hugging Face, Resemble AI |
 | HongShan (formerly Sequoia China) | venture firm | 3 | 2 | Mindverse, Moonshot AI, MiniMax |
 | Intel Capital | corporate / strategic | 3 | 0 | AI21 Labs, Hugging Face, Prime Intellect |
 | Lux Capital | venture firm | 3 | 3 | EvolutionaryScale, Hugging Face, Together AI |
@@ -27,6 +30,3 @@
 | 5Y Capital | venture firm | 2 | 0 | Moonshot AI, Zilliz |
 | A Capital | venture firm | 2 | 0 | Hugging Face, Together AI |
 | AMD Ventures | venture firm | 2 | 0 | Cohere, Wafer |
-| Baillie Gifford | growth, crossover or PE | 2 | 0 | Chai Discovery, Tenstorrent |
-| Bain Capital Ventures | venture firm | 2 | 0 | Chai Discovery, Lightning AI |
-| Balderton Capital | venture firm | 2 | 1 | deepset, Earendil Inc. |
