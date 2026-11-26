@@ -192,6 +192,30 @@ T.update({"PayPal Ventures": C, "Telstra Ventures": C, "Datadog Ventures": C, "H
           "Exor Ventures": C, "Maven 11 Capital": CR, "Innovation Endeavors": V, "Chemistry": V, "New Wave": V,
           "NLnet Foundation": GG, "Adage Capital Management": G, "Blockchain Capital": CR, "Bain Capital Crypto": CR})
 
+T.update({
+ "Meta": C, "Accenture": C, "Benchling": C, "China Mobile": C, "Compaq": C, "Contemporary Amperex Technology": C,
+ "Geely": C, "GitLab": C, "Kia": C, "Kingsoft": C, "KPMG": C, "Netscape": C, "Nutanix": C, "Progress Software": C,
+ "Sumitomo": C, "TAL Education Group": C, "The Attachmate Group": C, "Wipro": C, "Lattice": C, "Boss Zhipin": C,
+ "ByteTrade Lab": C, "Coil": C, "Notion": C, "Kaiser Permanente": C, "Sonar": C, "Koch Disruptive Technologies": C,
+ "Sonae IM": C, "FUTO": C, "Status": CR, "Strongblock": CR,
+ "Jane Street": G, "PSG": G, "Premji Invest": G, "StepStone Group": G, "TPG": G, "Third Point": G, "AllianceBernstein": G,
+ "BNY Mellon": G, "Neuberger Berman": G, "UBS": G, "Lehman Brothers": G, "RCM Private Markets": G,
+ "Greenspring Associates": G, "Tiger Management": G, "Derayah Financial": G, "7RIDGE": G, "850 Management": G,
+ "CPE Asset Management": G, "CPE Yuanfeng": G, "Duff, Ackerman & Goodrich": G, "Rochefort": G,
+ "Marathon": V, "Pritzker Group": V, "Woodstock": V, "XAnge": V, "Movac": V, "Episode 1": V, "Bright Pixel": V,
+ "10x Founders": V, "8vdx": V, "ARTIS": V, "Aleph": V, "Atlantic Bridge": V, "Black Nova Group": V, "Blast Club": V,
+ "BuildGroup": V, "Deep Acre": V, "Disruptive Technology Advisers": V, "Four Rivers": V, "Innovation Engine": V,
+ "K1W1": V, "Kerrest & Co": V, "Leonis Investissement": V, "MAKE": V, "MMC": V, "Nascent": V, "Percival": V,
+ "Ramprate": V, "Redline": V, "Script": V, "Secure Octane": V, "Seven Seas": V, "Silicon 100": V, "Social Leverage": V,
+ "SquareOne": V, "Stonks": V, "TruArrow": V, "Unbound": V, "Wealth Union": V, "WestSummit": V, "WestWave": V,
+ "Zebra Good Pte": V, "Zillionize": V, "Accurafy4": V, "Antigravity": V, "Athos": V, "Id4": V, "Kadmos": V, "Noa": V,
+ "SNR": V, "Vitamina K": V, "Zypsy": A, "5G Open Innovation Lab": A,
+ "CDTI Innvierte": P, "Wallonie Entreprendre": P, "Zhangjiang Group": P,
+ "Army Research Lab": GG, "Schmidt Futures": PH,
+ "Duke University": O, "MIT": O, "Humboldt University of Berlin": O, "University of Oregon": O, "University of Oxford": O,
+ "University of Wisconsin-Madison": O, "Warsaw University of Technology": O, "PTB": O, "QUEST/Uni Hannover": O,
+})
+
 
 def main():
     with open("data/investor_types.csv", "w", newline="") as f:

@@ -76,6 +76,11 @@ def main():
                                "recall_vs_edison": round(both / max(1, ed), 3), "ours_confirmed_by_edison": round(both / max(1, ours), 3),
                                "ventures_we_missed_entirely": sum(1 for r in ea if int(r["ours"]) == 0 and int(r["edison"]) > 0),
                                "ventures_edison_missed_entirely": sum(1 for r in ea if int(r["edison"]) == 0 and int(r["ours"]) > 0)}
+    vd = rd("verify/verdicts.csv")
+    if vd:
+        c = collections.Counter(r["verdict"] for r in vd)
+        out["verify"] = {"checked": len(vd), "confirmed": c["confirmed"], "other_source": c["confirmed_other_source"],
+                         "not_supported": c["not_supported"], "unclear": c["unclear"]}
     lc = rd("edison_literature_check.csv")
     if lc:
         out["edison_literature"] = {"named": len(lc), "found": sum(1 for r in lc if r["in_deal_data"] != "no" or r["in_program_passes"] == "yes")}
