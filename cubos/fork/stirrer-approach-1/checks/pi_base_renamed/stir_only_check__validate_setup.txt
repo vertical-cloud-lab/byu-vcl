@@ -1,0 +1,45 @@
+Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ignored (decap/cap no longer park; delete this key).
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/gantry/cub_xl_ben_3_instrument_stirrer.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 361.0]  Y[0.0, 278.0]  Z[0.0, 122.0]
+
+[2/4] Loading deck config...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/deck/stir_module_trial_stirrer.yaml
+  Labware (4):
+    vial_1: vial at (151.0, 45.0, 66.0)
+    vial_2: vial at (136.668, 89.0, 56.0)
+    tip_rack: TipRack
+    stirrer_1: Wall
+
+[3/4] Loading instruments...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/gantry/cub_xl_ben_3_instrument_stirrer.yaml (offline/mock - hardware not contacted)
+  Instruments (4):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-16.0
+    pipette: offset=(55.0, 11.0), depth=0.0
+    camera_3: offset=(-40.0, 10.0), depth=-110.0
+    stirrer_1: deck-mounted (no head offsets)
+
+[4/4] Loading protocol...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/protocol/vcl/stir_only_check.yaml
+  Steps: 5
+    [0] home()
+    [1] stir(instrument='stirrer_1', rpm=600.0, seconds=20.0)
+    [2] stir(instrument='stirrer_1', rpm=600.0, seconds=60.0, wait=False)
+    [3] pause(seconds=15.0, reason='stirring in the background, as during the vial 2 steps')
+    [4] stir(instrument='stirrer_1', rpm=0.0)
+
+Validating protocol motion bounds...
+  OK (0 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------

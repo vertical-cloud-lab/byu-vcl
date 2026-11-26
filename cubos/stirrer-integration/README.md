@@ -18,6 +18,34 @@ first.
 
 This directory holds the example configs, a script that checks them offline, and its logs.
 
+### Update, 2026-11-26: Alex's answers, and the fork PR staged
+
+Alex answered §5 on [2026-11-23](https://github.com/vertical-cloud-lab/byu-vcl/issues/133#issuecomment-7108487964).
+[§5](#5-questions-for-alex) records each answer:
+
+1. `mount: deck` on the registry type: **yes**.
+2. The command is **`stir`**.
+3. **No** tip interlock in the first PR.
+4. Firmware commands `30`/`31` become the high-level **`set_stirrer_params`** and
+   **`get_stirrer_params`**, which call 30 and 31 on the Arduino.
+5. **Go through the fork.**
+
+Answers 1–3 match what the 11-17 patch already does. For answer 4, the stirrer interface's
+`set_speed()` became `set_stirrer_params()` (which sends `30`), and `status()` became
+`get_stirrer_params()` (which sends `31`). `stop()` stays, as `set_stirrer_params(0)`.
+
+For answer 5, the PR is staged in
+[`../fork/stirrer-approach-1/`](../fork/stirrer-approach-1/): two commits on current upstream
+`main` (`6e5cffe`). The second covers three head-geometry paths newer than the Pi's `496819c`:
+motion-planner envelopes, offset calibration, and `motion_envelope` in the gantry YAML.
+
+CubOS's tests pass: core 3818, API 371, SiLA 84. It still can't be opened from an `@claude`
+run, because no token can write to the fork. Its README says how to open it in one command.
+
+The protocol YAML didn't change, so the configs below work with either form. The Pi still runs
+the 11-17 patch. [`../patches/stirrer-approach-1-rename.patch`](../patches/stirrer-approach-1-rename.patch)
+is the rename on its own, for the Pi; it hasn't been applied there.
+
 ### Update, 2026-11-17: approach 1 is implemented, as a patch
 
 At Ben's request on PR #348, approach 1 now exists as CubOS code, as
@@ -236,11 +264,17 @@ support, and the first one worth having is "no tip in a vial that is being stirr
 
 ## 4. What the first CubOS PR would contain
 
+*As of 2026-11-26 this is staged in [`../fork/stirrer-approach-1/`](../fork/stirrer-approach-1/).
+It has everything below except the Operator UI files and the two optional items. The motion
+planner and offset calibration skip deck-mounted instruments, and the loader refuses a
+`motion_envelope` on one.*
+
 CubOS side, against `main`:
 
-- `instruments/stirrer/`: `interface.py` (`StirrerInstrument`: `set_speed(rpm, seconds=None)`,
-  `stop()`, `status()`), `models.py`, `exceptions.py`, and `vendors/pawduino.py`, which
-  sends `30`/`31` over the shared link, like
+- `instruments/stirrer/`: `interface.py` (`StirrerInstrument`: `set_stirrer_params(rpm,
+  seconds=None)`, `get_stirrer_params()`, `stop()`, `wait_until_stopped()`; named
+  `set_speed`/`status` until Alex's answer 4), `models.py`, `exceptions.py`, and
+  `vendors/pawduino.py`, which sends `30`/`31` over the shared link, like
   [`PawduinoLighting`](https://github.com/Ursa-Laboratories/CubOS/blob/d136340/packages/core/src/cubos/instruments/lighting/vendors/pawduino.py).
   `vendors/mock.py` simulates the firmware's ramp, so `--mock` and tests have something to poll.
 - `registry.yaml` gets the `stirrer` entry with `mount: deck`. `registry.py` validates
@@ -272,13 +306,22 @@ copy), so the numbers don't collide with someone else's.
 
 ## 5. Questions for Alex
 
+Answered on [2026-11-23](https://github.com/vertical-cloud-lab/byu-vcl/issues/133#issuecomment-7108487964);
+each answer follows its question.
+
 1. Is `mount: deck` on the registry type the right hook? Another option would be a
    `calibration_mode` value, but that only covers calibration, not planning or validation.
+   **Yes.**
 2. Should the command be `stir` or `set_stirrer` (like `set_lights`)? Should it block by default when
-   `seconds` is given?
+   `seconds` is given? **`stir`.** The blocking question wasn't answered. The staged PR
+   blocks when `seconds` is given unless `wait: false`, and its description asks again.
 3. Should the first PR already refuse a tip descent into a vial on a running stirrer? With
    approach 1, CubOS can only do that if the step also names the vial, which is half of
-   full support. Or should that wait for your deck-instrument design?
-4. Where should firmware commands `30`/`31` live upstream?
+   full support. Or should that wait for your deck-instrument design? **No.**
+4. Where should firmware commands `30`/`31` live upstream? **As high-level
+   `set_stirrer_params` and `get_stirrer_params`, which call 30 and 31 on the Arduino.** We
+   read this as the CubOS side: the interface's two methods, with the numeric codes only
+   inside the `pawduino` vendor. The firmware code itself is still only in
+   [`../firmware/panda-arduino-stirrer.patch`](../firmware/panda-arduino-stirrer.patch).
 5. Should the PR go straight to `Ursa-Laboratories/CubOS` (Sterling has write access) or
-   through our fork?
+   through our fork? **Through the fork.** It's staged, as above.
