@@ -54,6 +54,39 @@ def _pct(v):
     return "pending" if v is None else f"{100 * v:.0f}%"
 
 
+def _caveats(policy: str) -> list:
+    """The comparisons the takeaway doesn't carry: the automated lab against the conventional lab run with a
+    metallurgist's heuristic, and where BOFN doesn't win (from econ_summary.json and bench2_summary.json)."""
+    import math
+    out = []
+    try:
+        acc = (D.econ().get("raw") or {}).get("acceleration") or {}
+        nm = next((n for n in acc if n.startswith(f"vertical lab + {policy} vs") and n.endswith("+ heuristic")), None)
+        bits = []
+        for c, lab in (("flaime_al", "FLAIME"), ("onr_cu", "ONR")):
+            af = ((((acc.get(nm) or {}).get(c) or {}).get("compare") or {}).get("days") or {}).get("af") if nm else None
+            if af is not None and math.isfinite(float(af)):
+                bits.append(f"{lab} {float(af):.1f}x")
+        if bits:
+            out.append("Against the conventional lab run with a metallurgist's heuristic instead: " + ", ".join(bits) +
+                       " faster to the same target; there the automated lab costs more unless outside users share it "
+                       "(notes/twin_econ.md).")
+    except Exception:                                   # noqa: BLE001
+        pass
+    try:
+        E = json.loads((D.OUT2 / "bench2_summary.json").read_text())["experiments"]
+        g = lambda exp, key: E[exp][key]["campaigns"]["onr_cu"]["best_mean"]
+        t, b = g("main", "vertical_lab_tiered"), g("main", "vertical_lab_bofn_blend")
+        th, bh = g("cu_hidden", "vertical_lab_tiered_cu_hidden-1.0"), g("cu_hidden", "vertical_lab_bofn_blend_cu_hidden-1.0")
+        out.append(f"Where BOFN doesn't win: on copper, tiered CALPHAD screening finished ahead of BOFN with blend "
+                   f"screening ({t:.2f} against {b:.2f}; with a hidden gamma-2 corrosion effect, {th:.2f} against "
+                   f"{bh:.2f}); on aluminium a metallurgist's heuristic reaches the state of the art sooner, and BOFN's "
+                   "lead is in the final alloy.")
+    except Exception:                                   # noqa: BLE001
+        pass
+    return out
+
+
 def description(rec: dict, commit: str) -> str:
     R = D.Replay()
     hd = D.headline(R)
@@ -76,7 +109,8 @@ def description(rec: dict, commit: str) -> str:
             "Both share one lab, one atomizer and one calendar. The video shows the two function networks, the "
             "figures we track, the year at increasing speed (one alloy start to finish on day 1, then the station "
             "cameras, then the whole lab with each station lit by the event log), and the results.\n\n"
-            f"In this simulated benchmark ({cmp_}):\n" + "\n".join(lines) + "\n\n"
+            f"In this simulated benchmark ({cmp_}):\n" + "\n".join(lines) + "\n" +
+            "".join(f"{x}\n" for x in _caveats(R.policy)) + "\n"
             "Real: the lab design's 3-D renders, the atomizer footage, the search spaces (the proposals), USGS prices "
             "and the economics' sources. Assumed: station times, fees and outside-facility delays. Simulated: the "
             "alloys' properties, every measurement and every result.\n\n"
