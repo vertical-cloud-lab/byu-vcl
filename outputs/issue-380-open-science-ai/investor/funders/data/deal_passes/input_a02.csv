@@ -1,0 +1,26 @@
+key,venture,universe,category,source_list,hint,owners,stars
+huggingface,Hugging Face,U1,COSS (GitHub core),github_core,"GitHub org(s): huggingface; basis: sells Hub hosting, Inference Endpoints and Enterprise Hub; country US; parent -; ; site https://huggingface.co/",huggingface,385334
+langflow-ai,Langflow (DataStax),U1,COSS (GitHub core),github_core,GitHub org(s): langflow-ai; basis: Langflow company bought by DataStax (now IBM); hosted Langflow sold; country US; parent IBM; acquired by DataStax 2024; DataStax acquired by IBM 2025; site https://www.langflow.org/,langflow-ai,156943
+paperclipai,"Paperclip Labs, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): paperclipai; basis: company behind Paperclip; hosted cloud version on waitlist; country US; parent -; ; site https://paperclip.ing/,paperclipai,117021
+ChatGPTNextWeb,NextChat,U1,COSS (GitHub core),github_core,GitHub org(s): ChatGPTNextWeb; basis: sells hosted pay-as-you-go NextChat and enterprise edition; country ?; parent -; ; site https://nextchat.club,ChatGPTNextWeb,88984
+nestjs,NestJS (Kamil Myśliwiec),U1,COSS (GitHub core),github_core,"GitHub org(s): nestjs; basis: creator's team sells enterprise support, certification courses, Mau deploy; country PL; parent -; ; site https://nestjs.com/",nestjs,77179
+traefik,Traefik Labs,U1,COSS (GitHub core),github_core,GitHub org(s): traefik; basis: sells Traefik Enterprise and Traefik Hub; country FR; parent -; ; site https://blog.traefik.io,traefik,65699
+meilisearch,Meilisearch,U1,COSS (GitHub core),github_core,GitHub org(s): meilisearch; basis: sells Meilisearch Cloud; country FR; parent -; ; site www.meilisearch.com,meilisearch,60004
+PrefectHQ,Prefect Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): PrefectHQ; basis: sells Prefect Cloud; country US; parent -; ; site https://prefect.io,PrefectHQ,53000
+ifixai-ai,iFixAi,U1,COSS (GitHub core),github_core,GitHub org(s): ifixai-ai; basis: sells per-agent audit plans; open-source engine free; country US; parent -; ; site https://www.ifixai.ai/,ifixai-ai,47348
+tinyhumansai,Tiny Human Intelligence Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): tinyhumansai; basis: sells credits for hosted orchestrator behind its open agents; country US; parent -; ; site https://tinyhumans.ai/,tinyhumansai,42847
+chakra-ui,Chakra Systems,U1,COSS (GitHub core),github_core,GitHub org(s): chakra-ui; basis: maintainers' Chakra Systems sells Chakra UI Pro components; country ?; parent -; ; site chakra-ui.com,chakra-ui,40751
+httpie,HTTPie,U1,COSS (GitHub core),github_core,GitHub org(s): httpie; basis: company builds HTTPie apps around the CLI; country US; parent -; ; site https://httpie.io,httpie,38739
+qdrant,Qdrant,U1,COSS (GitHub core),github_core,GitHub org(s): qdrant; basis: sells Qdrant Cloud and enterprise; country DE; parent -; ; site https://qdrant.tech/,qdrant,35708
+CloakHQ,CloakHQ,U1,COSS (GitHub core),github_core,GitHub org(s): CloakHQ; basis: sells CloakBrowser Pro and OEM licences; country ?; parent -; ; site ,CloakHQ,33066
+hypit-ai,Hypit,U1,COSS (GitHub core),github_core,GitHub org(s): hypit-ai; basis: hosted web app and API alongside open-source core; country ?; parent -; ; site https://hypit.ai,hypit-ai,31504
+simstudioai,Sim,U1,COSS (GitHub core),github_core,GitHub org(s): simstudioai; basis: sells hosted Sim cloud plans; country US; parent -; ; site https://sim.ai,simstudioai,30205
+getredash,Redash,U1,COSS (GitHub core),github_core,GitHub org(s): getredash; basis: hosted Redash company bought by Databricks; country US; parent Databricks; acquired by Databricks 2020; site https://redash.io/,getredash,28902
+typesense,Typesense,U1,COSS (GitHub core),github_core,GitHub org(s): typesense; basis: sells Typesense Cloud; country US; parent -; ; site https://typesense.org,typesense,27173
+d2lang,Terrastruct,U1,COSS (GitHub core),github_core,GitHub org(s): d2lang; basis: sells D2 Studio and TALA layout engine; country US; parent -; ; site https://d2lang.com,d2lang,25915
+slint-ui,SixtyFPS GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): slint-ui; basis: sells Slint commercial licences and support; country DE; parent -; ; site https://slint.dev,slint-ui,24728
+vanna-ai,Vanna.AI,U1,COSS (GitHub core),github_core,GitHub org(s): vanna-ai; basis: sells hosted Vanna Cloud; country US; parent -; ; site https://vanna.ai/,vanna-ai,23781
+chartdb,ChartDB,U1,COSS (GitHub core),github_core,GitHub org(s): chartdb; basis: sells hosted ChartDB plans; country US; parent -; ; site chartdb.io,chartdb,23177
+makerdiary,makerdiary,U1,COSS (GitHub core),github_core,GitHub org(s): makerdiary; basis: sells the open hardware boards; country CN; parent -; ; site https://makerdiary.com,makerdiary,882
+Rowow-LLC,Rowow LLC,U1,COSS (GitHub core),github_core,"GitHub org(s): Rowow-LLC; basis: sells membranes, cells and kits from the open design; country US; parent -; ; site https://rowow.net",Rowow-LLC,158
+Protocentral,ProtoCentral,U1,COSS (GitHub core),github_core,GitHub org(s): Protocentral; basis: sells HealthyPi open hardware; country IN; parent -; ; site www.protocentral.com,Protocentral,17

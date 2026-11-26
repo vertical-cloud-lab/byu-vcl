@@ -1,0 +1,26 @@
+key,venture,universe,category,source_list,hint,owners,stars
+deepseek-ai,DeepSeek,U1,COSS (GitHub core),github_core,GitHub org(s): deepseek-ai; basis: releases open-weight models and sells API access to the same models; country CN; parent High-Flyer; ; site https://www.deepseek.com/,deepseek-ai,623547
+open-webui,Open WebUI Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): open-webui; basis: sells Open WebUI enterprise licences and support; country US; parent -; ; site https://openwebui.com,open-webui,159554
+immich-app,FUTO,U1,COSS (GitHub core),github_core,GitHub org(s): immich-app; basis: FUTO-employed team sells Immich licence keys; country US; parent -; ; site https://immich.app,immich-app,120103
+cheaper-inference,Cheaper Inference,U1,COSS (GitHub core),github_core,GitHub org(s): cheaper-inference; basis: sells hosted OmniRoute-style gateway and pay-as-you-go model access; country ?; parent Keak; ; site https://cheaperinference.com,cheaper-inference,90316
+usestrix,Strix,U1,COSS (GitHub core),github_core,GitHub org(s): usestrix; basis: sells hosted AI pentesting platform and enterprise deployments; country ?; parent -; ; site strix.ai,usestrix,77576
+warpdotdev,Warp,U1,COSS (GitHub core),github_core,GitHub org(s): warpdotdev; basis: open-source client; sells paid Warp plans; country US; parent -; ; site https://warp.dev,warpdotdev,66140
+1Panel-dev,FIT2CLOUD,U1,COSS (GitHub core),github_core,GitHub org(s): 1Panel-dev;halo-dev;jumpserver;dataease; basis: FIT2CLOUD sells 1Panel and MaxKB pro editions; country CN; parent -; ; site ,1Panel-dev;halo-dev;jumpserver;dataease,60732
+run-llama,LlamaIndex,U1,COSS (GitHub core),github_core,GitHub org(s): run-llama; basis: sells LlamaCloud and LlamaParse; country US; parent -; ; site https://llamaindex.ai,run-llama,53006
+siyuan-note,Yunnan Liandi Technology (B3log),U1,COSS (GitHub core),github_core,GitHub org(s): siyuan-note; basis: sells SiYuan paid membership and cloud sync; country CN; parent -; ; site https://b3log.org/siyuan,siyuan-note,47388
+agno-agi,Agno,U1,COSS (GitHub core),github_core,GitHub org(s): agno-agi; basis: sells Agno AgentOS platform; country US; parent -; ; site https://agno.com,agno-agi,43303
+pingcap,PingCAP,U1,COSS (GitHub core),github_core,GitHub org(s): pingcap; basis: sells TiDB Cloud and Enterprise; country US; parent -; ; site https://pingcap.com,pingcap,40773
+portainer,Portainer.io,U1,COSS (GitHub core),github_core,GitHub org(s): portainer; basis: sells Portainer Business Edition; country NZ; parent -; ; site https://portainer.io,portainer,38912
+refinedev,Refine,U1,COSS (GitHub core),github_core,GitHub org(s): refinedev; basis: sells Refine Enterprise and hosted refine.new builder; country US; parent -; ; site https://refine.dev,refinedev,36079
+getzep,Zep,U1,COSS (GitHub core),github_core,GitHub org(s): getzep; basis: sells Zep Cloud built on Graphiti; country US; parent -; ; site https://www.getzep.com,getzep,33089
+supermemoryai,Supermemory,U1,COSS (GitHub core),github_core,GitHub org(s): supermemoryai; basis: sells hosted supermemory API and app; country US; parent -; ; site https://supermemory.com,supermemoryai,31726
+jitsi,Jitsi,U1,COSS (GitHub core),github_core,GitHub org(s): jitsi; basis: 8x8 unit sells Jitsi as a Service; originally BlueJimp; country US; parent 8x8; acquired by 8x8 2018; site https://jitsi.org,jitsi,30289
+manaflow-ai,Manaflow,U1,COSS (GitHub core),github_core,GitHub org(s): manaflow-ai; basis: sells cmux Pro and cloud VMs; country US; parent -; ; site ,manaflow-ai,28970
+Stability-AI,Stability AI,U1,COSS (GitHub core),github_core,GitHub org(s): Stability-AI; basis: open-weight models; sells API and commercial licences; country GB; parent -; ; site https://stability.ai/,Stability-AI,27343
+pulumi,Pulumi,U1,COSS (GitHub core),github_core,GitHub org(s): pulumi; basis: sells Pulumi Cloud; country US; parent -; ; site https://pulumi.com/,pulumi,25939
+dolthub,DoltHub,U1,COSS (GitHub core),github_core,GitHub org(s): dolthub; basis: sells hosted Dolt and DoltHub; country US; parent -; ; site www.dolthub.com,dolthub,24983
+timescale,Tiger Data,U1,COSS (GitHub core),github_core,GitHub org(s): timescale; basis: sells Tiger Cloud hosted TimescaleDB; country US; parent -; ; site https://www.tigerdata.com,timescale,23899
+openobserve,OpenObserve,U1,COSS (GitHub core),github_core,GitHub org(s): openobserve; basis: sells OpenObserve Cloud and Enterprise; country US; parent -; ; site https://openobserve.ai,openobserve,23186
+nengo,Applied Brain Research,U1,COSS (GitHub core),github_core,GitHub org(s): nengo; basis: ABR sells commercial Nengo licences; country CA; parent -; ; site https://nengo.ai/,nengo,959
+kiisu-io,Kiisu (RainWalker),U1,COSS (GitHub core),github_core,GitHub org(s): kiisu-io; basis: sells Flipper-compatible development boards; country EE; parent -; ; site https://kiisu.io,kiisu-io,160
+mcneilco,John McNeil & Co. Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): mcneilco; basis: sells commercial ACAS modules; country US; parent -; ; site www.mcneilco.com,mcneilco,17

@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+FuelLabs,Fuel Labs,U1,COSS (GitHub core),github_core,GitHub org(s): FuelLabs; basis: company developing the Fuel rollup network it builds its business on; country ?; parent -; ; site https://fuel.network,FuelLabs,203848
+FoundationAgents,DeepWisdom,U1,COSS (GitHub core),github_core,GitHub org(s): FoundationAgents; basis: MetaGPT team's company sells hosted MGX/Atoms agent product; country CN; parent -; ; site ,FoundationAgents,130508
+zed-industries,Zed Industries,U1,COSS (GitHub core),github_core,GitHub org(s): zed-industries; basis: sells Zed Pro AI plans within the editor; country US; parent -; ; site https://zed.dev,zed-industries,95735
+unslothai,Unsloth AI,U1,COSS (GitHub core),github_core,GitHub org(s): unslothai; basis: sells Unsloth Pro/Enterprise training; country US; parent -; ; site https://unsloth.ai/,unslothai,80245
+daytonaio,Daytona Platforms,U1,COSS (GitHub core),github_core,GitHub org(s): daytonaio; basis: sells hosted Daytona sandbox infrastructure; country US; parent -; ; site https://www.daytona.io,daytonaio,71270
+makeplane,Plane,U1,COSS (GitHub core),github_core,GitHub org(s): makeplane; basis: sells Plane Cloud and paid editions; country US; parent -; ; site https://plane.so,makeplane,63167
+FlowiseAI,FlowiseAI,U1,COSS (GitHub core),github_core,GitHub org(s): FlowiseAI; basis: sold Flowise Cloud; company bought by Workday; country US; parent Workday; acquired by Workday 2025; site https://flowiseai.com/,FlowiseAI,55597
+jeecgboot,JEECG (Beijing Guoju Information Technology),U1,COSS (GitHub core),github_core,GitHub org(s): jeecgboot; basis: company sells commercial editions and support for JeecgBoot; country CN; parent -; ; site www.jeecg.com,jeecgboot,48630
+logseq,Logseq Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): logseq; basis: sells Logseq Sync subscription; country US; parent -; ; site https://logseq.com,logseq,45705
+ToolJet,ToolJet,U1,COSS (GitHub core),github_core,GitHub org(s): ToolJet; basis: sells ToolJet Cloud and enterprise; country ?; parent -; ; site https://tooljet.com,ToolJet,41302
+tailscale,Tailscale,U1,COSS (GitHub core),github_core,GitHub org(s): tailscale; basis: sells Tailscale service; repo is the client; country CA; parent -; ; site https://tailscale.com,tailscale,39616
+anywhere-labs,Jiuxiangxian (Beijing) Technology,U1,COSS (GitHub core),github_core,GitHub org(s): anywhere-labs; basis: company sells private deployment and custom development of DSH Desktop; country CN; parent -; ; site https://www.dshdesktop.cn/,anywhere-labs,36839
+topoteretes,Topoteretes (cognee),U1,COSS (GitHub core),github_core,GitHub org(s): topoteretes; basis: sells hosted cognee platform; country DE; parent -; ; site https://topoteretes.com,topoteretes,33609
+linera-io,Linera,U1,COSS (GitHub core),github_core,GitHub org(s): linera-io; basis: company developing the Linera blockchain protocol; country ?; parent -; ; site https://linera.io,linera-io,32005
+karakeep-app,Localhost Labs Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): karakeep-app; basis: sells hosted Karakeep Cloud; country GB; parent -; ; site https://karakeep.com,karakeep-app,30845
+nrwl,Nrwl (Nx),U1,COSS (GitHub core),github_core,GitHub org(s): nrwl; basis: sells Nx Cloud and Nx Enterprise; country US; parent -; ; site https://nx.dev,nrwl,29495
+locustio,Locust Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): locustio; basis: maintainers' company sells hosted Locust Cloud; country SE; parent -; ; site https://locust.cloud,locustio,28313
+plotly,Plotly,U1,COSS (GitHub core),github_core,GitHub org(s): plotly; basis: sells Dash Enterprise; country CA; parent -; ; site https://plotly.com/,plotly,26283
+lvgl,LVGL Kft,U1,COSS (GitHub core),github_core,GitHub org(s): lvgl; basis: sells LVGL Pro editor and services; country HU; parent -; ; site https://lvgl.io,lvgl,25247
+brave,Brave Software,U1,COSS (GitHub core),github_core,"GitHub org(s): brave; basis: browser is main product; monetised via search, ads, premium, BAT; country US; parent -; ; site https://brave.com",brave,24314
+usablica,usablica (Intro.js),U1,COSS (GitHub core),github_core,GitHub org(s): usablica; basis: sells commercial Intro.js licences; country IE; parent -; ; site ,usablica,23460
+layabox,Layabox,U1,COSS (GitHub core),github_core,GitHub org(s): layabox; basis: company behind LayaAir engine; sells engine services; country CN; parent -; ; site www.layabox.com,layabox,2268
+roboninecom,Robonine,U1,COSS (GitHub core),github_core,GitHub org(s): roboninecom; basis: sells educational robot arms; country US; parent -; ; site https://robonine.com,roboninecom,361
+borneo-iot,Yunnan BinaryStars Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): borneo-iot; basis: sells LED controller hardware; country CN; parent -; ; site www.borneoiot.com,borneo-iot,81

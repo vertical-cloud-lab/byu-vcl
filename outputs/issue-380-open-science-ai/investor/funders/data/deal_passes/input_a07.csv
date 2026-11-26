@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+anomalyco,Anomaly,U1,COSS (GitHub core),github_core,GitHub org(s): anomalyco; basis: sells OpenCode Go/Console model subscriptions and enterprise to opencode users; country US; parent -; ; site https://anoma.ly,anomalyco,255638
+hashicorp,HashiCorp,U1,COSS (GitHub core),github_core,"GitHub org(s): hashicorp; basis: sells HCP cloud and enterprise editions of Terraform, Vault; country US; parent IBM; acquired by IBM 2025; site https://hashicorp.com",hashicorp,144247
+redis,Redis Ltd.,U1,COSS (GitHub core),github_core,GitHub org(s): redis; basis: sells Redis Cloud and Redis Enterprise; country US; parent -; ; site https://redis.io,redis,100966
+vitejs,VoidZero,U1,COSS (GitHub core),github_core,GitHub org(s): vitejs;oxc-project; basis: maintainers' company VoidZero builds Void deploy platform for Vite apps; country ?; parent -; ; site https://vite.dev,vitejs;oxc-project,84104
+unionlabs,Union Labs,U1,COSS (GitHub core),github_core,GitHub org(s): unionlabs; basis: company developing the Union interoperability protocol; country US; parent -; ; site union.build,unionlabs,73708
+commaai,comma.ai,U1,COSS (GitHub core),github_core,GitHub org(s): commaai; basis: sells comma devices running openpilot; country US; parent -; ; site https://comma.ai,commaai,64288
+typst,Typst GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): typst; basis: sells Typst web app subscriptions; country DE; parent -; ; site https://typst.app,typst,57418
+ClickHouse,ClickHouse,U1,COSS (GitHub core),github_core,GitHub org(s): ClickHouse; basis: sells ClickHouse Cloud; country US; parent -; ; site https://clickhouse.com,ClickHouse,51134
+coqui-ai,Coqui,U1,COSS (GitHub core),github_core,GitHub org(s): coqui-ai; basis: sold Coqui Studio and XTTS commercial licences; country DE; parent -; shut down 2024; site ,coqui-ai,46281
+dcloudio,DCloud,U1,COSS (GitHub core),github_core,GitHub org(s): dcloudio; basis: sells uniCloud and ad services to uni-app developers; country CN; parent -; ; site http://dcloud.io,dcloudio,41700
+umami-software,Umami Software,U1,COSS (GitHub core),github_core,GitHub org(s): umami-software; basis: sells Umami Cloud; country US; parent -; ; site https://umami.is,umami-software,40350
+IceWhaleTech,IceWhale Technology,U1,COSS (GitHub core),github_core,GitHub org(s): IceWhaleTech; basis: sells ZimaBoard/ZimaCube hardware running CasaOS/ZimaOS; country CN; parent -; ; site https://www.zimaspace.com/,IceWhaleTech,37705
+tinygrad,Tiny Corp,U1,COSS (GitHub core),github_core,GitHub org(s): tinygrad; basis: sells tinybox hardware running tinygrad; country US; parent -; ; site https://tinygrad.org/,tinygrad,33983
+cockroachdb,Cockroach Labs,U1,COSS (GitHub core),github_core,GitHub org(s): cockroachdb; basis: sells CockroachDB Cloud and Enterprise; country US; parent -; ; site https://www.cockroachlabs.com/,cockroachdb,32638
+greensock,GreenSock,U1,COSS (GitHub core),github_core,GitHub org(s): greensock; basis: sold GSAP Club licences until Webflow bought it; now free; country US; parent Webflow; acquired by Webflow 2024; site http://gsap.com,greensock,31259
+mastra-ai,Mastra,U1,COSS (GitHub core),github_core,GitHub org(s): mastra-ai; basis: sells Mastra Cloud; country US; parent -; ; site https://mastra.ai,mastra-ai,29817
+mongodb,MongoDB Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): mongodb; basis: sells MongoDB Atlas and Enterprise; country US; parent -; ; site http://www.mongodb.com/,mongodb,28709
+apify,Apify,U1,COSS (GitHub core),github_core,"GitHub org(s): apify; basis: Apify platform hosts Crawlee scrapers, marketed to its users; country CZ; parent -; ; site https://apify.com/",apify,26578
+CapSoftware,Cap Software,U1,COSS (GitHub core),github_core,GitHub org(s): CapSoftware; basis: sells Cap Pro hosted sharing plans; country ?; parent -; ; site https://cap.so,CapSoftware,25592
+citrolabs,CitroLabs,U1,COSS (GitHub core),github_core,GitHub org(s): citrolabs; basis: main product is the ego browser; ego-lite is open; country SG; parent -; ; site https://citrolabs.ai,citrolabs,24506
+magicuidesign,Magic UI,U1,COSS (GitHub core),github_core,GitHub org(s): magicuidesign; basis: sells Magic UI Pro templates; country ?; parent -; ; site https://magicui.design,magicuidesign,23564
+Source-Robotics,Source Robotics,U1,COSS (GitHub core),github_core,GitHub org(s): Source-Robotics; basis: sells robot-arm kits of its open designs; country HR; parent -; ; site https://source-robotics.com/,Source-Robotics,5114
+m-labs,M-Labs Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): m-labs; basis: sells Sinara hardware and ARTIQ support; country HK; parent -; ; site https://git.m-labs.hk/m-labs,m-labs,514
+ZiroEDA,ZIRO EDA,U1,COSS (GitHub core),github_core,GitHub org(s): ZiroEDA; basis: IIT Madras-incubated startup whose product is the open tool; country IN; parent -; ; site https://ziroeda.com,ZiroEDA,99

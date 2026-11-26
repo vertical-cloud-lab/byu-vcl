@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+NousResearch,Nous Research,U1,COSS (GitHub core),github_core,GitHub org(s): NousResearch; basis: releases open-weight Hermes models; sells Nous Portal plans powering Hermes; country US; parent -; ; site https://nousresearch.com,NousResearch,266092
+fastapi,FastAPI Labs,U1,COSS (GitHub core),github_core,GitHub org(s): fastapi; basis: maintainer's company sells FastAPI Cloud hosting; country ?; parent -; ; site https://tiangolo.com/github-fastapi/,fastapi,151363
+denoland,Deno Land Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): denoland; basis: sells Deno Deploy hosting for Deno; country US; parent -; ; site https://deno.land,denoland,109024
+docker,Docker Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): docker;moby; basis: sells Docker subscriptions for its tools; country US; parent -; ; site https://www.docker.com,docker;moby,85861
+Fission-AI,Fission AI,U1,COSS (GitHub core),github_core,GitHub org(s): Fission-AI; basis: company whose product is OpenSpec (desktop app in beta); country ?; parent -; ; site ,Fission-AI,75720
+localstack,LocalStack,U1,COSS (GitHub core),github_core,GitHub org(s): localstack; basis: sells LocalStack Pro and Enterprise; country CH; parent -; ; site https://localstack.cloud,localstack,65104
+appwrite,Appwrite,U1,COSS (GitHub core),github_core,GitHub org(s): appwrite; basis: sells Appwrite Cloud; country IL; parent -; ; site https://appwrite.io,appwrite,58628
+KeygraphHQ,Keygraph,U1,COSS (GitHub core),github_core,GitHub org(s): KeygraphHQ; basis: sells Shannon Pro commercial edition; country US; parent -; ; site https://keygraph.io/,KeygraphHQ,52307
+RocketChat,Rocket.Chat,U1,COSS (GitHub core),github_core,GitHub org(s): RocketChat; basis: sells Rocket.Chat Enterprise and cloud; country BR; parent -; ; site https://rocket.chat,RocketChat,46552
+chatboxai,Chatbox AI,U1,COSS (GitHub core),github_core,GitHub org(s): chatboxai; basis: sells Chatbox AI subscriptions in the same app; country ?; parent -; ; site https://chatboxai.app,chatboxai,42540
+photoprism,PhotoPrism UG,U1,COSS (GitHub core),github_core,GitHub org(s): photoprism; basis: sells PhotoPrism+ memberships; country DE; parent -; ; site https://www.photoprism.app/,photoprism,40477
+khoj-ai,Khoj Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): khoj-ai; basis: sells hosted Khoj cloud plans; country US; parent -; ; site https://khoj.dev,khoj-ai,38241
+Fincept-Corporation,Fincept Corporation,U1,COSS (GitHub core),github_core,GitHub org(s): Fincept-Corporation; basis: sells per-seat FinceptTerminal enterprise access; country IN; parent -; ; site https://fincept.in,Fincept-Corporation,34216
+trycua,Cua,U1,COSS (GitHub core),github_core,GitHub org(s): trycua; basis: sells hosted cloud sandboxes for Cua agents; country US; parent -; ; site https://cua.ai,trycua,32922
+heroui-inc,HeroUI Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): heroui-inc; basis: sells HeroUI Pro components and templates; country US; parent -; ; site https://heroui.com,heroui-inc,31316
+labring,Sealos (labring),U1,COSS (GitHub core),github_core,GitHub org(s): labring; basis: sells Sealos cloud and FastGPT commercial editions; country CN; parent -; ; site https://sealos.io,labring,30103
+fingerprintjs,Fingerprint (FingerprintJS Inc.),U1,COSS (GitHub core),github_core,GitHub org(s): fingerprintjs; basis: sells Fingerprint Pro identification; country US; parent -; ; site https://fingerprint.com,fingerprintjs,28808
+marmelab,marmelab,U1,COSS (GitHub core),github_core,GitHub org(s): marmelab; basis: sells react-admin Enterprise Edition; country FR; parent -; ; site http://marmelab.com,marmelab,27001
+pascalorg,Pascal Group Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): pascalorg; basis: sells Pascal Pro/Max plans for the hosted editor; country US; parent -; ; site https://editor.pascal.app,pascalorg,25756
+different-ai,Different AI (OpenWork),U1,COSS (GitHub core),github_core,GitHub org(s): different-ai; basis: sells OpenWork subscriptions for its team control plane; country US; parent -; ; site ,different-ai,24591
+saleor,Saleor Commerce,U1,COSS (GitHub core),github_core,GitHub org(s): saleor; basis: sells Saleor Cloud; country PL; parent -; ; site https://saleor.io/,saleor,23604
+aipoch,AIPOCH,U1,COSS (GitHub core),github_core,GitHub org(s): aipoch; basis: company whose product is the open workbench; no paid tier found; country SG; parent -; ; site http://aipoch.com/open-science,aipoch,7665
+tillitis,Tillitis AB,U1,COSS (GitHub core),github_core,GitHub org(s): tillitis; basis: sells TKey open-hardware security keys; country SE; parent -; ; site https://www.tillitis.se,tillitis,592
+Wakoma,Wakoma,U1,COSS (GitHub core),github_core,GitHub org(s): Wakoma; basis: social enterprise building open-source network kits; country CZ; parent -; ; site https://wakoma.co,Wakoma,112

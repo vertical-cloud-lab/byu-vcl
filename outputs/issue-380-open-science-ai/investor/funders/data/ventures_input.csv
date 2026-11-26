@@ -1,0 +1,641 @@
+key,venture,universe,category,source_list,hint,owners,stars
+deepseek-ai,DeepSeek,U1,COSS (GitHub core),github_core,GitHub org(s): deepseek-ai; basis: releases open-weight models and sells API access to the same models; country CN; parent High-Flyer; ; site https://www.deepseek.com/,deepseek-ai,623547
+huggingface,Hugging Face,U1,COSS (GitHub core),github_core,"GitHub org(s): huggingface; basis: sells Hub hosting, Inference Endpoints and Enterprise Hub; country US; parent -; ; site https://huggingface.co/",huggingface,385334
+vercel,Vercel,U1,COSS (GitHub core),github_core,GitHub org(s): vercel; basis: hosting platform marketed to Next.js users; country US; parent -; ; site https://vercel.com,vercel,304835
+multica-ai,Multica,U1,COSS (GitHub core),github_core,GitHub org(s): multica-ai; basis: sells hosted Multica Cloud and commercial licences; country ?; parent -; ; site https://multica.ai,multica-ai,293612
+NousResearch,Nous Research,U1,COSS (GitHub core),github_core,GitHub org(s): NousResearch; basis: releases open-weight Hermes models; sells Nous Portal plans powering Hermes; country US; parent -; ; site https://nousresearch.com,NousResearch,266092
+firecrawl,Firecrawl (Sideguide Technologies),U1,COSS (GitHub core),github_core,GitHub org(s): firecrawl; basis: sells hosted Firecrawl API with paid plans; country US; parent -; ; site firecrawl.dev,firecrawl,262613
+anomalyco,Anomaly,U1,COSS (GitHub core),github_core,GitHub org(s): anomalyco; basis: sells OpenCode Go/Console model subscriptions and enterprise to opencode users; country US; parent -; ; site https://anoma.ly,anomalyco,255638
+VoltAgent,VoltAgent,U1,COSS (GitHub core),github_core,GitHub org(s): VoltAgent; basis: sells VoltOps platform around its open-source agent framework; top repos are lists; country US; parent -; ; site https://voltagent.dev,VoltAgent,247372
+langchain-ai,LangChain,U1,COSS (GitHub core),github_core,GitHub org(s): langchain-ai; basis: sells LangSmith platform built around LangChain; country US; parent -; ; site https://www.langchain.com,langchain-ai,226992
+n8n-io,n8n,U1,COSS (GitHub core),github_core,GitHub org(s): n8n-io; basis: sells n8n Cloud and Enterprise licences; country DE; parent -; ; site https://n8n.io,n8n-io,212126
+FuelLabs,Fuel Labs,U1,COSS (GitHub core),github_core,GitHub org(s): FuelLabs; basis: company developing the Fuel rollup network it builds its business on; country ?; parent -; ; site https://fuel.network,FuelLabs,203848
+Significant-Gravitas,Significant Gravitas Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): Significant-Gravitas; basis: company sells hosted AutoGPT Platform built on the project; country GB; parent -; ; site agpt.co,Significant-Gravitas,188189
+ollama,Ollama,U1,COSS (GitHub core),github_core,GitHub org(s): ollama; basis: sells Ollama cloud hosted-model plans to its users; country US; parent -; ; site https://ollama.com,ollama,188122
+browser-use,Browser Use,U1,COSS (GitHub core),github_core,"GitHub org(s): browser-use; basis: sells Browser Use Cloud, hosted version of the library; country US; parent -; ; site https://browser-use.com",browser-use,178384
+storytold,Storyteller (ArtCraft),U1,COSS (GitHub core),github_core,"GitHub org(s): storytold; basis: sells ArtCraft Basic/Pro/Max plans, credits and enterprise; country US; parent -; ; site https://getartcraft.com",storytold,167282
+langgenius,LangGenius,U1,COSS (GitHub core),github_core,GitHub org(s): langgenius; basis: sells Dify Cloud and Dify Enterprise; country US; parent -; ; site https://dify.ai,langgenius,161900
+open-webui,Open WebUI Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): open-webui; basis: sells Open WebUI enterprise licences and support; country US; parent -; ; site https://openwebui.com,open-webui,159554
+langflow-ai,Langflow (DataStax),U1,COSS (GitHub core),github_core,GitHub org(s): langflow-ai; basis: Langflow company bought by DataStax (now IBM); hosted Langflow sold; country US; parent IBM; acquired by DataStax 2024; DataStax acquired by IBM 2025; site https://www.langflow.org/,langflow-ai,156943
+Graphify-Labs,Graphify Labs,U1,COSS (GitHub core),github_core,"GitHub org(s): Graphify-Labs; basis: sells hosted Graphify Pro, Teams and Enterprise; CLI free; country US; parent -; ; site https://graphify.com/",Graphify-Labs,153341
+tailwindlabs,Tailwind Labs,U1,COSS (GitHub core),github_core,GitHub org(s): tailwindlabs; basis: sells Tailwind Plus components and templates to Tailwind users; country US; parent -; ; site tailwindcss.com,tailwindlabs,151598
+fastapi,FastAPI Labs,U1,COSS (GitHub core),github_core,GitHub org(s): fastapi; basis: maintainer's company sells FastAPI Cloud hosting; country ?; parent -; ; site https://tiangolo.com/github-fastapi/,fastapi,151363
+Comfy-Org,Comfy Org,U1,COSS (GitHub core),github_core,GitHub org(s): Comfy-Org; basis: sells Comfy Cloud and paid API nodes for ComfyUI; country US; parent -; ; site https://comfy.org,Comfy-Org,148602
+hashicorp,HashiCorp,U1,COSS (GitHub core),github_core,"GitHub org(s): hashicorp; basis: sells HCP cloud and enterprise editions of Terraform, Vault; country US; parent IBM; acquired by IBM 2025; site https://hashicorp.com",hashicorp,144247
+astral-sh,Astral,U1,COSS (GitHub core),github_core,GitHub org(s): astral-sh; basis: sells pyx hosted registry for uv users; country US; parent OpenAI; now part of OpenAI (per org description); site https://astral.sh,astral-sh,144192
+grafana,Grafana Labs,U1,COSS (GitHub core),github_core,GitHub org(s): grafana; basis: sells Grafana Cloud and Enterprise; country US; parent -; ; site https://grafana.com,grafana,139841
+excalidraw,Excalidraw s.r.o.,U1,COSS (GitHub core),github_core,"GitHub org(s): excalidraw; basis: sells Excalidraw+, hosted paid version; country CZ; parent -; ; site https://excalidraw.com",excalidraw,136301
+FoundationAgents,DeepWisdom,U1,COSS (GitHub core),github_core,GitHub org(s): FoundationAgents; basis: MetaGPT team's company sells hosted MGX/Atoms agent product; country CN; parent -; ; site ,FoundationAgents,130508
+charmbracelet,Charm (Charmbracelet),U1,COSS (GitHub core),github_core,GitHub org(s): charmbracelet; basis: sells Hyper inference for its Crush agent users; enterprise on request; country US; parent -; ; site https://charm.land/,charmbracelet,129570
+earendil-works,Earendil Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): earendil-works; basis: company building Pi and other open AI tools; no paid tier found; country AT; parent -; ; site https://earendil.com/,earendil-works,123875
+ultralytics,Ultralytics,U1,COSS (GitHub core),github_core,GitHub org(s): ultralytics; basis: sells enterprise licences and platform for YOLO; country US; parent -; ; site https://ultralytics.com,ultralytics,122058
+pathwaycom,Pathway,U1,COSS (GitHub core),github_core,GitHub org(s): pathwaycom; basis: sells enterprise licence for Pathway framework; country US; parent -; ; site https://pathway.com,pathwaycom,120631
+laravel,Laravel,U1,COSS (GitHub core),github_core,"GitHub org(s): laravel; basis: sells Laravel Cloud, Forge and Nova to Laravel users; country US; parent -; ; site https://laravel.com",laravel,120577
+immich-app,FUTO,U1,COSS (GitHub core),github_core,GitHub org(s): immich-app; basis: FUTO-employed team sells Immich licence keys; country US; parent -; ; site https://immich.app,immich-app,120103
+paperclipai,"Paperclip Labs, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): paperclipai; basis: company behind Paperclip; hosted cloud version on waitlist; country US; parent -; ; site https://paperclip.ing/,paperclipai,117021
+supabase,Supabase,U1,COSS (GitHub core),github_core,GitHub org(s): supabase; basis: sells hosted Supabase platform; country US; parent -; ; site https://supabase.com,supabase,115488
+nexu-io,"Powerformer, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): nexu-io; basis: sells OpenDesign Cloud paid plans and Team/Enterprise; country ?; parent -; ; site https://open-design.ai,nexu-io,109480
+denoland,Deno Land Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): denoland; basis: sells Deno Deploy hosting for Deno; country US; parent -; ; site https://deno.land,denoland,109024
+OpenBMB,ModelBest,U1,COSS (GitHub core),github_core,GitHub org(s): OpenBMB; basis: ModelBest-run lab commercialising MiniCPM models; co-founded with Tsinghua NLP; country CN; parent -; ; site https://www.openbmb.cn,OpenBMB,105044
+redis,Redis Ltd.,U1,COSS (GitHub core),github_core,GitHub org(s): redis; basis: sells Redis Cloud and Redis Enterprise; country US; parent -; ; site https://redis.io,redis,100966
+mui,MUI,U1,COSS (GitHub core),github_core,GitHub org(s): mui; basis: sells MUI X Pro/Premium licences; country FR; parent -; ; site https://mui.com,mui,99396
+Stirling-Tools,Stirling PDF,U1,COSS (GitHub core),github_core,GitHub org(s): Stirling-Tools; basis: sells Stirling-PDF Pro/Enterprise and hosted version; country GB; parent -; ; site https://stirling.com,Stirling-Tools,97456
+oven-sh,Oven (Bun),U1,COSS (GitHub core),github_core,GitHub org(s): oven-sh; basis: company formed to commercialise the Bun runtime; country US; parent Anthropic; acquired by Anthropic 2025; site https://bun.com/,oven-sh,96970
+zed-industries,Zed Industries,U1,COSS (GitHub core),github_core,GitHub org(s): zed-industries; basis: sells Zed Pro AI plans within the editor; country US; parent -; ; site https://zed.dev,zed-industries,95735
+Textualize,Textualize,U1,COSS (GitHub core),github_core,GitHub org(s): Textualize; basis: founder's company built around Rich/Textual (Textual Web hosting); country GB; parent -; company wound down 2025; site https://www.textualize.io,Textualize,95614
+infiniflow,InfiniFlow,U1,COSS (GitHub core),github_core,GitHub org(s): infiniflow; basis: company behind RAGFlow; sells enterprise and cloud editions; country CN; parent -; ; site https://ragflow.io/,infiniflow,94705
+OpenHands,All Hands AI,U1,COSS (GitHub core),github_core,GitHub org(s): OpenHands; basis: maintainers' company sells OpenHands Cloud and enterprise; country US; parent -; ; site https://openhands.dev,OpenHands,94335
+storybookjs,Chromatic,U1,COSS (GitHub core),github_core,GitHub org(s): storybookjs; basis: maintainers' company Chromatic sells hosted Storybook service; country US; parent -; ; site https://storybook.js.org,storybookjs,91723
+mermaid-js,Mermaid Chart,U1,COSS (GitHub core),github_core,GitHub org(s): mermaid-js; basis: maintainers' company sells hosted Mermaid Chart editor; country ?; parent -; ; site ,mermaid-js,91253
+cheaper-inference,Cheaper Inference,U1,COSS (GitHub core),github_core,GitHub org(s): cheaper-inference; basis: sells hosted OmniRoute-style gateway and pay-as-you-go model access; country ?; parent Keak; ; site https://cheaperinference.com,cheaper-inference,90316
+ChatGPTNextWeb,NextChat,U1,COSS (GitHub core),github_core,GitHub org(s): ChatGPTNextWeb; basis: sells hosted pay-as-you-go NextChat and enterprise edition; country ?; parent -; ; site https://nextchat.club,ChatGPTNextWeb,88984
+rtk-ai,RTK AI Labs,U1,COSS (GitHub core),github_core,GitHub org(s): rtk-ai; basis: sells RTK Pro team tier; CLI free; country FR; parent -; ; site https://www.rtk-ai.app,rtk-ai,87827
+lobehub,LobeHub,U1,COSS (GitHub core),github_core,GitHub org(s): lobehub; basis: sells LobeHub Cloud subscriptions; country US; parent -; ; site https://lobehub.com,lobehub,86142
+docker,Docker Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): docker;moby; basis: sells Docker subscriptions for its tools; country US; parent -; ; site https://www.docker.com,docker;moby,85861
+Kong,Kong Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): Kong; basis: sells Kong Konnect and Enterprise gateway; country US; parent -; ; site https://konghq.com,Kong,84605
+vitejs,VoidZero,U1,COSS (GitHub core),github_core,GitHub org(s): vitejs;oxc-project; basis: maintainers' company VoidZero builds Void deploy platform for Vite apps; country ?; parent -; ; site https://vite.dev,vitejs;oxc-project,84104
+netdata,Netdata Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): netdata; basis: sells Netdata Cloud subscriptions; country US; parent -; ; site https://www.netdata.cloud,netdata,81643
+hoppscotch,Hoppscotch,U1,COSS (GitHub core),github_core,GitHub org(s): hoppscotch; basis: sells Hoppscotch Cloud and Enterprise; country ?; parent -; ; site https://hoppscotch.com,hoppscotch,80973
+headroomlabs-ai,Headroom Labs,U1,COSS (GitHub core),github_core,GitHub org(s): headroomlabs-ai; basis: offers enterprise deployment and SLA support for headroom; country ?; parent -; ; site headroomlabs.ai,headroomlabs-ai,80860
+unslothai,Unsloth AI,U1,COSS (GitHub core),github_core,GitHub org(s): unslothai; basis: sells Unsloth Pro/Enterprise training; country US; parent -; ; site https://unsloth.ai/,unslothai,80245
+coder,Coder Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): coder; basis: sells Coder Premium enterprise CDE platform; country US; parent -; ; site https://coder.com,coder,79947
+AppFlowy-IO,AppFlowy,U1,COSS (GitHub core),github_core,GitHub org(s): AppFlowy-IO; basis: sells AppFlowy Cloud paid plans; country US; parent -; ; site ,AppFlowy-IO,79547
+TanStack,TanStack LLC,U1,COSS (GitHub core),github_core,GitHub org(s): TanStack; basis: Tanner Linsley's company; revenue from project partnerships; country US; parent -; ; site https://tanstack.com,TanStack,79257
+elastic,Elastic N.V.,U1,COSS (GitHub core),github_core,GitHub org(s): elastic; basis: sells Elastic Cloud and subscriptions; country US; parent -; ; site https://www.elastic.co/,elastic,78813
+toeverything,Toeverything (AFFiNE),U1,COSS (GitHub core),github_core,GitHub org(s): toeverything; basis: sells AFFiNE Cloud and Pro plans; country SG; parent -; ; site ,toeverything,78432
+usestrix,Strix,U1,COSS (GitHub core),github_core,GitHub org(s): usestrix; basis: sells hosted AI pentesting platform and enterprise deployments; country ?; parent -; ; site strix.ai,usestrix,77576
+nestjs,NestJS (Kamil Myśliwiec),U1,COSS (GitHub core),github_core,"GitHub org(s): nestjs; basis: creator's team sells enterprise support, certification courses, Mau deploy; country PL; parent -; ; site https://nestjs.com/",nestjs,77179
+FortAwesome,"Fonticons, Inc. (Font Awesome)",U1,COSS (GitHub core),github_core,GitHub org(s): FortAwesome; basis: sells Font Awesome Pro; country US; parent -; ; site https://fontawesome.com,FortAwesome,77054
+openbq-org,OpenBB Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): openbq-org; basis: official OpenBB repo now lives here; sells OpenBB Workspace enterprise edition; country US; parent -; OpenBB-finance/OpenBB redirects to this org; site ,openbq-org,75734
+Fission-AI,Fission AI,U1,COSS (GitHub core),github_core,GitHub org(s): Fission-AI; basis: company whose product is OpenSpec (desktop app in beta); country ?; parent -; ; site ,Fission-AI,75720
+remotion-dev,Remotion AG,U1,COSS (GitHub core),github_core,GitHub org(s): remotion-dev; basis: sells company licences for Remotion; country CH; parent -; ; site https://remotion.dev,remotion-dev,75710
+unionlabs,Union Labs,U1,COSS (GitHub core),github_core,GitHub org(s): unionlabs; basis: company developing the Union interoperability protocol; country US; parent -; ; site union.build,unionlabs,73708
+strapi,Strapi,U1,COSS (GitHub core),github_core,GitHub org(s): strapi; basis: sells Strapi Cloud and Enterprise; country FR; parent -; ; site https://strapi.io,strapi,73549
+hpcaitech,HPC-AI Tech,U1,COSS (GitHub core),github_core,GitHub org(s): hpcaitech; basis: sells cloud platform for training and deploying with Colossal-AI; country SG; parent -; ; site https://hpc-ai.com/,hpcaitech,71991
+cline,Cline Bot Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): cline; basis: sells Cline Teams and Enterprise plans; country US; parent -; ; site https://cline.bot,cline,71894
+daytonaio,Daytona Platforms,U1,COSS (GitHub core),github_core,GitHub org(s): daytonaio; basis: sells hosted Daytona sandbox infrastructure; country US; parent -; ; site https://www.daytona.io,daytonaio,71270
+mem0ai,Mem0,U1,COSS (GitHub core),github_core,GitHub org(s): mem0ai; basis: sells hosted Mem0 Platform; country US; parent -; ; site https://mem0.ai,mem0ai,69470
+openinterpreter,Open Interpreter,U1,COSS (GitHub core),github_core,GitHub org(s): openinterpreter; basis: company's product is the project itself (agent and desktop client); country US; parent -; ; site www.openinterpreter.com,openinterpreter,68962
+Mintplex-Labs,Mintplex Labs,U1,COSS (GitHub core),github_core,GitHub org(s): Mintplex-Labs; basis: sells hosted AnythingLLM cloud and enterprise; country US; parent -; ; site https://mintplexlabs.com,Mintplex-Labs,68636
+zai-org,Z.ai (Zhipu AI),U1,COSS (GitHub core),github_core,GitHub org(s): zai-org; basis: open-weight GLM models; sells API access; country CN; parent -; ; site https://www.zhipuai.cn/en,zai-org,67503
+coollabsio,coolLabs,U1,COSS (GitHub core),github_core,"GitHub org(s): coollabsio; basis: sells Coolify Cloud, hosted version of Coolify; country HU; parent -; ; site https://coollabs.io",coollabsio,66460
+warpdotdev,Warp,U1,COSS (GitHub core),github_core,GitHub org(s): warpdotdev; basis: open-source client; sells paid Warp plans; country US; parent -; ; site https://warp.dev,warpdotdev,66140
+traefik,Traefik Labs,U1,COSS (GitHub core),github_core,GitHub org(s): traefik; basis: sells Traefik Enterprise and Traefik Hub; country FR; parent -; ; site https://blog.traefik.io,traefik,65699
+scrapy,Zyte,U1,COSS (GitHub core),github_core,"GitHub org(s): scrapy; basis: maintained by Zyte, which sells Scrapy Cloud and Zyte API; country IE; parent -; ; site https://scrapy.org",scrapy,65617
+nocodb,NocoDB,U1,COSS (GitHub core),github_core,GitHub org(s): nocodb; basis: sells NocoDB Cloud and Enterprise; country US; parent -; ; site https://twitter.com/nocodb,nocodb,65610
+localstack,LocalStack,U1,COSS (GitHub core),github_core,GitHub org(s): localstack; basis: sells LocalStack Pro and Enterprise; country CH; parent -; ; site https://localstack.cloud,localstack,65104
+tabler,Tabler,U1,COSS (GitHub core),github_core,GitHub org(s): tabler; basis: sells Tabler Pro and All packages; country PL; parent -; ; site https://tabler.io,tabler,64955
+commaai,comma.ai,U1,COSS (GitHub core),github_core,GitHub org(s): commaai; basis: sells comma devices running openpilot; country US; parent -; ; site https://comma.ai,commaai,64288
+jgraph,JGraph Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): jgraph; basis: sells draw.io apps for Confluence and Jira; country GB; parent -; ; site http://www.drawio.com,jgraph,64157
+BerriAI,BerriAI,U1,COSS (GitHub core),github_core,GitHub org(s): BerriAI; basis: sells LiteLLM Enterprise and hosted proxy; country US; parent -; ; site https://docs.litellm.ai/docs/,BerriAI,63907
+vectorize-io,"Vectorize, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): vectorize-io; basis: sells Hindsight Cloud and Enterprise; country US; parent -; ; site ,vectorize-io,63390
+makeplane,Plane,U1,COSS (GitHub core),github_core,GitHub org(s): makeplane; basis: sells Plane Cloud and paid editions; country US; parent -; ; site https://plane.so,makeplane,63167
+penpot,Kaleidos (Penpot),U1,COSS (GitHub core),github_core,GitHub org(s): penpot; basis: sells Penpot cloud plans and enterprise; country ES; parent -; ; site https://penpot.app,penpot,62738
+twentyhq,Twenty.com PBC,U1,COSS (GitHub core),github_core,GitHub org(s): twentyhq; basis: sells Twenty Cloud hosted CRM; country FR; parent -; ; site https://twenty.com,twentyhq,61476
+crewAIInc,CrewAI,U1,COSS (GitHub core),github_core,GitHub org(s): crewAIInc; basis: sells CrewAI enterprise agent platform; country US; parent -; ; site https://crewai.com,crewAIInc,61261
+minio,MinIO Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): minio; basis: sells AIStor enterprise edition and subscriptions; country US; parent -; ; site https://min.io,minio,61242
+nuxt,NuxtLabs,U1,COSS (GitHub core),github_core,GitHub org(s): nuxt; basis: maintainers' company sold Nuxt UI Pro and NuxtHub; country FR; parent Vercel; acquired by Vercel 2025; site https://nuxt.com,nuxt,61099
+1Panel-dev,FIT2CLOUD,U1,COSS (GitHub core),github_core,GitHub org(s): 1Panel-dev;halo-dev;jumpserver;dataease; basis: FIT2CLOUD sells 1Panel and MaxKB pro editions; country CN; parent -; ; site ,1Panel-dev;halo-dev;jumpserver;dataease,60732
+meilisearch,Meilisearch,U1,COSS (GitHub core),github_core,GitHub org(s): meilisearch; basis: sells Meilisearch Cloud; country FR; parent -; ; site www.meilisearch.com,meilisearch,60004
+K-Dense-AI,K-Dense,U1,COSS (GitHub core),github_core,GitHub org(s): K-Dense-AI; basis: sells hosted K-Dense Web co-scientist built around its open skills; country US; parent -; ; site www.k-dense.ai,K-Dense-AI,59969
+go-gitea,Gitea Ltd / CommitGo,U1,COSS (GitHub core),github_core,GitHub org(s): go-gitea; basis: maintainers' company sells Gitea Cloud and Enterprise; country ?; parent -; ; site https://gitea.com,go-gitea,59254
+appwrite,Appwrite,U1,COSS (GitHub core),github_core,GitHub org(s): appwrite; basis: sells Appwrite Cloud; country IL; parent -; ; site https://appwrite.io,appwrite,58628
+zylon-ai,Zylon,U1,COSS (GitHub core),github_core,GitHub org(s): zylon-ai; basis: sells Zylon private AI workspace built on PrivateGPT; country ?; parent -; ; site https://zylon.ai/,zylon-ai,57653
+typst,Typst GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): typst; basis: sells Typst web app subscriptions; country DE; parent -; ; site https://typst.app,typst,57418
+odoo,Odoo SA,U1,COSS (GitHub core),github_core,GitHub org(s): odoo; basis: sells Odoo Enterprise and Odoo Online; country BE; parent -; ; site https://www.odoo.com,odoo,56096
+gatsbyjs,Gatsby,U1,COSS (GitHub core),github_core,GitHub org(s): gatsbyjs; basis: sold Gatsby Cloud hosting; now owned by Netlify; country US; parent Netlify; acquired by Netlify 2023; site https://www.gatsbyjs.com/,gatsbyjs,55919
+bmad-code-org,"BMad Code, LLC",U1,COSS (GitHub core),github_core,GitHub org(s): bmad-code-org; basis: sells consulting and training for the BMAD method; country US; parent -; ; site https://www.bmadcode.com/,bmad-code-org,55742
+FlowiseAI,FlowiseAI,U1,COSS (GitHub core),github_core,GitHub org(s): FlowiseAI; basis: sold Flowise Cloud; company bought by Workday; country US; parent Workday; acquired by Workday 2025; site https://flowiseai.com/,FlowiseAI,55597
+maybe-finance,Maybe Finance,U1,COSS (GitHub core),github_core,GitHub org(s): maybe-finance; basis: sold hosted subscription of the Maybe app; country US; parent -; repo archived 2025; site ,maybe-finance,54181
+CherryHQ,Cherry Studio (CherryHQ),U1,COSS (GitHub core),github_core,GitHub org(s): CherryHQ; basis: sells Cherry Studio enterprise edition and commercial licences; country CN; parent -; ; site https://cherryai.com,CherryHQ,53878
+HumanSignal,HumanSignal,U1,COSS (GitHub core),github_core,GitHub org(s): HumanSignal; basis: sells Label Studio Enterprise; country US; parent -; ; site https://labelstud.io/,HumanSignal,53785
+expo,Expo (650 Industries),U1,COSS (GitHub core),github_core,GitHub org(s): expo; basis: sells Expo Application Services to Expo developers; country US; parent -; ; site https://expo.dev,expo,53779
+upscayl,Upscayl,U1,COSS (GitHub core),github_core,GitHub org(s): upscayl; basis: sells Upscayl Cloud alongside the free desktop app; country ?; parent -; ; site https://upscayl.org,upscayl,53231
+run-llama,LlamaIndex,U1,COSS (GitHub core),github_core,GitHub org(s): run-llama; basis: sells LlamaCloud and LlamaParse; country US; parent -; ; site https://llamaindex.ai,run-llama,53006
+PrefectHQ,Prefect Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): PrefectHQ; basis: sells Prefect Cloud; country US; parent -; ; site https://prefect.io,PrefectHQ,53000
+ionic-team,Ionic (Drifty Co.),U1,COSS (GitHub core),github_core,GitHub org(s): ionic-team; basis: sold Ionic Enterprise and Appflow for the framework; country US; parent OutSystems; acquired by OutSystems 2022; site https://ionic.io,ionic-team,52768
+dbeaver,DBeaver Corp,U1,COSS (GitHub core),github_core,GitHub org(s): dbeaver; basis: sells DBeaver PRO editions; country US; parent -; ; site https://dbeaver.com,dbeaver,52539
+KeygraphHQ,Keygraph,U1,COSS (GitHub core),github_core,GitHub org(s): KeygraphHQ; basis: sells Shannon Pro commercial edition; country US; parent -; ; site https://keygraph.io/,KeygraphHQ,52307
+tldraw,tldraw Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): tldraw; basis: sells commercial tldraw SDK licences; country GB; parent -; ; site https://tldraw.com,tldraw,51593
+ClickHouse,ClickHouse,U1,COSS (GitHub core),github_core,GitHub org(s): ClickHouse; basis: sells ClickHouse Cloud; country US; parent -; ; site https://clickhouse.com,ClickHouse,51134
+cypress-io,Cypress.io,U1,COSS (GitHub core),github_core,GitHub org(s): cypress-io; basis: sells Cypress Cloud; country US; parent -; ; site https://cypress.io,cypress-io,51039
+metabase,Metabase,U1,COSS (GitHub core),github_core,GitHub org(s): metabase; basis: sells Metabase Cloud and Pro/Enterprise; country US; parent -; ; site https://metabase.com/,metabase,50536
+calcom,"Cal.com, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): calcom; basis: sells hosted Cal.com and enterprise plans; country US; parent -; ; site https://cal.com,calcom,50394
+jeecgboot,JEECG (Beijing Guoju Information Technology),U1,COSS (GitHub core),github_core,GitHub org(s): jeecgboot; basis: company sells commercial editions and support for JeecgBoot; country CN; parent -; ; site www.jeecg.com,jeecgboot,48630
+exo-explore,EXO Labs,U1,COSS (GitHub core),github_core,GitHub org(s): exo-explore; basis: offers Exo for Business deployments; software free; country ?; parent -; ; site ,exo-explore,48611
+usebruno,Bruno Software Inc,U1,COSS (GitHub core),github_core,GitHub org(s): usebruno; basis: sells Bruno Pro and Ultimate editions; country US; parent -; ; site https://www.usebruno.com/,usebruno,48562
+nvm-windows,Author Software,U1,COSS (GitHub core),github_core,GitHub org(s): nvm-windows; basis: sells commercial Certified Builds of NVM for Windows; country ?; parent -; ; site https://nvm-windows.com,nvm-windows,48265
+discourse,Civilized Discourse Construction Kit (Discourse),U1,COSS (GitHub core),github_core,GitHub org(s): discourse; basis: sells hosted Discourse; country US; parent -; ; site https://www.discourse.org,discourse,48112
+prisma,"Prisma Data, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): prisma; basis: sells Prisma Postgres and Accelerate to ORM users; country US; parent -; ; site https://www.prisma.io,prisma,47770
+siyuan-note,Yunnan Liandi Technology (B3log),U1,COSS (GitHub core),github_core,GitHub org(s): siyuan-note; basis: sells SiYuan paid membership and cloud sync; country CN; parent -; ; site https://b3log.org/siyuan,siyuan-note,47388
+ifixai-ai,iFixAi,U1,COSS (GitHub core),github_core,GitHub org(s): ifixai-ai; basis: sells per-agent audit plans; open-source engine free; country US; parent -; ; site https://www.ifixai.ai/,ifixai-ai,47348
+serverless,"Serverless, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): serverless; basis: sells Serverless Framework licences and dashboard; country US; parent -; ; site https://serverless.com,serverless,46935
+milvus-io,Zilliz,U1,COSS (GitHub core),github_core,GitHub org(s): milvus-io; basis: LF AI & Data graduated project; Zilliz sells hosted Milvus; country US; parent Linux Foundation; ; site https://milvus.io/,milvus-io,46740
+RocketChat,Rocket.Chat,U1,COSS (GitHub core),github_core,GitHub org(s): RocketChat; basis: sells Rocket.Chat Enterprise and cloud; country BR; parent -; ; site https://rocket.chat,RocketChat,46552
+streamlit,Streamlit,U1,COSS (GitHub core),github_core,GitHub org(s): streamlit; basis: Streamlit company bought by Snowflake; country US; parent Snowflake; acquired by Snowflake 2022; site https://streamlit.io,streamlit,46507
+coqui-ai,Coqui,U1,COSS (GitHub core),github_core,GitHub org(s): coqui-ai; basis: sold Coqui Studio and XTTS commercial licences; country DE; parent -; shut down 2024; site ,coqui-ai,46281
+janhq,Menlo Research,U1,COSS (GitHub core),github_core,GitHub org(s): janhq; basis: company's main product is Jan itself; no paid tier found; country SG; parent -; ; site https://jan.ai,janhq,46134
+payloadcms,Payload,U1,COSS (GitHub core),github_core,GitHub org(s): payloadcms; basis: sells Payload Cloud and enterprise; bought by Figma; country US; parent Figma; acquired by Figma 2025; site https://payloadcms.com,payloadcms,46010
+getsentry,Sentry (Functional Software),U1,COSS (GitHub core),github_core,GitHub org(s): getsentry; basis: sells hosted Sentry; country US; parent -; ; site https://sentry.io,getsentry,45883
+logseq,Logseq Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): logseq; basis: sells Logseq Sync subscription; country US; parent -; ; site https://logseq.com,logseq,45705
+meteor,Meteor Software,U1,COSS (GitHub core),github_core,GitHub org(s): meteor; basis: sells Galaxy hosting for Meteor apps; country CA; parent Tiny; acquired by Tiny 2019; site https://meteor.com/,meteor,44789
+ray-project,Anyscale,U1,COSS (GitHub core),github_core,GitHub org(s): ray-project; basis: Ray contributed to PyTorch Foundation; Anyscale sells hosted Ray; country US; parent Linux Foundation; contributed by Anyscale 2025; site https://docs.ray.io,ray-project,44382
+HeyPuter,Puter Technologies Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): HeyPuter; basis: sells paid plans for hosted Puter; country CA; parent -; ; site https://puter.com,HeyPuter,44258
+gradio-app,Gradio,U1,COSS (GitHub core),github_core,GitHub org(s): gradio-app; basis: Hugging Face Spaces hosting marketed to Gradio users; country US; parent Hugging Face; acquired by Hugging Face 2021; site www.gradio.app,gradio-app,44150
+duckdb,DuckDB Labs,U1,COSS (GitHub core),github_core,GitHub org(s): duckdb; basis: Dutch foundation owns DuckDB IP; DuckDB Labs sells support; country NL; parent -; ; site https://www.duckdb.org,duckdb,43355
+agno-agi,Agno,U1,COSS (GitHub core),github_core,GitHub org(s): agno-agi; basis: sells Agno AgentOS platform; country US; parent -; ; site https://agno.com,agno-agi,43303
+tinyhumansai,Tiny Human Intelligence Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): tinyhumansai; basis: sells credits for hosted orchestrator behind its open agents; country US; parent -; ; site https://tinyhumans.ai/,tinyhumansai,42847
+phaserjs,Phaser Studio Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): phaserjs; basis: sells Phaser Editor and tools for Phaser developers; country US; parent -; ; site https://phaser.io,phaserjs,42567
+lightpanda-io,Lightpanda,U1,COSS (GitHub core),github_core,GitHub org(s): lightpanda-io; basis: sells hosted Lightpanda cloud browser; country FR; parent -; ; site https://lightpanda.io,lightpanda-io,42551
+chatboxai,Chatbox AI,U1,COSS (GitHub core),github_core,GitHub org(s): chatboxai; basis: sells Chatbox AI subscriptions in the same app; country ?; parent -; ; site https://chatboxai.app,chatboxai,42540
+gitroomhq,Gitroom,U1,COSS (GitHub core),github_core,GitHub org(s): gitroomhq; basis: sells hosted Postiz subscriptions; country IL; parent -; ; site https://gitroom.com,gitroomhq,42405
+dcloudio,DCloud,U1,COSS (GitHub core),github_core,GitHub org(s): dcloudio; basis: sells uniCloud and ad services to uni-app developers; country CN; parent -; ; site http://dcloud.io,dcloudio,41700
+frappe,Frappe Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): frappe; basis: sells Frappe Cloud hosting and ERPNext support; country IN; parent -; ; site https://frappe.io,frappe,41632
+outline,General Outline,U1,COSS (GitHub core),github_core,GitHub org(s): outline; basis: sells hosted Outline knowledge base; country US; parent -; ; site https://www.getoutline.com,outline,41384
+appsmithorg,Appsmith,U1,COSS (GitHub core),github_core,GitHub org(s): appsmithorg; basis: sells Appsmith Business and Enterprise; country US; parent -; ; site https://www.appsmith.com,appsmithorg,41303
+ToolJet,ToolJet,U1,COSS (GitHub core),github_core,GitHub org(s): ToolJet; basis: sells ToolJet Cloud and enterprise; country ?; parent -; ; site https://tooljet.com,ToolJet,41302
+aseprite,Igara Studio,U1,COSS (GitHub core),github_core,GitHub org(s): aseprite; basis: sells Aseprite binaries; source-available; country AR; parent -; ; site https://www.aseprite.org/,aseprite,41155
+PostHog,PostHog Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): PostHog; basis: sells PostHog Cloud; country US; parent -; ; site https://posthog.com,PostHog,41119
+datalab-to,Datalab,U1,COSS (GitHub core),github_core,GitHub org(s): datalab-to; basis: sells hosted API and commercial licences for marker; country US; parent -; ; site https://www.datalab.to,datalab-to,41083
+vuetifyjs,Vuetify LLC,U1,COSS (GitHub core),github_core,"GitHub org(s): vuetifyjs; basis: sells Vuetify One subscriptions, support and premium add-ons; country US; parent -; ; site https://vuetifyjs.com",vuetifyjs,41043
+VectifyAI,Vectify AI,U1,COSS (GitHub core),github_core,GitHub org(s): VectifyAI; basis: sells hosted PageIndex API and platform; country GB; parent -; ; site https://pageindex.ai,VectifyAI,40786
+pingcap,PingCAP,U1,COSS (GitHub core),github_core,GitHub org(s): pingcap; basis: sells TiDB Cloud and Enterprise; country US; parent -; ; site https://pingcap.com,pingcap,40773
+chakra-ui,Chakra Systems,U1,COSS (GitHub core),github_core,GitHub org(s): chakra-ui; basis: maintainers' Chakra Systems sells Chakra UI Pro components; country ?; parent -; ; site chakra-ui.com,chakra-ui,40751
+chatwoot,Chatwoot,U1,COSS (GitHub core),github_core,GitHub org(s): chatwoot; basis: sells Chatwoot Cloud and enterprise; country US; parent -; ; site www.chatwoot.com,chatwoot,40566
+pola-rs,Polars B.V.,U1,COSS (GitHub core),github_core,GitHub org(s): pola-rs; basis: sells Polars Cloud; country NL; parent -; ; site https://www.pola.rs/,pola-rs,40505
+photoprism,PhotoPrism UG,U1,COSS (GitHub core),github_core,GitHub org(s): photoprism; basis: sells PhotoPrism+ memberships; country DE; parent -; ; site https://www.photoprism.app/,photoprism,40477
+novuhq,Novu,U1,COSS (GitHub core),github_core,GitHub org(s): novuhq; basis: sells Novu Cloud and enterprise; country ?; parent -; ; site https://go.novu.co/github,novuhq,40429
+umami-software,Umami Software,U1,COSS (GitHub core),github_core,GitHub org(s): umami-software; basis: sells Umami Cloud; country US; parent -; ; site https://umami.is,umami-software,40350
+DioxusLabs,Dioxus Labs,U1,COSS (GitHub core),github_core,GitHub org(s): DioxusLabs; basis: company built around Dioxus; no paid product listed yet; country US; parent -; ; site https://dioxuslabs.com,DioxusLabs,39917
+mindsdb,MindsDB,U1,COSS (GitHub core),github_core,GitHub org(s): mindsdb; basis: sells MindsDB cloud and enterprise; country US; parent -; ; site mindsdb.com,mindsdb,39890
+mattermost,Mattermost,U1,COSS (GitHub core),github_core,GitHub org(s): mattermost; basis: sells Mattermost Enterprise and Cloud; country US; parent -; ; site https://mattermost.com,mattermost,39702
+tailscale,Tailscale,U1,COSS (GitHub core),github_core,GitHub org(s): tailscale; basis: sells Tailscale service; repo is the client; country CA; parent -; ; site https://tailscale.com,tailscale,39616
+spacedriveapp,Spacedrive Technology,U1,COSS (GitHub core),github_core,GitHub org(s): spacedriveapp; basis: company built around Spacedrive; paid cloud features planned; country ?; parent -; ; site https://spacedrive.com,spacedriveapp,39604
+xyflow,xyflow GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): xyflow; basis: sells React Flow Pro subscriptions; country DE; parent -; ; site https://xyflow.com,xyflow,39158
+ueberdosis,überdosis GmbH (Tiptap),U1,COSS (GitHub core),github_core,GitHub org(s): ueberdosis; basis: sells Tiptap Pro extensions and cloud; country DE; parent -; ; site https://tiptap.dev,ueberdosis,39132
+CopilotKit,CopilotKit,U1,COSS (GitHub core),github_core,GitHub org(s): CopilotKit; basis: sells Copilot Cloud hosted version; country US; parent -; ; site https://copilotkit.ai,CopilotKit,38976
+harness,Harness,U1,COSS (GitHub core),github_core,GitHub org(s): harness; basis: open-source edition of its commercial developer platform; country US; parent -; ; site https://harness.io/,harness,38975
+portainer,Portainer.io,U1,COSS (GitHub core),github_core,GitHub org(s): portainer; basis: sells Portainer Business Edition; country NZ; parent -; ; site https://portainer.io,portainer,38912
+httpie,HTTPie,U1,COSS (GitHub core),github_core,GitHub org(s): httpie; basis: company builds HTTPie apps around the CLI; country US; parent -; ; site https://httpie.io,httpie,38739
+Dokploy,Dokploy,U1,COSS (GitHub core),github_core,GitHub org(s): Dokploy; basis: sells Dokploy Cloud managed plans; country ?; parent -; ; site https://dokploy.com,Dokploy,38712
+directus,Monospace Inc. (Directus),U1,COSS (GitHub core),github_core,GitHub org(s): directus; basis: sells Directus Cloud and enterprise licences; country US; parent -; ; site https://directus.com,directus,38660
+khoj-ai,Khoj Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): khoj-ai; basis: sells hosted Khoj cloud plans; country US; parent -; ; site https://khoj.dev,khoj-ai,38241
+langfuse,Langfuse,U1,COSS (GitHub core),github_core,GitHub org(s): langfuse; basis: sells Langfuse Cloud and Enterprise; country DE; parent ClickHouse; acquired by ClickHouse 2026; site https://langfuse.com,langfuse,37847
+IceWhaleTech,IceWhale Technology,U1,COSS (GitHub core),github_core,GitHub org(s): IceWhaleTech; basis: sells ZimaBoard/ZimaCube hardware running CasaOS/ZimaOS; country CN; parent -; ; site https://www.zimaspace.com/,IceWhaleTech,37705
+nextcloud,Nextcloud GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): nextcloud; basis: sells Nextcloud Enterprise subscriptions; country DE; parent -; ; site https://nextcloud.com,nextcloud,37634
+medusajs,Medusa,U1,COSS (GitHub core),github_core,GitHub org(s): medusajs; basis: sells Medusa Cloud; country US; parent -; ; site https://medusajs.com,medusajs,37408
+utmapp,UTM (Turing Software LLC),U1,COSS (GitHub core),github_core,GitHub org(s): utmapp; basis: same app sold on Mac App Store; country US; parent -; ; site https://getutm.app,utmapp,37058
+anywhere-labs,Jiuxiangxian (Beijing) Technology,U1,COSS (GitHub core),github_core,GitHub org(s): anywhere-labs; basis: company sells private deployment and custom development of DSH Desktop; country CN; parent -; ; site https://www.dshdesktop.cn/,anywhere-labs,36839
+continuedev,"Continue Dev, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): continuedev; basis: sells Continue team and enterprise plans; country US; parent -; ; site https://continue.dev,continuedev,36562
+rustfs,RustFS,U1,COSS (GitHub core),github_core,GitHub org(s): rustfs; basis: offers enterprise support for RustFS; country US; parent -; ; site https://rustfs.com,rustfs,36513
+drizzle-team,Drizzle Team,U1,COSS (GitHub core),github_core,GitHub org(s): drizzle-team; basis: company behind Drizzle; licenses embeddable Drizzle Studio; country ?; parent -; ; site https://drizzle.team,drizzle-team,36388
+SheetJS,SheetJS LLC,U1,COSS (GitHub core),github_core,GitHub org(s): SheetJS; basis: sells SheetJS Pro; country US; parent -; ; site https://sheetjs.com,SheetJS,36337
+seaweedfs,SeaweedFS,U1,COSS (GitHub core),github_core,GitHub org(s): seaweedfs; basis: maintainer sells SeaweedFS Enterprise edition; country US; parent -; ; site ,seaweedfs,36258
+refinedev,Refine,U1,COSS (GitHub core),github_core,GitHub org(s): refinedev; basis: sells Refine Enterprise and hosted refine.new builder; country US; parent -; ; site https://refine.dev,refinedev,36079
+qdrant,Qdrant,U1,COSS (GitHub core),github_core,GitHub org(s): qdrant; basis: sells Qdrant Cloud and enterprise; country DE; parent -; ; site https://qdrant.tech/,qdrant,35708
+motiondivision,Motion Division,U1,COSS (GitHub core),github_core,GitHub org(s): motiondivision; basis: sells Motion+ premium membership; country NL; parent -; ; site https://motion.dev,motiondivision,35555
+vxcontrol,VXControl L.L.C-FZ,U1,COSS (GitHub core),github_core,"GitHub org(s): vxcontrol; basis: security studio; PentAGI is flagship, with an Enterprise edition; country AE; parent -; ; site https://vxcontrol.com",vxcontrol,35031
+Fincept-Corporation,Fincept Corporation,U1,COSS (GitHub core),github_core,GitHub org(s): Fincept-Corporation; basis: sells per-seat FinceptTerminal enterprise access; country IN; parent -; ; site https://fincept.in,Fincept-Corporation,34216
+explosion,Explosion,U1,COSS (GitHub core),github_core,GitHub org(s): explosion; basis: sells Prodigy and spaCy consulting to spaCy users; country DE; parent -; ; site https://explosion.ai,explosion,34094
+tinygrad,Tiny Corp,U1,COSS (GitHub core),github_core,GitHub org(s): tinygrad; basis: sells tinybox hardware running tinygrad; country US; parent -; ; site https://tinygrad.org/,tinygrad,33983
+TabbyML,TabbyML,U1,COSS (GitHub core),github_core,GitHub org(s): TabbyML; basis: sells Tabby Enterprise and cloud; country ?; parent -; ; site ,TabbyML,33938
+fishaudio,Fish Audio,U1,COSS (GitHub core),github_core,GitHub org(s): fishaudio; basis: open-weight TTS models; sells API and platform access; country ?; parent -; ; site https://fish.audio,fishaudio,33865
+Pythagora-io,Pythagora,U1,COSS (GitHub core),github_core,GitHub org(s): Pythagora-io; basis: sells Pythagora AI dev platform built on GPT Pilot; country US; parent -; ; site ,Pythagora-io,33638
+topoteretes,Topoteretes (cognee),U1,COSS (GitHub core),github_core,GitHub org(s): topoteretes; basis: sells hosted cognee platform; country DE; parent -; ; site https://topoteretes.com,topoteretes,33609
+onyx-dot-app,Onyx,U1,COSS (GitHub core),github_core,GitHub org(s): onyx-dot-app; basis: sells Onyx Cloud and Enterprise Edition; country US; parent -; ; site https://www.onyx.app/,onyx-dot-app,33545
+anoma,Anoma (Heliax),U1,COSS (GitHub core),github_core,GitHub org(s): anoma; basis: company developing the Anoma protocol; country CH; parent -; ; site https://anoma.net,anoma,33517
+surrealdb,SurrealDB Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): surrealdb; basis: sells Surreal Cloud and enterprise licences; country GB; parent -; ; site https://surrealdb.com,surrealdb,33356
+nginx,NGINX,U1,COSS (GitHub core),github_core,GitHub org(s): nginx; basis: sells NGINX Plus; country US; parent F5; acquired by F5 2019; site https://nginx.org/,nginx,33351
+projectdiscovery,ProjectDiscovery,U1,COSS (GitHub core),github_core,GitHub org(s): projectdiscovery; basis: sells ProjectDiscovery Cloud platform around nuclei; country US; parent -; ; site https://projectdiscovery.io/,projectdiscovery,33290
+getzep,Zep,U1,COSS (GitHub core),github_core,GitHub org(s): getzep; basis: sells Zep Cloud built on Graphiti; country US; parent -; ; site https://www.getzep.com,getzep,33089
+CloakHQ,CloakHQ,U1,COSS (GitHub core),github_core,GitHub org(s): CloakHQ; basis: sells CloakBrowser Pro and OEM licences; country ?; parent -; ; site ,CloakHQ,33066
+ankitects,"Anki Software, LLC (Ankitects)",U1,COSS (GitHub core),github_core,"GitHub org(s): ankitects; basis: sells AnkiMobile iOS version of Anki to fund development; country US; parent -; trademark held by Anki Software, LLC; site ",ankitects,33026
+ScrapeGraphAI,ScrapeGraphAI,U1,COSS (GitHub core),github_core,GitHub org(s): ScrapeGraphAI; basis: sells hosted ScrapeGraph API; country US; parent -; ; site https://scrapegraphai.com/,ScrapeGraphAI,32939
+trycua,Cua,U1,COSS (GitHub core),github_core,GitHub org(s): trycua; basis: sells hosted cloud sandboxes for Cua agents; country US; parent -; ; site https://cua.ai,trycua,32922
+SigNoz,SigNoz,U1,COSS (GitHub core),github_core,GitHub org(s): SigNoz; basis: sells SigNoz Cloud and Enterprise; country US; parent -; ; site https://signoz.io/,SigNoz,32736
+cockroachdb,Cockroach Labs,U1,COSS (GitHub core),github_core,GitHub org(s): cockroachdb; basis: sells CockroachDB Cloud and Enterprise; country US; parent -; ; site https://www.cockroachlabs.com/,cockroachdb,32638
+atuinsh,"Atuin, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): atuinsh; basis: company built around Atuin; team features in beta; country ?; parent -; ; site ,atuinsh,32636
+conductor-oss,Orkes,U1,COSS (GitHub core),github_core,GitHub org(s): conductor-oss; basis: maintainers' company Orkes sells hosted Conductor; country US; parent -; ; site https://conductor-oss.org/,conductor-oss,32508
+hasura,Hasura,U1,COSS (GitHub core),github_core,GitHub org(s): hasura; basis: sells Hasura Cloud/DDN and Enterprise; country US; parent -; ; site https://hasura.io,hasura,32125
+linera-io,Linera,U1,COSS (GitHub core),github_core,GitHub org(s): linera-io; basis: company developing the Linera blockchain protocol; country ?; parent -; ; site https://linera.io,linera-io,32005
+dragonflydb,DragonflyDB,U1,COSS (GitHub core),github_core,GitHub org(s): dragonflydb; basis: sells Dragonfly Cloud; country IL; parent -; ; site dragonflydb.io,dragonflydb,31932
+AvaloniaUI,AvaloniaUI OÜ,U1,COSS (GitHub core),github_core,"GitHub org(s): AvaloniaUI; basis: sells Avalonia XPF, Accelerate and support; country EE; parent -; ; site https://avaloniaui.net/",AvaloniaUI,31870
+dream-num,DreamNum (Univer),U1,COSS (GitHub core),github_core,GitHub org(s): dream-num; basis: sells Univer Pro and enterprise licences; country CN; parent -; ; site https://univer.ai,dream-num,31844
+influxdata,InfluxData,U1,COSS (GitHub core),github_core,GitHub org(s): influxdata; basis: sells InfluxDB Cloud and Enterprise; country US; parent -; ; site https://influxdata.com,influxdata,31834
+nautechsystems,Nautech Systems Pty Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): nautechsystems; basis: sells institutional support; Pro and cloud platform coming; country AU; parent -; ; site https://nautilustrader.io,nautechsystems,31819
+supermemoryai,Supermemory,U1,COSS (GitHub core),github_core,GitHub org(s): supermemoryai; basis: sells hosted supermemory API and app; country US; parent -; ; site https://supermemory.com,supermemoryai,31726
+hypit-ai,Hypit,U1,COSS (GitHub core),github_core,GitHub org(s): hypit-ai; basis: hosted web app and API alongside open-source core; country ?; parent -; ; site https://hypit.ai,hypit-ai,31504
+Lightning-AI,Lightning AI,U1,COSS (GitHub core),github_core,GitHub org(s): Lightning-AI; basis: sells Lightning AI Studio platform to PyTorch Lightning users; country US; parent -; ; site https://lightning.ai/,Lightning-AI,31465
+symfony,Symfony SAS,U1,COSS (GitHub core),github_core,"GitHub org(s): symfony; basis: sells Symfony training, certification, support and SymfonyInsight; country FR; parent -; ; site https://symfony.com/",symfony,31457
+heroui-inc,HeroUI Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): heroui-inc; basis: sells HeroUI Pro components and templates; country US; parent -; ; site https://heroui.com,heroui-inc,31316
+netbirdio,NetBird,U1,COSS (GitHub core),github_core,GitHub org(s): netbirdio; basis: sells NetBird Cloud and enterprise plans; country DE; parent -; ; site ,netbirdio,31281
+greensock,GreenSock,U1,COSS (GitHub core),github_core,GitHub org(s): greensock; basis: sold GSAP Club licences until Webflow bought it; now free; country US; parent Webflow; acquired by Webflow 2024; site http://gsap.com,greensock,31259
+nanocoai,NanoCo,U1,COSS (GitHub core),github_core,GitHub org(s): nanocoai; basis: NanoClaw creators sell enterprise AI assistant (early access); country ?; parent -; ; site https://www.nanoco.ai/,nanocoai,31163
+e2b-dev,E2B,U1,COSS (GitHub core),github_core,GitHub org(s): e2b-dev; basis: sells hosted E2B sandboxes from open-source infra; top repo is a list; country US; parent -; ; site https://e2b.dev/,e2b-dev,31062
+better-auth,Better Auth,U1,COSS (GitHub core),github_core,GitHub org(s): better-auth; basis: sells Better Auth Infrastructure dashboard and services; country US; parent -; ; site https://better-auth.com,better-auth,30881
+karakeep-app,Localhost Labs Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): karakeep-app; basis: sells hosted Karakeep Cloud; country GB; parent -; ; site https://karakeep.com,karakeep-app,30845
+Infisical,Infisical,U1,COSS (GitHub core),github_core,GitHub org(s): Infisical; basis: sells Infisical Cloud and Enterprise; country US; parent -; ; site https://www.infisical.com,Infisical,30765
+statelyai,Stately,U1,COSS (GitHub core),github_core,GitHub org(s): statelyai; basis: sells Stately Studio for XState users; country US; parent -; ; site https://stately.ai,statelyai,30555
+ente,Ente Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): ente; basis: sells end-to-end encrypted storage subscriptions; country ?; parent -; ; site https://ente.com,ente,30489
+kestra-io,Kestra Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): kestra-io; basis: sells Kestra Enterprise and Cloud; country FR; parent -; ; site https://kestra.io,kestra-io,30357
+deepinsight,InsightFace,U1,COSS (GitHub core),github_core,GitHub org(s): deepinsight; basis: sells commercial model licences and a face-swap service; country HK; parent -; ; site ,deepinsight,30306
+jitsi,Jitsi,U1,COSS (GitHub core),github_core,GitHub org(s): jitsi; basis: 8x8 unit sells Jitsi as a Service; originally BlueJimp; country US; parent 8x8; acquired by 8x8 2018; site https://jitsi.org,jitsi,30289
+simstudioai,Sim,U1,COSS (GitHub core),github_core,GitHub org(s): simstudioai; basis: sells hosted Sim cloud plans; country US; parent -; ; site https://sim.ai,simstudioai,30205
+modular,Modular Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): modular; basis: sells Modular Platform (MAX) enterprise; country US; parent -; ; site https://www.modular.com,modular,30197
+JaidedAI,Jaided AI,U1,COSS (GitHub core),github_core,GitHub org(s): JaidedAI; basis: company whose only product is EasyOCR; no paid tier listed now; country TH; parent -; ; site https://jaided.ai,JaidedAI,30172
+labring,Sealos (labring),U1,COSS (GitHub core),github_core,GitHub org(s): labring; basis: sells Sealos cloud and FastGPT commercial editions; country CN; parent -; ; site https://sealos.io,labring,30103
+plausible,Plausible Insights OU,U1,COSS (GitHub core),github_core,GitHub org(s): plausible; basis: sells hosted Plausible Analytics; country EE; parent -; ; site https://plausible.io,plausible,29939
+mastra-ai,Mastra,U1,COSS (GitHub core),github_core,GitHub org(s): mastra-ai; basis: sells Mastra Cloud; country US; parent -; ; site https://mastra.ai,mastra-ai,29817
+chroma-core,Chroma,U1,COSS (GitHub core),github_core,GitHub org(s): chroma-core; basis: sells Chroma Cloud; country US; parent -; ; site trychroma.com,chroma-core,29772
+trufflesecurity,Truffle Security,U1,COSS (GitHub core),github_core,GitHub org(s): trufflesecurity; basis: sells TruffleHog Enterprise; country US; parent -; ; site https://trufflesecurity.com,trufflesecurity,29664
+composer,Packagist Conductors GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): composer; basis: maintainers' company sells Private Packagist; country DE; parent -; ; site https://getcomposer.org/,composer,29590
+nrwl,Nrwl (Nx),U1,COSS (GitHub core),github_core,GitHub org(s): nrwl; basis: sells Nx Cloud and Nx Enterprise; country US; parent -; ; site https://nx.dev,nrwl,29495
+invoke-ai,Invoke,U1,COSS (GitHub core),github_core,GitHub org(s): invoke-ai; basis: sells hosted Invoke for teams; country US; parent -; ; site http://invoke.ai,invoke-ai,29160
+GitbookIO,GitBook,U1,COSS (GitHub core),github_core,GitHub org(s): GitbookIO; basis: sells hosted GitBook; repo is its open renderer; country US; parent -; ; site https://www.gitbook.com,GitbookIO,29106
+gastownhall,"Gas City, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): gastownhall; basis: sells Beads Team Server as managed SaaS or self-hosted; country US; parent -; ; site https://gastownhall.ai,gastownhall,29067
+reflex-dev,Reflex,U1,COSS (GitHub core),github_core,GitHub org(s): reflex-dev; basis: sells Reflex Cloud hosting and enterprise; country US; parent -; ; site https://reflex.dev/?utm_source=github&utm_medium=repo&utm_campaign=reflex-company-page,reflex-dev,29045
+cloudreve,Cloudreve,U1,COSS (GitHub core),github_core,GitHub org(s): cloudreve; basis: sells Cloudreve Pro licences; country CN; parent -; ; site https://cloudreve.org,cloudreve,29014
+manaflow-ai,Manaflow,U1,COSS (GitHub core),github_core,GitHub org(s): manaflow-ai; basis: sells cmux Pro and cloud VMs; country US; parent -; ; site ,manaflow-ai,28970
+getredash,Redash,U1,COSS (GitHub core),github_core,GitHub org(s): getredash; basis: hosted Redash company bought by Databricks; country US; parent Databricks; acquired by Databricks 2020; site https://redash.io/,getredash,28902
+every-app,EveryApp (OpenSEO),U1,COSS (GitHub core),github_core,GitHub org(s): every-app; basis: makers sell usage-based hosted OpenSEO credits; country ?; parent -; ; site https://everyapp.com,every-app,28897
+BloopAI,Bloop AI,U1,COSS (GitHub core),github_core,GitHub org(s): BloopAI; basis: offered hosted Vibe Kanban Cloud; country GB; parent -; Vibe Kanban sunsetting; site ,BloopAI,28814
+fingerprintjs,Fingerprint (FingerprintJS Inc.),U1,COSS (GitHub core),github_core,GitHub org(s): fingerprintjs; basis: sells Fingerprint Pro identification; country US; parent -; ; site https://fingerprint.com,fingerprintjs,28808
+yikart,AiToEarn Team,U1,COSS (GitHub core),github_core,GitHub org(s): yikart; basis: hosted AiToEarn cloud with pricing page; company unnamed; country CN; parent -; ; site https://aitoearn.ai/,yikart,28714
+mongodb,MongoDB Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): mongodb; basis: sells MongoDB Atlas and Enterprise; country US; parent -; ; site http://www.mongodb.com/,mongodb,28709
+voideditor,Void,U1,COSS (GitHub core),github_core,GitHub org(s): voideditor; basis: YC startup whose product is the Void editor; country US; parent -; ; site voideditor.com,voideditor,28699
+Budibase,Budibase,U1,COSS (GitHub core),github_core,GitHub org(s): Budibase; basis: sells Budibase Cloud and Enterprise; country GB; parent -; ; site https://www.budibase.com,Budibase,28451
+OtterMind,OtterMind,U1,COSS (GitHub core),github_core,GitHub org(s): OtterMind; basis: sells Chat2DB Pro and cloud; country SG; parent -; ; site https://ottermind.ai,OtterMind,28372
+locustio,Locust Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): locustio; basis: maintainers' company sells hosted Locust Cloud; country SE; parent -; ; site https://locust.cloud,locustio,28313
+hcengineering,Huly Labs,U1,COSS (GitHub core),github_core,GitHub org(s): hcengineering; basis: sells hosted Huly platform; country US; parent -; ; site https://huly.io,hcengineering,28197
+Kilo-Org,Kilo Code,U1,COSS (GitHub core),github_core,"GitHub org(s): Kilo-Org; basis: sells Kilo platform (team plans, AI gateway) for the agent; country US; parent -; ; site ",Kilo-Org,28124
+onlook-dev,Onlook,U1,COSS (GitHub core),github_core,GitHub org(s): onlook-dev; basis: sells hosted Onlook plans; country US; parent -; ; site https://onlook.com,onlook-dev,27941
+BeyondDimension,Changsha Beyond Dimension Technology,U1,COSS (GitHub core),github_core,GitHub org(s): BeyondDimension; basis: company built around Watt Toolkit; country CN; parent -; ; site https://steampp.net,BeyondDimension,27752
+promptfoo,Promptfoo,U1,COSS (GitHub core),github_core,GitHub org(s): promptfoo; basis: sells Promptfoo Enterprise; country US; parent -; ; site https://promptfoo.dev,promptfoo,27680
+Stability-AI,Stability AI,U1,COSS (GitHub core),github_core,GitHub org(s): Stability-AI; basis: open-weight models; sells API and commercial licences; country GB; parent -; ; site https://stability.ai/,Stability-AI,27343
+typesense,Typesense,U1,COSS (GitHub core),github_core,GitHub org(s): typesense; basis: sells Typesense Cloud; country US; parent -; ; site https://typesense.org,typesense,27173
+deepset-ai,deepset,U1,COSS (GitHub core),github_core,GitHub org(s): deepset-ai; basis: sells deepset AI Platform (enterprise Haystack); country DE; parent -; ; site https://deepset.ai,deepset-ai,27111
+rethinkdb,RethinkDB,U1,COSS (GitHub core),github_core,GitHub org(s): rethinkdb; basis: Linux Foundation project since the company shut down; country US; parent -; company shut down 2016; site https://rethinkdb.com/,rethinkdb,27015
+marmelab,marmelab,U1,COSS (GitHub core),github_core,GitHub org(s): marmelab; basis: sells react-admin Enterprise Edition; country FR; parent -; ; site http://marmelab.com,marmelab,27001
+readest,Bilingify LLC,U1,COSS (GitHub core),github_core,GitHub org(s): readest; basis: sells Readest paid storage plans; country US; parent -; ; site https://readest.com,readest,26675
+apify,Apify,U1,COSS (GitHub core),github_core,"GitHub org(s): apify; basis: Apify platform hosts Crawlee scrapers, marketed to its users; country CZ; parent -; ; site https://apify.com/",apify,26578
+goauthentik,Authentik Security,U1,COSS (GitHub core),github_core,GitHub org(s): goauthentik; basis: sells authentik Enterprise; country US; parent -; ; site https://goauthentik.io/,goauthentik,26463
+GrapesJS,GrapesJS,U1,COSS (GitHub core),github_core,GitHub org(s): GrapesJS; basis: sells GrapesJS Studio SDK commercial editions; country ?; parent -; ; site https://grapesjs.com,GrapesJS,26431
+zulip,Kandra Labs,U1,COSS (GitHub core),github_core,GitHub org(s): zulip; basis: sells Zulip Cloud and support; country US; parent -; ; site https://zulip.com,zulip,26302
+plotly,Plotly,U1,COSS (GitHub core),github_core,GitHub org(s): plotly; basis: sells Dash Enterprise; country CA; parent -; ; site https://plotly.com/,plotly,26283
+openfaas,OpenFaaS Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): openfaas; basis: sells OpenFaaS Pro and Enterprise; country GB; parent -; ; site https://www.openfaas.com,openfaas,26268
+browserbase,Browserbase,U1,COSS (GitHub core),github_core,GitHub org(s): browserbase; basis: sells hosted browsers marketed to Stagehand users; country US; parent -; ; site https://www.browserbase.com,browserbase,26144
+black-forest-labs,Black Forest Labs,U1,COSS (GitHub core),github_core,GitHub org(s): black-forest-labs; basis: open-weight FLUX models plus paid API access to them; country DE; parent -; ; site https://bfl.ai/,black-forest-labs,26082
+rancher,Rancher,U1,COSS (GitHub core),github_core,GitHub org(s): rancher; basis: sells Rancher Prime support; country US; parent SUSE; acquired by SUSE 2020; site https://www.rancher.com,rancher,26079
+Redocly,Redocly,U1,COSS (GitHub core),github_core,GitHub org(s): Redocly; basis: sells Redocly hosted docs platform; country US; parent -; ; site https://redocly.com,Redocly,26029
+pulumi,Pulumi,U1,COSS (GitHub core),github_core,GitHub org(s): pulumi; basis: sells Pulumi Cloud; country US; parent -; ; site https://pulumi.com/,pulumi,25939
+d2lang,Terrastruct,U1,COSS (GitHub core),github_core,GitHub org(s): d2lang; basis: sells D2 Studio and TALA layout engine; country US; parent -; ; site https://d2lang.com,d2lang,25915
+cilium,Isovalent,U1,COSS (GitHub core),github_core,GitHub org(s): cilium; basis: CNCF graduated; Isovalent (Cisco) sells enterprise edition; country US; parent Linux Foundation; ; site https://cilium.io,cilium,25910
+monicahq,Monica,U1,COSS (GitHub core),github_core,GitHub org(s): monicahq; basis: sells hosted Monica accounts; country CA; parent -; ; site https://monicahq.com,monicahq,25837
+pascalorg,Pascal Group Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): pascalorg; basis: sells Pascal Pro/Max plans for the hosted editor; country US; parent -; ; site https://editor.pascal.app,pascalorg,25756
+activepieces,Activepieces,U1,COSS (GitHub core),github_core,GitHub org(s): activepieces; basis: sells Activepieces Cloud and Enterprise; country US; parent -; ; site activepieces.com,activepieces,25727
+CapSoftware,Cap Software,U1,COSS (GitHub core),github_core,GitHub org(s): CapSoftware; basis: sells Cap Pro hosted sharing plans; country ?; parent -; ; site https://cap.so,CapSoftware,25592
+clockworklabs,Clockwork Labs,U1,COSS (GitHub core),github_core,GitHub org(s): clockworklabs; basis: sells SpacetimeDB Maincloud hosting; also makes BitCraft; country US; parent -; ; site https://clockworklabs.io,clockworklabs,25570
+letta-ai,Letta,U1,COSS (GitHub core),github_core,GitHub org(s): letta-ai; basis: sells Letta Cloud; country US; parent -; ; site https://letta.com,letta-ai,25543
+tursodatabase,Turso,U1,COSS (GitHub core),github_core,GitHub org(s): tursodatabase; basis: sells Turso Cloud; country US; parent -; ; site https://turso.tech,tursodatabase,25360
+lvgl,LVGL Kft,U1,COSS (GitHub core),github_core,GitHub org(s): lvgl; basis: sells LVGL Pro editor and services; country HU; parent -; ; site https://lvgl.io,lvgl,25247
+dubinc,Dub Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): dubinc; basis: sells hosted Dub link platform; country US; parent -; ; site https://dub.co,dubinc,25232
+withfig,Fig,U1,COSS (GitHub core),github_core,GitHub org(s): withfig; basis: sold Fig Pro/Team terminal tools; country US; parent Amazon; acquired by AWS 2023; sunset 2024; site fig.io,withfig,25210
+taosdata,TAOS Data (TDengine),U1,COSS (GitHub core),github_core,GitHub org(s): taosdata; basis: sells TDengine Enterprise and Cloud; country CN; parent -; ; site https://tdengine.com,taosdata,25206
+flipped-aurora,flipped-aurora,U1,COSS (GitHub core),github_core,GitHub org(s): flipped-aurora; basis: sells commercial licence and paid support for gin-vue-admin; country CN; parent -; ; site ,flipped-aurora,25165
+nocobase,NocoBase,U1,COSS (GitHub core),github_core,GitHub org(s): nocobase; basis: sells commercial editions and plugins; country CN; parent -; ; site https://www.nocobase.com/,nocobase,25007
+dolthub,DoltHub,U1,COSS (GitHub core),github_core,GitHub org(s): dolthub; basis: sells hosted Dolt and DoltHub; country US; parent -; ; site www.dolthub.com,dolthub,24983
+slint-ui,SixtyFPS GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): slint-ui; basis: sells Slint commercial licences and support; country DE; parent -; ; site https://slint.dev,slint-ui,24728
+zama-ai,Zama,U1,COSS (GitHub core),github_core,GitHub org(s): zama-ai; basis: sells commercial licences for its FHE libraries and protocol; country FR; parent -; ; site https://zama.org,zama-ai,24716
+temporalio,Temporal Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): temporalio; basis: sells Temporal Cloud; country US; parent -; ; site https://temporal.io,temporalio,24599
+different-ai,Different AI (OpenWork),U1,COSS (GitHub core),github_core,GitHub org(s): different-ai; basis: sells OpenWork subscriptions for its team control plane; country US; parent -; ; site ,different-ai,24591
+gitlabhq,GitLab Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): gitlabhq; basis: sells GitLab SaaS and Premium/Ultimate; country US; parent -; ; site https://about.gitlab.com/,gitlabhq,24572
+citrolabs,CitroLabs,U1,COSS (GitHub core),github_core,GitHub org(s): citrolabs; basis: main product is the ego browser; ego-lite is open; country SG; parent -; ; site https://citrolabs.ai,citrolabs,24506
+lexmount,LexMount,U1,COSS (GitHub core),github_core,GitHub org(s): lexmount; basis: sells hosted cloud browsers using its Moli engine; country ?; parent -; ; site https://browser.lexmount.com,lexmount,24486
+TecharoHQ,Techaro,U1,COSS (GitHub core),github_core,GitHub org(s): TecharoHQ; basis: sells BotStopper commercial version of Anubis; country CA; parent -; ; site https://techaro.lol,TecharoHQ,24437
+redisson,Redisson,U1,COSS (GitHub core),github_core,GitHub org(s): redisson; basis: sells Redisson PRO edition; country ?; parent -; ; site https://redisson.pro,redisson,24435
+brave,Brave Software,U1,COSS (GitHub core),github_core,"GitHub org(s): brave; basis: browser is main product; monetised via search, ads, premium, BAT; country US; parent -; ; site https://brave.com",brave,24314
+RooCodeInc,Roo Code,U1,COSS (GitHub core),github_core,GitHub org(s): RooCodeInc; basis: sells Roo Code Cloud agents; country US; parent -; ; site https://roomote.dev,RooCodeInc,24234
+mdbootstrap,MDBootstrap (StartupFlow),U1,COSS (GitHub core),github_core,GitHub org(s): mdbootstrap; basis: sells MDB Pro UI kits; country PL; parent -; ; site https://mdbootstrap.com,mdbootstrap,24233
+fosrl,Fossorial (Pangolin),U1,COSS (GitHub core),github_core,GitHub org(s): fosrl; basis: sells Pangolin Cloud and Enterprise; country US; parent -; ; site https://pangolin.net,fosrl,23988
+sinaptik-ai,Sinaptik (PandasAI),U1,COSS (GitHub core),github_core,GitHub org(s): sinaptik-ai; basis: sells PandasAI enterprise platform; country ?; parent -; ; site https://pandas-ai.com,sinaptik-ai,23964
+beekeeper-studio,Beekeeper Studio,U1,COSS (GitHub core),github_core,GitHub org(s): beekeeper-studio; basis: sells paid Beekeeper Studio editions; country US; parent -; ; site ,beekeeper-studio,23929
+timescale,Tiger Data,U1,COSS (GitHub core),github_core,GitHub org(s): timescale; basis: sells Tiger Cloud hosted TimescaleDB; country US; parent -; ; site https://www.tigerdata.com,timescale,23899
+vanna-ai,Vanna.AI,U1,COSS (GitHub core),github_core,GitHub org(s): vanna-ai; basis: sells hosted Vanna Cloud; country US; parent -; ; site https://vanna.ai/,vanna-ai,23781
+marimo-team,marimo,U1,COSS (GitHub core),github_core,GitHub org(s): marimo-team; basis: company built around marimo notebooks and hosted molab; country US; parent CoreWeave; acquired by CoreWeave 2025; site ,marimo-team,23745
+dracula,Dracula Theme (Zeno Rocha),U1,COSS (GitHub core),github_core,GitHub org(s): dracula; basis: sells Dracula Pro; country ?; parent -; ; site https://draculatheme.com,dracula,23619
+saleor,Saleor Commerce,U1,COSS (GitHub core),github_core,GitHub org(s): saleor; basis: sells Saleor Cloud; country PL; parent -; ; site https://saleor.io/,saleor,23604
+livewire,Livewire (Caleb Porzio),U1,COSS (GitHub core),github_core,GitHub org(s): livewire; basis: creator sells Flux UI Pro components for Livewire; country US; parent -; ; site https://laravel-livewire.com,livewire,23600
+magicuidesign,Magic UI,U1,COSS (GitHub core),github_core,GitHub org(s): magicuidesign; basis: sells Magic UI Pro templates; country ?; parent -; ; site https://magicui.design,magicuidesign,23564
+Skyvern-AI,Skyvern,U1,COSS (GitHub core),github_core,GitHub org(s): Skyvern-AI; basis: sells Skyvern Cloud; country US; parent -; ; site https://www.skyvern.com/,Skyvern-AI,23536
+comet-ml,Comet ML,U1,COSS (GitHub core),github_core,GitHub org(s): comet-ml; basis: sells Opik cloud and Comet platform; country US; parent -; ; site https://www.comet.com/site/,comet-ml,23513
+notable,Notable (Fabio Spampinato),U1,COSS (GitHub core),github_core,GitHub org(s): notable; basis: sells Notable app licences; repo is the issue tracker; country IT; parent -; ; site https://notable.app,notable,23492
+usablica,usablica (Intro.js),U1,COSS (GitHub core),github_core,GitHub org(s): usablica; basis: sells commercial Intro.js licences; country IE; parent -; ; site ,usablica,23460
+chaitin,Chaitin Tech,U1,COSS (GitHub core),github_core,GitHub org(s): chaitin; basis: sells SafeLine WAF professional and enterprise editions; country CN; parent -; ; site https://www.chaitin.com,chaitin,23443
+neondatabase,Neon,U1,COSS (GitHub core),github_core,GitHub org(s): neondatabase; basis: sells Neon serverless Postgres; country US; parent Databricks; acquired by Databricks 2025; site ,neondatabase,23400
+rome,Rome Tools,U1,COSS (GitHub core),github_core,GitHub org(s): rome; basis: company formed around Rome toolchain; country US; parent -; archived; company wound down 2023; continued as Biome; site ,rome,23335
+ovity,Ovity (Octotree),U1,COSS (GitHub core),github_core,"GitHub org(s): ovity; basis: sells Octotree Pro, paid version of the extension; country US; parent -; ; site ",ovity,23333
+lensapp,Lens,U1,COSS (GitHub core),github_core,GitHub org(s): lensapp; basis: sells Lens Plus subscriptions; repo now issues only; country US; parent Mirantis; ; site https://lenshq.io,lensapp,23250
+openobserve,OpenObserve,U1,COSS (GitHub core),github_core,GitHub org(s): openobserve; basis: sells OpenObserve Cloud and Enterprise; country US; parent -; ; site https://openobserve.ai,openobserve,23186
+chartdb,ChartDB,U1,COSS (GitHub core),github_core,GitHub org(s): chartdb; basis: sells hosted ChartDB plans; country US; parent -; ; site chartdb.io,chartdb,23177
+balderdashy,The Sails Company,U1,COSS (GitHub core),github_core,GitHub org(s): balderdashy; basis: sells Sails support and consulting; country US; parent -; ; site https://sailsjs.com/about,balderdashy,22774
+tracel-ai,Tracel Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): tracel-ai; basis: company sells solutions on its largely open-source Burn/CubeCL stack; country CA; parent -; ; site https://tracel.ai,tracel-ai,16348
+aipoch,AIPOCH,U1,COSS (GitHub core),github_core,GitHub org(s): aipoch; basis: company whose product is the open workbench; no paid tier found; country SG; parent -; ; site http://aipoch.com/open-science,aipoch,7665
+BruceDevices,Bruce Devices,U1,COSS (GitHub core),github_core,GitHub org(s): BruceDevices; basis: community firmware project selling its own boards; country ?; parent -; ; site bruce.computer,BruceDevices,7407
+Source-Robotics,Source Robotics,U1,COSS (GitHub core),github_core,GitHub org(s): Source-Robotics; basis: sells robot-arm kits of its open designs; country HR; parent -; ; site https://source-robotics.com/,Source-Robotics,5114
+arrayfire,ArrayFire LLC,U1,COSS (GitHub core),github_core,GitHub org(s): arrayfire; basis: company sells support and services for ArrayFire library; country US; parent -; ; site https://www.arrayfire.com/,arrayfire,4914
+nextflow-io,Seqera,U1,COSS (GitHub core),github_core,GitHub org(s): nextflow-io; basis: maintainers' company Seqera sells hosted Seqera Platform; country ES; parent -; ; site http://nextflow.io,nextflow-io,3535
+dimforge,Dimforge,U1,COSS (GitHub core),github_core,GitHub org(s): dimforge; basis: maintainer's company funds Rapier/nphysics via sponsorship and support; country FR; parent -; ; site ,dimforge,2365
+layabox,Layabox,U1,COSS (GitHub core),github_core,GitHub org(s): layabox; basis: company behind LayaAir engine; sells engine services; country CN; parent -; ; site www.layabox.com,layabox,2268
+psychopy,Open Science Tools Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): psychopy; basis: company sells Pavlovia hosting and PsychoPy support; country GB; parent -; ; site https://www.psychopy.org,psychopy,2134
+TileDB-Inc,"TileDB, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): TileDB-Inc; basis: sells TileDB Cloud and enterprise; country US; parent -; ; site https://tiledb.com,TileDB-Inc,2093
+thetahealth,Theta Health,U1,COSS (GitHub core),github_core,GitHub org(s): thetahealth; basis: sells Theta Pro app built on Mirobody; country US; parent -; ; site https://www.thetahealth.ai/,thetahealth,1819
+OpenDrone-hw,Incutec BV (OpenDrone),U1,COSS (GitHub core),github_core,GitHub org(s): OpenDrone-hw; basis: Incutec BV shop sells OpenDrone boards and parts; country BE; parent -; ; site https://opendrone.be,OpenDrone-hw,1124
+symbolica-dev,Symbolica,U1,COSS (GitHub core),github_core,GitHub org(s): symbolica-dev; basis: sells commercial licences for Symbolica; country CH; parent -; ; site https://symbolica.io,symbolica-dev,1016
+nengo,Applied Brain Research,U1,COSS (GitHub core),github_core,GitHub org(s): nengo; basis: ABR sells commercial Nengo licences; country CA; parent -; ; site https://nengo.ai/,nengo,959
+makerdiary,makerdiary,U1,COSS (GitHub core),github_core,GitHub org(s): makerdiary; basis: sells the open hardware boards; country CN; parent -; ; site https://makerdiary.com,makerdiary,882
+harfang3d,HARFANG 3D,U1,COSS (GitHub core),github_core,GitHub org(s): harfang3d; basis: sells HARFANG Studio and licences; country FR; parent -; ; site https://www.harfang3d.com,harfang3d,663
+meshpro,MeshPro,U1,COSS (GitHub core),github_core,GitHub org(s): meshpro; basis: sells licences for Nico Schlömer's mesh tools; country DE; parent -; ; site ,meshpro,634
+tillitis,Tillitis AB,U1,COSS (GitHub core),github_core,GitHub org(s): tillitis; basis: sells TKey open-hardware security keys; country SE; parent -; ; site https://www.tillitis.se,tillitis,592
+wntrblm,Winterbloom,U1,COSS (GitHub core),github_core,GitHub org(s): wntrblm; basis: sells open-hardware music modules; country US; parent -; ; site https://winterbloom.com,wntrblm,588
+m-labs,M-Labs Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): m-labs; basis: sells Sinara hardware and ARTIQ support; country HK; parent -; ; site https://git.m-labs.hk/m-labs,m-labs,514
+auto-differentiation,Xcelerit,U1,COSS (GitHub core),github_core,GitHub org(s): auto-differentiation; basis: sells commercial licences and support for XAD; country IE; parent -; ; site https://www.xcelerit.com/xad/,auto-differentiation,445
+arvados,Curii Corporation,U1,COSS (GitHub core),github_core,GitHub org(s): arvados; basis: maintainers' company Curii sells Arvados support and hosting; country US; parent -; ; site ,arvados,422
+botbotrobotics,BotBot Robotics,U1,COSS (GitHub core),github_core,GitHub org(s): botbotrobotics; basis: sells BotBrain Pro and robot hardware; country BR; parent -; ; site https://botbot.bot,botbotrobotics,401
+roboninecom,Robonine,U1,COSS (GitHub core),github_core,GitHub org(s): roboninecom; basis: sells educational robot arms; country US; parent -; ; site https://robonine.com,roboninecom,361
+mzmine,mzio GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): mzmine; basis: maintainers' company sells mzmine commercial licences; country DE; parent -; ; site https://www.mzmine.org,mzmine,311
+hmislk,CareCode,U1,COSS (GitHub core),github_core,GitHub org(s): hmislk; basis: sells implementation and support of its open HMIS; country LK; parent -; ; site https://carecode.lk/,hmislk,255
+BlueQuartzSoftware,BlueQuartz Software,U1,COSS (GitHub core),github_core,"GitHub org(s): BlueQuartzSoftware; basis: company sells DREAM3D-NX, support and custom development; country US; parent -; ; site http://www.bluequartz.net",BlueQuartzSoftware,206
+scalableminds,scalable minds,U1,COSS (GitHub core),github_core,GitHub org(s): scalableminds; basis: sells hosted WEBKNOSSOS and support; country DE; parent -; ; site https://scalableminds.com,scalableminds,188
+sirius-ms,Bright Giant GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): sirius-ms; basis: spin-off sells commercial SIRIUS licences; FSU Jena co-develops; country DE; parent -; ; site ,sirius-ms,174
+kiisu-io,Kiisu (RainWalker),U1,COSS (GitHub core),github_core,GitHub org(s): kiisu-io; basis: sells Flipper-compatible development boards; country EE; parent -; ; site https://kiisu.io,kiisu-io,160
+Rowow-LLC,Rowow LLC,U1,COSS (GitHub core),github_core,"GitHub org(s): Rowow-LLC; basis: sells membranes, cells and kits from the open design; country US; parent -; ; site https://rowow.net",Rowow-LLC,158
+neuromore,neuromore,U1,COSS (GitHub core),github_core,GitHub org(s): neuromore; basis: company sold neuromore Studio licences; country US; parent -; ; site https://www.neuromore.com,neuromore,154
+quartiq,QUARTIQ GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): quartiq; basis: company sells Sinara hardware and firmware services; country DE; parent -; ; site ,quartiq,147
+Wakoma,Wakoma,U1,COSS (GitHub core),github_core,GitHub org(s): Wakoma; basis: social enterprise building open-source network kits; country CZ; parent -; ; site https://wakoma.co,Wakoma,112
+datalab-org,datalab industries ltd,U1,COSS (GitHub core),github_core,GitHub org(s): datalab-org; basis: maintainers' company offers managed datalab deployments; country GB; parent -; ; site https://datalab-org.io/,datalab-org,111
+ZiroEDA,ZIRO EDA,U1,COSS (GitHub core),github_core,GitHub org(s): ZiroEDA; basis: IIT Madras-incubated startup whose product is the open tool; country IN; parent -; ; site https://ziroeda.com,ZiroEDA,99
+LiteFold,LiteFold,U1,COSS (GitHub core),github_core,GitHub org(s): LiteFold; basis: sells LiteFold platform licences and computation services; country US; parent -; ; site https://litefold.ai,LiteFold,97
+uCAN-LIN,uCanDevices,U1,COSS (GitHub core),github_core,GitHub org(s): uCAN-LIN; basis: sells the USB-LIN dongle hardware; country PL; parent -; ; site ,uCAN-LIN,94
+fairscope,FairScope,U1,COSS (GitHub core),github_core,GitHub org(s): fairscope; basis: sells PlanktoScope hardware; country ?; parent -; ; site https://www.fairscope.com/,fairscope,94
+borneo-iot,Yunnan BinaryStars Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): borneo-iot; basis: sells LED controller hardware; country CN; parent -; ; site www.borneoiot.com,borneo-iot,81
+delmic,Delmic,U1,COSS (GitHub core),github_core,GitHub org(s): delmic; basis: sells microscopes run by Odemis; country NL; parent -; ; site https://www.delmic.com,delmic,56
+WarpKVM,WarpKVM,U1,COSS (GitHub core),github_core,GitHub org(s): WarpKVM; basis: sells KVM-over-IP hardware built on these boards; country ?; parent -; ; site warpkvm.com,WarpKVM,49
+openAMRobot,Botshare Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): openAMRobot; basis: sells OpenAMRobot kits and assembled robots; country CY; parent -; ; site botshare.ai,openAMRobot,42
+Cheshire-Labs,Cheshire Labs,U1,COSS (GitHub core),github_core,"GitHub org(s): Cheshire-Labs; basis: company owns Orca (CLA, SSPL) and sells lab automation solutions; country US; parent -; ; site https://www.linkedin.com/company/cheshire-labs/",Cheshire-Labs,35
+mat3ra,Mat3ra,U1,COSS (GitHub core),github_core,GitHub org(s): mat3ra; basis: materials-designer is part of its paid cloud platform; country US; parent -; ; site https://mat3ra.com,mat3ra,28
+mcneilco,John McNeil & Co. Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): mcneilco; basis: sells commercial ACAS modules; country US; parent -; ; site www.mcneilco.com,mcneilco,17
+Protocentral,ProtoCentral,U1,COSS (GitHub core),github_core,GitHub org(s): Protocentral; basis: sells HealthyPi open hardware; country IN; parent -; ; site www.protocentral.com,Protocentral,17
+Opentrons,Opentrons Labworks,U1,COSS (GitHub core),github_core,GitHub org(s): Opentrons; basis: sells the lab robots; country US; parent -; ; site https://opentrons.com,Opentrons,12
+arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,round1,boards; Qualcomm deal 2025,,
+raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,U2,open hardware (partial),round1,LSE IPO 2024,,
+adafruit,Adafruit Industries,U2,open hardware,round1,,,
+sparkfun,SparkFun Electronics,U2,open hardware,round1,,,
+seeed,Seeed Studio (Seeed Technology),U2,open hardware (partial),round1,Shenzhen,,
+pine64,Pine64 (Pine Store Ltd),U2,open hardware,round1,,,
+prusa,Prusa Research,U2,"open hardware, 3D printing",round1,Czech,,
+ultimaker,UltiMaker (Ultimaker B.V.),U2,"3D printing, Cura open source",round1,merged with MakerBot 2022,,
+makerbot,MakerBot Industries,U2,"3D printing, open designs until 2012",round1,Stratasys 2013,,
+aleph-objects,Aleph Objects (LulzBot),U2,"open hardware, 3D printing",round1,assets to FAME 3D 2019,,
+openbci,OpenBCI,U2,open hardware neurotech,round1,,,
+sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",round1,,,
+system76,System76,U2,"open firmware, Pop!_OS, open hardware designs",round1,,,
+framework,Framework Computer,U2,"repairable laptops, open docs (partial)",round1,,,
+sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,round1,,,
+oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,round1,,,
+kitware,Kitware,U2,"VTK, ParaView, CMake, 3D Slicer",round1,,,
+enthought,Enthought,U2,scientific Python (SciPy origins),round1,,,
+posit,Posit PBC (RStudio),U2,"RStudio IDE, Shiny, Quarto",round1,,,
+anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",round1,,,
+evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),round1,,,
+orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,round1,,,
+radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),round1,,,
+boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,round1,,,
+chai-discovery,Chai Discovery,U2,Chai-1 weights released (partial),round1,,,
+overleaf,Overleaf (WriteLaTeX),U2,open-source LaTeX editor (AGPL),added,Digital Science,,
+protocols-io,protocols.io,U2,open-access methods platform,added,Springer Nature 2023,,
+figshare,Figshare,U2,open data repository (code closed),added,Digital Science,,
+code-ocean,Code Ocean,U2,reproducibility platform (partial),added,,,
+curvenote,Curvenote,U2,open-source science publishing (MyST),added,,,
+arcadia-science,Arcadia Science,U2,"open-science R&D company, publishes openly",added,,,
+researchhub,ResearchHub (ResearchHub Technologies),U2,"open science platform, DeSci",added,,,
+molecule,Molecule (Molecule AG),U2,"DeSci, IP-NFTs",added,,,
+vitadao,VitaDAO,U2,DeSci DAO funding open longevity research,added,,,
+bio-protocol,BIO Protocol (Bio.xyz),U2,DeSci,added,,,
+labdao,LabDAO,U2,DeSci open tools,added,,,
+deep-forest,Deep Forest Sciences,U2,DeepChem company,added,,,
+rowan,Rowan (Rowan Scientific),U2,computational chemistry with open-source tools (partial),added,,,
+entalpic,Entalpic,U2,materials AI with open releases (partial),added,France,,
+valence-labs,Valence Labs,U2,open-source drug-discovery tools (datamol),added,Recursion 2023,,
+quansight,Quansight,U2,open-source scientific Python services,added,,,
+openteams,OpenTeams,U2,open-source services,added,,,
+coiled,Coiled,U2,Dask company,added,,,
+quantstack,QuantStack,U2,"Jupyter, conda-forge, mamba",added,France,,
+prefix-dev,prefix.dev,U2,pixi and conda tooling,added,Germany,,
+probabl,Probabl,U2,scikit-learn company,added,Inria spin-off,,
+juliahub,JuliaHub (Julia Computing),U2,Julia language,added,,,
+cocalc,"SageMath, Inc. (CoCalc)",U2,"SageMath, CoCalc",added,,,
+glencoe,Glencoe Software,U2,OME / OMERO bioimaging,added,,,
+open-imaging,"Open Imaging, Inc.",U2,Micro-Manager,added,,,
+observable,"Observable, Inc.",U2,"D3, Observable Plot and Framework",added,,,
+opencfd,OpenCFD Ltd,U2,OpenFOAM,added,"SGI 2011, ESI 2012",,
+scilab,Scilab Enterprises,U2,Scilab,added,ESI 2017,,
+deltablot,Deltablot (eLabFTW),U2,open-source electronic lab notebook,added,,,
+scinote,SciNote,U2,"electronic lab notebook, once open source",added,,,
+open-robotics,Open Robotics (OSRF commercial arm),U2,"ROS, Gazebo",added,Intrinsic 2022,,
+willow-garage,Willow Garage,U2,"ROS, PR2",added,closed 2014,,
+picknik,PickNik Robotics,U2,MoveIt,added,,,
+pollen-robotics,Pollen Robotics,U2,open-source robots (Reachy),added,Hugging Face 2025,,
+k-scale,K-Scale Labs,U2,open-source humanoid robots,added,,,
+hello-robot,Hello Robot,U2,"Stretch, open-source software (partial)",added,,,
+auterion,Auterion,U2,PX4 drones,added,,,
+3d-robotics,3D Robotics (3DR),U2,ArduPilot/PX4 drones,added,,,
+tier-iv,TIER IV,U2,Autoware,added,Japan,,
+itseez,Itseez,U2,OpenCV,added,Intel 2016,,
+particle,Particle (Spark Labs),U2,open-source IoT hardware,added,,,
+mycroft,Mycroft AI,U2,open-source voice assistant,added,equity crowdfunding,,
+mnt-research,MNT Research,U2,open-source laptop (Reform),added,,,
+purism,Purism,U2,free-software laptops and phones,added,,,
+bitcraze,Bitcraze,U2,open-source drones (Crazyflie),added,Sweden,,
+open-bionics,Open Bionics,U2,"prosthetics, open designs early",added,UK,,
+farmbot,FarmBot,U2,open-source farming robot,added,,,
+backyard-brains,Backyard Brains,U2,open-source neuroscience kits,added,,,
+openuc2,openUC2,U2,open-source optics toolkit,added,Germany,,
+opulo,Opulo (LumenPnP),U2,open-source pick-and-place,added,,,
+inventables,Inventables,U2,open-source CNC (X-Carve),added,,,
+printrbot,Printrbot,U2,open-source 3D printers,added,closed 2018,,
+re3d,re:3D,U2,"Gigabot, open source",added,,,
+bcn3d,BCN3D Technologies,U2,open-source 3D printers,added,Spain,,
+efabless,Efabless,U2,open-source silicon,added,shut 2025,,
+antmicro,Antmicro,U2,open-source hardware and software services (Renode),added,Poland,,
+tenstorrent,Tenstorrent,U2,"open-source software stack, RISC-V (partial)",added,,,
+trilobio,Trilobio,U2,lab automation; check openness,added,,,
+micropython,George Robotics (MicroPython),U2,MicroPython,added,,,
+openenergymonitor,OpenEnergyMonitor (Megni),U2,open-source energy monitors,added,UK,,
+nabu-casa,Nabu Casa (Home Assistant),U2,Home Assistant,added,,,
+crowd-supply,Crowd Supply,U2,open hardware crowdfunding platform,added,,,
+authorea,Authorea,U2,open-science writing,added,Wiley 2018,,
+f1000,F1000 Research,U2,open-access publishing,added,,,
+frontiers,Frontiers Media,U2,open-access publisher,added,,,
+bela,Augmented Instruments (Bela),U2,open-source audio hardware,added,UK,,
+openmv,OpenMV,U2,open-source machine vision camera,added,,,
+luxonis,Luxonis,U2,"OAK cameras, open hardware designs",added,,,
+great-scott-gadgets,Great Scott Gadgets,U2,open-source hardware (HackRF),added,,,
+ettus,Ettus Research,U2,"USRP, open-source UHD",added,NI 2010,,
+lime-micro,Lime Microsystems (LimeSDR),U2,open-source SDR,added,UK,,
+nuand,Nuand (bladeRF),U2,open-source SDR,added,,,
+red-hat,Red Hat,U3,COSS (Linux),round1,IBM 2019,,
+mysql-ab,MySQL AB,U3,COSS (database),round1,Sun 2008,,
+hortonworks,Hortonworks,U3,COSS (Hadoop),cohort,,,
+cloudera,Cloudera,U3,COSS (Hadoop),cohort,,,
+talend,Talend,U3,COSS (data integration),cohort,,,
+mulesoft,MuleSoft,U3,COSS (integration),cohort,,,
+springsource-pivotal,SpringSource / Pivotal Software,U3,"COSS (Spring, Cloud Foundry)",cohort,,,
+jfrog,JFrog,U3,COSS (Artifactory OSS),cohort,,,
+confluent,Confluent,U3,COSS (Kafka),cohort,IBM 2026,,
+suse,SUSE,U3,COSS (Linux),cohort,,,
+kaltura,Kaltura,U3,COSS (video),cohort,,,
+couchbase,Couchbase,U3,COSS (database),cohort,,,
+mariadb,MariaDB,U3,COSS (database),cohort,,,
+instructure,Instructure,U3,COSS (Canvas LMS),cohort,,,
+forgerock,ForgeRock,U3,COSS (identity),cohort,,,
+lightbend,Lightbend (Typesafe),U3,"COSS (Scala, Akka)",round1,,,
+neo4j,Neo4j,U3,COSS (graph database),round1,,,
+airbyte,Airbyte,U3,COSS (data integration),round1,,,
+astronomer,Astronomer,U3,COSS (Airflow),round1,,,
+automattic,Automattic,U3,COSS (WordPress),round1,,,
+canonical,Canonical,U3,COSS (Ubuntu),round1,,,
+dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),round1,,,
+databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",round1,,,
+dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),round1,,,
+github,GitHub,U3,open-source platform,round1,Microsoft 2018,,
+puppet,Puppet,U3,COSS (config management),round1,,,
+mistral,Mistral AI,U3,open-weight AI,round1,,,
+together-ai,Together AI,U3,"open-source AI, open models",round1,,,
+pydantic,Pydantic Services,U3,"COSS (Pydantic, Logfire)",round1,,,
+replicate,Replicate,U3,open-source Cog; model hosting,round1,Cloudflare 2025,,
+weaviate,Weaviate,U3,COSS (vector database),round1,,,
+ggml,ggml.ai,U3,"llama.cpp, ggml",round1,,,
+inferact,Inferact (vLLM),U3,COSS (vLLM),round1,,,
+cygnus,Cygnus Solutions,U3,COSS (GNU toolchain),added,Red Hat 1999,,
+va-linux,VA Linux Systems,U3,"Linux systems, SourceForge",added,IPO 1999,,
+sleepycat,Sleepycat Software,U3,COSS (Berkeley DB),added,Oracle 2006,,
+trolltech,Trolltech,U3,COSS (Qt),added,Nokia 2008,,
+sendmail,"Sendmail, Inc.",U3,COSS (sendmail),added,Proofpoint 2013,,
+zend,Zend Technologies,U3,COSS (PHP),added,,,
+jboss,JBoss,U3,COSS (Java app server),added,Red Hat 2006,,
+xensource,XenSource,U3,COSS (Xen),added,Citrix 2007,,
+sourcefire,Sourcefire,U3,COSS (Snort),added,"IPO 2007, Cisco 2013",,
+zimbra,Zimbra,U3,COSS (email),added,Yahoo 2007,,
+collabnet,CollabNet,U3,COSS (Subversion),added,,,
+hyperic,Hyperic,U3,COSS (monitoring),added,SpringSource 2009,,
+alfresco,Alfresco Software,U3,COSS (content management),added,,,
+acquia,Acquia,U3,COSS (Drupal),added,Vista 2019,,
+liferay,Liferay,U3,COSS (portal),added,,,
+sugarcrm,SugarCRM,U3,COSS (CRM),added,,,
+pentaho,Pentaho,U3,COSS (BI),added,Hitachi 2015,,
+jaspersoft,Jaspersoft,U3,COSS (BI),added,TIBCO 2014,,
+digium,Digium,U3,COSS (Asterisk),added,Sangoma 2018,,
+enterprisedb,EnterpriseDB (EDB),U3,COSS (PostgreSQL),added,,,
+percona,Percona,U3,open-source database services,added,,,
+basho,Basho Technologies,U3,COSS (Riak),added,shut 2017,,
+foundationdb,FoundationDB,U3,"database, open-sourced after Apple bought it (partial)",added,Apple 2015,,
+nicira,Nicira,U3,COSS (Open vSwitch),added,VMware 2012,,
+inktank,Inktank,U3,COSS (Ceph),added,Red Hat 2014,,
+gluster,Gluster,U3,COSS (GlusterFS),added,Red Hat 2011,,
+cumulus,Cumulus Networks,U3,open networking (partial),added,Nvidia 2020,,
+mirantis,Mirantis,U3,"COSS (OpenStack, Kubernetes)",added,,,
+nebula,"Nebula, Inc.",U3,OpenStack appliance,added,shut 2015,,
+coreos,CoreOS,U3,"COSS (container Linux, etcd)",added,Red Hat 2018,,
+heptio,Heptio,U3,COSS (Kubernetes tools),added,VMware 2018,,
+mesosphere,Mesosphere (D2iQ),U3,"COSS (Mesos, DC/OS)",added,shut 2023,,
+weaveworks,Weaveworks,U3,"COSS (Flux, Weave)",added,shut 2024,,
+ansible,Ansible (AnsibleWorks),U3,COSS (automation),added,Red Hat 2015,,
+saltstack,SaltStack,U3,COSS (automation),added,VMware 2020,,
+chef,Chef Software (Opscode),U3,COSS (automation),added,Progress 2020,,
+npm,"npm, Inc.",U3,open-source package registry,added,GitHub 2020,,
+tidelift,Tidelift,U3,pays open-source maintainers,added,Sonar 2024,,
+sonatype,Sonatype,U3,"Maven Central steward, Nexus OSS (partial)",added,,,
+datastax,DataStax,U3,COSS (Cassandra),added,IBM 2025,,
+scylladb,ScyllaDB,U3,COSS (database),added,,,
+yugabyte,Yugabyte,U3,COSS (YugabyteDB),added,,,
+aerospike,Aerospike,U3,"COSS (database, community edition)",added,,,
+starburst,Starburst,U3,COSS (Trino),added,,,
+dremio,Dremio,U3,"COSS (data lakehouse, Arrow)",added,,,
+imply,Imply,U3,COSS (Druid),added,,,
+alluxio,Alluxio,U3,COSS (data orchestration),added,,,
+ahana,Ahana,U3,COSS (Presto),added,IBM 2023,,
+tabular,Tabular,U3,COSS (Iceberg),added,Databricks 2024,,
+onehouse,Onehouse,U3,COSS (Hudi),added,,,
+voltron-data,Voltron Data,U3,COSS (Arrow),added,,,
+streamnative,StreamNative,U3,COSS (Pulsar),added,,,
+redpanda,Redpanda Data,U3,"streaming, source-available (partial)",added,,,
+materialize,Materialize,U3,"streaming database, BSL (partial)",added,,,
+synadia,Synadia,U3,COSS (NATS),added,,,
+camunda,Camunda,U3,COSS (workflow),added,Germany,,
+meltano,Meltano,U3,COSS (ELT),added,,,
+rudderstack,RudderStack,U3,COSS (customer data),added,,,
+snowplow,Snowplow,U3,COSS (behavioural data),added,,,
+cube,Cube Dev,U3,COSS (semantic layer),added,,,
+preset,Preset,U3,COSS (Superset),added,,,
+rasa,Rasa,U3,COSS (conversational AI),added,,,
+chainguard,Chainguard,U3,"open-source supply-chain security (Wolfi, Sigstore)",added,,,
+sysdig,Sysdig,U3,COSS (Falco),added,,,
+teleport,Teleport (Gravitational),U3,COSS (access),added,,,
+tigera,Tigera,U3,COSS (Calico),added,,,
+buoyant,Buoyant,U3,COSS (Linkerd),added,,,
+solo-io,Solo.io,U3,"COSS (Envoy, Istio tools)",added,,,
+tetrate,Tetrate,U3,"COSS (Istio, Envoy)",added,,,
+akuity,Akuity,U3,COSS (Argo),added,,,
+kubecost,Kubecost,U3,COSS (OpenCost),added,IBM 2024,,
+gitpod,Gitpod (Ona),U3,COSS (dev environments),added,,,
+element,Element (New Vector),U3,COSS (Matrix),added,UK,,
+owncloud,ownCloud,U3,COSS (file sync),added,Kiteworks 2023,,
+bitwarden,Bitwarden,U3,COSS (password manager),added,,,
+proton,Proton AG,U3,open-source clients (partial),added,Switzerland,,
+w4-games,W4 Games,U3,Godot engine company,added,,,
+crabnebula,CrabNebula,U3,Tauri company,added,,,
+astro,Astro (The Astro Technology Company),U3,COSS (Astro web framework),added,,,
+remix,Remix Software,U3,COSS (Remix framework),added,Shopify 2022,,
+mapbox,Mapbox,U3,open-source mapping origins (relicensed 2020),added,,,
+carto,CARTO (CartoDB),U3,open-source geospatial origins,added,Spain,,
+sourcegraph,Sourcegraph,U3,"code search, open source until 2023 (partial)",added,,,
+seldon,Seldon,U3,COSS (ML deployment; BSL since 2024),added,UK,,
+clearml,ClearML (Allegro AI),U3,COSS (MLOps),added,,,
+iterative,Iterative (DVC),U3,COSS (DVC),added,,,
+treeverse,Treeverse (lakeFS),U3,COSS (lakeFS),added,,,
+pachyderm,Pachyderm,U3,COSS (data versioning),added,HPE 2023,,
+voxel51,Voxel51,U3,COSS (FiftyOne),added,,,
+cvat,CVAT.ai,U3,COSS (CVAT),added,,,
+reflection-ai,Reflection AI,U3,open-weight frontier models (stated plan),added,,,
+prime-intellect,Prime Intellect,U3,"open-source decentralised training, open models",added,,,
+zyphra,Zyphra,U3,open-weight models,added,,,
+arcee,Arcee AI,U3,open-weight models,added,,,
+liquid-ai,Liquid AI,U3,open-weight LFM models (partial),added,,,
+pleias,Pleias,U3,open models trained on open data,added,France,,
+sakana,Sakana AI,U3,open releases (partial),added,Japan,,
+ai21,AI21 Labs,U3,open-weight Jamba models (partial),added,Israel,,
+cohere,Cohere,U3,"research weights, non-commercial licence (partial)",added,Canada,,
+01-ai,01.AI,U3,open-weight Yi models,added,China,,
+moonshot,Moonshot AI,U3,open-weight Kimi models,added,China,,
+minimax,MiniMax,U3,open-weight models,added,China,,
+baichuan,Baichuan Intelligence,U3,open-weight models,added,China,,
+stepfun,StepFun,U3,open-weight models,added,China,,
+deep-cogito,Deep Cogito,U3,open-weight models,added,,,
+nomic,Nomic AI,U3,"open-source GPT4All, open embeddings",added,,,
+unstructured,Unstructured,U3,COSS (document parsing),added,,,
+jina,Jina AI,U3,open-source embeddings and tools,added,Elastic 2025,,
+mosaicml,MosaicML,U3,open-source training tools and MPT models,added,Databricks 2023,,
+octoml,OctoML (OctoAI),U3,COSS (Apache TVM),added,Nvidia 2024,,
+neural-magic,Neural Magic,U3,"open-source inference (DeepSparse, vLLM)",added,Red Hat 2025,,
+determined-ai,Determined AI,U3,COSS (training platform),added,HPE 2021,,
+outerbounds,Outerbounds,U3,COSS (Metaflow),added,,,
+union-ai,Union.ai,U3,COSS (Flyte),added,,,
+zenml,ZenML,U3,COSS (MLOps),added,Germany,,
+bentoml,BentoML,U3,COSS (model serving),added,,,
+hopsworks,Hopsworks (Logical Clocks),U3,COSS (feature store),added,Sweden,,
+argilla,Argilla,U3,COSS (data labelling),added,Hugging Face 2024,,
+lancedb,LanceDB,U3,COSS (vector database),added,,,
+marqo,Marqo,U3,COSS (vector search),added,Australia,,
+vespa,Vespa.ai,U3,COSS (search engine),added,Norway,,
+radixark,RadixArk (SGLang),U3,COSS (SGLang),added,,,
+h-company,H Company,U3,open-weight agent models (partial),added,France,,

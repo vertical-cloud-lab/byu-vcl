@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+langgenius,LangGenius,U1,COSS (GitHub core),github_core,GitHub org(s): langgenius; basis: sells Dify Cloud and Dify Enterprise; country US; parent -; ; site https://dify.ai,langgenius,161900
+laravel,Laravel,U1,COSS (GitHub core),github_core,"GitHub org(s): laravel; basis: sells Laravel Cloud, Forge and Nova to Laravel users; country US; parent -; ; site https://laravel.com",laravel,120577
+mermaid-js,Mermaid Chart,U1,COSS (GitHub core),github_core,GitHub org(s): mermaid-js; basis: maintainers' company sells hosted Mermaid Chart editor; country ?; parent -; ; site ,mermaid-js,91253
+toeverything,Toeverything (AFFiNE),U1,COSS (GitHub core),github_core,GitHub org(s): toeverything; basis: sells AFFiNE Cloud and Pro plans; country SG; parent -; ; site ,toeverything,78432
+coollabsio,coolLabs,U1,COSS (GitHub core),github_core,"GitHub org(s): coollabsio; basis: sells Coolify Cloud, hosted version of Coolify; country HU; parent -; ; site https://coollabs.io",coollabsio,66460
+nuxt,NuxtLabs,U1,COSS (GitHub core),github_core,GitHub org(s): nuxt; basis: maintainers' company sold Nuxt UI Pro and NuxtHub; country FR; parent Vercel; acquired by Vercel 2025; site https://nuxt.com,nuxt,61099
+upscayl,Upscayl,U1,COSS (GitHub core),github_core,GitHub org(s): upscayl; basis: sells Upscayl Cloud alongside the free desktop app; country ?; parent -; ; site https://upscayl.org,upscayl,53231
+prisma,"Prisma Data, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): prisma; basis: sells Prisma Postgres and Accelerate to ORM users; country US; parent -; ; site https://www.prisma.io,prisma,47770
+duckdb,DuckDB Labs,U1,COSS (GitHub core),github_core,GitHub org(s): duckdb; basis: Dutch foundation owns DuckDB IP; DuckDB Labs sells support; country NL; parent -; ; site https://www.duckdb.org,duckdb,43355
+VectifyAI,Vectify AI,U1,COSS (GitHub core),github_core,GitHub org(s): VectifyAI; basis: sells hosted PageIndex API and platform; country GB; parent -; ; site https://pageindex.ai,VectifyAI,40786
+harness,Harness,U1,COSS (GitHub core),github_core,GitHub org(s): harness; basis: open-source edition of its commercial developer platform; country US; parent -; ; site https://harness.io/,harness,38975
+seaweedfs,SeaweedFS,U1,COSS (GitHub core),github_core,GitHub org(s): seaweedfs; basis: maintainer sells SeaweedFS Enterprise edition; country US; parent -; ; site ,seaweedfs,36258
+projectdiscovery,ProjectDiscovery,U1,COSS (GitHub core),github_core,GitHub org(s): projectdiscovery; basis: sells ProjectDiscovery Cloud platform around nuclei; country US; parent -; ; site https://projectdiscovery.io/,projectdiscovery,33290
+nautechsystems,Nautech Systems Pty Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): nautechsystems; basis: sells institutional support; Pro and cloud platform coming; country AU; parent -; ; site https://nautilustrader.io,nautechsystems,31819
+deepinsight,InsightFace,U1,COSS (GitHub core),github_core,GitHub org(s): deepinsight; basis: sells commercial model licences and a face-swap service; country HK; parent -; ; site ,deepinsight,30306
+cloudreve,Cloudreve,U1,COSS (GitHub core),github_core,GitHub org(s): cloudreve; basis: sells Cloudreve Pro licences; country CN; parent -; ; site https://cloudreve.org,cloudreve,29014
+promptfoo,Promptfoo,U1,COSS (GitHub core),github_core,GitHub org(s): promptfoo; basis: sells Promptfoo Enterprise; country US; parent -; ; site https://promptfoo.dev,promptfoo,27680
+Redocly,Redocly,U1,COSS (GitHub core),github_core,GitHub org(s): Redocly; basis: sells Redocly hosted docs platform; country US; parent -; ; site https://redocly.com,Redocly,26029
+nocobase,NocoBase,U1,COSS (GitHub core),github_core,GitHub org(s): nocobase; basis: sells commercial editions and plugins; country CN; parent -; ; site https://www.nocobase.com/,nocobase,25007
+beekeeper-studio,Beekeeper Studio,U1,COSS (GitHub core),github_core,GitHub org(s): beekeeper-studio; basis: sells paid Beekeeper Studio editions; country US; parent -; ; site ,beekeeper-studio,23929
+lensapp,Lens,U1,COSS (GitHub core),github_core,GitHub org(s): lensapp; basis: sells Lens Plus subscriptions; repo now issues only; country US; parent Mirantis; ; site https://lenshq.io,lensapp,23250
+symbolica-dev,Symbolica,U1,COSS (GitHub core),github_core,GitHub org(s): symbolica-dev; basis: sells commercial licences for Symbolica; country CH; parent -; ; site https://symbolica.io,symbolica-dev,1016
+sirius-ms,Bright Giant GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): sirius-ms; basis: spin-off sells commercial SIRIUS licences; FSU Jena co-develops; country DE; parent -; ; site ,sirius-ms,174
+mat3ra,Mat3ra,U1,COSS (GitHub core),github_core,GitHub org(s): mat3ra; basis: materials-designer is part of its paid cloud platform; country US; parent -; ; site https://mat3ra.com,mat3ra,28

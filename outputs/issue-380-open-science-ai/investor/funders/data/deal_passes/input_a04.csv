@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+multica-ai,Multica,U1,COSS (GitHub core),github_core,GitHub org(s): multica-ai; basis: sells hosted Multica Cloud and commercial licences; country ?; parent -; ; site https://multica.ai,multica-ai,293612
+tailwindlabs,Tailwind Labs,U1,COSS (GitHub core),github_core,GitHub org(s): tailwindlabs; basis: sells Tailwind Plus components and templates to Tailwind users; country US; parent -; ; site tailwindcss.com,tailwindlabs,151598
+nexu-io,"Powerformer, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): nexu-io; basis: sells OpenDesign Cloud paid plans and Team/Enterprise; country ?; parent -; ; site https://open-design.ai,nexu-io,109480
+lobehub,LobeHub,U1,COSS (GitHub core),github_core,GitHub org(s): lobehub; basis: sells LobeHub Cloud subscriptions; country US; parent -; ; site https://lobehub.com,lobehub,86142
+openbq-org,OpenBB Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): openbq-org; basis: official OpenBB repo now lives here; sells OpenBB Workspace enterprise edition; country US; parent -; OpenBB-finance/OpenBB redirects to this org; site ,openbq-org,75734
+nocodb,NocoDB,U1,COSS (GitHub core),github_core,GitHub org(s): nocodb; basis: sells NocoDB Cloud and Enterprise; country US; parent -; ; site https://twitter.com/nocodb,nocodb,65610
+go-gitea,Gitea Ltd / CommitGo,U1,COSS (GitHub core),github_core,GitHub org(s): go-gitea; basis: maintainers' company sells Gitea Cloud and Enterprise; country ?; parent -; ; site https://gitea.com,go-gitea,59254
+dbeaver,DBeaver Corp,U1,COSS (GitHub core),github_core,GitHub org(s): dbeaver; basis: sells DBeaver PRO editions; country US; parent -; ; site https://dbeaver.com,dbeaver,52539
+milvus-io,Zilliz,U1,COSS (GitHub core),github_core,GitHub org(s): milvus-io; basis: LF AI & Data graduated project; Zilliz sells hosted Milvus; country US; parent Linux Foundation; ; site https://milvus.io/,milvus-io,46740
+lightpanda-io,Lightpanda,U1,COSS (GitHub core),github_core,GitHub org(s): lightpanda-io; basis: sells hosted Lightpanda cloud browser; country FR; parent -; ; site https://lightpanda.io,lightpanda-io,42551
+pola-rs,Polars B.V.,U1,COSS (GitHub core),github_core,GitHub org(s): pola-rs; basis: sells Polars Cloud; country NL; parent -; ; site https://www.pola.rs/,pola-rs,40505
+directus,Monospace Inc. (Directus),U1,COSS (GitHub core),github_core,GitHub org(s): directus; basis: sells Directus Cloud and enterprise licences; country US; parent -; ; site https://directus.com,directus,38660
+vxcontrol,VXControl L.L.C-FZ,U1,COSS (GitHub core),github_core,"GitHub org(s): vxcontrol; basis: security studio; PentAGI is flagship, with an Enterprise edition; country AE; parent -; ; site https://vxcontrol.com",vxcontrol,35031
+ScrapeGraphAI,ScrapeGraphAI,U1,COSS (GitHub core),github_core,GitHub org(s): ScrapeGraphAI; basis: sells hosted ScrapeGraph API; country US; parent -; ; site https://scrapegraphai.com/,ScrapeGraphAI,32939
+symfony,Symfony SAS,U1,COSS (GitHub core),github_core,"GitHub org(s): symfony; basis: sells Symfony training, certification, support and SymfonyInsight; country FR; parent -; ; site https://symfony.com/",symfony,31457
+JaidedAI,Jaided AI,U1,COSS (GitHub core),github_core,GitHub org(s): JaidedAI; basis: company whose only product is EasyOCR; no paid tier listed now; country TH; parent -; ; site https://jaided.ai,JaidedAI,30172
+BloopAI,Bloop AI,U1,COSS (GitHub core),github_core,GitHub org(s): BloopAI; basis: offered hosted Vibe Kanban Cloud; country GB; parent -; Vibe Kanban sunsetting; site ,BloopAI,28814
+rethinkdb,RethinkDB,U1,COSS (GitHub core),github_core,GitHub org(s): rethinkdb; basis: Linux Foundation project since the company shut down; country US; parent -; company shut down 2016; site https://rethinkdb.com/,rethinkdb,27015
+monicahq,Monica,U1,COSS (GitHub core),github_core,GitHub org(s): monicahq; basis: sells hosted Monica accounts; country CA; parent -; ; site https://monicahq.com,monicahq,25837
+temporalio,Temporal Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): temporalio; basis: sells Temporal Cloud; country US; parent -; ; site https://temporal.io,temporalio,24599
+dracula,Dracula Theme (Zeno Rocha),U1,COSS (GitHub core),github_core,GitHub org(s): dracula; basis: sells Dracula Pro; country ?; parent -; ; site https://draculatheme.com,dracula,23619
+tracel-ai,Tracel Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): tracel-ai; basis: company sells solutions on its largely open-source Burn/CubeCL stack; country CA; parent -; ; site https://tracel.ai,tracel-ai,16348
+meshpro,MeshPro,U1,COSS (GitHub core),github_core,GitHub org(s): meshpro; basis: sells licences for Nico Schlömer's mesh tools; country DE; parent -; ; site ,meshpro,634
+quartiq,QUARTIQ GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): quartiq; basis: company sells Sinara hardware and firmware services; country DE; parent -; ; site ,quartiq,147

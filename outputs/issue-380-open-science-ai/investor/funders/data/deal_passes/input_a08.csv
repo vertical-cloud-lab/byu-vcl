@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+VoltAgent,VoltAgent,U1,COSS (GitHub core),github_core,GitHub org(s): VoltAgent; basis: sells VoltOps platform around its open-source agent framework; top repos are lists; country US; parent -; ; site https://voltagent.dev,VoltAgent,247372
+astral-sh,Astral,U1,COSS (GitHub core),github_core,GitHub org(s): astral-sh; basis: sells pyx hosted registry for uv users; country US; parent OpenAI; now part of OpenAI (per org description); site https://astral.sh,astral-sh,144192
+mui,MUI,U1,COSS (GitHub core),github_core,GitHub org(s): mui; basis: sells MUI X Pro/Premium licences; country FR; parent -; ; site https://mui.com,mui,99396
+netdata,Netdata Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): netdata; basis: sells Netdata Cloud subscriptions; country US; parent -; ; site https://www.netdata.cloud,netdata,81643
+strapi,Strapi,U1,COSS (GitHub core),github_core,GitHub org(s): strapi; basis: sells Strapi Cloud and Enterprise; country FR; parent -; ; site https://strapi.io,strapi,73549
+jgraph,JGraph Ltd,U1,COSS (GitHub core),github_core,GitHub org(s): jgraph; basis: sells draw.io apps for Confluence and Jira; country GB; parent -; ; site http://www.drawio.com,jgraph,64157
+odoo,Odoo SA,U1,COSS (GitHub core),github_core,GitHub org(s): odoo; basis: sells Odoo Enterprise and Odoo Online; country BE; parent -; ; site https://www.odoo.com,odoo,56096
+cypress-io,Cypress.io,U1,COSS (GitHub core),github_core,GitHub org(s): cypress-io; basis: sells Cypress Cloud; country US; parent -; ; site https://cypress.io,cypress-io,51039
+janhq,Menlo Research,U1,COSS (GitHub core),github_core,GitHub org(s): janhq; basis: company's main product is Jan itself; no paid tier found; country SG; parent -; ; site https://jan.ai,janhq,46134
+frappe,Frappe Technologies,U1,COSS (GitHub core),github_core,GitHub org(s): frappe; basis: sells Frappe Cloud hosting and ERPNext support; country IN; parent -; ; site https://frappe.io,frappe,41632
+DioxusLabs,Dioxus Labs,U1,COSS (GitHub core),github_core,GitHub org(s): DioxusLabs; basis: company built around Dioxus; no paid product listed yet; country US; parent -; ; site https://dioxuslabs.com,DioxusLabs,39917
+nextcloud,Nextcloud GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): nextcloud; basis: sells Nextcloud Enterprise subscriptions; country DE; parent -; ; site https://nextcloud.com,nextcloud,37634
+TabbyML,TabbyML,U1,COSS (GitHub core),github_core,GitHub org(s): TabbyML; basis: sells Tabby Enterprise and cloud; country ?; parent -; ; site ,TabbyML,33938
+atuinsh,"Atuin, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): atuinsh; basis: company built around Atuin; team features in beta; country ?; parent -; ; site ,atuinsh,32636
+nanocoai,NanoCo,U1,COSS (GitHub core),github_core,GitHub org(s): nanocoai; basis: NanoClaw creators sell enterprise AI assistant (early access); country ?; parent -; ; site https://www.nanoco.ai/,nanocoai,31163
+chroma-core,Chroma,U1,COSS (GitHub core),github_core,GitHub org(s): chroma-core; basis: sells Chroma Cloud; country US; parent -; ; site trychroma.com,chroma-core,29772
+voideditor,Void,U1,COSS (GitHub core),github_core,GitHub org(s): voideditor; basis: YC startup whose product is the Void editor; country US; parent -; ; site voideditor.com,voideditor,28699
+goauthentik,Authentik Security,U1,COSS (GitHub core),github_core,GitHub org(s): goauthentik; basis: sells authentik Enterprise; country US; parent -; ; site https://goauthentik.io/,goauthentik,26463
+clockworklabs,Clockwork Labs,U1,COSS (GitHub core),github_core,GitHub org(s): clockworklabs; basis: sells SpacetimeDB Maincloud hosting; also makes BitCraft; country US; parent -; ; site https://clockworklabs.io,clockworklabs,25570
+lexmount,LexMount,U1,COSS (GitHub core),github_core,GitHub org(s): lexmount; basis: sells hosted cloud browsers using its Moli engine; country ?; parent -; ; site https://browser.lexmount.com,lexmount,24486
+Skyvern-AI,Skyvern,U1,COSS (GitHub core),github_core,GitHub org(s): Skyvern-AI; basis: sells Skyvern Cloud; country US; parent -; ; site https://www.skyvern.com/,Skyvern-AI,23536
+arrayfire,ArrayFire LLC,U1,COSS (GitHub core),github_core,GitHub org(s): arrayfire; basis: company sells support and services for ArrayFire library; country US; parent -; ; site https://www.arrayfire.com/,arrayfire,4914
+auto-differentiation,Xcelerit,U1,COSS (GitHub core),github_core,GitHub org(s): auto-differentiation; basis: sells commercial licences and support for XAD; country IE; parent -; ; site https://www.xcelerit.com/xad/,auto-differentiation,445
+LiteFold,LiteFold,U1,COSS (GitHub core),github_core,GitHub org(s): LiteFold; basis: sells LiteFold platform licences and computation services; country US; parent -; ; site https://litefold.ai,LiteFold,97
