@@ -387,10 +387,10 @@ jobs:
           allowed_bots: vcl-bot
 
           # Optional (riskier): Print the full turn-by-turn JSON execution log in the step output
-          # show_full_output: true  # off in this repo (full logs are riskier)
+          show_full_output: true
 
           # Optional (riskier): Render a human-readable "Claude Code Report" in the job's Step Summary
-          # display_report: true  # off in this repo (full logs are riskier)
+          display_report: true
 
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
@@ -400,6 +400,7 @@ jobs:
           claude_args: |
             ${{ steps.select.outputs.primary_args }}
             --permission-mode bypassPermissions
+            --thinking-display summarized
 
       # Did the first attempt die because its allowance was spent, or for some
       # ordinary reason? A failed run still writes its execution JSON and still
@@ -632,6 +633,23 @@ jobs:
           SKIP_SEATS: ${{ steps.pick.outputs.tried }}
         run: python3 "$RUNNER_TEMP/pick_seat.py"
 
+      # The first attempt left its GitHub App token in origin's URL and
+      # revoked it on exit. The retry's branch setup runs `git fetch` before
+      # it configures its own auth, so that dead token made every retry die
+      # in branch setup ("Invalid username or token"). Point origin back at
+      # the plain URL with the job's own token, as actions/checkout does; the
+      # retry then replaces this with its own token as usual.
+      - name: Reset git auth for the retry
+        if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
+        env:
+          JOB_TOKEN: ${{ github.token }}
+        run: |
+          git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          basic=$(printf 'x-access-token:%s' "$JOB_TOKEN" | base64 -w0)
+          git config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ${basic}"
+          git ls-remote --heads origin main >/dev/null && echo "origin reachable with the job token"
+
       # Second attempt, on another seat (and the fallback model, if one is set). This is a fresh session: it posts
       # its own tracking comment and starts the task from the beginning, so the
       # note below tells it to look at what the first attempt already did.
@@ -663,8 +681,8 @@ jobs:
           # placements have now failed live once each; see
           # https://github.com/ME-EN-372/me-en-372-machine-design-private/blob/main/docs/claude-yml-model-fallback.md
           track_progress: true
-          # show_full_output: true  # off in this repo (full logs are riskier)
-          # display_report: true  # off in this repo (full logs are riskier)
+          show_full_output: true
+          display_report: true
           additional_permissions: |
             actions: read
           # The two attempts share one workspace, and the generated branch name
@@ -685,38 +703,23 @@ jobs:
             --model ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }}
             --effort ${{ steps.select.outputs.effort }}
             --permission-mode bypassPermissions
+            --thinking-display summarized
 
-      # Execution logs, encrypted to the repo owner's age key and uploaded as
-      # an artifact. This repo is public, so show_full_output stays off and
-      # nothing readable is uploaded: only someone holding the private key for
-      # vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT can read these. Decrypt with
-      # `age -d -i <key file> claude-execution-log.json.age`.
-      - name: Encrypt and upload execution logs (owner-only)
-        if: ${{ !cancelled() && vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT != '' && (steps.claude.outputs.execution_file != '' || steps.fallback.outputs.execution_file != '') }}
-        continue-on-error: true
-        env:
-          RECIPIENT: ${{ vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT }}
-          FIRST: ${{ steps.claude.outputs.execution_file }}
-          RETRY: ${{ steps.fallback.outputs.execution_file }}
-        run: |
-          set -euo pipefail
-          command -v age >/dev/null || sudo apt-get install -y -qq age >/dev/null 2>&1 \
-            || { sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq age >/dev/null; }
-          out="$RUNNER_TEMP/claude-logs-encrypted"
-          mkdir -p "$out"
-          [[ -n "$FIRST" && -f "$FIRST" ]] && age -r "$RECIPIENT" -o "$out/claude-execution-log.json.age" "$FIRST"
-          [[ -n "$RETRY" && -f "$RETRY" ]] && age -r "$RECIPIENT" -o "$out/claude-execution-log-retry.json.age" "$RETRY"
-          ls -l "$out"
-
-      - name: Upload the encrypted execution logs
-        if: ${{ !cancelled() && vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT != '' && (steps.claude.outputs.execution_file != '' || steps.fallback.outputs.execution_file != '') }}
-        continue-on-error: true
+      # Optional, recommended if you set show_full_output=True. Artifact names
+      # have to differ, so the two attempts upload separately.
+      - name: Upload Claude execution log
+        if: always() && steps.claude.outputs.execution_file != ''
         uses: actions/upload-artifact@v4
         with:
-          name: claude-execution-logs-encrypted
-          path: ${{ runner.temp }}/claude-logs-encrypted/*.age
-          if-no-files-found: ignore
-          retention-days: 14
+          name: claude-execution-log
+          path: ${{ steps.claude.outputs.execution_file }}
+
+      - name: Upload fallback execution log
+        if: always() && steps.fallback.outputs.execution_file != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-log-fallback
+          path: ${{ steps.fallback.outputs.execution_file }}
 
       # continue-on-error above hides the first attempt's failure from the job
       # status, so put it back when nothing succeeded.
