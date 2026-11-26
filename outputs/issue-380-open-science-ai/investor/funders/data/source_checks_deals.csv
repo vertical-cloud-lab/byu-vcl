@@ -534,6 +534,10 @@ openbq-org,OpenBB Inc.,2022,seed,lead,OSS Capital,https://techcrunch.com/2024/10
 openbq-org,OpenBB Inc.,2022,seed,investor,Ram Shriram (person),https://techcrunch.com/2024/10/20/joseph-jacks-bets-on-open-source-startups-a-paradox-of-philanthropy-and-capitalism/,news,found
 openbq-org,OpenBB Inc.,2022,seed,investor,Bob Young (person),https://techcrunch.com/2024/10/20/joseph-jacks-bets-on-open-source-startups-a-paradox-of-philanthropy-and-capitalism/,news,found
 openbq-org,OpenBB Inc.,2022,seed,investor,Naval Ravikant (person),https://techcrunch.com/2024/10/20/joseph-jacks-bets-on-open-source-startups-a-paradox-of-philanthropy-and-capitalism/,news,found
+openbq-org,OpenBB Inc.,2022-03,seed,lead,OSS Capital,https://www.globenewswire.com/news-release/2022/03/29/2412195/0/en/openbb-raises-8-5m-in-seed-round-funding-following-open-source-project-gamestonk-terminal-s-success.html,other,unavailable
+openbq-org,OpenBB Inc.,2022-03,seed,investor,Naval Ravikant (person),https://www.globenewswire.com/news-release/2022/03/29/2412195/0/en/openbb-raises-8-5m-in-seed-round-funding-following-open-source-project-gamestonk-terminal-s-success.html,other,unavailable
+openbq-org,OpenBB Inc.,2022-03,seed,investor,Ram Shriram (person),https://www.globenewswire.com/news-release/2022/03/29/2412195/0/en/openbb-raises-8-5m-in-seed-round-funding-following-open-source-project-gamestonk-terminal-s-success.html,other,unavailable
+openbq-org,OpenBB Inc.,2022-03,seed,investor,Elad Gil (person),https://www.globenewswire.com/news-release/2022/03/29/2412195/0/en/openbb-raises-8-5m-in-seed-round-funding-following-open-source-project-gamestonk-terminal-s-success.html,other,unavailable
 Fission-AI,Fission AI,2026,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/openspec,other,found
 Fission-AI,Fission AI,2026-06,venture_unspecified,investor,Tekedia Capital,https://www.tekedia.com/tekedia-capital-invests-in-opensec-ai-spec-framework-startup/,news,found
 remotion-dev,Remotion AG,2022-11,angel,investor,Heiko Hubertz (person),https://www.remotion.dev/investors,company,found
@@ -790,6 +794,17 @@ odoo,Odoo SA,2019-12,secondary,investor,XAnge,https://techcrunch.com/2019/12/17/
 odoo,Odoo SA,2024-11,secondary,investor,Wallonie Entreprendre,https://techcrunch.com/2024/11/20/riding-high-on-open-source-erp-odoo-raises-527m-via-secondaries-lifting-its-valuation-to-5-26b/,news,found
 odoo,Odoo SA,2024-11,secondary,investor,Noshaq,https://techcrunch.com/2024/11/20/riding-high-on-open-source-erp-odoo-raises-527m-via-secondaries-lifting-its-valuation-to-5-26b/,news,found
 odoo,Odoo SA,2024-11,secondary,investor,Summit Partners,https://techcrunch.com/2024/11/20/riding-high-on-open-source-erp-odoo-raises-527m-via-secondaries-lifting-its-valuation-to-5-26b/,news,found
+odoo,Odoo SA,2010-01,series_a,investor,Sofinnova Partners,https://www.odoo.com/blog/odoo-news-5/openerp-raised-3-million-eur-128,other,unavailable
+odoo,Odoo SA,2010-01,series_a,investor,Xavier Niel (person),https://www.odoo.com/blog/odoo-news-5/openerp-raised-3-million-eur-128,other,unavailable
+odoo,Odoo SA,2010-01,series_a,investor,Olivier Rosenfeld (person),https://www.odoo.com/blog/odoo-news-5/openerp-raised-3-million-eur-128,other,unavailable
+odoo,Odoo SA,2014-05,series_b,investor,XAnge,https://www.odoo.com/page/press-release-2014,other,found
+odoo,Odoo SA,2014-05,series_b,investor,Wallonie Entreprendre,https://www.odoo.com/page/press-release-2014,other,found
+odoo,Odoo SA,2014-05,series_b,investor,Sofinnova Partners,https://www.odoo.com/page/press-release-2014,other,found
+odoo,Odoo SA,2022-06,secondary,lead,Summit Partners,https://tech.eu/2022/06/08/odoo-a-leader-in-open-source-business-software/,other,found
+odoo,Odoo SA,2023-06,secondary,lead,General Atlantic,https://www.odoo.com/blog/odoo-news-5/odoo-s-a-announces-150m-investment-from-general-atlantic-to-support-continued-global-growth-1085,other,unavailable
+odoo,Odoo SA,2026-01,secondary,investor,AVP,https://avpcap.com/avp-and-alkeon-announce-e60m-secondary-round-in-odoo-s-a-at-a-valuation-exceeding-e7-billion/,other,found
+odoo,Odoo SA,2026-01,secondary,investor,Alkeon Capital,https://avpcap.com/avp-and-alkeon-announce-e60m-secondary-round-in-odoo-s-a-at-a-valuation-exceeding-e7-billion/,other,found
+odoo,Odoo SA,2026-01,secondary,lead,General Atlantic,https://www.generalatlantic.com/media-article/general-atlantic-announces-close-of-further-investment-into-odoo-acquiring-additional-stake-from-wallonie-entreprendre/,other,found
 gatsbyjs,Gatsby,2019-09,series_a,lead,CRV,https://techcrunch.com/2019/09/26/gatsby-raises-15m-series-a-for-its-modern-web-development-platform/,news,found
 gatsbyjs,Gatsby,2019-09,series_a,investor,Trinity Ventures,https://techcrunch.com/2019/09/26/gatsby-raises-15m-series-a-for-its-modern-web-development-platform/,news,found
 gatsbyjs,Gatsby,2019-09,series_a,investor,Mango Capital,https://techcrunch.com/2019/09/26/gatsby-raises-15m-series-a-for-its-modern-web-development-platform/,news,found
@@ -968,12 +983,19 @@ streamlit,Streamlit,2019-10,seed,investor,Jana Messerschmidt (person),https://te
 streamlit,Streamlit,2019-10,seed,investor,Daniel Gross (person),https://techcrunch.com/2019/10/01/streamlit-launches-open-source-machine-learning-application-development-framework/,news,found
 streamlit,Streamlit,2019-10,seed,investor,Solomon Hykes (person),https://techcrunch.com/2019/10/01/streamlit-launches-open-source-machine-learning-application-development-framework/,news,found
 streamlit,Streamlit,2019-10,seed,investor,Jake Klamka (person),https://techcrunch.com/2019/10/01/streamlit-launches-open-source-machine-learning-application-development-framework/,news,found
+coqui-ai,Coqui,2021-10,convertible_note,investor,Mango Capital,https://www.sec.gov/Archives/edgar/data/1889338/000188933821000001/0001889338-21-000001.txt,other,not on page
+coqui-ai,Coqui,2023-03,seed,investor,ScaleX Ventures,https://www.forbes.com/sites/cindygordon/2023/03/19/coqui--a-generative-ai-speech-innovation-will-revolutionize-this-market/,other,unavailable
+coqui-ai,Coqui,2023-03,seed,investor,Mango Capital,https://www.forbes.com/sites/cindygordon/2023/03/19/coqui--a-generative-ai-speech-innovation-will-revolutionize-this-market/,other,unavailable
+coqui-ai,Coqui,2023-03,seed,investor,DNX Ventures,https://www.forbes.com/sites/cindygordon/2023/03/19/coqui--a-generative-ai-speech-innovation-will-revolutionize-this-market/,other,unavailable
 payloadcms,Payload,2022-11,seed,lead,Gradient Ventures,https://techcrunch.com/2022/11/15/payload-raises-4-7m-for-its-developer-first-headless-cms/,news,found
 payloadcms,Payload,2022-11,seed,investor,MongoDB Ventures,https://techcrunch.com/2022/11/15/payload-raises-4-7m-for-its-developer-first-headless-cms/,news,found
 payloadcms,Payload,2022-11,seed,investor,Y Combinator,https://techcrunch.com/2022/11/15/payload-raises-4-7m-for-its-developer-first-headless-cms/,news,found
 payloadcms,Payload,2022-11,seed,investor,SV Angel,https://techcrunch.com/2022/11/15/payload-raises-4-7m-for-its-developer-first-headless-cms/,news,found
 payloadcms,Payload,2022-11,seed,investor,Grand Ventures,https://techcrunch.com/2022/11/15/payload-raises-4-7m-for-its-developer-first-headless-cms/,news,found
 payloadcms,Payload,2022-11,seed,investor,Exceptional Capital,https://techcrunch.com/2022/11/15/payload-raises-4-7m-for-its-developer-first-headless-cms/,news,found
+payloadcms,Payload,2018-04,prize,investor,Start Garden,https://www.fox17online.com/2018/07/10/200000-awarded-to-aspiring-entrepreneurs-in-inaugural-initiative,other,found
+payloadcms,Payload,2018-07,prize,investor,Start Garden,https://www.fox17online.com/2018/07/10/200000-awarded-to-aspiring-entrepreneurs-in-inaugural-initiative,other,found
+payloadcms,Payload,2022-06,accelerator,investor,Y Combinator,https://payloadcms.com/posts/blog/announcing-yc,other,found
 getsentry,Sentry (Functional Software),2016-06,series_a,lead,NEA,https://techcrunch.com/2016/06/23/real-time-crash-reporting-tool-sentry-grabs-9-million-from-nea-accel,news,found
 getsentry,Sentry (Functional Software),2016-06,series_a,investor,Accel,https://techcrunch.com/2016/06/23/real-time-crash-reporting-tool-sentry-grabs-9-million-from-nea-accel,news,found
 getsentry,Sentry (Functional Software),2022-05,series_e,lead,BOND,https://sentry.io/about/press-releases/sentry-raises-90-million-in-series-e-funding-to-expand-and-drive-adoption-of-developer-first-application-monitoring/,company,found
@@ -1093,6 +1115,28 @@ mindsdb,MindsDB,,venture_unspecified,investor,BGV,https://mindshub.ai/about,comp
 mindsdb,MindsDB,,venture_unspecified,investor,Speedinvest,https://mindshub.ai/about,company,in page markup (logo or link)
 mindsdb,MindsDB,,venture_unspecified,investor,TQ Ventures,https://mindshub.ai/about,company,in page markup (logo or link)
 mindsdb,MindsDB,2020,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/mindsdb,company,found
+mindsdb,MindsDB,2018-10,pre_seed,investor,Speedinvest,https://www.crunchbase.com/funding_round/mindsdb-pre-seed--c7f4d965,other,unavailable
+mindsdb,MindsDB,2018-10,pre_seed,investor,Tuck Lye Koh (person),https://www.crunchbase.com/funding_round/mindsdb-pre-seed--c7f4d965,other,unavailable
+mindsdb,MindsDB,2018-10,pre_seed,investor,Berkeley SkyDeck Fund,https://www.crunchbase.com/funding_round/mindsdb-pre-seed--c7f4d965,other,unavailable
+mindsdb,MindsDB,2018-10,pre_seed,investor,Angel Invest,https://www.crunchbase.com/funding_round/mindsdb-pre-seed--c7f4d965,other,unavailable
+mindsdb,MindsDB,2020-03,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/mindsdb,other,found
+mindsdb,MindsDB,2020-04,seed,lead,OpenOcean,https://venturebeat.com/business/mindsdb-raises-3-million-for-open-source-automated-machine-learning,other,unavailable
+mindsdb,MindsDB,2020-04,seed,investor,Rogue Capital,https://venturebeat.com/business/mindsdb-raises-3-million-for-open-source-automated-machine-learning,other,unavailable
+mindsdb,MindsDB,2020-04,seed,investor,Amber Atherton (person),https://venturebeat.com/business/mindsdb-raises-3-million-for-open-source-automated-machine-learning,other,unavailable
+mindsdb,MindsDB,2020-04,seed,investor,SCM Advisors,https://venturebeat.com/business/mindsdb-raises-3-million-for-open-source-automated-machine-learning,other,unavailable
+mindsdb,MindsDB,2020-04,seed,investor,Berkeley SkyDeck Fund,https://venturebeat.com/business/mindsdb-raises-3-million-for-open-source-automated-machine-learning,other,unavailable
+mindsdb,MindsDB,2021-11,seed,investor,Walden Catalyst,https://venturebeat.com/business/mindsdb-wants-to-give-enterprise-databases-a-brain,other,unavailable
+mindsdb,MindsDB,2023-02,series_a,lead,Benchmark,https://www.prnewswire.com/news-releases/mindsdb-raises-16-5m-from-benchmark-to-put-machine-learning-into-more-applications-301740799.html,other,unavailable
+mindsdb,MindsDB,2023-06,seed,lead,Mayfield,https://www.businessinsider.com/pitch-deck-ai-cloud-startup-mindsdb-raise-seed-funding-2023-5,other,found
+mindsdb,MindsDB,2023-06,seed,investor,Benchmark,https://www.businessinsider.com/pitch-deck-ai-cloud-startup-mindsdb-raise-seed-funding-2023-5,other,found
+mindsdb,MindsDB,2023-06,seed,investor,TQ Ventures,https://www.businessinsider.com/pitch-deck-ai-cloud-startup-mindsdb-raise-seed-funding-2023-5,other,found
+mindsdb,MindsDB,2023-08,seed,lead,NVentures,https://mindshub.ai/newsroom/mindsdb-secures-funding-from-nvidia-to-make-ai-more-accessible-to-all-businesses,other,found
+mindsdb,MindsDB,2023-08,seed,investor,Benchmark,https://mindshub.ai/newsroom/mindsdb-secures-funding-from-nvidia-to-make-ai-more-accessible-to-all-businesses,other,found
+mindsdb,MindsDB,2023-08,seed,investor,Mayfield,https://mindshub.ai/newsroom/mindsdb-secures-funding-from-nvidia-to-make-ai-more-accessible-to-all-businesses,other,found
+mindsdb,MindsDB,2023-08,seed,investor,Y Combinator,https://mindshub.ai/newsroom/mindsdb-secures-funding-from-nvidia-to-make-ai-more-accessible-to-all-businesses,other,found
+mindsdb,MindsDB,2023-08,seed,investor,OpenOcean,https://mindshub.ai/newsroom/mindsdb-secures-funding-from-nvidia-to-make-ai-more-accessible-to-all-businesses,other,found
+mindsdb,MindsDB,2023-08,seed,investor,Walden Catalyst,https://mindshub.ai/newsroom/mindsdb-secures-funding-from-nvidia-to-make-ai-more-accessible-to-all-businesses,other,found
+mindsdb,MindsDB,,accelerator,investor,Berkeley SkyDeck Fund,https://www.unite.ai/jorge-torres-co-founder-ceo-of-mindsdb-interview-series/,other,found
 mattermost,Mattermost,2019-02,series_a,lead,Redpoint Ventures,https://mattermost.com/blog/mattermost-raises-20m-series-a-funding/,company,found
 mattermost,Mattermost,2019-02,series_a,investor,S28 Capital,https://mattermost.com/blog/mattermost-raises-20m-series-a-funding/,company,found
 mattermost,Mattermost,2019-02,series_a,investor,Y Combinator,https://mattermost.com/blog/mattermost-raises-20m-series-a-funding/,company,found
@@ -1178,11 +1222,11 @@ medusajs,Medusa,2022-07,seed,lead,Dawn Capital,https://techcrunch.com/2022/07/15
 medusajs,Medusa,2022-07,seed,investor,Anthony Casalena (person),https://techcrunch.com/2022/07/15/medusa-shopify-open-source-e-commerce-javascript-developers/,news,found
 medusajs,Medusa,2022-07,seed,investor,Nicolas Dessaigne (person),https://techcrunch.com/2022/07/15/medusa-shopify-open-source-e-commerce-javascript-developers/,news,found
 medusajs,Medusa,2022-07,seed,investor,Scott Williamson (person),https://techcrunch.com/2022/07/15/medusa-shopify-open-source-e-commerce-javascript-developers/,news,found
-continuedev,"Continue Dev, Inc.",2023,accelerator,investor,Y Combinator,https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,unavailable
-continuedev,"Continue Dev, Inc.",2023,seed,lead,Heavybit,https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,unavailable
-continuedev,"Continue Dev, Inc.",2023,seed,investor,Julien Chaumond (person),https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,unavailable
-continuedev,"Continue Dev, Inc.",2023,seed,investor,Lisha Li (person),https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,unavailable
-continuedev,"Continue Dev, Inc.",2023,seed,investor,Florian Leibert (person),https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,unavailable
+continuedev,"Continue Dev, Inc.",2023,accelerator,investor,Y Combinator,https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,found
+continuedev,"Continue Dev, Inc.",2023,seed,lead,Heavybit,https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,found
+continuedev,"Continue Dev, Inc.",2023,seed,investor,Julien Chaumond (person),https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,found
+continuedev,"Continue Dev, Inc.",2023,seed,investor,Lisha Li (person),https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,found
+continuedev,"Continue Dev, Inc.",2023,seed,investor,Florian Leibert (person),https://web.archive.org/web/2023/https://blog.continue.dev/initial-fundraise/,company,found
 refinedev,Refine,2023,accelerator,investor,Y Combinator,https://refine.dev/,company,found
 refinedev,Refine,,venture_unspecified,investor,500 Emerging Europe,https://refine.dev/,company,found
 refinedev,Refine,,venture_unspecified,investor,Senovo,https://refine.dev/,company,found
@@ -1288,6 +1332,10 @@ getzep,Zep,2024,accelerator,investor,Y Combinator,https://www.ycombinator.com/co
 getzep,Zep,,venture_unspecified,investor,Root Ventures,https://www.getzep.com/about/,company,in page markup (logo or link)
 getzep,Zep,,venture_unspecified,investor,Y Combinator,https://www.getzep.com/about/,company,in page markup (logo or link)
 getzep,Zep,,venture_unspecified,investor,Engineering Capital,https://www.getzep.com/about/,company,found
+getzep,Zep,2023-12,pre_seed,lead,Engineering Capital,https://www.bouncewatch.com/company/zep-ai,other,found
+getzep,Zep,,venture_unspecified,investor,First Star Ventures,https://firststar.vc/companies,other,found
+getzep,Zep,,venture_unspecified,investor,Step Function,https://firststar.vc/companies,other,not on page
+getzep,Zep,,accelerator,investor,Y Combinator,https://pitchbook.com/profiles/company/539323-75,other,unavailable
 trycua,Cua,2025-04,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/cua,other,found
 SigNoz,SigNoz,2021,accelerator,lead,Y Combinator,https://signoz.io/newsroom/signoz-funding/,company,found
 SigNoz,SigNoz,2021,accelerator,investor,SignalFire,https://signoz.io/newsroom/signoz-funding/,company,found
@@ -1411,6 +1459,16 @@ supermemoryai,Supermemory,2025-10,seed,investor,Dane Knecht (person),https://tec
 supermemoryai,Supermemory,2025-10,seed,investor,Jeff Dean (person),https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/,news,found
 supermemoryai,Supermemory,2025-10,seed,investor,Logan Kilpatrick (person),https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/,news,found
 supermemoryai,Supermemory,2025-10,seed,investor,David Cramer (person),https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/,news,found
+supermemoryai,Supermemory,2024-08,grant_philanthropic,investor,Buildspace,https://buildspace.so/s5/ty-s5,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,lead,Susa Ventures,https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,lead,Browder Capital,https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,lead,SF1.vc,https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,investor,Dane Knecht (person),https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,investor,Theo Browne (person),https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,investor,David Cramer (person),https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,investor,Julian Weisser (person),https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,found
+supermemoryai,Supermemory,2025-10,pre_seed,investor,Jeff Dean (person),https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,not on page
+supermemoryai,Supermemory,2025-10,pre_seed,investor,Logan Kilpatrick (person),https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms,other,not on page
 Lightning-AI,Lightning AI,2020,seed,investor,Index Ventures,https://techcrunch.com/2020/10/08/grid-ai-raises-18-6m-series-a-to-help-ai-researchers-and-engineers-bring-their-models-to-production/,news,found
 Lightning-AI,Lightning AI,2020-10,series_a,lead,Index Ventures,https://techcrunch.com/2020/10/08/grid-ai-raises-18-6m-series-a-to-help-ai-researchers-and-engineers-bring-their-models-to-production/,news,found
 Lightning-AI,Lightning AI,2020-10,series_a,investor,Bain Capital Ventures,https://techcrunch.com/2020/10/08/grid-ai-raises-18-6m-series-a-to-help-ai-researchers-and-engineers-bring-their-models-to-production/,news,found
@@ -1449,6 +1507,16 @@ e2b-dev,E2B,2025-07,series_a,investor,Decibel,https://siliconangle.com/2025/07/2
 e2b-dev,E2B,2025-07,series_a,investor,Sunflower Capital,https://siliconangle.com/2025/07/28/e2b-shares-vision-sandboxed-cloud-environments-every-ai-agent-raising-21m-funding/,news,found
 e2b-dev,E2B,2025-07,series_a,investor,Kaya,https://siliconangle.com/2025/07/28/e2b-shares-vision-sandboxed-cloud-environments-every-ai-agent-raising-21m-funding/,news,found
 e2b-dev,E2B,2025-07,series_a,investor,Scott Johnston (person),https://siliconangle.com/2025/07/28/e2b-shares-vision-sandboxed-cloud-environments-every-ai-agent-raising-21m-funding/,news,found
+e2b-dev,E2B,2023-09,pre_seed,lead,Kaya VC,https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/,other,found
+e2b-dev,E2B,2023-09,pre_seed,investor,Matěj Turek (person),https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/,other,not on page
+e2b-dev,E2B,2023-09,pre_seed,investor,Juraj Masár (person),https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/,other,found
+e2b-dev,E2B,2023-09,pre_seed,investor,Jakub Jurových (person),https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/,other,found
+e2b-dev,E2B,2023-09,pre_seed,investor,Liu Jiang (person),https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/,other,found
+e2b-dev,E2B,2023-09,pre_seed,investor,Paul Copplestone (person),https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/,other,not on page
+e2b-dev,E2B,2024-10,seed,lead,Decibel Partners,https://www.vestbee.com/insights/articles/e2-b-raises-11-5-m,other,found
+e2b-dev,E2B,2024-10,seed,investor,Kaya VC,https://www.vestbee.com/insights/articles/e2-b-raises-11-5-m,other,found
+e2b-dev,E2B,2024-10,seed,investor,Sunflower Capital,https://www.vestbee.com/insights/articles/e2-b-raises-11-5-m,other,found
+e2b-dev,E2B,,accelerator,investor,Pioneer,https://pioneer.app/,other,found
 better-auth,Better Auth,2025-06,seed,investor,Peak XV,https://techcrunch.com/2025/06/25/this-self-taught-ethiopian-dev-built-an-authentication-tool-and-got-into-yc/,news,found
 better-auth,Better Auth,2025-06,seed,investor,Y Combinator,https://techcrunch.com/2025/06/25/this-self-taught-ethiopian-dev-built-an-authentication-tool-and-got-into-yc/,news,found
 better-auth,Better Auth,2025-06,seed,investor,P1 Ventures,https://techcrunch.com/2025/06/25/this-self-taught-ethiopian-dev-built-an-authentication-tool-and-got-into-yc/,news,found
@@ -1685,6 +1753,7 @@ rethinkdb,RethinkDB,2013-12,series_a,lead,Highland Capital Partners,https://reth
 rethinkdb,RethinkDB,2013-12,series_a,investor,DFJ,https://rethinkdb.com/blog/funding/,company,found
 rethinkdb,RethinkDB,2013-12,series_a,investor,Webb Investment Network,https://rethinkdb.com/blog/funding/,company,found
 apify,Apify,2015,accelerator,investor,Y Combinator,https://apify.com/about,company,found
+GrapesJS,GrapesJS,2024-06,venture_unspecified,investor,Open Core Ventures,https://opencoreventures.com/insights/grapesjs-creator-founds-grapes-studio-inc-to-bring-the-open-source-multi-project-no-code-website-editor-mainstream/,other,found
 plotly,Plotly,2015-06,series_a,lead,MHS Capital,https://betakit.com/plotly-raises-5-5-million-series-a-from-mhs-capital-real-ventures-others/,news,found
 plotly,Plotly,2015-06,series_a,lead,Siemens Venture Capital,https://betakit.com/plotly-raises-5-5-million-series-a-from-mhs-capital-real-ventures-others/,news,found
 plotly,Plotly,2015-06,series_a,lead,Rho Ventures,https://betakit.com/plotly-raises-5-5-million-series-a-from-mhs-capital-real-ventures-others/,news,found
@@ -1736,6 +1805,9 @@ pulumi,Pulumi,2023-10,series_c,investor,Madrona Venture Group,https://www.pulumi
 pulumi,Pulumi,2023-10,series_c,investor,NEA,https://www.pulumi.com/blog/series-c/,company,found
 pulumi,Pulumi,2023-10,series_c,investor,Tola Capital,https://www.pulumi.com/blog/series-c/,company,found
 pulumi,Pulumi,2023-10,series_c,investor,Strike Capital,https://www.pulumi.com/blog/series-c/,company,found
+d2lang,Terrastruct,2021-12,seed,investor,Haystack,https://pitchbook.com/profiles/company/490983-04,other,unavailable
+d2lang,Terrastruct,2021-12,seed,investor,Bloomberg Beta,https://pitchbook.com/profiles/company/490983-04,other,unavailable
+d2lang,Terrastruct,2021-12,seed,investor,Fathom Capital,https://pitchbook.com/profiles/company/490983-04,other,unavailable
 cilium,Isovalent,2020-11,series_a,lead,Andreessen Horowitz,https://techcrunch.com/2020/11/10/with-29m-in-funding-isovalent-launches-its-cloud-native-networking-and-security-platform-based-on-ebpf-and-cilium/,news,found
 cilium,Isovalent,2020-11,series_a,lead,Google,https://techcrunch.com/2020/11/10/with-29m-in-funding-isovalent-launches-its-cloud-native-networking-and-security-platform-based-on-ebpf-and-cilium/,news,found
 cilium,Isovalent,2020-11,series_a,investor,Cisco,https://techcrunch.com/2020/11/10/with-29m-in-funding-isovalent-launches-its-cloud-native-networking-and-security-platform-based-on-ebpf-and-cilium/,news,in page markup (logo or link)
@@ -1843,6 +1915,23 @@ gitlabhq,GitLab Inc.,2019-09,series_e,investor,Light Street Capital,https://tech
 gitlabhq,GitLab Inc.,2019-09,series_e,investor,Tiger Management,https://techcrunch.com/2019/09/17/gitlab-hauls-in-268m-series-e-on-2-768b-valuation/,news,found
 gitlabhq,GitLab Inc.,2019-09,series_e,investor,Two Sigma Investments,https://techcrunch.com/2019/09/17/gitlab-hauls-in-268m-series-e-on-2-768b-valuation/,news,found
 gitlabhq,GitLab Inc.,,venture_unspecified,investor,Samsung,https://www.samsungnext.com/portfolio,investor,found
+TecharoHQ,Techaro,2025-08,other,investor,Raptor Computing Systems,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Databento,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Spur Intelligence,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Synthient,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Unipromos,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Uvensys,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Gitea,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Prolocation,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Terminal Trove,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,canine.tools,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Weblate,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Uberspace,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Wildbase,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Anexia,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,embeDD,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Qwertiko,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
+TecharoHQ,Techaro,2025-08,other,investor,Wenet,https://github.com/techaroHQ/anubis,other,in page markup (logo or link)
 brave,Brave Software,2016-08,seed,investor,Founders Fund,https://techcrunch.com/?p=1361827,news,found
 brave,Brave Software,2016-08,seed,investor,Propel Venture Partners,https://techcrunch.com/?p=1361827,news,found
 brave,Brave Software,2016-08,seed,investor,Pantera Capital,https://techcrunch.com/?p=1361827,news,found
@@ -1850,6 +1939,14 @@ brave,Brave Software,2016-08,seed,investor,Foundation Capital,https://techcrunch
 brave,Brave Software,2016-08,seed,investor,Digital Currency Group,https://techcrunch.com/?p=1361827,news,found
 brave,Brave Software,2017,token_sale,investor,BAT token buyers,https://brave.com/about/,company,not on page
 fosrl,Fossorial (Pangolin),2025-06,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/pangolin,other,found
+fosrl,Fossorial (Pangolin),2025-05,accelerator,investor,Y Combinator,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
+fosrl,Fossorial (Pangolin),2025-10,seed,lead,Chemistry,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
+fosrl,Fossorial (Pangolin),2025-10,seed,investor,Y Combinator,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
+fosrl,Fossorial (Pangolin),2025-10,seed,investor,Blast Club,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
+fosrl,Fossorial (Pangolin),2025-10,seed,investor,468 Capital,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
+fosrl,Fossorial (Pangolin),2025-10,seed,investor,Transpose Platform,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
+fosrl,Fossorial (Pangolin),2025-10,seed,investor,Pioneer Fund,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
+fosrl,Fossorial (Pangolin),2025-10,seed,investor,Tekedia Capital,https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765,other,unavailable
 sinaptik-ai,Sinaptik (PandasAI),2024,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/pandasai,other,found
 timescale,Tiger Data,2017,seed,lead,NEA,https://blog.timescale.com/raised-16m-from-benchmark-nea-to-understand-machines-time-series-data-iot-9eff8213c15c,company,found
 timescale,Tiger Data,2018-01,series_a,lead,Benchmark,https://blog.timescale.com/raised-16m-from-benchmark-nea-to-understand-machines-time-series-data-iot-9eff8213c15c,company,found
@@ -1935,6 +2032,7 @@ openobserve,OpenObserve,2026-04,series_a,lead,Nexus Venture Partners,https://ope
 openobserve,OpenObserve,2026-04,series_a,lead,Dell Technologies Capital,https://openobserve.ai/blog/series-a-announcement/,company,found
 tracel-ai,Tracel Inc.,,venture_unspecified,lead,Golden Ventures,https://tracel.ai/blog/funding-announcement/,company,found
 tracel-ai,Tracel Inc.,,venture_unspecified,lead,OSS Capital,https://tracel.ai/blog/funding-announcement/,company,found
+BruceDevices,Bruce Devices,2024-11,other,investor,Patreon backers,https://graphtreon.com/creator/BruceFirmware,other,found
 nextflow-io,Seqera,2021-09,seed,lead,Talis Capital,https://techcrunch.com/2021/09/07/seqera-labs-grabs-5-5m-to-help-sequence-covid-19-variants-and-other-complex-data-problems/,news,found
 nextflow-io,Seqera,2021-09,seed,lead,Speedinvest,https://techcrunch.com/2021/09/07/seqera-labs-grabs-5-5m-to-help-sequence-covid-19-variants-and-other-complex-data-problems/,news,found
 nextflow-io,Seqera,2021-09,seed,investor,BoxOne Ventures,https://techcrunch.com/2021/09/07/seqera-labs-grabs-5-5m-to-help-sequence-covid-19-variants-and-other-complex-data-problems/,news,found
@@ -2126,11 +2224,21 @@ anaconda,"Anaconda, Inc. (Continuum Analytics)",2026-01,venture_unspecified,inve
 anaconda,"Anaconda, Inc. (Continuum Analytics)",2026-01,venture_unspecified,investor,GIC,https://techcrunch.com/2026/01/12/at-least-36-new-tech-unicorns-were-minted-in-2025-so-far/,news,found
 anaconda,"Anaconda, Inc. (Continuum Analytics)",2015-07,series_a,investor,General Catalyst,https://siliconangle.com/2015/07/23/continuum-analytics-scores-24-million-to-put-python-on-the-big-data-map/,news,found
 anaconda,"Anaconda, Inc. (Continuum Analytics)",2015-07,series_a,investor,BuildGroup,https://siliconangle.com/2015/07/23/continuum-analytics-scores-24-million-to-put-python-on-the-big-data-map/,news,found
+anaconda,"Anaconda, Inc. (Continuum Analytics)",2013-02,grant_government,investor,DARPA,https://www.computerworld.com/article/1405122/python-gets-a-big-data-boost-from-darpa.html,other,found
+anaconda,"Anaconda, Inc. (Continuum Analytics)",2015-12,debt,investor,Silicon Valley Bank,https://www.privateequityinternational.com/continuum-analytics-snags-10-mln-from-svb/,other,found
+anaconda,"Anaconda, Inc. (Continuum Analytics)",2018-08,corporate_strategic,investor,Citi Ventures,https://www.anaconda.com/blog/anaconda-funded-by-citi-ventures,other,found
+anaconda,"Anaconda, Inc. (Continuum Analytics)",2020-04,debt,investor,Sunflower Bank,https://projects.propublica.org/coronavirus/bailouts/loans/anaconda-inc-5365807309,other,unavailable
+anaconda,"Anaconda, Inc. (Continuum Analytics)",2021-06,venture_unspecified,investor,Morningside Venture Partners,https://www.sec.gov/Archives/edgar/data/1538860/000153886021000002/xslFormDX01/primary_doc.xml,other,not on page
+anaconda,"Anaconda, Inc. (Continuum Analytics)",2021-09,corporate_strategic,investor,Snowflake Ventures,https://www.businessinsider.com/snowflake-announces-partnership-with-anaconda-python-data-science-2021-9,other,found
+anaconda,"Anaconda, Inc. (Continuum Analytics)",2022-09,debt,investor,BlackRock,https://www.anaconda.com/blog/accelerating-innovation-anaconda-announces-financing-for-the-future,other,found
 evolutionaryscale,EvolutionaryScale,2024-06,seed,lead,Nat Friedman (person),https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/,news,found
 evolutionaryscale,EvolutionaryScale,2024-06,seed,lead,Daniel Gross (person),https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/,news,found
 evolutionaryscale,EvolutionaryScale,2024-06,seed,lead,Lux Capital,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/,news,found
 evolutionaryscale,EvolutionaryScale,2024-06,seed,investor,Amazon Web Services,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/,news,found
 evolutionaryscale,EvolutionaryScale,2024-06,seed,investor,NVentures,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/,news,found
+evolutionaryscale,EvolutionaryScale,2023-08,seed,lead,Lux Capital,https://www.forbes.com/sites/kenrickcai/2023/08/25/evolutionaryscale-ai-biotech-startup-meta-researchers-funding/,other,unavailable
+evolutionaryscale,EvolutionaryScale,2023-08,seed,investor,Nat Friedman (person),https://www.forbes.com/sites/kenrickcai/2023/08/25/evolutionaryscale-ai-biotech-startup-meta-researchers-funding/,other,unavailable
+evolutionaryscale,EvolutionaryScale,2023-08,seed,investor,Daniel Gross (person),https://www.forbes.com/sites/kenrickcai/2023/08/25/evolutionaryscale-ai-biotech-startup-meta-researchers-funding/,other,unavailable
 orbital-materials,Orbital Materials (Orbital Industries),2024-02,series_a,lead,Radical Ventures,https://startupintros.com/news/2024-02-01-orbital-materials-series-a,news,found
 orbital-materials,Orbital Materials (Orbital Industries),2024-02,series_a,investor,Toyota Ventures,https://startupintros.com/news/2024-02-01-orbital-materials-series-a,news,found
 orbital-materials,Orbital Materials (Orbital Industries),2026-05,series_b,lead,Plural,https://thenextweb.com/news/orbital-industries-50m-series-b-data-center-cooling,news,found
@@ -2194,6 +2302,14 @@ researchhub,ResearchHub (ResearchHub Technologies),2023-06,seed,investor,Bob You
 researchhub,ResearchHub (ResearchHub Technologies),2023-06,seed,investor,Guillermo Rauch (person),https://www.theblock.co/amp/post/234960/scientists-can-earn-crypto-as-brian-armstrong-startup-raises-5-million,news,unavailable
 researchhub,ResearchHub (ResearchHub Technologies),2023-06,seed,investor,Amjad Masad (person),https://www.theblock.co/amp/post/234960/scientists-can-earn-crypto-as-brian-armstrong-startup-raises-5-million,news,unavailable
 researchhub,ResearchHub (ResearchHub Technologies),2023-06,seed,investor,Garry Tan (person),https://www.theblock.co/amp/post/234960/scientists-can-earn-crypto-as-brian-armstrong-startup-raises-5-million,news,unavailable
+researchhub,ResearchHub (ResearchHub Technologies),2023-06,series_a,lead,OSS Capital,https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research,other,in page markup (logo or link)
+researchhub,ResearchHub (ResearchHub Technologies),2023-06,series_a,investor,Boost VC,https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research,other,in page markup (logo or link)
+researchhub,ResearchHub (ResearchHub Technologies),2023-06,series_a,investor,Bob Young (person),https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research,other,in page markup (logo or link)
+researchhub,ResearchHub (ResearchHub Technologies),2023-06,series_a,investor,Guillermo Rauch (person),https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research,other,in page markup (logo or link)
+researchhub,ResearchHub (ResearchHub Technologies),2023-06,series_a,investor,Amjad Masad (person),https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research,other,in page markup (logo or link)
+researchhub,ResearchHub (ResearchHub Technologies),2023-06,series_a,investor,Garry Tan (person),https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research,other,in page markup (logo or link)
+researchhub,ResearchHub (ResearchHub Technologies),2023-08,venture_unspecified,investor,Sora Ventures,https://cryptoslate.com/sora-ventures-champions-decentralized-science-with-investment-in-researchhub/,other,found
+researchhub,ResearchHub (ResearchHub Technologies),2025-02,venture_unspecified,investor,Boost VC,https://www.linkedin.com/feed/update/urn:li:activity:7298027491040907264,other,found
 molecule,Molecule (Molecule AG),2022-06,seed,lead,Northpond Ventures,https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech,company,found
 molecule,Molecule (Molecule AG),2022-06,seed,investor,Shine Capital,https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech,company,found
 molecule,Molecule (Molecule AG),2022-06,seed,investor,1kx,https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech,company,found
@@ -2340,13 +2456,56 @@ mycroft,Mycroft AI,,crowdfunding_equity,investor,StartEngine backers,https://en.
 mnt-research,MNT Research,2020-06,crowdfunding_reward,investor,Crowd Supply backers,https://crowdsupply.com/mnt/reform/crowdfunding,other,unavailable
 purism,Purism,2015,crowdfunding_reward,investor,Librem 13/15 crowdfunding backers,https://en.wikipedia.org/wiki/Purism_(company),wikipedia,found
 purism,Purism,2017-10,crowdfunding_reward,investor,Librem 5 crowdfunding backers,https://en.wikipedia.org/wiki/Purism_(company),wikipedia,found
+bitcraze,Bitcraze,,grant_government,investor,Vinnova,https://www.vinnova.se/en/p/efficiency-optimisation-of-mass-produced-micro-drone-propellers,other,found
 open-bionics,Open Bionics,2019-01,series_a,lead,Foresight Williams Technology EIS Fund,https://techcrunch.com/2019/01/14/open-bionics-closes-5-9m-series-a-for-its-affordable-and-cool-bionic-limbs,news,found
 open-bionics,Open Bionics,2019-01,series_a,investor,Ananda Impact Ventures,https://techcrunch.com/2019/01/14/open-bionics-closes-5-9m-series-a-for-its-affordable-and-cool-bionic-limbs,news,found
 open-bionics,Open Bionics,2019-01,series_a,investor,Downing Ventures,https://techcrunch.com/2019/01/14/open-bionics-closes-5-9m-series-a-for-its-affordable-and-cool-bionic-limbs,news,found
 open-bionics,Open Bionics,2019-01,series_a,investor,Williams Advanced Engineering,https://techcrunch.com/2019/01/14/open-bionics-closes-5-9m-series-a-for-its-affordable-and-cool-bionic-limbs,news,found
 open-bionics,Open Bionics,,seed,investor,Downing Ventures,https://techcrunch.com/2019/01/14/open-bionics-closes-5-9m-series-a-for-its-affordable-and-cool-bionic-limbs,news,found
+open-bionics,Open Bionics,2013-10,crowdfunding_reward,investor,Indiegogo backers,https://www.indiegogo.com/en/projects/joelgibbard/the-open-hand-project-a-low-cost-robotic-hand/rewards,other,unavailable
+open-bionics,Open Bionics,2014-09,prize,investor,Intel,https://app.dealroom.co/companies/open_bionics,other,unavailable
+open-bionics,Open Bionics,2014-11,prize,investor,Intel,https://techspark.co/blog/2014/11/05/joel-gibbard-of-robotics-firm-open-bionics-wins-125k-intel-prize/,other,found
+open-bionics,Open Bionics,2015-07,accelerator,investor,Disney Accelerator,https://www.wired.com/story/open-bionics-hands-joel-gibbard/,other,found
+open-bionics,Open Bionics,2015-07,accelerator,investor,Techstars,https://www.wired.com/story/open-bionics-hands-joel-gibbard/,other,not on page
+open-bionics,Open Bionics,2015-08,prize,investor,James Dyson Foundation,https://www.siliconrepublic.com/machines/james-dyson-award-open-bionics,other,found
+open-bionics,Open Bionics,2016-09,grant_philanthropic,investor,Nominet Trust,https://startupbeat.com/nominet-trust-unlocks-400000/23676/,other,found
+open-bionics,Open Bionics,2017-01,grant_government,investor,SBRI Healthcare,https://www.bristol247.com/business/news-business/100k-nhs-funding-for-open-bionics/,other,found
+open-bionics,Open Bionics,2017-02,prize,investor,UAE AI and Robotics Award for Good,https://openbionicslabs.com/blog/open-bionics-win-start-up-of-the-year-health-and-care-award-and-robotics-international-award-for-good,other,found
+open-bionics,Open Bionics,2017-03,seed,investor,Downing Ventures,https://app.dealroom.co/companies/open_bionics,other,unavailable
+open-bionics,Open Bionics,2017-07,venture_unspecified,investor,Rewired,https://rewiredstudio.medium.com/launching-rewired-a-robotics-focused-venture-studio-and-fund-49b73725161d,other,unavailable
+open-bionics,Open Bionics,2018-01,seed,investor,Rewired,https://aventure.vc/companies/open-bionics-college-green-bristol-gb/fundraising,other,unavailable
+open-bionics,Open Bionics,2018-01,seed,investor,Social Tech Trust,https://aventure.vc/companies/open-bionics-college-green-bristol-gb/fundraising,other,unavailable
+open-bionics,Open Bionics,2022-03,grant_government,investor,West of England Combined Authority,https://www.westofengland-ca.gov.uk/wp-content/uploads/2024/10/Business-Innovation-Fund.pdf,other,not on page
+open-bionics,Open Bionics,2022-12,crowdfunding_equity,investor,Crowdcube backers,https://www.crowdcube.com/companies/open-bionics-ltd/pitches/Z7pr4b?country=GB,other,unavailable
+open-bionics,Open Bionics,2024-02,crowdfunding_equity,investor,Crowdcube backers,https://www.crowdcube.com/companies/open-bionics-ltd/pitches/by93Eb?country=GB,other,unavailable
+open-bionics,Open Bionics,2024-11,debt,investor,NatWest,https://inngot.com/case-study/open-bionics-uk-prosthetics-firm-gets-funding-from-natwest-supported-by-inngot,other,found
+open-bionics,Open Bionics,,grant_government,investor,Innovate UK,https://gtr.ukri.org/api/v3/awards/9c2540e5-e001-4808-be81-1a927e2e06de,other,found
+open-bionics,Open Bionics,,grant_government,investor,Innovate UK,https://gtr.ukri.org/api/v3/awards/81eb9a62-1ce2-4e73-8ad4-1b506f21eec9,other,found
+open-bionics,Open Bionics,,grant_government,investor,Innovate UK,https://gtr.ukri.org/api/v3/awards/ae48f672-a774-43e7-a958-4c8c1e727fb7,other,found
+open-bionics,Open Bionics,,grant_government,investor,Innovate UK,https://gtr.ukri.org/api/v3/awards/404463bf-b6e2-4cd1-a1fa-1b9b396b7ff5,other,found
+open-bionics,Open Bionics,,grant_government,investor,SBRI Healthcare,https://www.gov.uk/government/news/bionic-arm-start-up-secures-46-million-to-go-global,other,found
 farmbot,FarmBot,2014-03,grant_philanthropic,investor,Shuttleworth Foundation,https://farm.bot/pages/series-a,company,found
 farmbot,FarmBot,2016,crowdfunding_reward,investor,Genesis crowdfunding backers,https://farm.bot/pages/series-a,company,found
+farmbot,FarmBot,2016-07,crowdfunding_reward,investor,Self-hosted campaign backers,https://farm.bot/blogs/news/the-farmbot-launch-campaign-wrapup,other,not on page
+farmbot,FarmBot,2018-11,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2018-11-21.csv,other,not on page
+farmbot,FarmBot,2019-02,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2019-02-22.csv,other,found
+farmbot,FarmBot,2019-06,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2019-06-26.csv,other,found
+farmbot,FarmBot,2019-09,debt,investor,American Express,https://meta.farm.bot/assets/data/timeline/accounts/amex_loan.csv,other,not on page
+farmbot,FarmBot,2019-10,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2019-10-28.csv,other,found
+farmbot,FarmBot,2020-01,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2020-01-03.csv,other,not on page
+farmbot,FarmBot,2020-07,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2020-07-30.csv,other,not on page
+farmbot,FarmBot,2022-08,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2022-08-26.csv,other,not on page
+farmbot,FarmBot,2022-10,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2022-10-21.csv,other,not on page
+farmbot,FarmBot,2023-01,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2023-03-15.csv,other,not on page
+farmbot,FarmBot,2023-02,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2023-02-16.csv,other,not on page
+farmbot,FarmBot,2023-06,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2023-06-08.csv,other,not on page
+farmbot,FarmBot,2023-08,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2023-08-11.csv,other,not on page
+farmbot,FarmBot,2023-10,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2023-12-20.csv,other,not on page
+farmbot,FarmBot,2024-01,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2024-01-08.csv,other,not on page
+farmbot,FarmBot,2024-05,debt,investor,Shopify Capital,https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2024-06-03.csv,other,not on page
+farmbot,FarmBot,2024-10,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2024-10-11.csv,other,not on page
+farmbot,FarmBot,2025-01,debt,investor,PayPal,https://meta.farm.bot/assets/data/timeline/accounts/paypal_loans/paypal_loan_2025-01-10.csv,other,not on page
+farmbot,FarmBot,,debt,investor,Wells Fargo,https://meta.farm.bot/assets/data/timeline/accounts/line_of_credit.csv,other,not on page
 backyard-brains,Backyard Brains,2011,grant_government,investor,National Institute of Mental Health (SBIR),https://www.nimh.nih.gov/funding/sbir/backyard-brains-innovative-products-to-help-kids-learn-about-neuroscience,other,found
 backyard-brains,Backyard Brains,2011-12,crowdfunding_reward,investor,Kickstarter backers,http://www.kickstarter.com/projects/2067585958/backyard-brains-operation-publication,other,unavailable
 inventables,Inventables,2019-07,series_c,lead,Cue Ball,https://techcrunch.com/2019/07/23/inventables-raises-11-5m-for-its-desktop-milling-technology/,news,found
@@ -2368,10 +2527,37 @@ bcn3d,BCN3D Technologies,2020-07,venture_unspecified,investor,Clave Capital,http
 bcn3d,BCN3D Technologies,2020-07,venture_unspecified,investor,JME Venture Capital,https://www.3dnatives.com/en/bcn3d-raises-2-8-million-240720204/,news,found
 bcn3d,BCN3D Technologies,2020-07,venture_unspecified,investor,Accurafy4,https://www.3dnatives.com/en/bcn3d-raises-2-8-million-240720204/,news,found
 bcn3d,BCN3D Technologies,2020-07,venture_unspecified,investor,Danobatgroup,https://www.3dnatives.com/en/bcn3d-raises-2-8-million-240720204/,news,found
+bcn3d,BCN3D Technologies,2020-07,venture_unspecified,lead,CDTI Innvierte,https://bcn3d.com/bcn3d-secures-e2-8-million-funding-round-led-by-cdti-and-spanish-industrial-business-group-mondragon-during-pandemic/,other,not on page
+bcn3d,BCN3D Technologies,2020-07,venture_unspecified,lead,Mondragon Ventures,https://bcn3d.com/bcn3d-secures-e2-8-million-funding-round-led-by-cdti-and-spanish-industrial-business-group-mondragon-during-pandemic/,other,found
+bcn3d,BCN3D Technologies,2020-07,venture_unspecified,investor,Accurafy4,https://bcn3d.com/bcn3d-secures-e2-8-million-funding-round-led-by-cdti-and-spanish-industrial-business-group-mondragon-during-pandemic/,other,found
+bcn3d,BCN3D Technologies,2020-07,venture_unspecified,investor,JME Ventures,https://bcn3d.com/bcn3d-secures-e2-8-million-funding-round-led-by-cdti-and-spanish-industrial-business-group-mondragon-during-pandemic/,other,found
+bcn3d,BCN3D Technologies,2020-07,venture_unspecified,investor,Danobatgroup,https://bcn3d.com/bcn3d-secures-e2-8-million-funding-round-led-by-cdti-and-spanish-industrial-business-group-mondragon-during-pandemic/,other,found
+bcn3d,BCN3D Technologies,2021-10,venture_unspecified,investor,CDTI Innvierte,https://www.webcapitalriesgo.com/el-cdti-aprueba-una-nueva-coinversion-en-bcn3d-por-e1m-a-traves-de-innvierte/,other,not on page
+bcn3d,BCN3D Technologies,2021-10,venture_unspecified,investor,Mundi Ventures,https://www.webcapitalriesgo.com/el-cdti-aprueba-una-nueva-coinversion-en-bcn3d-por-e1m-a-traves-de-innvierte/,other,found
+bcn3d,BCN3D Technologies,2021-10,venture_unspecified,investor,JME Ventures,https://www.webcapitalriesgo.com/el-cdti-aprueba-una-nueva-coinversion-en-bcn3d-por-e1m-a-traves-de-innvierte/,other,not on page
+bcn3d,BCN3D Technologies,2021-10,venture_unspecified,investor,Mondragon Ventures,https://www.webcapitalriesgo.com/el-cdti-aprueba-una-nueva-coinversion-en-bcn3d-por-e1m-a-traves-de-innvierte/,other,found
+bcn3d,BCN3D Technologies,2024-02,venture_unspecified,investor,CDTI Innvierte,https://capital-riesgo.es/es/articles/innvierte-destina-en-febrero-cerca-de-8-millones-de-euros-a-seis-nuevas-coinversiones-en-capital-riesgo/,other,in page markup (logo or link)
+bcn3d,BCN3D Technologies,2024-02,venture_unspecified,investor,Mundi Ventures,https://capital-riesgo.es/es/articles/innvierte-destina-en-febrero-cerca-de-8-millones-de-euros-a-seis-nuevas-coinversiones-en-capital-riesgo/,other,found
+bcn3d,BCN3D Technologies,2024-02,venture_unspecified,investor,Mondragon Ventures,https://capital-riesgo.es/es/articles/innvierte-destina-en-febrero-cerca-de-8-millones-de-euros-a-seis-nuevas-coinversiones-en-capital-riesgo/,other,not on page
+bcn3d,BCN3D Technologies,,grant_government,investor,CDTI,https://bcn3d.com/es/sobre-nosotros/,other,found
+bcn3d,BCN3D Technologies,,grant_government,investor,European Union NextGenerationEU,https://bcn3d.com/es/sobre-nosotros/,other,not on page
+bcn3d,BCN3D Technologies,,grant_government,investor,ICEX,https://bcn3d.com/bcn3d-secures-a-new-investment-round-to-fuel-light-industrial-3d-printing-and-unveils-new-factory-on-omega-i60-first-anniversary/,other,found
+bcn3d,BCN3D Technologies,,grant_government,investor,European Regional Development Fund,https://bcn3d.com/bcn3d-secures-a-new-investment-round-to-fuel-light-industrial-3d-printing-and-unveils-new-factory-on-omega-i60-first-anniversary/,other,found
+bcn3d,BCN3D Technologies,,grant_government,investor,CDTI,https://bcn3d.com/es/sobre-nosotros/,other,found
+bcn3d,BCN3D Technologies,,grant_government,investor,European Union NextGenerationEU,https://bcn3d.com/es/sobre-nosotros/,other,not on page
 efabless,Efabless,2021-01,series_a,lead,New North Ventures,https://us.design-reuse.com/news/51234/efabless-series-a-1-round.html,news,found
 efabless,Efabless,2023-10,series_a,investor,GlobalFoundries,https://us.design-reuse.com/news/54987/efabless-series-a-1-funding-globalfoundries-synopsys-new-north-ventures.html,news,found
 efabless,Efabless,2023-10,series_a,investor,Synopsys,https://us.design-reuse.com/news/54987/efabless-series-a-1-funding-globalfoundries-synopsys-new-north-ventures.html,news,found
 efabless,Efabless,2023-10,series_a,investor,New North Ventures,https://us.design-reuse.com/news/54987/efabless-series-a-1-funding-globalfoundries-synopsys-new-north-ventures.html,news,found
+efabless,Efabless,2022-01,series_a,lead,New North Ventures,https://www.globenewswire.com/fr/news-release/2022/01/12/2365804/0/en/efabless-series-a-1-round-led-by-new-north-ventures-drives-open-source-enabled-chip-design.html,other,unavailable
+efabless,Efabless,2022-05,series_a,lead,New North Ventures,https://www.linkedin.com/posts/efabless_chips-simplify-chip-activity-6929643205143465984-Dd1N,other,found
+efabless,Efabless,2022-05,series_a,investor,Synopsys,https://www.linkedin.com/posts/efabless_chips-simplify-chip-activity-6929643205143465984-Dd1N,other,found
+efabless,Efabless,2022-05,series_a,investor,Ken Goldman (person),https://www.linkedin.com/posts/efabless_chips-simplify-chip-activity-6929643205143465984-Dd1N,other,found
+antmicro,Antmicro,2014-12,grant_government,investor,European Commission,https://cordis.europa.eu/project/id/645560,other,found
+antmicro,Antmicro,2017-05,grant_government,investor,European Commission,https://cordis.europa.eu/project/id/730270,other,found
+antmicro,Antmicro,2020-07,grant_government,investor,European Commission,https://cordis.europa.eu/project/id/957197,other,found
+antmicro,Antmicro,2020-10,grant_government,investor,European Commission,https://eda.europa.eu/docs/default-source/padr/padr-exceed-projectweb.pdf,other,not on page
+antmicro,Antmicro,2022-11,grant_government,investor,European Commission,https://cordis.europa.eu/project/id/101095947,other,found
 tenstorrent,Tenstorrent,2023-08,convertible_note,lead,Hyundai Motor Group,https://techcrunch.com/2023/08/04/ai-chip-startup-tenstorrent-lands-100m-investment-from-hyundai-and-samsung/,news,found
 tenstorrent,Tenstorrent,2023-08,convertible_note,lead,Samsung Catalyst Fund,https://techcrunch.com/2023/08/04/ai-chip-startup-tenstorrent-lands-100m-investment-from-hyundai-and-samsung/,news,found
 tenstorrent,Tenstorrent,2023-08,convertible_note,investor,Fidelity Ventures,https://techcrunch.com/2023/08/04/ai-chip-startup-tenstorrent-lands-100m-investment-from-hyundai-and-samsung/,news,found
@@ -2438,11 +2624,15 @@ authorea,Authorea,2016-01,venture_unspecified,lead,Knight Foundation,https://web
 authorea,Authorea,2016-01,venture_unspecified,investor,ff Venture Capital,https://web.archive.org/web/2016/http://www.businesswire.com/news/home/20160126005194/en/Authorea-Raises-1.5M-Advance-Open-Reproducible-Data-Driven,news,found
 authorea,Authorea,2016-01,venture_unspecified,investor,NY Angels,https://web.archive.org/web/2016/http://www.businesswire.com/news/home/20160126005194/en/Authorea-Raises-1.5M-Advance-Open-Reproducible-Data-Driven,news,found
 frontiers,Frontiers Media,2013-02,corporate_strategic,investor,Nature Publishing Group,https://en.wikipedia.org/wiki/Frontiers_Media,wikipedia,found
-bela,Augmented Instruments (Bela),2016-03,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/423153472/bela-an-embedded-platform-for-low-latency-interact/,other,unavailable
+bela,Augmented Instruments (Bela),2016-03,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/423153472/bela-an-embedded-platform-for-low-latency-interact/,other,found
 bela,Augmented Instruments (Bela),2017,grant_government,investor,Innovate UK,https://www.makery.info/en/2018/02/06/bela-un-raspberry-pi-a-quelques-milliemes-de-seconde-pres/,news,found
+bela,Augmented Instruments (Bela),2016-04,crowdfunding_reward,investor,Kickstarter backers,https://www.kickstarter.com/projects/423153472/bela-an-embedded-platform-for-low-latency-interact,other,unavailable
+bela,Augmented Instruments (Bela),2019-10,crowdfunding_reward,investor,Kickstarter backers,https://www.kickstarter.com/projects/423153472/trill-touch-sensing-for-makers,other,unavailable
+bela,Augmented Instruments (Bela),2023-01,crowdfunding_reward,investor,Crowd Supply backers,https://www.crowdsupply.com/bela/gliss,other,unavailable
+bela,Augmented Instruments (Bela),2025-07,crowdfunding_reward,investor,Crowd Supply backers,https://www.crowdsupply.com/bela/bela-gem-stereo-and-multi,other,unavailable
 openmv,OpenMV,2015-01,crowdfunding_reward,investor,Kickstarter backers,https://www.cnx-software.com/2015/02/03/openvm-is-an-open-source-hardware-vga-camera-controllable-with-python-scripts-crowdfunding/,news,found
 openmv,OpenMV,2018-09,crowdfunding_reward,investor,Kickstarter backers,https://openmv.io/blogs/news/we-reached-our-kickstarter-goal-and-uvc-support,company,found
-openmv,OpenMV,2025,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/openmv/openmv-n6-and-ae3-low-power-python-programmable-ai-cameras/,other,unavailable
+openmv,OpenMV,2025,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/openmv/openmv-n6-and-ae3-low-power-python-programmable-ai-cameras/,other,found
 luxonis,Luxonis,2020-07,crowdfunding_reward,investor,Kickstarter backers,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/,news,found
 luxonis,Luxonis,2026-07,series_a,lead,Denali Growth Partners,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/,news,found
 luxonis,Luxonis,2026-07,series_a,investor,Taiwania Capital,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/,news,not on page
@@ -2589,6 +2779,25 @@ jfrog,JFrog,2020-09,venture_unspecified,investor,Sapphire Ventures,https://www.s
 jfrog,JFrog,2020-09,venture_unspecified,investor,Insight Partners,https://www.sec.gov/Archives/edgar/data/1800667/000119312520247176/d841831d424b4.htm,filing,found
 jfrog,JFrog,2020-09,venture_unspecified,investor,Dell,https://www.sec.gov/Archives/edgar/data/1800667/000119312520247176/d841831d424b4.htm,filing,found
 jfrog,JFrog,2020-09,venture_unspecified,investor,Qumra Capital,https://www.sec.gov/Archives/edgar/data/1800667/000119312520247176/d841831d424b4.htm,filing,found
+jfrog,JFrog,2012-06,series_a,lead,Gemini Israel Ventures,https://www.geektime.co.il/jfrog-series-a-3-5-million/,other,unavailable
+jfrog,JFrog,2014-07,series_b,lead,VMware,https://venturebeat.com/technology/vmware-backs-development-streamliner-jfrog-in-7m-round,other,unavailable
+jfrog,JFrog,2014-07,series_b,investor,Gemini Israel Ventures,https://venturebeat.com/technology/vmware-backs-development-streamliner-jfrog-in-7m-round,other,unavailable
+jfrog,JFrog,2016-01,series_c,investor,Scale Venture Partners,https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/,other,found
+jfrog,JFrog,2016-01,series_c,investor,Sapphire Ventures,https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/,other,found
+jfrog,JFrog,2016-01,series_c,investor,Battery Ventures,https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/,other,found
+jfrog,JFrog,2016-01,series_c,investor,Vintage Investment Partners,https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/,other,found
+jfrog,JFrog,2016-01,series_c,investor,Qumra Capital,https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/,other,found
+jfrog,JFrog,2016-01,series_c,investor,Gemini Israel Ventures,https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/,other,found
+jfrog,JFrog,2016-01,series_c,investor,VMware,https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/,other,found
+jfrog,JFrog,2018-10,series_d,lead,Insight Partners,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,2018-10,series_d,investor,Battery Ventures,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,2018-10,series_d,investor,Spark Capital,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,2018-10,series_d,investor,Sapphire Ventures,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,2018-10,series_d,investor,Scale Venture Partners,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,2018-10,series_d,investor,Dell Technologies Capital,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,2018-10,series_d,investor,Vintage Investment Partners,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,2018-10,series_d,investor,Geodesic Capital,https://www.prnewswire.com/news-releases/jfrog-secures-165-million-investment-to-lead-universal-devops-in-the-enterprise-300724416.html,other,unavailable
+jfrog,JFrog,,grant_government,investor,Office of the Chief Scientist (Israel),https://www.geektime.co.il/jfrog-series-a-3-5-million/,other,unavailable
 confluent,Confluent,2021-06,venture_unspecified,investor,Benchmark Capital,https://www.sec.gov/Archives/edgar/data/1699838/000119312521199382/d63025d424b4.htm,filing,found
 confluent,Confluent,2021-06,venture_unspecified,investor,Index Ventures,https://www.sec.gov/Archives/edgar/data/1699838/000119312521199382/d63025d424b4.htm,filing,found
 confluent,Confluent,2021-06,venture_unspecified,investor,Sequoia Capital,https://www.sec.gov/Archives/edgar/data/1699838/000119312521199382/d63025d424b4.htm,filing,found
@@ -2756,6 +2965,7 @@ airbyte,Airbyte,2021-12,series_b,investor,Salesforce Ventures,https://airbyte.co
 airbyte,Airbyte,2021-12,series_b,investor,Benchmark,https://airbyte.com/blog/a-150m-series-b-to-power-the-movement-of-data,company,found
 airbyte,Airbyte,2021-12,series_b,investor,Accel,https://airbyte.com/blog/a-150m-series-b-to-power-the-movement-of-data,company,found
 airbyte,Airbyte,2021-12,series_b,investor,SV Angel,https://airbyte.com/blog/a-150m-series-b-to-power-the-movement-of-data,company,found
+airbyte,Airbyte,,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/airbyte,other,found
 astronomer,Astronomer,2022-03,series_c,lead,Insight Partners,https://techcrunch.com/2022/03/23/astronomer-ready-for-its-next-mission-after-datakin-acquisition-213m-series-c/,news,found
 astronomer,Astronomer,2022-03,series_c,investor,Meritech Capital,https://techcrunch.com/2022/03/23/astronomer-ready-for-its-next-mission-after-datakin-acquisition-213m-series-c/,news,found
 astronomer,Astronomer,2022-03,series_c,investor,Salesforce Ventures,https://techcrunch.com/2022/03/23/astronomer-ready-for-its-next-mission-after-datakin-acquisition-213m-series-c/,news,found
@@ -3102,6 +3312,25 @@ va-linux,VA Linux Systems,1999-06,venture_unspecified,investor,Intel,https://en.
 va-linux,VA Linux Systems,1999-06,venture_unspecified,investor,Sequoia Capital,https://en.wikipedia.org/wiki/VA_Linux,wikipedia,found
 va-linux,VA Linux Systems,1999-06,venture_unspecified,investor,Silicon Graphics,https://en.wikipedia.org/wiki/VA_Linux,wikipedia,found
 va-linux,VA Linux Systems,1999-06,venture_unspecified,investor,Lehman Brothers,https://www.sec.gov/Archives/edgar/data/1096199/0000891618-99-005600.txt,filing,found
+va-linux,VA Linux Systems,1998-11,series_a,investor,Sequoia Capital,https://www.linuxtoday.com/infrastructure/sequoia-capital-invests-in-linux-start-up-va-research/,other,found
+va-linux,VA Linux Systems,1999-02,debt,investor,Comerica Bank,https://www.sec.gov/Archives/edgar/data/1096199/0000891618-99-005600.txt,other,not on page
+va-linux,VA Linux Systems,1999-03,series_a,investor,Intel,https://www.sec.gov/Archives/edgar/data/1096199/0000891618-99-005600.txt,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,Capital Research Group,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,WR Hambrecht + Co,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,Intel,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,IDG Ventures,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,Lehman Brothers,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,Sequoia Capital,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,SGI,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,Sumitomo Corporation,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,1999-06,series_b,investor,Presidio Venture Partners,https://www.linuxtoday.com/it-management/prnewswire-va-linux-systems-secures-25-million-in-equity-funding/,other,found
+va-linux,VA Linux Systems,2000-05,debt,investor,Comerica Bank,https://www.sec.gov/Archives/edgar/data/1096199/000109581100004100/f66473ex13-1.txt,other,not on page
+va-linux,VA Linux Systems,2003-11,venture_unspecified,investor,Riverview Group,https://www.sec.gov/Archives/edgar/data/1096199/000095000503001201/p17947_forms-3.txt,other,found
+va-linux,VA Linux Systems,2011-12,debt,investor,Wells Fargo,https://www.sec.gov/Archives/edgar/data/1096199/000109619912000004/gknt20111231-10k.htm,other,found
+va-linux,VA Linux Systems,,debt,investor,Wells Fargo,https://www.sec.gov/Archives/edgar/data/1096199/000144530513000421/gknt20121231-10k.htm,other,found
+va-linux,VA Linux Systems,,debt,investor,Wells Fargo,https://www.sec.gov/Archives/edgar/data/1096199/000109619914000008/R9.htm,other,found
+va-linux,VA Linux Systems,,debt,investor,Wells Fargo,https://www.sec.gov/Archives/edgar/data/1096199/000109619915000006/gknt20141231-10k.htm,other,found
+va-linux,VA Linux Systems,,venture_unspecified,investor,UMAX,https://www.linuxjournal.com/article/2706,other,found
 sendmail,"Sendmail, Inc.",,venture_unspecified,investor,Andy Bechtolsheim (person),https://www.linuxtoday.com/developer/computerworld-emerging-companies-sendmail-inc,news,found
 sendmail,"Sendmail, Inc.",,venture_unspecified,investor,Bill Joy (person),https://www.linuxtoday.com/developer/computerworld-emerging-companies-sendmail-inc,news,found
 sendmail,"Sendmail, Inc.",,venture_unspecified,investor,Ben Rosen (person),https://www.linuxtoday.com/developer/computerworld-emerging-companies-sendmail-inc,news,found
@@ -3240,6 +3469,11 @@ nicira,Nicira,2011,venture_unspecified,investor,Lightspeed Venture Partners,http
 nicira,Nicira,2011,venture_unspecified,investor,New Enterprise Associates,https://www.theregister.co.uk/2012/07/23/vmware_buys_nicira/,news,found
 nicira,Nicira,2012,angel,investor,Diane Greene (person),https://techcrunch.com/?p=493114,news,found
 nicira,Nicira,2012-07,angel,investor,Andy Rachleff (person),https://web.archive.org/web/2012/http://allthingsd.com/20120723/vmware-acquires-once-secretive-start-up-nicira-for-1-26-billion/,news,found
+nicira,Nicira,2010-09,series_b,investor,Andreessen Horowitz,https://sec.gov/Archives/edgar/data/1439476/000143947610000007/xslFormDX01/primary_doc.xml,other,not on page
+nicira,Nicira,2010-09,series_b,investor,SV Angel,https://sec.gov/Archives/edgar/data/1439476/000143947610000007/xslFormDX01/primary_doc.xml,other,not on page
+nicira,Nicira,2011-01,series_c,investor,Andreessen Horowitz,https://sec.gov/Archives/edgar/data/1439476/000143947611000001/xslFormDX01/primary_doc.xml,other,not on page
+nicira,Nicira,2011-01,series_c,investor,Lightspeed Venture Partners,https://sec.gov/Archives/edgar/data/1439476/000143947611000001/xslFormDX01/primary_doc.xml,other,not on page
+nicira,Nicira,2011-01,series_c,investor,New Enterprise Associates,https://sec.gov/Archives/edgar/data/1439476/000143947611000001/xslFormDX01/primary_doc.xml,other,not on page
 inktank,Inktank,2012-09,convertible_note,investor,Mark Shuttleworth (person),https://techcrunch.com/2012/09/11/inktank-raises-1-million-to-further-services-play-for-ceph-a-new-storage-technology/,news,found
 inktank,Inktank,2014-04,venture_unspecified,investor,Mark Shuttleworth (person),https://techcrunch.com/2014/04/30/red-hat-buys-ceph-provider-inktank-for-175m-in-cash-to-beef-up-its-cloud-storage-offerings/,news,found
 inktank,Inktank,2014-04,venture_unspecified,investor,DreamHost,https://techcrunch.com/2014/04/30/red-hat-buys-ceph-provider-inktank-for-175m-in-cash-to-beef-up-its-cloud-storage-offerings/,news,found
@@ -3395,6 +3629,7 @@ datastax,DataStax,2022-06,growth,investor,EDB Investments,https://siliconangle.c
 datastax,DataStax,2022-06,growth,investor,Crosslink Capital,https://siliconangle.com/2022/06/15/datastax-raises-115m-grow-super-scalable-real-time-astra-db-database/,news,found
 datastax,DataStax,2022-06,growth,investor,Meritech Capital Partners,https://siliconangle.com/2022/06/15/datastax-raises-115m-grow-super-scalable-real-time-astra-db-database/,news,found
 datastax,DataStax,2022-06,growth,investor,OnePrime Capital,https://siliconangle.com/2022/06/15/datastax-raises-115m-grow-super-scalable-real-time-astra-db-database/,news,found
+datastax,DataStax,2025-02,other,investor,IBM,https://www.datastax.com/blog/ibm-plans-to-acquire-datastax,company,found
 scylladb,ScyllaDB,2017-03,series_b,lead,Western Digital Capital,https://siliconangle.com/2017/03/08/samsung-qualcomm-contribute-16m-round-database-startup-scylladb/,news,found
 scylladb,ScyllaDB,2017-03,series_b,lead,Samsung Ventures,https://siliconangle.com/2017/03/08/samsung-qualcomm-contribute-16m-round-database-startup-scylladb/,news,found
 scylladb,ScyllaDB,2017-03,series_b,lead,Magma Venture Partners,https://siliconangle.com/2017/03/08/samsung-qualcomm-contribute-16m-round-database-startup-scylladb/,news,not on page
@@ -3439,6 +3674,7 @@ aerospike,Aerospike,2014-06,series_c,investor,Alsop Louie Partners,https://silic
 aerospike,Aerospike,2014-06,series_c,investor,Regis McKenna (person),https://siliconangle.com/2014/06/26/aerospike-goes-for-broke-with-open-source-nosql-gambit/,news,found
 aerospike,Aerospike,2024-04,series_e,lead,Sumeru Equity Partners,https://techcrunch.com/2024/04/04/aerospike-raises-100m-for-its-real-time-database-platform-to-capitalize-on-the-ai-boom/,news,found
 aerospike,Aerospike,2024-04,series_e,investor,Alsop Louie Partners,https://techcrunch.com/2024/04/04/aerospike-raises-100m-for-its-real-time-database-platform-to-capitalize-on-the-ai-boom/,news,found
+aerospike,Aerospike,2014-06,series_c,lead,New Enterprise Associates,https://web.archive.org/web/20211203015342/https://gigaom.com/2014/06/24/aerospike-raises-20m-open-sources-its-in-memory-nosql-database/,news,found
 starburst,Starburst,2019-11,series_a,lead,Index Ventures,https://techcrunch.com/2019/11/20/starburst-raises-22m-to-modernize-data-analytics-with-presto/,news,found
 starburst,Starburst,2020-06,series_b,lead,Coatue Management,https://www.zdnet.com/article/starburst-data-announces-42-million-series-b-funding-round/,news,found
 starburst,Starburst,2020-06,series_b,investor,Index Ventures,https://www.zdnet.com/article/starburst-data-announces-42-million-series-b-funding-round/,news,found
@@ -3472,6 +3708,13 @@ imply,Imply,,venture_unspecified,investor,Bessemer Venture Partners,https://impl
 imply,Imply,,venture_unspecified,investor,Tiger Global Management,https://imply.io/about-imply/,company,found
 imply,Imply,,venture_unspecified,investor,Khosla Ventures,https://imply.io/about-imply/,company,found
 imply,Imply,,venture_unspecified,investor,Geodesic Capital,https://imply.io/about-imply/,company,found
+imply,Imply,2018-03,series_a,lead,Andreessen Horowitz,https://imply.io/blog/series-a/,other,found
+imply,Imply,2018-03,series_a,investor,Khosla Ventures,https://imply.io/blog/series-a/,other,found
+imply,Imply,2022-05,series_d,lead,Thoma Bravo,https://imply.io/blog/imply-raises-100mm-in-series-d-funding/,other,found
+imply,Imply,2022-05,series_d,investor,OMERS Growth Equity,https://imply.io/blog/imply-raises-100mm-in-series-d-funding/,other,found
+imply,Imply,2022-05,series_d,investor,Bessemer Venture Partners,https://imply.io/blog/imply-raises-100mm-in-series-d-funding/,other,found
+imply,Imply,2022-05,series_d,investor,Andreessen Horowitz,https://imply.io/blog/imply-raises-100mm-in-series-d-funding/,other,found
+imply,Imply,2022-05,series_d,investor,Khosla Ventures,https://imply.io/blog/imply-raises-100mm-in-series-d-funding/,other,found
 alluxio,Alluxio,2015-03,series_a,lead,Andreessen Horowitz,https://techcrunch.com/2016/10/26/alluxio-launches-its-memory-centric-storage-system-for-big-data-workloads/,news,found
 alluxio,Alluxio,,venture_unspecified,investor,Andreessen Horowitz,https://www.alluxio.io/about,company,not on page
 alluxio,Alluxio,,venture_unspecified,investor,Hillhouse,https://www.alluxio.io/about,company,in page markup (logo or link)
@@ -3627,6 +3870,30 @@ sysdig,Sysdig,2021-12,series_f_plus,investor,Insight Partners,https://siliconang
 sysdig,Sysdig,2021-12,series_f_plus,investor,Next47,https://siliconangle.com/2021/12/15/sysdig-targets-unprecedented-opportunity-container-security-bagging-350m-late-stage-funding/,news,found
 sysdig,Sysdig,2021-12,series_f_plus,investor,Premji Invest,https://siliconangle.com/2021/12/15/sysdig-targets-unprecedented-opportunity-container-security-bagging-350m-late-stage-funding/,news,found
 sysdig,Sysdig,2021-12,series_f_plus,investor,Third Point Ventures,https://siliconangle.com/2021/12/15/sysdig-targets-unprecedented-opportunity-container-security-bagging-350m-late-stage-funding/,news,found
+sysdig,Sysdig,2013-06,seed,lead,Bain Capital Ventures,https://www.networkworld.com/article/940972/container-visibility-startup-sysdig-lands-series-a-funding-aims-to-resolve-container-visibility-iss.html,other,found
+sysdig,Sysdig,2015-07,series_a,lead,Accel,https://www.sysdig.com/press-releases/sysdig-announces-10-7-million-in-series-a-funding-and-launches-native-monitoring-for-container-revolution-with-sysdig-cloud,other,found
+sysdig,Sysdig,2015-07,series_a,lead,Bain Capital Ventures,https://www.sysdig.com/press-releases/sysdig-announces-10-7-million-in-series-a-funding-and-launches-native-monitoring-for-container-revolution-with-sysdig-cloud,other,found
+sysdig,Sysdig,2016-04,series_b,lead,Accel,https://www.sysdig.com/press-releases/sysdig-series-b-container-monitoring,other,found
+sysdig,Sysdig,2016-04,series_b,lead,Bain Capital Ventures,https://www.sysdig.com/press-releases/sysdig-series-b-container-monitoring,other,found
+sysdig,Sysdig,2017-10,series_c,lead,Accel,https://www.sysdig.com/press-releases/sysdig-raises-25m-for-the-container-intelligence-platform,other,found
+sysdig,Sysdig,2018-09,series_d,lead,Insight Partners,https://www.sysdig.com/press-releases/sysdig-closes-series-d-funding,other,found
+sysdig,Sysdig,2018-09,series_d,investor,Accel,https://www.sysdig.com/press-releases/sysdig-closes-series-d-funding,other,found
+sysdig,Sysdig,2018-09,series_d,investor,Bain Capital Ventures,https://www.sysdig.com/press-releases/sysdig-closes-series-d-funding,other,found
+sysdig,Sysdig,2019-05,corporate_strategic,investor,In-Q-Tel,https://www.washingtontechnology.com/2019/05/ic-venture-arm-backs-automation-cloud-security-tech-firms/326818/,other,found
+sysdig,Sysdig,2020-01,series_e,lead,Insight Partners,https://www.sysdig.com/press-releases/sysdig-closes-70m-series-e-funding,other,found
+sysdig,Sysdig,2020-01,series_e,investor,Bain Capital Ventures,https://www.sysdig.com/press-releases/sysdig-closes-70m-series-e-funding,other,found
+sysdig,Sysdig,2020-01,series_e,investor,Accel,https://www.sysdig.com/press-releases/sysdig-closes-70m-series-e-funding,other,found
+sysdig,Sysdig,2020-01,series_e,investor,Glynn Capital,https://www.sysdig.com/press-releases/sysdig-closes-70m-series-e-funding,other,found
+sysdig,Sysdig,2020-01,series_e,investor,Goldman Sachs,https://www.sysdig.com/press-releases/sysdig-closes-70m-series-e-funding,other,found
+sysdig,Sysdig,2021-04,series_f_plus,lead,Premji Invest,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,lead,Third Point Ventures,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,investor,Accel,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,investor,Bain Capital Ventures,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,investor,DFJ Growth,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,investor,Glynn Capital,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,investor,Goldman Sachs,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,investor,Insight Partners,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
+sysdig,Sysdig,2021-04,series_f_plus,investor,Next47,https://www.sysdig.com/press-releases/sysdig-raises-188m-at-a-valuation-of-1-19b-to-secure-modern-cloud-applications,other,found
 teleport,Teleport (Gravitational),2015,accelerator,investor,Y Combinator,https://en.wikipedia.org/wiki/Teleport_(software),wikipedia,found
 teleport,Teleport (Gravitational),2019-11,series_a,lead,Kleiner Perkins,https://techcrunch.com/2019/11/20/gravitational-nabs-25m-series-a-to-ease-cloud-deployment-with-kubernetes/,news,found
 teleport,Teleport (Gravitational),2019-11,series_a,investor,S28 Capital,https://techcrunch.com/2019/11/20/gravitational-nabs-25m-series-a-to-ease-cloud-deployment-with-kubernetes/,news,found
@@ -3635,6 +3902,8 @@ teleport,Teleport (Gravitational),2022-05,series_c,lead,Bessemer Venture Partner
 teleport,Teleport (Gravitational),2022-05,series_c,investor,Insight Partners,https://techcrunch.com/2022/05/03/2309618/,news,found
 teleport,Teleport (Gravitational),2022-05,series_c,investor,Kleiner Perkins,https://techcrunch.com/2022/05/03/2309618/,news,found
 teleport,Teleport (Gravitational),2022-05,series_c,investor,S28 Capital,https://techcrunch.com/2022/05/03/2309618/,news,found
+teleport,Teleport (Gravitational),2021-08,series_b,lead,S28 Capital,https://goteleport.com/blog/series-b/,company,found
+teleport,Teleport (Gravitational),2021-08,series_b,lead,Kleiner Perkins,https://goteleport.com/blog/series-b/,company,found
 tigera,Tigera,2018-01,venture_unspecified,investor,Madrona Venture Group,https://techcrunch.com/2018/01/24/tigera-raises-10m-to-help-enterprises-secure-their-cloud-native-applications/,news,found
 tigera,Tigera,2018-01,venture_unspecified,investor,New Enterprise Associates,https://techcrunch.com/2018/01/24/tigera-raises-10m-to-help-enterprises-secure-their-cloud-native-applications/,news,found
 tigera,Tigera,2018-01,venture_unspecified,investor,Wing Venture Capital,https://techcrunch.com/2018/01/24/tigera-raises-10m-to-help-enterprises-secure-their-cloud-native-applications/,news,found
@@ -3684,6 +3953,7 @@ akuity,Akuity,2022-05,series_a,lead,Lead Edge Capital,https://techcrunch.com/202
 akuity,Akuity,2022-05,series_a,lead,Decibel Partners,https://techcrunch.com/2022/05/16/akuity-raises-20m-to-simplify-kubernetes-container-management/,news,found
 kubecost,Kubecost,2021,seed,lead,First Round Capital,https://techcrunch.com/2024/09/17/ibm-acquires-kubernetes-cost-optimization-startup-kubecost/,news,found
 kubecost,Kubecost,2022,series_a,lead,Coatue Management,https://techcrunch.com/2024/09/17/ibm-acquires-kubernetes-cost-optimization-startup-kubecost/,news,found
+kubecost,Kubecost,2024-09,other,investor,IBM,https://newsroom.ibm.com/blog-ibm-acquires-kubecost-to-broaden-hybrid-cloud-cost-management-capabilities,company,found
 gitpod,Gitpod (Ona),2020-10,seed,lead,Crane Venture Partners,https://www.businessinsider.com/gitpod-seed-funding-round-pitch-deck-2020-10,news,found
 gitpod,Gitpod (Ona),2021-04,series_a,lead,General Catalyst,https://siliconangle.com/2021/04/08/automated-development-environment-startup-gitpod-raises-13m/,news,found
 gitpod,Gitpod (Ona),2022-11,series_a,lead,Tom Preston-Werner (person),https://siliconangle.com/2022/11/03/open-source-developer-platform-startup-gitpod-raises-15m/,news,found
@@ -3757,6 +4027,7 @@ seldon,Seldon,2023-03,series_b,lead,Bright Pixel,https://techcrunch.com/2023/03/
 seldon,Seldon,2023-03,series_b,investor,AlbionVC,https://techcrunch.com/2023/03/16/mlops-platform-seldon-raises-20m-series-b-to-improve-the-productions-of-ai-models/,news,found
 seldon,Seldon,2023-03,series_b,investor,Cambridge Innovation Capital,https://techcrunch.com/2023/03/16/mlops-platform-seldon-raises-20m-series-b-to-improve-the-productions-of-ai-models/,news,found
 seldon,Seldon,2023-03,series_b,investor,Amadeus Capital Partners,https://techcrunch.com/2023/03/16/mlops-platform-seldon-raises-20m-series-b-to-improve-the-productions-of-ai-models/,news,found
+seldon,Seldon,2026-06,other,investor,TrueFoundry,https://siliconangle.com/2026/06/25/truefoundry-acquires-mlops-pioneer-seldon-ai-accelerate-enterprise-agentic-ai/,news,found
 clearml,ClearML (Allegro AI),2018-04,venture_unspecified,lead,MizMaa Ventures,https://techcrunch.com/?p=1628191,news,found
 clearml,ClearML (Allegro AI),2018-04,venture_unspecified,investor,Robert Bosch Venture Capital,https://techcrunch.com/?p=1628191,news,found
 clearml,ClearML (Allegro AI),2018-04,venture_unspecified,investor,Samsung Catalyst Fund,https://techcrunch.com/?p=1628191,news,found
@@ -3766,6 +4037,21 @@ clearml,ClearML (Allegro AI),2018-05,venture_unspecified,investor,Samsung Cataly
 clearml,ClearML (Allegro AI),2018-05,venture_unspecified,investor,MizMaa Ventures,https://cleantechnica.com/2018/05/04/robert-bosch-venture-capital-ups-stake-in-allegro-ai/,news,found
 clearml,ClearML (Allegro AI),2018-05,venture_unspecified,investor,Dynamic Loop Capital,https://cleantechnica.com/2018/05/04/robert-bosch-venture-capital-ups-stake-in-allegro-ai/,news,found
 clearml,ClearML (Allegro AI),2018-05,venture_unspecified,investor,JumpGate Ventures,https://cleantechnica.com/2018/05/04/robert-bosch-venture-capital-ups-stake-in-allegro-ai/,news,found
+clearml,ClearML (Allegro AI),2017-02,seed,lead,Bosch Ventures,https://app.dealroom.co/companies/allegro_1,other,unavailable
+clearml,ClearML (Allegro AI),2017-02,seed,investor,Samsung Catalyst Fund,https://app.dealroom.co/companies/allegro_1,other,unavailable
+clearml,ClearML (Allegro AI),2018-04,series_a,lead,MizMaa Ventures,https://en.globes.co.il/en/article-israeli-deep-learning-co-allegroai-raises-7m-1001233156,other,found
+clearml,ClearML (Allegro AI),2018-04,series_a,investor,Bosch Ventures,https://en.globes.co.il/en/article-israeli-deep-learning-co-allegroai-raises-7m-1001233156,other,found
+clearml,ClearML (Allegro AI),2018-04,series_a,investor,Samsung Catalyst Fund,https://en.globes.co.il/en/article-israeli-deep-learning-co-allegroai-raises-7m-1001233156,other,found
+clearml,ClearML (Allegro AI),2018-04,series_a,investor,Dynamic Loop Capital,https://en.globes.co.il/en/article-israeli-deep-learning-co-allegroai-raises-7m-1001233156,other,found
+clearml,ClearML (Allegro AI),2018-11,series_a,investor,Hyundai CRADLE,https://en.globes.co.il/en/article-hyundai-invests-in-israeli-deep-learning-co-allegroai-1001259284,other,found
+clearml,ClearML (Allegro AI),2023-12,grant_government,investor,Israel Innovation Authority,https://finder.startupnationcentral.org/company_page/seematics-systems,other,unavailable
+clearml,ClearML (Allegro AI),2024-07,seed,investor,Bosch Ventures,https://www.cbinsights.com/company/allegroai/financials,other,found
+clearml,ClearML (Allegro AI),2024-07,seed,investor,Gandyr Group,https://www.cbinsights.com/company/allegroai/financials,other,found
+clearml,ClearML (Allegro AI),2024-07,seed,investor,Hyundai CRADLE,https://www.cbinsights.com/company/allegroai/financials,other,found
+clearml,ClearML (Allegro AI),2024-07,seed,investor,MizMaa Ventures,https://www.cbinsights.com/company/allegroai/financials,other,found
+clearml,ClearML (Allegro AI),2024-07,seed,investor,Samsung Catalyst Fund,https://www.cbinsights.com/company/allegroai/financials,other,found
+clearml,ClearML (Allegro AI),2024-07,seed,investor,VentureIsrael,https://www.cbinsights.com/company/allegroai/financials,other,found
+clearml,ClearML (Allegro AI),2025-11,series_a,investor,VentureIsrael,https://finder.startupnationcentral.org/company_page/seematics-systems,other,unavailable
 iterative,Iterative (DVC),2021-06,series_a,lead,468 Capital,https://techcrunch.com/2021/06/02/iterative-raises-20m-for-its-mlops-platform/,news,found
 iterative,Iterative (DVC),2021-06,series_a,lead,Florian Leibert (person),https://techcrunch.com/2021/06/02/iterative-raises-20m-for-its-mlops-platform/,news,found
 iterative,Iterative (DVC),2021-06,series_a,investor,True Ventures,https://techcrunch.com/2021/06/02/iterative-raises-20m-for-its-mlops-platform/,news,found
@@ -4153,6 +4439,30 @@ radixark,RadixArk (SGLang),2026-01,seed,investor,LDVP,https://www.radixark.com/b
 radixark,RadixArk (SGLang),2026-01,seed,investor,WTT Fubon Family,https://www.radixark.com/blog/radixark-launches-100m-seed,company,found
 radixark,RadixArk (SGLang),2026-01,seed,investor,MediaTek,https://www.radixark.com/blog/radixark-launches-100m-seed,company,found
 radixark,RadixArk (SGLang),2026-01,seed,investor,Databricks,https://www.radixark.com/blog/radixark-launches-100m-seed,company,found
+radixark,RadixArk (SGLang),2026-05,seed,lead,Accel,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,lead,Spark Capital,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,NVentures,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Salience Capital,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,A&E Investment,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,HOF Capital,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Walden Catalyst,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,AMD,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,LDV Partners,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,WTT Fubon Family,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,MediaTek,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Databricks,https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Igor Babuschkin (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Lip-Bu Tan (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Hock Tan (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,John Schulman (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Soumith Chintala (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Olivier Pomel (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Thomas Wolf (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,William Fedus (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Robert Nishihara (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Eric Zelikman (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),2026-05,seed,investor,Logan Kilpatrick (person),https://www.businesswire.com/news/home/20260505077157/en/RadixArk-Launches-with-%24100-Million-in-Seed-Funding-Led-by-Accel-to-Grow-SGLang-and-Democratize-Frontier-AI-Infrastructure,other,unavailable
+radixark,RadixArk (SGLang),,angel,investor,Lip-Bu Tan (person),https://techcrunch.com/2026/01/21/sources-project-sglang-spins-out-as-radixark-with-400m-valuation-as-inference-market-explodes/,other,found
 h-company,H Company,2024-05,seed,investor,Accel,https://techfundingnews.com/french-company-h-raises-220m-to-develop-action-oriented-ai/,news,unavailable
 h-company,H Company,2024-05,seed,investor,UiPath,https://techfundingnews.com/french-company-h-raises-220m-to-develop-action-oriented-ai/,news,unavailable
 h-company,H Company,2024-05,seed,investor,Bpifrance,https://techfundingnews.com/french-company-h-raises-220m-to-develop-action-oriented-ai/,news,unavailable

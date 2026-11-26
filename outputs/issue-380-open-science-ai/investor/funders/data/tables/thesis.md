@@ -10,10 +10,10 @@
 | Redpoint Ventures | “We believe in the rise of open source at the application tier.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-1-of-2)) | 21 |
 | Bessemer Venture Partners | “this is one of the most essential ingredients for building a successful open-source project and commercial entity.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-2-of-2/)) | 20 |
 | CRV | “I still think it's an under-heated market.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-1-of-2)) | 19 |
-| OSS Capital | “Open source is eating software faster than software is eating the world.” ([source](https://oss.capital)) | 15 |
+| OSS Capital | “Open source is eating software faster than software is eating the world.” ([source](https://oss.capital)) | 16 |
 | Uncorrelated Ventures | “the phenomenon of innovative companies moving away from open source will weaken that brand.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-2-of-2/)) | 14 |
+| Lux Capital | “establish open-source as the default way to incorporate AI.” ([source](https://www.luxcapital.com/companies)) | 13 |
 | Sapphire Ventures | “Open source is a GTM strategy for DevOps tools and infrastructure software.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-2-of-2/)) | 13 |
-| Lux Capital | “establish open-source as the default way to incorporate AI.” ([source](https://www.luxcapital.com/companies)) | 12 |
 | M12 | “there is good appetite for the acquirers as well as the public markets, depending on the value proposition” ([source](https://www.linuxfoundation.org/blog/blog/perspectives-open-source-startups)) | 12 |
 | Dell Technologies Capital | “The valley of death is between marketshare and money share.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-1-of-2)) | 11 |
 | SignalFire | “open source being preferred and in many cases mandated from the top.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-1-of-2)) | 11 |

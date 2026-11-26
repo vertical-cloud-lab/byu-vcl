@@ -158,18 +158,18 @@
  "U3": {
   "ventures": 156,
   "researched": 156,
-  "with_funding": 145,
-  "none_found": 11,
+  "with_funding": 146,
+  "none_found": 10,
   "bootstrapped_stated": 0,
-  "rounds": 525,
-  "links": 1174,
-  "funders": 715,
-  "funders_1": 561,
+  "rounds": 528,
+  "links": 1186,
+  "funders": 723,
+  "funders_1": 567,
   "funders_3plus": 77,
-  "funders_5plus": 38,
+  "funders_5plus": 39,
   "funders_10plus": 14,
-  "top10_share_of_links": 0.12,
-  "top50_share_of_links": 0.322,
+  "top10_share_of_links": 0.119,
+  "top50_share_of_links": 0.32,
   "top15": [
    [
     "Accel",
@@ -314,17 +314,17 @@
  "U1-U3": {
   "ventures": 640,
   "researched": 640,
-  "with_funding": 448,
-  "none_found": 180,
+  "with_funding": 449,
+  "none_found": 179,
   "bootstrapped_stated": 12,
-  "rounds": 1320,
-  "links": 3137,
-  "funders": 1697,
-  "funders_1": 1294,
-  "funders_3plus": 216,
+  "rounds": 1323,
+  "links": 3149,
+  "funders": 1702,
+  "funders_1": 1297,
+  "funders_3plus": 217,
   "funders_5plus": 102,
   "funders_10plus": 38,
-  "top10_share_of_links": 0.093,
+  "top10_share_of_links": 0.092,
   "top50_share_of_links": 0.251,
   "top15": [
    [
@@ -391,10 +391,10 @@
  },
  "types_all": {
   "accelerator": 19,
-  "venture_firm": 966,
+  "venture_firm": 967,
   "growth_pe_hedge": 113,
   "corporate_venture": 192,
-  "angel": 505,
+  "angel": 508,
   "crowdfunding": 15,
   "public_investor": 29,
   "crypto_fund_or_dao": 43,
@@ -402,7 +402,7 @@
   "philanthropy": 16,
   "other": 12,
   "government_grant": 34,
-  "unclassified": 69
+  "unclassified": 70
  },
  "led_top": [
   [
@@ -559,12 +559,12 @@
     12
    ],
    [
-    "Redpoint Ventures",
+    "OSS Capital",
     12
    ],
    [
-    "Amplify Partners",
-    11
+    "Redpoint Ventures",
+    12
    ]
   ],
   "before 2010": [
@@ -620,12 +620,12 @@
  },
  "era_links": {
   "2010-2019": 709,
-  "2020 on": 2100,
+  "2020 on": 2112,
   "before 2010": 92
  },
  "rounds_by_source_kind": {
-  "news": 815,
-  "company": 411,
+  "news": 816,
+  "company": 413,
   "investor": 33,
   "wikipedia": 118,
   "other": 422,
@@ -633,13 +633,13 @@
   "database": 34
  },
  "source_check": {
-  "mentions": 5332,
-  "fetched": 5118,
-  "found": 4815,
-  "markup_only": 164,
-  "not_on_page": 139,
-  "share_found": 0.941,
-  "share_found_or_markup": 0.973
+  "mentions": 5642,
+  "fetched": 5345,
+  "found": 4978,
+  "markup_only": 188,
+  "not_on_page": 179,
+  "share_found": 0.931,
+  "share_found_or_markup": 0.967
  },
  "portfolio_check": {
   "domain_links": 70,
@@ -688,19 +688,19 @@
   ],
   [
    "OSS Capital",
-   "15"
+   "16"
   ],
   [
    "Uncorrelated Ventures",
    "14"
   ],
   [
-   "Sapphire Ventures",
+   "Lux Capital",
    "13"
   ],
   [
-   "Lux Capital",
-   "12"
+   "Sapphire Ventures",
+   "13"
   ],
   [
    "M12",
@@ -770,7 +770,7 @@
   "tencent": 6
  },
  "focus": {
-  "oss_capital": 15,
+  "oss_capital": 16,
   "runa_capital": 5,
   "open_core_ventures": 4,
   "heavybit": 5,
@@ -788,7 +788,7 @@
   "foundry_group": 5,
   "spark_capital": 11,
   "eclipse_ventures": 2,
-  "lux_capital": 12,
+  "lux_capital": 13,
   "guillermo_rauch": 20,
   "clem_delangue": 9,
   "david_cramer": 10,
@@ -804,9 +804,11 @@
  },
  "sensitivity_db": {
   "links_db_only": 125,
-  "links": 3137,
-  "top20_overlap": 20,
-  "dropped_from_top20": []
+  "links": 3149,
+  "top20_overlap": 19,
+  "dropped_from_top20": [
+   "CRV"
+  ]
  },
  "edison_audit": {
   "ventures": 40,

@@ -6,16 +6,16 @@
 | SV Angel | venture firm | 20 | 1 | Airbyte, Anomaly, Buoyant, Composio, Imgix, KERNEL, Mastra, Modular Inc. |
 | Guillermo Rauch | person (angel) | 19 | 0 | Astral, Chroma, Comfy Org, ComfyUI, LastMile AI, LiveKit, Mastra, Meilisearch |
 | Sequoia Capital | venture firm | 18 | 10 | Chainguard, Cockroach Labs, Dagster Labs, Deno Land Inc., FastAPI Labs, Infracost, LangChain, Mermaid Chart |
-| Lux Capital | venture firm | 16 | 9 | Ahana, Airweave, DeepSeek, EvolutionaryScale, Hugging Face, Pynecone, Reflex, Sakana AI |
+| Lux Capital | venture firm | 17 | 10 | Ahana, Airweave, DeepSeek, EvolutionaryScale, Hugging Face, Pynecone, Reflex, Sakana AI |
 | New Enterprise Associates | venture firm | 16 | 7 | Anyscale, Metabase, Neural Magic, Pentaho, Rocket.Chat, Sakana AI, Sentry, Tiger Data |
 | Amplify Partners | venture firm | 16 | 5 | Anyscale, Boltz PBC, Chainguard, Dagster Labs, OctoML, PostgresML, Prisma Data, Inc., ReadySet |
 | Benchmark | venture firm | 15 | 11 | Airbyte, Buoyant, ClickHouse, Cockroach Labs, Deep Cogito, Docker Inc., Hortonworks, Hyperic |
 | Lightspeed Venture Partners | venture firm | 15 | 11 | Composio, Grafana Labs, Inferact, Langfuse, Marqo, Materialize, Mistral AI, ProjectDiscovery |
+| OSS Capital | venture firm | 15 | 11 | AppFlowy, Dagster Labs, Hoppscotch, Liquid AI, NocoDB, OpenBB Inc., Plane, Remix Software |
 | Nexus Venture Partners | venture firm | 15 | 9 | Browser Use, Deep Cogito, Fingerprint, Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve |
 | CRV | venture firm | 14 | 9 | Gatsby, LanceDB, Lepton AI, LocalStack, Meilisearch, ProjectDiscovery, Reflection AI, RethinkDB |
 | General Catalyst | venture firm | 14 | 7 | Anaconda, Inc., CTGT, Gitpod, Ionic, JuliaHub, Kilo Code, MinIO Inc., Modular Inc. |
 | GV | corporate / strategic | 14 | 5 | Ahana, Cockroach Labs, Meltano, Modular Inc., PostHog Inc., Redpanda Data, Voltron Data, Warp |
-| OSS Capital | venture firm | 13 | 9 | AppFlowy, Dagster Labs, Hoppscotch, Liquid AI, NocoDB, OpenBB Inc., Plane, Remix Software |
 | Bessemer Venture Partners | venture firm | 12 | 9 | Appsmith, Appwrite, Boltz PBC, Coiled, Cypress.io, Fern, Herdr, Portainer.io |
 | Intel Capital | corporate / strategic | 12 | 2 | Anyscale, MinIO Inc., Mirantis, Oxide Computer Company, Prime Intellect, Tetrate, TileDB, Inc., TrueFoundry |
 | Uncorrelated Ventures | venture firm | 11 | 1 | Cube Dev, Fingerprint, Firezone, Meltano, Netmaker, NocoDB, Okteto, QuestDB |

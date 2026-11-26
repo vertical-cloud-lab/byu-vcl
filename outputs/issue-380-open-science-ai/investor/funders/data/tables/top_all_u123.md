@@ -21,23 +21,23 @@
 | CRV | venture firm | 15 | 8 | Gatsby, LanceDB, Meilisearch, ProjectDiscovery, Reflection AI, Strapi, Tailscale, Vercel … |
 | General Catalyst | venture firm | 15 | 8 | Chai Discovery, Gitpod, Ionic, MinIO Inc., Mistral AI, Modular Inc., Tidelift, Together AI … |
 | Kickstarter backers | crowdfunding | 15 | 0 | Augmented Instruments, Backyard Brains, Fonticons, Inc., George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI, OpenBCI … |
+| OSS Capital | venture firm | 15 | 8 | AppFlowy, Hoppscotch, OpenBB Inc., Plane, Remix Software, ResearchHub, Tracel Inc., W4 Games … |
 | Goldman Sachs | growth, crossover or PE | 14 | 6 | DataStax, GitLab Inc., Harness, NGINX, Redis Ltd., Sonatype, Acquia, Databricks … |
 | Guillermo Rauch | person (angel) | 14 | 0 | Astral, Chroma, Comfy Org, Dub Technologies, Mastra, Meilisearch, Oven, Prisma Data, Inc. … |
 | Kleiner Perkins | venture firm | 14 | 9 | Chainguard, Materialize, Nebula, Inc., Oven, Prisma Data, Inc., Puppet, RudderStack, Teleport … |
 | Nexus Venture Partners | venture firm | 14 | 9 | Fingerprint, Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve, Orkes, TileDB, Inc. … |
-| OSS Capital | venture firm | 14 | 7 | AppFlowy, Hoppscotch, OpenBB Inc., Plane, Remix Software, ResearchHub, Tracel Inc., Appsmith … |
 | Samsung | corporate / strategic | 14 | 4 | AI21 Labs, Mistral AI, ScyllaDB, Tenstorrent, Arcee AI, ClearML, Daytona Platforms, GitLab Inc. … |
 | Amplify Partners | venture firm | 13 | 3 | OctoML, Prisma Data, Inc., Temporal Technologies, Anyscale, Boltz PBC, Chainguard, Chef Software, Dagster Labs … |
 | Sapphire Ventures | venture firm | 13 | 4 | Dremio, InfluxData, Tetrate, Yugabyte, Chai Discovery, Cypress.io, JFrog, Kaltura … |
 | Tiger Global | growth, crossover or PE | 13 | 7 | Appwrite, Cohere, OctoML, Prefect Technologies, Redis Ltd., Temporal Technologies, Tiger Data, Automattic … |
 | True Ventures | venture firm | 13 | 5 | 3D Robotics, Puppet, Solo.io, Vectorize, Inc., npm, Inc., Automattic, HashiCorp, Inventables … |
 | Bain Capital Ventures | venture firm | 11 | 7 | Astronomer, Cube Dev, Docker Inc., Polars B.V., Redis Ltd., Sysdig, Unstructured, Black Forest Labs … |
+| Lux Capital | venture firm | 11 | 8 | Authorea, EvolutionaryScale, Hugging Face, Reflex, Sakana AI, Together AI, W4 Games, tldraw Inc. … |
 | Dell Technologies Capital | corporate / strategic | 10 | 4 | MinIO Inc., OpenObserve, Tetrate, Yugabyte, JFrog, Prime Intellect, Red Hat, Redis Ltd. … |
 | GGV Capital (US arm now Notable Capital) | venture firm | 10 | 5 | Browserbase, HashiCorp, LocalStack, PingCAP, Vercel, Coder Technologies, Jina AI, Kong Inc. … |
 | GIC | state or sovereign investor | 10 | 3 | Grafana Labs, Supabase, Vercel, Anaconda, Inc., ClickHouse, Databricks, LangChain, PingCAP … |
 | Greylock Partners | venture firm | 10 | 4 | Docker Inc., Lightbend, LlamaIndex, Zend Technologies, Anomaly, Civilized Discourse Construction Kit, Cloudera, Modular Inc. … |
 | Khosla Ventures | venture firm | 10 | 8 | ClickHouse, GitLab Inc., Imply, Mesosphere, Onyx, Opentrons Labworks, Oven, Sakana AI … |
-| Lux Capital | venture firm | 10 | 7 | Authorea, EvolutionaryScale, Hugging Face, Reflex, Sakana AI, Together AI, tldraw Inc., Ahana … |
 | Altimeter Capital | growth, crossover or PE | 9 | 6 | Airbyte, ClickHouse, Cockroach Labs, Prisma Data, Inc., Solo.io, dbt Labs, Confluent, GitLab Inc. … |
 | Craft Ventures | venture firm | 9 | 4 | Comfy Org, Fingerprint, Sourcegraph, Supabase, ClickHouse, CrewAI, Logseq Inc., Onehouse … |
 | David Cramer | person (angel) | 9 | 0 | Astral, Earendil Inc., FastAPI Labs, Mastra, Pydantic Services, Strapi, Supermemory, Vercel … |

@@ -166,21 +166,30 @@ def main():
     if prog:
         with open(os.path.join(D, "programs.csv"), "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=list(prog[0])); w.writeheader(); w.writerows(prog)
-    # type mix by universe
+    # type mix by universe, in the same seven groups as figures/funder_mix.png
+    GROUPS = [("Venture firm", {"venture_firm"}), ("Corporate or strategic", {"corporate_venture", "company"}),
+              ("Accelerator or studio", {"accelerator"}),
+              ("Growth, crossover, PE or state", {"growth_pe_hedge", "public_investor", "bank_or_debt"}),
+              ("Person (angel)", {"angel"}),
+              ("Grant, crowd or crypto", {"philanthropy", "government_grant", "crowdfunding", "crypto_fund_or_dao"}),
+              ("Other or unclassified", {"other", "unclassified"})]
     tmap = {r["investor"]: r["type"] for r in inv}
     mix = collections.defaultdict(collections.Counter)
     for l in links:
-        mix[l["universe"]][tmap.get(l["investor"], "unclassified")] += 1
+        t = tmap.get(l["investor"], "unclassified")
+        g = next((lab for lab, ts in GROUPS if t in ts), "Other or unclassified")
+        mix[l["universe"]][g] += 1
+    names = {"U1": "U1 (most-starred projects)", "U2": "U2 (open hardware, science, lab)",
+             "U3": "U3 (notable COSS, open AI)", "U4": "U4 (young startups)"}
     rows = []
     for u in ("U1", "U2", "U3", "U4"):
         tot = sum(mix[u].values()) or 1
-        row = {"universe": u, "links": tot}
-        for t in TYPE_LABEL:
-            row[t] = f"{100 * mix[u][t] / tot:.0f}%" if mix[u][t] else ""
+        row = {"universe": names[u], "links": tot}
+        for lab, _ in GROUPS:
+            row[lab] = f"{100 * mix[u][lab] / tot:.0f}%"
         rows.append(row)
-    keep = [t for t in TYPE_LABEL if any(r[t] for r in rows)]
-    open(os.path.join(T, "type_mix.md"), "w").write(md_table(rows, ["universe", "links"] + keep,
-                                                             ["Universe", "Investor-venture links"] + [TYPE_LABEL[t] for t in keep]))
+    open(os.path.join(T, "type_mix.md"), "w").write(md_table(rows, ["universe", "links"] + [g for g, _ in GROUPS],
+                                                             ["Group", "Funder–venture links"] + [g for g, _ in GROUPS]))
     print("tables:", sorted(os.listdir(T)))
 
 

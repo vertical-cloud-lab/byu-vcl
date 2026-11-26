@@ -35,8 +35,8 @@
 | CRV | venture firm | 5 | 2 | LanceDB, Reflection AI, Determined AI, EnterpriseDB, Proton AG |
 | Cisco Investments | corporate / strategic | 5 | 1 | Puppet, Cohere, Dremio, Mistral AI, MuleSoft |
 | Greylock Partners | venture firm | 5 | 2 | Lightbend, Zend Technologies, Cloudera, Onehouse, Red Hat |
+| Lux Capital | venture firm | 5 | 3 | Sakana AI, Together AI, W4 Games, Ahana, MosaicML |
 | SAP Ventures | corporate / strategic | 5 | 1 | Jaspersoft, Alfresco Software, Mirantis, MySQL AB, Zend Technologies |
 | Scale Venture Partners | venture firm | 5 | 1 | Chef Software, DataStax, JFrog, Jaspersoft, Tetrate |
 | Tiger Global | growth, crossover or PE | 5 | 2 | Cohere, OctoML, Automattic, Databricks, Imply |
 | 8VC | venture firm | 4 | 1 | Yugabyte, Airbyte, Dagster Labs, Tetrate |
-| A Capital | venture firm | 4 | 0 | Buoyant, Databricks, Mesosphere, Together AI |
