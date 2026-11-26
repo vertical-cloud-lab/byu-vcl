@@ -268,6 +268,11 @@ Grants unless marked as investment. "→ firms" says whether companies can recei
 | --- | --- | --- | --- | --- | --- |
 | GitHub (Microsoft) | [GitHub Sponsors](https://github.blog/open-source/maintainers/100-million-for-open-source-a-milestone-built-by-the-community/) | 2019– | $100M paid out cumulatively | sometimes | maintainers and projects |
 | GitHub with M12 | [GitHub Fund and GitHub Accelerator](https://github.com/open-source/accelerator) | 2023– | GitHub reports "$130MM+ invested in open source" | yes | ToolJet, Unsloth |
+| GitHub | [Accelerator, 2023 cohort](https://github.blog/2023-04-12-github-accelerator-our-first-cohort-and-whats-next/) | 2023 | $20k for each of 20 projects | sometimes | htmx, Nuxt, Datasette, tRPC, Dioxus, Formbricks |
+| Andreessen Horowitz | Open Source AI Grant, batches [1](https://a16z.com/2023/08/30/supporting-the-open-source-ai-community/), [2](https://a16z.com/announcing-our-latest-open-source-ai-grants/), [3](https://a16z.com/advancing-open-source-ai-through-benchmarks-and-bold-experimentation/) | 2023– | n/a | no (equity-free) | TheBloke, Axolotl, SkyPilot, LMSYS, SGLang, Open WebUI's author |
+| Nat Friedman and Daniel Gross | [AI Grant](https://aigrant.com/) | 2017– | $250k SAFE per startup in recent batches | yes | ggml, Replicate, Browserbase, Perplexity |
+| OSS Capital (Joseph Jacks) | [three seed funds for commercial open source](https://techcrunch.com/2024/10/20/joseph-jacks-bets-on-open-source-startups-a-paradox-of-philanthropy-and-capitalism/) | 2018– | about $150M (three funds of about $50M) | yes | Cal.com, AppFlowy, Plane, Hoppscotch, OpenBB, W4 Games |
+| Open Source Endowment | [endowment for maintainers](https://endowment.dev/) | 2026– | $0.77M | no | maintainers |
 | GitHub with partners | [Secure Open Source Fund](https://techcrunch.com/2024/11/19/github-launches-1-25m-open-source-fund-with-a-focus-on-security/) | 2024– | $1.25M | no | security of critical projects |
 | Microsoft, Google, Amazon, Citi and others | [OpenSSF Alpha-Omega](https://openssf.org/community/alpha-omega/) | 2022– | $12.5M (2026 round) | no | security of critical projects |
 | Sentry and member companies | [Open Source Pledge](https://opensourcepledge.com/) | 2024– | $9.8M pledged | no | $2,000 per developer a year to maintainers |
