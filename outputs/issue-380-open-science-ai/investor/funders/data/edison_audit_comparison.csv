@@ -31,11 +31,11 @@ open-bionics,Open Bionics,U2,4,19,2,foresight williams technology eis fund; will
 researchhub,ResearchHub (ResearchHub Technologies),U2,6,7,6,,sora ventures
 airbyte,Airbyte,U3,14,16,14,,dev ittycheria; shay banon
 clearml,ClearML (Allegro AI),U3,5,8,4,jumpgate ventures,gandyr group; hyundai cradle; israel innovation authority; ventureisrael
-imply,Imply,U3,0,7,0,,andreessen horowitz; bessemer venture partners; geodesic capital; khosla ventures; omers growth equity; thoma bravo; tiger global
+imply,Imply,U3,6,7,6,,omers growth equity
 jfrog,JFrog,U3,6,12,6,,battery ventures; geodesic capital; office of chief scientist israel; spark capital; vintage investment partners; vmware
-meltano,Meltano,U3,0,8,0,,data tech fund; gv; matt mullenweg; max beauchemin; ram shriram; sam shah; uncorrelated ventures; venrock
+meltano,Meltano,U3,5,8,4,gitlab,matt mullenweg; max beauchemin; ram shriram; sam shah
 nicira,Nicira,U3,5,4,3,andy rachleff; diane greene,sv angel
-pydantic,Pydantic Services,U3,6,6,6,,
+pydantic,Pydantic Services,U3,8,6,6,jason liu; logan kilpatrick,
 radixark,RadixArk (SGLang),U3,13,23,12,ldvp,eric zelikman; hock tan; igor babuschkin; john schulman; ldv partners; logan kilpatrick; olivier pomel; robert nishihara; soumith chintala; thomas wolf; william fedus
-sysdig,Sysdig,U3,0,12,0,,accel; bain capital ventures; dfj growth; glynn capital; goldman sachs; guggenheim investments; in q tel; insight partners; next47; permira; premji invest; third point ventures
+sysdig,Sysdig,U3,9,12,9,,guggenheim investments; in q tel; permira
 va-linux,VA Linux Systems,U3,4,13,3,silicon graphics,capital research group; comerica bank; idg ventures; presidio venture partners; riverview group; sgi; sumitomo; umax; wells fargo; wr hambrecht
