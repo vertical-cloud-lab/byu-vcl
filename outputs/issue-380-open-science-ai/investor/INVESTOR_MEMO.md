@@ -10,8 +10,9 @@ view**, especially for physical-science ventures. After revision, a second check
 and found it "has not tipped toward favouring openness". Its one-line takeaway for an investor: ***underwrite the
 business, not the openness label.*** The [last section](#edisons-review-of-this-memo) lists what changed.
 
-**Start with:** the [bottom line](#bottom-line) and the [ranked concerns](#the-concerns-ranked). The supporting
-files are the [pre-registration](PREREGISTRATION.md) (committed before any new data, in
+**Start with:** the [bottom line](#bottom-line), the [ranked concerns](#the-concerns-ranked) and
+[part 2](#part-2-from-the-repositories-back-to-the-money), which follows the money back from GitHub's most-starred
+repositories. The supporting files are the [pre-registration](PREREGISTRATION.md) (committed before any new data, in
 [`80a45f4`](https://github.com/vertical-cloud-lab/byu-vcl/commit/80a45f4)), the
 [bias audit of the first round](BIAS_AUDIT.md), the [Edison answers](edison/) and the
 [sourced 2025–26 evidence](evidence/ai_and_funding_evidence.md).
@@ -76,6 +77,11 @@ premium exists.
 | H4 | AI weakens the open-source funnel and lowers the cost of copying | • Tailwind: usage at a record, docs traffic −40%, revenue −80%, 75% of engineers laid off (January 2026).<br>• Stack Overflow questions are down 99% since November 2022, though its revenue still rose 12% in its 2026 fiscal year.<br>• Cloudflare re-implemented 94% of the Next.js API in a week for about $1,100 of AI tokens.<br>• **But** GitHub contributions rose 13%, Supabase reached a $10B pre-money valuation, and AI companies bought open-source teams | **Mixed.** It is a real risk for businesses that monetize human attention, such as docs, community and support funnels. Others gained. The net effect depends on the business model |
 | H5 | Selling to US academic labs is now riskier | • Congress mostly rejected the deep cuts for FY2026. NIH +1.0% and DOE Office of Science +1.9% on FY2025. NSF −3.4% on its $9.06B base, or −0.9% on what it could actually spend in FY2025.<br>• Awards fell. NSF made 10,937 awards in FY2024 and 6,218 in FY2026 (−43%), and NIH competing research grants fell 20.5% in FY2025, even as NIH research-grant dollars rose 3%.<br>• The FY2027 requests again propose NSF −55% and an NIH 15% indirect-cost cap.<br>• Tools makers report weaker academic demand. Agilent's academic and government sales fell 8% in one 2026 quarter, and Bruker's 10-K reports a "material adverse effect" | **Concern stands as volatility.** Money was roughly flat in nominal terms, so lower after inflation, and new awards fell sharply. Large tools makers have small academic exposure |
 | H6 | Open-by-default disclosure makes a physical-science spin-out harder to finance | • Patent *grants* causally help financing. Among first-time patent applicants, a first patent raises the chance of venture funding within three years by 3.0 points (47% over a 6.4% base). For inexperienced founders the effect is about 33 points, but at p = 0.053 (Farre-Mensa, Hegde & Ljungqvist 2020).<br>• The study is about patent grants among applicants. It is not about openness.<br>• Enabling disclosure before filing destroys novelty for the claims it covers. Europe's exceptions are narrow, while the US allows one year for the inventor's own disclosure | **Concern stands for inventions worth patenting.** The standard remedy is to file before publishing. Publishing as such is not the problem |
+| H7 | Most popular open source is paid for by organizations that don't sell it | Of the stars that companies hold on the 2,000 most-starred repositories, **59.5% sit with companies that sell the project in another form** (95% CI 50–68%). The other 40.5% sit with companies that give it away, Microsoft and Alphabet above all, with about 2.2M stars each. Across all owners, companies hold 40% of the stars, personal accounts 30%, community projects 21% and nonprofits 7% | **Weakened, but not robustly.** The share runs from 38% to 68% depending on judgment calls |
+| H8 | Popularity converts poorly into money | Among companies that sell the project: **Spearman ρ between stars and latest disclosed value 0.15 (95% CI −0.17 to 0.45), n = 44.** Against capital raised, 0.08 (n = 168) | **Concern stands** |
+| H9 | Outcomes are worse than the famous examples suggest | **34 of the 339 companies selling a top-2,000 project (10%) ever had a disclosed value of $1B or more;** 26% of those that raised $10M or more did. 32 were acquired: 5 at a disclosed price, all above the capital raised. 6 shut down | **Stands by the pre-registered 25% bar,** although 10% is above typical Series A base rates. Shutdowns are undercounted |
+| H10 | Open science attracts little private capital | Companies hold 30.3% of the stars in 22 science topics (15–39% across judgment calls). **Only 5 of the 55 companies selling a science-topic project raised $10M or more** | **On the line.** The star share clears the 30% bar by 0.3 points; the capital test fails |
+| H11 | The commons runs on thin, flat budgets | **Median latest revenue of 21 US nonprofits that own popular repos: $2.45M.** 9 of 15 grew in real terms since FY2019, and the Linux Foundation has 60% of the group's $368M. Of 609 community projects, 79 have an Open Collective with money; their median budget is $2,125 a year | **Concern stands** |
 
 Details:
 - H1: [`data/h1_summary.csv`](data/h1_summary.csv), [`data/h1_permutation.csv`](data/h1_permutation.csv),
@@ -85,10 +91,37 @@ Details:
 - H2: [`data/h2_summary.csv`](data/h2_summary.csv).
 - H3 and H6: [Edison's answers](edison/).
 - H4 and H5: the [evidence file](evidence/ai_and_funding_evidence.md).
+- H7–H11: [part 2's findings](owners/FINDINGS.md), pre-registered separately in
+  [`owners/PREREGISTRATION.md`](owners/PREREGISTRATION.md) ([`608d7c2`](https://github.com/vertical-cloud-lab/byu-vcl/commit/608d7c2)).
 
 ![What public investors earned](figures/h1_listing_returns.png)
 
 ![Two shocks: flat science money with fewer awards, and AI emptying the attention funnel](figures/two_shocks.png)
+
+## Part 2: from the repositories back to the money
+
+H1–H6 worked from companies people chose because they were notable. Part 2 starts from the open-source work. It
+takes the 2,000 most-starred repositories on GitHub and the top 100 in each of 22 science topics, classifies their
+2,930 owners, and then looks up what the 387 companies that sell an open project raised, were worth and became. It
+draws on press releases, SEC Form D filings, Yahoo, Form 990s and Open Collective, with a source URL for every
+figure. Edison classified a random 120 owners blind and agreed with 112. Full results, data and weak points are in
+[`owners/FINDINGS.md`](owners/FINDINGS.md).
+
+- **Stars don't price a company.** Popularity barely ranks companies by value (ρ = 0.15) and not at all by capital
+  raised (ρ = 0.08). Value per star varies more than sevenfold between the quartiles.
+- **The outcomes sit between a venture cohort and the famous examples.** One in ten companies selling a top-2,000
+  project reached a disclosed $1B. Among the oldest projects the rate is about one in four, and among those from
+  2020–22 about one in twenty-five. Exits are common but opaque: 5 of 32 acquisitions disclosed a price. Since 2025,
+  AI companies have bought teams with their tools (Bun, Astral, Promptfoo, Continue).
+- **Science is thinly capitalized.** In the science topics, 5 companies that sell a project have raised $10M or
+  more. Opentrons is the lab-automation one, with a reported $1.8B mark.
+- **The commons runs on small budgets.** Apart from the Linux Foundation ($221M, paid by corporate members), the
+  foundations that own popular projects mostly have a few million dollars a year. The Python and Apache software
+  foundations shrank in real terms since FY2019.
+
+![Who owns the stars](owners/figures/who_owns_the_stars.png)
+
+![Popularity and value](owners/figures/popularity_vs_value.png)
 
 ## The concerns, ranked
 
@@ -306,10 +339,14 @@ backed, not what will pay off.
   - Of 191 research-data repositories that closed, 47% neither kept access nor named a successor (Strecker et al.,
     via [Edison](edison/inv_public_funding_dependence_answer.md)).
   - Arduino went to Qualcomm at an undisclosed price.
+  - The US nonprofits that own popular repositories had a median revenue of $2.45M in their latest Form 990, and
+    6 of the 15 with a 2019 base shrank in real terms ([part 2](owners/FINDINGS.md)).
 - **Evidence against.**
   - Foundations keep projects alive through changes of owner (PyTorch, Kubernetes, Valkey).
   - Strategic buyers pay for open ecosystems: IBM paid $34B for Red Hat, $6.4B for HashiCorp and $11B for
     Confluent.
+  - All five disclosed acquisition prices among companies selling a top-2,000 project exceeded the capital raised
+    ([part 2](owners/FINDINGS.md)). Only 5 of 32 acquisitions disclosed a price.
 - **Ask in diligence.** Name three plausible acquirers and what each would be buying.
 
 ### Concerns specific to an autonomous alloy spin-out
@@ -485,8 +522,9 @@ leakage, paying demand and the discovery-to-product gap at the top for an alloy 
 - **Valuation conventions.** SolarWinds' N-able shares are valued at their tax-basis average ($14.05), giving
   $17.53 per IPO share. A sale at the first close ($12.50) would give $16.75, and holding them to SolarWinds' exit
   $13.72. None of these changes a median.
-- **Public markets are not venture returns.** The listing cohort covers companies that reached an IPO. The private
-  failures behind them remain uncounted.
+- **Public markets are not venture returns.** The listing cohort covers companies that reached an IPO. Part 2
+  counts private companies and failures among the 339 companies selling a top-2,000 project, but its shutdowns are
+  probably undercounted and its $1B count is a floor.
 - **Recent facts.** Many 2025–26 facts come from company statements and news. Each is labelled [confirmed] or
   [unconfirmed] in the [evidence file](evidence/ai_and_funding_evidence.md).
 - **Search.** The session's web-search budget ran out partway through. Some sensitivity inputs were later verified
@@ -505,3 +543,4 @@ leakage, paying demand and the discovery-to-product gap at the top for an alloy 
 | `data/h1_*.csv`, `data/h2_*.csv`, `data/fundamentals_*.csv`, `data/us_science_funding.csv`, `data/stackoverflow_monthly_questions.csv` | Results and inputs |
 | [`scripts/`](scripts/) | Every script, run from this folder with the Python 3.12 venv (see [`README.md`](README.md)) |
 | [`figures/`](figures/) | Charts |
+| [`owners/`](owners/) | Part 2: GitHub owners of popular open source and their finances (H7–H11). Start with [`owners/FINDINGS.md`](owners/FINDINGS.md) |

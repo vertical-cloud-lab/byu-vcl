@@ -39,3 +39,4 @@ python3.12 -m venv /tmp/venv && /tmp/venv/bin/pip install edison-client yfinance
 | `evidence/` | Dated, sourced 2025–26 evidence gathered for the memo |
 | `data/` | Verified listing terms, prices, fundamentals and every results table |
 | `scripts/`, `figures/` | Code and charts |
+| `owners/` | Part 2: who owns the 2,000 most-starred repositories and the top science-topic ones, and what the 387 companies that sell an open project raised, were worth and became (H7–H11). Start with [`owners/FINDINGS.md`](owners/FINDINGS.md); its [`README.md`](owners/README.md) has the pipeline |
