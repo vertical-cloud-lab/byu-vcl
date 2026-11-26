@@ -1,0 +1,85 @@
+owner,ein,name,latest_year,latest_revenue,latest_expenses,latest_net_assets,url,base_year,base_revenue,real_growth
+(fiscal host) NumFOCUS,454547709,Numfocus Inc,2024,8376226,11090430,5665364,https://projects.propublica.org/nonprofits/organizations/454547709,2019.0,5070529.0,0.34633908210195297
+(fiscal host) Open Source Collective,822037583,Open Source Collective,2024,12114478,11296546,13511433,https://projects.propublica.org/nonprofits/organizations/822037583,2019.0,3682266.0,1.6813214648943764
+(fiscal host) Software Freedom Conservancy,412203632,Software Freedom Conservancy Inc,2024,2487144,4478454,4834069,https://projects.propublica.org/nonprofits/organizations/412203632,2019.0,3325377.0,-0.39043590322236166
+(fiscal host) Software in the Public Interest,113390208,Software In The Public Interest Inc,2024,685055,925737,2526740,https://projects.propublica.org/nonprofits/organizations/113390208,2019.0,970474.0,-0.42469139092271047
+EbookFoundation,611767266,Free Ebook Foundation Inc,2024,19081,21312,17300,https://projects.propublica.org/nonprofits/organizations/611767266,2019.0,33614.0,-0.5373630959635491
+NativeScript,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+NeuromatchAcademy,851264716,Neuromatch Academy Inc,2024,1093885,1018601,703460,https://projects.propublica.org/nonprofits/organizations/851264716,,,
+OAI,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+OWASP,200963503,Owasp Foundation Inc,2024,4340593,3604677,2440852,https://projects.propublica.org/nonprofits/organizations/200963503,2019.0,3549885.0,-0.003461415113734101
+OpenFreeEnergy,862536664,Open Molecular Software Foundation,2024,5422298,5272525,1169644,https://projects.propublica.org/nonprofits/organizations/862536664,,,
+a2aproject,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+aaif-goose,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+agentsmd,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+apache,470825376,Apache Software Foundation,2024,2452180,2162676,4340946,https://projects.propublica.org/nonprofits/organizations/470825376,2019.0,2583535.0,-0.22643407035755436
+argoproj,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+backstage,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+bevyengine,991019220,Bevy Foundation,2024,73940,38797,35143,https://projects.propublica.org/nonprofits/organizations/991019220,,,
+certbot,043091431,Electronic Frontier Foundation Inc,2024,29363509,21853920,57097851,https://projects.propublica.org/nonprofits/organizations/043091431,2019.0,14232158.0,0.6814986933286566
+chapel-lang,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+chipsalliance,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+cilium,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+codepath,815338932,Codepath Org,2024,24988760,22486533,33941843,https://projects.propublica.org/nonprofits/organizations/815338932,2019.0,2430505.0,7.379295848001771
+dapr,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+deepspeedai,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+django,262708549,Django Software Foundation,2024,296584,277682,274497,https://projects.propublica.org/nonprofits/organizations/262708549,2019.0,214200.0,0.1284636882247061
+docling-project,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+electron,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+envoyproxy,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+eslint,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+etcd-io,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+expressjs,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+fastify,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+fastlane,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+freeCodeCamp,820779546,Free Code Camp Inc,2024,2986509,1653194,9750593,https://projects.propublica.org/nonprofits/organizations/820779546,2019.0,463840.0,4.247530446318847
+gazebosim,455230545,Open Source Robotics Foundation Inc,2024,2596521,2029767,5797644,https://projects.propublica.org/nonprofits/organizations/455230545,2019.0,5552907.0,-0.6189071711029988
+getsops,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+goharbor,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+grpc,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+helm,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+iovisor,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+istio,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+jaegertracing,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+jenkinsci,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+jestjs,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+jquery,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+k3s-io,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+keycloak,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+kubernetes,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+llvm,471136085,Llvm Foundation,2024,1064793,1047183,1256810,https://projects.propublica.org/nonprofits/organizations/471136085,2019.0,855719.0,0.014129344827835011
+lm-sys,994817542,Lmsys Corp,2024,0,0,1,https://projects.propublica.org/nonprofits/organizations/994817542,,,
+lodash,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+lysine-dev,843279550,Commonhaus Foundation Inc,2024,2007,21085,31427,https://projects.propublica.org/nonprofits/organizations/843279550,,,
+milvus-io,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+mlflow,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+mochajs,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+modelcontextprotocol,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+mozilla,200097189,Mozilla Foundation,2024,37165545,41199350,117547596,https://projects.propublica.org/nonprofits/organizations/200097189,2019.0,28388184.0,0.06699462450296378
+node-red,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+nodejs,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+nvm-sh,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+opencv,455202940,Open Source Vision Foundation,2024,457086,866366,193495,https://projects.propublica.org/nonprofits/organizations/455202940,2019.0,692886.0,-0.4623551743985451
+openforcefield,862536664,Open Molecular Software Foundation,2024,5422298,5272525,1169644,https://projects.propublica.org/nonprofits/organizations/862536664,,,
+openhpc,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+opentofu,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+osquery,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+osrf,455230545,Open Source Robotics Foundation Inc,2024,2596521,2029767,5797644,https://projects.propublica.org/nonprofits/organizations/455230545,2019.0,5552907.0,-0.6189071711029988
+podman-container-tools,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+processing,460830259,Processing Foundation,2024,648664,1517171,9484490,https://projects.propublica.org/nonprofits/organizations/460830259,2018.0,164974.0,2.1474856848104262
+prometheus,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+psf,043594598,Python Software Foundation,2024,4086997,5765854,3386207,https://projects.propublica.org/nonprofits/organizations/043594598,2019.0,4464296.0,-0.25387657721850954
+python,043594598,Python Software Foundation,2024,4086997,5765854,3386207,https://projects.propublica.org/nonprofits/organizations/043594598,2019.0,4464296.0,-0.25387657721850954
+pytorch,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+ray-project,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+react,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+rethinkdb,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+servo,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+sgl-project,994817542,Lmsys Corp,2024,0,0,1,https://projects.propublica.org/nonprofits/organizations/994817542,,,
+signalapp,824506840,Signal Technology Foundation,2024,29413537,38019696,-4724975,https://projects.propublica.org/nonprofits/organizations/824506840,2019.0,19408880.0,0.2351113543141503
+slimtoolkit,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+spack,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+valkey-io,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+vllm-project,460503801,The Linux Foundation,2024,220730594,204369300,144627761,https://projects.propublica.org/nonprofits/organizations/460503801,2019.0,124492699.0,0.4450337371595907
+webpack,471491876,Openjs Foundation,2017,2076676,1670682,1043048,https://projects.propublica.org/nonprofits/organizations/471491876,2017.0,2076676.0,0.0
+ziglang,845105214,Zig Software Foundation Inc,2024,670673,522531,218264,https://projects.propublica.org/nonprofits/organizations/845105214,,,

@@ -12,3 +12,38 @@ mem0ai,Mem0,private,,,,,,24000000,2025-10,https://techcrunch.com/2025/10/28/mem0
 localstack,LocalStack,private,,,,,,28200000,2024-11,https://techcrunch.com/2024/11/12/localstack-raises-25m-to-help-developers-emulate-and-test-cloud-apps-locally/,,,,,,,no,LocalStack Inc.,$25M Series A (Notable Capital) Nov 2024 plus ~$3.2M seed (SiliconANGLE). Swiss/US.
 penpot,Kaleidos (Penpot),private,,,,,,20000000,2023-02,https://techcrunch.com/2023/02/02/penpot-the-open-source-platform-for-designers-and-their-coders-draws-up-12m-as-users-jump-to-250k,,,,,,,no,,"$8M Series A 2022 plus $12M 2023 (lower bound, excludes seed). A 2026 round of EUR 2M-6.9M reported, sources conflict. Spanish company."
 appwrite,Appwrite,private,,,,,,37000000,2022-04,https://venturebeat.com/2022/04/05/appwrite-an-open-source-backend-as-a-service-provider-raises-27m/,,,,,,,no,Appwrite Inc.|Appwrite Technologies Ltd,"$27M Series A (Tiger Global) Apr 2022, total $37M; valuation undisclosed. Israel-founded."
+maybe-finance,Maybe Finance,shut_down,2023-06,,,,https://github.com/maybe-finance/maybe-archive,,,,,,,,,,no,"Maybe Finance, Inc.","Business shut mid-2023 after spending ~$1M building app (README); revived as open source, repo archived 2025 after pivot to B2B. Funding undisclosed."
+KeygraphHQ,Keygraph,private,,,,,,,,,,,,,,,no,"Keygraph, Inc.","Founded 2024; Pear VC / Authentic Ventures backed (aggregator); amount undisclosed, third-party estimate $0.25-2M only. Shannon AI pentester is open-source core."
+exo-explore,EXO Labs,private,,,,,,,,,,,,,,,no,,No disclosed rounds found; small UK/US-based team of few people. Name collisions with unrelated Exo companies in searches.
+RocketChat,Rocket.Chat,private,,,,,,29000000,2023-09,https://rocket.chat/press-releases/rocket-chat-raises-19-million-in-series-a-funding-confirming-privacy-first-communication-as-a-major-trend-in-2021,,,,,,,no,Rocket.Chat Technologies Corp.,$19M Series A 2021 + $10M bridge 2023 (fr.rocket.chat press release); totals vary $26.9M-$48M by aggregator. No valuation disclosed.
+chatboxai,Chatbox AI,unknown,,,,,,,,,,,,,,,no,,"No funding or corporate details found; app listings only. Likely tiny, bootstrapped."
+meteor,Meteor Software,acquired,2019-10,,Tiny,,https://www.businesswire.com/news/home/20191002005209/en/Tiny-Acquires-Open-Source-Platform-Meteor-Funds-Earmarked-for-Expansion-and-Reinvestment-Into-Community,31200000,2015-05,https://techcrunch.com/2015/05/19/meteor-raises-20m-to-build-the-one-javascript-stack-to-rule-them-all/,,,,,,,no,Meteor Development Group Inc.|Meteor Software Inc.,"$11.2M 2012 (a16z, Matrix) + $20M 2015 = $31.2M; Tiny acquired Oct 2019, price undisclosed. Aggregator claim of $130M Series D 2021 unverified, likely wrong."
+aseprite,Igara Studio,private,,,,,,,,,,,,,,,no,,"Argentine S.A. selling Aseprite licences (Steam, itch.io); no outside funding found; bootstrapped. Source-available licence, not OSI-open."
+photoprism,PhotoPrism UG,private,,,,,,,,https://www.photoprism.app/about/company/,,,,,,,no,,Berlin UG; states it is 100% self-funded and independent; revenue from paid memberships and sponsors.
+spacedriveapp,Spacedrive Technology,private,,,,,,2000000,2022-06,https://spacedrive.com/blog/spacedrive-funding-announcement,,,,,,,no,Spacedrive Technology Inc.,$2M seed Jun 2022 led by OSS Capital; no later rounds found.
+khoj-ai,Khoj Inc.,private,,,,,,,2023,https://ycombinator.com/companies/khoj,,,,,,,no,Khoj Inc.,"YC S23, Pioneer Fund; aggregator says ~$500K (memory/aggregator only); Khoj Cloud service reportedly sunset Apr 2026 (unverified)."
+continuedev,"Continue Dev, Inc.",private,,,,,,5100000,2025-02,https://techcrunch.com/2025/02/26/continue-wants-to-help-developers-create-and-share-custom-ai-coding-assistants,,,,,,,no,"Continue Dev, Inc.","$2.1M seed 2023 (Heavybit, YC S23) + $3M SAFEs Feb 2025; no valuation. Possible 2026 Cursor acqui-hire seen in one listing, unverified."
+Fincept-Corporation,Fincept Corporation,private,,,,,,,,,,,,,,,no,,"Search budget exhausted; no funding found. Indian-based, small; status assumed private (unverified)."
+onyx-dot-app,Onyx,private,,,,,,,,,,,,,,,unknown,"Danswer Labs, Inc.|Onyx Dot App, Inc.","Search budget exhausted. Formerly Danswer, YC W24; memory: ~$10M seed 2024 (unverified, no URL)."
+trycua,Cua,private,,,,,,,,,,,,,,,unknown,"Cua AI, Inc.",Search budget exhausted. YC-backed 2025 startup; funding not verified (no URL).
+dragonflydb,DragonflyDB,private,,,,,,,,,,,,,,,unknown,DragonflyDB Ltd|Dragonfly Inc.,"Search budget exhausted. memory: Series A ~$21M 2023 and later rounds; no source URL, figures blank."
+heroui-inc,HeroUI Inc.,private,,,,,,,,,,,,,,,unknown,HeroUI Inc.|NextUI Inc.,Search budget exhausted. Formerly NextUI; no disclosed rounds found; likely small.
+Infisical,Infisical,private,,,,,,,,,,,,,,,unknown,"Infisical, Inc.","Search budget exhausted. YC W23; memory: ~$16M Series A 2024 (Elad Gil), unsourced."
+labring,Sealos (labring),private,,,,,,,,,,,,,,,unknown,,Search budget exhausted. Chinese company; funding not verified.
+invoke-ai,Invoke,private,,,,,,,,,,,,,,,unknown,"Invoke AI, Inc.",Search budget exhausted. memory: seed rounds a few $M; unsourced.
+fingerprintjs,Fingerprint (FingerprintJS Inc.),private,,,,,,,,,,,,,,,unknown,"FingerprintJS, Inc.","Search budget exhausted. memory: ~$33M Series B 2022; unsourced, figures blank."
+hcengineering,Huly Labs,private,,,,,,,,,,,,,,,no,"Huly Labs, Inc.",Search budget exhausted. No disclosed funding found; small.
+marmelab,marmelab,private,,,,,,,,,,,,,,,no,,French software agency (react-admin); no outside funding known; bootstrapped consultancy (unverified).
+openfaas,OpenFaaS Ltd,private,,,,,,,,,,,,,,,no,,UK company run by Alex Ellis; no external funding known; sponsor/licence funded (unverified).
+pascalorg,Pascal Group Inc.,private,,,,,,,,,,,,,,,no,Pascal Group Inc.,Search budget exhausted. New small AI/3D project; no funding found.
+dubinc,Dub Technologies,private,,,,,,,,,,,,,,,unknown,"Dub Technologies, Inc.",Search budget exhausted. memory: ~$5.7M seed 2024 and later round; unsourced.
+different-ai,Different AI (OpenWork),private,,,,,,,,,,,,,,,no,"Different AI, Inc.",Search budget exhausted. Tiny startup; no funding found.
+RooCodeInc,Roo Code,private,,,,,,,,,,,,,,,unknown,"Roo Code, Inc.",Search budget exhausted. Cline fork; funding not verified.
+saleor,Saleor Commerce,private,,,,,,,,,,,,,,,unknown,,Search budget exhausted. Polish; memory: Series A ~$? 2021-22 (Tiger/Bessemer?); unsourced.
+chaitin,Chaitin Tech,private,,,,,,,,,,,,,,,unknown,,Search budget exhausted. Chinese security vendor; memory: raised hundreds of millions RMB; unsourced.
+aipoch,AIPOCH,private,,,,,,,,,,,,,,,no,,Search budget exhausted. Singapore; tiny; nothing found.
+psychopy,Open Science Tools Ltd,private,,,,,,,,,,,,,,,no,,UK company (Nottingham) selling Pavlovia/support; no outside funding known (unverified).
+tillitis,Tillitis AB,private,,,,,,,,,,,,,,,no,,Swedish hardware company spun out of Mullvad VPN; sold TKey; no funding found.
+mzmine,mzio GmbH,private,,,,,,,,,,,,,,,no,,German small firm behind mzmine support; no funding found.
+Wakoma,Wakoma,private,,,,,,,,,,,,,,,no,,Czech small firm; no funding found.
+delmic,Delmic,private,,,,,,,,,,,,,,,no,,Dutch microscopy hardware firm (TU Delft spin-off); no disclosed rounds found.

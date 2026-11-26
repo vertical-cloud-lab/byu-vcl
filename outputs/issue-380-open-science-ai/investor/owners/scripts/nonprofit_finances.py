@@ -61,25 +61,49 @@ def form990():
     pd.DataFrame(out).to_csv("data/form990_summary.csv", index=False)
 
 
-def opencollective():
+def opencollective(batch=40):
+    """Every owner's Open Collective account, looked up by GitHub handle, 40 handles per GraphQL request.
+
+    The public API allows 10 requests a minute without a key, so the loop waits for the window to reset when it runs
+    out. A handle can match someone else's collective that happens to list that GitHub handle (e.g. `facebook`
+    matches an unrelated collective with no money), so `name_match` flags whether the account's slug or name
+    resembles the owner; the analysis uses only flagged matches or ones reviewed by hand.
+    """
+    import json, re
     owners = pd.read_csv("data/owners_github.csv")
-    q = """query($h: String) { account(githubHandle: $h) { slug name type isHost
-      stats { totalAmountReceived { valueInCents currency } yearlyBudget { valueInCents currency }
-              balance { valueInCents currency } } } }"""
-    rows = []
-    for login in owners.owner:
-        r = requests.post("https://api.opencollective.com/graphql/v2", json={"query": q, "variables": {"h": login}},
-                          timeout=60)
-        time.sleep(0.4)
-        a = (r.json().get("data") or {}).get("account") if r.status_code == 200 else None
-        if a:
+    F = ("slug name type isHost stats { totalAmountReceived { valueInCents currency } "
+         "yearlyBudget { valueInCents currency } balance { valueInCents currency } }")
+    norm = lambda x: re.sub(r"[^a-z0-9]", "", str(x).lower())
+    rows, logins = [], list(owners.owner)
+    for k in range(0, len(logins), batch):
+        chunk = logins[k:k + batch]
+        q = "query {" + " ".join(f"a{i}: account(githubHandle: {json.dumps(h)}) {{ {F} }}"
+                                 for i, h in enumerate(chunk)) + "}"
+        for attempt in range(6):
+            r = requests.post("https://api.opencollective.com/graphql/v2", json={"query": q}, timeout=120)
+            if r.status_code == 429:
+                time.sleep(20 * (attempt + 1)); continue
+            break
+        data = (r.json().get("data") or {}) if r.status_code == 200 else {}
+        for i, login in enumerate(chunk):
+            a = data.get(f"a{i}")
+            if not a:
+                continue
             st = a.get("stats") or {}
-            c = lambda k: ((st.get(k) or {}).get("valueInCents") or 0) / 100
+            c = lambda key: ((st.get(key) or {}).get("valueInCents") or 0) / 100
+            o, sl, nm = norm(login), norm(a["slug"]), norm(a["name"])
             rows.append({"owner": login, "oc_slug": a["slug"], "oc_name": a["name"], "oc_type": a["type"],
-                         "oc_total_received": c("totalAmountReceived"), "oc_yearly_budget": c("yearlyBudget"),
-                         "oc_balance": c("balance"),
+                         "oc_is_host": a.get("isHost"), "oc_total_received": c("totalAmountReceived"),
+                         "oc_yearly_budget": c("yearlyBudget"), "oc_balance": c("balance"),
                          "oc_currency": (st.get("totalAmountReceived") or {}).get("currency"),
+                         "name_match": int(bool(o) and bool(o in sl or sl in o or o in nm or (nm and nm in o))),
                          "url": f"https://opencollective.com/{a['slug']}"})
+        print(k + len(chunk), "of", len(logins), "matches so far", len(rows), r.status_code, flush=True)
+        if r.headers.get("x-ratelimit-remaining") == "0":
+            wait = max(1, int(r.headers.get("x-ratelimit-reset", time.time() + 60)) - time.time()) + 2
+            time.sleep(wait)
+        else:
+            time.sleep(1)
     pd.DataFrame(rows).to_csv("data/opencollective.csv", index=False)
     print("open collective matches", len(rows))
 
