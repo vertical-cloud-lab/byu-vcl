@@ -257,6 +257,36 @@
    ]
   },
   {
+   "id": "mid1",
+   "seg": "replay",
+   "mark": "replay.phase.4",
+   "offset": 1.0,
+   "text": "Aluminium has now passed both targets: in this seed, on day 96. Copper stays below its first target all year, as it does in four of the twelve seeds.",
+   "src": "the live plots (FLAIME above both dotted lines from day 96; ONR below its first) and the seed badge; out/twin3/runs/main.jsonl, bofn3, seed 0",
+   "nums": [
+    [
+     "96",
+     "replay.flaime_al.T1.day",
+     ".0f"
+    ],
+    [
+     "96",
+     "replay.flaime_al.T2.day",
+     ".0f"
+    ],
+    [
+     "four",
+     "replay.n-replay.onr_cu.T1.hits",
+     "d"
+    ],
+    [
+     "twelve",
+     "replay.n",
+     "d"
+    ]
+   ]
+  },
+  {
    "id": "res1",
    "seg": "results",
    "at": 0.8,
@@ -485,7 +515,7 @@
    "id": "note1",
    "seg": "notes",
    "at": 0.8,
-   "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and prices, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.",
+   "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and fees, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.",
    "src": "compose.NOTES_R3; DAL audit row 13 and section 4 (notes frame)"
   }
  ]

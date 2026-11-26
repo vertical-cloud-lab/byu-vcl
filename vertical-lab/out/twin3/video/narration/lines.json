@@ -161,6 +161,14 @@
    "seconds": 21.21,
    "sha256": "d5588497f0a3005046fe3d4db66de06be59a985d54723cfe4a303820d7f31fbc"
   },
+  "mid1": {
+   "key": "abdfd0c767e21317",
+   "text": "Aluminium has now passed both targets: in this seed, on day 96. Copper stays below its first target all year, as it does in four of the twelve seeds.",
+   "spoken": "Aluminium has now passed both targets: in this seed, on day 96. Copper stays below its first target all year, as it does in four of the twelve seeds.",
+   "phonemes": "ˌæljʊmˈɪniəm hɐz nˈaʊ pˈæst bˈoʊθ tˈɑːɹɡɪts: ɪn ðɪs sˈiːd, ˌɔn dˈeɪ nˈaɪnti sˈɪks. kˈɑːpɚ stˈeɪz bᵻlˌoʊ ɪts fˈɜːst tˈɑːɹɡɪt ˈɔːl jˈɪɹ, æz ɪt dˈʌz ɪn fˈɔːɹ ʌvðə twˈɛlv sˈiːdz.",
+   "seconds": 10.24,
+   "sha256": "c1ad98025a2b98be094d4c6c5abeee092fdd37ac1d3976cdca1fc5cb1431a47a"
+  },
   "res1": {
    "key": "2c5bff604d9b5497",
    "text": "Twelve simulated one-year runs per policy in the automated lab. On aluminium, time-aware BOFN and pKGFN finished highest, at 0.73 and 0.71. On copper, tiered CALPHAD screening still finished ahead, at 0.69 against 0.58 and 0.61.",
@@ -226,12 +234,12 @@
    "sha256": "cbea6289ccab26632b252b973d920e6c61b267353377ac9af2b860f6f68dd384"
   },
   "note1": {
-   "key": "cb203958221f3091",
-   "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and prices, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.",
-   "spoken": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and prices, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.",
-   "phonemes": "ˈɛvɹɪθˌɪŋ hˈɪɹ ɪz sˈɪmjʊlˌeɪɾᵻd: ðɪ ˈælɔɪz, ðə ɹɪzˈʌlts, ænd ˈɛvɹi mˈɛʒɚmənt, wɪð mˈɑːdəld nˈɔɪz nˌɑːt jˈɛt kˈælɪbɹˌeɪɾᵻd ɔnðə lˈæbz ˈɪnstɹəmənts. ðɪ ˈæɾəmˌaɪzɚz ɹˈeɪts, stˈeɪʃən tˈaɪmz ænd pɹˈaɪsᵻz, ðə stˈɑːk ɔnðə ʃˈɛlf ænd ðə spˈɛndɪŋ plˈæn ɑːɹ ɐsˈʌmpʃənz. ɪt ʃˈoʊz hˌaʊ ɐ lˈæb dɪzˈaɪn ænd ɪts pˈɑːlɪsiz ˌɪntɚɹˈækt ɪn ɐ mˈɑːdəl, nˌɑːt wʌt ðə ɹˈiːəl lˈæb wɪl fˈaɪnd.",
-   "seconds": 21.8,
-   "sha256": "b7360f7095933746b15049eb1394aca4d9d23b1d971c134d115f31de81ae9f72"
+   "key": "4475a5e9531915b7",
+   "text": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and fees, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.",
+   "spoken": "Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and fees, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.",
+   "phonemes": "ˈɛvɹɪθˌɪŋ hˈɪɹ ɪz sˈɪmjʊlˌeɪɾᵻd: ðɪ ˈælɔɪz, ðə ɹɪzˈʌlts, ænd ˈɛvɹi mˈɛʒɚmənt, wɪð mˈɑːdəld nˈɔɪz nˌɑːt jˈɛt kˈælɪbɹˌeɪɾᵻd ɔnðə lˈæbz ˈɪnstɹəmənts. ðɪ ˈæɾəmˌaɪzɚz ɹˈeɪts, stˈeɪʃən tˈaɪmz ænd fˈiːz, ðə stˈɑːk ɔnðə ʃˈɛlf ænd ðə spˈɛndɪŋ plˈæn ɑːɹ ɐsˈʌmpʃənz. ɪt ʃˈoʊz hˌaʊ ɐ lˈæb dɪzˈaɪn ænd ɪts pˈɑːlɪsiz ˌɪntɚɹˈækt ɪn ɐ mˈɑːdəl, nˌɑːt wʌt ðə ɹˈiːəl lˈæb wɪl fˈaɪnd.",
+   "seconds": 21.63,
+   "sha256": "5fc3472ef3f01683a40717486daf1e82b5e0533e291ecbc36fa191a974f8023d"
   }
  },
  "voice_id": "af_heart",
