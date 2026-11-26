@@ -40,14 +40,18 @@ OUTD = HERE / "out" / "twin2" / "video" / "lab3d"
 RENDER_FPS = 15
 
 # cameras (position, focal point, view up; mm) and view angles. "high", "sw" and "se" are the stills' (birdseye_render
-# VIEWS) with a narrower angle, so trays and units read at 1920 x 1080; "towers" is close on both Shuttles and the
-# aisle in front of them, "west" on the atomizer end of the floor.
+# VIEWS) with a narrower angle, so trays and units read at 1920 x 1080; the others were picked from a sheet of
+# candidates rendered on the same state (a camera from the east or the south-east looks through the cable tray).
 VIEWS = {
     "high": ([(1400.0, -25500.0, 23500.0), (1400.0, -3700.0, 700.0), (0.0, 0.0, 1.0)], 30.0 / 1.25),
     "sw": ([(-7200.0, -24000.0, 17500.0), (1300.0, -3700.0, 600.0), (0.0, 0.0, 1.0)], 30.0 / 1.1),
     "se": ([(10200.0, -24000.0, 17500.0), (1500.0, -3700.0, 600.0), (0.0, 0.0, 1.0)], 30.0 / 1.1),
-    "towers": ([(9800.0, -13800.0, 7400.0), (1500.0, -2600.0, 1900.0), (0.0, 0.0, 1.0)], 30.0),
-    "west": ([(-1400.0, -15500.0, 8600.0), (-3600.0, -3600.0, 700.0), (0.0, 0.0, 1.0)], 30.0),
+    # both Shuttles' openings close, from the west along the aisle, under the cable tray
+    "towers_c": ([(-2600.0, -7600.0, 2500.0), (2200.0, -1400.0, 2100.0), (0.0, 0.0, 1.0)], 38.0),
+    # straight down on the floor: the aisle, the docks and the units
+    "plan": ([(1400.0, -7000.0, 26000.0), (1400.0, -3700.0, 0.0), (0.0, 0.0, 1.0)], 30.0),
+    # the west end of the floor (atomizer, sieving cell, the two Instrons) and the Shuttles beyond
+    "west": ([(-9800.0, -13500.0, 6200.0), (-2500.0, -3700.0, 800.0), (0.0, 0.0, 1.0)], 34.0),
 }
 
 
