@@ -1093,13 +1093,29 @@ def narrate(video: Path, rec: dict, kind: str) -> dict:
                 spoken_s=round(sum(p["end"] - p["t"] for p in placed), 1), placed=placed)
 
 
+LOUDNESS = dict(I=-16.0, TP=-1.5, LRA=11.0)        # the track's integrated loudness (LUFS) and true peak (dBTP)
+
+
+def loudnorm_filter(wav: Path) -> str:
+    """ffmpeg's loudnorm, two passes: measure the narration track, then one linear gain to LOUDNESS (YouTube plays
+    at -14 LUFS and only turns louder videos down; the lines as levelled come to about -20.5 LUFS)."""
+    t = LOUDNESS
+    base = f"loudnorm=I={t['I']}:TP={t['TP']}:LRA={t['LRA']}"
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(wav), "-af", base + ":print_format=json",
+                        "-f", "null", "-"], capture_output=True, text=True)
+    m = json.loads(r.stderr[r.stderr.rindex("{"):r.stderr.rindex("}") + 1])
+    return (f"{base}:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:"
+            f"measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
+
+
 def mux(video: Path, wav: Path):
-    """The narration track into the cut, the picture copied: AAC 192k, 48 kHz, stereo (the mono voice in both)."""
+    """The narration track into the cut, the picture copied: loudness-normalised (loudnorm_filter), AAC 192k, 48 kHz,
+    stereo (the mono voice in both). The video may already carry a track: it is replaced."""
     silent = video.with_name(video.stem + "_silent.mp4")
     video.replace(silent)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(wav), "-map", "0:v", "-map", "1:a",
-                    "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-shortest",
-                    "-movflags", "+faststart", str(video)], check=True)
+                    "-c:v", "copy", "-af", loudnorm_filter(wav), "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                    "-ac", "2", "-shortest", "-movflags", "+faststart", str(video)], check=True)
     silent.unlink()
 
 
@@ -1193,6 +1209,8 @@ if __name__ == "__main__":
         build(cmd)
     elif cmd == "npreview":                             # the narrated preview: the opening and the switch to the lab
         narrated_preview(render="--meta-only" not in args)
+    elif cmd == "remux":                                # remux <video> <wav>: the narration track again, picture copied
+        mux(Path(args[1]), Path(args[2]))
     elif cmd == "stills":
         stills([float(x) for x in args[1:]])
     elif cmd == "plan":

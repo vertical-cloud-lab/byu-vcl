@@ -11,6 +11,10 @@ parts showing PR 318's 3-D lab moved by the event log, instead of station clips 
 [tX8Ik8oKnhk](https://www.youtube.com/watch?v=tX8Ik8oKnhk) (11:41, uploaded 2026-11-26 from commit dee5887; the public cut is untouched). Its 60 s preview, one simulated week from above: [FR3Fl1onJU0](https://www.youtube.com/watch?v=FR3Fl1onJU0) (unlisted, uploaded 2026-11-26 from commit b16bd36). See
 [The animated lab](#the-animated-lab) below.
 
+**The narrated cut** (PR 393, 2026-11-26): the animated cut with a voice at the places that need one, and its takeaway,
+results and notes reworded as DAL's audit of the first cut suggested (digital-alloy-lab PR 293). Unlisted, 12:50:
+[s854ahFNihU](https://www.youtube.com/watch?v=s854ahFNihU); its 60 s preview: [xoRI1OaA81k](https://www.youtube.com/watch?v=xoRI1OaA81k). See [The narrated cut](#the-narrated-cut) below.
+
 ## What is on screen
 
 | Part | What it shows | Code |
@@ -196,9 +200,11 @@ notes. Elsewhere the captions and the pictures carry it: 25 lines, 5.5 min of sp
 built on the animated cut ([The animated lab](#the-animated-lab)), so the replay is PR 318's 3-D lab moved by the event
 log.
 
-**On YouTube:** being built (unlisted when uploaded) (unlisted; uploaded 2026-11-26 from commit (pending)), and its 60 s preview (being uploaded)
-(unlisted): the opening, then the 3-D lab taking over on day 2 and the first view of the whole lab from above. The
+**On YouTube:** [s854ahFNihU](https://www.youtube.com/watch?v=s854ahFNihU) (unlisted; uploaded 2026-11-26, built from commit 3230776, then its track brought to -16 LUFS with the picture copied (`python -m twin.video.compose remux`)), and its 60 s preview
+[xoRI1OaA81k](https://www.youtube.com/watch?v=xoRI1OaA81k) (unlisted; its track is at the level before `loudnorm`, -20.5 LUFS): the opening, then the 3-D lab taking over on day 2 and the first view of the whole lab from above. The
 public cut (Pz7hxqfODmE) and the animated re-cut's upload are left as they are.
+
+![Contact sheet of the narrated cut](../out/twin2/video/sheet_lab3d_narrated.png)
 
 **The voice** is Kokoro v1.0 (82 M parameters, Apache-2.0 open weights), run on the runner's CPU through kokoro-onnx
 0.6.1, with its stock voice `af_heart` at 0.96 speed: no reference audio, nobody's voice cloned or imitated. It is the
@@ -208,7 +214,7 @@ letter; "aluminium" as the American "aluminum", since the voice is American), an
 ("KAL-fad"), Kardex, Sobol and "doser" their phonemes.
 
 **Heard back.** Every line was transcribed by faster-whisper (base.en and small.en) and compared word by word with what
-it should say: 0.55 % (small.en) and 2.0 % (base.en, which twice repeats a phrase that was said once) word error over 910 words. The differences are spellings ("grey"/"gray") and "CALPHAD", a
+it should say: 0.44 % (small.en) and 1.2 % (base.en, which once repeats a phrase that was said once) word error over 915 words. The differences are spellings ("grey"/"gray") and "CALPHAD", a
 word the recognizers don't know (`out/twin2/video/narration/check.json`; `lines.ogg` has every line in a row, to listen
 to).
 
@@ -237,7 +243,8 @@ segment, is reported. The two lines about the animated lab (`needs: lab3d`) are 
 `out/twin2/video/narration/`, with its text, phonemes, voice and speed in `lines.json`, so the cut rebuilds without the
 speech model. A line is spoken again only when its text changes, which needs `/tmp/kokoro/kokoro-v1.0.onnx` and
 `voices-v1.0.bin` from kokoro-onnx's `model-files-v1.0` release (their sha256 in `lines.json`). The track is mixed at
-48 kHz, each line levelled to -19 dBFS RMS, and muxed in as AAC; the subtitles are `narration/narration.srt` (the upload
+48 kHz, each line levelled to -19 dBFS RMS, the whole track brought to -16 LUFS by one linear gain (ffmpeg's
+`loudnorm`, two passes; YouTube plays at -14 and only turns louder videos down) and muxed in as AAC; the subtitles are `narration/narration.srt` (the upload
 token can't add a caption track, so they aren't on YouTube).
 
 ```bash

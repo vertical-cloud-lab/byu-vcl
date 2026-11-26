@@ -1,0 +1,74 @@
+{
+ "title": "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)",
+ "description": "A simulated benchmark, not lab results: two alloy-discovery campaigns replayed for a whole year in a digital twin of BYU's Vertical Cloud Lab design (PR 318). FLAIME searches aluminium alloys for laser powder bed fusion and ONR copper alloys for blown-powder DED; both share one lab, one atomizer and one calendar. Narrated by a synthetic voice: Kokoro v1.0 (open weights, run locally), its stock voice af_heart.\n\nIn this simulated benchmark, a stocked automated lab reached a new alloy better than the reference alloy sooner than a conventional lab that orders metal as it goes: aluminium in 116 days against 220 (1.9x, 95% interval 1.1 to 3.4), copper in 225 days against at least 840 (at least 3.7x; the conventional lab got there in 6 of 12 three-year runs). Most of aluminium's gain is the stock: with both labs ordering as they go it is 1.2x (0.7 to 1.7). Copper's comparison also changes the method: the automated lab screens powder blends first.\n\nTo get there, the automated lab cost 2.0x as much for aluminium and 1.15x for copper, equipment included (0.6x and 0.4x counting only what the campaigns spent). Equipment included, it costs less than the conventional lab only for copper, and only if outside users rent its idle hours, which this model assumes and does not show.\n\nThe target is the reference alloy's score on the twin's synthetic alloy model (AlSi10Mg, C95800). One random design in 12 beats it, so reaching it measures how fast a lab makes and tests its first alloys, not a discovery.\n\nAgainst a conventional lab run by a metallurgist's rules of thumb, the automated lab is no faster on aluminium (1.05x, 0.7 to 2.2) at 2.6x the operating cost, and 2.2x faster on copper (1.7 to 2.6).\n\nWhere BOFN doesn't win: on copper, tiered CALPHAD screening finished ahead of BOFN with blend screening, 0.68 against 0.58 over 24 seeds (0.69 against 0.67 in the first 12); plain BOFN did no better than random (0.33 against 0.35).\n\nThe replay is one seed of 12: in it, aluminium reaches the target on day 20; the median seed takes 116 days.\n\nThis cut's replay animates PR 318's 3-D lab from the twin's event log: every tray presented at a Kardex Shuttle's opening and every MiR250 + UR12e visit to a dock comes from a booking (a station on a tray has its tray brought to the opening at the booking's start and end; a floor machine has a unit dock at its front), and idle trays stay in their slots. The clock runs at 1.5-60 lab hours a second, so the moves run on their own clock, 8-16 times real time, with the tower's and the MiR250's own timings, each starting when the clock reaches its booking; when they can't keep up, each Shuttle and unit takes the latest request, and the panel at the bottom counts how many were drawn.\n\nReal: the lab design's 3-D renders, the atomizer footage, the search spaces (the proposals), USGS prices and the economics' sources. Assumed: station times, fees and outside-facility delays; the automated lab's stock on day 0; the atomizer's failure rate and yield; who staffs the automated lab. Simulated: the alloys' properties, every measurement (with modelled noise not yet calibrated on the lab's instruments) and every result. The audit this wording follows: https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/293\n\nCode: https://github.com/vertical-cloud-lab/byu-vcl/tree/3230776/vertical-lab/twin (video: twin/video; script, with timestamps: notes/twin_video.md)\nPR: https://github.com/vertical-cloud-lab/byu-vcl/pull/393\n\nChapters\n0:00 What is simulated: the lab and two search spaces\n0:54 The function networks\n2:39 The figures we track\n3:41 The first alloy, start to finish\n5:01 Day by day: the lab up close, moved by the event log\n6:19 Week by week: the whole lab\n7:43 Month by month, to the end of the year\n9:41 Results\n11:11 The takeaway\n12:24 Notes: real, assumed, simulated\n",
+ "tags": [
+  "vertical cloud lab",
+  "BYU",
+  "self-driving lab",
+  "laboratory automation",
+  "digital twin",
+  "alloy development",
+  "aluminium alloys",
+  "copper alloys",
+  "laser powder bed fusion",
+  "directed energy deposition",
+  "Bayesian optimization",
+  "function networks",
+  "materials acceleration platform",
+  "simulated benchmark",
+  "Kardex Shuttle",
+  "MiR250",
+  "UR12e",
+  "narrated"
+ ],
+ "categoryId": "28",
+ "privacy": "unlisted",
+ "notifySubscribers": false,
+ "file": "out/twin2/video/campaign_lab3d_narrated.mp4",
+ "seconds": 770.0,
+ "chapters": [
+  {
+   "stamp": "0:00",
+   "title": "What is simulated: the lab and two search spaces"
+  },
+  {
+   "stamp": "0:54",
+   "title": "The function networks"
+  },
+  {
+   "stamp": "2:39",
+   "title": "The figures we track"
+  },
+  {
+   "stamp": "3:41",
+   "title": "The first alloy, start to finish"
+  },
+  {
+   "stamp": "5:01",
+   "title": "Day by day: the lab up close, moved by the event log"
+  },
+  {
+   "stamp": "6:19",
+   "title": "Week by week: the whole lab"
+  },
+  {
+   "stamp": "7:43",
+   "title": "Month by month, to the end of the year"
+  },
+  {
+   "stamp": "9:41",
+   "title": "Results"
+  },
+  {
+   "stamp": "11:11",
+   "title": "The takeaway"
+  },
+  {
+   "stamp": "12:24",
+   "title": "Notes: real, assumed, simulated"
+  }
+ ],
+ "commit": "3230776",
+ "placeholder": false,
+ "replay": "vertical_lab_bofn_blend_s0.json"
+}

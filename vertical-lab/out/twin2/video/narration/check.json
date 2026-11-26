@@ -5,10 +5,10 @@
   "faster-whisper small.en"
  ],
  "word_error_rate": {
-  "base.en": 0.0199,
-  "small.en": 0.0055
+  "base.en": 0.0121,
+  "small.en": 0.0044
  },
- "words": 910,
+ "words": 915,
  "lines": [
   {
    "id": "open1",
@@ -52,55 +52,13 @@
    "spoken": "Each campaign is a function network: a chain of steps, where each step's results feed the next. B O F N, Bayesian optimization over function networks, models every step, not just the final score.",
    "seconds": 13.33,
    "base.en": {
-    "heard": "Each campaign is a function network. A chain of steps, where each step's results feed the next. B-O-F-N, Bayesian optimization over function networks, models every step, not just the final score. B-O-F-N, Bayesian optimization over function networks.",
-    "wer": 0.194,
-    "diffs": [
-     [
-      "insert",
-      "",
-      "bofn bayesian optimization over function networks"
-     ]
-    ],
+    "heard": "Each campaign is a function network. A chain of steps, where each step's results feed the next. B-O-F-N, Bayesian optimization over function networks, models every step, not just the final score.",
+    "wer": 0.0,
+    "diffs": [],
     "unsure": [
      [
       "B",
       0.49
-     ],
-     [
-      "B",
-      0.0
-     ],
-     [
-      "-O",
-      0.03
-     ],
-     [
-      "-F",
-      0.49
-     ],
-     [
-      "-N,",
-      0.3
-     ],
-     [
-      "Bayesian",
-      0.0
-     ],
-     [
-      "optimization",
-      0.0
-     ],
-     [
-      "over",
-      0.0
-     ],
-     [
-      "function",
-      0.0
-     ],
-     [
-      "networks.",
-      0.0
      ]
     ]
    },
@@ -196,17 +154,17 @@
   },
   {
    "id": "fig2",
-   "text": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
-   "spoken": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
-   "seconds": 10.39,
+   "text": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab: the same optimizer through partner and core facilities, ordering its metal as it goes.",
+   "spoken": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab: the same optimizer through partner and core facilities, ordering its metal as it goes.",
+   "seconds": 12.1,
    "base.en": {
-    "heard": "Against money, the same curve shows what the progress cost. The gray dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
+    "heard": "Against money, the same curve shows what the progress cost. The gray dashed curve is the conventional lab, the same optimizer through partner and core facilities, ordering its metal as it goes.",
     "wer": 0.0,
     "diffs": [],
     "unsure": []
    },
    "small.en": {
-    "heard": "Against money, the same curve shows what the progress cost. The gray dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
+    "heard": "Against money, the same curve shows what the progress cost. The gray dashed curve is the conventional lab, the same optimizer through partner and core facilities, ordering its metal as it goes.",
     "wer": 0.0,
     "diffs": [],
     "unsure": []
@@ -670,26 +628,14 @@
    "seconds": 23.72,
    "base.en": {
     "heard": "Everything here is simulated. The alloys, the results, and every measurement with modeled noise not yet calibrated on the lab's instruments. Station times, fees and schedules, the stock on the shelf, the atomizers, failure rate, and yield, and who staffs the lab are assumptions. It shows how the lab's design and its optimizer interact in a model, not what the real lab will find.",
-    "wer": 0.016,
-    "diffs": [
-     [
-      "substitute",
-      "modelled",
-      "modeled"
-     ]
-    ],
+    "wer": 0.0,
+    "diffs": [],
     "unsure": []
    },
    "small.en": {
     "heard": "Everything here is simulated. The alloys, the results, and every measurement with modeled noise not yet calibrated on the lab's instruments. Station times, fees and schedules, the stock on the shelf, the atomizer's failure rate and yield, and who staffs the lab are assumptions. It shows how the lab's design and its optimizer interact in a model, not what the real lab will find.",
-    "wer": 0.016,
-    "diffs": [
-     [
-      "substitute",
-      "modelled",
-      "modeled"
-     ]
-    ],
+    "wer": 0.0,
+    "diffs": [],
     "unsure": []
    }
   }

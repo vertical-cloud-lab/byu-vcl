@@ -793,6 +793,18 @@
     "notified_subscribers": false
    }
   ],
+  "twin2/video/campaign_lab3d_narrated.mp4": [
+   {
+    "id": "s854ahFNihU",
+    "sha256": "f1555bd15c5a22bd8b70a36782831865402fca42fe0cb800fb1165f599ed3f4d",
+    "bytes": 140202752,
+    "commit": "3230776",
+    "uploaded": "2026-11-26T04:28:33Z",
+    "title": "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
   "twin2/video/lab3d_week.mp4": [
    {
     "id": "FR3Fl1onJU0",
