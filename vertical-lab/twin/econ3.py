@@ -21,7 +21,8 @@ OUT = B3.OUT / "econ"
 
 
 def run(new_pol: str = "pkgfn3", n_boot: int = 1000) -> dict:
-    paths = [p for p in (B3.RUNS / "main.jsonl", B3.RUNS / "conventional.jsonl") if p.exists()]
+    paths = [p for p in (B3.RUNS / "main.jsonl", B3.RUNS / "conventional.jsonl", B3.RUNS / "conventional_net.jsonl")
+             if p.exists()]
     evs = sorted(glob.glob(str(B3.OUT / "events" / "*.json")))
     G = E.group_runs(E.load_runs(paths))
     V = lambda p: ("vertical_lab", p, "historical", "")

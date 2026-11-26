@@ -57,11 +57,13 @@ EXPERIMENTS = {
     "cu_money": [_cfg(p, s, cu_budget=180_000.0) for p in ("tiered", "heuristic", "gpbo", "bofn3", "pkgfn3")
                  for s in range(4 if p in NET else 12)],
     # the conventional lab with the same asynchronous freedom inside its own facilities and booking rules: three years
-    # at three years' money, metal ordered as each charge needs it (BOFN and pKGFN on 3 seeds: three simulated years
-    # each cost about three times a vertical-lab year)
+    # at three years' money, metal ordered as each charge needs it. Its cheap policies (the references of the
+    # acceleration factors) are one experiment; BOFN and pKGFN another, on 3 and 2 seeds (three simulated years each
+    # cost about three times a vertical-lab year), run last
     "conventional": [_cfg(p, s, facility="proposed", stock="lean", days=1095, years_budget=3.0, events=(s == 0))
-                     for p in ("random", "sobol", "heuristic", "tiered", "gpbo", "bofn3", "pkgfn3")
-                     for s in range(3 if p in NET else 12)],
+                     for p in BASE for s in range(12)],
+    "conventional_net": [_cfg(p, s, facility="proposed", stock="lean", days=1095, years_budget=3.0, events=(s == 0))
+                         for p, n in (("bofn3", 3), ("pkgfn3", 2)) for s in range(n)],
 }
 
 
@@ -189,8 +191,14 @@ def run(names, workers=3):
 
 
 def load(name):
-    p = RUNS / f"{name}.jsonl"
-    return [json.loads(l) for l in p.read_text().splitlines()] if p.exists() else []
+    """An experiment's runs (the conventional lab's two experiments read as one)."""
+    names = [name] + (["conventional_net"] if name == "conventional" else [])
+    out = []
+    for nm in names:
+        p = RUNS / f"{nm}.jsonl"
+        if p.exists():
+            out += [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
+    return out
 
 
 # ------------------------------------------------------------------------------------------------- summarising

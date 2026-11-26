@@ -218,7 +218,7 @@ def table_main(rows, T, ref="tiered", horizon=365, r2rows=None):
         L.append("| Policy | n | best new alloy | paired vs " + LABEL.get(ref, ref) + " (ahead/behind) | T1 reached | "
                  "T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |")
         L.append("|---|---|---|---|---|---|---|---|---|---|---|")
-        for p in ORDER:
+        for p in list(ORDER) + sorted(set(P) - set(ORDER)):
             if p not in P:
                 continue
             rs = P[p]
@@ -316,6 +316,34 @@ def table_pairs(rows_a, rows_b, pairs, T, horizon=365, title=""):
     return "\n".join(L)
 
 
+def table_money(rows, title):
+    """Where each campaign's money went (the ledger's kinds), mean over seeds, $k."""
+    P = by_policy(rows)
+    L = [title, ""]
+    for camp in CAMPS:
+        kinds = {}
+        for p in ORDER:
+            if p not in P:
+                continue
+            for r in P[p].values():
+                for k, x in (r["campaigns"][camp].get("spend_by") or {}).items():
+                    kinds[k] = kinds.get(k, 0.0) + x
+        top = [k for k, _ in sorted(kinds.items(), key=lambda kv: -kv[1])][:8]
+        L += [f"**{CNAME[camp]}**", "", "| Policy | total | " + " | ".join(top) + " | metal's share |",
+              "|---|---|" + "---|" * len(top) + "---|"]
+        for p in ORDER:
+            if p not in P:
+                continue
+            rs = list(P[p].values())
+            tot = np.mean([r["campaigns"][camp]["spent"] for r in rs]) / 1e3
+            vals = [np.mean([(r["campaigns"][camp].get("spend_by") or {}).get(k, 0.0) for r in rs]) / 1e3 for k in top]
+            metal = np.mean([(r["campaigns"][camp].get("spend_by") or {}).get("order", 0.0) / max(r["campaigns"][camp]["spent"], 1)
+                             for r in rs])
+            L.append(f"| {LABEL.get(p, p)} | {tot:.1f} | " + " | ".join(f"{x:.1f}" for x in vals) + f" | {metal:.0%} |")
+        L.append("")
+    return "\n".join(L)
+
+
 def numbers(rows, T, horizon=365):
     """Per policy and campaign: best (mean, SE, per seed), T1/T2 days per seed and KM medians, spend, counts."""
     P = by_policy(rows)
@@ -362,6 +390,8 @@ def main():
         fig_time_to_target(main_rows, T, OUT / "twin3_time_to_target.png", "Round 3, simulated: days to the targets")
         fig_spend(main_rows, OUT / "twin3_spend.png", "Round 3, simulated: money spent against the spending plan")
         md += ["", "## Main benchmark (vertical lab, one year)", table_main(main_rows, T, "tiered")]
+        md += ["", table_money(main_rows, "## Where the money went (main benchmark, mean over seeds, $k; 'order' is "
+                                          "metal and consumables, the stocked lab's day-0 inventory and its reorders)")]
         N["main"] = numbers(main_rows, T)
     more = B3.load("main_more")
     if more:
@@ -374,8 +404,19 @@ def main():
                                 ("bofn3", "tiered"), ("pkgfn3", "tiered"), ("bofn3", "heuristic"),
                                 ("pkgfn3", "heuristic"), ("bofn3", "gpbo"), ("pkgfn3", "gpbo")], T,
                                title="## Paired comparisons within the main benchmark (same seeds)")]
+    hid = B3.load("cu_hidden")
     for name, ref in (("cu_hidden", "tiered"), ("cu_money", "tiered"), ("cu_proxy", None), ("cu_ablation", None)):
         rows = B3.load(name)
+        if name == "cu_proxy" and rows:
+            # two settings of the same policy: the mis-specified proxy on the plain truth (against main's funnel) and
+            # with the gamma-2 effect (against cu_hidden's funnel)
+            for h, ref_rows, lab in ((0.0, main_rows, "plain truth, B = main"), (1.0, hid, "with gamma-2, B = cu_hidden")):
+                rr = [r for r in rows if float(r["cfg"].get("cu_hidden", 0.0)) == h]
+                if rr and ref_rows:
+                    md += ["", f"## cu_proxy ({lab})", table_main(rr, T, "tiered"),
+                           table_pairs(rr, ref_rows, [("tiered_mis", "tiered")], T, title="")]
+                    N[f"cu_proxy_h{h:g}"] = numbers(rr, T)
+            continue
         if rows:
             md += ["", f"## {name}", table_main(rows, T, ref or "tiered")]
             N[name] = numbers(rows, T)
