@@ -56,6 +56,13 @@ def main():
         have = {(l["investor"], l["key"]) for l in L}
         out["portfolio_check"] = {"domain_links": len(dom), "already_in_deals": sum((r["investor"], r["key"]) in have for r in dom)}
     out["thesis_funders"] = [(r["investor"], r["ventures"]) for r in I if r.get("stated_open_source_thesis")]
+    import glob
+    xs = set()
+    for f in glob.glob(os.path.join(D, "deal_passes", "input_x*.csv")):
+        xs |= {r["key"] for r in csv.DictReader(open(f))}
+    out["deepened"] = len(xs)
+    out["deepen_passes"] = len(glob.glob(os.path.join(D, "deal_passes", "input_x*.csv")))
+    out["deal_passes"] = len([f for f in glob.glob(os.path.join(D, "deal_passes", "input_*.csv")) if "input_x" not in f])
     json.dump(out, open(os.path.join(D, "funders_numbers.json"), "w"), indent=1)
     print(json.dumps({k: out[k] for k in ("U1-U3", "U1", "U2", "U3", "U4")}, indent=0)[:3500])
 

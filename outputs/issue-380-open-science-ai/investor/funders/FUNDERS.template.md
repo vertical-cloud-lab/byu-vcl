@@ -72,7 +72,7 @@ Examples list led ventures first. Full list: [`FUNDER_LIST.md`](FUNDER_LIST.md).
 
 Quoted from the firm's own page or from a public interview. The count is ventures in this data, U1–U4.
 
-QUOTES_TABLE
+<!-- TABLE:thesis.md -->
 
 ### Corporate and strategic investors
 
@@ -225,12 +225,85 @@ CHECKS
 
 ## How the list was made
 
-METHODS
+1. **Scope first.** [`PROTOCOL.md`](PROTOCOL.md) fixed what counts as an open-source-minded venture and as a
+   funder, and the counting rules, before any funding data was gathered (`448c8c2`).
+2. **Four groups of ventures**, kept apart in every table:
+   - **U1**: all 387 companies behind the most-starred open-source projects on GitHub, from part 2. Nobody picked
+     them for their funding.
+   - **U2**: 97 open hardware, open science, lab and science-software ventures, picked by hand for relevance to DAL
+     and the SDL kit.
+   - **U3**: 156 well-known commercial open-source and open-weight AI ventures since 1998. This group
+     over-represents successes.
+   - **U4**: 402 young open-source startups from two third-party lists, Runa Capital's ROSS Index (2020–26) and Y
+     Combinator's directory. They were added after the first passes had started, because there was time, and
+     researched more lightly.
+3. **Leads without a search engine.** Every research session shares one web-search budget, which ran out in part 2
+   and again here after about 15 passes. So `scripts/investor_leads.py` first collected funding sentences for every
+   venture from:
+   - TechCrunch, SiliconANGLE, BetaKit and TechNode (their public WordPress APIs)
+   - Hacker News links, which are often the company's own announcement
+   - Wikipedia and Wikidata
+   - the company's own site
+4. **Deal passes.** Research agents (Claude Sonnet, {{deal_passes}} passes of 13–25 ventures) read the leads and the pages they
+   point to. For each round they recorded the lead and the other named investors, with a source URL. Where nothing
+   was disclosed they recorded "none found". Once the search budget was spent, they searched with
+   `scripts/find_pages.py`, the same open APIs.
+5. **Deepening passes.** Then {{deepen_passes}} deepening passes went back to the {{deepened}} well-funded ventures whose history came
+   back thin. They added rounds from company newsrooms, Wikipedia's cited articles, SEC prospectuses and archived
+   press releases.
+6. **Program passes.** Four passes listed the programs that fund open source and open science outside equity
+   rounds: foundations, governments and public investors, corporate funds, crypto, accelerators and crowdfunding.
+   They also recorded investors that state an open-source thesis, in their own words.
+7. **Merge.** `scripts/build_funders.py` normalises names with a hand-made alias table
+   ([`data/investor_aliases.csv`](data/investor_aliases.csv)) and types each funder from a hand-made table
+   ([`data/investor_types.csv`](data/investor_types.csv), by the firm's own description; people count as angels).
+   - A round that a source reports only as talks, a rumour or a raise in progress is kept, but its names are not
+     counted (`counted` column in `deals.csv`).
+   - Claude Opus planned the passes, wrote the scripts, reviewed the rows and wrote this file.
 
 ## Limits
 
-LIMITS
+- **Disclosure is selective.** Big rounds, well-known investors and companies that survived are reported more.
+  Seed angels, small funds, failures and private companies outside the US and Europe are reported less. Counts
+  therefore favour large, visible firms.
+- **Coverage is uneven.** The search budget ran out early, so many ventures were researched only from news APIs,
+  Wikipedia and company pages.
+  - The first passes for U1, U2 and part of U3 had web search; the rest did not.
+  - Chinese-language sources were read for a handful of companies only.
+  - U4 (young startups) was researched lightly by design: for most of it, YC's own page and a quick look at the
+    company site.
+- **"None found" means none found.** Of the companies behind the most-starred projects, {{U1.none_found}} have no
+  disclosed outside funding in this data. Some will have raised money that was never announced or that these
+  sources don't reach.
+- **U2, U3 and U4 are not random.** U2 was picked for relevance and U3 for fame. U4 comes from lists kept by an
+  accelerator (YC) and an investor (Runa), which both have an interest in the companies on them.
+- **A count is not a return.** Nothing here measures whether these funders made money on open source. Edison found
+  no study that does. Being on the list doesn't mean a funder would back a new open venture.
+- **Names are normalised by hand.** Fund vehicles roll up to the firm, and corporate arms stay separate but roll up
+  to their parent in one table. Some aliases will be missed, and a few distinct firms share a name.
+- **Rounds are as sources describe them.** Labels (seed, Series A) and amounts follow the source, and sources
+  sometimes disagree; the rows say so in `note`.
 
 ## Files
 
-FILES
+| Path | What it is |
+| --- | --- |
+| [`FUNDER_LIST.md`](FUNDER_LIST.md) | Every funder found, by type, with each venture linked to a page naming it |
+| [`PROTOCOL.md`](PROTOCOL.md) | Scope and counting rules, committed before any data |
+| [`deal_rules.md`](deal_rules.md), [`deepen_rules.md`](deepen_rules.md), [`program_rules.md`](program_rules.md) | The instructions each research pass followed |
+| `data/ventures_input.csv` | The 1,042 ventures, their group (U1–U4) and the list each came from |
+| `data/ventures.csv` | One row per venture: what is open, status, whether funding was found, part 2's funding total for U1 |
+| `data/deals.csv` | One row per funding event: type, date, amount, lead and other investors (as written and normalised), source URL and kind |
+| `data/investor_links.csv` | One row per funder–venture pair, with rounds, leads, first year and sources |
+| `data/investors.csv` | One row per funder: type, ventures by group, leads, years, examples, stated open-source thesis |
+| `data/programs.csv` | Program-level funders: foundations, governments, corporate funds, crypto, accelerators, crowdfunding |
+| `data/investor_aliases.csv`, `data/investor_types.csv` | Hand-made name normalisation and funder types |
+| `data/yc_open_source.csv`, `data/u4/ross_index.csv` | YC companies tagged or described as open source; every ROSS Index entry read |
+| `data/portfolio/` | Investors' own portfolio pages, and the ventures matched on them |
+| `data/source_checks_deals.csv`, `data/source_checks_programs.csv` | Whether each name or amount appears on the page it cites |
+| `data/leads/` | The leads each pass started from |
+| `data/deal_passes/`, `data/program_passes/` | Raw pass outputs, as written |
+| `data/tables/` | The tables in this file, and the full open hardware, science and lab venture table |
+| `edison/` | Edison's literature answer and blind audit, with full trajectories |
+| `scripts/` | Everything that produced the above; run order in [`README.md`](README.md) |
+| `figures/` | The two charts |

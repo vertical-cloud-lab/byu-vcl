@@ -21,6 +21,7 @@ LIT = ["Accel", "Sequoia Capital", "Benchmark", "Index Ventures", "Andreessen Ho
        "Gordon and Betty Moore Foundation", "Schmidt Futures", "Footprint Coalition", "National Science Foundation",
        "Sovereign Tech Agency", "NLnet", "Prototype Fund", "National Institutes of Health", "Wellcome",
        "Open Technology Fund", "Kavli Foundation", "Mistral AI investors: Microsoft"]
+LIT_ALIASES = {"National Institutes of Health": ["nih "], "Indiegogo backers": ["indiegogo"], "Footprint Coalition": ["footprint coalition"]}
 
 
 def main():
@@ -32,7 +33,12 @@ def main():
     for n in LIT[:-1]:
         k = key_name(alias.get(key_name(n), n))
         in_deals = inv.get(k)
-        in_prog = n.lower().split(" (")[0] in prog or key_name(n) in key_name(prog)
+        in_prog = n.lower().split(" (")[0] in prog or key_name(n) in key_name(prog) or \
+            any(a in prog for a in LIT_ALIASES.get(n, []))
+        if not in_deals:
+            alts = LIT_ALIASES.get(n, [])
+            hit = [r for k2, r in inv.items() if any(a.strip() in k2 for a in alts)]
+            in_deals = hit[0] if hit else None
         rows.append({"funder_named_by_edison": n, "in_deal_data": f"yes ({in_deals['ventures']} ventures)" if in_deals else "no",
                      "in_program_passes": "yes" if in_prog else "no"})
     with open("data/edison_literature_check.csv", "w", newline="") as f:

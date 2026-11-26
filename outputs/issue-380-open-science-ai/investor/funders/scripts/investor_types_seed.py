@@ -163,6 +163,29 @@ T.update({
  "Stanford University": O, "University of Michigan": O, "AngelList": O,
 })
 
+T.update({"O'Reilly AlphaTech Ventures": V, "Amino Collective": V, "New York Angels": "angel", "Two Small Fish Ventures": V,
+          "Silicon Catalyst Angels": "angel", "Portland Seed Fund": V, "Inspiration Ventures": V, "New North Ventures": V,
+          "Foresight Williams Technology EIS Fund": V, "Downing Ventures": V, "Ananda Impact Ventures": V,
+          "Stellar Ventures": V, "MHS Capital": V, "Siemens Venture Capital": C, "Rho Ventures": V, "Real Ventures": V,
+          "Golden Ventures": V, "Two Bear Capital": V, "Big Pi Ventures": V, "Northpond Ventures": V, "Backed VC": V,
+          "ZeePrime Capital": CR, "Pfizer Ventures": C, "Denali Growth Partners": G, "Taiwania Capital": V,
+          "JME Venture Capital": V, "Clave Capital": V, "Bethnal Green Ventures": A, "Energy Impact Partners": V,
+          "Bonfire Ventures": V, "Industry Ventures": V, "Green D Ventures": V, "Sinovation Ventures": V,
+          "Capstone Capital": V, "Lingfeng Capital": V, "Stony Creek Capital": V, "Chengwei Capital": V, "Huami": C,
+          "SK hynix": C, "Dimension Capital": V, "Thrive Capital": V, "Argon Ventures": V, "Lowercarbon Capital": V,
+          "Julian Capital": V, "Future Labs Capital": V, "1517 Fund": V, "Angel Squad": "angel", "Infinite Capital": V,
+          "Road Capital": V, "Curve Labs": CR, "Cavalry Ventures": V, "Fuel Capital": V, "Firestreak Partners": V,
+          "Digitalis Ventures": V, "Vaal Partners": V, "Avego": V, "Sands Capital": G, "Draper VC": V,
+          "European Space Agency": GG, "Innovate UK": GG, "National Science Foundation": GG,
+          "National Science Foundation (SBIR)": GG, "U.S. Department of Energy (SBIR)": GG, "National Institutes of Health (NIBIB)": GG,
+          "National Institute of Mental Health (SBIR)": GG, "National Institute on Aging (NIH SBIR)": GG, "NASA (SBIR)": GG,
+          "U.S. Space Force (SBIR)": GG, "European Union": GG, "Federal Ministry for Economic Affairs and Energy (ZIM)": GG,
+          "BAB - Die Foerderbank fuer Bremen und Bremerhaven": P, "Chan Zuckerberg Initiative": PH,
+          "Alfred P. Sloan Foundation": PH, "Shuttleworth Foundation": PH, "Knight Foundation": PH,
+          "Python Software Foundation": PH, "National Geographic": PH, "Nature Publishing Group": C,
+          "Genesis crowdfunding backers": CF, "Librem 13/15 crowdfunding backers": CF, "Librem 5 crowdfunding backers": CF,
+          "StartEngine backers": CF, "Kickstarter backers": CF, "Crowd Supply backers": CF, "Community investors": CF})
+
 
 def main():
     with open("data/investor_types.csv", "w", newline="") as f:

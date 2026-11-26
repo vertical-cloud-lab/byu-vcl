@@ -134,6 +134,15 @@ def main():
               "led": lead_c[n], "examples": ", ".join(sorted(ex_e[n])[:8])} for n in names[:40]]
     open(os.path.join(T, "top_early.md"), "w").write(md_table(erows, ["investor", "type", "early_rounds", "led", "examples"],
                                                               ["Funder", "Type", "Early rounds joined", "Of which led", "Ventures"]))
+    # investors that state an open-source thesis, in their own words (program pass p4), with their count here
+    trows = []
+    for r in sorted(inv, key=lambda r: -int(r["ventures"])):
+        if r.get("stated_open_source_thesis"):
+            q = r["stated_open_source_thesis"].strip().strip('"').strip("“”")
+            trows.append({"investor": r["investor"], "quote": f"“{q}” ([source]({r['thesis_source']}))",
+                          "ventures": r["ventures"]})
+    open(os.path.join(T, "thesis.md"), "w").write(md_table(trows, ["investor", "quote", "ventures"],
+                                                           ["Investor", "In their words", "Ventures here (U1–U4)"]))
     # corporate groups: distinct ventures across a parent's arms (e.g. Alphabet = GV, CapitalG, Gradient, Google)
     grp = collections.defaultdict(set)
     gmembers = collections.defaultdict(set)
