@@ -128,7 +128,12 @@ def title_frame(t: float) -> np.ndarray:
     St.dim(fr, 0.28)
     k = St.window(t, 0.2, 8.0, 0.8)
     im, d = St.layer()
-    d.text((W / 2, px(400)), TITLE, font=St.font(64, bold=True), fill=St.INK, anchor="mm")
+    if ROUND3:
+        d.text((W / 2, px(330)), "A simulated year of alloy discovery", font=St.font(64, bold=True), fill=St.INK,
+               anchor="mm")
+        d.text((W / 2, px(408)), "in an automated lab", font=St.font(64, bold=True), fill=St.INK, anchor="mm")
+    else:
+        d.text((W / 2, px(400)), TITLE, font=St.font(64, bold=True), fill=St.INK, anchor="mm")
     d.text((W / 2, px(480)), SUBTITLE, font=St.font(34), fill=St.INK2, anchor="mm")
     y = px(580)
     for c in D.CAMPAIGNS:
@@ -517,7 +522,8 @@ def counters_panel(t_h: float) -> Image.Image:
     w, h = px(450), px(150)
     im, d = St.layer(w, h)
     d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(12), fill=St.SURF + (int(255 * St.PANEL_A),))
-    d.text((px(16), px(10)), "so far: alloys designed / made / tested", font=St.font(16), fill=St.INK2)
+    d.text((px(16), px(10)), ("simulated so far" if ROUND3 else "so far") + ": alloys designed / made / tested",
+           font=St.font(16), fill=St.INK2)
     y = px(36)
     tg = S("B")["target"]
     for c in D.CAMPAIGNS:
@@ -662,8 +668,9 @@ def replay_frame(t: float) -> np.ndarray:
         if k_in < 1 and pov is not tl.pov[0]:
             St.dim(fr, 0.35 + 0.65 * k_in)
         mode_txt = None
+        ref = _ref_name("flaime_al", pov["design"]) if ROUND3 else None
         card = pov_card(t_h, sp, f"FLAIME alloy #{pov['design']}: {WHAT_WORDS.get(pov['what'], pov['what'])}",
-                        lab[0].upper() + lab[1:])
+                        (f"The reference alloy {ref}, made first. " if ref else "") + lab[0].upper() + lab[1:])
     else:
         i = tl.phase(t)
         fr = _phase_picture(i, t, t_h, sp)
@@ -679,7 +686,8 @@ def replay_frame(t: float) -> np.ndarray:
         nf = {c: R.wip(t_h, c) for c in D.CAMPAIGNS}
         mode_txt = (f"{scale}: {nf['flaime_al']} FLAIME and {nf['onr_cu']} ONR alloys in progress",
                     "station cameras, lit while a campaign runs there" if PHASES[i][1] == "grid" else
-                    "the 3-D lab moved by the event log: trays to the openings, units to the docks"
+                    ("the 3-D lab moved by the simulated event log: trays to the openings, units to the docks"
+                     if ROUND3 else "the 3-D lab moved by the event log: trays to the openings, units to the docks")
                     if PHASES[i][1] == "3d" else "the whole lab: a beacon lights while a station runs")
     # ------------------------------------------------------------------ overlays
     if mode_txt is None:
@@ -715,7 +723,7 @@ def replay_frame(t: float) -> np.ndarray:
     St.paste(fr, S("plots").draw(t_h), px(1296), px(640), k_right)
     if NARRATE and ROUND3:                         # DAL's audit (PR 293): which seed this is, all the way through
         b = seed_badge()
-        St.paste(fr, b, px(866), px(1072) - b.height)
+        St.paste(fr, b, px(866), px(1076) - b.height)  # under the moves panel (866, 900, 420 x 104)
     elif NARRATE:                                  # DAL's audit (PR 293 §4): say which seed this is, all the way
         St.paste(fr, seed_badge(), px(866), px(1014))
     dag = S("dag")
@@ -726,6 +734,27 @@ def replay_frame(t: float) -> np.ndarray:
 
 
 _BADGE: dict = {}
+_REFN: dict = {}
+
+
+def _ref_name(camp: str, design) -> str | None:
+    """The reference alloy a design is, if it is one (twin.spaces.REFERENCE, within 0.06 wt% on every element, as
+    twin.bench3 marks them), else None."""
+    key = (camp, str(design))
+    if key not in _REFN:
+        name = None
+        try:
+            sys.path.insert(0, str(D.HERE))
+            from twin import spaces as SP
+            comp = S("R").designs[camp].get(str(design), {})
+            for nm, w in SP.REFERENCE[camp].items():
+                if all(abs(comp.get(e, 0.0) - w.get(e, 0.0)) < 0.06 for e in SP.SPACES[camp].elements):
+                    name = nm
+                    break
+        except Exception:                               # noqa: BLE001
+            pass
+        _REFN[key] = name
+    return _REFN[key]
 
 
 def seed_badge() -> Image.Image:
@@ -759,10 +788,10 @@ def seed_words3() -> str:
     from . import numbers3 as N3
     rep = N3.numbers()["replay"]
     al, cu = rep["flaime_al"]["T2"], rep["onr_cu"]["T1"]
-    pol = D.POLICY_LABEL.get(rep["policy"], rep["policy"])
+    pol = {"bofn3": "time-aware BOFN", "pkgfn3": "time-aware pKGFN"}.get(rep["policy"], rep["policy"])
     out = f"Seed {rep['seed']} of {rep['n']}, {pol}. "
     if al["day"] is not None and al["median"] is not None:
-        out += (f"Aluminium: the median seed (halfway target on day {al['day']:.0f}; median {al['median']:.0f}). "
+        out += (f"Aluminium: the median seed (halfway target on day {al['day']:.0f}). "
                 if abs(al["day"] - al["median"]) < 0.5 else
                 f"Aluminium: halfway target on day {al['day']:.0f} (median {al['median']:.0f}). ")
     if cu["day"] is None:
@@ -774,11 +803,11 @@ def seed_words3() -> str:
 
 
 def _seed_badge3() -> Image.Image:
-    f = St.font(14)
+    f = St.font(13.5)
     lines = St.wrap(seed_words3(), f, px(404))[:4]
     w, h = px(420), px(12) + px(19) * len(lines)
     im, d = St.layer(w, h)
-    d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(8), fill=St.SURF + (int(255 * St.PANEL_A),))
+    d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(8), fill=St.SURF + (242,))
     for i, ln in enumerate(lines):
         d.text((px(10), px(6) + i * px(19)), ln, font=f, fill=St.INK2)
     return im
