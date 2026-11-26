@@ -1,2 +1,5 @@
 key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
 astral-sh,Astral,U1,seed,Seed,2023-04,4000000,,Guillermo Rauch (person) | Solomon Hykes (person) | David Cramer (person) | Wes McKinney (person) | Nick Schrock (person),https://astral.sh/blog/announcing-astral-the-company-behind-ruff,company,adds to existing round; angels named in company post
+determined-ai,Determined AI,U3,venture_unspecified,Total raised before acquisition,2021-06,13000000,,CRV,https://siliconangle.com/2021/06/21/hpe-acquires-determined-ai-boost-supercomputer-ai-server-businesses/,news,adds to existing round
+enterprisedb,EnterpriseDB (EDB),U3,growth,Acquired by Great Hill Partners,2019,,Great Hill Partners,,https://en.wikipedia.org/wiki/EnterpriseDB,wikipedia,purchase; amount not given
+enterprisedb,EnterpriseDB (EDB),U3,growth,Majority growth investment,2022-06,,Bain Capital,Great Hill Partners,https://en.wikipedia.org/wiki/EnterpriseDB,wikipedia,Bain Capital Private Equity majority stake; Great Hill remains significant shareholder

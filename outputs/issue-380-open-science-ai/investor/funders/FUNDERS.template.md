@@ -328,9 +328,16 @@ audited ventures are now covered better than the rest.
    point to. For each round they recorded the lead and the other named investors, with a source URL. Where nothing
    was disclosed they recorded "none found". Once the search budget was spent, they searched with
    `scripts/find_pages.py`, the same open APIs.
-5. **Deepening passes.** Then {{deepen_passes}} deepening passes went back to the {{deepened}} well-funded ventures whose history came
-   back thin. They added rounds from company newsrooms, Wikipedia's cited articles, SEC prospectuses and archived
-   press releases.
+5. **Deepening passes.** Then {{deepen_passes}} deepening passes went back to {{deepened}} ventures whose history
+   came back thin:
+   - well-funded ventures with few named funders
+   - U1 companies where part 2 had found funding and this list had none
+   - startups that Runa lists as funded
+   - "none found" results the researchers themselves doubted
+
+   They added rounds from company newsrooms, Wikipedia's cited articles, SEC prospectuses and archived press
+   releases. Late passes found little that was new, a sign that these sources were exhausted.
+   - A separate check confirmed 24 investor–venture links from investors' own portfolio pages; it rejected 2.
 6. **Program passes.** Four passes listed the programs that fund open source and open science outside equity
    rounds: foundations, governments and public investors, corporate funds, crypto, accelerators and crowdfunding.
    They also recorded investors that state an open-source thesis, in their own words.
