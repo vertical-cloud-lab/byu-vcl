@@ -36,7 +36,7 @@ T = {
  "DCVC": V, "DTCP": V, "Eight Roads": V, "Flex Capital": V, "Frontline Ventures": V, "Gaingels": V, "IDTheory": V,
  "January Capital": V, "Kima Ventures": V, "La Famiglia": V, "Long Journey Ventures": V, "Morgenthaler Ventures": V,
  "Norwest Venture Partners": V, "Preston-Werner Ventures": V, "Root Ventures": V, "S28 Capital": V, "Scale Venture Partners": V,
- "Shine Capital": V, "Sierra Ventures": V, "Slow Ventures": V, "Susa Ventures": V, "Translink Capital": V, "Uncork Capital": V,
+ "Shine Capital": V, "Sierra Ventures": V, "Slow Ventures": V, "Susa Ventures": V, "TransLink Capital": V, "Uncork Capital": V,
  "Visionaries Club": V, "ZhenFund": V, "Qiming": V, "HongShan (formerly Sequoia China)": V, "JAFCO": V, "Pioneer Fund": V,
  "Initialized Capital": V, "Boldstart Ventures": V, "Essence VC": V, "Work-Bench": V, "Basis Set Ventures": V,
  "Two Sigma Ventures": V, "Point Nine": V, "Atomico": V, "Earlybird": V, "Speedinvest": V, "Northzone": V, "Partech": V,
@@ -75,7 +75,7 @@ T = {
  # corporate and strategic
  "NVIDIA (incl. NVentures)": C, "Intel Capital": C, "Salesforce Ventures": C, "Samsung": C, "M12": C,
  "Qualcomm Ventures": C, "Cisco Investments": C, "GV": C, "CapitalG": C, "Gradient Ventures": C, "Alibaba": C,
- "Alibaba Cloud": C, "Tencent": C, "SAP Ventures": C, "Amazon": C, "Dell Technologies Capital": C, "AMD": C,
+ "Alibaba Cloud": C, "Tencent": C, "Amazon": C, "Dell Technologies Capital": C, "AMD": C,
  "Google": C, "IBM": C, "Robert Bosch Venture Capital": C, "Databricks Ventures": C, "Digital Science": C,
  "Red Hat": C, "Arm": C, "Comcast Ventures": C, "Fujitsu": C, "GitHub": C, "KDDI": C, "LG Electronics": C,
  "MongoDB Ventures": C, "Mozilla Ventures": C, "ServiceNow": C, "VMware": C, "Aramco Ventures (incl. Prosperity7)": C,
@@ -117,7 +117,7 @@ T.update({
  "Evantic": V, "F-Prime": V, "Factorial": V, "Fifty Years": V, "Firestreak": V, "Floodgate": V, "Founder Collective": V,
  "Founder's Co-op": V, "Freestyle": V, "Fundomo": V, "GP Bullhound": V, "GRC SinoGreen": V, "Global Brain": V,
  "Innovation Nest": V, "Innovo": V, "Inovo": V, "Irregular Expression": V, "Irregular Expressions": V, "Kaya": V,
- "LDVP": V, "Maverick Silicon": V, "Monashees": V, "Monolith Management": V, "Moonfire": V, "OATV": V,
+ "LDV Partners": V, "Legend Capital": V, "Wells Fargo": B, "Maverick Silicon": V, "Monashees": V, "Monolith Management": V, "Moonfire": V, "OATV": V,
  "Ora Global": V, "Palm Drive": V, "Parable": V, "Playground Global": V, "Protagonist": V, "Rebel": V,
  "Rebellion": V, "Red Swan": V, "Rheingau Founders": V, "SBI Group": V, "Senovo": V, "Seven Seven Six": V,
  "Sevin Rosen Funds": V, "Skycatcher": V, "Supernode Global": V, "Techammer": V, "Techstart": V, "TenOneTen": V,
@@ -216,6 +216,37 @@ T.update({
  "University of Wisconsin-Madison": O, "Warsaw University of Technology": O, "PTB": O, "QUEST/Uni Hannover": O,
 })
 
+# 2026-11-26, after Edison's review: the names still typed only by heuristic or left unclassified, typed from the
+# round they appear in (data/deals.csv). Names we could not identify stay "other" rather than being guessed.
+T.update({
+ "Devonshire Investors": G, "American Express": B, "NatWest": B, "PayPal": B, "WR Hambrecht + Co": G,
+ "Riverview Group": G, "Northern Trust": G,
+ # Techaro (Anubis): corporate sponsors listed by Edison's audit; money given as sponsorship, not investment
+ "Anexia": CO, "Databento": CO, "Gitea": CO, "Prolocation": CO, "Qwertiko": CO, "Raptor Computing Systems": CO,
+ "Spur Intelligence": CO, "Synthient": CO, "Terminal Trove": CO, "Uberspace": CO, "Unipromos": CO, "Uvensys": CO,
+ "Weblate": CO, "Wenet": CO, "Wildbase": CO, "canine.tools": CO, "embeDD": CO,
+ "Endurance": CO, "Second Dinner": CO, "SGI": C, "UMAX": C, "Hyundai CRADLE": C, "Western Digital Capital": C,
+ "Buildspace": A, "Pioneer": A, "FONGIT": A,
+ "DFG": CR, "Bankless Ventures": CR,
+ "DGF": V, "Jingfu Assets": V, "Juniper": V, "Rewired": V, "Start Garden": V, "Step Function": V, "Top Harvest": V,
+ "Walden International": V, "Republic Capital": V, "Valor Capital Group": V, "Fidelity Ventures": V,
+ "ICEX": GG, "Israel Innovation Authority": GG, "SBRI Healthcare": GG, "UAE AI and Robotics Award for Good": GG,
+ "Vinnova": GG, "West of England Combined Authority": GG, "European Regional Development Fund": GG,
+ "Business Development Bank of Canada": P, "National AI Industry Investment Fund": P,
+ "Government of Canada (via Canada Development Investment Corporation)": P,
+ "Office of Strategic Capital (US Department of War)": P,
+ # not identified from the pages read
+ "Asynch Media": O, "BGZ": O, "Breakers": O, "CCI Group": O, "ESOP": O, "Gandyr Group": O, "GravityRock": O,
+ "Hanover": O, "IAG": O, "Latitude": O, "Mesh": O, "PTV": O, "Play Time": O, "Runway": O, "SCM Advisors": O,
+ "SGPA": O, "Sequel": O, "TRGC": O, "Universe Software": O, "Victoria": O, "ZMT": O,
+ "DCBuilder": "angel",  # pseudonymous crypto researcher (dcbuilder.eth), a person
+})
+
+# funders with two or more ventures that the name rules had typed as venture firms; each checked by hand
+T.update({"Fathom Capital": V, "Rebel Fund": V, "The House Fund": V, "TLV Partners": V, "Grand Ventures": V, "Zeev Ventures": V, "Eniac Ventures": V, "GL Ventures": V, "Liquid 2 Ventures": V, "Wayfinder Ventures": V, "Webb Investment Network": V, "Zetta Venture Partners": V, "Highland Capital Partners": V, "Nauta Capital": V, "August Capital": V, "Cortical Ventures": V, "Cota Capital": V, "Engineering Capital": V, "First Spark Ventures": V, "Flybridge Capital Partners": V, "Qumra Capital": V, "Race Capital": V, "1984 Ventures": V, "Abstraction Capital": V, "Acequia Capital": V, "Angel Invest": V, "Anthos Capital": V, "Basecase Capital": V, "Bold Capital Partners": V, "DIG Ventures": V, "Day One Ventures": V, "Epic Ventures": V, "Exceptional Capital": V, "Future Capital": V, "GTMFund": V, "Glynn Capital": V, "Gravity Fund": V, "Hustle Fund": V, "Motier Ventures": V, "Outset Capital": V, "Radar Partners": V, "Rain Capital": V, "Ratio Ventures": V, "Rogue Capital": V, "S Ventures": V, "ScaleX Ventures": V, "Shunwei Capital": V, "Sound Ventures": V, "Tekedia Capital": V, "Triangle Peak Partners": V, "Trustbridge Partners": V, "European Commission": GG})
+
+T.update({"SAGE Publishing": C, "O'Reilly Media": C, "Lux Capital (as named for DeepSeek)": V})  # PeerJ (pass h01)
+
 
 def main():
     with open("data/investor_types.csv", "w", newline="") as f:
@@ -223,13 +254,15 @@ def main():
         for k, t in sorted(T.items(), key=lambda x: x[0].lower()):
             grp = {"GV": "Alphabet", "CapitalG": "Alphabet", "Gradient Ventures": "Alphabet", "Google": "Alphabet",
                    "M12": "Microsoft", "GitHub": "Microsoft", "Microsoft": "Microsoft", "Alibaba Cloud": "Alibaba",
-                   "Alibaba": "Alibaba", "Ant Group": "Alibaba", "SAP Ventures": "SAP", "Samsung Electronics": "Samsung",
+                   "Alibaba": "Alibaba", "Ant Group": "Alibaba", "Samsung Electronics": "Samsung",
                    "Kima Ventures": "Xavier Niel", "Prosperity7 Ventures": "Saudi Aramco",
                    "Aramco Ventures (incl. Prosperity7)": "Saudi Aramco", "Aramco Ventures": "Saudi Aramco",
                    "Amazon": "Amazon", "NVIDIA (incl. NVentures)": "NVIDIA", "Intel Capital": "Intel",
                    "Salesforce Ventures": "Salesforce", "Samsung": "Samsung", "Tencent": "Tencent",
                    "Citi": "Citigroup", "Citi Ventures": "Citigroup", "Goldman Sachs": "Goldman Sachs",
-                   "Dell Technologies Capital": "Dell", "VMware": "Dell"}.get(k, "")
+                   "Dell Technologies Capital": "Dell", "VMware": "Dell",
+                   "Hyundai CRADLE": "Hyundai", "Western Digital Capital": "Western Digital",
+                   "O'Reilly Media": "O'Reilly", "O'Reilly AlphaTech Ventures": "O'Reilly"}.get(k, "")
             w.writerow([k, t, grp, "", ""])
     print(len(T), "types written")
 

@@ -1,0 +1,7 @@
+duplicate_key,canonical_key,reason
+u4-embedchain,mem0ai,Embedchain became Mem0; same repository (mem0ai/mem0) and investors
+u4-danswer,onyx-dot-app,Danswer renamed Onyx
+u4-pynecone,reflex-dev,Pynecone renamed Reflex
+u4-comfyui,Comfy-Org,ComfyUI is Comfy Org's project
+u4-apitable,u4-aitable,AITable and APITable are one project (same repository)
+u4-zinc,u4-zincsearch,Zinc and ZincSearch are one project (same repository)

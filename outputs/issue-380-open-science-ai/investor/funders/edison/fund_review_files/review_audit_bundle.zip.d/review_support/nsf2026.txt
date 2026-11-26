@@ -1,0 +1,167 @@
+SBIR/STTR Eligibility and Requirements | NSF SBIR
+
+![U.S. flag](https://seedfund.nsf.gov/assets/img/us_flag_small.png) An official website of the United States government.
+
+For proposal preparation and submission instructions, [click here](https://seedfund.nsf.gov/solicitation-proposal/).
+
+*[![NSF SBIR](https://seedfund.nsf.gov/assets/img/logo/logo-2c-sbir-sttr.svg)](https://seedfund.nsf.gov/ "Home")*
+
+* + [Our Program](https://seedfund.nsf.gov/our-program/)
+  + [Contact](https://seedfund.nsf.gov/contact/)
+  + [Critical Information](https://seedfund.nsf.gov/critical-information/)
+* + [Get Started](https://seedfund.nsf.gov/apply/get-started/)
+  + [Project Pitch Information](https://seedfund.nsf.gov/apply/project-pitch-information/)
+  + [Full Proposal](https://seedfund.nsf.gov/apply/full-proposal/)
+  + [Proposal Review & Decision](https://seedfund.nsf.gov/apply/review-decision/)
+* + [Funding Topic Areas](https://seedfund.nsf.gov/what-we-fund/)
+  + [Award Search](https://seedfund.nsf.gov/awardees/history/)
+* + [Solicitation Information](https://seedfund.nsf.gov/solicitation-proposal/)
+  + [For Phase I Awardees](https://seedfund.nsf.gov/resources/awardees/phase-1/)
+  + [For Phase II Awardees](https://seedfund.nsf.gov/resources/awardees/phase-2/)
+  + [For Reviewers](https://seedfund.nsf.gov/resources/review/)
+  + [Events](https://seedfund.nsf.gov/events/)
+  + [Additional Resources](https://seedfund.nsf.gov/resources/additional-resources/)
+* + [Featured Companies](https://seedfund.nsf.gov/showcase/featured-companies)
+  + [In Partnership with CEP](https://seedfund.nsf.gov/showcase/cep)
+  + [In the News](https://seedfund.nsf.gov/showcase/news)
+  + [Showcase](https://seedfund.nsf.gov/showcase/)
+*
+
+* [Merit Review](https://seedfund.nsf.gov/solicitation-merit-review/)
+* [Post Award](https://seedfund.nsf.gov/solicitation-post-award/)
+* [Eligibility](https://seedfund.nsf.gov/solicitation-eligibility/)
+* [Preparation and Submission](https://seedfund.nsf.gov/solicitation-proposal/)
+* [Cover Sheet](https://seedfund.nsf.gov/solicitation-proposal/#cover-sheet)
+* [SBIR/STTR Questionnaire](https://seedfund.nsf.gov/solicitation-proposal/#questionnaire)
+* [SBIR/STTR Certification Questions](https://seedfund.nsf.gov/solicitation-proposal/#certification)
+* [Project Summary](https://seedfund.nsf.gov/solicitation-proposal/#project-summary)
+* [Project Description](https://seedfund.nsf.gov/solicitation-project-description/)
+* [Phase I](https://seedfund.nsf.gov/solicitation-project-description/#pd-phasei)
+* [Phase II](https://seedfund.nsf.gov/solicitation-project-description/#pd-phaseii)
+* [Fast-Track](https://seedfund.nsf.gov/solicitation-project-description/#pd-fasttrack)
+* [References Cited](https://seedfund.nsf.gov/solicitation-proposal/#references-cited)
+* [Budget(s)](https://seedfund.nsf.gov/solicitation-budget/)
+* [Phase I](https://seedfund.nsf.gov/solicitation-budget/#b-phasei)
+* [Phase II](https://seedfund.nsf.gov/solicitation-budget/#b-phaseii)
+* [Fast-Track](https://seedfund.nsf.gov/solicitation-budget/#b-fasttrack)
+* [Budget Justification(s)](https://seedfund.nsf.gov/solicitation-proposal/#budgets)
+* [Facilities, Equipment and Other Resources](https://seedfund.nsf.gov/solicitation-proposal/#feo)
+* [Senior/Key Personnel Documents](https://seedfund.nsf.gov/solicitation-proposal/#documents)
+* [Data Management and Sharing Plan](https://seedfund.nsf.gov/solicitation-proposal/#dms-plan)
+* [Mentoring Plan](https://seedfund.nsf.gov/solicitation-proposal/#mentoring-plan)
+* [Other Supplementary Documents](https://seedfund.nsf.gov/solicitation-documents/)
+* [Phase I](https://seedfund.nsf.gov/solicitation-documents/#osd-phasei)
+* [Phase II](https://seedfund.nsf.gov/solicitation-documents/#osd-phaseii)
+* [Fast-Track](https://seedfund.nsf.gov/solicitation-documents/#osd-fasttrack)
+* [Single Copy Documents](https://seedfund.nsf.gov/solicitation-proposal/#sc-documents)
+
+# Basic Eligibility Requirements
+
+## A. General Requirements
+
+The following requirements apply to all programs: Phase I, Phase II and Fast-Track.
+
+* **Size limit:** The proposing small business must have fewer than **500 employees**, including affiliate entities. See this [compliance guide](https://www.sba.gov/document/support-affiliation-guide-size-standards) for more information about affiliation.
+* **Ownership:** The proposing small business must be at least **51% owned and controlled** by U.S. citizens or permanent residents, or by small businesses which are themselves owned and controlled by U.S. citizens or permanent residents, or by a combination of these. See this [eligibility guide](https://www.sbir.gov/sites/default/files/elig_size_compliance_guide.pdf) for more information.
+* **Primary employment of the Principal Investigator:** The project’s Principal Investigator (PI) must be more than 50% employed by the small business for the duration of the SBIR/STTR project. Primary employment is not required at the time of full proposal submission. NSF considers a full-time work week to be 40 hours and considers employment elsewhere of more than 19.6 hours per week to be in conflict with this requirement.
+* **Location of work:** All research and development must be performed within the **United States**. All budgeted project personnel must have a legal right to work in the United States, whether via citizenship, permanent residency or an appropriate visa.
+* **[Malign foreign talent programs](https://www.nsf.gov/research-security#mftrp)** No Senior/Key personnel on an SBIR/STTR proposal may be a party to a malign foreign talent recruitment program.
+* **Excluded entities:** The SBIR/STTR programs do not support businesses that are majority-owned by one or more venture capital operating companies, hedge funds or private equity firms, and NSF does not fund not-for-profit entities.
+
+## B. Registration Requirements
+
+To submit a full proposal, your company must have **active** registrations in:
+
+* **[System for Award Management](https://sam.gov/SAM/) (SAM)** (including a valid unique entity identifier (UEI)).
+* **[Research.gov](https://www.research.gov/research-web/)** (The U.S. National Science Foundation’s portal): See [About Account Management](https://www.research.gov/research-web/content/aboutacctmgmt) for more information.
+* **[SBA Company Registry](https://app.www.sbir.gov/company-registration/overview)**.
+
+You must register your company name, physical address and all other identifying information identically in each of these systems.
+
+Active SAM and Research.gov registrations are needed to submit a proposal to NSF. Note that these registrations are free, as are all other processes related to applying for NSF SBIR/STTR support. In addition, an active SAM registration is needed to receive an NSF award.
+
+None of the above registrations are required to submit a Project Pitch.
+
+## C. Limits on Multiple Submissions
+
+NSF enforces limits that restrict small businesses from having multiple parallel projects under review by the program at the same time.
+
+* A small business can only have one project under consideration by the SBIR/STTR Phase I or Fast-Track program at a time. Any organization with a proposal or Project Pitch under review must wait for a decision from NSF on that action before submitting a new Project Pitch. An organization with an invited Project Pitch for Phase I or Fast-Track may not submit a new Project Pitch until the invited Project Pitch has expired or until a full proposal for Phase I or Fast-Track is submitted and a decision on that proposal is communicated by NSF.
+* A project with an active Phase I, Phase II or Fast-Track award from NSF is permitted to consider the submission of a new Project Pitch for a new Phase I or Fast-Track award, but it is strongly recommended to consult with its managing program director prior to submitting a new project for consideration.
+* A given small business is permitted a maximum of two Project Pitch submissions in any 12-month window. A given small business is permitted a maximum of two full proposal submissions in any fiscal year.
+* Phase I and Fast-Track proposals that have been returned without review may be resubmitted using the same invited Project Pitch invitation (if the Project Pitch is still valid at the time of proposal resubmission).
+* When applying the above rules, two companies that are considered affiliates will be treated as a single company. See more details on affiliation in the SBA’s [compliance guide.](https://www.sba.gov/document/support-affiliation-guide-size-standards)
+* Previously declined proposals require a new Project Pitch be submitted and invited. A company must wait for a response before submitting another. Any small business that has received an invitation to submit a full proposal must wait for a resolution of the full proposal before submitting a new or revised Project Pitch. If invited to submit a proposal, the proposals must represent a significant revision to the previously submitted SBIR/STTR Phase I proposal and must include a Resubmission Change Description describing these revisions, in the Other Supplementary Documents section.
+
+## D. SBIR- and STTR-Specific Requirements
+
+* **SBIR proposals**
+    + SBIR Phase I proposals require that at least 2/3 of the total budget be allocated to the small business. The balance of the budget may be outsourced to subawards, consultants or a combination thereof.
+    + The Phase I component of SBIR Fast-Track proposals must allocate at least 2/3 of the total budget to the small business. The balance of the budget may be outsourced to subawards, consultants or a combination thereof.
+    + SBIR Phase II proposals require that at least half of the total budget be allocated to the small business. The balance of the budget may be outsourced to subawards, consultants or a combination thereof.
+    + The Phase II component of SBIR Fast-Track proposals must allocate at least half of the total budget to the small business. The balance of the budget may be outsourced to subawards, consultants or a combination thereof.
+* **STTR proposals**
+    + STTR proposals require that the applicant small business issue a subaward for a partnership with a not-for-profit research institution. See the [SBIR/STTR Policy Directive](https://www.sbir.gov/about/policies) for more information on what makes an institution eligible as an STTR research institution.
+    + STTR proposals require that the PI be employed by the small business for the duration of the award. Also, STTR proposals are required to have one co-PI who leads the subaward effort at the partner research institution.
+    + STTR proposals (whether Phase I, Phase II or Fast-Track) require that at least 40% of the total budget be allocated to the small business and at least 30% of the total budget be allocated to the partner research institution. The balance of the budget may be outsourced to subawards, consultants or a combination thereof.
+* **Conversions between proposal types**
+    + NSF reserves the right to issue an SBIR award based on an STTR proposal provided the underlying project meets the requirements of the SBIR program (and vice versa).
+    + Phase I awardees are entitled to submit either an SBIR or STTR Phase II proposal, regardless of whether their Phase I award was SBIR or STTR.
+
+## E. Performance Benchmarks for Prior Awardees
+
+Before full proposal submission, small businesses that have already received multiple prior SBIR/STTR awards should ensure they are following the program-wide benchmarks as described at <https://www.sbir.gov/performance-benchmarks>.
+
+## F. Specific Requirements for Each Phase
+
+* **SBIR/STTR Phase I**
+    + **Project Pitch invitation:** Phase I proposers **must** submit a Project Pitch and receive an official invitation email from an NSF program director before they can submit a full proposal.
+* **SBIR/STTR Phase II**
+    + **Mandatory lineage:** Only small businesses that have received an NSF SBIR/STTR Phase I award are eligible to apply.
+    + **Timing:** Phase II proposals may be submitted to any open Phase II opportunity between six and 24 months after the start date of the preceding Phase I project.
+    + **Phase I status:** To be eligible to submit a Phase II proposal, the preceding Phase I award must not have been terminated by NSF based on potential misconduct or other potential violations of law or NSF policy. The preceding Phase I award does not need to be completed before a Phase II proposal is submitted.
+* **Fast-Track Pilot**
+    + **Project Pitch invitation:** Proposers **must** submit a Project Pitch and receive an official invitation email from an NSF program director before they can submit a full proposal. The Fast-Track Project Pitch is used to evaluate three additional Fast-Track eligibility criteria, as noted below.
+    + **NSF research lineage:** The innovation in a Fast-Track effort must be derived from a **prior NSF research award** (such as the Faculty Early Career Development program, Partnerships for Innovation, or Graduate Research Fellowship Program) that was active within the five years preceding the submission of the Project Pitch. The Fast-Track Project Pitch and proposal must include the NSF award number and title of the research award (the lineage award) that is relied upon to meet the lineage requirement. The Fast-Track proposal’s PI or at least one Senior/Key Personnel must have been supported as an internal team member under the lineage award. Internal team members include any PI, Co-PI or Senior/Key personnel on budget lines A or B of the lineage award or subawards listed on the lineage award, but do NOT include consultants or contractors/subcontractors supported via the lineage award or subawards. Prior SBIR/STTR or NSF Innovation Corps (I-Corps™) awards do NOT count toward this specific lineage requirement. In the case of research lineage based on center/institute awards or other awards that are not focused on a single research project, a letter from the center/institute director or equivalent person must be provided describing the specific research that is claimed as lineage for the Fast-Track project and explaining how this research forms a technical basis for the proposed Fast-Track project.
+    + **Customer discovery:** At least one Senior/Key Personnel must have completed a **formal customer discovery program** (such as the [NSF I-Corps program](https://new.nsf.gov/funding/initiatives/i-corps/about-teams) or another structured, mentored customer discovery program that involves at least 30 or so customer/end user interviews) within the past two years. The focus of the customer discovery must be directly relevant to the commercial focus of the Fast-Track effort.
+    + **Complete team:** The company must have a complete Phase I Fast-Track team in place at the time of proposal submission — i.e., there must be no “to-be-hired” company personnel in budget lines A or B of the Phase I component of the project; all company personnel in budget lines A and B must have confirmed their availability for the proposed Fast-Track project per the proposed Phase I component budget; the proposing team must possess the required expertise to perform the proposed Fast-Track project; and the team members must dedicate sufficient time to the technical tasks to achieve the objectives of the Fast-Track project.
+
+[Return to top](https://seedfund.nsf.gov/solicitation-eligibility/#)
+
+## America's Seed Fund
+
+[National Science Foundation](https://www.nsf.gov/)  
+401 Dulany Street  
+Alexandria, VA 22314 USA
+
+Tel: [(703) 292-8050](tel:703-292-8050)  
+FIRS: [(800) 877-8339](tel:800-877-8339) | TDD: [(800) 281-8749](tel:800-281-8749)
+
+[For information on waste, fraud and abuse](https://www.sbir.gov/fraud-waste-abuse)
+
+Looking for U.S. government information and services? [**Visit USA.gov**](https://www.usa.gov/)
+
+* [About](https://seedfund.nsf.gov/about/)
+* [What we fund](https://seedfund.nsf.gov/what-we-fund/)
+* [Award Search](https://seedfund.nsf.gov/awardees/history/)
+* [Apply for funding](https://seedfund.nsf.gov/apply/)
+* [Showcase](https://seedfund.nsf.gov/showcase/)
+* [For Press](https://seedfund.nsf.gov/press/)
+* [Contact us](https://seedfund.nsf.gov/contact/)
+
+* [About NSF](https://www.nsf.gov/about/)
+* [Privacy](https://www.nsf.gov/policies/privacy.jsp)
+* [FOIA](https://www.nsf.gov/policies/foia.jsp)
+* [Accessibility](https://www.nsf.gov/policies/accessibility)
+* [No FEAR Act](https://www.nsf.gov/od/oecr/no-fear-act)
+* [Vulnerability disclosure](https://www.nsf.gov/policies/vulnerability-disclosure)
+* [Inspector General](https://www.nsf.gov/oig/)
+* [SBIR.gov](https://www.sbir.gov/)
+
+### Stay in touch
+
+Subscribe to our email list to be notified of upcoming deadlines.  
+[Join our email list](https://public.govdelivery.com/accounts/USNSF/signup/42396)
+
+[➤](https://seedfund.nsf.gov/solicitation-eligibility/# "Back to top")
+

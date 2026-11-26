@@ -15,8 +15,13 @@ def main():
     out = {}
     for u in ("U1", "U2", "U3", "U4", "U1-U3"):
         us = ("U1", "U2", "U3") if u == "U1-U3" else (u,)
-        vs = [v for v in V if v["universe"] in us]
+        vs = [v for v in V if v["universe"] in us and v.get("in_scope", "yes") == "yes"]
         res = [v for v in vs if v["researched"] == "1"]
+        cd = [d for d in Dl if d["universe"] in us and d["counted"] == "yes"]
+        rid = collections.defaultdict(list)
+        for d in cd:
+            rid[d["round_id"]].append(d)
+        real = {r: g for r, g in rid.items() if not all("adds to existing round" in x["note"].lower() for x in g)}
         ls = [l for l in L if l["universe"] in us]
         invs = {l["investor"] for l in ls}
         cnt = collections.Counter(l["investor"] for l in ls)
@@ -24,7 +29,12 @@ def main():
                   "with_funding": sum(v["funding_found"] == "yes" for v in res),
                   "none_found": sum(v["funding_found"] == "none_found" for v in res),
                   "bootstrapped_stated": sum(v["funding_found"] == "bootstrapped_stated" for v in res),
-                  "rounds": sum(1 for d in Dl if d["universe"] in us and "adds to existing round" not in d["note"].lower()),
+                  "out_of_scope": sum(1 for v in V if v["universe"] in us and v.get("in_scope", "yes") != "yes"),
+                  "rounds": len(real),
+                  "rounds_named": sum(1 for g in real.values() if any(x["lead"] or x["investors"] for x in g)),
+                  "round_records": sum(1 for d in cd if "adds to existing round" not in d["note"].lower()),
+                  "rows_all": sum(1 for d in Dl if d["universe"] in us),
+                  "rows_not_counted": sum(1 for d in Dl if d["universe"] in us and d["counted"] != "yes"),
                   "links": len(ls), "funders": len(invs),
                   "funders_1": sum(1 for c in cnt.values() if c == 1), "funders_3plus": sum(1 for c in cnt.values() if c >= 3),
                   "funders_5plus": sum(1 for c in cnt.values() if c >= 5), "funders_10plus": sum(1 for c in cnt.values() if c >= 10),
@@ -45,7 +55,7 @@ def main():
     out["era_links"] = {e: sum(c.values()) for e, c in era.items()}
     sk = collections.Counter(d["source_kind"] for d in Dl)
     out["rounds_by_source_kind"] = dict(sk)
-    sc = rd("source_checks_deals.csv")
+    sc = [r for r in rd("source_checks_deals.csv") if r.get("counted", "yes") == "yes"]  # names in counted rounds only
     if sc:
         av = [r for r in sc if r["check"] != "unavailable"]
         f = sum(r["check"] == "found" for r in av); m = sum(r["check"].startswith("in page markup") for r in av)
@@ -109,6 +119,46 @@ def main():
     out["deepened"] = len(xs)
     out["deepen_passes"] = len(glob.glob(os.path.join(D, "deal_passes", "input_x*.csv")))
     out["deal_passes"] = len([f for f in glob.glob(os.path.join(D, "deal_passes", "input_*.csv")) if "input_x" not in f])
+    # rows kept in deals.csv but not counted, by reason (all groups)
+    nc = collections.Counter()
+    for d in Dl:
+        c = d["counted"]
+        if c == "yes":
+            continue
+        nc["exit" if "exit" in c else "out_of_scope" if "out of scope" in c else "duplicate" if "duplicate" in c else
+           "unconfirmed" if "unconfirmed" in c else "ownership_transfer" if "ownership transfer" in c else "other"] += 1
+    out["not_counted"] = dict(nc)
+    out["not_counted_total"] = sum(nc.values())
+    out["out_of_scope_ventures"] = sum(1 for v in V if v.get("in_scope", "yes") != "yes")
+    out["out_of_scope_by_reason"] = dict(collections.Counter(
+        "duplicate" if "duplicate of" in v["in_scope"] else "nonprofit" if "nonprofit" in v["in_scope"] else "not_open"
+        for v in V if v.get("in_scope", "yes") != "yes"))
+    # sensitivity: only ventures whose main product passed the openness test outright (open_ok = yes), U1-U3
+    okv = {v["key"] for v in V if v["open_ok"] == "yes"}
+    c_open = collections.Counter(l["investor"] for l in core if l["key"] in okv)
+    t_open = [n for n, _ in c_open.most_common(20)]
+    out["sensitivity_open_yes"] = {
+        "ventures_partial_with_links": len({l["key"] for l in core if l["key"] not in okv}),
+        "ventures_yes_with_links": len({l["key"] for l in core if l["key"] in okv}),
+        "links": sum(c_open.values()), "top20_overlap": len(set(t_all) & set(t_open)),
+        "dropped_from_top20": [n for n in t_all if n not in t_open],
+        "entered_top20": [n for n in t_open if n not in t_all]}
+    # source-quality sensitivity across all four groups
+    out["sensitivity_db_all"] = {"links": len(L), "funders": len({l["investor"] for l in L}),
+                                 "links_strict": sum(1 for l in L if l["database_only"] != "1"),
+                                 "funders_strict": len({l["investor"] for l in L if l["database_only"] != "1"})}
+    out["thesis_kinds"] = dict(collections.Counter(r["thesis_kind"] for r in I if r.get("stated_open_source_thesis")))
+    # U2 by funder type: links and ventures (for the crowdfunding wording)
+    u2 = [l for l in L if l["universe"] == "U2"]
+    out["u2_types"] = {t: {"links": sum(1 for l in u2 if tmap.get(l["investor"]) == t),
+                           "ventures": len({l["key"] for l in u2 if tmap.get(l["investor"]) == t})}
+                       for t in ("venture_firm", "corporate_venture", "crowdfunding", "angel", "government_grant",
+                                 "philanthropy", "accelerator", "public_investor")}
+    out["u2_kickstarter"] = len({l["key"] for l in u2 if l["investor"] == "Kickstarter backers"})
+    # early rounds (pre-seed to Series A): records and distinct ventures for YC, for the wording of that table
+    early = {"pre_seed", "seed", "angel", "accelerator", "series_a"}
+    yc = [d for d in Dl if d["counted"] == "yes" and d["type"] in early and "Y Combinator" in (d["lead"] + " | " + d["investors"]).split(" | ")]
+    out["yc_early"] = {"records": len(yc), "ventures": len({d["key"] for d in yc})}
     json.dump(out, open(os.path.join(D, "funders_numbers.json"), "w"), indent=1)
     print(json.dumps({k: out[k] for k in ("U1-U3", "U1", "U2", "U3", "U4")}, indent=0)[:3500])
 

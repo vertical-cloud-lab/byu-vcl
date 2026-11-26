@@ -1,9 +1,9 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
 | Y Combinator | accelerator / studio | 52 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Anomaly, Apify, BerriAI, Better Auth … |
-| Sequoia Capital | venture firm | 15 | 10 | Deno Land Inc., Docker Inc., FastAPI Labs, LangChain, Odoo SA, Streamlit, Temporal Technologies, Warp … |
 | Accel | venture firm | 14 | 10 | Astral, Laravel, Polars B.V., Sentry, Strapi, Supabase, Tailscale, Vercel … |
 | Andreessen Horowitz | venture firm | 14 | 9 | Anyscale, Astral, Black Forest Labs, Isovalent, Linera, Meteor Software, Nrwl, Temporal Technologies … |
+| Sequoia Capital | venture firm | 14 | 9 | Deno Land Inc., Docker Inc., FastAPI Labs, LangChain, Streamlit, Temporal Technologies, Warp, Zed Industries … |
 | Guillermo Rauch | person (angel) | 13 | 0 | Astral, Chroma, Comfy Org, Dub Technologies, Mastra, Meilisearch, Oven, Prisma Data, Inc. … |
 | Coatue | growth, crossover or PE | 11 | 3 | ClickHouse, Stability AI, Supabase, Cockroach Labs, Docker Inc., GitLab Inc., Grafana Labs, HTTPie … |
 | Nexus Venture Partners | venture firm | 11 | 9 | Fingerprint, Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve, Orkes, TileDB, Inc. … |

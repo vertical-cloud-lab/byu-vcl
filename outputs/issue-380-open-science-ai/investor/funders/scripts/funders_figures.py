@@ -17,7 +17,7 @@ GROUPS = [  # (label, types, colour) in fixed slot order
     ("Growth, crossover, PE or state", {"growth_pe_hedge", "public_investor", "bank_or_debt"}, "#f2a600"),
     ("Person (angel)", {"angel"}, "#ee7fac"),
     ("Grant, crowd or crypto", {"philanthropy", "government_grant", "crowdfunding", "crypto_fund_or_dao"}, "#008a17"),
-    ("Unclassified", {"unclassified", "other"}, "#8a8985"),
+    ("Other or unclassified", {"unclassified", "other"}, "#8a8985"),
 ]
 UNI = [("U1", "U1: companies behind\nthe most-starred projects"), ("U2", "U2: open hardware,\nscience and lab"),
        ("U3", "U3: notable COSS and\nopen-weight AI"), ("U4", "U4: young open-source\nstartups (YC, ROSS)")]
@@ -33,6 +33,8 @@ def group_of(t):
 def main():
     inv = {r["investor"]: r for r in csv.DictReader(open("data/investors.csv"))}
     links = list(csv.DictReader(open("data/investor_links.csv")))
+    n_core = sum(1 for v in csv.DictReader(open("data/ventures.csv"))
+                 if v["universe"] in ("U1", "U2", "U3") and v["researched"] == "1" and v.get("in_scope", "yes") == "yes")
     os.makedirs("figures", exist_ok=True)
     # 1. top funders across U1-U3
     cnt, led = collections.Counter(), collections.Counter()
@@ -54,7 +56,8 @@ def main():
     ax.grid(axis="y", visible=False)
     ax.set_xlim(0, max(c for _, c in top) * 1.22)
     ax.set_title("Who has backed the most open-source-minded ventures", pad=26)
-    ax.text(0, 1.01, "Funders named in public announcements, filings and company pages; 640 hand-researched ventures",
+    ax.text(0, 1.01, "Funders named in public announcements, filings and company pages; "
+            f"{n_core} hand-researched ventures",
             transform=ax.transAxes, fontsize=9, color=MUTED)
     handles = [plt.Rectangle((0, 0), 1, 1, color=col) for lab, _, col in GROUPS if lab in used]
     ax.legend(handles, [lab for lab, _, _ in GROUPS if lab in used], loc="lower right", fontsize=9)

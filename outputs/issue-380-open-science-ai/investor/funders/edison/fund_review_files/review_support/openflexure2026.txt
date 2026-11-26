@@ -1,0 +1,148 @@
+Funding - The OpenFlexure Project
+
+[![OpenFlexure logo](https://openflexure.org/assets/design-assets/logo-openflexure-project.svg "width=200 | height=50")](https://openflexure.org/)
+
+* **Learn, Build, Use**
+
+    [search\_check **Overview** Introduction to the OpenFlexure Microscope](https://openflexure.org/projects/microscope/)  [document\_search **Documentation** Complete guides and technical documentation](https://openflexure.org/projects/microscope/documentation)  [build **Build the microscope** Step-by-step assembly instructions](https://openflexure.org/projects/microscope/build)  [install\_desktop **Install the software** Set up and configure microscope software](https://openflexure.org/projects/microscope/install)  [biotech **Use your microscope** Operating guides and best practices](https://openflexure.org/projects/microscope/control)  [support **Get help** Support resources and troubleshooting](https://openflexure.org/about/need-help)
+
+    **Extend**
+
+    [deployed\_code **Programming Clients** APIs and libraries for custom applications](https://openflexure.org/software/programming-clients)  [extension **Software extensions** Add-ons and plugins for enhanced functionality](https://openflexure.org/software/extensions)
+
+    **Other Projects**
+
+    [biotech **Block stage** Precision sample positioning system](https://openflexure.org/projects/blockstage/)  [biotech **Delta stage** Alternative stage design for specific applications](https://openflexure.org/projects/deltastage/)
+
+    **Buy**
+
+    [sell **Vendors** Suppliers and parts vendors](https://openflexure.org/about/vendors)
+
+* **Meet, Discuss, Learn**
+
+    [forum **Forum** Community discussions and Q&A](https://openflexure.discourse.group/)  [event\_available **Events** Workshops, conferences and meetups](https://openflexure.org/community/events)  [rule **Code of Conduct** Community guidelines and standards](https://openflexure.org/conduct)
+
+    **Support**
+
+    [cognition **Contribute** Help develop and improve OpenFlexure](https://openflexure.org/contribute)  [volunteer\_activism **Donate** Support the project financially](https://openflexure.org/community/donate)  [sell **Merchandise** Purchase official merchandise](https://openflexure.myspreadshop.co.uk/)
+
+    **Share**
+
+    [auto\_stories **User Stories** Real-world applications and success stories](https://openflexure.org/community/user-stories)  [photo\_library **Gallery** Images and videos from the community](https://openflexure.org/gallery)  [favorite **Social media** Follow us on social platforms](https://openflexure.org/about/funding#)
+
+* **Overview**
+
+    [search\_check **About the project** Our mission to make microscopy accessible](https://openflexure.org/about/)  [diversity\_3 **Team** Meet the people behind OpenFlexure](https://openflexure.org/about/people)  [credit\_card\_heart **Funding** Grant support and financial backing](https://openflexure.org/about/funding)  [biotech **Medical devices** Regulatory compliance and medical use](https://openflexure.org/about/medical-devices)
+
+    **News, Media and Publications**
+
+    [book\_5 **Media Coverage** News articles and external media featuring OpenFlexure](https://openflexure.org/about/media)  [article **Publications** Research papers and academic articles](https://openflexure.org/about/publications)  [deskphone **Media contact** Press inquiries and media resources](https://openflexure.org/about/media-contact)
+
+    **Contact**
+
+    [chat\_bubble **Contact** Get in touch with the team](https://openflexure.org/contact)  [support **Get help** Technical support and assistance](https://openflexure.org/about/need-help)
+
+* [![GitLab logo](https://openflexure.org/assets/design-assets/gitlab-logo-500-no-margin.svg "width=30 | height=30")](https://gitlab.com/openflexure)
+* [forum Forum](https://openflexure.discourse.group/)
+* [flag Get Started](https://openflexure.org/projects/microscope/documentation)
+
+credit\_card\_heart 
+
+# Funding
+
+OpenFlexure Project Funding and Support
+
+The OpenFlexure project has been made possible by the generous support of funders who believe in open, accessible scientific hardware.
+
+money\_bag 
+
+## Funding
+
+Supporting OpenFlexure
+
+To continue developing open-source microscopy, supporting global collaborations, and enabling local manufacturing, we rely on ongoing financial support from individuals, institutions, and sponsors.
+
+What your support enables:
+
+* Ongoing development of open-source microscopy hardware and software
+* Long-term maintenance, documentation, and quality assurance
+* Global research collaborations and pilot deployments
+* Training, workshops, and knowledge sharing within the community
+* Pathways for local manufacturing and regulatory exploration
+
+[volunteer\_activism Support](https://openflexure.org/community/donate)  [chat\_bubble Contact](https://openflexure.org/contact)
+
+![Image of a 3d printer printing the openflexure microscope](https://openflexure.org/assets/images/hero/desktop/jpeg/2024-rwanda-1.jpg "width=465 | height=350")
+
+![openflexure emblem](https://openflexure.org/assets/design-assets/logo_openflexure_emblem.svg "width=80 | height=50")
+
+crowdsource 
+
+## Funders
+
+Our Funders:
+
+![Royal Commission logo](https://openflexure.org/assets/about/funders/RoyalCommission.png "width=180 | height=180")
+
+![EPSRC logo](https://openflexure.org/assets/about/funders/EPSRC.svg "width=180 | height=180")
+
+![GCRF logo](https://openflexure.org/assets/about/funders/GCRF.png "width=180 | height=180")
+
+![UK Research and Innovation logo](https://openflexure.org/assets/about/funders/UKRI.png "width=180 | height=180")
+
+![The Royal Society logo](https://openflexure.org/assets/about/funders/RoyalSociety.svg "width=180 | height=180")
+
+![National Institute for Health and Care Research logo](https://openflexure.org/assets/about/funders/NIHR.png "width=180 | height=180")
+
+![Medical Research Council logo](https://openflexure.org/assets/about/funders/MRC.png "width=180 | height=180")
+
+![Pro Squared logo](https://openflexure.org/assets/about/funders/ProSquared.png "width=180 | height=180")
+
+![University of Cambridge logo](https://openflexure.org/assets/about/funders/Cambridge.svg "width=180 | height=180")
+
+![University of Bath logo](https://openflexure.org/assets/about/funders/Bath.svg "width=180 | height=180")
+
+![University of Glasgow logo](https://openflexure.org/assets/about/funders/UoG.png "width=180 | height=180")
+
+![MIT Solve logo](https://openflexure.org/assets/about/funders/MIT_Solve.png "width=180 | height=180")
+
+![J & J Foundation logo](https://openflexure.org/assets/about/funders/J&J.png "width=180 | height=180")
+
+![College of American Pathologists logo](https://openflexure.org/assets/about/funders/capf_logo.svg "width=180 | height=180")
+
+![NLNet Foundation logo](https://openflexure.org/assets/about/funders/NLNet.svg "width=180 | height=180")
+
+![Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) logo](https://openflexure.org/assets/about/funders/GIZ.svg "width=180 | height=180")
+
+* UKRI:
+    + [EP/T029064/1](https://gtr.ukri.org/projects?ref=EP%2FT029064%2F1) “Digital diagnostics for smarter healthcare in Africa”
+* EPSRC:
+    + [EP/P029426/1](https://gtr.ukri.org/projects?ref=EP%2FP029426%2F1) “Open Lab Instrumentation”
+    + [EP/R013969/1](https://gtr.ukri.org/projects?ref=EP%2FR013969%2F1) “Detailed malaria diagnostics with intelligent microscopy” (Co-funded by NIHR)
+    + [EP/R011443/1](https://gtr.ukri.org/projects?ref=EP%2FR011443%2F1) “Parallel live microscopy for high-throughput malaria research”
+* The Royal Society:
+    + URF\\R1\\180153
+    + RGF\\EA\\181034
+    + PEF\\R3\\3026
+* [ProSquared Network](https://prosquared.org/2024/09/09/new-round-of-funded-projects/)
+* MRC Confidence in Concept award
+* The Royal Commission for the Exhibition of 1851
+* The University of Cambridge
+* The University of Bath
+* The University of Glasgow
+* College of American Pathologists (CAP) Foundation - 2023 Global Pathology Development Award
+* [MIT Solve - Global Health Equity Challenge Solvers 2024](https://solve.mit.edu/solutions/87685)
+* Johnson & Johnson Foundation - Health Equity Innovation Award 2024
+
+[![OpenFlexure logo](https://openflexure.org/assets/design-assets/logo-openflexure-project-wo.svg "width=240 | height=60")](https://openflexure.org/about/funding#)
+
+**The OpenFlexure project** aims to make high precision mechanical positioning available to anyone with a 3D printer - for use in microscopes, micromanipulators, and more.
+
+[![Discourse logo](https://openflexure.org/assets/design-assets/discourse-simple.svg "width=40 | height=40") ## Forum Ask questions, share projects, and discuss OpenFlexure with the community.](https://openflexure.discourse.group/)   [![GitLab logo](https://openflexure.org/assets/design-assets/gitlab-logo-500-no-margin.svg "width=40 | height=40") ## GitLab Repo Source code, hardware designs, and issue tracking for OpenFlexure projects.](https://gitlab.com/openflexure)   [![LinkedIn logo](https://openflexure.org/assets/design-assets/icon-linkedin-share.svg "width=40 | height=40") ## LinkedIn News, collaborations, and updates from OpenFlexure.](https://www.linkedin.com/company/openflexure/?originalSubdomain=uk)   [![YouTube Logo](https://openflexure.org/assets/design-assets/icons8-youtube.svg "width=40 | height=40") ## YouTube Introductory and demonstration videos about the OpenFlexure project.](https://www.youtube.com/channel/UClJ-12v-FIiNgiU29Y0MmjA)   [![BlueSky logo](https://openflexure.org/assets/design-assets/bluesky-logo.svg "width=40 | height=40") ## Bluesky Project updates, announcements, and highlights from the OpenFlexure team.](https://bsky.app/profile/openflexure.bsky.social)   [chat\_bubble ## Contact Contact the OpenFlexure team for media enquiries, partnerships, or collaboration.](https://openflexure.org/contact)
+
+2026 © OpenFlexure. Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+[Privacy Policy](https://openflexure.org/about/privacy)[Code of Conduct](https://openflexure.org/conduct)
+
+![icon loading](https://openflexure.org/assets/design-assets/icon-loading-white.svg "width=140 | height=140")
+

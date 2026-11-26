@@ -19,6 +19,8 @@ def lookup(path):
         except (KeyError, IndexError, ValueError):
             MISSING.append(path)
             return "?"
+    if isinstance(cur, list) and all(isinstance(x, str) for x in cur):
+        return ", ".join(cur) if cur else "none"
     if isinstance(cur, float):
         return f"{100 * cur:.0f}%" if cur <= 1 else f"{cur:,.0f}"
     if isinstance(cur, int):

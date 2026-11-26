@@ -1,6 +1,6 @@
 {
- "ventures": 1042,
- "researched": 1042,
+ "ventures": 1043,
+ "researched": 1043,
  "by_universe": {
   "U1": {
    "ventures": 387,
@@ -10,17 +10,17 @@
    "bootstrapped_stated": 9
   },
   "U2": {
-   "ventures": 97,
-   "researched": 97,
-   "with_funding": 72,
+   "ventures": 98,
+   "researched": 98,
+   "with_funding": 73,
    "none_found": 22,
    "bootstrapped_stated": 3
   },
   "U3": {
    "ventures": 156,
    "researched": 156,
-   "with_funding": 146,
-   "none_found": 10,
+   "with_funding": 147,
+   "none_found": 9,
    "bootstrapped_stated": 0
   },
   "U4": {
@@ -31,30 +31,31 @@
    "bootstrapped_stated": 2
   }
  },
- "rounds": 1802,
- "investor_venture_links": 4190,
- "investors": 2029,
+ "round_records_counted": 1736,
+ "rounds": 1715,
+ "investor_venture_links": 4072,
+ "investors": 1977,
  "investors_by_type": {
-  "accelerator": 19,
-  "venture_firm": 967,
-  "growth_pe_hedge": 113,
-  "corporate_venture": 192,
-  "angel": 508,
-  "crowdfunding": 15,
-  "public_investor": 29,
-  "crypto_fund_or_dao": 43,
-  "bank_or_debt": 11,
-  "philanthropy": 16,
-  "other": 12,
-  "government_grant": 34,
-  "unclassified": 70
+  "accelerator": 22,
+  "venture_firm": 958,
+  "growth_pe_hedge": 107,
+  "corporate_venture": 189,
+  "angel": 504,
+  "crowdfunding": 14,
+  "public_investor": 30,
+  "crypto_fund_or_dao": 45,
+  "bank_or_debt": 13,
+  "philanthropy": 11,
+  "other": 33,
+  "government_grant": 32,
+  "company": 19
  },
- "investors_2plus": 526,
- "investors_5plus": 140,
+ "investors_2plus": 510,
+ "investors_5plus": 127,
  "rounds_by_source_kind": {
   "news": 816,
-  "company": 413,
-  "investor": 33,
+  "company": 417,
+  "investor": 36,
   "wikipedia": 118,
   "other": 422,
   "filing": 32,

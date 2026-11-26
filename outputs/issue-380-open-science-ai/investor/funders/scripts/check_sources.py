@@ -108,7 +108,8 @@ def main():
                     if len(key) >= 5 and key in _raw.get(d["source"], ""):
                         chk = "in page markup (logo or link)"
                 rows.append({"key": d["key"], "venture": d["venture"], "date": d["date"], "type": d["type"], "role": role,
-                             "name": nm, "source": d["source"], "source_kind": d["source_kind"], "check": chk})
+                             "name": nm, "source": d["source"], "source_kind": d["source_kind"], "check": chk,
+                             "counted": d.get("counted", "")})
     with open("data/source_checks_deals.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
     av = [r for r in rows if r["check"] != "unavailable"]

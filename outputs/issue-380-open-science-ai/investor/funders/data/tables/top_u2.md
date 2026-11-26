@@ -23,6 +23,7 @@
 | Counterpart Ventures | venture firm | 2 | 0 | Oxide Computer Company, Particle |
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |
+| Gordon and Betty Moore Foundation | philanthropy | 2 | 0 | Anaconda, Inc., JuliaHub |
 | Greycroft | venture firm | 2 | 0 | Boltz PBC, Inventables |
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
 | Innovate UK | government grant | 2 | 0 | Augmented Instruments, Open Bionics |
@@ -30,6 +31,7 @@
 | Lux Capital | venture firm | 2 | 2 | Authorea, EvolutionaryScale |
 | Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
+| O'Reilly AlphaTech Ventures | venture firm | 2 | 1 | 3D Robotics, PeerJ |
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |
 | SOSV | accelerator / studio | 2 | 0 | Crowd Supply, Particle |
 | Seed Club Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Molecule |

@@ -1,7 +1,7 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 53 | 0 | 0.security, Activeloop, Acyclic Labs, Aden, Aedilic, Airtrain AI, Anomaly, AnythingLLM … |
-| NVIDIA (incl. NVentures) | corporate / strategic | 11 | 1 | AI21 Labs, Cohere, EvolutionaryScale, Hugging Face, Lightning AI, Mistral AI, Prime Intellect, RadixArk … |
+| Y Combinator | accelerator / studio | 52 | 0 | 0.security, Activeloop, Acyclic Labs, Aden, Aedilic, Anomaly, AnythingLLM, Archangel Health … |
+| NVIDIA (incl. NVentures) | corporate / strategic | 11 | 0 | AI21 Labs, Cohere, EvolutionaryScale, Hugging Face, Lightning AI, Mistral AI, Prime Intellect, RadixArk … |
 | Samsung | corporate / strategic | 8 | 3 | AI21 Labs, Mistral AI, Tenstorrent, Activeloop, Arcee AI, H Company, Liquid AI, Traceloop |
 | SV Angel | venture firm | 7 | 0 | Anomaly, Hugging Face, Lightning AI, Mistral AI, Nomic AI, OpenCode, Together AI |
 | Sequoia Capital | venture firm | 6 | 2 | Reflection AI, Zed Industries, Chai Discovery, Hugging Face, Replicate, Sesame |
@@ -22,7 +22,7 @@
 | Comcast Ventures | corporate / strategic | 3 | 1 | Neural Magic, AI21 Labs, Resemble AI |
 | Craft Ventures | venture firm | 3 | 1 | Roboflow, CrewAI, Resemble AI |
 | Felicis | venture firm | 3 | 2 | Entalpic, Zylon, Flower |
-| Google | corporate / strategic | 3 | 1 | AI21 Labs, Hugging Face, Resemble AI |
+| Google | corporate / strategic | 3 | 0 | AI21 Labs, Hugging Face, Resemble AI |
 | HongShan (formerly Sequoia China) | venture firm | 3 | 2 | Mindverse, Moonshot AI, MiniMax |
 | Intel Capital | corporate / strategic | 3 | 0 | AI21 Labs, Hugging Face, Prime Intellect |
 | Lux Capital | venture firm | 3 | 3 | EvolutionaryScale, Hugging Face, Together AI |

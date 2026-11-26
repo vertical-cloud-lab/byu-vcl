@@ -1,0 +1,544 @@
+line,section,entity,measure,reported,recomputed,status
+80,U1-U3 leaders,Y Combinator,ventures,60,60.0,verified
+80,U1-U3 leaders,Y Combinator,led_ventures,3,3.0,verified
+81,U1-U3 leaders,Accel,ventures,32,32.0,verified
+81,U1-U3 leaders,Accel,led_ventures,19,19.0,verified
+82,U1-U3 leaders,Andreessen Horowitz,ventures,32,32.0,verified
+82,U1-U3 leaders,Andreessen Horowitz,led_ventures,19,19.0,verified
+83,U1-U3 leaders,Sequoia Capital,ventures,30,30.0,verified
+83,U1-U3 leaders,Sequoia Capital,led_ventures,17,17.0,verified
+84,U1-U3 leaders,Lightspeed Venture Partners,ventures,24,24.0,verified
+84,U1-U3 leaders,Lightspeed Venture Partners,led_ventures,13,13.0,verified
+85,U1-U3 leaders,New Enterprise Associates,ventures,24,24.0,verified
+85,U1-U3 leaders,New Enterprise Associates,led_ventures,17,17.0,verified
+86,U1-U3 leaders,Insight Partners,ventures,23,23.0,verified
+86,U1-U3 leaders,Insight Partners,led_ventures,19,19.0,verified
+87,U1-U3 leaders,Intel Capital,ventures,23,23.0,verified
+87,U1-U3 leaders,Intel Capital,led_ventures,5,5.0,verified
+88,U1-U3 leaders,Index Ventures,ventures,22,22.0,verified
+88,U1-U3 leaders,Index Ventures,led_ventures,12,12.0,verified
+89,U1-U3 leaders,Coatue,ventures,21,21.0,verified
+89,U1-U3 leaders,Coatue,led_ventures,9,9.0,verified
+90,U1-U3 leaders,NVIDIA (incl. NVentures),ventures,21,21.0,verified
+90,U1-U3 leaders,NVIDIA (incl. NVentures),led_ventures,2,2.0,verified
+91,U1-U3 leaders,Benchmark,ventures,20,20.0,verified
+91,U1-U3 leaders,Benchmark,led_ventures,13,13.0,verified
+92,U1-U3 leaders,Redpoint Ventures,ventures,19,19.0,verified
+92,U1-U3 leaders,Redpoint Ventures,led_ventures,10,10.0,verified
+93,U1-U3 leaders,GV,ventures,18,18.0,verified
+93,U1-U3 leaders,GV,led_ventures,9,9.0,verified
+94,U1-U3 leaders,SV Angel,ventures,18,18.0,verified
+94,U1-U3 leaders,SV Angel,led_ventures,0,0.0,verified
+95,U1-U3 leaders,Bessemer Venture Partners,ventures,17,17.0,verified
+95,U1-U3 leaders,Bessemer Venture Partners,led_ventures,10,10.0,verified
+96,U1-U3 leaders,Salesforce Ventures,ventures,16,16.0,verified
+96,U1-U3 leaders,Salesforce Ventures,led_ventures,4,4.0,verified
+97,U1-U3 leaders,Battery Ventures,ventures,15,15.0,verified
+97,U1-U3 leaders,Battery Ventures,led_ventures,4,4.0,verified
+98,U1-U3 leaders,CRV,ventures,15,15.0,verified
+98,U1-U3 leaders,CRV,led_ventures,8,8.0,verified
+99,U1-U3 leaders,General Catalyst,ventures,15,15.0,verified
+99,U1-U3 leaders,General Catalyst,led_ventures,8,8.0,verified
+100,U1-U3 leaders,Kickstarter backers,ventures,15,15.0,verified
+100,U1-U3 leaders,Kickstarter backers,led_ventures,0,0.0,verified
+101,U1-U3 leaders,Goldman Sachs,ventures,14,14.0,verified
+101,U1-U3 leaders,Goldman Sachs,led_ventures,6,6.0,verified
+102,U1-U3 leaders,Guillermo Rauch,ventures,14,14.0,verified
+102,U1-U3 leaders,Guillermo Rauch,led_ventures,0,0.0,verified
+103,U1-U3 leaders,Kleiner Perkins,ventures,14,14.0,verified
+103,U1-U3 leaders,Kleiner Perkins,led_ventures,9,9.0,verified
+104,U1-U3 leaders,Nexus Venture Partners,ventures,14,14.0,verified
+104,U1-U3 leaders,Nexus Venture Partners,led_ventures,9,9.0,verified
+105,U1-U3 leaders,OSS Capital,ventures,14,14.0,verified
+105,U1-U3 leaders,OSS Capital,led_ventures,7,7.0,verified
+106,U1-U3 leaders,Samsung,ventures,14,14.0,verified
+106,U1-U3 leaders,Samsung,led_ventures,4,4.0,verified
+107,U1-U3 leaders,Amplify Partners,ventures,13,13.0,verified
+107,U1-U3 leaders,Amplify Partners,led_ventures,3,3.0,verified
+108,U1-U3 leaders,Sapphire Ventures,ventures,13,13.0,verified
+108,U1-U3 leaders,Sapphire Ventures,led_ventures,4,4.0,verified
+109,U1-U3 leaders,Tiger Global,ventures,13,13.0,verified
+109,U1-U3 leaders,Tiger Global,led_ventures,7,7.0,verified
+110,U1-U3 leaders,True Ventures,ventures,13,13.0,verified
+110,U1-U3 leaders,True Ventures,led_ventures,5,5.0,verified
+111,U1-U3 leaders,Bain Capital Ventures,ventures,11,11.0,verified
+111,U1-U3 leaders,Bain Capital Ventures,led_ventures,7,7.0,verified
+112,U1-U3 leaders,Dell Technologies Capital,ventures,10,10.0,verified
+112,U1-U3 leaders,Dell Technologies Capital,led_ventures,4,4.0,verified
+113,U1-U3 leaders,GGV Capital (US arm now Notable Capital),ventures,10,10.0,verified
+113,U1-U3 leaders,GGV Capital (US arm now Notable Capital),led_ventures,5,5.0,verified
+114,U1-U3 leaders,GIC,ventures,10,10.0,verified
+114,U1-U3 leaders,GIC,led_ventures,3,3.0,verified
+115,U1-U3 leaders,Greylock Partners,ventures,10,10.0,verified
+115,U1-U3 leaders,Greylock Partners,led_ventures,4,4.0,verified
+116,U1-U3 leaders,Khosla Ventures,ventures,10,10.0,verified
+116,U1-U3 leaders,Khosla Ventures,led_ventures,8,8.0,verified
+117,U1-U3 leaders,Lux Capital,ventures,10,10.0,verified
+117,U1-U3 leaders,Lux Capital,led_ventures,7,7.0,verified
+118,U1-U3 leaders,Altimeter Capital,ventures,9,9.0,verified
+118,U1-U3 leaders,Altimeter Capital,led_ventures,6,6.0,verified
+119,U1-U3 leaders,Craft Ventures,ventures,9,9.0,verified
+119,U1-U3 leaders,Craft Ventures,led_ventures,4,4.0,verified
+128,U4 leaders,Y Combinator,ventures,253,253.0,verified
+128,U4 leaders,Y Combinator,led_ventures,1,1.0,verified
+129,U4 leaders,SV Angel,ventures,10,10.0,verified
+129,U4 leaders,SV Angel,led_ventures,1,1.0,verified
+130,U4 leaders,Andreessen Horowitz,ventures,9,9.0,verified
+130,U4 leaders,Andreessen Horowitz,led_ventures,5,5.0,verified
+131,U4 leaders,Pioneer Fund,ventures,9,9.0,verified
+131,U4 leaders,Pioneer Fund,led_ventures,0,0.0,verified
+132,U4 leaders,Gradient Ventures,ventures,8,8.0,verified
+132,U4 leaders,Gradient Ventures,led_ventures,3,3.0,verified
+133,U4 leaders,Kima Ventures,ventures,7,7.0,verified
+133,U4 leaders,Kima Ventures,led_ventures,0,0.0,verified
+134,U4 leaders,Accel,ventures,6,6.0,verified
+134,U4 leaders,Accel,led_ventures,3,3.0,verified
+135,U4 leaders,Guillermo Rauch,ventures,6,6.0,verified
+135,U4 leaders,Guillermo Rauch,led_ventures,0,0.0,verified
+136,U4 leaders,Paul Graham,ventures,6,6.0,verified
+136,U4 leaders,Paul Graham,led_ventures,0,0.0,verified
+137,U4 leaders,Samsung,ventures,6,6.0,verified
+137,U4 leaders,Samsung,led_ventures,0,0.0,verified
+138,U4 leaders,Uncorrelated Ventures,ventures,6,6.0,verified
+138,U4 leaders,Uncorrelated Ventures,led_ventures,1,1.0,verified
+139,U4 leaders,468 Capital,ventures,5,5.0,verified
+139,U4 leaders,468 Capital,led_ventures,2,2.0,verified
+140,U4 leaders,Felicis,ventures,5,5.0,verified
+140,U4 leaders,Felicis,led_ventures,1,1.0,verified
+141,U4 leaders,Paul Copplestone,ventures,5,5.0,verified
+141,U4 leaders,Paul Copplestone,led_ventures,0,0.0,verified
+142,U4 leaders,SignalFire,ventures,5,5.0,verified
+142,U4 leaders,SignalFire,led_ventures,1,1.0,verified
+143,U4 leaders,A Capital,ventures,4,4.0,verified
+143,U4 leaders,A Capital,led_ventures,0,0.0,verified
+144,U4 leaders,Alumni Ventures,ventures,4,4.0,verified
+144,U4 leaders,Alumni Ventures,led_ventures,0,0.0,verified
+145,U4 leaders,Amplify Partners,ventures,4,4.0,verified
+145,U4 leaders,Amplify Partners,led_ventures,2,2.0,verified
+146,U4 leaders,CRV,ventures,4,4.0,verified
+146,U4 leaders,CRV,led_ventures,2,2.0,verified
+147,U4 leaders,Calvin French-Owen,ventures,4,4.0,verified
+147,U4 leaders,Calvin French-Owen,led_ventures,0,0.0,verified
+216,Corporate arms,Intel Capital,ventures,24,24.0,verified
+216,Corporate arms,Intel Capital,led_ventures,6,6.0,verified
+217,Corporate arms,NVIDIA (incl. NVentures),ventures,22,22.0,verified
+217,Corporate arms,NVIDIA (incl. NVentures),led_ventures,2,2.0,verified
+218,Corporate arms,GV,ventures,20,20.0,verified
+218,Corporate arms,GV,led_ventures,11,11.0,verified
+219,Corporate arms,Samsung,ventures,20,20.0,verified
+219,Corporate arms,Samsung,led_ventures,4,4.0,verified
+220,Corporate arms,Salesforce Ventures,ventures,19,19.0,verified
+220,Corporate arms,Salesforce Ventures,led_ventures,4,4.0,verified
+221,Corporate arms,Gradient Ventures,ventures,14,14.0,verified
+221,Corporate arms,Gradient Ventures,led_ventures,7,7.0,verified
+222,Corporate arms,M12,ventures,12,12.0,verified
+222,Corporate arms,M12,led_ventures,4,4.0,verified
+223,Corporate arms,Dell Technologies Capital,ventures,11,11.0,verified
+223,Corporate arms,Dell Technologies Capital,led_ventures,4,4.0,verified
+224,Corporate arms,Databricks Ventures,ventures,9,9.0,verified
+224,Corporate arms,Databricks Ventures,led_ventures,0,0.0,verified
+225,Corporate arms,Aramco Ventures (incl. Prosperity7),ventures,8,8.0,verified
+225,Corporate arms,Aramco Ventures (incl. Prosperity7),led_ventures,5,5.0,verified
+226,Corporate arms,Cisco Investments,ventures,8,8.0,verified
+226,Corporate arms,Cisco Investments,led_ventures,1,1.0,verified
+227,Corporate arms,AMD,ventures,7,7.0,verified
+227,Corporate arms,AMD,led_ventures,1,1.0,verified
+228,Corporate arms,Alibaba,ventures,7,7.0,verified
+228,Corporate arms,Alibaba,led_ventures,5,5.0,verified
+229,Corporate arms,Amazon,ventures,7,7.0,verified
+229,Corporate arms,Amazon,led_ventures,0,0.0,verified
+230,Corporate arms,IBM,ventures,7,7.0,verified
+230,Corporate arms,IBM,led_ventures,1,1.0,verified
+231,Corporate arms,Red Hat,ventures,7,7.0,verified
+231,Corporate arms,Red Hat,led_ventures,1,1.0,verified
+232,Corporate arms,Automattic,ventures,6,6.0,verified
+232,Corporate arms,Automattic,led_ventures,0,0.0,verified
+233,Corporate arms,GitHub,ventures,6,6.0,verified
+233,Corporate arms,GitHub,led_ventures,0,0.0,verified
+234,Corporate arms,Google,ventures,6,6.0,verified
+234,Corporate arms,Google,led_ventures,2,2.0,verified
+235,Corporate arms,Mozilla Ventures,ventures,6,6.0,verified
+235,Corporate arms,Mozilla Ventures,led_ventures,0,0.0,verified
+236,Corporate arms,Qualcomm Ventures,ventures,6,6.0,verified
+236,Corporate arms,Qualcomm Ventures,led_ventures,3,3.0,verified
+237,Corporate arms,Tencent,ventures,6,6.0,verified
+237,Corporate arms,Tencent,led_ventures,2,2.0,verified
+238,Corporate arms,SAP Ventures,ventures,5,5.0,verified
+238,Corporate arms,SAP Ventures,led_ventures,1,1.0,verified
+239,Corporate arms,Atlassian Ventures,ventures,4,4.0,verified
+239,Corporate arms,Atlassian Ventures,led_ventures,0,0.0,verified
+240,Corporate arms,CapitalG,ventures,4,4.0,verified
+240,Corporate arms,CapitalG,led_ventures,2,2.0,verified
+254,Accelerators,Y Combinator,ventures,313,313.0,verified
+254,Accelerators,Y Combinator,led_ventures,4,4.0,verified
+255,Accelerators,Neo,ventures,4,4.0,verified
+255,Accelerators,Neo,led_ventures,1,1.0,verified
+256,Accelerators,Open Core Ventures,ventures,4,4.0,verified
+256,Accelerators,Open Core Ventures,led_ventures,0,0.0,verified
+257,Accelerators,Techstars,ventures,4,4.0,verified
+257,Accelerators,Techstars,led_ventures,0,0.0,verified
+258,Accelerators,SOSV,ventures,3,3.0,verified
+258,Accelerators,SOSV,led_ventures,0,0.0,verified
+259,Accelerators,500 Global,ventures,2,2.0,verified
+259,Accelerators,500 Global,led_ventures,0,0.0,verified
+260,Accelerators,AI Grant,ventures,2,2.0,verified
+260,Accelerators,AI Grant,led_ventures,0,0.0,verified
+261,Accelerators,Antler,ventures,2,2.0,verified
+261,Accelerators,Antler,led_ventures,0,0.0,verified
+262,Accelerators,Expa,ventures,2,2.0,verified
+262,Accelerators,Expa,led_ventures,0,0.0,verified
+263,Accelerators,Plug and Play,ventures,2,2.0,verified
+263,Accelerators,Plug and Play,led_ventures,0,0.0,verified
+264,Accelerators,South Park Commons,ventures,2,2.0,verified
+264,Accelerators,South Park Commons,led_ventures,0,0.0,verified
+265,Accelerators,5G Open Innovation Lab,ventures,1,1.0,verified
+265,Accelerators,5G Open Innovation Lab,led_ventures,0,0.0,verified
+271,Angels,Guillermo Rauch,ventures,20,20.0,verified
+271,Angels,Guillermo Rauch,led_ventures,0,0.0,verified
+272,Angels,David Cramer,ventures,10,10.0,verified
+272,Angels,David Cramer,led_ventures,0,0.0,verified
+273,Angels,Tom Preston-Werner,ventures,10,10.0,verified
+273,Angels,Tom Preston-Werner,led_ventures,1,1.0,verified
+274,Angels,Clem Delangue,ventures,9,9.0,verified
+274,Angels,Clem Delangue,led_ventures,0,0.0,verified
+275,Angels,Nat Friedman,ventures,9,9.0,verified
+275,Angels,Nat Friedman,led_ventures,2,2.0,verified
+276,Angels,Paul Copplestone,ventures,9,9.0,verified
+276,Angels,Paul Copplestone,led_ventures,0,0.0,verified
+277,Angels,Paul Graham,ventures,9,9.0,verified
+277,Angels,Paul Graham,led_ventures,0,0.0,verified
+278,Angels,Elad Gil,ventures,7,7.0,verified
+278,Angels,Elad Gil,led_ventures,1,1.0,verified
+279,Angels,Olivier Pomel,ventures,7,7.0,verified
+279,Angels,Olivier Pomel,led_ventures,0,0.0,verified
+280,Angels,Amjad Masad,ventures,6,6.0,verified
+280,Angels,Amjad Masad,led_ventures,0,0.0,verified
+281,Angels,Balaji Srinivasan,ventures,6,6.0,verified
+281,Angels,Balaji Srinivasan,led_ventures,0,0.0,verified
+282,Angels,Logan Kilpatrick,ventures,6,6.0,verified
+282,Angels,Logan Kilpatrick,led_ventures,0,0.0,verified
+283,Angels,Naval Ravikant,ventures,6,6.0,verified
+283,Angels,Naval Ravikant,led_ventures,0,0.0,verified
+284,Angels,Nicolas Dessaigne,ventures,6,6.0,verified
+284,Angels,Nicolas Dessaigne,led_ventures,0,0.0,verified
+285,Angels,Bob Young,ventures,5,5.0,verified
+285,Angels,Bob Young,led_ventures,0,0.0,verified
+286,Angels,Calvin French-Owen,ventures,5,5.0,verified
+286,Angels,Calvin French-Owen,led_ventures,0,0.0,verified
+287,Angels,Dharmesh Shah,ventures,5,5.0,verified
+287,Angels,Dharmesh Shah,led_ventures,0,0.0,verified
+288,Angels,Jeff Dean,ventures,5,5.0,verified
+288,Angels,Jeff Dean,led_ventures,0,0.0,verified
+289,Angels,Scott Belsky,ventures,5,5.0,verified
+289,Angels,Scott Belsky,led_ventures,0,0.0,verified
+290,Angels,Tristan Handy,ventures,5,5.0,verified
+290,Angels,Tristan Handy,led_ventures,0,0.0,verified
+291,Angels,Daniel Gross,ventures,4,4.0,verified
+291,Angels,Daniel Gross,led_ventures,1,1.0,verified
+292,Angels,Dylan Field,ventures,4,4.0,verified
+292,Angels,Dylan Field,led_ventures,1,1.0,verified
+293,Angels,Eric Schmidt,ventures,4,4.0,verified
+293,Angels,Eric Schmidt,led_ventures,0,0.0,verified
+294,Angels,Gokul Rajaram,ventures,4,4.0,verified
+294,Angels,Gokul Rajaram,led_ventures,0,0.0,verified
+295,Angels,Jack Altman,ventures,4,4.0,verified
+295,Angels,Jack Altman,led_ventures,0,0.0,verified
+296,Angels,Jason Warner,ventures,4,4.0,verified
+296,Angels,Jason Warner,led_ventures,0,0.0,verified
+297,Angels,Paul Buchheit,ventures,4,4.0,verified
+297,Angels,Paul Buchheit,led_ventures,0,0.0,verified
+298,Angels,Solomon Hykes,ventures,4,4.0,verified
+298,Angels,Solomon Hykes,led_ventures,0,0.0,verified
+299,Angels,Thomas Dohmke,ventures,4,4.0,verified
+299,Angels,Thomas Dohmke,led_ventures,0,0.0,verified
+300,Angels,Anthony Casalena,ventures,3,3.0,verified
+300,Angels,Anthony Casalena,led_ventures,0,0.0,verified
+308,Growth and state,Insight Partners,ventures,25,25.0,verified
+308,Growth and state,Insight Partners,led_ventures,21,21.0,verified
+309,Growth and state,Coatue,ventures,22,22.0,verified
+309,Growth and state,Coatue,led_ventures,10,10.0,verified
+310,Growth and state,Tiger Global,ventures,16,16.0,verified
+310,Growth and state,Tiger Global,led_ventures,9,9.0,verified
+311,Growth and state,Goldman Sachs,ventures,14,14.0,verified
+311,Growth and state,Goldman Sachs,led_ventures,6,6.0,verified
+312,Growth and state,Altimeter Capital,ventures,10,10.0,verified
+312,Growth and state,Altimeter Capital,led_ventures,7,7.0,verified
+313,Growth and state,GIC,ventures,10,10.0,verified
+313,Growth and state,GIC,led_ventures,3,3.0,verified
+314,Growth and state,Bpifrance,ventures,8,8.0,verified
+314,Growth and state,Bpifrance,led_ventures,0,0.0,verified
+315,Growth and state,Alkeon Capital,ventures,5,5.0,verified
+315,Growth and state,Alkeon Capital,led_ventures,0,0.0,verified
+316,Growth and state,BlackRock,ventures,5,5.0,verified
+316,Growth and state,BlackRock,led_ventures,0,0.0,verified
+317,Growth and state,In-Q-Tel,ventures,5,5.0,verified
+317,Growth and state,In-Q-Tel,led_ventures,0,0.0,verified
+318,Growth and state,J.P. Morgan,ventures,5,5.0,verified
+318,Growth and state,J.P. Morgan,led_ventures,1,1.0,verified
+319,Growth and state,DFJ Growth,ventures,4,4.0,verified
+319,Growth and state,DFJ Growth,led_ventures,1,1.0,verified
+320,Growth and state,Franklin Templeton,ventures,4,4.0,verified
+320,Growth and state,Franklin Templeton,led_ventures,2,2.0,verified
+321,Growth and state,Hillhouse,ventures,4,4.0,verified
+321,Growth and state,Hillhouse,led_ventures,1,1.0,verified
+322,Growth and state,SoftBank (Vision Fund),ventures,4,4.0,verified
+322,Growth and state,SoftBank (Vision Fund),led_ventures,2,2.0,verified
+323,Growth and state,T. Rowe Price,ventures,4,4.0,verified
+323,Growth and state,T. Rowe Price,led_ventures,1,1.0,verified
+324,Growth and state,Adams Street Partners,ventures,3,3.0,verified
+324,Growth and state,Adams Street Partners,led_ventures,3,3.0,verified
+325,Growth and state,Atreides Management,ventures,3,3.0,verified
+325,Growth and state,Atreides Management,led_ventures,1,1.0,verified
+326,Growth and state,BOND,ventures,3,3.0,verified
+326,Growth and state,BOND,led_ventures,1,1.0,verified
+327,Growth and state,Baillie Gifford,ventures,3,3.0,verified
+327,Growth and state,Baillie Gifford,led_ventures,0,0.0,verified
+333,Early rounds (record counts),Y Combinator,early_events,372,372.0,verified
+333,Early rounds (record counts),Y Combinator,early_leads,2,2.0,verified
+334,Early rounds (record counts),Accel,early_events,30,30.0,verified
+334,Early rounds (record counts),Accel,early_leads,24,24.0,verified
+335,Early rounds (record counts),Andreessen Horowitz,early_events,23,23.0,verified
+335,Early rounds (record counts),Andreessen Horowitz,early_leads,15,15.0,verified
+336,Early rounds (record counts),SV Angel,early_events,20,20.0,verified
+336,Early rounds (record counts),SV Angel,early_leads,1,1.0,verified
+337,Early rounds (record counts),Guillermo Rauch,early_events,19,19.0,verified
+337,Early rounds (record counts),Guillermo Rauch,early_leads,0,0.0,verified
+338,Early rounds (record counts),Sequoia Capital,early_events,18,18.0,verified
+338,Early rounds (record counts),Sequoia Capital,early_leads,10,10.0,verified
+339,Early rounds (record counts),Lux Capital,early_events,16,16.0,verified
+339,Early rounds (record counts),Lux Capital,early_leads,9,9.0,verified
+340,Early rounds (record counts),New Enterprise Associates,early_events,16,16.0,verified
+340,Early rounds (record counts),New Enterprise Associates,early_leads,7,7.0,verified
+341,Early rounds (record counts),Amplify Partners,early_events,16,16.0,verified
+341,Early rounds (record counts),Amplify Partners,early_leads,5,5.0,verified
+342,Early rounds (record counts),Benchmark,early_events,15,15.0,verified
+342,Early rounds (record counts),Benchmark,early_leads,11,11.0,verified
+343,Early rounds (record counts),Lightspeed Venture Partners,early_events,15,15.0,verified
+343,Early rounds (record counts),Lightspeed Venture Partners,early_leads,11,11.0,verified
+344,Early rounds (record counts),Nexus Venture Partners,early_events,15,15.0,verified
+344,Early rounds (record counts),Nexus Venture Partners,early_leads,9,9.0,verified
+345,Early rounds (record counts),CRV,early_events,14,14.0,verified
+345,Early rounds (record counts),CRV,early_leads,9,9.0,verified
+346,Early rounds (record counts),General Catalyst,early_events,14,14.0,verified
+346,Early rounds (record counts),General Catalyst,early_leads,7,7.0,verified
+347,Early rounds (record counts),GV,early_events,14,14.0,verified
+347,Early rounds (record counts),GV,early_leads,5,5.0,verified
+348,Early rounds (record counts),OSS Capital,early_events,13,13.0,verified
+348,Early rounds (record counts),OSS Capital,early_leads,9,9.0,verified
+349,Early rounds (record counts),Bessemer Venture Partners,early_events,12,12.0,verified
+349,Early rounds (record counts),Bessemer Venture Partners,early_leads,9,9.0,verified
+350,Early rounds (record counts),Intel Capital,early_events,12,12.0,verified
+350,Early rounds (record counts),Intel Capital,early_leads,2,2.0,verified
+351,Early rounds (record counts),Uncorrelated Ventures,early_events,11,11.0,verified
+351,Early rounds (record counts),Uncorrelated Ventures,early_leads,1,1.0,verified
+352,Early rounds (record counts),Mango Capital,early_events,11,11.0,verified
+352,Early rounds (record counts),Mango Capital,early_leads,0,0.0,verified
+353,Early rounds (record counts),Redpoint Ventures,early_events,10,10.0,verified
+353,Early rounds (record counts),Redpoint Ventures,early_leads,8,8.0,verified
+354,Early rounds (record counts),Gradient Ventures,early_events,10,10.0,verified
+354,Early rounds (record counts),Gradient Ventures,early_leads,6,6.0,verified
+355,Early rounds (record counts),Index Ventures,early_events,10,10.0,verified
+355,Early rounds (record counts),Index Ventures,early_leads,6,6.0,verified
+356,Early rounds (record counts),True Ventures,early_events,10,10.0,verified
+356,Early rounds (record counts),True Ventures,early_leads,4,4.0,verified
+357,Early rounds (record counts),Seedcamp,early_events,10,10.0,verified
+357,Early rounds (record counts),Seedcamp,early_leads,1,1.0,verified
+358,Early rounds (record counts),Pioneer Fund,early_events,10,10.0,verified
+358,Early rounds (record counts),Pioneer Fund,early_leads,0,0.0,verified
+359,Early rounds (record counts),FirstMark,early_events,9,9.0,verified
+359,Early rounds (record counts),FirstMark,early_leads,5,5.0,verified
+360,Early rounds (record counts),468 Capital,early_events,9,9.0,verified
+360,Early rounds (record counts),468 Capital,early_leads,3,3.0,verified
+361,Early rounds (record counts),NVIDIA (incl. NVentures),early_events,9,9.0,verified
+361,Early rounds (record counts),NVIDIA (incl. NVentures),early_leads,1,1.0,verified
+362,Early rounds (record counts),Tom Preston-Werner,early_events,9,9.0,verified
+362,Early rounds (record counts),Tom Preston-Werner,early_leads,1,1.0,verified
+166,Thesis table counts,Andreessen Horowitz,ventures,41,41.0,verified
+167,Thesis table counts,Accel,ventures,38,38.0,verified
+168,Thesis table counts,Sequoia Capital,ventures,32,32.0,verified
+169,Thesis table counts,Insight Partners,ventures,25,25.0,verified
+170,Thesis table counts,New Enterprise Associates,ventures,25,25.0,verified
+171,Thesis table counts,Lightspeed Venture Partners,ventures,25,25.0,verified
+172,Thesis table counts,Index Ventures,ventures,24,24.0,verified
+173,Thesis table counts,Redpoint Ventures,ventures,21,21.0,verified
+174,Thesis table counts,Bessemer Venture Partners,ventures,20,20.0,verified
+175,Thesis table counts,CRV,ventures,19,19.0,verified
+176,Thesis table counts,OSS Capital,ventures,15,15.0,verified
+177,Thesis table counts,Uncorrelated Ventures,ventures,14,14.0,verified
+178,Thesis table counts,Sapphire Ventures,ventures,13,13.0,verified
+179,Thesis table counts,Lux Capital,ventures,12,12.0,verified
+180,Thesis table counts,M12,ventures,12,12.0,verified
+181,Thesis table counts,Dell Technologies Capital,ventures,11,11.0,verified
+182,Thesis table counts,SignalFire,ventures,11,11.0,verified
+183,Thesis table counts,Databricks Ventures,ventures,9,9.0,verified
+184,Thesis table counts,Madrona Venture Group,ventures,7,7.0,verified
+185,Thesis table counts,Mozilla Ventures,ventures,6,6.0,verified
+186,Thesis table counts,Runa Capital,ventures,5,5.0,verified
+187,Thesis table counts,Boldstart Ventures,ventures,4,4.0,verified
+188,Thesis table counts,Open Core Ventures,ventures,4,4.0,verified
+189,Thesis table counts,Zetta Venture Partners,ventures,3,3.0,verified
+190,Thesis table counts,Serena,ventures,1,1.0,verified
+191,Thesis table counts,Zerodha,ventures,1,1.0,verified
+199,Parent rollups,Alphabet,ventures,44,44.0,verified
+200,Parent rollups,Intel,ventures,24,24.0,verified
+201,Parent rollups,NVIDIA,ventures,22,22.0,verified
+202,Parent rollups,Microsoft,ventures,20,20.0,verified
+203,Parent rollups,Samsung,ventures,20,20.0,verified
+204,Parent rollups,Salesforce,ventures,19,19.0,verified
+205,Parent rollups,Goldman Sachs,ventures,14,14.0,verified
+206,Parent rollups,Dell,ventures,13,13.0,verified
+207,Parent rollups,Xavier Niel,ventures,13,13.0,verified
+208,Parent rollups,Alibaba,ventures,8,8.0,verified
+209,Parent rollups,Saudi Aramco,ventures,8,8.0,verified
+210,Parent rollups,Amazon,ventures,7,7.0,verified
+155,Type mix,U1,links,1574,1574.0,verified
+155,Type mix,U1,venture_firm,49,49.0,verified
+155,Type mix,U1,corporate_venture,9,9.0,verified
+155,Type mix,U1,angel,25,25.0,verified
+155,Type mix,U1,accelerator,4,4.0,verified
+155,Type mix,U1,growth_pe_hedge,5,5.0,verified
+155,Type mix,U1,public_investor,2,2.0,verified
+155,Type mix,U1,philanthropy,0,0.0,verified
+155,Type mix,U1,government_grant,1,1.0,verified
+155,Type mix,U1,crowdfunding,0,0.0,verified
+155,Type mix,U1,crypto_fund_or_dao,2,2.0,verified
+155,Type mix,U1,bank_or_debt,0,0.0,verified
+155,Type mix,U1,other,1,1.0,verified
+155,Type mix,U1,unclassified,2,2.0,verified
+156,Type mix,U2,links,389,389.0,verified
+156,Type mix,U2,venture_firm,46,46.0,verified
+156,Type mix,U2,corporate_venture,14,14.0,verified
+156,Type mix,U2,angel,9,9.0,verified
+156,Type mix,U2,accelerator,2,2.0,verified
+156,Type mix,U2,growth_pe_hedge,6,6.0,verified
+156,Type mix,U2,public_investor,3,3.0,verified
+156,Type mix,U2,philanthropy,2,2.0,verified
+156,Type mix,U2,government_grant,4,4.0,verified
+156,Type mix,U2,crowdfunding,6,6.0,verified
+156,Type mix,U2,crypto_fund_or_dao,3,3.0,verified
+156,Type mix,U2,bank_or_debt,1,1.0,verified
+156,Type mix,U2,other,0,0.0,verified
+156,Type mix,U2,unclassified,4,4.0,verified
+157,Type mix,U3,links,1174,1174.0,verified
+157,Type mix,U3,venture_firm,54,54.0,verified
+157,Type mix,U3,corporate_venture,18,18.0,verified
+157,Type mix,U3,angel,9,9.0,verified
+157,Type mix,U3,accelerator,1,1.0,verified
+157,Type mix,U3,growth_pe_hedge,12,12.0,verified
+157,Type mix,U3,public_investor,2,2.0,verified
+157,Type mix,U3,philanthropy,0,0.0,verified
+157,Type mix,U3,government_grant,1,1.0,verified
+157,Type mix,U3,crowdfunding,0,0.0,verified
+157,Type mix,U3,crypto_fund_or_dao,1,1.0,verified
+157,Type mix,U3,bank_or_debt,1,1.0,verified
+157,Type mix,U3,other,0,0.0,verified
+157,Type mix,U3,unclassified,2,2.0,verified
+158,Type mix,U4,links,1041,1041.0,verified
+158,Type mix,U4,venture_firm,43,43.0,verified
+158,Type mix,U4,corporate_venture,5,5.0,verified
+158,Type mix,U4,angel,23,23.0,verified
+158,Type mix,U4,accelerator,25,25.0,verified
+158,Type mix,U4,growth_pe_hedge,1,1.0,verified
+158,Type mix,U4,public_investor,0,0.0,verified
+158,Type mix,U4,philanthropy,1,1.0,verified
+158,Type mix,U4,government_grant,0,0.0,verified
+158,Type mix,U4,crowdfunding,0,0.0,verified
+158,Type mix,U4,crypto_fund_or_dao,1,1.0,verified
+158,Type mix,U4,bank_or_debt,0,0.0,verified
+158,Type mix,U4,other,0,0.0,verified
+158,Type mix,U4,unclassified,0,0.0,verified
+,Headline recomputation,U1-U3,ventures,,640.0,recomputed
+,Headline recomputation,U1-U3,funding_found_yes,,448.0,recomputed
+,Headline recomputation,U1-U3,funders,,1697.0,recomputed
+,Headline recomputation,U1-U3,links,,3137.0,recomputed
+,Headline recomputation,U1-U3,singletons,,1294.0,recomputed
+,Headline recomputation,U1-U3,funders_ge5,,102.0,recomputed
+,Headline recomputation,U1-U3,top10_link_sum,,291.0,recomputed
+,Headline recomputation,U1-U3,top10_link_share,,0.09276378705769844,recomputed
+,Headline recomputation,U1-U3,event_rows,,1386.0,recomputed
+,Headline recomputation,U1-U3,counted_event_rows,,1381.0,recomputed
+,Headline recomputation,U1-U3,counted_event_4field_groups,,1319.0,recomputed
+,Headline recomputation,U1-U4,ventures,,1042.0,recomputed
+,Headline recomputation,U1-U4,funding_found_yes,,754.0,recomputed
+,Headline recomputation,U1-U4,funders,,2024.0,recomputed
+,Headline recomputation,U1-U4,links,,4178.0,recomputed
+,Headline recomputation,U1-U4,singletons,,1499.0,recomputed
+,Headline recomputation,U1-U4,funders_ge5,,139.0,recomputed
+,Headline recomputation,U1-U4,top10_link_sum,,575.0,recomputed
+,Headline recomputation,U1-U4,top10_link_share,,0.1376256582096697,recomputed
+,Headline recomputation,U1-U4,event_rows,,1865.0,recomputed
+,Headline recomputation,U1-U4,counted_event_rows,,1860.0,recomputed
+,Headline recomputation,U1-U4,counted_event_4field_groups,,1796.0,recomputed
+21,Bottom line,U1-U3,ventures,640,640.0,verified
+22,Bottom line,U1-U3,funded,448,448.0,verified
+23,Bottom line,U1-U3,funders,1697,1697.0,verified
+23,Bottom line,U1-U3,funding events (counted CSV records),1320,1381.0,mismatch
+24,Bottom line,U1-U3,singletons,1294,1294.0,verified
+25,Bottom line,U1-U3,funders_ge5,102,102.0,verified
+26,Bottom line,U1-U3,top10 share rounded percent,9,9.0,verified
+,Independent audit,40 ventures,ours_sum,,180.0,recomputed
+,Independent audit,40 ventures,edison_sum,,296.0,recomputed
+,Independent audit,40 ventures,both_sum,,154.0,recomputed
+,Independent audit,40 ventures,ours_overlap_share,,0.8555555555555555,recomputed
+,Independent audit,40 ventures,edison_overlap_share,,0.5202702702702703,recomputed
+,Independent audit,40 ventures,only_ours_sum,,26.0,recomputed
+,Independent audit,40 ventures,only_edison_sum,,142.0,recomputed
+,Independent audit,40 ventures,current_links_on_audited_keys,,304.0,recomputed
+,Independent audit,40 ventures,original_zero_funding_gaps,,8.0,recomputed
+,Source checks,all,found,,4815.0,recomputed
+,Source checks,all,unavailable,,214.0,recomputed
+,Source checks,all,in page markup (logo or link),,164.0,recomputed
+,Source checks,all,not on page,,139.0,recomputed
+,Source checks,fetchable,text_fraction,,0.9407971864009379,recomputed
+,Source checks,fetchable,text_or_markup_fraction,,0.9728409534974599,recomputed
+,Universe counts,U1,ventures,,387.0,recomputed
+,Universe counts,U1,funding_found_yes,,231.0,recomputed
+,Universe counts,U1,no_funding_found,,147.0,recomputed
+,Universe counts,U1,bootstrapped_stated,,9.0,recomputed
+,Universe counts,U1,funders_ge3,,113.0,recomputed
+,Universe counts,U2,ventures,,97.0,recomputed
+,Universe counts,U2,funding_found_yes,,72.0,recomputed
+,Universe counts,U2,no_funding_found,,22.0,recomputed
+,Universe counts,U2,bootstrapped_stated,,3.0,recomputed
+,Universe counts,U2,funders_ge3,,13.0,recomputed
+,Universe counts,U3,ventures,,156.0,recomputed
+,Universe counts,U3,funding_found_yes,,145.0,recomputed
+,Universe counts,U3,no_funding_found,,11.0,recomputed
+,Universe counts,U3,bootstrapped_stated,,0.0,recomputed
+,Universe counts,U3,funders_ge3,,77.0,recomputed
+,Universe counts,U4,ventures,,402.0,recomputed
+,Universe counts,U4,funding_found_yes,,306.0,recomputed
+,Universe counts,U4,no_funding_found,,94.0,recomputed
+,Universe counts,U4,bootstrapped_stated,,2.0,recomputed
+,Universe counts,U4,funders_ge3,,46.0,recomputed
+,Programs,funds_companies,no,,167.0,recomputed
+,Programs,funds_companies,yes,,85.0,recomputed
+,Programs,funds_companies,sometimes,,43.0,recomputed
+,Programs,funds_companies,unknown,,7.0,recomputed
+,Investor typing,type_source,heuristic,,1197.0,recomputed
+,Investor typing,type_source,manual,,827.0,recomputed
+,Source sensitivity,all,links,,4178.0,recomputed
+,Source sensitivity,all,links_without_database_only_flag,,4035.0,recomputed
+,Source sensitivity,all,funders,,2024.0,recomputed
+,Source sensitivity,all,funders_without_database_only_flag,,1968.0,recomputed
+,Source sensitivity,U1-U3,links,,3137.0,recomputed
+,Source sensitivity,U1-U3,links_without_database_only_flag,,3012.0,recomputed
+,Source sensitivity,U1-U3,funders,,1697.0,recomputed
+,Source sensitivity,U1-U3,funders_without_database_only_flag,,1639.0,recomputed
+,Source sensitivity,U2,links,,389.0,recomputed
+,Source sensitivity,U2,links_without_database_only_flag,,355.0,recomputed
+,Source sensitivity,U2,funders,,328.0,recomputed
+,Source sensitivity,U2,funders_without_database_only_flag,,305.0,recomputed
+,Six duplicate venture pairs,all,distinct_ventures,,1036.0,recomputed
+,Six duplicate venture pairs,all,links,,4136.0,recomputed
+,Six duplicate venture pairs,Y Combinator,ventures,,310.0,recomputed
+,Six duplicate venture pairs,Guillermo Rauch,ventures,,19.0,recomputed
+,Six duplicate venture pairs,Paul Copplestone,ventures,,7.0,recomputed
+,Six duplicate venture pairs,Lux Capital,ventures,,11.0,recomputed
+,Six duplicate venture pairs,Olivier Pomel,ventures,,6.0,recomputed
+,Nine conservative investor alias merges,all,funders,,2015.0,recomputed
+,Nine conservative investor alias merges,all,links,,4177.0,recomputed
+,Nine conservative investor alias merges,U1-U3,funders,,1690.0,recomputed
+,Nine conservative investor alias merges,U1-U3,links,,3136.0,recomputed
+,Eight excluded acquisition/IPO records,all,remaining_links,,4172.0,recomputed
+,Eight excluded acquisition/IPO records,all,remaining_funders,,2021.0,recomputed

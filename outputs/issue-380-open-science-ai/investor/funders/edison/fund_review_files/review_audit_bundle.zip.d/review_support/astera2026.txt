@@ -1,0 +1,132 @@
+Astera Partnering with the National Science Foundation to Support Open Science - Astera 
+
+* [About](https://astera.org/astera-partnering-with-the-national-science-foundation/#)
+    + [Vision](https://astera.org/vision/)
+    + [Leadership](https://astera.org/team/)
+    + [Resources](https://astera.org/resources/)
+    + [Open Science](https://astera.org/open-science/)
+* [Neuro-AI](https://astera.org/program/neuro-agi)
+    + [Overview](https://astera.org/neuro-agi/)
+    + [Neuro](https://astera.org/neuroscience/)
+    + [AI](https://astera.org/neuro-ai/)
+    + [AI Safety](https://astera.org/ai-safety/)
+* [Radial](https://astera.org/radial/)
+    + [Overview](https://astera.org/radial/)
+    + [Prism](https://astera.org/prism/)
+* [Foundation](https://astera.org/foundation/)
+    + [Overview](https://astera.org/foundation/)
+    + [Residency](https://astera.org/residency/)
+    + [Essay Competition](https://astera.org/essay-competition-finalists/)
+    + [Hidden Science Competition](https://astera.org/hidden-science-competition-winners/)
+* [News](https://astera.org/news/)
+* [Careers](https://astera.org/careers/)
+
+* [About](https://astera.org/astera-partnering-with-the-national-science-foundation/#)
+* [Vision](https://astera.org/vision/)
+* [Leadership](https://astera.org/team/)
+* [Resources](https://astera.org/resources/)
+* [Open Science](https://astera.org/open-science/)
+*
+
++ [Neuro-AI](https://astera.org/program/neuro-agi)
++ [Overview](https://astera.org/neuro-agi/)
++ [Neuro](https://astera.org/neuroscience/)
++ [AI](https://astera.org/neuro-ai/)
++ [AI Safety](https://astera.org/ai-safety/)
++
+
++ [Radial](https://astera.org/radial/)
++ [Overview](https://astera.org/radial/)
++ [Prism](https://astera.org/prism/)
++
+
++ [Foundation](https://astera.org/foundation/)
++ [Overview](https://astera.org/foundation/)
++ [Residency](https://astera.org/residency/)
++ [Essay Competition](https://astera.org/essay-competition-finalists/)
++ [Hidden Science Competition](https://astera.org/hidden-science-competition-winners/)
++
+
+Residency applications open! [Apply now](https://astera.org/residency/) through Thursday, January 7, 2027.
+
+* [About](https://astera.org/astera-partnering-with-the-national-science-foundation/#)
+    + [Vision](https://astera.org/vision/)
+    + [Leadership](https://astera.org/team/)
+    + [Resources](https://astera.org/resources/)
+    + [Open Science](https://astera.org/open-science/)
+* [Neuro-AI](https://astera.org/program/neuro-agi)
+    + [Overview](https://astera.org/neuro-agi/)
+    + [Neuro](https://astera.org/neuroscience/)
+    + [AI](https://astera.org/neuro-ai/)
+    + [AI Safety](https://astera.org/ai-safety/)
+* [Radial](https://astera.org/radial/)
+    + [Overview](https://astera.org/radial/)
+    + [Prism](https://astera.org/prism/)
+* [Foundation](https://astera.org/foundation/)
+    + [Overview](https://astera.org/foundation/)
+    + [Residency](https://astera.org/residency/)
+    + [Essay Competition](https://astera.org/essay-competition-finalists/)
+    + [Hidden Science Competition](https://astera.org/hidden-science-competition-winners/)
+* [News](https://astera.org/news/)
+* [Careers](https://astera.org/careers/)
+
+* [Vision](https://astera.org/vision/)
+* [Leadership](https://astera.org/team/)
+* [Resources](https://astera.org/resources/)
+* [Open Science](https://astera.org/open-science/)
++ [Overview](https://astera.org/neuro-agi/)
++ [Neuro](https://astera.org/neuroscience/)
++ [AI](https://astera.org/neuro-ai/)
++ [AI Safety](https://astera.org/ai-safety/)
++ [Overview](https://astera.org/radial/)
++ [Prism](https://astera.org/prism/)
++ [Overview](https://astera.org/foundation/)
++ [Residency](https://astera.org/residency/)
++ [Essay Competition](https://astera.org/essay-competition-finalists/)
++ [Hidden Science Competition](https://astera.org/hidden-science-competition-winners/)
+
+Program Update
+
+# Astera Partnering with the National Science Foundation to Support Open Science
+
+Steven Moss
+
+Science Policy Lead
+
+Published
+
+Jul 22 2026
+
+Share
+
+Today, the National Science Foundation (NSF) [announced](https://www.nsf.gov/tip/updates/nsf-announces-400m-investment-new-national-network-ai) a partnership with the Astera Institute related to the first round of investment in building a national network of automated laboratory infrastructure, known as the Programmable Cloud Laboratories (PCL) Test Bed Initiative. The NSF will spend $380 million spread across 20 awardees to advance AI and automated instrumentation for scientific experimentation and data collection. The Astera Institute will contribute up to $20 million in matched investment and provide additional support and expertise to awardees to advance their open science practices to make their science more rapidly available, machine-readable, and reproducible.
+
+This is the first time Astera is directly partnering with the federal government on a scientific program, but this partnership is not something we fell into by accident. Astera is continually looking for ways to promote and empower our approach to experimenting with how science is conducted and funded, including needed changes to scientific publishing that better and more quickly capture the full range of scientific outputs. Improvements on this front are not only enabled by AI but will also help fundamentally advance AI-enabled scientific discovery.
+
+Astera’s own [Open Science Policy](https://astera.org/open-science-policy/) espouses the need to get scientific information out quickly using publishing platforms and practices that focus on scientific utility rather than legacy journal systems that are optimized for and constrained by human limitations. To this end, Astera has built an ecosystem of investments and opportunities around open science, including:
+
+* [The Stacks](https://thestacks.org/), an open-access publishing platform we are building with the end-goal of experimenting with different ways of making it easier for scientists to generate, structure, and share reproducible data that are geared toward reuse
+* Funded Programs such as the [diffUSE Project](https://diffuse.science/), the [Deliverome Project](https://deliverome.org/), and [OpenADMET](https://openadmet.org/about/), which are all working to collect and openly publish AI-ready scientific information
+* [The Hidden Science Competition](https://astera.org/hidden-science-competition/), a recently announced competition to encourage graduate students to publish useful research beyond the constraints of traditional peer-reviewed scientific journals
+
+We view our collaboration with the NSF as an important step in adding to the ecosystem of open and rapidly available scientific information that will help to propel innovation forward. We are excited about this program and mode of partnership because PCLs create an opportunity to advance a more data-centric model of open science. Rather than treating data as a secondary output released only after an embargo and narrative-centric publication, the PCL Test Bed Program can support workflows in which well-structured, reusable data and metadata are shared rapidly and treated as valuable scientific outputs in their own right.
+
+The instrumentation associated with the PCL Test Bed Program emphasizes automated experimentation in controlled environments, enabling researchers to design and test new tools for standardized data-generation processes and capture of high-quality metadata throughout each experimental workflow. This inherently makes experiments more reproducible and data more AI-ready.
+
+These capabilities can uniquely enable rapid deposition into repositories and allow researchers and AI agents to more reliably discover, interpret, and reuse scientific outputs at scale while also supporting alternative publishing workflows organized around utility, reuse, and continuous deposition rather than a single final publication event.
+
+Through this public-private collaboration, NSF, Astera, and the PCL Test Bed awardees can combine federal leadership, private support, and scientific expertise to make research outputs across fields more AI-ready, interoperable, and reusable—accelerating discovery, increasing the value of publicly funded research, and helping scientific advances translate more rapidly into societal benefit.
+
+Steven Moss
+
+Science Policy Lead
+
+Newsletter
+
+Join us in exploring the technological frontier. Sign up to our newsletter.
+
+© 2026 Astera Institute
+
+* [Terms of Use](https://astera.org/terms-of-use/)
+* [Privacy Policy](https://astera.org/privacy/)
+

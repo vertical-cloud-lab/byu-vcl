@@ -8,13 +8,15 @@
 | Blockchain Capital | crypto fund or DAO | 2 | 2 | Bluesky, Fuel Labs |
 | CoinFund | crypto fund or DAO | 2 | 2 | Fuel Labs, Prime Intellect |
 | European Commission | government grant | 2 | 0 | Antmicro, Graphite |
+| European Regional Development Fund | government grant | 2 | 0 | BCN3D Technologies, SixtyFPS GmbH |
+| Gordon and Betty Moore Foundation | philanthropy | 2 | 0 | Anaconda, Inc., JuliaHub |
 | Hack VC | crypto fund or DAO | 2 | 0 | Fingerprint, Zama |
 | Innovate UK | government grant | 2 | 0 | Augmented Instruments, Open Bionics |
+| Israel Innovation Authority | government grant | 2 | 0 | ClearML, JFrog |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | Maven 11 Capital | crypto fund or DAO | 2 | 0 | Anoma, Fuel Labs |
 | NIST | government grant | 2 | 0 | M-Labs Ltd, Voxel51 |
 | NLnet Foundation | government grant | 2 | 0 | Graphite, SixtyFPS GmbH |
-| National Science Foundation | government grant | 2 | 0 | VotingWorks, re:3D |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
 | North Island Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Nous Research |
 | Pantera Capital | crypto fund or DAO | 2 | 0 | Brave Software, Zama |
@@ -25,6 +27,7 @@
 | Alfred P. Sloan Foundation | philanthropy | 1 | 0 | JuliaHub |
 | Army Research Lab | government grant | 1 | 0 | M-Labs Ltd |
 | BAT token buyers | crypto fund or DAO | 1 | 0 | Brave Software |
+| Bankless Ventures | crypto fund or DAO | 1 | 0 | MyShell |
 | BeakerDAO | crypto fund or DAO | 1 | 0 | Molecule |
 | Binance Labs | crypto fund or DAO | 1 | 0 | Tea |
 | Block1 | crypto fund or DAO | 1 | 0 | Linera |
@@ -37,6 +40,3 @@
 | Collab+Currency | crypto fund or DAO | 1 | 0 | Prime Intellect |
 | Community investors | crowdfunding | 1 | 0 | Framework Computer |
 | Crowdcube backers | crowdfunding | 1 | 0 | Open Bionics |
-| Curve Labs | crypto fund or DAO | 1 | 0 | LabDAO |
-| Cybersecurity and Infrastructure Security Agency | government grant | 1 | 0 | VotingWorks |
-| DARPA | government grant | 1 | 0 | Anaconda, Inc. |

@@ -35,6 +35,7 @@
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |
 | Google | corporate / strategic | 2 | 0 | Hugging Face, K-Dense |
+| Gordon and Betty Moore Foundation | philanthropy | 2 | 0 | Anaconda, Inc., JuliaHub |
 | Greycroft | venture firm | 2 | 0 | Boltz PBC, Inventables |
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
 | Innovate UK | government grant | 2 | 0 | Augmented Instruments, Open Bionics |
@@ -42,6 +43,7 @@
 | Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | Mozilla Ventures | corporate / strategic | 2 | 0 | Hugging Face, Probabl |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
+| O'Reilly AlphaTech Ventures | venture firm | 2 | 1 | 3D Robotics, PeerJ |
 | OSS Capital | venture firm | 2 | 2 | ResearchHub, Tracel Inc. |
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |
 | Real Ventures | venture firm | 2 | 1 | Plotly, Tenstorrent |

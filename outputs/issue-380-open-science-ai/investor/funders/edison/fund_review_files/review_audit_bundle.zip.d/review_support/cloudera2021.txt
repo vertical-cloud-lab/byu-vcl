@@ -1,0 +1,462 @@
+Cloudera to Be Acquired by CD&R and KKR | Cloudera 
+
+**ClouderaNOW** Activate your data, unleash your AI, and scale across any cloud | Dec 9
+
+[Register](https://www.cloudera.com/events/cloudera-now-cdp.html?internal_keyplay=cross&internal_campaign=ClouderaNow---FY27-Q4-GLOBAL-VE-WebinarCloudera-Cloudera-Now&cid=701i9000003Q8EjAAK&internal_link=h10)
+
+-
+
+[![Cloudera](https://www.cloudera.com/content/dam/www/marketing/images/logos/cloudera/cloudera-logo@2x.png)](https://www.cloudera.com/) [![Cloudera](https://www.cloudera.com/content/dam/www/marketing/images/logos/cloudera/cloudera-logo@2x.png)](https://www.cloudera.com/)
+
+* 
+*
+
+* [Why Cloudera](https://www.cloudera.com/why-cloudera.html)
+
+    ![](https://www.cloudera.com/etc.clientlibs/www/clientlibs/clientlib-siteroot/resources/icons/menu-up-arrow-2x.png)
+
+    + Driving Innovation
+
+    ---
+
+    + [Accelerate AI anywhere](https://www.cloudera.com/why-cloudera/enterprise-ai.html)
+    + [Deliver cloud anywhere](https://www.cloudera.com/why-cloudera/hybrid-data-platform.html)
+    + [Unlock data anywhere](https://www.cloudera.com/products/open-data-lakehouse.html?menu-why)
+
+    + Empowering People
+
+    ---
+
+    + [Customers](https://www.cloudera.com/customers.html?menu-why)
+    + [Partners](https://www.cloudera.com/partners.html)
+    + [Our Culture](https://www.cloudera.com/about/our-culture.html)
+    + [Corporate Social Responsibility](https://www.cloudera.com/about/philanthropy.html)
+    + [Women Leaders in Technology](https://www.cloudera.com/about/women-leaders-in-technology.html)
+
+    [![Get The Great AI Re-Architecture research report now.](https://www.cloudera.com/content/dam/www/marketing/images/promos/homepage/u03/u03-the-great-ai-re-architecture.webp)](https://www.cloudera.com/campaign/the-great-ai-re-architecture.html?internal_keyplay=AI-Anywhere&internal_campaign=Thought-Leadership-Reports---AlwaysOn-FY27-GLOBAL-CT-Report-Great-AI-Re-Architecture&cid=701Ui000017i9O3IAI&internal_link=WWW-Nav-u03-why)
+
+* [Products](https://www.cloudera.com/products.html)
+
+    ![](https://www.cloudera.com/etc.clientlibs/www/clientlibs/clientlib-siteroot/resources/icons/menu-up-arrow-2x.png)
+
+    + [Anywhere Cloud](https://www.cloudera.com/products/anywhere-cloud.html)
+
+    The modular hybrid data & AI platform engineered for the agentic era.
+
+    ---
+
+    + [Cloudera Platform](https://www.cloudera.com/products/cloudera-data-platform.html)
+
+    The industry’s only platform bringing AI to data anywhere.
+
+    ---
+
+    + [Enterprise AI](https://www.cloudera.com/products/enterprise-ai.html)
+
+    ---
+
+    + [Cloudera AI](https://www.cloudera.com/products/enterprise-ai/ai.html)
+    + [AI Inference](https://www.cloudera.com/products/enterprise-ai/ai/ai-inference-service.html)
+    + [AI Studios](https://www.cloudera.com/products/enterprise-ai/ai/ai-studios.html)
+    + [AI Assistants](https://www.cloudera.com/products/enterprise-ai/ai/ai-assistants.html)
+    + [AI Workbench](https://www.cloudera.com/products/enterprise-ai/ai/ai-workbench.html)
+
+    + [Data in Motion](https://www.cloudera.com/products/data-in-motion.html)
+
+    ---
+
+    + [Data Flow](https://www.cloudera.com/products/data-in-motion/dataflow.html)
+    + [Streaming](https://www.cloudera.com/products/data-in-motion/streaming.html)
+    + [Edge Management](https://www.cloudera.com/products/data-in-motion/edge-management.html)
+
+    + [Open Data Lakehouse](https://www.cloudera.com/products/open-data-lakehouse.html)
+
+    ---
+
+    + [Iceberg](https://www.cloudera.com/open-source/apache-iceberg.html)
+    + [Data Engineering](https://www.cloudera.com/products/open-data-lakehouse/data-engineering.html)
+    + [Operational Database](https://www.cloudera.com/products/open-data-lakehouse/operational-db.html)
+    + [Data Warehouse](https://www.cloudera.com/products/open-data-lakehouse/data-warehouse.html)
+    + [Lakehouse Innovation](https://www.cloudera.com/products/open-data-lakehouse/lakehouse-innovation.html)
+
+    + [Unified Data Fabric](https://www.cloudera.com/products/unified-data-fabric.html)
+
+    ---
+
+    + [Shared Data Experience](https://www.cloudera.com/products/cloudera-data-platform/sdx.html)
+    + [Data Catalog](https://www.cloudera.com/products/cloudera-data-platform/sdx/data-catalog.html)
+    + [Data Lineage](https://www.cloudera.com/products/unified-data-fabric/data-lineage.html)
+    + [Observability](https://www.cloudera.com/products/cloudera-data-platform/observability.html)
+    + [Data Visualization](https://www.cloudera.com/products/cloudera-data-platform/data-visualization.html)
+
+    + [Demos](https://www.cloudera.com/products/cloudera-data-platform/demos.html)
+    + [Pricing](https://www.cloudera.com/products/pricing.html)
+    + [Trust Center](https://www.cloudera.com/products/trust-center.html)
+
+    [![Read the AI Agents in Data Platforms For Dummies ebook.](https://www.cloudera.com/content/dam/www/marketing/images/promos/homepage/u03/u03-products-ai-agents-in-data-platforms-for-dummies.webp)](https://www.cloudera.com/campaign/ai-agents-in-data-platforms-for-dummies.html?internal_keyplay=Data-Anywhere&internal_campaign=Thought-Leadership-Reports---AlwaysOn-FY27-GLOBAL-CT-eBook-AI-Agents-For-Dummies&cid=701Ui000016faYDIAY&internal_link=WWW-Nav-u03-products)
+
+* [Solutions](https://www.cloudera.com/solutions.html)
+
+    ![](https://www.cloudera.com/etc.clientlibs/www/clientlibs/clientlib-siteroot/resources/icons/menu-up-arrow-2x.png)
+
+    + Industry
+
+    ---
+
+    + [Education](https://www.cloudera.com/solutions/public-sector/education.html)
+    + [Energy & utilities](https://www.cloudera.com/solutions/energy-and-utilities.html)
+    + [Financial services](https://www.cloudera.com/solutions/financial-services.html)
+    + [Healthcare](https://www.cloudera.com/solutions/healthcare.html)
+    + [Insurance](https://www.cloudera.com/solutions/insurance.html)
+    + [Life sciences](https://www.cloudera.com/solutions/life-sciences.html)
+    + [Manufacturing](https://www.cloudera.com/solutions/manufacturing.html)
+    + [Public sector](https://www.cloudera.com/solutions/public-sector.html)
+    + [Retail](https://www.cloudera.com/solutions/retail.html)
+    + [Technology](https://www.cloudera.com/solutions/technology.html)
+    + [Telecommunications](https://www.cloudera.com/solutions/telecommunications.html)
+
+    + [Private AI factory](https://www.cloudera.com/solutions/private-ai-factory.html)
+
+    Private and sovereign AI, anywhere, with full ownership and control.
+
+    + [Cloudera for Digital Sovereignty](https://www.cloudera.com/solutions/digital-sovereignty.html)
+
+    Governance, compliance, and control across data, cloud, and AI.
+
+    + [AI Blueprints](https://www.cloudera.com/solutions/ai-blueprints.html)
+
+    Repeatable solution accelerators that apply AI to industry use cases.
+
+    [![Get the Automating Telco Networks with AI for Dummies™, Cloudera Special Edition.](https://www.cloudera.com/content/dam/www/marketing/images/promos/homepage/u03/u03-automating-telco-networks-with-ai-for-dummies-nova.webp)](https://www.cloudera.com/campaign/automating-telco-networks-with-ai-for-dummies-cloudera-special-edition.html?internal_keyplay=cross&internal_campaign=Thought-Leadership-Reports---AlwaysOn-FY27-GLOBAL-CT-eBook-Automating-Telco-with-AI-Dummies&cid=701Ui000011eZnbIAE&internal_link=WWW-Nav-u03-solutions)
+
+* [Resources](https://www.cloudera.com/resources.html)
+
+    ![](https://www.cloudera.com/etc.clientlibs/www/clientlibs/clientlib-siteroot/resources/icons/menu-up-arrow-2x.png)
+
+    + [Blog](https://www.cloudera.com/blog.html)
+    + [Customer success stories](https://www.cloudera.com/customers.html)
+    + [Demos](https://www.cloudera.com/products/cloudera-data-platform/demos.html?menu-resources)
+    + [Events](https://www.cloudera.com/events.html)
+    + [Newsroom](https://www.cloudera.com/about/news-and-blogs.html)
+    + [On-demand webinars](https://www.cloudera.com/events.html?event=On%20demand)
+    + [Podcast](https://www.cloudera.com/resources/podcast/the-ai-forecast.html)
+    + [Resource library](https://www.cloudera.com/resources/resource-library.html)
+    + [Video library](https://video.cloudera.com/)
+    + [Cloudera for developers](https://www.cloudera.com/developers.html)
+
+    [![Join Cloudera EVOLVE26, the industry’s must-attend Data and AI Conference.](https://www.cloudera.com/content/dam/www/marketing/images/promos/homepage/u03/u03-evolve-26.webp)](https://www.cloudera.com/events/evolve.html?internal_keyplay=cross&internal_campaign=EVOLVE26---EVOLVE26-Hub&cid=UNGATED&internal_link=WWW-Nav-u03)
+
+* [Support](https://www.cloudera.com/services-and-support.html)
+
+    ![](https://www.cloudera.com/etc.clientlibs/www/clientlibs/clientlib-siteroot/resources/icons/menu-up-arrow-2x.png)
+
+    + [Support portal](https://lighthouse.cloudera.com)
+    + [Training](https://www.cloudera.com/services-and-support/training.html)
+    + [Certification](https://www.cloudera.com/services-and-support/training/certification.html)
+    + [Tutorials](https://www.cloudera.com/services-and-support/tutorials.html)
+    + [Documentation](https://docs.cloudera.com/)
+    + [Professional Services](https://www.cloudera.com/services-and-support/professional-services.html)
+    + [Product downloads](https://www.cloudera.com/downloads.html)
+    + [Community](https://community.cloudera.com/)
+
+Contact us[(888) 789-1488](tel:18887891488)
+
+International:[\+1 (650) 362-0488](tel:16503620488)
+
+[Email Sales](https://www.cloudera.com/contact-sales.html)
+
+[Support Portal](https://lighthouse.cloudera.com)
+
+* 
+* + [Log In](https://www.cloudera.com/api/www/login)
+  + [Register](https://sso.cloudera.com/register.html)
+* + Cloudera
+
+      Cloudera| Customer
+
+  + [My Profile](https://sso.cloudera.com/account/profile)
+  + [My Applications](https://sso.cloudera.com/account/applications)
+  + [Log Out](https://www.cloudera.com/api/www/logout)
+* 
+* + English
+  + [Spanish](https://es.cloudera.com/)
+  + [French](https://fr.cloudera.com/)
+  + [German](https://de.cloudera.com/)
+  + [Italian](https://it.cloudera.com/)
+  + [Polish](https://pl.cloudera.com/)
+  + [Portuguese](https://br.cloudera.com/)
+  + [Korean](https://kr.cloudera.com/)
+  + [Chinese](https://www.clouderacn.cn/)
+  + [Japanese](https://jp.cloudera.com/)
+*
+
+* [Log In](https://www.cloudera.com/api/www/login)
+* [Register](https://sso.cloudera.com/register.html)
+
++ Cloudera
+
+    Cloudera |  Customer
+
++ [My Profile](https://sso.cloudera.com/account/profile)
++ [My Applications](https://sso.cloudera.com/account/applications)
++ [Log Out](https://www.cloudera.com/api/www/logout)
+
++ English
++ Spanish
++ French
++ German
++ Italian
++ Polish
++ Portuguese
++ Korean
++ Chinese
++ Japanese
+
+* [Why Cloudera](https://www.cloudera.com/why-cloudera.html)
+
+    + Driving Innovation
+
+    ---
+
+    + [Accelerate AI anywhere](https://www.cloudera.com/why-cloudera/enterprise-ai.html)
+    + [Deliver cloud anywhere](https://www.cloudera.com/why-cloudera/hybrid-data-platform.html)
+    + [Unlock data anywhere](https://www.cloudera.com/products/open-data-lakehouse.html?menu-why)
+
+    + Empowering People
+
+    ---
+
+    + [Customers](https://www.cloudera.com/customers.html?menu-why)
+    + [Partners](https://www.cloudera.com/partners.html)
+    + [Our Culture](https://www.cloudera.com/about/our-culture.html)
+    + [Corporate Social Responsibility](https://www.cloudera.com/about/philanthropy.html)
+    + [Women Leaders in Technology](https://www.cloudera.com/about/women-leaders-in-technology.html)
+* [Products](https://www.cloudera.com/products.html)
+
+    + [Anywhere Cloud](https://www.cloudera.com/products/anywhere-cloud.html)
+
+    The modular hybrid data & AI platform engineered for the agentic era.
+
+    ---
+
+    + [Cloudera Platform](https://www.cloudera.com/products/cloudera-data-platform.html)
+
+    The industry’s only platform bringing AI to data anywhere.
+
+    ---
+
+    + [Enterprise AI](https://www.cloudera.com/products/enterprise-ai.html)
+
+    ---
+
+    + [Cloudera AI](https://www.cloudera.com/products/enterprise-ai/ai.html)
+    + [AI Inference](https://www.cloudera.com/products/enterprise-ai/ai/ai-inference-service.html)
+    + [AI Studios](https://www.cloudera.com/products/enterprise-ai/ai/ai-studios.html)
+    + [AI Assistants](https://www.cloudera.com/products/enterprise-ai/ai/ai-assistants.html)
+    + [AI Workbench](https://www.cloudera.com/products/enterprise-ai/ai/ai-workbench.html)
+
+    + [Data in Motion](https://www.cloudera.com/products/data-in-motion.html)
+
+    ---
+
+    + [Data Flow](https://www.cloudera.com/products/data-in-motion/dataflow.html)
+    + [Streaming](https://www.cloudera.com/products/data-in-motion/streaming.html)
+    + [Edge Management](https://www.cloudera.com/products/data-in-motion/edge-management.html)
+
+    + [Open Data Lakehouse](https://www.cloudera.com/products/open-data-lakehouse.html)
+
+    ---
+
+    + [Iceberg](https://www.cloudera.com/open-source/apache-iceberg.html)
+    + [Data Engineering](https://www.cloudera.com/products/open-data-lakehouse/data-engineering.html)
+    + [Operational Database](https://www.cloudera.com/products/open-data-lakehouse/operational-db.html)
+    + [Data Warehouse](https://www.cloudera.com/products/open-data-lakehouse/data-warehouse.html)
+    + [Lakehouse Innovation](https://www.cloudera.com/products/open-data-lakehouse/lakehouse-innovation.html)
+
+    + [Unified Data Fabric](https://www.cloudera.com/products/unified-data-fabric.html)
+
+    ---
+
+    + [Shared Data Experience](https://www.cloudera.com/products/cloudera-data-platform/sdx.html)
+    + [Data Catalog](https://www.cloudera.com/products/cloudera-data-platform/sdx/data-catalog.html)
+    + [Data Lineage](https://www.cloudera.com/products/unified-data-fabric/data-lineage.html)
+    + [Observability](https://www.cloudera.com/products/cloudera-data-platform/observability.html)
+    + [Data Visualization](https://www.cloudera.com/products/cloudera-data-platform/data-visualization.html)
+
+    + [Demos](https://www.cloudera.com/products/cloudera-data-platform/demos.html)
+    + [Pricing](https://www.cloudera.com/products/pricing.html)
+    + [Trust Center](https://www.cloudera.com/products/trust-center.html)
+* [Solutions](https://www.cloudera.com/solutions.html)
+
+    + Industry
+
+    ---
+
+    + [Education](https://www.cloudera.com/solutions/public-sector/education.html)
+    + [Energy & utilities](https://www.cloudera.com/solutions/energy-and-utilities.html)
+    + [Financial services](https://www.cloudera.com/solutions/financial-services.html)
+    + [Healthcare](https://www.cloudera.com/solutions/healthcare.html)
+    + [Insurance](https://www.cloudera.com/solutions/insurance.html)
+    + [Life sciences](https://www.cloudera.com/solutions/life-sciences.html)
+    + [Manufacturing](https://www.cloudera.com/solutions/manufacturing.html)
+    + [Public sector](https://www.cloudera.com/solutions/public-sector.html)
+    + [Retail](https://www.cloudera.com/solutions/retail.html)
+    + [Technology](https://www.cloudera.com/solutions/technology.html)
+    + [Telecommunications](https://www.cloudera.com/solutions/telecommunications.html)
+
+    + [Private AI factory](https://www.cloudera.com/solutions/private-ai-factory.html)
+
+    Private and sovereign AI, anywhere, with full ownership and control.
+
+    + [Cloudera for Digital Sovereignty](https://www.cloudera.com/solutions/digital-sovereignty.html)
+
+    Governance, compliance, and control across data, cloud, and AI.
+
+    + [AI Blueprints](https://www.cloudera.com/solutions/ai-blueprints.html)
+
+    Repeatable solution accelerators that apply AI to industry use cases.
+
+* [Resources](https://www.cloudera.com/resources.html)
+
+    + [Blog](https://www.cloudera.com/blog.html)
+    + [Customer success stories](https://www.cloudera.com/customers.html)
+    + [Demos](https://www.cloudera.com/products/cloudera-data-platform/demos.html?menu-resources)
+    + [Events](https://www.cloudera.com/events.html)
+    + [Newsroom](https://www.cloudera.com/about/news-and-blogs.html)
+    + [On-demand webinars](https://www.cloudera.com/events.html?event=On%20demand)
+    + [Podcast](https://www.cloudera.com/resources/podcast/the-ai-forecast.html)
+    + [Resource library](https://www.cloudera.com/resources/resource-library.html)
+    + [Video library](https://video.cloudera.com/)
+    + [Cloudera for developers](https://www.cloudera.com/developers.html)
+* [Support](https://www.cloudera.com/resources.html)
+
+    + [Support portal](https://lighthouse.cloudera.com)
+    + [Training](https://www.cloudera.com/services-and-support/training.html)
+    + [Certification](https://www.cloudera.com/services-and-support/training/certification.html)
+    + [Tutorials](https://www.cloudera.com/services-and-support/tutorials.html)
+    + [Documentation](https://docs.cloudera.com/)
+    + [Professional Services](https://www.cloudera.com/services-and-support/professional-services.html)
+    + [Product downloads](https://www.cloudera.com/downloads.html)
+    + [Community](https://community.cloudera.com/)
+* US:[(888) 789-1488](tel:18887891488)
+
+    Outside the US:[\+1 (650) 362-0488](tel:16503620488)
+
+![](https://www.cloudera.com/content/dam/www/marketing/brand/graphic-elements/news-banner-connectors-pewter.png)
+
+Press Release
+
+# Cloudera Enters into Definitive Agreement to be Acquired by Clayton, Dubilier & Rice and KKR for $5.3 Billion
+
+*Cloudera Stockholders to Receive $16.00 Per Share in Cash*
+
+**SANTA CLARA, CA, June 1, 2021** — [Cloudera](https://www.cloudera.com/), (NYSE: CLDR), the enterprise data cloud company, today announced that it has entered into a definitive agreement to be acquired by affiliates of Clayton, Dubilier & Rice (“CD&R”) and KKR in an all cash transaction valued at approximately $5.3 billion. The transaction will result in Cloudera becoming a private company and is expected to close in the second half of 2021.
+
+The Board of Directors of Cloudera (the “Board”) has unanimously approved the transaction and recommends that the Cloudera shareholders approve the transaction and adopt the merger agreement. Entities related to Icahn Group, collectively holding approximately 18% of the outstanding shares of Cloudera common stock, have entered into a voting agreement pursuant to which they have agreed, among other things, to vote their shares of Cloudera common stock in favor of the transaction.
+
+The transaction delivers substantial value to Cloudera shareholders, who will receive $16.00 in cash per share, representing a 24% premium to the closing price as of May 28, 2021 and a 30% premium to the 30-day volume weighted average share price.
+
+"This transaction provides substantial and certain value to our shareholders while also accelerating Cloudera’s long-term path to hybrid cloud leadership for analytics that span the complete data lifecycle - from the Edge to AI,” said Rob Bearden, CEO of Cloudera. “We believe that as a private company with the expertise and support of experienced investors such as CD&R and KKR, Cloudera will have the resources and flexibility to drive product-led growth and expand our addressable market opportunity."
+
+“We very much look forward to working with Cloudera as it continues to execute its long-term transformation strategy,” said Jeff Hawn, CD&R Operating Partner who will serve as Chairman of the company upon the close of the transaction. “The company has made significant progress establishing the Cloudera Data Platform (CDP) as a leader in hybrid and multi-cloud analytics, and we believe that our experience and capabilities can offer valuable support to accelerate expansion into new products and markets.” Mr. Hawn’s past roles include serving as Chairman and Chief Executive Officer of Quest Software, Vertafore, and Attachmate.
+
+“We have followed the Cloudera story closely for a number of years and are pleased to be supporting its mission of helping companies make better use of their data in the ever-evolving hybrid IT environment,” said John Park, KKR Partner and Head of Americas Technology Private Equity. “We are excited to contribute to Cloudera’s accelerated innovation efforts as a private company.”
+
+KKR is making the investment from its North American private equity funds, adding to KKR’s experience helping to grow leading global technology businesses, including GoDaddy, Internet Brands, Epicor, BMC, Optiv, Calabrio, Corel and 1-800 Contacts. CD&R’s investments in technology-related businesses include Epicor, Capco, m2gen, Sirius Computer Solutions, and TRANZACT.
+
+Closing of the deal is subject to customary closing conditions, including the approval of Cloudera shareholders and antitrust approval. The agreement includes a 30-day “go-shop” period expiring on July 1, 2021, which allows the Board and its advisors to actively initiate, solicit and consider alternative acquisition proposals from third parties – with an additional 10 days to negotiate a definitive agreement with qualifying parties. The Board will have the right to terminate the merger agreement to enter into a superior proposal subject to the terms and conditions of the merger agreement. There can be no assurance that this “go-shop” will result in a superior proposal, and Cloudera does not intend to disclose developments with respect to the solicitation process unless and until the Board receives an acquisition proposal that it determines is a superior proposal, or it otherwise determines such disclosure is required.
+
+**First Quarter Fiscal 2021 Financial Results**
+
+Cloudera will announce its first quarter fiscal year 2021 financial results in a separate release today. The press release will also be available on the Investor Relations section of Cloudera’s website. Due to the announced transaction with affiliates of CD&R and KKR, Cloudera has cancelled its earnings conference call previously scheduled for June 2, 2021.
+
+**Advisors**
+
+Morgan Stanley & Co LLC is serving as exclusive financial advisor to Cloudera, and Latham & Watkins, LLP is serving as legal advisor to Cloudera. GCA Advisors, LLC, BofA Securities, William Blair & Company, L.L.C., Perella Weinberg Partners LP, Cowen and J.P. Morgan are serving as financial advisors and Kirkland & Ellis, LLP and Debevoise & Plimpton LLP are serving as legal advisor to CD&R and KKR. J.P. Morgan, Bank of America, and KKR Capital Markets have committed to providing debt financing for the transaction.
+
+**About Cloudera**
+
+At Cloudera, we believe that data can make what is impossible today, possible tomorrow. We empower people to transform complex data into clear and actionable insights. Cloudera delivers an enterprise data cloud for any data, anywhere, from the Edge to AI. Powered by the relentless innovation of the open source community, Cloudera advances digital transformation for the world's largest enterprises. Learn more at [Cloudera.com](https://www.cloudera.com/).
+
+Cloudera and associated marks are trademarks or registered trademarks of Cloudera, Inc. All other company and product names may be trademarks of their respective owners.
+
+**About Clayton, Dubilier & Rice**
+
+CD&R is a private investment firm with a strategy predicated on building stronger, more profitable businesses. Since inception, CD&R has managed the investment of more than $35 billion in 100 companies with an aggregate transaction value of more than $150 billion. The firm has offices in New York and London. For more information, please visit [www.cdr-inc.com](https://www.cdr-inc.com/).
+
+**About KKR**
+
+KKR is a leading global investment firm that offers alternative asset management and capital markets and insurance solutions. KKR aims to generate attractive investment returns by following a patient and disciplined investment approach, employing world-class people, and supporting growth in its portfolio companies and communities. KKR sponsors investment funds that invest in private equity, credit and real assets and has strategic partners that manage hedge funds. KKR’s insurance subsidiaries offer retirement, life and reinsurance products under the management of The Global Atlantic Financial Group. References to KKR’s investments may include the activities of its sponsored funds and insurance subsidiaries. For additional information about KKR & Co. Inc. (NYSE: KKR), please visit KKR’s website at [www.kkr.com](https://cts.businesswire.com/ct/CT?id=smartlink&url=http%3A%2F%2Fwww.kkr.com&esheet=52434552&newsitemid=20210524005691&lan=en-US&anchor=www.kkr.com&index=2&md5=b1badd9377f4636c8068778168db91a2) and on Twitter @KKR\_Co.
+
+**Important Information and Where to Find It**
+
+In connection with the proposed transaction between Cloudera, Inc. (“Cloudera”) and an affiliate of CD&R and KKR, a special stockholder meeting will be announced soon to obtain stockholder approval in connection with the proposed transaction. Cloudera expects to file with the Securities and Exchange Commission (“SEC”) a proxy statement (the “Proxy Statement”), the definitive version of which will be sent or provided to Cloudera stockholders. Cloudera may also file other documents with the SEC regarding the proposed transaction. This document is not a substitute for the Proxy Statement or any other document which Cloudera may file with the SEC. INVESTORS AND SECURITY HOLDERS ARE URGED TO READ THE PROXY STATEMENT AND ANY OTHER RELEVANT DOCUMENTS THAT ARE FILED OR WILL BE FILED WITH THE SEC, AS WELL AS ANY AMENDMENTS OR SUPPLEMENTS TO THESE DOCUMENTS, CAREFULLY AND IN THEIR ENTIRETY BECAUSE THEY CONTAIN OR WILL CONTAIN IMPORTANT INFORMATION ABOUT THE PROPOSED TRANSACTION AND RELATED MATTERS. Investors and security holders may obtain free copies of the Proxy Statement (when it is available) and other documents that are filed or will be filed with the SEC by Cloudera through the website maintained by the SEC at [www.sec.gov](https://www.sec.gov/), Cloudera’s investor relations website at <https://investors.cloudera.com/home/default.aspx> or by contacting the Cloudera investor relations department at the following:
+
+Kevin Cook  
+[investor-relations@cloudera.com](mailto:investor-relations@cloudera.com)  
+650-644-3900
+
+**Participants in the Solicitation**
+
+Cloudera and certain of its directors, and executive officers and other members of management and employees may be deemed to be participants in the solicitation of proxies in respect of the proposed transaction. Information regarding the persons who may, under the rules of the SEC, be considered to be participants in the solicitation of Cloudera’s stockholders will be set forth in the Proxy Statement for its special stockholder meeting. Cloudera stockholders may obtain additional information regarding the direct and indirect interests of the participants in the solicitation of proxies in connection with the proposed transaction, including the interests of Cloudera directors and executive officers in the transaction, which may be different than those of Cloudera stockholders generally, by reading the Proxy Statement and any other relevant documents that are filed or will be filed with the SEC relating to the transaction. You may obtain free copies of these documents using the sources indicated above.
+
+**Cautionary Statement Regarding Forward-Looking Statements About the Proposed Transaction**
+
+This communication contains “forward-looking statements” within the meaning of the federal securities laws, including Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. These forward-looking statements are based on Cloudera’s current expectations, estimates and projections about the expected date of closing of the proposed transaction and the potential benefits thereof, its business and industry, management’s beliefs and certain assumptions made by Cloudera, CD&R and KKR, all of which are subject to change. In this context, forward-looking statements often address expected future business and financial performance and financial condition, and often contain words such as “expect,” “anticipate,” “intend,” “plan,” “believe,” “could,” “seek,” “see,” “will,” “may,” “would,” “might,” “potentially,” “estimate,” “continue,” “expect,” “target,” similar expressions or the negatives of these words or other comparable terminology that convey uncertainty of future events or outcomes. All forward-looking statements by their nature address matters that involve risks and uncertainties, many of which are beyond our control, and are not guarantees of future results, such as statements about the consummation of the proposed transaction and the anticipated benefits thereof. These and other forward-looking statements, including the failure to consummate the proposed transaction or to make or take any filing or other action required to consummate the transaction on a timely matter or at all, are not guarantees of future results and are subject to risks, uncertainties and assumptions that could cause actual results to differ materially from those expressed in any forward-looking statements. Accordingly, there are or will be important factors that could cause actual results to differ materially from those indicated in such statements and, therefore, you should not place undue reliance on any such statements and caution must be exercised in relying on forward-looking statements. Important risk factors that may cause such a difference include, but are not limited to: (i) the completion of the proposed transaction on anticipated terms and timing, including obtaining stockholder and regulatory approvals, anticipated tax treatment, unforeseen liabilities, future capital expenditures, revenues, expenses, earnings, synergies, economic performance, indebtedness, financial condition, losses, future prospects, business and management strategies for the management, expansion and growth of Cloudera’s business and other conditions to the completion of the transaction; (ii) conditions to the closing of the transaction may not be satisfied; (iii) the transaction may involve unexpected costs, liabilities or delays; (iv) the outcome of any legal proceedings related to the transaction; (v) the failure by CD&R and KKR to obtain the necessary debt financing arrangements set forth in the commitment letters received in connection with the transaction; (vi) the impact of the COVID-19 pandemic on Cloudera’s business and general economic conditions; (vii) Cloudera’s ability to implement its business strategy; (viii) significant transaction costs associated with the proposed transaction; (ix) potential litigation relating to the proposed transaction; (x) the risk that disruptions from the proposed transaction will harm Cloudera’s business, including current plans and operations; (xi) the ability of Cloudera to retain and hire key personnel; (xii) potential adverse reactions or changes to business relationships resulting from the announcement or completion of the proposed transaction; (xiii) legislative, regulatory and economic developments affecting Cloudera’s business; (xiv) general economic and market developments and conditions; (xv) the evolving legal, regulatory and tax regimes under which Cloudera operates; (xvi) potential business uncertainty, including changes to existing business relationships, during the pendency of the merger that could affect Cloudera’s financial performance; (xvii) restrictions during the pendency of the proposed transaction that may impact Cloudera’s ability to pursue certain business opportunities or strategic transactions; and (xviii) unpredictability and severity of catastrophic events, including, but not limited to, acts of terrorism or outbreak of war or hostilities, as well as Cloudera’s response to any of the aforementioned factors. While the list of factors presented here is considered representative, such list should not be considered to be a complete statement of all potential risks and uncertainties. Unlisted factors may present significant additional obstacles to the realization of forward looking statements. Consequences of material differences in results as compared with those anticipated in the forward-looking statements could include, among other things, business disruption, operational problems, financial loss, legal liability to third parties and similar risks, any of which could have a material adverse effect on Cloudera’s financial condition, results of operations, or liquidity. Cloudera does not assume any obligation to publicly provide revisions or updates to any forward-looking statements, whether as a result of new information, future developments or otherwise, should circumstances change, except as otherwise required by securities and other applicable laws.
+
+Press Contact Email: [press@cloudera.com](mailto:press@cloudera.com) Phone:[\+1 888 789 1488](tel:18887891488) Cloudera, Inc.
+
+**Ready to Get Started?**
+
+* [About us](https://www.cloudera.com/about.html)
+* [Careers](https://www.cloudera.com/careers.html)
+* [Leadership](https://www.cloudera.com/about/leadership.html)
+* [Newsroom](https://www.cloudera.com/about/news-and-blogs.html)
+* [Partners](https://www.cloudera.com/partners.html)
+
+[US: +1 888 789 1488](tel:18887891488)  
+[Outside the US: +1 650 362 0488](tel:16503620488)
+
+**Company**
+
+* [About us](https://www.cloudera.com/about.html)
+* [Careers](https://www.cloudera.com/careers.html)
+* [Our Culture](https://www.cloudera.com/about/our-culture.html)
+* [Leadership](https://www.cloudera.com/about/leadership.html)
+* [Locations](https://www.cloudera.com/about/locations.html)
+* [Newsroom](https://www.cloudera.com/about/news-and-blogs.html)
+
+**Get started**
+
+* [Certification](https://www.cloudera.com/services-and-support/training/certification.html)
+* [Contact sales](https://www.cloudera.com/contact-sales.html)
+* [Downloads](https://www.cloudera.com/downloads.html)
+* [Find a partner](https://www.cloudera.com/partners/partners-listing.html)
+* [View demos](https://www.cloudera.com/products/cloudera-data-platform/demos.html)
+* [Training](https://www.cloudera.com/services-and-support/training.html)
+* [Tutorials](https://www.cloudera.com/services-and-support/tutorials.html)
+
+**Resources**
+
+* [Blog](https://www.cloudera.com/blog.html)
+* [Events](https://www.cloudera.com/events.html)
+* [Trust Center](https://www.cloudera.com/products/trust-center.html)
+* [Community](https://community.cloudera.com/)
+* [Documentation](https://docs.cloudera.com/)
+* [Resources library](https://www.cloudera.com/resources.html)
+* [Support](https://lighthouse.cloudera.com/)
+
+![](https://www.cloudera.com/content/dam/www/marketing/brand/graphic-elements/footer-connections-pattern.png)
+
+© 2026 Cloudera, Inc. All rights reserved. [Terms & Conditions](https://www.cloudera.com/legal/terms-and-conditions.html) | [Privacy Statement and Data Policy](https://www.cloudera.com/legal/policies.html) | [Unsubscribe / Do Not Sell My Personal Information](https://www.cloudera.com/unsubscribe.html)  
+Apache Spark® and associated open source project names are trademarks of the Apache Software Foundation. [Complete list of trademarks.](https://www.cloudera.com/legal/terms-and-conditions.html#trademarks)
+
+## Your form submission has failed.
+
+This may have been caused by one of the following:
+
+* Your request timed out
+* A plugin/browser extension blocked the submission. If you have an ad blocking plugin please disable it and close this message to reload the page.
+
+loading
+

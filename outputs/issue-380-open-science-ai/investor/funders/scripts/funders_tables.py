@@ -90,7 +90,15 @@ def main():
     deals = rd(os.path.join(D, "deals.csv"))
     by_v = collections.defaultdict(list)
     for d in deals:
-        by_v[d["key"]].append(d)
+        if d["counted"] == "yes":
+            by_v[d["key"]].append(d)
+    # publish the science-topic key list behind this table (U1 frame B from part 2, plus U2)
+    with open(os.path.join(D, "science_topic_keys.csv"), "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["key", "venture", "universe", "why"])
+        for k in sorted(sci):
+            w.writerow([k, ven[k]["venture"], ven[k]["universe"],
+                        "U2 (open hardware, open science, science software)" if ven[k]["universe"] == "U2"
+                        else "U1 company found through GitHub's science topics (part 2 frame B)"])
     vrows = []
     for k in sorted(sci, key=lambda k: ven[k]["venture"].lower()):
         v = ven[k]
@@ -122,13 +130,18 @@ def main():
     def canon_early(n):
         return n
     lead_c, part_c, ex_e = collections.Counter(), collections.Counter(), collections.defaultdict(set)
+    seen_e = set()
     for d in rd(os.path.join(D, "deals.csv")):
-        if d["type"] not in early:
+        if d["type"] not in early or d["counted"] != "yes":
             continue
         for n in [x for x in d["lead"].split(" | ") if x]:
-            lead_c[n] += 1; ex_e[n].add(re.sub(r"\s*\(.*?\)", "", d["venture"]))
+            if (n, d["round_id"], "lead") not in seen_e:
+                seen_e.add((n, d["round_id"], "lead")); lead_c[n] += 1
+            ex_e[n].add(re.sub(r"\s*\(.*?\)", "", d["venture"]))
         for n in [x for x in d["investors"].split(" | ") if x]:
-            part_c[n] += 1; ex_e[n].add(re.sub(r"\s*\(.*?\)", "", d["venture"]))
+            if (n, d["round_id"], "lead") not in seen_e and (n, d["round_id"], "part") not in seen_e:
+                seen_e.add((n, d["round_id"], "part")); part_c[n] += 1
+            ex_e[n].add(re.sub(r"\s*\(.*?\)", "", d["venture"]))
     names = sorted(set(lead_c) | set(part_c), key=lambda n: (-(lead_c[n] + part_c[n]), -lead_c[n], n))
     erows = [{"investor": n, "type": TYPE_LABEL.get(tmap2.get(n, ""), tmap2.get(n, "")), "early_rounds": lead_c[n] + part_c[n],
               "led": lead_c[n], "examples": ", ".join(sorted(ex_e[n])[:8])} for n in names[:40]]
@@ -139,10 +152,17 @@ def main():
     for r in sorted(inv, key=lambda r: -int(r["ventures"])):
         if r.get("stated_open_source_thesis"):
             q = r["stated_open_source_thesis"].strip().strip('"').strip("“”")
-            trows.append({"investor": r["investor"], "quote": f"“{q}” ([source]({r['thesis_source']}))",
+            kind = {"dedicated_mandate": "dedicated open-source mandate", "named_focus_or_program": "named focus or program",
+                    "partner_remark": "partner's remark", "portfolio_description": "portfolio-company description",
+                    "mission_statement": "mission statement"}.get(r.get("thesis_kind", ""), "")
+            trows.append({"investor": r["investor"], "kind": kind, "quote": f"“{q}” ([source]({r['thesis_source']}))",
                           "ventures": r["ventures"]})
-    open(os.path.join(T, "thesis.md"), "w").write(md_table(trows, ["investor", "quote", "ventures"],
-                                                           ["Investor", "In their words", "Ventures here (U1–U4)"]))
+    order = ["dedicated open-source mandate", "named focus or program", "partner's remark", "portfolio-company description",
+             "mission statement", ""]
+    trows.sort(key=lambda r: (order.index(r["kind"]), -int(r["ventures"])))
+    open(os.path.join(T, "thesis.md"), "w").write(md_table(trows, ["investor", "kind", "quote", "ventures"],
+                                                           ["Investor", "Kind of statement", "In their words",
+                                                            "Ventures here (U1–U4)"]))
     # corporate groups: distinct ventures across a parent's arms (e.g. Alphabet = GV, CapitalG, Gradient, Google)
     grp = collections.defaultdict(set)
     gmembers = collections.defaultdict(set)
@@ -163,6 +183,17 @@ def main():
         for r in rd(p):
             r["pass"] = pid
             prog.append(r)
+    # rows that describe the same money twice, or whose program label overstates what the page says (Edison's review)
+    CHECK = [("Chan Zuckerberg Initiative", "cycles 1-5", "CZI's own 2024 report: 193 grants, $51.8M over cycles 1-5. Overlaps the cycles 1-6 row; do not add them."),
+             ("Chan Zuckerberg Initiative", "cycles 1-6", "Computed from the program page's per-cycle figures; differs from CZI's 2024 report ($51.8M over cycles 1-5). Overlaps that row; do not add them."),
+             ("Biohub, Wellcome, Kavli", "Open Source for Science Fund", "Same $20M anchor commitment as the Renaissance Philanthropy row; count it once."),
+             ("Heavybit", "open-source investment thesis", "No open-source thesis stated on the page; developer-tools fund with open-source companies in its portfolio."),
+             ("Crane Venture Partners", "open-source investment thesis", "No open-source thesis stated on the page.")]
+    for r in prog:
+        r["check_note"] = ""
+        for f_, p_, note in CHECK:
+            if r["funder"].startswith(f_) and p_ in r["program"]:
+                r["check_note"] = note
     if prog:
         with open(os.path.join(D, "programs.csv"), "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=list(prog[0])); w.writeheader(); w.writerows(prog)

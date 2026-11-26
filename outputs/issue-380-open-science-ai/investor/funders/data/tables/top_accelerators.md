@@ -1,6 +1,6 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 313 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, ARC Prize Foundation … |
+| Y Combinator | accelerator / studio | 301 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, Activeloop … |
 | Neo | accelerator / studio | 4 | 1 | Bluesky, Dagster Labs, Mage, Warp |
 | Open Core Ventures | accelerator / studio | 4 | 0 | GrapesJS, Mermaid Chart, Phaser Studio Inc., Stirling PDF |
 | Techstars | accelerator / studio | 4 | 0 | Comet ML, Ionic, Open Bionics, Qovery |
@@ -14,8 +14,11 @@
 | 5G Open Innovation Lab | accelerator / studio | 1 | 0 | Synadia |
 | Alchemist Accelerator | accelerator / studio | 1 | 0 | Mat3ra |
 | Bethnal Green Ventures | accelerator / studio | 1 | 0 | Overleaf |
+| Buildspace | accelerator / studio | 1 | 0 | Supermemory |
 | Disney Accelerator | accelerator / studio | 1 | 0 | Open Bionics |
 | Entrepreneurs Roundtable Accelerator | accelerator / studio | 1 | 0 | Fingerprint |
+| FONGIT | accelerator / studio | 1 | 0 | Proton AG |
 | HF0 | accelerator / studio | 1 | 0 | Fish Audio |
 | MiraclePlus | accelerator / studio | 1 | 1 | Sealos |
+| Pioneer | accelerator / studio | 1 | 0 | E2B |
 | Zypsy | accelerator / studio | 1 | 0 | Zylon |
