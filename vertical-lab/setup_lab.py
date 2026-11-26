@@ -1435,6 +1435,24 @@ def movie(data, idata):
                                                 if sc.members("waste") else "") + ", the DED and the wire EDM.", 5.8,
             stagger(fs_main, overlap=0.36), hold=1.2, cam_to=CAM_FLOOR,
             labels=W.auto(sc, CAM_FLOOR, W.floor_labels(F, main, have)))
+    # round 16 (PR #371's check, 2026-11-26: the waste station "is probably never on screen": the hood's front faces
+    # the aisle and every camera that showed the hood looked at its back): the hood from the aisle, close
+    if sc.members("waste"):
+        import waste_station as WS
+        Mh = sc.world("wh_fumehood:body")
+
+        def hw(x_, y_, z_):
+            return tuple(float(v) for v in (Mh @ np.r_[x_, y_, z_, 1.0])[:3])
+        cam_hood = [hw(900.0, WS.YF - 3300.0, 2300.0), hw(0.0, WS.YF + 200.0, 850.0), (0, 0, 1)]
+        sc.step(f"5/{n}", "The chemical waste station, from the aisle: the fume hood's base is a vented solvent cabinet "
+                "(yellow doors) and a vented acid cabinet (blue). Capped bottles come in to the intake tray under the "
+                "sash, one class a trip, and a person consolidates them on the day shift (PR #371).", 3.2, None,
+                hold=1.8, cam_to=cam_hood,
+                labels=[("solvent cabinet: the IPA wastes", hw(-330.0, WS.YF + 30.0, 620.0), (0.06, 0.66)),
+                        ("acid cabinet: acid aqueous; Weck's a shelf apart", hw(330.0, WS.YF + 30.0, 380.0),
+                         (0.58, 0.80)),
+                        ("intake tray: closed bottles only", hw(WS.INTAKE["x"], WS.INTAKE["y"], WS.Z0 + 60.0),
+                         (0.62, 0.30))])
     if late:
         names_late = {"eos_m400": "an EOS M 400-4 (large-format LPBF)", "meltio_cell": "a Meltio robot cell (DED repair)"}
         fs_late = [f for k, f in zip(order, fs) if k in late]
@@ -1467,23 +1485,25 @@ def movie(data, idata):
     sc.step(f"6/{n}", "The first MiR250 rolls onto its charging plate.", 2.0,
             roll, hold=0.2, labels=[("MiR250, 800 x 580 x 300 mm", (x, y, 300), (0.20, 0.60))])
     cab_names = u0.part_names("cabinet")
+    cb_names = u0.part_names("control box")
+    # round 16 (PR #371's check, and round 15's audit: "the UR control box slides through a MiR's Class D unit"): the
+    # box went in sideways from the -y side, where the safety PR hung the Class D unit and moved the cabinet's door to
+    # the front end. Now the box is set on the MiR's top first, lowered from above, and the cabinet comes down over it,
+    # so nothing passes through anything; the box is serviced later through the door at the cabinet's front end.
+
+    def control_box(u):
+        sc.gmat[f"{u0.name}_cb"] = T((0, 0, 600 * (1 - u)))
+        for nm in cb_names:
+            sc.alpha[nm] = min(1.0, u * 4)
+    sc.step(f"6/{n}", "The UR control box (460 x 449 x 254 mm, 12 kg) is set on the MiR250's top, lowered from above.",
+            1.6, control_box, hold=0.2, labels=[("UR control box", (x, y, 600), (0.20, 0.42))])
 
     def cabinet(u):
         sc.gmat[f"{u0.name}_cab"] = T((0, 0, 700 * (1 - u)))
         for nm in cab_names:
             sc.alpha[nm] = min(1.0, u * 3)
-    sc.step(f"6/{n}", "Its cabinet goes on top: it carries the arm and holds the UR control box.", 1.6, cabinet, hold=0.2)
-    cb_names = u0.part_names("control box")
-    cab_body = [nm for nm in cab_names if "holder" not in nm]
-
-    def control_box(u):
-        sc.gmat[f"{u0.name}_cb"] = T((0, -700 * (1 - u), 0))
-        for nm in cb_names:
-            sc.alpha[nm] = min(1.0, u * 4)
-        for nm in cab_body:
-            sc.alpha[nm] = 1.0 - 0.7 * math.sin(math.pi * u)
-    sc.step(f"6/{n}", "The UR control box (460 x 449 x 254 mm, 12 kg) goes into the cabinet.", 1.8, control_box,
-            hold=0.2, labels=[("UR control box", (x, y, 600), (0.20, 0.42))])
+    sc.step(f"6/{n}", "Its cabinet comes down over the box: it carries the arm, the Class D extinguisher on its aisle "
+            "side and a door at its front end for the control box.", 1.8, cabinet, hold=0.2)
     rb = u0.robot
     arm_names = u0.part_names("arm")
     root0 = sc.gmat[rb.root].copy()

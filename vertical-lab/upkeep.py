@@ -245,6 +245,15 @@ TASKS = [
       source=SRC["thermoflex"] + "; 3,000 h of a 24 h day is 125 days"),
     T("chiller_fluid", "chiller", "chiller: fluid changed (the XRD's tube stops)", ("days", 182), "floor", 1.0,
       kind="consumables", spares="distilled water or glycol mix", source=SRC["thermoflex"]),
+    # round 16 (PR #371's check, 2026-11-26: "Waste person-time also still isn't booked in upkeep.TASKS"): the waste
+    # station's weekly hour (notes/waste.md: at one alloy a day, sealing liners, consolidating the bottles from the
+    # intake tray into the hood's cabinets, labels and dates, the pickup request: "about an hour a week", assumed).
+    # A person's task at the hood: the hood's intake tray is busy a quarter of an hour of it.
+    T("waste", "fumehood", "waste: sealed vacuum liners into the family pails, the intake tray's bottles consolidated "
+      "into the hood's solvent and acid cabinets, labels and dates checked, a pickup requested when a container is full",
+      ("days", 7), "floor", 0.25, person=1.0, kind="consumables",
+      spares="liners, labels, empty 1 L bottles", source="notes/waste.md (PR #371): about an hour a week at one alloy "
+      "a day, assumed"),
     T("hood_cert", "fumehood", "fume hood: face-velocity certification", ("days", 365), "vendor", 2.0,
       source=SRC["hood"]),
     T("gb_regen", "glovebox", "glovebox purifier regenerated (forming gas, up to 12 h)", ("days", 120), "auto", 12.0,

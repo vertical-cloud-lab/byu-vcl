@@ -661,10 +661,14 @@ def workflow(data, lab=True):
                                                      [(x, y, P.VIAL_R + P.POCKET_CLEAR) for x, y, _ in rack_seats],
                                                      h=40.0, floor=rack_seats[0][2]))
     sc.fluids = set(getattr(sc, "fluids", ())) | {nm for nm in sc.actors
-                                                   if nm.startswith(("cub:tipliq/", "cub:wellliq/", "cub:tubeliq/"))}
+                                                   if nm.startswith(("cub:tipliq/", "cub:wellliq/", "cub:tubeliq/",
+                                                                     "cub:p3liq/"))}
     sc.soft = set(getattr(sc, "soft", ())) | {nm for nm in sc.actors if nm.startswith(("cub:tip/", "cub:tip2/",
-                                                                                         "cub:tip3/"))}
-    test = IL.powder_test()
+                                                                                         "cub:tip3/", "cub:ptip/"))}
+    # round 16 (PR #371's check: this clip "still has the P20 making ten 20 µL transfers"): the 200 µL in one transfer
+    # of round 14's P300 (PR #372, r9_cubxl.powder_test_p300), which the CubXL's own clip already uses
+    import r9_cubxl
+    test = r9_cubxl.powder_test_p300()
     cub.pose(cubxl_rig.state_at(test, 0.0))
     q = IL.POWDER_TEST
     # Round 14: the seat in Ben's tight-fit 9-vial holder that the dosed vial goes into, drawn with its lips flexed open.
@@ -686,7 +690,7 @@ def workflow(data, lab=True):
         sc.set_mesh(nm, m2)
     sc.cam = list(CAM_LAB if lab else CAM_WIDE)
     L.extra_gauges = [("Arm", f"{ROBOT_NAME}, parked"), ("Doser", "module 1 at the station"),
-                      ("HR-202i", "0.0000 g  (220 g x 0.1 mg)"), ("CubXL P20", "parked, no tip")]
+                      ("HR-202i", "0.0000 g  (220 g x 0.1 mg)"), ("CubXL P300", "parked, no tip")]
     L.apply_state()
     n = 6
     # the powder: a heap on the vial's floor at its angle of repose, to scale (25 mg at a poured 1.4 g/cm3 is 18 mm3:
@@ -860,26 +864,25 @@ def workflow(data, lab=True):
           labels=[("CubXL: the holder's free seat", p_slot + (0, 0, 40), (0.74, 0.24))])
     sc.step(f"5/{n}", cap, 1.4, rb.joint_to(PARK_RAD), hold=0.1)
     L.note(0, "Arm", "parked")
-    # ------------------------------------------------------------------ 6. the P20 adds 200 uL of ASW; tray A up
-    each = q["ul"] / q["n"]
-    cap = f"The CubXL's own P20 (1-20 µL) takes a 20 µL tip, the capper lifts the seawater cap, and {q['n']} " \
-          f"transfers of {each:.0f} µL put {q['ul']:.0f} µL on the powder, {q['ul'] / area:.1f} mm deep (to scale). " \
-          "The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl."
+    # ------------------------------------------------------------------ 6. the P300 adds 200 uL of ASW; tray A up
+    cap = f"The CubXL's P300 (20-300 µL, on its own 40 mm lift; PR #372) takes a 300 µL tip, the capper lifts the " \
+          f"seawater cap, and one transfer puts {q['ul']:.0f} µL on the powder, {q['ul'] / area:.1f} mm deep (to " \
+          "scale): the P20 alone took ten. The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl."
     cam6 = [tuple(cub.deck_world(560.0, -420.0, 420.0)), tuple(cub.deck_world(250.0, 80.0, 30.0)), (0, 0, 1)]
 
     def on_state(s):
         L.liquid_h = s["vial"] / area
         L.set_fill()
-        if s["tip"] == "head":
-            L.note(3, "CubXL P20", f"{s['tip_ul']:.1f} µL in the tip; vial {s['vial']:.0f} µL"
+        if s.get("ptip") == "head":
+            L.note(3, "CubXL P300", f"{s['p3_ul']:.0f} µL in the tip; vial {s['vial']:.0f} µL"
                    + (f" ({s['xfer']})" if s["xfer"] else ""))
-        elif s["tip"] == "waste":
-            L.note(3, "CubXL P20", f"tip off; vial {s['vial']:.0f} µL")
-    sc.step(f"6/{n}", cap, 2.4, cub.play(test, "start", "open", on_state), hold=0.1, cam_to=cam6,
-            labels=[("CubXL P20 and capper", cub.deck_world(250.0, 120.0, 140.0), (0.70, 0.18)),
+        elif s.get("ptip") == "rack" and s["vial"] > 0:
+            L.note(3, "CubXL P300", f"tip back in its rack; vial {s['vial']:.0f} µL")
+    sc.step(f"6/{n}", cap, 2.6, cub.play(test, "start", "open", on_state), hold=0.1, cam_to=cam6,
+            labels=[("CubXL P300 (on its lift), P20 and capper", cub.deck_world(250.0, 120.0, 140.0), (0.66, 0.18)),
                     ("seawater (ASW) stock", cub.deck_world(318.0, 101.0, 75.0), (0.84, 0.46))])
-    sc.step(f"6/{n}", cap, 3.2, cub.play(test, "open", "first", on_state), hold=0.1)
-    sc.step(f"6/{n}", cap, 5.0, cub.play(test, "first", "end", on_state), hold=0.4)
+    sc.step(f"6/{n}", cap, 3.4, cub.play(test, "open", "first", on_state), hold=0.3)
+    sc.step(f"6/{n}", cap, 3.6, cub.play(test, "first", "end", on_state), hold=0.4)
     cap = "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion " \
           "tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power."
     L.store("A", f"6/{n}", cap, cam=cam_wide)

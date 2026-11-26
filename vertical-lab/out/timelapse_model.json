@@ -472,21 +472,21 @@
    "corrosion": 32
   },
   "13 weeks": {
-   "atomized": 77,
-   "printed": 66,
-   "tested": 66,
-   "promoted": 6,
+   "atomized": 78,
+   "printed": 67,
+   "tested": 67,
+   "promoted": 5,
    "runs": 139,
    "powder_kg": 34.12,
-   "data_gb": 422.45,
+   "data_gb": 424.53,
    "video_tb": 25.55,
    "tensile": 288,
-   "sem_images": 1386,
-   "xrd": 77,
-   "xrf": 77,
-   "psd": 77,
-   "indents": 198,
-   "corrosion": 132
+   "sem_images": 1406,
+   "xrd": 78,
+   "xrf": 78,
+   "psd": 78,
+   "indents": 201,
+   "corrosion": 134
   },
   "26 weeks": {
    "atomized": 173,
@@ -630,26 +630,26 @@
  "upkeep": {
   "what": "upkeep.py's tasks and seeded failures booked into this schedule: calendar PM, consumables by use, the arms' reference checks (control charts), repairs by a person on the next shift or a vendor after a wait for parts. A model; out/upkeep_model.json has every task with its source.",
   "people_hours_per_week": {
-   "mean_after_ramp": 31.0,
-   "max": 38.6,
+   "mean_after_ramp": 32.0,
+   "max": 38.9,
    "crucible": 13.3,
-   "upkeep": 17.7,
+   "upkeep": 18.7,
    "of_a_shift_week": 40.0
   },
   "tasks": {
    "arm_checks": 1628,
-   "people": 1426,
+   "people": 1477,
    "vendor_visits": 19,
    "machine_itself": 627,
    "repairs": 83
   },
   "hours": {
-   "people": 901,
+   "people": 952,
    "arms": 366
   },
   "availability": {
-   "carousel": 0.9859,
-   "repowder": 0.964,
+   "carousel": 0.9841,
+   "repowder": 0.9621,
    "sieve_cell": 0.9926,
    "mastersizer": 0.9964,
    "xrd": 0.9961,
@@ -660,8 +660,8 @@
    "furnace": 0.9948,
    "tensile_h": 0.9969,
    "instron_floor": 0.9947,
-   "cnc": 0.9985,
-   "mount_press": 0.9937,
+   "cnc": 0.9988,
+   "mount_press": 0.994,
    "polisher": 0.9946,
    "vhx": 0.9989,
    "hardness": 0.9901,
@@ -673,7 +673,7 @@
    "unit0": 0.9537,
    "unit1": 0.953
   },
-  "availability_route_mean": 0.9893,
+  "availability_route_mean": 0.9891,
   "alloys_a_year": {
    "atomized_with_upkeep": 360,
    "atomized_without": 378,
