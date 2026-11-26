@@ -17,7 +17,7 @@ schedules interact in the model, not what the real lab will find.
 - **The cap was not what made copper slow.** With it gone, aluminium makes 40-56 % more lots a year, but every
   policy finishes about as many copper alloys as in round 2. Copper is limited by money: about 80 % of each campaign's
   spending goes to orders of metal and consumables, and the spending plan holds copper back most of the year. With
-  three times the copper money, BOFN and pKGFN gain +0.17 and +0.08 (3-4 seeds) and draw level with the funnel.
+  three times the copper money, BOFN and pKGFN gain +0.14 and +0.08 (4 seeds each) and draw level with the funnel.
 - **Aluminium: BOFN and pKGFN win on time and on the final alloy.** They reach the halfway target in 11 and 10 of 12
   seeds at median days 96 and 83 (nothing else in more than 2 of 12), and finish at 0.73 ± 0.02 and 0.71 ± 0.03.
 - **Copper: the funnel still wins** (0.69 ± 0.02; state of the art at day 142 and halfway at day 148, against
@@ -234,24 +234,24 @@ early for the funnel and the baselines.)
 
 ### 3.3 Copper's tests from round 2, on the new engine
 
-**Three times the copper money (`cu_money`, $180k a year; BOFN 3 seeds, pKGFN 4, the rest 12; paired against the
+**Three times the copper money (`cu_money`, $180k a year; BOFN and pKGFN 4 seeds each, the rest 12; paired against the
 same policy and seeds in the main benchmark):**
 
 | Copper | best new alloy | paired against its own $60k run | vs the funnel at $180k, paired | T1 reached; median day | T2 reached; median day | spent |
 |---|---|---|---|---|---|---|
 | Tiered screening | 0.70 ± 0.01 | +0.01 ± 0.01 (6/6) | | 11/12; 107 | 11/12; 136 | $178k |
-| BOFN, time-aware | 0.68 ± 0.01 | **+0.17 ± 0.04 (3/0)** | +0.03 ± 0.05 (1/2) | 3/3; 151 | 3/3; 243 | $147k |
+| BOFN, time-aware | 0.69 ± 0.02 | **+0.14 ± 0.04 (4/0)** | +0.03 ± 0.04 (2/2) | 4/4; 151 | 4/4; 204 | $145k |
 | pKGFN, time-aware | 0.67 ± 0.03 | **+0.08 ± 0.05 (3/1)** | +0.01 ± 0.02 (2/2) | 4/4; 149 | 2/4; 184 | $148k |
 | GP-BO | 0.61 ± 0.03 | +0.06 ± 0.05 (7/5) | −0.08 ± 0.04 (3/9) | 9/12; 198 | 5/12; >365 | $181k |
 | Heuristic | 0.60 ± 0.02 | +0.03 ± 0.03 (6/6) | −0.09 ± 0.03 (2/10) | 10/12; 232 | 2/12; >365 | $181k |
 
 * **This reverses round 2.** There, the funnel turned three times the money into results and BOFN didn't (−0.07
-  against the funnel). Here BOFN and pKGFN gain the most from it (+0.17 and +0.08) and draw level with the funnel on
+  against the funnel). Here BOFN and pKGFN gain the most from it (+0.14 and +0.08) and draw level with the funnel on
   the final alloy, while the funnel gains +0.01: it was near its ceiling already. With the cap gone, BOFN and pKGFN
   can turn money into parallel work (they immersed many more coupons and stopped 16-19 a year early). At $60k they
   can't, because the money runs out first.
 * **The funnel is still the fastest to both copper targets** at $180k (day 107 and 136, against about 150 and
-  184-243), and the comparison rests on 3-4 seeds for BOFN and pKGFN.
+  184-204), and the comparison rests on 4 seeds each for BOFN and pKGFN.
 
 **A mis-specified proxy (`cu_proxy`, the funnel's strengthening coefficients each off by a lognormal factor, σ = 0.4;
 12 seeds):** copper 0.70 ± 0.01, +0.01 ± 0.02 against the plain funnel (6 seeds ahead, 6 behind), state of the art at
@@ -340,8 +340,8 @@ fit-out and $1.18M a year fixed; the conventional lab $0.54M and $0.12M a year.
 - **Copper, the main benchmark:** the funnel finishes ahead of both (0.69 ± 0.02 against 0.61 ± 0.03 for pKGFN and
   0.58-0.60 for BOFN; paired −0.08 to −0.11, 2-3 seeds of 12 ahead) and gets to both targets much sooner (state of the
   art at day 142 against 221-295; halfway in 10 of 12 seeds at day 148 against 4-5 of 12).
-- **Copper with three times the money:** BOFN and pKGFN draw level with the funnel on the final alloy (+0.03 ± 0.05
-  and +0.01 ± 0.02, 3-4 seeds), but the funnel still gets to both targets first.
+- **Copper with three times the money:** BOFN and pKGFN draw level with the funnel on the final alloy (+0.03 ± 0.04
+  and +0.01 ± 0.02, 4 seeds each), but the funnel still gets to both targets first.
 - **Copper, the vertical lab against the conventional lab:** pKGFN in the vertical lab is not faster to copper's
   halfway target than the funnel in the conventional lab (it got there in 4 of 12 seeds in its year, the conventional
   funnel in 9 of 12 in three).
@@ -368,7 +368,7 @@ All simulated: synthetic truths, simulated instruments, assumed capacities, pric
 - **pKGFN's simplifications:** an independent-alternatives inner max (a fantasy changes only its own part's posterior),
   KG for the top 4 candidates of each stage, 6 fantasies and 24 draws.
 - **Seeds:** 12 for the main benchmark (24 for the baselines), and 12 for the cheap policies in every test; BOFN and
-  pKGFN 3-4 in the three-times-money test and 4 with γ₂; gaps under about 0.05 mean little.
+  pKGFN 4 in the three-times-money test and 4 with γ₂; gaps under about 0.05 mean little.
 - **Not run in this session:** BOFN on 12 more seeds (`main_more_net`; the baselines have 24 seeds, BOFN and pKGFN
   12) and BOFN and pKGFN in the conventional lab (`conventional_net`). They are defined in `twin/bench3.py`;
   `python -m twin.bench3 run main_more_net conventional_net` resumes them. BOFN and pKGFN with γ₂ ran on 4 seeds each.
