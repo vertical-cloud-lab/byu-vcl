@@ -43,12 +43,12 @@ and the classes were frozen before any financial figure was looked up
   went to AI companies that bought the team and the tool: Bun to Anthropic, Astral and Promptfoo to OpenAI, and
   Continue to Cursor. That is a new and real exit route, but at undisclosed prices.
 - **For open science specifically (persona A), the private capital is thin.** In the science topics, the companies
-  that sell a project are small: 55 of them, 5 with $10M or more raised. Companies' share of stars is higher in the
+  that sell a project are small: 55 of them, 5 with $10M or more raised. Hugging Face, the largest, is a general AI
+  platform rather than a science company. Opentrons, the one lab-automation company with a reported $1.8B mark,
+  shows that a lab-hardware company can get there. It also shows the frame's limits: its main repository carries none
+  of the 22 topic tags, so only a 12-star side repository brought it in. Companies' share of stars is higher in the
   topics closest to DAL and the SDL kit (chemistry, materials and lab automation: 41%, with universities and
-  governments at 23%), but that is a subset I chose after seeing the data, not a pre-registered test. Hugging Face, the largest, is a general AI
-  platform rather than a science company. Opentrons, the one lab-automation company with a reported $1B mark, shows
-  that a lab-hardware company can get there. It also shows the frame's limits: its main repository carries none of
-  the 22 topic tags, so only a 12-star side repository brought it in.
+  governments at 23%), but I chose that subset after seeing the data, so it is not a pre-registered test.
 - **The commons is mostly run on small budgets, with one large exception.** The Linux Foundation's $221M (2024)
   comes from corporate members that use the software as a complement. Most other foundations that own popular
   projects have a few million dollars a year or less. Edison's literature answer put the Python Software
