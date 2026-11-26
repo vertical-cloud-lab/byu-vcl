@@ -53,9 +53,16 @@ def text_of(url):
     return out
 
 
+_nospace = {}
+
+
 def found(name, text):
     n = norm(re.sub(r"\(person\)", "", name))
     if n in text:
+        return True
+    # spacing variants ("Seed Camp" for "Seedcamp", "Open AI" for "OpenAI")
+    ns = _nospace.setdefault(id(text), text.replace(" ", ""))
+    if len(n.strip()) >= 6 and n.replace(" ", "") in ns:
         return True
     k = n.strip()
     for full, alts in ALT.items():

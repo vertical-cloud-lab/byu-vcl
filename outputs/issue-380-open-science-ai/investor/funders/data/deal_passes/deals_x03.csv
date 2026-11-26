@@ -1,0 +1,5 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+pingcap,PingCAP,U1,series_b,Series B,2017-06,15000000,China Growth Capital,Matrix Partners China | Yunqi Partners | FreeS Fund | K2VC,https://en.wikipedia.org/wiki/PingCAP,wikipedia,cites PR Newswire release of 2017-06-20
+pingcap,PingCAP,U1,series_c,Series C,2018-09,50000000,Fosun | Morningside Venture Capital,China Growth Capital | Yunqi Partners | Matrix Partners China,https://pingcap.com/blog/series-c-announcement/,company,
+pingcap,PingCAP,U1,series_d,Series D,2020-11,270000000,GGV Capital | Access Technology Ventures | Anatole Investment | Jeneration Capital | 5Y Capital,Coatue | Bertelsmann Asia Investment Fund | FutureX Capital | Kunlun Capital | Trustbridge Partners | Matrix Partners China | Yunqi Partners,https://pingcap.com/blog/pingcap-the-company-behind-tidb-raises-$270-million-in-series-d-funding,company,
+pingcap,PingCAP,U1,venture_unspecified,Undisclosed round at reported USD 3B valuation,2021-07,,,GIC | Sequoia Capital China | Future Capital,https://en.wikipedia.org/wiki/PingCAP,wikipedia,amount undisclosed; Wikipedia cites Global Corporate Venturing

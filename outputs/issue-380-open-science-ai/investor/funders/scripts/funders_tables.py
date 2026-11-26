@@ -115,6 +115,25 @@ def main():
     open(os.path.join(T, "science_hardware_ventures.md"), "w").write(md_table(
         vrows, ["venture", "group", "open", "funders", "kinds"],
         ["Venture (link: latest round's source)", "Group", "What is open", "Funders (leads in bold)", "Kinds of funding"]))
+    # early rounds (pre-seed, seed, angel, accelerator, Series A): who leads them and who joins them, U1-U4
+    early = {"pre_seed", "seed", "angel", "accelerator", "series_a"}
+    tmap2 = {r["investor"]: r.get("type", "") for r in inv}
+    alias_rows = rd(os.path.join(D, "investor_aliases.csv"))
+    def canon_early(n):
+        return n
+    lead_c, part_c, ex_e = collections.Counter(), collections.Counter(), collections.defaultdict(set)
+    for d in rd(os.path.join(D, "deals.csv")):
+        if d["type"] not in early:
+            continue
+        for n in [x for x in d["lead"].split(" | ") if x]:
+            lead_c[n] += 1; ex_e[n].add(re.sub(r"\s*\(.*?\)", "", d["venture"]))
+        for n in [x for x in d["investors"].split(" | ") if x]:
+            part_c[n] += 1; ex_e[n].add(re.sub(r"\s*\(.*?\)", "", d["venture"]))
+    names = sorted(set(lead_c) | set(part_c), key=lambda n: (-(lead_c[n] + part_c[n]), -lead_c[n], n))
+    erows = [{"investor": n, "type": TYPE_LABEL.get(tmap2.get(n, ""), tmap2.get(n, "")), "early_rounds": lead_c[n] + part_c[n],
+              "led": lead_c[n], "examples": ", ".join(sorted(ex_e[n])[:8])} for n in names[:40]]
+    open(os.path.join(T, "top_early.md"), "w").write(md_table(erows, ["investor", "type", "early_rounds", "led", "examples"],
+                                                              ["Funder", "Type", "Early rounds joined", "Of which led", "Ventures"]))
     # corporate groups: distinct ventures across a parent's arms (e.g. Alphabet = GV, CapitalG, Gradient, Google)
     grp = collections.defaultdict(set)
     gmembers = collections.defaultdict(set)

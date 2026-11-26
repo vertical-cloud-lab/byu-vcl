@@ -5,38 +5,38 @@
 | Protocol Labs | crypto fund or DAO | 3 | 1 | Zama, Molecule, Prime Intellect |
 | CoinFund | crypto fund or DAO | 2 | 2 | Fuel Labs, Prime Intellect |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
+| NIST | government grant | 2 | 0 | M-Labs Ltd, Voxel51 |
+| NLnet Foundation | philanthropy | 2 | 0 | Graphite, SixtyFPS GmbH |
+| National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
 | North Island Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Nous Research |
 | Pantera Capital | crypto fund or DAO | 2 | 0 | Brave Software, Zama |
 | Robot Ventures | crypto fund or DAO | 2 | 1 | Nous Research, Together AI |
 | Seed Club Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Molecule |
 | 1kx | crypto fund or DAO | 1 | 0 | Molecule |
+| Alameda Research | crypto fund or DAO | 1 | 0 | Fuel Labs |
 | Alfred P. Sloan Foundation | philanthropy | 1 | 0 | JuliaHub |
+| BAT token buyers | crypto fund or DAO | 1 | 0 | Brave Software |
 | Bain Capital Crypto | crypto fund or DAO | 1 | 0 | Fuel Labs |
+| BeakerDAO | crypto fund or DAO | 1 | 0 | Molecule |
+| Block1 | crypto fund or DAO | 1 | 0 | Linera |
 | Blockchain Capital | crypto fund or DAO | 1 | 1 | Fuel Labs |
+| Blockwall | crypto fund or DAO | 1 | 0 | Fuel Labs |
+| Breakout Labs | philanthropy | 1 | 0 | Mat3ra |
+| CDTI | government grant | 1 | 1 | BCN3D Technologies |
 | Chan Zuckerberg Initiative | philanthropy | 1 | 0 | Seqera |
+| Chorus One | crypto fund or DAO | 1 | 0 | Molecule |
+| CoinList participants | crypto fund or DAO | 1 | 0 | Rainbow |
+| Collab+Currency | crypto fund or DAO | 1 | 0 | Prime Intellect |
 | Community investors | crowdfunding | 1 | 0 | Framework Computer |
+| Dialectic | crypto fund or DAO | 1 | 0 | Fuel Labs |
+| Digital Currency Group | crypto fund or DAO | 1 | 0 | Brave Software |
+| Distributed Global | crypto fund or DAO | 1 | 1 | Prime Intellect |
 | Electric Capital | crypto fund or DAO | 1 | 0 | Anoma |
+| European Commission | government grant | 1 | 0 | Graphite |
 | European Space Agency | government grant | 1 | 0 | Lime Microsystems |
 | European Union | government grant | 1 | 0 | mzio GmbH |
 | Federal Ministry for Economic Affairs and Energy (ZIM) | government grant | 1 | 0 | mzio GmbH |
+| GSR Markets | crypto fund or DAO | 1 | 0 | Linera |
 | Gates Foundation | philanthropy | 1 | 0 | Our World in Data |
 | Genesis crowdfunding backers | crowdfunding | 1 | 0 | FarmBot |
 | German Federal Ministry of Education and Research (grant) | government grant | 1 | 0 | NetBird |
-| Government of Canada (Sovereign AI Compute Strategy) | government grant | 1 | 0 | Cohere |
-| Government of Canada (via Canada Development Investment Corporation) | government grant | 1 | 0 | Cohere |
-| Hack VC | crypto fund or DAO | 1 | 0 | Zama |
-| Innovate UK | government grant | 1 | 0 | Augmented Instruments |
-| Librem 13/15 crowdfunding backers | crowdfunding | 1 | 0 | Purism |
-| Librem 5 crowdfunding backers | crowdfunding | 1 | 0 | Purism |
-| Multicoin Capital | crypto fund or DAO | 1 | 1 | Zama |
-| NASA (SBIR) | government grant | 1 | 0 | PickNik Robotics |
-| NLnet Foundation | philanthropy | 1 | 0 | SixtyFPS GmbH |
-| National AI Industry Investment Fund | government grant | 1 | 0 | Chaitin Tech |
-| National Geographic | government grant | 1 | 0 | Sofar Ocean Technologies |
-| National Institute of Mental Health (SBIR) | government grant | 1 | 0 | Backyard Brains |
-| National Institute on Aging (NIH SBIR) | government grant | 1 | 0 | Hello Robot |
-| National Institutes of Health (NIBIB) | government grant | 1 | 0 | Open Imaging, Inc. |
-| National Science Foundation | government grant | 1 | 0 | re:3D |
-| National Social Security Fund Zhongguancun Fund (Legend Capital) | government grant | 1 | 1 | Chaitin Tech |
-| Paradigm | crypto fund or DAO | 1 | 0 | Nous Research |
-| Partech International | government grant | 1 | 0 | Jaspersoft |

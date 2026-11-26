@@ -1,0 +1,4 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+rancher,Rancher,U1,series_b,Series B,2016-05,20000000,GRC SinoGreen,Mayfield | Nexus Venture Partners,https://techcrunch.com/2016/05/09/rancher-labs-raises-20m-series-b-round-for-its-container-management-platform/,news,"Total to date USD 30M, implying about USD 10M earlier (Wikipedia: 2015 USD 10M)"
+warpdotdev,Warp,U1,seed,Seed,2022-04,6000000,GV,Neo | BoxGroup,https://techcrunch.com/2022/04/05/warp-raises-23m-to-build-a-better-terminal/,news,Announced together with Series A
+warpdotdev,Warp,U1,series_a,Series A,2022-04,17000000,Dylan Field (person),Marc Benioff (person) | Elad Gil (person),https://neo.substack.com/p/warp-comes-out-of-its-shell,investor,Field led per TechCrunch; Benioff and Gil named as financing participants by Neo

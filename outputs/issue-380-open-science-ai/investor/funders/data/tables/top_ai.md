@@ -1,8 +1,9 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 20 | 0 | Anomaly, BricksAI, Bytebot, DrDroid, Experiential Labs, Flower, Freebuff, Ollama … |
+| Y Combinator | accelerator / studio | 43 | 0 | 0.security, Activeloop, Acyclic Labs, Aden, Aedilic, Airtrain AI, Anomaly, AnythingLLM … |
 | NVIDIA (incl. NVentures) | corporate / strategic | 11 | 1 | AI21 Labs, Cohere, EvolutionaryScale, Hugging Face, Lightning AI, Mistral AI, Prime Intellect, RadixArk … |
 | SV Angel | venture firm | 7 | 0 | Anomaly, Hugging Face, Lightning AI, Mistral AI, Nomic AI, OpenCode, Together AI |
+| Samsung | corporate / strategic | 5 | 3 | AI21 Labs, Mistral AI, Tenstorrent, Activeloop, Traceloop |
 | Sequoia Capital | venture firm | 5 | 1 | Reflection AI, Chai Discovery, Hugging Face, Replicate, Sesame |
 | Accel | venture firm | 4 | 1 | RadixArk, DrDroid, Earendil Inc., H Company |
 | Alibaba | corporate / strategic | 4 | 4 | 01.AI, Baichuan Intelligence, MiniMax, Moonshot AI |
@@ -19,8 +20,8 @@
 | Gradient Ventures | corporate / strategic | 3 | 2 | Charm, Mage, Respan |
 | Intel Capital | corporate / strategic | 3 | 0 | AI21 Labs, Hugging Face, Prime Intellect |
 | Lux Capital | venture firm | 3 | 3 | EvolutionaryScale, Hugging Face, Together AI |
-| Samsung | corporate / strategic | 3 | 3 | AI21 Labs, Mistral AI, Tenstorrent |
 | Tencent | corporate / strategic | 3 | 2 | Baichuan Intelligence, Moonshot AI, MiniMax |
+| 468 Capital | venture firm | 2 | 1 | Activeloop, Paradev |
 | Baillie Gifford | growth, crossover or PE | 2 | 0 | Chai Discovery, Tenstorrent |
 | Bain Capital Ventures | venture firm | 2 | 0 | Chai Discovery, Lightning AI |
 | Balderton Capital | venture firm | 2 | 1 | deepset, Earendil Inc. |
@@ -29,4 +30,3 @@
 | Comcast Ventures | corporate / strategic | 2 | 1 | Neural Magic, AI21 Labs |
 | Craft Ventures | venture firm | 2 | 1 | Roboflow, CrewAI |
 | DST Global | growth, crossover or PE | 2 | 0 | Mistral AI, Reflection AI |
-| Emergence Capital | venture firm | 2 | 1 | Arcee AI, Together AI |

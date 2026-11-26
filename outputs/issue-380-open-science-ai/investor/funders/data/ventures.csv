@@ -1,5 +1,5 @@
 key,venture,universe,category,source_list,researched,pass,open_ok,open_basis,open_url,country,founded,status,funding_found,n_rounds,n_investors,notes,part2_status,part2_total_funding_usd,part2_ever_1b
-deepseek-ai,DeepSeek,U1,COSS (GitHub core),github_core,1,a01,yes,releases open-weight models and sells API access to the same models,,CN,,private,yes,3,4,Parent High-Flyer financed early development per TechCrunch (no amount). Zhihu disclosed indirect stake via a fund (TechNode 2026-11-24).,private,7400000000.0,yes
+deepseek-ai,DeepSeek,U1,COSS (GitHub core),github_core,1,a01+x01,yes,releases open-weight models and sells API access to the same models,,CN,,private,yes,5,10,"Parent High-Flyer financed early development per TechCrunch (no amount). Zhihu disclosed indirect stake via a fund (TechNode 2026-11-24). | Before 2026 owned and funded by High-Flyer (Wikipedia, https://en.wikipedia.org/wiki/DeepSeek); no outside investors until the 2026 rounds.",private,7400000000.0,yes
 huggingface,Hugging Face,U1,COSS (GitHub core),github_core,1,a02,yes,"sells Hub hosting, Inference Endpoints and Enterprise Hub",,US,2016,private,yes,2,20,"Leads show NVIDIA agreed to acquire Hugging Face (2026-09, CNBC); not fetched, so status left private. Seed/Series A/B rounds not sourced.",private,395200000.0,yes
 vercel,Vercel,U1,COSS (GitHub core),github_core,1,a03,yes,hosting platform marketed to Next.js users,,US,2015,private,yes,7,35,Series C and E investor names not found on pages read.,private,863000000.0,yes
 multica-ai,Multica,U1,COSS (GitHub core),github_core,1,a04,yes,sells hosted Multica Cloud and commercial licences,,,,unknown,none_found,0,0,"No leads; home page loaded, no funding mention.",private,,no
@@ -13,9 +13,9 @@ FuelLabs,Fuel Labs,U1,COSS (GitHub core),github_core,1,a11,yes,company developin
 Significant-Gravitas,Significant Gravitas Ltd,U1,COSS (GitHub core),github_core,1,a12,yes,company sells hosted AutoGPT Platform built on the project,,GB,,private,none_found,0,0,"No funding page found at agpt.co or TechCrunch; memory: Redpoint reportedly invested, unverified",private,12000000.0,no
 ollama,Ollama,U1,COSS (GitHub core),github_core,1,a13,yes,sells Ollama cloud hosted-model plans to its users,,US,,private,yes,3,7,,private,88000000.0,unknown
 browser-use,Browser Use,U1,COSS (GitHub core),github_core,1,a14,yes,"sells Browser Use Cloud, hosted version of the library",,US,2024,private,yes,2,5,,private,17000000.0,no
-storytold,Storyteller (ArtCraft),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+storytold,Storyteller (ArtCraft),U1,COSS (GitHub core),github_core,1,a15,yes,"sells ArtCraft Basic/Pro/Max plans, credits and enterprise",,US,,private,none_found,0,0,site names no investors,private,,no
 langgenius,LangGenius,U1,COSS (GitHub core),github_core,1,a16,yes,"Dify, modified Apache 2.0; sells Dify Cloud and Dify Enterprise",,US,2023,private,yes,1,6,Earlier rounds not found on pages read. Country from hint.,private,30000000.0,no
-open-webui,Open WebUI Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+open-webui,Open WebUI Inc.,U1,COSS (GitHub core),github_core,1,a01,yes,sells Open WebUI enterprise licences and support,,US,,private,none_found,0,0,Home page and Wikipedia show no funding. Not exhaustive.,private,,unknown
 langflow-ai,Langflow (DataStax),U1,COSS (GitHub core),github_core,1,a02,yes,Langflow company bought by DataStax (now IBM); hosted Langflow sold,,US,2022,acquired,none_found,0,0,TechCrunch: Logspace (Langflow) founders self-funded the company before DataStax acquired it in 2024.,acquired,,unknown
 Graphify-Labs,Graphify Labs,U1,COSS (GitHub core),github_core,1,a03,yes,"sells hosted Graphify Pro, Teams and Enterprise; CLI free",,US,,private,yes,1,1,,private,125000.0,no
 tailwindlabs,Tailwind Labs,U1,COSS (GitHub core),github_core,1,a04,yes,"Tailwind CSS, MIT; sells Tailwind Plus components and templates",,US,,acquired,none_found,0,0,"Joined Shopify Sept 2026 (acquisition, not a funding round); no outside round found in leads or Tailwind blog.",acquired,,unknown
@@ -23,7 +23,7 @@ fastapi,FastAPI Labs,U1,COSS (GitHub core),github_core,1,a05,yes,maintainer's co
 Comfy-Org,Comfy Org,U1,COSS (GitHub core),github_core,1,a06,yes,sells Comfy Cloud and paid API nodes for ComfyUI,,US,2023,private,yes,2,6,Tim Chen invested early per TechCrunch 2025-09-23 (not recorded as round).,private,47000000.0,no
 hashicorp,HashiCorp,U1,COSS (GitHub core),github_core,1,a07,yes,"sells HCP cloud and enterprise editions of Terraform, Vault",,US,2012,acquired,yes,2,7,Earlier rounds (A-C) not fetched; IBM acquired 2025 for $6.4B (IPO 2021). memory: Mitchell Hashimoto bootstrapped early.,acquired,349000000.0,yes
 astral-sh,Astral,U1,COSS (GitHub core),github_core,1,a08,yes,sells pyx hosted registry for uv users; acquired by OpenAI 2026,,US,2022,acquired,yes,4,3,Acquired by OpenAI announced 2026-03-19 (https://openai.com/index/openai-to-acquire-astral/),acquired,4000000.0,unknown
-grafana,Grafana Labs,U1,COSS (GitHub core),github_core,1,a09,yes,sells Grafana Cloud and Enterprise,,US,2014,private,yes,4,7,,private,1090000000.0,yes
+grafana,Grafana Labs,U1,COSS (GitHub core),github_core,1,a09+x01+x01,yes,sells Grafana Cloud and Enterprise,,US,2014,private,yes,7,8,"Series C (2021-08, USD 220M, USD 3B valuation) investors not found: Grafana and Bloomberg pages unreadable. SiliconANGLE 2026-02 names CapitalG among backers. | Series C (2021-08, USD 220M, USD 3B valuation) investors not found: Grafana and Bloomberg pages unreadable.",private,1090000000.0,yes
 excalidraw,Excalidraw s.r.o.,U1,COSS (GitHub core),github_core,1,a10,yes,"sells Excalidraw+, hosted paid version",,CZ,2020,private,none_found,0,0,Site checked; no funding statement found,private,,no
 FoundationAgents,DeepWisdom,U1,COSS (GitHub core),github_core,1,a11,yes,MetaGPT team's company sells hosted MGX/Atoms agent product,,CN,,private,yes,1,1,"Search snippets (not fetched pages) name Ant Group, Jinqiu Capital, MindWorks Capital, Baidu Ventures, Concept Capital in 2025 rounds of about RMB 220M; unverified, not recorded.",private,31000000.0,no
 charmbracelet,Charm (Charmbracelet),U1,COSS (GitHub core),github_core,1,a12,yes,sells Hyper inference for its Crush agent users; enterprise on request,,US,2019,private,yes,1,4,Archived copy of company announcement; original URL now 404,private,9500000.0,no
@@ -31,7 +31,7 @@ earendil-works,Earendil Inc.,U1,COSS (GitHub core),github_core,1,a13,yes,company
 ultralytics,Ultralytics,U1,COSS (GitHub core),github_core,1,a14,yes,sells enterprise licences and platform for YOLO,,US,,private,none_found,0,0,"About page and Wikipedia stub name no investors; no search budget. memory: likely raised venture money, unverified.",private,30000000.0,no
 pathwaycom,Pathway,U1,COSS (GitHub core),github_core,1,a15,yes,sells enterprise licence for Pathway framework,,US,,private,yes,1,6,,private,30000000.0,no
 laravel,Laravel,U1,COSS (GitHub core),github_core,1,a16,yes,"Laravel framework, MIT; sells Laravel Cloud, Forge and Nova to Laravel users",,US,2011,private,yes,1,1,,private,57000000.0,unknown
-immich-app,FUTO,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+immich-app,FUTO,U1,COSS (GitHub core),github_core,1,a01,yes,FUTO-employed team sells Immich licence keys,,US,,private,yes,1,1,FUTO itself is the parent; its own funding not researched. Immich joined FUTO in 2024.,private,,unknown
 paperclipai,"Paperclip Labs, Inc.",U1,COSS (GitHub core),github_core,1,a02,yes,company behind Paperclip; hosted cloud version on waitlist,,US,,unknown,none_found,0,0,No leads; not researched further (no funding found in leads or API search).,private,,no
 supabase,Supabase,U1,COSS (GitHub core),github_core,1,a03,yes,sells hosted Supabase platform,,US,2020,private,yes,6,16,,private,,yes
 nexu-io,"Powerformer, Inc.",U1,COSS (GitHub core),github_core,1,a04,yes,sells OpenDesign Cloud paid plans and Team/Enterprise,,,,unknown,none_found,0,0,No leads; open-design.ai home page shows no funding mention.,private,,no
@@ -45,9 +45,9 @@ zed-industries,Zed Industries,U1,COSS (GitHub core),github_core,1,a11,yes,sells 
 Textualize,Textualize,U1,COSS (GitHub core),github_core,1,a12,yes,founder's company built around Rich/Textual (Textual Web hosting),,GB,2021,shut_down,yes,2,2,Wound down mid-2025 per founder's HN post (funding ran dry),shut_down,,no
 infiniflow,InfiniFlow,U1,COSS (GitHub core),github_core,1,a13,yes,company behind RAGFlow; sells enterprise and cloud editions,,CN,,private,none_found,0,0,"No leads; ragflow.io blog and README checked, no funding statement",private,,unknown
 OpenHands,All Hands AI,U1,COSS (GitHub core),github_core,1,a14,yes,maintainers' company sells OpenHands Cloud and enterprise,,US,2024,private,yes,2,11,,private,23800000.0,no
-storybookjs,Chromatic,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+storybookjs,Chromatic,U1,COSS (GitHub core),github_core,1,a15,yes,maintainers' company Chromatic sells hosted Storybook service,,US,,private,none_found,0,0,"no page found in time; memory: possibly funded, unverified",private,,no
 mermaid-js,Mermaid Chart,U1,COSS (GitHub core),github_core,1,a16,yes,"Mermaid diagram library, MIT; maintainers' company sells hosted Mermaid Chart editor",,CA,2021,private,yes,1,3,"Country not confirmed from a page; CA is memory-based guess, check.",private,7500000.0,no
-cheaper-inference,Cheaper Inference,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+cheaper-inference,Cheaper Inference,U1,COSS (GitHub core),github_core,1,a01,yes,sells hosted OmniRoute-style gateway and pay-as-you-go model access,,,,private,none_found,0,0,No funding information found on its site or in searches.,unknown,,no
 ChatGPTNextWeb,NextChat,U1,COSS (GitHub core),github_core,1,a02,yes,sells hosted pay-as-you-go NextChat and enterprise edition,,,,unknown,none_found,0,0,No leads; no funding found in quick checks.,unknown,,no
 rtk-ai,RTK AI Labs,U1,COSS (GitHub core),github_core,1,a03,yes,sells RTK Pro team tier; CLI free,,FR,,private,none_found,0,0,Site names no investors; links GitHub Sponsors and Ko-fi donations only.,private,,no
 lobehub,LobeHub,U1,COSS (GitHub core),github_core,1,a04,yes,sells LobeHub Cloud subscriptions,,US,,unknown,none_found,0,0,No leads; lobehub.com not readable by curl (blocked). Unverified; memory suggests possible funding but not recorded.,private,,no
@@ -61,9 +61,9 @@ unslothai,Unsloth AI,U1,COSS (GitHub core),github_core,1,a11,yes,sells Unsloth P
 coder,Coder Technologies,U1,COSS (GitHub core),github_core,1,a12,yes,sells Coder Premium enterprise CDE platform,,US,,private,yes,2,5,Earlier rounds not looked up,private,175000000.0,no
 AppFlowy-IO,AppFlowy,U1,COSS (GitHub core),github_core,1,a13,yes,sells AppFlowy Cloud paid plans,,US,,private,yes,1,6,,private,6400000.0,no
 TanStack,TanStack LLC,U1,COSS (GitHub core),github_core,1,a14,yes,Tanner Linsley's company; revenue from project partnerships,,US,,private,none_found,0,0,Funded by partners and sponsors per site; no equity rounds found.,private,,no
-elastic,Elastic N.V.,U1,COSS (GitHub core),github_core,1,a15,yes,sells Elastic Cloud and subscriptions,,US,2012,listed,yes,1,0,"listed on NYSE; memory: Benchmark, NEA, Index, Data Collective - not verified",listed,,yes
+elastic,Elastic N.V.,U1,COSS (GitHub core),github_core,1,a15+x08,yes,sells Elastic Cloud and subscriptions,,US,2012,listed,yes,3,3,"listed on NYSE; memory: Benchmark, NEA, Index, Data Collective - not verified | Elastic IPO prospectus (NYSE, 2018-10) lists Benchmark, Hexavest (Index-linked), NEA, Future Fund Investment Company No.5 and AU Special Investments as 5% holders; their round not stated, so not recorded.",listed,,yes
 toeverything,Toeverything (AFFiNE),U1,COSS (GitHub core),github_core,1,a16,yes,"AFFiNE, MIT editor; sells AFFiNE Cloud and Pro plans",,SG,2022,private,none_found,0,0,No funding page found on company site or find_pages; absence not proof.,private,8000000.0,no
-usestrix,Strix,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6700000.0,no
+usestrix,Strix,U1,COSS (GitHub core),github_core,1,a01,yes,sells hosted AI pentesting platform and enterprise deployments,,,,private,none_found,0,0,"No funding disclosure on strix.ai home or in searches. find_pages hit was an unrelated Strix Leviathan (crypto) seed, not this company.",private,6700000.0,no
 nestjs,NestJS (Kamil Myśliwiec),U1,COSS (GitHub core),github_core,1,a02,yes,"creator's team sells enterprise support, certification courses, Mau deploy",,PL,2017,private,none_found,0,0,No funding page found in leads or API searches.,private,,no
 FortAwesome,"Fonticons, Inc. (Font Awesome)",U1,COSS (GitHub core),github_core,1,a03,yes,sells Font Awesome Pro,,US,2012,private,yes,1,1,"Earlier Kickstarter (2012) is memory only, not recorded.",private,,no
 openbq-org,OpenBB Inc.,U1,COSS (GitHub core),github_core,1,a04,yes,OpenBB platform on GitHub; sells OpenBB Workspace enterprise edition,,US,2021,private,yes,1,4,,shut_down,8500000.0,no
@@ -77,9 +77,9 @@ daytonaio,Daytona Platforms,U1,COSS (GitHub core),github_core,1,a11,yes,sells ho
 mem0ai,Mem0,U1,COSS (GitHub core),github_core,1,a12,yes,sells hosted Mem0 Platform,,US,2023,private,yes,2,15,,private,24000000.0,no
 openinterpreter,Open Interpreter,U1,COSS (GitHub core),github_core,1,a13,yes,company's product is the project itself (agent and desktop client),,US,,private,none_found,0,0,"Site and README checked, no funding statement found",private,,no
 Mintplex-Labs,Mintplex Labs,U1,COSS (GitHub core),github_core,1,a14,yes,sells hosted AnythingLLM cloud and enterprise,,US,2022,private,yes,1,1,No other round found; YC page is the only source.,private,500000.0,no
-zai-org,Z.ai (Zhipu AI),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,listed,,yes
+zai-org,Z.ai (Zhipu AI),U1,COSS (GitHub core),github_core,1,a15,yes,open-weight GLM models; sells API access,,CN,2019,listed,yes,4,6,"2026-09 ~US$5bn placement and convertibles per TechNode, no investors named",listed,,yes
 coollabsio,coolLabs,U1,COSS (GitHub core),github_core,1,a16,yes,"Coolify, Apache 2.0; sells Coolify Cloud, hosted version",,HU,,private,bootstrapped_stated,0,0,"Site says free, open source, no investors.",private,,no
-warpdotdev,Warp,U1,COSS (GitHub core),github_core,1,a01,yes,open-source client; sells paid Warp plans,,US,,private,yes,2,7,,private,73000000.0,no
+warpdotdev,Warp,U1,COSS (GitHub core),github_core,1,a01+x07,yes,open-source client; sells paid Warp plans,,US,,private,yes,3,7,"Wikipedia cites a USD 50M Series B led by Sequoia (2023-06) with no source; not verified, so not recorded.",private,73000000.0,no
 traefik,Traefik Labs,U1,COSS (GitHub core),github_core,1,a02,yes,sells Traefik Enterprise and Traefik Hub,,FR,2015,private,yes,1,3,Later rounds not looked for; Traefik about page says 'Backed by incredible investors' without names.,private,11050000.0,no
 scrapy,Zyte,U1,COSS (GitHub core),github_core,1,a03,yes,"maintained by Zyte, which sells Scrapy Cloud and Zyte API",,IE,2010,private,none_found,0,0,Zyte about page lists no funding or investors; search budget exhausted so not checked further. memory: possible outside investment not verified.,private,,no
 nocodb,NocoDB,U1,COSS (GitHub core),github_core,1,a04,yes,NocoDB open-source Airtable alternative; sells NocoDB Cloud and Enterprise,,US,2021,private,yes,1,8,,private,10500000.0,no
@@ -95,7 +95,7 @@ twentyhq,Twenty.com PBC,U1,COSS (GitHub core),github_core,1,a13,yes,sells Twenty
 crewAIInc,CrewAI,U1,COSS (GitHub core),github_core,1,a14,yes,sells CrewAI enterprise agent platform,,US,2023,private,yes,2,7,,private,18000000.0,unknown
 minio,MinIO Inc.,U1,COSS (GitHub core),github_core,1,a15,yes,sells AIStor enterprise edition and subscriptions,,US,2014,private,yes,3,13,,private,126000000.0,yes
 nuxt,NuxtLabs,U1,COSS (GitHub core),github_core,1,a16,yes,"Nuxt, MIT; maintainers' company sold Nuxt UI Pro and NuxtHub; acquired by Vercel 2025",,FR,2017,acquired,yes,1,6,Acquired by Vercel; terms not read.,acquired,,no
-1Panel-dev,FIT2CLOUD,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,15700000.0,no
+1Panel-dev,FIT2CLOUD,U1,COSS (GitHub core),github_core,1,a01,yes,FIT2CLOUD sells 1Panel and MaxKB pro editions,,CN,,private,none_found,0,0,No English-language source found; fit2cloud.com home shows no funding; Chinese sources not searched. Not exhaustive.,private,15700000.0,no
 meilisearch,Meilisearch,U1,COSS (GitHub core),github_core,1,a02,yes,sells Meilisearch Cloud,,FR,2018,private,yes,3,8,,private,22000000.0,no
 K-Dense-AI,K-Dense,U1,COSS (GitHub core),github_core,1,a03,yes,sells hosted K-Dense Web co-scientist built around its open skills,,US,,private,yes,1,2,,private,2000000.0,no
 go-gitea,Gitea Ltd / CommitGo,U1,COSS (GitHub core),github_core,1,a04,yes,maintainers' company sells Gitea Cloud and Enterprise,,,,unknown,none_found,0,0,No leads; gitea.com and blog show no funding mention.,private,,no
@@ -125,9 +125,9 @@ jeecgboot,JEECG (Beijing Guoju Information Technology),U1,COSS (GitHub core),git
 exo-explore,EXO Labs,U1,COSS (GitHub core),github_core,1,a12,yes,offers Exo for Business deployments; software free,,,,unknown,none_found,0,0,Leads were about Exo Imaging (a different company); not used. No page found naming EXO Labs funders,private,,no
 usebruno,Bruno Software Inc,U1,COSS (GitHub core),github_core,1,a13,yes,sells Bruno Pro and Ultimate editions,,US,,private,yes,1,1,,private,3000000.0,no
 nvm-windows,Author Software,U1,COSS (GitHub core),github_core,1,a14,yes,sells commercial Certified Builds of NVM for Windows,,,,private,none_found,0,0,Site gave no fetchable content; nothing found.,private,,no
-discourse,Civilized Discourse Construction Kit (Discourse),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,20000000.0,no
+discourse,Civilized Discourse Construction Kit (Discourse),U1,COSS (GitHub core),github_core,1,a15,yes,sells hosted Discourse,,US,2013,private,yes,1,3,,private,20000000.0,no
 prisma,"Prisma Data, Inc.",U1,COSS (GitHub core),github_core,1,a16,yes,"Prisma ORM, Apache 2.0; sells Prisma Postgres and Accelerate",,US,2016,private,yes,4,12,,private,56500000.0,no
-siyuan-note,Yunnan Liandi Technology (B3log),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+siyuan-note,Yunnan Liandi Technology (B3log),U1,COSS (GitHub core),github_core,1,a01,yes,sells SiYuan paid membership and cloud sync,,CN,,private,none_found,0,0,b3log.org/siyuan page shows no funding. Chinese sources not searched.,private,,no
 ifixai-ai,iFixAi,U1,COSS (GitHub core),github_core,1,a02,yes,sells per-agent audit plans; open-source engine free,,US,,unknown,none_found,0,0,No leads; not researched in depth.,private,,no
 serverless,"Serverless, Inc.",U1,COSS (GitHub core),github_core,1,a03,yes,sells Serverless Framework licences and dashboard,,US,2015,private,yes,2,3,,private,13000000.0,no
 milvus-io,Zilliz,U1,COSS (GitHub core),github_core,1,a04,yes,"Milvus, Apache-2.0, LF AI & Data graduated; Zilliz sells hosted Milvus",,US,2017,private,yes,2,6,Earlier rounds (~$10M before Series B) not found.,private,113000000.0,no
@@ -141,9 +141,9 @@ logseq,Logseq Inc.,U1,COSS (GitHub core),github_core,1,a11,yes,sells Logseq Sync
 meteor,Meteor Software,U1,COSS (GitHub core),github_core,1,a12,yes,sells Galaxy hosting for Meteor apps,,CA,2011,acquired,yes,3,4,Acquired by Tiny Oct 2019 (TechCrunch),acquired,31200000.0,no
 ray-project,Anyscale,U1,COSS (GitHub core),github_core,1,a13,yes,Ray contributed to PyTorch Foundation; Anyscale sells hosted Ray,,US,2019,acquired,yes,3,8,Acquired by Nscale 2026-07 per TechCrunch,private,259000000.0,yes
 HeyPuter,Puter Technologies Inc.,U1,COSS (GitHub core),github_core,1,a14,yes,sells paid plans for hosted Puter,,CA,,private,none_found,0,0,puter.com/about and Wikipedia stub name no investors; nothing found.,private,3000000.0,no
-gradio-app,Gradio,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+gradio-app,Gradio,U1,COSS (GitHub core),github_core,1,a15,yes,Hugging Face Spaces hosting marketed to Gradio users,,US,2019,acquired,none_found,0,0,acquired by Hugging Face 2021; funding page not readable; memory: seed investors not verified,acquired,,no
 duckdb,DuckDB Labs,U1,COSS (GitHub core),github_core,1,a16,yes,"DuckDB, MIT; Dutch foundation owns IP; DuckDB Labs sells support",,NL,,acquired,none_found,0,0,"No outside round found for DuckDB Labs itself. MotherDuck (separate company, VC-backed) is not recorded here. MotherDuck blog says Duck Labs being acquired by Amazon, Aug 2026.",acquired,,unknown
-agno-agi,Agno,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+agno-agi,Agno,U1,COSS (GitHub core),github_core,1,a01,yes,sells Agno AgentOS platform,,US,,private,none_found,0,0,Site about and blog index show no funding post; searches empty. Not exhaustive.,private,,no
 tinyhumansai,Tiny Human Intelligence Inc.,U1,COSS (GitHub core),github_core,1,a02,yes,sells credits for hosted orchestrator behind its open agents,,US,,unknown,none_found,0,0,No leads; not researched in depth.,private,,no
 phaserjs,Phaser Studio Inc.,U1,COSS (GitHub core),github_core,1,a03,yes,sells Phaser Editor and tools for Phaser developers,,US,2023,private,yes,1,1,,private,,no
 lightpanda-io,Lightpanda,U1,COSS (GitHub core),github_core,1,a04,yes,"Lightpanda browser, AGPL on GitHub; sells hosted cloud browser",,FR,,private,yes,1,1,,private,,no
@@ -157,9 +157,9 @@ ToolJet,ToolJet,U1,COSS (GitHub core),github_core,1,a11,yes,sells ToolJet Cloud 
 aseprite,Igara Studio,U1,COSS (GitHub core),github_core,1,a12,yes,sells Aseprite binaries; source-available,,AR,,private,none_found,0,0,"No funding found on aseprite.org; memory: believed self-funded, unverified",private,,no
 PostHog,PostHog Inc.,U1,COSS (GitHub core),github_core,1,a13,yes,sells PostHog Cloud,,US,2020,private,yes,5,7,,private,194000000.0,yes
 datalab-to,Datalab,U1,COSS (GitHub core),github_core,1,a14,yes,sells hosted API and commercial licences for marker,,US,,private,yes,1,0,Individual backers unnamed on the page.,private,3500000.0,no
-vuetifyjs,Vuetify LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+vuetifyjs,Vuetify LLC,U1,COSS (GitHub core),github_core,1,a15,yes,"sells Vuetify One subscriptions, support and premium add-ons",,US,,private,none_found,0,0,team page states no funding,private,,no
 VectifyAI,Vectify AI,U1,COSS (GitHub core),github_core,1,a16,yes,"PageIndex, MIT; sells hosted PageIndex API and platform",,GB,,private,none_found,0,0,No funding page found on company site or find_pages.,private,1420000.0,no
-pingcap,PingCAP,U1,COSS (GitHub core),github_core,1,a01,yes,sells TiDB Cloud and Enterprise,,US,2015,private,yes,3,15,,private,341600000.0,unknown
+pingcap,PingCAP,U1,COSS (GitHub core),github_core,1,a01+x03,yes,sells TiDB Cloud and Enterprise,,US,2015,private,yes,4,18,Seed/Series A (2015-16) investors not found.,private,341600000.0,unknown
 chakra-ui,Chakra Systems,U1,COSS (GitHub core),github_core,1,a02,yes,maintainers' Chakra Systems sells Chakra UI Pro components,,,,unknown,none_found,0,0,No leads; announcement page 404; not researched further.,unknown,,no
 chatwoot,Chatwoot,U1,COSS (GitHub core),github_core,1,a03,yes,sells Chatwoot Cloud and enterprise,,US,2017,private,yes,1,2,,private,1600000.0,no
 pola-rs,Polars B.V.,U1,COSS (GitHub core),github_core,1,a04,yes,"Polars dataframe library, MIT; sells Polars Cloud",,NL,2022,private,yes,2,3,Seed lead written as Bain Capital Ventures but source only says Bain Capital.,private,25000000.0,no
@@ -169,19 +169,19 @@ umami-software,Umami Software,U1,COSS (GitHub core),github_core,1,a07,yes,sells 
 DioxusLabs,Dioxus Labs,U1,COSS (GitHub core),github_core,1,a08,yes,company built around Dioxus; no paid product listed yet,,US,2023,acquired,yes,1,1,Team joined Cognition 2026-09-10 (https://dioxuslabs.com/blog/joining-cognition); other rounds not found,private,,no
 mindsdb,MindsDB,U1,COSS (GitHub core),github_core,1,a09,yes,sells MindsDB cloud and enterprise,,US,2017,private,yes,2,10,Forbes Feb 2023 Series A $16.5M lead not fetched.,private,,no
 mattermost,Mattermost,U1,COSS (GitHub core),github_core,1,a10,yes,sells Mattermost Enterprise and Cloud,,US,2016,private,yes,2,4,Earlier $3.5M seed investors not named in fetched pages,private,70000000.0,unknown
-tailscale,Tailscale,U1,COSS (GitHub core),github_core,1,a11,yes,sells Tailscale service; repo is the client,,CA,,private,yes,3,7,"Total capital raised before Series B about $115M per TechCrunch, implying an unnamed seed.",private,275000000.0,unknown
+tailscale,Tailscale,U1,COSS (GitHub core),github_core,1,a11+x04,yes,sells Tailscale service; repo is the client,,CA,,private,yes,4,7,"Total capital raised before Series B about $115M per TechCrunch, implying an unnamed seed. | Seed amount and date not found.",private,275000000.0,unknown
 spacedriveapp,Spacedrive Technology,U1,COSS (GitHub core),github_core,1,a12,yes,company built around Spacedrive; paid cloud features planned,,,,private,yes,1,4,,private,2000000.0,no
 xyflow,xyflow GmbH,U1,COSS (GitHub core),github_core,1,a13,yes,sells React Flow Pro subscriptions,,DE,2019,private,none_found,0,0,Open-source work since 2019 by webkid agency (2014); funded by Pro subscriptions and sponsors; no outside rounds stated,private,,no
 ueberdosis,überdosis GmbH (Tiptap),U1,COSS (GitHub core),github_core,1,a14,yes,sells Tiptap Pro extensions and cloud,,DE,,private,yes,1,1,Seed investors not found in fetched pages.,private,,no
 CopilotKit,CopilotKit,U1,COSS (GitHub core),github_core,1,a15,yes,sells Copilot Cloud hosted version,,US,,private,yes,1,3,,private,27000000.0,no
 harness,Harness,U1,COSS (GitHub core),github_core,1,a16,yes,Open-source edition of its commercial developer platform (Gitness/Harness OSS),,US,2017,private,yes,3,11,Earlier rounds not individually sourced.,private,570000000.0,yes
-portainer,Portainer.io,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,13400000.0,no
+portainer,Portainer.io,U1,COSS (GitHub core),github_core,1,a01,yes,sells Portainer Business Edition,,NZ,,private,yes,2,9,,private,13400000.0,no
 httpie,HTTPie,U1,COSS (GitHub core),github_core,1,a02,yes,company builds HTTPie apps around the CLI,,US,,private,yes,1,2,Date not on page.,private,6500000.0,no
 Dokploy,Dokploy,U1,COSS (GitHub core),github_core,1,a03,yes,sells Dokploy Cloud managed plans,,,,private,none_found,0,0,"Site names no investors; says 50+ companies/individuals sponsor it, unnamed. Country not stated.",private,,no
 directus,Monospace Inc. (Directus),U1,COSS (GitHub core),github_core,1,a04,yes,"Directus, BSL 1.1 source-available; sells Directus Cloud and enterprise licences",,US,,private,yes,1,5,Round details not found.,private,7000000.0,no
 khoj-ai,Khoj Inc.,U1,COSS (GitHub core),github_core,1,a05,yes,sells hosted Khoj cloud plans,,US,2023,private,yes,1,1,"Search summary (CB Insights/aggregators, unfetched) reported ~$500K total, seed with Pioneer Fund; memory/unconfirmed: Pioneer Fund. Hosted cloud reportedly deprecated Apr 2026 (unverified).",private,,no
 langfuse,Langfuse,U1,COSS (GitHub core),github_core,1,a06,yes,sells Langfuse Cloud and Enterprise,,DE,2022,acquired,yes,2,4,Acquired by ClickHouse Jan 2026.,acquired,4000000.0,no
-IceWhaleTech,IceWhale Technology,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+IceWhaleTech,IceWhale Technology,U1,COSS (GitHub core),github_core,1,a07,yes,sells ZimaBoard/ZimaCube hardware running CasaOS/ZimaOS,,CN,,private,none_found,0,0,"find_pages and zimaspace.com about page showed no funding. memory: ZimaBoard was Kickstarter-funded, not verified (Kickstarter page returned no usable text).",private,,no
 nextcloud,Nextcloud GmbH,U1,COSS (GitHub core),github_core,1,a08,yes,sells Nextcloud Enterprise subscriptions,,DE,,private,none_found,0,0,No leads on funding; about page and TechCrunch search gave none; not exhaustively checked,private,,no
 medusajs,Medusa,U1,COSS (GitHub core),github_core,1,a09,yes,sells Medusa Cloud,,US,2021,private,yes,2,6,,private,,unknown
 utmapp,UTM (Turing Software LLC),U1,COSS (GitHub core),github_core,1,a10,yes,same app sold on Mac App Store,,US,,private,none_found,0,0,No funding found,private,,no
@@ -189,7 +189,7 @@ anywhere-labs,Jiuxiangxian (Beijing) Technology,U1,COSS (GitHub core),github_cor
 continuedev,"Continue Dev, Inc.",U1,COSS (GitHub core),github_core,1,a12,yes,sells Continue team and enterprise plans,,US,2023,private,yes,2,5,Later rounds not checked,acquired,5100000.0,no
 rustfs,RustFS,U1,COSS (GitHub core),github_core,1,a13,yes,offers enterprise support for RustFS,,US,,private,none_found,0,0,"Site and README checked, no funding statement",private,,unknown
 drizzle-team,Drizzle Team,U1,COSS (GitHub core),github_core,1,a14,yes,company behind Drizzle; licenses embeddable Drizzle Studio,,,,private,none_found,0,0,Site has no funding info; nothing found.,acquired,,no
-SheetJS,SheetJS LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+SheetJS,SheetJS LLC,U1,COSS (GitHub core),github_core,1,a15,yes,sells SheetJS Pro,,US,,private,none_found,0,0,nothing found,private,,no
 seaweedfs,SeaweedFS,U1,COSS (GitHub core),github_core,1,a16,yes,"SeaweedFS, Apache 2.0; maintainer sells Enterprise edition",,US,,private,none_found,0,0,README mentions Patreon sponsors only; no outside round found.,private,,no
 refinedev,Refine,U1,COSS (GitHub core),github_core,1,a01,yes,sells Refine Enterprise and hosted refine.new builder,,US,,private,yes,2,3,,private,3800000.0,no
 qdrant,Qdrant,U1,COSS (GitHub core),github_core,1,a02,yes,sells Qdrant Cloud and enterprise,,DE,2021,private,yes,4,7,Series B details unresolved.,private,87800000.0,no
@@ -213,7 +213,7 @@ ankitects,"Anki Software, LLC (Ankitects)",U1,COSS (GitHub core),github_core,1,a
 ScrapeGraphAI,ScrapeGraphAI,U1,COSS (GitHub core),github_core,1,a04,yes,sells hosted ScrapeGraph API,,US,,unknown,none_found,0,0,"No leads; home page shows no funding mention. memory: possible seed round, unverified.",private,,no
 trycua,Cua,U1,COSS (GitHub core),github_core,1,a05,yes,sells hosted cloud sandboxes for Cua agents,,US,,private,yes,1,1,No later round found (not searched exhaustively).,private,,unknown
 SigNoz,SigNoz,U1,COSS (GitHub core),github_core,1,a06,yes,sells SigNoz Cloud and Enterprise,,US,2020,private,yes,2,7,,private,6500000.0,no
-cockroachdb,Cockroach Labs,U1,COSS (GitHub core),github_core,1,a07,yes,sells CockroachDB Cloud and Enterprise,,US,2015,private,yes,3,14,Jan 2021 $160M round (Register) investors not read.,private,633000000.0,yes
+cockroachdb,Cockroach Labs,U1,COSS (GitHub core),github_core,1,a07+x02,yes,sells CockroachDB Cloud and Enterprise,,US,2015,private,yes,6,15,"Jan 2021 $160M round (Register) investors not read. | Series A-C not found; about page also lists Sequoia, Redpoint, Work-Bench as backers without round.",private,633000000.0,yes
 atuinsh,"Atuin, Inc.",U1,COSS (GitHub core),github_core,1,a08,yes,company built around Atuin; team features in beta,,,,private,none_found,0,0,No leads; atuin.sh showed nothing on funding; not exhaustively checked,private,,no
 conductor-oss,Orkes,U1,COSS (GitHub core),github_core,1,a09,yes,maintainers' company Orkes sells hosted Conductor,,US,2021,private,yes,2,5,,private,29300000.0,no
 hasura,Hasura,U1,COSS (GitHub core),github_core,1,a10,yes,sells Hasura Cloud/DDN and Enterprise,,US,2017,private,yes,4,7,,private,136500000.0,yes
@@ -229,7 +229,7 @@ Lightning-AI,Lightning AI,U1,COSS (GitHub core),github_core,1,a03,yes,sells Ligh
 symfony,Symfony SAS,U1,COSS (GitHub core),github_core,1,a04,yes,"Symfony PHP framework, MIT; sells training, certification, support and SymfonyInsight",,FR,,private,yes,1,1,,private,6900000.0,no
 heroui-inc,HeroUI Inc.,U1,COSS (GitHub core),github_core,1,a05,yes,sells HeroUI Pro components and templates,,US,2023,private,yes,1,1,"Country: YC directory page says Buenos Aires; input says US (Delaware inc. likely, memory).",private,,no
 netbirdio,NetBird,U1,COSS (GitHub core),github_core,1,a06,yes,sells NetBird Cloud and enterprise plans,,DE,2021,private,yes,2,5,"2023 'raises EUR 1.1M' HN post found; investors not read, not recorded.",private,,no
-greensock,GreenSock,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,unknown
+greensock,GreenSock,U1,COSS (GitHub core),github_core,1,a07,yes,sold GSAP Club licences until Webflow bought it; now free,,US,,acquired,none_found,0,0,No outside funding found; acquired by Webflow in fall 2024 (Webflow blog).,acquired,,unknown
 nanocoai,NanoCo,U1,COSS (GitHub core),github_core,1,a08,yes,NanoClaw creators sell enterprise AI assistant (early access),,,2026,private,yes,1,6,,private,12000000.0,no
 e2b-dev,E2B,U1,COSS (GitHub core),github_core,1,a09,yes,sells hosted E2B sandboxes from open-source infra; top repo is a list,,US,,private,yes,2,4,,private,,no
 better-auth,Better Auth,U1,COSS (GitHub core),github_core,1,a10,yes,sells Better Auth Infrastructure dashboard and services,,US,2024,private,yes,1,4,,private,5000000.0,no
@@ -261,7 +261,7 @@ every-app,EveryApp (OpenSEO),U1,COSS (GitHub core),github_core,1,a03,yes,makers 
 BloopAI,Bloop AI,U1,COSS (GitHub core),github_core,1,a04,yes,offered hosted Vibe Kanban Cloud; Vibe Kanban sunsetting,,GB,,unknown,none_found,0,0,"No leads; vibekanban.com shows no funding mention. memory: earlier investors possible, unverified.",unknown,,no
 fingerprintjs,Fingerprint (FingerprintJS Inc.),U1,COSS (GitHub core),github_core,1,a05,yes,sells Fingerprint Pro identification,,US,,private,yes,5,3,,private,,unknown
 yikart,AiToEarn Team,U1,COSS (GitHub core),github_core,1,a06,yes,hosted AiToEarn cloud with pricing page; company unnamed,,CN,,unknown,none_found,0,0,Nothing on aitoearn.ai.,unknown,,no
-mongodb,MongoDB Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,listed,311000000.0,yes
+mongodb,MongoDB Inc.,U1,COSS (GitHub core),github_core,1,a07,yes,sells MongoDB Atlas and Enterprise,,US,2007,listed,yes,1,7,Listed on Nasdaq (IPO 2017). 2013 $150M round (Bloomberg link in leads) not readable.,listed,311000000.0,yes
 voideditor,Void,U1,COSS (GitHub core),github_core,1,a08,yes,YC startup whose product is the Void editor,,US,2024,private,yes,1,1,,unknown,,no
 Budibase,Budibase,U1,COSS (GitHub core),github_core,1,a09,yes,sells Budibase Cloud and Enterprise,,GB,2019,private,yes,2,9,,private,9250000.0,no
 OtterMind,OtterMind,U1,COSS (GitHub core),github_core,1,a10,yes,sells Chat2DB Pro and cloud,,SG,,private,none_found,0,0,No funding found on site or news,private,,no
@@ -269,7 +269,7 @@ locustio,Locust Technologies,U1,COSS (GitHub core),github_core,1,a11,yes,maintai
 hcengineering,Huly Labs,U1,COSS (GitHub core),github_core,1,a12,yes,sells hosted Huly platform,,US,,private,none_found,0,0,Search found no funding or investor info; legal entity may be Hardcore Engineering Inc.,private,,unknown
 Kilo-Org,Kilo Code,U1,COSS (GitHub core),github_core,1,a13,yes,"sells Kilo platform (team plans, AI gateway) for the agent",,US,,acquired,yes,1,5,"Acquired by Anaconda, July 2026",acquired,8000000.0,no
 onlook-dev,Onlook,U1,COSS (GitHub core),github_core,1,a14,yes,sells hosted Onlook plans,,US,2024,private,yes,1,1,,private,,no
-BeyondDimension,Changsha Beyond Dimension Technology,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+BeyondDimension,Changsha Beyond Dimension Technology,U1,COSS (GitHub core),github_core,1,a15,yes,company built around Watt Toolkit,,CN,,private,none_found,0,0,nothing found,unknown,,no
 promptfoo,Promptfoo,U1,COSS (GitHub core),github_core,1,a16,yes,"Promptfoo CLI/library, MIT; sells Promptfoo Enterprise; acquired by OpenAI 2026",,US,2024,acquired,yes,2,6,TechCrunch says raised about $23M total; acquired by OpenAI March 2026.,acquired,23000000.0,no
 Stability-AI,Stability AI,U1,COSS (GitHub core),github_core,1,a01,yes,open-weight models; sells API and commercial licences,,GB,,private,yes,3,15,,private,232000000.0,yes
 typesense,Typesense,U1,COSS (GitHub core),github_core,1,a02,yes,sells Typesense Cloud,,US,2015,private,bootstrapped_stated,0,0,About page: 'lean customer-funded team'.,private,,no
@@ -277,15 +277,15 @@ deepset-ai,deepset,U1,COSS (GitHub core),github_core,1,a03,yes,sells deepset AI 
 rethinkdb,RethinkDB,U1,COSS (GitHub core),github_core,1,a04,yes,"RethinkDB, now Apache-2.0 under Linux Foundation; company shut down 2016",,US,2009,shut_down,yes,3,13,TechCrunch 2017 says about $12.2M raised in total.,shut_down,9200000.0,no
 marmelab,marmelab,U1,COSS (GitHub core),github_core,1,a05,yes,sells react-admin Enterprise Edition,,FR,,private,none_found,0,0,"Agency/consultancy; no funding found, about page 404.",private,,no
 readest,Bilingify LLC,U1,COSS (GitHub core),github_core,1,a06,yes,sells Readest paid storage plans,,US,,private,none_found,0,0,Nothing on readest.com home.,private,,no
-apify,Apify,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+apify,Apify,U1,COSS (GitHub core),github_core,1,a07,yes,"Apify platform hosts Crawlee scrapers, marketed to its users",,CZ,2015,private,yes,2,1,,private,,no
 goauthentik,Authentik Security,U1,COSS (GitHub core),github_core,1,a08,yes,sells authentik Enterprise,,US,,private,none_found,0,0,No leads; site pages fetched showed none; WebSearch budget exhausted so not searched. Likely raised money (unverified),private,,no
 GrapesJS,GrapesJS,U1,COSS (GitHub core),github_core,1,a09,yes,sells GrapesJS Studio SDK commercial editions,,,,private,none_found,0,0,Home page fetch showed no funding statement; no leads.,private,,no
 zulip,Kandra Labs,U1,COSS (GitHub core),github_core,1,a10,yes,sells Zulip Cloud and support,,US,2017,private,none_found,0,0,Original Zulip Inc (acquired by Dropbox 2014) is a different entity; no Kandra Labs funding page found,private,,no
 plotly,Plotly,U1,COSS (GitHub core),github_core,1,a11,yes,sells Dash Enterprise,,CA,,private,yes,3,6,Other later rounds not checked.,private,5500000.0,unknown
 openfaas,OpenFaaS Ltd,U1,COSS (GitHub core),github_core,1,a12,yes,sells OpenFaaS Pro and Enterprise,,GB,,private,none_found,0,0,No funding found on company pages checked,private,,no
 browserbase,Browserbase,U1,COSS (GitHub core),github_core,1,a13,yes,sells hosted browsers marketed to Stagehand users,,US,,private,yes,1,3,Earlier seed/Series A rounds not found on fetched pages,private,,unknown
-black-forest-labs,Black Forest Labs,U1,COSS (GitHub core),github_core,1,a14,yes,open-weight FLUX models plus paid API access to them,,DE,2024,private,yes,3,21,,private,331000000.0,yes
-rancher,Rancher,U1,COSS (GitHub core),github_core,1,a15,yes,sells Rancher Prime support,,US,2014,acquired,yes,1,5,acquired by SUSE 2020,acquired,95000000.0,unknown
+black-forest-labs,Black Forest Labs,U1,COSS (GitHub core),github_core,1,a14,yes,open-weight FLUX models plus paid API access to them,,DE,2024,private,yes,3,17,,private,331000000.0,yes
+rancher,Rancher,U1,COSS (GitHub core),github_core,1,a15+x07,yes,sells Rancher Prime support,,US,2014,acquired,yes,2,5,acquired by SUSE 2020 | Series A/seed investors not named beyond Mayfield and Nexus (existing at Series B).,acquired,95000000.0,unknown
 Redocly,Redocly,U1,COSS (GitHub core),github_core,1,a16,yes,"Redoc, MIT; sells Redocly hosted docs platform",,US,2018,private,none_found,0,0,About page says 'interest by leading investors' but names none; no round found.,private,,unknown
 pulumi,Pulumi,U1,COSS (GitHub core),github_core,1,a01,yes,sells Pulumi Cloud,,US,,private,yes,3,4,,private,99000000.0,unknown
 d2lang,Terrastruct,U1,COSS (GitHub core),github_core,1,a02,yes,sells D2 Studio and TALA layout engine,,US,2020,private,none_found,0,0,d2lang.com says D2 is fiscally sponsored by Hack Club (not an investment). No investors found.,private,,no
@@ -293,7 +293,7 @@ cilium,Isovalent,U1,COSS (GitHub core),github_core,1,a03,yes,CNCF graduated; Iso
 monicahq,Monica,U1,COSS (GitHub core),github_core,1,a04,yes,sells hosted Monica accounts,,CA,,private,none_found,0,0,Leads were name-collision noise; home page shows no funding mention.,private,,no
 pascalorg,Pascal Group Inc.,U1,COSS (GitHub core),github_core,1,a05,yes,sells Pascal Pro/Max plans for the hosted editor,,US,,private,none_found,0,0,"Lead hits (Pascal AI $3.1M, Pascal diamonds, Pascal quantum) are other companies; not verified as this one.",private,,no
 activepieces,Activepieces,U1,COSS (GitHub core),github_core,1,a06,yes,sells Activepieces Cloud and Enterprise,,US,2022,private,yes,1,1,Later seed/Series A not located.,private,,unknown
-CapSoftware,Cap Software,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+CapSoftware,Cap Software,U1,COSS (GitHub core),github_core,1,a07,yes,sells Cap Pro hosted sharing plans,,?,,private,none_found,0,0,cap.so about page and find_pages showed no funding.,private,,no
 clockworklabs,Clockwork Labs,U1,COSS (GitHub core),github_core,1,a08,yes,sells SpacetimeDB Maincloud hosting; also makes BitCraft,,US,,private,yes,1,10,Unrelated Clockwork.io articles in leads ignored,private,,no
 letta-ai,Letta,U1,COSS (GitHub core),github_core,1,a09,yes,sells Letta Cloud,,US,2024,private,yes,2,10,,private,10000000.0,no
 tursodatabase,Turso,U1,COSS (GitHub core),github_core,1,a10,yes,sells Turso Cloud,,US,2022,acquired,yes,1,10,Supabase announced acquiring Turso 2026-10 (blog),acquired,,unknown
@@ -301,15 +301,15 @@ lvgl,LVGL Kft,U1,COSS (GitHub core),github_core,1,a11,yes,sells LVGL Pro editor 
 dubinc,Dub Technologies,U1,COSS (GitHub core),github_core,1,a12,yes,sells hosted Dub link platform,,US,2022,private,yes,1,4,Amount source: founders-daily-briefing.beehiiv.com/p/dub-co-raises-2m,private,2000000.0,no
 withfig,Fig,U1,COSS (GitHub core),github_core,1,a13,yes,sold Fig Pro/Team terminal tools,,US,2020,acquired,yes,2,5,Acquired by Amazon (AWS) Aug 2023,acquired,2000000.0,no
 taosdata,TAOS Data (TDengine),U1,COSS (GitHub core),github_core,1,a14,yes,sells TDengine Enterprise and Cloud,,CN,,private,none_found,0,0,"Company site and about page name no investors; no search budget. memory: probably VC-backed, unverified.",private,,unknown
-flipped-aurora,flipped-aurora,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+flipped-aurora,flipped-aurora,U1,COSS (GitHub core),github_core,1,a15,yes,sells commercial licence and paid support for gin-vue-admin,,CN,,unknown,none_found,0,0,nothing found,unknown,,no
 nocobase,NocoBase,U1,COSS (GitHub core),github_core,1,a16,yes,"NocoBase, AGPL-3.0; sells commercial editions and plugins",,CN,,private,none_found,0,0,No funding page found.,private,,no
-dolthub,DoltHub,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+dolthub,DoltHub,U1,COSS (GitHub core),github_core,1,a01,yes,sells hosted Dolt and DoltHub,,US,,private,none_found,0,0,"Site is JS-rendered and guessed blog URLs 404; no source found. Likely funded but unverified; memory: formerly Liquidata, seed investors not recalled with confidence.",private,,no
 slint-ui,SixtyFPS GmbH,U1,COSS (GitHub core),github_core,1,a02,yes,sells Slint commercial licences and support,,DE,2020,private,yes,2,3,No VC investors named on its investors page.,private,,no
 zama-ai,Zama,U1,COSS (GitHub core),github_core,1,a03,yes,sells commercial licences for its FHE libraries and protocol,,FR,2020,private,yes,4,8,,private,138000000.0,yes
 temporalio,Temporal Technologies,U1,COSS (GitHub core),github_core,1,a04,yes,"Temporal, MIT; sells Temporal Cloud",,US,2019,private,yes,7,12,"Series E co-leads: Wellington, Goldman Sachs, Tiger Global also listed as participants.",private,,yes
 different-ai,Different AI (OpenWork),U1,COSS (GitHub core),github_core,1,a05,yes,sells OpenWork subscriptions for its team control plane,,US,,private,yes,1,1,"Do not confuse with different.ai (B2B marketing, $48M seed), a different company.",private,,no
 gitlabhq,GitLab Inc.,U1,COSS (GitHub core),github_core,1,a06,yes,sells GitLab SaaS and Premium/Ultimate,,US,,listed,yes,4,6,"Seed, Series A, Series C (search summary only, unverified: Khosla seed/A, GV C) not recorded. Listed on Nasdaq 2021.",listed,413500000.0,yes
-citrolabs,CitroLabs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+citrolabs,CitroLabs,U1,COSS (GitHub core),github_core,1,a07,yes,main product is the ego browser; ego-lite is open,,SG,,private,none_found,0,0,"citrolabs.ai and find_pages showed no funding. YC lists a different 'ego' (W24, egoai.com), not matched to this site.",private,,no
 lexmount,LexMount,U1,COSS (GitHub core),github_core,1,a08,yes,sells hosted cloud browsers using its Moli engine,,,,private,none_found,0,0,No leads; site shows nothing,private,,unknown
 TecharoHQ,Techaro,U1,COSS (GitHub core),github_core,1,a09,yes,sells BotStopper commercial version of Anubis,,CA,,private,none_found,0,0,No funding page found; no leads.,private,,no
 redisson,Redisson,U1,COSS (GitHub core),github_core,1,a10,yes,sells Redisson PRO edition,,?,,unknown,none_found,0,0,No funding found,private,,no
@@ -317,7 +317,7 @@ brave,Brave Software,U1,COSS (GitHub core),github_core,1,a11,yes,"browser is mai
 RooCodeInc,Roo Code,U1,COSS (GitHub core),github_core,1,a12,yes,sells Roo Code Cloud agents,,US,,private,yes,1,0,"Extension, Cloud, Router sunset May 2026 per search result",private,,unknown
 mdbootstrap,MDBootstrap (StartupFlow),U1,COSS (GitHub core),github_core,1,a13,yes,sells MDB Pro UI kits,,PL,,private,none_found,0,0,No funding statement on site,private,,no
 fosrl,Fossorial (Pangolin),U1,COSS (GitHub core),github_core,1,a14,yes,sells Pangolin Cloud and Enterprise,,US,2025,private,yes,1,1,,private,,no
-sinaptik-ai,Sinaptik (PandasAI),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,1100000.0,no
+sinaptik-ai,Sinaptik (PandasAI),U1,COSS (GitHub core),github_core,1,a15,yes,sells PandasAI enterprise platform,,DE,2023,private,yes,1,1,,private,1100000.0,no
 beekeeper-studio,Beekeeper Studio,U1,COSS (GitHub core),github_core,1,a16,yes,"Beekeeper Studio, GPL-3.0 community edition; sells paid editions",,US,,private,none_found,0,0,About page names no investors. Unrelated Beekeeper (Swiss comms app) lead results ignored.,private,,no
 timescale,Tiger Data,U1,COSS (GitHub core),github_core,1,a01,yes,sells Tiger Cloud hosted TimescaleDB,,US,,private,yes,5,6,Seed amount and 2019 round: 2018 post says Series A of $12.4M in Jan 2018; the $15M 2019 round is labelled Series A by TechCrunch (two rounds called A).,private,180000000.0,yes
 vanna-ai,Vanna.AI,U1,COSS (GitHub core),github_core,1,a02,yes,sells hosted Vanna Cloud,,US,,unknown,none_found,0,0,No leads; announcement page 404; no funding found.,unknown,,no
@@ -325,7 +325,7 @@ marimo-team,marimo,U1,COSS (GitHub core),github_core,1,a03,yes,company built aro
 dracula,Dracula Theme (Zeno Rocha),U1,COSS (GitHub core),github_core,1,a04,yes,sells Dracula Pro,,,,private,none_found,0,0,No leads; site shows no funding mention.,private,,no
 saleor,Saleor Commerce,U1,COSS (GitHub core),github_core,1,a05,yes,sells Saleor Cloud,,PL,,private,yes,2,8,,private,10500000.0,no
 livewire,Livewire (Caleb Porzio),U1,COSS (GitHub core),github_core,1,a06,yes,creator sells Flux UI Pro components for Livewire,,US,,private,none_found,0,0,Leads were about an unrelated motorcycle company; nothing found.,private,,no
-magicuidesign,Magic UI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+magicuidesign,Magic UI,U1,COSS (GitHub core),github_core,1,a07,yes,sells Magic UI Pro templates,,?,,private,none_found,0,0,"Funding statements on magicui.design home are customers' logos, not the company's own.",private,,no
 Skyvern-AI,Skyvern,U1,COSS (GitHub core),github_core,1,a08,yes,sells Skyvern Cloud,,US,2023,private,yes,2,1,,private,,no
 comet-ml,Comet ML,U1,COSS (GitHub core),github_core,1,a09,yes,sells Opik cloud and Comet platform,,US,2017,private,yes,4,5,,private,70000000.0,no
 notable,Notable (Fabio Spampinato),U1,COSS (GitHub core),github_core,1,a10,yes,sells Notable app licences; repo is the issue tracker,,IT,,private,none_found,0,0,Individual developer; no funding found; news hits are other Notables,private,,no
@@ -333,7 +333,7 @@ usablica,usablica (Intro.js),U1,COSS (GitHub core),github_core,1,a11,yes,sells c
 chaitin,Chaitin Tech,U1,COSS (GitHub core),github_core,1,a12,yes,sells SafeLine WAF professional and enterprise editions,,CN,2014,private,yes,5,10,"Acquired by Alibaba Cloud Oct 2019, later spun out (2024)",private,,unknown
 neondatabase,Neon,U1,COSS (GitHub core),github_core,1,a13,yes,sells Neon serverless Postgres,,US,2021,acquired,yes,3,10,Acquired by Databricks 2025-05 (reported ~$1B),acquired,130000000.0,yes
 rome,Rome Tools,U1,COSS (GitHub core),github_core,1,a14,yes,company formed around Rome toolchain,,US,,shut_down,none_found,0,0,Biome blog confirms Rome Tools Inc. failed and laid off staff; no round found in fetched pages. memory: had raised seed money (investors not verified).,shut_down,,no
-ovity,Ovity (Octotree),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ovity,Ovity (Octotree),U1,COSS (GitHub core),github_core,1,a15,yes,"sells Octotree Pro, paid version of the extension",,US,,private,none_found,0,0,nothing found,private,,no
 lensapp,Lens,U1,COSS (GitHub core),github_core,1,a16,yes,"Lens Kubernetes IDE, MIT until closed; sells Lens Plus subscriptions; repo now issues only",,US,,acquired,none_found,0,0,Acquired by Mirantis Aug 2020; no outside round found for Lens itself.,acquired,,no
 openobserve,OpenObserve,U1,COSS (GitHub core),github_core,1,a01,yes,sells OpenObserve Cloud and Enterprise,,US,,private,yes,2,2,,private,10000000.0,no
 chartdb,ChartDB,U1,COSS (GitHub core),github_core,1,a02,yes,sells hosted ChartDB plans,,US,,private,bootstrapped_stated,0,0,"About page: 'Fully bootstrapped, no outside funding'.",private,,no
@@ -341,7 +341,7 @@ balderdashy,The Sails Company,U1,COSS (GitHub core),github_core,1,a03,yes,sells 
 tracel-ai,Tracel Inc.,U1,COSS (GitHub core),github_core,1,a04,yes,"Burn and CubeCL, largely open-source; company sells solutions on that stack",,CA,,private,yes,1,2,,private,,no
 aipoch,AIPOCH,U1,COSS (GitHub core),github_core,1,a05,yes,company whose product is the open workbench; no paid tier found,,SG,,unknown,none_found,0,0,No leads; not searched further.,private,,no
 BruceDevices,Bruce Devices,U1,COSS (GitHub core),github_core,1,a06,yes,community firmware project selling its own boards,,,,unknown,none_found,0,0,Nothing on bruce.computer.,private,,no
-Source-Robotics,Source Robotics,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Source-Robotics,Source Robotics,U1,COSS (GitHub core),github_core,1,a07,yes,sells robot-arm kits of its open designs,,HR,,private,none_found,0,0,No funding on source-robotics.com home or find_pages.,private,,no
 arrayfire,ArrayFire LLC,U1,COSS (GitHub core),github_core,1,a08,yes,company sells support and services for ArrayFire library,,US,,private,none_found,0,0,Home page shows no investors; not exhaustively checked,private,,no
 nextflow-io,Seqera,U1,COSS (GitHub core),github_core,1,a09,yes,maintainers' company Seqera sells hosted Seqera Platform,,ES,2018,private,yes,3,6,,private,,no
 dimforge,Dimforge,U1,COSS (GitHub core),github_core,1,a10,yes,maintainer's company funds Rapier via sponsorship and support,,FR,,private,none_found,0,0,No funding page found; memory: not recorded,private,,no
@@ -349,15 +349,15 @@ layabox,Layabox,U1,COSS (GitHub core),github_core,1,a11,yes,company behind LayaA
 psychopy,Open Science Tools Ltd,U1,COSS (GitHub core),github_core,1,a12,yes,company sells Pavlovia hosting and PsychoPy support,,GB,,private,none_found,0,0,No funding page found; not searched deeply,private,,no
 TileDB-Inc,"TileDB, Inc.",U1,COSS (GitHub core),github_core,1,a13,yes,sells TileDB Cloud and enterprise,,US,,private,yes,3,6,TileDB is now Tile.ai (Sept 2026),private,19000000.0,unknown
 thetahealth,Theta Health,U1,COSS (GitHub core),github_core,1,a14,yes,sells Theta Pro app built on Mirobody,,US,,private,none_found,0,0,Site shows no funding; nothing found.,private,,no
-OpenDrone-hw,Incutec BV (OpenDrone),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+OpenDrone-hw,Incutec BV (OpenDrone),U1,COSS (GitHub core),github_core,1,a15,yes,Incutec BV shop sells OpenDrone boards and parts,,BE,,private,none_found,0,0,nothing found,private,,no
 symbolica-dev,Symbolica,U1,COSS (GitHub core),github_core,1,a16,yes,"Symbolica computer algebra, source available; commercial licences",,CH,,private,none_found,0,0,"Founder Ben Ruijl sells licences. TechCrunch $33M Khosla round is Symbolica AI, a different company; not recorded.",private,,no
-nengo,Applied Brain Research,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+nengo,Applied Brain Research,U1,COSS (GitHub core),github_core,1,a01,yes,ABR sells commercial Nengo licences,,CA,,private,yes,2,2,,private,,no
 makerdiary,makerdiary,U1,COSS (GitHub core),github_core,1,a02,yes,sells the open hardware boards,,CN,,unknown,none_found,0,0,Not found; about page 404.,private,,no
 harfang3d,HARFANG 3D,U1,COSS (GitHub core),github_core,1,a03,yes,sells HARFANG Studio and licences,,FR,,private,yes,1,2,,private,,no
 meshpro,MeshPro,U1,COSS (GitHub core),github_core,1,a04,yes,sells licences for Nico Schlömer's mesh tools,,DE,,private,none_found,0,0,No leads; no pages found.,private,,no
 tillitis,Tillitis AB,U1,COSS (GitHub core),github_core,1,a05,yes,sells TKey open-hardware security keys,,SE,,private,none_found,0,0,Subsidiary of Amagicom AB (Mullvad parent) per its about page; no outside funding found.,private,,no
 wntrblm,Winterbloom,U1,COSS (GitHub core),github_core,1,a06,yes,sells open-hardware music modules,,US,,unknown,none_found,0,0,Site text suggests the founders wound down; no funding found.,shut_down,,no
-m-labs,M-Labs Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+m-labs,M-Labs Ltd,U1,COSS (GitHub core),github_core,1,a07,yes,sells Sinara hardware and ARTIQ support,,HK,,private,yes,1,11,Hardware sales also fund it.,private,,no
 auto-differentiation,Xcelerit,U1,COSS (GitHub core),github_core,1,a08,yes,sells commercial licences and support for XAD,,IE,,private,none_found,0,0,No leads; XAD page shows no funding; not exhaustively checked,private,,no
 arvados,Curii Corporation,U1,COSS (GitHub core),github_core,1,a09,yes,maintainers' company Curii sells Arvados support and hosting,,US,,private,none_found,0,0,No funding page found; sites unreachable/no statements; no leads.,private,,no
 botbotrobotics,BotBot Robotics,U1,COSS (GitHub core),github_core,1,a10,yes,sells BotBrain Pro and robot hardware,,BR,,private,none_found,0,0,No funding found,private,,no
@@ -365,15 +365,15 @@ roboninecom,Robonine,U1,COSS (GitHub core),github_core,1,a11,yes,sells education
 mzmine,mzio GmbH,U1,COSS (GitHub core),github_core,1,a12,yes,maintainers' company sells mzmine commercial licences,,DE,,private,yes,1,3,,private,,no
 hmislk,CareCode,U1,COSS (GitHub core),github_core,1,a13,yes,sells implementation and support of its open HMIS,,LK,,private,none_found,0,0,"TechCrunch lead is Brazilian Carecode, a different company; not recorded",unknown,,no
 BlueQuartzSoftware,BlueQuartz Software,U1,COSS (GitHub core),github_core,1,a14,yes,"company sells DREAM3D-NX, support and custom development",,US,,private,none_found,0,0,Site shows no funding; nothing found.,private,,no
-scalableminds,scalable minds,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+scalableminds,scalable minds,U1,COSS (GitHub core),github_core,1,a15,yes,sells hosted WEBKNOSSOS and support,,DE,,private,none_found,0,0,home page names no funding,private,,no
 sirius-ms,Bright Giant GmbH,U1,COSS (GitHub core),github_core,1,a16,yes,"SIRIUS, AGPL-3.0; spin-off sells commercial licences; FSU Jena co-develops",,DE,,private,none_found,0,0,No funding page found on bright-giant.com.,private,,no
-kiisu-io,Kiisu (RainWalker),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+kiisu-io,Kiisu (RainWalker),U1,COSS (GitHub core),github_core,1,a01,yes,sells Flipper-compatible development boards,,EE,,private,none_found,0,0,Site shows only company name Rainwalker OU; no funding or crowdfunding mention.,private,,no
 Rowow-LLC,Rowow LLC,U1,COSS (GitHub core),github_core,1,a02,yes,"sells membranes, cells and kits from the open design",,US,,unknown,none_found,0,0,Tiny; not researched.,private,,no
 neuromore,neuromore,U1,COSS (GitHub core),github_core,1,a03,yes,company sold neuromore Studio licences,,US,,private,none_found,0,0,Site names no funding; appears still operating (2026 footer).,unknown,,no
 quartiq,QUARTIQ GmbH,U1,COSS (GitHub core),github_core,1,a04,yes,company sells Sinara hardware and firmware services,,DE,,private,none_found,0,0,No leads; quartiq.de not readable.,private,,no
 Wakoma,Wakoma,U1,COSS (GitHub core),github_core,1,a05,yes,social enterprise building open-source network kits,,CZ,2021,private,none_found,0,0,"About page names partners/clients (USAID, APC, etc.) but not funders; founded 2021 from footer copyright only.",private,,no
 datalab-org,datalab industries ltd,U1,COSS (GitHub core),github_core,1,a06,yes,maintainers' company offers managed datalab deployments,,GB,,private,none_found,0,0,Nothing on datalab-org.io.,private,,no
-ZiroEDA,ZIRO EDA,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ZiroEDA,ZIRO EDA,U1,COSS (GitHub core),github_core,1,a07,yes,IIT Madras-incubated startup whose product is the open tool,,IN,,private,none_found,0,0,Site says incubated at IIT Madras Nirmaan (incubator); no money or investors stated.,private,,no
 LiteFold,LiteFold,U1,COSS (GitHub core),github_core,1,a08,yes,sells LiteFold platform licences and computation services,,US,,private,none_found,0,0,No leads; site shows nothing,private,,no
 uCAN-LIN,uCanDevices,U1,COSS (GitHub core),github_core,1,a09,yes,sells the USB-LIN dongle hardware,,PL,,private,none_found,0,0,No pages found; tiny hardware seller.,private,,no
 fairscope,FairScope,U1,COSS (GitHub core),github_core,1,a10,yes,sells PlanktoScope hardware,,?,,unknown,none_found,0,0,"No funding page found; grants possibly exist, not verified",private,,no
@@ -381,11 +381,11 @@ borneo-iot,Yunnan BinaryStars Technologies,U1,COSS (GitHub core),github_core,1,a
 delmic,Delmic,U1,COSS (GitHub core),github_core,1,a12,yes,sells microscopes run by Odemis,,NL,,private,none_found,0,0,No funding page found; not searched deeply,private,,no
 WarpKVM,WarpKVM,U1,COSS (GitHub core),github_core,1,a13,yes,sells KVM-over-IP hardware built on these boards,,,,private,none_found,0,0,Tiny hardware seller; site shows no funding,unknown,,no
 openAMRobot,Botshare Ltd,U1,COSS (GitHub core),github_core,1,a14,yes,sells OpenAMRobot kits and assembled robots,,CY,,private,none_found,0,0,Founder bio mentions winning EU grants but names no programme; not recorded as a round.,private,,no
-Cheshire-Labs,Cheshire Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Cheshire-Labs,Cheshire Labs,U1,COSS (GitHub core),github_core,1,a15,yes,"company owns Orca (CLA, SSPL) and sells lab automation solutions",,US,,private,none_found,0,0,nothing found,private,,no
 mat3ra,Mat3ra,U1,COSS (GitHub core),github_core,1,a16,yes,materials-designer is part of its paid cloud platform; open code on GitHub,,US,,private,yes,1,5,Previously Exabyte Inc.,private,,no
-mcneilco,John McNeil & Co. Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mcneilco,John McNeil & Co. Inc.,U1,COSS (GitHub core),github_core,1,a01,yes,sells commercial ACAS modules,,US,,private,none_found,0,0,Company site returned no readable content; no funding found.,private,,no
 Protocentral,ProtoCentral,U1,COSS (GitHub core),github_core,1,a02,yes,sells HealthyPi open hardware,,IN,,unknown,none_found,0,0,Tiny; not researched.,private,,no
-Opentrons,Opentrons Labworks,U1,COSS (GitHub core),github_core,1,a03,yes,sells the lab robots,,US,2013,private,yes,5,7,Series A/B rounds not found. Board lists Khosla and SoftBank people but that is not stated as investment.,private,,yes
+Opentrons,Opentrons Labworks,U1,COSS (GitHub core),github_core,1,a03+x04,yes,sells the lab robots,,US,2013,private,yes,8,10,Series A/B rounds not found. Board lists Khosla and SoftBank people but that is not stated as investment. | Series A and Series B investors not found in fetched pages; Sands Capital and SOSV likely entered between seed and Series C but unverified.,private,,yes
 arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,round1,1,s01,yes,"Open-source hardware designs and software (IDE, cores); main board designs open; licences not checked",,IT,2005,acquired,yes,2,5,"Qualcomm announced acquisition Oct 2025 (acquirer, not a funding round). Page checks via WebFetch; Qualcomm page not fetched.",,,
 raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,U2,open hardware (partial),round1,1,s01,partial,"Schematics and docs published, but SoC (Broadcom) closed; not OSHWA-style open hardware",,GB,2012,listed,yes,3,2,Wikipedia lists SoftBank Group as 13% shareholder (acquisition date and terms not checked). Open status not verified by source.,,,
 adafruit,Adafruit Industries,U2,open hardware,round1,1,s01,yes,"Open-source hardware designs and libraries (e.g. NeoPixel libraries), per Wikipedia",https://en.wikipedia.org/wiki/Adafruit_Industries,US,2005,private,none_found,0,0,Wikipedia cites a Business Insider headline 'without a dime of funding'; company statement not fetched.,,,
@@ -400,16 +400,16 @@ openbci,OpenBCI,U2,open hardware neurotech,round1,1,s01,yes,Open-source BCI plat
 sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",round1,1,s01,partial,OpenROV kits were open hardware/software; Sofar publishes Bristlemouth open hardware standard (2021); Spotter itself proprietary,https://techcrunch.com/2021/09/23/sofar-and-darpa-look-to-standardize-ocean-monitoring-devices-with-bristlemouth/,US,2012,private,yes,4,7,"Kickstarter date approximate/unverified; Spoondrift raised $350k pre-merger, investors unnamed.",,,
 system76,System76,U2,"open firmware, Pop!_OS, open hardware designs",round1,1,s01,partial,"Pop!_OS (open source), open firmware (coreboot) and open Thelio designs; hardware partly open",https://en.wikipedia.org/wiki/System76,US,2005,private,bootstrapped_stated,0,0,"Colorado Sun reportedly says no venture capital (search snippet). Debt and a PPP loan listed by PitchBook, paywalled, not recorded.",,,
 framework,Framework Computer,U2,"repairable laptops, open docs (partial)",round1,1,s01,partial,"Repairable laptops; EC firmware, mainboard CAD/electrical docs and expansion card designs open; UEFI proprietary",https://en.wikipedia.org/wiki/Framework_Computer,US,2019,private,yes,5,7,,,,
-sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,round1,1,s01,partial,RISC-V ISA open standard; Rocket chip generator open source; SiFive cores themselves are commercial IP,,US,2015,private,yes,3,13,Earlier rounds (2016-2020) not checked; Intel Capital also invested earlier per TechCrunch 2018-05 lead.,,,
+sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,round1,1,s01+x02,partial,RISC-V ISA open standard; Rocket chip generator open source; SiFive cores themselves are commercial IP,,US,2015,private,yes,7,19,Earlier rounds (2016-2020) not checked; Intel Capital also invested earlier per TechCrunch 2018-05 lead. | Series A 2015 USD 5M (Wikipedia): investors not named.,,,
 oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,round1,1,s01,yes,Open-source firmware and software for its racks (per input; licences not verified in this pass),,US,2019,private,yes,3,6,"Seed round exists but investors not found. SEC Form D lead (2026-08, $445M) not read.",,,
-kitware,Kitware,U2,"VTK, ParaView, CMake, 3D Slicer",round1,1,s01,yes,"VTK, CMake, ParaView, 3D Slicer open source (BSD-style licences, memory); founded 1998",https://en.wikipedia.org/wiki/Kitware,US,1998,private,none_found,0,0,100% employee-owned (ESOP) since Dec 2020. Government R&D grants (SBIR etc.) exist but not itemised here.,,,
+kitware,Kitware,U2,"VTK, ParaView, CMake, 3D Slicer",round1,1,s01+x18,yes,"VTK, CMake, ParaView, 3D Slicer open source (BSD-style licences, memory); founded 1998",https://en.wikipedia.org/wiki/Kitware,US,1998,private,yes,6,1,"100% employee-owned (ESOP) since Dec 2020. Government R&D grants (SBIR etc.) exist but not itemised here. | Only NSF SBIR awards found; NIH, DARPA, DOE and other SBIRs not searched.",,,
 enthought,Enthought,U2,scientific Python (SciPy origins),round1,1,s01,yes,"Scientific Python (SciPy origins), open-source projects such as Traits/Chaco; commercial distribution Canopy",,US,2001,private,yes,1,1,Outside equity funding not found in this pass; company is widely described as self-funded (not verified).,,,
-posit,Posit PBC (RStudio),U2,"RStudio IDE, Shiny, Quarto",round1,1,s01,yes,"RStudio IDE (AGPL, memory), Shiny, Quarto, tidyverse open source; public benefit corporation",https://en.wikipedia.org/wiki/Posit_PBC,US,2009,private,yes,1,3,Wikipedia states General Catalyst holds a minority stake. CB Insights lists ~$166M over six rounds (unverified).,,,
+posit,Posit PBC (RStudio),U2,"RStudio IDE, Shiny, Quarto",round1,1,s01,yes,"RStudio IDE (AGPL, memory), Shiny, Quarto, tidyverse open source; public benefit corporation",https://en.wikipedia.org/wiki/Posit_PBC,US,2009,private,yes,1,0,Wikipedia states General Catalyst holds a minority stake. CB Insights lists ~$166M over six rounds (unverified).,,,
 anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",round1,1,s02,yes,conda package manager is open source (BSD-3); Anaconda distribution free but commercial terms for large orgs,https://github.com/conda/conda,US,2012,private,yes,2,4,"Series A 2015 $24M listed as HN lead (continuum.io blog, dead); investors not confirmed. memory: Series A investors not recorded.",,,
 evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),round1,1,s02,partial,ESM3-open small model weights released under non-commercial licence; larger models closed via API,,US,2023,acquired,yes,1,5,"Acquired by CZI/Biohub, Nov 2025 per HN lead title (biohub page fetched; acquisition text not verified in excerpt). Open licence from memory, not verified.",,,
 orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,round1,1,s02,partial,"Orb models released open source (Apache-2.0 per memory, not verified here); company now sells data-centre products",,GB,2022,private,yes,2,6,A source snippet lists Sequoia Capital and NVentures among early investors; page not read.,,,
 radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),round1,1,s02,partial,Closed autonomous lab; some open simulation tools (TorchSim) not verified,,US,2024,private,yes,1,6,"CB Insights/Caplight snippets also list Alumni Ventures, Khosla Ventures; pages not read.",,,
-boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,round1,1,s02,yes,"Boltz-1/Boltz-2 open-source (MIT, per memory); newer BoltzMol-1/BoltzProt-1 sold via API",https://github.com/jwohlwend/boltz,US,2025,private,yes,1,6,Earlier seed round not found.,,,
+boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,round1,1,s02+x06,yes,"Boltz-1/Boltz-2 open-source (MIT, per memory); newer BoltzMol-1/BoltzProt-1 sold via API",https://github.com/jwohlwend/boltz,US,2025,private,yes,2,9,"Earlier seed round not found. | Seed round not found; Series A post names a16z, Amplify, Zetta, Obvious as existing investors.",,,
 chai-discovery,Chai Discovery,U2,Chai-1 weights released (partial),round1,1,s02,partial,Chai-1 weights released (Apache-2.0 per memory); Chai-2/Chai-3 closed,,US,2024,private,yes,5,15,TechCrunch pages blocked by Cloudflare; read only via lead snippets.,,,
 overleaf,Overleaf (WriteLaTeX),U2,open-source LaTeX editor (AGPL),added,1,s02,yes,Overleaf Community Edition open source (AGPLv3),https://github.com/overleaf/overleaf,GB,2012,private,yes,2,2,Owned by Digital Science (Springer Nature group).,,,
 protocols-io,protocols.io,U2,open-access methods platform,added,1,s02,yes,Open-access methods platform; protocols can be published openly (platform code closed),https://www.protocols.io,US,2012,acquired,none_found,0,0,Acquired by Springer Nature 2023-07-26 (price undisclosed). CB Insights snippet claims about $540K from Springer Nature and EBSCO; page not read.,,,
@@ -432,7 +432,7 @@ coiled,Coiled,U2,Dask company,added,1,s03,yes,Dask (BSD-3) maintained by company
 quantstack,QuantStack,U2,"Jupyter, conda-forge, mamba",added,1,s03,yes,"Jupyter, mamba, conda-forge tooling under permissive open-source licences (per its blog)",https://github.com/QuantStack,France,2016,private,none_found,0,0,No funding found in search; Dealroom investors behind paywall. QuantStack Ventures invested in prefix.dev (separate entry).,,,
 prefix-dev,prefix.dev,U2,pixi and conda tooling,added,1,s03,yes,pixi and rattler open source; licence not verified on fetched pages,,Germany,,private,yes,1,3,Round type 'seed' per Crunchbase snippet only.,,,
 probabl,Probabl,U2,scikit-learn company,added,1,s03,yes,Operates and supports scikit-learn (BSD); mission-driven company to keep it open,https://scikit-learn.org/1.9/institutional_support.html,France,2023,private,yes,1,6,"Total about EUR 18.5m implies ~EUR 5.5m earlier, investors not found.",,,
-juliahub,JuliaHub (Julia Computing),U2,Julia language,added,1,s03,yes,"Julia language, MIT licence; JuliaHub sells platform and Dyad on top",https://en.wikipedia.org/wiki/Julia_(programming_language),US,2015,private,yes,6,7,"Moore Foundation/Intel supported Julia generally, not tied to company.",,,
+juliahub,JuliaHub (Julia Computing),U2,Julia language,added,1,s03+x06,yes,"Julia language, MIT licence; JuliaHub sells platform and Dyad on top",https://en.wikipedia.org/wiki/Julia_(programming_language),US,2015,private,yes,7,9,"Moore Foundation/Intel supported Julia generally, not tied to company.",,,
 cocalc,"SageMath, Inc. (CoCalc)",U2,"SageMath, CoCalc",added,1,s03,yes,CoCalc source on GitHub; SageMath GPL; licence of CoCalc not stated on page,https://en.wikipedia.org/wiki/CoCalc,US,2015,private,none_found,0,0,"Wikipedia: initial development funded by University of Washington and NSF and Google grants; now mostly paying users. Grants went to the project, amounts and company link not stated.",,,
 glencoe,Glencoe Software,U2,OME / OMERO bioimaging,added,1,s03,yes,OMERO and Bio-Formats open source; Glencoe sells commercially licensed installations,https://prnewswire.com/news-releases/glencoe-software-closes-seed-funding-of-over-800000-300036073.html,US,2005,private,yes,1,1,"Search snippet: Aridhia made undisclosed investment 2011 (Dundee press release, not fetched).",,,
 open-imaging,"Open Imaging, Inc.",U2,Micro-Manager,added,1,s03,yes,Micro-Manager open-source microscopy control; licence not named on fetched page,https://micro-manager.org/Micro-Manager_Project_Overview,US,,unknown,yes,1,1,Open Imaging not mentioned on page.,,,
@@ -472,7 +472,7 @@ trilobio,Trilobio,U2,lab automation; check openness,added,1,s05,partial,Closed l
 micropython,George Robotics (MicroPython),U2,MicroPython,added,1,s05,yes,"MicroPython, MIT licence",https://en.wikipedia.org/wiki/MicroPython,,,private,yes,3,2,Country and founding year of George Robotics not checked.,,,
 openenergymonitor,OpenEnergyMonitor (Megni),U2,open-source energy monitors,added,1,s05,yes,"Open-source energy monitors, hardware GPL/CERN OHL",https://github.com/openenergymonitor,GB,,private,none_found,0,0,Not searched beyond Wikipedia attempt (404); no funding found.,,,
 nabu-casa,Nabu Casa (Home Assistant),U2,Home Assistant,added,1,s05,yes,"Home Assistant, Apache 2.0, funded by Home Assistant Cloud subscriptions",https://github.com/home-assistant/core,US,,private,bootstrapped_stated,0,0,Company states it has no investors.,,,
-crowd-supply,Crowd Supply,U2,open hardware crowdfunding platform,added,1,s05,partial,Platform for open hardware campaigns; FSF-endorsed; platform itself not an open product,https://en.wikipedia.org/wiki/Crowd_Supply,US,2012,acquired,yes,2,1,Investors not found; cited headline sources not read.,,,
+crowd-supply,Crowd Supply,U2,open hardware crowdfunding platform,added,1,s05+x18,partial,Platform for open hardware campaigns; FSF-endorsed; platform itself not an open product,https://en.wikipedia.org/wiki/Crowd_Supply,US,2012,acquired,yes,3,4,Investors not found; cited headline sources not read. | Release calls the April 2015 $585K a second seed round (earlier seed not found).,,,
 authorea,Authorea,U2,open-science writing,added,1,s05+x17,partial,Open-science collaborative writing platform; platform itself not clearly open source,,US,,acquired,yes,4,5,Acquired by Atypon/Wiley 2018 (HN headline). Founded year not found.,,,
 f1000,F1000 Research,U2,open-access publishing,added,1,s05,yes,"Open-access, open-peer-review publisher",https://en.wikipedia.org/wiki/F1000_(publisher),GB,2000,acquired,none_found,0,0,"Wikipedia: part of Science Navigation Group, acquired by Taylor & Francis Jan 2020; no investment rounds on page. Gates Foundation and European Commission are paying clients, not investors.",,,
 frontiers,Frontiers Media,U2,open-access publisher,added,1,s05,yes,Open-access publisher (CC BY articles),https://en.wikipedia.org/wiki/Frontiers_Media,CH,2007,private,yes,1,1,Later ownership not checked.,,,
@@ -487,14 +487,14 @@ red-hat,Red Hat,U3,COSS (Linux),round1,1,c01,yes,Red Hat Linux / Fedora distribu
 mysql-ab,MySQL AB,U3,COSS (database),round1,1,c01,yes,"MySQL database server, GPL with commercial dual licence",https://en.wikipedia.org/wiki/MySQL_AB,SE,1995,acquired,yes,3,6,Acquired by Sun Microsystems 2008 (~$1B per Wikipedia). Press-release original not fetched.,,,
 hortonworks,Hortonworks,U3,COSS (Hadoop),cohort,1,c01,yes,"Hortonworks Data Platform built on Apache Hadoop, Apache License 2.0; 100% open-source distribution",,US,2011,acquired,yes,4,6,Merged with Cloudera Jan 2019 (Wikipedia). Total raised $248M per TechCrunch lead; round-by-round beyond above not found.,,,
 cloudera,Cloudera,U3,COSS (Hadoop),cohort,1,c01,partial,"CDH Hadoop distribution, Apache License 2.0 open-source core with proprietary Cloudera Manager",https://en.wikipedia.org/wiki/Cloudera,US,2008,acquired,yes,7,6,Merged with Hortonworks 2019. Other VC participants (e.g. Greylock earlier rounds) not individually sourced.,,,
-talend,Talend,U3,COSS (data integration),cohort,1,c01,yes,"Talend Open Studio, open-source data integration (GPL/Apache variants); commercial subscription editions",,FR,2005,acquired,yes,3,7,"Acquired by Thoma Bravo 2021: memory, not verified here.",,,
-mulesoft,MuleSoft,U3,COSS (integration),cohort,1,c01,partial,"Mule ESB open-source integration runtime (community edition), enterprise edition proprietary",https://en.wikipedia.org/wiki/MuleSoft,US,2006,acquired,yes,3,14,"Acquired by Salesforce 2018: memory, not verified here. Seed/Series A-D investors not separately sourced.",,,
+talend,Talend,U3,COSS (data integration),cohort,1,c01+x06,yes,"Talend Open Studio, open-source data integration (GPL/Apache variants); commercial subscription editions",,FR,2005,acquired,yes,6,8,"Acquired by Thoma Bravo 2021: memory, not verified here. | Round of 2007-07 (USD 3.5M second round, topix link) page unreadable; not recorded.",,,
+mulesoft,MuleSoft,U3,COSS (integration),cohort,1,c01+x05,partial,"Mule ESB open-source integration runtime (community edition), enterprise edition proprietary",https://en.wikipedia.org/wiki/MuleSoft,US,2006,acquired,yes,4,14,"Acquired by Salesforce 2018: memory, not verified here. Seed/Series A-D investors not separately sourced. | Prospectus names no Series A-D investors (only 5% holders); early rounds not found.",,,
 springsource-pivotal,SpringSource / Pivotal Software,U3,"COSS (Spring, Cloud Foundry)",cohort,1,c01,yes,Spring Framework (Apache 2.0) and Cloud Foundry (Apache 2.0); commercial Pivotal platform,,US,2013,acquired,yes,2,5,SpringSource's own VC rounds (pre-2009 VMware purchase) not found in sources fetched; memory: none recorded. Pivotal reabsorbed by VMware 2019: memory.,,,
 jfrog,JFrog,U3,COSS (Artifactory OSS),cohort,1,c01,partial,Artifactory OSS core plus proprietary Pro/Enterprise editions,,IL,2008,listed,yes,1,6,Individual round announcements not found with sources fetched. Licence details of Artifactory OSS not verified on a page (memory).,,,
 confluent,Confluent,U3,COSS (Kafka),cohort,1,c01,partial,Apache Kafka (Apache 2.0) is the origin; Confluent platform under Confluent Community License plus proprietary parts,,US,2014,acquired,yes,1,4,"IBM acquisition 2026 per input hint, not verified. Series A-E announcements not fetched.",,,
 suse,SUSE,U3,COSS (Linux),cohort,1,c01,yes,"SUSE Linux Enterprise / openSUSE, GPL and other open-source licensed packages; paid subscriptions",https://en.wikipedia.org/wiki/SUSE_S.A.,LU,1992,private,yes,3,2,Early venture funding of SuSE not found in sources fetched. Status private after 2023 delisting per TechCrunch.,,,
 kaltura,Kaltura,U3,COSS (video),cohort,1,c01,yes,"Kaltura Community Edition video platform, AGPLv3; commercial hosted editions",https://en.wikipedia.org/wiki/Kaltura,IL,2006,listed,yes,3,8,Founded year not sourced on pages fetched (memory). Other rounds not found.,,,
-couchbase,Couchbase,U3,COSS (database),cohort,1,c01,partial,"Couchbase Server Community Edition (source open, Apache 2.0 at the time of IPO era) plus proprietary Enterprise Edition",,US,2011,listed,yes,3,7,Founded year and licence from memory; later take-private not verified. Earlier series A-F rounds not sourced.,,,
+couchbase,Couchbase,U3,COSS (database),cohort,1,c01+x06,partial,"Couchbase Server Community Edition (source open, Apache 2.0 at the time of IPO era) plus proprietary Enterprise Edition",,US,2011,listed,yes,10,12,Founded year and licence from memory; later take-private not verified. Earlier series A-F rounds not sourced. | 2016 USD 30M round (WSJ) listed as debt in first pass; not rechecked.,,,
 mariadb,MariaDB,U3,COSS (database),cohort,1,c01,yes,"MariaDB Server, GPLv2 fork of MySQL; MariaDB plc adds BSL and proprietary components",https://en.wikipedia.org/wiki/MariaDB_Corporation,FI,2010,acquired,yes,6,11,2022 SPAC listing and 2024 K1 take-private noted in lead titles only; SPAC sponsor/PIPE investors not fetched. Founded year not sourced.,,,
 instructure,Instructure,U3,COSS (Canvas LMS),cohort,1,c01,yes,Canvas LMS open-sourced under AGPLv3 on GitHub; hosted service proprietary,https://en.wikipedia.org/wiki/Instructure,US,2008,acquired,yes,3,5,"Acquired by KKR in 2020: memory, not verified. Seed date from memory.",,,
 forgerock,ForgeRock,U3,COSS (identity),cohort,1,c01,partial,OpenAM/OpenDJ/OpenIDM open-source identity platform (CDDL then source-available); enterprise edition proprietary,,US,2010,acquired,yes,6,8,Founded year and open licences from memory.,,,
@@ -505,7 +505,7 @@ astronomer,Astronomer,U3,COSS (Airflow),round1,1,c01,partial,"Apache Airflow (Ap
 automattic,Automattic,U3,COSS (WordPress),round1,1,c02,partial,"WordPress (GPL) core is open source, stewarded with WordPress Foundation; WordPress.com is commercial service",https://ma.tt/2014/05/new-funding-for-automattic/,US,2005,private,yes,2,7,"Post says about $12M outside capital in first eight years, investors not named there. No licence statement in fetched pages. memory: WordPress GPL, founded 2005",,,
 canonical,Canonical,U3,COSS (Ubuntu),round1,1,c02,yes,"Ubuntu, mostly free/open-source licences (GPL etc.); founded and funded by Mark Shuttleworth",https://en.wikipedia.org/wiki/Canonical_(company),GB,2004,private,none_found,0,0,Wikipedia says founded and funded by Mark Shuttleworth; no outside rounds found. Canonical Crypto Fund hits in leads are an unrelated fund.,,,
 dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),round1,1,c02,yes,Dagster open-source orchestrator; cloud product proprietary,https://techcrunch.com/2023/05/24/elementl-raises-33m-series-b-for-its-data-orchestration-platform-based-on-dagster/,US,2018,acquired,yes,2,11,"2017 seed: TechCrunch says Pete Hunt invested but gives no other names. Prefect acquired Dagster 2026-07 per Prefect/Dagster posts. memory: licence Apache 2.0, founded 2018",,,
-databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",round1,1,c02,partial,"Apache Spark (Apache 2.0), Delta Lake, MLflow open-sourced by founders; Databricks platform proprietary",https://en.wikipedia.org/wiki/Databricks,US,2013,private,yes,9,29,"Series B, C, H, L investors not found. memory: founded 2013, Spark/MLflow open source",,,
+databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",round1,1,c02+x01,partial,"Apache Spark (Apache 2.0), Delta Lake, MLflow open-sourced by founders; Databricks platform proprietary",https://en.wikipedia.org/wiki/Databricks,US,2013,private,yes,15,53,"Series B, C, H, L investors not found. memory: founded 2013, Spark/MLflow open source | Series K (2025-09) investors not named in the press release fetched.",,,
 dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),round1,1,c02,yes,dbt Core open source (Apache 2.0 historically); dbt Cloud proprietary,https://www.getdbt.com/blog/of-the-community-by-the-community-for-the-community,US,2016,private,yes,2,4,"Seed/Series A/B investors not found. Fivetran merger announced 2025-10 per Reuters headline in lead list (not fetched). memory: Apache 2.0, 2016",,,
 github,GitHub,U3,open-source platform,round1,1,c02,partial,GitHub is a proprietary hosting platform for open-source code; owned by Microsoft,https://en.wikipedia.org/wiki/GitHub,US,2008,acquired,yes,2,4,"Acquired by Microsoft 2018-06 ($7.5B stock, per Wikipedia); acquirer, not a funding round",,,
 puppet,Puppet,U3,COSS (config management),round1,1,c02,partial,"Puppet open source (Apache for >2.7.0, GPL earlier) per Wikipedia; Puppet Enterprise proprietary",https://en.wikipedia.org/wiki/Puppet_(company),US,2005,acquired,yes,4,7,Acquired by Perforce 2022-04 (Wikipedia). Rounds between 2011 and 2014 not itemised. memory: founded 2005 per Wikipedia (marked as needing citation),,,
@@ -517,7 +517,7 @@ weaviate,Weaviate,U3,COSS (vector database),round1,1,c02,yes,Weaviate open-sourc
 ggml,ggml.ai,U3,"llama.cpp, ggml",round1,1,c02,yes,"ggml and llama.cpp, MIT licence",https://ggml.ai,BG,2023,acquired,yes,1,2,Page states Hugging Face acquired ggml.ai in 2026 (no terms). memory: Gerganov Bulgarian,,,
 inferact,Inferact (vLLM),U3,COSS (vLLM),round1,1,c02,yes,"vLLM is Apache 2.0 open source, PyTorch Foundation governed",https://inferact.ai/,US,2026,private,yes,1,2,Other seed participants not found,,,
 cygnus,Cygnus Solutions,U3,COSS (GNU toolchain),added,1,c02,yes,"Commercial support for GNU tools (GCC, GDB, binutils); Cygwin, eCos",https://en.wikipedia.org/wiki/Cygnus_Solutions,US,1989,acquired,none_found,0,0,Wikipedia gives no funding or investors; merged with Red Hat Nov 1999. No funding page found. Licences of Cygwin/eCos not stated on page.,,,
-va-linux,VA Linux Systems,U3,"Linux systems, SourceForge",added,1,c02,partial,"Linux hardware and SourceForge; open basis weak (hardware vendor, SourceForge code later GPL: memory)",https://en.wikipedia.org/wiki/VA_Linux,US,1993,acquired,yes,3,3,Founded as VA Research; later renamed (acquirer not checked),,,
+va-linux,VA Linux Systems,U3,"Linux systems, SourceForge",added,1,c02+x05,partial,"Linux hardware and SourceForge; open basis weak (hardware vendor, SourceForge code later GPL: memory)",https://en.wikipedia.org/wiki/VA_Linux,US,1993,acquired,yes,4,4,"Founded as VA Research; later renamed (acquirer not checked) | IPO prospectus principal stockholders: Sequoia Capital, Intel; Series A investors not named.",,,
 sleepycat,Sleepycat Software,U3,COSS (Berkeley DB),added,1,c02,yes,Berkeley DB under Sleepycat licence (copyleft) plus proprietary commercial licence,https://en.wikipedia.org/wiki/Sleepycat_Software,US,1996,acquired,none_found,0,0,"Wikipedia gives no funding. CACM interview snippet (search result, page 403) says founders kept IP and did not depend on venture capital; ACM Queue snippet unclear. Oracle bought it 2006-02.",,,
 trolltech,Trolltech,U3,COSS (Qt),added,1,c02,yes,"Qt toolkit, dual licensed (open source and commercial); page does not give licence terms",https://en.wikipedia.org/wiki/Trolltech,NO,1994,acquired,none_found,0,0,Wikipedia names no investors. Oslo IPO July 2006; Nokia public offer Jan 2008 (about EUR104M) approved June 2008. No VC rounds found.,,,
 sendmail,"Sendmail, Inc.",U3,COSS (sendmail),added,1,c02,yes,Sendmail MTA under Sendmail licence (open source); commercial products,https://en.wikipedia.org/wiki/Sendmail,US,,acquired,yes,2,5,"Low confidence: sourced only from a search snippet, pages blocked. Proofpoint acquisition 2013-10. founded year not found",,,
@@ -610,14 +610,14 @@ reflection-ai,Reflection AI,U3,open-weight frontier models (stated plan),added,1
 prime-intellect,Prime Intellect,U3,"open-source decentralised training, open models",added,1,c07,yes,"INTELLECT-2 open weights, Apache-2.0 (Hugging Face card); open training tools",https://huggingface.co/PrimeIntellect/INTELLECT-2,US,2024,private,yes,3,27,,,,
 zyphra,Zyphra,U3,open-weight models,added,1,c07,yes,"Zamba2-7B open weights, Apache-2.0 (Hugging Face card)",https://huggingface.co/Zyphra/Zamba2-7B,US,2021,private,yes,1,4,Aggregator only; no primary announcement found. Seed round not found. memory: founding year.,,,
 arcee,Arcee AI,U3,open-weight models,added,1,c07,yes,Trinity models open weights under Apache-2.0 (per TechCrunch),https://techcrunch.com/2026/04/07/i-cant-help-rooting-for-tiny-open-source-ai-model-maker-arcee/,US,2023,private,yes,2,1,"memory/unverified search summary: Flybridge, Long Journey Ventures, Scott Banister, Centre Street Partners, Arcadia Capital named in Arcee blog; a Series B in 2026 (Cambium, Emergence, Vista) appears on an aggregator; not read.",,,
-liquid-ai,Liquid AI,U3,open-weight LFM models (partial),added,1,c07,partial,LFM2 open weights under custom LFM Open License (HF licence tag 'other'); early LFMs closed,https://huggingface.co/LiquidAI/LFM2-1.2B,US,2023,private,yes,2,4,Later rounds not searched.,,,
+liquid-ai,Liquid AI,U3,open-weight LFM models (partial),added,1,c07+x04,partial,LFM2 open weights under custom LFM Open License (HF licence tag 'other'); early LFMs closed,https://huggingface.co/LiquidAI/LFM2-1.2B,US,2023,private,yes,3,11,Later rounds not searched.,,,
 pleias,Pleias,U3,open models trained on open data,added,1,c07,yes,"Models with open weights, code and data (Common Corpus); Pleias-1.2b-Preview Apache-2.0",https://huggingface.co/PleIAs/Pleias-1.2b-Preview,France,2023,private,none_found,0,0,"No funding page read. Search summaries only: Mozilla Builders accelerator (2024), an aggregator Seed ~$10M, a late-2025 raise; none confirmed on a page.",,,
 sakana,Sakana AI,U3,open releases (partial),added,1,c07,partial,"Some open releases (e.g. TinySwallow-1.5B Apache-2.0); main products and Series B focus on enterprise, not open",https://huggingface.co/SakanaAI/TinySwallow-1.5B,Japan,2023,private,yes,2,36,Seed round (2023) not found on a page read.,,,
 ai21,AI21 Labs,U3,open-weight Jamba models (partial),added,1,c07,partial,Jamba open weights under Jamba Open Model License (HF licence tag 'other'); main products closed API,https://huggingface.co/ai21labs/AI21-Jamba-Mini-1.5,Israel,2017,private,yes,4,13,Series A and seed investors not found.,,,
-cohere,Cohere,U3,"research weights, non-commercial licence (partial)",added,1,c07,partial,"Command R research weights, CC-BY-NC-4.0 (non-commercial); main models closed API",https://huggingface.co/CohereLabs/c4ai-command-r-v01,Canada,2019,private,yes,4,21,"Seed and Series A/B investors not read from a page (search summary: Radical Ventures, Index Ventures early backers). Aleph Alpha merger 2026.",,,
+cohere,Cohere,U3,"research weights, non-commercial licence (partial)",added,1,c07+x02,partial,"Command R research weights, CC-BY-NC-4.0 (non-commercial); main models closed API",https://huggingface.co/CohereLabs/c4ai-command-r-v01,Canada,2019,private,yes,7,26,"Seed and Series A/B investors not read from a page (search summary: Radical Ventures, Index Ventures early backers). Aleph Alpha merger 2026.",,,
 01-ai,01.AI,U3,open-weight Yi models,added,1,c07,yes,"Yi-34B open weights, Apache-2.0 (Hugging Face card)",https://huggingface.co/01-ai/Yi-34B,China,2023,private,yes,2,2,Not recorded as a named-investor round beyond the above.,,,
-moonshot,Moonshot AI,U3,open-weight Kimi models,added,1,c07,yes,Kimi K2 and later open weights under modified MIT licence (HF tag); chat product closed,https://huggingface.co/moonshotai/Kimi-K2-Instruct,China,2023,private,yes,7,12,Listing/IPO plan reported in July 2026 leads; not a round.,,,
-minimax,MiniMax,U3,open-weight models,added,1,c07,yes,MiniMax-M2 open weights under modified MIT licence (HF tag); earlier Text-01 also released; listed in HK,https://huggingface.co/MiniMaxAI/MiniMax-M2,China,2021,listed,yes,6,12,Listed company; 2024-03 round amount from Bloomberg via SiliconANGLE.,,,
+moonshot,Moonshot AI,U3,open-weight Kimi models,added,1,c07+x01,yes,Kimi K2 and later open weights under modified MIT licence (HF tag); chat product closed,https://huggingface.co/moonshotai/Kimi-K2-Instruct,China,2023,private,yes,9,17,Listing/IPO plan reported in July 2026 leads; not a round. | Wikipedia says initial funding was USD 60M at USD 300M valuation (investors not named there). Series C 2025-12 led by IDG per existing round.,,,
+minimax,MiniMax,U3,open-weight models,added,1,c07+x01,yes,MiniMax-M2 open weights under modified MIT licence (HF tag); earlier Text-01 also released; listed in HK,https://huggingface.co/MiniMaxAI/MiniMax-M2,China,2021,listed,yes,8,15,Listed company; 2024-03 round amount from Bloomberg via SiliconANGLE.,,,
 baichuan,Baichuan Intelligence,U3,open-weight models,added,1,c07,partial,Baichuan-7B/13B/Baichuan2 open weights under community licence (HF tag 'other'); newer models closed,https://huggingface.co/baichuan-inc/Baichuan2-13B-Base,China,2023,private,yes,3,6,Baichuan shifted focus in 2025 (TechNode). Seed/angel investors not found.,,,
 stepfun,StepFun,U3,open-weight models,added,1,c08,partial,Releases some open-weight Step models; flagship models mostly API-only (not checked on a page),,CN,2023,private,yes,2,11,"Early rounds not found; open basis unverified, memory only.",,,
 deep-cogito,Deep Cogito,U3,open-weight models,added,1,c08,yes,"Cogito open-weight LLMs (built on Llama and Qwen), released April 2025",https://techcrunch.com/2025/04/08/deep-cogito-emerges-from-stealth-with-hybrid-ai-reasoning-models/,US,2024,private,yes,2,6,memory/search summary only: seed $13M with Benchmark,,,
@@ -739,31 +739,31 @@ u4-flotype,Flotype,U4,open-source startup,yc,1,d04,partial,"NowJS open-source fr
 u4-flower,Flower,U4,open-source startup,yc,1,d04,yes,"Flower, open-source framework for federated AI training",,,2023,private,yes,3,7,,,,
 u4-formance,Formance,U4,open-source startup,yc,1,d04,yes,"Open-source programmable ledger, formancehq/stack; licence not checked",,FR,,private,yes,2,5,,,,
 u4-freebuff,Freebuff,U4,open-source startup,yc,1,d04,partial,YC page: free coding agent on open source models; GitHub repo listed,,,,private,yes,1,1,Funded by ads per site; no other funding found.,,,
-u4-funstory-ai,Funstory.ai,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-gaia,Gaia,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-gitbutler,GitButler,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-gitlawb,Gitlawb,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-grai,Grai,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-growthbook,GrowthBook,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-hamster,Hamster,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-harnessrouter,HarnessRouter,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-hatchet,Hatchet,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-hebbian-robotics,Hebbian Robotics,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-hegel-ai,Hegel AI,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-helicone,Helicone,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-helixdb,HelixDB,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-herdr,Herdr,U4,open-source startup,ross+yc,0,,,,,,,,,0,0,,,,
-u4-higher-order-company,Higher Order Company,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-highlight-io,highlight.io,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-hydra,Hydra,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-hyper-write,Hyper Write,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-hyperdx,HyperDX,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-imgix,Imgix,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-inconvo,Inconvo,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-infield,Infield,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-infracost,Infracost,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-inth,Inth,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-jitsu,Jitsu,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
+u4-funstory-ai,Funstory.ai,U4,open-source startup,ross,1,d05,yes,"BabelDOC translation library, AGPL-3.0",https://github.com/funstory-ai/BabelDOC,CN,2017,private,none_found,0,0,No funding page found via find_pages or leads; Runa lists none.,,,
+u4-gaia,Gaia,U4,open-source startup,ross,1,d05,yes,"GaiaNet node, GPL-3.0 on GitHub",https://github.com/gaianet-ai/gaianet-node,US,2024,private,yes,1,7,Company called GaiaNet in source; matched via repo gaianet-ai.,,,
+u4-gitbutler,GitButler,U4,open-source startup,ross,1,d05,partial,Git client on GitHub; licence not confirmed here,https://github.com/gitbutlerapp/gitbutler,DE,2023,private,yes,1,3,Earlier seed not found. a16z post: https://www.a16z.news/p/investing-in-gitbutler,,,
+u4-gitlawb,Gitlawb,U4,open-source startup,ross,1,d05,partial,openclaude repo on GitHub; licence not read,https://github.com/Gitlawb/openclaude,AU,2026,private,none_found,0,0,No pages found by find_pages or leads.,,,
+u4-grai,Grai,U4,open-source startup,yc,1,d05,yes,"Open source metadata version control (grai-core), per YC page",https://www.ycombinator.com/companies/grai,US,2022,shut_down,yes,1,1,YC status Inactive. No other round found.,,,
+u4-growthbook,GrowthBook,U4,open-source startup,yc,1,d05,yes,"Open source feature flags and A/B testing, MIT core",https://github.com/growthbook/growthbook,US,2020,private,yes,1,1,"Company about page says backed by firms behind Airbnb, Stripe, DoorDash, Dropbox; no names. Priced round not found.",,,
+u4-hamster,Hamster,U4,open-source startup,ross,1,d05,partial,Built around claude-task-master repo; MIT per GitHub page,https://github.com/eyaltoledano/claude-task-master,US,2025,private,none_found,0,0,Runa lists none; nothing found.,,,
+u4-harnessrouter,HarnessRouter,U4,open-source startup,yc,1,d05,yes,"Apache 2.0 Community Edition self-hostable, per YC page",https://www.ycombinator.com/companies/harnessrouter,,,private,yes,1,1,"Site logos named Epsilla, Hibo, Nutch, Readily look like customers, not investors.",,,
+u4-hatchet,Hatchet,U4,open-source startup,yc,1,d05,yes,"Core engine MIT-licensed, per company post",https://hatchet.run/announcement/hatchet-v2,US,2023,private,yes,2,1,Seed investors not named in post.,,,
+u4-hebbian-robotics,Hebbian Robotics,U4,open-source startup,yc,1,d05,partial,"Open source infrastructure for Physical AI, per YC page",https://www.ycombinator.com/companies/hebbian-robotics,,2026,private,yes,1,1,,,,
+u4-hegel-ai,Hegel AI,U4,open-source startup,yc,1,d05,yes,PromptTools open-source SDK,https://github.com/hegelai/prompttools,US,2023,private,yes,1,1,No other pages found.,,,
+u4-helicone,Helicone,U4,open-source startup,yc,1,d05,yes,Open source LLM observability and gateway,https://github.com/Helicone/helicone,US,2023,acquired,yes,1,1,"Acquired by Mintlify, March 2026. No priced round found.",,,
+u4-helixdb,HelixDB,U4,open-source startup,yc,1,d05,yes,"Open source graph-vector database, per YC page",https://www.ycombinator.com/companies/helixdb,US,2025,private,yes,1,1,"memory/site: Nvidia logo on homepage, not stated as investor.",,,
+u4-herdr,Herdr,U4,open-source startup,ross+yc,1,d05,yes,"Open-source agent runtime, per YC page",https://github.com/herdrdev/herdr,TR,2026,private,yes,2,6,,,,
+u4-higher-order-company,Higher Order Company,U4,open-source startup,ross,1,d05,yes,"Bend language, Apache-2.0",https://github.com/higherorderco/bend,BR,2023,private,none_found,0,0,No pages found.,,,
+u4-highlight-io,highlight.io,U4,open-source startup,yc,1,d05,yes,Open source full-stack monitoring,https://github.com/highlight/highlight,US,2022,acquired,yes,1,1,Acquired by LaunchDarkly 2025-04; priced rounds not found.,,,
+u4-hydra,Hydra,U4,open-source startup,yc,1,d05,yes,"Open source Postgres analytics, per YC page",https://www.ycombinator.com/companies/hydra,US,2022,acquired,yes,1,1,"Leads were other companies (Hydra Host, Hydra Energy); not used. Acquirer not found.",,,
+u4-hyper-write,Hyper Write,U4,open-source startup,ross,1,d05,yes,"self-operating-computer repo, MIT",https://github.com/othersideai/self-operating-computer,US,2020,private,none_found,0,0,Runa figure 5.4M USD but no page found naming funders.,,,
+u4-hyperdx,HyperDX,U4,open-source startup,yc,1,d05,yes,Open source observability on ClickHouse,https://github.com/hyperdxio/hyperdx,US,2022,acquired,yes,1,1,Acquired by ClickHouse 2025-03.,,,
+u4-imgix,Imgix,U4,open-source startup,yc,1,d05,partial,"YC tags it open source; main service proprietary, unverified",https://www.ycombinator.com/companies/imgix,US,2011,private,yes,3,3,,,,
+u4-inconvo,Inconvo,U4,open-source startup,yc,1,d05,yes,"Open-source data agent platform, per YC page",https://www.ycombinator.com/companies/inconvo,,2023,private,yes,1,1,,,,
+u4-infield,Infield,U4,open-source startup,yc,1,d05,partial,Not clearly open itself; helps with open-source dependencies,https://www.ycombinator.com/companies/infield,US,2020,private,yes,1,1,,,,
+u4-infracost,Infracost,U4,open-source startup,yc,1,d05,yes,Open source cloud cost CLI,https://github.com/infracost/infracost,US,2021,private,yes,2,8,"A 2021 Forbes headline says Infracost raised from Sequoia; page unreadable, so no separate round.",,,
+u4-inth,Inth,U4,open-source startup,yc,1,d05,yes,"c15t consent framework, Apache-2.0",https://www.ycombinator.com/companies/inth,,,private,yes,2,2,,,,
+u4-jitsu,Jitsu,U4,open-source startup,yc,1,d05,yes,Open-source data integration/CDP,https://github.com/jitsucom/jitsu,US,2020,acquired,yes,2,4,YC page says acquired by Helium Ventures.,,,
 u4-kaelio,Kaelio,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
 u4-kailash-labs,Kailash Labs,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
 u4-karate-labs,Karate Labs,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
@@ -889,56 +889,56 @@ u4-sesame,Sesame,U4,open-source startup,ross,1,d10,partial,"Released CSM base sp
 u4-shardeum,Shardeum,U4,open-source startup,ross,1,d10,yes,shardeum/shardeum blockchain node repo on GitHub (ROSS Index); licence not checked,https://github.com/shardeum/shardeum,CH,2022,private,yes,1,4,Closing confirmation not found,,,
 u4-shuttle,Shuttle,U4,open-source startup,yc,1,d10,yes,"shuttle-hq/shuttle Rust deployment platform, open source (YC description); licence not checked",https://github.com/shuttle-hq,GB,2019,private,yes,2,3,YC page marks Inactive; TechCrunch shows it raised in 2025,,,
 u4-skyhook,Skyhook,U4,open-source startup,yc,1,d10,yes,"Radar, Apache-2.0 single binary (YC page); repo skyhook-io",https://github.com/skyhook-io,US,2023,private,yes,1,1,"Site 'Backed By' names only partners, not investors",,,
-u4-sourcebot,Sourcebot,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-sst,SST,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-stably-ai,Stably AI,U4,open-source startup,ross+yc,0,,,,,,,,,0,0,,,,
-u4-stackup,Stackup,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-stagewise,Stagewise,U4,open-source startup,ross+yc,0,,,,,,,,,0,0,,,,
-u4-standard-cyborg,Standard Cyborg,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-standard-physics,Standard Physics,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-stellon-labs,Stellon Labs,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-stition-ai,Stition AI,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-storia-ai,Storia AI,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-subimage,Subimage,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-sublingual,Sublingual,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-sudocode,sudocode,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-superagent,Superagent,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-superdesign,Superdesign,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-superduperdb,SuperDuperDB,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-superlog,Superlog,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-supertokens,SuperTokens,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-superwall,Superwall,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-surfsense,SurfSense,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-svix,Svix,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-sync,sync.,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-taipy,Taipy,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-tea,Tea,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-teclada,Teclada,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tensil,Tensil,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tesseral,Tesseral,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tilo,Tilo,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tinfoil,Tinfoil,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tipe,Tipe,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tracecat,Tracecat,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-traceloop,Traceloop,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tracer,Tracer,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-traceroot,traceroot,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-trieve,Trieve,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-trigger-dev,Trigger.dev,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-truefoundry,TrueFoundry,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-tusk,Tusk,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-tuva-health,Tuva Health,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-twenty,Twenty,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-ubicloud,Ubicloud,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-ukama,Ukama,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-unify,Unify,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-upsonic,Upsonic,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-upstash,Upstash,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-vessel,Vessel,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-vibe-kanban,Vibe Kanban,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-vibrant-labs,Vibrant Labs,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
-u4-videolingo,VideoLingo,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-vocode,Vocode,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
+u4-sourcebot,Sourcebot,U4,open-source startup,yc,1,d11,yes,Open source code understanding platform per YC page; licence not checked,,US,2025,private,yes,2,4,Site names Liquid 2 and Pioneer Fund; round and date not disclosed.,,,
+u4-sst,SST,U4,open-source startup,ross,1,d11,yes,OpenAuth repo (toolbeam/openauth); SST framework open source; licence not checked,,US,2017,private,yes,1,6,Runa lists 1.6M USD funding; no announcement found. About page says 'and more'.,,,
+u4-stably-ai,Stably AI,U4,open-source startup,ross+yc,1,d11,yes,"Orca, MIT open source terminal-based agent orchestrator (per YC page); repo stablyai/orca",,US,2022,private,yes,1,1,Runa lists 0.5M USD; no round found. YC page batch is W22 for Stably AI.,,,
+u4-stackup,Stackup,U4,open-source startup,yc,1,d11,partial,Open-source ERC-4337 bundler/tooling per YC directory; not verified,,US,2022,unknown,yes,1,1,"YC status inactive. Site stackup.fi has logo files named dcg, 1kx, goodwater, unlabelled, not counted. memory: not recorded.",,,
+u4-stagewise,Stagewise,U4,open-source startup,ross+yc,1,d11,yes,stagewise repo stagewise-io/stagewise; licence not checked,,DE,2024,private,yes,2,4,Runa lists 0.5M USD.,,,
+u4-standard-cyborg,Standard Cyborg,U4,open-source startup,yc,1,d11,partial,Listed open source in YC directory; no repo checked,,US,2015,unknown,yes,1,1,TechCrunch 2015-02 confirms YC backing; no later round found.,,,
+u4-standard-physics,Standard Physics,U4,open-source startup,yc,1,d11,partial,Listed open source in YC directory; builds on OpenFOAM; own licence not checked,,US,2025,private,yes,1,1,Formerly Inviscid AI. Site says early team backed by YC; nothing more found.,,,
+u4-stellon-labs,Stellon Labs,U4,open-source startup,yc,1,d11,yes,KittenTTS open source TTS model per YC page; licence not checked,,US,2025,private,yes,1,1,No other funding page found.,,,
+u4-stition-ai,Stition AI,U4,open-source startup,ross,1,d11,yes,Devika repo stitionai/devika; licence not checked,,IN,2023,unknown,none_found,0,0,Runa lists 0.5M USD; no page naming funders found (find_pages empty).,,,
+u4-storia-ai,Storia AI,U4,open-source startup,yc,1,d11,yes,Sage open-source code copilot per YC page; licence not checked,,US,2024,private,yes,1,1,YC inactive. No other funding page found.,,,
+u4-subimage,Subimage,U4,open-source startup,yc,1,d11,partial,Managed offering built around open-source Cartography; open-core,,US,2024,private,yes,1,1,Nothing else found on site or find_pages.,,,
+u4-sublingual,Sublingual,U4,open-source startup,yc,1,d11,partial,"Listed open source in YC directory; product is a desktop app, repo not checked",,US,2024,shut_down,yes,1,1,YC status inactive.,,,
+u4-sudocode,sudocode,U4,open-source startup,yc,1,d11,yes,Fully open-source per YC page; repo sudocode-ai/sudocode,,US,2023,private,yes,1,1,Nothing else found.,,,
+u4-superagent,Superagent,U4,open-source startup,yc,1,d11,yes,Open source tools for securing code and agents (per about page),,US,2023,private,yes,2,2,"About page: backed by YC, Rebel Fund and founders of Okta, Replit, HubSpot (names not given).",,,
+u4-superdesign,Superdesign,U4,open-source startup,ross,1,d11,yes,Repo superdesigndev/superdesign; licence not checked,,AU,2025,unknown,none_found,0,0,Runa lists no funding; nothing found.,,,
+u4-superduperdb,SuperDuperDB,U4,open-source startup,ross,1,d11,yes,"Repo superduperdb/superduperdb, Apache-2.0 (memory, not verified)",,DE,2023,unknown,none_found,0,0,Runa lists no funding; site and find_pages gave no funder names.,,,
+u4-superlog,Superlog,U4,open-source startup,yc,1,d11,partial,Listed open source in YC directory; repo not checked,,FR,2026,private,yes,1,1,"Site logos are customers, not investors.",,,
+u4-supertokens,SuperTokens,U4,open-source startup,yc,1,d11,yes,"Open source authentication, Apache-2.0 core (per YC page; licence not checked)",,US,2019,private,yes,2,4,Investor list parsed from page text; which names belong to the Dec 2023 raise is not stated.,,,
+u4-superwall,Superwall,U4,open-source startup,yc,1,d11,partial,Listed open source in YC directory (SDKs); repo not checked,,US,2020,private,yes,1,1,YC page slug is staffbar. No funding page found on site.,,,
+u4-surfsense,SurfSense,U4,open-source startup,ross,1,d11,yes,Repo MODSetter/SurfSense; licence not checked,,US,2025,unknown,none_found,0,0,Runa lists none; nothing found.,,,
+u4-svix,Svix,U4,open-source startup,yc,1,d11,yes,Open source webhooks service (per YC page),,US,2020,private,yes,2,10,Seed announcement not found.,,,
+u4-sync,sync.,U4,open-source startup,yc,1,d11,partial,Listed open source in YC directory (lipsync models); not verified,,US,2023,private,yes,3,5,Series A not looked for beyond blog.,,,
+u4-taipy,Taipy,U4,open-source startup,ross,1,d11,yes,"Repo avaiga/taipy, Apache-2.0 (memory, not verified)",,FR,2020,private,none_found,0,0,Runa lists none; site and find_pages gave no funder names.,,,
+u4-tea,Tea,U4,open-source startup,ross,1,d11,partial,Repo teaxyz/white-paper; tea protocol rewards OSS; not a standard open-source product,,PR,2021,private,none_found,0,0,Runa lists 16.9M USD; tea.xyz/about says 'backed by web3 innovators' without names. No page naming funders.,,,
+u4-teclada,Teclada,U4,open-source startup,yc,1,d11,partial,Listed open source in YC directory; repo not checked,,US,2022,private,yes,1,1,Site has a 'Backed by' logo strip with no readable names.,,,
+u4-tensil,Tensil,U4,open-source startup,yc,1,d12,yes,"Tensil ML accelerator toolchain on GitHub, repo archived Oct 2025; licence not seen",https://github.com/tensil-ai/tensil,US,,shut_down,yes,1,1,YC status Inactive; repo archived. Nothing beyond YC found; tensil.ai now redirects elsewhere.,,,
+u4-tesseral,Tesseral,U4,open-source startup,yc,1,d12,yes,"Tesseral identity platform, MIT licence on GitHub",https://github.com/tesseral-labs/tesseral,US,2023,unknown,yes,1,1,No priced round found; YC status Inactive.,,,
+u4-tilo,Tilo,U4,open-source startup,yc,1,d12,partial,"YC page tags Open Source; code link code.tilo.so/tilo, licence not seen",https://www.ycombinator.com/companies/tilo,US,2026,private,yes,1,1,"Leads about Berlin Tilo (Peak Capital seed 2022) are a different, older company (this one founded 2026, SF); not recorded.",,,
+u4-tinfoil,Tinfoil,U4,open-source startup,yc,1,d12,partial,"YC tags it open source; GitHub org tinfoilsh exists, licence not checked",https://github.com/tinfoilsh,US,2024,private,yes,2,6,Hacker News lead about Synopsys/Tinfoil Security is a different company.,,,
+u4-tipe,Tipe,U4,open-source startup,yc,1,d12,partial,Open-source headless CMS (YC tag Open Source); licence not checked,https://www.ycombinator.com/companies/tipe,US,2017,unknown,yes,2,4,,,,
+u4-tracecat,Tracecat,U4,open-source startup,yc,1,d12,yes,"Tracecat, AGPL-3.0 except paid ee directory",https://github.com/TracecatHQ/tracecat,US,2023,private,yes,1,1,"No other round found on its site, blog, repo or YC page.",,,
+u4-traceloop,Traceloop,U4,open-source startup,yc,1,d12,partial,"OpenLLMetry OpenTelemetry-based LLM observability, open source (YC tag); licence not checked",https://www.ycombinator.com/companies/traceloop,Israel,2022,acquired,yes,2,5,"Acquired by ServiceNow, announced March 2026 on company blog traceloop.com/blog/traceloop-is-joining-servicenow. Country Israel from Calcalist (not verified elsewhere).",,,
+u4-tracer,Tracer,U4,open-source startup,yc,1,d12,yes,"TRACER OSS repo, MIT; also open-weight model PIIX-560m",https://github.com/adrida/tracer,,2026,private,yes,1,1,TechCrunch lead about Tracer data aggregator (Series A 2023) is a different company; not recorded.,,,
+u4-traceroot,traceroot,U4,open-source startup,yc,1,d12,yes,"traceroot, Apache 2.0 outside ee directories",https://github.com/traceroot-ai/traceroot,US,2025,private,yes,1,1,Only Y Combinator named on its site.,,,
+u4-trieve,Trieve,U4,open-source startup,yc,1,d12,yes,"Trieve search/RAG infrastructure, MIT on GitHub",https://github.com/devflowinc/trieve,US,2023,acquired,yes,1,1,YC lists Acquired; acquirer not found. trieve.ai did not resolve.,,,
+u4-trigger-dev,Trigger.dev,U4,open-source startup,yc,1,d12,yes,"Trigger.dev platform, Apache 2.0 on GitHub",https://trigger.dev,US,2022,private,yes,3,30,,,,
+u4-truefoundry,TrueFoundry,U4,open-source startup,ross,1,d12,partial,"Cognita RAG framework, Apache-2.0 (archived Nov 2026); main platform commercial",https://github.com/truefoundry/cognita,US,2021,private,yes,2,14,,,,
+u4-tusk,Tusk,U4,open-source startup,yc,1,d12,partial,Tusk CLI and Drift SDKs Apache-2.0; core test-generation agent is a hosted product,https://github.com/Use-Tusk,US,2023,shut_down,yes,1,1,Site lists 'Tusk Is Sunsetting' dated 2026-06-10. Tusk Ventures leads are a different firm.,,,
+u4-tuva-health,Tuva Health,U4,open-source startup,yc,1,d12,yes,"Tuva Core healthcare data models, Apache 2.0",https://github.com/tuva-health/tuva,US,2021,private,yes,1,1,No other round found on its site or YC page.,,,
+u4-twenty,Twenty,U4,open-source startup,yc,1,d12,yes,"Twenty CRM, AGPLv3 on GitHub (per TechCrunch)",https://github.com/twentyhq/twenty,France,2023,private,yes,2,8,"Country from TechCrunch Station F context, not verified.",,,
+u4-ubicloud,Ubicloud,U4,open-source startup,yc,1,d12,yes,"Open source cloud, GitHub ubicloud/ubicloud (AGPL, licence not verified here)",https://github.com/ubicloud/ubicloud,US,2023,private,yes,2,2,,,,
+u4-ukama,Ukama,U4,open-source startup,yc,1,d12,yes,"Ukama cellular network software, MPL-2.0",https://github.com/ukama/ukama,,,private,yes,1,1,Nothing beyond YC found.,,,
+u4-unify,Unify,U4,open-source startup,yc,1,d12,partial,YC tags Open Source; repo and licence not checked,https://www.ycombinator.com/companies/unify,,,private,yes,2,6,"Leads (Unito, Roadmunk) are other companies.",,,
+u4-upsonic,Upsonic,U4,open-source startup,ross,1,d12,yes,"Upsonic agent framework, MIT",https://github.com/Upsonic/Upsonic,Turkey,2023,private,none_found,0,0,Runa figure none; repo page shows no funding.,,,
+u4-upstash,Upstash,U4,open-source startup,ross,1,d12,partial,"Context7 MCP server, MIT; API backend and crawler are private",https://github.com/upstash/context7,US,2021,private,yes,2,4,,,,
+u4-vessel,Vessel,U4,open-source startup,yc,1,d12,partial,YC page: open-source integrations library; repo not checked,https://www.ycombinator.com/companies/vessel,US,,unknown,yes,1,1,"BetaKit leads (Vessel VC platform, Inovia/Afore seed) are a different company; not recorded. YC status Inactive.",,,
+u4-vibe-kanban,Vibe Kanban,U4,open-source startup,yc,1,d12,yes,"Vibe Kanban, Apache-2.0, BloopAI/vibe-kanban; sunsetting, community maintained",https://github.com/BloopAI/vibe-kanban,,,shut_down,yes,1,1,"No other funding page found. Site and README say sunsetting, project continues community maintained.",,,
+u4-vibrant-labs,Vibrant Labs,U4,open-source startup,yc,1,d12,partial,"Ragas evals framework, github.com/vibrantlabsai/ragas; licence not seen",https://github.com/vibrantlabsai/ragas,US,,private,yes,1,1,Site says 'proudly backed by' but names no investors.,,,
+u4-videolingo,VideoLingo,U4,open-source startup,ross,1,d12,yes,"VideoLingo, Apache 2.0",https://github.com/Huanshere/VideoLingo,Canada,2024,private,none_found,0,0,Solo-maintainer project; no sponsors or funding on repo.,,,
+u4-vocode,Vocode,U4,open-source startup,yc,1,d12,yes,"vocode-core voice AI framework, MIT",https://github.com/vocodedev/vocode-core,US,2022,acquired,yes,1,1,YC lists Acquired; acquirer not found. README seeks community maintainers.,,,
 u4-votingworks,VotingWorks,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
 u4-wafer,Wafer,U4,open-source startup,yc,0,,,,,,,,,0,0,,,,
 u4-waoo,waoo,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
@@ -1003,16 +1003,16 @@ u4-mobile-dev,mobile.dev,U4,open-source startup,ross,1,e02,yes,"mobile-dev-inc/m
 u4-multiprocess-labs,Multiprocess Labs,U4,open-source startup,ross,1,e02,yes,"multiprocessio/datastation data IDE; repo page read, licence not confirmed",https://github.com/multiprocessio/datastation,United States,2021,unknown,none_found,0,0,No funding information found.,,,
 u4-nebuly-ai,Nebuly AI,U4,open-source startup,ross,1,e02,yes,"nebuly-ai/nebullvm AI inference optimization library, Apache-2.0 per repo page",https://github.com/nebuly-ai/nebullvm,Italy,2021,private,yes,1,6,Earlier seed not found; company has since pivoted to an enterprise AI ROI platform.,,,
 u4-nhost,Nhost,U4,open-source startup,ross,1,e02,yes,"nhost/nhost open-source Firebase alternative, MIT per repo page",https://github.com/nhost/nhost,Sweden,2019,private,yes,1,6,Runa figure 3.1M vs 3M seed.,,,
-u4-obsidian,Obsidian,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-omnivore,Omnivore,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-orchest,Orchest,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-pipedream,Pipedream,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-postgresml,PostgresML,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-pynecone,Pynecone,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-qovery,Qovery,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-quickwit,Quickwit,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-raycast,Raycast,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
-u4-readyset,ReadySet,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
+u4-obsidian,Obsidian,U4,open-source startup,ross,1,e03,no,Core app is closed source; repo only hosts releases and plugin/theme directories,https://github.com/obsidianmd/obsidian-releases,Canada,2020,private,bootstrapped_stated,0,0,"About page: 100% supported by its users, not investors",,,
+u4-omnivore,Omnivore,U4,open-source startup,ross,1,e03,yes,"Omnivore read-it-later app, AGPL-3.0; cloud service shut Nov 2024, now self-hosted only",https://github.com/omnivore-app/omnivore,US,2022,unknown,none_found,0,0,"No funding page found. Leads on 'Omnivore VC' are an unrelated agtech fund. memory: acquired by ElevenLabs 2024, unverified",,,
+u4-orchest,Orchest,U4,open-source startup,ross,1,e03,yes,"Orchest data pipeline IDE, open source repo on GitHub (Apache-2.0 LICENSE file)",https://github.com/orchest/orchest,Netherlands,2020,unknown,yes,2,4,Runa figure 4.2M,,,
+u4-pipedream,Pipedream,U4,open-source startup,ross,1,e03,partial,"Component registry open; platform source-available under Pipedream Source Available License, not OSI open",https://github.com/PipedreamHQ/pipedream,US,2019,acquired,yes,1,4,Workday signed agreement to acquire Nov 2025,,,
+u4-postgresml,PostgresML,U4,open-source startup,ross,1,e03,yes,"PostgresML and PgCat, MIT-licensed per company blog",https://github.com/postgresml/postgresml,US,2022,unknown,yes,1,8,,,,
+u4-pynecone,Pynecone,U4,open-source startup,ross,1,e03,yes,"Reflex (formerly Pynecone) Python web framework, Apache-2.0",https://github.com/reflex-dev/reflex,US,2022,private,yes,3,13,Renamed Reflex,,,
+u4-qovery,Qovery,U4,open-source startup,ross,1,e03,partial,Replibyte database seeding tool GPL-3.0; Qovery platform itself mostly not open,https://github.com/qovery/replibyte,France,2019,private,yes,1,5,"About page lists Datadog, Docker, Contentsquare founders as backers; no later round found",,,
+u4-quickwit,Quickwit,U4,open-source startup,ross,1,e03,yes,"Quickwit search engine, Apache-2.0",https://github.com/quickwit-oss/quickwit,France,2020,acquired,none_found,0,0,"Runa figure 2.6M but no page naming investors found; Datadog acquired Jan 2025, post says Series A was being considered",,,
+u4-raycast,Raycast,U4,open-source startup,ross,1,e03,partial,Extensions repo MIT; core Mac app is closed source,https://github.com/raycast/extensions,UK,2020,private,yes,3,17,,,,
+u4-readyset,ReadySet,U4,open-source startup,ross,1,e03,partial,"ReadySet database cache, Business Source License 1.1 (source-available)",https://github.com/readysettech/readyset,US,2020,unknown,yes,2,2,"Indie.vc lead is a different ReadySet (DEI startup), excluded. Seed date uncertain",,,
 u4-resend,Resend,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
 u4-riot-im,Riot IM,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,
 u4-robusta-dev,Robusta Dev,U4,open-source startup,ross,0,,,,,,,,,0,0,,,,

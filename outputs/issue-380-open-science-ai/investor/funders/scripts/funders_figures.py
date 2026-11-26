@@ -76,7 +76,8 @@ def main():
                 continue
             ax.barh(i, w, left=left, height=0.62, color=col, edgecolor=SURFACE, linewidth=2)
             if w >= 7:
-                ax.text(left + w / 2, i, f"{w:.0f}%", ha="center", va="center", fontsize=8.5, color=INK)
+                ax.text(left + w / 2, i, f"{w:.0f}%", ha="center", va="center", fontsize=8.5,
+                        color="white" if col in ("#257de0", "#008a17") else INK)
             left += w
         ax.text(101, i, f"n = {tot}", va="center", fontsize=8.5, color=INK2)
     ax.set_yticks(range(len(UNI)), [u for _, u in UNI[::-1]], fontsize=9)

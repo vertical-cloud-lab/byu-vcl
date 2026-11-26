@@ -25,7 +25,10 @@
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
 | Intel Capital | corporate / strategic | 2 | 0 | Oxide Computer Company, SiFive |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
+| Lux Capital | venture firm | 2 | 2 | Authorea, EvolutionaryScale |
+| National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |
+| SOSV | accelerator / studio | 2 | 0 | Crowd Supply, Particle |
 | Seed Club Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Molecule |
 | Sequoia Capital | venture firm | 2 | 1 | Observable, Inc., Chai Discovery |
 | Shine Capital | venture firm | 2 | 0 | Molecule, VitaDAO |

@@ -1,6 +1,6 @@
-| Universe | Investor-venture links | venture firm | corporate / strategic | person (angel) | accelerator / studio | growth, crossover or PE | state or sovereign investor | philanthropy | government grant | crowdfunding | crypto fund or DAO | bank or lender | unclassified |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| U1 | 1307 | 47% | 5% | 25% | 4% | 5% | 1% | 0% | 0% | 0% | 1% | 0% | 10% |
-| U2 | 324 | 45% | 9% | 9% | 2% | 4% | 2% | 1% | 3% | 6% | 2% | 0% | 17% |
-| U3 | 685 | 51% | 15% | 9% | 1% | 8% | 2% |  | 1% |  | 0% | 0% | 12% |
-| U4 | 300 | 38% | 4% | 20% | 27% | 1% | 0% | 1% |  |  | 0% |  | 8% |
+| Universe | Investor-venture links | venture firm | corporate / strategic | person (angel) | accelerator / studio | growth, crossover or PE | state or sovereign investor | philanthropy | government grant | crowdfunding | crypto fund or DAO | bank or lender | other | unclassified |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| U1 | 1386 | 51% | 8% | 24% | 5% | 5% | 2% | 0% | 1% | 0% | 2% | 0% | 0% | 3% |
+| U2 | 337 | 50% | 14% | 9% | 2% | 5% | 3% | 1% | 4% | 6% | 3% | 0% |  | 3% |
+| U3 | 723 | 53% | 19% | 9% | 1% | 11% | 3% |  | 1% |  | 1% | 1% |  | 2% |
+| U4 | 620 | 42% | 4% | 21% | 27% | 1% | 0% | 1% | 0% | 0% | 0% |  | 0% | 2% |

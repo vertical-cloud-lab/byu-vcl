@@ -50,6 +50,9 @@ def load_types():
     return t
 
 
+UNCONFIRMED = re.compile(r"(in talks|potential investors?|rumou?r|not yet closed|has not closed|raise in progress|"
+                         r"in progress per sources|not confirmed by (the )?company|aggregator snippets only|"
+                         r"reported by bloomberg, not confirmed)", re.I)
 HEUR = [
     (r"\(person\)$", "angel"),
     (r"kickstarter|indiegogo|crowd ?supply|backers|wefunder|republic\b|startengine|crowdcube|seedrs|crowdfund", "crowdfunding"),
@@ -165,13 +168,16 @@ def main():
             oth = [x for x in r["investors"].split(" | ") if x.strip()]
             lc = [canon(x) for x in lead]
             oc = [canon(x) for x in oth]
+            # a round reported as talks, rumour or unconfirmed keeps its row but names no funders in the counts
+            unconf = bool(UNCONFIRMED.search(r["note"] or "") or UNCONFIRMED.search(r["label"] or ""))
             deals.append({**{c: r[c] for c in ("key", "venture", "universe", "type", "label", "date", "amount_usd",
                                                "source", "source_kind", "note")},
                           "lead_raw": r["lead"], "investors_raw": r["investors"],
-                          "lead": " | ".join(c for c, _ in lc), "investors": " | ".join(c for c, _ in oc)})
+                          "lead": " | ".join(c for c, _ in lc), "investors": " | ".join(c for c, _ in oc),
+                          "counted": "no (reported as unconfirmed)" if unconf else "yes"})
+            if unconf:
+                continue
             for (c, person), is_lead in [(x, True) for x in lc] + [(x, False) for x in oc]:
-                if (c, k) in links and False:
-                    pass
                 L = links[(c, k)]
                 L["person"] = person or L.get("person", False)
                 L["rounds"] += 1
@@ -206,6 +212,17 @@ def main():
             a["first"] = min(a.get("first") or 9999, int(r["first_year"]))
             a["last"] = max(a.get("last") or 0, int(r["first_year"]))
         ex[r["investor"]].append((r["led"] > 0, r["venture"], r["universe"]))
+    # stated open-source thesis (program pass p4): the investor's own words, matched to canonical names
+    thesis = {}
+    pp = os.path.join(D, "program_passes", "programs_p4.csv")
+    if os.path.exists(pp):
+        for r in csv.DictReader(open(pp)):
+            if not r.get("quote"):
+                continue
+            base = re.sub(r"\s*\(.*?\)", "", r["funder"]).split(":")[0].strip()
+            for cand in (r["funder"], base):
+                cn = alias.get(key_name(cand)) or cand
+                thesis.setdefault(key_name(cn), (r["quote"], r["source"]))
     inv_rows = []
     for c, a in agg.items():
         t = types.get(key_name(c))
@@ -216,6 +233,8 @@ def main():
                          "U2": a["U2"], "U3": a["U3"], "led_ventures": a["led_ventures"], "rounds": a["rounds"],
                          "database_only_links": a["database_only"], "first_year": a.get("first") or "",
                          "last_year": a.get("last") or "", "examples": "; ".join(names_[:12]),
+                         "stated_open_source_thesis": thesis.get(key_name(c), ("", ""))[0],
+                         "thesis_source": thesis.get(key_name(c), ("", ""))[1],
                          "notes": t.get("notes", "") if t else ""})
     inv_rows.sort(key=lambda r: (-r["ventures"], -r["led_ventures"], r["investor"]))
 

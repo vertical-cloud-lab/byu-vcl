@@ -1,0 +1,3 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+mulesoft,MuleSoft,U3,series_f_plus,Series F,2014-03,,,Lightspeed Venture Partners | New Enterprise Associates | Sapphire Ventures | Hummer Winblad Venture Partners | Bay Partners | Morgenthaler Ventures,https://www.sec.gov/Archives/edgar/data/1374684/000119312517086142/d287291d424b4.htm,filing,"Prospectus related-party table; named buyers' purchases sum to about USD 42M, not stated as round total"
+va-linux,VA Linux Systems,U3,venture_unspecified,Series B private placement,1999-06,25000000,,Lehman Brothers,https://www.sec.gov/Archives/edgar/data/1096199/0000891618-99-005600.txt,filing,adds to existing round; three Lehman Brothers funds bought about USD 6M at $3.86/share
