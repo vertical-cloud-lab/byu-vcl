@@ -321,9 +321,9 @@ get there, 95 % bootstrap intervals over seeds (`twin/accel.py`; `out/twin2/econ
 ![Vertical lab (one year) against the conventional lab (three years)](../out/twin2/fig/twin2_vertical_vs_conventional.png)
 ![Days to the state of the art, each seed a dot](../out/twin2/fig/twin2_time_to_target.png)
 
-### 5.5 and 5.7 (running)
+### 5.5 SAAS priors (running)
 
-SAAS priors and the seeded runs with the campaign trace are being run (`twin/bench2.py` experiments `saas`, `seeded`, `seeded_dal256`).
+The `saas` experiment (MAP SAAS GP-BO, BOFN with SAAS nodes, fully Bayesian SAASBO) is being run.
 
 ### 5.6 The crucible, powder reuse and stocking (`crucible`, `reuse`, `stock`; 12 seeds each, paired with the main benchmark's seeds)
 
@@ -353,6 +353,46 @@ mean over seeds of (this run − the main run with the same seed).
   with the year's best alloy barely changed.
 
 ![What the crucible, powder reuse and stocking change](../out/twin2/fig/twin2_options.png)
+
+### 5.7 From DAL #275's common seeds, on two schedules, and the campaign trace (`seeded`, `seeded_dal256`)
+
+BOFN, standard BO (GP-BO) and random, 12 seeds each, every policy starting from the same seven aluminium seeds (#275's
+D1, D2, B30, B15, S1, S2, S3) and five copper seeds (section 2), on the vertical lab (stocked) and on DAL's own lab as
+DAL #256 schedules it (ordering as it goes; section 2 and `out/twin2/trace/README.md`):
+
+| | Vertical lab: FLAIME | ONR | DAL's lab on #256's schedule: FLAIME | ONR |
+|---|---|---|---|---|
+| BOFN | **0.69 ± 0.02**; halfway in 10 of 12, median day 123 | **0.64 ± 0.02**; state of the art in 12 of 12, day 86 | **0.66 ± 0.02**; halfway in 9 of 12, day 129 | 0.30 ± 0.09; 6 of 12 end at zero |
+| GP-BO | 0.60 ± 0.06; halfway in 5 of 12 | 0.62 ± 0.02 | 0.47 ± 0.08 | **0.51 ± 0.07** |
+| Random | 0.60 ± 0.02; halfway in 3 of 12 | 0.59 ± 0.02 | 0.55 ± 0.05 | 0.27 ± 0.09 |
+| New alloys tested a year (BOFN) | 39 | 14 | 20 | 3 |
+
+- **Some seeds already beat the state of the art on aluminium.** On this truth some of #275's seed alloys score
+  above AlSi10Mg (in seed 0, the B30 dosing check, Al-3.9Si-0.5Mg, at 0.56), so every policy gets there with its first
+  tests: a median of day 2 in the vertical lab, and day 52-73 on DAL's schedule, where the first seeds come back from
+  Utah. Halfway to the oracle's best (0.64) is what separates the policies.
+- **BOFN finishes highest on aluminium on both labs** (0.69 and 0.66, against 0.60 and 0.47-0.55). On DAL's schedule
+  it reaches the halfway target about as soon as in the vertical lab (median day 129 against 123, 9 and 10 of 12
+  seeds), because aluminium on #256's plan is limited by Utah's sessions, not the atomizer.
+- **Copper is what DAL's schedule can't do in a year.** Copper runs only on Fridays, and its deposits go through
+  Utah's sessions, the Thursday SEM and a 30-day immersion, so the first copper result comes back around day 210 and
+  BOFN tests 3 copper alloys a year against 14 in the vertical lab. There **GP-BO ends ahead of BOFN (0.51 ± 0.07
+  against 0.30 ± 0.09)**: with three results no model learns anything, and that doesn't favor BOFN.
+- **The seeds rescue plain BOFN on copper** in the vertical lab: 0.64 ± 0.02 against 0.33 ± 0.09 from its own start
+  (the main benchmark), as #275 argued a common, informed seed set would.
+
+![Best new alloy so far against simulated days, every policy from DAL #275's seeds](../out/twin2/fig/twin2_seeded_best_vs_days.png)
+
+**The campaign trace.** [`out/twin2/trace/campaign_trace.json`](../out/twin2/trace/campaign_trace.json) is BOFN's
+traced year on DAL's lab on #256's schedule (seed 0; schema in [`out/twin2/trace/README.md`](../out/twin2/trace/README.md)):
+1,207 events, 974 of them on a node of DAL #211's network; 98 powder lots, 39 builds and 16 deposits, each with how it
+ended in DAL #274's ledger (64 completed, 28 abandoned for their inputs, 23 not as planned, 7 early-stopped, 31 stale
+at the horizon); 310 iterations with 340 proposals, 114 of them with an acquisition value; 17 literature steps, each
+an Edison answer already in DAL; and 189 atomizer runs, at least three a week in 41 of the 53 weeks (the short weeks
+are weeks 3-7, waiting on the first orders, and seven later weeks). The same is there for GP-BO and
+random on both labs, and for BOFN on the vertical lab (2,511 events, 398 atomizer runs).
+
+![Atomizer runs a week in BOFN's traced year](../out/twin2/fig/twin2_trace_weekly.png)
 
 ### 5.8 What it costs: cost per experiment, utilization, outside users (`twin/econ.py`, `notes/twin_econ.md`)
 
@@ -402,6 +442,43 @@ Every price says where it comes from in `twin/econ.py` (procurement records and 
 
 ![Cost per experiment](../out/twin2/econ/econ_cost_per_experiment.png)
 ![Utilization, and what outside users could fill](../out/twin2/econ/econ_utilization.png)
+
+### 5.9 Where BOFN doesn't win, plainly
+
+- **Copper, the main benchmark:** tiered CALPHAD screening finished ahead of BOFN with the blend screen (0.69 ± 0.02
+  against 0.67 ± 0.01) and got to the state of the art sooner (median 88 against 225 days). Plain BOFN did no better
+  than random (0.33 against 0.35), with 5 of its 12 years ending with no new alloy above zero.
+- **Copper with a hidden effect (γ₂):** BOFN with the blend screen lost 0.12 ± 0.08 and tiered screening lost
+  nothing (5.3).
+- **Copper with a mis-specified proxy:** tiered screening still finished ahead of BOFN with the blend screen, by
+  0.03 ± 0.02 (5.3).
+- **Aluminium, time to the state of the art:** in the vertical lab the heuristic gets there first (37 against about
+  120 days); BOFN's lead is the final alloy (0.65-0.69 against 0.60) and the harder target.
+- **Aluminium, against a conventional lab:** the vertical lab with BOFN is 1.1× (0.7-2.2) as fast as a conventional lab
+  running the heuristic to the state of the art (5.4).
+- **Copper on DAL's own lab, as #256 schedules it:** from the common seeds, GP-BO ended ahead of BOFN (0.51 ± 0.07
+  against 0.30 ± 0.09), with only about three copper alloys tested a year (5.7).
+- **Cost:** carrying its own fixed costs, the vertical lab costs more per alloy than the conventional lab ($28.6k
+  against $11.6k with capex) and 1.4-3.8× as much to reach the state of the art on aluminium (5.8).
+
+### Limits
+
+All simulated (synthetic truths, simulated instruments, assumed budgets, prices and schedules): this shows how
+strategies, instruments, schedules and facilities interact in the model, not what the real lab will find [1, 3].
+
+- **Spread.** With 12 seeds and standard errors of 0.01 to 0.10, gaps under about 0.05 mean little: the two BOFN sets
+  run the same aluminium policy and differ by 0.04.
+- **The rounds aren't directly comparable.** Round 2 counts new alloys only and measures more harshly; the round-1
+  cost-aware model fell from 0.70 to 0.55.
+- **The targets.** The 0.86 and 0.76 come from a local search on the truth, not a proven optimum.
+- **The implementation.** The twin's BOFN is a new BoTorch implementation, not DAL's benchmark code
+  (`benchmarks/bofn-prelim`). SAASBO's NUTS chains run on a refit schedule (section 3).
+- **Assumed inputs.**
+  - The conventional lab's rates for outside partners (Mines, Utah's MX-Lab, Valimet, Ames) and every breakdown rate are assumed.
+  - DAL #256's times are estimates: nothing in its chain has been timed end to end.
+  - The outside demand behind the cloud-facility numbers is assumed.
+- **Mechanisms the model invents.** The γ₂ effect and the mis-specified proxy are tests of the copper result, not
+  findings about copper. Powder reuse's degradation rates come from the model, so "reuse doesn't pay" rests on them.
 
 ## 6. Where round 2's truths differ from DAL's synthetic benchmarks
 

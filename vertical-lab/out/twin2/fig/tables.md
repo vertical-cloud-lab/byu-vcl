@@ -70,3 +70,19 @@
 |---|---|---|---|---|---|---|---|---|---|---|
 | vertical_lab_tiered_mis | 12 | 0.302 ± 0.093 | 50% | 39 | $14k | 0.707 ± 0.011 | 100% | 69 | $30k | 2 |
 | vertical_lab_tiered_mis_cu_hidden-1.0 | 12 | 0.302 ± 0.093 | 50% | 39 | $14k | 0.707 ± 0.011 | 100% | 69 | $30k | 2 |
+
+**seeded**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_bofn_seeding-dal275 | 12 | 0.688 ± 0.018 | 100% | 2 | $12k | 0.641 ± 0.015 | 100% | 86 | $34k | 153 |
+| vertical_lab_gpbo_seeding-dal275 | 12 | 0.596 ± 0.056 | 92% | 2 | $11k | 0.625 ± 0.018 | 92% | 91 | $33k | 21 |
+| vertical_lab_random_seeding-dal275 | 12 | 0.596 ± 0.021 | 100% | 2 | $12k | 0.589 ± 0.015 | 75% | 64 | $25k | 2 |
+
+**seeded_dal256**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| dal256_bofn_stock-lean_seeding-dal275 | 12 | 0.664 ± 0.018 | 100% | 73 | $18k | 0.302 ± 0.091 | 50% | 301 | $36k | 56 |
+| dal256_gpbo_stock-lean_seeding-dal275 | 12 | 0.469 ± 0.084 | 75% | 52 | $14k | 0.506 ± 0.069 | 83% | 269 | $34k | 6 |
+| dal256_random_stock-lean_seeding-dal275 | 12 | 0.546 ± 0.051 | 92% | 52 | $13k | 0.275 ± 0.088 | 42% | 269 | $36k | 1 |
