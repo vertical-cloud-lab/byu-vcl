@@ -30,7 +30,7 @@ Round 16 (Sterling, 2026-11-26: address PR #371's check of what round 15 really 
 on YouTube"): the clips round 15 kept from earlier renders and the clips this round changes are rendered again into
 out/r16/ (render_r16.py); every other clip is round 15's own render, cut back out of round 15's long-form as YouTube
 serves it (720p30, frame-exact by round 15's out/longform.json: out/r15/recovered.json), because round 15's renders were
-git-ignored and went with its runner. LONGFORM_HD_DIR lists the folders in order (r16,r15), then out/mp4/. A line of
+git-ignored and went with its runner (r15_recover.py; the list is out/r15_recovered.json). LONGFORM_HD_DIR lists the folders in order (r16,r15), then out/mp4/. A line of
 narration over a recovered clip is spoken where round 15 spoke it (r15_offsets), since the frames are the same.
 
 A clip that isn't there is left out with a warning, so the join always runs on whatever is rendered.

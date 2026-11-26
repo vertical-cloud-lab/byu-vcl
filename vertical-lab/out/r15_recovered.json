@@ -1,0 +1,377 @@
+{
+ "source": "https://www.youtube.com/watch?v=79FL6mTFSsI, itag 232 (720p30 H.264), fetched through a lab Pi",
+ "start_time": 1.433333,
+ "clips": [
+  {
+   "rel": "setup_lab.mp4",
+   "start_s": 29.8,
+   "frames": 3664,
+   "got": "3664",
+   "ok": true
+  },
+  {
+   "rel": "vlm_hookups.mp4",
+   "start_s": 171.93,
+   "frames": 1183,
+   "got": "1183",
+   "ok": true
+  },
+  {
+   "rel": "vlm_coupling.mp4",
+   "start_s": 211.37,
+   "frames": 2295,
+   "got": "2295",
+   "ok": true
+  },
+  {
+   "rel": "vlm_services.mp4",
+   "start_s": 287.87,
+   "frames": 1105,
+   "got": "1105",
+   "ok": true
+  },
+  {
+   "rel": "vlm_cabling.mp4",
+   "start_s": 336.7,
+   "frames": 1063,
+   "got": "1063",
+   "ok": true
+  },
+  {
+   "rel": "instruments/stream_cam.mp4",
+   "start_s": 372.13,
+   "frames": 594,
+   "got": "594",
+   "ok": true
+  },
+  {
+   "rel": "bay_camera.mp4",
+   "start_s": 391.93,
+   "frames": 993,
+   "got": "993",
+   "ok": true
+  },
+  {
+   "rel": "base_cameras.mp4",
+   "start_s": 425.03,
+   "frames": 1374,
+   "got": "1374",
+   "ok": true
+  },
+  {
+   "rel": "safety.mp4",
+   "start_s": 488.83,
+   "frames": 1658,
+   "got": "1658",
+   "ok": true
+  },
+  {
+   "rel": "instruments/ot2_corrosion_prep.mp4",
+   "start_s": 572.1,
+   "frames": 795,
+   "got": "795",
+   "ok": true
+  },
+  {
+   "rel": "instruments/cubxl_corrosion.mp4",
+   "start_s": 598.6,
+   "frames": 3072,
+   "got": "3072",
+   "ok": true
+  },
+  {
+   "rel": "icpms.mp4",
+   "start_s": 712.0,
+   "frames": 2980,
+   "got": "2980",
+   "ok": true
+  },
+  {
+   "rel": "vlm_workflow.mp4",
+   "start_s": 811.33,
+   "frames": 3282,
+   "got": "3282",
+   "ok": true
+  },
+  {
+   "rel": "dag/route_dag_ch1.mp4",
+   "start_s": 926.73,
+   "frames": 405,
+   "got": "405",
+   "ok": true
+  },
+  {
+   "rel": "machining_cell.mp4",
+   "start_s": 954.23,
+   "frames": 4668,
+   "got": "4668",
+   "ok": true
+  },
+  {
+   "rel": "alloy_charge.mp4",
+   "start_s": 1119.83,
+   "frames": 9232,
+   "got": "9232",
+   "ok": true
+  },
+  {
+   "rel": "dag/route_dag_ch2.mp4",
+   "start_s": 1456.07,
+   "frames": 207,
+   "got": "207",
+   "ok": true
+  },
+  {
+   "rel": "alloy_atomize.mp4",
+   "start_s": 1462.97,
+   "frames": 9136,
+   "got": "9136",
+   "ok": true
+  },
+  {
+   "rel": "atom_cameras.mp4",
+   "start_s": 1773.5,
+   "frames": 3162,
+   "got": "3162",
+   "ok": true
+  },
+  {
+   "rel": "atom_latch.mp4",
+   "start_s": 1878.9,
+   "frames": 2800,
+   "got": "2800",
+   "ok": true
+  },
+  {
+   "rel": "atom_container.mp4",
+   "start_s": 1972.23,
+   "frames": 1870,
+   "got": "1870",
+   "ok": true
+  },
+  {
+   "rel": "atom_vacuum.mp4",
+   "start_s": 2034.57,
+   "frames": 4480,
+   "got": "4480",
+   "ok": true
+  },
+  {
+   "rel": "atom_plate.mp4",
+   "start_s": 2183.9,
+   "frames": 4556,
+   "got": "4556",
+   "ok": true
+  },
+  {
+   "rel": "atom_crucible_out.mp4",
+   "start_s": 2335.77,
+   "frames": 3392,
+   "got": "3392",
+   "ok": true
+  },
+  {
+   "rel": "atom_bn.mp4",
+   "start_s": 2448.83,
+   "frames": 4629,
+   "got": "4629",
+   "ok": true
+  },
+  {
+   "rel": "atom_crucible_in.mp4",
+   "start_s": 2603.13,
+   "frames": 4428,
+   "got": "4428",
+   "ok": true
+  },
+  {
+   "rel": "dag/route_dag_ch3.mp4",
+   "start_s": 2768.73,
+   "frames": 207,
+   "got": "207",
+   "ok": true
+  },
+  {
+   "rel": "alloy_print.mp4",
+   "start_s": 2775.63,
+   "frames": 8036,
+   "got": "8036",
+   "ok": true
+  },
+  {
+   "rel": "dag/route_dag_ch4.mp4",
+   "start_s": 3049.5,
+   "frames": 207,
+   "got": "207",
+   "ok": true
+  },
+  {
+   "rel": "alloy_powder.mp4",
+   "start_s": 3056.4,
+   "frames": 6420,
+   "got": "6420",
+   "ok": true
+  },
+  {
+   "rel": "dag/route_dag_ch5.mp4",
+   "start_s": 3276.4,
+   "frames": 207,
+   "got": "207",
+   "ok": true
+  },
+  {
+   "rel": "alloy_workflow.mp4",
+   "start_s": 3283.3,
+   "frames": 11570,
+   "got": "11570",
+   "ok": true
+  },
+  {
+   "rel": "dag/route_dag_ch6.mp4",
+   "start_s": 3688.97,
+   "frames": 207,
+   "got": "207",
+   "ok": true
+  },
+  {
+   "rel": "alloy_prep.mp4",
+   "start_s": 3695.87,
+   "frames": 8448,
+   "got": "8448",
+   "ok": true
+  },
+  {
+   "rel": "dag/route_dag_ch7.mp4",
+   "start_s": 3983.47,
+   "frames": 207,
+   "got": "207",
+   "ok": true
+  },
+  {
+   "rel": "alloy_characterize.mp4",
+   "start_s": 3990.37,
+   "frames": 7400,
+   "got": "7400",
+   "ok": true
+  },
+  {
+   "rel": "instruments/tensile_h.mp4",
+   "start_s": 4274.03,
+   "frames": 522,
+   "got": "522",
+   "ok": true
+  },
+  {
+   "rel": "instruments/glovebox_tray.mp4",
+   "start_s": 4291.43,
+   "frames": 933,
+   "got": "933",
+   "ok": true
+  },
+  {
+   "rel": "instruments/glovebox.mp4",
+   "start_s": 4322.53,
+   "frames": 294,
+   "got": "294",
+   "ok": true
+  },
+  {
+   "rel": "instruments/fumehood.mp4",
+   "start_s": 4332.33,
+   "frames": 513,
+   "got": "513",
+   "ok": true
+  },
+  {
+   "rel": "instruments/fumehood_tray.mp4",
+   "start_s": 4349.43,
+   "frames": 420,
+   "got": "420",
+   "ok": true
+  },
+  {
+   "rel": "instruments/storage.mp4",
+   "start_s": 4363.43,
+   "frames": 924,
+   "got": "924",
+   "ok": true
+  },
+  {
+   "rel": "instruments/powder_store_feed.mp4",
+   "start_s": 4394.23,
+   "frames": 657,
+   "got": "657",
+   "ok": true
+  },
+  {
+   "rel": "instruments/powder_store_lots.mp4",
+   "start_s": 4416.13,
+   "frames": 651,
+   "got": "651",
+   "ok": true
+  },
+  {
+   "rel": "instruments/packaging.mp4",
+   "start_s": 4437.83,
+   "frames": 873,
+   "got": "873",
+   "ok": true
+  },
+  {
+   "rel": "fabrication_tour.mp4",
+   "start_s": 4472.93,
+   "frames": 5519,
+   "got": "5519",
+   "ok": true
+  },
+  {
+   "rel": "instruments/ded.mp4",
+   "start_s": 4656.9,
+   "frames": 732,
+   "got": "732",
+   "ok": true
+  },
+  {
+   "rel": "scaleup.mp4",
+   "start_s": 4687.3,
+   "frames": 3455,
+   "got": "3455",
+   "ok": true
+  },
+  {
+   "rel": "instruments/hip.mp4",
+   "start_s": 4808.47,
+   "frames": 531,
+   "got": "531",
+   "ok": true
+  },
+  {
+   "rel": "upkeep_clip.mp4",
+   "start_s": 4919.17,
+   "frames": 3786,
+   "got": "3786",
+   "ok": true
+  },
+  {
+   "rel": "floor_clean_people.mp4",
+   "start_s": 5065.37,
+   "frames": 999,
+   "got": "999",
+   "ok": true
+  },
+  {
+   "rel": "floor_pass.mp4",
+   "start_s": 5098.67,
+   "frames": 2712,
+   "got": "2712",
+   "ok": true
+  },
+  {
+   "rel": "timelapse.mp4",
+   "start_s": 5240.07,
+   "frames": 2626,
+   "got": "2626",
+   "ok": true
+  }
+ ]
+}
