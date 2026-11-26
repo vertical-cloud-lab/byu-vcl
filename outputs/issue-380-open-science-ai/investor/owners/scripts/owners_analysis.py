@@ -279,7 +279,7 @@ def h11():
                                  base_year=("base_year", "first"), base_revenue=("base_revenue", "first"),
                                  real_growth=("real_growth", "first"), org_stars=("org_stars", "sum"),
                                  url=("url", "first")).reset_index()
-        E["revenue_per_1k_stars"] = E.latest_revenue / (E.org_stars / 1000)
+        E["revenue_per_1k_stars"] = (E.latest_revenue / (E.org_stars / 1000)).replace([np.inf, -np.inf], np.nan)
         E["stale"] = E.latest_year < 2021
         E.to_csv("data/h11_nonprofits.csv", index=False)
         own = E[~E.fiscal_host & ~E.stale]
