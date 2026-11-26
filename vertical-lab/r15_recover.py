@@ -28,8 +28,13 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-R15_URL = "https://www.youtube.com/watch?v=79FL6mTFSsI"
-R15_COMMIT = "4f9ec11e"            # round 15's long-form build: its out/longform.json
+# which long-form to take clips back from, and the commit whose out/longform.json says where each part is. Round 16's
+# video can be recovered the same way: R15_URL=https://www.youtube.com/watch?v=YWbplBXPC84 R15_COMMIT=c59d73ad
+# R15_YT=/tmp/r16yt R15_OUT=r16 (its out/longform.json names its clips under out/r16/ and out/r15/; each is written
+# under out/<R15_OUT>/ with its own relative name)
+R15_URL = os.environ.get("R15_URL", "https://www.youtube.com/watch?v=79FL6mTFSsI")
+R15_COMMIT = os.environ.get("R15_COMMIT", "4f9ec11e")     # round 15's long-form build: its out/longform.json
+OUT_DIR = os.environ.get("R15_OUT", "r15")
 ITAG = "232"                       # 720p30 H.264 HLS, the highest rate YouTube serves for it
 YT = Path(os.environ.get("R15_YT", "/tmp/r15yt"))
 
@@ -86,11 +91,11 @@ def cut(only=()) -> list[dict]:
         if r["kind"] != "mp4":
             continue
         src = r["src"]
-        rel = src.split("out/r15/", 1)[1] if "out/r15/" in src else src.split("out/mp4/", 1)[1]
+        rel = next((src.split(f"out/{d}/", 1)[1] for d in ("r16", "r15", "mp4") if f"out/{d}/" in src), Path(src).name)
         if only and rel not in only and Path(rel).stem not in only:
             continue
         n0, n1 = round(r["start_s"] * 30), round((r["start_s"] + r["seconds"]) * 30)
-        dst = HERE / "out" / "r15" / rel
+        dst = HERE / "out" / OUT_DIR / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         a, b = t0 + (n0 - 0.5) / 30, t0 + (n1 - 0.5) / 30
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-threads", "2", "-ss", f"{max(0.0, r['start_s'] - 8.0):.3f}",
@@ -102,7 +107,7 @@ def cut(only=()) -> list[dict]:
                              text=True).stdout.strip()
         done.append(dict(rel=rel, start_s=r["start_s"], frames=n1 - n0, got=got, ok=str(n1 - n0) == got))
         print(f"{'OK ' if done[-1]['ok'] else 'BAD'} {rel}: frames {n0}-{n1} ({n1 - n0}), got {got}", flush=True)
-    (HERE / "out" / "r15" / "recovered.json").write_text(json.dumps(dict(
+    (HERE / "out" / OUT_DIR / "recovered.json").write_text(json.dumps(dict(
         source=f"{R15_URL}, itag {ITAG} (720p30 H.264), fetched through a lab Pi", start_time=t0, clips=done),
         indent=1) + "\n")
     return done

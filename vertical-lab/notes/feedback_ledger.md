@@ -295,3 +295,22 @@ Round 10's outcome for each open point is in the last column.
 | 20:26, "that's aluminum slag/scrap ... a better jar photo for the Al atomizer runs" | ✅ a jar of the lab's own atomized Al, lot 4yghtr, cropped from DAL #159 ([`footage.md`](footage.md)) |
 | ICP-MS as a module; the OT-2 and acids; a standalone fume hood with a harsh-chemicals liquid handler (Hamilton?); a sleeve for the arms | ✅ `icpms.py`, [`icpms.md`](icpms.md): a polypropylene trace-metals hood with an acid-rated dilutor (Hamilton's own table rates its STAR head unsuitable for nitric acid) and a hot block; an Agilent 7850 + SPS 4 beside it; the arm in a PTFE-laminate cover; a clip; where it goes on the floor, for run A |
 | UR10e replaced by the UR12e? Rename everywhere? | ✅ a pure rename (June 2025), mechanically unchanged ([`ur12e.md`](ur12e.md)): every frame drawn from now on says UR12e (`scene.ON_SCREEN`), the cards and description too; code, notes and old records keep UR10e |
+
+### Nov 26: "address [PR #371's check] in full and rerender and get on YouTube" (round 16)
+
+The check: [#371, 2026-11-26](https://github.com/vertical-cloud-lab/byu-vcl/pull/371#issuecomment-7184403979). The video:
+[YWbplBXPC84](https://www.youtube.com/watch?v=YWbplBXPC84), unlisted. Details: README's round-16 section.
+
+| Point | Status |
+|---|---|
+| #371's waste station is in the lab but never on screen | ✅ `waste_clip.py` (the bottle trip to the intake tray, the cabinets see-through, the powder point, where waste waits); the set-up movie shows the hood from the aisle |
+| Nothing about waste handling is animated: the bottle trip, the powder waste at the atomizer (pails, *Solid Material* bucket, sand cans), the vacuum liners | ✅ all in the waste clip, the liner change by a person; the powder point on the floor (`powder_point.py`) |
+| Waste person-time not booked in `upkeep.TASKS` | ✅ `waste`, 1 h a week (31 → 32 h; the year's 309 alloys unchanged) |
+| The kept clips (services, base cameras, safety, floor cleaning, scale-up, seven fabrication clips) predate the merges | ✅ all re-rendered on the current lab; the night pass re-run |
+| `out/setup_lab.gif` is round 14's | ✅ remade from round 16's set-up render (`r16_gifs.py`) |
+| The machining cell has no place on the floor | ✅ south of the south row, its own route ([`lab_r16.md`](lab_r16.md)); 🟡 the route isn't animated |
+| #369's 118EXPs not on the floor | ✅ at the powder point |
+| #372: the 9:22 clip's ten P20 transfers | ✅ one P300 transfer |
+| #374, #379: their clips predate the merges; the control box through the Class D unit | ✅ re-rendered; the box goes on before the cabinet |
+| #376 names, #377 colours need a decision | 🟡 #377's blue and orange (okayed 2026-11-22) at the powder point; the neutral for "ours" not done (needs ~40 min of video re-rendered); #376 waits for a decision |
+| README overstates where the merged PRs appear | ✅ corrected |
