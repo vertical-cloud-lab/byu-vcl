@@ -256,7 +256,70 @@ through the full-part test.
     network caught it.
   * The network is the stage that separates a measured result from a reproducible one.
 
+### 5.6 Three times the money (`plans_3x`, the cheap policies, 12 seeds)
+
+Round 3 found copper limited by money. Round 4's two day-0 plans spend their whole budget, so `plans_3x` gives every
+plan three times round 3's money per year.
+
+| Plan, money ×3 | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
+|---|---|---|---|---|---|---|
+| Wait for the cell | 11/12; 353 | 4/12; >730 | 12/12; 422 | 11/12; 429 | 0.60 ± 0.03 | 0.70 ± 0.01 |
+| Ramp up in parallel | 12/12; 57 | 9/12; 449 | 12/12; 271 | 12/12; 323 | 0.66 ± 0.02 | 0.71 ± 0.01 |
+| External routes only | 12/12; 54 | 6/12; 637 | 9/12; 318 | 6/12; 720 | 0.64 ± 0.02 | 0.64 ± 0.02 |
+
+* **The order of the plans doesn't change.** Ramping up in parallel still gets to every target first against
+  waiting (10-12 seeds of 12) and to copper's halfway target first against external only (12 of 12).
+* **More money helps a little, and most outside.**
+  * In the parallel plan: aluminium's halfway target in 9 seeds instead of 7, copper's state of the art at day 271
+    instead of 302.
+  * External only: aluminium's halfway target in 6 seeds instead of 4.
+  * The partners' slots in the first nine months are used no more than at round 3's money (Utah's MIDI 30-38 %, 3D
+    Powder Tech 15-24 %).
+* **What binds early is the supply of printable lots**, not money:
+  * the atomizer's ramp-up (half its runs fail at first);
+  * metal orders once the day-0 stock runs out;
+  * the WIP limit, which holds new designs to two weeks of the partners' print capacity.
+* **Later the atomizer binds aluminium**, at 76-80 % of its starts from month 10.
+
 <!-- SECOND -->
+
+### Limits
+
+All simulated: synthetic truths, simulated instruments, assumed capacities, prices, lead times and schedules.
+
+* **Lead times are stand-ins.** No vendor has quoted one. The plan comparisons move with them: the waiting lab
+  starts when its last station is in, which is the MX-Lab in most seeds (day 197-414).
+* **The learning curve rests on ten runs of one station.** The likelihood is flat for N_L from about 5 to beyond 50
+  jobs. Applying it to every new process station (and a third of it to instruments) is an assumption, and so is the
+  slowdown factor taken from the atomizer's cadence.
+* **Partner capacity and fees** are the lab's own figures where they exist and assumed where they don't:
+  * Utah's MIDI: 2 builds a week, $800 unconfirmed.
+  * Utah's MX-Lab: 12 sessions a year.
+  * Mines: 7 sessions a year at $1,204.
+  * Valimet: monthly.
+  * 3D Powder Tech and the outside tensile lab are hypothetical services.
+  * The standing reservations themselves are assumed: no partner has agreed to one.
+* **Site offsets** are drawn per seed around stand-in spreads (5-10 % in laser power, 2-4 % in strength) that follow
+  DAL PR 297's choices. Provenance visits are assumed to leave a quarter of the offset unknown. No source gives a
+  visit's cost.
+* **The stages after discovery** (the gas lot's properties, the network's pass rule, the full-part test's duration
+  and fee) are assumptions. They are there to show the order in which a promising alloy meets the routes, not what it
+  costs to qualify an alloy.
+* **Two admission rules are round 4's own and hold for every policy:**
+  * money is kept for the coming week's standing slots;
+  * a WIP limit sits before the first fabrication step (two weeks of that step's capacity, at least 3 lots).
+
+  Without the second rule, the cheap aluminium policy made 193 powders in a month against three partner builds a
+  week, and its money then held prints back for months.
+* **The policies are round 3's.**
+  * **Routes are invisible to them.** BOFN's time-aware cost reads a partner's standing slots as a lightly loaded
+    station, so it doesn't know a slot is scarce.
+  * **Their parameters weren't retuned** for a lab that is half built.
+* **Seeds.** 12 for the cheap policies, 6 for BOFN. Gaps of a few weeks between plans in single seeds mean little.
+* **Not in the model:**
+  * hiring and training people;
+  * the room's own risks: AMAZEMET called electrical work "a nightmare", and switchgear can take 40-80 weeks (VCL #343);
+  * shipping damage, customs and the partners' own downtime beyond the slots.
 
 ## Sources
 

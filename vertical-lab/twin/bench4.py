@@ -53,7 +53,7 @@ EXPERIMENTS = {
                ("lpbf_3dpt", "utah_midi", "tensile_ext", "utah_mxlab", "mines_x2", "edm", "pip") for s in range(8)],
     # provenance: someone on site at each partner's first job, at the stand-in offsets and at twice them
     "provenance": [_cfg("parallel", "fast", s, provenance=pv, offset_mult=m) for m in (1.0, 2.0, 3.0)
-                   for pv in ((), "all") for s in range(12)],
+                   for pv in ((), "all") for s in range(8)],
     # no learning curve (every station at full rate the day it is commissioned), to size the ramp-up's cost
     "nolearn": [_cfg(p, "fast", s, learn=False) for p in ("wait", "parallel") for s in range(8)],
 }
