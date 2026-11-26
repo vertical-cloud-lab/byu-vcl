@@ -162,5 +162,19 @@
    "data_entry:b74f3988-b691-4c61-913b-cde7ef2295c2"
   ],
   "submitted_utc": "2026-11-25T22:23:23.696930+00:00"
+ },
+ "inv_finance_audit": {
+  "task_id": "a78745a7-1317-4f88-8b7c-b85123ddd5b2",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "You are independently checking a financial-research step in a pre-registered study of companies whose main paid product is a popular open-source project they lead. finance_audit_sample.csv lists 40 such companies drawn at random (company name, GitHub organization accounts, country, website and top repositories). finance_rules.md defines the columns and the sourcing rules. For every company, research from public sources (company and investor announcements, SEC filings, reputable news) and record: status (listed, acquired, private, shut_down or unknown) with its date; acquirer; disclosed acquisition price; total disclosed equity funding with the date of the latest round counted; latest disclosed post-money valuation; the highest value ever disclosed (private valuation, first-day market cap or exit price); ever_1b (yes, no or unknown, as defined in the rules); and a source URL that states each number. Leave a number blank rather than estimate it; absence of disclosure is a valid finding, and many of these companies are small. Output a CSV named finance_audit.csv with columns github_orgs, entity, status, status_date, acquirer, exit_value_usd, exit_source, total_funding_usd, funding_asof, funding_source, last_valuation_usd, valuation_date, valuation_source, peak_value_usd, peak_value_date, peak_source, ever_1b, notes (at most 25 words), one row per input company in input order, numbers as plain USD digits. Then report counts by status and ever_1b, and the companies where public sources conflict.",
+  "files": [
+   "finance_audit_sample.csv",
+   "finance_rules.md"
+  ],
+  "data_entries": [
+   "data_entry:1581729c-d871-4964-8135-88eb935c90d9",
+   "data_entry:39463d7e-21d5-4d5f-9aae-a6a6369863c0"
+  ],
+  "submitted_utc": "2026-11-26T05:53:55.998159+00:00"
  }
 }

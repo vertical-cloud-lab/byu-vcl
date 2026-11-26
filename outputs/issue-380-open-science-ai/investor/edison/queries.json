@@ -84,5 +84,13 @@
    "classify_rules.md"
   ],
   "query": "You are auditing a classification step in a pre-registered study of who owns popular open-source software. audit_sample.csv lists 120 GitHub organization accounts (60 drawn at random from the 300 with the most stars, 60 from the rest), with each account's name, website, e-mail domain, location, creation year, description and top repositories. classify_rules.md gives the classes (core, complement, nonprofit, academic, government, community, unknown) and the tie-breakers. Classify every account independently by those rules, checking the organization's website or repository where you are unsure. Do not use any financial outcome (funding, valuation, revenue, acquisition price, shutdown) to decide a class. Output a CSV named owner_class_audit.csv with columns owner, cls, entity, parent, basis (at most 15 words), judgment (1 if a judgment call), source_url, one row per input account in input order, and report the counts by class and the accounts you found hardest to classify, with reasons."
+ },
+ "inv_finance_audit": {
+  "job": "ANALYSIS",
+  "files": [
+   "finance_audit_sample.csv",
+   "finance_rules.md"
+  ],
+  "query": "You are independently checking a financial-research step in a pre-registered study of companies whose main paid product is a popular open-source project they lead. finance_audit_sample.csv lists 40 such companies drawn at random (company name, GitHub organization accounts, country, website and top repositories). finance_rules.md defines the columns and the sourcing rules. For every company, research from public sources (company and investor announcements, SEC filings, reputable news) and record: status (listed, acquired, private, shut_down or unknown) with its date; acquirer; disclosed acquisition price; total disclosed equity funding with the date of the latest round counted; latest disclosed post-money valuation; the highest value ever disclosed (private valuation, first-day market cap or exit price); ever_1b (yes, no or unknown, as defined in the rules); and a source URL that states each number. Leave a number blank rather than estimate it; absence of disclosure is a valid finding, and many of these companies are small. Output a CSV named finance_audit.csv with columns github_orgs, entity, status, status_date, acquirer, exit_value_usd, exit_source, total_funding_usd, funding_asof, funding_source, last_valuation_usd, valuation_date, valuation_source, peak_value_usd, peak_value_date, peak_source, ever_1b, notes (at most 25 words), one row per input company in input order, numbers as plain USD digits. Then report counts by status and ever_1b, and the companies where public sources conflict."
  }
 }
