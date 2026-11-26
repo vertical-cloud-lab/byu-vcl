@@ -156,6 +156,43 @@ def arm_stats(arm, seeds, camp, target, x="days"):
                 spent_mean=float(np.mean([arm[s]["campaigns"][camp]["spent"] for s in seeds])))
 
 
+def median_seeds(A=None, T=None) -> dict:
+    """For a replay: each arm's seed at its Kaplan-Meier median day to each target (the seed whose day is the median;
+    ties broken by the final best alloy nearest the arm's median final best, then by the lower seed), with the event
+    log that seed has. {arm: {campaign: {target: dict(seed, day, hit, of, events)}}}."""
+    A = A or arms()
+    T = T or B2.targets()
+    ev3b = HERE.parent / "out" / "twin3b" / "events"
+    out = {}
+    for (fac, stock, pol), rows in sorted(A.items()):
+        key = f"{fac}|{stock}|{pol}"
+        out[key] = {}
+        for camp in CAMPS:
+            out[key][camp] = {}
+            bests = {s: r["campaigns"][camp]["best_new"] for s, r in rows.items()}
+            mb = float(np.median(list(bests.values())))
+            for tn, tv in T.items():
+                tt = {s: to_target(r, camp, tv[camp]) for s, r in rows.items()}
+                m = km([v[0] for v in tt.values()], [v[1] for v in tt.values()])
+                if math.isfinite(m):
+                    cand = [s for s, v in tt.items() if v[1] and v[0] == m]
+                else:
+                    cand = [s for s, v in tt.items() if not v[1]]
+                cand.sort(key=lambda s: (abs(bests[s] - mb), s))
+                s = cand[0] if cand else None
+                rid = None
+                if s is not None:
+                    from twin import bench3 as B3
+                    rid = B3.run_id(rows[s]["cfg"])
+                    f = ev3b / f"{rid}.json.xz"
+                    f3 = HERE.parent / "out" / "twin3" / "events" / f"{rid}.json"
+                    rid = (str(f.relative_to(HERE.parent)) if f.exists() else
+                           str(f3.relative_to(HERE.parent)) if f3.exists() else None)
+                out[key][camp][tn] = dict(seed=s, day=(m if math.isfinite(m) else None), hit=sum(v[1] for v in tt.values()),
+                                          of=len(tt), events=rid)
+    return out
+
+
 def run(n_boot=2000) -> dict:
     A = arms()
     T = B2.targets()
@@ -200,6 +237,7 @@ def run(n_boot=2000) -> dict:
                     rec["best_diff"] = dict(mean=float(dd.mean()), se=float(dd.std(ddof=1) / math.sqrt(len(dd))),
                                             n=len(dd))
                     S["stock_effect"].append(rec)
+    S["median_seeds"] = median_seeds(A, T)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "like3b.json").write_text(json.dumps(B2._jsonable(S), indent=1, default=str))
     (OUT / "tables.md").write_text(tables(S))
@@ -225,9 +263,17 @@ def fmt_factor(r, money=False):
         s = f"{f:.1f}x"
     if b is None and not math.isnan(f):
         hi = "∞" if not math.isfinite(r["hi"]) else f"{r['hi']:.1f}"
-        lo = f"{r['lo']:.1f}" if math.isfinite(r["lo"]) else "∞"
+        lo = ("∞" if not math.isfinite(r["lo"]) else "0" if r["lo"] == 0 else f"{r['lo']:.1f}")
         s += f" ({lo}-{hi})"
     return s
+
+
+def _diff_cell(r):
+    x = r["days"]
+    if not x["n_both"]:
+        return f"none both ({x['hit_vert']}/{x['n']} vs {x['hit_conv']}/{x['n']})"
+    se = f" ± {x['diff_se']:.0f}" if x["diff_se"] is not None else ""
+    return f"{x['diff_mean']:+.0f}{se} d (n={x['n_both']}); first {x['v_first']}-{x['c_first']}"
 
 
 def _cell(r, money=False):
@@ -282,9 +328,33 @@ def tables(S) -> str:
                         for vs, cs in PAIRS:
                             r = get(pol, ref, vs, cs, camp, tn)
                             cells.append(_cell(r, money) if r else "not run")
+                        if all(c == "not run" for c in cells):
+                            continue
                         against = "the same policy" if ref == pol else "the rule of thumb (heuristic)"
                         L.append(f"| {NAMES[pol]} | {against} | " + " | ".join(cells) + " |")
                 L.append("")
+    L += ["## Paired differences in days", "",
+          "Per seed, the days the vertical lab saved (the conventional lab's day minus the vertical lab's), mean ± SE "
+          "over the seeds where both got there (n); then the seeds in which the vertical lab got there first and those "
+          "in which the conventional lab did (a seed that never gets there counts as last; seeds where neither did "
+          "are in neither count).", ""]
+    for camp, cname in CAMPS.items():
+        for tn in ("T1", "T2"):
+            L.append(f"### {cname}: {TNAMES[tn]}")
+            L.append("")
+            L.append("| Vertical lab's policy | Against | " + " | ".join(PAIR_NAMES[p] for p in PAIRS) + " |")
+            L.append("|---|---|" + "---|" * len(PAIRS))
+            for pol in POLICIES:
+                for ref in dict.fromkeys((pol, "heuristic")):
+                    cells = []
+                    for vs, cs in PAIRS:
+                        r = get(pol, ref, vs, cs, camp, tn)
+                        cells.append(_diff_cell(r) if r else "not run")
+                    if all(c == "not run" for c in cells):
+                        continue
+                    against = "the same policy" if ref == pol else "the rule of thumb (heuristic)"
+                    L.append(f"| {NAMES[pol]} | {against} | " + " | ".join(cells) + " |")
+            L.append("")
     # medians of each arm
     L += ["## Each arm on its own", "",
           "Kaplan-Meier median days to each target, the seeds that got there, and the final best alloy (mean ± SE). "

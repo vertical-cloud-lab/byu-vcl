@@ -243,3 +243,57 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+
+
+def match_kind(new, ref, rel=4e-16):
+    """How a rerun compares with its committed row: 'exact'; 'last bit' (every difference a float within a few units
+    in the last place, everything else, counts, days, dollars, decisions, identical); or the first real difference."""
+    d = first_diff(new, ref)
+    if d is None:
+        return "exact", None
+    worst = [0.0]
+
+    def walk(a, b, path=""):
+        if isinstance(a, dict) and isinstance(b, dict):
+            for k in set(a) | set(b):
+                if path == "" and k in IGNORE or path == "/cfg" and k == "events":
+                    continue
+                if k not in a or k not in b:
+                    return (f"{path}/{k}", a.get(k), b.get(k))
+                r = walk(a[k], b[k], f"{path}/{k}")
+                if r:
+                    return r
+            return None
+        if isinstance(a, list) and isinstance(b, list):
+            if len(a) != len(b):
+                return (f"{path} (length)", len(a), len(b))
+            for i, (x, y) in enumerate(zip(a, b)):
+                r = walk(x, y, f"{path}[{i}]")
+                if r:
+                    return r
+            return None
+        if a == b:
+            return None
+        if isinstance(a, float) and isinstance(b, float) and abs(a - b) <= rel * max(abs(a), abs(b), 1e-300) * 8:
+            worst[0] = max(worst[0], abs(a - b))
+            return None
+        return (path, a, b)
+    r = walk(new, ref)
+    if r is None:
+        return "last bit", worst[0]
+    return "different", [r[0], str(r[1])[:120], str(r[2])[:120]]
+
+
+def rerun_report():
+    """Every rerun against its committed row: {experiment: {kind: [run ids]}} and the first real differences."""
+    out = {}
+    for name, src in RERUN_OF.items():
+        refs = committed_rows(src)
+        K = {}
+        for r in load(name):
+            rid = run_id(r["cfg"])
+            ref = refs.get(rid)
+            kind, info = match_kind(r, ref) if ref is not None else ("no committed row", None)
+            K.setdefault(kind, []).append(rid if info is None or kind == "last bit" else [rid, info])
+        out[name] = K
+    return out

@@ -18,7 +18,9 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def _pinned_env(**extra):
-    env = dict(os.environ, PYTHONHASHSEED="0", **extra)
+    env = dict(os.environ)
+    env.update(PYTHONHASHSEED="0")
+    env.update(extra)
     return env
 
 
@@ -60,8 +62,9 @@ def test_a_full_rerun_gives_the_committed_row(policy):
 def test_string_hashing_moves_a_last_bit():
     """Why PYTHONHASHSEED is part of the pin: round 3's heuristic, seed 11, under hash seeds 0 and 2. The two give one
     alloy's true utility one unit apart in the last place; hash seed 0 gives the committed value."""
-    if R.problems():
-        pytest.skip("; ".join(R.problems()))
+    why = [w for w in R.problems() if "hashes strings" not in w]     # the subprocesses set their own hash seed
+    if why:
+        pytest.skip("; ".join(why))
     code = ("import json, sys; from twin import bench3 as B3; "
             "c = next(c for c in B3.EXPERIMENTS['main'] if c['policy'] == 'heuristic' and c['seed'] == 11); "
             "o, _ = B3.simulate(dict(c, events=False)); print(repr(o['campaigns']['flaime_al']['curve'][6][2]))")
