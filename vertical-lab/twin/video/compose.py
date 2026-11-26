@@ -1086,7 +1086,7 @@ def narrate(video: Path, rec: dict, kind: str) -> dict:
     total = _duration(video) or rec["total_s"]
     wav = TMP / f"{video.stem}_narration.wav"
     placed = N.track(rec, N.marks(rec), total, wav, video.with_suffix(".srt"))
-    if kind == "final":
+    if kind in ("final", "final3d"):
         (N.NDIR / "narration.srt").write_text(video.with_suffix(".srt").read_text())
     mux(video, wav)
     return dict(voice=f"Kokoro v1.0 {N.VOICE}, speed {N.SPEED}", lines=len(placed),
@@ -1152,8 +1152,30 @@ def narrated_preview(seconds: float = 60.0) -> dict:
                seconds=round(d, 2)) for n, a, d in slices], lines=lines,
                built_utc=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()))
     (VID / "preview_narrated_record.json").write_text(json.dumps(out, indent=1) + "\n")
+    preview_meta(out)
     print(json.dumps({k: v for k, v in out.items() if k != "lines"}), flush=True)
     return out
+
+
+def preview_meta(rec: dict) -> dict:
+    """youtube_meta_preview_narrated.json: the narrated preview's title and description (unlisted, for review)."""
+    from . import narration as N
+    commit = subprocess.run(["git", "rev-parse", "--short=7", "HEAD"], capture_output=True, text=True,
+                            cwd=D.HERE).stdout.strip()
+    said = "".join(f"\n{int(x['t_preview'] // 60)}:{int(x['t_preview'] % 60):02d}  {x['text']}" for x in rec["lines"])
+    desc = ("A preview, for review: the narrated campaign video's opening (what is simulated and what is real), then "
+            "the replay's switch from day 1 to the animated 3-D lab and the first view of the whole lab from above. "
+            "Simulated, not lab results.\n\n"
+            f"The voice is synthetic: Kokoro v1.0 (open weights, run locally), its stock voice {N.VOICE}, no voice "
+            "cloned or imitated. What it says, at its times in this preview:" + said + "\n\n"
+            f"Code: https://github.com/vertical-cloud-lab/byu-vcl/tree/{commit}/vertical-lab/twin/video "
+            "(narration.py, narration.json)\nPR: https://github.com/vertical-cloud-lab/byu-vcl/pull/393\n")
+    meta = dict(title="Preview: the campaign video, narrated (digital twin, simulated benchmark)", description=desc,
+                tags=["vertical cloud lab", "BYU", "digital twin", "laboratory automation", "self-driving lab",
+                      "narrated", "simulated"], categoryId="28", privacy="unlisted", notifySubscribers=False,
+                file=rec["file"], seconds=rec["seconds"], commit=commit)
+    (VID / "youtube_meta_preview_narrated.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+    return meta
 
 
 if __name__ == "__main__":

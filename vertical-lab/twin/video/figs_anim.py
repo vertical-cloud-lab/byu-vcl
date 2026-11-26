@@ -510,7 +510,8 @@ EXPLAIN_CAPTIONS = [
      "The target: the best reference alloy's score on the twin's synthetic alloy model. One random design in "
      f"{round(1 / max(1e-6, audit_numbers().get('frac_random', 1 / 12)))} beats it."),
     (19.0, 28.0, "The same curve against the money spent: powder, builds, tests and machine time."),
-    (28.0, 36.0, "Grey, dashed: the conventional lab, the same policy with partner and core facilities."),
+    (28.0, 36.0, "Grey, dashed: the conventional lab, the same policy with partner and core facilities" +
+     (", ordering metal as it goes (the automated lab starts stocked)." if NARRATED else ".")),
     (36.0, 50.0, "Read off where each first reaches the target: X = days conventional / days automated, "
                  "Y = cost automated / cost conventional."),
     (50.0, EXPLAIN_DURATION, "Instrument utilization: the share of the year each station was busy, both campaigns."),

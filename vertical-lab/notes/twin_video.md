@@ -30,7 +30,9 @@ LAB3D_FULL_LINK. Its 60 s preview, one simulated week from above: [FR3Fl1onJU0](
 
 **Acceleration factor.** AF = the median days (or dollars) the conventional lab needed to first reach the target ÷
 the automated lab's, with Kaplan-Meier medians when some seeds never get there and percentile-bootstrap intervals over
-seeds (Rohr et al., Chem. Sci. 2020; `twin/accel.py`, `notes/twin_econ.md`). The target is the state of the art: the
+seeds (after Rohr et al., Chem. Sci. 2020, whose factor is a ratio of numbers of experiments, sequential
+learning against random selection; here it is applied to days and dollars between two labs: `twin/accel.py`,
+`notes/twin_econ.md`). The target is the state of the art: the
 best reference alloy's true utility on this synthetic truth.
 
 ## The cut
@@ -57,8 +59,9 @@ on the 4-core runner (3 encoders, x264 `medium`) beside the benchmark. Chapters 
   (plain BOFN for FLAIME, BOFN with blend screening for copper), both campaigns, one year.
 - **The numbers on screen** come from `out/twin2/bench2_summary.json` (curves; the conventional lab's are its own 12
   seeds) and `out/twin2/econ/econ_summary.json` (acceleration factors, cost ratios, cost per experiment,
-  utilization), through `twin/video/data.py`. The takeaway compares the vertical lab with BOFN against the
-  conventional lab with the same BOFN (the lab's own contribution). Its footer and the description add the comparison
+  utilization), through `twin/video/data.py`. The takeaway compares the stocked vertical lab running BOFN
+  (with blend screening for copper) against the conventional lab ordering as it goes and running plain BOFN (DAL's
+  audit, digital-alloy-lab PR 293, §4: not "the lab's own contribution", as this said before). Its footer and the description add the comparison
   against the conventional lab run with a metallurgist's heuristic (aluminium 1.1×, copper 2.2×), and the description
   says where BOFN doesn't win.
 - **The bird's-eye stills** (`out/twin2/video/birdseye/`, four views at 2880 × 1620) are rendered once from the set-up
@@ -164,3 +167,123 @@ the clock, so at the replay's speeds most requests are not drawn (see above). Th
 the two lanes keep them from meeting head on, but nothing stops them from crossing at a dock's entry. An arm's work is
 the same three poses at every dock. It shows that the arm works there, not what it does. Bookings on stations without
 a 3-D model of their own (the DED machine) move a unit to their reserved footprint.
+
+## The narrated cut
+
+Sterling asked for narration "at least at the strategic places", on top of the animated re-cut
+([PR 393](https://github.com/vertical-cloud-lab/byu-vcl/pull/393#issuecomment-7180846741)): what is simulated and what is
+real, the function networks as each is built, how to read the best-so-far plots and the acceleration factor, the first
+alloy, the switch to the whole lab, the results, the takeaway with what "Y of the cost" includes, and the closing
+notes. Elsewhere the captions and the pictures carry it: @@NLINES@@ lines, @@SPOKEN@@ of speech in @@LENGTH@@. It is
+built on the animated cut ([The animated lab](#the-animated-lab)), so the replay is PR 318's 3-D lab moved by the event
+log.
+
+**On YouTube:** @@VIDEO@@ (unlisted; uploaded @@DATE@@ from commit @@COMMIT@@), and its 60 s preview @@PREVIEW@@
+(unlisted): the opening, then the 3-D lab taking over on day 2 and the first view of the whole lab from above. The
+public cut (Pz7hxqfODmE) and the animated re-cut's upload are left as they are.
+
+**The voice** is Kokoro v1.0 (82 M parameters, Apache-2.0 open weights), run on the runner's CPU through kokoro-onnx
+0.6.1, with its stock voice `af_heart` at 0.96 speed: no reference audio, nobody's voice cloned or imitated. It is the
+same model and voice as the long-form video's narration (`longform.py`). Each line is spoken from phonemes:
+`narration.SAY` respells what the voice would misread (FLAIME said as "flame"; ONR, BOFN, DED, LPBF, SEM letter by
+letter; "aluminium" as the American "aluminum", since the voice is American), and `narration.IPA` gives CALPHAD
+("KAL-fad"), Kardex, Sobol and "doser" their phonemes.
+
+**Heard back.** Every line was transcribed by faster-whisper (base.en and small.en) and compared word by word with what
+it should say: @@WER@@ word error over @@WORDS@@ words. The differences are spellings ("grey"/"gray") and "CALPHAD", a
+word the recognizers don't know (`out/twin2/video/narration/check.json`; `lines.ogg` has every line in a row, to listen
+to).
+
+**Every spoken number** is on screen while it is said, and comes from `econ_summary.json` or `bench2_summary.json` at
+the commit the cut was built from. Each line's `src` in `twin/video/narration.json` says where. Where a number wasn't
+on screen, the caption was changed to show it (below). "Simulated" is said wherever it applies, and the copper result is
+given as it is: tiered CALPHAD screening finished ahead.
+
+**Captions in step.** These change on the narrated cut only, so the cuts without narration build exactly as before:
+
+- the results' first caption names the leaders the voice names: in the automated lab, BOFN finished highest on
+  aluminium; on copper, tiered CALPHAD screening finished ahead of BOFN with blend screening (0.69 against 0.67),
+  computed from `bench2_summary.json` (`figs_anim._leaders`);
+- the takeaway's footnote says what the operating cost includes: materials, outside fees, labour, service contracts,
+  utilities and space, without the equipment's capital cost;
+- the notes frame names the voice instead of "Captions only, no narration";
+- the takeaway (15 to 51 s) and the notes (15 to 19 s) are longer, to fit their lines.
+
+**Where the lines sit.** Each line is anchored on a segment (`seg`, `at`) or on a named moment inside one (`mark`:
+each network card's arrival, day 1's steps, the 3-D lab taking over, the first view from above;
+`narration.marks`), so it follows the cut when segments are re-timed. `python -m twin.video.narration plan` prints
+each line's time and the caption on screen meanwhile; a line that would overlap the one before, or run past its
+segment, is reported. The two lines about the animated lab (`needs: lab3d`) are placed only on the animated cut.
+
+**Rebuilding it.** The audio sources are committed: each line's FLAC (24 kHz, 16-bit) in
+`out/twin2/video/narration/`, with its text, phonemes, voice and speed in `lines.json`, so the cut rebuilds without the
+speech model. A line is spoken again only when its text changes, which needs `/tmp/kokoro/kokoro-v1.0.onnx` and
+`voices-v1.0.bin` from kokoro-onnx's `model-files-v1.0` release (their sha256 in `lines.json`). The track is mixed at
+48 kHz, each line levelled to -19 dBFS RMS, and muxed in as AAC; the subtitles are `narration/narration.srt` (the upload
+token can't add a caption track, so they aren't on YouTube).
+
+```bash
+cd vertical-lab
+python -m twin.video.narration plan      # each line's time in the narrated cut, and the caption on screen meanwhile
+python -m twin.video.narration tts       # speak the lines whose text changed (Kokoro), into out/twin2/video/narration/
+python -m twin.video.narration check     # heard back by faster-whisper
+# the 3-D lab needs the set-up movie's stack (VTK, cadquery: twin/video/lab3d.py), so run these with that Python
+TWIN_VIDEO_LAB3D=1 TWIN_VIDEO_NARRATION=1 TWIN_VIDEO_WORKERS=3 python -m twin.video.compose final3d
+TWIN_VIDEO_LAB3D=1 TWIN_VIDEO_NARRATION=1 python -m twin.video.compose npreview   # out/twin2/video/preview_narrated.mp4
+python -m twin.video.upload --yes --file out/twin2/video/campaign_lab3d_narrated.mp4 \
+    --meta out/twin2/video/youtube_meta_lab3d_narrated.json --privacy unlisted
+```
+
+### The script, with its times in the cut
+
+@@TABLE@@
+
+### DAL's audit, and what the narrated cut takes from it
+
+DAL audited the first cut's claims while this was being written
+([digital-alloy-lab PR 293](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/293),
+`audits/twin-round2-video/README.md`). Its verdict: the arithmetic reproduces, but the two headline factors are not a
+measure of what automation does, and the takeaway's "84 %" means two different things. The narrated cut follows its
+suggested rewording (§4), in the voice and on screen:
+
+- **The takeaway card and the description's two bullets** (§4, first item). The narrated card says what was compared:
+  "a stocked automated lab reached an alloy better than the reference alloy sooner than a conventional lab that orders
+  metal as it goes", aluminium in 116 days against 220 (1.9×, 95 % CI 1.1 to 3.4) and copper in 225 days against at
+  least 840 (≥ 3.7×; the conventional lab got there in 6 of 12 three-year runs). It adds "both labs ordering metal as
+  they go: 1.2× (0.7 to 1.7)" for aluminium, and that copper's automated lab also screens powder blends first. Voice:
+  `take1`, `take1b`, `res2`. The results' ratio panel shows "≥ 3.7x" and "at least 840 d (6 of 12 runs got there)".
+- **Cost** (§4). There is one basis for both campaigns, led by the one with the equipment: 2.0× and 1.15× the
+  conventional lab's cost, and 0.6× and 0.4× counting only the campaigns' spending. The voice adds "with the equipment,
+  it costs less only for copper, and only if outside users rent its idle hours, which this model assumes and does not
+  show". This replaces the card's "84 %", which meant operating cost with outside users for aluminium and operating
+  cost without the equipment for copper. Voice: `take2`, and `res3` ("only if outside users fill it to sixty percent,
+  which the model assumes").
+- **"State of the art"** (§4). The target is "the best reference alloy's score on the twin's synthetic alloy model. One
+  random design in 12 beats it, so reaching it shows how fast a lab tests its first alloys, not a discovery". This is in
+  the explainer's target caption and the takeaway. Voice: `fig1`.
+- **The heuristic line** (§4). "No faster on aluminium (1.05×, 0.7 to 2.2) at 2.6× the operating cost, and 2.2× faster
+  on copper (1.7 to 2.6)", on the card and in the description. Voice: `take3`.
+- **Copper in "Where BOFN doesn't win"** (§4). "0.68 against 0.58 over 24 seeds (0.69 against 0.67 in the first 12);
+  plain BOFN did no better than random (0.33 against 0.35)", in the results caption and the description. Voice: `res1`.
+- **The replay** (§4). A badge for its whole length: "One seed of 12: here aluminium reaches the target on day 20; the
+  median seed takes 116 days". Voice: `seed1`, which also says it is aluminium's luckiest seed (the audit's §1, row 9).
+- **Run counts** (§4). "12 one-year automated and 12 three-year conventional runs per policy" replaces "twin-years" in
+  the results caption, the ratio panels' footnotes and the takeaway's footer. Voice: `res1`.
+- **The notes frame** (§4). "Assumed" gains "the automated lab's feedstock stock on day 0; the atomizer's failure rate and
+  yield; who staffs the automated lab". "Every measurement, with noise" becomes "Every measurement, with modelled noise
+  not yet calibrated on the lab's instruments". Voice: `note1`.
+- **This file's account of the takeaway's comparison** (§4, last item). It is reworded in [The cut](#the-cut).
+- Also from the audit's claims table, not its §4: the explainer's grey curve says the conventional lab orders its metal
+  as it goes (rows 1 and 15; voice `fig2`). The acceleration factor's definition below now says how Rohr et al.'s
+  differs (row 16). The narrated description drops "the same campaigns run the conventional way", and says the
+  conventional lab is the proposals' plan (row 14).
+
+Not taken: §5's experiments, which would settle the open claims rather than reword them (stocking the conventional lab,
+the same copper method in both labs, more seeds, one horizon, the logged atomizer). They need new benchmark runs.
+
+Every number those use is read from this commit's data: aluminium with both labs ordering as they go is recomputed with
+`twin.accel` (as `econ_summary.json` computes the headline) from `bench2_summary.json`'s `stock` runs against the
+conventional lab, 1.16 (0.73 to 1.67), against the audit's 1.16 (0.72 to 1.66) from 20,000 resamples. Copper over 24
+seeds is `main` plus `cu_seeds`, and "one random design in 12" is `oracle.json`'s `frac_above_sota` (0.082, both spaces).
+Where the audit's own bootstrap and `econ_summary.json` differ in the last digit, the video uses `econ_summary.json`:
+copper against the heuristic is 2.2× (1.7 to 2.6) there, 1.8 to 2.6 in the audit.

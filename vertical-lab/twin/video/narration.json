@@ -58,8 +58,8 @@
    "id": "fig2",
    "seg": "figures",
    "at": 19.4,
-   "text": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
-   "src": "figs_anim.EXPLAIN_CAPTIONS 19-36 s"
+   "text": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab: the same optimizer through partner and core facilities, ordering its metal as it goes.",
+   "src": "figs_anim.EXPLAIN_CAPTIONS 19-36 s; DAL audit (PR 293) rows 1 and 15: the automated lab is stocked, the conventional lab orders as it goes"
   },
   {
    "id": "fig3",
