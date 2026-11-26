@@ -296,7 +296,7 @@ def _norm(s: str) -> str:
     s = re.sub(r"(?<=[A-Z])-(?=[A-Z])", "", s)
     s = s.lower().replace("-", " ").replace("’", "'")
     for a, b in (("aluminium", "aluminum"), ("labour", "labor"), ("colour", "color"), ("metre", "meter"),
-                 ("grey", "gray")):
+                 ("grey", "gray"), ("modelled", "modeled")):
         s = s.replace(a, b)
     s = re.sub(r"[^a-z' ]", " ", s)
     s = re.sub(r"'s\b|s'", "s", s)
