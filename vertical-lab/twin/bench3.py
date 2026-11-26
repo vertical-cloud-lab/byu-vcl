@@ -72,9 +72,14 @@ def run_id(cfg):
     return "r3_" + B2.run_id(cfg)
 
 
-def run_one(cfg: dict) -> dict:
+def simulate(cfg: dict):
+    """One run: (its JSON row, the Twin). Round 3b: the global generators are seeded first, and the row records the
+    numerical set-up (``env``, twin/repro.py) and whether anything drew from torch's global generator."""
     import torch
     torch.set_num_threads(1)
+    from twin import repro as R
+    R.seed_globals(cfg["seed"])
+    rng0 = R.torch_rng_state()
     from twin import campaign as C
     from twin import spaces as SP
     from twin.opt import policies3 as P3
@@ -123,6 +128,13 @@ def run_one(cfg: dict) -> dict:
     out["calendar"] = {k: r.st.hours for k, r in f.res.items()}
     out["external"] = {k: bool(r.st.external) for k, r in f.res.items()}
     out["helper_misses"] = f.helper_misses
+    out["torch_rng_used"] = R.torch_rng_used(rng0)
+    out["env"] = R.fingerprint()
+    return out, tw
+
+
+def run_one(cfg: dict) -> dict:
+    out, tw = simulate(cfg)
     if cfg.get("events"):
         EVENTS.mkdir(parents=True, exist_ok=True)
         rid = run_id(cfg)
