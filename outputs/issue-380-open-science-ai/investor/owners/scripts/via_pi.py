@@ -25,7 +25,10 @@ cached in PAGE_CACHE (default /tmp/pagecache), never in the repository.
     python scripts/via_pi.py probe <url> ...          # status from every route, without the cache
     python scripts/via_pi.py page <url> [<regex>]      # sentences that state an amount and a deal, or match <regex>
     python scripts/via_pi.py news "<query>"            # Bing News RSS: date | title | url
-    python scripts/via_pi.py web "<query>"             # Bing web results: title | url | snippet
+    python scripts/via_pi.py gnews "<query>" [en|zh]   # Google News RSS, links decoded: date | title | url
+
+Bing's web results were useless to an automated client from either network (unrelated pages, operators ignored), so
+only its news RSS is used. Google News RSS links are decoded to the publisher's URL with Google's own endpoint.
 
 Pages are untrusted data: this module returns text and never follows instructions in it.
 """
@@ -111,7 +114,7 @@ def _result(url, route, status, body, final):
 
 def _plain(url):
     try:
-        r = requests.get(url, headers=HEADERS, timeout=25, stream=True, allow_redirects=True)
+        r = requests.get(url, headers=HEADERS, timeout=(10, 20), stream=True, allow_redirects=True)
         body = r.raw.read(MAX_BYTES, decode_content=True) or b""
         r.close()
         return _result(url, "runner", r.status_code, body, r.url)
@@ -122,7 +125,7 @@ def _plain(url):
 def _tls(url, via_pi, route, params=None):
     def go():
         try:
-            r = cr.get(url, params=params, impersonate="chrome", timeout=40 if via_pi else 25, allow_redirects=True,
+            r = cr.get(url, params=params, impersonate="chrome", timeout=30 if via_pi else 20, allow_redirects=True,
                        proxies={"http": PI_PROXY, "https": PI_PROXY} if via_pi else None,
                        max_recv_speed=PI_RATE if via_pi else 0)
             return _result(url, route, r.status_code, (r.content or b"")[:MAX_BYTES], str(r.url))
@@ -161,8 +164,10 @@ def get(url, use_cache=True, wayback=True):
     k = _key(url)
     if use_cache and os.path.exists(k + ".json"):
         meta = json.load(open(k + ".json"))
-        meta["body"] = open(k + ".body", "rb").read() if os.path.exists(k + ".body") else b""
-        return meta
+        # a cached failure is final only if every route the caller allows was tried
+        if meta["ok"] or not wayback or "wayback" in meta.get("tried", ""):
+            meta["body"] = open(k + ".body", "rb").read() if os.path.exists(k + ".body") else b""
+            return meta
     tried = []
     res = None
     for step in ("runner", "runner-tls", "pi", "wayback"):
@@ -244,6 +249,65 @@ def news(q):
     return out
 
 
+GOOGLE_GAP = float(os.environ.get("GOOGLE_GAP", "0.6"))
+GN_LANG = {"en": ("en-US", "US", "US:en"), "zh": ("zh-CN", "CN", "CN:zh-Hans")}
+
+
+def _google(method, url, **kw):
+    for via_pi in (False, True):
+        with _Gap("google", GOOGLE_GAP):
+            try:
+                r = cr.request(method, url, impersonate="chrome", timeout=30,
+                               proxies={"https": PI_PROXY} if via_pi else None, **kw)
+            except Exception:
+                continue
+        if r.status_code == 200:
+            return r
+    return None
+
+
+def gnews(q, lang="en"):
+    """Google News RSS for a query: [{'date', 'title', 'gn_link', 'source', 'source_url'}]. Links need gdecode()."""
+    hl, gl, ceid = GN_LANG[lang]
+    r = _google("GET", "https://news.google.com/rss/search", params={"q": q, "hl": hl, "gl": gl, "ceid": ceid})
+    out = []
+    for it in BeautifulSoup(r.content if r else b"", "xml").find_all("item"):
+        d = it.pubDate.get_text() if it.pubDate else ""
+        try:
+            d = dt.datetime.strptime(d[:25].strip(), "%a, %d %b %Y %H:%M:%S").strftime("%Y-%m-%d")
+        except ValueError:
+            d = d[:16]
+        src = it.find("source")
+        title = it.title.get_text() if it.title else ""
+        if src and title.endswith(" - " + src.get_text()):
+            title = title[: -len(src.get_text()) - 3]
+        out.append({"date": d, "title": title, "gn_link": it.link.get_text() if it.link else "", "via": f"gnews-{lang}",
+                    "source": src.get_text() if src else "", "source_url": src.get("url", "") if src else "",
+                    "snippet": ""})
+    return out
+
+
+def gdecode(link):
+    """The publisher's URL behind a Google News RSS link, or '' if it can't be decoded."""
+    try:
+        aid = link.split("/articles/")[1].split("?")[0]
+        pg = _google("GET", f"https://news.google.com/rss/articles/{aid}")
+        node = BeautifulSoup(pg.content, "lxml").select_one("c-wiz > div[jscontroller]") if pg else None
+        if node is None:
+            return ""
+        sig, ts = node.get("data-n-a-sg"), node.get("data-n-a-ts")
+        req = ["Fbv4je", f'["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,null,null,null,null,null,0,1],'
+                         f'"X","X",1,[1,1,1],1,1,null,0,0,null,0],"{aid}",{ts},"{sig}"]']
+        rr = _google("POST", "https://news.google.com/_/DotsSplashUi/data/batchexecute",
+                     data={"f.req": json.dumps([[req]])},
+                     headers={"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"})
+        if rr is None:
+            return ""
+        return json.loads(json.loads(rr.text.split("\n\n")[1])[0][2])[1]
+    except Exception:
+        return ""
+
+
 def _unwrap(href):
     if "bing.com/ck/a" in href:
         u = up.parse_qs(up.urlparse(href).query).get("u", [""])[0]
@@ -313,6 +377,6 @@ if __name__ == "__main__":
     elif cmd == "news":
         for h in news(sys.argv[2]):
             print(f"{h['date']} | {h['title']} | {h['url']}")
-    elif cmd == "web":
-        for h in web(sys.argv[2]):
-            print(f"{h['title'][:90]} | {h['url']} | {h['snippet'][:160]}")
+    elif cmd == "gnews":
+        for h in gnews(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "en")[:12]:
+            print(f"{h['date']} | {h['title']} | {gdecode(h['gn_link']) or h['source_url']}")

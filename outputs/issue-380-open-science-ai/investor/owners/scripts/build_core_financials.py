@@ -2,7 +2,10 @@
 """Assemble data/core_financials.csv from the sourced research passes, Yahoo and SEC Form D.
 
 The first pass is eight parallel passes (output_*.csv); the second pass (second_*.csv) redoes the rows the first
-pass could not source after the shared web-search budget ran out, working from news_leads.py's leads.
+pass could not source after the shared web-search budget ran out, working from news_leads.py's leads. The third
+(third_1.csv) is hand corrections from Edison's audit. The fourth (fourth_*.csv) revisits every company with
+search_leads.py's news leads and pages fetched through the lab Pi (fourth_pass_rules.md); fourth_hand.csv holds the
+corrections made by hand when reviewing it.
 
 latest_value_usd: market cap on the snapshot date for listed companies (Yahoo); the disclosed acquisition price for
 acquired ones; the last disclosed post-money valuation for private ones; blank for shutdowns and undisclosed values.
@@ -15,7 +18,9 @@ import numpy as np, pandas as pd
 
 # first-pass rows, then second-pass rows, which replace them owner by owner (the last row for an owner wins)
 parts = (sorted(glob.glob("data/finance_passes/output_*.csv")) + sorted(glob.glob("data/finance_passes/second_[0-9].csv"))
-         + sorted(glob.glob("data/finance_passes/third_[0-9].csv")))  # third: corrections made by hand
+         + sorted(glob.glob("data/finance_passes/third_[0-9].csv"))  # third: corrections made by hand
+         + sorted(glob.glob("data/finance_passes/fourth_[0-9].csv"))  # fourth: search leads and pages via the lab Pi
+         + sorted(glob.glob("data/finance_passes/fourth_hand.csv")))  # fourth, corrected by hand after review
 F = pd.concat([pd.read_csv(p, dtype=str).assign(pass_file=os.path.basename(p)) for p in parts], ignore_index=True)
 F["owner"] = F.owner.str.strip()
 inp = pd.read_csv("data/finance_passes/input_all.csv", dtype=str)
