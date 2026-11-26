@@ -384,6 +384,38 @@ def route_shares(name, plan, N):
     return lines
 
 
+def first_route_table(name, T, N):
+    """The route that made (fabricated and tested) the first alloy at each target, seed by seed: each route's share of
+    the discoveries themselves rather than of the jobs."""
+    P = _by_plan(_rows(name))
+    if not P:
+        return []
+    lines = [f"**Which route made the first alloy at each target** (`{name}`; seeds that got there; fabrication route, "
+             "then testing route)", "", "| Plan | Al T1 | Al T2 | Cu T1 | Cu T2 |", "|---|---|---|---|---|"]
+    out = {}
+    for plan in B4.PLANS:
+        rs = P.get(plan)
+        if not rs:
+            continue
+        cells = [PNAME[plan]]
+        for camp in CAMPS:
+            for tn in ("T1", "T2"):
+                cnt = {}
+                for r in rs:
+                    for d in r["campaigns"][camp]["demonstrated"]:
+                        if d.get("ref") or d["u"] < T[tn][camp] - 1e-12:
+                            continue
+                        k = f"{d.get('route_fab') or '?'} / {d.get('route_test') or '?'}"
+                        cnt[k] = cnt.get(k, 0) + 1
+                        break
+                cells.append(", ".join(f"{k} ×{v}" for k, v in sorted(cnt.items(), key=lambda kv: -kv[1])) or "—")
+                out[f"{plan}/{camp}/{tn}"] = cnt
+        lines.append("| " + " | ".join(cells) + " |")
+    N.setdefault("first_route", {})[name] = out
+    lines.append("")
+    return lines
+
+
 def stages_table(name, N):
     rows = _rows(name)
     if not rows:
@@ -784,6 +816,8 @@ def main():
     L += lu3
     Ue, lue = utilization("plans", "external", N)
     L += lue
+    L += first_route_table("plans", T, N)
+    L += first_route_table("plans_best", T, N)
     L += route_shares("plans", "parallel", N)
     L += route_shares("plans_3x", "parallel", N)
     L += route_shares("plans_best", "parallel", N)

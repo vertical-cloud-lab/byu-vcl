@@ -140,6 +140,124 @@ gas-atomization runs), so discovery's money is the same in every plan.
 
 <!-- STAGES -->
 
+## 5. Results
+
+*All simulated. Checked against [`out/twin4/fig/tables.md`](../out/twin4/fig/tables.md),
+[`out/twin4/fig/numbers.json`](../out/twin4/fig/numbers.json) and the per-run logs in
+[`out/twin4/runs/`](../out/twin4/runs/).*
+
+* **Days** are counted from the funding. Medians are Kaplan-Meier medians over seeds: a seed that never gets there
+  counts as censored at day 730, and ">730" means fewer than half got there in two years.
+* **Targets** are round 3's, new alloys only. T1 is the state of the art (aluminium 0.42, copper 0.56). T2 is halfway
+  from it to the best the oracle found (0.64 and 0.66).
+* **Mean ± SE** over seeds; paired comparisons are by seed.
+* **Each experiment's policies:**
+  * `plans`: round 3's cheap policies, the heuristic on aluminium and the funnel on copper (copper's best in round 3).
+  * `plans_best`: time-aware BOFN on aluminium (aluminium's best in round 3) and the funnel on copper.
+
+### 5.1 The three plans, cheap policies (`plans`, 12 seeds each, round 3's money)
+
+| Plan | Al T1: seeds; day | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
+|---|---|---|---|---|---|---|
+| Wait for the cell (complete at day 231, median; every station by day 270) | 11/12; 366 | 3/12; >730 | 12/12; 421 | 11/12; 430 | 0.59 ± 0.03 | 0.70 ± 0.01 |
+| **Ramp up in parallel** | **12/12; 57** | **7/12; 438** | **12/12; 302** | **11/12; 310** | **0.65 ± 0.01** | **0.70 ± 0.01** |
+| External routes only | 12/12; 54 | 4/12; >730 | 9/12; 315 | 5/12; >730 | 0.59 ± 0.02 | 0.63 ± 0.03 |
+
+**Paired by seed, parallel against each other plan.** Each cell counts the seeds where parallel got there first, where
+the other plan did, and where neither did. The median days saved is over the seeds where both plans got there.
+
+| Target | against waiting: first / behind / neither; median days saved | against external only: same |
+|---|---|---|
+| Aluminium T1 | 12 / 0 / 0; **238** | 2 / 1 / 0; 0 |
+| Aluminium T2 | 7 / 1 / 4; 119 (2 seeds where both got there) | 5 / 1 / 5; 0 (4) |
+| Copper T1 | 10 / 2 / 0; **134** | 10 / 2 / 0; 14 |
+| Copper T2 | 10 / 2 / 0; **121** | 10 / 1 / 1; 9 (5) |
+| Copper, a validated T2 alloy | 6 / 2 / 4; 148 (4) | 6 / 0 / 6; 47 (3) |
+
+* **Against waiting for the cell, ramping up in parallel wins on every target.**
+  * **Aluminium:** the state of the art comes about eight months sooner. The existing atomizer and the partners'
+    builds reach it at a median of day 57, against day 366, when the waiting lab is about three months past its start.
+  * **Copper:** both targets come about four months sooner (day 302-310 against 421-430).
+* **Why copper gains less.** In the parallel plan copper's first state-of-the-art alloys come about when the
+  in-house MX-Lab comes online (day 260, median). Until then copper has only Utah's MX-Lab, a session a month, and
+  Mines, 7 sessions a year. Half its first T1 alloys came from Mines and half from the in-house MX-Lab.
+* **Against external routes only:**
+  * **Aluminium's state of the art is a tie** (day 54 against 57): the existing atomizer and Utah's and the partner's
+    builds get there in under two months either way. 10 of the 12 first aluminium T1 alloys in the parallel plan were
+    printed at a partner (Utah 6, 3D Powder Tech 4).
+  * **Copper is where the cell pays.** The parallel plan reaches copper's halfway target first in 10 seeds of 12. The
+    external-only lab gets there in 5 of 12 in two years, and finishes 0.07 lower (0.63 against 0.70).
+* **The warm start.** On the day the waiting lab starts (day 281 on average), the parallel plan has already
+  demonstrated 48 new aluminium alloys and is at or above aluminium's state of the art in all 12 seeds. On copper it
+  has demonstrated 2.2 and is at T1 in 4 of 12. The in-house stations start with that data and with a mature
+  atomizer: 10 runs of experience in the waiting lab, several hundred in the parallel one.
+* **What the parallel plan spends by its targets.**
+  * By aluminium's state of the art: $26k of discovery money (medians) and $1.76M of capital, mostly deposits.
+  * By copper's halfway target: $78k and the whole $5.0M; the waiting lab, $91k and $5.0M.
+  * The external-only lab spends the least to each target it reaches ($25-70k), and reaches copper's halfway target
+    in only 5 seeds.
+
+![Round 4: best new alloy against days from the funding](../out/twin4/fig/twin4_best_vs_days.png)
+![Round 4: days from the funding to each target](../out/twin4/fig/twin4_time_to_target.png)
+
+<!-- BEST -->
+
+### 5.3 Capital, utilization and the timeline
+
+![Round 4: capital and discovery money over time](../out/twin4/fig/twin4_money.png)
+
+* **Capital.** $1.31M goes out on day 0 in deposits; it reaches $2.75M by day 91, $4.78M by day 182 and all $5.01M by
+  day 273, in both building plans. The external-only plan spends none.
+* **Discovery money.** The parallel and external plans spend it from day 0 and have spent all of it ($358k and $353k
+  of $360k) by the end of the two years. The waiting lab starts spending at about day 240, when its first stations take
+  work, and ends with $307k spent.
+* **Money binds in both plans that start on day 0** (section 5.6): the partners' standing slots run at 20-85 % of what
+  is reserved.
+
+| Route (parallel plan, `plans`, mean over seeds) | months 1-3 | 4-6 | 7-9 | 10-12 | 13-18 | 19-24 |
+|---|---|---|---|---|---|---|
+| BYU atomizer (runs over its starts) | 31 % | 39 % | 55 % | 68 % | 69 % | 38 % |
+| Utah MIDI (builds over the 2 a week reserved) | 38 % | 34 % | 35 % | 1 % | 1 % | 1 % |
+| 3D Powder Tech (builds over 1 a week) | 24 % | 20 % | 18 % | 1 % | 3 % | 3 % |
+| In-house MIDI (hours) | — | 13 % | 18 % | 13 % | 12 % | 3 % |
+| Utah MX-Lab (sessions over 1 a month) | 85 % | 55 % | 52 % | 41 % | 38 % | 32 % |
+| Mines X2 (sessions over 7 a year) | 29 % | 58 % | 58 % | 25 % | 17 % | 15 % |
+| In-house MX-Lab (hours) | — | — | 17 % | 12 % | 5 % | 0 % |
+| People (3, day shifts) | 20 % | 25 % | 37 % | 24 % | 19 % | 8 % |
+
+* **Work moves in house as the stations come online.** Utah's MIDI and 3D Powder Tech fall from 20-38 % of their slots
+  to 1-3 % once the in-house MIDI is up (month 7). Utah's MX-Lab and Mines keep being used after the in-house MX-Lab
+  arrives, at a lower rate. Over the two years, 84 % of aluminium's builds and 67 % of copper's small deposits are
+  in house; 89 % of the alloys at or above T1 were made in house. The robots are about 1 % busy, as in round 3.
+* **The atomizer is the shared constraint.** It runs 55-69 % of its starts once the cell is up. Aluminium's share is
+  12 starts a week, and a lot takes about four runs, so about three new aluminium designs a week is the ceiling in
+  every plan; the cell adds no atomizer.
+
+![Round 4: utilization by route and month (parallel plan)](../out/twin4/fig/twin4_utilization.png)
+![Round 4: a simulated timeline of build-out and experiments (seed 0, parallel plan)](../out/twin4/fig/twin4_timeline.png)
+
+### 5.4 The stages after discovery
+
+Per run of `plans`: alloys that entered the stages, that failed the validation network, and that were validated
+through the full-part test.
+
+| Plan | Al entered; failed network; validated | Cu entered; failed network; validated | scale-up money |
+|---|---|---|---|
+| Wait for the cell | 0.8; 0.3; 0.2 | 1.2; 0.0; 0.7 | $31k |
+| Ramp up in parallel | 1.8; 0.7; 0.8 | 1.6; 0.2; 0.9 | $70k |
+| External routes only | 0.7; 0.6; 0.0 | 0.5; 0.1; 0.2 | $21k |
+
+* **A validated copper T2 alloy:** the parallel plan has one in 6 of 12 seeds (median day 692), the same count as
+  the waiting lab (median day 728); external-only has one in 3 of 12.
+* **Paired against waiting**, parallel gets there first in 6 seeds and behind in 2.
+* **Aluminium:** few heuristic alloys reach T2 to begin with. Of those that do, a third to most fail the validation
+  network: the gas-atomized powder, built at two sites with their offsets, falls below the state of the art.
+  * Measured T2 is not the true utility. One copper case in a test run had a crack the section missed, and the
+    network caught it.
+  * The network is the stage that separates a measured result from a reproducible one.
+
+<!-- SECOND -->
+
 ## Sources
 
 1. Round 4's tables: [`out/twin4/fig/tables.md`](../out/twin4/fig/tables.md) and
