@@ -1,0 +1,120 @@
+1
+00:00:00,800 --> 00:00:10,630
+This is a simulated benchmark, in its third round: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab.
+
+2
+00:00:11,130 --> 00:00:27,130
+Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.
+
+3
+00:00:54,600 --> 00:01:14,060
+Round three removes the cap on how much work is in flight. What sets the pace now is physical: stations, robots, people and fixtures. Decisions come every simulated hour, one spending plan paces the money for every policy, and the thirty-day immersion gives interim readings and can be stopped early.
+
+4
+00:01:16,600 --> 00:01:29,930
+Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.
+
+5
+00:01:31,400 --> 00:01:37,050
+For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.
+
+6
+00:02:24,350 --> 00:02:32,310
+For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.
+
+7
+00:02:47,900 --> 00:02:53,790
+Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.
+
+8
+00:03:01,400 --> 00:03:15,350
+Best so far is the highest utility of any new alloy tested yet. The first dotted line is the best existing alloy on this synthetic benchmark. One random design in twelve beats it, so it is a low bar.
+
+9
+00:03:16,200 --> 00:03:22,390
+The second line is the halfway target: halfway from there to the best alloy the twin's own search found.
+
+10
+00:03:23,400 --> 00:03:34,320
+The grey dashed curve is a conventional lab run by rule of thumb, through partner and core facilities. It orders its metal as it goes, while the automated lab starts stocked.
+
+11
+00:03:35,500 --> 00:03:57,150
+Days to a target are the median over twelve runs. Here the automated lab reaches the halfway target on day 83, in 10 of its 12 runs. The conventional lab does on day 337, in only 6 of 12, so its median is its last run to get there. The factor is therefore a lower bound: at least 4.0 times.
+
+12
+00:03:58,500 --> 00:04:06,240
+Round three did not run both labs ordering metal as they go, so how much of a factor comes from the stock on the shelf is not known.
+
+13
+00:04:09,600 --> 00:04:30,850
+One assumption matters more than the rest. In the twin, the atomizer has sixteen start slots a week and uses about ten, and a run fails six percent of the time, more for a cold melt. The lab's own record so far is 1.7 runs a week, with problems in eight of ten runs. These are design targets, not demonstrated rates.
+
+14
+00:04:34,000 --> 00:04:48,890
+Day one follows a single simulated aluminium alloy from start to finish: the reference alloy, which the lab makes first. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.
+
+15
+00:04:49,390 --> 00:04:53,440
+The melt and the pour are real footage, from the lab's own atomizer.
+
+16
+00:05:10,160 --> 00:05:17,330
+After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented.
+
+17
+00:05:44,100 --> 00:05:49,030
+Wire EDM cuts its bars, and a tensile test scores it on the second day.
+
+18
+00:05:54,300 --> 00:06:07,330
+From day two, the event log moves the lab's 3-D model: each booking brings its tray to a Shuttle's opening and back, and a mobile arm drives over to serve it. Trays nobody has booked stay in their slots.
+
+19
+00:06:27,700 --> 00:06:39,180
+Now the whole lab from above, with the two Shuttles up close from a second camera. The moves run on a clock of their own, so you can follow them; the panel at the bottom counts how many were drawn.
+
+20
+00:07:12,700 --> 00:07:33,780
+This replay is seed zero of twelve, running time-aware BOFN: the only seed whose event log was saved. For aluminium it is the median seed: it reaches the halfway target on day 96. For copper it is one of the four seeds that never reach the first target; the median seed gets there on day 221.
+
+21
+00:08:36,900 --> 00:08:47,140
+Aluminium has now passed both targets: in this seed, on day 96. Copper stays below its first target all year, as it does in four of the twelve seeds.
+
+22
+00:10:34,300 --> 00:10:56,470
+Twelve simulated one-year runs per policy in the automated lab. On aluminium, time-aware BOFN and pKGFN finished highest, at 0.73 and 0.71. On copper, tiered CALPHAD screening still finished ahead, at 0.69 against 0.58 and 0.61.
+
+23
+00:10:58,000 --> 00:11:28,970
+Days to each target, with every run a mark. Time-aware BOFN and pKGFN reach aluminium's halfway target on day 96 and day 83, in 11 and 10 of 12 runs. BOFN per dollar does in 7, and no other policy in more than 2. The heuristic reaches the first target soonest, on day 24, and then stalls. On copper, tiered screening reaches the halfway target on day 148, in 10 of 12 runs.
+
+24
+00:11:30,500 --> 00:11:53,110
+Removing the cap did not speed copper up: money is its limit. More than four fifths of each campaign's spending is orders of metal and consumables. With three times the copper money, BOFN and pKGFN gain 0.14 and 0.08 over four runs each, and draw level with tiered screening, which is still first to both targets.
+
+25
+00:11:54,700 --> 00:12:32,220
+Against a conventional lab. Every factor here compares a stocked automated lab with a conventional lab that orders metal as it goes. With the same policy in both labs, tiered screening reaches copper's halfway target 3.8 times sooner, and the heuristic shows no speed-up on aluminium's. Against a conventional lab run by rule of thumb, pKGFN reaches aluminium's halfway target at least 4.0 times sooner: the conventional lab got there in 6 of 12 runs. BOFN and pKGFN were not run in the conventional lab.
+
+26
+00:12:33,800 --> 00:12:51,630
+Cost, on one basis for both campaigns: equipment included. A demonstrated alloy costs about 35 thousand dollars in the automated lab, against 8 thousand in the conventional lab, while the two campaigns carry the lab alone. They use 7 percent of its capacity.
+
+27
+00:12:55,500 --> 00:13:10,240
+So, in this simulated benchmark. On aluminium, BOFN and pKGFN reached the halfway target in about three months. On copper, tiered CALPHAD screening still won, and money, not capacity, was the limit.
+
+28
+00:13:11,300 --> 00:13:36,170
+Against a conventional lab, to the halfway target, with the automated lab stocked and the conventional lab ordering as it goes. With the same policy in both labs: no speed-up on aluminium, and 3.8 times sooner on copper. Against a lab run by rule of thumb: at least 4.0 times sooner on aluminium, and no factor on copper. How much of any factor is the stock, round three did not measure.
+
+29
+00:13:37,300 --> 00:13:49,370
+With the equipment included, reaching the first target cost 0.9 times the conventional lab's cost for aluminium, and 1.7 times for copper. Both intervals include one.
+
+30
+00:13:53,300 --> 00:14:14,930
+Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. The atomizer's rates, station times and fees, the stock on the shelf and the spending plan are assumptions. It shows how a lab design and its policies interact in a model, not what the real lab will find.
+

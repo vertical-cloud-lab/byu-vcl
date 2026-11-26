@@ -1,0 +1,85 @@
+{
+ "title": "A simulated year of alloy discovery in an automated lab: round 3 (digital twin benchmark)",
+ "description": "A simulated benchmark, not lab results: two alloy-discovery campaigns replayed for a whole year in a digital twin of BYU's Vertical Cloud Lab design. FLAIME searches aluminium alloys for laser powder bed fusion and ONR copper alloys for blown-powder DED; both share one lab, one atomizer and one calendar. Round 3 of the twin: no cap on work in flight, decisions every simulated hour, one spending plan, interim immersion readings, pKGFN. Narrated by a synthetic voice: Kokoro v1.0 (open weights, run locally), its stock voice af_heart.\n\nWhat it found (12 simulated one-year runs per policy):\n- Aluminium: time-aware BOFN and pKGFN reached the halfway target on day 96 and day 83 (11 and 10 of 12 runs) and finished at 0.73 and 0.71. A metallurgist's heuristic reached the best existing alloy's score first (day 24) and then stalled.\n- Copper: tiered CALPHAD screening still finished ahead (0.69 against 0.58 for BOFN and 0.61 for pKGFN) and reached the halfway target on day 148 (10 of 12 runs). Copper was limited by money, not capacity: with three times the copper money, BOFN and pKGFN gained 0.14 and 0.08 (4 runs each) and drew level on the final alloy.\n\nAgainst a conventional lab, to the halfway target (a stocked automated lab, one-year runs, against a conventional lab ordering metal as it goes, three-year runs). The same policy in both labs: copper 3.8x sooner with tiered screening (95% interval 1.8 to 6.0; 10 of 12 runs against 9 of 12), and no speed-up on aluminium with the heuristic (1 of 12 runs against 6 of 12). Against a conventional lab run by rule of thumb: aluminium at least 4.0x sooner with pKGFN (the conventional lab got there in 6 of 12 runs, so this is a lower bound), and no factor on copper (4 of 12 runs against 1 of 12). Not run in round 3: both labs ordering metal as they go (so the stock's share of a factor is not known), and BOFN or pKGFN in the conventional lab.\n\nCost, equipment included: reaching the first target cost 0.9x the conventional lab's cost for aluminium (95% interval 0.5 to 1.8) and 1.7x for copper (0.0 to 2.1). A demonstrated alloy cost $35k against $8.0k while the two campaigns carry the lab alone; they use 7% of its capacity.\n\nThe targets: the first is the best existing alloy on this synthetic benchmark (AlSi10Mg 0.42, C95800 NAB 0.56); one random design in 12 beats it. The halfway target (0.64, 0.66) is halfway from there to the best alloy the twin's own search found.\n\nThe replay is seed 0 of 12 of time-aware BOFN, the one seed whose event log round 3 kept: the median seed for aluminium (halfway target on day 96), and one of the 4 seeds that never reach copper's first target (the median seed gets there on day 221).\n\nThe atomizer runs at design targets, not demonstrated rates: in the twin, 16 start slots a week (about 10 used) and a 6% base chance of failure; the lab's own record so far is 1.7 runs a week, with problems in 8 of 10 runs. Real: the lab design's 3-D renders, the atomizer footage, the search spaces, USGS prices. Simulated: the alloys, every measurement (modelled noise not yet calibrated on the lab's instruments) and every result.\n\nThe wording follows the audit of round 2's video: https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/293\nRound 2's video: https://www.youtube.com/watch?v=Pz7hxqfODmE\n\nCode: https://github.com/vertical-cloud-lab/byu-vcl/tree/01afb5e/vertical-lab/twin (video: twin/video; script: twin/video/narration3.json; write-up: notes/twin_round3.md, notes/twin_video.md)\nPR: https://github.com/vertical-cloud-lab/byu-vcl/pull/394\n\nChapters\n0:00 What is simulated: the lab and two search spaces\n0:54 Round 3: what changed in the twin\n1:16 The function networks\n3:01 The figures we track, and the two targets\n4:09 The atomizer: design targets, not demonstrated rates\n4:34 The first alloy, start to finish\n5:54 Day by day: the lab up close, moved by the event log\n7:12 Week by week: the whole lab\n8:36 Month by month, to the end of the year\n10:34 Results\n12:54 The takeaway\n13:52 Notes: real, assumed, simulated\n",
+ "tags": [
+  "vertical cloud lab",
+  "BYU",
+  "self-driving lab",
+  "laboratory automation",
+  "digital twin",
+  "alloy development",
+  "aluminium alloys",
+  "copper alloys",
+  "laser powder bed fusion",
+  "directed energy deposition",
+  "Bayesian optimization",
+  "function networks",
+  "materials acceleration platform",
+  "simulated benchmark",
+  "Kardex Shuttle",
+  "MiR250",
+  "UR12e",
+  "narrated",
+  "pKGFN",
+  "BOFN",
+  "CALPHAD"
+ ],
+ "categoryId": "28",
+ "privacy": "public",
+ "notifySubscribers": false,
+ "file": "out/twin3/video/campaign_lab3d_narrated.mp4",
+ "seconds": 858.5,
+ "chapters": [
+  {
+   "stamp": "0:00",
+   "title": "What is simulated: the lab and two search spaces"
+  },
+  {
+   "stamp": "0:54",
+   "title": "Round 3: what changed in the twin"
+  },
+  {
+   "stamp": "1:16",
+   "title": "The function networks"
+  },
+  {
+   "stamp": "3:01",
+   "title": "The figures we track, and the two targets"
+  },
+  {
+   "stamp": "4:09",
+   "title": "The atomizer: design targets, not demonstrated rates"
+  },
+  {
+   "stamp": "4:34",
+   "title": "The first alloy, start to finish"
+  },
+  {
+   "stamp": "5:54",
+   "title": "Day by day: the lab up close, moved by the event log"
+  },
+  {
+   "stamp": "7:12",
+   "title": "Week by week: the whole lab"
+  },
+  {
+   "stamp": "8:36",
+   "title": "Month by month, to the end of the year"
+  },
+  {
+   "stamp": "10:34",
+   "title": "Results"
+  },
+  {
+   "stamp": "12:54",
+   "title": "The takeaway"
+  },
+  {
+   "stamp": "13:52",
+   "title": "Notes: real, assumed, simulated"
+  }
+ ],
+ "commit": "01afb5e",
+ "placeholder": false,
+ "replay": "r3_vertical_lab_bofn3_s0.json"
+}
