@@ -1,0 +1,19 @@
+{
+  "sensor_data": {
+    "ch583": 58,
+    "ch670": 50,
+    "ch510": 175,
+    "ch410": 8,
+    "ch620": 51,
+    "ch470": 14,
+    "ch550": 184,
+    "ch440": 6
+  },
+  "command": {
+    "Y": 50,
+    "B": 50,
+    "R": 50
+  },
+  "experiment_id": "85c0c9a4-f37d-4aa0-9a9b-b6d37254b118",
+  "_label": "reseated_RYB50"
+}
