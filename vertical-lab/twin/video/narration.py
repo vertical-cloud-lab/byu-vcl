@@ -165,7 +165,8 @@ def marks(rec: dict) -> dict:
     """Named moments of the cut (s from its start) that lines can anchor on, from the modules' own timelines:
     dag.lane.<campaign>, dag.both, dag.collapse (dag_anim.Dag.T), dag.node.<campaign>.<node> (a card's arrival,
     Dag.node_t); replay.pov.<what> (day 1's first shot of a step),
-    replay.grid (the end of day 1), replay.whole_lab (the first view of the whole lab from above), replay.end."""
+    replay.grid (the end of day 1), replay.phase.<i>, replay.lab3d (the animated lab takes over), replay.from_above
+    (the first view of the whole lab from above), replay.whole_lab (the chapter of that name), replay.end."""
     from . import compose as C
     seg0 = {s["name"]: s["start_s"] for s in rec["segments"]}
     out = {f"{n}.start": t for n, t in seg0.items()}
@@ -181,12 +182,21 @@ def marks(rec: dict) -> dict:
     for s in tl.pov:
         out.setdefault(f"replay.pov.{s['what']}", seg0["replay"] + s["v0"])
         out.setdefault(f"replay.pov.{s['what']}.{s['station']}", seg0["replay"] + s["v0"])
-    out["replay.grid"] = seg0["replay"] + tl.t_pov
+    out["replay.grid"] = seg0["replay"] + tl.t_pov             # day 1 ends: the cameras (or the 3-D lab) take over
+    for i, t in enumerate(tl.phase_t):
+        out[f"replay.phase.{i}"] = seg0["replay"] + t
     whole = [t for t, title in tl.marks() if "whole lab" in title.lower()]
-    if not whole:                                       # by the replay's phases: the first view from above
-        whole = [t for t, p in zip(tl.phase_t, C.PHASES) if p[1] != "grid"]
-    if whole:
+    if whole:                                           # the chapter "Week by week: the whole lab"
         out["replay.whole_lab"] = seg0["replay"] + whole[0]
+    # the first picture of the whole lab from above: a birds-eye still ("be"), or the animated cut's 3-D lab seen from
+    # a camera on the whole floor (TWIN_VIDEO_LAB3D: plan, high, sw, se; "towers_c" is the Shuttles up close)
+    above = [t for t, p in zip(tl.phase_t, C.PHASES) if p[1] == "be" or (p[1] == "3d" and p[2] in
+                                                                         ("plan", "high", "sw", "se"))]
+    if above:
+        out["replay.from_above"] = seg0["replay"] + above[0]
+    lab3d = [t for t, p in zip(tl.phase_t, C.PHASES) if p[1] == "3d"]
+    if lab3d:                                           # the animated lab takes over from day 1's shots
+        out["replay.lab3d"] = seg0["replay"] + lab3d[0]
     out["replay.end"] = seg0["replay"] + tl.dur
     return {k: round(float(v), 2) for k, v in out.items()}
 
@@ -196,7 +206,10 @@ def place(rec: dict, mk: dict) -> list:
     plus at/offset; pushed later if the line before is still going. Returns rows with t, end, seg and warnings."""
     seg0 = {s["name"]: (s["start_s"], s["start_s"] + s["seconds"]) for s in rec["segments"]}
     rows = []
+    lab3d = os.environ.get("TWIN_VIDEO_LAB3D", "0") == "1"
     for ln in lines():
+        if ln.get("needs") == "lab3d" and not lab3d:          # a line about the animated lab, on the cut without it
+            continue
         if ln.get("mark"):
             if ln["mark"] not in mk:
                 rows.append(dict(ln, t=None, warn=f"no mark {ln['mark']}"))

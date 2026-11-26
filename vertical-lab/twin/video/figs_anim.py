@@ -28,7 +28,50 @@ EXPLAIN_DURATION = 62.0
 RESULTS_DURATION = 90.0
 # the narrated cut (compose.NARRATE): the takeaway's three lines take 50 s, and the captions say what the voice says
 NARRATED = os.environ.get("TWIN_VIDEO_NARRATION", "0") == "1"
-TAKEAWAY_DURATION = 51.0 if NARRATED else 15.0
+TAKEAWAY_DURATION = 73.0 if NARRATED else 15.0       # narrated: four lines, the card built up as they're said
+
+
+# ------------------------------------------------------------------ the narrated cut's numbers (DAL audit, PR 293 §4)
+_AUD: dict = {}
+
+
+def audit_numbers() -> dict:
+    """What the narrated cut adds on screen, after DAL's audit of the video (digital-alloy-lab PR 293): aluminium's
+    factor with both labs ordering metal as they go (bench2_summary.json's stock runs against the conventional lab,
+    twin.accel as econ_summary.json computes the headline), copper over all 24 automated seeds, and the share of random
+    designs that beat the target (oracle.json)."""
+    if _AUD:
+        return _AUD
+    import json
+    try:
+        from twin import accel as AC
+        E = json.loads((D.OUT2 / "bench2_summary.json").read_text())["experiments"]
+        T = D.target()
+
+        def cur(exp, key, c):
+            g = E[exp][key]
+            hz = float(g["cfg"].get("days") or g["cfg"].get("horizon_days") or 365)
+            return [dict(curve=x, horizon_days=hz) for x in g["campaigns"][c]["curves"]]
+        a = AC.acceleration_factor(cur("conventional", "proposed_bofn_stock-lean", "flaime_al"),
+                                   cur("stock", "vertical_lab_bofn_stock-lean", "flaime_al"), T["flaime_al"], "days",
+                                   n_boot=2000, seed=0)
+        _AUD["lean_af"] = dict(af=a["af"], lo=a["lo"], hi=a["hi"], days_new=a["median_new"], days_ref=a["median_ref"])
+
+        def fin(key):
+            v = []
+            for exp in ("main", "cu_seeds"):
+                v += [x[-1][2] if x else 0.0 for x in E[exp][key]["campaigns"]["onr_cu"]["curves"]]
+            return float(np.mean(v)), len(v)
+        _AUD["cu24"] = dict(tiered=fin("vertical_lab_tiered"), blend=fin("vertical_lab_bofn_blend"),
+                            bofn=E["main"]["vertical_lab_bofn"]["campaigns"]["onr_cu"]["best_mean"],
+                            random=E["main"]["vertical_lab_random"]["campaigns"]["onr_cu"]["best_mean"])
+        O = json.loads((D.OUT2 / "oracle.json").read_text())
+        _AUD["frac_random"] = min(O[c]["random_default_process"]["frac_above_sota"] for c in D.CAMPAIGNS)
+    except Exception as e:                              # noqa: BLE001
+        print("audit_numbers:", e)
+    return _AUD
+
+
 DAG_BOX = (24, 860, 820, 200)            # x, y, w, h at 1920 x 1080: the docked DAG overlay's corner, kept empty
 
 STATION_SHORT = {
@@ -463,7 +506,9 @@ class PlotPanel:
 # ================================================================================================= the explainer
 EXPLAIN_CAPTIONS = [
     (0.0, 11.0, "Best so far: the highest utility of any alloy tested yet, here FLAIME's automated lab over the year."),
-    (11.0, 19.0, "The target: the state of the art, the best of the reference alloys."),
+    (11.0, 19.0, "The target: the state of the art, the best of the reference alloys." if not NARRATED else
+     "The target: the best reference alloy's score on the twin's synthetic alloy model. One random design in "
+     f"{round(1 / max(1e-6, audit_numbers().get('frac_random', 1 / 12)))} beats it."),
     (19.0, 28.0, "The same curve against the money spent: powder, builds, tests and machine time."),
     (28.0, 36.0, "Grey, dashed: the conventional lab, the same policy with partner and core facilities."),
     (36.0, 50.0, "Read off where each first reaches the target: X = days conventional / days automated, "
@@ -488,9 +533,12 @@ def _header(d, title, caps, t, sub_y=112, total=None):
     total = caps[-1][1] if total is None else total
     k = min(St.ramp(t, a, a + 0.6) if a > 0 else 1.0, 1.0 - St.ramp(t, b - 0.4, b) if b < total else 1.0)
     col = St.mix(St.BG, St.INK, k)
-    f = St.font(28)
+    size = 28
+    while size > 22 and len(St.wrap(s, St.font(size), px(1760))) > 2:     # a long caption: smaller, never cut
+        size -= 1
+    f = St.font(size)
     for i, ln in enumerate(St.wrap(s, f, px(1760))[:2]):
-        d.text((px(80), px(sub_y) + i * px(38)), ln, font=f, fill=col)
+        d.text((px(80), px(sub_y) + i * px(size * 38 / 28)), ln, font=f, fill=col)
 
 
 def _box(b):
@@ -755,13 +803,27 @@ def _leaders() -> str:
         return ""
 
 
+def _results_lead() -> str:
+    """The narrated cut's first results caption: the run counts and the leaders, as the voice says them (DAL audit,
+    PR 293 §4: "12 one-year automated runs and 12 three-year conventional runs"; copper over 24 seeds)."""
+    a = audit_numbers().get("cu24")
+    if not a or not _leaders():
+        return ("One twin-year per run, both campaigns at once: the automated lab against the conventional lab, "
+                "for each policy.")
+    return ("12 one-year automated and 12 three-year conventional runs per policy. BOFN finished highest on aluminium; "
+            f"on copper, tiered CALPHAD screening finished ahead of BOFN with blend screening ({a['tiered'][0]:.2f} "
+            f"against {a['blend'][0]:.2f} over {a['tiered'][1]} seeds), and plain BOFN did no better than random "
+            f"({a['bofn']:.2f} against {a['random']:.2f}).")
+
+
+# the parts' times: the narrated cut gives the ratios 24 s (its line takes 22) and the cost per experiment 16
+RES_T = (0.0, 26.0, 50.0, 66.0, RESULTS_DURATION) if NARRATED else (0.0, 26.0, 46.0, 66.0, RESULTS_DURATION)
 RESULTS_CAPTIONS = [
-    (0.0, 26.0, ("One twin-year per run, both campaigns at once, for each policy." + _leaders()) if NARRATED and
-     _leaders() else "One twin-year per run, both campaigns at once: the automated lab against the conventional lab, "
-                     "for each policy."),
-    (26.0, 46.0, "How much sooner, and for how much less, each campaign reached the state of the art."),
-    (46.0, 66.0, "Cost per experiment."),
-    (66.0, RESULTS_DURATION, "Utilization, and the capacity left over for outside users (a cloud user facility)."),
+    (RES_T[0], RES_T[1], _results_lead() if NARRATED else
+     "One twin-year per run, both campaigns at once: the automated lab against the conventional lab, for each policy."),
+    (RES_T[1], RES_T[2], "How much sooner, and for how much less, each campaign reached the state of the art."),
+    (RES_T[2], RES_T[3], "Cost per experiment."),
+    (RES_T[3], RES_T[4], "Utilization, and the capacity left over for outside users (a cloud user facility)."),
 ]
 POLICY_ORDER = ["cost_aware", "tiered", "random", "cost_aware_tc", "tiered_tc", "cost_aware_scaleup", "bofn", "pkgfn"]
 
@@ -774,8 +836,8 @@ def results_frame(t: float, captions: bool = True) -> np.ndarray:
         _header(d, "Results", RESULTS_CAPTIONS, t)
     else:
         d.text((px(80), px(44)), "Results", font=St.font(44, bold=True), fill=St.INK)
-    parts = [(0.0, 26.0, _res_curves), (26.0, 46.0, _res_ratios), (46.0, 66.0, _res_cost),
-             (66.0, RESULTS_DURATION, _res_util)]
+    parts = [(RES_T[0], RES_T[1], _res_curves), (RES_T[1], RES_T[2], _res_ratios), (RES_T[2], RES_T[3], _res_cost),
+             (RES_T[3], RES_T[4], _res_util)]
     for a, b, fn in parts:
         k = min(St.ramp(t, a, a + 0.6) if a > 0 else 1.0,
                 1.0 - St.ramp(t, b - 0.5, b) if b < RESULTS_DURATION else 1.0)
@@ -916,6 +978,20 @@ def _res_ratios(d, lay, t, ctx):
                  f"{fmt_days(h.get('days_conv'))} conventional; {_ci(h.get('accel_lo'), h.get('accel_hi'))}",
                  (("at least " if h.get("accel_at_least") else "") + fmt_x(h.get("accel"))) if h.get("accel")
                  else "pending", "times faster")]
+        if NARRATED and h.get("accel"):
+            # DAL audit (PR 293 §4): the conventional lab's copper median is its last hit (6 of 12 runs), so a lower
+            # bound; aluminium's factor is mostly the automated lab's stock on the shelf
+            n_c, hc = h.get("n_conv", 0), h.get("hit_conv") or 0.0
+            lean = audit_numbers().get("lean_af")
+            if hc < 1.0:
+                rows[0] = ("time to the target, X", f"{fmt_days(h.get('days_auto'))} automated, at least "
+                           f"{fmt_days(h.get('days_conv'))} conventional ({round(hc * n_c)} of {n_c} runs got there); "
+                           f"{_ci(h.get('accel_lo'), h.get('accel_hi'))}", "≥ " + fmt_x(h.get("accel")), "times faster")
+            elif lean:
+                rows[0] = ("time to the target, X", f"{fmt_days(h.get('days_auto'))} automated, "
+                           f"{fmt_days(h.get('days_conv'))} conventional; {_ci(h.get('accel_lo'), h.get('accel_hi'))}; "
+                           f"both labs ordering metal as they go: {lean['af']:.1f}x ({lean['lo']:.1f} to "
+                           f"{lean['hi']:.1f})", fmt_x(h.get("accel")), "times faster")
         for key, lab in D.COST_BASES:
             r = costs.get(key)
             det = (f"{fmt_money(r.get('median_new'))} automated, {fmt_money(r.get('median_ref'))} conventional; "
@@ -937,10 +1013,17 @@ def _res_ratios(d, lay, t, ctx):
         ha, hc = h.get("hit_auto"), h.get("hit_conv")
         foot = (f"reached the target in {round((ha or 0) * 100)} % of {n_a} automated and {round((hc or 0) * 100)} % "
                 f"of {n_c} conventional twin-years; target utility {ctx.T[camp]:.2f}")
+        if NARRATED:
+            foot = (f"reached the target in {round((ha or 0) * n_a)} of {n_a} one-year automated runs and "
+                    f"{round((hc or 0) * n_c)} of {n_c} three-year conventional runs; target utility {ctx.T[camp]:.2f}")
         for jj, ln in enumerate(St.wrap(foot, St.font(16), px(790))[:2]):
             d.text((x0 + px(28), px(904) + jj * px(22)), ln, font=St.font(16), fill=ink2)
     cmp_ = ctx.E.get("comparison") or "benchmark curves"
-    d.text((px(80), px(990)), f"source: econ_summary.json, {cmp_}", font=St.font(17), fill=St.INK2)
+    src = f"source: econ_summary.json, {cmp_}"
+    if NARRATED:
+        src += ("; the automated lab stocked, the conventional lab ordering as it goes; both ordering as they go: "
+                "bench2_summary.json's stock runs")
+    d.text((px(80), px(990)), src, font=St.font(17), fill=St.INK2)
 
 
 CPE_COLORS = {"capex": St.hexrgb("#9887ef"), "service": St.hexrgb("#00a888"), "utilities": St.hexrgb("#d28e05"),
@@ -1060,8 +1143,136 @@ def _cmp_words(c) -> str:
 
 
 # =================================================================================================== takeaway
+def _take_at() -> dict:
+    """When each takeaway line starts (s into the segment), from twin/video/narration.json: the narrated card shows
+    each part as the voice reaches it."""
+    import json
+    out = dict(take1=1.0, take1b=21.2, take2=33.2, take3=58.2)
+    try:
+        for ln in json.loads((D.HERE / "twin" / "video" / "narration.json").read_text())["lines"]:
+            if ln.get("seg") == "takeaway" and ln["id"] in out:
+                out[ln["id"]] = float(ln.get("at", out[ln["id"]]))
+    except Exception:                                   # noqa: BLE001
+        pass
+    return out
+
+
+def _x1(v) -> str:
+    return "pending" if v is None or not math.isfinite(v) else f"{v:.1f}x"
+
+
+def _x2(v) -> str:
+    """A multiple with the second decimal only where it changes the number: 2.0x, 1.15x (as the narration says them)."""
+    if v is None or not math.isfinite(v):
+        return "pending"
+    return f"{v:.1f}x" if abs(round(v, 2) - round(v, 1)) < 1e-9 else f"{v:.2f}x"
+
+
+def _rng(lo, hi) -> str:
+    f = (lambda v: "unbounded" if v is None or not math.isfinite(v) else (f"{v:.0f}" if v == 0 else f"{v:.1f}"))
+    return f"{f(lo)} to {f(hi)}"
+
+
+def _takeaway_narrated(t: float) -> np.ndarray:
+    """The narrated cut's takeaway, reworded as DAL's audit suggests (digital-alloy-lab PR 293 §4): what was compared
+    (a stocked automated lab against a conventional lab that orders metal as it goes), aluminium's factor with both
+    ordering as they go, copper's as the lower bound it is, the cost on one basis with the equipment included, the
+    heuristic comparison and what the target means; each part appears as the narration reaches it."""
+    ctx = context()
+    E = ctx.E
+    acc = (E.get("raw") or {}).get("acceleration") or {}
+    nm_h = next((n for n in acc if n.startswith(f"vertical lab + {ctx.pol} vs") and n.endswith("+ heuristic")), None)
+    heur = {c: ((acc.get(nm_h) or {}).get(c) or {}).get("compare") or {} for c in D.CAMPAIGNS} if nm_h else {}
+    aud = audit_numbers()
+    ta = _take_at()
+    im = Image.new("RGB", (St.W, St.H), St.BG)
+    d = ImageDraw.Draw(im)
+
+    def ink_at(t0, col=St.INK, dur=0.8, bg=St.BG):
+        return St.mix(bg, col, St.ramp(t, t0, t0 + dur))
+    head = ("In this simulated benchmark, a stocked automated lab reached an alloy better than the reference alloy "
+            "sooner than a conventional lab that orders metal as it goes")
+    f_head = St.font(32, bold=True)
+    for i, ln in enumerate(St.wrap(head, f_head, px(1720))[:2]):
+        d.text((St.W / 2, px(52) + i * px(44)), ln, font=f_head, fill=ink_at(0.2), anchor="ma")
+    for i, camp in enumerate(D.CAMPAIGNS):
+        h = ctx.Hd.get(camp, {})
+        costs = h.get("costs") or {}
+        cx = St.W / 2 + (i - 0.5) * px(860)
+        cy = px(170)
+        k = St.ramp(t, 0.6 + 0.5 * i, 1.4 + 0.5 * i)
+        ik, ik2 = St.mix(St.BG, St.INK, k), St.mix(St.BG, St.INK2, k)
+        d.rounded_rectangle((cx - px(400), cy, cx + px(400), cy + px(500)), radius=px(18),
+                            fill=St.mix(St.BG, St.SURF, k), outline=St.mix(St.BG, St.CAMP[camp], k), width=px(3))
+        d.text((cx, cy + px(20)), St.CAMP_NAME[camp], font=St.font(32, bold=True), fill=ik, anchor="ma")
+        d.text((cx, cy + px(62)), St.CAMP_LONG[camp].split(": ", 1)[-1], font=St.font(21), fill=ik2, anchor="ma")
+        lower = (h.get("hit_conv") or 0.0) < 1.0
+        big = ("≥ " if lower else "") + _x1(h.get("accel"))
+        d.text((cx, cy + px(96)), big, font=St.font(80, bold=True), fill=ik, anchor="ma")
+        d.text((cx, cy + px(186)), "sooner", font=St.font(24), fill=ik2, anchor="ma")
+        n_c, hc = h.get("n_conv", 0), h.get("hit_conv") or 0.0
+        if lower:
+            det = (f"{fmt_days(h.get('days_auto'))} against at least {fmt_days(h.get('days_conv'))}: the conventional "
+                   f"lab got there in {round(hc * n_c)} of {n_c} three-year runs")
+        else:
+            det = (f"{fmt_days(h.get('days_auto'))} against {fmt_days(h.get('days_conv'))}; 95 % CI "
+                   f"{_rng(h.get('accel_lo'), h.get('accel_hi'))}")
+        for jj, ln in enumerate(St.wrap(det, St.font(19), px(740))[:2]):
+            d.text((cx, cy + px(222) + jj * px(25)), ln, font=St.font(19), fill=ik2, anchor="ma")
+        lean = aud.get("lean_af")
+        if camp == "flaime_al" and lean:
+            note = f"Both labs ordering metal as they go: {lean['af']:.1f}x ({_rng(lean['lo'], lean['hi'])})"
+        else:
+            note = "The automated lab also screens powder blends first (BOFN with blend screening)"
+        for jj, ln in enumerate(St.wrap(note, St.font(20, bold=True), px(740))[:2]):
+            d.text((cx, cy + px(280) + jj * px(26)), ln, font=St.font(20, bold=True),
+                   fill=ink_at(ta["take1b"], bg=St.SURF), anchor="ma")
+        d.line((cx - px(360), cy + px(338), cx + px(360), cy + px(338)), fill=St.mix(St.BG, St.RULE, k), width=px(1))
+        full, cash = costs.get("full_alone") or {}, costs.get("cash") or {}
+        kc = ta["take2"]
+        d.text((cx, cy + px(352)), _x2(full.get("ratio")), font=St.font(56, bold=True), fill=ink_at(kc, bg=St.SURF),
+               anchor="ma")
+        d.text((cx, cy + px(420)), "the cost, equipment included", font=St.font(22),
+               fill=ink_at(kc, St.INK2, bg=St.SURF), anchor="ma")
+        d.text((cx, cy + px(454)), f"95 % CI {_rng(full.get('lo'), full.get('hi'))}  ·  counting only the campaigns' "
+               f"spending: {_x1(cash.get('ratio'))}", font=St.font(18), fill=ink_at(kc, St.INK2, bg=St.SURF),
+               anchor="ma")
+    fs = [ctx.Hd.get(c, {}).get("costs", {}).get("full_shared") or {} for c in D.CAMPAIGNS]
+    shared = " and ".join(fmt_pct(x.get("ratio")) for x in fs)
+    cost_note = ("With the equipment included, it costs less than the conventional lab only for copper, and only if "
+                 "outside users rent its idle hours, which this model assumes and does not show "
+                 f"(full cost with outside users: {shared}).")
+    for i, ln in enumerate(St.wrap(cost_note, St.font(21), px(1720))[:2]):
+        d.text((St.W / 2, px(690) + i * px(29)), ln, font=St.font(21), fill=ink_at(ta["take2"] + 8.0, St.INK2),
+               anchor="ma")
+    if heur:
+        fa, fc = heur.get("flaime_al", {}), heur.get("onr_cu", {})
+        da, dc = fa.get("days") or {}, fc.get("days") or {}
+        opa = ((fa.get("cost") or {}).get("operating, alone") or {}).get("ratio")
+        hl = ("Against a conventional lab run by a metallurgist's rules of thumb: no faster on aluminium "
+              f"({da.get('af', float('nan')):.2f}x, {_rng(da.get('lo'), da.get('hi'))}) at {_x1(opa)} the operating "
+              f"cost; {_x1(dc.get('af'))} faster on copper ({_rng(dc.get('lo'), dc.get('hi'))}).")
+        for i, ln in enumerate(St.wrap(hl, St.font(22, bold=True), px(1720))[:2]):
+            d.text((St.W / 2, px(768) + i * px(30)), ln, font=St.font(22, bold=True), fill=ink_at(ta["take3"]),
+                   anchor="ma")
+    fr_ = aud.get("frac_random")
+    refs = D.target_refs() if hasattr(D, "target_refs") else {}
+    tgt = (f"The target is the reference alloy's score on the twin's synthetic alloy model ({ctx.T['flaime_al']:.2f}, "
+           f"{ctx.T['onr_cu']:.2f}). One random design in {round(1 / fr_) if fr_ else 12} beats it, so reaching it "
+           "shows how fast a lab tests its first alloys, not a discovery.")
+    for i, ln in enumerate(St.wrap(tgt, St.font(19), px(1720))[:2]):
+        d.text((St.W / 2, px(852) + i * px(26)), ln, font=St.font(19), fill=ink_at(2.0, St.INK2), anchor="ma")
+    foot = ("A synthetic benchmark: simulated campaigns in a digital twin, not lab results. 12 one-year automated and "
+            "12 three-year conventional runs per policy.")
+    for i, ln in enumerate(St.wrap(foot, St.font(22, bold=True), px(1720))[:2]):
+        d.text((St.W / 2, px(930) + i * px(30)), ln, font=St.font(22, bold=True), fill=ink_at(2.5), anchor="ma")
+    return np.asarray(im)
+
+
 def takeaway_frame(t: float) -> np.ndarray:
     """The takeaway card; everything above y = 860 so the docked DAG's corner stays clear."""
+    if NARRATED:
+        return _takeaway_narrated(t)
     ctx = context()
     im = Image.new("RGB", (St.W, St.H), St.BG)
     d = ImageDraw.Draw(im)

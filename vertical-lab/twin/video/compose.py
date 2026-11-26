@@ -698,11 +698,39 @@ def replay_frame(t: float) -> np.ndarray:
                                                           "waiting (results, budget or the calendar)"))
     St.paste(fr, im, px(1446), px(186), k_right)
     St.paste(fr, S("plots").draw(t_h), px(1296), px(640), k_right)
+    if NARRATE:                                    # DAL's audit (PR 293 §4): say which seed this is, all the way
+        St.paste(fr, seed_badge(), px(866), px(1014))
     dag = S("dag")
     lit = {k: dag.intensity(v) for k, v in R.lit(t_h, span).items()}
     x, y, _, _ = dag.DOCK
     St.paste(fr, dag.overlay(lit, t=t), px(x), px(y))
     return tag_placeholder(fr)
+
+
+_BADGE: dict = {}
+
+
+def seed_badge() -> Image.Image:
+    """The replayed run among its twelve: the day its aluminium campaign first reaches the target, against the median
+    seed's (econ_summary.json), as the narration says it."""
+    if "im" not in _BADGE:
+        R, B = S("R"), S("B")
+        tg = B["target"]["flaime_al"]
+        cur = R.curve_upto("flaime_al", R.horizon_h, "days")
+        hit = next((x for x, y in cur if y >= tg - 1e-9), None)
+        med = ((S("E").get("accel") or {}).get("flaime_al") or {}).get("median_new")
+        n = ((S("E").get("accel") or {}).get("flaime_al") or {}).get("n_new") or 12
+        txt = (f"One seed of {n}: here aluminium reaches the target on day {hit:.0f}; the median seed takes "
+               f"{med:.0f} days" if hit is not None and med else f"One seed of {n}")
+        f = St.font(15)
+        lines = St.wrap(txt, f, px(400))[:2]
+        w, h = px(420), px(12) + px(20) * len(lines)
+        im, d = St.layer(w, h)
+        d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(8), fill=St.SURF + (int(255 * St.PANEL_A),))
+        for i, ln in enumerate(lines):
+            d.text((px(10), px(6) + i * px(20)), ln, font=f, fill=St.INK2)
+        _BADGE["im"] = im
+    return _BADGE["im"]
 
 
 def _phase_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
@@ -741,7 +769,7 @@ def takeaway_frame(t: float) -> np.ndarray:
     return tag_placeholder(np.array(S("figs").takeaway_frame(t), copy=True))
 
 
-NOTES_DURATION = 19.0 if NARRATE else 15.0          # the closing line takes 17 s
+NOTES_DURATION = 26.0 if NARRATE else 15.0          # the closing line takes 24 s
 NOTES = [
     ("Real", ["The lab's design: PR 318's 3-D renders, makers' published sizes",
               "The atomizer footage and photos: the lab's own runs (DAL #159, #219)",
@@ -759,13 +787,30 @@ NOTES = [
 ]
 
 
+# the narrated cut's notes, with what DAL's audit (digital-alloy-lab PR 293 §4) found missing from "Assumed" and its
+# wording for the instruments' noise
+NOTES_NARRATED = [
+    NOTES[0],
+    ("Assumed", ["Station times, fees and calendars (twin/facility.py)",
+                 "Outside facilities' booking and turnaround times",
+                 "Outside users' demand for the lab's spare hours",
+                 "The automated lab's feedstock stock on day 0; the atomizer's failure rate and yield; who staffs the "
+                 "automated lab",
+                 "Each assumption is marked in notes/twin.md"]),
+    ("Simulated", ["The alloys' properties: textbook forms calibrated on reference alloys",
+                   "Every measurement, with modelled noise not yet calibrated on the lab's instruments",
+                   "Both campaigns, every booking and every result: the twin's event log",
+                   "The optimizer's choices (twin/policies.py, twin/opt/)"]),
+]
+
+
 def notes_frame(t: float) -> np.ndarray:
     fr = St.blank()
     im, d = St.layer()
     d.text((px(80), px(70)), "A synthetic benchmark", font=St.font(48, bold=True), fill=St.INK)
     d.text((px(80), px(138)), "What is real, what is assumed and what is simulated in this video",
            font=St.font(26), fill=St.INK2)
-    for i, (head, items) in enumerate(NOTES):
+    for i, (head, items) in enumerate(NOTES_NARRATED if NARRATE else NOTES):
         x = px(80) + i * px(600)
         k = St.ramp(t, 0.4 + 0.5 * i, 1.2 + 0.5 * i)
         d.text((x, px(230)), head, font=St.font(32, bold=True), fill=St.mix(St.BG, St.INK, k))
@@ -1073,10 +1118,18 @@ def narrated_preview(seconds: float = 60.0) -> dict:
     ends = {p["id"]: p["end"] for p in placed}
     a_end = max(seg0["simulated"] + SIM_LAB, ends.get("open2", 0.0) + 0.8)       # the opening: to the lab footage's end
     opening = [("title", 0.0, seg0["simulated"]), ("simulated", 0.0, a_end - seg0["simulated"])]
-    t_lab = mk.get("replay.whole_lab", seg0["replay"] + 158.0)
-    b0 = t_lab - 2.5
-    b1 = min(t_lab + max(0.0, seconds - a_end - 2.5), rec["total_s"])
-    slices = opening + [("replay", b0 - seg0["replay"], b1 - b0)]
+    r0 = seg0["replay"]
+    if "replay.lab3d" in mk:                            # the animated cut: the 3-D lab taking over, then from above
+        t1, t2 = mk["replay.lab3d"], mk["replay.from_above"]
+        e1 = ends.get("lab0", t1 + 13.0) + 1.0
+        slices = opening + [("replay", t1 - 0.7 - r0, e1 - t1 + 0.7)]
+        used = a_end + (e1 - t1 + 0.7)
+        slices.append(("replay", t2 - 1.2 - r0, max(4.0, seconds - used)))
+    else:
+        t_lab = mk.get("replay.from_above", mk.get("replay.whole_lab", r0 + 158.0))
+        b0 = t_lab - 2.5
+        b1 = min(t_lab + max(0.0, seconds - a_end - 2.5), rec["total_s"])
+        slices = opening + [("replay", b0 - r0, b1 - b0)]
     pieces = [(n, a, a + d, TMP / f"npreview_{i:02d}_{n}.mp4") for i, (n, a, d) in enumerate(slices)]
     workers = int(os.environ.get("TWIN_VIDEO_WORKERS", "2"))
     preset = os.environ.get("TWIN_VIDEO_PRESET", "medium")
