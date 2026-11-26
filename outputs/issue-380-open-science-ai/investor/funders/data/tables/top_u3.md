@@ -17,9 +17,9 @@
 | Samsung | corporate / strategic | 10 | 3 | AI21 Labs, Mistral AI, ScyllaDB, Arcee AI, ClearML, H Company, Liquid AI, MosaicML … |
 | Coatue | growth, crossover or PE | 9 | 5 | Confluent, Databricks, Kubecost, Nomic AI, Starburst, Airbyte, Dagster Labs, Together AI … |
 | Redpoint Ventures | venture firm | 9 | 6 | Chainguard, Couchbase, Materialize, Preset, Solo.io, Sourcegraph, Dremio, Mistral AI … |
+| Dell Technologies Capital | corporate / strategic | 8 | 2 | Tetrate, Yugabyte, JFrog, Mirantis, Prime Intellect, Red Hat, SpringSource / Pivotal Software, Treeverse |
 | SV Angel | venture firm | 8 | 0 | Airbyte, Buoyant, FoundationDB, Mesosphere, Mistral AI, Nicira, Nomic AI, Together AI |
 | Battery Ventures | venture firm | 7 | 1 | Chef Software, Bitwarden, Cumulus Networks, Databricks, JFrog, Voltron Data, Weaviate |
-| Dell Technologies Capital | corporate / strategic | 7 | 2 | Tetrate, Yugabyte, JFrog, Prime Intellect, Red Hat, SpringSource / Pivotal Software, Treeverse |
 | Goldman Sachs | growth, crossover or PE | 7 | 2 | DataStax, Sonatype, Acquia, Databricks, Mirantis, SugarCRM, Sysdig |
 | Meritech Capital Partners | venture firm | 7 | 3 | Cloudera, DataStax, ForgeRock, Astronomer, MuleSoft, Sourcefire, Yugabyte |
 | Amplify Partners | venture firm | 6 | 1 | OctoML, Chainguard, Chef Software, Dagster Labs, Outerbounds, dbt Labs |

@@ -18,6 +18,7 @@
 | Clem Delangue | person (angel) | 2 | 0 | Adap, marimo |
 | Coatue | growth, crossover or PE | 2 | 1 | SiFive, GitLab Inc. |
 | D1 Capital Partners | growth, crossover or PE | 2 | 0 | GitLab Inc., SiFive |
+| Eight Roads | venture firm | 2 | 1 | ScyllaDB, Monospace Inc. |
 | Felicis | venture firm | 2 | 1 | Adap, Pipedream |
 | Initialized Capital | venture firm | 2 | 1 | Trilobio, Robocurve |
 | Intel Capital | corporate / strategic | 2 | 0 | SiFive, VA Linux Systems |
@@ -35,8 +36,7 @@
 | AFW Partners | venture firm | 1 | 1 | Tenstorrent |
 | AIX Ventures | venture firm | 1 | 1 | marimo |
 | ARK Invest | growth, crossover or PE | 1 | 0 | Tenstorrent |
-| Accenture Ventures | venture firm | 1 | 0 | ForgeRock |
+| Accenture Ventures | corporate / strategic | 1 | 0 | ForgeRock |
 | Accurafy4 | venture firm | 1 | 0 | BCN3D Technologies |
 | Adage Capital Management | growth, crossover or PE | 1 | 0 | GitLab Inc. |
 | Adrian Bowyer | person (angel) | 1 | 0 | MakerBot Industries |
-| Agostinelli Group | person (angel) | 1 | 0 | Tenstorrent |

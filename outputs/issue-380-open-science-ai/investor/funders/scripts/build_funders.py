@@ -54,6 +54,7 @@ UNCONFIRMED = re.compile(r"(in talks|potential investors?|rumou?r|not yet closed
                          r"not officially confirmed|"
                          r"in progress per sources|not confirmed by (the )?company|aggregator snippets only|"
                          r"reported by bloomberg, not confirmed)", re.I)
+NOT_A_FUNDER = {"business angels", "angel investors", "individual investors", "private investors", "strategic investors"}
 EXIT = re.compile(r"(acqui|buyout|buy-out|take[- ]private|taken private|\bipo\b|initial public offering|\bmerger\b|"
                   r"merged with|sold to|tender offer|\bspac\b|went public|delist|public offering|\blisting\b)", re.I)
 HEUR = [
@@ -219,6 +220,9 @@ def main():
         for r in rounds:
             lead = [x for x in r["lead"].split(" | ") if x.strip()]
             oth = [x for x in r["investors"].split(" | ") if x.strip()]
+            # group labels that name no funder ("business angels") are not funders
+            lead = [x for x in lead if key_name(x) not in NOT_A_FUNDER]
+            oth = [x for x in oth if key_name(x) not in NOT_A_FUNDER]
             drop = [x for x in lead + oth if (k, x.strip(), r["source"].strip()) in dropped]
             lead = [x for x in lead if x not in drop]
             oth = [x for x in oth if x not in drop]

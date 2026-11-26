@@ -32,6 +32,7 @@
 | David Cramer | person (angel) | 9 | 0 | Astral, FastAPI Labs, Mastra, Million, Pydantic Services, Strapi, Supermemory, VoidZero |
 | Samsung | corporate / strategic | 9 | 0 | Activeloop, ClearML, H Company, Liquid AI, Tetrate, Traceloop, Webiny |
 | Khosla Ventures | venture firm | 8 | 7 | GitLab Inc., Imply, Onyx, Opentrons Labworks, Oven, Sakana AI |
+| Dell Technologies Capital | corporate / strategic | 8 | 5 | MinIO Inc., Mirantis, OpenObserve, Prime Intellect, Tetrate, Treeverse, Yugabyte |
 | Coatue | growth, crossover or PE | 8 | 4 | Dagster Labs, HTTPie, Kubecost, Nomic AI, Raycast, Supabase, Together AI, Voltron Data |
 | FirstMark | venture firm | 8 | 4 | Cockroach Labs, Daytona Platforms, H Company, Lago, SurrealDB Ltd |
 | SignalFire | venture firm | 8 | 4 | Budibase, CopilotKit, Invoke, Jitsu, Lago, ProjectDiscovery, SigNoz |
@@ -39,4 +40,3 @@
 | Nat Friedman | person (angel) | 8 | 2 | Chroma, Dagger, Deno Land Inc., EvolutionaryScale, Logseq Inc., Vercel, ggml.ai |
 | NVIDIA (incl. NVentures) | corporate / strategic | 8 | 1 | EvolutionaryScale, MindsDB, Prime Intellect, Radical AI, RadixArk, Reflection AI, Sakana AI, Together AI |
 | Felicis | venture firm | 7 | 7 | Adap, Browser Use, Entalpic, Letta, Meilisearch, Zylon, n8n |
-| Kleiner Perkins | venture firm | 7 | 7 | CodeSandbox, Nebula, Inc., Oven, Prisma Data, Inc., RudderStack, Teleport, Together AI |

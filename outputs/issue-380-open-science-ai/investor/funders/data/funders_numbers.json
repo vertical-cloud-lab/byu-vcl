@@ -11,10 +11,10 @@
   "round_records": 558,
   "rows_all": 602,
   "rows_not_counted": 18,
-  "links": 1560,
-  "funders": 951,
-  "funders_1": 740,
-  "funders_3plus": 113,
+  "links": 1557,
+  "funders": 944,
+  "funders_1": 731,
+  "funders_3plus": 114,
   "funders_5plus": 50,
   "funders_10plus": 12,
   "top10_share_of_links": 0.102,
@@ -95,13 +95,13 @@
   "rows_all": 249,
   "rows_not_counted": 5,
   "links": 392,
-  "funders": 329,
-  "funders_1": 291,
+  "funders": 328,
+  "funders_1": 289,
   "funders_3plus": 13,
   "funders_5plus": 1,
   "funders_10plus": 1,
   "top10_share_of_links": 0.107,
-  "top50_share_of_links": 0.288,
+  "top50_share_of_links": 0.291,
   "top15": [
    [
     "Kickstarter backers",
@@ -177,14 +177,14 @@
   "round_records": 493,
   "rows_all": 553,
   "rows_not_counted": 37,
-  "links": 1155,
-  "funders": 700,
-  "funders_1": 544,
+  "links": 1152,
+  "funders": 692,
+  "funders_1": 532,
   "funders_3plus": 75,
   "funders_5plus": 37,
   "funders_10plus": 15,
   "top10_share_of_links": 0.122,
-  "top50_share_of_links": 0.324,
+  "top50_share_of_links": 0.326,
   "top15": [
    [
     "Accel",
@@ -261,8 +261,8 @@
   "rows_all": 471,
   "rows_not_counted": 18,
   "links": 960,
-  "funders": 526,
-  "funders_1": 428,
+  "funders": 524,
+  "funders_1": 424,
   "funders_3plus": 41,
   "funders_5plus": 14,
   "funders_10plus": 2,
@@ -343,13 +343,13 @@
   "round_records": 1282,
   "rows_all": 1404,
   "rows_not_counted": 60,
-  "links": 3107,
-  "funders": 1671,
-  "funders_1": 1266,
-  "funders_3plus": 218,
-  "funders_5plus": 97,
+  "links": 3101,
+  "funders": 1651,
+  "funders_1": 1238,
+  "funders_3plus": 220,
+  "funders_5plus": 98,
   "funders_10plus": 38,
-  "top10_share_of_links": 0.093,
+  "top10_share_of_links": 0.094,
   "top50_share_of_links": 0.255,
   "top15": [
    [
@@ -415,19 +415,19 @@
   ]
  },
  "types_all": {
-  "accelerator": 22,
-  "venture_firm": 957,
-  "growth_pe_hedge": 106,
-  "corporate_venture": 188,
+  "accelerator": 24,
+  "venture_firm": 835,
+  "growth_pe_hedge": 134,
+  "corporate_venture": 228,
   "angel": 504,
   "crowdfunding": 14,
-  "public_investor": 30,
-  "crypto_fund_or_dao": 45,
+  "public_investor": 43,
+  "crypto_fund_or_dao": 59,
   "bank_or_debt": 13,
   "philanthropy": 11,
-  "other": 33,
+  "other": 34,
   "government_grant": 32,
-  "company": 19
+  "company": 20
  },
  "led_top": [
   [
@@ -538,7 +538,7 @@
     8
    ],
    [
-    "Insight Partners",
+    "Dell Technologies Capital",
     7
    ]
   ],
@@ -644,9 +644,9 @@
   ]
  },
  "era_links": {
-  "2010-2019": 702,
-  "2020 on": 2083,
-  "before 2010": 91
+  "2010-2019": 701,
+  "2020 on": 2079,
+  "before 2010": 90
  },
  "rounds_by_source_kind": {
   "news": 816,
@@ -658,13 +658,13 @@
   "database": 34
  },
  "source_check": {
-  "mentions": 5524,
-  "fetched": 5226,
-  "found": 4863,
+  "mentions": 5514,
+  "fetched": 5218,
+  "found": 4855,
   "markup_only": 188,
   "not_on_page": 175,
-  "share_found": 0.931,
-  "share_found_or_markup": 0.967
+  "share_found": 0.93,
+  "share_found_or_markup": 0.966
  },
  "portfolio_check": {
   "domain_links": 70,
@@ -724,15 +724,15 @@
    "14"
   ],
   [
+   "Dell Technologies Capital",
+   "12"
+  ],
+  [
    "M12",
    "12"
   ],
   [
    "Lux Capital",
-   "11"
-  ],
-  [
-   "Dell Technologies Capital",
    "11"
   ],
   [
@@ -783,7 +783,8 @@
   "saudi_aramco": 8,
   "alphabet": 43,
   "citigroup": 6,
-  "dell": 12,
+  "dell": 13,
+  "ntt": 3,
   "microsoft": 18,
   "goldman_sachs": 14,
   "hyundai": 1,
@@ -791,8 +792,10 @@
   "xavier_niel": 13,
   "nvidia": 21,
   "o_reilly": 2,
+  "sap": 1,
   "salesforce": 19,
   "samsung": 20,
+  "sony": 1,
   "tencent": 6,
   "western_digital": 2
  },
@@ -830,8 +833,8 @@
   "andreessen_horowitz": 41
  },
  "sensitivity_db": {
-  "links_db_only": 117,
-  "links": 3107,
+  "links_db_only": 116,
+  "links": 3101,
   "top20_overlap": 20,
   "dropped_from_top20": []
  },
@@ -876,7 +879,7 @@
  "sensitivity_open_yes": {
   "ventures_partial_with_links": 82,
   "ventures_yes_with_links": 358,
-  "links": 2324,
+  "links": 2319,
   "top20_overlap": 16,
   "dropped_from_top20": [
    "NVIDIA (incl. NVentures)",
@@ -892,10 +895,10 @@
   ]
  },
  "sensitivity_db_all": {
-  "links": 4067,
-  "funders": 1974,
-  "links_strict": 3935,
-  "funders_strict": 1922
+  "links": 4061,
+  "funders": 1951,
+  "links_strict": 3930,
+  "funders_strict": 1900
  },
  "thesis_kinds": {
   "named_focus_or_program": 4,
@@ -906,12 +909,12 @@
  },
  "u2_types": {
   "venture_firm": {
-   "links": 180,
-   "ventures": 41
+   "links": 172,
+   "ventures": 39
   },
   "corporate_venture": {
-   "links": 57,
-   "ventures": 28
+   "links": 60,
+   "ventures": 30
   },
   "crowdfunding": {
    "links": 24,
@@ -930,8 +933,8 @@
    "ventures": 7
   },
   "accelerator": {
-   "links": 9,
-   "ventures": 8
+   "links": 10,
+   "ventures": 9
   },
   "public_investor": {
    "links": 11,

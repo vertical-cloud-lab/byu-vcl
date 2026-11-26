@@ -32,7 +32,7 @@
 | Tiger Global | growth, crossover or PE | 13 | 7 | Appwrite, Cohere, OctoML, Prefect Technologies, Redis Ltd., Temporal Technologies, Tiger Data, Automattic … |
 | True Ventures | venture firm | 13 | 5 | 3D Robotics, Puppet, Solo.io, Vectorize, Inc., npm, Inc., Automattic, HashiCorp, Inventables … |
 | Bain Capital Ventures | venture firm | 11 | 7 | Astronomer, Cube Dev, Docker Inc., Polars B.V., Redis Ltd., Sysdig, Unstructured, Black Forest Labs … |
-| Dell Technologies Capital | corporate / strategic | 10 | 4 | MinIO Inc., OpenObserve, Tetrate, Yugabyte, JFrog, Prime Intellect, Red Hat, Redis Ltd. … |
+| Dell Technologies Capital | corporate / strategic | 11 | 4 | MinIO Inc., OpenObserve, Tetrate, Yugabyte, JFrog, Mirantis, Prime Intellect, Red Hat … |
 | GGV Capital (US arm now Notable Capital) | venture firm | 10 | 5 | Browserbase, HashiCorp, LocalStack, PingCAP, Vercel, Coder Technologies, Jina AI, Kong Inc. … |
 | GIC | state or sovereign investor | 10 | 3 | Grafana Labs, Supabase, Vercel, Anaconda, Inc., ClickHouse, Databricks, LangChain, PingCAP … |
 | Greylock Partners | venture firm | 10 | 4 | Docker Inc., Lightbend, LlamaIndex, Zend Technologies, Anomaly, Civilized Discourse Construction Kit, Cloudera, Modular Inc. … |

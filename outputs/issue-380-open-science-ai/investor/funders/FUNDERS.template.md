@@ -399,7 +399,7 @@ the CSVs (448 table cells agreed) and ranked eleven problems. What was done abou
 | 3. Six companies were entered twice: Embedchain and Mem0, Danswer and Onyx, Pynecone and Reflex, ComfyUI and Comfy Org, APITable and AITable, Zinc and ZincSearch | merged ([`data/venture_aliases.csv`](data/venture_aliases.csv)) |
 | 4. The count of "funding events" could not be reproduced | Rows that describe the same round now share a `round_id`; the text gives rounds, not rows |
 | 5. "Accurate; every count is a lower bound" overstated the checks | reworded; the source check is described as a name match; the source-quality sensitivity is reported |
-| 6. Funders were split across names (SAP Ventures and Sapphire Ventures, Partech and Partech International, LDVP and LDV Partners, spelling variants) and many types were guessed from the name | merged, with one spelling per funder; every funder with two or more ventures, and every funder that had no type, is now typed by hand |
+| 6. Funders were split across names (SAP Ventures and Sapphire Ventures, Partech and Partech International, LDVP and LDV Partners, spelling variants) and many types were guessed from the name | merged, with one spelling per funder and about 20 more aliases; every funder with two or more ventures, and every funder that had no type, is now typed by hand, and the one-venture funders typed by rule were read over by hand |
 | 7. "Crowdfunding is the most common single source" and "first cheques" | reworded: Kickstarter backers are the most frequent single name in U2, venture firms the most common type; the early-round table is not a first-cheque table |
 | 8. The audit's percentages read as current, and the missing-funder list was stale | marked as measured before the merge; both missing funders added |
 | 9. Missing examples | PeerJ added to U2 (pass `h01`); Tool Foundry, Experiment's Low-Cost Tools for Science with Footprint Coalition, the Royal Society and UKRI behind OpenFlexure, Coefficient Giving, and the NSF–Astera cloud-lab test bed added to the programs (pass `p7`). CZI's EOSS total now comes from CZI's own report |
@@ -500,8 +500,9 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
   no study that does. Being on the list doesn't mean a funder would back a new open venture.
 - **Names are normalised by hand.** Fund vehicles roll up to the firm, and corporate arms stay separate but roll up
   to their parent in one table. Some aliases will be missed, and a few distinct firms share a name; one known case,
-  DeepSeek's "Lux Capital", is kept apart. One-venture funders are typed by rules on their names (people as angels),
-  not by hand.
+  DeepSeek's "Lux Capital", is kept apart. Funders with one venture were typed by rules on their names (people as
+  angels), then read over once by hand, which moved about 100 corporate arms, crypto funds, state funds and growth
+  investors out of "venture firm".
 - **Some ventures in the counts are only partly open**: open-core companies, AI labs that release some weights, and
   chip firms with open instruction sets or software around closed chips. VitaDAO and LabDAO (DAOs that sold tokens
   to investors) and Proton AG (whose main shareholder is the nonprofit Proton Foundation) are also kept. The

@@ -29,14 +29,14 @@
 | BAT token buyers | crypto fund or DAO | 1 | 0 | Brave Software |
 | Bankless Ventures | crypto fund or DAO | 1 | 0 | MyShell |
 | BeakerDAO | crypto fund or DAO | 1 | 0 | Molecule |
+| Big Brain Holdings | crypto fund or DAO | 1 | 0 | Shardeum |
 | Binance Labs | crypto fund or DAO | 1 | 0 | Tea |
 | Block1 | crypto fund or DAO | 1 | 0 | Linera |
+| BlockChange VC | crypto fund or DAO | 1 | 0 | Zama |
 | Blockwall | crypto fund or DAO | 1 | 0 | Fuel Labs |
+| Borderless Capital | crypto fund or DAO | 1 | 1 | Linera |
 | Breakout Labs | philanthropy | 1 | 0 | Mat3ra |
 | CDTI | government grant | 1 | 1 | BCN3D Technologies |
 | Chan Zuckerberg Initiative | philanthropy | 1 | 0 | Seqera |
 | Chorus One | crypto fund or DAO | 1 | 0 | Molecule |
 | CoinList participants | crypto fund or DAO | 1 | 0 | Rainbow |
-| Collab+Currency | crypto fund or DAO | 1 | 0 | Prime Intellect |
-| Community investors | crowdfunding | 1 | 0 | Framework Computer |
-| Crowdcube backers | crowdfunding | 1 | 0 | Open Bionics |

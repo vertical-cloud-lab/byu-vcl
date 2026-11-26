@@ -18,6 +18,7 @@
 | Salesforce Ventures | corporate / strategic | 4 | 1 | Together AI, Cohere, Hugging Face, Mistral AI |
 | 468 Capital | venture firm | 3 | 1 | Activeloop, Paradev, Rasa |
 | Amazon | corporate / strategic | 3 | 0 | EvolutionaryScale, H Company, Hugging Face |
+| Betaworks | venture firm | 3 | 0 | Flower, Hugging Face, Nomic AI |
 | Cisco Investments | corporate / strategic | 3 | 0 | Cohere, Lightning AI, Mistral AI |
 | Comcast Ventures | corporate / strategic | 3 | 1 | Neural Magic, AI21 Labs, Resemble AI |
 | Craft Ventures | venture firm | 3 | 1 | Roboflow, CrewAI, Resemble AI |
@@ -29,4 +30,3 @@
 | Pioneer Fund | venture firm | 3 | 0 | Flower, LiteLLM, Paradev |
 | Tencent | corporate / strategic | 3 | 2 | Baichuan Intelligence, Moonshot AI, MiniMax |
 | 5Y Capital | venture firm | 2 | 0 | Moonshot AI, Zilliz |
-| A Capital | venture firm | 2 | 0 | Hugging Face, Together AI |

@@ -6,8 +6,8 @@
 | Samsung | corporate / strategic | 20 | 4 | AI21 Labs, Mistral AI, ScyllaDB, Tenstorrent, Activeloop, Arcee AI, ClearML, Daytona Platforms … |
 | Salesforce Ventures | corporate / strategic | 19 | 4 | Automattic, Black Forest Labs, MuleSoft, Together AI, Airbyte, Astronomer, CARTO, Chainguard … |
 | Gradient Ventures | corporate / strategic | 14 | 7 | Charm, Infisical, LastMile AI, Mage, Orchest, Payload, Streamlit, Astro … |
+| Dell Technologies Capital | corporate / strategic | 12 | 4 | MinIO Inc., OpenObserve, Tetrate, Yugabyte, JFrog, Mirantis, Prime Intellect, Red Hat … |
 | M12 | corporate / strategic | 12 | 4 | Arcee AI, Code Ocean, Neon, Webiny, Isovalent, Ivy, Mermaid Chart, Nous Research … |
-| Dell Technologies Capital | corporate / strategic | 11 | 4 | MinIO Inc., OpenObserve, Tetrate, Yugabyte, JFrog, Prime Intellect, Red Hat, Redis Ltd. … |
 | Aramco Ventures (incl. Prosperity7) | corporate / strategic | 8 | 5 | Arcee AI, SiFive, StreamNative, Together AI, Zilliz, Cohere, Rescale, Z.ai |
 | Cisco Investments | corporate / strategic | 8 | 1 | Puppet, Cohere, Dremio, Isovalent, LangChain, Lightning AI, Mistral AI, MuleSoft |
 | AMD | corporate / strategic | 7 | 1 | Liquid AI, Cohere, Hugging Face, Oxide Computer Company, RadixArk, Stability AI, Wafer |

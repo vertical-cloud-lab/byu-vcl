@@ -247,6 +247,38 @@ T.update({"Fathom Capital": V, "Rebel Fund": V, "The House Fund": V, "TLV Partne
 
 T.update({"SAGE Publishing": C, "O'Reilly Media": C, "Lux Capital (as named for DeepSeek)": V})  # PeerJ (pass h01)
 
+# 2026-11-26, second pass over the one-venture funders the name rules had typed: corporate arms, crypto funds,
+# state funds, growth investors and accelerators that the rules had called venture firms
+T.update({
+ "Accenture Ventures": C, "Amgen Ventures": C, "ANA Holdings": C, "Applied Ventures": C, "Bertelsmann Asia Investment Fund": C,
+ "Bertelsmann Investment": C, "DoCoMo Capital": C, "Figma Ventures": C, "Fujitsu Ventures": C, "GREE Ventures": C,
+ "HP Ventures": C, "Hearst Ventures": C, "ING Ventures": C, "KDDI Open Innovation Fund": C, "LG Technology Ventures": C,
+ "Liberty Global Ventures": C, "Lockheed Martin Ventures": C, "NEC Orchestrating Future Fund": C, "NTT Docomo Ventures": C,
+ "NTTVC": C, "Orange Ventures": C, "Robinhood Ventures": C, "SAP.iO Fund": C, "SE Ventures": C, "Samsung Venture Investment": C,
+ "ServiceNow Ventures": C, "Shopify Capital": C, "Slack Fund": C, "Sony Innovation Fund": C, "Telekom Investment Pool": C,
+ "Vercel Ventures": C, "Verizon Ventures": C, "Wipro Ventures": C, "Perplexity Fund": C, "Inovance Industrial Investment": C,
+ "Loongson Capital": C, "Laser Digital Ventures": C, "Jamstack Innovation Fund": C, "AE Industrial Partners HorizonX": C,
+ "Hanwha Asset Management Deeptech Venture Fund": C,
+ "Mantle EcoFund": CR, "OKX Ventures": CR, "Grayscale Ventures": CR, "Maven11 Capital": CR, "BlockChange VC": CR,
+ "Big Brain Holdings": CR, "Borderless Capital": CR, "Finality Capital": CR, "Koji Capital": CR, "Sora Ventures": CR,
+ "Cygni Capital": CR, "EVM Capital": CR, "Hanabi Capital": CR, "Exnetwork Capital": CR,
+ "Centerview Capital": G, "ClearBridge Investments": G, "Guggenheim Partners": G, "GPI Capital": G, "Glade Brook Capital": G,
+ "Greenoaks Capital": G, "Light Street Capital": G, "Maverick Capital": G, "MSD Capital": G, "Passport Capital": G,
+ "Riverwood Capital": G, "Sands Capital Ventures": G, "Schroders Capital": G, "Sumeru Equity Partners": G,
+ "Third Point Ventures": G, "Two Sigma Investments": G, "Whale Rock Capital Management": G, "Winslow Capital": G,
+ "Investor Growth Capital": G, "Pavilion Capital": G, "Nexxus Capital Management": G, "NPM Capital": G,
+ "Brookside Capital": G, "Macquarie Capital": G, "Nomura Holdings": G, "Mizuho Leaguer Investment": G,
+ "Guotai Haitong Innovation Investment": G, "UC Investments": G,
+ "PSP Investments": P, "Sanabil Investments": P, "EDB Investments": P, "European Investment Fund": P,
+ "Finnish Industry Investment": P, "Future Fund (Australia)": P, "Shanghai AI Industry Investment Fund": P,
+ "Shanghai International Group asset management funds (Guohe Investment, Guofang Innovation, Jinpu Investment)": P,
+ "Shanghai SDIC Leading Fund": P, "Hangzhou City Investment Industry Fund": P, "Wuxi Liangxi Fund": P,
+ "Pudong Venture Capital": P, "Zhongguancun Science City Fund": P, "Tsinghua Holdings": O,
+ "Berkeley SkyDeck Fund": A, "Boost VC": A,
+ "DAMAC Capital": CO,
+ "TruArrow Partners": V, "TwentyTwo Ventures": V,
+})
+
 
 def main():
     with open("data/investor_types.csv", "w", newline="") as f:
@@ -262,7 +294,9 @@ def main():
                    "Citi": "Citigroup", "Citi Ventures": "Citigroup", "Goldman Sachs": "Goldman Sachs",
                    "Dell Technologies Capital": "Dell", "VMware": "Dell",
                    "Hyundai CRADLE": "Hyundai", "Western Digital Capital": "Western Digital",
-                   "O'Reilly Media": "O'Reilly", "O'Reilly AlphaTech Ventures": "O'Reilly"}.get(k, "")
+                   "O'Reilly Media": "O'Reilly", "O'Reilly AlphaTech Ventures": "O'Reilly",
+                   "Samsung Venture Investment": "Samsung", "SAP.iO Fund": "SAP", "Sony Innovation Fund": "Sony",
+                   "NTT Docomo Ventures": "NTT", "DoCoMo Capital": "NTT", "NTTVC": "NTT"}.get(k, "")
             w.writerow([k, t, grp, "", ""])
     print(len(T), "types written")
 

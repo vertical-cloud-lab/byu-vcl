@@ -31,6 +31,7 @@
 | Battery Ventures | venture firm | 2 | 1 | Code Ocean, Chai Discovery |
 | Bezos Expeditions | person (angel) | 2 | 0 | MakerBot Industries, Tenstorrent |
 | Coatue | growth, crossover or PE | 2 | 1 | SiFive, Hugging Face |
+| Compound | venture firm | 2 | 0 | Molecule, Orbital Materials |
 | Counterpart Ventures | venture firm | 2 | 0 | Oxide Computer Company, Particle |
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |

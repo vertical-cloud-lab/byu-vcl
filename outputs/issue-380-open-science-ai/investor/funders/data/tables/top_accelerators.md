@@ -13,7 +13,9 @@
 | South Park Commons | accelerator / studio | 2 | 0 | Deep Cogito, Expo |
 | 5G Open Innovation Lab | accelerator / studio | 1 | 0 | Synadia |
 | Alchemist Accelerator | accelerator / studio | 1 | 0 | Mat3ra |
+| Berkeley SkyDeck Fund | accelerator / studio | 1 | 0 | MindsDB |
 | Bethnal Green Ventures | accelerator / studio | 1 | 0 | Overleaf |
+| Boost VC | accelerator / studio | 1 | 0 | ResearchHub |
 | Buildspace | accelerator / studio | 1 | 0 | Supermemory |
 | Disney Accelerator | accelerator / studio | 1 | 0 | Open Bionics |
 | Entrepreneurs Roundtable Accelerator | accelerator / studio | 1 | 0 | Fingerprint |

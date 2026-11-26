@@ -20,6 +20,7 @@
 | Battery Ventures | venture firm | 2 | 1 | Code Ocean, Chai Discovery |
 | Bezos Expeditions | person (angel) | 2 | 0 | MakerBot Industries, Tenstorrent |
 | Bpifrance | state or sovereign investor | 2 | 0 | Pollen Robotics, Probabl |
+| Compound | venture firm | 2 | 0 | Molecule, Orbital Materials |
 | Counterpart Ventures | venture firm | 2 | 0 | Oxide Computer Company, Particle |
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |
