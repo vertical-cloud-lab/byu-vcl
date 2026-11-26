@@ -64,10 +64,13 @@ Medians are Kaplan-Meier over seeds. Cheap policies: the heuristic on aluminium 
 | Partners booked when an action was bought, with a random booking lead | Standing slots at the partners (Utah's MIDI 2 builds a week, MX-Lab monthly, Mines 7 sessions a year, Valimet monthly), each filled at the last moment before shipping, with the coming week's slots' money kept for them | Book standing slots and decide what goes in them as late as possible |
 | No difference between sites | Each fabrication route has its own process offset (the same nominal laser power delivers a different effective power) and each testing route a measurement offset; the lab records the nominal settings unless someone recorded the process on site | Each route has its own bias; provenance |
 | An alloy's story ended at its tensile (and immersion) test | Alloys at the second target move on through a gas-atomized lot, a validation network across the sites, and a full-part application test | Stages a promising alloy moves through |
-| Three plans did not exist | `wait` (round 3's vertical lab, from the day the cell is complete), `parallel` and `external` | The request |
+| Three plans did not exist | `wait` (round 3's vertical lab, from the day the cell and its last station are complete), `parallel` and `external` | The request |
 
 Round 3's code is unchanged (round 4 subclasses its `Facility`, `Campaign` and `Twin` in
-[`twin/round4.py`](../twin/round4.py)), so round 3's results still reproduce. Round 4 is not seed-for-seed comparable
+[`twin/round4.py`](../twin/round4.py)), so round 3's results still reproduce. One round-3 test,
+`test_round2_reproduces_on_the_refactored_engine`, fails in this session's environment (Python 3.14, numpy 2.5)
+by 1e-14 (0.5421033031864272 against 0.5421033031864367), identically on round 3's own commit `b8cde0e`: a
+floating-point difference between environments, not a change. Round 4 is not seed-for-seed comparable
 with round 3: the horizon is two years from funding, the facility differs, and the random streams are drawn in a
 different order.
 
