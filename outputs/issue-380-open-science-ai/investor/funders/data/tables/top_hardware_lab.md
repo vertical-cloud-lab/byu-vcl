@@ -3,8 +3,8 @@
 | Y Combinator | accelerator / studio | 12 | 0 | Adap, AnythingLLM, Cerulion, Convoy, GitLab Inc., K-Scale Labs, Opentrons Labworks, PeerDB … |
 | Kickstarter backers | crowdfunding | 11 | 0 | Augmented Instruments, Great Scott Gadgets, Luxonis, OpenBCI, OpenMV, Opentrons Labworks, Pine64, Printrbot … |
 | True Ventures | venture firm | 6 | 2 | 3D Robotics, Pipedream, Inventables, MakerBot Industries, Monospace Inc., Sofar Ocean Technologies |
+| Crowd Supply backers | crowdfunding | 4 | 0 | Augmented Instruments, Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Qualcomm Ventures | corporate / strategic | 4 | 3 | 3D Robotics, Particle, ScyllaDB, SiFive |
-| Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Foundry Group | venture firm | 3 | 3 | 3D Robotics, MakerBot Industries, Sofar Ocean Technologies |
 | GV | corporate / strategic | 3 | 2 | GitLab Inc., Redpanda Data, Meltano |
 | Redpoint Ventures | venture firm | 3 | 2 | HumanSignal, Materialize, Zimbra |
@@ -26,7 +26,7 @@
 | Lightspeed Venture Partners | venture firm | 2 | 2 | Materialize, Redpanda Data |
 | NVIDIA (incl. NVentures) | corporate / strategic | 2 | 0 | Radical AI, SiFive |
 | Sequoia Capital | venture firm | 2 | 0 | Sesame, VA Linux Systems |
-| Shenzhen Capital Group | state or sovereign investor | 2 | 1 | ModelBest, Seeed Studio |
+| Wells Fargo | unclassified | 2 | 0 | FarmBot, VA Linux Systems |
 | Western Digital Capital | venture firm | 2 | 1 | ScyllaDB, SiFive |
 | 1517 Fund | venture firm | 1 | 0 | Trilobio |
 | 8VC | venture firm | 1 | 1 | PeerDB |

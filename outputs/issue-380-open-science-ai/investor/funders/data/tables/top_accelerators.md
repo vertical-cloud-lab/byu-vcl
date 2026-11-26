@@ -1,10 +1,10 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 314 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, ARC Prize Foundation … |
+| Y Combinator | accelerator / studio | 313 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, ARC Prize Foundation … |
 | Neo | accelerator / studio | 4 | 1 | Bluesky, Dagster Labs, Mage, Warp |
-| Open Core Ventures | accelerator / studio | 3 | 0 | Mermaid Chart, Phaser Studio Inc., Stirling PDF |
+| Open Core Ventures | accelerator / studio | 4 | 0 | GrapesJS, Mermaid Chart, Phaser Studio Inc., Stirling PDF |
+| Techstars | accelerator / studio | 4 | 0 | Comet ML, Ionic, Open Bionics, Qovery |
 | SOSV | accelerator / studio | 3 | 0 | Crowd Supply, Opentrons Labworks, Particle |
-| Techstars | accelerator / studio | 3 | 0 | Comet ML, Ionic, Qovery |
 | 500 Global | accelerator / studio | 2 | 0 | Mycroft AI, Sakana AI |
 | AI Grant | accelerator / studio | 2 | 0 | Reworkd, Rowan |
 | Antler | accelerator / studio | 2 | 0 | NetBird, Nhost |
@@ -14,6 +14,7 @@
 | 5G Open Innovation Lab | accelerator / studio | 1 | 0 | Synadia |
 | Alchemist Accelerator | accelerator / studio | 1 | 0 | Mat3ra |
 | Bethnal Green Ventures | accelerator / studio | 1 | 0 | Overleaf |
+| Disney Accelerator | accelerator / studio | 1 | 0 | Open Bionics |
 | Entrepreneurs Roundtable Accelerator | accelerator / studio | 1 | 0 | Fingerprint |
 | HF0 | accelerator / studio | 1 | 0 | Fish Audio |
 | MiraclePlus | accelerator / studio | 1 | 1 | Sealos |

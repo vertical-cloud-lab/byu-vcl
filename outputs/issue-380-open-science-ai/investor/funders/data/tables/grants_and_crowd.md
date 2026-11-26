@@ -2,12 +2,14 @@
 | --- | --- | --- | --- | --- |
 | Kickstarter backers | crowdfunding | 16 | 0 | Augmented Instruments, Backyard Brains, Flipper Devices, Fonticons, Inc., George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI … |
 | Protocol Labs | crypto fund or DAO | 5 | 3 | Element, Riot IM, Zama, Molecule, Prime Intellect |
+| Crowd Supply backers | crowdfunding | 4 | 0 | Augmented Instruments, Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Knight Foundation | philanthropy | 4 | 1 | Authorea, Bluesky, CARTO, Mapbox |
-| Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Bain Capital Crypto | crypto fund or DAO | 2 | 1 | Bluesky, Fuel Labs |
 | Blockchain Capital | crypto fund or DAO | 2 | 2 | Bluesky, Fuel Labs |
 | CoinFund | crypto fund or DAO | 2 | 2 | Fuel Labs, Prime Intellect |
+| European Commission | government grant | 2 | 0 | Antmicro, Graphite |
 | Hack VC | crypto fund or DAO | 2 | 0 | Fingerprint, Zama |
+| Innovate UK | government grant | 2 | 0 | Augmented Instruments, Open Bionics |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | Maven 11 Capital | crypto fund or DAO | 2 | 0 | Anoma, Fuel Labs |
 | NIST | government grant | 2 | 0 | M-Labs Ltd, Voxel51 |
@@ -34,9 +36,7 @@
 | CoinList participants | crypto fund or DAO | 1 | 0 | Rainbow |
 | Collab+Currency | crypto fund or DAO | 1 | 0 | Prime Intellect |
 | Community investors | crowdfunding | 1 | 0 | Framework Computer |
+| Crowdcube backers | crowdfunding | 1 | 0 | Open Bionics |
 | Curve Labs | crypto fund or DAO | 1 | 0 | LabDAO |
 | Cybersecurity and Infrastructure Security Agency | government grant | 1 | 0 | VotingWorks |
-| Dialectic | crypto fund or DAO | 1 | 0 | Fuel Labs |
-| Digital Currency Group | crypto fund or DAO | 1 | 0 | Brave Software |
-| Distributed Global | crypto fund or DAO | 1 | 1 | Prime Intellect |
-| Dragonfly Capital | crypto fund or DAO | 1 | 1 | MyShell |
+| DARPA | government grant | 1 | 0 | Anaconda, Inc. |

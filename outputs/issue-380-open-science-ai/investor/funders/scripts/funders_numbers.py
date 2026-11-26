@@ -78,6 +78,15 @@ def main():
              "Andreessen Horowitz"]
     by = {r["investor"]: r for r in I}
     out["focus"] = {re.sub(r"[^a-z0-9]+", "_", n.lower()).strip("_"): int(by[n]["ventures"]) if n in by else 0 for n in named}
+    # sensitivity (PROTOCOL.md): drop links supported only by databases or Wikipedia
+    core = [l for l in L if l["universe"] in ("U1", "U2", "U3")]
+    c_all = collections.Counter(l["investor"] for l in core)
+    c_strict = collections.Counter(l["investor"] for l in core if l["database_only"] != "1")
+    t_all = [n for n, _ in c_all.most_common(20)]
+    t_strict = [n for n, _ in c_strict.most_common(20)]
+    out["sensitivity_db"] = {"links_db_only": sum(1 for l in core if l["database_only"] == "1"), "links": len(core),
+                             "top20_overlap": len(set(t_all) & set(t_strict)),
+                             "dropped_from_top20": [n for n in t_all if n not in t_strict]}
     ea = rd("edison_audit_comparison.csv")
     if ea:
         ed = sum(int(r["edison"]) for r in ea); ours = sum(int(r["ours"]) for r in ea); both = sum(int(r["both"]) for r in ea)

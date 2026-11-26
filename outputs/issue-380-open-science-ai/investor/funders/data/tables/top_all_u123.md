@@ -1,27 +1,27 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 61 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Airbyte, Anomaly, Apify, BerriAI … |
+| Y Combinator | accelerator / studio | 60 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Airbyte, Anomaly, Apify, BerriAI … |
 | Accel | venture firm | 32 | 19 | Airbyte, Astral, CARTO, Cloudera, ForgeRock, Heptio, Laravel, Polars B.V. … |
 | Andreessen Horowitz | venture firm | 32 | 19 | Alluxio, Anyscale, Astral, Black Forest Labs, Databricks, GitHub, Imply, Inferact … |
 | Sequoia Capital | venture firm | 30 | 17 | Chainguard, Deno Land Inc., Docker Inc., FastAPI Labs, GitHub, LangChain, Observable, Inc., Odoo SA … |
 | Lightspeed Venture Partners | venture firm | 24 | 13 | Chainguard, Grafana Labs, Hasura, Inferact, Marqo, Materialize, Mistral AI, Redpanda Data … |
 | New Enterprise Associates | venture firm | 24 | 17 | Acquia, Aerospike, Anyscale, Databricks, Elastic N.V., Metabase, MuleSoft, NGINX … |
-| Insight Partners | growth, crossover or PE | 23 | 17 | Anaconda, Inc., Appsmith, Astronomer, Automattic, CARTO, Camunda, CrewAI, Databricks … |
+| Insight Partners | growth, crossover or PE | 23 | 19 | Anaconda, Inc., Appsmith, Astronomer, Automattic, CARTO, Camunda, CrewAI, Databricks … |
+| Intel Capital | corporate / strategic | 23 | 5 | Lightbend, MariaDB, MinIO Inc., Mirantis, Truffle Security, AI21 Labs, Anyscale, Cloudera … |
 | Index Ventures | venture firm | 22 | 12 | Chai Discovery, ClickHouse, Confluent, Dagster Labs, Gatsby, Gluster, Kong Inc., Lightning AI … |
-| Intel Capital | corporate / strategic | 22 | 5 | Lightbend, MariaDB, MinIO Inc., Mirantis, Truffle Security, AI21 Labs, Anyscale, Cloudera … |
 | Coatue | growth, crossover or PE | 21 | 9 | ClickHouse, Confluent, Databricks, Kubecost, Nomic AI, SiFive, Stability AI, Starburst … |
-| NVIDIA (incl. NVentures) | corporate / strategic | 21 | 1 | AI21 Labs, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face, Lightning AI … |
-| Benchmark | venture firm | 20 | 12 | Airbyte, Buoyant, ClickHouse, Cockroach Labs, Docker Inc., Hortonworks, Hyperic, LangChain … |
-| Redpoint Ventures | venture firm | 20 | 11 | Chainguard, Couchbase, HumanSignal, Materialize, Mattermost, Preset, Significant Gravitas Ltd, Solo.io … |
+| NVIDIA (incl. NVentures) | corporate / strategic | 21 | 2 | AI21 Labs, MindsDB, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face … |
+| Benchmark | venture firm | 20 | 13 | Airbyte, Buoyant, ClickHouse, Cockroach Labs, Docker Inc., Hortonworks, Hyperic, LangChain … |
+| Redpoint Ventures | venture firm | 19 | 10 | Chainguard, Couchbase, HumanSignal, Materialize, Mattermost, Preset, Solo.io, Sourcegraph … |
 | GV | corporate / strategic | 18 | 9 | Ahana, Buoyant, CoreOS, GitLab Inc., Redpanda Data, Vercel, Warp, Weaveworks … |
+| SV Angel | venture firm | 18 | 0 | Airbyte, Anomaly, Buoyant, Civilized Discourse Construction Kit, Expo, FoundationDB, Hugging Face, Lightning AI … |
 | Bessemer Venture Partners | venture firm | 17 | 10 | Appwrite, Auterion, Boltz PBC, Coiled, Cypress.io, Imply, Netdata Inc., Teleport … |
-| SV Angel | venture firm | 17 | 0 | Airbyte, Anomaly, Buoyant, Civilized Discourse Construction Kit, Expo, FoundationDB, Hugging Face, Lightning AI … |
 | Salesforce Ventures | corporate / strategic | 16 | 4 | Automattic, Black Forest Labs, MuleSoft, Together AI, Airbyte, Astronomer, CARTO, Chainguard … |
+| Battery Ventures | venture firm | 15 | 4 | Chef Software, Code Ocean, InfluxData, Orkes, Bitwarden, Chai Discovery, ClickHouse, Cumulus Networks … |
 | CRV | venture firm | 15 | 8 | Gatsby, LanceDB, Meilisearch, ProjectDiscovery, Reflection AI, Strapi, Tailscale, Vercel … |
 | General Catalyst | venture firm | 15 | 8 | Chai Discovery, Gitpod, Ionic, MinIO Inc., Mistral AI, Modular Inc., Tidelift, Together AI … |
 | Kickstarter backers | crowdfunding | 15 | 0 | Augmented Instruments, Backyard Brains, Fonticons, Inc., George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI, OpenBCI … |
-| Battery Ventures | venture firm | 14 | 4 | Chef Software, Code Ocean, InfluxData, Orkes, Bitwarden, Chai Discovery, ClickHouse, Cumulus Networks … |
-| Goldman Sachs | growth, crossover or PE | 14 | 7 | DataStax, GitLab Inc., Harness, NGINX, Redis Ltd., Sonatype, SugarCRM, Acquia … |
+| Goldman Sachs | growth, crossover or PE | 14 | 6 | DataStax, GitLab Inc., Harness, NGINX, Redis Ltd., Sonatype, Acquia, Databricks … |
 | Guillermo Rauch | person (angel) | 14 | 0 | Astral, Chroma, Comfy Org, Dub Technologies, Mastra, Meilisearch, Oven, Prisma Data, Inc. … |
 | Kleiner Perkins | venture firm | 14 | 9 | Chainguard, Materialize, Nebula, Inc., Oven, Prisma Data, Inc., Puppet, RudderStack, Teleport … |
 | Nexus Venture Partners | venture firm | 14 | 9 | Fingerprint, Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve, Orkes, TileDB, Inc. … |
@@ -46,8 +46,10 @@
 | Databricks Ventures | corporate / strategic | 8 | 0 | Inferact, LanceDB, LangChain, LlamaIndex, Neon, RadixArk, Reflex, Tabular |
 | Felicis | venture firm | 8 | 8 | Browser Use, Entalpic, Letta, Meilisearch, Sourcegraph, Supabase, Zylon, n8n |
 | IVP | venture firm | 8 | 4 | Chainguard, HashiCorp, LangChain, MySQL AB, ClickHouse, GitHub, Harness, Prisma Data, Inc. |
+| Mango Capital | venture firm | 8 | 0 | Coqui, Gatsby, Jina AI, Meilisearch, ProjectDiscovery, Rasa, Turso, Unstructured |
 | Menlo Ventures | venture firm | 8 | 4 | All Hands AI, Ansible, Chai Discovery, Neon, Harness, JuliaHub, Nous Research, Prime Intellect |
 | Meritech Capital Partners | venture firm | 8 | 3 | Cloudera, DataStax, ForgeRock, Astronomer, MuleSoft, Sourcefire, Yugabyte, n8n |
+| Spark Capital | venture firm | 8 | 7 | Chainguard, Framework Computer, Mastra, Particle, Qdrant, RadixArk, SiFive, JFrog |
 | Tom Preston-Werner | person (angel) | 8 | 1 | Gitpod, AppFlowy, Liquid AI, Nrwl, SigNoz, Spacedrive Technology, Zed Industries, tldraw Inc. |
 | Uncorrelated Ventures | venture firm | 8 | 0 | Astro, Cube Dev, Fingerprint, Meltano, NocoDB, RudderStack, SigNoz, TileDB, Inc. |
 | A Capital | venture firm | 7 | 0 | Browser Use, Buoyant, Databricks, Expo, Hugging Face, Mesosphere, Together AI |
@@ -55,8 +57,6 @@
 | Aramco Ventures (incl. Prosperity7) | corporate / strategic | 7 | 5 | Arcee AI, SiFive, StreamNative, Together AI, Zilliz, Cohere, Z.ai |
 | Bpifrance | state or sovereign investor | 7 | 0 | H Company, HARFANG 3D, Mistral AI, Pollen Robotics, Probabl, Strapi, Talend |
 | Clem Delangue | person (angel) | 7 | 0 | FastAPI Labs, Kestra Technologies, Letta, NanoCo, Prime Intellect, Together AI, marimo |
+| Geodesic Capital | venture firm | 7 | 0 | Databricks, Imply, JFrog, Sakana AI, Sourcegraph, Together AI, Vercel |
+| IBM | corporate / strategic | 7 | 1 | Lightbend, Ahana, DataStax, Hugging Face, Kubecost, Mistral AI, Red Hat |
 | Madrona Venture Group | venture firm | 7 | 6 | All Hands AI, Heptio, OctoML, Pulumi, Tigera, Unstructured, Temporal Technologies |
-| Mango Capital | venture firm | 7 | 0 | Gatsby, Jina AI, Meilisearch, ProjectDiscovery, Rasa, Turso, Unstructured |
-| Mayfield | venture firm | 7 | 1 | Couchbase, 3D Robotics, Alfresco Software, HashiCorp, InfluxData, MindsDB, Rancher |
-| Nat Friedman | person (angel) | 7 | 2 | EvolutionaryScale, Logseq Inc., Chroma, Deno Land Inc., Strapi, Vercel, ggml.ai |
-| Norwest Venture Partners | venture firm | 7 | 2 | InfluxData, LlamaIndex, CollabNet, Dremio, Harness, Treeverse, Turso |

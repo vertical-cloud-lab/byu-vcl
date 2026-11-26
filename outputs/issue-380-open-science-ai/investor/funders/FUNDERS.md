@@ -19,27 +19,28 @@ The scope and counting rules were committed before any funding data was gathered
 ## Bottom line
 
 - **The list is long and flat.** Across the 640 hand-researched ventures in groups U1–U3,
-  440 disclosed outside funding.
-  - Public sources name 1,610 distinct funders in 1,154 funding events.
-  - 1,217 of those funders appear in only one venture.
-  - Only 97 backed five or more, and the ten most frequent account for
-    10% of all funder–venture links.
+  448 disclosed outside funding.
+  - Public sources name 1,697 distinct funders in 1,320 funding events.
+  - 1,294 of those funders appear in only one venture.
+  - Only 102 backed five or more, and the ten most frequent account for
+    9% of all funder–venture links.
   - There is no small club that funds open source. There is a long tail with a recognisable head.
 - **The head is mostly generalist venture firms, an accelerator and chip and cloud companies:**
   - Y Combinator, by count.
   - Accel, Sequoia, Andreessen Horowitz, NEA, Index, Benchmark, Lightspeed and Insight.
   - Corporate investors, counted across all four groups with their arms rolled up to the parent:
     - Alphabet: GV, CapitalG, Gradient and Google together, 44 ventures
-    - Intel Capital (23) and NVIDIA (22)
+    - Intel Capital (24) and NVIDIA (22)
     - Microsoft: M12, GitHub and Microsoft, 20
     - Samsung (20) and Salesforce Ventures (19)
   - The firms that lead open-source rounds most often are Andreessen Horowitz, Accel, Insight, NEA, Sequoia,
     Index and Benchmark.
 - **Funds built around open source exist, but most are small in this count.**
-  - OSS Capital is the exception: 15 ventures across all four groups, about as many as Bessemer
-    (20) or GV (20). Uncorrelated Ventures has 14.
+  - The exceptions are OSS Capital, with 15 ventures across all four groups, and Uncorrelated
+    Ventures, with 14. For comparison, Bessemer has 20 and
+    GV 20.
   - Runa Capital (5), Heavybit (5), Boldstart (4),
-    Crane (4) and Open Core Ventures (3) back only a handful
+    Crane (4) and Open Core Ventures (4) back only a handful
     each.
   - 26 funders in the data state an open-source thesis in their own words. Most of them are large
     generalists: Andreessen Horowitz, Accel, Sequoia, Index, NEA and Redpoint.
@@ -54,11 +55,16 @@ The scope and counting rules were committed before any funding data was gathered
   - Strategic corporates: Bosch, Renesas, Arm, Qualcomm, Sony, Intel and NVIDIA.
   - Hardware-minded venture firms: True Ventures, Foundry Group, Spark Capital, Khosla, Eclipse and Lux.
   - Grants: SBIR, NSF, NIH, Shuttleworth, CZI and Sloan.
-  - Only 11 funders backed three or more of the 97 ventures in this group.
+  - Only 13 funders backed three or more of the 97 ventures in this group.
 - **Philanthropy and government fund open source mostly at the program level**, and mostly not through companies.
   - Programs: CZI, Sloan, Moore and Schmidt Sciences; DOE's Exascale Computing Project; NSF's POSE and CSSI;
     Germany's Sovereign Tech Agency; the EU's NGI grants through NLnet.
   - Recipients are mostly projects, universities and nonprofits.
+- **The list is accurate but incomplete. Treat every count as a lower bound.**
+  - 94% of the investor names checked appear on the page their round cites.
+  - Edison's blind audit of 40 random ventures found 86% of this list's names
+    for those ventures. It also found about 296 funders where this list has
+    180, mostly smaller participants, angels, grants and lenders.
 - **Nothing here says these funders made money on open source, or that they would fund a given venture.** The list
   records who put money in, as disclosed. Disclosure favours large rounds and survivors.
 
@@ -71,28 +77,28 @@ Examples list led ventures first. Full list: [`FUNDER_LIST.md`](FUNDER_LIST.md).
 
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 61 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Airbyte, Anomaly, Apify, BerriAI … |
+| Y Combinator | accelerator / studio | 60 | 3 | Mattermost, PostHog Inc., SigNoz, Activepieces, Airbyte, Anomaly, Apify, BerriAI … |
 | Accel | venture firm | 32 | 19 | Airbyte, Astral, CARTO, Cloudera, ForgeRock, Heptio, Laravel, Polars B.V. … |
 | Andreessen Horowitz | venture firm | 32 | 19 | Alluxio, Anyscale, Astral, Black Forest Labs, Databricks, GitHub, Imply, Inferact … |
 | Sequoia Capital | venture firm | 30 | 17 | Chainguard, Deno Land Inc., Docker Inc., FastAPI Labs, GitHub, LangChain, Observable, Inc., Odoo SA … |
 | Lightspeed Venture Partners | venture firm | 24 | 13 | Chainguard, Grafana Labs, Hasura, Inferact, Marqo, Materialize, Mistral AI, Redpanda Data … |
 | New Enterprise Associates | venture firm | 24 | 17 | Acquia, Aerospike, Anyscale, Databricks, Elastic N.V., Metabase, MuleSoft, NGINX … |
-| Insight Partners | growth, crossover or PE | 23 | 17 | Anaconda, Inc., Appsmith, Astronomer, Automattic, CARTO, Camunda, CrewAI, Databricks … |
+| Insight Partners | growth, crossover or PE | 23 | 19 | Anaconda, Inc., Appsmith, Astronomer, Automattic, CARTO, Camunda, CrewAI, Databricks … |
+| Intel Capital | corporate / strategic | 23 | 5 | Lightbend, MariaDB, MinIO Inc., Mirantis, Truffle Security, AI21 Labs, Anyscale, Cloudera … |
 | Index Ventures | venture firm | 22 | 12 | Chai Discovery, ClickHouse, Confluent, Dagster Labs, Gatsby, Gluster, Kong Inc., Lightning AI … |
-| Intel Capital | corporate / strategic | 22 | 5 | Lightbend, MariaDB, MinIO Inc., Mirantis, Truffle Security, AI21 Labs, Anyscale, Cloudera … |
 | Coatue | growth, crossover or PE | 21 | 9 | ClickHouse, Confluent, Databricks, Kubecost, Nomic AI, SiFive, Stability AI, Starburst … |
-| NVIDIA (incl. NVentures) | corporate / strategic | 21 | 1 | AI21 Labs, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face, Lightning AI … |
-| Benchmark | venture firm | 20 | 12 | Airbyte, Buoyant, ClickHouse, Cockroach Labs, Docker Inc., Hortonworks, Hyperic, LangChain … |
-| Redpoint Ventures | venture firm | 20 | 11 | Chainguard, Couchbase, HumanSignal, Materialize, Mattermost, Preset, Significant Gravitas Ltd, Solo.io … |
+| NVIDIA (incl. NVentures) | corporate / strategic | 21 | 2 | AI21 Labs, MindsDB, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face … |
+| Benchmark | venture firm | 20 | 13 | Airbyte, Buoyant, ClickHouse, Cockroach Labs, Docker Inc., Hortonworks, Hyperic, LangChain … |
+| Redpoint Ventures | venture firm | 19 | 10 | Chainguard, Couchbase, HumanSignal, Materialize, Mattermost, Preset, Solo.io, Sourcegraph … |
 | GV | corporate / strategic | 18 | 9 | Ahana, Buoyant, CoreOS, GitLab Inc., Redpanda Data, Vercel, Warp, Weaveworks … |
+| SV Angel | venture firm | 18 | 0 | Airbyte, Anomaly, Buoyant, Civilized Discourse Construction Kit, Expo, FoundationDB, Hugging Face, Lightning AI … |
 | Bessemer Venture Partners | venture firm | 17 | 10 | Appwrite, Auterion, Boltz PBC, Coiled, Cypress.io, Imply, Netdata Inc., Teleport … |
-| SV Angel | venture firm | 17 | 0 | Airbyte, Anomaly, Buoyant, Civilized Discourse Construction Kit, Expo, FoundationDB, Hugging Face, Lightning AI … |
 | Salesforce Ventures | corporate / strategic | 16 | 4 | Automattic, Black Forest Labs, MuleSoft, Together AI, Airbyte, Astronomer, CARTO, Chainguard … |
+| Battery Ventures | venture firm | 15 | 4 | Chef Software, Code Ocean, InfluxData, Orkes, Bitwarden, Chai Discovery, ClickHouse, Cumulus Networks … |
 | CRV | venture firm | 15 | 8 | Gatsby, LanceDB, Meilisearch, ProjectDiscovery, Reflection AI, Strapi, Tailscale, Vercel … |
 | General Catalyst | venture firm | 15 | 8 | Chai Discovery, Gitpod, Ionic, MinIO Inc., Mistral AI, Modular Inc., Tidelift, Together AI … |
 | Kickstarter backers | crowdfunding | 15 | 0 | Augmented Instruments, Backyard Brains, Fonticons, Inc., George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI, OpenBCI … |
-| Battery Ventures | venture firm | 14 | 4 | Chef Software, Code Ocean, InfluxData, Orkes, Bitwarden, Chai Discovery, ClickHouse, Cumulus Networks … |
-| Goldman Sachs | growth, crossover or PE | 14 | 7 | DataStax, GitLab Inc., Harness, NGINX, Redis Ltd., Sonatype, SugarCRM, Acquia … |
+| Goldman Sachs | growth, crossover or PE | 14 | 6 | DataStax, GitLab Inc., Harness, NGINX, Redis Ltd., Sonatype, Acquia, Databricks … |
 | Guillermo Rauch | person (angel) | 14 | 0 | Astral, Chroma, Comfy Org, Dub Technologies, Mastra, Meilisearch, Oven, Prisma Data, Inc. … |
 | Kleiner Perkins | venture firm | 14 | 9 | Chainguard, Materialize, Nebula, Inc., Oven, Prisma Data, Inc., Puppet, RudderStack, Teleport … |
 | Nexus Venture Partners | venture firm | 14 | 9 | Fingerprint, Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve, Orkes, TileDB, Inc. … |
@@ -146,9 +152,9 @@ have disclosed funding, most of it only Y Combinator's. The funders that appear 
 
 | Universe | Investor-venture links | venture firm | corporate / strategic | person (angel) | accelerator / studio | growth, crossover or PE | state or sovereign investor | philanthropy | government grant | crowdfunding | crypto fund or DAO | bank or lender | other | unclassified |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| U1 | 1527 | 50% | 9% | 25% | 4% | 6% | 2% | 0% | 1% | 0% | 2% | 0% | 1% | 1% |
-| U2 | 354 | 49% | 15% | 10% | 2% | 6% | 3% | 1% | 4% | 6% | 4% | 0% |  | 1% |
-| U3 | 1137 | 55% | 18% | 9% | 1% | 12% | 2% | 0% | 1% | 0% | 1% | 1% |  | 1% |
+| U1 | 1574 | 49% | 9% | 25% | 4% | 5% | 2% | 0% | 1% | 0% | 2% | 0% | 1% | 2% |
+| U2 | 389 | 46% | 14% | 9% | 2% | 6% | 3% | 2% | 4% | 6% | 3% | 1% |  | 4% |
+| U3 | 1174 | 54% | 18% | 9% | 1% | 12% | 2% | 0% | 1% | 0% | 1% | 1% |  | 2% |
 | U4 | 1041 | 43% | 5% | 23% | 25% | 1% | 0% | 1% | 0% | 0% | 1% | 0% | 0% |  |
 
 ### Investors that say they invest in open source
@@ -164,7 +170,7 @@ Quoted from the firm's own page or from a public interview. The count is venture
 | New Enterprise Associates | “Open source/open core have become the essential model to get distribution and adoption quickly.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-2-of-2/)) | 25 |
 | Lightspeed Venture Partners | “most open-source startups need to really be hyper-focused on adoption in the beginning.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-2-of-2/)) | 25 |
 | Index Ventures | “At Index, we believe in the power of the open source movement. Adopting its spirit, this is a forum for sharing learnings and experiences” ([source](https://www.indexventures.com/opensource)) | 24 |
-| Redpoint Ventures | “We believe in the rise of open source at the application tier.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-1-of-2)) | 22 |
+| Redpoint Ventures | “We believe in the rise of open source at the application tier.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-1-of-2)) | 21 |
 | Bessemer Venture Partners | “this is one of the most essential ingredients for building a successful open-source project and commercial entity.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-2-of-2/)) | 20 |
 | CRV | “I still think it's an under-heated market.” ([source](https://techcrunch.com/2020/02/05/where-top-vcs-are-investing-in-open-source-and-dev-tools-part-1-of-2)) | 19 |
 | OSS Capital | “Open source is eating software faster than software is eating the world.” ([source](https://oss.capital)) | 15 |
@@ -179,7 +185,7 @@ Quoted from the firm's own page or from a public interview. The count is venture
 | Mozilla Ventures | “Mozilla Ventures is about fueling companies and products that put people before profits.” ([source](https://blog.mozilla.org/en/mozilla/mozilla-launches-first-of-its-kind-venture-fund-to-fuel-responsible-tech-companies-products/)) | 6 |
 | Runa Capital | “considers an active developer community instrumental for software businesses” ([source](https://runacap.com/ross-index/)) | 5 |
 | Boldstart Ventures | “When your open-source project is popular with a large audience of developers, that's great.” ([source](https://www.boldstart.vc/portfolio)) | 4 |
-| Open Core Ventures | “We turn open source projects into durable, venture-scale opportunities.” ([source](https://opencoreventures.com)) | 3 |
+| Open Core Ventures | “We turn open source projects into durable, venture-scale opportunities.” ([source](https://opencoreventures.com)) | 4 |
 | Zetta Venture Partners | “The beauty of open source from an investor's perspective is distribution, not innovation” ([source](https://www.linuxfoundation.org/blog/blog/perspectives-open-source-startups)) | 3 |
 | Serena | “The best performing startups in infrastructure are not hiding their source code—they're sharing it.” ([source](https://www.linuxfoundation.org/press/linux-foundation-cossa-and-serena-report-shows-venture-investment-in-open-source-outperforms-proprietary-counterparts-and-benefits-communities)) | 1 |
 | Zerodha | “A significant portion of our success and growth is owed to FOSS.” ([source](https://techcrunch.com/2024/11/10/open-source-projects-draw-equity-free-funding-from-corporates-startups-and-even-vcs)) | 1 |
@@ -191,7 +197,7 @@ Investment arms rolled up to their parent:
 | Group | Arms found | Ventures | Examples |
 | --- | --- | --- | --- |
 | Alphabet | CapitalG, GV, Google, Gradient Ventures | 44 | AI21 Labs, Ahana, Astro, Buoyant, CTGT, Charm, Cockroach Labs, CoreOS, Databricks, Determined AI |
-| Intel | Intel Capital | 23 | AI21 Labs, Anyscale, Cloudera, CollabNet, Hugging Face, JBoss, Kaltura, Lightbend, MariaDB, MinIO Inc. |
+| Intel | Intel Capital | 24 | AI21 Labs, Anyscale, Cloudera, CollabNet, Hugging Face, JBoss, Kaltura, Lightbend, MariaDB, MinIO Inc. |
 | NVIDIA | NVIDIA (incl. NVentures) | 22 | AI21 Labs, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face, Lightning AI, MindsDB, Mistral AI |
 | Microsoft | GitHub, M12, Microsoft | 20 | Arcee AI, Code Ocean, Databricks, Embedchain, Isovalent, Ivy, Mem0, Mermaid Chart, Mesosphere, Neon |
 | Samsung | Samsung | 20 | AI21 Labs, Activeloop, Arcee AI, ClearML, Daytona Platforms, Enso, GitLab Inc., H Company, Ivy, Liquid AI |
@@ -207,8 +213,8 @@ Individually:
 
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Intel Capital | corporate / strategic | 23 | 6 | Lightbend, MariaDB, MinIO Inc., Mirantis, TrueFoundry, Truffle Security, AI21 Labs, Anyscale … |
-| NVIDIA (incl. NVentures) | corporate / strategic | 22 | 1 | AI21 Labs, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face, Lightning AI … |
+| Intel Capital | corporate / strategic | 24 | 6 | Lightbend, MariaDB, MinIO Inc., Mirantis, TrueFoundry, Truffle Security, AI21 Labs, Anyscale … |
+| NVIDIA (incl. NVentures) | corporate / strategic | 22 | 2 | AI21 Labs, MindsDB, Black Forest Labs, Cohere, Cumulus Networks, Databricks, EvolutionaryScale, Hugging Face … |
 | GV | corporate / strategic | 20 | 11 | Ahana, Buoyant, CoreOS, GitLab Inc., Redpanda Data, Roboflow, Vercel, Warp … |
 | Samsung | corporate / strategic | 20 | 4 | AI21 Labs, Mistral AI, ScyllaDB, Tenstorrent, Activeloop, Arcee AI, ClearML, Daytona Platforms … |
 | Salesforce Ventures | corporate / strategic | 19 | 4 | Automattic, Black Forest Labs, MuleSoft, Together AI, Airbyte, Astronomer, CARTO, Chainguard … |
@@ -221,6 +227,7 @@ Individually:
 | AMD | corporate / strategic | 7 | 1 | Liquid AI, Cohere, Hugging Face, Oxide Computer Company, RadixArk, Stability AI, Wafer |
 | Alibaba | corporate / strategic | 7 | 5 | 01.AI, Baichuan Intelligence, MariaDB, MiniMax, Moonshot AI, Sealos, Z.ai |
 | Amazon | corporate / strategic | 7 | 0 | Acquia, Databricks, EvolutionaryScale, H Company, Hugging Face, Mentra, Weaveworks |
+| IBM | corporate / strategic | 7 | 1 | Lightbend, Ahana, DataStax, Hugging Face, Kubecost, Mistral AI, Red Hat |
 | Red Hat | corporate / strategic | 7 | 1 | Jaspersoft, Ansible, CoreOS, Gluster, Mirantis, MongoDB Inc., MySQL AB |
 | Automattic | corporate / strategic | 6 | 0 | Deno Land Inc., Element, Hoppscotch, Liquid AI, Riot IM, Twenty |
 | GitHub | corporate / strategic | 6 | 0 | Embedchain, Mem0, ToolJet, Vectify AI, formbricks, npm, Inc. |
@@ -228,7 +235,6 @@ Individually:
 | Mozilla Ventures | corporate / strategic | 6 | 0 | Adap, Deno Land Inc., Flower, Hugging Face, Nous Research, Probabl |
 | Qualcomm Ventures | corporate / strategic | 6 | 3 | 3D Robotics, Particle, ScyllaDB, Daytona Platforms, Hugging Face, SiFive |
 | Tencent | corporate / strategic | 6 | 2 | Baichuan Intelligence, Moonshot AI, DeepSeek, MiniMax, StepFun, Z.ai |
-| IBM | corporate / strategic | 5 | 1 | Lightbend, Ahana, Hugging Face, Mistral AI, Red Hat |
 | SAP Ventures | corporate / strategic | 5 | 1 | Jaspersoft, Alfresco Software, Mirantis, MySQL AB, Zend Technologies |
 | Atlassian Ventures | corporate / strategic | 4 | 0 | Docker Inc., Liveblocks, Raycast, Tidelift |
 | CapitalG | corporate / strategic | 4 | 2 | LangChain, Odoo SA, Databricks, Grafana Labs |
@@ -245,11 +251,11 @@ Individually:
 
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 314 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, ARC Prize Foundation … |
+| Y Combinator | accelerator / studio | 313 | 4 | Imgix, Mattermost, PostHog Inc., SigNoz, /dev/fast, 0.security, 280 North, ARC Prize Foundation … |
 | Neo | accelerator / studio | 4 | 1 | Bluesky, Dagster Labs, Mage, Warp |
-| Open Core Ventures | accelerator / studio | 3 | 0 | Mermaid Chart, Phaser Studio Inc., Stirling PDF |
+| Open Core Ventures | accelerator / studio | 4 | 0 | GrapesJS, Mermaid Chart, Phaser Studio Inc., Stirling PDF |
+| Techstars | accelerator / studio | 4 | 0 | Comet ML, Ionic, Open Bionics, Qovery |
 | SOSV | accelerator / studio | 3 | 0 | Crowd Supply, Opentrons Labworks, Particle |
-| Techstars | accelerator / studio | 3 | 0 | Comet ML, Ionic, Qovery |
 | 500 Global | accelerator / studio | 2 | 0 | Mycroft AI, Sakana AI |
 | AI Grant | accelerator / studio | 2 | 0 | Reworkd, Rowan |
 | Antler | accelerator / studio | 2 | 0 | NetBird, Nhost |
@@ -267,19 +273,19 @@ Individually:
 | Tom Preston-Werner | person (angel) | 10 | 1 | Gitpod, AppFlowy, Liquid AI, Nhost, Nrwl, OpenPipe, SigNoz, Spacedrive Technology … |
 | Clem Delangue | person (angel) | 9 | 0 | Adap, FastAPI Labs, Flower, Kestra Technologies, Letta, NanoCo, Prime Intellect, Together AI … |
 | Nat Friedman | person (angel) | 9 | 2 | EvolutionaryScale, Logseq Inc., Chroma, Dagger, Daily, Deno Land Inc., Strapi, Vercel … |
-| Paul Copplestone | person (angel) | 9 | 0 | Embedchain, Infracost, Mem0, Pynecone, Reflex, Resend, SigNoz, Trigger.dev … |
+| Paul Copplestone | person (angel) | 9 | 0 | E2B, Embedchain, Infracost, Mem0, Pynecone, Reflex, Resend, Trigger.dev … |
 | Paul Graham | person (angel) | 9 | 0 | Browser Use, Mastra, Mentra, Paradev, Rescale, Reworkd, Sim, Tinfoil … |
+| Elad Gil | person (angel) | 7 | 1 | Infisical, LiveKit, Neon, OpenBB Inc., Resend, Streamlit, Warp |
+| Olivier Pomel | person (angel) | 7 | 0 | Daytona Platforms, Embedchain, Fig, Hugging Face, Kestra Technologies, Mem0, RadixArk |
 | Amjad Masad | person (angel) | 6 | 0 | Chroma, LiveKit, Mastra, Million, ResearchHub, Roboflow |
 | Balaji Srinivasan | person (angel) | 6 | 0 | Dub Technologies, LabDAO, Mastra, Molecule, Nous Research, VitaDAO |
-| Elad Gil | person (angel) | 6 | 1 | Infisical, LiveKit, Neon, Resend, Streamlit, Warp |
+| Logan Kilpatrick | person (angel) | 6 | 0 | Cline Bot Inc., LiveKit, OpenPipe, Pydantic Services, RadixArk, Supermemory |
 | Naval Ravikant | person (angel) | 6 | 0 | Cal.com, Inc., Chroma, OpenBB Inc., Spacedrive Technology, TrueFoundry, Vercel |
 | Nicolas Dessaigne | person (angel) | 6 | 0 | Kestra Technologies, Medusa, Paradev, Prisma Data, Inc., Strapi, ToolJet |
-| Olivier Pomel | person (angel) | 6 | 0 | Daytona Platforms, Embedchain, Fig, Hugging Face, Kestra Technologies, Mem0 |
 | Bob Young | person (angel) | 5 | 0 | AppFlowy, Liquid AI, NocoDB, OpenBB Inc., ResearchHub |
 | Calvin French-Owen | person (angel) | 5 | 0 | Airbyte, Raycast, Resend, Roboflow, Shuttle |
 | Dharmesh Shah | person (angel) | 5 | 0 | Composio, CrewAI, Embedchain, Mem0, Twenty |
 | Jeff Dean | person (angel) | 5 | 0 | Letta, LiveKit, Roboflow, Supermemory, marimo |
-| Logan Kilpatrick | person (angel) | 5 | 0 | Cline Bot Inc., LiveKit, OpenPipe, Pydantic Services, Supermemory |
 | Scott Belsky | person (angel) | 5 | 0 | Embedchain, Gatsby, Mage, Mem0, Roboflow |
 | Tristan Handy | person (angel) | 5 | 0 | Evidence, Kestra Technologies, Letta, Mastra, Pydantic Services |
 | Daniel Gross | person (angel) | 4 | 1 | EvolutionaryScale, Chroma, Streamlit, ggml.ai |
@@ -299,61 +305,61 @@ These join later and larger rounds, mostly of AI and infrastructure companies:
 
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Insight Partners | growth, crossover or PE | 25 | 19 | Anaconda, Inc., Apollo, Appsmith, Astronomer, Automattic, Bitrise, CARTO, Camunda … |
+| Insight Partners | growth, crossover or PE | 25 | 21 | Anaconda, Inc., Apollo, Appsmith, Astronomer, Automattic, Bitrise, CARTO, Camunda … |
 | Coatue | growth, crossover or PE | 22 | 10 | ClickHouse, Confluent, Databricks, Kubecost, Nomic AI, Raycast, SiFive, Stability AI … |
 | Tiger Global | growth, crossover or PE | 16 | 9 | Appwrite, CloudQuery, Cohere, Daily, OctoML, Prefect Technologies, Redis Ltd., Temporal Technologies … |
-| Goldman Sachs | growth, crossover or PE | 14 | 7 | DataStax, GitLab Inc., Harness, NGINX, Redis Ltd., Sonatype, SugarCRM, Acquia … |
+| Goldman Sachs | growth, crossover or PE | 14 | 6 | DataStax, GitLab Inc., Harness, NGINX, Redis Ltd., Sonatype, Acquia, Databricks … |
 | Altimeter Capital | growth, crossover or PE | 10 | 7 | Airbyte, ClickHouse, Cockroach Labs, LiveKit, Prisma Data, Inc., Solo.io, dbt Labs, Confluent … |
 | GIC | state or sovereign investor | 10 | 3 | Grafana Labs, Supabase, Vercel, Anaconda, Inc., ClickHouse, Databricks, LangChain, PingCAP … |
 | Bpifrance | state or sovereign investor | 8 | 0 | Genymobile, H Company, HARFANG 3D, Mistral AI, Pollen Robotics, Probabl, Strapi, Talend |
 | Alkeon Capital | growth, crossover or PE | 5 | 0 | Databricks, GitLab Inc., Harness, Odoo SA, Yugabyte |
+| BlackRock | growth, crossover or PE | 5 | 0 | Anaconda, Inc., Databricks, Mistral AI, Odoo SA, Voltron Data |
+| In-Q-Tel | state or sovereign investor | 5 | 0 | Cloudera, Docker Inc., MongoDB Inc., Sakana AI, Sysdig |
 | J.P. Morgan | growth, crossover or PE | 5 | 1 | Databricks, Astronomer, Cockroach Labs, Grafana Labs, Lightning AI |
-| BlackRock | growth, crossover or PE | 4 | 0 | Databricks, Mistral AI, Odoo SA, Voltron Data |
 | DFJ Growth | growth, crossover or PE | 4 | 1 | Mapbox, LangChain, Modular Inc., Sysdig |
 | Franklin Templeton | growth, crossover or PE | 4 | 2 | Databricks, HashiCorp, Confluent, GitLab Inc. |
 | Hillhouse | growth, crossover or PE | 4 | 1 | Zilliz, Alluxio, MiniMax, Z.ai |
-| In-Q-Tel | state or sovereign investor | 4 | 0 | Cloudera, Docker Inc., MongoDB Inc., Sakana AI |
-| Shenzhen Capital Group | state or sovereign investor | 4 | 2 | Layabox, ModelBest, Baichuan Intelligence, Seeed Studio |
 | SoftBank (Vision Fund) | growth, crossover or PE | 4 | 2 | Mapbox, Opentrons Labworks, MinIO Inc., Redis Ltd. |
 | T. Rowe Price | growth, crossover or PE | 4 | 1 | Mesosphere, Cloudera, Databricks, SiFive |
 | Adams Street Partners | growth, crossover or PE | 3 | 3 | Couchbase, Dremio, Jaspersoft |
 | Atreides Management | growth, crossover or PE | 3 | 1 | SiFive, Deep Cogito, Oxide Computer Company |
 | BOND | growth, crossover or PE | 3 | 1 | Sentry, ClickHouse, Cockroach Labs |
+| Baillie Gifford | growth, crossover or PE | 3 | 0 | Chai Discovery, Databricks, Tenstorrent |
 
 ### Who joins early rounds (pre-seed, seed, angel, accelerator, Series A; U1–U4)
 
 | Funder | Type | Early rounds joined | Of which led | Ventures |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 365 | 2 | /dev/fast, 0.security, 280 North, ARC Prize Foundation, Activeloop, Activepieces, Acyclic Labs, Adap |
-| Accel | venture firm | 28 | 22 | Airbyte, Appsmith, Astral, Cloudera, Couchbase, ForgeRock, H Company, Heptio |
-| Andreessen Horowitz | venture firm | 22 | 14 | Alluxio, Anyscale, Black Forest Labs, Boltz PBC, Civit, Databricks, Flotype, GitButler |
+| Y Combinator | accelerator / studio | 372 | 2 | /dev/fast, 0.security, 280 North, ARC Prize Foundation, Activeloop, Activepieces, Acyclic Labs, Adap |
+| Accel | venture firm | 30 | 24 | Airbyte, Appsmith, Astral, Cloudera, Couchbase, ForgeRock, H Company, Heptio |
+| Andreessen Horowitz | venture firm | 23 | 15 | Alluxio, Anyscale, Black Forest Labs, Boltz PBC, Civit, Databricks, Flotype, GitButler |
 | SV Angel | venture firm | 20 | 1 | Airbyte, Anomaly, Buoyant, Composio, Imgix, KERNEL, Mastra, Modular Inc. |
-| Guillermo Rauch | person (angel) | 18 | 0 | Astral, Chroma, Comfy Org, ComfyUI, LastMile AI, LiveKit, Mastra, Meilisearch |
-| Sequoia Capital | venture firm | 17 | 10 | Chainguard, Cockroach Labs, Dagster Labs, Deno Land Inc., FastAPI Labs, Infracost, LangChain, Mermaid Chart |
+| Guillermo Rauch | person (angel) | 19 | 0 | Astral, Chroma, Comfy Org, ComfyUI, LastMile AI, LiveKit, Mastra, Meilisearch |
+| Sequoia Capital | venture firm | 18 | 10 | Chainguard, Cockroach Labs, Dagster Labs, Deno Land Inc., FastAPI Labs, Infracost, LangChain, Mermaid Chart |
+| Lux Capital | venture firm | 16 | 9 | Ahana, Airweave, DeepSeek, EvolutionaryScale, Hugging Face, Pynecone, Reflex, Sakana AI |
 | New Enterprise Associates | venture firm | 16 | 7 | Anyscale, Metabase, Neural Magic, Pentaho, Rocket.Chat, Sakana AI, Sentry, Tiger Data |
 | Amplify Partners | venture firm | 16 | 5 | Anyscale, Boltz PBC, Chainguard, Dagster Labs, OctoML, PostgresML, Prisma Data, Inc., ReadySet |
+| Benchmark | venture firm | 15 | 11 | Airbyte, Buoyant, ClickHouse, Cockroach Labs, Deep Cogito, Docker Inc., Hortonworks, Hyperic |
 | Lightspeed Venture Partners | venture firm | 15 | 11 | Composio, Grafana Labs, Inferact, Langfuse, Marqo, Materialize, Mistral AI, ProjectDiscovery |
 | Nexus Venture Partners | venture firm | 15 | 9 | Browser Use, Deep Cogito, Fingerprint, Firecrawl, Hasura, MinIO Inc., Nrwl, OpenObserve |
-| Lux Capital | venture firm | 15 | 8 | Ahana, Airweave, DeepSeek, EvolutionaryScale, Hugging Face, Pynecone, Reflex, Sakana AI |
 | CRV | venture firm | 14 | 9 | Gatsby, LanceDB, Lepton AI, LocalStack, Meilisearch, ProjectDiscovery, Reflection AI, RethinkDB |
 | General Catalyst | venture firm | 14 | 7 | Anaconda, Inc., CTGT, Gitpod, Ionic, JuliaHub, Kilo Code, MinIO Inc., Modular Inc. |
 | GV | corporate / strategic | 14 | 5 | Ahana, Cockroach Labs, Meltano, Modular Inc., PostHog Inc., Redpanda Data, Voltron Data, Warp |
-| Benchmark | venture firm | 12 | 10 | Airbyte, Buoyant, ClickHouse, Cockroach Labs, Deep Cogito, Docker Inc., Hortonworks, Hyperic |
+| OSS Capital | venture firm | 13 | 9 | AppFlowy, Dagster Labs, Hoppscotch, Liquid AI, NocoDB, OpenBB Inc., Plane, Remix Software |
 | Bessemer Venture Partners | venture firm | 12 | 9 | Appsmith, Appwrite, Boltz PBC, Coiled, Cypress.io, Fern, Herdr, Portainer.io |
-| OSS Capital | venture firm | 11 | 7 | AppFlowy, Dagster Labs, Hoppscotch, Liquid AI, NocoDB, OpenBB Inc., Plane, Remix Software |
-| Intel Capital | corporate / strategic | 11 | 2 | Anyscale, MinIO Inc., Mirantis, Oxide Computer Company, Prime Intellect, Tetrate, TileDB, Inc., TrueFoundry |
+| Intel Capital | corporate / strategic | 12 | 2 | Anyscale, MinIO Inc., Mirantis, Oxide Computer Company, Prime Intellect, Tetrate, TileDB, Inc., TrueFoundry |
 | Uncorrelated Ventures | venture firm | 11 | 1 | Cube Dev, Fingerprint, Firezone, Meltano, Netmaker, NocoDB, Okteto, QuestDB |
+| Mango Capital | venture firm | 11 | 0 | CloudQuery, Coqui, Gatsby, Infracost, Jina AI, Meilisearch, ProjectDiscovery, Unstructured |
 | Redpoint Ventures | venture firm | 10 | 8 | Couchbase, Dagger, HumanSignal, LiveKit, Mattermost, Mistral AI, Solo.io, Sourcegraph |
 | Gradient Ventures | corporate / strategic | 10 | 6 | CTGT, Infisical, LastMile AI, Mage, Mastra, Orchest, Payload, Streamlit |
 | Index Ventures | venture firm | 10 | 6 | ClickHouse, Dagster Labs, Lightning AI, MinIO Inc., Mistral AI, Pentaho, ReadySet, Starburst |
 | True Ventures | venture firm | 10 | 4 | 3D Robotics, Iterative, MakerBot Industries, Puppet, Sofar Ocean Technologies, Solo.io, Vectorize, Inc., npm, Inc. |
 | Seedcamp | venture firm | 10 | 1 | Appwrite, Liveblocks, Medusa, Meilisearch, Orchest, QuestDB |
-| Mango Capital | venture firm | 10 | 0 | CloudQuery, Gatsby, Infracost, Jina AI, Meilisearch, ProjectDiscovery, Unstructured, Upstash |
+| Pioneer Fund | venture firm | 10 | 0 | Adap, Airweave, BerriAI, Fossorial, LiteLLM, Mastra, Netmaker, Paradev |
 | FirstMark | venture firm | 9 | 5 | Cockroach Labs, Daytona Platforms, H Company, Lago, SurrealDB Ltd |
+| 468 Capital | venture firm | 9 | 3 | Activeloop, Fossorial, Iterative, OpenReplay, Paradev, QuestDB, RudderStack, Wasp |
+| NVIDIA (incl. NVentures) | corporate / strategic | 9 | 1 | EvolutionaryScale, MindsDB, Prime Intellect, Radical AI, RadixArk, Reflection AI, Sakana AI, Together AI |
 | Tom Preston-Werner | person (angel) | 9 | 1 | AppFlowy, Gitpod, Liquid AI, Nhost, Nrwl, OpenPipe, SigNoz, Zed Industries |
-| Clem Delangue | person (angel) | 9 | 0 | Adap, FastAPI Labs, Kestra Technologies, Letta, NanoCo, Prime Intellect, Together AI, marimo |
-| Pioneer Fund | venture firm | 9 | 0 | Adap, Airweave, BerriAI, LiteLLM, Mastra, Netmaker, Paradev, Trigger.dev |
-| Kleiner Perkins | venture firm | 8 | 7 | CodeSandbox, Nebula, Inc., Oven, Prisma Data, Inc., RudderStack, Teleport, Together AI |
 
 ## Open hardware, open science, lab and science-software ventures
 
@@ -364,15 +370,15 @@ DAL and the SDL kit. Every venture with its funders is in
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
 | Kickstarter backers | crowdfunding | 14 | 0 | Augmented Instruments, Backyard Brains, George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI, OpenBCI, OpenMV … |
+| Intel Capital | corporate / strategic | 5 | 0 | Hugging Face, Open Bionics, Oxide Computer Company, SiFive, TileDB, Inc. |
 | NVIDIA (incl. NVentures) | corporate / strategic | 5 | 0 | EvolutionaryScale, Hugging Face, Orbital Materials, Radical AI, SiFive |
-| Intel Capital | corporate / strategic | 4 | 0 | Hugging Face, Oxide Computer Company, SiFive, TileDB, Inc. |
+| Crowd Supply backers | crowdfunding | 4 | 0 | Augmented Instruments, Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Qualcomm Ventures | corporate / strategic | 4 | 2 | 3D Robotics, Particle, Hugging Face, SiFive |
 | True Ventures | venture firm | 4 | 1 | 3D Robotics, Inventables, MakerBot Industries, Sofar Ocean Technologies |
 | Balaji Srinivasan | person (angel) | 3 | 0 | LabDAO, Molecule, VitaDAO |
 | Bessemer Venture Partners | venture firm | 3 | 3 | Auterion, Boltz PBC, Coiled |
 | Bpifrance | state or sovereign investor | 3 | 0 | HARFANG 3D, Pollen Robotics, Probabl |
 | Costanoa Ventures | venture firm | 3 | 1 | Coiled, Auterion, prefix.dev |
-| Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Digital Science | corporate / strategic | 3 | 0 | Authorea, Figshare, Overleaf |
 | Foundry Group | venture firm | 3 | 3 | 3D Robotics, MakerBot Industries, Sofar Ocean Technologies |
 | General Catalyst | venture firm | 3 | 1 | Chai Discovery, Anaconda, Inc., JuliaHub |
@@ -401,7 +407,7 @@ DAL and the SDL kit. Every venture with its funders is in
 
 What stands out, reading the venture table rather than the counts:
 
-- **Few repeat backers.** Only 11 funders backed three or more of the 97 U2 ventures; most funders
+- **Few repeat backers.** Only 13 funders backed three or more of the 97 U2 ventures; most funders
   of open hardware and science appear once. A general list of open-source investors is a weak guide here.
 - **Crowdfunding is the most common single source.** Kickstarter, Crowd Supply and equity-crowdfunding campaigns
   funded OpenBCI, Opentrons, Pine64, Bela, OpenMV, Luxonis, Backyard Brains, Great Scott Gadgets, Printrbot,
@@ -498,6 +504,15 @@ Philanthropy also reaches open-source companies directly, in the deal data:
 - Knight Foundation co-led Authorea's 2016 round with Lux Capital.
 - Jed McCaleb and Sam Altman fund Arcadia Science.
 
+Several philanthropists also invest in open-source ventures in their own names (deal data):
+- Xavier Niel: personally in Mistral AI, H Company and Odoo, and through Kima Ventures in 13 ventures, among them
+  Docker, Strapi and Meilisearch.
+- Eric Schmidt: H Company, Reflection AI and Stability AI, and through Innovation Endeavors.
+- Bob Young, co-founder of Red Hat: AppFlowy, NocoDB, OpenBB, ResearchHub and Liquid AI.
+- Mark Shuttleworth: Inktank.
+- Jeff Bezos: Kong and Rescale, and through Bezos Expeditions MakerBot and Tenstorrent.
+- Patrick Collison: Daytona and Logseq.
+
 ## Governments and public programs
 
 Grants unless marked as investment. "→ firms" says whether companies can receive it.
@@ -532,6 +547,11 @@ Grants unless marked as investment. "→ firms" says whether companies can recei
 | --- | --- | --- | --- | --- | --- |
 | GitHub (Microsoft) | [GitHub Sponsors](https://github.blog/open-source/maintainers/100-million-for-open-source-a-milestone-built-by-the-community/) | 2019– | $100M paid out cumulatively | sometimes | maintainers and projects |
 | GitHub with M12 | [GitHub Fund and GitHub Accelerator](https://github.com/open-source/accelerator) | 2023– | GitHub reports "$130MM+ invested in open source" | yes | ToolJet, Unsloth |
+| GitHub | [Accelerator, 2023 cohort](https://github.blog/2023-04-12-github-accelerator-our-first-cohort-and-whats-next/) | 2023 | $20k for each of 20 projects | sometimes | htmx, Nuxt, Datasette, tRPC, Dioxus, Formbricks |
+| Andreessen Horowitz | Open Source AI Grant, batches [1](https://a16z.com/2023/08/30/supporting-the-open-source-ai-community/), [2](https://a16z.com/announcing-our-latest-open-source-ai-grants/), [3](https://a16z.com/advancing-open-source-ai-through-benchmarks-and-bold-experimentation/) | 2023– | n/a | no (equity-free) | TheBloke, Axolotl, SkyPilot, LMSYS, SGLang, Open WebUI's author |
+| Nat Friedman and Daniel Gross | [AI Grant](https://aigrant.com/) | 2017– | $250k SAFE per startup in recent batches | yes | ggml, Replicate, Browserbase, Perplexity |
+| OSS Capital (Joseph Jacks) | [three seed funds for commercial open source](https://techcrunch.com/2024/10/20/joseph-jacks-bets-on-open-source-startups-a-paradox-of-philanthropy-and-capitalism/) | 2018– | about $150M (three funds of about $50M) | yes | Cal.com, AppFlowy, Plane, Hoppscotch, OpenBB, W4 Games |
+| Open Source Endowment | [endowment for maintainers](https://endowment.dev/) | 2026– | $0.77M | no | maintainers |
 | GitHub with partners | [Secure Open Source Fund](https://techcrunch.com/2024/11/19/github-launches-1-25m-open-source-fund-with-a-focus-on-security/) | 2024– | $1.25M | no | security of critical projects |
 | Microsoft, Google, Amazon, Citi and others | [OpenSSF Alpha-Omega](https://openssf.org/community/alpha-omega/) | 2022– | $12.5M (2026 round) | no | security of critical projects |
 | Sentry and member companies | [Open Source Pledge](https://opensourcepledge.com/) | 2024– | $9.8M pledged | no | $2,000 per developer a year to maintainers |
@@ -558,12 +578,13 @@ and patent-based ones about 33% less (Bort et al. 2024; [Edison answer](edison/f
 
 ## How good is the list?
 
-Four checks of different kinds. Together they say the list is **mostly right but incomplete**: the names it has
+Five checks of different kinds. Together they say the list is **mostly right but incomplete**: the names it has
 are well supported, but a fuller search finds more. Treat every count as a lower bound.
 
 | Check | What it tests | Result |
 | --- | --- | --- |
-| Every investor name against the page its round cites ([`data/source_checks_deals.csv`](data/source_checks_deals.csv)) | that the source says what the row says | Of 4,445 names whose page could be fetched: 4,185 (94%) appear in the page text; 0 more appear only in its markup, which is how company pages show investor logos; 260 don't appear at all. Those are mostly Chinese names recorded in English, pages that load by script, and some real errors. A verification pass reopened ? of them from news and database sources: ? confirmed on the cited page, ? on another page, ? not supported (left out of the counts) and ? unclear |
+| Every investor name against the page its round cites ([`data/source_checks_deals.csv`](data/source_checks_deals.csv)) | that the source says what the row says | Of 5,118 names whose page could be fetched: 4,815 (94%) appear in the page text; 164 more appear only in its markup, which is how company pages show investor logos; 139 don't appear at all. Those are mostly Chinese names recorded in English, pages that load by script, and some real errors. A verification pass reopened 99 of them from news and database sources: 68 confirmed on the cited page, 16 on another page, 10 not supported (left out of the counts) and 5 unclear |
+| A hand check of 12 links drawn at random | that the name is a funder of that venture, in context | 9 confirmed in the cited sentence; 3 on pages that couldn't be read (a bot wall, a product page, a press release that loads by script). None was wrong |
 | Investors' own portfolio pages ([`data/portfolio/`](data/portfolio/)) | recall, from the investors' side | Of 105 portfolio pages, 77 could be read. They link to 70 ventures in this list by website, and 68 of those links were already in the deal data |
 | Edison's blind audit of 40 randomly drawn ventures ([`edison/fund_deal_audit_answer.md`](edison/fund_deal_audit_answer.md), [comparison](data/edison_audit_comparison.csv)) | recall and precision, independently, with web search | Edison named 296 funders for the 40 ventures and this list 180. **86% of this list's names are in Edison's**, but this list has only 52% of Edison's. Most of Edison's extra names fall into three groups:<br>• more participants in rounds this list already has;<br>• funders of the 8 audited ventures where this list found none (e.g. Coqui, Terrastruct, Bitcraze, Antmicro);<br>• angels, government grants, lenders and crowdfunding.<br>Edison also counted one project's corporate sponsors as funders. Edison found nothing for any venture where this list found funders |
 | Edison's literature answer ([`edison/fund_who_funds_open_source_answer.md`](edison/fund_who_funds_open_source_answer.md), [check](data/edison_literature_check.csv)) | whether well-known funders are missing | 45 of the 47 funders it names are in the deal data or the program tables. The two missing are Indiegogo backers and the Footprint Coalition, which ran a 2023 low-cost science-tools grant with Moore and Schmidt Futures |
@@ -629,7 +650,7 @@ audited ventures are now covered better than the rest.
   - Chinese-language sources were read for a handful of companies only.
   - U4 (young startups) was researched lightly by design: for most of it, YC's own page and a quick look at the
     company site.
-- **"None found" means none found.** Of the companies behind the most-starred projects, 153 have no
+- **"None found" means none found.** Of the companies behind the most-starred projects, 147 have no
   disclosed outside funding in this data. Some will have raised money that was never announced or that these
   sources don't reach.
 - **U2, U3 and U4 are not random.** U2 was picked for relevance and U3 for fame. U4 comes from lists kept by an

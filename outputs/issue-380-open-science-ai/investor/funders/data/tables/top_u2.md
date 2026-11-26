@@ -6,9 +6,11 @@
 | Balaji Srinivasan | person (angel) | 3 | 0 | LabDAO, Molecule, VitaDAO |
 | Bessemer Venture Partners | venture firm | 3 | 3 | Auterion, Boltz PBC, Coiled |
 | Costanoa Ventures | venture firm | 3 | 1 | Coiled, Auterion, prefix.dev |
+| Crowd Supply backers | crowdfunding | 3 | 0 | Augmented Instruments, Lime Microsystems, MNT Research |
 | Digital Science | corporate / strategic | 3 | 0 | Authorea, Figshare, Overleaf |
 | Foundry Group | venture firm | 3 | 3 | 3D Robotics, MakerBot Industries, Sofar Ocean Technologies |
 | General Catalyst | venture firm | 3 | 1 | Chai Discovery, Anaconda, Inc., JuliaHub |
+| Intel Capital | corporate / strategic | 3 | 0 | Open Bionics, Oxide Computer Company, SiFive |
 | Qualcomm Ventures | corporate / strategic | 3 | 2 | 3D Robotics, Particle, SiFive |
 | Spark Capital | venture firm | 3 | 3 | Framework Computer, Particle, SiFive |
 | Anzu Partners | venture firm | 2 | 1 | Arduino, Framework Computer |
@@ -19,12 +21,11 @@
 | Bezos Expeditions | person (angel) | 2 | 0 | MakerBot Industries, Tenstorrent |
 | Bpifrance | state or sovereign investor | 2 | 0 | Pollen Robotics, Probabl |
 | Counterpart Ventures | venture firm | 2 | 0 | Oxide Computer Company, Particle |
-| Crowd Supply backers | crowdfunding | 2 | 0 | Lime Microsystems, MNT Research |
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |
 | Greycroft | venture firm | 2 | 0 | Boltz PBC, Inventables |
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
-| Intel Capital | corporate / strategic | 2 | 0 | Oxide Computer Company, SiFive |
+| Innovate UK | government grant | 2 | 0 | Augmented Instruments, Open Bionics |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | Lux Capital | venture firm | 2 | 2 | Authorea, EvolutionaryScale |
 | Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |

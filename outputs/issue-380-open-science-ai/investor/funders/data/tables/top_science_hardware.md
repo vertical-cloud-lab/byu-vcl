@@ -1,15 +1,15 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
 | Kickstarter backers | crowdfunding | 14 | 0 | Augmented Instruments, Backyard Brains, George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI, OpenBCI, OpenMV … |
+| Intel Capital | corporate / strategic | 5 | 0 | Hugging Face, Open Bionics, Oxide Computer Company, SiFive, TileDB, Inc. |
 | NVIDIA (incl. NVentures) | corporate / strategic | 5 | 0 | EvolutionaryScale, Hugging Face, Orbital Materials, Radical AI, SiFive |
-| Intel Capital | corporate / strategic | 4 | 0 | Hugging Face, Oxide Computer Company, SiFive, TileDB, Inc. |
+| Crowd Supply backers | crowdfunding | 4 | 0 | Augmented Instruments, Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Qualcomm Ventures | corporate / strategic | 4 | 2 | 3D Robotics, Particle, Hugging Face, SiFive |
 | True Ventures | venture firm | 4 | 1 | 3D Robotics, Inventables, MakerBot Industries, Sofar Ocean Technologies |
 | Balaji Srinivasan | person (angel) | 3 | 0 | LabDAO, Molecule, VitaDAO |
 | Bessemer Venture Partners | venture firm | 3 | 3 | Auterion, Boltz PBC, Coiled |
 | Bpifrance | state or sovereign investor | 3 | 0 | HARFANG 3D, Pollen Robotics, Probabl |
 | Costanoa Ventures | venture firm | 3 | 1 | Coiled, Auterion, prefix.dev |
-| Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Digital Science | corporate / strategic | 3 | 0 | Authorea, Figshare, Overleaf |
 | Foundry Group | venture firm | 3 | 3 | 3D Robotics, MakerBot Industries, Sofar Ocean Technologies |
 | General Catalyst | venture firm | 3 | 1 | Chai Discovery, Anaconda, Inc., JuliaHub |
@@ -37,6 +37,7 @@
 | Google | corporate / strategic | 2 | 0 | Hugging Face, K-Dense |
 | Greycroft | venture firm | 2 | 0 | Boltz PBC, Inventables |
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
+| Innovate UK | government grant | 2 | 0 | Augmented Instruments, Open Bionics |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | Mozilla Ventures | corporate / strategic | 2 | 0 | Hugging Face, Probabl |
@@ -45,6 +46,6 @@
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |
 | Real Ventures | venture firm | 2 | 1 | Plotly, Tenstorrent |
 | Seed Club Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Molecule |
-| Shenzhen Capital Group | state or sovereign investor | 2 | 1 | Layabox, Seeed Studio |
 | Shine Capital | venture firm | 2 | 0 | Molecule, VitaDAO |
+| Silicon Valley Bank | bank or lender | 2 | 1 | Plotly, Anaconda, Inc. |
 | Speedinvest | venture firm | 2 | 1 | Seqera, Molecule |

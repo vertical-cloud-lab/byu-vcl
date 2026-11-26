@@ -60,6 +60,11 @@ The scope and counting rules were committed before any funding data was gathered
   - Programs: CZI, Sloan, Moore and Schmidt Sciences; DOE's Exascale Computing Project; NSF's POSE and CSSI;
     Germany's Sovereign Tech Agency; the EU's NGI grants through NLnet.
   - Recipients are mostly projects, universities and nonprofits.
+- **The list is accurate but incomplete. Treat every count as a lower bound.**
+  - {{source_check.share_found}} of the investor names checked appear on the page their round cites.
+  - Edison's blind audit of 40 random ventures found {{edison_audit.ours_confirmed_by_edison}} of this list's names
+    for those ventures. It also found about {{edison_audit.edison_names}} funders where this list has
+    {{edison_audit.our_names}}, mostly smaller participants, angels, grants and lenders.
 - **Nothing here says these funders made money on open source, or that they would fund a given venture.** The list
   records who put money in, as disclosed. Disclosure favours large rounds and survivors.
 
