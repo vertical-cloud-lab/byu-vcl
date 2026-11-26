@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
-"""Assemble data/core_financials.csv from the six sourced research passes, Yahoo and SEC Form D.
+"""Assemble data/core_financials.csv from the sourced research passes, Yahoo and SEC Form D.
+
+The first pass is eight parallel passes (output_*.csv); the second pass (second_*.csv) redoes the rows the first
+pass could not source after the shared web-search budget ran out, working from news_leads.py's leads.
 
 latest_value_usd: market cap on the snapshot date for listed companies (Yahoo); the disclosed acquisition price for
 acquired ones; the last disclosed post-money valuation for private ones; blank for shutdowns and undisclosed values.
-Run from owners/ after the research passes are copied to data/finance_passes/ and after listed_financials.py and
+Run from owners/ after the research passes are in data/finance_passes/ and after listed_financials.py and
 sec_form_d.py have run. Also writes data/form_d_targets.csv (US core companies) if it doesn't exist, so that
 sec_form_d.py can run between the two invocations of this script.
 """
 import glob, os
 import numpy as np, pandas as pd
 
-parts = sorted(glob.glob("data/finance_passes/output_*.csv"))
+# first-pass rows, then second-pass rows, which replace them owner by owner (the last row for an owner wins)
+parts = sorted(glob.glob("data/finance_passes/output_*.csv")) + sorted(glob.glob("data/finance_passes/second_[0-9].csv"))
 F = pd.concat([pd.read_csv(p, dtype=str).assign(pass_file=os.path.basename(p)) for p in parts], ignore_index=True)
 F["owner"] = F.owner.str.strip()
 inp = pd.read_csv("data/finance_passes/input_all.csv", dtype=str)
@@ -39,8 +43,14 @@ if os.path.exists("data/listed_financials.csv"):
     L = pd.read_csv("data/listed_financials.csv")
     F = F.merge(L[["ticker", "market_cap_usd", "revenue_usd", "grossMargins", "operatingMargins", "snapshot_utc"]],
                 on="ticker", how="left")
+# Form D matches checked by hand and found to be a different company
+FORM_D_EXCLUDE = {
+    "meteor": "CIK 1655540 is Meteor Development Group, renamed Apollo Graph; its 2019 and 2021 Form Ds are Apollo's "
+              "rounds after Meteor was sold to Tiny in 2019",
+    "tinygrad": "'Tiny Ltd.' (British Columbia) is the Canadian holding company Tiny, not tinygrad's tiny corp"}
 if os.path.exists("data/form_d_by_owner.csv"):
     D = pd.read_csv("data/form_d_by_owner.csv")
+    D = D[~D.owner.isin(FORM_D_EXCLUDE)]
     F = F.merge(D, on="owner", how="left")
 
 F["latest_value_usd"] = np.where(F.status.eq("listed"), F.get("market_cap_usd"),

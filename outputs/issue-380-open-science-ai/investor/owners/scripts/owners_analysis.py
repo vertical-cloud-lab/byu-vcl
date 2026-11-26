@@ -43,6 +43,42 @@ def by_class(d):
     return t
 
 
+AUDIT = "../edison/inv_owner_class_audit_files/owner_class_audit.csv"
+
+
+def audit_agreement():
+    """Edison's blind re-classification of 120 sampled organizations against mine: agreement, kappa, differences."""
+    E = pd.read_csv(AUDIT, dtype=str)
+    m = E[["owner", "cls", "judgment", "basis"]].merge(C[["owner", "cls", "judgment", "basis"]], on="owner",
+                                                        suffixes=("_edison", "_mine"))
+    m["agree"] = m.cls_edison == m.cls_mine
+    po = m.agree.mean()
+    cl = sorted(set(m.cls_edison) | set(m.cls_mine))
+    pe = sum((m.cls_mine == c).mean() * (m.cls_edison == c).mean() for c in cl)
+    m.to_csv("data/class_audit_comparison.csv", index=False)
+    pd.crosstab(m.cls_mine, m.cls_edison).to_csv("data/class_audit_crosstab.csv")
+    dis = m[~m.agree]
+    return {"n": int(len(m)), "agree": int(m.agree.sum()), "agreement": round(po, 3),
+            "cohen_kappa": round((po - pe) / (1 - pe), 3),
+            "disagreements_i_flagged_as_judgment": int(dis.judgment_mine.fillna("0").astype(str).str.strip()
+                                                       .isin(["1", "1.0", "True", "true"]).sum()),
+            "disagreements": dis[["owner", "cls_mine", "cls_edison"]].to_dict("records")}
+
+
+def with_audit_classes(d):
+    """Replace my class with Edison's for the audited organizations."""
+    E = pd.read_csv(AUDIT, dtype=str).set_index("owner").cls
+    d = d.copy()
+    hit = d.owner.isin(E.index)
+    d.loc[hit, "cls"] = d.loc[hit, "owner"].map(E)
+    return d
+
+
+def company_share(d):
+    s = d.groupby("cls").stars.sum()
+    return (s.get("core", 0) + s.get("complement", 0)) / s.sum() if s.sum() else np.nan
+
+
 def core_share(d):
     s = d.groupby("cls").stars.sum()
     core, comp = s.get("core", 0), s.get("complement", 0)
@@ -75,16 +111,30 @@ def h7_h10():
         for label, dd in [("pre-registered (software repos by rule)", d),
                           ("content rule corrected", frame(raw, "corrected")),
                           ("all repos including content", frame(raw, "all")),
-                          ("crypto owners excluded", d[~d.crypto])]:
-            sens.append({"frame": name, "variant": label, "core_share": core_share(dd)})
+                          ("crypto owners excluded", d[~d.crypto]),
+                          ("Edison's audit classes for the 120 audited organizations", with_audit_classes(d))]:
+            sens.append({"frame": name, "variant": label, "core_share": core_share(dd),
+                         "company_share": company_share(dd)})
         lower = d.copy(); lower.loc[(lower.cls == "core") & lower.judgment, "cls"] = "complement"
         upper = d.copy(); upper.loc[(upper.cls == "complement") & upper.judgment, "cls"] = "core"
-        sens.append({"frame": name, "variant": "judgment calls against core", "core_share": core_share(lower)})
-        sens.append({"frame": name, "variant": "judgment calls toward core", "core_share": core_share(upper)})
+        sens.append({"frame": name, "variant": "judgment calls against core", "core_share": core_share(lower),
+                     "company_share": company_share(lower)})
+        sens.append({"frame": name, "variant": "judgment calls toward core", "core_share": core_share(upper),
+                     "company_share": company_share(upper)})
+        # judgment calls between a company class and a non-company class, for the company share
+        jc = d.judgment & d.cls.isin(["core", "complement"])
+        jn = d.judgment & d.cls.isin(["community", "nonprofit", "academic", "government"])
+        sens.append({"frame": name, "variant": "judgment-call companies reclassed as community",
+                     "core_share": np.nan, "company_share": company_share(d.assign(cls=np.where(jc, "community",
+                                                                                                d.cls)))})
+        sens.append({"frame": name, "variant": "judgment-call non-companies reclassed as core",
+                     "core_share": np.nan, "company_share": company_share(d.assign(cls=np.where(jn, "core",
+                                                                                                d.cls)))})
         top = d[d.cls.isin(["core", "complement"])].groupby("owner").stars.sum().sort_values(ascending=False)
         for k in [1, 3, 5]:
             sens.append({"frame": name, "variant": f"largest {k} company owner(s) dropped",
-                         "core_share": core_share(d[~d.owner.isin(top.index[:k])])})
+                         "core_share": core_share(d[~d.owner.isin(top.index[:k])]),
+                         "company_share": company_share(d[~d.owner.isin(top.index[:k])])})
         res[name]["sensitivity"] = sens
         pd.DataFrame(sens).to_csv(f"data/{'h7' if name == 'A' else 'h10'}_sensitivity.csv", index=False)
     return res
@@ -101,26 +151,52 @@ def spearman_ci(x, y, n=5000):
     return rho, np.percentile(bs, [2.5, 97.5])
 
 
+def company_table():
+    """One row per company (several GitHub orgs can belong to one company), with its stars in the two frames.
+
+    Stars: every software repo of the company's orgs in Frame A or B, counted once. `stars_pre2025` drops repos
+    created in 2025-26 (an exploratory check on recent AI-era star inflation, not pre-registered).
+    `raised_usd` is the larger of disclosed equity funding and the SEC Form D total sold, both understatements.
+    """
+    F = pd.read_csv("data/core_financials.csv")
+    allr = pd.concat([frame(A), frame(B)]).drop_duplicates("full_name")
+    allr["year"] = allr.created_at.astype(str).str[:4]
+    F["org_stars"] = F.owner.map(allr.groupby("owner").stars.sum()).fillna(0)
+    F["org_stars_pre2025"] = F.owner.map(allr[allr.year < "2025"].groupby("owner").stars.sum()).fillna(0)
+    F["key"] = F.entity.fillna(F.owner).str.strip().str.lower()
+    agg = {c: "first" for c in F.columns if c not in ("key", "owner", "org_stars", "org_stars_pre2025", "frames",
+                                                         "in_frame_a")}
+    agg.update({"owner": lambda x: "|".join(x), "org_stars": "sum", "org_stars_pre2025": "sum",
+                "frames": lambda x: "".join(sorted(set("".join(x.fillna(""))))), "in_frame_a": "max"})
+    Co = F.groupby("key", sort=False).agg(agg).reset_index(drop=True)
+    fd = Co.get("form_d_total_sold", pd.Series(np.nan, index=Co.index))
+    Co["raised_usd"] = np.fmax(Co.total_funding_usd, fd)
+    return Co
+
+
 def h8_h9():
     try:
-        F = pd.read_csv("data/core_financials.csv")
+        Co = company_table()
     except FileNotFoundError:
         return {}
-    stars = pd.concat([A, B]).drop_duplicates("full_name").groupby("owner").stars.sum().rename("org_stars")
-    F = F.merge(stars, left_on="owner", right_index=True, how="left")
     res, rows = {}, []
-    for label, sub in [("latest value (disclosed)", F.dropna(subset=["latest_value_usd"])),
-                       ("latest value, shutdowns at zero", F.assign(latest_value_usd=np.where(
-                           F.status.eq("shut_down") & F.latest_value_usd.isna(), 0, F.latest_value_usd))
-                        .dropna(subset=["latest_value_usd"])),
-                       ("peak disclosed value", F.dropna(subset=["peak_value_usd"]).assign(
-                           latest_value_usd=lambda x: x.peak_value_usd)),
-                       ("total funding", F.dropna(subset=["total_funding_usd"]).assign(
-                           latest_value_usd=lambda x: x.total_funding_usd))]:
+    zero = Co.assign(latest_value_usd=np.where(Co.status.eq("shut_down") & Co.latest_value_usd.isna(), 0,
+                                               Co.latest_value_usd))
+    for label, sub, xcol in [
+            ("latest value (disclosed)", Co.dropna(subset=["latest_value_usd"]), "org_stars"),
+            ("latest value, shutdowns at zero", zero.dropna(subset=["latest_value_usd"]), "org_stars"),
+            ("peak disclosed value", Co.dropna(subset=["peak_value_usd"]).assign(latest_value_usd=lambda x:
+                                                                                 x.peak_value_usd), "org_stars"),
+            ("disclosed equity funding", Co.dropna(subset=["total_funding_usd"]).assign(
+                latest_value_usd=lambda x: x.total_funding_usd), "org_stars"),
+            ("capital raised, larger of disclosed and Form D", Co.dropna(subset=["raised_usd"]).assign(
+                latest_value_usd=lambda x: x.raised_usd), "org_stars"),
+            ("exploratory: latest value, stars on repos created before 2025",
+             Co.dropna(subset=["latest_value_usd"]).query("org_stars_pre2025 > 0"), "org_stars_pre2025")]:
         if len(sub) < 5:
             continue
-        rho, (lo, hi) = spearman_ci(sub.org_stars, sub.latest_value_usd)
-        vps = (sub.latest_value_usd / sub.org_stars).replace([np.inf, -np.inf], np.nan).dropna()
+        rho, (lo, hi) = spearman_ci(sub[xcol], sub.latest_value_usd)
+        vps = (sub.latest_value_usd / sub[xcol]).replace([np.inf, -np.inf], np.nan).dropna()
         vps = vps[vps > 0]
         rows.append({"measure": label, "n": len(sub), "spearman_rho": round(rho, 3), "ci_low": round(lo, 3),
                      "ci_high": round(hi, 3), "median_usd_per_star": round(vps.median(), 0) if len(vps) else None,
@@ -128,49 +204,97 @@ def h8_h9():
                      else None})
     pd.DataFrame(rows).to_csv("data/h8_correlations.csv", index=False)
     res["H8"] = rows
-    fa = F[F.owner.isin(set(frame(A).owner))]
+    fa = Co[Co.in_frame_a == 1].copy()
     st = fa.status.value_counts().to_dict()
     ever = fa.ever_1b.value_counts().to_dict()
-    acq = fa[fa.status.eq("acquired") & fa.exit_value_usd.notna() & fa.total_funding_usd.notna()]
-    res["H9"] = {"n_core_companies_frame_a": int(len(fa)), "status": st, "ever_1b": ever,
-                 "share_ever_1b_of_all": round(ever.get("yes", 0) / len(fa), 3) if len(fa) else None,
+    acq = fa[fa.status.eq("acquired") & fa.exit_value_usd.notna() & fa.raised_usd.notna()]
+    n = len(fa)
+    res["H9"] = {"n_core_companies_frame_a": int(n), "status": st, "ever_1b": ever,
+                 "share_ever_1b_of_all": round(ever.get("yes", 0) / n, 3) if n else None,
                  "share_ever_1b_of_known": round(ever.get("yes", 0) / (ever.get("yes", 0) + ever.get("no", 0)), 3)
                  if ever.get("yes", 0) + ever.get("no", 0) else None,
-                 "share_shut_down": round(st.get("shut_down", 0) / len(fa), 3) if len(fa) else None,
+                 "share_shut_down": round(st.get("shut_down", 0) / n, 3) if n else None,
+                 "handed_to_foundation": int(fa.h9_addition.sum()),
+                 "acquisitions": int(st.get("acquired", 0)),
+                 "acquisitions_with_disclosed_price": int(fa[fa.status.eq("acquired")].exit_value_usd.notna().sum()),
                  "acquisitions_with_price_and_funding": int(len(acq)),
-                 "acquired_above_funding": int((acq.exit_value_usd > acq.total_funding_usd).sum())}
+                 "acquired_above_capital_raised": int((acq.exit_value_usd > acq.raised_usd).sum()),
+                 "with_disclosed_funding": int(fa.total_funding_usd.notna().sum()),
+                 "with_form_d": int(fa.get("form_d_total_sold", pd.Series(dtype=float)).notna().sum()),
+                 "capital_raised_sum_usd": float(fa.raised_usd.sum()),
+                 "median_raised_usd_where_disclosed": float(fa.raised_usd.median())}
+    # by when the company's main project appeared: younger companies have had less time to reach $1B or fail
     fa.to_csv("data/h9_outcomes.csv", index=False)
+    # H10: company owners in the science frame
+    fb = Co[Co.frames.fillna("").str.contains("B")]
+    big = fb[fb.raised_usd >= 1e7]
+    res["H10_companies"] = {"core_companies_in_frame_b": int(len(fb)), "raised_10m_or_more": int(len(big)),
+                            "names_raised_10m_or_more": big.entity.tolist(),
+                            "ever_1b": fb.ever_1b.value_counts().to_dict(), "status": fb.status.value_counts()
+                            .to_dict()}
+    fb.to_csv("data/h10_core_companies.csv", index=False)
     return res
 
 
 def h11():
+    """Form 990 finances of US nonprofits that own repos (fiscal hosts reported separately), and Open Collective."""
     out = {}
+    stars_by_owner = pd.concat([frame(A), frame(B)]).drop_duplicates("full_name").groupby("owner").stars.sum()
     try:
-        N = pd.read_csv("data/form990_summary.csv")
+        N = pd.read_csv("data/form990_summary.csv", dtype={"ein": str})
     except FileNotFoundError:
         N = None
     if N is not None and len(N):
-        stars = pd.concat([A, B]).drop_duplicates("full_name").groupby("owner").stars.sum().rename("org_stars")
-        N = N.merge(stars, left_on="owner", right_index=True, how="left")
-        N["revenue_per_1k_stars"] = N.latest_revenue / (N.org_stars / 1000)
-        N.to_csv("data/h11_nonprofits.csv", index=False)
-        g = N.dropna(subset=["real_growth"])
-        out["form990"] = {"n": int(N.ein.nunique()), "median_latest_revenue": float(N.groupby("ein").latest_revenue
-                          .first().median()), "n_with_2019_base": int(g.ein.nunique()),
-                          "share_real_growth": round(float((g.groupby("ein").real_growth.first() > 0).mean()), 3)
-                          if len(g) else None}
+        N["fiscal_host"] = N.owner.str.startswith("(fiscal host)")
+        N["org_stars"] = N.owner.map(stars_by_owner).fillna(0)
+        E = N.groupby("ein").agg(name=("name", "first"), owners=("owner", lambda x: "|".join(x)),
+                                 fiscal_host=("fiscal_host", "max"), latest_year=("latest_year", "first"),
+                                 latest_revenue=("latest_revenue", "first"), latest_expenses=("latest_expenses",
+                                 "first"), latest_net_assets=("latest_net_assets", "first"),
+                                 base_year=("base_year", "first"), base_revenue=("base_revenue", "first"),
+                                 real_growth=("real_growth", "first"), org_stars=("org_stars", "sum"),
+                                 url=("url", "first")).reset_index()
+        E["revenue_per_1k_stars"] = E.latest_revenue / (E.org_stars / 1000)
+        E["stale"] = E.latest_year < 2021
+        E.to_csv("data/h11_nonprofits.csv", index=False)
+        own = E[~E.fiscal_host & ~E.stale]
+        g = own.dropna(subset=["real_growth"])
+        out["form990_owners"] = {"n": int(len(own)), "excluded_stale_latest_before_2021": E[E.stale].name.tolist(),
+                                 "median_latest_revenue": float(own.latest_revenue.median()),
+                                 "median_latest_revenue_excl_linux_foundation": float(
+                                     own[~own.name.str.contains("Linux Foundation")].latest_revenue.median()),
+                                 "n_at_least_10m": int((own.latest_revenue >= 1e7).sum()),
+                                 "n_with_2019_base": int(len(g)),
+                                 "n_real_growth": int((g.real_growth > 0).sum()),
+                                 "share_real_growth": round(float((g.real_growth > 0).mean()), 3) if len(g) else None,
+                                 "sum_latest_revenue": float(own.latest_revenue.sum())}
+        fh = E[E.fiscal_host]
+        out["form990_fiscal_hosts"] = fh[["name", "latest_year", "latest_revenue", "base_revenue", "real_growth"]] \
+            .to_dict("records")
     try:
         oc = pd.read_csv("data/opencollective.csv")
         oc = oc.merge(C[["owner", "cls"]], on="owner", how="left")
-        out["open_collective"] = {"n": int(len(oc)), "median_yearly_budget": float(oc.oc_yearly_budget.median()),
-                                  "by_class": oc.groupby("cls").oc_yearly_budget.median().round(0).to_dict()}
+        oc["cls"] = oc.cls.fillna("individual")
+        good = oc[(oc.name_match == 1) & (oc.oc_total_received > 0)].copy()
+        good["org_stars"] = good.owner.map(stars_by_owner)
+        good.to_csv("data/h11_opencollective.csv", index=False)
+        com = good[good.cls == "community"]
+        out["open_collective"] = {"matched_with_money": int(len(good)), "by_class_n": good.cls.value_counts().to_dict(),
+                                  "by_class_median_yearly_budget": good.groupby("cls").oc_yearly_budget.median()
+                                  .round(0).to_dict(),
+                                  "community_n": int(len(com)),
+                                  "community_median_yearly_budget": float(com.oc_yearly_budget.median()) if len(com)
+                                  else None,
+                                  "community_n_budget_over_100k": int((com.oc_yearly_budget >= 1e5).sum()),
+                                  "community_total_yearly_budget": float(com.oc_yearly_budget.sum()),
+                                  "community_owners_in_frames": int(C[C.cls == "community"].shape[0])}
     except FileNotFoundError:
         pass
     return out
 
 
 if __name__ == "__main__":
-    res = {"H7_H10": h7_h10()}
+    res = {"class_audit": audit_agreement(), "H7_H10": h7_h10()}
     res.update(h8_h9())
     res["H11"] = h11()
     json.dump(res, open("data/results_summary.json", "w"), indent=1, default=float)

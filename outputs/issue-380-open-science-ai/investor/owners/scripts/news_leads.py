@@ -30,6 +30,7 @@ GENERIC = {"labs", "lab", "inc", "inc.", "ltd", "llc", "gmbh", "ai", "technologi
            "systems", "corp", "corporation", "co", "company", "hq", "org", "studio", "cloud", "io", "dev", "group",
            "limited", "sas", "s.a.", "ag", "oy", "ab", "bv", "pte", "pty", "the", "research", "data"}
 S = requests.Session(); S.headers.update(UA)
+WIKI_UA = {"User-Agent": "open-source-owner-study/1.0 (research script)"}  # Wikimedia asks for a descriptive agent
 
 
 def get(url, **kw):
@@ -103,7 +104,7 @@ def techcrunch(q):
 def wikipedia(ns):
     for n in ns[:2]:
         r = get("https://en.wikipedia.org/w/api.php", params={"action": "query", "list": "search", "format": "json",
-                                                               "srsearch": f'"{n}"', "srlimit": 3})
+                                                               "srsearch": f'"{n}"', "srlimit": 3}, headers=WIKI_UA)
         if not r or r.status_code != 200:
             continue
         for hit in r.json().get("query", {}).get("search", []):
@@ -111,7 +112,7 @@ def wikipedia(ns):
                 continue
             x = get("https://en.wikipedia.org/w/api.php", params={"action": "query", "prop": "extracts",
                                                                    "explaintext": 1, "format": "json",
-                                                                   "titles": hit["title"]})
+                                                                   "titles": hit["title"]}, headers=WIKI_UA)
             if not x or x.status_code != 200:
                 continue
             page = next(iter(x.json()["query"]["pages"].values()))

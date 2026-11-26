@@ -1,10 +1,13 @@
-frame,variant,core_share
-B,pre-registered (software repos by rule),0.6209470557399965
-B,content rule corrected,0.6209470557399965
-B,all repos including content,0.6143543650440509
-B,crypto owners excluded,0.6209470557399965
-B,judgment calls against core,0.21658221212650708
-B,judgment calls toward core,0.7142687401712389
-B,largest 1 company owner(s) dropped,0.5204460144751327
-B,largest 3 company owner(s) dropped,0.38964948708858765
-B,largest 5 company owner(s) dropped,0.49306455517737363
+frame,variant,core_share,company_share
+B,pre-registered (software repos by rule),0.6209470557399965,0.3025337132405415
+B,content rule corrected,0.6209470557399965,0.301637581628727
+B,all repos including content,0.6143543650440509,0.2641310882585603
+B,crypto owners excluded,0.6209470557399965,0.3025337132405415
+B,Edison's audit classes for the 120 audited organizations,0.4115848972234255,0.30264155332004716
+B,judgment calls against core,0.21658221212650708,0.3025337132405415
+B,judgment calls toward core,0.7142687401712389,0.3025337132405415
+B,judgment-call companies reclassed as community,,0.15196675988137592
+B,judgment-call non-companies reclassed as core,,0.39083887952042884
+B,largest 1 company owner(s) dropped,0.5204460144751327,0.2553190288482812
+B,largest 3 company owner(s) dropped,0.38964948708858765,0.21221605768289217
+B,largest 5 company owner(s) dropped,0.49306455517737363,0.1755183200792868
