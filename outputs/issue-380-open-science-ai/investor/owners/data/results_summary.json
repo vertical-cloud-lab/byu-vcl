@@ -246,50 +246,50 @@
    "ci_low": -0.181,
    "ci_high": 0.435,
    "median_usd_per_star": 30818.0,
-   "p75_over_p25_usd_per_star": 7.4
+   "p75_over_p25_usd_per_star": 7.5
   },
   {
    "measure": "latest value, shutdowns at zero",
-   "n": 51,
-   "spearman_rho": 0.253,
-   "ci_low": -0.036,
-   "ci_high": 0.517,
+   "n": 52,
+   "spearman_rho": 0.235,
+   "ci_low": -0.053,
+   "ci_high": 0.488,
    "median_usd_per_star": 30818.0,
-   "p75_over_p25_usd_per_star": 7.4
+   "p75_over_p25_usd_per_star": 7.5
   },
   {
    "measure": "peak disclosed value",
    "n": 47,
    "spearman_rho": 0.233,
-   "ci_low": -0.065,
-   "ci_high": 0.501,
+   "ci_low": -0.063,
+   "ci_high": 0.493,
    "median_usd_per_star": 31128.0,
    "p75_over_p25_usd_per_star": 7.1
   },
   {
    "measure": "disclosed equity funding",
-   "n": 157,
-   "spearman_rho": 0.056,
+   "n": 160,
+   "spearman_rho": 0.058,
    "ci_low": -0.109,
-   "ci_high": 0.224,
-   "median_usd_per_star": 436.0,
-   "p75_over_p25_usd_per_star": 10.9
+   "ci_high": 0.227,
+   "median_usd_per_star": 435.0,
+   "p75_over_p25_usd_per_star": 13.4
   },
   {
    "measure": "capital raised, larger of disclosed and Form D",
-   "n": 168,
-   "spearman_rho": 0.072,
-   "ci_low": -0.088,
-   "ci_high": 0.233,
+   "n": 171,
+   "spearman_rho": 0.074,
+   "ci_low": -0.089,
+   "ci_high": 0.229,
    "median_usd_per_star": 445.0,
-   "p75_over_p25_usd_per_star": 11.5
+   "p75_over_p25_usd_per_star": 12.7
   },
   {
    "measure": "exploratory: latest value, stars on repos created before 2025",
    "n": 42,
    "spearman_rho": 0.06,
-   "ci_low": -0.238,
-   "ci_high": 0.369,
+   "ci_low": -0.251,
+   "ci_high": 0.364,
    "median_usd_per_star": 32588.0,
    "p75_over_p25_usd_per_star": 6.9
   }
@@ -297,10 +297,10 @@
  "H9": {
   "n_core_companies_frame_a": 339,
   "status": {
-   "private": 285,
-   "acquired": 32,
+   "private": 283,
+   "acquired": 33,
    "unknown": 12,
-   "shut_down": 6,
+   "shut_down": 7,
    "listed": 4
   },
   "ever_1b": {
@@ -310,15 +310,15 @@
   },
   "share_ever_1b_of_all": 0.103,
   "share_ever_1b_of_known": 0.122,
-  "share_shut_down": 0.018,
+  "share_shut_down": 0.021,
   "handed_to_foundation": 5,
-  "acquisitions": 32,
+  "acquisitions": 33,
   "acquisitions_with_disclosed_price": 5,
   "acquisitions_with_price_and_funding": 5,
   "acquired_above_capital_raised": 5,
-  "with_disclosed_funding": 160,
+  "with_disclosed_funding": 163,
   "with_form_d": 43,
-  "capital_raised_sum_usd": 23163218854.0,
+  "capital_raised_sum_usd": 23277625457.0,
   "median_raised_usd_where_disclosed": 25000000.0
  },
  "H9_exploratory": [
@@ -327,7 +327,7 @@
    "companies": "50",
    "ever_1b": "12",
    "ever_1b_unknown": "6",
-   "acquired": "7",
+   "acquired": "8",
    "shut_down": "1",
    "with_disclosed_capital": "26",
    "share_ever_1b": "0.24"
@@ -348,8 +348,8 @@
    "ever_1b": "3",
    "ever_1b_unknown": "13",
    "acquired": "6",
-   "shut_down": "3",
-   "with_disclosed_capital": "45",
+   "shut_down": "4",
+   "with_disclosed_capital": "46",
    "share_ever_1b": "0.041"
   },
   {
@@ -359,7 +359,7 @@
    "ever_1b_unknown": "15",
    "acquired": "8",
    "shut_down": "1",
-   "with_disclosed_capital": "40",
+   "with_disclosed_capital": "41",
    "share_ever_1b": "0.086"
   },
   {
@@ -369,7 +369,7 @@
    "ever_1b_unknown": "4",
    "acquired": "1",
    "shut_down": "0",
-   "with_disclosed_capital": "9",
+   "with_disclosed_capital": "10",
    "share_ever_1b": "0.053"
   },
   {
@@ -377,30 +377,30 @@
    "companies": "339",
    "ever_1b": "35",
    "ever_1b_unknown": "53",
-   "acquired": "32",
-   "shut_down": "6",
-   "with_disclosed_capital": "169",
+   "acquired": "33",
+   "shut_down": "7",
+   "with_disclosed_capital": "172",
    "share_ever_1b": "0.103"
   },
   {
    "cohort": "subset: disclosed capital raised",
-   "companies": "169",
+   "companies": "172",
    "ever_1b": "30",
    "ever_1b_unknown": "24",
    "acquired": "19",
-   "shut_down": "3",
-   "with_disclosed_capital": "169",
-   "share_ever_1b": "0.178"
+   "shut_down": "4",
+   "with_disclosed_capital": "172",
+   "share_ever_1b": "0.174"
   },
   {
    "cohort": "subset: raised $10M or more",
-   "companies": "112",
+   "companies": "113",
    "ever_1b": "30",
    "ever_1b_unknown": "19",
    "acquired": "12",
    "shut_down": "0",
-   "with_disclosed_capital": "112",
-   "share_ever_1b": "0.268"
+   "with_disclosed_capital": "113",
+   "share_ever_1b": "0.265"
   }
  ],
  "H10_companies": {
@@ -419,8 +419,8 @@
    "yes": 2
   },
   "status": {
-   "private": 48,
-   "unknown": 6,
+   "private": 51,
+   "unknown": 3,
    "shut_down": 1
   }
  },
