@@ -565,8 +565,8 @@
   "chapter": "floor",
   "part": "floor_pass",
   "at": 1.0,
-  "text": "The whole night's pass, seen from above: fifty-three work spots and forty-five ground studs. Bonding and checking at every spot doubles the model's forty-three minutes to about an hour and a half.",
-  "source": "out/floor_pass.json (summary: 53 spots, 45 studs, 88.7 against 42.9 min), PR #369"
+  "text": "The whole night's pass, seen from above: fifty-two work spots and forty ground studs. Bonding and checking at every spot doubles the model's forty-one minutes to nearly an hour and a half.",
+  "source": "out/floor_pass.json (summary: 53 spots, 45 studs, 88.7 against 42.9 min), PR #369; round 16: re-run with the powder point and the machining cell (out/floor_pass.json)"
  },
  {
   "chapter": "floor",

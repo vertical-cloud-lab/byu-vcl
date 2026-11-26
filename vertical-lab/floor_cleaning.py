@@ -16,8 +16,9 @@ the target posts, the chargers, the aisle) on a 25 mm grid, between the side rac
 north racking to 400 mm past the Meltio cell. Two things are ours and are added: the atomizer's vacuum station (PR
 #353's two 118EXPs and their post) and the cleaner's own bay. Since round 16 the lab's floor plan has the vacuums too:
 setup_lab.build stands them at powder_point.py's powder point, behind the rePowder's fire point (powder_point.RECT, in
-out/tray_plan.json as "powder_point"), because the safety PR's B570 and Super D pail took VAC_STATION's front half. The
-reach maps here were drawn with VAC_STATION and are not re-run.
+out/tray_plan.json as "powder_point"), because the safety PR's B570 and Super D pail took the old station's front half;
+VAC_STATION and the atomizer's point of use (POU) follow it, and floor_pass.py was re-run on it. This file's own
+figures (out/floor_cleaning*.png, .json) are from before and were not re-run.
 
 **The cleaners** are footprints with a clearance: a robot centre is reachable if its footprint (grown by the
 clearance) touches no obstacle at a heading of 0 or 90 deg and it is connected to the aisle, turning only where its
@@ -62,10 +63,11 @@ POST_FOOT = 150.0                              # half-size of a target post's fo
 # -5400). Here (floor_clean_still.py draws it) they stand west of the machine, behind the dock line: the two 508 x 610
 # mm vacuums side by side (Al family west, Cu family east), our post with the holster, rack and fixture behind them
 # with a pail each side, the Class D extinguisher and the sign at the front corner, clear of the rePowder dock's pivot
-# circle. 1.19 x 1.64 m in all (x, y ranges in mm). Round 16: the lab's floor stands them at powder_point.RECT instead
-# (x -5868 to -4505, y -1222 to -60: the B570 at (-5150, -1400) and the Super D pail at (-5650, -1475) stand in this
-# rectangle's front half); this one is kept as the rectangle the reach maps were drawn with
-VAC_STATION = (-5900.0, -4710.0, -1980.0, -340.0)
+# circle. 1.19 x 1.64 m in all (x, y ranges in mm). Round 16: the safety PR's B570 at (-5150, -1400) and Super D pail
+# at (-5650, -1475) stand in that rectangle's front half (x -5900 to -4710, y -1980 to -340), so the lab's floor stands
+# the vacuums at the powder point instead (powder_point.RECT, behind the fire point); Floor takes the plan's own
+# "powder_point" rectangle when out/tray_plan.json has it, this one otherwise
+VAC_STATION = (-5868.0, -4505.0, -1222.0, -60.0)
 # ours: the cleaner's bay, for the options with a cleaner of its own: a third MiR Charge 48V in the south row, 1.6 m
 # west of units 1-2's (warehouse.CHARGERS x -1500 and -300), outside every powder zone (charging belongs outside any
 # classified area: OSHA 1910.178(g)(1), Karcher's Zone 22 practice) and clear of the small Instron's target post. Full
@@ -119,8 +121,9 @@ class Floor:
             px, py = dk["target_post"]
             self.posts.append((px, py))
             occ |= self.rect(px - POST_FOOT, px + POST_FOOT, py - POST_FOOT, py + POST_FOOT)
-        self.rects["vacuum station"] = VAC_STATION
-        occ |= self.rect(*VAC_STATION)
+        vs = tuple(self.rects.pop("powder_point", VAC_STATION))     # round 16: the lab's own, measured by fit
+        self.rects["vacuum station"] = vs
+        occ |= self.rect(*vs)
         if bay:
             self.rects["bay charger"] = BAY["charger"]
             occ |= self.rect(*BAY["charger"])
@@ -202,8 +205,11 @@ ROBOTS = {
 # point-of-use vacuum stations for units_pou (ours): two, each with an Al-family and a Cu-family 118EXP. The atomizer's
 # (PR #353's, at floor_cleaning.VAC_STATION) reaches the atomizer, the sieving cell, the glovebox and Shuttle 1's
 # opening; the printer line's (atom_vacuum.md's third vacuum, beside the MIDI) reaches the MIDI, Shuttle 2's opening and
-# the DED across the aisle. Neither reaches the EOS (no MiR dock: people clean it, as now)
-POU = {"atomizer": (-5230.0, -1640.0), "printer line": (5500.0, -1300.0)}
+# the DED across the aisle. Neither reaches the EOS (no MiR dock: people clean it, as now). Each point is midway between
+# its two vacuums' inlets, 140 mm out from them: round 16 moves the atomizer's from (-5230, -1640) to the powder point
+# (powder_point.VAC: inlets at (-5640, -574) and (-5120, -574)); the hose leaves the point between the Super D pail and
+# the B570's keep-clear area (floor_clean_still.py's route)
+POU = {"atomizer": (-5380.0, -714.0), "printer line": (5500.0, -1300.0)}
 
 
 def _shift(a, oy: int, ox: int) -> np.ndarray:

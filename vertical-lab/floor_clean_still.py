@@ -1,8 +1,8 @@
 """Stills of the floor-cleaning option to try first (#366, #303): a third MiR250 + UR10e, "unit 3: powder", vacuums
 the floor along the rePowder's front with a floor squeegee on the 118EXP's wand. The wand's 25 ft conductive hose runs
-to the Al-family vacuum at the atomizer's vacuum station (PR #353's two 118EXPs, Al and Cu, here on the lab's floor
-plan, west of the machine and behind the dock line). The unit's bonding lead is clipped to a ground stud in the floor.
-Unit 1 carries on with transfers at Shuttle 1's opening.
+to the Al-family vacuum at the powder point (PR #353's two 118EXPs, Al and Cu; since round 16 powder_point.py's layout,
+as setup_lab.build has it: behind the rePowder's fire point). The unit's bonding lead is clipped to a ground stud in the
+floor. Unit 1 carries on with transfers at Shuttle 1's opening.
 
     python3 runner_guard.py slot --label fcstill --mem 4500 -- xvfb-run -a python3 floor_clean_still.py
     -> out/floor_cleaning_still.png (the area), out/floor_cleaning_still_close.png (the squeegee),
@@ -10,11 +10,13 @@ Unit 1 carries on with transfers at Shuttle 1's opening.
 
 Models, all the lab's own: atom_base / alloy_atomize (the rePowder; a MiR250 + cabinet + UR10e + 2F-85, as units 1 and
 2 are), atom_nilfisk (the 118EXP, the wand with our clamp collar and fin, the hose's position-based dynamics, the
-station, pail, extinguisher and sign), sieve_station (the sieving cell's downdraft enclosure), vlm via lab (Shuttle 1).
+station, pail and sign, through powder_point.py), safety (the rePowder's fire point: the B570, the 680R, the Super D
+pail, at safety.PLACES), sieve_station (the sieving cell's downdraft enclosure), vlm via lab (Shuttle 1).
 New here, ours: the floor squeegee (a 14 in head: the 118EXP accessory sheet's floor squeegee 01768800 publishes no
 size, and the Ruwac kit's floor tool is 14 in), the 25 ft hose (Ruwac EXP151525CB's length; the lab's is 10 ft), the
-bonding lead and its stud, unit 3's orange band, and the layout of the station on the floor plan
-(floor_cleaning.VAC_STATION). Notes: notes/floor_cleaning.md.
+bonding lead and its stud, unit 3's orange band, and the powder point's layout (powder_point.py; until round 16 this
+scene drew its own station at floor_cleaning.VAC_STATION, where the safety PR's B570 and Super D pail now stand).
+Notes: notes/floor_cleaning.md.
 """
 from __future__ import annotations
 
@@ -29,6 +31,7 @@ import atom_base as AB
 import alloy_atomize as AA
 import atom_nilfisk as N
 import floor_cleaning as FC
+import powder_point as PP
 import props as P
 import ur_arm
 from scene import OUT, R, Scene, T
@@ -39,18 +42,23 @@ TITLE = "Vertical cloud lab: unit 3 vacuums the floor round the atomizer"
 FLOOR_C = (0.93, 0.93, 0.92)
 TAPE_Y = (0.95, 0.78, 0.10)
 ORANGE = (0.93, 0.47, 0.13)
-HOSE_LEN = 15 * 12 * N.IN                        # 4572 mm: 15 ft is enough for the atomizer's zone (the far
-#                                                  zones need 25 ft, Ruwac EXP151525CB's; floor_cleaning.POU)
+HOSE_LEN = 25 * 12 * N.IN                        # 7620 mm: 25 ft, Ruwac EXP151525CB's (floor_cleaning.POU). Round
+#                                                  16: 15 ft reached the zone from VAC_STATION; from the powder point,
+#                                                  round the fire point, the run to the squeegee is about 4.7 m
+# the hose's guide as a share of its length. Round 16: from the powder point the relaxed hose is drawn about 7 % long
+# (8.17 m for 7.62 m; 1.5 % from the old station), whether the guide starts at 91 % or 97 %, so 97 % is kept
+GUIDE_SHARE = 0.97
 SQ_W, SQ_D, SQ_H = 14 * N.IN, 70.0, 42.0         # the squeegee head: 356 mm wide (assumed 14 in), depth and height ours
 BLADE_H = 14.0
 
-# the station on the floor plan (floor_cleaning.VAC_STATION's x range; the vacuums at its front, the post behind)
-VAC_AL = np.array([-5480.0, -1265.0])            # the Al-family 118EXP's bin axis (world)
-VAC_CU = np.array([-4990.0, -1265.0])            # the Cu-family one
-VAC_YAW = -90.0                                  # inlets (the vacuum's +x) to the south, towards the floor they serve
-STN_AT = np.array([-5230.0, -560.0])             # our station's post (holster, rack, fixture), behind the vacuums
-PAIL_AL, PAIL_CU = np.array([-5640.0, -560.0]), np.array([-4850.0, -560.0])
-EXT_AT = np.array([-5700.0, -1800.0])            # the Class D extinguisher at the station's front corner
+# the powder point on the floor plan (round 16: powder_point.py, as setup_lab.build has it; until then this scene drew
+# its own station at floor_cleaning.VAC_STATION, where the safety PR's B570 and Super D pail now stand)
+VAC_AL = np.array(PP.VAC["Al"])                  # the Al-family 118EXP's bin axis (world)
+VAC_CU = np.array(PP.VAC["Cu"])                  # the Cu-family one
+VAC_YAW = PP.VAC_YAW                             # inlets (the vacuum's +x) to the south
+STN_AT = np.array(PP.POST)                       # our station's post (holster, rack, fixture)
+PAIL_AL, PAIL_CU = np.array(PP.PAIL["Al"]), np.array(PP.PAIL["Cu"])
+EXT_AT = np.array([-5150.0, -1400.0])            # the rePowder's fire point: the safety PR's B570 (safety.PLACES)
 STUD = np.array([-3020.0, -2380.0])              # ours: the floor ground stud the unit's bonding lead clips to
 
 UNIT3 = (-3950.0, -2860.0, 0.0)                  # x, y, heading: in the aisle's north lane, its left (arm) side north
@@ -159,19 +167,15 @@ def build(clip: bool = False, name: str | None = None, title: str | None = None)
         print("Shuttle 1 left out:", ex, flush=True)
 
     # ---- the vacuum station: two 118EXPs, our post, two pails, the extinguisher, the sign, the ground bar
-    for key, at in (("al", VAC_AL), ("cu", VAC_CU)):
-        place(sc, N.vacuum_meshes(), f"vac{key}:body", T((*at, 0)) @ R((0, 0, 1), VAC_YAW))
-    place(sc, N.station_meshes(), "vac:station", T((*STN_AT, 0)) @ R((0, 0, 1), 180))
-    for nm in N.SOFT:
-        if f"vac:station/{nm}" in sc.actors:
-            sc.soft.add(f"vac:station/{nm}")
-    place(sc, N.pail_meshes(), "vac:pail_al", T((*PAIL_AL, 0)))
-    place(sc, N.pail_meshes(), "vac:pail_cu", T((*PAIL_CU, 0)))
-    place(sc, N.extinguisher_meshes(), "vac:ext", T((*EXT_AT, 0)) @ R((0, 0, 1), 90))
-    place(sc, N.sign_meshes(), "vac:sign", T((-5850.0, -1700.0, 0)) @ R((0, 0, 1), 90))
-    for key, at in (("al", VAC_AL), ("cu", VAC_CU)):          # a label plate on each lid: which family's it is
-        sc.add(f"vac{key} plate", box(at[0] - 90, at[0] + 90, at[1] - 182, at[1] - 178, 760, 860),
-               (0.20, 0.42, 0.75) if key == "al" else (0.72, 0.38, 0.16), "static")
+    # round 16: the powder point as the lab has it (powder_point.parts: the vacuums with their family bands and names,
+    # the post and its holsters, the Cu wand and hose, the family pails, the Solid Material bucket, the sand can, the
+    # sign, the ground bar and bonds), less the Al wand and its hose, which are unit 3's here; and the rePowder's fire
+    # point (safety.PLACES: the B570 on its post, the 680R, the Super D pail), which setup_lab.build adds with its
+    # utilities and this scene otherwise lacks
+    for nm, (mesh, col, op) in PP.parts(skip=("Al wand", "Al crevice", "Al hose")).items():
+        sc.add(f"pp/{nm}", mesh, col, "pp", opacity=op, specular=0.3)
+    for nm, (mesh, col, spec) in PP.fire_point().items():
+        sc.add(f"pp/{nm}", mesh, col, "pp", specular=spec)
 
     # ---- unit 1 at Shuttle 1's opening (setup_lab: the VLM's dock, x 0, y -1932), arm parked
     u1 = AA.Mir(sc, g="amr", prefix="ur", cargo=True)
@@ -296,13 +300,18 @@ def build(clip: bool = False, name: str | None = None, title: str | None = None)
     Wd = sc.world("vac:wand")
     cuff = (Wd @ np.r_[0, 0, N.CUFF_L - 20.0, 1.0])[:3]
     t_cuff = Wd[:3, 2]
-    # the guide: down from the inlet to the floor, east along the zone's front strip, a bulge towards the aisle (its
-    # depth set so the guide is 97 % of the hose's length, so the hose lies in a gentle curve), up to the cuff
+    # the guide (round 16, from the powder point): down from the inlet to the floor, south across the station post's
+    # base plate west of the post, east between the base and the Super D pail, south between the pail and the B570's
+    # keep-clear area, then the slack in one wide loop west and south of the rePowder's dock line, clear of unit 3 (its
+    # depth set so the guide is GUIDE_SHARE of the hose's length, so the hose lies in a gentle curve), east along the
+    # zone's front strip, up to the cuff
     def guide_for(depth):
-        return [inlet, inlet + t_in * 160 + (0, 0, -330), np.array([-5250.0, -1950.0, 26.0]),
-                np.array([-4800.0, -2250.0, 26.0]), np.array([-4300.0, -2300.0 - depth * 0.6, 26.0]),
-                np.array([-3850.0, -2350.0 - depth * 0.4, 26.0]), np.array([-3600.0, -2420.0, 26.0]),
-                cuff + t_cuff * 420 + (0, 0, -420), cuff + t_cuff * 60, cuff]
+        return [inlet, inlet + t_in * 60 + (0, 0, -380), np.array([-5585.0, -660.0, 40.0]),
+                np.array([-5585.0, -1235.0, 40.0]), np.array([-5445.0, -1262.0, 26.0]),
+                np.array([-5445.0, -1750.0, 26.0]), np.array([-5750.0, -2000.0 - depth * 0.4, 26.0]),
+                np.array([-6150.0, -2250.0 - depth * 0.7, 26.0]), np.array([-5800.0, -2550.0 - depth, 26.0]),
+                np.array([-5100.0, -2450.0 - depth * 0.6, 26.0]), np.array([-4500.0, -2330.0, 26.0]),
+                np.array([-3600.0, -2420.0, 26.0]), cuff + t_cuff * 420 + (0, 0, -420), cuff + t_cuff * 60, cuff]
 
     def glen(depth):
         gg = np.asarray(guide_for(depth), float)
@@ -310,7 +319,7 @@ def build(clip: bool = False, name: str | None = None, title: str | None = None)
     lo_, hi_ = 0.0, 3000.0
     for _ in range(40):
         mid = (lo_ + hi_) / 2
-        lo_, hi_ = (mid, hi_) if glen(mid) < 0.97 * HOSE_LEN else (lo_, mid)
+        lo_, hi_ = (mid, hi_) if glen(mid) < GUIDE_SHARE * HOSE_LEN else (lo_, mid)
     guide = guide_for(lo_)
     hose = N.Hose.__new__(N.Hose)
     hose.n = 120
@@ -336,12 +345,21 @@ def build(clip: bool = False, name: str | None = None, title: str | None = None)
         rad = np.linalg.norm((pts - c0) - np.outer(tt, ax), axis=1)
         link_caps.append((grp, c0 + ax * tt.min(), c0 + ax * tt.max(), float(np.percentile(rad, 95))))
     rpx0, rpx1, rpy0, rpy1 = FC.Floor().rects["repowder"]
+    # round 16: the powder point's items and the fire point's units as they stand (powder_point.item_rects,
+    # neighbours), each a box the hose keeps out of; the post's 14 mm base plate is one too, so the hose lies on it
+    ir = PP.item_rects()
+    nb = PP.neighbours()
+    hgt = {"Al vac": 1150, "Cu vac": 1150, "Al pail": 400, "Cu pail": 400, "bucket": 400, "sand": 320, "sign": 930,
+           "outlet": 1300, "ground": 45}
+    z_from = {"outlet": N.POST_H}                    # the outlet box sits on the post's top, not on the floor
+    pp_boxes = [(r[0], r[1], r[2], r[3], z_from.get(k, 0), hgt[k]) for k, r in ir.items() if k in hgt]
+    pp_boxes += [(STN_AT[0] - 120, STN_AT[0] + 200, STN_AT[1] - 300, STN_AT[1] + 300, 0, 14),       # the post's base
+                 (STN_AT[0] - 32, STN_AT[0] + 32, STN_AT[1] - 32, STN_AT[1] + 32, 0, 1090),        # the post
+                 (*nb["B570 post"], 0, 2150), (-5248.0, -5052.0, -1627.0, -1431.0, 0, 1044),       # its B570
+                 (*nb["Super D pail"], 0, 480), (*nb["680R"], 0, 1322)]
     fixed_boxes = [(x3 - 400, x3 + 400, y3 - 290, y3 + 290, 0, 800),                   # unit 3 and its cabinet
-                   (VAC_AL[0] - 310, VAC_AL[0] + 310, VAC_AL[1] - 260, VAC_AL[1] + 260, 0, 1150),
-                   (VAC_CU[0] - 310, VAC_CU[0] + 310, VAC_CU[1] - 260, VAC_CU[1] + 260, 0, 1150),
                    (rpx0, rpx1, rpy0, rpy1, 0, 2000),
-                   (EXT_AT[0] - 110, EXT_AT[0] + 110, EXT_AT[1] - 170, EXT_AT[1] + 170, 0, 900),
-                   (STUD[0] - 45, STUD[0] + 45, STUD[1] - 45, STUD[1] + 45, 0, 40)]
+                   (STUD[0] - 45, STUD[0] + 45, STUD[1] - 45, STUD[1] + 45, 0, 40)] + pp_boxes
 
     def obstacles():
         Wd_ = sc.world("vac:wand")
@@ -392,7 +410,7 @@ def labels_area(sc, u3, rb):
     W = np.array
     return [("Unit 3 (powder): MiR250 + UR10e, its own", W([UNIT3[0] + 250, UNIT3[1] - 200, 850]), (0.66, 0.80)),
             ("Floor squeegee, 14 in, on the 118EXP's wand", W([SQ_AT[0], SQ_AT[1] - 100, 40]), (0.36, 0.88)),
-            ("15 ft conductive hose", W([-4300.0, -2450.0, 30]), (0.10, 0.86)),
+            ("25 ft conductive hose", W([-4300.0, -2450.0, 30]), (0.10, 0.86)),
             ("118EXP, Al family (in use)", W([VAC_AL[0], VAC_AL[1], 1100]), (0.06, 0.30)),
             ("118EXP, Cu family", W([VAC_CU[0], VAC_CU[1], 1100]), (0.27, 0.22)),
             ("Bonding lead to a floor ground stud", W([STUD[0], STUD[1], 30]), (0.86, 0.63)),
@@ -408,7 +426,7 @@ def main():
     (OUT / "collisions" / f"{NAME}.json").write_text(json.dumps(rep, indent=1) + "\n")
     print("collisions in the still's pose:", rep["n"], [(h["part"], h["other"], h["depth_mm"]) for h in rep["hits"]][:12],
           flush=True)
-    AA.status(sc, Unit_3="vacuuming the atomizer's zone after a run", Hose="15 ft, Al-family 118EXP",
+    AA.status(sc, Unit_3="vacuuming the atomizer's zone after a run", Hose="25 ft, Al-family 118EXP",
               Bond="clipped to the floor stud")
     sc.label = "Option C"
     sc.caption = ("A third MiR250 + UR10e owns the powder floor: after each run, sieving and depowdering it takes the "
@@ -453,7 +471,7 @@ def clip():
     if combined:
         sc.auditor = collide.Auditor(sc)
         sc.frame_hooks.append(sc.auditor)
-    AA.status(sc, Unit_3="the atomizer's zone, after a run", Hose="15 ft, Al-family 118EXP",
+    AA.status(sc, Unit_3="the atomizer's zone, after a run", Hose="25 ft, Al-family 118EXP",
               Bond="clipped to the floor stud")
     sc.label = "Option C"
     wide = [(-600.0, -6900.0, 3900.0), (-3650.0, -1750.0, 300.0), (0, 0, 1)]

@@ -268,11 +268,15 @@ def parts_list() -> list:
     return out
 
 
-def parts() -> dict:
+def parts(skip=()) -> dict:
     """{name: (mesh, rgb, opacity)}, world coordinates, merged by colour (setup_lab.Floor adds them as group
-    "powder_point")."""
+    "powder_point"). skip: name prefixes left out (floor_clean_still: the Al wand and its hose are unit 3's there)."""
     by: dict = {}
-    for _, m, c, op in parts_list():
+    for nm, m, c, op in parts_list():
+        if skip and nm.startswith(tuple(skip)):
+            continue
+        m = m.copy()
+        m.clear_data()                                  # a merge keeps per-cell normals that clean() makes invalid
         by.setdefault((tuple(round(float(v), 3) for v in c), float(op)), []).append(m)
     out = {}
     for i, ((c, op), ms) in enumerate(sorted(by.items())):
@@ -303,6 +307,26 @@ def _rect() -> tuple:
 
 
 RECT = (-5868.0, -4505.0, -1222.0, -60.0)       # the whole point's plan rectangle, rounded out (``check`` confirms it)
+
+
+
+def fire_point() -> dict:
+    """The rePowder's fire point as the lab has it (safety.PLACES' "repowder" units: the B570 on its post, the 680R,
+    the Super D pail), {name: (mesh, rgb, specular)} in world coordinates, for a scene that isn't setup_lab.build's
+    (floor_clean_still.py), merged by material as safety.floor_meshes does."""
+    import safety as S
+    from scene import R, T
+    built = {"b570": S.post_parts(True, "lab"), "680r": S.w680r_parts(), "pail": S.pail_parts()}
+    by: dict = {}
+    for station, kind, x, y, face, _ in S.PLACES:
+        if station != "repowder":
+            continue
+        M = T((x, y, 0.0)) @ R((0, 0, 1), 0.0 if face < 0 else 180.0)
+        for name, (mesh, mat) in built[kind].items():
+            by.setdefault(mat, []).append(mesh.transform(M, inplace=False))
+    return {f"fire point {mat}": (ms[0].merge(ms[1:]) if len(ms) > 1 else ms[0], S.colour(mat), S.MATS[mat][4])
+            for mat, ms in by.items()}
+
 
 # label anchors for the clips (world mm)
 ANCHORS = {

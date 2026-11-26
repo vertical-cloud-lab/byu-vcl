@@ -203,6 +203,11 @@ CHAPTERS = [
                  "114 pairs a day with a pedestal arm against the 67 needed, and a MiR250 unit instead "
                  "(notes/machining.md)",
                  None),
+                # round 16 (PR #371's check: "Give the machining cell a place on the floor that doesn't take unit 3's
+                # charger"): its place, south of the south row (notes/lab_r16.md)
+                ("still", "machining_floor.png", 11.0, "The cell's place (round 16): south of the south row, off unit "
+                 "3's charger bay; its MiR250 comes down the row's west end and along a corridor behind it, then "
+                 "backs in (notes/lab_r16.md)", "The cell's place on the floor"),
                 ("mp4", "alloy_charge.mp4", "The charge cups"),
                 # round 14 (D): run B's dose post and draft shield (doser_shield.py) in place of round 10's "can the cup
                 # come closer?" section, which the new station answers
