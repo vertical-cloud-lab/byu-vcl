@@ -60,6 +60,15 @@ def main():
         out["portfolio_check"] = {"domain_links": len(dom), "already_in_deals": sum((r["investor"], r["key"]) in have for r in dom)}
     out["thesis_funders"] = [(r["investor"], r["ventures"]) for r in I if r.get("stated_open_source_thesis")]
     out["n_thesis_funders"] = len(out["thesis_funders"])
+    grp = collections.defaultdict(set)
+    for r in rd("investor_types.csv"):
+        pass
+    gmap = {r["investor"]: r["group"] for r in rd("investor_types.csv") if r.get("group")}
+    for l in L:
+        g = gmap.get(l["investor"])
+        if g:
+            grp[g].add(l["key"])
+    out["groups"] = {re.sub(r"[^a-z0-9]+", "_", g.lower()).strip("_"): len(v) for g, v in grp.items()}
     # counts for funders named in the text (all groups, U1-U4), keyed by a slug
     named = ["OSS Capital", "Runa Capital", "Open Core Ventures", "Heavybit", "Uncorrelated Ventures", "Boldstart Ventures",
              "Crane Venture Partners", "Amplify Partners", "Bessemer Venture Partners", "GV", "Y Combinator", "SOSV",

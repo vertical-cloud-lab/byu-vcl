@@ -28,12 +28,17 @@ The scope and counting rules were committed before any funding data was gathered
 - **The head is mostly generalist venture firms, an accelerator and chip and cloud companies:**
   - Y Combinator, by count.
   - Accel, Sequoia, Andreessen Horowitz, NEA, Index, Benchmark, Lightspeed and Insight.
-  - NVIDIA and Intel Capital, then Alphabet's and Microsoft's investment arms and Salesforce Ventures.
+  - Corporate investors, counted across all four groups with their arms rolled up to the parent:
+    - Alphabet: GV, CapitalG, Gradient and Google together, {{groups.alphabet}} ventures
+    - Intel Capital ({{groups.intel}}) and NVIDIA ({{groups.nvidia}})
+    - Microsoft: M12, GitHub and Microsoft, {{groups.microsoft}}
+    - Samsung ({{groups.samsung}}) and Salesforce Ventures ({{groups.salesforce}})
   - The firms that lead open-source rounds most often are Andreessen Horowitz, Accel, Insight, NEA, Sequoia,
     Index and Benchmark.
 - **Funds built around open source exist, but most are small in this count.**
-  - OSS Capital is the exception: {{focus.oss_capital}} ventures across all four groups, about as many as Bessemer
-    ({{focus.bessemer_venture_partners}}) or GV ({{focus.gv}}). Uncorrelated Ventures has {{focus.uncorrelated_ventures}}.
+  - The exceptions are OSS Capital, with {{focus.oss_capital}} ventures across all four groups, and Uncorrelated
+    Ventures, with {{focus.uncorrelated_ventures}}. For comparison, Bessemer has {{focus.bessemer_venture_partners}} and
+    GV {{focus.gv}}.
   - Runa Capital ({{focus.runa_capital}}), Heavybit ({{focus.heavybit}}), Boldstart ({{focus.boldstart_ventures}}),
     Crane ({{focus.crane_venture_partners}}) and Open Core Ventures ({{focus.open_core_ventures}}) back only a handful
     each.

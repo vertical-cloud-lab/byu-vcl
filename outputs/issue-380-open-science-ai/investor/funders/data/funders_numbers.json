@@ -752,6 +752,23 @@
   ]
  ],
  "n_thesis_funders": 26,
+ "groups": {
+  "alibaba": 8,
+  "amazon": 7,
+  "saudi_aramco": 8,
+  "alphabet": 44,
+  "citigroup": 5,
+  "dell": 13,
+  "microsoft": 20,
+  "goldman_sachs": 14,
+  "intel": 23,
+  "xavier_niel": 13,
+  "nvidia": 22,
+  "sap": 5,
+  "salesforce": 19,
+  "samsung": 20,
+  "tencent": 6
+ },
  "focus": {
   "oss_capital": 15,
   "runa_capital": 5,
