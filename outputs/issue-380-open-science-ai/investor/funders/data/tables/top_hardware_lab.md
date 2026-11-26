@@ -29,6 +29,7 @@
 | Accenture Ventures | venture firm | 1 | 0 | ForgeRock |
 | Accurafy4 | unclassified | 1 | 0 | BCN3D Technologies |
 | Adage Capital Management | venture firm | 1 | 0 | GitLab Inc. |
+| Adrian Bowyer | person (angel) | 1 | 0 | MakerBot Industries |
 | Agostinelli Group | person (angel) | 1 | 0 | Tenstorrent |
 | Alkeon Capital | growth, crossover or PE | 1 | 0 | GitLab Inc. |
 | AlleyCorp | venture firm | 1 | 0 | Radical AI |
@@ -36,7 +37,6 @@
 | Alumni Ventures | venture firm | 1 | 0 | Trilobio |
 | Amplify Partners | venture firm | 1 | 0 | ReadySet |
 | Andreessen Horowitz | venture firm | 1 | 0 | Sesame |
-| Angel Squad | venture firm | 1 | 0 | Trilobio |
+| Angel Squad | person (angel) | 1 | 0 | Trilobio |
 | Anthony Goldbloom | person (angel) | 1 | 1 | marimo |
 | Anzu Partners | venture firm | 1 | 1 | Arduino |
-| Apollo Global Management | growth, crossover or PE | 1 | 0 | SiFive |

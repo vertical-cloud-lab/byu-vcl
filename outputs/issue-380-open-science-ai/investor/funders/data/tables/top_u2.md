@@ -13,6 +13,7 @@
 | Spark Capital | venture firm | 3 | 3 | Framework Computer, Particle, SiFive |
 | Anzu Partners | venture firm | 2 | 1 | Arduino, Framework Computer |
 | Arm | corporate / strategic | 2 | 0 | Arduino, Raspberry Pi Holdings / Raspberry Pi Ltd |
+| Atreides Management | growth, crossover or PE | 2 | 1 | SiFive, Oxide Computer Company |
 | Baillie Gifford | growth, crossover or PE | 2 | 0 | Chai Discovery, Tenstorrent |
 | Battery Ventures | venture firm | 2 | 1 | Code Ocean, Chai Discovery |
 | Bezos Expeditions | person (angel) | 2 | 0 | MakerBot Industries, Tenstorrent |

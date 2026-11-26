@@ -48,14 +48,27 @@ def main():
     sc = rd("source_checks_deals.csv")
     if sc:
         av = [r for r in sc if r["check"] != "unavailable"]
-        out["source_check"] = {"mentions": len(sc), "fetched": len(av), "found": sum(r["check"] == "found" for r in av),
-                               "share_found": round(sum(r["check"] == "found" for r in av) / max(1, len(av)), 3)}
+        f = sum(r["check"] == "found" for r in av); m = sum(r["check"].startswith("in page markup") for r in av)
+        out["source_check"] = {"mentions": len(sc), "fetched": len(av), "found": f, "markup_only": m,
+                               "not_on_page": len(av) - f - m,
+                               "share_found": round(f / max(1, len(av)), 3),
+                               "share_found_or_markup": round((f + m) / max(1, len(av)), 3)}
     pm = rd("portfolio/matches.csv")
     if pm:
         dom = [r for r in pm if r["match"] == "domain"]
         have = {(l["investor"], l["key"]) for l in L}
         out["portfolio_check"] = {"domain_links": len(dom), "already_in_deals": sum((r["investor"], r["key"]) in have for r in dom)}
     out["thesis_funders"] = [(r["investor"], r["ventures"]) for r in I if r.get("stated_open_source_thesis")]
+    ea = rd("edison_audit_comparison.csv")
+    if ea:
+        ed = sum(int(r["edison"]) for r in ea); ours = sum(int(r["ours"]) for r in ea); both = sum(int(r["both"]) for r in ea)
+        out["edison_audit"] = {"ventures": len(ea), "edison_names": ed, "our_names": ours, "both": both,
+                               "recall_vs_edison": round(both / max(1, ed), 3), "ours_confirmed_by_edison": round(both / max(1, ours), 3),
+                               "ventures_we_missed_entirely": sum(1 for r in ea if int(r["ours"]) == 0 and int(r["edison"]) > 0),
+                               "ventures_edison_missed_entirely": sum(1 for r in ea if int(r["edison"]) == 0 and int(r["ours"]) > 0)}
+    lc = rd("edison_literature_check.csv")
+    if lc:
+        out["edison_literature"] = {"named": len(lc), "found": sum(1 for r in lc if r["in_deal_data"] != "no" or r["in_program_passes"] == "yes")}
     import glob
     xs = set()
     for f in glob.glob(os.path.join(D, "deal_passes", "input_x*.csv")):

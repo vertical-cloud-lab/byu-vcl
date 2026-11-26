@@ -118,7 +118,45 @@ DAL and the SDL kit. Every venture with its funders is in
 
 <!-- TABLE:top_science_hardware.md:35 -->
 
-SCIENCE_NOTES
+What stands out, reading the venture table rather than the counts:
+
+- **Few repeat backers.** Only {{U2.funders_3plus}} funders backed three or more of the 97 U2 ventures; most funders
+  of open hardware and science appear once. A general list of open-source investors is a weak guide here.
+- **Crowdfunding is the most common single source.** Kickstarter, Crowd Supply and equity-crowdfunding campaigns
+  funded OpenBCI, Opentrons, Pine64, Bela, OpenMV, Luxonis, Backyard Brains, Great Scott Gadgets, Printrbot,
+  MicroPython, MNT Research, LimeSDR, Purism and Mycroft AI, among others.
+- **Grants carry the science-software companies.**
+  - SBIR/STTR grants from NSF, NIH, DOE, NASA and the Space Force funded Kitware, Enthought, re:3D, Backyard
+    Brains, Hello Robot, Open Imaging and PickNik.
+  - CZI funded Seqera.
+  - Sloan funded Julia Computing (now JuliaHub).
+  - The Shuttleworth Foundation seeded FarmBot.
+  - EU, French, German and Spanish public money funded BCN3D, Probabl, mzio, HARFANG 3D and Pollen Robotics.
+- **Large open-hardware rounds come from deep-tech venture firms and strategic corporates.** They had each made
+  open-source deals before:
+  - SiFive: Sutter Hill, Spark, Osage, Qualcomm, Intel, SK hynix, Aramco, Coatue.
+  - Tenstorrent: Eclipse, Fidelity, Samsung, Hyundai, LG, Bezos Expeditions.
+  - Oxide: Eclipse, USIT, Intel Capital.
+  - Arduino: Bosch, Renesas, Arm, Anzu, CDP.
+  - Raspberry Pi: Sony, Arm.
+  - Framework: Spark.
+- **Lab automation draws accelerator money, consumer and growth investors, and climate funds.**
+  - Opentrons: HAX/SOSV, Kickstarter backers, Y Combinator, then Khosla Ventures, Lerer Hippeau and SoftBank's
+    Vision Fund.
+  - Trilobio: Initialized, Lowercarbon and others.
+  - PickNik: Stellar Ventures and SBIR awards.
+- **AI-for-science companies that release models or tools are funded like AI companies.**
+  - EvolutionaryScale: Nat Friedman, Daniel Gross, Lux, NVIDIA, Amazon.
+  - Chai Discovery: Thrive, OpenAI, Menlo, Dimension.
+  - Orbital Materials: Radical, Plural, Toyota Ventures, NVIDIA.
+  - Radical AI: RTX Ventures, NVIDIA, Eni, AlleyCorp.
+  - Entalpic: Breega, Cathay, Felicis.
+  - Boltz: Bessemer, Andreessen Horowitz, Amplify.
+- **Open-science publishing and data businesses sold to publishers.** Digital Science (Holtzbrinck) took stakes in
+  Overleaf, Figshare and Authorea; Springer Nature bought protocols.io. Code Ocean raised from Battery, M12 and
+  EBSCO.
+- **DeSci draws crypto funds and a few angels.** VitaDAO, Molecule and LabDAO raised from L1 Digital, Shine, 1kx,
+  Seed Club and IDTheory, from Balaji Srinivasan, and from Pfizer Ventures (VitaDAO).
 
 ## Philanthropists and foundations
 
@@ -221,7 +259,18 @@ and patent-based ones about 33% less (Bort et al. 2024; [Edison answer](edison/f
 
 ## How good is the list?
 
-CHECKS
+Four checks of different kinds. Together they say the list is **mostly right but incomplete**: the names it has
+are well supported, but a fuller search finds more. Treat every count as a lower bound.
+
+| Check | What it tests | Result |
+| --- | --- | --- |
+| Every investor name against the page its round cites ([`data/source_checks_deals.csv`](data/source_checks_deals.csv)) | that the source says what the row says | Of {{source_check.fetched}} names whose page could be fetched: {{source_check.found}} ({{source_check.share_found}}) appear in the page text; {{source_check.markup_only}} more appear only in its markup, which is how company pages show investor logos; {{source_check.not_on_page}} don't appear at all. Those are mostly Chinese names recorded in English, pages that load by script, and some real errors. They are flagged, not removed |
+| Investors' own portfolio pages ([`data/portfolio/`](data/portfolio/)) | recall, from the investors' side | Of 105 portfolio pages, 77 could be read. They link to {{portfolio_check.domain_links}} ventures in this list by website, and {{portfolio_check.already_in_deals}} of those links were already in the deal data |
+| Edison's blind audit of 40 randomly drawn ventures ([`edison/fund_deal_audit_answer.md`](edison/fund_deal_audit_answer.md), [comparison](data/edison_audit_comparison.csv)) | recall and precision, independently, with web search | Edison named {{edison_audit.edison_names}} funders for the 40 ventures and this list {{edison_audit.our_names}}. **{{edison_audit.ours_confirmed_by_edison}} of this list's names are in Edison's**, but this list has only {{edison_audit.recall_vs_edison}} of Edison's. AUDIT_DETAIL |
+| Edison's literature answer ([`edison/fund_who_funds_open_source_answer.md`](edison/fund_who_funds_open_source_answer.md), [check](data/edison_literature_check.csv)) | whether well-known funders are missing | {{edison_literature.found}} of the {{edison_literature.named}} funders it names are in the deal data or the program tables. The two missing are Indiegogo backers and the Footprint Coalition, which ran a 2023 low-cost science-tools grant with Moore and Schmidt Futures |
+
+After the comparison, the audit's high- and medium-confidence rounds were added to the data as pass `xed`, so the 40
+audited ventures are now covered better than the rest.
 
 ## How the list was made
 

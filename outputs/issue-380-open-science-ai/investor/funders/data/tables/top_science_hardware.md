@@ -19,10 +19,13 @@
 | Spark Capital | venture firm | 3 | 3 | Framework Computer, Particle, SiFive |
 | Y Combinator | accelerator / studio | 3 | 0 | Curvenote, K-Scale Labs, Opentrons Labworks |
 | Addition | venture firm | 2 | 2 | Hugging Face, Seqera |
+| AlleyCorp | venture firm | 2 | 1 | TileDB, Inc., Radical AI |
 | Amazon | corporate / strategic | 2 | 0 | EvolutionaryScale, Hugging Face |
 | Amino Collective | venture firm | 2 | 0 | Molecule, Seqera |
+| Andreessen Horowitz | venture firm | 2 | 1 | comma.ai, Boltz PBC |
 | Anzu Partners | venture firm | 2 | 1 | Arduino, Framework Computer |
 | Arm | corporate / strategic | 2 | 0 | Arduino, Raspberry Pi Holdings / Raspberry Pi Ltd |
+| Atreides Management | growth, crossover or PE | 2 | 1 | SiFive, Oxide Computer Company |
 | Baillie Gifford | growth, crossover or PE | 2 | 0 | Chai Discovery, Tenstorrent |
 | Battery Ventures | venture firm | 2 | 1 | Code Ocean, Chai Discovery |
 | Bezos Expeditions | person (angel) | 2 | 0 | MakerBot Industries, Tenstorrent |
@@ -30,11 +33,13 @@
 | Counterpart Ventures | venture firm | 2 | 0 | Oxide Computer Company, Particle |
 | Eclipse Ventures | venture firm | 2 | 1 | Oxide Computer Company, Tenstorrent |
 | Gaingels | venture firm | 2 | 0 | Molecule, Trilobio |
+| Google | corporate / strategic | 2 | 0 | Hugging Face, K-Dense |
 | Greycroft | venture firm | 2 | 0 | Boltz PBC, Inventables |
 | IDTheory | venture firm | 2 | 0 | LabDAO, Molecule |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | Menlo Ventures | venture firm | 2 | 1 | Chai Discovery, JuliaHub |
 | National Science Foundation (SBIR) | government grant | 2 | 0 | Kitware, re:3D |
+| OSS Capital | venture firm | 2 | 2 | ResearchHub, Tracel Inc. |
 | Pillar VC | venture firm | 2 | 0 | Molecule, Rowan |
 | Real Ventures | venture firm | 2 | 1 | Plotly, Tenstorrent |
 | Seed Club Ventures | crypto fund or DAO | 2 | 0 | LabDAO, Molecule |

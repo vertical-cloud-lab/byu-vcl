@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"}
 _cache = {}
+_raw = {}
 GENERIC = {"capital", "ventures", "venture", "partners", "fund", "management", "investments", "group", "holdings",
            "the", "and", "llc", "lp", "inc", "ltd", "co", "vc", "global", "growth", "equity", "labs", "technologies",
            "technology", "company", "corporation", "corp", "international", "advisors", "associates", "investment",
@@ -41,6 +42,7 @@ def text_of(url):
         hdr = {"User-Agent": "research script admin@example.com"} if "sec.gov" in url else UA  # SEC asks for a declared agent
         r = requests.get(url, headers=hdr, timeout=25)
         if r.status_code == 200 and len(r.content) > 500:
+            _raw[url] = re.sub(r"[^a-z0-9]+", "", r.text[:5_000_000].lower())  # logos: alt texts and file names
             soup = BeautifulSoup(r.content[:5_000_000], "lxml")
             for t in soup(["script", "style", "noscript"]):
                 t.decompose()
@@ -100,14 +102,19 @@ def main():
         t = _cache.get(d["source"])
         for role, col in (("lead", "lead_raw"), ("investor", "investors_raw")):
             for nm in [x.strip() for x in d[col].split(" | ") if x.strip()]:
+                chk = "unavailable" if t is None else ("found" if found(nm, t) else "not on page")
+                if chk == "not on page":
+                    key = re.sub(r"[^a-z0-9]+", "", re.sub(r"\(person\)", "", nm).lower())
+                    if len(key) >= 5 and key in _raw.get(d["source"], ""):
+                        chk = "in page markup (logo or link)"
                 rows.append({"key": d["key"], "venture": d["venture"], "date": d["date"], "type": d["type"], "role": role,
-                             "name": nm, "source": d["source"], "source_kind": d["source_kind"],
-                             "check": "unavailable" if t is None else ("found" if found(nm, t) else "not on page")})
+                             "name": nm, "source": d["source"], "source_kind": d["source_kind"], "check": chk})
     with open("data/source_checks_deals.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
     av = [r for r in rows if r["check"] != "unavailable"]
-    print(f"deals: {len(rows)} investor mentions; page fetched for {len(av)}; found on page {sum(r['check'] == 'found' for r in av)}"
-          f" ({100 * sum(r['check'] == 'found' for r in av) / max(1, len(av)):.0f}%)")
+    mk = sum(r["check"].startswith("in page markup") for r in av)
+    print(f"deals: {len(rows)} investor mentions; page fetched for {len(av)}; found in text {sum(r['check'] == 'found' for r in av)}"
+          f" ({100 * sum(r['check'] == 'found' for r in av) / max(1, len(av)):.0f}%), only in markup {mk}")
     prow = []
     for p in sorted(glob.glob("data/program_passes/programs_*.csv")):
         for r in csv.DictReader(open(p)):

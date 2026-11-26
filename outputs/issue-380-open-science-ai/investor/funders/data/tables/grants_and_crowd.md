@@ -1,12 +1,13 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
 | Kickstarter backers | crowdfunding | 16 | 0 | Augmented Instruments, Backyard Brains, Flipper Devices, Fonticons, Inc., George Robotics, Great Scott Gadgets, Luxonis, Mycroft AI … |
-| Protocol Labs | crypto fund or DAO | 4 | 2 | Riot IM, Zama, Molecule, Prime Intellect |
+| Protocol Labs | crypto fund or DAO | 5 | 3 | Element, Riot IM, Zama, Molecule, Prime Intellect |
+| Knight Foundation | philanthropy | 4 | 1 | Authorea, Bluesky, CARTO, Mapbox |
 | Crowd Supply backers | crowdfunding | 3 | 0 | Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Bain Capital Crypto | crypto fund or DAO | 2 | 1 | Bluesky, Fuel Labs |
 | Blockchain Capital | crypto fund or DAO | 2 | 2 | Bluesky, Fuel Labs |
 | CoinFund | crypto fund or DAO | 2 | 2 | Fuel Labs, Prime Intellect |
-| Knight Foundation | philanthropy | 2 | 1 | Authorea, Bluesky |
+| Hack VC | crypto fund or DAO | 2 | 0 | Fingerprint, Zama |
 | L1 Digital | crypto fund or DAO | 2 | 0 | Molecule, VitaDAO |
 | NIST | government grant | 2 | 0 | M-Labs Ltd, Voxel51 |
 | NLnet Foundation | philanthropy | 2 | 0 | Graphite, SixtyFPS GmbH |
@@ -30,13 +31,12 @@
 | CoinList participants | crypto fund or DAO | 1 | 0 | Rainbow |
 | Collab+Currency | crypto fund or DAO | 1 | 0 | Prime Intellect |
 | Community investors | crowdfunding | 1 | 0 | Framework Computer |
+| Curve Labs | crypto fund or DAO | 1 | 0 | LabDAO |
 | Cybersecurity and Infrastructure Security Agency | government grant | 1 | 0 | VotingWorks |
 | Dialectic | crypto fund or DAO | 1 | 0 | Fuel Labs |
 | Digital Currency Group | crypto fund or DAO | 1 | 0 | Brave Software |
 | Distributed Global | crypto fund or DAO | 1 | 1 | Prime Intellect |
+| Dragonfly Capital | crypto fund or DAO | 1 | 1 | MyShell |
 | Electric Capital | crypto fund or DAO | 1 | 0 | Anoma |
 | European Commission | government grant | 1 | 0 | Graphite |
 | European Space Agency | government grant | 1 | 0 | Lime Microsystems |
-| European Union | government grant | 1 | 0 | mzio GmbH |
-| Federal Ministry for Economic Affairs and Energy (ZIM) | government grant | 1 | 0 | mzio GmbH |
-| GSR Markets | crypto fund or DAO | 1 | 0 | Linera |
