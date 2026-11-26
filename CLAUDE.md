@@ -539,7 +539,7 @@ gets that login:
   and 0.4 mm for the body. Install Studio with `bambu/studio/setup_runner.sh`, which pins
   2.9.2. The setup section of the runbook (below) still downloads 2.8.2. Bambu lists no H2D
   firmware the feature needs; the newest is 01.04.20.00. The H2C and X2D follow in early
-  2027. Studio calls the feature experimental, so in multi-diameter mode:
+  2027. Bambu says the feature is still being refined, so in multi-diameter mode:
   - **The nozzle rule above still applies.** For this repo that means 0.2 and 0.4 mm. Don't
     put supports or infill on a 0.6 mm nozzle just because one is installed.
   - **Studio sets each nozzle's layer height and wall count, not the project.** Layer height
