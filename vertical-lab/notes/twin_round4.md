@@ -12,7 +12,47 @@ prices, capacities, lead times and schedules. It shows how the plans, routes and
 what the real lab will find. **No vendor has given a lead time for any station yet, so every build-out date below
 rests on stand-ins** (section 1).
 
-<!-- RESULTS -->
+**In short.** All simulated, from the day the funding arrives, over two years. The lead times are stand-ins.
+Medians are Kaplan-Meier over seeds. Cheap policies: the heuristic on aluminium and the funnel on copper, 12 seeds
+(24 for the check). Best policies: time-aware BOFN on aluminium with the funnel, 6 seeds.
+
+- **Ramping up in parallel reaches every target first against waiting for the cell.** The cell is complete at about
+  day 231 and the last station is in at day 270, so a waiting lab starts nine months in.
+  - Aluminium's state of the art comes at day 57 against 366, first in 12 seeds of 12 and 24 of 24.
+  - Copper's state of the art and halfway target come at days 302-310 against 421-430, first in 10 of 12.
+  - With BOFN, aluminium's halfway target comes at day 219 against 575, and the final alloy is 0.72 against 0.63.
+- **Against external routes only, the cell pays on copper and on aluminium's halfway target, not on aluminium's
+  first result.**
+  - Aluminium's state of the art is a tie (day 54 against 57). The existing atomizer and Utah's (and the
+    partner's) builds get there in under two months either way.
+  - Copper's halfway target: parallel first in 10 seeds of 12; external-only gets there in 5 of 12 in two years.
+  - With BOFN, aluminium's halfway target comes at day 219 against 382.
+- **The partners made most of the first discoveries, then the work moved in house.** In the parallel plan 10 of 12
+  first aluminium state-of-the-art alloys were printed at a partner, and half of copper's first came from Mines. Once
+  the in-house MIDI is up (month 7), Utah's and 3D Powder Tech's slots drop from 18-38 % used to 1-3 %, and 84 % of
+  aluminium's builds over the two years are in house.
+- **What binds.**
+  - Money binds both plans that start on day 0: each spends its whole two-year budget. Three times the money changes
+    little, because then the atomizer and the supply of printable lots bind.
+  - The atomizer is shared and is not part of the build-out: about three new aluminium designs a week in every plan.
+  - Copper waits for DED capacity: Utah's MX-Lab once a month, Mines 7 times a year, and the in-house MX-Lab only from
+    day 260.
+- **The ramp-up costs two to three weeks** to the first results in either building plan (no learning curve,
+  section 5.9). It is not what separates the plans; the build-out is.
+- **Where adding a route doesn't help:**
+  - The outside tensile lab and (for the cheap policies) the PIP service took no work.
+  - Taking away either printer partner delays aluminium's first result in 5 seeds of 8 (the median by 24-89
+    days).
+  - Taking away Mines or Utah's MX-Lab delays copper's first result in 6 seeds of 8.
+- **Provenance visits** ($11.5k for all sites) didn't measurably pay: the signs change from one offset level to
+  the next. The partners carry the work only until the in-house stations arrive, and round 3's policies don't fit
+  site terms.
+- **Capital:** $1.31M goes out on day 0 in deposits and $5.0M by day 273, the same in both building plans. By
+  aluminium's state of the art the parallel plan has paid $1.76M; external-only pays none.
+- **Two engine rules were needed for every policy**, found in the first runs:
+  - a WIP limit before the first fabrication step (without it, the cheap aluminium policy made 193 powders in a month
+    against three partner builds a week);
+  - money kept for the coming week's standing slots.
 
 ## What changed from round 3, and why
 
@@ -172,8 +212,6 @@ gas-atomization runs), so discovery's money is the same in every plan.
 
 "Validated T2" in the tables is the first alloy at T2 (its true utility) that has passed all three.
 
-<!-- STAGES -->
-
 ## 5. Results
 
 *All simulated. Checked against [`out/twin4/fig/tables.md`](../out/twin4/fig/tables.md),
@@ -231,10 +269,55 @@ the other plan did, and where neither did. The median days saved is over the see
   * The external-only lab spends the least to each target it reaches ($25-70k), and reaches copper's halfway target
     in only 5 seeds.
 
+
+**With 24 seeds** (`plans` and 12 more, `plans_more`; read together as `plans24` in the tables), the order and the
+sizes hold.
+
+| Plan | Al T1 | Al T2 | Cu T1 | Cu T2 |
+|---|---|---|---|---|
+| Wait for the cell | 23/24; 331 | 9/24; >730 | 24/24; 416 | 22/24; 421 |
+| Ramp up in parallel | 24/24; 47 | 13/24; 557 | 24/24; 305 | 22/24; 310 |
+| External routes only | 24/24; 46 | 10/24; >730 | 20/24; 353 | 13/24; 589 |
+
+* **Against waiting:** parallel is first to aluminium's state of the art in all 24 seeds (a median 253 days sooner)
+  and to copper's targets in 21-22 of 24 (110-116 days sooner).
+* **Against external only:** aluminium's state of the art is a tie (3 first, 3 later), and parallel is first to
+  copper's targets in 20 of 24.
+
 ![Round 4: best new alloy against days from the funding](../out/twin4/fig/twin4_best_vs_days.png)
 ![Round 4: days from the funding to each target](../out/twin4/fig/twin4_time_to_target.png)
 
-<!-- BEST -->
+### 5.2 Each campaign's best policy of round 3 (`plans_best`: time-aware BOFN on aluminium, the funnel on copper; 6 seeds)
+
+| Plan | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
+|---|---|---|---|---|---|---|
+| Wait for the cell | 5/6; 420 | 4/6; 575 | 6/6; 379 | 5/6; 422 | 0.63 ± 0.06 | 0.70 ± 0.02 |
+| **Ramp up in parallel** | **6/6; 123** | **4/6; 219** | **6/6; 276** | **5/6; 279** | **0.72 ± 0.03** | 0.69 ± 0.02 |
+| External routes only | 6/6; 285 | 5/6; 382 | 4/6; 355 | 4/6; 355 | 0.70 ± 0.02 | 0.64 ± 0.03 |
+
+| Paired, parallel against | waiting: first / behind / neither; median days saved | external only: same |
+|---|---|---|
+| Aluminium T1 | 6 / 0 / 0; 279 | 4 / 2 / 0; 31 |
+| Aluminium T2 | 4 / 2 / 0; 408 (2 seeds where both got there) | 3 / 3 / 0; 116 (3) |
+| Copper T1 | 5 / 1 / 0; 79 | 5 / 1 / 0; 14 |
+| Copper T2 | 5 / 0 / 1; 116 | 4 / 1 / 1; 14 |
+
+* **With BOFN, ramping up in parallel is the fastest plan to aluminium's halfway target**: day 219 (median),
+  against 382 external-only and 575 waiting. It finishes highest too (0.72 ± 0.03). In 4 of 6 seeds it also has a
+  validated aluminium T2 alloy, at a median of day 316: gas lot, validation network and full-part test.
+* **BOFN is slow to the first aluminium result in round 4**: day 123 in the parallel plan against the heuristic's
+  57 (12 seeds) or 47 (24).
+  * Its intermediate nodes are dear and slow while the work is outside: PIP at Plastometrex takes 12 days and $250,
+    and the sections go to BYU's day shift.
+  * Many of its early lots are too small to print (7 of 25 printable in a 100-day test, with or without the learning
+    curve).
+  * It spends $63-204k of aluminium's $240k. Money doesn't bind it; its selectivity and the lots do.
+  * In the finished lab of round 3 the same policy needed 83 days. Round 3's policies were tuned there, not for a
+    lab that is half built.
+* **Copper (the funnel in both experiments) repeats section 5.1**: parallel first to both targets against waiting in
+  5 seeds of 6, and against external only by about two weeks.
+* **The partners' share.** With BOFN, half of the first aluminium state-of-the-art alloys and half of the first T2
+  alloys in the parallel plan were printed at Utah. Copper's first came from Mines in 3 of 6 seeds and 3 of 5.
 
 ### 5.3 Capital, utilization and the timeline
 
@@ -421,8 +504,9 @@ got there first / later.
   * **Aluminium's halfway target** is not slowed by taking any one partner away (the variants are as often first as
     later). It is reached once the in-house MIDI runs, months after the partners' share has fallen to a few percent.
   * **Valimet** (in the stages only) ran at 0-13 % of its monthly slots (`plans`).
-* **One partner printer can stand in for the other.** Removing either costs aluminium's first result a few weeks,
-  not months. Which of the two is worth a standing reservation is a question of price and turnaround, and 3D Powder
+* **One partner printer can partly stand in for the other.** Removing either delays aluminium's first result in 5
+  seeds of 8: the median by 24 days without Utah, 89 without 3D Powder Tech (a jump of a few seeds in a median over
+  8). Which of the two is worth a standing reservation is a question of price and turnaround, and 3D Powder
   Tech's service is hypothetical.
 
 ### 5.9 What the ramp-up costs (`nolearn`, 8 seeds: every station at full rate once commissioned)
@@ -440,7 +524,30 @@ got there first / later.
 * **The parallel plan absorbs part of it.** The existing atomizer learns on the partners' work while the cell is
   built (hundreds of runs before the cell is complete), and the partners have no learning curve.
 
-<!-- SECOND -->
+### 5.10 Where ramping up in parallel doesn't win, plainly
+
+- **Aluminium's state of the art, against external routes only.** It's a tie: day 54 against 57, with the cheap
+  policies. The cell adds nothing to the first aluminium result, because the existing atomizer and the partners'
+  printers do it. The external-only lab gets there having spent no capital, and the parallel plan has paid $1.76M of
+  it by then.
+- **Copper against waiting, in a few seeds.** The waiting lab reached copper's targets first in 2 seeds of 12, and
+  aluminium's halfway target first in 1.
+- **Aluminium's halfway target with the heuristic.** The parallel plan gets there in only 7 seeds of 12 (median day
+  438), because the heuristic rarely reaches T2 in any plan. Taking away any one partner route doesn't slow it.
+- **The validated alloy.** Only half the seeds have a validated copper T2 alloy within two years in either building
+  plan (6 of 12; median day 692 in parallel, 728 waiting). Aluminium has one in 4 of 12 seeds at most. The stages
+  after discovery add months in every plan.
+- **Money.**
+  * The parallel plan spends the same discovery money as the others and all $5.0M of capital.
+  * Until the in-house stations arrive, its money buys fewer experiments: a partner build costs about $1,000 against
+    $365 in house.
+  * Both day-0 plans spend their whole budget.
+  * The external-only lab reaches each target it reaches for the least money ($25-70k), but it reaches copper's
+    halfway target in only 5 of 12 seeds.
+- **Provenance visits** didn't measurably pay (section 5.7).
+- **Two partner routes were never used**: the outside tensile laboratory, and, with the cheap policies, the PIP
+  service.
+
 
 ### Limits
 

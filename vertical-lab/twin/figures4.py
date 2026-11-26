@@ -800,7 +800,7 @@ def main():
          "validated T2 alloy is one at or above T2 that has been through the gas lot, the validation network and its "
          "full-part test.", ""]
     L += ["## 1. The three plans", ""]
-    for name in ("plans", "plans_3x", "plans_best"):
+    for name in ("plans", "plans24", "plans_3x", "plans_best"):
         L += plan_table(name, T, N)
         L += paired_table(name, T, N)
         L += money_table(name, T, N)

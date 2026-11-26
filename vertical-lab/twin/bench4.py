@@ -44,6 +44,8 @@ def _cfg(plan, policy, seed, days=DAYS, events=False, money=1.0, **opts):
 EXPERIMENTS = {
     # the three plans, round 3's cheap policies (the heuristic on aluminium, the funnel on copper), 12 seeds
     "plans": [_cfg(p, "fast", s) for p in PLANS for s in range(12)],
+    # 12 more seeds of the same (read together with "plans": 24 in all)
+    "plans_more": [_cfg(p, "fast", s) for p in PLANS for s in range(12, 24)],
     # the same with three times the money (every route can run at its capacity; round 3's copper test)
     "plans_3x": [_cfg(p, "fast", s, money=3.0) for p in PLANS for s in range(12)],
     # each campaign's best policy of round 3 (time-aware BOFN on aluminium, the funnel on copper)
@@ -178,8 +180,13 @@ def run(names, workers=3):
 
 
 def load(name):
-    p = RUNS / f"{name}.jsonl"
-    return [json.loads(l) for l in p.read_text().splitlines() if l.strip()] if p.exists() else []
+    """An experiment's runs; "plans24" is "plans" and "plans_more" together (24 seeds)."""
+    out = []
+    for nm in {"plans24": ["plans", "plans_more"]}.get(name, [name]):
+        p = RUNS / f"{nm}.jsonl"
+        if p.exists():
+            out += [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
+    return out
 
 
 def group_key(cfg):
