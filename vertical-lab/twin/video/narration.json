@@ -1,0 +1,167 @@
+{
+ "about": "The campaign video's narration (twin/video/narration.py). One entry per line: id, the segment it belongs to (seg) and either at (seconds into it) or mark (a named moment, narration.marks), plus offset; text is what the subtitles show and the voice says (narration.SAY and IPA fix how it says it); src is where its numbers come from. Short lines at the places that need them; the captions and the pictures carry the rest.",
+ "lines": [
+  {
+   "id": "open1",
+   "seg": "title",
+   "at": 0.8,
+   "text": "This is a simulated benchmark: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab.",
+   "spill": true,
+   "src": "the title card"
+  },
+  {
+   "id": "open2",
+   "seg": "simulated",
+   "at": 2.0,
+   "text": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+   "src": "compose.NOTES (Real / Simulated)"
+  },
+  {
+   "id": "dag1",
+   "seg": "dag",
+   "at": 0.6,
+   "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
+   "src": "dag_anim captions; BOFN: Astudillo and Frazier, 2021"
+  },
+  {
+   "id": "dag2",
+   "seg": "dag",
+   "mark": "dag.node.flaime_al.powder",
+   "offset": 0.3,
+   "text": "For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.",
+   "src": "dag_anim captions: powder (the lab makes its own powder), print (every build checked for density and cracks)"
+  },
+  {
+   "id": "dag3",
+   "seg": "dag",
+   "mark": "dag.node.onr_cu.screen",
+   "offset": 0.3,
+   "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
+   "src": "dag_anim captions: screen (one-hour corrosion screen), immersion (30 days in seawater)"
+  },
+  {
+   "id": "dag4",
+   "seg": "dag",
+   "mark": "dag.collapse",
+   "offset": 0.4,
+   "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+   "src": "dag_anim captions (both, collapse)"
+  },
+  {
+   "id": "fig1",
+   "seg": "figures",
+   "at": 0.8,
+   "text": "Best so far is the highest utility of any alloy tested yet. The dotted line is the target: the best of the reference alloys, the state of the art.",
+   "src": "figs_anim.EXPLAIN_CAPTIONS 0-19 s"
+  },
+  {
+   "id": "fig2",
+   "seg": "figures",
+   "at": 19.4,
+   "text": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
+   "src": "figs_anim.EXPLAIN_CAPTIONS 19-36 s"
+  },
+  {
+   "id": "fig3",
+   "seg": "figures",
+   "at": 36.0,
+   "text": "Where each first reaches the target, the median over the runs, gives the acceleration factor: here 220 days over 116, or 1.9 times. Money gives the cost ratio the same way.",
+   "src": "explain frame: X = 220 d / 116 d = 1.9x (econ_summary.json, vertical lab + bofn_blend vs conventional + bofn, flaime_al: median_ref 219.6, median_new 116.2)"
+  },
+  {
+   "id": "pov1",
+   "seg": "replay",
+   "at": 0.5,
+   "text": "Day one follows a single aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
+   "src": "compose.Timeline._pov: cup machined, dosed, pressed under vacuum, melt, pour"
+  },
+  {
+   "id": "pov2",
+   "seg": "replay",
+   "mark": "replay.pov.atomize",
+   "offset": 0.4,
+   "text": "The melt and the pour are real footage, from the lab's own atomizer.",
+   "src": "assets.SHOTS atomize: DAL #159, #219 footage"
+  },
+  {
+   "id": "pov3",
+   "seg": "replay",
+   "mark": "replay.pov.print",
+   "offset": 0.3,
+   "text": "After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented.",
+   "src": "compose.Timeline._pov shots 24-70 s"
+  },
+  {
+   "id": "pov4",
+   "seg": "replay",
+   "mark": "replay.pov.test",
+   "offset": 0.3,
+   "text": "Wire EDM cuts its bars, and a tensile test scores it, about a day and a half after its cup was machined.",
+   "src": "day 1 ends at lab hour 37.3 (the clock: Day 2, Tue 13:15)"
+  },
+  {
+   "id": "lab1",
+   "seg": "replay",
+   "mark": "replay.whole_lab",
+   "offset": 0.6,
+   "text": "Now the whole lab from above, replayed from the event log. Each booking brings its tray to a tower's opening and back, and the two mobile arms drive to the openings where they're needed.",
+   "src": "the animated re-cut (PR 393, 2026-11-26)"
+  },
+  {
+   "id": "res1",
+   "seg": "results",
+   "at": 0.8,
+   "text": "In the automated lab, over twelve simulated years, BOFN finished highest on aluminium. On copper, tiered CALPHAD screening finished ahead, even of BOFN with blend screening: 0.69 against 0.67.",
+   "src": "bench2_summary.json main: onr_cu vertical_lab_tiered 0.686, vertical_lab_bofn_blend 0.674; flaime_al bofn 0.69 / 0.65 highest"
+  },
+  {
+   "id": "res2",
+   "seg": "results",
+   "at": 26.5,
+   "text": "Against the conventional lab running the same BOFN, the automated lab reached the state of the art 1.9 times sooner on aluminium, and 3.7 times sooner on copper, where the conventional lab got there in only half its runs.",
+   "src": "econ_summary.json acceleration, vertical lab + bofn_blend vs conventional + bofn: flaime_al af 1.89; onr_cu af 3.73, hit_ref 0.5"
+  },
+  {
+   "id": "res3",
+   "seg": "results",
+   "at": 46.5,
+   "text": "Per demonstrated alloy, the automated lab costs more while the two campaigns carry its equipment alone. Shared with outside users at sixty percent use, it costs less than the conventional lab.",
+   "src": "econ_summary.json cost_per_experiment: FLAIME $25.1k vs $10.3k with capex, $5.2k at 60 %; ONR $40.9k vs $16.4k, $8.2k at 60 %"
+  },
+  {
+   "id": "res4",
+   "seg": "results",
+   "at": 66.5,
+   "text": "The two campaigns use 5.8 percent of the lab's hours, weighted by capital cost. With an assumed ten hours a week of outside work per instrument, the spare hours would net about 1.2 million dollars a year, 2.1 times the lab's depreciation.",
+   "src": "econ_summary.json utilization.capex_weighted_mean 0.058; outside_work.demand_limited net $1.23M, 2.06x depreciation"
+  },
+  {
+   "id": "take1",
+   "seg": "takeaway",
+   "at": 1.0,
+   "text": "So, in this simulated benchmark, against a conventional lab running the same optimizer, the automated lab reached state-of-the-art alloys 1.9 times faster for aluminium, and 3.7 times faster for copper.",
+   "src": "the takeaway card"
+  },
+  {
+   "id": "take2",
+   "seg": "takeaway",
+   "at": 16.4,
+   "text": "The cost here is the operating cost of getting there: materials, outside fees, labour, service contracts, utilities and space, but not the equipment. For copper, that's 84 percent of the conventional lab's. For aluminium, it's 84 percent only if outside users share the lab. Count the equipment's capital cost, and the automated lab costs more for both.",
+   "src": "the takeaway card: FLAIME 84 % (operating, shared), 136 % operating alone, 200 % with capex; ONR 84 % (operating, no capex), 115 % with capex; twin_econ.md: operating = cash plus labour, service, utilities and space"
+  },
+  {
+   "id": "take3",
+   "seg": "takeaway",
+   "at": 39.9,
+   "text": "Against a conventional lab run with a metallurgist's heuristic instead, the gain shrinks to 1.1 times on aluminium, and 2.2 times on copper.",
+   "src": "the takeaway card's footer; econ_summary.json vertical lab + bofn_blend vs conventional + heuristic: 1.05, 2.18"
+  },
+  {
+   "id": "note1",
+   "seg": "notes",
+   "at": 0.8,
+   "text": "Everything here is simulated: the alloys, the measurements and the results, with assumed station times, fees and schedules. It shows how the lab's design and its optimizer interact in a model, not what the real lab will find. The voice is synthetic, too.",
+   "src": "compose.NOTES"
+  }
+ ]
+}

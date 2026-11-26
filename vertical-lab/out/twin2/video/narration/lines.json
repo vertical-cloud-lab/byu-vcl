@@ -1,0 +1,219 @@
+{
+ "voice": "Kokoro v1.0 af_heart (kokoro-onnx, open weights), speed 0.96",
+ "lines": {
+  "open1": {
+   "key": "1deccce009d3a55e",
+   "text": "This is a simulated benchmark: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab.",
+   "spoken": "This is a simulated benchmark: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab.",
+   "phonemes": "ðɪs ɪz ɐ sˈɪmjʊlˌeɪɾᵻd bˈɛntʃmɑːɹk: tˈuː ˈælɔɪ dɪskˈʌvɚɹi kæmpˈeɪnz, ɹˈiːpleɪd fɚɹə hˈoʊl jˈɪɹ ɪn ɐ dˈɪdʒɪɾəl twˈɪn ʌv ˌaʊɚ plˈænd ˈɔːɾəmˌeɪɾᵻd lˈæb.",
+   "seconds": 8.73,
+   "sha256": "818ca2ae55659285f7564f48e27c12cc92eb71ee6e0bef26d54e633935c81c31"
+  },
+  "open2": {
+   "key": "c0e4c932dbbcf64f",
+   "text": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+   "spoken": "Some of it comes from real sources: the lab's design and its three D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+   "phonemes": "sˌʌm ʌv ɪt kˈʌmz fɹʌm ɹˈiːəl sˈɔːɹsᵻz: ðə lˈæbz dɪzˈaɪn ænd ɪts θɹˈiː dˈiː mˈɑːdəl, fˈʊɾɪdʒ fɹʌm ˌaʊɚɹ ˈoʊn ˈæɾəmˌaɪzɚ, ðə sˈɜːtʃ spˈeɪsᵻz ɪnðə tˈuː pɹəpˈoʊzəlz, ænd pˈʌblɪʃt pɹˈaɪsᵻz. ˈɛvɹɪθˌɪŋ ˈɛls ɪz sˈɪmjʊlˌeɪɾᵻd: ˈɛvɹi ˈælɔɪ, ˈɛvɹi mˈɛʒɚmənt, ænd ˈɛvɹi ɹɪzˈʌlt.",
+   "seconds": 16.0,
+   "sha256": "5380da19b06c1037f65e21663ec2e7f52f7486cdda487578417357aa19491d1c"
+  },
+  "dag1": {
+   "key": "a812d07f5c849d51",
+   "text": "Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.",
+   "spoken": "Each campaign is a function network: a chain of steps, where each step's results feed the next. B O F N, Bayesian optimization over function networks, models every step, not just the final score.",
+   "phonemes": "ˈiːtʃ kæmpˈeɪn ɪz ɐ fˈʌŋkʃən nˈɛtwɜːk: ɐ tʃˈeɪn ʌv stˈɛps, wˌɛɹ ˈiːtʃ stˈɛps ɹɪzˈʌlts fˈiːd ðə nˈɛkst. bˈiː ˈoʊ ˈɛf ˈɛn, beɪˈiːʒən ˌɑːptɪmᵻzˈeɪʃən ˌoʊvɚ fˈʌŋkʃən nˈɛtwɜːks, mˈɑːdəlz ˈɛvɹi stˈɛp, nˌɑːt dʒˈʌst ðə fˈaɪnəl skˈɔːɹ.",
+   "seconds": 13.33,
+   "sha256": "19f3f44ef85bcbf60d1ace2541da8e09ff5aabe9da355e7b8c2e276805e1c90e"
+  },
+  "dag2": {
+   "key": "0e643f913c43ca1f",
+   "text": "For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.",
+   "spoken": "For aluminum, the lab makes each alloy's powder itself, then prints it and checks every build.",
+   "phonemes": "fɔːɹ ɐlˈuːmɪnəm, ðə lˈæb mˌeɪks ˈiːtʃ ˈælɔɪz pˈaʊdɚɹ ɪtsˈɛlf, ðˈɛn pɹˈɪnts ɪt ænd tʃˈɛks ˈɛvɹi bˈɪld.",
+   "seconds": 5.65,
+   "sha256": "b9a2e77629193e16840fca31861382d589ddd8f48f549bfb9c26e1f7f31bded8"
+  },
+  "dag3": {
+   "key": "adbc97c5b2a8c776",
+   "text": "For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.",
+   "spoken": "For copper, a one-hour corrosion screen ranks the D E D deposits, and thirty days in seawater come before a utility is known.",
+   "phonemes": "fɔːɹ kˈɑːpɚ, ɐ wˈʌnˈaʊɚ kɚɹˈoʊʒən skɹˈiːn ɹˈæŋks ðə dˈiː ˈiː dˈiː dᵻpˈɑːzɪts, ænd θˈɜːɾi dˈeɪz ɪn sˈiːwɔːɾɚ kˈʌm bᵻfˌɔːɹ ɐ juːtˈɪlᵻɾi ɪz nˈoʊn.",
+   "seconds": 7.96,
+   "sha256": "ee58e7d16e5b57310aa884687077745d8a0bdeb7eb31348bc38fabfc2ecb2d42"
+  },
+  "dag4": {
+   "key": "af53785b0bde9553",
+   "text": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+   "spoken": "Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.",
+   "phonemes": "bˈoʊθ kæmpˈeɪnz ʃˈɛɹ wˈʌn lˈæb. fɹʌm hˈɪɹ ˈɔn, ˈiːtʃ stˈɛp ɪz ɐn ˈaɪkɑːn ðæt lˈaɪts ˌʌp wˌaɪl ɪt ɹˈʌnz.",
+   "seconds": 5.89,
+   "sha256": "afc81b835bf3cc0e6c75cbbd725f5f48f35bebac343f56c7c5fe2c4835027b60"
+  },
+  "fig1": {
+   "key": "a5433abb2bac61d9",
+   "text": "Best so far is the highest utility of any alloy tested yet. The dotted line is the target: the best of the reference alloys, the state of the art.",
+   "spoken": "Best so far is the highest utility of any alloy tested yet. The dotted line is the target: the best of the reference alloys, the state of the art.",
+   "phonemes": "bˈɛst sˈoʊ fˌɑːɹ ɪz ðə hˈaɪɪst juːtˈɪlᵻɾi ʌv ˌɛni ˈælɔɪ tˈɛstᵻd jˈɛt. ðə dˈɑːɾᵻd lˈaɪn ɪz ðə tˈɑːɹɡɪt: ðə bˈɛst ʌvðə ɹˈɛfɹəns ˈælɔɪz, ðə stˈeɪt ʌvðɪ ˈɑːɹt.",
+   "seconds": 9.73,
+   "sha256": "1faea81da6dbfb5d0711e4ed1f9f98fd6626c35155681efe3067244be40a8707"
+  },
+  "fig2": {
+   "key": "8964a6ba96f98368",
+   "text": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
+   "spoken": "Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab, running the same optimizer through partner and core facilities.",
+   "phonemes": "ɐɡˈɛnst mˈʌni, ðə sˈeɪm kˈɜːv ʃˈoʊz wʌt ðə pɹˈɑːɡɹɛs kˈɔst. ðə ɡɹˈeɪ dˈæʃt kˈɜːv ɪz ðə kənvˈɛnʃənəl lˈæb, ɹˈʌnɪŋ ðə sˈeɪm ˈɑːptɪmˌaɪzɚ θɹuː pˈɑːɹtnɚ ænd kˈɔːɹ fəsˈɪlᵻɾiz.",
+   "seconds": 10.39,
+   "sha256": "b9822521bf9d4d9432b07628f27b961446131df6c8568c8bd9969b27cff69f6f"
+  },
+  "fig3": {
+   "key": "10f803d231b3afcd",
+   "text": "Where each first reaches the target, the median over the runs, gives the acceleration factor: here 220 days over 116, or 1.9 times. Money gives the cost ratio the same way.",
+   "spoken": "Where each first reaches the target, the median over the runs, gives the acceleration factor: here 220 days over 116, or 1.9 times. Money gives the cost ratio the same way.",
+   "phonemes": "wˌɛɹ ˈiːtʃ fˈɜːst ɹˈiːtʃᵻz ðə tˈɑːɹɡɪt, ðə mˈiːdiːən ˌoʊvɚ ðə ɹˈʌnz, ɡˈɪvz ðɪ ɐksˌɛlɚɹˈeɪʃən fˈæktɚ: hˈɪɹ tˈuːhˈʌndɹɪd twˈɛnti dˈeɪz ˌoʊvɚ wˈʌnhˈʌndɹɪd sˈɪkstiːn, ɔːɹ wˈʌn pɔɪnt nˈaɪn tˈaɪmz. mˈʌni ɡˈɪvz ðə kˈɔst ɹˈeɪʃɪˌoʊ ðə sˈeɪm wˈeɪ.",
+   "seconds": 13.78,
+   "sha256": "547752cfa0755ccb59da053f2117db5875b67728c96e9d93dd2c9a9084ad29d1"
+  },
+  "pov1": {
+   "key": "4b3384cae16a04f4",
+   "text": "Day one follows a single aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
+   "spoken": "Day one follows a single aluminum alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
+   "phonemes": "dˈeɪ wˈʌn fˈɑːloʊz ɐ sˈɪŋɡəl ɐlˈuːmɪnəm ˈælɔɪ fɹʌm stˈɑːɹt tə fˈɪnɪʃ. ɪts kˈʌp ɪz məʃˈiːnd, ɪts mˈɛɾəlz ɑːɹ dˈoʊsd ænd pɹˈɛst ˌʌndɚ vˈækjuːm, ðˈɛn mˈɛltᵻd ænd ˈæɾəmˌaɪzd ˌɪntʊ pˈaʊdɚ.",
+   "seconds": 11.35,
+   "sha256": "cd07411ac6870fed8edefd5a10c76e3d2eac1b36fcf6cd22ed67a01fe6c836e5"
+  },
+  "pov2": {
+   "key": "19ef9493c0b11910",
+   "text": "The melt and the pour are real footage, from the lab's own atomizer.",
+   "spoken": "The melt and the pour are real footage, from the lab's own atomizer.",
+   "phonemes": "ðə mˈɛlt ænd ðə pˈɔːɹ ɑːɹ ɹˈiːəl fˈʊɾɪdʒ, fɹʌmðə lˈæbz ˈoʊn ˈæɾəmˌaɪzɚ.",
+   "seconds": 4.05,
+   "sha256": "0ad2e626d543e16d31366a571e50ee73b482ad8f2d1bf789966ab7e21ac1f1dd"
+  },
+  "pov3": {
+   "key": "c36519827c52d679",
+   "text": "After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented.",
+   "spoken": "After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented.",
+   "phonemes": "ˈæftɚ sˈɪvɪŋ ænd pˈaʊdɚ tʃˈɛks, ɪts pɹˈɪntᵻd baɪ lˈeɪzɚ pˈaʊdɚ bˈɛd fjˈuːʒən, ðˈɛn ɪnspˈɛktᵻd, sˈɛkʃənd ænd ˌɪndˈɛntᵻd.",
+   "seconds": 7.17,
+   "sha256": "2109a22f950c1d5f62474d299afa2b11dd5e6fd5f851adf298c029337e131b00"
+  },
+  "pov4": {
+   "key": "9435576440c26f7d",
+   "text": "Wire EDM cuts its bars, and a tensile test scores it, about a day and a half after its cup was machined.",
+   "spoken": "Wire E D M cuts its bars, and a tensile test scores it, about a day and a half after its cup was machined.",
+   "phonemes": "wˈaɪɚɹ ˈiː dˈiː ˈɛm kˈʌts ɪts bˈɑːɹz, ænd ɐ tˈɛnsəl tˈɛst skˈɔːɹz ɪt, ɐbˌaʊt ɐ dˈeɪ ænd ɐ hˈæf ˈæftɚɹ ɪts kˈʌp wʌz məʃˈiːnd.",
+   "seconds": 7.19,
+   "sha256": "1ff8af855b7751fa5ab0872e796883bf1ed7ddfa84f016535d549461dfaf6556"
+  },
+  "lab1": {
+   "key": "7fdf683440594b20",
+   "text": "Now the whole lab from above, replayed from the event log. Each booking brings its tray to a tower's opening and back, and the two mobile arms drive to the openings where they're needed.",
+   "spoken": "Now the whole lab from above, replayed from the event log. Each booking brings its tray to a tower's opening and back, and the two mobile arms drive to the openings where they're needed.",
+   "phonemes": "nˈaʊ ðə hˈoʊl lˈæb fɹʌm əbˈʌv, ɹˈiːpleɪd fɹʌmðɪ ᵻvˈɛnt lˈɔɡ. ˈiːtʃ bˈʊkɪŋ bɹˈɪŋz ɪts tɹˈeɪ tʊ ɐ tˈaʊɚz ˈoʊpənɪŋ ænd bˈæk, ænd ðə tˈuː mˈoʊbəl ˈɑːɹmz dɹˈaɪv tə ðɪ ˈoʊpənɪŋz wˌɛɹ ðeɪɚ nˈiːdᵻd.",
+   "seconds": 11.01,
+   "sha256": "0f76541594df150b9ad503f3ab9991eeba9ab0815baf4298a733556edb9ee5c6"
+  },
+  "res1": {
+   "key": "195845df98f1f13b",
+   "text": "In the automated lab, over twelve simulated years, BOFN finished highest on aluminium. On copper, tiered CALPHAD screening finished ahead, even of BOFN with blend screening: 0.69 against 0.67.",
+   "spoken": "In the automated lab, over twelve simulated years, B O F N finished highest on aluminum. On copper, tiered CALPHAD screening finished ahead, even of B O F N with blend screening: 0.69 against 0.67.",
+   "phonemes": "ɪnðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb, ˌoʊvɚ twˈɛlv sˈɪmjʊlˌeɪɾᵻd jˈɪɹz, bˈiː ˈoʊ ˈɛf ˈɛn fˈɪnɪʃt hˈaɪɪst ˌɔn ɐlˈuːmɪnəm. ˌɔn kˈɑːpɚ, tˈɪɹd kˈælfæd skɹˈiːnɪŋ fˈɪnɪʃt ɐhˈɛd, ˈiːvən ʌv bˈiː ˈoʊ ˈɛf ˈɛn wɪð blˈɛnd skɹˈiːnɪŋ: zˈiəɹoʊ pɔɪnt sˈɪks nˈaɪn ɐɡˈɛnst zˈiəɹoʊ pɔɪnt sˈɪks sˈɛvən.",
+   "seconds": 16.13,
+   "sha256": "949601096e8989378ed704e8b1e6df564a219e3c932d93affae3ca45ef7a6ea3"
+  },
+  "res2": {
+   "key": "96bac202e696008b",
+   "text": "Against the conventional lab running the same BOFN, the automated lab reached the state of the art 1.9 times sooner on aluminium, and 3.7 times sooner on copper, where the conventional lab got there in only half its runs.",
+   "spoken": "Against the conventional lab running the same B O F N, the automated lab reached the state of the art 1.9 times sooner on aluminum, and 3.7 times sooner on copper, where the conventional lab got there in only half its runs.",
+   "phonemes": "ɐɡˈɛnst ðə kənvˈɛnʃənəl lˈæb ɹˈʌnɪŋ ðə sˈeɪm bˈiː ˈoʊ ˈɛf ˈɛn, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɹˈiːtʃt ðə stˈeɪt ʌvðɪ ˈɑːɹt wˈʌn pɔɪnt nˈaɪn tˈaɪmz sˈuːnɚɹ ˌɔn ɐlˈuːmɪnəm, ænd θɹˈiː pɔɪnt sˈɛvən tˈaɪmz sˈuːnɚɹ ˌɔn kˈɑːpɚ, wˌɛɹ ðə kənvˈɛnʃənəl lˈæb ɡɑːt ðɛɹ ɪn ˈoʊnli hˈæf ɪts ɹˈʌnz.",
+   "seconds": 15.85,
+   "sha256": "283e77fa38ceb732d553114185aada795cb31651b3478fb1b863aa1b4646f659"
+  },
+  "res3": {
+   "key": "20614d99cdf878b2",
+   "text": "Per demonstrated alloy, the automated lab costs more while the two campaigns carry its equipment alone. Shared with outside users at sixty percent use, it costs less than the conventional lab.",
+   "spoken": "Per demonstrated alloy, the automated lab costs more while the two campaigns carry its equipment alone. Shared with outside users at sixty percent use, it costs less than the conventional lab.",
+   "phonemes": "pɜː dˈɛmənstɹˌeɪɾᵻd ˈælɔɪ, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb kˈɔsts mˈɔːɹ wˌaɪl ðə tˈuː kæmpˈeɪnz kˈæɹi ɪts ɪkwˈɪpmənt ɐlˈoʊn. ʃˈɛɹd wɪð aʊtsˈaɪd jˈuːzɚz æt sˈɪksti pɚsˈɛnt jˈuːs, ɪt kˈɔsts lˈɛs ðɐn ðə kənvˈɛnʃənəl lˈæb.",
+   "seconds": 12.37,
+   "sha256": "70701e61e070a00d5cde38c2b8f58082142fdc798a65b7cd47611b695a54d75d"
+  },
+  "res4": {
+   "key": "ad7b86e31433895e",
+   "text": "The two campaigns use 5.8 percent of the lab's hours, weighted by capital cost. With an assumed ten hours a week of outside work per instrument, the spare hours would net about 1.2 million dollars a year, 2.1 times the lab's depreciation.",
+   "spoken": "The two campaigns use 5.8 percent of the lab's hours, weighted by capital cost. With an assumed ten hours a week of outside work per instrument, the spare hours would net about 1.2 million dollars a year, 2.1 times the lab's depreciation.",
+   "phonemes": "ðə tˈuː kæmpˈeɪnz jˈuːs fˈaɪv pɔɪnt ˈeɪt pɚsˈɛnt ʌvðə lˈæbz ˈaʊɚz, wˈeɪɾᵻd baɪ kˈæpɪɾəl kˈɔst. wɪð ɐn ɐsˈuːmd tˈɛn ˈaʊɚz ɐ wˈiːk ʌv aʊtsˈaɪd wˈɜːk pɜːɹ ˈɪnstɹəmənt, ðə spˈɛɹ ˈaʊɚz wʊd nˈɛt ɐbˌaʊt wˈʌn pɔɪnt tˈuː mˈɪliən dˈɑːlɚz ɐ jˈɪɹ, tˈuː pɔɪnt wˈʌn tˈaɪmz ðə lˈæbz dᵻpɹˌiːʃɪˈeɪʃən.",
+   "seconds": 16.64,
+   "sha256": "77fd050885531f67614448362939244f906c9556f330c101ad6f4d6cc763b3e4"
+  },
+  "take1": {
+   "key": "21194a9d1eeae738",
+   "text": "So, in this simulated benchmark, against a conventional lab running the same optimizer, the automated lab reached state-of-the-art alloys 1.9 times faster for aluminium, and 3.7 times faster for copper.",
+   "spoken": "So, in this simulated benchmark, against a conventional lab running the same optimizer, the automated lab reached state-of-the-art alloys 1.9 times faster for aluminum, and 3.7 times faster for copper.",
+   "phonemes": "sˈoʊ, ɪn ðɪs sˈɪmjʊlˌeɪɾᵻd bˈɛntʃmɑːɹk, ɐɡˈɛnst ɐ kənvˈɛnʃənəl lˈæb ɹˈʌnɪŋ ðə sˈeɪm ˈɑːptɪmˌaɪzɚ, ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb ɹˈiːtʃt stˈeɪɾʌvðɪˈɑːɹt ˈælɔɪz wˈʌn pɔɪnt nˈaɪn tˈaɪmz fˈæstɚ fɔːɹ ɐlˈuːmɪnəm, ænd θɹˈiː pɔɪnt sˈɛvən tˈaɪmz fˈæstɚ fɔːɹ kˈɑːpɚ.",
+   "seconds": 14.74,
+   "sha256": "b9a77de6a4e5c3fb6ce189250ad6e846a04734db3f405f251b1792342e91a00e"
+  },
+  "take2": {
+   "key": "a2842023eb2d3f5e",
+   "text": "The cost here is the operating cost of getting there: materials, outside fees, labour, service contracts, utilities and space, but not the equipment. For copper, that's 84 percent of the conventional lab's. For aluminium, it's 84 percent only if outside users share the lab. Count the equipment's capital cost, and the automated lab costs more for both.",
+   "spoken": "The cost here is the operating cost of getting there: materials, outside fees, labor, service contracts, utilities and space, but not the equipment. For copper, that's 84 percent of the conventional lab's. For aluminum, it's 84 percent only if outside users share the lab. Count the equipment's capital cost, and the automated lab costs more for both.",
+   "phonemes": "ðə kˈɔst hˈɪɹ ɪz ðɪ ˈɑːpɚɹˌeɪɾɪŋ kˈɔst ʌv ɡˌɛɾɪŋ ðˈɛɹ: mətˈɪɹiəlz, aʊtsˈaɪd fˈiːz, lˈeɪbɚ, sˈɜːvɪs kˈɑːntɹækts, juːtˈɪlᵻɾiz ænd spˈeɪs, bˌʌt nˌɑːt ðɪ ɪkwˈɪpmənt. fɔːɹ kˈɑːpɚ, ðæts ˈeɪɾi fˈɔːɹ pɚsˈɛnt ʌvðə kənvˈɛnʃənəl lˈæbz. fɔːɹ ɐlˈuːmɪnəm, ɪts ˈeɪɾi fˈɔːɹ pɚsˈɛnt ˈoʊnli ɪf aʊtsˈaɪd jˈuːzɚz ʃˈɛɹ ðə lˈæb. kˈaʊnt ðɪ ɪkwˈɪpmənts kˈæpɪɾəl kˈɔst, ænd ðɪ ˈɔːɾəmˌeɪɾᵻd lˈæb kˈɔsts mˈɔːɹ fɔːɹ bˈoʊθ.",
+   "seconds": 22.85,
+   "sha256": "ab022e6f5dcc77e75d3ecac4b0c56367207c9ea94553a6411533391d64929d1d"
+  },
+  "take3": {
+   "key": "a7396a989e78451f",
+   "text": "Against a conventional lab run with a metallurgist's heuristic instead, the gain shrinks to 1.1 times on aluminium, and 2.2 times on copper.",
+   "spoken": "Against a conventional lab run with a metallurgist's heuristic instead, the gain shrinks to 1.1 times on aluminum, and 2.2 times on copper.",
+   "phonemes": "ɐɡˈɛnst ɐ kənvˈɛnʃənəl lˈæb ɹˈʌn wɪð ɐ mɛtˈælɚdʒˌɪsts hjuːɹˈɪstɪk ɪnstˈɛd, ðə ɡˈeɪn ʃɹˈɪŋks tə wˈʌn pɔɪnt wˈʌn tˈaɪmz ˌɔn ɐlˈuːmɪnəm, ænd tˈuː pɔɪnt tˈuː tˈaɪmz ˌɔn kˈɑːpɚ.",
+   "seconds": 9.86,
+   "sha256": "4284fcb571ffd50bd6f0126c2247ffa998e2514e84deff6c2af46043bc837c0f"
+  },
+  "note1": {
+   "key": "e46332021a308145",
+   "text": "Everything here is simulated: the alloys, the measurements and the results, with assumed station times, fees and schedules. It shows how the lab's design and its optimizer interact in a model, not what the real lab will find. The voice is synthetic, too.",
+   "spoken": "Everything here is simulated: the alloys, the measurements and the results, with assumed station times, fees and schedules. It shows how the lab's design and its optimizer interact in a model, not what the real lab will find. The voice is synthetic, too.",
+   "phonemes": "ˈɛvɹɪθˌɪŋ hˈɪɹ ɪz sˈɪmjʊlˌeɪɾᵻd: ðɪ ˈælɔɪz, ðə mˈɛʒɚmənts ænd ðə ɹɪzˈʌlts, wɪð ɐsˈuːmd stˈeɪʃən tˈaɪmz, fˈiːz ænd skˈɛdʒuːlz. ɪt ʃˈoʊz hˌaʊ ðə lˈæbz dɪzˈaɪn ænd ɪts ˈɑːptɪmˌaɪzɚɹ ˌɪntɚɹˈækt ɪn ɐ mˈɑːdəl, nˌɑːt wʌt ðə ɹˈiːəl lˈæb wɪl fˈaɪnd. ðə vˈɔɪs ɪz sɪnθˈɛɾɪk, tˈuː.",
+   "seconds": 16.85,
+   "sha256": "9dbeca1532a9397e3b44e4598fd0ce287269404982e5966d6c4bfc4fa3d30bee"
+  }
+ },
+ "rate": 24000,
+ "model_sha256": {
+  "kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+  "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+ },
+ "say": {
+  "MiR250": "MiR two-fifty",
+  "OT-2": "O T two",
+  "UPS": "U P S",
+  "SEM": "S E M",
+  "BYU": "B Y U",
+  "EDM": "E D M",
+  "ICP-MS": "I C P M S",
+  "UR12e": "U R twelve E",
+  "aluminium": "aluminum",
+  "AlSi10Mg": "A L S I ten M G",
+  "FLAIME": "flame",
+  "ONR": "O N R",
+  "BOFN": "B O F N",
+  "GP-BO": "G P B O",
+  "LPBF": "L P B F",
+  "DED": "D E D",
+  "HPC": "H P C",
+  "EDS": "E D S",
+  "XRD": "X R D",
+  "3-D": "three D",
+  "VHX": "V H X",
+  "labour": "labor"
+ },
+ "ipa": {
+  "MiR": "mˈiːɹ",
+  "CALPHAD": "kˈælfæd",
+  "Kardex": "kˈɑːɹdɛks",
+  "Sobol": "sˈoʊbɑːl",
+  "doser": "dˈoʊsɚ",
+  "dosed": "dˈoʊsd",
+  "pycalphad": "pˈaɪkælfæd"
+ }
+}

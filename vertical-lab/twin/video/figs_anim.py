@@ -14,6 +14,7 @@ bottom-left box (24, 860, 820, 200) of the full-screen frames is left empty for 
 from __future__ import annotations
 
 import math
+import os
 
 import numpy as np
 from PIL import Image, ImageDraw
@@ -25,7 +26,9 @@ from .style import px
 HPD = 24.0
 EXPLAIN_DURATION = 62.0
 RESULTS_DURATION = 90.0
-TAKEAWAY_DURATION = 15.0
+# the narrated cut (compose.NARRATE): the takeaway's three lines take 50 s, and the captions say what the voice says
+NARRATED = os.environ.get("TWIN_VIDEO_NARRATION", "0") == "1"
+TAKEAWAY_DURATION = 51.0 if NARRATED else 15.0
 DAG_BOX = (24, 860, 820, 200)            # x, y, w, h at 1920 x 1080: the docked DAG overlay's corner, kept empty
 
 STATION_SHORT = {
@@ -734,9 +737,28 @@ def _explain_util(d, t, ctx):
 
 
 # =================================================================================================== results
+def _leaders() -> str:
+    """Who finished highest in the automated lab, as the narration says it (bench2_summary.json, main): BOFN on
+    aluminium; on copper, tiered CALPHAD screening ahead of BOFN with blend screening."""
+    try:
+        import json
+        E = json.loads((D.OUT2 / "bench2_summary.json").read_text())["experiments"]["main"]
+        g = lambda k, c: E[k]["campaigns"][c]["best_mean"]
+        al = max(E, key=lambda k: g(k, "flaime_al"))
+        cu = max(E, key=lambda k: g(k, "onr_cu"))
+        if not (al.endswith(("_bofn", "_bofn_blend")) and cu.endswith("_tiered")):
+            return ""
+        return (f" In the automated lab, BOFN finished highest on aluminium; on copper, tiered CALPHAD screening "
+                f"finished ahead of BOFN with blend screening ({g(cu, 'onr_cu'):.2f} against "
+                f"{g('vertical_lab_bofn_blend', 'onr_cu'):.2f}).")
+    except Exception:                                   # noqa: BLE001
+        return ""
+
+
 RESULTS_CAPTIONS = [
-    (0.0, 26.0, "One twin-year per run, both campaigns at once: the automated lab against the conventional lab, "
-                "for each policy."),
+    (0.0, 26.0, ("One twin-year per run, both campaigns at once, for each policy." + _leaders()) if NARRATED and
+     _leaders() else "One twin-year per run, both campaigns at once: the automated lab against the conventional lab, "
+                     "for each policy."),
     (26.0, 46.0, "How much sooner, and for how much less, each campaign reached the state of the art."),
     (46.0, 66.0, "Cost per experiment."),
     (66.0, RESULTS_DURATION, "Utilization, and the capacity left over for outside users (a cloud user facility)."),
@@ -1086,7 +1108,9 @@ def takeaway_frame(t: float) -> np.ndarray:
     cond = (f"Runs: {na[0]} automated and {nc[0]} conventional twin-years. "
             f"Target utility: {ctx.T['flaime_al']:.2f} (FLAIME), {ctx.T['onr_cu']:.2f} (ONR). "
             "X: median days to the target, conventional over automated. Y: the cost of getting there, automated "
-            f"over conventional. Compared: {_cmp_words(ctx.E.get('comparison'))}.")
+            "over conventional" + ("; operating cost is materials, outside fees, labour, service contracts, "
+                                   "utilities and space, without the equipment's capital cost" if NARRATED else "") +
+            f". Compared: {_cmp_words(ctx.E.get('comparison'))}.")
     f = St.font(21)
     for i, ln in enumerate(St.wrap(cond, f, px(1700))[:3]):
         d.text((St.W / 2, px(724) + i * px(30)), ln, font=f, fill=small, anchor="ma")

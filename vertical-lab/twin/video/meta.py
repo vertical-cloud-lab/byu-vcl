@@ -113,7 +113,10 @@ def description(rec: dict, commit: str) -> str:
             "".join(f"{x}\n" for x in _caveats(R.policy)) + "\n"
             "Real: the lab design's 3-D renders, the atomizer footage, the search spaces (the proposals), USGS prices "
             "and the economics' sources. Assumed: station times, fees and outside-facility delays. Simulated: the "
-            "alloys' properties, every measurement and every result.\n\n"
+            "alloys' properties, every measurement and every result.\n\n" +
+            ("Narrated by a synthetic voice: Kokoro v1.0 (open weights, run locally), its stock voice af_heart. The "
+             "script, with timestamps, is in notes/twin_video.md; subtitles in "
+             "out/twin2/video/narration/narration.srt.\n\n" if rec.get("narration") else "") +
             f"Code: https://github.com/{REPO}/tree/{commit}/vertical-lab/twin (video: twin/video, write-up "
             f"notes/twin_video.md)\nPR: {PR}\n\n")
     chap = "Chapters\n" + "".join(f"{stamp(t)} {title}\n" for t, title in chapters(rec))
@@ -124,14 +127,14 @@ def description(rec: dict, commit: str) -> str:
     return s
 
 
-def write(rec: dict) -> dict:
+def write(rec: dict, name: str = "youtube_meta.json") -> dict:
     commit = subprocess.run(["git", "rev-parse", "--short=7", "HEAD"], capture_output=True, text=True,
                             cwd=D.HERE).stdout.strip()
     meta = dict(title=TITLE[:100], description=description(rec, commit), tags=TAGS, categoryId="28",
                 privacy="public", notifySubscribers=False, file=rec.get("file"), seconds=rec.get("seconds"),
                 chapters=[dict(stamp=stamp(t), title=ttl) for t, ttl in chapters(rec)], commit=commit,
                 placeholder=rec.get("placeholder"), replay=rec.get("replay"))
-    (D.VID / "youtube_meta.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+    (D.VID / name).write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
     return meta
 
 
