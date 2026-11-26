@@ -77,6 +77,7 @@ def build():
     for i, uu in enumerate(units):
         uu.set(W.charger_pose(i))
         uu.robot.set(q_park)
+    sc.units = units                                    # lab3d.py drives them
     sc.title, sc.caption, sc.label, sc.labels = "", "", "", []
     return sc, L, F, V, W, SL, A
 

@@ -87,7 +87,17 @@ def _caveats(policy: str) -> list:
     return out
 
 
-def description(rec: dict, commit: str) -> str:
+LAB3D_TITLE = "A year of alloy discovery in an automated lab, the lab animated: a simulated benchmark (digital twin)"
+LAB3D_NOTE = ("This cut's replay animates PR 318's 3-D lab from the twin's event log: every tray presented at a Kardex "
+              "Shuttle's opening and every MiR250 + UR12e visit to a dock comes from a booking (a station on a tray has "
+              "its tray brought to the opening at the booking's start and end; a floor machine has a unit dock at its "
+              "front), and idle trays stay in their slots. The clock runs at 1.5-60 lab hours a second, so the moves "
+              "run on their own clock, 8-16 times real time, with the tower's and the MiR250's own timings, each "
+              "starting when the clock reaches its booking; when they can't keep up, each Shuttle and unit takes the "
+              "latest request, and the panel at the bottom counts how many were drawn.\n\n")
+
+
+def description(rec: dict, commit: str, lab3d: bool = False) -> str:
     R = D.Replay()
     hd = D.headline(R)
     lines = []
@@ -107,8 +117,10 @@ def description(rec: dict, commit: str) -> str:
             "conventional way (partner facilities and core facilities).\n\n"
             "FLAIME searches aluminium alloys for laser powder bed fusion and ONR copper alloys for blown-powder DED. "
             "Both share one lab, one atomizer and one calendar. The video shows the two function networks, the "
-            "figures we track, the year at increasing speed (one alloy start to finish on day 1, then the station "
-            "cameras, then the whole lab with each station lit by the event log), and the results.\n\n"
+            "figures we track, the year at increasing speed (one alloy start to finish on day 1, then " +
+            ("the 3-D lab moved by the event log, up close and then from above" if lab3d else
+             "the station cameras, then the whole lab with each station lit by the event log") +
+            "), and the results.\n\n" + (LAB3D_NOTE if lab3d else "") +
             f"In this simulated benchmark ({cmp_}):\n" + "\n".join(lines) + "\n" +
             "".join(f"{x}\n" for x in _caveats(R.policy)) + "\n"
             "Real: the lab design's 3-D renders, the atomizer footage, the search spaces (the proposals), USGS prices "
@@ -127,13 +139,23 @@ def description(rec: dict, commit: str) -> str:
     return s
 
 
-def write(rec: dict, name: str = "youtube_meta.json") -> dict:
+NARRATED_TITLE = "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)"
+
+
+def write(rec: dict, lab3d: bool = False, narrated: bool = False) -> dict:
+    """youtube_meta.json (the public cut), youtube_meta_lab3d.json (the animated cut: unlisted), and with the narration
+    (compose.NARRATE) youtube_meta[_lab3d]_narrated.json (unlisted)."""
     commit = subprocess.run(["git", "rev-parse", "--short=7", "HEAD"], capture_output=True, text=True,
                             cwd=D.HERE).stdout.strip()
-    meta = dict(title=TITLE[:100], description=description(rec, commit), tags=TAGS, categoryId="28",
-                privacy="public", notifySubscribers=False, file=rec.get("file"), seconds=rec.get("seconds"),
-                chapters=[dict(stamp=stamp(t), title=ttl) for t, ttl in chapters(rec)], commit=commit,
-                placeholder=rec.get("placeholder"), replay=rec.get("replay"))
+    title = NARRATED_TITLE if narrated else (LAB3D_TITLE if lab3d else TITLE)
+    meta = dict(title=title[:100], description=description(rec, commit, lab3d),
+                tags=TAGS + (["Kardex Shuttle", "MiR250", "UR12e"] if lab3d else []) + (["narrated"] if narrated
+                                                                                        else []), categoryId="28",
+                privacy="unlisted" if (lab3d or narrated) else "public", notifySubscribers=False,
+                file=rec.get("file"), seconds=rec.get("seconds"),
+                chapters=[dict(stamp=stamp(t), title=ttl) for t, ttl in chapters(rec)],
+                commit=commit, placeholder=rec.get("placeholder"), replay=rec.get("replay"))
+    name = ("youtube_meta_lab3d" if lab3d else "youtube_meta") + ("_narrated" if narrated else "") + ".json"
     (D.VID / name).write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
     return meta
 

@@ -215,6 +215,20 @@ PHASES = [
     (0.74, "be", "se", 1.15, 1.0),
     (0.88, "be", "high", 1.2, 1.0),
 ]
+# TWIN_VIDEO_LAB3D=1 (the animated cut, `final3d`): the same shares, each a camera on PR 318's 3-D lab moved by the event
+# log (lab3d.py), and an inset of the two Shuttles up close from a second camera where `pip` is set
+LAB3D = os.environ.get("TWIN_VIDEO_LAB3D", "0") == "1"
+PHASES3D = [
+    (0.00, "3d", "towers_c", None),
+    (0.12, "3d", "plan", "towers_c"),
+    (0.28, "3d", "high", "towers_c"),
+    (0.48, "3d", "towers_c", None),
+    (0.58, "3d", "sw", None),
+    (0.74, "3d", "se", "towers_c"),
+    (0.88, "3d", "high", None),
+]
+if LAB3D:
+    PHASES = [(a, b, c, None, None) for a, b, c, _ in PHASES3D]
 SPEED_SHAPE = [(0.0, 1.0), (0.10, 3.0), (0.28, 10.0), (0.55, 28.0), (1.0, 40.0)]   # relative lab h per video s
 POV_SECONDS = {"charge": 7.0, "atomize": 12.0, "powder QC": 5.5, "print": 8.0, "test": 6.0, "section": 6.0,
                "pip": 6.0, "screen": 7.0, "immersion": 7.0, "tensile": 6.0}
@@ -402,6 +416,8 @@ class Timeline:
         out = [(0.0, "The first alloy, start to finish")]
         names = {0: "Day by day: station cameras", 2: "Week by week: the whole lab",
                  4: "Month by month, to the end of the year"}
+        if LAB3D:
+            names[0] = "Day by day: the lab up close, moved by the event log"
         for i, tt in enumerate(self.phase_t):
             if i in names:
                 out.append((tt, names[i]))
@@ -648,7 +664,8 @@ def replay_frame(t: float) -> np.ndarray:
         nf = {c: R.wip(t_h, c) for c in D.CAMPAIGNS}
         mode_txt = (f"{scale}: {nf['flaime_al']} FLAIME and {nf['onr_cu']} ONR alloys in progress",
                     "station cameras, lit while a campaign runs there" if PHASES[i][1] == "grid" else
-                    "the whole lab: a beacon lights while a station runs")
+                    "the 3-D lab moved by the event log: trays to the openings, units to the docks"
+                    if PHASES[i][1] == "3d" else "the whole lab: a beacon lights while a station runs")
     # ------------------------------------------------------------------ overlays
     if mode_txt is None:
         St.paste(fr, card, 0, 0)
@@ -695,6 +712,9 @@ def _phase_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
     t1 = tl.phase_t[i + 1] if i + 1 < len(tl.phase_t) else tl.dur
     if p[1] == "grid":
         return _grid_frame(t, t_h, sp, p[2], t0)
+    if p[1] == "3d":
+        from . import lab3d_cut as LC
+        return LC.replay_picture(i, t, t_h, sp)
     be = S("be")
     u = St.ease((t - t0) / max(1e-6, t1 - t0))
     zoom = p[3] + (p[4] - p[3]) * u
@@ -911,6 +931,11 @@ def build(kind: str):
     VID.mkdir(parents=True, exist_ok=True)
     TMP.mkdir(parents=True, exist_ok=True)
     rec = plan_record()
+    if kind == "final3d" and not LAB3D:
+        raise SystemExit("final3d needs TWIN_VIDEO_LAB3D=1 in the environment (the pieces run in their own processes)")
+    if kind == "final3d":
+        from . import lab3d_cut as LC
+        LC.run_jobs(LC.replay_jobs(), workers)       # the 3-D track first (each worker builds the scene once)
     if kind == "preview":
         sl = _resolve_slices(PREVIEW_SLICES)
         pieces = [(n, a, a + d, TMP / f"preview_{i:02d}_{n}.mp4") for i, (n, a, d) in enumerate(sl)]
@@ -925,16 +950,16 @@ def build(kind: str):
                 b = min(dur, a + CH)
                 if dur - b < 8.0:
                     b = dur
-                pieces.append((s["name"], a, b, TMP / f"final_{len(pieces):02d}_{s['name']}_{k}.mp4"))
+                pieces.append((s["name"], a, b, TMP / f"{kind}_{len(pieces):02d}_{s['name']}_{k}.mp4"))
                 a, k = b, k + 1
         pieces.sort(key=lambda p: -(p[2] - p[1]) * (2.0 if p[0] == "replay" else 1.0))   # longest first
         order = {id(p): i for i, p in enumerate(pieces)}
-        dst = VID / f"campaign{NAR}.mp4"
+        dst = VID / (("campaign_lab3d" if kind == "final3d" else "campaign") + NAR + ".mp4")
     print(f"{kind}: {len(pieces)} pieces, {workers} workers, preset {preset}", flush=True)
     logs = _run_pieces(pieces, preset, workers)
     parts = [p[3] for p in sorted(pieces, key=lambda p: str(p[3]))]
     concat(parts, dst)
-    if NARRATE and kind == "final":
+    if NARRATE and kind in ("final", "final3d"):
         rec["narration"] = narrate(dst, rec, kind)
     cpu = 0.0
     for ln in logs:
@@ -946,11 +971,16 @@ def build(kind: str):
                 t_start, 1), python_cpu_s=round(cpu, 1), preset=preset, workers=workers, placeholder=placeholder(),
                 replay=S("R").path.name, built_utc=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()))
     rec.update(info)
-    (VID / f"{kind}{NAR if kind == 'final' else ''}_record.json").write_text(json.dumps(rec, indent=1) + "\n")
+    (VID / f"{kind}{NAR if kind in ('final', 'final3d') else ''}_record.json").write_text(json.dumps(rec, indent=1) +
+                                                                                       "\n")
     if kind == "final":
         from . import meta
-        meta.write(rec, f"youtube_meta{NAR}.json")
+        meta.write(rec, narrated=NARRATE)
         sheet(dst, VID / f"sheet{NAR}.png", rec)
+    if kind == "final3d":
+        from . import meta
+        meta.write(rec, lab3d=True, narrated=NARRATE)
+        sheet(dst, VID / f"sheet_lab3d{NAR}.png", rec)
     print(json.dumps(info), flush=True)
     return rec
 
@@ -1079,7 +1109,7 @@ if __name__ == "__main__":
     if cmd == "piece":
         name, a, b, out, preset = args[1], float(args[2]), float(args[3]), Path(args[4]), args[5]
         print(json.dumps(render_piece(name, a, b, out, preset)), flush=True)
-    elif cmd in ("preview", "final"):
+    elif cmd in ("preview", "final", "final3d"):
         build(cmd)
     elif cmd == "npreview":                             # the narrated preview: the opening and the switch to the lab
         narrated_preview()
