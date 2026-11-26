@@ -632,6 +632,23 @@ jobs:
           SKIP_SEATS: ${{ steps.pick.outputs.tried }}
         run: python3 "$RUNNER_TEMP/pick_seat.py"
 
+      # The first attempt left its GitHub App token in origin's URL and
+      # revoked it on exit. The retry's branch setup runs `git fetch` before
+      # it configures its own auth, so that dead token made every retry die
+      # in branch setup ("Invalid username or token"). Point origin back at
+      # the plain URL with the job's own token, as actions/checkout does; the
+      # retry then replaces this with its own token as usual.
+      - name: Reset git auth for the retry
+        if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
+        env:
+          JOB_TOKEN: ${{ github.token }}
+        run: |
+          git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          basic=$(printf 'x-access-token:%s' "$JOB_TOKEN" | base64 -w0)
+          git config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ${basic}"
+          git ls-remote --heads origin main >/dev/null && echo "origin reachable with the job token"
+
       # Second attempt, on another seat (and the fallback model, if one is set). This is a fresh session: it posts
       # its own tracking comment and starts the task from the beginning, so the
       # note below tells it to look at what the first attempt already did.
