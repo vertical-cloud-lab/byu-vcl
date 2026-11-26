@@ -18,12 +18,12 @@
    "sha256": "5dd6622d01e331131ba171c5ac046e734e9efd47122c44c5f6d2c0238ecfa434"
   },
   "chg1": {
-   "key": "7da844de866f086d",
-   "text": "Round three removes the cap on work in flight. What sets the pace now is physical: stations, robots, people and fixtures. Decisions come every simulated hour, one spending plan paces the money for every policy, and the thirty-day immersion gives interim readings and can be stopped early.",
-   "spoken": "Round three removes the cap on work in flight. What sets the pace now is physical: stations, robots, people and fixtures. Decisions come every simulated hour, one spending plan paces the money for every policy, and the thirty-day immersion gives interim readings and can be stopped early.",
-   "phonemes": "ɹˈaʊnd θɹˈiː ɹᵻmˈuːvz ðə kˈæp ˌɔn wˈɜːk ɪn flˈaɪt. wˌʌt sˈɛts ðə pˈeɪs nˈaʊ ɪz fˈɪzɪkəl: stˈeɪʃənz, ɹˈoʊbɑːts, pˈiːpəl ænd fˈɪkstʃɚz. dᵻsˈɪʒənz kˈʌm ˈɛvɹi sˈɪmjʊlˌeɪɾᵻd ˈaʊɚ, wˈʌn spˈɛndɪŋ plˈæn pˈeɪsᵻz ðə mˈʌni fɔːɹ ˈɛvɹi pˈɑːlɪsi, ænd ðə θˈɜːɾidˈeɪ ɪmˈɜːʒən ɡˈɪvz ˈɪntɚɹˌɪm ɹˈiːdɪŋz ænd kæn biː stˈɑːpt ˈɜːli.",
-   "seconds": 18.92,
-   "sha256": "a917353c5dd369efd7b874366519de97218d24061e38400a93564cf736413209"
+   "key": "cdc6b69cceca5660",
+   "text": "Round three removes the cap on how much work is in flight. What sets the pace now is physical: stations, robots, people and fixtures. Decisions come every simulated hour, one spending plan paces the money for every policy, and the thirty-day immersion gives interim readings and can be stopped early.",
+   "spoken": "Round three removes the cap on how much work is in flight. What sets the pace now is physical: stations, robots, people and fixtures. Decisions come every simulated hour, one spending plan paces the money for every policy, and the thirty-day immersion gives interim readings and can be stopped early.",
+   "phonemes": "ɹˈaʊnd θɹˈiː ɹᵻmˈuːvz ðə kˈæp ˌɔn hˌaʊ mˈʌtʃ wˈɜːk ɪz ɪn flˈaɪt. wˌʌt sˈɛts ðə pˈeɪs nˈaʊ ɪz fˈɪzɪkəl: stˈeɪʃənz, ɹˈoʊbɑːts, pˈiːpəl ænd fˈɪkstʃɚz. dᵻsˈɪʒənz kˈʌm ˈɛvɹi sˈɪmjʊlˌeɪɾᵻd ˈaʊɚ, wˈʌn spˈɛndɪŋ plˈæn pˈeɪsᵻz ðə mˈʌni fɔːɹ ˈɛvɹi pˈɑːlɪsi, ænd ðə θˈɜːɾidˈeɪ ɪmˈɜːʒən ɡˈɪvz ˈɪntɚɹˌɪm ɹˈiːdɪŋz ænd kæn biː stˈɑːpt ˈɜːli.",
+   "seconds": 19.46,
+   "sha256": "9d61a34357a7290ba515ead09f2a38aa5589bf21f5d7f746d3dfa9b464eb5309"
   },
   "dag1": {
    "key": "a812d07f5c849d51",
