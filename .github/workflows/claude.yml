@@ -650,6 +650,106 @@ jobs:
           git config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ${basic}"
           git ls-remote --heads origin main >/dev/null && echo "origin reachable with the job token"
 
+      # The action pins a comment-triggered PR run to the version the commenter
+      # saw: it won't start if the branch's latest push is at or after the
+      # trigger ("PR #N was updated after the trigger"). If the first attempt
+      # pushed to the PR branch before it failed, that check refused the retry,
+      # which then did nothing (byu-vcl PR 394, run 45781437965). This step
+      # moves the trigger time in the event payload to just after the first
+      # attempt's last push, and only when every push since the trigger was a
+      # plain push by the Claude app, chained from the head the trigger saw,
+      # the trigger comment wasn't edited, and nobody but a bot has posted in
+      # the thread since. Otherwise it changes nothing and the action decides.
+      - name: Let the retry build on the first attempt's pushes
+        if: ${{ !cancelled() && steps.billing.outputs.retry == 'true' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import datetime, json, os, shutil, subprocess, sys
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          event_name = os.environ["GITHUB_EVENT_NAME"]
+          path = os.environ["GITHUB_EVENT_PATH"]
+          ev = json.load(open(path))
+
+          def api(route):
+              out = subprocess.run(["gh", "api", route], capture_output=True, text=True, check=True).stdout
+              return json.loads(out)
+
+          def stop(msg):
+              print(f"Leaving the trigger time alone: {msg}")
+              sys.exit(0)
+
+          def ts(s):
+              return datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+          if event_name == "issue_comment" and ev.get("issue", {}).get("pull_request"):
+              obj, field, number = "comment", "created_at", ev["issue"]["number"]
+              comment_route = f"repos/{repo}/issues/comments/{ev['comment']['id']}"
+          elif event_name == "pull_request_review_comment":
+              obj, field, number = "comment", "created_at", ev["pull_request"]["number"]
+              comment_route = f"repos/{repo}/pulls/comments/{ev['comment']['id']}"
+          elif event_name == "pull_request_review":
+              obj, field, number = "review", "submitted_at", ev["pull_request"]["number"]
+              comment_route = None
+          else:
+              stop("not a comment or review on a PR")
+
+          trigger = ts(ev[obj][field])
+          pr = api(f"repos/{repo}/pulls/{number}")
+          if pr["state"] != "open":
+              stop("the PR is not open")
+          if pr["head"]["repo"] is None or pr["head"]["repo"]["full_name"] != repo:
+              stop("the PR's branch is not in this repo")
+          branch, head = pr["head"]["ref"], pr["head"]["sha"]
+
+          pushes = api(f"repos/{repo}/activity?ref=refs/heads/{branch}&per_page=100")
+          if not pushes or pushes[0]["after"] != head:
+              stop("the branch's push record doesn't end at the PR head")
+          if ts(pushes[0]["timestamp"]) < trigger:
+              stop("nothing was pushed after the trigger")
+
+          after = [p for p in pushes if ts(p["timestamp"]) >= trigger]
+          before = [p for p in pushes if ts(p["timestamp"]) < trigger]
+          if not before:
+              stop("no push before the trigger in the record")
+          for p in after:
+              if p.get("activity_type") != "push" or (p.get("actor") or {}).get("login") != "claude[bot]":
+                  stop(f"a push after the trigger was a {p.get('activity_type')} by {(p.get('actor') or {}).get('login')}")
+          chain = after + [before[0]]
+          for newer, older in zip(chain, chain[1:]):
+              if newer["before"] != older["after"]:
+                  stop("the pushes after the trigger don't chain from the head the trigger saw")
+
+          if comment_route:
+              c = api(comment_route)
+              if c["updated_at"] != c["created_at"]:
+                  stop("the trigger comment was edited")
+
+          def human_since(items, key):
+              return [i for i in items if (i.get("user") or {}).get("type") != "Bot" and i.get(key) and ts(i[key]) >= trigger]
+
+          since = f"since={ev[obj][field]}"
+          people = human_since(api(f"repos/{repo}/issues/{number}/comments?{since}&per_page=100"), "created_at")
+          people += human_since(api(f"repos/{repo}/pulls/{number}/comments?{since}&per_page=100"), "created_at")
+          people += [r for r in human_since(api(f"repos/{repo}/pulls/{number}/reviews?per_page=100"), "submitted_at")
+                     if r.get("id") != ev.get("review", {}).get("id")]
+          if comment_route:
+              people = [p for p in people if p.get("id") != ev["comment"]["id"]]
+          if people:
+              stop(f"{len(people)} comment(s) or review(s) by people since the trigger")
+
+          new = ts(pushes[0]["timestamp"]) + datetime.timedelta(seconds=1)
+          shutil.copy(path, os.path.join(os.environ["RUNNER_TEMP"], "event.original.json"))
+          ev[obj][field] = new.strftime("%Y-%m-%dT%H:%M:%SZ")
+          json.dump(ev, open(path, "w"))
+          print(f"The first attempt pushed {len(after)} time(s) to {branch} after the trigger "
+                f"({before[0]['after'][:7]} -> {head[:7]}), all plain pushes by claude[bot]. "
+                f"The retry's trigger time is now {ev[obj][field]} (was {trigger:%Y-%m-%dT%H:%M:%SZ}).")
+          PY
+
       # Second attempt, on another seat (and the fallback model, if one is set). This is a fresh session: it posts
       # its own tracking comment and starts the task from the beginning, so the
       # note below tells it to look at what the first attempt already did.
