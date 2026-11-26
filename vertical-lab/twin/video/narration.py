@@ -36,7 +36,7 @@ import numpy as np
 
 from . import data as D
 
-SCRIPT = Path(__file__).with_name("narration.json")
+SCRIPT = Path(__file__).with_name("narration3.json" if D.ROUND == 3 else "narration.json")   # round 3's own script
 NDIR = D.VID / "narration"                                  # committed: each line's FLAC, lines.json, check.json
 VOICE = os.environ.get("NARRATION_VOICE", "af_heart")       # Kokoro v1.0's stock voice, best rated in its VOICES.md
 SPEED = float(os.environ.get("NARRATION_SPEED", "0.96"))    # as the long-form's narration
@@ -56,6 +56,8 @@ SAY = {
     "ONR": "O N R", "BOFN": "B O F N", "GP-BO": "G P B O", "LPBF": "L P B F", "DED": "D E D", "HPC": "H P C",
     "EDS": "E D S", "XRD": "X R D", "3-D": "three D", "VHX": "V H X", "labour": "labor",
 }
+if D.ROUND == 3:                         # round 3's script only, so round 2's committed lines stay reusable
+    SAY = dict(SAY, pKGFN="P K G F N")
 IPA = {
     "MiR": "mˈiːɹ",                       # longform.py: said "meer"
     "CALPHAD": "kˈælfæd",                 # espeak spells it out letter by letter
@@ -365,6 +367,10 @@ def captions_at(name: str, t0: float, t1: float) -> list:
         caps = C.SIM_CAPS
     elif name == "dag":
         caps = C.S("dag").captions
+    elif name == "figures" and D.ROUND == 3:
+        caps = C.S("figs3").explain_caps()
+    elif name == "results" and D.ROUND == 3:
+        caps = C.S("figs3").results_caps()
     elif name == "figures":
         caps = C.S("figs").EXPLAIN_CAPTIONS
     elif name == "results":
@@ -388,7 +394,72 @@ def plan_table(placed: list, rec: dict) -> str:
 
 
 SECTION = {"title": "Opening", "simulated": "Opening", "dag": "The function networks", "figures": "Reading the figures",
-           "replay": "The campaign year", "results": "Results", "takeaway": "The takeaway", "notes": "Closing notes"}
+           "replay": "The campaign year", "results": "Results", "takeaway": "The takeaway", "notes": "Closing notes",
+           "changes": "What changed in round 3", "assume": "The atomizer's assumptions"}
+WORDS = {"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
+         "ten": 10, "eleven": 11, "twelve": 12, "sixteen": 16}
+
+
+def _resolve(expr: str, n: dict) -> float:
+    """A `nums` path in numbers3.numbers(): dotted keys, with one of *K, /K or -<other path> at the end ("a.b*100",
+    "a.b/1000", "a.b-a.c"). A key may itself hold dots or bars (the cost per alloy's): the longest match wins."""
+    def get(path):
+        cur = n
+        rest = path
+        while rest:
+            if not isinstance(cur, dict):
+                raise KeyError(path)
+            key = next((k for k in sorted(cur, key=len, reverse=True) if rest == k or rest.startswith(k + ".")), None)
+            if key is None:
+                raise KeyError(f"{path}: no key at '{rest}'")
+            cur, rest = cur[key], rest[len(key) + 1:]
+        return float(cur)
+    m = re.match(r"^(.*?)([*/])(\d+(?:\.\d+)?)$", expr)
+    if m:
+        v = get(m.group(1))
+        return v * float(m.group(3)) if m.group(2) == "*" else v / float(m.group(3))
+    if "-" in expr and not expr.startswith("-"):
+        a, b = expr.split("-", 1)
+        try:
+            return get(a) - get(b)
+        except KeyError:
+            pass
+    return get(expr)
+
+
+def check_numbers() -> list:
+    """Every number a line speaks (its `nums`) against numbers3.numbers(), i.e. against round 3's committed
+    summaries: the value at the path, in its format, must be the figure in the text (or the number the word names),
+    and the figure must be in the text. Also: every digit string in a line must be covered by its nums. Returns the
+    rows; raises SystemExit on a mismatch."""
+    from . import numbers3 as N3
+    n = N3.numbers()
+    rows, bad = [], []
+    for ln in lines():
+        text = ln["text"]
+        covered = set()
+        for tok, path, fmt in ln.get("nums", []):
+            v = _resolve(path, n)
+            shown = f"{round(v):d}" if fmt == "d" else format(v, fmt)
+            want = str(WORDS[tok.lower()]) if tok.lower() in WORDS else tok
+            ok = (shown == want) and (tok in text)
+            rows.append(dict(id=ln["id"], says=tok, path=path, value=v, shown=shown, ok=ok))
+            covered.add(tok)
+            if not ok:
+                bad.append(rows[-1])
+        for fig in re.findall(r"(?<![\w-])\d+(?:\.\d+)?(?![\w-])", text):
+            if fig not in covered:
+                rows.append(dict(id=ln["id"], says=fig, path=None, value=None, shown=None, ok=False))
+                bad.append(rows[-1])
+    for r in rows:
+        print(f"{'ok ' if r['ok'] else 'BAD'} {r['id']:6s} says {r['says']:8s} {r['shown']!s:8s} <- {r['path']}")
+    wrong = [c for c, ok in N3.claims() if not ok]
+    for c, ok in N3.claims():
+        print(f"{'ok ' if ok else 'BAD'} claim: {c}")
+    if bad or wrong:
+        raise SystemExit(f"{len(bad)} spoken numbers and {len(wrong)} claims don't match the summaries")
+    print(f"{len(rows)} spoken numbers and {len(N3.claims())} claims, all as the summaries have them")
+    return rows
 
 
 def notes_table(record: Path = D.VID / "final_narrated_record.json") -> str:
@@ -413,6 +484,8 @@ if __name__ == "__main__":
         print(f"{len(a)} lines, {sum(len(y) for y in a.values()) / SR / 60:.2f} min of speech in {NDIR}")
     elif cmd == "check":
         check()
+    elif cmd == "nums":                                        # round 3: every spoken number against the summaries
+        check_numbers()
     elif cmd == "table":                                       # the script with its times, for the notes
         print(notes_table(Path(sys.argv[2]) if len(sys.argv) > 2 else D.VID / "final_narrated_record.json"))
     elif cmd in ("plan", "track"):

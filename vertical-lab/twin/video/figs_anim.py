@@ -410,6 +410,8 @@ def swatch(d, x, y, color, s=12):
 
 
 def ymax_for(camp: str, ctx: Ctx, best: float) -> float:
+    if D.ROUND == 3:                                    # both targets stay on the plot
+        return max(1.12 * D.targets2()[camp], 1.1 * best, 0.1)
     return max(1.2 * ctx.T[camp], 1.1 * best, 0.1)
 
 
@@ -440,8 +442,12 @@ class PlotPanel:
         fb = St.font(15, bold=True)
         # column titles
         cols = [(px(58), px(282)), (px(352), px(584))]
-        d.text((cols[0][0], px(10)), "best so far vs days", font=f14, fill=St.INK2)
-        d.text((cols[1][0], px(10)), "vs money spent", font=f14, fill=St.INK2)
+        r3 = D.ROUND == 3
+        T2 = D.targets2() if r3 else {}
+        d.text((cols[0][0], px(10)), "best new alloy so far vs days" if r3 else "best so far vs days", font=f14,
+               fill=St.INK2)
+        d.text((cols[1][0], px(10)), "vs the campaign's spending" if r3 else "vs money spent", font=f14,
+               fill=St.INK2)
         rows = [(px(34), px(196)), (px(214), px(376))]
         labelled_target = False
         for ri, camp in enumerate(D.CAMPAIGNS):
@@ -454,8 +460,8 @@ class PlotPanel:
             d.text((px(30), ry0), St.CAMP_NAME[camp], font=fb, fill=St.INK)
             xname = px(30) + St.text_w(fb, St.CAMP_NAME[camp]) + px(8)
             d.text((xname, ry0 + px(2)), St.CAMP_SHORT[camp], font=f13, fill=St.INK2)
-            d.text((self.w - px(14), ry0 + px(1)), f"best {best:.2f} · target {tgt:.2f}", font=f13,
-                   fill=St.INK2, anchor="ra")
+            d.text((self.w - px(14), ry0 + px(1)), f"best {best:.2f} · targets {tgt:.2f}, {T2[camp]:.2f}" if r3
+                   else f"best {best:.2f} · target {tgt:.2f}", font=f13, fill=St.INK2, anchor="ra")
             ymax = ymax_for(camp, ctx, best)
             py0, py1 = ry0 + px(30), ry1 - px(22)
             base = ctx.base_replay.get(camp)
@@ -464,6 +470,8 @@ class PlotPanel:
             ax = Ax((cols[0][0], py0, cols[0][1], py1), (0.0, xm), (0.0, ymax), "days", "u")
             ax.frame(d, fs=13, nx=4, ny=4)
             ax.dotted_h(d, tgt, St.TARGET)
+            if r3:
+                ax.dotted_h(d, T2[camp], St.TARGET)
             if base is not None:
                 k = int(np.searchsorted(ctx.day_grid, td, side="right"))
                 if k >= 2:
@@ -474,8 +482,11 @@ class PlotPanel:
             ax.line(d, pts, col, px(3))
             ax.dot(d, td, best, col, r=5)
             if not labelled_target:                     # once, over the curves
-                label_box(d, (ax.x0 + px(6), ax.Y(tgt) - px(5)), "state of the art", f13, St.INK2, anchor="ld",
-                          bg=St.SURF + (235,), pad=px(2))
+                label_box(d, (ax.x0 + px(6), ax.Y(tgt) - px(5)), "best existing alloy" if r3 else "state of the art",
+                          f13, St.INK2, anchor="ld", bg=St.SURF + (235,), pad=px(2))
+                if r3:
+                    label_box(d, (ax.x0 + px(6), ax.Y(T2[camp]) - px(5)), "halfway target", f13, St.INK2,
+                              anchor="ld", bg=St.SURF + (235,), pad=px(2))
                 labelled_target = True
             # ---- money
             spent = R.spent_at(camp, t_h)
@@ -484,6 +495,8 @@ class PlotPanel:
             ax2 = Ax((cols[1][0], py0, cols[1][1], py1), (0.0, xm2), (0.0, ymax), "usd", "u")
             ax2.frame(d, fs=13, nx=3, ny=4, pad_r=px(12))
             ax2.dotted_h(d, tgt, St.TARGET)
+            if r3:
+                ax2.dotted_h(d, T2[camp], St.TARGET)
             if base is not None and b_spent > 0:
                 mg = base["money_grid"]
                 k = int(np.searchsorted(mg, b_spent, side="right"))
@@ -496,8 +509,14 @@ class PlotPanel:
         # legend
         y = self.h - px(20)
         x = px(14)
-        x = legend_line(d, x, y, "solid2", None, "automated lab (this run)", fs=13, w=26)
         nb = (ctx.base_replay.get("flaime_al") or {}).get("n")
+        if D.ROUND != 3:
+            x = legend_line(d, x, y, "solid2", None, "automated lab (this run)", fs=13, w=26)
+        if r3:                                          # BOFN was not run in the conventional lab: rule of thumb
+            x = legend_line(d, px(14), y, "solid2", None, "this run", fs=13, w=26)
+            x = legend_line(d, x, y, "dashed", St.BASE, f"conventional, rule of thumb (mean of {nb})", fs=13, w=26)
+            legend_line(d, x, y, "dotted", St.TARGET, "targets", fs=13, w=20)
+            return im
         x = legend_line(d, x, y, "dashed", St.BASE, "conventional" + (f" (mean of {nb})" if nb else ""), fs=13, w=26)
         legend_line(d, x, y, "dotted", St.TARGET, "target", fs=13, w=20)
         return im

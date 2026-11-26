@@ -23,11 +23,18 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parents[2]          # vertical-lab/
+# TWIN_VIDEO_ROUND=3: round 3's results (out/twin3: runs/*.jsonl, econ/econ_summary.json, events/) and its own cut in
+# out/twin3/video. Round 2's cuts build exactly as before without it. OUT2 stays what both rounds share: the oracle's
+# targets, the instruments' pictures, the lab's stills and kin.json.
+ROUND = int(os.environ.get("TWIN_VIDEO_ROUND", "2"))
 OUT2 = HERE / "out" / "twin2"
-VID = OUT2 / "video"
-EVENTS_DIR = OUT2 / "events"
+OUT3 = HERE / "out" / "twin3"
+RES = OUT3 if ROUND == 3 else OUT2
+VID = RES / "video"
+EVENTS_DIR = RES / "events"
 CAMPAIGNS = ("flaime_al", "onr_cu")
 HPD = 24.0
+HELPERS = ("robot", "operator")                     # round 3 books a step's robot or person as well as its station
 
 # ---------------------------------------------------------------------------------------------------- the keys read
 KEYS = dict(
@@ -49,7 +56,8 @@ POLICY_LABEL = {"cost_aware": "cost-aware network surrogate", "tiered": "tiered 
                 "random": "random, full chain", "cost_aware_tc": "cost-aware, Thermo-Calc",
                 "tiered_tc": "tiered, Thermo-Calc", "cost_aware_scaleup": "cost-aware with scale-up",
                 "bofn": "BOFN", "pkgfn": "pKGFN", "bofn_blend": "BOFN, blend screening for Cu",
-                "gpbo": "GP-BO", "sobol": "Sobol sampling", "heuristic": "heuristic"}
+                "gpbo": "GP-BO", "sobol": "Sobol sampling", "heuristic": "heuristic",
+                "bofn3": "BOFN, time-aware", "bofn3_usd": "BOFN, per dollar", "pkgfn3": "pKGFN, time-aware"}
 TARGET_FALLBACK = {"flaime_al": 0.6, "onr_cu": 0.45}    # twin.bench.TARGET, read live in target() when importable
 
 
@@ -164,6 +172,12 @@ def node_of(campaign: str, ev_node, what) -> str | None:
 # ------------------------------------------------------------------------------------------------------ event log
 REPLAY_RUNS = [os.environ.get("TWIN_VIDEO_RUN", "vertical_lab_bofn_blend_s0"),   # the lead's replay (06:01 plan)
                "vertical_lab_bofn_s0", "vertical_lab_cost_aware_s0"]
+# round 3's replay: time-aware BOFN, seed 0, the only seed whose event log round 3 committed. For aluminium it is the
+# median seed of the 12 (its halfway target on day 96, the Kaplan-Meier median itself; the first target on day 96
+# against a median of 83). For copper it is one of the 4 seeds of 12 that never reach the first target (the median
+# seed gets there on day 221): the replay says so (compose.seed_badge, narration3.json seed1). A re-run of seed 5
+# (near the median in both campaigns) did not reproduce its committed row on this runner, so its log is not used.
+REPLAY_RUN3 = os.environ.get("TWIN_VIDEO_RUN", "r3_vertical_lab_bofn3_s0")
 
 
 def _meta_of(p: Path) -> dict:
@@ -181,6 +195,8 @@ def _newest_events() -> Path | None:
     env = os.environ.get("TWIN_VIDEO_EVENTS")
     if env:
         return Path(env)
+    if ROUND == 3:
+        return EVENTS_DIR / f"{REPLAY_RUN3}.json"
     if not EVENTS_DIR.exists():
         return None
     if not os.environ.get("TWIN_VIDEO_RUN"):          # the lead may swap in another seed: the newest of the pattern
@@ -240,6 +256,11 @@ class Replay:
         self.stations = js.get(K["stations"], {})
         self.designs = {c: {str(k): v for k, v in d.items()} for c, d in js.get(K["designs"], {}).items()}
         evs = js.get(K["events"], [])
+        if ROUND == 3:                                  # a step's robot and person are booked beside its station:
+            self.helper_h = {h: sum(e[K["t1"]] - e[K["t0"]] for e in evs if e.get(K["station"]) == h)
+                             for h in HELPERS}          # their hours kept, their bookings not drawn as stations
+            evs = [e for e in evs if e.get(K["station"]) not in HELPERS]
+            self.stations = {k: v for k, v in self.stations.items() if k not in HELPERS}
         self.ev = evs
         self.t0 = np.array([e[K["t0"]] for e in evs], float)
         self.t1 = np.array([max(e[K["t1"]], e[K["t0"]] + 1e-3) for e in evs], float)
@@ -254,6 +275,19 @@ class Replay:
             self.curves.setdefault(c, np.zeros((0, 3)))
         self.facility = self.meta.get(K["facility"], VERTICAL)
         self.policy = str(self.meta.get(K["policy"], "cost_aware")).split(" ")[0]     # "cost_aware (round 1, ...)"
+        self.seed = self.meta.get("seed")
+        self.spend = {}
+        if ROUND == 3:
+            # round 3 scores new alloys only (the reference alloys the lab also makes don't count toward a target),
+            # so the replay's best-so-far is the committed run's own curve_new, and its money the run's weekly ledger
+            self.curves_all = dict(self.curves)
+            row = run_row(self.facility, self.policy, self.seed)
+            self.row = row
+            for c in CAMPAIGNS:
+                cc = (row or {}).get("campaigns", {}).get(c) or {}
+                self.curves[c] = np.array(cc.get("curve_new") or [], float).reshape(-1, 3)
+                if cc.get("spend_curve"):
+                    self.spend[c] = np.array(cc["spend_curve"], float).reshape(-1, 2)
         # counters: alloys made (a lot of powder came back), printed or deposited, tested (a demonstrated result)
         self._made = {c: sorted(r[K["r_t"]] for r in self.results if r.get(K["campaign"]) == c
                                 and r.get(K["r_type"]) == "lot") for c in CAMPAIGNS}
@@ -358,6 +392,9 @@ class Replay:
 
     def spent_at(self, campaign: str, t_h: float) -> float:
         """Money spent by t_h: linear between the run's own (day, spent) points, from 0 at day 0."""
+        if campaign in self.spend:                      # round 3: the run's ledger at 7-day steps
+            sc = self.spend[campaign]
+            return float(np.interp(t_h / HPD, sc[:, 0], sc[:, 1]))
         c = self.curves[campaign]
         if not len(c):
             return 0.0
@@ -389,6 +426,80 @@ class Replay:
             if (whats and self.what[i] in whats) or (nodes and self.node[i] in nodes):
                 return int(i)
         return None
+
+
+# ------------------------------------------------------------------------------------------ round 3's runs
+RUNS3 = {"main": "main.jsonl", "conventional": "conventional.jsonl", "main_more": "main_more.jsonl",
+         "cu_money": "cu_money.jsonl", "cu_hidden": "cu_hidden.jsonl", "cu_hidden_net": "cu_hidden_net.jsonl",
+         "cu_proxy": "cu_proxy.jsonl", "cu_ablation": "cu_ablation.jsonl"}
+_ROWS: dict = {}
+
+
+def rows3(exp: str = "main") -> list:
+    """Round 3's committed runs of one experiment (out/twin3/runs/<exp>.jsonl), one dict a run."""
+    if exp not in _ROWS:
+        p = OUT3 / "runs" / RUNS3.get(exp, f"{exp}.jsonl")
+        _ROWS[exp] = [json.loads(ln) for ln in p.read_text().splitlines() if ln.strip()] if p.exists() else []
+    return _ROWS[exp]
+
+
+def run_row(facility: str, policy: str, seed) -> dict | None:
+    """The committed run a round-3 event log belongs to: main for the vertical lab, conventional for the other."""
+    exp = "main" if "vertical" in str(facility) else "conventional"
+    for r in rows3(exp):
+        c = r["cfg"]
+        if c["policy"] == policy and c["seed"] == seed and c["facility"] == facility:
+            return r
+    return None
+
+
+def targets2() -> dict:
+    """The halfway target (T2): halfway from the best existing alloy's score to the best the twin's search found
+    (bench2_summary.json targets.T2, twin.bench2.targets(); the same in rounds 2 and 3)."""
+    t = ((_read(OUT2 / "bench2_summary.json") or {}).get("targets") or {}).get("T2") or {}
+    return {c: float(t[c]) for c in CAMPAIGNS if c in t}
+
+
+def hit_day(curve, tv: float):
+    """The first day a best-so-far curve [(day, spent, best), ...] reaches tv, else None (twin.bench2.hit)."""
+    for row in curve:
+        if row[2] >= tv:
+            return float(row[0])
+    return None
+
+
+def km_median(times: list, horizon: float):
+    """Kaplan-Meier median of first-hit days, a run that never gets there censored at the horizon (twin.bench3
+    .km_median, the rule round 3's tables use for every arm): for 12 runs, the 6th to get there; None when fewer than
+    half do."""
+    ev = sorted((t if t is not None else horizon + 1e-6, t is not None) for t in times)
+    n, sv = len(ev), 1.0
+    for i, (t, hit) in enumerate(ev):
+        if hit:
+            sv *= 1.0 - 1.0 / (n - i)
+            if sv <= 0.5:
+                return t
+    return None
+
+
+def arm3(exp: str, facility: str, policy: str, campaign: str, **cfg) -> dict:
+    """One arm of round 3 from its committed runs: per-seed days to both targets, the counts that got there, the
+    Kaplan-Meier medians, the final best new alloy (mean, SE) and the horizon. cfg filters the runs' own cfg."""
+    rs = [r for r in rows3(exp) if r["cfg"]["policy"] == policy and r["cfg"]["facility"] == facility
+          and all(r["cfg"].get(k) == v for k, v in cfg.items())]
+    rs.sort(key=lambda r: r["cfg"]["seed"])
+    T = {"T1": target()[campaign], "T2": targets2()[campaign]}
+    hz = float(rs[0]["cfg"].get("days", 365)) if rs else 365.0
+    out = dict(n=len(rs), seeds=[r["cfg"]["seed"] for r in rs], horizon=hz)
+    best = [r["campaigns"][campaign]["best_new"] for r in rs]
+    out["best"] = best
+    out["best_mean"] = float(np.mean(best)) if best else None
+    out["best_se"] = float(np.std(best, ddof=1) / np.sqrt(len(best))) if len(best) > 1 else 0.0
+    for tn, tv in T.items():
+        d = [hit_day(r["campaigns"][campaign]["curve_new"], tv) for r in rs]
+        out[tn] = dict(target=tv, days=d, hits=sum(x is not None for x in d), median=km_median(d, hz),
+                       hits_365=sum(x is not None and x <= 365.0 for x in d))
+    return out
 
 
 # --------------------------------------------------------------------------------------------- bench summary
@@ -453,6 +564,17 @@ def bench(extra_runs: list | None = None) -> dict:
             return
         groups.setdefault((fac, pol), {}).setdefault(camp, []).append(np.array(curve, float).reshape(-1, 3))
         source[(fac, pol)] = src
+
+    if ROUND == 3:
+        # round 3: each run's best new alloy so far (curve_new) from the committed runs: the vertical lab's 12
+        # one-year runs per policy (main) and the conventional lab's 12 three-year runs (conventional)
+        for exp in ("main", "conventional"):
+            for r in sorted(rows3(exp), key=lambda r: r["cfg"]["seed"]):
+                c = r["cfg"]
+                for camp in CAMPAIGNS:
+                    add(c["facility"], c["policy"], camp, r["campaigns"][camp]["curve_new"],
+                        f"out/twin3/runs/{exp}.jsonl")
+        return dict(groups=groups, placeholder=not groups, target=target(), source=source)
 
     if isinstance(js, dict):
         exps = js.get("experiments") if isinstance(js.get("experiments"), dict) else {"": js}
@@ -571,6 +693,11 @@ BASIS_WORDS = {
 }
 
 
+# round 3: BOFN and pKGFN were not run in the conventional lab, so the comparison the explainer draws is the one the
+# economics summary leads with (the vertical lab with pKGFN against the conventional lab run by the heuristic)
+COMPARISON3 = "vertical lab + pkgfn3 vs conventional + heuristic"
+
+
 def canon_basis(name: str) -> str:
     """econ_summary.json's cost basis names, old and new, to one set: cash, op_alone, op_shared, full_alone,
     full_shared ('operating, alone', 'full, shared', 'full at 60% utilization', ...)."""
@@ -655,7 +782,7 @@ def econ(policy: str | None = None) -> dict:
     median_new}}}, per_experiment {campaign: [(label, {part: $}, total, n)]}, utilization {station: share} (and
     util_by_campaign), outside {jobs, revenue, net, net_x_depreciation, net_x_fixed, cap, demand_h_week, dl_*},
     headlines [str], targets {campaign: utility}, target_src; placeholder=True when the file is missing."""
-    js = _read(OUT2 / "econ" / "econ_summary.json")
+    js = _read(RES / "econ" / "econ_summary.json")
     out = dict(placeholder=not isinstance(js, dict), raw=js, accel={}, cost={}, per_experiment={}, utilization={},
                util_by_campaign={}, outside={}, headlines=[], comparisons=[], comparison=None)
     if not isinstance(js, dict):
@@ -668,6 +795,8 @@ def econ(policy: str | None = None) -> dict:
         except Exception:                               # noqa: BLE001
             policy = "cost_aware"
     cmp_ = choose_comparison(list(acc), policy)
+    if ROUND == 3 and COMPARISON3 in acc:               # round 3's economics were run for pKGFN, not the replayed BOFN
+        cmp_ = COMPARISON3
     out["comparison"] = cmp_
     for camp in CAMPAIGNS:
         c = ((acc.get(cmp_) or {}).get(camp) or {}).get("compare") or {}
