@@ -684,7 +684,8 @@ def replay_frame(t: float) -> np.ndarray:
             St.dim(fr, 0.35 + 0.65 * u)
         scale = "Day by day" if sp < 12 else ("Week by week" if sp < 30 else "Month by month")
         nf = {c: R.wip(t_h, c) for c in D.CAMPAIGNS}
-        mode_txt = (f"{scale}: {nf['flaime_al']} FLAIME and {nf['onr_cu']} ONR alloys in progress",
+        mode_txt = (f"{scale}: {nf['flaime_al']} FLAIME and {nf['onr_cu']} ONR alloys " +
+                    ("in the lab" if ROUND3 else "in progress"),
                     "station cameras, lit while a campaign runs there" if PHASES[i][1] == "grid" else
                     ("the 3-D lab moved by the simulated event log: trays to the openings, units to the docks"
                      if ROUND3 else "the 3-D lab moved by the event log: trays to the openings, units to the docks")
@@ -715,9 +716,11 @@ def replay_frame(t: float) -> np.ndarray:
         key = ("multi", tuple((x[0], x[1], x[3]) for x in items), q if not items else None)
         if items:
             im = ptable_overlay(key, lambda: P.multiples_panel(items, px(450), px(300),
-                                                               title="Compositions in progress"))
+                                                               title="Compositions in the lab" if ROUND3 else
+                                                               "Compositions in progress"))
         else:
-            im = ptable_overlay(key, lambda: _empty_panel("Compositions in progress", "none: both campaigns are "
+            im = ptable_overlay(key, lambda: _empty_panel("Compositions in the lab" if ROUND3 else
+                                                          "Compositions in progress", "none: both campaigns are "
                                                           "waiting (results, budget or the calendar)"))
     St.paste(fr, im, px(1446), px(186), k_right)
     St.paste(fr, S("plots").draw(t_h), px(1296), px(640), k_right)

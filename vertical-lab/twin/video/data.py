@@ -300,6 +300,8 @@ class Replay:
         self._span = {c: {} for c in CAMPAIGNS}           # design -> (first booking starts, last booking ends)
         for i in range(len(evs)):
             c, d = self.camp[i], self.design[i]
+            if ROUND == 3 and self.station[i] == "hpc":
+                continue          # round 3 simulates every design on day 0: "in the lab" is from its first lab booking
             if d is not None and c in self._span:
                 a, b = self._span[c].get(d, (self.t0[i], self.t1[i]))
                 self._span[c][d] = (min(a, self.t0[i]), max(b, self.t1[i]))
