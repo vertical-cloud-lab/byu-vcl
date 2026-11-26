@@ -1204,8 +1204,7 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
     "ot2_corrosion_prep": "the nozzle seated in its tip at pick-up (the tips are drawn solid)",
     "cubxl_corrosion": "the nozzle seated in its tip at pick-up (the tips are drawn solid)",
     "alloy_workflow": "the plate 3 mm into the depowdering box's rotor; a bar 6 mm into its trough",
-    "setup_lab": "rigging: machines set down over their drops; the UR control box through the Class D unit into its "
-                 "cabinet",
+    "setup_lab": "rigging: machines set down over their drops; the MiR250 onto its charger; tray B's racks sliding in",
     "meltio_m450": "the work itself: the deposition on the wall",
     # round 16
     "fabrication_tour": "the work itself: parts in the IPA and the UV glow, the laser in the bed, the wall's glow",
