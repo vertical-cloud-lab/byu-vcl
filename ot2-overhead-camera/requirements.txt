@@ -1,0 +1,5 @@
+# picamera2 and libcamera are preinstalled on Raspberry Pi OS (Lite included)
+# and are NOT pip-installable in a way that works reliably -- rely on the apt
+# packages instead (see setup.sh). numpy is the only extra dependency for the
+# focus-score computation, and it too ships with the OS image on most builds.
+numpy
