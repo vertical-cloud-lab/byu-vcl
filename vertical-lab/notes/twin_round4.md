@@ -290,6 +290,33 @@ through the full-part test.
     network caught it.
   * The network is the stage that separates a measured result from a reproducible one.
 
+### 5.5 Against round 3, which started with the lab built
+
+Round 3's main benchmark ran the same cheap policies in the finished vertical lab from its day 0, for one year
+(`out/twin3/fig/tables.md`, 12 seeds):
+
+* the heuristic reached aluminium's state of the art at a median of day 24;
+* the funnel reached copper's targets at day 142 and 148.
+
+Round 4 counts from the funding:
+
+| Days from the funding (cheap policies) | Al T1 | Cu T1 | Cu T2 |
+|---|---|---|---|
+| Round 3: the finished lab, from its own day 0 | 24 | 142 | 148 |
+| Round 4: wait for the cell (starts at day 270, median) | 366 | 421 | 430 |
+| Round 4: ramp up in parallel | 57 | 302 | 310 |
+| Round 4: external routes only | 54 | 315 | >730 (5/12) |
+
+* **Building the lab costs the waiting plan 9-11 months on every target.** About 270 days of build-out come first.
+* **After its start it is also slower than round 3's finished lab on aluminium.** It takes a median of 97 days from
+  its own start to the state of the art, against round 3's 24. In both rounds a seed gets there either within a month
+  or after 80-110 days. The learning curve pushes the quick seeds later: one seed takes 47 days with it, 11 without,
+  and 4 in round 3. Without the learning curve the waiting lab's median is 79 days (8 seeds); section 5.9 has its
+  cost from funding.
+* **Ramping up in parallel recovers most of that on aluminium** (day 57). On copper it recovers about four months of
+  the nine: copper needs a DED route with capacity, and before the in-house MX-Lab it has only Utah's monthly session
+  and Mines' seven a year.
+
 ### 5.6 Three times the money (`plans_3x`, the cheap policies, 12 seeds)
 
 Round 3 found copper limited by money. Round 4's two day-0 plans spend their whole budget, so `plans_3x` gives every
@@ -314,30 +341,6 @@ plan three times round 3's money per year.
   * metal orders once the day-0 stock runs out;
   * the WIP limit, which holds new designs to two weeks of the partners' print capacity.
 * **Later the atomizer binds aluminium**, at 76-80 % of its starts from month 10.
-
-### 5.5 Against round 3, which started with the lab built
-
-Round 3's main benchmark ran the same cheap policies in the finished vertical lab from its day 0, for one year
-(`out/twin3/fig/tables.md`, 12 seeds):
-
-* the heuristic reached aluminium's state of the art at a median of day 24;
-* the funnel reached copper's targets at day 142 and 148.
-
-Round 4 counts from the funding:
-
-| Days from the funding (cheap policies) | Al T1 | Cu T1 | Cu T2 |
-|---|---|---|---|
-| Round 3: the finished lab, from its own day 0 | 24 | 142 | 148 |
-| Round 4: wait for the cell (starts at day 270, median) | 366 | 421 | 430 |
-| Round 4: ramp up in parallel | 57 | 302 | 310 |
-| Round 4: external routes only | 54 | 315 | >730 (5/12) |
-
-* **Building the lab costs the waiting plan 9-11 months on every target.** About 270 days of build-out come first.
-  After its start it is also slower than round 3's finished lab on aluminium: 96 days to the state of the art instead
-  of 24, because every new station and the atomizer go through their learning curves (section 5.9).
-* **Ramping up in parallel recovers most of that on aluminium** (day 57). On copper it recovers about four months of
-  the nine: copper needs a DED route with capacity, and before the in-house MX-Lab it has only Utah's monthly session
-  and Mines' seven a year.
 
 ### 5.7 Provenance: someone on site at each partner's first job (`provenance`, 8 seeds)
 
@@ -377,6 +380,65 @@ and without visits, paired by seed.
     * offsets larger than the process windows. At three times the stand-ins the copper halfway target moved by a
       median 42 days, but with the sign changing from seed to seed.
   * **None of these was run.**
+
+### 5.8 Each route's share, and where adding a route doesn't help (`routes`, 8 seeds)
+
+**Shares.** In the parallel plan (`plans`, all seeds):
+
+| Step | Share of its jobs by route | Made the first alloy at the target (seeds) |
+|---|---|---|
+| Aluminium LPBF builds | in house 84 %, Utah MIDI 12 %, 3D Powder Tech 3 % | T1: Utah 6, 3D Powder Tech 4, in house 2; T2: in house 5, Utah 1, 3D Powder Tech 1 |
+| Copper small DED (and blends) | in house 67 %, Utah MX-Lab 33 % | |
+| Copper 1-2 kg DED | in house (1 kg) for most; Mines (2 kg) 57 sessions over 12 runs | T1: Mines 6, in house 6; T2: in house 8, Mines 3 |
+| Aluminium wire EDM | in house 88 %, Provo service 12 % | |
+| Tensile | in house 59 %, BYU's Instron frames 41 %, the outside lab 0 % | |
+| SEM | in house 89 %, BYU Microscopy Center 11 % | |
+
+**One route taken away at a time** (the parallel plan with the cheap policies, 8 seeds). Each cell gives the
+variant's median day, then the median day with every route on the same seeds; in brackets, the seeds where the variant
+got there first / later.
+
+| Without | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best (paired) | Cu best (paired) |
+|---|---|---|---|---|---|---|
+| the Provo EDM service | **196 → 61 (2 / 6)** | 454 → 557 (4 / 2) | 281 → 270 (4 / 4) | 346 → 353 (3 / 4) | +0.03 ± 0.02 | −0.01 ± 0.01 |
+| 3D Powder Tech | **150 → 61 (3 / 5)** | 541 → 557 (2 / 3) | 310 → 270 (4 / 4) | 333 → 353 (4 / 3) | −0.03 ± 0.04 | −0.00 ± 0.01 |
+| Utah's MIDI | 85 → 61 (3 / 5) | 529 → 557 (3 / 2) | 281 → 270 (5 / 3) | 369 → 353 (4 / 3) | +0.00 ± 0.01 | +0.01 ± 0.01 |
+| Mines' X2 | 61 → 61 (1 / 1) | 457 → 557 (3 / 0) | **302 → 270 (2 / 6)** | **380 → 353 (2 / 5)** | −0.01 ± 0.01 | −0.02 ± 0.02 |
+| Utah's MX-Lab | 60 → 61 (4 / 4) | >730 → 557 (2 / 3) | **339 → 270 (2 / 6)** | 347 → 353 (3 / 4) | −0.03 ± 0.01 | +0.01 ± 0.01 |
+| the PIP service | identical (never used) | | | | 0 | 0 |
+| the outside tensile lab | identical (never used) | | | | 0 | 0 |
+
+* **The routes that matter early are the ones that carry the first months.**
+  * Aluminium's first result needs the Provo EDM service: before the in-house EDM (day 184), its bars can't be cut
+    otherwise. It also needs at least one partner printer.
+  * Without 3D Powder Tech or Utah's MIDI, aluminium's state of the art comes later in 5 seeds of 8.
+  * Copper's state of the art comes later in 6 of 8 without Mines or without Utah's MX-Lab.
+* **Where adding a route doesn't help:**
+  * **The outside tensile laboratory** never took a job. BYU's own Instron frames are free and take a job the same
+    day, the in-house frames later; an outside lab would help only if those frames were scarce.
+  * **The PIP service** took no job either, because the cheap policies don't use PIP. BOFN used it for its first
+    aluminium parts (4 of 31 PIP jobs in the parallel plan's seed 0) until the in-house PIP arrived.
+  * **Aluminium's halfway target** is not slowed by taking any one partner away (the variants are as often first as
+    later). It is reached once the in-house MIDI runs, months after the partners' share has fallen to a few percent.
+  * **Valimet** (in the stages only) ran at 0-13 % of its monthly slots (`plans`).
+* **One partner printer can stand in for the other.** Removing either costs aluminium's first result a few weeks,
+  not months. Which of the two is worth a standing reservation is a question of price and turnaround, and 3D Powder
+  Tech's service is hypothetical.
+
+### 5.9 What the ramp-up costs (`nolearn`, 8 seeds: every station at full rate once commissioned)
+
+| Variant, against the same plan with the learning curve | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |
+|---|---|---|---|---|---|---|
+| Ramp up in parallel, no learning curve | 47 → 61 (5 / 2) | >730 → 557 (2 / 2) | 253 → 270 (5 / 3) | 282 → 353 (5 / 2) | −0.04 ± 0.03 | +0.00 ± 0.01 |
+| Wait for the cell, no learning curve | 352 → 371 (6 / 2) | >730 → >730 (1 / 2) | 381 → 408 (6 / 2) | 424 → 435 (3 / 5) | −0.05 ± 0.04 | −0.00 ± 0.01 |
+
+* **The ramp-up costs both building plans two to three weeks to the first results:**
+  * the waiting lab: 19 days to aluminium's state of the art, 27 to copper's;
+  * the parallel plan: 14 and 17 days, and copper's halfway target up to 10 weeks.
+* **The learning curve is not what separates the plans.** The parallel plan's lead over the waiting one is the
+  build-out (about 270 days), and the learning is a few weeks on top in either plan.
+* **The parallel plan absorbs part of it.** The existing atomizer learns on the partners' work while the cell is
+  built (hundreds of runs before the cell is complete), and the partners have no learning curve.
 
 <!-- SECOND -->
 

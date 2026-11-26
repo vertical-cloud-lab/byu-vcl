@@ -449,7 +449,9 @@ def stages_table(name, N):
 
 
 def variant_table(name, T, N, label):
-    """Second-priority experiments: each variant against the parallel plan with the cheap policies (paired)."""
+    """Second-priority experiments: each variant against the same plan in `plans` on the same seeds (paired): the
+    variant's Kaplan-Meier median day and the base's on those seeds, and the seeds where the variant got there first
+    or later."""
     rows = _rows(name)
     if not rows:
         return []
@@ -459,32 +461,28 @@ def variant_table(name, T, N, label):
     groups = {}
     for r in rows:
         groups.setdefault(B4.group_key(r["cfg"]), []).append(r)
-    lines = [f"**{label}** (`{name}`; paired with the same plan in `plans` on the same seeds; days from funding)", "",
-             "| Variant | n | Al best (paired) | Al T1; T2: seeds, day | Cu best (paired) | Cu T1; T2: seeds, day | "
-             "provenance visits | discovery spend |", "|---|---|---|---|---|---|---|---|"]
+    lines = [f"**{label}** (`{name}`; each against the same plan in `plans` on the same seeds: the variant's median "
+             "day → the base's on those seeds (variant first / later); final alloy paired, variant − base)", "",
+             "| Variant | n | Al T1 | Al T2 | Cu T1 | Cu T2 | Al best | Cu best |", "|---|---|---|---|---|---|---|---|"]
     rec = {}
     for key, rs in sorted(groups.items()):
         rs.sort(key=lambda r: r["cfg"]["seed"])
         n = len(rs)
         base = bases.get(rs[0]["cfg"]["plan"], {})
+        rb = [base[r["cfg"]["seed"]] for r in rs if r["cfg"]["seed"] in base]
         cells = [f"`{key.replace('r4_', '')}`", str(n)]
         rr = {}
+        for camp, tn in (("flaime_al", "T1"), ("flaime_al", "T2"), ("onr_cu", "T1"), ("onr_cu", "T2")):
+            dv = [_hit_day(r["campaigns"][camp]["curve_new"], T[tn][camp]) for r in rs]
+            db = [_hit_day(r["campaigns"][camp]["curve_new"], T[tn][camp]) for r in rb]
+            first = sum(1 for x, y in zip(dv, db) if x is not None and (y is None or x < y - 1e-9))
+            later = sum(1 for x, y in zip(dv, db) if y is not None and (x is None or y < x - 1e-9))
+            cells.append(f"{_km(dv)} → {_km(db)} ({first} / {later})")
+            rr[f"{camp}_{tn}"] = dict(variant=dv, base=db, first=first, later=later)
         for camp in CAMPS:
-            best = [r["campaigns"][camp]["best_new"] for r in rs]
-            pd = [r["campaigns"][camp]["best_new"] - base[r["cfg"]["seed"]]["campaigns"][camp]["best_new"]
-                  for r in rs if r["cfg"]["seed"] in base]
-            cells.append(f"{_mse(best)} ({_mse(pd)})" if pd else _mse(best))
-            tt = []
-            for tn in ("T1", "T2"):
-                dl = [_hit_day(r["campaigns"][camp]["curve_new"], T[tn][camp]) for r in rs]
-                tt.append(f"{sum(d is not None for d in dl)}/{n}, {_km(dl)}")
-                rr[f"{camp}_{tn}"] = dl
-            cells.append("; ".join(tt))
-            rr[f"{camp}_best"] = best
+            pd = [r["campaigns"][camp]["best_new"] - b["campaigns"][camp]["best_new"] for r, b in zip(rs, rb)]
+            cells.append(_mse(pd) if pd else "—")
             rr[f"{camp}_paired"] = pd
-        pv = np.mean([sum(r["campaigns"][c].get("prov_usd", 0) for c in CAMPS) for r in rs])
-        cells.append(f"${pv / 1e3:.1f}k" if pv else "—")
-        cells.append(f"${np.mean([sum(r['campaigns'][c]['spent'] for c in CAMPS) for r in rs]) / 1e3:.0f}k")
         lines.append("| " + " | ".join(cells) + " |")
         rec[key] = rr
     N.setdefault("variants", {})[name] = rec
