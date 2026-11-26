@@ -536,15 +536,19 @@ gets that login:
   H2D for one diameter on both nozzles. 2.9.2 adds *multi-diameter mode*, which is switched
   per project on the Prepare page and saved in the 3MF as `multi_nozzle_diameter_mode`. In
   that mode each filament is tied to a nozzle diameter, so one print can use 0.2 mm for text
-  and 0.4 mm for the body. `bambu/studio/setup_runner.sh` installs 2.9.2. Bambu names no H2D
-  firmware for it; the newest is 01.04.20.00. The H2C and X2D follow in early 2027. Studio
-  calls the feature experimental, so in multi-diameter mode:
+  and 0.4 mm for the body. Install Studio with `bambu/studio/setup_runner.sh`, which pins
+  2.9.2. The setup section of the runbook (below) still downloads 2.8.2. Bambu lists no H2D
+  firmware the feature needs; the newest is 01.04.20.00. The H2C and X2D follow in early
+  2027. Studio calls the feature experimental, so in multi-diameter mode:
   - **The nozzle rule above still applies.** For this repo that means 0.2 and 0.4 mm. Don't
     put supports or infill on a 0.6 mm nozzle just because one is installed.
-  - **You can't choose each nozzle's layer height.** Each nozzle prints at the preset's layer
-    height × its diameter ÷ 0.4, so 0.20 mm on the 0.4 mm nozzle means 0.10 mm on the
-    0.2 mm one. Set the first-layer height equal to the layer height. Otherwise the larger
-    nozzle's first layer comes out thinner than set.
+  - **Studio sets each nozzle's layer height and wall count, not the project.** Layer height
+    is the preset's × the diameter ÷ 0.4, so 0.20 mm on the 0.4 mm nozzle means 0.10 mm on
+    the 0.2 mm one. Walls come from Studio's per-diameter table
+    (`resources/info/multi_nozzle_rules.json`): on the H2D, 4 on 0.2 mm and 2 on 0.4 mm,
+    whatever the project or a modifier says. Slice a part that needs more walls in
+    single-diameter mode. Set the first-layer height equal to the layer height. Otherwise the
+    larger nozzle's first layer comes out thinner than set.
   - **Check the preview before sending.** 2.9.2 shows which nozzle prints each move. Make sure
     every region is on the nozzle you meant. Look closely at supports, the prime tower and the
     seams between regions. Bambu says support Z gaps and support and prime-tower sizes aren't
