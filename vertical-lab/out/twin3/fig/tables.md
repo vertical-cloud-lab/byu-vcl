@@ -116,6 +116,8 @@ Targets: T1 = the state of the art (aluminium 0.4232, copper 0.5559); T2 = halfw
 
 | Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
 |---|---|---|---|---|---|---|---|---|---|---|
+| BOFN, time-aware | 4 | 0.55 ± 0.18 | +0.35 ± 0.26 (3/1) | 3/4 | 96 | 3/4 | 96 | 106.7 | 16.0 | 0.0 |
+| pKGFN, time-aware | 4 | 0.68 ± 0.06 | +0.49 ± 0.15 (4/0) | 4/4 | 60 | 3/4 | 94 | 101.2 | 21.0 | 0.0 |
 | Tiered screening | 12 | 0.30 ± 0.08 |  | 6/12 | 146 | 1/12 | >365 | 118.9 | 17.9 | 0.0 |
 | Heuristic | 12 | 0.55 ± 0.03 | +0.25 ± 0.08 (10/2) | 11/12 | 24 | 1/12 | >365 | 119.9 | 77.5 | 0.0 |
 | GP-BO | 12 | 0.37 ± 0.07 | +0.07 ± 0.06 (5/4) | 9/12 | 226 | 1/12 | >365 | 117.0 | 34.5 | 0.0 |
@@ -125,6 +127,8 @@ Targets: T1 = the state of the art (aluminium 0.4232, copper 0.5559); T2 = halfw
 
 | Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
 |---|---|---|---|---|---|---|---|---|---|---|
+| BOFN, time-aware | 4 | 0.54 ± 0.05 | -0.11 ± 0.05 (1/3) | 2/4 | 302 | 1/4 | >365 | 61.7 | 6.0 | 2.2 |
+| pKGFN, time-aware | 4 | 0.54 ± 0.07 | -0.12 ± 0.09 (2/2) | 2/4 | 295 | 1/4 | >365 | 60.0 | 5.2 | 1.8 |
 | Tiered screening | 12 | 0.69 ± 0.02 |  | 11/12 | 142 | 10/12 | 148 | 60.5 | 11.3 | 0.0 |
 | Heuristic | 12 | 0.57 ± 0.03 | -0.12 ± 0.04 (1/11) | 7/12 | 234 | 1/12 | >365 | 61.1 | 9.5 | 0.0 |
 | GP-BO | 12 | 0.54 ± 0.06 | -0.15 ± 0.06 (2/10) | 7/12 | 255 | 3/12 | >365 | 61.3 | 8.3 | 0.0 |
@@ -138,16 +142,24 @@ Targets: T1 = the state of the art (aluminium 0.4232, copper 0.5559); T2 = halfw
 | Aluminium | Random | Random | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | >365; >365 | 0 / 0 / 12 | >365; >365 | +0.0 |
 | Aluminium | Heuristic | Heuristic | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 24; 24 | 0 / 0 / 12 | >365; >365 | +0.0 |
 | Aluminium | Tiered screening | Tiered screening | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 146; 146 | 0 / 0 / 12 | >365; >365 | +0.0 |
+| Aluminium | pKGFN, time-aware | pKGFN, time-aware | 4 | +0.00 ± 0.00 (0/0) | 1 / 0 / 3 | 60; 60 | 1 / 0 / 3 | 94; 98 | +2.5 |
+| Aluminium | BOFN, time-aware | BOFN, time-aware | 4 | -0.20 ± 0.20 (1/1) | 0 / 1 / 3 | 96; 96 | 0 / 1 / 3 | 96; 96 | -2.6 |
 | Aluminium | GP-BO | Tiered screening | 12 | +0.07 ± 0.06 (5/4) | 5 / 4 / 3 | 226; 146 | 1 / 1 / 10 | >365; >365 | -1.8 |
 | Aluminium | Random | Tiered screening | 12 | -0.05 ± 0.13 (5/5) | 4 / 5 / 3 | >365; 146 | 2 / 1 / 9 | >365; >365 | +0.6 |
 | Aluminium | Heuristic | Tiered screening | 12 | +0.25 ± 0.08 (10/2) | 8 / 2 / 2 | 24; 146 | 1 / 1 / 10 | >365; >365 | +1.1 |
+| Aluminium | pKGFN, time-aware | Tiered screening | 4 | +0.49 ± 0.15 (4/0) | 4 / 0 / 0 | 60; >365 | 3 / 0 / 1 | 94; >365 | -17.8 |
+| Aluminium | BOFN, time-aware | Tiered screening | 4 | +0.35 ± 0.26 (3/1) | 3 / 0 / 1 | 96; >365 | 3 / 0 / 1 | 96; >365 | -12.2 |
 | Copper | GP-BO | GP-BO | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 255; 255 | 0 / 0 / 12 | >365; >365 | -0.0 |
 | Copper | Random | Random | 12 | -0.03 ± 0.03 (0/1) | 0 / 0 / 12 | 285; 285 | 0 / 0 / 12 | >365; >365 | +0.0 |
 | Copper | Heuristic | Heuristic | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 234; 234 | 0 / 0 / 12 | >365; >365 | +0.0 |
 | Copper | Tiered screening | Tiered screening | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 142; 142 | 0 / 0 / 12 | 148; 148 | +0.0 |
+| Copper | pKGFN, time-aware | pKGFN, time-aware | 4 | -0.05 ± 0.05 (0/1) | 0 / 1 / 3 | 295; 295 | 0 / 0 / 4 | >365; >365 | -0.0 |
+| Copper | BOFN, time-aware | BOFN, time-aware | 4 | -0.00 ± 0.00 (0/1) | 0 / 2 / 2 | 302; 261 | 0 / 1 / 3 | >365; >365 | +0.1 |
 | Copper | GP-BO | Tiered screening | 12 | -0.15 ± 0.06 (2/10) | 3 / 9 / 0 | 255; 142 | 1 / 10 / 1 | >365; 148 | +0.8 |
 | Copper | Random | Tiered screening | 12 | -0.20 ± 0.04 (1/11) | 3 / 8 / 1 | 285; 142 | 0 / 10 / 2 | >365; 148 | +0.2 |
 | Copper | Heuristic | Tiered screening | 12 | -0.12 ± 0.04 (1/11) | 2 / 10 / 0 | 234; 142 | 1 / 9 / 2 | >365; 148 | +0.6 |
+| Copper | pKGFN, time-aware | Tiered screening | 4 | -0.12 ± 0.09 (2/2) | 1 / 3 / 0 | 295; 142 | 0 / 3 / 1 | >365; 142 | -1.2 |
+| Copper | BOFN, time-aware | Tiered screening | 4 | -0.11 ± 0.05 (1/3) | 0 / 3 / 1 | 302; 142 | 0 / 3 / 1 | >365; 142 | +0.5 |
 
 ## cu_money
 

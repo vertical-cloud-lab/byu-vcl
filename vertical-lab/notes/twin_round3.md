@@ -179,8 +179,8 @@ T2 is halfway from it to the best the oracle found (0.64 and 0.66). New alloys o
   and 10 of 12 seeds), and nothing else does (at most 2 of 12). They also finish highest: +0.16 to +0.17 over the
   heuristic and +0.41 to +0.43 over the funnel, paired. The heuristic still reaches the state of the art first
   (median day 24 against 67-83) and then stalls, as in round 2.
-* **Copper: the funnel still wins.** It finishes 0.08-0.11 ahead of BOFN and pKGFN (paired, 2-3 seeds of 12 behind
-  it), reaches the state of the art in 11 of 12 seeds at a median of day 142 against day 221-295, and reaches T2 in 10
+* **Copper: the funnel still wins.** It finishes 0.08-0.11 ahead of BOFN and pKGFN (paired; they are ahead in 2-3
+  seeds of 12; over 24 seeds the funnel scores 0.67 ± 0.02, halfway in 19 of 24), reaches the state of the art in 11 of 12 seeds at a median of day 142 against day 221-295, and reaches T2 in 10
   of 12 against 4-5. Removing the cap did not change that.
 * **Time-aware against per dollar (BOFN, paired, 12 seeds).** Aluminium: +0.07 ± 0.03 on the final alloy (8 seeds
   ahead, 2 behind) and T2 in 11 seeds instead of 7 (median day 96 against 119); T1 is a draw (day 83 against 80).
@@ -268,7 +268,10 @@ of the funnel's lead than in round 2. On aluminium the proxy without the screen 
 copper bronzes corrodes selectively and embrittles; the CALPHAD nodes don't report it), the funnel, the heuristic and
 GP-BO gave the same results as on the plain truth, seed for seed; random lost −0.03 ± 0.03 (one seed); the
 mis-specified funnel was unchanged too (0.70 ± 0.01). As in round 2, none of their picks sat in the corner.
-GAMMA2_NET
+BOFN and pKGFN with γ₂ (`cu_hidden_net`, 4 seeds each, paired against their own plain-truth runs): BOFN unchanged
+(−0.00 ± 0.00; one seed 0.005 lower), pKGFN −0.05 ± 0.05 (one seed of four lost 0.19, the other three unchanged).
+Round 2's BOFN with blend screening lost 0.12 ± 0.08 there; with every node competing and interim readings, round 3's
+BOFN stays out of the corner too. Against the funnel with γ₂, they remain behind (−0.11 ± 0.05 and −0.12 ± 0.09).
 
 ### 3.4 The vertical lab against a conventional lab with the same freedom (`conventional`, 5 policies × 12 seeds)
 
@@ -364,11 +367,11 @@ All simulated: synthetic truths, simulated instruments, assumed capacities, pric
   runs, not tuned on the results; other choices would give other numbers.
 - **pKGFN's simplifications:** an independent-alternatives inner max (a fantasy changes only its own part's posterior),
   KG for the top 4 candidates of each stage, 6 fantasies and 24 draws.
-- **Seeds:** 12 for the main benchmark and the cheap policies everywhere; BOFN and pKGFN 3-4 in the three-times-money
-  test; gaps under about 0.05 mean little.
-- **Not run in this session:** BOFN and pKGFN with γ₂ (`cu_hidden_net`), BOFN on 12 more seeds (`main_more_net`),
-  and BOFN and pKGFN in the conventional lab (`conventional_net`). They are defined in `twin/bench3.py`; a rerun of
-  `python -m twin.bench3 run cu_hidden_net main_more_net conventional_net` resumes them.
+- **Seeds:** 12 for the main benchmark (24 for the baselines), and 12 for the cheap policies in every test; BOFN and
+  pKGFN 3-4 in the three-times-money test and 4 with γ₂; gaps under about 0.05 mean little.
+- **Not run in this session:** BOFN on 12 more seeds (`main_more_net`; the baselines have 24 seeds, BOFN and pKGFN
+  12) and BOFN and pKGFN in the conventional lab (`conventional_net`). They are defined in `twin/bench3.py`;
+  `python -m twin.bench3 run main_more_net conventional_net` resumes them. BOFN and pKGFN with γ₂ ran on 4 seeds each.
 - **Round 2's copper scoring bug** means round 2's copper day counts were early for the funnel and the baselines;
   round 3's are not, so part of the funnel's slower copper days in round 3 (142 against 88) is the fix.
 
