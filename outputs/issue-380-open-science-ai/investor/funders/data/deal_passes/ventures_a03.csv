@@ -1,0 +1,27 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+vercel,Vercel,U1,hosting platform marketed to Next.js users,,yes,US,2015,private,yes,7,Series C and E investor names not found on pages read.,,2026-11-26T06:00:21Z
+supabase,Supabase,U1,sells hosted Supabase platform,,yes,US,2020,private,yes,6,,,2026-11-26T06:00:21Z
+Graphify-Labs,Graphify Labs,U1,"sells hosted Graphify Pro, Teams and Enterprise; CLI free",,yes,US,,private,yes,1,,,2026-11-26T06:07:25Z
+rtk-ai,RTK AI Labs,U1,sells RTK Pro team tier; CLI free,,yes,FR,,private,none_found,0,Site names no investors; links GitHub Sponsors and Ko-fi donations only.,https://www.rtk-ai.app,2026-11-26T06:07:25Z
+FortAwesome,"Fonticons, Inc. (Font Awesome)",U1,sells Font Awesome Pro,,yes,US,2012,private,yes,1,"Earlier Kickstarter (2012) is memory only, not recorded.",,2026-11-26T06:07:25Z
+scrapy,Zyte,U1,"maintained by Zyte, which sells Scrapy Cloud and Zyte API",,yes,IE,2010,private,none_found,0,Zyte about page lists no funding or investors; search budget exhausted so not checked further. memory: possible outside investment not verified.,https://www.zyte.com/about/,2026-11-26T06:07:25Z
+K-Dense-AI,K-Dense,U1,sells hosted K-Dense Web co-scientist built around its open skills,,yes,US,,private,yes,1,,,2026-11-26T06:07:25Z
+ionic-team,Ionic (Drifty Co.),U1,sold Ionic Enterprise and Appflow for the framework,,yes,US,2013,acquired,yes,3,Acquired by OutSystems 2022.,,2026-11-26T06:07:25Z
+serverless,"Serverless, Inc.",U1,sells Serverless Framework licences and dashboard,,yes,US,2015,private,yes,2,,,2026-11-26T06:07:25Z
+phaserjs,Phaser Studio Inc.,U1,sells Phaser Editor and tools for Phaser developers,,yes,US,2023,private,yes,1,,,2026-11-26T06:07:25Z
+chatwoot,Chatwoot,U1,sells Chatwoot Cloud and enterprise,,yes,US,2017,private,yes,1,,,2026-11-26T06:07:25Z
+Lightning-AI,Lightning AI,U1,sells Lightning AI Studio platform to PyTorch Lightning users,,yes,US,2019,private,yes,4,,,2026-11-26T06:07:25Z
+modular,Modular Inc.,U1,sells Modular Platform (MAX) enterprise,,yes,US,2022,private,yes,3,"HN link (Reuters, 2026-06-24) says Qualcomm to acquire Modular; page not read, so status left private. Seed round label inferred.",,2026-11-26T06:07:25Z
+Opentrons,Opentrons Labworks,U1,sells the lab robots,,yes,US,2013,private,yes,1,Later rounds not verified from a page. memory: later large rounds exist.,,2026-11-26T06:07:25Z
+Opentrons,Opentrons Labworks,U1,sells the lab robots,,yes,US,2013,private,yes,5,Series A/B rounds not found. Board lists Khosla and SoftBank people but that is not stated as investment.,,2026-11-26T06:08:05Z
+Dokploy,Dokploy,U1,sells Dokploy Cloud managed plans,,yes,,,private,none_found,0,"Site names no investors; says 50+ companies/individuals sponsor it, unnamed. Country not stated.",https://dokploy.com,2026-11-26T06:08:05Z
+motiondivision,Motion Division,U1,sells Motion+ premium membership,,yes,NL,,private,yes,1,,,2026-11-26T06:08:05Z
+every-app,EveryApp (OpenSEO),U1,makers sell usage-based hosted OpenSEO credits,,yes,,,private,none_found,0,Site names no funding or backers; project described as alpha.,https://everyapp.com,2026-11-26T06:08:05Z
+balderdashy,The Sails Company,U1,sells Sails support and consulting,,yes,US,,private,none_found,0,About page describes an Austin web and mobile shop; no funding mentioned.,https://sailsjs.com/about,2026-11-26T06:08:05Z
+harfang3d,HARFANG 3D,U1,sells HARFANG Studio and licences,,yes,FR,,private,yes,1,,,2026-11-26T06:08:05Z
+neuromore,neuromore,U1,company sold neuromore Studio licences,,yes,US,,private,none_found,0,Site names no funding; appears still operating (2026 footer).,https://www.neuromore.com,2026-11-26T06:08:05Z
+ankitects,"Anki Software, LLC (Ankitects)",U1,sells AnkiMobile iOS version of Anki to fund development,,yes,US,,private,none_found,0,No outside funding found in pages read; funded by AnkiMobile sales per hint.,https://faqs.ankiweb.net/,2026-11-26T06:08:05Z
+deepset-ai,deepset,U1,sells deepset AI Platform (enterprise Haystack),,yes,DE,2018,private,yes,3,,,2026-11-26T06:08:05Z
+cilium,Isovalent,U1,CNCF graduated; Isovalent (Cisco) sells enterprise edition,,yes,US,2017,acquired,yes,2,"Acquired by Cisco, announced Dec 2023.",,2026-11-26T06:08:05Z
+zama-ai,Zama,U1,sells commercial licences for its FHE libraries and protocol,,yes,FR,2020,private,yes,4,,,2026-11-26T06:08:06Z
+marimo-team,marimo,U1,company built around marimo notebooks and hosted molab,,yes,US,2023,acquired,yes,1,"Acquired by CoreWeave, Oct 2025 (TechCrunch).",,2026-11-26T06:08:06Z

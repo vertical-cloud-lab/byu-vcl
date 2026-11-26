@@ -1,0 +1,39 @@
+key,venture,name,role,date,source
+NousResearch,Nous Research,Y Combinator,investor,2026-10,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+daytonaio,Daytona Platforms,Tobi Lutke (person),investor,2026-10,https://techcrunch.com/2026/10/23/agent-cloud-startup-daytona-hits-1b-valuation-backed-by-firstmark-and-a-whos-who-of-angels/
+appwrite,Appwrite,Abraham Fund,investor,2021-09,https://siliconangle.com/2021/09/28/open-source-backend-service-platform-appwrite-raises-10m-seed-funding/
+SigNoz,SigNoz,Jiten Vaidya (person),investor,2023-09,https://techcrunch.com/2023/09/28/open-source-datadog-rival-signoz-lands-on-the-cloud-with-6-5m-investment/
+SigNoz,SigNoz,Paul Copplestone (person),investor,2023-09,https://techcrunch.com/2023/09/28/open-source-datadog-rival-signoz-lands-on-the-cloud-with-6-5m-investment/
+nrwl,Nrwl (Nx),Andreessen Horowitz,lead,2022-11,https://techcrunch.com/2022/11/17/with-8-6m-in-seed-funding-nx-wants-to-take-monorepos-mainstream
+black-forest-labs,Black Forest Labs,AMP (Anjney Midha),lead,2025-12,https://techcrunch.com/2025/12/01/black-forest-labs-raises-300m-at-3-25b-valuation/
+cilium,Isovalent,Cisco,investor,2020-11,https://techcrunch.com/2020/11/10/with-29m-in-funding-isovalent-launches-its-cloud-native-networking-and-security-platform-based-on-ebpf-and-cilium/
+letta-ai,Letta,Cristobal Valenzuela (person),investor,2024-09,https://techcrunch.com/2024/09/23/letta-one-of-uc-berkeleys-most-anticipated-ai-startups-has-just-come-out-of-stealth/
+chaitin,Chaitin Tech,Zhenfund,investor,2015-09,https://www.secrss.com/articles/3944
+chaitin,Chaitin Tech,Qiming Venture Partners,lead,2017-06,https://www.secrss.com/articles/3944
+chaitin,Chaitin Tech,Matrix Partners China,lead,2018,https://www.secrss.com/articles/3944
+Opentrons,Opentrons Labworks,HAXLR8R,investor,2014,https://en.wikipedia.org/wiki/Opentrons
+seeed,Seeed Studio (Seeed Technology),IDG Capital,investor,2015-09,https://www.cbinsights.com/company/seed-studio/financials
+seeed,Seeed Studio (Seeed Technology),Shenzhen Capital Group,investor,2015-09,https://www.cbinsights.com/company/seed-studio/financials
+kitware,Kitware,National Science Foundation (SBIR),investor,2001-11,"https://api.nsf.gov/services/v1/awards.json?keyword=kitware&printFields=id,title,awardeeName,fundsObligatedAmt,startDate"
+posit,Posit PBC (RStudio),Brighton Park Capital,investor,2021,https://www.cbinsights.com/investor/rstudio
+picknik,PickNik Robotics,NASA (SBIR),investor,,https://www.roboticstomorrow.com/news/2023/10/12/stellar-ventures-and-cypress-growth-capital-commit-to-fueling-the-future-of-robotics-software/21273/
+re3d,re:3D,Kickstarter backers,investor,,https://www.cbinsights.com/company/re3d1/
+re3d,re:3D,National Science Foundation (SBIR),investor,2018-01,"https://api.nsf.gov/services/v1/awards.json?keyword=RE3D&printFields=id,title,awardeeName,fundsObligatedAmt,startDate"
+crowd-supply,Crowd Supply,SOSV,investor,2015-04,https://web.archive.org/web/2016/http://www.pehub.com/2015/04/crowd-supply-nabs-585k-seed/
+luxonis,Luxonis,Taiwania Capital,investor,2026-07,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/
+hortonworks,Hortonworks,Hewlett-Packard,investor,2014-07,http://www.informationweek.com/big-data/software-platforms/hp-invests-$50m-in-hortonworks-hadoop-bet/d/d-id/1297542
+springsource-pivotal,SpringSource / Pivotal Software,General Electric,investor,2013-04,https://techcrunch.com/2013/04/24/ge-puts-105m-into-pivotal-labs-the-new-emc-and-vmware-platform-initiative-but-heres-what-it-is-missing/
+springsource-pivotal,SpringSource / Pivotal Software,Ford Motor Company,lead,2016-05,http://fortune.com/2016/05/09/pivotal-funding/
+kaltura,Kaltura,Point 406 Ventures,investor,2011-02,http://techcrunch.com/2011/02/14/intel-invests-26-million-in-cloudmade-kaltura-and-others/
+couchbase,Couchbase,Accel Partners,investor,2011-08,https://www.networkworld.com/article/737928/opensource-subnet-couchbase-scores-14m-in-new-funding.html
+couchbase,Couchbase,North Bridge Venture Partners,investor,2011-08,https://www.networkworld.com/article/737928/opensource-subnet-couchbase-scores-14m-in-new-funding.html
+couchbase,Couchbase,Mayfield Fund,investor,2011-08,https://www.networkworld.com/article/737928/opensource-subnet-couchbase-scores-14m-in-new-funding.html
+mistral,Mistral AI,Rodolphe Saade (person),investor,2023-06,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+zimbra,Zimbra,Accel Partners,investor,2007-09,https://pehub.com/yahoo-buying-zimbra
+zimbra,Zimbra,Benchmark,investor,2007-09,https://pehub.com/yahoo-buying-zimbra
+zimbra,Zimbra,Redpoint Ventures,investor,2007-09,https://pehub.com/yahoo-buying-zimbra
+sugarcrm,SugarCRM,Goldman Sachs,lead,2013-08,https://techcrunch.com/2016/03/02/sugarcrm-acquires-contastic-for-natural-language-based-predictive-sales-tools/
+jaspersoft,Jaspersoft,DCM,investor,2011-07,https://globalventuring.com/jaspersoft-succeeds-in-quest
+u4-buttercoin,Buttercoin,Floodgate,investor,2013-08,https://techcrunch.com/2013/08/20/buttercoin/
+u4-truefoundry,TrueFoundry,Peak XV Partners,lead,2022-09,https://techcrunch.com/2022/09/19/meta-alumni-startup-truefoundry-seed-funding-sequoia-surge-machine-learning/
+u4-twenty,Twenty,Aurelien Georget (person),investor,2024-11,https://techcrunch.com/2024/11/18/twenty-is-building-an-open-source-alternative-to-salesforce/

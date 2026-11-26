@@ -1,0 +1,2024 @@
+2: Y Combinator | accelerator | 313
+3: Andreessen Horowitz | venture_firm | 41
+4: Accel | venture_firm | 38
+5: Sequoia Capital | venture_firm | 32
+6: SV Angel | venture_firm | 28
+7: Insight Partners | growth_pe_hedge | 25
+8: New Enterprise Associates | venture_firm | 25
+9: Lightspeed Venture Partners | venture_firm | 25
+10: Index Ventures | venture_firm | 24
+11: Intel Capital | corporate_venture | 24
+12: Coatue | growth_pe_hedge | 22
+13: NVIDIA (incl. NVentures) | corporate_venture | 22
+14: Redpoint Ventures | venture_firm | 21
+15: Benchmark | venture_firm | 20
+16: Bessemer Venture Partners | venture_firm | 20
+17: GV | corporate_venture | 20
+18: Samsung | corporate_venture | 20
+19: Guillermo Rauch | angel | 20
+20: CRV | venture_firm | 19
+21: Salesforce Ventures | corporate_venture | 19
+22: General Catalyst | venture_firm | 18
+23: Amplify Partners | venture_firm | 17
+24: Nexus Venture Partners | venture_firm | 16
+25: Tiger Global | growth_pe_hedge | 16
+26: Kickstarter backers | crowdfunding | 16
+27: Kleiner Perkins | venture_firm | 15
+28: OSS Capital | venture_firm | 15
+29: True Ventures | venture_firm | 15
+30: Battery Ventures | venture_firm | 15
+31: Gradient Ventures | corporate_venture | 14
+32: Goldman Sachs | growth_pe_hedge | 14
+33: Uncorrelated Ventures | venture_firm | 14
+34: Felicis | venture_firm | 13
+35: Khosla Ventures | venture_firm | 13
+36: Craft Ventures | venture_firm | 13
+37: Greylock Partners | venture_firm | 13
+38: Sapphire Ventures | venture_firm | 13
+39: Kima Ventures | venture_firm | 13
+40: Lux Capital | venture_firm | 12
+41: M12 | corporate_venture | 12
+42: Mango Capital | venture_firm | 12
+43: Pioneer Fund | venture_firm | 12
+44: Spark Capital | venture_firm | 11
+45: Bain Capital Ventures | venture_firm | 11
+46: Dell Technologies Capital | corporate_venture | 11
+47: SignalFire | venture_firm | 11
+48: A Capital | venture_firm | 11
+49: Altimeter Capital | growth_pe_hedge | 10
+50: GGV Capital (US arm now Notable Capital) | venture_firm | 10
+51: 468 Capital | venture_firm | 10
+52: GIC | public_investor | 10
+53: Tom Preston-Werner | angel | 10
+54: David Cramer | angel | 10
+55: Meritech Capital Partners | venture_firm | 9
+56: Nat Friedman | angel | 9
+57: Clem Delangue | angel | 9
+58: Databricks Ventures | corporate_venture | 9
+59: Paul Copplestone | angel | 9
+60: Paul Graham | angel | 9
+61: Aramco Ventures (incl. Prosperity7) | corporate_venture | 8
+62: IVP | venture_firm | 8
+63: Menlo Ventures | venture_firm | 8
+64: Cisco Investments | corporate_venture | 8
+65: Alumni Ventures | venture_firm | 8
+66: Bpifrance | public_investor | 8
+67: Madrona Venture Group | venture_firm | 7
+68: Alibaba | corporate_venture | 7
+69: Peak XV Partners (formerly Sequoia India) | venture_firm | 7
+70: 8VC | venture_firm | 7
+71: Mayfield | venture_firm | 7
+72: Norwest Venture Partners | venture_firm | 7
+73: Pace Capital | venture_firm | 7
+74: 5Y Capital | venture_firm | 7
+75: AMD | corporate_venture | 7
+76: Elad Gil | angel | 7
+77: IBM | corporate_venture | 7
+78: Red Hat | corporate_venture | 7
+79: Seedcamp | venture_firm | 7
+80: Amazon | corporate_venture | 7
+81: Geodesic Capital | venture_firm | 7
+82: Olivier Pomel | angel | 7
+83: Matrix Partners | venture_firm | 6
+84: Costanoa Ventures | venture_firm | 6
+85: FirstMark | venture_firm | 6
+86: Georgian | venture_firm | 6
+87: HongShan (formerly Sequoia China) | venture_firm | 6
+88: Qualcomm Ventures | corporate_venture | 6
+89: First Minute Capital | venture_firm | 6
+90: Google | corporate_venture | 6
+91: Scale Venture Partners | venture_firm | 6
+92: Tencent | corporate_venture | 6
+93: Trinity Ventures | venture_firm | 6
+94: Amjad Masad | angel | 6
+95: Automattic | corporate_venture | 6
+96: Balaji Srinivasan | angel | 6
+97: GitHub | corporate_venture | 6
+98: Greycroft | venture_firm | 6
+99: Logan Kilpatrick | angel | 6
+100: Mozilla Ventures | corporate_venture | 6
+101: Naval Ravikant | angel | 6
+102: Nicolas Dessaigne | angel | 6
+103: Root Ventures | venture_firm | 6
+104: Foundry Group | venture_firm | 5
+105: Balderton Capital | venture_firm | 5
+106: Basis Set Ventures | venture_firm | 5
+107: First Round Capital | venture_firm | 5
+108: Protocol Labs | crypto_fund_or_dao | 5
+109: Initialized Capital | venture_firm | 5
+110: Speedinvest | venture_firm | 5
+111: Susa Ventures | venture_firm | 5
+112: TQ Ventures | venture_firm | 5
+113: Union Square Ventures | venture_firm | 5
+114: Bloomberg Beta | venture_firm | 5
+115: Essence VC | venture_firm | 5
+116: Heavybit | venture_firm | 5
+117: IDG Capital | venture_firm | 5
+118: J.P. Morgan | growth_pe_hedge | 5
+119: Runa Capital | venture_firm | 5
+120: SAP Ventures | corporate_venture | 5
+121: Thrive Capital | venture_firm | 5
+122: Alkeon Capital | growth_pe_hedge | 5
+123: Betaworks | venture_firm | 5
+124: BlackRock | growth_pe_hedge | 5
+125: Bob Young | angel | 5
+126: BoxGroup | venture_firm | 5
+127: Calvin French-Owen | angel | 5
+128: DCVC | venture_firm | 5
+129: Dharmesh Shah | angel | 5
+130: Fathom Capital | venture_firm | 5
+131: Foundation Capital | venture_firm | 5
+132: Haystack | venture_firm | 5
+133: In-Q-Tel | public_investor | 5
+134: Jeff Dean | angel | 5
+135: K5 Global | venture_firm | 5
+136: Orange Collective | venture_firm | 5
+137: Scott Belsky | angel | 5
+138: Shasta Ventures | venture_firm | 5
+139: Tristan Handy | angel | 5
+140: Yunqi Partners | venture_firm | 5
+141: Crane Venture Partners | venture_firm | 4
+142: Standard Capital | venture_firm | 4
+143: Addition | venture_firm | 4
+144: Boldstart Ventures | venture_firm | 4
+145: Decibel | venture_firm | 4
+146: Ignition Partners | venture_firm | 4
+147: CapitalG | corporate_venture | 4
+148: Comcast Ventures | corporate_venture | 4
+149: Creandum | venture_firm | 4
+150: Franklin Templeton | growth_pe_hedge | 4
+151: Metaplanet | venture_firm | 4
+152: S28 Capital | venture_firm | 4
+153: Silicon Valley Bank | bank_or_debt | 4
+154: SoftBank (Vision Fund) | growth_pe_hedge | 4
+155: Tribe Capital | venture_firm | 4
+156: Vertex Ventures US | venture_firm | 4
+157: Walden Catalyst | venture_firm | 4
+158: Citi Ventures | corporate_venture | 4
+159: DFJ Growth | growth_pe_hedge | 4
+160: Daniel Gross | angel | 4
+161: Dylan Field | angel | 4
+162: Hillhouse | growth_pe_hedge | 4
+163: Knight Foundation | philanthropy | 4
+164: Lunar Ventures | venture_firm | 4
+165: Neo | accelerator | 4
+166: T. Rowe Price | growth_pe_hedge | 4
+167: Two Sigma Ventures | venture_firm | 4
+168: VMware | corporate_venture | 4
+169: AME Cloud Ventures | venture_firm | 4
+170: Abstract Ventures | venture_firm | 4
+171: Atlassian Ventures | corporate_venture | 4
+172: Crowd Supply backers | crowdfunding | 4
+173: Eric Schmidt | angel | 4
+174: Frontline Ventures | venture_firm | 4
+175: Fuel Capital | venture_firm | 4
+176: GL Ventures | venture_firm | 4
+177: Gaingels | venture_firm | 4
+178: Gokul Rajaram | angel | 4
+179: Jack Altman | angel | 4
+180: Jason Warner | angel | 4
+181: Open Core Ventures | accelerator | 4
+182: Paul Buchheit | angel | 4
+183: Pillar VC | venture_firm | 4
+184: Rebel Fund | venture_firm | 4
+185: Solomon Hykes | angel | 4
+186: Sunflower Capital | venture_firm | 4
+187: Techstars | accelerator | 4
+188: The House Fund | venture_firm | 4
+189: Thomas Dohmke | angel | 4
+190: Adams Street Partners | growth_pe_hedge | 3
+191: Bain Capital | growth_pe_hedge | 3
+192: Radical Ventures | venture_firm | 3
+193: AIX Ventures | venture_firm | 3
+194: Chemistry | venture_firm | 3
+195: Cherry Ventures | venture_firm | 3
+196: Dawn Capital | venture_firm | 3
+197: Emergence Capital | venture_firm | 3
+198: Greenoaks | growth_pe_hedge | 3
+199: Ibex Investors | venture_firm | 3
+200: KKR | growth_pe_hedge | 3
+201: OpenOcean | venture_firm | 3
+202: OpenView Venture Partners | venture_firm | 3
+203: Robert Bosch Venture Capital | corporate_venture | 3
+204: Shenzhen Capital Group | public_investor | 3
+205: Sutter Hill Ventures | venture_firm | 3
+206: TLV Partners | venture_firm | 3
+207: Venrock | venture_firm | 3
+208: Anthony Goldbloom | angel | 3
+209: Atreides Management | growth_pe_hedge | 3
+210: BOND | growth_pe_hedge | 3
+211: Blumberg Capital | venture_firm | 3
+212: Eurazeo | growth_pe_hedge | 3
+213: Florian Leibert | angel | 3
+214: Founders Fund | venture_firm | 3
+215: Grand Ventures | venture_firm | 3
+216: Lachy Groom | angel | 3
+217: Legend Capital | venture_firm | 3
+218: LocalGlobe | venture_firm | 3
+219: Matrix Partners China | venture_firm | 3
+220: Obvious Ventures | venture_firm | 3
+221: Qiming | venture_firm | 3
+222: Quiet Capital | venture_firm | 3
+223: Sorenson Capital | venture_firm | 3
+224: Unusual Ventures | venture_firm | 3
+225: Vista Equity Partners | growth_pe_hedge | 3
+226: Work-Bench | venture_firm | 3
+227: Xiaomi | corporate_venture | 3
+228: Zeev Ventures | venture_firm | 3
+229: 500 Emerging Europe | venture_firm | 3
+230: Anthony Casalena | angel | 3
+231: Aravind Srinivas | angel | 3
+232: Augusto Marietti | angel | 3
+233: Baillie Gifford | growth_pe_hedge | 3
+234: Beijing AI Industry Investment Fund | public_investor | 3
+235: Caffeinated Capital | venture_firm | 3
+236: Chris Sacca | angel | 3
+237: DST Global | growth_pe_hedge | 3
+238: DTCP | venture_firm | 3
+239: Dane Knecht | angel | 3
+240: Diane Greene | angel | 3
+241: Digital Science | corporate_venture | 3
+242: Eniac Ventures | venture_firm | 3
+243: Factorial | venture_firm | 3
+244: Firestreak Partners | venture_firm | 3
+245: Jordan Tigani | angel | 3
+246: Liquid 2 Ventures | venture_firm | 3
+247: Liu Jiang | angel | 3
+248: Lukas Biewald | angel | 3
+249: Mark Leslie | angel | 3
+250: Michael Grinich | angel | 3
+251: Microsoft | corporate_venture | 3
+252: MongoDB Ventures | corporate_venture | 3
+253: Outset Capital | venture_firm | 3
+254: Ram Shriram | angel | 3
+255: Robert Nishihara | angel | 3
+256: SOSV | accelerator | 3
+257: Sam Altman | angel | 3
+258: Soumith Chintala | angel | 3
+259: Steve Chen | angel | 3
+260: Tod Sacerdoti | angel | 3
+261: Tokyo Black | venture_firm | 3
+262: Transpose Platform | venture_firm | 3
+263: Uncork Capital | venture_firm | 3
+264: Visionaries Club | venture_firm | 3
+265: Wayfinder Ventures | venture_firm | 3
+266: Webb Investment Network | venture_firm | 3
+267: World Innovation Lab | venture_firm | 3
+268: Xavier Niel | angel | 3
+269: Zetta Venture Partners | venture_firm | 3
+270: Atomico | venture_firm | 2
+271: Blockchain Capital | crypto_fund_or_dao | 2
+272: Canaan Partners | venture_firm | 2
+273: CoinFund | crypto_fund_or_dao | 2
+274: Dorilton Ventures | venture_firm | 2
+275: Draper Fisher Jurvetson | venture_firm | 2
+276: Highland Capital Partners | venture_firm | 2
+277: Highland Europe | growth_pe_hedge | 2
+278: ISAI | venture_firm | 2
+279: Kindred Ventures | venture_firm | 2
+280: Nauta Capital | venture_firm | 2
+281: PayPal Ventures | corporate_venture | 2
+282: Target Global | venture_firm | 2
+283: Telstra Ventures | corporate_venture | 2
+284: Theory Ventures | venture_firm | 2
+285: Thoma Bravo | growth_pe_hedge | 2
+286: USIT | venture_firm | 2
+287: Zalando | corporate_venture | 2
+288: AVP | venture_firm | 2
+289: AlleyCorp | venture_firm | 2
+290: Anzu Partners | venture_firm | 2
+291: August Capital | venture_firm | 2
+292: Bain Capital Crypto | crypto_fund_or_dao | 2
+293: Blossom Capital | venture_firm | 2
+294: CDP Venture Capital | public_investor | 2
+295: CDTI Innvierte | public_investor | 2
+296: Cortical Ventures | venture_firm | 2
+297: Cota Capital | venture_firm | 2
+298: Definition Capital | venture_firm | 2
+299: Dimension Capital | venture_firm | 2
+300: Dragoneer | growth_pe_hedge | 2
+301: Eclipse Ventures | venture_firm | 2
+302: Engineering Capital | venture_firm | 2
+303: Fidelity | growth_pe_hedge | 2
+304: First Spark Ventures | venture_firm | 2
+305: Flybridge Capital Partners | venture_firm | 2
+306: General Atlantic | growth_pe_hedge | 2
+307: HPE (Hewlett Packard Pathfinder) | corporate_venture | 2
+308: HV Capital | venture_firm | 2
+309: Headline | venture_firm | 2
+310: Lead Edge Capital | growth_pe_hedge | 2
+311: Lytical Ventures | venture_firm | 2
+312: Meituan | corporate_venture | 2
+313: Moonfire | venture_firm | 2
+314: Morgan Stanley (Counterpoint Global) | growth_pe_hedge | 2
+315: New Wave | venture_firm | 2
+316: Partech | venture_firm | 2
+317: Patrick Collison | angel | 2
+318: Pebblebed | venture_firm | 2
+319: Qumra Capital | venture_firm | 2
+320: RRE Ventures | venture_firm | 2
+321: Race Capital | venture_firm | 2
+322: Real Ventures | venture_firm | 2
+323: Robot Ventures | crypto_fund_or_dao | 2
+324: SBI Group | venture_firm | 2
+325: SCB10X | corporate_venture | 2
+326: StepStone Group | growth_pe_hedge | 2
+327: Stripe | corporate_venture | 2
+328: Swift Ventures | venture_firm | 2
+329: Thomvest Ventures | venture_firm | 2
+330: Tobias Lutke | angel | 2
+331: Village Global | venture_firm | 2
+332: Western Digital Capital | venture_firm | 2
+333: 137 Ventures | venture_firm | 2
+334: 1789 Capital | venture_firm | 2
+335: 1984 Ventures | venture_firm | 2
+336: 42CAP | venture_firm | 2
+337: 500 Global | accelerator | 2
+338: AI Grant | accelerator | 2
+339: Abstraction Capital | venture_firm | 2
+340: Acequia Capital | venture_firm | 2
+341: Adage Capital Management | growth_pe_hedge | 2
+342: Alex Atallah | angel | 2
+343: Alexandr Wang | angel | 2
+344: Alfredo Andere | angel | 2
+345: Ali Rowghani | angel | 2
+346: Amino Collective | venture_firm | 2
+347: Amit Agarwal | angel | 2
+348: Amr Awadallah | angel | 2
+349: Andrew Miklas | angel | 2
+350: Andy Bechtolsheim | angel | 2
+351: Angel Invest | venture_firm | 2
+352: AngelList | other | 2
+353: Ant Group | corporate_venture | 2
+354: Anthos Capital | venture_firm | 2
+355: Antler | accelerator | 2
+356: Arash Ferdosi | angel | 2
+357: Arash Ferdowsi | angel | 2
+358: Arm | corporate_venture | 2
+359: Avalon Ventures | venture_firm | 2
+360: Avra Capital | venture_firm | 2
+361: Ben Hamner | angel | 2
+362: Bezos Expeditions | angel | 2
+363: Blast Club | venture_firm | 2
+364: Bold Capital Partners | venture_firm | 2
+365: Bow Capital | venture_firm | 2
+366: Brendan Foody | angel | 2
+367: Brian Balfour | angel | 2
+368: Brian Stevens | angel | 2
+369: Cadenza Ventures | venture_firm | 2
+370: Chad Hurley | angel | 2
+371: Chapter One | venture_firm | 2
+372: Charlie Cheever | angel | 2
+373: Charlie Marsh | angel | 2
+374: Christian Bach | angel | 2
+375: Christopher Golda | angel | 2
+376: Citi | corporate_venture | 2
+377: Compound | venture_firm | 2
+378: Counterpart Ventures | venture_firm | 2
+379: Cursor Capital | venture_firm | 2
+380: D1 Capital Partners | growth_pe_hedge | 2
+381: DFJ | venture_firm | 2
+382: Datadog Ventures | corporate_venture | 2
+383: Day One Ventures | venture_firm | 2
+384: Delphi Ventures | venture_firm | 2
+385: Eight Roads | venture_firm | 2
+386: Elaia | venture_firm | 2
+387: Elefund | venture_firm | 2
+388: Eminence Ventures | venture_firm | 2
+389: Epic Ventures | venture_firm | 2
+390: Eric Simons | angel | 2
+391: Eric Yuan | angel | 2
+392: European Commission | government_grant | 2
+393: European Investment Bank | public_investor | 2
+394: European Regional Development Fund | venture_firm | 2
+395: Exceptional Capital | venture_firm | 2
+396: Exor Ventures | corporate_venture | 2
+397: Expa | accelerator | 2
+398: Export Development Canada | public_investor | 2
+399: Factory | venture_firm | 2
+400: Fifty Years | venture_firm | 2
+401: Flex Capital | venture_firm | 2
+402: Floodgate | venture_firm | 2
+403: Florian Douetteau | angel | 2
+404: Fly Ventures | venture_firm | 2
+405: Fujitsu | corporate_venture | 2
+406: Future Capital | venture_firm | 2
+407: Garry Tan | angel | 2
+408: Global Brain | venture_firm | 2
+409: Glynn Capital | venture_firm | 2
+410: Gravity Fund | venture_firm | 2
+411: Greg Brockman | angel | 2
+412: Guy Podjarny | angel | 2
+413: Hack VC | crypto_fund_or_dao | 2
+414: Harpoon Ventures | venture_firm | 2
+415: Harry Cheung | angel | 2
+416: Healthcare of Ontario Pension Plan | growth_pe_hedge | 2
+417: Hitachi Ventures | corporate_venture | 2
+418: Hummer Winblad | venture_firm | 2
+419: Hustle Fund | venture_firm | 2
+420: IDTheory | venture_firm | 2
+421: Iconiq | growth_pe_hedge | 2
+422: Innovate UK | government_grant | 2
+423: Innovation Endeavors | venture_firm | 2
+424: Inovo | venture_firm | 2
+425: JAFCO | venture_firm | 2
+426: James Beshara | angel | 2
+427: James Hawkins | angel | 2
+428: James Hong | angel | 2
+429: January Capital | venture_firm | 2
+430: Jeff Hammerbacher | angel | 2
+431: Jeff Weiner | angel | 2
+432: Jeff Weinstein | angel | 2
+433: Jennifer Taylor | angel | 2
+434: Jessie Frazelle | angel | 2
+435: Jim Young | angel | 2
+436: Johannes Schickling | angel | 2
+437: KDDI | corporate_venture | 2
+438: Kevin Hartz | angel | 2
+439: Kevin Mahaffey | angel | 2
+440: Kevin Weil | angel | 2
+441: Koen Bok | angel | 2
+442: L1 Digital | crypto_fund_or_dao | 2
+443: LDV Partners | venture_firm | 2
+444: LDVP | venture_firm | 2
+445: LG Electronics | corporate_venture | 2
+446: La Famiglia | venture_firm | 2
+447: Lenny Rachitsky | angel | 2
+448: Lip-Bu Tan | angel | 2
+449: Long Journey Ventures | venture_firm | 2
+450: Matt Biilmann | angel | 2
+451: Matt Kraning | angel | 2
+452: Matt Mullenweg | angel | 2
+453: Maven 11 Capital | crypto_fund_or_dao | 2
+454: Michael Stoppelman | angel | 2
+455: Mirae Asset | growth_pe_hedge | 2
+456: Morgenthaler Ventures | venture_firm | 2
+457: Motier Ventures | venture_firm | 2
+458: Mubadala | public_investor | 2
+459: NIST | government_grant | 2
+460: NLnet Foundation | government_grant | 2
+461: National Science Foundation | government_grant | 2
+462: National Science Foundation (SBIR) | government_grant | 2
+463: Next47 | corporate_venture | 2
+464: Nick Schrock | angel | 2
+465: North Bridge Venture Partners | venture_firm | 2
+466: North Island Ventures | crypto_fund_or_dao | 2
+467: Novell | corporate_venture | 2
+468: Okta Ventures | corporate_venture | 2
+469: Ontario Teachers' Pension Plan | public_investor | 2
+470: Ott Kaukver | angel | 2
+471: Paige Bailey | angel | 2
+472: Pantera Capital | crypto_fund_or_dao | 2
+473: Pear VC | venture_firm | 2
+474: Philip Rathle | angel | 2
+475: Picus Capital | venture_firm | 2
+476: Plug and Play | accelerator | 2
+477: Preston-Werner Ventures | venture_firm | 2
+478: QIA | public_investor | 2
+479: Qasar Younis | angel | 2
+480: Radar Partners | venture_firm | 2
+481: Rain Capital | venture_firm | 2
+482: Ratio Ventures | venture_firm | 2
+483: Reid Hoffman | angel | 2
+484: Road Capital | venture_firm | 2
+485: Robin Vasan | angel | 2
+486: Rod Johnson | angel | 2
+487: Rogue Capital | venture_firm | 2
+488: Ron Conway | angel | 2
+489: S Ventures | venture_firm | 2
+490: Sahil Lavingia | angel | 2
+491: ScaleX Ventures | venture_firm | 2
+492: Scott Chacon | angel | 2
+493: Seed Club Ventures | crypto_fund_or_dao | 2
+494: ServiceNow | corporate_venture | 2
+495: Shay Banon | angel | 2
+496: Shine Capital | venture_firm | 2
+497: Shunwei Capital | venture_firm | 2
+498: Sierra Ventures | venture_firm | 2
+499: Singtel Innov8 | corporate_venture | 2
+500: Sinovation Ventures | venture_firm | 2
+501: Slow Ventures | venture_firm | 2
+502: Snowflake Ventures | corporate_venture | 2
+503: Soma Capital | venture_firm | 2
+504: Sound Ventures | venture_firm | 2
+505: South Park Commons | accelerator | 2
+506: Spencer Kimball | angel | 2
+507: Stony Creek Capital | venture_firm | 2
+508: System.One | venture_firm | 2
+509: Tekedia Capital | venture_firm | 2
+510: Temasek | public_investor | 2
+511: Theo Browne | angel | 2
+512: Tobi Lutke | angel | 2
+513: Tobi Lütke | angel | 2
+514: Tobias Lütke | angel | 2
+515: Tom McInerney | angel | 2
+516: Toyota Ventures | corporate_venture | 2
+517: Translink Capital | venture_firm | 2
+518: Triangle Peak Partners | venture_firm | 2
+519: Trustbridge Partners | venture_firm | 2
+520: Vercel | corporate_venture | 2
+521: Wells Fargo | unclassified | 2
+522: Wes McKinney | angel | 2
+523: Wing Venture Capital | venture_firm | 2
+524: Yuri Milner | angel | 2
+525: ZhenFund | venture_firm | 2
+526: e.ventures | venture_firm | 2
+527: 83 North | venture_firm | 1
+528: AB Private Credit Investors | bank_or_debt | 1
+529: AE Industrial Partners HorizonX | venture_firm | 1
+530: AFW Partners | venture_firm | 1
+531: AMP (Anjney Midha) | venture_firm | 1
+532: ASML | corporate_venture | 1
+533: Accel-KKR | growth_pe_hedge | 1
+534: Access Technology Ventures | venture_firm | 1
+535: Acrew Capital | venture_firm | 1
+536: Ahren Innovation Capital | venture_firm | 1
+537: AlbionVC | venture_firm | 1
+538: Alven | venture_firm | 1
+539: Alven Capital | venture_firm | 1
+540: Amnon Shashua | angel | 1
+541: Anatole Investment | venture_firm | 1
+542: Avego | venture_firm | 1
+543: Axeleo Capital | venture_firm | 1
+544: Blackbird Ventures | venture_firm | 1
+545: Borderless Capital | venture_firm | 1
+546: Breega | venture_firm | 1
+547: Bright Pixel | venture_firm | 1
+548: Browder Capital | venture_firm | 1
+549: CDTI | government_grant | 1
+550: CM Ventures | venture_firm | 1
+551: Cambium Capital | venture_firm | 1
+552: Cambridge Innovation Capital | venture_firm | 1
+553: Camford Capital | venture_firm | 1
+554: Capital Fund Management | venture_firm | 1
+555: Capital Today | venture_firm | 1
+556: Cathay Capital | venture_firm | 1
+557: Cathay Innovation | venture_firm | 1
+558: Centerview Capital | venture_firm | 1
+559: Centralway | venture_firm | 1
+560: Chengwei Capital | venture_firm | 1
+561: China Telecom | corporate_venture | 1
+562: Clayton, Dubilier & Rice | growth_pe_hedge | 1
+563: Coreline Ventures | venture_firm | 1
+564: Cowboy Ventures | venture_firm | 1
+565: Cue Ball | venture_firm | 1
+566: Cypress Growth Capital | bank_or_debt | 1
+567: DCM Ventures | venture_firm | 1
+568: Denali Growth Partners | growth_pe_hedge | 1
+569: Dinghui Baifu | venture_firm | 1
+570: Distributed Global | crypto_fund_or_dao | 1
+571: Dragonfly Capital | crypto_fund_or_dao | 1
+572: Drive Capital | venture_firm | 1
+573: EQT | growth_pe_hedge | 1
+574: Earlybird | venture_firm | 1
+575: Eight Roads Ventures | venture_firm | 1
+576: Elephant VC | venture_firm | 1
+577: Energy Impact Partners | venture_firm | 1
+578: Episode 1 | venture_firm | 1
+579: Episode1 Ventures | venture_firm | 1
+580: FCVC | venture_firm | 1
+581: Fidelity Growth Partners Europe | growth_pe_hedge | 1
+582: Ford Motor Company | corporate_venture | 1
+583: Foresight Williams Technology EIS Fund | venture_firm | 1
+584: Forgepoint Capital | venture_firm | 1
+585: Fortera Capital | venture_firm | 1
+586: Fosun | corporate_venture | 1
+587: Francisco Partners | growth_pe_hedge | 1
+588: Fusion Fund | venture_firm | 1
+589: GPI Capital | venture_firm | 1
+590: GRC SinoGreen | venture_firm | 1
+591: Gemini Israel Ventures | venture_firm | 1
+592: Georgetown Partners | venture_firm | 1
+593: Glilot Capital | venture_firm | 1
+594: Golden Ventures | venture_firm | 1
+595: Great Hill Partners | growth_pe_hedge | 1
+596: Greenbridge Partners | venture_firm | 1
+597: Haystack VC | venture_firm | 1
+598: Huami | corporate_venture | 1
+599: Huawei Hubble | corporate_venture | 1
+600: Hyundai Motor Group | corporate_venture | 1
+601: IA Ventures | venture_firm | 1
+602: ICONIQ Capital | growth_pe_hedge | 1
+603: IDC Frontier | corporate_venture | 1
+604: Icon Ventures | venture_firm | 1
+605: InReach Ventures | venture_firm | 1
+606: Industrifonden | public_investor | 1
+607: Inflection.xyz | venture_firm | 1
+608: Innovation X | venture_firm | 1
+609: Inovance Industrial Investment | venture_firm | 1
+610: Inovia Capital | venture_firm | 1
+611: Inventure | venture_firm | 1
+612: Investor Growth Capital | venture_firm | 1
+613: Jack Dorsey | angel | 1
+614: Jeneration Capital | venture_firm | 1
+615: Ji'an Investment | venture_firm | 1
+616: Jinhuifeng | venture_firm | 1
+617: Kaya VC | venture_firm | 1
+618: Keen Venture Partners | venture_firm | 1
+619: Koch Disruptive Technologies | corporate_venture | 1
+620: Las Olas Venture Capital | venture_firm | 1
+621: Long-Z Investments | venture_firm | 1
+622: Loongson Capital | venture_firm | 1
+623: MHS Capital | venture_firm | 1
+624: Magma Venture Partners | venture_firm | 1
+625: Marathon | venture_firm | 1
+626: Marathon Venture Capital | venture_firm | 1
+627: Matthew Szulik | angel | 1
+628: Meta | corporate_venture | 1
+629: MiraclePlus | accelerator | 1
+630: MizMaa Ventures | venture_firm | 1
+631: Mondragon Group | corporate_venture | 1
+632: Mondragon Ventures | venture_firm | 1
+633: Morgan Stanley Expansion Capital | growth_pe_hedge | 1
+634: Morningside Venture Capital | venture_firm | 1
+635: Movac | venture_firm | 1
+636: Movens VC | venture_firm | 1
+637: Multicoin Capital | crypto_fund_or_dao | 1
+638: NFX | venture_firm | 1
+639: NPM Capital | venture_firm | 1
+640: National Social Security Fund Zhongguancun Fund (Legend Capital) | government_grant | 1
+641: New North Ventures | venture_firm | 1
+642: New York Angels | angel | 1
+643: Newlands VC | venture_firm | 1
+644: Northpond Ventures | venture_firm | 1
+645: O'Reilly AlphaTech Ventures | venture_firm | 1
+646: Oak HC/FT | venture_firm | 1
+647: One Peak Partners | venture_firm | 1
+648: OpenAI | corporate_venture | 1
+649: Osage University Partners | venture_firm | 1
+650: PSG | growth_pe_hedge | 1
+651: PSG Equity | growth_pe_hedge | 1
+652: PSP Investments | venture_firm | 1
+653: Permira | growth_pe_hedge | 1
+654: Peter Rive | angel | 1
+655: Pitango | venture_firm | 1
+656: Planven | venture_firm | 1
+657: Plural | venture_firm | 1
+658: Point Nine | venture_firm | 1
+659: Polychain Capital | crypto_fund_or_dao | 1
+660: Portage | venture_firm | 1
+661: Portland Seed Fund | venture_firm | 1
+662: Premji Invest | growth_pe_hedge | 1
+663: Princeville Capital | venture_firm | 1
+664: Pruven Capital | venture_firm | 1
+665: RTP Global | venture_firm | 1
+666: RTX Ventures | corporate_venture | 1
+667: Rho Ventures | venture_firm | 1
+668: Riverwood Capital | venture_firm | 1
+669: Roo Capital | venture_firm | 1
+670: SAIF Partners | venture_firm | 1
+671: SF1.vc | venture_firm | 1
+672: SK hynix | corporate_venture | 1
+673: SMOK Ventures | venture_firm | 1
+674: Sageview Capital | venture_firm | 1
+675: Samsung Securities | corporate_venture | 1
+676: SaxeCap | venture_firm | 1
+677: Scaleup Europe Fund | venture_firm | 1
+678: Schwarz Group | corporate_venture | 1
+679: Serena | venture_firm | 1
+680: Shanghai International Group asset management funds (Guohe Investment, Guofang Innovation, Jinpu Investment) | government_grant | 1
+681: Siemens Venture Capital | corporate_venture | 1
+682: Silver Lake Sumeru | growth_pe_hedge | 1
+683: SineWave Ventures | venture_firm | 1
+684: Sky9 Capital | venture_firm | 1
+685: SmartFin Capital | venture_firm | 1
+686: Smash Capital | venture_firm | 1
+687: Sofinnova Partners | venture_firm | 1
+688: Sompo Japan Nipponkoa Insurance | corporate_venture | 1
+689: Springhill Capital | venture_firm | 1
+690: Square Peg | venture_firm | 1
+691: Sriram Krishnan | angel | 1
+692: Stellar Ventures | venture_firm | 1
+693: Storm Ventures | venture_firm | 1
+694: Stratos Technologies | corporate_venture | 1
+695: Streamlined Ventures | venture_firm | 1
+696: Stride.VC | venture_firm | 1
+697: Sumeru Equity Partners | venture_firm | 1
+698: Summit Partners | growth_pe_hedge | 1
+699: Sunstone Capital | venture_firm | 1
+700: TCV | growth_pe_hedge | 1
+701: TIE Angels Group Seattle | venture_firm | 1
+702: TPG | growth_pe_hedge | 1
+703: Talis Capital | venture_firm | 1
+704: Third Point | growth_pe_hedge | 1
+705: Third Point Ventures | venture_firm | 1
+706: Thomas H. Lee Partners | venture_firm | 1
+707: Trace Capital | venture_firm | 1
+708: Trilogy Equity Partners | venture_firm | 1
+709: Twin Path Ventures | venture_firm | 1
+710: Two Bear Capital | venture_firm | 1
+711: Two Small Fish Ventures | venture_firm | 1
+712: Valley Capital Partners | venture_firm | 1
+713: Valor Capital Group | growth_pe_hedge | 1
+714: Vector Capital | venture_firm | 1
+715: Venture Guides | venture_firm | 1
+716: Wipro Ventures | venture_firm | 1
+717: Wuyuan Capital | venture_firm | 1
+718: Zhihu | corporate_venture | 1
+719: Zhongguancun Science City Fund | venture_firm | 1
+720: b2venture | venture_firm | 1
+721: eLab Ventures | venture_firm | 1
+722: ff Venture Capital | venture_firm | 1
+723: #Angels | venture_firm | 1
+724: 10x Founders | venture_firm | 1
+725: 11.2 Capital | venture_firm | 1
+726: 1517 Fund | venture_firm | 1
+727: 1Up Ventures | venture_firm | 1
+728: 1kx | crypto_fund_or_dao | 1
+729: 22 Ventures | venture_firm | 1
+730: 359 Capital | venture_firm | 1
+731: 360 Capital Partners | venture_firm | 1
+732: 49 Palms | venture_firm | 1
+733: 5G Open Innovation Lab | accelerator | 1
+734: 7RIDGE | growth_pe_hedge | 1
+735: 7percent Ventures | venture_firm | 1
+736: 850 Management | growth_pe_hedge | 1
+737: 8vdx | venture_firm | 1
+738: 97212 Ventures | venture_firm | 1
+739: A&E Investment | venture_firm | 1
+740: ACOF | growth_pe_hedge | 1
+741: AE Ventures | venture_firm | 1
+742: AGF Private Equity | growth_pe_hedge | 1
+743: AI Futures Fund | venture_firm | 1
+744: AI Seed | venture_firm | 1
+745: AI10 Ventures | venture_firm | 1
+746: ANA Holdings | venture_firm | 1
+747: ARK Invest | growth_pe_hedge | 1
+748: ARTIS | venture_firm | 1
+749: Aaron Levie | angel | 1
+750: Aber Whitcomb | angel | 1
+751: Abhi Aiyer | angel | 1
+752: Abhinav Asthana | angel | 1
+753: Abraham Fund | venture_firm | 1
+754: Abu Dhabi Investment Authority | public_investor | 1
+755: Accel Growth Fund | venture_firm | 1
+756: Accenture | corporate_venture | 1
+757: Accenture Ventures | venture_firm | 1
+758: Accolade Partners | venture_firm | 1
+759: Accurafy4 | venture_firm | 1
+760: Ace & Company | venture_firm | 1
+761: Active Capital | venture_firm | 1
+762: Adam D'Angelo | angel | 1
+763: Adam Ely | angel | 1
+764: Adam Gross | angel | 1
+765: Adam Wiggins | angel | 1
+766: Addition Ventures | venture_firm | 1
+767: Addy Osmani | angel | 1
+768: Adrian Bowyer | angel | 1
+769: Advent | growth_pe_hedge | 1
+770: Afore Capital | venture_firm | 1
+771: Aghi Marietti | angel | 1
+772: Aglaé Ventures | venture_firm | 1
+773: Agostinelli Group | angel | 1
+774: Aidan Gomez | angel | 1
+775: Air Street Capital | venture_firm | 1
+776: Airbus | corporate_venture | 1
+777: Aisan Technology | corporate_venture | 1
+778: Akshay Kothari | angel | 1
+779: Alain Rossmann | angel | 1
+780: Alameda Research | crypto_fund_or_dao | 1
+781: Alan Rutledge | angel | 1
+782: Alana Renda | angel | 1
+783: Albert Sebag | angel | 1
+784: Albert Wenger | angel | 1
+785: Alchemist Accelerator | accelerator | 1
+786: Aleph | venture_firm | 1
+787: Alex Bouaziz | angel | 1
+788: Alex Graveley | angel | 1
+789: Alex Pall | angel | 1
+790: Alex Wang | angel | 1
+791: Alexander Dean | angel | 1
+792: Alexia Ventures | venture_firm | 1
+793: Alexis Le-Quoc | angel | 1
+794: Alexis Ohanian | angel | 1
+795: Alfred P. Sloan Foundation | philanthropy | 1
+796: AllianceBernstein | growth_pe_hedge | 1
+797: Allison Duettman | angel | 1
+798: Alpen VC | venture_firm | 1
+799: Alphalist Partners | venture_firm | 1
+800: Alsop Louie Partners | venture_firm | 1
+801: Alt-Alpha Capital | venture_firm | 1
+802: AltVentures | venture_firm | 1
+803: Alta Park Capital | venture_firm | 1
+804: Altos Ventures | venture_firm | 1
+805: Amadeus Capital Partners | venture_firm | 1
+806: Amber Atherton | angel | 1
+807: Ambrum Capital | venture_firm | 1
+808: Amdocs | corporate_venture | 1
+809: Ameet Patel | angel | 1
+810: American Express | unclassified | 1
+811: Amgen | corporate_venture | 1
+812: Amgen Ventures | venture_firm | 1
+813: Amino Capital | venture_firm | 1
+814: Amod Malviya | angel | 1
+815: AmpliPHI Ventures | venture_firm | 1
+816: Ananda Impact Ventures | venture_firm | 1
+817: Andrej Karpathy | angel | 1
+818: Andrew Feldman | angel | 1
+819: Andrew Kelley | angel | 1
+820: Andrew Keys | angel | 1
+821: Andrew Ng | angel | 1
+822: Andy Fitzsimon | angel | 1
+823: Andy Rachleff | angel | 1
+824: Anexia | unclassified | 1
+825: Angel Squad | angel | 1
+826: AngelInvest Ventures | venture_firm | 1
+827: Angular Ventures | venture_firm | 1
+828: Ankit Sobti | angel | 1
+829: Anorak Ventures | venture_firm | 1
+830: Ant Wilson | angel | 1
+831: Antigravity | venture_firm | 1
+832: Apollo Global Management | growth_pe_hedge | 1
+833: Apple Capital | venture_firm | 1
+834: Applied Ventures | venture_firm | 1
+835: Argon Ventures | venture_firm | 1
+836: Ariel Maislos | angel | 1
+837: Arjun Sethi | angel | 1
+838: ArkStream | venture_firm | 1
+839: Armin Ronacher | angel | 1
+840: Army Research Lab | government_grant | 1
+841: Array Ventures | venture_firm | 1
+842: Arthur Ventures | venture_firm | 1
+843: Ascend Venture Capital | venture_firm | 1
+844: Ashley Kramer | angel | 1
+845: Ashley Smith | angel | 1
+846: Ashwin Navin | angel | 1
+847: Aspex | growth_pe_hedge | 1
+848: Astella | venture_firm | 1
+849: Aston Motes | angel | 1
+850: Asymmetric Capital Partners | venture_firm | 1
+851: Asynch Media | unclassified | 1
+852: Athos | venture_firm | 1
+853: Atika Capital | venture_firm | 1
+854: Atlantic Bridge | venture_firm | 1
+855: Atlas Venture | venture_firm | 1
+856: Atypical Ventures | venture_firm | 1
+857: Aurelien Georget | angel | 1
+858: Auren Hoffman | angel | 1
+859: Austen Allred | angel | 1
+860: Authentic Ventures | venture_firm | 1
+861: Avenir | growth_pe_hedge | 1
+862: Avichal Garg | angel | 1
+863: Axeleo | venture_firm | 1
+864: Azure Capital Partners | venture_firm | 1
+865: B Capital | venture_firm | 1
+866: BAB - Die Foerderbank fuer Bremen und Bremerhaven | public_investor | 1
+867: BAT token buyers | crypto_fund_or_dao | 1
+868: BDT & MSD | growth_pe_hedge | 1
+869: BGV | venture_firm | 1
+870: BGZ | unclassified | 1
+871: BNP Paribas | growth_pe_hedge | 1
+872: BNY Mellon | growth_pe_hedge | 1
+873: BV Capital | venture_firm | 1
+874: Backed VC | venture_firm | 1
+875: Badrul Farooqi | angel | 1
+876: Bain Capital Partners | growth_pe_hedge | 1
+877: Balaji S. Srinivasan | angel | 1
+878: Banana Capital | venture_firm | 1
+879: Bankless Ventures | bank_or_debt | 1
+880: Barry McCardel | angel | 1
+881: Basecase Capital | venture_firm | 1
+882: Bay Partners | venture_firm | 1
+883: Bayhouse Ventures | venture_firm | 1
+884: BeakerDAO | crypto_fund_or_dao | 1
+885: Bedrock Capital | venture_firm | 1
+886: Begin Capital | venture_firm | 1
+887: Belfius | growth_pe_hedge | 1
+888: Bell Ventures | venture_firm | 1
+889: Ben Golub | angel | 1
+890: Ben Lang | angel | 1
+891: Ben Rosen | angel | 1
+892: Ben Sigelman | angel | 1
+893: Ben Vinegar | angel | 1
+894: Benchling | corporate_venture | 1
+895: Benjamin De Cock | angel | 1
+896: Berkeley Frontier Fund | venture_firm | 1
+897: Berkeley SkyDeck Fund | venture_firm | 1
+898: Bertelsmann Asia Investment Fund | venture_firm | 1
+899: Bertelsmann Investment | venture_firm | 1
+900: Bertrand Diard | angel | 1
+901: Betaworks Ventures | venture_firm | 1
+902: Bethnal Green Ventures | accelerator | 1
+903: Big Brain Holdings | venture_firm | 1
+904: Big Pi Ventures | venture_firm | 1
+905: Bill Joy | angel | 1
+906: Binance Labs | crypto_fund_or_dao | 1
+907: Birk Jernstrom | angel | 1
+908: Bison Ventures | venture_firm | 1
+909: Black Nova Group | venture_firm | 1
+910: Blackstone | growth_pe_hedge | 1
+911: Blitzscaling Ventures | venture_firm | 1
+912: Block1 | crypto_fund_or_dao | 1
+913: BlockChange VC | venture_firm | 1
+914: Blockwall | crypto_fund_or_dao | 1
+915: Blue Cloud Ventures | venture_firm | 1
+916: BlueFocus | corporate_venture | 1
+917: BlueYard Capital | venture_firm | 1
+918: Bob Muglia | angel | 1
+919: Bob van Luijt | angel | 1
+920: Bonfire Ventures | venture_firm | 1
+921: Bool Capital | venture_firm | 1
+922: Boom Capital | venture_firm | 1
+923: Boost VC | venture_firm | 1
+924: Boss Zhipin | corporate_venture | 1
+925: BoxOne Ventures | venture_firm | 1
+926: Brandon Leonardo | angel | 1
+927: Brave Capital | venture_firm | 1
+928: Breakers | unclassified | 1
+929: Breakout Labs | philanthropy | 1
+930: Brendan Eich | angel | 1
+931: Brendan Iribe | angel | 1
+932: Brett Barna | angel | 1
+933: Breyer Capital | venture_firm | 1
+934: Brian Acton | angel | 1
+935: Brian Fabian Crain | angel | 1
+936: Brian Lovin | angel | 1
+937: Brian Pokorny | angel | 1
+938: Brian Shultz | angel | 1
+939: BroadLight Capital | venture_firm | 1
+940: BroadOak Capital Partners | venture_firm | 1
+941: Brookside Capital | venture_firm | 1
+942: Broom Ventures | venture_firm | 1
+943: Bryan Helmig | angel | 1
+944: Buckley Ventures | venture_firm | 1
+945: BuildGroup | venture_firm | 1
+946: Buildspace | unclassified | 1
+947: Bullhound Capital | venture_firm | 1
+948: Business Development Bank of Canada | bank_or_debt | 1
+949: ByteTrade Lab | corporate_venture | 1
+950: CATL | corporate_venture | 1
+951: CCI Group | unclassified | 1
+952: CM-CIC Capital Privé | venture_firm | 1
+953: CPE Asset Management | growth_pe_hedge | 1
+954: CPE Yuanfeng | growth_pe_hedge | 1
+955: CPP Investments | public_investor | 1
+956: CTO Fund | venture_firm | 1
+957: Cadence Ventures | venture_firm | 1
+958: Cal Henderson | angel | 1
+959: CalFund | venture_firm | 1
+960: Caleb Sima | angel | 1
+961: California Technology Ventures | venture_firm | 1
+962: Canva | corporate_venture | 1
+963: Capital Group | growth_pe_hedge | 1
+964: Capital One Ventures | corporate_venture | 1
+965: Capital Research Group | venture_firm | 1
+966: Capstone Capital | venture_firm | 1
+967: Carol Willing | angel | 1
+968: Carya Venture Partners | venture_firm | 1
+969: Cassidy Williams | angel | 1
+970: Caterina Fake | angel | 1
+971: Cavalry Ventures | venture_firm | 1
+972: Chalfen Ventures | venture_firm | 1
+973: Chan Zuckerberg Initiative | philanthropy | 1
+974: Character VC | venture_firm | 1
+975: Charge Ventures | venture_firm | 1
+976: Charles Beeler | angel | 1
+977: Charles Zedlewski | angel | 1
+978: Chase Davis | angel | 1
+979: Chemistry Ventures | venture_firm | 1
+980: China Fortune-Tech Capital | venture_firm | 1
+981: China Growth Capital | venture_firm | 1
+982: China Life Private Equity Investment | growth_pe_hedge | 1
+983: China Mobile | corporate_venture | 1
+984: Chorus One | crypto_fund_or_dao | 1
+985: Chris Dixon | angel | 1
+986: Chris Hutchins | angel | 1
+987: Chris Riccomini | angel | 1
+988: Chris Schagen | angel | 1
+989: Christine Yen | angel | 1
+990: Christopher Chedeau | angel | 1
+991: Cintrifuse Capital | venture_firm | 1
+992: Citibank | bank_or_debt | 1
+993: Clara Shih | angel | 1
+994: Clave Capital | venture_firm | 1
+995: ClearBridge Investments | venture_firm | 1
+996: Clint Smith | angel | 1
+997: Cogitent Ventures | venture_firm | 1
+998: Coil | corporate_venture | 1
+999: CoinList participants | crypto_fund_or_dao | 1
+1000: Collab+Currency | crypto_fund_or_dao | 1
+1001: Columbus Nova Technology Partners | venture_firm | 1
+1002: Combination VC | venture_firm | 1
+1003: Comerica Bank | bank_or_debt | 1
+1004: Common Metal | venture_firm | 1
+1005: Community investors | crowdfunding | 1
+1006: Compaq | corporate_venture | 1
+1007: Compound VC | venture_firm | 1
+1008: Conor Venture Partners | venture_firm | 1
+1009: Contrary Capital | venture_firm | 1
+1010: Cooler Master | corporate_venture | 1
+1011: Core Capital Partners | venture_firm | 1
+1012: Corner Capital | venture_firm | 1
+1013: Cox Exponential | corporate_venture | 1
+1014: Creator Fund | venture_firm | 1
+1015: Creator Ventures | venture_firm | 1
+1016: Crew Capital | venture_firm | 1
+1017: Cristobal Valenzuela | angel | 1
+1018: Cristóbal Valenzuela | angel | 1
+1019: Cross Creek Capital | venture_firm | 1
+1020: Crosslink Capital | venture_firm | 1
+1021: Crowdcube backers | crowdfunding | 1
+1022: CrunchFund | venture_firm | 1
+1023: Crunchfund | venture_firm | 1
+1024: Cursor | corporate_venture | 1
+1025: Curve Labs | crypto_fund_or_dao | 1
+1026: Cyan Banister | angel | 1
+1027: Cybersecurity and Infrastructure Security Agency | government_grant | 1
+1028: Cygni Capital | venture_firm | 1
+1029: DAG Ventures | venture_firm | 1
+1030: DAMAC Capital | venture_firm | 1
+1031: DARPA | government_grant | 1
+1032: DBL Partners | venture_firm | 1
+1033: DCBuilder | unclassified | 1
+1034: DCM | venture_firm | 1
+1035: DFG | unclassified | 1
+1036: DGF | unclassified | 1
+1037: DIG Ventures | venture_firm | 1
+1038: DNX Ventures | venture_firm | 1
+1039: DTCP Growth | growth_pe_hedge | 1
+1040: DVC | venture_firm | 1
+1041: Dafeng Guo | angel | 1
+1042: Dai-ichi Life Insurance | growth_pe_hedge | 1
+1043: Dan Bragiel | angel | 1
+1044: Dan Pinto | angel | 1
+1045: Daniel Dines | angel | 1
+1046: Daniel Liem | angel | 1
+1047: Daniel Lopez | angel | 1
+1048: Danny Sheridan | angel | 1
+1049: Danobatgroup | corporate_venture | 1
+1050: Daohe Long-term Investment | venture_firm | 1
+1051: Data Tech Fund | venture_firm | 1
+1052: Databento | unclassified | 1
+1053: Datadog | corporate_venture | 1
+1054: Dave Crossland | angel | 1
+1055: Dave Pell | angel | 1
+1056: Dave Winer | angel | 1
+1057: David Baszucki | angel | 1
+1058: David Cheriton | angel | 1
+1059: David Fowler | angel | 1
+1060: David Helgason | angel | 1
+1061: David Khourshid | angel | 1
+1062: David Salib | angel | 1
+1063: Dawn Song | angel | 1
+1064: Decacorn Capital | venture_firm | 1
+1065: Deep Acre | venture_firm | 1
+1066: Deep Fork Capital | venture_firm | 1
+1067: Deepti Srivastava | angel | 1
+1068: Dell Ventures | venture_firm | 1
+1069: Demi Guo | angel | 1
+1070: Democracy Fund | venture_firm | 1
+1071: Derayah Financial | growth_pe_hedge | 1
+1072: Derek Collison | angel | 1
+1073: Desigan Chinniah | angel | 1
+1074: Designer Fund | venture_firm | 1
+1075: Dev Ittycheria | angel | 1
+1076: Deviation Capital | venture_firm | 1
+1077: Devolutions | corporate_venture | 1
+1078: Dialectic | crypto_fund_or_dao | 1
+1079: Diana Hu | angel | 1
+1080: Dig Ventures | venture_firm | 1
+1081: Digital Currency Group | crypto_fund_or_dao | 1
+1082: Digitalis Ventures | venture_firm | 1
+1083: Dilip Khandelwal | angel | 1
+1084: Discovery Capital | venture_firm | 1
+1085: Discovery Ventures | venture_firm | 1
+1086: Disney Accelerator | accelerator | 1
+1087: Dispersion Capital | venture_firm | 1
+1088: Disruptive | venture_firm | 1
+1089: Disruptive Technology Advisers | venture_firm | 1
+1090: DoCoMo Capital | venture_firm | 1
+1091: Docker | corporate_venture | 1
+1092: Dominic Monn | angel | 1
+1093: Dominik Tornow | angel | 1
+1094: Doug Merritt | angel | 1
+1095: Downing Ventures | venture_firm | 1
+1096: Draper Associates | venture_firm | 1
+1097: Draper VC | venture_firm | 1
+1098: DreamHost | corporate_venture | 1
+1099: Duff, Ackerman & Goodrich | growth_pe_hedge | 1
+1100: Duke Capital Partners | venture_firm | 1
+1101: Duke University | other | 1
+1102: Dylan Patel | angel | 1
+1103: Dynamic Capital | venture_firm | 1
+1104: Dynamic Fund | venture_firm | 1
+1105: Dynamic Loop Capital | venture_firm | 1
+1106: E Fund Management | venture_firm | 1
+1107: EBSCO | corporate_venture | 1
+1108: EDB Investments | venture_firm | 1
+1109: EDBI | public_investor | 1
+1110: EMC | corporate_venture | 1
+1111: ESOP | unclassified | 1
+1112: EVM Capital | venture_firm | 1
+1113: Earl Grey Capital | venture_firm | 1
+1114: Earlybird VC | venture_firm | 1
+1115: Eastspring | growth_pe_hedge | 1
+1116: Ed Fries | angel | 1
+1117: Edrizio De La Cruz | angel | 1
+1118: Eduardo Ronzano | angel | 1
+1119: Electric Capital | crypto_fund_or_dao | 1
+1120: Electronic Arts | corporate_venture | 1
+1121: Eli Brown | angel | 1
+1122: Eli Collins | angel | 1
+1123: Eliot Horowitz | angel | 1
+1124: Ellen Pao | angel | 1
+1125: Emad Mostaque | angel | 1
+1126: Endurance | unclassified | 1
+1127: Eni | corporate_venture | 1
+1128: Entrepreneurs Roundtable Accelerator | accelerator | 1
+1129: Entrée Capital | venture_firm | 1
+1130: Epiq Capital | venture_firm | 1
+1131: Eric Muntz | angel | 1
+1132: Eric Wittman | angel | 1
+1133: Eric Zelikman | angel | 1
+1134: Erica Brescia | angel | 1
+1135: Ericsson | corporate_venture | 1
+1136: Ericsson Ventures | corporate_venture | 1
+1137: Erik Bernhardsson | angel | 1
+1138: Erik Voorhees | angel | 1
+1139: Essence Venture Capital | venture_firm | 1
+1140: Eterna Capital | venture_firm | 1
+1141: European Investment Fund | venture_firm | 1
+1142: European Space Agency | government_grant | 1
+1143: European Union | government_grant | 1
+1144: European Union NextGenerationEU | government_grant | 1
+1145: Evan You | angel | 1
+1146: Evantic | venture_firm | 1
+1147: Exnetwork Capital | venture_firm | 1
+1148: F&G Ventures | venture_firm | 1
+1149: F-Prime | venture_firm | 1
+1150: F-Prime Capital | venture_firm | 1
+1151: FONGIT | unclassified | 1
+1152: FUTO | corporate_venture | 1
+1153: Fastweb+Vodafone | corporate_venture | 1
+1154: Federal Ministry for Economic Affairs and Energy (ZIM) | government_grant | 1
+1155: Fenghou Capital | venture_firm | 1
+1156: Fidelity Ventures | growth_pe_hedge | 1
+1157: Fiedler Capital | venture_firm | 1
+1158: Figma | corporate_venture | 1
+1159: Figma Ventures | venture_firm | 1
+1160: Finality Capital | venture_firm | 1
+1161: Finnish Industry Investment | venture_firm | 1
+1162: Fire Star Ventures | venture_firm | 1
+1163: Firestreak | venture_firm | 1
+1164: First Principles VC | venture_firm | 1
+1165: First Star Ventures | venture_firm | 1
+1166: Floris van Lint | angel | 1
+1167: Flow Traders | growth_pe_hedge | 1
+1168: Flucas Ventures | venture_firm | 1
+1169: For One Red Design Studio | corporate_venture | 1
+1170: Formic Ventures | venture_firm | 1
+1171: Formus Capital | venture_firm | 1
+1172: Founder Collective | venture_firm | 1
+1173: Founder's Co-op | venture_firm | 1
+1174: Four Rivers | venture_firm | 1
+1175: Four Rivers Ventures | venture_firm | 1
+1176: Foxconn | corporate_venture | 1
+1177: Framer | corporate_venture | 1
+1178: Francois Stieger | angel | 1
+1179: Frank Batten Jr. | angel | 1
+1180: François-Charles Debeunne | angel | 1
+1181: Frederic Kerrest | angel | 1
+1182: Freestyle | venture_firm | 1
+1183: Freestyle Capital | venture_firm | 1
+1184: French Tech Souveraineté | public_investor | 1
+1185: Fresh Fund | venture_firm | 1
+1186: Frédéric Plais | angel | 1
+1187: Fujitsu Ventures | venture_firm | 1
+1188: Functional Capital | venture_firm | 1
+1189: Fundomo | venture_firm | 1
+1190: Future Fund | venture_firm | 1
+1191: Future Fund (Australia) | venture_firm | 1
+1192: Future Labs Capital | venture_firm | 1
+1193: Future Ventures | venture_firm | 1
+1194: FutureX Capital | venture_firm | 1
+1195: GP Bullhound | venture_firm | 1
+1196: GREE Ventures | venture_firm | 1
+1197: GSR Markets | crypto_fund_or_dao | 1
+1198: GTMFund | venture_firm | 1
+1199: GTMfund | venture_firm | 1
+1200: Gaia Ventures | venture_firm | 1
+1201: Gal Kleinman | angel | 1
+1202: Galileo Partners | venture_firm | 1
+1203: Gallery Ventures | venture_firm | 1
+1204: Gandyr Group | unclassified | 1
+1205: Gaojie Capital | venture_firm | 1
+1206: Gaorong Capital | venture_firm | 1
+1207: Gates Foundation | philanthropy | 1
+1208: Gavin Uhma | angel | 1
+1209: Geely | corporate_venture | 1
+1210: General Electric | corporate_venture | 1
+1211: Generative Ventures | venture_firm | 1
+1212: Genesis crowdfunding backers | crowdfunding | 1
+1213: Gentree Fund | venture_firm | 1
+1214: George Kurtz | angel | 1
+1215: Gerhard Eschelbeck | angel | 1
+1216: German Federal Ministry of Education and Research (grant) | government_grant | 1
+1217: Gideon Yu | angel | 1
+1218: GitLab | corporate_venture | 1
+1219: Gitea | unclassified | 1
+1220: GiveWell | philanthropy | 1
+1221: Glade Brook Capital | venture_firm | 1
+1222: Glenn Solomon | angel | 1
+1223: GlobalFoundries | corporate_venture | 1
+1224: Goat Capital | venture_firm | 1
+1225: Goldcrest Capital | venture_firm | 1
+1226: Government of Canada (Sovereign AI Compute Strategy) | government_grant | 1
+1227: Government of Canada (via Canada Development Investment Corporation) | government_grant | 1
+1228: Grace Francisco | angel | 1
+1229: Grafana Labs | corporate_venture | 1
+1230: Grand Duchy of Luxembourg | public_investor | 1
+1231: Grant Miller | angel | 1
+1232: Graph Ventures | venture_firm | 1
+1233: Graphene Ventures | venture_firm | 1
+1234: GravityRock | unclassified | 1
+1235: Grayscale Ventures | venture_firm | 1
+1236: Greater Bay Area Homeland | public_investor | 1
+1237: Green Bay Ventures | venture_firm | 1
+1238: Green D Ventures | venture_firm | 1
+1239: Greenoaks Capital | venture_firm | 1
+1240: Greenspring Associates | growth_pe_hedge | 1
+1241: Greg Rosen | angel | 1
+1242: Gregor Zunic | angel | 1
+1243: Guggenheim Partners | venture_firm | 1
+1244: Guoke Investment | venture_firm | 1
+1245: Guotai Haitong Innovation Investment | venture_firm | 1
+1246: Gurtin Ventures | venture_firm | 1
+1247: Gus Robertson | angel | 1
+1248: Görkem Yurtseven | angel | 1
+1249: HF0 | accelerator | 1
+1250: HOF Capital | venture_firm | 1
+1251: HP Ventures | venture_firm | 1
+1252: Hanabi Capital | venture_firm | 1
+1253: Handshake Ventures | venture_firm | 1
+1254: Hangzhou City Investment Industry Fund | venture_firm | 1
+1255: Hanover | unclassified | 1
+1256: Hans-Christian Zappel | angel | 1
+1257: Hanwha Asset Management | growth_pe_hedge | 1
+1258: Hanwha Asset Management Deeptech Venture Fund | venture_firm | 1
+1259: HarbourVest Partners | venture_firm | 1
+1260: Harmony Partners | venture_firm | 1
+1261: Hartmann Capital | venture_firm | 1
+1262: Harvard Management Company | growth_pe_hedge | 1
+1263: Hat-Trick Capital | venture_firm | 1
+1264: Hatim Shafique | angel | 1
+1265: Healthspan Capital | venture_firm | 1
+1266: Hearst Ventures | venture_firm | 1
+1267: Heiko Hubertz | angel | 1
+1268: Helium-3 Ventures | venture_firm | 1
+1269: Hepo Capital | venture_firm | 1
+1270: Hercules Capital | bank_or_debt | 1
+1271: Hewlett-Packard | corporate_venture | 1
+1272: HighSage Ventures | venture_firm | 1
+1273: Highfield Capital | venture_firm | 1
+1274: Hilmar Petursson | angel | 1
+1275: Hitachi | corporate_venture | 1
+1276: Hock Tan | angel | 1
+1277: Horizons Ventures | venture_firm | 1
+1278: Hoxton Ventures | venture_firm | 1
+1279: Huaqin Technology | corporate_venture | 1
+1280: Human Capital | venture_firm | 1
+1281: Humboldt University of Berlin | other | 1
+1282: Hummingbird Ventures | venture_firm | 1
+1283: Hyundai CRADLE | unclassified | 1
+1284: IAG | unclassified | 1
+1285: IAG Capital Partners | venture_firm | 1
+1286: IBB Ventures | venture_firm | 1
+1287: ICEX | unclassified | 1
+1288: ICON Continuity Fund | venture_firm | 1
+1289: ID Ventures | venture_firm | 1
+1290: IDG Ventures | venture_firm | 1
+1291: ING Ventures | venture_firm | 1
+1292: IREN | corporate_venture | 1
+1293: ISAI Cap Venture | venture_firm | 1
+1294: ITOCHU | corporate_venture | 1
+1295: Iconiq Growth | growth_pe_hedge | 1
+1296: Id4 | venture_firm | 1
+1297: Id4 Ventures | venture_firm | 1
+1298: Idinvest Partners | venture_firm | 1
+1299: Idit Levine | angel | 1
+1300: Igor Babuschkin | angel | 1
+1301: Ilkka Paananen | angel | 1
+1302: Ilya Lyamkin | angel | 1
+1303: Ilya Sukhar | angel | 1
+1304: Indiegogo backers | crowdfunding | 1
+1305: Industry Ventures | venture_firm | 1
+1306: Infinite Capital | venture_firm | 1
+1307: Inflection Point Ventures | venture_firm | 1
+1308: Inflection VC | venture_firm | 1
+1309: Innovation Engine | venture_firm | 1
+1310: Innovation Nest | venture_firm | 1
+1311: Inria Participations | public_investor | 1
+1312: Inspiration Ventures | venture_firm | 1
+1313: Iris Capital | venture_firm | 1
+1314: Irregular Expression | venture_firm | 1
+1315: Israel Innovation Authority | unclassified | 1
+1316: Ivan Zhang | angel | 1
+1317: J-Ventures | venture_firm | 1
+1318: JC2 Ventures | venture_firm | 1
+1319: JCDecaux Holding | corporate_venture | 1
+1320: JJ Fliegelman | angel | 1
+1321: JME Venture Capital | venture_firm | 1
+1322: JME Ventures | venture_firm | 1
+1323: Jaguar Land Rover | corporate_venture | 1
+1324: Jake Klamka | angel | 1
+1325: Jake Knapp | angel | 1
+1326: Jake Lodwick | angel | 1
+1327: Jake Medwell | angel | 1
+1328: Jake Mintz | angel | 1
+1329: Jakob Uszkoreit | angel | 1
+1330: Jakub Jurových | angel | 1
+1331: James Brodie | angel | 1
+1332: James Cowling | angel | 1
+1333: James Dyson Foundation | philanthropy | 1
+1334: James Lidenbaum | angel | 1
+1335: James Tamplin | angel | 1
+1336: James Yu | angel | 1
+1337: Jamstack Innovation Fund | venture_firm | 1
+1338: Jan Oberhauser | angel | 1
+1339: Jana Iris | angel | 1
+1340: Jana Messerschmidt | angel | 1
+1341: Jane Street | growth_pe_hedge | 1
+1342: Jared Friedman | angel | 1
+1343: Jason Chan | angel | 1
+1344: Jason Liu | angel | 1
+1345: Javelin Venture Partners | venture_firm | 1
+1346: Jay Jamison | angel | 1
+1347: Jean-Philippe Bellaiche | angel | 1
+1348: Jed McCaleb | angel | 1
+1349: Jeff Arnold | angel | 1
+1350: Jeff Bezos | angel | 1
+1351: Jeff Kindler | angel | 1
+1352: Jeff Rothschild | angel | 1
+1353: Jeff Wang | angel | 1
+1354: Jeremy Stanley | angel | 1
+1355: Jeremy Toeman | angel | 1
+1356: Jerry Yang | angel | 1
+1357: Jevon MacDonald | angel | 1
+1358: Jingfu Assets | unclassified | 1
+1359: Job van der Voort | angel | 1
+1360: Joe Lallouz | angel | 1
+1361: John Chambers | angel | 1
+1362: John Kodumal | angel | 1
+1363: John Lilly | angel | 1
+1364: John Pham | angel | 1
+1365: John Riccitiello | angel | 1
+1366: John Schulman | angel | 1
+1367: John Zeratsky | angel | 1
+1368: Johnny Boufarhat | angel | 1
+1369: Jon Winkelried | angel | 1
+1370: Jonathan Abrams | angel | 1
+1371: Jonathan Frankle | angel | 1
+1372: Jordan Walke | angel | 1
+1373: Joseph Jacks | angel | 1
+1374: Josh Coates | angel | 1
+1375: Julian Capital | venture_firm | 1
+1376: Julian Weisser | angel | 1
+1377: Julien Chaumond | angel | 1
+1378: Julius Volz | angel | 1
+1379: Jump Capital | venture_firm | 1
+1380: JumpGate Ventures | venture_firm | 1
+1381: Jun Rao | angel | 1
+1382: Juniper | unclassified | 1
+1383: Juniper Networks | corporate_venture | 1
+1384: Juraj Masár | angel | 1
+1385: K1W1 | venture_firm | 1
+1386: K2 Venture | venture_firm | 1
+1387: KDDI Open Innovation Fund | venture_firm | 1
+1388: KPMG | corporate_venture | 1
+1389: KT | corporate_venture | 1
+1390: Kadmos | venture_firm | 1
+1391: Kadmos Capital | venture_firm | 1
+1392: Kae Capital | venture_firm | 1
+1393: Kaiser Permanente | corporate_venture | 1
+1394: Kang Yi | angel | 1
+1395: Karri Saarinen | angel | 1
+1396: Kaya | venture_firm | 1
+1397: Kaz Nejatian | angel | 1
+1398: KdT Ventures | venture_firm | 1
+1399: Keith Platt | angel | 1
+1400: Ken Goldman | angel | 1
+1401: Kenny Johnston | angel | 1
+1402: Kerrest & Co | venture_firm | 1
+1403: Kevin Durant | angel | 1
+1404: Kevin Patrick Mahaffey | angel | 1
+1405: Kevin Rose | angel | 1
+1406: Kia | corporate_venture | 1
+1407: Kibo Ventures | venture_firm | 1
+1408: Kingsoft | corporate_venture | 1
+1409: Kirill Tashilov | angel | 1
+1410: Kishore Bhatia | angel | 1
+1411: Koji Capital | venture_firm | 1
+1412: Korelya Capital | venture_firm | 1
+1413: Krew Capital | venture_firm | 1
+1414: Kunlun Capital | venture_firm | 1
+1415: Kyle Parish | angel | 1
+1416: L2IV | crypto_fund_or_dao | 1
+1417: LBS Investments | venture_firm | 1
+1418: LG Technology Ventures | venture_firm | 1
+1419: Laird Ventures | venture_firm | 1
+1420: Lakestar | venture_firm | 1
+1421: Lanham Napier | angel | 1
+1422: Laser Digital Ventures | venture_firm | 1
+1423: Latacora | corporate_venture | 1
+1424: Latitude | unclassified | 1
+1425: Lattice | corporate_venture | 1
+1426: Lehman Brothers | growth_pe_hedge | 1
+1427: Leonis Investissement | venture_firm | 1
+1428: Leore Avidar | angel | 1
+1429: Lerer Hippeau | venture_firm | 1
+1430: Leslie Ventures | venture_firm | 1
+1431: Li Jun | angel | 1
+1432: Liberty Global Ventures | venture_firm | 1
+1433: Librem 13/15 crowdfunding backers | crowdfunding | 1
+1434: Librem 5 crowdfunding backers | crowdfunding | 1
+1435: LifeX Ventures | venture_firm | 1
+1436: Light Street Capital | venture_firm | 1
+1437: Lightrock | growth_pe_hedge | 1
+1438: Linear Capital | venture_firm | 1
+1439: Lingfeng Capital | venture_firm | 1
+1440: Linus Sebastian | angel | 1
+1441: Lisha Li | angel | 1
+1442: LiveOak Venture Partners | venture_firm | 1
+1443: Lobster Capital | venture_firm | 1
+1444: Lockheed Martin Ventures | venture_firm | 1
+1445: Lone Pine Capital | growth_pe_hedge | 1
+1446: Loris Cro | angel | 1
+1447: Lowercarbon Capital | venture_firm | 1
+1448: Lucas Pelloni | angel | 1
+1449: Luis Cuende | angel | 1
+1450: Lukasz Kaiser | angel | 1
+1451: M Ventures | venture_firm | 1
+1452: MAKE | venture_firm | 1
+1453: MGX | public_investor | 1
+1454: MH Ventures | venture_firm | 1
+1455: MIT | other | 1
+1456: MMC | venture_firm | 1
+1457: MMC Ventures | venture_firm | 1
+1458: MPower Partners | venture_firm | 1
+1459: MSD Capital | venture_firm | 1
+1460: MXV Capital | venture_firm | 1
+1461: Macquarie Capital | venture_firm | 1
+1462: Mahendra Ramsinghani | angel | 1
+1463: Maneesh Sharma | angel | 1
+1464: Manik Gupta | angel | 1
+1465: Mantis Capital | venture_firm | 1
+1466: Mantis VC | venture_firm | 1
+1467: Mantle EcoFund | venture_firm | 1
+1468: Maor Ventures | venture_firm | 1
+1469: Marc Benioff | angel | 1
+1470: Marc Campbell | angel | 1
+1471: Marcelo Trylesinski | angel | 1
+1472: March Capital | venture_firm | 1
+1473: Marco Palladino | angel | 1
+1474: Marcus Eagan | angel | 1
+1475: Mark Cuban | angel | 1
+1476: Mark Gorton | angel | 1
+1477: Mark Shuttleworth | angel | 1
+1478: Market One Capital | venture_firm | 1
+1479: Marten Mickos | angel | 1
+1480: Martin Donath | angel | 1
+1481: Matchstick Ventures | venture_firm | 1
+1482: Mathias Biilmann Christensen | angel | 1
+1483: Mathilde Collin | angel | 1
+1484: Mati Staniszewski | angel | 1
+1485: Matias Woloski | angel | 1
+1486: Matrixport | crypto_fund_or_dao | 1
+1487: Matt Biilmann Christensen | angel | 1
+1488: Matt Cutts | angel | 1
+1489: Matt McClure | angel | 1
+1490: Matt Robinson | angel | 1
+1491: Matt Shumer | angel | 1
+1492: Matěj Turek | angel | 1
+1493: Maven11 Capital | venture_firm | 1
+1494: Maverick Capital | venture_firm | 1
+1495: Maverick Silicon | venture_firm | 1
+1496: Max Altman | angel | 1
+1497: Max Levchin | angel | 1
+1498: Max Mullen | angel | 1
+1499: Mckay Wrigley | angel | 1
+1500: MediaTek | corporate_venture | 1
+1501: Meher Roy | angel | 1
+1502: Mesh | unclassified | 1
+1503: MiHoYo | corporate_venture | 1
+1504: Michel Tricot | angel | 1
+1505: Michiel Westerbeek | angel | 1
+1506: Mike Boufford | angel | 1
+1507: Mike Knoop | angel | 1
+1508: Millennium New Horizons | growth_pe_hedge | 1
+1509: Mitchell Hashimoto | angel | 1
+1510: Mitsubishi Electric | corporate_venture | 1
+1511: Mitsubishi UFJ Financial Group | growth_pe_hedge | 1
+1512: Miyako Capital | venture_firm | 1
+1513: Mizuho Financial Group | growth_pe_hedge | 1
+1514: Mizuho Leaguer Investment | venture_firm | 1
+1515: Moataz Soliman | angel | 1
+1516: Mohit Aron | angel | 1
+1517: Monashees | venture_firm | 1
+1518: Monday.com | corporate_venture | 1
+1519: Monolith Management | venture_firm | 1
+1520: Morgan Stanley Dean Witter | growth_pe_hedge | 1
+1521: Morningside Venture Partners | venture_firm | 1
+1522: Mosaic Ventures | venture_firm | 1
+1523: Mouro Capital | venture_firm | 1
+1524: Mouser Electronics | corporate_venture | 1
+1525: Mundi Ventures | venture_firm | 1
+1526: MyAsiaVC | venture_firm | 1
+1527: NALA Investments | venture_firm | 1
+1528: NASA (SBIR) | government_grant | 1
+1529: NEC | corporate_venture | 1
+1530: NEC Orchestrating Future Fund | venture_firm | 1
+1531: NGI Zero Core | government_grant | 1
+1532: NP-Hard Ventures | venture_firm | 1
+1533: NTT Docomo Ventures | venture_firm | 1
+1534: NTTVC | venture_firm | 1
+1535: NYX Ventures | venture_firm | 1
+1536: Nan Li | angel | 1
+1537: Nascent | venture_firm | 1
+1538: NatWest | unclassified | 1
+1539: Nathaniel Manning | angel | 1
+1540: National AI Industry Investment Fund | government_grant | 1
+1541: National Geographic | philanthropy | 1
+1542: National Institute of Mental Health (SBIR) | government_grant | 1
+1543: National Institute on Aging (NIH SBIR) | government_grant | 1
+1544: National Institutes of Health (NIBIB) | government_grant | 1
+1545: National Investments Company Kuwait | government_grant | 1
+1546: Nature Publishing Group | corporate_venture | 1
+1547: Nava Ventures | venture_firm | 1
+1548: Nebius | corporate_venture | 1
+1549: Neha Narkhede | angel | 1
+1550: Nepenthe Capital | venture_firm | 1
+1551: Netlify | corporate_venture | 1
+1552: Netscape | corporate_venture | 1
+1553: Neuberger Berman | growth_pe_hedge | 1
+1554: New Venture Fund | venture_firm | 1
+1555: New Zealand Growth Capital Partners | venture_firm | 1
+1556: Next World Capital | venture_firm | 1
+1557: NextView Ventures | venture_firm | 1
+1558: Nexxus Capital Management | venture_firm | 1
+1559: Nick Dima | angel | 1
+1560: Nick Sullivan | angel | 1
+1561: Nicolas Debock | angel | 1
+1562: Nicolas Rosset | angel | 1
+1563: Nicolas Steegmann | angel | 1
+1564: Niels Provos | angel | 1
+1565: Nikita Shamgunov | angel | 1
+1566: Nir Gazit | angel | 1
+1567: Noa | venture_firm | 1
+1568: Nomad Capital | venture_firm | 1
+1569: Nominet Trust | philanthropy | 1
+1570: Nomura Holdings | venture_firm | 1
+1571: Norte Ventures | venture_firm | 1
+1572: Northern Trust | philanthropy | 1
+1573: Northzone | venture_firm | 1
+1574: Noshaq | public_investor | 1
+1575: Notation Capital | venture_firm | 1
+1576: Notion | corporate_venture | 1
+1577: Notion Capital | venture_firm | 1
+1578: Nucleus Capital | venture_firm | 1
+1579: Nueterra Capital | venture_firm | 1
+1580: Nutanix | corporate_venture | 1
+1581: O'Shaughnessy Ventures | venture_firm | 1
+1582: OKX Ventures | venture_firm | 1
+1583: OMERS Growth Equity | growth_pe_hedge | 1
+1584: ONEVC | venture_firm | 1
+1585: OWC | corporate_venture | 1
+1586: Octahedron Capital | venture_firm | 1
+1587: Office of Strategic Capital (US Department of War) | government_grant | 1
+1588: Office of the Chief Scientist (Israel) | unclassified | 1
+1589: Offline Ventures | venture_firm | 1
+1590: Olive Technology Ventures | venture_firm | 1
+1591: Olivier Rosenfeld | angel | 1
+1592: OnePrime Capital | venture_firm | 1
+1593: Ooshma Garg | angel | 1
+1594: Open Ocean Capital | venture_firm | 1
+1595: Ora Global | venture_firm | 1
+1596: Oracle | corporate_venture | 1
+1597: Orange Ventures | venture_firm | 1
+1598: OrangeDAO | crypto_fund_or_dao | 1
+1599: Ovais Tariq | angel | 1
+1600: Overtime.vc | venture_firm | 1
+1601: P1 Ventures | venture_firm | 1
+1602: PSP Partners | venture_firm | 1
+1603: PTB | other | 1
+1604: PTV | unclassified | 1
+1605: Pacific Alliance Ventures | venture_firm | 1
+1606: PagsGroup | corporate_venture | 1
+1607: Palm Drive | venture_firm | 1
+1608: Palm Drive Capital | venture_firm | 1
+1609: Panache Ventures | venture_firm | 1
+1610: Parable | venture_firm | 1
+1611: Paradigm | crypto_fund_or_dao | 1
+1612: Partech International | government_grant | 1
+1613: Passport Capital | venture_firm | 1
+1614: Pathbreaker Ventures | venture_firm | 1
+1615: Patreon backers | crowdfunding | 1
+1616: Patrick Dalsace | angel | 1
+1617: Paul Bragiel | angel | 1
+1618: Paul Klein IV | angel | 1
+1619: Paul Sieminski | angel | 1
+1620: Pavilion Capital | venture_firm | 1
+1621: PayPal | unclassified | 1
+1622: Peak Capital Partners | venture_firm | 1
+1623: Pedro Castillo | angel | 1
+1624: Pegatron | corporate_venture | 1
+1625: Percival | venture_firm | 1
+1626: Perplexity Fund | venture_firm | 1
+1627: Pete Hunt | angel | 1
+1628: Pete Soderling | angel | 1
+1629: Peter Briffett | angel | 1
+1630: Peter Steinberger | angel | 1
+1631: Peter Thiel | angel | 1
+1632: Peter Wagner | angel | 1
+1633: Peter Wang | angel | 1
+1634: Peter Welinder | angel | 1
+1635: Pfizer Ventures | corporate_venture | 1
+1636: Phoenix Venture Partners | venture_firm | 1
+1637: Pierre Burgy | angel | 1
+1638: Pioneer | unclassified | 1
+1639: Pipeline Capital | venture_firm | 1
+1640: Platinum Venture Capital | venture_firm | 1
+1641: Play Time | unclassified | 1
+1642: Playground Global | venture_firm | 1
+1643: Point 406 Ventures | venture_firm | 1
+1644: Point72 | growth_pe_hedge | 1
+1645: Point72 Turion | growth_pe_hedge | 1
+1646: Polytech Ecosystem Ventures | venture_firm | 1
+1647: Portage Ventures | venture_firm | 1
+1648: Portman Wills | angel | 1
+1649: Possible Ventures | venture_firm | 1
+1650: Precursor Ventures | venture_firm | 1
+1651: Prefect | corporate_venture | 1
+1652: Prem Akkaraju | angel | 1
+1653: Presidio STX | corporate_venture | 1
+1654: Presidio Venture Partners | venture_firm | 1
+1655: Preston Werner Ventures | venture_firm | 1
+1656: Prestonwerner Ventures | venture_firm | 1
+1657: Pritzker Group | venture_firm | 1
+1658: Progress Software | corporate_venture | 1
+1659: Prolocation | unclassified | 1
+1660: Promus Ventures | venture_firm | 1
+1661: Propel Venture Partners | venture_firm | 1
+1662: Protagonist | venture_firm | 1
+1663: Proton crowdfunding donors | crowdfunding | 1
+1664: Pudong VC | venture_firm | 1
+1665: Pudong Venture Capital | venture_firm | 1
+1666: Python Software Foundation | philanthropy | 1
+1667: QUEST/Uni Hannover | other | 1
+1668: Qi Lu | angel | 1
+1669: Qifu Capital | venture_firm | 1
+1670: Quadrature Climate Foundation | philanthropy | 1
+1671: QuantStack Ventures | venture_firm | 1
+1672: Quest Software | corporate_venture | 1
+1673: Qwertiko | unclassified | 1
+1674: RCM Private Markets | growth_pe_hedge | 1
+1675: Rafael Corrales | angel | 1
+1676: Rainmatter | corporate_venture | 1
+1677: Raise Sherpas | crowdfunding | 1
+1678: Rally Ventures | venture_firm | 1
+1679: Ramprate | venture_firm | 1
+1680: Raptor Computing Systems | unclassified | 1
+1681: Rasmus Andersson | angel | 1
+1682: Rauch Capital | venture_firm | 1
+1683: Rebel | venture_firm | 1
+1684: Rebellion | venture_firm | 1
+1685: Red Bridge Ventures | venture_firm | 1
+1686: Red Swan | venture_firm | 1
+1687: Redline | venture_firm | 1
+1688: Redline Capital | venture_firm | 1
+1689: Refinery Ventures | venture_firm | 1
+1690: Region Centre-Val de Loire | government_grant | 1
+1691: Regis McKenna | angel | 1
+1692: Renaud Visage | angel | 1
+1693: Renegade Partners | venture_firm | 1
+1694: Renesas | corporate_venture | 1
+1695: Republic Capital | crowdfunding | 1
+1696: Resolute Capital | venture_firm | 1
+1697: Rewired | unclassified | 1
+1698: Rheingau Founders | venture_firm | 1
+1699: Rheinmetall | corporate_venture | 1
+1700: Rich Kleiman | angel | 1
+1701: Richard Branson | angel | 1
+1702: Richard Socher | angel | 1
+1703: Ridgeline Ventures | venture_firm | 1
+1704: Riot Ventures | venture_firm | 1
+1705: Ritual Capital | venture_firm | 1
+1706: Riverview Group | unclassified | 1
+1707: Rob Skillington | angel | 1
+1708: Robbie Zhang-Smitheran | angel | 1
+1709: Robert Nelsen | angel | 1
+1710: Robinhood Ventures | venture_firm | 1
+1711: Rochefort | growth_pe_hedge | 1
+1712: Rodolphe Saade | angel | 1
+1713: Rohan Anil | angel | 1
+1714: Ron Gula | angel | 1
+1715: Ronjon Nag | angel | 1
+1716: Rony Kahan | angel | 1
+1717: Ross Mason | angel | 1
+1718: Rothenberg Ventures | venture_firm | 1
+1719: Runway | unclassified | 1
+1720: Russ Simmons | angel | 1
+1721: Russell Siegelman | angel | 1
+1722: SAP | unclassified | 1
+1723: SAP.iO | corporate_venture | 1
+1724: SAP.iO Fund | venture_firm | 1
+1725: SBRI Healthcare | unclassified | 1
+1726: SCM Advisors | unclassified | 1
+1727: SE Ventures | venture_firm | 1
+1728: SGI | unclassified | 1
+1729: SGPA | unclassified | 1
+1730: SK Telecom | corporate_venture | 1
+1731: SK Ventures | venture_firm | 1
+1732: SNR | venture_firm | 1
+1733: SNR VC | venture_firm | 1
+1734: SRIW | public_investor | 1
+1735: SVK Crypto | crypto_fund_or_dao | 1
+1736: Sabrina Hahn | angel | 1
+1737: Sahir Azam | angel | 1
+1738: Salience Capital | venture_firm | 1
+1739: Sam Lambert | angel | 1
+1740: Samsung Venture Investment | venture_firm | 1
+1741: Samuel Colvin | angel | 1
+1742: Sanabil Investments | venture_firm | 1
+1743: Sandisk | corporate_venture | 1
+1744: Sands Capital | growth_pe_hedge | 1
+1745: Sands Capital Ventures | venture_firm | 1
+1746: Sangfor Technologies | corporate_venture | 1
+1747: Scale AI (Canada's AI supercluster) | government_grant | 1
+1748: Scale Asia Ventures | venture_firm | 1
+1749: Schmidt Futures | philanthropy | 1
+1750: Schroders Capital | venture_firm | 1
+1751: Scott Banister | angel | 1
+1752: Scott Johnston | angel | 1
+1753: Scott Williamson | angel | 1
+1754: Scott Wu | angel | 1
+1755: Script | venture_firm | 1
+1756: Sean Leach | angel | 1
+1757: Sean Parker | angel | 1
+1758: Sebastien Chopin | angel | 1
+1759: Secure Octane | venture_firm | 1
+1760: Self-hosted campaign backers | crowdfunding | 1
+1761: Senovo | venture_firm | 1
+1762: SentinelOne | corporate_venture | 1
+1763: Sequel | unclassified | 1
+1764: Serg Bell | angel | 1
+1765: Sergei Anikin | angel | 1
+1766: ServiceNow Ventures | venture_firm | 1
+1767: Seven Seas | venture_firm | 1
+1768: Seven Seven Six | venture_firm | 1
+1769: Sevin Rosen Funds | venture_firm | 1
+1770: Shane Barratt | angel | 1
+1771: Shanghai AI Industry Investment Fund | venture_firm | 1
+1772: Shanghai SDIC Leading Fund | venture_firm | 1
+1773: Shea Ventures | venture_firm | 1
+1774: Shield Capital | venture_firm | 1
+1775: Shikoku Electric Power | corporate_venture | 1
+1776: Shin Kim | angel | 1
+1777: Shivani Mitra | angel | 1
+1778: Shopify Capital | venture_firm | 1
+1779: Shuttleworth Foundation | philanthropy | 1
+1780: Sigma Partners | venture_firm | 1
+1781: Signature Ventures | venture_firm | 1
+1782: Silicon 100 | venture_firm | 1
+1783: Silicon Catalyst Angels | angel | 1
+1784: Silicon Graphics | corporate_venture | 1
+1785: Silver Lake | growth_pe_hedge | 1
+1786: Silverton Partners | venture_firm | 1
+1787: Simon Schmid | angel | 1
+1788: Siqi Chen | angel | 1
+1789: Sixth Street Growth | growth_pe_hedge | 1
+1790: Skycatcher | venture_firm | 1
+1791: Slack Fund | venture_firm | 1
+1792: Social Leverage | venture_firm | 1
+1793: Social Tech Trust | philanthropy | 1
+1794: Sofina | growth_pe_hedge | 1
+1795: Soleio | angel | 1
+1796: Soleio Cuervo | angel | 1
+1797: Sonae IM | corporate_venture | 1
+1798: Sonae Investment Management | venture_firm | 1
+1799: Sonar | corporate_venture | 1
+1800: Sonar community buyers | crypto_fund_or_dao | 1
+1801: Sony Innovation Fund | venture_firm | 1
+1802: Sony Music Group | corporate_venture | 1
+1803: Sony Semiconductor Solutions | corporate_venture | 1
+1804: Sora Ventures | venture_firm | 1
+1805: Spartan | crypto_fund_or_dao | 1
+1806: Special Situations Investing Group II | growth_pe_hedge | 1
+1807: Spintop Private Partners | venture_firm | 1
+1808: Split Rock Partners | venture_firm | 1
+1809: Sprint | corporate_venture | 1
+1810: Spur Intelligence | unclassified | 1
+1811: Square Peg Capital | venture_firm | 1
+1812: SquareOne | venture_firm | 1
+1813: Stanford University | other | 1
+1814: Stanislav Vishnevskiy | angel | 1
+1815: Start Garden | unclassified | 1
+1816: StartEngine backers | crowdfunding | 1
+1817: Status | crypto_fund_or_dao | 1
+1818: Step Function | unclassified | 1
+1819: Stephen Poletto | angel | 1
+1820: Stephen Sullivan | angel | 1
+1821: Steve Singh | angel | 1
+1822: Stonks | venture_firm | 1
+1823: Story Ventures | venture_firm | 1
+1824: Stratasys | corporate_venture | 1
+1825: Strike Capital | venture_firm | 1
+1826: Stripes Group | growth_pe_hedge | 1
+1827: Strive VC | venture_firm | 1
+1828: Strongblock | crypto_fund_or_dao | 1
+1829: Struck Crypto | crypto_fund_or_dao | 1
+1830: Sujal Patel | angel | 1
+1831: Sumitomo | corporate_venture | 1
+1832: Sumitomo Corporation | corporate_venture | 1
+1833: Sumitomo Mitsui Banking Corporation | bank_or_debt | 1
+1834: Sunflower Bank | bank_or_debt | 1
+1835: Supercell | corporate_venture | 1
+1836: Supernode Global | venture_firm | 1
+1837: Swedish government | government_grant | 1
+1838: Synopsys | corporate_venture | 1
+1839: Synthient | unclassified | 1
+1840: System.one | venture_firm | 1
+1841: Sébastien Lorber | angel | 1
+1842: T.Capital | venture_firm | 1
+1843: TAL Education Group | corporate_venture | 1
+1844: TGVG Capital | venture_firm | 1
+1845: TIAA Ventures | venture_firm | 1
+1846: TIRTA Ventures | venture_firm | 1
+1847: TPY Capital | venture_firm | 1
+1848: TRGC | unclassified | 1
+1849: Taiwania Capital | venture_firm | 1
+1850: Talha Tariq | angel | 1
+1851: Taylor Otwell | angel | 1
+1852: Techammer | venture_firm | 1
+1853: Techstart | venture_firm | 1
+1854: Tectonic Ventures | venture_firm | 1
+1855: Telekom Investment Pool | venture_firm | 1
+1856: TenOneTen | venture_firm | 1
+1857: Tenacity Capital | venture_firm | 1
+1858: Tenaya Capital | venture_firm | 1
+1859: Teradata | corporate_venture | 1
+1860: Terminal Trove | unclassified | 1
+1861: Terrence Rohan | angel | 1
+1862: Tesi | public_investor | 1
+1863: Teuto Seed Club | venture_firm | 1
+1864: The Attachmate Group | corporate_venture | 1
+1865: The Factory | venture_firm | 1
+1866: The LAO | crypto_fund_or_dao | 1
+1867: The Spartan Group | crypto_fund_or_dao | 1
+1868: Theodore Browne | angel | 1
+1869: Thibaud Elzière | angel | 1
+1870: Thirty Five Ventures | venture_firm | 1
+1871: Thom Wolf | angel | 1
+1872: Thomas Mann | angel | 1
+1873: Thomas McLeod | angel | 1
+1874: Thomas Wolf | angel | 1
+1875: Tiger Management | growth_pe_hedge | 1
+1876: Timothy Chen | angel | 1
+1877: Tiny VC | venture_firm | 1
+1878: Together.fund | venture_firm | 1
+1879: Tokio Marine Group | corporate_venture | 1
+1880: Tola Capital | venture_firm | 1
+1881: Tom Christie | angel | 1
+1882: Tom Erickson | angel | 1
+1883: Tony Zhao | angel | 1
+1884: Top Harvest | unclassified | 1
+1885: Top Harvest Capital | venture_firm | 1
+1886: TransLink Capital | venture_firm | 1
+1887: Travis May | angel | 1
+1888: Travis McPeak | angel | 1
+1889: Travis Oliphant | angel | 1
+1890: Tri Dao | angel | 1
+1891: Triple Impact Capital | venture_firm | 1
+1892: TriplePoint Capital | bank_or_debt | 1
+1893: Tru Arrow Partners | venture_firm | 1
+1894: TruArrow | venture_firm | 1
+1895: TruArrow Partners | venture_firm | 1
+1896: TrueBridge Capital | venture_firm | 1
+1897: TrueFoundry | unclassified | 1
+1898: Tsinghua Capital | venture_firm | 1
+1899: Tsinghua Holdings | venture_firm | 1
+1900: Tsingke Ventures | venture_firm | 1
+1901: Tuck Lye Koh | angel | 1
+1902: Twenty Two Ventures | venture_firm | 1
+1903: TwentyTwo Ventures | venture_firm | 1
+1904: Two Sigma Investments | venture_firm | 1
+1905: U.S. Department of Energy (SBIR) | government_grant | 1
+1906: U.S. Space Force (SBIR) | government_grant | 1
+1907: UAE AI and Robotics Award for Good | unclassified | 1
+1908: UBS | growth_pe_hedge | 1
+1909: UC Berkeley Chancellor's Fund | venture_firm | 1
+1910: UC Investments | venture_firm | 1
+1911: UMAX | unclassified | 1
+1912: Uberspace | unclassified | 1
+1913: Ubiquity Ventures | venture_firm | 1
+1914: Udi Manber | angel | 1
+1915: UiPath | corporate_venture | 1
+1916: Unbound | venture_firm | 1
+1917: Unipromos | unclassified | 1
+1918: Universal Music Group | corporate_venture | 1
+1919: Universe Software | unclassified | 1
+1920: University of Michigan | other | 1
+1921: University of Oregon | other | 1
+1922: University of Oxford | other | 1
+1923: University of Wisconsin-Madison | other | 1
+1924: Uphonest Capital | venture_firm | 1
+1925: Upload Ventures | venture_firm | 1
+1926: Upside Partnership | venture_firm | 1
+1927: Urban Innovation Fund | venture_firm | 1
+1928: Uri Boness | angel | 1
+1929: Uvensys | unclassified | 1
+1930: V Squared VC | venture_firm | 1
+1931: V1.VC | venture_firm | 1
+1932: Vaal Partners | venture_firm | 1
+1933: Valhalla Partners | venture_firm | 1
+1934: Valor Equity Partners | growth_pe_hedge | 1
+1935: Vento Ventures | venture_firm | 1
+1936: VentureIsrael | venture_firm | 1
+1937: VentureSouq | venture_firm | 1
+1938: Ventures Together | venture_firm | 1
+1939: Vercel Ventures | venture_firm | 1
+1940: Verizon Ventures | venture_firm | 1
+1941: Vermilion Cliffs Ventures | venture_firm | 1
+1942: Vermilion Ventures | venture_firm | 1
+1943: Victoria | unclassified | 1
+1944: Vine Ventures | venture_firm | 1
+1945: Vinnova | unclassified | 1
+1946: Vintage Investment Partners | venture_firm | 1
+1947: Viola Private Equity | growth_pe_hedge | 1
+1948: Viola Ventures | venture_firm | 1
+1949: Vision Knight Capital | venture_firm | 1
+1950: Vitamina K | venture_firm | 1
+1951: Vlad Yatsenko | angel | 1
+1952: Volcanic Ventures | venture_firm | 1
+1953: WPP | corporate_venture | 1
+1954: WR Hambrecht + Co | unclassified | 1
+1955: WS Investment Company | venture_firm | 1
+1956: WTT Fubon Family | angel | 1
+1957: Walden International | government_grant | 1
+1958: Walden Israel Venture Capital | venture_firm | 1
+1959: Wallonie Entreprendre | public_investor | 1
+1960: Wang Huiwen | angel | 1
+1961: Warner Music Group | corporate_venture | 1
+1962: Warsaw University of Technology | other | 1
+1963: Wealth Union | venture_firm | 1
+1964: Weblate | unclassified | 1
+1965: Wefunder backers | crowdfunding | 1
+1966: Weizhi Capital | venture_firm | 1
+1967: Wellcome Trust | philanthropy | 1
+1968: Wellington Management | growth_pe_hedge | 1
+1969: Wells Fargo Strategic Capital | growth_pe_hedge | 1
+1970: Wenet | unclassified | 1
+1971: West Coast Endeavors | venture_firm | 1
+1972: West of England Combined Authority | unclassified | 1
+1973: WestSummit | venture_firm | 1
+1974: WestSummit Capital | venture_firm | 1
+1975: WestWave | venture_firm | 1
+1976: Whale Rock Capital Management | venture_firm | 1
+1977: Wildbase | unclassified | 1
+1978: William Candillon | angel | 1
+1979: William Fedus | angel | 1
+1980: Williams Advanced Engineering | corporate_venture | 1
+1981: Winslow Capital | venture_firm | 1
+1982: Winston Weinberg | angel | 1
+1983: Wipro | corporate_venture | 1
+1984: Wonder Ventures | venture_firm | 1
+1985: Woodstock | venture_firm | 1
+1986: Workday Ventures | corporate_venture | 1
+1987: Wuxi Liangxi Fund | venture_firm | 1
+1988: Wuyuefeng Capital | venture_firm | 1
+1989: XAnge | venture_firm | 1
+1990: XTX Markets | growth_pe_hedge | 1
+1991: Xiamen ITG Group | public_investor | 1
+1992: XiaoXiao Fund | venture_firm | 1
+1993: Xiaohongshu | corporate_venture | 1
+1994: Xuhui Capital | venture_firm | 1
+1995: Yahoo | corporate_venture | 1
+1996: Yamaha Motor | corporate_venture | 1
+1997: Yandex | corporate_venture | 1
+1998: Yicun Capital | venture_firm | 1
+1999: Yifeng Investment | venture_firm | 1
+2000: Yima Capital | venture_firm | 1
+2001: Yinxinggu Capital | venture_firm | 1
+2002: Yuri Sagalov | angel | 1
+2003: Yury Selivanov | angel | 1
+2004: ZMT | unclassified | 1
+2005: ZWC Ventures | venture_firm | 1
+2006: Zapier | corporate_venture | 1
+2007: Zebra Good Pte | venture_firm | 1
+2008: ZeePrime Capital | crypto_fund_or_dao | 1
+2009: Zen Chu | angel | 1
+2010: Zeno Rocha | angel | 1
+2011: Zero Prime | venture_firm | 1
+2012: Zerodha | corporate_venture | 1
+2013: Zhangjiang Group | public_investor | 1
+2014: Zhenfund | venture_firm | 1
+2015: Zhipu AI | corporate_venture | 1
+2016: Zillionize | venture_firm | 1
+2017: Zobito | venture_firm | 1
+2018: ZooCap | venture_firm | 1
+2019: Zscaler | corporate_venture | 1
+2020: Zypsy | accelerator | 1
+2021: basecase capital | venture_firm | 1
+2022: business angels | venture_firm | 1
+2023: canine.tools | unclassified | 1
+2024: e2vc | venture_firm | 1
+2025: embeDD | unclassified | 1

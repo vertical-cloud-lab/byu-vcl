@@ -1,0 +1,401 @@
+UiPath Announces Pricing of Initial Public Offering :: UiPath, Inc. (PATH) 
+
+[Contact us](https://www.uipath.com/company/contact-us)   [Sign in](https://cloud.uipath.com "Opens in a new window")
+
+* [Platform](https://www.uipath.com/platform/agentic-automation)
+
+    + [Explore the platform](https://www.uipath.com/platform/agentic-automation)
+    + [Pricing](https://www.uipath.com/pricing)
+    + [Support](https://www.uipath.com/support)
+
+    ---
+
+    ORCHESTRATION
+
+    + [Business orchestration](https://www.uipath.com/platform/agentic-automation/business-orchestration)
+    + [Process Intelligence](https://www.uipath.com/product/maestro/process-intelligence)
+    + [AI ecosystem](https://www.uipath.com/platform/agentic-automation/ai-ecosystem)
+
+    EXECUTION
+
+    + [Agentic AI](https://www.uipath.com/platform/agentic-automation/agentic-ai)
+    + [RPA](https://www.uipath.com/platform/agentic-automation/rpa)
+    + [API](https://www.uipath.com/platform/agentic-automation/api-automation)
+    + [Intelligent document processing](https://www.uipath.com/platform/agentic-automation/idp)
+
+    ---
+
+    GOVERNANCE
+
+    + [Security & governance](https://www.uipath.com/platform/agentic-automation/foundation/security-governance)
+    + [Data Fabric](https://www.uipath.com/product/data-fabric)
+    + [AI Trust](https://www.uipath.com/platform/agentic-automation/foundation#ai-trust)
+    + [Deployment](https://www.uipath.com/platform/agentic-automation/deployment-options)
+
+    FEATURED
+
+    + [CartographerNEW](https://www.uipath.com/product/cartographer)
+    + [DelegateNEW](https://www.uipath.com/product/delegate)
+    + [IXP](https://www.uipath.com/product/ixp)
+    + [Maestro AutomateNEW](https://www.uipath.com/product/maestro-automate)
+    + [Maestro Orchestrate](https://www.uipath.com/product/maestro)
+    + [UiPath for Coding Agents](https://www.uipath.com/developers/coding-agents)
+
+    [View all products](https://www.uipath.com/product)
+
+* [Solutions](https://www.uipath.com/solutions)
+
+    INDUSTRIES
+
+    [Banking & financial services](https://www.uipath.com/solutions/industry/banking-automation)
+
+    + [Financial crime compliance](https://www.uipath.com/solutions/industry/banking-automation/financial-crime-compliance)
+    + [Lending automation](https://www.uipath.com/solutions/industry/banking-automation/lending-automation)
+
+    ---
+
+    [Healthcare](https://www.uipath.com/solutions/industry/healthcare-automation)
+
+    + [Prior authorization](https://www.uipath.com/solutions/industry/healthcare-automation/prior-authorization)
+    + [Claim denial resolution & prevention](https://www.uipath.com/solutions/industry/healthcare-automation/denial-management)
+
+    ---
+
+    [Retail](https://www.uipath.com/solutions/industry/cpg-retail-automation)
+
+    + [Merchandising](https://www.uipath.com/solutions/industry/cpg-retail-automation/agentic-ai-merchandising)
+
+    [Manufacturing](https://www.uipath.com/solutions/industry/manufacturing-automation)
+
+    + [Commercial pricing](https://www.uipath.com/solutions/industry/manufacturing-automation/agentic-commercial-pricing)
+    + [Inventory management](https://www.uipath.com/solutions/industry/manufacturing-automation/inventory-management-automation)
+
+    ---
+
+    [Insurance](https://www.uipath.com/solutions/industry/insurance-automation) [Oil & gasNEW](https://www.uipath.com/solutions/industry/oil-and-gas-automation) [Public sector](https://www.uipath.com/solutions/industry/public-sector-automation)
+
+    ---
+
+    Browse  [all industries](https://www.uipath.com/solutions/industry)
+
+    DEPARTMENTS
+
+    [Finance & accounting](https://www.uipath.com/solutions/department/finance-and-accounting-automation)
+
+    + [Procure-to-pay](https://www.uipath.com/solutions/department/finance-and-accounting-automation/procure-to-pay)
+    + [Order-to-cash](https://www.uipath.com/solutions/department/finance-and-accounting-automation/order-to-cash)
+    + [Invoice processing](https://www.uipath.com/solutions/department/finance-and-accounting-automation/invoice-automation)
+
+    ---
+
+    [Supply Chain](https://www.uipath.com/solutions/department/supply-chain-automation) [Human Resources](https://www.uipath.com/solutions/department/hr-automation) [Contact Center](https://www.uipath.com/solutions/department/contact-center-automation) [IT](https://www.uipath.com/solutions/department/it-automation) [QA/QC](https://www.uipath.com/platform/agentic-testing)
+
+    ---
+
+    Browse  [all departments](https://www.uipath.com/solutions/department)
+
+* [Resources](https://www.uipath.com/resources/all)
+
+    GET STARTED
+
+    + [What is BOAT](https://www.uipath.com/automation/what-are-business-orchestration-and-automation-technologies)
+    + [Map of Work](https://www.uipath.com/ai/map-of-work)
+    + [AI agents](https://www.uipath.com/ai/ai-agents)
+    + [AI orchestration](https://www.uipath.com/ai/what-is-ai-orchestration)
+    + [Coding agents](https://www.uipath.com/ai/what-are-coding-agents)
+
+    [See all topics](https://www.uipath.com/automation)
+
+    ---
+
+    DIVE DEEPER
+
+    + [Events & webinars](https://www.uipath.com/events)
+    + [Demos & videos](https://www.uipath.com/resources/automation-demo)
+    + [White papers](https://www.uipath.com/resources/automation-whitepapers)
+    + [Analyst reports](https://www.uipath.com/resources/automation-analyst-reports)
+    + [Customer stories](https://www.uipath.com/resources/automation-case-studies)
+
+    NEWS
+
+    + [Blog](https://www.uipath.com/blog)
+    + [Newsroom](https://www.uipath.com/newsroom)
+    + [Investor relations](https://ir.uipath.com "Opens in a new window")
+
+    ---
+
+    TRAINING
+
+    + [Certifications](https://www.uipath.com/learning/certification)
+    + [Academy](https://www.uipath.com/rpa/academy)
+    + [Developer home](https://www.uipath.com/developers)
+
+    [All resources](https://www.uipath.com/resources/all)
+
+    SUPPORT
+
+    + [Customer portal](https://customerportal.uipath.com/ "Opens in a new window")
+    + [Customer support](https://www.uipath.com/support)
+    + [Community](https://www.uipath.com/community)
+    + [Professional services](https://www.uipath.com/support/professional-services)
+
+    ---
+
+    PARTNERS
+
+    + [UiPath Partner Network](https://www.uipath.com/partners)
+    + [Find a partner](https://www.uipath.com/partners/business-partners)
+    + [Become a partner](https://www.uipath.com/partners/become-a-partner)
+    + [Business partner portal](https://partnerportal.uipath.com/ "Opens in a new window")
+    + [Technology partner portal](https://techpartner.uipath.com/my-dashboard "Opens in a new window")
+* [Developers](https://www.uipath.com/developers)
+
+    DISCOVER
+
+    + [Developer home](https://www.uipath.com/developers "Opens in a new window")
+    + [Developer quick start](https://docs.uipath.com/getting-started/other/latest/developer-guide/overview "Opens in a new window")
+    + [Documentation](https://docs.uipath.com/ "Opens in a new window")
+    + [Release notes](https://docs.uipath.com/releasenotes "Opens in a new window")
+    + [Platform status](https://status.uipath.com "Opens in a new window")
+
+    ---
+
+    LEARN
+
+    + [Academy](https://www.uipath.com/rpa/academy)
+    + [Community blog](https://www.uipath.com/community-blog)
+    + [Tech blog](https://www.uipath.com/blog/technical-tuesday)
+    + [Labs](https://labs.uipath.com/ "Opens in a new window")
+
+    CONNECT
+
+    + [Community](https://www.uipath.com/community)
+    + [Events](https://www.uipath.com/events)
+    + [Newsletter](https://community.uipath.com/subscribe-me/ "Opens in a new window")
+    + [Forum](https://forum.uipath.com/ "Opens in a new window")
+    + [Marketplace](https://marketplace.uipath.com/ "Opens in a new window")
+    + [Support](https://www.uipath.com/support)
+* [Software testing](https://www.uipath.com/platform/agentic-testing)
+
+    EXPLORE
+
+    + [Agentic testing](https://www.uipath.com/platform/agentic-testing)
+    + [Enterprise applications](https://www.uipath.com/platform/agentic-testing/enterprise-applications)
+    + [Integrations](https://www.uipath.com/platform/agentic-testing/integrations)
+    + [Performance testing](https://www.uipath.com/platform/agentic-testing/performance-testing)
+    + [SAP testing](https://www.uipath.com/platform/agentic-testing/sap-testing)
+    + [Test automation](https://www.uipath.com/platform/agentic-testing/test-automation)
+
+    PRODUCT
+
+    + [Test Cloud](https://www.uipath.com/product/test-cloud)
+
+[Try UiPath free](https://cloud.uipath.com/portal_/register?subscriptionPlan=std-trial "Opens in a new window")
+
+* [Contact us](https://www.uipath.com/company/contact-us)
+* [Sign in](https://cloud.uipath.com "Opens in a new window")
+
+[Try UiPath free](https://cloud.uipath.com/portal_/register?subscriptionPlan=std-trial "Opens in a new window")
+
+News
+
+Investors 
+
+### Investors
+
+* [Overview](https://ir.uipath.com/)
+* [News](https://ir.uipath.com/news)
+* [Events & Presentations](https://ir.uipath.com/events-presentations)
+    + [Presentations](https://ir.uipath.com/events-presentations/presentations)
+* [Financials](https://ir.uipath.com/financials)
+    + [Quarterly Results](https://ir.uipath.com/financials/quarterly-results)
+    + [SEC Filings](https://ir.uipath.com/financials/sec-filings)
+* [Governance](https://ir.uipath.com/governance)
+    + [Executive Team](https://www.uipath.com/about-us/leadership "Opens in a new window")
+    + [Board of Directors](https://www.uipath.com/company/board-members "Opens in a new window")
+    + [Board Committees](https://ir.uipath.com/governance/board-committees)
+    + [Governance Documents](https://ir.uipath.com/governance/governance-documents)
+* [Stock Info](https://ir.uipath.com/stock-info)
+    + [Quote and Chart](https://ir.uipath.com/stock-info/quote-and-chart)
+    + [Historical Data](https://ir.uipath.com/stock-info/historical-data)
+    + [Analyst Coverage](https://ir.uipath.com/stock-info/analyst-coverage)
+* [Resources](https://ir.uipath.com/resources)
+    + [Contacts](https://ir.uipath.com/resources/contacts)
+    + [FAQ](https://ir.uipath.com/resources/faq)
+    + [Email Alerts](https://ir.uipath.com/resources/email-alerts)
+    + [ESG](https://www.uipath.com/company/environmental-social-and-governance "Opens in a new window")
+    + [Tax Policy](https://ir.uipath.com/resources/tax-policy)
+
+# UiPath Announces Pricing of Initial Public Offering
+
+April 20, 2021 9:23pm EDT  [Download as PDF](https://d1io3yog0oux5.cloudfront.net/_e62ed87e879fa9b67be22b456a864580/uipath/news/2021-04-20_UiPath_Announces_Pricing_of_Initial_Public_155.pdf "PDF: UiPath Announces Pricing of Initial Public Offering")
+
+NEW YORK--(BUSINESS WIRE)--
+UiPath, Inc. today announced the pricing of its initial public offering of 23,890,777 shares of Class A common stock at a price to the public of $56.00 per share. UiPath is offering 9,416,384 shares of Class A common stock and the selling stockholders named in the prospectus are offering 14,474,393 shares of Class A common stock. In addition, UiPath has granted the underwriters a 30-day option to purchase up to 3,583,616 additional shares of Class A common stock at the initial public offering price less underwriting discounts and commissions. UiPath will not receive any proceeds from the sale of shares by the selling stockholders.
+
+The shares are expected to begin trading on the New York Stock Exchange under the ticker symbol “PATH” on April 21, 2021, and the offering is expected to close on April 23, 2021, subject to customary closing conditions.
+
+Morgan Stanley and J.P. Morgan are acting as lead bookrunners for the offering. BofA Securities, Credit Suisse, Barclays, and Wells Fargo Securities are acting as active bookrunners for the offering. SMBC Nikko, BMO Capital Markets, Mizuho Securities, KeyBanc Capital Markets, TD Securities, Truist Securities, Cowen, Evercore ISI, Macquarie Capital, Nomura, and RBC Capital Markets are acting as passive bookrunners for the offering. Canaccord Genuity, D.A. Davidson & Co., Oppenheimer & Co., and Needham & Company are acting as co-managers for the offering.
+
+The offering is being made only by means of a prospectus. Copies of the final prospectus, when available, may be obtained from: Morgan Stanley & Co. LLC, 180 Varick Street, 2nd Floor, New York, New York 10014, Attn: Prospectus Department; or J.P. Morgan Securities LLC, c/o Broadridge Financial Solutions, 1155 Long Island Avenue, Edgewood, NY 11717, by telephone at 866-803-9204 or by email at [prospectus-eq\_fi@jpmorganchase.com](mailto:prospectus-eq_fi@jpmorganchase.com).
+
+A registration statement relating to the sale of these securities has been filed with, and declared effective by, the Securities and Exchange Commission. This press release shall not constitute an offer to sell or the solicitation of an offer to buy these securities, nor shall there be any sale of these securities in any state or jurisdiction in which such offer, solicitation or sale would be unlawful prior to registration or qualification under the securities laws of any such state or jurisdiction.
+
+**About UiPath**
+
+UiPath has a vision to deliver the Fully Automated Enterprise™, one where companies use automation to unlock their greatest potential. UiPath offers an end-to-end platform for automation, combining the leading Robotic Process Automation (RPA) solution with a full suite of capabilities that enable every organization to rapidly scale digital business operations.
+
+View source version on businesswire.com: <https://www.businesswire.com/news/home/20210420006244/en/>
+
+**Media Inquiries:**  
+Toni Iafrate   
+UiPath   
+[toni.iafrate@uipath.com](mailto:toni.iafrate@uipath.com)  
+978-239-5499
+
+**Investor Relations:**  
+UiPath IR   
+[investor.relations@uipath.com](mailto:investor.relations@uipath.com)
+
+Source: UiPath, Inc.
+
+Released April 20, 2021
+
+* [emailEmail Alerts](https://ir.uipath.com/resources/email-alerts)
+* [contact\_pageContacts](https://ir.uipath.com/resources/contacts)
+* [rss\_feedRSS News Feed](https://ir.uipath.com/news/rss "Opens in a new window")
+* [account\_treeSitemap](https://ir.uipath.com/sitemap)
+
+[Contact Us](https://www.uipath.com/company/contact-us)   [Sign In](https://cloud.uipath.com)
+
+* [English](https://www.uipath.com)
+* [Deutsch](https://www.uipath.com/de)
+* [Français](https://www.uipath.com/fr)
+* [Português](https://www.uipath.com/pt)
+* [Español](https://www.uipath.com/es)
+* [简体中文](https://www.uipath.com.cn)
+* [日本語](https://www.uipath.com/ja)
+* [대한민국](https://www.uipath.com/ko)
+* [繁體中文](https://www.uipath.com/tw)
+
+Platform
+
+* [Explore the UiPath Platform](https://www.uipath.com/platform/agentic-automation)
+* [Plans and pricing](https://www.uipath.com/pricing)
+* [Support](https://www.uipath.com/support)
+
+###### Capabilities
+
+* [Business orchestration](https://www.uipath.com/platform/agentic-automation/business-orchestration)
+* [Process intelligence](https://www.uipath.com/product/maestro/process-intelligence)
+* [AI ecosystem](https://www.uipath.com/platform/agentic-automation/ai-ecosystem)
+* [Agentic AI](https://www.uipath.com/platform/agentic-automation/agentic-ai)
+* [RPA](https://www.uipath.com/platform/agentic-automation/rpa)
+* [API](https://www.uipath.com/platform/agentic-automation/api-automation)
+* [Intelligent document processing](https://www.uipath.com/platform/agentic-automation/idp)
+* [Security & governance](https://www.uipath.com/platform/agentic-automation/foundation/security-governance)
+* [Data Fabric](https://www.uipath.com/product/data-fabric)
+* [AI trust](https://www.uipath.com/platform/agentic-automation/foundation#ai-trust)
+* [Deployment](https://www.uipath.com/platform/agentic-automation/deployment-options)
+
+Products
+
+* [Apps](https://www.uipath.com/product/apps)
+* [Autopilot](https://www.uipath.com/product/autopilot)
+* [Cartographer](https://www.uipath.com/product/cartographer)
+* [Delegate](https://www.uipath.com/product/delegate)
+* [Integration Service](https://www.uipath.com/product/integration-service)
+* [IXP](https://www.uipath.com/product/ixp)
+* [Maestro Automate](https://www.uipath.com/product/maestro-automate)
+* [Maestro BPMN](https://www.uipath.com/product/maestro/business-process-modeling-notation)
+* [Maestro Case](https://www.uipath.com/product/maestro/case-management)
+* [Maestro Flow](https://www.uipath.com/product/maestro/flow)
+* [Maestro Orchestrate](https://www.uipath.com/product/maestro)
+* [Orchestrator](https://www.uipath.com/product/orchestrator)
+* [ScreenPlay](https://www.uipath.com/platform/agentic-automation/rpa-and-api/ui-automation/screenplay)
+* [Studio](https://www.uipath.com/product/studio)
+* [Test Cloud](https://www.uipath.com/product/test-cloud)
+* [UiPath for Coding Agents](https://www.uipath.com/developers/coding-agents)
+
+Solutions & Resources
+
+###### Solutions
+
+* [By industry](https://www.uipath.com/solutions/industry)
+* [By department](https://www.uipath.com/solutions/department)
+* [Ready to deploy](https://www.uipath.com/solutions/pre-built)
+
+###### Learning
+
+* [Academy](https://www.uipath.com/rpa/academy)
+* [Certifications](https://www.uipath.com/learning/certification)
+* [Developer home](https://www.uipath.com/developers)
+
+###### Support & Community
+
+* [Customer support](https://www.uipath.com/support)
+* [Customer portal](https://customerportal.uipath.com/)
+* [Documentation](https://docs.uipath.com/)
+* [Forum](https://forum.uipath.com/)
+* [Community blog](https://www.uipath.com/community-blog)
+* [Community events](https://communityevents.uipath.com/)
+* [Service status](https://status.uipath.com/)
+* [Marketplace](https://marketplace.uipath.com/)
+
+###### Resource Center
+
+* [Blog](https://www.uipath.com/blog)
+* [Analyst reports](https://www.uipath.com/resources/automation-analyst-reports)
+* [Case studies](https://www.uipath.com/resources/automation-case-studies)
+* [White papers](https://www.uipath.com/resources/automation-whitepapers)
+* [Webinars](https://www.uipath.com/resources/automation-webinars)
+* [Brochures](https://www.uipath.com/resources/automation-brochures)
+* [Demos and videos](https://www.uipath.com/resources/automation-demo)
+
+###### Events
+
+* [UiPath FUSION (multi-city)](https://www.uipath.com/events/fusion/global)
+* [UiPath DevCon](https://www.uipath.com/events/devcon)
+* [See all events](https://www.uipath.com/events)
+
+Partners
+
+* [UiPath Partner Network](https://www.uipath.com/partners)
+* [Find a partner](https://www.uipath.com/partners/business-partners)
+* [Become a partner](https://www.uipath.com/partners/become-a-partner)
+* [Grow as a partner](https://www.uipath.com/partners/grow)
+* [Business partner portal](https://partnerportal.uipath.com/)
+* [Technology partner portal](https://techpartner.uipath.com/my-dashboard)
+
+Company
+
+* [About us](https://www.uipath.com/about-us)
+* [Careers](https://www.uipath.com/careers)
+* [Careers blog](https://www.uipath.com/inside-the-rocketship)
+* [Newsroom](https://www.uipath.com/newsroom)
+* [Investor relations](https://ir.uipath.com)
+* [Trust & security](https://www.uipath.com/legal/trust-and-security)
+* [UiPath using UiPath](https://www.uipath.com/company/workplace-automation)
+* [UiPath gift shop](https://uipath.bamkostores.com/)
+* [UiPath Foundation](https://uipathfoundation.com)
+* [Code of conduct](https://www.uipath.com/assets/downloads/global-code-conduct)
+* [Report ethical concerns](https://secure.ethicspoint.eu/domain/media/en/gui/107361/index.html)
+* [Employment scams](https://www.uipath.com/company/careers/fraudulent-job-scams)
+
+Let's connect
+
+* 
+* 
+* 
+* 
+*
+
+* [Trust & security](https://www.uipath.com/legal/trust-and-security)
+* [Terms of Use](https://www.uipath.com/legal/terms-of-use)
+* [Privacy Policy](https://www.uipath.com/legal/privacy-policy)
+* [Cookies Policy](https://www.uipath.com/legal/cookies-policy)
+*
+The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. UiPath® is a registered trademark in the United States and several countries across the globe. See TMEP 906.
+
+© 2005-2026 UiPath. All rights reserved.
+

@@ -1,0 +1,25 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+tailwindlabs,Tailwind Labs,U1,"Tailwind CSS, MIT; sells Tailwind Plus components and templates",,yes,US,,acquired,none_found,0,"Joined Shopify Sept 2026 (acquisition, not a funding round); no outside round found in leads or Tailwind blog.",https://tailwindcss.com/blog/tailwind-is-joining-shopify,2026-11-26T06:05:21Z
+openbq-org,OpenBB Inc.,U1,OpenBB platform on GitHub; sells OpenBB Workspace enterprise edition,,yes,US,2021,private,yes,1,,https://techcrunch.com/2024/10/07/fintech-openbb-aims-to-be-more-than-an-open-source-bloomberg-terminal/,2026-11-26T06:05:21Z
+nocodb,NocoDB,U1,NocoDB open-source Airtable alternative; sells NocoDB Cloud and Enterprise,,yes,US,2021,private,yes,1,,,2026-11-26T06:05:21Z
+dbeaver,DBeaver Corp,U1,"DBeaver Community, Apache-2.0; sells DBeaver PRO editions",,yes,US,,private,yes,1,,,2026-11-26T06:05:21Z
+milvus-io,Zilliz,U1,"Milvus, Apache-2.0, LF AI & Data graduated; Zilliz sells hosted Milvus",,yes,US,2017,private,yes,2,Earlier rounds (~$10M before Series B) not found.,,2026-11-26T06:05:21Z
+lightpanda-io,Lightpanda,U1,"Lightpanda browser, AGPL on GitHub; sells hosted cloud browser",,yes,FR,,private,yes,1,,,2026-11-26T06:05:21Z
+pola-rs,Polars B.V.,U1,"Polars dataframe library, MIT; sells Polars Cloud",,yes,NL,2022,private,yes,2,Seed lead written as Bain Capital Ventures but source only says Bain Capital.,,2026-11-26T06:05:21Z
+directus,Monospace Inc. (Directus),U1,"Directus, BSL 1.1 source-available; sells Directus Cloud and enterprise licences",,yes,US,,private,yes,1,Round details not found.,,2026-11-26T06:05:21Z
+rethinkdb,RethinkDB,U1,"RethinkDB, now Apache-2.0 under Linux Foundation; company shut down 2016",,yes,US,2009,shut_down,yes,3,TechCrunch 2017 says about $12.2M raised in total.,https://techcrunch.com/2017/02/06/the-cloud-native-compute-foundation-acquires-rethingdbs-source-code/,2026-11-26T06:05:21Z
+symfony,Symfony SAS,U1,"Symfony PHP framework, MIT; sells training, certification, support and SymfonyInsight",,yes,FR,,private,yes,1,,,2026-11-26T06:05:21Z
+temporalio,Temporal Technologies,U1,"Temporal, MIT; sells Temporal Cloud",,yes,US,2019,private,yes,7,"Series E co-leads: Wellington, Goldman Sachs, Tiger Global also listed as participants.",,2026-11-26T06:05:21Z
+tracel-ai,Tracel Inc.,U1,"Burn and CubeCL, largely open-source; company sells solutions on that stack",,yes,CA,,private,yes,1,,,2026-11-26T06:20:01Z
+multica-ai,Multica,U1,sells hosted Multica Cloud and commercial licences,,yes,,,unknown,none_found,0,"No leads; home page loaded, no funding mention.",https://multica.ai,2026-11-26T06:20:01Z
+nexu-io,"Powerformer, Inc.",U1,sells OpenDesign Cloud paid plans and Team/Enterprise,,yes,,,unknown,none_found,0,No leads; open-design.ai home page shows no funding mention.,https://open-design.ai,2026-11-26T06:20:01Z
+lobehub,LobeHub,U1,sells LobeHub Cloud subscriptions,,yes,US,,unknown,none_found,0,No leads; lobehub.com not readable by curl (blocked). Unverified; memory suggests possible funding but not recorded.,,2026-11-26T06:20:01Z
+go-gitea,Gitea Ltd / CommitGo,U1,maintainers' company sells Gitea Cloud and Enterprise,,yes,,,unknown,none_found,0,No leads; gitea.com and blog show no funding mention.,https://gitea.com,2026-11-26T06:20:01Z
+vxcontrol,VXControl L.L.C-FZ,U1,security studio; PentAGI flagship with Enterprise edition,,yes,AE,,unknown,none_found,0,No leads; home page shows no funding mention.,https://vxcontrol.com,2026-11-26T06:20:01Z
+ScrapeGraphAI,ScrapeGraphAI,U1,sells hosted ScrapeGraph API,,yes,US,,unknown,none_found,0,"No leads; home page shows no funding mention. memory: possible seed round, unverified.",https://www.scrapegraphai.com,2026-11-26T06:20:01Z
+JaidedAI,Jaided AI,U1,company whose only product is EasyOCR; no paid tier listed now,,yes,TH,,private,none_found,0,Site describes itself as a small independent AI lab; no funding stated.,https://jaided.ai,2026-11-26T06:20:01Z
+BloopAI,Bloop AI,U1,offered hosted Vibe Kanban Cloud; Vibe Kanban sunsetting,,yes,GB,,unknown,none_found,0,"No leads; vibekanban.com shows no funding mention. memory: earlier investors possible, unverified.",https://www.vibekanban.com,2026-11-26T06:20:01Z
+monicahq,Monica,U1,sells hosted Monica accounts,,yes,CA,,private,none_found,0,Leads were name-collision noise; home page shows no funding mention.,https://monicahq.com,2026-11-26T06:20:01Z
+dracula,Dracula Theme (Zeno Rocha),U1,sells Dracula Pro,,yes,,,private,none_found,0,No leads; site shows no funding mention.,https://draculatheme.com,2026-11-26T06:20:01Z
+meshpro,MeshPro,U1,sells licences for Nico Schlömer's mesh tools,,yes,DE,,private,none_found,0,No leads; no pages found.,,2026-11-26T06:20:01Z
+quartiq,QUARTIQ GmbH,U1,company sells Sinara hardware and firmware services,,yes,DE,,private,none_found,0,No leads; quartiq.de not readable.,,2026-11-26T06:20:01Z

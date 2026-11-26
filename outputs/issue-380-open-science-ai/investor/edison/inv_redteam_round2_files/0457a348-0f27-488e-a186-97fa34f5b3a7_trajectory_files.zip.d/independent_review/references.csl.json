@@ -1,0 +1,1698 @@
+[
+  {
+    "DOI": "10.1111/jofi.12867",
+    "ISSN": "1540-6261",
+    "URL": "http://dx.doi.org/10.1111/jofi.12867",
+    "author": [
+      {
+        "family": "FARRE\u2010MENSA",
+        "given": "JOAN"
+      },
+      {
+        "family": "HEGDE",
+        "given": "DEEPAK"
+      },
+      {
+        "family": "LJUNGQVIST",
+        "given": "ALEXANDER"
+      }
+    ],
+    "container-title": "The Journal of Finance",
+    "id": "FARREMENSA2019",
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          12
+        ]
+      ]
+    },
+    "page": "639-682",
+    "publisher": "Wiley",
+    "title": "What is a patent worth? Evidence from the u.s. Patent \u201clottery\u201d",
+    "type": "article-journal",
+    "volume": "75"
+  },
+  {
+    "DOI": "10.2139/ssrn.4693148",
+    "URL": "http://dx.doi.org/10.2139/ssrn.4693148",
+    "author": [
+      {
+        "family": "Hoffmann",
+        "given": "Manuel"
+      },
+      {
+        "family": "Nagle",
+        "given": "Frank"
+      },
+      {
+        "family": "Zhou",
+        "given": "Yanuo"
+      }
+    ],
+    "id": "Hoffmann2024",
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "publisher": "Elsevier BV",
+    "title": "The value of open source software",
+    "type": "article-journal"
+  },
+  {
+    "URL": "https://view.news.eu.nasdaq.com/view?id=b44b16fc1e4726d465438fae692b5b67f",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Nasdaq Helsinki"
+      }
+    ],
+    "id": "nasdaq2016qt",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          4,
+          28
+        ]
+      ]
+    },
+    "title": "Listing on the official list of nasdaq helsinki: Qt group plc on 2 may 2016",
+    "title-short": "Listing on the official list of nasdaq helsinki",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://qconlondon.com/london2018/london-2011/qconlondon.com/london-2011/presentation/Who%2bMoved%2bMy%2bModule.html",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "QCon London"
+      }
+    ],
+    "id": "qcon2011landman",
+    "title": "Who moved my module: Yoav landman, co-founder and CTO of JFrog",
+    "title-short": "Who moved my module",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.nber.org/system/files/working_papers/w23268/w23268.pdf",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "National Bureau of Economic Research"
+      }
+    ],
+    "id": "nber2019patent",
+    "title": "What is a patent worth? Evidence from the u.s. Patent lottery",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/QQQ?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026qqq",
+    "title": "Historical daily price chart: QQQ, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/MDB?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026mdb",
+    "title": "Historical daily price chart: MDB, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/ESTC?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026estc",
+    "title": "Historical daily price chart: ESTC, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/FROG?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026frog",
+    "title": "Historical daily price chart: FROG, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/KLTR?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026kltr",
+    "title": "Historical daily price chart: KLTR, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/GTLB?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026gtlb",
+    "title": "Historical daily price chart: GTLB, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/TEAM?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026team",
+    "title": "Historical daily price chart: TEAM, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/NTNX?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026ntnx",
+    "title": "Historical daily price chart: NTNX, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/APPN?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026appn",
+    "title": "Historical daily price chart: APPN, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/HUCK?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026huck",
+    "title": "Historical daily price chart: HUCK, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/PD?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026pd",
+    "title": "Historical daily price chart: PD, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/FSLY?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026fsly",
+    "title": "Historical daily price chart: FSLY, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/DT?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026dt",
+    "title": "Historical daily price chart: DT, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/NET?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026net",
+    "title": "Historical daily price chart: NET, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/DDOG?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026ddog",
+    "title": "Historical daily price chart: DDOG, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/SNOW?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026snow",
+    "title": "Historical daily price chart: SNOW, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/U?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026u",
+    "title": "Historical daily price chart: U, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/PLTR?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026pltr",
+    "title": "Historical daily price chart: PLTR, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/DOCN?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026docn",
+    "title": "Historical daily price chart: DOCN, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/AVPT?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026avpt",
+    "title": "Historical daily price chart: AVPT, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/BLZE?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026blze",
+    "title": "Historical daily price chart: BLZE, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/IGV?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026igv",
+    "title": "Historical daily price chart: IGV, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/EURUSD=X?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026eurusdx",
+    "title": "Historical daily price chart: EURUSD=x, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/NABL?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026nabl",
+    "title": "Historical daily price chart: NABL, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/TENB?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026tenb",
+    "title": "Historical daily price chart: TENB, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/PATH?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026path",
+    "title": "Historical daily price chart: PATH, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/AI?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026ai",
+    "title": "Historical daily price chart: AI, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/AMPL?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026ampl",
+    "title": "Historical daily price chart: AMPL, accessed 25 november 2026",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.businesswire.com/news/home/20230418006219/en/Strateos-Announces-Strategic-Shift-to-Focus-on-Customer-Demand-for-On-Site-Cloud-Labs",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Strateos"
+      }
+    ],
+    "id": "strateos2023shift",
+    "issued": {
+      "date-parts": [
+        [
+          2023,
+          4,
+          18
+        ]
+      ]
+    },
+    "title": "Strateos announces strategic shift to focus on customer demand for on-site cloud labs",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://forgeglobal.com/opentrons_stock/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Forge Global"
+      }
+    ],
+    "id": "forge2026opentrons",
+    "title": "Opentrons stock: Funding rounds and valuation",
+    "title-short": "Opentrons stock",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://ir.rackspace.com/news-releases/news-release-details/rackspace-technology-announces-pricing-initial-public-offering/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Rackspace Technology"
+      }
+    ],
+    "id": "rackspace2020ipo",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          8,
+          4
+        ]
+      ]
+    },
+    "title": "Rackspace technology announces pricing of initial public offering",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://ir.ksyun.com/news-releases/news-release-details/kingsoft-cloud-announces-pricing-initial-public-offering/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Kingsoft Cloud"
+      }
+    ],
+    "id": "kingsoft2020ipo",
+    "title": "Kingsoft cloud announces pricing of initial public offering",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.sec.gov/Archives/edgar/data/1800667/000119312520228195/d841831ds1.htm",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "JFrog"
+      }
+    ],
+    "id": "jfrog2020s1",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          8,
+          24
+        ]
+      ]
+    },
+    "title": "Form s-1 registration statement",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://news.cision.com/qt-group/r/trading-in-qt-shares-on-nasdaq-helsinki-begins-today,c2000035",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Qt Group"
+      }
+    ],
+    "id": "qt2016trading",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          5,
+          2
+        ]
+      ]
+    },
+    "title": "Trading in qt shares on nasdaq helsinki begins today",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://supabase.com/blog/supabase-series-f",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Supabase"
+      }
+    ],
+    "id": "supabase2026seriesf",
+    "title": "Supabase series f",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://blog.cloudflare.com/vinext/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Cloudflare"
+      }
+    ],
+    "id": "cloudflare2026vinext",
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          2,
+          24
+        ]
+      ]
+    },
+    "title": "How we rebuilt next.js with AI in one week",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://cusp.ai/blog/launching-our-ai-materials-foundry-and-450-million-series-b/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "CuspAI"
+      }
+    ],
+    "id": "cusp2026foundry",
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          6,
+          15
+        ]
+      ]
+    },
+    "type": "webpage",
+    "title": "Launching our AI Materials Foundry and $450 million Series B"
+  },
+  {
+    "DOI": "10.1162/rest_a_00926",
+    "ISSN": "1530-9142",
+    "URL": "http://dx.doi.org/10.1162/rest_a_00926",
+    "author": [
+      {
+        "family": "Bryan",
+        "given": "Kevin A."
+      },
+      {
+        "family": "Ozcan",
+        "given": "Yasin"
+      }
+    ],
+    "container-title": "The Review of Economics and Statistics",
+    "id": "Bryan2021",
+    "issue": "5",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          11
+        ]
+      ]
+    },
+    "page": "954-967",
+    "publisher": "MIT Press",
+    "title": "The impact of open access mandates on invention",
+    "type": "article-journal",
+    "volume": "103"
+  },
+  {
+    "DOI": "10.1016/j.isci.2023.107740",
+    "ISSN": "2589-0042",
+    "URL": "http://dx.doi.org/10.1016/j.isci.2023.107740",
+    "author": [
+      {
+        "family": "Probst",
+        "given": "Benedict"
+      },
+      {
+        "family": "Lohmann",
+        "given": "Paul M."
+      },
+      {
+        "family": "Kontoleon",
+        "given": "Andreas"
+      },
+      {
+        "family": "Anad\u00f3n",
+        "given": "Laura D\u00edaz"
+      }
+    ],
+    "container-title": "iScience",
+    "id": "Probst2023",
+    "issue": "10",
+    "issued": {
+      "date-parts": [
+        [
+          2023,
+          10
+        ]
+      ]
+    },
+    "page": "107740",
+    "publisher": "Elsevier BV",
+    "title": "The impact of open access mandates on scientific research and technological development in the u.s.",
+    "type": "article-journal",
+    "volume": "26"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/RXT?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026rxt",
+    "title": "Historical daily price chart: RXT",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/KC?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026kc",
+    "title": "Historical daily price chart: KC",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/QTCOM.HE?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026qtcomhe",
+    "title": "Historical daily price chart: QTCOM.HE",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.tenable.com/press-releases/tenable-announces-pricing-of-initial-public-offering",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Tenable"
+      }
+    ],
+    "id": "tenable2018ipo",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          7,
+          26
+        ]
+      ]
+    },
+    "title": "Tenable announces pricing of initial public offering",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://ir.uipath.com/news/detail/155/uipath-announces-pricing-of-initial-public-offering",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "UiPath"
+      }
+    ],
+    "id": "uipath2021ipo",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          4,
+          20
+        ]
+      ]
+    },
+    "title": "UiPath announces pricing of initial public offering",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.c3.ai/news/c3-ai-announces-pricing-of-initial-public-offering",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "C3.ai"
+      }
+    ],
+    "id": "c32020ipo",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          12,
+          9
+        ]
+      ]
+    },
+    "title": "C3.ai announces pricing of initial public offering",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://github.com/Opentrons/ot2",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Opentrons"
+      }
+    ],
+    "id": "opentronsot2",
+    "title": "OT2 robot hardware files",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://sosv.com/sosv-hax-alum-opentrons-raises-200-million-reaching-1-8-billion-valuation/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "SOSV"
+      }
+    ],
+    "id": "opentrons2021funding",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          9,
+          24
+        ]
+      ]
+    },
+    "title": "SOSV HAX alum opentrons raises $200 million, reaching$1.8 billion valuation",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.renaissancecapital.com/IPO-Center/News/86559/amplitudes-nasdaq-reference-price-is-set-at-35-ahead-of-direct-listing",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Renaissance Capital"
+      }
+    ],
+    "id": "amplitude2021reference",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          9,
+          28
+        ]
+      ]
+    },
+    "type": "webpage",
+    "title": "Amplitude's Nasdaq reference price is set at $35 ahead of direct listing"
+  },
+  {
+    "URL": "https://www.epo.org/en/legal/epc/2020/a55.html",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "European Patent Office"
+      }
+    ],
+    "id": "epo2020article55",
+    "title": "Article 55: Non-prejudicial disclosures",
+    "title-short": "Article 55",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.uspto.gov/web/offices/pac/mpep/s2151.html",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "United States Patent and Trademark Office"
+      }
+    ],
+    "id": "uspto2026aia",
+    "title": "MPEP 2151: Overview of the changes to 35 u.s.c. 102 and 103 in the AIA",
+    "title-short": "MPEP 2151",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "National Institute of Standards and Technology"
+      }
+    ],
+    "id": "nist2026bayhdole",
+    "title": "Reviewing a domestic manufacture waiver request | NIST",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.nsf.gov/funding/data-management-plan",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "National Science Foundation"
+      }
+    ],
+    "id": "nsf2026data",
+    "title": "Preparing your data management and sharing plan",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://query2.finance.yahoo.com/v8/finance/chart/CRM?period1=1388534400&period2=1795651200&interval=1d&events=div%2Csplits",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Yahoo Finance"
+      }
+    ],
+    "id": "yahoo2026crm",
+    "title": "Historical daily price chart: CRM",
+    "title-short": "Historical daily price chart",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.investors.com/news/technology/bevy-of-big-data-companies-make-ipos/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Pete Barlas"
+      }
+    ],
+    "id": "newrelic2014close",
+    "issued": {
+      "date-parts": [
+        [
+          2014,
+          12,
+          12
+        ]
+      ]
+    },
+    "title": "New relic, hortonworks win big on crowded IPO day",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.finanzen.net/nachricht/aktien/erster-handelstag-suse-ipo-boersengang-von-suse-durchwachsen-aktie-mittlerweile-fester-10144575",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "finanzen.net"
+      }
+    ],
+    "id": "suse2021close",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          5,
+          19
+        ]
+      ]
+    },
+    "title": "SUSE-IPO: B\u00f6rsengang von SUSE durchwachsen - aktie mittlerweile fester",
+    "title-short": "SUSE-IPO",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://climateinnovation.impactmap.cam.ac.uk/cusp-ai/",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Cambridge Climate Innovation Ecosystem"
+      }
+    ],
+    "id": "cambridge2026cusp",
+    "title": "Cusp AI",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://www.wsgr.com/en/insights/wilson-sonsini-advises-periodic-labs-on-dollar300-million-seed-round.html",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Wilson Sonsini Goodrich and Rosati"
+      }
+    ],
+    "id": "wsgr2025periodic",
+    "issued": {
+      "date-parts": [
+        [
+          2025,
+          10,
+          1
+        ]
+      ]
+    },
+    "type": "webpage",
+    "title": "Wilson Sonsini Advises Periodic Labs on $300 Million Seed Round"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/dal/dal_openness_audit.md",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacydal",
+    "title": "DAL and #318: An openness audit",
+    "title-short": "DAL and #318",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/companies/CASEBOOK.md",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacycasebook",
+    "title": "Casebook: Organizations, one by one",
+    "title-short": "Casebook",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/README.md",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacyreadme",
+    "title": "The value of open science in the age of AI (issue #380)",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/FINDINGS_BRIEF.md",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacybrief",
+    "title": "Findings brief: The value of open science in the age of AI (issue #380)",
+    "title-short": "Findings brief",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/RECOMMENDATIONS.md",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacyrecommendations",
+    "title": "What this means for the vertical cloud lab: A playbook from the evidence (8 actions)",
+    "title-short": "What this means for the vertical cloud lab",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/companies/companies_master.csv",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacymaster",
+    "title": "Open science research case data: Companies/companies_master.csv",
+    "title-short": "Open science research case data",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/companies/events.csv",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacyevents",
+    "title": "Open science research case data: Companies/events.csv",
+    "title-short": "Open science research case data",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/data/relicense_event_study.csv",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacyrelicense",
+    "title": "Open science research case data: Data/relicense_event_study.csv",
+    "title-short": "Open science research case data",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/data/closing_moves_vs_ipo_acquisition.csv",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacyclosing",
+    "title": "Open science research case data: Data/closing_moves_vs_ipo_acquisition.csv",
+    "title-short": "Open science research case data",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/db24bf3/outputs/issue-380-open-science-ai/gh-mining/commercialization_digest.md",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Vertical Cloud Lab"
+      }
+    ],
+    "id": "legacykit",
+    "title": "Lab commercialization evidence digest",
+    "type": "webpage"
+  },
+  {
+    "URL": "https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-5808814",
+    "accessed": {
+      "date-parts": [
+        [
+          2026,
+          11,
+          25
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Sterling Baird"
+      }
+    ],
+    "id": "baird2023kit",
+    "title": "Selling the self-driving-lab demo kit: Discussion 124",
+    "title-short": "Selling the self-driving-lab demo kit",
+    "type": "webpage"
+  }
+]

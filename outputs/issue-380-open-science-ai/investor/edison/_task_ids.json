@@ -1,0 +1,180 @@
+{
+ "inv_coss_financial_evidence": {
+  "task_id": "15621a66-fecd-4ed5-a1ee-8d69fe74e577",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "From an equity investor's point of view, what does the empirical evidence show about the financial performance of commercial open-source software (COSS) companies compared with proprietary software companies? Cover revenue growth, gross and operating margins, conversion of free users to paying customers, net revenue retention, valuation multiples, post-IPO stock returns, acquisition prices relative to IPO prices, and venture-capital exit outcomes including failures and shutdowns. Give particular weight to independent academic studies and to evidence that cuts against open source as a business model (free-riding by cloud providers, open-core cannibalization, licence changes and the forks they provoke). Assess the methodology and possible conflicts of interest of industry reports produced by open-source-focused venture firms, foundations or trade groups (for example the 2025 Linux Foundation / Serena / COSSA report on COSS venture outcomes). Report numbers, samples, years and limitations.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:49.343775+00:00"
+ },
+ "inv_open_hardware_risks": {
+  "task_id": "86a0501b-d2db-4b1c-8f38-6456ceba86ef",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "What are the main business and investment risks for companies whose products are open-source hardware, including scientific and laboratory instruments, 3D printers and electronics? Cover cloning and low-cost copies, margin compression, the difficulty of protecting designs (patents, trademarks, licences such as CERN-OHL), liability, certification and regulatory costs, inventory and working capital, small or price-sensitive markets such as academic labs, and access to venture capital. What is the evidence on the financial outcomes of open-hardware firms (for example Arduino, Prusa Research, MakerBot, LulzBot/Aleph Objects, Adafruit, SparkFun, Opentrons, OpenBCI, Open Bionics), and has any reached a venture-scale outcome? Include counterexamples and quantitative data.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:50.156055+00:00"
+ },
+ "inv_disclosure_ip_physsci": {
+  "task_id": "eb22d598-4804-4dc0-9614-8f805bdac2f8",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "How does open disclosure (publishing results, data, designs and code openly and early) affect the ability of science-based startups in the physical sciences and engineering (materials, chemistry, devices, manufacturing) to secure patents, attract venture capital and license technology? Include evidence on how patents affect startup financing and growth (for example Farre-Mensa, Hegde & Ljungqvist 2020; Hsu & Ziedonis 2013), on patent-paper pairs and the disclosure-appropriability trade-off, on novelty bars and grace periods (US 35 U.S.C. 102(b)(1) versus Europe), on university technology transfer under Bayh-Dole, and on cases where openness instead increased follow-on investment or adoption. What risks does an open-by-default policy create for investors in a university spin-out, and how have successful science companies managed them?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:51.291318+00:00"
+ },
+ "inv_lab_automation_outcomes": {
+  "task_id": "dcfc1e4f-1661-470e-8e79-2c855c8e5e04",
+  "job": "job-futurehouse-paperqa3",
+  "query": "What have been the financial outcomes and main failure modes of venture investments in laboratory automation, cloud laboratories, self-driving laboratories and AI-driven materials and chemistry discovery since 2010 (for example Zymergen, Ginkgo Bioworks, Strateos/Transcriptic, Emerald Cloud Lab, Kebotix, Citrine Informatics, Opentrons, Berkeley Lights, Recursion, Chemspeed, Periodic Labs, Lila Sciences)? Cover market size, customer concentration, dependence on academic and government research budgets, sales cycles, capital intensity, technical and reproducibility risk, time to revenue, valuations, down rounds, write-downs and exits. What lessons do investors and analysts draw?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:52.372671+00:00"
+ },
+ "inv_ai_age_open_economics": {
+  "task_id": "e264655a-7c5b-4ed2-8839-e2aaf867d8a0",
+  "job": "job-futurehouse-paperqa3",
+  "query": "How is generative AI changing the economics and risks of open-source software, open data and open science for the organizations that produce them? Include evidence on AI models trained on open code and open scientific data (who captures the value), declines in community Q&A and documentation traffic after ChatGPT (for example studies of Stack Overflow), effects of AI coding assistants on open-source contribution and maintenance, load from AI crawlers on open infrastructure, AI-generated low-quality contributions and bug reports burdening maintainers, and whether AI lowers the cost of copying or re-implementing open products. What do these imply for investors in open-source or open-science businesses?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:53.048550+00:00"
+ },
+ "inv_public_funding_dependence": {
+  "task_id": "c7016e31-eec1-4bd4-a4b8-d3ef663b61e7",
+  "job": "job-futurehouse-paperqa3",
+  "query": "How much do open scientific infrastructure, open-source research software and the academic market for laboratory tools depend on government research funding, and what happens to them when that funding is cut or becomes volatile? Include evidence on maintainer concentration and the bus factor (for example the finding by Hoffmann, Nagle and Zhou 2024 that a small share of developers create most of the value of open-source software), sustainability failures of open research infrastructure, the share of laboratory-equipment and life-science-tools revenue that comes from academic and government customers, and the effects of US federal science budget changes in 2025 and 2026 (NSF, NIH, DOE, caps on indirect costs) on research spending and on companies that sell to academic labs.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:53.951832+00:00"
+ },
+ "inv_precedent_open_hw_unicorn": {
+  "task_id": "9df49b48-062e-4321-81a9-575eed39f1f3",
+  "job": "job-futurehouse-paperqa3-precedent",
+  "query": "Has any company whose main products are open-source hardware (complete design files published under an open-source hardware licence) reached a valuation or an exit of US$1 billion or more?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:55.131511+00:00"
+ },
+ "inv_precedent_open_sdl_business": {
+  "task_id": "77ff8a74-7304-4623-ac46-9bd3b849a8b2",
+  "job": "job-futurehouse-paperqa3-precedent",
+  "query": "Has any company built a profitable or venture-backed business by selling open-source self-driving laboratory or open-source laboratory automation systems (published hardware designs and software) for chemistry or materials science?",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T00:45:56.060511+00:00"
+ },
+ "inv_redteam_round1": {
+  "task_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "The attached files are a research brief (FINDINGS_BRIEF.md) and recommendations (RECOMMENDATIONS.md) on 'the value of open science in the age of AI', written by an AI agent (Claude) for a university lab that builds open-source self-driving laboratories and favours open science, together with the agent's dataset of 179 organizations (companies_master.csv, scored 0-4 for openness at founding and now under SCHEMA.md, with funding, latest value and ownership status), their dated licence and access events (events.csv), and draft proposal language for the lab's autonomous alloy-discovery lab (suggested_proposal_language.md). Act as a skeptical member of a venture fund's investment committee who is evaluating an open-science or open-source company in the physical sciences, for example a spin-out of that alloy-discovery lab. (1) Identify the claims in the brief and recommendations that are weakest, overstated, or framed in a way that favours openness, and explain why. (2) Using the dataset, test whether openness (now, or at founding) is associated with value captured: compute value-to-funding multiples, acquisition, take-private and shutdown rates, and value distributions by openness level and by sector; quantify survivorship and selection bias where you can; report effect sizes with uncertainty and sample sizes. (3) List the ten most important concerns an investor would have about this kind of investment, ranked by severity, each with the evidence for and against it. (4) State what evidence would change your assessment. Be direct and do not soften conclusions to please the lab.",
+  "files": [
+   "FINDINGS_BRIEF.md",
+   "RECOMMENDATIONS.md",
+   "SCHEMA.md",
+   "companies_master.csv",
+   "events.csv",
+   "suggested_proposal_language.md"
+  ],
+  "data_entries": [
+   "data_entry:859e3557-a969-4e29-aad1-6e556ddadb7b",
+   "data_entry:2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+   "data_entry:ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+   "data_entry:f799f895-0e87-400d-a625-44b7e4685dc0",
+   "data_entry:019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+   "data_entry:c050020b-f742-4dea-b2e7-180ec9af50cf"
+  ],
+  "submitted_utc": "2026-11-25T00:45:58.803660+00:00"
+ },
+ "inv_redteam_round2": {
+  "task_id": "0457a348-0f27-488e-a186-97fa34f5b3a7",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "The attached INVESTOR_MEMO.md was written by an AI agent (Claude) as a deliberately less-biased investor's view, after an earlier round of research for a university lab that favours open science. The memo comes with its pre-registration (PREREGISTRATION.md), an audit of the earlier round's bias (BIAS_AUDIT.md), the evidence it relies on (ai_and_funding_evidence.md) and its data: offer prices and deal terms for 43 company listings with sources (cohort_listings_verified.csv), computed returns (h1_returns.csv, h1_summary.csv, h1_pme_by_company.csv) and a fundamentals snapshot (fundamentals_snapshot.csv). Act as an independent reviewer for an investment committee. (1) Say whether the memo now overcorrects toward a negative view of open-source and open-science investments, or still leans toward openness. Quote the specific sentences that are framed unfairly in either direction and suggest neutral wording. (2) Independently recompute the H1 comparison from the raw listing data: the value of $1 at the offer price at exit or today, relative to QQQ over the same window, for the open-source-origin and closed cohorts, with and without listing-year controls and sensitivity cases. Check the cohort rules for selection bias, including companies that may be misclassified or missing, and say whether the memo's conclusion ('no premium and no proven penalty') holds. (3) Check every number the memo states against the attached data and evidence, and list each error or unsupported claim. (4) Name the most important investor concerns the memo misses or underweights, especially for a university spin-out in autonomous alloy discovery, and any important evidence in favour of openness it leaves out. Be direct and specific.",
+  "files": [
+   "INVESTOR_MEMO.md",
+   "BIAS_AUDIT.md",
+   "PREREGISTRATION.md",
+   "ai_and_funding_evidence.md",
+   "h1_returns.csv",
+   "cohort_listings_verified.csv",
+   "h1_summary.csv",
+   "h1_pme_by_company.csv",
+   "fundamentals_snapshot.csv"
+  ],
+  "data_entries": [
+   "data_entry:2b324577-760b-4df5-b6b5-f23883889eb8",
+   "data_entry:474a49e1-f640-439d-9cdc-c84d22e49074",
+   "data_entry:fcfd236c-c17b-4ff9-9c84-c2546b3f7cb0",
+   "data_entry:fd8c72bb-2012-4163-ae93-ab674110e002",
+   "data_entry:fe2fef29-9424-49a6-b16d-8526859be293",
+   "data_entry:988c9232-89ec-4dbb-83a5-3b86e6f79267",
+   "data_entry:8fe77863-1c6c-4f98-a68b-8fab650b1572",
+   "data_entry:1bfd784d-411b-46b9-8530-7a1d0e460a6b",
+   "data_entry:5411f5d0-fe50-439b-b27d-d288b3e39213"
+  ],
+  "submitted_utc": "2026-11-25T01:33:06.181733+00:00"
+ },
+ "inv_redteam_round3": {
+  "task_id": "964eae07-c97f-4d77-8d9a-5f021306caf8",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "INVESTOR_MEMO.md is a revised investor memo on the risks of investing in open-source and open-science ventures, written by an AI agent (Claude) for a university lab that favours open science. Its previous draft was reviewed by an independent analyst (round2_review.md, with suggested wording edits in round2_framing_edits.csv), who found that the draft had overcorrected toward a negative view. The revision says it applied that review. Please give a short, direct assessment (under 900 words, no long report needed): (1) Is the revised memo now balanced, or does it still lean negative, or has it tipped toward favouring openness? Quote up to five remaining sentences that are unfair in either direction, with neutral replacements. (2) Were the round-2 corrections applied correctly? Check a sample of the numbers in the memo against h1_returns.csv, h1_summary.csv, h1_permutation.csv, fundamentals_summary.csv and cohort_listings_verified.csv, and list any remaining numerical errors. (3) In two or three sentences, what is the single most important thing an investor should take from this memo?",
+  "files": [
+   "INVESTOR_MEMO.md",
+   "BIAS_AUDIT.md",
+   "round2_review.md",
+   "round2_framing_edits.csv",
+   "h1_returns.csv",
+   "h1_summary.csv",
+   "h1_permutation.csv",
+   "fundamentals_summary.csv",
+   "cohort_listings_verified.csv"
+  ],
+  "data_entries": [
+   "data_entry:d89cd929-1a3c-49d4-b101-f091843a9d06",
+   "data_entry:9a27a1ed-0698-4cba-bc5d-fae8f13b43e2",
+   "data_entry:0e3dfdc4-606c-4b4f-bb17-4a530343baf2",
+   "data_entry:fe582530-7158-41c4-8e97-b523423744e7",
+   "data_entry:77a213a9-6994-4f29-a7c8-f815a3c83476",
+   "data_entry:ce928126-512d-429b-ab18-5c46975fd6da",
+   "data_entry:8f93dad9-7cc7-4a40-95b1-34dafaf82fd7",
+   "data_entry:e3b3efe6-f9df-45ed-80cd-dbf36e6fa3dc",
+   "data_entry:b8b13b2d-3791-45cb-9a05-a1832f2ec0b8"
+  ],
+  "submitted_utc": "2026-11-25T02:27:42.405736+00:00"
+ },
+ "inv_github_popularity_financing": {
+  "task_id": "fb1e4573-7f5c-41ce-a049-da1c98765088",
+  "job": "job-futurehouse-paperqa3-high",
+  "query": "From an investor's point of view: what does the empirical evidence show about whether the popularity of an open-source project on GitHub (stars, forks, contributors, downloads, dependents) predicts the financing, valuation, revenue or exit of a company built on that project? Cover academic studies and any systematic industry datasets (for example Runa Capital's ROSS Index, OSS Capital's COSS index, or studies linking GitHub activity to venture-capital rounds), with sample sizes, effect sizes and selection problems. Also cover: (1) who owns and pays for the most widely used open-source projects (large companies for which the project is a complement, companies selling the project, foundations, universities, volunteers), with any measured shares; (2) how reliable GitHub stars are as a metric, including evidence on purchased or fake stars and star inflation in AI and cryptocurrency projects since 2023; and (3) the finances of the foundations and fiscal hosts that maintain open-source infrastructure (Linux Foundation, Apache, Python Software Foundation, NumFOCUS, Open Collective). Give particular weight to evidence that cuts against the idea that popularity converts into money. Report numbers, samples, years and limitations.",
+  "files": [],
+  "data_entries": [],
+  "submitted_utc": "2026-11-25T22:00:45.094291+00:00"
+ },
+ "inv_owner_class_audit": {
+  "task_id": "a881386a-ac1a-461a-a6d1-493965779dd3",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "You are auditing a classification step in a pre-registered study of who owns popular open-source software. audit_sample.csv lists 120 GitHub organization accounts (60 drawn at random from the 300 with the most stars, 60 from the rest), with each account's name, website, e-mail domain, location, creation year, description and top repositories. classify_rules.md gives the classes (core, complement, nonprofit, academic, government, community, unknown) and the tie-breakers. Classify every account independently by those rules, checking the organization's website or repository where you are unsure. Do not use any financial outcome (funding, valuation, revenue, acquisition price, shutdown) to decide a class. Output a CSV named owner_class_audit.csv with columns owner, cls, entity, parent, basis (at most 15 words), judgment (1 if a judgment call), source_url, one row per input account in input order, and report the counts by class and the accounts you found hardest to classify, with reasons.",
+  "files": [
+   "audit_sample.csv",
+   "classify_rules.md"
+  ],
+  "data_entries": [
+   "data_entry:a1b8f9f4-1db9-4757-ba7a-eea0bb82320d",
+   "data_entry:b74f3988-b691-4c61-913b-cde7ef2295c2"
+  ],
+  "submitted_utc": "2026-11-25T22:23:23.696930+00:00"
+ },
+ "inv_finance_audit": {
+  "task_id": "a78745a7-1317-4f88-8b7c-b85123ddd5b2",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "You are independently checking a financial-research step in a pre-registered study of companies whose main paid product is a popular open-source project they lead. finance_audit_sample.csv lists 40 such companies drawn at random (company name, GitHub organization accounts, country, website and top repositories). finance_rules.md defines the columns and the sourcing rules. For every company, research from public sources (company and investor announcements, SEC filings, reputable news) and record: status (listed, acquired, private, shut_down or unknown) with its date; acquirer; disclosed acquisition price; total disclosed equity funding with the date of the latest round counted; latest disclosed post-money valuation; the highest value ever disclosed (private valuation, first-day market cap or exit price); ever_1b (yes, no or unknown, as defined in the rules); and a source URL that states each number. Leave a number blank rather than estimate it; absence of disclosure is a valid finding, and many of these companies are small. Output a CSV named finance_audit.csv with columns github_orgs, entity, status, status_date, acquirer, exit_value_usd, exit_source, total_funding_usd, funding_asof, funding_source, last_valuation_usd, valuation_date, valuation_source, peak_value_usd, peak_value_date, peak_source, ever_1b, notes (at most 25 words), one row per input company in input order, numbers as plain USD digits. Then report counts by status and ever_1b, and the companies where public sources conflict.",
+  "files": [
+   "finance_audit_sample.csv",
+   "finance_rules.md"
+  ],
+  "data_entries": [
+   "data_entry:1581729c-d871-4964-8135-88eb935c90d9",
+   "data_entry:39463d7e-21d5-4d5f-9aae-a6a6369863c0"
+  ],
+  "submitted_utc": "2026-11-26T05:53:55.998159+00:00"
+ }
+}

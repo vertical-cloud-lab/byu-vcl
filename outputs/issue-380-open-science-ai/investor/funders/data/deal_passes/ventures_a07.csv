@@ -1,0 +1,25 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+anomalyco,Anomaly,U1,sells OpenCode Go/Console model subscriptions and enterprise to opencode users,,yes,US,2017,private,yes,2,Later rounds for Anomaly not found in fetched pages.,,2026-11-26T06:07:11Z
+hashicorp,HashiCorp,U1,"sells HCP cloud and enterprise editions of Terraform, Vault",,yes,US,2012,acquired,yes,2,Earlier rounds (A-C) not fetched; IBM acquired 2025 for $6.4B (IPO 2021). memory: Mitchell Hashimoto bootstrapped early.,https://newsroom.ibm.com/2024-04-24-IBM-to-Acquire-HashiCorp-Inc-Creating-a-Comprehensive-End-to-End-Hybrid-Cloud-Platform,2026-11-26T06:07:11Z
+redis,Redis Ltd.,U1,sells Redis Cloud and Redis Enterprise,,yes,US,2011,private,yes,4,Rounds before 2017 not fetched.,,2026-11-26T06:07:11Z
+vitejs,VoidZero,U1,maintainers' company VoidZero builds Void deploy platform for Vite apps,,yes,US,2024,private,yes,2,"Page banner says VoidZero is joining Cloudflare (acquisition, not verified).",,2026-11-26T06:07:11Z
+unionlabs,Union Labs,U1,company developing the Union interoperability protocol,,yes,US,,private,none_found,0,"No funding page found via find_pages or union.build home; memory: may have raised from crypto VCs, unverified.",,2026-11-26T06:11:50Z
+commaai,comma.ai,U1,sells comma devices running openpilot,,yes,US,2015,private,yes,2,"Funder names not found on fetched pages. memory: Andreessen Horowitz early round, unverified.",,2026-11-26T06:11:50Z
+typst,Typst GmbH,U1,sells Typst web app subscriptions,,yes,DE,,private,none_found,0,No funding page found on typst.app about/blog or via find_pages.,,2026-11-26T06:11:50Z
+ClickHouse,ClickHouse,U1,sells ClickHouse Cloud,,yes,US,2021,private,yes,4,,,2026-11-26T06:11:50Z
+coqui-ai,Coqui,U1,sold Coqui Studio and XTTS commercial licences,,yes,DE,,shut_down,none_found,0,"find_pages found nothing; memory: raised a seed round, unverified.",,2026-11-26T06:18:41Z
+dcloudio,DCloud,U1,sells uniCloud and ad services to uni-app developers,,yes,CN,,private,none_found,0,No pages found via find_pages (no TechNode hit); Chinese sources not checked.,,2026-11-26T06:18:41Z
+umami-software,Umami Software,U1,sells Umami Cloud,,yes,US,2020,private,yes,1,,,2026-11-26T06:18:41Z
+tinygrad,Tiny Corp,U1,sells tinybox hardware running tinygrad,,yes,US,2023,private,yes,1,,,2026-11-26T06:18:41Z
+cockroachdb,Cockroach Labs,U1,sells CockroachDB Cloud and Enterprise,,yes,US,2015,private,yes,3,Jan 2021 $160M round (Register) investors not read.,,2026-11-26T06:18:41Z
+mastra-ai,Mastra,U1,sells Mastra Cloud,,yes,US,2024,private,yes,3,"About page also lists Gradient, basecase.",,2026-11-26T06:18:41Z
+mongodb,MongoDB Inc.,U1,sells MongoDB Atlas and Enterprise,,yes,US,2007,listed,yes,1,Listed on Nasdaq (IPO 2017). 2013 $150M round (Bloomberg link in leads) not readable.,,2026-11-26T06:22:46Z
+greensock,GreenSock,U1,sold GSAP Club licences until Webflow bought it; now free,,yes,US,,acquired,none_found,0,No outside funding found; acquired by Webflow in fall 2024 (Webflow blog).,https://webflow.com/blog/gsap-becomes-free,2026-11-26T06:22:46Z
+apify,Apify,U1,"Apify platform hosts Crawlee scrapers, marketed to its users",,yes,CZ,2015,private,yes,2,,,2026-11-26T06:22:46Z
+CapSoftware,Cap Software,U1,sells Cap Pro hosted sharing plans,,yes,?,,private,none_found,0,cap.so about page and find_pages showed no funding.,,2026-11-26T06:22:46Z
+citrolabs,CitroLabs,U1,main product is the ego browser; ego-lite is open,,yes,SG,,private,none_found,0,"citrolabs.ai and find_pages showed no funding. YC lists a different 'ego' (W24, egoai.com), not matched to this site.",,2026-11-26T06:22:46Z
+magicuidesign,Magic UI,U1,sells Magic UI Pro templates,,yes,?,,private,none_found,0,"Funding statements on magicui.design home are customers' logos, not the company's own.",,2026-11-26T06:22:46Z
+Source-Robotics,Source Robotics,U1,sells robot-arm kits of its open designs,,yes,HR,,private,none_found,0,No funding on source-robotics.com home or find_pages.,,2026-11-26T06:22:46Z
+m-labs,M-Labs Ltd,U1,sells Sinara hardware and ARTIQ support,,yes,HK,,private,yes,1,Hardware sales also fund it.,,2026-11-26T06:22:46Z
+ZiroEDA,ZIRO EDA,U1,IIT Madras-incubated startup whose product is the open tool,,yes,IN,,private,none_found,0,Site says incubated at IIT Madras Nirmaan (incubator); no money or investors stated.,https://ziroeda.com,2026-11-26T06:22:46Z
+IceWhaleTech,IceWhale Technology,U1,sells ZimaBoard/ZimaCube hardware running CasaOS/ZimaOS,,yes,CN,,private,none_found,0,"find_pages and zimaspace.com about page showed no funding. memory: ZimaBoard was Kickstarter-funded, not verified (Kickstarter page returned no usable text).",,2026-11-26T06:23:17Z

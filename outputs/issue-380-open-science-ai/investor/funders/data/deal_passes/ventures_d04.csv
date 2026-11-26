@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+u4-dench-com,Dench.com,U4,YC directory tags it Open Source; repo and licence not checked,,partial,US,,private,yes,1,Site says Backed by Y Combinator; no other funding found. Site mentions a 'Series A Narrative' only as demo UI text.,https://www.dench.com/,2026-11-26T06:19:03Z
+u4-dicedb,DiceDB,U4,github.com/dicedb/dice; README says fork of Valkey; licence not stated on page,https://github.com/dicedb/dice,yes,IN,2022,unknown,none_found,0,README mentions only GitHub Sponsors of an individual; Runa lists no funding.,https://github.com/dicedb/dice,2026-11-26T06:19:03Z
+u4-dittofeed,Dittofeed,U4,"dittofeed/dittofeed, MIT licensed core plus closed-source licensed features",https://github.com/dittofeed/dittofeed,yes,,,unknown,yes,1,YC lists it Inactive but GitHub repo looks active. No later round found.,,2026-11-26T06:19:03Z
+u4-drdroid,DrDroid,U4,YC page: team behind several open-source projects; main product AI SRE agent,,partial,,,private,yes,2,,,2026-11-26T06:19:03Z
+u4-duix,DUIX,U4,ROSS-listed repo github.com/duixcom/duix.heygem; licence not checked,,yes,SG,2017,unknown,none_found,0,No leads; not researched further.,,2026-11-26T06:19:03Z
+u4-dyad,Dyad,U4,ROSS-listed repo github.com/dyad-sh/dyad; licence not checked,,yes,US,2025,unknown,none_found,0,No leads; not researched further.,,2026-11-26T06:19:03Z
+u4-ecc-tools,ECC Tools,U4,ROSS-listed repo github.com/affaan-m/ECC; licence not checked,,yes,US,2026,unknown,none_found,0,No leads; not researched further.,,2026-11-26T06:19:03Z
+u4-elementary,Elementary,U4,"YC page: open-source data observability, deployable by data engineers",,yes,,,acquired,yes,1,Company site banner: Elementary is joining Boomi. No priced round found.,https://www.elementary-data.com/,2026-11-26T06:19:03Z
+u4-elizaos,elizaOS,U4,ROSS-listed repo github.com/elizaOS/eliza; licence not checked,,yes,US,2024,unknown,none_found,0,"No leads found; not researched further. (memory: has a token, not verified)",,2026-11-26T06:19:03Z
+u4-embrace,Embrace,U4,YC tags Open Source; built on OpenTelemetry; repo not checked,,partial,US,,acquired,yes,2,Round details not found.,,2026-11-26T06:19:03Z
+u4-enso,Enso,U4,YC tags Open Source; TechCrunch: first product the eponymous open source project Enso,https://techcrunch.com/2022/04/19/enso-emerges-from-stealth-to-help-enterprises-make-sense-of-their-data/,yes,,,private,yes,2,Not Enso Security (Tel Aviv) nor the 2024 Enso AI-agents company.,,2026-11-26T06:19:03Z
+u4-epicenter,Epicenter,U4,YC page: ecosystem of open-source local-first apps; repo not checked,,yes,,,private,yes,1,No other funding found.,,2026-11-26T06:19:03Z
+u4-eventual,Eventual,U4,"Daft, open-source data engine; licence not checked",,yes,US,,private,yes,2,,,2026-11-26T06:19:03Z
+u4-evidence,Evidence,U4,YC: open source code-based BI alternative; licence not checked,,yes,,,private,yes,2,,,2026-11-26T06:19:03Z
+u4-evidently-ai,Evidently AI,U4,"Evidently framework, Apache 2.0 per company site",https://www.evidentlyai.com/,yes,,,unknown,yes,1,"YC lists Inactive; company site names no investors. (memory: later seed round exists, unverified)",,2026-11-26T06:19:03Z
+u4-executor,Executor,U4,"Site: open source, 4.6k stars; licence not checked",https://executor.sh/,yes,,2026,private,yes,1,,,2026-11-26T06:19:03Z
+u4-expected-parrot,Expected Parrot,U4,YC page: open-source library plus no-code web app,,partial,,,private,yes,1,No other funding found.,,2026-11-26T06:19:03Z
+u4-experiential-labs,Experiential Labs,U4,YC page: open source AI gateway,,yes,,2026,private,yes,1,Site: backed by Y Combinator only.,https://www.experientiallabs.ai/about,2026-11-26T06:19:03Z
+u4-fern,Fern,U4,YC tags Open Source; SDK generator on GitHub; licence not checked,,yes,US,,acquired,yes,2,Acquired by Postman (Jan 2026 per HN link title).,https://blog.postman.com/postman-acquires-fern/,2026-11-26T06:19:03Z
+u4-fileforge,Fileforge,U4,"YC page: open-source library for building documents, plus API",,partial,,,shut_down,yes,1,YC lists Inactive; shut_down not verified.,,2026-11-26T06:19:03Z
+u4-firezone,Firezone,U4,YC tags Open Source; licence not checked,,yes,,,private,yes,2,,,2026-11-26T06:19:03Z
+u4-flotype,Flotype,U4,"NowJS open-source framework; main Bridge product licensed, not open",,partial,US,2010,unknown,yes,2,Later became Bridge.,,2026-11-26T06:19:03Z
+u4-flower,Flower,U4,"Flower, open-source framework for federated AI training",,yes,,2023,private,yes,3,,,2026-11-26T06:19:03Z
+u4-formance,Formance,U4,"Open-source programmable ledger, formancehq/stack; licence not checked",,yes,FR,,private,yes,2,,,2026-11-26T06:19:03Z
+u4-freebuff,Freebuff,U4,YC page: free coding agent on open source models; GitHub repo listed,,partial,,,private,yes,1,Funded by ads per site; no other funding found.,,2026-11-26T06:19:03Z

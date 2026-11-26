@@ -1,0 +1,25 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+browser-use,Browser Use,U1,"sells Browser Use Cloud, hosted version of the library",,yes,US,2024,private,yes,2,,,2026-11-26T06:01:46Z
+OpenHands,All Hands AI,U1,maintainers' company sells OpenHands Cloud and enterprise,,yes,US,2024,private,yes,2,,,2026-11-26T06:01:46Z
+crewAIInc,CrewAI,U1,sells CrewAI enterprise agent platform,,yes,US,2023,private,yes,2,,,2026-11-26T06:01:46Z
+surrealdb,SurrealDB Ltd,U1,sells Surreal Cloud and enterprise licences,,yes,GB,2021,private,yes,3,2024 round labelled by TechCrunch as funding round; company page counts only seed+Series A.,,2026-11-26T06:01:46Z
+HumanSignal,HumanSignal,U1,sells Label Studio Enterprise,,yes,US,2019,private,yes,1,,,2026-11-26T06:01:46Z
+black-forest-labs,Black Forest Labs,U1,open-weight FLUX models plus paid API access to them,,yes,DE,2024,private,yes,3,,,2026-11-26T06:03:32Z
+Mintplex-Labs,Mintplex Labs,U1,sells hosted AnythingLLM cloud and enterprise,,yes,US,2022,private,yes,1,No other round found; YC page is the only source.,,2026-11-26T06:03:32Z
+ueberdosis,überdosis GmbH (Tiptap),U1,sells Tiptap Pro extensions and cloud,,yes,DE,,private,yes,1,Seed investors not found in fetched pages.,,2026-11-26T06:03:32Z
+fosrl,Fossorial (Pangolin),U1,sells Pangolin Cloud and Enterprise,,yes,US,2025,private,yes,1,,,2026-11-26T06:03:32Z
+onlook-dev,Onlook,U1,sells hosted Onlook plans,,yes,US,2024,private,yes,1,,,2026-11-26T06:03:32Z
+datalab-to,Datalab,U1,sells hosted API and commercial licences for marker,,yes,US,,private,yes,1,Individual backers unnamed on the page.,https://www.datalab.to/about,2026-11-26T06:03:32Z
+ente,Ente Technologies,U1,sells end-to-end encrypted storage subscriptions,,yes,,2020,private,none_found,0,About page: funded by customer subscriptions; no outside round stated. Not an explicit no-outside-money claim.,https://ente.com/about/,2026-11-26T06:03:32Z
+rome,Rome Tools,U1,company formed around Rome toolchain,,yes,US,,shut_down,none_found,0,Biome blog confirms Rome Tools Inc. failed and laid off staff; no round found in fetched pages. memory: had raised seed money (investors not verified).,https://biomejs.dev/blog/annoucing-biome,2026-11-26T06:03:32Z
+ultralytics,Ultralytics,U1,sells enterprise licences and platform for YOLO,,yes,US,,private,none_found,0,"About page and Wikipedia stub name no investors; no search budget. memory: likely raised venture money, unverified.",,2026-11-26T06:03:32Z
+taosdata,TAOS Data (TDengine),U1,sells TDengine Enterprise and Cloud,,yes,CN,,private,none_found,0,"Company site and about page name no investors; no search budget. memory: probably VC-backed, unverified.",,2026-11-26T06:03:32Z
+dream-num,DreamNum (Univer),U1,sells Univer Pro and enterprise licences,,yes,CN,,private,none_found,0,Univer about page lists no investors; no search budget to check Chinese press.,https://univer.ai/about,2026-11-26T06:03:32Z
+TanStack,TanStack LLC,U1,Tanner Linsley's company; revenue from project partnerships,,yes,US,,private,none_found,0,Funded by partners and sponsors per site; no equity rounds found.,https://tanstack.com/partners,2026-11-26T06:03:32Z
+nvm-windows,Author Software,U1,sells commercial Certified Builds of NVM for Windows,,yes,,,private,none_found,0,Site gave no fetchable content; nothing found.,,2026-11-26T06:03:32Z
+HeyPuter,Puter Technologies Inc.,U1,sells paid plans for hosted Puter,,yes,CA,,private,none_found,0,puter.com/about and Wikipedia stub name no investors; nothing found.,,2026-11-26T06:03:32Z
+drizzle-team,Drizzle Team,U1,company behind Drizzle; licenses embeddable Drizzle Studio,,yes,,,private,none_found,0,Site has no funding info; nothing found.,,2026-11-26T06:03:32Z
+gastownhall,"Gas City, Inc.",U1,sells Beads Team Server as managed SaaS or self-hosted,,yes,US,,private,none_found,0,Site shows no funding; nothing found.,,2026-11-26T06:03:32Z
+thetahealth,Theta Health,U1,sells Theta Pro app built on Mirobody,,yes,US,,private,none_found,0,Site shows no funding; nothing found.,,2026-11-26T06:03:32Z
+BlueQuartzSoftware,BlueQuartz Software,U1,"company sells DREAM3D-NX, support and custom development",,yes,US,,private,none_found,0,Site shows no funding; nothing found.,,2026-11-26T06:03:32Z
+openAMRobot,Botshare Ltd,U1,sells OpenAMRobot kits and assembled robots,,yes,CY,,private,none_found,0,Founder bio mentions winning EU grants but names no programme; not recorded as a round.,https://botshare.ai,2026-11-26T06:03:32Z

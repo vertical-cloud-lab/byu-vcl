@@ -1,0 +1,100 @@
+key,name,source,verdict,new_source,note
+NousResearch,Y Combinator,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/,not_supported,,"Page names Robot Ventures, Nvidia, USV etc; no YC"
+daytonaio,Tobi Lutke (person),https://techcrunch.com/2026/10/23/agent-cloud-startup-daytona-hits-1b-valuation-backed-by-firstmark-and-a-whos-who-of-angels/,confirmed,,Page lists Shopify's Tobi Lütke among angels
+appwrite,Abraham Fund,https://siliconangle.com/2021/09/28/open-source-backend-service-platform-appwrite-raises-10m-seed-funding/,confirmed_other_source,https://appwrite.io/company,Company page: seed participation from the Abraham Fund
+SigNoz,Jiten Vaidya (person),https://techcrunch.com/2023/09/28/open-source-datadog-rival-signoz-lands-on-the-cloud-with-6-5m-investment/,not_supported,,"Page names SignalFire, Tom Preston-Werner; not him"
+SigNoz,Paul Copplestone (person),https://techcrunch.com/2023/09/28/open-source-datadog-rival-signoz-lands-on-the-cloud-with-6-5m-investment/,not_supported,,Only appears as no match; angels unnamed
+nrwl,Andreessen Horowitz,https://techcrunch.com/2022/11/17/with-8-6m-in-seed-funding-nx-wants-to-take-monorepos-mainstream,confirmed,,Co-led seed; page spells Andreesen Horowitz
+black-forest-labs,AMP (Anjney Midha),https://techcrunch.com/2025/12/01/black-forest-labs-raises-300m-at-3-25b-valuation/,confirmed,,Series B co-led by Salesforce Ventures and Anjney Midha (AMP)
+cilium,Cisco,https://techcrunch.com/2020/11/10/with-29m-in-funding-isovalent-launches-its-cloud-native-networking-and-security-platform-based-on-ebpf-and-cilium/,confirmed_other_source,https://techcrunch.com/2023/12/21/cisco-to-acquire-cloud-native-networking-and-security-startup-isovalent/,Cisco participated in Series A end of 2020
+letta-ai,Cristobal Valenzuela (person),https://techcrunch.com/2024/09/23/letta-one-of-uc-berkeleys-most-anticipated-ai-startups-has-just-come-out-of-stealth/,confirmed,,Page lists Runway's Cristobal Valenzuela among angels
+chaitin,Zhenfund,https://www.secrss.com/articles/3944,confirmed,,Page: 2015-09 angel round from Zhenfund (真格基金)
+chaitin,Qiming Venture Partners,https://www.secrss.com/articles/3944,confirmed,,Page: A round led by Qiming (启明创投)
+chaitin,Matrix Partners China,https://www.secrss.com/articles/3944,confirmed,,Page: B round from Matrix China (经纬中国)
+Opentrons,HAXLR8R,https://en.wikipedia.org/wiki/Opentrons,confirmed,,"Wikipedia: backing from HAXLR8TR accelerator, 2014"
+seeed,IDG Capital,https://www.cbinsights.com/company/seed-studio/financials,not_supported,,CB Insights page is a different company
+seeed,Shenzhen Capital Group,https://www.cbinsights.com/company/seed-studio/financials,not_supported,,CB Insights page is a different company
+kitware,National Science Foundation (SBIR),"https://api.nsf.gov/services/v1/awards.json?keyword=kitware&printFields=id,title,awardeeName,fundsObligatedAmt,startDate",confirmed,,NSF API lists Kitware SBIR Phase I/II awards from 2002
+posit,Brighton Park Capital,https://www.cbinsights.com/investor/rstudio,not_supported,,"Page lists Baseline, General Catalyst; not Brighton Park"
+picknik,NASA (SBIR),https://www.roboticstomorrow.com/news/2023/10/12/stellar-ventures-and-cypress-growth-capital-commit-to-fueling-the-future-of-robotics-software/21273/,confirmed,,Page: SBIR contracts with NASA JSC and NASA Ames
+re3d,Kickstarter backers,https://www.cbinsights.com/company/re3d1/,confirmed_other_source,"https://api.nsf.gov/services/v1/awards.json?keyword=RE3D&printFields=id,title,awardeeName,fundsObligatedAmt,startDate","NSF abstract: launched on Kickstarter, fully funded"
+re3d,National Science Foundation (SBIR),"https://api.nsf.gov/services/v1/awards.json?keyword=RE3D&printFields=id,title,awardeeName,fundsObligatedAmt,startDate",confirmed,,"NSF API lists RE3D Inc SBIR Phase I 2018, Phase II 2019"
+crowd-supply,SOSV,https://web.archive.org/web/2016/http://www.pehub.com/2015/04/crowd-supply-nabs-585k-seed/,confirmed,,Page names SOSVentures as participant
+luxonis,Taiwania Capital,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/,not_supported,,Page names Denali Growth Partners only
+hortonworks,Hewlett-Packard,http://www.informationweek.com/big-data/software-platforms/hp-invests-$50m-in-hortonworks-hadoop-bet/d/d-id/1297542,unclear,,Cited page unreadable (site redesign); no other found
+springsource-pivotal,General Electric,https://techcrunch.com/2013/04/24/ge-puts-105m-into-pivotal-labs-the-new-emc-and-vmware-platform-initiative-but-heres-what-it-is-missing/,confirmed,,TechCrunch: GE puts $105M into Pivotal
+springsource-pivotal,Ford Motor Company,http://fortune.com/2016/05/09/pivotal-funding/,confirmed,,Fortune: Series C from Ford and Microsoft
+kaltura,Point 406 Ventures,http://techcrunch.com/2011/02/14/intel-invests-26-million-in-cloudmade-kaltura-and-others/,confirmed,,Page names .406 Ventures in the $20M round
+couchbase,Accel Partners,https://www.networkworld.com/article/737928/opensource-subnet-couchbase-scores-14m-in-new-funding.html,confirmed_other_source,https://techcrunch.com/2020/05/21/couchbase-raises-105m-series-g-funding-round/,Existing investor Accel; 2011 page says only existing VCs
+couchbase,North Bridge Venture Partners,https://www.networkworld.com/article/737928/opensource-subnet-couchbase-scores-14m-in-new-funding.html,confirmed_other_source,https://techcrunch.com/2020/05/21/couchbase-raises-105m-series-g-funding-round/,Existing investor; 2011 page says only existing VCs
+couchbase,Mayfield Fund,https://www.networkworld.com/article/737928/opensource-subnet-couchbase-scores-14m-in-new-funding.html,confirmed_other_source,https://techcrunch.com/2020/05/21/couchbase-raises-105m-series-g-funding-round/,Existing investor Mayfield; 2011 page unnamed
+mistral,Rodolphe Saade (person),https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/,confirmed,,Page lists Rodolphe Saadé in the seed round
+zimbra,Accel Partners,https://pehub.com/yahoo-buying-zimbra,unclear,,Cited page unreadable (paywalled); nothing else found
+zimbra,Benchmark,https://pehub.com/yahoo-buying-zimbra,unclear,,Cited page unreadable (paywalled); nothing else found
+zimbra,Redpoint Ventures,https://pehub.com/yahoo-buying-zimbra,unclear,,Cited page unreadable (paywalled); nothing else found
+sugarcrm,Goldman Sachs,https://techcrunch.com/2016/03/02/sugarcrm-acquires-contastic-for-natural-language-based-predictive-sales-tools/,not_supported,,Page gives Series F 2013 but names no Goldman
+jaspersoft,DCM,https://globalventuring.com/jaspersoft-succeeds-in-quest,unclear,,Cited page has no article text; nothing else found
+u4-buttercoin,Floodgate,https://techcrunch.com/2013/08/20/buttercoin/,confirmed,,"Page lists ""Floodate"" (typo) among investors"
+u4-truefoundry,Peak XV Partners,https://techcrunch.com/2022/09/19/meta-alumni-startup-truefoundry-seed-funding-sequoia-surge-machine-learning/,confirmed,,Round led by Sequoia India's Surge (now Peak XV)
+u4-twenty,Aurelien Georget (person),https://techcrunch.com/2024/11/18/twenty-is-building-an-open-source-alternative-to-salesforce/,confirmed,,Page lists Aurélien Georget (Strapi founder) as investor
+vercel,Bedrock Capital,https://vercel.com/about,confirmed,,named in page markup or text
+vercel,CRV,https://vercel.com/about,confirmed,,named in page markup or text
+vercel,GV,https://vercel.com/about,confirmed,,named in page markup or text
+vercel,8VC,https://vercel.com/about,confirmed,,named in page markup or text
+vercel,Greenoaks Capital,https://vercel.com/about,confirmed,,named in page markup or text
+Significant-Gravitas,Redpoint,https://en.wikipedia.org/wiki/AutoGPT,not_supported,,not found on cited page; page lists no such funder
+fastapi,Birk Jernstrom (person),https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi,confirmed,,named in page markup or text
+pathwaycom,WS Investment Company,https://pathway.com/blog/pathway-strikes-a-500m-valuation,confirmed,,named in page markup or text
+Kong,Jeff Bezos (person),https://konghq.com/company,not_supported,,not found on cited page; page lists no such funder
+Kong,OTPP,https://konghq.com/company,confirmed,,named in page markup or text
+Kong,Notable Capital,https://konghq.com/company,confirmed,,named in page markup or text
+calcom,Naval Ravikant (person),https://cal.com/blog/series-a-memo,confirmed,,named in page markup or text
+prisma,IVP,https://www.prisma.io/company,confirmed,,named in page markup or text
+logseq,Tobias Lutke (person),https://blog.logseq.com/logseq-raises-4-1m-to-accelerate-growth-of-the-new-world-knowledge-graph/,confirmed,,named in page markup or text
+mindsdb,BGV,https://mindshub.ai/about,confirmed,,named in page markup or text
+harness,GV,https://www.harness.io/company/about-us,confirmed,,named in page markup or text
+harness,IVP,https://www.harness.io/company/about-us,confirmed,,named in page markup or text
+portainer,Black Nova Group,https://www.portainer.io/blog/portainer-io-closes-us6-2-million-funding-round,confirmed,,named in page markup or text
+directus,Prestonwerner Ventures,https://directus.com/about,confirmed,,named in page markup or text
+qdrant,AVP,https://qdrant.tech/about-us/,confirmed,,named in page markup or text
+simstudioai,Paul Buchheit (person),https://www.sim.ai/blog/series-a,confirmed,,named in page markup or text
+chroma-core,Max Altman (person),https://www.trychroma.com/blog/seed,confirmed,,named in page markup or text
+deepset-ai,Lunar Ventures,https://www.deepset.ai/about,confirmed,,named in page markup or text
+deepset-ai,Balderton Capital,https://www.deepset.ai/about,confirmed,,named in page markup or text
+deepset-ai,Harpoon Ventures,https://www.deepset.ai/about,confirmed,,named in page markup or text
+slint-ui,European Regional Development Fund,https://slint.dev/investors,confirmed,,named in page markup or text
+slint-ui,NGI Zero Core,https://slint.dev/investors,confirmed,,named in page markup or text
+zama-ai,Lunar Ventures,https://www.zama.org/about,confirmed,,named in page markup or text
+brave,BAT token buyers,https://brave.com/about/,confirmed,,page: $35M raised in ICO for BAT
+timescale,NEA,https://blog.timescale.com/blog/40-million-to-help-developers-measure-everything-that-matters/,confirmed,,named in page markup or text
+timescale,NEA,https://www.timescale.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/,confirmed,,named in page markup or text
+nengo,Two Small Fish Ventures,https://www.appliedbrainresearch.com/our-company,confirmed,,named in page markup or text
+harfang3d,Region Centre-Val de Loire,https://www.harfang3d.com/en_US/index.html,confirmed,,named in page markup or text
+mzmine,BAB - Die Foerderbank fuer Bremen und Bremerhaven,https://mzio.io/company/,confirmed,,named in page markup or text
+mzmine,Federal Ministry for Economic Affairs and Energy (ZIM),https://mzio.io/company/,confirmed,,named in page markup or text
+oxide,USIT,https://siliconangle.com/2026/02/09/private-cloud-infrastructure-startup-oxide-computer-reportedly-raises-200m-fresh-funding/,confirmed,,named in page markup or text
+together-ai,Prosperity7 Ventures,https://www.together.ai/blog/series-a,confirmed,,named in page markup or text
+together-ai,Clement Delangue (person),https://www.together.ai/blog/series-a2,confirmed,,named in page markup or text
+scylladb,Magma Venture Partners,https://siliconangle.com/2017/03/08/samsung-qualcomm-contribute-16m-round-database-startup-scylladb/,confirmed_other_source,http://www.scylladb.com/press-release/scylladb-closes-16-million-series-b-funding-expand-next-generation-cassandra-database,ScyllaDB press release names it
+scylladb,Bessemer Venture Partners,https://siliconangle.com/2017/03/08/samsung-qualcomm-contribute-16m-round-database-startup-scylladb/,confirmed_other_source,http://www.scylladb.com/press-release/scylladb-closes-16-million-series-b-funding-expand-next-generation-cassandra-database,ScyllaDB press release names it
+scylladb,Bessemer Venture Partners,https://siliconangle.com/2018/04/25/high-performance-database-startup-scylladb-reels-10m-investors/,confirmed_other_source,http://www.scylladb.com/press-release/scylladb-closes-16-million-series-b-funding-expand-next-generation-cassandra-database,ScyllaDB press release names it
+scylladb,Magma Venture Partners,https://siliconangle.com/2018/04/25/high-performance-database-startup-scylladb-reels-10m-investors/,confirmed_other_source,http://www.scylladb.com/press-release/scylladb-closes-16-million-series-b-funding-expand-next-generation-cassandra-database,ScyllaDB press release names it
+dremio,Lightspeed Venture Partners,https://siliconangle.com/2022/01/25/data-lakehouse-startup-dremio-doubles-valuation-2b-160m-round/,confirmed_other_source,https://techcrunch.com/2022/01/25/dremio-raises-160m-series-e-for-its-data-lake-platform/,TechCrunch Series E article names it
+dremio,Norwest Venture Partners,https://siliconangle.com/2022/01/25/data-lakehouse-startup-dremio-doubles-valuation-2b-160m-round/,confirmed_other_source,https://techcrunch.com/2022/01/25/dremio-raises-160m-series-e-for-its-data-lake-platform/,TechCrunch Series E article names it
+dremio,Cisco Investments,https://siliconangle.com/2022/01/25/data-lakehouse-startup-dremio-doubles-valuation-2b-160m-round/,confirmed_other_source,https://techcrunch.com/2022/01/25/dremio-raises-160m-series-e-for-its-data-lake-platform/,TechCrunch Series E article names it
+alluxio,Andreessen Horowitz,https://www.alluxio.io/about,confirmed,,named in page markup or text
+carto,Accel,https://techcrunch.com/2014/07/08/cartodbs-odyssey-js-is-an-open-source-tool-for-telling-stories-with-interactive-maps/,confirmed_other_source,https://techcrunch.com/2021/12/14/carto-raises-61-million-to-help-you-visualize-data-on-maps/,Series C article lists as existing investor
+carto,Earlybird,https://techcrunch.com/2014/07/08/cartodbs-odyssey-js-is-an-open-source-tool-for-telling-stories-with-interactive-maps/,confirmed_other_source,https://techcrunch.com/2021/12/14/carto-raises-61-million-to-help-you-visualize-data-on-maps/,Series C article lists as existing investor
+carto,Kibo Ventures,https://techcrunch.com/2014/07/08/cartodbs-odyssey-js-is-an-open-source-tool-for-telling-stories-with-interactive-maps/,confirmed_other_source,https://techcrunch.com/2021/12/14/carto-raises-61-million-to-help-you-visualize-data-on-maps/,Series C article lists as existing investor
+arcee,Prosperity7 Ventures,https://www.arcee.ai/blog/arcee-ai-raises-series-b-to-build-the-future-of-american-open-models,confirmed,,named in page markup or text
+u4-common-paper,Boldstart Ventures,https://commonpaper.com/about,confirmed,,named in page markup or text
+u4-daily,Freestyle Capital,https://www.daily.co/company/,confirmed,,named in page markup or text
+u4-protocol-labs,Union Square Ventures,https://pl.xyz/about,confirmed,,named in page markup or text
+u4-resemble-ai,Sony Innovation Fund,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/,confirmed,,named in page markup or text
+u4-resemble-ai,KDDI Open Innovation Fund,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/,confirmed,,named in page markup or text
+u4-sst,Paul Bragiel (person),https://sst.dev/about,confirmed,,named in page markup or text
+u4-tea,Binance Labs,https://tea.xyz/,confirmed,,named in page markup or text
+u4-tea,Exnetwork Capital,https://tea.xyz/,confirmed,,named in page markup or text
+u4-tea,MAKE,https://tea.xyz/,confirmed,,named in page markup or text
+u4-votingworks,Cybersecurity and Infrastructure Security Agency,https://voting.works/about,confirmed,,named in page markup or text
+u4-votingworks,National Science Foundation,https://voting.works/about,confirmed,,named in page markup or text

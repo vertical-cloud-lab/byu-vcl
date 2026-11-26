@@ -1,0 +1,67 @@
+1. (li2023starcodermaythe pages 1-2): Raymond Li, Loubna Ben Allal, Yangtian Zi, Niklas Muennighoff, Denis Kocetkov, Chenghao Mou, Marc Marone, Christopher Akiki, Jia Li, Jenny Chim, Qian Liu, Evgenii Zheltonozhskii, Terry Yue Zhuo, Thomas Wang, Olivier Dehaene, Mishig Davaadorj, Joel Lamy-Poirier, João Monteiro, Oleh Shliazhko, Nicolas Gontier, Nicholas Meade, Armel Zebaze, Ming-Ho Yee, Logesh Kumar Umapathi, Jian Zhu, Benjamin Lipkin, Muhtasham Oblokulov, Zhiruo Wang, Rudra Murthy, Jason Stillerman, Siva Sankalp Patel, Dmitry Abulkhanov, Marco Zocca, Manan Dey, Zhihan Zhang, Nour Fahmy, Urvashi Bhattacharyya, Wenhao Yu, Swayam Singh, Sasha Luccioni, Paulo Villegas, Maxim Kunakov, Fedor Zhdanov, Manuel Romero, Tony Lee, Nadav Timor, Jennifer Ding, Claire Schlesinger, Hailey Schoelkopf, Jan Ebert, Tri Dao, Mayank Mishra, Alex Gu, Jennifer Robinson, Carolyn Jane Anderson, Brendan Dolan-Gavitt, Danish Contractor, Siva Reddy, Daniel Fried, Dzmitry Bahdanau, Yacine Jernite, Carlos Muñoz Ferrandis, Sean Hughes, Thomas Wolf, Arjun Guha, Leandro von Werra, and Harm de Vries. Starcoder: may the source be with you! Jan 2023. URL: https://doi.org/10.48550/arxiv.2305.06161, doi:10.48550/arxiv.2305.06161. This article has 2196 citations.
+
+2. (lozano2025biomedicaanopen pages 1-2): Alejandro Lozano, Min Woo Sun, James Burgess, Liangyu Chen, Jeffrey J. Nirschl, Jeffrey Gu, Ivan Lopez, Josiah Aklilu, Austin Wolfgang Katzer, Collin Chiu, Anita Rau, Xiaohan Wang, Yuhui Zhang, Alfred Seunghoon Song, R. Tibshirani, and S. Yeung-Levy. Biomedica: an open biomedical image-caption archive, dataset, and vision-language models derived from scientific literature. 2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 19724-19735, Jan 2025. URL: https://doi.org/10.48550/arxiv.2501.07171, doi:10.48550/arxiv.2501.07171. This article has 77 citations.
+
+3. (riochanona2024largelanguagemodels pages 1-3): Maria del Rio-Chanona, Nadzeya Laurentsyeva, and Johannes Wachs. Large language models reduce public knowledge sharing on online q&a platforms. PNAS Nexus, Jul 2023. URL: https://doi.org/10.48550/arxiv.2307.07367, doi:10.48550/arxiv.2307.07367. This article has 136 citations and is from a peer-reviewed journal.
+
+4. (noroozian2025generativeaiand pages 1-3): A. Noroozian, Lorena Aldana, Marta Arisi, H. Asghari, R. Avila, P. G. Bizzaro, Ramya Chandrasekhar, Cristian Consonni, Deborah De Angelis, Francesca De Chiara, Maria del Rio-Chanona, M. D. de Rosnay, Maria Eriksson, Frederic Font, Emilia Gómez, V. Guillier, L. Gutermuth, David Hartmann, Lucie-Aimée Kaffee, Paulo F. Keller, F. Stalder, João Vinagre, Denny Vrandečić, and Amanda Wasielewski. Generative ai and the future of the digital commons: five open questions and knowledge gaps. ArXiv, Aug 2025. URL: https://doi.org/10.48550/arxiv.2508.06470, doi:10.48550/arxiv.2508.06470. This article has 6 citations.
+
+5. (song2026theimpactof pages 1-4): Fangchen Song, Ashish Agarwal, and Wen Wen. The impact of generative ai on collaborative open-source software development: evidence from github copilot. Information Systems Research, Sep 2026. URL: https://doi.org/10.1287/isre.2024.1361, doi:10.1287/isre.2024.1361. This article has 108 citations and is from a highest quality peer-reviewed journal.
+
+6. (kocetkov2022thestack3 pages 1-3): Denis Kocetkov, Raymond Li, Loubna Ben Allal, Jia Li, Chenghao Mou, Carlos Muñoz Ferrandis, Yacine Jernite, Margaret Mitchell, Sean Hughes, Thomas Wolf, Dzmitry Bahdanau, Leandro von Werra, and Harm de Vries. The stack: 3 tb of permissively licensed source code. ArXiv, Nov 2022. URL: https://doi.org/10.48550/arxiv.2211.15533, doi:10.48550/arxiv.2211.15533. This article has 615 citations.
+
+7. (varadi2024alphafoldproteinstructure pages 6-7): Mihaly Varadi, Damian Bertoni, Paulyna Magana, Urmila Paramval, Ivanna Pidruchna, Malarvizhi Radhakrishnan, Maxim Tsenkov, Sreenath Nair, Milot Mirdita, Jingi Yeo, Oleg Kovalevskiy, Kathryn Tunyasuvunakool, Agata Laydon, Augustin Žídek, Hamish Tomlinson, Dhavanthi Hariharan, Josh Abrahamson, Tim Green, John Jumper, Ewan Birney, Martin Steinegger, Demis Hassabis, and Sameer Velankar. Alphafold protein structure database in 2024: providing structure coverage for over 214 million protein sequences. Nucleic Acids Research, 52:D368-D375, Nov 2023. URL: https://doi.org/10.1093/nar/gkad1011, doi:10.1093/nar/gkad1011. This article has 2757 citations and is from a highest quality peer-reviewed journal.
+
+8. (varadi2024alphafoldproteinstructure pages 1-2): Mihaly Varadi, Damian Bertoni, Paulyna Magana, Urmila Paramval, Ivanna Pidruchna, Malarvizhi Radhakrishnan, Maxim Tsenkov, Sreenath Nair, Milot Mirdita, Jingi Yeo, Oleg Kovalevskiy, Kathryn Tunyasuvunakool, Agata Laydon, Augustin Žídek, Hamish Tomlinson, Dhavanthi Hariharan, Josh Abrahamson, Tim Green, John Jumper, Ewan Birney, Martin Steinegger, Demis Hassabis, and Sameer Velankar. Alphafold protein structure database in 2024: providing structure coverage for over 214 million protein sequences. Nucleic Acids Research, 52:D368-D375, Nov 2023. URL: https://doi.org/10.1093/nar/gkad1011, doi:10.1093/nar/gkad1011. This article has 2757 citations and is from a highest quality peer-reviewed journal.
+
+9. (lee2026changingpatternsof pages 1-3): Yoo Young Lee and Allison Smith. Changing patterns of research guide use in the era of generative ai. Evidence Based Library and Information Practice, 21:31-46, Sep 2026. URL: https://doi.org/10.18438/eblip31049, doi:10.18438/eblip31049. This article has 0 citations and is from a peer-reviewed journal.
+
+10. (lee2026changingpatternsof pages 3-5): Yoo Young Lee and Allison Smith. Changing patterns of research guide use in the era of generative ai. Evidence Based Library and Information Practice, 21:31-46, Sep 2026. URL: https://doi.org/10.18438/eblip31049, doi:10.18438/eblip31049. This article has 0 citations and is from a peer-reviewed journal.
+
+11. (becker2507measuringtheimpact pages 1-3): Joel Becker, Nate Rush, Elizabeth Barnes, and David Rein. Measuring the impact of early-2025 ai on experienced open-source developer productivity. ArXiv, Jul 2025. URL: https://doi.org/10.48550/arxiv.2507.09089, doi:10.48550/arxiv.2507.09089. This article has 474 citations.
+
+12. (song2026theimpactof pages 4-7): Fangchen Song, Ashish Agarwal, and Wen Wen. The impact of generative ai on collaborative open-source software development: evidence from github copilot. Information Systems Research, Sep 2026. URL: https://doi.org/10.1287/isre.2024.1361, doi:10.1287/isre.2024.1361. This article has 108 citations and is from a highest quality peer-reviewed journal.
+
+13. (raskin2026anempiricalstudy pages 5-6): Hugo Raskin, Xavier Devroey, and B. Vanderose. An empirical study of maintainer-identified ai slop pull requests in free and open source software projects. ArXiv, Nov 2026. URL: https://doi.org/10.48550/arxiv.2611.15159, doi:10.48550/arxiv.2611.15159. This article has 0 citations.
+
+14. (afroz2026"aislopis pages 5-6): Sadia Afroz, Courtney Miller, T. Menezes, Edward Gilmour, Anita Sarma, and Zi-Xuan Feng. "ai slop is ddosing open source": understanding the impact of ai-generated contributions on open source sustainability. ArXiv, Jul 2026. URL: https://doi.org/10.48550/arxiv.2607.04003, doi:10.48550/arxiv.2607.04003. This article has 11 citations.
+
+15. (malo2026thecustomeris pages 15-16): Ripon Chandra Malo, Zi-Meng Yu, and Tong Qiu. The customer is the builder: how ai coding agents are rewriting the economics of software. ArXiv, Oct 2026. URL: https://doi.org/10.48550/arxiv.2610.30307, doi:10.48550/arxiv.2610.30307. This article has 0 citations.
+
+16. (raskin2026anempiricalstudy pages 9-11): Hugo Raskin, Xavier Devroey, and B. Vanderose. An empirical study of maintainer-identified ai slop pull requests in free and open source software projects. ArXiv, Nov 2026. URL: https://doi.org/10.48550/arxiv.2611.15159, doi:10.48550/arxiv.2611.15159. This article has 0 citations.
+
+17. (raskin2026anempiricalstudy pages 3-4): Hugo Raskin, Xavier Devroey, and B. Vanderose. An empirical study of maintainer-identified ai slop pull requests in free and open source software projects. ArXiv, Nov 2026. URL: https://doi.org/10.48550/arxiv.2611.15159, doi:10.48550/arxiv.2611.15159. This article has 0 citations.
+
+18. (afroz2026"aislopis pages 8-9): Sadia Afroz, Courtney Miller, T. Menezes, Edward Gilmour, Anita Sarma, and Zi-Xuan Feng. "ai slop is ddosing open source": understanding the impact of ai-generated contributions on open source sustainability. ArXiv, Jul 2026. URL: https://doi.org/10.48550/arxiv.2607.04003, doi:10.48550/arxiv.2607.04003. This article has 11 citations.
+
+19. (afroz2026"aislopis media 37156ac1): Sadia Afroz, Courtney Miller, T. Menezes, Edward Gilmour, Anita Sarma, and Zi-Xuan Feng. "ai slop is ddosing open source": understanding the impact of ai-generated contributions on open source sustainability. ArXiv, Jul 2026. URL: https://doi.org/10.48550/arxiv.2607.04003, doi:10.48550/arxiv.2607.04003. This article has 11 citations.
+
+20. (oderinwale2510theeconomicsof pages 1-4): Hamidah Oderinwale and Anna Kazlauskas. The economics of ai training data: a research agenda. ArXiv, Oct 2025. URL: https://doi.org/10.48550/arxiv.2510.24990, doi:10.48550/arxiv.2510.24990. This article has 9 citations.
+
+21. (burtch2024theconsequencesof pages 5-7): Gordon Burtch, Dokyun Lee, and Zhichen Chen. The consequences of generative ai for online knowledge communities. Scientific Reports, May 2024. URL: https://doi.org/10.1038/s41598-024-61221-0, doi:10.1038/s41598-024-61221-0. This article has 198 citations and is from a peer-reviewed journal.
+
+22. (burtch2024theconsequencesof pages 1-2): Gordon Burtch, Dokyun Lee, and Zhichen Chen. The consequences of generative ai for online knowledge communities. Scientific Reports, May 2024. URL: https://doi.org/10.1038/s41598-024-61221-0, doi:10.1038/s41598-024-61221-0. This article has 198 citations and is from a peer-reviewed journal.
+
+23. (borysenko2604developerexperiencewith pages 1-2): Oleksii Borysenko. Developer experience with ai coding agents: http behavioral signatures in documentation portals. ArXiv, Apr 2026. URL: https://doi.org/10.48550/arxiv.2604.02544, doi:10.48550/arxiv.2604.02544. This article has 4 citations.
+
+24. (weinberg2025areaibots pages 1-6): M Weinberg. Are ai bots knocking cultural heritage offline. Unknown journal, 2025.
+
+25. (weinberg2025areaibots pages 14-18): M Weinberg. Are ai bots knocking cultural heritage offline. Unknown journal, 2025.
+
+26. (yeverechyahu2024theimpactof pages 4-7): Doron Yeverechyahu, Raveesh Mayya, and Gal Oestreicher-Singer. The impact of large language models on open-source innovation: evidence from github copilot. Preprint, Jan 2024. URL: https://doi.org/10.48550/arxiv.2409.08379, doi:10.48550/arxiv.2409.08379. This article has 79 citations.
+
+27. (xu2025aiassistedprogrammingdecreases pages 3-5): AI-Assisted Programming Decreases the Productivity of Experienced Developers by Increasing the Technical Debt and Maintenance Burden This article has 17 citations.
+
+28. (watanabe2026ontheuse pages 1-3): Miku Watanabe, Hao Li, Yutaro Kashiwa, Brittany Reid, Hajimu Iida, and Ahmed E. Hassan. On the use of agentic coding: an empirical study of pull requests on github. Sep 2026. URL: https://doi.org/10.1145/3798166, doi:10.1145/3798166. This article has 149 citations and is from a highest quality peer-reviewed journal.
+
+29. (afroz2026"aislopis pages 1-2): Sadia Afroz, Courtney Miller, T. Menezes, Edward Gilmour, Anita Sarma, and Zi-Xuan Feng. "ai slop is ddosing open source": understanding the impact of ai-generated contributions on open source sustainability. ArXiv, Jul 2026. URL: https://doi.org/10.48550/arxiv.2607.04003, doi:10.48550/arxiv.2607.04003. This article has 11 citations.
+
+30. (liu2026copilotorculprit? pages 1-2): Yi-Nuo Liu, Yunlong Lyu, Zi-Chao Luo, Tian Dong, Zian Luo, Peng Chen, and Hao Chen. Copilot or culprit? how ai is changing open-source bug reporting and maintenance. ArXiv, Nov 2026. URL: https://doi.org/10.48550/arxiv.2611.25605, doi:10.48550/arxiv.2611.25605. This article has 0 citations.
+
+31. (liu2026copilotorculprit? pages 2-3): Yi-Nuo Liu, Yunlong Lyu, Zi-Chao Luo, Tian Dong, Zian Luo, Peng Chen, and Hao Chen. Copilot or culprit? how ai is changing open-source bug reporting and maintenance. ArXiv, Nov 2026. URL: https://doi.org/10.48550/arxiv.2611.25605, doi:10.48550/arxiv.2611.25605. This article has 0 citations.
+
+32. (malo2026thecustomeris pages 1-3): Ripon Chandra Malo, Zi-Meng Yu, and Tong Qiu. The customer is the builder: how ai coding agents are rewriting the economics of software. ArXiv, Oct 2026. URL: https://doi.org/10.48550/arxiv.2610.30307, doi:10.48550/arxiv.2610.30307. This article has 0 citations.
+
+33. (malo2026thecustomeris pages 18-21): Ripon Chandra Malo, Zi-Meng Yu, and Tong Qiu. The customer is the builder: how ai coding agents are rewriting the economics of software. ArXiv, Oct 2026. URL: https://doi.org/10.48550/arxiv.2610.30307, doi:10.48550/arxiv.2610.30307. This article has 0 citations.
+
+34. (mandel2026cheapaiassistedreverse pages 1-3): Ilan Mandel, Madiha Zahrah Choksi, Joey Castillo, Sebastian Benthall, and James Grimmelmann. Cheap ai-assisted reverse engineering and what it will do. ArXiv, Jan 2026. URL: https://doi.org/10.2139/ssrn.7676098, doi:10.2139/ssrn.7676098.

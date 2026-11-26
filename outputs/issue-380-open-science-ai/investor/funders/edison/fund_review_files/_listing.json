@@ -1,0 +1,2110 @@
+{
+ "data": [
+  {
+   "id": 31485078,
+   "data_storage_id": "85e0005b-f2c6-4664-ba07-e15a51db19b6",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:59.921817Z",
+   "data_storage": {
+    "name": "b3464312-5ff5-488f-8407-8981dec34e43.bib",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "19481f780f94",
+    "parent_id": null,
+    "dataset_id": "f4363212-a72f-4cb3-9cd3-fa862b9cff0a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "85e0005b-f2c6-4664-ba07-e15a51db19b6",
+    "path": "19481f780f94",
+    "created_at": "2026-11-26T07:32:59.814365Z",
+    "modified_at": "2026-11-26T07:33:01.705091Z",
+    "tags": null,
+    "file_path": "/workspace/citations/default_project/b3464312-5ff5-488f-8407-8981dec34e43.bib",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 3375
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485075,
+   "data_storage_id": "8bc9a9ec-5821-4071-baf9-14eb9dbd17cb",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:57.770385Z",
+   "data_storage": {
+    "name": "b3464312-5ff5-488f-8407-8981dec34e43_memory_heron_c0_20261126T065104819569.jsonl",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "770ec0d5ff2c",
+    "parent_id": null,
+    "dataset_id": "bfac3539-7d04-4eaf-894c-273c0748a024",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "8bc9a9ec-5821-4071-baf9-14eb9dbd17cb",
+    "path": "770ec0d5ff2c",
+    "created_at": "2026-11-26T07:32:57.676467Z",
+    "modified_at": "2026-11-26T07:32:59.638184Z",
+    "tags": null,
+    "file_path": "/workspace/memory/b3464312-5ff5-488f-8407-8981dec34e43_memory_heron_c0_20261126T065104819569.jsonl",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 606170
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485072,
+   "data_storage_id": "071e7485-bdce-47e7-bf77-6fa7683844ec",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:55.697015Z",
+   "data_storage": {
+    "name": "b3464312-5ff5-488f-8407-8981dec34e43.ipynb",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "03225eddac9d",
+    "parent_id": null,
+    "dataset_id": "8c051be6-f089-4e96-aba1-e8703fbad828",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "071e7485-bdce-47e7-bf77-6fa7683844ec",
+    "path": "03225eddac9d",
+    "created_at": "2026-11-26T07:32:55.594067Z",
+    "modified_at": "2026-11-26T07:32:57.509873Z",
+    "tags": null,
+    "file_path": "/workspace/notebooks/b3464312-5ff5-488f-8407-8981dec34e43.ipynb",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 1058839
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485070,
+   "data_storage_id": "023742aa-28f6-4a45-9ad1-972011c8d016",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:55.195762Z",
+   "data_storage": {
+    "name": "cloudera2021.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "643fcb55b5e4",
+    "parent_id": null,
+    "dataset_id": "8c923d72-73b3-4609-b687-c12a85597737",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "023742aa-28f6-4a45-9ad1-972011c8d016",
+    "path": "643fcb55b5e4",
+    "created_at": "2026-11-26T07:32:55.134345Z",
+    "modified_at": "2026-11-26T07:32:55.396037Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/cloudera2021.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 35520
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485068,
+   "data_storage_id": "3c58c2cb-4cc6-4af9-8cc3-2cebff722421",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:54.689744Z",
+   "data_storage": {
+    "name": "recomputed_rankings.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "c2f6979faf6c",
+    "parent_id": null,
+    "dataset_id": "b15f309b-997e-4d09-9fd3-23a2f2d54e17",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "3c58c2cb-4cc6-4af9-8cc3-2cebff722421",
+    "path": "c2f6979faf6c",
+    "created_at": "2026-11-26T07:32:54.661205Z",
+    "modified_at": "2026-11-26T07:32:54.867237Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/recomputed_rankings.csv",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 39104
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485066,
+   "data_storage_id": "ae952ca5-2471-4a8e-b85a-a456ce384554",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:54.236114Z",
+   "data_storage": {
+    "name": "moore5423.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "b0b64ce16254",
+    "parent_id": null,
+    "dataset_id": "7283af1a-ab6c-4db5-81bf-dcb6f04070f3",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "ae952ca5-2471-4a8e-b85a-a456ce384554",
+    "path": "b0b64ce16254",
+    "created_at": "2026-11-26T07:32:54.201568Z",
+    "modified_at": "2026-11-26T07:32:54.430827Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/moore5423.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 14
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485063,
+   "data_storage_id": "6baaaead-14e7-4417-b548-348d59f4ff15",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:52.158245Z",
+   "data_storage": {
+    "name": "recompute.py",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d12d9d3255f4",
+    "parent_id": null,
+    "dataset_id": "f2abed6d-d12c-4084-9b64-20113e930929",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6baaaead-14e7-4417-b548-348d59f4ff15",
+    "path": "d12d9d3255f4",
+    "created_at": "2026-11-26T07:32:52.036420Z",
+    "modified_at": "2026-11-26T07:32:54.029634Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/recompute.py",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 10059
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485061,
+   "data_storage_id": "ad47fc93-7632-419f-891c-e8b17ba58b63",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:51.685663Z",
+   "data_storage": {
+    "name": "cos2026.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "8baaa7e25eed",
+    "parent_id": null,
+    "dataset_id": "38c460be-63a8-41d0-8d43-d6ac582d31ca",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "ad47fc93-7632-419f-891c-e8b17ba58b63",
+    "path": "8baaa7e25eed",
+    "created_at": "2026-11-26T07:32:51.661380Z",
+    "modified_at": "2026-11-26T07:32:51.817501Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/cos2026.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 12062
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485059,
+   "data_storage_id": "84a7c4de-f389-4ec7-b5c7-84fe36bfe89f",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:51.378432Z",
+   "data_storage": {
+    "name": "moore4856.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "14e6084a6551",
+    "parent_id": null,
+    "dataset_id": "812b5c9e-e1e8-4a0b-bc70-9aa459cd12aa",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "84a7c4de-f389-4ec7-b5c7-84fe36bfe89f",
+    "path": "14e6084a6551",
+    "created_at": "2026-11-26T07:32:51.303781Z",
+    "modified_at": "2026-11-26T07:32:51.507480Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/moore4856.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 14
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485057,
+   "data_storage_id": "6c1da78e-3889-420a-8008-d3ee752d55e0",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:50.738172Z",
+   "data_storage": {
+    "name": "investor_inventory.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "6f774d2a200d",
+    "parent_id": null,
+    "dataset_id": "91b45fa1-ac5a-43e9-b37f-4fec02fbc92c",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6c1da78e-3889-420a-8008-d3ee752d55e0",
+    "path": "6f774d2a200d",
+    "created_at": "2026-11-26T07:32:50.690182Z",
+    "modified_at": "2026-11-26T07:32:50.873609Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/investor_inventory.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 78564
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485054,
+   "data_storage_id": "97c82357-1ca4-4786-bde4-c367bf875259",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:48.745101Z",
+   "data_storage": {
+    "name": "references.bib",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "07c21d20310a",
+    "parent_id": null,
+    "dataset_id": "45f16551-f628-44df-8186-d986d2a4faa6",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "97c82357-1ca4-4786-bde4-c367bf875259",
+    "path": "07c21d20310a",
+    "created_at": "2026-11-26T07:32:48.615880Z",
+    "modified_at": "2026-11-26T07:32:50.532842Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/references.bib",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 3375
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485052,
+   "data_storage_id": "6e497721-3023-4d7a-a31c-d192d910a071",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:48.276594Z",
+   "data_storage": {
+    "name": "toolfoundry2019.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "5241f2957b53",
+    "parent_id": null,
+    "dataset_id": "c12c11f7-341e-43fb-bb9e-71e0e059c230",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6e497721-3023-4d7a-a31c-d192d910a071",
+    "path": "5241f2957b53",
+    "created_at": "2026-11-26T07:32:48.243085Z",
+    "modified_at": "2026-11-26T07:32:48.421528Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/toolfoundry2019.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 6212
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485050,
+   "data_storage_id": "a35403ac-2365-4587-ada7-d834e2ce4d67",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:47.823723Z",
+   "data_storage": {
+    "name": "input_sha256.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "fb1226ab56a2",
+    "parent_id": null,
+    "dataset_id": "5114db68-01e8-4b22-8964-a8e53287fd4a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "a35403ac-2365-4587-ada7-d834e2ce4d67",
+    "path": "fb1226ab56a2",
+    "created_at": "2026-11-26T07:32:47.771418Z",
+    "modified_at": "2026-11-26T07:32:48.028914Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/input_sha256.json",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 803
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485048,
+   "data_storage_id": "90623c4d-c259-46bb-996c-89989d3a8f59",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:47.351400Z",
+   "data_storage": {
+    "name": "venture_inventory.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "8d7e49345446",
+    "parent_id": null,
+    "dataset_id": "1d495ac1-05dd-4212-9815-d292de218a82",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "90623c4d-c259-46bb-996c-89989d3a8f59",
+    "path": "8d7e49345446",
+    "created_at": "2026-11-26T07:32:47.313897Z",
+    "modified_at": "2026-11-26T07:32:47.526531Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/venture_inventory.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 107741
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485046,
+   "data_storage_id": "294eeaea-b3e2-4353-8753-eceadc794621",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:46.956302Z",
+   "data_storage": {
+    "name": "partech2022.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "e394ae176a0b",
+    "parent_id": null,
+    "dataset_id": "93cef4f9-7ca8-400f-bc27-bcd0f8454b06",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "294eeaea-b3e2-4353-8753-eceadc794621",
+    "path": "e394ae176a0b",
+    "created_at": "2026-11-26T07:32:46.900146Z",
+    "modified_at": "2026-11-26T07:32:47.102302Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/partech2022.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 18346
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485044,
+   "data_storage_id": "823ec736-425b-4ccf-934c-a826fcf11a68",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:46.541043Z",
+   "data_storage": {
+    "name": "votingworks2026.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "dc235d00a345",
+    "parent_id": null,
+    "dataset_id": "545d5e35-24c3-4be0-9dc2-b1112a79945f",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "823ec736-425b-4ccf-934c-a826fcf11a68",
+    "path": "dc235d00a345",
+    "created_at": "2026-11-26T07:32:46.487343Z",
+    "modified_at": "2026-11-26T07:32:46.701003Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/votingworks2026.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 5744
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485042,
+   "data_storage_id": "6d4ee248-2e5b-4512-8896-1a867202f04e",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:46.162751Z",
+   "data_storage": {
+    "name": "astera2026.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "44b573f102cd",
+    "parent_id": null,
+    "dataset_id": "adbdc62e-57b0-46af-84d4-a8ef1cb2f795",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6d4ee248-2e5b-4512-8896-1a867202f04e",
+    "path": "44b573f102cd",
+    "created_at": "2026-11-26T07:32:46.131382Z",
+    "modified_at": "2026-11-26T07:32:46.295987Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/astera2026.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 8515
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485040,
+   "data_storage_id": "dbb8f2c6-7bc4-4a5d-87c8-c3280fe40420",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:45.803494Z",
+   "data_storage": {
+    "name": "experiment2026.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "c95fb5d9af59",
+    "parent_id": null,
+    "dataset_id": "67ed5e64-4c1d-4c53-be65-a07caaef692b",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "dbb8f2c6-7bc4-4a5d-87c8-c3280fe40420",
+    "path": "c95fb5d9af59",
+    "created_at": "2026-11-26T07:32:45.773660Z",
+    "modified_at": "2026-11-26T07:32:45.937329Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/experiment2026.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 25953
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485038,
+   "data_storage_id": "e67ed62e-40bc-4d04-b3d1-5c16677945e8",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:45.460308Z",
+   "data_storage": {
+    "name": "openflexure2026.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "2d4cc8e69f6c",
+    "parent_id": null,
+    "dataset_id": "7910a4c3-a610-478e-840b-41caaf84fd84",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "e67ed62e-40bc-4d04-b3d1-5c16677945e8",
+    "path": "2d4cc8e69f6c",
+    "created_at": "2026-11-26T07:32:45.417210Z",
+    "modified_at": "2026-11-26T07:32:45.614597Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/openflexure2026.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 10177
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485036,
+   "data_storage_id": "91b4a393-4455-4e6e-a35c-e784429f7740",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:45.004109Z",
+   "data_storage": {
+    "name": "audit_checks.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "de50337a2c5d",
+    "parent_id": null,
+    "dataset_id": "91eb33ad-64a3-4cb2-8de3-a1961fc3d547",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "91b4a393-4455-4e6e-a35c-e784429f7740",
+    "path": "de50337a2c5d",
+    "created_at": "2026-11-26T07:32:44.975390Z",
+    "modified_at": "2026-11-26T07:32:45.205418Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/audit_checks.csv",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 32158
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485034,
+   "data_storage_id": "f10e9982-9b44-4602-b121-097a1d2f6c2a",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:44.588844Z",
+   "data_storage": {
+    "name": "owid2026.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "97d549ae2f1c",
+    "parent_id": null,
+    "dataset_id": "58847dbd-dd58-45dd-a30c-7142f74c99b8",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f10e9982-9b44-4602-b121-097a1d2f6c2a",
+    "path": "97d549ae2f1c",
+    "created_at": "2026-11-26T07:32:44.519567Z",
+    "modified_at": "2026-11-26T07:32:44.761341Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/owid2026.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 71732
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485032,
+   "data_storage_id": "a05504e6-0a23-422e-9a35-54c310e3a58d",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:44.189494Z",
+   "data_storage": {
+    "name": "nsf2026.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "2d47709559f5",
+    "parent_id": null,
+    "dataset_id": "b3b04178-9126-4de0-8467-1b061c33de3e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "a05504e6-0a23-422e-9a35-54c310e3a58d",
+    "path": "2d47709559f5",
+    "created_at": "2026-11-26T07:32:44.151264Z",
+    "modified_at": "2026-11-26T07:32:44.323945Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/nsf2026.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 16904
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485030,
+   "data_storage_id": "16a24538-5007-4dce-b90c-5dbcaca48359",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:43.739567Z",
+   "data_storage": {
+    "name": "peerj2014.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "2f893c5c6b9a",
+    "parent_id": null,
+    "dataset_id": "9b0c1093-d67b-4218-a53a-8e5a0aa0a210",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "16a24538-5007-4dce-b90c-5dbcaca48359",
+    "path": "2f893c5c6b9a",
+    "created_at": "2026-11-26T07:32:43.704576Z",
+    "modified_at": "2026-11-26T07:32:43.904962Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/peerj2014.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 4835
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485028,
+   "data_storage_id": "4555d807-8d0c-4e56-9978-82006e2ad8fa",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:43.416826Z",
+   "data_storage": {
+    "name": "moore8433.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d08bedc2c47f",
+    "parent_id": null,
+    "dataset_id": "e046c82b-6e3e-4d0e-a18c-0d20d05163e0",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "4555d807-8d0c-4e56-9978-82006e2ad8fa",
+    "path": "d08bedc2c47f",
+    "created_at": "2026-11-26T07:32:43.349863Z",
+    "modified_at": "2026-11-26T07:32:43.566081Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/moore8433.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 14
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485026,
+   "data_storage_id": "b0c41083-b14c-4513-b50b-20a3b4dcddfc",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:42.918336Z",
+   "data_storage": {
+    "name": "sapphire2014.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "96316a096f23",
+    "parent_id": null,
+    "dataset_id": "fe2f55a7-9be8-49b7-9a28-c7c50335f572",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "b0c41083-b14c-4513-b50b-20a3b4dcddfc",
+    "path": "96316a096f23",
+    "created_at": "2026-11-26T07:32:42.858852Z",
+    "modified_at": "2026-11-26T07:32:43.120613Z",
+    "tags": null,
+    "file_path": "/workspace/review_support/sapphire2014.txt",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 7425
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485024,
+   "data_storage_id": "57c22271-e141-44e2-8a05-745bd805d781",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:42.514987Z",
+   "data_storage": {
+    "name": "review.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "2c4ba4c05a4c",
+    "parent_id": null,
+    "dataset_id": "503f6beb-01a6-4401-973d-1d9c1c268e5e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "57c22271-e141-44e2-8a05-745bd805d781",
+    "path": "2c4ba4c05a4c",
+    "created_at": "2026-11-26T07:32:42.462849Z",
+    "modified_at": "2026-11-26T07:32:42.659199Z",
+    "tags": null,
+    "file_path": "/workspace/review.md",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 32145
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31485021,
+   "data_storage_id": "7a43af64-a3f4-4029-ba6c-1641ef7426a1",
+   "operation": "create",
+   "actor_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T07:32:40.153292Z",
+   "data_storage": {
+    "name": "review_audit_bundle.zip",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "cae12cdd02b8",
+    "parent_id": null,
+    "dataset_id": "ee174fa1-fee3-4d4a-9882-e73d26fb461e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "7a43af64-a3f4-4029-ba6c-1641ef7426a1",
+    "path": "cae12cdd02b8",
+    "created_at": "2026-11-26T07:32:39.986268Z",
+    "modified_at": "2026-11-26T07:32:42.239434Z",
+    "tags": null,
+    "file_path": "/workspace/review_audit_bundle.zip",
+    "metadata": {
+     "trajectory_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "45bc9943-3fa7-4dc4-a27a-f6d9096ac41c",
+       "filename": "edison_audit_comparison.csv"
+      },
+      {
+       "entry_id": "95d0fefa-fb28-4347-98be-862053f787d5",
+       "filename": "FUNDERS.md"
+      },
+      {
+       "entry_id": "f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+       "filename": "ventures.csv"
+      },
+      {
+       "entry_id": "c006154f-ef1f-4645-8db9-e4c4683d475f",
+       "filename": "investors.csv"
+      },
+      {
+       "entry_id": "ae57b99a-258f-44fd-af11-3639fc70e1a9",
+       "filename": "source_checks_deals.csv"
+      },
+      {
+       "entry_id": "27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+       "filename": "deals.csv"
+      },
+      {
+       "entry_id": "ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+       "filename": "programs.csv"
+      },
+      {
+       "entry_id": "eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+       "filename": "PROTOCOL.md"
+      },
+      {
+       "entry_id": "50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+       "filename": "investor_links.csv"
+      }
+     ],
+     "size": 778315
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  }
+ ]
+}

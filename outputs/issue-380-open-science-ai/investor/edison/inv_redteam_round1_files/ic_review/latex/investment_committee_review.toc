@@ -1,0 +1,31 @@
+\contentsline {section}{Executive Summary}{1}{section*.1}%
+\contentsline {section}{\numberline {1}Where the argument is weakest}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Public value is repeatedly substituted for shareholder value}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}The headline venture study does not establish a causal openness premium}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}``87\% cheaper'' is not a fully burdened autonomous-laboratory cost comparison}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}``Already fits the winning pattern'' is the most investment-relevant overstatement}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Foundation durability, fork activity and founder status are not equity evidence}{4}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}The AI-era and open-science measures are not commensurate}{4}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}The proposal makes potentially irreversible commitments before validating the business}{4}{subsection.1.7}%
+\contentsline {section}{\numberline {2}What the dataset actually says}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Denominators and methods}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Financial distributions by openness}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Acquisition, take-private and failure observations}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Sector distributions and the physical-science evidence gap}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Adjustments and sensitivity analyses}{8}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}How much bias can I quantify?}{9}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Ten investment concerns, ranked by severity}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The company may fund a public good that competitors monetize -- critical}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Academic demand may not become an industrial purchasing budget -- critical}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Autonomous discovery may not transfer into reproducible, manufacturable alloys -- critical}{11}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Integration and support may consume the gross margin -- very high}{11}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Capital intensity and financing risk may erase attractive technical outcomes -- very high}{11}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}The company may not own, or be able to license, what it plans to sell -- very high}{11}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}The OEM or AI platform may control the product's critical path -- high}{12}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Safety, qualification and liability may dominate the release and revenue timetable -- high}{12}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}There may be no attractive exit for the actual business built -- high}{12}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Governance and maintenance obligations may exceed the spin-out's capacity -- material}{12}{subsection.3.10}%
+\contentsline {section}{\numberline {4}What would change my assessment?}{13}{section.4}%
+\contentsline {section}{\numberline {5}Discretionary analytical decisions}{14}{section.5}%
+\contentsline {section}{Edison Platform Data Sources}{15}{section*.4}%
+\contentsline {section}{References}{16}{table.8}%

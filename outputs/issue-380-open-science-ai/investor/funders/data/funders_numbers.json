@@ -1,0 +1,959 @@
+{
+ "U1": {
+  "ventures": 387,
+  "researched": 387,
+  "with_funding": 235,
+  "none_found": 143,
+  "bootstrapped_stated": 9,
+  "out_of_scope": 0,
+  "rounds": 554,
+  "rounds_named": 519,
+  "round_records": 563,
+  "rows_all": 607,
+  "rows_not_counted": 18,
+  "links": 1561,
+  "funders": 947,
+  "funders_1": 734,
+  "funders_3plus": 114,
+  "funders_5plus": 50,
+  "funders_10plus": 12,
+  "top10_share_of_links": 0.102,
+  "top50_share_of_links": 0.268,
+  "top15": [
+   [
+    "Y Combinator",
+    53
+   ],
+   [
+    "Accel",
+    14
+   ],
+   [
+    "Andreessen Horowitz",
+    14
+   ],
+   [
+    "Sequoia Capital",
+    14
+   ],
+   [
+    "Guillermo Rauch",
+    13
+   ],
+   [
+    "Coatue",
+    11
+   ],
+   [
+    "Nexus Venture Partners",
+    11
+   ],
+   [
+    "CRV",
+    10
+   ],
+   [
+    "Index Ventures",
+    10
+   ],
+   [
+    "OSS Capital",
+    10
+   ],
+   [
+    "Redpoint Ventures",
+    10
+   ],
+   [
+    "SV Angel",
+    10
+   ],
+   [
+    "GGV Capital (US arm now Notable Capital)",
+    9
+   ],
+   [
+    "Lightspeed Venture Partners",
+    9
+   ],
+   [
+    "New Enterprise Associates",
+    9
+   ]
+  ]
+ },
+ "U2": {
+  "ventures": 98,
+  "researched": 98,
+  "with_funding": 73,
+  "none_found": 22,
+  "bootstrapped_stated": 3,
+  "out_of_scope": 0,
+  "rounds": 227,
+  "rounds_named": 211,
+  "round_records": 231,
+  "rows_all": 249,
+  "rows_not_counted": 5,
+  "links": 392,
+  "funders": 328,
+  "funders_1": 289,
+  "funders_3plus": 13,
+  "funders_5plus": 1,
+  "funders_10plus": 1,
+  "top10_share_of_links": 0.107,
+  "top50_share_of_links": 0.291,
+  "top15": [
+   [
+    "Kickstarter backers",
+    13
+   ],
+   [
+    "NVIDIA (incl. NVentures)",
+    4
+   ],
+   [
+    "True Ventures",
+    4
+   ],
+   [
+    "Balaji Srinivasan",
+    3
+   ],
+   [
+    "Bessemer Venture Partners",
+    3
+   ],
+   [
+    "Costanoa Ventures",
+    3
+   ],
+   [
+    "Crowd Supply backers",
+    3
+   ],
+   [
+    "Digital Science",
+    3
+   ],
+   [
+    "Foundry Group",
+    3
+   ],
+   [
+    "General Catalyst",
+    3
+   ],
+   [
+    "Intel Capital",
+    3
+   ],
+   [
+    "Qualcomm Ventures",
+    3
+   ],
+   [
+    "Spark Capital",
+    3
+   ],
+   [
+    "Anzu Partners",
+    2
+   ],
+   [
+    "Arm",
+    2
+   ]
+  ]
+ },
+ "U3": {
+  "ventures": 156,
+  "researched": 156,
+  "with_funding": 147,
+  "none_found": 9,
+  "bootstrapped_stated": 0,
+  "out_of_scope": 0,
+  "rounds": 485,
+  "rounds_named": 447,
+  "round_records": 493,
+  "rows_all": 553,
+  "rows_not_counted": 37,
+  "links": 1152,
+  "funders": 692,
+  "funders_1": 532,
+  "funders_3plus": 75,
+  "funders_5plus": 37,
+  "funders_10plus": 15,
+  "top10_share_of_links": 0.122,
+  "top50_share_of_links": 0.326,
+  "top15": [
+   [
+    "Accel",
+    18
+   ],
+   [
+    "Andreessen Horowitz",
+    17
+   ],
+   [
+    "Lightspeed Venture Partners",
+    15
+   ],
+   [
+    "New Enterprise Associates",
+    15
+   ],
+   [
+    "Insight Partners",
+    14
+   ],
+   [
+    "Intel Capital",
+    14
+   ],
+   [
+    "Sequoia Capital",
+    13
+   ],
+   [
+    "Benchmark",
+    12
+   ],
+   [
+    "Salesforce Ventures",
+    12
+   ],
+   [
+    "Index Ventures",
+    11
+   ],
+   [
+    "Sapphire Ventures",
+    11
+   ],
+   [
+    "GV",
+    10
+   ],
+   [
+    "Kleiner Perkins",
+    10
+   ],
+   [
+    "NVIDIA (incl. NVentures)",
+    10
+   ],
+   [
+    "Samsung",
+    10
+   ]
+  ]
+ },
+ "U4": {
+  "ventures": 385,
+  "researched": 385,
+  "with_funding": 297,
+  "none_found": 87,
+  "bootstrapped_stated": 1,
+  "out_of_scope": 17,
+  "rounds": 457,
+  "rounds_named": 443,
+  "round_records": 457,
+  "rows_all": 475,
+  "rows_not_counted": 18,
+  "links": 966,
+  "funders": 526,
+  "funders_1": 425,
+  "funders_3plus": 42,
+  "funders_5plus": 14,
+  "funders_10plus": 2,
+  "top10_share_of_links": 0.32,
+  "top50_share_of_links": 0.454,
+  "top15": [
+   [
+    "Y Combinator",
+    243
+   ],
+   [
+    "SV Angel",
+    10
+   ],
+   [
+    "Andreessen Horowitz",
+    9
+   ],
+   [
+    "Pioneer Fund",
+    9
+   ],
+   [
+    "Gradient Ventures",
+    8
+   ],
+   [
+    "Kima Ventures",
+    7
+   ],
+   [
+    "Accel",
+    6
+   ],
+   [
+    "Samsung",
+    6
+   ],
+   [
+    "Uncorrelated Ventures",
+    6
+   ],
+   [
+    "468 Capital",
+    5
+   ],
+   [
+    "Felicis",
+    5
+   ],
+   [
+    "Guillermo Rauch",
+    5
+   ],
+   [
+    "Paul Graham",
+    5
+   ],
+   [
+    "SignalFire",
+    5
+   ],
+   [
+    "A Capital",
+    4
+   ]
+  ]
+ },
+ "U1-U3": {
+  "ventures": 641,
+  "researched": 641,
+  "with_funding": 455,
+  "none_found": 174,
+  "bootstrapped_stated": 12,
+  "out_of_scope": 0,
+  "rounds": 1266,
+  "rounds_named": 1177,
+  "round_records": 1287,
+  "rows_all": 1409,
+  "rows_not_counted": 60,
+  "links": 3105,
+  "funders": 1654,
+  "funders_1": 1241,
+  "funders_3plus": 220,
+  "funders_5plus": 98,
+  "funders_10plus": 38,
+  "top10_share_of_links": 0.094,
+  "top50_share_of_links": 0.255,
+  "top15": [
+   [
+    "Y Combinator",
+    61
+   ],
+   [
+    "Accel",
+    32
+   ],
+   [
+    "Andreessen Horowitz",
+    32
+   ],
+   [
+    "Sequoia Capital",
+    29
+   ],
+   [
+    "Lightspeed Venture Partners",
+    24
+   ],
+   [
+    "New Enterprise Associates",
+    24
+   ],
+   [
+    "Insight Partners",
+    23
+   ],
+   [
+    "Intel Capital",
+    23
+   ],
+   [
+    "Index Ventures",
+    22
+   ],
+   [
+    "Coatue",
+    21
+   ],
+   [
+    "Benchmark",
+    20
+   ],
+   [
+    "NVIDIA (incl. NVentures)",
+    20
+   ],
+   [
+    "Redpoint Ventures",
+    19
+   ],
+   [
+    "GV",
+    18
+   ],
+   [
+    "SV Angel",
+    18
+   ]
+  ]
+ },
+ "types_all": {
+  "accelerator": 24,
+  "venture_firm": 836,
+  "growth_pe_hedge": 134,
+  "corporate_venture": 228,
+  "angel": 507,
+  "crowdfunding": 14,
+  "public_investor": 43,
+  "crypto_fund_or_dao": 59,
+  "bank_or_debt": 13,
+  "philanthropy": 11,
+  "other": 34,
+  "government_grant": 32,
+  "company": 20
+ },
+ "led_top": [
+  [
+   "Andreessen Horowitz",
+   24
+  ],
+  [
+   "Accel",
+   22
+  ],
+  [
+   "Insight Partners",
+   21
+  ],
+  [
+   "New Enterprise Associates",
+   17
+  ],
+  [
+   "Sequoia Capital",
+   16
+  ],
+  [
+   "Lightspeed Venture Partners",
+   14
+  ],
+  [
+   "Index Ventures",
+   14
+  ],
+  [
+   "Benchmark",
+   13
+  ],
+  [
+   "Redpoint Ventures",
+   12
+  ],
+  [
+   "Bessemer Venture Partners",
+   12
+  ],
+  [
+   "GV",
+   11
+  ],
+  [
+   "Coatue",
+   10
+  ],
+  [
+   "CRV",
+   10
+  ],
+  [
+   "General Catalyst",
+   10
+  ],
+  [
+   "Kleiner Perkins",
+   10
+  ]
+ ],
+ "era_top": {
+  "2010-2019": [
+   [
+    "New Enterprise Associates",
+    14
+   ],
+   [
+    "Andreessen Horowitz",
+    13
+   ],
+   [
+    "Kickstarter backers",
+    13
+   ],
+   [
+    "Accel",
+    12
+   ],
+   [
+    "Intel Capital",
+    12
+   ],
+   [
+    "Y Combinator",
+    9
+   ],
+   [
+    "Benchmark",
+    8
+   ],
+   [
+    "Goldman Sachs",
+    8
+   ],
+   [
+    "Index Ventures",
+    8
+   ],
+   [
+    "Lightspeed Venture Partners",
+    8
+   ],
+   [
+    "True Ventures",
+    8
+   ],
+   [
+    "Dell Technologies Capital",
+    7
+   ]
+  ],
+  "2020 on": [
+   [
+    "Y Combinator",
+    47
+   ],
+   [
+    "Sequoia Capital",
+    21
+   ],
+   [
+    "NVIDIA (incl. NVentures)",
+    20
+   ],
+   [
+    "Andreessen Horowitz",
+    16
+   ],
+   [
+    "Coatue",
+    16
+   ],
+   [
+    "Insight Partners",
+    16
+   ],
+   [
+    "Lightspeed Venture Partners",
+    16
+   ],
+   [
+    "Accel",
+    14
+   ],
+   [
+    "Salesforce Ventures",
+    14
+   ],
+   [
+    "Bessemer Venture Partners",
+    12
+   ],
+   [
+    "OSS Capital",
+    12
+   ],
+   [
+    "Redpoint Ventures",
+    12
+   ]
+  ],
+  "before 2010": [
+   [
+    "Accel",
+    5
+   ],
+   [
+    "Benchmark",
+    5
+   ],
+   [
+    "Intel Capital",
+    5
+   ],
+   [
+    "Index Ventures",
+    3
+   ],
+   [
+    "New Enterprise Associates",
+    3
+   ],
+   [
+    "Draper Fisher Jurvetson",
+    2
+   ],
+   [
+    "Greylock Partners",
+    2
+   ],
+   [
+    "Matrix Partners",
+    2
+   ],
+   [
+    "Radar Partners",
+    2
+   ],
+   [
+    "Red Hat",
+    2
+   ],
+   [
+    "Redpoint Ventures",
+    2
+   ],
+   [
+    "Sapphire Ventures",
+    2
+   ]
+  ]
+ },
+ "era_links": {
+  "2010-2019": 701,
+  "2020 on": 2079,
+  "before 2010": 90
+ },
+ "rounds_by_source_kind": {
+  "news": 816,
+  "company": 423,
+  "investor": 36,
+  "wikipedia": 118,
+  "other": 422,
+  "filing": 35,
+  "database": 34
+ },
+ "source_check": {
+  "mentions": 5524,
+  "fetched": 5228,
+  "found": 4862,
+  "markup_only": 191,
+  "not_on_page": 175,
+  "share_found": 0.93,
+  "share_found_or_markup": 0.967
+ },
+ "portfolio_check": {
+  "domain_links": 70,
+  "already_in_deals": 68
+ },
+ "thesis_funders": [
+  [
+   "Andreessen Horowitz",
+   "41"
+  ],
+  [
+   "Accel",
+   "38"
+  ],
+  [
+   "Sequoia Capital",
+   "31"
+  ],
+  [
+   "Insight Partners",
+   "25"
+  ],
+  [
+   "New Enterprise Associates",
+   "25"
+  ],
+  [
+   "Lightspeed Venture Partners",
+   "25"
+  ],
+  [
+   "Index Ventures",
+   "24"
+  ],
+  [
+   "Redpoint Ventures",
+   "21"
+  ],
+  [
+   "Bessemer Venture Partners",
+   "20"
+  ],
+  [
+   "CRV",
+   "19"
+  ],
+  [
+   "Sapphire Ventures",
+   "17"
+  ],
+  [
+   "OSS Capital",
+   "16"
+  ],
+  [
+   "Uncorrelated Ventures",
+   "14"
+  ],
+  [
+   "Dell Technologies Capital",
+   "12"
+  ],
+  [
+   "M12",
+   "12"
+  ],
+  [
+   "Lux Capital",
+   "11"
+  ],
+  [
+   "SignalFire",
+   "11"
+  ],
+  [
+   "Madrona Venture Group",
+   "7"
+  ],
+  [
+   "Databricks Ventures",
+   "7"
+  ],
+  [
+   "Mozilla Ventures",
+   "6"
+  ],
+  [
+   "Runa Capital",
+   "5"
+  ],
+  [
+   "Boldstart Ventures",
+   "4"
+  ],
+  [
+   "Open Core Ventures",
+   "4"
+  ],
+  [
+   "Zetta Venture Partners",
+   "3"
+  ],
+  [
+   "Serena",
+   "1"
+  ],
+  [
+   "Zerodha",
+   "1"
+  ]
+ ],
+ "n_thesis_funders": 26,
+ "groups": {
+  "alibaba": 8,
+  "amazon": 7,
+  "saudi_aramco": 8,
+  "alphabet": 43,
+  "citigroup": 6,
+  "dell": 13,
+  "ntt": 3,
+  "microsoft": 18,
+  "goldman_sachs": 14,
+  "hyundai": 1,
+  "intel": 24,
+  "xavier_niel": 13,
+  "nvidia": 21,
+  "o_reilly": 2,
+  "sap": 1,
+  "salesforce": 19,
+  "samsung": 20,
+  "sony": 1,
+  "tencent": 7,
+  "western_digital": 2
+ },
+ "focus": {
+  "oss_capital": 16,
+  "runa_capital": 5,
+  "open_core_ventures": 4,
+  "heavybit": 5,
+  "uncorrelated_ventures": 14,
+  "boldstart_ventures": 4,
+  "crane_venture_partners": 4,
+  "amplify_partners": 17,
+  "bessemer_venture_partners": 20,
+  "gv": 20,
+  "y_combinator": 304,
+  "sosv": 3,
+  "kickstarter_backers": 16,
+  "khosla_ventures": 12,
+  "true_ventures": 15,
+  "foundry_group": 5,
+  "spark_capital": 10,
+  "eclipse_ventures": 2,
+  "lux_capital": 11,
+  "guillermo_rauch": 19,
+  "clem_delangue": 9,
+  "david_cramer": 10,
+  "tom_preston_werner": 10,
+  "nat_friedman": 9,
+  "paul_copplestone": 7,
+  "tristan_handy": 5,
+  "nvidia_incl_nventures": 21,
+  "intel_capital": 24,
+  "accel": 38,
+  "sequoia_capital": 31,
+  "andreessen_horowitz": 41
+ },
+ "sensitivity_db": {
+  "links_db_only": 116,
+  "links": 3105,
+  "top20_overlap": 20,
+  "dropped_from_top20": []
+ },
+ "edison_audit": {
+  "ventures": 40,
+  "edison_names": 296,
+  "our_names": 180,
+  "both": 154,
+  "recall_vs_edison": 0.52,
+  "ours_confirmed_by_edison": 0.856,
+  "ventures_we_missed_entirely": 8,
+  "ventures_edison_missed_entirely": 0
+ },
+ "verify": {
+  "checked": 99,
+  "confirmed": 68,
+  "other_source": 16,
+  "not_supported": 10,
+  "unclear": 5
+ },
+ "edison_literature": {
+  "named": 47,
+  "found": 45
+ },
+ "deepened": 344,
+ "deepen_passes": 32,
+ "deal_passes": 46,
+ "not_counted": {
+  "unconfirmed": 7,
+  "duplicate": 6,
+  "exit": 45,
+  "ownership_transfer": 3,
+  "out_of_scope": 17
+ },
+ "not_counted_total": 78,
+ "out_of_scope_ventures": 17,
+ "out_of_scope_by_reason": {
+  "not_open": 6,
+  "nonprofit": 5,
+  "duplicate": 6
+ },
+ "sensitivity_open_yes": {
+  "ventures_partial_with_links": 82,
+  "ventures_yes_with_links": 360,
+  "links": 2323,
+  "top20_overlap": 16,
+  "dropped_from_top20": [
+   "NVIDIA (incl. NVentures)",
+   "General Catalyst",
+   "Salesforce Ventures",
+   "Battery Ventures"
+  ],
+  "entered_top20": [
+   "Nexus Venture Partners",
+   "Guillermo Rauch",
+   "OSS Capital",
+   "Amplify Partners"
+  ]
+ },
+ "sensitivity_db_all": {
+  "links": 4071,
+  "funders": 1955,
+  "links_strict": 3940,
+  "funders_strict": 1904
+ },
+ "thesis_kinds": {
+  "named_focus_or_program": 4,
+  "partner_remark": 17,
+  "dedicated_mandate": 2,
+  "portfolio_description": 1,
+  "mission_statement": 2
+ },
+ "u2_types": {
+  "venture_firm": {
+   "links": 172,
+   "ventures": 39
+  },
+  "corporate_venture": {
+   "links": 60,
+   "ventures": 30
+  },
+  "crowdfunding": {
+   "links": 24,
+   "ventures": 19
+  },
+  "angel": {
+   "links": 35,
+   "ventures": 16
+  },
+  "government_grant": {
+   "links": 22,
+   "ventures": 14
+  },
+  "philanthropy": {
+   "links": 10,
+   "ventures": 7
+  },
+  "accelerator": {
+   "links": 10,
+   "ventures": 9
+  },
+  "public_investor": {
+   "links": 11,
+   "ventures": 8
+  }
+ },
+ "u2_kickstarter": 13,
+ "yc_early": {
+  "records": 364,
+  "ventures": 298
+ },
+ "spot_check": {
+  "links": 40,
+  "confirmed": 33,
+  "unreadable": 4,
+  "readable": 36,
+  "not_closed": 1,
+  "not_checkable": 1,
+  "unclear_role": 1,
+  "logo_or_loose": 2
+ }
+}

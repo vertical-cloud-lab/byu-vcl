@@ -1,0 +1,7 @@
+measure,n,spearman_rho,ci_low,ci_high,median_usd_per_star,p75_over_p25_usd_per_star
+latest value (disclosed),44,0.132,-0.181,0.435,30818.0,7.5
+"latest value, shutdowns at zero",52,0.235,-0.053,0.488,30818.0,7.5
+peak disclosed value,47,0.233,-0.063,0.493,31128.0,7.1
+disclosed equity funding,160,0.058,-0.109,0.227,435.0,13.4
+"capital raised, larger of disclosed and Form D",171,0.074,-0.089,0.229,445.0,12.7
+"exploratory: latest value, stars on repos created before 2025",42,0.06,-0.251,0.364,32588.0,6.9

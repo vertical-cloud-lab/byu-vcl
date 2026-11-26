@@ -1,0 +1,1042 @@
+2: deepseek-ai | DeepSeek | U1 | yes | releases open-weight models and sells API access to the same models
+3: huggingface | Hugging Face | U1 | yes | sells Hub hosting, Inference Endpoints and Enterprise Hub
+4: vercel | Vercel | U1 | yes | hosting platform marketed to Next.js users
+5: multica-ai | Multica | U1 | yes | sells hosted Multica Cloud and commercial licences
+6: NousResearch | Nous Research | U1 | yes | releases open-weight Hermes models; sells Nous Portal plans powering Hermes
+7: firecrawl | Firecrawl (Sideguide Technologies) | U1 | yes | sells hosted Firecrawl API with paid plans
+8: anomalyco | Anomaly | U1 | yes | sells OpenCode Go/Console model subscriptions and enterprise to opencode users
+9: VoltAgent | VoltAgent | U1 | yes | sells VoltOps platform around its open-source agent framework
+10: langchain-ai | LangChain | U1 | yes | sells LangSmith platform built around LangChain
+11: n8n-io | n8n | U1 | yes | sells n8n Cloud and Enterprise licences (fair-code)
+12: FuelLabs | Fuel Labs | U1 | yes | company developing the Fuel rollup network it builds its business on
+13: Significant-Gravitas | Significant Gravitas Ltd | U1 | yes | company sells hosted AutoGPT Platform built on the project
+14: ollama | Ollama | U1 | yes | sells Ollama cloud hosted-model plans to its users
+15: browser-use | Browser Use | U1 | yes | sells Browser Use Cloud, hosted version of the library
+16: storytold | Storyteller (ArtCraft) | U1 | yes | sells ArtCraft Basic/Pro/Max plans, credits and enterprise
+17: langgenius | LangGenius | U1 | yes | Dify, modified Apache 2.0; sells Dify Cloud and Dify Enterprise
+18: open-webui | Open WebUI Inc. | U1 | yes | sells Open WebUI enterprise licences and support
+19: langflow-ai | Langflow (DataStax) | U1 | yes | Langflow company bought by DataStax (now IBM); hosted Langflow sold
+20: Graphify-Labs | Graphify Labs | U1 | yes | sells hosted Graphify Pro, Teams and Enterprise; CLI free
+21: tailwindlabs | Tailwind Labs | U1 | yes | Tailwind CSS, MIT; sells Tailwind Plus components and templates
+22: fastapi | FastAPI Labs | U1 | yes | maintainer's company sells FastAPI Cloud hosting
+23: Comfy-Org | Comfy Org | U1 | yes | sells Comfy Cloud and paid API nodes for ComfyUI
+24: hashicorp | HashiCorp | U1 | yes | sells HCP cloud and enterprise editions of Terraform, Vault
+25: astral-sh | Astral | U1 | yes | sells pyx hosted registry for uv users; acquired by OpenAI 2026
+26: grafana | Grafana Labs | U1 | yes | sells Grafana Cloud and Enterprise
+27: excalidraw | Excalidraw s.r.o. | U1 | yes | sells Excalidraw+, hosted paid version
+28: FoundationAgents | DeepWisdom | U1 | yes | MetaGPT team's company sells hosted MGX/Atoms agent product
+29: charmbracelet | Charm (Charmbracelet) | U1 | yes | sells Hyper inference for its Crush agent users; enterprise on request
+30: earendil-works | Earendil Inc. | U1 | yes | company building Pi and other open AI tools; no paid tier found
+31: ultralytics | Ultralytics | U1 | yes | sells enterprise licences and platform for YOLO
+32: pathwaycom | Pathway | U1 | yes | sells enterprise licence for Pathway framework
+33: laravel | Laravel | U1 | yes | Laravel framework, MIT; sells Laravel Cloud, Forge and Nova to Laravel users
+34: immich-app | FUTO | U1 | yes | FUTO-employed team sells Immich licence keys
+35: paperclipai | Paperclip Labs, Inc. | U1 | yes | company behind Paperclip; hosted cloud version on waitlist
+36: supabase | Supabase | U1 | yes | sells hosted Supabase platform
+37: nexu-io | Powerformer, Inc. | U1 | yes | sells OpenDesign Cloud paid plans and Team/Enterprise
+38: denoland | Deno Land Inc. | U1 | yes | sells Deno Deploy hosting for Deno
+39: OpenBMB | ModelBest | U1 | yes | ModelBest-run lab commercialising MiniCPM models; co-founded with Tsinghua NLP
+40: redis | Redis Ltd. | U1 | yes | sells Redis Cloud and Redis Enterprise
+41: mui | MUI | U1 | yes | sells MUI X Pro/Premium licences
+42: Stirling-Tools | Stirling PDF | U1 | yes | sells Stirling-PDF Pro/Enterprise and hosted version
+43: oven-sh | Oven (Bun) | U1 | yes | company formed to commercialise the Bun runtime; acquired by Anthropic 2025
+44: zed-industries | Zed Industries | U1 | yes | sells Zed Pro AI plans within the editor
+45: Textualize | Textualize | U1 | yes | founder's company built around Rich/Textual (Textual Web hosting)
+46: infiniflow | InfiniFlow | U1 | yes | company behind RAGFlow; sells enterprise and cloud editions
+47: OpenHands | All Hands AI | U1 | yes | maintainers' company sells OpenHands Cloud and enterprise
+48: storybookjs | Chromatic | U1 | yes | maintainers' company Chromatic sells hosted Storybook service
+49: mermaid-js | Mermaid Chart | U1 | yes | Mermaid diagram library, MIT; maintainers' company sells hosted Mermaid Chart editor
+50: cheaper-inference | Cheaper Inference | U1 | yes | sells hosted OmniRoute-style gateway and pay-as-you-go model access
+51: ChatGPTNextWeb | NextChat | U1 | yes | sells hosted pay-as-you-go NextChat and enterprise edition
+52: rtk-ai | RTK AI Labs | U1 | yes | sells RTK Pro team tier; CLI free
+53: lobehub | LobeHub | U1 | yes | sells LobeHub Cloud subscriptions
+54: docker | Docker Inc. | U1 | yes | sells Docker subscriptions for its tools
+55: Kong | Kong Inc. | U1 | yes | sells Kong Konnect and Enterprise gateway
+56: vitejs | VoidZero | U1 | yes | maintainers' company VoidZero builds Void deploy platform for Vite apps
+57: netdata | Netdata Inc. | U1 | yes | sells Netdata Cloud subscriptions
+58: hoppscotch | Hoppscotch | U1 | yes | sells Hoppscotch Cloud and Enterprise
+59: headroomlabs-ai | Headroom Labs | U1 | yes | enterprise deployment and SLA support for headroom
+60: unslothai | Unsloth AI | U1 | yes | sells Unsloth Pro/Enterprise training
+61: coder | Coder Technologies | U1 | yes | sells Coder Premium enterprise CDE platform
+62: AppFlowy-IO | AppFlowy | U1 | yes | sells AppFlowy Cloud paid plans
+63: TanStack | TanStack LLC | U1 | yes | Tanner Linsley's company; revenue from project partnerships
+64: elastic | Elastic N.V. | U1 | yes | sells Elastic Cloud and subscriptions
+65: toeverything | Toeverything (AFFiNE) | U1 | yes | AFFiNE, MIT editor; sells AFFiNE Cloud and Pro plans
+66: usestrix | Strix | U1 | yes | sells hosted AI pentesting platform and enterprise deployments
+67: nestjs | NestJS (Kamil Myśliwiec) | U1 | yes | creator's team sells enterprise support, certification courses, Mau deploy
+68: FortAwesome | Fonticons, Inc. (Font Awesome) | U1 | yes | sells Font Awesome Pro
+69: openbq-org | OpenBB Inc. | U1 | yes | OpenBB platform on GitHub; sells OpenBB Workspace enterprise edition
+70: Fission-AI | Fission AI | U1 | yes | company whose product is OpenSpec (desktop app in beta)
+71: remotion-dev | Remotion AG | U1 | yes | sells company licences for Remotion
+72: unionlabs | Union Labs | U1 | yes | company developing the Union interoperability protocol
+73: strapi | Strapi | U1 | yes | sells Strapi Cloud and Enterprise
+74: hpcaitech | HPC-AI Tech | U1 | yes | sells cloud platform for training and deploying with Colossal-AI
+75: cline | Cline Bot Inc. | U1 | yes | sells Cline Teams and Enterprise plans
+76: daytonaio | Daytona Platforms | U1 | yes | sells hosted Daytona sandbox infrastructure
+77: mem0ai | Mem0 | U1 | yes | sells hosted Mem0 Platform
+78: openinterpreter | Open Interpreter | U1 | yes | company's product is the project itself (agent and desktop client)
+79: Mintplex-Labs | Mintplex Labs | U1 | yes | sells hosted AnythingLLM cloud and enterprise
+80: zai-org | Z.ai (Zhipu AI) | U1 | yes | open-weight GLM models; sells API access
+81: coollabsio | coolLabs | U1 | yes | Coolify, Apache 2.0; sells Coolify Cloud, hosted version
+82: warpdotdev | Warp | U1 | yes | open-source client; sells paid Warp plans
+83: traefik | Traefik Labs | U1 | yes | sells Traefik Enterprise and Traefik Hub
+84: scrapy | Zyte | U1 | yes | maintained by Zyte, which sells Scrapy Cloud and Zyte API
+85: nocodb | NocoDB | U1 | yes | NocoDB open-source Airtable alternative; sells NocoDB Cloud and Enterprise
+86: localstack | LocalStack | U1 | yes | sells LocalStack Pro and Enterprise
+87: tabler | Tabler | U1 | yes | sells Tabler Pro and All packages
+88: commaai | comma.ai | U1 | yes | sells comma devices running openpilot
+89: jgraph | JGraph Ltd | U1 | yes | sells draw.io apps for Confluence and Jira
+90: BerriAI | BerriAI | U1 | yes | sells LiteLLM Enterprise and hosted proxy
+91: vectorize-io | Vectorize, Inc. | U1 | yes | sells Hindsight Cloud and Enterprise
+92: makeplane | Plane | U1 | yes | sells Plane Cloud and paid editions
+93: penpot | Kaleidos (Penpot) | U1 | yes | sells Penpot cloud plans and enterprise
+94: twentyhq | Twenty.com PBC | U1 | yes | sells Twenty Cloud hosted CRM
+95: crewAIInc | CrewAI | U1 | yes | sells CrewAI enterprise agent platform
+96: minio | MinIO Inc. | U1 | yes | sells AIStor enterprise edition and subscriptions
+97: nuxt | NuxtLabs | U1 | yes | Nuxt, MIT; maintainers' company sold Nuxt UI Pro and NuxtHub; acquired by Vercel 2025
+98: 1Panel-dev | FIT2CLOUD | U1 | yes | FIT2CLOUD sells 1Panel and MaxKB pro editions
+99: meilisearch | Meilisearch | U1 | yes | sells Meilisearch Cloud
+100: K-Dense-AI | K-Dense | U1 | yes | sells hosted K-Dense Web co-scientist built around its open skills
+101: go-gitea | Gitea Ltd / CommitGo | U1 | yes | maintainers' company sells Gitea Cloud and Enterprise
+102: appwrite | Appwrite | U1 | yes | sells Appwrite Cloud
+103: zylon-ai | Zylon | U1 | yes | sells Zylon private AI workspace built on PrivateGPT
+104: typst | Typst GmbH | U1 | yes | sells Typst web app subscriptions
+105: odoo | Odoo SA | U1 | yes | sells Odoo Enterprise and Odoo Online
+106: gatsbyjs | Gatsby | U1 | yes | sold Gatsby Cloud hosting; now owned by Netlify
+107: bmad-code-org | BMad Code, LLC | U1 | yes | consulting and training for the BMAD method
+108: FlowiseAI | FlowiseAI | U1 | yes | sold Flowise Cloud; company bought by Workday
+109: maybe-finance | Maybe Finance | U1 | yes | sold hosted subscription of the Maybe app
+110: CherryHQ | Cherry Studio (CherryHQ) | U1 | yes | sells Cherry Studio enterprise edition and commercial licences
+111: HumanSignal | HumanSignal | U1 | yes | sells Label Studio Enterprise
+112: expo | Expo (650 Industries) | U1 | yes | sells Expo Application Services to Expo developers
+113: upscayl | Upscayl | U1 | yes | Upscayl desktop app, AGPL-3.0; sells Upscayl Cloud
+114: run-llama | LlamaIndex | U1 | yes | sells LlamaCloud and LlamaParse
+115: PrefectHQ | Prefect Technologies | U1 | yes | sells Prefect Cloud
+116: ionic-team | Ionic (Drifty Co.) | U1 | yes | sold Ionic Enterprise and Appflow for the framework
+117: dbeaver | DBeaver Corp | U1 | yes | DBeaver Community, Apache-2.0; sells DBeaver PRO editions
+118: KeygraphHQ | Keygraph | U1 | yes | sells Shannon Pro commercial edition
+119: tldraw | tldraw Inc. | U1 | yes | sells commercial tldraw SDK licences
+120: ClickHouse | ClickHouse | U1 | yes | sells ClickHouse Cloud
+121: cypress-io | Cypress.io | U1 | yes | sells Cypress Cloud
+122: metabase | Metabase | U1 | yes | sells Metabase Cloud and Pro/Enterprise
+123: calcom | Cal.com, Inc. | U1 | yes | sells hosted Cal.com and enterprise plans
+124: jeecgboot | JEECG (Beijing Guoju Information Technology) | U1 | yes | company sells commercial editions and support for JeecgBoot
+125: exo-explore | EXO Labs | U1 | yes | offers Exo for Business deployments; software free
+126: usebruno | Bruno Software Inc | U1 | yes | sells Bruno Pro and Ultimate editions
+127: nvm-windows | Author Software | U1 | yes | sells commercial Certified Builds of NVM for Windows
+128: discourse | Civilized Discourse Construction Kit (Discourse) | U1 | yes | sells hosted Discourse
+129: prisma | Prisma Data, Inc. | U1 | yes | Prisma ORM, Apache 2.0; sells Prisma Postgres and Accelerate
+130: siyuan-note | Yunnan Liandi Technology (B3log) | U1 | yes | sells SiYuan paid membership and cloud sync
+131: ifixai-ai | iFixAi | U1 | yes | sells per-agent audit plans; open-source engine free
+132: serverless | Serverless, Inc. | U1 | yes | sells Serverless Framework licences and dashboard
+133: milvus-io | Zilliz | U1 | yes | Milvus, Apache-2.0, LF AI & Data graduated; Zilliz sells hosted Milvus
+134: RocketChat | Rocket.Chat | U1 | yes | sells Rocket.Chat Enterprise and cloud
+135: streamlit | Streamlit | U1 | yes | Streamlit company bought by Snowflake
+136: coqui-ai | Coqui | U1 | yes | sold Coqui Studio and XTTS commercial licences
+137: janhq | Menlo Research | U1 | yes | company's main product is Jan itself; no paid tier found
+138: payloadcms | Payload | U1 | yes | sells Payload Cloud and enterprise; bought by Figma
+139: getsentry | Sentry (Functional Software) | U1 | yes | sells hosted Sentry
+140: logseq | Logseq Inc. | U1 | yes | sells Logseq Sync subscription
+141: meteor | Meteor Software | U1 | yes | sells Galaxy hosting for Meteor apps
+142: ray-project | Anyscale | U1 | yes | Ray contributed to PyTorch Foundation; Anyscale sells hosted Ray
+143: HeyPuter | Puter Technologies Inc. | U1 | yes | sells paid plans for hosted Puter
+144: gradio-app | Gradio | U1 | yes | Hugging Face Spaces hosting marketed to Gradio users
+145: duckdb | DuckDB Labs | U1 | yes | DuckDB, MIT; Dutch foundation owns IP; DuckDB Labs sells support
+146: agno-agi | Agno | U1 | yes | sells Agno AgentOS platform
+147: tinyhumansai | Tiny Human Intelligence Inc. | U1 | yes | sells credits for hosted orchestrator behind its open agents
+148: phaserjs | Phaser Studio Inc. | U1 | yes | sells Phaser Editor and tools for Phaser developers
+149: lightpanda-io | Lightpanda | U1 | yes | Lightpanda browser, AGPL on GitHub; sells hosted cloud browser
+150: chatboxai | Chatbox AI | U1 | yes | sells Chatbox AI subscriptions in the same app
+151: gitroomhq | Gitroom | U1 | yes | sells hosted Postiz subscriptions
+152: dcloudio | DCloud | U1 | yes | sells uniCloud and ad services to uni-app developers
+153: frappe | Frappe Technologies | U1 | yes | sells Frappe Cloud hosting and ERPNext support
+154: outline | General Outline | U1 | yes | sells hosted Outline knowledge base
+155: appsmithorg | Appsmith | U1 | yes | sells Appsmith Business and Enterprise
+156: ToolJet | ToolJet | U1 | yes | sells ToolJet Cloud and enterprise
+157: aseprite | Igara Studio | U1 | yes | sells Aseprite binaries; source-available
+158: PostHog | PostHog Inc. | U1 | yes | sells PostHog Cloud
+159: datalab-to | Datalab | U1 | yes | sells hosted API and commercial licences for marker
+160: vuetifyjs | Vuetify LLC | U1 | yes | sells Vuetify One subscriptions, support and premium add-ons
+161: VectifyAI | Vectify AI | U1 | yes | PageIndex, MIT; sells hosted PageIndex API and platform
+162: pingcap | PingCAP | U1 | yes | sells TiDB Cloud and Enterprise
+163: chakra-ui | Chakra Systems | U1 | yes | maintainers' Chakra Systems sells Chakra UI Pro components
+164: chatwoot | Chatwoot | U1 | yes | sells Chatwoot Cloud and enterprise
+165: pola-rs | Polars B.V. | U1 | yes | Polars dataframe library, MIT; sells Polars Cloud
+166: photoprism | PhotoPrism UG | U1 | yes | sells PhotoPrism+ memberships
+167: novuhq | Novu | U1 | yes | sells Novu Cloud and enterprise
+168: umami-software | Umami Software | U1 | yes | sells Umami Cloud
+169: DioxusLabs | Dioxus Labs | U1 | yes | company built around Dioxus; no paid product listed yet
+170: mindsdb | MindsDB | U1 | yes | sells MindsDB cloud and enterprise
+171: mattermost | Mattermost | U1 | yes | sells Mattermost Enterprise and Cloud
+172: tailscale | Tailscale | U1 | yes | sells Tailscale service; repo is the client
+173: spacedriveapp | Spacedrive Technology | U1 | yes | company built around Spacedrive; paid cloud features planned
+174: xyflow | xyflow GmbH | U1 | yes | sells React Flow Pro subscriptions
+175: ueberdosis | überdosis GmbH (Tiptap) | U1 | yes | sells Tiptap Pro extensions and cloud
+176: CopilotKit | CopilotKit | U1 | yes | sells Copilot Cloud hosted version
+177: harness | Harness | U1 | yes | Open-source edition of its commercial developer platform (Gitness/Harness OSS)
+178: portainer | Portainer.io | U1 | yes | sells Portainer Business Edition
+179: httpie | HTTPie | U1 | yes | company builds HTTPie apps around the CLI
+180: Dokploy | Dokploy | U1 | yes | sells Dokploy Cloud managed plans
+181: directus | Monospace Inc. (Directus) | U1 | yes | Directus, BSL 1.1 source-available; sells Directus Cloud and enterprise licences
+182: khoj-ai | Khoj Inc. | U1 | yes | sells hosted Khoj cloud plans
+183: langfuse | Langfuse | U1 | yes | sells Langfuse Cloud and Enterprise
+184: IceWhaleTech | IceWhale Technology | U1 | yes | sells ZimaBoard/ZimaCube hardware running CasaOS/ZimaOS
+185: nextcloud | Nextcloud GmbH | U1 | yes | sells Nextcloud Enterprise subscriptions
+186: medusajs | Medusa | U1 | yes | sells Medusa Cloud
+187: utmapp | UTM (Turing Software LLC) | U1 | yes | same app sold on Mac App Store
+188: anywhere-labs | Jiuxiangxian (Beijing) Technology | U1 | yes | company sells private deployment and custom development of DSH Desktop
+189: continuedev | Continue Dev, Inc. | U1 | yes | sells Continue team and enterprise plans
+190: rustfs | RustFS | U1 | yes | offers enterprise support for RustFS
+191: drizzle-team | Drizzle Team | U1 | yes | company behind Drizzle; licenses embeddable Drizzle Studio
+192: SheetJS | SheetJS LLC | U1 | yes | sells SheetJS Pro
+193: seaweedfs | SeaweedFS | U1 | yes | SeaweedFS, Apache 2.0; maintainer sells Enterprise edition
+194: refinedev | Refine | U1 | yes | sells Refine Enterprise and hosted refine.new builder
+195: qdrant | Qdrant | U1 | yes | sells Qdrant Cloud and enterprise
+196: motiondivision | Motion Division | U1 | yes | sells Motion+ premium membership
+197: vxcontrol | VXControl L.L.C-FZ | U1 | yes | security studio; PentAGI flagship with Enterprise edition
+198: Fincept-Corporation | Fincept Corporation | U1 | yes | sells per-seat FinceptTerminal enterprise access
+199: explosion | Explosion | U1 | yes | sells Prodigy and spaCy consulting to spaCy users
+200: tinygrad | Tiny Corp | U1 | yes | sells tinybox hardware running tinygrad
+201: TabbyML | TabbyML | U1 | yes | sells Tabby Enterprise and cloud
+202: fishaudio | Fish Audio | U1 | yes | open-weight TTS models; sells API and platform access
+203: Pythagora-io | Pythagora | U1 | yes | sells Pythagora AI dev platform built on GPT Pilot
+204: topoteretes | Topoteretes (cognee) | U1 | yes | sells hosted cognee platform
+205: onyx-dot-app | Onyx | U1 | yes | sells Onyx Cloud and Enterprise Edition
+206: anoma | Anoma (Heliax) | U1 | yes | company developing the Anoma protocol
+207: surrealdb | SurrealDB Ltd | U1 | yes | sells Surreal Cloud and enterprise licences
+208: nginx | NGINX | U1 | yes | sells NGINX Plus
+209: projectdiscovery | ProjectDiscovery | U1 | yes | nuclei and other tools, MIT; sells ProjectDiscovery Cloud platform
+210: getzep | Zep | U1 | yes | sells Zep Cloud built on Graphiti
+211: CloakHQ | CloakHQ | U1 | yes | sells CloakBrowser Pro and OEM licences
+212: ankitects | Anki Software, LLC (Ankitects) | U1 | yes | sells AnkiMobile iOS version of Anki to fund development
+213: ScrapeGraphAI | ScrapeGraphAI | U1 | yes | sells hosted ScrapeGraph API
+214: trycua | Cua | U1 | yes | sells hosted cloud sandboxes for Cua agents
+215: SigNoz | SigNoz | U1 | yes | sells SigNoz Cloud and Enterprise
+216: cockroachdb | Cockroach Labs | U1 | yes | sells CockroachDB Cloud and Enterprise
+217: atuinsh | Atuin, Inc. | U1 | yes | company built around Atuin; team features in beta
+218: conductor-oss | Orkes | U1 | yes | maintainers' company Orkes sells hosted Conductor
+219: hasura | Hasura | U1 | yes | sells Hasura Cloud/DDN and Enterprise
+220: linera-io | Linera | U1 | yes | company developing the Linera blockchain protocol
+221: dragonflydb | DragonflyDB | U1 | yes | sells Dragonfly Cloud
+222: AvaloniaUI | AvaloniaUI OÜ | U1 | yes | sells Avalonia XPF, Accelerate and support
+223: dream-num | DreamNum (Univer) | U1 | yes | sells Univer Pro and enterprise licences
+224: influxdata | InfluxData | U1 | yes | sells InfluxDB Cloud and Enterprise
+225: nautechsystems | Nautech Systems Pty Ltd | U1 | yes | NautilusTrader, LGPL-3.0; sells institutional support, Pro and cloud platform coming
+226: supermemoryai | Supermemory | U1 | yes | sells hosted supermemory API and app
+227: hypit-ai | Hypit | U1 | yes | hosted web app and API alongside open-source core
+228: Lightning-AI | Lightning AI | U1 | yes | sells Lightning AI Studio platform to PyTorch Lightning users
+229: symfony | Symfony SAS | U1 | yes | Symfony PHP framework, MIT; sells training, certification, support and SymfonyInsight
+230: heroui-inc | HeroUI Inc. | U1 | yes | sells HeroUI Pro components and templates
+231: netbirdio | NetBird | U1 | yes | sells NetBird Cloud and enterprise plans
+232: greensock | GreenSock | U1 | yes | sold GSAP Club licences until Webflow bought it; now free
+233: nanocoai | NanoCo | U1 | yes | NanoClaw creators sell enterprise AI assistant (early access)
+234: e2b-dev | E2B | U1 | yes | sells hosted E2B sandboxes from open-source infra; top repo is a list
+235: better-auth | Better Auth | U1 | yes | sells Better Auth Infrastructure dashboard and services
+236: karakeep-app | Localhost Labs Ltd | U1 | yes | sells hosted Karakeep Cloud
+237: Infisical | Infisical | U1 | yes | sells Infisical Cloud and Enterprise
+238: statelyai | Stately | U1 | yes | sells Stately Studio for XState users
+239: ente | Ente Technologies | U1 | yes | sells end-to-end encrypted storage subscriptions
+240: kestra-io | Kestra Technologies | U1 | yes | sells Kestra Enterprise and Cloud
+241: deepinsight | InsightFace | U1 | yes | InsightFace, MIT code; sells commercial model licences and a face-swap service
+242: jitsi | Jitsi | U1 | yes | 8x8 unit sells Jitsi as a Service; originally BlueJimp
+243: simstudioai | Sim | U1 | yes | sells hosted Sim cloud plans
+244: modular | Modular Inc. | U1 | yes | sells Modular Platform (MAX) enterprise
+245: JaidedAI | Jaided AI | U1 | yes | company whose only product is EasyOCR; no paid tier listed now
+246: labring | Sealos (labring) | U1 | yes | sells Sealos cloud and FastGPT commercial editions
+247: plausible | Plausible Insights OU | U1 | yes | sells hosted Plausible Analytics
+248: mastra-ai | Mastra | U1 | yes | sells Mastra Cloud
+249: chroma-core | Chroma | U1 | yes | sells Chroma Cloud
+250: trufflesecurity | Truffle Security | U1 | yes | sells TruffleHog Enterprise
+251: composer | Packagist Conductors GmbH | U1 | yes | maintainers' company sells Private Packagist
+252: nrwl | Nrwl (Nx) | U1 | yes | sells Nx Cloud and Nx Enterprise
+253: invoke-ai | Invoke | U1 | yes | sells hosted Invoke for teams
+254: GitbookIO | GitBook | U1 | yes | sells hosted GitBook; repo is its open renderer
+255: gastownhall | Gas City, Inc. | U1 | yes | sells Beads Team Server as managed SaaS or self-hosted
+256: reflex-dev | Reflex | U1 | yes | sells Reflex Cloud hosting and enterprise
+257: cloudreve | Cloudreve | U1 | yes | Cloudreve, GPL-3.0; sells Cloudreve Pro licences
+258: manaflow-ai | Manaflow | U1 | yes | sells cmux Pro and cloud VMs
+259: getredash | Redash | U1 | yes | hosted Redash company bought by Databricks
+260: every-app | EveryApp (OpenSEO) | U1 | yes | makers sell usage-based hosted OpenSEO credits
+261: BloopAI | Bloop AI | U1 | yes | offered hosted Vibe Kanban Cloud; Vibe Kanban sunsetting
+262: fingerprintjs | Fingerprint (FingerprintJS Inc.) | U1 | yes | sells Fingerprint Pro identification
+263: yikart | AiToEarn Team | U1 | yes | hosted AiToEarn cloud with pricing page; company unnamed
+264: mongodb | MongoDB Inc. | U1 | yes | sells MongoDB Atlas and Enterprise
+265: voideditor | Void | U1 | yes | YC startup whose product is the Void editor
+266: Budibase | Budibase | U1 | yes | sells Budibase Cloud and Enterprise
+267: OtterMind | OtterMind | U1 | yes | sells Chat2DB Pro and cloud
+268: locustio | Locust Technologies | U1 | yes | maintainers' company sells hosted Locust Cloud
+269: hcengineering | Huly Labs | U1 | yes | sells hosted Huly platform
+270: Kilo-Org | Kilo Code | U1 | yes | sells Kilo platform (team plans, AI gateway) for the agent
+271: onlook-dev | Onlook | U1 | yes | sells hosted Onlook plans
+272: BeyondDimension | Changsha Beyond Dimension Technology | U1 | yes | company built around Watt Toolkit
+273: promptfoo | Promptfoo | U1 | yes | Promptfoo CLI/library, MIT; sells Promptfoo Enterprise; acquired by OpenAI 2026
+274: Stability-AI | Stability AI | U1 | yes | open-weight models; sells API and commercial licences
+275: typesense | Typesense | U1 | yes | sells Typesense Cloud
+276: deepset-ai | deepset | U1 | yes | sells deepset AI Platform (enterprise Haystack)
+277: rethinkdb | RethinkDB | U1 | yes | RethinkDB, now Apache-2.0 under Linux Foundation; company shut down 2016
+278: marmelab | marmelab | U1 | yes | sells react-admin Enterprise Edition
+279: readest | Bilingify LLC | U1 | yes | sells Readest paid storage plans
+280: apify | Apify | U1 | yes | Apify platform hosts Crawlee scrapers, marketed to its users
+281: goauthentik | Authentik Security | U1 | yes | sells authentik Enterprise
+282: GrapesJS | GrapesJS | U1 | yes | sells GrapesJS Studio SDK commercial editions
+283: zulip | Kandra Labs | U1 | yes | sells Zulip Cloud and support
+284: plotly | Plotly | U1 | yes | sells Dash Enterprise
+285: openfaas | OpenFaaS Ltd | U1 | yes | sells OpenFaaS Pro and Enterprise
+286: browserbase | Browserbase | U1 | yes | sells hosted browsers marketed to Stagehand users
+287: black-forest-labs | Black Forest Labs | U1 | yes | open-weight FLUX models plus paid API access to them
+288: rancher | Rancher | U1 | yes | sells Rancher Prime support
+289: Redocly | Redocly | U1 | yes | Redoc, MIT; sells Redocly hosted docs platform
+290: pulumi | Pulumi | U1 | yes | sells Pulumi Cloud
+291: d2lang | Terrastruct | U1 | yes | sells D2 Studio and TALA layout engine
+292: cilium | Isovalent | U1 | yes | CNCF graduated; Isovalent (Cisco) sells enterprise edition
+293: monicahq | Monica | U1 | yes | sells hosted Monica accounts
+294: pascalorg | Pascal Group Inc. | U1 | yes | sells Pascal Pro/Max plans for the hosted editor
+295: activepieces | Activepieces | U1 | yes | sells Activepieces Cloud and Enterprise
+296: CapSoftware | Cap Software | U1 | yes | sells Cap Pro hosted sharing plans
+297: clockworklabs | Clockwork Labs | U1 | yes | sells SpacetimeDB Maincloud hosting; also makes BitCraft
+298: letta-ai | Letta | U1 | yes | sells Letta Cloud
+299: tursodatabase | Turso | U1 | yes | sells Turso Cloud
+300: lvgl | LVGL Kft | U1 | yes | sells LVGL Pro editor and services
+301: dubinc | Dub Technologies | U1 | yes | sells hosted Dub link platform
+302: withfig | Fig | U1 | yes | sold Fig Pro/Team terminal tools
+303: taosdata | TAOS Data (TDengine) | U1 | yes | sells TDengine Enterprise and Cloud
+304: flipped-aurora | flipped-aurora | U1 | yes | sells commercial licence and paid support for gin-vue-admin
+305: nocobase | NocoBase | U1 | yes | NocoBase, AGPL-3.0; sells commercial editions and plugins
+306: dolthub | DoltHub | U1 | yes | sells hosted Dolt and DoltHub
+307: slint-ui | SixtyFPS GmbH | U1 | yes | sells Slint commercial licences and support
+308: zama-ai | Zama | U1 | yes | sells commercial licences for its FHE libraries and protocol
+309: temporalio | Temporal Technologies | U1 | yes | Temporal, MIT; sells Temporal Cloud
+310: different-ai | Different AI (OpenWork) | U1 | yes | sells OpenWork subscriptions for its team control plane
+311: gitlabhq | GitLab Inc. | U1 | yes | sells GitLab SaaS and Premium/Ultimate
+312: citrolabs | CitroLabs | U1 | yes | main product is the ego browser; ego-lite is open
+313: lexmount | LexMount | U1 | yes | sells hosted cloud browsers using its Moli engine
+314: TecharoHQ | Techaro | U1 | yes | sells BotStopper commercial version of Anubis
+315: redisson | Redisson | U1 | yes | sells Redisson PRO edition
+316: brave | Brave Software | U1 | yes | browser is main product; monetised via search, ads, premium, BAT
+317: RooCodeInc | Roo Code | U1 | yes | sells Roo Code Cloud agents
+318: mdbootstrap | MDBootstrap (StartupFlow) | U1 | yes | sells MDB Pro UI kits
+319: fosrl | Fossorial (Pangolin) | U1 | yes | sells Pangolin Cloud and Enterprise
+320: sinaptik-ai | Sinaptik (PandasAI) | U1 | yes | sells PandasAI enterprise platform
+321: beekeeper-studio | Beekeeper Studio | U1 | yes | Beekeeper Studio, GPL-3.0 community edition; sells paid editions
+322: timescale | Tiger Data | U1 | yes | sells Tiger Cloud hosted TimescaleDB
+323: vanna-ai | Vanna.AI | U1 | yes | sells hosted Vanna Cloud
+324: marimo-team | marimo | U1 | yes | company built around marimo notebooks and hosted molab
+325: dracula | Dracula Theme (Zeno Rocha) | U1 | yes | sells Dracula Pro
+326: saleor | Saleor Commerce | U1 | yes | sells Saleor Cloud
+327: livewire | Livewire (Caleb Porzio) | U1 | yes | creator sells Flux UI Pro components for Livewire
+328: magicuidesign | Magic UI | U1 | yes | sells Magic UI Pro templates
+329: Skyvern-AI | Skyvern | U1 | yes | sells Skyvern Cloud
+330: comet-ml | Comet ML | U1 | yes | sells Opik cloud and Comet platform
+331: notable | Notable (Fabio Spampinato) | U1 | yes | sells Notable app licences; repo is the issue tracker
+332: usablica | usablica (Intro.js) | U1 | yes | sells commercial Intro.js licences
+333: chaitin | Chaitin Tech | U1 | yes | sells SafeLine WAF professional and enterprise editions
+334: neondatabase | Neon | U1 | yes | sells Neon serverless Postgres
+335: rome | Rome Tools | U1 | yes | company formed around Rome toolchain
+336: ovity | Ovity (Octotree) | U1 | yes | sells Octotree Pro, paid version of the extension
+337: lensapp | Lens | U1 | yes | Lens Kubernetes IDE, MIT until closed; sells Lens Plus subscriptions; repo now issues only
+338: openobserve | OpenObserve | U1 | yes | sells OpenObserve Cloud and Enterprise
+339: chartdb | ChartDB | U1 | yes | sells hosted ChartDB plans
+340: balderdashy | The Sails Company | U1 | yes | sells Sails support and consulting
+341: tracel-ai | Tracel Inc. | U1 | yes | Burn and CubeCL, largely open-source; company sells solutions on that stack
+342: aipoch | AIPOCH | U1 | yes | company whose product is the open workbench; no paid tier found
+343: BruceDevices | Bruce Devices | U1 | yes | community firmware project selling its own boards
+344: Source-Robotics | Source Robotics | U1 | yes | sells robot-arm kits of its open designs
+345: arrayfire | ArrayFire LLC | U1 | yes | company sells support and services for ArrayFire library
+346: nextflow-io | Seqera | U1 | yes | maintainers' company Seqera sells hosted Seqera Platform
+347: dimforge | Dimforge | U1 | yes | maintainer's company funds Rapier via sponsorship and support
+348: layabox | Layabox | U1 | yes | company behind LayaAir engine; sells engine services
+349: psychopy | Open Science Tools Ltd | U1 | yes | company sells Pavlovia hosting and PsychoPy support
+350: TileDB-Inc | TileDB, Inc. | U1 | yes | sells TileDB Cloud and enterprise
+351: thetahealth | Theta Health | U1 | yes | sells Theta Pro app built on Mirobody
+352: OpenDrone-hw | Incutec BV (OpenDrone) | U1 | yes | Incutec BV shop sells OpenDrone boards and parts
+353: symbolica-dev | Symbolica | U1 | yes | Symbolica computer algebra, source available; commercial licences
+354: nengo | Applied Brain Research | U1 | yes | ABR sells commercial Nengo licences
+355: makerdiary | makerdiary | U1 | yes | sells the open hardware boards
+356: harfang3d | HARFANG 3D | U1 | yes | sells HARFANG Studio and licences
+357: meshpro | MeshPro | U1 | yes | sells licences for Nico Schlömer's mesh tools
+358: tillitis | Tillitis AB | U1 | yes | sells TKey open-hardware security keys
+359: wntrblm | Winterbloom | U1 | yes | sells open-hardware music modules
+360: m-labs | M-Labs Ltd | U1 | yes | sells Sinara hardware and ARTIQ support
+361: auto-differentiation | Xcelerit | U1 | yes | sells commercial licences and support for XAD
+362: arvados | Curii Corporation | U1 | yes | maintainers' company Curii sells Arvados support and hosting
+363: botbotrobotics | BotBot Robotics | U1 | yes | sells BotBrain Pro and robot hardware
+364: roboninecom | Robonine | U1 | yes | sells educational robot arms
+365: mzmine | mzio GmbH | U1 | yes | maintainers' company sells mzmine commercial licences
+366: hmislk | CareCode | U1 | yes | sells implementation and support of its open HMIS
+367: BlueQuartzSoftware | BlueQuartz Software | U1 | yes | company sells DREAM3D-NX, support and custom development
+368: scalableminds | scalable minds | U1 | yes | sells hosted WEBKNOSSOS and support
+369: sirius-ms | Bright Giant GmbH | U1 | yes | SIRIUS, AGPL-3.0; spin-off sells commercial licences; FSU Jena co-develops
+370: kiisu-io | Kiisu (RainWalker) | U1 | yes | sells Flipper-compatible development boards
+371: Rowow-LLC | Rowow LLC | U1 | yes | sells membranes, cells and kits from the open design
+372: neuromore | neuromore | U1 | yes | company sold neuromore Studio licences
+373: quartiq | QUARTIQ GmbH | U1 | yes | company sells Sinara hardware and firmware services
+374: Wakoma | Wakoma | U1 | yes | social enterprise building open-source network kits
+375: datalab-org | datalab industries ltd | U1 | yes | maintainers' company offers managed datalab deployments
+376: ZiroEDA | ZIRO EDA | U1 | yes | IIT Madras-incubated startup whose product is the open tool
+377: LiteFold | LiteFold | U1 | yes | sells LiteFold platform licences and computation services
+378: uCAN-LIN | uCanDevices | U1 | yes | sells the USB-LIN dongle hardware
+379: fairscope | FairScope | U1 | yes | sells PlanktoScope hardware
+380: borneo-iot | Yunnan BinaryStars Technologies | U1 | yes | sells LED controller hardware
+381: delmic | Delmic | U1 | yes | sells microscopes run by Odemis
+382: WarpKVM | WarpKVM | U1 | yes | sells KVM-over-IP hardware built on these boards
+383: openAMRobot | Botshare Ltd | U1 | yes | sells OpenAMRobot kits and assembled robots
+384: Cheshire-Labs | Cheshire Labs | U1 | yes | company owns Orca (CLA, SSPL) and sells lab automation solutions
+385: mat3ra | Mat3ra | U1 | yes | materials-designer is part of its paid cloud platform; open code on GitHub
+386: mcneilco | John McNeil & Co. Inc. | U1 | yes | sells commercial ACAS modules
+387: Protocentral | ProtoCentral | U1 | yes | sells HealthyPi open hardware
+388: Opentrons | Opentrons Labworks | U1 | yes | sells the lab robots
+389: arduino | Arduino (Arduino S.r.l. / BCMI) | U2 | yes | Open-source hardware designs and software (IDE, cores); main board designs open; licences not checked
+390: raspberry-pi | Raspberry Pi Holdings / Raspberry Pi Ltd | U2 | partial | Schematics and docs published, but SoC (Broadcom) closed; not OSHWA-style open hardware
+391: adafruit | Adafruit Industries | U2 | yes | Open-source hardware designs and libraries (e.g. NeoPixel libraries), per Wikipedia
+392: sparkfun | SparkFun Electronics | U2 | yes | All designed products released as open-source hardware (schematics, EAGLE files); co-drafted OSHW definition 2010
+393: seeed | Seeed Studio (Seeed Technology) | U2 | partial | Sells open-source hardware and designs many open boards (Grove, XIAO schematics); company products only partly open
+394: pine64 | Pine64 (Pine Store Ltd) | U2 | partial | Open-source-friendly single-board computers, schematics published, community firmware; hardware not fully open
+395: prusa | Prusa Research | U2 | partial | PrusaSlicer AGPLv3; printers historically fully open; partial move away from open since 2023 (Open Community License for CORE One)
+396: ultimaker | UltiMaker (Ultimaker B.V.) | U2 | partial | Cura slicer is open source (LGPL, memory); early printers CC BY-NC designs per Wikipedia; hardware now closed
+397: makerbot | MakerBot Industries | U2 | partial | Early printers were open hardware/software (RepRap lineage); closed from 2012; sold to Stratasys 2013
+398: aleph-objects | Aleph Objects (LulzBot) | U2 | yes | Open-source hardware and software 3D printers; Taz 6 FSF Respects Your Freedom certified
+399: openbci | OpenBCI | U2 | yes | Open-source BCI platform: GUI software and Ultracortex design files on GitHub
+400: sofar-openrov | Sofar Ocean Technologies (formerly OpenROV) | U2 | partial | OpenROV kits were open hardware/software; Sofar publishes Bristlemouth open hardware standard (2021); Spotter itself proprietary
+401: system76 | System76 | U2 | partial | Pop!_OS (open source), open firmware (coreboot) and open Thelio designs; hardware partly open
+402: framework | Framework Computer | U2 | partial | Repairable laptops; EC firmware, mainboard CAD/electrical docs and expansion card designs open; UEFI proprietary
+403: sifive | SiFive | U2 | partial | RISC-V ISA open standard; Rocket chip generator open source; SiFive cores themselves are commercial IP
+404: oxide | Oxide Computer Company | U2 | yes | Open-source firmware and software for its racks (per input; licences not verified in this pass)
+405: kitware | Kitware | U2 | yes | VTK, CMake, ParaView, 3D Slicer open source (BSD-style licences, memory); founded 1998
+406: enthought | Enthought | U2 | yes | Scientific Python (SciPy origins), open-source projects such as Traits/Chaco; commercial distribution Canopy
+407: posit | Posit PBC (RStudio) | U2 | yes | RStudio IDE (AGPL, memory), Shiny, Quarto, tidyverse open source; public benefit corporation
+408: anaconda | Anaconda, Inc. (Continuum Analytics) | U2 | yes | conda package manager is open source (BSD-3); Anaconda distribution free but commercial terms for large orgs
+409: evolutionaryscale | EvolutionaryScale | U2 | partial | ESM3-open small model weights released under non-commercial licence; larger models closed via API
+410: orbital-materials | Orbital Materials (Orbital Industries) | U2 | partial | Orb models released open source (Apache-2.0 per memory, not verified here); company now sells data-centre products
+411: radical-ai | Radical AI | U2 | partial | Closed autonomous lab; some open simulation tools (TorchSim) not verified
+412: boltz | Boltz PBC | U2 | yes | Boltz-1/Boltz-2 open-source (MIT, per memory); newer BoltzMol-1/BoltzProt-1 sold via API
+413: chai-discovery | Chai Discovery | U2 | partial | Chai-1 weights released (Apache-2.0 per memory); Chai-2/Chai-3 closed
+414: overleaf | Overleaf (WriteLaTeX) | U2 | yes | Overleaf Community Edition open source (AGPLv3)
+415: protocols-io | protocols.io | U2 | yes | Open-access methods platform; protocols can be published openly (platform code closed)
+416: figshare | Figshare | U2 | partial | Open data repository; platform code closed, hosted data openly licensed
+417: code-ocean | Code Ocean | U2 | partial | Reproducibility platform; hosted capsules, core platform proprietary
+418: curvenote | Curvenote | U2 | yes | Open-core: MyST Markdown and authoring tools open source, enterprise features paid
+419: arcadia-science | Arcadia Science | U2 | yes | Publishes all research openly online, no journal papers; code on GitHub
+420: researchhub | ResearchHub (ResearchHub Technologies) | U2 | partial | Open science platform with RSC token; code on GitHub (licence not verified)
+421: molecule | Molecule (Molecule AG) | U2 | partial | DeSci IP-NFT marketplace; protocol/contracts partly open (not verified)
+422: vitadao | VitaDAO | U2 | yes | DAO funding longevity research via IP-NFTs; governance and contracts open
+423: bio-protocol | BIO Protocol (Bio.xyz) | U2 | partial | DeSci launchpad/token protocol; on-chain contracts, no open science product verified
+424: labdao | LabDAO | U2 | yes | Open-source tools and PLEX platform (licence not verified)
+425: deep-forest | Deep Forest Sciences | U2 | partial | Founder leads DeepChem (open source); company platform Chiron builds on it
+426: rowan | Rowan (Rowan Scientific) | U2 | partial | Cloud chemistry platform; some open-source tools (not verified), platform proprietary
+427: entalpic | Entalpic | U2 | partial | Business model blends open and proprietary research; open releases not verified on page
+428: valence-labs | Valence Labs | U2 | partial | Recursion research arm; datamol and other open-source drug-discovery tools (licence not checked)
+429: quansight | Quansight | U2 | yes | Open-source scientific Python services; contributor to PyTorch, NumPy ecosystem; PBC
+430: openteams | OpenTeams | U2 | yes | Open-source services and AI infrastructure on open-source stack; licence not specific
+431: coiled | Coiled | U2 | yes | Dask (BSD-3) maintained by company; Coiled Cloud itself is proprietary
+432: quantstack | QuantStack | U2 | yes | Jupyter, mamba, conda-forge tooling under permissive open-source licences (per its blog)
+433: prefix-dev | prefix.dev | U2 | yes | pixi and rattler open source; licence not verified on fetched pages
+434: probabl | Probabl | U2 | yes | Operates and supports scikit-learn (BSD); mission-driven company to keep it open
+435: juliahub | JuliaHub (Julia Computing) | U2 | yes | Julia language, MIT licence; JuliaHub sells platform and Dyad on top
+436: cocalc | SageMath, Inc. (CoCalc) | U2 | yes | CoCalc source on GitHub; SageMath GPL; licence of CoCalc not stated on page
+437: glencoe | Glencoe Software | U2 | yes | OMERO and Bio-Formats open source; Glencoe sells commercially licensed installations
+438: open-imaging | Open Imaging, Inc. | U2 | yes | Micro-Manager open-source microscopy control; licence not named on fetched page
+439: observable | Observable, Inc. | U2 | yes | D3, Observable Plot and Framework open source (ISC/MIT-style, licence not verified); hosted notebooks proprietary
+440: opencfd | OpenCFD Ltd | U2 | yes | OpenFOAM, GPL v3
+441: scilab | Scilab Enterprises | U2 | yes | Scilab, GPLv2 (formerly CeCILL)
+442: deltablot | Deltablot (eLabFTW) | U2 | yes | eLabFTW, AGPL-3.0; Deltablot sells PRO support and hosting
+443: scinote | SciNote | U2 | partial | Open-source ELN launched on Kickstarter 2015; licence not named; later editions partly proprietary
+444: open-robotics | Open Robotics (OSRF commercial arm) | U2 | yes | ROS, Gazebo, Open-RMF open source, stay with OSRF
+445: willow-garage | Willow Garage | U2 | yes | ROS and PR2, BSD licences
+446: picknik | PickNik Robotics | U2 | yes | MoveIt open source; MoveIt Studio/Pro open core
+447: pollen-robotics | Pollen Robotics | U2 | yes | Reachy humanoid robots, open-source hardware and software; acquired by Hugging Face
+448: k-scale | K-Scale Labs | U2 | yes | K-Bot open-source humanoid designs on GitHub (kscalelabs); licence not stated on page
+449: hello-robot | Hello Robot | U2 | partial | Stretch robot with open-source software (partial; hardware not fully open)
+450: auterion | Auterion | U2 | yes | Drone OS built on PX4 open source (BSD-3); Dronecode ecosystem
+451: 3d-robotics | 3D Robotics (3DR) | U2 | partial | ArduPilot/PX4 open-source autopilots and open hardware designs (partial; later closed pivot)
+452: tier-iv | TIER IV | U2 | yes | Autoware open-source autonomous driving software (Apache 2.0)
+453: itseez | Itseez | U2 | yes | Main developer of OpenCV (Apache 2.0)
+454: particle | Particle (Spark Labs) | U2 | partial | Open-source Device OS and open hardware (Photon/Core) at first; later cloud platform
+455: mycroft | Mycroft AI | U2 | yes | Open-source voice assistant, Apache 2.0 (earlier copyleft); ceased development 2023
+456: mnt-research | MNT Research | U2 | yes | MNT Reform open hardware laptop, designs published
+457: purism | Purism | U2 | partial | Free-software (PureOS, Linux) laptops and phones; hardware partly proprietary
+458: bitcraze | Bitcraze | U2 | yes | Crazyflie: fully open software stack and hardware; licences on Bitcraze licence page
+459: open-bionics | Open Bionics | U2 | partial | Early open-source 3D-printed bionic hand designs; Hero Arm now proprietary (page does not mention open source)
+460: farmbot | FarmBot | U2 | yes | Open-source farming robot; software MIT licence
+461: backyard-brains | Backyard Brains | U2 | partial | Open-source neuroscience kits (SpikerBox); licence not verified
+462: openuc2 | openUC2 | U2 | yes | Open-source modular optics toolkit with GitHub design files; licence not stated on page
+463: opulo | Opulo (LumenPnP) | U2 | yes | LumenPnP open-source pick-and-place design
+464: inventables | Inventables | U2 | partial | X-Carve open-source CNC hardware/designs (largely mechanical, partial); Easel software closed
+465: printrbot | Printrbot | U2 | yes | Open 3D printer designs on GitHub, Marlin firmware; no licence named
+466: re3d | re:3D | U2 | partial | Gigabot large-format open-source 3D printers, Kickstarter origin; openness not verified on a page
+467: bcn3d | BCN3D Technologies | U2 | partial | UPC/CIM Foundation spin-off; early RepRap-derived printers open; current lines not verified open
+468: efabless | Efabless | U2 | yes | Open-source silicon: OpenMPW, chipIgnite, open PDK tooling; assets sold 2025
+469: antmicro | Antmicro | U2 | yes | Open-source hardware and software services; Renode simulator (Apache 2.0)
+470: tenstorrent | Tenstorrent | U2 | partial | Open-source AI software stack (TT-Metalium, TT-Forge), RISC-V; chip hardware proprietary
+471: trilobio | Trilobio | U2 | partial | Closed lab-automation platform; only API and tooling repos open (MIT)
+472: micropython | George Robotics (MicroPython) | U2 | yes | MicroPython, MIT licence
+473: openenergymonitor | OpenEnergyMonitor (Megni) | U2 | yes | Open-source energy monitors, hardware GPL/CERN OHL
+474: nabu-casa | Nabu Casa (Home Assistant) | U2 | yes | Home Assistant, Apache 2.0, funded by Home Assistant Cloud subscriptions
+475: crowd-supply | Crowd Supply | U2 | partial | Platform for open hardware campaigns; FSF-endorsed; platform itself not an open product
+476: authorea | Authorea | U2 | partial | Open-science collaborative writing platform; platform itself not clearly open source
+477: f1000 | F1000 Research | U2 | yes | Open-access, open-peer-review publisher
+478: frontiers | Frontiers Media | U2 | yes | Open-access publisher (CC BY articles)
+479: bela | Augmented Instruments (Bela) | U2 | yes | Bela open-source low-latency audio platform
+480: openmv | OpenMV | U2 | yes | OpenMV Cam, open-source hardware and firmware (MIT)
+481: luxonis | Luxonis | U2 | yes | OAK cameras with open hardware designs; DepthAI open-source software
+482: great-scott-gadgets | Great Scott Gadgets | U2 | yes | Open-source hardware and software, HackRF
+483: ettus | Ettus Research | U2 | yes | USRP open source hardware schematics, UHD driver and FPGA code open
+484: lime-micro | Lime Microsystems (LimeSDR) | U2 | yes | LimeSDR open-source hardware designs and software
+485: nuand | Nuand (bladeRF) | U2 | yes | Open-source bladeRF SDR hardware and software
+486: red-hat | Red Hat | U3 | yes | Red Hat Linux / Fedora distribution built from GPL and other open-source licensed software; paid subscriptions
+487: mysql-ab | MySQL AB | U3 | yes | MySQL database server, GPL with commercial dual licence
+488: hortonworks | Hortonworks | U3 | yes | Hortonworks Data Platform built on Apache Hadoop, Apache License 2.0; 100% open-source distribution
+489: cloudera | Cloudera | U3 | partial | CDH Hadoop distribution, Apache License 2.0 open-source core with proprietary Cloudera Manager
+490: talend | Talend | U3 | yes | Talend Open Studio, open-source data integration (GPL/Apache variants); commercial subscription editions
+491: mulesoft | MuleSoft | U3 | partial | Mule ESB open-source integration runtime (community edition), enterprise edition proprietary
+492: springsource-pivotal | SpringSource / Pivotal Software | U3 | yes | Spring Framework (Apache 2.0) and Cloud Foundry (Apache 2.0); commercial Pivotal platform
+493: jfrog | JFrog | U3 | partial | Artifactory OSS core plus proprietary Pro/Enterprise editions
+494: confluent | Confluent | U3 | partial | Apache Kafka (Apache 2.0) is the origin; Confluent platform under Confluent Community License plus proprietary parts
+495: suse | SUSE | U3 | yes | SUSE Linux Enterprise / openSUSE, GPL and other open-source licensed packages; paid subscriptions
+496: kaltura | Kaltura | U3 | yes | Kaltura Community Edition video platform, AGPLv3; commercial hosted editions
+497: couchbase | Couchbase | U3 | partial | Couchbase Server Community Edition (source open, Apache 2.0 at the time of IPO era) plus proprietary Enterprise Edition
+498: mariadb | MariaDB | U3 | yes | MariaDB Server, GPLv2 fork of MySQL; MariaDB plc adds BSL and proprietary components
+499: instructure | Instructure | U3 | yes | Canvas LMS open-sourced under AGPLv3 on GitHub; hosted service proprietary
+500: forgerock | ForgeRock | U3 | partial | OpenAM/OpenDJ/OpenIDM open-source identity platform (CDDL then source-available); enterprise edition proprietary
+501: lightbend | Lightbend (Typesafe) | U3 | partial | Akka and Play (Apache 2.0 at the time; Akka later BSL), Scala steward; commercial subscription
+502: neo4j | Neo4j | U3 | partial | Neo4j Community Edition open source (AGPLv3 at 2009; GPLv3 later); Enterprise edition commercial
+503: airbyte | Airbyte | U3 | partial | Airbyte open-source data integration platform and connectors (MIT / Elastic License v2 split; not verified on a page)
+504: astronomer | Astronomer | U3 | partial | Apache Airflow (Apache 2.0, ASF project) driven by Astronomer team; commercial Astro cloud
+505: automattic | Automattic | U3 | partial | WordPress (GPL) core is open source, stewarded with WordPress Foundation; WordPress.com is commercial service
+506: canonical | Canonical | U3 | yes | Ubuntu, mostly free/open-source licences (GPL etc.); founded and funded by Mark Shuttleworth
+507: dagster | Dagster Labs (Elementl) | U3 | yes | Dagster open-source orchestrator; cloud product proprietary
+508: databricks | Databricks | U3 | partial | Apache Spark (Apache 2.0), Delta Lake, MLflow open-sourced by founders; Databricks platform proprietary
+509: dbt-labs | dbt Labs (Fishtown Analytics) | U3 | yes | dbt Core open source (Apache 2.0 historically); dbt Cloud proprietary
+510: github | GitHub | U3 | partial | GitHub is a proprietary hosting platform for open-source code; owned by Microsoft
+511: puppet | Puppet | U3 | partial | Puppet open source (Apache for >2.7.0, GPL earlier) per Wikipedia; Puppet Enterprise proprietary
+512: mistral | Mistral AI | U3 | yes | Open-weight models (Mistral 7B, Mixtral etc., Apache 2.0); some models proprietary
+513: together-ai | Together AI | U3 | partial | Open-source AI cloud; releases open models and datasets (RedPajama); platform itself is proprietary
+514: pydantic | Pydantic Services | U3 | yes | Pydantic open-source validation library; Logfire is commercial
+515: replicate | Replicate | U3 | partial | Cog is open-source model packaging tool; hosted model API is the product
+516: weaviate | Weaviate | U3 | yes | Weaviate open-source vector database
+517: ggml | ggml.ai | U3 | yes | ggml and llama.cpp, MIT licence
+518: inferact | Inferact (vLLM) | U3 | yes | vLLM is Apache 2.0 open source, PyTorch Foundation governed
+519: cygnus | Cygnus Solutions | U3 | yes | Commercial support for GNU tools (GCC, GDB, binutils); Cygwin, eCos
+520: va-linux | VA Linux Systems | U3 | partial | Linux hardware and SourceForge; open basis weak (hardware vendor, SourceForge code later GPL: memory)
+521: sleepycat | Sleepycat Software | U3 | yes | Berkeley DB under Sleepycat licence (copyleft) plus proprietary commercial licence
+522: trolltech | Trolltech | U3 | yes | Qt toolkit, dual licensed (open source and commercial); page does not give licence terms
+523: sendmail | Sendmail, Inc. | U3 | yes | Sendmail MTA under Sendmail licence (open source); commercial products
+524: zend | Zend Technologies | U3 | partial | PHP company; Zend Framework (BSD, now Laminas), Zend Studio proprietary
+525: jboss | JBoss | U3 | yes | JBoss application server, LGPL (open-source Java app server); licence from memory
+526: xensource | XenSource | U3 | yes | Xen hypervisor, GPL (open-source virtualization); from memory
+527: sourcefire | Sourcefire | U3 | yes | Snort GPL IDS, plus commercial products; from memory
+528: zimbra | Zimbra | U3 | partial | Zimbra Collaboration Suite open-source edition; licence not checked
+529: collabnet | CollabNet | U3 | yes | Founded Subversion, Apache licence; from memory
+530: hyperic | Hyperic | U3 | yes | Hyperic HQ open-source monitoring, GPL; from memory
+531: alfresco | Alfresco Software | U3 | yes | Open-source enterprise content management; licence not checked here
+532: acquia | Acquia | U3 | yes | Commercial Drupal distribution and cloud; Drupal GPL
+533: liferay | Liferay | U3 | yes | Liferay Portal open-source (LGPL); from memory
+534: sugarcrm | SugarCRM | U3 | partial | Sugar Community Edition open-source; later closed core; licence not checked
+535: pentaho | Pentaho | U3 | yes | Open-source BI suite (commercial open source); licence not checked here
+536: jaspersoft | Jaspersoft | U3 | yes | JasperReports open-source BI (LGPL); from memory
+537: digium | Digium | U3 | yes | Asterisk open-source PBX, GPL; from memory
+538: enterprisedb | EnterpriseDB (EDB) | U3 | partial | PostgreSQL-based enterprise database; contributes to open-source PostgreSQL
+539: percona | Percona | U3 | yes | Open-source MySQL/Postgres tooling and services (Percona Server GPL); from memory
+540: basho | Basho Technologies | U3 | yes | Riak, Apache 2 open-source database; from memory
+541: foundationdb | FoundationDB | U3 | partial | Closed product until Apple; open-sourced 2018 (Apache 2.0) after acquisition
+542: nicira | Nicira | U3 | partial | Open vSwitch, Apache 2.0, plus closed NVP controller; from memory
+543: inktank | Inktank | U3 | yes | Ceph, LGPL open-source storage; from memory
+544: gluster | Gluster | U3 | yes | GlusterFS, GPLv3 open-source distributed file system
+545: cumulus | Cumulus Networks | U3 | partial | Cumulus Linux, network OS built on open Linux for bare-metal switches; partly proprietary
+546: mirantis | Mirantis | U3 | yes | OpenStack and Kubernetes distributions and services; Lens, k0s open source (partly proprietary products)
+547: nebula | Nebula, Inc. | U3 | partial | Nebula One private-cloud appliance built on OpenStack and other open-source software; hardware product, core partly proprietary
+548: coreos | CoreOS | U3 | yes | Container Linux (CoreOS) and etcd, open source Apache 2.0; Tectonic partly proprietary
+549: heptio | Heptio | U3 | yes | Kubernetes co-founders; open-source tools Contour, Sonobuoy, Velero (Ark), Apache 2.0
+550: mesosphere | Mesosphere (D2iQ) | U3 | yes | Apache Mesos and DC/OS open source (Apache 2.0); enterprise edition proprietary
+551: weaveworks | Weaveworks | U3 | yes | Weave Net, Flux (GitOps), Flagger, eksctl, Cortex; Apache 2.0
+552: ansible | Ansible (AnsibleWorks) | U3 | yes | Ansible automation engine, GPLv3 open source
+553: saltstack | SaltStack | U3 | yes | Salt, Apache 2.0 open-source automation; SaltStack Enterprise proprietary
+554: chef | Chef Software (Opscode) | U3 | yes | Chef, Apache 2.0 open source until 2019 licence change to Apache with commercial distribution terms
+555: npm | npm, Inc. | U3 | yes | npm CLI open source (Artistic License 2.0); public registry free, private packages paid
+556: tidelift | Tidelift | U3 | partial | Pays open-source maintainers via subscriptions; platform itself proprietary, supports open projects
+557: sonatype | Sonatype | U3 | partial | Maven Central steward, Nexus Repository OSS (EPL); Nexus Lifecycle/IQ proprietary
+558: datastax | DataStax | U3 | yes | Commercial steward of Apache Cassandra (Apache 2.0); DataStax Enterprise and Astra DB proprietary add-ons
+559: scylladb | ScyllaDB | U3 | partial | ScyllaDB Cassandra-compatible database, AGPL source-available/open core; later source-available license
+560: yugabyte | Yugabyte | U3 | yes | YugabyteDB, Apache 2.0 open source since July 2019 (some features commercial)
+561: aerospike | Aerospike | U3 | partial | Aerospike Community Edition server open source (AGPL) since 2014; Enterprise Edition proprietary
+562: starburst | Starburst | U3 | yes | Commercial steward of Trino (formerly PrestoSQL), Apache 2.0; Starburst Enterprise proprietary add-ons
+563: dremio | Dremio | U3 | yes | Dremio open-source data lake engine (Apache 2.0 community edition), Arrow co-creator; Enterprise edition proprietary
+564: imply | Imply | U3 | yes | Apache Druid (Apache-2.0); Imply sells commercial Druid-based cloud and Pivot
+565: alluxio | Alluxio | U3 | yes | Alluxio (ex-Tachyon) open-source data orchestration, Apache-2.0 community edition
+566: ahana | Ahana | U3 | yes | Managed PrestoDB (Presto, Linux Foundation, Apache-2.0); founders ex-Alluxio
+567: tabular | Tabular | U3 | yes | Founded by Apache Iceberg's creators; managed Iceberg platform, Iceberg is Apache-2.0
+568: onehouse | Onehouse | U3 | yes | Managed lakehouse by Apache Hudi's creators; Hudi is Apache-2.0
+569: voltron-data | Voltron Data | U3 | yes | Built around Apache Arrow (Apache-2.0); sells Theseus and Arrow support
+570: streamnative | StreamNative | U3 | yes | Founded by Apache Pulsar's developers; Pulsar is Apache-2.0
+571: redpanda | Redpanda Data | U3 | partial | Redpanda core source-available under BSL (converts to Apache-2.0 after 4 years); Kafka-compatible
+572: materialize | Materialize | U3 | partial | Source-available under Business Source License; built on open-source Timely and Differential Dataflow
+573: synadia | Synadia | U3 | yes | Creators and maintainers of NATS.io, Apache-2.0 (CNCF)
+574: camunda | Camunda | U3 | partial | Camunda 7 open source Apache-2.0; Camunda 8 source-available
+575: meltano | Meltano | U3 | yes | Meltano open-source ELT/DataOps (MIT), spun out of GitLab
+576: rudderstack | RudderStack | U3 | partial | Open-source customer data pipeline (Segment alternative); core server licence changed over time
+577: snowplow | Snowplow | U3 | partial | Open-source behavioural data pipeline (Apache-2.0 until a 2024 licence change, memory)
+578: cube | Cube Dev | U3 | yes | Cube open-source semantic layer (Cube.js, MIT core)
+579: preset | Preset | U3 | yes | Commercial service built by Apache Superset's creator; Superset is Apache-2.0
+580: rasa | Rasa | U3 | yes | Rasa Open Source conversational AI framework (Apache-2.0)
+581: chainguard | Chainguard | U3 | partial | Sells hardened container images; creators of Sigstore and Wolfi (open source); images themselves commercial
+582: sysdig | Sysdig | U3 | yes | Creator of Falco (CNCF, Apache-2.0) and open-source sysdig; commercial platform
+583: teleport | Teleport (Gravitational) | U3 | partial | Teleport access proxy, Apache 2.0 until v15 (2023), now commercial licence for builds
+584: tigera | Tigera | U3 | yes | Project Calico, Apache 2.0
+585: buoyant | Buoyant | U3 | yes | Linkerd service mesh, Apache 2.0 (CNCF project)
+586: solo-io | Solo.io | U3 | yes | Gloo, Envoy/Istio tools, Apache 2.0 open-source projects
+587: tetrate | Tetrate | U3 | yes | Istio and Envoy, Apache 2.0 projects the founders created
+588: akuity | Akuity | U3 | yes | Argo project maintainers; Argo CD Apache 2.0 (CNCF)
+589: kubecost | Kubecost | U3 | yes | OpenCost (CNCF), Apache 2.0; Kubecost core built on it
+590: gitpod | Gitpod (Ona) | U3 | partial | Gitpod core repo AGPL-3.0 (self-hosted); Ona later closed SaaS
+591: element | Element (New Vector) | U3 | yes | Matrix Synapse/Element clients, Apache 2.0 then AGPLv3 since 2023
+592: owncloud | ownCloud | U3 | partial | ownCloud core AGPL; enterprise parts proprietary
+593: bitwarden | Bitwarden | U3 | yes | Server and clients on GitHub, AGPL/GPL with a Bitwarden licence on some code
+594: proton | Proton AG | U3 | partial | Client apps open source (GPLv3), servers closed
+595: w4-games | W4 Games | U3 | yes | Godot engine MIT; W4 sells console ports and services
+596: crabnebula | CrabNebula | U3 | yes | Tauri framework MIT/Apache; CrabNebula sells cloud services
+597: astro | Astro (The Astro Technology Company) | U3 | yes | Astro framework MIT
+598: remix | Remix Software | U3 | yes | Remix framework, MIT licence
+599: mapbox | Mapbox | U3 | partial | Mapbox GL JS was BSD until v2 (2020), now proprietary
+600: carto | CARTO (CartoDB) | U3 | partial | CartoDB platform open source (BSD) in early years, later SaaS-first
+601: sourcegraph | Sourcegraph | U3 | partial | Apache 2.0 until 2023, then closed enterprise licence
+602: seldon | Seldon | U3 | partial | Seldon Core Apache 2.0 until 2024, BSL since
+603: clearml | ClearML (Allegro AI) | U3 | yes | ClearML MLOps suite, Apache-2.0 (GitHub)
+604: iterative | Iterative (DVC) | U3 | yes | DVC data version control, Apache-2.0 (memory; GitHub API returned a redirect)
+605: treeverse | Treeverse (lakeFS) | U3 | yes | lakeFS data version control; GitHub licence field NOASSERTION (Apache-2.0 historically)
+606: pachyderm | Pachyderm | U3 | yes | Pachyderm data versioning pipelines, Apache-2.0 on GitHub (core later moved to Hewlett Packard Enterprise)
+607: voxel51 | Voxel51 | U3 | yes | FiftyOne dataset tool, Apache-2.0 (GitHub)
+608: cvat | CVAT.ai | U3 | yes | CVAT annotation tool, MIT licence (GitHub)
+609: reflection-ai | Reflection AI | U3 | partial | Plans open weights, datasets and pipelines kept proprietary; no release confirmed by page
+610: prime-intellect | Prime Intellect | U3 | yes | INTELLECT-2 open weights, Apache-2.0 (Hugging Face card); open training tools
+611: zyphra | Zyphra | U3 | yes | Zamba2-7B open weights, Apache-2.0 (Hugging Face card)
+612: arcee | Arcee AI | U3 | yes | Trinity models open weights under Apache-2.0 (per TechCrunch)
+613: liquid-ai | Liquid AI | U3 | partial | LFM2 open weights under custom LFM Open License (HF licence tag 'other'); early LFMs closed
+614: pleias | Pleias | U3 | yes | Models with open weights, code and data (Common Corpus); Pleias-1.2b-Preview Apache-2.0
+615: sakana | Sakana AI | U3 | partial | Some open releases (e.g. TinySwallow-1.5B Apache-2.0); main products and Series B focus on enterprise, not open
+616: ai21 | AI21 Labs | U3 | partial | Jamba open weights under Jamba Open Model License (HF licence tag 'other'); main products closed API
+617: cohere | Cohere | U3 | partial | Command R research weights, CC-BY-NC-4.0 (non-commercial); main models closed API
+618: 01-ai | 01.AI | U3 | yes | Yi-34B open weights, Apache-2.0 (Hugging Face card)
+619: moonshot | Moonshot AI | U3 | yes | Kimi K2 and later open weights under modified MIT licence (HF tag); chat product closed
+620: minimax | MiniMax | U3 | yes | MiniMax-M2 open weights under modified MIT licence (HF tag); earlier Text-01 also released; listed in HK
+621: baichuan | Baichuan Intelligence | U3 | partial | Baichuan-7B/13B/Baichuan2 open weights under community licence (HF tag 'other'); newer models closed
+622: stepfun | StepFun | U3 | partial | Releases some open-weight Step models; flagship models mostly API-only (not checked on a page)
+623: deep-cogito | Deep Cogito | U3 | yes | Cogito open-weight LLMs (built on Llama and Qwen), released April 2025
+624: nomic | Nomic AI | U3 | yes | GPT4All local LLM app and Nomic Embed open models; licence not checked
+625: unstructured | Unstructured | U3 | yes | Open-source unstructured document-parsing library plus commercial API; licence not checked
+626: jina | Jina AI | U3 | yes | Open-source Jina framework and open embedding models on Hugging Face
+627: mosaicml | MosaicML | U3 | yes | Open-source training tools and MPT models
+628: octoml | OctoML (OctoAI) | U3 | yes | Built on Apache TVM compiler project, founded by its creators
+629: neural-magic | Neural Magic | U3 | yes | Open-source inference tooling; major contributor to vLLM
+630: determined-ai | Determined AI | U3 | yes | Open-source deep learning training platform (licence not checked)
+631: outerbounds | Outerbounds | U3 | yes | Metaflow, open-source Python ML framework created at Netflix
+632: union-ai | Union.ai | U3 | yes | Commercial version of Flyte, open source, trademark held by Linux Foundation
+633: zenml | ZenML | U3 | yes | Open-source MLOps framework (licence not checked)
+634: bentoml | BentoML | U3 | yes | Open-source AI application and model serving framework (licence not checked)
+635: hopsworks | Hopsworks (Logical Clocks) | U3 | yes | Hopsworks open-source feature store and ML platform
+636: argilla | Argilla | U3 | yes | Open-source data labelling and curation platform (licence not checked)
+637: lancedb | LanceDB | U3 | yes | Open-source LanceDB vector database and Lance format, built on Apache Arrow
+638: marqo | Marqo | U3 | yes | Open-source vector search engine (licence not checked)
+639: vespa | Vespa.ai | U3 | yes | Vespa search engine open sourced by Yahoo in 2017
+640: radixark | RadixArk (SGLang) | U3 | yes | SGLang inference engine and Miles RL framework, open source
+641: h-company | H Company | U3 | partial | Some open-weight agent models (Holo series); not verified on a page
+642: u4-dev-fast | /dev/fast | U4 | partial | Whiteboard, an open-source canvas for software design (per YC page); licence not checked
+643: u4-0-security | 0.security | U4 | partial | Open-source infrastructure for deploying AI security agents; 1.5k GitHub stars per YC page; licence not checked
+644: u4-280-north | 280 North | U4 | yes | Cappuccino framework and Objective-J, open source under LGPL (per YC page)
+645: u4-activeloop | Activeloop | U4 | partial | Deep Lake, open-core database for AI (per YC page); licence not checked
+646: u4-acyclic-labs | Acyclic Labs | U4 | partial | Benchmarks, RL envs and infra for agent swarms; open-source claim not verified
+647: u4-aden | Aden | U4 | yes | Open source agent generation framework, repo aden-hive/hive; licence not checked
+648: u4-aedilic | Aedilic | U4 | yes | Open-source AI-generated image/deepfake detection (per YC page); licence not checked
+649: u4-agent-relay | Agent Relay | U4 | partial | Open-source claim not verified
+650: u4-airtrain-ai | Airtrain AI | U4 | no | No-code LLM data platform; open-source claim not verified, likely not open
+651: u4-airweave | Airweave | U4 | yes | Open-source context retrieval layer for agents (per YC page); licence not checked
+652: u4-alokai | Alokai | U4 | partial | Formerly Vue Storefront, open-source frontend for ecommerce per YC page; licence not checked
+653: u4-alpaca | Alpaca | U4 | no | API brokerage; only side projects (MarketStore) open-sourced; main product not open
+654: u4-anythingllm | AnythingLLM | U4 | yes | Mintplex-Labs/anything-llm, MIT licence
+655: u4-aperant | Aperant | U4 | yes | AndyMik90/Aperant, AGPL-3.0, autonomous multi-session AI coding
+656: u4-apollo | Apollo | U4 | partial | Apollo GraphQL open-source client, server and gateway (per YC page); licences not checked
+657: u4-arc-prize-foundation | ARC Prize Foundation | U4 | yes | Open benchmarks (ARC-AGI) and competitions; licence not checked
+658: u4-archangel-health | Archangel Health | U4 | partial | Medical AI post-training infra; open-source models mentioned only as a direction; not verified
+659: u4-arroyo | Arroyo | U4 | yes | Arroyo streaming engine, open source (licence not checked)
+660: u4-artillery | Artillery | U4 | partial | Artillery.io load testing toolkit, open source; licence not checked
+661: u4-assistant-ui | assistant-ui | U4 | yes | Open source TypeScript/React library for AI chat; 13.4k stars on site
+662: u4-asyncfunc | ASYNCFUNC. | U4 | yes | AsyncFuncAI/deepwiki-open, MIT licence
+663: u4-atla | Atla | U4 | partial | Open-source claim per YC list not verified; product is LLM-judge eval service
+664: u4-atopile | atopile | U4 | yes | atopile/atopile, MIT licence, circuit boards as code
+665: u4-authzed | authzed | U4 | yes | SpiceDB, open-source authorization database (authzed/spicedb); licence not checked
+666: u4-automaze | Automaze | U4 | yes | automazeio/ccpm, MIT licence, project-manager agent skill
+667: u4-autumn | Autumn | U4 | yes | YC page: open-source billing infrastructure over Stripe; licence not checked
+668: u4-beam | Beam | U4 | partial | YC directory tag; cloud platform; open-source status not verified
+669: u4-bitrise | Bitrise | U4 | partial | Steps are open source per YC page; platform proprietary
+670: u4-bosonai | BosonAI | U4 | partial | ROSS Index lists higgs-audio repo; licence not checked
+671: u4-botcity | BotCity | U4 | partial | YC directory tag; framework botcity.dev; platform scope unclear
+672: u4-bricksai | BricksAI | U4 | yes | YC page: BricksAI is an open-source AI gateway; licence not checked
+673: u4-browseros | BrowserOS | U4 | yes | YC page: open-source agentic browser; licence not checked
+674: u4-buildbuddy | BuildBuddy | U4 | yes | YC directory tag; open-source Bazel results UI; licence not checked
+675: u4-builder-io | Builder.io | U4 | partial | gpt-crawler repo from ROSS; core product proprietary
+676: u4-buttercoin | Buttercoin | U4 | partial | YC page: open-source trading engine; licence not checked
+677: u4-byteask | ByteAsk | U4 | partial | YC directory tag; page does not say open
+678: u4-bytebot | Bytebot | U4 | yes | YC page: open-source container for AI desktop agents; repo from ROSS
+679: u4-cactus-compute | Cactus Compute | U4 | partial | YC directory tag; licence not checked
+680: u4-cakework | Cakework | U4 | no | YC page mentions open-source frameworks as customers; own product not shown open
+681: u4-cashew-labs | Cashew Labs | U4 | yes | YC page: builds open source tools for recursive self-improvement
+682: u4-caveman | Caveman | U4 | partial | YC directory tag; licence not checked
+683: u4-cerulion | Cerulion | U4 | yes | YC page: open source operating system for robots
+684: u4-chaos-genius | Chaos Genius | U4 | partial | YC directory tag; open-source edition not verified
+685: u4-char | Char | U4 | partial | YC directory tag; licence not checked
+686: u4-citus-data | Citus Data | U4 | yes | Citus Postgres extension open source per YC page
+687: u4-clidey | Clidey | U4 | yes | YC page: WhoDB open-source platform
+688: u4-cmux | cmux | U4 | yes | YC page: open source native macOS terminal built on Ghostty
+689: u4-coderamp | Coderamp | U4 | partial | ROSS lists gitingest repo; licence not checked
+690: u4-codestory | CodeStory | U4 | partial | Aide IDE built on VSCode; open-source status not verified
+691: u4-codestream | CodeStream | U4 | partial | YC directory tag; plugins; licence not checked
+692: u4-codevisor | Codevisor | U4 | partial | YC lists as open source; licence not checked
+693: u4-cognitivelab | CognitiveLab | U4 | yes | OmniParse repo, GPL-3.0
+694: u4-cognitum | Cognitum | U4 | yes | RuView repo, MIT
+695: u4-comfy-deploy | Comfy Deploy | U4 | partial | YC lists as open source; repo comfyui-deploy has no LICENSE file at root
+696: u4-common-paper | Common Paper | U4 | partial | Open standard contracts (YC lists as open source); CommonPaper licence not checked
+697: u4-comp-ai | Comp AI | U4 | yes | trycompai/comp repo, AGPL-3.0 (Comp AI copyright)
+698: u4-composio | Composio | U4 | yes | ComposioHQ/composio repo, MIT
+699: u4-confident-ai | Confident AI | U4 | yes | DeepEval repo, Apache-2.0
+700: u4-convox | Convox | U4 | yes | convox/convox repo, Apache-2.0
+701: u4-convoy | Convoy | U4 | partial | frain-dev/convoy repo under a custom Frain licence (source-available, not OSI)
+702: u4-core | CORE | U4 | yes | RedPlanetHQ/core repo, AGPL-3.0 (modified 'Core License')
+703: u4-corsair | Corsair | U4 | yes | corsairdev/corsair repo, Apache-2.0
+704: u4-coze | Coze | U4 | yes | coze-studio repo, Apache-2.0 (LICENSE-APACHE)
+705: u4-crestal | Crestal | U4 | yes | intentkit repo, MIT (Crestal Network)
+706: u4-ctgt | CTGT | U4 | partial | Open-source per YC directory; licence not checked
+707: u4-dagworks-inc | DAGWorks Inc. | U4 | yes | Hamilton, Apache-2.0 (apache/hamilton)
+708: u4-daily | Daily | U4 | yes | Pipecat repo, BSD-2-Clause (Daily)
+709: u4-dailybot | Dailybot | U4 | partial | YC lists as open source; licence not checked
+710: u4-data-mechanics | Data Mechanics | U4 | partial | Delight Spark UI open source per YC directory; licence not checked
+711: u4-datree | Datree | U4 | yes | datreeio/datree repo, Apache-2.0
+712: u4-dayflow | Dayflow | U4 | yes | JerryZLiu/Dayflow repo, MIT
+713: u4-decawork | Decawork | U4 | partial | YC lists as open source; repo not identified
+714: u4-decuff | decuff | U4 | partial | YC lists as open source; repo not identified
+715: u4-defer | Defer | U4 | partial | YC lists as open source; repo not checked
+716: u4-democracy-earth | Democracy Earth | U4 | yes | DemocracyEarth/sovereign repo, MIT (Democracy Earth Foundation)
+717: u4-dench-com | Dench.com | U4 | partial | YC directory tags it Open Source; repo and licence not checked
+718: u4-dicedb | DiceDB | U4 | yes | github.com/dicedb/dice; README says fork of Valkey; licence not stated on page
+719: u4-dittofeed | Dittofeed | U4 | yes | dittofeed/dittofeed, MIT licensed core plus closed-source licensed features
+720: u4-drdroid | DrDroid | U4 | partial | YC page: team behind several open-source projects; main product AI SRE agent
+721: u4-duix | DUIX | U4 | yes | ROSS-listed repo github.com/duixcom/duix.heygem; licence not checked
+722: u4-dyad | Dyad | U4 | yes | ROSS-listed repo github.com/dyad-sh/dyad; licence not checked
+723: u4-ecc-tools | ECC Tools | U4 | yes | ROSS-listed repo github.com/affaan-m/ECC; licence not checked
+724: u4-elementary | Elementary | U4 | yes | YC page: open-source data observability, deployable by data engineers
+725: u4-elizaos | elizaOS | U4 | yes | ROSS-listed repo github.com/elizaOS/eliza; licence not checked
+726: u4-embrace | Embrace | U4 | partial | YC tags Open Source; built on OpenTelemetry; repo not checked
+727: u4-enso | Enso | U4 | yes | YC tags Open Source; TechCrunch: first product the eponymous open source project Enso
+728: u4-epicenter | Epicenter | U4 | yes | YC page: ecosystem of open-source local-first apps; repo not checked
+729: u4-eventual | Eventual | U4 | yes | Daft, open-source data engine; licence not checked
+730: u4-evidence | Evidence | U4 | yes | YC: open source code-based BI alternative; licence not checked
+731: u4-evidently-ai | Evidently AI | U4 | yes | Evidently framework, Apache 2.0 per company site
+732: u4-executor | Executor | U4 | yes | Site: open source, 4.6k stars; licence not checked
+733: u4-expected-parrot | Expected Parrot | U4 | partial | YC page: open-source library plus no-code web app
+734: u4-experiential-labs | Experiential Labs | U4 | yes | YC page: open source AI gateway
+735: u4-fern | Fern | U4 | yes | YC tags Open Source; SDK generator on GitHub; licence not checked
+736: u4-fileforge | Fileforge | U4 | partial | YC page: open-source library for building documents, plus API
+737: u4-firezone | Firezone | U4 | yes | YC tags Open Source; licence not checked
+738: u4-flotype | Flotype | U4 | partial | NowJS open-source framework; main Bridge product licensed, not open
+739: u4-flower | Flower | U4 | yes | Flower, open-source framework for federated AI training
+740: u4-formance | Formance | U4 | yes | Open-source programmable ledger, formancehq/stack; licence not checked
+741: u4-freebuff | Freebuff | U4 | partial | YC page: free coding agent on open source models; GitHub repo listed
+742: u4-funstory-ai | Funstory.ai | U4 | yes | BabelDOC translation library, AGPL-3.0
+743: u4-gaia | Gaia | U4 | yes | GaiaNet node, GPL-3.0 on GitHub
+744: u4-gitbutler | GitButler | U4 | partial | Git client on GitHub; licence not confirmed here
+745: u4-gitlawb | Gitlawb | U4 | partial | openclaude repo on GitHub; licence not read
+746: u4-grai | Grai | U4 | yes | Open source metadata version control (grai-core), per YC page
+747: u4-growthbook | GrowthBook | U4 | yes | Open source feature flags and A/B testing, MIT core
+748: u4-hamster | Hamster | U4 | partial | Built around claude-task-master repo; MIT per GitHub page
+749: u4-harnessrouter | HarnessRouter | U4 | yes | Apache 2.0 Community Edition self-hostable, per YC page
+750: u4-hatchet | Hatchet | U4 | yes | Core engine MIT-licensed, per company post
+751: u4-hebbian-robotics | Hebbian Robotics | U4 | partial | Open source infrastructure for Physical AI, per YC page
+752: u4-hegel-ai | Hegel AI | U4 | yes | PromptTools open-source SDK
+753: u4-helicone | Helicone | U4 | yes | Open source LLM observability and gateway
+754: u4-helixdb | HelixDB | U4 | yes | Open source graph-vector database, per YC page
+755: u4-herdr | Herdr | U4 | yes | Open-source agent runtime, per YC page
+756: u4-higher-order-company | Higher Order Company | U4 | yes | Bend language, Apache-2.0
+757: u4-highlight-io | highlight.io | U4 | yes | Open source full-stack monitoring
+758: u4-hydra | Hydra | U4 | yes | Open source Postgres analytics, per YC page
+759: u4-hyper-write | Hyper Write | U4 | yes | self-operating-computer repo, MIT
+760: u4-hyperdx | HyperDX | U4 | yes | Open source observability on ClickHouse
+761: u4-imgix | Imgix | U4 | partial | YC tags it open source; main service proprietary, unverified
+762: u4-inconvo | Inconvo | U4 | yes | Open-source data agent platform, per YC page
+763: u4-infield | Infield | U4 | partial | Not clearly open itself; helps with open-source dependencies
+764: u4-infracost | Infracost | U4 | yes | Open source cloud cost CLI
+765: u4-inth | Inth | U4 | yes | c15t consent framework, Apache-2.0
+766: u4-jitsu | Jitsu | U4 | yes | Open-source data integration/CDP
+767: u4-kaelio | Kaelio | U4 | partial | YC page calls it the open-source context layer for data agents; repo and licence not verified
+768: u4-kailash-labs | Kailash Labs | U4 | partial | YC directory tags open source; repo/licence not verified
+769: u4-karate-labs | Karate Labs | U4 | yes | Karate framework on GitHub, MIT license; paid tiers add IDE plugins and enterprise features
+770: u4-keep | Keep | U4 | yes | keephq/keep open-source AIOps and alert management platform on GitHub; licence not read
+771: u4-kernel | KERNEL | U4 | yes | kernel-images browser infrastructure repo, Apache-2.0
+772: u4-keydb | KeyDB | U4 | yes | Multithreaded Redis fork, BSD-3-Clause (Snapchat/KeyDB repo)
+773: u4-kortix | Kortix | U4 | yes | kortix-ai/suna (CompanyOS) open-source agent OS on GitHub; licence not read, site mentions a white-label licence
+774: u4-kroma | Kroma | U4 | yes | kroma-network/tachyon, modular ZK backend, MIT among other licences
+775: u4-lago | Lago | U4 | yes | getlago/lago open-source metering and usage-based billing API
+776: u4-lamin | Lamin | U4 | yes | lamindb open-source data management, Apache-2.0
+777: u4-laminar | Laminar | U4 | yes | lmnr-ai/lmnr open-source observability platform for AI agents
+778: u4-lantern | Lantern | U4 | yes | lanterndata/lantern Postgres vector extension, AGPL-3.0
+779: u4-lastmile-ai | LastMile AI | U4 | yes | lastmile-ai/mcp-agent, Apache-2.0
+780: u4-laudspeaker | Laudspeaker | U4 | yes | AGPL-3.0 customer engagement platform, ee directory under separate licence
+781: u4-lepton-ai | Lepton AI | U4 | partial | search_with_lepton demo repo open source; platform itself commercial, repo licence not read
+782: u4-librechat | LibreChat | U4 | yes | danny-avila/LibreChat open-source chat platform, MIT licence (per ClickHouse post)
+783: u4-lightdash | Lightdash | U4 | yes | Open-source BI platform (Looker alternative); licence not read
+784: u4-limnion | Limnion | U4 | yes | Siglake open-source telemetry platform, Apache-2.0 (per company site)
+785: u4-litellm | LiteLLM | U4 | yes | BerriAI/litellm open-source AI gateway on GitHub; licence not read
+786: u4-lotus | Lotus | U4 | yes | uselotus/lotus open-core pricing and billing, MIT licence
+787: u4-lucebox | Lucebox | U4 | yes | Luce-Org/lucebox-hub inference engine, Apache-2.0
+788: u4-lunasec | LunaSec | U4 | yes | lunasec-io/lunasec open-source dependency security scanner; licence not read
+789: u4-lunatic | Lunatic | U4 | yes | lunatic-solutions/lunatic Erlang-inspired WebAssembly runtime, Apache-2.0 and MIT
+790: u4-magnitude | Magnitude | U4 | yes | magnitudedev/magnitude open-source inference engine, Apache-2.0
+791: u4-manufact | Manufact | U4 | yes | mcp-use/mcp-use open-source MCP framework on GitHub; licence not read
+792: u4-markov | Markov | U4 | partial | Listed as open source in YC directory; repository and licence not checked
+793: u4-matano | Matano | U4 | partial | Open-source cloud-native SIEM (YC directory); licence not checked
+794: u4-maxun | Maxun | U4 | yes | Open-source web data extraction, repo getmaxun/maxun; licence not checked
+795: u4-medplum | Medplum | U4 | yes | Open-source API-first EHR (YC directory); licence not checked
+796: u4-melty | Melty | U4 | yes | Open-source AI code editor, repo meltylabs/melty; licence not checked
+797: u4-memori-labs | Memori Labs | U4 | yes | Open-source agent memory, repo MemoriLabs/Memori; licence not checked
+798: u4-mentra | Mentra | U4 | yes | MentraOS open-source smart glasses OS (YC directory); licence not checked
+799: u4-metorial | Metorial | U4 | yes | Open-source MCP gateway (YC directory); licence not checked
+800: u4-metriport | Metriport | U4 | yes | Open-source healthcare data infrastructure platform; licence not stated on page
+801: u4-midplane | Midplane | U4 | yes | MIT-licensed MCP gateway for Postgres per own site
+802: u4-million | Million | U4 | yes | react-scan, open-source React performance tool, repo aidenybai/react-scan; licence not checked
+803: u4-mindverse | Mindverse | U4 | yes | Second-Me open-source personal AI, repo mindverse/Second-Me; licence not checked
+804: u4-minusx | MinusX | U4 | partial | Open-source agentic BI per YC directory; licence not checked
+805: u4-mistle | Mistle | U4 | partial | Open-source background agents per YC directory; licence not checked
+806: u4-mito | Mito | U4 | partial | Mito spreadsheet/data analysis, open source per YC directory; licence not checked
+807: u4-mlop | mlop | U4 | partial | Open-source ML experiment tracking per YC directory; licence not checked
+808: u4-modelence | Modelence | U4 | partial | Open-source app platform per YC directory; licence not checked
+809: u4-monosi | Monosi | U4 | partial | Open-source data observability per YC directory; licence not checked
+810: u4-moonrepo | moonrepo | U4 | yes | Open-source monorepo build tool moon per YC directory; licence not checked
+811: u4-morph | Morph | U4 | partial | Listed as open source in YC directory; licence not checked
+812: u4-morphic | Morphic | U4 | yes | Open-source AI answer engine, repo miurla/morphic; licence not checked
+813: u4-myshell | MyShell | U4 | yes | OpenVoice, MeloTTS open-source voice models; licence not checked
+814: u4-mystic | Mystic | U4 | partial | Mystic ML model deployment, open source per YC directory; licence not checked
+815: u4-nango | Nango | U4 | yes | Open-source integrations platform per YC directory; licence not checked
+816: u4-nao-labs | nao Labs | U4 | yes | Open-source analytics agent nao-core per YC directory; licence not checked
+817: u4-nari-labs | Nari Labs | U4 | yes | Dia text-to-speech model repo nari-labs/dia, Apache-2.0
+818: u4-ncompass-technologies | nCompass Technologies | U4 | partial | YC lists as open source; GPU performance agent and VSCode extension; repo/licence not confirmed
+819: u4-neosync | Neosync | U4 | yes | Open-source anonymization and synthetic data platform, repo nucleuscloud/neosync, MIT (Expat) per GitHub
+820: u4-netmaker | Netmaker | U4 | yes | Open source WireGuard virtual networking platform (repo gravitl/netmaker); licence not confirmed
+821: u4-nexa-ai | Nexa AI | U4 | yes | On-device AI SDK repo nexaai/nexa-sdk, BSD-3-Clause
+822: u4-nofx | NoFX | U4 | yes | Repo NoFxAiOS/nofx, AGPL-3.0 per GitHub page
+823: u4-oblien | Oblien | U4 | yes | Repo oblien/openship, Apache-2.0 per GitHub page
+824: u4-odigos-technologies-inc | Odigos Technologies Inc. | U4 | partial | Open-source OpenTelemetry-based observability (repo odigos-io/odigos); enterprise edition is commercial; licence not confirmed
+825: u4-okteto | Okteto | U4 | yes | Kubernetes dev environments, repo okteto/okteto, Apache-2.0 per GitHub page
+826: u4-omi-ai | Omi AI | U4 | yes | Repo basedhardware/openglass, MIT per GitHub page
+827: u4-omnara | Omnara | U4 | yes | Open-source control plane for managed agents; repo omnara-ai/omnara, Apache-2.0 per GitHub page
+828: u4-omniai | OmniAI | U4 | yes | Zerox OCR repo getomni-ai/zerox, MIT per GitHub page
+829: u4-onecli | OneCLI | U4 | yes | Open-source agent vault; repo onecli/onecli, Apache-2.0 per GitHub page
+830: u4-onetriangle | OneTriangle | U4 | partial | YC lists as open source; prefill/KV-cache inference optimisation; repo not confirmed
+831: u4-openbase | Openbase | U4 | partial | Open-source library discovery site; the site itself not shown to be open source
+832: u4-opencode | OpenCode | U4 | yes | Open source AI coding agent, repo anomalyco/opencode, MIT per GitHub page
+833: u4-opencrawl | OpenCrawl | U4 | partial | Open source and self-hostable per YC page; repo not confirmed
+834: u4-opencut | OpenCut | U4 | yes | Video editor repo OpenCut-app/OpenCut, MIT per GitHub page
+835: u4-openint | OpenInt | U4 | partial | Open-source embedded integrations per YC; repo not confirmed
+836: u4-openinterface | OpenInterface | U4 | yes | cofounder repo raidendotai/cofounder, MIT per GitHub page
+837: u4-openmeter | OpenMeter | U4 | yes | Open source usage metering platform; licence not checked
+838: u4-openpipe | OpenPipe | U4 | yes | Open-source fine-tuning toolkit repo OpenPipe/OpenPipe; licence not checked
+839: u4-openreplay | OpenReplay | U4 | yes | Open-source self-hosted session replay, repo openreplay/openreplay; commercial licence for parts
+840: u4-openspec | OpenSpec | U4 | yes | Spec-driven framework repo Fission-AI/OpenSpec, MIT per GitHub page
+841: u4-opslane | Opslane | U4 | partial | AI code review tool; site has an Open source section, repo not confirmed
+842: u4-optic | Optic | U4 | partial | YC lists as open source; repo and licence not checked
+843: u4-orchestra | Orchestra | U4 | partial | YC lists as open source; repo not checked
+844: u4-orikata-bio-pbc | Orikata Bio PBC | U4 | yes | Hikoboshi and Orihime libraries open source per YC page; licence not seen
+845: u4-oumi | Oumi | U4 | yes | Oumi platform, open-source repository under Apache 2.0
+846: u4-our-world-in-data | Our World in Data | U4 | yes | YC page: free, open-source, public good; nonprofit publisher
+847: u4-palmier | Palmier | U4 | yes | Palmier Pro video editor, open source and free per YC launch post; licence not seen
+848: u4-paper-instruments | Paper Instruments | U4 | partial | YC tagline: open-source frontier models for knowledge work; repo not found
+849: u4-paradedb | ParadeDB | U4 | yes | Open source Postgres extension for search and analytics
+850: u4-paradev-formerly-superset | Paradev (formerly Superset) | U4 | yes | Superset coding-agent IDE, open source repo (moved to paradevai/paradev); licence not seen
+851: u4-peerdb | PeerDB | U4 | partial | Postgres ETL/CDC, source-available under ELv2 (not OSI open source)
+852: u4-phidata | Phidata | U4 | partial | ROSS repo phidatahq/phidata (later Agno); licence not checked
+853: u4-philon | Philon | U4 | partial | Open dataset on Hugging Face (sea-small) per YC page; company product not open
+854: u4-phone-harness | Phone Harness | U4 | yes | Open-source phone harness, MIT, 4K+ GitHub stars per YC page
+855: u4-pickle | Pickle | U4 | partial | ROSS repo pickle-com/glass; licence not checked
+856: u4-pipekit | Pipekit | U4 | partial | Maintains Argo Workflows (open source, Kubernetes); Pipekit's own product is a commercial control plane
+857: u4-pipelinedb | PipelineDB | U4 | yes | Open source streaming SQL database / PostgreSQL extension; licence not seen
+858: u4-plexe | Plexe | U4 | yes | Open-source plexe agent per YC page; licence not seen
+859: u4-pretzel-ai | Pretzel AI | U4 | partial | YC lists as Open Source; repo not checked
+860: u4-proliferate | Proliferate | U4 | yes | Agent infrastructure open-sourced, MIT, self-hostable per YC page
+861: u4-protocol-labs | Protocol Labs | U4 | yes | IPFS, libp2p, Filecoin implementations open source; licences not checked
+862: u4-pyroscope | Pyroscope | U4 | yes | Open source continuous profiling platform; licence not seen
+863: u4-qodo | Qodo | U4 | partial | Open-source cover-agent repo (ROSS); main Qodo products commercial
+864: u4-questdb | QuestDB | U4 | yes | Open source time-series database per TechCrunch; licence not checked
+865: u4-quivr | Quivr | U4 | partial | ROSS repo quivrhq/megaparse; licence not checked
+866: u4-ragaai | RagaAI | U4 | partial | ROSS repo ragaai-catalyst; licence not checked
+867: u4-rainbow | Rainbow | U4 | yes | rainbow-me GitHub org, open-source wallet apps; licence not checked
+868: u4-random-labs | Random Labs | U4 | partial | entropy-research GitHub org (Slate coding agent); repo and licence not checked
+869: u4-recidiviz | Recidiviz | U4 | yes | Recidiviz GitHub org, open-source data platform (YC page)
+870: u4-recipeui | RecipeUI | U4 | yes | RecipeUI/RecipeUI, AGPL-3.0
+871: u4-renderlet | renderlet | U4 | partial | Runtime open source (renderlet/wander on GitHub per YC page); licence not checked
+872: u4-requestly | Requestly | U4 | yes | requestly GitHub org, open-source Postman alternative / API mocking; licence not checked
+873: u4-rescale | Rescale | U4 | partial | Has a public GitHub org (github.com/rescale); core cloud HPC platform is proprietary; YC lists it as open source
+874: u4-resemble-ai | Resemble AI | U4 | partial | Chatterbox TTS repo resemble-ai/chatterbox (ROSS Index); licence not checked
+875: u4-respan | Respan | U4 | yes | respanai/respan-gateway, Rust open-source AI gateway; licence not checked
+876: u4-reworkd | Reworkd | U4 | partial | AgentGPT repo (reworkd/AgentGPT, 30k+ stars per YC); current scraping product not shown open
+877: u4-rightnow | RightNow | U4 | yes | RightNow-AI/openfang, MIT (README) / Apache-2.0 and MIT files
+878: u4-rivet | Rivet | U4 | yes | rivet-dev/rivet, Apache-2.0 per company FAQ
+879: u4-robocurve | Robocurve | U4 | partial | YC page: builds open-source robot benchmark tools; no repo found
+880: u4-roboflow | Roboflow | U4 | partial | roboflow GitHub org (supervision, inference etc.); hosted platform proprietary; YC says open source and hosted tools
+881: u4-rowboat-labs | Rowboat Labs | U4 | yes | rowboatlabs/rowboat on GitHub, open-source AI coworker; licence not checked
+882: u4-rownd | Rownd | U4 | no | YC lists github.com/llama-farm; company now defense drones, openness doubtful
+883: u4-rssnext | RSSNext | U4 | yes | RSSNext/Folo, AGPL-3.0 with icon exception
+884: u4-runanywhere | RunAnywhere | U4 | partial | RunanywhereAI GitHub org; SDKs and trnRT inference engine open (Apache-2.0 per YC page for trnRT)
+885: u4-s2-dev | s2.dev | U4 | partial | s2-streamstore GitHub org; S2 lite open source per YC listing; licence not checked
+886: u4-sails-co | Sails Co. | U4 | yes | Sails.js framework, free and open source (YC page); licence not checked
+887: u4-sapient | Sapient | U4 | yes | sapientinc/HRM, Apache-2.0
+888: u4-sesame | Sesame | U4 | partial | Released CSM base speech model on GitHub (sesameailabs/csm), Apache-2.0 per ROSS listing; product itself closed
+889: u4-shardeum | Shardeum | U4 | yes | shardeum/shardeum blockchain node repo on GitHub (ROSS Index); licence not checked
+890: u4-shuttle | Shuttle | U4 | yes | shuttle-hq/shuttle Rust deployment platform, open source (YC description); licence not checked
+891: u4-skyhook | Skyhook | U4 | yes | Radar, Apache-2.0 single binary (YC page); repo skyhook-io
+892: u4-sourcebot | Sourcebot | U4 | yes | Open source code understanding platform per YC page; licence not checked
+893: u4-sst | SST | U4 | yes | OpenAuth repo (toolbeam/openauth); SST framework open source; licence not checked
+894: u4-stably-ai | Stably AI | U4 | yes | Orca, MIT open source terminal-based agent orchestrator (per YC page); repo stablyai/orca
+895: u4-stackup | Stackup | U4 | partial | Open-source ERC-4337 bundler/tooling per YC directory; not verified
+896: u4-stagewise | Stagewise | U4 | yes | stagewise repo stagewise-io/stagewise; licence not checked
+897: u4-standard-cyborg | Standard Cyborg | U4 | partial | Listed open source in YC directory; no repo checked
+898: u4-standard-physics | Standard Physics | U4 | partial | Listed open source in YC directory; builds on OpenFOAM; own licence not checked
+899: u4-stellon-labs | Stellon Labs | U4 | yes | KittenTTS open source TTS model per YC page; licence not checked
+900: u4-stition-ai | Stition AI | U4 | yes | Devika repo stitionai/devika; licence not checked
+901: u4-storia-ai | Storia AI | U4 | yes | Sage open-source code copilot per YC page; licence not checked
+902: u4-subimage | Subimage | U4 | partial | Managed offering built around open-source Cartography; open-core
+903: u4-sublingual | Sublingual | U4 | partial | Listed open source in YC directory; product is a desktop app, repo not checked
+904: u4-sudocode | sudocode | U4 | yes | Fully open-source per YC page; repo sudocode-ai/sudocode
+905: u4-superagent | Superagent | U4 | yes | Open source tools for securing code and agents (per about page)
+906: u4-superdesign | Superdesign | U4 | yes | Repo superdesigndev/superdesign; licence not checked
+907: u4-superduperdb | SuperDuperDB | U4 | yes | Repo superduperdb/superduperdb, Apache-2.0 (memory, not verified)
+908: u4-superlog | Superlog | U4 | partial | Listed open source in YC directory; repo not checked
+909: u4-supertokens | SuperTokens | U4 | yes | Open source authentication, Apache-2.0 core (per YC page; licence not checked)
+910: u4-superwall | Superwall | U4 | partial | Listed open source in YC directory (SDKs); repo not checked
+911: u4-surfsense | SurfSense | U4 | yes | Repo MODSetter/SurfSense; licence not checked
+912: u4-svix | Svix | U4 | yes | Open source webhooks service (per YC page)
+913: u4-sync | sync. | U4 | partial | Listed open source in YC directory (lipsync models); not verified
+914: u4-taipy | Taipy | U4 | yes | Repo avaiga/taipy, Apache-2.0 (memory, not verified)
+915: u4-tea | Tea | U4 | partial | Repo teaxyz/white-paper; tea protocol rewards OSS; not a standard open-source product
+916: u4-teclada | Teclada | U4 | partial | Listed open source in YC directory; repo not checked
+917: u4-tensil | Tensil | U4 | yes | Tensil ML accelerator toolchain on GitHub, repo archived Oct 2025; licence not seen
+918: u4-tesseral | Tesseral | U4 | yes | Tesseral identity platform, MIT licence on GitHub
+919: u4-tilo | Tilo | U4 | partial | YC page tags Open Source; code link code.tilo.so/tilo, licence not seen
+920: u4-tinfoil | Tinfoil | U4 | partial | YC tags it open source; GitHub org tinfoilsh exists, licence not checked
+921: u4-tipe | Tipe | U4 | partial | Open-source headless CMS (YC tag Open Source); licence not checked
+922: u4-tracecat | Tracecat | U4 | yes | Tracecat, AGPL-3.0 except paid ee directory
+923: u4-traceloop | Traceloop | U4 | partial | OpenLLMetry OpenTelemetry-based LLM observability, open source (YC tag); licence not checked
+924: u4-tracer | Tracer | U4 | yes | TRACER OSS repo, MIT; also open-weight model PIIX-560m
+925: u4-traceroot | traceroot | U4 | yes | traceroot, Apache 2.0 outside ee directories
+926: u4-trieve | Trieve | U4 | yes | Trieve search/RAG infrastructure, MIT on GitHub
+927: u4-trigger-dev | Trigger.dev | U4 | yes | Trigger.dev platform, Apache 2.0 on GitHub
+928: u4-truefoundry | TrueFoundry | U4 | partial | Cognita RAG framework, Apache-2.0 (archived Nov 2026); main platform commercial
+929: u4-tusk | Tusk | U4 | partial | Tusk CLI and Drift SDKs Apache-2.0; core test-generation agent is a hosted product
+930: u4-tuva-health | Tuva Health | U4 | yes | Tuva Core healthcare data models, Apache 2.0
+931: u4-twenty | Twenty | U4 | yes | Twenty CRM, AGPLv3 on GitHub (per TechCrunch)
+932: u4-ubicloud | Ubicloud | U4 | yes | Open source cloud, GitHub ubicloud/ubicloud (AGPL, licence not verified here)
+933: u4-ukama | Ukama | U4 | yes | Ukama cellular network software, MPL-2.0
+934: u4-unify | Unify | U4 | partial | YC tags Open Source; repo and licence not checked
+935: u4-upsonic | Upsonic | U4 | yes | Upsonic agent framework, MIT
+936: u4-upstash | Upstash | U4 | partial | Context7 MCP server, MIT; API backend and crawler are private
+937: u4-vessel | Vessel | U4 | partial | YC page: open-source integrations library; repo not checked
+938: u4-vibe-kanban | Vibe Kanban | U4 | yes | Vibe Kanban, Apache-2.0, BloopAI/vibe-kanban; sunsetting, community maintained
+939: u4-vibrant-labs | Vibrant Labs | U4 | partial | Ragas evals framework, github.com/vibrantlabsai/ragas; licence not seen
+940: u4-videolingo | VideoLingo | U4 | yes | VideoLingo, Apache 2.0
+941: u4-vocode | Vocode | U4 | yes | vocode-core voice AI framework, MIT
+942: u4-votingworks | VotingWorks | U4 | yes | VxSuite and Arlo voting software open source; licence not stated on page
+943: u4-wafer | Wafer | U4 | partial | Links github.com/wafer-ai; what is open not stated on site
+944: u4-waoo | waoo | U4 | no | waoowaoo repo under Elastic License 2.0; self-described source-available, not OSI open source
+945: u4-warrant | Warrant | U4 | yes | Open-source authorization service (YC lists Open Source); licence not verified
+946: u4-wasmer | Wasmer | U4 | yes | Wasmer WebAssembly runtime, MIT licensed
+947: u4-wasp | Wasp | U4 | yes | Wasp web framework, open source (YC lists Open Source); licence not verified
+948: u4-webiny | Webiny | U4 | yes | Open-source serverless CMS and framework; licence not verified
+949: u4-windmill | Windmill | U4 | yes | Windmill core AGPLv3, API clients Apache 2.0; enterprise features commercial
+950: u4-winfunc | Winfunc | U4 | yes | opcode (Claude Code GUI) AGPL-3.0
+951: u4-withhuman | withHuman | U4 | yes | Core, spec, SDKs open source at github.com/withHumanAI/withHuman; licence not stated
+952: u4-world-monitor | World Monitor | U4 | yes | worldmonitor AGPL-3.0-only source; commercial licence alternative
+953: u4-zencoder | Zencoder | U4 | partial | Video.js open source player; Zencoder encoding API itself proprietary
+954: u4-zero | Zero | U4 | yes | Mail-0/Zero open-source email app, MIT
+955: u4-zeroclaw-labs | ZeroClaw Labs | U4 | yes | ZeroClaw, dual MIT or Apache 2.0
+956: u4-adap | Adap | U4 | yes | Flower federated-learning framework, Apache-2.0 (github.com/flwrlabs/flower)
+957: u4-aitable | AITable | U4 | yes | APITable/AITable no-code database, AGPL-3.0 (github.com/apitable/apitable)
+958: u4-amplication | Amplication | U4 | yes | Amplication backend code generator (github.com/amplication/amplication); licence NOASSERTION, text not read
+959: u4-anchore | Anchore | U4 | yes | Syft/Grype SBOM tools, Apache-2.0 (github.com/anchore/syft)
+960: u4-apitable | APITable | U4 | yes | APITable no-code database, AGPL-3.0 (github.com/apitable/apitable)
+961: u4-arc53 | Arc53 | U4 | yes | DocsGPT, MIT (github.com/arc53/DocsGPT)
+962: u4-atri-labs | Atri Labs | U4 | yes | Atri Labs engine, GPL-3.0, no pushes since 2023-08 (github.com/Atri-Labs/atrilabs-engine)
+963: u4-automa | Automa | U4 | yes | Automa browser automation extension (github.com/AutomaApp/automa); licence NOASSERTION, text not read
+964: u4-bluesky | Bluesky | U4 | partial | AT Protocol reference implementation (atproto) on GitHub; licence listed as mixed/NOASSERTION; some apps closed
+965: u4-bytebase | Bytebase | U4 | yes | Bytebase database DevOps (github.com/bytebase/bytebase); licence NOASSERTION (open core), text not read
+966: u4-civit | Civit | U4 | yes | Civitai site code, Apache-2.0 (github.com/civitai/civitai); platform hosts models
+967: u4-cloudquery | CloudQuery | U4 | yes | CloudQuery data-sync CLI, MPL-2.0 (github.com/cloudquery/cloudquery)
+968: u4-codesandbox | CodeSandbox | U4 | partial | Sandpack component library, Apache-2.0 (github.com/codesandbox/sandpack); main product closed
+969: u4-comfyui | ComfyUI | U4 | yes | ComfyUI node-based diffusion UI, GPL-3.0 (github.com/Comfy-Org/ComfyUI)
+970: u4-coroot | Coroot | U4 | yes | Coroot observability, Apache-2.0 (github.com/coroot/coroot)
+971: u4-cortex-labs | Cortex Labs | U4 | yes | Cortex ML model serving, Apache-2.0, archived-ish (last push 2024-06) (github.com/cortexlabs/cortex)
+972: u4-dagger | Dagger | U4 | yes | Dagger CI/CD engine, Apache-2.0 (github.com/dagger/dagger)
+973: u4-danswer | Danswer | U4 | yes | Onyx (formerly Danswer) enterprise search, MIT core with enterprise dir (GitHub says NOASSERTION)
+974: u4-deepfence | Deepfence | U4 | yes | ThreatMapper, Apache-2.0 (github.com/deepfence/ThreatMapper)
+975: u4-dendron | Dendron | U4 | yes | Dendron note tool, Apache-2.0 (github.com/dendronhq/dendron)
+976: u4-diffgram | Diffgram | U4 | partial | Diffgram data-labeling platform on GitHub; licence NOASSERTION (custom), text not read
+977: u4-embedchain | Embedchain | U4 | yes | Embedchain RAG library, Apache-2.0; repo now mem0ai/mem0 (github.com/mem0ai/mem0)
+978: u4-fedml | FedML | U4 | yes | FedML library/platform, Apache-2.0 (github.com/FedML-AI/FedML)
+979: u4-flipper-devices | Flipper Devices | U4 | yes | Flipper Zero firmware, GPL-3.0 (github.com/flipperdevices/flipperzero-firmware)
+980: u4-formbricks | formbricks | U4 | yes | Formbricks experience-management/survey platform, open core (GitHub licence NOASSERTION; enterprise dir separate)
+981: u4-formkit | FormKit | U4 | yes | formkit/auto-animate animation utility, MIT per repo page; FormKit form library is also open source
+982: u4-framer | Framer | U4 | partial | framer/motion animation library on GitHub, MIT per repo page; the Framer design/site-builder product itself is closed
+983: u4-genymobile | Genymobile | U4 | partial | scrcpy Android screen mirroring, Apache-2.0 per repo page; Genymotion emulator is proprietary
+984: u4-graphite | Graphite | U4 | yes | graphiteeditor/graphite vector and raster editor, Apache-2.0 per repo page
+985: u4-grist-labs | Grist Labs | U4 | yes | gristlabs/grist-core spreadsheet-database, Apache-2.0 per repo page
+986: u4-hanko | Hanko | U4 | yes | teamhanko/hanko passkey authentication, AGPL-3.0 per repo page
+987: u4-hop | Hop | U4 | yes | hop-protocol/hop cross-chain bridge, MIT per repo page
+988: u4-htmlstream | Htmlstream | U4 | yes | htmlstreamofficial/preline Tailwind UI components, MIT per repo page
+989: u4-illa-cloud | ILLA Cloud | U4 | yes | illacloud/illa-builder low-code builder, Apache-2.0 per repo page
+990: u4-ivy | Ivy | U4 | yes | unifyai/ivy ML framework transpiler on GitHub (repo page read, licence not confirmed); company is Unify
+991: u4-keploy | Keploy | U4 | yes | keploy/keploy API test generation, Apache-2.0 per repo page
+992: u4-krayin | Krayin | U4 | yes | krayin/laravel-crm open-source CRM, MIT per repo page
+993: u4-kubeshark | Kubeshark | U4 | yes | kubeshark/kubeshark Kubernetes API traffic viewer, Apache-2.0 per repo page
+994: u4-linen | Linen | U4 | yes | linen-dev/linen.dev community chat archive, AGPL-3.0 per repo page
+995: u4-lingo3d | Lingo3D | U4 | partial | lingo3d/lingo3d 3D engine; repo page returned little, licence not confirmed
+996: u4-liveblocks | Liveblocks | U4 | partial | liveblocks/liveblocks monorepo, client libraries and tools; GitHub page shows Apache-2.0 and AGPL-3.0 parts; hosted service proprietary
+997: u4-livekit | LiveKit | U4 | yes | livekit/livekit WebRTC server, Apache-2.0 per repo page
+998: u4-mage | Mage | U4 | yes | mage-ai/mage-ai data pipeline tool, Apache-2.0 per repo page
+999: u4-manticore-search | Manticore Search | U4 | yes | manticoresoftware/manticoresearch search database, GPL-3.0 per repo page
+1000: u4-massa-labs | Massa Labs | U4 | yes | massalabs/massa blockchain node, repo page read; licence not confirmed
+1001: u4-metalbear | MetalBear | U4 | yes | metalbear-co/mirrord Kubernetes dev tool, MIT per repo page
+1002: u4-mobile-dev | mobile.dev | U4 | yes | mobile-dev-inc/maestro mobile UI testing framework, Apache-2.0 per repo page
+1003: u4-multiprocess-labs | Multiprocess Labs | U4 | yes | multiprocessio/datastation data IDE; repo page read, licence not confirmed
+1004: u4-nebuly-ai | Nebuly AI | U4 | yes | nebuly-ai/nebullvm AI inference optimization library, Apache-2.0 per repo page
+1005: u4-nhost | Nhost | U4 | yes | nhost/nhost open-source Firebase alternative, MIT per repo page
+1006: u4-obsidian | Obsidian | U4 | no | Core app is closed source; repo only hosts releases and plugin/theme directories
+1007: u4-omnivore | Omnivore | U4 | yes | Omnivore read-it-later app, AGPL-3.0; cloud service shut Nov 2024, now self-hosted only
+1008: u4-orchest | Orchest | U4 | yes | Orchest data pipeline IDE, open source repo on GitHub (Apache-2.0 LICENSE file)
+1009: u4-pipedream | Pipedream | U4 | partial | Component registry open; platform source-available under Pipedream Source Available License, not OSI open
+1010: u4-postgresml | PostgresML | U4 | yes | PostgresML and PgCat, MIT-licensed per company blog
+1011: u4-pynecone | Pynecone | U4 | yes | Reflex (formerly Pynecone) Python web framework, Apache-2.0
+1012: u4-qovery | Qovery | U4 | partial | Replibyte database seeding tool GPL-3.0; Qovery platform itself mostly not open
+1013: u4-quickwit | Quickwit | U4 | yes | Quickwit search engine, Apache-2.0
+1014: u4-raycast | Raycast | U4 | partial | Extensions repo MIT; core Mac app is closed source
+1015: u4-readyset | ReadySet | U4 | partial | ReadySet database cache, Business Source License 1.1 (source-available)
+1016: u4-resend | Resend | U4 | partial | react-email component library open source on GitHub; Resend email service itself is closed
+1017: u4-riot-im | Riot IM | U4 | yes | Element (ex-Riot) Matrix client, open source on GitHub; licence file not checked
+1018: u4-robusta-dev | Robusta Dev | U4 | yes | Robusta Kubernetes troubleshooting tool, MIT licence
+1019: u4-rustdesk | RustDesk | U4 | yes | RustDesk server AGPL-3.0; open core with paid Pro
+1020: u4-safing | Safing | U4 | yes | Portmaster, GPL-3.0
+1021: u4-saleor | Saleor | U4 | yes | Saleor headless commerce platform, BSD-3-Clause
+1022: u4-screenshot-to-code | Screenshot to Code | U4 | yes | MIT-licensed repo turning screenshots into code, by Abi Raja
+1023: u4-seo4ajax | SEO4Ajax | U4 | partial | Repo is SingleFile (AGPL-3.0), a browser extension by the SEO4Ajax developer; not the company's main product
+1024: u4-serverless-stack | Serverless Stack | U4 | yes | SST framework, MIT licence
+1025: u4-serverpod | Serverpod | U4 | yes | Serverpod Flutter backend framework, BSD-style licence
+1026: u4-simplex-chat | SimpleX Chat | U4 | yes | SimpleX Chat apps and servers, AGPL-3.0
+1027: u4-sismo | Sismo | U4 | yes | Sismo protocol repo, MIT licence
+1028: u4-snapshot-labs | Snapshot Labs | U4 | yes | Snapshot voting interface, MIT licence
+1029: u4-starrocks | StarRocks | U4 | yes | StarRocks analytics database, Apache-2.0
+1030: u4-superagi | SuperAGI | U4 | yes | SuperAGI agent framework, MIT licence
+1031: u4-tamagui | Tamagui | U4 | yes | tamagui/tamagui UI kit and style library, MIT
+1032: u4-terramate | Terramate | U4 | yes | terramate-io/terramate IaC orchestration CLI, MPL-2.0
+1033: u4-themesberg | Themesberg | U4 | yes | themesberg/flowbite Tailwind component library, MIT
+1034: u4-thingsboard | ThingsBoard | U4 | yes | thingsboard/thingsboard IoT platform, Apache-2.0 community edition (GitHub API shows NOASSERTION)
+1035: u4-tigerbeetle | TigerBeetle | U4 | yes | tigerbeetle/tigerbeetle financial transactions database, Apache-2.0
+1036: u4-timber | Timber | U4 | yes | Vector observability pipeline, MPL-2.0 (vectordotdev/vector)
+1037: u4-turbot | Turbot | U4 | yes | turbot/steampipe SQL for cloud APIs, AGPL-3.0
+1038: u4-typebot | Typebot | U4 | partial | typebot.io chatbot builder; GitHub licence shown as NOASSERTION, site calls it fair source
+1039: u4-up9-inc | Up9 Inc. | U4 | yes | up9inc/mizu API traffic viewer for Kubernetes, Apache-2.0
+1040: u4-volosoft | Volosoft | U4 | yes | abpframework/abp ASP.NET application framework, LGPL-3.0 (licence not verified here)
+1041: u4-zinc | Zinc | U4 | yes | prabhatsharma/zinc search engine, now zincsearch/zincsearch, Apache-2.0
+1042: u4-zincsearch | ZincSearch | U4 | yes | zincsearch/zincsearch Elasticsearch alternative, Apache-2.0
+1043: u4-zitadel | Zitadel | U4 | yes | zitadel/zitadel identity management, AGPL-3.0 with Apache/MIT exceptions in some directories

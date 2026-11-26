@@ -1,0 +1,25 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+FuelLabs,Fuel Labs,U1,company developing the Fuel rollup network it builds its business on,,yes,US,2020,private,yes,2,"Founded year and US country from memory, not sourced. Token sale (Bitget LaunchX Dec 2024) seen in search results only, not recorded.",,2026-11-26T05:54:05Z
+FoundationAgents,DeepWisdom,U1,MetaGPT team's company sells hosted MGX/Atoms agent product,,yes,CN,,private,yes,1,"Search snippets (not fetched pages) name Ant Group, Jinqiu Capital, MindWorks Capital, Baidu Ventures, Concept Capital in 2025 rounds of about RMB 220M; unverified, not recorded.",,2026-11-26T05:54:05Z
+zed-industries,Zed Industries,U1,sells Zed Pro AI plans within the editor,,yes,US,2021,private,yes,2,Later rounds may exist after 2023; not found in the pages read.,,2026-11-26T05:54:05Z
+unslothai,Unsloth AI,U1,sells Unsloth Pro/Enterprise training,,yes,US,2023,private,yes,1,No other round found (not searched beyond YC page).,,2026-11-26T05:54:05Z
+daytonaio,Daytona Platforms,U1,sells hosted Daytona sandbox infrastructure,,yes,US,,private,yes,2,Earlier (seed) investors not found.,,2026-11-26T05:54:05Z
+makeplane,Plane,U1,sells Plane Cloud and paid editions,,yes,US,2022,private,yes,1,The YC 'Plane' (W17) in the directory is a different company.,,2026-11-26T05:54:17Z
+FlowiseAI,FlowiseAI,U1,sold Flowise Cloud; company bought by Workday,,yes,US,2023,acquired,yes,1,Acquired by Workday (per input hint). No other round found.,,2026-11-26T05:54:17Z
+jeecgboot,JEECG (Beijing Guoju Information Technology),U1,company sells commercial editions and support for JeecgBoot,,yes,CN,,unknown,none_found,0,"No leads; small commercial-edition vendor, no disclosed funding looked up beyond leads. Low effort.",,2026-11-26T05:54:17Z
+logseq,Logseq Inc.,U1,sells Logseq Sync subscription,,yes,US,,private,yes,1,,,2026-11-26T05:54:17Z
+ToolJet,ToolJet,U1,sells ToolJet Cloud and enterprise,,yes,IN,,private,yes,2,Country India from TechCrunch text; later rounds not checked.,,2026-11-26T05:54:17Z
+tailscale,Tailscale,U1,sells Tailscale service; repo is the client,,yes,CA,,private,yes,3,"Total capital raised before Series B about $115M per TechCrunch, implying an unnamed seed.",https://techcrunch.com/2022/05/04/tailscale-lands-100-million-to-transform-enterprise-vpns-with-mesh-technology/,2026-11-26T05:54:37Z
+topoteretes,Topoteretes (cognee),U1,sells hosted cognee platform,,yes,DE,2024,private,yes,2,,,2026-11-26T05:54:37Z
+linera-io,Linera,U1,company developing the Linera blockchain protocol,,yes,US,,shut_down,yes,3,"Status shut_down and token sale from a search snippet only; country and founded unverified. Kima Ventures named in snippet for 2022 round, unverified.",,2026-11-26T05:54:37Z
+nrwl,Nrwl (Nx),U1,sells Nx Cloud and Nx Enterprise,,yes,US,,private,yes,2,,,2026-11-26T05:54:37Z
+plotly,Plotly,U1,sells Dash Enterprise,,yes,CA,,private,yes,3,Other later rounds not checked.,,2026-11-26T05:54:37Z
+brave,Brave Software,U1,"browser is main product; monetised via search, ads, premium, BAT",,yes,US,2015,private,yes,3,TechCrunch (2026) says about $250M raised per trackers; later rounds not found in pages read.,https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/,2026-11-26T05:55:18Z
+layabox,Layabox,U1,company behind LayaAir engine; sells engine services,,yes,CN,2014,private,yes,2,"Search snippet from 36Kr lists Pre-B 2019-09 (Haifenglian Capital) and B 2021-08 ~RMB110M; not fetched, not recorded.",https://pitchhub.36kr.com/project/2030795528078469,2026-11-26T05:55:18Z
+borneo-iot,Yunnan BinaryStars Technologies,U1,sells LED controller hardware,,yes,CN,,private,yes,1,No outside equity funding found.,,2026-11-26T05:55:18Z
+lvgl,LVGL Kft,U1,sells LVGL Pro editor and services,,yes,HU,,private,none_found,0,"Company about page says only 'backed by experts', no investors; no news leads.",https://lvgl.io/about,2026-11-26T05:55:18Z
+karakeep-app,Localhost Labs Ltd,U1,sells hosted Karakeep Cloud,,yes,GB,,private,none_found,0,Site and leads show no funding.,https://karakeep.com,2026-11-26T05:55:18Z
+locustio,Locust Technologies,U1,maintainers' company sells hosted Locust Cloud,,yes,SE,,private,none_found,0,Site and leads show no funding.,https://locust.cloud,2026-11-26T05:55:18Z
+anywhere-labs,Jiuxiangxian (Beijing) Technology,U1,company sells private deployment and custom development of DSH Desktop,,yes,CN,,private,none_found,0,No leads; site shows no funding.,https://www.dshdesktop.cn/,2026-11-26T05:55:18Z
+usablica,usablica (Intro.js),U1,sells commercial Intro.js licences,,yes,IE,,private,none_found,0,One-person licence shop; no funding found.,https://introjs.com,2026-11-26T05:55:18Z
+roboninecom,Robonine,U1,sells educational robot arms,,yes,US,,private,none_found,0,Site shows no funding.,https://robonine.com,2026-11-26T05:55:18Z

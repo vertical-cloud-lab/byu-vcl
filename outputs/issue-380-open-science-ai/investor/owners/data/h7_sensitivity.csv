@@ -1,0 +1,13 @@
+frame,variant,core_share,company_share
+A,pre-registered (software repos by rule),0.595391204335994,0.40151455500797667
+A,content rule corrected,0.5971720325612687,0.40225515730845457
+A,all repos including content,0.5747919689143475,0.34932516987407974
+A,crypto owners excluded,0.5975474053016893,0.39722479671107586
+A,Edison's audit classes for the 120 audited organizations,0.5926148399539597,0.4028650364814691
+A,judgment calls against core,0.38491785284328306,0.40151455500797667
+A,judgment calls toward core,0.6774128830414681,0.40151455500797667
+A,judgment-call companies reclassed as community,,0.28407354311590766
+A,judgment-call non-companies reclassed as core,,0.44566537272711104
+A,largest 1 company owner(s) dropped,0.6311368795927714,0.387587959524769
+A,largest 3 company owner(s) dropped,0.6358521027120392,0.37957588120496544
+A,largest 5 company owner(s) dropped,0.6563208795444629,0.37214338400626096

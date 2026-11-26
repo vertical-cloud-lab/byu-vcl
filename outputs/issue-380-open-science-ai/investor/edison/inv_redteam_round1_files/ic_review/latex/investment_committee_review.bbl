@@ -1,0 +1,230 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{InputBrief}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={{User-supplied Claude research materials}},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \field{labeltitlesource}{title}
+    \field{howpublished}{FINDINGS\_BRIEF.md}
+    \field{note}{Supplied attachments; analyzed without an independent audit of
+  every company record}
+    \field{title}{Findings brief: the value of open science in the age of AI}
+  \endentry
+
+  \entry{InputRecommendations}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={{User-supplied Claude research materials}},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \field{labeltitlesource}{title}
+    \field{howpublished}{RECOMMENDATIONS.md}
+    \field{note}{Supplied attachments; analyzed without an independent audit of
+  every company record}
+    \field{title}{What this means for the Vertical Cloud Lab: a playbook from
+  the evidence}
+  \endentry
+
+  \entry{Hoffmann2024Value}{online}{}
+    \name{author}{3}{}{%
+      {{hash=HM}{%
+         family={Hoffmann},
+         familyi={H\bibinitperiod},
+         given={Manuel},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NF}{%
+         family={Nagle},
+         familyi={N\bibinitperiod},
+         given={Frank},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhou},
+         familyi={Z\bibinitperiod},
+         given={Yanuo},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {{Harvard Business School}}%
+    }
+    \field{labeltitlesource}{title}
+    \field{note}{Working Paper 24-038}
+    \field{title}{The Value of Open Source Software}
+    \verb{url}
+    \verb https://www.hbs.edu/faculty/Pages/item.aspx?num=65230
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{25}
+    \field{urlmonth}{11}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{InputData}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={{User-supplied Claude research materials}},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \field{labeltitlesource}{title}
+    \field{howpublished}{companies\_master.csv; events.csv}
+    \field{note}{Supplied attachments; analyzed without an independent audit of
+  every company record}
+    \field{title}{Organization case-study dataset and dated events}
+  \endentry
+
+  \entry{Bryan2021}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BKA}{%
+         family={Bryan},
+         familyi={B\bibinitperiod},
+         given={Kevin\bibnamedelima A.},
+         giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=OY}{%
+         family={Ozcan},
+         familyi={O\bibinitperiod},
+         given={Yasin},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1162/rest_a_00926
+    \endverb
+    \field{issn}{1530-9142}
+    \field{number}{5}
+    \field{pages}{954\bibrangedash 967}
+    \field{title}{The Impact of Open Access Mandates on Invention}
+    \verb{url}
+    \verb http://dx.doi.org/10.1162/rest_a_00926
+    \endverb
+    \field{volume}{103}
+    \field{journaltitle}{The Review of Economics and Statistics}
+    \field{month}{11}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Boysel2025State}{online}{}
+    \name{author}{3}{}{%
+      {{hash=BS}{%
+         family={Boysel},
+         familyi={B\bibinitperiod},
+         given={Sam},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Lavergne},
+         familyi={L\bibinitperiod},
+         given={Matthieu},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=TM}{%
+         family={Trifiro},
+         familyi={T\bibinitperiod},
+         given={Matt},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {{The Linux Foundation}}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{The State of Commercial Open Source 2025: The Data-Backed
+  Financial Case from 25 Years of Commercial Open Source}
+    \verb{url}
+    \verb https://www.linuxfoundation.org/hubfs/Research%20Reports/lfr_serena_c
+    \verb apital_report_082225b.pdf
+    \endverb
+    \field{month}{08}
+    \field{year}{2025}
+    \field{urlday}{25}
+    \field{urlmonth}{11}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{Pearce2020}{article}{}
+    \name{author}{1}{}{%
+      {{hash=PJM}{%
+         family={Pearce},
+         familyi={P\bibinitperiod},
+         given={Joshua\bibnamedelima M.},
+         giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier BV}%
+    }
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1016/j.ohx.2020.e00139
+    \endverb
+    \field{issn}{2468-0672}
+    \field{pages}{e00139}
+    \field{title}{Economic savings for scientific free and open source
+  technology: A review}
+    \verb{url}
+    \verb http://dx.doi.org/10.1016/j.ohx.2020.e00139
+    \endverb
+    \field{volume}{8}
+    \field{journaltitle}{HardwareX}
+    \field{month}{10}
+    \field{year}{2020}
+  \endentry
+
+  \entry{InputProposal}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={{User-supplied Claude research materials}},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \field{labeltitlesource}{title}
+    \field{howpublished}{suggested\_proposal\_language.md}
+    \field{note}{Supplied attachments; analyzed without an independent audit of
+  every company record}
+    \field{title}{Suggested proposal language for FLAIME / DAL: openness, data
+  and IP}
+  \endentry
+
+  \entry{InputSchema}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={{User-supplied Claude research materials}},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \field{labeltitlesource}{title}
+    \field{howpublished}{SCHEMA.md}
+    \field{note}{Supplied attachments; analyzed without an independent audit of
+  every company record}
+    \field{title}{Organization case-study schema (issue 380)}
+  \endentry
+\enddatalist
+\endinput

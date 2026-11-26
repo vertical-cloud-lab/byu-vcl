@@ -1,0 +1,9 @@
+metric,value
+median_pme_open,0.5206362200743091
+median_pme_closed,0.8361437843011431
+median_diff_ci_lo,-0.5612638412253387
+median_diff_ci_hi,0.16028607982004006
+logpme_open_coef_yearFE,0.15297964829676314
+ratio,1.1653012628359243
+ratio_ci_lo,0.5385918453525843
+ratio_ci_hi,2.4023391629651525

@@ -1,0 +1,121 @@
+owner,cls_edison,judgment_edison,basis_edison,cls_mine,judgment_mine,basis_mine,agree
+react,nonprofit,0,React Foundation owns React and React Native,nonprofit,False,React Foundation launched under Linux Foundation Feb 2026; repos moved from Meta,True
+vuejs,community,0,Independent contributor-governed framework; sponsors do not own the project,community,False,community project with no owning company; Open Collective funded,True
+TheAlgorithms,community,0,Volunteer algorithms education collective,community,False,volunteer community project; no owning company,True
+alibaba,complement,0,Diversified company publishing internal infrastructure and developer tools,complement,False,e-commerce and cloud conglomerate publishing internal tools,True
+awesome-selfhosted,community,0,Volunteer-maintained software catalog,community,False,"community-maintained list, no legal entity",True
+NousResearch,core,1,Sells model access and hosted Hermes Agent,core,True,releases open-weight Hermes models; sells Nous Portal plans powering Hermes,True
+anomalyco,core,0,Sells OpenCode model gateway and related developer platform,core,True,sells OpenCode Go/Console model subscriptions and enterprise to opencode users,True
+n8n-io,core,0,Sells hosted workflow automation and enterprise editions,core,False,sells n8n Cloud and Enterprise licences,True
+yt-dlp,community,0,Volunteer-maintained downloader without a company owner,community,False,volunteer-maintained downloader; no owning entity,True
+FuelLabs,core,1,Developing company builds its own blockchain execution platform,core,True,company developing the Fuel rollup network it builds its business on,True
+ultraworkers,community,1,Independent developer collective; repository explicitly disclaims Anthropic affiliation,community,False,volunteer developer collective; no company or paid product found,True
+open-webui,core,0,Offers enterprise deployments and support for Open WebUI,core,False,sells Open WebUI enterprise licences and support,True
+Graphify-Labs,core,0,Sells hosted and enterprise versions of its open graph engine,core,False,"sells hosted Graphify Pro, Teams and Enterprise; CLI free",True
+ytdl-org,community,0,Volunteer downloader project; legal assistance does not establish ownership,community,False,"volunteer project, no owning entity",True
+golang,complement,0,Google-controlled programming language complements other products,complement,False,Go language from Google; revenue from other products,True
+ant-design,complement,0,Financial technology company publishes its design system,complement,False,fintech group; UI library is a side project,True
+pmndrs,community,0,Independent open-source graphics and React developer collective,community,False,developer collective funded via Open Collective,True
+supabase,core,0,Sells hosted Supabase database platform,core,False,sells hosted Supabase platform,True
+papers-we-love,community,0,Community repository and local reading groups,community,False,community meetup network and paper repository,True
+neovim,community,0,Community-governed editor; fiscal hosting is not ownership,community,False,volunteer project; Open Collective funded,True
+OpenCut-app,community,1,Maintainer-led MIT video editor; no owning company established,community,False,volunteer project funded by sponsors; no paid plan,True
+oven-sh,core,1,Bun developer company; parent affiliation does not change product-based class,core,True,company formed to commercialise the Bun runtime,True
+odysseus-dev,community,1,Contributor-maintained self-hosted workspace; no company identified,community,True,"unnamed maintainers; AGPL self-hosted app, no company found",True
+puppeteer,complement,0,Google browser automation tooling complements its broader products,complement,False,Chrome team tool; revenue from ads and cloud,True
+Textualize,complement,1,Developer libraries alongside separate writing applications; no paid framework offering established,core,True,founder's company built around Rich/Textual (Textual Web hosting),False
+ByteByteGoHq,complement,1,Educational publisher offers courses; repository is a free explanatory resource,complement,True,free diagrams promoting paid system-design courses and newsletter,True
+mermaid-js,core,1,Maintainer-founded company sells hosted Mermaid diagramming,core,True,maintainers' company sells hosted Mermaid Chart editor,True
+lysine-dev,nonprofit,0,Organization explicitly identifies as a Commonhaus member,nonprofit,True,okhttp/retrofit org; member project of Commonhaus Foundation,True
+syncthing,nonprofit,0,Registered nonprofit maintains and encourages Syncthing development,nonprofit,False,Swedish nonprofit foundation funds and stewards project infrastructure,True
+sveltejs,community,1,Independent framework team; employer sponsorship alone does not establish ownership,community,False,volunteer project on Open Collective; core team employed by Vercel,True
+ChatGPTNextWeb,core,1,Project offers hosted chat and enterprise edition,core,True,sells hosted pay-as-you-go NextChat and enterprise edition,True
+meta-llama,complement,0,Company releases models alongside its broader platform products,complement,False,Meta earns from ads; Llama weights released free,True
+rtk-ai,core,1,Offers RTK Pro alongside open-source token compression tool,core,False,sells RTK Pro team tier; CLI free,True
+OpenMontageInc,core,1,Company develops Studio product from its open video production system,community,True,individual's org (calesthio); no company or paid product found,False
+netdata,core,0,Sells Netdata Cloud and enterprise observability,core,False,sells Netdata Cloud subscriptions,True
+mozilla,nonprofit,0,Nonprofit Mozilla stewardship,nonprofit,False,nonprofit foundation that owns Mozilla Corporation,True
+pingdotgg,complement,1,Publishes free T3 Code alongside separate subscription chat and creator tools,complement,True,revenue from T3 Chat and UploadThing; t3code free,True
+tesseract-ocr,community,0,Independent maintainer team; historical Google support does not establish current ownership,community,False,volunteer-maintained since Google sponsorship ended,True
+obsidianmd,complement,0,Skills and integrations support the separate closed-source Obsidian app,complement,False,closed-source app; repos are plugin list and agent skills,True
+remotion-dev,core,0,Sells commercial licenses for the open video framework,core,False,sells company licences for Remotion,True
+pallets,community,0,Community project; fiscal hosting does not establish foundation ownership,community,False,volunteer project with fiscal sponsorship,True
+ansible,complement,0,Red Hat publishes automation software alongside broader enterprise products,complement,False,revenue mostly from RHEL and other products,True
+swiftlang,complement,0,Apple-led language complements its hardware and software ecosystem,complement,False,Apple-led language project; Apple earns from hardware and services,True
+scikit-learn,community,1,Contributor-governed project; institutional contributors and fiscal support do not establish ownership,community,True,"community project, NumFOCUS fiscal sponsor; Probabl employs maintainers",True
+labmlai,community,1,Self-hosted open tools and tutorials; no owning commercial entity established,community,True,small team's free tools; no company or paid product found,True
+coollabsio,core,0,Sells hosted Coolify deployment platform,core,False,"sells Coolify Cloud, hosted version of Coolify",True
+localstack,core,0,Sells commercial editions of its local cloud emulator,core,False,sells LocalStack Pro and Enterprise,True
+tabler,core,1,Maintainer sells Tabler Pro templates and component packages,core,False,sells Tabler Pro and All packages,True
+commaai,core,0,Sells driving hardware running its openpilot software,core,False,sells comma devices running openpilot,True
+resume,community,0,"Independent résumé-generator project, not GitHub corporate account",community,False,individual's org,True
+twentyhq,core,0,Sells hosted and enterprise versions of open CRM,core,False,sells Twenty Cloud hosted CRM,True
+minio,core,0,Sells enterprise object storage and support,core,False,sells AIStor enterprise edition and subscriptions,True
+rust-unofficial,community,0,"Unofficial community projects, distinct from Rust Foundation",community,False,catch-all community org,True
+K-Dense-AI,complement,1,Scientific skills and tools accompany separate hosted research agents,core,True,sells hosted K-Dense Web co-scientist built around its open skills,False
+ChromeDevTools,complement,0,Chrome developer tools complement Google products,complement,False,Chrome team tooling; Google earns from ads and cloud,True
+rails,nonprofit,0,Nonprofit stewards Rails ecosystem and administers trademarks,community,True,core-team governed; Rails Foundation supports docs and events only,False
+freqtrade,community,0,Community-maintained trading bot without an identified corporate owner,community,False,volunteer crypto trading bot project,True
+PowerShell,complement,0,Microsoft automation tooling complements broader commercial products,complement,False,Microsoft product team repository,True
+odoo,core,0,Sells enterprise editions and hosting of open business software,core,False,sells Odoo Enterprise and Odoo Online,True
+HumanSignal,core,0,Sells Label Studio Enterprise and hosted labeling platform,core,False,sells Label Studio Enterprise,True
+mastodon,nonprofit,1,Organization identifies itself as nonprofit developing Mastodon,nonprofit,False,German non-profit develops Mastodon,True
+pixijs,community,0,Open-source graphics team; sponsorship does not establish corporate ownership,community,False,community-maintained engine funded by sponsors,True
+gogs,community,0,Maintainer-led Git hosting project supported by sponsors,community,False,individual-led volunteer project,True
+siyuan-note,core,0,Sells SiYuan subscriptions and cloud synchronization,core,False,sells SiYuan paid membership and cloud sync,True
+ManimCommunity,community,0,"Independent community fork, not an academic institution",community,False,community fork of 3b1b's manim; no company,True
+php,community,1,PHP Group governs language; supporting foundation does not establish organization-account ownership,community,True,PHP Group; PHP Foundation is an Open Collective collective,True
+trpc,community,0,Independent contributor-maintained framework supported by sponsors,community,False,"volunteer project, no owning entity",True
+halo-dev,core,0,Company offers paid Halo editions and related services,core,False,FIT2CLOUD sells Halo Pro edition,True
+2noise,community,1,Named speech-model developer collective; no company or institutional owner established,community,True,"small team, no company identified; model under non-commercial licence",True
+istio,nonprofit,0,CNCF graduated project stewardship,nonprofit,False,CNCF graduated project,True
+impress,community,0,Community-maintained presentation framework,community,False,"volunteer project, no owning entity",True
+reworkd,complement,1,AgentGPT publisher markets separate web-data extraction service,complement,True,pivoted to AI web data extraction; AgentGPT now a side project,True
+yewstack,community,0,Contributor-maintained Rust web framework,community,False,volunteer project; no owning entity,True
+jj-vcs,community,1,Independent project organization; Google contributors alone do not establish ownership,community,True,community org; lead developer works at Google,True
+openssl,nonprofit,1,Foundation stewardship alongside separate commercial services corporation,nonprofit,True,OpenSSL Foundation and Corporation jointly steward project,True
+composer,core,1,Composer creators sell Private Packagist and extended Composer support,core,True,maintainers' company sells Private Packagist,True
+dmlc,community,0,Distributed scientific software collaboration without a single owning institution,community,False,"ML project community, no owning entity",True
+codepath,nonprofit,0,Nonprofit computing education organization,nonprofit,False,501(c)(3) education nonprofit,True
+hcengineering,core,0,Sells hosted Huly collaboration and project management platform,core,False,sells hosted Huly platform,True
+Automattic,complement,0,Mongoose library complements a broader software and hosting business,complement,False,earns from WordPress.com and WooCommerce; Mongoose is a side project,True
+OI-wiki,community,0,Volunteer competitive-programming educational community,community,False,volunteer wiki project,True
+deepset-ai,core,0,Sells hosted enterprise platform built around Haystack,core,False,sells deepset AI Platform (enterprise Haystack),True
+elixir-lang,community,0,"Language maintained by Elixir Team, not owned by contributors’ employers",community,False,volunteer core team; no owning company,True
+readest,core,1,Sells Readest Plus and Pro cloud synchronization subscriptions,core,False,sells Readest paid storage plans,True
+javascript-tutorial,core,0,Sells EPUB and PDF editions of the open tutorial,community,True,Ilya Kantor's tutorial; sells ebook versions,False
+taosdata,core,0,Sells cloud and enterprise editions of its time-series database,core,False,sells TDengine Enterprise and Cloud,True
+docmirror,community,0,Individual’s organization created by greper,community,False,individual's org (greper),True
+pypa,community,1,Collaborative packaging community; PSF relationship does not establish project ownership,community,True,volunteer working group; PSF supports packaging infrastructure,True
+actix,community,0,Contributor-maintained Rust web framework,community,False,volunteer project; no owning entity,True
+different-ai,core,0,Offers commercial OpenWork enterprise features alongside open desktop app,core,False,sells OpenWork subscriptions for its team control plane,True
+MostlyAdequate,community,0,Individual-led collaborative functional-programming book,community,False,individual's book project (Brian Lonsdorf),True
+livewire,core,1,Framework creator sells integrated Flux component editions,core,True,creator sells Flux UI Pro components for Livewire,True
+matplotlib,community,0,Community-governed project with NumFOCUS fiscal sponsorship,community,False,"community project, NumFOCUS fiscal sponsor",True
+akfamily,community,0,Organization explicitly identifies as an open-source data and quantitative research community,community,False,open-source finance data community,True
+micro,core,1,Developer offers hosted assistant and service-framework ecosystem,community,True,individual-led (Asim Aslam); no company or paid version found,False
+PrimeIntellect-ai,core,1,Sells training infrastructure integrated with its open reinforcement-learning ecosystem,complement,True,sells compute platform; open agents and models complement it,False
+rust-ndarray,community,0,Contributor-maintained scientific array library,community,False,volunteer library,True
+AllskyTeam,community,0,Camera software built and maintained by astronomy enthusiasts,community,False,volunteer project,True
+songlab-cal,academic,0,University research laboratory,academic,False,Yun Song lab at Berkeley,True
+scipipe,community,1,Standalone workflow project; academic origins do not establish institutional ownership,community,True,"individual's org (Samuel Lampa), Uppsala origin",True
+spacetelescope,academic,1,"AURA-operated research institute, not a NASA agency or national laboratory",academic,True,AURA-operated research institute for NASA,True
+symbolica-dev,core,0,Offers commercial licenses for symbolic computation software,core,False,sells commercial licences for Symbolica,True
+COMBINE-lab,academic,0,University computational biology research laboratory,academic,False,Patro lab at University of Maryland,True
+westlake-repl,academic,0,University representation-learning research group,academic,False,Westlake University research lab,True
+yt-project,community,0,Multi-institution contributor-governed scientific software collaboration,community,False,NumFOCUS fiscally sponsored project,True
+gwastro,community,0,Multi-institution gravitational-wave software collaboration,community,False,gravitational-wave community collaboration,True
+visit-dav,government,0,National laboratory leads VisIt development,government,False,LLNL visualization software,True
+pathsim,community,1,Individual-led simulation framework; no owning company established,community,True,individual's project; creator offers consulting,True
+Illumina,complement,0,Genomics company publishes auxiliary variant-comparison tooling,complement,False,sells sequencers; open tools support them,True
+BMClab,academic,0,University biomechanics laboratory,academic,False,Biomechanics and Motor Control Laboratory,True
+BioJulia,community,0,Independent scientific-software developer community,community,False,volunteer project,True
+ucdavis,academic,0,University organization account,academic,False,university,True
+mixOmics-org,academic,1,University-led research toolkit with external contributors,academic,False,mixOmics team at University of Melbourne,True
+zeiss-microscopy,complement,0,Microscopy company publishes instrument-adjacent tools and file-format libraries,complement,False,sells microscopes; open tools support them,True
+GenSI-THUAIR,academic,0,Joint university and research-institute laboratory,academic,False,Tsinghua AIR with Shanghai AI Lab,True
+keiserlab,academic,0,University computational biology laboratory,academic,False,Keiser lab at UCSF,True
+Spooky-Manufacturing,core,1,Quantum hardware developer publishes designs for its intended computer product,community,True,small open-hardware quantum project; no company or sales found,False
+servierhub,complement,0,"Pharmaceutical company publishes software lists, not its therapeutic products",complement,False,pharma company,True
+neogeodev,community,0,"Volunteer homebrew developer community, with individual website copyright",community,False,volunteer project; no owning entity,True
+brainlife,academic,1,"University-based neuroscience research platform, despite multi-institution collaborators",academic,False,Pestilli lab's NSF-funded platform,True

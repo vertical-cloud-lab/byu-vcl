@@ -1,0 +1,90 @@
+About VotingWorks 
+
+[Skip to Content](https://www.voting.works/about#wrap)
+
+[![VotingWorks](https://www.voting.works/web/image/website/1/logo/VotingWorks?unique=d861bc5 "width=95 | height=40")](https://www.voting.works/) 
+
+* [Products](https://www.voting.works/products)
+* [News](https://www.voting.works/blog)
+* [Videos](https://www.voting.works/videos)
+* [Code](https://github.com/votingworks)
+* [Docs](https://docs.voting.works)
+* [Jobs](https://votingworks.breezy.hr/)
+* [Donate](https://www.voting.works/donate)
+* [About](https://www.voting.works/about)
++ [Contact Us](https://www.voting.works/contact)
+
+[![VotingWorks](https://www.voting.works/web/image/website/1/logo/VotingWorks?unique=d861bc5 "width=95 | height=40")](https://www.voting.works/)
+
+* + [Products](https://www.voting.works/products)
+  + [News](https://www.voting.works/blog)
+  + [Videos](https://www.voting.works/videos)
+  + [Code](https://github.com/votingworks)
+  + [Docs](https://docs.voting.works)
+  + [Jobs](https://votingworks.breezy.hr/)
+  + [Donate](https://www.voting.works/donate)
+  + [About](https://www.voting.works/about)
+
++ [Contact Us](https://www.voting.works/contact)
+
+# **About VotingWorks**
+
+We think American Democracy is important, and we believe the technology that underpins our elections should be better. Since 2018, we've been building election technology every American can trust.
+
+We're a 501c3 nonprofit, because we believe our work building trust in voting equipment requires transparency.
+
+You can download our:
+
+* [latest 990 Tax Filing](https://public-assets.voting.works/finance/2024/990_2024.pdf)
+* [latest audited financials](https://public-assets.voting.works/finance/2024/FS_2024.pdf)
+* [articles of incorporation](https://public-assets.voting.works/corp/votingworks-articles-of-incorporation.pdf) and [bylaws](https://public-assets.voting.works/corp/votingworks-bylaws.pdf).
+
+## Frequently asked questions
+
+VotingWorks is a nonpartisan nonprofit making elections more trustworthy with secure, robust, and election technology. VotingWorks develops and implements two main products:
+
+1. VxSuite: the only open-source voting system used in United States Elections. Voters choose to mark ballots by hand or touchscreen, and cast voter-verifiable paper ballots. Designed to VVSG 2.0.
+2. Arlo: an open-source post-election auditing application used to conduct rigorous audits of the vote tabulation process.
+
+VotingWorks is the only nonprofit voting system vendor and the only open-source system used in United States elections today.
+
+Open-source software means that the source code for our machine software is publicly available for review. Unlike the secret proprietary software controlled by private vendors, anyone can inspect VotingWorks software to confirm votes are counted privately and accurately.
+
+Technology is necessary to:
+
+1. Accurately tabulate paper ballots
+2. Provide equal access to all voters
+
+Ballots in the United States have a uniquely large number of contests. Counting ballots accurately at scale requires optical-scanning based tabulation.
+
+Voting machines are also necessary to offer alternative means of marking a ballot to voters with accessibility needs. VotingWorks builds fully-accessible ballot-marking devices connected to printers that produce a voter-verifiable paper ballot.
+
+No. VotingWorks is a nonpartisan organization that does not support or oppose any political candidate or party.
+
+Jurisdictions in New Hampshire and Mississippi trust our voting system in real elections. Verified Voting tracks our progress [here](https://verifiedvoting.org/verifier/#mode/search/year/2024/make/VotingWorks).  
+
+A number of states use Arlo for statewide risk-limiting audits: Georgia, Michigan, Pennsylvania, Nevada, Rhode Island, Virginia, Washington, Texas, South Carolina.
+
+VotingWorks is a 501(c)(3) that receives funding from three sources: (1) Sale and support of voting technology, (2) Government contracts and grants: CISA and the NSF funded our work in 2019 and 2020, and (3) Donations from foundations and individuals that allow us to grow the VotingWorks organization ahead of the revenue we make from sales.  
+
+Democracy Fund, Schmidt Futures, and New Venture Fund are foundations that have funded VotingWorks. Our largest individual VotingWorks donors include: Matt Cutts, John Lilly, Chris Sacca , Niels Provos, Ron Gula, Paul Graham, Mark Gorton, Brian Acton. Some of our individual donors choose to remain anonymous.  
+
+Within a few years, we expect to be sustainable without donations, solely based on the sale and support of voting technology.
+
+VotingWorks has never received funds from Koch or Soros, directly or indirectly. We are aware that some web sites claim otherwise. They are wrong.
+
+VotingWorks is a fully distributed organization with staff located all across the United States, including California, Texas, Washington, Pennsylvania, Virginia, Michigan, New York, and Georgia.
+
+Yes. The VotingWorks system is certified to VVSG 2.0, the EAC’s newest federal standard for voting system security, accuracy, and accessibility. Certification followed formal testing by SLI, an accredited federal testing laboratory, and review by the EAC.  
+
+VotingWorks is the first open-source voting system to earn federal certification, with source code and documentation available for public review.
+
+Yes. VotingWorks equipment complies with HAVA voting system requirements and HAVA-grants can be used to purchase VotingWorks.
+
+##### Follow us
+
+---
+
+[![](https://www.voting.works/web/image/2832-a52f15c8/wordmark-logo-purple%20%281%29.webp)](https://www.voting.works/)VotingWorks is a 501(c)(3) registered nonprofit organization  
+and does not support or oppose any political candidate or party.
+

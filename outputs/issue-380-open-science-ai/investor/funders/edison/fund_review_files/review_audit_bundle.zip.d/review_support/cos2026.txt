@@ -1,0 +1,172 @@
+Benchmarking LLM Agents on Scientific Tasks 
+
+* Our sites:
+* [OSF](https://osf.io)
+* [TOP Guidelines](https://www.cos.io/initiatives/top-guidelines?hsLang=en)
+* [Bluesky](https://bsky.app/profile/cos.io "Bluesky") [Mastodon](https://fosstodon.org/@CenterforOpenScience) [Linkedin](https://www.linkedin.com/company/center-for-open-science/) [YouTube](https://www.youtube.com/@CenterforOpenScience)
+* [Shop](https://www.redbubble.com/people/OpenScience/shop)
+* [Donate](https://www.cos.io/support-cos?hsLang=en)
+
+[![Center for Open Science](https://www.cos.io/hs-fs/hubfs/Logos/COS%202024/cos-full-tag-h.png?width=2000&height=293&name=cos-full-tag-h.png "Center for Open Science | width=2000 | height=293")](https://www.cos.io?hsLang=en)
+
+* [About](https://www.cos.io/about)
+    + [Team](https://www.cos.io/about/team)
+    + [Board](https://www.cos.io/about/board)
+    + [Partners](https://www.cos.io/about/partnership-framework)
+    + [Strategic Plan](https://www.cos.io/strategic-plan)
+    + [Supporters](https://www.cos.io/about/supporters)
+    + [News](https://www.cos.io/about/news)
+    + [Impact](https://www.cos.io/impact)
+    + [History](https://www.cos.io/timeline)
+    + [Finances](https://www.cos.io/about/finances)
+    + [Compliance and Standards](https://www.cos.io/compliance-and-standards)
+    + [Inclusion, Diversity, Equity, and Access](https://www.cos.io/idea)
+    + [Careers](https://www.cos.io/careers)
+* [Engage](https://www.cos.io/engage)
+    + [Tools](https://www.cos.io/tools)
+    + [Training](https://www.cos.io/training)
+    + [Community Building](https://www.cos.io/community-building)
+    + [Policy Reform](https://www.cos.io/policy-reform)
+* [Open Science](https://www.cos.io/open-science)
+    + [Preregistration](https://www.cos.io/initiatives/prereg)
+    + [Registered Reports](https://www.cos.io/initiatives/registered-reports)
+* [Research](https://www.cos.io/research)
+    + [Assessing Research Practice](https://www.cos.io/research/assessing-research-practice)
+    + [Reimagining Research](https://www.cos.io/research/reimagining-research)
+    + [Metascience Alliance](https://www.cos.io/metascience-alliance)
+* [Events](https://www.cos.io/events)
+    + [Webinars](https://www.cos.io/events)
+    + [Metascience 2027](https://metascience.info/)
+    + [Year of Open Science Conference](https://www.cos.io/yos-conference)
+* [Blog](https://www.cos.io/blog)
+* [Contact](https://www.cos.io/contact-us)
+
+Search
+
+# Benchmarking LLM Agents on Scientific Tasks
+
+## 
+
+Toward a rigorous, extensible framework for evaluating AI as a scientific collaborator
+
+## Overview
+
+As large language models (LLMs) rapidly advance, their potential to assist or even independently conduct scientific research has captured wide attention. From summarizing literature to generating code, LLMs already perform parts of the research process. Yet their credibility, validity, and replicability as scientific contributors remain largely untested.  
+
+The Benchmarking LLM Agents on Scientific Tasks project, led by the Center for Open Science (COS) with support from Coefficient Giving, is a multi-year, multi-team initiative to systematically evaluate how well LLM agents can perform and reason through the scientific research lifecycle.
+
+## A Multi-Persona Framework for AI in Science
+
+The project defines a structured framework that benchmarks LLM agents according to three core researcher personas, each representing distinct capabilities and roles within the research ecosystem:
+
+* **Replicate (Replicator):** The agent’s ability to replicate published studies using shared data, code, and new data to test whether original results hold.
+* **Evaluate (Peer Reviewer):** The agent’s ability to critically evaluate completed research, identifying methodological strengths and weaknesses, assessing claims, and estimating replicability.
+* **Generate (Discovery Scientist):** The agent’s ability to propose novel research questions, design studies, conduct analyses, and interpret findings with scientific rigor.
+
+Each persona is mapped onto stages of the research lifecycle—design, conduct, analyze, and interpret—producing a scalable matrix of tasks that can be used to benchmark progress in increasingly complex and autonomous forms of scientific reasoning.
+
+The framework is designed to be expandable: as model capabilities evolve, new task layers can test higher-order reasoning, methodological generalization, and the ability to autonomously connect multiple stages of research into an integrated workflow.
+
+## Milestones
+
+* **Project Launch:** At COS, our work is about making research more transparent, rigorous, and verifiable. As AI tools enter the research workflow, we need evidence about what they actually contribute to scientific credibility. This project will evaluate LLM-based systems on real-world scientific tasks and compare their judgments to human baselines. [Read more on our blog.](https://www.cos.io/blog/from-open-science-to-ai-benchmarking-llms-on-reproducibility-robustness-and-replication?hsLang=en)
+* **ReplicatorBench:** The first active phase of this initiative has produced ReplicatorBench, a benchmark for evaluating LLM agents on research replication in the social and behavioral sciences.   
+
+    What sets ReplicatorBench apart from prior work is its focus on the full replication process, not just the final outcome. ReplicatorBench requires agents to first preregister their replication plan, then execute their analysis according to that plan, mirroring the standards of rigorous human research. It assesses agents across three stages: extracting and retrieving the right information, designing and executing the analysis, and interpreting results against the original claims. [Read more on our blog.](https://www.cos.io/blog/benchmarking-llm-agents-on-scientific-tasks-introducing-replicatorbench?hsLang=en)
+
+## Current Focus: Robustness Benchmark
+
+Building on ReplicatorBench, the team is now developing a Robustness benchmark. Replication asks whether a result holds when tested with new data but a separate and equally important question is whether results hold when the same data are analysed in different, equally justifiable ways. Researchers routinely face genuine degrees of freedom in how they operationalize variables, preprocess data, and select analytical approaches, and reasonable choices at each of these decision points can lead to meaningfully different conclusions.  
+
+The Robustness benchmark evaluates whether LLM agents navigate this analytical landscape in ways that are consistent, justified, and transparent or whether their outputs are as variable as those of human analysts working on the same task. Results and protocols will be released openly as the benchmark matures.
+
+## Future Directions
+
+Subsequent phases will extend the framework to the Evaluate and Generate benchmarks:
+
+* **Evaluate:** Assessing LLM agents’ ability to function as reviewers within open peer-review ecosystems, including alignment with expert judgment.
+* **Generate:** Testing LLMs’ capacity to autonomously design and conduct novel studies, grounded in preregistered planning and ethical guidelines.
+
+Together, these benchmarks will create a continuous, community-driven infrastructure for testing the limits of AI as a scientific collaborator, identifying both capabilities and failure modes, and guiding responsible deployment in research.
+
+## Participation and Collaboration
+
+### 
+
+The project is actively expanding. Opportunities for collaboration, including contributing annotations, evaluation rubrics, or replication studies, are welcome. Researchers and organizations interested in learning more or contributing in the future can stay updated through the COS website and project communications.  
+
+Please contact Tim Errington ([tim@cos.io](mailto:tim@cos.io)) or Shakhlo Nematova ([shakhlo@cos.io](mailto:shakhlo@cos.io)) for more information.
+
+![Center for Open Science](https://www.cos.io/hubfs/Logos/COS%202024/cos-full-tag-h-w.png)
+
+6218 Georgia Avenue NW, Suite #1, Unit 3189  
+Washington, DC 20011  
+Email: [contact@cos.io](mailto:contact@cos.io)
+
+* [Bluesky](https://bsky.app/profile/cos.io)
+* [Mastodon](https://fosstodon.org/@CenterforOpenScience)
+* [Linkedin](https://www.linkedin.com/company/center-for-open-science/)
+* [YouTube](https://www.youtube.com/@CenterforOpenScience)
+
+[![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)  
+Unless otherwise noted, this site is licensed under a [Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/).
+
+[Translation Help](https://www.cos.io/how-to-translate?hsLang=en) | [Terms of Use](https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/TERMS_OF_USE.md) | [Privacy Policy](https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/PRIVACY_POLICY.md)
+
+* [**About**](https://www.cos.io/about?hsLang=en)
+* [Team](https://www.cos.io/about/team?hsLang=en)
+* [Board](https://www.cos.io/about/board?hsLang=en)
+* [Partners](https://www.cos.io/about/partnership-framework?hsLang=en)
+* [News](https://www.cos.io/about/news?hsLang=en)
+* [Impact](https://www.cos.io/impact?hsLang=en)
+* [History](https://www.cos.io/timeline?hsLang=en)
+* [Finances](https://www.cos.io/about/finances?hsLang=en)
+* [Compliance and Standards](https://www.cos.io/compliance-and-standards?hsLang=en)
+* [Diversity, Equity & Inclusion](https://www.cos.io/about/diversity-equity-and-inclusion-at-cos?hsLang=en)
+* [Careers](https://www.cos.io/careers?hsLang=en)
+
+* [**Engage**](https://www.cos.io/engage?hsLang=en)
+* [Tools](https://www.cos.io/tools?hsLang=en)
+* [Training](https://www.cos.io/services/training?hsLang=en)
+* [Community Building](https://www.cos.io/community-building?hsLang=en)
+* [Policy Reform](https://www.cos.io/policy-reform?hsLang=en)
+* [Donate](https://www.cos.io/support-cos?hsLang=en)
+
+* [**Open Science**](https://www.cos.io/open-science?hsLang=en)
+* [Preregistration](https://www.cos.io/initiatives/prereg?hsLang=en)
+* [Registered Reports](https://www.cos.io/initiatives/registered-reports?hsLang=en)
++ [**Research**](https://www.cos.io/services/research?hsLang=en)
++ [SCORE](https://www.cos.io/score?hsLang=en)
++ [RP: Cancer Biology](https://www.cos.io/rpcb?hsLang=en)
++ [RP: Psychology](https://osf.io/ezcuj/wiki/home/)
+
+* [Events](https://www.cos.io/events?hsLang=en)
+* [Blog](https://www.cos.io/blog?hsLang=en)
+* [Contact](https://www.cos.io/contact-us?hsLang=en)
+* [Shop](https://www.redbubble.com/people/OpenScience/shop)
+* [OSF](https://osf.io)
+* [TOP Guidelines](https://www.cos.io/initiatives/top-guidelines?hsLang=en)
+
+**Responsible stewards of your support**
+
+[![Charity Navigator](https://www.cos.io/hs-fs/hubfs/Logos/charity-navigator.png?width=100&name=charity-navigator.png "width=100")](https://www.charitynavigator.org/ein/461496217)[![Platinum Transparency 2023](https://widgets.guidestar.org/TransparencySeal/9294495 "width=100")](https://www.guidestar.org/profile/46-1496217)[![SOC 2](https://www.cos.io/hs-fs/hubfs/Logos/badge-soc2.png?width=100&name=badge-soc2.png "width=100")](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services)
+
+COS has earned top recognition from **[Charity Navigator](https://www.charitynavigator.org/ein/461496217)** and **[Candid](https://www.guidestar.org/profile/46-1496217)** (formerly GuideStar) for our financial transparency and accountability to our mission. COS and the OSF were also awarded SOC2 accreditation in 2023 after an independent assessment of our security and procedures by the **[American Institute of CPAs (AICPA)](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services)**.
+
+We invite all of our sponsors, partners, and members of the community to learn more about how our organization operates, our impact, our financial performance, and our nonprofit status.
+
+**Photo Stream**
+
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+*
+

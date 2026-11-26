@@ -1,0 +1,3 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+datastax,DataStax,U3,other,IBM to acquire DataStax,2025-02,,,IBM,https://www.datastax.com/blog/ibm-plans-to-acquire-datastax,company,Acquisition announced; price not stated on the page read
+aerospike,Aerospike,U3,series_c,Series C,2014-06,20000000,New Enterprise Associates,,https://web.archive.org/web/20211203015342/https://gigaom.com/2014/06/24/aerospike-raises-20m-open-sources-its-in-memory-nosql-database/,news,adds to existing round: amount only; Gigaom also says Series B (Aug 2012) amount undisclosed

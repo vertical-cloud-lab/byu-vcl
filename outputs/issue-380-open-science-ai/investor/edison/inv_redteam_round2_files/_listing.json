@@ -1,0 +1,82 @@
+{
+ "data": [
+  {
+   "id": 31421979,
+   "data_storage_id": "9ec53391-96c4-4869-ac85-4d4fc34fa7f1",
+   "operation": "create",
+   "actor_id": "0457a348-0f27-488e-a186-97fa34f5b3a7",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T02:21:23.689356Z",
+   "data_storage": {
+    "name": "0457a348-0f27-488e-a186-97fa34f5b3a7_trajectory_files.zip",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "14715a214e5a",
+    "parent_id": null,
+    "dataset_id": "6633d3a3-19f7-4cf0-8960-32055226522a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "9ec53391-96c4-4869-ac85-4d4fc34fa7f1",
+    "path": "14715a214e5a",
+    "created_at": "2026-11-25T02:21:23.578102Z",
+    "modified_at": "2026-11-25T02:21:25.902488Z",
+    "tags": null,
+    "file_path": "/workspace/0457a348-0f27-488e-a186-97fa34f5b3a7_trajectory_files.zip",
+    "metadata": {
+     "trajectory_id": "0457a348-0f27-488e-a186-97fa34f5b3a7",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "1bfd784d-411b-46b9-8530-7a1d0e460a6b",
+       "filename": "h1_pme_by_company.csv"
+      },
+      {
+       "entry_id": "5411f5d0-fe50-439b-b27d-d288b3e39213",
+       "filename": "fundamentals_snapshot.csv"
+      },
+      {
+       "entry_id": "474a49e1-f640-439d-9cdc-c84d22e49074",
+       "filename": "BIAS_AUDIT.md"
+      },
+      {
+       "entry_id": "fe2fef29-9424-49a6-b16d-8526859be293",
+       "filename": "h1_returns.csv"
+      },
+      {
+       "entry_id": "2b324577-760b-4df5-b6b5-f23883889eb8",
+       "filename": "INVESTOR_MEMO.md"
+      },
+      {
+       "entry_id": "988c9232-89ec-4dbb-83a5-3b86e6f79267",
+       "filename": "cohort_listings_verified.csv"
+      },
+      {
+       "entry_id": "fd8c72bb-2012-4163-ae93-ab674110e002",
+       "filename": "ai_and_funding_evidence.md"
+      },
+      {
+       "entry_id": "8fe77863-1c6c-4f98-a68b-8fab650b1572",
+       "filename": "h1_summary.csv"
+      },
+      {
+       "entry_id": "fcfd236c-c17b-4ff9-9c84-c2546b3f7cb0",
+       "filename": "PREREGISTRATION.md"
+      }
+     ],
+     "size": 12049337
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  }
+ ]
+}

@@ -1,0 +1,181 @@
+ultimate,stars,stars_frame_a,repos,orgs,ticker
+Microsoft,2257685,2254377,41,BabylonJS;PowerShell;atom;cli;dotnet;dotnet-architecture;github;microsoft,MSFT
+Alphabet,2227762,2202204,52,ChromeDevTools;GoogleChrome;GoogleChromeLabs;GoogleContainerTools;android;angular;bazelbuild;bumptech;carbon-language;flutter;golang;google;google-ai-edge;google-deepmind;google-gemini;google-labs-code;google-research;googleworkspace;jax-ml;keras-team;protocolbuffers;puppeteer;quantumlib;tensorflow;v8,GOOGL
+Alibaba Group,623631,623631,19,ATH-MaaS;ElemeFE;QwenAudio;QwenLM;agentscope-ai;alibaba,BABA
+Meta Platforms,545428,545081,16,facebookresearch;meta;meta-llama,META
+Anthropic,511832,511832,6,agentskills;anthropics,
+OpenAI,502740,502740,10,openai,
+Airbnb,243337,243337,4,airbnb,ABNB
+Hugging Face,191782,191782,2,ggml-org,
+SpaceX (xAI),188651,188651,4,twitter;xai-org,
+Baidu,177070,177070,4,ApolloAuto;PaddlePaddle;baidu,BIDU
+Cloudflare,170568,170568,3,cloudflare;withastro,NET
+ByteDance,168292,168161,4,bytedance;volcengine,
+Tencent,158867,158676,7,Tencent;TencentARC;TencentCloud;tencent-alchemy;tencent-quantum-lab,0700.HK
+Vercel,156437,156437,4,vercel-labs,
+Genymobile,155714,155714,1,Genymobile,
+Next Level Builders,154164,154164,1,nextlevelbuilder,
+Apple,151973,151973,3,apple;ml-explore;swiftlang,AAPL
+Ant Group,145293,139367,3,ant-design;galacean,
+Broadcom,142311,142311,2,spring-projects,AVGO
+Stably,137853,137853,1,stablyai,
+Idera,127525,127525,2,acmesh-official;caddyserver,
+Tauric Research,123758,123758,1,TauricResearch,
+Bilibili,120657,120657,3,bilibili,BILI
+"Kraken (Payward, Inc.)",109013,109013,3,inkonchain,
+"EgonexAI (Infinite Universe, Inc.)",94407,94407,1,Egonex-AI,
+Shopify,90123,90123,2,remix-run,SHOP
+HeyGen,90107,90107,1,heygen-com,
+DAIR.AI,80366,80366,1,dair-ai,
+Ping Labs,79312,79312,1,pingdotgg,
+Nomic AI,77337,77337,1,nomic-ai,
+IBM,72198,71617,4,Qiskit;ansible;beaker-project;rxn4chemistry,IBM
+NVIDIA,71290,50758,9,NVIDIA;NVIDIA-BioNeMo;NVIDIA-Genomics-Research;rapidsai,NVDA
+Coinbase,68263,68263,1,base,COIN
+"Block, Inc.",67769,67769,2,block;square,XYZ
+Amazon,66172,65360,3,ajaxorg;awslabs;firecracker-microvm,AMZN
+Upstash,65461,65461,1,upstash,
+Telegram,64095,64095,2,TelegramMessenger;telegramdesktop,
+Obsidian (Dynalist Inc.),53758,53758,1,obsidianmd,
+JetBrains,53706,53706,1,JetBrains,
+Webkul,52630,52630,2,bagisto;krayin,
+Roboflow,51723,51723,1,roboflow,
+Bugou Technology (AList),50495,50495,1,AlistGo,
+Simplify Jobs Inc.,48485,48485,1,SimplifyJobs,
+ClickHouse,47522,47522,1,LibreChat-AI,
+Slab,47382,47382,1,slab,
+Juspay Technologies,45912,45912,1,juspay,
+Colorlib,45708,45708,1,ColorlibHQ,
+CCXT,44991,44991,1,ccxt,
+Crosstalk Solutions,44399,44399,1,Crosstalk-Solutions,
+Aqua Security,39740,39740,1,aquasecurity,
+Rapid7,39668,39668,1,rapid7,RPD
+The Vibe Company,39666,39666,1,The-Vibe-Company,
+Suno,39428,39428,1,suno-ai,
+RSS3 (Natural Selection Labs),39358,39358,1,RSSNext,
+AdGuard Software,38842,38842,1,AdguardTeam,
+MyShell,38323,38323,1,myshell-ai,
+JD.com,37762,37762,1,NervJS,JD
+Reworkd,36268,36268,1,reworkd,
+Nrwl (Nx),36030,36030,1,lerna,
+balena,34769,34769,1,balena-io,
+Twigpine,34537,34537,1,Twigpine,
+Atlassian,33877,33877,1,atlassian,TEAM
+Valve,33363,33363,1,ValveSoftware,
+Zackriya Solutions,33043,33043,1,Zackriya-Solutions,
+Adobe,32959,32959,1,adobe,ADBE
+LabStack LLC,32841,32841,1,labstack,
+Oraios AI,31702,31702,1,oraios,
+Truffle Security,31341,31341,1,gitleaks,
+Parallax,31319,31319,1,parallax,
+Composio,31293,31293,1,ComposioHQ,
+Transloadit,31092,31092,1,transloadit,
+Trail of Bits,30488,30488,1,trailofbits,
+Hancom,30368,30368,1,opendataloader-project,030520.KQ
+Genesis AI,30313,30313,1,Genesis-Embodied-AI,
+Sipeed,30159,30159,1,sipeed,
+Pydantic Services,29657,29657,1,pydantic,
+Elsewhen,29406,29406,1,elsewhencode,
+SmartBear,29091,29091,1,swagger-api,
+Kodeco,29044,29044,1,kodecocodes,
+Deezer,28539,28539,1,deezer,DEEZR.PA
+Taichi Graphics,28477,28477,1,taichi-dev,
+Better Auth Inc.,28389,28389,1,nextauthjs,
+Answer.AI,28282,28282,1,fastai,
+DigitalOcean,28240,28240,1,digitalocean,DOCN
+Resemble AI,28109,28109,1,resemble-ai,
+Trip.com Group,27692,27692,1,YMFE,TCOM
+Automattic,27452,27452,1,Automattic,
+HumanLayer,27423,27423,1,humanlayer,
+OpenZeppelin,27365,27365,1,OpenZeppelin,
+Devolutions,27255,27255,1,Devolutions,
+ChapsVision,27014,27014,1,SYSTRAN,
+Mattermost,26574,26574,1,mattermost-community,
+Every,26232,26232,1,EveryInc,
+Cinnamon AI,25931,25931,1,Cinnamon,
+Higher Order Company (Victor Taelin),25882,25882,1,bendlang,
+Akveo,25664,25664,1,akveo,
+CoStar Group,25581,25581,1,matterport,CSGP
+Nylas,24723,24723,1,nylas,
+Uber,24696,24696,1,uber-go,UBER
+Netflix,24477,24477,1,Netflix,NFLX
+Youzan,24427,24427,1,youzan,
+TalkingData,23738,23738,1,iview,
+Oracle,23579,23579,1,openjdk,ORCL
+Shimo,23377,23377,1,shimohq,
+Mend.io,23269,23269,1,renovatebot,
+Datadog,22966,22966,1,vectordotdev,DDOG
+Prime Intellect,22915,22915,1,PrimeIntellect-ai,
+Major League Hacking,22842,22842,1,forem,
+CoreWeave,22772,22772,1,wandb,
+Booming Tech,6764,0,1,BoomingTech,
+ZOZO,4618,0,1,st-tech,3092.T
+Synthetic Sciences (InkVell Inc.),4439,0,1,synthetic-sciences,
+Xanadu Quantum Technologies,3807,0,4,PennyLaneAI;XanaduAI,
+AstraZeneca,3263,0,6,AstraZeneca;MolecularAI,AZN
+HaploX Biotechnology,2464,0,1,OpenGene,
+Intel,1612,0,2,bwa-mem2;lava-nc,INTC
+Autonomous Inc.,1533,0,1,autonomous-ai,
+EPAM Systems,1526,0,3,epam,EPAM
+Seqera Labs,1507,0,1,MultiQC,
+Margelo,1436,0,1,margelo,
+BioNTech,1086,0,3,instadeepai,BNTX
+Insilico Medicine,998,0,1,molecularsets,
+Physical Superintelligence PBC,981,0,1,psi-oss,
+GRAIL,978,0,1,grailbio,
+Oxford Nanopore Technologies,889,0,1,nanoporetech,ONT.L
+Xalen Technology (Vedika),829,0,1,vedika-io,
+Music Tribe,754,0,2,MusicTribeOpenSource,
+PharmAI GmbH,735,0,1,pharmai,
+Nexon,732,0,1,EmbarkStudios,3659.T
+Preferred Networks,716,0,1,chainer,
+GenomOncology,685,0,1,genomoncology,
+insitro,610,0,1,insitro,
+Nearform,596,0,1,FormidableLabs,
+Recursion Pharmaceuticals,560,0,1,datamol-io,RXRX
+Acellera,529,0,2,Acellera,
+Illumina,474,0,1,Illumina,ILMN
+DP Technology,426,0,1,dptech-corp,
+Dassault Systemes,403,0,1,scilab,DSY.PA
+Global Phasing Ltd,400,0,1,project-gemmi,
+Fulcrum Genomics,380,0,1,fulcrumgenomics,
+Adaptyv Bio,311,0,2,adaptyvbio,
+Databricks,310,0,1,projectglow,
+AtomFlow,310,0,1,AtomFlow-AI,
+EMOTIV,266,0,1,Emotiv,
+Carl Zeiss AG,248,0,2,zeiss-microscopy,
+Kalaris Labs,191,0,1,KalarisLabs,
+BioLib,191,0,1,biolib,
+LabJack,176,0,2,labjack,
+Autodesk,175,0,1,Autodesk,
+BenevolentAI,168,0,1,BenevolentAI,
+Peptone,166,0,1,PeptoneLtd,
+SandboxAQ,143,0,1,sandbox-quantum,
+Keiji AI Inc.,135,0,1,Keiji-AI,
+Bindwell,120,0,1,Bindwell,
+"Schrödinger, Inc.",113,0,1,schrodinger,SDGR
+Unum Cloud,112,0,1,unum-science,
+BASF,108,0,1,basf,BAS.DE
+Augmented Nature,89,0,1,Augmented-Nature,
+Fujitsu,89,0,1,OpenQARP,6702.T
+Recursion,80,0,1,recursionpharma,
+Fideus Labs,75,0,1,fideus-labs,
+Rigetti Computing,71,0,1,rigetti,RGTI
+Koppar,68,0,1,Koppar-AI,
+Fashion Star,62,0,1,servodevelop,
+ISYSTEMS AUTOMATION S.R.L.,59,0,1,isystemsautomation,
+Exolution Technologies (Pty) Ltd,57,0,1,vul-os,
+ITBOX Ltda,54,0,1,itboxltda,
+Sea Limited,53,0,1,sail-sg,SE
+OMRON,50,0,2,omron-sinicx,6645.T
+Galopago consulting,47,0,1,galopago,
+Entalpic,45,0,1,LeMaterial,
+ForestHub.ai,38,0,1,ForestHubAI,
+MPDS (Tilde Materials Informatics),38,0,2,mpds-io,
+Lampro Mellon,35,0,1,Lampro-Mellon,
+Tilde Materials Informatics,28,0,2,tilde-lab,
+Daylily Informatics,18,0,1,Daylily-Informatics,
+Science Corporation,18,0,1,sciencecorp,
+Novonesis,12,0,1,novonesis,NSIS-B.CO
+Abenor,11,0,1,Abenor-Labs,
+Merck KGaA,10,0,1,emdgroup,MRK.DE

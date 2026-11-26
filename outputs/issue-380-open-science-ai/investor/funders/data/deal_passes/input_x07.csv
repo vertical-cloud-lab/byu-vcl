@@ -1,0 +1,11 @@
+key,venture,universe,category,hint,why
+rancher,Rancher,U1,COSS (GitHub core),GitHub org(s): rancher; basis: sells Rancher Prime support; country US; parent SUSE; acquired by SUSE 2020; site https://www.rancher.com,5 investors found for USD 95M; no early round found
+puppet,Puppet,U3,COSS (config management),,7 investors found for USD 90M
+ollama,Ollama,U1,COSS (GitHub core),GitHub org(s): ollama; basis: sells Ollama cloud hosted-model plans to its users; country US; parent -; ; site https://ollama.com,7 investors found for USD 88M
+qdrant,Qdrant,U1,COSS (GitHub core),GitHub org(s): qdrant; basis: sells Qdrant Cloud and enterprise; country DE; parent -; ; site https://qdrant.tech/,7 investors found for USD 88M
+sugarcrm,SugarCRM,U3,COSS (CRM),,5 investors found for USD 86M; no early round found
+nginx,NGINX,U1,COSS (GitHub core),GitHub org(s): nginx; basis: sells NGINX Plus; country US; parent F5; acquired by F5 2019; site https://nginx.org/,5 investors found for USD 84M; no early round found
+ultimaker,UltiMaker (Ultimaker B.V.),U2,"3D printing, Cura open source",merged with MakerBot 2022,3 investors found for USD 79M; no early round found; open hardware/science venture with few investors found
+hpcaitech,HPC-AI Tech,U1,COSS (GitHub core),GitHub org(s): hpcaitech; basis: sells cloud platform for training and deploying with Colossal-AI; country SG; parent -; ; site https://hpc-ai.com/,0 investors found for USD 78M; no early round found
+warpdotdev,Warp,U1,COSS (GitHub core),GitHub org(s): warpdotdev; basis: open-source client; sells paid Warp plans; country US; parent -; ; site https://warp.dev,0 investors found for USD 73M; no early round found
+hortonworks,Hortonworks,U3,COSS (Hadoop),,6 investors found for USD 73M

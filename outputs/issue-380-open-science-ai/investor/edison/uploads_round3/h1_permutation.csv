@@ -1,0 +1,9 @@
+set,measure,n_open,n_closed,median_diff,perm_p_two_sided
+pre-registered (JFrog excluded),excess_vs_qqq_offer,14,25,-0.1421435857484658,0.1027
+pre-registered (JFrog excluded),excess_vs_qqq_first,14,25,-0.1448914423595805,0.08628
+pre-registered (JFrog excluded),excess_vs_igv_offer,14,25,-0.14379887031469457,0.03454
+pre-registered (JFrog excluded),pme,14,25,-0.315507564226834,0.19754
+JFrog counted as open source,excess_vs_qqq_offer,15,25,-0.1311400491578868,0.20838
+JFrog counted as open source,excess_vs_qqq_first,15,25,-0.11928485547180345,0.18826
+JFrog counted as open source,excess_vs_igv_offer,15,25,-0.11368754899398337,0.11398
+JFrog counted as open source,pme,15,25,-0.2806799532110975,0.32864

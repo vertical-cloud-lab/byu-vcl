@@ -1,0 +1,8 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+cockroachdb,Cockroach Labs,U1,,,yes,,,unknown,yes,4,"Series A-C not found; about page also lists Sequoia, Redpoint, Work-Bench as backers without round.",,2026-11-26T06:24:40Z
+cohere,Cohere,U3,,,yes,,,unknown,yes,3,,,2026-11-26T06:24:40Z
+sifive,SiFive,U2,,,yes,,,unknown,yes,4,Series A 2015 USD 5M (Wikipedia): investors not named.,,2026-11-26T06:24:40Z
+huggingface,Hugging Face,U1,,,yes,,,unknown,yes,3,Betaworks made the first-ever check (TechCrunch 2023-08-24); seed round itself not sourced.,,2026-11-26T06:27:12Z
+gitlabhq,GitLab Inc.,U1,,,yes,,,unknown,yes,3,Seed USD 1.5M (Wikipedia) has no named investors beyond Y Combinator.,,2026-11-26T06:27:12Z
+ai21,AI21 Labs,U3,,,yes,,,unknown,yes,3,Series D (2025) investors beyond NVIDIA and Google not named in sources read.,,2026-11-26T06:27:54Z
+stepfun,StepFun,U3,,,yes,,,unknown,yes,1,Angel/Series A not found in sources read.,,2026-11-26T06:28:57Z

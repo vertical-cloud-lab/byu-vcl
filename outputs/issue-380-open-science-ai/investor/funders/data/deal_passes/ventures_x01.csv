@@ -1,0 +1,12 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+databricks,Databricks,U3,,,yes,,,unknown,yes,6,Series K (2025-09) investors not named in the press release fetched.,,2026-11-26T06:22:30Z
+minimax,MiniMax,U3,,,yes,,,unknown,yes,2,,,2026-11-26T06:23:24Z
+deepseek-ai,DeepSeek,U1,,,yes,,,unknown,yes,2,"Before 2026 owned and funded by High-Flyer (Wikipedia, https://en.wikipedia.org/wiki/DeepSeek); no outside investors until the 2026 rounds.",https://en.wikipedia.org/wiki/DeepSeek,2026-11-26T06:24:42Z
+moonshot,Moonshot AI,U3,,,yes,,,unknown,yes,2,Wikipedia says initial funding was USD 60M at USD 300M valuation (investors not named there). Series C 2025-12 led by IDG per existing round.,https://en.wikipedia.org/wiki/Moonshot_AI,2026-11-26T06:24:53Z
+grafana,Grafana Labs,U1,,,yes,,,unknown,yes,1,"Series C (2021-08, USD 220M, USD 3B valuation) investors not found: Grafana and Bloomberg pages unreadable. SiliconANGLE 2026-02 names CapitalG among backers.",,2026-11-26T06:26:49Z
+grafana,Grafana Labs,U1,,,yes,,,unknown,yes,2,"Series C (2021-08, USD 220M, USD 3B valuation) investors not found: Grafana and Bloomberg pages unreadable.",,2026-11-26T06:26:55Z
+odoo,Odoo SA,U1,,,yes,,,unknown,yes,3,,,2026-11-26T06:27:59Z
+cloudera,Cloudera,U3,,,yes,,,unknown,yes,5,CHECK: existing 2014-03 Intel row says USD 740M for 18%; prospectus shows USD 370.9M Series F-1 purchase in May 2014 (different totals may include secondary).,,2026-11-26T06:28:32Z
+tenstorrent,Tenstorrent,U2,,,yes,,,unknown,yes,3,"Series C 2021 (USD 200M+, USD 1B valuation) investors not found.",,2026-11-26T06:29:34Z
+baichuan,Baichuan Intelligence,U3,,,yes,,,unknown,yes,1,Angel round investors (USD 50M) not named in sources read.,,2026-11-26T06:30:15Z
+suse,SUSE,U3,,,yes,,,unknown,yes,2,"No venture rounds found; SUSE changed hands by acquisition (Novell, Attachmate, Micro Focus, EQT).",,2026-11-26T06:30:25Z

@@ -1,0 +1,121 @@
+owner,cls,entity,parent,basis,judgment,source_url
+react,nonprofit,React Foundation,Linux Foundation,React Foundation owns React and React Native,0,https://react.dev/blog/2026/02/24/the-react-foundation
+vuejs,community,Vue,,Independent contributor-governed framework; sponsors do not own the project,0,https://vuejs.org/about/faq.html
+TheAlgorithms,community,The Algorithms,,Volunteer algorithms education collective,0,https://the-algorithms.com/
+alibaba,complement,Alibaba Group,,Diversified company publishing internal infrastructure and developer tools,0,https://github.com/alibaba
+awesome-selfhosted,community,Awesome Selfhosted,,Volunteer-maintained software catalog,0,https://github.com/awesome-selfhosted/awesome-selfhosted
+NousResearch,core,Nous Research,,Sells model access and hosted Hermes Agent,1,https://portal.nousresearch.com/
+anomalyco,core,Anomaly,,Sells OpenCode model gateway and related developer platform,0,https://opencode.ai/zen
+n8n-io,core,n8n,,Sells hosted workflow automation and enterprise editions,0,https://n8n.io
+yt-dlp,community,yt-dlp,,Volunteer-maintained downloader without a company owner,0,https://github.com/yt-dlp/yt-dlp
+FuelLabs,core,Fuel Labs,,Developing company builds its own blockchain execution platform,1,https://fuel.network
+ultraworkers,community,Ultraworkers,,Independent developer collective; repository explicitly disclaims Anthropic affiliation,1,https://github.com/ultraworkers/claw-code
+open-webui,core,Open WebUI,,Offers enterprise deployments and support for Open WebUI,0,https://openwebui.com
+Graphify-Labs,core,Graphify Labs,,Sells hosted and enterprise versions of its open graph engine,0,https://graphify.com/
+ytdl-org,community,youtube-dl,,Volunteer downloader project; legal assistance does not establish ownership,0,https://github.com/ytdl-org/youtube-dl
+golang,complement,Google,Alphabet,Google-controlled programming language complements other products,0,https://go.dev
+ant-design,complement,Ant Group,,Financial technology company publishes its design system,0,https://ant.design
+pmndrs,community,Poimandres,,Independent open-source graphics and React developer collective,0,https://pmnd.rs
+supabase,core,Supabase,,Sells hosted Supabase database platform,0,https://supabase.com
+papers-we-love,community,Papers We Love,,Community repository and local reading groups,0,https://paperswelove.org
+neovim,community,Neovim,,Community-governed editor; fiscal hosting is not ownership,0,https://neovim.io
+OpenCut-app,community,OpenCut,,Maintainer-led MIT video editor; no owning company established,1,https://github.com/OpenCut-app/OpenCut
+oven-sh,core,Oven,Anthropic,Bun developer company; parent affiliation does not change product-based class,1,https://bun.com/
+odysseus-dev,community,Odysseus,,Contributor-maintained self-hosted workspace; no company identified,1,https://github.com/odysseus-dev/odysseus
+puppeteer,complement,Google,Alphabet,Google browser automation tooling complements its broader products,0,https://github.com/puppeteer/puppeteer
+Textualize,complement,Textualize,,Developer libraries alongside separate writing applications; no paid framework offering established,1,https://www.textualize.io
+ByteByteGoHq,complement,ByteByteGo Inc.,,Educational publisher offers courses; repository is a free explanatory resource,1,https://bytebytego.com
+mermaid-js,core,Mermaid Chart,,Maintainer-founded company sells hosted Mermaid diagramming,1,https://www.mermaidchart.com
+lysine-dev,nonprofit,Commonhaus Foundation,,Organization explicitly identifies as a Commonhaus member,0,https://github.com/lysine-dev
+syncthing,nonprofit,Syncthing Foundation,,Registered nonprofit maintains and encourages Syncthing development,0,https://syncthing.net/foundation/
+sveltejs,community,Svelte,,Independent framework team; employer sponsorship alone does not establish ownership,1,https://svelte.dev/docs/svelte/faq
+ChatGPTNextWeb,core,NextChat,,Project offers hosted chat and enterprise edition,1,https://github.com/ChatGPTNextWeb/NextChat
+meta-llama,complement,Meta,,Company releases models alongside its broader platform products,0,https://github.com/meta-llama
+rtk-ai,core,RTK AI Labs,,Offers RTK Pro alongside open-source token compression tool,1,https://www.rtk-ai.app
+OpenMontageInc,core,OpenMontage,,Company develops Studio product from its open video production system,1,https://openmontage.video
+netdata,core,Netdata,,Sells Netdata Cloud and enterprise observability,0,https://www.netdata.cloud
+mozilla,nonprofit,Mozilla Foundation,,Nonprofit Mozilla stewardship,0,https://www.mozilla.org/en-US/about/
+pingdotgg,complement,"T3 Tools, Inc. (Ping Labs)",,Publishes free T3 Code alongside separate subscription chat and creator tools,1,https://ping.gg/
+tesseract-ocr,community,Tesseract,,Independent maintainer team; historical Google support does not establish current ownership,0,https://github.com/tesseract-ocr/tesseract
+obsidianmd,complement,Obsidian,,Skills and integrations support the separate closed-source Obsidian app,0,https://obsidian.md
+remotion-dev,core,Remotion AG,,Sells commercial licenses for the open video framework,0,https://www.remotion.dev
+pallets,community,Pallets,,Community project; fiscal hosting does not establish foundation ownership,0,https://palletsprojects.com
+ansible,complement,Red Hat,IBM,Red Hat publishes automation software alongside broader enterprise products,0,https://www.ansible.com
+swiftlang,complement,Apple,,Apple-led language complements its hardware and software ecosystem,0,https://www.swift.org/about/
+scikit-learn,community,scikit-learn,,Contributor-governed project; institutional contributors and fiscal support do not establish ownership,1,https://scikit-learn.org/stable/governance.html
+labmlai,community,labml.ai,,Self-hosted open tools and tutorials; no owning commercial entity established,1,https://labml.ai/app
+coollabsio,core,coolLabs Solutions Kft.,,Sells hosted Coolify deployment platform,0,https://coolify.io
+localstack,core,LocalStack,,Sells commercial editions of its local cloud emulator,0,https://www.localstack.cloud
+tabler,core,Codecalm,,Maintainer sells Tabler Pro templates and component packages,1,https://tabler.io
+commaai,core,comma.ai,,Sells driving hardware running its openpilot software,0,https://comma.ai
+resume,community,GitHub Résumé,,"Independent résumé-generator project, not GitHub corporate account",0,https://github.com/resume/resume.github.com
+twentyhq,core,Twenty,,Sells hosted and enterprise versions of open CRM,0,https://twenty.com
+minio,core,MinIO,,Sells enterprise object storage and support,0,https://min.io
+rust-unofficial,community,Rust Unofficial,,"Unofficial community projects, distinct from Rust Foundation",0,https://github.com/rust-unofficial/about
+K-Dense-AI,complement,K-Dense,,Scientific skills and tools accompany separate hosted research agents,1,https://www.k-dense.ai
+ChromeDevTools,complement,Google,Alphabet,Chrome developer tools complement Google products,0,https://developer.chrome.com/docs/devtools
+rails,nonprofit,Rails Foundation,,Nonprofit stewards Rails ecosystem and administers trademarks,0,https://rubyonrails.org/foundation
+freqtrade,community,Freqtrade,,Community-maintained trading bot without an identified corporate owner,0,https://www.freqtrade.io/en/stable/
+PowerShell,complement,Microsoft,,Microsoft automation tooling complements broader commercial products,0,https://github.com/PowerShell/PowerShell
+odoo,core,Odoo,,Sells enterprise editions and hosting of open business software,0,https://www.odoo.com
+HumanSignal,core,HumanSignal,,Sells Label Studio Enterprise and hosted labeling platform,0,https://labelstud.io
+mastodon,nonprofit,Mastodon,,Organization identifies itself as nonprofit developing Mastodon,1,https://joinmastodon.org/about
+pixijs,community,PixiJS,,Open-source graphics team; sponsorship does not establish corporate ownership,0,https://pixijs.com
+gogs,community,Gogs,,Maintainer-led Git hosting project supported by sponsors,0,https://gogs.io
+siyuan-note,core,"Yunnan Liandi Technology Co., Ltd.",,Sells SiYuan subscriptions and cloud synchronization,0,https://b3log.org/siyuan/en/
+ManimCommunity,community,Manim Community,,"Independent community fork, not an academic institution",0,https://www.manim.community
+php,community,PHP Group,,PHP Group governs language; supporting foundation does not establish organization-account ownership,1,https://www.php.net/credits.php
+trpc,community,tRPC,,Independent contributor-maintained framework supported by sponsors,0,https://trpc.io
+halo-dev,core,Lingxia (Shenzhen) Software,FIT2CLOUD,Company offers paid Halo editions and related services,0,https://www.halo.run/about
+2noise,community,2Noise,,Named speech-model developer collective; no company or institutional owner established,1,https://github.com/2noise/ChatTTS
+istio,nonprofit,Cloud Native Computing Foundation,Linux Foundation,CNCF graduated project stewardship,0,https://istio.io/latest/about/
+impress,community,impress.js,,Community-maintained presentation framework,0,https://github.com/impress/impress.js
+reworkd,complement,Reworkd,,AgentGPT publisher markets separate web-data extraction service,1,https://reworkd.ai
+yewstack,community,Yew,,Contributor-maintained Rust web framework,0,https://yew.rs
+jj-vcs,community,Jujutsu,,Independent project organization; Google contributors alone do not establish ownership,1,https://github.com/jj-vcs/jj
+openssl,nonprofit,OpenSSL Software Foundation,,Foundation stewardship alongside separate commercial services corporation,1,https://openssl.org/about/
+composer,core,Packagist Conductors GmbH,,Composer creators sell Private Packagist and extended Composer support,1,https://packagist.com/about/
+dmlc,community,Distributed Machine Learning Community,,Distributed scientific software collaboration without a single owning institution,0,https://github.com/dmlc
+codepath,nonprofit,CodePath,,Nonprofit computing education organization,0,https://www.codepath.org/about
+hcengineering,core,Huly Labs,,Sells hosted Huly collaboration and project management platform,0,https://huly.io
+Automattic,complement,Automattic,,Mongoose library complements a broader software and hosting business,0,https://automattic.com
+OI-wiki,community,OI Wiki,,Volunteer competitive-programming educational community,0,https://oi-wiki.org/about/
+deepset-ai,core,deepset,,Sells hosted enterprise platform built around Haystack,0,https://www.deepset.ai
+elixir-lang,community,Elixir,,"Language maintained by Elixir Team, not owned by contributors’ employers",0,https://elixir-lang.org/development.html
+readest,core,Bilingify LLC,,Sells Readest Plus and Pro cloud synchronization subscriptions,1,https://readest.com/en/pricing
+javascript-tutorial,core,Techlead LLC,,Sells EPUB and PDF editions of the open tutorial,0,https://javascript.info/ebook
+taosdata,core,TDengine,,Sells cloud and enterprise editions of its time-series database,0,https://tdengine.com
+docmirror,community,docmirror,,Individual’s organization created by greper,0,https://github.com/docmirror
+pypa,community,Python Packaging Authority,,Collaborative packaging community; PSF relationship does not establish project ownership,1,https://peps.python.org/pep-0609/
+actix,community,Actix,,Contributor-maintained Rust web framework,0,https://actix.rs
+different-ai,core,Different AI,,Offers commercial OpenWork enterprise features alongside open desktop app,0,https://github.com/different-ai/openwork
+MostlyAdequate,community,Mostly Adequate Guide,,Individual-led collaborative functional-programming book,0,https://github.com/MostlyAdequate/mostly-adequate-guide
+livewire,core,Livewire,,Framework creator sells integrated Flux component editions,1,https://livewire.laravel.com
+matplotlib,community,Matplotlib,,Community-governed project with NumFOCUS fiscal sponsorship,0,https://matplotlib.org/stable/project/index.html
+akfamily,community,AKFamily,,Organization explicitly identifies as an open-source data and quantitative research community,0,https://github.com/akfamily
+micro,core,Micro,,Developer offers hosted assistant and service-framework ecosystem,1,https://micro.mu
+PrimeIntellect-ai,core,Prime Intellect,,Sells training infrastructure integrated with its open reinforcement-learning ecosystem,1,https://primeintellect.ai/
+rust-ndarray,community,Rust ndarray,,Contributor-maintained scientific array library,0,https://github.com/rust-ndarray/ndarray
+AllskyTeam,community,Allsky,,Camera software built and maintained by astronomy enthusiasts,0,https://github.com/AllskyTeam/allsky
+songlab-cal,academic,Song Lab,"University of California, Berkeley",University research laboratory,0,https://people.eecs.berkeley.edu/~yss/group.html
+scipipe,community,SciPipe,,Standalone workflow project; academic origins do not establish institutional ownership,1,https://scipipe.org
+spacetelescope,academic,Space Telescope Science Institute,Association of Universities for Research in Astronomy,"AURA-operated research institute, not a NASA agency or national laboratory",1,https://www.stsci.edu/who-we-are
+symbolica-dev,core,Symbolica,,Offers commercial licenses for symbolic computation software,0,https://symbolica.io
+COMBINE-lab,academic,COMBINE Lab,University of Maryland,University computational biology research laboratory,0,https://combine-lab.github.io
+westlake-repl,academic,Westlake Representation Learning Lab,Westlake University,University representation-learning research group,0,https://github.com/westlake-repl
+yt-project,community,yt Project,,Multi-institution contributor-governed scientific software collaboration,0,https://yt-project.org/about.html
+gwastro,community,PyCBC,,Multi-institution gravitational-wave software collaboration,0,https://pycbc.org
+visit-dav,government,Lawrence Livermore National Laboratory,US Department of Energy,National laboratory leads VisIt development,0,https://visit.llnl.gov
+pathsim,community,PathSim,,Individual-led simulation framework; no owning company established,1,https://pathsim.org
+Illumina,complement,Illumina,,Genomics company publishes auxiliary variant-comparison tooling,0,https://github.com/Illumina
+BMClab,academic,Biomechanics and Motor Control Laboratory,Federal University of ABC,University biomechanics laboratory,0,https://bmclab.pesquisa.ufabc.edu.br/
+BioJulia,community,BioJulia,,Independent scientific-software developer community,0,https://biojulia.dev
+ucdavis,academic,"University of California, Davis",University of California,University organization account,0,https://www.ucdavis.edu
+mixOmics-org,academic,Lê Cao Lab,University of Melbourne,University-led research toolkit with external contributors,1,https://mixomics.org
+zeiss-microscopy,complement,Carl Zeiss Microscopy,Carl Zeiss Foundation,Microscopy company publishes instrument-adjacent tools and file-format libraries,0,https://www.zeiss.com/microscopy
+GenSI-THUAIR,academic,GenSI Lab,Tsinghua University; Shanghai AI Laboratory,Joint university and research-institute laboratory,0,https://www.gensi-thuair.com/
+keiserlab,academic,Keiser Lab,"University of California, San Francisco",University computational biology laboratory,0,https://keiserlab.org
+Spooky-Manufacturing,core,Spooky Manufacturing,,Quantum hardware developer publishes designs for its intended computer product,1,https://github.com/Spooky-Manufacturing/8Q
+servierhub,complement,Servier,Servier Research Foundation,"Pharmaceutical company publishes software lists, not its therapeutic products",0,https://servier.com/en/group/
+neogeodev,community,NeoGeo Developers,,"Volunteer homebrew developer community, with individual website copyright",0,https://www.neogeodev.org
+brainlife,academic,Brainlife,University of Texas at Austin,"University-based neuroscience research platform, despite multi-institution collaborators",1,https://brainlife.io/about

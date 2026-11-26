@@ -1,0 +1,13 @@
+key,venture,universe,category,hint,why
+serverless,"Serverless, Inc.",U1,COSS (GitHub core),GitHub org(s): serverless; basis: sells Serverless Framework licences and dashboard; country US; parent -; ; site https://serverless.com,raised about USD 13M but only 3 funders are named
+openobserve,OpenObserve,U1,COSS (GitHub core),GitHub org(s): openobserve; basis: sells OpenObserve Cloud and Enterprise; country US; parent -; ; site https://openobserve.ai,raised about USD 10M but only 2 funders are named
+bentoml,BentoML,U3,COSS (model serving),,raised about USD 9M but only 2 funders are named
+mermaid-js,Mermaid Chart,U1,COSS (GitHub core),GitHub org(s): mermaid-js; basis: maintainers' company sells hosted Mermaid Chart editor; country ?; parent -; ; site ,raised about USD 8M but only 3 funders are named
+symfony,Symfony SAS,U1,COSS (GitHub core),"GitHub org(s): symfony; basis: sells Symfony training, certification, support and SymfonyInsight; country FR; parent -; ; site https://symfony.com/",raised about USD 7M but only 1 funders are named
+explosion,Explosion,U1,COSS (GitHub core),GitHub org(s): explosion; basis: sells Prodigy and spaCy consulting to spaCy users; country DE; parent -; ; site https://explosion.ai,raised about USD 6M but only 1 funders are named
+open-bionics,Open Bionics,U2,"prosthetics, open designs early",UK,raised about USD 6M but only 4 funders are named
+Stirling-Tools,Stirling PDF,U1,COSS (GitHub core),GitHub org(s): Stirling-Tools; basis: sells Stirling-PDF Pro/Enterprise and hosted version; country GB; parent -; ; site https://stirling.com,raised about USD 5M but only 3 funders are named
+langfuse,Langfuse,U1,COSS (GitHub core),GitHub org(s): langfuse; basis: sells Langfuse Cloud and Enterprise; country DE; parent ClickHouse; acquired by ClickHouse 2026; site https://langfuse.com,raised about USD 4M but only 4 funders are named
+hyperic,Hyperic,U3,COSS (monitoring),SpringSource 2009,raised about USD 4M but only 2 funders are named
+TabbyML,TabbyML,U1,COSS (GitHub core),GitHub org(s): TabbyML; basis: sells Tabby Enterprise and cloud; country ?; parent -; ; site ,raised about USD 3M but only 2 funders are named
+remix,Remix Software,U3,COSS (Remix framework),Shopify 2022,raised about USD 3M but only 1 funders are named

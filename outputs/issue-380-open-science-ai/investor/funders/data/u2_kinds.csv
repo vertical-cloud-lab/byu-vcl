@@ -1,0 +1,99 @@
+key,venture,kind
+arduino,Arduino (Arduino S.r.l. / BCMI),Electronics and devices
+raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,Electronics and devices
+adafruit,Adafruit Industries,Electronics and devices
+sparkfun,SparkFun Electronics,Electronics and devices
+seeed,Seeed Studio (Seeed Technology),Electronics and devices
+pine64,Pine64 (Pine Store Ltd),Electronics and devices
+system76,System76,Electronics and devices
+framework,Framework Computer,Electronics and devices
+mnt-research,MNT Research,Electronics and devices
+purism,Purism,Electronics and devices
+particle,Particle (Spark Labs),Electronics and devices
+mycroft,Mycroft AI,Electronics and devices
+micropython,George Robotics (MicroPython),Electronics and devices
+openenergymonitor,OpenEnergyMonitor (Megni),Electronics and devices
+nabu-casa,Nabu Casa (Home Assistant),Electronics and devices
+crowd-supply,Crowd Supply,Electronics and devices
+bela,Augmented Instruments (Bela),Electronics and devices
+openmv,OpenMV,Electronics and devices
+luxonis,Luxonis,Electronics and devices
+great-scott-gadgets,Great Scott Gadgets,Electronics and devices
+ettus,Ettus Research,Electronics and devices
+lime-micro,Lime Microsystems (LimeSDR),Electronics and devices
+nuand,Nuand (bladeRF),Electronics and devices
+open-bionics,Open Bionics,Electronics and devices
+prusa,Prusa Research,3D printing and fabrication
+ultimaker,UltiMaker (Ultimaker B.V.),3D printing and fabrication
+makerbot,MakerBot Industries,3D printing and fabrication
+aleph-objects,Aleph Objects (LulzBot),3D printing and fabrication
+printrbot,Printrbot,3D printing and fabrication
+re3d,re:3D,3D printing and fabrication
+bcn3d,BCN3D Technologies,3D printing and fabrication
+inventables,Inventables,3D printing and fabrication
+opulo,Opulo (LumenPnP),3D printing and fabrication
+sifive,SiFive,Chips and computers
+oxide,Oxide Computer Company,Chips and computers
+tenstorrent,Tenstorrent,Chips and computers
+efabless,Efabless,Chips and computers
+antmicro,Antmicro,Chips and computers
+open-robotics,Open Robotics (OSRF commercial arm),Robotics and drones
+willow-garage,Willow Garage,Robotics and drones
+picknik,PickNik Robotics,Robotics and drones
+pollen-robotics,Pollen Robotics,Robotics and drones
+k-scale,K-Scale Labs,Robotics and drones
+hello-robot,Hello Robot,Robotics and drones
+auterion,Auterion,Robotics and drones
+3d-robotics,3D Robotics (3DR),Robotics and drones
+tier-iv,TIER IV,Robotics and drones
+itseez,Itseez,Robotics and drones
+bitcraze,Bitcraze,Robotics and drones
+farmbot,FarmBot,Robotics and drones
+sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),Robotics and drones
+openbci,OpenBCI,"Lab automation, instruments and lab software"
+backyard-brains,Backyard Brains,"Lab automation, instruments and lab software"
+openuc2,openUC2,"Lab automation, instruments and lab software"
+trilobio,Trilobio,"Lab automation, instruments and lab software"
+open-imaging,"Open Imaging, Inc.","Lab automation, instruments and lab software"
+glencoe,Glencoe Software,"Lab automation, instruments and lab software"
+deltablot,Deltablot (eLabFTW),"Lab automation, instruments and lab software"
+scinote,SciNote,"Lab automation, instruments and lab software"
+kitware,Kitware,Scientific software and computing
+enthought,Enthought,Scientific software and computing
+posit,Posit PBC (RStudio),Scientific software and computing
+anaconda,"Anaconda, Inc. (Continuum Analytics)",Scientific software and computing
+quansight,Quansight,Scientific software and computing
+openteams,OpenTeams,Scientific software and computing
+coiled,Coiled,Scientific software and computing
+quantstack,QuantStack,Scientific software and computing
+prefix-dev,prefix.dev,Scientific software and computing
+probabl,Probabl,Scientific software and computing
+juliahub,JuliaHub (Julia Computing),Scientific software and computing
+cocalc,"SageMath, Inc. (CoCalc)",Scientific software and computing
+observable,"Observable, Inc.",Scientific software and computing
+opencfd,OpenCFD Ltd,Scientific software and computing
+scilab,Scilab Enterprises,Scientific software and computing
+rowan,Rowan (Rowan Scientific),Scientific software and computing
+evolutionaryscale,EvolutionaryScale,AI for science
+orbital-materials,Orbital Materials (Orbital Industries),AI for science
+radical-ai,Radical AI,AI for science
+boltz,Boltz PBC,AI for science
+chai-discovery,Chai Discovery,AI for science
+entalpic,Entalpic,AI for science
+valence-labs,Valence Labs,AI for science
+deep-forest,Deep Forest Sciences,AI for science
+overleaf,Overleaf (WriteLaTeX),Open-science publishing and research infrastructure
+protocols-io,protocols.io,Open-science publishing and research infrastructure
+figshare,Figshare,Open-science publishing and research infrastructure
+code-ocean,Code Ocean,Open-science publishing and research infrastructure
+curvenote,Curvenote,Open-science publishing and research infrastructure
+arcadia-science,Arcadia Science,Open-science publishing and research infrastructure
+authorea,Authorea,Open-science publishing and research infrastructure
+f1000,F1000 Research,Open-science publishing and research infrastructure
+frontiers,Frontiers Media,Open-science publishing and research infrastructure
+peerj,PeerJ,Open-science publishing and research infrastructure
+molecule,Molecule (Molecule AG),DeSci (decentralised science)
+vitadao,VitaDAO,DeSci (decentralised science)
+bio-protocol,BIO Protocol (Bio.xyz),DeSci (decentralised science)
+labdao,LabDAO,DeSci (decentralised science)
+researchhub,ResearchHub (ResearchHub Technologies),DeSci (decentralised science)

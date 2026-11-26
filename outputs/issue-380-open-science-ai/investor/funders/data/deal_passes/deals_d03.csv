@@ -1,0 +1,30 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-codevisor,Codevisor,U4,accelerator,YC W25,2025-01,,,Y Combinator,https://www.ycombinator.com/companies/codevisor,other,Batch from YC directory
+u4-cognitivelab,CognitiveLab,U4,grant_philanthropic,Llama Impact Grant 2024,2024,,Meta,,https://www.cognitivelab.in,company,Non-dilutive grant per company site; amount not stated
+u4-comfy-deploy,Comfy Deploy,U4,accelerator,YC S24,2024-06,,,Y Combinator,https://www.ycombinator.com/companies/comfy-deploy,other,Batch from YC directory
+u4-common-paper,Common Paper,U4,accelerator,YC W23,2023-01,,,Y Combinator,https://www.ycombinator.com/companies/common-paper,other,Batch from YC directory
+u4-common-paper,Common Paper,U4,venture_unspecified,backers listed on About page,,,,Boldstart Ventures | Uncork Capital | Y Combinator,https://commonpaper.com/about,company,Names from logos on About page; round not stated
+u4-comp-ai,Comp AI,U4,series_a,Series A,2026-09,34000000,Roo Capital | Grand Ventures,,https://techcrunch.com/2026/09/17/comp-ai-sets-eyes-on-a-continiously-agentic-future-for-security-and-complaince/,news,$37.5M raised to date; earlier rounds' investors not named in page
+u4-composio,Composio,U4,series_a,Series A,2025-07,25000000,Lightspeed Venture Partners,SV Angel | Dharmesh Shah (person),https://siliconangle.com/2025/07/22/composio-raises-25m-funding-ease-ai-agent-development/,news,Outside funding about $29M total; earlier rounds not named
+u4-confident-ai,Confident AI,U4,accelerator,YC W25,2025-01,,,Y Combinator,https://www.ycombinator.com/companies/confident-ai,other,Batch from YC directory
+u4-convox,Convox,U4,accelerator,YC S15,2015-06,,,Y Combinator,https://www.ycombinator.com/companies/convox,other,Batch from YC directory
+u4-convoy,Convoy,U4,accelerator,YC W22,2022-01,,,Y Combinator,https://www.ycombinator.com/companies/convoy-2,other,Batch from YC directory
+u4-core,CORE,U4,accelerator,YC S23,2023-06,,,Y Combinator,https://www.ycombinator.com/companies/heysol,other,Batch from YC directory
+u4-corsair,Corsair,U4,accelerator,YC W25,2025-01,,,Y Combinator,https://www.ycombinator.com/companies/corsair,other,Batch from YC directory
+u4-ctgt,CTGT,U4,accelerator,YC F24,2024-09,,,Y Combinator,https://www.ycombinator.com/companies/ctgt,other,Batch from YC directory
+u4-ctgt,CTGT,U4,seed,Seed,2025,8000000,,Gradient Ventures | General Catalyst | Y Combinator,https://www.ycombinator.com/companies/ctgt,other,"YC page text: $8M seed from Gradient, General Catalyst, YC"
+u4-ctgt,CTGT,U4,angel,Character Labs accelerator and angels,2024-10,,,Character VC | Jake Knapp (person) | John Zeratsky (person) | Mark Cuban (person) | Mike Knoop (person),https://techcrunch.com/2024/10/29/ctgt-aims-to-make-ai-models-safer/,news,Character Labs graduate; backing per TechCrunch
+u4-dagworks-inc,DAGWorks Inc.,U4,accelerator,YC W23,2023-01,,,Y Combinator,https://www.ycombinator.com/companies/dagworks-inc,other,Batch from YC directory
+u4-daily,Daily,U4,accelerator,YC W16,2016-01,,,Y Combinator,https://www.ycombinator.com/companies/daily,other,Batch from YC directory
+u4-daily,Daily,U4,venture_unspecified,total funding,,62000000,Tiger Global,Highfield Capital | Nat Friedman (person) | Lachy Groom (person) | Kevin Weil (person),https://techcrunch.com/2026/10/29/deepgram-acquires-pipecat-maker-daily-to-bolster-its-voice-ai-infrastructure/,news,"Over $62M to date per PitchBook; Tiger Global as lead is not stated, listed first only"
+u4-daily,Daily,U4,venture_unspecified,investors page,,,,Renegade Partners | Freestyle Capital | Root Ventures | Nat Friedman (person) | Lachy Groom (person) | Tiger Global,https://www.daily.co/company/,company,Logo alt text plus angel names on company page
+u4-dailybot,Dailybot,U4,accelerator,YC S21,2021-06,,,Y Combinator,https://www.ycombinator.com/companies/dailybot,other,Batch from YC directory
+u4-data-mechanics,Data Mechanics,U4,accelerator,YC S19,2019-06,,,Y Combinator,https://www.ycombinator.com/companies/data-mechanics,other,Batch from YC directory
+u4-datree,Datree,U4,seed,Seed,2018-08,3000000,TLV Partners,,https://techcrunch.com/2018/08/29/datree-gets-3m-seed-round-to-build-devops-policy-engine-in-github/,news,
+u4-datree,Datree,U4,accelerator,YC W20,2020-02,,,Y Combinator,https://www.ycombinator.com/companies/datree,other,Batch from YC directory
+u4-datree,Datree,U4,series_a,Series A,2020-02,8000000,Blumberg Capital | TLV Partners,Y Combinator,https://techcrunch.com/2020/02/06/datree-announces-8m-series-a-as-it-joins-y-combinator/,news,
+u4-dayflow,Dayflow,U4,accelerator,YC S24,2024-06,,,Y Combinator,https://www.ycombinator.com/companies/dayflow,other,Batch from YC directory
+u4-decawork,Decawork,U4,accelerator,YC S26,2026-06,,,Y Combinator,https://www.ycombinator.com/companies/decawork,other,Batch from YC directory
+u4-decuff,decuff,U4,accelerator,YC Spring 2026,2026-03,,,Y Combinator,https://www.ycombinator.com/companies/decuff,other,Batch from YC directory
+u4-defer,Defer,U4,accelerator,YC W23,2023-01,,,Y Combinator,https://www.ycombinator.com/companies/defer,other,Batch from YC directory
+u4-democracy-earth,Democracy Earth,U4,accelerator,YC W15,2015-01,,,Y Combinator,https://www.ycombinator.com/companies/democracy-earth,other,Batch from YC directory

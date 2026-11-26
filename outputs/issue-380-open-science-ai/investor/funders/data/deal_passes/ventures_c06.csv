@@ -1,0 +1,23 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+tigera,Tigera,U3,"Project Calico, Apache 2.0",,yes,US,2016,private,yes,3,Calico licence from memory; not checked,,2026-11-26T06:27:51Z
+buoyant,Buoyant,U3,"Linkerd service mesh, Apache 2.0 (CNCF project)",,yes,US,2015,private,yes,3,,,2026-11-26T06:27:51Z
+solo-io,Solo.io,U3,"Gloo, Envoy/Istio tools, Apache 2.0 open-source projects",,yes,US,2017,private,yes,4,,,2026-11-26T06:27:51Z
+tetrate,Tetrate,U3,"Istio and Envoy, Apache 2.0 projects the founders created",,yes,US,2018,private,yes,2,,,2026-11-26T06:27:51Z
+akuity,Akuity,U3,Argo project maintainers; Argo CD Apache 2.0 (CNCF),,yes,US,2021,private,yes,1,Seed investors not found,,2026-11-26T06:27:51Z
+kubecost,Kubecost,U3,"OpenCost (CNCF), Apache 2.0; Kubecost core built on it",,yes,US,2019,acquired,yes,2,Acquired by IBM Sept 2024 (price undisclosed in source),https://techcrunch.com/2024/09/17/ibm-acquires-kubernetes-cost-optimization-startup-kubecost/,2026-11-26T06:27:51Z
+gitpod,Gitpod (Ona),U3,Gitpod core repo AGPL-3.0 (self-hosted); Ona later closed SaaS,,partial,Germany,2020,acquired,yes,2,OpenAI announced acquiring Ona June 2026 (SiliconANGLE); licence/AGPL from memory,https://siliconangle.com/2026/06/11/openai-acquires-ai-agent-orchestration-startup-ona/,2026-11-26T06:27:51Z
+bitwarden,Bitwarden,U3,"Server and clients on GitHub, AGPL/GPL with a Bitwarden licence on some code",,yes,US,2015,private,yes,2,,,2026-11-26T06:27:51Z
+proton,Proton AG,U3,"Client apps open source (GPLv3), servers closed",,partial,Switzerland,2014,nonprofit,none_found,0,"Company says no VC investors, nonprofit-owned. memory: 2014 crowdfunding of ~$550k, 2015 Charles River/Fonds; not verified",https://proton.me/about,2026-11-26T06:27:51Z
+remix,Remix Software,U3,"Remix framework, MIT licence",,yes,US,2020,acquired,yes,1,,,2026-11-26T06:27:51Z
+mapbox,Mapbox,U3,"Mapbox GL JS was BSD until v2 (2020), now proprietary",,partial,US,2010,private,yes,1,Earlier rounds not itemised yet,,2026-11-26T06:27:51Z
+teleport,Teleport (Gravitational),U3,"Teleport access proxy, Apache 2.0 until v15 (2023), now commercial licence for builds",,partial,US,2015,private,yes,3,Series B not found; licence change from memory,,2026-11-26T06:33:42Z
+element,Element (New Vector),U3,"Matrix Synapse/Element clients, Apache 2.0 then AGPLv3 since 2023",,yes,UK,2017,private,yes,3,Amdocs funded the Matrix team pre-2017 (Wikipedia); licence from memory,https://element.io/about,2026-11-26T06:33:42Z
+gitpod,Gitpod (Ona),U3,Gitpod core repo AGPL-3.0 (self-hosted); Ona later closed SaaS,,partial,Germany,2020,acquired,yes,3,OpenAI announced acquiring Ona June 2026 (SiliconANGLE); licence/AGPL from memory,https://siliconangle.com/2026/06/11/openai-acquires-ai-agent-orchestration-startup-ona/,2026-11-26T06:33:42Z
+mapbox,Mapbox,U3,"Mapbox GL JS was BSD until v2 (2020), now proprietary",,partial,US,2010,private,yes,5,,,2026-11-26T06:33:42Z
+sourcegraph,Sourcegraph,U3,"Apache 2.0 until 2023, then closed enterprise licence",,partial,US,2013,private,yes,4,Earlier seed not found; licence from memory,,2026-11-26T06:33:42Z
+carto,CARTO (CartoDB),U3,"CartoDB platform open source (BSD) in early years, later SaaS-first",,partial,Spain,2011,private,yes,4,Licence from memory,,2026-11-26T06:33:42Z
+seldon,Seldon,U3,"Seldon Core Apache 2.0 until 2024, BSL since",,partial,UK,2014,private,yes,2,Earlier seed not found; licence from memory,,2026-11-26T06:33:42Z
+owncloud,ownCloud,U3,ownCloud core AGPL; enterprise parts proprietary,,partial,Germany,2011,acquired,none_found,0,"Kiteworks merger Nov 2023 per Wikipedia. Funding pages not found; memory: Holtzbrinck, Mitsubishi etc., unverified",https://en.wikipedia.org/wiki/OwnCloud,2026-11-26T06:33:42Z
+w4-games,W4 Games,U3,Godot engine MIT; W4 sells console ports and services,,yes,Ireland,2021,private,none_found,0,"Seed announcement not reachable (403/404); memory: seed 2022 with Hummingbird etc., unverified",https://en.wikipedia.org/wiki/Godot_(game_engine),2026-11-26T06:33:42Z
+crabnebula,CrabNebula,U3,Tauri framework MIT/Apache; CrabNebula sells cloud services,,yes,Netherlands,2022,private,none_found,0,No pages found with the helper; funding not verified,,2026-11-26T06:33:42Z
+astro,Astro (The Astro Technology Company),U3,Astro framework MIT,,yes,US,2021,private,none_found,0,Company page says it raised money in 2021 but names no investors in the text read; blog URL guesses 404,https://astro.build/blog/astro-company/,2026-11-26T06:33:42Z

@@ -1,0 +1,645 @@
+2151-Overview of the Changes to 35 U.S.C. 102 and 103 in the AIA 
+
+![uspto.gov](https://www.uspto.gov/includes/i/logo.png)
+
+[Skip over navigation](https://www.uspto.gov/web/offices/pac/mpep/s2151.html#article)
+
+[search for patents](https://www.uspto.gov/patents/search) | [search for trademarks](http://tmsearch.uspto.gov)
+
+* [PATENTS](https://www.uspto.gov/patents/index.jsp)
+    + [Patent Search](https://www.uspto.gov/patents/process/search/index.jsp)
+    + [Patent Process](https://www.uspto.gov/patents/process/index.jsp)
+    + [Patent Classification](https://www.uspto.gov/patents/resources/classification/index.jsp)
+    + [Patent Forms](https://www.uspto.gov/forms/index.jsp)
+    + [Statistics](https://www.uspto.gov/patents/stats/index.jsp)
+    + [Electronic Business Center](https://www.uspto.gov/patents/ebc/about.jsp)
+    + [Patent Laws, Regulations, Policies & Procedures](https://www.uspto.gov/patents/law/index.jsp)
+    + [Resources and Guidance](https://www.uspto.gov/patents/resources/index.jsp)
+    + [Office of Data Management](https://www.uspto.gov/patents/publications/index.jsp)
+    + [Announcements](https://www.uspto.gov/patents/announce/index.jsp)
+    + [Initiatives & Events](https://www.uspto.gov/patents/init_events/index.jsp)
+    + [International Protection](https://www.uspto.gov/patents/int_protect/index.jsp)
+    + [Employee Locator](http://portal.uspto.gov/external/portal/emlocator)
+    + [Contact Patents](https://www.uspto.gov/patents/contact_patents.jsp)
+* 
+* [TRADEMARKS](https://www.uspto.gov/trademarks/index.jsp)
+    + [Trademark Search](http://tess2.uspto.gov/bin/gate.exe?f=login&p_lang=english&p_d=trmk)
+    + [Trademarks Process](https://www.uspto.gov/trademarks/process/index.jsp)
+    + [News & Notices](https://www.uspto.gov/trademarks/notices/index.jsp)
+    + [Manuals, Guides, Official Gazette](https://www.uspto.gov/trademarks/resources/index.jsp)
+    + [Laws & Regulations](https://www.uspto.gov/trademarks/law/index.jsp)
+    + [Online Filing](https://www.uspto.gov/trademarks/teas/index.jsp)
+    + [Contact Trademarks](https://www.uspto.gov/trademarks/contact_trademarks.jsp)
+* 
+* [IP LAW & POLICY](https://www.uspto.gov/ip/index.jsp)
+    + [Rulemaking](https://www.uspto.gov/ip/rules/index.jsp)
+    + [IP Policy and Enforcement](https://www.uspto.gov/ip/global/index.jsp)
+    + [Protecting IP Overseas](https://www.uspto.gov/ip/iprtoolkits.jsp)
+    + [Training and Education](https://www.uspto.gov/ip/training/index.jsp)
+    + [Training Programs & Conferences](https://www.uspto.gov/ip/events/index.jsp)
+    + [Office of Governmental Affairs](https://www.uspto.gov/ip/officegovaffairs.jsp)
+    + [Office of Chief Economist](https://www.uspto.gov/ip/officechiefecon/index.jsp)
+    + [Boards and Counsel](https://www.uspto.gov/ip/boards/index.jsp)
+* 
+* [PRODUCTS & SERVICES](https://www.uspto.gov/products/index.jsp)
+    + [Electronic Data Products](https://www.uspto.gov/products/catalog/index.jsp)
+    + [XML Resources](https://www.uspto.gov/products/xml-resources.jsp)
+    + [XML Resources - Retrospective](https://www.uspto.gov/products/xml-retrospective.jsp)
+    + [USPTO Contact Center Order Form](https://www.uspto.gov/products/qisorder.jsp)
+    + [Services](https://www.uspto.gov/products/services/services.jsp)
+    + [Locate Libraries](https://www.uspto.gov/products/library/index.jsp)
+    + [Training/Events](https://www.uspto.gov/products/events/index.jsp)
+    + [Online Services Hub](https://www.uspto.gov/products/online-services.jsp)
+* 
+* [INVENTORS](https://www.uspto.gov/inventors/index.jsp)
+    + [Patents for Inventors](https://www.uspto.gov/inventors/patents.jsp)
+    + [Trademarks for Inventors](https://www.uspto.gov/inventors/trademarks.jsp)
+    + [Inventors Assistance](https://www.uspto.gov/inventors/iac/index.jsp)
+    + [Education and Information](https://www.uspto.gov/inventors/edu-inf/index.jsp)
+    + [Scam Prevention](https://www.uspto.gov/inventors/scam_prevention/index.jsp)
+    + [Pro Se and Pro Bono](https://www.uspto.gov/inventors/proseprobono/index.jsp)
+    + [Current Events](https://www.uspto.gov/inventors/events/index.jsp)
+    + [State Resources](https://www.uspto.gov/inventors/state_resources/index.jsp)
+    + [InventorsEye Newsletter](https://www.uspto.gov/inventors/independent/index.jsp)
+* 
+* [NEWS & NOTICES](https://www.uspto.gov/about-us/news-updates)
+    + [Subscription Center](https://www.uspto.gov/subscribe)
+    + [Press Releases](https://www.uspto.gov/about-us/news-updates)
+    + [Testimony and Speeches](https://www.uspto.gov/about-us/news-updates)
+    + [Director's Forum](https://www.uspto.gov/blog/)
+    + [Systems Status](https://www.uspto.gov/blog/ebiz)
+    + [Emergency Notices](https://www.uspto.gov/learning-and-resources/operating-status)
+    + [USPTO Videos](https://www.uspto.gov/learning-and-resources/uspto-videos)
+    + [Official Gazette](https://www.uspto.gov/learning-and-resources/official-gazette)
+    + [Federal Register Notices](https://www.uspto.gov/learning-and-resources/federal-register)
+    + [Event Calendar](https://www.uspto.gov/about-us/events)
+* 
+* [FAQs](https://www.uspto.gov/faq/index.jsp)
+    + [Patents FAQs](https://www.uspto.gov/faq/patents.jsp)
+    + [Trademarks FAQs](https://www.uspto.gov/faq/trademarks.jsp)
+    + [Assignments](https://www.uspto.gov/faq/assignments.jsp)
+    + [Security](https://www.uspto.gov/faq/security.jsp)
+    + [Musicians and Artists](https://www.uspto.gov/faq/musicart.jsp)
+    + [Browser Plugins](https://www.uspto.gov/faq/plugins/index.jsp)
+    + [Other Web Resources](https://www.uspto.gov/faq/other.jsp)
+* 
+* [ABOUT US](https://www.uspto.gov/about/index.jsp)
+    + [USPTO Leadership](https://www.uspto.gov/about/bios/index.jsp)
+    + [USPTO Organization](https://www.uspto.gov/about/offices/index.jsp)
+    + [USPTO Offices](https://www.uspto.gov/about/locations/index.jsp)
+    + [Careers](https://www.uspto.gov/careers/)
+    + [Budget, Performance, and Planning](https://www.uspto.gov/about/stratplan/index.jsp)
+    + [Statistics](https://www.uspto.gov/about/stats/index.jsp)
+    + [Vendor Information](https://www.uspto.gov/about/vendor_info/index.jsp)
+    + [Public Advisory Committees](https://www.uspto.gov/about/advisory/index.jsp)
+    + [National Medal of Technology and Innovation](https://www.uspto.gov/about/nmti/index.jsp)
+    + [IP in Motion](https://www.uspto.gov/about/ipm/index.jsp)
+    + [Contact Us](https://www.uspto.gov/about/contacts/index.jsp)
+
+* [Home Page](https://www.uspto.gov/index.jsp)
+* [Patents](https://www.uspto.gov/patents/index.jsp)
+* [Patent Laws, Regulations, Policies & Procedures](https://www.uspto.gov/patents/law/index.jsp)
+* [Manual of Patent Examining Procedure](https://www.uspto.gov/web/offices/pac/mpep/index.html)
+* [Chapter 2100](https://www.uspto.gov/web/offices/pac/mpep/mpep-2100.html)
+* Section 2151
+
+# 2151 Overview of the Changes to 35 U.S.C. 102 and 103 in the AIA \[R-01.2024]
+
+*\[Editor Note: This MPEP section is **only applicable** to applications
+subject to examination under the first inventor to file (FITF) provisions of the AIA as
+set forth in **[35 U.S.C. 100 (note)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d917_1bef1_2b)**. See **[MPEP § 2159](https://www.uspto.gov/web/offices/pac/mpep/s2159.html#ch2100_d20034_1dc34_1dd)** et seq. to determine whether an application is subject to
+examination under the FITF provisions, and **[MPEP § 2131](https://www.uspto.gov/web/offices/pac/mpep/s2131.html#d0e202959)**\-**[MPEP § 2138](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207005)** for
+examination of applications subject to **[pre-AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302383)**.]*
+
+After the AIA, **[35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)** continues to set forth
+the scope of prior art that will preclude the grant of a patent on a claimed invention, but
+revises what qualifies as prior art. Specifically, **[AIA 35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)** and **[(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)** set forth what qualifies as
+prior art. **[AIA 35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)** provides that a person is not entitled to a
+patent if the claimed invention was patented, described in a printed publication, or in
+public use, on sale, or otherwise available to the public before the effective filing date
+of the claimed invention. **[AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)** provides that a
+person is not entitled to a patent if the claimed invention was described in a patent
+issued under **[35 U.S.C. 151](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303440)**, or in an application for patent published or deemed published
+under **[35 U.S.C. 122(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303063)**, in which the patent or application, as the case may be, names
+another inventor, and was effectively filed before the effective filing date of the claimed
+invention. **[AIA 35 U.S.C. 102(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_156)** sets forth exceptions to prior art established in **[AIA 35 U.S.C. 102(a)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_2ee)**. Specifically, **[AIA 35 U.S.C. 102(b)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_172)** sets forth exceptions to prior art established in **[AIA 35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)**, and **[AIA 35 U.S.C. 102(b)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_19a)** sets forth
+exceptions to prior art established in **[AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)**.
+
+The AIA also provides definitions in **[35 U.S.C. 100](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302338313)** of
+the meaning of the terms “claimed invention,” “effective filing date,” “inventor,” and
+“joint inventor” (or “coinventor”). The AIA defines the term “claimed invention” in **[35 U.S.C. 100(j)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e22_345)** as the subject matter defined by a claim in a patent or an
+application for a patent. The AIA defines the term “effective filing date” for a claimed
+invention in a patent or application for patent (other than a reissue application or
+reissued patent) in **[35 U.S.C. 100(i)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e1a_3b9)** as meaning the
+earlier of: (1) The actual filing date of the patent or the application for the patent
+containing the claimed invention; or (2) the filing date of the earliest provisional,
+nonprovisional, international (PCT), or foreign patent application to which the patent or
+application is entitled to benefit or priority as to such claimed invention. The AIA
+defines the term “inventor” in **[35 U.S.C. 100(f)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302367313)** as the individual or,
+if a joint invention, the individuals collectively who invented or discovered the subject
+matter of the invention, and in **[35 U.S.C. 100(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e0c_133)** defines the term
+“joint inventor” and “coinventor” to mean any one of the individuals who invented or
+discovered the subject matter of a joint invention.
+
+As discussed previously, **[AIA 35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)** provides that a person is not entitled to a patent if the
+claimed invention was patented, described in a printed publication, or in public use, on
+sale, or otherwise available to the public before the effective filing date of the claimed
+invention. Under **[pre-AIA 35 U.S.C. 102(a)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302391)** and **[(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302395)**, knowledge or use of the invention
+(**[pre-AIA 35 U.S.C. 102(a)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302391)**), or public use or sale of the invention (**[pre-AIA 35 U.S.C. 102(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302395)**), was required to be in the United States to qualify as a
+prior art activity. Under the AIA, a prior public use, sale activity, or other disclosure
+has no geographic requirement (i.e., need not be in the United States) to qualify as prior
+art.
+
+**[AIA 35 U.S.C. 102(b)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_172)** provides that certain disclosures made one year or less
+before the effective filing date of a claimed invention shall not be prior art under **[35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)** with respect to the claimed invention if: (1) The
+disclosure was made by the inventor or joint inventor or by another who obtained the
+subject matter disclosed directly or indirectly from the inventor or a joint inventor; or
+(2) the subject matter disclosed had, before such disclosure, been publicly disclosed by
+the inventor or a joint inventor or by another who obtained the subject matter disclosed
+directly or indirectly from the inventor or a joint inventor. Thus, **[AIA 35 U.S.C. 102(b)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_172)** effectively provides a one-year grace period (grace period)
+after a first inventor-originated disclosure of an invention (i.e., a disclosure by an
+inventor or joint inventor, or another who obtained directly or indirectly from the
+inventor or a joint inventor) within which the inventor, assignee, obligated assignee, or
+other party having sufficient interest may file a patent application which is not subject
+to such disclosure and certain other disclosures as prior art. The one-year grace period in **[AIA 35 U.S.C. 102(b)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_172)** is measured from the filing date of the earliest
+U.S. or foreign patent application to which a proper benefit or priority claim to such
+invention has been asserted in the patent or application and the earlier application
+supports the claimed invention in the manner required by **[35 U.S.C. 112(a)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_2ae60_3d5)**. Under **[pre-AIA 35 U.S.C. 102(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302383)**, the one-year
+grace period is measured from the filing date of the earliest application filed in the
+United States (directly or through the PCT) and not from the dates of earlier filed foreign
+patent applications. Similar to **[pre-AIA 35 U.S.C. 102(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302383)**, the one-year
+grace period in **[AIA 35 U.S.C. 102(b)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_172)** is extended to the next succeeding business
+day if the end of the one-year grace period otherwise falls on a Saturday, Sunday, or
+federal holiday. *Ex parte Olah, 131 USPQ 41* (Bd. App. 1960) and **[35 U.S.C. 21(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e301443)**. The provisions of **[35 U.S.C. 21(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e301443)** still apply
+notwithstanding the provisions of **[37 CFR 1.6(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9020-appx-r.html#d0e313465)** and **[37 CFR 1.10](https://www.uspto.gov/web/offices/pac/mpep/mpep-9020-appx-r.html#d0e313951)**, which
+accord a filing date as of the date of deposit as Priority Mail
+Express® with the U.S. Postal Service, and **[37 CFR 1.6(a)(4)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9020-appx-r.html#d0e313476)**,
+which accords a filing date as of the date of submission using the USPTO patent electronic
+filing system. See also **[MPEP §§ 2153.01(a)](https://www.uspto.gov/web/offices/pac/mpep/s2153.html#ch2100_d20033_24e66_2ac)** and **[2153.02](https://www.uspto.gov/web/offices/pac/mpep/s2153.html#ch2100_d20033_25935_125)**.
+
+The date of invention is not relevant under **[AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)**. Thus, a prior art disclosure could not be antedated by showing
+that the inventor invented the claimed invention prior to the effective date of the prior
+art disclosure of the subject matter (e.g., under the provisions of **[37 CFR 1.131](https://www.uspto.gov/web/offices/pac/mpep/mpep-9020-appx-r.html#aia_d0e323504)**).
+
+As discussed previously, **[AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)** provides that a person is not entitled to a patent if the
+claimed invention was described in a U.S. patent, a U.S. patent application publication, or
+an application for patent deemed published under **[35 U.S.C. 122(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303063)** (collectively referred
+to as “U.S. patent documents”), that names another inventor and was effectively filed
+before the effective filing date of the claimed invention. Under **[35 U.S.C. 374](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e307311313)**, a
+World Intellectual Property Organization (WIPO) publication of a Patent Cooperation Treaty
+(PCT) international application that designates the United States is an application for
+patent deemed published under **[35 U.S.C. 122(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303063)** for purposes of **[AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)**. Thus, under the AIA, WIPO publications of PCT
+applications that designate the United States are treated as U.S. patent application
+publications for prior art purposes, regardless of the international filing date, whether
+they are published in English, or whether the PCT international application enters the
+national stage in the United States. Accordingly, a WIPO publication of a PCT application
+(WIPO published application) that designates the United States, a U.S. patent, or a U.S.
+patent application publication that names another inventor and was effectively filed before
+the effective filing date of the claimed invention, is prior art under **[AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)**. Under **[pre-AIA 35 U.S.C. 102(e)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302407)**, a WIPO
+published application designating the United States is treated as a U.S. patent application
+publication only if the PCT application was filed on or after November 29, 2000, and
+published under **[PCT Article 21(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9025-appx-t.html#d0e363634)** in the English language. See **[MPEP § 2136.03](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#d0e205924)**,
+subsection III.
+
+**[AIA 35 U.S.C. 102(d)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11ecb_1d1)** defines “effectively filed” for the purpose of determining
+whether a particular U.S. patent document is prior art under **[AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)** to a claimed invention. A U.S. patent document is
+considered to have been effectively filed for purposes of its prior art effect under **[35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)** with respect to any subject matter it describes on the
+earlier of: (1) The actual filing date of the patent or the application for patent; or (2)
+if the patent or application for patent is entitled to claim the benefit of, or priority
+to, the filing date of an earlier U.S. provisional, U.S. nonprovisional, international
+(PCT), or foreign patent application, the filing date of the earliest such application that
+describes the subject matter of the claimed invention. Thus, a U.S. patent document is
+effective as prior art as of the filing date of the earliest application to which benefit
+or priority is claimed and which describes the subject matter relied upon, regardless of
+whether the earliest such application is a U.S. provisional or nonprovisional application,
+an international (PCT) application, or a foreign patent application.
+
+**[AIA 35 U.S.C. 102(b)(2)(A)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_1a7)** and **[(B)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_1b3)** provide that a disclosure shall not
+be prior art to a claimed invention under **[35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)** if: (1) The subject
+matter disclosed was obtained directly or indirectly from the inventor or a joint inventor;
+or (2) the subject matter disclosed had, before such subject matter was effectively filed
+under **[35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)**, been publicly disclosed by the inventor or a joint
+inventor or another who obtained the subject matter disclosed directly or indirectly from
+the inventor or a joint inventor. Thus, under the AIA, a U.S. patent document that was not
+issued or published more than one year before the effective filing date of the claimed
+invention is not prior art to the claimed invention if: (1) The U.S. patent document was by
+another who obtained the subject matter disclosed from the inventor or a joint inventor; or
+(2) the inventor or a joint inventor, or another who obtained the subject matter disclosed
+from an inventor or joint inventor, had publicly disclosed the subject matter before the **[35 U.S.C. 102(d)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11ecb_1d1)** (“effectively filed”) date of the U.S. patent document.
+
+Additionally, **[AIA 35 U.S.C. 102(b)(2)(C)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_1bf)** provides
+that a disclosure made in a U.S. patent document shall not be prior art to a claimed
+invention under **[35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)** if, not later than the effective filing date of
+the claimed invention, the subject matter disclosed and the claimed invention were owned by
+the same person or subject to an obligation of assignment to the same person. This
+provision replaces the exception in **[pre-AIA 35 U.S.C. 103(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302521)** that applied
+only in the context of an obviousness analysis under **[35 U.S.C. 103(a)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)** to prior art that was commonly owned at the time the claimed
+invention was made, and which qualified as prior art only under **[pre-AIA 35 U.S.C. 102(e)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302407)**, **[(f)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302420)**, and/or **[(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302424)**. Thus, the AIA
+provides that certain prior patents and published patent applications of co-workers and
+collaborators are not prior art either for purposes of determining novelty
+(**[35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)**) or nonobviousness (**[35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)**). This exception,
+however, only removes disclosures as prior art under **[AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_315)**, namely, U.S. patent documents that were not published
+before, but that were effectively filed before, the effective filing date of the claimed
+invention. This exception is not effective to except prior art that is also available under **[35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)**, that is, patents, printed publications, public uses, sale
+activities, or other publicly available disclosures published or occurring before the
+effective filing date of the claimed invention. A prior disclosure, as defined in **[AIA 35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)**, by a co-worker or collaborator is prior art under **[AIA 35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e72_307)** unless it falls within an exception under **[AIA 35 U.S.C. 102(b)(1)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_172)**, regardless of whether the subject matter of the
+prior disclosure and the claimed invention was commonly owned not later than the effective
+filing date of the claimed invention.
+
+The AIA eliminates the provisions in **[pre-AIA 35 U.S.C. 102(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302399)** (abandonment of the invention), **[102(d)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302403)** (premature
+foreign patenting), **[102(f)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302420)** (derivation), and **[102(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302424)** (prior invention by another, but
+see below for discussion of continued limited applicability). Under the AIA, abandonment of
+the invention or premature foreign patenting is not relevant to patentability. Prior
+invention by another is likewise not relevant to patentability under the AIA unless there
+is a prior disclosure or filing of an application by another. A situation in which an
+application names a person who is not the actual inventor as the inventor
+(**[pre-AIA 35 U.S.C. 102(f)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302420)**) will be handled in a derivation proceeding under **[35 U.S.C. 135](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19834_19b)**, by a correction of inventorship under **[37 CFR 1.48](https://www.uspto.gov/web/offices/pac/mpep/mpep-9020-appx-r.html#d0e317930)** to name
+the actual inventor, or through a rejection under **[35 U.S.C. 101](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302376)** and **[35 U.S.C. 115](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302875912)**. See **[MPEP § 2157](https://www.uspto.gov/web/offices/pac/mpep/s2157.html#ch2100_d20034_1bb92_e7)**.
+
+**[AIA 35 U.S.C. 102(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e8f_148)** provides for deemed common ownership of subject matter made
+pursuant to joint research agreements. Under **[35 U.S.C. 100(h)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e10_359)**, the term “joint
+research agreement” as used in **[AIA 35 U.S.C. 102(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e8f_148)** is defined as a
+written contract, grant, or cooperative agreement entered into by two or more persons or
+entities for the performance of experimental, developmental, or research work in the field
+of the claimed invention. **[AIA 35 U.S.C. 102(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e8f_148)** specifically
+provides that subject matter disclosed and a claimed invention shall be deemed to have been
+owned by the same person or subject to an obligation of assignment to the same person in
+applying the provisions of **[AIA 35 U.S.C. 102(b)(2)(C)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_1bf)** if: (1) The
+subject matter disclosed was developed and the claimed invention was made by, or on behalf
+of, one or more parties to a joint research agreement that was in effect on or before the
+effective filing date of the claimed invention; (2) the claimed invention was made as a
+result of activities undertaken within the scope of the joint research agreement; and (3)
+the application for patent for the claimed invention discloses or is amended to disclose
+the names of the parties to the joint research agreement.
+
+**[AIA 35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)** provides that a patent for a claimed invention may not be
+obtained, notwithstanding that the claimed invention is not identically disclosed as set
+forth in **[35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)**, if the differences between the claimed invention and the
+prior art are such that the claimed invention as a whole would have been obvious before the
+effective filing date of the claimed invention to a person having ordinary skill in the art
+to which the claimed invention pertains. In addition, **[AIA 35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)** provides that patentability shall not be negated by the manner in
+which the invention was made. This provision tracks **[pre-AIA 35 U.S.C. 103(a)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302455)**, except that
+the temporal focus for the obviousness inquiry is before the effective filing date of the
+claimed invention, rather than at the time of the invention. The provisions of **[pre-AIA 35 U.S.C. 103(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302521)** have been replaced with **[AIA 35 U.S.C. 102(b)(2)(C)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e7d_1bf)** and **[(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e8f_148)**, and the provisions of **[pre-AIA 35 U.S.C. 103(b)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302462)** pertaining to biotechnological processes have been
+eliminated.
+
+**[AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)** and **[103](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)** took effect on March 16, 2013.
+These provisions apply to any patent application that contains or contained at any time:
+(1) a claim to a claimed invention that has an effective filing date as defined in **[35 U.S.C. 100(i)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e1a_39f)** that is on or after March 16, 2013; or (2) a designation as a
+continuation, divisional, or continuation-in-part of an application that contains or
+contained at any time a claim to a claimed invention that has an effective filing date that
+is on or after March 16, 2013. Such an application is referred to as an AIA (first inventor
+to file) application (hereinafter “AIA application”). **[AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)** and **[103](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)** also apply to any patent resulting
+from an AIA application. See Public Law 112-29, § 3(n)(1), 125 Stat. at 293. See also **[MPEP § 2159](https://www.uspto.gov/web/offices/pac/mpep/s2159.html#ch2100_d20034_1dc34_1dd)***et seq.* for guidance in determining whether an application is subject to **[AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)** and **[103](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)**.
+
+The AIA provides that the provisions of **[pre-AIA 35 U.S.C. 102(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302424)** apply to each claim of an AIA application for patent if the
+patent application: (1) contains or contained at any time a claim to a claimed invention
+having an effective filing date as defined in **[35 U.S.C. 100(i)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e1a_39f)** that occurs before
+March 16, 2013; or (2) is ever designated as a continuation, divisional, or
+continuation-in-part of an application that contains or contained at any time a claim to a
+claimed invention that has an effective filing date before March 16, 2013. Public Law
+112-29, § 3(n)(2), 125 Stat. at 293. **[Pre-AIA 35 U.S.C. 102(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302424)** also applies
+to any patent resulting from an AIA application to which **[pre-AIA 35 U.S.C. 102(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302424)** applied. See **[MPEP § 2138](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207005)** for guidance on application of **[pre-AIA 35 U.S.C. 102(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302424)**  and form paragraph **[7.14.aia](https://www.uspto.gov/web/offices/pac/mpep/s2151.html#fp7.14.aia)**.
+
+If an application (1) contains or contained at any time a
+claimed invention having an effective filing date that is before March 16, 2013, or ever
+claimed the benefit of an earlier filing date under **[35 U.S.C. 120](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303023313)**, **[121](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303040912)**, or **[365(c)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e307053)** based upon an earlier application that ever contained a
+claimed invention having an effective filing date as defined in **[35 U.S.C. 100(i)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e1a_39f)** that is before March 16, 2013, and (2) also contains or
+contained at any time any claimed invention having an effective filing date as defined in **[35 U.S.C. 100(i)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e1a_39f)** that is on or after March 16, 2013, or ever claimed the
+benefit of an earlier filing date under **[35 U.S.C. 119](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302921)** , **[120](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303023313)**, **[121](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e303040912)**, **[365](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e307034)** or **[386](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d225a2_27b56_2ab)** based
+upon an earlier application that ever contained a claimed invention having an effective
+filing date as defined in **[35 U.S.C. 100(i)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1d85b_11e1a_39f)** that is on or after
+March 16, 2013, then **[AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_234ed_52)** and **[103](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#al_d1fbe1_19797_b0)** apply to
+the application, and each claimed invention in the application is also subject to **[pre-AIA 35 U.S.C. 102(g)](https://www.uspto.gov/web/offices/pac/mpep/mpep-9015-appx-l.html#d0e302424)**.
+
+[\[top\]](https://www.uspto.gov/web/offices/pac/mpep/s2151.html#top)
+
+#
+
+* [2101-2102-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2101-2102.html)
+* [2103-Patent Examination Process](https://www.uspto.gov/web/offices/pac/mpep/s2103.html)
+* [2104-Requirements of 35 U.S.C. 101](https://www.uspto.gov/web/offices/pac/mpep/s2104.html)
+    + [2104.01-Barred by Atomic Energy Act](https://www.uspto.gov/web/offices/pac/mpep/s2104.html#ch2100_d2c188_18a96_2d4)
+* [2105-Patent Eligible Subject Matter — Living Subject Matter](https://www.uspto.gov/web/offices/pac/mpep/s2105.html)
+* [2106-Patent Subject Matter Eligibility](https://www.uspto.gov/web/offices/pac/mpep/s2106.html)
+    + [2106.01-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d24bfd_163f6_130)
+    + [2106.02-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13979_36c)
+    + [2106.03-Eligibility Step 1: The Four Categories of Statutory Subject Matter](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_139b2_397)
+    + [2106.04-Eligibility Step 2A: Whether a Claim is Directed to a Judicial Exception](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_139db_e0)
+        - [2106.04(a)-Abstract Ideas](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13a9e_2dc)
+            * [2106.04(a)(1)-Examples of Claims That Do Not Recite Abstract Ideas](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13b3e_21)
+            * [2106.04(a)(2)-Abstract Idea Groupings](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13ae3_321)
+            * [2106.04(a)(3)-Tentative Abstract Ideas](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d2ea80_199c8_1c1)
+        - [2106.04(b)-Laws of Nature, Natural Phenomena & Products of Nature](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13b6b_4c)
+        - [2106.04(c)-The Markedly Different Characteristics Analysis](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13bc1_b1)
+        - [2106.04(d)-Integration of a Judicial Exception Into A Practical Application](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d2e7df_235a2_338)
+            * [2106.04(d)(1)-Evaluating Improvements in the Functioning of a Computer, or an Improvement to Any Other Technology or Technical Field in Step 2A Prong Two](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d2e7df_24a6e_1bd)
+            * [2106.04(d)(2)-Particular Treatment and Prophylaxis in Step 2A Prong Two](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d2e827_17196_6c)
+    + [2106.05-Eligibility Step 2B: Whether a Claim Amounts to Significantly More](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13c11_1cb)
+        - [2106.05(a)-Improvements to the Functioning of a Computer or To Any Other Technology or Technical Field](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13c69_10)
+        - [2106.05(b)-Particular Machine](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13ccf_18c)
+        - [2106.05(c)-Particular Transformation](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13cfb_2e)
+        - [2106.05(d)-Well-Understood, Routine, Conventional Activity](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13d41_124)
+        - [2106.05(e)-Other Meaningful Limitations](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13d61_1a8)
+        - [2106.05(f)-Mere Instructions To Apply An Exception](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13da8_a5)
+        - [2106.05(g)-Insignificant Extra-Solution Activity](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13df8_3d4)
+        - [2106.05(h)-Field of Use and Technological Environment](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13e1a_22c)
+    + [2106.06-Streamlined Analysis](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13e6a_88)
+        - [2106.06(a)-Eligibility is Self Evident](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13e88_41)
+        - [2106.06(b)-Clear Improvement to a Technology or to Computer Functionality](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13ecb_2ce)
+    + [2106.07-Formulating and Supporting Rejections For Lack Of Subject Matter Eligibility](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_13fb7_330)
+        - [2106.07(a)-Formulating a Rejection For Lack of Subject Matter Eligibility](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_14011_176)
+            * [2106.07(a)(1)-Form Paragraphs for use in Lack of Subject Matter Eligibility Rejections](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d2c183_20b8d_1b9)
+        - [2106.07(b)-Evaluating Applicant’s Response](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_14065_2a0)
+        - [2106.07(c)-Clarifying the Record](https://www.uspto.gov/web/offices/pac/mpep/s2106.html#ch2100_d29a1b_1407f_384)
+* [2107-Guidelines for Examination of Applications for Compliance with the Utility Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2107.html)
+    + [2107.01-General Principles Governing Utility Rejections](https://www.uspto.gov/web/offices/pac/mpep/s2107.html#d0e198682)
+    + [2107.02-Procedural Considerations Related to Rejections for Lack of Utility](https://www.uspto.gov/web/offices/pac/mpep/s2107.html#d0e199419)
+    + [2107.03-Special Considerations for Asserted Therapeutic or Pharmacological Utilities](https://www.uspto.gov/web/offices/pac/mpep/s2107.html#d0e200058)
+* [2108-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2108.html)
+* [2109-Inventorship](https://www.uspto.gov/web/offices/pac/mpep/s2109.html)
+* [2109.01-Joint Inventorship](https://www.uspto.gov/web/offices/pac/mpep/s2109.01.html)
+* [2110-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2110.html)
+* [2111-Claim Interpretation; Broadest Reasonable Interpretation](https://www.uspto.gov/web/offices/pac/mpep/s2111.html)
+    + [2111.01-Plain Meaning](https://www.uspto.gov/web/offices/pac/mpep/s2111.html#d0e200409)
+    + [2111.02-Effect of Preamble](https://www.uspto.gov/web/offices/pac/mpep/s2111.html#d0e200689)
+    + [2111.03-Transitional Phrases](https://www.uspto.gov/web/offices/pac/mpep/s2111.html#d0e200824)
+    + [2111.04-“Adapted to,” “Adapted for,” “Wherein,” “Whereby,” and Contingent Clauses](https://www.uspto.gov/web/offices/pac/mpep/s2111.html#d0e201000)
+    + [2111.05-Functional and Nonfunctional Descriptive Material](https://www.uspto.gov/web/offices/pac/mpep/s2111.html#ch2100_d1b148_1ea0c_2c0)
+* [2112-Requirements of Rejection Based on Inherency; Burden of Proof](https://www.uspto.gov/web/offices/pac/mpep/s2112.html)
+    + [2112.01-Composition, Product, and Apparatus Claims](https://www.uspto.gov/web/offices/pac/mpep/s2112.html#d0e201273)
+    + [2112.02-Process Claims](https://www.uspto.gov/web/offices/pac/mpep/s2112.html#d0e201360)
+* [2113-Product-by-Process Claims](https://www.uspto.gov/web/offices/pac/mpep/s2113.html)
+* [2114-Apparatus and Article Claims — Functional Language](https://www.uspto.gov/web/offices/pac/mpep/s2114.html)
+* [2115-Material or Article Worked Upon by Apparatus](https://www.uspto.gov/web/offices/pac/mpep/s2115.html)
+* [2116-Novel, Nonobvious Starting Material or End Product](https://www.uspto.gov/web/offices/pac/mpep/s2116.html)
+    + [2116.01-Novel, Nonobvious Starting Material or End Product](https://www.uspto.gov/web/offices/pac/mpep/s2116.html#d0e201660)
+* [2117-Markush Claims](https://www.uspto.gov/web/offices/pac/mpep/s2117.html)
+* [2118-2119-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2118-2119.html)
+* [2120-Rejection on Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2120.html)
+    + [2120.01-Rejections Under 35 U.S.C. 102(a)(1) and (a)(2) and Pre-AIA 35 U.S.C. 102(a), (b), or (e): Printed Publication or Patent](https://www.uspto.gov/web/offices/pac/mpep/s2120.html#ch2100_d2c183_20d9a_21c)
+    + [2120.02-Rejections Under 35 U.S.C. 102(a)(1) or Pre-AIA 35 U.S.C. 102(a) or (b): Knowledge by Others, or Public Use, or On Sale](https://www.uspto.gov/web/offices/pac/mpep/s2120.html#ch2100_d2c183_20e65_31d)
+* [2121-Prior Art; General Level of Operability Required to Make a Prima Facie Case](https://www.uspto.gov/web/offices/pac/mpep/s2121.html)
+    + [2121.01-Use of Prior Art in Rejections Where Operability is in Question](https://www.uspto.gov/web/offices/pac/mpep/s2121.html#d0e201800)
+    + [2121.02-Compounds and Compositions — What Constitutes Enabling Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2121.html#d0e201868)
+    + [2121.03-Plant Genetics — What Constitutes Enabling Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2121.html#d0e201937)
+    + [2121.04-Apparatus and Articles — What Constitutes Enabling Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2121.html#d0e201980)
+* [2122-Discussion of Utility in the Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2122.html)
+* [2123-Rejection Over Prior Art’s Broad Disclosure Instead of Preferred Embodiments](https://www.uspto.gov/web/offices/pac/mpep/s2123.html)
+* [2124-Exception to the Rule That the Reference Must be Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2124.html)
+    + [2124.01-Tax Strategies Deemed Within the Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2124.html#ch2100_d1b13f_20224_b9)
+* [2125-Drawings as Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2125.html)
+* [2126-Availability of a Document as a “Patent” for Purposes of Rejection Under 35 U.S.C. 102(a) or Pre-AIA 35 U.S.C. 102(a), (b), and (d)](https://www.uspto.gov/web/offices/pac/mpep/s2126.html)
+    + [2126.01-Date of Availability of a Patent as a Reference](https://www.uspto.gov/web/offices/pac/mpep/s2126.html#d0e202293)
+    + [2126.02-Scope of Reference’s Disclosure Which Can Be Used to Reject Claims When the Reference Is a “Patent” but Not a “Publication”](https://www.uspto.gov/web/offices/pac/mpep/s2126.html#d0e202334)
+* [2127-Domestic and Foreign Patent Applications as Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2127.html)
+* [2128-“Printed Publications” as Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2128.html)
+    + [2128.01-Level of Public Accessibility Required](https://www.uspto.gov/web/offices/pac/mpep/s2128.html#d0e202706)
+    + [2128.02-Date Publication Is Available as a Reference](https://www.uspto.gov/web/offices/pac/mpep/s2128.html#d0e202804)
+* [2129-Admissions as Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2129.html)
+* [2130-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2130.html)
+* [2131-Anticipation — Application of 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/s2131.html)
+    + [2131.01-Multiple Reference 35 U.S.C. 102 Rejections](https://www.uspto.gov/web/offices/pac/mpep/s2131.html#d0e203057)
+    + [2131.02-Genus-Species Situations](https://www.uspto.gov/web/offices/pac/mpep/s2131.html#d0e203166)
+    + [2131.03-Anticipation of Ranges](https://www.uspto.gov/web/offices/pac/mpep/s2131.html#d0e203269)
+    + [2131.04-Secondary Considerations](https://www.uspto.gov/web/offices/pac/mpep/s2131.html#d0e203338)
+    + [2131.05-Nonanalogous or Disparaging Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2131.html#d0e203351)
+* [2132-Pre-AIA 35 U.S.C. 102(a)](https://www.uspto.gov/web/offices/pac/mpep/s2132.html)
+    + [2132.01-Overcoming a Pre-AIA 35 U.S.C. 102(a) Rejection based on a Printed Publication or Patent](https://www.uspto.gov/web/offices/pac/mpep/s2132.html#d0e203530)
+* [2133-Pre-AIA 35 U.S.C. 102(b)](https://www.uspto.gov/web/offices/pac/mpep/s2133.html)
+    + [2133.01-Rejections of Continuation-In-Part (CIP) Applications](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e203726)
+    + [2133.02-Rejections Based on Publications and Patents](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e203739)
+        - [2133.02(a)-Overcoming a Pre-AIA 35 U.S.C. 102(b) Rejection Based on a Printed Publication or Patent](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#ch2100_d2c183_21092_1c6)
+    + [2133.03-Rejections Based on “Public Use” or “On Sale”](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e203781)
+        - [2133.03(a)-“Public Use”](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e203899)
+        - [2133.03(b)-“On Sale”](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204201)
+        - [2133.03(c)-The “Invention”](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204494)
+        - [2133.03(d)-“In This Country”](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204651)
+        - [2133.03(e)-Permitted Activity; Experimental Use](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204670)
+            * [2133.03(e)(1)-Commercial Exploitation](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204712)
+            * [2133.03(e)(2)-Intent](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204884)
+            * [2133.03(e)(3)-“Completeness” of the Invention](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204900)
+            * [2133.03(e)(4)-Factors Indicative of an Experimental Purpose](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e204981)
+            * [2133.03(e)(5)-Experimentation and Degree of Supervision and Control](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e205019)
+            * [2133.03(e)(6)-Permitted Experimental Activity and Testing](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e205061)
+            * [2133.03(e)(7)-Activity of an Independent Third Party Inventor](https://www.uspto.gov/web/offices/pac/mpep/s2133.html#d0e205133)
+* [2134-Pre-AIA 35 U.S.C. 102(c)](https://www.uspto.gov/web/offices/pac/mpep/s2134.html)
+* [2135-Pre-AIA 35 U.S.C. 102(d)](https://www.uspto.gov/web/offices/pac/mpep/s2135.html)
+    + [2135.01-The Four Requirements of Pre-AIA 35 U.S.C. 102(d)](https://www.uspto.gov/web/offices/pac/mpep/s2135.html#d0e205339)
+* [2136-Pre-AIA 35 U.S.C. 102(e)](https://www.uspto.gov/web/offices/pac/mpep/s2136.html)
+    + [2136.01-Status of Unpublished or Published as Redacted U.S. Application as a Reference Under Pre-AIA 35 U.S.C. 102(e)](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#d0e205680)
+    + [2136.02-Content of the Prior Art Available Against the Claims](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#d0e205829)
+    + [2136.03-Critical Reference Date](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#d0e205924)
+    + [2136.04-Different Inventive Entity; Meaning of “By Another”](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#d0e206254)
+    + [2136.05-Overcoming a Rejection Under Pre-AIA 35 U.S.C. 102(e)](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#d0e206333)
+        - [2136.05(a)-Antedating a Pre-AIA 35 U.S.C. 102(e) Reference](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#ch2100_d2c183_21160_34b)
+        - [2136.05(b)-Showing The Reference Is Describing An Inventor's Or At Least One Joint Inventor's Own Work](https://www.uspto.gov/web/offices/pac/mpep/s2136.html#ch2100_d2c183_211c7_5e)
+* [2137-Pre-AIA 35 U.S.C. 102(f)](https://www.uspto.gov/web/offices/pac/mpep/s2137.html)
+    + [2137.01-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2137.html#d0e206713)
+    + [2137.02-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2137.html#d0e206972)
+* [2138-Pre-AIA 35 U.S.C. 102(g)](https://www.uspto.gov/web/offices/pac/mpep/s2138.html)
+    + [2138.01-Interference Practice](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207148)
+    + [2138.02-“The Invention Was Made in This Country”](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207398)
+    + [2138.03-“By Another Who Has Not Abandoned, Suppressed, or Concealed It”](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207478)
+    + [2138.04-“Conception”](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207607)
+    + [2138.05-“Reduction to Practice”](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207753)
+    + [2138.06-“Reasonable Diligence”](https://www.uspto.gov/web/offices/pac/mpep/s2138.html#d0e207967)
+* [2139-Rejections Under Pre-AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/s2139.html)
+    + [2139.01-Effective Filing Date of a Claimed Invention Under Pre-AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/s2139.html#ch2100_d2c184_12530_2b6)
+    + [2139.02-Determining Whether To Apply Pre-AIA 35 U.S.C. 102(a), (b), or (e)](https://www.uspto.gov/web/offices/pac/mpep/s2139.html#ch2100_d2c184_125d3_2ef)
+    + [2139.03-Form Paragraphs for Use in Rejections Under Pre-AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/s2139.html#ch2100_d2c184_12640_109)
+* [2140-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2140.html)
+* [2141-Examination Guidelines for Determining Obviousness Under 35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/s2141.html)
+    + [2141.01-Scope and Content of the Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2141.html#d0e208803)
+        - [2141.01(a)-Analogous and Nonanalogous Art](https://www.uspto.gov/web/offices/pac/mpep/s2141.html#d0e208985)
+    + [2141.02-Differences Between Prior Art and Claimed Invention](https://www.uspto.gov/web/offices/pac/mpep/s2141.html#d0e209106)
+    + [2141.03-Level of Ordinary Skill in the Art](https://www.uspto.gov/web/offices/pac/mpep/s2141.html#d0e209300)
+* [2142-Legal Concept of Prima Facie Obviousness](https://www.uspto.gov/web/offices/pac/mpep/s2142.html)
+* [2143-Examples of Basic Requirements of a Prima Facie Case of Obviousness](https://www.uspto.gov/web/offices/pac/mpep/s2143.html)
+    + [2143.01-Suggestion or Motivation To Modify the References](https://www.uspto.gov/web/offices/pac/mpep/s2143.html#d0e210245)
+    + [2143.02-Reasonable Expectation of Success Is Required](https://www.uspto.gov/web/offices/pac/mpep/s2143.html#d0e210414)
+    + [2143.03-All Claim Limitations Must Be Considered](https://www.uspto.gov/web/offices/pac/mpep/s2143.html#d0e210501)
+* [2144-Supporting a Rejection Under 35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/s2144.html)
+    + [2144.01-Implicit Disclosure](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e210719)
+    + [2144.02-Reliance on Scientific Theory](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e210732)
+    + [2144.03-Reliance on Common Knowledge in the Art or “Well Known” Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e210752)
+    + [2144.04-Legal Precedent as Source of Supporting Rationale](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e210929)
+    + [2144.05-Obviousness of Similar and Overlapping Ranges, Amounts, and Proportions](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e211255)
+    + [2144.06-Art Recognized Equivalence for the Same Purpose](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e211480)
+    + [2144.07-Art Recognized Suitability for an Intended Purpose](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e211558)
+    + [2144.08-Obviousness of Species When Prior Art Teaches Genus](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e211596)
+    + [2144.09-Close Structural Similarity Between Chemical Compounds (Homologs, Analogues, Isomers)](https://www.uspto.gov/web/offices/pac/mpep/s2144.html#d0e212153)
+* [2145-Consideration of Applicant’s Rebuttal Arguments and Evidence](https://www.uspto.gov/web/offices/pac/mpep/s2145.html)
+* [2146-Pre-AIA 35 U.S.C. 103(c)](https://www.uspto.gov/web/offices/pac/mpep/s2146.html)
+    + [2146.01-Prior Art Disqualification Under Pre-AIA 35 U.S.C. 103(c)](https://www.uspto.gov/web/offices/pac/mpep/s2146.html#ch2100_d2c184_126fa_f3)
+    + [2146.02-Establishing Common Ownership or Joint Research Agreement Under Pre-AIA 35 U.S.C. 103(c)](https://www.uspto.gov/web/offices/pac/mpep/s2146.html#ch2100_d2c184_12765_27)
+    + [2146.03-Examination Procedure With Respect to Pre-AIA 35 U.S.C. 103(c)](https://www.uspto.gov/web/offices/pac/mpep/s2146.html#ch2100_d2c184_127cc_34b)
+        - [2146.03(a)-Provisional Rejection (Obviousness) Under 35 U.S.C. 103(a) Using Provisional Prior Art Under Pre-AIA 35 U.S.C. 102(e)](https://www.uspto.gov/web/offices/pac/mpep/s2146.html#ch2100_d2c184_12851_21a)
+* [2147-Biotechnology Process Applications; Pre-AIA 35 U.S.C. 103(b)](https://www.uspto.gov/web/offices/pac/mpep/s2147.html)
+* [2148-Form Paragraphs for Use in Rejections Under Pre-AIA 35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/s2148.html)
+* [2149-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2149.html)
+* [2150-Examination Guidelines for 35 U.S.C. 102 and 103 as Amended by the First Inventor To File Provisions of the Leahy-Smith America Invents Act](https://www.uspto.gov/web/offices/pac/mpep/s2150.html)
+* [2151-Overview of the Changes to 35 U.S.C. 102 and 103 in the AIA](https://www.uspto.gov/web/offices/pac/mpep/s2151.html)
+* [2152-Detailed Discussion of AIA 35 U.S.C. 102(a) and (b)](https://www.uspto.gov/web/offices/pac/mpep/s2152.html)
+    + [2152.01-Effective Filing Date of the Claimed Invention](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_1afb3_e6)
+    + [2152.02-Prior Art Under AIA 35 U.S.C. 102(a)(1) (Patented, Described in a Printed Publication, or in Public Use, on Sale, or Otherwise Available to the Public)](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_1d66c_1e5)
+        - [2152.02(a)-Patented](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_1d6c2_3b7)
+        - [2152.02(b)-Described in a Printed Publication](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_1da60_2e9)
+        - [2152.02(c)-In Public Use](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_1e416_252)
+        - [2152.02(d)-On Sale](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_2254b_3e0)
+        - [2152.02(e)-Otherwise Available to the Public](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_228c0_21c)
+        - [2152.02(f)-No Requirement of “By Others”](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_232ba_27c)
+    + [2152.03-Admissions](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_23444_146)
+    + [2152.04-The Meaning of “Disclosure”](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d20033_236db_f9)
+    + [2152.05-Determining Whether To Apply 35 U.S.C. 102(a)(1) or 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d2c184_13c9f_236)
+    + [2152.06-Overcoming a 35 U.S.C. 102(a)(1) or 102(a)(2) Rejection](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d2c184_13ec5_303)
+    + [2152.07-Form Paragraphs for Use in Rejections Under AIA 35 U.S.C. 102](https://www.uspto.gov/web/offices/pac/mpep/s2152.html#ch2100_d2c184_13ef2_3e4)
+* [2153-Prior Art Exceptions Under 35 U.S.C. 102(b)(1) to AIA 35 U.S.C. 102(a)(1)](https://www.uspto.gov/web/offices/pac/mpep/s2153.html)
+    + [2153.01-Prior Art Exception Under AIA 35 U.S.C. 102(b)(1)(A) To AIA 35 U.S.C. 102(a)(1) (Grace Period Inventor-Originated Disclosure Exception)](https://www.uspto.gov/web/offices/pac/mpep/s2153.html#ch2100_d20033_24caf_cd)
+        - [2153.01(a)-Grace Period Inventor-Originated Disclosure Exception](https://www.uspto.gov/web/offices/pac/mpep/s2153.html#ch2100_d20033_24e66_2ac)
+        - [2153.01(b)-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2153.html#ch2100_d20033_256f4_147)
+    + [2153.02-Prior Art Exception Under AIA 35 U.S.C. 102(b)(1)(B) to AIA 35 U.S.C. 102(a)(1) (Inventor-Originated Prior Public Disclosure Exception)](https://www.uspto.gov/web/offices/pac/mpep/s2153.html#ch2100_d20033_25935_125)
+* [2154-Provisions Pertaining to Subject Matter in a U.S. Patent or Application Effectively Filed Before the Effective Filing Date of the Claimed Invention](https://www.uspto.gov/web/offices/pac/mpep/s2154.html)
+    + [2154.01-Prior Art Under AIA 35 U.S.C. 102(a)(2) “U.S. Patent Documents”](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20033_27642_39b)
+        - [2154.01(a)-WIPO Published Applications](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20034_11f3b_a0)
+        - [2154.01(b)-Determining When Subject Matter Was Effectively Filed Under AIA 35 U.S.C. 102(d)](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20034_12188_300)
+        - [2154.01(c)-Requirement Of “Names Another Inventor”](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20034_13884_7c)
+        - [2154.01(d)-Provisional Rejections Under 35 U.S.C. 102(a)(2); Reference Is a Copending U.S. Patent Application](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d2c184_139ba_236)
+    + [2154.02-Prior Art Exceptions Under 35 U.S.C. 102(b)(2) to AIA 35 U.S.C. 102(a)(2)](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20034_139ac_31b)
+        - [2154.02(a)-Prior Art Exception Under AIA 35 U.S.C. 102(b)(2)(A) to AIA 35 U.S.C. 102(a)(2) (Inventor-Originated Disclosure Exception)](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20034_13f89_241)
+        - [2154.02(b)-Prior Art Exception Under AIA 35 U.S.C. 102(b)(2)(B) to AIA 35 U.S.C. 102(a)(2) (Inventor-Originated Prior Public Disclosure Exception)](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20034_140df_1a6)
+        - [2154.02(c)-Prior Art Exception Under AIA 35 U.S.C. 102(b)(2)(C) to AIA 35 U.S.C. 102(a)(2) (Common Ownership or Obligation of Assignment)](https://www.uspto.gov/web/offices/pac/mpep/s2154.html#ch2100_d20034_145f0_210)
+* [2155-Use of Affidavits or Declarations Under 37 CFR 1.130 To Overcome Prior Art Rejections](https://www.uspto.gov/web/offices/pac/mpep/s2155.html)
+    + [2155.01-Showing That the Disclosure Was Made by the Inventor or a Joint Inventor](https://www.uspto.gov/web/offices/pac/mpep/s2155.html#ch2100_d20034_17271_83)
+    + [2155.02-Showing That the Subject Matter Disclosed Had Been Previously Publicly Disclosed by the Inventor or a Joint Inventor](https://www.uspto.gov/web/offices/pac/mpep/s2155.html#ch2100_d20034_173e3_369)
+    + [2155.03-Showing That the Disclosure was Made, or That Subject Matter had Been Previously Publicly Disclosed, by Another Who Obtained the Subject Matter Disclosed Directly or Indirectly From the Inventor or a Joint Inventor](https://www.uspto.gov/web/offices/pac/mpep/s2155.html#ch2100_d20034_1891a_11)
+    + [2155.04-Enablement](https://www.uspto.gov/web/offices/pac/mpep/s2155.html#ch2100_d20034_19332_1dd)
+    + [2155.05-Who May File an Affidavit or Declaration Under 37 CFR 1.130](https://www.uspto.gov/web/offices/pac/mpep/s2155.html#ch2100_d20034_1b102_307)
+    + [2155.06-Situations in Which an Affidavit or Declaration Is Not Available](https://www.uspto.gov/web/offices/pac/mpep/s2155.html#ch2100_d20034_1b27e_391)
+* [2156-Joint Research Agreements](https://www.uspto.gov/web/offices/pac/mpep/s2156.html)
+* [2157-Improper Naming of Inventors](https://www.uspto.gov/web/offices/pac/mpep/s2157.html)
+* [2158-AIA 35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/s2158.html)
+    + [2158.01-Form Paragraphs for Use in Rejections Under AIA 35 U.S.C. 103](https://www.uspto.gov/web/offices/pac/mpep/s2158.html#ch2100_d2c184_1417d_3a5)
+* [2159-Applicability Date Provisions and Determining Whether an Application Is Subject to the First Inventor To File Provisions of the AIA](https://www.uspto.gov/web/offices/pac/mpep/s2159.html)
+    + [2159.01-Applications Filed Before March 16, 2013](https://www.uspto.gov/web/offices/pac/mpep/s2159.html#ch2100_d20034_1dc9d_3c4)
+    + [2159.02-Applications Filed on or After March 16, 2013](https://www.uspto.gov/web/offices/pac/mpep/s2159.html#ch2100_d20034_1dfd4_279)
+    + [2159.03-Applications Subject to the AIA but Also Containing a Claimed Invention Having an Effective Filing Date Before March 16, 2013](https://www.uspto.gov/web/offices/pac/mpep/s2159.html#ch2100_d222e3_13adb_2f9)
+    + [2159.04-Applicant Statement in Transition Applications Containing a Claimed Invention Having an Effective Filing Date on or After March 16, 2013](https://www.uspto.gov/web/offices/pac/mpep/s2159.html#ch2100_d222e3_140d7_1bb)
+* [2160-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2160.html)
+* [2161-Three Separate Requirements for Specification Under 35 U.S.C. 112(a) or Pre-AIA 35 U.S.C. 112, First Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2161.html)
+    + [2161.01-Computer Programming, Computer Implemented Inventions, and 35 U.S.C. 112(a) or Pre-AIA 35 U.S.C. 112, First Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2161.html#d0e213447)
+* [2162-Policy Underlying 35 U.S.C. 112(a) or Pre-AIA 35 U.S.C. 112, First Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2162.html)
+* [2163-Guidelines for the Examination of Patent Applications Under the 35 U.S.C. 112(a) or Pre-AIA 35 U.S.C. 112, first paragraph, “Written Description” Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2163.html)
+    + [2163.01-Support for the Claimed Subject Matter in Disclosure](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e214533)
+    + [2163.02-Standard for Determining Compliance With the Written Description Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e214553)
+    + [2163.03-Typical Circumstances Where Adequate Written Description Issue Arises](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e214623)
+    + [2163.04-Burden on the Examiner with Regard to the Written Description Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e214731)
+    + [2163.05-Changes to the Scope of Claims](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e214820)
+    + [2163.06-Relationship of Written Description Requirement to New Matter](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e215023)
+    + [2163.07-Amendments to Application Which Are Supported in the Original Description](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e215099)
+        - [2163.07(a)-Inherent Function, Theory, or Advantage](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e215172)
+        - [2163.07(b)-Incorporation by Reference](https://www.uspto.gov/web/offices/pac/mpep/s2163.html#d0e215198)
+* [2164-The Enablement Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2164.html)
+    + [2164.01-Test of Enablement](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215268)
+        - [2164.01(a)-Undue Experimentation Factors](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215360)
+        - [2164.01(b)-How to Make the Claimed Invention](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215447)
+        - [2164.01(c)-How to Use the Claimed Invention](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215491)
+    + [2164.02-Working and Prophetic Examples](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215531)
+    + [2164.03-Relationship of Predictability of the Art and the Enablement Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215634)
+    + [2164.04-Burden on the Examiner Under the Enablement Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215702)
+    + [2164.05-Determination of Enablement Based on Evidence as a Whole](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215797)
+        - [2164.05(a)-Specification Must Be Enabling as of the Filing Date](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215860)
+        - [2164.05(b)-Specification Must Be Enabling to Persons Skilled in the Art](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215949)
+    + [2164.06-Quantity of Experimentation](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e215984)
+        - [2164.06(a)-Examples of Enablement Issues-Missing Information](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216038)
+        - [2164.06(b)-Examples of Enablement Issues — Biological and Chemical Cases](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216163)
+        - [2164.06(c)-Examples of Enablement Issues – Computer Programming Cases](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216273)
+    + [2164.07-Relationship of Enablement Requirement to Utility Requirement of 35 U.S.C. 101](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216498)
+    + [2164.08-Enablement Commensurate in Scope With the Claims](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216700)
+        - [2164.08(a)-Single Means Claim](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216855)
+        - [2164.08(b)-Inoperative Subject Matter](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216871)
+        - [2164.08(c)-Critical Feature Not Claimed](https://www.uspto.gov/web/offices/pac/mpep/s2164.html#d0e216899)
+* [2165-The Best Mode Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2165.html)
+    + [2165.01-Considerations Relevant to Best Mode](https://www.uspto.gov/web/offices/pac/mpep/s2165.html#d0e216999)
+    + [2165.02-Best Mode Requirement Compared to Enablement Requirement](https://www.uspto.gov/web/offices/pac/mpep/s2165.html#d0e217148)
+    + [2165.03-Requirements for Rejection for Lack of Best Mode](https://www.uspto.gov/web/offices/pac/mpep/s2165.html#d0e217195)
+    + [2165.04-Examples of Evidence of Concealment](https://www.uspto.gov/web/offices/pac/mpep/s2165.html#d0e217264)
+* [2166-Rejections Under 35 U.S.C. 112(a) or Pre-AIA 35 U.S.C. 112, First Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2166.html)
+* [2167-2170-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2167-2170.html)
+* [2171-Two Separate Requirements for Claims Under 35 U.S.C. 112(b) or Pre-AIA 35 U.S.C. 112, Second Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2171.html)
+* [2172-Subject Matter Which the Inventor or a Joint Inventor Regards as The Invention](https://www.uspto.gov/web/offices/pac/mpep/s2172.html)
+    + [2172.01-Unclaimed Essential Subject Matter](https://www.uspto.gov/web/offices/pac/mpep/s2172.html#d0e217526)
+* [2173-Claims Must Particularly Point Out and Distinctly Claim the Invention](https://www.uspto.gov/web/offices/pac/mpep/s2173.html)
+    + [2173.01-Interpreting the Claims](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e217578)
+    + [2173.02-Determining Whether Claim Language is Definite](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e217598)
+    + [2173.03-Correspondence Between Specification and Claims](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e217747)
+    + [2173.04-Breadth Is Not Indefiniteness](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e217778)
+    + [2173.05-Specific Topics Related to Issues Under 35 U.S.C. 112(b) or Pre-AIA 35 U.S.C. 112, Second Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e217809)
+        - [2173.05(a)-New Terminology](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e217839)
+        - [2173.05(b)-Relative Terminology](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e217939)
+        - [2173.05(c)-Numerical Ranges and Amounts Limitations](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218152)
+        - [2173.05(d)-Exemplary Claim Language (“for example,” “such as”)](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218251)
+        - [2173.05(e)-Lack of Antecedent Basis](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218320)
+        - [2173.05(f)-Reference to Limitations in Another Claim](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218380)
+        - [2173.05(g)-Functional Limitations](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218409)
+        - [2173.05(h)-Alternative Limitations](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218467)
+        - [2173.05(i)-Negative Limitations](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218588)
+        - [2173.05(j)-Old Combination](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218640)
+        - [2173.05(k)-Aggregation](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218715)
+        - [2173.05(l)-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#ch2100_d2241d_22b2d_e6)
+        - [2173.05(m)-Prolix](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218748)
+        - [2173.05(n)-Multiplicity](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218755)
+        - [2173.05(o)-Double Inclusion](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218827)
+        - [2173.05(p)-Claim Directed to Product-By- Process or Product and Process](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218855)
+        - [2173.05(q)-“Use” Claims](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e218952)
+        - [2173.05(r)-Omnibus Claim](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e219030)
+        - [2173.05(s)-Reference to Figures or Tables](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e219061)
+        - [2173.05(t)-Chemical Formula](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e219080)
+        - [2173.05(u)-Trademarks or Trade Names in a Claim](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e219126)
+        - [2173.05(v)-Mere Function of Machine](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e219164)
+    + [2173.06-Practice Compact Prosecution](https://www.uspto.gov/web/offices/pac/mpep/s2173.html#d0e219183)
+* [2174-Relationship Between the Requirements of 35 U.S.C. 112(a) and (b) or Pre-AIA 35 U.S.C. 112, First and Second Paragraphs](https://www.uspto.gov/web/offices/pac/mpep/s2174.html)
+* [2175-Form Paragraphs for Use in Rejections Under 35 U.S.C. 112(b) or Pre-AIA 35 U.S.C. 112, Second Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2175.html)
+* [2176-2180-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2176-2180.html)
+* [2181-Identifying and Interpreting a 35 U.S.C. 112(f) or Pre-AIA 35 U.S.C. 112, Sixth Paragraph Limitation](https://www.uspto.gov/web/offices/pac/mpep/s2181.html)
+* [2182-Search and Identification of the Prior Art](https://www.uspto.gov/web/offices/pac/mpep/s2182.html)
+* [2183-Making a Prima Facie Case of Equivalence](https://www.uspto.gov/web/offices/pac/mpep/s2183.html)
+* [2184-Determining Whether an Applicant Has Met the Burden of Proving Nonequivalence After a Prima Facie Case Is Made](https://www.uspto.gov/web/offices/pac/mpep/s2184.html)
+* [2185-Related Issues Under 35 U.S.C. 112(a) or (b) and Pre-AIA 35 U.S.C. 112, First or Second Paragraphs](https://www.uspto.gov/web/offices/pac/mpep/s2185.html)
+* [2186-Relationship to the Doctrine of Equivalents](https://www.uspto.gov/web/offices/pac/mpep/s2186.html)
+* [2187-Form Paragraphs for Use Relating to 35 U.S.C. 112(f) or Pre-AIA 35 U.S.C. 112, Sixth Paragraph](https://www.uspto.gov/web/offices/pac/mpep/s2187.html)
+* [2188-2189-\[Reserved\]](https://www.uspto.gov/web/offices/pac/mpep/s2188-2189.html)
+* [2190-Prosecution Laches and Res Judicata](https://www.uspto.gov/web/offices/pac/mpep/s2190.html)
+
+[![United States Patent and Trademark Office](https://www.uspto.gov/includes/i/footer_uspto.png)](https://www.uspto.gov/ "United States Patent and Trademark Office")
+
+* [Accessibility](https://www.uspto.gov/accessibility.jsp)
+* [Privacy Policy](https://www.uspto.gov/privact.jsp)
+* [Terms of Use](https://www.uspto.gov/termsofuse.jsp)
+* [Security](https://www.uspto.gov/faq/security.jsp)
+* [Emergencies/Security Alerts](https://www.uspto.gov/news/index_emergency.jsp)
+* [Information Quality Guidelines](https://www.uspto.gov/products/catalog/infoqualityguide.jsp)
+
+* [Federal Activities Inventory Reform (FAIR) Act](https://www.uspto.gov/about/stratplan/fair/index.jsp)
+* [Notification and Federal Employee Antidiscrimination and Retaliation (NoFEAR) Act](https://www.uspto.gov/about/offices/cao/ocr/nofear/index.jsp)
+* [Budget & Performance](https://www.uspto.gov/about/stratplan/index.jsp)
+* [Freedom of Information Act (FOIA)](https://www.uspto.gov/ip/boards/foia_rr/index.jsp)
+
+* [Department of Commerce NoFEAR Act Report](http://www.osec.doc.gov/ocr/nofear/nofear.htm)
+* [Regulations.gov](http://www.regulations.gov/)
+* [STOP!Fakes.gov](http://www.stopfakes.gov/)
+* [Department of Commerce](http://www.commerce.gov/)
+* [USA.gov](http://www.usa.gov/)
+
+* [Strategy Targeting Organized Piracy (STOP!)](https://www.uspto.gov/ip/global/stopfakes.jsp)
+* [Careers](https://www.uspto.gov/careers/)
+* [Site Index](https://www.uspto.gov/siteindex.jsp)
+* [Contact Us](https://www.uspto.gov/about/contacts/index.jsp)
+* [Submit Feedback](mailto:MPEPFeedback@uspto.gov)
+
+This page is owned by Patents.
+
+Last Modified: 
+
+03/09/2026 20:50:41
+

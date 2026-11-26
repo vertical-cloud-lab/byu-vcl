@@ -1,0 +1,406 @@
+{
+  "https://gtr.ukri.org/api/v3/awards/ae48f672-a774-43e7-a958-4c8c1e727fb7": {
+    "awardListItem": {
+      "id": "ae48f672-a774-43e7-a958-4c8c1e727fb7",
+      "href": "https://gtr.ukri.org/api/v3/awards/ae48f672-a774-43e7-a958-4c8c1e727fb7",
+      "uiPath": "/find-research-and-innovation/project/ae48f672-a774-43e7-a958-4c8c1e727fb7",
+      "projectTitle": "Hero 2 Product Range",
+      "projectStatus": "Closed",
+      "grantRefNumber": "10102784",
+      "grantCategory": "Collaborative R&D",
+      "totalGrantValue": 229460.27,
+      "startDate": "2024-04-01T00:00:00Z",
+      "endDate": "2026-03-31T00:00:00Z",
+      "fundingOrgName": "Innovate UK",
+      "fundingOrgLongName": "INNOVATE UK",
+      "leadOrgId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgName": "OPEN BIONICS LTD",
+      "leadOrgHref": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgUiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgRegion": "South West",
+      "leadOrgRole": "LEAD_PARTICIPANT",
+      "leadPersonId": "d4dd434c-bf76-447d-a641-9cc5a49c131f",
+      "leadPersonHref": "https://gtr.ukri.org/api/v3/persons/d4dd434c-bf76-447d-a641-9cc5a49c131f",
+      "leadPersonUiPath": "/find-research-and-innovation/person/d4dd434c-bf76-447d-a641-9cc5a49c131f",
+      "leadPersonRole": "PROJECT_MANAGER",
+      "leadPersonName": {
+        "firstName": "Joel",
+        "surname": "Gibbard",
+        "preferredName": "Joel Gibbard"
+      }
+    },
+    "projectAdditionalData": {
+      "abstractText": "Open Bionics is developing the second generation of their hugely successful Hero Arm. The Hero 2 range will be designed to take on board all of the feedback obtained from patients and prosthetists using the Hero Arm, and will have some never-seen-before innovative design features that will be completely revolutionary to the way upper limb prostheses are fit, built and used."
+    },
+    "awardAdditionalData": {
+      "hasPublications": false,
+      "hasOutcomes": false,
+      "scheme": "Unknown",
+      "call": "Innovate UK Investor Partnerships: SME round 4"
+    },
+    "classifications": [],
+    "participantValues": [
+      {
+        "organisationId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "organisationName": "OPEN BIONICS LTD",
+        "role": "LEAD_PARTICIPANT",
+        "projectCost": 498827,
+        "grantOffer": 229460.27
+      }
+    ],
+    "lastPublishedUpdateDate": "2026-08-13T10:00:38Z",
+    "links": [
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_PARTICIPANT",
+          "relName": "Lead participant"
+        },
+        "organisationListItem": {
+          "id": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "href": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "name": "OPEN BIONICS LTD",
+          "region": "South West"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_RO_DEPARTMENT",
+          "relName": "Lead RO department"
+        },
+        "organisationListItem": {
+          "id": "38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "href": "https://gtr.ukri.org/api/v3/organisations/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "uiPath": "/find-research-and-innovation/organisation/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "name": "Unknown"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Person",
+          "rel": "PROJECT_MANAGER",
+          "relName": "Project manager"
+        },
+        "personListItem": {
+          "id": "d4dd434c-bf76-447d-a641-9cc5a49c131f",
+          "href": "https://gtr.ukri.org/api/v3/persons/d4dd434c-bf76-447d-a641-9cc5a49c131f",
+          "uiPath": "/find-research-and-innovation/person/d4dd434c-bf76-447d-a641-9cc5a49c131f",
+          "personName": {
+            "firstName": "Joel",
+            "surname": "Gibbard",
+            "preferredName": "Joel Gibbard"
+          }
+        }
+      }
+    ],
+    "common": {
+      "lastDataRefreshDate": "2026-11-02"
+    }
+  },
+  "https://gtr.ukri.org/api/v3/awards/404463bf-b6e2-4cd1-a1fa-1b9b396b7ff5": {
+    "awardListItem": {
+      "id": "404463bf-b6e2-4cd1-a1fa-1b9b396b7ff5",
+      "href": "https://gtr.ukri.org/api/v3/awards/404463bf-b6e2-4cd1-a1fa-1b9b396b7ff5",
+      "uiPath": "/find-research-and-innovation/project/404463bf-b6e2-4cd1-a1fa-1b9b396b7ff5",
+      "projectTitle": "Novel Partial Hand Prosthesis for people with disability",
+      "projectStatus": "Closed",
+      "grantRefNumber": "10049773",
+      "grantCategory": "Grant for R&D",
+      "totalGrantValue": 50000,
+      "startDate": "2023-04-01T00:00:00Z",
+      "endDate": "2024-03-31T00:00:00Z",
+      "fundingOrgName": "Innovate UK",
+      "fundingOrgLongName": "INNOVATE UK",
+      "leadOrgId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgName": "OPEN BIONICS LTD",
+      "leadOrgHref": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgUiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgRegion": "South West",
+      "leadOrgRole": "LEAD_PARTICIPANT",
+      "leadPersonId": "ea313878-88b2-4116-86f8-134ad1d896a1",
+      "leadPersonHref": "https://gtr.ukri.org/api/v3/persons/ea313878-88b2-4116-86f8-134ad1d896a1",
+      "leadPersonUiPath": "/find-research-and-innovation/person/ea313878-88b2-4116-86f8-134ad1d896a1",
+      "leadPersonRole": "PROJECT_MANAGER",
+      "leadPersonName": {
+        "firstName": "Samantha",
+        "surname": "Payne",
+        "preferredName": "Samantha Payne"
+      }
+    },
+    "projectAdditionalData": {
+      "abstractText": "This is a project to fund an in-depth product co-design process with people with upper limb disabilities. The purpose is to co-create a novel and accessible device that will improve tens of millions of lives. This project will cover monthly co-design and engagement sessions ensuring the R&D process for this device is iterative, high quality, and driven by the community it seeks to serve. Monthly workshops will include the collection of quantative and qualitative data, design workshops, lab testing, and at-home testing.\n\nThe project will focus on people suffering from partial hand amputations whereby their upper limb mobility has been limited or is missing completely as a result of their condition. The project will be succesful if it can inform the product development process to ensure that any products that make it to commercialisation meet the needs of the end user.\n\nThe project will exploit and build upon existing novel IP owned by the company and build on this with opportunities for new IP to protect the design, control systems and manufacturing methods."
+    },
+    "awardAdditionalData": {
+      "hasPublications": false,
+      "hasOutcomes": false,
+      "scheme": "Unknown",
+      "call": "Women in Innovation Awards 2022/23"
+    },
+    "classifications": [],
+    "participantValues": [
+      {
+        "organisationId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "organisationName": "OPEN BIONICS LTD",
+        "role": "LEAD_PARTICIPANT",
+        "projectCost": 50000,
+        "grantOffer": 50000
+      }
+    ],
+    "lastPublishedUpdateDate": "2026-08-13T10:00:22Z",
+    "links": [
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_PARTICIPANT",
+          "relName": "Lead participant"
+        },
+        "organisationListItem": {
+          "id": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "href": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "name": "OPEN BIONICS LTD",
+          "region": "South West"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_RO_DEPARTMENT",
+          "relName": "Lead RO department"
+        },
+        "organisationListItem": {
+          "id": "38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "href": "https://gtr.ukri.org/api/v3/organisations/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "uiPath": "/find-research-and-innovation/organisation/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "name": "Unknown"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Person",
+          "rel": "PROJECT_MANAGER",
+          "relName": "Project manager"
+        },
+        "personListItem": {
+          "id": "ea313878-88b2-4116-86f8-134ad1d896a1",
+          "href": "https://gtr.ukri.org/api/v3/persons/ea313878-88b2-4116-86f8-134ad1d896a1",
+          "uiPath": "/find-research-and-innovation/person/ea313878-88b2-4116-86f8-134ad1d896a1",
+          "personName": {
+            "firstName": "Samantha",
+            "surname": "Payne",
+            "preferredName": "Samantha Payne"
+          }
+        }
+      }
+    ],
+    "common": {
+      "lastDataRefreshDate": "2026-11-02"
+    }
+  },
+  "https://gtr.ukri.org/api/v3/awards/9c2540e5-e001-4808-be81-1a927e2e06de": {
+    "awardListItem": {
+      "id": "9c2540e5-e001-4808-be81-1a927e2e06de",
+      "href": "https://gtr.ukri.org/api/v3/awards/9c2540e5-e001-4808-be81-1a927e2e06de",
+      "uiPath": "/find-research-and-innovation/project/9c2540e5-e001-4808-be81-1a927e2e06de",
+      "projectTitle": "Digital clinical pathway for upper limb prosthetics and rehabilitation",
+      "projectStatus": "Closed",
+      "grantRefNumber": "81412",
+      "grantCategory": "Collaborative R&D",
+      "totalGrantValue": 174717.6,
+      "startDate": "2020-10-01T00:00:00Z",
+      "endDate": "2021-11-30T00:00:00Z",
+      "fundingOrgName": "Innovate UK",
+      "fundingOrgLongName": "INNOVATE UK",
+      "leadOrgId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgName": "OPEN BIONICS LTD",
+      "leadOrgHref": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgUiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgRegion": "South West",
+      "leadOrgRole": "LEAD_PARTICIPANT",
+      "leadPersonId": "001c095b-cebc-41f6-aedf-d813811a6686",
+      "leadPersonHref": "https://gtr.ukri.org/api/v3/persons/001c095b-cebc-41f6-aedf-d813811a6686",
+      "leadPersonUiPath": "/find-research-and-innovation/person/001c095b-cebc-41f6-aedf-d813811a6686",
+      "leadPersonRole": "PROJECT_MANAGER",
+      "leadPersonName": {
+        "firstName": "Joel",
+        "surname": "Gibbard",
+        "preferredName": "Joel Gibbard"
+      }
+    },
+    "projectAdditionalData": {
+      "abstractText": "Open Bionics seeks to develop care and rehabilitation for amputees who cannot access their clinics and clinicians due to lockdowns in multiple served markets including the UK where some clinics are still yet to reopen.\n\nOpen Bionics will create a digital pathway that enables clinicians to work with patients and deliver bespoke prosthetics to all upper limb patients with a variety of limb differences and across a diverse age range (7 - 90 years old). Open Bionics will also test the company being solely responsible for the entire clinical pathway by hiring a clinical team. This will validate whether a B2C business model is possible. The benefits of Open Bionics controlling the clinical experience include better patient care, better training for patients, reduced travel for patients, and massively reduced costs."
+    },
+    "awardAdditionalData": {
+      "hasPublications": false,
+      "hasOutcomes": false,
+      "scheme": "Unknown",
+      "call": "The Sustainable Innovation Fund: round 1 (Temporary Framework)"
+    },
+    "classifications": [],
+    "participantValues": [
+      {
+        "organisationId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "organisationName": "OPEN BIONICS LTD",
+        "role": "LEAD_PARTICIPANT",
+        "projectCost": 218397,
+        "grantOffer": 174717.6
+      }
+    ],
+    "lastPublishedUpdateDate": "2026-08-13T10:00:27Z",
+    "links": [
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_PARTICIPANT",
+          "relName": "Lead participant"
+        },
+        "organisationListItem": {
+          "id": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "href": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "name": "OPEN BIONICS LTD",
+          "region": "South West"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_RO_DEPARTMENT",
+          "relName": "Lead RO department"
+        },
+        "organisationListItem": {
+          "id": "38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "href": "https://gtr.ukri.org/api/v3/organisations/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "uiPath": "/find-research-and-innovation/organisation/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "name": "Unknown"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Person",
+          "rel": "PROJECT_MANAGER",
+          "relName": "Project manager"
+        },
+        "personListItem": {
+          "id": "001c095b-cebc-41f6-aedf-d813811a6686",
+          "href": "https://gtr.ukri.org/api/v3/persons/001c095b-cebc-41f6-aedf-d813811a6686",
+          "uiPath": "/find-research-and-innovation/person/001c095b-cebc-41f6-aedf-d813811a6686",
+          "personName": {
+            "firstName": "Joel",
+            "surname": "Gibbard",
+            "preferredName": "Joel Gibbard"
+          }
+        }
+      }
+    ],
+    "common": {
+      "lastDataRefreshDate": "2026-11-02"
+    }
+  },
+  "https://gtr.ukri.org/api/v3/awards/81eb9a62-1ce2-4e73-8ad4-1b506f21eec9": {
+    "awardListItem": {
+      "id": "81eb9a62-1ce2-4e73-8ad4-1b506f21eec9",
+      "href": "https://gtr.ukri.org/api/v3/awards/81eb9a62-1ce2-4e73-8ad4-1b506f21eec9",
+      "uiPath": "/find-research-and-innovation/project/81eb9a62-1ce2-4e73-8ad4-1b506f21eec9",
+      "projectTitle": "End-to-end digital service for upper limb amputees and clinicians",
+      "projectStatus": "Closed",
+      "grantRefNumber": "64752",
+      "grantCategory": "Feasibility Studies",
+      "totalGrantValue": 74992,
+      "startDate": "2020-06-01T00:00:00Z",
+      "endDate": "2021-03-31T00:00:00Z",
+      "fundingOrgName": "Innovate UK",
+      "fundingOrgLongName": "INNOVATE UK",
+      "leadOrgId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgName": "OPEN BIONICS LTD",
+      "leadOrgHref": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgUiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+      "leadOrgRegion": "South West",
+      "leadOrgRole": "LEAD_PARTICIPANT",
+      "leadPersonId": "ea313878-88b2-4116-86f8-134ad1d896a1",
+      "leadPersonHref": "https://gtr.ukri.org/api/v3/persons/ea313878-88b2-4116-86f8-134ad1d896a1",
+      "leadPersonUiPath": "/find-research-and-innovation/person/ea313878-88b2-4116-86f8-134ad1d896a1",
+      "leadPersonRole": "PROJECT_MANAGER",
+      "leadPersonName": {
+        "firstName": "Samantha",
+        "surname": "Payne",
+        "preferredName": "Samantha Payne"
+      }
+    },
+    "projectAdditionalData": {
+      "abstractText": "Prosthetic Clinics in the UK and abroad have closed during COVID-19 lockdowns. This is frustrating for people with upper limb differences who seek a prosthesis for work or daily living needs, or who were in the process of receiving their awaited device. It is catastrophic for clinics and clinical suppliers who, in response to losses have had to furlough, make redundancies, and pause operations.\n\nIt is also frustrating for clinicians and OTs who want to see and engage with their patients. Open Bionics proposes a feasibility study with a clinical partner in the UK and with UK upper-limb amputees that trials a new digital workflow.\n\nOpen Bionics proposes to demonstrate new digital processes and tools that empower clinicians and enables them to continue aspects of their work interrupted by clinic closures. This proposal affects upper-limb amputees, clinics, clinicians, and suppliers.\n\nOpen Bionics will build upon early lab R&D to take this new digital pathway into the field with patients and clinicians."
+    },
+    "awardAdditionalData": {
+      "hasPublications": false,
+      "hasOutcomes": false,
+      "scheme": "Unknown",
+      "call": "Business-led innovation in response to global disruption"
+    },
+    "classifications": [],
+    "participantValues": [
+      {
+        "organisationId": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+        "organisationName": "OPEN BIONICS LTD",
+        "role": "LEAD_PARTICIPANT",
+        "projectCost": 74992,
+        "grantOffer": 74992
+      }
+    ],
+    "lastPublishedUpdateDate": "2026-08-13T10:00:22Z",
+    "links": [
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_PARTICIPANT",
+          "relName": "Lead participant"
+        },
+        "organisationListItem": {
+          "id": "383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "href": "https://gtr.ukri.org/api/v3/organisations/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "uiPath": "/find-research-and-innovation/organisation/383ede84-1764-4d36-8fce-5d7fc56f4e33",
+          "name": "OPEN BIONICS LTD",
+          "region": "South West"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Organisation",
+          "rel": "LEAD_RO_DEPARTMENT",
+          "relName": "Lead RO department"
+        },
+        "organisationListItem": {
+          "id": "38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "href": "https://gtr.ukri.org/api/v3/organisations/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "uiPath": "/find-research-and-innovation/organisation/38fc9a59-5c47-4e90-ae87-c523ffae5f6e",
+          "name": "Unknown"
+        }
+      },
+      {
+        "entityLink": {
+          "linkType": "Person",
+          "rel": "PROJECT_MANAGER",
+          "relName": "Project manager"
+        },
+        "personListItem": {
+          "id": "ea313878-88b2-4116-86f8-134ad1d896a1",
+          "href": "https://gtr.ukri.org/api/v3/persons/ea313878-88b2-4116-86f8-134ad1d896a1",
+          "uiPath": "/find-research-and-innovation/person/ea313878-88b2-4116-86f8-134ad1d896a1",
+          "personName": {
+            "firstName": "Samantha",
+            "surname": "Payne",
+            "preferredName": "Samantha Payne"
+          }
+        }
+      }
+    ],
+    "common": {
+      "lastDataRefreshDate": "2026-11-02"
+    }
+  }
+}

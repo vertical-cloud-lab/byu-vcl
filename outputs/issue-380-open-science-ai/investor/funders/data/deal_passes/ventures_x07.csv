@@ -1,0 +1,10 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+rancher,Rancher,U1,,,yes,,,unknown,yes,1,Series A/seed investors not named beyond Mayfield and Nexus (existing at Series B).,,2026-11-26T06:26:25Z
+warpdotdev,Warp,U1,,,yes,,,unknown,yes,2,"Wikipedia cites a USD 50M Series B led by Sequoia (2023-06) with no source; not verified, so not recorded.",,2026-11-26T06:26:25Z
+qdrant,Qdrant,U1,,,yes,,,unknown,yes,1,,,2026-11-26T06:27:23Z
+warpdotdev,Warp,U1,,,yes,,,unknown,yes,3,"Wikipedia also lists angels Sam Altman and Jeff Weiner (secondary, not recorded). OpenAI is founding sponsor of the open-source repo (2026-04), no amount.",,2026-11-26T06:27:23Z
+puppet,Puppet,U3,,,yes,,,unknown,yes,3,"CHECK: 2009 'seed' row cites a 2014 article; TechCrunch 2010 calls June 2009 the Series A, and the company was self-funded earlier (2014 TechCrunch).",,2026-11-26T06:28:54Z
+sugarcrm,SugarCRM,U3,,,yes,,,unknown,yes,3,CHECK: 86M total dated 2012 is a cumulative figure; TechCrunch 2020 says over USD 123M raised.,,2026-11-26T06:29:48Z
+nginx,NGINX,U1,,,yes,,,unknown,yes,3,,,2026-11-26T06:30:26Z
+hortonworks,Hortonworks,U3,,,yes,,,unknown,yes,3,,,2026-11-26T06:31:21Z
+hpcaitech,HPC-AI Tech,U1,,,yes,,,unknown,yes,1,Earlier seed/angel rounds (the rest of the USD 78M total) not found.,,2026-11-26T06:31:57Z

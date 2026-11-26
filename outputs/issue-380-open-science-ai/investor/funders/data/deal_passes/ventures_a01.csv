@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+deepseek-ai,DeepSeek,U1,releases open-weight models and sells API access to the same models,,yes,CN,,private,yes,3,Parent High-Flyer financed early development per TechCrunch (no amount). Zhihu disclosed indirect stake via a fund (TechNode 2026-11-24).,https://technode.com/2026/11/24/zhihu-discloses-indirect-investment-in-deepseek-through-fund/,2026-11-26T06:17:53Z
+openobserve,OpenObserve,U1,sells OpenObserve Cloud and Enterprise,,yes,US,,private,yes,2,,https://openobserve.ai/about/,2026-11-26T06:17:53Z
+pulumi,Pulumi,U1,sells Pulumi Cloud,,yes,US,,private,yes,3,,https://www.pulumi.com/about/,2026-11-26T06:17:53Z
+Stability-AI,Stability AI,U1,open-weight models; sells API and commercial licences,,yes,GB,,private,yes,3,,,2026-11-26T06:17:53Z
+pingcap,PingCAP,U1,sells TiDB Cloud and Enterprise,,yes,US,2015,private,yes,3,,,2026-11-26T06:17:53Z
+timescale,Tiger Data,U1,sells Tiger Cloud hosted TimescaleDB,,yes,US,,private,yes,5,Seed amount and 2019 round: 2018 post says Series A of $12.4M in Jan 2018; the $15M 2019 round is labelled Series A by TechCrunch (two rounds called A).,https://www.tigerdata.com/about,2026-11-26T06:19:01Z
+run-llama,LlamaIndex,U1,sells LlamaCloud and LlamaParse,,yes,US,,private,yes,1,"memory: later Series A exists; not verified, not recorded. BusinessWire release returned 403.",https://www.businesswire.com/news/home/20230531005251/en/LlamaIndex-Raises-8.5M-to-Unlock-Large-Language-Models-Capabilities-with-Personal-Data,2026-11-26T06:19:01Z
+jitsi,Jitsi,U1,8x8 unit sells Jitsi as a Service; originally BlueJimp,,yes,US,,acquired,none_found,0,"No outside funding found. BlueJimp acquired by Atlassian 2015 (undisclosed sum), sold to 8x8 Oct 2018 (undisclosed).",https://techcrunch.com/2018/10/29/atlassian-sells-jitsi-an-open-source-videoconferencing-tool-it-acquired-in-2015-to-8x8/,2026-11-26T06:19:01Z
+warpdotdev,Warp,U1,open-source client; sells paid Warp plans,,yes,US,,private,yes,2,,,2026-11-26T06:20:55Z
+supermemoryai,Supermemory,U1,sells hosted supermemory API and app,,yes,US,,private,yes,1,,,2026-11-26T06:20:55Z
+refinedev,Refine,U1,sells Refine Enterprise and hosted refine.new builder,,yes,US,,private,yes,2,,https://www.ycombinator.com/companies/refine,2026-11-26T06:20:55Z
+getzep,Zep,U1,sells Zep Cloud built on Graphiti,,yes,US,2023,private,yes,2,,,2026-11-26T06:20:55Z
+manaflow-ai,Manaflow,U1,sells cmux Pro and cloud VMs,,yes,US,,private,yes,1,,,2026-11-26T06:20:55Z
+portainer,Portainer.io,U1,sells Portainer Business Edition,,yes,NZ,,private,yes,2,,,2026-11-26T06:23:10Z
+immich-app,FUTO,U1,FUTO-employed team sells Immich licence keys,,yes,US,,private,yes,1,FUTO itself is the parent; its own funding not researched. Immich joined FUTO in 2024.,https://immich.app/blog/futo-two-years-later,2026-11-26T06:23:10Z
+nengo,Applied Brain Research,U1,ABR sells commercial Nengo licences,,yes,CA,,private,yes,2,,,2026-11-26T06:23:10Z
+usestrix,Strix,U1,sells hosted AI pentesting platform and enterprise deployments,,yes,,,private,none_found,0,"No funding disclosure on strix.ai home or in searches. find_pages hit was an unrelated Strix Leviathan (crypto) seed, not this company.",https://strix.ai,2026-11-26T06:23:10Z
+open-webui,Open WebUI Inc.,U1,sells Open WebUI enterprise licences and support,,yes,US,,private,none_found,0,Home page and Wikipedia show no funding. Not exhaustive.,https://openwebui.com,2026-11-26T06:23:10Z
+agno-agi,Agno,U1,sells Agno AgentOS platform,,yes,US,,private,none_found,0,Site about and blog index show no funding post; searches empty. Not exhaustive.,https://www.agno.com/blog,2026-11-26T06:23:10Z
+dolthub,DoltHub,U1,sells hosted Dolt and DoltHub,,yes,US,,private,none_found,0,"Site is JS-rendered and guessed blog URLs 404; no source found. Likely funded but unverified; memory: formerly Liquidata, seed investors not recalled with confidence.",https://www.dolthub.com/blog/,2026-11-26T06:23:10Z
+cheaper-inference,Cheaper Inference,U1,sells hosted OmniRoute-style gateway and pay-as-you-go model access,,yes,,,private,none_found,0,No funding information found on its site or in searches.,https://cheaperinference.com,2026-11-26T06:23:10Z
+1Panel-dev,FIT2CLOUD,U1,FIT2CLOUD sells 1Panel and MaxKB pro editions,,yes,CN,,private,none_found,0,No English-language source found; fit2cloud.com home shows no funding; Chinese sources not searched. Not exhaustive.,https://www.fit2cloud.com,2026-11-26T06:23:10Z
+siyuan-note,Yunnan Liandi Technology (B3log),U1,sells SiYuan paid membership and cloud sync,,yes,CN,,private,none_found,0,b3log.org/siyuan page shows no funding. Chinese sources not searched.,https://b3log.org/siyuan,2026-11-26T06:23:10Z
+kiisu-io,Kiisu (RainWalker),U1,sells Flipper-compatible development boards,,yes,EE,,private,none_found,0,Site shows only company name Rainwalker OU; no funding or crowdfunding mention.,https://kiisu.io,2026-11-26T06:23:10Z
+mcneilco,John McNeil & Co. Inc.,U1,sells commercial ACAS modules,,yes,US,,private,none_found,0,Company site returned no readable content; no funding found.,https://www.mcneilco.com,2026-11-26T06:23:10Z

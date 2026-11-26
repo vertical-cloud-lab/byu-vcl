@@ -1,0 +1,273 @@
+Reviewing a Domestic Manufacture Waiver Request | NIST 
+
+![U.S. flag](https://www.nist.gov/libraries/nist-component-library/dist/img/us_flag_small.png)
+
+An official website of the United States government
+
+Here’s how you know
+
+![](https://www.nist.gov/libraries/nist-component-library/dist/img/icon-dot-gov.svg)
+
+**Official websites use .gov**  
+A **.gov** website belongs to an official government organization in the United States.
+
+![](https://www.nist.gov/libraries/nist-component-library/dist/img/icon-https.svg)
+
+**Secure .gov websites use HTTPS**  
+A **lock** (  ) or **https://** means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+
+https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request
+
+![National Institute of Standards and Technology](https://www.nist.gov/libraries/nist-component-library/dist/img/logo/nist_logo_sidestack.svg "width=289 | height=38")
+
+[![National Institute of Standards and Technology](https://www.nist.gov/libraries/nist-component-library/dist/img/logo/logo.svg "width=300px | height=80px")](https://www.nist.gov/ "National Institute of Standards and Technology")
+
+* [Publications](https://www.nist.gov/publications)
+* + [All Topics](https://www.nist.gov/topics)
+  + [Advanced communications](https://www.nist.gov/advanced-communications)
+  + [Bioscience](https://www.nist.gov/biotechnology)
+  + [Buildings and construction](https://www.nist.gov/buildings-and-construction)
+  + [Chemistry](https://www.nist.gov/chemistry)
+  + [Cybersecurity and Privacy](https://www.nist.gov/cybersecurity-and-privacy)
+  + [Electronics](https://www.nist.gov/electronics)
+  + [Energy](https://www.nist.gov/energy)
+  + [Environment](https://www.nist.gov/environment)
+
+  + [Fire](https://www.nist.gov/fire)
+  + [Forensic science](https://www.nist.gov/forensic-science)
+  + [Health](https://www.nist.gov/health)
+  + [Information technology](https://www.nist.gov/information-technology)
+  + [Infrastructure](https://www.nist.gov/infrastructure)
+  + [Manufacturing](https://www.nist.gov/manufacturing)
+  + [Materials](https://www.nist.gov/materials)
+  + [Mathematics and statistics](https://www.nist.gov/mathematics-and-statistics)
+  + [Metrology](https://www.nist.gov/metrology)
+
+  + [Nanotechnology](https://www.nist.gov/nanotechnology)
+  + [Neutron research](https://www.nist.gov/neutron-research)
+  + [Performance excellence](https://www.nist.gov/performance-excellence)
+  + [Physics](https://www.nist.gov/physics)
+  + [Public safety](https://www.nist.gov/public-safety)
+  + [Quantum information science](https://www.nist.gov/quantum-information-science)
+  + [Resilience](https://www.nist.gov/resilience)
+  + [Standards](https://www.nist.gov/standards)
+  + [Super intelligence](https://www.nist.gov/super-intelligence)
+  + [Transportation](https://www.nist.gov/transportation)
+* + [Laboratories](https://www.nist.gov/laboratories)
+      - [Communications Technology Laboratory](https://www.nist.gov/ctl)
+      - [Engineering Laboratory](https://www.nist.gov/el)
+      - [Information Technology Laboratory](https://www.nist.gov/itl)
+      - [Material Measurement Laboratory](https://www.nist.gov/mml)
+      - [Physical Measurement Laboratory](https://www.nist.gov/pml)
+
+  + [User Facilities](https://www.nist.gov/user-facilities)
+      - [NIST Center for Neutron Research](https://www.nist.gov/ncnr)
+      - [CNST NanoFab](https://www.nist.gov/cnst)
+  + [Research Test Beds](https://www.nist.gov/research-test-beds)
+  + [Research Projects](https://www.nist.gov/laboratories/projects-programs)
+  + [Tools & Instruments](https://www.nist.gov/laboratories/tools-instruments)
+
+  + [Major Programs](https://www.nist.gov/major-programs)
+      - [CHIPS for America Initiative](https://www.nist.gov/chips)
+      - [Congressionally Identified Project Program (CIPP)](https://www.nist.gov/cds)
+      - [Manufacturing Extension Partnership (MEP)](https://www.nist.gov/mep)
+      - [Manufacturing USA](https://www.manufacturingusa.com/)
+      - [Office of Advanced Manufacturing](https://www.nist.gov/oam)
+      - [Technology Partnerships Office](https://www.nist.gov/tpo)
+* + [Measurements and Standards](https://www.nist.gov/standards-measurements)
+      - [Calibration Services](https://www.nist.gov/calibrations)
+      - [Laboratory Accreditation (NVLAP)](https://www.nist.gov/nvlap)
+      - [Quality System](https://www.nist.gov/nist-quality-system)
+      - [Standard Reference Materials (SRMs)](https://www.nist.gov/srm)
+      - [Standard Reference Instruments (SRIs)](https://www.nist.gov/sri)
+      - [Standards.gov](https://www.nist.gov/standardsgov)
+      - [Time Services](https://www.nist.gov/pml/time-and-frequency-division/time-services)
+      - [Office of Weights and Measures](https://www.nist.gov/pml/owm)
+
+  + [Software](https://www.nist.gov/services-resources/software)
+  + [Data](https://www.nist.gov/data)
+      - [Chemistry WebBook](https://webbook.nist.gov/chemistry/)
+      - [National Vulnerability Database](https://nvd.nist.gov/)
+      - [Physical Reference Data](https://www.nist.gov/pml/productsservices/physical-reference-data)
+      - [Standard Reference Data (SRD)](https://www.nist.gov/srd)
+  + [Storefront](https://shop.nist.gov/)
+  + [License & Patents](https://www.nist.gov/tpo)
+
+  + [Computer Security Resource Center (CSRC)](https://csrc.nist.gov/)
+  + [NIST Research Library](https://www.nist.gov/nist-research-library)
+* + [News](https://www.nist.gov/news-events/news)
+  + [Events](https://www.nist.gov/news-events/events)
+  + [Blogs](https://www.nist.gov/blogs)
+  + [NIST In Focus](https://www.nist.gov/nist-focus)
+  + [Feature Stories](https://www.nist.gov/feature-stories)
+
+  + [Awards](https://www.nist.gov/awards)
+  + [Video Gallery](https://www.nist.gov/video-gallery)
+  + [Image Gallery](https://www.nist.gov/image-gallery)
+  + [Media Contacts](https://www.nist.gov/comms/media-contacts)
+* + [About Us](https://www.nist.gov/about-nist)
+      - [Leadership](https://www.nist.gov/director/leadership)
+      - [Organization Structure](https://www.nist.gov/director/nist-organization-structure)
+      - [Budget & Planning](https://www.nist.gov/about-nist/budget-planning)
+  + [Contact Us](https://www.nist.gov/contact)
+  + [Visit](https://www.nist.gov/about-nist/visit)
+  + [Careers](https://www.nist.gov/careers)
+      - [Student programs](https://www.nist.gov/iaao/academic-affairs-office)
+
+  + [Work with NIST](https://www.nist.gov/about-nist/work-nist)
+  + [History](https://www.nist.gov/history)
+      - [NIST Digital Archives](http://nistdigitalarchives.contentdm.oclc.org/)
+      - [NIST Museum](https://www.nist.gov/nist-museum)
+      - [NIST and the Nobel](https://www.nist.gov/nist-and-nobel)
+  + [Educational Resources](https://www.nist.gov/education)
+
+## [iEdison](https://www.nist.gov/iedison)
+
+[iEdison Agency User Guide](https://www.nist.gov/iedison/iedison-agency-user-guide)
+
+* [Previous](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-invention-transfer-request "Go to previous page")
+* 
+* [Next](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports "Go to next page")
+
+* [Getting Started](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started)
+    + [Creating a Federal Agency iEdison Account](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/creating-federal-agency-iedison-account)
+    + [Creating a Login.gov Account](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/creating-logingov-account)
+    + [Creating Individual Accounts (under Agency)](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/creating-individual-accounts-under-agency)
+    + [Logging in to Your Account](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/logging-your-account)
+    + [Editing or Customizing Your Profile or Preferences](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/editing-or-customizing-your-profile-or-preferences)
+    + [Editing or Customizing Your Agency Profile](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/editing-or-customizing-your-agency-profile)
+    + [Your Dashboard Explained](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/your-dashboard-explained)
+    + [Your Sidebar Explained](https://www.nist.gov/iedison/iedison-agency-user-guide/getting-started/your-sidebar-explained)
+* [Invention Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports)
+    + [Viewing or Modifying Invention Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/viewing-or-modifying-invention-reports)
+    + [Reviewing Invention Disclosures](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-invention-disclosures)
+    + [Title Election Decision: Responding to "Not Elect Title" Decisions](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/title-election-decision-responding-not-elect)
+    + [Reviewing Invention Title Election, Initial Patent Application, and Non-Provisional Patent Application Extension Request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-invention-title-election-initial)
+    + [Reviewing an Invention Void Request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-invention-void-request)
+    + [Reviewing an Invention Assignment Request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-invention-assignment-request)
+    + [Reviewing an Invention Transfer Request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-invention-transfer-request)
+    + [Reviewing a Domestic Manufacture Waiver Request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request)
+* [Patent Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports)
+    + [Viewing or Modifying Patent Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports/viewing-or-modifying-patent-reports)
+    + [Reviewing Government Support Clauses](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports/reviewing-government-support-clauses)
+    + [Reviewing a Confirmatory License](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports/reviewing-confirmatory-license)
+    + [Responding to Patents that Have Been Listed as Abandoned](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports/responding-patents-have-been-listed-abandoned)
+    + [Reviewing a Patent Void Request](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports/reviewing-patent-void-request)
+    + [Reviewing a Patent Assignment Request](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports/reviewing-patent-assignment-request)
+    + [Reviewing a Patent Transfer Request](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports/reviewing-patent-transfer-request)
+* [Utilization Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/utilization-reports)
+    + [Viewing or Modifying Utilization Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/utilization-reports/viewing-or-modifying-utilization-reports)
+* [Generating Reports from iEdison Data](https://www.nist.gov/iedison/iedison-agency-user-guide/generating-reports-iedison-data)
+    + [Generating Standard Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/generating-reports-iedison-data/generating-standard-reports)
+    + [Building a Custom iEdison Report](https://www.nist.gov/iedison/iedison-agency-user-guide/generating-reports-iedison-data/building-custom-iedison-report)
+    + [Retrieving a Saved Custom Report](https://www.nist.gov/iedison/iedison-agency-user-guide/generating-reports-iedison-data/retrieving-saved-custom-report)
+* [General Topics](https://www.nist.gov/iedison/iedison-agency-user-guide/general-topics)
+    + [Navigating Notifications](https://www.nist.gov/iedison/iedison-agency-user-guide/general-topics/navigating-notifications)
+    + [Notification Clearance Instructions for Agencies](https://www.nist.gov/iedison/iedison-agency-user-guide/general-topics/notification-clearance-instructions-agencies)
+    + [Initiating a Communication with Contractors](https://www.nist.gov/iedison/iedison-agency-user-guide/general-topics/initiating-communication-contractors)
+    + [Responding to a Communication or Discussion](https://www.nist.gov/iedison/iedison-agency-user-guide/general-topics/responding-communication-or-discussion)
+    + [How to Submit a Help Desk Ticket](https://www.nist.gov/iedison/iedison-agency-user-guide/general-topics/how-submit-help-desk-ticket)
+
+# Reviewing a Domestic Manufacture Waiver Request
+
+### **Things to know about Domestic Manufacturing Waivers**[permalink](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#things-to-know-about-domestic-manufacturing-waivers "Permalink to this item")
+
+The Bayh-Dole regulations state that "the contractor agrees that neither it nor any assignee will grant to any person the exclusive right to use or sell any subject inventions in the United States unless such person agrees that any products embodying the subject invention or produced through the use of the subject invention will be manufactured substantially in the United States." However, agencies can waive this requirement on a case-by-case basis if the contractor or their assignee can show either 1) "that reasonable but unsuccessful efforts have been made to grant licenses on similar terms to potential licensees that would be likely to manufacture substantially in the United States" or 2) "that under the circumstances domestic manufacture is not commercially feasible."
+
+Until a common form is developed for all agency use, agencies will need to develop their own form to use for contractors to submit as the "supporting document" to accompany this request and provide facts to establish their fulfillment of one or both of the criteria for waiver described above. Additionally, each agency needs to have their own internal review/approval process for these requests as well as an appellate procedure in the event that a denial is appealed under 37 CFR 401.11.
+
+**To review a Domestic Manufacturing Waiver Request, complete the following steps:**
+
+1. **[Open the Invention Report with the pending request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#1)**
+2. **[Start the Review](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#2)**
+3. **[Review the request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#3)**
+4. **[Approve or deny the request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#4)**
+
+## 1\. Open the Invention Report with the pending request[permalink](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#1-open-the-invention-report-with-the-pending-request "Permalink to this item")
+
+When an organization user has submitted a request, you will receive an Alert Notification in your dashboard. Click on the Invention Report number to view the status of the request.
+
+[![Dashboard screenshot.](https://www.nist.gov/sites/default/files/styles/480_x_480_limit/public/images/2022/06/01/56A.png.webp?itok=VdY_2kXT "width=480 | height=326")](https://www.nist.gov/sites/default/files/styles/2800_x_2800_limit/public/images/2022/06/01/56A.png.webp?itok=Zg5Z5QCJ)
+
+[Download](https://www.nist.gov/sites/default/files/images/2022/06/01/56A.png) | [Image info](https://www.nist.gov/media/645071)
+
+## 2\. Start Review[permalink](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#2-start-review "Permalink to this item")
+
+Navigate to the Requests panel of the Invention Report to review the request. Click the "Start Review" button. The status of the request will change from Submitted to Pending for the requester. This lets the contractor know that you have received the request, and the request is under review.
+
+[![Waiver request screenshot.](https://www.nist.gov/sites/default/files/styles/480_x_480_limit/public/images/2022/06/01/56B.png.webp?itok=BR4-wcQS "width=480 | height=301")](https://www.nist.gov/sites/default/files/styles/2800_x_2800_limit/public/images/2022/06/01/56B.png.webp?itok=08kl5-xJ)
+
+[Download](https://www.nist.gov/sites/default/files/images/2022/06/01/56B.png) | [Image info](https://www.nist.gov/media/645076)
+
+## 3\. Review the request[permalink](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#3-review-the-request "Permalink to this item")
+
+The contractor's supporting document attachment will appear under "Status and Supporting Document." Click the link to download the attachment for your review.
+
+[![Waiver request screenshot.](https://www.nist.gov/sites/default/files/styles/480_x_480_limit/public/images/2022/06/01/56C.png.webp?itok=2RHW3WVC "width=480 | height=301")](https://www.nist.gov/sites/default/files/styles/2800_x_2800_limit/public/images/2022/06/01/56C.png.webp?itok=f7VXdwbw)
+
+[Download](https://www.nist.gov/sites/default/files/images/2022/06/01/56C.png) | [Image info](https://www.nist.gov/media/645081)
+
+### What if I need additional info or want the awardee to amend their request?[permalink](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#what-if-i-need-additional-info-or-want-the-awardee-to-amend-thei "Permalink to this item")
+
+If you need additional information in order to process the request or if you have any additional or follow-up questions, notify the awardee by initiating a discussion under the "Discussions" Section of the Invention Report. The awardee can then edit the request with any additional information or updated documentation requested. Then you can approve or deny the request based on this updated information.
+
+## 4\. Approve or deny the request[permalink](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request#4-approve-or-deny-the-request "Permalink to this item")
+
+Once you have made a decision, click the "Agency Approval" button. A popup window will open with details of the request along with "Approve" and "Deny" buttons.
+
+[![Review screenshot.](https://www.nist.gov/sites/default/files/styles/480_x_480_limit/public/images/2022/06/01/56D.png.webp?itok=cf6RBJ63 "width=480 | height=344")](https://www.nist.gov/sites/default/files/styles/2800_x_2800_limit/public/images/2022/06/01/56D.png.webp?itok=giWIN9sw)
+
+[Download](https://www.nist.gov/sites/default/files/images/2022/06/01/56D.png) | [Image info](https://www.nist.gov/media/645086)
+
+When you click the "Approve" button, a window will open providing you the option to upload a Domestic Manufacture Waiver Approval Letter. Click the "Choose" button to select the letter from your local hard drive. This document will be viewable by the organization so they are aware of the terms and conditions of this waiver.
+
+[![Approve request screenshot.](https://www.nist.gov/sites/default/files/styles/480_x_480_limit/public/images/2022/06/01/56D1.png.webp?itok=gFKXJ3Lj "width=480 | height=376")](https://www.nist.gov/sites/default/files/styles/2800_x_2800_limit/public/images/2022/06/01/56D1.png.webp?itok=ABoyGvFI)
+
+[Download](https://www.nist.gov/sites/default/files/images/2022/06/01/56D1.png) | [Image info](https://www.nist.gov/media/645091)
+
+Click the "Confirm" button to finalize the request.
+
+The organization will be notified, and the organization's Domestic Manufacturing Requirement for this particular invention will be waived.
+
+When you click the "Deny" button, a popup window will open with a comments field requiring you to input a reason for the denial for the requester to review. The regulations require that you "provide the contractor with a written statement of the basis" for your denial and include "any relevant facts that were relied upon" in your decision. See 37 CFR 401.11.
+
+[![Deny request screenshot.](https://www.nist.gov/sites/default/files/styles/480_x_480_limit/public/images/2022/06/01/56E.png.webp?itok=sHdPC856 "width=480 | height=342")](https://www.nist.gov/sites/default/files/styles/2800_x_2800_limit/public/images/2022/06/01/56E.png.webp?itok=FO0k5-dS)
+
+[Download](https://www.nist.gov/sites/default/files/images/2022/06/01/56E.png) | [Image info](https://www.nist.gov/media/645101)
+
+Once you have typed your reason for denying the request, click the "Deny" button.
+
+Created June 1, 2022, Updated August 8, 2022
+
+* [Reviewing an Invention Transfer Request](https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-invention-transfer-request "Go to previous page")
+* [Patent Reports](https://www.nist.gov/iedison/iedison-agency-user-guide/patent-reports "Go to next page")
+
+[Was this page helpful?](https://www.nist.gov/webform/page_feedback?page=https://www.nist.gov/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request&page_title=Reviewing%20a%20Domestic%20Manufacture%20Waiver%20Request&source_entity_type=node&source_entity_id=1704786)
+
+[![National Institute of Standards and Technology logo](https://www.nist.gov/libraries/nist-component-library/dist/img/logo/NIST-Logo-Brand-White.svg "width=300px | height=42px")](https://www.nist.gov/ "National Institute of Standards and Technology")
+
+### HEADQUARTERS
+
+100 Bureau Drive  
+Gaithersburg, MD 20899  
+[301-975-2000](tel:301-975-2000)
+
+[Webmaster](mailto:do-webmaster@nist.gov) | [Contact Us](https://www.nist.gov/contact) | [Our Other Offices](https://www.nist.gov/visit)
+
+How are we doing? [Feedback](https://www.nist.gov/webform/nist_gov_feedback?page=/iedison/iedison-agency-user-guide/invention-reports/reviewing-domestic-manufacture-waiver-request "Provide feedback")
+
+* [Site Privacy](https://www.nist.gov/privacy-policy)
+* [Accessibility](https://www.nist.gov/oism/accessibility)
+* [Privacy Program](https://www.nist.gov/privacy)
+* [Copyright & Disclaimers](https://www.nist.gov/copyrights-disclaimers)
+* [Vulnerability Disclosure](https://www.commerce.gov/vulnerability-disclosure-policy)
+* [No Fear Act Policy](https://www.nist.gov/no-fear-act-policy)
+* [FOIA](https://www.nist.gov/office-director/freedom-information-act)
+* [Environmental Policy](https://www.nist.gov/environmental-policy-statement)
+* [Scientific Integrity](https://www.nist.gov/summary-report-scientific-integrity)
+* [Information Quality Standards](https://www.nist.gov/nist-information-quality-standards)
+* [Commerce.gov](https://www.commerce.gov/)
+* [Science.gov](http://www.science.gov/)
+* [USA.gov](http://www.usa.gov/)
+* [Vote.gov](https://vote.gov/)
+

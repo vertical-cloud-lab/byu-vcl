@@ -1,0 +1,1182 @@
+[
+  {
+    "action": "update",
+    "reason": "Use rule-defined pre_seed for explicitly named pre-seed rounds.",
+    "before": {
+      "key": "e2b-dev",
+      "venture": "E2B",
+      "type": "pre_seed",
+      "label": "Pre-seed financing",
+      "date": "2023-09",
+      "amount_usd": "2500000",
+      "lead": "Kaya VC",
+      "investors": "Mat\u011bj Turek (person) | Juraj Mas\u00e1r (person) | Jakub Jurov\u00fdch (person) | Liu Jiang (person) | Paul Copplestone (person)",
+      "source_url": "https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "e2b-dev",
+      "venture": "E2B",
+      "type": "pre_seed",
+      "label": "Pre-seed financing",
+      "date": "2023-09",
+      "amount_usd": "2500000",
+      "lead": "Kaya VC",
+      "investors": "Mat\u011bj Turek (person) | Juraj Mas\u00e1r (person) | Jakub Jurov\u00fdch (person) | Liu Jiang (person) | Paul Copplestone (person)",
+      "source_url": "https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Use rule-defined pre_seed for explicitly named pre-seed rounds.",
+    "before": {
+      "key": "supermemoryai",
+      "venture": "Supermemory",
+      "type": "seed",
+      "label": "Pre-seed; company announced $3M, lead investor reported $2.6M",
+      "date": "2025-10",
+      "amount_usd": "3000000",
+      "lead": "Susa Ventures | Browder Capital | SF1.vc",
+      "investors": "Dane Knecht (person) | Theo Browne (person) | David Cramer (person) | Julian Weisser (person) | Jeff Dean (person) | Logan Kilpatrick (person)",
+      "source_url": "https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms | https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/ | https://susaventures.substack.com/p/our-investment-in-supermemory",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "supermemoryai",
+      "venture": "Supermemory",
+      "type": "pre_seed",
+      "label": "Pre-seed; company announced $3M, lead investor reported $2.6M",
+      "date": "2025-10",
+      "amount_usd": "3000000",
+      "lead": "Susa Ventures | Browder Capital | SF1.vc",
+      "investors": "Dane Knecht (person) | Theo Browne (person) | David Cramer (person) | Julian Weisser (person) | Jeff Dean (person) | Logan Kilpatrick (person)",
+      "source_url": "https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms | https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/ | https://susaventures.substack.com/p/our-investment-in-supermemory",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Use rule-defined pre_seed for explicitly named pre-seed rounds.",
+    "before": {
+      "key": "getzep",
+      "venture": "Zep",
+      "type": "seed",
+      "label": "Pre-seed financing; round date and instrument differ across databases",
+      "date": "2023-12",
+      "amount_usd": "1800000",
+      "lead": "Engineering Capital",
+      "investors": "",
+      "source_url": "https://www.bouncewatch.com/company/zep-ai | https://pitchbook.com/profiles/company/539323-75",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "getzep",
+      "venture": "Zep",
+      "type": "pre_seed",
+      "label": "Pre-seed financing; round date and instrument differ across databases",
+      "date": "2023-12",
+      "amount_usd": "1800000",
+      "lead": "Engineering Capital",
+      "investors": "",
+      "source_url": "https://www.bouncewatch.com/company/zep-ai | https://pitchbook.com/profiles/company/539323-75",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Use rule-defined pre_seed for explicitly named pre-seed rounds.",
+    "before": {
+      "key": "airbyte",
+      "venture": "Airbyte",
+      "type": "seed",
+      "label": "Pre-seed",
+      "date": "2020-01",
+      "amount_usd": "600000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://airbyte.com/blog/how-we-closed-our-pre-seed-round-in-2-weeks",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "airbyte",
+      "venture": "Airbyte",
+      "type": "pre_seed",
+      "label": "Pre-seed",
+      "date": "2020-01",
+      "amount_usd": "600000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://airbyte.com/blog/how-we-closed-our-pre-seed-round-in-2-weeks",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Non-equity accelerator assistance: no disclosed cash cheque or prize.",
+    "row": {
+      "key": "dbeaver",
+      "venture": "DBeaver Corp",
+      "type": "accelerator",
+      "label": "MassChallenge Switzerland accelerator (non-equity assistance; no cash award confirmed)",
+      "date": "2019-05",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "MassChallenge",
+      "source_url": "https://app.dealroom.co/companies/dbeaver",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Incubator membership is not evidence that outside money changed hands.",
+    "row": {
+      "key": "bitcraze",
+      "venture": "Bitcraze",
+      "type": "accelerator",
+      "label": "Minc business incubator; cash or equity investment not disclosed",
+      "date": "2014-03",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Minc",
+      "source_url": "https://www.bitcraze.io/2014/03/joining-the-business-incubator-minc/",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Database participation record not corroborated as capital funding.",
+    "row": {
+      "key": "airbyte",
+      "venture": "Airbyte",
+      "type": "accelerator",
+      "label": "Plug and Play Insurtech; database-reported event, cash funding unverified",
+      "date": "2024-10",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Plug and Play Insurtech",
+      "source_url": "https://www.cbinsights.com/company/airbyte/financials",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Award cancelled with no disbursement; not funding received. Retained in notes as excluded award.",
+    "row": {
+      "key": "payloadcms",
+      "venture": "Payload",
+      "type": "grant_government",
+      "label": "Michigan Business Development Program performance-based award; cancelled October 2026 with no disbursement",
+      "date": "2023-10",
+      "amount_usd": "302500",
+      "lead": "Michigan Economic Development Corporation",
+      "investors": "",
+      "source_url": "https://www.michiganbusiness.org/press-releases/2023/10/whitmer-announces-148-high-tech-manufacturing-jobs-grand-rapids-grand-traverse-county/",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "YC Summer Fellows offer/receipt is ambiguous; no completed grant verified.",
+    "row": {
+      "key": "supermemoryai",
+      "venture": "Supermemory",
+      "type": "grant_philanthropic",
+      "label": "Reported Y Combinator Summer Fellows grant award; receipt unverified",
+      "date": "",
+      "amount_usd": "",
+      "lead": "Y Combinator",
+      "investors": "",
+      "source_url": "https://analyticsindiamag.com/ai-features/the-20-year-old-who-said-no-to-yc",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Primary page labels $30000 as reservations despite contradictory success language; no confirmed settlement.",
+    "row": {
+      "key": "neuromore",
+      "venture": "neuromore",
+      "type": "crowdfunding_equity",
+      "label": "Republic campaign reported closed; $30K also labeled reservations; cash settlement unverified",
+      "date": "2023-08",
+      "amount_usd": "30000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://republic.com/neuromore",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "March 2023 record plausibly same April announced seed; not treated as a second independent event.",
+    "row": {
+      "key": "dbeaver",
+      "venture": "DBeaver Corp",
+      "type": "seed",
+      "label": "Reported Seed II (database-only; may be closing of April 2023 seed)",
+      "date": "2023-03",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Prospective Technologies",
+      "source_url": "https://www.cbinsights.com/company/dbeaver/financials",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Three date-less database incubation records do not substantiate three discrete cash transfers.",
+    "row": {
+      "key": "Fincept-Corporation",
+      "venture": "Fincept Corporation",
+      "type": "accelerator",
+      "label": "Reported accelerator/incubator deal 1; capital transfer and round-specific investors unverified",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://pitchbook.com/profiles/company/649229-41",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Three date-less database incubation records do not substantiate three discrete cash transfers.",
+    "row": {
+      "key": "Fincept-Corporation",
+      "venture": "Fincept Corporation",
+      "type": "accelerator",
+      "label": "Reported accelerator/incubator deal 2; capital transfer and round-specific investors unverified",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://pitchbook.com/profiles/company/649229-41",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Three date-less database incubation records do not substantiate three discrete cash transfers.",
+    "row": {
+      "key": "Fincept-Corporation",
+      "venture": "Fincept Corporation",
+      "type": "accelerator",
+      "label": "Reported accelerator/incubator deal 3; capital transfer and round-specific investors unverified",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://pitchbook.com/profiles/company/649229-41",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "add",
+    "reason": "Rules allow unallocated disclosed backers; one provisional association row instead of three invented event assignments.",
+    "row": {
+      "key": "Fincept-Corporation",
+      "venture": "Fincept Corporation",
+      "type": "venture_unspecified",
+      "label": "Reported accelerator backing; cash transfer and event structure unverified",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "CHARUSAT Innovative Ventures Foundation | i-Hub Gujarat | Startup Gujarat",
+      "source_url": "https://pitchbook.com/profiles/company/649229-41",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Company retrospective states both amounts; earlier pre-seed tactics post does not.",
+    "before": {
+      "key": "airbyte",
+      "venture": "Airbyte",
+      "type": "pre_seed",
+      "label": "Pre-seed",
+      "date": "2020-01",
+      "amount_usd": "600000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://airbyte.com/blog/how-we-closed-our-pre-seed-round-in-2-weeks",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "airbyte",
+      "venture": "Airbyte",
+      "type": "pre_seed",
+      "label": "Pre-seed",
+      "date": "2020-01",
+      "amount_usd": "600000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://airbyte.com/blog/what-the-fundraising-roller-coaster-looks-like-under-covid-19-lockdown",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Company retrospective states both amounts; earlier pre-seed tactics post does not.",
+    "before": {
+      "key": "airbyte",
+      "venture": "Airbyte",
+      "type": "seed",
+      "label": "Seed",
+      "date": "2020-05",
+      "amount_usd": "1200000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://airbyte.com/blog/how-we-closed-our-pre-seed-round-in-2-weeks",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "airbyte",
+      "venture": "Airbyte",
+      "type": "seed",
+      "label": "Seed",
+      "date": "2020-05",
+      "amount_usd": "1200000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://airbyte.com/blog/what-the-fundraising-roller-coaster-looks-like-under-covid-19-lockdown",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Source lists five new investors but does not designate them leads.",
+    "before": {
+      "key": "jfrog",
+      "venture": "JFrog",
+      "type": "series_c",
+      "label": "Series C",
+      "date": "2016-01",
+      "amount_usd": "50000000",
+      "lead": "Scale Venture Partners | Sapphire Ventures | Battery Ventures | Vintage Investment Partners | Qumra Capital",
+      "investors": "Gemini Israel Ventures | VMware",
+      "source_url": "https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "jfrog",
+      "venture": "JFrog",
+      "type": "series_c",
+      "label": "Series C",
+      "date": "2016-01",
+      "amount_usd": "50000000",
+      "lead": "",
+      "investors": "Scale Venture Partners | Sapphire Ventures | Battery Ventures | Vintage Investment Partners | Qumra Capital | Gemini Israel Ventures | VMware",
+      "source_url": "https://techcrunch.com/2016/01/20/jfrog-takes-big-leap-forward-with-50-million-round/",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Normalize fund vehicle and nominee names to firms; co-leads as UK government announcement.",
+    "before": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "series_a",
+      "label": "Series A",
+      "date": "2019-01",
+      "amount_usd": "5900000",
+      "lead": "Foresight Williams Technology EIS Fund | Ananda Impact Ventures | Downing Ventures",
+      "investors": "Rathbone Nominees",
+      "source_url": "https://techcrunch.com/2019/01/14/open-bionics-closes-5-9m-series-a-for-its-affordable-and-cool-bionic-limbs/",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "series_a",
+      "label": "Series A",
+      "date": "2019-01",
+      "amount_usd": "5900000",
+      "lead": "Foresight Group | Ananda Impact Ventures | Downing Ventures",
+      "investors": "Rathbones",
+      "source_url": "https://www.gov.uk/government/news/bionic-arm-start-up-secures-46-million-to-go-global",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Primary contemporary reporting explicitly confirms the venture received accelerator capital.",
+    "before": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "accelerator",
+      "label": "Disney Accelerator powered by Techstars; combined package",
+      "date": "2015-07",
+      "amount_usd": "120000",
+      "lead": "",
+      "investors": "Disney Accelerator | Techstars",
+      "source_url": "https://seedtable.com/companies/open-bionics/funding-rounds",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "accelerator",
+      "label": "Disney Accelerator powered by Techstars; combined package",
+      "date": "2015-07",
+      "amount_usd": "120000",
+      "lead": "",
+      "investors": "Disney Accelerator | Techstars",
+      "source_url": "https://www.wired.com/story/open-bionics-hands-joel-gibbard/",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Use final amended filing that actually states amount sold.",
+    "before": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "seed",
+      "label": "Seed equity private placement; final amended amount sold",
+      "date": "2011-12",
+      "amount_usd": "2250000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886012000001/0001538860-12-000001-index.htm",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "seed",
+      "label": "Seed equity private placement; January 2012 notice, final August 2012 amended amount",
+      "date": "2012-01",
+      "amount_usd": "2250000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886012000004/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Founder post and company public announcement are October; August was closing date.",
+    "before": {
+      "key": "fosrl",
+      "venture": "Fossorial (Pangolin)",
+      "type": "seed",
+      "label": "Seed round; closed August 2025, announced October 2025",
+      "date": "2025-08",
+      "amount_usd": "4700000",
+      "lead": "Chemistry",
+      "investors": "Y Combinator | Blast Club | 468 Capital | Transpose Platform | Pioneer Fund | Tekedia Capital",
+      "source_url": "https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765 | https://www.linkedin.com/posts/pangolin-net_announcing-a-47m-seed-fundraise-for-pangolin-activity-7381038450742878208-dkUY | https://www.tekedia.com/welcome-pangolin-to-tekedia-capital/",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "fosrl",
+      "venture": "Fossorial (Pangolin)",
+      "type": "seed",
+      "label": "Seed round; closed August 2025, announced October 2025",
+      "date": "2025-10",
+      "amount_usd": "4700000",
+      "lead": "Chemistry",
+      "investors": "Y Combinator | Blast Club | 468 Capital | Transpose Platform | Pioneer Fund | Tekedia Capital",
+      "source_url": "https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765 | https://www.linkedin.com/posts/pangolin-net_announcing-a-47m-seed-fundraise-for-pangolin-activity-7381038450742878208-dkUY | https://www.tekedia.com/welcome-pangolin-to-tekedia-capital/",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "November 12 1998 is announcement; October was first closing.",
+    "before": {
+      "key": "va-linux",
+      "venture": "VA Linux Systems",
+      "type": "series_a",
+      "label": "Series A first closing; announced November 1998",
+      "date": "1998-10",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Sequoia Capital",
+      "source_url": "https://www.linuxtoday.com/infrastructure/sequoia-capital-invests-in-linux-start-up-va-research/",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "va-linux",
+      "venture": "VA Linux Systems",
+      "type": "series_a",
+      "label": "Series A first closing; announced November 1998",
+      "date": "1998-11",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Sequoia Capital",
+      "source_url": "https://www.linuxtoday.com/infrastructure/sequoia-capital-invests-in-linux-start-up-va-research/",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Intel public announcement was March 1999; February was closing.",
+    "before": {
+      "key": "va-linux",
+      "venture": "VA Linux Systems",
+      "type": "series_a",
+      "label": "Series A additional closing; Intel investment",
+      "date": "1999-02",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Intel",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1096199/0000891618-99-005600.txt",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "va-linux",
+      "venture": "VA Linux Systems",
+      "type": "series_a",
+      "label": "Series A additional closing; Intel investment",
+      "date": "1999-03",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Intel",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1096199/0000891618-99-005600.txt",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "January 1 in databases is a placeholder; YC states Winter 2024 only.",
+    "before": {
+      "key": "getzep",
+      "venture": "Zep",
+      "type": "accelerator",
+      "label": "Y Combinator Winter 2024 investment; also classified as convertible note",
+      "date": "2024-01",
+      "amount_usd": "500000",
+      "lead": "",
+      "investors": "Y Combinator",
+      "source_url": "https://pitchbook.com/profiles/company/539323-75 | https://www.cbinsights.com/company/zep-2/financials | https://www.ycombinator.com/companies/zep-ai",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "getzep",
+      "venture": "Zep",
+      "type": "accelerator",
+      "label": "Y Combinator Winter 2024 investment; also classified as convertible note",
+      "date": "",
+      "amount_usd": "500000",
+      "lead": "",
+      "investors": "Y Combinator",
+      "source_url": "https://pitchbook.com/profiles/company/539323-75 | https://www.cbinsights.com/company/zep-2/financials | https://www.ycombinator.com/companies/zep-ai",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "add",
+    "reason": "Company explicitly identifies itself as consortium beneficiary and names the public funders; no company allocation disclosed.",
+    "row": {
+      "key": "bcn3d",
+      "venture": "BCN3D Technologies",
+      "type": "grant_government",
+      "label": "VIVALDI (MIP-20211033) R&D project grant; 2021 call, award month undisclosed",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "CDTI | European Union NextGenerationEU",
+      "source_url": "https://bcn3d.com/es/sobre-nosotros/",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "add",
+    "reason": "Company explicitly identifies itself as consortium beneficiary and names the public funders; no company allocation disclosed.",
+    "row": {
+      "key": "bcn3d",
+      "venture": "BCN3D Technologies",
+      "type": "grant_government",
+      "label": "HIBRI4D (MIP-20211041) R&D project grant; 2021 call, award month undisclosed",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "CDTI | European Union NextGenerationEU",
+      "source_url": "https://bcn3d.com/es/sobre-nosotros/",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Ongoing donation programme; identify funder class rather than implying platform equity.",
+    "before": {
+      "key": "BruceDevices",
+      "venture": "Bruce Devices",
+      "type": "other",
+      "label": "Ongoing Patreon community crowdfunding (campaign launched November 2024)",
+      "date": "2024-11",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://graphtreon.com/creator/BruceFirmware",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "BruceDevices",
+      "venture": "Bruce Devices",
+      "type": "other",
+      "label": "Ongoing Patreon community crowdfunding (campaign launched November 2024)",
+      "date": "2024-11",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Patreon backers",
+      "source_url": "https://graphtreon.com/creator/BruceFirmware",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Use ongoing-support disclosure date; not an invented round-close date.",
+    "before": {
+      "key": "TecharoHQ",
+      "venture": "Techaro",
+      "type": "other",
+      "label": "Ongoing Anubis donations and corporate sponsorship; not a priced equity round",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Raptor Computing Systems | Databento | Spur Intelligence | Synthient | Unipromos | Uvensys | Gitea | Prolocation | Terminal Trove | canine.tools | Weblate | Uberspace | Wildbase | Anexia | embeDD | Qwertiko | Wenet",
+      "source_url": "https://github.com/techaroHQ/anubis | https://anubis.techaro.lol/blog/2025/funding-update",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "TecharoHQ",
+      "venture": "Techaro",
+      "type": "other",
+      "label": "Ongoing donations and corporate sponsorship; funding update August 2025",
+      "date": "2025-08",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "Raptor Computing Systems | Databento | Spur Intelligence | Synthient | Unipromos | Uvensys | Gitea | Prolocation | Terminal Trove | canine.tools | Weblate | Uberspace | Wildbase | Anexia | embeDD | Qwertiko | Wenet",
+      "source_url": "https://github.com/techaroHQ/anubis | https://anubis.techaro.lol/blog/2025/funding-update",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Ledger funding record is pending, not completed; excluded from received outside funding.",
+    "row": {
+      "key": "farmbot",
+      "venture": "FarmBot",
+      "type": "debt",
+      "label": "Shopify Capital loan (published funding transaction)",
+      "date": "2024-11",
+      "amount_usd": "39000",
+      "lead": "",
+      "investors": "Shopify Capital",
+      "source_url": "https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2025-02-20.csv",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "exclude",
+    "reason": "Ledger funding record is pending, not completed; excluded from received outside funding.",
+    "row": {
+      "key": "farmbot",
+      "venture": "FarmBot",
+      "type": "debt",
+      "label": "Shopify Capital loan (published funding transaction)",
+      "date": "2025-06",
+      "amount_usd": "80000",
+      "lead": "",
+      "investors": "Shopify Capital",
+      "source_url": "https://meta.farm.bot/assets/data/timeline/accounts/shopify_capital_loans/shopify_capital_loan_2025-06-20.csv",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Source gives project start, not award announcement.",
+    "before": {
+      "key": "bitcraze",
+      "venture": "Bitcraze",
+      "type": "grant_government",
+      "label": "Vinnova grant 2022-01270; efficient micro-drone propellers",
+      "date": "2022-07",
+      "amount_usd": "30126",
+      "lead": "",
+      "investors": "Vinnova",
+      "source_url": "https://www.vinnova.se/en/p/efficiency-optimisation-of-mass-produced-micro-drone-propellers",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "bitcraze",
+      "venture": "Bitcraze",
+      "type": "grant_government",
+      "label": "Vinnova grant 2022-01270; efficient micro-drone propellers; project starts 2022-07",
+      "date": "",
+      "amount_usd": "30126",
+      "lead": "",
+      "investors": "Vinnova",
+      "source_url": "https://www.vinnova.se/en/p/efficiency-optimisation-of-mass-produced-micro-drone-propellers",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "API gives project start, not announcement date; preserve start in label.",
+    "before": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: Hero 2 Product Range; company grant GBP 229460.27",
+      "date": "2024-04",
+      "amount_usd": "286298",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/ae48f672-a774-43e7-a958-4c8c1e727fb7",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: Hero 2 Product Range; company grant GBP 229460.27; starts 2024-04",
+      "date": "",
+      "amount_usd": "286298",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/ae48f672-a774-43e7-a958-4c8c1e727fb7",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "API gives project start, not announcement date; preserve start in label.",
+    "before": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: Novel Partial Hand Prosthesis for people with disability; company grant GBP 50000",
+      "date": "2023-04",
+      "amount_usd": "62510",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/404463bf-b6e2-4cd1-a1fa-1b9b396b7ff5",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: Novel Partial Hand Prosthesis for people with disability; company grant GBP 50000; starts 2023-04",
+      "date": "",
+      "amount_usd": "62510",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/404463bf-b6e2-4cd1-a1fa-1b9b396b7ff5",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "API gives project start, not announcement date; preserve start in label.",
+    "before": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: Digital clinical pathway for upper limb prosthetics and rehabilitation; company grant GBP 174717.6",
+      "date": "2020-10",
+      "amount_usd": "225753",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/9c2540e5-e001-4808-be81-1a927e2e06de",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: Digital clinical pathway for upper limb prosthetics and rehabilitation; company grant GBP 174717.6; starts 2020-10",
+      "date": "",
+      "amount_usd": "225753",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/9c2540e5-e001-4808-be81-1a927e2e06de",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "API gives project start, not announcement date; preserve start in label.",
+    "before": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: End-to-end digital service for upper limb amputees and clinicians; company grant GBP 74992",
+      "date": "2020-06",
+      "amount_usd": "94130",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/81eb9a62-1ce2-4e73-8ad4-1b506f21eec9",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "open-bionics",
+      "venture": "Open Bionics",
+      "type": "grant_government",
+      "label": "Innovate UK: End-to-end digital service for upper limb amputees and clinicians; company grant GBP 74992; starts 2020-06",
+      "date": "",
+      "amount_usd": "94130",
+      "lead": "",
+      "investors": "Innovate UK",
+      "source_url": "https://gtr.ukri.org/api/v3/awards/81eb9a62-1ce2-4e73-8ad4-1b506f21eec9",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Fathom investor-level deal table explicitly maps its Terrastruct investment to December 2021 seed.",
+    "before": {
+      "key": "d2lang",
+      "venture": "Terrastruct",
+      "type": "seed",
+      "label": "Seed round",
+      "date": "2021-12",
+      "amount_usd": "2000000",
+      "lead": "",
+      "investors": "Haystack | Bloomberg Beta",
+      "source_url": "https://pitchbook.com/profiles/company/490983-04",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "d2lang",
+      "venture": "Terrastruct",
+      "type": "seed",
+      "label": "Seed round",
+      "date": "2021-12",
+      "amount_usd": "2000000",
+      "lead": "",
+      "investors": "Haystack | Bloomberg Beta | Fathom Capital",
+      "source_url": "https://pitchbook.com/profiles/company/490983-04",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Date follows Form D signature/disclosure month; first-sale month remains in notes.",
+    "before": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "venture_unspecified",
+      "label": "Equity private placement; stage not specified in filing",
+      "date": "2016-08",
+      "amount_usd": "4000000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886016000004/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "venture_unspecified",
+      "label": "Equity private placement; stage not specified in filing",
+      "date": "2016-09",
+      "amount_usd": "4000000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886016000004/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Date follows Form D signature/disclosure month; first-sale month remains in notes.",
+    "before": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "venture_unspecified",
+      "label": "Equity private placement; stage not specified in filing",
+      "date": "2017-06",
+      "amount_usd": "10000008",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886017000003/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "venture_unspecified",
+      "label": "Equity private placement; stage not specified in filing",
+      "date": "2017-07",
+      "amount_usd": "10000008",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886017000003/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Date follows Form D signature/disclosure month; first-sale month remains in notes.",
+    "before": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "venture_unspecified",
+      "label": "Equity private placement; stage not specified in filing",
+      "date": "2021-05",
+      "amount_usd": "2599991",
+      "lead": "",
+      "investors": "Morningside Venture Partners",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886021000002/xslFormDX01/primary_doc.xml",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "anaconda",
+      "venture": "Anaconda, Inc. (Continuum Analytics)",
+      "type": "venture_unspecified",
+      "label": "Equity private placement; stage not specified in filing",
+      "date": "2021-06",
+      "amount_usd": "2599991",
+      "lead": "",
+      "investors": "Morningside Venture Partners",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1538860/000153886021000002/xslFormDX01/primary_doc.xml",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "October 2024 filing publicly discloses September first sale.",
+    "before": {
+      "key": "efabless",
+      "venture": "Efabless",
+      "type": "debt",
+      "label": "Private debt offering; first sale September 2024",
+      "date": "2024-09",
+      "amount_usd": "2500000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2039822/000203982224000001/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "efabless",
+      "venture": "Efabless",
+      "type": "debt",
+      "label": "Private debt offering; first sale September 2024",
+      "date": "2024-10",
+      "amount_usd": "2500000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2039822/000203982224000001/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "February 2009 filing disclosure, not January first sale.",
+    "before": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_a",
+      "label": "Series A preferred stock; first sale January 2009",
+      "date": "2009-01",
+      "amount_usd": "100000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/vprr/0900/09003868.pdf",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_a",
+      "label": "Series A preferred stock; first sale January 2009",
+      "date": "2009-02",
+      "amount_usd": "100000",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://www.sec.gov/Archives/edgar/vprr/0900/09003868.pdf",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "May 2009 Form D signature/disclosure, not February first sale.",
+    "before": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_a",
+      "label": "Series A preferred stock; first sale February 2009",
+      "date": "2009-02",
+      "amount_usd": "575002",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://sec.gov/Archives/edgar/data/1439476/000143947609000003/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_a",
+      "label": "Series A preferred stock; first sale February 2009",
+      "date": "2009-05",
+      "amount_usd": "575002",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://sec.gov/Archives/edgar/data/1439476/000143947609000003/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "January 2010 Form D signature/disclosure, not December 2009 first sale.",
+    "before": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_a",
+      "label": "Series A preferred stock; December 2009 offering",
+      "date": "2009-12",
+      "amount_usd": "3890446",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://sec.gov/Archives/edgar/data/1439476/000143947610000004/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_a",
+      "label": "Series A preferred stock; December 2009 offering",
+      "date": "2010-01",
+      "amount_usd": "3890446",
+      "lead": "",
+      "investors": "",
+      "source_url": "https://sec.gov/Archives/edgar/data/1439476/000143947610000004/xslFormDX01/primary_doc.xml",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Cited September 2010 amended disclosure supplies final sold amount; December2009 is first sale.",
+    "before": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_b",
+      "label": "Series B; USD 11349984 sold by September 2010 amendment",
+      "date": "2009-12",
+      "amount_usd": "11349984",
+      "lead": "",
+      "investors": "Andreessen Horowitz | SV Angel",
+      "source_url": "https://sec.gov/Archives/edgar/data/1439476/000143947610000007/xslFormDX01/primary_doc.xml",
+      "confidence": "medium"
+    },
+    "after": {
+      "key": "nicira",
+      "venture": "Nicira",
+      "type": "series_b",
+      "label": "Series B; USD 11349984 sold by September 2010 amendment",
+      "date": "2010-09",
+      "amount_usd": "11349984",
+      "lead": "",
+      "investors": "Andreessen Horowitz | SV Angel",
+      "source_url": "https://sec.gov/Archives/edgar/data/1439476/000143947610000007/xslFormDX01/primary_doc.xml",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Investor portfolio supports seed participation but January2026 SPV filing is not necessarily company financing date.",
+    "before": {
+      "key": "getzep",
+      "venture": "Zep",
+      "type": "seed",
+      "label": "DV seed investment; January 2026 participation disclosed, round structure unannounced",
+      "date": "2026-01",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "DV",
+      "source_url": "https://deora.vc",
+      "confidence": "low"
+    },
+    "after": {
+      "key": "getzep",
+      "venture": "Zep",
+      "type": "venture_unspecified",
+      "label": "DV disclosed seed participation; company financing date and structure unannounced",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "DV",
+      "source_url": "https://deora.vc",
+      "confidence": "low"
+    }
+  },
+  {
+    "action": "add",
+    "reason": "Rules permit a round-less prior-backer record when investor portfolios disclose backing but no original round can be located.",
+    "row": {
+      "key": "getzep",
+      "venture": "Zep",
+      "type": "venture_unspecified",
+      "label": "Unallocated disclosed backers; round/date/primary-versus-secondary structure unknown",
+      "date": "",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "First Star Ventures | Step Function",
+      "source_url": "https://firststar.vc/companies",
+      "confidence": "medium"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "Use accessible event-specific source, not a bot shell.",
+    "before": {
+      "key": "bcn3d",
+      "venture": "BCN3D Technologies",
+      "type": "venture_unspecified",
+      "label": "Follow-on equity co-investment; CDTI contribution EUR 1.035 million",
+      "date": "2021-10",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "CDTI Innvierte | Mundi Ventures | FIDES 4 | Mondragon Ventures",
+      "source_url": "https://www.europapress.es/ciencia/noticia-cdti-aprueba-nueva-coinversion-millon-euros-traves-innvierte-20211103123208.html",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "bcn3d",
+      "venture": "BCN3D Technologies",
+      "type": "venture_unspecified",
+      "label": "Follow-on equity co-investment; CDTI contribution EUR 1.035 million",
+      "date": "2021-10",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "CDTI Innvierte | Mundi Ventures | FIDES 4 | Mondragon Ventures",
+      "source_url": "https://www.webcapitalriesgo.com/el-cdti-aprueba-una-nueva-coinversion-en-bcn3d-por-e1m-a-traves-de-innvierte/",
+      "confidence": "high"
+    }
+  },
+  {
+    "action": "update",
+    "reason": "CNMV identifies JME Venture Capital as FIDES4 manager; do not output the fund vehicle.",
+    "before": {
+      "key": "bcn3d",
+      "venture": "BCN3D Technologies",
+      "type": "venture_unspecified",
+      "label": "Follow-on equity co-investment; CDTI contribution EUR 1.035 million",
+      "date": "2021-10",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "CDTI Innvierte | Mundi Ventures | FIDES 4 | Mondragon Ventures",
+      "source_url": "https://www.webcapitalriesgo.com/el-cdti-aprueba-una-nueva-coinversion-en-bcn3d-por-e1m-a-traves-de-innvierte/",
+      "confidence": "high"
+    },
+    "after": {
+      "key": "bcn3d",
+      "venture": "BCN3D Technologies",
+      "type": "venture_unspecified",
+      "label": "Follow-on equity co-investment; CDTI contribution EUR 1.035 million",
+      "date": "2021-10",
+      "amount_usd": "",
+      "lead": "",
+      "investors": "CDTI Innvierte | Mundi Ventures | JME Ventures | Mondragon Ventures",
+      "source_url": "https://www.webcapitalriesgo.com/el-cdti-aprueba-una-nueva-coinversion-en-bcn3d-por-e1m-a-traves-de-innvierte/",
+      "confidence": "high"
+    }
+  }
+]

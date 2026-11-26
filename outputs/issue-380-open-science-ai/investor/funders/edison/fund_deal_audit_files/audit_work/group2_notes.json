@@ -1,0 +1,69 @@
+[
+  {
+    "key": "Fincept-Corporation",
+    "note": "Fresh searches: 0; fetch attempts: 7. Searched Fincept Corporation, Fincept Terminal, TLK Industries, Tilak Patel, grants, raised/funded/seed, CHARUSAT/CIVF, i-Hub Gujarat, Startup Gujarat and incubation, and checked company, GitHub Sponsors, FOSS United, PitchBook, Tracxn and First Wings posts. PitchBook explicitly lists three completed accelerator/incubator financing records and separately names CHARUSAT Innovative Ventures Foundation, i-Hub Gujarat and Startup Gujarat as investors, but does not map any investor to any record: the three low-confidence rows preserve its event numbering without inventing assignments. Dates and amounts are blank because no event-specific month or amount is public; cash versus noncash support is unverified. Tracxn calls the company unfunded, so this is an unresolved material conflict and the venture is INCOMPLETE. GitHub confirms two private sponsors but supplies neither actual amounts, dates nor names, so no qualifying discrete donation event can be entered; the $2,000/month figure is a goal, not money raised. FOSS United/fundingjson entries are funding requests/plans, not grant awards; the $17,000 request is not a received grant. The August 2025 First Wings cohort-completion post documents learning/support, not capital, so it is excluded. No bootstrapped claim is made. Global limitation: deal_rules.md and funders_audit_sample.csv were absent; the explicit requested CSV schema was followed with lower-case accelerator, seed and venture event types. The requested citation-integrity skill was unavailable; BibTeX was nevertheless saved through e14c.web.save_citation.",
+    "incomplete": true,
+    "sources": [
+      "https://fossunited.org/grants/directory/fincept_corporation",
+      "https://pitchbook.com/profiles/company/649229-41",
+      "https://fincept.in/about",
+      "https://www.linkedin.com/company/finceptcorp",
+      "https://www.linkedin.com/posts/finceptcorp_fincept-activity-7364601616399847424-bv56",
+      "https://github.com/sponsors/Fincept-Corporation",
+      "https://tracxn.com/d/companies/fincept/__LLGI6lCYmCS-_iMK-RuPOmA-qGanE-LseclWVByqKAE"
+    ]
+  },
+  {
+    "key": "fosrl",
+    "note": "Fresh searches: 0; fetch attempts: 8. Searched Fossorial/Pangolin fundraising, Chemistry, YC, 2026 follow-ons, First Peak Ventures and conflicting $125,000/$500,000 entries; fetched founder, company, YC, investor and PitchBook sources. Founder Milo Schwartz dates YC acceptance to May 22, 2025 and identifies the Summer 2025 batch, independently confirmed by YC. The accelerator row uses the May commitment month and the documented universal $500,000 YC standard deal ($125,000 plus $375,000 simultaneous SAFEs); this is policy-based corroboration, not a Pangolin-specific payment receipt, so confidence is medium. PitchBook's $5.2M cumulative figure corroborates $500,000 plus the $4.7M seed, and is not added as another event. Conflicting August/September $125,000 and $500,000 database records are not counted as two extra rounds. Founder explicitly says the $4.7M seed CLOSED in August 2025; October is its public announcement month, not another raise (secondary sites also show November). Company announcement names Chemistry as lead; Tekedia's December 3 investor announcement explicitly joins the same $4.7M seed and is merged, not a new round. Blast Club is the same disclosed investor linked as BLAST Capital at blast.club by the founder; Transpose Platform is normalized from Transpose Platform Management. First Peak Ventures appears only in aggregate portfolio/database lists without a verified round assignment and is not attributed to either round. Nearly 1,000 individual donors are acknowledged, but no discrete donation's amount or named donor is disclosed in the fetched sources, so no fabricated crowdfunding event or total is entered. No verified later round, debt, secondary, grant, token or IPO issue was found. Global limitation: deal_rules.md and funders_audit_sample.csv were absent; the explicit requested CSV schema was followed with lower-case accelerator, seed and venture event types. The requested citation-integrity skill was unavailable; BibTeX was nevertheless saved through e14c.web.save_citation.",
+    "incomplete": false,
+    "sources": [
+      "https://www.linkedin.com/posts/pangolin-net_announcing-a-47m-seed-fundraise-for-pangolin-activity-7381038450742878208-dkUY",
+      "https://medium.com/@miloschwartz/how-we-raised-a-seed-round-as-an-open-source-infra-company-in-2025-0c2db3c97765",
+      "https://pangolin.net",
+      "https://www.ycombinator.com/companies/pangolin",
+      "https://www.tekedia.com/welcome-pangolin-to-tekedia-capital/",
+      "https://pitchbook.com/profiles/company/878781-43",
+      "https://www.ycombinator.com/blog/ycs-500-000-standard-deal/",
+      "https://www.ycombinator.com/deal/"
+    ]
+  },
+  {
+    "key": "GrapesJS",
+    "note": "Fresh searches: 0; fetch attempts: 5. Searched GrapesJS/Grapes Studio financing, seed, Open Core Ventures, amounts and 2026 follow-ons; fetched founder, investor launch, company-distributed press release, investor portfolio and Fundraising Fox. The June 2024 investor announcement explicitly confirms funding from Open Core Ventures; the June 13 founder post already describes the partnership. Date is the first disclosure month, not a known cash-transfer month. Stage is not disclosed, so type venture is deliberately generic rather than an invented seed/pre-seed classification; OCV is not designated lead without an explicit lead statement. Amount remains blank: Fundraising Fox shows $2M but cites an OCV portfolio page that does not substantiate a Grapes-specific funding amount. The October 2025 launch press release reiterates existing OCV backing and is not treated as another financing. No additional qualifying funding events were found. Global limitation: deal_rules.md and funders_audit_sample.csv were absent; the explicit requested CSV schema was followed with lower-case accelerator, seed and venture event types. The requested citation-integrity skill was unavailable; BibTeX was nevertheless saved through e14c.web.save_citation.",
+    "incomplete": false,
+    "sources": [
+      "https://opencoreventures.com/insights/grapesjs-creator-founds-grapes-studio-inc-to-bring-the-open-source-multi-project-no-code-website-editor-mainstream/",
+      "https://grapesjs.com/blog/grapesjs-and-beyond",
+      "https://opencoreventures.com/companies",
+      "https://www.prnewswire.com/news-releases/grapes-studio-launches-out-of-stealth-to-challenge-wordpress-with-ai-powered-html-first-website-builder-302584427.html",
+      "https://fundraisingfox.com/companies/grapesjs"
+    ]
+  },
+  {
+    "key": "Kilo-Org",
+    "note": "Fresh searches: 0; fetch attempts: 3. Searched Kilo Code fundraising, 2026 follow-ons, Open Core Ventures, early/angel capital, grants, debt and Series A; fetched company announcement, CNBC and financing counsel Fenwick. All three substantiate one $8M December 2025 seed led by Cota Capital with the four named participants. CNBC's earlier capital from cofounder Sid Sijbrandij is founder financing, not a disclosed outside-capital event, and is not added as an angel round or inferred into the seed. No OCV round or further outside financing was verified. Acquisition search results are excluded because an acquisition is not ordinary funding and no separate primary capital issue was evidenced. No unverified acquisition amount is entered. Global limitation: deal_rules.md and funders_audit_sample.csv were absent; the explicit requested CSV schema was followed with lower-case accelerator, seed and venture event types. The requested citation-integrity skill was unavailable; BibTeX was nevertheless saved through e14c.web.save_citation.",
+    "incomplete": false,
+    "sources": [
+      "https://blog.kilo.ai/p/kilo-raised-8-million-seed-round",
+      "https://www.cnbc.com/2025/12/10/former-gitlab-ceo-raises-8-million-for-kilo-to-compete-in-vibe-coding.html",
+      "https://www.fenwick.com/insights/experience/fenwick-represents-kilo-code-in-8m-seed-funding"
+    ]
+  },
+  {
+    "key": "letta-ai",
+    "note": "Fresh searches: 0; fetch attempts: 9. Searched Letta/MemGPT funding, seed, Series A, grants, accelerator and 2025/2026 follow-ons; checked Felicis, company press release and blog, TechCrunch, Tracxn and an anomalous $30M report. Felicis and TechCrunch date the same $10M seed to September 23, 2024; the company-distributed PRNewswire release is September 24, so all resolve to 2024-09 and are one event. Angel investors remain in that seed, not separate invented angel rounds; Astasia Myers acts for Felicis and is not an additional personal investor. Names use the full first-and-last display names disclosed in the funding sources, with the required person suffix. Database spinout/corporate-round entries lack a disclosed outside investment and are not extra funding events. Axisterian's isolated April 2026 $30M Series A story is rejected as unverified, not entered: it inconsistently calls the source seed and Series A, states no corroboration while claiming corroboration, names no investors, and its purported original at www.letta.ai/blog/series-a failed because the domain did not resolve. The real company site is letta.com; its current blog and March 2026 company update contain no such announcement, and November 1, 2026 Tracxn still reports $10M in one round. Targeted $30M/Series A searches found no reliable corroboration. No verified additional event was found. This is a source-quality rejection after reasonable research, not an assertion that undisclosed funding is impossible. Global limitation: deal_rules.md and funders_audit_sample.csv were absent; the explicit requested CSV schema was followed with lower-case accelerator, seed and venture event types. The requested citation-integrity skill was unavailable; BibTeX was nevertheless saved through e14c.web.save_citation.",
+    "incomplete": false,
+    "sources": [
+      "https://www.prnewswire.com/news-releases/berkeley-ai-research-lab-spinout-letta-raises-10m-seed-financing-led-by-felicis-to-build-ai-with-memory-302257004.html",
+      "https://www.felicis.com/blog/letta",
+      "https://ai.axisterian.com/news/letta-memgpt-agent-memory-platform",
+      "https://www.letta.com/blog/announcing-letta",
+      "https://www.letta.com/blog/",
+      "https://www.letta.ai/blog/series-a",
+      "https://www.letta.com/blog/our-next-phase/",
+      "https://tracxn.com/d/companies/letta/__U0QCJ7iCo3pX97e44fpKmKTCiUKKF6Ki8rWRAUaHxHY",
+      "https://techcrunch.com/2024/09/23/letta-one-of-uc-berkeleys-most-anticipated-ai-startups-has-just-come-out-of-stealth/"
+    ]
+  }
+]

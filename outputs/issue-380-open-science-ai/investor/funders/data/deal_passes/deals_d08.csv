@@ -1,0 +1,29 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-ncompass-technologies,nCompass Technologies,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/ncompass-technologies,other,YC directory page
+u4-neosync,Neosync,U4,accelerator,YC S22,2022,,,Y Combinator,https://www.ycombinator.com/companies/neosync,other,YC directory page
+u4-neosync,Neosync,U4,venture_unspecified,raised to date (Nucleus),2023-01,2100000,,Y Combinator,https://techcrunch.com/2023/01/16/nucleus-aims-to-simplify-the-process-of-managing-microservices/,news,Nucleus (Neosync's company) had raised $2.1M VC to date; only YC named
+u4-netmaker,Netmaker,U4,accelerator,YC W22,2022,,,Y Combinator,https://www.ycombinator.com/companies/netmaker,other,YC directory page
+u4-netmaker,Netmaker,U4,seed,seed after YC,2022-10,2300000,Lytical Ventures | Uncorrelated Ventures | SaxeCap,Y Combinator | Pioneer Fund,https://techcrunch.com/2022/10/20/netmaker-connects-servers-spread-across-multiple-locations-with-wireguard/,news,Pitch deck teardown dated 2023-06 covers same $2.3M
+u4-odigos-technologies-inc,Odigos Technologies Inc.,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/odigos-technologies-inc,other,YC directory page
+u4-odigos-technologies-inc,Odigos Technologies Inc.,U4,convertible_note,SAFE around YC Demo Day,2023,,,,https://techcrunch.com/2024/09/09/yc-alum-odigos-aims-to-help-enterprises-find-errors-and-stamp-out-latency-in-their-systems/,news,Angels unnamed; formerly Keyval
+u4-odigos-technologies-inc,Odigos Technologies Inc.,U4,venture_unspecified,most recent round,2024-09,13000000,Venture Guides,Firestreak Ventures | Mango Capital | Salesforce Ventures | Ben Sigelman (person) | Christine Yen (person),https://techcrunch.com/2024/09/09/yc-alum-odigos-aims-to-help-enterprises-find-errors-and-stamp-out-latency-in-their-systems/,news,Sigelman co-created OpenTelemetry; Yen is Honeycomb CEO
+u4-okteto,Okteto,U4,accelerator,YC W19,2019,,,Y Combinator,https://www.ycombinator.com/companies/okteto,other,YC directory page
+u4-okteto,Okteto,U4,series_a,Series A,2022-02,15000000,Two Sigma Ventures,Haystack | Root Ventures | Uncorrelated Ventures | John Kodumal (person) | Grant Miller (person) | Marc Campbell (person) | Dan Pinto (person) | Erica Brescia (person) | Florian Leibert (person),https://techcrunch.com/2022/02/24/kubernetes-development-platform-okteto-raises-15m-series-a/,news,
+u4-okteto,Okteto,U4,venture_unspecified,backed by (company about page),2023,,,Deviation Capital,https://www.okteto.com/about-us/,company,"About page lists YC, Root, Deviation, Uncorrelated, Haystack"
+u4-omnara,Omnara,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/omnara,other,YC directory page
+u4-onecli,OneCLI,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/onecli,other,YC directory page
+u4-onetriangle,OneTriangle,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/onetriangle,other,YC directory page
+u4-openbase,Openbase,U4,accelerator,YC S20,2020,,,Y Combinator,https://www.ycombinator.com/companies/openbase,other,"YC directory page, status Inactive"
+u4-openbase,Openbase,U4,seed,seed,2021-01,3650000,Zeev Ventures,Y Combinator,https://techcrunch.com/2021/01/13/openbase-scores-3-6m-seed-to-help-developers-find-right-open-source-component/,news,Plus 20 unnamed individual investors
+u4-opencode,OpenCode,U4,accelerator,YC W21,2021,,,Y Combinator,https://www.ycombinator.com/companies/opencode,other,YC page is the Anomaly/SST company
+u4-opencode,OpenCode,U4,seed,seed (Serverless Stack),2021-07,1000000,,Greylock Partners | SV Angel | Y Combinator,https://techcrunch.com/2021/07/23/serverless-stack-raises-1m-for-open-source-application-framework/,news,"SST founders Jay V and Frank Wang; Anomaly, makers of OpenCode, is the same YC entry"
+u4-opencrawl,OpenCrawl,U4,accelerator,YC F26,2026,,,Y Combinator,https://www.ycombinator.com/companies/opencrawl,other,YC directory page
+u4-openint,OpenInt,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/openint,other,YC directory page
+u4-openmeter,OpenMeter,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/openmeter,other,YC directory page
+u4-openmeter,OpenMeter,U4,seed,$3M round,2024-03,3000000,,Y Combinator | Haystack | Sunflower Capital,https://techcrunch.com/2024/03/12/openmeter-makes-it-easier-for-companies-to-track-usage-based-billing/,news,TechCrunch says $3M from these three; round type not stated
+u4-openpipe,OpenPipe,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/openpipe,other,YC directory page
+u4-openpipe,OpenPipe,U4,seed,seed,2024-03,6700000,Costanoa Ventures,Y Combinator | Logan Kilpatrick (person) | Alex Graveley (person) | Tom Preston-Werner (person),https://siliconangle.com/2024/03/26/openpipe-raises-6-7m-help-developers-fine-tune-lightweight-powerful-llms/,news,
+u4-openreplay,OpenReplay,U4,accelerator,YC S19,2019,,,Y Combinator,https://www.ycombinator.com/companies/asayer,other,YC page under name Asayer
+u4-openreplay,OpenReplay,U4,seed,seed,2022-06,4700000,Runa Capital,Expa | 468 Capital | Rheingau Founders,https://techcrunch.com/2022/06/28/openreplay-raises-4-7m-for-its-open-source-tool-to-find-the-bugs-in-sites/,news,Also co-founders of Tekion (unnamed)
+u4-openspec,OpenSpec,U4,accelerator,YC W26,2026,,,Y Combinator,https://www.ycombinator.com/companies/openspec,other,YC directory page
+u4-opslane,Opslane,U4,accelerator,YC S24,2024,,,Y Combinator,https://www.ycombinator.com/companies/opslane,other,YC directory page

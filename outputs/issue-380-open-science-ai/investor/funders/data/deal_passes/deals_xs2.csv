@@ -1,0 +1,5 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-duix,DUIX,U4,venture_unspecified,Backers named on the company's about page,,,,Sequoia Capital | Tencent Capital,https://www.duix.com/about,company,"About page: Backed by Sequoia Capital and Tencent Capital; rounds, dates and amounts not stated"
+u4-stition-ai,Stition (winfunc),U4,accelerator,Y Combinator S24,2024,,,Y Combinator,https://winfunc.com/about,company,"About page: Backed by Y Combinator, S24"
+u4-atri-labs,Atri Labs,U4,accelerator,Y Combinator (README badge),,,,Y Combinator,https://raw.githubusercontent.com/atri-labs/atrilabs-engine/HEAD/README.md,company,Badge links to https://www.ycombinator.com/companies/atri-labs; batch not stated
+u4-up9-inc,UP9 (Kubeshark),U4,venture_unspecified,Funders shown as logos on the company's about page,,,,Zeev Ventures | Engineering Capital,https://kubeshark.com/about,company,Logos with alt text 'zeev ventures' and 'engineering capital' under FUNDED BY; rounds not stated

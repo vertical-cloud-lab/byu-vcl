@@ -1,0 +1,4 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+juliahub,JuliaHub (Julia Computing),U2,grant_philanthropic,Moore grant GBMF4856: Julia Language for Data-Driven Discovery,2015-10,600000,,Gordon and Betty Moore Foundation,https://www.moore.org/grant-detail?grantId=GBMF4856,investor,Grant page: Organization Julia Computing; 24 months
+juliahub,JuliaHub (Julia Computing),U2,grant_philanthropic,Moore grant GBMF8433: Enhancements to the Julia Computing Platform,2019-09,1057443,,Gordon and Betty Moore Foundation,https://www.moore.org/grant-detail?grantId=GBMF8433,investor,Grant page: Organization Julia Computing; 29 months
+anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,grant_philanthropic,Moore grant GBMF5423: Numba and Dask: Python Packages for Data Science,2016-06,700000,,Gordon and Betty Moore Foundation,https://www.moore.org/grant-detail?grantId=GBMF5423,investor,Grant page: Organization Continuum Analytics; 24 months

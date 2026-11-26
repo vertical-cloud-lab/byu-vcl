@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+u4-sourcebot,Sourcebot,U4,Open source code understanding platform per YC page; licence not checked,,yes,US,2025,private,yes,2,Site names Liquid 2 and Pioneer Fund; round and date not disclosed.,,2026-11-26T06:22:35Z
+u4-sst,SST,U4,OpenAuth repo (toolbeam/openauth); SST framework open source; licence not checked,,yes,US,2017,private,yes,1,Runa lists 1.6M USD funding; no announcement found. About page says 'and more'.,,2026-11-26T06:22:35Z
+u4-stably-ai,Stably AI,U4,"Orca, MIT open source terminal-based agent orchestrator (per YC page); repo stablyai/orca",,yes,US,2022,private,yes,1,Runa lists 0.5M USD; no round found. YC page batch is W22 for Stably AI.,,2026-11-26T06:22:35Z
+u4-stackup,Stackup,U4,Open-source ERC-4337 bundler/tooling per YC directory; not verified,,partial,US,2022,unknown,yes,1,"YC status inactive. Site stackup.fi has logo files named dcg, 1kx, goodwater, unlabelled, not counted. memory: not recorded.",https://www.stackup.fi,2026-11-26T06:22:35Z
+u4-stagewise,Stagewise,U4,stagewise repo stagewise-io/stagewise; licence not checked,,yes,DE,2024,private,yes,2,Runa lists 0.5M USD.,,2026-11-26T06:22:35Z
+u4-standard-cyborg,Standard Cyborg,U4,Listed open source in YC directory; no repo checked,,partial,US,2015,unknown,yes,1,TechCrunch 2015-02 confirms YC backing; no later round found.,https://techcrunch.com/2015/02/09/yc-backs-standard-cyborg-a-startup-building-affordable-prosthetics/,2026-11-26T06:22:35Z
+u4-standard-physics,Standard Physics,U4,Listed open source in YC directory; builds on OpenFOAM; own licence not checked,,partial,US,2025,private,yes,1,Formerly Inviscid AI. Site says early team backed by YC; nothing more found.,https://standardphysics.com/about,2026-11-26T06:22:35Z
+u4-stellon-labs,Stellon Labs,U4,KittenTTS open source TTS model per YC page; licence not checked,,yes,US,2025,private,yes,1,No other funding page found.,,2026-11-26T06:22:35Z
+u4-stition-ai,Stition AI,U4,Devika repo stitionai/devika; licence not checked,,yes,IN,2023,unknown,none_found,0,Runa lists 0.5M USD; no page naming funders found (find_pages empty).,,2026-11-26T06:22:35Z
+u4-storia-ai,Storia AI,U4,Sage open-source code copilot per YC page; licence not checked,,yes,US,2024,private,yes,1,YC inactive. No other funding page found.,,2026-11-26T06:22:35Z
+u4-subimage,Subimage,U4,Managed offering built around open-source Cartography; open-core,,partial,US,2024,private,yes,1,Nothing else found on site or find_pages.,,2026-11-26T06:22:35Z
+u4-sublingual,Sublingual,U4,"Listed open source in YC directory; product is a desktop app, repo not checked",,partial,US,2024,shut_down,yes,1,YC status inactive.,,2026-11-26T06:22:35Z
+u4-sudocode,sudocode,U4,Fully open-source per YC page; repo sudocode-ai/sudocode,,yes,US,2023,private,yes,1,Nothing else found.,,2026-11-26T06:22:35Z
+u4-superagent,Superagent,U4,Open source tools for securing code and agents (per about page),,yes,US,2023,private,yes,2,"About page: backed by YC, Rebel Fund and founders of Okta, Replit, HubSpot (names not given).",,2026-11-26T06:22:35Z
+u4-superdesign,Superdesign,U4,Repo superdesigndev/superdesign; licence not checked,,yes,AU,2025,unknown,none_found,0,Runa lists no funding; nothing found.,,2026-11-26T06:22:35Z
+u4-superduperdb,SuperDuperDB,U4,"Repo superduperdb/superduperdb, Apache-2.0 (memory, not verified)",,yes,DE,2023,unknown,none_found,0,Runa lists no funding; site and find_pages gave no funder names.,,2026-11-26T06:22:35Z
+u4-superlog,Superlog,U4,Listed open source in YC directory; repo not checked,,partial,FR,2026,private,yes,1,"Site logos are customers, not investors.",,2026-11-26T06:22:35Z
+u4-supertokens,SuperTokens,U4,"Open source authentication, Apache-2.0 core (per YC page; licence not checked)",,yes,US,2019,private,yes,2,Investor list parsed from page text; which names belong to the Dec 2023 raise is not stated.,,2026-11-26T06:22:35Z
+u4-superwall,Superwall,U4,Listed open source in YC directory (SDKs); repo not checked,,partial,US,2020,private,yes,1,YC page slug is staffbar. No funding page found on site.,,2026-11-26T06:22:35Z
+u4-surfsense,SurfSense,U4,Repo MODSetter/SurfSense; licence not checked,,yes,US,2025,unknown,none_found,0,Runa lists none; nothing found.,,2026-11-26T06:22:35Z
+u4-svix,Svix,U4,Open source webhooks service (per YC page),,yes,US,2020,private,yes,2,Seed announcement not found.,https://www.ycombinator.com/companies/svix,2026-11-26T06:22:35Z
+u4-sync,sync.,U4,Listed open source in YC directory (lipsync models); not verified,,partial,US,2023,private,yes,3,Series A not looked for beyond blog.,,2026-11-26T06:22:35Z
+u4-taipy,Taipy,U4,"Repo avaiga/taipy, Apache-2.0 (memory, not verified)",,yes,FR,2020,private,none_found,0,Runa lists none; site and find_pages gave no funder names.,,2026-11-26T06:22:35Z
+u4-tea,Tea,U4,Repo teaxyz/white-paper; tea protocol rewards OSS; not a standard open-source product,,partial,PR,2021,private,none_found,0,Runa lists 16.9M USD; tea.xyz/about says 'backed by web3 innovators' without names. No page naming funders.,https://tea.xyz/about,2026-11-26T06:22:35Z
+u4-teclada,Teclada,U4,Listed open source in YC directory; repo not checked,,partial,US,2022,private,yes,1,Site has a 'Backed by' logo strip with no readable names.,,2026-11-26T06:22:35Z

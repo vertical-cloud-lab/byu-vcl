@@ -1,0 +1,33 @@
+{
+  "rows": 179,
+  "model_release_rows": 19,
+  "eligible_commercial_n": 118,
+  "expanded_commercial_n": 133,
+  "nonvaluation_amounts": [
+    "apache-software-foundation",
+    "hdf-group",
+    "kitware",
+    "linux-foundation",
+    "numfocus",
+    "project-jupyter",
+    "rcsb-pdb-wwpdb"
+  ],
+  "unknown_status_n": 17,
+  "funding_missing_n": 112,
+  "funding_zero_slugs": [
+    "adafruit"
+  ],
+  "events_rows": 223,
+  "events_missing_year_n": 13,
+  "input_sha256": {
+    "companies_master.csv": "48f39aa0e01833392065965d6a6be9a1e0e907b01fc95f2531c91b8e1c09c85e",
+    "events.csv": "aa8fbb586dbc604dade4b873325c913cc195bda5bd0458a69f29a83afd6b186d",
+    "SCHEMA.md": "e87726c6bd893645bd1bf01bf1cb5bf12b51b4d817a7c8d8ac946f8a838d9268",
+    "FINDINGS_BRIEF.md": "c8f3b7d74429b90170cf5fbf2c4a2e84faa78f3fa958297fdfc0b6ca90e5b134",
+    "RECOMMENDATIONS.md": "29798499f8976952bdc1442d68e6cf8b7480436c6d928a5092d1ad1180572095",
+    "suggested_proposal_language.md": "f8ab46ac4a88264ea870ddb9741491157aefcd42ffc4458b7a8630fa27f3c41f"
+  },
+  "seed": 3802026,
+  "bootstrap_replicates": 12000,
+  "as_of": "2026-11-23"
+}

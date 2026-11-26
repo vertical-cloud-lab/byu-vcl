@@ -1,0 +1,7 @@
+classification,cohort,n,median_gross_margin_percent,median_fcf_margin_percent,median_ev_revenue,median_growth_percent
+Snapshot labels (JFrog open),closed,15,75.441,24.928634806359998,5.906,25.5
+Snapshot labels (JFrog open),oss,5,75.619006,26.584826421578146,5.951,21.3
+H1-consistent JFrog excluded,closed,15,75.441,24.928634806359998,5.906,25.5
+H1-consistent JFrog excluded,oss,4,74.153503,23.832964836152552,5.068,19.2
+JFrog reassigned closed,closed,16,76.9425,25.2157021229077,6.2325,25.5
+JFrog reassigned closed,oss,4,74.153503,23.832964836152552,5.068,19.2

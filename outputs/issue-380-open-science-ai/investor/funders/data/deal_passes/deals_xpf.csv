@@ -1,0 +1,25 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+sakana,Sakana AI,U3,venture_unspecified,listed in investor's portfolio,,,,Basis Set Ventures,https://www.basisset.com/portfolio,investor,portfolio page check
+ClickHouse,ClickHouse,U1,venture_unspecified,listed in investor's portfolio,,,,Craft Ventures,https://www.craftventures.com/portfolio,investor,portfolio page check
+zylon-ai,Zylon,U1,venture_unspecified,listed in investor's portfolio,,,,Felicis,https://www.felicis.com/portfolio,investor,portfolio page check
+u4-nango,Nango,U4,venture_unspecified,listed in investor's portfolio,,,,Gradient Ventures,https://www.gradient.com/portfolio,investor,portfolio page check
+u4-nango,Nango,U4,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+u4-vocode,Vocode,U4,venture_unspecified,listed in investor's portfolio,,,,Gradient Ventures,https://www.gradient.com/portfolio,investor,portfolio page check
+u4-embrace,Embrace,U4,venture_unspecified,listed in investor's portfolio,,,,Greycroft,https://www.greycroft.com/portfolio/,investor,portfolio page check
+u4-apollo,Apollo,U4,venture_unspecified,listed in investor's portfolio,,,,Initialized Capital,https://initialized.com/portfolio/,investor,portfolio page check
+u4-robocurve,Robocurve,U4,venture_unspecified,listed in investor's portfolio,,,,Initialized Capital,https://initialized.com/portfolio/,investor,portfolio page check
+vercel,Vercel,U1,venture_unspecified,listed in investor's portfolio,,,,Khosla Ventures,https://www.khoslaventures.com/portfolio,investor,portfolio page check
+docker,Docker Inc.,U1,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+lightpanda-io,Lightpanda,U1,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+meilisearch,Meilisearch,U1,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+twentyhq,Twenty.com PBC,U1,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+u4-kaelio,Kaelio,U4,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+u4-lago,Lago,U4,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+u4-nao-labs,nao Labs,U4,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+u4-windmill,Windmill,U4,venture_unspecified,listed in investor's portfolio,,,,Kima Ventures,https://www.kimaventures.com/portfolio,investor,portfolio page check
+databricks,Databricks,U3,venture_unspecified,listed in investor's portfolio,,,,Kleiner Perkins,https://www.kleinerperkins.com/partnerships/,investor,portfolio page check
+NousResearch,Nous Research,U1,venture_unspecified,listed in investor's portfolio,,,,Mozilla Ventures,https://mozilla.vc/portfolio/,investor,portfolio page check
+huggingface,Hugging Face,U1,venture_unspecified,listed in investor's portfolio,,,,Mozilla Ventures,https://mozilla.vc/portfolio/,investor,portfolio page check
+gradio-app,Gradio,U1,venture_unspecified,listed in investor's portfolio,,,,Pear VC,https://pear.vc/companies/,investor,portfolio page check
+gitlabhq,GitLab Inc.,U1,venture_unspecified,listed in investor's portfolio,,,,Samsung,https://www.samsungnext.com/portfolio,investor,portfolio page check
+u4-caveman,Caveman,U4,venture_unspecified,listed in investor's portfolio,,,,Seedcamp,https://seedcamp.com/companies/,investor,portfolio page check

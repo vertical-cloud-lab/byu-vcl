@@ -1,0 +1,4 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-million,Million,U4,accelerator,YC W24,2024-01,,,Y Combinator,https://www.ycombinator.com/companies/million,other,"YC directory page for million.dev, Winter 2024; amount not stated"
+u4-million,Million,U4,angel,Backers listed on company site,,,,Scott Wu (person) | Amjad Masad (person) | Evan You (person) | David Cramer (person) | Matt Biilmann (person) | Sam Lambert (person) | Nikita Shamgunov (person) | Sahil Lavingia (person) | Theo Browne (person) | Koen Bok (person) | John Pham (person) | Ben Vinegar (person) | Dane Knecht (person) | Paul Klein IV (person),https://million.dev,company,Backed by section; role (angel vs advisor) and round not stated
+u4-quivr,Quivr,U4,accelerator,YC W24,2024-01,,,Y Combinator,https://www.ycombinator.com/companies/quivr,other,"YC directory: The Vibe Company (formerly Quivr, YC W24)"

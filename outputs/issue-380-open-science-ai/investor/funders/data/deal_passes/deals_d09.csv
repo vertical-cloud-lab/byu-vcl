@@ -1,0 +1,38 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-optic,Optic,U4,accelerator,YC S18,2018,,,Y Combinator,https://www.ycombinator.com/companies/optic,other,YC page lists status Acquired; acquirer not stated there
+u4-orchestra,Orchestra,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/orchestra,other,
+u4-orikata-bio-pbc,Orikata Bio PBC,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/orikata-bio-pbc,other,
+u4-oumi,Oumi,U4,seed,Seed,2025-01,10000000,Venrock | Obvious Ventures,Plug and Play | Ascend Venture Capital,https://siliconangle.com/2025/01/29/startup-backed-top-universities-aims-deliver-fully-open-ai-development-platform/,news,Article names legal entities Venrock Management and Obvious Management Services; names normalised
+u4-our-world-in-data,Our World in Data,U4,accelerator,YC W19,2019,,,Y Combinator,https://www.ycombinator.com/companies/our-world-in-data,other,Nonprofit batch
+u4-our-world-in-data,Our World in Data,U4,grant_philanthropic,Funders listed on funding page,,,,Gates Foundation | Quadrature Climate Foundation | Wellcome Trust | Y Combinator | GiveWell,https://ourworldindata.org/funding,company,Page also lists others; only names seen in page text recorded
+u4-palmier,Palmier,U4,accelerator,YC S24,2024,,,Y Combinator,https://www.ycombinator.com/companies/palmier,other,
+u4-paper-instruments,Paper Instruments,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/paper-instruments,other,YC page lists Spring 2025 batch
+u4-paradedb,ParadeDB,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/paradedb,other,
+u4-paradedb,ParadeDB,U4,series_a,Series A,2025-07,12000000,Craft Ventures,Y Combinator,https://techcrunch.com/2025/07/15/paradedb-takes-on-elasticsearch-as-interest-in-postgres-explodes-amid-ai-boom/,news,YC named as existing investor
+u4-paradev-formerly-superset,Paradev (formerly Superset),U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/paradev,other,YC page: Spring 2026
+u4-paradev-formerly-superset,Paradev (formerly Superset),U4,seed,Seed,2026-10,11500000,Union Square Ventures,Y Combinator | Paul Graham (person) | BoxGroup | 468 Capital | Liquid 2 Ventures | Orange Collective | Palm Drive Capital | Pioneer Fund | Broom Ventures | Transpose Platform | Siqi Chen (person) | Jake Mintz (person) | Gregor Zunic (person) | Abhi Aiyer (person) | JJ Fliegelman (person) | Ooshma Garg (person) | Nicolas Dessaigne (person),https://paradev.com/blog/superset-is-now-paradev,company,Blog lists logos and angels; page says 'and many more'
+u4-peerdb,PeerDB,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/peerdb,other,
+u4-peerdb,PeerDB,U4,seed,Seed,2023,3600000,8VC,,https://techcrunch.com/2024/07/30/real-time-database-startup-clickhouse-acquires-peerdb-to-expand-its-postgres-support/,news,Closed late 2023; other participants not named
+u4-philon,Philon,U4,accelerator,YC F25,2025,,,Y Combinator,https://www.ycombinator.com/companies/philon,other,
+u4-phone-harness,Phone Harness,U4,accelerator,YC F26,2026,,,Y Combinator,https://www.ycombinator.com/companies/phone-harness,other,
+u4-pickle,Pickle,U4,venture_unspecified,Backed by,2024-11,,,Krew Capital,https://techcrunch.com/2024/11/23/how-a-digital-you-can-sit-through-your-agonizing-web-conference-calls/,news,TechCrunch: backed by Krew Capital; assumes this is the same Pickle as the glass repo
+u4-pipekit,Pipekit,U4,accelerator,YC S21,2021,,,Y Combinator,https://www.ycombinator.com/companies/pipekit,other,
+u4-pipelinedb,PipelineDB,U4,accelerator,YC W14,2014,,,Y Combinator,https://techcrunch.com/2015/07/07/yc-alum-pipelinedb-releases-open-source-streaming-sql-database/,news,
+u4-pipelinedb,PipelineDB,U4,seed,Seed,2015,,,SV Angel | Data Collective | Paul Buchheit (person) | Susa Ventures | TenOneTen,https://techcrunch.com/2015/07/07/yc-alum-pipelinedb-releases-open-source-streaming-sql-database/,news,"Amount undisclosed; date is the article date, round earlier"
+u4-plexe,Plexe,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/plexe,other,
+u4-pretzel-ai,Pretzel AI,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/pretzel-ai,other,
+u4-proliferate,Proliferate,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/proliferate,other,
+u4-protocol-labs,Protocol Labs,U4,accelerator,YC S14,2014,,,Y Combinator,https://pl.xyz/about,company,
+u4-protocol-labs,Protocol Labs,U4,venture_unspecified,Raises funding (2015),2015,,,,https://pl.xyz/about,company,"Timeline says funding from prominent technology investors, none named"
+u4-protocol-labs,Protocol Labs,U4,venture_unspecified,"Funding from BlueYard, USV",2016,,,BlueYard Capital | Union Square Ventures,https://pl.xyz/about,company,Timeline names BlueYard and USV 'and other prominent investors'
+u4-protocol-labs,Protocol Labs,U4,token_sale,Filecoin Token Sale,2017,205800000,,,https://pl.xyz/about,company,Investors not named on page
+u4-pyroscope,Pyroscope,U4,accelerator,YC W21,2021,,,Y Combinator,https://www.ycombinator.com/companies/pyroscope,other,
+u4-pyroscope,Pyroscope,U4,seed,Seed,2021,,,,https://techcrunch.com/2023/03/15/grafana-acquires-pyroscope-and-merges-it-with-its-phlare-continuous-profiling-database/,news,Investors not named; acquired by Grafana Labs 2023-03
+u4-qodo,Qodo,U4,series_a,Series A,2024-09,40000000,Susa Ventures | Square Peg,Firestreak Ventures | ICON Continuity Fund | TLV Partners | Vine Ventures,https://techcrunch.com/2024/09/30/qodo-raises-40m-series-a-to-bring-quality-first-code-generation-to-the-enterprise/,news,TLV and Vine named as seed investors
+u4-qodo,Qodo,U4,series_b,Series B,2026-03,70000000,Qumra Capital,Maor Ventures | Phoenix Venture Partners | S Ventures | Square Peg | Susa Ventures | TLV Partners | Vine Ventures | Peter Welinder (person) | Clara Shih (person),https://techcrunch.com/2026/03/30/qodo-bets-on-code-verification-as-ai-coding-scales-raises-70m/,news,
+u4-questdb,QuestDB,U4,accelerator,YC S20,2020,,,Y Combinator,https://techcrunch.com/2020/07/02/questdb-nabs-2-3m-seed-to-build-open-source-time-series-database/,news,
+u4-questdb,QuestDB,U4,seed,Seed,2020-07,2300000,Episode1 Ventures,Seedcamp | 7percent Ventures | Y Combinator | Kima Ventures,https://techcrunch.com/2020/07/02/questdb-nabs-2-3m-seed-to-build-open-source-time-series-database/,news,Plus unnamed angels
+u4-questdb,QuestDB,U4,series_a,Series A,2021-11,12000000,468 Capital,Uncorrelated Ventures | Alexis Ohanian (person),https://techcrunch.com/2021/11/03/questdb-snares-12m-series-a-with-hosted-version-on-the-horizon/,news,Plus other angels
+u4-questdb,QuestDB,U4,accelerator,YC S20,2020,,,Y Combinator,https://techcrunch.com/2020/07/02/questdb-nabs-2-3m-seed-to-build-open-source-time-series-database/,news,
+u4-questdb,QuestDB,U4,seed,Seed,2020-07,2300000,Episode1 Ventures,Seedcamp | 7percent Ventures | Y Combinator | Kima Ventures,https://techcrunch.com/2020/07/02/questdb-nabs-2-3m-seed-to-build-open-source-time-series-database/,news,Plus unnamed angels
+u4-questdb,QuestDB,U4,series_a,Series A,2021-11,12000000,468 Capital,Uncorrelated Ventures | Alexis Ohanian (person),https://techcrunch.com/2021/11/03/questdb-snares-12m-series-a-with-hosted-version-on-the-horizon/,news,Plus other angels

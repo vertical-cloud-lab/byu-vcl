@@ -1,0 +1,19 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-votingworks,VotingWorks,U4,accelerator,YC W19,2019,,,Y Combinator,https://www.ycombinator.com/companies/votingworks,other,YC Winter 2019 nonprofit batch
+u4-votingworks,VotingWorks,U4,grant_philanthropic,Foundation grants,,,,Democracy Fund | Schmidt Futures | New Venture Fund,https://voting.works/about,company,Undated list of foundation funders on About page
+u4-votingworks,VotingWorks,U4,grant_government,CISA and NSF funding 2019-2020,2019,,,Cybersecurity and Infrastructure Security Agency | National Science Foundation,https://voting.works/about,company,About page says CISA and NSF funded work in 2019 and 2020
+u4-votingworks,VotingWorks,U4,angel,Individual donors,,,,Matt Cutts (person) | John Lilly (person) | Chris Sacca (person) | Niels Provos (person) | Ron Gula (person) | Paul Graham (person) | Mark Gorton (person) | Brian Acton (person),https://voting.works/about,company,Major individual donors listed; donations not equity
+u4-wafer,Wafer,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/wafer,other,
+u4-wafer,Wafer,U4,series_a,Series A,2026-09,40000000,Marathon | Chemistry,Wing | AMD Ventures | Outset Capital | Fifty Years | Y Combinator,https://www.wafer.ai/blog/series-a,company,Post dated 1 Sept 2026
+u4-warrant,Warrant,U4,accelerator,YC S21,2021,,,Y Combinator,https://www.ycombinator.com/companies/warrant,other,
+u4-wasmer,Wasmer,U4,accelerator,YC S19,2019,,,Y Combinator,https://www.ycombinator.com/companies/wasmer,other,
+u4-wasp,Wasp,U4,accelerator,YC W21,2021,,,Y Combinator,https://www.ycombinator.com/companies/wasp,other,
+u4-wasp,Wasp,U4,seed,Seed,2021-10,1500000,Lunar Ventures | HV Capital,468 Capital | Tokyo Black | Acequia Capital | Abstraction Capital,https://techcrunch.com/2021/10/04/yc-grads-wasp-land-1-5m-seed-to-help-developers-build-web-apps-faster/,news,Also unnamed angels
+u4-webiny,Webiny,U4,seed,Seed,2019-10,348000,Episode 1,,https://techcrunch.com/2019/10/29/webiny-announces-347k-seed-to-build-open-source-serverless-cms/,news,"GBP 270,000"
+u4-webiny,Webiny,U4,accelerator,YC W21,2021,,,Y Combinator,https://www.ycombinator.com/companies/webiny,other,
+u4-webiny,Webiny,U4,seed,Seed,2021-08,3500000,M12,Samsung Next | Episode 1 | Cota Capital,https://techcrunch.com/2021/08/18/webiny-nabs-3-5m-seed-to-build-serverless-development-framework-on-top-of-serverless-cms/,news,Also unnamed investors
+u4-windmill,Windmill,U4,accelerator,YC S22,2022,,,Y Combinator,https://www.ycombinator.com/companies/windmill,other,
+u4-windmill,Windmill,U4,venture_unspecified,Backed by (footer),,,,Gradient Ventures | Bessemer Venture Partners,https://www.windmill.dev/,company,"Footer 'Backed by' logos; round, date and amount not found"
+u4-withhuman,withHuman,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/withhuman,other,"YC page lists founded 2026, batch S23; inconsistent"
+u4-zencoder,Zencoder,U4,accelerator,YC W10,2010,,,Y Combinator,https://www.ycombinator.com/companies/zencoder,other,
+u4-zencoder,Zencoder,U4,series_a,Series A,2011-04,2000000,,,https://techcrunch.com/2012/07/26/brightcove-q2-2012-earnings/,news,"Investors not named in pages read; acquired by Brightcove for $30M, 2012"

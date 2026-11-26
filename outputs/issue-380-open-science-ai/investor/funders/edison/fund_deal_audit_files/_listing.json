@@ -1,0 +1,2804 @@
+{
+ "data": [
+  {
+   "id": 31484182,
+   "data_storage_id": "ee6ef90a-9732-4499-82da-0193fd386813",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:47.253677Z",
+   "data_storage": {
+    "name": "69862258-b7d3-4950-962d-7f74445431be.bib",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d0af1e7f7a04",
+    "parent_id": null,
+    "dataset_id": "2f7a7ea5-4e2e-46e8-8fbd-bda97bfb5c0f",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "ee6ef90a-9732-4499-82da-0193fd386813",
+    "path": "d0af1e7f7a04",
+    "created_at": "2026-11-26T06:32:47.179590Z",
+    "modified_at": "2026-11-26T06:32:49.152737Z",
+    "tags": null,
+    "file_path": "/workspace/citations/default_project/69862258-b7d3-4950-962d-7f74445431be.bib",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 1457954
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484179,
+   "data_storage_id": "43dacfc6-04e3-4493-b359-3e5b81fa9eca",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:45.287032Z",
+   "data_storage": {
+    "name": "69862258-b7d3-4950-962d-7f74445431be.ipynb",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "6fa9c97c3501",
+    "parent_id": null,
+    "dataset_id": "968781df-f616-44c4-a54f-3892f790e834",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "43dacfc6-04e3-4493-b359-3e5b81fa9eca",
+    "path": "6fa9c97c3501",
+    "created_at": "2026-11-26T06:32:45.192715Z",
+    "modified_at": "2026-11-26T06:32:47.012722Z",
+    "tags": null,
+    "file_path": "/workspace/notebooks/69862258-b7d3-4950-962d-7f74445431be.ipynb",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 1432096
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484177,
+   "data_storage_id": "6c866efa-d5fe-42be-b2d6-955c77f95296",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:44.708159Z",
+   "data_storage": {
+    "name": "group6_tool_evidence.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "72ec5b325f49",
+    "parent_id": null,
+    "dataset_id": "46fba48b-6ca5-4935-aa67-154463b5b8f5",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6c866efa-d5fe-42be-b2d6-955c77f95296",
+    "path": "72ec5b325f49",
+    "created_at": "2026-11-26T06:32:44.632851Z",
+    "modified_at": "2026-11-26T06:32:44.937870Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group6_tool_evidence.txt",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 536292
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484175,
+   "data_storage_id": "b9eb5edd-aae7-4812-bed1-b542270d14e5",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:44.190569Z",
+   "data_storage": {
+    "name": "group5_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "f4349e06779b",
+    "parent_id": null,
+    "dataset_id": "128c3601-feb5-4710-8895-3c8e88e02f56",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "b9eb5edd-aae7-4812-bed1-b542270d14e5",
+    "path": "f4349e06779b",
+    "created_at": "2026-11-26T06:32:44.114756Z",
+    "modified_at": "2026-11-26T06:32:44.339863Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group5_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 624149
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484173,
+   "data_storage_id": "e4afe8ec-ef37-4eb0-9846-cb4215dd133b",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:43.612205Z",
+   "data_storage": {
+    "name": "group7_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "22e5125c18b7",
+    "parent_id": null,
+    "dataset_id": "42cf1238-7ccd-407a-9087-585d0078e2ec",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "e4afe8ec-ef37-4eb0-9846-cb4215dd133b",
+    "path": "22e5125c18b7",
+    "created_at": "2026-11-26T06:32:43.538027Z",
+    "modified_at": "2026-11-26T06:32:43.824906Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group7_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 576584
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484171,
+   "data_storage_id": "a8a3ce65-5a11-4fb5-bc15-2c56bfdf97e1",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:43.116945Z",
+   "data_storage": {
+    "name": "supplement_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "6cce7ca4ddcf",
+    "parent_id": null,
+    "dataset_id": "dd5e2716-dc3c-48bf-a184-439d56e17b46",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "a8a3ce65-5a11-4fb5-bc15-2c56bfdf97e1",
+    "path": "6cce7ca4ddcf",
+    "created_at": "2026-11-26T06:32:43.031285Z",
+    "modified_at": "2026-11-26T06:32:43.285250Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/supplement_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 406987
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484169,
+   "data_storage_id": "865819b1-dbdf-40bc-81b9-ede3f6169e71",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:42.619925Z",
+   "data_storage": {
+    "name": "group2_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "a7e24d4372fc",
+    "parent_id": null,
+    "dataset_id": "5f1bdd90-8a3b-4259-920b-439a0f00cf2a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "865819b1-dbdf-40bc-81b9-ede3f6169e71",
+    "path": "a7e24d4372fc",
+    "created_at": "2026-11-26T06:32:42.553784Z",
+    "modified_at": "2026-11-26T06:32:42.771270Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group2_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 349474
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484167,
+   "data_storage_id": "71a09201-ad7c-4036-80ef-50d66b7357d5",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:42.102683Z",
+   "data_storage": {
+    "name": "group7.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "1ba12d6553a5",
+    "parent_id": null,
+    "dataset_id": "e626e7a4-e64c-49ef-8d26-59ca0bfc6546",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "71a09201-ad7c-4036-80ef-50d66b7357d5",
+    "path": "1ba12d6553a5",
+    "created_at": "2026-11-26T06:32:42.071263Z",
+    "modified_at": "2026-11-26T06:32:42.316748Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group7.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 6598
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484165,
+   "data_storage_id": "0995135e-ca21-4b37-9801-24a2877efe65",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:41.717068Z",
+   "data_storage": {
+    "name": "group4_summary.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "addc8a37dd3b",
+    "parent_id": null,
+    "dataset_id": "040d22a5-5e1f-48d2-aefd-d0e0eeb9235f",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "0995135e-ca21-4b37-9801-24a2877efe65",
+    "path": "addc8a37dd3b",
+    "created_at": "2026-11-26T06:32:41.682744Z",
+    "modified_at": "2026-11-26T06:32:41.854129Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group4_summary.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 5198
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484163,
+   "data_storage_id": "f5c98289-4a52-41b9-9255-4b82af30eed0",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:41.197231Z",
+   "data_storage": {
+    "name": "group4_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "cc67c1e6fcbe",
+    "parent_id": null,
+    "dataset_id": "a492f0bf-8835-4934-a9e5-1e7404d38df5",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f5c98289-4a52-41b9-9255-4b82af30eed0",
+    "path": "cc67c1e6fcbe",
+    "created_at": "2026-11-26T06:32:41.074100Z",
+    "modified_at": "2026-11-26T06:32:41.413865Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group4_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 550757
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484161,
+   "data_storage_id": "3e103279-4341-452b-a49c-0eeda04002fc",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:40.671629Z",
+   "data_storage": {
+    "name": "group8.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d352e30f88e3",
+    "parent_id": null,
+    "dataset_id": "a7832982-0fcd-4cd3-a6f8-a2188b5e90d2",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "3e103279-4341-452b-a49c-0eeda04002fc",
+    "path": "d352e30f88e3",
+    "created_at": "2026-11-26T06:32:40.633058Z",
+    "modified_at": "2026-11-26T06:32:40.806218Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group8.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 7578
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484159,
+   "data_storage_id": "f92b9660-245d-4a4f-b99f-61c2d6782ed3",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:40.174923Z",
+   "data_storage": {
+    "name": "group8_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "519e3355ccf7",
+    "parent_id": null,
+    "dataset_id": "66c6aa85-b927-472c-9fd1-ecdc410650c9",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f92b9660-245d-4a4f-b99f-61c2d6782ed3",
+    "path": "519e3355ccf7",
+    "created_at": "2026-11-26T06:32:40.076713Z",
+    "modified_at": "2026-11-26T06:32:40.324854Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group8_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 1621012
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484157,
+   "data_storage_id": "56b024fc-ee07-4d73-9b3a-bf9ef784e3db",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:39.597713Z",
+   "data_storage": {
+    "name": "group6_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "75dbcf8df8a8",
+    "parent_id": null,
+    "dataset_id": "e0cf1d38-821a-4028-99b9-127283479fa5",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "56b024fc-ee07-4d73-9b3a-bf9ef784e3db",
+    "path": "75dbcf8df8a8",
+    "created_at": "2026-11-26T06:32:39.526276Z",
+    "modified_at": "2026-11-26T06:32:39.782399Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group6_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 10107
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484155,
+   "data_storage_id": "0490c870-5fc1-4468-a431-91bd693f90b2",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:39.186325Z",
+   "data_storage": {
+    "name": "neuromore_grant_checks.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "a8e450e96cc3",
+    "parent_id": null,
+    "dataset_id": "aa186d77-46d4-43b7-aec9-ba6db2c14a31",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "0490c870-5fc1-4468-a431-91bd693f90b2",
+    "path": "a8e450e96cc3",
+    "created_at": "2026-11-26T06:32:39.149725Z",
+    "modified_at": "2026-11-26T06:32:39.295213Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/neuromore_grant_checks.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 43596
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484153,
+   "data_storage_id": "a4212fa5-03f2-4388-adf3-821a4889253d",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:38.788126Z",
+   "data_storage": {
+    "name": "fx_rates.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d4fb9716479a",
+    "parent_id": null,
+    "dataset_id": "c8e54b94-c1d7-4369-af01-6b2a53f2df2a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "a4212fa5-03f2-4388-adf3-821a4889253d",
+    "path": "d4fb9716479a",
+    "created_at": "2026-11-26T06:32:38.752834Z",
+    "modified_at": "2026-11-26T06:32:38.965459Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/fx_rates.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 5541
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484151,
+   "data_storage_id": "0dd90677-f329-45f8-b79e-7d257754cd82",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:38.339336Z",
+   "data_storage": {
+    "name": "normalization_checks.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "46190be9a7e3",
+    "parent_id": null,
+    "dataset_id": "a9d3b1fd-5b8e-46cd-b91d-a71e60d50b20",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "0dd90677-f329-45f8-b79e-7d257754cd82",
+    "path": "46190be9a7e3",
+    "created_at": "2026-11-26T06:32:38.277613Z",
+    "modified_at": "2026-11-26T06:32:38.498639Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/normalization_checks.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 69483
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484149,
+   "data_storage_id": "98c733db-19fe-4af9-9b72-47113a771834",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:37.880246Z",
+   "data_storage": {
+    "name": "group4_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "e40878343037",
+    "parent_id": null,
+    "dataset_id": "2cd0da86-818f-401b-ab41-7e5bcf006bbf",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "98c733db-19fe-4af9-9b72-47113a771834",
+    "path": "e40878343037",
+    "created_at": "2026-11-26T06:32:37.860340Z",
+    "modified_at": "2026-11-26T06:32:38.036098Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group4_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 8712
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484147,
+   "data_storage_id": "5107021a-6600-4e62-bc95-66c49f87135d",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:37.572391Z",
+   "data_storage": {
+    "name": "group8_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "0196f1cda483",
+    "parent_id": null,
+    "dataset_id": "d99ce02a-7a04-471e-80bd-f73ec8d0395a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "5107021a-6600-4e62-bc95-66c49f87135d",
+    "path": "0196f1cda483",
+    "created_at": "2026-11-26T06:32:37.538071Z",
+    "modified_at": "2026-11-26T06:32:37.698642Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group8_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 6802
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484145,
+   "data_storage_id": "5ce95934-d6c8-45ef-9ce9-975f9c94840e",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:37.098044Z",
+   "data_storage": {
+    "name": "group5_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "ee1ead54cdce",
+    "parent_id": null,
+    "dataset_id": "d1432dc0-4df8-493a-96c7-9e8ca6cd49d5",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "5ce95934-d6c8-45ef-9ce9-975f9c94840e",
+    "path": "ee1ead54cdce",
+    "created_at": "2026-11-26T06:32:37.061002Z",
+    "modified_at": "2026-11-26T06:32:37.286928Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group5_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 8373
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484143,
+   "data_storage_id": "3b64cb7a-2c3d-46b4-94a1-02486b84b046",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:36.590037Z",
+   "data_storage": {
+    "name": "group5.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "32cb3baadda0",
+    "parent_id": null,
+    "dataset_id": "8194073d-38a6-4b37-9ff4-933c6de0020f",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "3b64cb7a-2c3d-46b4-94a1-02486b84b046",
+    "path": "32cb3baadda0",
+    "created_at": "2026-11-26T06:32:36.567453Z",
+    "modified_at": "2026-11-26T06:32:36.807691Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group5.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 6266
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484141,
+   "data_storage_id": "ef22f3ec-0627-4127-a7db-16494d083c34",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:36.272194Z",
+   "data_storage": {
+    "name": "audit_summary.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "be480bef2eb2",
+    "parent_id": null,
+    "dataset_id": "2cad5fff-d39a-49cc-bb9e-2959fc43c802",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "ef22f3ec-0627-4127-a7db-16494d083c34",
+    "path": "be480bef2eb2",
+    "created_at": "2026-11-26T06:32:36.239060Z",
+    "modified_at": "2026-11-26T06:32:36.437891Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/audit_summary.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 688
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484139,
+   "data_storage_id": "8a8e121c-7ef8-4b78-811d-2da4f4ed0d95",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:35.854276Z",
+   "data_storage": {
+    "name": "supplement_sources_local.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "b7d0547713f6",
+    "parent_id": null,
+    "dataset_id": "b156f33d-3b3f-4a3c-8433-44b993a44c20",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "8a8e121c-7ef8-4b78-811d-2da4f4ed0d95",
+    "path": "b7d0547713f6",
+    "created_at": "2026-11-26T06:32:35.809761Z",
+    "modified_at": "2026-11-26T06:32:36.028655Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/supplement_sources_local.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 394882
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484137,
+   "data_storage_id": "73ae32ba-b7c7-49d0-8b77-81a704f38509",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:35.406651Z",
+   "data_storage": {
+    "name": "reconciled_events.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "77342ee0bbd4",
+    "parent_id": null,
+    "dataset_id": "da666df8-5478-465c-9312-cb8f5d848572",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "73ae32ba-b7c7-49d0-8b77-81a704f38509",
+    "path": "77342ee0bbd4",
+    "created_at": "2026-11-26T06:32:35.355742Z",
+    "modified_at": "2026-11-26T06:32:35.589566Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/reconciled_events.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 46079
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484135,
+   "data_storage_id": "e0adccc1-dfb7-45a6-97f7-9467114cc08f",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:35.010682Z",
+   "data_storage": {
+    "name": "gap_searches.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "a8d46ecec93b",
+    "parent_id": null,
+    "dataset_id": "1a35bac9-c74f-4114-9b96-fdc7ba46d6dd",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "e0adccc1-dfb7-45a6-97f7-9467114cc08f",
+    "path": "a8d46ecec93b",
+    "created_at": "2026-11-26T06:32:34.953015Z",
+    "modified_at": "2026-11-26T06:32:35.162587Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/gap_searches.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 237928
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484133,
+   "data_storage_id": "e04e9b73-7855-4666-b588-af79c322b1ea",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:34.604729Z",
+   "data_storage": {
+    "name": "group3.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "0ed270fedb1a",
+    "parent_id": null,
+    "dataset_id": "4db87099-472f-429b-9786-c3caad708493",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "e04e9b73-7855-4666-b588-af79c322b1ea",
+    "path": "0ed270fedb1a",
+    "created_at": "2026-11-26T06:32:34.558536Z",
+    "modified_at": "2026-11-26T06:32:34.738020Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group3.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 6358
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484131,
+   "data_storage_id": "994f811d-8cf8-49aa-8bb5-765f02f1a144",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:34.189973Z",
+   "data_storage": {
+    "name": "farmbot_raw_ledgers.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "0a1f9c26258a",
+    "parent_id": null,
+    "dataset_id": "b5a8f147-ae3e-4a29-af62-898b987c7270",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "994f811d-8cf8-49aa-8bb5-765f02f1a144",
+    "path": "0a1f9c26258a",
+    "created_at": "2026-11-26T06:32:34.108188Z",
+    "modified_at": "2026-11-26T06:32:34.345473Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/farmbot_raw_ledgers.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 208606
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484129,
+   "data_storage_id": "be101064-ef10-45e1-99f1-c4a529a9bfcd",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:33.687885Z",
+   "data_storage": {
+    "name": "tasks.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "1a0fefae4ed0",
+    "parent_id": null,
+    "dataset_id": "c5c7e094-9589-4184-986e-6edba4c063ce",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "be101064-ef10-45e1-99f1-c4a529a9bfcd",
+    "path": "1a0fefae4ed0",
+    "created_at": "2026-11-26T06:32:33.655816Z",
+    "modified_at": "2026-11-26T06:32:33.847183Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/tasks.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 378
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484127,
+   "data_storage_id": "fa4fedb9-c742-4167-a7d0-1ed51b74db68",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:33.212374Z",
+   "data_storage": {
+    "name": "group5_tool_evidence.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "509f76040953",
+    "parent_id": null,
+    "dataset_id": "d69d6c58-ee05-4dc2-b78d-03ec1060ee50",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "fa4fedb9-c742-4167-a7d0-1ed51b74db68",
+    "path": "509f76040953",
+    "created_at": "2026-11-26T06:32:33.082176Z",
+    "modified_at": "2026-11-26T06:32:33.430771Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group5_tool_evidence.txt",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 456080
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484125,
+   "data_storage_id": "38183312-352a-4550-ac82-82fe30791f72",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:32.697608Z",
+   "data_storage": {
+    "name": "small_checks.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "34f76360ed34",
+    "parent_id": null,
+    "dataset_id": "ed9ee5cd-bf83-4bd4-b73d-afd6838244bb",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "38183312-352a-4550-ac82-82fe30791f72",
+    "path": "34f76360ed34",
+    "created_at": "2026-11-26T06:32:32.645573Z",
+    "modified_at": "2026-11-26T06:32:32.818109Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/small_checks.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 114956
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484123,
+   "data_storage_id": "eddb97da-ce2f-4eb6-8b04-bcabecb33d41",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:32.136695Z",
+   "data_storage": {
+    "name": "group6_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "50ebf88a11f8",
+    "parent_id": null,
+    "dataset_id": "39cc7f91-a97e-47fc-8e4f-5d944e326ff5",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "eddb97da-ce2f-4eb6-8b04-bcabecb33d41",
+    "path": "50ebf88a11f8",
+    "created_at": "2026-11-26T06:32:32.021368Z",
+    "modified_at": "2026-11-26T06:32:32.321880Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group6_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 1592245
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484121,
+   "data_storage_id": "12b3300b-b021-4efb-9808-d70d1fa084cc",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:31.545784Z",
+   "data_storage": {
+    "name": "group4.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "dff85e30cdae",
+    "parent_id": null,
+    "dataset_id": "a5342f3e-f5e1-4a2e-bc14-1d6546a7153b",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "12b3300b-b021-4efb-9808-d70d1fa084cc",
+    "path": "dff85e30cdae",
+    "created_at": "2026-11-26T06:32:31.507668Z",
+    "modified_at": "2026-11-26T06:32:31.727993Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group4.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 2506
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484119,
+   "data_storage_id": "d1644363-9090-414a-9cee-ec85fce1fd85",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:31.229125Z",
+   "data_storage": {
+    "name": "group6.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "882aa3b25262",
+    "parent_id": null,
+    "dataset_id": "7e3d8e33-c21b-406c-92fe-b795c2d7ece1",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "d1644363-9090-414a-9cee-ec85fce1fd85",
+    "path": "882aa3b25262",
+    "created_at": "2026-11-26T06:32:31.192633Z",
+    "modified_at": "2026-11-26T06:32:31.345115Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group6.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 13447
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484117,
+   "data_storage_id": "8520a63a-72bd-482f-a10a-d63855990023",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:30.274176Z",
+   "data_storage": {
+    "name": "independent_evidence.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "301e27361f3b",
+    "parent_id": null,
+    "dataset_id": "a5684d8e-3352-4f2b-94d9-44ca4b9618ba",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "8520a63a-72bd-482f-a10a-d63855990023",
+    "path": "301e27361f3b",
+    "created_at": "2026-11-26T06:32:29.868647Z",
+    "modified_at": "2026-11-26T06:32:30.556904Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/independent_evidence.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 7351233
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484115,
+   "data_storage_id": "258b9baf-3db5-4048-af7a-f499b1029037",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:29.113975Z",
+   "data_storage": {
+    "name": "openbionics_awards.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "39b4374dee17",
+    "parent_id": null,
+    "dataset_id": "c2fba375-74f2-41a9-9b00-3d1cb54bf76b",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "258b9baf-3db5-4048-af7a-f499b1029037",
+    "path": "39b4374dee17",
+    "created_at": "2026-11-26T06:32:29.070264Z",
+    "modified_at": "2026-11-26T06:32:29.281925Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/openbionics_awards.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 19246
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484113,
+   "data_storage_id": "38f13f39-2c0c-4b9a-b6b6-b8491644c449",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:28.584872Z",
+   "data_storage": {
+    "name": "group7_tool_evidence.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "61fb0640a7f3",
+    "parent_id": null,
+    "dataset_id": "1bc6afc3-dd36-4d3b-993b-bf9e2942f910",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "38f13f39-2c0c-4b9a-b6b6-b8491644c449",
+    "path": "61fb0640a7f3",
+    "created_at": "2026-11-26T06:32:28.513639Z",
+    "modified_at": "2026-11-26T06:32:28.822079Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group7_tool_evidence.txt",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 406377
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484111,
+   "data_storage_id": "ab58f464-6a34-420f-9bb2-11f6115b310f",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:28.007260Z",
+   "data_storage": {
+    "name": "reconciliation_log.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "12693d16d990",
+    "parent_id": null,
+    "dataset_id": "05895cdf-0352-4b89-b75c-3757c98a24c2",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "ab58f464-6a34-420f-9bb2-11f6115b310f",
+    "path": "12693d16d990",
+    "created_at": "2026-11-26T06:32:27.986273Z",
+    "modified_at": "2026-11-26T06:32:28.214844Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/reconciliation_log.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 43793
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484109,
+   "data_storage_id": "880b1f74-c811-47c2-a38c-14ed982e3387",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:27.715197Z",
+   "data_storage": {
+    "name": "group2_summary.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "151179094b98",
+    "parent_id": null,
+    "dataset_id": "4ccf8957-84dd-4b60-96cd-5ae5664ee98e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "880b1f74-c811-47c2-a38c-14ed982e3387",
+    "path": "151179094b98",
+    "created_at": "2026-11-26T06:32:27.682404Z",
+    "modified_at": "2026-11-26T06:32:27.837126Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group2_summary.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 5114
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484107,
+   "data_storage_id": "84e9cec4-18f4-4cba-879d-ce9a8c10ecaa",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:27.326557Z",
+   "data_storage": {
+    "name": "supplement_task.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "be23b9bd8b04",
+    "parent_id": null,
+    "dataset_id": "b07e1d1f-270a-495e-8dce-2bc4a1e145de",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "84e9cec4-18f4-4cba-879d-ce9a8c10ecaa",
+    "path": "be23b9bd8b04",
+    "created_at": "2026-11-26T06:32:27.303166Z",
+    "modified_at": "2026-11-26T06:32:27.519421Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/supplement_task.txt",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 36
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484105,
+   "data_storage_id": "aca8e0da-4334-4775-8593-9cd2a843ab98",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:26.931709Z",
+   "data_storage": {
+    "name": "odoo2026_supplement.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "349b412944d7",
+    "parent_id": null,
+    "dataset_id": "67787c18-b694-45c6-8a37-af1bade98079",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "aca8e0da-4334-4775-8593-9cd2a843ab98",
+    "path": "349b412944d7",
+    "created_at": "2026-11-26T06:32:26.896044Z",
+    "modified_at": "2026-11-26T06:32:27.100778Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/odoo2026_supplement.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 1006
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484102,
+   "data_storage_id": "6c96d89e-5f4b-43f4-a4e5-2e77f6271b72",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:26.494232Z",
+   "data_storage": {
+    "name": "group2.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "71d65185fe27",
+    "parent_id": null,
+    "dataset_id": "945bf052-809e-446e-814f-b033298aeb38",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6c96d89e-5f4b-43f4-a4e5-2e77f6271b72",
+    "path": "71d65185fe27",
+    "created_at": "2026-11-26T06:32:26.456551Z",
+    "modified_at": "2026-11-26T06:32:26.673361Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group2.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 2323
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484099,
+   "data_storage_id": "6c6dc528-f20c-44c9-9735-241cf6a37094",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:26.112268Z",
+   "data_storage": {
+    "name": "edge_searches.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "871a5f135285",
+    "parent_id": null,
+    "dataset_id": "d069598d-d5f9-4f0e-8690-867d6f23e37e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6c6dc528-f20c-44c9-9735-241cf6a37094",
+    "path": "871a5f135285",
+    "created_at": "2026-11-26T06:32:26.044356Z",
+    "modified_at": "2026-11-26T06:32:26.247580Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/edge_searches.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 198035
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484097,
+   "data_storage_id": "91de9fa9-5592-4015-ae7e-919e515fe3ea",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:25.581747Z",
+   "data_storage": {
+    "name": "group2_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d8aa72d029aa",
+    "parent_id": null,
+    "dataset_id": "4d76046b-5dc5-421b-ae5c-4b8ca6826c83",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "91de9fa9-5592-4015-ae7e-919e515fe3ea",
+    "path": "d8aa72d029aa",
+    "created_at": "2026-11-26T06:32:25.536953Z",
+    "modified_at": "2026-11-26T06:32:25.756733Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group2_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 10725
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484095,
+   "data_storage_id": "14cc718d-d90c-4052-a3c3-dec18dfffe7c",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:25.179426Z",
+   "data_storage": {
+    "name": "latest_checks.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "1083f35a33d7",
+    "parent_id": null,
+    "dataset_id": "f82d4042-f88f-4801-bc67-c7667df852a8",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "14cc718d-d90c-4052-a3c3-dec18dfffe7c",
+    "path": "1083f35a33d7",
+    "created_at": "2026-11-26T06:32:25.120091Z",
+    "modified_at": "2026-11-26T06:32:25.358200Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/latest_checks.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 760240
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484093,
+   "data_storage_id": "ec42575b-ca2b-4f3e-9367-c74f8b679f41",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:24.780166Z",
+   "data_storage": {
+    "name": "group1_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "68901b6cc736",
+    "parent_id": null,
+    "dataset_id": "f1f7c991-71c3-4e47-8946-93bf25509c0e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "ec42575b-ca2b-4f3e-9367-c74f8b679f41",
+    "path": "68901b6cc736",
+    "created_at": "2026-11-26T06:32:24.740029Z",
+    "modified_at": "2026-11-26T06:32:24.914930Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group1_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 5631
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484091,
+   "data_storage_id": "42c9a547-439b-4b31-b81a-743b23de7708",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:24.396951Z",
+   "data_storage": {
+    "name": "group1_summary.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "1ebe1e9fe147",
+    "parent_id": null,
+    "dataset_id": "61daeec4-9aa4-4b9b-b920-dd07d7d8d947",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "42c9a547-439b-4b31-b81a-743b23de7708",
+    "path": "1ebe1e9fe147",
+    "created_at": "2026-11-26T06:32:24.347540Z",
+    "modified_at": "2026-11-26T06:32:24.565891Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group1_summary.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 4721
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484089,
+   "data_storage_id": "5ecb31ed-2870-4e23-ade0-de8aff9125f5",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:23.974782Z",
+   "data_storage": {
+    "name": "group3_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "49ea07336654",
+    "parent_id": null,
+    "dataset_id": "4bf2d561-e0e8-48d8-a992-098347623b8c",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "5ecb31ed-2870-4e23-ade0-de8aff9125f5",
+    "path": "49ea07336654",
+    "created_at": "2026-11-26T06:32:23.914843Z",
+    "modified_at": "2026-11-26T06:32:24.156935Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group3_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 10680
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484087,
+   "data_storage_id": "c3261fe1-391d-43d7-b425-b7e58cbcd9a3",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:22.698972Z",
+   "data_storage": {
+    "name": "source_cache.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "8c6a1cf1dccb",
+    "parent_id": null,
+    "dataset_id": "b3a0ab89-cc27-4ff4-94bc-0d472d887b7a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "c3261fe1-391d-43d7-b425-b7e58cbcd9a3",
+    "path": "8c6a1cf1dccb",
+    "created_at": "2026-11-26T06:32:22.247381Z",
+    "modified_at": "2026-11-26T06:32:23.226016Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/source_cache.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 7714868
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484085,
+   "data_storage_id": "79a0fa1c-6561-417b-82f7-46f9b4b9fa90",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:21.574197Z",
+   "data_storage": {
+    "name": "group1.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "6ed7bacc9db3",
+    "parent_id": null,
+    "dataset_id": "5c51afc9-389e-4fab-9997-c83234350241",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "79a0fa1c-6561-417b-82f7-46f9b4b9fa90",
+    "path": "6ed7bacc9db3",
+    "created_at": "2026-11-26T06:32:21.536207Z",
+    "modified_at": "2026-11-26T06:32:21.709998Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group1.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 2787
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484083,
+   "data_storage_id": "dc7d3acd-efd7-48dd-8323-358b2f483752",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:21.106550Z",
+   "data_storage": {
+    "name": "group3_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d8847c53079e",
+    "parent_id": null,
+    "dataset_id": "ce7b2999-ea4e-41a3-8398-43345d569013",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "dc7d3acd-efd7-48dd-8323-358b2f483752",
+    "path": "d8847c53079e",
+    "created_at": "2026-11-26T06:32:21.026923Z",
+    "modified_at": "2026-11-26T06:32:21.286983Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group3_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 445526
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484081,
+   "data_storage_id": "86351994-239d-409f-9d5b-eb7588747f37",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:20.616239Z",
+   "data_storage": {
+    "name": "reconciliation_flags.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "7378a3e9a15d",
+    "parent_id": null,
+    "dataset_id": "88f857ae-1c6e-4b9b-810c-0ae3a15b6141",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "86351994-239d-409f-9d5b-eb7588747f37",
+    "path": "7378a3e9a15d",
+    "created_at": "2026-11-26T06:32:20.594910Z",
+    "modified_at": "2026-11-26T06:32:20.796397Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/reconciliation_flags.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 1070
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484079,
+   "data_storage_id": "470a19d9-f875-430e-a386-cebb316be133",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:20.149824Z",
+   "data_storage": {
+    "name": "group7_notes.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "565eb0a4f39a",
+    "parent_id": null,
+    "dataset_id": "23b0014d-754f-4b69-8efc-c8be00606f5b",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "470a19d9-f875-430e-a386-cebb316be133",
+    "path": "565eb0a4f39a",
+    "created_at": "2026-11-26T06:32:20.087192Z",
+    "modified_at": "2026-11-26T06:32:20.401355Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group7_notes.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 9198
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484077,
+   "data_storage_id": "0bb3266b-b7b4-4b08-ba23-bef218c8777f",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:19.657429Z",
+   "data_storage": {
+    "name": "group8_tool_evidence.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "52833b62ab6f",
+    "parent_id": null,
+    "dataset_id": "7332900e-b010-42ff-9bbc-f9dc5e8e89d0",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "0bb3266b-b7b4-4b08-ba23-bef218c8777f",
+    "path": "52833b62ab6f",
+    "created_at": "2026-11-26T06:32:19.551772Z",
+    "modified_at": "2026-11-26T06:32:19.809881Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group8_tool_evidence.txt",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 444211
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484075,
+   "data_storage_id": "b73d37f3-2a45-4042-a54f-1064fece99da",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:19.140877Z",
+   "data_storage": {
+    "name": "group1_messages.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "ce41d8b610db",
+    "parent_id": null,
+    "dataset_id": "2183de24-688a-4557-98a0-ee74915a514a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "b73d37f3-2a45-4042-a54f-1064fece99da",
+    "path": "ce41d8b610db",
+    "created_at": "2026-11-26T06:32:19.074145Z",
+    "modified_at": "2026-11-26T06:32:19.274719Z",
+    "tags": null,
+    "file_path": "/workspace/audit_work/group1_messages.json",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 462039
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484072,
+   "data_storage_id": "b0ba267c-0931-4774-904b-9489a9418214",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:17.126364Z",
+   "data_storage": {
+    "name": "69862258-b7d3-4950-962d-7f74445431be_memory_heron_c0_20261126T055729735950.jsonl",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "7f72d249e77b",
+    "parent_id": null,
+    "dataset_id": "d0d9752f-2d5c-4b5e-8299-4927fff9ec6e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "b0ba267c-0931-4774-904b-9489a9418214",
+    "path": "7f72d249e77b",
+    "created_at": "2026-11-26T06:32:17.032146Z",
+    "modified_at": "2026-11-26T06:32:18.857336Z",
+    "tags": null,
+    "file_path": "/workspace/memory/69862258-b7d3-4950-962d-7f74445431be_memory_heron_c0_20261126T055729735950.jsonl",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 1088625
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484069,
+   "data_storage_id": "83523e82-5e0f-429c-a59e-3679cc4f7e68",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:16.659177Z",
+   "data_storage": {
+    "name": "funders_audit.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d1d4a5c3dc9c",
+    "parent_id": null,
+    "dataset_id": "0e53f1cd-77a1-4546-997b-8c8e4a1d8b6f",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "83523e82-5e0f-429c-a59e-3679cc4f7e68",
+    "path": "d1d4a5c3dc9c",
+    "created_at": "2026-11-26T06:32:16.614838Z",
+    "modified_at": "2026-11-26T06:32:16.794555Z",
+    "tags": null,
+    "file_path": "/workspace/funders_audit.csv",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 46074
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31484067,
+   "data_storage_id": "b8dd492d-c32b-49e3-9ee1-a6468e67c089",
+   "operation": "create",
+   "actor_id": "69862258-b7d3-4950-962d-7f74445431be",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-26T06:32:16.261343Z",
+   "data_storage": {
+    "name": "funders_audit_notes.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "336fb2851c43",
+    "parent_id": null,
+    "dataset_id": "8ffb8cf7-2bf7-4ef8-955f-0af9c95ae3c6",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "b8dd492d-c32b-49e3-9ee1-a6468e67c089",
+    "path": "336fb2851c43",
+    "created_at": "2026-11-26T06:32:16.176469Z",
+    "modified_at": "2026-11-26T06:32:16.425615Z",
+    "tags": null,
+    "file_path": "/workspace/funders_audit_notes.md",
+    "metadata": {
+     "trajectory_id": "69862258-b7d3-4950-962d-7f74445431be",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "90031756-bda3-4fe2-94a3-646598884914",
+       "filename": "funders_audit_sample.csv"
+      },
+      {
+       "entry_id": "0a0b1c25-04b4-49ea-aa2b-a4715979c398",
+       "filename": "deal_rules.md"
+      }
+     ],
+     "size": 37744
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  }
+ ]
+}

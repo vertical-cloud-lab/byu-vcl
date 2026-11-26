@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+langchain-ai,LangChain,U1,COSS (GitHub core),github_core,GitHub org(s): langchain-ai; basis: sells LangSmith platform built around LangChain; country US; parent -; ; site https://www.langchain.com,langchain-ai,226992
+grafana,Grafana Labs,U1,COSS (GitHub core),github_core,GitHub org(s): grafana; basis: sells Grafana Cloud and Enterprise; country US; parent -; ; site https://grafana.com,grafana,139841
+Stirling-Tools,Stirling PDF,U1,COSS (GitHub core),github_core,GitHub org(s): Stirling-Tools; basis: sells Stirling-PDF Pro/Enterprise and hosted version; country GB; parent -; ; site https://stirling.com,Stirling-Tools,97456
+hoppscotch,Hoppscotch,U1,COSS (GitHub core),github_core,GitHub org(s): hoppscotch; basis: sells Hoppscotch Cloud and Enterprise; country ?; parent -; ; site https://hoppscotch.com,hoppscotch,80973
+hpcaitech,HPC-AI Tech,U1,COSS (GitHub core),github_core,GitHub org(s): hpcaitech; basis: sells cloud platform for training and deploying with Colossal-AI; country SG; parent -; ; site https://hpc-ai.com/,hpcaitech,71991
+BerriAI,BerriAI,U1,COSS (GitHub core),github_core,GitHub org(s): BerriAI; basis: sells LiteLLM Enterprise and hosted proxy; country US; parent -; ; site https://docs.litellm.ai/docs/,BerriAI,63907
+gatsbyjs,Gatsby,U1,COSS (GitHub core),github_core,GitHub org(s): gatsbyjs; basis: sold Gatsby Cloud hosting; now owned by Netlify; country US; parent Netlify; acquired by Netlify 2023; site https://www.gatsbyjs.com/,gatsbyjs,55919
+metabase,Metabase,U1,COSS (GitHub core),github_core,GitHub org(s): metabase; basis: sells Metabase Cloud and Pro/Enterprise; country US; parent -; ; site https://metabase.com/,metabase,50536
+payloadcms,Payload,U1,COSS (GitHub core),github_core,GitHub org(s): payloadcms; basis: sells Payload Cloud and enterprise; bought by Figma; country US; parent Figma; acquired by Figma 2025; site https://payloadcms.com,payloadcms,46010
+outline,General Outline,U1,COSS (GitHub core),github_core,GitHub org(s): outline; basis: sells hosted Outline knowledge base; country US; parent -; ; site https://www.getoutline.com,outline,41384
+mindsdb,MindsDB,U1,COSS (GitHub core),github_core,GitHub org(s): mindsdb; basis: sells MindsDB cloud and enterprise; country US; parent -; ; site mindsdb.com,mindsdb,39890
+medusajs,Medusa,U1,COSS (GitHub core),github_core,GitHub org(s): medusajs; basis: sells Medusa Cloud; country US; parent -; ; site https://medusajs.com,medusajs,37408
+fishaudio,Fish Audio,U1,COSS (GitHub core),github_core,GitHub org(s): fishaudio; basis: open-weight TTS models; sells API and platform access; country ?; parent -; ; site https://fish.audio,fishaudio,33865
+conductor-oss,Orkes,U1,COSS (GitHub core),github_core,GitHub org(s): conductor-oss; basis: maintainers' company Orkes sells hosted Conductor; country US; parent -; ; site https://conductor-oss.org/,conductor-oss,32508
+e2b-dev,E2B,U1,COSS (GitHub core),github_core,GitHub org(s): e2b-dev; basis: sells hosted E2B sandboxes from open-source infra; top repo is a list; country US; parent -; ; site https://e2b.dev/,e2b-dev,31062
+trufflesecurity,Truffle Security,U1,COSS (GitHub core),github_core,GitHub org(s): trufflesecurity; basis: sells TruffleHog Enterprise; country US; parent -; ; site https://trufflesecurity.com,trufflesecurity,29664
+Budibase,Budibase,U1,COSS (GitHub core),github_core,GitHub org(s): Budibase; basis: sells Budibase Cloud and Enterprise; country GB; parent -; ; site https://www.budibase.com,Budibase,28451
+GrapesJS,GrapesJS,U1,COSS (GitHub core),github_core,GitHub org(s): GrapesJS; basis: sells GrapesJS Studio SDK commercial editions; country ?; parent -; ; site https://grapesjs.com,GrapesJS,26431
+letta-ai,Letta,U1,COSS (GitHub core),github_core,GitHub org(s): letta-ai; basis: sells Letta Cloud; country US; parent -; ; site https://letta.com,letta-ai,25543
+TecharoHQ,Techaro,U1,COSS (GitHub core),github_core,GitHub org(s): TecharoHQ; basis: sells BotStopper commercial version of Anubis; country CA; parent -; ; site https://techaro.lol,TecharoHQ,24437
+comet-ml,Comet ML,U1,COSS (GitHub core),github_core,GitHub org(s): comet-ml; basis: sells Opik cloud and Comet platform; country US; parent -; ; site https://www.comet.com/site/,comet-ml,23513
+nextflow-io,Seqera,U1,COSS (GitHub core),github_core,GitHub org(s): nextflow-io; basis: maintainers' company Seqera sells hosted Seqera Platform; country ES; parent -; ; site http://nextflow.io,nextflow-io,3535
+arvados,Curii Corporation,U1,COSS (GitHub core),github_core,GitHub org(s): arvados; basis: maintainers' company Curii sells Arvados support and hosting; country US; parent -; ; site ,arvados,422
+uCAN-LIN,uCanDevices,U1,COSS (GitHub core),github_core,GitHub org(s): uCAN-LIN; basis: sells the USB-LIN dongle hardware; country PL; parent -; ; site ,uCAN-LIN,94

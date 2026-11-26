@@ -1,0 +1,20 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+imply,Imply,U3,Apache Druid (Apache-2.0); Imply sells commercial Druid-based cloud and Pivot,,yes,US,2015,private,yes,4,A Series A (memory: 2018) and a 2022 Series D not found on a fetchable page. Licence from memory.,,2026-11-26T06:39:01Z
+alluxio,Alluxio,U3,"Alluxio (ex-Tachyon) open-source data orchestration, Apache-2.0 community edition",,yes,US,2015,private,yes,2,Series B/C announcements not found. Licence from memory.,,2026-11-26T06:39:01Z
+ahana,Ahana,U3,"Managed PrestoDB (Presto, Linux Foundation, Apache-2.0); founders ex-Alluxio",,yes,US,2020,acquired,yes,4,Licence from memory.,,2026-11-26T06:39:01Z
+tabular,Tabular,U3,"Founded by Apache Iceberg's creators; managed Iceberg platform, Iceberg is Apache-2.0",,yes,US,2021,acquired,yes,2,Individual seed/Series A rounds not found.,,2026-11-26T06:39:01Z
+onehouse,Onehouse,U3,Managed lakehouse by Apache Hudi's creators; Hudi is Apache-2.0,,yes,US,2021,private,yes,2,Series A/B announcements not found. Licence from memory.,,2026-11-26T06:39:20Z
+voltron-data,Voltron Data,U3,Built around Apache Arrow (Apache-2.0); sells Theseus and Arrow support,,yes,US,2021,private,yes,2,Later rounds not found. Licence from memory.,,2026-11-26T06:39:20Z
+streamnative,StreamNative,U3,Founded by Apache Pulsar's developers; Pulsar is Apache-2.0,,yes,US,2019,private,yes,1,Seed and later rounds not found. Licence from memory.,https://streamnative.io/about,2026-11-26T06:39:20Z
+redpanda,Redpanda Data,U3,Redpanda core source-available under BSL (converts to Apache-2.0 after 4 years); Kafka-compatible,,partial,US,2019,private,yes,4,Licence from memory; later rounds not checked.,,2026-11-26T06:39:20Z
+materialize,Materialize,U3,Source-available under Business Source License; built on open-source Timely and Differential Dataflow,,partial,US,2019,private,yes,3,Licence from memory.,,2026-11-26T06:39:20Z
+synadia,Synadia,U3,"Creators and maintainers of NATS.io, Apache-2.0 (CNCF)",,yes,US,2017,private,yes,2,Earlier rounds not found. Licence from memory.,,2026-11-26T06:39:20Z
+camunda,Camunda,U3,Camunda 7 open source Apache-2.0; Camunda 8 source-available,,partial,Germany,2008,private,yes,2,Later rounds/debt not checked; find_pages timed out. Licence from memory.,,2026-11-26T06:39:20Z
+meltano,Meltano,U3,"Meltano open-source ELT/DataOps (MIT), spun out of GitLab",,yes,US,2018,private,yes,2,Licence from memory.,,2026-11-26T06:39:20Z
+rudderstack,RudderStack,U3,Open-source customer data pipeline (Segment alternative); core server licence changed over time,,partial,US,2019,private,yes,3,Licence status from memory.,,2026-11-26T06:39:40Z
+snowplow,Snowplow,U3,"Open-source behavioural data pipeline (Apache-2.0 until a 2024 licence change, memory)",,partial,UK,2012,private,yes,1,Earlier rounds (total $55M) not found on a fetched page.,,2026-11-26T06:39:40Z
+cube,Cube Dev,U3,"Cube open-source semantic layer (Cube.js, MIT core)",,yes,US,2019,private,yes,1,Later rounds not found. Licence from memory.,,2026-11-26T06:39:40Z
+preset,Preset,U3,Commercial service built by Apache Superset's creator; Superset is Apache-2.0,,yes,US,2019,private,yes,3,Seed round not found. Licence from memory.,,2026-11-26T06:39:40Z
+rasa,Rasa,U3,Rasa Open Source conversational AI framework (Apache-2.0),,yes,Germany,2016,private,yes,4,Licence from memory.,,2026-11-26T06:39:40Z
+chainguard,Chainguard,U3,Sells hardened container images; creators of Sigstore and Wolfi (open source); images themselves commercial,,partial,US,2021,private,yes,4,Rounds after April 2025 not checked. Licence from memory.,,2026-11-26T06:39:40Z
+sysdig,Sysdig,U3,"Creator of Falco (CNCF, Apache-2.0) and open-source sysdig; commercial platform",,yes,US,2013,private,yes,3,Series B-D and seed investors not found. Licence from memory.,,2026-11-26T06:39:40Z

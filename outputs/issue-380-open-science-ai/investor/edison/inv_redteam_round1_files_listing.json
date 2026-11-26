@@ -1,0 +1,3304 @@
+{
+ "data": [
+  {
+   "id": 31416585,
+   "data_storage_id": "847a67be-ad16-4aac-83ab-0808cb0a82af",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:59.381839Z",
+   "data_storage": {
+    "name": "95ddb5a0-c3c5-438f-8083-cacf439a71f0.bib",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "dc7923086540",
+    "parent_id": null,
+    "dataset_id": "ec995989-64e4-4ab2-9f7b-02efe1412d37",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "847a67be-ad16-4aac-83ab-0808cb0a82af",
+    "path": "dc7923086540",
+    "created_at": "2026-11-25T01:18:59.294692Z",
+    "modified_at": "2026-11-25T01:19:01.119027Z",
+    "tags": null,
+    "file_path": "/workspace/citations/default_project/95ddb5a0-c3c5-438f-8083-cacf439a71f0.bib",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 2813
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416578,
+   "data_storage_id": "01fd58b9-a4de-41b8-8b37-58a60b714956",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:57.331363Z",
+   "data_storage": {
+    "name": "investment_evidence.png",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "ad52eb189d4d",
+    "parent_id": null,
+    "dataset_id": "2e879a71-4c90-4741-b72f-e6a1f72beb94",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "01fd58b9-a4de-41b8-8b37-58a60b714956",
+    "path": "ad52eb189d4d",
+    "created_at": "2026-11-25T01:18:57.201086Z",
+    "modified_at": "2026-11-25T01:18:59.156975Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/figures/investment_evidence.png",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 442815
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416572,
+   "data_storage_id": "ee677a4e-3368-414e-a3f0-25c0b0203b29",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:53.990605Z",
+   "data_storage": {
+    "name": "investment_evidence.pdf",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "4621ea22d8c8",
+    "parent_id": null,
+    "dataset_id": "f6ccd8ae-504d-4d86-9978-00874eff7f9e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "ee677a4e-3368-414e-a3f0-25c0b0203b29",
+    "path": "4621ea22d8c8",
+    "created_at": "2026-11-25T01:18:53.906147Z",
+    "modified_at": "2026-11-25T01:18:56.992111Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/figures/investment_evidence.pdf",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 39412
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416569,
+   "data_storage_id": "58a2dc19-41d8-4876-9bbf-ad7238e46b36",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:51.822668Z",
+   "data_storage": {
+    "name": "LF_COSS_2025.pdf",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "b3d06ba79128",
+    "parent_id": null,
+    "dataset_id": "cf13d245-d36d-4d0a-b2d6-88c39d1cf114",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "58a2dc19-41d8-4876-9bbf-ad7238e46b36",
+    "path": "b3d06ba79128",
+    "created_at": "2026-11-25T01:18:51.678832Z",
+    "modified_at": "2026-11-25T01:18:53.751564Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/sources/LF_COSS_2025.pdf",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 17758233
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416566,
+   "data_storage_id": "cae6ed46-92aa-4054-98f8-51f9d9b47721",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:51.356109Z",
+   "data_storage": {
+    "name": "primary_page_2.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "33f97df9a888",
+    "parent_id": null,
+    "dataset_id": "33e1c22a-e52b-4b7c-9c6b-3af5b72a5a62",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "cae6ed46-92aa-4054-98f8-51f9d9b47721",
+    "path": "33f97df9a888",
+    "created_at": "2026-11-25T01:18:51.317562Z",
+    "modified_at": "2026-11-25T01:18:51.478731Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/sources/primary_page_2.md",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 146906
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416564,
+   "data_storage_id": "09ce45e9-fb04-4c11-aeb9-ef5997144e4f",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:51.046145Z",
+   "data_storage": {
+    "name": "primary_page_1.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "257f7465c8c5",
+    "parent_id": null,
+    "dataset_id": "db95d04c-fad8-44e0-9a7a-70271602ac28",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "09ce45e9-fb04-4c11-aeb9-ef5997144e4f",
+    "path": "257f7465c8c5",
+    "created_at": "2026-11-25T01:18:50.998495Z",
+    "modified_at": "2026-11-25T01:18:51.175980Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/sources/primary_page_1.md",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 8537
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416560,
+   "data_storage_id": "34c75b6f-9dc7-4772-ad38-ae3f3d316bbe",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:48.917572Z",
+   "data_storage": {
+    "name": "investment_committee_review.pdf",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "e0c462b5e9f1",
+    "parent_id": null,
+    "dataset_id": "550fcce4-0af1-4467-a293-49a1ade425fa",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "34c75b6f-9dc7-4772-ad38-ae3f3d316bbe",
+    "path": "e0c462b5e9f1",
+    "created_at": "2026-11-25T01:18:48.850274Z",
+    "modified_at": "2026-11-25T01:18:50.762851Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.pdf",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 157712
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416557,
+   "data_storage_id": "7493dfa5-cf69-49a3-886e-3f7418c63ca2",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:46.908796Z",
+   "data_storage": {
+    "name": "investment_committee_review.out",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "12550b990101",
+    "parent_id": null,
+    "dataset_id": "26bd2f40-e3c0-4242-91e0-362cc92a057e",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "7493dfa5-cf69-49a3-886e-3f7418c63ca2",
+    "path": "12550b990101",
+    "created_at": "2026-11-25T01:18:46.837176Z",
+    "modified_at": "2026-11-25T01:18:48.719897Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.out",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 11095
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416554,
+   "data_storage_id": "3c23ac12-b80e-45b5-8c0d-4552ee28de7b",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:46.485222Z",
+   "data_storage": {
+    "name": "executive.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "943eebf30223",
+    "parent_id": null,
+    "dataset_id": "22655b8b-f4c8-4862-90e0-35be24c02199",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "3c23ac12-b80e-45b5-8c0d-4552ee28de7b",
+    "path": "943eebf30223",
+    "created_at": "2026-11-25T01:18:46.446351Z",
+    "modified_at": "2026-11-25T01:18:46.664359Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/executive.md",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 1966
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416551,
+   "data_storage_id": "fab542d3-cd45-4ee4-b871-d951e55aa151",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:44.392392Z",
+   "data_storage": {
+    "name": "references.bib",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "59ae84c69348",
+    "parent_id": null,
+    "dataset_id": "e3b213c4-4190-44e1-819e-3b453e952b08",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "fab542d3-cd45-4ee4-b871-d951e55aa151",
+    "path": "59ae84c69348",
+    "created_at": "2026-11-25T01:18:44.305626Z",
+    "modified_at": "2026-11-25T01:18:46.230824Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/references.bib",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 2813
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416546,
+   "data_storage_id": "efaefcff-67c0-4efd-9aa7-f2ee2fc403cf",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:42.138143Z",
+   "data_storage": {
+    "name": "body.tex",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "406ce9837276",
+    "parent_id": null,
+    "dataset_id": "db354290-6be8-42b8-b6cc-d9b25ce730f9",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "efaefcff-67c0-4efd-9aa7-f2ee2fc403cf",
+    "path": "406ce9837276",
+    "created_at": "2026-11-25T01:18:42.056689Z",
+    "modified_at": "2026-11-25T01:18:44.104864Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/body.tex",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 56214
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416542,
+   "data_storage_id": "1cf478d3-aece-4c97-b06b-b94571e8dd75",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:40.109735Z",
+   "data_storage": {
+    "name": "executive.tex",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "6aaab7d31392",
+    "parent_id": null,
+    "dataset_id": "9da6befe-ca54-4614-ad2d-65ec4b0d6355",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "1cf478d3-aece-4c97-b06b-b94571e8dd75",
+    "path": "6aaab7d31392",
+    "created_at": "2026-11-25T01:18:40.013896Z",
+    "modified_at": "2026-11-25T01:18:41.882496Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/executive.tex",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 2031
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416538,
+   "data_storage_id": "09b220f1-0e47-4abf-97b8-bd618bd5ec1a",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:37.871360Z",
+   "data_storage": {
+    "name": "investment_committee_review.toc",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "3c9ef1a08e4b",
+    "parent_id": null,
+    "dataset_id": "82bed930-8690-43fb-ade8-19a114c7ff50",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "09b220f1-0e47-4abf-97b8-bd618bd5ec1a",
+    "path": "3c9ef1a08e4b",
+    "created_at": "2026-11-25T01:18:37.766420Z",
+    "modified_at": "2026-11-25T01:18:39.804774Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.toc",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 3692
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416529,
+   "data_storage_id": "a8666b1a-342f-42e5-8d4c-68d46eebcfa7",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:35.876242Z",
+   "data_storage": {
+    "name": "investment_committee_review.aux",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "5740946d7f64",
+    "parent_id": null,
+    "dataset_id": "2b221179-1eee-4aba-a2c5-9fd5f1fb6645",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "a8666b1a-342f-42e5-8d4c-68d46eebcfa7",
+    "path": "5740946d7f64",
+    "created_at": "2026-11-25T01:18:35.803569Z",
+    "modified_at": "2026-11-25T01:18:37.590529Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.aux",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 16672
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416516,
+   "data_storage_id": "f9d8904a-effc-4d28-aab1-1e7199c44099",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:33.666519Z",
+   "data_storage": {
+    "name": "arxiv.sty",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "34065359b8a0",
+    "parent_id": null,
+    "dataset_id": "d60a5b75-5c9f-48f5-9828-f8d4dd28b086",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f9d8904a-effc-4d28-aab1-1e7199c44099",
+    "path": "34065359b8a0",
+    "created_at": "2026-11-25T01:18:33.576366Z",
+    "modified_at": "2026-11-25T01:18:35.609096Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/arxiv.sty",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 7713
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416511,
+   "data_storage_id": "7799dbdb-8418-4c1b-8e8b-162aafd3a43a",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:33.274153Z",
+   "data_storage": {
+    "name": "body.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "e3f3542a29e3",
+    "parent_id": null,
+    "dataset_id": "5c3f6b8c-4118-470b-87b0-8e2328448316",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "7799dbdb-8418-4c1b-8e8b-162aafd3a43a",
+    "path": "e3f3542a29e3",
+    "created_at": "2026-11-25T01:18:33.212515Z",
+    "modified_at": "2026-11-25T01:18:33.399101Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/body.md",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 47997
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416480,
+   "data_storage_id": "96a886c1-d66d-4860-932c-9148d2b0cf6a",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:31.169327Z",
+   "data_storage": {
+    "name": "investment_committee_review-blx.bib",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "4dc06556f25a",
+    "parent_id": null,
+    "dataset_id": "5241517b-e0d8-4b14-bfa9-b5e7efa748d1",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "96a886c1-d66d-4860-932c-9148d2b0cf6a",
+    "path": "4dc06556f25a",
+    "created_at": "2026-11-25T01:18:31.086829Z",
+    "modified_at": "2026-11-25T01:18:32.990552Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review-blx.bib",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 341
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416448,
+   "data_storage_id": "f12fcfce-38d6-4801-8f3f-a1a050cfd5b6",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:29.029427Z",
+   "data_storage": {
+    "name": "template.tex",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "9920ae901ed2",
+    "parent_id": null,
+    "dataset_id": "28eaf939-1a9a-405f-b1a1-113959dd0bac",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f12fcfce-38d6-4801-8f3f-a1a050cfd5b6",
+    "path": "9920ae901ed2",
+    "created_at": "2026-11-25T01:18:28.942415Z",
+    "modified_at": "2026-11-25T01:18:30.912025Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/template.tex",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 9239
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416411,
+   "data_storage_id": "fa43a208-706d-4213-8cf6-044c9b54128b",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:26.861999Z",
+   "data_storage": {
+    "name": "investment_committee_review.log",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "5baf42b416ca",
+    "parent_id": null,
+    "dataset_id": "9827356b-9bc8-43be-a136-d1496c6ef284",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "fa43a208-706d-4213-8cf6-044c9b54128b",
+    "path": "5baf42b416ca",
+    "created_at": "2026-11-25T01:18:26.780170Z",
+    "modified_at": "2026-11-25T01:18:28.791524Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.log",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 36285
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416389,
+   "data_storage_id": "c91da2e5-1369-4292-b778-94fbcd1609d9",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:24.864643Z",
+   "data_storage": {
+    "name": "investment_committee_review.bbl",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "d937d8d6ff7e",
+    "parent_id": null,
+    "dataset_id": "c383fe9b-b501-4b1e-92bc-fbc7a469884a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "c91da2e5-1369-4292-b778-94fbcd1609d9",
+    "path": "d937d8d6ff7e",
+    "created_at": "2026-11-25T01:18:24.769988Z",
+    "modified_at": "2026-11-25T01:18:26.606491Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.bbl",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 6499
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416366,
+   "data_storage_id": "06de0c68-f096-4289-b474-9d7b09f52c6f",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:22.722150Z",
+   "data_storage": {
+    "name": "investment_committee_review.tex",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "371ab9810e66",
+    "parent_id": null,
+    "dataset_id": "0e258171-c96b-4717-bbf3-72c0a317e908",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "06de0c68-f096-4289-b474-9d7b09f52c6f",
+    "path": "371ab9810e66",
+    "created_at": "2026-11-25T01:18:22.647365Z",
+    "modified_at": "2026-11-25T01:18:24.571984Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.tex",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 66298
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416351,
+   "data_storage_id": "70701cd0-2dee-4746-a454-7c8cd2468d71",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:20.563347Z",
+   "data_storage": {
+    "name": "investment_committee_review.blg",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "8fa54c0321aa",
+    "parent_id": null,
+    "dataset_id": "dd2e0f5b-724a-4976-9b07-b566596fc906",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "70701cd0-2dee-4746-a454-7c8cd2468d71",
+    "path": "8fa54c0321aa",
+    "created_at": "2026-11-25T01:18:20.468796Z",
+    "modified_at": "2026-11-25T01:18:22.501945Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.blg",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 4129
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416333,
+   "data_storage_id": "f971f7ed-85cb-47b4-aa27-ba35279c12f8",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:18.517048Z",
+   "data_storage": {
+    "name": "edison-logo.pdf",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "eab512db21ad",
+    "parent_id": null,
+    "dataset_id": "44ca50ed-b2a9-4e3b-b18b-67ba21dac261",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f971f7ed-85cb-47b4-aa27-ba35279c12f8",
+    "path": "eab512db21ad",
+    "created_at": "2026-11-25T01:18:18.385069Z",
+    "modified_at": "2026-11-25T01:18:20.329603Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/edison-logo.pdf",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 4587
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416319,
+   "data_storage_id": "392f1629-7a53-4747-b258-536278d0d5b7",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:16.263517Z",
+   "data_storage": {
+    "name": "investment_committee_review.run.xml",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "bc083ce21741",
+    "parent_id": null,
+    "dataset_id": "3bbe091f-8ad6-4724-8dfc-87cf1d64a771",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "392f1629-7a53-4747-b258-536278d0d5b7",
+    "path": "bc083ce21741",
+    "created_at": "2026-11-25T01:18:16.179367Z",
+    "modified_at": "2026-11-25T01:18:18.180792Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/latex/investment_committee_review.run.xml",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 2839
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416307,
+   "data_storage_id": "f0666c74-0588-4f3b-87a0-9f70dd79c1a8",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:14.303954Z",
+   "data_storage": {
+    "name": "95ddb5a0-c3c5-438f-8083-cacf439a71f0.ipynb",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "61148aa1ea1e",
+    "parent_id": null,
+    "dataset_id": "ceceb080-63ca-4b64-b7ae-ce22b6f6c0c7",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f0666c74-0588-4f3b-87a0-9f70dd79c1a8",
+    "path": "61148aa1ea1e",
+    "created_at": "2026-11-25T01:18:14.225687Z",
+    "modified_at": "2026-11-25T01:18:15.982969Z",
+    "tags": null,
+    "file_path": "/workspace/notebooks/95ddb5a0-c3c5-438f-8083-cacf439a71f0.ipynb",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 1226616
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416294,
+   "data_storage_id": "6f11b7ea-042c-463f-ae84-85e489fdbe9b",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:12.154954Z",
+   "data_storage": {
+    "name": "95ddb5a0-c3c5-438f-8083-cacf439a71f0_memory_heron_c0_20261125T004607422526.jsonl",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "c47c491bd95d",
+    "parent_id": null,
+    "dataset_id": "331342ea-fcc1-4762-afee-882e6e5c5888",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "6f11b7ea-042c-463f-ae84-85e489fdbe9b",
+    "path": "c47c491bd95d",
+    "created_at": "2026-11-25T01:18:12.071036Z",
+    "modified_at": "2026-11-25T01:18:14.058075Z",
+    "tags": null,
+    "file_path": "/workspace/memory/95ddb5a0-c3c5-438f-8083-cacf439a71f0_memory_heron_c0_20261125T004607422526.jsonl",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 485693
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416277,
+   "data_storage_id": "d9de6c08-d92d-4540-be20-5e9950d21162",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:10.076420Z",
+   "data_storage": {
+    "name": "step025_msg000_img000.png",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "714f7665d6a2",
+    "parent_id": null,
+    "dataset_id": "c24b78d2-5198-4d93-857e-27f29f4fe92c",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "d9de6c08-d92d-4540-be20-5e9950d21162",
+    "path": "714f7665d6a2",
+    "created_at": "2026-11-25T01:18:09.986702Z",
+    "modified_at": "2026-11-25T01:18:11.894121Z",
+    "tags": null,
+    "file_path": "/workspace/memory/step025_msg000_img000.png",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 158815
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416254,
+   "data_storage_id": "241e0a28-558e-44bf-ad12-415ebc89ec23",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:07.853083Z",
+   "data_storage": {
+    "name": "investment_committee_review.pdf",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "9a44c402e3d6",
+    "parent_id": null,
+    "dataset_id": "244fc909-5d6c-41fb-acb1-febd4f71ec66",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "241e0a28-558e-44bf-ad12-415ebc89ec23",
+    "path": "9a44c402e3d6",
+    "created_at": "2026-11-25T01:18:07.765871Z",
+    "modified_at": "2026-11-25T01:18:09.795565Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/investment_committee_review.pdf",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 157712
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416251,
+   "data_storage_id": "2ad89e64-e099-4ebc-aae1-3346f6b03226",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:07.446483Z",
+   "data_storage": {
+    "name": "sector_openness_summary.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "55e183a14dec",
+    "parent_id": null,
+    "dataset_id": "1c4fc608-a250-4f67-92b2-de9215c3c426",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "2ad89e64-e099-4ebc-aae1-3346f6b03226",
+    "path": "55e183a14dec",
+    "created_at": "2026-11-25T01:18:07.417057Z",
+    "modified_at": "2026-11-25T01:18:07.569092Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/sector_openness_summary.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 21876
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416247,
+   "data_storage_id": "9b637e38-50a6-4ef3-9171-b0e1f069f8a3",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:07.098283Z",
+   "data_storage": {
+    "name": "report_body_part1.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "424e8b10b6ef",
+    "parent_id": null,
+    "dataset_id": "e0ad34a6-4c99-4bf4-80b2-1daa11aeeb97",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "9b637e38-50a6-4ef3-9171-b0e1f069f8a3",
+    "path": "424e8b10b6ef",
+    "created_at": "2026-11-25T01:18:07.053725Z",
+    "modified_at": "2026-11-25T01:18:07.262729Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/report_body_part1.md",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 32384
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416243,
+   "data_storage_id": "e2335a38-b176-4e3f-9fc4-0975e5076cf9",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:06.766977Z",
+   "data_storage": {
+    "name": "openness_summary.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "05a40adc9be7",
+    "parent_id": null,
+    "dataset_id": "b246e329-2d2c-426b-9964-128de1cbfe57",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "e2335a38-b176-4e3f-9fc4-0975e5076cf9",
+    "path": "05a40adc9be7",
+    "created_at": "2026-11-25T01:18:06.721853Z",
+    "modified_at": "2026-11-25T01:18:06.883022Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/openness_summary.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 20311
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416237,
+   "data_storage_id": "9233c759-82f0-48c4-b1e0-de255f2d3836",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:06.388532Z",
+   "data_storage": {
+    "name": "requirements.txt",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "e0f9e6cb5f34",
+    "parent_id": null,
+    "dataset_id": "e9124b2b-4e9f-4f7c-b4bb-e1e9e6552f10",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "9233c759-82f0-48c4-b1e0-de255f2d3836",
+    "path": "e0f9e6cb5f34",
+    "created_at": "2026-11-25T01:18:06.354089Z",
+    "modified_at": "2026-11-25T01:18:06.520398Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/requirements.txt",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 80
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416217,
+   "data_storage_id": "755b950e-ccc5-460a-bc9e-cca5545f8769",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:04.217673Z",
+   "data_storage": {
+    "name": "analysis.py",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "45709f0096de",
+    "parent_id": null,
+    "dataset_id": "20274832-dfba-40b7-bf62-711e6e783551",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "755b950e-ccc5-460a-bc9e-cca5545f8769",
+    "path": "45709f0096de",
+    "created_at": "2026-11-25T01:18:04.114256Z",
+    "modified_at": "2026-11-25T01:18:06.126037Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/analysis.py",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 12403
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416211,
+   "data_storage_id": "87393644-daff-4562-884b-1ca65c152c4b",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:03.811199Z",
+   "data_storage": {
+    "name": "regression_results.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "1dcf46007aac",
+    "parent_id": null,
+    "dataset_id": "1285274f-b4a0-4f30-b296-e1af84fab9b5",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "87393644-daff-4562-884b-1ca65c152c4b",
+    "path": "1dcf46007aac",
+    "created_at": "2026-11-25T01:18:03.770195Z",
+    "modified_at": "2026-11-25T01:18:03.936989Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/regression_results.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 4353
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416198,
+   "data_storage_id": "378f33e2-e96a-4cb3-aeba-2e34c491e4a8",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:01.705399Z",
+   "data_storage": {
+    "name": "references.bib",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "40ff6f922b52",
+    "parent_id": null,
+    "dataset_id": "f6d9e895-6399-4257-a319-d97b17ca603c",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "378f33e2-e96a-4cb3-aeba-2e34c491e4a8",
+    "path": "40ff6f922b52",
+    "created_at": "2026-11-25T01:18:01.612047Z",
+    "modified_at": "2026-11-25T01:18:03.587228Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/references.bib",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 2813
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416194,
+   "data_storage_id": "f32126b2-9e05-4da4-a6de-3f3e99f4915a",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:01.275872Z",
+   "data_storage": {
+    "name": "contrasts_sensitivity.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "f487a2f984d7",
+    "parent_id": null,
+    "dataset_id": "fb4688a9-e6fa-49fd-8ec0-cd144490f5be",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f32126b2-9e05-4da4-a6de-3f3e99f4915a",
+    "path": "f487a2f984d7",
+    "created_at": "2026-11-25T01:18:01.227718Z",
+    "modified_at": "2026-11-25T01:18:01.439727Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/contrasts_sensitivity.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 65147
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416190,
+   "data_storage_id": "805b82a2-87e3-4bb8-be65-8078864697ff",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:00.840882Z",
+   "data_storage": {
+    "name": "events_audit.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "81110ad7c418",
+    "parent_id": null,
+    "dataset_id": "cf056613-6ae6-4703-95a1-427b9d81e3cc",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "805b82a2-87e3-4bb8-be65-8078864697ff",
+    "path": "81110ad7c418",
+    "created_at": "2026-11-25T01:18:00.790097Z",
+    "modified_at": "2026-11-25T01:18:01.017979Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/events_audit.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 50861
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416185,
+   "data_storage_id": "21bcccdf-1a92-4fd6-98c6-67b2b1994341",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:18:00.409421Z",
+   "data_storage": {
+    "name": "sector_summary.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "de817776c774",
+    "parent_id": null,
+    "dataset_id": "573d3b5b-b12d-4cac-a2ac-e5008d549736",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "21bcccdf-1a92-4fd6-98c6-67b2b1994341",
+    "path": "de817776c774",
+    "created_at": "2026-11-25T01:18:00.371066Z",
+    "modified_at": "2026-11-25T01:18:00.576169Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/sector_summary.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 4866
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416182,
+   "data_storage_id": "164c90c7-dd3c-4d19-b6bf-3f63a33c6173",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:59.958944Z",
+   "data_storage": {
+    "name": "audit_metadata.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "60dfcb950a65",
+    "parent_id": null,
+    "dataset_id": "12789fa9-0c45-433f-ac4e-7e89150a4805",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "164c90c7-dd3c-4d19-b6bf-3f63a33c6173",
+    "path": "60dfcb950a65",
+    "created_at": "2026-11-25T01:17:59.921547Z",
+    "modified_at": "2026-11-25T01:18:00.126646Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/audit_metadata.json",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 1106
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416180,
+   "data_storage_id": "63dcea42-3b48-43c6-9997-88ca3079e0c4",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:59.535220Z",
+   "data_storage": {
+    "name": "README.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "74a0ef0c842c",
+    "parent_id": null,
+    "dataset_id": "7b1701ad-b594-4fed-9772-1eb6705711df",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "63dcea42-3b48-43c6-9997-88ca3079e0c4",
+    "path": "74a0ef0c842c",
+    "created_at": "2026-11-25T01:17:59.507856Z",
+    "modified_at": "2026-11-25T01:17:59.716135Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/README.md",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 4789
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416177,
+   "data_storage_id": "4c447d31-655b-42b2-9054-c7e92f389319",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:59.221719Z",
+   "data_storage": {
+    "name": "investment_committee_review.md",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "a39e81847579",
+    "parent_id": null,
+    "dataset_id": "33941fba-d5f9-4c6a-8a00-80744b0ca55a",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "4c447d31-655b-42b2-9054-c7e92f389319",
+    "path": "a39e81847579",
+    "created_at": "2026-11-25T01:17:59.197330Z",
+    "modified_at": "2026-11-25T01:17:59.328334Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/investment_committee_review.md",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 52577
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416175,
+   "data_storage_id": "8061d93e-13e3-4e67-8484-9f9e149f7055",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:58.903659Z",
+   "data_storage": {
+    "name": "omitted_failure_sensitivity.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "2c9ae9e9c9b9",
+    "parent_id": null,
+    "dataset_id": "bdb97679-59b1-43f5-acf1-2297a41abf9f",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "8061d93e-13e3-4e67-8484-9f9e149f7055",
+    "path": "2c9ae9e9c9b9",
+    "created_at": "2026-11-25T01:17:58.873372Z",
+    "modified_at": "2026-11-25T01:17:59.055910Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/omitted_failure_sensitivity.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 524
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416173,
+   "data_storage_id": "849f17ff-00c8-4462-89a2-7b6329809a84",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:58.640766Z",
+   "data_storage": {
+    "name": "web_search_evidence.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "976c72f74bcd",
+    "parent_id": null,
+    "dataset_id": "a262109b-d538-4ac0-9e60-a755bd2b8a56",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "849f17ff-00c8-4462-89a2-7b6329809a84",
+    "path": "976c72f74bcd",
+    "created_at": "2026-11-25T01:17:58.593450Z",
+    "modified_at": "2026-11-25T01:17:58.735098Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/web_search_evidence.json",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 128721
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416171,
+   "data_storage_id": "509a76f5-583c-49ed-b9d1-8b87550d1769",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:58.222465Z",
+   "data_storage": {
+    "name": "companies_analysis.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "164e90f46d3c",
+    "parent_id": null,
+    "dataset_id": "b082a373-521d-43d9-8865-ad264a1e22f4",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "509a76f5-583c-49ed-b9d1-8b87550d1769",
+    "path": "164e90f46d3c",
+    "created_at": "2026-11-25T01:17:58.179504Z",
+    "modified_at": "2026-11-25T01:17:58.388505Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/companies_analysis.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 139343
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416166,
+   "data_storage_id": "9aa827a1-79ac-4dbc-ba1e-c9911940993b",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:56.140650Z",
+   "data_storage": {
+    "name": "make_figure.py",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "ebe92259ec2d",
+    "parent_id": null,
+    "dataset_id": "a54317f6-8916-41f7-835f-0b73d4e3a675",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "9aa827a1-79ac-4dbc-ba1e-c9911940993b",
+    "path": "ebe92259ec2d",
+    "created_at": "2026-11-25T01:17:56.054144Z",
+    "modified_at": "2026-11-25T01:17:57.976285Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/make_figure.py",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 4065
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416164,
+   "data_storage_id": "12cdd5b6-c36d-45ad-8f10-9f21fad56a70",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:55.700709Z",
+   "data_storage": {
+    "name": "concentration.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "5730af430f83",
+    "parent_id": null,
+    "dataset_id": "59402d25-a353-4561-b65f-9ca6e307da66",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "12cdd5b6-c36d-45ad-8f10-9f21fad56a70",
+    "path": "5730af430f83",
+    "created_at": "2026-11-25T01:17:55.671078Z",
+    "modified_at": "2026-11-25T01:17:55.878169Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/concentration.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 407
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416162,
+   "data_storage_id": "f14d931e-9ece-4895-8fb4-ddbc7e2f1be4",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:55.387411Z",
+   "data_storage": {
+    "name": "package_versions.json",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "91ac982e94a9",
+    "parent_id": null,
+    "dataset_id": "59077712-19c3-45c0-80f5-170acaf2b6e9",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "f14d931e-9ece-4895-8fb4-ddbc7e2f1be4",
+    "path": "91ac982e94a9",
+    "created_at": "2026-11-25T01:17:55.357563Z",
+    "modified_at": "2026-11-25T01:17:55.506578Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/package_versions.json",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 185
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416160,
+   "data_storage_id": "8c3eb85e-815c-4835-91d8-c30a5d1edfd8",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:55.029061Z",
+   "data_storage": {
+    "name": "missingness_bounds.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "7b0bbc65ae84",
+    "parent_id": null,
+    "dataset_id": "2026d704-5da3-4c3b-bf27-37d2f6a6ae19",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "8c3eb85e-815c-4835-91d8-c30a5d1edfd8",
+    "path": "7b0bbc65ae84",
+    "created_at": "2026-11-25T01:17:54.990893Z",
+    "modified_at": "2026-11-25T01:17:55.206133Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/missingness_bounds.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 957
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416158,
+   "data_storage_id": "a8d0d1ab-e30f-4c1a-8829-510269d83dd1",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:54.678459Z",
+   "data_storage": {
+    "name": "closing_event_audit.csv",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "711f82b374b6",
+    "parent_id": null,
+    "dataset_id": "84efcfb4-57e9-48cd-bee9-07749034c96b",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "a8d0d1ab-e30f-4c1a-8829-510269d83dd1",
+    "path": "711f82b374b6",
+    "created_at": "2026-11-25T01:17:54.653820Z",
+    "modified_at": "2026-11-25T01:17:54.804262Z",
+    "tags": null,
+    "file_path": "/workspace/ic_review/closing_event_audit.csv",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 16396
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  },
+  {
+   "id": 31416154,
+   "data_storage_id": "67581db9-f6fa-4226-b198-92408cf1c624",
+   "operation": "create",
+   "actor_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+   "actor_type": "trajectory",
+   "timestamp": "2026-11-25T01:17:52.306970Z",
+   "data_storage": {
+    "name": "open_science_investment_review_reproducibility.zip",
+    "description": "",
+    "is_collection": false,
+    "status": "active",
+    "content": null,
+    "embedding": null,
+    "user_id": "6B7I3jBq2AMkM6FDioM4NfRp3PU2",
+    "group_id": null,
+    "created_by": null,
+    "label": "e4548b1b8790",
+    "parent_id": null,
+    "dataset_id": "15a578a5-87e5-4231-b10b-b0b9e8ecd2ed",
+    "project_id": null,
+    "share_status": "private",
+    "short_alias": null,
+    "id": "67581db9-f6fa-4226-b198-92408cf1c624",
+    "path": "e4548b1b8790",
+    "created_at": "2026-11-25T01:17:52.224457Z",
+    "modified_at": "2026-11-25T01:17:54.516063Z",
+    "tags": null,
+    "file_path": "/workspace/open_science_investment_review_reproducibility.zip",
+    "metadata": {
+     "trajectory_id": "95ddb5a0-c3c5-438f-8083-cacf439a71f0",
+     "crow_name": "data analysis crow",
+     "job_data": [
+      {
+       "entry_id": "019bac07-ecf2-49eb-9d6a-8084be6f1fe6",
+       "filename": "events.csv"
+      },
+      {
+       "entry_id": "c050020b-f742-4dea-b2e7-180ec9af50cf",
+       "filename": "suggested_proposal_language.md"
+      },
+      {
+       "entry_id": "2f0c8dbd-05f6-49e1-b05b-d1de4b27eccb",
+       "filename": "RECOMMENDATIONS.md"
+      },
+      {
+       "entry_id": "f799f895-0e87-400d-a625-44b7e4685dc0",
+       "filename": "companies_master.csv"
+      },
+      {
+       "entry_id": "ff2f7523-a00d-4c18-8d5a-78b3e7246ec4",
+       "filename": "SCHEMA.md"
+      },
+      {
+       "entry_id": "859e3557-a969-4e29-aad1-6e556ddadb7b",
+       "filename": "FINDINGS_BRIEF.md"
+      }
+     ],
+     "size": 17012413
+    },
+    "trajectory_id": null,
+    "project_name": null,
+    "project_description": null,
+    "is_kosmos_project": null
+   }
+  }
+ ]
+}

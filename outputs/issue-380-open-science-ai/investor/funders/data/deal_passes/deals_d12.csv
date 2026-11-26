@@ -1,0 +1,34 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-tesseral,Tesseral,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/tesseral,other,YC page lists status Inactive
+u4-tilo,Tilo,U4,accelerator,YC Fall 2026,2026,,,Y Combinator,https://www.ycombinator.com/companies/tilo,other,
+u4-tinfoil,Tinfoil,U4,accelerator,YC Spring 2025,2025,,,Y Combinator,https://www.ycombinator.com/companies/tinfoil,other,
+u4-tinfoil,Tinfoil,U4,venture_unspecified,Backed by (company page),,,,Felicis | Paul Graham (person) | Nick Sullivan (person) | Alana Renda (person) | Michael Grinich (person),https://tinfoil.sh/company,company,Page lists Felicis as VC and these featured angels; no round size or date
+u4-tipe,Tipe,U4,accelerator,YC W18,2018,,,Y Combinator,https://www.ycombinator.com/companies/tipe,other,
+u4-tipe,Tipe,U4,seed,Seed,2020-08,2100000,CRV,Y Combinator | M Ventures | Precursor Ventures,https://tipe.io/blog/tipe-raises-seed,company,Date from lead list (2020-08-25)
+u4-traceloop,Traceloop,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/traceloop,other,
+u4-traceloop,Traceloop,U4,seed,Seed,2025-05,6100000,Sorenson Capital | Ibex Investors,Y Combinator | Samsung Next | Grand Ventures,https://www.calcalistech.com/ctechnews/article/s1awfhqmex,news,"Company about page also lists Ride Home Fund and angels (Olivier Pomel, Milin Desai, Shay Banon, David Cramer)"
+u4-trigger-dev,Trigger.dev,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/trigger-dev,other,
+u4-trigger-dev,Trigger.dev,U4,seed,$3M seed,2023-08,3000000,,Y Combinator | 8vdx | Arash Ferdowsi (person) | Functional Capital | Liquid 2 Ventures | Orange Collective | Pioneer Fund | Rebel Fund | Twenty Two Ventures | Ventures Together | Wayfinder Ventures | Laird Ventures | LBS Investments | Paul Copplestone (person) | Ant Wilson (person) | Nir Gazit (person) | Gal Kleinman (person) | Alan Rutledge (person) | Christopher Golda (person) | Danny Sheridan (person) | David Fowler (person) | Edrizio De La Cruz (person) | Eli Brown (person) | Kenny Johnston (person) | Moataz Soliman (person) | Thomas Mann (person) | Zebra Good Pte,https://trigger.dev/blog/3m-dollar-seed-round,company,No lead named; names as listed in post
+u4-trigger-dev,Trigger.dev,U4,series_a,Series A,2025-12,16000000,Standard Capital,Y Combinator | Liquid 2 Ventures | Wayfinder Ventures | Pioneer Fund | Rebel Fund | Michael Grinich (person) | CTO Fund,https://trigger.dev/blog/series-a,company,
+u4-truefoundry,TrueFoundry,U4,seed,Seed,2022-09,2300000,Peak XV Partners,Eniac Ventures | Naval Ravikant (person) | Dilip Khandelwal (person) | Maneesh Sharma (person) | Mike Boufford (person) | Anthony Goldbloom (person),https://techcrunch.com/2022/09/19/meta-alumni-startup-truefoundry-seed-funding-sequoia-surge-machine-learning/,news,"Led by Sequoia India's Surge, now Peak XV"
+u4-truefoundry,TrueFoundry,U4,series_a,Series A,2025-02,19000000,Intel Capital,Peak XV Partners | Eniac Ventures | Jump Capital | Gokul Rajaram (person) | Mohit Aron (person) | Cyan Banister (person) | Ankit Sobti (person) | Lenny Rachitsky (person),https://www.truefoundry.com/blog/announcing-our-19m-series-a-scaling-ai-deployment-with-autonomous-agents-on-autopilot,company,
+u4-twenty,Twenty,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/twenty,other,
+u4-twenty,Twenty,U4,venture_unspecified,"Two small rounds, about 50 investors",2024-11,5000000,,Runa Capital | Automattic | Mathilde Collin (person) | Dharmesh Shah (person) | Pierre Burgy (person) | Aurelien Georget (person) | Sergei Anikin (person),https://techcrunch.com/2024/11/18/twenty-is-building-an-open-source-alternative-to-salesforce/,news,Total $5M across two rounds; round split not given
+u4-ubicloud,Ubicloud,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/ubicloud,other,
+u4-ubicloud,Ubicloud,U4,seed,Seed,2024-03,16000000,,Y Combinator | 500 Emerging Europe,https://techcrunch.com/2024/03/05/ubicloud-wants-to-build-an-open-source-alternative-to-aws/,news,Closed early Jan 2024; plus unnamed angels; lead not named
+u4-unify,Unify,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/unify,other,
+u4-unify,Unify,U4,venture_unspecified,Backed by (company page),,,,A.Capital | SignalFire | M12 | Samsung Next | Essence VC,https://unify.ai,company,Page shows Continual-ARC branding; no round sizes or dates
+u4-upstash,Upstash,U4,seed,Seed,2022-03,1900000,,Mango Capital | AngelList | ScaleX Ventures,https://techcrunch.com/2022/03/17/upstash-snags-1-9m-seed-to-build-serverless-data-platform-for-redis-and-kafka/,news,Plus unnamed angels
+u4-upstash,Upstash,U4,series_a,Series A,2023,10000000,Andreessen Horowitz,,https://techcrunch.com/2024/02/08/upstashs-serverless-data-platform-hits-arr-of-1m-just-two-years-after-seed-funding/,news,Round date inferred about Sept 2023 from article; others not named
+u4-tensil,Tensil,U4,accelerator,YC S19,2019,,,Y Combinator,https://www.ycombinator.com/companies/tensil,other,
+u4-tracecat,Tracecat,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/tracecat,other,
+u4-tracer,Tracer,U4,accelerator,YC S26,2026,,,Y Combinator,https://www.ycombinator.com/companies/tracer,other,
+u4-traceroot,traceroot,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/traceroot,other,
+u4-trieve,Trieve,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/trieve,other,
+u4-tusk,Tusk,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/tusk,other,
+u4-tuva-health,Tuva Health,U4,accelerator,YC W22,2022,,,Y Combinator,https://www.ycombinator.com/companies/tuva-health,other,
+u4-ukama,Ukama,U4,accelerator,YC S20,2020,,,Y Combinator,https://www.ycombinator.com/companies/ukama,other,
+u4-vessel,Vessel,U4,accelerator,YC W22,2022,,,Y Combinator,https://www.ycombinator.com/companies/vessel,other,
+u4-vibrant-labs,Vibrant Labs,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/vibrant-labs,other,
+u4-vocode,Vocode,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/vocode,other,
+u4-vibe-kanban,Vibe Kanban,U4,accelerator,YC Summer 2021,2021,,,Y Combinator,https://www.ycombinator.com/companies/vibe-kanban,other,Batch per YC directory; the project is by Bloop AI Limited

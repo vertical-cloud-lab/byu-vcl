@@ -1,0 +1,890 @@
+[
+  {
+    "owner": "anomalyco",
+    "title": "Anoma.ly",
+    "url": "https://anoma.ly",
+    "citation_key": "Audit0012026anomalyco"
+  },
+  {
+    "owner": "anomalyco",
+    "title": "Models | OpenCode Console",
+    "url": "https://opencode.ai/zen",
+    "citation_key": "Audit0022026anomalyco"
+  },
+  {
+    "owner": "NousResearch",
+    "title": "Nous Research",
+    "url": "https://nousresearch.com",
+    "citation_key": "Audit0032026NousResearch"
+  },
+  {
+    "owner": "NousResearch",
+    "title": "Nous Portal",
+    "url": "https://portal.nousresearch.com/",
+    "citation_key": "Audit0042026NousResearch"
+  },
+  {
+    "owner": "oven-sh",
+    "title": "Bun — A fast all-in-one JavaScript runtime",
+    "url": "https://bun.com/",
+    "citation_key": "Audit0052026ovensh"
+  },
+  {
+    "owner": "FuelLabs",
+    "title": "Fuel Ignition is Live!",
+    "url": "https://fuel.network",
+    "citation_key": "Audit0062026FuelLabs"
+  },
+  {
+    "owner": "FuelLabs",
+    "title": "Fuel Labs · GitHub",
+    "url": "https://github.com/FuelLabs",
+    "citation_key": "Audit0072026FuelLabs"
+  },
+  {
+    "owner": "ultraworkers",
+    "title": "GitHub - ultraworkers/claw-code: An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention. · GitHub",
+    "url": "https://github.com/ultraworkers/claw-code",
+    "citation_key": "Audit0082026ultraworkers"
+  },
+  {
+    "owner": "open-webui",
+    "title": "Open WebUI: Self-Hosted AI Platform",
+    "url": "https://openwebui.com",
+    "citation_key": "Audit0092026openwebui"
+  },
+  {
+    "owner": "Graphify-Labs",
+    "title": "Graphify · shared context of codebase for agents and developers",
+    "url": "https://graphify.com/",
+    "citation_key": "Audit0102026GraphifyLabs"
+  },
+  {
+    "owner": "syncthing",
+    "title": "Syncthing",
+    "url": "https://syncthing.net/foundation/",
+    "citation_key": "Audit0112026syncthing"
+  },
+  {
+    "owner": "lysine-dev",
+    "title": "lysine.dev · GitHub",
+    "url": "https://github.com/lysine-dev",
+    "citation_key": "Audit0122026lysinedev"
+  },
+  {
+    "owner": "lysine-dev",
+    "title": "lysine.dev · GitHub",
+    "url": "https://lysine.dev",
+    "citation_key": "Audit0132026lysinedev"
+  },
+  {
+    "owner": "rtk-ai",
+    "title": "RTK — Rust Token Killer",
+    "url": "https://www.rtk-ai.app",
+    "citation_key": "Audit0142026rtkai"
+  },
+  {
+    "owner": "rtk-ai",
+    "title": "Team · RTK AI Labs | rtk-ai",
+    "url": "https://www.rtk-ai.app/team/",
+    "citation_key": "Audit0152026rtkai"
+  },
+  {
+    "owner": "sveltejs",
+    "title": "Frequently asked questions • Svelte Docs",
+    "url": "https://svelte.dev/docs/svelte/faq",
+    "citation_key": "Audit0162026sveltejs"
+  },
+  {
+    "owner": "odysseus-dev",
+    "title": "GitHub - odysseus-dev/odysseus: Self-hosted AI workspace. · GitHub",
+    "url": "https://github.com/odysseus-dev/odysseus",
+    "citation_key": "Audit0172026odysseusdev"
+  },
+  {
+    "owner": "Textualize",
+    "title": "Textualize",
+    "url": "https://www.textualize.io",
+    "citation_key": "Audit0182026Textualize"
+  },
+  {
+    "owner": "Textualize",
+    "title": "Textual",
+    "url": "https://textual.textualize.io",
+    "citation_key": "Audit0192026Textualize"
+  },
+  {
+    "owner": "ChatGPTNextWeb",
+    "title": "NextChat - Open Source, Your Keys Your Rules, Pay As You Go",
+    "url": "https://nextchat.club",
+    "citation_key": "Audit0202026ChatGPTNextWeb"
+  },
+  {
+    "owner": "ChatGPTNextWeb",
+    "title": "GitHub - ChatGPTNextWeb/NextChat: ✨ Zero-config AI chat assistant. No API key needed — sign up and instantly chat with GPT-5, Claude 4, Gemini 2.5, DeepSeek & 100+ top models. Pay-as-you-go saves you more. Available on Web, iOS, macOS, Android, Linux, Windows. · GitHub",
+    "url": "https://github.com/ChatGPTNextWeb/NextChat",
+    "citation_key": "Audit0212026ChatGPTNextWeb"
+  },
+  {
+    "owner": "ByteByteGoHq",
+    "title": "ByteByteGo | Technical Interview Prep",
+    "url": "https://bytebytego.com",
+    "citation_key": "Audit0222026ByteByteGoHq"
+  },
+  {
+    "owner": "resume",
+    "title": "GitHub - resume/resume.github.com: Resumes generated using the GitHub informations · GitHub",
+    "url": "https://github.com/resume/resume.github.com",
+    "citation_key": "Audit0232026resume"
+  },
+  {
+    "owner": "OpenCut-app",
+    "title": "GitHub - OpenCut-app/OpenCut: The open-source CapCut alternative · GitHub",
+    "url": "https://github.com/OpenCut-app/OpenCut",
+    "citation_key": "Audit0242026OpenCutapp"
+  },
+  {
+    "owner": "react",
+    "title": "Meet the Team – React",
+    "url": "https://react.dev/community/team",
+    "citation_key": "Audit0252026react"
+  },
+  {
+    "owner": "react",
+    "title": "The React Foundation: A New Home for React Hosted by the Linux Foundation – React",
+    "url": "https://react.dev/blog/2026/02/24/the-react-foundation",
+    "citation_key": "Audit0262026react"
+  },
+  {
+    "owner": "K-Dense-AI",
+    "title": "K-Dense | AI Agents for Real Research",
+    "url": "https://www.k-dense.ai",
+    "citation_key": "Audit0272026KDenseAI"
+  },
+  {
+    "owner": "K-Dense-AI",
+    "title": "GitHub - K-Dense-AI/k-dense-byok: An AI co-scientist running on your desktop. Claude Science but better. · GitHub",
+    "url": "https://github.com/K-Dense-AI/k-dense-byok",
+    "citation_key": "Audit0282026KDenseAI"
+  },
+  {
+    "owner": "obsidianmd",
+    "title": "Obsidian - Sharpen your thinking",
+    "url": "https://obsidian.md",
+    "citation_key": "Audit0292026obsidianmd"
+  },
+  {
+    "owner": "OpenMontageInc",
+    "title": "GitHub - OpenMontageInc/OpenMontage: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio. · GitHub",
+    "url": "https://github.com/OpenMontageInc/OpenMontage",
+    "citation_key": "Audit0302026OpenMontageInc"
+  },
+  {
+    "owner": "OpenMontageInc",
+    "title": "OpenMontage Studio — your creative workspace, powered by AI agents",
+    "url": "https://openmontage.video",
+    "citation_key": "Audit0312026OpenMontageInc"
+  },
+  {
+    "owner": "labmlai",
+    "title": "labml.ai",
+    "url": "https://labml.ai",
+    "citation_key": "Audit0322026labmlai"
+  },
+  {
+    "owner": "labmlai",
+    "title": "labml.ai",
+    "url": "https://labml.ai/app",
+    "citation_key": "Audit0332026labmlai"
+  },
+  {
+    "owner": "pingdotgg",
+    "title": "Ping Labs",
+    "url": "https://ping.gg/",
+    "citation_key": "Audit0342026pingdotgg"
+  },
+  {
+    "owner": "pingdotgg",
+    "title": "GitHub - pingdotgg/t3code: The best way to control Claude Code, Codex and more from any computer or phone · GitHub",
+    "url": "https://github.com/pingdotgg/t3code",
+    "citation_key": "Audit0352026pingdotgg"
+  },
+  {
+    "owner": "php",
+    "title": "PHP: Credits",
+    "url": "https://www.php.net/credits.php",
+    "citation_key": "Audit0362026php"
+  },
+  {
+    "owner": "php",
+    "title": "Structure — The PHP Foundation — Supporting, Advancing, and Developing the PHP Language",
+    "url": "https://thephp.foundation/structure/",
+    "citation_key": "Audit0372026php"
+  },
+  {
+    "owner": "scikit-learn",
+    "title": "About us — scikit-learn 1.9.1 documentation",
+    "url": "https://scikit-learn.org/stable/about.html",
+    "citation_key": "Audit0382026scikitlearn"
+  },
+  {
+    "owner": "scikit-learn",
+    "title": "Scikit-learn governance and decision-making — scikit-learn 1.9.1 documentation",
+    "url": "https://scikit-learn.org/stable/governance.html",
+    "citation_key": "Audit0392026scikitlearn"
+  },
+  {
+    "owner": "pixijs",
+    "title": "PixiJS | The HTML5 Creation Engine, now in 2D and 3D",
+    "url": "https://pixijs.com",
+    "citation_key": "Audit0402026pixijs"
+  },
+  {
+    "owner": "2noise",
+    "title": "2noise · GitHub",
+    "url": "https://github.com/2noise",
+    "citation_key": "Audit04120262noise"
+  },
+  {
+    "owner": "2noise",
+    "title": "GitHub - 2noise/ChatTTS: A generative speech model for daily dialogue. · GitHub",
+    "url": "https://github.com/2noise/ChatTTS",
+    "citation_key": "Audit04220262noise"
+  },
+  {
+    "owner": "halo-dev",
+    "title": "Halo - 强大易用的开源建站工具",
+    "url": "https://www.halo.run",
+    "citation_key": "Audit0432026halodev"
+  },
+  {
+    "owner": "halo-dev",
+    "title": "关于我们 - Halo - 强大易用的开源建站工具",
+    "url": "https://www.halo.run/about",
+    "citation_key": "Audit0442026halodev"
+  },
+  {
+    "owner": "rails",
+    "title": "The Rails Foundation",
+    "url": "https://rubyonrails.org/foundation",
+    "citation_key": "Audit0452026rails"
+  },
+  {
+    "owner": "siyuan-note",
+    "title": "SiYuan - Open-source, local-first, privacy-first personal knowledge management",
+    "url": "https://b3log.org/siyuan/en/",
+    "citation_key": "Audit0462026siyuannote"
+  },
+  {
+    "owner": "mastodon",
+    "title": "About - Mastodon",
+    "url": "https://joinmastodon.org/about",
+    "citation_key": "Audit0472026mastodon"
+  },
+  {
+    "owner": "pypa",
+    "title": "Python Packaging Authority — PyPA documentation",
+    "url": "https://www.pypa.io/en/latest/",
+    "citation_key": "Audit0482026pypa"
+  },
+  {
+    "owner": "pypa",
+    "title": "PEP 609 – Python Packaging Authority (PyPA) Governance | peps.python.org",
+    "url": "https://peps.python.org/pep-0609/",
+    "citation_key": "Audit0492026pypa"
+  },
+  {
+    "owner": "openssl",
+    "title": "Contact us | OpenSSL",
+    "url": "https://openssl.org/about/",
+    "citation_key": "Audit0502026openssl"
+  },
+  {
+    "owner": "jj-vcs",
+    "title": "GitHub - jj-vcs/jj: A Git-compatible VCS that is both simple and powerful · GitHub",
+    "url": "https://github.com/jj-vcs/jj",
+    "citation_key": "Audit0512026jjvcs"
+  },
+  {
+    "owner": "micro",
+    "title": "Micro",
+    "url": "https://micro.mu",
+    "citation_key": "Audit0522026micro"
+  },
+  {
+    "owner": "micro",
+    "title": "GitHub - micro/go-micro: A framework for agents, tools and services · GitHub",
+    "url": "https://github.com/micro/go-micro",
+    "citation_key": "Audit0532026micro"
+  },
+  {
+    "owner": "readest",
+    "title": "Readest — Lector gratuito de EPUB y PDF de código abierto para todas las plataformas",
+    "url": "https://readest.com",
+    "citation_key": "Audit0542026readest"
+  },
+  {
+    "owner": "readest",
+    "title": "Readest Pricing: Free, Plus and Pro",
+    "url": "https://readest.com/en/pricing",
+    "citation_key": "Audit0552026readest"
+  },
+  {
+    "owner": "different-ai",
+    "title": "GitHub - different-ai/openwork: The open-source alternative to Claude Cowork (powered by opencode) · GitHub",
+    "url": "https://github.com/different-ai/openwork",
+    "citation_key": "Audit0562026differentai"
+  },
+  {
+    "owner": "dmlc",
+    "title": "Distributed (Deep) Machine Learning Community · GitHub",
+    "url": "https://github.com/dmlc",
+    "citation_key": "Audit0572026dmlc"
+  },
+  {
+    "owner": "composer",
+    "title": "Composer",
+    "url": "https://getcomposer.org/",
+    "citation_key": "Audit0582026composer"
+  },
+  {
+    "owner": "composer",
+    "title": "About - Private Packagist",
+    "url": "https://packagist.com/about/",
+    "citation_key": "Audit0592026composer"
+  },
+  {
+    "owner": "livewire",
+    "title": "Livewire | Laravel Livewire",
+    "url": "https://livewire.laravel.com",
+    "citation_key": "Audit0602026livewire"
+  },
+  {
+    "owner": "livewire",
+    "title": "Flux · Livewire UI kit",
+    "url": "https://fluxui.dev",
+    "citation_key": "Audit0612026livewire"
+  },
+  {
+    "owner": "javascript-tutorial",
+    "title": "About the project",
+    "url": "https://javascript.info/about",
+    "citation_key": "Audit0622026javascripttutorial"
+  },
+  {
+    "owner": "javascript-tutorial",
+    "title": "* ARعربي",
+    "url": "https://javascript.info/ebook",
+    "citation_key": "Audit0632026javascripttutorial"
+  },
+  {
+    "owner": "akfamily",
+    "title": "AKFamily — 专注于财经数据与量化投研的开源社区",
+    "url": "https://akfamily.xyz",
+    "citation_key": "Audit0642026akfamily"
+  },
+  {
+    "owner": "akfamily",
+    "title": "AKFamily · GitHub",
+    "url": "https://github.com/akfamily",
+    "citation_key": "Audit0652026akfamily"
+  },
+  {
+    "owner": "westlake-repl",
+    "title": "GitHub - westlake-repl/SaProt: Saprot: Protein Language Model with Structural Alphabet (AA+3Di) · GitHub",
+    "url": "https://github.com/westlake-repl/SaProt",
+    "citation_key": "Audit0662026westlakerepl"
+  },
+  {
+    "owner": "westlake-repl",
+    "title": "westlake-repl · GitHub",
+    "url": "https://github.com/westlake-repl",
+    "citation_key": "Audit0672026westlakerepl"
+  },
+  {
+    "owner": "symbolica-dev",
+    "title": "Symbolica | Modern Computer Algebra",
+    "url": "https://symbolica.io",
+    "citation_key": "Audit0682026symbolicadev"
+  },
+  {
+    "owner": "scipipe",
+    "title": "SciPipe Docs",
+    "url": "https://scipipe.org",
+    "citation_key": "Audit0692026scipipe"
+  },
+  {
+    "owner": "scipipe",
+    "title": "GitHub - scipipe/scipipe: Robust, flexible and resource-efficient pipelines using Go and the commandline · GitHub",
+    "url": "https://github.com/scipipe/scipipe",
+    "citation_key": "Audit0702026scipipe"
+  },
+  {
+    "owner": "gwastro",
+    "title": "PyCBC - Analyze gravitational-wave data, find signals, and study their parameters.",
+    "url": "https://pycbc.org",
+    "citation_key": "Audit0712026gwastro"
+  },
+  {
+    "owner": "yt-project",
+    "title": "The yt Project: About",
+    "url": "https://yt-project.org/about.html",
+    "citation_key": "Audit0722026ytproject"
+  },
+  {
+    "owner": "pathsim",
+    "title": "PathSim — Python Dynamical System Simulation Framework",
+    "url": "https://pathsim.org",
+    "citation_key": "Audit0732026pathsim"
+  },
+  {
+    "owner": "PrimeIntellect-ai",
+    "title": "Prime Intellect - The Open Superintelligence Stack",
+    "url": "https://primeintellect.ai/",
+    "citation_key": "Audit0742026PrimeIntellectai"
+  },
+  {
+    "owner": "spacetelescope",
+    "title": "Who We Are | STScI",
+    "url": "https://www.stsci.edu/who-we-are",
+    "citation_key": "Audit0752026spacetelescope"
+  },
+  {
+    "owner": "spacetelescope",
+    "title": "What We Do | STScI",
+    "url": "https://www.stsci.edu/what-we-do",
+    "citation_key": "Audit0762026spacetelescope"
+  },
+  {
+    "owner": "Spooky-Manufacturing",
+    "title": "GitHub - Spooky-Manufacturing/8Q: General Purpose 8 Qubit Optical Quantum Computer · GitHub",
+    "url": "https://github.com/Spooky-Manufacturing/8Q",
+    "citation_key": "Audit0772026SpookyManufacturing"
+  },
+  {
+    "owner": "brainlife",
+    "title": "brainlife.io · Brain data across scales",
+    "url": "https://brainlife.io/about",
+    "citation_key": "Audit0782026brainlife"
+  },
+  {
+    "owner": "brainlife",
+    "title": "brainlife Documentation",
+    "url": "https://brainlife.io/docs/",
+    "citation_key": "Audit0792026brainlife"
+  },
+  {
+    "owner": "GenSI-THUAIR",
+    "title": "Home - GenSI",
+    "url": "https://www.gensi-thuair.com/",
+    "citation_key": "Audit0802026GenSITHUAIR"
+  },
+  {
+    "owner": "neogeodev",
+    "title": "NeoGeoDev.org - Home of the NeoGeo Developers",
+    "url": "https://www.neogeodev.org",
+    "citation_key": "Audit0812026neogeodev"
+  },
+  {
+    "owner": "BioJulia",
+    "title": "BioJulia",
+    "url": "https://biojulia.dev",
+    "citation_key": "Audit0822026BioJulia"
+  },
+  {
+    "owner": "AllskyTeam",
+    "title": "GitHub - AllskyTeam/allsky: A Raspberry Pi operated allsky camera · GitHub",
+    "url": "https://github.com/AllskyTeam/allsky",
+    "citation_key": "Audit0832026AllskyTeam"
+  },
+  {
+    "owner": "docmirror",
+    "title": "docmirror · GitHub",
+    "url": "https://github.com/docmirror",
+    "citation_key": "Audit0842026docmirror"
+  },
+  {
+    "owner": "elixir-lang",
+    "title": "Development & team | The Elixir programming language",
+    "url": "https://elixir-lang.org/development.html",
+    "citation_key": "Audit0852026elixirlang"
+  },
+  {
+    "owner": "tabler",
+    "title": "Tabler Admin Template: Responsive HTML Dashboard with Clean UI",
+    "url": "https://tabler.io",
+    "citation_key": "Audit0862026tabler"
+  },
+  {
+    "owner": "hcengineering",
+    "title": "Everything App for your teams",
+    "url": "https://huly.io",
+    "citation_key": "Audit0872026hcengineering"
+  },
+  {
+    "owner": "mixOmics-org",
+    "title": "Welcome to mixOmics! | mixOmics",
+    "url": "https://mixomics.org",
+    "citation_key": "Audit0882026mixOmicsorg"
+  },
+  {
+    "owner": "swiftlang",
+    "title": "About Swift | Swift.org",
+    "url": "https://www.swift.org/about/",
+    "citation_key": "Audit0892026swiftlang"
+  },
+  {
+    "owner": "tesseract-ocr",
+    "title": "GitHub - tesseract-ocr/tesseract: Tesseract Open Source OCR Engine (main repository) · GitHub",
+    "url": "https://github.com/tesseract-ocr/tesseract",
+    "citation_key": "Audit0902026tesseractocr"
+  },
+  {
+    "owner": "reworkd",
+    "title": "Reworkd",
+    "url": "https://reworkd.ai",
+    "citation_key": "Audit0912026reworkd"
+  },
+  {
+    "owner": "reworkd",
+    "title": "GitHub - reworkd/AgentGPT: 🤖 Assemble, configure, and deploy autonomous AI Agents in your browser. · GitHub",
+    "url": "https://github.com/reworkd/AgentGPT",
+    "citation_key": "Audit0922026reworkd"
+  },
+  {
+    "owner": "pmndrs",
+    "title": "Poimandres",
+    "url": "https://pmnd.rs",
+    "citation_key": "Audit0932026pmndrs"
+  },
+  {
+    "owner": "papers-we-love",
+    "title": "Papers We Love",
+    "url": "https://paperswelove.org",
+    "citation_key": "Audit0942026paperswelove"
+  },
+  {
+    "owner": "trpc",
+    "title": "tRPC - Move Fast and Break Nothing. End-to-end typesafe APIs made easy. Skip to content",
+    "url": "https://trpc.io",
+    "citation_key": "Audit0952026trpc"
+  },
+  {
+    "owner": "coollabsio",
+    "title": "Coolify - Self-hosting with superpowers",
+    "url": "https://coolify.io",
+    "citation_key": "Audit0962026coollabsio"
+  },
+  {
+    "owner": "rust-ndarray",
+    "title": "GitHub - rust-ndarray/ndarray: ndarray: an N-dimensional array with array views, multidimensional slicing, and efficient operations · GitHub",
+    "url": "https://github.com/rust-ndarray/ndarray",
+    "citation_key": "Audit0972026rustndarray"
+  },
+  {
+    "owner": "MostlyAdequate",
+    "title": "GitHub - MostlyAdequate/mostly-adequate-guide: Mostly adequate guide to FP (in javascript) · GitHub",
+    "url": "https://github.com/MostlyAdequate/mostly-adequate-guide",
+    "citation_key": "Audit0982026MostlyAdequate"
+  },
+  {
+    "owner": "remotion-dev",
+    "title": "Remotion | Make videos programmatically",
+    "url": "https://www.remotion.dev",
+    "citation_key": "Audit0992026remotiondev"
+  },
+  {
+    "owner": "netdata",
+    "title": "Netdata: Real-Time Observability and Infrastructure Monitoring",
+    "url": "https://www.netdata.cloud",
+    "citation_key": "Audit1002026netdata"
+  },
+  {
+    "owner": "gogs",
+    "title": "Introduction - Gogs: A painless self-hosted Git service",
+    "url": "https://gogs.io",
+    "citation_key": "Audit1012026gogs"
+  },
+  {
+    "owner": "localstack",
+    "title": "The Local Cloud Development Sandbox for AI Agents",
+    "url": "https://www.localstack.cloud",
+    "citation_key": "Audit1022026localstack"
+  },
+  {
+    "owner": "rust-unofficial",
+    "title": "GitHub - rust-unofficial/about: Explanation of what the org is for and how to use it · GitHub",
+    "url": "https://github.com/rust-unofficial/about",
+    "citation_key": "Audit1032026rustunofficial"
+  },
+  {
+    "owner": "HumanSignal",
+    "title": "Open Source Data Labeling and AI Evaluation | Label Studio   RESEARCHYou Can't Buy Taste. We Tested It.",
+    "url": "https://labelstud.io",
+    "citation_key": "Audit1042026HumanSignal"
+  },
+  {
+    "owner": "songlab-cal",
+    "title": "Yun S. Song",
+    "url": "https://people.eecs.berkeley.edu/~yss/group.html",
+    "citation_key": "Audit1052026songlabcal"
+  },
+  {
+    "owner": "deepset-ai",
+    "title": "The Sovereign AI Platform for Agents",
+    "url": "https://www.deepset.ai",
+    "citation_key": "Audit1062026deepsetai"
+  },
+  {
+    "owner": "pallets",
+    "title": "Pallets",
+    "url": "https://palletsprojects.com",
+    "citation_key": "Audit1072026pallets"
+  },
+  {
+    "owner": "COMBINE-lab",
+    "title": "COMBINE-lab - Home",
+    "url": "https://combine-lab.github.io",
+    "citation_key": "Audit1082026COMBINElab"
+  },
+  {
+    "owner": "matplotlib",
+    "title": "Project information — Matplotlib 3.11.2 documentation",
+    "url": "https://matplotlib.org/stable/project/index.html",
+    "citation_key": "Audit1092026matplotlib"
+  },
+  {
+    "owner": "minio",
+    "title": "Data and Memory Foundation for Enterprise AI | MinIO",
+    "url": "https://min.io",
+    "citation_key": "Audit1102026minio"
+  },
+  {
+    "owner": "codepath",
+    "title": "About CodePath | Our Story, Why We Exist, Our Impact",
+    "url": "https://www.codepath.org/about",
+    "citation_key": "Audit1112026codepath"
+  },
+  {
+    "owner": "mermaid-js",
+    "title": "Mermaid: AI-Powered Diagramming & Text-to-Chart Tool",
+    "url": "https://www.mermaidchart.com",
+    "citation_key": "Audit1122026mermaidjs"
+  },
+  {
+    "owner": "istio",
+    "title": "Istio",
+    "url": "https://istio.io/latest/about/",
+    "citation_key": "Audit1132026istio"
+  },
+  {
+    "owner": "Illumina",
+    "title": "Illumina · GitHub",
+    "url": "https://github.com/Illumina",
+    "citation_key": "Audit1142026Illumina"
+  },
+  {
+    "owner": "keiserlab",
+    "title": "keiser lab @ ucsf",
+    "url": "https://keiserlab.org",
+    "citation_key": "Audit1152026keiserlab"
+  },
+  {
+    "owner": "ant-design",
+    "title": "Ant Design - The world's second most popular React UI framework",
+    "url": "https://ant.design",
+    "citation_key": "Audit1162026antdesign"
+  },
+  {
+    "owner": "visit-dav",
+    "title": "VisIt Home",
+    "url": "https://visit.llnl.gov",
+    "citation_key": "Audit1172026visitdav"
+  },
+  {
+    "owner": "taosdata",
+    "title": "TDengine | Modern Alternative to Traditional Data Historians",
+    "url": "https://tdengine.com",
+    "citation_key": "Audit1182026taosdata"
+  },
+  {
+    "owner": "BMClab",
+    "title": "BMClab – Laboratório de Biomecânica e Controle Motor",
+    "url": "https://bmclab.pesquisa.ufabc.edu.br/",
+    "citation_key": "Audit1192026BMClab"
+  },
+  {
+    "owner": "Automattic",
+    "title": "Automattic – Making the web a better place",
+    "url": "https://automattic.com",
+    "citation_key": "Audit1202026Automattic"
+  },
+  {
+    "owner": "servierhub",
+    "title": "At Servier, we draw strength from our independence",
+    "url": "https://servier.com/en/group/",
+    "citation_key": "Audit1212026servierhub"
+  },
+  {
+    "owner": "zeiss-microscopy",
+    "title": "ZEISS Life Sciences Solutions | Microscopy, Software & Workflows",
+    "url": "https://www.zeiss.com/microscopy",
+    "citation_key": "Audit1222026zeissmicroscopy"
+  },
+  {
+    "owner": "ucdavis",
+    "title": "University of California, Davis | UC Davis | UC Davis",
+    "url": "https://www.ucdavis.edu",
+    "citation_key": "Audit1232026ucdavis"
+  },
+  {
+    "owner": "yt-dlp",
+    "title": "GitHub - yt-dlp/yt-dlp: A feature-rich command-line audio/video downloader · GitHub",
+    "url": "https://github.com/yt-dlp/yt-dlp",
+    "citation_key": "Audit1242026ytdlp"
+  },
+  {
+    "owner": "n8n-io",
+    "title": "AI Workflow Automation Platform - n8n",
+    "url": "https://n8n.io",
+    "citation_key": "Audit1252026n8nio"
+  },
+  {
+    "owner": "golang",
+    "title": "The Go Programming Language",
+    "url": "https://go.dev",
+    "citation_key": "Audit1262026golang"
+  },
+  {
+    "owner": "TheAlgorithms",
+    "title": "The Algorithms - Learn Data Structures & Algorithms",
+    "url": "https://the-algorithms.com/",
+    "citation_key": "Audit1272026TheAlgorithms"
+  },
+  {
+    "owner": "ytdl-org",
+    "title": "GitHub - ytdl-org/youtube-dl: Command-line program to download videos from YouTube.com and other video sites · GitHub",
+    "url": "https://github.com/ytdl-org/youtube-dl",
+    "citation_key": "Audit1282026ytdlorg"
+  },
+  {
+    "owner": "vuejs",
+    "title": "Frequently Asked Questions | Vue.js",
+    "url": "https://vuejs.org/about/faq.html",
+    "citation_key": "Audit1292026vuejs"
+  },
+  {
+    "owner": "alibaba",
+    "title": "Alibaba · GitHub",
+    "url": "https://github.com/alibaba",
+    "citation_key": "Audit1302026alibaba"
+  },
+  {
+    "owner": "supabase",
+    "title": "Supabase | The Postgres Development Platform",
+    "url": "https://supabase.com",
+    "citation_key": "Audit1312026supabase"
+  },
+  {
+    "owner": "neovim",
+    "title": "Neovim",
+    "url": "https://neovim.io",
+    "citation_key": "Audit1322026neovim"
+  },
+  {
+    "owner": "awesome-selfhosted",
+    "title": "GitHub - awesome-selfhosted/awesome-selfhosted: A list of Free Software network services and web applications which can be hosted on your own servers · GitHub",
+    "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+    "citation_key": "Audit1332026awesomeselfhosted"
+  },
+  {
+    "owner": "meta-llama",
+    "title": "Meta Llama · GitHub",
+    "url": "https://github.com/meta-llama",
+    "citation_key": "Audit1342026metallama"
+  },
+  {
+    "owner": "puppeteer",
+    "title": "GitHub - puppeteer/puppeteer: JavaScript API for Chrome and Firefox · GitHub",
+    "url": "https://github.com/puppeteer/puppeteer",
+    "citation_key": "Audit1352026puppeteer"
+  },
+  {
+    "owner": "freqtrade",
+    "title": "Freqtrade",
+    "url": "https://www.freqtrade.io/en/stable/",
+    "citation_key": "Audit1362026freqtrade"
+  },
+  {
+    "owner": "mozilla",
+    "title": "Learn about Mozilla",
+    "url": "https://www.mozilla.org/en-US/about/",
+    "citation_key": "Audit1372026mozilla"
+  },
+  {
+    "owner": "commaai",
+    "title": "comma.ai — make driving chill",
+    "url": "https://comma.ai",
+    "citation_key": "Audit1382026commaai"
+  },
+  {
+    "owner": "PowerShell",
+    "title": "GitHub - PowerShell/PowerShell: PowerShell for every system! · GitHub",
+    "url": "https://github.com/PowerShell/PowerShell",
+    "citation_key": "Audit1392026PowerShell"
+  },
+  {
+    "owner": "ansible",
+    "title": "Ansible Collaborative",
+    "url": "https://www.ansible.com",
+    "citation_key": "Audit1402026ansible"
+  },
+  {
+    "owner": "twentyhq",
+    "title": "Twenty | #1 Open Source CRM",
+    "url": "https://twenty.com",
+    "citation_key": "Audit1412026twentyhq"
+  },
+  {
+    "owner": "ChromeDevTools",
+    "title": "Chrome Geliştirici Araçları | Chrome DevTools | Chrome for Developers",
+    "url": "https://developer.chrome.com/docs/devtools",
+    "citation_key": "Audit1422026ChromeDevTools"
+  },
+  {
+    "owner": "odoo",
+    "title": "ระบบ ERP ครบวงจรที่ตอบโจทย์ทุกธุรกิจ",
+    "url": "https://www.odoo.com",
+    "citation_key": "Audit1432026odoo"
+  },
+  {
+    "owner": "ManimCommunity",
+    "title": "Manim Community",
+    "url": "https://www.manim.community",
+    "citation_key": "Audit1442026ManimCommunity"
+  },
+  {
+    "owner": "actix",
+    "title": "The Most Pragmatic Web Framework For Rust | Actix Web",
+    "url": "https://actix.rs",
+    "citation_key": "Audit1452026actix"
+  },
+  {
+    "owner": "yewstack",
+    "title": "Yew | The Rust Frontend Framework",
+    "url": "https://yew.rs",
+    "citation_key": "Audit1462026yewstack"
+  },
+  {
+    "owner": "impress",
+    "title": "GitHub - impress/impress.js: It's a presentation framework based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com. · GitHub",
+    "url": "https://github.com/impress/impress.js",
+    "citation_key": "Audit1472026impress"
+  },
+  {
+    "owner": "OI-wiki",
+    "title": "404 Not Found - OI Wiki",
+    "url": "https://oi-wiki.org/about/",
+    "citation_key": "Audit1482026OIwiki"
+  }
+]

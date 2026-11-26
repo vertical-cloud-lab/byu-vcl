@@ -1,0 +1,62 @@
+key,venture,name,role,date,source
+vercel,Vercel,Bedrock Capital,investor,,https://vercel.com/about
+vercel,Vercel,CRV,investor,,https://vercel.com/about
+vercel,Vercel,GV,investor,,https://vercel.com/about
+vercel,Vercel,8VC,investor,,https://vercel.com/about
+vercel,Vercel,Greenoaks Capital,investor,,https://vercel.com/about
+Significant-Gravitas,Significant Gravitas Ltd,Redpoint,lead,2023-10,https://en.wikipedia.org/wiki/AutoGPT
+fastapi,FastAPI Labs,Birk Jernstrom (person),investor,2025-05,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+pathwaycom,Pathway,WS Investment Company,investor,2026-08,https://pathway.com/blog/pathway-strikes-a-500m-valuation
+Kong,Kong Inc.,Jeff Bezos (person),investor,,https://konghq.com/company
+Kong,Kong Inc.,OTPP,investor,,https://konghq.com/company
+Kong,Kong Inc.,Notable Capital,investor,,https://konghq.com/company
+calcom,"Cal.com, Inc.",Naval Ravikant (person),investor,,https://cal.com/blog/series-a-memo
+prisma,"Prisma Data, Inc.",IVP,investor,,https://www.prisma.io/company
+logseq,Logseq Inc.,Tobias Lutke (person),lead,2022-05,https://blog.logseq.com/logseq-raises-4-1m-to-accelerate-growth-of-the-new-world-knowledge-graph/
+mindsdb,MindsDB,BGV,investor,,https://mindshub.ai/about
+harness,Harness,GV,investor,,https://www.harness.io/company/about-us
+harness,Harness,IVP,investor,,https://www.harness.io/company/about-us
+portainer,Portainer.io,Black Nova Group,investor,2022-06,https://www.portainer.io/blog/portainer-io-closes-us6-2-million-funding-round
+directus,Monospace Inc. (Directus),Prestonwerner Ventures,investor,,https://directus.com/about
+qdrant,Qdrant,AVP,investor,,https://qdrant.tech/about-us/
+simstudioai,Sim,Paul Buchheit (person),investor,2025-11,https://www.sim.ai/blog/series-a
+chroma-core,Chroma,Max Altman (person),investor,2023-04,https://www.trychroma.com/blog/seed
+deepset-ai,deepset,Lunar Ventures,investor,,https://www.deepset.ai/about
+deepset-ai,deepset,Balderton Capital,investor,,https://www.deepset.ai/about
+deepset-ai,deepset,Harpoon Ventures,investor,,https://www.deepset.ai/about
+slint-ui,SixtyFPS GmbH,European Regional Development Fund,investor,,https://slint.dev/investors
+slint-ui,SixtyFPS GmbH,NGI Zero Core,investor,,https://slint.dev/investors
+zama-ai,Zama,Lunar Ventures,investor,,https://www.zama.org/about
+brave,Brave Software,BAT token buyers,investor,2017,https://brave.com/about/
+timescale,Tiger Data,NEA,investor,2021-05,https://blog.timescale.com/blog/40-million-to-help-developers-measure-everything-that-matters/
+timescale,Tiger Data,NEA,investor,2022-02,https://www.timescale.com/blog/year-of-the-tiger-110-million-to-build-the-future-of-data-for-developers-worldwide/
+nengo,Applied Brain Research,Two Small Fish Ventures,investor,,https://www.appliedbrainresearch.com/our-company
+harfang3d,HARFANG 3D,Region Centre-Val de Loire,investor,,https://www.harfang3d.com/en_US/index.html
+mzmine,mzio GmbH,BAB - Die Foerderbank fuer Bremen und Bremerhaven,investor,,https://mzio.io/company/
+mzmine,mzio GmbH,Federal Ministry for Economic Affairs and Energy (ZIM),investor,,https://mzio.io/company/
+oxide,Oxide Computer Company,USIT,lead,2026-02,https://siliconangle.com/2026/02/09/private-cloud-infrastructure-startup-oxide-computer-reportedly-raises-200m-fresh-funding/
+together-ai,Together AI,Prosperity7 Ventures,investor,2023-11,https://www.together.ai/blog/series-a
+together-ai,Together AI,Clement Delangue (person),investor,2024-03,https://www.together.ai/blog/series-a2
+scylladb,ScyllaDB,Magma Venture Partners,lead,2017-03,https://siliconangle.com/2017/03/08/samsung-qualcomm-contribute-16m-round-database-startup-scylladb/
+scylladb,ScyllaDB,Bessemer Venture Partners,investor,2017-03,https://siliconangle.com/2017/03/08/samsung-qualcomm-contribute-16m-round-database-startup-scylladb/
+scylladb,ScyllaDB,Bessemer Venture Partners,investor,2018-04,https://siliconangle.com/2018/04/25/high-performance-database-startup-scylladb-reels-10m-investors/
+scylladb,ScyllaDB,Magma Venture Partners,investor,2018-04,https://siliconangle.com/2018/04/25/high-performance-database-startup-scylladb-reels-10m-investors/
+dremio,Dremio,Lightspeed Venture Partners,investor,2022-01,https://siliconangle.com/2022/01/25/data-lakehouse-startup-dremio-doubles-valuation-2b-160m-round/
+dremio,Dremio,Norwest Venture Partners,investor,2022-01,https://siliconangle.com/2022/01/25/data-lakehouse-startup-dremio-doubles-valuation-2b-160m-round/
+dremio,Dremio,Cisco Investments,investor,2022-01,https://siliconangle.com/2022/01/25/data-lakehouse-startup-dremio-doubles-valuation-2b-160m-round/
+alluxio,Alluxio,Andreessen Horowitz,investor,,https://www.alluxio.io/about
+carto,CARTO (CartoDB),Accel,lead,2015-09,https://techcrunch.com/2014/07/08/cartodbs-odyssey-js-is-an-open-source-tool-for-telling-stories-with-interactive-maps/
+carto,CARTO (CartoDB),Earlybird,investor,2015-09,https://techcrunch.com/2014/07/08/cartodbs-odyssey-js-is-an-open-source-tool-for-telling-stories-with-interactive-maps/
+carto,CARTO (CartoDB),Kibo Ventures,investor,2015-09,https://techcrunch.com/2014/07/08/cartodbs-odyssey-js-is-an-open-source-tool-for-telling-stories-with-interactive-maps/
+arcee,Arcee AI,Prosperity7 Ventures,investor,2026-09,https://www.arcee.ai/blog/arcee-ai-raises-series-b-to-build-the-future-of-american-open-models
+u4-common-paper,Common Paper,Boldstart Ventures,investor,,https://commonpaper.com/about
+u4-daily,Daily,Freestyle Capital,investor,,https://www.daily.co/company/
+u4-protocol-labs,Protocol Labs,Union Square Ventures,investor,2016,https://pl.xyz/about
+u4-resemble-ai,Resemble AI,Sony Innovation Fund,investor,2025-12,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
+u4-resemble-ai,Resemble AI,KDDI Open Innovation Fund,investor,2025-12,https://siliconangle.com/2025/12/08/resemble-ai-hauls-13m-different-approach-deepfake-detection/
+u4-sst,SST,Paul Bragiel (person),investor,,https://sst.dev/about
+u4-tea,Tea,Binance Labs,investor,2024,https://tea.xyz/
+u4-tea,Tea,Exnetwork Capital,investor,2024,https://tea.xyz/
+u4-tea,Tea,MAKE,investor,2024,https://tea.xyz/
+u4-votingworks,VotingWorks,Cybersecurity and Infrastructure Security Agency,investor,2019,https://voting.works/about
+u4-votingworks,VotingWorks,National Science Foundation,investor,2019,https://voting.works/about

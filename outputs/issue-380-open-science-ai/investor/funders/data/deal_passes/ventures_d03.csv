@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+u4-codevisor,Codevisor,U4,YC lists as open source; licence not checked,,partial,US,2024,private,yes,1,No seed round found.,,2026-11-26T06:29:30Z
+u4-cognitivelab,CognitiveLab,U4,"OmniParse repo, GPL-3.0",https://github.com/adithya-s-k/omniparse,yes,IN,2023,private,yes,1,Runa figure none.,,2026-11-26T06:29:30Z
+u4-cognitum,Cognitum,U4,"RuView repo, MIT",https://github.com/ruvnet/RuView,yes,CA,2026,private,none_found,0,No funding page found.,,2026-11-26T06:29:30Z
+u4-comfy-deploy,Comfy Deploy,U4,YC lists as open source; repo comfyui-deploy has no LICENSE file at root,https://github.com/comfy-deploy/comfyui-deploy,partial,US,2024,private,yes,1,No seed round found.,,2026-11-26T06:29:30Z
+u4-common-paper,Common Paper,U4,Open standard contracts (YC lists as open source); CommonPaper licence not checked,,partial,US,2021,private,yes,2,Investor names from logo alt text.,,2026-11-26T06:29:30Z
+u4-comp-ai,Comp AI,U4,"trycompai/comp repo, AGPL-3.0 (Comp AI copyright)",https://github.com/trycompai/comp,yes,US,2025,private,yes,1,Earlier rounds not found.,,2026-11-26T06:29:30Z
+u4-composio,Composio,U4,"ComposioHQ/composio repo, MIT",https://github.com/ComposioHQ/composio,yes,US,2023,private,yes,1,,,2026-11-26T06:29:30Z
+u4-confident-ai,Confident AI,U4,"DeepEval repo, Apache-2.0",https://github.com/confident-ai/deepeval,yes,US,2023,private,yes,1,No seed round found.,,2026-11-26T06:29:30Z
+u4-convox,Convox,U4,"convox/convox repo, Apache-2.0",https://github.com/convox/convox,yes,US,2015,acquired,yes,1,YC directory says acquired; acquirer and other rounds not found.,,2026-11-26T06:29:30Z
+u4-convoy,Convoy,U4,"frain-dev/convoy repo under a custom Frain licence (source-available, not OSI)",https://github.com/frain-dev/convoy,partial,US,2021,private,yes,1,"This is the webhooks gateway (getconvoy.io), not the trucking firm Convoy in the leads; leads not used.",,2026-11-26T06:29:30Z
+u4-core,CORE,U4,"RedPlanetHQ/core repo, AGPL-3.0 (modified 'Core License')",https://github.com/RedPlanetHQ/core,yes,US,2023,private,yes,1,YC page slug heysol.,,2026-11-26T06:29:30Z
+u4-corsair,Corsair,U4,"corsairdev/corsair repo, Apache-2.0",https://github.com/corsairdev/corsair,yes,US,2024,private,yes,1,Runa figure 0.5M; no round page found.,,2026-11-26T06:29:30Z
+u4-coze,Coze,U4,"coze-studio repo, Apache-2.0 (LICENSE-APACHE)",https://github.com/coze-dev/coze-studio,yes,US,2023,private,none_found,0,Runa figure 75M; no funding page found. memory: ByteDance product.,,2026-11-26T06:29:30Z
+u4-crestal,Crestal,U4,"intentkit repo, MIT (Crestal Network)",https://github.com/crestalnetwork/intentkit,yes,US,2024,private,none_found,0,Runa figure 2.0M; no funding page found.,,2026-11-26T06:29:30Z
+u4-ctgt,CTGT,U4,Open-source per YC directory; licence not checked,,partial,US,2024,private,yes,3,Company homepage says $7M; YC page says $8M.,,2026-11-26T06:29:30Z
+u4-dagworks-inc,DAGWorks Inc.,U4,"Hamilton, Apache-2.0 (apache/hamilton)",https://github.com/apache/hamilton,yes,US,2022,acquired,yes,1,Acquirer and other rounds not found.,,2026-11-26T06:29:30Z
+u4-daily,Daily,U4,"Pipecat repo, BSD-2-Clause (Daily)",https://github.com/pipecat-ai/pipecat,yes,US,2016,acquired,yes,3,Acquired by Deepgram (TechCrunch 2026-10-29). Tiger Global listed as lead only because first named; unsure.,https://techcrunch.com/2026/10/29/deepgram-acquires-pipecat-maker-daily-to-bolster-its-voice-ai-infrastructure/,2026-11-26T06:29:30Z
+u4-dailybot,Dailybot,U4,YC lists as open source; licence not checked,,partial,US,2021,private,yes,1,,,2026-11-26T06:29:30Z
+u4-data-mechanics,Data Mechanics,U4,Delight Spark UI open source per YC directory; licence not checked,,partial,FR,2018,acquired,yes,1,Company site now unrelated; acquirer not found.,,2026-11-26T06:29:30Z
+u4-datree,Datree,U4,"datreeio/datree repo, Apache-2.0",https://github.com/datreeio/datree,yes,IL,2017,shut_down,yes,3,YC directory lists Inactive.,,2026-11-26T06:29:30Z
+u4-dayflow,Dayflow,U4,"JerryZLiu/Dayflow repo, MIT",https://github.com/JerryZLiu/Dayflow,yes,US,2025,private,yes,1,Site says Backed by Y Combinator only.,,2026-11-26T06:29:30Z
+u4-decawork,Decawork,U4,YC lists as open source; repo not identified,,partial,US,2026,private,yes,1,,,2026-11-26T06:29:30Z
+u4-decuff,decuff,U4,YC lists as open source; repo not identified,,partial,US,2026,private,yes,1,,,2026-11-26T06:29:30Z
+u4-defer,Defer,U4,YC lists as open source; repo not checked,,partial,FR,2022,shut_down,yes,1,YC directory lists Inactive.,,2026-11-26T06:29:30Z
+u4-democracy-earth,Democracy Earth,U4,"DemocracyEarth/sovereign repo, MIT (Democracy Earth Foundation)",https://github.com/DemocracyEarth/sovereign,yes,US,2015,nonprofit,yes,1,Status nonprofit inferred from repo copyright holder 'Foundation'; unsure.,,2026-11-26T06:29:33Z

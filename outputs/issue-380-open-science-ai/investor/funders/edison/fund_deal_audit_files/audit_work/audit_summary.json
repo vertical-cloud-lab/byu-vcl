@@ -1,0 +1,38 @@
+{
+  "as_of": "2026-11-26",
+  "ventures_researched": 40,
+  "csv_rows": 204,
+  "funding_records_including_provisional": 202,
+  "none_found_ventures": 2,
+  "incomplete_ventures": 20,
+  "incomplete_keys": [
+    "coqui-ai",
+    "dbeaver",
+    "e2b-dev",
+    "Fincept-Corporation",
+    "mindsdb",
+    "neuromore",
+    "openbq-org",
+    "supermemoryai",
+    "d2lang",
+    "getzep",
+    "anaconda",
+    "efabless",
+    "farmbot",
+    "open-bionics",
+    "airbyte",
+    "clearml",
+    "jfrog",
+    "nicira",
+    "radixark",
+    "va-linux"
+  ],
+  "confidence_counts": {
+    "high": 137,
+    "medium": 53,
+    "low": 14
+  },
+  "blank_dates": 28,
+  "blank_amounts": 44,
+  "currency_conversions": 31
+}

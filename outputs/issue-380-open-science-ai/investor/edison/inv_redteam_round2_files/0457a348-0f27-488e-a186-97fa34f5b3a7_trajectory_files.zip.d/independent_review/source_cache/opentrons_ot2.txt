@@ -1,0 +1,253 @@
+GitHub - Opentrons/ot2: Open source hardware documentation for the OT-2 liquid handling robot · GitHub 
+
+[Skip to content](https://github.com/Opentrons/ot2#start-of-content)   
+
+## Navigation Menu
+
+[Sign in](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2FOpentrons%2Fot2)
+
+* + Platform
+      - [![](https://github.githubassets.com/assets/platform-025c223913033b6d.webp "width=240 | height=150")![](https://github.githubassets.com/assets/platform-dark-5652b3fee35ced8b.webp "width=240 | height=150")GitHubRepository hosting, code review, and collaboration](https://github.com/platform)
+      - [![](https://github.githubassets.com/assets/copilot-200a1ebea10c78ed.webp "width=240 | height=150")![](https://github.githubassets.com/assets/copilot-dark-16171b0d3080e70f.webp "width=240 | height=150")CopilotAI coding agent for tasks, projects, and automated work](https://github.com/features/copilot)
+  + Build & Ship
+      - [ActionsCI/CD and automation](https://github.com/features/actions)
+      - [Code QualityQuality analysis, fixes, and enforcement](https://github.com/features/code-quality)
+      - [CodespacesCloud development environments](https://github.com/features/codespaces)
+  + Secure
+      - [Code SecurityVulnerability detection and remediation](https://github.com/security/advanced-security/code-security)
+      - [Secret ProtectionSecret scanning and leak prevention](https://github.com/security/advanced-security/secret-protection)
+
+  [All Features](https://github.com/features)
+
+* + Learn
+      - [Documentation](https://docs.github.com/en)
+      - [Training](https://learn.github.com/skills)
+      - [Certifications](https://learn.github.com/credentials)
+  + Build
+      - [Build with Copilot](https://github.com/features/ai)
+      - [Customize Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-copilot-overview)
+      - [Integrations](https://github.com/marketplace)
+  + Explore
+      - [Trending repos](https://github.com/trending)
+      - [GitHub Sponsors](https://github.com/open-source/sponsors)
+      - [Developer articles](https://github.com/resources/articles)
+  + Changelog
+      - [![](https://github.githubassets.com/assets/changelog-f3cfe2d3a6b4818b.webp "width=240 | height=150")![](https://github.githubassets.com/assets/changelog-dark-8aa733db00350e61.webp "width=240 | height=150")ChangelogYour source for the latest features, improvements, and fixes across GitHub products, all in one place.](https://github.blog/changelog/)
+* + By Stage
+      - [Enterprises](https://github.com/enterprise)
+      - [Team](https://github.com/team)
+      - [Startups](https://github.com/enterprise/startups)
+      - [Nonprofits](https://github.com/solutions/industry/nonprofits)
+  + By Industry
+      - [Healthcare](https://github.com/solutions/industry/healthcare)
+      - [Financial services](https://github.com/solutions/industry/financial-services)
+      - [Manufacturing](https://github.com/solutions/industry/manufacturing)
+      - [Government](https://github.com/solutions/industry/government)
+      - [See all industries](https://github.com/solutions/industry)
+  + Evaluate GitHub
+      - [Why GitHub](https://github.com/why-github)
+      - [Customer Stories](https://github.com/customer-stories)
+      - [Business insights](https://github.com/solutions/executive-insights)
+      - [Trust Center](https://github.com/trust-center)
+  + Add-ons
+      - [GitHub Advanced SecurityEnterprise-grade code security](https://github.com/security/advanced-security)
+      - [Copilot for businessEnterprise-grade AI features](https://github.com/features/copilot/copilot-business)
+      - [Premium SupportEnterprise-grade 24/7 support](https://github.com/enterprise/premium-support)
+* + Learn & Connect
+      - [Documentation](https://docs.github.com/en)
+      - [Resource center](https://github.com/resources)
+      - [Blog](https://github.blog/)
+      - [Events & webinars](https://github.com/resources/events)
+      - [Community Forum](https://github.com/orgs/community/discussions)
+      - [Customer Stories](https://github.com/customer-stories)
+      - [Integrations](https://github.com/marketplace)
+  + Support
+      - [Customer support](https://help.github.com/)
+      - [Training](https://learn.github.com/skills)
+      - [GitHub Status](https://www.githubstatus.com/)
+  + Company
+      - [About](https://github.com/about)
+      - [Partners](https://github.com/partners)
+      - [Changelog](https://github.blog/changelog/)
+  + GitHub Universe
+      - [![](https://github.githubassets.com/assets/universe-9af583553ea01049.webp "width=240 | height=150")![](https://github.githubassets.com/assets/universe-9af583553ea01049.webp "width=240 | height=150")GitHub UniverseThe event for developers, by developers — talks, workshops, and what’s next for GitHub.](https://githubuniverse.com/)
+* [Pricing](https://github.com/pricing)
+
+[Sign in](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2FOpentrons%2Fot2)
+
+[Sign up](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=Opentrons%2Fot2)
+
+Appearance settings
+
+1. [Opentrons](https://github.com/Opentrons)
+2. [ot2](https://github.com/Opentrons/ot2)
+
+## Repository navigation
+
+* 
+* [Code](https://github.com/Opentrons/ot2)
+* [Issues6 (6)](https://github.com/Opentrons/ot2/issues)
+* [Pull requests1 (1)](https://github.com/Opentrons/ot2/pulls)
+* [Actions](https://github.com/Opentrons/ot2/actions)
+* [Projects](https://github.com/Opentrons/ot2/projects)
+* [Security and quality](https://github.com/Opentrons/ot2/security)
+* [Insights](https://github.com/Opentrons/ot2/insights)
+
+![Opentrons](https://avatars.githubusercontent.com/u/6139147?s=60&v=4 "width=24 | height=24")
+
+**[ot2](https://github.com/Opentrons/ot2)**
+
+Public
+
+* [Notifications](https://github.com/login?return_to=%2FOpentrons%2Fot2)You must be signed in to change notification settings
+* [Fork28 (28)](https://github.com/login?return_to=%2FOpentrons%2Fot2)
+* [Star75 (75)](https://github.com/login?return_to=%2FOpentrons%2Fot2)You must be signed in to star a repository
+
+## About
+
+Open source hardware documentation for the OT-2 liquid handling robot
+
+### Resources
+
+[Readme](https://github.com/Opentrons/ot2#readme-ov-file)
+
+### Code of conduct
+
+[Code of conduct](https://github.com/Opentrons/ot2#coc-ov-file)
+
+[Activity](https://github.com/Opentrons/ot2/activity)
+
+[Custom properties](https://github.com/Opentrons/ot2/custom-properties)
+
+### Stars
+
+**75** stars
+
+### Watchers
+
+**7** watching
+
+### Forks
+
+[**28** forks](https://github.com/Opentrons/ot2/forks)
+
+[Report repository](https://github.com/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2FOpentrons%2Fot2&report=Opentrons+%28user%29)
+
+[**2** Branches](https://github.com/Opentrons/ot2/branches)[**0** Tags](https://github.com/Opentrons/ot2/tags)
+
+Open more actions menu
+
+## Latest commit
+
+[![andySigler](https://avatars.githubusercontent.com/u/3085774?v=4&size=40 "width=20 | height=20")](https://github.com/andySigler)[andySigler](https://github.com/Opentrons/ot2/commits?author=andySigler)
+
+[Merge pull request](https://github.com/Opentrons/ot2/commit/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632) [\#3](https://github.com/Opentrons/ot2/pull/3) [from Opentrons/test](https://github.com/Opentrons/ot2/commit/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632)
+
+Open commit details
+
+May 9, 2018
+
+[ef9ede1](https://github.com/Opentrons/ot2/commit/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632) · May 9, 2018
+
+## History
+
+[47 Commits](https://github.com/Opentrons/ot2/commits/master/)
+
+Open commit details
+
+47 Commits
+
+## Folders and files
+
+| Name                 |   | Name                 | Last commit message  | Last commit date |
+| -------------------- | - | -------------------- | -------------------- | ---------------- |
+| [PCB files](https://github.com/Opentrons/ot2/tree/master/PCB%20files "PCB files") |   | [PCB files](https://github.com/Opentrons/ot2/tree/master/PCB%20files "PCB files") | [updates to recent files; adddds PDFs](https://github.com/Opentrons/ot2/commit/1f55a038e00fccaa4362d7ba7fb6f000f89d7c5e "updates to recent files; adddds PDFs") | Apr 30, 2018     |
+| [deck](https://github.com/Opentrons/ot2/tree/master/deck "deck") |   | [deck](https://github.com/Opentrons/ot2/tree/master/deck "deck") | [adds deck and window files](https://github.com/Opentrons/ot2/commit/89748f6dd32821d701d941f2206a5f7d8f7af4d3 "adds deck and window files") | Apr 30, 2018     |
+| [reference-model](https://github.com/Opentrons/ot2/tree/master/reference-model "reference-model") |   | [reference-model](https://github.com/Opentrons/ot2/tree/master/reference-model "reference-model") | [adds jpg images of reference model](https://github.com/Opentrons/ot2/commit/f79a47ad545426e2e08809af797b5eb62c07d7b4 "adds jpg images of reference model") | May 3, 2018      |
+| [windows](https://github.com/Opentrons/ot2/tree/master/windows "windows") |   | [windows](https://github.com/Opentrons/ot2/tree/master/windows "windows") | [adds deck and window files](https://github.com/Opentrons/ot2/commit/89748f6dd32821d701d941f2206a5f7d8f7af4d3 "adds deck and window files") | Apr 30, 2018     |
+| [.gitignore](https://github.com/Opentrons/ot2/blob/master/.gitignore ".gitignore") |   | [.gitignore](https://github.com/Opentrons/ot2/blob/master/.gitignore ".gitignore") | [adds design files; adds .gitignore](https://github.com/Opentrons/ot2/commit/c2abe08063599f0eb72357f18758981d3b88f67a "adds design files; adds .gitignore") | Nov 3, 2017      |
+| [README.md](https://github.com/Opentrons/ot2/blob/master/README.md "README.md") |   | [README.md](https://github.com/Opentrons/ot2/blob/master/README.md "README.md") | [removes trailing whitespace](https://github.com/Opentrons/ot2/commit/3fd0970c8b0db8b9de10ee56383dfc33166da6e7 "removes trailing whitespace") | May 9, 2018      |
+
+## Repository files navigation
+
+* 
+* [README](https://github.com/Opentrons/ot2#)
+* [Code of conduct](https://github.com/Opentrons/ot2#)
+
+# OT2 Robot Hardware Files
+
+### Open-source & Customization Documentation
+
+Opentrons strives to make all of our technology as open to customization and extension as possible. In addition to providing all of our code in open-source repositories and developing all of our software in a transparent way, we are providing these hardware files for our community to modify their OT-2 robots however they choose.
+
+Included are:
+
+* PCB design files for the key electrical boards in the robot, including our version of the smoothieboard (smoothieware.org) motor controller board
+* Electrical schematic of robotic wiring and pin-outs
+* DXF file for the OT-2 deck showing exact dimensions of the removable deck and slots
+* Scale models of the full robot with all the dimensions needed to design hardware integrated with OT-2
+
+If there are files missing that you need to do your work, please reach out to [info@opentrons.com](mailto:info@opentrons.com) and we will be happy to discuss how we can provide you with what you require. We love hearing from our community!
+
+Thanks,
+
+The Opentrons Team
+
+## About
+
+Open source hardware documentation for the OT-2 liquid handling robot
+
+### Resources
+
+[Readme](https://github.com/Opentrons/ot2#readme-ov-file)
+
+### Code of conduct
+
+[Code of conduct](https://github.com/Opentrons/ot2#coc-ov-file)
+
+[Activity](https://github.com/Opentrons/ot2/activity)
+
+[Custom properties](https://github.com/Opentrons/ot2/custom-properties)
+
+### Stars
+
+**75** stars
+
+### Watchers
+
+**7** watching
+
+### Forks
+
+[**28** forks](https://github.com/Opentrons/ot2/forks)
+
+[Report repository](https://github.com/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2FOpentrons%2Fot2&report=Opentrons+%28user%29)
+
+## [Releases](https://github.com/Opentrons/ot2/releases)
+
+No releases published
+
+## [Contributors](https://github.com/Opentrons/ot2/graphs/contributors)3 (3)
+
+* [![@andySigler](https://avatars.githubusercontent.com/u/3085774?s=64&v=4 "width=32 | height=32")](https://github.com/andySigler)[**andySigler**Andy Sigler](https://github.com/andySigler)
+* [![@willcanine](https://avatars.githubusercontent.com/u/1382562?s=64&v=4 "width=32 | height=32")](https://github.com/willcanine)[**willcanine**Will Canine](https://github.com/willcanine)
+* [![@OpentronsMfg](https://avatars.githubusercontent.com/u/35508956?s=64&v=4 "width=32 | height=32")](https://github.com/OpentronsMfg)[**OpentronsMfg**](https://github.com/OpentronsMfg)
+
+## Footer
+
+© 2026 GitHub, Inc.
+
+### Footer navigation
+
+* [Terms](https://docs.github.com/site-policy/github-terms/github-terms-of-service)
+* [Privacy](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement)
+* [Security](https://github.com/security)
+* [Status](https://www.githubstatus.com/)
+* [Community](https://github.community/)
+* [Docs](https://docs.github.com/)
+* [Contact](https://support.github.com?tags=dotcom-footer)
+* 
+*
+
+You can’t perform that action at this time.
+

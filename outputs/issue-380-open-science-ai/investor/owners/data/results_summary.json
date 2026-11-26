@@ -1,0 +1,505 @@
+{
+ "class_audit": {
+  "n": 120,
+  "agree": 112,
+  "agreement": 0.933,
+  "cohen_kappa": 0.908,
+  "disagreements_i_flagged_as_judgment": 8,
+  "disagreements": [
+   {
+    "owner": "Textualize",
+    "cls_mine": "core",
+    "cls_edison": "complement"
+   },
+   {
+    "owner": "OpenMontageInc",
+    "cls_mine": "community",
+    "cls_edison": "core"
+   },
+   {
+    "owner": "K-Dense-AI",
+    "cls_mine": "core",
+    "cls_edison": "complement"
+   },
+   {
+    "owner": "rails",
+    "cls_mine": "community",
+    "cls_edison": "nonprofit"
+   },
+   {
+    "owner": "javascript-tutorial",
+    "cls_mine": "community",
+    "cls_edison": "core"
+   },
+   {
+    "owner": "micro",
+    "cls_mine": "community",
+    "cls_edison": "core"
+   },
+   {
+    "owner": "PrimeIntellect-ai",
+    "cls_mine": "complement",
+    "cls_edison": "core"
+   },
+   {
+    "owner": "Spooky-Manufacturing",
+    "cls_mine": "community",
+    "cls_edison": "core"
+   }
+  ]
+ },
+ "H7_H10": {
+  "A": {
+   "core_share_of_company_stars": 0.5954,
+   "org_bootstrap_95ci": [
+    0.5026,
+    0.6812
+   ],
+   "software_repos": 1681,
+   "software_stars": 78779311,
+   "company_share_of_stars": 0.4015,
+   "by_class": {
+    "core": 0.2391,
+    "complement": 0.1625,
+    "nonprofit": 0.0736,
+    "academic": 0.0097,
+    "government": 0.0018,
+    "community": 0.2116,
+    "individual": 0.3017,
+    "unknown": 0.0
+   },
+   "sensitivity": [
+    {
+     "frame": "A",
+     "variant": "pre-registered (software repos by rule)",
+     "core_share": 0.595391204335994,
+     "company_share": 0.40151455500797667
+    },
+    {
+     "frame": "A",
+     "variant": "content rule corrected",
+     "core_share": 0.5971720325612687,
+     "company_share": 0.40225515730845457
+    },
+    {
+     "frame": "A",
+     "variant": "all repos including content",
+     "core_share": 0.5747919689143475,
+     "company_share": 0.34932516987407974
+    },
+    {
+     "frame": "A",
+     "variant": "crypto owners excluded",
+     "core_share": 0.5975474053016893,
+     "company_share": 0.39722479671107586
+    },
+    {
+     "frame": "A",
+     "variant": "Edison's audit classes for the 120 audited organizations",
+     "core_share": 0.5926148399539597,
+     "company_share": 0.4028650364814691
+    },
+    {
+     "frame": "A",
+     "variant": "judgment calls against core",
+     "core_share": 0.38491785284328306,
+     "company_share": 0.40151455500797667
+    },
+    {
+     "frame": "A",
+     "variant": "judgment calls toward core",
+     "core_share": 0.6774128830414681,
+     "company_share": 0.40151455500797667
+    },
+    {
+     "frame": "A",
+     "variant": "judgment-call companies reclassed as community",
+     "core_share": NaN,
+     "company_share": 0.28407354311590766
+    },
+    {
+     "frame": "A",
+     "variant": "judgment-call non-companies reclassed as core",
+     "core_share": NaN,
+     "company_share": 0.44566537272711104
+    },
+    {
+     "frame": "A",
+     "variant": "largest 1 company owner(s) dropped",
+     "core_share": 0.6311368795927714,
+     "company_share": 0.387587959524769
+    },
+    {
+     "frame": "A",
+     "variant": "largest 3 company owner(s) dropped",
+     "core_share": 0.6358521027120392,
+     "company_share": 0.37957588120496544
+    },
+    {
+     "frame": "A",
+     "variant": "largest 5 company owner(s) dropped",
+     "core_share": 0.6563208795444629,
+     "company_share": 0.37214338400626096
+    }
+   ]
+  },
+  "B": {
+   "core_share_of_company_stars": 0.6209,
+   "org_bootstrap_95ci": [
+    0.3432,
+    0.8053
+   ],
+   "software_repos": 1393,
+   "software_stars": 945845,
+   "company_share_of_stars": 0.3025,
+   "by_class": {
+    "core": 0.1879,
+    "complement": 0.1147,
+    "nonprofit": 0.0249,
+    "academic": 0.1328,
+    "government": 0.0262,
+    "community": 0.2422,
+    "individual": 0.2713,
+    "unknown": 0.0
+   },
+   "sensitivity": [
+    {
+     "frame": "B",
+     "variant": "pre-registered (software repos by rule)",
+     "core_share": 0.6209470557399965,
+     "company_share": 0.3025337132405415
+    },
+    {
+     "frame": "B",
+     "variant": "content rule corrected",
+     "core_share": 0.6209470557399965,
+     "company_share": 0.301637581628727
+    },
+    {
+     "frame": "B",
+     "variant": "all repos including content",
+     "core_share": 0.6143543650440509,
+     "company_share": 0.2641310882585603
+    },
+    {
+     "frame": "B",
+     "variant": "crypto owners excluded",
+     "core_share": 0.6209470557399965,
+     "company_share": 0.3025337132405415
+    },
+    {
+     "frame": "B",
+     "variant": "Edison's audit classes for the 120 audited organizations",
+     "core_share": 0.4115848972234255,
+     "company_share": 0.30264155332004716
+    },
+    {
+     "frame": "B",
+     "variant": "judgment calls against core",
+     "core_share": 0.21658221212650708,
+     "company_share": 0.3025337132405415
+    },
+    {
+     "frame": "B",
+     "variant": "judgment calls toward core",
+     "core_share": 0.7142687401712389,
+     "company_share": 0.3025337132405415
+    },
+    {
+     "frame": "B",
+     "variant": "judgment-call companies reclassed as community",
+     "core_share": NaN,
+     "company_share": 0.15196675988137592
+    },
+    {
+     "frame": "B",
+     "variant": "judgment-call non-companies reclassed as core",
+     "core_share": NaN,
+     "company_share": 0.39083887952042884
+    },
+    {
+     "frame": "B",
+     "variant": "largest 1 company owner(s) dropped",
+     "core_share": 0.5204460144751327,
+     "company_share": 0.2553190288482812
+    },
+    {
+     "frame": "B",
+     "variant": "largest 3 company owner(s) dropped",
+     "core_share": 0.38964948708858765,
+     "company_share": 0.21221605768289217
+    },
+    {
+     "frame": "B",
+     "variant": "largest 5 company owner(s) dropped",
+     "core_share": 0.49306455517737363,
+     "company_share": 0.1755183200792868
+    }
+   ]
+  }
+ },
+ "H8": [
+  {
+   "measure": "latest value (disclosed)",
+   "n": 44,
+   "spearman_rho": 0.132,
+   "ci_low": -0.181,
+   "ci_high": 0.435,
+   "median_usd_per_star": 30818.0,
+   "p75_over_p25_usd_per_star": 7.5
+  },
+  {
+   "measure": "latest value, shutdowns at zero",
+   "n": 52,
+   "spearman_rho": 0.235,
+   "ci_low": -0.053,
+   "ci_high": 0.488,
+   "median_usd_per_star": 30818.0,
+   "p75_over_p25_usd_per_star": 7.5
+  },
+  {
+   "measure": "peak disclosed value",
+   "n": 47,
+   "spearman_rho": 0.233,
+   "ci_low": -0.063,
+   "ci_high": 0.493,
+   "median_usd_per_star": 31128.0,
+   "p75_over_p25_usd_per_star": 7.1
+  },
+  {
+   "measure": "disclosed equity funding",
+   "n": 160,
+   "spearman_rho": 0.058,
+   "ci_low": -0.109,
+   "ci_high": 0.227,
+   "median_usd_per_star": 435.0,
+   "p75_over_p25_usd_per_star": 13.4
+  },
+  {
+   "measure": "capital raised, larger of disclosed and Form D",
+   "n": 171,
+   "spearman_rho": 0.074,
+   "ci_low": -0.089,
+   "ci_high": 0.229,
+   "median_usd_per_star": 445.0,
+   "p75_over_p25_usd_per_star": 12.7
+  },
+  {
+   "measure": "exploratory: latest value, stars on repos created before 2025",
+   "n": 42,
+   "spearman_rho": 0.06,
+   "ci_low": -0.251,
+   "ci_high": 0.364,
+   "median_usd_per_star": 32588.0,
+   "p75_over_p25_usd_per_star": 6.9
+  }
+ ],
+ "H9": {
+  "n_core_companies_frame_a": 339,
+  "status": {
+   "private": 283,
+   "acquired": 33,
+   "unknown": 12,
+   "shut_down": 7,
+   "listed": 4
+  },
+  "ever_1b": {
+   "no": 251,
+   "unknown": 53,
+   "yes": 35
+  },
+  "share_ever_1b_of_all": 0.103,
+  "share_ever_1b_of_known": 0.122,
+  "share_shut_down": 0.021,
+  "handed_to_foundation": 5,
+  "acquisitions": 33,
+  "acquisitions_with_disclosed_price": 5,
+  "acquisitions_with_price_and_funding": 5,
+  "acquired_above_capital_raised": 5,
+  "with_disclosed_funding": 163,
+  "with_form_d": 43,
+  "capital_raised_sum_usd": 23277625457.0,
+  "median_raised_usd_where_disclosed": 25000000.0
+ },
+ "H9_exploratory": [
+  {
+   "cohort": "2014 or earlier",
+   "companies": "50",
+   "ever_1b": "12",
+   "ever_1b_unknown": "6",
+   "acquired": "8",
+   "shut_down": "1",
+   "with_disclosed_capital": "26",
+   "share_ever_1b": "0.24"
+  },
+  {
+   "cohort": "2015-19",
+   "companies": "97",
+   "ever_1b": "11",
+   "ever_1b_unknown": "15",
+   "acquired": "10",
+   "shut_down": "1",
+   "with_disclosed_capital": "49",
+   "share_ever_1b": "0.113"
+  },
+  {
+   "cohort": "2020-22",
+   "companies": "73",
+   "ever_1b": "3",
+   "ever_1b_unknown": "13",
+   "acquired": "6",
+   "shut_down": "4",
+   "with_disclosed_capital": "46",
+   "share_ever_1b": "0.041"
+  },
+  {
+   "cohort": "2023-24",
+   "companies": "81",
+   "ever_1b": "7",
+   "ever_1b_unknown": "15",
+   "acquired": "8",
+   "shut_down": "1",
+   "with_disclosed_capital": "41",
+   "share_ever_1b": "0.086"
+  },
+  {
+   "cohort": "2025-26",
+   "companies": "38",
+   "ever_1b": "2",
+   "ever_1b_unknown": "4",
+   "acquired": "1",
+   "shut_down": "0",
+   "with_disclosed_capital": "10",
+   "share_ever_1b": "0.053"
+  },
+  {
+   "cohort": "subset: all",
+   "companies": "339",
+   "ever_1b": "35",
+   "ever_1b_unknown": "53",
+   "acquired": "33",
+   "shut_down": "7",
+   "with_disclosed_capital": "172",
+   "share_ever_1b": "0.103"
+  },
+  {
+   "cohort": "subset: disclosed capital raised",
+   "companies": "172",
+   "ever_1b": "30",
+   "ever_1b_unknown": "24",
+   "acquired": "19",
+   "shut_down": "4",
+   "with_disclosed_capital": "172",
+   "share_ever_1b": "0.174"
+  },
+  {
+   "cohort": "subset: raised $10M or more",
+   "companies": "113",
+   "ever_1b": "30",
+   "ever_1b_unknown": "19",
+   "acquired": "12",
+   "shut_down": "0",
+   "with_disclosed_capital": "113",
+   "share_ever_1b": "0.265"
+  }
+ ],
+ "H10_companies": {
+  "core_companies_in_frame_b": 55,
+  "raised_10m_or_more": 5,
+  "names_raised_10m_or_more": [
+   "Hugging Face",
+   "HPC-AI Tech",
+   "comma.ai",
+   "TileDB, Inc.",
+   "Opentrons Labworks"
+  ],
+  "ever_1b": {
+   "no": 50,
+   "unknown": 3,
+   "yes": 2
+  },
+  "status": {
+   "private": 51,
+   "unknown": 3,
+   "shut_down": 1
+  }
+ },
+ "H11": {
+  "form990_owners": {
+   "n": 21,
+   "excluded_stale_latest_before_2021": [
+    "Openjs Foundation"
+   ],
+   "median_latest_revenue": 2452180.0,
+   "median_latest_revenue_excl_linux_foundation": 1773032.5,
+   "n_at_least_10m": 5,
+   "n_with_2019_base": 15,
+   "n_real_growth": 9,
+   "share_real_growth": 0.6,
+   "sum_latest_revenue": 367873756.0
+  },
+  "form990_fiscal_hosts": [
+   {
+    "name": "Software In The Public Interest Inc",
+    "latest_year": 2024,
+    "latest_revenue": 685055,
+    "base_revenue": 970474.0,
+    "real_growth": -0.42469139092271047
+   },
+   {
+    "name": "Software Freedom Conservancy Inc",
+    "latest_year": 2024,
+    "latest_revenue": 2487144,
+    "base_revenue": 3325377.0,
+    "real_growth": -0.39043590322236166
+   },
+   {
+    "name": "Numfocus Inc",
+    "latest_year": 2024,
+    "latest_revenue": 8376226,
+    "base_revenue": 5070529.0,
+    "real_growth": 0.34633908210195297
+   },
+   {
+    "name": "Open Source Collective",
+    "latest_year": 2024,
+    "latest_revenue": 12114478,
+    "base_revenue": 3682266.0,
+    "real_growth": 1.6813214648943764
+   }
+  ],
+  "open_collective": {
+   "matched_with_money": 133,
+   "by_class_n": {
+    "community": 79,
+    "individual": 22,
+    "core": 18,
+    "nonprofit": 12,
+    "complement": 1,
+    "academic": 1
+   },
+   "by_class_median_yearly_budget": {
+    "academic": 0.0,
+    "community": 2125.0,
+    "complement": 229200.0,
+    "core": 48.0,
+    "individual": 0.0,
+    "nonprofit": 8107.0
+   },
+   "community_n": 79,
+   "community_median_yearly_budget": 2125.01,
+   "community_n_budget_over_100k": 7,
+   "community_total_yearly_budget": 2758180.6800000006,
+   "community_owners_in_frames": 609,
+   "currencies": {
+    "USD": 119,
+    "EUR": 8,
+    "GBP": 3,
+    "BGN": 1,
+    "AUD": 1,
+    "CAD": 1
+   },
+   "note": "budgets are in each collective's own currency (mostly USD), not converted"
+  }
+ }
+}

@@ -1,0 +1,4 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+discourse,Civilized Discourse Construction Kit (Discourse),U1,venture_unspecified,initial funding,2013-02,,,First Round Capital | Greylock Partners | SV Angel,https://techcrunch.com/2013/02/05/jeff-atwood-launches-discourse/,news,amount undisclosed
+discourse,Civilized Discourse Construction Kit (Discourse),U1,series_a,Series A,2021-08,20000000,,Pace Capital | First Round Capital,https://en.wikipedia.org/wiki/Discourse_(software),wikipedia,Wikipedia gives amount and investors; lead not stated
+e2b-dev,E2B,U1,series_a,Series A,2025-07,21000000,,Scott Johnston (person),https://siliconangle.com/2025/07/28/e2b-shares-vision-sandboxed-cloud-environments-every-ai-agent-raising-21m-funding/,news,adds to existing round; angel named by SiliconANGLE

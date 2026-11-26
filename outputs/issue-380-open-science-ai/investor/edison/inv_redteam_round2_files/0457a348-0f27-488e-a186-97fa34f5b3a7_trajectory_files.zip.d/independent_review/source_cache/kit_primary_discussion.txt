@@ -1,0 +1,306 @@
+Packaging as a commercial kit · sparks-baird/self-driving-lab-demo · Discussion #124 · GitHub 
+
+[Skip to content](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#start-of-content)   
+
+## Navigation Menu
+
+[Sign in](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsparks-baird%2Fself-driving-lab-demo%2Fdiscussions%2F124)
+
+* + Platform
+      - [![](https://github.githubassets.com/assets/platform-025c223913033b6d.webp "width=240 | height=150")![](https://github.githubassets.com/assets/platform-dark-5652b3fee35ced8b.webp "width=240 | height=150")GitHubRepository hosting, code review, and collaboration](https://github.com/platform)
+      - [![](https://github.githubassets.com/assets/copilot-200a1ebea10c78ed.webp "width=240 | height=150")![](https://github.githubassets.com/assets/copilot-dark-16171b0d3080e70f.webp "width=240 | height=150")CopilotAI coding agent for tasks, projects, and automated work](https://github.com/features/copilot)
+  + Build & Ship
+      - [ActionsCI/CD and automation](https://github.com/features/actions)
+      - [Code QualityQuality analysis, fixes, and enforcement](https://github.com/features/code-quality)
+      - [CodespacesCloud development environments](https://github.com/features/codespaces)
+  + Secure
+      - [Code SecurityVulnerability detection and remediation](https://github.com/security/advanced-security/code-security)
+      - [Secret ProtectionSecret scanning and leak prevention](https://github.com/security/advanced-security/secret-protection)
+
+  [All Features](https://github.com/features)
+
+* + Learn
+      - [Documentation](https://docs.github.com/en)
+      - [Training](https://learn.github.com/skills)
+      - [Certifications](https://learn.github.com/credentials)
+  + Build
+      - [Build with Copilot](https://github.com/features/ai)
+      - [Customize Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-copilot-overview)
+      - [Integrations](https://github.com/marketplace)
+  + Explore
+      - [Trending repos](https://github.com/trending)
+      - [GitHub Sponsors](https://github.com/open-source/sponsors)
+      - [Developer articles](https://github.com/resources/articles)
+  + Changelog
+      - [![](https://github.githubassets.com/assets/changelog-f3cfe2d3a6b4818b.webp "width=240 | height=150")![](https://github.githubassets.com/assets/changelog-dark-8aa733db00350e61.webp "width=240 | height=150")ChangelogYour source for the latest features, improvements, and fixes across GitHub products, all in one place.](https://github.blog/changelog/)
+* + By Stage
+      - [Enterprises](https://github.com/enterprise)
+      - [Team](https://github.com/team)
+      - [Startups](https://github.com/enterprise/startups)
+      - [Nonprofits](https://github.com/solutions/industry/nonprofits)
+  + By Industry
+      - [Healthcare](https://github.com/solutions/industry/healthcare)
+      - [Financial services](https://github.com/solutions/industry/financial-services)
+      - [Manufacturing](https://github.com/solutions/industry/manufacturing)
+      - [Government](https://github.com/solutions/industry/government)
+      - [See all industries](https://github.com/solutions/industry)
+  + Evaluate GitHub
+      - [Why GitHub](https://github.com/why-github)
+      - [Customer Stories](https://github.com/customer-stories)
+      - [Business insights](https://github.com/solutions/executive-insights)
+      - [Trust Center](https://github.com/trust-center)
+  + Add-ons
+      - [GitHub Advanced SecurityEnterprise-grade code security](https://github.com/security/advanced-security)
+      - [Copilot for businessEnterprise-grade AI features](https://github.com/features/copilot/copilot-business)
+      - [Premium SupportEnterprise-grade 24/7 support](https://github.com/enterprise/premium-support)
+* + Learn & Connect
+      - [Documentation](https://docs.github.com/en)
+      - [Resource center](https://github.com/resources)
+      - [Blog](https://github.blog/)
+      - [Events & webinars](https://github.com/resources/events)
+      - [Community Forum](https://github.com/orgs/community/discussions)
+      - [Customer Stories](https://github.com/customer-stories)
+      - [Integrations](https://github.com/marketplace)
+  + Support
+      - [Customer support](https://help.github.com/)
+      - [Training](https://learn.github.com/skills)
+      - [GitHub Status](https://www.githubstatus.com/)
+  + Company
+      - [About](https://github.com/about)
+      - [Partners](https://github.com/partners)
+      - [Changelog](https://github.blog/changelog/)
+  + GitHub Universe
+      - [![](https://github.githubassets.com/assets/universe-9af583553ea01049.webp "width=240 | height=150")![](https://github.githubassets.com/assets/universe-9af583553ea01049.webp "width=240 | height=150")GitHub UniverseThe event for developers, by developers — talks, workshops, and what’s next for GitHub.](https://githubuniverse.com/)
+* [Pricing](https://github.com/pricing)
+
+[Sign in](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsparks-baird%2Fself-driving-lab-demo%2Fdiscussions%2F124)
+
+[Sign up](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fdiscussions_fragments%2Fdiscussion_layout&source=header-repo&source_repo=sparks-baird%2Fself-driving-lab-demo)
+
+Appearance settings
+
+1. 1 more breadcrumb items
+2. [sparks-baird](https://github.com/sparks-baird)
+3. [self-driving-lab-demo](https://github.com/sparks-baird/self-driving-lab-demo)
+
+## Repository navigation
+
+* 
+* [Code](https://github.com/sparks-baird/self-driving-lab-demo)
+* [Issues44 (44)](https://github.com/sparks-baird/self-driving-lab-demo/issues)
+* [Pull requests3 (3)](https://github.com/sparks-baird/self-driving-lab-demo/pulls)
+* [Discussions](https://github.com/sparks-baird/self-driving-lab-demo/discussions)
+* [Actions](https://github.com/sparks-baird/self-driving-lab-demo/actions)
+* [Projects](https://github.com/sparks-baird/self-driving-lab-demo/projects)
+* [Security and quality](https://github.com/sparks-baird/self-driving-lab-demo/security)
+* [Insights](https://github.com/sparks-baird/self-driving-lab-demo/insights)
+
+# Packaging as a commercial kit  \#124
+
+[sgbaird](https://github.com/sgbaird)  started this conversation in [Scale-up](https://github.com/sparks-baird/self-driving-lab-demo/discussions/categories/scale-up)
+
+[Packaging as a commercial kit](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#top)  \#124
+
+[![@sgbaird](https://avatars.githubusercontent.com/u/45469701?s=40&v=4 "width=20 | height=20") sgbaird](https://github.com/sgbaird)
+
+Nov 4, 2022 · 5 comments · 2 replies
+
+[Return to top](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#top)
+
+Discussion options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+## [sgbaird](https://github.com/sgbaird) [Nov 4, 2022](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussion-4537481) Maintainer
+
+| Taxes, FCC compliance, etc. It gets complicated pretty fast. Most of what I discuss here will be focused on USA laws and procedures. Sections: venues, taxes, regulations, perspectives/examples, and misc. A few takeaway notes: * If you don't generate any profit, you effectively don't exist in the eyes of the IRS * Generally, it's easier to sell things as kits rather than pre-assembled * Crowd funding campaign sites generally take care of fulfillment and taxes |
+| -------------------- |
+
+You must be logged in to vote
+
+**All reactions**
+
+## Replies:  5 comments  · 2 replies
+
+* [Oldest](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124?sort=old)
+* [Newest](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124?sort=new)
+* [Top](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124?sort=top)
+
+Comment options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+### [sgbaird](https://github.com/sgbaird) [Nov 6, 2022](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-4066764) Maintainer Author
+
+| Venues Notes regarding crowdfunding venues like Crowd Supply and GroupGets and individual product sellers like Tindie, Etsy, eBay, and Amazon. Probably also worth mentioning the connection to "commercialization-as-a-service" [\#124 (comment)](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-4066769). Crowdfunding models * [Crowd Supply](https://www.crowdsupply.com/) + requires original hardware, especially original board designs (i.e. not the place to sell a kit where you didn't design an original/unique/useful PCB to be used with it) + Open-source preferred + Item fee (variable depending on how you want to handle, or not handle, shipping), ~$1-$21 + Crowd Supply cut (~12% of total crowd funds, i.e. 12% of what people have contributed) + Crowd Supply places their own order of 50-100% of the sales volume (e.g. people order $10k worth of products, Crowd Supply places their own order for $5-10k) + Crowd Supply automatically gets it listed as a product on Mouser + Less risk to the hardware designer in terms of return policy * [GroupGets](https://groupgets.com/) + doesn't have the constraint on requiring original hardware + 2.9% convenience fee + 4-12% GroupGets cut if you're selling as an individual (i.e. sole proprietor, not connected with a company) + 20% GroupGets cut flat rate if you're selling as a company + Mentions helping out with getting it listed on DigiKey, SparkFun etc. Close connection with DigiKey + Returns can be handled by GroupGets * <https://experiment.com/> + Crowdfunding platform for developing low-cost scientific tools (mentioned by OpenFlexure) + They have chemistry and materials science categories, and publishing manuscripts is emphasize + Seems like many of them have been funded * [LabMaker](https://www.labmaker.org/) + Sells a lot of domain-specific tools (e.g., Chi.Bio, OpenFlexure bag of bits) (EDIT: I don't think they've ever gotten back to me) Individual product seller Takeaways: Tindie has a maker community, but doesn't handle sales tax for you, which is a pain, whereas Etsy is more oriented towards crafting but does take care of sales tax. Selling on Amazon requires being on a professional account. Selling on eBay might get blocked if it's determined to violate their compliance criteria. Tayda will take a kit idea, test it out, and sell the kit with a small kickback to the submitter of the idea + instructions. * Tindie + easy to set up, but [have to handle seller tax on your own](https://discuss.tindie.com/t/collecting-tax-feature-request/2799/9) which makes things tough (fertile ground for encouraging tax evasion) + generally not good for high-throughput sales, but connects you with a very specific target audience / community + I lean towards the idea of having a Tindie product page with no stock and linking to somewhere else that handles seller taxes for you. Since Tindie has a waitlist feature for when an item is listed out-of-stock, another option I've considered, but am not sure how I feel about, is to have a stock of 1 listed at a relatively high price with a disclaimer at the very beginning encouraging the viewer to buy the kit components directly from DigiKey or buy it from the other venue that handles seller taxes. * eBay + [Electronic equipment policy](https://www.ebay.com/help/policies/prohibited-restricted-items/electronic-equipment-policy) + To comply with U.S. Federal Communications Commission (FCC) regulations and to protect the safety and privacy of our members, there are restrictions around the sale of electrical and electronic equipment. + The list didn't seem overly restrictive * Amazon + There are [a number of requirements](https://www.sellerapp.com/blog/amazon-restricted-categories-approval/) that must be met to sell a restricted category (e.g. electronics) + [Becoming a seller](https://www.sellerapp.com/blog/become-an-amazon-individual-seller/) * Etsy + [Handles sellers tax](https://help.etsy.com/hc/en-us/articles/360000343968-How-US-State-Sales-Tax-Applies-to-Etsy-Orders?segment=selling), obviously more geared towards arts and crafts compared with Tindie (i.e. the Etsy for electronics in some sense) * Tayda Electronics + <https://www.taydaelectronics.com/share> + When people buy your kit. Tayda will share 10% of your kit's sales with you in cash. If you prefer store credit, you can make 15% on each of your kits sold. ... You send us a parts list and instructions. We make your project into a kit that looks great and is easy to buy. It’s almost like having your own web store without any of the hassles. + EDIT: I don't think I ever heard back from Tayda Business Owner * <https://www.ownr.co/lp/get-started/> |
+| -------------------- |
+
+You must be logged in to vote
+
+**All reactions**
+
+2 replies
+
+[![@sgbaird](https://avatars.githubusercontent.com/u/45469701?s=60&v=4 "width=30 | height=30")](https://github.com/sgbaird)
+
+Comment options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+#### [sgbaird](https://github.com/sgbaird) [Dec 7, 2022](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-4328589) Maintainer Author
+
+| Response from internal communication with GroupGets: * doesn't have the constraint on requiring original hardware, but maybe also more hands-off (?) We can be hands off or hands on depending on what works best for you. Sometimes we'll manage everything, just pay a royalty, and ask that you provide support for the product as needed. We do handle general customer support for shipping and returns or technical issues with known fixes. It looks like you are willing to do the part sourcing and assembly. In that case, you'll save on contract manufacturer mark-ups. Our support would be the same as above but you will likely need to be a bit more involved. We will forward support tickets to you as needed. * Mentions helping out with getting it listed on DigiKey, SparkFun etc. Seems to have a connection to SparkFun * Will probably need to handle returns directly We partner with Digikey more closely than Sparkfun, but we have pathways to get products to either. Returns will go through us, so you don't need to worry about that. We don't accept returns except in the case of product defects. If it's a DIY kit, it's almost impossible to differentiate between defects and user error. It would need to be decided on a case by case basis if the return is accepted. |
+| -------------------- |
+
+**All reactions**
+
+[![@sgbaird](https://avatars.githubusercontent.com/u/45469701?s=60&v=4 "width=30 | height=30")](https://github.com/sgbaird)
+
+Comment options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+#### [sgbaird](https://github.com/sgbaird) [May 4, 2023](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-5808814) Maintainer Author
+
+| As a short anecdote, I've been working with GroupGets over several rounds of group buys ([round 1](https://groupgets.com/campaigns/1112), [round 2](https://groupgets.com/campaigns/1129)), and the item is [now listed on their shop for purchase](https://store.groupgets.com/products/closed-loop-spectroscopy-lab-light-mixing-demo-kit), albeit at a higher price. Here's the cost breakdown (related to [the taxes post](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-4066766)): \| Type            \| Cost                 \| \| List price      \| 80 USD + shipping (location-dependent) \| \| GroupGetes fee  \| 15.57 USD (10% + 2.9% + 5 USD) \| \| Hardware cost\* \| 51.19 USD, not considering bulk discounts \| \| Labor/testing   \| 6 USD (i.e., ~20 minutes) \| \| Profit          \| 2.24 USD, offset by overhead like shipping \| \*This assumes purchasing a Pico W with pre-soldered headers. Importantly, for the next round, I plan to fully hand off the parts ordering, kit assembly, and kit testing to GroupGets. |
+| -------------------- |
+
+**All reactions**
+
+Comment options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+### [sgbaird](https://github.com/sgbaird) [Nov 6, 2022](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-4066766) Maintainer Author
+
+| Taxes In-state selling, out-of-state selling, and customs If you don't generate profit, you effectively don't exist in the eyes of the IRS. * [Do I need an LLC or Business License to Sell on Amazon?](https://startupbros.com/importing-license-llc-amazon/) * [How much can you sell before paying tax](https://www.hrblock.com/tax-center/income/other-income/how-much-can-you-sell-before-paying-tax/) (HR Block), see also <https://www.rocketlawyer.com/business-and-contracts/business-operations/small-business-taxes/legal-guide/how-much-can-you-sell-online-without-paying-taxes> * [Self-employment taxes](https://www.rocketlawyer.com/business-and-contracts/business-operations/self-employment-taxes) * [taxes when you sell things online](https://www.nolo.com/legal-encyclopedia/taxes-when-you-sell-things-online.html) + Losses on the sale of personal use property (such as clothing or personal use cars) are nondeductible personal losses. The IRS doesn't expect you to report these on your tax return. Nobody cares about them. An occasional seller who sells an item at a gain would have a taxable capital gain that is supposed to be reported to the IRS (see the discussion of collectors or investors below). ... If you sell something created or acquired as a hobby online, the profit you earn is taxable income that is supposed to be reported on your [tax return](https://www.nolo.com/legal-encyclopedia/filing-your-tax-return). Under prior law, hobbyists could claim as an itemized deduction their hobby-related expenses up to the amount of income the hobby earned during the year. However, the Tax Cuts and Jobs Act completely eliminates the itemized deduction for hobby expenses, along with many other miscellaneous itemized deductions, effective starting 2018 through 2025. This means that taxpayers will not be able to deduct any expenses they earn from hobbies during these years, but they still have to report and pay tax on any income they earn from a hobby. The deduction is scheduled to return in 2026. ... Unlike a hobbyist, an investor wants to earn a profit, but is not engaged in a full-fledged business. ... When an investor sells an item at a gain, the amount is a taxable capital gain that must be reported on IRS Schedule D. Income tax must be paid on the profit at capital gains rates. ... If an investor sells a collectible at a loss, the loss is a capital loss that may be deducted from any capital gains realized during the year. If capital losses exceed capital gains for the year, a maximum of $3,000 of the loss may be deducted from other income with the remainder, if any, carried forward to future years. ... If selling items online is your business, the same tax rules apply to you as for any other business. Online selling is a business if you regularly engage in it primarily to earn a profit. If you earn a profit in any three out of five years, your activity is presumed to be a business. You don't have to engage in online selling full-time for it to be a business, but you must work at it regularly. When you have an online sales business, you may deduct all of your business expenses from your business income. You pay income tax on your profits at regular tax rates. If you incur a loss, you may deduct it from other income during the year. When you have a business, you must pay self-employment taxes (Social Security and Medicare taxes) as well as income taxes. |
+| -------------------- |
+
+You must be logged in to vote
+
+**All reactions**
+
+0 replies
+
+Comment options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+### [sgbaird](https://github.com/sgbaird) [Nov 6, 2022](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-4066768) Maintainer Author
+
+| Regulations FCC Compliance Easier to sell things as unassembled kits to avoid issues with FCC compliance, and maybe better to provide disclaimers to buyers of kits that ensuring FCC compliance is their responsibility. * Home-built devices and kits <https://www.govinfo.gov/content/pkg/CFR-2010-title47-vol1/pdf/CFR-2010-title47-vol1-sec15-23.pdf> * Subassemblies <https://www.govinfo.gov/content/pkg/CFR-2010-title47-vol1/pdf/CFR-2010-title47-vol1-sec15-101.pdf> + [Using Modules and Sub-Assemblies](https://www.sparkfun.com/news/2708) (Sparkfun) * [The FCC and open source hardware](https://www.sparkfun.com/tutorials/398) (Sparkfun) * [Regulatory approvals (FCC, CE, …)?](https://discuss.tindie.com/t/regulatory-approvals-fcc-ce/75230) (Tindie forum) * [What needs FCC approval](https://compliancetesting.com/what-needs-fcc-approval/) |
+| -------------------- |
+
+You must be logged in to vote
+
+**All reactions**
+
+0 replies
+
+Comment options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+### [sgbaird](https://github.com/sgbaird) [Nov 6, 2022](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-4066769) Maintainer Author
+
+| Perspectives/examples * [Open hardware as an experimental commercialization strategy: challenges and potentialities](https://e-publishing.cern.ch/index.php/CIJ/article/view/826) (from Journal of Experimental Innovation) * [The unspoken rules of open-source hardware](https://makezine.com/article/maker-news/soapbox-the-unspoken-rules-of-open-source-hardware/) * [Selling open source hardware](https://www.eevblog.com/forum/chat/selling-open-source-hardware/) (eevblog) * [Commercialization-as-a-Service - A Missing Layer of Open Hardware?](https://michaelweinberg.org/blog/2021/11/02/oshw-caas/) + Furthermore, this layer is probably further from the work of designing the hardware than the equivalent responsibility is from writing software. That means that there is no guarantee that the team that originally came together to design and build the hardware has someone (or a group of someones) who are also excited about spinning up a manufacturing and distribution network. That is especially likely to be true in the context of research lab-developed hardware (which is the focus of the paper). ... An alternative approach would be to make open hardware projects less reliant on building their own manufacturing and distribution networks in order to succeed. ... Creating commercialization-as-a-service could make it much more likely that open hardware developed in one lab becomes available to the research community more broadly. That service layer could develop a standing network of international manufacturing and distribution partners, as well as expertise in productization and marketing of hardware. It would work as a pump, pulling proven hardware out of labs and pushing it to other researchers worldwide. In doing so, it would reduce the current ‘unicorn’ condition of academic open hardware success, whereby a successful open source hardware project needs a team that happens to combine the engineering skills to develop the hardware and the logistics skills to manufacture and distribute it. - Primarily based on [Distributed Manufacturing of Open Hardware](https://michaelweinberg.org/docs/DistributedManufacturingofOpenHardware.pdf) * [Understanding the motivations for open-source hardware entrepreneurship](https://www.cambridge.org/core/journals/design-science/article/understanding-the-motivations-for-opensource-hardware-entrepreneurship/34B8D98DA878CAF5160892DC7258CA41) (Journal article) * [Open Source Hardware, Exploring how Industry Regulation Affects Knowledge Commons Governance: An Exploratory Case Study](https://www.thecommonsjournal.org/article/10.5334/ijc.1081/) This second option may be most realistic in situations where open hardware has been developed in scientific research lab contexts supported by grant funding. In those situations, a grantor has already paid for the development of the open source hardware in the context of the specific project. Misc * <https://forums.raspberrypi.com/viewtopic.php?t=11360> * [shipping internationally from US](https://discuss.tindie.com/t/is-there-a-good-resource-for-shipping-internationally-from-the-us/109176) (Tindie) * [The Future of Open Source Hardware](https://www.mouser.com/applications/open-source-hardware-future/) (not sure how old the article is, pretty general) * [How Companies Make Money Through Involvement in Open Source Hardware Projects](https://www.timreview.ca/article/228) * [Tinkering at Home, Selling on the Web](https://www.nytimes.com/2007/11/15/technology/personaltech/15basics.html) |
+| -------------------- |
+
+You must be logged in to vote
+
+**All reactions**
+
+0 replies
+
+Comment options 
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+* 
+### Uh oh!
+
+There was an error while loading. Please reload this page.
+
+### [sgbaird](https://github.com/sgbaird) [Aug 15, 2023](https://github.com/sparks-baird/self-driving-lab-demo/discussions/124#discussioncomment-6733941) Maintainer Author
+
+| IP Transfer General comments/resources * <https://www.scaleai.ca/blog/avoid-an-open-source-shipwreck/> * <https://www.scaleai.ca/blog/is-open-source-software-ip/> * <https://opensource.stackexchange.com/questions/55/does-open-source-qualify-as-being-part-of-the-public-domain> * <https://opensource.org/faq/#public-domain> * <https://www.upcounsel.com/intellectual-property-and-open-source> For example, when working with one of the crowdfunding platforms mentioned before, this is written into the contract. GroupGets has a clause that IP is retained by the merchant (i.e., the individual/entity that signs the contract with GroupGets). Take the example of CLSLab:Light. The CERN-OHL-P-2.0 license that is attached to the hardware design for CLSLab:Light gives "a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section 6, or where terminated by the Licensor for cause) patent licence to Make, have Made, use, offer to sell, sell, import, and otherwise transfer the Covered Source and Products". Likewise, someone "may Make Products, and/or Convey them, provided that \[the AC] ensure that the recipient of the Product has access to any Notices applicable to the Product." The MIT License grants permission to "deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so". This is subject to the constraint that the copyright notice and permission notice from <https://github.com/sparks-baird/self-driving-lab-demo/blob/main/LICENSE.txt> is included. So, the appropriate notices need to be made accessible or included as necessary. Universities * University of Toronto + <https://www.sgs.utoronto.ca/policies-guidelines/ip-for-graduate-students-supervisors/> + <https://governingcouncil.utoronto.ca/secretariat/policies/inventions-policy-october-30-2013> + <https://governingcouncil.utoronto.ca/secretariat/policies/copyright-policy-february-15-2018> |
+| -------------------- |
+
+You must be logged in to vote
+
+**All reactions**
+
+0 replies
+
+[Sign up for free](https://github.com/join?source=comment-repo) **to join this conversation on GitHub**.
+Already have an account? [Sign in to comment](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsparks-baird%2Fself-driving-lab-demo%2Fdiscussions%2F124)
+
+Category
+
+[🐘 Scale-up](https://github.com/sparks-baird/self-driving-lab-demo/discussions/categories/scale-up)
+
+Labels
+
+None yet
+
+1 participant
+
+[![@sgbaird](https://avatars.githubusercontent.com/u/45469701?s=48&v=4 "width=24 | height=24")](https://github.com/sgbaird)
+
+## Footer
+
+© 2026 GitHub, Inc.
+
+### Footer navigation
+
+* [Terms](https://docs.github.com/site-policy/github-terms/github-terms-of-service)
+* [Privacy](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement)
+* [Security](https://github.com/security)
+* [Status](https://www.githubstatus.com/)
+* [Community](https://github.community/)
+* [Docs](https://docs.github.com/)
+* [Contact](https://support.github.com?tags=dotcom-footer)
+* 
+*
+
+You can’t perform that action at this time.
+

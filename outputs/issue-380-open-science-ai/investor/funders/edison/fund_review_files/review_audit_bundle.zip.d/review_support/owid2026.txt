@@ -1,0 +1,4045 @@
+How we’re funded | Our World in Data
+
+[Our World in Data](https://ourworldindata.org/)
+
+[![Oxford Martin School logo](https://ourworldindata.org/oms-logo.svg "width=96 | height=103")](https://www.oxfordmartin.ox.ac.uk/global-development)[![University of Oxford logo](https://ourworldindata.org/oxford-logo.svg "width=96 | height=103")](https://www.ox.ac.uk/)[![Global Change Data Lab logo](https://ourworldindata.org/gcdl-logo.svg "width=80 | height=103")](https://global-change-data-lab.org/)
+
+* 
+* [Data](https://ourworldindata.org/search)
+* [Latest](https://ourworldindata.org/latest)
+* 
+*
+
+[Donate](https://ourworldindata.org/donate)
+
+# About
+
+* [About us](https://ourworldindata.org/about)
+* [Organization](https://ourworldindata.org/organization)
+* [Funding](https://ourworldindata.org/funding)
+* [Team](https://ourworldindata.org/team)
+* [Jobs](https://ourworldindata.org/jobs)
+* [FAQs](https://ourworldindata.org/faqs)
+
+Our World in Data is a collaborative effort between [researchers at the University of Oxford](https://www.oxfordmartin.ox.ac.uk/global-development), who are the scientific editors of the website content; and the non-profit organization [Global Change Data Lab](https://global-change-data-lab.org/) (GCDL), which publishes and maintains the website and the data tools that make our work possible.
+
+GCDL is a registered charity in England and Wales (Charity Number 1186433). Our work is funded through grants and donations from readers who support our project.
+
+### Grants
+
+We are supported by grants from foundations including the [Wellcome Trust](https://wellcome.org), the [Gates Foundation](https://www.gatesfoundation.org), the [Skip Foundation](https://www.skipfoundation.org), [Coefficient Giving](https://coefficientgiving.org), and the [Mohn Westlake Foundation](https://www.themohnwestlakefoundation.co.uk).
+
+In the past, we have also received grants from the [Quadrature Climate Foundation](https://www.qc.foundation), [Y Combinator](https://www.ycombinator.com), [GiveWell](https://www.givewell.org), among others.
+
+You can find a full breakdown of our funding, as well as our audited financial statements, in our [Trustees’ Annual Report](https://assets.ourworldindata.org/uploads/2026/06/2025%20Annual%20report.pdf). In this document, you can also find details about our organizational structure and the most recent report on how we are spending our funds.[1](https://ourworldindata.org/funding#note-1)
+
+### Donations
+
+Our work is also made possible by supporters who donate directly on our website. More than 4,000 people have donated over the past couple of years.
+
+When donating, we ask each supporter whether they agree to be listed publicly, and most have agreed – here are the names and dedications provided by these readers. We update this donor list quarterly.
+
+Huge thanks to everyone!
+
+(Listed in alphabetical order)
+
+### A
+
+* A Burrows
+* A Francois
+* A Neves
+* A.W. Rabi Bernard
+* Aapeli Vuorinen
+* Aaron Gertler
+* Aaron Gottlieb
+* Aaron Silverbook
+* Aaron Taylor
+* Aatreyee Das
+* Abdul Hakim Norazman
+* Abdul Jakarta
+* Abdul Rahman
+* Abdullah Ucar
+* Abdulmateen Aderinto
+* Abe Eastwood
+* Abe Mckay
+* Abe McKay
+* Abigail Freeman
+* Abraham Bornstein
+* Abraham Oort
+* ACW
+* Ad Bastiaansen
+* Ada Liang
+* Adam
+* Adam Baybutt
+* Adam Bracegirdle
+* Adam Clarke
+* Adam Fox
+* Adam Hawkins
+* Adam Knight
+* Adam Kucharski
+* Adam McNamara
+* Adam Parsons
+* Adam Sherman
+* Adam Steinbrenner
+* Adedayo R. Ladelokun
+* Adelmo G. Machado
+* Adolfo N
+* Adriaan De Jongh
+* Adriaan Meijer
+* Adrian Anderson
+* Adrian Boutel
+* Adrian Bowyer
+* Adrian Burrows
+* Adrian Sieber
+* Agathe Le Bescond
+* Agnes Lewis
+* Agoritsa Baka
+* Agus
+* Agustin Benassi
+* Agustin Gomez De La Camara
+* Ahmad Ahsan
+* Ahmad Faghihi
+* Ahmad Mobeen
+* Ahmed barakat
+* Ahustin Godino
+* Aidan Sproat-Clements
+* Ajarn Jimmy Tangjaitrong
+* Ajay Mehta
+* Ajay T.
+* Ajith Ratnayake
+* Ak Sturm
+* Ake and Siv Almgren
+* Aki Akamatsu
+* Aki Järvinen
+* Akihiro Yamazaki
+* Akio Burns
+* Akira Hirata
+* Aksel Rogstad
+* Aláez
+* Alain Marcoux
+* Alan Aronie
+* Alan B Forsythe
+* Alan Brazil
+* Alan Carter
+* Alan Finkel
+* Alan Howard
+* Alan John Carter
+* Alan Lee Peterson
+* Alan Reed
+* Alan William Pollard
+* Alan Windle
+* Alari Rammo
+* Alastair Baker
+* Alastair Herbert
+* Alastair Stevens
+* Albert Creus Tomas
+* Albert Lin
+* Albert Steiner
+* Alberto Balestra
+* Alberto Barreix
+* Alberto Gonzalez-Marquez
+* Alberto Grasso
+* Alberto Leonel de Cervantes
+* Alberto Manetta
+* Alcide Scarabino
+* Aldir Juanda
+* Alec Duffy
+* Aleksander Gassowski
+* Aleksandr Putilin
+* Alèksei Andròs
+* Alessandro Bocchi
+* Alessandro Giglio
+* Alessandro Mecca
+* Alessandro Ricci
+* Alessandro Sisti
+* Alessandro Volpi
+* Alessio Proietti
+* Alex Bikbaev
+* Alex Bouaziz
+* Alex de Aboitiz
+* Alex H
+* Alex Hislop
+* Alex Munkelwitz
+* Alex Reid
+* Alex Sayers
+* Alex Ward
+* Alexander Adams
+* Alexander Gregory
+* Alexander Lex
+* Alexander MacCaw
+* Alexander Motal
+* Alexander Savard
+* Alexander Stein
+* Alexander Steinhardt
+* Alexander Storey
+* Alexander Unnervik
+* Alexander von Grumbkow
+* Alexandra H
+* Alexandra Heller
+* Alexandre Courtiol
+* Alexandre Lenoir
+* Alexandre Machado
+* Alf
+* Alfred Arnborg
+* Alfred Koerblein
+* Ali
+* Alice Griffiths
+* Alicia Rasley
+* Alina Peter
+* Alireza Alidousti
+* Alison Sinclair
+* Alistair Thomas
+* Alkistis Skalkidou
+* Allan Lever
+* Allan Lock
+* Allan Paterson
+* Allan Pollock
+* Allan Street
+* Allison R.
+* Allyson Conrad
+* Alok Talekar
+* Alun Griffith
+* Alvaro Graves
+* Alysia Silberg
+* Alysia Townsend
+* Amandeep Jawa
+* Amber Valett
+* Ambroise
+* Amir Arsalan Nouyan
+* Amit Pandey
+* Amit Sinha
+* Amrish Baidjoe
+* Amy Cohen
+* Amy Livingston
+* Amy Rogers
+* Anai Margarita Luis Rojo
+* Anamika Shreevastava
+* Anand Chockalingam
+* Anant Sundaram
+* Ananya Singhal
+* Anastasia Donate
+* Anastasia Ilieva
+* Anatoly Lapshin
+* Anders Axelsson
+* Anders Olsson
+* Andras Peleskey
+* Andre
+* Andre Bluehs
+* Andre Canelhas
+* André Carlos Contini
+* André Gomes O Peres
+* Andrea Arienti
+* Andrea Bennington
+* Andrea Dulmage
+* Andrea R Maestrejuan
+* Andrea Vodova'
+* Andreas Birbach
+* Andreas Bruse
+* Andreas Hartmann
+* Andreas Marock
+* Andreas May
+* Andreas Schweizer
+* Andreas Thorstensson
+* Andreas Weber
+* Andrei Ivanov
+* Andrés Tafur Villarreal
+* Andrew Aplin
+* Andrew Asa Hindman
+* Andrew Belov
+* Andrew Benson
+* Andrew Condon
+* Andrew Copeland
+* Andrew Croxford
+* Andrew Dawson
+* Andrew Harmsworth
+* Andrew Heinrichs
+* Andrew Hill
+* Andrew Hoffman
+* Andrew Ingram
+* Andrew Lee
+* Andrew M. Parker
+* Andrew McLoughlin
+* Andrew Merz Hanson
+* Andrew Michrowski
+* Andrew Sia
+* Andrew Simpson
+* Andrew Swann
+* Andrew West
+* Andrii Bondarenko
+* Andy C
+* Andy DeMeo
+* Andy Jackson
+* Andy Romanoff
+* Angel A. Castro
+* Ángel Rodrigo Bravo
+* Angus McLellan
+* Angus Murray
+* Anil Mathira
+* Anindita Gandhi
+* Anindya Sekhar Bose
+* Anirudha Mirmira
+* Ankur Meozzi
+* Ann Kanof
+* Ann Womack
+* Anna Hardinge
+* Anna Keller
+* Anne And Jay Schamberg
+* Anne Beswick
+* Anne Cummings
+* Anne Lambert
+* Anne M
+* Anne Quito
+* Annelies Powell
+* Annette Braun
+* Annette Jaitner
+* Anomalous Exploration Ltd.
+* Antanas
+* Anthony Cahill
+* Anthony D Conner
+* Anthony Drinkwater Read
+* Anthony Galea
+* Anthony O'Brien
+* Anthony OFarrell
+* Anthony Parker
+* Anthony Read
+* Antmac
+* Antoine Bonnet
+* Antoine Dusséaux
+* Antoine M
+* Antoine Moulet
+* Anton van der Merwe
+* Antonia Maria Driessen
+* Antonín Lupíšek
+* Antonio
+* Antonio Alvaro S Camargo
+* Antonio Fiallos
+* Antonio Frascogna
+* Antonio J Riva
+* Antonio Trani
+* Antony J Lepire
+* Antony Mccurdy
+* Antony McCurdy
+* Antony Rouse
+* Antti Kulmala
+* Aodhgan Gleeson
+* Aprilia Nidia
+* Arent Greve
+* Ari Caroline
+* Ariel Pablos
+* Ariel Pablos-Mendez
+* Arilson Cunha De Almeida
+* Armando Baena
+* Armando Soto
+* Arnaud Leleux
+* Arne Tiddens
+* Arno Meckel
+* Arpit Agarwal
+* Art Woolf
+* Arth Mishra
+* Arthur Allen Thorn
+* Arun Garg
+* Arvand Hassan
+* Asger Trier Kjær
+* Ashima Kanjilal
+* Ashley Barnard
+* Ashok Modi
+* Ashutosh Joshi
+* Ashvin Arora
+* Aston Motes
+* Athiratt Jarnyaharn
+* Atie Pijtak
+* Aubrey Ayash
+* Audrey Saltzman
+* Augustin Cerveaux
+* Augusto Fazioli
+* Augusto Ninni
+* Aung Myin Tun
+* Aurelio O.
+* Avinash Chaudhary
+* Avinash Gore
+* Avram Hiller
+* Axel Fehr
+* Axel Göbeler
+* Axel Klanderud
+* Axel Van't Westeinde
+* Aziz Sunderji
+
+#### From our readers
+
+> “Our World in Data is a profound source of information and inspiration for solving global problems. Thank you.”
+
+> “To me, investing in evidence-based solutions to both combat and prevent disasters is one of the smartest things we can do for humanity. That's why I've become a monthly donor to Our World in Data!”
+
+### B
+
+* B Mc Carthy
+* B.P. Davidse
+* Balázs Érdi
+* Balint Erdi
+* Baptiste Corre
+* Barbara Fris
+* Barbara Hirsch
+* Barbara Popel
+* Barbara Schumann
+* Barry Koehler
+* Barry MacBride
+* Bartnik
+* Bartolomeo Cappellina
+* Bartosz Bartkowski
+* Beate Scherer
+* Beatriz Rojo Martin
+* Belastingdienst Rotterdam
+* Ben Firshman
+* Ben Gras
+* Ben Harnke
+* Ben Henningsen
+* Ben Johnson
+* Ben Reesor
+* Ben Riley
+* Ben Shaw
+* Benedict H Ebner
+* Benedikt Franz
+* Benjamin Burford
+* Benjamin Clark
+* Benjamin Dobson
+* Benjamin Eisenpress
+* Benjamin Howard
+* Benjamin Kaleja
+* Benjamin Kietzmann
+* Benjamin M. Friedrich
+* Benjamin Parmentier
+* Benjamin Sekowski
+* Benjamin Shaw
+* Benjamin Tran Dinh
+* Benoit Bosquet
+* Bensalem Nabil
+* Bernard Clements
+* Bernard Cleyet
+* Bernard Hirschel
+* Bernd Eversmann
+* Bernd Lorscheider
+* Bernd-D. Wieth
+* Bernhard Boonstra
+* Bernhard Just
+* Bernhard Schaffer
+* Bert
+* Bert Van Der Pol
+* Bert Vermaat
+* Bertram Barth
+* Beryl Hylton Downing
+* Beth Ballmann
+* Beth Ceryak
+* Betsy Hansel
+* Betty Burston
+* Bhanoji Rao
+* Bharat Reddy
+* Bhum Soophopsoong
+* Bhuvanesh Bhatt
+* Bianca Darkhor
+* Bik Singh
+* Bill and Anne
+* Bill Bean
+* Bill de la Vega
+* Bill Dinklage
+* Bill Fitchett
+* Bill Gilmour
+* Bill Howell
+* Bill Mackenzie
+* Bill Robinson
+* Bill White
+* Bill Wilkinson
+* Billy Griffin
+* Birdman Friday
+* Birthe Locatelli-Rossi
+* Bjorn Algkvist
+* Björn Dahlbäck
+* Björn Köhler
+* Blagovest Georgiev
+* Blair M Underwood
+* Bob Farquharson
+* Bob Martin
+* Bob Pearson
+* Bob Specht
+* Bogi Ragnarsson
+* Bonnie Scott
+* Boris Peter
+* Boris Zlatopolsky
+* Brad Anderson
+* Brad Banko
+* Brad Liljequist
+* Brady OConnell
+* Bram Bloemen
+* Bram D.
+* Brandon
+* Brandt Kehoe
+* Breck Yunits
+* Brenda Berry
+* Brendan Long
+* Brendon Manikkam
+* Brennen Mckenzie
+* Brent Pretty
+* Brett Bukowski
+* Brett Crump
+* Brian
+* Brian Benson
+* Brian Buchanan
+* Brian Carroll
+* Brian Ewert
+* Brian Farren
+* Brian Goodrich
+* Brian Gratton
+* Brian Hallissey
+* Brian Hartsock
+* Brian Holton
+* Brian Kernahan
+* Brian Moran
+* Brian Peiris
+* Brian Ruffo
+* Brian Sun
+* Brian Urbancic
+* Brian Zindler
+* Britt Ludvigsen
+* Brooke Adams
+* Bruce
+* Bruce Hall
+* Bruce Brown
+* Bruce Dawson
+* Bruce Friedrich
+* Bruce Goldenberg
+* Bruce Macdougall
+* Bruins Slot
+* Bruno Castilho Barrichelo
+* Bruno Cuzzi
+* Bruno Latourrette
+* Bruno Monteiro
+* Bruno Santos
+* Bryan Crosby
+* Bryan Linsley
+* Buffadoo BV
+* Buna Silva
+* Burkhard Niesert
+* Byron Manley
+* Byron Montero
+* Bytewise Software Gmbh
+* Bytewise Software GmbH
+
+### C
+
+* C Don Paulsell
+* C Peel
+* C. F. Ransom Ii
+* C. Fuentez
+* Cahir O'kane
+* Caitlin Krause
+* Cal Costa
+* Cale Hawkins
+* Calibrator
+* Cam Storey
+* Cameron H
+* Camille Hard
+* Candace A Hill
+* Candace Head-Dylla
+* Candace Loy
+* Candice Rideout
+* Cantu Debrte
+* Caoq Apqow
+* Carey Garrett
+* Carl Gustaf Olofsson
+* Carl Page
+* Carlo Cammarata
+* Carlos
+* Carlos Adamo
+* Carlos Alberto Elizondo Rivera
+* Carlos Alberto Fournery
+* Carlos Avendaño
+* Carlos Bohórquez
+* Carlos Fuentealba
+* Carlos JP Gomes
+* Carlos Ortega-Zuniga
+* Carly Mask
+* Carmen Pozuelo and Jose Juan Ruiz
+* Carmine Paolo De Salvo
+* Caroline Cochran
+* Caroline Russell
+* Caroline Smith
+* Caroline Vincent
+* Carolyn Kurtz
+* Cas de Bruijn
+* Casper Prinsen
+* Cassidy Nelson
+* Cat Truxillo
+* Catherine McGowan Russell
+* Cathy Stacey
+* Cecilia Vera
+* Cecilie Mauritzen
+* Cees Van Kasteren
+* Cees van Rij
+* Cees Van Rij
+* Celia VanDerLoop
+* Celso Garrido Noguera
+* César Escalante
+* Cesare Sala
+* Chae Seong Kim
+* Chamarin
+* Chambatte
+* Chana Davis
+* Chapman Law Group Pc
+* Charito Pangan
+* Charity Engine
+* Charles C
+* Charles C. Mann
+* Charles Garascia
+* Charles Groenhuijsen
+* Charles Hoernemann
+* Charles I. Jones
+* Charles Merrill
+* Charles O'Donnell and Family
+* Charles S. Maier
+* Charles Tricou
+* Charlie Hope
+* Chase Lyall
+* Che Voigt
+* Chelonia Limited
+* Chelsea
+* Cheney Beshara
+* Chenglee Wen
+* Cheryl Leske
+* Chester L. Simpson
+* Chethan Hr
+* Chi-Cuong Ma
+* Chiayi Lin
+* Chiharu Tohyama
+* Chikoma Kazunga
+* Chirag Menon
+* Choe Seona
+* Chris Behrens
+* Chris Bergh
+* Chris De Laet
+* Chris Gerber
+* Chris Gill
+* Chris Halligan
+* Chris Harvey
+* Chris Jones
+* Chris Lefsrud
+* Chris Loope
+* Chris Marston
+* Chris McCoy
+* Chris McNicoll
+* Chris Melvin
+* Chris Meserve
+* Chris Muglia
+* Chris Noble
+* Chris Ohlund
+* Chris Öhlund
+* Chris Rust
+* Chris Sharp
+* Chris Smith
+* Chris Starling
+* Chris Stokes
+* Chris White
+* Chris Woods
+* Chrissie
+* Christian Andersen
+* Christian Berner Skipper
+* Christian Ebner
+* Christian Fuchs
+* Christian Jay B Hilotin
+* Christian Jespersen
+* Christian Kugler
+* Christian M. Carrico
+* Christian Meyers
+* Christian Rathat
+* Christian Rohrbach
+* Christian Stricker
+* Christian Wehrenfennig
+* Christian Zito
+* Christina Barta
+* Christine
+* Christine M
+* Christine Page
+* Christoph Bröcker
+* Christoph Broecker
+* Christoph C. Cemper
+* Christoph Conrad
+* Christoph Crepaz
+* Christoph Schneider
+* Christoph Seidl
+* Christoph Sonntag
+* Christopher Albertyn
+* Christopher Benson
+* Christopher Bergh
+* Christopher Buck
+* Christopher Bunnett
+* Christopher Clarke
+* Christopher Crowley
+* Christopher Ennis
+* Christopher Gardner
+* Christopher Gill
+* Christopher Marston
+* Christopher Meraz-Mata
+* Christopher North
+* Christopher Ridley
+* Chuang Peyyun
+* Chuck Shaw
+* Chunliang Mu
+* Cian Cunningham
+* Ciaran Welsh
+* Cicero Facciolla
+* Cillian O'Briain
+* Cindy Grill
+* Cindy Smith
+* Cinera Verinia
+* Cisca Verbeek
+* Citywire
+* Claes Johansson
+* Claiton Silva Nunes
+* Clare Tickell
+* Claudia Bank
+* Claudia Diaz-Combs
+* Claudia Jochheim
+* Claudia Ortiz
+* Claudina Michal-Teitelbaum
+* Claudio A. Pinto
+* Claudio Costa
+* Claudio Pecora
+* Claus Herrmann
+* CLB
+* Clear Creek Resource Partners
+* Clemens Walther
+* Climate Executive Coaching
+* Clint Guymon
+* Clinton Jurd
+* Clive Porter
+* Cloe
+* Cognition Studio Inc.
+* Cole Family
+* Colin Mckendrick
+* Colin Phipps
+* Colin Scott
+* Collin Wallace
+* Connie Ko
+* Connor Robinson
+* Connor Young
+* Conor Devaney
+* Conor James
+* Conor McCoole
+* Conor Tubridy
+* Conrad Cotton-Barratt
+* Conrad Whelan
+* Constantin Christel
+* Constantine Louloudis
+* Conversano Celestino
+* Coralie Chevallier
+* Corentin Smith
+* Corey Blackman
+* Corey Evatt
+* Corey Lynn Fayman
+* Cornelius Emde
+* Cornelius Zetzsch
+* Corrado Cometto
+* Corrado Salvetti
+* Cory Allan
+* Cory Trenda
+* Cosimo Perrotta
+* Courtney Keating
+* Courtney McAra
+* Cozette Day
+* Cozmin Ududec
+* Craig Barlow
+* Craig Dinan
+* Craig Fratrik
+* Craig Heavey
+* Craig Johnston
+* Craig W
+* Cristiano Toncelli
+* Cristóbal Vila
+* Cruz Miguel Ortiz
+* Cullen OKeefe
+* Cullyn O'Keefe
+* Cy Lin
+* Cynthia
+* Cynthia Scott
+* Cynthia Sinclair
+
+### D
+
+* D Page
+* D Salerno
+* D Walker
+* D. R. Prodan
+* Da-Thao Le
+* Daan van Esch
+* Daanish Alavi
+* Dadla Ponizil
+* Dafna Nudelman
+* Dagmar
+* Dagmawi Elehu
+* Dagoberto Cedillos
+* Dahlia Scheindlin
+* Dale Walters
+* Daljit Rehal
+* Damian Birchler
+* Damiano Fornasiere
+* Damodar
+* Dan & Radhika Bradley
+* Dan Carucci
+* Dan Cormier
+* Dan Dixon
+* Dan Earl-Gray
+* Dan Inbar
+* Dan Joensen
+* Dan Keys
+* Dan Loveless
+* Dan Pincas
+* Dan Radu Popescu
+* Dan Rassi
+* Dan Sansome
+* Dan Sarracayo
+* Dan Stephens
+* Dan Wahl
+* Dan Wolfe
+* Dana Perry
+* Dane D Morgan Jr
+* Dane Sherburn
+* Dani Nofal
+* Daniel Aegerter
+* Daniel Atlan
+* Daniel Bachler
+* Daniel Barbezat
+* Daniel Bier
+* Daniel Boggian
+* Daniel Casey Adkins
+* Daniel Fiske
+* Daniel Gambles
+* Daniel Gavrilov
+* Daniel J. Tancredi
+* Daniel Karlgren
+* Daniel Kuang-Chen Liu
+* Daniel Lauchenauer
+* Daniel Michalczyk
+* Daniel Plas
+* Daniel Portales
+* Daniel R Hughes
+* Daniel S
+* Daniel Saßmannshausen
+* Daniel Säumannshausen
+* Daniel Schmidt
+* Daniel Seiler
+* Daniel W. Palladini
+* Daniel Wrench
+* Danilo
+* Danilo Maurizio
+* Danka De Croo
+* Danny Cepok
+* Danúsio Batista Martins Barbosa
+* Danylo Yakymenko
+* Dara Ingoldsby
+* Darcy
+* Daria
+* Dario Varin
+* Darius Bacon
+* Dariusz Dywan
+* DarkSquad
+* Daryush Moussavi
+* Dataspaning
+* Dave Cuffe
+* Dave de Bronkart
+* Dave Farinelli
+* Dave King
+* Dave Muth
+* Dave Sharp
+* Dave Stromquist
+* Dave Teare
+* Dave Watts
+* Dave Wildman
+* David
+* David A Sheffield
+* David And Kelsey Little
+* David Antoš
+* David Aserkoff
+* David Axmark
+* David Bartlett
+* David Bastow
+* David Bauer
+* David Biello
+* David Biggs
+* David C Morris
+* David Cantrell
+* David Clifford
+* David Croyé
+* David Douiliez
+* David E Newton
+* David Edgar
+* David Epstein
+* David Eves
+* David Francis Nash
+* David Freedman
+* David Good
+* David Graham
+* David Greaves
+* David Guyoncourt
+* David Hansen
+* David Harrell
+* David Heiser
+* David Henry Metcalfe
+* David Holberton
+* David Hughes
+* David J Jackson
+* David J Weber
+* David Jackson
+* David James Robertson
+* David Kent
+* David Kieltyka
+* David King
+* David Kingsmill
+* David Kulawiak
+* David Lalloo
+* David Lava
+* David Ledlie
+* David Lynch
+* David Mateo
+* David Merrell
+* David Morgan
+* David Mouraux
+* David Myers
+* David Nash
+* David Patterson
+* David Pickut
+* David Pollak
+* David Poole
+* David Prentiss
+* David R Cooper
+* David R. Kieltyka
+* David Radue
+* David Reekie
+* David Richardson
+* David Rowan
+* David Rowat
+* David Schmidt
+* David Sloves
+* David Smout
+* David Stephens
+* David Turnbull
+* David Verchere
+* David Wang
+* David Weinstein
+* David Wogan
+* David Wolf
+* Davis Plotnieks
+* Davor Horvat
+* De Borman Nicolas
+* Debora J Whited
+* Deborah Doyle
+* Debra Cleaver
+* Deics Rahmiels
+* Deni Nurkić
+* Denis Collison
+* Denis Delworth
+* Denis Mulhearn
+* Denis Nadzemov
+* Denise M Guthrie
+* Dennis Askwith
+* Dennis Christensen
+* Dennis Duggan
+* Dennis O'Dea
+* Dennis P. Donnelly
+* Dennis Sheehan
+* Dennis W. Johnson
+* Derek Chen
+* Desi Nermin
+* Despretz
+* Dhammika Weerasundara
+* Diane K Enani
+* Diane Pitt
+* Diane Rizzuto Suhler
+* Dick Lucas
+* Diego Mariani
+* Diego Salinas
+* Diego Van Esso
+* Dieter Franki
+* Dieter Gallemann
+* Dieter Gick
+* Dieter Haas
+* Dige
+* Dilesh Korya
+* Dimitrios Loukidis
+* Dimitris Michailidis
+* Din Sultin
+* Dinca Sorin Aurelian
+* Dinesh Poddar
+* Diogo Freire
+* Dirk Fröhling
+* Dirk Paessler
+* DJ Taylor
+* Do Thi Kim Thoa
+* Dominic Pimenta
+* Dominik Lenné
+* Dominik Obermaier
+* Dominik Thomann
+* Don Martin
+* Don McBride
+* Don Moe
+* Donal O'Brolchain
+* Donald Haflidson
+* Donald K Milton
+* Donald Martin
+* Donald Milton, MD, DrPH
+* Donn Vidmar
+* Donna and Edward M. Medwick
+* Donna Lynne Whitley
+* Donna Quinlan
+* Donna Stanley McEvoy
+* Doreen Hill
+* Doreen Kelly
+* Dorian Oddi
+* Dorien James
+* Doug and Judith Garnett
+* Doug Summers-Stay
+* Douglas Deutschman
+* Douglas Johnson
+* Douglas Mcintyre
+* Douglas Mercer
+* Douglas Whittet
+* Dr A Marty
+* Dr Alivelu K
+* Dr Ashok Agarwal
+* Dr Christopher Leads
+* Dr Erwan Saouter
+* Dr Gregory M. Berkoff
+* Dr Harry Keys
+* Dr J Garwood
+* Dr James Griffith
+* Dr James Hedger.
+* Dr Jane McNeill
+* Dr Jill Gordon
+* Dr Joop Koster
+* Dr Peter Stanner
+* Dr Richard Lawson
+* Dr Robert K Porteous
+* Dr Tim Davenport
+* Dr. Adrian Müller-Helle
+* Dr. Gabriele Bast
+* Dr. Hans Gnahn
+* Dr. Hans Wittrup
+* Dr. Hans-Christian Riekhof
+* Dr. Hans-Henning Quast
+* Dr. Julio Castro
+* Dr. Margaret Craven
+* Dr. Marty Shoemaker
+* Dr. P. Roger Sweets
+* Dr. Peter Germann
+* Dr. Pöllath Martin
+* Dr. Rottschäfer
+* Dr. Sadman Sakib
+* Dr. Samuel Pantoja
+* Dr. Sanjeev S. Gokhale
+* Dr. Thorsten Rottschäfer
+* Dr. Wolfgang Hintze
+* Dr. Yani Doganoglu
+* Draper
+* DresInvest GmbH
+* Drew Hamlin
+* Drini Cami
+* Dror Bar-Natan
+* Dudley Adams
+* Duncan Lock
+* Duncan Oswald
+* Dustin Borg
+
+### E
+
+* E M Lindemulder
+* E.C. Drexhage
+* Eamonn Finn
+* Eanna Johnson
+* Earle F Spencer III
+* Ebony Hilton
+* Ed Bigornia
+* Ed Cooke
+* Ed Evans
+* Ed Fendley
+* Edgar T. Bellmer
+* Edgardo Franzin
+* Edin Zulich
+* Edison da Costa Miranda
+* Edmund Baker
+* Edmundo Grune
+* Edouard Mathieu
+* Edson De Oliveira Peixoto Filho
+* Eduard Fontcuberta
+* Eduard Heindl
+* Eduardo Alvarez
+* Eduardo Bigornia
+* Eduardo Gonzalez
+* Edward Bugliosi
+* Edward Downe
+* Edward Sessions Sr
+* Edward Sheehan
+* Edward Trzeciak
+* Edwin Hustead
+* Edwin Res
+* Edwin Schlossberg
+* Egill Thorir Einarsson
+* Eike Griess
+* Eiko Ikegami
+* Eiliv Sandberg
+* Eirini Koukovini Platia
+* Elden Crom
+* Eleanor Boyle
+* Eleonora Kurzreiter
+* Eli Lifland
+* Eliana Sur
+* Eliaz Le Riche
+* Elisa Spain
+* Elisabeth Bauer
+* Eliza Group
+* Elizabeth Dunn
+* Ella Baz
+* Elliot Baggiere
+* Elliot Swartz
+* Elliott Berger
+* Elliott Salvatori
+* Elvin Villalobos
+* Elyk Opul
+* Emanuele Capone
+* Emanuele Dri
+* Emi Gal
+* Emi Leese
+* Emiko Todaka
+* Emile Jacob Richman
+* Emile Richman
+* Emily Keller
+* Emily Kwong
+* EmilyKate McDonough
+* Emma Duncan
+* Emre Marcelli
+* Ena Insrikaew
+* Eneko Axpe
+* Engi Jaupi
+* Engin Coruslu
+* Enrique Bueno Rastrilla
+* Enrique Otero Muras
+* Enzo Forlesi
+* Éric
+* Eric de Jong
+* Éric Deland
+* Eric Feigl-Ding
+* Eric Kleinschmidt
+* Eric Limbeck
+* Eric Mor
+* Eric Selner
+* Eric Shintani
+* Eric von Otter
+* Eric Vyncke
+* Erica Solomon
+* Erich Langenbuch
+* Erik
+* Erik Almgren
+* Erik Byrenius
+* Erik Frankki
+* Erik Thomson
+* Erik Van Ingen
+* Erin Boehm
+* Erin Braid
+* Erin Joy Haigh
+* Ernest Feytmans
+* Ernest Pichlbauer
+* Ernest Scalamandre
+* Ernesto Zoffmann
+* Ernst Lunding
+* Ersagun Türkdoğru
+* Erwin Rossen
+* Erwin Zeydner
+* Esa Koskinen
+* Esben Kran
+* Esme Stringer
+* Essam Ali
+* Esteban Piedrahita
+* Esteban Salazar Bolaños
+* Estee Torok
+* Estelle Comment
+* Esther Timmer
+* Ethan Bialick
+* Ethan Yoo
+* Ethical Digital
+* Etienne du Portal
+* Eugene Genin
+* Eugene Jeong
+* Eugene Oliveira
+* Eugenio Zunino
+* Evan
+* Evan Blake
+* Evan Daniel
+* Evan Fields
+* Evan Richardson
+* Evan Seagraves
+* Evan Vakeely
+* Evelyne Borrel
+* Evergreen Investing Llc
+* Evert Kramer
+* Evgenij
+* Evgeny Zakharov
+* Evie
+* Eytan Lerba
+* EZ john
+
+#### From our readers
+
+> “Our World in Data is a tremendous resource to help the general public and policymakers be objective about the problems we're facing and also the success we've had so far.”
+
+> “The research produced by Our World in Data has the potential to make a real difference in the world. By shedding light on issues such as poverty, inequality, and health, they can help policymakers, researchers, and activists make informed decisions that improve people's lives.”
+
+### F
+
+* Fabian De Cuveland
+* Fábio Martins Guerra Nunes Dias
+* Faciem Faciem
+* Facts and Dimensions Ltd
+* Familien Thingnes
+* Family Klaucova
+* Fan Yujin
+* Farwell Peter
+* Fausto Zanon
+* Fay Casey
+* Faye Madriaga
+* Federico Mazzarella
+* Federico Olivo
+* Federico Rebeschini
+* Federico Stanham
+* Felix
+* Felix Bernhart
+* Félix Bernhart
+* Felix Fischer
+* Felix Hoornaert
+* Felix Jenne
+* Feng Tianyu
+* Fernandez Nicolas
+* Fernando G. Benavides
+* Fernando Martin-Gullans
+* Ferran Mercader Alvarez
+* Filip De Meyer
+* Filip Mazůch
+* Filip Murar
+* Filipa Aragao
+* Filippo Carella
+* Filippo Magnaguagno
+* Finance First Presbyterian Orlando
+* Fiona Anthes
+* Fiona Gregory
+* Fiona Nielsen
+* Firmo Dinis Jorge
+* Flack Mavelle
+* Flavio
+* Florent Crivello
+* Florentin
+* Flori Pihs
+* Florian Brandl
+* Florian Fox
+* Florian Hanisch
+* Florian von Teppner
+* Florian Wuerschmidt
+* Florian Würschmidt
+* Fop Wassenaar
+* Fouad Al Momen
+* Frances & Peter Trafton
+* Frances Stewart
+* Francesc Xavier Ballabriga Cases
+* Francesca Di Giuseppe
+* Francesca Di Palo
+* Francesco Brandi
+* Francesco Doenz
+* Francesco Marasco-Rinieri
+* Francis Nash
+* Francisco Cláudio Sampaio de Menezes
+* Franco Smargiassi
+* François Chiron
+* François De La Caffinière
+* Francois de Oliveira Ferreira
+* Francois Degeorge
+* François Derbaix
+* Francois Gonze
+* Francois Panhard
+* François-Xavier Brottier
+* Frank Boucher
+* Frank Drennan
+* Frank Eisenhauer
+* Frank Evers
+* Frank Gasparro
+* Frank Ivins
+* Frank Meyer
+* Frank Parth
+* Frank R. Parth
+* Frank Schnell
+* Frank Shann
+* Frank Snyder
+* Frank Steinberger
+* Frank Yang
+* Franklin D Snyder
+* Frans Erens
+* Franz
+* Franz Kohl
+* Franz Wittmann
+* Fraunhofer Rfb Group
+* Fred Benz
+* Fred Pedersen
+* Fred Rasio
+* Fred Robinson
+* Fred Thorlin
+* Fred Udo
+* Freddy B Langham
+* Freddy Langham
+* Frédéric Ranft
+* Frederick Grippon
+* Frederick Grothkopp
+* Frederick Zeise
+* Frederik Semmel
+* Fredrik Bruno
+* Fredrika Gullfot
+* Fridtjof Graef
+* Friedo Cornelius
+* Friedrich Hensler
+* Fritz Henjes
+* FuldaDulda
+* Fumihiko Suma
+* Furniture
+* Future Crunch
+
+### G
+
+* G K S Raja
+* Gabe Westmaas
+* Gabriel Baumeister
+* Gabriel Restori Soares
+* Gabriela Duarte
+* Gabriele Bast
+* Gaël Grosch
+* Gaël Hammer
+* Gaëlle Campos Beragne
+* Gaëtan Abeloos
+* Gaëtan Keribin
+* Gale Weaver
+* Galen Gisler
+* Gamal Trinidad Kabil
+* Gar Leyshon
+* Garrett Camp
+* Garrett Curley
+* Garrett Dodge
+* Garth Kroeker
+* Gary Clack
+* Gary Jarrett
+* Gary Magder
+* Gary Miguel
+* Gary Mooney
+* Gary Simmons
+* Gaurav Chandrashekar
+* Gautam Kalghatgi
+* Gautier Bonnemaison
+* Gavin Trigg
+* Gazsibb
+* Geert Barentsen
+* Gemma L Paterson
+* Gemma Paterson
+* Geoff Russell
+* Geoff Senson
+* Geoffrey Bradshaw
+* Geoffrey Martin-Noble
+* Georg Krause
+* George & Esther Vasick
+* George A Vasick Jr
+* George D
+* George Delis
+* George Dyck
+* George Jibladze
+* George L. Lotridge
+* George Lund
+* George Mcgowan
+* George McGowan
+* George Mirams
+* George Prentice
+* George Sayce
+* Georgi Petkov
+* Georgi Pirinski
+* Ger Aben
+* Ger Schuurbiers
+* Gerald A. Shea Ph. D.
+* Gerald Hussein
+* Gerard Birch
+* Gerard van Herk
+* Gerardo A. Castillo
+* Gerardo Cruz Majluf
+* Gerd Doeben-Henisch
+* Gerda Leach
+* Gergo Tisza
+* Gergő Tisza
+* Gerhard Bechtel
+* Gerhard Friedrich
+* Gerhard Grässl
+* Gerhard Kohlhepp
+* Gerhard Pirgmaier
+* Gerhard Wecker
+* Gerrit De Jong
+* Gerry
+* Gertjan Souer
+* Gerulf Rieger
+* Giacomo Oddo
+* Gian Luigi Albano
+* Gian Reto à Porta
+* Gilbert
+* Gilberto Anaya
+* Giles Conway-Gordon
+* Giles Morris
+* GioFede
+* Giorgio Siro Carniello
+* Giovanni Callegari
+* Giovanni Fanin
+* Girinsky
+* Giuseppe La Manna
+* Giuseppe Lopes
+* Giuseppe Renoldi
+* Global Ltd.
+* Glynne Evans
+* Go Greater Good
+* Godot
+* Gokercan Goker
+* Gonnsen Giving Fund
+* Gonzalo Corral
+* Gordon Mackenzie
+* Gorka Docio
+* Göte Bertilsson
+* Gour Dasvarma
+* Grace Lee
+* Graeme Roberts
+* Graham D Gerade
+* Graham Hamilyon
+* Greenver\_420
+* Greg Billock
+* Greg Cermak
+* Greg Dingle
+* Greg Linden
+* Greg Nugent
+* Greg Youtz
+* Gregoire Lucas
+* Gregor Bucher
+* Gregor Jason
+* Gregory R Pool
+* Grigorios Zontanos
+* Grove
+* Gruus van Woerkom
+* Guang Li
+* Gudrun Rut
+* Guilherme Carvalho
+* Guillaume Fauré
+* Guillaume Morin
+* Guillermo
+* Guillermo Donadini
+* Guillermo Elizondo M
+* Guillermo Zuniga
+* Gunasekar Vuppalapati
+* Gunnlaugur Þór Briem
+* Gunter Arndt
+* Gustavo Merino
+* Gustavo Vargas
+* Gwen Pauloski
+* Gwynn Pealer
+
+### H
+
+* H Jang
+* H Thomas Hicks
+* Hadley Williams
+* Håkan Bergman
+* Hamdan Alaharbi
+* Hamid Falatoonzadeh
+* Han Hsiang Cheng
+* Han Lie
+* Han Nguyen
+* Hana Nagel
+* Hanafi
+* Hank Green
+* Hannah Metzler
+* Hanne Nuss
+* Hannes Burkhalter
+* Hannu
+* Hans
+* Hans Christian Riekhof
+* Hans Jørgen Nielsen
+* Hans Olsthoorn
+* Hans Toensfeldt
+* Hans-Werner Noll
+* Haran Ramachandran
+* Harold Harrington
+* Harold Lindmark
+* Harro Van De Rhee
+* Harry Hand
+* Harry Lindmark
+* Harry Roberts
+* Harry Royden McLaughlin
+* Harry Uffindell
+* Harvey Croze
+* Harvey Motulsky
+* Håvard Tjøstheim
+* Hayssam Zakaria
+* Hayward Zwerling
+* Haze
+* Hazwan Najib
+* Heather Heckman
+* Heather Lovejoy
+* Hedwig Mesana
+* Heeryon Cho
+* Heike
+* Heiko Cestonaro
+* Heinz
+* Heinz Zimmermann
+* Helen Hockney
+* Helena Felts
+* Helena Gomulski
+* Hélène Risler
+* Helge Schroeder
+* Helge Tobias Kosuch
+* Helle Hewau
+* Hellmut Frieder
+* Helmut Garstenauer
+* Helmut Schüttemeier
+* Hendra Wahyuadi
+* Henk Droog
+* Henk Schreij
+* Henri Schoenmakers
+* Henry Cooksley
+* Henry Greenberg
+* Henry Hisao
+* Henry Tirri
+* Henry Yee
+* Herb Girard
+* Herbert Wolf
+* Heritson Gomes Freire
+* Herman Haas
+* Hermann Leprich
+* Hicham Bouaddi
+* Hidenori Sonoda
+* Hilary Igleheart
+* Hiromoto Yaguchi
+* Hiroo Yamagata
+* Hiroshi Mori
+* Hirotada Hirose
+* Hisaharu Shima
+* Hisakazu Matsuda
+* Hisham Al-Qassab
+* Hjalmar Gislason
+* HMSP
+* Holden Bonwit
+* Holger Geule-Volkmuth
+* Hollhut Peter
+* Holly Ekas
+* Homer Williams
+* Hoosier Who Believes in Science
+* Horacio Ofman
+* Horatiu Rus
+* Horne
+* Howard Davis
+* Howard Goldman
+* Howard Turner
+* Howard Wilding
+* Hristo Vassilev
+* Htl6626
+* Huber Helmut
+* Hubert Bannel
+* Hugh Chipman
+* Hugh Marshall
+* Hugh Mckay
+* Hugo Aksela
+* Hugo Harper
+* Huimin Bhikshu
+* Huw
+* Huw Jones
+* Hynek Janáč
+
+### I
+
+* I Smith
+* I-Jy Chang
+* I-Lok Chang
+* Iaci Rios
+* Iain Crouch
+* Ian Barley
+* Ian Caldwell
+* Ian Clark
+* Ian Creasey
+* Ian Evatt
+* Ian H Ward
+* Ian Jones
+* Ian Marcil
+* Ian Plewis
+* Ian Watts
+* Ianwdj
+* Ícaro Rafael da Silva Medeiros
+* Ifeyinwa Igwebuike
+* Igli Laci
+* Ignacio Caracciolo
+* Ignacio Fernández Bargues
+* Igor Dobricic
+* Igor Shilov
+* Ikarus Janzen
+* Ike Saunders
+* Iker de Luisa
+* Ilan Shavit
+* Ilias Keramidopoulos
+* Iliess Mourdoude
+* Ilkka Rantanen
+* Illia Matviiv
+* Illtyd Richard John Thomas
+* Imre Boncz
+* In honor of Sr. Mary Baird
+* Iñaki San Sebastian
+* Iñaki San Sebastián
+* Iñaki SS
+* Incremental Action Consulting Lda
+* Indi Samarajiva
+* Indira Guerrieri
+* Indrati Suryanto
+* Ingmar Knudsen
+* Ingrid Zabel
+* Inna Kareva
+* Innes Lothian
+* Intercultural Development Research Institute (IDRInstitute)
+* Irene Hashimoto
+* Irene Homminga
+* Iris Brunner
+* Iris Charlotte Brunner
+* Isaac Rose-Berman
+* Isaac Sorkin
+* Isabel Juniewicz
+* Isao Matsunaga
+* Ivan C K Chan
+* Ivan Deutsch
+* Ivan Erceg
+* Ivan Faiella
+* Ivan Fellner
+* Ivan Grund
+* Ivan Kirigin
+* Ivan Tkac
+* Ivan Viegas
+* Ivaylo Mitov
+* Ivica Knezović
+
+#### From our readers
+
+> “Simply the best, most accessible and reliable source for some of the most important data about our world.”
+
+> “Our World in Data constantly challenges my thinking in the best possible ways. The world is smarter for this site.”
+
+### J
+
+* J Peter Donnelly
+* J. A. Grimbergen
+* J. Lagemann
+* J. Taketani
+* J.-J. Francisco Polledo
+* Jabbar
+* Jack Hauck
+* Jack Hickish
+* Jack hogg
+* Jack Ryan
+* Jack4743pcb
+* Jackson Wang
+* Jacob Chapman
+* Jacob Gjesdahl
+* Jacob Van Laan
+* Jacob Westin-Elger
+* Jacopo Farina
+* Jacques-André Mayeur
+* Jade Raleigh
+* Jag Gandhi
+* Jaime Andrade
+* Jaime Monedero
+* Jaime Sevilla
+* Jairo M Nicolau
+* Jake Fennelly
+* Jakob Fagerland
+* Jakob Graabak
+* Jakob Rhyner
+* Jakob Schmidhäuser
+* James Anderson, MD
+* James Bailey
+* James Berriman
+* James Beshara
+* James C Harvey
+* James Crowe
+* James Deye
+* James Edmond Van Trump
+* James Hand
+* James Hawkins
+* James Ivan Young
+* James K. Mitchell
+* James Keddie
+* James Leaver
+* James Lertola
+* James Loewen
+* James Manwaring
+* James McGregor
+* James Nicholson
+* James Patrick Kelly
+* James Rosbe
+* James Sarmiento
+* James Shaughnessy
+* James Sitarz
+* James T Gross
+* James Vickery
+* Jamie
+* Jamie Manley
+* Jamie Metzl
+* Jan Åke Persson
+* Jan de Leeuw
+* Jan Hrubos
+* Jan Liebig
+* Jan Mayer
+* Jan Spencley
+* Ján Tungli
+* Jan Willem (Bill) Blankert
+* Jan-Inge Eikeset
+* Jane Amit
+* Jane Hyland
+* Jane Pennington
+* Jane Royle
+* Janet Webster
+* Jani Pajukangas
+* Janis
+* Jannike
+* Janos Schiller
+* Jareau Wade
+* Jason
+* Jason Almeida
+* Jason Buranen
+* Jason Crawford
+* Jason Duncan-Wilson
+* Jason K
+* Jason Long
+* Jason Mitchell
+* Jason Rynbeck
+* Jason Samfield
+* Jason Walters
+* Jason Wells
+* Javid Lakha
+* Javier Alfonso Gil
+* Javier Alfonso-Gil
+* Javier Guarch
+* Javier Matas Martinez
+* Javier Matas Martínez
+* Javier Vidal-Quadras
+* Jay B
+* Jay Schamberg
+* JB Monnier
+* Jcm Olsthoorn
+* JD Mcgraw
+* Jean Myers
+* Jean Samuel
+* Jean Vanderpas
+* Jean Vis
+* Jean-François Bouchoms
+* Jean-Francois Lengelle
+* Jean-Marc Gollier
+* Jean-Marie Grether
+* Jean-Paul Albert
+* Jeanette Jones
+* Jeff Atwood
+* Jeff Bennett
+* Jeff Butterworth
+* Jeff Gore
+* Jeff Henrichs
+* Jeff Marshall
+* Jeff Miller
+* Jeff Quinn
+* Jeff R. Simpson
+* Jeff Reppun
+* Jeff Thompson
+* Jeff Tidball
+* Jeff Wykoff
+* Jeffrey B Brown
+* Jeffrey Broadbent
+* Jeffrey Brown
+* Jeffrey D Justice
+* Jeffrey G Boldt
+* Jeffrey Hamilton
+* Jeffrey Hicks
+* Jeffrey Krajewski
+* Jeffrey Maxim
+* Jen Cleary
+* Jenna Peters
+* Jenneke Krüger
+* Jennifer Derrick
+* Jennifer Durham
+* Jennifer Gedney
+* Jennifer Schmidt
+* Jennifer Whisner
+* Jenny
+* Jenny and Matú
+* Jens Funderskov
+* Jens Junghans
+* Jens Liengaard Hjorth
+* Jens Newig
+* Jens Nielsen
+* Jens Rupprecht
+* Jens Schüttler
+* Jens Ulrich
+* Jens Warnecke
+* Jere Eklund
+* Jeremiah Freyholtz
+* Jeremy Campbell
+* Jeremy Dawkins
+* Jeremy Kirsch
+* Jeremy Watson
+* Jeremy Wohl
+* Jeroen Backx
+* Jeroen Dewulf
+* Jeroen Maan
+* Jeroen Paar
+* Jeroen Reimink
+* Jeroen Vader
+* Jeroen Van Dalen
+* Jerome Lievre-Cormier
+* Jerome Louis R Malzac
+* Jeroni
+* Jerry Frey
+* Jerry Handford
+* Jerry Jaggers
+* Jesse L Reynolds
+* Jesse Lewis
+* Jessica Cantlon
+* Jesslyn Ng
+* Jhon Camacho
+* Jiageng Liu
+* Jiahui Zhou
+* Jian
+* Jian Bang Ow
+* Jianhong Cheng
+* Jill Gordon
+* Jill Tipping
+* Jill Watkins
+* Jim
+* Jim & Marie
+* Jim Brough
+* Jim Oliver
+* Jimmy McDonough
+* Jimmy Shimizu
+* Jindui Hong
+* Jirka Zelenka
+* Jitendra Jain
+* JM Ten Brink
+* Jo Giessen Netherlands
+* Jo Trompetas
+* Joakim Westin
+* Joan Farb
+* Joan Gaw
+* Joanna De Lange
+* Joanna I Damian P-sa
+* Joanne Houser
+* Joao Barbosa
+* João Barbosa
+* Joao Cordovil Wemans
+* João Frederico Paredes
+* João Pedro Hoerde
+* Joao Wemans
+* João Wemans
+* Joao Zanon
+* Joaquin Mestre
+* Joaquin Perez
+* Jochem de Winter
+* Jock Rutherford
+* Joe Brennan
+* Joe Connors
+* Joe Cunningham
+* Joe Doering
+* Joe F
+* Joe Hardie
+* Joe Hasell
+* Joe Heffernan
+* Joe Human
+* Joe Norman
+* Joe Powell
+* Joe Woodill
+* Joel Cunningham
+* Joel Selanikio
+* Joep Storm
+* Johan
+* Johan De Ruiter
+* Johan Firmenich
+* Johan Nilsson
+* Johan Täng
+* Johann Ebner
+* Johannes Garbers
+* Johannes Gehrs
+* Johannes Lagemann
+* Johannes Lill
+* Johannes Richardt
+* John "Skip" Laitner
+* John A. Simmons
+* John Allemang
+* John Beall
+* John Beatty
+* John Beaven
+* John Bilas
+* John Bolitho
+* John Brand
+* John Brenninkmeijer
+* John Bromley
+* John Burns
+* John C Kidenda
+* John Christie
+* John Courtney
+* John Crary
+* John Davenport
+* John David Stott
+* John Davies
+* John Dawson
+* John Fischer
+* John Fryatt
+* John Gee
+* John Giles
+* John Goodridge
+* John Graf
+* John Hagel
+* John Holmes
+* John Howell
+* John Hughes
+* John Kelly
+* John Kemp
+* John L Kirila
+* John Laitner
+* John Lee
+* John London
+* John Lucas
+* John M Rathbun
+* John Mancino
+* John Marx
+* John McCord
+* John McManus
+* John Miller
+* John O Thomas
+* John Owens
+* John P. Hays
+* John R Talbott
+* John Roote
+* John S Morawetz
+* John Seymour
+* John Sheehan
+* John Smillie
+* John Stott
+* John Stout
+* John Vance
+* John Whitehead
+* Johs Ensby
+* Joji Claws
+* Jolande
+* Jon
+* Jon Anda
+* Jon Crowell
+* Jon Lebkowsky
+* Jon Palmer
+* Jon Udell
+* Jon Wolverton
+* Jonas Haase
+* Jonas Klopp
+* Jonas Lindqvist
+* Jonas Richner
+* Jonas Witt
+* Jonathan Berman
+* Jonathan Bertman MD
+* Jonathan Doenz
+* Jonathan Er Kim Chong
+* Jonathan Irons
+* Jonathan Koomey
+* Jonathan McHugh
+* Jonathan N. Rosswog
+* Jonathan Perez
+* Jonathan Quick
+* Jonathan S. Strauss MD
+* Jonathan Schwartz
+* Jonathan Shemesh
+* Jonathan Sinclair
+* Jonathan Stanley
+* Jonathan Uesato
+* Jonathan W FoxRubin
+* Jonathan W Smith
+* Jonathan Waxman
+* Jonathon Hayward
+* Jonaz V
+* Jonson
+* Joost Schutte
+* Joram van den Boezem
+* Jordan Bonilla
+* Jordan Collins
+* Jordan Mansfield
+* Jordan Sage
+* Jörg Lingens
+* Jörg Möller
+* Jorge Alagon
+* Jorge Corrales
+* Jorge Everardo Vivanco Topete
+* Jorge Luis Prosperi R.
+* Jorge Octavio Mariscal
+* Jorge Pinto
+* Jorge Salazar
+* Jorge Zimmerman
+* Jorgen
+* Jori Sackin
+* Jort Statema
+* Jos Bessems
+* Jose Eduardo Lopes Da Silva
+* José Javier Bernabéu
+* Jose Luis Palomo Alvarez
+* Jose Luis Ricon
+* Jose Montojo Woodeson
+* Jose Ortiz
+* Jose Varela
+* Jose Villadangos
+* Jose-Alberto Salazar-Jimenez
+* Josef Hausberger
+* Josep Maria Pelach Rebull
+* Joseph Castillo
+* Joseph Elias
+* Joseph Farley
+* Joseph Heffernan
+* Joseph Idicula
+* Joseph L Hughart
+* Joseph Mendes
+* Joseph Percy
+* Joseph Rocca
+* Joseph Russell
+* Joseph Walp
+* Joseph Zittoun
+* Josh Hone
+* Josh Richards
+* Josh Samuel
+* Joshua Cohen
+* Josien de Koning
+* Josue Santiago Nunes
+* Jovin Cronin-Wilesmith
+* Joze Damijan
+* JP
+* Juan A. Navarro Perez
+* Juan Antonio Cobos Obrero
+* Juan C Gutierrez
+* Juan Carlos Lopez Perez
+* Juan Cifrian
+* Juan Francisco Gutiérrez Jugo
+* Juan G. Rodriguez
+* Juan Ignacio Jorquera Nieto
+* Juan Luis Steegmann
+* Juan Manuel Pereira
+* Juan Moreno Cruz
+* Juanma Badenas
+* Judith van de Wint
+* Juerg Attinger
+* Juergen App
+* Jules Christophe Jouhier
+* Julia Karmo
+* Julia Michaels
+* Julia Pap
+* Julia Ruiz Pozuelo
+* Julian Burke
+* Julian Sherollari
+* Julie Hudson
+* Julie Smith
+* Julie Vargo
+* Julie Vitale
+* Julien Gautier
+* Julien Thomas
+* Julien Tomezach
+* Julien Villeret
+* Juliette Hirsch & Jérémie Kalfon
+* Julio Alfredo Bragagnolo
+* Julio Esparza
+* Julio Ozores
+* Junjie Wei
+* Junyi Qian
+* Jürgen App
+* Jürgen Stockburger
+* Justin Crosby
+* Justin Fitzpatrick
+* Justin Locke
+* Justin Lorenzon
+* Justin Skowno
+* Justin Stuart Neely
+* Justiniano Casado
+* Justyna Sweny
+
+### K
+
+* K Radhakrishnan
+* K Travis Brown
+* Kaccana Bhikkhu
+* Kacey Ofsevit
+* Kade Phillips
+* Kai Peters
+* Kaion Lerra
+* Kaj Rydman
+* Kamil
+* Kang Du
+* Kannan Natesan
+* Kaoru Nakajima
+* Karen Ashworth
+* Karen Godfrey
+* Karen Levy
+* Karen McC-p
+* Karen Melchior
+* Karen Thompson
+* Karen Willis
+* Karim Arbaoui
+* Karim Osman
+* Karin Drong
+* Karl Hyk
+* Karl Purcell
+* Karl Reed
+* Karl Ulrich Stephan
+* Karla Sarquis
+* Karlsen Jon
+* Karsten Wedel Jacobsen
+* Karthik Aghoram
+* Kasper Rutten
+* Kate Johnson
+* Kate Miller
+* Katerina Biliouri
+* Katerina Dohnalova
+* Katherine
+* Katherine Absher
+* Katherine Moseley
+* Katherine Schultheis
+* Kathleen Kearney
+* Kathleen Moira Randell
+* Kathleen Stanford
+* Kathryn (Chelli) Zey
+* Kathryn Sikkink
+* Kathy Feeley
+* Katrin & Karl-Heinz Roser
+* Kees van der Laan
+* Keisuke Osaki
+* Keisuke Takemoto
+* Keith & Wanda
+* Keith A Johnson
+* Keith Hill
+* Keith Hopkins
+* Keith Mansfield
+* Keith Mortimer
+* Keith Ritz
+* Keith Simpson
+* Keith vonBorstel
+* Kelly
+* Kelly Erhart
+* Kelsey O'Connor
+* Kelvin Sundli
+* Kemper Watson
+* Ken Caldeira
+* Ken Han
+* Ken Suzuki
+* Ken Thompson
+* Ken Wickenden
+* Ken Zimmerman
+* Kenneth Habeeb
+* Kenneth Henry Lee
+* Kenneth Holland
+* Kenneth Hughes
+* Kenneth Janda
+* Kenneth Lynne
+* Kenneth Myers
+* Kenny Leung
+* Kent Fenwick
+* Kent Rasmussen
+* Kent Swanson
+* Kenta Mori
+* Kerrie Smith
+* Kesha Megharaj
+* Ketil Hylland
+* Kevin Doran
+* Kevin Edwards
+* Kevin Indrebo
+* Kevin J MacDonald
+* Kevin Lacker
+* Kevin Macdonald
+* Kevin McLaughlin
+* Kevin Owens
+* Kevin Rennie
+* Kevin Starr
+* Kevin Yang Yanagi
+* Kevin Zettler
+* Khamisah Mohamed
+* Khanh B Nguyen
+* Khanh Nguyen
+* Kian
+* Kian Tajbakhsh
+* Kilar Ferenc
+* Kilian Lieret
+* Kim
+* Kim Cook
+* Kim Rainer Mattson
+* Kim Reniska
+* Kim Syman
+* Kimberly A. Perrotis
+* Kirk Citron
+* Kirk Moffitt
+* Kirsten Bachour
+* Kit Byatt
+* Klaus Kaier
+* Klaus Schmidt
+* Klaus Wittmann
+* Klaus-Dieter Heise
+* Kläusler Beat
+* Klearchos
+* Knut Lillienau
+* Knut Niemann
+* Koen Verdoodt
+* Koester
+* Koh Onimaru
+* Koh Shinohara
+* Koichi Ono
+* Koning
+* Konrad Bethmann
+* Konrad Zahnbrecher
+* Konstantin Braunschweig
+* Konstantinos Karademirtzoglou
+* Kornelia Rassmann
+* Kornelius
+* Kot & Koshka
+* Krishna Chaitanya Velaga
+* Kristen Buford
+* Kristian Sundström
+* Kristin Kaschner
+* Kristin Yanker-Hansen
+* Kristine Grayson
+* Kristof Rubens
+* Kru Rao
+* Krzysztof
+* Krzysztof Er
+* Krzysztof Krawczyk
+* Krzysztof Zamorski
+* Kuba Cupisz
+* Kurt Thielen
+* Kuwait Nursing
+* Kyle Cureau
+* Kyle Lackinger
+* Kyle Scott
+* Kyung Wooong Koh
+
+### L
+
+* L&Co
+* Lachlan Macquarie Andrews
+* Lachlan Pfeiffer
+* Lachlan Philipson
+* Lada
+* Lakshmi Bollini
+* Lalit Patnaik
+* Lance Goodman
+* Lanny Shuman
+* Lant Pritchett
+* Lara
+* Laraine Abbey-Katzev
+* Larissa Schiavo
+* Larry Deer
+* Larry k Snider
+* Lars Bredahl
+* Lars Erik Mellqvist
+* Lars Klimaschewski
+* Lars Matthison-Hansen
+* Lars Plougmann
+* Lars Tungen
+* Lars-Erik Rönnlund
+* Latinometrics
+* Laurel H
+* Lauren Sinclair Morse
+* Laurence Kayson
+* Laurence Pitteway
+* Laurens Clignett
+* Laurette Tuckerman
+* Laurie Chappell
+* Laust Søndergaard
+* Lawrence Kay
+* Lazzaro Andrea
+* Lea Artis
+* Lee Coppack
+* Lee Marvin Ison
+* Lee Stanhope
+* Leemans Jan
+* Lehua Gray
+* Leif Jonsson
+* Leif Lindholm
+* Leland Pereira
+* Lemma Kifle
+* Leo Tohill
+* Leon D Bachelier
+* Leon George
+* Leon Roest
+* Leonard Baker
+* Leonard Gunga
+* Leonard Hodder
+* Leonardo Almeida Lessa
+* Leonardo Buizza
+* Leparmentier Basile
+* Lesar Junior
+* Lethumusa Kulube
+* Leung Ping Yi
+* Lew Hunt
+* Li
+* Li Yujie
+* Lieven Schol
+* Lilian Linhares
+* Lin Huang
+* Lin Shuo-Huei
+* Lincoln M Stanley
+* Linda Brugger
+* Linda P Yadao
+* Linda Pierce
+* Linus Blomqvist
+* Linz Wright
+* Lionel Vida
+* Lisa Charlotte Rost
+* Lisa Gansky
+* Lisa Wehden
+* Lise M Bjerre
+* Liv Boeree
+* Liz Specht
+* Lizet
+* Ljubomir Buturovic
+* Ljubomir Josifovski
+* Lloyd McGarrigal
+* Lluís Triquell
+* Lode Claassen
+* Long Tran
+* Lonneke Zeijlemaker
+* Lorena Falcinelli
+* Lorenzo Colombo
+* Lori Goss Lawson
+* Lou Fiscarelli
+* Louis Kuijs
+* Louis Lebbos
+* Louis Renaud
+* Louis Winter
+* Louise van den Heuvel
+* Lu Kanghao
+* Luc Gommans
+* Luc Maertens
+* Luc Sels
+* Luc Vivien
+* Luca Benazzi
+* Luca Ferrero
+* Luca Paolazzi
+* Lucas
+* Lucas Muehleisen
+* Lucian Tofan
+* Luciana Yoko
+* Ludo Rncr
+* Ludovico Manfredi
+* Ludvig Omholt
+* Luigi Lavermicocca
+* Luis Calero
+* Luis Felipe Hirane Sarkis
+* Luis Leschot
+* Luis Marques
+* Luis Schunk
+* Luis Vassallo
+* Luiz Carlos Jacob Perera
+* Luiz Soares
+* Luka Renko
+* Lukas M
+* Lukas Schubotz
+* Luke Drury
+* Luke Haslam
+* Luke R
+* Luke Ramsden
+* Luna Sol
+* Lydia Ebdon
+* Lynda
+* Lynda M Otvos
+* Lynn Eddy
+
+### M
+
+* M Alexander Jurkat
+* M Rivett
+* Maciej
+* Maciej Abdullah
+* Madhava R Marri
+* Madhu Paranjape
+* Madhusudhan Srinivasa
+* Madison Rich
+* Maia Funk
+* Maik Musall
+* Makis Spyratos
+* Makoto Tamai
+* Malachy Mcreynolds
+* Malachy McReynolds
+* Malcolm Jones
+* Malcolm Louis Lehman
+* Malcolm Seeley
+* Malte Becker
+* Mandy
+* Manfred Falsarella
+* Manfred Ragaller
+* Manfred Schmoch
+* Manfred Thurau
+* Manjurul Hoque Chowdury
+* Manny Alejo
+* Manoj Bandara
+* Manuel Barange
+* Manuel Barkhau
+* Manuel Koch
+* Manuel Maniscalco
+* Manuel Rios
+* Manuel Ruiz
+* Maomao
+* Marc Andreessen
+* Marc Cenedella
+* Marc Goldberg
+* Marc Knaup
+* Marcel Fischer
+* Marcel Gerber
+* Marcel Hopman
+* Marcellino Bommezijn
+* Marcello Vitale
+* Marcelo Araus
+* Marcelo Boado
+* Marcelo Leite Ribeiro Escobar
+* Marcia Carlson
+* Marcin Ledworowski
+* Marco
+* Marco Aurelio Arbage Lobo
+* Marco Baldoni
+* Marco C
+* Marco Kijlstra
+* Marco Piani
+* Marco Pimentel
+* Marco Van Den Haak
+* Marcos Malaga
+* Marcos Zuil
+* Marcus Brandes
+* Marcus Chacon
+* Marcus Klaas de Vries
+* Marcus Klaas De Vries
+* Marcus Tay Guan Hock
+* Marek Benes
+* Marek Muc
+* Marek Zareba
+* Margaret Fenelix
+* Margaret Hill
+* Margaret M Round
+* Margaret Sharp
+* Marge Falendysz
+* Maria Begona Aláez
+* Maria do Carmo Gargaglione
+* Maria Echeverria
+* Maria Kulik
+* Maria Madalena Saraiva Pires Da Fonseca
+* Marian Wigger
+* Mariana Sampaio Nunes
+* Mariella
+* Marin Chaveyriat
+* Marina
+* Marino Suzuki
+* Mario D'Angelis
+* Mario Delgado
+* Mario Delgado N
+* Mario H
+* Mario L. Calcagno
+* Mario Leberig
+* Marion & Jonathan Baumgarten
+* Marisa Hopper
+* Marita Cantwell
+* Marius Hobbhahn
+* Mark
+* Mark & Marina Reading
+* Mark Adams
+* Mark Barnes
+* Mark Beaudet
+* Mark Bruno Kolesar
+* Mark Buffington
+* Mark Chiu Chong
+* Mark Cohen
+* Mark Crowther
+* Mark E White
+* Mark Ellyne
+* Mark Fenton
+* Mark Hammonds
+* Mark Handley
+* Mark Henry
+* Mark Hudson
+* Mark Jopp
+* Mark Ledwich
+* Mark Maine
+* Mark Mikesell
+* Mark Monsky
+* Mark Muntean
+* Mark Peterson
+* Mark Richman
+* Mark S. Haney
+* Mark Savage
+* Mark Schubert
+* Mark Sibley
+* Mark Solborg
+* Mark Steckbeck
+* Mark Thomason
+* Mark Ulrich
+* Mark Vranes
+* Mark White
+* Marko Didak
+* Marko Jelic
+* Markus
+* Markus Friedrich
+* Markus Halonen
+* Markus Hornum-Stenz
+* Markus Porst
+* Markus Vieweg
+* Marlon Pather
+* Marshall Burke
+* Marshall Hawks
+* Marta
+* Marta Matos
+* Marta Preto
+* Martha Kinsman
+* Martha Luehrmann
+* Martijn Pardoel
+* Martijn van Halen
+* Martin
+* Martin Bakken Jr
+* Martin Bohle
+* Martin Bouma
+* Martin Bowcock
+* Martin Bratt
+* Martin Brummerstedt
+* Martin Buoncristiani
+* Martin Burth
+* Martin Daniel
+* Martin Drummond
+* Martin Endres
+* Martin Fidjeland
+* Martin Fisher
+* Martin Forisch
+* Martin Garstenauer
+* Martin Giles
+* Martin James Smith
+* Martin Janssen
+* Martin Kempkes
+* Martin Mc Lachlan
+* Martin Mikala
+* Martin Ospina
+* Martin Pärtel
+* Martin Plaut
+* Martin Račák
+* Martin Schlumpf
+* Martin Seligman
+* Martin Sirk
+* Martin Spiewak
+* Martin Špina
+* Martin Stanley
+* Martin Stephens
+* Martin Tryzna
+* Martina Kvist Reimer
+* Martino Introna
+* Marton Sasvari
+* Marty Bakken
+* Mary Blackburn
+* Mary Burbidge
+* Mary Caroline Roaf
+* Mary Fava
+* Mary Green
+* Mary Gregory
+* Mary Mathen Kunnirickal
+* Mary Pat Peck
+* Mary Rivett
+* Maryam Cooley
+* Marybeth Carlberg
+* Masahiko Kaneko
+* Masanobu Kudo
+* Mason Winters
+* Masshi Noguchi
+* Massimo D’Attoma
+* Masumi Martin Toyoshima
+* Matcube
+* Matěj Pavlíček
+* Mathias
+* Matías Vidal
+* Matija Dukiġ
+* Matilde Signorini
+* Mats E. Sæther
+* Matt Clancy
+* Matt Daniels
+* Matt Fowler
+* Matt Parker
+* Matt Smith
+* Matteo Cantarelli
+* Matteo Vannucci
+* Matteo Villettaz
+* Matthew Cone
+* Matthew Davies
+* Matthew Downey
+* Matthew Griffin Cagle
+* Matthew Jackson
+* Matthew Lemin
+* Matthew Lichti
+* Matthew Lovern
+* Matthew Mazzola
+* Matthew Nichols
+* Matthew Nielsen
+* Matthew S Clancy
+* Matthew van der Merwe
+* Matthew Wright
+* Matthew Yanchyshyn
+* Matthias Dörries
+* Matthias Höck
+* Matthias Holzenkamp
+* Matthias Lanzoni
+* Matzel Dr. Manfred
+* Maurice Van Liempd
+* Mauricio D. C.
+* Mauricio Vasconcelos Galvão Filho
+* Mauro Balboni
+* Mauro Sturaro
+* Max Eusterbrock
+* Max Hoechsmann
+* Max Isaac
+* Max Phillips
+* Max R. P. Grossmann
+* Max Räuker
+* Max Staudinger
+* Maxim Novikov
+* Maxime Mashkov
+* Maxime Mathon
+* Maximilian Beier
+* Maximilian Blome
+* Maximilian Nitsch
+* MD Drummond
+* Meerten Ubbens
+* Mehmet Koksal
+* Mel
+* Mel Pama
+* Melissa Howery
+* Meredith Mckinney
+* Meric Bissell
+* Merle A Hinrich
+* MetaFacts
+* Metamorphosis
+* Meurig Williams
+* Mic Milic Frederickx
+* Micah Kaats
+* Michael
+* Michael A Painter
+* Michael Bernard
+* Michael Block
+* Michael Broshi
+* Michael Chan
+* Michael Cooper Stevens
+* Michael Curneen
+* Michael Deveza
+* Michael Eddy
+* Michael Efstration
+* Michael Fitzpatrick
+* Michael Gorman
+* Michael Grabitz
+* Michael Granoff
+* Michael Grunwald
+* Michael H Lloyd
+* Michael Heap
+* Michael J Crawford
+* Michael Jenkins
+* Michael Joyner
+* Michael Koetting
+* Michael Kruse
+* Michael Kudlich
+* Michael Layhe
+* Michael Liben
+* Michael Mackel
+* Michael Muller
+* Michael Nielsen
+* Michael Novotny
+* Michael Oliver
+* Michael Pearce
+* Michael Reville
+* Michael Roberts
+* Michael Rotskoff
+* Michael Sabatier
+* Michael Saunders
+* Michael Schlecht
+* Michael Slade
+* Michael Smith
+* Michael Stevens
+* Michael Stokes
+* Michael Stolz
+* Michael Stölzle
+* Michael Sundström
+* Michael W. Wright
+* Michael Zirpel
+* Michal Hořejšek
+* Micheal O'Laoghaire
+* Michèl Schummer
+* Michel Stevens
+* Michele Simmons
+* Michele Sirna
+* Michelle Beecher
+* Michelle Ramirez
+* Michiel Van Asbeck
+* Miguel Serrano
+* Mihir Baxi
+* Mikael Falkvidd
+* Mikael Hernesniemi
+* Mikael Nordström
+* Mike Austin
+* Mike Burbridge
+* Mike Haso
+* Mike Hogan
+* Mike Howard
+* Mike Judge
+* Mike M
+* Mike Mitri
+* Mike Olson
+* Mike Steinzig
+* Mike Tarselli
+* Mike Vladimer
+* Mikel Alvarez
+* Mikihiro Matsuoka
+* Mikko Huusko
+* Mikko Ketola
+* Mikko Kettunen
+* Mikko Lehtovirta
+* Milan
+* Milan Juza
+* Milan Milosevic
+* Mills
+* Milos Ljubicic
+* Miloslav Durec
+* Minhaz Kazi
+* Miquel Porta
+* Mira Bernstein
+* Mirek Stanek
+* Mirella Cacace
+* Miridan Falci
+* Mitch Stark
+* Mithun Goutham
+* Mitzi Vernon
+* Mo Bamna
+* Moberg-Wolff
+* Mohamed Oun
+* Mohammad Afif Nassery
+* Mohammad Alseaidan
+* Mohammed Mir
+* Mohd Helmy Bin Ibrahim
+* Mohee El-Din Jarada
+* Mohee Jarada
+* Mollie Pettit
+* Molly Kovite
+* Monika
+* Monisha Das
+* Montez Dot
+* Moritz
+* Moritz Werner
+* Morten Dalboege
+* Morten Ulriis-Nordberg
+* Motunrayo Adesina
+* Mr C E Porter
+* Mr. & Mrs. Giattino
+* Ms Rosalie Birkin
+* Muhammad M Haque
+* Muhammad Tawakli
+* Mukaiyama Takehiko
+* Mupray Sondergard
+* Murali Sharma
+* Murat Mirata
+* Murat Suyur
+* Murilo Coutinho
+* Murray Sondergard
+* Mustafa Ergenc
+* Mykola Novik
+* Myles Hocking
+
+#### From our readers
+
+> “Your work with facts is essential in this chaotic world. It is also extremely well-presented and concise enough for people to be able to read even if they are in a hurry.”
+
+> “Thanks for everything you do. I use your work about once a week in my undergraduate lectures.”
+
+### N
+
+* N Johnson
+* N. Tanaka
+* Nadia
+* Nagamuttu Narendranathan
+* Nagesh
+* Nancy Jo Melucci
+* Nardeli
+* Nareerat Viseshakul
+* Narek
+* Naroo Krishnan
+* Natalie Cargill
+* Natalie Packham
+* Natassia Costa
+* Nate
+* Nathalie D.
+* Nathan
+* Nathan Abraham Abbou
+* Nathan Evan
+* Nathan Hinkle
+* Nathan Scandella
+* Nathan Shammah
+* Naudeix
+* Naveed Massjouni
+* Nayut Sitachitt
+* Neal Aaron Studzinski
+* Neel Nanda
+* Neel Patel
+* Nehal Medh
+* Neil D
+* Nelbert
+* Nelli Aguilera
+* Nelson Reveley
+* Nemanja Josic
+* Nerio Cereghetti
+* Nguyen Pham Thanh Thao
+* Nguyen Phuc Hoang Diem
+* Niall B Holden
+* Nicholas Kemp
+* Nicholas Oneill
+* Nicholas Singh
+* Nicholas Tay
+* Nick Abel
+* Nick Anousis
+* Nick Edgar
+* Nick Foster
+* Nick Hines
+* Nick Isaac
+* Nick Kalinich
+* Nick Kaw
+* Nick Kotter
+* Nick Longworth
+* Nick McKeown
+* Nick Pope
+* Nick Seeuws
+* Nick Spathis
+* Nick Tregenza
+* Nick van Wijk
+* Nick von Westenholz
+* Nicola
+* Nicolas Navez
+* Nicolas Segovia
+* Nicole Blecharz
+* Nicole D'avirro Chiravuri
+* Nicole F. Roberts
+* Nicole Kaplan
+* Niels Krieghoff
+* Niels Kristian Schmidt
+* Niels Paarup-Petersen
+* Nigel Scott
+* Nihil Ichtyl
+* Nik Stankovic
+* Niklas Avermann
+* Niko Geldner
+* Niranjan Bose
+* Nishan Sivathasan
+* Nitin Desai
+* Nitin Ullal
+* Noah Shanok
+* Nobuo Hirano
+* Nobuyuki Mogi
+* Noé Pion
+* Nolan Thiessen
+* Nonato Sulibit
+* Noppo Hage
+* Norbert Haacks
+* Norbert Mühlhauser
+* Norka
+* Norman Begg
+* Nrupal Akolkar
+* Nuno Martins
+
+### O
+
+* Obafemi Bamgbose
+* Obi Chiejina
+* Octavio Carrasco Batalla
+* Ofek Lev
+* OFTF Judy
+* Oguchi Nkwocha
+* Ole Jørgen Brønner
+* Oliver Berlin
+* Oliver Bond
+* Oliver Reißig
+* Olivier Buffon
+* Olivier Robin
+* Ollie Cook
+* Olof Hernell
+* Ondřej Holan
+* Ondrej Mosnáček
+* Ong Chai Hin
+* Orlin Tenchev
+* Ormaza
+* Oscar Duintjer Tebbens
+* Ozay Ozaydin
+
+### Ø
+
+* Øystein Sjølie
+
+### P
+
+* P Crookham
+* P Jiang
+* P. Synodinos
+* P.J. Hamersma
+* Pablo & Cristina
+* Pablo Aguirre
+* Padraig Murphy
+* Palitha Karunapema
+* Pan M.
+* Paola Toschi
+* Paolo
+* Paolo Piccinno
+* Paolo Sirianni
+* Paolo Tagliani
+* Paolo Tomatis
+* Paolo Zanghieri
+* Pasha
+* Pasquale De Muro
+* Patricia Zondler
+* Patricio Dowling
+* Patricio V Marquez
+* Patricio V. Marquez
+* Patrick
+* Patrick Dempsey
+* Patrick Levermore
+* Patrick R. Michaud
+* Patrick Rataud
+* Patrick Rayes
+* Patrick Teti
+* Patrick Völker
+* Patrick Zietkiewicz
+* Patrik Almström
+* Paul Austin
+* Paul Bauer
+* Paul Beatty
+* Paul Borgstein
+* Paul Chamberlain
+* Paul Clark
+* Paul Cook
+* Paul Curtiss
+* Paul de Guibert
+* Paul DeNoon
+* Paul Dijkhuizen
+* Paul Dunmore
+* Paul F Austin
+* Paul Forman
+* Paul Goldsmith-Pinkham
+* Paul Gottsegen
+* Paul Kieckhefen
+* Paul Lerg
+* Paul Mack
+* Paul Mele
+* Paul Meyer Reimer
+* Paul Milling
+* Paul Milne
+* Paul Nowatzki
+* Paul Pignon
+* Paul Pluess
+* Paul Richardson
+* Paul Rolke
+* Paul Schaffer
+* Paul Schulz
+* Paul Scott
+* Paul Sweeney
+* Paul van der Schoot
+* Paul Zolotarevskiy
+* Paul-Andre Knudsen
+* Paul-Henri Carton
+* Paul-Louis Lepine
+* Paula Williams
+* Paulo Nhaducue
+* Pawel Krawczyk
+* Pedro Cavalcanti Ferreira
+* Penelope Girinsky
+* Penelope Winkler
+* Peng Qi
+* Per Herrström
+* Per Slycke
+* Perry Bowker
+* Pete Ferguson
+* Pete Lindstrom
+* Pete Read
+* Peter
+* Peter Trafton
+* Peter Albert
+* Peter Arrenbrecht
+* Peter Balleau
+* Peter Blake
+* Peter Brown
+* Peter Clark
+* Peter Cobin
+* Peter Cross
+* Peter Dittus
+* Peter Epping
+* Peter F Carpenter
+* Peter Fritzsche
+* Peter Gander
+* Peter Garafola
+* Peter Garrett
+* Peter Gaskin
+* Peter Gfader
+* Peter Gray
+* Peter Green
+* Peter Iver Petersen
+* Peter J Webster
+* Peter Kelemen
+* Peter Kevin MacCarthy
+* Peter Kopner
+* Peter Le Lievre
+* Peter Link
+* Peter Lugerbauer
+* Peter Martin
+* Peter McCarthy
+* Peter McCauley
+* Peter Mccluskey
+* Peter McCluskey
+* Peter Milewski
+* Peter Montague
+* Peter Nicholson
+* Peter O'sullivan
+* Peter Rasor
+* Peter Stuckenberger
+* Peter Taraba
+* Peter Tyedmers
+* Peter Uetz
+* Peter Wenham
+* Petja Ylitalo
+* Petr Keller
+* Petra Haeusler
+* Petter Terenius
+* Pham Van Quyen
+* Phatho Nimo Pukwana
+* Phelim Bradley
+* Phil Dawes
+* Phil Esterman
+* Phil M
+* Phil Walker
+* Philip Bridge
+* Philip Eisenlohr
+* Philip Healey
+* Philip Hemme
+* Philip Withers
+* Philipp Forsbach
+* Philipp Kaiser
+* Philipp Raschke
+* Philippe Defraigne
+* Philippe Glatz
+* Philippe Lunardelli
+* Phillip Meyer
+* Phillip Scott Dixon
+* Phillip Thorne
+* Phillipp Rechberg
+* Pia Ulvegarde
+* Piamsak
+* Pierre Bergel
+* Pierre Bertet
+* Pierre Burret
+* Pierre Malfait
+* Pierre Marc Viso
+* Pierre Marty
+* Pierre Van Diest
+* Pierre-Louis Peeters
+* Pieter Knap
+* Pieter Laeremans
+* Pinar Lewis
+* Piotr
+* Piotr Nowak
+* Piyachart Phiromswad
+* Podge The Puffer
+* Polly Burey
+* Ponon Kumar
+* Poomjai Nacaskul
+* Prachi Jain
+* Pradip Chanda
+* Praful Jain
+* Prashant Wagh
+* Pratap Kumar Paruchuru
+* Pratap Paruchuru
+* Praveen Kumar P
+* Prem Gururajan
+* Preston Urka
+* Primo
+* Prof. Dr. A. Stefan Kirsten
+* Prof. Dr. Christof Specker
+* Prof. Dr. Gerhard Ackermann
+* Prof. Hansmann
+* Prof. Michael Kobel
+* Prof. R.E. Galinsky
+* Prosto Man
+
+#### From our readers
+
+> “Clear facts for everyone on the planet.”
+
+> “A wide-ranging curated set of data that is presented well and made available for all to use. Truly a service to and for the world we live in.”
+
+### Q
+
+* Quah Khian Bee
+* Quentin Chevalier
+* Quentin Parsons
+
+### R
+
+* R A J Matthews
+* R. Max Holmes
+* R. Rajagopal
+* R.C. den Ouden
+* Rachael Craig
+* Rachel Cash
+* Radhakrishnan
+* Radoslavov Eduard
+* Radoslaw Jurga
+* Radu Antoniu
+* Radu Murzea
+* Raf Jakubanis
+* Rafael Ávila de Espíndola
+* Rafael Mondragón
+* Rafiq Roshan Ali
+* Raghu Byalya
+* Rahul Gupta-Iwasaki
+* Rahul Krishna Yandrapally
+* Rahul Poddar
+* Rahul Vohra
+* Raimund Alt
+* Rainer Schoedel
+* Rainer Stange
+* Rajat Bhargav
+* Rajeev Agarwal
+* Rajeev Gopal
+* Rajiv Chopra
+* Rakesh Kumar
+* Ralf Martin
+* Ralf Thomas
+* Ralph Kemp
+* Ralph William Bacon
+* Ramesh Bhardwaj
+* Ramesh Gopal
+* Ramez Naam
+* Ramkumar KB
+* Randy Banks
+* Randy Bluffstone
+* Raphael Della Schiava
+* Raquel Deodanes
+* Rasul Satymov
+* Ratikanta Mohanty
+* Rational Intuitive Limited
+* Rauno Varblas
+* Ravi Gupta
+* Ray Anderson
+* Ray Kreig
+* Ray-Yu Yang
+* Raymond Bryant Hames
+* Raymond E Galinsky
+* Raymond Jewell
+* Raymond Kennedy
+* Raymundo Giovanni Jiménez Bustos
+* Raymundo H Orta Flores
+* Realise The Vision Ltd
+* Reay Dick
+* Rebeca Ceron
+* Rebecca Seaward
+* Rebecca Tyson
+* Rebecca West
+* Reed M. Ennis
+* Reem Ateyeh
+* Reimer Freitag
+* Reina Nakamura
+* Reinard Schmitz
+* Reinier
+* Remi Peyron Musso
+* Renae Gilles
+* Renata
+* Renate Wagner
+* Renco
+* Rene Cote
+* Rene Steffensen
+* René Van Den Hoeven
+* Resilient Futures
+* Reynaldo Alfonso "Reggie" Hilado Guevara II
+* Rhett Hamilton Jones
+* Ricardo
+* Ricardo Corredor-Jerez
+* Ricardo Dahis
+* Ricardo Garcia
+* Ricardo Luiz Vilela de Castro
+* Ricardo Rendall
+* Riccardo Rebonato
+* Rich Heady
+* Rich Olson
+* Richard
+* Richard Bates
+* Richard Cerchio
+* Richard Chenevix-Trench
+* Richard Davis
+* Richard de Waard
+* Richard De Waard
+* Richard Dee
+* Richard Evans
+* Richard Gatti
+* Richard Greene
+* Richard Gudmundsen
+* Richard Hudson
+* Richard J Weinberg
+* Richard Jones
+* Richard Kapit
+* Richard Lipscombe
+* Richard Lothholz
+* Richard Murphy
+* Richard Patton
+* Richard Rommel
+* Richard Scobey
+* Richard Shaneyfelt
+* Richard Smeaton
+* Richard Stithem
+* Richard T. Campbell
+* Richard Tegnér
+* Richard Vincent Comerford
+* Richard Yannow
+* Richard Zmasek
+* Rick Anderson
+* Rick Bolander
+* Rick Gilmore
+* Rick Rogers
+* Rickard Sahlin
+* Rigmor Munkvold
+* Rikard Saqe
+* Rikhard Ihamuotila
+* Rizwan Habib
+* Rob Alexander
+* Rob Banfield
+* Rob de Vries
+* Rob De Vries
+* Rob Horbach
+* Rob Martin
+* Rob Montgomery
+* Rob R Moore
+* Rob Sanek
+* Rob Schreiner
+* Rob Voorwinden
+* Robert A. Myller
+* Robert Best
+* Robert Cerato
+* Robert Childs
+* Robert Clemens De Vet
+* Robert Cooper
+* Robert D Stevenson
+* Robert Fetherstonhaugh
+* Robert Gilhooly
+* Robert Henzell
+* Robert Honeyman
+* Robert Johnston
+* Robert Klauco
+* Robert Koblizek
+* Robert Matthews
+* Robert North
+* Robert Perry
+* Robert Scott
+* Robert Simpson
+* Robert Stearns
+* Robert Wiblin
+* Robert Wood
+* Robertas Strumila
+* Roberto Jorro
+* Roberto Rebbi
+* Robin
+* Robin Elizabeth Wolfson
+* Robin Grindley
+* Robin Valero
+* Robin Van Asbroeck
+* Rodney Sobin
+* Rodrigo Díez Villamuera
+* Roel Dom
+* Roelf Weges
+* Roelien den Ouden
+* Roger
+* Roger Gans
+* Roger Lock
+* Roger Parsons
+* Roger Vos
+* Roger Wehling
+* Roger Whitworth
+* Rohan Thurstans
+* Rohit K Dsouza
+* Rohit Krishnan
+* Rohit M.
+* Roland Psenner
+* Roland Schmalfuss
+* Roland Wyss
+* Rolf Henn
+* Rolie
+* Romain
+* Romain Barbe
+* Roman Berloso Olivares
+* Roman Davydiv
+* Romana Vujasinovic
+* Romeu G. Bicalho
+* Ron and Yael Kohavi
+* Ron Gester
+* Ron Kohavi
+* Ron Manganiello
+* Ron Reso
+* Ronald Eliosoff MD
+* Ronald F. Evans
+* Ronald H. Kohl
+* Ronald Lamb
+* Ronald W Thomas
+* Rory Preston
+* Rory Tierney
+* Rosa Maria Prol Ledesma
+* Rosalind Arden
+* Rosemary Third
+* Rossano Pozzo
+* Rossen Zhivkov
+* Rossitza Kaltenborn
+* Roy Mackay
+* Roy Wilsker
+* RS\_Consultores & Asoc.
+* Ru Hülsenbeck
+* Ruben Galindo
+* Rudy Klecka
+* Ruiping An
+* Ruixi Hao
+* Ruliang Pan
+* Rune Westergård
+* Russ Roberts
+* Russell Mallen
+* Russell Newman
+* Ruud Van Der Graaf
+* Ry Dog
+* Ryan Andrew Pickering
+* Ryan Gallagher
+* Ryan Herman
+* Ryan Orbuch
+* Ryan Pirozzi
+* Ryan Reynolds
+* Ryn Miake-Lye
+* Ryota Abe
+* Ryota Matsuzaki
+* Ryuichi Yasunaga
+
+### S
+
+* S Paciej
+* S Rudd
+* S. S. Rais
+* Sabarish Sasidharan
+* Sabine
+* Sabrina Pourmand
+* Sahara83
+* Salah
+* Salar al Khafaji
+* Sam
+* Sam Botfield
+* Sam Collins
+* Sam Dooman
+* Sam Freedman
+* Sam Klein
+* Sam McKenzie
+* Sam Milburn
+* Sam Perry
+* Sam Smith
+* Sam Smitj
+* Sami Yacoubi
+* Samira Ahmadi
+* Samuel Berthe
+* Samuel Durk
+* Samuel Gross
+* Samuel Iff
+* Samuel Kutter
+* Samuel Longair
+* Samuel Rivas
+* Samuel-Louis Gardiner
+* Sanaz Harland
+* Sandra Vo-Anh
+* Sandy Smith
+* Sangwook Park
+* Sankha Shubhra Chakrabarti
+* Santhia
+* Santiago Correa
+* Santiago Hernandez
+* Santiago Martin Acera
+* Santiago Rubio
+* Sara Teitelman
+* Sarah A Balcom
+* Sarah Burlinson
+* Sarah Dusart
+* Sarah H. Cheeseman M.D.
+* Sarah Russell
+* Sarah Stockdale
+* Sarah Weiler
+* Sascha
+* Sascha Rueh
+* Schlumpf Martin
+* Schoenmakers Import Export Bv
+* Scott Berkun
+* Scott Bird
+* Scott Connolly
+* Scott Donnelly
+* Scott Meeks
+* Scott Ries
+* Seafood Souq
+* Seamus Smyth
+* Sean Beavis
+* Sean Hollen
+* Sean Ryan
+* Sean Sullivan
+* Sebastian Berger
+* Sebastian Kuessner
+* Sebastian Otero
+* Sebastian Schmidt
+* Sebastian Smoot
+* Sebastian Thorwarth
+* Sebastian Wussow
+* Sebastiao Darlan Mendonca Ferreira
+* Sébastien Lovergne
+* Seena T.
+* Selva Kumar Maran
+* Selvan Srinivasan
+* Semba Kagawa
+* Serep
+* Sergio Aldo Viero
+* Sergio Ruiz Esparza Gutiérrez
+* Seva
+* Seva Zhidkov
+* Shafi Syed
+* Shahal Yaseen
+* Shailesh Kandage
+* Shane Ryland
+* Shane Smith
+* Shannon Bertolino
+* Shanu Mathew
+* Shawn Cao
+* Shawwal Shahid
+* Sheffield UK
+* Sheila Huettl
+* Shelley Duron
+* Shelley Sanderson
+* Sheri Reder
+* Sherin Kurian
+* Sherry Guo
+* Shihui Liu
+* Shimin Zhang
+* Shingo Shikano
+* Shobhan Kulshreshtha
+* Shruti Patel
+* Shuji Matsuno
+* Si
+* Siddhartha Haria
+* Signey John
+* Sigurd Sverdrup-Thygeson
+* Silvia Florentina
+* Sime Buljac
+* Simen Løkken
+* Simon Burd
+* Simon Davies
+* Simon Drees
+* Simon Fenley
+* Simon Hart
+* Simon Hørup Eskildsen
+* Simon J E Drake
+* Simon Jennings
+* Simon Johns
+* Simon Kirkland
+* Simon Kysela
+* Simon L. B. Nielsen
+* Simon Lee Robinson
+* Simon Mayer
+* Simon McAlister
+* Simon Mortimore
+* Simon Schmidt
+* Simon Stocker
+* Simon Vanden Bussche
+* Simon Walk
+* Simon White
+* Simon Wilkinson
+* Simone Favot
+* Singchou Wu
+* Siobhan
+* Sitesh Shrivastava
+* Sivakolundu Gururajan
+* Siyao Chen
+* Smael Ain Lhout
+* Sofia Chajadine
+* Sonja N. Tang
+* Sonya Matthews
+* Sophia Collier
+* Sophie
+* Søren Gjedde Sommer
+* Spenser Skates
+* Spiriti Eleuterio
+* Sravan Bhamidipati
+* Sreekar Parimi
+* Srinivas Chadaram
+* Stale Oksnes
+* Stan Kerr
+* Stanislas Marion
+* Stef Cornelissen
+* Stefan K
+* Stefan Kuhn
+* Stefan Kusterer
+* Stefan Leape
+* Stefan Marxmeier
+* Stefan Morschheuser
+* Stefan Oster
+* Stefan Pauliuk
+* Stefan Rosenow
+* Stefan Sagmeister
+* Stefan Schemmer
+* Stefan Unfricht
+* Stefano
+* Stefano Bini
+* Stefano De Checchi
+* Stefano Parodi
+* Stefano Sampietro
+* Stefano Scomparin
+* Steffen Hellmich
+* Steffen Kamp
+* Steffen W. Frølund
+* Steffi Birk
+* Steffi Grote
+* Stellan Eriksson
+* Stephan Braune
+* Stephan Freund
+* Stephan Uhrenbacher
+* Stephane NJ
+* Stephanie Klak
+* Stephanie Schoolfield
+* Stephen Adams
+* Stephen Brown
+* Stephen Cox
+* Stephen Duke
+* Stephen Evans
+* Stephen Holsenbeck
+* Stephen Kellaway
+* Stephen Leeb
+* Stephen M Pierzchala
+* Stephen P Jenkins
+* Stephen Pelawi
+* Stephen Senn
+* Stephen Streater
+* Stephen Walsh
+* Stephen Wilkus
+* Stephen Wong
+* Stephen Yu
+* Steve
+* Steve Adams
+* Steve Brown
+* Steve Hahn
+* Steve Harris
+* Steve Hoffman
+* Steve Larsen
+* Steve Newman
+* Steven Ault
+* Steven Baker
+* Steven C Bankston
+* Steven Johnson
+* Steven Jonas
+* Steven K Duda
+* Steven Larsen
+* Steven Miller
+* Steven Pinker
+* Steven Poltun
+* Steven Pong
+* Steven Rayner
+* Steven Rouk
+* Steven Sinofsky
+* Steven Sverdlik
+* Steven YoungChan Kang
+* Stevin De Vries
+* Stewart R Chaimson
+* Stewart Rogers
+* Stian Røa
+* Stijn van den Berg
+* Stuart Hyder
+* Stuart Lending
+* Stuart Mcdonald
+* Stuart Phillips
+* Stuart Taylor
+* Suaki Shima
+* Sumit Mishra
+* Sunil Dolwani
+* Sura Baghirova
+* Suriya Khan
+* Susan Carey
+* Susan D Blum
+* Susan Foster
+* Susan Gillie
+* Susan Hewett
+* Susan Levenstein
+* Susan Read
+* Susan Shannon
+* Susana Caballero
+* Susanne
+* Süveges Attila
+* Suzanne Loui
+* Sven Busch
+* Sven Glitsch
+* Sven Osterland
+* Svena
+* Svend-Erik Runberg
+* Svitlana Kramarenko
+* Swagatam Chakraborty
+* Syed Nawaz Ali
+* Sylvain
+* Szöllősi-Nagy Bálint
+
+### T
+
+* Tad Smith
+* Tahsin
+* Takashi
+* Takuo Yonezawa
+* Tamar Haspel
+* Tamay Besiroglu
+* Tanguy Rademakers
+* Tanya Gautam
+* Tarjei Nordbo
+* Tawhidur Rahman
+* Ted & Joyce Cox
+* Teddy Craciunescu
+* Teddy Valente
+* Terence Nolan-Woods
+* Teresa Logan
+* TerranceD. Brown
+* Terry Conway
+* Terry Corcoran
+* Terry T. Jackson
+* Tessa Alexander
+* Tessa Alexanian
+* Tetoweb
+* Thao Ng
+* The Barton-Kratman Family
+* The Broughton Morgan Family
+* The Change Machine
+* The WeiKoos
+* Thea Heeren
+* Theo Boer
+* Theo Dunnewijk
+* Theodor Determann
+* Theophilus Samuels
+* Thibault Vayssade
+* Thierry Dognié
+* Thilo Hindert
+* Thnthrn
+* Thom Enneking
+* Thomas
+* Thomas B Newman
+* Thomas Bell
+* Thomas Brewer
+* Thomas Counsell
+* Thomas Dewi Meurig Williams
+* Thomas Dunn
+* Thomas Evensen
+* Thomas F. Mayer
+* Thomas Farrell
+* Thomas Ferguson
+* Thomas Fleurquin
+* Thomas Fürst
+* Thomas Gamauf
+* Thomas Gilg
+* Thomas L Brewer
+* Thomas Laussermair
+* Thomas Lynch
+* Thomas Macklin
+* Thomas Marquart
+* Thomas Newman
+* Thomas O'rourke
+* Thomas Osborne
+* Thomas P.
+* Thomas Poulsen
+* Thomas Richardson
+* Thomas Roppelt
+* Thomas Spazierer
+* Thomas Stegmeier
+* Thomas Tempe
+* Thomas Vissers
+* Thomas Weber-Wegst
+* Thor Garden
+* Thor Gjesdal
+* Thoralf Gutierrez
+* Thorben Louw
+* Thorsten Cramer
+* Thorsten Rottschäfer
+* Ticala Family
+* Till Schicke
+* Tilman Berger
+* Tilman Eichstädt
+* Tilman Eichstaedt
+* Tilt College Team
+* Tim
+* Tim and Lina Harris
+* Tim Benton
+* Tim Black
+* Tim Coats
+* Tim Drager
+* Tim Esser
+* Tim Freeman
+* Tim Fussner
+* Tim Grummell
+* Tim Hua
+* Tim James
+* Tim Leunig
+* Tim Montgomerie
+* Tim O’Connor
+* Tim P
+* Tim Park
+* Tim Poole
+* Tim Roberts
+* Tim Sergio Wolter
+* Tim Smeeding & Marcy Carlson
+* Tim Thurnham
+* Tim Uddh
+* Tim Wilder
+* Tim Wilding
+* Tim Zhuang
+* Timm Preetz
+* Timo Horstschaefer
+* Timo Steinlein
+* Timothée Cozon
+* Timothy K. Armstrong
+* Timothy Morse
+* Tina Pollmann
+* Tina Roh
+* Tirthankar Dubey
+* Tisza Gergő
+* Tiyyagura Mahesh
+* Tobi Ogunnaike
+* Tobias Beckendorff-Dulias
+* Tobias Cornille
+* Tobias Dänzer
+* Tobias Eidevåg
+* Tobias Haase
+* Tobias Mitterfellner
+* Tobyn Sowden
+* Tod Schaal
+* Todd Allyn Flach
+* Toddy Marx
+* Tom Albright
+* Tom and Barbara Brownscombe
+* Tom Bain
+* Tom Black
+* Tom Bogaert
+* Tom Davidson
+* Tom Flack
+* Tom Harpel
+* Tom Knoff
+* Tom Mayer
+* Tom Menrath
+* Tom Millross
+* Tom Nute
+* Tom Reichert
+* Tom Trumble
+* Tom Wik
+* Tomáš Čakloš
+* Tomas Nelander
+* Tomasz Kosmala
+* Tomasz Wojciechowski
+* Tomislav Dzaja
+* Tony Foster and Linda Nemec Foster
+* Tony Hufflett
+* Tony Lent
+* Tony Marsh
+* Tony McCurdy
+* Tony Morley
+* Tony Price
+* Tony Tortorice
+* Tor Stian Holte
+* Torben Grut
+* Torbjörn Edström
+* Torbjorn Martinsson
+* Torkel Alfthan
+* Torsten Linnemann
+* Toshihiko Shimauchi
+* Travis Collins
+* Trent C. French
+* Trevor Keller
+* Trevor McKendrick
+* Trig Simon
+* Troels Christian Petersen
+* Tully
+* Tung-jung Wu
+* Tushar Choudhary
+* Twan Houben
+* Tyler Johnston
+* Tyler Lange
+* Tyler Willis
+* Tymoteusz Kuczera
+* Tzu Fann Shao
+
+#### From our readers
+
+> “Your work is invaluable towards creating a better and more just world. Thank you!”
+
+> “It seems every time I visit your page I learn something fascinating. Thank you for the eye-opening and engaging content.”
+
+### U
+
+* Uday Singh
+* Ugo De Piante Vicin
+* Ulf E Andersson
+* Ulf Gustafsson
+* Ulf Kjellström
+* Ulf Stahrenberg
+* Ulrich Holdenried
+* Ulrich Thiem
+* Umit Gunes
+* Unai Ansede
+* Uta Rhode
+* Uwe Auer (Go Adventure Pty Ltd)
+
+### V
+
+* V&A Burrows
+* Vaclav Dekanovsky
+* Valentín Elías Pineda
+* Valentin Messmer
+* Valentina Di Stasio
+* Valeria Lima Passos
+* Valerio
+* Valerio Gennaro
+* Vamsi Ramakrishnan
+* Van Luu
+* Van Ngo
+* Vanessa Scharf
+* Vasileios Topouzoglou
+* Vassilis H
+* Vasudev Bhandarkar
+* Venkatesh Kini
+* Verity Outram
+* Vibhav B
+* Vicki Bodrey
+* Victor Ceron
+* Victor Chan
+* Victor Cleren
+* Victor Corral Sanchez
+* Victor J Lima
+* Víctor R. Ruiz
+* Victor Ruiz Lafita
+* Victoria Bhavsar
+* Victoria Diggle
+* Victoria Garlock
+* Victoria Luderman
+* Vigantas Vėbra
+* Vignal
+* Vignan Velivela
+* Vijay Rangarajan
+* Vikram
+* Viktor Bunin
+* Viktor Sanek
+* Viktorija Tomic
+* Vimal Kumar Chowdhry
+* Vinayak Agarwal
+* Vince Buffalo
+* Vincent Argiro
+* Vincent Duong
+* Vincent Dussault
+* Vincent Keunen
+* Vincent Pelliet
+* Vincent S. Cronin
+* Vincent Weißer
+* Vinckier Fabien
+* Vineeth Madhusudanan
+* Vinit P.
+* Vinu Daniel
+* Violeta Gago
+* Viral Vora
+* Vitalik Buterin
+* Vitaly Hlembotsky
+* Vitor Constancio
+* Vítor Lourenço
+* Vivek Bagga
+* Viviane Van Hoof
+* Vladas Lasas
+* Vladas Lašas
+* Vladimir Perković
+* Vladimir Rusinov
+* Vladimir Trebicky
+* Volker Meyer-Guckel
+* Volker Radke
+* Vrancken Willem
+
+### W
+
+* Wade Lahring
+* Walker Willingham
+* Walter Mückstein
+* Warren Foster
+* Wasiq Mohammad
+* Wayne Myers
+* Wayne Saslow
+* Weed
+* Wei Deng
+* Weli
+* Westergard
+* Wilhelm Nüsgen
+* Will
+* Will Aslett
+* Will Falk
+* Will Francis
+* Will Zeng
+* Willa Peters
+* William A Bean
+* William A Toscano
+* William Beausire
+* William Bonner
+* William Edwards
+* William Ehlhardt
+* William Falk
+* William Fears
+* William Garfinkel
+* William H. Calvin
+* William Harris
+* William Henderson
+* William Kiely
+* William Koehrsen
+* William M. Collins
+* William Macaskill
+* William Neville
+* William Palmer
+* William Pilacinski
+* William Shireman
+* William Toffey
+* William V Toner
+* William Zeng
+* Wim van der Ham
+* Wim van Ekeren
+* Winold
+* Winston Brown
+* Wolfgang Blau
+* Wolfgang Bokelmann
+* Wolfgang Dunkl
+* Wolfgang Koehler
+* Wolfgang Niedereder
+* Wolfgang Parz
+* Wolfpack
+* Wolfram
+* Woody Donnelly
+* Woosok Koh
+* Wout Van Hauwermeiren
+* Wouter Arts
+* Wouter Ten Brinke
+* Wullop Khin
+* Wyn Baxi
+* Wyszomir Janikowski
+
+### X
+
+* Xavier De Vos
+* Xavier Lambert
+* Xavier Ros Oton
+* Xavier Ros-Oton
+* Xiang Gao
+* Ximena Leyva Peralta
+* Xitij Aranke
+
+### Y
+
+* Yabin
+* Yair Esrubilsky
+* Yamamoto Atsushi
+* Yann Larré
+* Yasser Jirjees
+* Yasunari Saito
+* Yavor Stoynov
+* Yilei An
+* Ylan Richard
+* Yngve Monfelt
+* Yoko Kobayashi
+* Yoni Magid
+* York Pei
+* Yu-Heng Lei
+* Yuearaj
+* Yuh Saito
+* Yujin Fan
+* Yumi Fukushima
+* Yunha Nam
+* Yuri Namikawa
+* Yuriy Voloshkevych
+* Yuta Yanagi
+* Yutaka Harada
+* Yuval Tassa
+* Yves Cammaert
+* Yves Paradis
+
+### Z
+
+* Zachary Keener
+* Zachary Pfeiff
+* Zafar Shamsi
+* Zaid
+* Zdena
+* Zeno
+* Zhangyunxiang
+* Zhanxiang Liang
+* Zhaoyu Guo
+* Zhiheng
+* Zhivko Gochev
+* Zhiyuan
+* Zinahia Querales
+* Ziyu Liu
+* Zoe Norman
+* Zuzana
+* Zuzana Dulovičová
+
+### 土
+
+* 土井武志
+
+### 郭
+
+* 郭鹏辉
+
+### 野
+
+* 野口雅司
+
+### Endnotes
+
+1. We update this link to our latest report when it is finalized by October each year, with the report covering the previous calendar year. Previous reports are available from the Charity Commission’s website.
+
+#### Our World in Data is free and accessible for everyone.
+
+Help us do this work by making a donation.
+
+[Donate now](https://ourworldindata.org/donate)
+
+Our World in Data is a project of [Global Change Data Lab](https://global-change-data-lab.org/), a nonprofit based in the UK (Reg. Charity No. 1186433). Our charts, articles, and data are licensed under [CC BY](https://creativecommons.org/licenses/by/4.0/), unless stated otherwise. The source code for our tools and software is made publicly available for transparency and educational reference under a [custom license](https://github.com/owid/owid-grapher/blob/master/LICENSE.md). Re-use requires permission. Third-party materials, including some charts and data, are subject to third-party licenses. See our [FAQs](https://ourworldindata.org/faqs) for more details.
+
+[![Oxford Martin School logo](https://ourworldindata.org/oms-logo.svg "width=96 | height=103")](https://www.oxfordmartin.ox.ac.uk/global-development)[![University of Oxford logo](https://ourworldindata.org/oxford-logo.svg "width=96 | height=103")](https://www.ox.ac.uk/)[![Global Change Data Lab logo](https://ourworldindata.org/gcdl-logo.svg "width=80 | height=103")](https://global-change-data-lab.org/)
+
+[![Y Combinator logo](https://ourworldindata.org/yc-logo.svg "width=123 | height=30")](https://www.ycombinator.com)
+
+##### Explore
+
+* [Topics](https://ourworldindata.org/#all-topics)
+* [Data](https://ourworldindata.org/search)
+* [Data Insights](https://ourworldindata.org/latest?type=data-insight)
+
+##### Resources
+
+* [Latest](https://ourworldindata.org/latest)
+* [SDG Tracker](https://ourworldindata.org/sdgs)
+* [Teaching with OWID](https://ourworldindata.org/teaching)
+
+##### About
+
+* [About us](https://ourworldindata.org/about)
+* [Organization](https://ourworldindata.org/organization)
+* [Funding](https://ourworldindata.org/funding)
+* [Team](https://ourworldindata.org/team)
+* [Jobs](https://ourworldindata.org/jobs)
+* [FAQs](https://ourworldindata.org/faqs)
+
+##### 
+
+* [Research & Writing](https://ourworldindata.org/atom.xml)
+* [Data Insights](https://ourworldindata.org/atom-data-insights.xml)
+
+##### Follow us
+
+* [Privacy policy](https://ourworldindata.org/privacy-policy)
+* [Cookie notice](https://ourworldindata.org/cookie-notice)
+* [Legal disclaimer](https://ourworldindata.org/organization#legal-disclaimer)
+* [Grapher license](https://github.com/owid/owid-grapher/blob/master/LICENSE.md)
+* [Send feedback](https://ourworldindata.org/feedback)
+

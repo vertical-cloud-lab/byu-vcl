@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+CopilotKit,CopilotKit,U1,sells Copilot Cloud hosted version,,yes,US,,private,yes,1,,,2026-11-26T06:07:54Z
+kestra-io,Kestra Technologies,U1,sells Kestra Enterprise and Cloud,,yes,FR,2020,private,yes,3,,,2026-11-26T06:07:54Z
+reflex-dev,Reflex,U1,sells Reflex Cloud hosting and enterprise,,yes,US,2022,private,yes,3,,,2026-11-26T06:07:54Z
+expo,Expo (650 Industries),U1,sells Expo Application Services to Expo developers,,yes,US,,private,yes,1,,,2026-11-26T06:07:54Z
+minio,MinIO Inc.,U1,sells AIStor enterprise edition and subscriptions,,yes,US,2014,private,yes,3,,,2026-11-26T06:07:54Z
+pathwaycom,Pathway,U1,sells enterprise licence for Pathway framework,,yes,US,,private,yes,1,,,2026-11-26T06:16:10Z
+influxdata,InfluxData,U1,sells InfluxDB Cloud and Enterprise,,yes,US,2012,private,yes,6,,,2026-11-26T06:16:10Z
+rancher,Rancher,U1,sells Rancher Prime support,,yes,US,2014,acquired,yes,1,acquired by SUSE 2020,,2026-11-26T06:16:10Z
+nginx,NGINX,U1,sells NGINX Plus,,yes,US,2011,acquired,yes,3,acquired by F5 2019 for $670M,,2026-11-26T06:16:10Z
+elastic,Elastic N.V.,U1,sells Elastic Cloud and subscriptions,,yes,US,2012,listed,yes,1,"listed on NYSE; memory: Benchmark, NEA, Index, Data Collective - not verified",,2026-11-26T06:16:10Z
+elastic,Elastic N.V.,U1,sells Elastic Cloud and subscriptions,,yes,US,2012,listed,yes,1,"listed on NYSE; memory: Benchmark, NEA, Index, Data Collective - not verified",,2026-11-26T06:22:23Z
+zai-org,Z.ai (Zhipu AI),U1,open-weight GLM models; sells API access,,yes,CN,2019,listed,yes,4,"2026-09 ~US$5bn placement and convertibles per TechNode, no investors named",https://technode.com/2026/09/14/z-ai-completes-around-us5-billion-financing-for-next-generation-glm-models/,2026-11-26T06:22:23Z
+gradio-app,Gradio,U1,Hugging Face Spaces hosting marketed to Gradio users,,yes,US,2019,acquired,none_found,0,acquired by Hugging Face 2021; funding page not readable; memory: seed investors not verified,,2026-11-26T06:22:23Z
+discourse,Civilized Discourse Construction Kit (Discourse),U1,sells hosted Discourse,,yes,US,2013,private,yes,1,,,2026-11-26T06:22:23Z
+sinaptik-ai,Sinaptik (PandasAI),U1,sells PandasAI enterprise platform,,yes,DE,2023,private,yes,1,,,2026-11-26T06:22:23Z
+storytold,Storyteller (ArtCraft),U1,"sells ArtCraft Basic/Pro/Max plans, credits and enterprise",,yes,US,,private,none_found,0,site names no investors,https://getartcraft.com,2026-11-26T06:22:23Z
+storybookjs,Chromatic,U1,maintainers' company Chromatic sells hosted Storybook service,,yes,US,,private,none_found,0,"no page found in time; memory: possibly funded, unverified",,2026-11-26T06:22:23Z
+vuetifyjs,Vuetify LLC,U1,"sells Vuetify One subscriptions, support and premium add-ons",,yes,US,,private,none_found,0,team page states no funding,https://vuetifyjs.com/en/about/meet-the-team/,2026-11-26T06:22:23Z
+SheetJS,SheetJS LLC,U1,sells SheetJS Pro,,yes,US,,private,none_found,0,nothing found,,2026-11-26T06:22:23Z
+BeyondDimension,Changsha Beyond Dimension Technology,U1,company built around Watt Toolkit,,yes,CN,,private,none_found,0,nothing found,,2026-11-26T06:22:23Z
+flipped-aurora,flipped-aurora,U1,sells commercial licence and paid support for gin-vue-admin,,yes,CN,,unknown,none_found,0,nothing found,,2026-11-26T06:22:23Z
+ovity,Ovity (Octotree),U1,"sells Octotree Pro, paid version of the extension",,yes,US,,private,none_found,0,nothing found,,2026-11-26T06:22:23Z
+OpenDrone-hw,Incutec BV (OpenDrone),U1,Incutec BV shop sells OpenDrone boards and parts,,yes,BE,,private,none_found,0,nothing found,,2026-11-26T06:22:23Z
+scalableminds,scalable minds,U1,sells hosted WEBKNOSSOS and support,,yes,DE,,private,none_found,0,home page names no funding,https://scalableminds.com,2026-11-26T06:22:23Z
+Cheshire-Labs,Cheshire Labs,U1,"company owns Orca (CLA, SSPL) and sells lab automation solutions",,yes,US,,private,none_found,0,nothing found,,2026-11-26T06:22:23Z

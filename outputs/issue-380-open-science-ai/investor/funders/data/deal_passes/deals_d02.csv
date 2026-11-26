@@ -1,0 +1,36 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-autumn,Autumn,U4,accelerator,YC S25,2025-06,,,Y Combinator,https://www.ycombinator.com/companies/autumn,other,YC page lists batch
+u4-beam,Beam,U4,accelerator,YC W22,2022-01,,,Y Combinator,https://www.ycombinator.com/companies/beam,other,YC page lists batch
+u4-beam,Beam,U4,venture_unspecified,Backers on about page,,,,Tiger Global | Charge Ventures | Hustle Fund | Soma Capital | Alumni Ventures,https://www.beam.cloud/about,company,Investor logos only; no round or date
+u4-bitrise,Bitrise,U4,accelerator,YC W17,2017-01,,,Y Combinator,https://www.ycombinator.com/companies/bitrise,other,YC page lists batch
+u4-bitrise,Bitrise,U4,series_a,Series A,2017-07,3200000,OpenOcean,Y Combinator | Fiedler Capital,https://techcrunch.com/2017/07/31/bitrise-raises-3-2m-a-led-by-openocean-to-attack-the-complexity-of-building-apps/,news,Also unnamed angels
+u4-bitrise,Bitrise,U4,series_b,Series B,2019-06,20000000,Partech,Zobito | OpenOcean | Y Combinator | Fiedler Capital,https://blog.bitrise.io/series-b-funding,company,
+u4-bitrise,Bitrise,U4,series_c,Series C,2021-11,60000000,Insight Partners,Partech | OpenOcean | Zobito | Fiedler Capital | Y Combinator,https://techcrunch.com/2021/11/23/bitrise-mobile-requirements/,news,
+u4-botcity,BotCity,U4,accelerator,YC W22,2022-01,,,Y Combinator,https://www.ycombinator.com/companies/botcity,other,YC page lists batch
+u4-botcity,BotCity,U4,venture_unspecified,Investors named on about page,,,,Upload Ventures | Astella | Alexia Ventures | Norte Ventures | Rod Johnson (person),https://botcity.dev/about-us,company,Upload Ventures described as SoftBank-backed; no round details
+u4-bricksai,BricksAI,U4,accelerator,YC S22,2022-06,,,Y Combinator,https://www.ycombinator.com/companies/bricksai,other,YC page lists batch
+u4-browseros,BrowserOS,U4,accelerator,YC S24,2024-06,,,Y Combinator,https://www.ycombinator.com/companies/browseros,other,YC page lists batch
+u4-buildbuddy,BuildBuddy,U4,accelerator,YC W20,2020-03,,,Y Combinator,https://www.ycombinator.com/companies/buildbuddy,other,YC page lists batch
+u4-buildbuddy,BuildBuddy,U4,seed,Seed,2020-12,3150000,,,https://techcrunch.com/2020/12/01/yc-backed-buildbuddy-raises-3-15m-to-help-developers-build-software-more-quickly/,news,Investors not seen in snippet; article not fetched
+u4-builder-io,Builder.io,U4,venture_unspecified,Investors on about page,,,,Greylock Partners,https://www.builder.io/about,company,About page names Greylock only; Runa lists 17.3M USD
+u4-buttercoin,Buttercoin,U4,accelerator,YC S13,2013-06,,,Y Combinator,https://www.ycombinator.com/companies/buttercoin,other,YC page lists batch
+u4-buttercoin,Buttercoin,U4,seed,Seed,2013-08,1000000,,Kevin Rose (person) | Chris Hutchins (person) | Floodgate | Initialized Capital | Rothenberg Ventures,https://techcrunch.com/2013/08/20/buttercoin/,news,About 1M USD
+u4-buttercoin,Buttercoin,U4,seed,Centralway investment,2013-09,250000,Centralway,,https://techcrunch.com/2013/09/18/centralway-fund-buttercoin-seed/,news,
+u4-byteask,ByteAsk,U4,accelerator,YC F26,2026-09,,,Y Combinator,https://www.ycombinator.com/companies/byteask,other,YC page lists batch
+u4-bytebot,Bytebot,U4,accelerator,YC S21,2021-06,,,Y Combinator,https://www.ycombinator.com/companies/bytebot,other,YC page lists batch
+u4-cactus-compute,Cactus Compute,U4,accelerator,YC S25,2025-06,,,Y Combinator,https://www.ycombinator.com/companies/cactus-compute,other,YC page lists batch
+u4-cakework,Cakework,U4,accelerator,YC W23,2023-01,,,Y Combinator,https://www.ycombinator.com/companies/cakework,other,YC page lists batch
+u4-cashew-labs,Cashew Labs,U4,accelerator,YC X25,2025-04,,,Y Combinator,https://www.ycombinator.com/companies/cashew-labs,other,YC page lists batch
+u4-caveman,Caveman,U4,accelerator,YC F26,2026-09,,,Y Combinator,https://www.ycombinator.com/companies/caveman,other,YC page lists batch
+u4-cerulion,Cerulion,U4,accelerator,YC S24,2024-06,,,Y Combinator,https://www.ycombinator.com/companies/cerulion,other,YC page lists batch
+u4-chaos-genius,Chaos Genius,U4,accelerator,YC W20,2020-03,,,Y Combinator,https://www.ycombinator.com/companies/chaos-genius,other,YC page lists batch
+u4-chaos-genius,Chaos Genius,U4,seed,Seed,2023-02,3300000,,,https://techcrunch.com/2023/02/08/data-observability-platform-acceldata-raises-50m/,news,Investors not named in this article
+u4-char,Char,U4,accelerator,YC S25,2025-06,,,Y Combinator,https://www.ycombinator.com/companies/char,other,YC page lists batch
+u4-citus-data,Citus Data,U4,accelerator,YC S11,2011-06,,,Y Combinator,https://www.ycombinator.com/companies/citus-data,other,YC page lists batch
+u4-citus-data,Citus Data,U4,venture_unspecified,Prior investors,,13000000,,Khosla Ventures | SV Angel | Data Collective,https://techcrunch.com/2019/01/24/microsoft-acquires-citus-data/,news,"More than 13M USD total before Microsoft acquisition, 2019"
+u4-citus-data,Citus Data,U4,series_a,Series A,2015-10,9500000,,,http://www.marketwired.com/press-release/citus-data-secures-95-million-series-a-funding-scaling-out-postgresql-worlds-most-advanced-2065205.htm,other,Press release not fetched; investors not read
+u4-clidey,Clidey,U4,accelerator,YC X25,2025-04,,,Y Combinator,https://www.ycombinator.com/companies/clidey,other,YC page lists batch
+u4-cmux,cmux,U4,accelerator,YC S24,2024-06,,,Y Combinator,https://www.ycombinator.com/companies/cmux,other,YC page lists batch
+u4-codestory,CodeStory,U4,accelerator,YC S23,2023-06,,,Y Combinator,https://www.ycombinator.com/companies/codestory,other,YC page lists batch
+u4-codestream,CodeStream,U4,accelerator,YC W18,2018-01,,,Y Combinator,https://www.ycombinator.com/companies/codestream,other,YC page lists batch
+u4-codestream,CodeStream,U4,venture_unspecified,Total raised,2021-10,3000000,,,https://techcrunch.com/2021/10/21/newrelic-acquires-codestream-to-provide-chat-in-developer-environments-inks-microsoft-ide-partnership/,news,Around 3M total; investors not named; acquired by New Relic

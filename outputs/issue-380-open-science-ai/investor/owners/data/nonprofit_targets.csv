@@ -1,0 +1,88 @@
+owner,org_name,ein
+react,The Linux Foundation (via React Foundation),46-0503801
+rust-lang,Rust Foundation,85-4376974
+kubernetes,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+pytorch,The Linux Foundation (via PyTorch Foundation),46-0503801
+psf,Python Software Foundation,04-3594598
+opencv,OpenCV.org (Open Source Vision Foundation),45-5202940
+lysine-dev,Commonhaus Foundation,84-3279550
+grpc,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+bevyengine,Bevy Foundation,99-1019220
+jestjs,OpenJS Foundation,47-1491876
+servo,The Linux Foundation (via Linux Foundation Europe),46-0503801
+k3s-io,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+certbot,Electronic Frontier Foundation,04-3091431
+dapr,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+getsops,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+jaegertracing,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+NeuromatchAcademy,"Neuromatch, Inc.",85-1264716
+gazebosim,Open Source Robotics Foundation,45-5230545
+apache,The Apache Software Foundation,47-0825376
+expressjs,OpenJS Foundation,47-1491876
+LadybirdBrowser,Ladybird Browser Initiative,99-2154861
+prometheus,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+opentofu,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+webpack,OpenJS Foundation,47-1491876
+jquery,OpenJS Foundation,47-1491876
+aaif-goose,The Linux Foundation (via Agentic AI Foundation),46-0503801
+ray-project,The Linux Foundation (via PyTorch Foundation),46-0503801
+ziglang,Zig Software Foundation,84-5105214
+fastlane,The Linux Foundation (via Mobile Native Foundation),46-0503801
+keycloak,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+backstage,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+codepath,CodePath.org,81-5338932
+rethinkdb,The Linux Foundation (via Linux Foundation),46-0503801
+a2aproject,The Linux Foundation (via Linux Foundation),46-0503801
+cilium,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+NativeScript,OpenJS Foundation,47-1491876
+argoproj,The Linux Foundation (via Cloud Native Computing Foundation),46-0503801
+osrf,Open Source Robotics Foundation,45-5230545
+openhpc,The Linux Foundation (via Linux Foundation),46-0503801
+OpenFreeEnergy,Open Molecular Software Foundation,86-2536664
+electron,OpenJS Foundation,47-1491876
+modelcontextprotocol,The Linux Foundation (via Agentic AI Foundation),46-0503801
+vllm-project,The Linux Foundation (via PyTorch Foundation),46-0503801
+nvm-sh,OpenJS Foundation,47-1491876
+mozilla,Mozilla Foundation,20-0097189
+docling-project,The Linux Foundation (via LF AI & Data Foundation),46-0503801
+milvus-io,The Linux Foundation (via LF AI & Data Foundation),46-0503801
+deepspeedai,The Linux Foundation (via LF AI & Data Foundation),46-0503801
+llvm,LLVM Foundation,47-1136085
+lm-sys,LMSYS,99-4817542
+istio,The Linux Foundation (via CNCF),46-0503801
+fastify,OpenJS Foundation,47-1491876
+OWASP,OWASP Foundation,20-0963503
+helm,The Linux Foundation (via CNCF),46-0503801
+goharbor,The Linux Foundation (via CNCF),46-0503801
+signalapp,Signal Technology Foundation,82-4506840
+jenkinsci,The Linux Foundation (via Continuous Delivery Foundation),46-0503801
+agentsmd,The Linux Foundation (via Agentic AI Foundation),46-0503801
+node-red,OpenJS Foundation,47-1491876
+slimtoolkit,The Linux Foundation (via CNCF),46-0503801
+spack,The Linux Foundation (via High Performance Software Foundation),46-0503801
+chapel-lang,The Linux Foundation (via High Performance Software Foundation),46-0503801
+chipsalliance,The Linux Foundation (via CHIPS Alliance),46-0503801
+freeCodeCamp,freeCodeCamp.org,82-0779546
+EbookFoundation,Free Ebook Foundation,61-1767266
+DigitalPlatDev,DigitalPlat Foundation,38-4397252
+nodejs,OpenJS Foundation,47-1491876
+django,Django Software Foundation,26-2708549
+python,Python Software Foundation,04-3594598
+lodash,OpenJS Foundation,47-1491876
+etcd-io,The Linux Foundation (via CNCF),46-0503801
+sgl-project,LMSYS,99-4817542
+podman-container-tools,The Linux Foundation (via CNCF),46-0503801
+OAI,The Linux Foundation (via OpenAPI Initiative),46-0503801
+envoyproxy,The Linux Foundation (via CNCF),46-0503801
+mlflow,The Linux Foundation (via LF AI & Data Foundation),46-0503801
+valkey-io,The Linux Foundation (via Linux Foundation),46-0503801
+eslint,OpenJS Foundation,47-1491876
+processing,Processing Foundation,46-0830259
+osquery,The Linux Foundation (via Linux Foundation),46-0503801
+mochajs,OpenJS Foundation,47-1491876
+iovisor,The Linux Foundation (via IO Visor Project),46-0503801
+openforcefield,Open Molecular Software Foundation,86-2536664
+(fiscal host) NumFOCUS,NumFOCUS,45-4547709
+(fiscal host) Open Source Collective,Open Source Collective,82-2037583
+(fiscal host) Software Freedom Conservancy,Software Freedom Conservancy,41-2203632
+(fiscal host) Software in the Public Interest,Software in the Public Interest,11-3390208

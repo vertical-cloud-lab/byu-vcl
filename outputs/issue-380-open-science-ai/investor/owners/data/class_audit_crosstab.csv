@@ -1,0 +1,7 @@
+cls_mine,academic,community,complement,core,government,nonprofit
+academic,10,0,0,0,0,0
+community,0,45,0,4,0,1
+complement,0,0,17,1,0,0
+core,0,0,2,31,0,0
+government,0,0,0,0,1,0
+nonprofit,0,0,0,0,0,8

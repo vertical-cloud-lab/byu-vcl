@@ -1,0 +1,29 @@
+{
+ "fund_who_funds_open_source": {
+  "job": "LITERATURE_HIGH",
+  "query": "Which investors and funders have backed commercial open-source software (COSS) companies, open-weight AI labs, open-hardware companies and open-science startups? Identify, with citations: (1) the venture capital firms, corporate venture arms, accelerators and angel investors with the most disclosed investments in such companies, and any rankings or counts of the most active COSS investors (for example from Crunchbase- or PitchBook-based academic studies, the OSS Capital COSS index, Runa Capital's ROSS index, or Linux Foundation / COSSA / Serena reports); (2) funds with an explicitly open-source investment thesis, with fund sizes and dates; (3) philanthropic foundations, government programs and other non-dilutive funders of open-source scientific software, open hardware and open science, with program sizes and years (for example CZI EOSS, Sloan, Moore, Schmidt Sciences, Sovereign Tech Agency, NSF POSE, NLnet); (4) crowdfunding and accelerator routes used by open-hardware and lab-automation companies. Note the selection bias and conflicts of interest of each source, and report any evidence on whether open-source investments performed better or worse than the same investors' other investments."
+ },
+ "fund_deal_audit": {
+  "job": "ANALYSIS",
+  "files": [
+   "funders_audit_sample.csv",
+   "deal_rules.md"
+  ],
+  "query": "You are independently checking a research step in a pre-registered study of who funds open-source-minded ventures (companies whose main product is open-source software, open-weight AI models, open hardware or open-science tooling). funders_audit_sample.csv lists 40 ventures drawn at random with a fixed seed from the study's 640 (key, name, universe, category, website, GitHub organizations). deal_rules.md describes what the study records. For each venture, find every disclosed outside funding event (pre-seed, seed, angel, venture rounds, accelerators, corporate or strategic investment, growth rounds, grants, crowdfunding, token sales) and who put money in, using web sources: company announcements, investor posts, regulatory filings, reputable news. Do not rely on memory: every round needs a URL that names the investors or states the amount. Write funders_audit.csv with one row per funding event and these columns: key, venture, type (one of the types in deal_rules.md), label, date (YYYY-MM), amount_usd (plain digits), lead (lead investors separated by ' | '), investors (other named investors separated by ' | '), source_url, confidence (high, medium or low). For a venture with no disclosed outside funding after a reasonable search, write one row with type none_found. Write investor names as the firms' usual names (not fund vehicles), and people as 'Full Name (person)'. Also write funders_audit_notes.md with one line per venture on what you checked and anything uncertain, and say in your answer how many ventures you could not research fully."
+ },
+ "fund_review": {
+  "job": "ANALYSIS",
+  "files": [
+   "FUNDERS.md",
+   "investors.csv",
+   "investor_links.csv",
+   "deals.csv",
+   "ventures.csv",
+   "programs.csv",
+   "PROTOCOL.md",
+   "source_checks_deals.csv",
+   "edison_audit_comparison.csv"
+  ],
+  "query": "You are reviewing, as an independent and skeptical analyst, a compiled list of who has funded open-source-minded ventures (commercial open-source software, open-weight AI, open hardware and open-science companies). FUNDERS.md is the write-up; investors.csv, investor_links.csv, deals.csv, ventures.csv and programs.csv are the data it is built from; PROTOCOL.md fixed the scope before data collection; source_checks_deals.csv checks each investor name against its cited page; edison_audit_comparison.csv compares this list with an independent audit of 40 random ventures. Please check: (1) whether each claim in FUNDERS.md's bottom line and section notes is supported by the data files (recompute the key counts and rankings); (2) errors in the data that would change a conclusion (wrong investor types, duplicate funders under two names, ventures that are not open-source-minded, implausible rounds), with examples; (3) whether the write-up overstates or understates anything, including completeness and what the list implies for someone raising money for an open physical-science venture; (4) important funders or categories of funders of open-source or open-science ventures that are missing. Write review.md with numbered findings, each with evidence (file, rows, recomputed numbers) and a suggested correction, ranked by importance, and say which claims you could verify and which you could not."
+ }
+}

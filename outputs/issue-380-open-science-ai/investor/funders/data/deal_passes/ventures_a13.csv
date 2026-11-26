@@ -1,0 +1,25 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+ollama,Ollama,U1,sells Ollama cloud hosted-model plans to its users,,yes,US,,private,yes,3,,,2026-11-26T06:10:24Z
+AppFlowy-IO,AppFlowy,U1,sells AppFlowy Cloud paid plans,,yes,US,,private,yes,1,,,2026-11-26T06:10:24Z
+PostHog,PostHog Inc.,U1,sells PostHog Cloud,,yes,US,2020,private,yes,5,,,2026-11-26T06:10:24Z
+TileDB-Inc,"TileDB, Inc.",U1,sells TileDB Cloud and enterprise,,yes,US,,private,yes,3,TileDB is now Tile.ai (Sept 2026),,2026-11-26T06:10:24Z
+ray-project,Anyscale,U1,Ray contributed to PyTorch Foundation; Anyscale sells hosted Ray,,yes,US,2019,acquired,yes,3,Acquired by Nscale 2026-07 per TechCrunch,https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack/,2026-11-26T06:10:24Z
+neondatabase,Neon,U1,sells Neon serverless Postgres,,yes,US,2021,acquired,yes,3,Acquired by Databricks 2025-05 (reported ~$1B),https://techcrunch.com/2025/05/14/databricks-to-buy-open-source-database-startup-neon-for-1b/,2026-11-26T06:17:10Z
+Kilo-Org,Kilo Code,U1,"sells Kilo platform (team plans, AI gateway) for the agent",,yes,US,,acquired,yes,1,"Acquired by Anaconda, July 2026",https://www.anaconda.com/blog/anaconda-acquires-kilo-code,2026-11-26T06:17:10Z
+browserbase,Browserbase,U1,sells hosted browsers marketed to Stagehand users,,yes,US,,private,yes,1,Earlier seed/Series A rounds not found on fetched pages,https://siliconangle.com/2025/06/17/browserbase-reels-40m-browser-automation-tools/,2026-11-26T06:17:10Z
+usebruno,Bruno Software Inc,U1,sells Bruno Pro and Ultimate editions,,yes,US,,private,yes,1,,,2026-11-26T06:17:10Z
+earendil-works,Earendil Inc.,U1,company building Pi and other open AI tools; no paid tier found,,yes,AT,2026,private,yes,1,Founding year inferred from first post Jan 2026,https://earendil.com/purpose/,2026-11-26T06:17:10Z
+withfig,Fig,U1,sold Fig Pro/Team terminal tools,,yes,US,2020,acquired,yes,2,Acquired by Amazon (AWS) Aug 2023,https://techcrunch.com/2023/08/29/amazon-fig-command-line-terminal-generative-ai/,2026-11-26T06:17:54Z
+anoma,Anoma (Heliax),U1,company developing the Anoma protocol,,yes,CH,,private,yes,1,,,2026-11-26T06:17:54Z
+AvaloniaUI,AvaloniaUI OÜ,U1,"sells Avalonia XPF, Accelerate and support",,yes,EE,,private,yes,1,"Company says paid products (XPF, Plus, Pro) fund salaries; no VC found",https://en.wikipedia.org/wiki/Avalonia_(software_framework),2026-11-26T06:17:54Z
+twentyhq,Twenty.com PBC,U1,sells Twenty Cloud hosted CRM,,yes,FR,2023,private,yes,1,,,2026-11-26T06:17:54Z
+openinterpreter,Open Interpreter,U1,company's product is the project itself (agent and desktop client),,yes,US,,private,none_found,0,"Site and README checked, no funding statement found",https://www.openinterpreter.com,2026-11-26T06:17:54Z
+infiniflow,InfiniFlow,U1,company behind RAGFlow; sells enterprise and cloud editions,,yes,CN,,private,none_found,0,"No leads; ragflow.io blog and README checked, no funding statement",https://ragflow.io/blog,2026-11-26T06:17:54Z
+CherryHQ,Cherry Studio (CherryHQ),U1,sells Cherry Studio enterprise edition and commercial licences,,yes,CN,,private,none_found,0,Leads were unrelated Cherry companies; cherryai.com and README show no funding,https://cherryai.com,2026-11-26T06:17:54Z
+xyflow,xyflow GmbH,U1,sells React Flow Pro subscriptions,,yes,DE,2019,private,none_found,0,Open-source work since 2019 by webkid agency (2014); funded by Pro subscriptions and sponsors; no outside rounds stated,https://xyflow.com/open-source,2026-11-26T06:17:54Z
+rustfs,RustFS,U1,offers enterprise support for RustFS,,yes,US,,private,none_found,0,"Site and README checked, no funding statement",https://rustfs.com,2026-11-26T06:17:54Z
+statelyai,Stately,U1,sells Stately Studio for XState users,,yes,US,,private,none_found,0,"Site and blog checked, no funding found",https://stately.ai/blog,2026-11-26T06:17:54Z
+GitbookIO,GitBook,U1,sells hosted GitBook; repo is its open renderer,,yes,US,,private,none_found,0,"About page and Wikipedia checked, no funding found; memory: GitBook has venture funding but unverified",https://www.gitbook.com/about,2026-11-26T06:17:54Z
+mdbootstrap,MDBootstrap (StartupFlow),U1,sells MDB Pro UI kits,,yes,PL,,private,none_found,0,No funding statement on site,https://mdbootstrap.com,2026-11-26T06:17:54Z
+hmislk,CareCode,U1,sells implementation and support of its open HMIS,,yes,LK,,private,none_found,0,"TechCrunch lead is Brazilian Carecode, a different company; not recorded",https://carecode.lk/,2026-11-26T06:17:54Z
+WarpKVM,WarpKVM,U1,sells KVM-over-IP hardware built on these boards,,yes,,,private,none_found,0,Tiny hardware seller; site shows no funding,https://warpkvm.com/,2026-11-26T06:17:54Z

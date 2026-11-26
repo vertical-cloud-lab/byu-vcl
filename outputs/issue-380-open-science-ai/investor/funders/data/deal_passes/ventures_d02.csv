@@ -1,0 +1,26 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+u4-autumn,Autumn,U4,YC page: open-source billing infrastructure over Stripe; licence not checked,,yes,US,2025,private,yes,1,Only YC found,,2026-11-26T06:11:34Z
+u4-beam,Beam,U4,YC directory tag; cloud platform; open-source status not verified,,partial,US,2021,private,yes,2,Logo alt text from about page lead,,2026-11-26T06:11:34Z
+u4-bitrise,Bitrise,U4,Steps are open source per YC page; platform proprietary,,partial,HU,2014,private,yes,4,Founded year from YC batch/lead not verified; memory only,,2026-11-26T06:11:34Z
+u4-bosonai,BosonAI,U4,ROSS Index lists higgs-audio repo; licence not checked,,partial,US,2023,private,none_found,0,No leads found; no funding page checked beyond find_pages,,2026-11-26T06:11:34Z
+u4-botcity,BotCity,U4,YC directory tag; framework botcity.dev; platform scope unclear,,partial,BR,,private,yes,2,,,2026-11-26T06:11:34Z
+u4-bricksai,BricksAI,U4,YC page: BricksAI is an open-source AI gateway; licence not checked,,yes,US,2022,shut_down,yes,1,YC lists Inactive,,2026-11-26T06:11:34Z
+u4-browseros,BrowserOS,U4,YC page: open-source agentic browser; licence not checked,,yes,US,2024,private,yes,1,No other source found,,2026-11-26T06:11:34Z
+u4-buildbuddy,BuildBuddy,U4,YC directory tag; open-source Bazel results UI; licence not checked,,yes,US,2020,private,yes,2,Investors in article body not read,,2026-11-26T06:11:34Z
+u4-builder-io,Builder.io,U4,gpt-crawler repo from ROSS; core product proprietary,,partial,US,2019,private,yes,1,Runa figure 17.3M; round details not found,,2026-11-26T06:11:34Z
+u4-buttercoin,Buttercoin,U4,YC page: open-source trading engine; licence not checked,,partial,US,2013,shut_down,yes,3,Later TechCrunch (2015) also names Alexis Ohanian (person) among 1.6M total,https://techcrunch.com/2015/04/06/buttercoin-bitcoin-closing/,2026-11-26T06:11:34Z
+u4-byteask,ByteAsk,U4,YC directory tag; page does not say open,,partial,US,,private,yes,1,Only YC found,,2026-11-26T06:11:34Z
+u4-bytebot,Bytebot,U4,YC page: open-source container for AI desktop agents; repo from ROSS,,yes,US,2024,acquired,yes,1,YC batch S21 on page conflicts with ROSS founding 2024 (page may be mislabelled); acquisition unconfirmed,,2026-11-26T06:11:34Z
+u4-cactus-compute,Cactus Compute,U4,YC directory tag; licence not checked,,partial,US,,private,yes,1,,,2026-11-26T06:11:34Z
+u4-cakework,Cakework,U4,YC page mentions open-source frameworks as customers; own product not shown open,,no,US,2022,shut_down,yes,1,YC lists Inactive,,2026-11-26T06:11:34Z
+u4-cashew-labs,Cashew Labs,U4,YC page: builds open source tools for recursive self-improvement,,yes,US,,private,yes,1,YC page batch is Spring 2025,,2026-11-26T06:11:34Z
+u4-caveman,Caveman,U4,YC directory tag; licence not checked,,partial,US,,private,yes,1,Only YC found,,2026-11-26T06:11:34Z
+u4-cerulion,Cerulion,U4,YC page: open source operating system for robots,,yes,US,,private,yes,1,,,2026-11-26T06:11:34Z
+u4-chaos-genius,Chaos Genius,U4,YC directory tag; open-source edition not verified,,partial,US,2020,acquired,yes,2,Investors of seed not found,,2026-11-26T06:11:34Z
+u4-char,Char,U4,YC directory tag; licence not checked,,partial,US,,private,yes,1,,,2026-11-26T06:11:34Z
+u4-citus-data,Citus Data,U4,Citus Postgres extension open source per YC page,,yes,US,2010,acquired,yes,3,Acquired by Microsoft 2019,,2026-11-26T06:11:34Z
+u4-clidey,Clidey,U4,YC page: WhoDB open-source platform,,yes,US,,private,yes,1,,,2026-11-26T06:11:34Z
+u4-cmux,cmux,U4,YC page: open source native macOS terminal built on Ghostty,,yes,US,,private,yes,1,,,2026-11-26T06:11:34Z
+u4-coderamp,Coderamp,U4,ROSS lists gitingest repo; licence not checked,,partial,FR,2024,private,none_found,0,No leads,,2026-11-26T06:11:34Z
+u4-codestory,CodeStory,U4,Aide IDE built on VSCode; open-source status not verified,,partial,GB,,shut_down,yes,1,YC lists Inactive,,2026-11-26T06:11:34Z
+u4-codestream,CodeStream,U4,YC directory tag; plugins; licence not checked,,partial,US,,acquired,yes,2,,,2026-11-26T06:11:34Z

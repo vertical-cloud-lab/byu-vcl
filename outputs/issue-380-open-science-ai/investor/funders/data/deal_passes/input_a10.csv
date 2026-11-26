@@ -1,0 +1,25 @@
+key,venture,universe,category,source_list,hint,owners,stars
+n8n-io,n8n,U1,COSS (GitHub core),github_core,GitHub org(s): n8n-io; basis: sells n8n Cloud and Enterprise licences; country DE; parent -; ; site https://n8n.io,n8n-io,212126
+excalidraw,Excalidraw s.r.o.,U1,COSS (GitHub core),github_core,"GitHub org(s): excalidraw; basis: sells Excalidraw+, hosted paid version; country CZ; parent -; ; site https://excalidraw.com",excalidraw,136301
+oven-sh,Oven (Bun),U1,COSS (GitHub core),github_core,GitHub org(s): oven-sh; basis: company formed to commercialise the Bun runtime; country US; parent Anthropic; acquired by Anthropic 2025; site https://bun.com/,oven-sh,96970
+headroomlabs-ai,Headroom Labs,U1,COSS (GitHub core),github_core,GitHub org(s): headroomlabs-ai; basis: offers enterprise deployment and SLA support for headroom; country ?; parent -; ; site headroomlabs.ai,headroomlabs-ai,80860
+cline,Cline Bot Inc.,U1,COSS (GitHub core),github_core,GitHub org(s): cline; basis: sells Cline Teams and Enterprise plans; country US; parent -; ; site https://cline.bot,cline,71894
+vectorize-io,"Vectorize, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): vectorize-io; basis: sells Hindsight Cloud and Enterprise; country US; parent -; ; site ,vectorize-io,63390
+bmad-code-org,"BMad Code, LLC",U1,COSS (GitHub core),github_core,GitHub org(s): bmad-code-org; basis: sells consulting and training for the BMAD method; country US; parent -; ; site https://www.bmadcode.com/,bmad-code-org,55742
+calcom,"Cal.com, Inc.",U1,COSS (GitHub core),github_core,GitHub org(s): calcom; basis: sells hosted Cal.com and enterprise plans; country US; parent -; ; site https://cal.com,calcom,50394
+getsentry,Sentry (Functional Software),U1,COSS (GitHub core),github_core,GitHub org(s): getsentry; basis: sells hosted Sentry; country US; parent -; ; site https://sentry.io,getsentry,45883
+appsmithorg,Appsmith,U1,COSS (GitHub core),github_core,GitHub org(s): appsmithorg; basis: sells Appsmith Business and Enterprise; country US; parent -; ; site https://www.appsmith.com,appsmithorg,41303
+mattermost,Mattermost,U1,COSS (GitHub core),github_core,GitHub org(s): mattermost; basis: sells Mattermost Enterprise and Cloud; country US; parent -; ; site https://mattermost.com,mattermost,39702
+utmapp,UTM (Turing Software LLC),U1,COSS (GitHub core),github_core,GitHub org(s): utmapp; basis: same app sold on Mac App Store; country US; parent -; ; site https://getutm.app,utmapp,37058
+Pythagora-io,Pythagora,U1,COSS (GitHub core),github_core,GitHub org(s): Pythagora-io; basis: sells Pythagora AI dev platform built on GPT Pilot; country US; parent -; ; site ,Pythagora-io,33638
+hasura,Hasura,U1,COSS (GitHub core),github_core,GitHub org(s): hasura; basis: sells Hasura Cloud/DDN and Enterprise; country US; parent -; ; site https://hasura.io,hasura,32125
+better-auth,Better Auth,U1,COSS (GitHub core),github_core,GitHub org(s): better-auth; basis: sells Better Auth Infrastructure dashboard and services; country US; parent -; ; site https://better-auth.com,better-auth,30881
+composer,Packagist Conductors GmbH,U1,COSS (GitHub core),github_core,GitHub org(s): composer; basis: maintainers' company sells Private Packagist; country DE; parent -; ; site https://getcomposer.org/,composer,29590
+OtterMind,OtterMind,U1,COSS (GitHub core),github_core,GitHub org(s): OtterMind; basis: sells Chat2DB Pro and cloud; country SG; parent -; ; site https://ottermind.ai,OtterMind,28372
+zulip,Kandra Labs,U1,COSS (GitHub core),github_core,GitHub org(s): zulip; basis: sells Zulip Cloud and support; country US; parent -; ; site https://zulip.com,zulip,26302
+tursodatabase,Turso,U1,COSS (GitHub core),github_core,GitHub org(s): tursodatabase; basis: sells Turso Cloud; country US; parent -; ; site https://turso.tech,tursodatabase,25360
+redisson,Redisson,U1,COSS (GitHub core),github_core,GitHub org(s): redisson; basis: sells Redisson PRO edition; country ?; parent -; ; site https://redisson.pro,redisson,24435
+notable,Notable (Fabio Spampinato),U1,COSS (GitHub core),github_core,GitHub org(s): notable; basis: sells Notable app licences; repo is the issue tracker; country IT; parent -; ; site https://notable.app,notable,23492
+dimforge,Dimforge,U1,COSS (GitHub core),github_core,GitHub org(s): dimforge; basis: maintainer's company funds Rapier/nphysics via sponsorship and support; country FR; parent -; ; site ,dimforge,2365
+botbotrobotics,BotBot Robotics,U1,COSS (GitHub core),github_core,GitHub org(s): botbotrobotics; basis: sells BotBrain Pro and robot hardware; country BR; parent -; ; site https://botbot.bot,botbotrobotics,401
+fairscope,FairScope,U1,COSS (GitHub core),github_core,GitHub org(s): fairscope; basis: sells PlanktoScope hardware; country ?; parent -; ; site https://www.fairscope.com/,fairscope,94

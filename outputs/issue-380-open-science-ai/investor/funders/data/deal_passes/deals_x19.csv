@@ -1,0 +1,4 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+curvenote,Curvenote,U2,seed,Seed round,2025-07,1400000,,Y Combinator,https://curvenote.com/news/curvenote-seed-round,company,Article says $1.4M and CAD$1.4M; currency ambiguous. Other investors unnamed angels.
+re3d,re:3D,U2,grant_government,NSF SBIR Phase I (award 1746480),2018-01,220549,,National Science Foundation (SBIR),"https://api.nsf.gov/services/v1/awards.json?keyword=RE3D&printFields=id,title,awardeeName,fundsObligatedAmt,startDate",other,Awardee RE3D Inc.; Increasing Maker Manufacturing through 3D Printing
+re3d,re:3D,U2,grant_government,NSF SBIR Phase II (award 1853153),2019-04,1442973,,National Science Foundation (SBIR),"https://api.nsf.gov/services/v1/awards.json?keyword=RE3D&printFields=id,title,awardeeName,fundsObligatedAmt,startDate",other,Pellet-extrusion printer; first-pass NSF row had no amount
