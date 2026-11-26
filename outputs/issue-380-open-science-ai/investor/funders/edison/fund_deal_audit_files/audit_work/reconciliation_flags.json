@@ -1,0 +1,22 @@
+{
+  "TecharoHQ": {
+    "source": "https://anubis.techaro.lol/blog/2025/funding-update/",
+    "issue": "Disclosed recurring donations on GitHub Sponsors/Patreon/Liberapay; cannot call none_found without discussing donation scope. Do not treat recurring monthly total as discrete round."
+  },
+  "payloadcms": {
+    "issue": "Do not confuse Payload CMS (YC; acquired by Figma) with Payload payments fintech."
+  },
+  "farmbot": {
+    "issue": "Do not confuse FarmBot Inc open hardware robot with Australian Farmbot Monitoring Solutions."
+  },
+  "dbeaver": {
+    "issue": "Company calls April 2023 first funding round; database suggests 2021/March 2023 + accelerator. Need investigate not blindly duplicate."
+  },
+  "radixark": {
+    "source": "https://www.radixark.com/blog/radixark-launches-100m-seed",
+    "issue": "May 2026 $100m seed latest primary source, not just February 2026 reported fundraising."
+  },
+  "va-linux": {
+    "issue": "Intel March 1999 investment may close November 1998 Series A, check filing before double count; June 1999 $25m private round."
+  }
+}

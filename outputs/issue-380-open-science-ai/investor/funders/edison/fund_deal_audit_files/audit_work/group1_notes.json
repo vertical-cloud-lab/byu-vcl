@@ -1,0 +1,32 @@
+[
+  {
+    "key": "BruceDevices",
+    "note": "Searched exact venture/domain, firmware identity, investment/grants/accelerators, crowdfunding, Patreon and hardware sponsors; fetched official site, repository, donate page, Patreon (also rendered), Ko-fi, Open Collective and Graphtreon. One ongoing Patreon crowdfunding campaign is confirmed; Graphtreon reports launch 2024-11-02 and two paying members with about $13/month at fetch (search-index snapshots differed). The date records campaign launch, not a round close. amount_usd is blank because a monthly revenue rate is not a campaign total. Patreon, Ko-fi, Open Collective and cryptocurrency payment links are not separate confirmed funding events; no identifiable receipt events were disclosed there. PCBWay/Elecrow manufacturing or sponsorship references were not treated as cash investments without a financial disclosure. No seed, equity, debt, grant, token or other financing found; not described as bootstrapped. Reasonably researched.",
+    "incomplete": false,
+    "sources": []
+  },
+  {
+    "key": "Cheshire-Labs",
+    "note": "Searched exact company name and founder Michael Salmi with funding/raised, seed, angel, grants/SBIR, accelerators/Y Combinator/Techstars, investment, crowdfunding and bootstrapping terms. Fetched the official company website, supplied LinkedIn company identity and founder launch discussion on Lab Automation Forums. No disclosed outside-capital event found; none_found means absence of located disclosure, not proof that the company is bootstrapped or has never received money. No dates, amounts or investors were inferred from product, licensing or company-size information. Reasonably researched.",
+    "incomplete": false,
+    "sources": []
+  },
+  {
+    "key": "coqui-ai",
+    "note": "Searched Coqui/coqui.AI funding, early 2021/2022 rounds, convertible notes, grants and later shutdown coverage; fetched the SEC filing/submissions, Forbes, ScaleX portfolio, PitchBook, CB Insights and filing aggregator. October 2021 SEC Form D reports first sale 2021-10-15, $1,550,000 actually sold to two unnamed investors against a $3,000,000 offering target; only sold capital is included. SEC calls the instrument an option to acquire securities; CB Insights classifies it as Convertible Note and explicitly maps Mango Capital to that round and its January 2023 Convertible Note II. Mango is not inferred from the March round. January 2023 has no public amount; no $500,000 difference was imputed from cumulative totals. March 2023 $3.3M and three firms are reported by Forbes; seed label follows investor ScaleX rather than databases calling it Series A; no lead or unnamed angels invented. Incomplete: the January 2023 note is a database-only disclosed event lacking independent confirmation or proof it is economically separate from the March financing. Low-confidence row retained for review; shutdown is excluded.",
+    "incomplete": true,
+    "sources": []
+  },
+  {
+    "key": "dbeaver",
+    "note": "Searched first/later seed rounds, 2021 and March 2023 claims, SEC filings, grant/debt/crowdfunding and MassChallenge; fetched company announcement, investor PTV statement, TechCrunch, CB Insights, Dealroom and MassChallenge cohort and award releases. April 2023 $6M is directly confirmed, led by Headline with Prospective Technologies (PTV). May 2019 accelerator is non-equity support, not a verified grant: primary cohort release names DBeaver, but it is absent from the cash-winner list, so amount is blank. MassChallenge is the support provider, not an equity lead. CB Insights explicitly maps PTV to a 2021 Seed VC and March 10, 2023 Seed-II, retained as low-confidence candidate rows; both conflict with the company calling April its first round. The 2021 database date is January 1, likely year-only placeholder: date deliberately blank; known year is 2021, month unverified. March may be a closing-date duplicate of April and MUST NOT be counted as a separately confirmed round. No portion of CB Insights $7.5M cumulative or PitchBook $6.5M was assigned to candidates. Incomplete: earlier transactions and possible duplication remain unresolved.",
+    "incomplete": true,
+    "sources": []
+  },
+  {
+    "key": "e2b-dev",
+    "note": "Searched pre-seed/seed/Series A, earlier debt, predecessor Devbook/Pioneer, grants and later 2026 financing; fetched company timeline/Series A, founder seed announcement, transaction counsel, CzechCrunch, Vestbee, PitchBook, Pioneer and November 2026 company-issued Business Wire release. Confirmed disclosed equity: $2.5M September 2023 led by Kaya VC (five named individuals from contemporary CzechCrunch), $11.5M October 2024 led by Decibel Partners with Kaya VC/Sunflower Capital, $21M July 2025 led by Insight Partners with listed firms and Scott Johnston. Investor lists are event-specific, not propagated. Pioneer directly lists E2B as its investment; predecessor accelerator amount and actual investment month are undisclosed, so date and amount blank (an online 2021 confirmation is not an investment date). PitchBook alone reports $406K debt June 12, 2023; retained low confidence, no lender inferred, dollars as displayed without our currency conversion. Its July 2023 $2.88M seed is treated as conflicting description of the September pre-seed, not another round. Incomplete: debt uncorroborated and $35M named equity rounds do not reconcile with company November 2026 $38M cumulative or PitchBook $43.8M; no residual inferred as new funding. Pioneer may account for some gap, but unknown. No IPO/acquisition/revenue milestone counted.",
+    "incomplete": true,
+    "sources": []
+  }
+]

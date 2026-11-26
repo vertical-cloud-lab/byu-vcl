@@ -1,0 +1,83 @@
+[
+  {
+    "key": "redisson",
+    "note": "Fresh searches covered Redisson/redisson.pro company and founder history, outside investment, seed/angel/accelerator, grants, debt and sponsorship; fetched first-party About, Alibaba founder interview and Crunchbase. No disclosed outside-capital event found; none_found is not proof of no financing and no sourced bootstrapping claim was found. Unrelated Redison music-device crowdfunding was excluded. All five ventures were researched, but this venture has no unresolved material funding signal. Required deal_rules.md and funders_audit_sample.csv were absent; explicit prompt schema and categories were followed.",
+    "incomplete": false,
+    "sources": [
+      "https://redisson.pro/about.html",
+      "https://www.alibabacloud.com/blog/interview-with-the-creator-of-redisson-building-an-open-source-enterprise-redis-client_593854",
+      "https://www.crunchbase.com/organization/redisson"
+    ]
+  },
+  {
+    "key": "supermemoryai",
+    "note": "Fresh company, investor, TechCrunch, 2026 follow-on and grant/accelerator/debt/secondary searches found the August 2024 $5,000 Buildspace season-5 grant and one October 2025 pre-seed, plus a provisionally recorded Summer Fellows grant claim. Buildspace primary August 5 grantee list names dhravya and his AI second-brain project; company independently confirms that grant. Company announcement and current About page state $3M; lead Susa and TechCrunch state $2.6M for the same financing, so $3M is retained with medium confidence and no invented extra round. Co-leads follow company statement; six named individual participants combine explicit same-round reporting from company and TechCrunch; employers Google/OpenAI/Meta/Cloudflare are not investors. Grant row from November 2025 AIM interview quotes founder saying he got the YC Summer Fellows grant but chose to build the company instead: acceptance/disbursement unclear, amount blank, award month unknown so date blank (not publication month). No normal YC accelerator investment inferred. Incomplete only because that grant award versus declined offer is unresolved; no later distinct round verified. Missing rules/sample prevented canonical-type validation; seed type includes pre-seed as labeled.",
+    "incomplete": true,
+    "sources": [
+      "https://buildspace.so/s5/ty-s5",
+      "https://supermemory.ai/blog/supermemory-raises-3-million-and-building-the-best-memory-engine-for-llms",
+      "https://techcrunch.com/2025/10/06/a-19-year-old-nabs-backing-from-google-execs-for-his-ai-memory-startup-supermemory/",
+      "https://susaventures.substack.com/p/our-investment-in-supermemory",
+      "https://supermemory.ai/about/",
+      "https://supermemory.ai/blog/an-update-to-supermemory/",
+      "https://analyticsindiamag.com/ai-features/the-20-year-old-who-said-no-to-yc",
+      "https://analyticsindiamag.com/ai-news-updates/y-combinator-introduces-summer-fellow-grants"
+    ]
+  },
+  {
+    "key": "TecharoHQ",
+    "note": "Fresh Techaro/Anubis equity, investor, grant and crowdfunding searches plus first-party funding docs, founder sustainability discussion, August 2025 funding update, current sponsor README, GitHub Sponsors and January 2026 founder interview establish outside donation/sponsorship support rather than none_found. One ongoing crowdfunding campaign is recorded, not a priced round or one fictional event per donor. Source README names the listed corporate sponsors; investors column denotes donors/supporters, not equity holders. GitHub Sponsors, Patreon and Liberapay are channels, not investors. Start/individual donation months and finite campaign total are undisclosed, so date and amount blank; April 2025 discussion and August 2025 recurring-revenue snapshot are not evidence of exact launch, cumulative capital or individual sponsor start dates. Monthly receipts, $5,000/$10,000/$15,000 targets and commercial subscription/consulting revenue were not converted to round amounts. Private and partial-name individual donors were not invented; roster is not exhaustive. No separate conventional equity, debt or grant round found. Indian Techaro Innov medical-device firm excluded. Missing rules/sample noted; crowdfunding is explicit prompt category.",
+    "incomplete": false,
+    "sources": [
+      "https://techaro.lol",
+      "https://github.com/TecharoHQ/anubis/blob/main/docs/docs/funding.md",
+      "https://github.com/TecharoHQ/anubis/discussions/278",
+      "https://anubis.techaro.lol/blog/2025/funding-update",
+      "https://github.com/techaroHQ/anubis",
+      "https://github.com/sponsors/Xe",
+      "https://opensourcesecurity.io/2026/2026-01-anubis-xe/"
+    ]
+  },
+  {
+    "key": "d2lang",
+    "note": "Fresh Terrastruct/D2 funding, raised, seed, investor-specific, 2020-2026 and grant/debt/accelerator/secondary/crowdfunding searches found one documented $2M seed dated December 1, 2021 in PitchBook, corroborated by Caplight. Haystack and Bloomberg Beta are explicitly mapped to Seed by Caplight; lead unknown. Fathom Capital appears only as a company-level investor in PitchBook and is not inferred into that round. Founder December 2021 post says recently raised Seed; his April 2021 post already says funded by great investors, without naming them or an amount. Whether earlier backing is separate pre-seed/angel financing or an initial close of the same seed remains unresolved; no duplicate or unsupported earlier row created. Thus material early event history and Fathom allocation remain incomplete. Primary Bloomberg portfolio confirms relationship but not its round date. Missing rules/sample noted; seed classification follows explicit prompt.",
+    "incomplete": true,
+    "sources": [
+      "https://pitchbook.com/profiles/company/490983-04",
+      "https://www.caplight.com/company/terrastruct",
+      "https://news.ycombinator.com/item?id=26662452",
+      "https://news.ycombinator.com/item?id=29406643",
+      "https://news.ycombinator.com/item?id=29782099",
+      "https://github.com/Bloomberg-Beta/Manual/blob/main/2%20-%20In%20our%20portfolio.md",
+      "https://aashay.substack.com/p/areas-of-interest-march-2021",
+      "https://fundraisingfox.com/companies/terrastruct",
+      "https://5k.vc/company/terrastruct",
+      "https://d2lang.com",
+      "https://terrastruct.com"
+    ]
+  },
+  {
+    "key": "getzep",
+    "note": "Fresh Zep/getzep AI funding, pre-seed/convertible, investor-specific, 2023-2026 and grant/debt/secondary searches and primary YC/investor/SEC checks found $1.8M pre-seed led by Engineering Capital (BounceWatch December 27, 2023; PitchBook confirms seed date), $500K YC Winter 2024 accelerator financing (PitchBook/CB Insights January 1, 2024), and DV seed participation dated January 2026 via investor profile evidence and DV primary seed portfolio. Pre-seed month also appears as November 2023 (Dealroom) and instrument as convertible (Indexed); YC dates vary January/February/March/April across providers. January 2024 follows PitchBook and CB Insights and is not a separate convertible round. Dealroom September 2024 $125K YC entry cannot be established as a distinct financing rather than a component/duplicate, so not separately counted. DV has undisclosed venture proceeds and round structure; its January 2026 Zep-named SPV SEC filing reports $124,000 sold by a pooled fund, not Zep company proceeds, so amount blank. First Star primary portfolio confirms backing; Drew Volpe profile dates investment January 2026, but no same-round linkage or personal check is inferred. Root Ventures, Step Function and other company-level backers are not allocated across events without round evidence. Incomplete: 2026 syndicate/primary-versus-secondary structure, potential September 2024 distinct event, and full early syndicate unresolved. Missing rules/sample noted; seed includes pre-seed.",
+    "incomplete": true,
+    "sources": [
+      "https://www.bouncewatch.com/company/zep-ai",
+      "https://pitchbook.com/profiles/company/539323-75",
+      "https://www.cbinsights.com/company/zep-2/financials",
+      "https://www.ycombinator.com/companies/zep-ai",
+      "https://indexed.vc/companies/zep-ai",
+      "https://app.dealroom.co/companies/zep_ai",
+      "https://oryndex.co/tools/zep/funding",
+      "https://www.getzep.com",
+      "https://www.getzep.com/blog/",
+      "https://engineeringcapital.com",
+      "https://www.stepfunction.vc",
+      "https://firststar.vc/companies",
+      "https://deora.vc",
+      "https://www.unlinked.ai/people/sharrand",
+      "https://www.gritt.io/company/zep-ai/",
+      "https://www.gritt.io/investor/drewvolpe/",
+      "https://www.sec.gov/Archives/edgar/data/2104761/000210476126000001/0002104761-26-000001.txt"
+    ]
+  }
+]

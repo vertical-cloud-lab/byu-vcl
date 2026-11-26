@@ -1,0 +1,263 @@
+[
+  {
+    "url": "https://api.frankfurter.dev/v1/2020-07-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2020-07-15",
+    "rates": {
+      "USD": 1.1444
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2017-05-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2017-05-15",
+    "rates": {
+      "USD": 1.0972
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2014-12-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2014-12-15",
+    "rates": {
+      "USD": 1.2426
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2015-08-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2015-08-14",
+    "rates": {
+      "USD": 1.5635
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2024-11-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2024-11-15",
+    "rates": {
+      "USD": 1.0583
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2024-11-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2024-11-15",
+    "rates": {
+      "USD": 1.2681
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2022-03-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2022-03-15",
+    "rates": {
+      "USD": 1.3076
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2010-01-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2010-01-15",
+    "rates": {
+      "USD": 1.4374
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2022-12-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2022-12-15",
+    "rates": {
+      "USD": 1.2322
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2026-01-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2026-01-15",
+    "rates": {
+      "USD": 1.1624
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2022-06-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-06-15",
+    "rates": {
+      "USD": 1.0431
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2024-04-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2024-04-15",
+    "rates": {
+      "USD": 1.2477
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2020-06-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2020-06-15",
+    "rates": {
+      "USD": 1.2552
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2017-01-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2017-01-13",
+    "rates": {
+      "USD": 1.2177
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2024-02-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2024-02-15",
+    "rates": {
+      "USD": 1.2545
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2013-10-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2013-10-15",
+    "rates": {
+      "USD": 1.5943
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2023-04-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2023-04-14",
+    "rates": {
+      "USD": 1.2502
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2025-07-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2025-07-15",
+    "rates": {
+      "USD": 1.344
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2016-04-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2016-04-15",
+    "rates": {
+      "USD": 1.418
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2025-04-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2025-04-15",
+    "rates": {
+      "USD": 1.3234
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2025-05-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2025-05-15",
+    "rates": {
+      "USD": 1.3278
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2022-07-15?base=SEK&symbols=USD",
+    "amount": 1.0,
+    "base": "SEK",
+    "date": "2022-07-15",
+    "rates": {
+      "USD": 0.094947
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2022-11-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2022-11-15",
+    "rates": {
+      "USD": 1.1896
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2022-11-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-11-15",
+    "rates": {
+      "USD": 1.0404
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2020-10-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2020-10-15",
+    "rates": {
+      "USD": 1.1698
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2020-10-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2020-10-15",
+    "rates": {
+      "USD": 1.2921
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2018-01-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2018-01-15",
+    "rates": {
+      "USD": 1.3788
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2019-10-15?base=GBP&symbols=USD",
+    "amount": 1.0,
+    "base": "GBP",
+    "date": "2019-10-15",
+    "rates": {
+      "USD": 1.2643
+    }
+  },
+  {
+    "url": "https://api.frankfurter.dev/v1/2023-06-15?base=EUR&symbols=USD",
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-06-15",
+    "rates": {
+      "USD": 1.0819
+    }
+  }
+]

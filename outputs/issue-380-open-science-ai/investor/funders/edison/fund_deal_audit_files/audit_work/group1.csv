@@ -1,0 +1,15 @@
+key,venture,type,label,date,amount_usd,lead,investors,source_url,confidence
+BruceDevices,Bruce Devices,crowdfunding,Ongoing Patreon community crowdfunding (campaign launched November 2024),2024-11,,,,https://graphtreon.com/creator/BruceFirmware,medium
+Cheshire-Labs,Cheshire Labs,none_found,No disclosed outside funding found after targeted searches,,,,,https://cheshirelabs.io/,medium
+coqui-ai,Coqui,convertible_note,Initial financing (Form D; convertible-note classification from CB Insights),2021-10,1550000,,Mango Capital,https://www.sec.gov/Archives/edgar/data/1889338/000188933821000001/0001889338-21-000001.txt,medium
+coqui-ai,Coqui,convertible_note,Convertible Note II (database-reported; independent confirmation unavailable),2023-01,,,Mango Capital,https://www.cbinsights.com/company/coqui/financials,low
+coqui-ai,Coqui,seed,Seed financing announced March 2023,2023-03,3300000,,ScaleX Ventures | Mango Capital | DNX Ventures,https://www.forbes.com/sites/cindygordon/2023/03/19/coqui--a-generative-ai-speech-innovation-will-revolutionize-this-market/,high
+dbeaver,DBeaver Corp,accelerator,MassChallenge Switzerland accelerator (non-equity assistance; no cash award confirmed),2019-05,,,MassChallenge,https://app.dealroom.co/companies/dbeaver,medium
+dbeaver,DBeaver Corp,seed,Reported 2021 seed (database-only; disputed by first-round announcement),,,,Prospective Technologies,https://www.cbinsights.com/company/dbeaver/financials,low
+dbeaver,DBeaver Corp,seed,Reported Seed II (database-only; may be closing of April 2023 seed),2023-03,,,Prospective Technologies,https://www.cbinsights.com/company/dbeaver/financials,low
+dbeaver,DBeaver Corp,seed,First publicly announced seed round,2023-04,6000000,Headline,Prospective Technologies,https://dbeaver.com/2023/04/11/dbeavers-next-step-our-first-round-of-funding/,high
+e2b-dev,E2B,accelerator,Pioneer accelerator investment (Devbook predecessor; investment date undisclosed),,,,Pioneer,https://pioneer.app/,medium
+e2b-dev,E2B,debt,General debt financing (PitchBook-only; uncorroborated),2023-06,406000,,,https://pitchbook.com/profiles/company/530605-18,low
+e2b-dev,E2B,pre_seed,Pre-seed financing,2023-09,2500000,Kaya VC,Matěj Turek (person) | Juraj Masár (person) | Jakub Jurových (person) | Liu Jiang (person) | Paul Copplestone (person),https://cc.cz/umela-inteligence-bude-v-jadru-vsech-aplikaci-cesky-startup-s-ni-pracuje-a-ziskal-pres-50-milionu/,high
+e2b-dev,E2B,seed,Seed financing announced October 2024,2024-10,11500000,Decibel Partners,Kaya VC | Sunflower Capital,https://www.vestbee.com/insights/articles/e2-b-raises-11-5-m,high
+e2b-dev,E2B,series_a,Series A financing,2025-07,21000000,Insight Partners,Decibel Partners | Sunflower Capital | Kaya VC | Scott Johnston (person),https://e2b.dev/resources/series-a,high

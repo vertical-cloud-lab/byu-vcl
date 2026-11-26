@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "type": "secondary",
+      "date": "2026-01",
+      "lead": "General Atlantic",
+      "amount_usd": "",
+      "source_url": "https://www.generalatlantic.com/media-article/general-atlantic-announces-close-of-further-investment-into-odoo-acquiring-additional-stake-from-wallonie-entreprendre/",
+      "note": "Additional stake acquired from Wallonie Entreprendre; price undisclosed, \u20ac7bn is valuation not funding."
+    },
+    {
+      "type": "secondary",
+      "date": "2026-01",
+      "lead": "",
+      "investors": "AVP | Alkeon Capital",
+      "amount_usd": "69702000",
+      "source_url": "https://avpcap.com/avp-and-alkeon-announce-e60m-secondary-round-in-odoo-s-a-at-a-valuation-exceeding-e7-billion/",
+      "note": "\u20ac60m secondary management-share sale; USD conversion at ECB 16 Jan 2026: 1 EUR = USD 1.1617. Separate from GA buyout of regional investor."
+    }
+  ],
+  "fx_url": "https://www.bancaditalia.it/compiti/operazioni-cambi/cambio/cambi_rif_20260116/"
+}
