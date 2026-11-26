@@ -1111,7 +1111,11 @@ def narration_track(meta: dict, total: float, wav: Path) -> list[dict]:
 
 
 # round 15: a clip joined from separately audited renders is checked as the sum of their audits
-AUDIT_PARTS = {"base_cameras": ["base_cameras_vlm", "base_cameras_atomizer"]}
+AUDIT_PARTS = {"base_cameras": ["base_cameras_vlm", "base_cameras_atomizer"],
+               # round 16: the fabrication tour is joined from its nine clips, each audited as it rendered
+               "fabrication_tour": [f"fabrication/{k}" for k in ("metalone", "snowpod", "mprint", "meltio_m450",
+                                                                  "form4", "form_wash", "form_cure", "stencil",
+                                                                  "lumenpnp")]}
 TWO_D = {"floor_pass", "floor_day"}        # 2-D animations (floor_pass.py, floor_day.py): no scene to check
 
 
@@ -1198,6 +1202,9 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
     "setup_lab": "rigging: machines set down over their drops; the UR control box through the Class D unit into its "
                  "cabinet",
     "meltio_m450": "the work itself: the deposition on the wall",
+    # round 16
+    "fabrication_tour": "the work itself: parts in the IPA and the UV glow, the laser in the bed, the wall's glow",
+    "base_cameras": "",
 }
 
 

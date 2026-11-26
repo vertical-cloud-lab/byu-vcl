@@ -584,10 +584,35 @@
  },
  {
   "chapter": "floor",
-  "part": "waste_station_still.png",
-  "offset": 0.3,
+  "part": "waste_clip",
+  "match": "Liquid waste leaves a station only in the capped bottle",
+  "offset": 0.5,
+  "text": "Liquid waste leaves a station in the capped bottle it was made in, one class a trip. At the fume hood the arm sets it in the intake tray, under the sash, and takes an empty back. It never opens or pours.",
+  "source": "out/clean/waste_clip.json caption (1/4), notes/waste.md, notes/waste_clip.md; round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "The hood's base is two vented cabinets",
+  "offset": 0.5,
+  "text": "A person moves the bottles into the hood's vented cabinets each day shift: solvents on the left, acids on the right, a shelf apart.",
+  "source": "out/clean/waste_clip.json caption (2/4), notes/waste.md; round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "match": "Powder waste stays where it is made",
+  "offset": 0.5,
+  "text": "Powder waste stays by the atomizer: a vacuum and a pail for each alloy family, a bucket for sweepings, used filters in dry sand. A person seals and carries the liners; powder never rides a robot.",
+  "source": "out/clean/waste_clip.json caption (3/4), notes/waste.md (How it is kept); round 16"
+ },
+ {
+  "chapter": "floor",
+  "part": "waste_clip",
+  "offset": 0.5,
   "text": "Everything hazardous leaves through BYU Risk Management's pickups: about one a month at one alloy a day, one every week or two at ten.",
-  "source": "notes/waste.md (Pickups), PR #371"
+  "source": "notes/waste.md (Pickups), PR #371; round 16: over the waste clip's last shot",
+  "match": "Two places on the floor"
  },
  {
   "chapter": "bottlenecks",

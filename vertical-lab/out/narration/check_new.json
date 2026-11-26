@@ -1,8 +1,7 @@
 {
  "voice": "Kokoro v1.0 af_heart, speed 0.96",
  "recognizers": [
-  "faster-whisper base.en",
-  "faster-whisper small.en"
+  "faster-whisper base.en"
  ],
  "say": {
   "MiR250": "MiR two-fifty",
@@ -44,26 +43,14 @@
  "lines": [
   {
    "i": 0,
-   "chapter": "services",
-   "part": "base_cameras",
-   "text": "Each mobile base now carries three cameras, after a cell in the lab's robot-arms work: two low on the cabinet's ends, one on a mast over the arm's shoulder. They check the docking and watch the arm from outside; none of them is a safety device.",
-   "spoken": "Each mobile base now carries three cameras, after a cell in the lab's robot-arms work: two low on the cabinet's ends, one on a mast over the arm's shoulder. They check the docking and watch the arm from outside; none of them is a safety device.",
-   "phonemes": "ˈiːtʃ mˈoʊbəl bˈeɪs nˈaʊ kˈæɹiz θɹˈiː kˈæmɹəz, ˈæftɚɹ ɐ sˈɛl ɪnðə lˈæbz ɹˈoʊbɑːtˈɑːɹmz wˈɜːk: tˈuː lˈoʊ ɔnðə kˈæbᵻnəts ˈɛndz, wˈʌn ˌɔn ɐ mˈæst ˌoʊvɚ ðɪ ˈɑːɹmz ʃˈoʊldɚ. ðeɪ tʃˈɛk ðə dˈɑːkɪŋ ænd wˈɑːtʃ ðɪ ˈɑːɹm fɹʌm aʊtsˈaɪd; nˈʌn ʌv ðˌɛm ɪz ɐ sˈeɪfti dɪvˈaɪs.",
-   "seconds": 15.36,
+   "chapter": "setup",
+   "part": "setup_lab",
+   "text": "The fume hood's base holds the chemical waste: a vented cabinet for the solvents and one for the acids, with an intake tray above for the capped bottles the robots bring.",
+   "spoken": "The fume hood's base holds the chemical waste: a vented cabinet for the solvents and one for the acids, with an intake tray above for the capped bottles the robots bring.",
+   "phonemes": "ðə fjˈuːm hˈʊdz bˈeɪs hˈoʊldz ðə kˈɛmɪkəl wˈeɪst: ɐ vˈɛntᵻd kˈæbᵻnət fɚðə sˈɑːlvənts ænd wˈʌn fɚðɪ ˈæsɪdz, wɪð ɐn ˈɪnteɪk tɹˈeɪ əbˌʌv fɚðə kˈæpt bˈɑːɾəlz ðə ɹˈoʊbɑːts bɹˈɪŋ.",
+   "seconds": 10.3,
    "base.en": {
-    "heard": "Each mobile base now carries three cameras after a cell in the lab's robot arm's work, too low on the cabinet's ends, one on a mast over the arm's shoulder. They check the docking and watch the arm from outside. None of them is a safety device.",
-    "wer": 0.021,
-    "diffs": [
-     [
-      "substitute",
-      "two",
-      "too"
-     ]
-    ],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "Each mobile base now carries three cameras, after a cell in the lab's robot arm's work. Two low on the cabinet's ends, one on a mast over the arm's shoulder. They check the docking and watch the arm from outside. None of them is a safety device.",
+    "heard": "The fume hoods base holds the chemical waste, a vented cabinet for the solvents and one for the acids, with an intake tray above for the capped bottles the robots bring.",
     "wer": 0.0,
     "diffs": [],
     "unsure": []
@@ -71,77 +58,45 @@
   },
   {
    "i": 1,
-   "chapter": "services",
-   "part": "security_cameras_bay.png",
-   "text": "Off-the-shelf security cameras were costed too, in place of the Pi units: about nine to nineteen thousand dollars for the lab. Under the bay's roof most PTZ cameras don't fit.",
-   "spoken": "Off-the-shelf security cameras were costed too, in place of the Pi units: about nine to nineteen thousand dollars for the lab. Under the bay's roof most P T Z cameras don't fit.",
-   "phonemes": "ˈɔfðəʃˈɛlf sᵻkjˈʊɹɹᵻɾi kˈæmɹəz wɜː kˈɔstᵻd tˈuː, ɪn plˈeɪs ʌvðə pˈaɪ jˈuːnɪts: ɐbˌaʊt nˈaɪn tə nˈaɪntiːn θˈaʊzənd dˈɑːlɚz fɚðə lˈæb. ˌʌndɚ ðə bˈeɪz ɹˈuːf mˈoʊst pˈiː tˈiː zˈiː kˈæmɹəz dˈoʊnt fˈɪt.",
-   "seconds": 11.71,
+   "chapter": "corrosion",
+   "part": "vlm_workflow",
+   "text": "The CubXL's second pipette, the proposed P300, now puts the test's two hundred microlitres of seawater on the powder in one transfer. The small one alone took ten.",
+   "spoken": "The Cub X L's second pipette, the proposed P300, now puts the test's two hundred microlitres of seawater on the powder in one transfer. The small one alone took ten.",
+   "phonemes": "ðə kˈʌb ˈɛks ˈɛlz sˈɛkənd pɪpˈɛt, ðə pɹəpˈoʊzd pˈiː θɹˈiːhˈʌndɹɪd, nˈaʊ pˌʊts ðə tˈɛsts tˈuː hˈʌndɹɪd mˈaɪkɹoʊlˌiːɾɚz ʌv sˈiːwɔːɾɚɹ ɔnðə pˈaʊdɚɹ ɪn wˈʌn tɹˈænsfɜː. ðə smˈɔːl wˈʌn ɐlˈoʊn tˈʊk tˈɛn.",
+   "seconds": 11.14,
    "base.en": {
-    "heard": "Off-the-shelf security cameras were costed too, in place of the PI units. About $9,000 to $19,000 for the lab. Under the bay's roof, most PTZ cameras don't fit.",
+    "heard": "The Cub XL's second pipette, the proposed P300, now puts the test's 200 microliters of seawater on the powder in one transfer. The small one alone took 10.",
     "wer": 0.062,
     "diffs": [
      [
-      "insert",
-      "",
-      "thousand"
+      "substitute",
+      "x",
+      "xls"
      ],
      [
       "delete",
-      "dollars",
+      "ls",
       ""
      ]
     ],
     "unsure": [
      [
-      "too,",
-      0.21
-     ],
-     [
-      "PI",
-      0.21
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "Off-the-shelf security cameras were costed, too, in place of the Pi units. About $9,000 to $19,000 for the lab. Under the bay's roof, most PTZ cameras don't fit.",
-    "wer": 0.062,
-    "diffs": [
-     [
-      "insert",
-      "",
-      "thousand"
-     ],
-     [
-      "delete",
-      "dollars",
-      ""
-     ]
-    ],
-    "unsure": [
-     [
-      "Pi",
-      0.29
+      "Cub",
+      0.4
      ]
     ]
    }
   },
   {
    "i": 2,
-   "chapter": "safety",
-   "part": "card",
-   "text": "A metal powder fire needs a Class D agent, not water or carbon dioxide. Every station that handles powder has one within four metres, and each mobile base carries its own.",
-   "spoken": "A metal powder fire needs a Class D agent, not water or carbon dioxide. Every station that handles powder has one within four metres, and each mobile base carries its own.",
-   "phonemes": "ɐ mˈɛɾəl pˈaʊdɚ fˈaɪɚ nˈiːdz ɐ klˈæs dˈiː ˈeɪdʒənt, nˌɑːt wˈɔːɾɚ ɔːɹ kˈɑːɹbən daɪˈɑːksaɪd. ˈɛvɹi stˈeɪʃən ðæt hˈændəlz pˈaʊdɚ hɐz wˈʌn wɪðˌɪn fˈɔːɹ mˈiːɾɚz, ænd ˈiːtʃ mˈoʊbəl bˈeɪs kˈæɹiz ɪts ˈoʊn.",
-   "seconds": 11.93,
+   "chapter": "floor",
+   "part": "waste_clip",
+   "text": "Liquid waste leaves a station in the capped bottle it was made in, one class a trip. At the fume hood the arm sets it in the intake tray, under the sash, and takes an empty back. It never opens or pours.",
+   "spoken": "Liquid waste leaves a station in the capped bottle it was made in, one class a trip. At the fume hood the arm sets it in the intake tray, under the sash, and takes an empty back. It never opens or pours.",
+   "phonemes": "lˈɪkwɪd wˈeɪst lˈiːvz ɐ stˈeɪʃən ɪnðə kˈæpt bˈɑːɾəl ɪt wʌz mˌeɪd ˈɪn, wˈʌn klˈæs ɐ tɹˈɪp. æt ðə fjˈuːm hˈʊd ðɪ ˈɑːɹm sˈɛts ɪɾ ɪnðɪ ˈɪnteɪk tɹˈeɪ, ˌʌndɚ ðə sˈæʃ, ænd tˈeɪks ɐn ˈɛmpti bˈæk. ɪt nˈɛvɚɹ ˈoʊpənz ɔːɹ pˈɔːɹz.",
+   "seconds": 13.06,
    "base.en": {
-    "heard": "A metal powder fire needs a class D agent, not water or carbon dioxide. Every station that handles powder has one within four meters, and each mobile base carries its own.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "A metal powder fire needs a class D agent, not water or carbon dioxide. Every station that handles powder has one within four meters, and each mobile base carries its own.",
+    "heard": "Liquid waste leaves a station in the capped bottle it was made in, one class a trip. At the fume hood, the arm sets it in the intake tray under the sash and takes an empty back. It never opens or pours.",
     "wer": 0.0,
     "diffs": [],
     "unsure": []
@@ -149,618 +104,32 @@
   },
   {
    "i": 3,
-   "chapter": "safety",
-   "part": "safety",
-   "text": "On the robot it rides on the aisle side, where it widens the circle the base turns in by only five millimetres. It leaves three kilograms of the MiR250's payload when the arm holds a full load.",
-   "spoken": "On the robot it rides on the aisle side, where it widens the circle the base turns in by only five millimetres. It leaves three kilograms of the MiR two-fifty's payload when the arm holds a full load.",
-   "phonemes": "ɔnðə ɹˈoʊbɑːt ɪt ɹˈaɪdz ɔnðɪ ˈaɪəl sˈaɪd, wˌɛɹ ɪt wˈaɪdənz ðə sˈɜːkəl ðə bˈeɪs tˈɜːnz ɪn baɪ ˈoʊnli fˈaɪv mˈɪlɪmˌiːɾɚz. ɪt lˈiːvz θɹˈiː kˈɪləɡɹˌæmz ʌvðə mˈiːɹ tˈuːfˈɪftiz pˈeɪloʊd wɛn ðɪ ˈɑːɹm hˈoʊldz ɐ fˈʊl lˈoʊd.",
-   "seconds": 12.91,
+   "chapter": "floor",
+   "part": "waste_clip",
+   "text": "A person moves the bottles into the hood's vented cabinets each day shift: solvents on the left, acids on the right, a shelf apart.",
+   "spoken": "A person moves the bottles into the hood's vented cabinets each day shift: solvents on the left, acids on the right, a shelf apart.",
+   "phonemes": "ɐ pˈɜːsən mˈuːvz ðə bˈɑːɾəlz ˌɪntʊ ðə hˈʊdz vˈɛntᵻd kˈæbᵻnəts ˈiːtʃ dˈeɪ ʃˈɪft: sˈɑːlvənts ɔnðə lˈɛft, ˈæsɪdz ɔnðə ɹˈaɪt, ɐ ʃˈɛlf ɐpˈɑːɹt.",
+   "seconds": 8.21,
    "base.en": {
-    "heard": "On the robot, it rides on the aisle side, where it widens the circle, the base turns in by only five millimeters. It leaves three kilograms of the mere 250s payload when the arm holds a full load.",
-    "wer": 0.128,
-    "diffs": [
-     [
-      "substitute",
-      "mir",
-      "mere"
-     ],
-     [
-      "insert",
-      "",
-      "hundred and fifty"
-     ],
-     [
-      "substitute",
-      "fiftys",
-      "s"
-     ]
-    ],
-    "unsure": [
-     [
-      "five",
-      0.38
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "On the robot, it rides on the aisle side, where it widens the circle, the base turns in by only 5 millimeters. It leaves 3 kilograms of the mere 250s payload when the arm holds a full load.",
-    "wer": 0.128,
-    "diffs": [
-     [
-      "substitute",
-      "mir",
-      "mere"
-     ],
-     [
-      "insert",
-      "",
-      "hundred and fifty"
-     ],
-     [
-      "substitute",
-      "fiftys",
-      "s"
-     ]
-    ],
+    "heard": "A person moves the bottles into the hood's vented cabinets each day shift. Solvents on the left, acids on the right, a shelf apart.",
+    "wer": 0.0,
+    "diffs": [],
     "unsure": []
    }
   },
   {
    "i": 4,
-   "chapter": "safety",
-   "part": "safety_other_assets.png",
-   "text": "The building's own extinguishers hang on the racking, four metres or more from any Class D unit and signed differently. BYU's safety office still has to confirm the plan.",
-   "spoken": "The building's own extinguishers hang on the racking, four metres or more from any Class D unit and signed differently. B Y U's safety office still has to confirm the plan.",
-   "phonemes": "ðə bˈɪldɪŋz ˈoʊn ɛkstˈɪŋɡwɪʃɚz hˈæŋ ɔnðə ɹˈækɪŋ, fˈɔːɹ mˈiːɾɚz ɔːɹ mˈɔːɹ fɹʌm ˌɛni klˈæs dˈiː jˈuːnɪt ænd sˈaɪnd dˈɪfɹəntli. bˈiː wˈaɪ jˈuːz sˈeɪfti ˈɑːfɪs stˈɪl hɐz tə kənfˈɜːm ðə plˈæn.",
-   "seconds": 10.92,
-   "base.en": {
-    "heard": "The building's own extinguishers hang on the racking, four meters or more from any class D unit, and signed differently. BYU's safety office still has to confirm the plan.",
-    "wer": 0.067,
-    "diffs": [
-     [
-      "substitute",
-      "by",
-      "byus"
-     ],
-     [
-      "delete",
-      "us",
-      ""
-     ]
-    ],
-    "unsure": [
-     [
-      "class",
-      0.45
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "The building's own extinguishers hang on the racking, four meters or more from any Class D unit, and signed differently. BYU's Safety Office still has to confirm the plan.",
-    "wer": 0.067,
-    "diffs": [
-     [
-      "substitute",
-      "by",
-      "byus"
-     ],
-     [
-      "delete",
-      "us",
-      ""
-     ]
-    ],
-    "unsure": []
-   }
-  },
-  {
-   "i": 5,
-   "chapter": "corrosion",
-   "part": "card",
-   "text": "The first tray is a corrosion station: the OT-2 makes up the sulfide stock, and the CubXL runs the alloy lab's copper corrosion screen, spot by spot.",
-   "spoken": "The first tray is a corrosion station: the O T two makes up the sulfide stock, and the Cub X L runs the alloy lab's copper corrosion screen, spot by spot.",
-   "phonemes": "ðə fˈɜːst tɹˈeɪ ɪz ɐ kɚɹˈoʊʒən stˈeɪʃən: ðɪ ˈoʊ tˈiː tˈuː mˌeɪks ˌʌp ðə sˈʌlfaɪd stˈɑːk, ænd ðə kˈʌb ˈɛks ˈɛl ɹˈʌnz ðɪ ˈælɔɪ lˈæbz kˈɑːpɚ kɚɹˈoʊʒən skɹˈiːn, spˈɑːt baɪ spˈɑːt.",
-   "seconds": 10.5,
-   "base.en": {
-    "heard": "The first tray is a corrosion station. The OT-2 makes up the sulfide stock, and the Cub XL runs the alloy lab's copper corrosion screen, spot by spot.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": [
-     [
-      "alloy",
-      0.48
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "The first tray is a corrosion station. The OT2 makes up the sulfide stock, and the Cub XL runs the Alloy Labs copper corrosion screen, spot by spot.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 6,
-   "chapter": "corrosion",
-   "part": "instruments/ot2_corrosion_prep",
-   "text": "The OT-2's maker says to keep corrosive materials away from it, so its deck now holds only seawater and sulfide. The tenfold dilution for ICP-MS is made at the station on the floor, in its own fume hood.",
-   "spoken": "The O T two's maker says to keep corrosive materials away from it, so its deck now holds only seawater and sulfide. The tenfold dilution for I C P M S is made at the station on the floor, in its own fume hood.",
-   "phonemes": "ðɪ ˈoʊ tˈiː tˈuːz mˈeɪkɚ sˈɛz tə kˈiːp kɚɹˈoʊsɪv mətˈɪɹiəlz ɐwˈeɪ fɹʌm ɪt, sˌoʊ ɪts dˈɛk nˈaʊ hˈoʊldz ˈoʊnli sˈiːwɔːɾɚ ænd sˈʌlfaɪd. ðə tˈɛnfoʊld daɪlˈuːʃən fɔːɹ aɪ sˈiː pˈiː ˈɛm ˈɛs ɪz mˌeɪd æt ðə stˈeɪʃən ɔnðə flˈɔːɹ, ɪn ɪts ˈoʊn fjˈuːm hˈʊd.",
-   "seconds": 14.49,
-   "base.en": {
-    "heard": "The OT2's maker says to keep corrosive materials away from it so its deck now holds only seawater and sulfide. The tenfold dilution for ICPMS is made at the station on the floor in its own fume hood.",
-    "wer": 0.051,
-    "diffs": [
-     [
-      "insert",
-      "",
-      "two"
-     ],
-     [
-      "substitute",
-      "twos",
-      "s"
-     ]
-    ],
-    "unsure": [
-     [
-      "so",
-      0.42
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "The OT2's maker says to keep corrosive materials away from it, so its deck now holds only seawater and sulfide. The tenfold dilution for ICP-MS is made at the station on the floor, in its own fume hood.",
-    "wer": 0.051,
-    "diffs": [
-     [
-      "insert",
-      "",
-      "two"
-     ],
-     [
-      "substitute",
-      "twos",
-      "s"
-     ]
-    ],
-    "unsure": []
-   }
-  },
-  {
-   "i": 7,
-   "chapter": "corrosion",
-   "part": "instruments/cubxl_corrosion",
-   "text": "The second pipette, a P300 on its own small lift, is a proposal: it cuts a spot's thirty-three transfers to six. The alloy lab's protocol itself is unchanged.",
-   "spoken": "The second pipette, a P300 on its own small lift, is a proposal: it cuts a spot's thirty-three transfers to six. The alloy lab's protocol itself is unchanged.",
-   "phonemes": "ðə sˈɛkənd pɪpˈɛt, ɐ pˈiː θɹˈiːhˈʌndɹɪd ˌɔn ɪts ˈoʊn smˈɔːl lˈɪft, ɪz ɐ pɹəpˈoʊzəl: ɪt kˈʌts ɐ spˈɑːts θˈɜːɾiθɹˈiː tɹˈænsfɜːz tə sˈɪks. ðɪ ˈælɔɪ lˈæbz pɹˈoʊɾəkˌɑːl ɪtsˈɛlf ɪz ʌntʃˈeɪndʒd.",
-   "seconds": 11.01,
-   "base.en": {
-    "heard": "The second pipette, a P300 on its own small lift, is a proposal. It cuts a spot's 33 transfers to six. The alloy lab's protocol itself is unchanged. It's unchanged.",
-    "wer": 0.065,
-    "diffs": [
-     [
-      "insert",
-      "",
-      "its unchanged"
-     ]
-    ],
-    "unsure": [
-     [
-      "It's",
-      0.17
-     ],
-     [
-      "unchanged.",
-      0.0
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "The second pipette, a P300 on its own small lift, is a proposal. It cuts a spot's 33 transfers to six. The Alloy Labs protocol itself is unchanged.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 8,
-   "chapter": "corrosion",
-   "part": "cubxl_evap.png",
-   "text": "By a first-order estimate the well loses only one to three percent of its water a spot. The sulfide is another matter: as hydrogen sulfide escapes, the metal sees about a tenth of the planned dose unless the well is mixed or sealed.",
-   "spoken": "By a first-order estimate the well loses only one to three percent of its water a spot. The sulfide is another matter: as hydrogen sulfide escapes, the metal sees about a tenth of the planned dose unless the well is mixed or sealed.",
-   "phonemes": "baɪ ɐ fˈɜːstˈɔːɹdɚɹ ˈɛstᵻmət ðə wˈɛl lˈuːzᵻz ˈoʊnli wˈʌn tə θɹˈiː pɚsˈɛnt ʌv ɪts wˈɔːɾɚɹ ɐ spˈɑːt. ðə sˈʌlfaɪd ɪz ɐnˈʌðɚ mˈæɾɚ: æz hˈaɪdɹədʒən sˈʌlfaɪd ɛskˈeɪps, ðə mˈɛɾəl sˈiːz ɐbˌaʊt ɐ tˈɛnθ ʌvðə plˈænd dˈoʊs ʌnlˈɛs ðə wˈɛl ɪz mˈɪkst ɔːɹ sˈiːld.",
-   "seconds": 15.08,
-   "base.en": {
-    "heard": "By a first-order estimate, the well loses only 1% to 3% of its water a spot. The sulfide is another matter. As hydrogen sulfide escapes, the metal sees about a tenth of the plant dose unless the well is mixed or sealed.",
-    "wer": 0.045,
-    "diffs": [
-     [
-      "insert",
-      "",
-      "percent"
-     ],
-     [
-      "substitute",
-      "planned",
-      "plant"
-     ]
-    ],
-    "unsure": [
-     [
-      "%",
-      0.4
-     ],
-     [
-      "plant",
-      0.25
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "By a first-order estimate, the well loses only 1 to 3 percent of its water a spot. The sulfide is another matter. As hydrogen sulfide escapes, the metal sees about a tenth of the planned dose unless the well is mixed or sealed.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 9,
-   "chapter": "alloy1",
-   "part": "card",
-   "text": "The alloy route follows one alloy from its charge to the finished measurements. First the charge: cups turned from bar, dosed with powder by weight, then pressed shut under vacuum.",
-   "spoken": "The alloy route follows one alloy from its charge to the finished measurements. First the charge: cups turned from bar, dosed with powder by weight, then pressed shut under vacuum.",
-   "phonemes": "ðɪ ˈælɔɪ ɹˈaʊt fˈɑːloʊz wˈʌn ˈælɔɪ fɹʌm ɪts tʃˈɑːɹdʒ tə ðə fˈɪnɪʃt mˈɛʒɚmənts. fˈɜːst ðə tʃˈɑːɹdʒ: kˈʌps tˈɜːnd fɹʌm bˈɑːɹ, dˈoʊst wɪð pˈaʊdɚ baɪ wˈeɪt, ðˈɛn pɹˈɛst ʃˈʌt ˌʌndɚ vˈækjuːm.",
-   "seconds": 10.82,
-   "base.en": {
-    "heard": "The alloy route follows one alloy from its charge to the finished measurements. First the charge, cups turned from bar, dosed with powder by weight, then pressed shut under vacuum.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "The alloy route follows one alloy from its charge to the finished measurements. First the charge. Cups turned from bar, dosed with powder by weight, then pressed shut under vacuum.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 10,
-   "chapter": "alloy1",
-   "part": "machining_cell",
-   "text": "The cups start as bar. No other machine here can turn one, so this cell is new: a bar-fed lathe, the same arm on a pedestal, two IPA washes and a vacuum dryer.",
-   "spoken": "The cups start as bar. No other machine here can turn one, so this cell is new: a bar-fed lathe, the same arm on a pedestal, two IPA washes and a vacuum dryer.",
-   "phonemes": "ðə kˈʌps stˈɑːɹt æz bˈɑːɹ. nˈoʊ ˈʌðɚ məʃˈiːn hˈɪɹ kæn tˈɜːn wˌʌn, sˌoʊ ðɪs sˈɛl ɪz nˈuː: ɐ bˈɑːɹfˈɛd lˈeɪð, ðə sˈeɪm ˈɑːɹm ˌɔn ɐ pˈɛdɪstəl, tˈuː ˌaɪpˌiːˈeɪ wˈɑːʃᵻz ænd ɐ vˈækjuːm dɹˈaɪɚ.",
-   "seconds": 11.01,
-   "base.en": {
-    "heard": "The cups start as bar. No other machine here can turn one, so this cell is new. A bar fed lathe, the same arm on a pedestal, two IPA washes, and a vacuum dryer.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "The cups start as bar. No other machine here can turn one, so this cell is new. A bar-fed lathe, the same arm on a pedestal, two IPA washes, and a vacuum dryer.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 11,
-   "chapter": "alloy1",
-   "part": "machining_cell",
-   "text": "The IPA stays in closed vessels standing in the baths' water, as the bath's maker requires for a flammable liquid. On the lathe, alcohol is the only lubricant, and aluminium and copper run on separate days with their own tools.",
-   "spoken": "The IPA stays in closed vessels standing in the baths' water, as the bath's maker requires for a flammable liquid. On the lathe, alcohol is the only lubricant, and aluminum and copper run on separate days with their own tools.",
-   "phonemes": "ðə ˌaɪpˌiːˈeɪ stˈeɪz ɪn klˈoʊzd vˈɛsəlz stˈændɪŋ ɪnðə bˈæθs wˈɔːɾɚ, æz ðə bˈæθz mˈeɪkɚ ɹᵻkwˈaɪɚz fɚɹə flˈæməbəl lˈɪkwɪd. ɔnðə lˈeɪð, ˈælkəhˌɑːl ɪz ðɪ ˈoʊnli lˈuːbɹɪkənt, ænd ɐlˈuːmɪnəm ænd kˈɑːpɚ ɹˈʌn ˌɔn sˈɛpɹət dˈeɪz wɪð ðɛɹ ˈoʊn tˈuːlz.",
-   "seconds": 14.7,
-   "base.en": {
-    "heard": "The IPA stays in closed vessels standing in the bath's water, as the bath's maker requires for a flammable liquid. On the lathe, alcohol is the only lubricant, and aluminum and copper run on separate days with their own tools.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "The IPA stays in closed vessels standing in the bath's water, as the bath's maker requires for a flammable liquid. On the lathe, alcohol is the only lubricant, and aluminum and copper run on separate days with their own tools.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 12,
-   "chapter": "alloy1",
-   "part": "machining_sim.png",
-   "text": "Simulated part by part, the cell makes about a hundred and fourteen pairs a day against the sixty-seven needed. The dryer and the baskets set the pace, not the lathe, and the stoppage rates are estimates.",
-   "spoken": "Simulated part by part, the cell makes about a hundred and fourteen pairs a day against the sixty-seven needed. The dryer and the baskets set the pace, not the lathe, and the stoppage rates are estimates.",
-   "phonemes": "sˈɪmjʊlˌeɪɾᵻd pˈɑːɹt baɪ pˈɑːɹt, ðə sˈɛl mˌeɪks ɐbˌaʊt ɐ hˈʌndɹɪd ænd fˈɔːɹtiːn pˈɛɹz ɐ dˈeɪ ɐɡˈɛnst ðə sˈɪkstisˈɛvən nˈiːdᵻd. ðə dɹˈaɪɚ ænd ðə bˈæskɪts sˈɛt ðə pˈeɪs, nˌɑːt ðə lˈeɪð, ænd ðə stˈɑːpɪdʒ ɹˈeɪts ɑːɹ ˈɛstᵻməts.",
-   "seconds": 12.65,
-   "base.en": {
-    "heard": "Simulated part by part, the cell makes about 114 pairs a day against the 67 needed. The dryer and the baskets set the pace, not the lathe, and the stoppage rates are estimates.",
-    "wer": 0.027,
-    "diffs": [
-     [
-      "substitute",
-      "a",
-      "one"
-     ]
-    ],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "Simulated part by part, the cell makes about 114 pairs a day against the 67 needed. The dryer and the basket set the pace, not the lathe, and the stoppage rates are estimates.",
-    "wer": 0.054,
-    "diffs": [
-     [
-      "substitute",
-      "a",
-      "one"
-     ],
-     [
-      "substitute",
-      "baskets",
-      "basket"
-     ]
-    ],
-    "unsure": []
-   }
-  },
-  {
-   "i": 13,
-   "chapter": "alloy1",
-   "part": "ext/doser_drop_v10.mp4",
-   "text": "This is the powder doser project's own render of its newest design: the beaker sits eighteen millimetres under the auger's exit. This lab's animation hasn't caught up; it still shows version five with the dose post.",
-   "spoken": "This is the powder doser project's own render of its newest design: the beaker sits eighteen millimetres under the auger's exit. This lab's animation hasn't caught up; it still shows version five with the dose post.",
-   "phonemes": "ðɪs ɪz ðə pˈaʊdɚ dˈoʊsɚ pɹˈɑːdʒɛkts ˈoʊn ɹˈɛndɚɹ ʌv ɪts nˈuːɪst dɪzˈaɪn: ðə bˈiːkɚ sˈɪts ˈeɪtiːn mˈɪlɪmˌiːɾɚz ˌʌndɚ ðɪ ˈɔːɡɚz ˈɛɡzɪt. ðɪs lˈæbz ˌænɪmˈeɪʃən hˈæzənt kˈɔːt ˈʌp; ɪt stˈɪl ʃˈoʊz vˈɜːʒən fˈaɪv wɪððə dˈoʊs pˈoʊst.",
-   "seconds": 13.59,
-   "base.en": {
-    "heard": "This is the powder doser project's own render of its newest design. The beaker sits 18 millimeters under the auger's exit. This lab's animation hasn't caught up. It still shows version 5 with the dose post.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "This is the Powder Doser, project's own render of its newest design. The beaker sits 18 millimeters under the auger's exit. This lab's animation hasn't caught up. It still shows version 5 with the dose post.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 14,
-   "chapter": "stations",
-   "part": "naming/floor_names.png",
-   "text": "A proposal for names: each station a stone whose own property is its job, like fluorite for the X-ray fluorescence, and the two Shuttles the peaks over Provo, Timp and Nebo.",
-   "spoken": "A proposal for names: each station a stone whose own property is its job, like fluorite for the X-ray fluorescence, and the two Shuttles the peaks over Provo, Timp and Nebo.",
-   "phonemes": "ɐ pɹəpˈoʊzəl fɔːɹ nˈeɪmz: ˈiːtʃ stˈeɪʃən ɐ stˈoʊn hˌuːz ˈoʊn pɹˈɑːpɚɾi ɪz ɪts dʒˈɑːb, lˈaɪk flˈʊɹɹaɪt fɚðɪ ˈɛksɹˈeɪ flʊɹɹˈɛsəns, ænd ðə tˈuː ʃˈʌɾəlz ðə pˈiːks ˌoʊvɚ pɹˈoʊvoʊ, tˈɪmp ænd nˈiːboʊ.",
-   "seconds": 11.46,
-   "base.en": {
-    "heard": "A proposal for names. Each station a stone whose own property is its job, like Fleurite for the X-ray fluorescence. And the two shuttles the peaks over Provo, Timp and Nebo.",
-    "wer": 0.031,
-    "diffs": [
-     [
-      "substitute",
-      "fluorite",
-      "fleurite"
-     ]
-    ],
-    "unsure": [
-     [
-      "A",
-      0.4
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "a proposal for names. Each station a stone whose own property is its job, like fluorite for the X-ray fluorescence, and the two shuttles the peaks over Provo, Timp, and Nebo.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": [
-     [
-      "X",
-      0.42
-     ]
-    ]
-   }
-  },
-  {
-   "i": 15,
-   "chapter": "stations",
-   "part": "colour/bench.png",
-   "text": "Colour goes only where a person decides which tool touches which powder: blue for the aluminium family, orange for copper, always with a word, and checked for colour-blind readers.",
-   "spoken": "Colour goes only where a person decides which tool touches which powder: blue for the aluminum family, orange for copper, always with a word, and checked for colour-blind readers.",
-   "phonemes": "kˈʌlɚ ɡoʊz ˈoʊnli wˌɛɹ ɐ pˈɜːsən dᵻsˈaɪdz wˌɪtʃ tˈuːl tˈʌtʃᵻz wˌɪtʃ pˈaʊdɚ: blˈuː fɚðɪ ɐlˈuːmɪnəm fˈæmɪli, ˈɔɹɪndʒ fɔːɹ kˈɑːpɚ, ˈɔːlweɪz wɪð ɐ wˈɜːd, ænd tʃˈɛkt fɔːɹ kˈʌlɚblˈaɪnd ɹˈiːdɚz.",
-   "seconds": 11.22,
-   "base.en": {
-    "heard": "Color goes only where a person decides which tool touches which powder. Blue for the aluminum family, orange for copper, always with a word, and checked for color blind readers.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": [
-     [
-      "blind",
-      0.37
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "Color goes only where a person decides which tool touches which powder. Blue for the aluminum family, orange for copper, always with a word, and checked for colorblind readers.",
-    "wer": 0.067,
-    "diffs": [
-     [
-      "substitute",
-      "color",
-      "colorblind"
-     ],
-     [
-      "delete",
-      "blind",
-      ""
-     ]
-    ],
-    "unsure": []
-   }
-  },
-  {
-   "i": 16,
    "chapter": "floor",
-   "part": "card",
-   "text": "No floor-cleaning robot on the market is rated for metal dust; the makers that address it forbid it. So this is one option, explored, not decided: what may clean this floor is for the lab's dust hazard analysis.",
-   "spoken": "No floor-cleaning robot on the market is rated for metal dust; the makers that address it forbid it. So this is one option, explored, not decided: what may clean this floor is for the lab's dust hazard analysis.",
-   "phonemes": "nˈoʊ flˈɔːɹklˈiːnɪŋ ɹˈoʊbɑːt ɔnðə mˈɑːɹkɪt ɪz ɹˈeɪɾᵻd fɔːɹ mˈɛɾəl dˈʌst; ðə mˈeɪkɚz ðæt ɐdɹˈɛs ɪt fɚbˈɪd ɪt. sˌoʊ ðɪs ɪz wˈʌn ˈɑːpʃən, ɛksplˈɔːɹd, nˌɑːt dᵻsˈaɪdᵻd: wˌʌt mˈeɪ klˈiːn ðɪs flˈɔːɹ ɪz fɚðə lˈæbz dˈʌst hˈæzɚd ɐnˈæləsˌɪs.",
+   "part": "waste_clip",
+   "text": "Powder waste stays by the atomizer: a vacuum and a pail for each alloy family, a bucket for sweepings, used filters in dry sand. A person seals and carries the liners; powder never rides a robot.",
+   "spoken": "Powder waste stays by the atomizer: a vacuum and a pail for each alloy family, a bucket for sweepings, used filters in dry sand. A person seals and carries the liners; powder never rides a robot.",
+   "phonemes": "pˈaʊdɚ wˈeɪst stˈeɪz baɪ ðɪ ˈæɾəmˌaɪzɚ: ɐ vˈækjuːm ænd ɐ pˈeɪl fɔːɹ ˈiːtʃ ˈælɔɪ fˈæmɪli, ɐ bˈʌkɪt fɔːɹ swˈiːpɪŋz, jˈuːzd fˈɪltɚz ɪn dɹˈaɪ sˈænd. ɐ pˈɜːsən sˈiːlz ænd kˈæɹiz ðə lˈaɪnɚz; pˈaʊdɚ nˈɛvɚ ɹˈaɪdz ɐ ɹˈoʊbɑːt.",
    "seconds": 13.8,
    "base.en": {
-    "heard": "No floor cleaning robot on the market is rated for metal dust, the makers that address it forbid it. So this is one option, explored, not decided. What may clean this floor is for the lab's dust hazard analysis.",
+    "heard": "Powder waste stays by the atomizer. A vacuum and a pail for each alloy family, a bucket for sweepings, used filters in dry sand. A person seals and carries the liners. Powder never rides a robot.",
     "wer": 0.0,
     "diffs": [],
     "unsure": []
-   },
-   "small.en": {
-    "heard": "No floor cleaning robot on the market is rated for metal dust. The makers that address it forbid it. So this is one option, explored, not decided. What may clean this floor is for the lab's dust hazard analysis.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 17,
-   "chapter": "floor",
-   "part": "floor_clean_people",
-   "text": "A visible spill stays a person's job, as the lab's vacuum procedure says: the robot stops and messages them. The person sweeps up the bulk with a natural-bristle broom and leaves the residue to the robot.",
-   "spoken": "A visible spill stays a person's job, as the lab's vacuum procedure says: the robot stops and messages them. The person sweeps up the bulk with a natural-bristle broom and leaves the residue to the robot.",
-   "phonemes": "ɐ vˈɪzᵻbəl spˈɪl stˈeɪz ɐ pˈɜːsənz dʒˈɑːb, æz ðə lˈæbz vˈækjuːm pɹəsˈiːdʒɚ sˈɛz: ðə ɹˈoʊbɑːt stˈɑːps ænd mˈɛsɪdʒᵻz ðˌɛm. ðə pˈɜːsən swˈiːps ˌʌp ðə bˈʌlk wɪð ɐ nˈætʃɚɹəlbɹˈɪsəl bɹˈuːm ænd lˈiːvz ðə ɹˈɛsɪdˌuː tə ðə ɹˈoʊbɑːt.",
-   "seconds": 13.21,
-   "base.en": {
-    "heard": "A visible spill stays a person's job, as the lab's vacuum procedure says. The robot stops and messages them. The person sweeps up the bulk with a natural bristle broom and leaves the residue to the robot.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "A visible spill stays a person's job, as the lab's vacuum procedure says. The robot stops and messages them. The person sweeps up the bulk with a natural bristle broom and leaves the residue to the robot.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 18,
-   "chapter": "floor",
-   "part": "floor_pass",
-   "text": "The whole night's pass, seen from above: fifty-three work spots and forty-five ground studs. Bonding and checking at every spot doubles the model's forty-three minutes to about an hour and a half.",
-   "spoken": "The whole night's pass, seen from above: fifty-three work spots and forty-five ground studs. Bonding and checking at every spot doubles the model's forty-three minutes to about an hour and a half.",
-   "phonemes": "ðə hˈoʊl nˈaɪts pˈæs, sˈiːn fɹʌm əbˈʌv: fˈɪftiθɹˈiː wˈɜːk spˈɑːts ænd fˈɔːɹɾifˈaɪv ɡɹˈaʊnd stˈʌdz. bˈɑːndɪŋ ænd tʃˈɛkɪŋ æɾ ˈɛvɹi spˈɑːt dˈʌbəlz ðə mˈɑːdəlz fˈɔːɹɾiθɹˈiː mˈɪnɪts tʊ ɐbˌaʊt ɐn ˈaʊɚ ænd ɐ hˈæf.",
-   "seconds": 11.65,
-   "base.en": {
-    "heard": "The whole night's pass, seen from above, 53 work spots and 45 ground studs. Bonding and checking at every spot doubles the model's 43 minutes to about an hour and a half.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "The whole nights pass, seen from above. 53 work spots and 45 ground studs. Bonding and checking at every spot doubles the model's 43 minutes to about an hour and a half.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 19,
-   "chapter": "floor",
-   "part": "floor_pass",
-   "text": "Its two spills are illustrations, since the model has no spill rate. Whatever the robot leaves goes on the person's list for the morning.",
-   "spoken": "Its two spills are illustrations, since the model has no spill rate. Whatever the robot leaves goes on the person's list for the morning.",
-   "phonemes": "ɪts tˈuː spˈɪlz ɑːɹ ˌɪləstɹˈeɪʃənz, sˈɪns ðə mˈɑːdəl hɐz nˈoʊ spˈɪl ɹˈeɪt. wʌtˈɛvɚ ðə ɹˈoʊbɑːt lˈiːvz ɡoʊz ɔnðə pˈɜːsənz lˈɪst fɚðə mˈɔːɹnɪŋ.",
-   "seconds": 7.96,
-   "base.en": {
-    "heard": "It's two spills are illustrations since the model has no spill rate. Whatever the robot leaves goes on the person's list for the morning.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "Its two spills are illustrations, since the model has no spill rate. Whatever the robot leaves goes on the person's list for the morning.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": []
-   }
-  },
-  {
-   "i": 20,
-   "chapter": "floor",
-   "part": "waste_streams.png",
-   "text": "The largest hazardous stream would be powder the route never uses: about three quarters of every run comes out too coarse for the printer. What happens to it is undecided, and the amounts are modelled, not weighed.",
-   "spoken": "The largest hazardous stream would be powder the route never uses: about three quarters of every run comes out too coarse for the printer. What happens to it is undecided, and the amounts are modelled, not weighed.",
-   "phonemes": "ðə lˈɑːɹdʒɪst hˈæzɚdəs stɹˈiːm wʊd biː pˈaʊdɚ ðə ɹˈaʊt nˈɛvɚ jˈuːzᵻz: ɐbˌaʊt θɹˈiː kwˈɔːɹɾɚz ʌv ˈɛvɹi ɹˈʌn kˈʌmz ˈaʊt tˈuː kˈɔːɹs fɚðə pɹˈɪntɚ. wˌʌt hˈæpənz tʊ ɪɾ ɪz ˌʌndᵻsˈaɪdᵻd, ænd ðɪ ɐmˈaʊnts ɑːɹ mˈɑːdəld, nˌɑːt wˈeɪd.",
-   "seconds": 12.82,
-   "base.en": {
-    "heard": "The largest hazardous stream would be powder the route never uses. About three-quarters of every run comes out two-course for the printer. What happens to it is undecided, and the amounts are modeled, not weighed.",
-    "wer": 0.054,
-    "diffs": [
-     [
-      "substitute",
-      "too coarse",
-      "two course"
-     ]
-    ],
-    "unsure": []
-   },
-   "small.en": {
-    "heard": "The largest hazardous stream would be powder the route never uses. About three quarters of every run comes out two cores for the printer. What happens to it is undecided and the amounts are modeled, not weighed.",
-    "wer": 0.054,
-    "diffs": [
-     [
-      "substitute",
-      "too coarse",
-      "two cores"
-     ]
-    ],
-    "unsure": []
-   }
-  },
-  {
-   "i": 21,
-   "chapter": "floor",
-   "part": "waste_station_still.png",
-   "text": "Everything hazardous leaves through BYU Risk Management's pickups: about one a month at one alloy a day, one every week or two at ten.",
-   "spoken": "Everything hazardous leaves through B Y U Risk Management's pickups: about one a month at one alloy a day, one every week or two at ten.",
-   "phonemes": "ˈɛvɹɪθˌɪŋ hˈæzɚdəs lˈiːvz θɹuː bˈiː wˈaɪ jˈuː ɹˈɪsk mˈænɪdʒmənts pˈɪkʌps: ɐbˌaʊt wˈʌn ɐ mˈʌnθ æt wˈʌn ˈælɔɪ ɐ dˈeɪ, wˈʌn ˈɛvɹi wˈiːk ɔːɹ tˈuː æt tˈɛn.",
-   "seconds": 8.6,
-   "base.en": {
-    "heard": "Everything hazardous leaves through BYU risk management's pickups, about one a month at one alloy a day, one every week or two at ten.",
-    "wer": 0.0,
-    "diffs": [],
-    "unsure": [
-     [
-      "ten.",
-      0.36
-     ]
-    ]
-   },
-   "small.en": {
-    "heard": "Everything hazardous leaves through BYU risk management's pick-ups, about one a month at one alloy a day, one every week or two at ten.",
-    "wer": 0.083,
-    "diffs": [
-     [
-      "insert",
-      "",
-      "pick"
-     ],
-     [
-      "substitute",
-      "pickups",
-      "ups"
-     ]
-    ],
-    "unsure": [
-     [
-      "hazardous",
-      0.42
-     ],
-     [
-      "pick",
-      0.18
-     ]
-    ]
    }
   }
  ]
