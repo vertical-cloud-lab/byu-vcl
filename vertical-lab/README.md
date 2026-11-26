@@ -58,9 +58,11 @@ this 4-core runner more than a day. So the long-form takes round 15's own frames
 ### Not done, or still open
 
 - **Clips round 16 didn't redraw are round 15's frames,** recovered from its video, so they don't show this round's
-  floor changes where their cameras would see them: chapter 2 and the turnaround's wide shots near the rePowder (the
-  powder point), and any aisle shot looking south past the Instrons (the machining cell's fence and lathe). The
-  chapters' aisle cameras mostly look north and don't see the cell (notes/lab_r16.md).
+  floor changes where their cameras would see them. Chapters 2 and 3 and the turnaround build their own floor
+  (`alloy_atomize_floor`, `atom_base`), which never drew the stations `setup_lab.Floor` adds (the waste station, unit
+  3, and now the powder point and the cell): chapter 2, re-rendered this round, came out byte-identical to round 15's.
+  Chapters 1, 4, 6 and 7 and the maintenance clip build on the full floor; their aisle cameras mostly look north
+  (notes/lab_r16.md). Chapter 5, which looks south past the Instrons towards the cell, is redrawn.
 - **#377's neutral for "ours":** the scheme also asks that our own printed and machined parts stop being drawn blue
   (blue now means the Al family): `atom_brush`, `atom_ground`, `atom_nilfisk` (`OURS`) and `carousel` (teal). That is a
   constant per file, but every clip with those parts would need re-rendering for the change to read consistently:

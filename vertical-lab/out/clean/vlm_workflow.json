@@ -1,7 +1,7 @@
 {
  "name": "vlm_workflow",
  "fps": 15,
- "n_frames": 1641,
+ "n_frames": 1628,
  "size": [
   1280,
   720
@@ -441,57 +441,57 @@
   },
   {
    "label": "6/6",
-   "caption": "The CubXL's own P20 (1-20 µL) takes a 20 µL tip, the capper lifts the seawater cap, and 10 transfers of 20 µL put 200 µL on the powder, 0.4 mm deep (to scale). The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
+   "caption": "The CubXL's P300 (20-300 µL, on its own 40 mm lift; PR #372) takes a 300 µL tip, the capper lifts the seawater cap, and one transfer puts 200 µL on the powder, 0.4 mm deep (to scale): the P20 alone took ten. The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
    "start_frame": 1295,
-   "end_frame": 1332
+   "end_frame": 1335
   },
   {
    "label": "6/6",
-   "caption": "The CubXL's own P20 (1-20 µL) takes a 20 µL tip, the capper lifts the seawater cap, and 10 transfers of 20 µL put 200 µL on the powder, 0.4 mm deep (to scale). The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
-   "start_frame": 1333,
-   "end_frame": 1382
+   "caption": "The CubXL's P300 (20-300 µL, on its own 40 mm lift; PR #372) takes a 300 µL tip, the capper lifts the seawater cap, and one transfer puts 200 µL on the powder, 0.4 mm deep (to scale): the P20 alone took ten. The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
+   "start_frame": 1336,
+   "end_frame": 1390
   },
   {
    "label": "6/6",
-   "caption": "The CubXL's own P20 (1-20 µL) takes a 20 µL tip, the capper lifts the seawater cap, and 10 transfers of 20 µL put 200 µL on the powder, 0.4 mm deep (to scale). The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
-   "start_frame": 1383,
-   "end_frame": 1463
-  },
-  {
-   "label": "6/6",
-   "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
-   "start_frame": 1464,
-   "end_frame": 1473
+   "caption": "The CubXL's P300 (20-300 µL, on its own 40 mm lift; PR #372) takes a 300 µL tip, the capper lifts the seawater cap, and one transfer puts 200 µL on the powder, 0.4 mm deep (to scale): the P20 alone took ten. The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl.",
+   "start_frame": 1391,
+   "end_frame": 1450
   },
   {
    "label": "6/6",
    "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
-   "start_frame": 1474,
-   "end_frame": 1506
+   "start_frame": 1451,
+   "end_frame": 1460
   },
   {
    "label": "6/6",
    "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
-   "start_frame": 1507,
-   "end_frame": 1518
+   "start_frame": 1461,
+   "end_frame": 1493
   },
   {
    "label": "6/6",
    "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
-   "start_frame": 1519,
-   "end_frame": 1529
+   "start_frame": 1494,
+   "end_frame": 1505
   },
   {
    "label": "6/6",
    "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
-   "start_frame": 1530,
-   "end_frame": 1562
+   "start_frame": 1506,
+   "end_frame": 1516
+  },
+  {
+   "label": "6/6",
+   "caption": "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power.",
+   "start_frame": 1517,
+   "end_frame": 1549
   },
   {
    "label": "6/6",
    "caption": "Done: 25 mg of atomized powder under 200 µL of seawater in the CubXL on tray A, stored and powered. The arm and the opening are free for the next request.",
-   "start_frame": 1567,
-   "end_frame": 1640
+   "start_frame": 1554,
+   "end_frame": 1627
   }
  ]
 }
