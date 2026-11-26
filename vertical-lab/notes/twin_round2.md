@@ -221,12 +221,12 @@ left, copper right. Dotted line: the best existing alloy on this synthetic truth
 - **Fidelity check.** With slower, fuller instrument simulators, BOFN scored 0.665 against 0.690 on aluminum and 0.36
   against 0.36 on copper (the same 3 seeds) [4].
 
-### 5.3 The copper tie, tested three ways: none favors BOFN
+### 5.3 The copper tie, tested four ways: none favors BOFN
 
 In the main benchmark, tiered screening edged BOFN with the blend screen on copper (0.69 against 0.67) and plain BOFN
 failed (0.33). Round 2's first reading was that the copper truth was too kind to the funnel: nothing in it was hidden
 from the CALPHAD screen, and the funnel's proxy reads the truth's own strengthening coefficients (14 MPa per wt% Al,
-2.6 Ni, 6 Mn; `truth_cu.CuTruth.strength`). Three tests, 12 seeds each, same seeds as the main benchmark:
+2.6 Ni, 6 Mn; `truth_cu.CuTruth.strength`). Four tests, 12 seeds each, same seeds as the main benchmark:
 
 **A hidden effect: γ₂ (`cu_hidden`, 7 policies × 12 seeds).** Above Al = 8.2 + Ni/2 wt%, nickel-aluminium bronze keeps
 γ₂ (Cu₉Al₄), which corrodes selectively in seawater and embrittles it (the Weill-Couly/Meigh rule). The CALPHAD nodes
@@ -268,6 +268,12 @@ order scored 0.58 ± 0.04 on copper (−0.11 ± 0.03 paired against the funnel),
 0.60 ± 0.04 (−0.08 ± 0.05), against 0.69 for both. On aluminium the proxy without the screen failed outright (all 12
 years at zero: without the screen's cracking and mineral gates every pick fails), and the screen with a random order
 did as well as the funnel (0.35 against 0.34).
+
+**Three times the copper money (`cu_money`, $180k a year, 12 seeds).** The funnel used it: it spent $87k, tested 18
+copper alloys instead of 11, and finished at 0.70 ± 0.01 (+0.01 ± 0.01 paired). BOFN with the blend screen didn't: it
+spent $65k, tested 13 instead of 10, and finished at 0.63 ± 0.03 (−0.05 ± 0.03), 0.07 ± 0.04 behind the funnel (2 seeds
+ahead, 10 behind). Copper is limited by time and work in flight (eight actions at once, deposits that take weeks), not
+by money, and BOFN's per-dollar acquisition doesn't turn spare money into more results.
 
 **What this says.** The funnel's copper lead comes from its screen and a sensible ranking together, and the ranking
 doesn't need the truth's coefficients: off by a factor of 1.5 each, it did as well (0.71). On this truth the freezing
@@ -480,6 +486,7 @@ Every price says where it comes from in `twin/econ.py` (procurement records and 
   nothing (5.3).
 - **Copper with a mis-specified proxy:** tiered screening still finished ahead of BOFN with the blend screen, by
   0.03 ± 0.02 (5.3).
+- **Copper with three times the money:** the funnel used it and BOFN didn't; BOFN finished 0.07 ± 0.04 behind (5.3).
 - **Aluminium, time to the state of the art:** in the vertical lab the heuristic gets there first (37 against about
   120 days); BOFN's lead is the final alloy (0.65-0.69 against 0.60) and the harder target.
 - **Aluminium, against a conventional lab:** the vertical lab with BOFN is 1.1× (0.7-2.2) as fast as a conventional lab
