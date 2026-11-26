@@ -805,6 +805,18 @@
     "notified_subscribers": false
    }
   ],
+  "twin2/video/preview_narrated.mp4": [
+   {
+    "id": "xoRI1OaA81k",
+    "sha256": "47741423ebdafa2601e7b5da70ed90338982ef406b1fd3e44a053423654127f5",
+    "bytes": 19692480,
+    "commit": "dde652e",
+    "uploaded": "2026-11-26T04:11:45Z",
+    "title": "Preview: the campaign video, narrated (digital twin, simulated benchmark)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
   "vacuum_press.mp4": [
    {
     "id": "UGTGpEfyUeQ",

@@ -1103,7 +1103,7 @@ def mux(video: Path, wav: Path):
     silent.unlink()
 
 
-def narrated_preview(seconds: float = 60.0) -> dict:
+def narrated_preview(seconds: float = 60.0, render: bool = True) -> dict:
     """About a minute of the narrated cut: the opening (the title and the lab, what is simulated and what is real),
     then the switch to the whole lab from above, each with its own lines; their audio is cut from the full cut's
     narration track at the same times, so the preview hears exactly what the cut will."""
@@ -1131,20 +1131,25 @@ def narrated_preview(seconds: float = 60.0) -> dict:
         b1 = min(t_lab + max(0.0, seconds - a_end - 2.5), rec["total_s"])
         slices = opening + [("replay", b0 - r0, b1 - b0)]
     pieces = [(n, a, a + d, TMP / f"npreview_{i:02d}_{n}.mp4") for i, (n, a, d) in enumerate(slices)]
-    workers = int(os.environ.get("TWIN_VIDEO_WORKERS", "2"))
-    preset = os.environ.get("TWIN_VIDEO_PRESET", "medium")
-    _run_pieces(pieces, preset, workers)
     dst = VID / "preview_narrated.mp4"
-    concat([p[3] for p in pieces], dst)
-    y, sr = sf.read(str(full), dtype="float32")
-    cut = [y[int(round((seg0[n] + a) * sr)):int(round((seg0[n] + a) * sr)) + int(round(d * sr))]
-           for n, a, d in slices]
-    wav = TMP / "npreview.wav"
-    sf.write(str(wav), np.concatenate(cut), sr, subtype="PCM_16")
-    mux(dst, wav)
-    shift, k = [], 0.0
+    if render:                                          # render=False: the record and metadata of the file as built
+        workers = int(os.environ.get("TWIN_VIDEO_WORKERS", "2"))
+        preset = os.environ.get("TWIN_VIDEO_PRESET", "medium")
+        _run_pieces(pieces, preset, workers)
+        concat([p[3] for p in pieces], dst)
+        y, sr = sf.read(str(full), dtype="float32")
+        cut = [y[int(round((seg0[n] + a) * sr)):int(round((seg0[n] + a) * sr)) + int(round(d * sr))]
+               for n, a, d in slices]
+        wav = TMP / "npreview.wav"
+        sf.write(str(wav), np.concatenate(cut), sr, subtype="PCM_16")
+        mux(dst, wav)
+    shift, k = [], 0.0                                  # windows of the cut the preview plays without a break
     for n, a, d in slices:
-        shift.append((seg0[n] + a, seg0[n] + a + d, k))
+        x0 = seg0[n] + a
+        if shift and abs(shift[-1][1] - x0) < 0.05:
+            shift[-1] = (shift[-1][0], x0 + d, shift[-1][2])
+        else:
+            shift.append((x0, x0 + d, k))
         k += d
     lines = [dict(p, t_preview=round(p["t"] - x0 + k0, 2)) for p in placed for x0, x1, k0 in shift
              if x0 - 0.05 <= p["t"] and p["end"] <= x1 + 0.05]
@@ -1187,7 +1192,7 @@ if __name__ == "__main__":
     elif cmd in ("preview", "final", "final3d"):
         build(cmd)
     elif cmd == "npreview":                             # the narrated preview: the opening and the switch to the lab
-        narrated_preview()
+        narrated_preview(render="--meta-only" not in args)
     elif cmd == "stills":
         stills([float(x) for x in args[1:]])
     elif cmd == "plan":

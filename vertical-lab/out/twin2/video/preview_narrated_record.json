@@ -1,0 +1,65 @@
+{
+ "file": "out/twin2/video/preview_narrated.mp4",
+ "seconds": 60.0,
+ "slices": [
+  {
+   "segment": "title",
+   "start": 0.0,
+   "seconds": 8.0
+  },
+  {
+   "segment": "simulated",
+   "start": 0.0,
+   "seconds": 18.83
+  },
+  {
+   "segment": "replay",
+   "start": 79.3,
+   "seconds": 15.53
+  },
+  {
+   "segment": "replay",
+   "start": 112.4,
+   "seconds": 17.64
+  }
+ ],
+ "lines": [
+  {
+   "id": "open1",
+   "seg": "title",
+   "t": 0.8,
+   "end": 9.53,
+   "text": "This is a simulated benchmark: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab.",
+   "warn": [],
+   "t_preview": 0.8
+  },
+  {
+   "id": "open2",
+   "seg": "simulated",
+   "t": 10.03,
+   "end": 26.03,
+   "text": "Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.",
+   "warn": [],
+   "t_preview": 10.03
+  },
+  {
+   "id": "lab0",
+   "seg": "replay",
+   "t": 301.8,
+   "end": 314.83,
+   "text": "From day two, the event log moves the lab's 3-D model: each booking brings its tray to a Shuttle's opening and back, and a mobile arm drives over to serve it. Trays nobody has booked stay in their slots.",
+   "warn": [],
+   "t_preview": 28.33
+  },
+  {
+   "id": "lab1",
+   "seg": "replay",
+   "t": 335.2,
+   "end": 346.68,
+   "text": "Now the whole lab from above, with the two Shuttles up close from a second camera. The moves run on a clock of their own, so you can follow them; the panel at the bottom counts how many were drawn.",
+   "warn": [],
+   "t_preview": 44.16
+  }
+ ],
+ "built_utc": "2026-11-26 04:11 UTC"
+}
