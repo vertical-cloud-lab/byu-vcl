@@ -293,10 +293,10 @@ astral-sh,Astral,2023-04,seed,investor,Solomon Hykes (person),https://astral.sh/
 astral-sh,Astral,2023-04,seed,investor,David Cramer (person),https://astral.sh/blog/announcing-astral-the-company-behind-ruff,company,found,yes
 astral-sh,Astral,2023-04,seed,investor,Wes McKinney (person),https://astral.sh/blog/announcing-astral-the-company-behind-ruff,company,found,yes
 astral-sh,Astral,2023-04,seed,investor,Nick Schrock (person),https://astral.sh/blog/announcing-astral-the-company-behind-ruff,company,found,yes
-grafana,Grafana Labs,2019-10,series_a,investor,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
-grafana,Grafana Labs,2019-10,series_a,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
-grafana,Grafana Labs,2020-08,series_b,lead,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
-grafana,Grafana Labs,2020-08,series_b,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,unavailable,yes
+grafana,Grafana Labs,2019-10,series_a,investor,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
+grafana,Grafana Labs,2019-10,series_a,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
+grafana,Grafana Labs,2020-08,series_b,lead,Lightspeed Venture Partners,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
+grafana,Grafana Labs,2020-08,series_b,investor,Lead Edge Capital,https://news.crunchbase.com/news/grafana-labs-brings-in-50m-series-b-for-open-source-developer-platform/,news,found,yes
 grafana,Grafana Labs,2024-08,series_d,lead,Lightspeed Venture Partners,https://siliconangle.com/2024/08/21/infrastructure-monitoring-startup-grafana-labs-raises-270m-6b-valuation/,news,found,yes
 grafana,Grafana Labs,2024-08,series_d,investor,GIC,https://siliconangle.com/2024/08/21/infrastructure-monitoring-startup-grafana-labs-raises-270m-6b-valuation/,news,found,yes
 grafana,Grafana Labs,2024-08,series_d,investor,Sequoia Capital,https://siliconangle.com/2024/08/21/infrastructure-monitoring-startup-grafana-labs-raises-270m-6b-valuation/,news,found,yes
@@ -2686,7 +2686,7 @@ bela,Augmented Instruments (Bela),2023-01,crowdfunding_reward,investor,Crowd Sup
 bela,Augmented Instruments (Bela),2025-07,crowdfunding_reward,investor,Crowd Supply backers,https://www.crowdsupply.com/bela/bela-gem-stereo-and-multi,other,unavailable,yes
 openmv,OpenMV,2015-01,crowdfunding_reward,investor,Kickstarter backers,https://www.cnx-software.com/2015/02/03/openvm-is-an-open-source-hardware-vga-camera-controllable-with-python-scripts-crowdfunding/,news,unavailable,yes
 openmv,OpenMV,2018-09,crowdfunding_reward,investor,Kickstarter backers,https://openmv.io/blogs/news/we-reached-our-kickstarter-goal-and-uvc-support,company,found,yes
-openmv,OpenMV,2025,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/openmv/openmv-n6-and-ae3-low-power-python-programmable-ai-cameras/,other,found,yes
+openmv,OpenMV,2025,crowdfunding_reward,investor,Kickstarter backers,https://www.kicktraq.com/projects/openmv/openmv-n6-and-ae3-low-power-python-programmable-ai-cameras/,other,unavailable,yes
 luxonis,Luxonis,2020-07,crowdfunding_reward,investor,Kickstarter backers,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/,news,found,yes
 luxonis,Luxonis,2026-07,series_a,lead,Denali Growth Partners,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/,news,found,yes
 luxonis,Luxonis,2026-07,series_a,investor,Taiwania Capital,https://siliconangle.com/2026/07/03/luxonis-raises-14m-develop-vision-layer-intelligent-automation/,news,not on page,yes
@@ -4735,6 +4735,8 @@ u4-dench-com,Dench.com,2024-06,accelerator,investor,Y Combinator,https://www.yco
 u4-dittofeed,Dittofeed,2022-06,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/dittofeed,other,found,yes
 u4-drdroid,DrDroid,2023-01,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/drdroid,other,found,yes
 u4-drdroid,DrDroid,,venture_unspecified,investor,Accel,https://drdroid.io/about-us,company,in page markup (logo or link),yes
+u4-duix,DUIX,,venture_unspecified,investor,Sequoia Capital,https://www.duix.com/about,company,found,yes
+u4-duix,DUIX,,venture_unspecified,investor,Tencent Capital,https://www.duix.com/about,company,found,yes
 u4-elementary,Elementary,2022-01,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/elementary,other,found,yes
 u4-embrace,Embrace,2019-06,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/embrace,other,found,yes
 u4-embrace,Embrace,2026-11,venture_unspecified,investor,NEA,https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/,news,found,yes
@@ -5232,6 +5234,7 @@ u4-stagewise,Stagewise,2025,venture_unspecified,investor,Teuto Seed Club,https:/
 u4-standard-cyborg,Standard Cyborg,2015-02,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/standard-cyborg,other,found,yes
 u4-standard-physics,Standard Physics,2026,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/standard-physics,other,found,yes
 u4-stellon-labs,Stellon Labs,2025,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/stellon-labs,other,found,yes
+u4-stition-ai,Stition (winfunc),2024,accelerator,investor,Y Combinator,https://winfunc.com/about,company,found,yes
 u4-storia-ai,Storia AI,2024,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/storia-ai,other,found,yes
 u4-subimage,Subimage,2025,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/subimage,other,found,yes
 u4-sublingual,Sublingual,2025,accelerator,investor,Y Combinator,https://www.ycombinator.com/companies/sublingual,other,found,yes
@@ -5438,6 +5441,7 @@ u4-aitable,AITable,2023-02,venture_unspecified,investor,IDG Capital,https://tech
 u4-aitable,AITable,2023-02,venture_unspecified,investor,GL Ventures,https://techcrunch.com/2023/02/09/low-code-database-apitable-is-another-airtable-challenger/,news,found,no (exact duplicate row)
 u4-aitable,AITable,2023-02,venture_unspecified,investor,5Y Capital,https://techcrunch.com/2023/02/09/low-code-database-apitable-is-another-airtable-challenger/,news,found,no (exact duplicate row)
 u4-aitable,AITable,2023-02,venture_unspecified,investor,Eminence Ventures,https://techcrunch.com/2023/02/09/low-code-database-apitable-is-another-airtable-challenger/,news,found,no (exact duplicate row)
+u4-atri-labs,Atri Labs,,accelerator,investor,Y Combinator,https://raw.githubusercontent.com/atri-labs/atrilabs-engine/HEAD/README.md,company,in page markup (logo or link),yes
 u4-bluesky,Bluesky,2023,seed,lead,Neo,https://techcrunch.com/2026/03/19/bluesky-announces-100m-series-b-after-ceo-transition/,news,found,yes
 u4-bluesky,Bluesky,2024,series_a,lead,Blockchain Capital,https://techcrunch.com/2026/03/19/bluesky-announces-100m-series-b-after-ceo-transition/,news,found,yes
 u4-bluesky,Bluesky,2025-04,series_b,lead,Bain Capital Crypto,https://techcrunch.com/2026/03/19/bluesky-announces-100m-series-b-after-ceo-transition/,news,found,yes
@@ -5657,6 +5661,8 @@ u4-tigerbeetle,TigerBeetle,2024-07,series_a,investor,Coil,https://techcrunch.com
 u4-timber,Timber,2021-02,venture_unspecified,investor,NextView Ventures,https://siliconangle.com/2021/02/11/datadog-acquires-timber-sqreen-reports-lower-expected-guidance/,news,found,yes
 u4-timber,Timber,2021-02,venture_unspecified,investor,Wonder Ventures,https://siliconangle.com/2021/02/11/datadog-acquires-timber-sqreen-reports-lower-expected-guidance/,news,found,yes
 u4-timber,Timber,2021-02,venture_unspecified,investor,Notation Capital,https://siliconangle.com/2021/02/11/datadog-acquires-timber-sqreen-reports-lower-expected-guidance/,news,found,yes
+u4-up9-inc,UP9 (Kubeshark),,venture_unspecified,investor,Zeev Ventures,https://kubeshark.com/about,company,in page markup (logo or link),yes
+u4-up9-inc,UP9 (Kubeshark),,venture_unspecified,investor,Engineering Capital,https://kubeshark.com/about,company,in page markup (logo or link),yes
 u4-zincsearch,ZincSearch,,venture_unspecified,investor,Nexus Venture Partners,https://openobserve.ai/about/,company,found,yes
 u4-zincsearch,ZincSearch,,venture_unspecified,investor,Dell Technologies Capital,https://openobserve.ai/about/,company,found,yes
 u4-zincsearch,ZincSearch,,venture_unspecified,investor,Secure Octane,https://openobserve.ai/about/,company,found,yes

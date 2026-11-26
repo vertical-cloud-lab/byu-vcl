@@ -14,11 +14,11 @@
 | Alibaba | corporate / strategic | 7 | 5 | 01.AI, Baichuan Intelligence, MariaDB, MiniMax, Moonshot AI, Sealos, Z.ai |
 | Amazon | corporate / strategic | 7 | 0 | Acquia, Databricks, EvolutionaryScale, H Company, Hugging Face, Mentra, Weaveworks |
 | Databricks Ventures | corporate / strategic | 7 | 0 | Inferact, LanceDB, LangChain, LlamaIndex, Neon, RadixArk, Reflex |
+| Tencent | corporate / strategic | 7 | 2 | Baichuan Intelligence, Moonshot AI, DUIX, DeepSeek, MiniMax, StepFun, Z.ai |
 | Automattic | corporate / strategic | 6 | 0 | Deno Land Inc., Element, Hoppscotch, Liquid AI, Riot IM, Twenty |
 | Google | corporate / strategic | 6 | 1 | Isovalent, AI21 Labs, Hugging Face, K-Dense, Resemble AI, Sakana AI |
 | Mozilla Ventures | corporate / strategic | 6 | 0 | Adap, Deno Land Inc., Flower, Hugging Face, Nous Research, Probabl |
 | Qualcomm Ventures | corporate / strategic | 6 | 3 | 3D Robotics, Particle, ScyllaDB, Daytona Platforms, Hugging Face, SiFive |
-| Tencent | corporate / strategic | 6 | 2 | Baichuan Intelligence, Moonshot AI, DeepSeek, MiniMax, StepFun, Z.ai |
 | Atlassian Ventures | corporate / strategic | 4 | 0 | Docker Inc., Liveblocks, Raycast, Tidelift |
 | Citi Ventures | corporate / strategic | 4 | 1 | InfluxData, Anaconda, Inc., Docker Inc., Harness |
 | Comcast Ventures | corporate / strategic | 4 | 2 | Nebula, Inc., Neural Magic, AI21 Labs, Resemble AI |

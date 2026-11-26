@@ -417,7 +417,8 @@ the CSVs (448 table cells agreed) and ranked eleven problems. What was done abou
 | 11. Changes to the protocol were not logged | logged below |
 
 One more fix came from checking the data again: a "Lux Capital" that a Hong Kong paper lists among DeepSeek's
-shareholders is kept apart from the US firm of that name ([`data/contextual_aliases.csv`](data/contextual_aliases.csv)).
+shareholders is kept apart from the US firm of that name, as is the "Sequoia Capital" that DUIX names without saying
+which arm ([`data/contextual_aliases.csv`](data/contextual_aliases.csv)).
 
 ## How the list was made
 
@@ -455,11 +456,11 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
    They added rounds from company newsrooms, Wikipedia's cited articles, SEC prospectuses and archived press
    releases. Late passes found little that was new, a sign that these sources were exhausted.
    - A separate check confirmed 24 investor–venture links from investors' own portfolio pages; it rejected 2.
-   - At the end, the U1–U3 ventures with no funding found were swept once more without search: their own home and
-     about pages and the READMEs of their top GitHub repositories
-     ([`data/verify/none_found_sweep.csv`](data/verify/none_found_sweep.csv)), plus part 2's matches to SEC Form D
-     filings. That found funding for four of them (pass `xs1`): VoltAgent's angels, EveryApp's Y Combinator backing,
-     and Form D equity sales by Agno and DoltHub, whose investors the filings do not name.
+   - At the end, the ventures with no funding found were swept once more without search: their own home and about
+     pages and the READMEs of their top GitHub repositories (`data/verify/none_found_sweep*.csv`), plus part 2's
+     matches to SEC Form D filings. That found funding for four in U1 (pass `xs1`: VoltAgent's angels, EveryApp's
+     Y Combinator backing, and Form D equity sales by Agno and DoltHub, whose investors the filings do not name) and
+     four in U4 (pass `xs2`: DUIX, Stition, Atri Labs and UP9).
 6. **Program passes.** Six passes listed the programs that fund open source and open science outside equity
    rounds: foundations (twice, the second through the Moore and Sloan grants databases), governments and public
    investors, corporate funds, crypto, accelerators, fellowships and crowdfunding. They also recorded investors
@@ -517,8 +518,8 @@ shareholders is kept apart from the US firm of that name ([`data/contextual_alia
 - **A count is not a return.** Nothing here measures whether these funders made money on open source. Edison found
   no study that does. Being on the list doesn't mean a funder would back a new open venture.
 - **Names are normalised by hand.** Fund vehicles roll up to the firm, and corporate arms stay separate but roll up
-  to their parent in one table. Some aliases will be missed, and a few distinct firms share a name; one known case,
-  DeepSeek's "Lux Capital", is kept apart. Funders with one venture were typed by rules on their names (people as
+  to their parent in one table. Some aliases will be missed, and a few distinct firms share a name; two known cases,
+  DeepSeek's "Lux Capital" and DUIX's "Sequoia Capital", are kept apart. Funders with one venture were typed by rules on their names (people as
   angels), then read over once by hand, which moved about 100 corporate arms, crypto funds, state funds and growth
   investors out of "venture firm".
 - **Some ventures in the counts are only partly open**: open-core companies, AI labs that release some weights, and

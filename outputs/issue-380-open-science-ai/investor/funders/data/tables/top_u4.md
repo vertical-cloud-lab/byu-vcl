@@ -1,6 +1,6 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
-| Y Combinator | accelerator / studio | 241 | 1 | Imgix, /dev/fast, 0.security, 280 North, Activeloop, Acyclic Labs, Adap, Aden … |
+| Y Combinator | accelerator / studio | 243 | 1 | Imgix, /dev/fast, 0.security, 280 North, Activeloop, Acyclic Labs, Adap, Aden … |
 | SV Angel | venture firm | 10 | 1 | Imgix, Citus Data, Composio, Evidence, KERNEL, OpenCode, PipelineDB, Resend … |
 | Andreessen Horowitz | venture firm | 9 | 5 | Apollo, Civit, GitButler, Resend, Upstash, Flotype, Rivet, Sesame … |
 | Pioneer Fund | venture firm | 9 | 0 | Adap, Airweave, Flower, LiteLLM, Netmaker, Paradev, Sourcebot, Trigger.dev … |

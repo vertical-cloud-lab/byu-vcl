@@ -26,18 +26,18 @@
   "U4": {
    "ventures": 402,
    "researched": 402,
-   "with_funding": 306,
-   "none_found": 94,
+   "with_funding": 310,
+   "none_found": 90,
    "bootstrapped_stated": 2
   }
  },
- "round_records_counted": 1740,
- "rounds": 1719,
- "investor_venture_links": 4065,
- "investors": 1954,
+ "round_records_counted": 1744,
+ "rounds": 1723,
+ "investor_venture_links": 4071,
+ "investors": 1955,
  "investors_by_type": {
   "accelerator": 24,
-  "venture_firm": 835,
+  "venture_firm": 836,
   "growth_pe_hedge": 134,
   "corporate_venture": 228,
   "angel": 507,
@@ -54,7 +54,7 @@
  "investors_5plus": 128,
  "rounds_by_source_kind": {
   "news": 816,
-  "company": 419,
+  "company": 423,
   "investor": 36,
   "wikipedia": 118,
   "other": 422,

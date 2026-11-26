@@ -245,7 +245,8 @@ T.update({
 # funders with two or more ventures that the name rules had typed as venture firms; each checked by hand
 T.update({"Fathom Capital": V, "Rebel Fund": V, "The House Fund": V, "TLV Partners": V, "Grand Ventures": V, "Zeev Ventures": V, "Eniac Ventures": V, "GL Ventures": V, "Liquid 2 Ventures": V, "Wayfinder Ventures": V, "Webb Investment Network": V, "Zetta Venture Partners": V, "Highland Capital Partners": V, "Nauta Capital": V, "August Capital": V, "Cortical Ventures": V, "Cota Capital": V, "Engineering Capital": V, "First Spark Ventures": V, "Flybridge Capital Partners": V, "Qumra Capital": V, "Race Capital": V, "1984 Ventures": V, "Abstraction Capital": V, "Acequia Capital": V, "Angel Invest": V, "Anthos Capital": V, "Basecase Capital": V, "Bold Capital Partners": V, "DIG Ventures": V, "Day One Ventures": V, "Epic Ventures": V, "Exceptional Capital": V, "Future Capital": V, "GTMFund": V, "Glynn Capital": V, "Gravity Fund": V, "Hustle Fund": V, "Motier Ventures": V, "Outset Capital": V, "Radar Partners": V, "Rain Capital": V, "Ratio Ventures": V, "Rogue Capital": V, "S Ventures": V, "ScaleX Ventures": V, "Shunwei Capital": V, "Sound Ventures": V, "Tekedia Capital": V, "Triangle Peak Partners": V, "Trustbridge Partners": V, "European Commission": GG})
 
-T.update({"SAGE Publishing": C, "O'Reilly Media": C, "Lux Capital (as named for DeepSeek)": V})  # PeerJ (pass h01)
+T.update({"SAGE Publishing": C, "O'Reilly Media": C, "Lux Capital (as named for DeepSeek)": V,
+          "Sequoia Capital (as named for DUIX)": V})  # PeerJ (pass h01)
 
 # 2026-11-26, second pass over the one-venture funders the name rules had typed: corporate arms, crypto funds,
 # state funds, growth investors and accelerators that the rules had called venture firms

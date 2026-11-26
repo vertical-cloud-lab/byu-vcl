@@ -251,19 +251,19 @@
  "U4": {
   "ventures": 385,
   "researched": 385,
-  "with_funding": 293,
-  "none_found": 91,
+  "with_funding": 297,
+  "none_found": 87,
   "bootstrapped_stated": 1,
   "out_of_scope": 17,
-  "rounds": 453,
-  "rounds_named": 439,
-  "round_records": 453,
-  "rows_all": 471,
+  "rounds": 457,
+  "rounds_named": 443,
+  "round_records": 457,
+  "rows_all": 475,
   "rows_not_counted": 18,
-  "links": 960,
-  "funders": 524,
-  "funders_1": 424,
-  "funders_3plus": 41,
+  "links": 966,
+  "funders": 526,
+  "funders_1": 425,
+  "funders_3plus": 42,
   "funders_5plus": 14,
   "funders_10plus": 2,
   "top10_share_of_links": 0.32,
@@ -271,7 +271,7 @@
   "top15": [
    [
     "Y Combinator",
-    241
+    243
    ],
    [
     "SV Angel",
@@ -416,7 +416,7 @@
  },
  "types_all": {
   "accelerator": 24,
-  "venture_firm": 835,
+  "venture_firm": 836,
   "growth_pe_hedge": 134,
   "corporate_venture": 228,
   "angel": 507,
@@ -650,7 +650,7 @@
  },
  "rounds_by_source_kind": {
   "news": 816,
-  "company": 419,
+  "company": 423,
   "investor": 36,
   "wikipedia": 118,
   "other": 422,
@@ -658,13 +658,13 @@
   "database": 34
  },
  "source_check": {
-  "mentions": 5518,
-  "fetched": 5219,
-  "found": 4856,
-  "markup_only": 188,
+  "mentions": 5524,
+  "fetched": 5228,
+  "found": 4862,
+  "markup_only": 191,
   "not_on_page": 175,
   "share_found": 0.93,
-  "share_found_or_markup": 0.966
+  "share_found_or_markup": 0.967
  },
  "portfolio_check": {
   "domain_links": 70,
@@ -796,7 +796,7 @@
   "salesforce": 19,
   "samsung": 20,
   "sony": 1,
-  "tencent": 6,
+  "tencent": 7,
   "western_digital": 2
  },
  "focus": {
@@ -810,7 +810,7 @@
   "amplify_partners": 17,
   "bessemer_venture_partners": 20,
   "gv": 20,
-  "y_combinator": 302,
+  "y_combinator": 304,
   "sosv": 3,
   "kickstarter_backers": 16,
   "khosla_ventures": 12,
@@ -895,10 +895,10 @@
   ]
  },
  "sensitivity_db_all": {
-  "links": 4065,
-  "funders": 1954,
-  "links_strict": 3934,
-  "funders_strict": 1903
+  "links": 4071,
+  "funders": 1955,
+  "links_strict": 3940,
+  "funders_strict": 1904
  },
  "thesis_kinds": {
   "named_focus_or_program": 4,
@@ -943,8 +943,8 @@
  },
  "u2_kickstarter": 13,
  "yc_early": {
-  "records": 362,
-  "ventures": 296
+  "records": 364,
+  "ventures": 298
  },
  "spot_check": {
   "links": 40,

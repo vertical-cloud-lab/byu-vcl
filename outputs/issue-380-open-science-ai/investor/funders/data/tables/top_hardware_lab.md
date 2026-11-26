@@ -1,7 +1,7 @@
 | Funder | Type | Ventures backed | Led a round in | Ventures (led first) |
 | --- | --- | --- | --- | --- |
+| Y Combinator | accelerator / studio | 12 | 0 | Adap, AnythingLLM, Atri Labs, Cerulion, Convoy, GitLab Inc., K-Scale Labs, Opentrons Labworks … |
 | Kickstarter backers | crowdfunding | 11 | 0 | Augmented Instruments, Great Scott Gadgets, Luxonis, OpenBCI, OpenMV, Opentrons Labworks, Pine64, Printrbot … |
-| Y Combinator | accelerator / studio | 11 | 0 | Adap, AnythingLLM, Cerulion, Convoy, GitLab Inc., K-Scale Labs, Opentrons Labworks, PeerDB … |
 | True Ventures | venture firm | 6 | 2 | 3D Robotics, Pipedream, Inventables, MakerBot Industries, Monospace Inc., Sofar Ocean Technologies |
 | Crowd Supply backers | crowdfunding | 4 | 0 | Augmented Instruments, Lime Microsystems, MNT Research, Yunnan BinaryStars Technologies |
 | Qualcomm Ventures | corporate / strategic | 4 | 3 | 3D Robotics, Particle, ScyllaDB, SiFive |

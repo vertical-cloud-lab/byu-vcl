@@ -12,8 +12,8 @@
 | Alibaba | Alibaba, Ant Group | 8 | 01.AI, Anyscale, Baichuan Intelligence, MariaDB, MiniMax, Moonshot AI, Sealos, Z.ai |
 | Saudi Aramco | Aramco Ventures (incl. Prosperity7) | 8 | Arcee AI, Cohere, Rescale, SiFive, StreamNative, Together AI, Z.ai, Zilliz |
 | Amazon | Amazon | 7 | Acquia, Databricks, EvolutionaryScale, H Company, Hugging Face, Mentra, Weaveworks |
+| Tencent | Tencent | 7 | Baichuan Intelligence, DUIX, DeepSeek, MiniMax, Moonshot AI, StepFun, Z.ai |
 | Citigroup | Citi, Citi Ventures | 6 | Anaconda, Inc., Docker Inc., Harness, InfluxData, Reflection AI, Sakana AI |
-| Tencent | Tencent | 6 | Baichuan Intelligence, DeepSeek, MiniMax, Moonshot AI, StepFun, Z.ai |
 | NTT | DoCoMo Capital, NTT Docomo Ventures, NTTVC | 3 | Couchbase, Tetrate, TileDB, Inc. |
 | O'Reilly | O'Reilly AlphaTech Ventures, O'Reilly Media | 2 | 3D Robotics, PeerJ |
 | Western Digital | Western Digital Capital | 2 | ScyllaDB, SiFive |
