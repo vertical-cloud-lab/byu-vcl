@@ -1,0 +1,8 @@
+{
+ "what": "What collide.Auditor doesn't see (as floor_clean_people.py checks its person): every audited frame, the person's posed body against boxes round the fire point's units, the pails, the vacuums (bin and trolley, the head where it is), the station post with its forks and the hanging Cu wand, the bucket, the sand can, the sign, the ground bars, the 680R and the glovebox. The hands and forearms (the body within 250 mm of a palm) are left out: they touch what they handle; so is the vacuum's push handle, which the person leans over to reach the bin. -> out/collisions/waste_clip_person.json",
+ "frames": 371,
+ "min_clearance_mm": 60.1,
+ "nearest": "Al pail",
+ "frames_inside": 0,
+ "inside": []
+}

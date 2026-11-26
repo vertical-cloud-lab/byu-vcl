@@ -54,11 +54,14 @@ VAC = {"Al": (-5640.0, -340.0), "Cu": (-5120.0, -340.0)}
 VAC_YAW = -90.0
 POST = (-5510.0, -920.0)
 POST_YAW = 90.0
-PAIL = {"Al": (-5100.0, -810.0), "Cu": (-4770.0, -810.0)}
+# the pails beside their vacuums on the corridor side, where the person who changes a liner stands (round 16: in the
+# front row they could be reached only through the fire point, 208 and 368 mm gaps; waste_clip.py's person)
+PAIL = {"Al": (-6060.0, 330.0), "Cu": (-4730.0, 330.0)}
 BUCKET = (-4700.0, -320.0)                     # Risk Management's Solid Material bucket
 SAND = (-5750.0, -1110.0)                      # the filter can, with dry sand
 SIGN = (-4740.0, -1160.0)                      # the A-frame sign, its face to the south (the aisle side)
 BAR = (-4880.0, -610.0)                        # the area's ground bar (ours)
+BAR_N = (-5380.0, -10.0)                       # a second one between the vacuums' handles, for the pails (ours)
 # which holster holds which family's wand: the west fork (the station's first holster turned round) the Al wand, nearest
 # the Al vacuum; the east fork (the station's own) the Cu wand
 FORK = {"Al": "west", "Cu": "east"}
@@ -247,10 +250,16 @@ def parts_list() -> list:
     gx, gy = BAR
     out.append(("ground bar", _box(gx - 60, gx + 60, gy - 15, gy + 15, 0, 40), COPPER, 1.0))
     leads = []
-    for fam, (x, y) in PAIL.items():              # from a ring terminal under each pail's rim, east of its label
-        lug = np.array([x + 140.0, y + 60.0, 300.0])
-        leads.append([lug, lug + (20, 30, -150), (lug[0] + 30, gy - 40.0, 6.0), (gx + 40 * (1 if fam == "Cu" else -1),
-                                                                                gy - 20.0, 6.0), (gx, gy, 45.0)])
+    nx_, ny_ = BAR_N
+    out.append(("ground bar north", _box(nx_ - 60, nx_ + 60, ny_ - 15, ny_ + 15, 0, 40), COPPER, 1.0))
+    for fam, (x, y) in PAIL.items():              # from a ring terminal under each pail's rim to the north bar
+        side = 1.0 if fam == "Al" else -1.0       # the terminal on the side towards the bar
+        lug = np.array([x + side * 140.0, y + 60.0, 300.0])
+        leads.append([lug, lug + (side * 20, 30, -150), (lug[0] + side * 30, ny_ + 2.0, 6.0),
+                      (nx_ - side * 50, ny_ + 2.0, 6.0), (nx_ - side * 30, ny_, 45.0)])
+    # the north bar bonded to the area's bar: between the two vacuums, then in the corridor south of them
+    leads.append([(nx_, ny_ - 15, 20.0), (nx_, ny_ - 40, 6.0), (nx_, -592.0, 6.0), (gx - 80, -592.0, 6.0),
+                  (gx - 45, gy, 25.0), (gx - 35, gy, 45.0)])
     # the can's, each vacuum's and the post's: down to the floor, then in one corridor between the vacuums and the
     # pails (y -584 to -606) to the bar
     lug = np.array([sx, sy + rs, 200.0])
@@ -306,7 +315,7 @@ def _rect() -> tuple:
     return (min(r[0] for r in rs), max(r[1] for r in rs), min(r[2] for r in rs), max(r[3] for r in rs))
 
 
-RECT = (-5868.0, -4505.0, -1222.0, -60.0)       # the whole point's plan rectangle, rounded out (``check`` confirms it)
+RECT = (-6220.0, -4505.0, -1222.0, 490.0)       # the whole point's plan rectangle, rounded out (``check`` confirms it)
 
 
 

@@ -44,8 +44,27 @@ stay clad, so the trays are neither seen nor loaded, and the whole lab fits in a
    pickup is requested from Risk Management when a pail is full.
 4. **Where waste waits** (about 9 s): a high shot from the aisle's south-east with both places labelled.
 
-No person is animated: the sealing and carrying of liners and the consolidation in the hood are captions. That was
-the first cut for time (people.Person would take the hood's tray or the vacuum's liner in a later round).
+**The vacuum liners, by a person** (added later in round 16, sub-steps "3/4 The vacuum liners", after the powder
+point's first step; the clip is now 117.3 s, 1,759 frames). A person (`people.Person`) comes in from the aisle round
+the glovebox's west end and along the corridor behind the machines, the only way in, since the fire point (680R, B570,
+Super D pail) closes the point's south side. They unplug the Al-family 118EXP after its run-on and settle (vacuum SOP
+4), open its clamps and lift the head off (it is set aside and not drawn: putting it on the floor needs a squat the
+Person model can't make), seal the liner where it is (its mouth drawn up and twisted into a gooseneck), lift it out by
+the neck over the vacuum's handle, carry it round to the Al-family pail, take the lid off, put the liner in and set
+the lid back on, not crimped. Then a fresh liner, the head back on, plugged in, and out the way they came. The arms
+never touch a liner (PR 80; notes/atomizer_automation.md). The day-shift beat at the hood (bottles into the cabinets)
+is still a caption.
+
+**The pails moved for it.** In the front row a person could reach the pails only through the fire point, through gaps
+of 208 and 368 mm, so `powder_point.PAIL` puts them on the corridor side beside their vacuums, Al at (-6060, 330) and
+Cu at (-4730, 330), with a second ground bar between the vacuums' handles, bonded to the first. The point's rectangle
+is now x -6220 to -4505, y -1222 to 490. The set-up movie and the floor-clean clip were rendered again on this layout,
+and `setup_lab.py fit` checked it. In the clip only, the Al pail's bail is laid down along its rim so the liner and lid
+can pass; the lab model keeps it upright.
+
+**The person's check** (`out/collisions/waste_clip_person.json`, as floor_clean_people's): no part of the body inside
+any box of the scene in any frame (0 of 371), the closest 60.1 mm, to the Al pail. The hands and forearms within 250 mm
+of a palm, and the vacuum's push handle the person leans over, don't count.
 
 ## Where the powder point stands, and why there
 
@@ -97,7 +116,7 @@ line, with both bottles taken level (pitch 0).
 
 **`ARM_AUDIT=1` (round 11's strict rules, the movers check on), on the final code: 0 of 1,043 checked frames with an
 arm, gripper or held bottle in collision, and 0 frames with a mover's new contact** (the MiR250, its spill tray and
-bottle, every frame it drives; 285 frames with something moving). The clip is 1,412 frames, 94.1 s at 15 fps (the
+bottle, every frame it drives; 285 frames with something moving). The person-less first version was 1,412 frames, 94.1 s at 15 fps; with the person, the final audit is 0 of 1,399 checked frames for the arms and 0 for the movers, 590 frames with something moving, and the clip 1,759 frames, 117.3 s (the
 audit checks the frames that move; holds repeat the frame before). The first audit of this file had 214 frames in collision: the arm's upper arm in the hood's posts,
 the dock's target post and its own MiR250 with the unit on the dock line itself, the forearm in its own Class D unit
 reaching back to the deck, and the pitch fault above.

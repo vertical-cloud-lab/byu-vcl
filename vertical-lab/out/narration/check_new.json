@@ -172,6 +172,21 @@
     "diffs": [],
     "unsure": []
    }
+  },
+  {
+   "i": 7,
+   "chapter": "floor",
+   "part": "waste_clip",
+   "text": "Changing a vacuum's liner is a person's job: they seal it where it is, lift it out and set it in its family's pail, the lid set on but not crimped.",
+   "spoken": "Changing a vacuum's liner is a person's job: they seal it where it is, lift it out and set it in its family's pail, the lid set on but not crimped.",
+   "phonemes": "tʃˈeɪndʒɪŋ ɐ vˈækjuːmz lˈaɪnɚɹ ɪz ɐ pˈɜːsənz dʒˈɑːb: ðeɪ sˈiːl ɪt wˌɛɹ ɪɾ ˈɪz, lˈɪft ɪɾ ˈaʊt ænd sˈɛt ɪɾ ɪn ɪts fˈæmɪliz pˈeɪl, ðə lˈɪd sˈɛt ˌɔn bˌʌt nˌɑːt kɹˈɪmpt.",
+   "seconds": 9.13,
+   "base.en": {
+    "heard": "Changing a vacuum's liner is a person's job. They seal it where it is, lift it out, and set it in its family's pail, the lid set on but not crimped.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
   }
  ]
 }

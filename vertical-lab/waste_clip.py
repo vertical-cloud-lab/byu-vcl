@@ -39,7 +39,7 @@ sys.path.insert(0, str(HERE))
 os.environ.setdefault("VLAB_ONLY_TRAYS", "")
 
 import scene                          # noqa: E402
-from scene import AUDIT, PREVIEW, T  # noqa: E402
+from scene import AUDIT, PREVIEW, R, T  # noqa: E402
 
 import animate as A                   # noqa: E402
 import lab                            # noqa: E402
@@ -48,6 +48,8 @@ import robot as RB                    # noqa: E402
 import ur_arm                         # noqa: E402
 import waste_station as WS            # noqa: E402
 import powder_point as PP             # noqa: E402
+import atom_nilfisk as N              # noqa: E402
+from people import Person             # noqa: E402  (MakeHuman's CC0 body, skinned: floor_clean_people, upkeep_clip)
 
 NAME = "waste_clip"
 TITLE = "Vertical cloud lab: the waste, where it waits and how it moves"
@@ -82,6 +84,16 @@ def bottle_parts(liquid, fill, band=None, text=None) -> list:
     return out
 
 
+def sealed_liner() -> list:
+    """Ours: the 118EXP's conductive liner as it comes out sealed (vacuum SOP 4.4: gathered, twisted into a gooseneck,
+    folded and taped), with a little powder in it: 250 mm across, 325 mm tall, so it stands in a 5 gal pail under its
+    lid. Its own frame: the bottom's centre at the origin."""
+    body = N.lathe([(0, 0), (112, 0), (122, 30), (126, 180), (118, 225), (62, 262), (22, 288), (0, 290)])
+    neck = N.lathe([(0, 286), (17, 286), (15, 325), (0, 325)])
+    tape = N.lathe([(17.5, 296), (19.5, 296), (19.5, 309), (17.5, 309)])
+    return [("liner", body.merge(neck), N.BLACK, 1.0), ("tape", tape, (0.76, 0.77, 0.80), 1.0)]
+
+
 def carrier_mesh():
     c = CARRIER
     x0, x1, y0, y1 = -c["w"] / 2, c["w"] / 2, -c["d"] / 2, c["d"] / 2
@@ -100,9 +112,274 @@ def add_parts(sc, parts, group, parent, M):
         n = f"{group}/{nm}"
         sc.add(n, m, c, group, opacity=op, specular=0.25)
         names.append(n)
-    sc.parent[group] = parent
+    if parent:
+        sc.parent[group] = parent
     sc.gmat[group] = M
     return names
+
+
+# ================================================================================================= the person's check
+class PersonCheck:
+    """What collide.Auditor doesn't see (as floor_clean_people.py checks its person): every audited frame, the
+    person's posed body against boxes round the fire point's units, the pails, the vacuums (bin and trolley, the head
+    where it is), the station post with its forks and the hanging Cu wand, the bucket, the sand can, the sign,
+    the ground bars, the 680R and the glovebox. The hands and forearms (the body within 250 mm of a palm) are left out:
+    they touch what they handle; so is the vacuum's push handle, which the person leans over to reach the bin.
+    -> out/collisions/waste_clip_person.json"""
+
+    def __init__(self, sc, worker):
+        self.sc, self.worker = sc, worker
+        self.min_mm, self.where, self.frames, self.inside = 1e9, None, 0, []
+        vx, vy = PP.VAC["Al"]
+        nb = PP.neighbours()
+        ir = PP.item_rects()
+        b = {"B570 post": (*nb["B570 post"], 0, 2150), "B570": (-5248.0, -5052.0, -1627.0, -1431.0, 0, 1044),
+             "Super D pail": (*nb["Super D pail"], 0, 480), "680R": (*nb["680R"], 0, 1322),
+             "glovebox": (-7702.0, -6898.0, -1162.0, 1143.0, 0, 2200),
+             "Al vac bin": (vx - 223.0, vx + 223.0, vy - 240.0, vy + 220.0, 0, N.Z_BIN[1]),
+             "Cu vac": (*ir["Cu vac"], 0, 1150), "post": (-5542.0, -5478.0, -952.0, -888.0, 0, 1090),
+             "forks": (-5720.0, -5300.0, -965.0, -875.0, 955.0, 1005.0),
+             "Cu wand": (-5390.0, -5330.0, -950.0, -890.0, 380.0, 1200.0),
+             "bucket": (*ir["bucket"], 0, 400), "sand can": (*ir["sand"], 0, 300), "sign": (*ir["sign"], 0, 930),
+             "station base": (-5630.0, -5310.0, -1220.0, -620.0, 0, 14)}
+        for fam in ("Al", "Cu"):
+            x, y = PP.PAIL[fam]
+            b[f"{fam} pail"] = ("cyl", x, y, 153.0, 0, N.PAIL_H + 16.0)
+        for nm_, (x, y) in (("ground bar", PP.BAR), ("ground bar north", PP.BAR_N)):
+            b[nm_] = (x - 60.0, x + 60.0, y - 15.0, y + 15.0, 0, 40.0)
+        self.boxes = b
+
+    def head_box(self):
+        vx, vy = PP.VAC["Al"]
+        o = self.sc.gmat.get("wc_head", np.eye(4))[:3, 3]
+        return ("cyl", vx + o[0], vy + o[1], 203.0, N.Z_BIN[1] + o[2], N.Z_HEPA[1] + o[2])
+
+    def __call__(self, sc):
+        if PREVIEW or sc.alpha.get(self.worker.names()[0], 0.0) <= 0.0:
+            return
+        self.frames += 1
+        pts = np.vstack([np.asarray(P_)[::5] for part, (P_, _f) in self.worker.posed().items() if part != "glove"])
+        hands = [self.worker.hand_point(s_) for s_ in ("l", "r")]
+        keep = np.ones(len(pts), bool)
+        for h in hands:
+            keep &= np.linalg.norm(pts - h, axis=1) > 250.0
+        pts = pts[keep]
+        boxes = dict(self.boxes)
+        heads = sc.members("wc_head")
+        if heads and sc.alpha.get(heads[0], 1.0) > 0.0:     # set aside (hidden) while the liner is changed
+            boxes["Al vac head"] = self.head_box()
+        for k, bx in boxes.items():
+            if bx[0] == "cyl":                       # a round part: (cx, cy, r, z0, z1)
+                _, cx, cy, r, z0, z1 = bx
+                rad = np.hypot(pts[:, 0] - cx, pts[:, 1] - cy) - r
+                dz = np.maximum(z0 - pts[:, 2], pts[:, 2] - z1)
+                d = np.maximum(rad, dz)
+                out = np.hypot(np.maximum(rad, 0), np.maximum(dz, 0))
+            else:
+                x0, x1, y0, y1, z0, z1 = bx
+                d = np.maximum.reduce([x0 - pts[:, 0], pts[:, 0] - x1, y0 - pts[:, 1], pts[:, 1] - y1,
+                                       z0 - pts[:, 2], pts[:, 2] - z1])
+                out = np.linalg.norm(np.c_[np.maximum(x0 - pts[:, 0], 0) + np.maximum(pts[:, 0] - x1, 0),
+                                           np.maximum(y0 - pts[:, 1], 0) + np.maximum(pts[:, 1] - y1, 0),
+                                           np.maximum(z0 - pts[:, 2], 0) + np.maximum(pts[:, 2] - z1, 0)], axis=1)
+            dist = np.where(d > 0, out, d)            # negative: inside, by how much
+            m = float(dist.min())
+            if m < self.min_mm:
+                self.min_mm, self.where = m, k
+            if m < 0:
+                self.inside.append((sc.n, k, round(m, 1)))
+
+    def save(self):
+        import json
+        rep = dict(what=" ".join((PersonCheck.__doc__ or "").split()), frames=self.frames,
+                   min_clearance_mm=round(self.min_mm, 1), nearest=self.where,
+                   frames_inside=len({f for f, _, _ in self.inside}), inside=self.inside[:40])
+        path = Path(__file__).resolve().parent / "out" / "collisions" / f"{NAME}_person.json"
+        path.write_text(json.dumps(rep, indent=1) + "\n")
+        print(f"{NAME}: person clearance {rep['min_clearance_mm']} mm (nearest {rep['nearest']}), "
+              f"{rep['frames_inside']} of {rep['frames']} frames with the body inside a box", flush=True)
+
+
+# ================================================================================================= the liner change
+def liner_change(sc, worker, say, step, cam_from):
+    """Part 3's person: in from the aisle round the glovebox and along the corridor behind the machines (clear of
+    the 680R, the B570 and the Super D pail), the Al-family 118EXP unplugged and its head lifted off (then set aside,
+    not drawn), the liner sealed in place (a gooseneck twist, taped), lifted out by its neck over the vacuum's handle,
+    the Al-family pail's lid off, the liner in, the lid set back on (not crimped), a fresh liner and the head back on,
+    plugged in, and out the way they came. PersonCheck checks the person's clearance every audited frame."""
+    vx, vy = PP.VAC["Al"]
+    px, py = PP.PAIL["Al"]
+    P_W = np.array([-5620.0, 260.0])                  # where the person stands, at the vacuum's handle side
+    route_in = [np.array(p_, float) for p_ in ((-8600.0, -2650.0), (-8600.0, 1650.0), (-5620.0, 1650.0), tuple(P_W))]
+    z_bag = N.Z_BIN[0] + 20.0
+    st = {"head": np.zeros(3), "bag": np.array([vx, vy, z_bag]), "lid": np.zeros(3)}
+    HD_S, HD_W = 180.0, 90.0                          # facing south (the vacuum), west (the pail)
+    head_names = sc.members("wc_head")
+
+    def place_head(off):
+        st["head"] = np.asarray(off, float)
+        sc.gmat["wc_head"] = T(tuple(st["head"]))
+
+    def place_bag(p_):
+        st["bag"] = np.asarray(p_, float)
+        sc.gmat["wc_bag"] = T(tuple(st["bag"]))
+
+    def place_lid(off):
+        st["lid"] = np.asarray(off, float)
+        sc.gmat["wc_lid"] = T(tuple(st["lid"]))
+
+    def pose(p_, hd, hands=None, lean=0.0, amp=0.0, phase=0.0, look=None):
+        worker.set(x=float(p_[0]), y=float(p_[1]), hd=hd, amp=amp, phase=phase, lean=lean,
+                   hands=hands or {"l": None, "r": None}, look=look, grip={"l": 0.55, "r": 0.55})
+
+    def left_of(hd):
+        a = math.radians(hd)
+        return np.array([-math.cos(a), -math.sin(a), 0.0])
+
+    def head_hands():
+        """Both hands on the motor head's top rim, on the side towards the person (who faces south)."""
+        top = np.array([vx, vy + 110.0, N.Z_MOTOR[1] - 10.0]) + st["head"]
+        lv = left_of(HD_S)
+        return {"l": tuple(top + lv * 140.0), "r": tuple(top - lv * 140.0)}
+
+    def walk(path, hd_end=None):
+        seg = [float(np.linalg.norm(path[i + 1] - path[i])) for i in range(len(path) - 1)]
+        L = sum(seg)
+
+        def up(u):
+            d_ = u * L
+            for i, sl in enumerate(seg):
+                if d_ <= sl or i == len(seg) - 1:
+                    f = min(1.0, d_ / max(sl, 1e-9))
+                    p_ = path[i] + (path[i + 1] - path[i]) * f
+                    dv = path[i + 1] - path[i]
+                    break
+                d_ -= sl
+            hd = math.degrees(math.atan2(dv[1], dv[0])) - 90.0
+            if hd_end is not None and u > 0.9:
+                hd = hd + (((hd_end - hd + 180) % 360) - 180) * (u - 0.9) / 0.1
+            pose(p_, hd, amp=min(1.0, 6.0 * min(u, 1.0 - u)), phase=2 * math.pi * u * L / Person.STRIDE)
+        return up, L
+
+    def path_pt(pts, u):
+        seg = [float(np.linalg.norm(pts[i + 1] - pts[i])) for i in range(len(pts) - 1)]
+        d_ = u * sum(seg)
+        for i, sl in enumerate(seg):
+            if d_ <= sl or i == len(seg) - 1:
+                return pts[i] + (pts[i + 1] - pts[i]) * min(1.0, d_ / max(sl, 1e-9))
+            d_ -= sl
+        return pts[-1]
+
+    for n in worker.names():
+        sc.alpha[n] = 1.0
+    pose(route_in[0], 0.0)
+    f, L = walk(route_in, hd_end=HD_S)
+    cam_pp = [(-4550.0, 2050.0, 2700.0), (-5750.0, -100.0, 650.0), (0, 0, 1)]
+    say("3/4 The vacuum liners", "A person changes the liners; the arms don't. In from the aisle round the glovebox and "
+        "along the corridor behind the machines, clear of the fire point, to the Al-family 118EXP.")
+    step(6.0, f, hold=0.2, cam=cam_pp, va=40.0)
+    # unplugged, the clamps opened, the head lifted off and set aside (not drawn)
+    say("3/4 The vacuum liners", "Vacuum off and unplugged, after its run-on and 60 s settle (vacuum SOP 4). The two "
+        "clamps open and the head comes off (set aside: not drawn).")
+    for n in sc.members("wc_cord") + sc.members("wc_clamps"):
+        sc.alpha[n] = 0.0
+    step(0.8, lambda u: pose(P_W, HD_S, hands=head_hands(), lean=22.0 * u), hold=0.1)
+
+    def head_off(u):
+        place_head((0, 0, 200.0 * min(1.0, u / 0.6)))
+        pose(P_W, HD_S, hands=head_hands(), lean=22.0 - 10.0 * min(1.0, u / 0.6))
+        for n in head_names:
+            sc.alpha[n] = 1.0 - max(0.0, (u - 0.6) / 0.4)
+    step(1.6, head_off, hold=0.1)
+    # the liner sealed in place: its mouth drawn up, twisted into a gooseneck, folded over and taped
+    neck_at = np.array([vx, vy + 80.0, 700.0])
+    say("3/4 The vacuum liners", "The liner is sealed where it is: its mouth drawn up, twisted into a gooseneck, folded "
+        "over and taped (vacuum SOP 4.4). Dry: no water, no oil, nothing poured.")
+    lv = left_of(HD_S)
+    step(0.9, lambda u: pose(P_W, HD_S, hands={"l": tuple(neck_at + lv * 60.0), "r": tuple(neck_at - lv * 60.0)},
+                             lean=12.0 + 23.0 * u), hold=0.05)
+    raised = np.array([vx, vy + 30.0, neck_at[2] - 325.0])
+
+    def seal(u):
+        tw = math.radians(320.0 * u)
+        lh = neck_at + lv * 60.0 * math.cos(tw) + np.array([0, 25.0 * math.sin(tw), 0])
+        rh = neck_at - lv * 60.0 * math.cos(tw) - np.array([0, 25.0 * math.sin(tw), 0])
+        pose(P_W, HD_S, hands={"l": tuple(lh), "r": tuple(rh)}, lean=35.0)
+        if u > 0.45:
+            for n in sc.members("wc_bag_open") + sc.members("wc_lip"):
+                sc.alpha[n] = 0.0
+            for n in sc.members("wc_bag"):
+                sc.alpha[n] = 1.0
+            place_bag(np.array([vx, vy, z_bag]) + (raised - np.array([vx, vy, z_bag])) * min(1.0, (u - 0.45) / 0.4))
+    step(2.0, seal, hold=0.5, labels=[("Gooseneck: twisted, folded over, taped", tuple(neck_at), (0.72, 0.28))])
+
+    def neck():
+        return st["bag"] + (0, 0, 315.0)
+    # out by its neck, high enough to pass over the vacuum's handle (its top at 1143 mm), round to the pail
+    say("3/4 The vacuum liners", "The sealed liner comes out by its neck, over the vacuum's handle, to the Al-family pail "
+        "beside it on the corridor side.")
+    B = [raised, np.array([vx, vy + 30.0, 1165.0]), np.array([vx, -75.0, 1165.0]), np.array([-5990.0, -75.0, 1165.0]),
+         np.array([-6010.0, py - 40.0, 1000.0])]
+    step(1.2, lambda u: (place_bag(path_pt(B[:2], u)),
+                         pose(P_W, HD_S, hands={"r": tuple(neck()), "l": None}, lean=35.0 - 30.0 * u)), hold=0.05)
+
+    def over_and_west(u):
+        place_bag(path_pt(B[1:], u))
+        hd = HD_S - 90.0 * max(0.0, (u - 0.35) / 0.65)
+        pose(P_W, hd, hands={"r": tuple(neck()), "l": None}, lean=5.0)
+    step(2.0, over_and_west, hold=0.05)
+    pail_top = np.array([px, py, N.PAIL_H + 10.0])
+    lid_grip = np.array([px + 100.0, py - 70.0, N.PAIL_H + 12.0])     # the lid's rim towards the person's left hand
+    bag4 = st["bag"].copy()
+    over_pail = np.array([px, py, N.PAIL_H + 60.0])
+
+    def lid_off(u):
+        place_lid((40.0 * u, -340.0 * u, 180.0 * u))      # clear of the liner's way in (59 mm at the pail)
+        place_bag(bag4 + (over_pail - bag4) * max(0.0, (u - 0.5) / 0.5))
+        pose(P_W, HD_W, hands={"r": tuple(neck()), "l": tuple(lid_grip + st["lid"])}, lean=10.0 + 18.0 * min(1.0, u * 2))
+    step(1.4, lid_off, hold=0.05, labels=[("Al-family pail: the lid off only while the liner goes in",
+                                           tuple(pail_top), (0.06, 0.32))])
+    bag5 = st["bag"].copy()
+    inside = np.array([px, py, 10.0])
+
+    def bag_in(u):
+        place_bag(bag5 + (inside - bag5) * u)
+        pose(P_W, HD_W, hands={"r": tuple(neck()), "l": tuple(lid_grip + st["lid"])}, lean=28.0 + 8.0 * u)
+    step(1.2, bag_in, hold=0.1)
+    say("3/4 The vacuum liners", "The lid goes back on, set on, not crimped: a crimped lid would hold in the trace "
+        "hydrogen (Waste Management). The pail stays bonded to the ground bar.")
+    lid1 = st["lid"].copy()
+    right_grip = np.array([px + 100.0, py + 70.0, N.PAIL_H + 12.0])
+
+    def lid_on(u):
+        place_lid(lid1 * (1.0 - u))
+        pose(P_W, HD_W, hands={"l": tuple(lid_grip + st["lid"]),
+                               "r": tuple(right_grip + st["lid"]) if u > 0.25 else tuple(neck())},
+             lean=36.0 - 16.0 * u)
+    step(1.4, lid_on, hold=0.6, labels=[("Lid set on, not crimped", tuple(pail_top + (0, 0, 30.0)), (0.06, 0.32))])
+    # a fresh liner, the head back on, plugged in
+    say("3/4 The vacuum liners", "A fresh liner, seated on bare metal, the head back on and clamped, plugged in. Powder "
+        "waste never rides a MiR: the full pail waits here for BYU Risk Management's pickup.")
+    for n in sc.members("wc_bag_open") + sc.members("wc_lip"):
+        sc.alpha[n] = 1.0
+    step(1.0, lambda u: pose(P_W, HD_W + 90.0 * u, hands=head_hands() if u > 0.6 else None, lean=20.0 - 12.0 * u),
+         hold=0.05)
+
+    def head_on(u):
+        for n in head_names:
+            sc.alpha[n] = min(1.0, u / 0.4)
+        place_head((0, 0, 200.0 * (1.0 - max(0.0, (u - 0.4) / 0.6))))
+        pose(P_W, HD_S, hands=head_hands(), lean=8.0 + 8.0 * max(0.0, (u - 0.4) / 0.6))
+    step(1.6, head_on, hold=0.1)
+    place_head(np.zeros(3))
+    for n in sc.members("wc_cord") + sc.members("wc_clamps"):
+        sc.alpha[n] = 1.0
+    f, L = walk([P_W, np.array([-5620.0, 1650.0]), np.array([-7400.0, 1650.0])])
+    say("3/4 The vacuum liners", "And out the way they came. The liners, the bottles and the labels are booked in "
+        "upkeep as the waste work: an hour a week at one alloy a day.")
+    step(3.6, f, hold=0.2)
+    for n in worker.names():
+        sc.alpha[n] = 0.0
 
 
 # ================================================================================================= the scene
@@ -223,6 +500,36 @@ def movie():
         sc.alpha[n] = 0.0
     hood_body = [n for n in rig.names.get("body", [])]
     waste_doors = [n for n in sc.members("waste") if "/surface " not in n]
+    # ---- the powder point drawn again part by part for part 3's person (the lab merges it by colour, which can't
+    # move): the Al vacuum's head, its liner's lip, its cord and the Al pail's lid as groups of their own
+    for n in sc.members("powder_point"):
+        sc.alpha[n] = 0.0
+        sc.base_alpha[n] = 0.0
+    moving = {"wc_head": ("Al vac vac housing", "Al vac vac motor head", "Al vac vac hepa", "Al vac vac switch",
+                          "Al vac label"),
+              "wc_lip": ("Al vac vac liner lip",), "wc_cord": ("Al cord",), "wc_lid": ("Al pail pail lid",),
+              "wc_clamps": ("Al vac vac clamps",), "wc_bail": ("Al pail pail bail",)}
+    for nm, (mesh, col, op) in PP.parts(skip=tuple(q for qs in moving.values() for q in qs)).items():
+        sc.add(f"wc_pp/{nm}", mesh, col, "wc_pp", opacity=op, specular=0.3)
+    plist = PP.parts_list()
+    for g, prefixes in moving.items():
+        add_parts(sc, [(nm, m, c, op) for nm, m, c, op in plist if nm.startswith(prefixes)], g, None, np.eye(4))
+    # the Al pail's bail laid down along its rim on the corridor side, out of the opening the liner goes through
+    bx_, by_ = PP.PAIL["Al"]
+    zb_ = N.PAIL_H - 40.0
+    sc.gmat["wc_bail"] = T((bx_, by_, zb_)) @ R((1, 0, 0), -90.0) @ T((-bx_, -by_, -zb_))
+    vx, vy = PP.VAC["Al"]
+    z_bag = N.Z_BIN[0] + 20.0                         # the liner's bottom, on the bin's floor
+    bag_open = N.lathe([(N.BIN_ID / 2 - 6, z_bag), (N.BIN_ID / 2 - 3, z_bag), (N.BIN_ID / 2 - 3, N.Z_BIN[1] - 6),
+                        (N.BIN_ID / 2 - 6, N.Z_BIN[1] - 6)]).translate((vx, vy, 0), inplace=False)
+    add_parts(sc, [("liner", bag_open, N.BLACK, 1.0)], "wc_bag_open", None, np.eye(4))
+    add_parts(sc, sealed_liner(), "wc_bag", None, T((vx, vy, z_bag)))
+    worker = Person(sc, "worker")
+    for n in worker.names() + sc.members("wc_bag"):
+        sc.alpha[n] = 0.0
+    pcheck = PersonCheck(sc, worker) if AUDIT else None
+    if pcheck is not None:
+        sc.frame_hooks.append(pcheck)
     sc.apply()
 
     # ---- collision checks: only this unit's arm; the world near its route and the hood
@@ -520,12 +827,10 @@ def movie():
                ("Used filters, in dry sand,\nin a small grounded can", an["sand"], (0.05, 0.62)),
                ("Class D: B570 on its post,\nSuper D pail and scoop", an["class D"], (0.30, 0.80)),
                ("COMBUSTIBLE METAL POWDER IN USE", an["sign"], (0.70, 0.66))]
-    say("3/4 The powder point", "A person seals each liner in place and lifts it into its family's pail; the arms don't. "
-        "Powder waste never rides a MiR: it leaves the cell only with BYU Environmental Management.")
-    step(4.0, None, hold=2.6, labels=lab_pp2, cam=pp_cam2)
     say("3/4 The powder point", "Loose powder and sweepings go in the Solid Material bucket, used filters straight into "
         "dry sand. When a pail is full, the pickup is requested from BYU Risk Management.")
-    step(1.0, None, hold=3.4, labels=lab_pp2)
+    step(4.0, None, hold=3.0, labels=lab_pp2, cam=pp_cam2)
+    liner_change(sc, worker, say, step, pp_cam2)
 
     # ================================================================== 4. where waste waits
     # high over the aisle (round 16, the lead: from y -7400 at 11 m, over the 10.97 m roof line, a cable-tray hanger
@@ -539,6 +844,8 @@ def movie():
                  ("Chemical waste station: the fume hood's\nsolvent and acid cabinets, the intake tray",
                   tuple(hw((0.0, WS.YF, 1000.0))), (0.70, 0.78))])
     print(f"{NAME}: {sc.n} frames, {sc.n / scene.FPS:.1f} s at {scene.FPS} fps", flush=True)
+    if pcheck is not None:
+        pcheck.save()
     sc.save()
 
 
