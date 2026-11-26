@@ -9,6 +9,71 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Round 16: #371's check addressed: the waste on screen, the machining cell on the floor, the kept clips redrawn (2026-11-26)
+
+Sterling on #318 (2026-11-26): "address https://github.com/vertical-cloud-lab/byu-vcl/pull/371#issuecomment-7184403979
+in full and rerender and get on YouTube. Can be longer if needed. Careful with memory. Plan ahead so you'll take the
+full six hours." The check had found what round 15 really rendered: #371's waste station was in the 3-D lab but never
+on screen, about 10½ minutes of the long-form were clips kept from before the merges, the set-up GIF in the repo was
+round 14's, the machining cell had no place on the floor, and this README's table overstated where the merged PRs
+appear.
+
+**The video:** {VIDEO}
+
+### Round 15's clips, recovered from its YouTube copy
+
+Round 15's renders were git-ignored (`out/r15/`) and went with its runner, and drawing all 89 minutes again would take
+this 4-core runner more than a day. So the long-form takes round 15's own frames back out of the video it uploaded:
+
+- **The source:** round 15's 720p stream as YouTube serves it (itag 232, H.264 at 30 fps, 438 MB), fetched through the
+  CubXL Pi's network over an SSH SOCKS tunnel (YouTube refuses runners), each segment capped at 750 kB/s.
+- **The cut:** each clip by frame, from round 15's own `out/longform.json`: frame *n* of the stream is at its start
+  time plus *n*/30 s, checked at the set-up clip's first frame (the card's last frame is *n* = 893, the clip's first
+  894). 53 clips, each its exact frame count, into `out/r15/` (`out/r15/recovered.json` lists them).
+- **The join:** `longform.py` takes a clip from `out/r16/` (this round's renders) first, then `out/r15/`, then
+  `out/mp4/`. A line of narration over a recovered clip is spoken where round 15 spoke it (`r15_offsets`, from round
+  15's `out/longform_narration.srt`), since the frames are the same.
+- **The cost:** one more generation of YouTube's compression on the recovered clips.
+
+### The check, item by item
+
+| The check found | Round 16 |
+| --- | --- |
+| #371's waste station is in the lab model but never on screen: every view of the hood was from behind | A new clip, [`waste_clip.py`](waste_clip.py): 94 s: a MiR250 + UR12e brings a capped 1 L bottle of sieve-wash IPA in its spill tray to the fume hood, sets it in the intake tray under the raised sash and takes an empty back; the hood's solvent and acid cabinets drawn see-through with their contents; the powder point; where waste waits ([`notes/waste_clip.md`](notes/waste_clip.md)). No person is animated: sealing liners and consolidating bottles are captions. The set-up movie also turns to the hood from the aisle after the floor machines come in |
+| Nothing about waste handling is animated: the bottle trip, the powder waste at the atomizer cell (pails, *Solid Material* bucket, sand cans), the vacuum liners | The bottle trip and the powder point are in the waste clip. The powder point is on the lab floor ([`powder_point.py`](powder_point.py), `VLAB_POWDER_POINT`): #369's two 118EXPs on wall power at their station post, a grounded pail per alloy family for sealed liners (lids set on, not crimped), Risk Management's *Solid Material* bucket, a grounded can of dry sand for filters, the area sign, behind the safety PR's fire point (its front half took the old `VAC_STATION`) |
+| Waste person-time isn't booked in `upkeep.TASKS` | `waste`: weekly, a person, 1 h (notes/waste.md's estimate). People go from 31 to 32 h a week on average; the year's 309 fully tested alloys don't change |
+| The services, base-camera, safety, floor-cleaning and scale-up clips and seven fabrication clips are renders from before the merges | All re-rendered on the current lab (table below), the fabrication tour from all nine clips at 30 fps. The floor-clean scene now draws the powder point and the rePowder's fire point where the lab has them (its own station was #369's pre-#379 layout), and #369's night pass (`floor_pass.py`) is re-run on the round-16 floor: 52 spots, 40 studs, 86 min (was 53, 45, 88.7) |
+| `out/setup_lab.gif` is round 14's render | Remade from this round's set-up render (`r16_gifs.py`, which now makes the GIF and still of any clip rendered for the long-form) |
+| The machining cell has no place on the floor: its spot is unit 3's charger bay and its dock's post is on the 68SC-2's | South of the south row, front to the north, its MiR250 in down the row's west end and along a corridor behind the row; nothing that was on the floor moved; `setup_lab.py fit` clean ([`notes/lab_r16.md`](notes/lab_r16.md)) |
+| #369's 118EXP vacuums are not on the floor | At the powder point (above) |
+| #372: the *Atomized powder dosed for the CubXL* clip has the P20 making ten 20 µL transfers | The P300 puts the 200 µL in with one transfer, from its own rack, on its 40 mm lift (`r9_cubxl.powder_test_p300`) |
+| #374, #379: their own clips are renders from before the merge; the UR control box slides through a MiR's Class D unit in the set-up movie | Both clips re-rendered. The box now settles onto the MiR's top and the cabinet goes on round it; the first round-16 render's audit caught my first fix (the box lowered 600 mm, through where the arm will stand), so it settles only the last 40 mm |
+| #376, #377: names and colours need a decision | #377: you okayed blue for Al and orange for Cu on 2026-11-22, so the powder point's pails and vacuums carry them, always with words, and `charge.FUNNEL_LABEL` follows the code. Recolouring our blue "ours" fixtures to a neutral, which the scheme asks for, would mean re-rendering chapters 1-2, the turnaround and the floor cleaning, so it is left (below). #376: no decision since the names' second round, so they stay a proposal and no clip uses them |
+| The README's table says #369 and #379 are in "every lab scene" and #374 in "every clip" | Corrected in round 15's section |
+
+### Renders
+
+{RENDERS}
+
+### Not done, or still open
+
+- **Clips round 16 didn't redraw are round 15's frames,** recovered from its video, so they don't show this round's
+  floor changes where their cameras would see them: chapter 2 and the turnaround's wide shots near the rePowder (the
+  powder point), and any aisle shot looking south past the Instrons (the machining cell's fence and lathe). The
+  chapters' aisle cameras mostly look north and don't see the cell (notes/lab_r16.md).
+- **#377's neutral for "ours":** the scheme also asks that our own printed and machined parts stop being drawn blue
+  (blue now means the Al family): `atom_brush`, `atom_ground`, `atom_nilfisk` (`OURS`) and `carousel` (teal). That is a
+  constant per file, but every clip with those parts would need re-rendering for the change to read consistently:
+  chapters 1 and 2, the turnaround, the floor cleaning and the 9:22 clip, about 40 minutes of video.
+- **#376's names** wait for your decision; no clip uses them.
+- **The machining cell's route isn't animated:** no clip drives a MiR250 down the row's west end to its dock, so the
+  docking there has no arm audit, and the cell has no utility drop drawn (notes/lab_r16.md).
+- **No person is animated in the waste clip:** sealing a liner and consolidating the bottles are captions.
+- **The ICP-MS station** still has no spot on the floor (notes/lab_r15.md).
+- **On YouTube:** the round-16 video is unlisted (no visibility was named). Round 15's public video stays up; the
+  upload token can't change either, so making round 16 public and round 15 unlisted is a click each in YouTube Studio,
+  or a `@claude-youtube` run.
+
 ## Round 15: everything brought together, one lab in every clip, re-rendered at 720p (2026-11-23)
 
 Sterling on #318 (2026-11-23): "pull in the latest results from all the other relevant PRs (use gh api to retrieve
@@ -3338,6 +3403,12 @@ electric one, open to the air.
 ```bash
 pip install cadquery pyvista trimesh pycollada pillow numpy scipy python-fcl mujoco coacd psutil   # plus ffmpeg, gifsicle, xvfb
 pip install google-api-python-client google-auth google-auth-oauthlib google-auth-httplib2   # for youtube_upload.py, longform.py upload
+# round 16: the long-form from this round's renders, then round 15's clips recovered from its YouTube copy
+python3 r15_recover.py fetch --proxy socks5h://127.0.0.1:1080   # through `ssh -D 127.0.0.1:1080 -N -f <user>@<pi>`
+python3 r15_recover.py cut                                # -> out/r15/ (53 clips), out/r15_recovered.json
+python3 render_r16.py queue setup workflow waste ...      # this round's renders -> out/r16/ (runner_guard slots)
+python3 r16_gifs.py setup_lab waste_clip ...              # a clip rendered for the long-form -> its GIF and still
+python3 longform.py audit && python3 longform.py && python3 longform.py upload   # LONGFORM_HD_DIR=r16,r15 by default
 xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the first three MP4s
 PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
 python3 reach.py                                          # the arm study -> out/reach.json
