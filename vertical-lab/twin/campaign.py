@@ -420,8 +420,13 @@ class Campaign:
         pre, st, h = g
         t = now_h
         for s_, hh in pre:
-            s0, d0, _ = self.fac.res[s_].find(t, max(hh, 0.01), self.key)
-            t = s0 + d0
+            cal = self.fac.res[s_].st
+            # split as _route books it: attended work on a day calendar in days of at most 8 h
+            chunk = 8.0 if (cal.hours != "24/7" and cal.attended_h is None) else max(hh, 0.01)
+            left = max(hh, 0.01)
+            while left > 1e-9:
+                s0, d0, _ = self.fac.res[s_].find(t, min(left, chunk), self.key)
+                t, left = s0 + d0, left - min(left, chunk)
         return self.fac.queue_wait(st, t, h, self.key) <= self.GATE_W
 
     def load(self, station: str, t_h: float, window_h: float = 72.0) -> float:

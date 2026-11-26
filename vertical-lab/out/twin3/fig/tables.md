@@ -59,6 +59,34 @@ Targets: T1 = the state of the art (aluminium 0.4232, copper 0.5559); T2 = halfw
 | Random | 60.6 | 53.1 | 0.0 | 1.7 | 2.0 | 1.6 | 2.0 | 0.0 | 0.2 | 88% |
 
 
+## Main benchmark, all seeds (main + main_more)
+
+**Aluminium (FLAIME, LPBF)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| BOFN, time-aware | 12 | 0.73 ± 0.02 | +0.43 ± 0.08 (11/1) | 12/12 | 83 | 11/12 | 96 | 105.0 | 20.5 | 0.0 |
+| pKGFN, time-aware | 12 | 0.71 ± 0.03 | +0.41 ± 0.09 (11/1) | 12/12 | 67 | 10/12 | 83 | 108.0 | 30.4 | 0.0 |
+| BOFN, per dollar | 12 | 0.66 ± 0.03 | +0.36 ± 0.09 (11/1) | 12/12 | 80 | 7/12 | 119 | 105.8 | 19.6 | 0.0 |
+| Tiered screening | 24 | 0.35 ± 0.06 |  | 13/24 | 146 | 6/24 | >365 | 118.9 | 16.4 | 0.0 |
+| Heuristic | 24 | 0.57 ± 0.02 | +0.22 ± 0.06 (18/6) | 23/24 | 24 | 3/24 | >365 | 120.0 | 79.0 | 0.0 |
+| GP-BO | 24 | 0.39 ± 0.04 | +0.04 ± 0.06 (10/10) | 19/24 | 235 | 2/24 | >365 | 117.5 | 37.6 | 0.0 |
+| Sobol | 24 | 0.31 ± 0.06 | -0.04 ± 0.08 (11/10) | 11/24 | >365 | 4/24 | >365 | 119.0 | 13.2 | 0.0 |
+| Random | 24 | 0.23 ± 0.06 | -0.12 ± 0.08 (8/11) | 8/24 | >365 | 3/24 | >365 | 119.7 | 60.0 | 0.0 |
+
+**Copper (ONR, DED)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| BOFN, time-aware | 12 | 0.58 ± 0.04 | -0.11 ± 0.04 (2/10) | 8/12 | 221 | 5/12 | >365 | 60.6 | 7.6 | 3.3 |
+| pKGFN, time-aware | 12 | 0.61 ± 0.03 | -0.08 ± 0.03 (3/9) | 9/12 | 295 | 4/12 | >365 | 60.5 | 6.4 | 2.8 |
+| BOFN, per dollar | 12 | 0.60 ± 0.03 | -0.09 ± 0.03 (2/10) | 10/12 | 255 | 5/12 | >365 | 60.3 | 7.4 | 3.0 |
+| Tiered screening | 24 | 0.67 ± 0.02 |  | 21/24 | 142 | 19/24 | 176 | 60.8 | 11.3 | 0.0 |
+| Heuristic | 24 | 0.54 ± 0.02 | -0.13 ± 0.03 (3/21) | 10/24 | >365 | 2/24 | >365 | 60.9 | 8.4 | 0.0 |
+| GP-BO | 24 | 0.52 ± 0.05 | -0.16 ± 0.06 (5/19) | 14/24 | 255 | 7/24 | >365 | 61.4 | 8.5 | 0.0 |
+| Sobol | 24 | 0.47 ± 0.05 | -0.20 ± 0.05 (4/20) | 12/24 | >365 | 5/24 | >365 | 60.4 | 10.2 | 0.0 |
+| Random | 24 | 0.48 ± 0.04 | -0.19 ± 0.05 (4/20) | 13/24 | 285 | 3/24 | >365 | 60.9 | 13.3 | 0.0 |
+
 ## Paired comparisons within the main benchmark (same seeds)
 
 | Campaign | A | B | seeds | best: A − B (A ahead/behind) | T1: A first / B first / tie | T1 median days A; B | T2: A first / B first / tie | T2 median days A; B | spent A − B ($k) |
@@ -82,7 +110,111 @@ Targets: T1 = the state of the art (aluminium 0.4232, copper 0.5559); T2 = halfw
 | Copper | BOFN, time-aware | GP-BO | 12 | +0.04 ± 0.07 (8/4) | 5 / 6 / 1 | 221; 255 | 5 / 2 / 5 | >365; >365 | -0.8 |
 | Copper | pKGFN, time-aware | GP-BO | 12 | +0.07 ± 0.06 (9/3) | 6 / 5 / 1 | 295; 255 | 4 / 3 / 5 | >365; >365 | -0.8 |
 
+## cu_hidden
+
+**Aluminium (FLAIME, LPBF)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Tiered screening | 12 | 0.30 ± 0.08 |  | 6/12 | 146 | 1/12 | >365 | 118.9 | 17.9 | 0.0 |
+| Heuristic | 12 | 0.55 ± 0.03 | +0.25 ± 0.08 (10/2) | 11/12 | 24 | 1/12 | >365 | 119.9 | 77.5 | 0.0 |
+| GP-BO | 12 | 0.37 ± 0.07 | +0.07 ± 0.06 (5/4) | 9/12 | 226 | 1/12 | >365 | 117.0 | 34.5 | 0.0 |
+| Random | 12 | 0.25 ± 0.08 | -0.05 ± 0.13 (5/5) | 5/12 | >365 | 2/12 | >365 | 119.4 | 59.6 | 0.0 |
+
+**Copper (ONR, DED)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Tiered screening | 12 | 0.69 ± 0.02 |  | 11/12 | 142 | 10/12 | 148 | 60.5 | 11.3 | 0.0 |
+| Heuristic | 12 | 0.57 ± 0.03 | -0.12 ± 0.04 (1/11) | 7/12 | 234 | 1/12 | >365 | 61.1 | 9.5 | 0.0 |
+| GP-BO | 12 | 0.54 ± 0.06 | -0.15 ± 0.06 (2/10) | 7/12 | 255 | 3/12 | >365 | 61.3 | 8.3 | 0.0 |
+| Random | 12 | 0.49 ± 0.05 | -0.20 ± 0.04 (1/11) | 6/12 | 285 | 1/12 | >365 | 60.6 | 13.4 | 0.0 |
+
+### cu_hidden against the main benchmark (B = main, same seeds)
+
+| Campaign | A | B | seeds | best: A − B (A ahead/behind) | T1: A first / B first / tie | T1 median days A; B | T2: A first / B first / tie | T2 median days A; B | spent A − B ($k) |
+|---|---|---|---|---|---|---|---|---|---|
+| Aluminium | GP-BO | GP-BO | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 226; 226 | 0 / 0 / 12 | >365; >365 | +0.5 |
+| Aluminium | Random | Random | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | >365; >365 | 0 / 0 / 12 | >365; >365 | +0.0 |
+| Aluminium | Heuristic | Heuristic | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 24; 24 | 0 / 0 / 12 | >365; >365 | +0.0 |
+| Aluminium | Tiered screening | Tiered screening | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 146; 146 | 0 / 0 / 12 | >365; >365 | +0.0 |
+| Aluminium | GP-BO | Tiered screening | 12 | +0.07 ± 0.06 (5/4) | 5 / 4 / 3 | 226; 146 | 1 / 1 / 10 | >365; >365 | -1.8 |
+| Aluminium | Random | Tiered screening | 12 | -0.05 ± 0.13 (5/5) | 4 / 5 / 3 | >365; 146 | 2 / 1 / 9 | >365; >365 | +0.6 |
+| Aluminium | Heuristic | Tiered screening | 12 | +0.25 ± 0.08 (10/2) | 8 / 2 / 2 | 24; 146 | 1 / 1 / 10 | >365; >365 | +1.1 |
+| Copper | GP-BO | GP-BO | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 255; 255 | 0 / 0 / 12 | >365; >365 | -0.0 |
+| Copper | Random | Random | 12 | -0.03 ± 0.03 (0/1) | 0 / 0 / 12 | 285; 285 | 0 / 0 / 12 | >365; >365 | +0.0 |
+| Copper | Heuristic | Heuristic | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 234; 234 | 0 / 0 / 12 | >365; >365 | +0.0 |
+| Copper | Tiered screening | Tiered screening | 12 | +0.00 ± 0.00 (0/0) | 0 / 0 / 12 | 142; 142 | 0 / 0 / 12 | 148; 148 | +0.0 |
+| Copper | GP-BO | Tiered screening | 12 | -0.15 ± 0.06 (2/10) | 3 / 9 / 0 | 255; 142 | 1 / 10 / 1 | >365; 148 | +0.8 |
+| Copper | Random | Tiered screening | 12 | -0.20 ± 0.04 (1/11) | 3 / 8 / 1 | 285; 142 | 0 / 10 / 2 | >365; 148 | +0.2 |
+| Copper | Heuristic | Tiered screening | 12 | -0.12 ± 0.04 (1/11) | 2 / 10 / 0 | 234; 142 | 1 / 9 / 2 | >365; 148 | +0.6 |
+
+## cu_money
+
+**Aluminium (FLAIME, LPBF)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| BOFN, time-aware | 4 | 0.66 ± 0.03 | +0.47 ± 0.13 (4/0) | 4/4 | 106 | 2/4 | 217 | 104.5 | 15.5 | 0.0 |
+| pKGFN, time-aware | 4 | 0.72 ± 0.02 | +0.52 ± 0.14 (4/0) | 4/4 | 64 | 4/4 | 73 | 105.1 | 27.8 | 0.0 |
+| Tiered screening | 12 | 0.30 ± 0.08 |  | 6/12 | 123 | 1/12 | >365 | 119.6 | 16.2 | 0.0 |
+| Heuristic | 12 | 0.55 ± 0.03 | +0.24 ± 0.07 (10/2) | 11/12 | 25 | 1/12 | >365 | 120.0 | 74.8 | 0.0 |
+| GP-BO | 12 | 0.45 ± 0.09 | +0.15 ± 0.12 (7/3) | 8/12 | 133 | 4/12 | >365 | 118.0 | 37.2 | 0.0 |
+
+**Copper (ONR, DED)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| BOFN, time-aware | 4 | 0.69 ± 0.02 | +0.03 ± 0.04 (2/2) | 4/4 | 151 | 4/4 | 204 | 144.7 | 11.2 | 18.5 |
+| pKGFN, time-aware | 4 | 0.67 ± 0.03 | +0.01 ± 0.02 (2/2) | 4/4 | 149 | 2/4 | 184 | 147.9 | 12.5 | 16.5 |
+| Tiered screening | 12 | 0.70 ± 0.01 |  | 11/12 | 107 | 11/12 | 136 | 177.9 | 22.9 | 0.0 |
+| Heuristic | 12 | 0.60 ± 0.02 | -0.10 ± 0.03 (2/10) | 10/12 | 232 | 2/12 | >365 | 180.9 | 19.8 | 0.0 |
+| GP-BO | 12 | 0.61 ± 0.03 | -0.09 ± 0.03 (0/12) | 9/12 | 198 | 5/12 | >365 | 180.6 | 16.8 | 0.0 |
+
+### cu_money against the main benchmark (B = main, same seeds)
+
+| Campaign | A | B | seeds | best: A − B (A ahead/behind) | T1: A first / B first / tie | T1 median days A; B | T2: A first / B first / tie | T2 median days A; B | spent A − B ($k) |
+|---|---|---|---|---|---|---|---|---|---|
+| Aluminium | pKGFN, time-aware | pKGFN, time-aware | 4 | +0.03 ± 0.07 (2/2) | 2 / 2 / 0 | 64; 60 | 2 / 2 / 0 | 73; 98 | +6.4 |
+| Aluminium | BOFN, time-aware | BOFN, time-aware | 4 | -0.08 ± 0.03 (1/3) | 2 / 2 / 0 | 106; 96 | 1 / 3 / 0 | 217; 96 | -4.8 |
+| Aluminium | GP-BO | GP-BO | 12 | +0.08 ± 0.08 (6/4) | 4 / 6 / 2 | 133; 226 | 3 / 1 / 8 | >365; >365 | +1.5 |
+| Aluminium | Tiered screening | Tiered screening | 12 | +0.00 ± 0.05 (1/3) | 2 / 5 / 5 | 123; 146 | 0 / 1 / 11 | >365; >365 | +0.7 |
+| Aluminium | Heuristic | Heuristic | 12 | -0.01 ± 0.01 (4/7) | 1 / 9 / 2 | 25; 24 | 1 / 0 / 11 | >365; >365 | +0.0 |
+| Aluminium | pKGFN, time-aware | Tiered screening | 4 | +0.52 ± 0.14 (4/0) | 3 / 1 / 0 | 64; >365 | 4 / 0 / 0 | 73; >365 | -13.9 |
+| Aluminium | BOFN, time-aware | Tiered screening | 4 | +0.47 ± 0.13 (4/0) | 3 / 1 / 0 | 106; >365 | 2 / 0 / 2 | 217; >365 | -14.4 |
+| Aluminium | GP-BO | Tiered screening | 12 | +0.15 ± 0.12 (7/3) | 6 / 4 / 2 | 133; 146 | 4 / 1 / 7 | >365; >365 | -0.9 |
+| Aluminium | Heuristic | Tiered screening | 12 | +0.25 ± 0.08 (10/2) | 8 / 3 / 1 | 25; 146 | 1 / 1 / 10 | >365; >365 | +1.1 |
+| Copper | pKGFN, time-aware | pKGFN, time-aware | 4 | +0.08 ± 0.05 (3/1) | 3 / 1 / 0 | 149; 295 | 2 / 0 / 2 | 184; >365 | +87.9 |
+| Copper | BOFN, time-aware | BOFN, time-aware | 4 | +0.14 ± 0.04 (4/0) | 4 / 0 / 0 | 151; 261 | 4 / 0 / 0 | 204; >365 | +83.1 |
+| Copper | GP-BO | GP-BO | 12 | +0.06 ± 0.05 (7/5) | 5 / 6 / 1 | 198; 255 | 5 / 3 / 4 | >365; >365 | +119.3 |
+| Copper | Tiered screening | Tiered screening | 12 | +0.01 ± 0.01 (6/6) | 8 / 3 / 1 | 107; 142 | 9 / 2 / 1 | 136; 148 | +117.4 |
+| Copper | Heuristic | Heuristic | 12 | +0.03 ± 0.03 (6/6) | 8 / 4 / 0 | 232; 234 | 1 / 1 / 10 | >365; >365 | +119.8 |
+| Copper | pKGFN, time-aware | Tiered screening | 4 | +0.01 ± 0.02 (2/2) | 2 / 2 / 0 | 149; 142 | 1 / 2 / 1 | 184; 142 | +86.7 |
+| Copper | BOFN, time-aware | Tiered screening | 4 | +0.04 ± 0.04 (2/2) | 1 / 3 / 0 | 151; 142 | 1 / 3 / 0 | 204; 142 | +83.5 |
+| Copper | GP-BO | Tiered screening | 12 | -0.08 ± 0.04 (3/9) | 4 / 7 / 1 | 198; 142 | 2 / 9 / 1 | >365; 148 | +120.1 |
+| Copper | Heuristic | Tiered screening | 12 | -0.09 ± 0.03 (2/10) | 3 / 9 / 0 | 232; 142 | 1 / 9 / 2 | >365; 148 | +120.4 |
+
 ## cu_proxy (plain truth, B = main)
+
+**Aluminium (FLAIME, LPBF)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Tiered, mis-specified proxy | 12 | 0.41 ± 0.08 |  | 8/12 | 25 | 2/12 | >365 | 119.5 | 18.1 | 0.0 |
+
+**Copper (ONR, DED)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Tiered, mis-specified proxy | 12 | 0.70 ± 0.01 |  | 12/12 | 104 | 10/12 | 115 | 60.6 | 12.2 | 0.0 |
+
+
+| Campaign | A | B | seeds | best: A − B (A ahead/behind) | T1: A first / B first / tie | T1 median days A; B | T2: A first / B first / tie | T2 median days A; B | spent A − B ($k) |
+|---|---|---|---|---|---|---|---|---|---|
+| Aluminium | Tiered, mis-specified proxy | Tiered screening | 12 | +0.11 ± 0.07 (5/3) | 4 / 3 / 5 | 25; 146 | 1 / 0 / 11 | >365; >365 | +0.7 |
+| Copper | Tiered, mis-specified proxy | Tiered screening | 12 | +0.01 ± 0.02 (6/6) | 8 / 4 / 0 | 104; 142 | 7 / 5 / 0 | 115; 148 | +0.1 |
+
+## cu_proxy (with gamma-2, B = cu_hidden)
 
 **Aluminium (FLAIME, LPBF)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
 
@@ -126,6 +258,28 @@ Targets: T1 = the state of the art (aluminium 0.4232, copper 0.5559); T2 = halfw
 | Aluminium | Tiered, proxy only (no screen) | Tiered screening | 12 | -0.12 ± 0.09 (2/6) | 1 / 6 / 5 | >365; 146 | 0 / 1 / 11 | >365; >365 | -0.5 |
 | Copper | Tiered, screen only (random order) | Tiered screening | 12 | -0.25 ± 0.07 (0/12) | 3 / 8 / 1 | 324; 142 | 3 / 7 / 2 | >365; 148 | +0.2 |
 | Copper | Tiered, proxy only (no screen) | Tiered screening | 12 | -0.08 ± 0.03 (6/6) | 2 / 9 / 1 | 220; 142 | 1 / 9 / 2 | >365; 148 | +0.5 |
+
+## Conventional lab, three years at three years' money (async)
+
+**Aluminium (FLAIME, LPBF)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Tiered screening | 12 | 0.44 ± 0.06 |  | 9/12 | 215 | 0/12 | >1095 | 360.1 | 11.2 | 0.0 |
+| Heuristic | 12 | 0.64 ± 0.03 | +0.21 ± 0.07 (9/3) | 12/12 | 159 | 6/12 | 337 | 359.9 | 32.0 | 0.0 |
+| GP-BO | 12 | 0.53 ± 0.06 | +0.09 ± 0.09 (7/5) | 11/12 | 407 | 4/12 | >1095 | 359.8 | 29.8 | 0.0 |
+| Sobol | 12 | 0.34 ± 0.08 | -0.09 ± 0.08 (3/7) | 6/12 | 739 | 3/12 | >1095 | 359.8 | 10.5 | 0.0 |
+| Random | 12 | 0.44 ± 0.08 | +0.00 ± 0.11 (7/5) | 8/12 | 260 | 4/12 | >1095 | 360.0 | 43.5 | 0.0 |
+
+**Copper (ONR, DED)** (mean ± SE over seeds; days are Kaplan-Meier medians, '>' = fewer than half the seeds got there; paired against Tiered screening on the same seeds)
+
+| Policy | n | best new alloy | paired vs Tiered screening (ahead/behind) | T1 reached | T1 median days | T2 reached | T2 median days | spent ($k) | new alloys tested a year | stops a year |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Tiered screening | 12 | 0.69 ± 0.01 |  | 12/12 | 405 | 9/12 | 561 | 180.1 | 3.8 | 0.0 |
+| Heuristic | 12 | 0.57 ± 0.02 | -0.13 ± 0.03 (0/12) | 8/12 | 540 | 1/12 | >1095 | 180.0 | 2.5 | 0.0 |
+| GP-BO | 12 | 0.41 ± 0.06 | -0.28 ± 0.06 (0/12) | 3/12 | >1095 | 0/12 | >1095 | 180.0 | 2.5 | 0.0 |
+| Sobol | 12 | 0.46 ± 0.05 | -0.23 ± 0.05 (1/11) | 2/12 | >1095 | 0/12 | >1095 | 180.0 | 3.7 | 0.0 |
+| Random | 12 | 0.51 ± 0.05 | -0.18 ± 0.06 (2/10) | 5/12 | >1095 | 3/12 | >1095 | 180.0 | 4.8 | 0.0 |
 
 ## Alloys and evaluations a year, round 2 -> round 3 (main benchmark, seed means)
 | Policy (round 2 -> round 3) | Al lots | Al prints | Al PIP | Al bar tests | Al alloys demonstrated | Cu lots | Cu blend screens | Cu 1 kg deposits | Cu 30-day immersions finished | Cu coupons stopped early | Cu alloys demonstrated |

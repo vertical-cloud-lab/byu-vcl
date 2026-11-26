@@ -46,12 +46,13 @@ EXPERIMENTS = {
     # time-aware only (its comparison is with round 2's EI per dollar, BOFN per dollar here); a run of it costs
     # about twice a BOFN run
     "main": [_cfg(p, s, events=(s == 0)) for p in BASE + ("bofn3", "bofn3_usd", "pkgfn3") for s in range(12)],
-    # 12 more seeds (24 in all) for copper's comparisons: the time-aware BOFN and the baselines
-    "main_more": [_cfg(p, s) for p in BASE + ("bofn3",) for s in range(12, 24)],
+    # 12 more seeds (24 in all) for copper's comparisons: the baselines, then the time-aware BOFN
+    "main_more": [_cfg(p, s) for p in BASE for s in range(12, 24)],
+    "main_more_net": [_cfg("bofn3", s) for s in range(12, 24)],
     # copper's tests from round 2 (section 5.3): the hidden gamma-2 effect, a mis-specified proxy, the funnel taken
     # apart, three times the copper money; BOFN and pKGFN on 4 seeds (the cheap policies on 12)
-    "cu_hidden": [_cfg(p, s, cu_hidden=1.0) for p in ("random", "heuristic", "tiered", "gpbo", "bofn3", "pkgfn3")
-                  for s in range(4 if p in NET else 12)],
+    "cu_hidden": [_cfg(p, s, cu_hidden=1.0) for p in ("random", "heuristic", "tiered", "gpbo") for s in range(12)],
+    "cu_hidden_net": [_cfg(p, s, cu_hidden=1.0) for p in ("bofn3", "pkgfn3") for s in range(4)],
     "cu_proxy": [_cfg("tiered_mis", s, cu_hidden=h) for h in (0.0, 1.0) for s in range(12)],
     "cu_ablation": [_cfg(p, s) for p in ("tiered_screen", "tiered_proxy") for s in range(12)],
     "cu_money": [_cfg(p, s, cu_budget=180_000.0) for p in ("tiered", "heuristic", "gpbo", "bofn3", "pkgfn3")
@@ -192,7 +193,8 @@ def run(names, workers=3):
 
 def load(name):
     """An experiment's runs (the conventional lab's two experiments read as one)."""
-    names = [name] + (["conventional_net"] if name == "conventional" else [])
+    names = [name] + {"conventional": ["conventional_net"], "cu_hidden": ["cu_hidden_net"],
+                      "main_more": ["main_more_net"]}.get(name, [])
     out = []
     for nm in names:
         p = RUNS / f"{nm}.jsonl"

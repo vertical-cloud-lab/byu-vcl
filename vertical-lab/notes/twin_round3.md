@@ -12,6 +12,24 @@ Round 1 is [`twin.md`](twin.md), round 2 [`twin_round2.md`](twin_round2.md). Eve
 truths, simulated instruments, assumed prices, capacities and schedules. It shows how policies, capacity and
 schedules interact in the model, not what the real lab will find.
 
+**In short** (12 seeds unless noted; mean ± SE; days are medians over seeds):
+
+- **The cap was not what made copper slow.** With it gone, aluminium makes 40-56 % more lots a year, but every
+  policy finishes about as many copper alloys as in round 2. Copper is limited by money: about 80 % of each campaign's
+  spending goes to orders of metal and consumables, and the spending plan holds copper back most of the year. With
+  three times the copper money, BOFN and pKGFN gain +0.17 and +0.08 (3-4 seeds) and draw level with the funnel.
+- **Aluminium: BOFN and pKGFN win on time and on the final alloy.** They reach the halfway target in 11 and 10 of 12
+  seeds at median days 96 and 83 (nothing else in more than 2 of 12), and finish at 0.73 ± 0.02 and 0.71 ± 0.03.
+- **Copper: the funnel still wins** (0.69 ± 0.02; state of the art at day 142 and halfway at day 148, against
+  0.58-0.61 and day 221-295 for BOFN and pKGFN).
+- **The time-aware rule beats round 2's per-dollar rule on aluminium** (+0.07 ± 0.03, halfway in 11 seeds instead of
+  7) and ties on copper. pKGFN and BOFN are within error of each other.
+- **Against a conventional lab with the same freedom**, each lab with its best policy: aluminium's halfway target
+  4.0× sooner (day 83 against 337), copper's 3.8× sooner (the funnel in both, day 148 against 561). Carrying its fixed
+  costs alone, the vertical lab still costs more per alloy (2.8× without capex).
+- **A round-2 bug:** 126 of 271 copper alloys in round 2's seed-0 logs were scored before their immersion finished
+  (section "What changed").
+
 ## What changed from round 2, and why
 
 | Round 2 | Round 3 | Why |
@@ -214,4 +232,156 @@ early for the funnel and the baselines.)
   of 11 they put in immersion. A coupon costs little to keep in (the 30-day section and ICP-MS, about $150), and copper
   is not short of immersion positions (3-5 % busy).
 
-RESULTS_PLACEHOLDER
+### 3.3 Copper's tests from round 2, on the new engine
+
+**Three times the copper money (`cu_money`, $180k a year; BOFN 3 seeds, pKGFN 4, the rest 12; paired against the
+same policy and seeds in the main benchmark):**
+
+| Copper | best new alloy | paired against its own $60k run | vs the funnel at $180k, paired | T1 reached; median day | T2 reached; median day | spent |
+|---|---|---|---|---|---|---|
+| Tiered screening | 0.70 ± 0.01 | +0.01 ± 0.01 (6/6) | | 11/12; 107 | 11/12; 136 | $178k |
+| BOFN, time-aware | 0.68 ± 0.01 | **+0.17 ± 0.04 (3/0)** | +0.03 ± 0.05 (1/2) | 3/3; 151 | 3/3; 243 | $147k |
+| pKGFN, time-aware | 0.67 ± 0.03 | **+0.08 ± 0.05 (3/1)** | +0.01 ± 0.02 (2/2) | 4/4; 149 | 2/4; 184 | $148k |
+| GP-BO | 0.61 ± 0.03 | +0.06 ± 0.05 (7/5) | −0.08 ± 0.04 (3/9) | 9/12; 198 | 5/12; >365 | $181k |
+| Heuristic | 0.60 ± 0.02 | +0.03 ± 0.03 (6/6) | −0.09 ± 0.03 (2/10) | 10/12; 232 | 2/12; >365 | $181k |
+
+* **This reverses round 2.** There, the funnel turned three times the money into results and BOFN didn't (−0.07
+  against the funnel). Here BOFN and pKGFN gain the most from it (+0.17 and +0.08) and draw level with the funnel on
+  the final alloy, while the funnel gains +0.01: it was near its ceiling already. With the cap gone, BOFN and pKGFN
+  can turn money into parallel work (they immersed many more coupons and stopped 16-19 a year early). At $60k they
+  can't, because the money runs out first.
+* **The funnel is still the fastest to both copper targets** at $180k (day 107 and 136, against about 150 and
+  184-243), and the comparison rests on 3-4 seeds for BOFN and pKGFN.
+
+**A mis-specified proxy (`cu_proxy`, the funnel's strengthening coefficients each off by a lognormal factor, σ = 0.4;
+12 seeds):** copper 0.70 ± 0.01, +0.01 ± 0.02 against the plain funnel (6 seeds ahead, 6 behind), state of the art at
+day 104 and halfway at day 115 (the plain funnel: 142 and 148). As in round 2, the ranking doesn't need the truth's
+coefficients. Aluminium: 0.41 ± 0.08.
+
+**The funnel taken apart (`cu_ablation`, 12 seeds, paired against the funnel):** its screen with the passing designs
+made in a random order scored 0.44 ± 0.07 on copper (−0.25 ± 0.07, behind in all 12 seeds; round 2: −0.11), and its
+proxy's ranking without the screen 0.61 ± 0.03 (−0.08 ± 0.03; round 2: −0.08). With room to make 20 copper alloys a
+year instead of about 11, a random order through the screen's survivors wastes more of them; the ranking carries more
+of the funnel's lead than in round 2. On aluminium the proxy without the screen fails again (0.18 ± 0.08).
+
+**A hidden effect: γ₂ (`cu_hidden`, 12 seeds).** With round 2's γ₂ effect on (above Al = 8.2 + Ni/2 wt%, a corner of
+copper bronzes corrodes selectively and embrittles; the CALPHAD nodes don't report it), the funnel, the heuristic and
+GP-BO gave the same results as on the plain truth, seed for seed; random lost −0.03 ± 0.03 (one seed); the
+mis-specified funnel was unchanged too (0.70 ± 0.01). As in round 2, none of their picks sat in the corner.
+GAMMA2_NET
+
+### 3.4 The vertical lab against a conventional lab with the same freedom (`conventional`, 5 policies × 12 seeds)
+
+The conventional lab is round 2's (`facility = "proposed"`: the rePOWDER on FLAIME's slots, BYU's core facilities at
+their rates and day shifts, Utah's and Mines' sessions with their booking leads and caps, metal ordered as each charge
+needs it), on the asynchronous engine with its own physical capacity (three operators doing each station's hands-on
+hours) and the same atomizer split, for three years at three years' money. BOFN and pKGFN in the conventional lab
+(`conventional_net`) were last in the queue and did not run in this session.
+
+| Conventional lab, 3 years | Al best | Al T1 reached; median day | Al T2 reached; median day | Cu best | Cu T1 reached; median day | Cu T2 reached; median day |
+|---|---|---|---|---|---|---|
+| Heuristic | 0.64 ± 0.03 | 12/12; 159 | 6/12; 337 | 0.57 ± 0.02 | 8/12; 540 | 1/12; >1095 |
+| Tiered screening | 0.44 ± 0.06 | 9/12; 215 | 0/12 | **0.69 ± 0.01** | 12/12; 405 | 9/12; 561 |
+| GP-BO | 0.53 ± 0.06 | 11/12; 407 | 4/12 | 0.41 ± 0.06 | 3/12 | 0/12 |
+| Random | 0.44 ± 0.08 | 8/12; 260 | 4/12 | 0.51 ± 0.05 | 5/12 | 3/12 |
+| Sobol | 0.34 ± 0.08 | 6/12; 739 | 3/12 | 0.46 ± 0.05 | 2/12 | 0/12 |
+
+**Acceleration factor** (the conventional lab's median days to the target ÷ the vertical lab's; Kaplan-Meier medians,
+95 % bootstrap intervals over seeds, `twin/accel.py`; `out/twin3/econ/econ_summary.json`):
+
+| Vertical lab running | against the conventional lab running | Al, to T1 | Al, to T2 | Cu, to T1 | Cu, to T2 |
+|---|---|---|---|---|---|
+| pKGFN | the heuristic | 2.3× (0.8-4.5) | **4.0× (2.1 to unbounded)**: day 83 against 337 | 1.8× (1.4 to unbounded) | neither lab gets there in half its seeds |
+| pKGFN | the funnel | 3.0× (2.0-15.6) | at least 13× (the conventional funnel never got there) | 1.4× (1.2-2.2) | **slower**: at most 1.5× and below 1 (pKGFN 4/12 against 9/12 seeds) |
+| pKGFN | Sobol | 10.5× (6.0 to unbounded) | at least 13× | at least 3.7× | neither |
+| the heuristic | the heuristic | 6.8× (1.1-18.4) | slower (the vertical heuristic reaches T2 in 1 of 12) | 2.3× (wide) | neither |
+| the funnel | the funnel | 1.5× (wide) | neither | **2.9× (2.3-4.1)** | **3.8× (1.8-6.0)**: day 148 against 561 |
+
+* **The lab's own share, same policy in both:** the funnel reaches copper's state of the art 2.9× sooner and its
+  halfway target 3.8× sooner in the vertical lab. The heuristic reaches aluminium's state of the art 6.8× sooner (day
+  24 against 159), with a wide interval.
+* **The headline for each campaign, each lab with its best policy:** aluminium's halfway target in 83 days (vertical
+  lab, pKGFN) against 337 (conventional, the heuristic): 4.0×. Copper's halfway target in 148 days (vertical lab, the
+  funnel) against 561 (conventional, the funnel): 3.8×. The optimizer's share is aluminium's, and the funnel's copper
+  lead holds in both labs.
+
+### 3.5 What it costs (`twin/econ3.py`: round 2's cost model on round 3's runs)
+
+Prices, capex and fixed costs are round 2's ([`twin_econ.md`](twin_econ.md)): the vertical lab $5.40M of equipment and
+fit-out and $1.18M a year fixed; the conventional lab $0.54M and $0.12M a year.
+
+* **Cost per demonstrated alloy** (both campaigns; the vertical lab running pKGFN, the conventional lab the heuristic):
+
+  | | no capex | with capex |
+  |---|---|---|
+  | Conventional lab | $7.0k | $8.0k |
+  | Vertical lab, the two campaigns alone | $19.4k | $34.8k |
+  | Vertical lab, 60 % utilized (outside users take the idle hours) | $6.3k | $8.2k |
+
+  Copper's alloys are the dear ones: $23.8k against $35.6k (alone, no capex) and $10.7k at 60 %.
+* **The cost of reaching the state of the art**, the vertical lab with pKGFN as a fraction of the conventional lab with
+  the heuristic: aluminium 0.60 (operating cost, the vertical lab's fixed costs carried by the campaigns alone), 0.90
+  (with capex), 0.43 and 0.59 with outside users sharing; copper 1.10 and 1.70 alone, 0.51 and 0.66 shared. Against
+  the conventional funnel on copper: 1.38 and 2.10 alone, 0.64 and 0.81 shared. The funnel in both labs: copper 0.70
+  (operating, alone), 1.01 (with capex), 0.36 and 0.41 shared.
+* **Utilization.** The two campaigns use 7.0 % of the vertical lab's capex-weighted capacity (5.8 % in round 2): with
+  the cap gone the lab is still mostly idle, because money, not capacity, limits the campaigns. Outside work at round
+  2's assumed demand (10 h a week per instrument, up to 60 % utilization) nets about $1.19M a year, 2.0× the lab's
+  depreciation and 1.0× its fixed costs, as in round 2.
+* **This doesn't favour the vertical lab on its own.** Carrying its fixed costs alone it costs more per alloy than the
+  conventional lab (2.8× without capex, 4.3× with), and more to reach copper's state of the art; it is cheaper only
+  where its speed buys a lot of alloys (aluminium against the heuristic, 0.60× operating), and with outside users.
+
+### 3.6 Where BOFN or pKGFN still doesn't win, plainly
+
+- **Copper, the main benchmark:** the funnel finishes ahead of both (0.69 ± 0.02 against 0.61 ± 0.03 for pKGFN and
+  0.58-0.60 for BOFN; paired −0.08 to −0.11, 2-3 seeds of 12 ahead) and gets to both targets much sooner (state of the
+  art at day 142 against 221-295; halfway in 10 of 12 seeds at day 148 against 4-5 of 12).
+- **Copper with three times the money:** BOFN and pKGFN draw level with the funnel on the final alloy (+0.03 ± 0.05
+  and +0.01 ± 0.02, 3-4 seeds), but the funnel still gets to both targets first.
+- **Copper, the vertical lab against the conventional lab:** pKGFN in the vertical lab is not faster to copper's
+  halfway target than the funnel in the conventional lab (it got there in 4 of 12 seeds in its year, the conventional
+  funnel in 9 of 12 in three).
+- **Aluminium, the state of the art:** the heuristic gets there first (median day 24 against 67 for pKGFN and 83 for
+  BOFN); BOFN and pKGFN's lead is the halfway target and the final alloy.
+- **pKGFN against BOFN:** within error on both campaigns (aluminium −0.02 ± 0.04, copper +0.03 ± 0.03). Its knowledge
+  gradient was flat in many decisions early on (EI per cost decided then), and it needed the fixes in section 2.
+- **Time-aware against per dollar on copper:** no difference in the final alloy (−0.02 ± 0.03).
+- **Early stopping** saved little: about 3 coupons a year at $60k.
+- **Cost:** carrying its own fixed costs, the vertical lab costs 2.8-4.3× as much per alloy as the conventional lab,
+  and more to reach copper's state of the art (1.10-2.10×); it is cheaper with outside users sharing it.
+
+### Limits
+
+All simulated: synthetic truths, simulated instruments, assumed capacities, prices and schedules.
+
+- **New choices, made here.** The spending plan (and its save-up rule), the 2 h admission window, the atomizer's
+  weekly split, the furnace positions, the robot transfer time and the operators' calendar are round 3's choices;
+  the plan is the one non-physical constraint round 3 adds in place of the cap, and it binds copper for most of the
+  year. The atomizer split follows DAL #256.
+- **BOFN and pKGFN's own parameters** (section 2: the powder chance, the floor on a new design's EI, the blend
+  fidelity and proxy spreads, the 25 % screening share, the stop rule) were set in test years on seed 0 before the
+  runs, not tuned on the results; other choices would give other numbers.
+- **pKGFN's simplifications:** an independent-alternatives inner max (a fantasy changes only its own part's posterior),
+  KG for the top 4 candidates of each stage, 6 fantasies and 24 draws.
+- **Seeds:** 12 for the main benchmark and the cheap policies everywhere; BOFN and pKGFN 3-4 in the three-times-money
+  test; gaps under about 0.05 mean little.
+- **Not run in this session:** BOFN and pKGFN with γ₂ (`cu_hidden_net`), BOFN on 12 more seeds (`main_more_net`),
+  and BOFN and pKGFN in the conventional lab (`conventional_net`). They are defined in `twin/bench3.py`; a rerun of
+  `python -m twin.bench3 run cu_hidden_net main_more_net conventional_net` resumes them.
+- **Round 2's copper scoring bug** means round 2's copper day counts were early for the funnel and the baselines;
+  round 3's are not, so part of the funnel's slower copper days in round 3 (142 against 88) is the fix.
+
+## Sources for section 3
+
+1. Round 3's tables: [`out/twin3/fig/tables.md`](../out/twin3/fig/tables.md) and
+   [`out/twin3/fig/numbers.json`](../out/twin3/fig/numbers.json) (`twin/figures3.py`).
+2. The runner, [`twin/bench3.py`](../twin/bench3.py) (`EXPERIMENTS`), and the per-run logs,
+   [`out/twin3/runs/`](../out/twin3/runs/); seed 0's event logs in [`out/twin3/events/`](../out/twin3/events/).
+3. The economics: [`out/twin3/econ/econ_summary.json`](../out/twin3/econ/econ_summary.json) (`twin/econ3.py`).
+4. Round 2: [`twin_round2.md`](twin_round2.md) and its runs in [`out/twin2/runs/`](../out/twin2/runs/).
+5. The engine and policies: [`twin/campaign.py`](../twin/campaign.py), [`twin/facility.py`](../twin/facility.py),
+   [`twin/opt/policies3.py`](../twin/opt/policies3.py), [`twin/opt/net3.py`](../twin/opt/net3.py),
+   [`twin/opt/tinygp.py`](../twin/opt/tinygp.py).
+6. DAL: `benchmarks/partial_kgfn` (main; ported from frazier-lab/partial_kgfn, MIT), `benchmarks/bofn-cu-ded` at
+   b1ba843 (PR 206), DAL #256's `al-campaign-schedule/README.md` at 6ff7717.
