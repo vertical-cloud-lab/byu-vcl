@@ -20,5 +20,33 @@
    "data_entry:0a0b1c25-04b4-49ea-aa2b-a4715979c398"
   ],
   "submitted_utc": "2026-11-26T05:57:24.017319+00:00"
+ },
+ "fund_review": {
+  "task_id": "b3464312-5ff5-488f-8407-8981dec34e43",
+  "job": "job-futurehouse-data-analysis-crow-high",
+  "query": "You are reviewing, as an independent and skeptical analyst, a compiled list of who has funded open-source-minded ventures (commercial open-source software, open-weight AI, open hardware and open-science companies). FUNDERS.md is the write-up; investors.csv, investor_links.csv, deals.csv, ventures.csv and programs.csv are the data it is built from; PROTOCOL.md fixed the scope before data collection; source_checks_deals.csv checks each investor name against its cited page; edison_audit_comparison.csv compares this list with an independent audit of 40 random ventures. Please check: (1) whether each claim in FUNDERS.md's bottom line and section notes is supported by the data files (recompute the key counts and rankings); (2) errors in the data that would change a conclusion (wrong investor types, duplicate funders under two names, ventures that are not open-source-minded, implausible rounds), with examples; (3) whether the write-up overstates or understates anything, including completeness and what the list implies for someone raising money for an open physical-science venture; (4) important funders or categories of funders of open-source or open-science ventures that are missing. Write review.md with numbered findings, each with evidence (file, rows, recomputed numbers) and a suggested correction, ranked by importance, and say which claims you could verify and which you could not.",
+  "files": [
+   "FUNDERS.md",
+   "investors.csv",
+   "investor_links.csv",
+   "deals.csv",
+   "ventures.csv",
+   "programs.csv",
+   "PROTOCOL.md",
+   "source_checks_deals.csv",
+   "edison_audit_comparison.csv"
+  ],
+  "data_entries": [
+   "data_entry:95d0fefa-fb28-4347-98be-862053f787d5",
+   "data_entry:c006154f-ef1f-4645-8db9-e4c4683d475f",
+   "data_entry:50e1f1d1-3975-4a77-a0fc-036224a93a7a",
+   "data_entry:27d4c230-71ea-48ec-ac1a-1c3563efb4a6",
+   "data_entry:f3345976-184e-49f6-b1d8-4e6f1f2fb734",
+   "data_entry:ad3f8e06-a96f-4b4a-b74e-24221f1ca7e3",
+   "data_entry:eeaf36c2-6c14-431d-98f6-bf3cdf29017f",
+   "data_entry:ae57b99a-258f-44fd-af11-3639fc70e1a9",
+   "data_entry:45bc9943-3fa7-4dc4-a27a-f6d9096ac41c"
+  ],
+  "submitted_utc": "2026-11-26T06:50:55.934168+00:00"
  }
 }
