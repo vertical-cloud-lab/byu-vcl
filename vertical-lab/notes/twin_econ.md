@@ -485,9 +485,12 @@ The block above is regenerated with every `python3 -m twin.econ all`; this is ho
 4. **The slowdown is mild until about 70 % and steep above it.** Kingman's estimate follows the twin to 70 % and
    underestimates it at 85 %, where outside jobs booked first act like reserved sessions and take the atomizer's slots.
    Days to target grow less than cycle time: the campaigns keep many experiments in flight.
-5. **Acceleration is mostly the policy against weak baselines, and the lab's own share is modest.** Against the
-   conventional lab running the same policy the vertical lab is a little faster; against random or the screening
-   funnel it reaches the state of the art in seeds where they never do within the horizon, so only bounds can be given.
+5. **The lab's own share of the acceleration is about 2-3×; the rest depends on what it is compared with.** Against
+   the conventional lab running the same policy (round 2's runs, 12 seeds each, the conventional lab over three
+   years), the vertical lab reaches the state of the art 1.9× sooner with BOFN on aluminium and 3.3-3.4× sooner with
+   the heuristic. With BOFN against the conventional heuristic it is 1.1× on aluminium (the interval includes 1) and
+   2.2× on copper. Against a Sobol design it reaches the state of the art in seeds where Sobol never does within the
+   horizon, so only bounds can be given (at least 9.4× on aluminium).
 
 ## Limits
 

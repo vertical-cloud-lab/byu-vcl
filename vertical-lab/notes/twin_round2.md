@@ -66,7 +66,8 @@ the wrong side of the 99.5 % gate each way) is the real difficulty of telling 99
 * **In-house DED blocks for bars** (vertical lab): 1 kg on the MX-Lab, no NSL certificate and no Mines queue.
 * **A stocked inventory** (vertical lab): consumables and every feedstock but Sc and Er bought at day 0 at the day's
   prices and charged to the campaign, reordered four times over. Ordering each charge's metal as it is needed (round
-  1, and DAL today) left the atomizer 89 % idle while work in flight waited on orders.
+  1, and DAL today) left the atomizer 89 % idle in a development run while work in flight waited on orders; at 12
+  seeds it delays the state of the art 1.5-2.9× (section 5.6).
 * **Booking tags and an event log**: every booking records the design and the network node it served
   (`Twin.event_log`), which is what the video and the utilization study read.
 * **External load**: `Twin(..., external=callable)` lets outside users' jobs take slots before the campaigns run.
