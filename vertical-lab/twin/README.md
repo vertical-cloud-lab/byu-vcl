@@ -83,11 +83,11 @@ cheaper the vertical lab finds alloys. The write-up and results are in [`../note
 
 ```bash
 cd vertical-lab
-/tmp/venv/bin/pip install numpy scipy scikit-learn matplotlib pillow pycalphad scheil pytest "botorch[fully_bayesian]"
+/tmp/venv/bin/pip install numpy scipy scikit-learn scikit-image matplotlib pillow pycalphad scheil pytest "botorch[fully_bayesian]"
 /tmp/venv/bin/python -m pytest -q twin/tests                      # round 1 + instruments + economics
 /tmp/venv/bin/python -m twin.oracle                               # out/twin2/oracle.json (targets)
-TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run main cu_hidden conventional stock crucible reuse
-TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run seeded seeded_dal256 saas   # traces: out/twin2/trace/
+TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run main cu_hidden cu_proxy conventional stock crucible reuse
+TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run seeded seeded_dal256 saas cu_money   # traces: out/twin2/trace/
 /tmp/venv/bin/python -m twin.figures2                             # out/twin2/fig/
 /tmp/venv/bin/python -m twin.econ all                             # out/twin2/econ/
 /tmp/venv/bin/python -m twin.instruments.gallery_micro; /tmp/venv/bin/python -m twin.instruments.gallery_mech

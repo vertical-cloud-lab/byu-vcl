@@ -321,9 +321,28 @@ get there, 95 % bootstrap intervals over seeds (`twin/accel.py`; `out/twin2/econ
 ![Vertical lab (one year) against the conventional lab (three years)](../out/twin2/fig/twin2_vertical_vs_conventional.png)
 ![Days to the state of the art, each seed a dot](../out/twin2/fig/twin2_time_to_target.png)
 
-### 5.5 SAAS priors (running)
+### 5.5 SAAS priors don't help here (`saas`, 3 policies × 12 seeds, the main benchmark's seeds)
 
-The `saas` experiment (MAP SAAS GP-BO, BOFN with SAAS nodes, fully Bayesian SAASBO) is being run.
+| | FLAIME best new | paired against the default GP | ONR best new | paired against the default GP |
+|---|---|---|---|---|
+| GP-BO, default GP (main benchmark) | 0.46 ± 0.07 | | 0.53 ± 0.06 | |
+| SAASBO: SAAS prior, fully Bayesian (NUTS) | 0.38 ± 0.07 | −0.08 ± 0.04 (3 seeds better, 7 worse) | 0.44 ± 0.07 | −0.09 ± 0.05 (2 better, 5 worse) |
+| GP-BO with the SAAS prior at its MAP point | 0.50 ± 0.05 | +0.05 ± 0.06 | 0.55 ± 0.06 | +0.02 ± 0.05 |
+| BOFN, default GP nodes (main benchmark) | 0.65 ± 0.03 | | 0.33 ± 0.09 | |
+| BOFN with SAAS (MAP) nodes | 0.65 ± 0.04 | 0.00 ± 0.06 | 0.36 ± 0.07 | +0.04 ± 0.06 |
+
+- **The fully Bayesian SAASBO did worse than the default GP**, on both campaigns. It also tested fewer aluminium alloys
+  (24 a year against GP-BO's 44). The MAP SAAS prior and BOFN's SAAS nodes changed nothing clearly.
+- **Likely reasons, not tested separately:** the spaces are 23- and 14-dimensional with 25-45 tested alloys a year, but BoTorch's
+  default GP already uses dimension-scaled lengthscale priors (Hvarfner et al. 2024), which do well in high dimensions.
+  The utility also depends on many of the elements at once (strengthening, mineral burden, freezing range), so a prior
+  that expects few active dimensions has little to gain.
+- **SAASBO ran lighter than BoTorch's recommended settings:** 128 warm-up steps, 128 samples thinned to 16, and a fresh
+  chain only when the data grew by 4 points and by half (about six chains a simulated year, both campaigns), with the
+  last chain's samples reused in between (section 3). A chain at every result would have cost about 33 CPU-hours. Part
+  of its shortfall may be that.
+
+![Default GP surrogates against SAAS priors](../out/twin2/fig/twin2_saas.png)
 
 ### 5.6 The crucible, powder reuse and stocking (`crucible`, `reuse`, `stock`; 12 seeds each, paired with the main benchmark's seeds)
 
@@ -456,6 +475,8 @@ Every price says where it comes from in `twin/econ.py` (procurement records and 
   120 days); BOFN's lead is the final alloy (0.65-0.69 against 0.60) and the harder target.
 - **Aluminium, against a conventional lab:** the vertical lab with BOFN is 1.1× (0.7-2.2) as fast as a conventional lab
   running the heuristic to the state of the art (5.4).
+- **SAAS priors:** the fully Bayesian SAASBO did worse than default GP-BO on both campaigns (−0.08 ± 0.04 and
+  −0.09 ± 0.05, paired), and BOFN's SAAS nodes changed nothing (5.5).
 - **Copper on DAL's own lab, as #256 schedules it:** from the common seeds, GP-BO ended ahead of BOFN (0.51 ± 0.07
   against 0.30 ± 0.09), with only about three copper alloys tested a year (5.7).
 - **Cost:** carrying its own fixed costs, the vertical lab costs more per alloy than the conventional lab ($28.6k

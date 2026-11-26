@@ -23,6 +23,14 @@
 | proposed_heuristic_stock-lean | 12 | 0.675 ± 0.014 | 100% | 123 | $32k | 0.642 ± 0.012 | 100% | 490 | $64k | 9 |
 | proposed_tiered_stock-lean | 12 | 0.338 ± 0.090 | 58% | 163 | $23k | 0.706 ± 0.010 | 100% | 334 | $46k | 4 |
 
+**saas**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_saasbo | 12 | 0.376 ± 0.070 | 58% | 259 | $55k | 0.443 ± 0.073 | 50% | 191 | $46k | 74 |
+| vertical_lab_bofn_saas | 12 | 0.654 ± 0.042 | 92% | 102 | $27k | 0.363 ± 0.074 | 33% | 140 | $45k | 89 |
+| vertical_lab_saasmap | 12 | 0.501 ± 0.050 | 92% | 190 | $39k | 0.551 ± 0.058 | 75% | 218 | $56k | 12 |
+
 **stock**
 
 | setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
