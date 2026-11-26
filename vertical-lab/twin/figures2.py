@@ -383,14 +383,18 @@ def main():
     seeded(S)
     trace_weekly()
     items = []
-    for k in ("bofn", "bofn_blend", "heuristic", "gpbo"):
-        items.append((f"{LAB[k]}: as run", "main", f"vertical_lab_{k}"))
+    for k in ("bofn", "bofn_blend", "heuristic", "tiered", "gpbo"):
+        extra = []
         for exp2, suff, lab in (("crucible", "_crucible-400", "400 cm3 crucible"), ("reuse", "_reuse-False",
                                                                                     "no powder reuse"),
                                 ("stock", "_stock-lean", "ordering as it goes"),
-                                ("cu", "_cu_budget-180000.0", "copper money x3")):
-            if f"vertical_lab_{k}{suff}" in _groups(S, exp2):
-                items.append((f"{LAB[k]}: {lab}", exp2, f"vertical_lab_{k}{suff}"))
+                                ("cu", "_cu_budget-180000.0", "copper money x3"),
+                                ("cu_money", "_cu_budget-180000.0", "copper money x3")):
+            if f"vertical_lab_{k}{suff}" in _groups(S, exp2) and not any(lab == e[0].split(": ", 1)[1] for e in extra):
+                extra.append((f"{LAB[k]}: {lab}", exp2, f"vertical_lab_{k}{suff}"))
+        if extra or k in ("bofn", "bofn_blend", "heuristic", "gpbo"):
+            items.append((f"{LAB[k]}: as run", "main", f"vertical_lab_{k}"))
+            items += extra
     if len(items) > 4:
         dots(S, items, "twin2_options.png", "What the crucible, powder reuse, stocking and money change")
     sitems = [(LAB[k], exp2, f"vertical_lab_{k}") for k, exp2 in (("gpbo", "main"), ("saasmap", "saas"),

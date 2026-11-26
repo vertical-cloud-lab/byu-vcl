@@ -321,9 +321,38 @@ get there, 95 % bootstrap intervals over seeds (`twin/accel.py`; `out/twin2/econ
 ![Vertical lab (one year) against the conventional lab (three years)](../out/twin2/fig/twin2_vertical_vs_conventional.png)
 ![Days to the state of the art, each seed a dot](../out/twin2/fig/twin2_time_to_target.png)
 
-### 5.5-5.7 (running)
+### 5.5 and 5.7 (running)
 
-SAAS priors, the crucible, powder reuse and stocking, and the seeded runs with the campaign trace are being run (`twin/bench2.py` experiments `saas`, `crucible`, `reuse`, `stock`, `seeded`, `seeded_dal256`).
+SAAS priors and the seeded runs with the campaign trace are being run (`twin/bench2.py` experiments `saas`, `seeded`, `seeded_dal256`).
+
+### 5.6 The crucible, powder reuse and stocking (`crucible`, `reuse`, `stock`; 12 seeds each, paired with the main benchmark's seeds)
+
+| Change (vertical lab) | Policy | FLAIME best new | paired change | days to the state of the art (median) | ONR best new | paired change | days to the state of the art |
+|---|---|---|---|---|---|---|---|
+| 400 cm³ crucible (DAL #219) instead of 225 | BOFN + blend screen | 0.67 ± 0.02 | −0.02 ± 0.03 | 83 (116) | 0.63 ± 0.03 | −0.04 ± 0.03 | 205 (225) |
+| | plain BOFN | 0.67 ± 0.02 | +0.02 ± 0.04 | 102 (123) | 0.54 ± 0.07 | **+0.21 ± 0.10** | 167, 8 of 12 seeds (141, 3 of 12) |
+| | heuristic | 0.61 ± 0.02 | 0.00 ± 0.02 | **12 (37)** | 0.59 ± 0.03 | 0.00 ± 0.01 | 85 (127) |
+| no powder reuse | plain BOFN | 0.71 ± 0.02 | +0.06 ± 0.05 | 103 (123) | 0.40 ± 0.09 | +0.07 ± 0.13 | 171 (141) |
+| | heuristic | 0.62 ± 0.02 | +0.01 ± 0.01 | 37 (37) | 0.57 ± 0.03 | −0.01 ± 0.03 | 121 (127) |
+| ordering metal as it goes (DAL today) | plain BOFN | 0.62 ± 0.03 | −0.03 ± 0.05 | **189 (123)** | 0.43 ± 0.07 | +0.11 ± 0.07 | 278 (141) |
+| | heuristic | 0.58 ± 0.02 | −0.03 ± 0.01 | **107 (37)** | 0.58 ± 0.03 | −0.01 ± 0.03 | 261 (127) |
+
+In brackets: the main benchmark's median, the same policy and seeds. Mean ± SE over 12 seeds; paired change = the
+mean over seeds of (this run − the main run with the same seed).
+
+- **The 400 cm³ crucible mostly saves time.** One run makes enough powder for more parts, so the heuristic reaches the
+  state of the art in 12 days instead of 37, and plain BOFN gets copper's 1 kg deposits made: +0.21 ± 0.10 on copper,
+  the largest change in this table. BOFN with the blend screen already atomizes only what it promotes, and gains
+  nothing (−0.04 ± 0.03 on copper, within two errors of zero).
+- **Powder reuse doesn't pay here.** Turning it off changed nothing clearly: plain BOFN did a little better without it
+  (+0.06 ± 0.05 on aluminium), because reused powder carries more oxygen and satellites into every part made from the
+  lot (`twin/instruments/reuse.py`). The model's reuse saves powder, but powder is not what limits these campaigns.
+  This doesn't favor reuse, and it rests on the model's degradation rates.
+- **Stocking the feedstock matters most for time.** Ordering each charge's metal as it is needed, as DAL buys today,
+  delays the state of the art 2.9× with the heuristic (107 against 37 days) and 1.5× with BOFN (189 against 123),
+  with the year's best alloy barely changed.
+
+![What the crucible, powder reuse and stocking change](../out/twin2/fig/twin2_options.png)
 
 ### 5.8 What it costs: cost per experiment, utilization, outside users (`twin/econ.py`, `notes/twin_econ.md`)
 

@@ -23,6 +23,28 @@
 | proposed_heuristic_stock-lean | 12 | 0.675 ± 0.014 | 100% | 123 | $32k | 0.642 ± 0.012 | 100% | 490 | $64k | 9 |
 | proposed_tiered_stock-lean | 12 | 0.338 ± 0.090 | 58% | 163 | $23k | 0.706 ± 0.010 | 100% | 334 | $46k | 4 |
 
+**stock**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_bofn_stock-lean | 12 | 0.625 ± 0.035 | 100% | 189 | $37k | 0.434 ± 0.074 | 50% | 278 | $50k | 318 |
+| vertical_lab_heuristic_stock-lean | 12 | 0.577 ± 0.020 | 100% | 107 | $16k | 0.576 ± 0.025 | 83% | 261 | $42k | 3 |
+
+**crucible**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_bofn_blend_crucible-400 | 12 | 0.668 ± 0.022 | 100% | 83 | $23k | 0.629 ± 0.029 | 75% | 205 | $47k | 278 |
+| vertical_lab_bofn_crucible-400 | 12 | 0.673 ± 0.023 | 100% | 102 | $26k | 0.537 ± 0.066 | 67% | 167 | $44k | 163 |
+| vertical_lab_heuristic_crucible-400 | 12 | 0.606 ± 0.020 | 100% | 12 | $12k | 0.588 ± 0.030 | 75% | 85 | $33k | 5 |
+
+**reuse**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_bofn_reuse-False | 12 | 0.715 ± 0.019 | 100% | 103 | $30k | 0.395 ± 0.090 | 50% | 171 | $50k | 149 |
+| vertical_lab_heuristic_reuse-False | 12 | 0.616 ± 0.019 | 100% | 37 | $20k | 0.570 ± 0.027 | 50% | 121 | $43k | 4 |
+
 **lite**
 
 | setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
