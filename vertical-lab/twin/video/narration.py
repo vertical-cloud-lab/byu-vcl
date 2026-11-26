@@ -372,6 +372,24 @@ def plan_table(placed: list, rec: dict) -> str:
     return "\n".join(out)
 
 
+SECTION = {"title": "Opening", "simulated": "Opening", "dag": "The function networks", "figures": "Reading the figures",
+           "replay": "The campaign year", "results": "Results", "takeaway": "The takeaway", "notes": "Closing notes"}
+
+
+def notes_table(record: Path = D.VID / "final_narrated_record.json") -> str:
+    """The script with its times in the cut as encoded (the narrated cut's record), for notes/twin_video.md."""
+    rec = json.loads(Path(record).read_text())
+    rows = rec["narration"]["placed"]
+    out = ["| Time | Part | Line |", "|---|---|---|"]
+    for r in rows:
+        out.append(f"| {_mmss(r['t'])}-{_mmss(r['end'])} | {SECTION.get(r['seg'], r['seg'])} | {r['text']} |")
+    return "\n".join(out)
+
+
+def _mmss(t: float) -> str:
+    return f"{int(t // 60)}:{int(t % 60):02d}"
+
+
 if __name__ == "__main__":
     os.environ.setdefault("TWIN_VIDEO_NARRATION", "1")         # the narrated cut's timing (compose.NARRATE)
     cmd = sys.argv[1] if len(sys.argv) > 1 else "plan"
@@ -380,6 +398,8 @@ if __name__ == "__main__":
         print(f"{len(a)} lines, {sum(len(y) for y in a.values()) / SR / 60:.2f} min of speech in {NDIR}")
     elif cmd == "check":
         check()
+    elif cmd == "table":                                       # the script with its times, for the notes
+        print(notes_table(Path(sys.argv[2]) if len(sys.argv) > 2 else D.VID / "final_narrated_record.json"))
     elif cmd in ("plan", "track"):
         from . import compose as C
         rec = C.plan_record()

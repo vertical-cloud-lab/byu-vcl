@@ -74,12 +74,12 @@
    "sha256": "547752cfa0755ccb59da053f2117db5875b67728c96e9d93dd2c9a9084ad29d1"
   },
   "pov1": {
-   "key": "4b3384cae16a04f4",
-   "text": "Day one follows a single aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
-   "spoken": "Day one follows a single aluminum alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
-   "phonemes": "dˈeɪ wˈʌn fˈɑːloʊz ɐ sˈɪŋɡəl ɐlˈuːmɪnəm ˈælɔɪ fɹʌm stˈɑːɹt tə fˈɪnɪʃ. ɪts kˈʌp ɪz məʃˈiːnd, ɪts mˈɛɾəlz ɑːɹ dˈoʊsd ænd pɹˈɛst ˌʌndɚ vˈækjuːm, ðˈɛn mˈɛltᵻd ænd ˈæɾəmˌaɪzd ˌɪntʊ pˈaʊdɚ.",
-   "seconds": 11.35,
-   "sha256": "cd07411ac6870fed8edefd5a10c76e3d2eac1b36fcf6cd22ed67a01fe6c836e5"
+   "key": "93c641ec1d1e3211",
+   "text": "Day one follows a single simulated aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
+   "spoken": "Day one follows a single simulated aluminum alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
+   "phonemes": "dˈeɪ wˈʌn fˈɑːloʊz ɐ sˈɪŋɡəl sˈɪmjʊlˌeɪɾᵻd ɐlˈuːmɪnəm ˈælɔɪ fɹʌm stˈɑːɹt tə fˈɪnɪʃ. ɪts kˈʌp ɪz məʃˈiːnd, ɪts mˈɛɾəlz ɑːɹ dˈoʊsd ænd pɹˈɛst ˌʌndɚ vˈækjuːm, ðˈɛn mˈɛltᵻd ænd ˈæɾəmˌaɪzd ˌɪntʊ pˈaʊdɚ.",
+   "seconds": 12.03,
+   "sha256": "228ed145bd318727b5ab201797076fd96ea35817801b77c9bf6a6ce504a1070a"
   },
   "pov2": {
    "key": "19ef9493c0b11910",

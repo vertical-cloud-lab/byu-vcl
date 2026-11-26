@@ -72,7 +72,7 @@
    "id": "pov1",
    "seg": "replay",
    "at": 0.5,
-   "text": "Day one follows a single aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
+   "text": "Day one follows a single simulated aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.",
    "src": "compose.Timeline._pov: cup machined, dosed, pressed under vacuum, melt, pour"
   },
   {
