@@ -1,0 +1,29 @@
+{
+ "title": "Preview: one simulated week of the automated lab, moved by the event log (digital twin)",
+ "description": "A preview, for review: one simulated week (days 120-126) of the digital twin's replayed year, with PR 318's 3-D lab moved by the twin's event log. Simulated, not lab results.\n\nEvery tray presented at a Kardex Shuttle's opening and every MiR250 + UR12e visit to a dock comes from a booking in the event log (out/twin2/events/vertical_lab_bofn_blend_s0.json): a station on a tray has its tray brought to the opening when the booking starts and again when it ends, and a floor machine has a unit dock at its front. Idle trays stay in their slots.\n\nThe clock runs at 2.8 lab hours a second. At that speed a tray change (8-12 s with the tower's own timings) would last a few thousandths of a second, so the moves run on their own clock, 8 times real time, each starting when the clock reaches its booking: the lift at 1333 mm/s, the 2.2 s slides, the 0.7 s shutter, the MiR250 at 1.5 m/s pivoting at 60 deg/s, the arm's pick and place. When the moves can't keep up, each Shuttle and unit takes the latest request. This week: 73 of 138 tray requests and 40 of 58 machine visits are drawn (the panel at the bottom says so).\n\nOverlays as in the campaign video: stations lit from the event log, the two function networks, the compositions in progress, the live best-so-far plots. The inset is a second camera on the two Shuttles.\n\nCode: https://github.com/vertical-cloud-lab/byu-vcl/tree/b16bd36/vertical-lab/twin/video (lab3d.py, lab3d_sched.py, lab3d_cut.py)\nPR: https://github.com/vertical-cloud-lab/byu-vcl/pull/393\n",
+ "tags": [
+  "vertical cloud lab",
+  "BYU",
+  "digital twin",
+  "laboratory automation",
+  "self-driving lab",
+  "Kardex Shuttle",
+  "MiR250",
+  "UR12e",
+  "simulated"
+ ],
+ "categoryId": "28",
+ "privacy": "unlisted",
+ "notifySubscribers": false,
+ "file": "out/twin2/video/lab3d_week.mp4",
+ "seconds": 60.0,
+ "commit": "b16bd36",
+ "counts": {
+  "tray_asked": 138,
+  "floor_asked": 58,
+  "presentations": 18,
+  "floor_visits": 21,
+  "tray_drawn": 73,
+  "floor_drawn": 40
+ }
+}

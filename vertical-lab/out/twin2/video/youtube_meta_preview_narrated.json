@@ -1,0 +1,19 @@
+{
+ "title": "Preview: the campaign video, narrated (digital twin, simulated benchmark)",
+ "description": "A preview, for review: the narrated campaign video's opening (what is simulated and what is real), then the replay's switch from day 1 to the animated 3-D lab and the first view of the whole lab from above. Simulated, not lab results.\n\nThe voice is synthetic: Kokoro v1.0 (open weights, run locally), its stock voice af_heart, no voice cloned or imitated. What it says, at its times in this preview:\n0:00  This is a simulated benchmark: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab.\n0:10  Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.\n0:28  From day two, the event log moves the lab's 3-D model: each booking brings its tray to a Shuttle's opening and back, and a mobile arm drives over to serve it. Trays nobody has booked stay in their slots.\n0:44  Now the whole lab from above, with the two Shuttles up close from a second camera. The moves run on a clock of their own, so you can follow them; the panel at the bottom counts how many were drawn.\n\nCode: https://github.com/vertical-cloud-lab/byu-vcl/tree/dde652e/vertical-lab/twin/video (narration.py, narration.json)\nPR: https://github.com/vertical-cloud-lab/byu-vcl/pull/393\n",
+ "tags": [
+  "vertical cloud lab",
+  "BYU",
+  "digital twin",
+  "laboratory automation",
+  "self-driving lab",
+  "narrated",
+  "simulated"
+ ],
+ "categoryId": "28",
+ "privacy": "unlisted",
+ "notifySubscribers": false,
+ "file": "out/twin2/video/preview_narrated.mp4",
+ "seconds": 60.0,
+ "commit": "dde652e"
+}
