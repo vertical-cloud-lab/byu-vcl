@@ -1,0 +1,641 @@
+key,venture,universe,category,source_list,researched,pass,open_ok,open_basis,open_url,country,founded,status,funding_found,n_rounds,n_investors,notes,part2_status,part2_total_funding_usd,part2_ever_1b
+deepseek-ai,DeepSeek,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,7400000000.0,yes
+huggingface,Hugging Face,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,395200000.0,yes
+vercel,Vercel,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,863000000.0,yes
+multica-ai,Multica,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+NousResearch,Nous Research,U1,COSS (GitHub core),github_core,1,a05,yes,releases open-weight Hermes models; sells Nous Portal plans powering Hermes,,US,2023,private,yes,2,13,"Founded year from memory, not sourced.",private,158000000.0,yes
+firecrawl,Firecrawl (Sideguide Technologies),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,89500000.0,unknown
+anomalyco,Anomaly,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+VoltAgent,VoltAgent,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+langchain-ai,LangChain,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,460000000.0,yes
+n8n-io,n8n,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,240000000.0,yes
+FuelLabs,Fuel Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,81500000.0,unknown
+Significant-Gravitas,Significant Gravitas Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,12000000.0,no
+ollama,Ollama,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,88000000.0,unknown
+browser-use,Browser Use,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,17000000.0,no
+storytold,Storyteller (ArtCraft),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+langgenius,LangGenius,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,30000000.0,no
+open-webui,Open WebUI Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+langflow-ai,Langflow (DataStax),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,unknown
+Graphify-Labs,Graphify Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,125000.0,no
+tailwindlabs,Tailwind Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,unknown
+fastapi,FastAPI Labs,U1,COSS (GitHub core),github_core,1,a05,yes,maintainer's company sells FastAPI Cloud hosting,,?,,private,yes,2,19,Seed date from HN post date 2025-05-05.,private,,no
+Comfy-Org,Comfy Org,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,47000000.0,no
+hashicorp,HashiCorp,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,349000000.0,yes
+astral-sh,Astral,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,4000000.0,unknown
+grafana,Grafana Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,1090000000.0,yes
+excalidraw,Excalidraw s.r.o.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+FoundationAgents,DeepWisdom,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,31000000.0,no
+charmbracelet,Charm (Charmbracelet),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,9500000.0,no
+earendil-works,Earendil Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ultralytics,Ultralytics,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,30000000.0,no
+pathwaycom,Pathway,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,30000000.0,no
+laravel,Laravel,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,57000000.0,unknown
+immich-app,FUTO,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+paperclipai,"Paperclip Labs, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+supabase,Supabase,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,yes
+nexu-io,"Powerformer, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+denoland,Deno Land Inc.,U1,COSS (GitHub core),github_core,1,a05,yes,sells Deno Deploy hosting for Deno,,US,,acquired,yes,2,11,Cloudflare announced acquisition 2026-10 (terms undisclosed).,acquired,26000000.0,no
+OpenBMB,ModelBest,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,yes
+redis,Redis Ltd.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,347000000.0,yes
+mui,MUI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Stirling-Tools,Stirling PDF,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,2000000.0,no
+oven-sh,Oven (Bun),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,7000000.0,unknown
+zed-industries,Zed Industries,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,42000000.0,unknown
+Textualize,Textualize,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,shut_down,,no
+infiniflow,InfiniFlow,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+OpenHands,All Hands AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,23800000.0,no
+storybookjs,Chromatic,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mermaid-js,Mermaid Chart,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,7500000.0,no
+cheaper-inference,Cheaper Inference,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+ChatGPTNextWeb,NextChat,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+rtk-ai,RTK AI Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+lobehub,LobeHub,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+docker,Docker Inc.,U1,COSS (GitHub core),github_core,1,a05,yes,sells Docker subscriptions for its tools,,US,2010,private,yes,10,11,Participants of 2022 round not retrieved.,private,163000000.0,yes
+Kong,Kong Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,345000000.0,yes
+vitejs,VoidZero,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,17100000.0,no
+netdata,Netdata Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,31000000.0,no
+hoppscotch,Hoppscotch,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3000000.0,no
+headroomlabs-ai,Headroom Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+unslothai,Unsloth AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,540000.0,no
+coder,Coder Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,85000000.0,no
+AppFlowy-IO,AppFlowy,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6400000.0,no
+TanStack,TanStack LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+elastic,Elastic N.V.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,listed,,yes
+toeverything,Toeverything (AFFiNE),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,8000000.0,no
+usestrix,Strix,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6700000.0,no
+nestjs,NestJS (Kamil Myśliwiec),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+FortAwesome,"Fonticons, Inc. (Font Awesome)",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+openbq-org,OpenBB Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,8500000.0,no
+Fission-AI,Fission AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+remotion-dev,Remotion AG,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,272000.0,no
+unionlabs,Union Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+strapi,Strapi,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,45000000.0,no
+hpcaitech,HPC-AI Tech,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,78000000.0,no
+cline,Cline Bot Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,32000000.0,no
+daytonaio,Daytona Platforms,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,91000000.0,yes
+mem0ai,Mem0,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,24000000.0,no
+openinterpreter,Open Interpreter,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Mintplex-Labs,Mintplex Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,500000.0,no
+zai-org,Z.ai (Zhipu AI),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,listed,,yes
+coollabsio,coolLabs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+warpdotdev,Warp,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,73000000.0,no
+traefik,Traefik Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,11050000.0,no
+scrapy,Zyte,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+nocodb,NocoDB,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,10500000.0,no
+localstack,LocalStack,U1,COSS (GitHub core),github_core,1,a05,yes,sells LocalStack Pro and Enterprise,,CH,2021,private,yes,2,3,Seed year approximate; founded year per TC (full-time business 2021).,private,28200000.0,no
+tabler,Tabler,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+commaai,comma.ai,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+jgraph,JGraph Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+BerriAI,BerriAI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+vectorize-io,"Vectorize, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3600000.0,no
+makeplane,Plane,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,4000000.0,no
+penpot,Kaleidos (Penpot),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,20000000.0,no
+twentyhq,Twenty.com PBC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,5000000.0,no
+crewAIInc,CrewAI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,18000000.0,unknown
+minio,MinIO Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,126000000.0,yes
+nuxt,NuxtLabs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+1Panel-dev,FIT2CLOUD,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,15700000.0,no
+meilisearch,Meilisearch,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,22000000.0,no
+K-Dense-AI,K-Dense,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,2000000.0,no
+go-gitea,Gitea Ltd / CommitGo,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+appwrite,Appwrite,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,37000000.0,no
+zylon-ai,Zylon,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3200000.0,no
+typst,Typst GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+odoo,Odoo SA,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,yes
+gatsbyjs,Gatsby,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,46800000.0,no
+bmad-code-org,"BMad Code, LLC",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+FlowiseAI,FlowiseAI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+maybe-finance,Maybe Finance,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,shut_down,,no
+CherryHQ,Cherry Studio (CherryHQ),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+HumanSignal,HumanSignal,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,30000000.0,no
+expo,Expo (650 Industries),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+upscayl,Upscayl,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+run-llama,LlamaIndex,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,27500000.0,no
+PrefectHQ,Prefect Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,46700000.0,no
+ionic-team,Ionic (Drifty Co.),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,25000000.0,unknown
+dbeaver,DBeaver Corp,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6000000.0,no
+KeygraphHQ,Keygraph,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+tldraw,tldraw Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,14700000.0,no
+ClickHouse,ClickHouse,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,1000000000.0,yes
+cypress-io,Cypress.io,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,54810000.0,no
+metabase,Metabase,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,42500000.0,no
+calcom,"Cal.com, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,32400000.0,no
+jeecgboot,JEECG (Beijing Guoju Information Technology),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+exo-explore,EXO Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+usebruno,Bruno Software Inc,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3000000.0,no
+nvm-windows,Author Software,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+discourse,Civilized Discourse Construction Kit (Discourse),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,20000000.0,no
+prisma,"Prisma Data, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,56500000.0,no
+siyuan-note,Yunnan Liandi Technology (B3log),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ifixai-ai,iFixAi,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+serverless,"Serverless, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,13000000.0,no
+milvus-io,Zilliz,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,113000000.0,no
+RocketChat,Rocket.Chat,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,29000000.0,no
+streamlit,Streamlit,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,62000000.0,no
+coqui-ai,Coqui,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,shut_down,3300000.0,no
+janhq,Menlo Research,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+payloadcms,Payload,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,unknown
+getsentry,Sentry (Functional Software),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,217000000.0,yes
+logseq,Logseq Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,4100000.0,no
+meteor,Meteor Software,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,31200000.0,no
+ray-project,Anyscale,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,259000000.0,yes
+HeyPuter,Puter Technologies Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3000000.0,no
+gradio-app,Gradio,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+duckdb,DuckDB Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,unknown
+agno-agi,Agno,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+tinyhumansai,Tiny Human Intelligence Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+phaserjs,Phaser Studio Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+lightpanda-io,Lightpanda,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+chatboxai,Chatbox AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+gitroomhq,Gitroom,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+dcloudio,DCloud,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+frappe,Frappe Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,1300000.0,no
+outline,General Outline,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+appsmithorg,Appsmith,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,51500000.0,no
+ToolJet,ToolJet,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6150000.0,no
+aseprite,Igara Studio,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+PostHog,PostHog Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,194000000.0,yes
+datalab-to,Datalab,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3500000.0,no
+vuetifyjs,Vuetify LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+VectifyAI,Vectify AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,1420000.0,no
+pingcap,PingCAP,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,341600000.0,unknown
+chakra-ui,Chakra Systems,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+chatwoot,Chatwoot,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,1600000.0,no
+pola-rs,Polars B.V.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,25000000.0,no
+photoprism,PhotoPrism UG,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+novuhq,Novu,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+umami-software,Umami Software,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,1500000.0,no
+DioxusLabs,Dioxus Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mindsdb,MindsDB,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mattermost,Mattermost,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,70000000.0,unknown
+tailscale,Tailscale,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,275000000.0,unknown
+spacedriveapp,Spacedrive Technology,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,2000000.0,no
+xyflow,xyflow GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ueberdosis,überdosis GmbH (Tiptap),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+CopilotKit,CopilotKit,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,27000000.0,no
+harness,Harness,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,570000000.0,yes
+portainer,Portainer.io,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,13400000.0,no
+httpie,HTTPie,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6500000.0,no
+Dokploy,Dokploy,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+directus,Monospace Inc. (Directus),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,7000000.0,no
+khoj-ai,Khoj Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+langfuse,Langfuse,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,4000000.0,no
+IceWhaleTech,IceWhale Technology,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+nextcloud,Nextcloud GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+medusajs,Medusa,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+utmapp,UTM (Turing Software LLC),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+anywhere-labs,Jiuxiangxian (Beijing) Technology,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+continuedev,"Continue Dev, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,5100000.0,no
+rustfs,RustFS,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+drizzle-team,Drizzle Team,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+SheetJS,SheetJS LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+seaweedfs,SeaweedFS,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+refinedev,Refine,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3800000.0,no
+qdrant,Qdrant,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,87800000.0,no
+motiondivision,Motion Division,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+vxcontrol,VXControl L.L.C-FZ,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Fincept-Corporation,Fincept Corporation,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+explosion,Explosion,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6000000.0,no
+tinygrad,Tiny Corp,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,5100000.0,no
+TabbyML,TabbyML,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3200000.0,no
+fishaudio,Fish Audio,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,52000000.0,unknown
+Pythagora-io,Pythagora,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+topoteretes,Topoteretes (cognee),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,7500000.0,no
+onyx-dot-app,Onyx,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,10000000.0,no
+anoma,Anoma (Heliax),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,51000000.0,no
+surrealdb,SurrealDB Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,44000000.0,no
+nginx,NGINX,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,84000000.0,no
+projectdiscovery,ProjectDiscovery,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,26700000.0,no
+getzep,Zep,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+CloakHQ,CloakHQ,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ankitects,"Anki Software, LLC (Ankitects)",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ScrapeGraphAI,ScrapeGraphAI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+trycua,Cua,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+SigNoz,SigNoz,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6500000.0,no
+cockroachdb,Cockroach Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,633000000.0,yes
+atuinsh,"Atuin, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+conductor-oss,Orkes,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,29300000.0,no
+hasura,Hasura,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,136500000.0,yes
+linera-io,Linera,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+dragonflydb,DragonflyDB,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,21000000.0,unknown
+AvaloniaUI,AvaloniaUI OÜ,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+dream-num,DreamNum (Univer),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+influxdata,InfluxData,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,171000000.0,unknown
+nautechsystems,Nautech Systems Pty Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+supermemoryai,Supermemory,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,3000000.0,no
+hypit-ai,Hypit,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Lightning-AI,Lightning AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,103000000.0,yes
+symfony,Symfony SAS,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,6900000.0,no
+heroui-inc,HeroUI Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+netbirdio,NetBird,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+greensock,GreenSock,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,unknown
+nanocoai,NanoCo,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+e2b-dev,E2B,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+better-auth,Better Auth,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,5000000.0,no
+karakeep-app,Localhost Labs Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Infisical,Infisical,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,58800000.0,no
+statelyai,Stately,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ente,Ente Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+kestra-io,Kestra Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,36000000.0,no
+deepinsight,InsightFace,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+jitsi,Jitsi,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+simstudioai,Sim,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,7000000.0,no
+modular,Modular Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,380000000.0,yes
+JaidedAI,Jaided AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+labring,Sealos (labring),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+plausible,Plausible Insights OU,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mastra-ai,Mastra,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,13000000.0,no
+chroma-core,Chroma,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,20300000.0,no
+trufflesecurity,Truffle Security,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+composer,Packagist Conductors GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+nrwl,Nrwl (Nx),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,24600000.0,no
+invoke-ai,Invoke,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,shut_down,,no
+GitbookIO,GitBook,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+gastownhall,"Gas City, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+reflex-dev,Reflex,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,19000000.0,no
+cloudreve,Cloudreve,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+manaflow-ai,Manaflow,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+getredash,Redash,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+every-app,EveryApp (OpenSEO),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+BloopAI,Bloop AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+fingerprintjs,Fingerprint (FingerprintJS Inc.),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+yikart,AiToEarn Team,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+mongodb,MongoDB Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,listed,311000000.0,yes
+voideditor,Void,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+Budibase,Budibase,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,9250000.0,no
+OtterMind,OtterMind,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+locustio,Locust Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+hcengineering,Huly Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+Kilo-Org,Kilo Code,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,8000000.0,no
+onlook-dev,Onlook,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+BeyondDimension,Changsha Beyond Dimension Technology,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+promptfoo,Promptfoo,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,23000000.0,no
+Stability-AI,Stability AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,232000000.0,yes
+typesense,Typesense,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+deepset-ai,deepset,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,45600000.0,no
+rethinkdb,RethinkDB,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,shut_down,9200000.0,no
+marmelab,marmelab,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+readest,Bilingify LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+apify,Apify,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+goauthentik,Authentik Security,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+GrapesJS,GrapesJS,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+zulip,Kandra Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+plotly,Plotly,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,5500000.0,unknown
+openfaas,OpenFaaS Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+browserbase,Browserbase,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+black-forest-labs,Black Forest Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,331000000.0,yes
+rancher,Rancher,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,95000000.0,unknown
+Redocly,Redocly,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+pulumi,Pulumi,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,99000000.0,unknown
+d2lang,Terrastruct,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+cilium,Isovalent,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,69000000.0,unknown
+monicahq,Monica,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+pascalorg,Pascal Group Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+activepieces,Activepieces,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+CapSoftware,Cap Software,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+clockworklabs,Clockwork Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+letta-ai,Letta,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,10000000.0,no
+tursodatabase,Turso,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,unknown
+lvgl,LVGL Kft,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+dubinc,Dub Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,2000000.0,no
+withfig,Fig,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,2000000.0,no
+taosdata,TAOS Data (TDengine),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+flipped-aurora,flipped-aurora,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+nocobase,NocoBase,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+dolthub,DoltHub,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+slint-ui,SixtyFPS GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+zama-ai,Zama,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,81000000.0,unknown
+temporalio,Temporal Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,yes
+different-ai,Different AI (OpenWork),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+gitlabhq,GitLab Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,listed,413500000.0,yes
+citrolabs,CitroLabs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+lexmount,LexMount,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+TecharoHQ,Techaro,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+redisson,Redisson,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+brave,Brave Software,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,7000000.0,unknown
+RooCodeInc,Roo Code,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+mdbootstrap,MDBootstrap (StartupFlow),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+fosrl,Fossorial (Pangolin),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+sinaptik-ai,Sinaptik (PandasAI),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+beekeeper-studio,Beekeeper Studio,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+timescale,Tiger Data,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,180000000.0,yes
+vanna-ai,Vanna.AI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+marimo-team,marimo,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,5000000.0,no
+dracula,Dracula Theme (Zeno Rocha),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+saleor,Saleor Commerce,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,10500000.0,no
+livewire,Livewire (Caleb Porzio),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+magicuidesign,Magic UI,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Skyvern-AI,Skyvern,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+comet-ml,Comet ML,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,70000000.0,no
+notable,Notable (Fabio Spampinato),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+usablica,usablica (Intro.js),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+chaitin,Chaitin Tech,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,unknown
+neondatabase,Neon,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,130000000.0,yes
+rome,Rome Tools,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,shut_down,,no
+ovity,Ovity (Octotree),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+lensapp,Lens,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,acquired,,no
+openobserve,OpenObserve,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,10000000.0,no
+chartdb,ChartDB,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+balderdashy,The Sails Company,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+tracel-ai,Tracel Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+aipoch,AIPOCH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+BruceDevices,Bruce Devices,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+Source-Robotics,Source Robotics,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+arrayfire,ArrayFire LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+nextflow-io,Seqera,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+dimforge,Dimforge,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+layabox,Layabox,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+psychopy,Open Science Tools Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+TileDB-Inc,"TileDB, Inc.",U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,19000000.0,unknown
+thetahealth,Theta Health,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+OpenDrone-hw,Incutec BV (OpenDrone),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+symbolica-dev,Symbolica,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+nengo,Applied Brain Research,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+makerdiary,makerdiary,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+harfang3d,HARFANG 3D,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+meshpro,MeshPro,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+tillitis,Tillitis AB,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+wntrblm,Winterbloom,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,shut_down,,no
+m-labs,M-Labs Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+auto-differentiation,Xcelerit,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+arvados,Curii Corporation,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+botbotrobotics,BotBot Robotics,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+roboninecom,Robonine,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mzmine,mzio GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+hmislk,CareCode,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+BlueQuartzSoftware,BlueQuartz Software,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+scalableminds,scalable minds,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+sirius-ms,Bright Giant GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+kiisu-io,Kiisu (RainWalker),U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Rowow-LLC,Rowow LLC,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+neuromore,neuromore,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+quartiq,QUARTIQ GmbH,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Wakoma,Wakoma,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+datalab-org,datalab industries ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+ZiroEDA,ZIRO EDA,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+LiteFold,LiteFold,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+uCAN-LIN,uCanDevices,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+fairscope,FairScope,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+borneo-iot,Yunnan BinaryStars Technologies,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+delmic,Delmic,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+WarpKVM,WarpKVM,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,unknown,,no
+openAMRobot,Botshare Ltd,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Cheshire-Labs,Cheshire Labs,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mat3ra,Mat3ra,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+mcneilco,John McNeil & Co. Inc.,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Protocentral,ProtoCentral,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,no
+Opentrons,Opentrons Labworks,U1,COSS (GitHub core),github_core,0,,,,,,,,,0,0,,private,,yes
+arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,round1,1,s01,yes,"Open-source hardware designs and software (IDE, cores); main board designs open; licences not checked",,IT,2005,acquired,yes,2,5,"Qualcomm announced acquisition Oct 2025 (acquirer, not a funding round). Page checks via WebFetch; Qualcomm page not fetched.",,,
+raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,U2,open hardware (partial),round1,1,s01,partial,"Schematics and docs published, but SoC (Broadcom) closed; not OSHWA-style open hardware",,GB,2012,listed,yes,3,2,Wikipedia lists SoftBank Group as 13% shareholder (acquisition date and terms not checked). Open status not verified by source.,,,
+adafruit,Adafruit Industries,U2,open hardware,round1,1,s01,yes,"Open-source hardware designs and libraries (e.g. NeoPixel libraries), per Wikipedia",https://en.wikipedia.org/wiki/Adafruit_Industries,US,2005,private,none_found,0,0,Wikipedia cites a Business Insider headline 'without a dime of funding'; company statement not fetched.,,,
+sparkfun,SparkFun Electronics,U2,open hardware,round1,1,s01,yes,"All designed products released as open-source hardware (schematics, EAGLE files); co-drafted OSHW definition 2010",https://en.wikipedia.org/wiki/SparkFun_Electronics,US,2003,private,none_found,0,0,No funding information found on the Wikipedia page; no search done.,,,
+seeed,Seeed Studio (Seeed Technology),U2,open hardware (partial),round1,1,s01,partial,"Sells open-source hardware and designs many open boards (Grove, XIAO schematics); company products only partly open",,CN,2008,private,yes,1,2,No primary announcement found. Kickstarter campaigns for individual products (ReSpeaker) per TechNode not recorded as company funding.,,,
+pine64,Pine64 (Pine Store Ltd),U2,open hardware,round1,1,s01,partial,"Open-source-friendly single-board computers, schematics published, community firmware; hardware not fully open",,HK,2015,private,yes,1,1,Country HK unverified (memory). No outside equity found.,,,
+prusa,Prusa Research,U2,"open hardware, 3D printing",round1,1,s01,partial,PrusaSlicer AGPLv3; printers historically fully open; partial move away from open since 2023 (Open Community License for CORE One),https://en.wikipedia.org/wiki/Prusa_Research,CZ,2012,private,bootstrapped_stated,0,0,"Company about page reportedly says no investors and no Kickstarter (seen in search snippet, page not fetched).",,,
+ultimaker,UltiMaker (Ultimaker B.V.),U2,"3D printing, Cura open source",round1,1,s01,partial,"Cura slicer is open source (LGPL, memory); early printers CC BY-NC designs per Wikipedia; hardware now closed",https://en.wikipedia.org/wiki/Ultimaker,NL,2011,private,yes,3,3,"Search snippets only for EIB, NPM, merger pages (not fetched).",,,
+makerbot,MakerBot Industries,U2,"3D printing, open designs until 2012",round1,1,s01,partial,Early printers were open hardware/software (RepRap lineage); closed from 2012; sold to Stratasys 2013,,US,2009,acquired,yes,2,4,Acquired by Stratasys 2013 (all-stock). Merged with Ultimaker 2022.,,,
+aleph-objects,Aleph Objects (LulzBot),U2,"open hardware, 3D printing",round1,1,s01,yes,Open-source hardware and software 3D printers; Taz 6 FSF Respects Your Freedom certified,https://en.wikipedia.org/wiki/Aleph_Objects,US,2011,acquired,none_found,0,0,Layoffs Oct 2019; assets bought by FAME 3D Nov 2019. No funding page found; founded year from memory.,,,
+openbci,OpenBCI,U2,open hardware neurotech,round1,1,s01,yes,Open-source BCI platform: GUI software and Ultracortex design files on GitHub,https://en.wikipedia.org/wiki/OpenBCI,US,2013,private,yes,2,1,"No VC/grant rounds found (memory: DARPA/Shuttleworth, unverified).",,,
+sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",round1,1,s01,partial,OpenROV kits were open hardware/software; Sofar publishes Bristlemouth open hardware standard (2021); Spotter itself proprietary,https://techcrunch.com/2021/09/23/sofar-and-darpa-look-to-standardize-ocean-monitoring-devices-with-bristlemouth/,US,2012,private,yes,4,7,"Kickstarter date approximate/unverified; Spoondrift raised $350k pre-merger, investors unnamed.",,,
+system76,System76,U2,"open firmware, Pop!_OS, open hardware designs",round1,1,s01,partial,"Pop!_OS (open source), open firmware (coreboot) and open Thelio designs; hardware partly open",https://en.wikipedia.org/wiki/System76,US,2005,private,bootstrapped_stated,0,0,"Colorado Sun reportedly says no venture capital (search snippet). Debt and a PPP loan listed by PitchBook, paywalled, not recorded.",,,
+framework,Framework Computer,U2,"repairable laptops, open docs (partial)",round1,1,s01,partial,"Repairable laptops; EC firmware, mainboard CAD/electrical docs and expansion card designs open; UEFI proprietary",https://en.wikipedia.org/wiki/Framework_Computer,US,2019,private,yes,5,7,,,,
+sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,round1,1,s01,partial,RISC-V ISA open standard; Rocket chip generator open source; SiFive cores themselves are commercial IP,,US,2015,private,yes,3,13,Earlier rounds (2016-2020) not checked; Intel Capital also invested earlier per TechCrunch 2018-05 lead.,,,
+oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,round1,1,s01,yes,Open-source firmware and software for its racks (per input; licences not verified in this pass),,US,2019,private,yes,3,6,"Seed round exists but investors not found. SEC Form D lead (2026-08, $445M) not read.",,,
+kitware,Kitware,U2,"VTK, ParaView, CMake, 3D Slicer",round1,1,s01,yes,"VTK, CMake, ParaView, 3D Slicer open source (BSD-style licences, memory); founded 1998",https://en.wikipedia.org/wiki/Kitware,US,1998,private,none_found,0,0,100% employee-owned (ESOP) since Dec 2020. Government R&D grants (SBIR etc.) exist but not itemised here.,,,
+enthought,Enthought,U2,scientific Python (SciPy origins),round1,1,s01,yes,"Scientific Python (SciPy origins), open-source projects such as Traits/Chaco; commercial distribution Canopy",,US,2001,private,yes,1,1,Outside equity funding not found in this pass; company is widely described as self-funded (not verified).,,,
+posit,Posit PBC (RStudio),U2,"RStudio IDE, Shiny, Quarto",round1,1,s01,yes,"RStudio IDE (AGPL, memory), Shiny, Quarto, tidyverse open source; public benefit corporation",https://en.wikipedia.org/wiki/Posit_PBC,US,2009,private,yes,1,3,Wikipedia states General Catalyst holds a minority stake. CB Insights lists ~$166M over six rounds (unverified).,,,
+anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",round1,1,s02,yes,conda package manager is open source (BSD-3); Anaconda distribution free but commercial terms for large orgs,https://github.com/conda/conda,US,2012,private,yes,2,4,"Series A 2015 $24M listed as HN lead (continuum.io blog, dead); investors not confirmed. memory: Series A investors not recorded.",,,
+evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),round1,1,s02,partial,ESM3-open small model weights released under non-commercial licence; larger models closed via API,,US,2023,acquired,yes,1,5,"Acquired by CZI/Biohub, Nov 2025 per HN lead title (biohub page fetched; acquisition text not verified in excerpt). Open licence from memory, not verified.",,,
+orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,round1,1,s02,partial,"Orb models released open source (Apache-2.0 per memory, not verified here); company now sells data-centre products",,GB,2022,private,yes,2,6,A source snippet lists Sequoia Capital and NVentures among early investors; page not read.,,,
+radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),round1,1,s02,partial,Closed autonomous lab; some open simulation tools (TorchSim) not verified,,US,2024,private,yes,1,6,"CB Insights/Caplight snippets also list Alumni Ventures, Khosla Ventures; pages not read.",,,
+boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,round1,1,s02,yes,"Boltz-1/Boltz-2 open-source (MIT, per memory); newer BoltzMol-1/BoltzProt-1 sold via API",https://github.com/jwohlwend/boltz,US,2025,private,yes,1,6,Earlier seed round not found.,,,
+chai-discovery,Chai Discovery,U2,Chai-1 weights released (partial),round1,0,,,,,,,,,0,0,,,,
+overleaf,Overleaf (WriteLaTeX),U2,open-source LaTeX editor (AGPL),added,0,,,,,,,,,0,0,,,,
+protocols-io,protocols.io,U2,open-access methods platform,added,0,,,,,,,,,0,0,,,,
+figshare,Figshare,U2,open data repository (code closed),added,0,,,,,,,,,0,0,,,,
+code-ocean,Code Ocean,U2,reproducibility platform (partial),added,0,,,,,,,,,0,0,,,,
+curvenote,Curvenote,U2,open-source science publishing (MyST),added,0,,,,,,,,,0,0,,,,
+arcadia-science,Arcadia Science,U2,"open-science R&D company, publishes openly",added,0,,,,,,,,,0,0,,,,
+researchhub,ResearchHub (ResearchHub Technologies),U2,"open science platform, DeSci",added,0,,,,,,,,,0,0,,,,
+molecule,Molecule (Molecule AG),U2,"DeSci, IP-NFTs",added,0,,,,,,,,,0,0,,,,
+vitadao,VitaDAO,U2,DeSci DAO funding open longevity research,added,0,,,,,,,,,0,0,,,,
+bio-protocol,BIO Protocol (Bio.xyz),U2,DeSci,added,0,,,,,,,,,0,0,,,,
+labdao,LabDAO,U2,DeSci open tools,added,0,,,,,,,,,0,0,,,,
+deep-forest,Deep Forest Sciences,U2,DeepChem company,added,0,,,,,,,,,0,0,,,,
+rowan,Rowan (Rowan Scientific),U2,computational chemistry with open-source tools (partial),added,0,,,,,,,,,0,0,,,,
+entalpic,Entalpic,U2,materials AI with open releases (partial),added,1,s03,partial,Business model blends open and proprietary research; open releases not verified on page,,France,2023,private,yes,1,3,Page says 'blending open and proprietary research'; open licence not checked. Founded year from memory-free inference: unverified,,,
+valence-labs,Valence Labs,U2,open-source drug-discovery tools (datamol),added,1,s03,partial,Recursion research arm; datamol and other open-source drug-discovery tools (licence not checked),,Canada,,acquired,none_found,0,0,Leads were other companies named Valence. Acquired by Recursion May 2023 (BetaKit). No separate funding found; memory: Valence was Mila-linked.,,,
+quansight,Quansight,U2,open-source scientific Python services,added,1,s03,yes,"Open-source scientific Python services; contributor to PyTorch, NumPy ecosystem; PBC",https://quansight.com/about-us,US,,private,none_found,0,0,"Search snippet (seedtable, page blocked) says USD 1.1M seed in 2025-05, investors undisclosed; not verified. Also Quansight invested in OpenTeams (CB Insights snippet).",,,
+openteams,OpenTeams,U2,open-source services,added,1,s03,yes,Open-source services and AI infrastructure on open-source stack; licence not specific,https://www.openteams.com/about,US,2019,private,yes,1,0,"Unverified search snippets: CB Insights lists 12 rounds, a USD 100M corporate minority 2025-03 with Quansight, other investors Mana Ventures, Gaingels, 8VC, Saraswati Ventures; CB page blocked.",,,
+coiled,Coiled,U2,Dask company,added,1,s03,yes,Dask (BSD-3) maintained by company; Coiled Cloud itself is proprietary,,US,2020,private,yes,2,6,Search snippet said IA Ventures and FirstMark participated in Series A (not verified on page).,,,
+quantstack,QuantStack,U2,"Jupyter, conda-forge, mamba",added,1,s03,yes,"Jupyter, mamba, conda-forge tooling under permissive open-source licences (per its blog)",https://github.com/QuantStack,France,2016,private,none_found,0,0,No funding found in search; Dealroom investors behind paywall. QuantStack Ventures invested in prefix.dev (separate entry).,,,
+prefix-dev,prefix.dev,U2,pixi and conda tooling,added,1,s03,yes,pixi and rattler open source; licence not verified on fetched pages,,Germany,,private,yes,1,3,Round type 'seed' per Crunchbase snippet only.,,,
+probabl,Probabl,U2,scikit-learn company,added,1,s03,yes,Operates and supports scikit-learn (BSD); mission-driven company to keep it open,https://scikit-learn.org/1.9/institutional_support.html,France,2023,private,yes,1,6,"Total about EUR 18.5m implies ~EUR 5.5m earlier, investors not found.",,,
+juliahub,JuliaHub (Julia Computing),U2,Julia language,added,1,s03,yes,"Julia language, MIT licence; JuliaHub sells platform and Dyad on top",https://en.wikipedia.org/wiki/Julia_(programming_language),US,2015,private,yes,6,7,"Moore Foundation/Intel supported Julia generally, not tied to company.",,,
+cocalc,"SageMath, Inc. (CoCalc)",U2,"SageMath, CoCalc",added,1,s03,yes,CoCalc source on GitHub; SageMath GPL; licence of CoCalc not stated on page,https://en.wikipedia.org/wiki/CoCalc,US,2015,private,none_found,0,0,"Wikipedia: initial development funded by University of Washington and NSF and Google grants; now mostly paying users. Grants went to the project, amounts and company link not stated.",,,
+glencoe,Glencoe Software,U2,OME / OMERO bioimaging,added,1,s03,yes,OMERO and Bio-Formats open source; Glencoe sells commercially licensed installations,https://prnewswire.com/news-releases/glencoe-software-closes-seed-funding-of-over-800000-300036073.html,US,2005,private,yes,1,1,"Search snippet: Aridhia made undisclosed investment 2011 (Dundee press release, not fetched).",,,
+open-imaging,"Open Imaging, Inc.",U2,Micro-Manager,added,1,s03,yes,Micro-Manager open-source microscopy control; licence not named on fetched page,https://micro-manager.org/Micro-Manager_Project_Overview,US,,unknown,yes,1,1,Open Imaging not mentioned on page.,,,
+observable,"Observable, Inc.",U2,"D3, Observable Plot and Framework",added,1,s03,yes,"D3, Observable Plot and Framework open source (ISC/MIT-style, licence not verified); hosted notebooks proprietary",,US,,private,yes,1,2,No earlier round found.,,,
+opencfd,OpenCFD Ltd,U2,OpenFOAM,added,1,s03,yes,"OpenFOAM, GPL v3",https://en.wikipedia.org/wiki/OpenFOAM,UK,2004,acquired,none_found,0,0,Acquired by SGI Aug 2011 and ESI Group Sept 2012 (Wikipedia); no outside funding disclosed.,,,
+scilab,Scilab Enterprises,U2,Scilab,added,1,s03,yes,"Scilab, GPLv2 (formerly CeCILL)",https://en.wikipedia.org/wiki/Scilab,France,2010,acquired,none_found,0,0,Created by Scilab Consortium 2010; acquired by ESI Group 2017; team joined Dassault Systemes 2022. No funding disclosed.,,,
+deltablot,Deltablot (eLabFTW),U2,open-source electronic lab notebook,added,1,s03,yes,"eLabFTW, AGPL-3.0; Deltablot sells PRO support and hosting",https://github.com/elabftw/elabftw,France,,private,none_found,0,0,Donations via GitHub Sponsors and Liberapay; gold sponsors are institutions (not rounds). Country inferred from SASU.,,,
+scinote,SciNote,U2,"electronic lab notebook, once open source",added,1,s03,partial,Open-source ELN launched on Kickstarter 2015; licence not named; later editions partly proprietary,https://www.newswire.com/news/scinote-first-open-source-scientific-notebook-released-on,US,2014,private,yes,1,1,No institutional funding found.,,,
+open-robotics,Open Robotics (OSRF commercial arm),U2,"ROS, Gazebo",added,1,s03,yes,"ROS, Gazebo, Open-RMF open source, stay with OSRF",https://intrinsic.ai/blog/posts/building-opportunities-for-the-worlds-robotics-developers/,US,2012,acquired,none_found,0,0,"OSRC acquired by Intrinsic (Alphabet) Dec 2022, price unknown. Funding of OSRF (grants, donors) not found on fetched pages.",,,
+willow-garage,Willow Garage,U2,"ROS, PR2",added,1,s03,yes,"ROS and PR2, BSD licences",https://en.wikipedia.org/wiki/Willow_Garage,US,2006,shut_down,none_found,0,0,"Wikipedia names founder Scott Hassan, no funding detail. memory: founder-funded by Scott Hassan. Closed 2014.",,,
+picknik,PickNik Robotics,U2,MoveIt,added,1,s03,yes,MoveIt open source; MoveIt Studio/Pro open core,https://www.roboticstomorrow.com/news/2023/10/12/stellar-ventures-and-cypress-growth-capital-commit-to-fueling-the-future-of-robotics-software/21273/,US,,private,yes,2,4,Search snippet only: SpaceWERX challenge 1.7M 2024-01 (CB Insights).,,,
+pollen-robotics,Pollen Robotics,U2,open-source robots (Reachy),added,0,,,,,,,,,0,0,,,,
+k-scale,K-Scale Labs,U2,open-source humanoid robots,added,0,,,,,,,,,0,0,,,,
+hello-robot,Hello Robot,U2,"Stretch, open-source software (partial)",added,0,,,,,,,,,0,0,,,,
+auterion,Auterion,U2,PX4 drones,added,0,,,,,,,,,0,0,,,,
+3d-robotics,3D Robotics (3DR),U2,ArduPilot/PX4 drones,added,0,,,,,,,,,0,0,,,,
+tier-iv,TIER IV,U2,Autoware,added,0,,,,,,,,,0,0,,,,
+itseez,Itseez,U2,OpenCV,added,0,,,,,,,,,0,0,,,,
+particle,Particle (Spark Labs),U2,open-source IoT hardware,added,0,,,,,,,,,0,0,,,,
+mycroft,Mycroft AI,U2,open-source voice assistant,added,0,,,,,,,,,0,0,,,,
+mnt-research,MNT Research,U2,open-source laptop (Reform),added,0,,,,,,,,,0,0,,,,
+purism,Purism,U2,free-software laptops and phones,added,0,,,,,,,,,0,0,,,,
+bitcraze,Bitcraze,U2,open-source drones (Crazyflie),added,0,,,,,,,,,0,0,,,,
+open-bionics,Open Bionics,U2,"prosthetics, open designs early",added,0,,,,,,,,,0,0,,,,
+farmbot,FarmBot,U2,open-source farming robot,added,0,,,,,,,,,0,0,,,,
+backyard-brains,Backyard Brains,U2,open-source neuroscience kits,added,0,,,,,,,,,0,0,,,,
+openuc2,openUC2,U2,open-source optics toolkit,added,0,,,,,,,,,0,0,,,,
+opulo,Opulo (LumenPnP),U2,open-source pick-and-place,added,0,,,,,,,,,0,0,,,,
+inventables,Inventables,U2,open-source CNC (X-Carve),added,0,,,,,,,,,0,0,,,,
+printrbot,Printrbot,U2,open-source 3D printers,added,0,,,,,,,,,0,0,,,,
+re3d,re:3D,U2,"Gigabot, open source",added,0,,,,,,,,,0,0,,,,
+bcn3d,BCN3D Technologies,U2,open-source 3D printers,added,0,,,,,,,,,0,0,,,,
+efabless,Efabless,U2,open-source silicon,added,0,,,,,,,,,0,0,,,,
+antmicro,Antmicro,U2,open-source hardware and software services (Renode),added,0,,,,,,,,,0,0,,,,
+tenstorrent,Tenstorrent,U2,"open-source software stack, RISC-V (partial)",added,0,,,,,,,,,0,0,,,,
+trilobio,Trilobio,U2,lab automation; check openness,added,0,,,,,,,,,0,0,,,,
+micropython,George Robotics (MicroPython),U2,MicroPython,added,0,,,,,,,,,0,0,,,,
+openenergymonitor,OpenEnergyMonitor (Megni),U2,open-source energy monitors,added,0,,,,,,,,,0,0,,,,
+nabu-casa,Nabu Casa (Home Assistant),U2,Home Assistant,added,0,,,,,,,,,0,0,,,,
+crowd-supply,Crowd Supply,U2,open hardware crowdfunding platform,added,0,,,,,,,,,0,0,,,,
+authorea,Authorea,U2,open-science writing,added,0,,,,,,,,,0,0,,,,
+f1000,F1000 Research,U2,open-access publishing,added,0,,,,,,,,,0,0,,,,
+frontiers,Frontiers Media,U2,open-access publisher,added,0,,,,,,,,,0,0,,,,
+bela,Augmented Instruments (Bela),U2,open-source audio hardware,added,0,,,,,,,,,0,0,,,,
+openmv,OpenMV,U2,open-source machine vision camera,added,0,,,,,,,,,0,0,,,,
+luxonis,Luxonis,U2,"OAK cameras, open hardware designs",added,0,,,,,,,,,0,0,,,,
+great-scott-gadgets,Great Scott Gadgets,U2,open-source hardware (HackRF),added,0,,,,,,,,,0,0,,,,
+ettus,Ettus Research,U2,"USRP, open-source UHD",added,0,,,,,,,,,0,0,,,,
+lime-micro,Lime Microsystems (LimeSDR),U2,open-source SDR,added,0,,,,,,,,,0,0,,,,
+nuand,Nuand (bladeRF),U2,open-source SDR,added,0,,,,,,,,,0,0,,,,
+red-hat,Red Hat,U3,COSS (Linux),round1,0,,,,,,,,,0,0,,,,
+mysql-ab,MySQL AB,U3,COSS (database),round1,0,,,,,,,,,0,0,,,,
+hortonworks,Hortonworks,U3,COSS (Hadoop),cohort,0,,,,,,,,,0,0,,,,
+cloudera,Cloudera,U3,COSS (Hadoop),cohort,0,,,,,,,,,0,0,,,,
+talend,Talend,U3,COSS (data integration),cohort,0,,,,,,,,,0,0,,,,
+mulesoft,MuleSoft,U3,COSS (integration),cohort,0,,,,,,,,,0,0,,,,
+springsource-pivotal,SpringSource / Pivotal Software,U3,"COSS (Spring, Cloud Foundry)",cohort,0,,,,,,,,,0,0,,,,
+jfrog,JFrog,U3,COSS (Artifactory OSS),cohort,0,,,,,,,,,0,0,,,,
+confluent,Confluent,U3,COSS (Kafka),cohort,0,,,,,,,,,0,0,,,,
+suse,SUSE,U3,COSS (Linux),cohort,0,,,,,,,,,0,0,,,,
+kaltura,Kaltura,U3,COSS (video),cohort,0,,,,,,,,,0,0,,,,
+couchbase,Couchbase,U3,COSS (database),cohort,0,,,,,,,,,0,0,,,,
+mariadb,MariaDB,U3,COSS (database),cohort,0,,,,,,,,,0,0,,,,
+instructure,Instructure,U3,COSS (Canvas LMS),cohort,0,,,,,,,,,0,0,,,,
+forgerock,ForgeRock,U3,COSS (identity),cohort,0,,,,,,,,,0,0,,,,
+lightbend,Lightbend (Typesafe),U3,"COSS (Scala, Akka)",round1,0,,,,,,,,,0,0,,,,
+neo4j,Neo4j,U3,COSS (graph database),round1,0,,,,,,,,,0,0,,,,
+airbyte,Airbyte,U3,COSS (data integration),round1,0,,,,,,,,,0,0,,,,
+astronomer,Astronomer,U3,COSS (Airflow),round1,0,,,,,,,,,0,0,,,,
+automattic,Automattic,U3,COSS (WordPress),round1,0,,,,,,,,,0,0,,,,
+canonical,Canonical,U3,COSS (Ubuntu),round1,0,,,,,,,,,0,0,,,,
+dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),round1,1,c02,yes,Dagster open-source orchestrator; cloud product proprietary,https://techcrunch.com/2023/05/24/elementl-raises-33m-series-b-for-its-data-orchestration-platform-based-on-dagster/,US,2018,acquired,yes,2,11,"2017 seed: TechCrunch says Pete Hunt invested but gives no other names. Prefect acquired Dagster 2026-07 per Prefect/Dagster posts. memory: licence Apache 2.0, founded 2018",,,
+databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",round1,1,c02,partial,"Apache Spark (Apache 2.0), Delta Lake, MLflow open-sourced by founders; Databricks platform proprietary",https://en.wikipedia.org/wiki/Databricks,US,2013,private,yes,9,30,"Series B, C, H, L investors not found. memory: founded 2013, Spark/MLflow open source",,,
+dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),round1,1,c02,yes,dbt Core open source (Apache 2.0 historically); dbt Cloud proprietary,https://www.getdbt.com/blog/of-the-community-by-the-community-for-the-community,US,2016,private,yes,2,4,"Seed/Series A/B investors not found. Fivetran merger announced 2025-10 per Reuters headline in lead list (not fetched). memory: Apache 2.0, 2016",,,
+github,GitHub,U3,open-source platform,round1,1,c02,partial,GitHub is a proprietary hosting platform for open-source code; owned by Microsoft,https://en.wikipedia.org/wiki/GitHub,US,2008,acquired,yes,2,4,"Acquired by Microsoft 2018-06 ($7.5B stock, per Wikipedia); acquirer, not a funding round",,,
+puppet,Puppet,U3,COSS (config management),round1,0,,,,,,,,,0,0,,,,
+mistral,Mistral AI,U3,open-weight AI,round1,1,c02,yes,"Open-weight models (Mistral 7B, Mixtral etc., Apache 2.0); some models proprietary",https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/,FR,2023,private,yes,5,40,Dec 2023 EUR385M Series A not found in fetched pages. memory: founded 2023,,,
+together-ai,Together AI,U3,"open-source AI, open models",round1,1,c02,partial,Open-source AI cloud; releases open models and datasets (RedPajama); platform itself is proprietary,https://www.together.ai/blog/series-a,US,2022,private,yes,5,42,memory: founded 2022 (unverified),,,
+pydantic,Pydantic Services,U3,"COSS (Pydantic, Logfire)",round1,0,,,,,,,,,0,0,,,,
+replicate,Replicate,U3,open-source Cog; model hosting,round1,1,c02,partial,Cog is open-source model packaging tool; hosted model API is the product,https://github.com/replicate/cog,US,2019,acquired,yes,1,5,"Seed/Series A investors not found. Cloudflare acquisition 2025 from hint, not verified. memory: Cog Apache-2.0, founded 2019",,,
+weaviate,Weaviate,U3,COSS (vector database),round1,0,,,,,,,,,0,0,,,,
+ggml,ggml.ai,U3,"llama.cpp, ggml",round1,0,,,,,,,,,0,0,,,,
+inferact,Inferact (vLLM),U3,COSS (vLLM),round1,0,,,,,,,,,0,0,,,,
+cygnus,Cygnus Solutions,U3,COSS (GNU toolchain),added,0,,,,,,,,,0,0,,,,
+va-linux,VA Linux Systems,U3,"Linux systems, SourceForge",added,0,,,,,,,,,0,0,,,,
+sleepycat,Sleepycat Software,U3,COSS (Berkeley DB),added,0,,,,,,,,,0,0,,,,
+trolltech,Trolltech,U3,COSS (Qt),added,0,,,,,,,,,0,0,,,,
+sendmail,"Sendmail, Inc.",U3,COSS (sendmail),added,0,,,,,,,,,0,0,,,,
+zend,Zend Technologies,U3,COSS (PHP),added,0,,,,,,,,,0,0,,,,
+jboss,JBoss,U3,COSS (Java app server),added,0,,,,,,,,,0,0,,,,
+xensource,XenSource,U3,COSS (Xen),added,0,,,,,,,,,0,0,,,,
+sourcefire,Sourcefire,U3,COSS (Snort),added,0,,,,,,,,,0,0,,,,
+zimbra,Zimbra,U3,COSS (email),added,0,,,,,,,,,0,0,,,,
+collabnet,CollabNet,U3,COSS (Subversion),added,0,,,,,,,,,0,0,,,,
+hyperic,Hyperic,U3,COSS (monitoring),added,0,,,,,,,,,0,0,,,,
+alfresco,Alfresco Software,U3,COSS (content management),added,0,,,,,,,,,0,0,,,,
+acquia,Acquia,U3,COSS (Drupal),added,0,,,,,,,,,0,0,,,,
+liferay,Liferay,U3,COSS (portal),added,0,,,,,,,,,0,0,,,,
+sugarcrm,SugarCRM,U3,COSS (CRM),added,0,,,,,,,,,0,0,,,,
+pentaho,Pentaho,U3,COSS (BI),added,0,,,,,,,,,0,0,,,,
+jaspersoft,Jaspersoft,U3,COSS (BI),added,0,,,,,,,,,0,0,,,,
+digium,Digium,U3,COSS (Asterisk),added,0,,,,,,,,,0,0,,,,
+enterprisedb,EnterpriseDB (EDB),U3,COSS (PostgreSQL),added,0,,,,,,,,,0,0,,,,
+percona,Percona,U3,open-source database services,added,0,,,,,,,,,0,0,,,,
+basho,Basho Technologies,U3,COSS (Riak),added,0,,,,,,,,,0,0,,,,
+foundationdb,FoundationDB,U3,"database, open-sourced after Apple bought it (partial)",added,0,,,,,,,,,0,0,,,,
+nicira,Nicira,U3,COSS (Open vSwitch),added,0,,,,,,,,,0,0,,,,
+inktank,Inktank,U3,COSS (Ceph),added,0,,,,,,,,,0,0,,,,
+gluster,Gluster,U3,COSS (GlusterFS),added,0,,,,,,,,,0,0,,,,
+cumulus,Cumulus Networks,U3,open networking (partial),added,0,,,,,,,,,0,0,,,,
+mirantis,Mirantis,U3,"COSS (OpenStack, Kubernetes)",added,0,,,,,,,,,0,0,,,,
+nebula,"Nebula, Inc.",U3,OpenStack appliance,added,0,,,,,,,,,0,0,,,,
+coreos,CoreOS,U3,"COSS (container Linux, etcd)",added,0,,,,,,,,,0,0,,,,
+heptio,Heptio,U3,COSS (Kubernetes tools),added,0,,,,,,,,,0,0,,,,
+mesosphere,Mesosphere (D2iQ),U3,"COSS (Mesos, DC/OS)",added,0,,,,,,,,,0,0,,,,
+weaveworks,Weaveworks,U3,"COSS (Flux, Weave)",added,0,,,,,,,,,0,0,,,,
+ansible,Ansible (AnsibleWorks),U3,COSS (automation),added,0,,,,,,,,,0,0,,,,
+saltstack,SaltStack,U3,COSS (automation),added,0,,,,,,,,,0,0,,,,
+chef,Chef Software (Opscode),U3,COSS (automation),added,0,,,,,,,,,0,0,,,,
+npm,"npm, Inc.",U3,open-source package registry,added,0,,,,,,,,,0,0,,,,
+tidelift,Tidelift,U3,pays open-source maintainers,added,0,,,,,,,,,0,0,,,,
+sonatype,Sonatype,U3,"Maven Central steward, Nexus OSS (partial)",added,0,,,,,,,,,0,0,,,,
+datastax,DataStax,U3,COSS (Cassandra),added,0,,,,,,,,,0,0,,,,
+scylladb,ScyllaDB,U3,COSS (database),added,0,,,,,,,,,0,0,,,,
+yugabyte,Yugabyte,U3,COSS (YugabyteDB),added,0,,,,,,,,,0,0,,,,
+aerospike,Aerospike,U3,"COSS (database, community edition)",added,0,,,,,,,,,0,0,,,,
+starburst,Starburst,U3,COSS (Trino),added,0,,,,,,,,,0,0,,,,
+dremio,Dremio,U3,"COSS (data lakehouse, Arrow)",added,0,,,,,,,,,0,0,,,,
+imply,Imply,U3,COSS (Druid),added,0,,,,,,,,,0,0,,,,
+alluxio,Alluxio,U3,COSS (data orchestration),added,0,,,,,,,,,0,0,,,,
+ahana,Ahana,U3,COSS (Presto),added,0,,,,,,,,,0,0,,,,
+tabular,Tabular,U3,COSS (Iceberg),added,0,,,,,,,,,0,0,,,,
+onehouse,Onehouse,U3,COSS (Hudi),added,0,,,,,,,,,0,0,,,,
+voltron-data,Voltron Data,U3,COSS (Arrow),added,0,,,,,,,,,0,0,,,,
+streamnative,StreamNative,U3,COSS (Pulsar),added,0,,,,,,,,,0,0,,,,
+redpanda,Redpanda Data,U3,"streaming, source-available (partial)",added,0,,,,,,,,,0,0,,,,
+materialize,Materialize,U3,"streaming database, BSL (partial)",added,0,,,,,,,,,0,0,,,,
+synadia,Synadia,U3,COSS (NATS),added,0,,,,,,,,,0,0,,,,
+camunda,Camunda,U3,COSS (workflow),added,0,,,,,,,,,0,0,,,,
+meltano,Meltano,U3,COSS (ELT),added,0,,,,,,,,,0,0,,,,
+rudderstack,RudderStack,U3,COSS (customer data),added,0,,,,,,,,,0,0,,,,
+snowplow,Snowplow,U3,COSS (behavioural data),added,0,,,,,,,,,0,0,,,,
+cube,Cube Dev,U3,COSS (semantic layer),added,0,,,,,,,,,0,0,,,,
+preset,Preset,U3,COSS (Superset),added,0,,,,,,,,,0,0,,,,
+rasa,Rasa,U3,COSS (conversational AI),added,0,,,,,,,,,0,0,,,,
+chainguard,Chainguard,U3,"open-source supply-chain security (Wolfi, Sigstore)",added,0,,,,,,,,,0,0,,,,
+sysdig,Sysdig,U3,COSS (Falco),added,0,,,,,,,,,0,0,,,,
+teleport,Teleport (Gravitational),U3,COSS (access),added,0,,,,,,,,,0,0,,,,
+tigera,Tigera,U3,COSS (Calico),added,0,,,,,,,,,0,0,,,,
+buoyant,Buoyant,U3,COSS (Linkerd),added,0,,,,,,,,,0,0,,,,
+solo-io,Solo.io,U3,"COSS (Envoy, Istio tools)",added,0,,,,,,,,,0,0,,,,
+tetrate,Tetrate,U3,"COSS (Istio, Envoy)",added,0,,,,,,,,,0,0,,,,
+akuity,Akuity,U3,COSS (Argo),added,0,,,,,,,,,0,0,,,,
+kubecost,Kubecost,U3,COSS (OpenCost),added,0,,,,,,,,,0,0,,,,
+gitpod,Gitpod (Ona),U3,COSS (dev environments),added,0,,,,,,,,,0,0,,,,
+element,Element (New Vector),U3,COSS (Matrix),added,0,,,,,,,,,0,0,,,,
+owncloud,ownCloud,U3,COSS (file sync),added,0,,,,,,,,,0,0,,,,
+bitwarden,Bitwarden,U3,COSS (password manager),added,0,,,,,,,,,0,0,,,,
+proton,Proton AG,U3,open-source clients (partial),added,0,,,,,,,,,0,0,,,,
+w4-games,W4 Games,U3,Godot engine company,added,0,,,,,,,,,0,0,,,,
+crabnebula,CrabNebula,U3,Tauri company,added,0,,,,,,,,,0,0,,,,
+astro,Astro (The Astro Technology Company),U3,COSS (Astro web framework),added,0,,,,,,,,,0,0,,,,
+remix,Remix Software,U3,COSS (Remix framework),added,0,,,,,,,,,0,0,,,,
+mapbox,Mapbox,U3,open-source mapping origins (relicensed 2020),added,0,,,,,,,,,0,0,,,,
+carto,CARTO (CartoDB),U3,open-source geospatial origins,added,0,,,,,,,,,0,0,,,,
+sourcegraph,Sourcegraph,U3,"code search, open source until 2023 (partial)",added,0,,,,,,,,,0,0,,,,
+seldon,Seldon,U3,COSS (ML deployment; BSL since 2024),added,0,,,,,,,,,0,0,,,,
+clearml,ClearML (Allegro AI),U3,COSS (MLOps),added,0,,,,,,,,,0,0,,,,
+iterative,Iterative (DVC),U3,COSS (DVC),added,1,c07,yes,"DVC data version control, Apache-2.0 (per GitHub; repo moved to treeverse? see notes)",https://github.com/iterative/dvc,US,2018,private,yes,1,4,Seed round itself not found on a page; license check via GitHub API returned redirect (repo moved). memory: DVC Apache-2.0.,,,
+treeverse,Treeverse (lakeFS),U3,COSS (lakeFS),added,1,c07,yes,lakeFS data version control; GitHub licence field NOASSERTION (Apache-2.0 historically),https://github.com/treeverse/lakeFS,Israel,2020,private,yes,1,3,Seed round not found. Licence not confirmed by page (SPDX NOASSERTION).,,,
+pachyderm,Pachyderm,U3,COSS (data versioning),added,1,c07,yes,"Pachyderm data versioning pipelines, Apache-2.0 on GitHub (core later moved to Hewlett Packard Enterprise)",https://github.com/pachyderm/pachyderm,US,2014,acquired,yes,3,16,Acquired by HPE Jan 2023. Series A 2018 announcement page unreachable.,,,
+voxel51,Voxel51,U3,COSS (FiftyOne),added,1,c07,yes,"FiftyOne dataset tool, Apache-2.0 (GitHub)",https://github.com/voxel51/fiftyone,US,2016,private,yes,3,6,,,,
+cvat,CVAT.ai,U3,COSS (CVAT),added,0,,,,,,,,,0,0,,,,
+reflection-ai,Reflection AI,U3,open-weight frontier models (stated plan),added,0,,,,,,,,,0,0,,,,
+prime-intellect,Prime Intellect,U3,"open-source decentralised training, open models",added,0,,,,,,,,,0,0,,,,
+zyphra,Zyphra,U3,open-weight models,added,0,,,,,,,,,0,0,,,,
+arcee,Arcee AI,U3,open-weight models,added,0,,,,,,,,,0,0,,,,
+liquid-ai,Liquid AI,U3,open-weight LFM models (partial),added,0,,,,,,,,,0,0,,,,
+pleias,Pleias,U3,open models trained on open data,added,0,,,,,,,,,0,0,,,,
+sakana,Sakana AI,U3,open releases (partial),added,0,,,,,,,,,0,0,,,,
+ai21,AI21 Labs,U3,open-weight Jamba models (partial),added,0,,,,,,,,,0,0,,,,
+cohere,Cohere,U3,"research weights, non-commercial licence (partial)",added,0,,,,,,,,,0,0,,,,
+01-ai,01.AI,U3,open-weight Yi models,added,0,,,,,,,,,0,0,,,,
+moonshot,Moonshot AI,U3,open-weight Kimi models,added,0,,,,,,,,,0,0,,,,
+minimax,MiniMax,U3,open-weight models,added,0,,,,,,,,,0,0,,,,
+baichuan,Baichuan Intelligence,U3,open-weight models,added,0,,,,,,,,,0,0,,,,
+stepfun,StepFun,U3,open-weight models,added,0,,,,,,,,,0,0,,,,
+deep-cogito,Deep Cogito,U3,open-weight models,added,0,,,,,,,,,0,0,,,,
+nomic,Nomic AI,U3,"open-source GPT4All, open embeddings",added,0,,,,,,,,,0,0,,,,
+unstructured,Unstructured,U3,COSS (document parsing),added,0,,,,,,,,,0,0,,,,
+jina,Jina AI,U3,open-source embeddings and tools,added,0,,,,,,,,,0,0,,,,
+mosaicml,MosaicML,U3,open-source training tools and MPT models,added,0,,,,,,,,,0,0,,,,
+octoml,OctoML (OctoAI),U3,COSS (Apache TVM),added,0,,,,,,,,,0,0,,,,
+neural-magic,Neural Magic,U3,"open-source inference (DeepSparse, vLLM)",added,0,,,,,,,,,0,0,,,,
+determined-ai,Determined AI,U3,COSS (training platform),added,0,,,,,,,,,0,0,,,,
+outerbounds,Outerbounds,U3,COSS (Metaflow),added,0,,,,,,,,,0,0,,,,
+union-ai,Union.ai,U3,COSS (Flyte),added,0,,,,,,,,,0,0,,,,
+zenml,ZenML,U3,COSS (MLOps),added,0,,,,,,,,,0,0,,,,
+bentoml,BentoML,U3,COSS (model serving),added,0,,,,,,,,,0,0,,,,
+hopsworks,Hopsworks (Logical Clocks),U3,COSS (feature store),added,0,,,,,,,,,0,0,,,,
+argilla,Argilla,U3,COSS (data labelling),added,0,,,,,,,,,0,0,,,,
+lancedb,LanceDB,U3,COSS (vector database),added,0,,,,,,,,,0,0,,,,
+marqo,Marqo,U3,COSS (vector search),added,0,,,,,,,,,0,0,,,,
+vespa,Vespa.ai,U3,COSS (search engine),added,0,,,,,,,,,0,0,,,,
+radixark,RadixArk (SGLang),U3,COSS (SGLang),added,0,,,,,,,,,0,0,,,,
+h-company,H Company,U3,open-weight agent models (partial),added,0,,,,,,,,,0,0,,,,

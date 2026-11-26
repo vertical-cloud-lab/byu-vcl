@@ -1,0 +1,25 @@
+key,venture,universe,open_basis,open_url,open_ok,country,founded,status,funding_found,n_rounds,notes,notes_url,written_utc
+NousResearch,Nous Research,U1,releases open-weight Hermes models; sells Nous Portal plans powering Hermes,,yes,US,2023,private,yes,2,"Founded year from memory, not sourced.",https://nousresearch.com/a-note-on-our-fundraise,2026-11-26T05:53:11Z
+fastapi,FastAPI Labs,U1,maintainer's company sells FastAPI Cloud hosting,,yes,?,,private,yes,2,Seed date from HN post date 2025-05-05.,,2026-11-26T05:53:11Z
+denoland,Deno Land Inc.,U1,sells Deno Deploy hosting for Deno,,yes,US,,acquired,yes,2,Cloudflare announced acquisition 2026-10 (terms undisclosed).,https://techcrunch.com/2026/10/10/cloudflare-acquires-deno-to-improve-its-workers-programming-model/,2026-11-26T05:53:11Z
+docker,Docker Inc.,U1,sells Docker subscriptions for its tools,,yes,US,2010,private,yes,10,Participants of 2022 round not retrieved.,,2026-11-26T05:53:11Z
+localstack,LocalStack,U1,sells LocalStack Pro and Enterprise,,yes,CH,2021,private,yes,2,Seed year approximate; founded year per TC (full-time business 2021).,https://www.localstack.cloud/about,2026-11-26T05:53:11Z
+appwrite,Appwrite,U1,sells Appwrite Cloud,,yes,IL,,private,yes,2,,https://appwrite.io/company,2026-11-26T05:54:05Z
+RocketChat,Rocket.Chat,U1,sells Rocket.Chat Enterprise and cloud,,yes,BR,,private,yes,1,Earlier ~$8M unnamed.,,2026-11-26T05:54:05Z
+saleor,Saleor Commerce,U1,sells Saleor Cloud,,yes,PL,,private,yes,2,,,2026-11-26T05:54:05Z
+heroui-inc,HeroUI Inc.,U1,sells HeroUI Pro components and templates,,yes,US,2023,private,yes,1,"Country: YC directory page says Buenos Aires; input says US (Delaware inc. likely, memory).",https://www.ycombinator.com/companies/heroui,2026-11-26T05:54:05Z
+trycua,Cua,U1,sells hosted cloud sandboxes for Cua agents,,yes,US,,private,yes,1,No later round found (not searched exhaustively).,,2026-11-26T05:54:05Z
+KeygraphHQ,Keygraph,U1,sells Shannon Pro commercial edition,,yes,US,,private,yes,1,,,2026-11-26T05:54:05Z
+different-ai,Different AI (OpenWork),U1,sells OpenWork subscriptions for its team control plane,,yes,US,,private,yes,1,"Do not confuse with different.ai (B2B marketing, $48M seed), a different company.",,2026-11-26T05:54:06Z
+fingerprintjs,Fingerprint (FingerprintJS Inc.),U1,sells Fingerprint Pro identification,,yes,US,,private,yes,5,,,2026-11-26T05:54:06Z
+photoprism,PhotoPrism UG,U1,sells PhotoPrism+ memberships,,yes,DE,,private,bootstrapped_stated,0,"Company: 'Our users fund our work, so we answer to them, not investors or advertisers.' Funded by memberships/sponsors.",https://www.photoprism.app/about/company/,2026-11-26T05:54:06Z
+tillitis,Tillitis AB,U1,sells TKey open-hardware security keys,,yes,SE,,private,none_found,0,Subsidiary of Amagicom AB (Mullvad parent) per its about page; no outside funding found.,https://www.tillitis.se/about,2026-11-26T05:54:06Z
+labring,Sealos (labring),U1,sells Sealos cloud and FastGPT commercial editions,,yes,CN,,private,yes,5,MiraclePlus is also known as Qiji Chuangtan (奇绩创坛).,,2026-11-26T05:54:49Z
+khoj-ai,Khoj Inc.,U1,sells hosted Khoj cloud plans,,yes,US,2023,private,yes,1,"Search summary (CB Insights/aggregators, unfetched) reported ~$500K total, seed with Pioneer Fund; memory/unconfirmed: Pioneer Fund. Hosted cloud reportedly deprecated Apr 2026 (unverified).",,2026-11-26T05:54:49Z
+Fission-AI,Fission AI,U1,company whose product is OpenSpec (desktop app in beta),,yes,US,2025,private,yes,2,"Aggregator vcbacked.co (unfetched) lists YC and Pioneer Fund, $500K pre-seed; memory/unconfirmed: Pioneer Fund.",,2026-11-26T05:54:49Z
+chatboxai,Chatbox AI,U1,sells Chatbox AI subscriptions in the same app,,yes,?,,unknown,none_found,0,Site and one search show no funding; same-name companies are unrelated.,,2026-11-26T05:54:49Z
+Fincept-Corporation,Fincept Corporation,U1,sells per-seat FinceptTerminal enterprise access,,yes,IN,,private,none_found,0,Home page says nothing on funding; About page not read.,,2026-11-26T05:54:49Z
+marmelab,marmelab,U1,sells react-admin Enterprise Edition,,yes,FR,,private,none_found,0,"Agency/consultancy; no funding found, about page 404.",,2026-11-26T05:54:49Z
+pascalorg,Pascal Group Inc.,U1,sells Pascal Pro/Max plans for the hosted editor,,yes,US,,private,none_found,0,"Lead hits (Pascal AI $3.1M, Pascal diamonds, Pascal quantum) are other companies; not verified as this one.",,2026-11-26T05:54:49Z
+aipoch,AIPOCH,U1,company whose product is the open workbench; no paid tier found,,yes,SG,,unknown,none_found,0,No leads; not searched further.,,2026-11-26T05:54:49Z
+Wakoma,Wakoma,U1,social enterprise building open-source network kits,,yes,CZ,2021,private,none_found,0,"About page names partners/clients (USAID, APC, etc.) but not funders; founded 2021 from footer copyright only.",https://wakoma.co/about,2026-11-26T05:54:49Z

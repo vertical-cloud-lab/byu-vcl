@@ -1,0 +1,339 @@
+investor,person,key,venture,universe,category,rounds,led,first_year,round_types,database_only,sources
+137 Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,series_a,0,https://www.together.ai/blog/series-a
+1789 Capital,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+468 Capital,0,iterative,Iterative (DVC),U3,COSS (DVC),1,1,2021,series_a,0,https://techcrunch.com/2021/06/02/iterative-raises-20m-for-its-mlops-platform/
+468 Capital,0,prefix-dev,prefix.dev,U2,pixi and conda tooling,1,0,2022,seed,1,https://funding.tech.eu/deals/E5493347-F2A8-4E5D-ADAD-CFD26E5F17EF
+8VC,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,0,2023,series_b,0,https://dagster.io/blog/elementl-series-b
+A Capital,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2017,series_d,0,https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise
+A Capital,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+AE Industrial Partners HorizonX,0,juliahub,JuliaHub (Julia Computing),U2,Julia language,1,1,2023,corporate_strategic,0,https://www.prnewswire.com/news-releases/juliahub-receives-13-million-strategic-investment-from-ae-industrial-partners-horizonx-301863793.html
+AE Ventures,0,juliahub,JuliaHub (Julia Computing),U2,Julia language,1,0,2026,series_b,0,https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0
+ASML,0,mistral,Mistral AI,U3,open-weight AI,1,1,2025,series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai
+Ace & Company,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Acrew Capital,0,observable,"Observable, Inc.",U2,"D3, Observable Plot and Framework",1,1,2020,series_a,1,https://en.wikipedia.org/wiki/Mike_Bostock
+Advent,0,mistral,Mistral AI,U3,open-weight AI,1,0,2026,growth,0,https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+Afore Capital,0,iterative,Iterative (DVC),U3,COSS (DVC),1,0,2021,series_a,0,https://techcrunch.com/2021/06/02/iterative-raises-20m-for-its-mlops-platform/
+Alex Atallah,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Alex Pall,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Alfred P. Sloan Foundation,0,juliahub,JuliaHub (Julia Computing),U2,Julia language,1,0,2017,grant_philanthropic,1,https://en.wikipedia.org/wiki/Julia_(programming_language)
+Alkeon Capital,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2019,series_f_plus,0,https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+AlleyCorp,0,radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),1,0,2025,seed,0,https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research
+Altimeter Capital,0,dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),1,1,2021,series_c,0,https://www.getdbt.com/blog/of-the-community-by-the-community-for-the-community
+Amazon Web Services,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2021,series_f_plus,0,https://venturebeat.com/2021/02/01/databricks-raises-1-billion-funding-round-at-28-billion-valuation/
+Amazon Web Services,0,evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),1,0,2024,seed,0,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/
+Amplify Partners,0,boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,1,0,2026,series_a,0,https://siliconangle.com/2026/11/19/medical-ai-startup-boltz-raises-110m-to-speed-up-small-molecule-research/
+Amplify Partners,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),2,0,2021,series_a | series_b,0,https://dagster.io/blog/elementl-series-b | https://www.dagster.io/blog/decade-of-data
+Amplify Partners,0,dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),1,0,2021,series_c,0,https://www.getdbt.com/blog/of-the-community-by-the-community-for-the-community
+Andreessen Horowitz,0,boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,1,0,2026,series_a,0,https://siliconangle.com/2026/11/19/medical-ai-startup-boltz-raises-110m-to-speed-up-small-molecule-research/
+Andreessen Horowitz,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",6,4,2013,series_a | series_d | series_e | series_f_plus,0,https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise | https://en.wikipedia.org/wiki/Databricks | https://techcrunch.com/2019/02/05/databricks-raises-250m-series-e-for-its-analytics-platform/ | https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/ | https://techcrunch.com/2024/12/17/databricks-raises-10b-as-it-barrels-toward-an-ipo/ | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Andreessen Horowitz,0,github,GitHub,U3,open-source platform,2,1,2012,series_b | venture_unspecified,0,http://techcrunch.com/2012/07/09/github-pours-energies-into-enterprise-raises-100-million-from-power-vc-andreesen-horowitz/ | https://en.wikipedia.org/wiki/GitHub
+Andreessen Horowitz,0,mistral,Mistral AI,U3,open-weight AI,3,0,2024,growth | series_b | series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai | https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/ | https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+Andreessen Horowitz,0,replicate,Replicate,U3,open-source Cog; model hosting,1,1,2023,series_b,0,https://replicate.com/blog/series-b
+Andreessen Horowitz,0,dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),1,0,2021,series_c,0,https://www.getdbt.com/blog/of-the-community-by-the-community-for-the-community
+Anthony Goldbloom,1,coiled,Coiled,U2,Dask company,1,0,2020,seed,0,https://prnewswire.com/news-releases/coiled-announces-5m-seed-funding-to-meet-the-needs-of-modern-data-teams-301139759.html
+Anzu Partners,0,arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,2,1,2022,series_b,0,https://blog.arduino.cc/2022/06/07/ready-to-transform-the-enterprise-world-we-are/ | https://blog.arduino.cc/2023/09/06/what-will-we-do-with-an-additional-22m/
+Anzu Partners,0,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",1,0,2024,series_a,0,https://frame.work/blog/frameworks-series-a-1-and-community-participation
+Apollo Global Management,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2026,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+Aramco Ventures,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2022,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+Aramco Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2026,series_c,0,https://www.together.ai/blog/announcing-our-series-c
+Arm,0,arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,2,0,2022,series_b,0,https://blog.arduino.cc/2022/06/07/ready-to-transform-the-enterprise-world-we-are/ | https://blog.arduino.cc/2023/09/06/what-will-we-do-with-an-additional-22m/
+Arm,0,raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,U2,open hardware (partial),1,0,2023,corporate_strategic,0,https://newsroom.arm.com/news/raspberry-pi-investment
+Armin Ronacher,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Atreides Management,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,1,2026,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+Automattic,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,0,2022,series_a,0,https://deno.com/blog/series-a
+Avichal Garg,1,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+BNP Paribas,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Bain Capital,0,docker,Docker Inc.,U1,COSS (GitHub core),1,1,2022,series_c,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+Balaji Srinivasan,1,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,venture_unspecified,0,https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/
+Baseline Ventures,0,posit,Posit PBC (RStudio),U2,"RStudio IDE, Shiny, Quarto",1,0,2021,venture_unspecified,1,https://www.cbinsights.com/investor/rstudio
+Battery Ventures,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2017,series_d,0,https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise
+Belfius,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Ben Hamner,1,coiled,Coiled,U2,Dask company,1,0,2020,seed,0,https://prnewswire.com/news-releases/coiled-announces-5m-seed-funding-to-meet-the-needs-of-modern-data-teams-301139759.html
+Benchmark,0,docker,Docker Inc.,U1,COSS (GitHub core),2,1,2011,series_a | series_b,0,"https://en.wikipedia.org/wiki/Docker,_Inc. | https://www.docker.com/press-release/Docker-Series-B"
+Benchmark,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2023,venture_unspecified,0,https://techcrunch.com/2023/01/12/hpe-acquires-pachyderm-as-looks-to-bolster-its-ai-dev-offerings/
+Bertelsmann Investment,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Bessemer Venture Partners,0,boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,1,1,2026,series_a,0,https://siliconangle.com/2026/11/19/medical-ai-startup-boltz-raises-110m-to-speed-up-small-molecule-research/
+Bessemer Venture Partners,0,coiled,Coiled,U2,Dask company,1,1,2021,series_a,0,https://prnewswire.com/news-releases/coiled-cloud-launches-at-dask-distributed-summit-after-securing-21m-in-series-a-funding-led-by-bessemer-venture-partners-301294178.html
+Bezos Expeditions,0,makerbot,MakerBot Industries,U2,"3D printing, open designs until 2012",1,0,2011,series_a,0,https://techcrunch.com/2011/08/23/makerbot-takes-10-million-in-funding-from-foundry-group-angels
+Birk Jernstrom,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+BlackRock,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2019,series_f_plus,0,https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+BlackRock,0,mistral,Mistral AI,U3,open-weight AI,1,0,2026,growth,0,https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+Blackstone,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2026,growth,0,https://techcrunch.com/2026/08/13/databricks-wanted-to-raise-1b-investors-wanted-15b-it-settled-on-5b-at-a-190b-valuation/
+Blumberg Capital,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Bob Muglia,1,juliahub,JuliaHub (Julia Computing),U2,Julia language,1,0,2026,series_b,0,https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0
+Bpifrance,0,mistral,Mistral AI,U3,open-weight AI,2,0,2024,series_b | series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai | https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Bpifrance,0,probabl,Probabl,U2,scikit-learn company,1,0,2025,seed,0,https://techfundingnews.com/probabl-ai-raises-13m-open-source-forecasting/
+Brave Capital,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2025,series_b,0,https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Breega,0,entalpic,Entalpic,U2,materials AI with open releases (partial),1,1,2024,seed,0,https://www.cathaycapital.com/entalpic-raises-e8-5-million-to-pioneer-ai-solutions-for-decarbonizing-industrial-chemistry/
+Brighton Park Capital,0,posit,Posit PBC (RStudio),U2,"RStudio IDE, Shiny, Quarto",1,0,2021,venture_unspecified,1,https://www.cbinsights.com/investor/rstudio
+Buckley Ventures,0,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",1,0,2024,series_a,0,https://frame.work/blog/frameworks-series-a-1-and-community-participation
+CDP Venture Capital,0,arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,1,1,2023,series_b,0,https://blog.arduino.cc/2023/09/06/what-will-we-do-with-an-additional-22m/
+CRV,0,localstack,LocalStack,U1,COSS (GitHub core),2,0,2022,seed | series_a,0,https://techcrunch.com/2024/11/12/localstack-raises-25m-to-help-developers-emulate-and-test-cloud-apps-locally/
+Cadenza Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",2,0,2023,seed | series_b,0,https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Caffeinated Capital,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Canada Pension Plan Investment Board,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2021,series_f_plus,0,https://venturebeat.com/2021/02/01/databricks-raises-1-billion-funding-round-at-28-billion-valuation/
+Capital Fund Management,0,probabl,Probabl,U2,scikit-learn company,1,1,2025,seed,0,https://techfundingnews.com/probabl-ai-raises-13m-open-source-forecasting/
+Capital One Ventures,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2023,series_f_plus,0,https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/
+Carol Willing,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Cathay Innovation,0,entalpic,Entalpic,U2,materials AI with open releases (partial),1,1,2024,seed,0,https://www.cathaycapital.com/entalpic-raises-e8-5-million-to-pioneer-ai-solutions-for-decarbonizing-industrial-chemistry/
+Charlie Marsh,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Chris Sacca,1,docker,Docker Inc.,U1,COSS (GitHub core),1,0,2011,angel,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+Cisco,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Clem Delangue,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Clement Delangue,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2024,series_a,0,https://www.together.ai/blog/series-a2
+Coatue,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,0,2021,series_a,0,https://www.dagster.io/blog/decade-of-data
+Coatue,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",3,1,2019,growth | series_e | series_f_plus,0,https://techcrunch.com/2019/02/05/databricks-raises-250m-series-e-for-its-analytics-platform/ | https://techcrunch.com/2026/08/13/databricks-wanted-to-raise-1b-investors-wanted-15b-it-settled-on-5b-at-a-190b-valuation/ | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Coatue,0,together-ai,Together AI,U3,"open-source AI, open models",2,0,2024,series_a | series_b,0,https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Coatue Management,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,1,2022,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+Common Metal,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Community investors,0,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",1,0,2024,crowdfunding_equity,0,https://frame.work/blog/frameworks-series-a-1-and-community-participation
+Compound,0,orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,1,0,2026,series_b,0,https://thenextweb.com/news/orbital-industries-50m-series-b-data-center-cooling
+Cooler Master,0,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",1,0,2024,series_a,0,https://frame.work/blog/frameworks-series-a-1-and-community-participation
+Costanoa Ventures,0,coiled,Coiled,U2,Dask company,1,1,2020,seed,0,https://prnewswire.com/news-releases/coiled-announces-5m-seed-funding-to-meet-the-needs-of-modern-data-teams-301139759.html
+Costanoa Ventures,0,prefix-dev,prefix.dev,U2,pixi and conda tooling,1,0,2022,seed,1,https://funding.tech.eu/deals/E5493347-F2A8-4E5D-ADAD-CFD26E5F17EF
+Counterpart Ventures,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,0,2023,series_a,0,https://www.intelcapital.com/oxide-unveils-the-worlds-first-commercial-cloud-computer/
+Craft Ventures,0,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",1,0,2019,series_a,0,https://techcrunch.com/2019/03/27/sofar-ocean-technologies/
+Crunchfund,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Cypress Growth Capital,0,picknik,PickNik Robotics,U2,MoveIt,1,1,2023,pre_seed,0,https://www.roboticstomorrow.com/news/2023/10/12/stellar-ventures-and-cypress-growth-capital-commit-to-fueling-the-future-of-robotics-software/21273/
+D1 Capital Partners,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2026,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+DAMAC Capital,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2025,series_b,0,https://www.together.ai/blog/together-ai-announcing-305m-series-b
+DST Global,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2024,series_f_plus,0,https://techcrunch.com/2024/12/17/databricks-raises-10b-as-it-barrels-toward-an-ipo/
+DST Global,0,mistral,Mistral AI,U3,open-weight AI,1,0,2025,series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai
+DTCP Growth,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2026,series_c,0,https://www.together.ai/blog/announcing-our-series-c
+Daniel Gross,1,evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),1,1,2024,seed,0,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/
+Data Collective,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+David Cramer,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Dawn Song,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Definition Capital,0,together-ai,Together AI,U3,"open-source AI, open models",4,0,2023,seed | series_a | series_b,0,https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Dell Technologies Capital,0,treeverse,Treeverse (lakeFS),U3,COSS (lakeFS),1,0,2021,series_a,0,https://venturebeat.com/2021/07/28/treeverse-raises-23m-to-bring-git-like-version-control-to-data-lakes/
+Delphi Ventures,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,venture_unspecified,0,https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/
+Dorilton Ventures,0,juliahub,JuliaHub (Julia Computing),U2,Julia language,2,2,2021,series_a | series_b,0,https://en.wikipedia.org/wiki/Julia_(programming_language) | https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0
+Dragoneer Investment Group,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2019,series_f_plus,0,https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Drive Capital,0,voxel51,Voxel51,U3,COSS (FiftyOne),1,1,2022,series_a,0,https://techcrunch.com/2022/09/21/voxel51-lands-funds-for-its-platform-to-manage-unstructured-data/
+Dylan Field,1,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,0,2022,series_a,0,https://deno.com/blog/series-a
+Eclipse Ventures,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,1,2023,series_a,0,https://www.intelcapital.com/oxide-unveils-the-worlds-first-commercial-cloud-computer/
+Emergence Capital,0,together-ai,Together AI,U3,"open-source AI, open models",4,0,2023,series_a | series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Eni,0,radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),1,0,2025,seed,0,https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research
+Eurazeo,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+European Investment Bank,0,ultimaker,UltiMaker (Ultimaker B.V.),U2,"3D printing, Cura open source",1,0,2016,debt,1,https://www.zoominfo.com/financial/ultimaker/346950205
+Exor Ventures,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+F-Prime Capital,0,boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,1,0,2026,series_a,0,https://siliconangle.com/2026/11/19/medical-ai-startup-boltz-raises-110m-to-speed-up-small-molecule-research/
+Factory,0,together-ai,Together AI,U3,"open-source AI, open models",3,0,2023,seed | series_a,0,https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2
+Felicis,0,entalpic,Entalpic,U2,materials AI with open releases (partial),1,1,2024,seed,0,https://www.cathaycapital.com/entalpic-raises-e8-5-million-to-pioneer-ai-solutions-for-decarbonizing-industrial-chemistry/
+Fidelity,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2023,series_f_plus,0,https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/
+Fidelity Management & Research,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2021,series_f_plus,0,https://venturebeat.com/2021/02/01/databricks-raises-1-billion-funding-round-at-28-billion-valuation/
+First Minute Capital,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+First Round Capital,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Florian Leibert,1,iterative,Iterative (DVC),U3,COSS (DVC),1,1,2021,series_a,0,https://techcrunch.com/2021/06/02/iterative-raises-20m-for-its-mlops-platform/
+Fly Ventures,0,orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,1,0,2026,series_b,0,https://thenextweb.com/news/orbital-industries-50m-series-b-data-center-cooling
+Foundation Capital,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Founder Collective,0,juliahub,JuliaHub (Julia Computing),U2,Julia language,1,0,2017,seed,1,https://en.wikipedia.org/wiki/Julia_(programming_language)
+Foundry Group,0,makerbot,MakerBot Industries,U2,"3D printing, open designs until 2012",1,1,2011,series_a,0,https://techcrunch.com/2011/08/23/makerbot-takes-10-million-in-funding-from-foundry-group-angels
+Foundry Group,0,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",1,1,2021,series_b,0,https://techcrunch.com/2021/11/03/sofar-nets-a-39m-round-b-to-grow-its-ocean-monitoring-autonomous-buoy-network/
+Four Rivers Ventures,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),2,0,2021,series_a | venture_unspecified,0,https://deno.com/blog/series-a | https://techcrunch.com/2022/06/21/deno-raises-21m-to-launch-a-fully-managed-runtime-service/
+Franklin Templeton,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",2,1,2021,series_f_plus,0,https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/ | https://venturebeat.com/2021/02/01/databricks-raises-1-billion-funding-round-at-28-billion-valuation/
+French Tech Souveraineté,0,probabl,Probabl,U2,scikit-learn company,1,0,2025,seed,0,https://techfundingnews.com/probabl-ai-raises-13m-open-source-forecasting/
+Future Fund,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2017,series_d,0,https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise
+GIC,0,anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",1,0,2026,venture_unspecified,0,https://techcrunch.com/2026/01/12/at-least-36-new-tech-unicorns-were-minted-in-2025-so-far/
+GIC,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2024,series_f_plus,0,https://techcrunch.com/2024/12/17/databricks-raises-10b-as-it-barrels-toward-an-ipo/
+General Atlantic,0,anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",1,0,2026,venture_unspecified,0,https://techcrunch.com/2026/01/12/at-least-36-new-tech-unicorns-were-minted-in-2025-so-far/
+General Catalyst,0,juliahub,JuliaHub (Julia Computing),U2,Julia language,2,0,2017,seed | series_b,0,https://en.wikipedia.org/wiki/Julia_(programming_language) | https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0
+General Catalyst,0,mistral,Mistral AI,U3,open-weight AI,2,1,2024,series_b | series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai | https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+General Catalyst,0,posit,Posit PBC (RStudio),U2,"RStudio IDE, Shiny, Quarto",1,0,2021,venture_unspecified,1,https://www.cbinsights.com/investor/rstudio
+General Catalyst,0,together-ai,Together AI,U3,"open-source AI, open models",2,1,2025,series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Geodesic Capital,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",2,0,2017,series_d | series_f_plus,0,https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Geodesic Capital,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2026,series_c,0,https://www.together.ai/blog/announcing-our-series-c
+Georgian,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,1,2023,series_b,0,https://dagster.io/blog/elementl-series-b
+Grand Duchy of Luxembourg,0,mistral,Mistral AI,U3,open-weight AI,1,0,2026,growth,0,https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+Green Bay Ventures,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",3,0,2017,series_d | series_e | series_f_plus,0,https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise | https://techcrunch.com/2019/02/05/databricks-raises-250m-series-e-for-its-analytics-platform/ | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Greycroft,0,boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,1,0,2026,series_a,0,https://siliconangle.com/2026/11/19/medical-ai-startup-boltz-raises-110m-to-speed-up-small-molecule-research/
+Greycroft,0,together-ai,Together AI,U3,"open-source AI, open models",3,0,2023,series_a | series_b,0,https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Greylock Partners,0,docker,Docker Inc.,U1,COSS (GitHub core),1,1,2014,series_b,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+Hanover,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,0,2023,series_b,0,https://dagster.io/blog/elementl-series-b
+Hanwha Asset Management,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Headline,0,mistral,Mistral AI,U3,open-weight AI,2,0,2023,seed | series_b,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/ | https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Heavybit,0,localstack,LocalStack,U1,COSS (GitHub core),2,0,2022,seed | series_a,0,https://techcrunch.com/2024/11/12/localstack-raises-25m-to-help-developers-emulate-and-test-cloud-apps-locally/
+Heavybit,0,replicate,Replicate,U3,open-source Cog; model hosting,1,0,2023,series_b,0,https://replicate.com/blog/series-b
+Hewlett Packard Pathfinder,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2023,venture_unspecified,0,https://techcrunch.com/2023/01/12/hpe-acquires-pachyderm-as-looks-to-bolster-its-ai-dev-offerings/
+Human Capital,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,0,2023,series_b,0,https://dagster.io/blog/elementl-series-b
+Hummingbird,0,boltz,Boltz PBC,U2,open-source Boltz-1/Boltz-2 models,1,0,2026,series_a,0,https://siliconangle.com/2026/11/19/medical-ai-startup-boltz-raises-110m-to-speed-up-small-molecule-research/
+IA Ventures,0,coiled,Coiled,U2,Dask company,1,1,2020,seed,0,https://prnewswire.com/news-releases/coiled-announces-5m-seed-funding-to-meet-the-needs-of-modern-data-teams-301139759.html
+IBM,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+ID Ventures,0,voxel51,Voxel51,U3,COSS (FiftyOne),1,0,2022,series_a,0,https://techcrunch.com/2022/09/21/voxel51-lands-funds-for-its-platform-to-manage-unstructured-data/
+IDG Capital,0,seeed,Seeed Studio (Seeed Technology),U2,open hardware (partial),1,0,2015,venture_unspecified,1,https://www.cbinsights.com/company/seed-studio/financials
+IVP,0,github,GitHub,U3,open-source platform,1,0,2015,series_b,1,https://en.wikipedia.org/wiki/GitHub
+Iconiq Growth,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2024,series_f_plus,0,https://techcrunch.com/2024/12/17/databricks-raises-10b-as-it-barrels-toward-an-ipo/
+In-Q-Tel,0,docker,Docker Inc.,U1,COSS (GitHub core),1,0,2016,corporate_strategic,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+Index Ventures,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),2,1,2021,series_a | series_b,0,https://dagster.io/blog/elementl-series-b | https://www.dagster.io/blog/decade-of-data
+Index Ventures,0,mistral,Mistral AI,U3,open-weight AI,2,0,2023,seed | series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai | https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Infinite Capital,0,radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),1,0,2025,seed,0,https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research
+Inria Participations,0,probabl,Probabl,U2,scikit-learn company,1,0,2025,seed,0,https://techfundingnews.com/probabl-ai-raises-13m-open-source-forecasting/
+Insight Partners,0,anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",1,1,2025,series_c,0,https://www.anaconda.com/press/anaconda-raises-150m-series-c-funding-ai-enterprise
+Insight Partners,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,0,2022,series_a,0,https://deno.com/blog/series-a
+Insight Partners,0,docker,Docker Inc.,U1,COSS (GitHub core),2,1,2015,series_b | series_d,0,"https://en.wikipedia.org/wiki/Docker,_Inc. | https://www.docker.com/press-release/Docker-Series-B"
+Intel Capital,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,0,2023,series_a,0,https://www.intelcapital.com/oxide-unveils-the-worlds-first-commercial-cloud-computer/
+Intel Capital,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2022,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+JCDecaux Holding,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Jakob Uszkoreit,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Jay Jamison,1,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Jeff Hammerbacher,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Jerry Yang,1,docker,Docker Inc.,U1,COSS (GitHub core),1,0,2011,angel,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+Jessie Frazelle,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+John Chambers,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2025,series_b,0,https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Jonathan Abrams,1,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Kickstarter backers,0,openbci,OpenBCI,U2,open hardware neurotech,2,0,2013,crowdfunding_reward,1,https://en.wikipedia.org/wiki/OpenBCI
+Kickstarter backers,0,pine64,Pine64 (Pine Store Ltd),U2,open hardware,1,0,2015,crowdfunding_reward,0,https://techcrunch.com/2016/01/21/the-pine-a64-is-a-15-pc-with-endless-possibilities/
+Kickstarter backers,0,scinote,SciNote,U2,"electronic lab notebook, once open source",1,0,2015,crowdfunding_reward,0,https://www.newswire.com/news/scinote-first-open-source-scientific-notebook-released-on
+Kickstarter backers,0,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",1,0,2012,crowdfunding_reward,1,https://en.wikipedia.org/wiki/OpenROV
+Kleiner Perkins,0,together-ai,Together AI,U3,"open-source AI, open models",3,1,2023,series_a | series_b,0,https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Korelya Capital,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+La Famiglia,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Latitude,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Lightspeed Venture Partners,0,mistral,Mistral AI,U3,open-weight AI,3,1,2023,seed | series_b | series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai | https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/ | https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Linus Sebastian,1,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",1,0,2021,angel,1,https://en.wikipedia.org/wiki/Framework_Computer
+Lip-Bu Tan,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+LocalGlobe,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Long Journey Ventures,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),2,0,2021,series_a | venture_unspecified,0,https://deno.com/blog/series-a | https://techcrunch.com/2022/06/21/deno-raises-21m-to-launch-a-fully-managed-runtime-service/
+Long Journey Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",4,0,2023,seed | series_a | series_b,0,https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Lux Capital,0,evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),1,1,2024,seed,0,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/
+Lux Capital,0,together-ai,Together AI,U3,"open-source AI, open models",5,1,2023,seed | series_a | series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+M12,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+M12,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2023,venture_unspecified,0,https://techcrunch.com/2023/01/12/hpe-acquires-pachyderm-as-looks-to-bolster-its-ai-dev-offerings/
+MGX,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2026,growth,0,https://techcrunch.com/2026/08/13/databricks-wanted-to-raise-1b-investors-wanted-15b-it-settled-on-5b-at-a-190b-valuation/
+Marcelo Trylesinski,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+March Capital,0,together-ai,Together AI,U3,"open-source AI, open models",2,0,2025,series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Martin Donath,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Menlo Ventures,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+Microsoft,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",2,0,2019,series_e | series_f_plus,0,https://techcrunch.com/2019/02/05/databricks-raises-250m-series-e-for-its-analytics-platform/ | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Millennium New Horizons,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Morgan Stanley,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2023,series_f_plus,0,https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/
+Motier Ventures,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Mozilla,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,0,2021,venture_unspecified,0,https://techcrunch.com/2022/06/21/deno-raises-21m-to-launch-a-fully-managed-runtime-service/
+Mozilla Ventures,0,probabl,Probabl,U2,scikit-learn company,1,0,2025,seed,0,https://techfundingnews.com/probabl-ai-raises-13m-open-source-forecasting/
+Mubadala Capital,0,anaconda,"Anaconda, Inc. (Continuum Analytics)",U2,"conda, Anaconda distribution",1,0,2025,series_c,0,https://www.anaconda.com/press/anaconda-raises-150m-series-c-funding-ai-enterprise
+NASA (SBIR),0,picknik,PickNik Robotics,U2,MoveIt,1,0,,grant_government,0,https://www.roboticstomorrow.com/news/2023/10/12/stellar-ventures-and-cypress-growth-capital-commit-to-fueling-the-future-of-robotics-software/21273/
+NEA,0,together-ai,Together AI,U3,"open-source AI, open models",2,0,2023,series_a,0,https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2
+NIST,0,voxel51,Voxel51,U3,COSS (FiftyOne),1,0,2019,grant_government,0,https://techcrunch.com/2019/08/08/voxel51-raises-2-million-for-its-video-native-identification-of-people-cars-and-more/
+NPM Capital,0,ultimaker,UltiMaker (Ultimaker B.V.),U2,"3D printing, Cura open source",2,1,2017,corporate_strategic | growth,0,https://prnewswire.com/news-releases/ultimaker-announces-major-funding-from-npm-capital-to-fuel-global-expansion-300542951.html | https://www.newswire.ca/news-releases/makerbot-and-ultimaker-agree-to-merge-to-accelerate-global-adoption-of-additive-manufacturing-857279373.html
+NVIDIA,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2023,series_f_plus,0,https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/
+NVIDIA,0,mistral,Mistral AI,U3,open-weight AI,3,0,2024,growth | series_b | series_c,0,https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai | https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/ | https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+NVIDIA,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+NVIDIA,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2026,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+NVIDIA,0,together-ai,Together AI,U3,"open-source AI, open models",3,0,2023,series_a | series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/series-a | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+NVentures,0,evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),1,0,2024,seed,0,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/
+NVentures,0,orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,1,0,2026,series_b,0,https://thenextweb.com/news/orbital-industries-50m-series-b-data-center-cooling
+NVentures,0,radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),1,0,2025,seed,0,https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research
+NVentures,0,replicate,Replicate,U3,open-source Cog; model hosting,1,0,2023,series_b,0,https://replicate.com/blog/series-b
+Nat Friedman,1,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,0,2022,series_a,0,https://deno.com/blog/series-a
+Nat Friedman,1,evolutionaryscale,EvolutionaryScale,U2,open-weight ESM models (partial),1,1,2024,seed,0,https://siliconangle.com/2024/06/25/evolutionaryscale-raises-142m-seed-funding-accelerate-ai-powered-protein-discovery/
+National Geographic,0,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",1,0,,venture_unspecified,0,https://techcrunch.com/2019/03/27/sofar-ocean-technologies/
+National Institutes of Health (NIBIB),0,open-imaging,"Open Imaging, Inc.",U2,Micro-Manager,1,0,,grant_government,0,https://micro-manager.org/Micro-Manager_Project_Overview
+Neo,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,0,2021,series_a,0,https://www.dagster.io/blog/decade-of-data
+Netlify,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,0,2022,series_a,0,https://deno.com/blog/series-a
+New Enterprise Associates,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",3,0,2017,series_d | series_e | series_f_plus,0,https://databricks.com/company/newsroom/press-releases/databricks-secures-140-million-accelerate-analytics-artificial-intelligence-enterprise | https://techcrunch.com/2019/02/05/databricks-raises-250m-series-e-for-its-analytics-platform/ | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Noa,0,radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),1,0,2025,seed,0,https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research
+North Island Ventures,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,venture_unspecified,0,https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/
+Norwest Venture Partners,0,treeverse,Treeverse (lakeFS),U3,COSS (lakeFS),1,0,2021,series_a,0,https://venturebeat.com/2021/07/28/treeverse-raises-23m-to-bring-git-like-version-control-to-data-lakes/
+Notable Capital,0,localstack,LocalStack,U1,COSS (GitHub core),1,1,2024,series_a,0,https://techcrunch.com/2024/11/12/localstack-raises-25m-to-help-developers-emulate-and-test-cloud-apps-locally/
+OSS Capital,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),1,0,2021,series_a,0,https://www.dagster.io/blog/decade-of-data
+OSS Capital,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,venture_unspecified,0,https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/
+Osage University Partners,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,1,2018,series_c,0,https://techcrunch.com/2018/04/02/sifive-gets-50-6m-to-help-companies-get-their-custom-chip-designs-out-the-door/
+PSG Equity,0,mistral,Mistral AI,U3,open-weight AI,1,1,2026,growth,0,https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+PSP Partners,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2026,series_c,0,https://www.together.ai/blog/announcing-our-series-c
+Paige Bailey,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Paradigm,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,venture_unspecified,0,https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/
+Pathbreaker Ventures,0,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",1,0,2024,series_a,0,https://frame.work/blog/frameworks-series-a-1-and-community-participation
+Paul Buchheit,1,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Pegatron,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2026,series_c,0,https://www.together.ai/blog/announcing-our-series-c
+Peter Rive,1,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",1,1,2019,series_a,0,https://techcrunch.com/2019/03/27/sofar-ocean-technologies/
+Peter Wang,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Plural,0,orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,1,1,2026,series_b,0,https://thenextweb.com/news/orbital-industries-50m-series-b-data-center-cooling
+Point72 Turion,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2026,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+Prosperity7 Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",3,1,2023,series_a | series_b,0,https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Qualcomm Ventures,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2022,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+QuantStack Ventures,0,prefix-dev,prefix.dev,U2,pixi and conda tooling,1,0,2022,seed,1,https://funding.tech.eu/deals/E5493347-F2A8-4E5D-ADAD-CFD26E5F17EF
+RRE Ventures,0,makerbot,MakerBot Industries,U2,"3D printing, open designs until 2012",1,0,2011,series_a,0,https://techcrunch.com/2011/08/23/makerbot-takes-10-million-in-funding-from-foundry-group-angels
+RTX Ventures,0,radical-ai,Radical AI,U2,closed SDL with open simulation tools (TorchSim) (partial),1,1,2025,seed,0,https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research
+Radical Ventures,0,orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,2,1,2024,series_a | series_b,0,https://startupintros.com/news/2024-02-01-orbital-materials-series-a | https://thenextweb.com/news/orbital-industries-50m-series-b-data-center-cooling
+Rally Ventures,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,0,2023,series_a,0,https://www.intelcapital.com/oxide-unveils-the-worlds-first-commercial-cloud-computer/
+Rauch Capital,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,0,2021,venture_unspecified,0,https://techcrunch.com/2022/06/21/deno-raises-21m-to-launch-a-fully-managed-runtime-service/
+Redpoint,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Renesas,0,arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,1,0,2022,series_b,0,https://blog.arduino.cc/2022/06/07/ready-to-transform-the-enterprise-world-we-are/
+Riot Ventures,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,0,2023,series_a,0,https://www.intelcapital.com/oxide-unveils-the-worlds-first-commercial-cloud-computer/
+Robert Bosch Venture Capital,0,arduino,Arduino (Arduino S.r.l. / BCMI),U2,open hardware,1,1,2022,series_b,0,https://blog.arduino.cc/2022/06/07/ready-to-transform-the-enterprise-world-we-are/
+Robert Nishihara,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Robot Ventures,0,NousResearch,Nous Research,U1,COSS (GitHub core),2,1,2026,series_b | venture_unspecified,0,https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/ | https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+Robot Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Rodolphe Saade,1,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Ron Conway,1,docker,Docker Inc.,U1,COSS (GitHub core),1,0,2011,angel,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+SCB 10X,0,together-ai,Together AI,U3,"open-source AI, open models",2,0,2023,seed | series_a,0,https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/series-a
+SE Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",2,0,2025,series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+SK Telecom,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2025,series_b,0,https://www.together.ai/blog/together-ai-announcing-305m-series-b
+SV Angel,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+SV Angel,0,together-ai,Together AI,U3,"open-source AI, open models",3,0,2023,seed | series_a,0,https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2
+Sahir Azam,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Salesforce Ventures,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2021,series_f_plus,0,https://venturebeat.com/2021/02/01/databricks-raises-1-billion-funding-round-at-28-billion-valuation/
+Salesforce Ventures,0,mistral,Mistral AI,U3,open-weight AI,2,0,2024,growth | series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/ | https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+Salesforce Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",3,1,2024,series_a | series_b | series_c,0,https://www.together.ai/blog/announcing-our-series-c | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Samsung,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+Samsung Electronics,0,mistral,Mistral AI,U3,open-weight AI,1,1,2026,growth,0,https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+Samsung Venture Investment,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Samuel Colvin,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Sanabil Investments,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Scaleup Europe Fund,0,mistral,Mistral AI,U3,open-weight AI,1,1,2026,growth,0,https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/
+Scott Banister,1,together-ai,Together AI,U3,"open-source AI, open models",4,0,2023,seed | series_a | series_b,0,https://www.together.ai/blog/seed-funding | https://www.together.ai/blog/series-a | https://www.together.ai/blog/series-a2 | https://www.together.ai/blog/together-ai-announcing-305m-series-b
+Sequoia Capital,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),2,0,2021,series_a | series_b,0,https://dagster.io/blog/elementl-series-b | https://www.dagster.io/blog/decade-of-data
+Sequoia Capital,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),1,1,2022,series_a,0,https://deno.com/blog/series-a
+Sequoia Capital,0,docker,Docker Inc.,U1,COSS (GitHub core),1,1,2014,series_c,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+Sequoia Capital,0,fastapi,FastAPI Labs,U1,COSS (GitHub core),2,1,2024,grant_philanthropic | seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi | https://techcrunch.com/2024/11/10/open-source-projects-draw-equity-free-funding-from-corporates-startups-and-even-vcs/
+Sequoia Capital,0,github,GitHub,U3,open-source platform,1,1,2015,series_b,1,https://en.wikipedia.org/wiki/GitHub
+Sequoia Capital,0,observable,"Observable, Inc.",U2,"D3, Observable Plot and Framework",1,1,2020,series_a,1,https://en.wikipedia.org/wiki/Mike_Bostock
+Sequoia Capital,0,replicate,Replicate,U3,open-source Cog; model hosting,1,0,2023,series_b,0,https://replicate.com/blog/series-b
+Sequoia Capital,0,dbt-labs,dbt Labs (Fishtown Analytics),U3,COSS (dbt),1,0,2021,series_c,0,https://www.getdbt.com/blog/of-the-community-by-the-community-for-the-community
+Serena,0,probabl,Probabl,U2,scikit-learn company,1,1,2025,seed,0,https://techfundingnews.com/probabl-ai-raises-13m-open-source-forecasting/
+ServiceNow,0,mistral,Mistral AI,U3,open-weight AI,1,0,2024,series_b,0,https://techcrunch.com/2024/06/11/paris-based-ai-startup-mistral-ai-raises-640-million/
+Shasta Ventures,0,denoland,Deno Land Inc.,U1,COSS (GitHub core),2,0,2021,series_a | venture_unspecified,0,https://deno.com/blog/series-a | https://techcrunch.com/2022/06/21/deno-raises-21m-to-launch-a-fully-managed-runtime-service/
+Shasta Ventures,0,voxel51,Voxel51,U3,COSS (FiftyOne),1,0,2022,series_a,0,https://techcrunch.com/2022/09/21/voxel51-lands-funds-for-its-platform-to-manage-unstructured-data/
+Shenzhen Capital Group,0,seeed,Seeed Studio (Seeed Technology),U2,open hardware (partial),1,0,2015,venture_unspecified,1,https://www.cbinsights.com/company/seed-studio/financials
+Sixth Street Growth,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2026,growth,0,https://techcrunch.com/2026/08/13/databricks-wanted-to-raise-1b-investors-wanted-15b-it-settled-on-5b-at-a-190b-valuation/
+Slow Ventures,0,dagster,Dagster Labs (Elementl),U3,COSS (data orchestration),2,0,2021,series_a | series_b,0,https://dagster.io/blog/elementl-series-b | https://www.dagster.io/blog/decade-of-data
+Sofina,0,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Soma Capital,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Sony Semiconductor Solutions,0,raspberry-pi,Raspberry Pi Holdings / Raspberry Pi Ltd,U2,open hardware (partial),1,0,2023,corporate_strategic,0,https://sony.mediaroom.com/2023-04-12-Raspberry-Pi-Receives-Strategic-Investment-from-Sony-Semiconductor-Solutions-Corporation
+Soumith Chintala,1,together-ai,Together AI,U3,"open-source AI, open models",1,0,2024,series_a,0,https://www.together.ai/blog/series-a2
+Spark Capital,0,framework,Framework Computer,U2,"repairable laptops, open docs (partial)",2,2,2022,series_a,0,https://en.wikipedia.org/wiki/Framework_Computer | https://frame.work/blog/frameworks-series-a-1-and-community-participation
+Spark Capital,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,1,2018,series_c,0,https://techcrunch.com/2018/04/02/sifive-gets-50-6m-to-help-companies-get-their-custom-chip-designs-out-the-door/
+Stellar Ventures,0,picknik,PickNik Robotics,U2,MoveIt,1,1,2023,pre_seed,0,https://www.roboticstomorrow.com/news/2023/10/12/stellar-ventures-and-cypress-growth-capital-commit-to-fueling-the-future-of-robotics-software/21273/
+Stratasys,0,ultimaker,UltiMaker (Ultimaker B.V.),U2,"3D printing, Cura open source",1,0,2022,corporate_strategic,0,https://www.newswire.ca/news-releases/makerbot-and-ultimaker-agree-to-merge-to-accelerate-global-adoption-of-additive-manufacturing-857279373.html
+Susa Ventures,0,pachyderm,Pachyderm,U3,COSS (data versioning),1,0,2015,seed,0,https://techcrunch.com/2015/06/10/pachyderm-raises-2-million-seed-round/
+Susa Ventures,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2023,seed,0,https://www.together.ai/blog/seed-funding
+Sutter Hill Ventures,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,2,1,2018,growth | series_c,0,https://techcrunch.com/2018/04/02/sifive-gets-50-6m-to-help-companies-get-their-custom-chip-designs-out-the-door/ | https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+T. Rowe Price,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",3,0,2019,growth | series_f_plus,0,https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/ | https://techcrunch.com/2026/08/13/databricks-wanted-to-raise-1b-investors-wanted-15b-it-settled-on-5b-at-a-190b-valuation/ | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+T. Rowe Price,0,sifive,SiFive,U2,RISC-V; open-source Rocket chip generator,1,0,2026,growth,0,https://techcrunch.com/2026/04/11/nvidia-backed-sifive-hits-3-65-billion-valuation-for-open-ai-chips/
+TIE Angels Group Seattle,0,glencoe,Glencoe Software,U2,OME / OMERO bioimaging,1,1,2015,seed,0,https://prnewswire.com/news-releases/glencoe-software-closes-seed-funding-of-over-800000-300036073.html
+Techammer,0,coiled,Coiled,U2,Dask company,1,0,2020,seed,0,https://prnewswire.com/news-releases/coiled-announces-5m-seed-funding-to-meet-the-needs-of-modern-data-teams-301139759.html
+Thrive Capital,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",1,0,2024,series_f_plus,0,https://techcrunch.com/2024/12/17/databricks-raises-10b-as-it-barrels-toward-an-ipo/
+Thrive Capital,0,github,GitHub,U3,open-source platform,1,0,2015,series_b,1,https://en.wikipedia.org/wiki/GitHub
+Tiger Global Management,0,databricks,Databricks,U3,"COSS (Spark, Delta, MLflow)",2,0,2019,series_f_plus,0,https://techcrunch.com/2023/09/14/databricks-raises-500m-more-boosting-valuation-to-43b-despite-late-stage-gloom/ | https://venturebeat.com/2019/10/22/databricks-raises-400-million-at-a-6-2-billion-valuation/
+Tom Christie,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Top Harvest,0,voxel51,Voxel51,U3,COSS (FiftyOne),1,0,2022,series_a,0,https://techcrunch.com/2022/09/21/voxel51-lands-funds-for-its-platform-to-manage-unstructured-data/
+Toyota Ventures,0,orbital-materials,Orbital Materials (Orbital Industries),U2,open-source Orb materials models,1,0,2024,series_a,0,https://startupintros.com/news/2024-02-01-orbital-materials-series-a
+Travis Oliphant,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Tribe Capital,0,docker,Docker Inc.,U1,COSS (GitHub core),1,1,2021,series_b,0,https://www.docker.com/press-release/Docker-Series-B
+Trinity Ventures,0,docker,Docker Inc.,U1,COSS (GitHub core),1,1,2011,series_a,1,"https://en.wikipedia.org/wiki/Docker,_Inc."
+True Ventures,0,iterative,Iterative (DVC),U3,COSS (DVC),1,0,2021,series_a,0,https://techcrunch.com/2021/06/02/iterative-raises-20m-for-its-mlops-platform/
+True Ventures,0,makerbot,MakerBot Industries,U2,"3D printing, open designs until 2012",1,0,2011,series_a,0,https://techcrunch.com/2011/08/23/makerbot-takes-10-million-in-funding-from-foundry-group-angels
+True Ventures,0,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",2,0,2019,series_a | venture_unspecified,0,https://techcrunch.com/2019/03/27/sofar-ocean-technologies/
+U.S. Department of Energy (SBIR),0,enthought,Enthought,U2,scientific Python (SciPy origins),1,0,2013,grant_government,0,https://web.archive.org/web/2013/http://blog.enthought.com/general/enthought-awarded-1m-doe-sbir-grant-to-develop-open-source-python-hpc-framework/
+U.S. Space Force (SBIR),0,picknik,PickNik Robotics,U2,MoveIt,1,0,,grant_government,0,https://www.roboticstomorrow.com/news/2023/10/12/stellar-ventures-and-cypress-growth-capital-commit-to-fueling-the-future-of-robotics-software/21273/
+USIT,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,1,2025,series_b,0,https://oxide.computer/blog/our-100m-series-b
+Union Square Ventures,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+Union Square Ventures,0,sofar-openrov,Sofar Ocean Technologies (formerly OpenROV),U2,"open hardware, marine",1,1,2021,series_b,0,https://techcrunch.com/2021/11/03/sofar-nets-a-39m-round-b-to-grow-its-ocean-monitoring-autonomous-buoy-network/
+Vista Equity Partners,0,together-ai,Together AI,U3,"open-source AI, open models",1,0,2026,series_c,0,https://www.together.ai/blog/announcing-our-series-c
+Xavier Niel,1,mistral,Mistral AI,U3,open-weight AI,1,0,2023,seed,0,https://techcrunch.com/2023/06/13/frances-mistral-ai-blows-in-with-a-113m-seed-round-at-a-260m-valuation-to-take-on-openai/
+Y Combinator,0,NousResearch,Nous Research,U1,COSS (GitHub core),1,0,2026,series_b,0,https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/
+Y Combinator,0,pachyderm,Pachyderm,U3,COSS (data versioning),2,0,2015,accelerator | venture_unspecified,0,https://techcrunch.com/2015/01/23/pachyderm/ | https://techcrunch.com/2023/01/12/hpe-acquires-pachyderm-as-looks-to-bolster-its-ai-dev-offerings/
+Y Combinator,0,replicate,Replicate,U3,open-source Cog; model hosting,1,0,2023,series_b,0,https://replicate.com/blog/series-b
+Yury Selivanov,1,fastapi,FastAPI Labs,U1,COSS (GitHub core),1,0,2025,seed,0,https://fastapicloud.com/blog/fastapi-cloud-by-the-same-team-behind-fastapi
+Zeev Ventures,0,treeverse,Treeverse (lakeFS),U3,COSS (lakeFS),1,0,2021,series_a,0,https://venturebeat.com/2021/07/28/treeverse-raises-23m-to-bring-git-like-version-control-to-data-lakes/
+eLab Ventures,0,voxel51,Voxel51,U3,COSS (FiftyOne),2,1,2019,seed | series_a,0,https://techcrunch.com/2019/08/08/voxel51-raises-2-million-for-its-video-native-identification-of-people-cars-and-more/ | https://techcrunch.com/2022/09/21/voxel51-lands-funds-for-its-platform-to-manage-unstructured-data/
