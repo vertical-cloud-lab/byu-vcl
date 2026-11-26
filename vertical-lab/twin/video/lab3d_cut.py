@@ -34,11 +34,12 @@ FPS = 30
 W, H = St.W, St.H
 px = St.px
 TMP = D.VID / "parts" / "lab3d"
-L3FPS = 15
+L3FPS = 15                     # renders a second, day by day (and the preview's week)
+L3FPS_FAST = 10                # from week by week on (15-60 lab hours a second): each render held for three frames
 
 # the preview: one simulated week, Monday 00:00 of week 18 (day 120) to the next Monday, at 2.8 lab hours a second
 WEEK = dict(lab_h0=24.0 * 119, hours_per_s=2.8, seconds=60.0)
-PIP = dict(view="towers_c", t0=6.0, t1=54.0, box=(24, 236, 504, 284), size=(960, 540))
+PIP = dict(view="towers_c", t0=6.0, t1=54.0, box=(24, 236, 384, 216), size=(960, 540))
 
 def views() -> dict:
     from .lab3d import VIEWS
@@ -131,45 +132,67 @@ class Tracks:
 
 
 # ============================================================================================ the jobs
+def _done(j: dict) -> bool:
+    rec = Path(j["out"]).with_suffix(".json")
+    if not (rec.exists() and Path(j["out"]).with_suffix(".mp4").exists()):
+        return False
+    try:
+        return json.loads(rec.read_text()).get("job") == j
+    except Exception:                                      # noqa: BLE001
+        return False
+
+
 def run_jobs(jobs: list, workers: int):
-    """Each job in its own lab3d worker (xvfb-run, VIZ3D_SIZE from the job), `workers` at a time; skips a job whose MP4
-    and record already exist for the same job."""
-    todo = []
-    for j in jobs:
-        rec = Path(j["out"]).with_suffix(".json")
-        if rec.exists() and Path(j["out"]).with_suffix(".mp4").exists():
-            try:
-                if json.loads(rec.read_text()).get("job") == j:
-                    continue
-            except Exception:                              # noqa: BLE001
-                pass
-        todo.append(j)
-    running = []
+    """The jobs not already done (same job, MP4 and record present), in `workers` lab3d processes, each rendering a
+    batch of jobs of one frame size with one scene build: xvfb-run, VIZ3D_SIZE from the batch, LP_NUM_THREADS
+    (llvmpipe's threads; TWIN_VIDEO_LP_THREADS, default 2, so three workers share the runner's four cores without
+    twelve render threads fighting over them). Each worker holds the whole scene, about 3 GB."""
+    todo = [j for j in jobs if not _done(j)]
+    if not todo:
+        return
+    by_size: dict = {}
+    for j in todo:
+        by_size.setdefault(tuple(j.get("size", (W, H))), []).append(j)
+    cost = {s: sum((j["v1"] - j["v0"]) * j["fps"] * (s[0] * s[1]) / (W * H) ** 0.5 / (W * H) ** 0.5 for j in js)
+            for s, js in by_size.items()}
+    tot = sum(cost.values()) or 1.0
+    ks = {s: max(1, min(len(js), round(workers * cost[s] / tot))) for s, js in by_size.items()}
+    while sum(ks.values()) > max(workers, len(ks)):       # never more processes than workers (3 GB each)
+        big = max(ks, key=lambda s: ks[s])
+        ks[big] -= 1
+    batches = []
+    for s, js in by_size.items():                         # workers in proportion to each size's renders
+        k = ks[s]
+        per = [[] for _ in range(k)]
+        load = [0.0] * k
+        for j in sorted(js, key=lambda j: -(j["v1"] - j["v0"]) * j["fps"]):
+            i = int(np.argmin(load))
+            per[i].append(j)
+            load[i] += (j["v1"] - j["v0"]) * j["fps"]
+        batches += [(s, sorted(b, key=lambda j: j["v0"])) for b in per if b]
     t0 = time.time()
-    while todo or running:
-        while todo and len(running) < workers:
-            j = todo.pop(0)
-            jp = Path(j["out"]).with_suffix(".job.json")
-            jp.parent.mkdir(parents=True, exist_ok=True)
-            jp.write_text(json.dumps(j))
-            w_, h_ = j.get("size", (W, H))
-            env = dict(os.environ, VIZ3D_SIZE=f"{w_}x{h_}")
-            log = open(Path(j["out"]).with_suffix(".log"), "w")
-            p = subprocess.Popen(["xvfb-run", "-a", "-s", f"-screen 0 {max(w_, 1280)}x{max(h_, 720)}x24",
-                                  sys.executable, "-m", "twin.video.lab3d", "render", str(jp)], cwd=HERE, env=env,
-                                 stdout=log, stderr=subprocess.STDOUT)
-            running.append((p, j, log))
-        time.sleep(2.0)
-        for item in list(running):
-            p, j, log = item
-            if p.poll() is not None:
-                running.remove(item)
-                log.close()
-                tail = Path(j["out"]).with_suffix(".log").read_text().strip().splitlines()[-1:]
-                print(f"  3-D {Path(j['out']).name}: rc {p.returncode}, {time.time() - t0:.0f} s  "
-                      f"{tail[0][:200] if tail else ''}", flush=True)
-                if p.returncode != 0:
-                    raise SystemExit(f"3-D job {j['out']} failed: see its .log")
+    procs = []
+    for n, (size, batch) in enumerate(batches):
+        bp = TMP / f"batch_{n}_{size[0]}x{size[1]}.json"
+        bp.parent.mkdir(parents=True, exist_ok=True)
+        bp.write_text(json.dumps(batch))
+        env = dict(os.environ, VIZ3D_SIZE=f"{size[0]}x{size[1]}",
+                   LP_NUM_THREADS=os.environ.get("TWIN_VIDEO_LP_THREADS", "2"))
+        log = open(bp.with_suffix(".log"), "w")
+        p = subprocess.Popen(["xvfb-run", "-a", "-s", f"-screen 0 {max(size[0], 1280)}x{max(size[1], 720)}x24",
+                              sys.executable, "-m", "twin.video.lab3d", "render", str(bp)], cwd=HERE, env=env,
+                             stdout=log, stderr=subprocess.STDOUT)
+        procs.append((p, bp, log, len(batch)))
+        print(f"  3-D batch {n}: {len(batch)} jobs at {size[0]}x{size[1]}", flush=True)
+    for p, bp, log, nb in procs:
+        p.wait()
+        log.close()
+        print(f"  3-D {bp.name}: rc {p.returncode}, {time.time() - t0:.0f} s", flush=True)
+        if p.returncode != 0:
+            raise SystemExit(f"3-D batch {bp} failed: see {bp.with_suffix('.log')}")
+    bad = [j["out"] for j in jobs if not _done(j)]
+    if bad:
+        raise SystemExit(f"3-D jobs missing after the run: {bad}")
 
 
 def week_jobs() -> list:
@@ -218,29 +241,43 @@ def _req_words(r) -> tuple:
     return f"{STATION_WORDS.get(r.station, r.station)}, {who}", St.CAMP.get(r.campaign)
 
 
+def _free(box, placed) -> bool:
+    return not any(not (box[2] <= p[0] or p[2] <= box[0] or box[3] <= p[1] or p[3] <= box[1]) for p in placed)
+
+
+def _put(fr, tg, cx, y, placed, step: int, tries: int = 4) -> bool:
+    """Paste tag tg centred on cx at y, moving it by `step` px until it is clear of what is placed."""
+    x = int(cx - tg.width / 2)
+    for _ in range(tries):
+        box = (x, int(y), x + tg.width, int(y) + tg.height)
+        if 0 <= box[0] and box[2] <= W and 0 <= box[1] and box[3] <= H and _free(box, placed):
+            St.paste(fr, tg, box[0], box[1])
+            placed.append(box)
+            return True
+        y += step
+    return False
+
+
 def moving_tags(fr: np.ndarray, plan, v: float, view: str, placed: list):
-    """A tag over each tray presented (or on its way) and each unit driving or working."""
+    """A tag over each tray presented (or on its way), above its Shuttle's opening, and one under each unit driving or
+    working."""
     kin = plan.kin
     st = plan.state(v)
-    for s, ts in st["towers"].items():
+    for s, ts in sorted(st["towers"].items()):
         m = ts.get("move")
         k = ts["out"] or ts["moving"]
-        if not k or m is None or getattr(m, "req", None) is None and ts["out"] is None:
-            continue
-        r = getattr(m, "req", None)
-        if r is None:
+        r = getattr(m, "req", None) if m is not None else None
+        if not k or r is None:
             continue
         words, col = _req_words(r)
-        txt = f"tray {k}: {words}"
         if ts["moving"]:
-            txt = f"tray {k} {'to the opening' if m.kind == 'fetch' else 'back to its slot'}"
+            txt = f"tray {k} {'out to the opening' if m.kind == 'fetch' else 'back to its slot'}"
+        else:
+            txt = f"tray {k}: {words}"
         x0 = kin["shuttle_x"][str(s)]
-        xy = project(view, np.array([[x0, kin["open"][0] - 300.0, kin["open"][1] + 200.0]]))[0]
-        tg = _tag(txt, col)
-        x, y = int(xy[0] - tg.width / 2), int(xy[1] + px(30))
-        if 0 <= x <= W - tg.width and 0 <= y <= H - tg.height:
-            St.paste(fr, tg, x, y)
-            placed.append((x, y, x + tg.width, y + tg.height))
+        xy = project(view, np.array([[x0, kin["open"][0] - 600.0, 2100.0]]))[0]
+        tg = _tag(txt, col, size=14)
+        _put(fr, tg, xy[0], xy[1] - tg.height - px(6), placed, -tg.height - px(4))
     for u, us in enumerate(st["units"]):
         a = us.get("act")
         if a is None or (a.kind not in ("drive", "work", "wait")) or v >= a.v1:
@@ -255,16 +292,9 @@ def moving_tags(fr: np.ndarray, plan, v: float, view: str, placed: list):
         if a.job is not None and a.job.req is not None:
             col = St.CAMP.get(a.job.req.campaign)
         x_, y_, _ = us["pose"]
-        xy = project(view, np.array([[x_, y_, 1700.0]]))[0]
-        tg = _tag(txt, col, size=15)
-        x, y = int(xy[0] - tg.width / 2), int(xy[1] - tg.height - px(8))
-        box = (x, y, x + tg.width, y + tg.height)
-        if any(not (box[2] <= p[0] or p[2] <= box[0] or box[3] <= p[1] or p[3] <= box[1]) for p in placed):
-            y = int(xy[1] + px(14))
-            box = (x, y, x + tg.width, y + tg.height)
-        if 0 <= x <= W - tg.width and 0 <= y <= H - tg.height:
-            St.paste(fr, tg, x, y)
-            placed.append(box)
+        xy = project(view, np.array([[x_, y_ - 500.0, 0.0]]))[0]
+        tg = _tag(txt, col, size=14)
+        _put(fr, tg, xy[0], xy[1] + px(6), placed, tg.height + px(4))
 
 
 def moves_panel(plan, v: float, h0: float, h1: float, rate: float, when: str = "this week") -> Image.Image:
@@ -333,7 +363,7 @@ class WeekCut:
         a = min(1.0, (t - PIP["t0"]) / 0.4, (PIP["t1"] - t) / 0.4)
         if a > 0:
             im, x, y = pip_frame(self.pip.frame(min(max(t, PIP["t0"]), PIP["t1"] - 1e-3)), PIP["box"],
-                                 "the two Shuttles, up close (a second camera)", a)
+                                 "Shuttles up close (second camera)", a)
             St.paste(fr, im, x, y, a)
         St.paste(fr, C.clock_panel(t_h, sp), px(24), px(20))
         St.paste(fr, moves_panel(self.plan, t, WEEK["lab_h0"], WEEK["lab_h0"] + 168.0, self.rate), px(866), px(900))
@@ -384,10 +414,11 @@ def replay_jobs() -> list:
     """The animated cut's 3-D jobs: each phase's camera over its span (from XF before it, for the crossfade in), in
     chunks of CHUNK seconds, and the inset's camera where the phase has one."""
     tl = C.S("tl")
-    base = dict(clock="replay", clock_v0=round(tl.t_pov, 4), clock_v1=round(tl.dur, 4), fps=L3FPS)
+    base = dict(clock="replay", clock_v0=round(tl.t_pov, 4), clock_v1=round(tl.dur, 4))
     out = []
     for i, ph in enumerate(C.PHASES3D):
         a, b = _phase_span(i)
+        base["fps"] = L3FPS if i < 2 else L3FPS_FAST
         a0 = max(tl.t_pov, a - (XF if i else 0.0))
         for track, view, x0, x1, size in (("main", ph[2], a0, b, [W, H]),
                                           ("pip", ph[3], a + 1.0, b - 1.0, list(PIP["size"]))):
@@ -445,7 +476,7 @@ def replay_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
     if pip_on:
         k = min(1.0, (t - a - 1.0) / 0.4, (b - 1.0 - t) / 0.4)
         im, x, y = pip_frame(st["tracks"][(i, "pip")].frame(t), PIP["box"],
-                             "the two Shuttles, up close (a second camera)", k)
+                             "Shuttles up close (second camera)", k)
         St.paste(fr, im, x, y, max(0.0, k))
     rate = LS.move_rate(sp)
     St.paste(fr, moves_panel(plan, t, t_h - 168.0, t_h, rate, "the last 7 days"), px(866), px(900))
