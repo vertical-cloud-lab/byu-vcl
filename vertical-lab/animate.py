@@ -690,7 +690,7 @@ def workflow(data, lab=True):
         sc.set_mesh(nm, m2)
     sc.cam = list(CAM_LAB if lab else CAM_WIDE)
     L.extra_gauges = [("Arm", f"{ROBOT_NAME}, parked"), ("Doser", "module 1 at the station"),
-                      ("HR-202i", "0.0000 g  (220 g x 0.1 mg)"), ("CubXL P300", "parked, no tip")]
+                      ("HR-202i", "0.0000 g  (220 g x 0.1 mg)"), ("CubXL", "P300 parked, no tip")]
     L.apply_state()
     n = 6
     # the powder: a heap on the vial's floor at its angle of repose, to scale (25 mg at a poured 1.4 g/cm3 is 18 mm3:
@@ -874,10 +874,11 @@ def workflow(data, lab=True):
         L.liquid_h = s["vial"] / area
         L.set_fill()
         if s.get("ptip") == "head":
-            L.note(3, "CubXL P300", f"{s['p3_ul']:.0f} µL in the tip; vial {s['vial']:.0f} µL"
-                   + (f" ({s['xfer']})" if s["xfer"] else ""))
+            # round 16: the label stays "CubXL": "CubXL P300" ran into the value ("P3000 µL in the tip")
+            L.note(3, "CubXL", f"P300: {s['p3_ul']:.0f} µL in the tip; vial {s['vial']:.0f} µL"
+                   + (f" ({s['xfer'].replace(' (P300)', '')})" if s["xfer"] else ""))
         elif s.get("ptip") == "rack" and s["vial"] > 0:
-            L.note(3, "CubXL P300", f"tip back in its rack; vial {s['vial']:.0f} µL")
+            L.note(3, "CubXL", f"P300 tip back in its rack; vial {s['vial']:.0f} µL")
     sc.step(f"6/{n}", cap, 2.6, cub.play(test, "start", "open", on_state), hold=0.1, cam_to=cam6,
             labels=[("CubXL P300 (on its lift), P20 and capper", cub.deck_world(250.0, 120.0, 140.0), (0.66, 0.18)),
                     ("seawater (ASW) stock", cub.deck_world(318.0, 101.0, 75.0), (0.84, 0.46))])
