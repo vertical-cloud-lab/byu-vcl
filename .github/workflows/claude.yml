@@ -30,7 +30,7 @@ env:
   # Seats "Pick a seat from the token pool" may use, each a secret named
   # CLAUDE_TOKEN_<NAME>; runs rotate across them by run number. A new seat
   # needs its name here AND a TOK_<NAME> line in both pick steps below.
-  CLAUDE_TOKEN_POOL: "STERLING MONGOOSE ELEPHANT DOLPHIN GOSHAWK"
+  CLAUDE_TOKEN_POOL: "STERLING MONGOOSE ELEPHANT DOLPHIN GOSHAWK HEDGEHOG MEERKAT MOOSE NEWT PANTHER PARROT OTTER FALCON"
   # Seats tried before the rest of the pool, in this order. Empty: none.
   CLAUDE_TOKEN_PREFERRED: ""
 
@@ -295,6 +295,14 @@ jobs:
           TOK_ELEPHANT: ${{ secrets.CLAUDE_TOKEN_ELEPHANT }}
           TOK_DOLPHIN: ${{ secrets.CLAUDE_TOKEN_DOLPHIN }}
           TOK_GOSHAWK: ${{ secrets.CLAUDE_TOKEN_GOSHAWK }}
+          TOK_HEDGEHOG: ${{ secrets.CLAUDE_TOKEN_HEDGEHOG }}
+          TOK_MEERKAT: ${{ secrets.CLAUDE_TOKEN_MEERKAT }}
+          TOK_MOOSE: ${{ secrets.CLAUDE_TOKEN_MOOSE }}
+          TOK_NEWT: ${{ secrets.CLAUDE_TOKEN_NEWT }}
+          TOK_PANTHER: ${{ secrets.CLAUDE_TOKEN_PANTHER }}
+          TOK_PARROT: ${{ secrets.CLAUDE_TOKEN_PARROT }}
+          TOK_OTTER: ${{ secrets.CLAUDE_TOKEN_OTTER }}
+          TOK_FALCON: ${{ secrets.CLAUDE_TOKEN_FALCON }}
           MODEL: ${{ steps.select.outputs.model }}
           SKIP_SEATS: ""
         run: |
@@ -558,6 +566,14 @@ jobs:
           TOK_ELEPHANT: ${{ secrets.CLAUDE_TOKEN_ELEPHANT }}
           TOK_DOLPHIN: ${{ secrets.CLAUDE_TOKEN_DOLPHIN }}
           TOK_GOSHAWK: ${{ secrets.CLAUDE_TOKEN_GOSHAWK }}
+          TOK_HEDGEHOG: ${{ secrets.CLAUDE_TOKEN_HEDGEHOG }}
+          TOK_MEERKAT: ${{ secrets.CLAUDE_TOKEN_MEERKAT }}
+          TOK_MOOSE: ${{ secrets.CLAUDE_TOKEN_MOOSE }}
+          TOK_NEWT: ${{ secrets.CLAUDE_TOKEN_NEWT }}
+          TOK_PANTHER: ${{ secrets.CLAUDE_TOKEN_PANTHER }}
+          TOK_PARROT: ${{ secrets.CLAUDE_TOKEN_PARROT }}
+          TOK_OTTER: ${{ secrets.CLAUDE_TOKEN_OTTER }}
+          TOK_FALCON: ${{ secrets.CLAUDE_TOKEN_FALCON }}
           MODEL: ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }}
           SKIP_SEATS: ${{ steps.pick.outputs.tried }}
         run: python3 "$RUNNER_TEMP/pick_seat.py"
