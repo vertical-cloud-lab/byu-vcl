@@ -42,6 +42,7 @@ geometric mean of desirabilities (Derringer & Suich 1980) times feasibility:
 """
 from __future__ import annotations
 
+import bisect
 import heapq
 import itertools
 import math
@@ -158,6 +159,16 @@ class Campaign:
         self.vertical = facility.kind == "vertical_lab"
         self.reuse_log = []                       # (t_h, lot, grams back)
         self.results_log = []                     # every result as it came back: (t_h, type, design, node)
+        # round 3 (Twin(mode="async")): actions in flight by id, what each one targets, coupons in immersion, stops
+        self.async_ = False
+        self.legacy_cu_check = False
+        self.pending = {}                         # action id -> dict(kind, key, t)
+        self._aids = itertools.count(1)
+        self.cancelled = set()                    # action ids whose remaining events are void (a stopped coupon)
+        self._imm = {}                            # deposit id -> coupon in immersion (handle, t_in, measured, aid)
+        self.stops = []                           # (t_h, deposit id, day)
+        self.done = {}                            # completed evaluations by kind (round 3's fairness table)
+        self.status_log = {}                      # submit3 outcomes: ok / capacity / plan / money / invalid
         if spec.prestock:
             for k, q in PRESTOCK[spec.key].items():
                 self.stores.orders.append(supply.Order(k, q, 0.0, -1.0, -1.0, False, spec.key))
@@ -170,6 +181,7 @@ class Campaign:
                 price = market.price(supply.ITEMS[k], 0.0) * q
                 self.stores.orders.append(supply.Order(k, q, price, 0.0, 0.0, False, spec.key))
                 self.charge(0.0, price, f"order {k} {q:.3g} (standing stock)")
+        self.spent0 = self.spent
 
     # ---------------------------------------------------------------------------------------- money and design
     def charge(self, t, usd, what):
@@ -192,8 +204,10 @@ class Campaign:
         return i
 
     # ---------------------------------------------------------------------------------------- scheduling helpers
-    def _route(self, steps, ready_h, what, changeover=False, tag=None):
-        """Book steps one after another; returns (end of last step's result, money for station fees)."""
+    def _route(self, steps, ready_h, what, changeover=False, tag=None, handles=None):
+        """Book steps one after another; returns (end of last step's result, money for station fees). On a physical
+        facility (round 3) each step is booked together with its robot or person (``Facility.run_step_joint``), and
+        ``handles`` (a list) collects the station bookings' handles, so a passive step can be ended early."""
         t, usd = ready_h, 0.0
         tag = dict(tag or {}, what=what)
         res_t = t
@@ -207,8 +221,15 @@ class Campaign:
             left, first = max(hours, 0.01), True
             while left > 1e-9:
                 h = min(left, chunk)
-                s, e, r, c = self.fac.run_step(st, t, h, self.key, what,
-                                               CHANGEOVER_H if (changeover and st == "atomizer") else 0.0, tag)
+                if self.fac.physical:
+                    s, e, r, c, hd = self.fac.run_step_joint(st, t, h, self.key, what,
+                                                             CHANGEOVER_H if (changeover and st == "atomizer") else 0.0,
+                                                             tag)
+                    if handles is not None:
+                        handles.append((st, hd))
+                else:
+                    s, e, r, c = self.fac.run_step(st, t, h, self.key, what,
+                                                   CHANGEOVER_H if (changeover and st == "atomizer") else 0.0, tag)
                 if first:
                     usd += self.market.service_price(c, s / H)
                 else:
@@ -357,6 +378,191 @@ class Campaign:
         else:
             self.refused += 1
         return ok
+
+    # ---------------------------------------------------------------------------------------- round 3: async
+    GATE_W = 2.0                                  # hours an action may wait for other work at its gating station
+    PLAN_F0, PLAN_FULL = 0.15, 0.75               # spending plan: 15 % at day 0, all by 75 % of the horizon
+    IMM_DAYS = (1, 3, 7, 14)                      # interim immersion readings (days)
+
+    def plan(self, t_h: float) -> float:
+        """Round 3's spending plan, the same for every policy: what may have been spent by t_h. It replaces round 2's
+        cap on work in flight as the throttle on money: 15 % of the budget at day 0, then linearly to all of it at
+        75 % of the horizon (front-loaded, so early results can be bought; the rest of the year keeps some)."""
+        f = self.PLAN_F0 + (1.0 - self.PLAN_F0) * t_h / (self.PLAN_FULL * self.horizon_h)
+        s0 = getattr(self, "spent0", 0.0)           # a stocked lab's day-0 inventory is bought before the plan starts
+        return s0 + (self.spec.budget_usd - s0) * min(1.0, f)
+
+    def gate(self, a):
+        """(steps before the gating station, the gating station, its hours) for an action, without side effects; None
+        for actions with no gate (simulations, NSL, gas atomization)."""
+        k = a.get("kind")
+        al = self.key == "flaime_al"
+        if k == "powder":
+            n = int(a.get("runs", 1))
+            cm3, kg, run_h, _, _ = self.charge_plan(a)
+            cups_h = (2.5 if al else 1.0) * n * (kg / (AL_CHARGE_KG if al else CU_CHARGE_KG))
+            return [("shop", cups_h), ("doser", 1.0 * n)], "atomizer", run_h
+        return {"blend_ded": ([("doser", 0.5)], "utah_mxlab", 3.0), "print": ([], "utah_midi", 5.0),
+                "promote": ([], "utah_midi", 8.0), "test": ([], "edm", 0.75), "section": ([], "prep", 1.5),
+                "pip": (([("furnace", 3.0)] if al else []), "prep", 0.5), "preplaced": ([], "utah_mxlab", 4.0),
+                "small_ded": ([], "utah_mxlab", 4.0),
+                "large_ded": ([], "utah_mxlab", 8.0) if self.vertical else ([], "mines_x2", 5.0),
+                "tensile": ([("shop", 1.0)], "tensile", 0.6), "screen": ([], "cubxl", 1.2),
+                "immersion": ([], "immersion", 720.0)}.get(k)
+
+    def gate_ok(self, a, now_h) -> bool:
+        """Round 3's admission rule: an action starts only if its gating station can take it without waiting more
+        than GATE_W hours behind other work (the steps after the gate may queue). So a station's next job is chosen
+        when the station frees up, from everything the campaign could do then."""
+        g = self.gate(a)
+        if g is None:
+            return True
+        pre, st, h = g
+        t = now_h
+        for s_, hh in pre:
+            cal = self.fac.res[s_].st
+            # split as _route books it: attended work on a day calendar in days of at most 8 h
+            chunk = 8.0 if (cal.hours != "24/7" and cal.attended_h is None) else max(hh, 0.01)
+            left = max(hh, 0.01)
+            while left > 1e-9:
+                s0, d0, _ = self.fac.res[s_].find(t, min(left, chunk), self.key)
+                t, left = s0 + d0, left - min(left, chunk)
+        return self.fac.queue_wait(st, t, h, self.key) <= self.GATE_W
+
+    def load(self, station: str, t_h: float, window_h: float = 72.0) -> float:
+        """Round 3: the share of a station's unit-hours already booked over the next ``window_h`` (0 to 1): how dear
+        an hour of it is now, for the time-aware acquisitions."""
+        r = self.fac.res.get(station)
+        if r is None:
+            return 0.0
+        a, b, busy = t_h, t_h + window_h, 0.0
+        for ln in r.lines:
+            i = max(bisect.bisect_right(ln.e, a), 0)
+            while i < len(ln.s) and ln.s[i] < b:
+                busy += max(0.0, min(ln.e[i], b) - max(ln.s[i], a))
+                i += 1
+        return busy / (window_h * max(len(r.lines), 1))
+
+    def akey(self, a):
+        """What an action targets: (kind, (artifact type, id))."""
+        k = a.get("kind")
+        for f in ("into", "lot", "build", "deposit"):
+            if a.get(f) is not None:
+                return (k, (f, a[f]))
+        d = a.get("design")
+        if isinstance(d, dict):
+            return (k, ("design", self.design_id(d)))
+        return (k, None)
+
+    def submit3(self, a: dict, now_h: float) -> str:
+        """Round 3: try an action now. 'ok', or why not: 'money' (over the budget), 'plan' (over the spending plan),
+        'capacity' (its gating station is busy), 'invalid' (its inputs don't allow it)."""
+        self.now_h = now_h
+        k = a.get("kind")
+        if k == "stop":
+            st = "ok" if self._do_stop(a, now_h) else "invalid"
+        else:
+            est = self.estimate(a)
+            if est > self.budget_left:
+                st = "money"
+            elif est > 50.0 and self.spent + est > self.plan(now_h):
+                st = "plan"
+            elif not self.gate_ok(a, now_h):
+                st = "capacity"
+            else:
+                n0 = len(self.events_out)
+                try:
+                    ok = getattr(self, "_do_" + k)(a, now_h)
+                except KeyError:
+                    ok = False
+                if ok:
+                    aid = next(self._aids)
+                    for ev in self.events_out[n0:]:
+                        ev[1]["aid"] = aid
+                    self.inflight += 1
+                    self.pending[aid] = dict(kind=k, key=self.akey(a)[1], t=now_h)
+                    if k == "immersion":
+                        self._imm[a["deposit"]]["aid"] = aid
+                    st = "ok"
+                else:
+                    st = "invalid"
+        self.status_log[st] = self.status_log.get(st, 0) + 1
+        if st in ("money", "invalid"):
+            self.refused += 1
+        return st
+
+    def _interim(self, smp, meas):
+        """Interim readings of a coupon in immersion at IMM_DAYS: its average corrosion rate so far from the mass
+        change of the uncleaned coupon, from the same film-growth trajectory as the 30-day result
+        (instruments/corrosion.py: the rate falls from the early rate to the long-term rate with the film's time
+        constant). The coupon's own deviation in its 30-day result carries over (to the power 0.8); the retained
+        corrosion product makes an uncleaned coupon read about 25 % low; the balance's 0.1 mg is a large error on
+        day 1 and a small one by day 14. Selective attack is not in a mass change: it shows only in the day-30
+        section."""
+        from twin.instruments.corrosion import _r30
+        c = smp["corrosion"]
+        r30 = _r30(c["rate_um_yr"], c["early_rate_um_yr"], c["film_days"], 30.0)
+        f = (max(meas.get("rate30_um_yr", r30), 1e-6) / max(r30, 1e-6)) ** 0.8
+        bias = 0.75 * math.exp(self.rng.normal(0, 0.1))
+        out = {}
+        for d in self.IMM_DAYS:
+            rb = _r30(c["rate_um_yr"], c["early_rate_um_yr"], c["film_days"], float(d))
+            w_mg = rb * 1e-4 * 8.9 / 8766.0 * 5.8 * d * 24.0 * 1000.0
+            sig = math.hypot(0.06, 0.1 / max(w_mg, 1e-3))
+            out[d] = dict(rate_um_yr=float(rb * f * bias * math.exp(self.rng.normal(0, sig))), day=d,
+                          mass_change_mg=float(w_mg * bias))
+        return out
+
+    def _do_stop(self, a, now_h) -> bool:
+        """Round 3: take a coupon out of immersion after an interim reading. Its position is free from now; the
+        day-30 section and ICP-MS are not done (nor paid for)."""
+        cid = a.get("deposit")
+        st = self._imm.get(cid)
+        if st is None or st.get("stopped") is not None or st.get("final") or st.get("aid") is None:
+            return False
+        st["stopped"] = now_h
+        self.cancelled.add(st["aid"])
+        self.fac.res["immersion"].release_early(st["handle"], now_h)
+        D = self.deposits.get(cid)
+        if D is not None:
+            D["immersion"] = "stopped"
+            D["immersion_stopped_day"] = round((now_h - st["t_in"]) / H, 2)
+        self.inflight -= 1
+        self.pending.pop(st["aid"], None)
+        self.stops.append((now_h, cid, round((now_h - st["t_in"]) / H, 2)))
+        self.done["immersion_stopped"] = self.done.get("immersion_stopped", 0) + 1
+        return True
+
+    def release3(self, t_h, p) -> bool:
+        """Round 3: a result comes back. Interim immersion readings are results but leave the action in flight; the
+        day-30 booking event books the section and ICP-MS then; a stopped coupon's later events are void. Returns
+        True if the policy has something new to see."""
+        aid = p.get("aid")
+        if aid in self.cancelled:
+            return False
+        typ = p["type"]
+        if typ == "imm_interim":
+            D = self.deposits.get(p["deposit"])
+            if D is None:
+                return False
+            D.setdefault("imm_interim", {})[p["day"]] = p["measured"]
+            self.corr.append(dict(deposit=p["deposit"], design=p["design"], what=f"imm_d{p['day']}",
+                                  measured=p["measured"], t=t_h))
+            self.results_log.append((t_h, "imm_interim", p.get("design"), f"imm_d{p['day']}"))
+            self.done["imm_interim"] = self.done.get("imm_interim", 0) + 1
+            return True
+        if typ == "imm_final_book":
+            st = self._imm[p["deposit"]]
+            st["final"] = True
+            t_r, usd = self._route([("byu_sem", 1.0), ("byu_icpms", 0.4)], t_h, "immersion",
+                                   tag=dict(design=p["design"], node="immersion", sample=f"D{p['deposit']}"))
+            self.charge(t_h, usd + 105.0, "immersion (section and 4 ICP-MS draws)")
+            self._emit(t_r, dict(type="cu_test", what="immersion", deposit=p["deposit"], design=p["design"],
+                                 measured=st["meas"], aid=aid))
+            return False
+        self.pending.pop(aid, None)
+        self.release(t_h, p)
+        return True
 
     def _emit(self, t_result, payload):
         self.events_out.append((t_result, payload))
@@ -850,6 +1056,12 @@ class Campaign:
         D = self.deposits[dep_id]
         if D["mode"] != "blown_large" or "tensile" not in D or "immersion" not in D or D.get("scored"):
             return None
+        # round 3 fix: both results must be back. Rounds 1 and 2 tested only that both keys exist, so an alloy whose
+        # immersion had started ("pending") was scored when its tensile came back, up to 30 days early (126 of 271
+        # copper alloys in round 2's seed-0 event logs). ``legacy_cu_check`` keeps that behaviour so round 2's
+        # committed results reproduce (twin/bench2.py sets it).
+        if not self.legacy_cu_check and not (isinstance(D["tensile"], dict) and isinstance(D["immersion"], dict)):
+            return None
         D["scored"] = True
         part = self._part_truth[dep_id]["parts"][0]
         s, c = self.truth.strength(part), self.truth.corrosion(part)
@@ -895,6 +1107,8 @@ class Campaign:
         return True
 
     def _do_immersion(self, a, now_h):
+        if self.async_:
+            return self._do_immersion3(a, now_h)
         D, part = self._dep(a["deposit"])
         if D["mode"] != "blown_large" or "immersion" in D:
             return False
@@ -905,6 +1119,32 @@ class Campaign:
         meas = self._m("immersion", self._psample(part, D["design"]))
         self._emit(t_r, dict(type="cu_test", what="immersion", deposit=a["deposit"], design=D["design"],
                              measured=meas))
+        return True
+
+    def _do_immersion3(self, a, now_h):
+        """Round 3: the coupon goes into an immersion position for 30 days (the position and the coupon are all it
+        holds), with interim readings at IMM_DAYS; at day 30 its section and ICP-MS are booked. The policy may stop
+        it after any interim reading (``kind='stop'``)."""
+        D, part = self._dep(a["deposit"])
+        if D["mode"] != "blown_large" or "immersion" in D:
+            return False
+        D["immersion"] = "pending"
+        hd = []
+        tag = dict(design=D["design"], node="immersion", sample=f"D{a['deposit']}")
+        t_r, usd = self._route([("immersion", 720.0)], now_h, "immersion", tag=tag, handles=hd)
+        t_in = t_r - 720.0
+        self.charge(now_h, usd + 30.0, "immersion (coupon cut and in)")
+        smp = self._psample(part, D["design"])
+        meas = self._m("immersion", smp)
+        self._imm[a["deposit"]] = dict(handle=hd[0][1], t_in=t_in, meas=meas, design=D["design"], stopped=None)
+        op = self.fac.res.get("operator")
+        for d, m in self._interim(smp, meas).items():
+            tr = t_in + d * H
+            if not self.vertical and op is not None:
+                tr = fac.next_open(op.st.hours, tr)          # weighed when someone is in
+            self._emit(tr + 0.25, dict(type="imm_interim", deposit=a["deposit"], design=D["design"], day=d,
+                                       measured=m))
+        self._emit(t_in + 720.0, dict(type="imm_final_book", deposit=a["deposit"], design=D["design"]))
         return True
 
     # ---------------------------------------------------------------------------------------- results come back
@@ -924,6 +1164,11 @@ class Campaign:
     def release(self, t_h, p):
         self.inflight -= 1
         typ = p["type"]
+        # completed evaluations by kind (a counter only; round 3's fairness table counts rounds 2 and 3 alike)
+        kd = {"lot": "powder_gas" if p.get("gas") else ("powder_topup" if p.get("into") else "powder"),
+              "build": "print", "deposit": p.get("mode"), "cu_test": p.get("what"), "sim": p.get("kind"),
+              "test": "test_e8" if p.get("e8") else "test"}.get(typ, typ)
+        self.done[kd] = self.done.get(kd, 0) + 1
         self.results_log.append((t_h, typ, p.get("design"), p.get("what") or typ))
         if p.get("returned_g"):
             self._return_to_lot(p.get("lot"), p["returned_g"], p.get("returned_state"), t_h)
@@ -985,27 +1230,37 @@ class Campaign:
                     designs={i: d["composition"] for i, d in self.designs.items()},
                     design_inputs={i: d["design"] for i, d in self.designs.items()},
                     sims=self.sims, lots=self.lots, builds=self.builds, tests=self.tests, deposits=self.deposits,
-                    corr=self.corr, inflight=self.inflight, wip=self.spec.wip, estimate=self.estimate,
-                    vertical=self.vertical, large_g=1000.0 if self.vertical else 2000.0,
-                    crucible_cm3=self.spec.crucible_cm3)
+                    corr=self.corr, inflight=self.inflight, wip=(10 ** 6 if self.async_ else self.spec.wip),
+                    estimate=self.estimate, vertical=self.vertical, large_g=1000.0 if self.vertical else 2000.0,
+                    crucible_cm3=self.spec.crucible_cm3, async_=self.async_,
+                    pending=list(self.pending.values()) if self.async_ else [],
+                    imm=({k: dict(t_in=x["t_in"], stopped=x.get("stopped"), final=bool(x.get("final")))
+                          for k, x in self._imm.items()} if self.async_ else {}),
+                    plan_left=(self.plan(now_h) - self.spent) if self.async_ else self.budget_left,
+                    horizon_h=self.horizon_h, load=self.load)
 
 
 class Twin:
     """Both campaigns on one clock. ``policies``: {campaign key: policy}; ``specs``: {campaign key: Spec}."""
 
     def __init__(self, specs: dict, policies: dict, scenario="historical", facility="proposed", seed=0,
-                 horizon_days=365, isolated=False, external=None, trace=False):
+                 horizon_days=365, isolated=False, external=None, trace=False, mode="wip"):
         """``external``: a callable given each Facility before the campaigns start; it may book outside users' jobs
         (``fac.res[station].book(t, hours, "external", "user job")``), which then take their slots (twin/cloud.py)."""
         self.h = horizon_days * H
         self.horizon_days = horizon_days
         supply.load_private()
         self.market = supply.Market(scenario, seed, int(horizon_days) + 400)
-        shared = fac.Facility(facility, seed, self.h + 2000 * H)
+        # mode='wip': rounds 1 and 2 (a cap on each campaign's actions in flight, decisions when results return);
+        # mode='async': round 3 (no cap: physical capacity, helpers and fixtures, decisions whenever stations free up)
+        self.mode = mode
+        phys = mode == "async"
+        shared = fac.Facility(facility, seed, self.h + 2000 * H, physical=phys)
         self.campaigns = {}
         for k, sp in specs.items():
-            f = fac.Facility(facility, seed, self.h + 2000 * H) if isolated else shared
+            f = fac.Facility(facility, seed, self.h + 2000 * H, physical=phys) if isolated else shared
             self.campaigns[k] = Campaign(sp, policies[k], self.market, f, self.h)
+            self.campaigns[k].async_ = phys
         self.facilities = {k: c.fac for k, c in self.campaigns.items()}
         if external is not None:
             for f in {id(f): f for f in self.facilities.values()}.values():
@@ -1015,9 +1270,106 @@ class Twin:
         self.trace = [] if trace else None
         self._iters = {k: 0 for k in self.campaigns}
 
+    DT_H = 1.0                   # round 3: decision grid (hours)
+    N_ASK = 24                   # round 3: actions a policy may rank per decision
+
+    def _atom_share(self, k, g, window_h=14 * 24.0):
+        """A campaign's share of the atomizer hours booked from two weeks back to two days ahead (0.5 if none)."""
+        r = next(iter(self.facilities.values())).res.get("atomizer")
+        if r is None:
+            return 0.5
+        mine = tot = 0.0
+        for j in reversed(r.jobs):
+            if j[1] < g - window_h:
+                if j[0] < g - window_h - 400:
+                    break
+                continue
+            if j[0] > g + 48.0:
+                continue
+            d = j[1] - j[0]
+            tot += d
+            if j[2] == k:
+                mine += d
+        return mine / tot if tot > 0 else 0.5
+
+    def run_async(self, verbose=False):
+        """Round 3's event loop. Results come back at their own times. On an hourly grid, each campaign whose results
+        came back, or whose lab had a booking end (a station, robot, person or fixture freed up), or which hasn't
+        been asked for a day, is asked for a ranked list of actions across all its parts; each is admitted if the
+        spending plan and its gating station allow it (``Campaign.submit3``). The campaigns take turns going first.
+        Policies may implement ``admitted(action)`` and ``rejected(action, why)``."""
+        q, ends = [], []
+        for f in {id(f): f for f in self.facilities.values()}.values():
+            for r in f.res.values():
+                r.on_commit = lambda e, _ends=ends: heapq.heappush(_ends, e)
+        dirty = {k: True for k in self.campaigns}
+        last = {k: -1e9 for k in self.campaigns}
+        tot_b = sum(c.spec.budget_usd for c in self.campaigns.values())
+        self._money_share = {k: c.spec.budget_usd / tot_b for k, c in self.campaigns.items()}
+        keys = list(self.campaigns)
+        g, step = 0.0, 0
+        while g <= self.h + 1e-9:
+            while q and q[0][0] <= g + 1e-9:
+                tr, _, k, p = heapq.heappop(q)
+                c = self.campaigns[k]
+                if c.release3(tr, p):
+                    dirty[k] = True
+                for tr2, pay in c.events_out:
+                    heapq.heappush(q, (tr2, next(self.seq), k, pay))
+                c.events_out = []
+            freed = False
+            while ends and ends[0] <= g + 1e-9:
+                heapq.heappop(ends)
+                freed = True
+            # the campaigns share the atomizer: each hour the one further below its share of the atomizer's recent
+            # hours (its share of the money) decides first, the other on ties (alternating)
+            order = keys if step % 2 == 0 else keys[::-1]
+            if len(keys) == 2:
+                order = sorted(order, key=lambda k: self._atom_share(k, g) - self._money_share[k])
+            for k in order:
+                c = self.campaigns[k]
+                if not (dirty[k] or freed or g - last[k] >= 24.0) or c.budget_left <= 0:
+                    continue
+                dirty[k], last[k] = False, g
+                v = c.view(g)
+                acts = c.policy.propose(v, self.N_ASK) or []
+                rec = None
+                if self.trace is not None and acts:
+                    self._iters[k] += 1
+                    rec = dict(it=self._iters[k], t_h=round(g, 3), campaign=k, n_free=None,
+                               spent=round(c.spent, 2), proposals=[])
+                blocked = False
+                for a in acts:
+                    # money goes to the policy's ranking in order: once an action has to wait for the spending plan,
+                    # nothing ranked below it that costs more than $50 starts in this decision (the plan's room
+                    # builds up for it instead of going to cheaper, lower-ranked work)
+                    if blocked and a.get("kind") != "stop" and c.estimate(a) > 50.0:
+                        st = "plan"
+                        c.status_log["plan_wait"] = c.status_log.get("plan_wait", 0) + 1
+                    else:
+                        st = c.submit3(a, g)
+                        blocked = blocked or st == "plan"
+                    ok = st == "ok"
+                    cb = getattr(c.policy, "admitted" if ok else "rejected", None)
+                    if cb is not None:
+                        cb(a) if ok else cb(a, st)
+                    if rec is not None:
+                        rec["proposals"].append(_trace_action(c, a, ok))
+                if rec is not None:
+                    rec["best_obs"] = _best_obs(c.policy, v)
+                    self.trace.append(rec)
+                for tr2, pay in c.events_out:
+                    heapq.heappush(q, (tr2, next(self.seq), k, pay))
+                c.events_out = []
+            g += self.DT_H
+            step += 1
+        return self.summary()
+
     def run(self, verbose=False):
         """The event loop. A campaign is asked for actions whenever one of its results comes back, and once a day
         while it has nothing in flight (so it can start, and restart after waiting on materials)."""
+        if self.mode == "async":
+            return self.run_async(verbose)
         q = []
         tick = {}
         for k in self.campaigns:
@@ -1109,7 +1461,11 @@ class Twin:
                           spend_by=_spend_by(c.ledger), demonstrated=c.demonstrated,
                           returned_g=round(sum(g for _, _, g in c.reuse_log), 1),
                           n_results={t: sum(1 for r in c.results_log if r[1] == t) for t in
-                                     sorted({r[1] for r in c.results_log})})
+                                     sorted({r[1] for r in c.results_log})},
+                          done=dict(c.done), stops=list(c.stops), status=dict(c.status_log),
+                          n_inflight_end=c.inflight,
+                          n_alloys_made=len({L["design"] for L in c.lots.values()} |
+                                            {D["design"] for D in c.deposits.values() if D.get("lot") is None}))
         out["utilization"] = {k: f.utilization(self.h) for k, f in
                               ({"shared": next(iter(self.facilities.values()))}.items())}
         out["market_events"] = self.market.events

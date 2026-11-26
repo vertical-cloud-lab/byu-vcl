@@ -421,8 +421,10 @@ class Dag:
                        f"elements."),
                 ("ded_small", "Small DED blocks first: density, cracks and dilution at each set of settings."),
                 ("screen", "A one-hour corrosion screen ranks the deposits before bars are made and tested."),
-                ("immersion", "Then 30 days in seawater, and ICP-MS of what dissolved. The utility counts nickel "
-                              "and the corrosion rate."),
+                ("immersion", "Then 30 days in seawater, read on days 1, 3, 7 and 14 on the way, and ICP-MS of "
+                              "what dissolved." if D.ROUND == 3 else
+                 "Then 30 days in seawater, and ICP-MS of what dissolved. The utility counts nickel "
+                 "and the corrosion rate."),
             ]}
 
     def _lay_lanes(self, t, stretch, POP=4.2):

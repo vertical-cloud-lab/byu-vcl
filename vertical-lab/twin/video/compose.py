@@ -60,6 +60,10 @@ def S(key):
         from . import figs_anim as F
         F.context(S("R"), S("B"))
         v = F
+    elif key == "figs3":                                # round 3's cards (TWIN_VIDEO_ROUND=3)
+        from . import figs3 as F3
+        S("figs")
+        v = F3
     elif key == "plots":
         v = S("figs").PlotPanel(S("R"), S("B"))
     elif key == "be":
@@ -112,6 +116,10 @@ def caption_bar(fr: np.ndarray, text: str, a: float = 1.0, y: float = 1000, size
 # ================================================================================================ the title
 TITLE = "A year of alloy discovery in an automated lab"
 SUBTITLE = "Two campaigns replayed in a digital twin: a simulated benchmark"
+ROUND3 = D.ROUND == 3
+if ROUND3:
+    TITLE = "A simulated year of alloy discovery in an automated lab"
+    SUBTITLE = "Round 3 of a digital-twin benchmark: two campaigns, replayed"
 
 
 def title_frame(t: float) -> np.ndarray:
@@ -120,7 +128,12 @@ def title_frame(t: float) -> np.ndarray:
     St.dim(fr, 0.28)
     k = St.window(t, 0.2, 8.0, 0.8)
     im, d = St.layer()
-    d.text((W / 2, px(400)), TITLE, font=St.font(64, bold=True), fill=St.INK, anchor="mm")
+    if ROUND3:
+        d.text((W / 2, px(330)), "A simulated year of alloy discovery", font=St.font(64, bold=True), fill=St.INK,
+               anchor="mm")
+        d.text((W / 2, px(408)), "in an automated lab", font=St.font(64, bold=True), fill=St.INK, anchor="mm")
+    else:
+        d.text((W / 2, px(400)), TITLE, font=St.font(64, bold=True), fill=St.INK, anchor="mm")
     d.text((W / 2, px(480)), SUBTITLE, font=St.font(34), fill=St.INK2, anchor="mm")
     y = px(580)
     for c in D.CAMPAIGNS:
@@ -133,6 +146,9 @@ def title_frame(t: float) -> np.ndarray:
         y += px(52)
     d.text((W / 2, px(800)), "BYU Vertical Cloud Lab, PR 318's lab design. No real experiments: every result is "
            "simulated.", font=St.font(24), fill=St.INK2, anchor="mm")
+    if ROUND3:
+        d.text((W / 2, px(846)), "Round 2's video and its audit are linked in the description.", font=St.font(20),
+               fill=St.INK2, anchor="mm")
     St.paste(fr, im, 0, 0, k)
     return fr
 
@@ -506,7 +522,8 @@ def counters_panel(t_h: float) -> Image.Image:
     w, h = px(450), px(150)
     im, d = St.layer(w, h)
     d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(12), fill=St.SURF + (int(255 * St.PANEL_A),))
-    d.text((px(16), px(10)), "so far: alloys designed / made / tested", font=St.font(16), fill=St.INK2)
+    d.text((px(16), px(10)), ("simulated so far" if ROUND3 else "so far") + ": alloys designed / made / tested",
+           font=St.font(16), fill=St.INK2)
     y = px(36)
     tg = S("B")["target"]
     for c in D.CAMPAIGNS:
@@ -516,8 +533,12 @@ def counters_panel(t_h: float) -> Image.Image:
         d.text((px(140), y), f"{n['designed']} / {n['made']} / {n['tested']}", font=St.font(21, bold=True),
                fill=St.INK)
         best = R.best_at(c, t_h)
-        d.text((px(38), y + px(27)), f"spent {St.money(R.spent_at(c, t_h))}   best {best:.2f} "
-               f"(target {tg[c]:.2f})", font=St.font(17), fill=St.INK2)
+        if ROUND3:
+            d.text((px(38), y + px(27)), f"spent {St.money(R.spent_at(c, t_h))}   best new {best:.2f} "
+                   f"(targets {tg[c]:.2f}, {D.targets2()[c]:.2f})", font=St.font(16), fill=St.INK2)
+        else:
+            d.text((px(38), y + px(27)), f"spent {St.money(R.spent_at(c, t_h))}   best {best:.2f} "
+                   f"(target {tg[c]:.2f})", font=St.font(17), fill=St.INK2)
         y += px(56)
     return im
 
@@ -647,8 +668,9 @@ def replay_frame(t: float) -> np.ndarray:
         if k_in < 1 and pov is not tl.pov[0]:
             St.dim(fr, 0.35 + 0.65 * k_in)
         mode_txt = None
+        ref = _ref_name("flaime_al", pov["design"]) if ROUND3 else None
         card = pov_card(t_h, sp, f"FLAIME alloy #{pov['design']}: {WHAT_WORDS.get(pov['what'], pov['what'])}",
-                        lab[0].upper() + lab[1:])
+                        (f"The reference alloy {ref}, made first. " if ref else "") + lab[0].upper() + lab[1:])
     else:
         i = tl.phase(t)
         fr = _phase_picture(i, t, t_h, sp)
@@ -662,9 +684,11 @@ def replay_frame(t: float) -> np.ndarray:
             St.dim(fr, 0.35 + 0.65 * u)
         scale = "Day by day" if sp < 12 else ("Week by week" if sp < 30 else "Month by month")
         nf = {c: R.wip(t_h, c) for c in D.CAMPAIGNS}
-        mode_txt = (f"{scale}: {nf['flaime_al']} FLAIME and {nf['onr_cu']} ONR alloys in progress",
+        mode_txt = (f"{scale}: {nf['flaime_al']} FLAIME and {nf['onr_cu']} ONR alloys " +
+                    ("in the lab" if ROUND3 else "in progress"),
                     "station cameras, lit while a campaign runs there" if PHASES[i][1] == "grid" else
-                    "the 3-D lab moved by the event log: trays to the openings, units to the docks"
+                    ("the 3-D lab moved by the simulated event log: trays to the openings, units to the docks"
+                     if ROUND3 else "the 3-D lab moved by the event log: trays to the openings, units to the docks")
                     if PHASES[i][1] == "3d" else "the whole lab: a beacon lights while a station runs")
     # ------------------------------------------------------------------ overlays
     if mode_txt is None:
@@ -692,13 +716,18 @@ def replay_frame(t: float) -> np.ndarray:
         key = ("multi", tuple((x[0], x[1], x[3]) for x in items), q if not items else None)
         if items:
             im = ptable_overlay(key, lambda: P.multiples_panel(items, px(450), px(300),
-                                                               title="Compositions in progress"))
+                                                               title="Compositions in the lab" if ROUND3 else
+                                                               "Compositions in progress"))
         else:
-            im = ptable_overlay(key, lambda: _empty_panel("Compositions in progress", "none: both campaigns are "
+            im = ptable_overlay(key, lambda: _empty_panel("Compositions in the lab" if ROUND3 else
+                                                          "Compositions in progress", "none: both campaigns are "
                                                           "waiting (results, budget or the calendar)"))
     St.paste(fr, im, px(1446), px(186), k_right)
     St.paste(fr, S("plots").draw(t_h), px(1296), px(640), k_right)
-    if NARRATE:                                    # DAL's audit (PR 293 §4): say which seed this is, all the way
+    if NARRATE and ROUND3:                         # DAL's audit (PR 293): which seed this is, all the way through
+        b = seed_badge()
+        St.paste(fr, b, px(866), px(1076) - b.height)  # under the moves panel (866, 900, 420 x 104)
+    elif NARRATE:                                  # DAL's audit (PR 293 §4): say which seed this is, all the way
         St.paste(fr, seed_badge(), px(866), px(1014))
     dag = S("dag")
     lit = {k: dag.intensity(v) for k, v in R.lit(t_h, span).items()}
@@ -708,11 +737,34 @@ def replay_frame(t: float) -> np.ndarray:
 
 
 _BADGE: dict = {}
+_REFN: dict = {}
+
+
+def _ref_name(camp: str, design) -> str | None:
+    """The reference alloy a design is, if it is one (twin.spaces.REFERENCE, within 0.06 wt% on every element, as
+    twin.bench3 marks them), else None."""
+    key = (camp, str(design))
+    if key not in _REFN:
+        name = None
+        try:
+            sys.path.insert(0, str(D.HERE))
+            from twin import spaces as SP
+            comp = S("R").designs[camp].get(str(design), {})
+            for nm, w in SP.REFERENCE[camp].items():
+                if all(abs(comp.get(e, 0.0) - w.get(e, 0.0)) < 0.06 for e in SP.SPACES[camp].elements):
+                    name = nm
+                    break
+        except Exception:                               # noqa: BLE001
+            pass
+        _REFN[key] = name
+    return _REFN[key]
 
 
 def seed_badge() -> Image.Image:
     """The replayed run among its twelve: the day its aluminium campaign first reaches the target, against the median
     seed's (econ_summary.json), as the narration says it."""
+    if "im" not in _BADGE and ROUND3:
+        _BADGE["im"] = _seed_badge3()
     if "im" not in _BADGE:
         R, B = S("R"), S("B")
         tg = B["target"]["flaime_al"]
@@ -731,6 +783,37 @@ def seed_badge() -> Image.Image:
             d.text((px(10), px(6) + i * px(20)), ln, font=f, fill=St.INK2)
         _BADGE["im"] = im
     return _BADGE["im"]
+
+
+def seed_words3() -> str:
+    """Which seed the replay is, and where it sits among the 12 (numbers3: the committed runs): the audit's "a
+    typical seed (near the median time to target), not the luckiest, and say which seed it is"."""
+    from . import numbers3 as N3
+    rep = N3.numbers()["replay"]
+    al, cu = rep["flaime_al"]["T2"], rep["onr_cu"]["T1"]
+    pol = {"bofn3": "time-aware BOFN", "pkgfn3": "time-aware pKGFN"}.get(rep["policy"], rep["policy"])
+    out = f"Seed {rep['seed']} of {rep['n']}, {pol}. "
+    if al["day"] is not None and al["median"] is not None:
+        out += (f"Aluminium: the median seed (halfway target on day {al['day']:.0f}). "
+                if abs(al["day"] - al["median"]) < 0.5 else
+                f"Aluminium: halfway target on day {al['day']:.0f} (median {al['median']:.0f}). ")
+    if cu["day"] is None:
+        out += (f"Copper: one of the {rep['n'] - cu['hits']} seeds that never reach the first target (median: day "
+                f"{cu['median']:.0f}).")
+    else:
+        out += f"Copper: first target on day {cu['day']:.0f} (median {cu['median']:.0f})."
+    return out
+
+
+def _seed_badge3() -> Image.Image:
+    f = St.font(13.5)
+    lines = St.wrap(seed_words3(), f, px(404))[:4]
+    w, h = px(420), px(12) + px(19) * len(lines)
+    im, d = St.layer(w, h)
+    d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(8), fill=St.SURF + (242,))
+    for i, ln in enumerate(lines):
+        d.text((px(10), px(6) + i * px(19)), ln, font=f, fill=St.INK2)
+    return im
 
 
 def _phase_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
@@ -753,7 +836,7 @@ def _phase_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
 
 # ================================================================================ figures, results, takeaway, notes
 def figures_frame(t: float) -> np.ndarray:
-    fr = np.array(S("figs").explain_frame(t), copy=True)
+    fr = np.array((S("figs3") if ROUND3 else S("figs")).explain_frame(t), copy=True)
     dag = S("dag")
     x, y, _, _ = dag.DOCK
     St.paste(fr, dag.overlay({}, alpha=0.82), px(x), px(y))
@@ -761,12 +844,20 @@ def figures_frame(t: float) -> np.ndarray:
 
 
 def results_frame(t: float) -> np.ndarray:
-    fr = np.array(S("figs").results_frame(t), copy=True)
+    fr = np.array((S("figs3") if ROUND3 else S("figs")).results_frame(t), copy=True)
     return tag_placeholder(fr)
 
 
 def takeaway_frame(t: float) -> np.ndarray:
-    return tag_placeholder(np.array(S("figs").takeaway_frame(t), copy=True))
+    return tag_placeholder(np.array((S("figs3") if ROUND3 else S("figs")).takeaway_frame(t), copy=True))
+
+
+def changes_frame(t: float) -> np.ndarray:             # round 3: what changed in the twin
+    return np.array(S("figs3").changes_frame(t), copy=True)
+
+
+def assume_frame(t: float) -> np.ndarray:              # round 3: the atomizer's design targets against the record
+    return np.array(S("figs3").assume_frame(t), copy=True)
 
 
 NOTES_DURATION = 26.0 if NARRATE else 15.0          # the closing line takes 24 s
@@ -804,13 +895,34 @@ NOTES_NARRATED = [
 ]
 
 
+# round 3's notes: what DAL's audit (PR 293, sections 1 row 13 and 2) found missing from "Assumed", and round 3's own
+# choices (notes/twin_round3.md, Limits)
+NOTES_R3 = [
+    ("Real", ["The lab's design: PR 318's 3-D renders, makers' published sizes",
+              "The atomizer footage and photos: the lab's own runs (DAL #159, #219)",
+              "Search spaces and rules: the FLAIME and ONR proposals",
+              "Prices and import reliance: USGS Mineral Commodity Summaries 2026",
+              "Equipment prices, rates and wages: econ_summary.json's sources"]),
+    ("Assumed", ["The atomizer's runs a week, failure rate and yield: design targets, not the lab's record",
+                 "Station times, fees, calendars and capacities (twin/facility.py)",
+                 "The automated lab's stock on day 0, and who staffs it",
+                 "Round 3's choices: the spending plan, the atomizer's weekly split, robot and operator times",
+                 "Outside facilities' booking and turnaround times",
+                 "Each assumption is marked in notes/twin_round3.md"]),
+    ("Simulated", ["The alloys' properties: textbook forms calibrated on reference alloys",
+                   "Every measurement, with modelled noise not yet calibrated on the lab's instruments",
+                   "Both campaigns, every booking and every result: the twin's event log",
+                   "The policies' choices (twin/opt/policies3.py, net3.py)"]),
+]
+
+
 def notes_frame(t: float) -> np.ndarray:
     fr = St.blank()
     im, d = St.layer()
     d.text((px(80), px(70)), "A synthetic benchmark", font=St.font(48, bold=True), fill=St.INK)
     d.text((px(80), px(138)), "What is real, what is assumed and what is simulated in this video",
            font=St.font(26), fill=St.INK2)
-    for i, (head, items) in enumerate(NOTES_NARRATED if NARRATE else NOTES):
+    for i, (head, items) in enumerate(NOTES_R3 if ROUND3 else (NOTES_NARRATED if NARRATE else NOTES)):
         x = px(80) + i * px(600)
         k = St.ramp(t, 0.4 + 0.5 * i, 1.2 + 0.5 * i)
         d.text((x, px(230)), head, font=St.font(32, bold=True), fill=St.mix(St.BG, St.INK, k))
@@ -834,6 +946,15 @@ def _meta_lines() -> list:
     R = S("R")
     commit = subprocess.run(["git", "rev-parse", "--short=7", "HEAD"], capture_output=True, text=True,
                             cwd=D.HERE).stdout.strip()
+    if ROUND3:
+        return [f"Replayed run: {R.path.name} (seed {R.seed} of 12, policy {R.policy}); {len(R.ev):,} station "
+                f"bookings over {R.horizon_days:.0f} days",
+                "Results: out/twin3/runs, fig/numbers.json and econ/econ_summary.json; the cards' numbers: "
+                "out/twin3/video/numbers.json",
+                f"Code: github.com/vertical-cloud-lab/byu-vcl, vertical-lab/twin/video (commit {commit}); "
+                "write-up in notes/twin_round3.md and notes/twin_video.md",
+                "Renders: PR 318's chapters, reused. Narration: a synthetic voice, Kokoro v1.0 (open weights, run "
+                "locally), script in twin/video/narration3.json"]
     return [f"Replayed run: {R.path.name} (policy {R.policy}, facility {R.facility}); "
             f"{len(R.ev):,} bookings over {R.horizon_days:.0f} days",
             f"Benchmark: out/twin2/bench2_summary.json; economics: out/twin2/econ/econ_summary.json",
@@ -849,6 +970,21 @@ def segments() -> list:
     """[(name, duration, frame function, chapter title)] in order."""
     dag = S("dag")
     F = S("figs")
+    if ROUND3:
+        F3 = S("figs3")
+        return [
+            ("title", 8.0, title_frame, "Title"),
+            ("simulated", SIM_DUR, simulated_frame, "What is simulated: the lab and two search spaces"),
+            ("changes", float(F3.CHANGES_DURATION), changes_frame, "Round 3: what changed in the twin"),
+            ("dag", float(dag.DURATION), dag.intro_frame, "The function networks"),
+            ("figures", float(F3.EXPLAIN_DURATION), figures_frame, "The figures we track, and the two targets"),
+            ("assume", float(F3.ASSUME_DURATION), assume_frame, "The atomizer: design targets, not demonstrated "
+                                                               "rates"),
+            ("replay", REPLAY_DUR, replay_frame, "The campaign year, replayed"),
+            ("results", float(F3.RESULTS_DURATION), results_frame, "Results"),
+            ("takeaway", float(F3.TAKEAWAY_DURATION), takeaway_frame, "The takeaway"),
+            ("notes", NOTES_DURATION, notes_frame, "Notes: real, assumed, simulated"),
+        ]
     return [
         ("title", 8.0, title_frame, "Title"),
         ("simulated", SIM_DUR, simulated_frame, "What is simulated: the lab and two search spaces"),
@@ -1024,7 +1160,11 @@ def build(kind: str):
         sheet(dst, VID / f"sheet{NAR}.png", rec)
     if kind == "final3d":
         from . import meta
-        meta.write(rec, lab3d=True, narrated=NARRATE)
+        if ROUND3:
+            from . import meta3
+            meta3.write(rec)
+        else:
+            meta.write(rec, lab3d=True, narrated=NARRATE)
         sheet(dst, VID / f"sheet_lab3d{NAR}.png", rec)
     print(json.dumps(info), flush=True)
     return rec

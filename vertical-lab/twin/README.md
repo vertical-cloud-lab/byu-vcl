@@ -109,3 +109,34 @@ TWIN_WORKERS=3 /tmp/venv/bin/python -m twin.bench2 run seeded seeded_dal256 saas
 | Strength, ductility, corrosion | textbook forms with coefficients calibrated on 7 reference alloys; ours (`truth_al.py`, `truth_cu.py`) |
 | Thermo-Calc (TC-Python, TCAL/TCCU, AM Module) | interface only (`calphad.ThermoCalcBackend`); its nodes are the truth plus a small error until it runs on BYU's HPC |
 | Private quotes and rates | not committed: put them in `data/private/prices.json` (git-ignored) and `supply.load_private()` uses them |
+
+## Round 3 (2026-11-26): physical capacity, asynchronous acquisition, interim readings, pKGFN, time to discovery
+
+Round 2 capped each campaign's work in flight (24 aluminium actions, 8 copper) and asked a policy for that many actions
+only when results came back, so a 30-day immersion held one of copper's eight slots for a month. Round 3 removes the
+cap; what limits work is what limits it in a lab. The write-up and results are in
+[`../notes/twin_round3.md`](../notes/twin_round3.md).
+
+| Piece | Code |
+|---|---|
+| The asynchronous engine, opt-in (`Twin(..., mode="async")`): hourly decisions whenever a station, robot, person or fixture frees up or results come back; an action starts if its gating station can take it within 2 h and the spending plan allows it (spent in the policy's own ranking); campaigns take the shared atomizer by deficit | `campaign.py` (`run_async`, `submit3`, `gate_ok`, `plan`) |
+| Physical capacity: PR 318's two robots and the technician (vertical lab), three operators doing each station's hands-on hours (conventional lab), immersion and furnace positions; joint booking of a step with its helpers; early release of a fixture | `facility.py` (`PHYSICAL`, `run_step_joint`, `Resource.find/commit/release_early`) |
+| Interim immersion readings (days 1, 3, 7, 14) from the coupon's own film-growth trajectory, a stop action | `campaign.py` (`_interim`, `_do_immersion3`, `_do_stop`) |
+| Every policy on the engine: an adapter for random, Sobol and the heuristic; the funnel; GP-BO with a kriging believer; BOFN and pKGFN on every node of every part, per-dollar or time-aware | `opt/policies3.py`, `opt/net3.py`, `opt/tinygp.py` |
+| The benchmark, figures, economics | `bench3.py`, `figures3.py`, `econ3.py` |
+
+```bash
+cd vertical-lab
+/tmp/venv/bin/python -m pytest -q twin/tests/test_round3.py
+TWIN_WORKERS=4 /tmp/venv/bin/python -m twin.bench3 run main cu_hidden cu_proxy cu_ablation cu_money conventional main_more
+/tmp/venv/bin/python -m twin.figures3 && /tmp/venv/bin/python -m twin.econ3 pkgfn3
+```
+
+Round 2's engine is unchanged in `mode="wip"`, except one fix behind a flag: `Campaign._cu_check` scored a copper alloy
+when its tensile came back if its immersion had only started. `twin/bench2.py` keeps the old check
+(`legacy_cu_check`), so round 2's committed results reproduce; `TWIN_FIX_CU_CHECK=1` runs round 2 with the fix.
+
+**Round 3's video** is built by `twin/video/` with `TWIN_VIDEO_ROUND=3` (the cards in `video/figs3.py`, their numbers
+in `video/numbers3.py`, the script in `video/narration3.json`): see
+[`../notes/twin_video.md`](../notes/twin_video.md#round-3s-video). `python -m pytest -q twin/tests/test_video_round3.py`
+checks every spoken number against the committed summaries.

@@ -1,0 +1,1085 @@
+{
+ "targets": {
+  "T1": {
+   "flaime_al": 0.4232,
+   "onr_cu": 0.5559
+  },
+  "T2": {
+   "flaime_al": 0.6393,
+   "onr_cu": 0.6565
+  },
+  "ref": {
+   "flaime_al": "AlSi10Mg",
+   "onr_cu": "C95800 NAB"
+  },
+  "frac_random": {
+   "flaime_al": 0.082,
+   "onr_cu": 0.082
+  },
+  "src": "out/twin3/fig/numbers.json targets; out/twin2/oracle.json sota, random_default_process.frac_above_sota",
+  "one_in": 12
+ },
+ "main": {
+  "pkgfn3": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.7132,
+    "se": 0.0254,
+    "T1": {
+     "hit": 12,
+     "day": 66.942
+    },
+    "T2": {
+     "hit": 10,
+     "day": 83.442
+    },
+    "spent": 107952.4,
+    "new_alloys": 30.42,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.6093,
+    "se": 0.0261,
+    "T1": {
+     "hit": 9,
+     "day": 295.216
+    },
+    "T2": {
+     "hit": 4,
+     "day": null
+    },
+    "spent": 60508.7,
+    "new_alloys": 6.42,
+    "stops": 2.83
+   }
+  },
+  "bofn3": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.7285,
+    "se": 0.0164,
+    "T1": {
+     "hit": 12,
+     "day": 83.067
+    },
+    "T2": {
+     "hit": 11,
+     "day": 95.942
+    },
+    "spent": 105047.6,
+    "new_alloys": 20.5,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.578,
+    "se": 0.0399,
+    "T1": {
+     "hit": 8,
+     "day": 221.3
+    },
+    "T2": {
+     "hit": 5,
+     "day": null
+    },
+    "spent": 60553.4,
+    "new_alloys": 7.58,
+    "stops": 3.33
+   }
+  },
+  "bofn3_usd": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.6605,
+    "se": 0.0289,
+    "T1": {
+     "hit": 12,
+     "day": 79.942
+    },
+    "T2": {
+     "hit": 7,
+     "day": 119.442
+    },
+    "spent": 105843.0,
+    "new_alloys": 19.58,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.6006,
+    "se": 0.0275,
+    "T1": {
+     "hit": 10,
+     "day": 255.187
+    },
+    "T2": {
+     "hit": 5,
+     "day": null
+    },
+    "spent": 60271.2,
+    "new_alloys": 7.42,
+    "stops": 3.0
+   }
+  },
+  "gpbo": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.3673,
+    "se": 0.067,
+    "T1": {
+     "hit": 9,
+     "day": 226.192
+    },
+    "T2": {
+     "hit": 1,
+     "day": null
+    },
+    "spent": 116496.4,
+    "new_alloys": 34.5,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.5419,
+    "se": 0.0568,
+    "T1": {
+     "hit": 7,
+     "day": 255.066
+    },
+    "T2": {
+     "hit": 3,
+     "day": null
+    },
+    "spent": 61317.7,
+    "new_alloys": 8.33,
+    "stops": 0.0
+   }
+  },
+  "random": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.2486,
+    "se": 0.0833,
+    "T1": {
+     "hit": 5,
+     "day": null
+    },
+    "T2": {
+     "hit": 2,
+     "day": null
+    },
+    "spent": 119437.3,
+    "new_alloys": 59.58,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.5223,
+    "se": 0.0324,
+    "T1": {
+     "hit": 6,
+     "day": 284.765
+    },
+    "T2": {
+     "hit": 1,
+     "day": null
+    },
+    "spent": 60648.3,
+    "new_alloys": 13.42,
+    "stops": 0.0
+   }
+  },
+  "sobol": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.3398,
+    "se": 0.0724,
+    "T1": {
+     "hit": 6,
+     "day": 309.192
+    },
+    "T2": {
+     "hit": 2,
+     "day": null
+    },
+    "spent": 119183.6,
+    "new_alloys": 13.08,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.4658,
+    "se": 0.0607,
+    "T1": {
+     "hit": 5,
+     "day": null
+    },
+    "T2": {
+     "hit": 1,
+     "day": null
+    },
+    "spent": 60566.8,
+    "new_alloys": 9.92,
+    "stops": 0.0
+   }
+  },
+  "heuristic": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.5536,
+    "se": 0.0264,
+    "T1": {
+     "hit": 11,
+     "day": 24.067
+    },
+    "T2": {
+     "hit": 1,
+     "day": null
+    },
+    "spent": 119947.2,
+    "new_alloys": 77.5,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.567,
+    "se": 0.0261,
+    "T1": {
+     "hit": 7,
+     "day": 233.792
+    },
+    "T2": {
+     "hit": 1,
+     "day": null
+    },
+    "spent": 61082.0,
+    "new_alloys": 9.5,
+    "stops": 0.0
+   }
+  },
+  "tiered": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.3022,
+    "se": 0.0811,
+    "T1": {
+     "hit": 6,
+     "day": 146.442
+    },
+    "T2": {
+     "hit": 1,
+     "day": null
+    },
+    "spent": 118859.4,
+    "new_alloys": 17.92,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.6893,
+    "se": 0.016,
+    "T1": {
+     "hit": 11,
+     "day": 141.661
+    },
+    "T2": {
+     "hit": 10,
+     "day": 147.737
+    },
+    "spent": 60487.0,
+    "new_alloys": 11.33,
+    "stops": 0.0
+   }
+  }
+ },
+ "conventional": {
+  "gpbo": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.5282,
+    "se": 0.0587,
+    "T1": {
+     "hit": 11,
+     "day": 407.431
+    },
+    "T2": {
+     "hit": 4,
+     "day": null
+    },
+    "spent": 359763.8,
+    "new_alloys": 29.78,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.4094,
+    "se": 0.0608,
+    "T1": {
+     "hit": 3,
+     "day": null
+    },
+    "T2": {
+     "hit": 0,
+     "day": null
+    },
+    "spent": 179985.5,
+    "new_alloys": 2.5,
+    "stops": 0.0
+   }
+  },
+  "random": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.4372,
+    "se": 0.0835,
+    "T1": {
+     "hit": 8,
+     "day": 260.442
+    },
+    "T2": {
+     "hit": 4,
+     "day": null
+    },
+    "spent": 359951.2,
+    "new_alloys": 43.53,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.5102,
+    "se": 0.0545,
+    "T1": {
+     "hit": 5,
+     "day": null
+    },
+    "T2": {
+     "hit": 3,
+     "day": null
+    },
+    "spent": 180032.7,
+    "new_alloys": 4.78,
+    "stops": 0.0
+   }
+  },
+  "sobol": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.3429,
+    "se": 0.0846,
+    "T1": {
+     "hit": 6,
+     "day": 738.65
+    },
+    "T2": {
+     "hit": 3,
+     "day": null
+    },
+    "spent": 359823.1,
+    "new_alloys": 10.53,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.4565,
+    "se": 0.0477,
+    "T1": {
+     "hit": 2,
+     "day": null
+    },
+    "T2": {
+     "hit": 0,
+     "day": null
+    },
+    "spent": 179963.9,
+    "new_alloys": 3.69,
+    "stops": 0.0
+   }
+  },
+  "tiered": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.4359,
+    "se": 0.0631,
+    "T1": {
+     "hit": 9,
+     "day": 214.51
+    },
+    "T2": {
+     "hit": 0,
+     "day": null
+    },
+    "spent": 360059.4,
+    "new_alloys": 11.17,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.6914,
+    "se": 0.0134,
+    "T1": {
+     "hit": 12,
+     "day": 404.67
+    },
+    "T2": {
+     "hit": 9,
+     "day": 561.458
+    },
+    "spent": 180117.5,
+    "new_alloys": 3.83,
+    "stops": 0.0
+   }
+  },
+  "heuristic": {
+   "flaime_al": {
+    "n": 12,
+    "best": 0.6422,
+    "se": 0.0275,
+    "T1": {
+     "hit": 12,
+     "day": 158.51
+    },
+    "T2": {
+     "hit": 6,
+     "day": 336.675
+    },
+    "spent": 359875.4,
+    "new_alloys": 31.97,
+    "stops": 0.0
+   },
+   "onr_cu": {
+    "n": 12,
+    "best": 0.5655,
+    "se": 0.0242,
+    "T1": {
+     "hit": 8,
+     "day": 540.147
+    },
+    "T2": {
+     "hit": 1,
+     "day": null
+    },
+    "spent": 180009.5,
+    "new_alloys": 2.53,
+    "stops": 0.0
+   }
+  }
+ },
+ "main_all_funnel_cu": {
+  "n": 24,
+  "best": 0.6707,
+  "se": 0.0202,
+  "T1": {
+   "hit": 21,
+   "day": 142.213
+  },
+  "T2": {
+   "hit": 19,
+   "day": 176.2
+  },
+  "spent": 60755.8,
+  "new_alloys": 11.29,
+  "stops": 0.0
+ },
+ "al_T2_others_max": 2,
+ "cu_money": {
+  "tiered": {
+   "n": 12,
+   "best": 0.6971,
+   "se": 0.0146,
+   "T1": {
+    "hit": 11,
+    "day": 107.266
+   },
+   "T2": {
+    "hit": 11,
+    "day": 136.408
+   },
+   "spent": 177908.7,
+   "new_alloys": 22.92,
+   "stops": 0.0,
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "own": {
+    "mean": 0.0077,
+    "se": 0.0068,
+    "ahead": 6,
+    "behind": 6
+   },
+   "funnel": null,
+   "base": 0.6893
+  },
+  "bofn3": {
+   "n": 4,
+   "best": 0.6896,
+   "se": 0.0154,
+   "T1": {
+    "hit": 4,
+    "day": 151.326
+   },
+   "T2": {
+    "hit": 4,
+    "day": 204.282
+   },
+   "spent": 144705.9,
+   "new_alloys": 11.25,
+   "stops": 18.5,
+   "seeds": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "own": {
+    "mean": 0.1435,
+    "se": 0.0428,
+    "ahead": 4,
+    "behind": 0
+   },
+   "funnel": {
+    "mean": 0.0295,
+    "se": 0.0379,
+    "ahead": 2,
+    "behind": 2
+   },
+   "base": 0.5461
+  },
+  "pkgfn3": {
+   "n": 4,
+   "best": 0.6689,
+   "se": 0.0267,
+   "T1": {
+    "hit": 4,
+    "day": 149.012
+   },
+   "T2": {
+    "hit": 2,
+    "day": 183.817
+   },
+   "spent": 147940.0,
+   "new_alloys": 12.5,
+   "stops": 16.5,
+   "seeds": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "own": {
+    "mean": 0.0839,
+    "se": 0.048,
+    "ahead": 3,
+    "behind": 1
+   },
+   "funnel": {
+    "mean": 0.0088,
+    "se": 0.0211,
+    "ahead": 2,
+    "behind": 2
+   },
+   "base": 0.585
+  },
+  "heuristic": {
+   "n": 12,
+   "best": 0.6008,
+   "se": 0.0244,
+   "T1": {
+    "hit": 10,
+    "day": 232.398
+   },
+   "T2": {
+    "hit": 2,
+    "day": null
+   },
+   "spent": 180857.5,
+   "new_alloys": 19.75,
+   "stops": 0.0,
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "own": {
+    "mean": 0.0338,
+    "se": 0.0342,
+    "ahead": 6,
+    "behind": 6
+   },
+   "funnel": {
+    "mean": -0.0963,
+    "se": 0.0311,
+    "ahead": 2,
+    "behind": 10
+   },
+   "base": 0.567
+  },
+  "gpbo": {
+   "n": 12,
+   "best": 0.606,
+   "se": 0.0321,
+   "T1": {
+    "hit": 9,
+    "day": 198.361
+   },
+   "T2": {
+    "hit": 5,
+    "day": null
+   },
+   "spent": 180625.3,
+   "new_alloys": 16.75,
+   "stops": 0.0,
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "own": {
+    "mean": 0.0641,
+    "se": 0.0461,
+    "ahead": 7,
+    "behind": 5
+   },
+   "funnel": {
+    "mean": -0.0911,
+    "se": 0.0341,
+    "ahead": 0,
+    "behind": 12
+   },
+   "base": 0.5419
+  },
+  "budget": 180000,
+  "base_budget": 60000,
+  "src": "out/twin3/runs/cu_money.jsonl against main.jsonl, same seeds (tables.md, cu_money)"
+ },
+ "labs": {
+  "flaime_al": {
+   "same": {
+    "name": "vertical lab + heuristic vs conventional + heuristic",
+    "new": "heuristic",
+    "ref": "heuristic",
+    "T1": {
+     "hit_new": 11,
+     "hit_ref": 12,
+     "n": 12,
+     "day_new": 24.067,
+     "day_ref": 163.574,
+     "lo": 1.1427,
+     "hi": 18.3721,
+     "kind": "factor",
+     "af": 6.7966,
+     "hit_ref_365": 12,
+     "km_new": 24.067,
+     "km_ref": 158.51,
+     "days_ok": false
+    },
+    "T2": {
+     "hit_new": 1,
+     "hit_ref": 6,
+     "n": 12,
+     "day_new": "inf",
+     "day_ref": 336.675,
+     "lo": 0.0,
+     "hi": 0.0,
+     "kind": "none",
+     "af": null,
+     "hit_ref_365": 6,
+     "km_new": null,
+     "km_ref": 336.675,
+     "days_ok": false
+    }
+   },
+   "thumb": {
+    "name": "vertical lab + pkgfn3 vs conventional + heuristic",
+    "new": "pkgfn3",
+    "ref": "heuristic",
+    "T1": {
+     "hit_new": 12,
+     "hit_ref": 12,
+     "n": 12,
+     "day_new": 70.3795,
+     "day_ref": 163.574,
+     "lo": 0.8366,
+     "hi": 4.4715,
+     "kind": "factor",
+     "af": 2.3242,
+     "hit_ref_365": 12,
+     "km_new": 66.942,
+     "km_ref": 158.51,
+     "days_ok": false
+    },
+    "T2": {
+     "hit_new": 10,
+     "hit_ref": 6,
+     "n": 12,
+     "day_new": 83.442,
+     "day_ref": 336.675,
+     "lo": 2.0749,
+     "hi": "inf",
+     "kind": "at_least",
+     "af": 4.0348,
+     "hit_ref_365": 6,
+     "km_new": 83.442,
+     "km_ref": 336.675,
+     "days_ok": true
+    }
+   }
+  },
+  "onr_cu": {
+   "same": {
+    "name": "vertical lab + tiered vs conventional + tiered",
+    "new": "tiered",
+    "ref": "tiered",
+    "T1": {
+     "hit_new": 11,
+     "hit_ref": 12,
+     "n": 12,
+     "day_new": 141.661,
+     "day_ref": 404.875,
+     "lo": 2.2984,
+     "hi": 4.0508,
+     "kind": "factor",
+     "af": 2.8581,
+     "hit_ref_365": 4,
+     "km_new": 141.661,
+     "km_ref": 404.67,
+     "days_ok": true
+    },
+    "T2": {
+     "hit_new": 10,
+     "hit_ref": 9,
+     "n": 12,
+     "day_new": 147.737,
+     "day_ref": 561.458,
+     "lo": 1.8152,
+     "hi": 6.0054,
+     "kind": "factor",
+     "af": 3.8004,
+     "hit_ref_365": 2,
+     "km_new": 147.737,
+     "km_ref": 561.458,
+     "days_ok": true
+    }
+   },
+   "thumb": {
+    "name": "vertical lab + pkgfn3 vs conventional + heuristic",
+    "new": "pkgfn3",
+    "ref": "heuristic",
+    "T1": {
+     "hit_new": 9,
+     "hit_ref": 8,
+     "n": 12,
+     "day_new": 295.216,
+     "day_ref": 540.147,
+     "lo": 1.418,
+     "hi": "inf",
+     "kind": "factor",
+     "af": 1.8297,
+     "hit_ref_365": 2,
+     "km_new": 295.216,
+     "km_ref": 540.147,
+     "days_ok": true
+    },
+    "T2": {
+     "hit_new": 4,
+     "hit_ref": 1,
+     "n": 12,
+     "day_new": "inf",
+     "day_ref": "inf",
+     "lo": "inf",
+     "hi": "inf",
+     "kind": "none",
+     "af": null,
+     "hit_ref_365": 1,
+     "km_new": null,
+     "km_ref": null,
+     "days_ok": false
+    }
+   }
+  },
+  "src": "out/twin3/econ/econ_summary.json acceleration (to the best existing alloy's score) and acceleration_T2 (to the halfway target): af, lo, hi, hit_new, hit_ref, median_new, median_ref",
+  "stock": "every factor: the vertical lab stocked on day 0 (one-year runs) against the conventional lab ordering metal as each charge needs it (three-year runs at three years' money)"
+ },
+ "missing": [
+  "both labs ordering metal as they go, or both stocked: round 3 has no run of the vertical lab ordering as it goes, nor of the conventional lab stocked (twin/bench3.py EXPERIMENTS), so the stock's share of a factor is not known here",
+  "BOFN and pKGFN in the conventional lab (bench3's conventional_net): not run, so there is no same-policy comparison for them",
+  "the tiered screen in the vertical lab against the heuristic in the conventional lab: not among econ_summary.json's comparisons"
+ ],
+ "cost": {
+  "to_T1": {
+   "flaime_al": {
+    "cash": {
+     "ratio": 0.3856,
+     "lo": 0.2712,
+     "hi": 0.5934,
+     "new": 42381.38,
+     "ref": 109909.415
+    },
+    "op_alone": {
+     "ratio": 0.6022,
+     "lo": 0.3569,
+     "hi": 1.1665,
+     "new": 119002.0506,
+     "ref": 197611.2679
+    },
+    "op_shared": {
+     "ratio": 0.4333,
+     "lo": 0.2573,
+     "hi": 0.8126,
+     "new": 85623.3265,
+     "ref": 197611.2679
+    },
+    "full_alone": {
+     "ratio": 0.9008,
+     "lo": 0.5212,
+     "hi": 1.8211,
+     "new": 198336.5442,
+     "ref": 220172.9367
+    },
+    "full_shared": {
+     "ratio": 0.5933,
+     "lo": 0.3289,
+     "hi": 1.1491,
+     "new": 130635.8383,
+     "ref": 220172.9367
+    }
+   },
+   "onr_cu": {
+    "cash": {
+     "ratio": 0.4655,
+     "lo": 0.0,
+     "hi": 0.5581,
+     "new": 58628.12,
+     "ref": 125957.21
+    },
+    "op_alone": {
+     "ratio": 1.0981,
+     "lo": 0.0,
+     "hi": 1.3636,
+     "new": 214866.0706,
+     "ref": 195662.9055
+    },
+    "op_shared": {
+     "ratio": 0.5082,
+     "lo": 0.0,
+     "hi": 0.6526,
+     "new": 99437.5895,
+     "ref": 195662.9055
+    },
+    "full_alone": {
+     "ratio": 1.7043,
+     "lo": 0.0,
+     "hi": 2.1234,
+     "new": 367298.502,
+     "ref": 215517.7586
+    },
+    "full_shared": {
+     "ratio": 0.6564,
+     "lo": 0.0,
+     "hi": 0.8508,
+     "new": 141461.69,
+     "ref": 215517.7586
+    }
+   }
+  },
+  "comparison": "vertical lab + pkgfn3 vs conventional + heuristic",
+  "per_alloy": {
+   "both|conventional, no capex": 6960.208,
+   "both|conventional, with capex": 8017.5069,
+   "both|vertical lab, campaigns only, no capex": 19380.2897,
+   "both|vertical lab, campaigns only, with capex": 34828.5375,
+   "both|vertical lab, 60% utilized, no capex": 6294.1221,
+   "both|vertical lab, 60% utilized, with capex": 8242.6612,
+   "flaime_al|conventional, no capex": 5622.3497,
+   "flaime_al|conventional, with capex": 6523.5892,
+   "flaime_al|vertical lab, campaigns only, no capex": 15751.1418,
+   "flaime_al|vertical lab, campaigns only, with capex": 28709.9485,
+   "flaime_al|vertical lab, 60% utilized, no capex": 5318.2851,
+   "flaime_al|vertical lab, 60% utilized, with capex": 7230.0267,
+   "onr_cu|conventional, no capex": 23775.4143,
+   "onr_cu|conventional, with capex": 26794.1847,
+   "onr_cu|vertical lab, campaigns only, no capex": 35647.4114,
+   "onr_cu|vertical lab, campaigns only, with capex": 62254.213,
+   "onr_cu|vertical lab, 60% utilized, no capex": 10668.1677,
+   "onr_cu|vertical lab, 60% utilized, with capex": 12781.6463
+  },
+  "capex": {
+   "vertical": 5397699.0,
+   "conventional": 543000.0
+  },
+  "fixed_year": {
+   "vertical": 1184047.1669,
+   "conventional": 121470.4504
+  },
+  "src": "out/twin3/econ/econ_summary.json acceleration.<comparison>.<campaign>.compare.cost and key_numbers"
+ },
+ "util": {
+  "capex_weighted": 0.0705,
+  "atomizer_slots": 0.5484,
+  "outside_cap": 0.6,
+  "src": "econ_summary.json key_numbers"
+ },
+ "orders_share": {
+  "flaime_al": 0.8227,
+  "onr_cu": 0.8489,
+  "src": "out/twin3/runs/main.jsonl spend_by.order over the total, all 96 runs"
+ },
+ "cu_year": {
+  "lots": [
+   16.17,
+   21.25
+  ],
+  "immersions": [
+   7.67,
+   14.33
+  ],
+  "src": "out/twin3/fig/numbers.json main.<policy>.onr_cu.done powder and immersion: the least and the most over the 8 policies (each a mean of 12 runs)"
+ },
+ "replay": {
+  "policy": "bofn3",
+  "seed": 0,
+  "file": "r3_vertical_lab_bofn3_s0.json",
+  "n": 12,
+  "flaime_al": {
+   "T1": {
+    "day": 95.942,
+    "median": 83.067,
+    "hits": 12,
+    "rank": 7,
+    "all": [
+     95.942,
+     105.442,
+     42.942,
+     306.192,
+     17.817,
+     63.817,
+     10.817,
+     83.067,
+     21.942,
+     135.817,
+     183.942,
+     160.192
+    ]
+   },
+   "T2": {
+    "day": 95.942,
+    "median": 95.942,
+    "hits": 11,
+    "rank": 6,
+    "all": [
+     95.942,
+     119.442,
+     42.942,
+     306.192,
+     58.942,
+     93.692,
+     10.817,
+     83.067,
+     null,
+     245.942,
+     244.192,
+     200.817
+    ]
+   },
+   "best": 0.7473,
+   "best_rank": 6
+  },
+  "onr_cu": {
+   "T1": {
+    "day": null,
+    "median": 221.3,
+    "hits": 8,
+    "rank": null,
+    "all": [
+     null,
+     null,
+     260.722,
+     255.057,
+     218.567,
+     221.3,
+     200.061,
+     191.351,
+     null,
+     191.019,
+     null,
+     197.055
+    ]
+   },
+   "T2": {
+    "day": null,
+    "median": null,
+    "hits": 5,
+    "rank": null,
+    "all": [
+     null,
+     null,
+     null,
+     255.057,
+     null,
+     288.35,
+     264.104,
+     null,
+     null,
+     191.019,
+     null,
+     197.055
+    ]
+   },
+   "best": 0.4644,
+   "best_rank": 11
+  },
+  "atomizer_runs": 519,
+  "atomizer_runs_week": 9.9534,
+  "helpers_busy": {
+   "robot": 0.0148,
+   "operator": 0.0592
+  }
+ },
+ "atomizer": {
+  "twin": {
+   "p_fail_base": 0.06,
+   "usable_good": 0.91,
+   "slots_week": 16,
+   "source": "twin/physics.py atomize(); twin/facility.py the atomizer's start slots"
+  },
+  "lab": {
+   "runs": 10,
+   "weeks": 6,
+   "good": 2,
+   "first": "2026-10-02",
+   "last": "2026-11-13",
+   "best_yield": 0.91,
+   "source": "digital-alloy-lab atomizer-runs/runs.csv @ 8320f13 (PR 286); DAL audit PR 293 section 2",
+   "runs_week": 1.6667
+  }
+ }
+}

@@ -476,7 +476,10 @@ def replay_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
     a, b = _phase_span(i)
     pip_on = ph[3] is not None and (i, "pip") in st["tracks"] and a + 1.0 <= t < b - 1.0
     avoid0 = list(be.avoid)
-    be.avoid = avoid0 + [(px(866), px(900), px(1286), px(1004))]
+    # round 3's cut keeps the seed badge under the moves panel (compose.seed_badge): the panel sits 22 px higher and
+    # the chips and tags keep clear of both
+    y_mp = 878 if D.ROUND == 3 else 900
+    be.avoid = avoid0 + [(px(866), px(y_mp), px(1286), px(1080 if D.ROUND == 3 else 1004))]
     if pip_on:
         x, y, w, h = PIP["box"]
         be.avoid.append((px(x), px(y), px(x + w), px(y + h)))
@@ -486,7 +489,7 @@ def replay_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
     fr = be.frame_live(img, st["anc"][view], t_h, max(1.0, sp * 0.8), offsite=True)
     be.avoid = avoid0
     be.show_chips, be.chip_avoid, be.chip_dx = True, False, {1: 0.0, 2: 0.0}
-    placed = []
+    placed = [(px(866), px(y_mp), px(1286), px(1080))] if D.ROUND == 3 else []
     moving_tags(fr, plan, t, view, placed)
     if pip_on:
         k = min(1.0, (t - a - 1.0) / 0.4, (b - 1.0 - t) / 0.4)
@@ -494,7 +497,7 @@ def replay_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
                              "Shuttles up close (second camera)", k)
         St.paste(fr, im, x, y, max(0.0, k))
     rate = LS.move_rate(sp)
-    St.paste(fr, moves_panel(plan, t, t_h - 168.0, t_h, rate, "the last 7 days"), px(866), px(900))
+    St.paste(fr, moves_panel(plan, t, t_h - 168.0, t_h, rate, "the last 7 days"), px(866), px(y_mp))
     return fr
 
 
