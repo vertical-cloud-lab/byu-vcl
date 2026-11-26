@@ -11,3 +11,8 @@ __pycache__/
 # the long-form join (python3 longform.py): 30 min of the committed clips plus cards, too big for git; on YouTube,
 # its sha256 in out/youtube.json
 out/mp4/vertical_lab_longform.mp4
+# the twin's campaign video: encoder pieces, frame caches and the cuts themselves (the final cut is on YouTube, its
+# sha256 in out/youtube.json); the bird's-eye stills and the records are committed
+out/twin2/video/parts/
+out/twin2/video/cache/
+out/twin2/video/*.mp4

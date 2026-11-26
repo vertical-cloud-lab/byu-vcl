@@ -1092,6 +1092,23 @@ def takeaway_frame(t: float) -> np.ndarray:
         d.text((St.W / 2, px(724) + i * px(30)), ln, font=f, fill=small, anchor="ma")
     d.text((St.W / 2, px(830)), "A synthetic benchmark: simulated campaigns in a digital twin, not lab results.",
            font=St.font(24, bold=True), fill=St.mix(St.BG, St.INK, k2), anchor="ma")
+    # the same automated lab against the conventional lab run the usual way (a metallurgist's heuristic), so the card
+    # is not read as the only comparison; its costs are in the results
+    try:
+        acc = (ctx.E.get("raw") or {}).get("acceleration") or {}
+        nm = next((n for n in acc if n.startswith(f"vertical lab + {ctx.pol} vs") and n.endswith("+ heuristic")),
+                  None)
+        bits = []
+        for c, lab in (("flaime_al", "FLAIME"), ("onr_cu", "ONR")):
+            af = ((acc.get(nm) or {}).get(c) or {}).get("compare", {}).get("days", {}).get("af") if nm else None
+            if af is not None and math.isfinite(af):
+                bits.append(f"{lab} {af:.1f}x")
+        if bits:
+            d.text((St.W / 2, px(884)), "Against the conventional lab run with a metallurgist's heuristic instead: "
+                   + ", ".join(bits) + " faster (costs for every comparison: notes/twin_econ.md).",
+                   font=St.font(21), fill=small, anchor="ma")
+    except Exception:                                   # noqa: BLE001
+        pass
     return np.asarray(im)
 
 

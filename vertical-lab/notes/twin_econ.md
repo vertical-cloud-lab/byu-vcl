@@ -155,18 +155,53 @@ These are a model's numbers: a synthetic truth, assumed hands-on hours and deman
 say how the money and the time move between the two labs in this model, not what either lab will cost.
 
 <!-- econ:begin -->
-*Generated 2026-11-25 05:45 UTC from out/twin/runs/facility.jsonl, out/twin/runs/main.jsonl (proposed|random|historical|: 30; proposed|cost_aware|historical|: 30; vertical_lab|random|historical|: 10; vertical_lab|cost_aware|historical|: 10; proposed|tiered|historical|: 20), 14 event logs, and the slowdown validation in out/twin2/econ/validate.json. Targets: out/twin2/oracle.json sota_utility (flaime_al: AlSi10Mg, onr_cu: C95800 NAB).*
+*Generated 2026-11-26 00:00 UTC from out/twin2/runs/conventional.jsonl, out/twin2/runs/cu_hidden.jsonl, out/twin2/runs/cu_proxy.jsonl, out/twin2/runs/lite.jsonl, out/twin2/runs/main.jsonl (proposed|bofn|historical|stock-lean: 12; proposed|gpbo|historical|stock-lean: 12; proposed|random|historical|stock-lean: 12; proposed|sobol|historical|stock-lean: 12; proposed|heuristic|historical|stock-lean: 12; proposed|tiered|historical|stock-lean: 12; vertical_lab|bofn_blend|historical|cu_hidden-1.0: 12; vertical_lab|bofn|historical|cu_hidden-1.0: 12; vertical_lab|gpbo|historical|cu_hidden-1.0: 12; vertical_lab|cost_aware|historical|cu_hidden-1.0: 12; vertical_lab|random|historical|cu_hidden-1.0: 12; vertical_lab|tiered|historical|cu_hidden-1.0: 12; vertical_lab|heuristic|historical|cu_hidden-1.0: 12; vertical_lab|tiered_mis|historical|: 12; vertical_lab|tiered_mis|historical|cu_hidden-1.0: 12; vertical_lab|bofn|historical|fidelity-lite: 3; vertical_lab|heuristic|historical|fidelity-lite: 3; vertical_lab|bofn_blend|historical|: 12; vertical_lab|bofn|historical|: 12; vertical_lab|gpbo|historical|: 12; vertical_lab|cost_aware|historical|: 12; vertical_lab|random|historical|: 12; vertical_lab|sobol|historical|: 12; vertical_lab|heuristic|historical|: 12; vertical_lab|tiered|historical|: 12), 14 event logs, and the slowdown validation in out/twin2/econ/validate.json. Targets: out/twin2/oracle.json sota_utility (flaime_al: AlSi10Mg, onr_cu: C95800 NAB).*
 
 ### Key numbers
 
 - **Capital.** The vertical lab's equipment and fit-out: $5.40M; the conventional lab's own tools: $0.54M. A year of fixed cost (depreciation, service, utilities and space, fixed staff): $1.18M against $0.12M.
-- **Utilization.** The two campaigns use 4.4% of the vertical lab's available hours (capex-weighted); the atomizer, the busiest, 37% of its start slots.
-- **Cost per demonstrated alloy** (both campaigns): conventional $9.6k without capex, $11.7k with; vertical lab used by the campaigns alone $16.8k / $30.7k; vertical lab 60% utilized by outside users $4.6k / $5.9k.
-- **Outside work.** At 20 h a week of outside demand per instrument (assumed), 26,983 jobs a year bring $3.08M at academic user-facility rates, $2.44M net of handling and consumables: 4.1x the lab's depreciation and 2.1x all its fixed costs. Filling every station to 60% instead (capacity, no demand limit): 106,854 jobs, $13.17M.
-- **Slowdown, FLAIME.** With outside work bringing each station to 25%, 50%, 70%, 85%: cycle time x0.97/1.06/1.40/2.22 in the twin (Kingman x1.01/1.08/1.27/1.73); days to the target x1.00/1.02/1.25/1.45.
-- **Slowdown, ONR.** With outside work bringing each station to 25%, 50%, 70%, 85%: cycle time x1.09/1.02/1.11/1.55 in the twin (Kingman x1.00/1.04/1.14/1.37); days to the target x0.93/0.96/1.06/1.17.
-- **Headline.** FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) 1.9x faster (95% CI 1.2-unbounded) (reached in 100% of 10 seeds against 65% of 20); at 169% of the operating cost (95% CI 53%-257%); at 233% of the full cost (95% CI 0%-359%); at 50% of the full at 60% utilization cost (95% CI 0%-78%); reference: the conventional lab (tiered).
-- **Headline.** ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) 1.3x faster (95% CI 0.91-unbounded) (reached in 90% of 10 seeds against 55% of 20); at 262% of the operating cost (95% CI 0%-334%); at 385% of the full cost (95% CI 0%-498%); at 79% of the full at 60% utilization cost (95% CI 0%-97%); reference: the conventional lab (tiered).
+- **Utilization.** The two campaigns use 5.8% of the vertical lab's available hours (capex-weighted); the atomizer, the busiest, 46% of its start slots.
+- **Cost per demonstrated alloy** (both campaigns): conventional $9.4k without capex, $11.6k with; vertical lab used by the campaigns alone $15.7k / $28.6k; vertical lab 60% utilized by outside users $4.5k / $5.9k.
+- **Outside work.** At 10 h a week of outside demand per instrument (assumed), 13,502 jobs a year bring $1.55M at academic user-facility rates, $1.23M net of handling and consumables: 2.1x the lab's depreciation and 1.0x all its fixed costs. Filling every station to 60% instead (capacity, no demand limit): 106,415 jobs, $13.03M.
+- **Slowdown, FLAIME, cost_aware.** Outside work bringing each station to 25%, 50%, 70%, 85%: cycle time x0.97/1.06/1.40/2.22 in the twin (Kingman x1.01/1.08/1.27/1.73), days to the state of the art x1.00/1.02/1.25/1.45, alloys demonstrated x0.96/0.90/0.75/0.61.
+- **Slowdown, ONR, cost_aware.** Outside work bringing each station to 25%, 50%, 70%, 85%: cycle time x1.09/1.02/1.11/1.55 in the twin (Kingman x1.00/1.04/1.14/1.37), days to the state of the art x0.93/0.96/1.06/1.17, alloys demonstrated x0.92/0.92/1.00/0.75.
+- **Throughput** (alloys demonstrated a year, both campaigns; vertical / conventional): bofn 47 / 29; gpbo 57 / 40; random 56 / 39; sobol 20 / 12; heuristic 117 / 75; tiered 26 / 16. Instrument measurements a year: bofn 763 / 507; gpbo 638 / 442; random 628 / 425; sobol 553 / 397; heuristic 780 / 480; tiered 587 / 395.
+- **Headline.** FLAIME: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.423) 1.1x faster (95% CI 0.69-2.2) (reached in 100% of 12 seeds against 100% of 12); 2.65x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 1.1-4.2); 3.81x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.6-5.9); 1.63x the operating cost with outside users sharing the lab, i.e. costs more (95% CI 0.68-2.5); 2.16x the full cost with outside users sharing the lab, i.e. costs more (95% CI 0.93-3.3); against the conventional lab (heuristic).
+-   - vertical lab + bofn_blend vs conventional + heuristic, flaime_al, full, alone: the vertical lab costs more: 3.81x the conventional lab's full cost to the target (the 95% CI excludes parity).
+-   - vertical lab + bofn_blend vs conventional + heuristic, flaime_al, full, shared: the vertical lab costs more: 2.16x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** ONR: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.556) 2.2x faster (95% CI 1.7-2.6) (reached in 100% of 12 seeds against 100% of 12); 1.55x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 1.3-2.0); 2.16x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.8-2.7); 0.77x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.64-0.98); 0.90x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.74-1.1); against the conventional lab (heuristic).
+-   - vertical lab + bofn_blend vs conventional + heuristic, onr_cu, full, alone: the vertical lab costs more: 2.16x the conventional lab's full cost to the target (the 95% CI excludes parity).
+-   - vertical lab + bofn_blend vs conventional + heuristic, onr_cu, full, shared: the vertical lab costs less: 0.90x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** FLAIME: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.423) at least 9.4x faster: the conventional lab (sobol) reached it in fewer than half its seeds within its horizon (reached in 100% of 12 seeds against 25% of 12); at most 0.30x the operating cost (no capex) with the campaigns alone; at most 0.43x the full cost (with capex) with the campaigns alone; at most 0.18x the operating cost with outside users sharing the lab; at most 0.24x the full cost with outside users sharing the lab; against the conventional lab (sobol).
+-   - vertical lab + bofn_blend vs conventional + sobol, flaime_al, full, alone: the vertical lab costs less: 0.43x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+-   - vertical lab + bofn_blend vs conventional + sobol, flaime_al, full, shared: the vertical lab costs less: 0.24x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- **Headline.** ONR: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.556) 3.5x faster (95% CI 1.7-unbounded) (reached in 100% of 12 seeds against 58% of 12); 0.89x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-1.7); 1.25x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 0.00-2.4); 0.44x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-0.85); 0.52x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-1.0); against the conventional lab (sobol).
+-   - vertical lab + bofn_blend vs conventional + sobol, onr_cu, full, alone: the vertical lab costs more: 1.25x the conventional lab's full cost to the target (the 95% CI includes parity).
+-   - vertical lab + bofn_blend vs conventional + sobol, onr_cu, full, shared: the vertical lab costs less: 0.52x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** FLAIME: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.423) 1.9x faster (95% CI 1.1-3.4) (reached in 100% of 12 seeds against 100% of 12); 1.36x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 0.78-2.4); 2.00x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.1-3.6); 0.84x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.47-1.4); 1.14x the full cost with outside users sharing the lab, i.e. costs more (95% CI 0.63-2.0); against the conventional lab (bofn).
+-   - vertical lab + bofn_blend vs conventional + bofn, flaime_al, full, alone: the vertical lab costs more: 2.00x the conventional lab's full cost to the target (the 95% CI excludes parity).
+-   - vertical lab + bofn_blend vs conventional + bofn, flaime_al, full, shared: the vertical lab costs more: 1.14x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** ONR: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.556) 3.7x faster (95% CI 2.0-unbounded) (reached in 100% of 12 seeds against 50% of 12); 0.84x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-1.5); 1.15x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 0.00-2.1); 0.42x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-0.75); 0.48x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-0.85); against the conventional lab (bofn).
+-   - vertical lab + bofn_blend vs conventional + bofn, onr_cu, full, alone: the vertical lab costs more: 1.15x the conventional lab's full cost to the target (the 95% CI includes parity).
+-   - vertical lab + bofn_blend vs conventional + bofn, onr_cu, full, shared: the vertical lab costs less: 0.48x the conventional lab's full cost to the target (the 95% CI excludes parity).
+- **Headline.** FLAIME: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.423) 3.3x faster (95% CI 1.1-11.9) (reached in 100% of 12 seeds against 100% of 12); 0.98x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.29-2.6); 1.34x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 0.38-3.8); 0.66x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.22-1.7); 0.82x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.26-2.3); against the conventional lab (heuristic).
+-   - vertical lab + heuristic vs conventional + heuristic, flaime_al, full, alone: the vertical lab costs more: 1.34x the conventional lab's full cost to the target (the 95% CI includes parity).
+-   - vertical lab + heuristic vs conventional + heuristic, flaime_al, full, shared: the vertical lab costs less: 0.82x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** ONR: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.556) 3.4x faster (95% CI 0.00-4.4) (reached in 58% of 12 seeds against 100% of 12); 1.11x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 0.85-unbounded); 1.45x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.1-unbounded); 0.64x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.49-unbounded); 0.68x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.53-unbounded); against the conventional lab (heuristic).
+-   - vertical lab + heuristic vs conventional + heuristic, onr_cu, full, alone: the vertical lab costs more: 1.45x the conventional lab's full cost to the target (the 95% CI includes parity).
+-   - vertical lab + heuristic vs conventional + heuristic, onr_cu, full, shared: the vertical lab costs less: 0.68x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** FLAIME: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.423) at least 29.4x faster: the conventional lab (sobol) reached it in fewer than half its seeds within its horizon (reached in 100% of 12 seeds against 25% of 12); at most 0.11x the operating cost (no capex) with the campaigns alone; at most 0.15x the full cost (with capex) with the campaigns alone; at most 0.07x the operating cost with outside users sharing the lab; at most 0.09x the full cost with outside users sharing the lab; against the conventional lab (sobol).
+-   - vertical lab + heuristic vs conventional + sobol, flaime_al, full, alone: the vertical lab costs less: 0.15x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+-   - vertical lab + heuristic vs conventional + sobol, flaime_al, full, shared: the vertical lab costs less: 0.09x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- **Headline.** ONR: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.556) 5.4x faster (95% CI 0.00-unbounded) (reached in 58% of 12 seeds against 58% of 12); 0.64x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.84x the full cost (with capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.37x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); 0.40x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); against the conventional lab (sobol).
+-   - vertical lab + heuristic vs conventional + sobol, onr_cu, full, alone: the vertical lab costs less: 0.84x the conventional lab's full cost to the target (the 95% CI includes parity).
+-   - vertical lab + heuristic vs conventional + sobol, onr_cu, full, shared: the vertical lab costs less: 0.40x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** FLAIME: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.423) 5.9x faster (95% CI 1.8-16.3) (reached in 100% of 12 seeds against 100% of 12); 0.50x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.21-1.5); 0.70x the full cost (with capex) with the campaigns alone, i.e. costs less (95% CI 0.28-2.2); 0.34x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.16-0.91); 0.43x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.19-1.3); against the conventional lab (bofn).
+-   - vertical lab + heuristic vs conventional + bofn, flaime_al, full, alone: the vertical lab costs less: 0.70x the conventional lab's full cost to the target (the 95% CI includes parity).
+-   - vertical lab + heuristic vs conventional + bofn, flaime_al, full, shared: the vertical lab costs less: 0.43x the conventional lab's full cost to the target (the 95% CI includes parity).
+- **Headline.** ONR: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.556) 5.8x faster (95% CI 0.00-unbounded) (reached in 58% of 12 seeds against 50% of 12); 0.60x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.78x the full cost (with capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.34x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); 0.37x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); against the conventional lab (bofn).
+-   - vertical lab + heuristic vs conventional + bofn, onr_cu, full, alone: the vertical lab costs less: 0.78x the conventional lab's full cost to the target (the 95% CI includes parity).
+-   - vertical lab + heuristic vs conventional + bofn, onr_cu, full, shared: the vertical lab costs less: 0.37x the conventional lab's full cost to the target (the 95% CI includes parity).
 
 ### The two labs
 
@@ -244,106 +279,191 @@ say how the money and the time move between the two labs in this model, not what
 
 ### Cost per experiment
 
-An experiment is an alloy demonstrated through the whole chain (tensile for FLAIME; tensile and 30-day immersion for the ONR). Conventional: `proposed|cost_aware|historical|`; vertical: `vertical_lab|cost_aware|historical|`. Ratio of sums over the seeds.
+An experiment is an alloy demonstrated through the whole chain (tensile for FLAIME; tensile and 30-day immersion for the ONR). Conventional: `proposed|bofn|historical|stock-lean`; vertical: `vertical_lab|bofn_blend|historical|`. Ratio of sums over the seeds.
 
 | case | alloys | capex | service | utilities, space | labour | consumables, feedstock | outside fees | **total** |
 |---|---|---|---|---|---|---|---|---|
-| both: conventional, no capex | 933 | $0.0k | $1.1k | $0.5k | $2.8k | $3.3k | $1.9k | **$9.6k** |
-| both: conventional, with capex | 933 | $2.1k | $1.1k | $0.5k | $2.8k | $3.3k | $1.9k | **$11.7k** |
-| both: vertical lab, campaigns only, no capex | 433 | $0.0k | $8.3k | $2.4k | $2.8k | $3.2k | $0.1k | **$16.8k** |
-| both: vertical lab, campaigns only, with capex | 433 | $13.9k | $8.3k | $2.4k | $2.8k | $3.2k | $0.1k | **$30.7k** |
-| both: vertical lab, 60% utilized, no capex | 433 | $0.0k | $0.8k | $0.2k | $0.3k | $3.2k | $0.1k | **$4.6k** |
-| both: vertical lab, 60% utilized, with capex | 433 | $1.3k | $0.8k | $0.2k | $0.3k | $3.2k | $0.1k | **$5.9k** |
-| FLAIME: conventional, no capex | 830 | $0.0k | $1.1k | $0.5k | $2.7k | $2.1k | $1.8k | **$8.1k** |
-| FLAIME: conventional, with capex | 830 | $1.9k | $1.1k | $0.5k | $2.7k | $2.1k | $1.8k | **$10.0k** |
-| FLAIME: vertical lab, campaigns only, no capex | 391 | $0.0k | $6.5k | $1.9k | $2.3k | $2.2k | $0.0k | **$12.8k** |
-| FLAIME: vertical lab, campaigns only, with capex | 391 | $11.2k | $6.5k | $1.9k | $2.3k | $2.2k | $0.0k | **$24.1k** |
-| FLAIME: vertical lab, 60% utilized, no capex | 391 | $0.0k | $0.8k | $0.2k | $0.3k | $2.2k | $0.0k | **$3.4k** |
-| FLAIME: vertical lab, 60% utilized, with capex | 391 | $1.3k | $0.8k | $0.2k | $0.3k | $2.2k | $0.0k | **$4.7k** |
-| ONR: conventional, no capex | 103 | $0.0k | $1.4k | $0.7k | $3.4k | $13.2k | $3.1k | **$21.8k** |
-| ONR: conventional, with capex | 103 | $3.2k | $1.4k | $0.7k | $3.4k | $13.2k | $3.1k | **$25.0k** |
-| ONR: vertical lab, campaigns only, no capex | 42 | $0.0k | $25.1k | $6.5k | $8.1k | $12.9k | $1.1k | **$53.8k** |
-| ONR: vertical lab, campaigns only, with capex | 42 | $38.3k | $25.1k | $6.5k | $8.1k | $12.9k | $1.1k | **$92.0k** |
-| ONR: vertical lab, 60% utilized, no capex | 42 | $0.0k | $0.9k | $0.3k | $0.4k | $12.9k | $1.1k | **$15.5k** |
-| ONR: vertical lab, 60% utilized, with capex | 42 | $1.5k | $0.9k | $0.3k | $0.4k | $12.9k | $1.1k | **$17.0k** |
+| both: conventional, no capex | 1060 | $0.0k | $1.2k | $0.5k | $2.7k | $2.7k | $2.4k | **$9.4k** |
+| both: conventional, with capex | 1060 | $2.2k | $1.2k | $0.5k | $2.7k | $2.7k | $2.4k | **$11.6k** |
+| both: vertical lab, campaigns only, no capex | 558 | $0.0k | $7.7k | $2.2k | $2.6k | $3.1k | $0.0k | **$15.7k** |
+| both: vertical lab, campaigns only, with capex | 558 | $12.9k | $7.7k | $2.2k | $2.6k | $3.1k | $0.0k | **$28.6k** |
+| both: vertical lab, 60% utilized, no capex | 558 | $0.0k | $0.8k | $0.3k | $0.3k | $3.1k | $0.0k | **$4.5k** |
+| both: vertical lab, 60% utilized, with capex | 558 | $1.3k | $0.8k | $0.3k | $0.3k | $3.1k | $0.0k | **$5.9k** |
+| FLAIME: conventional, no capex | 837 | $0.0k | $1.1k | $0.5k | $2.6k | $1.9k | $2.3k | **$8.3k** |
+| FLAIME: conventional, with capex | 837 | $2.0k | $1.1k | $0.5k | $2.6k | $1.9k | $2.3k | **$10.3k** |
+| FLAIME: vertical lab, campaigns only, no capex | 434 | $0.0k | $6.7k | $2.0k | $2.3k | $2.4k | $0.0k | **$13.5k** |
+| FLAIME: vertical lab, campaigns only, with capex | 434 | $11.6k | $6.7k | $2.0k | $2.3k | $2.4k | $0.0k | **$25.1k** |
+| FLAIME: vertical lab, 60% utilized, no capex | 434 | $0.0k | $0.8k | $0.3k | $0.3k | $2.4k | $0.0k | **$3.8k** |
+| FLAIME: vertical lab, 60% utilized, with capex | 434 | $1.4k | $0.8k | $0.3k | $0.3k | $2.4k | $0.0k | **$5.2k** |
+| ONR: conventional, no capex | 223 | $0.0k | $1.5k | $0.7k | $3.1k | $5.6k | $2.6k | **$13.4k** |
+| ONR: conventional, with capex | 223 | $3.0k | $1.5k | $0.7k | $3.1k | $5.6k | $2.6k | **$16.4k** |
+| ONR: vertical lab, campaigns only, no capex | 124 | $0.0k | $11.3k | $2.9k | $3.6k | $5.6k | $0.1k | **$23.6k** |
+| ONR: vertical lab, campaigns only, with capex | 124 | $17.4k | $11.3k | $2.9k | $3.6k | $5.6k | $0.1k | **$40.9k** |
+| ONR: vertical lab, 60% utilized, no capex | 124 | $0.0k | $0.8k | $0.2k | $0.3k | $5.6k | $0.1k | **$7.0k** |
+| ONR: vertical lab, 60% utilized, with capex | 124 | $1.3k | $0.8k | $0.2k | $0.3k | $5.6k | $0.1k | **$8.2k** |
 
 ### Utilization and outside work
 
-From 4 event logs of the vertical lab (capex-weighted mean utilization by the two campaigns: 4.4%). Outside jobs fill each station's idle hours up to 60% of its available hours (capacity), or up to 20 h a week of outside demand per instrument (demand-limited; assumed: 20 h a week of outside bookings per instrument, a busy core-facility instrument).
+From the busy hours of 12 runs of the vertical lab (capex-weighted mean utilization by the two campaigns: 5.8%). Outside jobs fill each station's idle hours up to 60% of its available hours (capacity), or up to 10 h a week of outside demand per instrument (demand-limited; assumed: 10 h a week of outside bookings per instrument, about a quarter of a busy core-facility instrument's week; the sensitivity table runs 5-40).
 
 | station | calendar | available h | campaigns' h | utilization | outside jobs a year (capacity) | revenue (capacity) | outside jobs (demand-limited) | revenue (demand-limited) | jobs |
 |---|---|---|---|---|---|---|---|---|---|
-| atomizer | day6, 1x | 2,086 | 777 | 37.3% | 86 | $129.3k | 86 | $129.3k | Ultrasonic atomization of a user's feedstock (a run and a full clean) |
-| immersion | 24/7, 24x | 210,240 | 8,111 | 3.9% | - | - | - | - | - |
-| doser | 24/7, 1x | 8,760 | 290 | 3.3% | - | - | - | - | - |
-| shop | 24/7, 2x | 17,520 | 480 | 2.7% | - | - | - | - | - |
-| utah_midi | 24/7, 1x | 8,760 | 201 | 2.3% | 632 | $758.2k | 130 | $156.4k | LPBF build on the MIDI (user powder) |
-| byu_sem | 24/7, 1x | 8,760 | 164 | 1.9% | 3,394 | $426.4k | 695 | $87.3k | SEM/EDS session, EBSD map |
-| utah_mxlab | 24/7, 1x | 8,760 | 165 | 1.9% | 1,273 | $651.6k | 261 | $133.5k | DED session (half a day) |
-| sieve | 24/7, 1x | 8,760 | 100 | 1.1% | - | - | - | - | - |
-| furnace | 24/7, 2x | 17,520 | 74 | 0.4% | 2,609 | $76.2k | 261 | $7.6k | Heat treatment (a furnace run) |
-| psd | 24/7, 1x | 8,760 | 33 | 0.4% | 10,446 | $255.9k | 2,086 | $51.1k | Laser-diffraction PSD (dry) |
-| byu_icpms | day, 1x | 2,346 | 6 | 0.2% | 14,022 | $1,261.9k | 10,429 | $938.6k | ICP-MS sample |
-| density | 24/7, 1x | 8,760 | 20 | 0.2% | - | - | - | - | - |
-| edm | 24/7, 1x | 8,760 | 19 | 0.2% | 5,237 | $785.6k | 1,043 | $156.4k | Wire-EDM cutting (a plate of specimens) |
-| cubxl | 24/7, 1x | 8,760 | 14 | 0.2% | 4,368 | $262.1k | 869 | $52.1k | Corrosion screen (OCP, LPR, EIS, CP) |
-| tensile | 24/7, 2x | 17,520 | 22 | 0.1% | 17,483 | $3,356.8k | 1,738 | $333.7k | Tensile test, 3 sub-size bars |
-| hardness | 24/7, 1x | 8,760 | 0 | 0.0% | 10,512 | $149.3k | 2,086 | $29.6k | Micro-Vickers hardness map |
-| nanoindent | 24/7, 1x | 8,760 | 0 | 0.0% | 5,256 | $404.7k | 1,043 | $80.3k | Nanoindentation map |
-| pip | 24/7, 1x | 8,760 | 0 | 0.0% | 10,512 | $2,628.0k | 2,086 | $521.4k | PIP test (stress-strain curve by indentation) |
-| prep | 24/7, 1x | 8,760 | 0 | 0.0% | - | - | - | - | - |
-| tensile_hot | 24/7, 1x | 8,760 | 0 | 0.0% | 3,504 | $1,345.5k | 695 | $267.0k | Elevated-temperature tensile test |
-| xrd | 24/7, 1x | 8,760 | 0 | 0.0% | 7,008 | $341.6k | 1,390 | $67.8k | Powder XRD scan |
-| xrf | 24/7, 1x | 8,760 | 0 | 0.0% | 10,512 | $331.9k | 2,086 | $65.8k | XRF sample |
+| atomizer | day6, 1x | 2,086 | 960 | 46.0% | 53 | $79.6k | 53 | $79.6k | Ultrasonic atomization of a user's feedstock (a run and a full clean) |
+| doser | 24/7, 1x | 8,760 | 412 | 4.7% | - | - | - | - | - |
+| utah_midi | 24/7, 1x | 8,760 | 348 | 4.0% | 614 | $736.3k | 65 | $78.2k | LPBF build on the MIDI (user powder) |
+| immersion | 24/7, 24x | 210,240 | 7,440 | 3.5% | - | - | - | - | - |
+| byu_sem | 24/7, 1x | 8,760 | 284 | 3.2% | 3,314 | $416.4k | 348 | $43.7k | SEM/EDS session, EBSD map |
+| shop | 24/7, 2x | 17,520 | 560 | 3.2% | - | - | - | - | - |
+| utah_mxlab | 24/7, 1x | 8,760 | 278 | 3.2% | 1,244 | $637.1k | 130 | $66.7k | DED session (half a day) |
+| sieve | 24/7, 1x | 8,760 | 138 | 1.6% | - | - | - | - | - |
+| furnace | 24/7, 2x | 17,520 | 218 | 1.2% | 2,574 | $75.1k | 130 | $3.8k | Heat treatment (a furnace run) |
+| prep | 24/7, 1x | 8,760 | 101 | 1.2% | - | - | - | - | - |
+| cubxl | 24/7, 1x | 8,760 | 69 | 0.8% | 4,322 | $259.3k | 435 | $26.1k | Corrosion screen (OCP, LPR, EIS, CP) |
+| pip | 24/7, 1x | 8,760 | 47 | 0.5% | 10,418 | $2,604.5k | 1,043 | $260.7k | PIP test (stress-strain curve by indentation) |
+| psd | 24/7, 1x | 8,760 | 46 | 0.5% | 10,420 | $255.3k | 1,043 | $25.6k | Laser-diffraction PSD (dry) |
+| byu_icpms | day, 1x | 2,346 | 10 | 0.4% | 13,979 | $1,258.2k | 5,214 | $469.3k | ICP-MS sample |
+| density | 24/7, 1x | 8,760 | 35 | 0.4% | - | - | - | - | - |
+| edm | 24/7, 1x | 8,760 | 27 | 0.3% | 5,229 | $784.3k | 521 | $78.2k | Wire-EDM cutting (a plate of specimens) |
+| tensile | 24/7, 2x | 17,520 | 28 | 0.2% | 17,473 | $3,354.9k | 869 | $166.9k | Tensile test, 3 sub-size bars |
+| hardness | 24/7, 1x | 8,760 | 9 | 0.1% | 10,494 | $149.1k | 1,043 | $14.8k | Micro-Vickers hardness map |
+| tensile_hot | 24/7, 1x | 8,760 | 0 | 0.0% | 3,504 | $1,345.5k | 348 | $133.5k | Elevated-temperature tensile test |
+| xrd | 24/7, 1x | 8,760 | 0 | 0.0% | 7,008 | $341.6k | 695 | $33.9k | Powder XRD scan |
+| xrf | 24/7, 1x | 8,760 | 0 | 0.0% | 10,512 | $331.9k | 1,043 | $32.9k | XRF sample |
+| nanoindent | 24/7, 1x | 8,760 | 0 | 0.0% | 5,256 | $404.7k | 521 | $40.1k | Nanoindentation map |
 
 | | outside jobs a year | revenue | net of handling and consumables | x depreciation | x all fixed costs |
 |---|---|---|---|---|---|
-| capacity (60% cap) | 106,854 | $13.17M | $10.56M | 17.6 | 8.9 |
-| demand-limited (20 h a week), academic rates | 26,983 | $3.08M | $2.44M | 4.1 | 2.1 |
-| demand-limited, industry rates | 26,983 | $5.52M | $4.64M | 7.7 | 3.9 |
+| capacity (60% cap) | 106,415 | $13.03M | $10.45M | 17.4 | 8.8 |
+| demand-limited (10 h a week), academic rates | 13,502 | $1.55M | $1.23M | 2.1 | 1.0 |
+| demand-limited, industry rates | 13,502 | $2.78M | $2.34M | 3.9 | 2.0 |
 | demand 5 h a week, academic | 6,759 | $0.79M | $0.63M | 1.0 | 0.5 |
-| demand 10 h a week, academic | 13,519 | $1.58M | $1.26M | 2.1 | 1.1 |
-| demand 20 h a week, academic | 26,983 | $3.08M | $2.44M | 4.1 | 2.1 |
-| demand 40 h a week, academic | 47,045 | $5.41M | $4.30M | 7.2 | 3.6 |
+| demand 10 h a week, academic | 13,502 | $1.55M | $1.23M | 2.1 | 1.0 |
+| demand 20 h a week, academic | 26,950 | $3.03M | $2.40M | 4.0 | 2.0 |
+| demand 40 h a week, academic | 46,969 | $5.36M | $4.26M | 7.1 | 3.6 |
 
-**Value per capex dollar.** The campaigns demonstrate 43.3 alloys a year in the vertical lab; at the conventional lab's full cost of $11.7k an alloy that is 0.09 dollars of experiments a year per dollar of capex. With demand-limited outside work it is 0.55, and 2.05 if the capacity sells.
+**Value per capex dollar.** The campaigns demonstrate 46.5 alloys a year in the vertical lab; at the conventional lab's full cost of $11.6k an alloy that is 0.10 dollars of experiments a year per dollar of capex. With demand-limited outside work it is 0.33, and 2.04 if the capacity sells.
 
 ### Slowdown
 
-Outside jobs booked into the twin's facility before the campaigns run (`Twin(..., external=...)`, hook: twin), 4 seeds a level, 20 twin-years in all, against Kingman's estimate on the same baseline.
+Outside jobs booked into the twin's facility before the campaigns run (`Twin(..., external=...)`, twin.bench), 4 seeds a level, 20 twin-years in all, against Kingman's estimate on each policy's own empty-lab runs.
 
-| campaign | outside work up to | twin: cycle time | twin: days to target (KM) | Kingman | alloys demonstrated | best |
-|---|---|---|---|---|---|---|
-| flaime_al | 0% | 1.00x | 1.00x | 1.00x | 42.8 | 0.698 |
-| flaime_al | 25% | 0.97x | 1.00x | 1.01x | 41.0 | 0.691 |
-| flaime_al | 50% | 1.06x | 1.02x | 1.08x | 38.5 | 0.708 |
-| flaime_al | 70% | 1.40x | 1.25x | 1.27x | 32.2 | 0.675 |
-| flaime_al | 85% | 2.22x | 1.45x | 1.73x | 26.2 | 0.677 |
-| onr_cu | 0% | 1.00x | 1.00x | 1.00x | 6.0 | 0.673 |
-| onr_cu | 25% | 1.09x | 0.93x | 1.00x | 5.5 | 0.673 |
-| onr_cu | 50% | 1.02x | 0.96x | 1.04x | 5.5 | 0.634 |
-| onr_cu | 70% | 1.11x | 1.06x | 1.14x | 6.0 | 0.633 |
-| onr_cu | 85% | 1.55x | 1.17x | 1.37x | 4.5 | 0.601 |
+| policy | campaign | outside work up to | twin: cycle time | twin: days to the state of the art (KM) | Kingman | alloys demonstrated | best new alloy |
+|---|---|---|---|---|---|---|---|
+| cost_aware | flaime_al | 0% | 1.00x | 1.00x | 1.00x | 42.8 | 0.698 |
+| cost_aware | flaime_al | 25% | 0.97x | 1.00x | 1.01x | 41.0 | 0.691 |
+| cost_aware | flaime_al | 50% | 1.06x | 1.02x | 1.08x | 38.5 | 0.708 |
+| cost_aware | flaime_al | 70% | 1.40x | 1.25x | 1.27x | 32.2 | 0.675 |
+| cost_aware | flaime_al | 85% | 2.22x | 1.45x | 1.73x | 26.2 | 0.677 |
+| cost_aware | onr_cu | 0% | 1.00x | 1.00x | 1.00x | 6.0 | 0.673 |
+| cost_aware | onr_cu | 25% | 1.09x | 0.93x | 1.00x | 5.5 | 0.673 |
+| cost_aware | onr_cu | 50% | 1.02x | 0.96x | 1.04x | 5.5 | 0.634 |
+| cost_aware | onr_cu | 70% | 1.11x | 1.06x | 1.14x | 6.0 | 0.633 |
+| cost_aware | onr_cu | 85% | 1.55x | 1.17x | 1.37x | 4.5 | 0.601 |
 
-### Acceleration and cost to target
+### Throughput
 
-| comparison | campaign | target | AF in days (95% CI) | AF in experiments | reached (new / ref) | operating cost ratio | full cost ratio | full, outside users at the cap |
-|---|---|---|---|---|---|---|---|---|
-| tiered on the partners -> cost_aware in the vertical lab | flaime_al | 0.423 | 1.90 (1.16-unbounded) | 0.59 (0.22-8.29) | 100% / 65% | 169% | 233% | 50% |
-| tiered on the partners -> cost_aware in the vertical lab | onr_cu | 0.556 | 1.28 (0.91-unbounded) | 1.50 (0.50-unbounded) | 90% / 55% | 262% | 385% | 79% |
-| random on the partners -> cost_aware in the vertical lab | flaime_al | 0.423 | >= 3.9 | >= 6.1 | 100% / 13% | <= 55% | <= 83% | <= 18% |
-| random on the partners -> cost_aware in the vertical lab | onr_cu | 0.556 | >= 1.5 | >= 2.0 | 90% / 23% | <= 209% | <= 307% | <= 63% |
-| cost_aware on the partners -> cost_aware in the vertical lab | flaime_al | 0.423 | 1.15 (0.77-1.45) | 0.71 (0.35-2.40) | 100% / 93% | 175% | 267% | 58% |
-| cost_aware on the partners -> cost_aware in the vertical lab | onr_cu | 0.556 | 1.24 (0.96-unbounded) | 1.50 (0.67-2.00) | 90% / 63% | 271% | 395% | 82% |
+| facility | policy | runs | alloys demonstrated a year (FLAIME + ONR) | instrument measurements a year | results a year (no simulations) |
+|---|---|---|---|---|---|
+| proposed | bofn | 12 | 29.4 (23.2 + 6.2) | 507 | 289 |
+| proposed | gpbo | 12 | 40.2 (34.0 + 6.3) | 442 | 249 |
+| proposed | heuristic | 12 | 75.3 (67.9 + 7.4) | 480 | 294 |
+| proposed | random | 12 | 38.7 (31.9 + 6.8) | 425 | 239 |
+| proposed | sobol | 12 | 12.1 (6.9 + 5.1) | 397 | 211 |
+| proposed | tiered | 12 | 15.8 (9.1 + 6.7) | 395 | 216 |
+| vertical_lab | bofn | 12 | 47.3 (34.5 + 12.8) | 763 | 424 |
+| vertical_lab | bofn_blend | 12 | 46.5 (36.2 + 10.3) | 935 | 547 |
+| vertical_lab | cost_aware | 12 | 33.7 (24.2 + 9.5) | 543 | 291 |
+| vertical_lab | gpbo | 12 | 56.8 (45.2 + 11.6) | 638 | 343 |
+| vertical_lab | heuristic | 12 | 116.9 (102.9 + 14.0) | 780 | 438 |
+| vertical_lab | random | 12 | 56.4 (42.5 + 13.9) | 628 | 333 |
+| vertical_lab | sobol | 12 | 19.9 (9.6 + 10.3) | 553 | 276 |
+| vertical_lab | tiered | 12 | 26.3 (15.0 + 11.3) | 587 | 300 |
+| vertical_lab | tiered_mis | 12 | 24.1 (12.0 + 12.1) | 520 | 286 |
+
+### Acceleration and cost to the state of the art
+
+Cost bases: **operating**: cash + labour + service + utilities and space (no capex); **full**: operating + depreciation (capex); **alone**: the vertical lab's fixed costs carried by the two campaigns only; **shared**: outside users take each in-house station's idle hours up to 10 h a week of demand (assumed) and 60% utilization, paying their share. the conventional lab is charged alone in both cases; its rented facilities' rates already include their sharing.
+
+| comparison | campaign | target | reached (vertical / conventional) | AF in days (95% CI) | AF in alloys | cost ratio: operating, alone | full, alone | operating, shared | full, shared |
+|---|---|---|---|---|---|---|---|---|---|
+| vertical lab + bofn_blend vs conventional + heuristic | flaime_al | 0.423 | 100% of 12 / 100% of 12 | 1.05 (0.69-2.25) | 0.60 (0.25-2.38) | 2.65x (1.14-4.22) | 3.81x (1.65-5.86) | 1.63x (0.68-2.53) | 2.16x (0.93-3.29) |
+| vertical lab + bofn_blend vs conventional + heuristic | onr_cu | 0.556 | 100% of 12 / 100% of 12 | 2.18 (1.73-2.61) | 1.80 (0.80-3.00) | 1.55x (1.29-1.96) | 2.16x (1.79-2.72) | 0.77x (0.64-0.98) | 0.90x (0.74-1.14) |
+| vertical lab + bofn_blend vs conventional + sobol | flaime_al | 0.423 | 100% of 12 / 25% of 12 | >= 9.4 | >= 3.2 | <= 0.30x | <= 0.43x | <= 0.18x | <= 0.24x |
+| vertical lab + bofn_blend vs conventional + sobol | onr_cu | 0.556 | 100% of 12 / 58% of 12 | 3.51 (1.71-unbounded) | 3.20 (1.33-unbounded) | 0.89x (0.00-1.72) | 1.25x (0.00-2.44) | 0.44x (0.00-0.85) | 0.52x (0.00-1.01) |
+| vertical lab + bofn_blend vs conventional + bofn | flaime_al | 0.423 | 100% of 12 / 100% of 12 | 1.89 (1.07-3.35) | 0.95 (0.36-2.09) | 1.36x (0.78-2.40) | 2.00x (1.14-3.57) | 0.84x (0.47-1.42) | 1.14x (0.63-1.96) |
+| vertical lab + bofn_blend vs conventional + bofn | onr_cu | 0.556 | 100% of 12 / 50% of 12 | 3.73 (2.04-unbounded) | 3.20 (0.80-unbounded) | 0.84x (0.00-1.50) | 1.15x (0.00-2.05) | 0.42x (0.00-0.75) | 0.48x (0.00-0.85) |
+| vertical lab + heuristic vs conventional + heuristic | flaime_al | 0.423 | 100% of 12 / 100% of 12 | 3.29 (1.08-11.90) | 0.71 (0.23-4.75) | 0.98x (0.29-2.60) | 1.34x (0.38-3.78) | 0.66x (0.22-1.66) | 0.82x (0.26-2.26) |
+| vertical lab + heuristic vs conventional + heuristic | onr_cu | 0.556 | 58% of 12 / 100% of 12 | 3.37 (0.00-4.44) | 0.90 (0.00-2.50) | 1.11x (0.85-unbounded) | 1.45x (1.10-unbounded) | 0.64x (0.49-unbounded) | 0.68x (0.53-unbounded) |
+| vertical lab + heuristic vs conventional + sobol | flaime_al | 0.423 | 100% of 12 / 25% of 12 | >= 29.4 | >= 3.8 | <= 0.11x | <= 0.15x | <= 0.07x | <= 0.09x |
+| vertical lab + heuristic vs conventional + sobol | onr_cu | 0.556 | 58% of 12 / 58% of 12 | 5.43 (0.00-unbounded) | 1.60 (0.00-unbounded) | 0.64x (0.00-unbounded) | 0.84x (0.00-unbounded) | 0.37x (0.00-unbounded) | 0.40x (0.00-unbounded) |
+| vertical lab + heuristic vs conventional + bofn | flaime_al | 0.423 | 100% of 12 / 100% of 12 | 5.90 (1.78-16.31) | 1.12 (0.29-4.00) | 0.50x (0.21-1.47) | 0.70x (0.28-2.19) | 0.34x (0.16-0.91) | 0.43x (0.19-1.28) |
+| vertical lab + heuristic vs conventional + bofn | onr_cu | 0.556 | 58% of 12 / 50% of 12 | 5.77 (0.00-unbounded) | 1.60 (0.00-unbounded) | 0.60x (0.00-unbounded) | 0.78x (0.00-unbounded) | 0.34x (0.00-unbounded) | 0.37x (0.00-unbounded) |
+
+A cost ratio is the vertical lab's median cost to the target over the conventional lab's: above 1x the vertical lab costs more. In plain words:
+
+- vertical lab + bofn_blend vs conventional + heuristic, flaime_al, operating, alone: the vertical lab costs more: 2.65x the conventional lab's operating cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + heuristic, flaime_al, full, alone: the vertical lab costs more: 3.81x the conventional lab's full cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + heuristic, flaime_al, operating, shared: the vertical lab costs more: 1.63x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + heuristic, flaime_al, full, shared: the vertical lab costs more: 2.16x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + heuristic, onr_cu, operating, alone: the vertical lab costs more: 1.55x the conventional lab's operating cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + heuristic, onr_cu, full, alone: the vertical lab costs more: 2.16x the conventional lab's full cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + heuristic, onr_cu, operating, shared: the vertical lab costs less: 0.77x the conventional lab's operating cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + heuristic, onr_cu, full, shared: the vertical lab costs less: 0.90x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + sobol, flaime_al, operating, alone: the vertical lab costs less: 0.30x the conventional lab's operating cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + bofn_blend vs conventional + sobol, flaime_al, full, alone: the vertical lab costs less: 0.43x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + bofn_blend vs conventional + sobol, flaime_al, operating, shared: the vertical lab costs less: 0.18x the conventional lab's operating cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + bofn_blend vs conventional + sobol, flaime_al, full, shared: the vertical lab costs less: 0.24x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + bofn_blend vs conventional + sobol, onr_cu, operating, alone: the vertical lab costs less: 0.89x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + sobol, onr_cu, full, alone: the vertical lab costs more: 1.25x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + sobol, onr_cu, operating, shared: the vertical lab costs less: 0.44x the conventional lab's operating cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + sobol, onr_cu, full, shared: the vertical lab costs less: 0.52x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + bofn, flaime_al, operating, alone: the vertical lab costs more: 1.36x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + bofn, flaime_al, full, alone: the vertical lab costs more: 2.00x the conventional lab's full cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + bofn, flaime_al, operating, shared: the vertical lab costs less: 0.84x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + bofn, flaime_al, full, shared: the vertical lab costs more: 1.14x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + bofn, onr_cu, operating, alone: the vertical lab costs less: 0.84x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + bofn, onr_cu, full, alone: the vertical lab costs more: 1.15x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + bofn_blend vs conventional + bofn, onr_cu, operating, shared: the vertical lab costs less: 0.42x the conventional lab's operating cost to the target (the 95% CI excludes parity).
+- vertical lab + bofn_blend vs conventional + bofn, onr_cu, full, shared: the vertical lab costs less: 0.48x the conventional lab's full cost to the target (the 95% CI excludes parity).
+- vertical lab + heuristic vs conventional + heuristic, flaime_al, operating, alone: the vertical lab costs less: 0.98x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + heuristic, flaime_al, full, alone: the vertical lab costs more: 1.34x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + heuristic, flaime_al, operating, shared: the vertical lab costs less: 0.66x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + heuristic, flaime_al, full, shared: the vertical lab costs less: 0.82x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + heuristic, onr_cu, operating, alone: the vertical lab costs more: 1.11x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + heuristic, onr_cu, full, alone: the vertical lab costs more: 1.45x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + heuristic, onr_cu, operating, shared: the vertical lab costs less: 0.64x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + heuristic, onr_cu, full, shared: the vertical lab costs less: 0.68x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + sobol, flaime_al, operating, alone: the vertical lab costs less: 0.11x the conventional lab's operating cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + heuristic vs conventional + sobol, flaime_al, full, alone: the vertical lab costs less: 0.15x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + heuristic vs conventional + sobol, flaime_al, operating, shared: the vertical lab costs less: 0.07x the conventional lab's operating cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + heuristic vs conventional + sobol, flaime_al, full, shared: the vertical lab costs less: 0.09x the conventional lab's full cost to the target (an upper bound on the ratio (the reference reached the target in fewer than half its seeds)).
+- vertical lab + heuristic vs conventional + sobol, onr_cu, operating, alone: the vertical lab costs less: 0.64x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + sobol, onr_cu, full, alone: the vertical lab costs less: 0.84x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + sobol, onr_cu, operating, shared: the vertical lab costs less: 0.37x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + sobol, onr_cu, full, shared: the vertical lab costs less: 0.40x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + bofn, flaime_al, operating, alone: the vertical lab costs less: 0.50x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + bofn, flaime_al, full, alone: the vertical lab costs less: 0.70x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + bofn, flaime_al, operating, shared: the vertical lab costs less: 0.34x the conventional lab's operating cost to the target (the 95% CI excludes parity).
+- vertical lab + heuristic vs conventional + bofn, flaime_al, full, shared: the vertical lab costs less: 0.43x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + bofn, onr_cu, operating, alone: the vertical lab costs less: 0.60x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + bofn, onr_cu, full, alone: the vertical lab costs less: 0.78x the conventional lab's full cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + bofn, onr_cu, operating, shared: the vertical lab costs less: 0.34x the conventional lab's operating cost to the target (the 95% CI includes parity).
+- vertical lab + heuristic vs conventional + bofn, onr_cu, full, shared: the vertical lab costs less: 0.37x the conventional lab's full cost to the target (the 95% CI includes parity).
 
 Headlines:
 
-- FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) 1.9x faster (95% CI 1.2-unbounded) (reached in 100% of 10 seeds against 65% of 20); at 169% of the operating cost (95% CI 53%-257%); at 233% of the full cost (95% CI 0%-359%); at 50% of the full at 60% utilization cost (95% CI 0%-78%); reference: the conventional lab (tiered).
-- ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) 1.3x faster (95% CI 0.91-unbounded) (reached in 90% of 10 seeds against 55% of 20); at 262% of the operating cost (95% CI 0%-334%); at 385% of the full cost (95% CI 0%-498%); at 79% of the full at 60% utilization cost (95% CI 0%-97%); reference: the conventional lab (tiered).
-- FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) at least 3.9x faster: the conventional lab (random) reached it in fewer than half its seeds within the horizon (reached in 100% of 10 seeds against 13% of 30); at most 55% of the operating cost; at most 83% of the full cost; at most 18% of the full at 60% utilization cost; reference: the conventional lab (random).
-- ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) at least 1.5x faster: the conventional lab (random) reached it in fewer than half its seeds within the horizon (reached in 90% of 10 seeds against 23% of 30); at most 209% of the operating cost; at most 307% of the full cost; at most 63% of the full at 60% utilization cost; reference: the conventional lab (random).
-- FLAIME: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.4232) 1.1x faster (95% CI 0.77-1.5) (reached in 100% of 10 seeds against 93% of 30); at 175% of the operating cost (95% CI 144%-259%); at 267% of the full cost (95% CI 220%-397%); at 58% of the full at 60% utilization cost (95% CI 46%-84%); reference: the conventional lab (cost_aware).
-- ONR: in this simulated benchmark, the vertical lab (cost_aware) reached the target (0.5559) 1.2x faster (95% CI 0.96-unbounded) (reached in 90% of 10 seeds against 63% of 30); at 271% of the operating cost (95% CI 0%-338%); at 395% of the full cost (95% CI 0%-492%); at 82% of the full at 60% utilization cost (95% CI 0%-99%); reference: the conventional lab (cost_aware).
+- FLAIME: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.423) 1.1x faster (95% CI 0.69-2.2) (reached in 100% of 12 seeds against 100% of 12); 2.65x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 1.1-4.2); 3.81x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.6-5.9); 1.63x the operating cost with outside users sharing the lab, i.e. costs more (95% CI 0.68-2.5); 2.16x the full cost with outside users sharing the lab, i.e. costs more (95% CI 0.93-3.3); against the conventional lab (heuristic).
+- ONR: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.556) 2.2x faster (95% CI 1.7-2.6) (reached in 100% of 12 seeds against 100% of 12); 1.55x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 1.3-2.0); 2.16x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.8-2.7); 0.77x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.64-0.98); 0.90x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.74-1.1); against the conventional lab (heuristic).
+- FLAIME: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.423) at least 9.4x faster: the conventional lab (sobol) reached it in fewer than half its seeds within its horizon (reached in 100% of 12 seeds against 25% of 12); at most 0.30x the operating cost (no capex) with the campaigns alone; at most 0.43x the full cost (with capex) with the campaigns alone; at most 0.18x the operating cost with outside users sharing the lab; at most 0.24x the full cost with outside users sharing the lab; against the conventional lab (sobol).
+- ONR: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.556) 3.5x faster (95% CI 1.7-unbounded) (reached in 100% of 12 seeds against 58% of 12); 0.89x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-1.7); 1.25x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 0.00-2.4); 0.44x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-0.85); 0.52x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-1.0); against the conventional lab (sobol).
+- FLAIME: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.423) 1.9x faster (95% CI 1.1-3.4) (reached in 100% of 12 seeds against 100% of 12); 1.36x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 0.78-2.4); 2.00x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.1-3.6); 0.84x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.47-1.4); 1.14x the full cost with outside users sharing the lab, i.e. costs more (95% CI 0.63-2.0); against the conventional lab (bofn).
+- ONR: in this simulated benchmark, the vertical lab (bofn_blend) reached alloys matching or beating the state of the art (true utility 0.556) 3.7x faster (95% CI 2.0-unbounded) (reached in 100% of 12 seeds against 50% of 12); 0.84x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-1.5); 1.15x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 0.00-2.1); 0.42x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-0.75); 0.48x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-0.85); against the conventional lab (bofn).
+- FLAIME: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.423) 3.3x faster (95% CI 1.1-11.9) (reached in 100% of 12 seeds against 100% of 12); 0.98x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.29-2.6); 1.34x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 0.38-3.8); 0.66x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.22-1.7); 0.82x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.26-2.3); against the conventional lab (heuristic).
+- ONR: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.556) 3.4x faster (95% CI 0.00-4.4) (reached in 58% of 12 seeds against 100% of 12); 1.11x the operating cost (no capex) with the campaigns alone, i.e. costs more (95% CI 0.85-unbounded); 1.45x the full cost (with capex) with the campaigns alone, i.e. costs more (95% CI 1.1-unbounded); 0.64x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.49-unbounded); 0.68x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.53-unbounded); against the conventional lab (heuristic).
+- FLAIME: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.423) at least 29.4x faster: the conventional lab (sobol) reached it in fewer than half its seeds within its horizon (reached in 100% of 12 seeds against 25% of 12); at most 0.11x the operating cost (no capex) with the campaigns alone; at most 0.15x the full cost (with capex) with the campaigns alone; at most 0.07x the operating cost with outside users sharing the lab; at most 0.09x the full cost with outside users sharing the lab; against the conventional lab (sobol).
+- ONR: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.556) 5.4x faster (95% CI 0.00-unbounded) (reached in 58% of 12 seeds against 58% of 12); 0.64x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.84x the full cost (with capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.37x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); 0.40x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); against the conventional lab (sobol).
+- FLAIME: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.423) 5.9x faster (95% CI 1.8-16.3) (reached in 100% of 12 seeds against 100% of 12); 0.50x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.21-1.5); 0.70x the full cost (with capex) with the campaigns alone, i.e. costs less (95% CI 0.28-2.2); 0.34x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.16-0.91); 0.43x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.19-1.3); against the conventional lab (bofn).
+- ONR: in this simulated benchmark, the vertical lab (heuristic) reached alloys matching or beating the state of the art (true utility 0.556) 5.8x faster (95% CI 0.00-unbounded) (reached in 58% of 12 seeds against 50% of 12); 0.60x the operating cost (no capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.78x the full cost (with capex) with the campaigns alone, i.e. costs less (95% CI 0.00-unbounded); 0.34x the operating cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); 0.37x the full cost with outside users sharing the lab, i.e. costs less (95% CI 0.00-unbounded); against the conventional lab (bofn).
 
 <!-- econ:end -->
 
