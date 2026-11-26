@@ -89,6 +89,47 @@
   },
   {
    "i": 2,
+   "chapter": "checks",
+   "part": "collisions/round16_table.png",
+   "text": "This video's own check: each clip was checked frame by frame as it rendered, this round's and round fifteen's alike. The table lists, clip by clip, the frames where something still touches.",
+   "spoken": "This video's own check: each clip was checked frame by frame as it rendered, this round's and round fifteen's alike. The table lists, clip by clip, the frames where something still touches.",
+   "phonemes": "ðɪs vˈɪdɪoʊz ˈoʊn tʃˈɛk: ˈiːtʃ klˈɪp wʌz tʃˈɛkt fɹˈeɪm baɪ fɹˈeɪm æz ɪt ɹˈɛndɚd, ðɪs ɹˈaʊndz ænd ɹˈaʊnd fˈɪftiːnz ɐlˈaɪk. ðə tˈeɪbəl lˈɪsts, klˈɪp baɪ klˈɪp, ðə fɹˈeɪmz wˌɛɹ sˈʌmθɪŋ stˈɪl tˈʌtʃᵻz.",
+   "seconds": 11.69,
+   "base.en": {
+    "heard": "This video's own check. Each clip was checked frame by frame as it rendered. This rounds and round 15s alike. The table lists, clip by clip, the frames where something still touches.",
+    "wer": 0.062,
+    "diffs": [
+     [
+      "insert",
+      "",
+      "fifteen"
+     ],
+     [
+      "substitute",
+      "fifteens",
+      "s"
+     ]
+    ],
+    "unsure": []
+   }
+  },
+  {
+   "i": 3,
+   "chapter": "floor",
+   "part": "floor_pass",
+   "text": "The whole night's pass, seen from above: fifty-two work spots and forty ground studs. Bonding and checking at every spot doubles the model's forty-one minutes to nearly an hour and a half.",
+   "spoken": "The whole night's pass, seen from above: fifty-two work spots and forty ground studs. Bonding and checking at every spot doubles the model's forty-one minutes to nearly an hour and a half.",
+   "phonemes": "ðə hˈoʊl nˈaɪts pˈæs, sˈiːn fɹʌm əbˈʌv: fˈɪftitˈuː wˈɜːk spˈɑːts ænd fˈɔːɹɾi ɡɹˈaʊnd stˈʌdz. bˈɑːndɪŋ ænd tʃˈɛkɪŋ æɾ ˈɛvɹi spˈɑːt dˈʌbəlz ðə mˈɑːdəlz fˈɔːɹɾiwˈʌn mˈɪnɪts tə nˌɪɹli ɐn ˈaʊɚ ænd ɐ hˈæf.",
+   "seconds": 11.35,
+   "base.en": {
+    "heard": "The whole night's pass, seen from above. 52 work spots and 40 ground studs. Bonding and checking at every spot doubles the model's 41 minutes to nearly an hour and a half.",
+    "wer": 0.0,
+    "diffs": [],
+    "unsure": []
+   }
+  },
+  {
+   "i": 4,
    "chapter": "floor",
    "part": "waste_clip",
    "text": "Liquid waste leaves a station in the capped bottle it was made in, one class a trip. At the fume hood the arm sets it in the intake tray, under the sash, and takes an empty back. It never opens or pours.",
@@ -103,7 +144,7 @@
    }
   },
   {
-   "i": 3,
+   "i": 5,
    "chapter": "floor",
    "part": "waste_clip",
    "text": "A person moves the bottles into the hood's vented cabinets each day shift: solvents on the left, acids on the right, a shelf apart.",
@@ -118,7 +159,7 @@
    }
   },
   {
-   "i": 4,
+   "i": 6,
    "chapter": "floor",
    "part": "waste_clip",
    "text": "Powder waste stays by the atomizer: a vacuum and a pail for each alloy family, a bucket for sweepings, used filters in dry sand. A person seals and carries the liners; powder never rides a robot.",

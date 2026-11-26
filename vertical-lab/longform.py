@@ -1124,6 +1124,13 @@ AUDIT_PARTS = {"base_cameras": ["base_cameras_vlm", "base_cameras_atomizer"],
 TWO_D = {"floor_pass", "floor_day"}        # 2-D animations (floor_pass.py, floor_day.py): no scene to check
 
 
+try:                                        # round 16: round 15's table, for the rate each recovered clip was drawn at
+    _R15_DRAWN = {x["clip"]: x["drawn_fps"] for x in json.loads((OUT / "collisions" / "round15_summary.json").read_text())
+                  if x.get("drawn_fps")}
+except (OSError, ValueError, KeyError):
+    _R15_DRAWN = {}
+
+
 def audit_rows() -> list[dict]:
     """Every 3-D clip in the plan with its collision audit (out/collisions/<clip>.json): frames checked, frames with
     an arm in collision, frames with anything moving in collision, the clip's size and the rate it was drawn at, and
@@ -1165,6 +1172,8 @@ def audit_rows() -> list[dict]:
             vals = [x.get(key, x.get(alt) if alt else None) for x in have]
             return None if not have or any(v is None for v in vals) else sum(vals)
         w, h, rate = probe(srcp)
+        if r.get("round15"):        # round 16: a recovered clip is at the long-form's 30 fps; the rate it was drawn at
+            rate = _R15_DRAWN.get(name, rate)       # is round 15's own summary's
         cm = clip_meta(str(r["src"])) or {}
         rows.append(dict(clip=name, chapter=r["chapter"], this_pass=not r.get("earlier"), round15=bool(r.get("round15")),
                          seconds=round(r["seconds"], 1),
@@ -1256,8 +1265,7 @@ def audit_table(path: Path):
         while note and d.textlength(note, font=fn) > W - 1420 - 40:
             note = note[:-2].rstrip() + "…"
         d.text((1420, yy + 2), note, font=fn, fill=INK)
-    d.text((40, H - 50), "Rendered: height and frames a second as drawn; round 15: that pass's render, cut from its "
-           "video; earlier: a render from before it. "
+    d.text((40, H - 50), "Rendered: height and rate as drawn; round 15: its render, cut from its video. "
            "Frames checked: every frame as shown, once however many parts touch. \"Anything moving\" adds trays, "
            "doors, MiRs, tables and people.", font=font(20), fill=GREY)
     im.save(path, optimize=True)

@@ -525,10 +525,10 @@
  },
  {
   "chapter": "checks",
-  "part": "collisions/round15_table.png",
+  "part": "collisions/round16_table.png",
   "offset": 0.5,
-  "text": "This video's own check: the clips drawn for it were checked frame by frame as they rendered. The table lists, clip by clip, the frames where something still touches.",
-  "source": "out/collisions/round15_summary.json (longform.py audit, round 15)"
+  "text": "This video's own check: each clip was checked frame by frame as it rendered, this round's and round fifteen's alike. The table lists, clip by clip, the frames where something still touches.",
+  "source": "out/collisions/round16_summary.json (longform.py audit, round 16)"
  },
  {
   "chapter": "upkeep",
