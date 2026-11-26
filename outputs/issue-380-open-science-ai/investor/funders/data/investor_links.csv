@@ -76,13 +76,13 @@ AI10 Ventures,0,arcee,Arcee AI,U3,open-weight models,1,0,2026,series_b,0,https:/
 AIX Ventures,0,chroma-core,Chroma,U1,COSS (GitHub core),1,1,2022,pre_seed,0,https://www.trychroma.com/blog/seed
 AIX Ventures,0,huggingface,Hugging Face,U1,COSS (GitHub core),1,0,2022,series_c,0,https://huggingface.co/blog/series-c
 AIX Ventures,0,marimo-team,marimo,U1,COSS (GitHub core),1,1,2024,seed,0,https://marimo.io/blog/seed-announcement
+AMD,0,cohere,Cohere,U3,"research weights, non-commercial licence (partial)",2,0,2024,series_d | venture_unspecified,0,https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/ | https://techcrunch.com/2025/08/14/cohere-hits-a-6-8b-valuation-as-investors-amd-nvidia-and-salesforce-double-down/
 AMD,0,huggingface,Hugging Face,U1,COSS (GitHub core),1,0,2023,series_d,0,https://techcrunch.com/2023/08/24/hugging-face-raises-235m-from-investors-including-salesforce-and-nvidia/
 AMD,0,liquid-ai,Liquid AI,U3,open-weight LFM models (partial),1,1,2024,series_a,0,https://siliconangle.com/2024/12/13/liquid-ai-raises-250m-led-amd-build-new-type-generative-ai-model
+AMD,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,0,2026,series_d,0,https://siliconangle.com/2026/10/09/oxide-computer-raises-445m-to-step-up-data-center-rack-production/
 AMD,0,radixark,RadixArk (SGLang),U3,COSS (SGLang),1,0,2026,seed,0,https://www.radixark.com/blog/radixark-launches-100m-seed
-AMD Ventures,0,cohere,Cohere,U3,"research weights, non-commercial licence (partial)",2,0,2024,series_d | venture_unspecified,0,https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/ | https://techcrunch.com/2025/08/14/cohere-hits-a-6-8b-valuation-as-investors-amd-nvidia-and-salesforce-double-down/
-AMD Ventures,0,oxide,Oxide Computer Company,U2,open-source firmware and software for its racks,1,0,2026,series_d,0,https://siliconangle.com/2026/10/09/oxide-computer-raises-445m-to-step-up-data-center-rack-production/
-AMD Ventures,0,Stability-AI,Stability AI,U1,COSS (GitHub core),2,0,2026,series_b | venture_unspecified,0,https://stability.ai/careers | https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/
-AMD Ventures,0,u4-wafer,Wafer,U4,open-source startup,1,0,2026,series_a,0,https://www.wafer.ai/blog/series-a
+AMD,0,Stability-AI,Stability AI,U1,COSS (GitHub core),2,0,2026,series_b | venture_unspecified,0,https://stability.ai/careers | https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/
+AMD,0,u4-wafer,Wafer,U4,open-source startup,1,0,2026,series_a,0,https://www.wafer.ai/blog/series-a
 AME Cloud Ventures,0,docker,Docker Inc.,U1,COSS (GitHub core),1,0,2015,series_d,0,http://fortune.com/2015/04/14/docker-raises-95-million/
 AME Cloud Ventures,0,u4-lastmile-ai,LastMile AI,U4,open-source startup,1,0,2023,seed,0,https://techcrunch.com/2023/09/14/lastmile-ai-closes-10m-seed-round-to-operationalize-ai-models/
 AME Cloud Ventures,0,minio,MinIO Inc.,U1,COSS (GitHub core),2,0,2015,seed | series_a,0,https://techcrunch.com/2015/06/17/minio-lands-3-3m-seed-round-to-build-out-open-source-storage-project/ | https://techcrunch.com/2017/09/19/minio-scores-20-million-series-a-to-build-a-neutral-object-storage-layer/
@@ -1248,12 +1248,11 @@ First Round Capital,0,together-ai,Together AI,U3,"open-source AI, open models",1
 First Spark Ventures,0,u4-adap,Adap,U4,open-source startup,2,1,2023,pre_seed | series_a,0,https://flower.ai/blog/2024-02-15-announcing-series-a
 First Spark Ventures,0,u4-flower,Flower,U4,open-source startup,1,0,,venture_unspecified,0,https://www.ycombinator.com/companies/flower
 FirstMark,0,ClickHouse,ClickHouse,U1,COSS (GitHub core),1,0,2025,series_c,0,https://clickhouse.com/blog/clickhouse-raises-350-million-series-c-to-power-analytics-for-ai-era
-FirstMark,0,cockroachdb,Cockroach Labs,U1,COSS (GitHub core),2,0,2021,series_f_plus | venture_unspecified,0,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/ | https://www.cockroachlabs.com/about/
+FirstMark,0,cockroachdb,Cockroach Labs,U1,COSS (GitHub core),4,0,2015,seed | series_e | series_f_plus | venture_unspecified,0,https://techcrunch.com/2021/12/16/cockroach-rolls-on-with-278m-series-f-on-5b-valuation/ | https://venturebeat.com/2021/01/12/cockroachdb-creator-cockroach-labs-raises-160-million-at-a-2-billion-valuation/ | https://www.cockroachlabs.com/about/
+FirstMark,0,daytonaio,Daytona Platforms,U1,COSS (GitHub core),2,2,2026,series_a | series_b,0,https://techcrunch.com/2026/10/23/agent-cloud-startup-daytona-hits-1b-valuation-backed-by-firstmark-and-a-whos-who-of-angels/
+FirstMark,0,h-company,H Company,U3,open-weight agent models (partial),1,0,2024,seed,0,https://techcrunch.com/2024/05/21/french-ai-startup-h-raises-220-million-seed-round/
+FirstMark,0,u4-lago,Lago,U4,open-source startup,1,1,2024,series_a,0,https://techcrunch.com/2024/03/14/lago-a-paris-based-open-source-billing-platform-banks-22m/
 FirstMark,0,surrealdb,SurrealDB Ltd,U1,COSS (GitHub core),5,3,2023,seed | series_a,0,https://siliconangle.com/2026/02/17/surrealdb-raises-23m-expand-ai-native-multi-model-database/ | https://surrealdb.com/about | https://techcrunch.com/2023/01/04/surrealdb-raises-6m-startup-funding-database-as-a-service/ | https://techcrunch.com/2024/06/18/surrealdb-is-helping-developers-consolidate-their-databases/
-FirstMark Capital,0,cockroachdb,Cockroach Labs,U1,COSS (GitHub core),2,0,2015,seed | series_e,0,https://venturebeat.com/2021/01/12/cockroachdb-creator-cockroach-labs-raises-160-million-at-a-2-billion-valuation/ | https://www.cockroachlabs.com/about/
-FirstMark Capital,0,daytonaio,Daytona Platforms,U1,COSS (GitHub core),2,2,2026,series_a | series_b,0,https://techcrunch.com/2026/10/23/agent-cloud-startup-daytona-hits-1b-valuation-backed-by-firstmark-and-a-whos-who-of-angels/
-FirstMark Capital,0,h-company,H Company,U3,open-weight agent models (partial),1,0,2024,seed,0,https://techcrunch.com/2024/05/21/french-ai-startup-h-raises-220-million-seed-round/
-FirstMark Capital,0,u4-lago,Lago,U4,open-source startup,1,1,2024,series_a,0,https://techcrunch.com/2024/03/14/lago-a-paris-based-open-source-billing-platform-banks-22m/
 Flex Capital,0,strapi,Strapi,U1,COSS (GitHub core),1,0,2022,series_b,0,https://strapi.io/blog/series-b
 Flex Capital,0,vercel,Vercel,U1,COSS (GitHub core),1,0,2021,series_d,0,https://vercel.com/blog/vercel-funding-series-d-and-valuation
 Floodgate,0,u4-buttercoin,Buttercoin,U4,open-source startup,1,0,2013,seed,0,https://techcrunch.com/2013/08/20/buttercoin/

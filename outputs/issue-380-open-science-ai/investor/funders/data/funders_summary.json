@@ -32,14 +32,14 @@
   }
  },
  "rounds": 1600,
- "investor_venture_links": 3978,
- "investors": 1914,
+ "investor_venture_links": 3977,
+ "investors": 1912,
  "investors_by_type": {
   "accelerator": 16,
-  "venture_firm": 894,
+  "venture_firm": 891,
   "growth_pe_hedge": 87,
   "corporate_venture": 157,
-  "angel": 489,
+  "angel": 490,
   "crowdfunding": 10,
   "public_investor": 26,
   "crypto_fund_or_dao": 38,
@@ -49,8 +49,8 @@
   "other": 3,
   "government_grant": 30
  },
- "investors_2plus": 509,
- "investors_5plus": 129,
+ "investors_2plus": 507,
+ "investors_5plus": 131,
  "rounds_by_source_kind": {
   "news": 790,
   "company": 400,

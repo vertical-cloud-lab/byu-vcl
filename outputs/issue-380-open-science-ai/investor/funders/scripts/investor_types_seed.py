@@ -186,6 +186,12 @@ T.update({"O'Reilly AlphaTech Ventures": V, "Amino Collective": V, "New York Ang
           "Genesis crowdfunding backers": CF, "Librem 13/15 crowdfunding backers": CF, "Librem 5 crowdfunding backers": CF,
           "StartEngine backers": CF, "Kickstarter backers": CF, "Crowd Supply backers": CF, "Community investors": CF})
 
+T.update({"Elad Gil": "angel", "AMD Ventures": C, "AMD": C, "FirstMark": V, "FirstMark Capital": V})
+
+T.update({"PayPal Ventures": C, "Telstra Ventures": C, "Datadog Ventures": C, "Hitachi Ventures": C, "Next47": C,
+          "Exor Ventures": C, "Maven 11 Capital": CR, "Innovation Endeavors": V, "Chemistry": V, "New Wave": V,
+          "NLnet Foundation": GG, "Adage Capital Management": G, "Blockchain Capital": CR, "Bain Capital Crypto": CR})
+
 
 def main():
     with open("data/investor_types.csv", "w", newline="") as f:
