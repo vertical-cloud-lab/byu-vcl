@@ -284,7 +284,10 @@ range (hot cracking) and β at 900 °C (retained β′) are the main ways a copp
 sees both. Among what passes, a rule of thumb about which elements strengthen picks well. The γ₂ effect doesn't reach
 the funnel either. BOFN has to learn the same failure modes from slow and costly copper results (about 10-14 alloys
 tested a year), so it doesn't catch up within a year. A copper truth with a failure mode the screen cannot see *and*
-that sits where the funnel looks would test the funnel properly. That is not done here.
+that sits where the funnel looks would test the funnel properly. That is not done here. Where the funnel looks: its
+top 24 copper picks are mostly near-binary Cu-7-8Al bronzes (on the first six seeds' screens), and 4-21 % of them have
+more iron than nickel, which the naval rule for nickel-aluminium bronze (nickel above iron, against selective phase
+corrosion) excludes. An effect from that rule is the next test; it would reach only part of the funnel's shortlist.
 
 ![Copper with and without the γ₂ effect](../out/twin2/fig/twin2_cu_hidden.png)
 
@@ -518,7 +521,7 @@ strategies, instruments, schedules and facilities interact in the model, not wha
   - The conventional lab's rates for outside partners (Mines, Utah's MX-Lab, Valimet, Ames) and every breakdown rate are assumed.
   - DAL #256's times are estimates: nothing in its chain has been timed end to end.
   - The outside demand behind the cloud-facility numbers is assumed.
-- **Mechanisms the model invents.** The γ₂ effect and the mis-specified proxy are tests of the copper result, not
+- **Mechanisms the model invents.** The γ₂ effect's size and the mis-specified proxy are ours: tests of the copper result, not
   findings about copper. Powder reuse's degradation rates come from the model, so "reuse doesn't pay" rests on them.
 
 ## 6. Where round 2's truths differ from DAL's synthetic benchmarks
