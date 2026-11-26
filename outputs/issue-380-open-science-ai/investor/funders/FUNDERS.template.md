@@ -234,6 +234,15 @@ Philanthropy also reaches open-source companies directly, in the deal data:
 - Knight Foundation co-led Authorea's 2016 round with Lux Capital.
 - Jed McCaleb and Sam Altman fund Arcadia Science.
 
+Several philanthropists also invest in open-source ventures in their own names (deal data):
+- Xavier Niel: personally in Mistral AI, H Company and Odoo, and through Kima Ventures in 13 ventures, among them
+  Docker, Strapi and Meilisearch.
+- Eric Schmidt: H Company, Reflection AI and Stability AI, and through Innovation Endeavors.
+- Bob Young, co-founder of Red Hat: AppFlowy, NocoDB, OpenBB, ResearchHub and Liquid AI.
+- Mark Shuttleworth: Inktank.
+- Jeff Bezos: Kong and Rescale, and through Bezos Expeditions MakerBot and Tenstorrent.
+- Patrick Collison: Daytona and Logseq.
+
 ## Governments and public programs
 
 Grants unless marked as investment. "→ firms" says whether companies can receive it.
