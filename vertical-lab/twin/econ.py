@@ -1049,9 +1049,10 @@ def report(runs_paths=None, events_paths=None, validate_path=None, out=OUT2, n_b
     out.mkdir(parents=True, exist_ok=True)
     if runs_paths is None:
         # round 2's experiments, without the development runs (stand-in instruments, TWIN_INSTRUMENTS=stub, which
-        # their configs don't record)
+        # their configs don't record) and the copper check's extra seeds (cu_seeds: main's configs at seeds 12-23,
+        # which would otherwise join the main groups and make them 24 seeds for two policies only)
         r2 = sorted(p for p in glob.glob(str(ROOT / "out" / "twin2" / "runs" / "*.jsonl"))
-                    if Path(p).stem != "dev" and not Path(p).stem.endswith(".errors"))
+                    if Path(p).stem not in ("dev", "cu_seeds") and not Path(p).stem.endswith(".errors"))
         g2 = group_runs(load_runs(r2))
         facs = {k[0] for k, v in g2.items() if len(v) >= 2}
         runs_paths = r2 if {"proposed", "vertical_lab"} <= facs else \

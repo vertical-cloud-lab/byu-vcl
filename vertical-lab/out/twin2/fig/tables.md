@@ -79,6 +79,20 @@
 | vertical_lab_tiered_mis | 12 | 0.302 ± 0.093 | 50% | 39 | $14k | 0.707 ± 0.011 | 100% | 69 | $30k | 2 |
 | vertical_lab_tiered_mis_cu_hidden-1.0 | 12 | 0.302 ± 0.093 | 50% | 39 | $14k | 0.707 ± 0.011 | 100% | 69 | $30k | 2 |
 
+**cu_ablation**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_tiered_screen | 12 | 0.354 ± 0.081 | 58% | 108 | $26k | 0.578 ± 0.035 | 67% | 102 | $34k | 2 |
+| vertical_lab_tiered_proxy | 12 | 0.000 ± 0.000 | 0% | - | - | 0.604 ± 0.039 | 67% | 110 | $37k | 2 |
+
+**cu_seeds**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_bofn_blend | 12 | 0.694 ± 0.021 | 100% | 107 | $31k | 0.495 ± 0.075 | 58% | 262 | $50k | 262 |
+| vertical_lab_tiered | 12 | 0.274 ± 0.089 | 42% | 15 | $13k | 0.675 ± 0.022 | 83% | 85 | $32k | 2 |
+
 **seeded**
 
 | setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
@@ -94,3 +108,10 @@
 | dal256_bofn_stock-lean_seeding-dal275 | 12 | 0.664 ± 0.018 | 100% | 73 | $18k | 0.302 ± 0.091 | 50% | 301 | $36k | 56 |
 | dal256_gpbo_stock-lean_seeding-dal275 | 12 | 0.469 ± 0.084 | 75% | 52 | $14k | 0.506 ± 0.069 | 83% | 269 | $34k | 6 |
 | dal256_random_stock-lean_seeding-dal275 | 12 | 0.546 ± 0.051 | 92% | 52 | $13k | 0.275 ± 0.088 | 42% | 269 | $36k | 1 |
+
+**cu_money**
+
+| setting | n | FLAIME best new (± SE) | hit T1 | median days to T1 | median $ to T1 | ONR best new (± SE) | hit T1 | median days to T1 | median $ to T1 | s/run |
+|---|---|---|---|---|---|---|---|---|---|---|
+| vertical_lab_bofn_blend_cu_budget-180000.0 | 12 | 0.679 ± 0.019 | 100% | 107 | $35k | 0.626 ± 0.032 | 75% | 226 | $51k | 287 |
+| vertical_lab_tiered_cu_budget-180000.0 | 12 | 0.338 ± 0.090 | 58% | 60 | $17k | 0.698 ± 0.015 | 92% | 88 | $32k | 2 |

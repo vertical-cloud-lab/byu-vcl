@@ -215,16 +215,19 @@ left, copper right. Dotted line: the best existing alloy on this synthetic truth
 - **Copper: no clear winner, and plain BOFN fails.** Tiered screening (0.69 ± 0.02) edges BOFN with the blend screen
   (0.67 ± 0.01) and beats today's best sooner (median 88 against 225 days). Plain BOFN scores 0.33, no better than
   random (0.35); 5 of its 12 runs ended the year with no new alloy scoring above zero. Copper results are slow and
-  costly, so a model has little to learn from; the cheap blend screen supplies more data [1, 4, 5]. The copper test is
-  also too kind to tiered screening: its screen uses the truth's own strengthening coefficients. Section 5.3 reruns it
-  with an effect the screen cannot see.
+  costly, so a model has little to learn from; the cheap blend screen supplies more data [1, 4, 5]. The copper test
+  looked too kind to tiered screening, whose proxy uses the truth's own strengthening coefficients. Section 5.3 tests
+  that four ways and with 24 seeds: the funnel's lead holds and grows (−0.10 ± 0.04 for BOFN at 24 seeds).
 - **Fidelity check.** With slower, fuller instrument simulators, BOFN scored 0.665 against 0.690 on aluminum and 0.36
   against 0.36 on copper (the same 3 seeds) [4].
 
 ### 5.3 The copper tie, tested four ways: none favors BOFN
 
 In the main benchmark, tiered screening edged BOFN with the blend screen on copper (0.69 against 0.67) and plain BOFN
-failed (0.33). Round 2's first reading was that the copper truth was too kind to the funnel: nothing in it was hidden
+failed (0.33). **With 12 more seeds** (`cu_seeds`, seeds 12-23, 24 in all) the edge is clear: tiered 0.68 ± 0.01
+against BOFN with the blend screen 0.58 ± 0.04, a paired −0.10 ± 0.04, BOFN ahead in 6 of 24 seeds; the funnel reached
+the state of the art in 21 of 24 seeds at a median of day 88, BOFN in 19 at day 226. On aluminium the same 24 seeds go
+the other way (BOFN 0.69 ± 0.01, the funnel 0.31 ± 0.06). Round 2's first reading was that the copper truth was too kind to the funnel: nothing in it was hidden
 from the CALPHAD screen, and the funnel's proxy reads the truth's own strengthening coefficients (14 MPa per wt% Al,
 2.6 Ni, 6 Mn; `truth_cu.CuTruth.strength`). Four tests, 12 seeds each, same seeds as the main benchmark:
 
@@ -480,7 +483,8 @@ Every price says where it comes from in `twin/econ.py` (procurement records and 
 ### 5.9 Where BOFN doesn't win, plainly
 
 - **Copper, the main benchmark:** tiered CALPHAD screening finished ahead of BOFN with the blend screen (0.69 ± 0.02
-  against 0.67 ± 0.01) and got to the state of the art sooner (median 88 against 225 days). Plain BOFN did no better
+  against 0.67 ± 0.01) and got to the state of the art sooner (median 88 against 225 days). At 24 seeds the gap is
+  0.10 ± 0.04 (0.68 against 0.58). Plain BOFN did no better
   than random (0.33 against 0.35), with 5 of its 12 years ending with no new alloy above zero.
 - **Copper with a hidden effect (γ₂):** BOFN with the blend screen lost 0.12 ± 0.08 and tiered screening lost
   nothing (5.3).
