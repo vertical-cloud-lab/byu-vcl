@@ -26,6 +26,13 @@ security cameras considered (#370) in the services chapter, a safety chapter (#3
 evaporation (#372), names (#376) and colour coding (#377) with the stations, and the floor cleaning (#369) and the waste
 (#371) in a chapter of their own; and powder-doser's own render of its newest doser (PR #185, v10) in chapter 1.
 
+Round 16 (Sterling, 2026-11-26: address PR #371's check of what round 15 really rendered "in full and rerender and get
+on YouTube"): the clips round 15 kept from earlier renders and the clips this round changes are rendered again into
+out/r16/ (render_r16.py); every other clip is round 15's own render, cut back out of round 15's long-form as YouTube
+serves it (720p30, frame-exact by round 15's out/longform.json: out/r15/recovered.json), because round 15's renders were
+git-ignored and went with its runner. LONGFORM_HD_DIR lists the folders in order (r16,r15), then out/mp4/. A line of
+narration over a recovered clip is spoken where round 15 spoke it (r15_offsets), since the frames are the same.
+
 A clip that isn't there is left out with a warning, so the join always runs on whatever is rendered.
 """
 from __future__ import annotations
@@ -53,9 +60,14 @@ FPS = int(os.environ.get("LONGFORM_FPS", "30"))
 K = SIZE[1] / 720              # the pixel sizes below were chosen at 1280 x 720
 # this pass's renders; a clip not there falls back to out/mp4/. Round 15: LONGFORM_HD_DIR names the folder of the pass
 # (VIZ3D_HD_DIR), r15 for the 720p pass drawn at up to 30 fps (round 12's 1080p pass was out/hd/)
-HD = OUT / os.environ.get("LONGFORM_HD_DIR", "r15")
+# round 16: several folders, the first found wins: r16 (this round's renders), then r15 (round 15's clips recovered
+# from its YouTube copy), then out/mp4/
+HD_DIRS = [OUT / d.strip() for d in os.environ.get("LONGFORM_HD_DIR", "r16,r15").split(",") if d.strip()]
+HD = HD_DIRS[0]
+R15 = OUT / "r15"                  # round 15's clips, recovered (out/r15/recovered.json)
+R15_COMMIT = os.environ.get("LONGFORM_R15_COMMIT", "4f9ec11e")    # round 15's long-form build: its parts and narration
 CARD_S = 6.0
-AUDIT_TAG = os.environ.get("LONGFORM_AUDIT_TAG", "round15")   # out/collisions/<tag>_table.png, _summary.json
+AUDIT_TAG = os.environ.get("LONGFORM_AUDIT_TAG", "round16")   # out/collisions/<tag>_table.png, _summary.json
 # every part is encoded with the same settings, so the join is a stream copy
 X264 = ["-c:v", "libx264", "-preset", os.environ.get("LONGFORM_PRESET", "veryfast"), "-crf", "18", "-pix_fmt", "yuv420p",
         "-profile:v", "high", "-g", str(2 * FPS), "-video_track_timescale", "15360"]
@@ -161,7 +173,8 @@ CHAPTERS = [
          card=["The OT-2 makes up the CubXL's sulfide stock in seawater (digital-wetlab PR #83). The CubXL runs DAL's "
                "copper corrosion screen spot by spot (DAL PR #180) with its P20 and, proposed, a P300 on a lift of its "
                "own (PR #372); its magnet holds one cap at a time, so a second cap waits on an empty vial. The "
-               "multi-doser doses atomized powder for it by weight.",
+               "multi-doser doses atomized powder for it by weight, and the P300 puts the test's 200 µL of seawater "
+               "on it in one transfer (round 16; ten with the P20).",
                "No acid on the OT-2's deck (round 15): the CubXL acidifies its own tubes, and the capped tubes go to an "
                "ICP-MS station beside the lab, whose dilutor makes the tenfold dilution in its own fume hood. Its place "
                "on the floor plan is still open (round 14's spot is the Meltio cell's clearance)."],
@@ -340,14 +353,16 @@ CHAPTERS = [
                "option, explored and not decided: a third MiR250 + UR12e, unit 3, bonds itself to a floor stud, "
                "squeegees with the wand of an explosion-proof Nilfisk on wall power and checks the floor's colour. A "
                "visible spill stays a person's job (PR #369).",
-               "Then the waste: where each stream goes, BYU's pickups, and how much at one alloy a day and at ten "
-               "(PR #371, a model)."],
+               "Then the waste (PR #371): how much a year at one alloy a day and at ten (a model); a capped bottle's "
+               "trip to the fume hood's intake tray, its solvent and acid cabinets, and the powder-waste point at the "
+               "atomizer, with its vacuums and a pail for each alloy family."],
          parts=[("mp4", "floor_clean_people.mp4", "Unit 3, and a person for a visible spill"),
                 ("mp4", "floor_pass.mp4", "A night's pass across the whole floor, from above"),
                 ("still", "waste_streams.png", 14.0, "Every waste stream, a year, at one fully tested alloy a day and at "
                  "ten: modelled, not weighed (PR #371, notes/waste.md)", "The waste, stream by stream"),
-                ("still", "waste_station_still.png", 9.0, "The waste station (ours): the fume hood's base as vented "
-                 "solvent and acid cabinets, and an intake tray for the capped bottles the arm brings", None)]),
+                # round 16 (PR #371's check: "Nothing about waste handling is animated"): the clip in place of the
+                # station's still
+                ("mp4", "waste_clip.mp4", "The waste, handled: a bottle's trip, the cabinets, the powder point")]),
     # Round 12: PR #332 (Sterling, 2026-11-08: "how can we get that up to 10/day?"), a figure at its pinned commit
     dict(key="bottlenecks", title="From one alloy a day to ten: the bottlenecks",
          card=["The year model tests about one alloy a day: a person changes the atomizer's crucible on weekdays, and that "
@@ -375,6 +390,14 @@ OUTRO = ["Code, notes and every source: github.com/vertical-cloud-lab/byu-vcl, P
 # ===================================================================================================== helpers
 def run(*args):
     subprocess.run([str(a) for a in args], check=True)
+
+
+def _under(path: Path, base: Path) -> bool:
+    try:
+        Path(path).relative_to(base)
+        return True
+    except ValueError:
+        return False
 
 
 def duration(path: Path) -> float:
@@ -918,7 +941,7 @@ def clip_meta(src: str) -> dict | None:
     has sub-steps (round 15: out/safety.json is the safety PR's report, its clip's sub-steps are in out/clean/)."""
     p = Path(src) if Path(src).is_absolute() else HERE / src
     rel, hd = Path(p.name), False
-    for base, is_hd in ((HD, True), (OUT / "hd", True), (MP4, False)):
+    for base, is_hd in [(d, True) for d in HD_DIRS] + [(OUT / "hd", True), (MP4, False)]:
         try:
             rel, hd = p.relative_to(base), is_hd
             break
@@ -953,6 +976,46 @@ def probe(path: Path) -> tuple[int, int, float]:
     return _PROBE[key]
 
 
+def _srt_s(stamp_: str) -> float:
+    h, m, rest = stamp_.strip().split(":")
+    sec, ms = rest.split(",")
+    return int(h) * 3600 + int(m) * 60 + int(sec) + int(ms) / 1000
+
+
+_R15OFF: dict | None = None
+
+
+def r15_offsets() -> dict:
+    """Round 16: {(clip under out/r15/, line text): seconds into that clip} where round 15's long-form spoke each line
+    (its out/longform.json and out/longform_narration.srt at R15_COMMIT). A recovered clip is round 15's frames, so a
+    line over it keeps round 15's timing exactly, whatever the clip's out/clean/ JSON says."""
+    global _R15OFF
+    if _R15OFF is not None:
+        return _R15OFF
+    _R15OFF = {}
+    try:
+        m15 = json.loads(subprocess.run(["git", "show", f"{R15_COMMIT}:./out/longform.json"], capture_output=True,
+                                        text=True, cwd=HERE, check=True).stdout)
+        srt = subprocess.run(["git", "show", f"{R15_COMMIT}:./out/longform_narration.srt"], capture_output=True,
+                             text=True, cwd=HERE, check=True).stdout
+    except (subprocess.CalledProcessError, ValueError) as e:
+        print(f"  narration: round 15's placement not available ({e!r})", flush=True)
+        return _R15OFF
+    clips = [q for q in m15["parts"] if q["kind"] == "mp4"]
+    for block in srt.strip().split("\n\n"):
+        ls = block.splitlines()
+        if len(ls) < 3 or " --> " not in ls[1]:
+            continue
+        t0, text = _srt_s(ls[1].split(" --> ")[0]), " ".join(ls[2:]).strip()
+        for q in clips:
+            if q["start_s"] <= t0 < q["start_s"] + q["seconds"]:
+                src = q["src"]
+                rel = src.split("out/r15/", 1)[1] if "out/r15/" in src else src.split("out/mp4/", 1)[-1]
+                _R15OFF[(rel, text)] = t0 - q["start_s"]
+                break
+    return _R15OFF
+
+
 def narration_times(meta: dict) -> list[dict]:
     """narration.json with each line's time in the video ("t"), from the parts as encoded. A clip line's sub-step is
     found by its index and checked against its label (by the label if the index moved)."""
@@ -976,6 +1039,13 @@ def narration_times(meta: dict) -> list[dict]:
             r = next((r for r in parts if r["chapter"] == ch and r["kind"] == "mp4"
                       and (r.get("src") or "").endswith(f"/{part}.mp4")), None)
             t = None
+            # round 16: over a clip recovered from round 15's video, where round 15 spoke it (its offset included)
+            src_r = (r or {}).get("src") or ""
+            if r is not None and "out/r15/" in src_r:
+                off = r15_offsets().get((src_r.split("out/r15/", 1)[1], ln["text"]))
+                if off is not None:
+                    out.append(dict(ln, t=round(r["start_s"] + off, 2)))
+                    continue
             if r is not None:
                 cm = clip_meta(r["src"])
                 subs = (cm or {}).get("substeps", [])
@@ -1055,7 +1125,7 @@ def audit_rows() -> list[dict]:
     # this round's audits: the reports that differ from the last commit before this round's renders (ROUND_BASE), or
     # didn't exist then (file times can't tell: merges and checkouts touch them). Round 15 started its renders on
     # ea5d9d5, after merging PRs #369-#379
-    base = os.environ.get("ROUND_BASE", os.environ.get("ROUND12_BASE", "ea5d9d5"))
+    base = os.environ.get("ROUND_BASE", os.environ.get("ROUND12_BASE", "859d7678"))     # round 16 started on 859d7678
     st = subprocess.run(["git", "diff", "--name-only", base, "--", "out/collisions"], capture_output=True, text=True,
                         cwd=HERE).stdout.split()
     st += subprocess.run(["git", "ls-files", "--others", "--exclude-standard", "out/collisions"], capture_output=True,
@@ -1090,7 +1160,8 @@ def audit_rows() -> list[dict]:
             return None if not have or any(v is None for v in vals) else sum(vals)
         w, h, rate = probe(srcp)
         cm = clip_meta(str(r["src"])) or {}
-        rows.append(dict(clip=name, chapter=r["chapter"], this_pass=not r.get("earlier"), seconds=round(r["seconds"], 1),
+        rows.append(dict(clip=name, chapter=r["chapter"], this_pass=not r.get("earlier"), round15=bool(r.get("round15")),
+                         seconds=round(r["seconds"], 1),
                          height=h, drawn_fps=round(rate) if rate else cm.get("fps"),
                          audit_this_round=bool(have) and fresh, fps=have[0].get("fps") if have else None,
                          frames_checked=total("frames_checked"), arm_frames=total("frames_with_collisions"),
@@ -1111,7 +1182,7 @@ AUDIT_NOTES = {   # what the frames that remain are, where it is known (round 13
     "fumehood": "by design: the drawn airflow's arrows overlapping each other",
     "fumehood_tray": "by design: the drawn airflow's arrows overlapping each other",
     "glovebox_tray": "by design: the powder stream drawn inside the jar as it pours",
-    "safety": "the units in a studio, no arm moving: nothing to check",
+    "safety": "by design: each B570 slid down into its 811 bracket as it is strapped in (a studio, no arm)",
     "atom_vacuum": "the crevice tool 1.5 mm into its station for one frame (8/10)",
     "alloy_print": "a fingertip on the sieving cell's frame by the funnel",
     "vlm_hookups": "the bay's dock head coming out through the bay's side wall, drawn without its opening",
@@ -1162,11 +1233,13 @@ def audit_table(path: Path):
         d.text((40, yy), r["clip"], font=fb, fill=INK)
         # round 15: the clip's own height and the rate it was drawn at (720p30, 720p15), as the file has them
         size = f"{r['height']}p{r['drawn_fps'] or ''}" if r.get("height") else "-"
-        d.text((440, yy), size + ("" if r["this_pass"] else ", earlier"), font=fb,
-               fill=INK if r["this_pass"] else GREY)
+        # round 16: a clip recovered from round 15's video says so, with round 15's own audit
+        d.text((440, yy), size + ("" if r["this_pass"] else ", round 15" if r.get("round15") else ", earlier"),
+               font=fb, fill=INK if r["this_pass"] or r.get("round15") else GREY)
         fc = r["frames_checked"]
-        d.text((760, yy), "-" if fc is None else f"{fc}" + ("" if r["audit_this_round"] else " (earlier)"), font=fb,
-               fill=INK if r["audit_this_round"] else GREY)
+        d.text((760, yy), "-" if fc is None else f"{fc}" + ("" if r["audit_this_round"] else " (round 15)" if
+                                                            r.get("round15") else " (earlier)"), font=fb,
+               fill=INK if r["audit_this_round"] or r.get("round15") else GREY)
         for x, key in ((980, "arm_frames"), (1200, "all_frames")):
             v = r[key]
             d.text((x, yy), "-" if v is None else f"{v}", font=fb, fill=(20, 120, 50) if v == 0 else
@@ -1175,7 +1248,8 @@ def audit_table(path: Path):
         while note and d.textlength(note, font=fn) > W - 1420 - 40:
             note = note[:-2].rstrip() + "…"
         d.text((1420, yy + 2), note, font=fn, fill=INK)
-    d.text((40, H - 50), "Rendered: height and frames a second as drawn; earlier: a render from before this pass. "
+    d.text((40, H - 50), "Rendered: height and frames a second as drawn; round 15: that pass's render, cut from its "
+           "video; earlier: a render from before it. "
            "Frames checked: every frame as shown, once however many parts touch. \"Anything moving\" adds trays, "
            "doors, MiRs, tables and people.", font=font(20), fill=GREY)
     im.save(path, optimize=True)
@@ -1199,17 +1273,25 @@ def plan(quiet: bool = False) -> list[dict]:
                 # LONGFORM_SRC="a.mp4=/path/x.mp4,...": build from another copy of a clip (e.g. the committed one while
                 # its re-render is still writing out/mp4/a.mp4)
                 ovr = dict(kv.split("=", 1) for kv in os.environ.get("LONGFORM_SRC", "").split(",") if "=" in kv)
-                hd = HD / part[1]
                 # round 15: a render of this pass that ffprobe can't read yet (still being written, or killed) is
-                # passed over for the earlier one in out/mp4/
-                hd_s = duration(hd) if hd.exists() and part[1] not in ovr else 0.0
-                if hd.exists() and not hd_s and part[1] not in ovr and not quiet:
-                    print(f"  {hd.relative_to(OUT)}: not readable yet (still rendering?), out/mp4/ instead", flush=True)
+                # passed over for the earlier one. Round 16: the first readable one of HD_DIRS (r16, then round 15's
+                # recovered clips in r15), then out/mp4/
+                hd, hd_s = HD / part[1], 0.0
+                if part[1] not in ovr:
+                    for dd in HD_DIRS:
+                        cand = dd / part[1]
+                        cs = duration(cand) if cand.exists() else 0.0
+                        if cs:
+                            hd, hd_s = cand, cs
+                            break
+                        if cand.exists() and not quiet:
+                            print(f"  {cand.relative_to(OUT)}: not readable yet (still rendering?)", flush=True)
                 src = Path(ovr[part[1]]) if part[1] in ovr else hd if hd_s else MP4 / part[1]
                 secs = hd_s if src == hd else duration(src) if src.exists() else 0
-                earlier = src.exists() and src != hd and part[1] not in ovr
+                earlier = src.exists() and src.parent != (HD / part[1]).parent and part[1] not in ovr
                 rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=secs, label=part[2],
                                  missing=not src.exists() or not secs, earlier=earlier,
+                                 round15=src.exists() and _under(src, R15),
                                  upscaled=src.exists() and 0 < probe(src)[1] < SIZE[1],
                                  was_s=duration(MP4 / part[1]) if src == hd and (MP4 / part[1]).exists() else None))
             elif kind == "ext":                         # round 15: another project's own render, out/mp4/ext/
@@ -1258,7 +1340,8 @@ def show_plan(rows):
         flag = "  MISSING" if r.get("missing") else ""
         if r["kind"] == "mp4" and not r.get("missing"):    # round 15: the clip's own size and rate, and whose pass
             w, h, rate = probe(src)
-            flag += f"  {h}p{rate:.0f}" + ("  earlier render" if r.get("earlier") else "")
+            flag += f"  {h}p{rate:.0f}" + ("  round 15's, recovered" if r.get("round15") else
+                                           "  earlier render" if r.get("earlier") else "")
             if r.get("was_s") and r["seconds"] < 0.5 * r["was_s"]:     # a render still writing reads as a short clip
                 flag += f"  SHORT: out/mp4/'s is {r['was_s']:.1f} s; still rendering?"
         if r.get("caption") and not caption_fits(r):
@@ -1270,8 +1353,8 @@ def show_plan(rows):
     miss = [str(r.get("git") or r["src"].relative_to(OUT)) for r in rows if r.get("missing")]
     if miss:
         print(f"missing ({len(miss)}): " + ", ".join(miss))
-    early = [str(r["src"].relative_to(MP4)) for r in rows if r["kind"] == "mp4" and r.get("earlier")]
-    print(f"not in out/{HD.name}/ yet ({len(early)}, taken from out/mp4/): " + ", ".join(early))
+    early = [str(r["src"].relative_to(OUT)) for r in rows if r["kind"] == "mp4" and r.get("earlier")]
+    print(f"not in out/{HD.name}/ ({len(early)}, from round 15's video or out/mp4/): " + ", ".join(early))
     for t0, name in chapters_from(rows):
         print(f"  {stamp(t0)} {name}")
 
@@ -1315,6 +1398,7 @@ def build():
         # round 15: an earlier render (out/mp4/, not this pass's out/<HD_DIR>/) and one smaller than the video, flagged
         record.append(dict(chapter=r["chapter"], kind=r["kind"], start_s=round(t, 2), seconds=round(d, 2),
                            src=src, label=r.get("label"), **({"earlier_render": True} if r.get("earlier") else {}),
+                           **({"round15_recovered": True} if r.get("round15") else {}),
                            **({"upscaled": True} if r.get("upscaled") else {})))
         t += d
         parts.append(out)
@@ -1403,10 +1487,11 @@ def sheet(record, dst: Path, tmp: Path):
 # ===================================================================================================== YouTube
 # round 15: the round in the title, as round 13's upload had it, so it is told apart from the earlier uploads
 TITLE = os.environ.get("LONGFORM_TITLE",
-                       "The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 15)")
-PRIVACY = os.environ.get("LONGFORM_PRIVACY", "public")     # Sterling, 2026-11-20: "upload that to YouTube as public"
-# round 15: Sterling, 2026-11-23: "upload to YouTube (notify subscribers this time)"; round 12 went up without
-NOTIFY = os.environ.get("LONGFORM_NOTIFY", "1") not in ("0", "", "false", "no")
+                       "The vertical cloud lab, start to finish: a Kardex VLM and the alloy route (3-D, round 16)")
+# round 16: Sterling, 2026-11-26: "rerender and get on YouTube", no visibility named, so unlisted as this PR's uploads are
+# unless asked (round 12 and 15 were asked for public); subscribers aren't notified of an unlisted video
+PRIVACY = os.environ.get("LONGFORM_PRIVACY", "unlisted")
+NOTIFY = os.environ.get("LONGFORM_NOTIFY", "0") not in ("0", "", "false", "no")
 
 
 def description(meta: dict, commit: str) -> str:
@@ -1419,9 +1504,10 @@ def description(meta: dict, commit: str) -> str:
             "at their openings and at the floor machines. The alloy route runs from machining the charge cups through "
             "atomizing, printing, testing and characterization; then safety, upkeep, the floor and the waste, and the "
             "way from one alloy a day to ten.\n\n"
-            "New in this version: the cups machined, washed and vacuum-dried; Class D extinguishers at every powder "
-            "station and on each MiR250; three cameras on each base; the CubXL's P300 and its well's sulfide loss; a "
-            "floor-cleaning robot explored; the waste; names and colour coding (PRs #369-#374, #376, #377, #379).\n\n"
+            "New in this version (round 16): the waste handled on screen, a bottle's trip to the fume hood and the "
+            "powder-waste point at the atomizer with its vacuums; the machining cell on the floor; the CubXL's P300 in "
+            "the powder test; the clips round 15 kept from earlier renders drawn again on the current lab; the set-up "
+            "movie fixed and redrawn. Round 15's other clips are its own renders.\n\n"
             "A 3-D animation, not footage of a working lab: makers' published sizes and photos, our own designs where "
             "nothing exists yet, every arm move checked for collisions. Real footage, photos and data are badged; the "
             "voice is synthetic (Kokoro).\n\n"
@@ -1434,9 +1520,7 @@ def description(meta: dict, commit: str) -> str:
         # their round-14 and #379 renders, so the count of "earlier" parts alone undercounts them
         head += (f"{meta['size'][0]} x {meta['size'][1]} at 30 fps, the 3-D drawn at {rates[0]}" +
                  (f"-{rates[-1]}" if rates[-1] != rates[0] else "") + " frames a second: the chapters, the "
-                 "turnaround and the whole-lab clips at 15, the instrument clips at 30. Kept from earlier renders: "
-                 "the services, safety, base-camera, floor-cleaning and scale-up clips and most of the fabrication "
-                 "tour.\n\n")
+                 "turnaround and the whole-lab clips at 15, the instrument and fabrication clips at 30.\n\n")
     chap = "Chapters\n" + "".join(f"{c['stamp']} {c['title']}\n" for c in meta["youtube_chapters"])
     tail = ("\nThe real VLM: Sterling Baird, https://youtu.be/ck8QJhVqPiY . The atomizer footage is the lab's own (DAL "
             "#159, #219); the doser drop is powder-doser's own CAD render (PR #185, v10). Each notes file says which "

@@ -24,6 +24,14 @@
   "match": "Most of what goes on a tray weighs"
  },
  {
+  "chapter": "setup",
+  "part": "setup_lab",
+  "match": "The chemical waste station, from the aisle",
+  "offset": 0.5,
+  "text": "The fume hood's base holds the chemical waste: a vented cabinet for the solvents and one for the acids, with an intake tray above for the capped bottles the robots bring.",
+  "source": "out/clean/setup_lab.json caption (step 5), notes/waste.md, PR #371; round 16"
+ },
+ {
   "chapter": "services",
   "part": "card",
   "offset": 0.5,
@@ -145,7 +153,16 @@
   "label": "3/6",
   "offset": 0.5,
   "text": "This dose is for the alloy lab's powder reactivity test. The doser works to weight, a quarter auger turn at a time, to twenty-five milligrams; the readings are illustrative.",
-  "source": "out/vlm_workflow.json caption (substeps 0 and 25)"
+  "source": "out/vlm_workflow.json caption (substeps 0 and 25)",
+  "match": "v5's dose-to doses by weight"
+ },
+ {
+  "chapter": "corrosion",
+  "part": "vlm_workflow",
+  "match": "The CubXL's P300 (20-300 µL",
+  "offset": 0.5,
+  "text": "The CubXL's second pipette, the proposed P300, now puts the test's two hundred microlitres of seawater on the powder in one transfer. The small one alone took ten.",
+  "source": "out/clean/vlm_workflow.json caption (step 6), notes/cubxl_pipettes.md, PR #372; round 16"
  },
  {
   "chapter": "alloy1",

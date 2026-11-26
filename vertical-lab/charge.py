@@ -230,8 +230,14 @@ FUNNEL = dict(stem_od=9.0, stem_id=6.0, stem_l=12.0, flange_d=28.0, flange_t=2.0
               band_d=42.0, band_h=6.0, gap=4.0)
 FUNNEL["h"] = FUNNEL["stem_l"] + FUNNEL["flange_t"] + FUNNEL["cone_h"]       # 36 mm, stem tip to rim
 FUNNEL["grasp"] = FUNNEL["h"] - FUNNEL["band_h"] / 2                          # the band's middle
-FUNNEL_LABEL = {"Si": (0.95, 0.75, 0.10), "Ni": (0.20, 0.62, 0.30), "Fe": (0.80, 0.25, 0.20), "Cu": (0.85, 0.45, 0.20),
-                "Al": (0.25, 0.45, 0.85)}
+# Round 16 (#377's colour code, which Sterling okayed on 2026-11-22: "blue and orange as mentioned are fine for now"):
+# a funnel's band is its alloy family's colour, the powder's name on it in words, in place of round 8's five hues (one
+# of them the safety red), whose Ni and Cu funnels, used one after the other for a Cu-Ni charge, were 6.8 apart for a
+# protan reader (notes/colour_coding.md). Al family #0072B2, Cu family #E69F00 (colour_coding.FAMILY). The chapters
+# have had no funnel since round 9 (the doser drops straight into the vessel); only round 10's figure and the
+# carousel's optional funnel use these.
+_AL_BLUE, _CU_ORANGE = (0.0, 0.447, 0.698), (0.902, 0.624, 0.0)
+FUNNEL_LABEL = {"Si": _AL_BLUE, "Al": _AL_BLUE, "Ni": _CU_ORANGE, "Fe": _CU_ORANGE, "Cu": _CU_ORANGE}
 
 
 def funnel(cut: bool = False):

@@ -20,19 +20,23 @@ for 720p) and upload to YouTube (notify subscribers this time)."
 
 ### What was pulled in
 
-Merged into this branch, with each PR's latest comments read first (`gh api`):
+Merged into this branch, with each PR's latest comments read first (`gh api`). Corrected in round 16 after
+[#371's check](https://github.com/vertical-cloud-lab/byu-vcl/pull/371#issuecomment-7184403979): this table first said
+"every lab scene" and "every clip", which held only for the clips drawn in round 15, not for the ten and a half
+minutes it kept from earlier renders (the four services clips, base cameras, safety, floor cleaning, scale-up and
+seven of the nine fabrication clips). Round 16 re-renders those (below).
 
 | PR | What it adds | In the video |
 | --- | --- | --- |
-| #379 | Class D extinguishers (Amerex B570, 811 bracket, 680R, Super D pails) at every powder station and on every MiR250; the building's ABC units, eyewash/showers, O2 monitors | every lab scene; a *Safety* chapter |
-| #377 | colour coding: blue for Al, orange for Cu, everything else by standard; a priced BoM | a still in the stations chapter |
-| #376 | equipment names: stones for stations, mountains for the Shuttles (`timp`, `nebo`) | a still in the stations chapter |
-| #374 | three cameras on each MiR250: a 1.8 m mast and two end posts | on every MiR250 in every clip; its clip in services |
-| #373 | machining the cups and plugs: a Haas ST-10 cell, IPA wash, vacuum dryer, a SimPy model | its clip and the simulation in chapter 1 |
-| #372 | the CubXL's pipettes: a P300 on its own lift beside the P20; evaporation and sulfide loss | the CubXL clip, a still |
-| #371 | waste streams, BYU's pickups, a waste station | the station under the fume hood; stills |
+| #379 | Class D extinguishers (Amerex B570, 811 bracket, 680R, Super D pails) at every powder station and on every MiR250; the building's ABC units, eyewash/showers, O2 monitors | every lab scene **drawn in round 15** (not the clips it kept, below); a *Safety* chapter, whose clip was #379's own render from before the merge |
+| #377 | colour coding: blue for Al, orange for Cu, everything else by standard; a priced BoM | a still in the stations chapter; no clip uses the code |
+| #376 | equipment names: stones for stations, mountains for the Shuttles (`timp`, `nebo`) | a still in the stations chapter; no clip uses the names |
+| #374 | three cameras on each MiR250: a 1.8 m mast and two end posts | on every MiR250 in every clip **drawn in round 15**; its own clip in services, #374's render from before the merge |
+| #373 | machining the cups and plugs: a Haas ST-10 cell, IPA wash, vacuum dryer, a SimPy model | its clip and the simulation in chapter 1; not on the lab floor |
+| #372 | the CubXL's pipettes: a P300 on its own lift beside the P20; evaporation and sulfide loss | the CubXL clip, a still; the 9:22 clip still filled with ten P20 transfers |
+| #371 | waste streams, BYU's pickups, a waste station | the station under the fume hood in the lab model, but no camera shows the hood's front (every view of it is from behind); two stills |
 | #370 | security cameras instead of the Pi units (research) | a still in services |
-| #369 | floor cleaning: a third MiR250 with an explosion-proof vacuum | unit 3 on its own charger in every lab scene; its clips |
+| #369 | floor cleaning: a third MiR250 with an explosion-proof vacuum | unit 3 on its own charger in every lab scene **drawn in round 15**; its two clips, #369's renders from before the merge; the 118EXP vacuums not on the floor |
 
 Not merged: #320, #321, #328 and #332 are 400-800 commits behind this branch, and the long-form already shows their
 figures at pinned commits; #331 is vendor documents; #329 the org GIF. **powder-doser #185** has moved from the v5
