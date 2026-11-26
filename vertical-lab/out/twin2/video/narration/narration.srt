@@ -1,0 +1,100 @@
+1
+00:00:00,800 --> 00:00:09,530
+This is a simulated benchmark: two alloy discovery campaigns, replayed for a whole year in a digital twin of our planned automated lab.
+
+2
+00:00:10,030 --> 00:00:26,030
+Some of it comes from real sources: the lab's design and its 3-D model, footage from our own atomizer, the search spaces in the two proposals, and published prices. Everything else is simulated: every alloy, every measurement, and every result.
+
+3
+00:00:54,600 --> 00:01:07,930
+Each campaign is a function network: a chain of steps, where each step's results feed the next. BOFN, Bayesian optimization over function networks, models every step, not just the final score.
+
+4
+00:01:09,400 --> 00:01:15,050
+For aluminium, the lab makes each alloy's powder itself, then prints it and checks every build.
+
+5
+00:02:02,350 --> 00:02:10,310
+For copper, a one-hour corrosion screen ranks the DED deposits, and thirty days in seawater come before a utility is known.
+
+6
+00:02:25,900 --> 00:02:31,790
+Both campaigns share one lab. From here on, each step is an icon that lights up while it runs.
+
+7
+00:02:39,400 --> 00:02:58,190
+Best so far is the highest utility of any alloy tested yet. The dotted line is the target: the best reference alloy's score on the twin's synthetic alloy model. One random design in twelve beats it, so reaching it shows how fast a lab tests its first alloys, not a discovery.
+
+8
+00:02:58,690 --> 00:03:10,790
+Against money, the same curve shows what the progress cost. The grey dashed curve is the conventional lab: the same optimizer through partner and core facilities, ordering its metal as it goes.
+
+9
+00:03:15,000 --> 00:03:28,780
+Where each first reaches the target, the median over the runs, gives the acceleration factor: here 220 days over 116, or 1.9 times. Money gives the cost ratio the same way.
+
+10
+00:03:41,500 --> 00:03:53,530
+Day one follows a single simulated aluminium alloy from start to finish. Its cup is machined, its metals are dosed and pressed under vacuum, then melted and atomized into powder.
+
+11
+00:03:55,540 --> 00:03:59,590
+The melt and the pour are real footage, from the lab's own atomizer.
+
+12
+00:04:17,660 --> 00:04:24,830
+After sieving and powder checks, it's printed by laser powder bed fusion, then inspected, sectioned and indented.
+
+13
+00:04:51,600 --> 00:04:58,790
+Wire EDM cuts its bars, and a tensile test scores it, about a day and a half after its cup was machined.
+
+14
+00:05:01,800 --> 00:05:14,830
+From day two, the event log moves the lab's 3-D model: each booking brings its tray to a Shuttle's opening and back, and a mobile arm drives over to serve it. Trays nobody has booked stay in their slots.
+
+15
+00:05:35,200 --> 00:05:46,680
+Now the whole lab from above, with the two Shuttles up close from a second camera. The moves run on a clock of their own, so you can follow them; the panel at the bottom counts how many were drawn.
+
+16
+00:06:20,200 --> 00:06:29,570
+This replay is one seed of twelve, and aluminium's luckiest: it reaches the target on day 20, where the median seed takes 116 days.
+
+17
+00:09:41,800 --> 00:10:05,540
+Each panel is one policy: twelve one-year runs in the automated lab, twelve three-year runs in the conventional one. BOFN finished highest on aluminium. On copper, tiered CALPHAD screening finished ahead of BOFN with blend screening, 0.68 against 0.58 over 24 seeds, and plain BOFN did no better than random.
+
+18
+00:10:07,500 --> 00:10:29,810
+Against a conventional lab that orders metal as it goes and runs plain BOFN, the stocked automated lab reached the target 1.9 times sooner on aluminium, and at least 3.7 times sooner on copper, where the conventional lab got there in 6 of its 12 runs. With both labs ordering as they go, aluminium's factor is 1.2.
+
+19
+00:10:31,500 --> 00:10:43,620
+Per demonstrated alloy, the automated lab costs more while the two campaigns carry its equipment alone. It costs less only if outside users fill it to sixty percent, which the model assumes.
+
+20
+00:10:47,500 --> 00:11:04,140
+The two campaigns use 5.8 percent of the lab's hours, weighted by capital cost. With an assumed ten hours a week of outside work per instrument, the spare hours would net about 1.2 million dollars a year, 2.1 times the lab's depreciation.
+
+21
+00:11:12,000 --> 00:11:31,370
+So: in this simulated benchmark, a stocked automated lab reached an alloy better than the reference alloy sooner than a conventional lab that orders metal as it goes: aluminium in 116 days against 220, and copper in 225 days against at least 840.
+
+22
+00:11:32,200 --> 00:11:43,440
+Most of aluminium's gain is the stock: with both labs ordering as they go, it's 1.2 times. And for copper, the automated lab also screens powder blends first.
+
+23
+00:11:44,200 --> 00:12:08,290
+To get there, with the equipment included, the automated lab cost 2.0 times as much for aluminium, and 1.15 times for copper; counting only what the campaigns spent, 0.6 and 0.4 times. With the equipment, it costs less only for copper, and only if outside users rent its idle hours, which this model assumes and does not show.
+
+24
+00:12:09,200 --> 00:12:22,090
+Against a conventional lab run by a metallurgist's rules of thumb, the automated lab is no faster on aluminium, at 2.6 times the operating cost, and 2.2 times faster on copper.
+
+25
+00:12:24,800 --> 00:12:48,520
+Everything here is simulated: the alloys, the results, and every measurement, with modelled noise not yet calibrated on the lab's instruments. Station times, fees and schedules, the stock on the shelf, the atomizer's failure rate and yield, and who staffs the lab are assumptions. It shows how the lab's design and its optimizer interact in a model, not what the real lab will find.
+

@@ -40,14 +40,19 @@ OUTD = HERE / "out" / "twin2" / "video" / "lab3d"
 RENDER_FPS = 15
 
 # cameras (position, focal point, view up; mm) and view angles. "high", "sw" and "se" are the stills' (birdseye_render
-# VIEWS) with a narrower angle, so trays and units read at 1920 x 1080; "towers" is close on both Shuttles and the
-# aisle in front of them, "west" on the atomizer end of the floor.
+# VIEWS) with a narrower angle, so trays and units read at 1920 x 1080; the others were picked from a sheet of
+# candidates rendered on the same state (a camera from the east or the south-east looks through the cable tray).
 VIEWS = {
-    "high": ([(1400.0, -25500.0, 23500.0), (1400.0, -3700.0, 700.0), (0.0, 0.0, 1.0)], 30.0 / 1.25),
+    # 1.5 m east of the still's and a little wider, so every station the twin books clears the overlays' panels
+    "high": ([(2900.0, -25500.0, 23500.0), (2900.0, -3700.0, 700.0), (0.0, 0.0, 1.0)], 30.0 / 1.12),
     "sw": ([(-7200.0, -24000.0, 17500.0), (1300.0, -3700.0, 600.0), (0.0, 0.0, 1.0)], 30.0 / 1.1),
     "se": ([(10200.0, -24000.0, 17500.0), (1500.0, -3700.0, 600.0), (0.0, 0.0, 1.0)], 30.0 / 1.1),
-    "towers": ([(9800.0, -13800.0, 7400.0), (1500.0, -2600.0, 1900.0), (0.0, 0.0, 1.0)], 30.0),
-    "west": ([(-1400.0, -15500.0, 8600.0), (-3600.0, -3600.0, 700.0), (0.0, 0.0, 1.0)], 30.0),
+    # both Shuttles' openings close, from the west along the aisle, under the cable tray
+    "towers_c": ([(-2600.0, -7600.0, 2500.0), (2200.0, -1400.0, 2100.0), (0.0, 0.0, 1.0)], 38.0),
+    # straight down on the floor: the aisle, the docks and the units
+    "plan": ([(1400.0, -7000.0, 26000.0), (1400.0, -3700.0, 0.0), (0.0, 0.0, 1.0)], 30.0),
+    # the west end of the floor (atomizer, sieving cell, the two Instrons) and the Shuttles beyond
+    "west": ([(-9800.0, -13500.0, 6200.0), (-2500.0, -3700.0, 800.0), (0.0, 0.0, 1.0)], 34.0),
 }
 
 
@@ -221,19 +226,22 @@ def kin_main():
     print(f"kin.json written; build {lab.build_s:.0f} s", flush=True)
 
 
-def render_job(job: dict):
-    """job: {"clock": "week" | "replay", ..., "view": [(v0, v1, view name)], "v0", "v1", "fps", "out": path stem}.
-    Writes <out>.mp4 (the renders at `fps`, x264 crf 12) and <out>.json (per render: its video time, view and whether
-    it was a reuse)."""
+def render_job(job: dict, lab=None, plans: dict | None = None):
+    """job: {"clock": "week" | "replay", ..., "views": [(v0, v1, view name)], "v0", "v1", "fps", "size", "out": path
+    stem}. Writes <out>.mp4 (the renders at `fps`, x264 crf 12, 4:4:4) and <out>.json (the job, its counts, and per
+    frame its video time, view and whether the render was reused)."""
     import subprocess
     from . import data as D
     from . import lab3d_sched as LS
     t_start = time.time()
-    lab = Lab3D()
-    lab.kin = LS.load_kin()
-    clock = clock_of(job)
-    R = D.Replay()
-    p = LS.plan(R, lab.kin, clock)
+    lab = lab or Lab3D()
+    lab.kin = lab.kin or LS.load_kin()
+    plans = {} if plans is None else plans
+    ck = json.dumps({k: job[k] for k in job if k in ("clock", "lab_h0", "hours_per_s", "seconds", "clock_v0",
+                                                     "clock_v1")}, sort_keys=True)
+    if ck not in plans:
+        plans[ck] = LS.plan(D.Replay(), lab.kin, clock_of(job))
+    p = plans[ck]
     fps = float(job.get("fps", RENDER_FPS))
     v0, v1 = float(job["v0"]), float(job["v1"])
     n = int(round((v1 - v0) * fps))
@@ -274,7 +282,16 @@ def render_job(job: dict):
                 wall_s=round(time.time() - t_start, 1), cpu_s=round(time.process_time() - cpu0, 1),
                 counts=LS.summary(p), frames_rec=rec)
     out.with_suffix(".json").write_text(json.dumps(info) + "\n")
-    print(json.dumps({k: v for k, v in info.items() if k != "frames_rec"}), flush=True)
+    print(json.dumps({k: v for k, v in info.items() if k not in ("frames_rec", "job")} | dict(out=out.name)),
+          flush=True)
+
+
+def render_batch(jobs: list):
+    """Several jobs of one size in one process: the scene is built once."""
+    lab = Lab3D()
+    plans: dict = {}
+    for j in jobs:
+        render_job(j, lab, plans)
 
 
 def clock_of(job: dict):
@@ -323,6 +340,7 @@ if __name__ == "__main__":
     elif cmd == "test":
         test_main()
     elif cmd == "render":
-        render_job(json.loads(Path(sys.argv[2]).read_text()))
+        js = json.loads(Path(sys.argv[2]).read_text())
+        render_batch(js if isinstance(js, list) else [js])
     else:
         raise SystemExit(__doc__)

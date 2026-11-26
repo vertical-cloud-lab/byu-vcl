@@ -1,0 +1,109 @@
+{
+ "segments": [
+  {
+   "name": "title",
+   "start_s": 0.0,
+   "seconds": 8.0,
+   "title": "Title"
+  },
+  {
+   "name": "simulated",
+   "start_s": 8.0,
+   "seconds": 46.0,
+   "title": "What is simulated: the lab and two search spaces"
+  },
+  {
+   "name": "dag",
+   "start_s": 54.0,
+   "seconds": 105.0,
+   "title": "The function networks"
+  },
+  {
+   "name": "figures",
+   "start_s": 159.0,
+   "seconds": 62.0,
+   "title": "The figures we track"
+  },
+  {
+   "name": "replay",
+   "start_s": 221.0,
+   "seconds": 360.0,
+   "title": "The campaign year, replayed"
+  },
+  {
+   "name": "results",
+   "start_s": 581.0,
+   "seconds": 90.0,
+   "title": "Results"
+  },
+  {
+   "name": "takeaway",
+   "start_s": 671.0,
+   "seconds": 15.0,
+   "title": "The takeaway"
+  },
+  {
+   "name": "notes",
+   "start_s": 686.0,
+   "seconds": 15.0,
+   "title": "Notes: real, assumed, simulated"
+  }
+ ],
+ "total_s": 701.0,
+ "chapters": [
+  [
+   0.0,
+   "Title"
+  ],
+  [
+   8.0,
+   "What is simulated: the lab and two search spaces"
+  ],
+  [
+   54.0,
+   "The function networks"
+  ],
+  [
+   159.0,
+   "The figures we track"
+  ],
+  [
+   221.0,
+   "The first alloy, start to finish"
+  ],
+  [
+   301.0,
+   "Day by day: the lab up close, moved by the event log"
+  ],
+  [
+   379.4,
+   "Week by week: the whole lab"
+  ],
+  [
+   463.4,
+   "Month by month, to the end of the year"
+  ],
+  [
+   581.0,
+   "Results"
+  ],
+  [
+   671.0,
+   "The takeaway"
+  ],
+  [
+   686.0,
+   "Notes: real, assumed, simulated"
+  ]
+ ],
+ "kind": "final3d",
+ "file": "out/twin2/video/campaign_lab3d.mp4",
+ "seconds": 701.0,
+ "wall_s": 374.8,
+ "python_cpu_s": 588.1,
+ "preset": "medium",
+ "workers": 3,
+ "placeholder": false,
+ "replay": "vertical_lab_bofn_blend_s0.json",
+ "built_utc": "2026-11-26 04:01 UTC"
+}

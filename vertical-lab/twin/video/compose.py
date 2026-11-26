@@ -30,6 +30,11 @@ from . import style as St
 
 FPS = 30
 VID = D.VID
+# the narrated cut (twin/video/narration.py): TWIN_VIDEO_NARRATION=1. It keeps its own files (campaign_narrated.mp4,
+# final_narrated_record.json, youtube_meta_narrated.json, sheet_narrated.png), so the cut without narration and its
+# records stay as they were; the takeaway and the notes are longer, to fit their lines.
+NARRATE = os.environ.get("TWIN_VIDEO_NARRATION", "0") == "1"
+NAR = "_narrated" if NARRATE else ""
 TMP = VID / "parts"
 W, H = St.W, St.H
 px = St.px
@@ -210,6 +215,20 @@ PHASES = [
     (0.74, "be", "se", 1.15, 1.0),
     (0.88, "be", "high", 1.2, 1.0),
 ]
+# TWIN_VIDEO_LAB3D=1 (the animated cut, `final3d`): the same shares, each a camera on PR 318's 3-D lab moved by the event
+# log (lab3d.py), and an inset of the two Shuttles up close from a second camera where `pip` is set
+LAB3D = os.environ.get("TWIN_VIDEO_LAB3D", "0") == "1"
+PHASES3D = [
+    (0.00, "3d", "towers_c", None),
+    (0.12, "3d", "plan", "towers_c"),
+    (0.28, "3d", "high", "towers_c"),
+    (0.48, "3d", "towers_c", None),
+    (0.58, "3d", "sw", None),
+    (0.74, "3d", "se", "towers_c"),
+    (0.88, "3d", "high", None),
+]
+if LAB3D:
+    PHASES = [(a, b, c, None, None) for a, b, c, _ in PHASES3D]
 SPEED_SHAPE = [(0.0, 1.0), (0.10, 3.0), (0.28, 10.0), (0.55, 28.0), (1.0, 40.0)]   # relative lab h per video s
 POV_SECONDS = {"charge": 7.0, "atomize": 12.0, "powder QC": 5.5, "print": 8.0, "test": 6.0, "section": 6.0,
                "pip": 6.0, "screen": 7.0, "immersion": 7.0, "tensile": 6.0}
@@ -397,6 +416,8 @@ class Timeline:
         out = [(0.0, "The first alloy, start to finish")]
         names = {0: "Day by day: station cameras", 2: "Week by week: the whole lab",
                  4: "Month by month, to the end of the year"}
+        if LAB3D:
+            names[0] = "Day by day: the lab up close, moved by the event log"
         for i, tt in enumerate(self.phase_t):
             if i in names:
                 out.append((tt, names[i]))
@@ -643,7 +664,8 @@ def replay_frame(t: float) -> np.ndarray:
         nf = {c: R.wip(t_h, c) for c in D.CAMPAIGNS}
         mode_txt = (f"{scale}: {nf['flaime_al']} FLAIME and {nf['onr_cu']} ONR alloys in progress",
                     "station cameras, lit while a campaign runs there" if PHASES[i][1] == "grid" else
-                    "the whole lab: a beacon lights while a station runs")
+                    "the 3-D lab moved by the event log: trays to the openings, units to the docks"
+                    if PHASES[i][1] == "3d" else "the whole lab: a beacon lights while a station runs")
     # ------------------------------------------------------------------ overlays
     if mode_txt is None:
         St.paste(fr, card, 0, 0)
@@ -676,11 +698,39 @@ def replay_frame(t: float) -> np.ndarray:
                                                           "waiting (results, budget or the calendar)"))
     St.paste(fr, im, px(1446), px(186), k_right)
     St.paste(fr, S("plots").draw(t_h), px(1296), px(640), k_right)
+    if NARRATE:                                    # DAL's audit (PR 293 §4): say which seed this is, all the way
+        St.paste(fr, seed_badge(), px(866), px(1014))
     dag = S("dag")
     lit = {k: dag.intensity(v) for k, v in R.lit(t_h, span).items()}
     x, y, _, _ = dag.DOCK
     St.paste(fr, dag.overlay(lit, t=t), px(x), px(y))
     return tag_placeholder(fr)
+
+
+_BADGE: dict = {}
+
+
+def seed_badge() -> Image.Image:
+    """The replayed run among its twelve: the day its aluminium campaign first reaches the target, against the median
+    seed's (econ_summary.json), as the narration says it."""
+    if "im" not in _BADGE:
+        R, B = S("R"), S("B")
+        tg = B["target"]["flaime_al"]
+        cur = R.curve_upto("flaime_al", R.horizon_h, "days")
+        hit = next((x for x, y in cur if y >= tg - 1e-9), None)
+        med = ((S("E").get("accel") or {}).get("flaime_al") or {}).get("median_new")
+        n = ((S("E").get("accel") or {}).get("flaime_al") or {}).get("n_new") or 12
+        txt = (f"One seed of {n}: here aluminium reaches the target on day {hit:.0f}; the median seed takes "
+               f"{med:.0f} days" if hit is not None and med else f"One seed of {n}")
+        f = St.font(15)
+        lines = St.wrap(txt, f, px(400))[:2]
+        w, h = px(420), px(12) + px(20) * len(lines)
+        im, d = St.layer(w, h)
+        d.rounded_rectangle((0, 0, w - 1, h - 1), radius=px(8), fill=St.SURF + (int(255 * St.PANEL_A),))
+        for i, ln in enumerate(lines):
+            d.text((px(10), px(6) + i * px(20)), ln, font=f, fill=St.INK2)
+        _BADGE["im"] = im
+    return _BADGE["im"]
 
 
 def _phase_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
@@ -690,6 +740,9 @@ def _phase_picture(i: int, t: float, t_h: float, sp: float) -> np.ndarray:
     t1 = tl.phase_t[i + 1] if i + 1 < len(tl.phase_t) else tl.dur
     if p[1] == "grid":
         return _grid_frame(t, t_h, sp, p[2], t0)
+    if p[1] == "3d":
+        from . import lab3d_cut as LC
+        return LC.replay_picture(i, t, t_h, sp)
     be = S("be")
     u = St.ease((t - t0) / max(1e-6, t1 - t0))
     zoom = p[3] + (p[4] - p[3]) * u
@@ -716,6 +769,7 @@ def takeaway_frame(t: float) -> np.ndarray:
     return tag_placeholder(np.array(S("figs").takeaway_frame(t), copy=True))
 
 
+NOTES_DURATION = 26.0 if NARRATE else 15.0          # the closing line takes 24 s
 NOTES = [
     ("Real", ["The lab's design: PR 318's 3-D renders, makers' published sizes",
               "The atomizer footage and photos: the lab's own runs (DAL #159, #219)",
@@ -733,13 +787,30 @@ NOTES = [
 ]
 
 
+# the narrated cut's notes, with what DAL's audit (digital-alloy-lab PR 293 §4) found missing from "Assumed" and its
+# wording for the instruments' noise
+NOTES_NARRATED = [
+    NOTES[0],
+    ("Assumed", ["Station times, fees and calendars (twin/facility.py)",
+                 "Outside facilities' booking and turnaround times",
+                 "Outside users' demand for the lab's spare hours",
+                 "The automated lab's feedstock stock on day 0; the atomizer's failure rate and yield; who staffs the "
+                 "automated lab",
+                 "Each assumption is marked in notes/twin.md"]),
+    ("Simulated", ["The alloys' properties: textbook forms calibrated on reference alloys",
+                   "Every measurement, with modelled noise not yet calibrated on the lab's instruments",
+                   "Both campaigns, every booking and every result: the twin's event log",
+                   "The optimizer's choices (twin/policies.py, twin/opt/)"]),
+]
+
+
 def notes_frame(t: float) -> np.ndarray:
     fr = St.blank()
     im, d = St.layer()
     d.text((px(80), px(70)), "A synthetic benchmark", font=St.font(48, bold=True), fill=St.INK)
     d.text((px(80), px(138)), "What is real, what is assumed and what is simulated in this video",
            font=St.font(26), fill=St.INK2)
-    for i, (head, items) in enumerate(NOTES):
+    for i, (head, items) in enumerate(NOTES_NARRATED if NARRATE else NOTES):
         x = px(80) + i * px(600)
         k = St.ramp(t, 0.4 + 0.5 * i, 1.2 + 0.5 * i)
         d.text((x, px(230)), head, font=St.font(32, bold=True), fill=St.mix(St.BG, St.INK, k))
@@ -755,7 +826,7 @@ def notes_frame(t: float) -> np.ndarray:
     for ln in meta:
         d.text((px(80), y), ln, font=St.font(21), fill=St.INK2)
         y += px(32)
-    St.paste(fr, im, 0, 0, St.window(t, 0.0, 15.0, 0.6))
+    St.paste(fr, im, 0, 0, St.window(t, 0.0, NOTES_DURATION, 0.6))
     return fr
 
 
@@ -768,7 +839,9 @@ def _meta_lines() -> list:
             f"Benchmark: out/twin2/bench2_summary.json; economics: out/twin2/econ/econ_summary.json",
             f"Code: github.com/vertical-cloud-lab/byu-vcl, vertical-lab/twin/video (commit {commit}); "
             "write-up in notes/twin.md and notes/twin_video.md",
-            "Renders: PR 318's chapters, reused. Captions only, no narration."]
+            "Renders: PR 318's chapters, reused. " + (
+                "Narration: a synthetic voice, Kokoro v1.0 (open weights, run locally), script in "
+                "twin/video/narration.json" if NARRATE else "Captions only, no narration.")]
 
 
 # ================================================================================================== the cut
@@ -784,7 +857,7 @@ def segments() -> list:
         ("replay", REPLAY_DUR, replay_frame, "The campaign year, replayed"),
         ("results", float(F.RESULTS_DURATION), results_frame, "Results"),
         ("takeaway", float(F.TAKEAWAY_DURATION), takeaway_frame, "The takeaway"),
-        ("notes", 15.0, notes_frame, "Notes: real, assumed, simulated"),
+        ("notes", NOTES_DURATION, notes_frame, "Notes: real, assumed, simulated"),
     ]
 
 
@@ -903,6 +976,11 @@ def build(kind: str):
     VID.mkdir(parents=True, exist_ok=True)
     TMP.mkdir(parents=True, exist_ok=True)
     rec = plan_record()
+    if kind == "final3d" and not LAB3D:
+        raise SystemExit("final3d needs TWIN_VIDEO_LAB3D=1 in the environment (the pieces run in their own processes)")
+    if kind == "final3d":
+        from . import lab3d_cut as LC
+        LC.run_jobs(LC.replay_jobs(), workers)       # the 3-D track first (each worker builds the scene once)
     if kind == "preview":
         sl = _resolve_slices(PREVIEW_SLICES)
         pieces = [(n, a, a + d, TMP / f"preview_{i:02d}_{n}.mp4") for i, (n, a, d) in enumerate(sl)]
@@ -917,15 +995,17 @@ def build(kind: str):
                 b = min(dur, a + CH)
                 if dur - b < 8.0:
                     b = dur
-                pieces.append((s["name"], a, b, TMP / f"final_{len(pieces):02d}_{s['name']}_{k}.mp4"))
+                pieces.append((s["name"], a, b, TMP / f"{kind}_{len(pieces):02d}_{s['name']}_{k}.mp4"))
                 a, k = b, k + 1
         pieces.sort(key=lambda p: -(p[2] - p[1]) * (2.0 if p[0] == "replay" else 1.0))   # longest first
         order = {id(p): i for i, p in enumerate(pieces)}
-        dst = VID / "campaign.mp4"
+        dst = VID / (("campaign_lab3d" if kind == "final3d" else "campaign") + NAR + ".mp4")
     print(f"{kind}: {len(pieces)} pieces, {workers} workers, preset {preset}", flush=True)
     logs = _run_pieces(pieces, preset, workers)
     parts = [p[3] for p in sorted(pieces, key=lambda p: str(p[3]))]
     concat(parts, dst)
+    if NARRATE and kind in ("final", "final3d"):
+        rec["narration"] = narrate(dst, rec, kind)
     cpu = 0.0
     for ln in logs:
         try:
@@ -936,11 +1016,16 @@ def build(kind: str):
                 t_start, 1), python_cpu_s=round(cpu, 1), preset=preset, workers=workers, placeholder=placeholder(),
                 replay=S("R").path.name, built_utc=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()))
     rec.update(info)
-    (VID / f"{kind}_record.json").write_text(json.dumps(rec, indent=1) + "\n")
+    (VID / f"{kind}{NAR if kind in ('final', 'final3d') else ''}_record.json").write_text(json.dumps(rec, indent=1) +
+                                                                                       "\n")
     if kind == "final":
         from . import meta
-        meta.write(rec)
-        sheet(dst, VID / "sheet.png", rec)
+        meta.write(rec, narrated=NARRATE)
+        sheet(dst, VID / f"sheet{NAR}.png", rec)
+    if kind == "final3d":
+        from . import meta
+        meta.write(rec, lab3d=True, narrated=NARRATE)
+        sheet(dst, VID / f"sheet_lab3d{NAR}.png", rec)
     print(json.dumps(info), flush=True)
     return rec
 
@@ -993,14 +1078,139 @@ def stills(times: list):
                 break
 
 
+# ================================================================================================ the narration
+def narrate(video: Path, rec: dict, kind: str) -> dict:
+    """The narration (twin/video/narration.py) placed on the cut as built, mixed into one track and muxed in as AAC;
+    its subtitles beside the cut (<stem>.srt) and in out/twin2/video/narration/narration.srt."""
+    from . import narration as N
+    total = _duration(video) or rec["total_s"]
+    wav = TMP / f"{video.stem}_narration.wav"
+    placed = N.track(rec, N.marks(rec), total, wav, video.with_suffix(".srt"))
+    if kind in ("final", "final3d"):
+        (N.NDIR / "narration.srt").write_text(video.with_suffix(".srt").read_text())
+    mux(video, wav)
+    return dict(voice=f"Kokoro v1.0 {N.VOICE}, speed {N.SPEED}", lines=len(placed),
+                spoken_s=round(sum(p["end"] - p["t"] for p in placed), 1), placed=placed)
+
+
+LOUDNESS = dict(I=-16.0, TP=-1.5, LRA=11.0)        # the track's integrated loudness (LUFS) and true peak (dBTP)
+
+
+def loudnorm_filter(wav: Path) -> str:
+    """ffmpeg's loudnorm, two passes: measure the narration track, then one linear gain to LOUDNESS (YouTube plays
+    at -14 LUFS and only turns louder videos down; the lines as levelled come to about -20.5 LUFS)."""
+    t = LOUDNESS
+    base = f"loudnorm=I={t['I']}:TP={t['TP']}:LRA={t['LRA']}"
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(wav), "-af", base + ":print_format=json",
+                        "-f", "null", "-"], capture_output=True, text=True)
+    m = json.loads(r.stderr[r.stderr.rindex("{"):r.stderr.rindex("}") + 1])
+    return (f"{base}:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:"
+            f"measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
+
+
+def mux(video: Path, wav: Path):
+    """The narration track into the cut, the picture copied: loudness-normalised (loudnorm_filter), AAC 192k, 48 kHz,
+    stereo (the mono voice in both). The video may already carry a track: it is replaced."""
+    silent = video.with_name(video.stem + "_silent.mp4")
+    video.replace(silent)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(wav), "-map", "0:v", "-map", "1:a",
+                    "-c:v", "copy", "-af", loudnorm_filter(wav), "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                    "-ac", "2", "-shortest", "-movflags", "+faststart", str(video)], check=True)
+    silent.unlink()
+
+
+def narrated_preview(seconds: float = 60.0, render: bool = True) -> dict:
+    """About a minute of the narrated cut: the opening (the title and the lab, what is simulated and what is real),
+    then the switch to the whole lab from above, each with its own lines; their audio is cut from the full cut's
+    narration track at the same times, so the preview hears exactly what the cut will."""
+    import soundfile as sf
+    from . import narration as N
+    rec = plan_record()
+    mk = N.marks(rec)
+    seg0 = {s["name"]: s["start_s"] for s in rec["segments"]}
+    TMP.mkdir(parents=True, exist_ok=True)
+    full = TMP / "npreview_full.wav"
+    placed = N.track(rec, mk, rec["total_s"], full)
+    ends = {p["id"]: p["end"] for p in placed}
+    a_end = max(seg0["simulated"] + SIM_LAB, ends.get("open2", 0.0) + 0.8)       # the opening: to the lab footage's end
+    opening = [("title", 0.0, seg0["simulated"]), ("simulated", 0.0, a_end - seg0["simulated"])]
+    r0 = seg0["replay"]
+    if "replay.lab3d" in mk:                            # the animated cut: the 3-D lab taking over, then from above
+        t1, t2 = mk["replay.lab3d"], mk["replay.from_above"]
+        e1 = ends.get("lab0", t1 + 13.0) + 1.0
+        slices = opening + [("replay", t1 - 0.7 - r0, e1 - t1 + 0.7)]
+        used = a_end + (e1 - t1 + 0.7)
+        slices.append(("replay", t2 - 1.2 - r0, max(4.0, seconds - used)))
+    else:
+        t_lab = mk.get("replay.from_above", mk.get("replay.whole_lab", r0 + 158.0))
+        b0 = t_lab - 2.5
+        b1 = min(t_lab + max(0.0, seconds - a_end - 2.5), rec["total_s"])
+        slices = opening + [("replay", b0 - r0, b1 - b0)]
+    pieces = [(n, a, a + d, TMP / f"npreview_{i:02d}_{n}.mp4") for i, (n, a, d) in enumerate(slices)]
+    dst = VID / "preview_narrated.mp4"
+    if render:                                          # render=False: the record and metadata of the file as built
+        workers = int(os.environ.get("TWIN_VIDEO_WORKERS", "2"))
+        preset = os.environ.get("TWIN_VIDEO_PRESET", "medium")
+        _run_pieces(pieces, preset, workers)
+        concat([p[3] for p in pieces], dst)
+        y, sr = sf.read(str(full), dtype="float32")
+        cut = [y[int(round((seg0[n] + a) * sr)):int(round((seg0[n] + a) * sr)) + int(round(d * sr))]
+               for n, a, d in slices]
+        wav = TMP / "npreview.wav"
+        sf.write(str(wav), np.concatenate(cut), sr, subtype="PCM_16")
+        mux(dst, wav)
+    shift, k = [], 0.0                                  # windows of the cut the preview plays without a break
+    for n, a, d in slices:
+        x0 = seg0[n] + a
+        if shift and abs(shift[-1][1] - x0) < 0.05:
+            shift[-1] = (shift[-1][0], x0 + d, shift[-1][2])
+        else:
+            shift.append((x0, x0 + d, k))
+        k += d
+    lines = [dict(p, t_preview=round(p["t"] - x0 + k0, 2)) for p in placed for x0, x1, k0 in shift
+             if x0 - 0.05 <= p["t"] and p["end"] <= x1 + 0.05]
+    out = dict(file=str(dst.relative_to(D.HERE)), seconds=_duration(dst), slices=[dict(segment=n, start=round(a, 2),
+               seconds=round(d, 2)) for n, a, d in slices], lines=lines,
+               built_utc=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()))
+    (VID / "preview_narrated_record.json").write_text(json.dumps(out, indent=1) + "\n")
+    preview_meta(out)
+    print(json.dumps({k: v for k, v in out.items() if k != "lines"}), flush=True)
+    return out
+
+
+def preview_meta(rec: dict) -> dict:
+    """youtube_meta_preview_narrated.json: the narrated preview's title and description (unlisted, for review)."""
+    from . import narration as N
+    commit = subprocess.run(["git", "rev-parse", "--short=7", "HEAD"], capture_output=True, text=True,
+                            cwd=D.HERE).stdout.strip()
+    said = "".join(f"\n{int(x['t_preview'] // 60)}:{int(x['t_preview'] % 60):02d}  {x['text']}" for x in rec["lines"])
+    desc = ("A preview, for review: the narrated campaign video's opening (what is simulated and what is real), then "
+            "the replay's switch from day 1 to the animated 3-D lab and the first view of the whole lab from above. "
+            "Simulated, not lab results.\n\n"
+            f"The voice is synthetic: Kokoro v1.0 (open weights, run locally), its stock voice {N.VOICE}, no voice "
+            "cloned or imitated. What it says, at its times in this preview:" + said + "\n\n"
+            f"Code: https://github.com/vertical-cloud-lab/byu-vcl/tree/{commit}/vertical-lab/twin/video "
+            "(narration.py, narration.json)\nPR: https://github.com/vertical-cloud-lab/byu-vcl/pull/393\n")
+    meta = dict(title="Preview: the campaign video, narrated (digital twin, simulated benchmark)", description=desc,
+                tags=["vertical cloud lab", "BYU", "digital twin", "laboratory automation", "self-driving lab",
+                      "narrated", "simulated"], categoryId="28", privacy="unlisted", notifySubscribers=False,
+                file=rec["file"], seconds=rec["seconds"], commit=commit)
+    (VID / "youtube_meta_preview_narrated.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+    return meta
+
+
 if __name__ == "__main__":
     args = sys.argv[1:]
     cmd = args[0] if args else "preview"
     if cmd == "piece":
         name, a, b, out, preset = args[1], float(args[2]), float(args[3]), Path(args[4]), args[5]
         print(json.dumps(render_piece(name, a, b, out, preset)), flush=True)
-    elif cmd in ("preview", "final"):
+    elif cmd in ("preview", "final", "final3d"):
         build(cmd)
+    elif cmd == "npreview":                             # the narrated preview: the opening and the switch to the lab
+        narrated_preview(render="--meta-only" not in args)
+    elif cmd == "remux":                                # remux <video> <wav>: the narration track again, picture copied
+        mux(Path(args[1]), Path(args[2]))
     elif cmd == "stills":
         stills([float(x) for x in args[1:]])
     elif cmd == "plan":

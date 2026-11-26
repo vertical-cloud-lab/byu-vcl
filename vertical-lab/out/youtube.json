@@ -781,6 +781,54 @@
     "notified_subscribers": false
    }
   ],
+  "twin2/video/campaign_lab3d.mp4": [
+   {
+    "id": "tX8Ik8oKnhk",
+    "sha256": "403a9f7d7c3a7842ea05681e3196f8b4f93daedb72d872943efae277db5e6c8c",
+    "bytes": 125763549,
+    "commit": "dee5887",
+    "uploaded": "2026-11-26T04:02:38Z",
+    "title": "A year of alloy discovery in an automated lab, animated: a simulated benchmark (digital twin)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
+  "twin2/video/campaign_lab3d_narrated.mp4": [
+   {
+    "id": "s854ahFNihU",
+    "sha256": "f1555bd15c5a22bd8b70a36782831865402fca42fe0cb800fb1165f599ed3f4d",
+    "bytes": 140202752,
+    "commit": "3230776",
+    "uploaded": "2026-11-26T04:28:33Z",
+    "title": "A year of alloy discovery in an automated lab, narrated: a simulated benchmark (digital twin)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
+  "twin2/video/lab3d_week.mp4": [
+   {
+    "id": "FR3Fl1onJU0",
+    "sha256": "48b9ae669412c0e8883603797ff00b3162c340708fed8df2459ad37b75b313cf",
+    "bytes": 13502217,
+    "commit": "b16bd36",
+    "uploaded": "2026-11-26T03:25:18Z",
+    "title": "Preview: one simulated week of the automated lab, moved by the event log (digital twin)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
+  "twin2/video/preview_narrated.mp4": [
+   {
+    "id": "xoRI1OaA81k",
+    "sha256": "47741423ebdafa2601e7b5da70ed90338982ef406b1fd3e44a053423654127f5",
+    "bytes": 19692480,
+    "commit": "dde652e",
+    "uploaded": "2026-11-26T04:11:45Z",
+    "title": "Preview: the campaign video, narrated (digital twin, simulated benchmark)",
+    "privacy": "unlisted",
+    "notified_subscribers": false
+   }
+  ],
   "vacuum_press.mp4": [
    {
     "id": "UGTGpEfyUeQ",

@@ -132,6 +132,10 @@ class Birdseye:
         self.avoid = [(S.px(x), S.px(y), S.px(x + w), S.px(y + h)) for x, y, w, h in AVOID]
         self.offsite = [k for k in self.R.stations if k == "hpc" or self.R.stations[k].get("external")
                         or k not in STATION_ANCHOR]
+        self.offsite_xy = (24, 158)                    # the OFF SITE column's top left (1920 x 1080 px)
+        self.chip_dx = {1: 0.0, 2: 0.0}                # the tray chips' columns, moved sideways (px; lab3d_cut)
+        self.show_chips = True                         # off where the trays themselves are close enough to read
+        self.chip_avoid = False                        # chip labels kept off the panels too (lab3d_cut: on)
         self.offsite.sort(key=lambda k: (k != "hpc", k))
         # the trays the run uses, by Shuttle, lowest slot first (from the stills' world anchors)
         v0 = next(iter(self.views.values()))
@@ -198,6 +202,20 @@ class Birdseye:
                 return k, A[k]
         return None, None
 
+    def frame_live(self, img: np.ndarray, anchors: dict, t_h: float, span_h: float = 1.0, **kw) -> np.ndarray:
+        """frame() over a picture rendered this frame (lab3d's animated lab, 1920 x 1080) with its own anchors (pixels),
+        in place of a still."""
+        self.views["_live"] = dict(img=Image.fromarray(np.ascontiguousarray(img)), size=(S.W, S.H), anchors=anchors,
+                                   boxes={}, world={}, bounds={})
+        for k in [k for k in self._cache if k[0] == "_live"]:
+            self._cache.pop(k, None)
+            self._order.remove(k)
+        out = self.frame(t_h, span_h, view="_live", zoom=1.0, focus=(0.5, 0.5), **kw)
+        for k in [k for k in self._cache if k[0] == "_live"]:
+            self._cache.pop(k, None)
+            self._order.remove(k)
+        return out
+
     # ------------------------------------------------------------------------------------------ one frame
     def frame(self, t_h: float, span_h: float = 1.0, view: str = "high", zoom: float = 1.0, focus=(0.5, 0.5),
               legend: bool = True, offsite: bool = True, labels: bool = True) -> np.ndarray:
@@ -241,7 +259,7 @@ class Birdseye:
         lit.sort(key=lambda x: x[1]["occ"])
         for ak, g, sx, sy in lit:
             self._beacon(img, g, sx, sy)
-        chips = self._chips(img, d, view, crop, tray_g, placed)
+        chips = self._chips(img, d, view, crop, tray_g, placed) if self.show_chips else []
         r = S.px(16)
         placed.extend((sx - r, sy - r, sx + r, sy + r) for _, _, sx, sy in lit)     # labels keep off the beacons
         if labels:
@@ -281,6 +299,7 @@ class Birdseye:
             if not ks or f"open{sh}" not in A:
                 continue
             bx, by = self.to_screen(view, A[f"open{sh}"], crop)
+            bx += S.px(self.chip_dx.get(sh, 0.0))
             n = len(ks)
             top = by - S.px(34) - n * (ch + gap)
             x0 = bx - cw / 2
@@ -321,7 +340,8 @@ class Birdseye:
                 box = (x1 + S.px(10), cy - th / 2 + dy, x1 + S.px(10) + tw + 2 * pad, cy + th / 2 + dy)
             if box[0] < 0 or box[2] > S.W:
                 continue
-            if not any(_overlaps(box, p) for p in placed):
+            if not any(_overlaps(box, p) for p in placed) and not (
+                    self.chip_avoid and any(_overlaps(box, a) for a in self.avoid)):
                 break
         else:
             return
@@ -411,7 +431,7 @@ class Birdseye:
 
     def _offsite(self, d, busy: dict):
         """The cloud and the outside facilities: a column of badges at the left edge, under the clock."""
-        x, y = S.px(24), S.px(158)
+        x, y = S.px(self.offsite_xy[0]), S.px(self.offsite_xy[1])
         f, fh = self.f_small, self.f_head
         w = S.px(250)
         rh = S.px(30)
