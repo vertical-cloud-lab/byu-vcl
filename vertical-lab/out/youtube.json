@@ -769,18 +769,6 @@
     "privacy": "unlisted"
    }
   ],
-  "twin2/video/campaign.mp4": [
-   {
-    "id": "Pz7hxqfODmE",
-    "sha256": "0fe81957289142f7d6e2d1acb6a5dd7304d58ad04e5bb0e651bca8b3de494a57",
-    "bytes": 157780845,
-    "commit": "73b155f",
-    "uploaded": "2026-11-26T00:15:08Z",
-    "title": "A year of alloy discovery in an automated lab: a simulated benchmark (digital twin)",
-    "privacy": "public",
-    "notified_subscribers": false
-   }
-  ],
   "vacuum_press.mp4": [
    {
     "id": "UGTGpEfyUeQ",
