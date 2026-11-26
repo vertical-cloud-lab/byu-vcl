@@ -7,13 +7,18 @@ cell lists several separated by '|') is fetched and its text searched for the am
 rounding. A total that is a sum of rounds will often not appear as such; those are reported as `not on page`,
 which flags them for reading rather than marking them wrong.
 
+Pages are fetched through scripts/via_pi.py: from the runner first, then with a browser's TLS fingerprint, then
+through a lab Pi's SSH SOCKS tunnel, then from the Internet Archive. The route that worked is recorded per figure
+(`route`). Without the tunnel the Pi step simply fails and the rest of the ladder still runs.
+
 Writes data/source_checks.csv (one row per figure) and prints the share confirmed. Run from owners/.
 """
-import concurrent.futures as cf, re
-import numpy as np, pandas as pd, requests
-from bs4 import BeautifulSoup
+import concurrent.futures as cf, re, sys
+import numpy as np, pandas as pd
 
-UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"}
+sys.path.insert(0, "scripts")
+import via_pi  # noqa: E402
+
 PAIRS = [("exit_value_usd", "exit_source"), ("total_funding_usd", "funding_source"),
          ("last_valuation_usd", "valuation_source"), ("peak_value_usd", "peak_source")]
 _cache = {}
@@ -23,19 +28,9 @@ SCALE = {"billion": 1e9, "bn": 1e9, "b": 1e9, "million": 1e6, "mn": 1e6, "m": 1e
 
 
 def text_of(url):
-    if url in _cache:
-        return _cache[url]
-    try:
-        r = requests.get(url, headers=UA, timeout=25)
-        if r.status_code != 200:
-            _cache[url] = None
-        else:
-            soup = BeautifulSoup(r.content[:4_000_000], "lxml")
-            for t in soup(["script", "style", "noscript"]):
-                t.decompose()
-            _cache[url] = re.sub(r"\s+", " ", soup.get_text(" "))
-    except requests.RequestException:
-        _cache[url] = None
+    if url not in _cache:
+        res = via_pi.get(url)
+        _cache[url] = (via_pi.text_of_html(res["body"]) if res["ok"] else None, res["route"] if res["ok"] else "")
     return _cache[url]
 
 
@@ -57,16 +52,16 @@ def amounts(text):
 
 
 def check(value, urls):
-    res = "fetch failed"
+    res, route, first = "fetch failed", "", None
     for u in urls:
-        t = text_of(u)
+        t, rt = text_of(u)
         if t is None:
             continue
         a = amounts(t)
         if len(a) and np.any(np.abs(a - value) <= 0.01 * value + 1):
-            return "confirmed", u
-        res = "not on page"
-    return res, urls[0] if urls else ""
+            return "confirmed", u, rt
+        res, route, first = "not on page", route or rt, first or u
+    return res, first or (urls[0] if urls else ""), route
 
 
 def main():
@@ -83,14 +78,15 @@ def main():
         futs = {ex.submit(check, v, urls): (o, e, c, v, urls) for o, e, c, v, urls in jobs}
         for f in cf.as_completed(futs):
             o, e, c, v, urls = futs[f]
-            res, u = f.result()
-            rows.append({"owner": o, "entity": e, "field": c, "value_usd": v, "result": res, "url": u})
+            res, u, rt = f.result()
+            rows.append({"owner": o, "entity": e, "field": c, "value_usd": v, "result": res, "url": u, "route": rt})
     d = pd.DataFrame(rows).sort_values(["owner", "field"])
     d.to_csv("data/source_checks.csv", index=False)
     print(d.result.value_counts().to_string())
     ok = d[d.result != "fetch failed"]
     print("confirmed share of fetched:", round((ok.result == "confirmed").mean(), 3), "n", len(ok))
     print(d.groupby("field").result.value_counts().unstack(fill_value=0).to_string())
+    print(d[d.result != "fetch failed"].groupby("route").result.value_counts().unstack(fill_value=0).to_string())
 
 
 if __name__ == "__main__":
