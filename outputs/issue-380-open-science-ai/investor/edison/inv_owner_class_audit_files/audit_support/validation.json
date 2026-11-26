@@ -1,0 +1,31 @@
+{
+  "rows": 120,
+  "classes": {
+    "core": 36,
+    "complement": 19,
+    "nonprofit": 9,
+    "academic": 10,
+    "government": 1,
+    "community": 45,
+    "unknown": 0
+  },
+  "judgment_calls": 36,
+  "columns": [
+    "owner",
+    "cls",
+    "entity",
+    "parent",
+    "basis",
+    "judgment",
+    "source_url"
+  ],
+  "all_input_owners_in_original_order": true,
+  "basis_max_words": 11,
+  "accounts_with_checked_sources": 120,
+  "checked_primary_pages": 148,
+  "sha256": {
+    "/workspace/audit_sample.csv": "693714e0fd57e87b4195900e38790c93437dfbae3f3c45a2430f3fcab23650f8",
+    "/workspace/classify_rules.md": "1fd314e0d2edd20de3ac7f287d18834a5ccc163ac66df362cd3f69d97ff5c80c",
+    "/workspace/owner_class_audit.csv": "ad6471b30dd388122f9d80aecc409514318585f398f761d1190973c258aa4e35"
+  }
+}

@@ -29,6 +29,8 @@ while True:
         resp = state.get("response") or {}
         ans = resp.get("answer") or {}
         formatted = ans.get("formatted_answer") or d.get("formatted_answer") or ans.get("answer") or d.get("answer") or ""
+        if not formatted and isinstance(state.get("answer"), str):  # data-analysis jobs keep it here
+            formatted = state["answer"]
         refs = ans.get("references") or ""
         files = ", ".join(v.get("files", [])) or "none"
         with open(os.path.join(D, f"{k}_answer.md"), "w") as f:
