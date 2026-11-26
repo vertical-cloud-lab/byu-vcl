@@ -135,3 +135,8 @@ TWIN_WORKERS=4 /tmp/venv/bin/python -m twin.bench3 run main cu_hidden cu_proxy c
 Round 2's engine is unchanged in `mode="wip"`, except one fix behind a flag: `Campaign._cu_check` scored a copper alloy
 when its tensile came back if its immersion had only started. `twin/bench2.py` keeps the old check
 (`legacy_cu_check`), so round 2's committed results reproduce; `TWIN_FIX_CU_CHECK=1` runs round 2 with the fix.
+
+**Round 3's video** is built by `twin/video/` with `TWIN_VIDEO_ROUND=3` (the cards in `video/figs3.py`, their numbers
+in `video/numbers3.py`, the script in `video/narration3.json`): see
+[`../notes/twin_video.md`](../notes/twin_video.md#round-3s-video). `python -m pytest -q twin/tests/test_video_round3.py`
+checks every spoken number against the committed summaries.
