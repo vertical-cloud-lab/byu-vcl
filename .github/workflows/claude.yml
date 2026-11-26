@@ -441,6 +441,16 @@ jobs:
               re.I,
           )
 
+          # The CLI's wording when a model's safeguards (Fable's classifiers)
+          # refuse a request. These fire on ordinary work too, and the model
+          # named in the message can't continue, so it is worth one retry on
+          # the fallback model.
+          SAFEGUARD = re.compile(
+              r"safeguards (flagged|stopped)|can.t respond to this message with"
+              r"|model_refusal",
+              re.I,
+          )
+
           messages = []
           if path and os.path.isfile(path):
               try:
@@ -464,6 +474,15 @@ jobs:
                           f"/{info.get('overageDisabledReason')})"
                       )
 
+          # Safeguard notices the CLI wrote into the run ("... safeguards
+          # stopped the response above"). Only non-model records are read.
+          flagged = False
+          notices = sum(
+              1 for m in messages
+              if m.get("type") not in ("assistant", "user")
+              and SAFEGUARD.search(str(m.get("content", "")))
+          )
+
           results = [m for m in messages if m.get("type") == "result"]
           if results and results[-1].get("is_error"):
               last = results[-1]
@@ -472,6 +491,24 @@ jobs:
               if status in (402, 429) or BILLING.search(text):
                   billing = True
                   reason = f"HTTP {status}: {last.get('result') or last.get('errors')}"
+              elif SAFEGUARD.search(text) or notices:
+                  flagged = True
+                  reason = f"{primary}'s safeguards flagged the request: {text}"
+              # Diagnostics for the log. Only the final error record is
+              # printed, and its text only when it reads as an API or CLI
+              # error, so a model's own last message never reaches the log.
+              looks_like_error = bool(
+                  status or text.lstrip().startswith("API Error")
+                  or BILLING.search(text) or SAFEGUARD.search(text)
+              )
+              shown = text if looks_like_error else f"(withheld: {len(text)} characters that don't read as an API error)"
+              print(
+                  f"Final result record: subtype={last.get('subtype')}"
+                  f" api_error_status={status} num_turns={last.get('num_turns')}"
+                  f" duration_ms={last.get('duration_ms')}"
+              )
+              print("Final error text: " + re.sub(r"\s+", " ", shown).strip()[:1000])
+          print(f"Safeguard notices in the run: {notices}")
 
           if not messages:
               reason = "no execution file, so the cause is unknown"
@@ -480,7 +517,11 @@ jobs:
           # retry can stay on the same model and move to another seat.
           seat = os.environ.get("SEAT", "")
           retry_model = fallback or primary
-          retry = (billing and bool(fallback or seat)) or (retry_any and bool(fallback))
+          retry = (
+              (billing and bool(fallback or seat))
+              or (flagged and bool(fallback) and fallback != primary)
+              or (retry_any and bool(fallback))
+          )
           if not fallback and not seat:
               reason += "; no fallback model or seat pool is configured"
           elif retry_any and not billing:
@@ -495,6 +536,14 @@ jobs:
           elif billing:
               note = (f"Out of usage credits for `{primary}`, and there is no"
                       " seat pool or different fallback model, so there is no retry.")
+          elif flagged and retry:
+              note = (f"`{primary}`'s safeguards flagged this request, which also"
+                      f" happens with ordinary work. Retrying with `{retry_model}` in"
+                      " this same job; the retry posts its own progress comment in"
+                      " this thread.")
+          elif flagged:
+              note = (f"`{primary}`'s safeguards flagged this request, and there is"
+                      " no different fallback model to retry with.")
           elif retry:
               note = (f"The `{primary}` attempt failed with something other"
                       f" than a spent allowance. Retrying with `{fallback}` in"
@@ -506,6 +555,7 @@ jobs:
           reason = re.sub(r"\s+", " ", reason).strip()[:300]
           note = re.sub(r"\s+", " ", note).strip()
           print(f"Allowance spent: {billing}")
+          print(f"Safeguards flagged: {flagged}")
           print(f"Retry with {retry_model if retry else '(none)'}: {retry}")
           print(f"Reason: {reason}")
           print(f"Note: {note or '(none)'}")
@@ -514,6 +564,10 @@ jobs:
               fh.write(f"retry={'true' if retry else 'false'}\n")
               fh.write(f"reason={reason}\n")
               fh.write(f"note={note}\n")
+              cause = ("when its allowance ran out" if billing else
+                       "when the model's safeguards flagged the request" if flagged else
+                       "with an error")
+              fh.write(f"cause={cause}\n")
           PY
 
       # The first attempt's comment currently ends at "Claude encountered an
@@ -626,27 +680,43 @@ jobs:
           # https://github.com/ME-EN-372/me-en-372-machine-design-private/blob/main/docs/claude-yml-model-fallback.md
           branch_prefix: claude/retry-
           prompt: |
-            An earlier attempt at this same task ran on ${{ steps.select.outputs.model }} and stopped when its allowance ran out. You are the retry, running on ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }} with a different seat. Before you start, check this thread for anything that attempt already posted, and check the claude/ branches left in this checkout (git branch --list 'claude/*') for anything it committed, whether or not it pushed; carry on from there rather than redoing it. Its progress comment is the one above yours that reports an error.
+            An earlier attempt at this same task ran on ${{ steps.select.outputs.model }} and stopped ${{ steps.billing.outputs.cause || 'when its allowance ran out' }}. You are the retry, running on ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }} with a different seat. Before you start, check this thread for anything that attempt already posted, and check the claude/ branches left in this checkout (git branch --list 'claude/*') for anything it committed, whether or not it pushed; carry on from there rather than redoing it. Its progress comment is the one above yours that reports an error.
           claude_args: |
             --model ${{ steps.select.outputs.fallback_model || steps.select.outputs.model }}
             --effort ${{ steps.select.outputs.effort }}
             --permission-mode bypassPermissions
 
-      # Optional, recommended if you set show_full_output=True. Artifact names
-      # have to differ, so the two attempts upload separately.
-      # - name: Upload Claude execution log
-      #   if: always() && steps.claude.outputs.execution_file != ''
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: claude-execution-log
-      #     path: ${{ steps.claude.outputs.execution_file }}
+      # Execution logs, encrypted to the repo owner's age key and uploaded as
+      # an artifact. This repo is public, so show_full_output stays off and
+      # nothing readable is uploaded: only someone holding the private key for
+      # vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT can read these. Decrypt with
+      # `age -d -i <key file> claude-execution-log.json.age`.
+      - name: Encrypt and upload execution logs (owner-only)
+        if: ${{ !cancelled() && vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT != '' && (steps.claude.outputs.execution_file != '' || steps.fallback.outputs.execution_file != '') }}
+        continue-on-error: true
+        env:
+          RECIPIENT: ${{ vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT }}
+          FIRST: ${{ steps.claude.outputs.execution_file }}
+          RETRY: ${{ steps.fallback.outputs.execution_file }}
+        run: |
+          set -euo pipefail
+          command -v age >/dev/null || sudo apt-get install -y -qq age >/dev/null 2>&1 \
+            || { sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq age >/dev/null; }
+          out="$RUNNER_TEMP/claude-logs-encrypted"
+          mkdir -p "$out"
+          [[ -n "$FIRST" && -f "$FIRST" ]] && age -r "$RECIPIENT" -o "$out/claude-execution-log.json.age" "$FIRST"
+          [[ -n "$RETRY" && -f "$RETRY" ]] && age -r "$RECIPIENT" -o "$out/claude-execution-log-retry.json.age" "$RETRY"
+          ls -l "$out"
 
-      # - name: Upload fallback execution log
-      #   if: always() && steps.fallback.outputs.execution_file != ''
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: claude-execution-log-fallback
-      #     path: ${{ steps.fallback.outputs.execution_file }}
+      - name: Upload the encrypted execution logs
+        if: ${{ !cancelled() && vars.CLAUDE_TRANSCRIPT_AGE_RECIPIENT != '' && (steps.claude.outputs.execution_file != '' || steps.fallback.outputs.execution_file != '') }}
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-logs-encrypted
+          path: ${{ runner.temp }}/claude-logs-encrypted/*.age
+          if-no-files-found: ignore
+          retention-days: 14
 
       # continue-on-error above hides the first attempt's failure from the job
       # status, so put it back when nothing succeeded.
