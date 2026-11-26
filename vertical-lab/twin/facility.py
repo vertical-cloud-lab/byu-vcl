@@ -189,7 +189,44 @@ DAL256 = {
 }
 
 
-def facility(kind: str = "proposed") -> dict:
+# Round 3: physical capacity in place of round 2's cap on work in flight (``Facility(..., physical=True)``). Round 2
+# capped each campaign at 24 (aluminium) or 8 (copper) actions in flight, whatever they held, so a 30-day immersion
+# took one of copper's eight for its whole month. Round 3 drops the cap; what limits work is what limits it in a lab:
+# the stations' units, calendars, start slots and session caps (above), the robots and people who move and tend the
+# samples (booked with every step, below), and the fixtures that passive steps sit in (immersion positions, furnace
+# positions with cycle starts). A passive step holds its fixture slot and the sample, not a robot or an instrument.
+ROBOT_H = (0.1, "one MiR250 + UR12e transfer per step: the tray out of the Kardex tower (lift 1,333 mm/s, 2.2 s "
+                "slides, 0.7 s shutter: PR 318 setup_lab.TwoLab), a drive of tens of metres at up to 2 m/s "
+                "(warehouse.Amr), pick and place with the UR12e; about 6 min, assumed")
+PHYSICAL = {
+    "vertical_lab": {
+        "robot": Station("robot", "Two MiR250 + UR12e mobile manipulators (PR 318)", 2, "24/7",
+                         source="PR 318: two MiR250 + UR12e units serve every station; " + ROBOT_H[1]),
+        "operator": Station("operator", "Technician on the day shift", 1, "day6",
+                            source="twin/econ.py STAFF: one person on the day shift (the atomizer's crucible and "
+                                   "upkeep); Mon-Sat so the atomizer's Saturday start (FLAIME App. 2) is attended"),
+        "furnace": dict(units=8, hours="24/7", attended_h=None, starts=tuple(float(h) for h in range(0, 24, 3)),
+                        source="two furnaces x 4 coupon positions (assumed), a 3 h cycle starting every 3 h; "
+                               "the robots load it"),
+        "immersion": dict(source="24 vial positions on the gantry deck (round 1's assumption, unchanged)"),
+    },
+    "proposed": {
+        "operator": Station("operator", "Students and staff on day shifts", 3, "day6",
+                            source="DAL #256 (al-campaign-schedule/README.md L21-L25 @ 6ff7717): one run is 10-15 "
+                                   "person-hours from charge to SEM and the plan needs 'a third trained operator'; "
+                                   "three people, Mon-Sat (FLAIME App. 2's Saturday start)"),
+        "furnace": dict(units=8, starts=(8.0, 11.0, 14.0), hours="day", attended_h=0.25,
+                        source="two furnaces x 4 coupon positions (assumed); a person loads each 3 h cycle at "
+                               "08:00, 11:00 or 14:00 on weekdays"),
+        "immersion": dict(source="24 vial positions on the gantry deck (round 1's assumption, unchanged)"),
+    },
+}
+PHYSICAL["dal256"] = PHYSICAL["proposed"]
+# stations that need no robot or person per booking: the cluster, and fixtures whose loading is in the step before
+NO_HELPER = {"hpc"}
+
+
+def facility(kind: str = "proposed", physical: bool = False) -> dict:
     st = {s.key: Station(**s.__dict__) for s in PROPOSED}
     if kind == "vertical_lab":
         for s in VERTICAL:
@@ -200,6 +237,13 @@ def facility(kind: str = "proposed") -> dict:
                 setattr(st[k], f, x)
     elif kind != "proposed":
         raise ValueError(kind)
+    if physical:
+        for k, over in PHYSICAL[kind].items():
+            if isinstance(over, Station):
+                st[k] = Station(**over.__dict__)
+            else:
+                for f, x in over.items():
+                    setattr(st[k], f, x)
     # private rates the lab holds (e.g. a partner's posted external rates kept out of public text), git-ignored:
     # data/private/rates.json = {"mines_x2": {"fee_usd": ...}, ...}
     import json
@@ -273,6 +317,7 @@ class Resource:
                 self.down.append((t, t + d))
                 t += d + rng.exponential(st.mtbf_h * 2.0)
         self.period_starts: list = []
+        self.on_commit = None                    # round 3: the twin's hook for 'a booking ends at t'
 
     def _down_at(self, t, d):
         for a, b in self.down:
@@ -304,15 +349,20 @@ class Resource:
             dow = dd % 7
             if not self._day_ok(campaign, dow):
                 continue
-            starts = st.starts if dow < 5 else (st.sat_starts if (dow == 5 and st.hours == "day6") else ())
+            if st.hours == "24/7":                   # round 3: a 24/7 station with cycle starts (furnace batches)
+                starts = st.starts
+            else:
+                starts = st.starts if dow < 5 else (st.sat_starts if (dow == 5 and st.hours == "day6") else ())
             for s in starts or ():
                 ts = dd * H_DAY + s
                 if ts >= t - 1e-9:
                     return ts
         return t
 
-    def book(self, t, dur, campaign: str, what: str, changeover_h: float = 0.0, tag=None) -> tuple[float, float]:
-        """Earliest booking of `dur` hours at or after t. Returns (start, end)."""
+    def find(self, t, dur, campaign: str, changeover_h: float = 0.0, empty: bool = False):
+        """Earliest start at or after t for a booking of `dur` hours, without committing it: (start, hours with any
+        changeover, line). ``empty=True`` ignores the other bookings (the lines and the per-period cap): the start an
+        idle station would give, so that start(loaded) - start(empty) is the wait caused by other work (round 3)."""
         st = self.st
         att = dur if st.attended_h is None else min(st.attended_h, dur)
         if st.external and st.booking_days:
@@ -322,7 +372,7 @@ class Resource:
             if st.hours != "24/7" and not in_hours(st.hours, t + att - 1e-6):
                 t = next_open(st.hours, math.floor(t / H_DAY + 1) * H_DAY)
                 continue
-            if st.per_period:
+            if st.per_period and not empty:
                 n, days = st.per_period
                 win = [s for s in self.period_starts if t - days * H_DAY < s <= t + days * H_DAY]
                 if len(win) >= n:
@@ -334,25 +384,139 @@ class Resource:
             if b is not None:
                 t = b
                 continue
-            for ln in self.lines:
+            if empty:
+                return t, d, 0
+            for i, ln in enumerate(self.lines):
                 if ln.fits(t, d):
-                    ln.add(t, t + d)
-                    self.jobs.append((t, t + d, campaign, what, tag))
-                    self.busy_h += d
-                    if st.per_period:
-                        self.period_starts.append(t)
-                    self.last_campaign = campaign
-                    return t, t + d
+                    return t, d, i
             t = max(min(ln.next_try(t, d) for ln in self.lines), t + 1e-3)
         raise RuntimeError(f"could not book {st.key}")
 
+    def commit(self, t, d, i, campaign: str, what: str, tag=None):
+        """Commit a booking found by ``find``; returns a handle for ``release_early``."""
+        self.lines[i].add(t, t + d)
+        self.jobs.append((t, t + d, campaign, what, tag))
+        self.busy_h += d
+        if self.st.per_period:
+            self.period_starts.append(t)
+        self.last_campaign = campaign
+        if self.on_commit is not None:
+            self.on_commit(t + d)
+        return (i, t, t + d, len(self.jobs) - 1)
+
+    def release_early(self, handle, t_new: float):
+        """Round 3: end a committed booking early (a passive step stopped after an interim reading frees its fixture
+        slot). The interval is shortened in place, so the line stays sorted; busy hours and the job record follow."""
+        i, s0, e0, j = handle
+        t_new = min(max(t_new, s0), e0)
+        ln = self.lines[i]
+        k = bisect.bisect_left(ln.s, s0)
+        while k < len(ln.s) and not (abs(ln.s[k] - s0) < 1e-9 and abs(ln.e[k] - e0) < 1e-9):
+            k += 1
+        if k < len(ln.s):
+            ln.e[k] = t_new
+        job = self.jobs[j]
+        self.jobs[j] = (job[0], t_new) + tuple(job[2:])
+        self.busy_h -= e0 - t_new
+
+    def book(self, t, dur, campaign: str, what: str, changeover_h: float = 0.0, tag=None) -> tuple[float, float]:
+        """Earliest booking of `dur` hours at or after t. Returns (start, end)."""
+        s, d, i = self.find(t, dur, campaign, changeover_h)
+        self.commit(s, d, i, campaign, what, tag)
+        return s, s + d
+
 
 class Facility:
-    def __init__(self, kind: str, seed: int, horizon_h: float):
+    def __init__(self, kind: str, seed: int, horizon_h: float, physical: bool = False):
         rng = np.random.default_rng(30_000 + seed)
         self.kind = kind
-        self.res = {k: Resource(s, rng, horizon_h) for k, s in facility(kind).items()}
+        self.physical = physical
+        # the helpers (robot, operator) come last and have no breakdowns, so the breakdown draws of the stations are
+        # the same as round 2's for the same seed
+        self.res = {k: Resource(s, rng, horizon_h) for k, s in facility(kind, physical).items()}
         self.rng = np.random.default_rng(40_000 + seed)
+        self.helper_misses = 0
+
+    def helpers(self, station: str, dur: float) -> list:
+        """Round 3: who has to be there when a step starts, and for how long: [(helper station, hours)]. The vertical
+        lab: a robot transfer for every in-house step; the technician for the atomizer's attended hour and for the
+        hands-on part of outside work (packing and shipping). The conventional lab: a person for each station's
+        hands-on hours (twin/econ.py HANDS_ON: a fixed part per booking plus a share of the hours), capped at a day."""
+        if not self.physical or station in NO_HELPER or station not in self.res:
+            return []
+        st = self.res[station].st
+        from twin import econ as E
+        out = []
+        if self.kind == "vertical_lab":
+            if station in E.OUTSIDE_IN_VERTICAL:
+                a, b, _ = E.HANDS_ON.get(station, (0.25, 0.0, ""))
+                if a > 0:
+                    out.append(("operator", a))
+                return out
+            if "robot" in self.res:
+                out.append(("robot", ROBOT_H[0]))
+            if station == "atomizer":
+                out.append(("operator", min(st.attended_h or 1.0, dur)))
+            return out
+        a, b, _ = E.HANDS_ON.get(station, (0.25, 1.0, ""))
+        h = min(a + b * dur, 8.0)
+        if st.attended_h is not None:
+            h = min(h, max(st.attended_h, a))
+        if h > 0 and "operator" in self.res:
+            out.append(("operator", h))
+        return out
+
+    def run_step_joint(self, station: str, ready: float, dur: float, campaign: str, what: str, changeover_h=0.0,
+                       tag=None):
+        """Round 3: book a step together with its helpers (``helpers``), all starting at the same time: the
+        earliest start at which the station and every helper are free. Returns (start, end, result time, cost,
+        the station booking's handle)."""
+        r = self.res[station]
+        st = r.st
+        t0 = ready
+        if st.external and st.booking_days:
+            t0 = ready + st.booking_days * H_DAY * math.exp(self.rng.normal(0, 0.35))
+        hl = self.helpers(station, dur)
+        t = t0
+        found = []
+        for _ in range(400):
+            s, d, i = r.find(t, dur, campaign, changeover_h)
+            found, ok = [], True
+            for hk, hh in hl:
+                hr = self.res[hk]
+                s2, d2, i2 = hr.find(s, hh, campaign)
+                if s2 > s + 1e-6:
+                    t, ok = s2, False
+                    break
+                found.append((hr, s2, d2, i2))
+            if ok:
+                break
+        else:
+            self.helper_misses += 1
+            found = []
+        handle = r.commit(s, d, i, campaign, what, tag)
+        for hr, s2, d2, i2 in found:
+            hr.commit(s2, d2, i2, campaign, what, dict(tag or {}, helper_for=station))
+        lag = st.turnaround_days * H_DAY * math.exp(self.rng.normal(0, 0.4)) if st.turnaround_days else 0.0
+        cost = st.fee_usd + st.rate_usd_h * dur
+        return s, s + d, s + d + lag, cost, handle
+
+    def queue_wait(self, station: str, ready: float, dur: float, campaign: str) -> float:
+        """Round 3: how long a step ready at ``ready`` would wait for other bookings at this station (beyond what
+        the calendar, start slots and breakdowns impose). Outside services count their median booking lead first,
+        and their session caps count as other bookings."""
+        r = self.res[station]
+        st = r.st
+        t = ready + (st.booking_days * H_DAY if (st.external and st.booking_days) else 0.0)
+        s1, _, _ = r.find(t, dur, campaign)
+        s0, _, _ = r.find(t, dur, campaign, empty=True)
+        return s1 - s0
+
+    def free_units(self, station: str, t: float, window_h: float = 2.0, campaign: str | None = None) -> int:
+        """Round 3: units of a station free for ``window_h`` from its next open time (a hint for the policies)."""
+        r = self.res[station]
+        s0, _, _ = r.find(t, 0.01, campaign, empty=True)
+        return sum(1 for ln in r.lines if ln.fits(s0, window_h))
 
     def run_step(self, station: str, ready: float, dur: float, campaign: str, what: str, changeover_h=0.0, tag=None):
         """Book a step; returns (start, end, result_time, cost). ``tag`` (design, node, ...) goes into the job record
