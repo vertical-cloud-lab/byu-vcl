@@ -7,3 +7,8 @@ pingcap,PingCAP,U1,sells TiDB Cloud and Enterprise,,yes,US,2015,private,yes,3,,,
 timescale,Tiger Data,U1,sells Tiger Cloud hosted TimescaleDB,,yes,US,,private,yes,5,Seed amount and 2019 round: 2018 post says Series A of $12.4M in Jan 2018; the $15M 2019 round is labelled Series A by TechCrunch (two rounds called A).,https://www.tigerdata.com/about,2026-11-26T06:19:01Z
 run-llama,LlamaIndex,U1,sells LlamaCloud and LlamaParse,,yes,US,,private,yes,1,"memory: later Series A exists; not verified, not recorded. BusinessWire release returned 403.",https://www.businesswire.com/news/home/20230531005251/en/LlamaIndex-Raises-8.5M-to-Unlock-Large-Language-Models-Capabilities-with-Personal-Data,2026-11-26T06:19:01Z
 jitsi,Jitsi,U1,8x8 unit sells Jitsi as a Service; originally BlueJimp,,yes,US,,acquired,none_found,0,"No outside funding found. BlueJimp acquired by Atlassian 2015 (undisclosed sum), sold to 8x8 Oct 2018 (undisclosed).",https://techcrunch.com/2018/10/29/atlassian-sells-jitsi-an-open-source-videoconferencing-tool-it-acquired-in-2015-to-8x8/,2026-11-26T06:19:01Z
+warpdotdev,Warp,U1,open-source client; sells paid Warp plans,,yes,US,,private,yes,2,,,2026-11-26T06:20:55Z
+supermemoryai,Supermemory,U1,sells hosted supermemory API and app,,yes,US,,private,yes,1,,,2026-11-26T06:20:55Z
+refinedev,Refine,U1,sells Refine Enterprise and hosted refine.new builder,,yes,US,,private,yes,2,,https://www.ycombinator.com/companies/refine,2026-11-26T06:20:55Z
+getzep,Zep,U1,sells Zep Cloud built on Graphiti,,yes,US,2023,private,yes,2,,,2026-11-26T06:20:55Z
+manaflow-ai,Manaflow,U1,sells cmux Pro and cloud VMs,,yes,US,,private,yes,1,,,2026-11-26T06:20:55Z

@@ -106,6 +106,63 @@ T.update({
  "Soma Capital": V, "Sorenson Capital": V, "System.One": V, "e.ventures": V, "Harpoon Ventures": V,
 })
 
+T.update({
+ # venture firms (hand-typed from the second review of unclassified names)
+ "Orange Collective": V, "BoxGroup": V, "500 Emerging Europe": V, "Tokyo Black": V, "Transpose Platform": V,
+ "83 North": V, "AMP (Anjney Midha)": V, "Alven": V, "Centralway": V, "Cue Ball": V, "Dinghui Baifu": V,
+ "Ibex Investors": V, "Inflection.xyz": V, "Innovation X": V, "Jinhuifeng": V, "NFX": V, "Oak HC/FT": V,
+ "Pebblebed": V, "Pitango": V, "Planven": V, "Portage": V, "RTP Global": V, "SaxeCap": V, "Square Peg": V,
+ "Target Global": V, "Village Global": V, "49 Palms": V, "Ace & Company": V, "AlleyCorp": V, "Amino Collective": V,
+ "ArkStream": V, "Astella": V, "BGV": V, "Chapter One": V, "DCM": V, "Disruptive": V, "Draper Associates": V,
+ "Evantic": V, "F-Prime": V, "Factorial": V, "Fifty Years": V, "Firestreak": V, "Floodgate": V, "Founder Collective": V,
+ "Founder's Co-op": V, "Freestyle": V, "Fundomo": V, "GP Bullhound": V, "GRC SinoGreen": V, "Global Brain": V,
+ "Innovation Nest": V, "Innovo": V, "Inovo": V, "Irregular Expression": V, "Irregular Expressions": V, "Kaya": V,
+ "LDVP": V, "Maverick Silicon": V, "Monashees": V, "Monolith Management": V, "Moonfire": V, "OATV": V,
+ "Ora Global": V, "Palm Drive": V, "Parable": V, "Playground Global": V, "Protagonist": V, "Rebel": V,
+ "Rebellion": V, "Red Swan": V, "Rheingau Founders": V, "SBI Group": V, "Senovo": V, "Seven Seven Six": V,
+ "Sevin Rosen Funds": V, "Skycatcher": V, "Supernode Global": V, "Techammer": V, "Techstart": V, "TenOneTen": V,
+ "West Coast Endeavors": V, "World Innovation Lab": V, "Zero Prime": V, "Zobito": V, "ZooCap": V, "Axeleo": V,
+ "USIT": V, "Expa": A, "MiraclePlus": A, "Raise Sherpas": CF,
+ # growth, crossover, PE, asset managers, endowments, pensions
+ "Highland Europe": G, "ACOF": G, "Aspex": G, "Avenir": G, "BDT & MSD": G, "BNP Paribas": G, "Belfius": G,
+ "Eastspring": G, "Flow Traders": G, "Hanwha Asset Management": G, "Harvard Management Company": G,
+ "Healthcare of Ontario Pension Plan": G, "Lightrock": G, "Millennium New Horizons": G, "Point72": G,
+ "Sixth Street Growth": G, "Sofina": G, "Special Situations Investing Group II": G, "Stripes Group": G,
+ "XTX Markets": G, "Clayton, Dubilier & Rice": G, "Mitsubishi UFJ Financial Group": G, "Mizuho Financial Group": G,
+ "Dai-ichi Life Insurance": G, "ARK Invest": G, "Agostinelli Group": "angel", "WTT Fubon Family": "angel",
+ # state, sovereign, public
+ "Industrifonden": P, "EDBI": P, "French Tech Souveraineté": P, "Grand Duchy of Luxembourg": P,
+ "Greater Bay Area Homeland": P, "Inria Participations": P, "Noshaq": P, "SRIW": P, "Tesi": P,
+ "Xiamen ITG Group": P,
+ # government grants
+ "CDTI": GG, "NGI Zero Core": GG, "NIST": GG, "Region Centre-Val de Loire": GG,
+ "Scale AI (Canada's AI supercluster)": GG,
+ # philanthropy
+ "Breakout Labs": PH, "GiveWell": PH,
+ # crypto
+ "Distributed Global": CR, "BeakerDAO": CR, "Block1": CR, "Blockwall": CR, "Chorus One": CR, "Collab+Currency": CR,
+ "Dialectic": CR, "Digital Currency Group": CR, "GSR Markets": CR, "L2IV": CR, "Matrixport": CR, "OrangeDAO": CR,
+ "The LAO": CR, "Spartan": CR, "The Spartan Group": CR, "BAT token buyers": CR, "Sonar community buyers": CR,
+ "CoinList participants": CR, "Alameda Research": CR,
+ # corporate and strategic
+ "China Telecom": C, "Fosun": C, "Huawei Hubble": C, "Hyundai Motor Group": C, "IDC Frontier": C, "Mondragon Group": C,
+ "OpenAI": C, "Samsung Securities": C, "Schwarz Group": C, "Sompo Japan Nipponkoa Insurance": C, "Zalando": C,
+ "Zhihu": C, "Airbus": C, "Aisan Technology": C, "Amdocs": C, "Amgen": C, "Ant Financial": C, "BlueFocus": C, "CATL": C,
+ "Canva": C, "Cursor": C, "Danobatgroup": C, "Devolutions": C, "Docker": C, "DreamHost": C, "EBSCO": C, "EMC": C,
+ "Electronic Arts": C, "Eni": C, "Ericsson": C, "Fastweb+Vodafone": C, "Figma": C, "Ford Motor Company": C,
+ "Foxconn": C, "Framer": C, "General Electric": C, "GlobalFoundries": C, "Grafana Labs": C, "Hewlett-Packard": C,
+ "Huaqin Technology": C, "IREN": C, "ITOCHU": C, "JCDecaux Holding": C, "Jaguar Land Rover": C, "KT": C, "MediaTek": C,
+ "MiHoYo": C, "Mitsubishi Electric": C, "Monday.com": C, "Mouser Electronics": C, "NEC": C, "Nature Publishing Group": C,
+ "Nebius": C, "Netlify": C, "Novell": C, "OWC": C, "PagsGroup": C, "Pegatron": C, "Prefect": C, "Quest Software": C,
+ "Rainmatter": C, "Rheinmetall": C, "SentinelOne": C, "Shikoku Electric Power": C, "Silicon Graphics": C,
+ "Sony Music Group": C, "Sprint": C, "Supercell": C, "Synopsys": C, "Teradata": C, "Tokio Marine Group": C,
+ "UiPath": C, "Universal Music Group": C, "WPP": C, "Warner Music Group": C, "Williams Advanced Engineering": C,
+ "Xiaohongshu": C, "Yahoo": C, "Yamaha Motor": C, "Yandex": C, "Zapier": C, "Zerodha": C, "Zhipu AI": C,
+ "Zscaler": C, "Sandisk": C, "Sangfor Technologies": C, "SCB10X": C, "SAP.iO": C, "Singtel Innov8": C,
+ "Cox Exponential": C, "Presidio STX": C, "Latacora": C, "For One Red Design Studio": C, "Stratos Technologies": C,
+ "Stanford University": O, "University of Michigan": O, "AngelList": O,
+})
+
 
 def main():
     with open("data/investor_types.csv", "w", newline="") as f:

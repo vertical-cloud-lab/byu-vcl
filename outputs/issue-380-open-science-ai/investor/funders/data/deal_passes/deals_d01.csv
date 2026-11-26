@@ -1,0 +1,37 @@
+key,venture,universe,type,label,date,amount_usd,lead,investors,source,source_kind,note
+u4-dev-fast,/dev/fast,U4,accelerator,YC W26,2026,,,Y Combinator,https://www.ycombinator.com/companies/devfast,database,YC directory listing
+u4-0-security,0.security,U4,accelerator,YC F26,2026,,,Y Combinator,https://www.ycombinator.com/companies/0security,database,YC directory listing
+u4-280-north,280 North,U4,accelerator,YC W08,2008,,,Y Combinator,https://www.ycombinator.com/companies/280-north,database,YC directory listing
+u4-activeloop,Activeloop,U4,accelerator,YC S18,2018,,,Y Combinator,https://www.ycombinator.com/companies/activeloop,database,
+u4-activeloop,Activeloop,U4,seed,Seed,2021-11,5000000,468 Capital | CM Ventures,Tribe Capital | Shasta Ventures,https://techcrunch.com/2021/11/02/activeloop-snags-5m-seed-to-build-database-for-ai-applications/,news,plus unnamed angels
+u4-activeloop,Activeloop,U4,series_a,Series A,2024-03,11000000,Streamlined Ventures,Y Combinator | Samsung Next | Alumni Ventures | Dispersion Capital,https://siliconangle.com/2024/03/26/activeloop-raises-11m-grow-specialized-database-ai-training-inference/,news,
+u4-acyclic-labs,Acyclic Labs,U4,accelerator,YC F26,2026,,,Y Combinator,https://www.ycombinator.com/companies/acyclic,database,
+u4-aden,Aden,U4,accelerator,YC W20,2020,,,Y Combinator,https://www.ycombinator.com/companies/aden,database,
+u4-aedilic,Aedilic,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/aedilic,database,YC lists company as inactive
+u4-agent-relay,Agent Relay,U4,accelerator,YC F26,2026,,,Y Combinator,https://www.ycombinator.com/companies/agent-relay,database,
+u4-agent-relay,Agent Relay,U4,venture_unspecified,backers,2026,,,Hustle Fund | Active Capital | Cortical Ventures,https://agentrelay.com/,company,Investor logos on homepage; round and date not stated
+u4-airtrain-ai,Airtrain AI,U4,accelerator,YC S22,2022,,,Y Combinator,https://www.ycombinator.com/companies/airtrain-ai,database,YC lists as inactive
+u4-airweave,Airweave,U4,accelerator,YC S25,2025,,,Y Combinator,https://www.ycombinator.com/companies/airweave,database,
+u4-airweave,Airweave,U4,seed,Seed,2025-07,6000000,FCVC,LUX Capital | Y Combinator | Orange Collective | Pioneer Fund | Shay Banon (person),https://airweave.ai,company,"Homepage news item dated Jul 2, 2025; the date shown may be that of the following item"
+u4-alokai,Alokai,U4,accelerator,YC W21,2021,,,Y Combinator,https://techcrunch.com/2021/03/26/vue-storefront/,news,
+u4-alokai,Alokai,U4,seed,Seed,2021-03,1500000,SMOK Ventures | Movens VC,,https://techcrunch.com/2021/03/26/vue-storefront/,news,Reported as Vue Storefront
+u4-alpaca,Alpaca,U4,accelerator,YC W19,2019,,,Y Combinator,https://www.ycombinator.com/companies/alpaca,database,
+u4-alpaca,Alpaca,U4,series_b,Series B,2021-08,50000000,Tribe Capital,Spark Capital | Portage Ventures | Social Leverage,https://techcrunch.com/2021/08/30/alpaca-raises-50m-to-rapidly-scale-its-equities-trading-api-business/,news,
+u4-alpaca,Alpaca,U4,convertible_note,"Series B extension, convertible note",2023-10,15000000,SBI Group,,https://techcrunch.com/2023/10/12/stock-trading-api-developer-alpaca-raises-15m-convertible-note-from-sbi-group/,news,
+u4-alpaca,Alpaca,U4,series_c,Series C,2025-04,52000000,,Derayah Financial | 850 Management | National Investments Company Kuwait | Unbound | Portage Ventures,https://techcrunch.com/2025/04/23/alpaca-a-developer-of-api-brokerage-platform-raises-52m-in-series-c/,news,New and returning backers; lead not named
+u4-alpaca,Alpaca,U4,venture_unspecified,earlier backers,,,,Horizons Ventures | Elefund,https://techcrunch.com/2023/10/12/stock-trading-api-developer-alpaca-raises-15m-convertible-note-from-sbi-group/,news,Listed among previous backers
+u4-anythingllm,AnythingLLM,U4,accelerator,YC S22,2022,,,Y Combinator,https://www.ycombinator.com/companies/anythingllm,database,
+u4-apollo,Apollo,U4,accelerator,YC S11,2011,,,Y Combinator,https://www.ycombinator.com/companies/apollo,database,
+u4-apollo,Apollo,U4,series_c,Series C,2019-06,22000000,Andreessen Horowitz | Matrix Partners,Trinity Ventures | Webb Investment Network,https://siliconangle.com/2019/06/12/graphql-company-apollo-lands-22m-series-c-funding-round/,news,
+u4-apollo,Apollo,U4,venture_unspecified,$130M round,2021-08,130000000,Insight Partners,Andreessen Horowitz | Matrix Partners | Trinity Ventures | Next47 | Hatim Shafique (person),https://siliconangle.com/2021/08/17/apollo-graph-reels-130-million-take-graphql-mainstream/,news,Round letter not read; Shafique is Databricks CCO
+u4-arc-prize-foundation,ARC Prize Foundation,U4,accelerator,YC W26,2026,,,Y Combinator,https://www.ycombinator.com/companies/arc-prize-foundation,database,YC directory listing
+u4-archangel-health,Archangel Health,U4,accelerator,YC F26,2026,,,Y Combinator,https://www.ycombinator.com/companies/archangel-health,database,
+u4-arroyo,Arroyo,U4,accelerator,YC W23,2023,,,Y Combinator,https://www.ycombinator.com/companies/arroyo,database,
+u4-artillery,Artillery,U4,accelerator,YC S21,2021,,,Y Combinator,https://www.ycombinator.com/companies/artillery,database,
+u4-assistant-ui,assistant-ui,U4,accelerator,YC W25,2025,,,Y Combinator,https://www.ycombinator.com/companies/assistant-ui,database,
+u4-atla,Atla,U4,accelerator,YC S23,2023,,,Y Combinator,https://www.ycombinator.com/companies/atla,database,YC lists inactive
+u4-atla,Atla,U4,seed,Seed,2023-12,5000000,Creandum,Y Combinator | Rebel Fund,https://techcrunch.com/2023/12/05/atla-wants-to-build-text-generating-ai-models-with-guardrails/,news,
+u4-atopile,atopile,U4,accelerator,YC W24,2024,,,Y Combinator,https://www.ycombinator.com/companies/atopile,database,
+u4-authzed,authzed,U4,accelerator,YC W21,2021,,,Y Combinator,https://authzed.com/blog/series-a-funding,company,
+u4-authzed,authzed,U4,seed,Seed,2021-04,3900000,Work-Bench,Y Combinator | Amplify Partners,https://techcrunch.com/2021/04/21/authzed-scores-3-9m-seed-to-build-permissions-api-service/,news,
+u4-authzed,authzed,U4,series_a,Series A,2024-06,12000000,General Catalyst,Work-Bench | Y Combinator | Amplify Partners,https://authzed.com/blog/series-a-funding,company,
